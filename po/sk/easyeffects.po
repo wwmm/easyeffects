@@ -1,0 +1,2539 @@
+# Slovak translation for Pulseeffects.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Mlocik97 <Mlocik97@gmail.com>, 2020.
+# Jose Riha <jose1711 gmail com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2023-08-09 14:07+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
+"sk/>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 5.0-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "Vstup"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "Názov"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+#, fuzzy
+msgid "Value"
+msgstr "Spodná hranica"
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "Predvoľby"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+msgid "Quit"
+msgstr ""
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr "Použiť"
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "Predvoľby"
+
+#: src/contents/ui/main.qml:179
+#, fuzzy
+msgid "Preferences"
+msgstr "Referenčný Signál"
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "Vstupné efekty"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "Výstup"
+
+#: src/contents/ui/PipeWireTab.qml:9
+#, fuzzy
+msgid "PipeWire"
+msgstr "PipeWire"
+
+#: src/main.cpp:55
+msgid "Audio effects for PipeWire applications"
+msgstr "Zvukové efekty pre aplikácie využívajúce PipeWire"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Sklon"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+#, fuzzy
+msgid "Width of the main window."
+msgstr "Skryť okno."
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+#, fuzzy
+msgid "Height of the main window."
+msgstr "Skryť okno."
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+#, fuzzy
+msgid "Last used preset."
+msgstr "Vytvoriť predvoľbu"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "Ekvalizér, kompresor a ďalšie audio efekty"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Zvukové efekty pre aplikácie využívajúce PipeWire"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "obmedzovač;kompresor;ozvena;ekvalizér;automatická hlasitosť;"
+
+#, fuzzy
+#~ msgid "Enable"
+#~ msgstr "Povolené"
+
+#, fuzzy
+#~ msgid "Mute Application"
+#~ msgstr "Aplikácie"
+
+#, fuzzy
+#~ msgid "Application Volume"
+#~ msgstr "Aplikácie"
+
+#, fuzzy
+#~ msgid "_Help"
+#~ msgstr "Pomocník"
+
+#, fuzzy
+#~ msgid "_Reset Settings"
+#~ msgstr "Nastavenia"
+
+#, fuzzy
+#~ msgid "_Shortcuts"
+#~ msgstr "Krátkodobá"
+
+#, fuzzy
+#~ msgid "Presets Menu"
+#~ msgstr "Predvoľby"
+
+#~ msgid "Global Bypass"
+#~ msgstr "Globálne premostenie"
+
+#, fuzzy
+#~ msgid "Easy Effects Window"
+#~ msgstr "PulseEffects"
+
+#, fuzzy
+#~ msgid "Applications List"
+#~ msgstr "Aplikácie"
+
+#, fuzzy
+#~ msgid "Empty List"
+#~ msgstr "Prázdne steny"
+
+#, fuzzy
+#~ msgid "No Audio Application Available"
+#~ msgstr "Aplikácie"
+
+#, fuzzy
+#~ msgid "Controls"
+#~ msgstr "Ovládač zosilnenia"
+
+#~ msgid "Target"
+#~ msgstr "Cieľ"
+
+#~ msgid "Silence"
+#~ msgstr "Ticho"
+
+#, fuzzy
+#~ msgid "Maximum History"
+#~ msgstr "Maximálna"
+
+#, fuzzy
+#~ msgid "Reference"
+#~ msgstr "Referenčný Signál"
+
+#~ msgid "Momentary"
+#~ msgstr "Okamžitá"
+
+#, fuzzy
+#~ msgid "Short-Term"
+#~ msgstr "Krátkodobá"
+
+#~ msgid "Integrated"
+#~ msgstr "Integrovaná"
+
+#, fuzzy
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "Použiť geometrický priemer"
+
+#, fuzzy
+#~ msgid "Geometric Mean (MS)"
+#~ msgstr "Použiť geometrický priemer"
+
+#, fuzzy
+#~ msgid "Geometric Mean (MI)"
+#~ msgstr "Použiť geometrický priemer"
+
+#, fuzzy
+#~ msgid "Geometric Mean (SI)"
+#~ msgstr "Použiť geometrický priemer"
+
+#, fuzzy
+#~ msgid "History"
+#~ msgstr "Vymazať históriu"
+
+#~ msgid "Reset"
+#~ msgstr "Obnoviť pôvodné hodnoty"
+
+#~ msgid "Loudness"
+#~ msgstr "Hlasitosť"
+
+#~ msgid "Relative"
+#~ msgstr "Relatívna"
+
+#~ msgid "Range"
+#~ msgstr "Rozsah"
+
+#~ msgid "Output Gain"
+#~ msgstr "Výstupný Zisk"
+
+#, fuzzy
+#~ msgid "Plugin Input Gain"
+#~ msgstr "Výstupný Zisk"
+
+#, fuzzy
+#~ msgid "Plugin Output Gain"
+#~ msgstr "Výstupný Zisk"
+
+#, fuzzy
+#~ msgid "Remove this autoload preset"
+#~ msgstr "Odstrániť predvoľbu"
+
+#~ msgid "Listen"
+#~ msgstr "Počúvať"
+
+#~ msgid "Blend Harmonics"
+#~ msgstr "Miešať harmonické kmity"
+
+#~ msgid "3rd"
+#~ msgstr "3."
+
+#~ msgid "2nd"
+#~ msgstr "2."
+
+#~ msgid "Amount"
+#~ msgstr "Množstvo"
+
+#~ msgid "Harmonics"
+#~ msgstr "Harmonickosť"
+
+#~ msgid "Scope"
+#~ msgstr "Rozsah"
+
+#~ msgid "Floor"
+#~ msgstr "Spodná hranica"
+
+#, fuzzy
+#~ msgid "Floor Value"
+#~ msgstr "Spodná hranica"
+
+#, fuzzy
+#~ msgid "Application Name"
+#~ msgstr "Aplikácie"
+
+#, fuzzy
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "Zobraziť aplikácie zo zoznamu blokovaných na hlavnej karte"
+
+#, fuzzy
+#~ msgid "Excluded Applications List"
+#~ msgstr "Aplikácie"
+
+#, fuzzy
+#~ msgid "Show Excluded Applications"
+#~ msgstr "Zobraziť aplikácie zo zoznamu blokovaných na hlavnej karte"
+
+#, fuzzy
+#~ msgid "Show Native Window"
+#~ msgstr "Skryť okno"
+
+#~ msgid "Compressor"
+#~ msgstr "Kompresor"
+
+#~ msgid "Mode"
+#~ msgstr "Režim"
+
+#~ msgid "Downward"
+#~ msgstr "Dole"
+
+#~ msgid "Upward"
+#~ msgstr "Hore"
+
+#~ msgid "Compression Mode"
+#~ msgstr "Mód kompresora"
+
+#~ msgid "Boost Threshold"
+#~ msgstr "Zvýrazniť prah"
+
+#, fuzzy
+#~ msgid "Boost Amount"
+#~ msgstr "Množstvo"
+
+#~ msgid "Attack"
+#~ msgstr "Nábeh"
+
+#, fuzzy
+#~ msgid "Time"
+#~ msgstr "V reálnom čase"
+
+#~ msgid "Threshold"
+#~ msgstr "Prah"
+
+#, fuzzy
+#~ msgid "Attack Time"
+#~ msgstr "Nábeh"
+
+#, fuzzy
+#~ msgid "Attack Threshold"
+#~ msgstr "Prah"
+
+#~ msgid "Release"
+#~ msgstr "Uvoľnenie"
+
+#, fuzzy
+#~ msgid "Release Time"
+#~ msgstr "Uvoľnenie"
+
+#, fuzzy
+#~ msgid "Release Threshold"
+#~ msgstr "Relatívny prah uvoľnenia"
+
+#~ msgid "Ratio"
+#~ msgstr "Pomer"
+
+#~ msgid "Knee"
+#~ msgstr "Prechod"
+
+#~ msgid "Makeup"
+#~ msgstr "Pozdvihnutie"
+
+#, fuzzy
+#~ msgid "Dry Level"
+#~ msgstr "Úroveň F2"
+
+#, fuzzy
+#~ msgid "Wet Level"
+#~ msgstr "Cieľová úroveň"
+
+#~ msgid "Sidechain"
+#~ msgstr "Postranný reťazec"
+
+#, fuzzy
+#~ msgid "Stereo Split Mode"
+#~ msgstr "Režim sterea"
+
+#~ msgid "Source"
+#~ msgstr "Zdroj"
+
+#~ msgid "Middle"
+#~ msgstr "Stredný"
+
+#~ msgid "Side"
+#~ msgstr "Postranný"
+
+#~ msgid "Left"
+#~ msgstr "Ľavý"
+
+#~ msgid "Right"
+#~ msgstr "Pravý"
+
+#, fuzzy
+#~ msgid "Min"
+#~ msgstr "Maximálna"
+
+#, fuzzy
+#~ msgid "Max"
+#~ msgstr "Maximálna"
+
+#, fuzzy
+#~ msgid "Sidechain Source"
+#~ msgstr "Postranný reťazec"
+
+#, fuzzy
+#~ msgid "Left/Right"
+#~ msgstr "Oneskorenie Ľavo/Pravo"
+
+#, fuzzy
+#~ msgid "Right/Left"
+#~ msgstr "Pravý"
+
+#, fuzzy
+#~ msgid "Mid/Side"
+#~ msgstr "Postranný"
+
+#, fuzzy
+#~ msgid "Side/Mid"
+#~ msgstr "Postranný"
+
+#, fuzzy
+#~ msgid "Stereo Split Source"
+#~ msgstr "Predvolený bdroj"
+
+#~ msgid "Peak"
+#~ msgstr "Vrchol"
+
+#~ msgid "RMS"
+#~ msgstr "RMS"
+
+#, fuzzy
+#~ msgid "Low-Pass Filter"
+#~ msgstr "Režim filtra vysokej priepuste"
+
+#, fuzzy
+#~ msgid "Sidechain Mode"
+#~ msgstr "Postranný reťazec"
+
+#, fuzzy
+#~ msgid "Listen Sidechain"
+#~ msgstr "Postranný reťazec"
+
+#~ msgid "Type"
+#~ msgstr "Typ"
+
+#, fuzzy
+#~ msgid "Feed-forward"
+#~ msgstr "Kanál-Vpred"
+
+#~ msgid "Feed-back"
+#~ msgstr "Kanál-Vzad"
+
+#, fuzzy
+#~ msgid "Sidechain Type"
+#~ msgstr "Postranný reťazec"
+
+#, fuzzy
+#~ msgid "Input Device"
+#~ msgstr "Obmedzovač na vstupe"
+
+#, fuzzy
+#~ msgid "PreAmplification"
+#~ msgstr "Predzosilnenie"
+
+#~ msgid "Reactivity"
+#~ msgstr "Reaktivita"
+
+#~ msgid "Lookahead"
+#~ msgstr "Výhľad"
+
+#, fuzzy
+#~ msgid "Sidechain Filters"
+#~ msgstr "Postranný reťazec"
+
+#, fuzzy
+#~ msgid "High-Pass"
+#~ msgstr "Horné pásmo"
+
+#~ msgid "Frequency"
+#~ msgstr "Frekvencia"
+
+#~ msgid "Off"
+#~ msgstr "Vyp"
+
+#~ msgid "12 dB/oct"
+#~ msgstr "12 dB/okt"
+
+#~ msgid "24 dB/oct"
+#~ msgstr "24 dB/okt"
+
+#~ msgid "36 dB/oct"
+#~ msgstr "36 dB/okt"
+
+#, fuzzy
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "Režim filtra vysokej priepuste"
+
+#, fuzzy
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "Frekvencia vysokej priepuste"
+
+#~ msgid "Low-Pass"
+#~ msgstr "Dolná priepusť"
+
+#, fuzzy
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "Režim filtra vysokej priepuste"
+
+#~ msgid "Gain"
+#~ msgstr "Zisk"
+
+#~ msgid "Curve"
+#~ msgstr "Krivka"
+
+#~ msgid "L"
+#~ msgstr "Ľ"
+
+#, fuzzy
+#~ msgid "Left Channel"
+#~ msgstr "Kanály"
+
+#~ msgid "R"
+#~ msgstr "P"
+
+#, fuzzy
+#~ msgid "Right Channel"
+#~ msgstr "Rozdeliť kanály"
+
+#, fuzzy
+#~ msgid "Impulses"
+#~ msgstr "Odpoveď impulzu"
+
+#~ msgid "Stereo Width"
+#~ msgstr "Šírka sterea"
+
+#~ msgid "Spectrum"
+#~ msgstr "Spektrum"
+
+#, fuzzy
+#~ msgid "Log Scale"
+#~ msgstr "Mierka"
+
+#, fuzzy
+#~ msgid "Autogain"
+#~ msgstr "Automatická hlasitosť"
+
+#~ msgid "Rate"
+#~ msgstr "Kmitočet"
+
+#~ msgid "Samples"
+#~ msgstr "Vzorky"
+
+#~ msgid "Duration"
+#~ msgstr "Trvanie"
+
+#, fuzzy
+#~ msgid "Combine Impulse Responses"
+#~ msgstr "Odpoveď impulzu"
+
+#, fuzzy
+#~ msgid "Output File Name"
+#~ msgstr "Výstup"
+
+#~ msgid "Import Impulse"
+#~ msgstr "Importovať impulz"
+
+#, fuzzy
+#~ msgid "Search Impulse File"
+#~ msgstr "Načítať súbor impulzu"
+
+#, fuzzy
+#~ msgid "Impulse Files List"
+#~ msgstr "Načítať súbor impulzu"
+
+#~ msgid "Default"
+#~ msgstr "Predvolený"
+
+#~ msgid "Cutoff"
+#~ msgstr "Zrezanie"
+
+#~ msgid "Feed"
+#~ msgstr "Kanál"
+
+#~ msgid "Bypass"
+#~ msgstr "Premostiť"
+
+#~ msgid "Mute"
+#~ msgstr "Stíšený"
+
+#, fuzzy
+#~ msgid "Attenuation Limit"
+#~ msgstr "Zoslabenie"
+
+#, fuzzy
+#~ msgid "Post Filter Beta"
+#~ msgstr "Filter"
+
+#~ msgid "Detection"
+#~ msgstr "Detekcia"
+
+#~ msgid "Wide"
+#~ msgstr "Široký"
+
+#~ msgid "Split"
+#~ msgstr "Rozdeliť"
+
+#~ msgid "F1 Split"
+#~ msgstr "Rozdeliť F1"
+
+#, fuzzy
+#~ msgid "Frequency 1 Split"
+#~ msgstr "Frekvencia"
+
+#~ msgid "F2 Peak"
+#~ msgstr "Vrchol F2"
+
+#, fuzzy
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "Frekvencia"
+
+#~ msgid "F1 Gain"
+#~ msgstr "Zisk F1"
+
+#, fuzzy
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "Frekvencia"
+
+#~ msgid "F2 Level"
+#~ msgstr "Úroveň F2"
+
+#, fuzzy
+#~ msgid "Frequency 2 Level"
+#~ msgstr "Frekvencia"
+
+#~ msgid "F2 Peak Q"
+#~ msgstr "F2 vrchol Q"
+
+#, fuzzy
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "Frekvencia"
+
+#~ msgid "Laxity"
+#~ msgstr "Nedbanlivosť"
+
+#~ msgid "Detected"
+#~ msgstr "Zistené"
+
+#, fuzzy
+#~ msgid "Reduction"
+#~ msgstr "Redukcia"
+
+#~ msgid "Delay"
+#~ msgstr "Oneskorenie"
+
+#~ msgid "Invert Phase"
+#~ msgstr "Preklopiť fázu"
+
+#, fuzzy
+#~ msgid "Filter Length"
+#~ msgstr "Filter"
+
+#, fuzzy
+#~ msgid "Residual Echo Suppression"
+#~ msgstr "Potlačenie šumu"
+
+#, fuzzy
+#~ msgid "Near End Echo Suppression"
+#~ msgstr "Potlačenie šumu"
+
+#~ msgid "Bands"
+#~ msgstr "Pásma"
+
+#~ msgid "Balance"
+#~ msgstr "Vyváženie"
+
+#, fuzzy
+#~ msgid "Pitch Left"
+#~ msgstr "Postranný reťazec"
+
+#, fuzzy
+#~ msgid "Pitch Right"
+#~ msgstr "Postranný reťazec"
+
+#~ msgid "Split Channels"
+#~ msgstr "Rozdeliť kanály"
+
+#~ msgid "Flat Response"
+#~ msgstr "Vyhladiť"
+
+#~ msgid "Calculate Frequencies"
+#~ msgstr "Vypočítať frekvencie"
+
+#, fuzzy
+#~ msgid "Sort Bands"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Import Preset"
+#~ msgstr "Načítať predvoľbu"
+
+#, fuzzy
+#~ msgid "Export Preset"
+#~ msgstr "Načítať predvoľbu"
+
+#~ msgid "Slope"
+#~ msgstr "Sklon"
+
+#~ msgid "Solo"
+#~ msgstr "Sólo"
+
+#~ msgid "Quality"
+#~ msgstr "Kvalita"
+
+#~ msgid "Width"
+#~ msgstr "Šírka"
+
+#, fuzzy
+#~ msgid "Ceil"
+#~ msgstr "Strop"
+
+#, fuzzy
+#~ msgid "Expander Mode"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Internal"
+#~ msgstr "Integrovaná"
+
+#, fuzzy
+#~ msgid "Description"
+#~ msgstr "Detekcia"
+
+#, fuzzy
+#~ msgid "Remove this model file"
+#~ msgstr "Odstrániť predvoľbu"
+
+#, fuzzy
+#~ msgid "Low-Shelf"
+#~ msgstr "Spodný prah"
+
+#, fuzzy
+#~ msgid "High-Shelf"
+#~ msgstr "Horný prah"
+
+#~ msgid "Bell"
+#~ msgstr "Zvonček"
+
+#, fuzzy
+#~ msgid "Band-Pass"
+#~ msgstr "Premostiť"
+
+#~ msgid "Notch"
+#~ msgstr "Zárez"
+
+#~ msgid "Resonance"
+#~ msgstr "Rezonancia"
+
+#, fuzzy
+#~ msgid "Ladder-Pass"
+#~ msgstr "Dolná priepusť"
+
+#, fuzzy
+#~ msgid "Ladder-Rejection"
+#~ msgstr "Redukcia zosilnenia"
+
+#, fuzzy
+#~ msgid "All-Pass"
+#~ msgstr "Dolné Pásmo"
+
+#, fuzzy
+#~ msgid "Equalizer Mode"
+#~ msgstr "Ekvalizér"
+
+#~ msgid "Filter"
+#~ msgstr "Filter"
+
+#~ msgid "Gate"
+#~ msgstr "Brána"
+
+#, fuzzy
+#~ msgid "Release Zone Start"
+#~ msgstr "Uvoľnenie"
+
+#, fuzzy
+#~ msgid "True Peak"
+#~ msgstr "Frekvencia"
+
+#~ msgid "Reset History"
+#~ msgstr "Vymazať históriu"
+
+#~ msgid "Oversampling"
+#~ msgstr "Prevzorkovanie"
+
+#, fuzzy
+#~ msgid "Herm Wide"
+#~ msgstr "Široký"
+
+#, fuzzy
+#~ msgid "Exp Wide"
+#~ msgstr "Široký"
+
+#, fuzzy
+#~ msgid "Line Thin"
+#~ msgstr "Šírka čiary"
+
+#, fuzzy
+#~ msgid "Line Wide"
+#~ msgstr "Šírka čiary"
+
+#, fuzzy
+#~ msgid "Line Tail"
+#~ msgstr "Šírka čiary"
+
+#~ msgid "None"
+#~ msgstr "Žiadny"
+
+#, fuzzy
+#~ msgid "Sidechain PreAmplification"
+#~ msgstr "Predzosilnenie"
+
+#~ msgid "Stereo Link"
+#~ msgstr "Spojenie sterea"
+
+#, fuzzy
+#~ msgid "External Sidechain"
+#~ msgstr "Postranný reťazec"
+
+#, fuzzy
+#~ msgid "Auto Leveling"
+#~ msgstr "Automatické úrovne"
+
+#, fuzzy
+#~ msgid "Auto Leveling Attack"
+#~ msgstr "Automatické úrovne"
+
+#, fuzzy
+#~ msgid "Auto Leveling Release"
+#~ msgstr "Automatické úrovne"
+
+#, fuzzy
+#~ msgid "Auto Leveling Knee"
+#~ msgstr "Automatické úrovne"
+
+#, fuzzy
+#~ msgid "Gain Left"
+#~ msgstr "Ľavý"
+
+#, fuzzy
+#~ msgid "Gain Right"
+#~ msgstr "Pravý"
+
+#, fuzzy
+#~ msgid "Sidechain Left"
+#~ msgstr "Postranný reťazec"
+
+#, fuzzy
+#~ msgid "Sidechain Right"
+#~ msgstr "Postranný reťazec"
+
+#~ msgid "Standard"
+#~ msgstr "Štandardný"
+
+#~ msgid "Flat"
+#~ msgstr "Rovný"
+
+#~ msgid "FFT Size"
+#~ msgstr "Veľkosť FFT"
+
+#, fuzzy
+#~ msgid "Output Volume"
+#~ msgstr "Výstup"
+
+#, fuzzy
+#~ msgid "Clipping"
+#~ msgstr "Priradenie kanála"
+
+#, fuzzy
+#~ msgid "Sidechain Boost"
+#~ msgstr "Postranný reťazec"
+
+#, fuzzy
+#~ msgid "Operating Mode"
+#~ msgstr "Importovať model"
+
+#, fuzzy
+#~ msgid "Modern"
+#~ msgstr "Režim"
+
+#, fuzzy
+#~ msgid "Linear Phase"
+#~ msgstr "Preklopiť fázu"
+
+#, fuzzy
+#~ msgid "Bands List"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 1"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 2"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 3"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 4"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 5"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 6"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 7"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 8"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band End"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band Compression Mode"
+#~ msgstr "Mód kompresora"
+
+#, fuzzy
+#~ msgid "Band Bypass"
+#~ msgstr "Premostiť"
+
+#, fuzzy
+#~ msgid "Band Sidechain Options"
+#~ msgstr "Postranný reťazec"
+
+#, fuzzy
+#~ msgid "Stereo Split"
+#~ msgstr "Režim sterea"
+
+#, fuzzy
+#~ msgid "Low-Cut"
+#~ msgstr "Režim filtra nízkej priepuste"
+
+#, fuzzy
+#~ msgid "Low-Cut Filter Frequency"
+#~ msgstr "Režim filtra nízkej priepuste"
+
+#, fuzzy
+#~ msgid "High-Cut"
+#~ msgstr "Horný prechod"
+
+#, fuzzy
+#~ msgid "High-Cut Filter Frequency"
+#~ msgstr "Horný prechod"
+
+#, fuzzy
+#~ msgid "Band Gain"
+#~ msgstr "Vstupné Zosilnenie"
+
+#, fuzzy
+#~ msgid "Band Curve"
+#~ msgstr "Krivka"
+
+#, fuzzy
+#~ msgid "Band Reduction"
+#~ msgstr "Redukcia zosilnenia"
+
+#~ msgid "General"
+#~ msgstr "Všeobecné"
+
+#, fuzzy
+#~ msgid "Use Default Input"
+#~ msgstr "Použiť predvolený"
+
+#, fuzzy
+#~ msgid "Custom Input Device"
+#~ msgstr "Obmedzovač na vstupe"
+
+#, fuzzy
+#~ msgid "Use Default Output"
+#~ msgstr "Použiť predvolený"
+
+#, fuzzy
+#~ msgid "Custom Output Device"
+#~ msgstr "Výstupné efekty"
+
+#, fuzzy
+#~ msgid "Server Information"
+#~ msgstr "Ozvena (reverb)"
+
+#, fuzzy
+#~ msgid "Header Version"
+#~ msgstr "Verzia"
+
+#, fuzzy
+#~ msgid "Library Version"
+#~ msgstr "Verzia"
+
+#, fuzzy
+#~ msgid "Sampling Rate"
+#~ msgstr "Predvolená rýchlosť vzorkovania"
+
+#, fuzzy
+#~ msgid "Minimum Quantum"
+#~ msgstr "Minimálna frekvencia"
+
+#, fuzzy
+#~ msgid "Maximum Quantum"
+#~ msgstr "Maximálny zisk"
+
+#, fuzzy
+#~ msgid "Default Quantum"
+#~ msgstr "Predvolené Zoslabnutie"
+
+#, fuzzy
+#~ msgid "Output Devices"
+#~ msgstr "Výstupné efekty"
+
+#~ msgid "Output Presets"
+#~ msgstr "Výstupné predvoľby:"
+
+#~ msgid "Output Autoloading Presets List"
+#~ msgstr "Výstupné predvoľby:"
+
+#, fuzzy
+#~ msgid "Input Devices"
+#~ msgstr "Obmedzovač na vstupe"
+
+#, fuzzy
+#~ msgid "Input Presets"
+#~ msgstr "Vstupné predvoľby: "
+
+#, fuzzy
+#~ msgid "Input Autoloading Presets List"
+#~ msgstr "Vstupné predvoľby: "
+
+#~ msgid "Modules"
+#~ msgstr "Moduly"
+
+#, fuzzy
+#~ msgid "Modules List"
+#~ msgstr "Moduly"
+
+#~ msgid "Clients"
+#~ msgstr "Klienti"
+
+#, fuzzy
+#~ msgid "Clients List"
+#~ msgstr "Klienti"
+
+#, fuzzy
+#~ msgid "Test Signal"
+#~ msgstr "Skúšobné signály"
+
+#~ msgid "State"
+#~ msgstr "Stav"
+
+#, fuzzy
+#~ msgid "Enabled"
+#~ msgstr "Povolené"
+
+#~ msgid "Channels"
+#~ msgstr "Kanály"
+
+#, fuzzy
+#~ msgid "Both Channels"
+#~ msgstr "Kanály"
+
+#, fuzzy
+#~ msgid "Sine Wave"
+#~ msgstr "Sínusová tabuľka"
+
+#~ msgid "White Noise"
+#~ msgstr "Biely šum"
+
+#, fuzzy
+#~ msgid "Sequence Length"
+#~ msgstr "Frekvencia"
+
+#, fuzzy
+#~ msgid "Seek Window"
+#~ msgstr "Okno"
+
+#, fuzzy
+#~ msgid "Overlap Length"
+#~ msgstr "Filter"
+
+#~ msgid "Pitch"
+#~ msgstr "Výška tónu"
+
+#~ msgid "Semitones"
+#~ msgstr "Poltóny"
+
+#, fuzzy
+#~ msgid "Tempo Difference"
+#~ msgstr "Referenčný Signál"
+
+#, fuzzy
+#~ msgid "Rate Difference"
+#~ msgstr "Referenčný Signál"
+
+#, fuzzy
+#~ msgid "Remove this effect"
+#~ msgstr "Odstrániť predvoľbu"
+
+#, fuzzy
+#~ msgid "Add Effect"
+#~ msgstr "Vstupné predvoľby: "
+
+#, fuzzy
+#~ msgid "Go to the previous effect"
+#~ msgstr "Odstrániť predvoľbu"
+
+#, fuzzy
+#~ msgid "No Effects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "_General"
+#~ msgstr "Všeobecné"
+
+#, fuzzy
+#~ msgid "Service"
+#~ msgstr "Server"
+
+#, fuzzy
+#~ msgid "Process All Output Streams"
+#~ msgstr "Spracovať všetky výstupy"
+
+#, fuzzy
+#~ msgid "Process All Input Streams"
+#~ msgstr "Spracovať všetky vstupy"
+
+#, fuzzy
+#~ msgid "Inactivity Timeout"
+#~ msgstr "Čas. limit aktivity"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "Aktualizované preklady"
+
+#, fuzzy
+#~ msgid "Update Frequency"
+#~ msgstr "Frekvencia"
+
+#~ msgid "Use Dark Theme"
+#~ msgstr "Použiť tmavý motív"
+
+#, fuzzy
+#~ msgid "Experimental Features"
+#~ msgstr "Experimentálna"
+
+#, fuzzy
+#~ msgid "Native Plugin Window"
+#~ msgstr "Skryť okno"
+
+#, fuzzy
+#~ msgid "_Spectrum"
+#~ msgstr "Spektrum"
+
+#~ msgid "Bars"
+#~ msgstr "Pruhy"
+
+#~ msgid "Lines"
+#~ msgstr "Čiary"
+
+#~ msgid "Points"
+#~ msgstr "Body"
+
+#~ msgid "Height"
+#~ msgstr "Výška"
+
+#~ msgid "Line Width"
+#~ msgstr "Šírka čiary"
+
+#~ msgid "Fill"
+#~ msgstr "Výplň"
+
+#, fuzzy
+#~ msgid "Color"
+#~ msgstr "Farba osi"
+
+#, fuzzy
+#~ msgid "Frequency Range"
+#~ msgstr "Frekvencia"
+
+#, fuzzy
+#~ msgid "Minimum"
+#~ msgstr "Maximálna"
+
+#~ msgid "Maximum"
+#~ msgstr "Maximálna"
+
+#~ msgid "Load"
+#~ msgstr "Načítať"
+
+#, fuzzy
+#~ msgid "Discard the current settings and load this preset"
+#~ msgstr "Uložiť aktuálne nastavenia do tejto predvoľby"
+
+#~ msgid "Save current settings to this preset file"
+#~ msgstr "Uložiť aktuálne nastavenia do tejto predvoľby"
+
+#~ msgid "Remove this preset file"
+#~ msgstr "Odstrániť predvoľbu"
+
+#, fuzzy
+#~ msgid "Try"
+#~ msgstr "Skúšobný"
+
+#, fuzzy
+#~ msgid "Try this community preset"
+#~ msgstr "Výstupné predvoľby: "
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Importovať model"
+
+#, fuzzy
+#~ msgid "New Preset Name"
+#~ msgstr "Vstupné predvoľby: "
+
+#, fuzzy
+#~ msgid "Search Local Preset"
+#~ msgstr "Vstupné predvoľby: "
+
+#, fuzzy
+#~ msgid "Local Presets List"
+#~ msgstr "Vstupné predvoľby: "
+
+#, fuzzy
+#~ msgid "Search Community Preset"
+#~ msgstr "Výstupné predvoľby: "
+
+#, fuzzy
+#~ msgid "Community Presets List"
+#~ msgstr "Výstupné predvoľby: "
+
+#~ msgid "High Frequency Damping"
+#~ msgstr "Vysokofrekvenčné tlmenie"
+
+#~ msgid "Room Size"
+#~ msgstr "Veľkosť miestnosti"
+
+#~ msgid "Small"
+#~ msgstr "Malá"
+
+#~ msgid "Medium"
+#~ msgstr "Stredná"
+
+#~ msgid "Large"
+#~ msgstr "Veľká"
+
+#~ msgid "Tunnel"
+#~ msgstr "Tunel"
+
+#~ msgid "Large/smooth"
+#~ msgstr "Veľká/hladká"
+
+#~ msgid "Experimental"
+#~ msgstr "Experimentálna"
+
+#~ msgid "Diffusion"
+#~ msgstr "Rozptyl"
+
+#~ msgid "Pre Delay"
+#~ msgstr "Predoneskorenie"
+
+#~ msgid "Decay Time"
+#~ msgstr "Čas dozvuku"
+
+#~ msgid "Bass Cut"
+#~ msgstr "Odrezanie basov"
+
+#~ msgid "Treble Cut"
+#~ msgstr "Odrezanie výšok"
+
+#~ msgid "Ambience"
+#~ msgstr "Okolie"
+
+#~ msgid "Empty Walls"
+#~ msgstr "Prázdne steny"
+
+#~ msgid "Room"
+#~ msgstr "Miestnosť"
+
+#~ msgid "Large Empty Hall"
+#~ msgstr "Veľká miestnosť (prázdna)"
+
+#~ msgid "Disco"
+#~ msgstr "Disko"
+
+#~ msgid "Large Occupied Hall"
+#~ msgstr "Veľká miestnosť (plná)"
+
+#~ msgid "Import Model"
+#~ msgstr "Importovať model"
+
+#, fuzzy
+#~ msgid "Voice Detection"
+#~ msgstr "Detekcia reči"
+
+#, fuzzy
+#~ msgid "Models"
+#~ msgstr "Režim"
+
+#, fuzzy
+#~ msgid "Standard Model"
+#~ msgstr "Štandardný model RNNoise"
+
+#, fuzzy
+#~ msgid "RNNoise Models List"
+#~ msgstr "Štandardný model RNNoise"
+
+#~ msgid "Active Model"
+#~ msgstr "Aktívny model"
+
+#~ msgid "Standard RNNoise Model"
+#~ msgstr "Štandardný model RNNoise"
+
+#, fuzzy
+#~ msgid "Overview"
+#~ msgstr "Server"
+
+#, fuzzy
+#~ msgid "Close the Window"
+#~ msgstr "Skryť okno"
+
+#, fuzzy
+#~ msgid "Quit Easy Effects"
+#~ msgstr "Vstupné efekty"
+
+#, fuzzy
+#~ msgid "Denoise"
+#~ msgstr "Červený šum"
+
+#, fuzzy
+#~ msgid "Automatic Gain Control"
+#~ msgstr "Automatické vyhladenie"
+
+#, fuzzy
+#~ msgid "Dereverberation"
+#~ msgstr "Ozvena (reverb)"
+
+#, fuzzy
+#~ msgid "Noise Suppression"
+#~ msgstr "Potlačenie šumu"
+
+#, fuzzy
+#~ msgid "Level"
+#~ msgstr "Úroveň F2"
+
+#, fuzzy
+#~ msgid "Input Balance"
+#~ msgstr "Vyváženie"
+
+#~ msgid "Softclip"
+#~ msgstr "Softclip"
+
+#, fuzzy
+#~ msgid "Softclip Level"
+#~ msgstr "Softclip"
+
+#~ msgid "Stereo Matrix"
+#~ msgstr "Stereo matica"
+
+#~ msgid "LR > LR (Stereo Default)"
+#~ msgstr "ĽP > PĽ (štandardné Stereo)"
+
+#~ msgid "LR > MS (Stereo to Mid-Side)"
+#~ msgstr "ĽP > SS (stereo ku strednej strane)"
+
+#~ msgid "MS > LR (Mid-Side to Stereo)"
+#~ msgstr "SS > ĽP (stredná strana ku stereu)"
+
+#~ msgid "LR > LL (Mono Left Channel)"
+#~ msgstr "ĽP > ĽĽ (mono ľavý kanál)"
+
+#~ msgid "LR > RR (Mono Right Channel)"
+#~ msgstr "ĽP > PP (mono pravý kanál)"
+
+#~ msgid "LR > L+R (Mono Sum L+R)"
+#~ msgstr "ĽP > Ľ+P (mono sčítanie Ľ+P)"
+
+#~ msgid "LR > RL (Stereo Flip Channels)"
+#~ msgstr "ĽP > PĽ (stereo preklopené Kanály)"
+
+#~ msgid "Stereo Mode"
+#~ msgstr "Režim sterea"
+
+#~ msgid "Side Level"
+#~ msgstr "Úroveň strán"
+
+#~ msgid "Side Balance"
+#~ msgstr "Vyváženie strán"
+
+#~ msgid "Middle Level"
+#~ msgstr "Stredová úroveň"
+
+#~ msgid "Middle Panorama"
+#~ msgstr "Stredná paronáma"
+
+#, fuzzy
+#~ msgid "Output Balance"
+#~ msgstr "Výstupný Zisk"
+
+#~ msgid "Delay L/R"
+#~ msgstr "Oneskorenie Ľ/P"
+
+#~ msgid "Delay Left Right"
+#~ msgstr "Oneskorenie Ľavo/Pravo"
+
+#~ msgid "Stereo Base"
+#~ msgstr "Základ sterea"
+
+#~ msgid "Stereo Phase"
+#~ msgstr "Fáza sterea"
+
+#, fuzzy
+#~ msgid "Running"
+#~ msgstr "beží"
+
+#, fuzzy
+#~ msgid "Suspended"
+#~ msgstr "pozastavené"
+
+#, fuzzy
+#~ msgid "Creating"
+#~ msgstr "vytváram"
+
+#, fuzzy
+#~ msgid "Error"
+#~ msgstr "chyba"
+
+#, fuzzy
+#~ msgid "channels"
+#~ msgstr "Kanály"
+
+#, fuzzy
+#~ msgid "Quit Easy Effects. Useful when running in service mode."
+#~ msgstr "Ukončiť PulseEffect. Užitočné pre beh v režime služby."
+
+#, fuzzy
+#~ msgid "Reset Easy Effects."
+#~ msgstr "Obnoviť EasyEffects."
+
+#~ msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+#~ msgstr ""
+#~ "Globálne premostenie. 1 pre zapnutie, 2 pre vypnutie, 3 pre získanie stavu"
+
+#~ msgid "Show available presets."
+#~ msgstr "Zobraziť dostupné predvoľby."
+
+#~ msgid "Load a preset. Example: easyeffects -l music"
+#~ msgstr "Načítať predvoľby. Napr.: easyffects -l music"
+
+#, fuzzy
+#~ msgid "_Output"
+#~ msgstr "Výstup"
+
+#, fuzzy
+#~ msgid "_Input"
+#~ msgstr "Vstup"
+
+#, fuzzy
+#~ msgid "Impulse File Not Imported"
+#~ msgstr "Načítať súbor impulzu"
+
+#~ msgid "Import Impulse File"
+#~ msgstr "Načítať súbor impulzu"
+
+#~ msgid "Open"
+#~ msgstr "Otvoriť"
+
+#~ msgid "Impulse Response"
+#~ msgstr "Odpoveď impulzu"
+
+#~ msgid "Load Impulse"
+#~ msgstr "Načítať impulz"
+
+#, fuzzy
+#~ msgid "Remove Impulse"
+#~ msgstr "Importovať impulz"
+
+#, fuzzy
+#~ msgid "No Impulse File Loaded"
+#~ msgstr "Načítať súbor impulzu"
+
+#, fuzzy
+#~ msgid "Failed To Load The Impulse File"
+#~ msgstr "Nedá sa načítať súbor s impulzom"
+
+#, fuzzy
+#~ msgid "Recorders"
+#~ msgstr "Okraj"
+
+#~ msgid "Players"
+#~ msgstr "Prehrávače"
+
+#, fuzzy
+#~ msgid "Effects"
+#~ msgstr "EasyEffects"
+
+#~ msgid "Import APO Preset File"
+#~ msgstr "Načítať APO predvoľbu"
+
+#~ msgid "APO Presets"
+#~ msgstr "APO predvoľby"
+
+#, fuzzy
+#~ msgid "Export EqualizerAPO Preset File"
+#~ msgstr "Načítať APO predvoľbu"
+
+#, fuzzy
+#~ msgid "EqualizerAPO Presets"
+#~ msgstr "APO predvoľby"
+
+#, fuzzy
+#~ msgid "Import GraphicEQ Preset File"
+#~ msgstr "Načítať APO predvoľbu"
+
+#, fuzzy
+#~ msgid "GraphicEQ Presets"
+#~ msgstr "Vstupné predvoľby: "
+
+#, fuzzy
+#~ msgid "Remove Autoloading Preset"
+#~ msgstr "Odstrániť predvoľbu"
+
+#, fuzzy
+#~ msgid "Output Level Meter"
+#~ msgstr "Výstupné efekty"
+
+#, fuzzy
+#~ msgid "Output Device"
+#~ msgstr "Výstupné efekty"
+
+#~ msgid "Add"
+#~ msgstr "Pridať"
+
+#, fuzzy
+#~ msgid "Community Preset"
+#~ msgstr "Načítať predvoľbu"
+
+#, fuzzy
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "Aplikácie"
+
+#, fuzzy
+#~ msgid "No Preset Loaded"
+#~ msgstr "Vstupné predvoľby: "
+
+#, fuzzy
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "Vstupné predvoľby: "
+
+#, fuzzy
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "Načítať predvoľbu"
+
+#~ msgid "Import Model File"
+#~ msgstr "Importovať model zo súboru"
+
+#, fuzzy
+#~ msgid "RNNoise Models"
+#~ msgstr "Štandardný model RNNoise"
+
+#~ msgid "Bass Enhancer"
+#~ msgstr "Vylepšovač hĺbok"
+
+#, fuzzy
+#~ msgid "Bass Loudness"
+#~ msgstr "Hlasitosť"
+
+#~ msgid "Convolver"
+#~ msgstr "Zbaľovač"
+
+#~ msgid "Crossfeed"
+#~ msgstr "Prelínanie kanálov"
+
+#~ msgid "Crystalizer"
+#~ msgstr "Kryštalizátor"
+
+#~ msgid "Deesser"
+#~ msgstr "Deesser"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "Rušenie ozveny"
+
+#~ msgid "Equalizer"
+#~ msgstr "Ekvalizér"
+
+#~ msgid "Exciter"
+#~ msgstr "Budič"
+
+#, fuzzy
+#~ msgid "Level Meter"
+#~ msgstr "Výstupné efekty"
+
+#~ msgid "Limiter"
+#~ msgstr "Obmedzovač"
+
+#~ msgid "Maximizer"
+#~ msgstr "Zosilňovač"
+
+#~ msgid "Multiband Compressor"
+#~ msgstr "Viacpásmový kompresor"
+
+#~ msgid "Multiband Gate"
+#~ msgstr "Viacpásmová brána"
+
+#, fuzzy
+#~ msgid "Reverberation"
+#~ msgstr "Ozvena (reverb)"
+
+#~ msgid "Noise Reduction"
+#~ msgstr "Redukcia šumu"
+
+#~ msgid "Stereo Tools"
+#~ msgstr "Stereo nástroje"
+
+#~ msgid "Ceiling"
+#~ msgstr "Strop"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"Predvoľby\""
+
+#, fuzzy
+#~ msgid "Import a preset"
+#~ msgstr "Načítať predvoľbu"
+
+#, fuzzy
+#~ msgid "Low-Cut Filter"
+#~ msgstr "Režim filtra nízkej priepuste"
+
+#, fuzzy
+#~ msgid "High-Cut Filter"
+#~ msgstr "Horný prechod"
+
+#~ msgid "Uniform"
+#~ msgstr "Rovnomerný"
+
+#, fuzzy
+#~ msgid "New Output Preset Name"
+#~ msgstr "Výstupné predvoľby: "
+
+#~ msgid "infinity"
+#~ msgstr "nekonečno"
+
+#~ msgid "IIR"
+#~ msgstr "IIR"
+
+#~ msgid "FIR"
+#~ msgstr "FIR"
+
+#~ msgid "FFT"
+#~ msgstr "FFT"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Pomer"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "Prah"
+
+#, fuzzy
+#~ msgid "Low-pass"
+#~ msgstr "Dolná priepusť"
+
+#, fuzzy
+#~ msgid "High-pass"
+#~ msgstr "Horné pásmo"
+
+#~ msgid "Gating"
+#~ msgstr "Hradlo"
+
+#~ msgid "12dB/oct Lowpass"
+#~ msgstr "Nízka pásmová priepusť 12dB/okt"
+
+#~ msgid "24dB/oct Lowpass"
+#~ msgstr "Nízka pásmová priepusť 24dB/okt"
+
+#~ msgid "36dB/oct Lowpass"
+#~ msgstr "Nízka pásmová priepusť 36dB/okt"
+
+#~ msgid "12dB/oct Highpass"
+#~ msgstr "Vysoká pásmová priepusť 12dB/okt"
+
+#~ msgid "24dB/oct Highpass"
+#~ msgstr "Vysoká pásmová priepusť 24dB/okt"
+
+#~ msgid "36dB/oct Highpass"
+#~ msgstr "Vysoká pásmová priepusť 36dB/okt"
+
+#~ msgid "6dB/oct Bandpass"
+#~ msgstr "Pásmová priepusť 6dB/okt"
+
+#~ msgid "12dB/oct Bandpass"
+#~ msgstr "Pásmová priepusť 12dB/okt"
+
+#~ msgid "18dB/oct Bandpass"
+#~ msgstr "Pásmová priepusť 18dB/okt"
+
+#~ msgid "6dB/oct Bandreject"
+#~ msgstr "Vylúčenie pásma 6dB/okt"
+
+#~ msgid "12dB/oct Bandreject"
+#~ msgstr "Vylúčenie pásma 12dB/okt"
+
+#~ msgid "18dB/oct Bandreject"
+#~ msgstr "Vylúčenie pásma 18dB/okt"
+
+#~ msgid "Inertia"
+#~ msgstr "Zotrvačnosť"
+
+#, fuzzy
+#~ msgid "Band Type"
+#~ msgstr "Premostiť"
+
+#, fuzzy
+#~ msgid "Band Mode"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band Slope"
+#~ msgstr "Sklon"
+
+#, fuzzy
+#~ msgid "Loudness List"
+#~ msgstr "Hlasitosť"
+
+#, fuzzy
+#~ msgid "High Speed"
+#~ msgstr "Horný prah"
+
+#, fuzzy
+#~ msgid "High Quality"
+#~ msgstr "Kvalita"
+
+#, fuzzy
+#~ msgid "Formant"
+#~ msgstr "Formát"
+
+#, fuzzy
+#~ msgid "Preserved"
+#~ msgstr "Predvoľby"
+
+#, fuzzy
+#~ msgid "Crisp"
+#~ msgstr "Krehkosť"
+
+#, fuzzy
+#~ msgid "Detector"
+#~ msgstr "Detekcia"
+
+#, fuzzy
+#~ msgid "Compound"
+#~ msgstr "Kompresia"
+
+#, fuzzy
+#~ msgid "Soft"
+#~ msgstr "Softclip"
+
+#~ msgid "Cents"
+#~ msgstr "Centy"
+
+#~ msgid "Octaves"
+#~ msgstr "Oktávy"
+
+#, fuzzy
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Obnoviť PulseEffects"
+
+#~ msgid "High Pass"
+#~ msgstr "Horné pásmo"
+
+#~ msgid "Low Pass"
+#~ msgstr "Spodné pásmo"
+
+#~ msgid "Cancel"
+#~ msgstr "Zrušiť"
+
+#, fuzzy
+#~ msgid " PreAmplification"
+#~ msgstr "Predzosilnenie"
+
+#~ msgid "Frame Size"
+#~ msgstr "Veľkosť rámca"
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "Dolná priepusť"
+
+#, fuzzy
+#~ msgid " Uniform"
+#~ msgstr "Rovnomerný"
+
+#, fuzzy
+#~ msgid "Left Delay"
+#~ msgstr "Predoneskorenie"
+
+#, fuzzy
+#~ msgid "Right Delay"
+#~ msgstr "Rozdeliť kanály"
+
+#, fuzzy
+#~ msgid "Left Dry Level"
+#~ msgstr "Úroveň F2"
+
+#, fuzzy
+#~ msgid "Right Dry Level"
+#~ msgstr "Úroveň F2"
+
+#, fuzzy
+#~ msgid "Left Wet Level"
+#~ msgstr "Cieľová úroveň"
+
+#, fuzzy
+#~ msgid "Right Wet Level"
+#~ msgstr "Cieľová úroveň"
+
+#, fuzzy
+#~ msgid "Suppression"
+#~ msgstr "Redukcia zosilnenia"
+
+#, fuzzy
+#~ msgid "Noise Reduction (Fast)"
+#~ msgstr "Redukcia šumu"
+
+#, fuzzy
+#~ msgid "Load APO Preset"
+#~ msgstr "APO predvoľby"
+
+#~ msgid "Output Presets: "
+#~ msgstr "Výstupné predvoľby: "
+
+#~ msgid "Input Presets: "
+#~ msgstr "Vstupné predvoľby: "
+
+#, fuzzy
+#~ msgid "Split Mode"
+#~ msgstr "Rozdeliť"
+
+#~ msgid "Split 1/2"
+#~ msgstr "Rozdeliť 1/2"
+
+#~ msgid "Split 2/3"
+#~ msgstr "Rozdeliť 2/3"
+
+#, fuzzy
+#~ msgid "Split Frequency 2"
+#~ msgstr "Frekvencia"
+
+#~ msgid "Split 3/4"
+#~ msgstr "Rozdeliť 3/4"
+
+#, fuzzy
+#~ msgid "Split Frequency 3"
+#~ msgstr "Frekvencia"
+
+#~ msgid "Sub Band"
+#~ msgstr "Spodné pásmo"
+
+#, fuzzy
+#~ msgid "Band 1 Bypass"
+#~ msgstr "Premostiť"
+
+#, fuzzy
+#~ msgid "Band 1 Solo"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 1 Detection"
+#~ msgstr "Redukcia zosilnenia"
+
+#, fuzzy
+#~ msgid "Band 1 Attack"
+#~ msgstr "Nábeh"
+
+#, fuzzy
+#~ msgid "Band 1 Release"
+#~ msgstr "Uvoľnenie"
+
+#, fuzzy
+#~ msgid "Band 1 Threshold"
+#~ msgstr "Prah"
+
+#, fuzzy
+#~ msgid "Band 1 Ratio"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 1 Knee"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 1 Makeup"
+#~ msgstr "Pozdvihnutie"
+
+#~ msgid "Max Reduction"
+#~ msgstr "Redukcia"
+
+#~ msgid "Low Band"
+#~ msgstr "Nízke pásmo"
+
+#, fuzzy
+#~ msgid "Band 2 Bypass"
+#~ msgstr "Premostiť"
+
+#, fuzzy
+#~ msgid "Band 2 Solo"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 2 Detection"
+#~ msgstr "Redukcia zosilnenia"
+
+#, fuzzy
+#~ msgid "Band 2 Attack"
+#~ msgstr "Nábeh"
+
+#, fuzzy
+#~ msgid "Band 2 Release"
+#~ msgstr "Uvoľnenie"
+
+#, fuzzy
+#~ msgid "Band 2 Threshold"
+#~ msgstr "Prah"
+
+#, fuzzy
+#~ msgid "Band 2 Ratio"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 2 Knee"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 2 Makeup"
+#~ msgstr "Pozdvihnutie"
+
+#, fuzzy
+#~ msgid "Band 2 Max Reduction"
+#~ msgstr "Redukcia zosilnenia"
+
+#~ msgid "Mid Band"
+#~ msgstr "Stredné pásmo"
+
+#, fuzzy
+#~ msgid "Band 3 Bypass"
+#~ msgstr "Premostiť"
+
+#, fuzzy
+#~ msgid "Band 3 Solo"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 3 Detection"
+#~ msgstr "Redukcia zosilnenia"
+
+#, fuzzy
+#~ msgid "Band 3 Attack"
+#~ msgstr "Nábeh"
+
+#, fuzzy
+#~ msgid "Band 3 Release"
+#~ msgstr "Uvoľnenie"
+
+#, fuzzy
+#~ msgid "Band 3 Threshold"
+#~ msgstr "Prah"
+
+#, fuzzy
+#~ msgid "Band 3 Ratio"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 3 Knee"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 3 Makeup"
+#~ msgstr "Pozdvihnutie"
+
+#, fuzzy
+#~ msgid "Band 3 Max Reduction"
+#~ msgstr "Redukcia zosilnenia"
+
+#~ msgid "High Band"
+#~ msgstr "Vysoké pásmo"
+
+#, fuzzy
+#~ msgid "Band 4 Bypass"
+#~ msgstr "Premostiť"
+
+#, fuzzy
+#~ msgid "Band 4 Solo"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 4 Detection"
+#~ msgstr "Redukcia zosilnenia"
+
+#, fuzzy
+#~ msgid "Band 4 Attack"
+#~ msgstr "Nábeh"
+
+#, fuzzy
+#~ msgid "Band 4 Release"
+#~ msgstr "Uvoľnenie"
+
+#, fuzzy
+#~ msgid "Band 4 Threshold"
+#~ msgstr "Prah"
+
+#, fuzzy
+#~ msgid "Band 4 Ratio"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 4 Knee"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Band 4 Makeup"
+#~ msgstr "Pozdvihnutie"
+
+#, fuzzy
+#~ msgid "Band 4 Max Reduction"
+#~ msgstr "Redukcia zosilnenia"
+
+#, fuzzy
+#~ msgid "Wet Amount"
+#~ msgstr "Množstvo"
+
+#, fuzzy
+#~ msgid "Dry Amount"
+#~ msgstr "Množstvo"
+
+#~ msgid ""
+#~ "EasyEffects is an advanced audio manipulation tool. It includes an "
+#~ "equalizer, limiter, compressor and a reverberation tool, just to mention "
+#~ "a few. To complement this there is also a built in spectrum analyzer."
+#~ msgstr ""
+#~ "EasyEffects je pokročilý nástroj pre úpravu zvuku. Obsahuje ekvalizér, "
+#~ "obmedzovač, kompresor, nástroj ozveny a množstvo ďalších efektov. Pre "
+#~ "doplnenie je napríklad zabudovaný aj analyzátor spektra."
+
+#~ msgid ""
+#~ "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+#~ "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+#~ msgstr ""
+#~ "EasyEffects je následovník PulseEffects. EasyEffects podporuje len "
+#~ "zvukový server PipeWire. Použivatelia PulseAudio by mali používať "
+#~ "PulseEffects."
+
+#~ msgid ""
+#~ "Because EasyEffects uses the default PipeWire sound server it will work "
+#~ "with most, if not all, applications you use. All supported applications "
+#~ "are presented in the main window, where each can be enabled individually."
+#~ msgstr ""
+#~ "Pretože EasyEffects štandardne používa zvukový server PulseWire, funguje "
+#~ "s väčšinou (ak nie so všetkými) aplikácií. Všetky podprované programy sú "
+#~ "zobrazené v hlavnom okne, kde je ich možné individuálne povoliť."
+
+#~ msgid ""
+#~ "Besides manipulating sound output, EasyEffects is able to apply effects "
+#~ "to an input device, such as a microphone. This is, for example, useful in "
+#~ "audio recording, but it also works well during voice conversations."
+#~ msgstr ""
+#~ "Popri práci s úpravou výstupného zvuku, EasyEffects je možné použiť aj na "
+#~ "úpravu vstupných zvukov z mikrofónu. To môžete využiť napríklad pri "
+#~ "nahrávaní, ale funguje to dobre aj pri audiohovoroch."
+
+#~ msgid ""
+#~ "When EasyEffects is launched it will conveniently remember the "
+#~ "configuration used in the last session. It is also possible to save all "
+#~ "the current settings as profiles."
+#~ msgstr ""
+#~ "Keď je EasyEffects spustený, zapamätá si posledné používané nastavenia. "
+#~ "Taktiež je možné uložiť všetky aktuálne nastavenia ako profily."
+
+#~ msgid "The main page showing two audio output apps"
+#~ msgstr "Hlavná stránka ukazujújca dve výstupové aplikácie."
+
+#, fuzzy
+#~ msgid "and #1427"
+#~ msgstr "Pásma"
+
+#, fuzzy
+#~ msgid "Many translation updates"
+#~ msgstr "Aktualizované preklady"
+
+#~ msgid "we do not waste CPU power processing silence."
+#~ msgstr "neplýtvame výkonom procesora počas ticha."
+
+#~ msgid "mean."
+#~ msgstr "geometrický priemer."
+
+#~ msgid "This release adds the following feature:"
+#~ msgstr "Toto vydanie pridáva následujúcu vlastnosť:"
+
+#~ msgid "Average"
+#~ msgstr "Priemerná"
+
+#~ msgid "Failed"
+#~ msgstr "Zlyhalo"
+
+#, fuzzy
+#~ msgid "Use Default"
+#~ msgstr "Použiť predvolený"
+
+#, fuzzy
+#~ msgid "Remove this plugin"
+#~ msgstr "Odstrániť predvoľbu"
+
+#~ msgid "Import Presets"
+#~ msgstr "Načítať predvoľbu"
+
+#~ msgid "Start Service at Login"
+#~ msgstr "Spustiť službu pri prihlásení"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Aktívny model"
+
+#~ msgid "Add to Blocklist"
+#~ msgstr "Pridať na zoznam blokovaných"
+
+#~ msgid "Blocklist"
+#~ msgstr "Zoznam blokovaných"
+
+#, fuzzy
+#~ msgid "Microphone"
+#~ msgstr "Kalibrovať mikrofón"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Povolené"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Povolené"
+
+#~ msgid "Format"
+#~ msgstr "Formát"
+
+#~ msgid "Latency"
+#~ msgstr "Odozva"
+
+#~ msgid "idle"
+#~ msgstr "nečinné"
+
+#~ msgid "running"
+#~ msgstr "beží"
+
+#~ msgid "suspended"
+#~ msgstr "pozastavené"
+
+#~ msgid "creating"
+#~ msgstr "vytváram"
+
+#~ msgid "error"
+#~ msgstr "chyba"
+
+#~ msgid "unknown"
+#~ msgstr "neznáme"
+
+#~ msgid "Faster"
+#~ msgstr "Rýchlo"
+
+#~ msgid "Preserve Formant"
+#~ msgstr "Zachovať zložku rozhodujúcu o farbe zvuku"
+
+#~ msgid "Cmoy"
+#~ msgstr "Slúchadlový zosilňovač (CMoy)"
+
+#~ msgid "Jmeier"
+#~ msgstr "Jmeier"
+
+#~ msgid "RLC (BT)"
+#~ msgstr "RLC (BT)"
+
+#~ msgid "RLC (MT)"
+#~ msgstr "RLC (MT)"
+
+#~ msgid "BWC (BT)"
+#~ msgstr "BWC (BT)"
+
+#~ msgid "BWC (MT)"
+#~ msgstr "BWC (MT)"
+
+#~ msgid "LRX (BT)"
+#~ msgstr "LRX (BT)"
+
+#~ msgid "LRX (MT)"
+#~ msgstr "LRX (MT)"
+
+#~ msgid "APO (DR)"
+#~ msgstr "APO (DR)"
+
+#~ msgid "LR4"
+#~ msgstr "LR4"
+
+#~ msgid "LR8"
+#~ msgstr "LR8"
+
+#, fuzzy
+#~ msgid "Output Channel"
+#~ msgstr "Výstupný Zisk"
+
+#, fuzzy
+#~ msgid "Channel"
+#~ msgstr "Kanály"
+
+#, fuzzy
+#~ msgid "Output Effects"
+#~ msgstr "Výstupné efekty"
+
+#~ msgid "Settings"
+#~ msgstr "Nastavenia"
+
+#, fuzzy
+#~ msgid "Settings Menu"
+#~ msgstr "Nastavenia"
+
+#, fuzzy
+#~ msgid "Documentation"
+#~ msgstr "Trvanie"
+
+#, fuzzy
+#~ msgid "Enable Test Signal"
+#~ msgstr "Skúšobné signály"
+
+#, fuzzy
+#~ msgid "Signal"
+#~ msgstr "Skúšobné signály"
+
+#~ msgid "Show Spectrum"
+#~ msgstr "Zobraziť spektrum"
+
+#~ msgid "Border"
+#~ msgstr "Okraj"
+
+#~ msgid "Spectrum Type"
+#~ msgstr "Typ spektra"
+
+#~ msgid "Spectrum Color"
+#~ msgstr "Farba spektra"
+
+#, fuzzy
+#~ msgid "Remove Model"
+#~ msgstr "Aktívny model"
+
+#~ msgid "Maximum Gain Reduction"
+#~ msgstr "Najvyššia redukcia zisku"
+
+#, fuzzy
+#~ msgid "Wet"
+#~ msgstr "Váhy"
+
+#~ msgid "S/C Level"
+#~ msgstr "S/C Úroveň"
+
+#~ msgid "Short Term"
+#~ msgstr "Krátkodobá"
+
+#~ msgid "Set the volume and turn on/off effects"
+#~ msgstr "Nastaviť hlasitosť a zapnúť/vypnúť efekty"
+
+#~ msgid "Includes an equalizer with built-in presets"
+#~ msgstr "Zahŕňa ekvalizér s prednastavenými profilmi"
+
+#~ msgid "Input Limiter"
+#~ msgstr "Obmedzovač na vstupe"
+
+#~ msgid "Calibration"
+#~ msgstr "Kalibrácia"
+
+#~ msgid "Limit"
+#~ msgstr "Obmedzenie"
+
+#~ msgid "ASC"
+#~ msgstr "ASC"
+
+#~ msgid "ISO226-2003"
+#~ msgstr "ISO226-2003"
+
+#~ msgid "Fletcher-Munson"
+#~ msgstr "Fletcher-Munson"
+
+#~ msgid "Robinson-Dadson"
+#~ msgstr "Robinson-Dadson"
+
+#~ msgid "Audio Effects for PulseAudio Applications"
+#~ msgstr "Zvukové efekty pre aplikácie využívajúce PulseAudio"
+
+#~ msgid "Audio effects for PulseAudio applications"
+#~ msgstr "Zvukové efekty pre aplikácie PulseAudio"
+
+#~ msgid "Calibration Microphone"
+#~ msgstr "Kalibrovať mikrofón"
+
+#~ msgid "Based on"
+#~ msgstr "Na základe"
+
+#~ msgid "Detect Silence"
+#~ msgstr "Detekcia ticha"
+
+#~ msgid "Provided by"
+#~ msgstr "Poskytuje"
+
+#~ msgid "Reconnect the microphone to apply new changes made to the Blocklist"
+#~ msgstr ""
+#~ "Znovu pripojiť mikrofón pre použitie zmien vykonaných v zozname "
+#~ "blokovaných"
+
+#~ msgid "Restart the player to apply new changes made to the Blocklist"
+#~ msgstr "Reštartovať prehrávač, aby sa uplatnili zmeny v zozname blokovaných"
+
+#~ msgid "Sine"
+#~ msgstr "Sínus"
+
+#~ msgid "Square"
+#~ msgstr "Štvorec"
+
+#~ msgid "Saw"
+#~ msgstr "Píla"
+
+#~ msgid "Triangle"
+#~ msgstr "Trojuholník"
+
+#~ msgid "Pink Noise"
+#~ msgstr "Ružový Šum"
+
+#~ msgid "Ticks"
+#~ msgstr "Tiky"
+
+#~ msgid "Gaussian Noise"
+#~ msgstr "Gaussový šum"
+
+#~ msgid "Blue Noise"
+#~ msgstr "Modrý šum"
+
+#~ msgid "Violet Noise"
+#~ msgstr "Fialový Šum"
+
+#~ msgid "Volume"
+#~ msgstr "Hlasitosť"
+
+#~ msgid "Measure Noise"
+#~ msgstr "Merať šum"
+
+#~ msgid "Subtract Noise"
+#~ msgstr "Odčítať šum"
+
+#~ msgid "Low-pass Frequency"
+#~ msgstr "Frekvencia nízkej priepuste"
+
+#~ msgid "Advanced"
+#~ msgstr "Pokročilé"
+
+#~ msgid "Import Impulse Response File"
+#~ msgstr "Importovať súbor s odpoveďou impulzu"
+
+#~ msgid "Select the impulse Response File"
+#~ msgstr "Vyberte súbor s odpoveďou impulzu"
+
+#~ msgid "Aggressive Mode"
+#~ msgstr "Agresívny režim"
+
+#~ msgid "Before"
+#~ msgstr "Pred"
+
+#~ msgid "After"
+#~ msgstr "Po"
+
+#~ msgid "Loudness Range"
+#~ msgstr "Dynamický Rozsah"
+
+#~ msgid "Apply APO Preset"
+#~ msgstr "Použiť APO predvoľby"
+
+#~ msgid "Muted"
+#~ msgstr "Stíšený"
+
+#~ msgid "Distant Headphones"
+#~ msgstr "Vzdialené slúchadlá"
+
+#~ msgid "Niceness"
+#~ msgstr "Hodnota nice"
+
+#~ msgid "Priority Type"
+#~ msgstr "Typ priority"
+
+#~ msgid "Priority"
+#~ msgstr "Priorita"
+
+#~ msgid "About"
+#~ msgstr "O programe"
+
+#~ msgid "Loudness Compensator"
+#~ msgstr "Kompenzácia hlasitosti"
+
+#~ msgid ""
+#~ "Automatically apply this preset whenever the currently used device is "
+#~ "plugged in the system"
+#~ msgstr ""
+#~ "Automaticky použiť toto nastavenie, ak je aktuálne používané zariadenie "
+#~ "pripojené"
+
+#~ msgid "Protocol"
+#~ msgstr "Protokol"
+
+#~ msgid "Default Sample Format"
+#~ msgstr "Predvolený formát vzorkovania"
+
+#~ msgid "File"
+#~ msgstr "Súbor"
+
+#~ msgid "Configuration"
+#~ msgstr "Konfigurácia"
+
+#~ msgid "Resamplers"
+#~ msgstr "Prevzorkovače"
+
+#~ msgid "Pipeline Input"
+#~ msgstr "Pipeline vstup"
+
+#~ msgid "Buffer"
+#~ msgstr "Vyrovnávacia pamäť"
+
+#~ msgid "Pipeline Output"
+#~ msgstr "Pipeline výstup"
+
+#~ msgid "Block Size"
+#~ msgstr "Veľkosť bloku"
+
+#~ msgid "Use Custom Color"
+#~ msgstr "Použiť vlastnú Farbu"
+
+#~ msgid "Use Gradient"
+#~ msgstr "Použiť tieňovanie"
+
+#~ msgid "Sampling"
+#~ msgstr "Vzorkovanie"
+
+#~ msgid "Maximum Frequency"
+#~ msgstr "Maximálna frekvencia"
+
+#~ msgid "Gradient Color"
+#~ msgstr "Farba prechodu"
+
+#~ msgid "WebRTC"
+#~ msgstr "WebRTC"
+
+#~ msgid "Extended Filter"
+#~ msgstr "Rozšírený filter"
+
+#~ msgid "Low"
+#~ msgstr "Nízky"
+
+#~ msgid "Moderate"
+#~ msgstr "Stredný"
+
+#~ msgid "High"
+#~ msgstr "Vysoký"
+
+#~ msgid "Delay Agnostic"
+#~ msgstr "Absolútne oneskorenie"
+
+#~ msgid "Very High"
+#~ msgstr "Veľmi vysoká"
+
+#~ msgid "Adaptive Digital"
+#~ msgstr "Prispôsobivý digitálny"
+
+#~ msgid "Fixed Digital"
+#~ msgstr "Pevný digitálny"
+
+#~ msgid "Detection Likelihood"
+#~ msgstr "Pravdepodobnosť zistenia"
+
+#~ msgid "Very Low"
+#~ msgstr "Veľmi nízka"
+
+#~ msgid "Resampler"
+#~ msgstr "Prevzorkovač"
+
+#~ msgid "paused"
+#~ msgstr "pozastavené"
+
+#~ msgid "playing"
+#~ msgstr "hrá"
+
+#~ msgid "Pulseaudio"
+#~ msgstr "Pulseaudio"
+
+#~ msgid "Import APO Presets"
+#~ msgstr "Načítať APO predvoľbu"
+
+#, fuzzy
+#~ msgid "Gain Detection"
+#~ msgstr "Redukcia zosilnenia"
+
+#~ msgid "Exponent"
+#~ msgstr "Exponent"

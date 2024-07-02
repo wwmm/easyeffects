@@ -1,0 +1,2341 @@
+# Romanian translation for EasyEffects
+# Copyright (C) 2021
+# This file is distributed under the same license as the easyeffects package.
+# Andrei Dobrete <andy3153@protonmail.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2022-08-17 04:16+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
+"main/ro/>\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "Input"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "Nume"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+#, fuzzy
+msgid "Value"
+msgstr "Podea"
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "Presetări"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+msgid "Quit"
+msgstr ""
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr "Aplică"
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "Presetări"
+
+#: src/contents/ui/main.qml:179
+msgid "Preferences"
+msgstr ""
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "Output"
+
+#: src/contents/ui/PipeWireTab.qml:9
+#, fuzzy
+msgid "PipeWire"
+msgstr "PipeWire"
+
+#: src/main.cpp:55
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "Efecte audio pentru aplicații PulseAudio"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Pantă"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+#, fuzzy
+msgid "Width of the main window."
+msgstr "Ascunde Fereastra."
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+#, fuzzy
+msgid "Height of the main window."
+msgstr "Ascunde Fereastra."
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+#, fuzzy
+msgid "Last used preset."
+msgstr "Creează Presetare"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "Egalizator, compresor și Alte Efecte Audio"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+#, fuzzy
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Efecte Audio pentru Aplicații PulseAudio"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "limitator;compresor;reverberație;egalizator;autovolum"
+
+#, fuzzy
+#~ msgid "Enable"
+#~ msgstr "Activează"
+
+#, fuzzy
+#~ msgid "Mute Application"
+#~ msgstr "Aplicații"
+
+#, fuzzy
+#~ msgid "Application Volume"
+#~ msgstr "Aplicații"
+
+#, fuzzy
+#~ msgid "_Help"
+#~ msgstr "Ajutor"
+
+#, fuzzy
+#~ msgid "_Reset Settings"
+#~ msgstr "Setări"
+
+#, fuzzy
+#~ msgid "Presets Menu"
+#~ msgstr "Presetări"
+
+#~ msgid "Global Bypass"
+#~ msgstr "Evitare Globală"
+
+#, fuzzy
+#~ msgid "Easy Effects Window"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "Applications List"
+#~ msgstr "Aplicații"
+
+#, fuzzy
+#~ msgid "Empty List"
+#~ msgstr "Pereți Goi"
+
+#, fuzzy
+#~ msgid "No Audio Application Available"
+#~ msgstr "Aplicații"
+
+#, fuzzy
+#~ msgid "Controls"
+#~ msgstr "Controlor de Gain"
+
+#~ msgid "Target"
+#~ msgstr "Țintă"
+
+#~ msgid "Silence"
+#~ msgstr "Liniște"
+
+#, fuzzy
+#~ msgid "Maximum History"
+#~ msgstr "Maxim"
+
+#~ msgid "Momentary"
+#~ msgstr "Momentar"
+
+#, fuzzy
+#~ msgid "Short-Term"
+#~ msgstr "Pe Termen Scurt"
+
+#~ msgid "Integrated"
+#~ msgstr "Integrat"
+
+#, fuzzy
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "Utilizarea Mijlocului Geometric"
+
+#, fuzzy
+#~ msgid "Geometric Mean (MS)"
+#~ msgstr "Utilizarea Mijlocului Geometric"
+
+#, fuzzy
+#~ msgid "Geometric Mean (MI)"
+#~ msgstr "Utilizarea Mijlocului Geometric"
+
+#, fuzzy
+#~ msgid "Geometric Mean (SI)"
+#~ msgstr "Utilizarea Mijlocului Geometric"
+
+#, fuzzy
+#~ msgid "History"
+#~ msgstr "Resetare Istoric"
+
+#~ msgid "Reset"
+#~ msgstr "Resetare"
+
+#~ msgid "Loudness"
+#~ msgstr "Intensitate"
+
+#~ msgid "Relative"
+#~ msgstr "Relativ"
+
+#~ msgid "Range"
+#~ msgstr "Gamă"
+
+#, fuzzy
+#~ msgid "Output Gain"
+#~ msgstr "Output"
+
+#, fuzzy
+#~ msgid "Plugin Input Gain"
+#~ msgstr "Input Pipeline"
+
+#, fuzzy
+#~ msgid "Plugin Output Gain"
+#~ msgstr "Output Pipeline"
+
+#, fuzzy
+#~ msgid "Remove this autoload preset"
+#~ msgstr "Șterge fișierul de presetări"
+
+#~ msgid "Listen"
+#~ msgstr "Ascultă"
+
+#~ msgid "Blend Harmonics"
+#~ msgstr "Blend Harmonics"
+
+#~ msgid "3rd"
+#~ msgstr "Al treilea"
+
+#~ msgid "2nd"
+#~ msgstr "Al doilea"
+
+#~ msgid "Amount"
+#~ msgstr "Cantitate"
+
+#~ msgid "Harmonics"
+#~ msgstr "Harmonics"
+
+#~ msgid "Scope"
+#~ msgstr "Scop"
+
+#~ msgid "Floor"
+#~ msgstr "Podea"
+
+#, fuzzy
+#~ msgid "Application Name"
+#~ msgstr "Aplicații"
+
+#, fuzzy
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "Arată programele din Lista de Blocare în Fila Principală"
+
+#, fuzzy
+#~ msgid "Excluded Applications List"
+#~ msgstr "Arată programele din Lista de Blocare în Fila Principală"
+
+#, fuzzy
+#~ msgid "Show Excluded Applications"
+#~ msgstr "Arată programele din Lista de Blocare în Fila Principală"
+
+#, fuzzy
+#~ msgid "Show Native Window"
+#~ msgstr "Ascunde Fereastra."
+
+#~ msgid "Compressor"
+#~ msgstr "Compresor"
+
+#~ msgid "Mode"
+#~ msgstr "Mod"
+
+#~ msgid "Downward"
+#~ msgstr "În Jos"
+
+#~ msgid "Upward"
+#~ msgstr "În Sus"
+
+#~ msgid "Compression Mode"
+#~ msgstr "Mod de Compresie"
+
+#~ msgid "Boost Threshold"
+#~ msgstr "Prag de Boost"
+
+#, fuzzy
+#~ msgid "Boost Amount"
+#~ msgstr "Cantitate"
+
+#~ msgid "Attack"
+#~ msgstr "Atac"
+
+#, fuzzy
+#~ msgid "Time"
+#~ msgstr "În Timp Real"
+
+#~ msgid "Threshold"
+#~ msgstr "Prag"
+
+#, fuzzy
+#~ msgid "Attack Time"
+#~ msgstr "Atac"
+
+#, fuzzy
+#~ msgid "Attack Threshold"
+#~ msgstr "Prag"
+
+#~ msgid "Release"
+#~ msgstr "Eliberare"
+
+#, fuzzy
+#~ msgid "Release Time"
+#~ msgstr "În Timp Real"
+
+#, fuzzy
+#~ msgid "Release Threshold"
+#~ msgstr "Prag Relativ de Eliberare"
+
+#~ msgid "Ratio"
+#~ msgstr "Raport"
+
+#~ msgid "Knee"
+#~ msgstr "Genunchi"
+
+#~ msgid "Makeup"
+#~ msgstr "Compoziție"
+
+#, fuzzy
+#~ msgid "Dry Level"
+#~ msgstr "F2 Nivel"
+
+#, fuzzy
+#~ msgid "Wet Level"
+#~ msgstr "Nivelul Țintă"
+
+#~ msgid "Sidechain"
+#~ msgstr "Lanț Lateral"
+
+#, fuzzy
+#~ msgid "Stereo Split Mode"
+#~ msgstr "Bază Stereo"
+
+#~ msgid "Source"
+#~ msgstr "Sursă"
+
+#~ msgid "Middle"
+#~ msgstr "Mijloc"
+
+#~ msgid "Side"
+#~ msgstr "Parte"
+
+#~ msgid "Left"
+#~ msgstr "Stânga"
+
+#~ msgid "Right"
+#~ msgstr "Dreapta"
+
+#, fuzzy
+#~ msgid "Min"
+#~ msgstr "Maxim"
+
+#, fuzzy
+#~ msgid "Max"
+#~ msgstr "Maxim"
+
+#, fuzzy
+#~ msgid "Sidechain Source"
+#~ msgstr "Lanț Lateral"
+
+#, fuzzy
+#~ msgid "Left/Right"
+#~ msgstr "Întârziere L/R"
+
+#, fuzzy
+#~ msgid "Right/Left"
+#~ msgstr "Dreapta"
+
+#, fuzzy
+#~ msgid "Mid/Side"
+#~ msgstr "Parte"
+
+#, fuzzy
+#~ msgid "Side/Mid"
+#~ msgstr "Parte"
+
+#, fuzzy
+#~ msgid "Stereo Split Source"
+#~ msgstr "Sursa Prestabilită"
+
+#~ msgid "Peak"
+#~ msgstr "Vârf"
+
+#~ msgid "RMS"
+#~ msgstr "RMS"
+
+#, fuzzy
+#~ msgid "Low-Pass Filter"
+#~ msgstr "Mod Filtru Low-pass"
+
+#, fuzzy
+#~ msgid "Sidechain Mode"
+#~ msgstr "Lanț Lateral"
+
+#, fuzzy
+#~ msgid "Listen Sidechain"
+#~ msgstr "Lanț Lateral"
+
+#~ msgid "Type"
+#~ msgstr "Scrie"
+
+#, fuzzy
+#~ msgid "Feed-forward"
+#~ msgstr "Feed-forward"
+
+#~ msgid "Feed-back"
+#~ msgstr "Feed-back"
+
+#, fuzzy
+#~ msgid "Sidechain Type"
+#~ msgstr "Lanț Lateral"
+
+#, fuzzy
+#~ msgid "Input Device"
+#~ msgstr "Nivel Input"
+
+#, fuzzy
+#~ msgid "PreAmplification"
+#~ msgstr "Preamplificare"
+
+#~ msgid "Reactivity"
+#~ msgstr "Reactivitate"
+
+#~ msgid "Lookahead"
+#~ msgstr "Privire Înainte"
+
+#, fuzzy
+#~ msgid "Sidechain Filters"
+#~ msgstr "Lanț Lateral"
+
+#, fuzzy
+#~ msgid "High-Pass"
+#~ msgstr "High Pass"
+
+#~ msgid "Frequency"
+#~ msgstr "Frecvență"
+
+#~ msgid "Off"
+#~ msgstr "Oprit"
+
+#~ msgid "12 dB/oct"
+#~ msgstr "12 dB/oct"
+
+#~ msgid "24 dB/oct"
+#~ msgstr "24 dB/oct"
+
+#~ msgid "36 dB/oct"
+#~ msgstr "36 dB/oct"
+
+#, fuzzy
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "Mod Filtru High-pass"
+
+#, fuzzy
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "Frecvență High-pass"
+
+#~ msgid "Low-Pass"
+#~ msgstr "Low-Pass"
+
+#, fuzzy
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "Mod Filtru Low-pass"
+
+#~ msgid "Gain"
+#~ msgstr "Gain"
+
+#~ msgid "Curve"
+#~ msgstr "Curbă"
+
+#~ msgid "L"
+#~ msgstr "L"
+
+#, fuzzy
+#~ msgid "Left Channel"
+#~ msgstr "Canale"
+
+#~ msgid "R"
+#~ msgstr "R"
+
+#, fuzzy
+#~ msgid "Right Channel"
+#~ msgstr "Despică Canalele"
+
+#, fuzzy
+#~ msgid "Impulses"
+#~ msgstr "Răspuns Impuls"
+
+#~ msgid "Stereo Width"
+#~ msgstr "Lățime Stereo"
+
+#~ msgid "Spectrum"
+#~ msgstr "Spectru "
+
+#, fuzzy
+#~ msgid "Autogain"
+#~ msgstr "Auto Gain"
+
+#~ msgid "Rate"
+#~ msgstr "Rată"
+
+#~ msgid "Samples"
+#~ msgstr "Probe"
+
+#~ msgid "Duration"
+#~ msgstr "Durație"
+
+#, fuzzy
+#~ msgid "Combine Impulse Responses"
+#~ msgstr "Răspuns Impuls"
+
+#~ msgid "Import Impulse"
+#~ msgstr "Importă Impuls"
+
+#, fuzzy
+#~ msgid "Search Impulse File"
+#~ msgstr "Importă Fișier Impulse"
+
+#, fuzzy
+#~ msgid "Impulse Files List"
+#~ msgstr "Importă Fișier Impulse"
+
+#~ msgid "Default"
+#~ msgstr "Prestablilt"
+
+#~ msgid "Cutoff"
+#~ msgstr "Cutoff"
+
+#~ msgid "Feed"
+#~ msgstr "Feed"
+
+#~ msgid "Bypass"
+#~ msgstr "Evitare"
+
+#~ msgid "Mute"
+#~ msgstr "Mut"
+
+#, fuzzy
+#~ msgid "Attenuation Limit"
+#~ msgstr "Atenuare"
+
+#, fuzzy
+#~ msgid "Post Filter Beta"
+#~ msgstr "Filtru"
+
+#~ msgid "Detection"
+#~ msgstr "Detectare"
+
+#~ msgid "Wide"
+#~ msgstr "Lat"
+
+#~ msgid "Split"
+#~ msgstr "Despică"
+
+#~ msgid "F1 Split"
+#~ msgstr "F1 Despică"
+
+#, fuzzy
+#~ msgid "Frequency 1 Split"
+#~ msgstr "Frecvență"
+
+#~ msgid "F2 Peak"
+#~ msgstr "F2 Vârf"
+
+#, fuzzy
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "Frecvență"
+
+#~ msgid "F1 Gain"
+#~ msgstr "F1 Gain"
+
+#, fuzzy
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "Frecvență"
+
+#~ msgid "F2 Level"
+#~ msgstr "F2 Nivel"
+
+#, fuzzy
+#~ msgid "Frequency 2 Level"
+#~ msgstr "Frecvență"
+
+#~ msgid "F2 Peak Q"
+#~ msgstr "F2 Vârf Q"
+
+#, fuzzy
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "Frecvență"
+
+#~ msgid "Laxity"
+#~ msgstr "Laxitate"
+
+#~ msgid "Detected"
+#~ msgstr "Detectat"
+
+#, fuzzy
+#~ msgid "Reduction"
+#~ msgstr "Reducere"
+
+#~ msgid "Delay"
+#~ msgstr "Întârziere"
+
+#~ msgid "Invert Phase"
+#~ msgstr "Inversează Faza"
+
+#, fuzzy
+#~ msgid "Filter Length"
+#~ msgstr "Filtru"
+
+#, fuzzy
+#~ msgid "Residual Echo Suppression"
+#~ msgstr "Supresor de Zgomot"
+
+#, fuzzy
+#~ msgid "Near End Echo Suppression"
+#~ msgstr "Supresor de Zgomot"
+
+#~ msgid "Bands"
+#~ msgstr "Benzi"
+
+#~ msgid "Balance"
+#~ msgstr "Balans"
+
+#, fuzzy
+#~ msgid "Pitch Left"
+#~ msgstr "Lanț Lateral"
+
+#, fuzzy
+#~ msgid "Pitch Right"
+#~ msgstr "Lanț Lateral"
+
+#~ msgid "Split Channels"
+#~ msgstr "Despică Canalele"
+
+#~ msgid "Flat Response"
+#~ msgstr "Răspuns Plat"
+
+#~ msgid "Calculate Frequencies"
+#~ msgstr "Calculează Frecvențele"
+
+#, fuzzy
+#~ msgid "Sort Bands"
+#~ msgstr "Benzi"
+
+#, fuzzy
+#~ msgid "Import Preset"
+#~ msgstr "Importă Presetări"
+
+#, fuzzy
+#~ msgid "Export Preset"
+#~ msgstr "Importă Presetări"
+
+#~ msgid "Slope"
+#~ msgstr "Pantă"
+
+#~ msgid "Solo"
+#~ msgstr "Solo"
+
+#~ msgid "Quality"
+#~ msgstr "Calitate"
+
+#~ msgid "Width"
+#~ msgstr "Lățime"
+
+#, fuzzy
+#~ msgid "Ceil"
+#~ msgstr "Tavan"
+
+#, fuzzy
+#~ msgid "Expander Mode"
+#~ msgstr "Mod"
+
+#, fuzzy
+#~ msgid "Internal"
+#~ msgstr "Integrat"
+
+#, fuzzy
+#~ msgid "Description"
+#~ msgstr "Detectare"
+
+#, fuzzy
+#~ msgid "Remove this model file"
+#~ msgstr "Șterge fișierul de presetări"
+
+#, fuzzy
+#~ msgid "Low-Shelf"
+#~ msgstr "Low Shelf"
+
+#, fuzzy
+#~ msgid "High-Shelf"
+#~ msgstr "High Shelf"
+
+#~ msgid "Bell"
+#~ msgstr "Clopot"
+
+#, fuzzy
+#~ msgid "Band-Pass"
+#~ msgstr "Evitare"
+
+#~ msgid "Notch"
+#~ msgstr "Crestătură"
+
+#~ msgid "Resonance"
+#~ msgstr "Rezonanță"
+
+#, fuzzy
+#~ msgid "Ladder-Pass"
+#~ msgstr "Low-Pass"
+
+#, fuzzy
+#~ msgid "Ladder-Rejection"
+#~ msgstr "Reducere Gain"
+
+#, fuzzy
+#~ msgid "All-Pass"
+#~ msgstr "All Pass"
+
+#, fuzzy
+#~ msgid "Equalizer Mode"
+#~ msgstr "Egalizator"
+
+#~ msgid "Filter"
+#~ msgstr "Filtru"
+
+#~ msgid "Gate"
+#~ msgstr "Gate"
+
+#, fuzzy
+#~ msgid "Release Zone Start"
+#~ msgstr "În Timp Real"
+
+#, fuzzy
+#~ msgid "True Peak"
+#~ msgstr "Frecvență"
+
+#~ msgid "Reset History"
+#~ msgstr "Resetare Istoric"
+
+#~ msgid "Oversampling"
+#~ msgstr "Supraprelevare"
+
+#, fuzzy
+#~ msgid "Herm Wide"
+#~ msgstr "Lat"
+
+#, fuzzy
+#~ msgid "Exp Wide"
+#~ msgstr "Lat"
+
+#, fuzzy
+#~ msgid "Line Thin"
+#~ msgstr "Lățime Linie"
+
+#, fuzzy
+#~ msgid "Line Wide"
+#~ msgstr "Lățime Linie"
+
+#, fuzzy
+#~ msgid "Line Tail"
+#~ msgstr "Masă Sinusoidală"
+
+#~ msgid "None"
+#~ msgstr "Niciunul"
+
+#, fuzzy
+#~ msgid "Sidechain PreAmplification"
+#~ msgstr "Preamplificare"
+
+#~ msgid "Stereo Link"
+#~ msgstr "Link Stereo"
+
+#, fuzzy
+#~ msgid "External Sidechain"
+#~ msgstr "Lanț Lateral"
+
+#, fuzzy
+#~ msgid "Auto Leveling"
+#~ msgstr "Nivelare Automată"
+
+#, fuzzy
+#~ msgid "Auto Leveling Attack"
+#~ msgstr "Nivelare Automată"
+
+#, fuzzy
+#~ msgid "Auto Leveling Release"
+#~ msgstr "Nivelare Automată"
+
+#, fuzzy
+#~ msgid "Auto Leveling Knee"
+#~ msgstr "Nivelare Automată"
+
+#, fuzzy
+#~ msgid "Gain Left"
+#~ msgstr "Gain"
+
+#, fuzzy
+#~ msgid "Gain Right"
+#~ msgstr "Dreapta"
+
+#, fuzzy
+#~ msgid "Sidechain Left"
+#~ msgstr "Lanț Lateral"
+
+#, fuzzy
+#~ msgid "Sidechain Right"
+#~ msgstr "Lanț Lateral"
+
+#~ msgid "Standard"
+#~ msgstr "Standard"
+
+#~ msgid "Flat"
+#~ msgstr "Plat"
+
+#~ msgid "FFT Size"
+#~ msgstr "Dimensiune FFT"
+
+#, fuzzy
+#~ msgid "Output Volume"
+#~ msgstr "Output"
+
+#, fuzzy
+#~ msgid "Clipping"
+#~ msgstr "Mapping-ul Canalelor"
+
+#, fuzzy
+#~ msgid "Sidechain Boost"
+#~ msgstr "Lanț Lateral"
+
+#, fuzzy
+#~ msgid "Operating Mode"
+#~ msgstr "Importă Model"
+
+#, fuzzy
+#~ msgid "Modern"
+#~ msgstr "Mod"
+
+#, fuzzy
+#~ msgid "Linear Phase"
+#~ msgstr "Inversează Faza"
+
+#, fuzzy
+#~ msgid "Bands List"
+#~ msgstr "Benzi"
+
+#, fuzzy
+#~ msgid "Band 1"
+#~ msgstr "Benzi"
+
+#, fuzzy
+#~ msgid "Band 2"
+#~ msgstr "Benzi"
+
+#, fuzzy
+#~ msgid "Band 3"
+#~ msgstr "Benzi"
+
+#, fuzzy
+#~ msgid "Band 4"
+#~ msgstr "Benzi"
+
+#, fuzzy
+#~ msgid "Band 5"
+#~ msgstr "Benzi"
+
+#, fuzzy
+#~ msgid "Band 6"
+#~ msgstr "Benzi"
+
+#, fuzzy
+#~ msgid "Band 7"
+#~ msgstr "Benzi"
+
+#, fuzzy
+#~ msgid "Band 8"
+#~ msgstr "Benzi"
+
+#, fuzzy
+#~ msgid "Band End"
+#~ msgstr "Benzi"
+
+#, fuzzy
+#~ msgid "Band Compression Mode"
+#~ msgstr "Mod de Compresie"
+
+#, fuzzy
+#~ msgid "Band Bypass"
+#~ msgstr "Evitare"
+
+#, fuzzy
+#~ msgid "Stereo Split"
+#~ msgstr "Bază Stereo"
+
+#, fuzzy
+#~ msgid "Low-Cut"
+#~ msgstr "Mod Filtru Low-pass"
+
+#, fuzzy
+#~ msgid "Low-Cut Filter Frequency"
+#~ msgstr "Frecvență Low-pass"
+
+#, fuzzy
+#~ msgid "High-Cut"
+#~ msgstr "Filtru High Pass"
+
+#, fuzzy
+#~ msgid "High-Cut Filter Frequency"
+#~ msgstr "Frecvență High-pass"
+
+#, fuzzy
+#~ msgid "Band Gain"
+#~ msgstr "F1 Gain"
+
+#, fuzzy
+#~ msgid "Band Curve"
+#~ msgstr "Curbă"
+
+#, fuzzy
+#~ msgid "Band Reduction"
+#~ msgstr "Reducere Gain"
+
+#~ msgid "General"
+#~ msgstr "General"
+
+#, fuzzy
+#~ msgid "Use Default Input"
+#~ msgstr "Folosește Prestabilit"
+
+#, fuzzy
+#~ msgid "Custom Input Device"
+#~ msgstr "Nivel Input"
+
+#, fuzzy
+#~ msgid "Use Default Output"
+#~ msgstr "Folosește Prestabilit"
+
+#, fuzzy
+#~ msgid "Server Information"
+#~ msgstr "Reverberație"
+
+#, fuzzy
+#~ msgid "Header Version"
+#~ msgstr "Versiune"
+
+#, fuzzy
+#~ msgid "Library Version"
+#~ msgstr "Versiune"
+
+#, fuzzy
+#~ msgid "Sampling Rate"
+#~ msgstr "Rata de Sample Prestabilită"
+
+#, fuzzy
+#~ msgid "Minimum Quantum"
+#~ msgstr "Frecvență Minimă"
+
+#, fuzzy
+#~ msgid "Maximum Quantum"
+#~ msgstr "Gain-ul Maxim"
+
+#, fuzzy
+#~ msgid "Default Quantum"
+#~ msgstr "Sink-ul Prestabilit"
+
+#, fuzzy
+#~ msgid "Output Devices"
+#~ msgstr "Efecte Output"
+
+#, fuzzy
+#~ msgid "Output Presets"
+#~ msgstr "Presetări pentru Output:"
+
+#, fuzzy
+#~ msgid "Output Autoloading Presets List"
+#~ msgstr "Presetări pentru Output:"
+
+#, fuzzy
+#~ msgid "Input Devices"
+#~ msgstr "Nivel Input"
+
+#, fuzzy
+#~ msgid "Input Presets"
+#~ msgstr "Presetări pentru Input:"
+
+#, fuzzy
+#~ msgid "Input Autoloading Presets List"
+#~ msgstr "Presetări pentru Input:"
+
+#~ msgid "Modules"
+#~ msgstr "Module"
+
+#, fuzzy
+#~ msgid "Modules List"
+#~ msgstr "Module"
+
+#~ msgid "Clients"
+#~ msgstr "Clienți"
+
+#, fuzzy
+#~ msgid "Clients List"
+#~ msgstr "Clienți"
+
+#, fuzzy
+#~ msgid "Test Signal"
+#~ msgstr "Semnale de Testare"
+
+#~ msgid "State"
+#~ msgstr "Stare"
+
+#, fuzzy
+#~ msgid "Enabled"
+#~ msgstr "Activează"
+
+#~ msgid "Channels"
+#~ msgstr "Canale"
+
+#, fuzzy
+#~ msgid "Both Channels"
+#~ msgstr "Canale"
+
+#, fuzzy
+#~ msgid "Sine Wave"
+#~ msgstr "Masă Sinusoidală"
+
+#~ msgid "White Noise"
+#~ msgstr "Zgomot Alb"
+
+#, fuzzy
+#~ msgid "Sequence Length"
+#~ msgstr "Frecvență"
+
+#, fuzzy
+#~ msgid "Seek Window"
+#~ msgstr "Fereastră"
+
+#, fuzzy
+#~ msgid "Overlap Length"
+#~ msgstr "Filtru"
+
+#~ msgid "Pitch"
+#~ msgstr "Pitch"
+
+#~ msgid "Semitones"
+#~ msgstr "Semitonuri"
+
+#, fuzzy
+#~ msgid "Remove this effect"
+#~ msgstr "Șterge fișierul de presetări"
+
+#, fuzzy
+#~ msgid "Add Effect"
+#~ msgstr "Efecte Input"
+
+#, fuzzy
+#~ msgid "Go to the previous effect"
+#~ msgstr "Șterge fișierul de presetări"
+
+#, fuzzy
+#~ msgid "No Effects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "_General"
+#~ msgstr "General"
+
+#, fuzzy
+#~ msgid "Service"
+#~ msgstr "Server"
+
+#, fuzzy
+#~ msgid "Process All Output Streams"
+#~ msgstr "Procesează Toate Output-urile"
+
+#, fuzzy
+#~ msgid "Process All Input Streams"
+#~ msgstr "Procesează Toate Input-urile"
+
+#, fuzzy
+#~ msgid "Inactivity Timeout"
+#~ msgstr "Expirarea Activității"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "Integrat"
+
+#, fuzzy
+#~ msgid "Update Frequency"
+#~ msgstr "Frecvență"
+
+#~ msgid "Use Dark Theme"
+#~ msgstr "Folosește Tema Întunecată"
+
+#, fuzzy
+#~ msgid "Experimental Features"
+#~ msgstr "Experimental"
+
+#, fuzzy
+#~ msgid "Native Plugin Window"
+#~ msgstr "Ascunde Fereastra."
+
+#, fuzzy
+#~ msgid "_Spectrum"
+#~ msgstr "Spectru "
+
+#~ msgid "Bars"
+#~ msgstr "Bări "
+
+#~ msgid "Lines"
+#~ msgstr "Linii"
+
+#~ msgid "Points"
+#~ msgstr "Puncte"
+
+#~ msgid "Height"
+#~ msgstr "Înălțime"
+
+#~ msgid "Line Width"
+#~ msgstr "Lățime Linie"
+
+#~ msgid "Fill"
+#~ msgstr "Umple"
+
+#, fuzzy
+#~ msgid "Color"
+#~ msgstr "Culoare Axă"
+
+#, fuzzy
+#~ msgid "Frequency Range"
+#~ msgstr "Frecvență"
+
+#, fuzzy
+#~ msgid "Minimum"
+#~ msgstr "Maxim"
+
+#~ msgid "Maximum"
+#~ msgstr "Maxim"
+
+#~ msgid "Load"
+#~ msgstr "Încarcă"
+
+#, fuzzy
+#~ msgid "Discard the current settings and load this preset"
+#~ msgstr "Salvează setările curente în acest fișier cu presetări"
+
+#~ msgid "Save current settings to this preset file"
+#~ msgstr "Salvează setările curente în acest fișier cu presetări"
+
+#~ msgid "Remove this preset file"
+#~ msgstr "Șterge fișierul de presetări"
+
+#, fuzzy
+#~ msgid "Try"
+#~ msgstr "Uscat"
+
+#, fuzzy
+#~ msgid "Try this community preset"
+#~ msgstr "Presetări pentru Output:"
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Importă Model"
+
+#, fuzzy
+#~ msgid "New Preset Name"
+#~ msgstr "Presetări pentru Input:"
+
+#, fuzzy
+#~ msgid "Search Local Preset"
+#~ msgstr "Presetări pentru Input:"
+
+#, fuzzy
+#~ msgid "Local Presets List"
+#~ msgstr "Presetări pentru Input:"
+
+#, fuzzy
+#~ msgid "Search Community Preset"
+#~ msgstr "Presetări pentru Output:"
+
+#, fuzzy
+#~ msgid "Community Presets List"
+#~ msgstr "Presetări pentru Output:"
+
+#~ msgid "High Frequency Damping"
+#~ msgstr "Amortizare Frecvențe Înalte"
+
+#~ msgid "Room Size"
+#~ msgstr "Dimensiunea Camerei"
+
+#~ msgid "Small"
+#~ msgstr "Mic"
+
+#~ msgid "Medium"
+#~ msgstr "Mediu"
+
+#~ msgid "Large"
+#~ msgstr "Mare"
+
+#~ msgid "Tunnel"
+#~ msgstr "Tunel"
+
+#~ msgid "Large/smooth"
+#~ msgstr "Mare/neted"
+
+#~ msgid "Experimental"
+#~ msgstr "Experimental"
+
+#~ msgid "Diffusion"
+#~ msgstr "Difuzie"
+
+#~ msgid "Pre Delay"
+#~ msgstr "Pre Întârziere"
+
+#~ msgid "Decay Time"
+#~ msgstr "Timp Decay"
+
+#~ msgid "Bass Cut"
+#~ msgstr "Bass Tăiat"
+
+#~ msgid "Treble Cut"
+#~ msgstr "Treble Tăiat"
+
+#~ msgid "Ambience"
+#~ msgstr "Ambianță"
+
+#~ msgid "Empty Walls"
+#~ msgstr "Pereți Goi"
+
+#~ msgid "Room"
+#~ msgstr "Cameră"
+
+#~ msgid "Large Empty Hall"
+#~ msgstr "Hol Gol Mare"
+
+#~ msgid "Disco"
+#~ msgstr "Disco"
+
+#~ msgid "Large Occupied Hall"
+#~ msgstr "Hol Plin Mare"
+
+#~ msgid "Import Model"
+#~ msgstr "Importă Model"
+
+#, fuzzy
+#~ msgid "Voice Detection"
+#~ msgstr "Detector de Voce"
+
+#, fuzzy
+#~ msgid "Models"
+#~ msgstr "Mod"
+
+#, fuzzy
+#~ msgid "Standard Model"
+#~ msgstr "Model Standard RNNoise"
+
+#, fuzzy
+#~ msgid "RNNoise Models List"
+#~ msgstr "Model Standard RNNoise"
+
+#~ msgid "Active Model"
+#~ msgstr "Model Activ"
+
+#~ msgid "Standard RNNoise Model"
+#~ msgstr "Model Standard RNNoise"
+
+#, fuzzy
+#~ msgid "Close the Window"
+#~ msgstr "Ascunde Fereastra."
+
+#, fuzzy
+#~ msgid "Quit Easy Effects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "Denoise"
+#~ msgstr "Zgomot Roșu"
+
+#, fuzzy
+#~ msgid "Automatic Gain Control"
+#~ msgstr "Control Automatic de Smoothing"
+
+#, fuzzy
+#~ msgid "Dereverberation"
+#~ msgstr "Reverberație"
+
+#, fuzzy
+#~ msgid "Noise Suppression"
+#~ msgstr "Supresor de Zgomot"
+
+#, fuzzy
+#~ msgid "Level"
+#~ msgstr "F2 Nivel"
+
+#, fuzzy
+#~ msgid "Input Balance"
+#~ msgstr "Balans"
+
+#~ msgid "Softclip"
+#~ msgstr "Softclip"
+
+#, fuzzy
+#~ msgid "Softclip Level"
+#~ msgstr "Softclip"
+
+#~ msgid "Stereo Matrix"
+#~ msgstr "Matrice Stereo"
+
+#~ msgid "LR > LR (Stereo Default)"
+#~ msgstr "LR > LR (Prestabilit Stereo)"
+
+#~ msgid "LR > MS (Stereo to Mid-Side)"
+#~ msgstr "LR > MS (Stereo către Mijloc)"
+
+#~ msgid "MS > LR (Mid-Side to Stereo)"
+#~ msgstr "MS > LR (Mijloc către Stereo)"
+
+#~ msgid "LR > LL (Mono Left Channel)"
+#~ msgstr "LR > LL (Mono Canal Stânga)"
+
+#~ msgid "LR > RR (Mono Right Channel)"
+#~ msgstr "LR > RR (Mono Canal Dreapta)"
+
+#~ msgid "LR > L+R (Mono Sum L+R)"
+#~ msgstr "LR > L+R (Mono L+R)"
+
+#~ msgid "LR > RL (Stereo Flip Channels)"
+#~ msgstr "LR > RL (Canalele Stereo Inversate)"
+
+#, fuzzy
+#~ msgid "Stereo Mode"
+#~ msgstr "Bază Stereo"
+
+#~ msgid "Side Level"
+#~ msgstr "Nivel Lateral"
+
+#~ msgid "Side Balance"
+#~ msgstr "Balans Lateral"
+
+#~ msgid "Middle Level"
+#~ msgstr "Nivel Mijloc"
+
+#~ msgid "Middle Panorama"
+#~ msgstr "Panoramă Mijloc"
+
+#, fuzzy
+#~ msgid "Output Balance"
+#~ msgstr "Balans"
+
+#~ msgid "Delay L/R"
+#~ msgstr "Întârziere L/R"
+
+#, fuzzy
+#~ msgid "Delay Left Right"
+#~ msgstr "Întârziere L/R"
+
+#~ msgid "Stereo Base"
+#~ msgstr "Bază Stereo"
+
+#~ msgid "Stereo Phase"
+#~ msgstr "Fază Stereo"
+
+#, fuzzy
+#~ msgid "Running"
+#~ msgstr "rulează"
+
+#, fuzzy
+#~ msgid "Suspended"
+#~ msgstr "suspendat"
+
+#, fuzzy
+#~ msgid "Creating"
+#~ msgstr "se creează"
+
+#, fuzzy
+#~ msgid "Error"
+#~ msgstr "eroare"
+
+#, fuzzy
+#~ msgid "channels"
+#~ msgstr "Canale"
+
+#, fuzzy
+#~ msgid "Quit Easy Effects. Useful when running in service mode."
+#~ msgstr ""
+#~ "Închideți EasyEffects. Folositor când este folosit în modul de serviciu."
+
+#, fuzzy
+#~ msgid "Reset Easy Effects."
+#~ msgstr "Resetează EasyEffects."
+
+#~ msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+#~ msgstr ""
+#~ "Ocolire Globală. 1 pentru a activa, 2 pentru a dezactiva și 3 pentru a "
+#~ "afla statusul"
+
+#~ msgid "Show available presets."
+#~ msgstr "Arată presetările valabile."
+
+#~ msgid "Load a preset. Example: easyeffects -l music"
+#~ msgstr "Încarcă o presetare. Exemplu: easyeffects -l music"
+
+#, fuzzy
+#~ msgid "_Output"
+#~ msgstr "Output"
+
+#, fuzzy
+#~ msgid "_Input"
+#~ msgstr "Input"
+
+#, fuzzy
+#~ msgid "Impulse File Not Imported"
+#~ msgstr "Importă Fișier Impulse"
+
+#~ msgid "Import Impulse File"
+#~ msgstr "Importă Fișier Impulse"
+
+#~ msgid "Open"
+#~ msgstr "Deschide"
+
+#~ msgid "Impulse Response"
+#~ msgstr "Răspuns Impuls"
+
+#, fuzzy
+#~ msgid "Load Impulse"
+#~ msgstr "Importă Impuls"
+
+#, fuzzy
+#~ msgid "Remove Impulse"
+#~ msgstr "Importă Impuls"
+
+#, fuzzy
+#~ msgid "No Impulse File Loaded"
+#~ msgstr "Importă Fișier Impulse"
+
+#, fuzzy
+#~ msgid "Failed To Load The Impulse File"
+#~ msgstr "Nu s-a putut Încărca Fișierul Impulse"
+
+#, fuzzy
+#~ msgid "Recorders"
+#~ msgstr "Bordură"
+
+#, fuzzy
+#~ msgid "Effects"
+#~ msgstr "EasyEffects"
+
+#~ msgid "Import APO Preset File"
+#~ msgstr "Importă Fișierul de Presetare APO"
+
+#~ msgid "APO Presets"
+#~ msgstr "Presetări APO"
+
+#, fuzzy
+#~ msgid "Export EqualizerAPO Preset File"
+#~ msgstr "Importă Fișierul de Presetare APO"
+
+#, fuzzy
+#~ msgid "EqualizerAPO Presets"
+#~ msgstr "Presetări APO"
+
+#, fuzzy
+#~ msgid "Import GraphicEQ Preset File"
+#~ msgstr "Importă Fișierul de Presetare APO"
+
+#, fuzzy
+#~ msgid "GraphicEQ Presets"
+#~ msgstr "Presetări pentru Input:"
+
+#, fuzzy
+#~ msgid "Remove Autoloading Preset"
+#~ msgstr "Șterge fișierul de presetări"
+
+#, fuzzy
+#~ msgid "Output Level Meter"
+#~ msgstr "Efecte Output"
+
+#, fuzzy
+#~ msgid "Output Device"
+#~ msgstr "Efecte Output"
+
+#, fuzzy
+#~ msgid "Community Preset"
+#~ msgstr "Importă Presetări"
+
+#, fuzzy
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "Arată programele din Lista de Blocare în Fila Principală"
+
+#, fuzzy
+#~ msgid "No Preset Loaded"
+#~ msgstr "Presetări pentru Input:"
+
+#, fuzzy
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "Presetări pentru Input:"
+
+#, fuzzy
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "Importă Presetări"
+
+#~ msgid "Import Model File"
+#~ msgstr "Importă Fișier de Model"
+
+#, fuzzy
+#~ msgid "RNNoise Models"
+#~ msgstr "Model Standard RNNoise"
+
+#~ msgid "Bass Enhancer"
+#~ msgstr "Amplificator Bass"
+
+#, fuzzy
+#~ msgid "Bass Loudness"
+#~ msgstr "Intensitate"
+
+#~ msgid "Convolver"
+#~ msgstr "Convolver"
+
+#~ msgid "Crossfeed"
+#~ msgstr "Crossfeed"
+
+#~ msgid "Crystalizer"
+#~ msgstr "Cristalizator"
+
+#~ msgid "Deesser"
+#~ msgstr "Deesser"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "Anulator de Ecou"
+
+#~ msgid "Equalizer"
+#~ msgstr "Egalizator"
+
+#~ msgid "Exciter"
+#~ msgstr "Excitator"
+
+#, fuzzy
+#~ msgid "Level Meter"
+#~ msgstr "Efecte Output"
+
+#~ msgid "Limiter"
+#~ msgstr "Limitator"
+
+#~ msgid "Maximizer"
+#~ msgstr "Maximizator"
+
+#~ msgid "Multiband Compressor"
+#~ msgstr "Compresor Multiband"
+
+#~ msgid "Multiband Gate"
+#~ msgstr "Multiband Gate"
+
+#~ msgid "Reverberation"
+#~ msgstr "Reverberație"
+
+#~ msgid "Noise Reduction"
+#~ msgstr "Reducere Zgomot"
+
+#~ msgid "Stereo Tools"
+#~ msgstr "Unelte Stereo"
+
+#~ msgid "Ceiling"
+#~ msgstr "Tavan"
+
+#~ msgid "\"Presets\""
+#~ msgstr "”Presetări”"
+
+#, fuzzy
+#~ msgid "Import a preset"
+#~ msgstr "Importă Presetări"
+
+#, fuzzy
+#~ msgid "Low-Cut Filter"
+#~ msgstr "Mod Filtru Low-pass"
+
+#, fuzzy
+#~ msgid "High-Cut Filter"
+#~ msgstr "Filtru High Pass"
+
+#~ msgid "Uniform"
+#~ msgstr "Uniform"
+
+#, fuzzy
+#~ msgid "New Output Preset Name"
+#~ msgstr "Presetări pentru Output:"
+
+#~ msgid "infinity"
+#~ msgstr "infinit"
+
+#~ msgid "IIR"
+#~ msgstr "IIR"
+
+#~ msgid "FIR"
+#~ msgstr "FIR"
+
+#~ msgid "FFT"
+#~ msgstr "FFT"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Raport"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "Prag"
+
+#, fuzzy
+#~ msgid "Low-pass"
+#~ msgstr "Low-Pass"
+
+#, fuzzy
+#~ msgid "High-pass"
+#~ msgstr "High Pass"
+
+#~ msgid "Gating"
+#~ msgstr "Gating"
+
+#~ msgid "12dB/oct Lowpass"
+#~ msgstr "12dB/oct Lowpass"
+
+#~ msgid "24dB/oct Lowpass"
+#~ msgstr "24dB/oct Lowpass"
+
+#~ msgid "36dB/oct Lowpass"
+#~ msgstr "36dB/oct Lowpass"
+
+#~ msgid "12dB/oct Highpass"
+#~ msgstr "12dB/oct Highpass"
+
+#~ msgid "24dB/oct Highpass"
+#~ msgstr "24dB/oct Highpass"
+
+#~ msgid "36dB/oct Highpass"
+#~ msgstr "36dB/oct Highpass"
+
+#~ msgid "6dB/oct Bandpass"
+#~ msgstr "6dB/oct Bandpass"
+
+#~ msgid "12dB/oct Bandpass"
+#~ msgstr "12dB/oct Bandpass"
+
+#~ msgid "18dB/oct Bandpass"
+#~ msgstr "18dB/oct Bandpass"
+
+#~ msgid "6dB/oct Bandreject"
+#~ msgstr "6dB/oct Bandreject"
+
+#~ msgid "12dB/oct Bandreject"
+#~ msgstr "12dB/oct Bandreject"
+
+#~ msgid "18dB/oct Bandreject"
+#~ msgstr "18dB/oct Bandreject"
+
+#~ msgid "Inertia"
+#~ msgstr "Inerție"
+
+#, fuzzy
+#~ msgid "Band Type"
+#~ msgstr "Scrie"
+
+#, fuzzy
+#~ msgid "Band Mode"
+#~ msgstr "Mod"
+
+#, fuzzy
+#~ msgid "Band Slope"
+#~ msgstr "Pantă"
+
+#, fuzzy
+#~ msgid "Loudness List"
+#~ msgstr "Intensitate"
+
+#, fuzzy
+#~ msgid "High Speed"
+#~ msgstr "High Shelf"
+
+#, fuzzy
+#~ msgid "High Quality"
+#~ msgstr "Calitate"
+
+#, fuzzy
+#~ msgid "Formant"
+#~ msgstr "Format"
+
+#, fuzzy
+#~ msgid "Preserved"
+#~ msgstr "Presetări"
+
+#, fuzzy
+#~ msgid "Crisp"
+#~ msgstr "Claritate"
+
+#, fuzzy
+#~ msgid "Detector"
+#~ msgstr "Detectare"
+
+#, fuzzy
+#~ msgid "Compound"
+#~ msgstr "Compresie"
+
+#, fuzzy
+#~ msgid "Soft"
+#~ msgstr "Softclip"
+
+#~ msgid "Cents"
+#~ msgstr "Cents"
+
+#~ msgid "Octaves"
+#~ msgstr "Octave"
+
+#, fuzzy
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Resetează EasyEffects."
+
+#~ msgid "High Pass"
+#~ msgstr "High Pass"
+
+#~ msgid "Low Pass"
+#~ msgstr "Low Pass"
+
+#~ msgid "Cancel"
+#~ msgstr "Anulare"
+
+#, fuzzy
+#~ msgid " PreAmplification"
+#~ msgstr "Preamplificare"
+
+#~ msgid "Frame Size"
+#~ msgstr "Dimensiune Cadru"
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "Low-Pass"
+
+#, fuzzy
+#~ msgid " Uniform"
+#~ msgstr "Uniform"
+
+#, fuzzy
+#~ msgid "Left Delay"
+#~ msgstr "Pre Întârziere"
+
+#, fuzzy
+#~ msgid "Right Delay"
+#~ msgstr "Despică Canalele"
+
+#, fuzzy
+#~ msgid "Left Dry Level"
+#~ msgstr "F2 Nivel"
+
+#, fuzzy
+#~ msgid "Right Dry Level"
+#~ msgstr "F2 Nivel"
+
+#, fuzzy
+#~ msgid "Left Wet Level"
+#~ msgstr "Nivelul Țintă"
+
+#, fuzzy
+#~ msgid "Right Wet Level"
+#~ msgstr "Nivelul Țintă"
+
+#, fuzzy
+#~ msgid "Suppression"
+#~ msgstr "Nivel de Suprimare"
+
+#, fuzzy
+#~ msgid "Noise Reduction (Fast)"
+#~ msgstr "Reducere Zgomot"
+
+#, fuzzy
+#~ msgid "Load APO Preset"
+#~ msgstr "Presetări APO"
+
+#~ msgid "Output Presets: "
+#~ msgstr "Presetări pentru Output:"
+
+#~ msgid "Input Presets: "
+#~ msgstr "Presetări pentru Input:"
+
+#, fuzzy
+#~ msgid "Split Mode"
+#~ msgstr "Despică"
+
+#~ msgid "Split 1/2"
+#~ msgstr "Despicare 1/2"
+
+#~ msgid "Split 2/3"
+#~ msgstr "Despicare 2/3"
+
+#, fuzzy
+#~ msgid "Split Frequency 2"
+#~ msgstr "Frecvență"
+
+#~ msgid "Split 3/4"
+#~ msgstr "Despicare 3/4"
+
+#, fuzzy
+#~ msgid "Split Frequency 3"
+#~ msgstr "Frecvență"
+
+#~ msgid "Sub Band"
+#~ msgstr "Sub Band"
+
+#, fuzzy
+#~ msgid "Band 1 Bypass"
+#~ msgstr "Evitare"
+
+#, fuzzy
+#~ msgid "Band 1 Detection"
+#~ msgstr "Detectare"
+
+#, fuzzy
+#~ msgid "Band 1 Attack"
+#~ msgstr "Atac"
+
+#, fuzzy
+#~ msgid "Band 1 Release"
+#~ msgstr "Eliberare"
+
+#, fuzzy
+#~ msgid "Band 1 Threshold"
+#~ msgstr "Prag"
+
+#, fuzzy
+#~ msgid "Band 1 Makeup"
+#~ msgstr "Compoziție"
+
+#~ msgid "Max Reduction"
+#~ msgstr "Reducere"
+
+#, fuzzy
+#~ msgid "Band 1 Max Reduction"
+#~ msgstr "Reducere"
+
+#~ msgid "Low Band"
+#~ msgstr "Low Band"
+
+#, fuzzy
+#~ msgid "Band 2 Bypass"
+#~ msgstr "Evitare"
+
+#, fuzzy
+#~ msgid "Band 2 Detection"
+#~ msgstr "Detectare"
+
+#, fuzzy
+#~ msgid "Band 2 Attack"
+#~ msgstr "Atac"
+
+#, fuzzy
+#~ msgid "Band 2 Release"
+#~ msgstr "Eliberare"
+
+#, fuzzy
+#~ msgid "Band 2 Threshold"
+#~ msgstr "Prag"
+
+#, fuzzy
+#~ msgid "Band 2 Makeup"
+#~ msgstr "Compoziție"
+
+#, fuzzy
+#~ msgid "Band 2 Max Reduction"
+#~ msgstr "Reducere"
+
+#~ msgid "Mid Band"
+#~ msgstr "Mid Band"
+
+#, fuzzy
+#~ msgid "Band 3 Bypass"
+#~ msgstr "Evitare"
+
+#, fuzzy
+#~ msgid "Band 3 Detection"
+#~ msgstr "Detectare"
+
+#, fuzzy
+#~ msgid "Band 3 Attack"
+#~ msgstr "Atac"
+
+#, fuzzy
+#~ msgid "Band 3 Release"
+#~ msgstr "Eliberare"
+
+#, fuzzy
+#~ msgid "Band 3 Threshold"
+#~ msgstr "Prag"
+
+#, fuzzy
+#~ msgid "Band 3 Makeup"
+#~ msgstr "Compoziție"
+
+#, fuzzy
+#~ msgid "Band 3 Max Reduction"
+#~ msgstr "Reducere"
+
+#~ msgid "High Band"
+#~ msgstr "High Band"
+
+#, fuzzy
+#~ msgid "Band 4 Bypass"
+#~ msgstr "Evitare"
+
+#, fuzzy
+#~ msgid "Band 4 Detection"
+#~ msgstr "Detectare"
+
+#, fuzzy
+#~ msgid "Band 4 Attack"
+#~ msgstr "Atac"
+
+#, fuzzy
+#~ msgid "Band 4 Release"
+#~ msgstr "Eliberare"
+
+#, fuzzy
+#~ msgid "Band 4 Threshold"
+#~ msgstr "Prag"
+
+#, fuzzy
+#~ msgid "Band 4 Makeup"
+#~ msgstr "Compoziție"
+
+#, fuzzy
+#~ msgid "Band 4 Max Reduction"
+#~ msgstr "Reducere"
+
+#, fuzzy
+#~ msgid "Wet Amount"
+#~ msgstr "Cantitate"
+
+#, fuzzy
+#~ msgid "Dry Amount"
+#~ msgstr "Cantitate"
+
+#, fuzzy
+#~ msgid ""
+#~ "EasyEffects is an advanced audio manipulation tool. It includes an "
+#~ "equalizer, limiter, compressor and a reverberation tool, just to mention "
+#~ "a few. To complement this there is also a built in spectrum analyzer."
+#~ msgstr ""
+#~ "EasyEffects este un set avansat de unelte pentru manipularea audio. "
+#~ "Numind doar câteva din uneltele din acesta, sunt incluse un egalizator, "
+#~ "limitator, compresor și o unealtă pentru reverberație."
+
+#, fuzzy
+#~ msgid ""
+#~ "Because EasyEffects uses the default PipeWire sound server it will work "
+#~ "with most, if not all, applications you use. All supported applications "
+#~ "are presented in the main window, where each can be enabled individually."
+#~ msgstr ""
+#~ "Pentru că EasyEffects utilizează serverul de sunet prestabilit "
+#~ "PulseAudio, acesta va funcționa cu majoritatea, dacă nu cumva chiar toate "
+#~ "programele pe care le folosiți. Toate programele suportate sunt "
+#~ "prezentate în fereastra principală, unde fiecare poate fi activată "
+#~ "individual."
+
+#~ msgid ""
+#~ "Besides manipulating sound output, EasyEffects is able to apply effects "
+#~ "to an input device, such as a microphone. This is, for example, useful in "
+#~ "audio recording, but it also works well during voice conversations."
+#~ msgstr ""
+#~ "Pe lângă faptul că EasyEffects poate manipula output-ul de sunet, se "
+#~ "poate folosi și pentru a aplica efecte pe un dispozitiv de input, ca un "
+#~ "microfon. Acest lucru este util, spre exemplu, în înregistrarea audio, "
+#~ "dar funcționează bine și în timpul conversațiilor voce."
+
+#~ msgid ""
+#~ "When EasyEffects is launched it will conveniently remember the "
+#~ "configuration used in the last session. It is also possible to save all "
+#~ "the current settings as profiles."
+#~ msgstr ""
+#~ "Când EasyEffects este pornit, acesta va reține configurația din sesiunea "
+#~ "anterioară. Este de asemenea posibil să salvați setările curente ca și "
+#~ "profile."
+
+#, fuzzy
+#~ msgid "and #1427"
+#~ msgstr "Benzi"
+
+#~ msgid "Average"
+#~ msgstr "În Medie"
+
+#~ msgid "Failed"
+#~ msgstr "A Eșuat"
+
+#~ msgid "Use Default"
+#~ msgstr "Folosește Prestabilit"
+
+#, fuzzy
+#~ msgid "Remove this plugin"
+#~ msgstr "Șterge fișierul de presetări"
+
+#~ msgid "Import Presets"
+#~ msgstr "Importă Presetări"
+
+#~ msgid "Start Service at Login"
+#~ msgstr "Începe Serviciul la Login"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Model Activ"
+
+#~ msgid "Add to Blocklist"
+#~ msgstr "Adaugă la Lista de Blocare"
+
+#~ msgid "Blocklist"
+#~ msgstr "Lista de Blocare"
+
+#, fuzzy
+#~ msgid "Microphone"
+#~ msgstr "Calibrare Microfon"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Activează"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Activează"
+
+#~ msgid "Format"
+#~ msgstr "Format"
+
+#~ msgid "Latency"
+#~ msgstr "Latență"
+
+#~ msgid "idle"
+#~ msgstr "inactiv"
+
+#~ msgid "Faster"
+#~ msgstr "Mai Repede "
+
+#~ msgid "Preserve Formant"
+#~ msgstr "Păstrează Formant"
+
+#~ msgid "Cmoy"
+#~ msgstr "Cmoy"
+
+#~ msgid "Jmeier"
+#~ msgstr "Jmeier"
+
+#~ msgid "Set the volume and turn on/off effects"
+#~ msgstr "Setează volumul și pornește/oprește efectele"
+
+#~ msgid "Includes an equalizer with built-in presets"
+#~ msgstr "Include un egalizator cu presetări încorporate."
+
+#~ msgid "Input Limiter"
+#~ msgstr "Limitator de Input"
+
+#~ msgid "Calibration"
+#~ msgstr "Calibrare"
+
+#~ msgid "Based on"
+#~ msgstr "Bazat pe"
+
+#~ msgid "Detect Silence"
+#~ msgstr "Detectează Tăcerea"
+
+#~ msgid "Weights"
+#~ msgstr "Greutăți"
+
+#~ msgid "Provided by"
+#~ msgstr "Furnizat de"
+
+#~ msgid "Reconnect the microphone to apply new changes made to the Blocklist"
+#~ msgstr ""
+#~ "Reconectați microfonul pentru a aplica noile schimbări la Lista de Blocare"
+
+#~ msgid "Restart the player to apply new changes made to the Blocklist"
+#~ msgstr ""
+#~ "Reporniți playerul pentru a aplica schimbările noi la Lista de Blocare"
+
+#~ msgid "Sine"
+#~ msgstr "Sinus"
+
+#~ msgid "Square"
+#~ msgstr "Pătrat"
+
+#~ msgid "Saw"
+#~ msgstr "Ferăstrău"
+
+#~ msgid "Triangle"
+#~ msgstr "Triunghi"
+
+#~ msgid "Pink Noise"
+#~ msgstr "Zgomot Roz"
+
+#~ msgid "Ticks"
+#~ msgstr "Ticăituri"
+
+#~ msgid "Gaussian Noise"
+#~ msgstr "Zgomot Gaussian"
+
+#~ msgid "Blue Noise"
+#~ msgstr "Zgomot Albastru"
+
+#~ msgid "Violet Noise"
+#~ msgstr "Zgomot Violet"
+
+#~ msgid "Volume"
+#~ msgstr "Volum"
+
+#~ msgid "Measure Noise"
+#~ msgstr "Măsoară Zgomotul"
+
+#~ msgid "Subtract Noise"
+#~ msgstr "Scade Zgomotul"
+
+#~ msgid "Advanced"
+#~ msgstr "Avansat"
+
+#~ msgid "Import Impulse Response File"
+#~ msgstr "Importă Fișier de Răspuns Impuls"
+
+#~ msgid "Select the impulse Response File"
+#~ msgstr "Selectează Fișierul de Răspuns Impuls"
+
+#~ msgid "Aggressive Mode"
+#~ msgstr "Mod Agresiv"
+
+#~ msgid "Before"
+#~ msgstr "Înainte"
+
+#~ msgid "After"
+#~ msgstr "După"
+
+#~ msgid "Loudness Range"
+#~ msgstr "Gama de Sunet"
+
+#~ msgid "Apply APO Preset"
+#~ msgstr "Aplică Presetare APO"
+
+#~ msgid "RLC (BT)"
+#~ msgstr "RLC (BT)"
+
+#~ msgid "RLC (MT)"
+#~ msgstr "RLC (MT)"
+
+#~ msgid "BWC (BT)"
+#~ msgstr "BWC (BT)"
+
+#~ msgid "BWC (MT)"
+#~ msgstr "BWC (MT)"
+
+#~ msgid "LRX (BT)"
+#~ msgstr "LRX (BT)"
+
+#~ msgid "LRX (MT)"
+#~ msgstr "LRX (MT)"
+
+#~ msgid "APO (DR)"
+#~ msgstr "APO (DR)"
+
+#~ msgid "Muted"
+#~ msgstr "Mut"
+
+#~ msgid "Distant Headphones"
+#~ msgstr "Căști Departe"
+
+#~ msgid "Niceness"
+#~ msgstr "Niceness"
+
+#~ msgid "Priority Type"
+#~ msgstr "Tipul Priorității"
+
+#~ msgid "Priority"
+#~ msgstr "Prioritate"
+
+#~ msgid "About"
+#~ msgstr "Despre"
+
+#~ msgid "Maximum Gain Reduction"
+#~ msgstr "Reducere Maximă a Gain-ului"
+
+#~ msgid "Limit"
+#~ msgstr "Limită"
+
+#~ msgid "ASC"
+#~ msgstr "ASC"
+
+#~ msgid "Loudness Compensator"
+#~ msgstr "Compensator de Intensitate"
+
+#~ msgid "ISO226-2003"
+#~ msgstr "ISO226-2003"
+
+#~ msgid "Fletcher-Munson"
+#~ msgstr "Fletcher-Munson"
+
+#~ msgid "Robinson-Dadson"
+#~ msgstr "Robinson-Dadson"
+
+#~ msgid "LR4"
+#~ msgstr "LR4"
+
+#~ msgid "LR8"
+#~ msgstr "LR8"
+
+#~ msgid ""
+#~ "Automatically apply this preset whenever the currently used device is "
+#~ "plugged in the system"
+#~ msgstr ""
+#~ "Aplică automat această presetare oricând dispozitivul folosit acum este "
+#~ "conectat la sistem"
+
+#~ msgid "Protocol"
+#~ msgstr "Protocol"
+
+#~ msgid "Default Sample Format"
+#~ msgstr "Formatul de Sample Prestabilit"
+
+#~ msgid "File"
+#~ msgstr "Fișier"
+
+#~ msgid "Configuration"
+#~ msgstr "Configurare"
+
+#~ msgid "Resamplers"
+#~ msgstr "Resampleri"
+
+#~ msgid "Buffer"
+#~ msgstr "Buffer"
+
+#~ msgid "Block Size"
+#~ msgstr "Dimensiune Bloc"
+
+#~ msgid "Show Spectrum"
+#~ msgstr "Arată Spectrul"
+
+#~ msgid "Use Custom Color"
+#~ msgstr "Folosește Culoare Personalizată"
+
+#~ msgid "Use Gradient"
+#~ msgstr "Folosește Gradient"
+
+#~ msgid "Sampling"
+#~ msgstr "Sampling"
+
+#~ msgid "Maximum Frequency"
+#~ msgstr "Frecvență Maximă"
+
+#~ msgid "Spectrum Type"
+#~ msgstr "Tip Spectru"
+
+#~ msgid "Spectrum Color"
+#~ msgstr "Culoare Spectru"
+
+#~ msgid "Gradient Color"
+#~ msgstr "Culoare Gradient"
+
+#~ msgid "S/C Level"
+#~ msgstr "Nivel S/C"
+
+#~ msgid "WebRTC"
+#~ msgstr "WebRTC"
+
+#~ msgid "Extended Filter"
+#~ msgstr "Filtru Extins"
+
+#~ msgid "Low"
+#~ msgstr "Jos"
+
+#~ msgid "Moderate"
+#~ msgstr "Moderat"
+
+#~ msgid "High"
+#~ msgstr "Înalt"
+
+#~ msgid "Delay Agnostic"
+#~ msgstr "Întârziere Agnostică"
+
+#~ msgid "Very High"
+#~ msgstr "Foarte Înalt"
+
+#~ msgid "Adaptive Digital"
+#~ msgstr "Digital Adaptiv"
+
+#~ msgid "Fixed Digital"
+#~ msgstr "Digital Fix"
+
+#~ msgid "Detection Likelihood"
+#~ msgstr "Probabilitatea Detecției"
+
+#~ msgid "Very Low"
+#~ msgstr "Foarte Jos"

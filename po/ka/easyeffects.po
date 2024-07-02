@@ -1,0 +1,796 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2023-02-22 18:30+0000\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
+"main/ka/>\n"
+"Language: ka\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "შეყვანა"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "სახელი"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+#, fuzzy
+msgid "Value"
+msgstr "უმცირესი მნიშვნელობა"
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "ეფექტები"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "შაბლონი"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+msgid "Quit"
+msgstr ""
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr ""
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "პრესეტები"
+
+#: src/contents/ui/main.qml:179
+#, fuzzy
+msgid "Preferences"
+msgstr "_მორგება"
+
+#: src/contents/ui/main.qml:187
+msgid "About EasyEffects"
+msgstr ""
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "გამოტანა"
+
+#: src/contents/ui/PipeWireTab.qml:9
+#, fuzzy
+msgid "PipeWire"
+msgstr "_PipeWire"
+
+#: src/main.cpp:55
+msgid "Audio effects for PipeWire applications"
+msgstr ""
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr ""
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "კონვერტი"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+msgid "Width of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+msgid "Height of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+msgid "Last used preset."
+msgstr ""
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+#, fuzzy
+msgid "EasyEffects"
+msgstr "ეფექტები"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr ""
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr ""
+
+#~ msgid "Enable"
+#~ msgstr "ჩართვა"
+
+#~ msgid "Exclude"
+#~ msgstr "გამორიცხვა"
+
+#~ msgid "Primary Menu"
+#~ msgstr "ძირითადი მენიუს"
+
+#~ msgid "Target"
+#~ msgstr "სამიზნე წერტილი"
+
+#~ msgid "Silence"
+#~ msgstr "სიჩუმე"
+
+#~ msgid "Reference"
+#~ msgstr "მითითება"
+
+#~ msgid "Reset"
+#~ msgstr "დაბრუნება"
+
+#~ msgid "Relative"
+#~ msgstr "ფარდობითი"
+
+#~ msgid "Range"
+#~ msgstr "დიაპაზონი"
+
+#~ msgid "Output Gain"
+#~ msgstr "გამოტანის გაძლიერება"
+
+#~ msgid "Device"
+#~ msgstr "მოწყობილობა"
+
+#~ msgid "Profile"
+#~ msgstr "პროფილი"
+
+#~ msgid "Listen"
+#~ msgstr "მოსმენა"
+
+#~ msgid "3rd"
+#~ msgstr "მესამე"
+
+#~ msgid "2nd"
+#~ msgstr "მეორე"
+
+#~ msgid "Amount"
+#~ msgstr "რაოდენობა"
+
+#~ msgid "Harmonics"
+#~ msgstr "ჰარმონიები"
+
+#~ msgid "Scope"
+#~ msgstr "ფარგლები"
+
+#~ msgid "Floor"
+#~ msgstr "იატაკი"
+
+#~ msgid "Link"
+#~ msgstr "ბმული"
+
+#~ msgid "Application Name"
+#~ msgstr "აპლიკაციის სახელი"
+
+#~ msgid "Compressor"
+#~ msgstr "კომპრესორი"
+
+#~ msgid "Mode"
+#~ msgstr "რეჟიმი"
+
+#~ msgid "Downward"
+#~ msgstr "ქვევით"
+
+#~ msgid "Upward"
+#~ msgstr "ზემოთ"
+
+#~ msgid "Boosting"
+#~ msgstr "გაძლიერება"
+
+#~ msgid "Attack"
+#~ msgstr "შეტევა"
+
+#~ msgid "Time"
+#~ msgstr "დრო"
+
+#~ msgid "Threshold"
+#~ msgstr "ზღვარი"
+
+#~ msgid "Attack Time"
+#~ msgstr "შეტევის დრო"
+
+#~ msgid "Release"
+#~ msgstr "გამოცემა"
+
+#~ msgid "Release Time"
+#~ msgstr "გათავისუფლების დრო"
+
+#~ msgid "Ratio"
+#~ msgstr "პროპორციები"
+
+#~ msgid "Knee"
+#~ msgstr "მუხლი"
+
+#, fuzzy
+#~ msgid "Stereo Split Mode"
+#~ msgstr "სტერეო რეჟიმი"
+
+#~ msgid "Source"
+#~ msgstr "წყარო"
+
+#~ msgid "Middle"
+#~ msgstr "შუა"
+
+#~ msgid "Side"
+#~ msgstr "გვერდითი"
+
+#~ msgid "Left"
+#~ msgstr "მარცხენა"
+
+#~ msgid "Right"
+#~ msgstr "მარჯვენა"
+
+#~ msgid "Min"
+#~ msgstr "მინ"
+
+#~ msgid "Max"
+#~ msgstr "მაქს"
+
+#, fuzzy
+#~ msgid "Left/Right"
+#~ msgstr "მარჯვენა"
+
+#, fuzzy
+#~ msgid "Right/Left"
+#~ msgstr "მარჯვენა"
+
+#, fuzzy
+#~ msgid "Mid/Side"
+#~ msgstr "გვერდითი"
+
+#, fuzzy
+#~ msgid "Side/Mid"
+#~ msgstr "გვერდითი"
+
+#, fuzzy
+#~ msgid "Stereo Split Source"
+#~ msgstr "სტერეო რეჟიმი"
+
+#~ msgid "Peak"
+#~ msgstr "პიკი"
+
+#~ msgid "RMS"
+#~ msgstr "RMS"
+
+#~ msgid "Low-Pass Filter"
+#~ msgstr "დაბალსიხშირული ფილტრი"
+
+#~ msgid "Type"
+#~ msgstr "ტიპი"
+
+#~ msgid "External"
+#~ msgstr "გარე"
+
+#~ msgid "Input Device"
+#~ msgstr "შეყვანის მოწყობილობა"
+
+#~ msgid "Frequency"
+#~ msgstr "სიხშირე"
+
+#~ msgid "Off"
+#~ msgstr "გამორთ"
+
+#~ msgid "Gain"
+#~ msgstr "გაძლიერება"
+
+#~ msgid "Curve"
+#~ msgstr "მრუდი"
+
+#~ msgid "L"
+#~ msgstr "მხ"
+
+#~ msgid "Left Channel"
+#~ msgstr "მარცხენა არხი"
+
+#~ msgid "R"
+#~ msgstr "მჯ"
+
+#~ msgid "Right Channel"
+#~ msgstr "მარჯვენა არხი"
+
+#~ msgid "Combine"
+#~ msgstr "კომბინირება"
+
+#~ msgid "Spectrum"
+#~ msgstr "სპექტრი"
+
+#~ msgid "Rate"
+#~ msgstr "სიხშირე"
+
+#~ msgid "Samples"
+#~ msgstr "სემპლები"
+
+#~ msgid "Duration"
+#~ msgstr "ხანგრძლოვობა"
+
+#~ msgid "Feed"
+#~ msgstr "ლენტა"
+
+#~ msgid "Mute"
+#~ msgstr "დადუმება"
+
+#~ msgid "Wide"
+#~ msgstr "ფართო"
+
+#~ msgid "Split"
+#~ msgstr "გაყოფა"
+
+#~ msgid "Detected"
+#~ msgstr "გამოვლინდა"
+
+#~ msgid "Delay"
+#~ msgstr "დაყოვნება"
+
+#~ msgid "Bands"
+#~ msgstr "გუნდები"
+
+#~ msgid "Balance"
+#~ msgstr "ბალანსი"
+
+#~ msgid "Split Channels"
+#~ msgstr "არხების გაყოფა"
+
+#~ msgid "Import Preset"
+#~ msgstr "პრესეტის შემოტანა"
+
+#, fuzzy
+#~ msgid "Export Preset"
+#~ msgstr "პრესეტის შემოტანა"
+
+#~ msgid "Slope"
+#~ msgstr "დახრა"
+
+#~ msgid "Solo"
+#~ msgstr "სოლო"
+
+#~ msgid "Quality"
+#~ msgstr "ხარისხი"
+
+#~ msgid "Width"
+#~ msgstr "სიგანე"
+
+#~ msgid "Ceil"
+#~ msgstr "ჭერი"
+
+#~ msgid "Internal"
+#~ msgstr "შიდა"
+
+#~ msgid "API"
+#~ msgstr "API"
+
+#~ msgid "Access"
+#~ msgstr "წვდომა"
+
+#~ msgid "Description"
+#~ msgstr "აღწერა"
+
+#~ msgid "Bell"
+#~ msgstr "ზარი"
+
+#, fuzzy
+#~ msgid "Band-Pass"
+#~ msgstr "გუნდები"
+
+#~ msgid "Notch"
+#~ msgstr "ამოკვეთა"
+
+#~ msgid "Resonance"
+#~ msgstr "რეზონანსი"
+
+#, fuzzy
+#~ msgid "Equalizer Mode"
+#~ msgstr "ეკვალაიზერი"
+
+#~ msgid "Filter"
+#~ msgstr "ფილტრი"
+
+#~ msgid "Gate"
+#~ msgstr "გეითი"
+
+#~ msgid "Zone"
+#~ msgstr "ზონა"
+
+#~ msgid "Mix"
+#~ msgstr "მიქსი"
+
+#, fuzzy
+#~ msgid "True Peak"
+#~ msgstr "პიკი"
+
+#~ msgid "Dither"
+#~ msgstr "დიზერი"
+
+#~ msgid "Boost"
+#~ msgstr "გაძლიერება"
+
+#~ msgid "Standard"
+#~ msgstr "სტანდარტული"
+
+#~ msgid "Flat"
+#~ msgstr "ბრტყელი"
+
+#~ msgid "Output Volume"
+#~ msgstr "გამოტანის ხმა"
+
+#~ msgid "Clipping"
+#~ msgstr "კლინინგი"
+
+#~ msgid "Classic"
+#~ msgstr "კლასიკური"
+
+#~ msgid "Modern"
+#~ msgstr "თანამედროვე"
+
+#, fuzzy
+#~ msgid "Stereo Split"
+#~ msgstr "სტერეო რეჟიმი"
+
+#, fuzzy
+#~ msgid "High-Cut"
+#~ msgstr "მაღალი ხარისხი"
+
+#~ msgid "General"
+#~ msgstr "ძირითადი"
+
+#~ msgid "Device Management"
+#~ msgstr "მოწყობილობის მართვა"
+
+#~ msgid "Server Information"
+#~ msgstr "ინფორმაცია სერვერის შესახებ"
+
+#~ msgid "Sampling Rate"
+#~ msgstr "სემპლინგისსიჩქარე"
+
+#~ msgid "Output Devices"
+#~ msgstr "გამოტანის მოწყობილობები"
+
+#~ msgid "Input Devices"
+#~ msgstr "შემომტანი მოწყობილობები"
+
+#~ msgid "Modules"
+#~ msgstr "მოდულები"
+
+#~ msgid "Clients"
+#~ msgstr "კლიენტი"
+
+#~ msgid "State"
+#~ msgstr "მდგომარეობა"
+
+#~ msgid "Enabled"
+#~ msgstr "ჩართულია"
+
+#~ msgid "Channels"
+#~ msgstr "არხები"
+
+#~ msgid "Both"
+#~ msgstr "ორივე"
+
+#~ msgid "Both Channels"
+#~ msgstr "ორივე არხი"
+
+#~ msgid "Waveform"
+#~ msgstr "ტალღოვანი"
+
+#~ msgid "White Noise"
+#~ msgstr "თეთრი ხმაური"
+
+#~ msgid "Pitch"
+#~ msgstr "Pitch"
+
+#, fuzzy
+#~ msgid "Tempo Difference"
+#~ msgstr "მითითება"
+
+#, fuzzy
+#~ msgid "Rate Difference"
+#~ msgstr "მითითება"
+
+#~ msgid "Add Effect"
+#~ msgstr "ეფექტის დამატება"
+
+#~ msgid "_General"
+#~ msgstr "_საერთო"
+
+#~ msgid "Service"
+#~ msgstr "სერვისი"
+
+#~ msgid "Audio"
+#~ msgstr "აუდიო"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "შიდა"
+
+#, fuzzy
+#~ msgid "Update Frequency"
+#~ msgstr "სიხშირე"
+
+#~ msgid "Style"
+#~ msgstr "სტილი"
+
+#, fuzzy
+#~ msgid "Experimental Features"
+#~ msgstr "ექსპერიმენტალური"
+
+#~ msgid "Shape"
+#~ msgstr "ფორმა"
+
+#~ msgid "Bars"
+#~ msgstr "მართკუთხედები"
+
+#~ msgid "Lines"
+#~ msgstr "ხაზები"
+
+#~ msgid "Dots"
+#~ msgstr "წერტილები"
+
+#~ msgid "Points"
+#~ msgstr "წერტილები"
+
+#~ msgid "Line Width"
+#~ msgstr "ხაზის სიგანე"
+
+#~ msgid "Axis Labels"
+#~ msgstr "ღერძის ჭდეები"
+
+#~ msgid "Minimum"
+#~ msgstr "მინიმუმი"
+
+#~ msgid "Maximum"
+#~ msgstr "მაქსიმუმი"
+
+#~ msgid "Load"
+#~ msgstr "ჩატვირთვა"
+
+#, fuzzy
+#~ msgid "Try this community preset"
+#~ msgstr "შაბლონი"
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "პრესეტის შემოტანა"
+
+#, fuzzy
+#~ msgid "Search Local Preset"
+#~ msgstr "შაბლონი"
+
+#, fuzzy
+#~ msgid "Local Presets List"
+#~ msgstr "პრესეტები"
+
+#, fuzzy
+#~ msgid "Search Community Preset"
+#~ msgstr "შაბლონი"
+
+#, fuzzy
+#~ msgid "Community Presets List"
+#~ msgstr "პრესეტები"
+
+#~ msgid "Small"
+#~ msgstr "პატარა"
+
+#~ msgid "Medium"
+#~ msgstr "საშუალო"
+
+#~ msgid "Large"
+#~ msgstr "დიდი"
+
+#~ msgid "Tunnel"
+#~ msgstr "გვირაბი"
+
+#~ msgid "Experimental"
+#~ msgstr "ექსპერიმენტალური"
+
+#~ msgid "Diffusion"
+#~ msgstr "დიფუზია"
+
+#~ msgid "Bass Cut"
+#~ msgstr "Bass-ის მოჭრა"
+
+#~ msgid "Treble Cut"
+#~ msgstr "მაღალი სიხშირეების მოჭრა"
+
+#~ msgid "Room"
+#~ msgstr "ოთახი"
+
+#~ msgid "Disco"
+#~ msgstr "დისკო"
+
+#~ msgid "Models"
+#~ msgstr "მოდელები"
+
+#~ msgid "Overview"
+#~ msgstr "მიმოხილვა"
+
+#~ msgid "Denoise"
+#~ msgstr "ხმაურის მოცილება"
+
+#~ msgid "Automatic Gain Control"
+#~ msgstr "ხმის მომატების ავტომატური კონტროლი"
+
+#~ msgid "Continue"
+#~ msgstr "გაგრძელება"
+
+#~ msgid "Level"
+#~ msgstr "დონე"
+
+#~ msgid "Stereo Mode"
+#~ msgstr "სტერეო რეჟიმი"
+
+#~ msgid "Running"
+#~ msgstr "გაშვებულია"
+
+#~ msgid "Suspended"
+#~ msgstr "გაჩერებულია"
+
+#~ msgid "Idle"
+#~ msgstr "უმოქმედო"
+
+#~ msgid "Creating"
+#~ msgstr "შექმნა"
+
+#~ msgid "Error"
+#~ msgstr "შეცდომა"
+
+#~ msgid "Unknown"
+#~ msgstr "უცნობი"
+
+#~ msgid "channels"
+#~ msgstr "არხები"
+
+#~ msgid "Open"
+#~ msgstr "გახსნა"
+
+#~ msgid "Recorders"
+#~ msgstr "სალამურები"
+
+#~ msgid "Players"
+#~ msgstr "მოთამაშეები"
+
+#, fuzzy
+#~ msgid "EqualizerAPO Presets"
+#~ msgstr "ეკვალაიზერი"
+
+#~ msgid "Remove"
+#~ msgstr "წაშლა"
+
+#~ msgid "Output Device"
+#~ msgstr "გამოტანის მოწყობილობები"
+
+#~ msgid "Add"
+#~ msgstr "დამატება"
+
+#, fuzzy
+#~ msgid "Community Preset"
+#~ msgstr "პრესეტის შემოტანა"
+
+#, fuzzy
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "პრესეტები"
+
+#, fuzzy
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "პრესეტის შემოტანა"
+
+#~ msgid "Equalizer"
+#~ msgstr "ეკვალაიზერი"
+
+#, fuzzy
+#~ msgid "Level Meter"
+#~ msgstr "დონე"
+
+#~ msgid "Limiter"
+#~ msgstr "შემზღუდველი"
+
+#~ msgid "Noise Reduction"
+#~ msgstr "ხმაურის შემცირება"
+
+#, fuzzy, c++-format
+#~ msgid "Using {}"
+#~ msgstr "გამოყენება"
+
+#~ msgid "Uniform"
+#~ msgstr "ერთგვაროვანი"
+
+#~ msgid "infinity"
+#~ msgstr "უსასრულობა"
+
+#~ msgid "IIR"
+#~ msgstr "IIR"
+
+#~ msgid "FIR"
+#~ msgstr "FIR"
+
+#~ msgid "FFT"
+#~ msgstr "FFT"
+
+#~ msgid "SPM"
+#~ msgstr "SPM"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "პროპორციები"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "ზღვარი"
+
+#, fuzzy
+#~ msgid "Low-pass"
+#~ msgstr "დაბალსიხშირული ფილტრი"
+
+#, fuzzy
+#~ msgid "High-pass"
+#~ msgstr "მაღალსიხშირული ფილტრი"
+
+#~ msgid "Mixed"
+#~ msgstr "შერეული"
+
+#~ msgid "Smooth"
+#~ msgstr "რბილი"
+
+#~ msgid "Detector"
+#~ msgstr "დეტექტორი"
+
+#~ msgid "Soft"
+#~ msgstr "რბილი"
+
+#~ msgid "Phase"
+#~ msgstr "ფაზა"
+
+#~ msgid "Independent"
+#~ msgstr "დამოუკიდებელი"
+
+#~ msgid "Octaves"
+#~ msgstr "ოქტავები"
+
+#~ msgid "_Manual"
+#~ msgstr "_ხელით"
+
+#~ msgid "Low Pass"
+#~ msgstr "დაბალსიხშირული ფილტრი"
+
+#~ msgid "Cancel"
+#~ msgstr "გაუქმება"

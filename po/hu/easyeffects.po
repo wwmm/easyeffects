@@ -1,0 +1,262 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2024-04-03 16:48+0000\n"
+"Last-Translator: Noel <chatenium@gmail.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/easyeffects/"
+"main/hu/>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "Név"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+msgid "Value"
+msgstr ""
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "_Easy Effects Névjegye"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "Előre beállított"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+#, fuzzy
+msgid "Quit"
+msgstr "_Kilépés"
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr ""
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "Profilok"
+
+#: src/contents/ui/main.qml:179
+#, fuzzy
+msgid "Preferences"
+msgstr "_Beállítások"
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "_Easy Effects Névjegye"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "Kimenet"
+
+#: src/contents/ui/PipeWireTab.qml:9
+msgid "PipeWire"
+msgstr ""
+
+#: src/main.cpp:55
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "Hangeffektek PipeWire alkalmazásokhoz"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr ""
+
+#: src/main.cpp:60
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+msgid "Width of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+msgid "Height of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+msgid "Last used preset."
+msgstr ""
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+#, fuzzy
+msgid "EasyEffects"
+msgstr "_Easy Effects Névjegye"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "Quealizer, Kompreszzor és Más Hang Effektek"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Hangeffektek PipeWire alkalmazásokhoz"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "Alkalmazás engedélyezése/letiltása"
+
+#~ msgid "Enable"
+#~ msgstr "Engedélyezés"
+
+#~ msgid "Change the volume of this application"
+#~ msgstr "Alkalmazás hangerejének módosítása"
+
+#~ msgid "Application Volume"
+#~ msgstr "Alkalmazás hangereje"
+
+#~ msgid "_Help"
+#~ msgstr "_Segítség"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "_Beállítások visszaállítása"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "_Gyorsbillentyűk"
+
+#~ msgid "Presets Menu"
+#~ msgstr "Profil menü"
+
+#~ msgid "Enable/disable the global bypass"
+#~ msgstr "Effektek globális letiltása/engedélyezése"
+
+#~ msgid "Global Bypass"
+#~ msgstr "Globális letiltás"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Elsődleges menü"
+
+#~ msgid "Easy Effects Window"
+#~ msgstr "Easy Effects Ablak"
+
+#~ msgid "Applications List"
+#~ msgstr "Alkalmazás lista"
+
+#~ msgid "Empty List"
+#~ msgstr "Üres lista"
+
+#~ msgid "No Audio Application Available"
+#~ msgstr "Nincs elérhető hangot kiadó alkalmazás"
+
+#~ msgid "Target"
+#~ msgstr "Cél"
+
+#~ msgid "Silence"
+#~ msgstr "Csend"
+
+#~ msgid "Maximum History"
+#~ msgstr "Teljes Előzmény"
+
+#~ msgid "Reference"
+#~ msgstr "Célzás"
+
+#~ msgid "Short-Term"
+#~ msgstr "Rövid-Távú"
+
+#~ msgid "Integrated"
+#~ msgstr "Integrált"
+
+#~ msgid "History"
+#~ msgstr "Előzmény"
+
+#~ msgid "Reset"
+#~ msgstr "Visszaállítás"
+
+#~ msgid "Loudness"
+#~ msgstr "Hangerő"
+
+#~ msgid "Device"
+#~ msgstr "Eszköz"
+
+#~ msgid "Profile"
+#~ msgstr "Profil"
+
+#~ msgid "Listen"
+#~ msgstr "Hallgatás"
+
+#~ msgid "3rd"
+#~ msgstr "3."
+
+#~ msgid "2nd"
+#~ msgstr "2."
+
+#~ msgid "Amount"
+#~ msgstr "Mennyiség"
+
+#~ msgid "Harmonics"
+#~ msgstr "Harmónika"
+
+#~ msgid "Scope"
+#~ msgstr "Szkóp"
+
+#~ msgid "Floor"
+#~ msgstr "Padló"
+
+#~ msgid "Link"
+#~ msgstr "Hivatkozás"
+
+#~ msgid "Application Name"
+#~ msgstr "Alkalmazás neve"
+
+#~ msgid "Compressor"
+#~ msgstr "Kompreszzor"
+
+#~ msgid "Mode"
+#~ msgstr "Mód"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"Profilok\""

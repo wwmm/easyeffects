@@ -1,0 +1,11 @@
+
+# translation guides
+
+https://api.kde.org/frameworks/ki18n/html/prg_guide.html
+https://techbase.kde.org/Development/Tutorials/Localization/i18n_Build_Systems
+
+# kxtconfig
+
+https://develop.kde.org/docs/features/configuration/introduction/
+https://develop.kde.org/docs/features/configuration/kconfig_xt/
+https://api.kde.org/frameworks/kconfig/html/kconfig_compiler.html

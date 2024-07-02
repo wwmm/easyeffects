@@ -1,0 +1,1459 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2023-12-31 05:09+0000\n"
+"Last-Translator: 이정희 <daemul72@gmail.com>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
+"ko/>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.4-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "인풋"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "이름"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+#, fuzzy
+msgid "Value"
+msgstr "플로어 값"
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "프리셋"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+#, fuzzy
+msgid "Quit"
+msgstr "종료(_Q)"
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr ""
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "프리셋"
+
+#: src/contents/ui/main.qml:179
+#, fuzzy
+msgid "Preferences"
+msgstr "환경설정(_P)"
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "EasyEffects 정보(_A)"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "아웃풋"
+
+#: src/contents/ui/PipeWireTab.qml:9
+#, fuzzy
+msgid "PipeWire"
+msgstr "PipeWire(_P)"
+
+#: src/main.cpp:55
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "PipeWire 음향 효과 애플리케이션"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "엔벌로프"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+msgid "Width of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+msgid "Height of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+#, fuzzy
+msgid "Last used preset."
+msgstr "새 프리셋 만들기"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "이퀄라이저, 컴프레서 및 기타 오디오 효과"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr ""
+#~ "limiter;compressor;reverberation;equalizer;autovolume;리미터;컴프레서;리버"
+#~ "브;이퀄라이저;자동음량조절;반향;잔향;자동음량;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "이 응용프로그램 활성화/비활성화"
+
+#~ msgid "Enable"
+#~ msgstr "활성화"
+
+#~ msgid "Excluded App List: Add/remove this application"
+#~ msgstr "제외된 앱 목록: 이 응용프로그램 추가/제거하기"
+
+#~ msgid "Exclude"
+#~ msgstr "제외하기"
+
+#~ msgid "Mute Application"
+#~ msgstr "응용 프로그램 음소거"
+
+#~ msgid "Change the volume of this application"
+#~ msgstr "이 응용프로그램의 음량 변경하기"
+
+#~ msgid "Application Volume"
+#~ msgstr "응용 프로그램 음량"
+
+#~ msgid "_Help"
+#~ msgstr "도움말(_H)"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "설정 재지정(_R)"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "단축키(_S)"
+
+#~ msgid "_About Easy Effects"
+#~ msgstr "Easy Effects 정보(_A)"
+
+#~ msgid "Presets Menu"
+#~ msgstr "프리셋 메뉴"
+
+#~ msgid "Enable/disable the global bypass"
+#~ msgstr "전역 바이패스 활성화/비활성화"
+
+#~ msgid "Global Bypass"
+#~ msgstr "전역 Bypass"
+
+#~ msgid "Primary Menu"
+#~ msgstr "기본 메뉴"
+
+#~ msgid "Easy Effects Window"
+#~ msgstr "Easy Effects 창"
+
+#~ msgid "Applications List"
+#~ msgstr "응용 프로그램 목록"
+
+#~ msgid "Empty List"
+#~ msgstr "빈 목록"
+
+#~ msgid "No Audio Application Available"
+#~ msgstr "사용 가능한 오디오 응용프로그램 없음"
+
+#~ msgid "Target"
+#~ msgstr "대상"
+
+#~ msgid "Maximum History"
+#~ msgstr "최대 히스토리"
+
+#~ msgid "Reference"
+#~ msgstr "참조"
+
+#~ msgid "Momentary"
+#~ msgstr "순간"
+
+#~ msgid "Short-Term"
+#~ msgstr "단기"
+
+#~ msgid "Integrated"
+#~ msgstr "통합"
+
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "기하 평균 (MSI)"
+
+#~ msgid "Geometric Mean (MS)"
+#~ msgstr "기하 평균 (MS)"
+
+#~ msgid "Geometric Mean (MI)"
+#~ msgstr "기하 평균 (MI)"
+
+#~ msgid "Geometric Mean (SI)"
+#~ msgstr "기하 평균 (SI)"
+
+#, fuzzy
+#~ msgid "History"
+#~ msgstr "히스토리 재지정"
+
+#~ msgid "Reset"
+#~ msgstr "재지정"
+
+#~ msgid "Loudness"
+#~ msgstr "소리의 세기"
+
+#~ msgid "Relative"
+#~ msgstr "상대적"
+
+#~ msgid "Range"
+#~ msgstr "범위"
+
+#~ msgid "Output Gain"
+#~ msgstr "아웃풋 게인"
+
+#~ msgid "Plugin Input Gain"
+#~ msgstr "플러그인 인풋 게인"
+
+#~ msgid "Plugin Output Gain"
+#~ msgstr "플러그인 아웃풋 게인"
+
+#~ msgid "Device"
+#~ msgstr "장치"
+
+#~ msgid "Profile"
+#~ msgstr "프로필"
+
+#~ msgid "Remove this autoload preset"
+#~ msgstr "이 자동불러오기 프리셋 제거하기"
+
+#~ msgid "Listen"
+#~ msgstr "듣기"
+
+#~ msgid "Blend Harmonics"
+#~ msgstr "고조파 섞기"
+
+#~ msgid "3rd"
+#~ msgstr "세번째"
+
+#~ msgid "2nd"
+#~ msgstr "두번째"
+
+#~ msgid "Amount"
+#~ msgstr "수량"
+
+#~ msgid "Harmonics"
+#~ msgstr "고조파"
+
+#~ msgid "Scope"
+#~ msgstr "스코프"
+
+#~ msgid "Floor"
+#~ msgstr "플로어"
+
+#~ msgid "Link"
+#~ msgstr "링크"
+
+#~ msgid "Application Name"
+#~ msgstr "응용프로그램 이름"
+
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "제외된 응용프로그램에 추가하기"
+
+#~ msgid "Excluded Applications List"
+#~ msgstr "제외된 프로그램 목록"
+
+#~ msgid "Show Excluded Applications"
+#~ msgstr "제외된 프로그램 보기"
+
+#~ msgid "Compressor"
+#~ msgstr "컴프레서"
+
+#~ msgid "Mode"
+#~ msgstr "모드"
+
+#~ msgid "Downward"
+#~ msgstr "아래방향"
+
+#~ msgid "Upward"
+#~ msgstr "윗방향"
+
+#~ msgid "Boosting"
+#~ msgstr "증폭"
+
+#~ msgid "Compression Mode"
+#~ msgstr "압축 모드"
+
+#~ msgid "Boost Threshold"
+#~ msgstr "부스트 한계값"
+
+#~ msgid "Boost Amount"
+#~ msgstr "부스트 양"
+
+#~ msgid "Attack"
+#~ msgstr "어택"
+
+#~ msgid "Time"
+#~ msgstr "타임"
+
+#~ msgid "Threshold"
+#~ msgstr "한계값"
+
+#~ msgid "Attack Time"
+#~ msgstr "어택 타임"
+
+#~ msgid "Attack Threshold"
+#~ msgstr "어택 한계값"
+
+#~ msgid "Release"
+#~ msgstr "릴리스"
+
+#~ msgid "Release Time"
+#~ msgstr "릴리스 타임"
+
+#~ msgid "Release Threshold"
+#~ msgstr "릴리스 한계값"
+
+#~ msgid "Ratio"
+#~ msgstr "비율"
+
+#, fuzzy
+#~ msgid "Knee"
+#~ msgstr "Knee"
+
+#~ msgid "Makeup"
+#~ msgstr "메이크업"
+
+#~ msgid "Dry Level"
+#~ msgstr "드라이 레벨"
+
+#~ msgid "Wet Level"
+#~ msgstr "웨트 레벨"
+
+#~ msgid "Sidechain"
+#~ msgstr "사이드체인"
+
+#~ msgid "Stereo Split Mode"
+#~ msgstr "스테레오 분할 모드"
+
+#~ msgid "Source"
+#~ msgstr "소스"
+
+#~ msgid "Middle"
+#~ msgstr "중간"
+
+#~ msgid "Side"
+#~ msgstr "측면"
+
+#~ msgid "Left"
+#~ msgstr "좌측"
+
+#~ msgid "Right"
+#~ msgstr "우측"
+
+#~ msgid "Min"
+#~ msgstr "최소"
+
+#~ msgid "Max"
+#~ msgstr "최대"
+
+#~ msgid "Sidechain Source"
+#~ msgstr "사이드체인 소스"
+
+#~ msgid "Left/Right"
+#~ msgstr "좌측/우측"
+
+#~ msgid "Right/Left"
+#~ msgstr "우측/좌측"
+
+#~ msgid "Mid/Side"
+#~ msgstr "중간/측면"
+
+#~ msgid "Side/Mid"
+#~ msgstr "측면/중간"
+
+#~ msgid "Stereo Split Source"
+#~ msgstr "스테레오 분할 모드"
+
+#~ msgid "Peak"
+#~ msgstr "피크"
+
+#~ msgid "RMS"
+#~ msgstr "RMS"
+
+#~ msgid "Low-Pass Filter"
+#~ msgstr "로우패스 필터"
+
+#~ msgid "Simple Moving Average"
+#~ msgstr "단순 이동 평균"
+
+#~ msgid "Sidechain Mode"
+#~ msgstr "사이드체인 모드"
+
+#~ msgid "Listen Sidechain"
+#~ msgstr "사이드체인 듣기"
+
+#~ msgid "Type"
+#~ msgstr "유형"
+
+#~ msgid "Feed-forward"
+#~ msgstr "피드포워드"
+
+#~ msgid "Feed-back"
+#~ msgstr "피드백"
+
+#~ msgid "External"
+#~ msgstr "외부"
+
+#~ msgid "Sidechain Type"
+#~ msgstr "사이드체인 유형"
+
+#~ msgid "Input Device"
+#~ msgstr "입력 장치"
+
+#~ msgid "PreAmplification"
+#~ msgstr "프리앰플리케이션"
+
+#~ msgid "Reactivity"
+#~ msgstr "반응성"
+
+#~ msgid "Lookahead"
+#~ msgstr "룩 어헤드"
+
+#~ msgid "Sidechain Filters"
+#~ msgstr "사이드체인 필터"
+
+#~ msgid "High-Pass"
+#~ msgstr "하이패스"
+
+#~ msgid "Frequency"
+#~ msgstr "주파수"
+
+#~ msgid "Off"
+#~ msgstr "끄기"
+
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "하이패스 필터 모드"
+
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "하이패스 필터 주파수"
+
+#~ msgid "Low-Pass"
+#~ msgstr "로우패스"
+
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "로우패스 필터 모드"
+
+#~ msgid "Gain"
+#~ msgstr "게인"
+
+#~ msgid "Curve"
+#~ msgstr "커브"
+
+#~ msgid "L"
+#~ msgstr "L"
+
+#~ msgid "Left Channel"
+#~ msgstr "좌측 채널"
+
+#~ msgid "R"
+#~ msgstr "R"
+
+#~ msgid "Right Channel"
+#~ msgstr "우측 채널"
+
+#~ msgid "Impulses"
+#~ msgstr "임펄스"
+
+#~ msgid "Combine"
+#~ msgstr "결합하기"
+
+#~ msgid "Stereo Width"
+#~ msgstr "스테레오 너비"
+
+#~ msgid "Spectrum"
+#~ msgstr "스펙트럼"
+
+#~ msgid "Log Scale"
+#~ msgstr "로그 스케일"
+
+#~ msgid "Autogain"
+#~ msgstr "오토게인"
+
+#~ msgid "Rate"
+#~ msgstr "속도"
+
+#~ msgid "Samples"
+#~ msgstr "샘플"
+
+#~ msgid "Duration"
+#~ msgstr "재생시간"
+
+#~ msgid "Combine Impulse Responses"
+#~ msgstr "Impulse 반응 결합하기"
+
+#~ msgid "First Kernel"
+#~ msgstr "첫 번째 커널"
+
+#~ msgid "Second Kernel"
+#~ msgstr "두 번째 커널"
+
+#~ msgid "Output File Name"
+#~ msgstr "출력 파일 이름"
+
+#~ msgid "Combined Kernel Name"
+#~ msgstr "결합된 커널 이름"
+
+#~ msgid "Import Impulse"
+#~ msgstr "Impulse 가져오기"
+
+#~ msgid "Search"
+#~ msgstr "검색하기"
+
+#~ msgid "Search Impulse File"
+#~ msgstr "Impulse 파일 검색하기"
+
+#~ msgid "Impulse Files List"
+#~ msgstr "Impulse 파일 목록"
+
+#~ msgid "Default"
+#~ msgstr "기본값"
+
+#~ msgid "Cutoff"
+#~ msgstr "컷오프"
+
+#~ msgid "Feed"
+#~ msgstr "피드"
+
+#~ msgid "Bypass"
+#~ msgstr "바이패스"
+
+#~ msgid "Mute"
+#~ msgstr "음소거"
+
+#~ msgid "Post Filter Beta"
+#~ msgstr "포스트 필터 베타"
+
+#~ msgid "Detection"
+#~ msgstr "탐지"
+
+#~ msgid "Wide"
+#~ msgstr "와이드"
+
+#~ msgid "Split"
+#~ msgstr "분할"
+
+#~ msgid "F1 Split"
+#~ msgstr "F1 분할"
+
+#~ msgid "Frequency 1 Split"
+#~ msgstr "주파수 1 분할"
+
+#~ msgid "F2 Peak"
+#~ msgstr "F2 피크"
+
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "주파수 2 피크"
+
+#~ msgid "F1 Gain"
+#~ msgstr "F1 게인"
+
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "주파수 1 게인"
+
+#~ msgid "F2 Level"
+#~ msgstr "F2 레벨"
+
+#~ msgid "Frequency 2 Level"
+#~ msgstr "주파수 2 레벨"
+
+#~ msgid "F2 Peak Q"
+#~ msgstr "F2 피크 Q"
+
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "주파수 2 피크 Q"
+
+#, fuzzy
+#~ msgid "Laxity"
+#~ msgstr "Laxity"
+
+#~ msgid "Detected"
+#~ msgstr "감지됨"
+
+#~ msgid "Reduction"
+#~ msgstr "감소"
+
+#~ msgid "Delay"
+#~ msgstr "지연시간"
+
+#~ msgid "Filter Length"
+#~ msgstr "필터 길이"
+
+#, fuzzy
+#~ msgid "Enable/disable input monitoring"
+#~ msgstr "이 응용프로그램 활성화/비활성화"
+
+#~ msgid "Pitch Right"
+#~ msgstr "피치 우측"
+
+#~ msgid "Split Channels"
+#~ msgstr "분할 채널"
+
+#~ msgid "Import Preset"
+#~ msgstr "프리셋 가져오기"
+
+#~ msgid "Export Preset"
+#~ msgstr "프리셋 내보내기"
+
+#~ msgid "Internal"
+#~ msgstr "내부"
+
+#~ msgid "API"
+#~ msgstr "API"
+
+#~ msgid "Access"
+#~ msgstr "액세스"
+
+#~ msgid "High-Shelf"
+#~ msgstr "하이쉘프"
+
+#~ msgid "Band-Pass"
+#~ msgstr "밴드패스"
+
+#~ msgid "Ladder-Pass"
+#~ msgstr "래더패스"
+
+#~ msgid "Ladder-Rejection"
+#~ msgstr "래더리젝션"
+
+#~ msgid "All-Pass"
+#~ msgstr "올패스"
+
+#~ msgid "Release Zone Start"
+#~ msgstr "릴리스 존 시작"
+
+#~ msgid "True Peak"
+#~ msgstr "주파수 2 피크"
+
+#~ msgid "Reset History"
+#~ msgstr "히스토리 재지정"
+
+#~ msgid "Band 1"
+#~ msgstr "대역폭 1"
+
+#~ msgid "Band 2"
+#~ msgstr "대역폭 2"
+
+#~ msgid "Band 3"
+#~ msgstr "대역폭 3"
+
+#~ msgid "Band 4"
+#~ msgstr "대역폭 4"
+
+#~ msgid "Band Compression Mode"
+#~ msgstr "대역폭 압축 모드"
+
+#~ msgid "Band Bypass"
+#~ msgstr "대역폭 바이패스"
+
+#~ msgid "Stereo Split"
+#~ msgstr "스테레오 분할"
+
+#~ msgid "Low-Cut Filter Frequency"
+#~ msgstr "로우컷 필터 주파수"
+
+#~ msgid "High-Cut Filter Frequency"
+#~ msgstr "하이컷 필터 주파수"
+
+#~ msgid "Band Gain"
+#~ msgstr "대역폭 게인"
+
+#~ msgid "Band Reduction"
+#~ msgstr "대역폭 감소"
+
+#~ msgid "Presets Autoloading"
+#~ msgstr "프리셋 자동 로딩"
+
+#~ msgid "Output Devices"
+#~ msgstr "출력 장치"
+
+#~ msgid "Output Presets"
+#~ msgstr "출력 프리셋"
+
+#~ msgid "Add Autoloading Output Preset"
+#~ msgstr "자동 로딩 출력 프리셋 추가하기"
+
+#~ msgid "Output Autoloading Presets List"
+#~ msgstr "출력 자동 로딩 프리셋 목록"
+
+#~ msgid "Input Devices"
+#~ msgstr "입력 장치"
+
+#~ msgid "Input Presets"
+#~ msgstr "입력 프리셋"
+
+#~ msgid "Add Autoloading Input Preset"
+#~ msgstr "자동 로딩 입력 프리셋 추가하기"
+
+#~ msgid "Input Autoloading Presets List"
+#~ msgstr "입력 자동 로딩 프리셋 목록"
+
+#~ msgid "Modules"
+#~ msgstr "모듈"
+
+#~ msgid "Modules List"
+#~ msgstr "모듈 목록"
+
+#~ msgid "Clients"
+#~ msgstr "클라이언트"
+
+#~ msgid "Clients List"
+#~ msgstr "클라이언트 목록"
+
+#~ msgid "Test Signal"
+#~ msgstr "테스트 신호"
+
+#~ msgid "State"
+#~ msgstr "상태"
+
+#~ msgid "Enabled"
+#~ msgstr "활성화됨"
+
+#~ msgid "Properties"
+#~ msgstr "속성"
+
+#~ msgid "Channels"
+#~ msgstr "채널"
+
+#~ msgid "Both Channels"
+#~ msgstr "두 채널 모두"
+
+#~ msgid "Waveform"
+#~ msgstr "파형"
+
+#~ msgid "Sine Wave"
+#~ msgstr "사인파"
+
+#~ msgid "White Noise"
+#~ msgstr "백색 소음"
+
+#~ msgid "Quick Seek"
+#~ msgstr "빠른 탐색"
+
+#~ msgid "Anti-aliasing"
+#~ msgstr "앤티 앨리어싱"
+
+#~ msgid "Sequence Length"
+#~ msgstr "시퀀스 길이"
+
+#~ msgid "Seek Window"
+#~ msgstr "탐색 창"
+
+#~ msgid "Overlap Length"
+#~ msgstr "오버랩 길이"
+
+#~ msgid "Pitch"
+#~ msgstr "피치"
+
+#~ msgid "Semitones"
+#~ msgstr "세미톤"
+
+#~ msgid "Tempo Difference"
+#~ msgstr "템포 차이"
+
+#~ msgid "Rate Difference"
+#~ msgstr "속도 차이"
+
+#~ msgid "Remove this effect"
+#~ msgstr "이 효과 제거하기"
+
+#~ msgid "Add Effect"
+#~ msgstr "효과 추가하기"
+
+#, fuzzy
+#~ msgid "Go to the previous effect"
+#~ msgstr "이 효과 제거하기"
+
+#~ msgid "Used Plugins List"
+#~ msgstr "사용된 플러그인 목록"
+
+#~ msgid "No Effects"
+#~ msgstr "효과 없음"
+
+#~ msgid "Search Plugin"
+#~ msgstr "플러그인 검색하기"
+
+#~ msgid "Plugins List"
+#~ msgstr "플러그인 목록"
+
+#~ msgid "Service"
+#~ msgstr "서비스"
+
+#~ msgid "Audio"
+#~ msgstr "오디오"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "내부"
+
+#, fuzzy
+#~ msgid "Update Frequency"
+#~ msgstr "주파수"
+
+#, fuzzy
+#~ msgid "Related to LV2 Plugins"
+#~ msgstr "업데이트 빈도 (LV2 플러그인)"
+
+#~ msgid "Frequency Range"
+#~ msgstr "주파수 범위"
+
+#~ msgid "Load"
+#~ msgstr "불러오기"
+
+#~ msgid "Discard the current settings and load this preset"
+#~ msgstr "현재 설정을 취소하고 이 프리셋을 불러옵니다"
+
+#~ msgid "Save current settings to this preset file"
+#~ msgstr "이 프리셋 파일에 현재 설정 저장하기"
+
+#~ msgid "Remove this preset file"
+#~ msgstr "이 프리셋 파일 제거하기"
+
+#, fuzzy
+#~ msgid "Try this community preset"
+#~ msgstr "출력 프리셋 검색하기"
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "프리셋 가져오기"
+
+#~ msgid "New Preset Name"
+#~ msgstr "새 프리셋 이름"
+
+#, fuzzy
+#~ msgid "Search Local Preset"
+#~ msgstr "프리셋 검색하기"
+
+#, fuzzy
+#~ msgid "Local Presets List"
+#~ msgstr "프리셋 목록"
+
+#, fuzzy
+#~ msgid "Search Community Preset"
+#~ msgstr "출력 프리셋 검색하기"
+
+#, fuzzy
+#~ msgid "Community Presets List"
+#~ msgstr "출력 프리셋 목록"
+
+#~ msgid "High Frequency Damping"
+#~ msgstr "고주파 감쇠"
+
+#~ msgid "Voice Detection"
+#~ msgstr "음성 감지"
+
+#~ msgid "Model Not Loaded"
+#~ msgstr "모델을 불러오지 않았습니다"
+
+#~ msgid "Quit Easy Effects"
+#~ msgstr "Easy Effects 종료"
+
+#~ msgid "Dereverberation"
+#~ msgstr "디리버버레이션"
+
+#~ msgid "Level"
+#~ msgstr "F2 레벨"
+
+#~ msgid "Input Balance"
+#~ msgstr "입력 밸런스"
+
+#~ msgid "Stereo Mode"
+#~ msgstr "스테레오 모드"
+
+#~ msgid "Output Balance"
+#~ msgstr "출력 밸런스"
+
+#~ msgid "Running"
+#~ msgstr "실행 중"
+
+#~ msgid "Suspended"
+#~ msgstr "일시 중단됨"
+
+#~ msgid "Creating"
+#~ msgstr "만드는 중"
+
+#~ msgid "Error"
+#~ msgstr "오류"
+
+#~ msgid "channels"
+#~ msgstr "채널"
+
+#~ msgid "Reset Easy Effects."
+#~ msgstr "EasyEffects를 재설정합니다."
+
+#~ msgid "Show available presets."
+#~ msgstr "사용 가능한 프리셋을 표시합니다."
+
+#~ msgid "Load a preset. Example: easyeffects -l music"
+#~ msgstr "프리셋을 불러옵니다. 예시: easyeffects -l music"
+
+#~ msgid "_Output"
+#~ msgstr "출력(_O)"
+
+#~ msgid "_Input"
+#~ msgstr "입력(_I)"
+
+#~ msgid "Impulse File Not Imported"
+#~ msgstr "Impulse 파일을 가져오지 않았습니다"
+
+#~ msgid "Import Impulse File"
+#~ msgstr "Impulse 파일 가져오기"
+
+#~ msgid "Open"
+#~ msgstr "열기"
+
+#~ msgid "Load Impulse"
+#~ msgstr "Impulse 불러오기"
+
+#~ msgid "Remove Impulse"
+#~ msgstr "Impulse 제거하기"
+
+#~ msgid "No Impulse File Loaded"
+#~ msgstr "불러온 Impulse 파일 없음"
+
+#~ msgid "Failed To Load The Impulse File"
+#~ msgstr "Impulse 파일을 불러오지 못했습니다"
+
+#~ msgid "Players"
+#~ msgstr "재생기"
+
+#~ msgid "Effects"
+#~ msgstr "효과음"
+
+#~ msgid "Import APO Preset File"
+#~ msgstr "APO 프리셋 파일 가져오기"
+
+#~ msgid "APO Presets"
+#~ msgstr "APO 프리셋"
+
+#~ msgid ""
+#~ "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
+#~ "Content."
+#~ msgstr ""
+#~ "APO 프리셋을 불러오지 못했습니다. 파일 형식이 지원되지 않을 수 있습니다. "
+#~ "내용을 확인하세요."
+
+#~ msgid "Split channels not yet supported when exporting APO presets."
+#~ msgstr "APO 프리셋을 내보낼 때 분할 채널은 아직 지원되지 않습니다."
+
+#~ msgid "Export EqualizerAPO Preset File"
+#~ msgstr "EqualizerAPO 프리셋 파일 내보내기"
+
+#~ msgid "EqualizerAPO Presets"
+#~ msgstr "EqualizerAPO 프리셋"
+
+#~ msgid "Import GraphicEQ Preset File"
+#~ msgstr "GraphicEQ 프리셋 파일 가져오기"
+
+#~ msgid "GraphicEQ Presets"
+#~ msgstr "GraphicEQ 프리셋"
+
+#~ msgid ""
+#~ "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please "
+#~ "Check Its Content."
+#~ msgstr ""
+#~ "GraphicEQ 프리셋을 불러오지 못했습니다. 파일 형식이 지원되지 않을 수 있습"
+#~ "니다. 내용을 확인해주세요."
+
+#~ msgid "Remove Autoloading Preset"
+#~ msgstr "자동 로딩 프리셋 제거하기"
+
+#~ msgid "Output Level Meter"
+#~ msgstr "출력 레벨 미터"
+
+#~ msgid "Remove"
+#~ msgstr "제거"
+
+#~ msgid "Output Device"
+#~ msgstr "출력 장치"
+
+#, fuzzy
+#~ msgid "Community Preset"
+#~ msgstr "프리셋 가져오기"
+
+#, fuzzy
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "제외된 프로그램 목록"
+
+#, fuzzy
+#~ msgid "No Preset Loaded"
+#~ msgstr "새 프리셋 이름"
+
+#, fuzzy
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "프리셋 목록"
+
+#, fuzzy
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "프리셋 가져오기"
+
+#~ msgid ""
+#~ "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To "
+#~ "The Standard Model."
+#~ msgstr ""
+#~ "선택한 모델을 불러오지 못했습니다. 형식이 지원되지 않을 수 있습니다. 표준 "
+#~ "모델로 돌아갔습니다."
+
+#~ msgid "Import Model File"
+#~ msgstr "모델 파일 가져오기"
+
+#~ msgid "RNNoise Models"
+#~ msgstr "RNNoise 모델"
+
+#~ msgid "Bass Enhancer"
+#~ msgstr "베이스 인핸서"
+
+#~ msgid "Bass Loudness"
+#~ msgstr "베이스 음량"
+
+#~ msgid "Convolver"
+#~ msgstr "콘벌버"
+
+#~ msgid "Crossfeed"
+#~ msgstr "크로스피드"
+
+#~ msgid "Crystalizer"
+#~ msgstr "크리스탈라이저"
+
+#~ msgid "Deep Noise Remover"
+#~ msgstr "딥 노이즈 리무버"
+
+#~ msgid "Deesser"
+#~ msgstr "디이저"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "에코 캔슬러"
+
+#~ msgid "Equalizer"
+#~ msgstr "이퀄라이저"
+
+#~ msgid "Exciter"
+#~ msgstr "익사이터"
+
+#~ msgid "Level Meter"
+#~ msgstr "레벨 미터"
+
+#~ msgid "Limiter"
+#~ msgstr "리미터"
+
+#~ msgid "Maximizer"
+#~ msgstr "맥시마이저"
+
+#~ msgid "Multiband Compressor"
+#~ msgstr "멀티밴드 컴프레서"
+
+#~ msgid "Multiband Gate"
+#~ msgstr "멀티밴드 게이트"
+
+#~ msgid "Reverberation"
+#~ msgstr "리버버레이션"
+
+#~ msgid "Noise Reduction"
+#~ msgstr "노이즈 저감"
+
+#~ msgid "Speech Processor"
+#~ msgstr "음성 프로세서"
+
+#~ msgid "Stereo Tools"
+#~ msgstr "스테레오 도구"
+
+#, c++-format
+#~ msgid "{} Not Available"
+#~ msgstr "{} 사용 불가"
+
+#, c++-format
+#~ msgid ""
+#~ "The software required for the {} effect, \"{}\", is not installed. "
+#~ "Consider using the Easy Effects Flatpak package or installing the "
+#~ "software yourself."
+#~ msgstr ""
+#~ "{} 효과 \"{}\"에 필요한 소프트웨어가 설치되지 않았습니다. Easy Effects "
+#~ "Flatpak 패키지를 사용하거나 소프트웨어를 직접 설치해 보세요."
+
+#, c++-format
+#~ msgid ""
+#~ "The {} effect was disabled when Easy Effects was compiled. This is "
+#~ "perhaps since the software required for this effect, \"{}\", was not "
+#~ "available. Consider using the Easy Effects Flatpak package or building "
+#~ "your own Easy Effects package."
+#~ msgstr ""
+#~ "Easy Effects가 컴파일될 때 {} 효과가 비활성화되었습니다. 이는 아마도 이 효"
+#~ "과에 필요한 소프트웨어 \"{}\"를 사용할 수 없었기 때문일 것입니다. Easy "
+#~ "Effects Flatpak 패키지를 사용하거나 자신만의 Easy Effects 패키지를 구축해 "
+#~ "보세요."
+
+#~ msgid "-inf"
+#~ msgstr "-inf"
+
+#, c++-format
+#~ msgid "Using {}"
+#~ msgstr "{} 사용 중"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"프리셋\""
+
+#~ msgid "Import a preset"
+#~ msgstr "프리셋 가져오기"
+
+#~ msgid "Uniform"
+#~ msgstr "균일"
+
+#~ msgid "New Output Preset Name"
+#~ msgstr "새 출력 프리셋 이름"
+
+#~ msgid "infinity"
+#~ msgstr "무한대"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "비율"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "한계값"
+
+#, fuzzy
+#~ msgid "Low-pass"
+#~ msgstr "저대역"
+
+#, fuzzy
+#~ msgid "High-pass"
+#~ msgstr "고대역"
+
+#, fuzzy
+#~ msgid "Band Type"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Loudness List"
+#~ msgstr "소리의 세기"
+
+#, fuzzy
+#~ msgid "Formant"
+#~ msgstr "포멧"
+
+#, fuzzy
+#~ msgid "Preserved"
+#~ msgstr "프리셋"
+
+#, fuzzy
+#~ msgid "Detector"
+#~ msgstr "Detection"
+
+#~ msgid "_Manual"
+#~ msgstr "수동(_M)"
+
+#~ msgid "Cancel"
+#~ msgstr "취소하기"
+
+#, fuzzy
+#~ msgid " PreAmplification"
+#~ msgstr "PreAmplification"
+
+#, fuzzy
+#~ msgid "Frame Size"
+#~ msgstr "Frame Size"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enable/disable the\n"
+#~ "                                    global bypass"
+#~ msgstr "전역 바이패스 활성화/비활성화"
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "저대역"
+
+#, fuzzy
+#~ msgid " Uniform"
+#~ msgstr "균일"
+
+#, fuzzy
+#~ msgid "Left Delay"
+#~ msgstr "좌측 채널"
+
+#, fuzzy
+#~ msgid "Right Delay"
+#~ msgstr "우측 채널"
+
+#, fuzzy
+#~ msgid "Left Dry Level"
+#~ msgstr "타겟"
+
+#, fuzzy
+#~ msgid "Right Dry Level"
+#~ msgstr "타겟"
+
+#, fuzzy
+#~ msgid "Left Wet Level"
+#~ msgstr "타겟"
+
+#, fuzzy
+#~ msgid "Right Wet Level"
+#~ msgstr "타겟"
+
+#~ msgid "EasyEffects Window"
+#~ msgstr "EasyEffects 윈도우"
+
+#, fuzzy
+#~ msgid "Band 1 Bypass"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 1 Attack"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 1 Release"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 1 Ratio"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 1 Makeup"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 2 Bypass"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 2 Attack"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 2 Release"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 2 Ratio"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 2 Makeup"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 3 Bypass"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 3 Attack"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 3 Release"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 3 Ratio"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 3 Makeup"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 4 Bypass"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 4 Attack"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 4 Release"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 4 Ratio"
+#~ msgstr "바이패스"
+
+#, fuzzy
+#~ msgid "Band 4 Makeup"
+#~ msgstr "바이패스"
+
+#~ msgid ""
+#~ "EasyEffects is an advanced audio manipulation tool. It includes an "
+#~ "equalizer, limiter, compressor and a reverberation tool, just to mention "
+#~ "a few. To complement this there is also a built in spectrum analyzer."
+#~ msgstr ""
+#~ "EasyEffects는 고급 오디오 처리 도구 입니다. 이퀄라이저, 리미터, 컴프레서, "
+#~ "리버브 툴 등이 포함되며, 이외에도 여러가지 플러그인이 있습니다. 예를 들자"
+#~ "면 스펙트럼 분석기도 내장되어 있습니다."
+
+#~ msgid ""
+#~ "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+#~ "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+#~ msgstr ""
+#~ "EasyEffects는 PulseEffects의 후속 프로젝트 입니다. EasyEffects는 PipeWire "
+#~ "만을 지원 합니다. PulseAudio를 사용하는 경우 PulseEffects를 사용하십시오."
+
+#~ msgid ""
+#~ "Because EasyEffects uses the default PipeWire sound server it will work "
+#~ "with most, if not all, applications you use. All supported applications "
+#~ "are presented in the main window, where each can be enabled individually."
+#~ msgstr ""
+#~ "EasyEffects는 기본 PipeWire 사운드 서버를 사용하므로 대부분의 응용 프로그"
+#~ "램에서 작동합니다. 지원되는 모든 응용 프로그램은 메인 화면에 표시되며 각"
+#~ "각 개별적으로 활성화할 수 있습니다."
+
+#~ msgid ""
+#~ "Besides manipulating sound output, EasyEffects is able to apply effects "
+#~ "to an input device, such as a microphone. This is, for example, useful in "
+#~ "audio recording, but it also works well during voice conversations."
+#~ msgstr ""
+#~ "EasyEffects는 음향 출력을 처리할 뿐만 아니라 마이크 등의 입력 장치에도 음"
+#~ "향효과를 걸 수 있습니다. 예를 들어 오디오 녹음 할 때 유용하며 음성 대화 시"
+#~ "에도 효과를 발휘합니다."
+
+#~ msgid ""
+#~ "When EasyEffects is launched it will conveniently remember the "
+#~ "configuration used in the last session. It is also possible to save all "
+#~ "the current settings as profiles."
+#~ msgstr ""
+#~ "EasyEffects를 시작하면 마지막 세션에서 사용된 설정이 적용됩니다. 현재 설정"
+#~ "을 모두 프로파일로 저장할 수도 있습니다."
+
+#~ msgid "The main page showing two audio output apps"
+#~ msgstr "두 개의 오디오 출력 프로그램을 보여주는 메인 페이지"
+
+#~ msgid "The bass enhancer page showing audio controls"
+#~ msgstr "오디오 컨트롤을 보여주는 bass enhancer 페이지"
+
+#~ msgid "The convolver page showing audio controls"
+#~ msgstr "오디오 컨트롤을 보여주는 convolver 페이지"
+
+#~ msgid "This release adds the following features:"
+#~ msgstr "이 릴리스에는 다음 기능이 추가되었습니다:"
+
+#~ msgid "The interface of the pitch plugin was improved"
+#~ msgstr "피치 플러그인의 인터페이스가 개선되었습니다"
+
+#~ msgid "Our application icon is now compatible with desktops that uses QT"
+#~ msgstr "이제 응용 프로그램 아이콘이 QT를 사용하는 데스크톱과 호환됩니다."
+
+#~ msgid ""
+#~ "Our blocklist code will use the `application.id` tag if the stream sets it"
+#~ msgstr ""
+#~ "스트림이 설정하는 경우 차단 목록 코드는 `application.id` 태그를 사용합니"
+#~ "다."
+
+#~ msgid ""
+#~ "In order to avoid problems with the mouse scroll the entries in the "
+#~ "applications list shown in our `Players/Recorders`"
+#~ msgstr ""
+#~ "마우스 스크롤 문제를 방지하려면 `재생/녹음`에 표시된 애플리케이션 목록의 "
+#~ "항목을 스크롤하십시오"
+
+#~ msgid ""
+#~ "tab do not show a volume scale anymore. More details about the problem "
+#~ "and the solution for it can be found on #1211"
+#~ msgstr ""
+#~ "탭에 더 이상 볼륨 스케일이 표시되지 않습니다. 문제 및 해결 방법에 대한 자"
+#~ "세한 내용은 #1211에서 확인할 수 있습니다."
+
+#~ msgid "and #1427"
+#~ msgstr "그리고 #1427"
+
+#~ msgid "This release fixes the following bug:"
+#~ msgstr "이 릴리스는 다음 버그를 수정합니다:"
+
+#~ msgid "This release adds the following feature:"
+#~ msgstr "이 릴리스에는 다음 기능이 추가되었습니다:"
+
+#~ msgid ""
+#~ "The crossfeed filter should deal better with PipeWire's dynamic latency "
+#~ "switches. Jumps in volume level should not happen anymore in these "
+#~ "situations."
+#~ msgstr ""
+#~ "크로스 피드 필터는 PipeWire의 동적 레이턴시 스위치에 잘 대응합니다. 이제 "
+#~ "볼륨 레벨 점프가 발생하지 않습니다."
+
+#~ msgid ""
+#~ "Fixed a bug that prevented mono microphones from properly working with "
+#~ "EasyEffects"
+#~ msgstr ""
+#~ "모노 마이크가 EasyEffects에서 제대로 작동하지 않던 버그를 수정했습니다"
+
+#~ msgid "Support for the next PipeWire release `0.3.44`"
+#~ msgstr "PipeWire 다음 릴리스 `0.3.44`를 지원"
+
+#, fuzzy
+#~ msgid "Add to Blocklist"
+#~ msgstr "차단 목록에 추가"
+
+#, fuzzy
+#~ msgid "Add Plugin"
+#~ msgstr "플러그인 추가"
+
+#, fuzzy
+#~ msgid "Format"
+#~ msgstr "포멧"
+
+#, fuzzy
+#~ msgid "Latency"
+#~ msgstr "레이턴시"
+
+#, fuzzy
+#~ msgid "idle"
+#~ msgstr "유휴 상태"

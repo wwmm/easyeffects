@@ -1,0 +1,2488 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# eternal <www.eternalhui@gmail.com>, 2020-2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2024-03-24 04:01+0000\n"
+"Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"easyeffects/main/zh_Hans/>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.5-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "输入"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "名称"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+#, fuzzy
+msgid "Value"
+msgstr "上限值"
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "预设"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+#, fuzzy
+msgid "Quit"
+msgstr "退出(_Q)"
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr ""
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "预设"
+
+#: src/contents/ui/main.qml:179
+#, fuzzy
+msgid "Preferences"
+msgstr "首选项(_P)"
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "关于 EasyEffects (_A)"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "输出"
+
+#: src/contents/ui/PipeWireTab.qml:9
+#, fuzzy
+msgid "PipeWire"
+msgstr "PipeWire(_P)"
+
+#: src/main.cpp:55
+msgid "Audio effects for PipeWire applications"
+msgstr "为使用 PipeWire 的程序提供音效"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "波封"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+#, fuzzy
+msgid "Width of the main window."
+msgstr "隐藏隐藏窗口。"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+#, fuzzy
+msgid "Height of the main window."
+msgstr "隐藏隐藏窗口。"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+#, fuzzy
+msgid "Last used preset."
+msgstr "创建新预设"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "均衡器、压缩器和其他音效"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "为使用 PipeWire 的应用提供音效"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "限幅器;压缩器;混响;均衡器;自动音量;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "启用/禁用此应用程序"
+
+#~ msgid "Enable"
+#~ msgstr "启用"
+
+#~ msgid "Excluded App List: Add/remove this application"
+#~ msgstr "排除的应用程序列表：添加/删除此应用程序"
+
+#~ msgid "Exclude"
+#~ msgstr "排除"
+
+#~ msgid "Mute Application"
+#~ msgstr "将程序静音"
+
+#~ msgid "Change the volume of this application"
+#~ msgstr "改变该应用的音量"
+
+#~ msgid "Application Volume"
+#~ msgstr "应用程序音量"
+
+#~ msgid "_Help"
+#~ msgstr "帮助(_H)"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "重置设置(_R)"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "快捷键(_S)"
+
+#~ msgid "Presets Menu"
+#~ msgstr "预设菜单"
+
+#~ msgid "Enable/disable the global bypass"
+#~ msgstr "开启/关闭全局旁通"
+
+#~ msgid "Global Bypass"
+#~ msgstr "全局旁路"
+
+#~ msgid "Primary Menu"
+#~ msgstr "主菜单"
+
+#~ msgid "Easy Effects Window"
+#~ msgstr "EasyEffects 窗口"
+
+#~ msgid "Applications List"
+#~ msgstr "应用程序列表"
+
+#~ msgid "Empty List"
+#~ msgstr "空列表"
+
+#~ msgid "No Audio Application Available"
+#~ msgstr "没有可用的音频应用程序"
+
+#~ msgid "Controls"
+#~ msgstr "控制"
+
+#~ msgid "Target"
+#~ msgstr "目标"
+
+#~ msgid "Silence"
+#~ msgstr "静音"
+
+#~ msgid "Maximum History"
+#~ msgstr "历史记录最大值"
+
+#~ msgid "Reference"
+#~ msgstr "参考"
+
+#~ msgid "Momentary"
+#~ msgstr "瞬时"
+
+#~ msgid "Short-Term"
+#~ msgstr "短期"
+
+#~ msgid "Integrated"
+#~ msgstr "综合"
+
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "几何平均 (MSI)"
+
+#~ msgid "Geometric Mean (MS)"
+#~ msgstr "几何平均 (MS)"
+
+#~ msgid "Geometric Mean (MI)"
+#~ msgstr "几何平均 (MI)"
+
+#~ msgid "Geometric Mean (SI)"
+#~ msgstr "几何平均 (SI)"
+
+#, fuzzy
+#~ msgid "History"
+#~ msgstr "清除记录"
+
+#~ msgid "Reset"
+#~ msgstr "重置"
+
+#~ msgid "Loudness"
+#~ msgstr "响度"
+
+#~ msgid "Relative"
+#~ msgstr "相对值"
+
+#~ msgid "Range"
+#~ msgstr "范围"
+
+#~ msgid "Output Gain"
+#~ msgstr "输出增益"
+
+#~ msgid "Plugin Input Gain"
+#~ msgstr "插件输入增益"
+
+#~ msgid "Plugin Output Gain"
+#~ msgstr "插件输出增益"
+
+#~ msgid "Device"
+#~ msgstr "设备"
+
+#~ msgid "Profile"
+#~ msgstr "概述"
+
+#~ msgid "Remove this autoload preset"
+#~ msgstr "删除此自动加载预设"
+
+#~ msgid "Listen"
+#~ msgstr "聆听"
+
+#~ msgid "Blend Harmonics"
+#~ msgstr "谐波注入"
+
+#~ msgid "3rd"
+#~ msgstr "3 次"
+
+#~ msgid "2nd"
+#~ msgstr "2 次"
+
+#~ msgid "Amount"
+#~ msgstr "程度"
+
+#~ msgid "Harmonics"
+#~ msgstr "谐波"
+
+#~ msgid "Scope"
+#~ msgstr "范围"
+
+#~ msgid "Floor"
+#~ msgstr "下限"
+
+#~ msgid "Floor Value"
+#~ msgstr "下限"
+
+#, fuzzy
+#~ msgid "Link"
+#~ msgstr "连接"
+
+#~ msgid "Application Name"
+#~ msgstr "应用程序名称"
+
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "添加到排除的程序"
+
+#~ msgid "Excluded Applications List"
+#~ msgstr "已排除程序列表"
+
+#~ msgid "Show Excluded Applications"
+#~ msgstr "显示已排除的程序"
+
+#~ msgid "Show Native Window"
+#~ msgstr "显示原生窗口"
+
+#~ msgid "Compressor"
+#~ msgstr "压缩器"
+
+#~ msgid "Mode"
+#~ msgstr "模式"
+
+#~ msgid "Downward"
+#~ msgstr "向下"
+
+#~ msgid "Upward"
+#~ msgstr "向上"
+
+#~ msgid "Boosting"
+#~ msgstr "加强"
+
+#~ msgid "Compression Mode"
+#~ msgstr "压缩模式"
+
+#~ msgid "Boost Threshold"
+#~ msgstr "增强阈值"
+
+#~ msgid "Boost Amount"
+#~ msgstr "增强量"
+
+#~ msgid "Attack"
+#~ msgstr "建立"
+
+#~ msgid "Time"
+#~ msgstr "时间"
+
+#~ msgid "Threshold"
+#~ msgstr "阈值"
+
+#~ msgid "Attack Time"
+#~ msgstr "建立时间"
+
+#~ msgid "Attack Threshold"
+#~ msgstr "建立阈值"
+
+#~ msgid "Release"
+#~ msgstr "释放"
+
+#~ msgid "Release Time"
+#~ msgstr "释放时间"
+
+#~ msgid "Release Threshold"
+#~ msgstr "释放阈值"
+
+#~ msgid "Ratio"
+#~ msgstr "比率"
+
+#~ msgid "Knee"
+#~ msgstr "拐点"
+
+#~ msgid "Makeup"
+#~ msgstr "补偿"
+
+#~ msgid "Dry Level"
+#~ msgstr "干声级别"
+
+#~ msgid "Wet Level"
+#~ msgstr "湿声级别"
+
+#~ msgid "Sidechain"
+#~ msgstr "侧链"
+
+#~ msgid "Stereo Split Mode"
+#~ msgstr "分离立体声模式"
+
+#~ msgid "Source"
+#~ msgstr "源"
+
+#~ msgid "Middle"
+#~ msgstr "中央"
+
+#~ msgid "Side"
+#~ msgstr "侧边"
+
+#~ msgid "Left"
+#~ msgstr "左"
+
+#~ msgid "Right"
+#~ msgstr "右"
+
+#~ msgid "Min"
+#~ msgstr "输入端最低值"
+
+#~ msgid "Max"
+#~ msgstr "输入端最高值"
+
+#~ msgid "Sidechain Source"
+#~ msgstr "侧链声源"
+
+#~ msgid "Left/Right"
+#~ msgstr "左/右"
+
+#~ msgid "Right/Left"
+#~ msgstr "右/左"
+
+#~ msgid "Mid/Side"
+#~ msgstr "中置/侧边"
+
+#~ msgid "Side/Mid"
+#~ msgstr "侧边/中置"
+
+#~ msgid "Stereo Split Source"
+#~ msgstr "分离立体声源"
+
+#~ msgid "Peak"
+#~ msgstr "峰值"
+
+#~ msgid "RMS"
+#~ msgstr "均方根值"
+
+#~ msgid "Low-Pass Filter"
+#~ msgstr "低通滤波器"
+
+#~ msgid "Simple Moving Average"
+#~ msgstr "简单移动平均法"
+
+#~ msgid "Sidechain Mode"
+#~ msgstr "侧链模式"
+
+#~ msgid "Listen Sidechain"
+#~ msgstr "播放侧链"
+
+#~ msgid "Type"
+#~ msgstr "类型"
+
+#~ msgid "Feed-forward"
+#~ msgstr "前馈式"
+
+#~ msgid "Feed-back"
+#~ msgstr "反馈式"
+
+#~ msgid "External"
+#~ msgstr "外部"
+
+#~ msgid "Sidechain Type"
+#~ msgstr "侧链类型"
+
+#~ msgid "Input Device"
+#~ msgstr "输入设备"
+
+#~ msgid "PreAmplification"
+#~ msgstr "前置放大"
+
+#~ msgid "Reactivity"
+#~ msgstr "响应"
+
+#~ msgid "Lookahead"
+#~ msgstr "前视时间"
+
+#~ msgid "Sidechain Filters"
+#~ msgstr "侧链过滤器"
+
+#~ msgid "High-Pass"
+#~ msgstr "高通滤波器"
+
+#~ msgid "Frequency"
+#~ msgstr "频率"
+
+#~ msgid "Off"
+#~ msgstr "关闭"
+
+#~ msgid "12 dB/oct"
+#~ msgstr "每八度 12 dB"
+
+#~ msgid "24 dB/oct"
+#~ msgstr "每八度 24 dB"
+
+#~ msgid "36 dB/oct"
+#~ msgstr "每八度 36 dB"
+
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "高通滤波模式"
+
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "高通滤波频率"
+
+#~ msgid "Low-Pass"
+#~ msgstr "低通"
+
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "低通滤波模式"
+
+#~ msgid "Gain"
+#~ msgstr "增益"
+
+#~ msgid "Curve"
+#~ msgstr "压缩曲线"
+
+#~ msgid "L"
+#~ msgstr "左"
+
+#~ msgid "Left Channel"
+#~ msgstr "左声道"
+
+#~ msgid "R"
+#~ msgstr "右"
+
+#~ msgid "Right Channel"
+#~ msgstr "右声道"
+
+#~ msgid "Impulses"
+#~ msgstr "Impulse 文件"
+
+#~ msgid "Combine"
+#~ msgstr "混合"
+
+#~ msgid "Stereo Width"
+#~ msgstr "立体声宽度"
+
+#~ msgid "Spectrum"
+#~ msgstr "频谱"
+
+#~ msgid "Log Scale"
+#~ msgstr "对数坐标"
+
+#~ msgid "Autogain"
+#~ msgstr "自动增益"
+
+#~ msgid "Rate"
+#~ msgstr "速率"
+
+#~ msgid "Samples"
+#~ msgstr "样本"
+
+#~ msgid "Duration"
+#~ msgstr "持续时间"
+
+#~ msgid "Combine Impulse Responses"
+#~ msgstr "混合脉冲响应"
+
+#, fuzzy
+#~ msgid "First Kernel"
+#~ msgstr "首Kernel"
+
+#, fuzzy
+#~ msgid "Second Kernel"
+#~ msgstr "次Kernel"
+
+#~ msgid "Output File Name"
+#~ msgstr "输出文件名"
+
+#~ msgid "Combined Kernel Name"
+#~ msgstr "混合Kernel名称"
+
+#~ msgid "Import Impulse"
+#~ msgstr "导入 Impulse 文件"
+
+#~ msgid "Search"
+#~ msgstr "搜索"
+
+#~ msgid "Search Impulse File"
+#~ msgstr "搜索脉冲文件"
+
+#~ msgid "Impulse Files List"
+#~ msgstr "脉冲文件列表"
+
+#~ msgid "Default"
+#~ msgstr "默认"
+
+#~ msgid "Cutoff"
+#~ msgstr "截止"
+
+#~ msgid "Feed"
+#~ msgstr "反馈"
+
+#~ msgid "Bypass"
+#~ msgstr "旁路"
+
+#~ msgid "Mute"
+#~ msgstr "静音"
+
+#~ msgid "Attenuation Limit"
+#~ msgstr "衰减极限"
+
+#~ msgid "Minimum Processing Threshold"
+#~ msgstr "最小处理阈值"
+
+#~ msgid "Maximum ERB Processing threshold"
+#~ msgstr "最大ERB处理阈值"
+
+#~ msgid "Maximum DF Processing Threshold"
+#~ msgstr "最大DF处理阈值"
+
+#~ msgid "Minimum Processing Buffer"
+#~ msgstr "最小处理缓冲区"
+
+#, fuzzy
+#~ msgid "Post Filter Beta"
+#~ msgstr "过滤器长度"
+
+#~ msgid "Detection"
+#~ msgstr "侦测"
+
+#~ msgid "Wide"
+#~ msgstr "宽频段"
+
+#~ msgid "Split"
+#~ msgstr "分割"
+
+#~ msgid "F1 Split"
+#~ msgstr "F1 分离"
+
+#~ msgid "Frequency 1 Split"
+#~ msgstr "频率 1 分割"
+
+#~ msgid "F2 Peak"
+#~ msgstr "F2 峰值"
+
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "频率 2 峰值"
+
+#~ msgid "F1 Gain"
+#~ msgstr "F1 增益"
+
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "频率 1 增益"
+
+#~ msgid "F2 Level"
+#~ msgstr "F2 级别"
+
+#~ msgid "Frequency 2 Level"
+#~ msgstr "频率 2 水平"
+
+#~ msgid "F2 Peak Q"
+#~ msgstr "F2极限Q值"
+
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "频率 2 Peak Q"
+
+#~ msgid "Laxity"
+#~ msgstr "松弛度"
+
+#~ msgid "Detected"
+#~ msgstr "已侦测到"
+
+#~ msgid "Reduction"
+#~ msgstr "衰减"
+
+#~ msgid "Delay"
+#~ msgstr "延迟"
+
+#~ msgid "Invert Phase"
+#~ msgstr "反转相位"
+
+#~ msgid "Filter Length"
+#~ msgstr "过滤器长度"
+
+#~ msgid "Residual Echo Suppression"
+#~ msgstr "残余回声抑制"
+
+#~ msgid "Near End Echo Suppression"
+#~ msgstr "近端回声抑制"
+
+#~ msgid "Excluded Apps"
+#~ msgstr "排除的应用"
+
+#~ msgid "Enable/disable input monitoring"
+#~ msgstr "启用/禁用此应用程序"
+
+#~ msgid "Bands"
+#~ msgstr "频段"
+
+#~ msgid "Balance"
+#~ msgstr "平衡"
+
+#~ msgid "Pitch Left"
+#~ msgstr "左音高"
+
+#~ msgid "Pitch Right"
+#~ msgstr "右音高"
+
+#~ msgid "Split Channels"
+#~ msgstr "分离声道"
+
+#~ msgid "Flat Response"
+#~ msgstr "平滑响应"
+
+#~ msgid "Calculate Frequencies"
+#~ msgstr "频率响应"
+
+#~ msgid "Sort Bands"
+#~ msgstr "将频段排序"
+
+#~ msgid "Import Preset"
+#~ msgstr "导入预设"
+
+#~ msgid "Export Preset"
+#~ msgstr "导出预设"
+
+#~ msgid "Slope"
+#~ msgstr "斜率"
+
+#~ msgid "Solo"
+#~ msgstr "独奏"
+
+#~ msgid "Quality"
+#~ msgstr "品质"
+
+#~ msgid "Width"
+#~ msgstr "宽度"
+
+#~ msgid "Ceil"
+#~ msgstr "上限"
+
+#~ msgid "Expander"
+#~ msgstr "扩展器"
+
+#, fuzzy
+#~ msgid "Expander Mode"
+#~ msgstr "频段模式"
+
+#~ msgid "Internal"
+#~ msgstr "内部"
+
+#~ msgid "API"
+#~ msgstr "API"
+
+#~ msgid "Access"
+#~ msgstr "访问"
+
+#~ msgid "Description"
+#~ msgstr "描述"
+
+#~ msgid "Remove this model file"
+#~ msgstr "删除这个模型文件"
+
+#~ msgid "Low-Shelf"
+#~ msgstr "低架"
+
+#~ msgid "High-Shelf"
+#~ msgstr "高架"
+
+#~ msgid "Bell"
+#~ msgstr "钟形"
+
+#, fuzzy
+#~ msgid "Band-Pass"
+#~ msgstr "频段旁路"
+
+#~ msgid "Notch"
+#~ msgstr "带阻"
+
+#~ msgid "Resonance"
+#~ msgstr "共鸣"
+
+#, fuzzy
+#~ msgid "Ladder-Pass"
+#~ msgstr "低通"
+
+#, fuzzy
+#~ msgid "Ladder-Rejection"
+#~ msgstr "频段衰减"
+
+#~ msgid "All-Pass"
+#~ msgstr "全通"
+
+#, fuzzy
+#~ msgid "Equalizer Mode"
+#~ msgstr "均衡器"
+
+#~ msgid "Filter"
+#~ msgstr "过滤器"
+
+#~ msgid "Gate"
+#~ msgstr "门限"
+
+#~ msgid "Zone"
+#~ msgstr "过渡区间"
+
+#~ msgid "Hysteresis"
+#~ msgstr "迟滞"
+
+#~ msgid "Mix"
+#~ msgstr "干湿声混合"
+
+#~ msgid "Attack Zone Start"
+#~ msgstr "建立区间开头"
+
+#~ msgid "Release Zone Start"
+#~ msgstr "释放区间开头"
+
+#~ msgid "True Peak"
+#~ msgstr "实际峰值"
+
+#~ msgid "Reset History"
+#~ msgstr "清除记录"
+
+#~ msgid "Oversampling"
+#~ msgstr "超采样"
+
+#~ msgid "Dither"
+#~ msgstr "抖动"
+
+#~ msgid "Herm Thin"
+#~ msgstr "窄式埃尔米特插值"
+
+#~ msgid "Herm Wide"
+#~ msgstr "宽式埃尔米特插值"
+
+#~ msgid "Herm Tail"
+#~ msgstr "尾式埃尔米特插值"
+
+#~ msgid "Herm Duck"
+#~ msgstr "蹲式埃尔米特插值"
+
+#~ msgid "Exp Thin"
+#~ msgstr "窄式指数插值"
+
+#~ msgid "Exp Wide"
+#~ msgstr "宽式指数插值"
+
+#~ msgid "Exp Tail"
+#~ msgstr "尾式指数插值"
+
+#~ msgid "Exp Duck"
+#~ msgstr "蹲式指数插值"
+
+#~ msgid "Line Thin"
+#~ msgstr "窄式线性插值"
+
+#~ msgid "Line Wide"
+#~ msgstr "宽式线性插值"
+
+#~ msgid "Line Tail"
+#~ msgstr "尾式线性插值"
+
+#~ msgid "Line Duck"
+#~ msgstr "蹲式线性插值"
+
+#~ msgid "None"
+#~ msgstr "无"
+
+#~ msgid "Half x2(2L)"
+#~ msgstr "部分 2倍 (2L)"
+
+#~ msgid "Half x2(3L)"
+#~ msgstr "部分 2倍 (3L)"
+
+#~ msgid "Half x3(2L)"
+#~ msgstr "部分 3倍 (2L)"
+
+#~ msgid "Half x3(3L)"
+#~ msgstr "部分 3倍 (3L)"
+
+#~ msgid "Half x4(2L)"
+#~ msgstr "部分 4倍 (2L)"
+
+#~ msgid "Half x4(3L)"
+#~ msgstr "部分 4倍 (3L)"
+
+#~ msgid "Half x6(2L)"
+#~ msgstr "部分 6倍 (2L)"
+
+#~ msgid "Half x6(3L)"
+#~ msgstr "部分 6倍 (3L)"
+
+#~ msgid "Half x8(2L)"
+#~ msgstr "部分 8倍 (2L)"
+
+#~ msgid "Half x8(3L)"
+#~ msgstr "部分 8倍 (3L)"
+
+#~ msgid "Full x2(2L)"
+#~ msgstr "全部 2倍 (2L)"
+
+#~ msgid "Full x2(3L)"
+#~ msgstr "全部 2倍 (3L)"
+
+#~ msgid "Full x3(2L)"
+#~ msgstr "全部 3倍 (2L)"
+
+#~ msgid "Full x3(3L)"
+#~ msgstr "全部 3倍 (3L)"
+
+#~ msgid "Full x4(2L)"
+#~ msgstr "全部 4倍 (2L)"
+
+#~ msgid "Full x4(3L)"
+#~ msgstr "全部 4倍 (3L)"
+
+#~ msgid "Full x6(2L)"
+#~ msgstr "全部 6倍 (2L)"
+
+#~ msgid "Full x6(3L)"
+#~ msgstr "全部 6倍 (3L)"
+
+#~ msgid "Full x8(2L)"
+#~ msgstr "全部 8倍 (2L)"
+
+#~ msgid "Full x8(3L)"
+#~ msgstr "全部 8倍 (3L)"
+
+#~ msgid "SC PreAmp"
+#~ msgstr "侧链前置放大"
+
+#~ msgid "Sidechain PreAmplification"
+#~ msgstr "侧链前置放大"
+
+#~ msgid "Boost"
+#~ msgstr "增强"
+
+#~ msgid "Stereo Link"
+#~ msgstr "立体声连锁"
+
+#~ msgid "External Sidechain"
+#~ msgstr "外部侧链"
+
+#~ msgid "External Sidechain Source"
+#~ msgstr "外部侧链声源"
+
+#~ msgid "Auto Leveling"
+#~ msgstr "自动调平"
+
+#~ msgid "Auto Leveling Attack"
+#~ msgstr "自动调平建立"
+
+#~ msgid "Auto Leveling Release"
+#~ msgstr "自动调平释放"
+
+#~ msgid "Auto Leveling Knee"
+#~ msgstr "自动调平拐点"
+
+#~ msgid "Gain Left"
+#~ msgstr "左增益"
+
+#~ msgid "Gain Right"
+#~ msgstr "右增益"
+
+#~ msgid "Sidechain Left"
+#~ msgstr "左边侧链"
+
+#~ msgid "Sidechain Right"
+#~ msgstr "右边侧链"
+
+#~ msgid "Standard"
+#~ msgstr "标准"
+
+#~ msgid "Flat"
+#~ msgstr "平滑"
+
+#~ msgid "FFT Size"
+#~ msgstr "FFT 大小"
+
+#~ msgid "Output Volume"
+#~ msgstr "输出音量"
+
+#~ msgid "Clipping"
+#~ msgstr "削波"
+
+#~ msgid "Sidechain Boost"
+#~ msgstr "侧链增强"
+
+#~ msgid "Pink BT"
+#~ msgstr "粉噪 双线性变换"
+
+#~ msgid "Pink MT"
+#~ msgstr "粉噪 匹配变换"
+
+#~ msgid "Brown BT"
+#~ msgstr "棕噪 双线性变换"
+
+#~ msgid "Brown MT"
+#~ msgstr "棕噪 匹配变换"
+
+#~ msgid "Show Native User Interface"
+#~ msgstr "显示原生 UI"
+
+#~ msgid "Operating Mode"
+#~ msgstr "运作模式"
+
+#~ msgid "Classic"
+#~ msgstr "经典"
+
+#~ msgid "Modern"
+#~ msgstr "现代"
+
+#, fuzzy
+#~ msgid "Linear Phase"
+#~ msgstr "反转相位"
+
+#~ msgid "Bands List"
+#~ msgstr "频段列表"
+
+#~ msgid "Band 1"
+#~ msgstr "频段 1"
+
+#~ msgid "Band 2"
+#~ msgstr "频段 2"
+
+#~ msgid "Band 3"
+#~ msgstr "频段 3"
+
+#~ msgid "Band 4"
+#~ msgstr "频段 4"
+
+#~ msgid "Band 5"
+#~ msgstr "频段 5"
+
+#~ msgid "Band 6"
+#~ msgstr "频段 6"
+
+#~ msgid "Band 7"
+#~ msgstr "频段 7"
+
+#~ msgid "Band 8"
+#~ msgstr "频段 8"
+
+#~ msgid "Band Start"
+#~ msgstr "频段起始"
+
+#~ msgid "Band End"
+#~ msgstr "频段末尾"
+
+#~ msgid "Band Compression Mode"
+#~ msgstr "频段压缩模式"
+
+#~ msgid "Band Bypass"
+#~ msgstr "频段旁路"
+
+#~ msgid "Band Sidechain Options"
+#~ msgstr "频段侧链选项"
+
+#~ msgid "Stereo Split"
+#~ msgstr "立体声分离"
+
+#, fuzzy
+#~ msgid "Low-Cut"
+#~ msgstr "低切滤音"
+
+#~ msgid "Low-Cut Filter Frequency"
+#~ msgstr "低切滤音器频率"
+
+#, fuzzy
+#~ msgid "High-Cut"
+#~ msgstr "高切滤音"
+
+#~ msgid "High-Cut Filter Frequency"
+#~ msgstr "高切滤音器频率"
+
+#~ msgid "PreAmp"
+#~ msgstr "前置放大器"
+
+#~ msgid "Band Gain"
+#~ msgstr "频段增益"
+
+#~ msgid "Band Envelope"
+#~ msgstr "频段包络"
+
+#~ msgid "Band Curve"
+#~ msgstr "频段曲线"
+
+#~ msgid "Band Reduction"
+#~ msgstr "频段衰减"
+
+#~ msgid "General"
+#~ msgstr "通用"
+
+#~ msgid "Device Management"
+#~ msgstr "设备管理"
+
+#~ msgid ""
+#~ "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
+#~ "external applications (e.g. Gnome Settings and Plasma System Settings)."
+#~ msgstr ""
+#~ "不建议把 EasyEffects Sink/Source 设置为外部应用程序（例如 Gnome 设置或 "
+#~ "Plasma 系统设置）的默认设备。"
+
+#~ msgid "Use Default Input"
+#~ msgstr "使用默认输入"
+
+#~ msgid "Custom Input Device"
+#~ msgstr "自定义输入设备"
+
+#~ msgid "Use Default Output"
+#~ msgstr "使用默认输出"
+
+#~ msgid "Custom Output Device"
+#~ msgstr "自定义输出设备"
+
+#~ msgid "Server Information"
+#~ msgstr "服务器信息"
+
+#~ msgid "Header Version"
+#~ msgstr "头文件版本"
+
+#~ msgid "Library Version"
+#~ msgstr "库文件版本"
+
+#~ msgid "Sampling Rate"
+#~ msgstr "采样率"
+
+#~ msgid "Minimum Quantum"
+#~ msgstr "最小音频帧 (Quantum)"
+
+#~ msgid "Maximum Quantum"
+#~ msgstr "最大 Quantum"
+
+#~ msgid "Default Quantum"
+#~ msgstr "默认音频帧 (Quantum)"
+
+#~ msgid "Presets Autoloading"
+#~ msgstr "自动加载预设"
+
+#~ msgid "Output Devices"
+#~ msgstr "输出设备"
+
+#~ msgid "Output Presets"
+#~ msgstr "输出预设"
+
+#~ msgid "Create Association"
+#~ msgstr "创建关联"
+
+#~ msgid "Add Autoloading Output Preset"
+#~ msgstr "新建自动加载的输出预设"
+
+#~ msgid "Output Autoloading Presets List"
+#~ msgstr "输出自动加载预设列表"
+
+#~ msgid "Input Devices"
+#~ msgstr "输入设备"
+
+#~ msgid "Input Presets"
+#~ msgstr "输入预设"
+
+#~ msgid "Add Autoloading Input Preset"
+#~ msgstr "新建自动加载的输入预设"
+
+#~ msgid "Input Autoloading Presets List"
+#~ msgstr "输入自动加载预设列表"
+
+#~ msgid "Modules"
+#~ msgstr "模块"
+
+#~ msgid "Modules List"
+#~ msgstr "模块列表"
+
+#~ msgid "Clients"
+#~ msgstr "客户端"
+
+#~ msgid "Clients List"
+#~ msgstr "客户端列表"
+
+#~ msgid "Test Signal"
+#~ msgstr "测试信号"
+
+#~ msgid "State"
+#~ msgstr "状态"
+
+#~ msgid "Enabled"
+#~ msgstr "已启用"
+
+#~ msgid "Properties"
+#~ msgstr "属性"
+
+#~ msgid "Channels"
+#~ msgstr "声道"
+
+#~ msgid "Both"
+#~ msgstr "双声道"
+
+#~ msgid "Both Channels"
+#~ msgstr "双声道"
+
+#~ msgid "Waveform"
+#~ msgstr "波形"
+
+#~ msgid "Sine Wave"
+#~ msgstr "正弦波"
+
+#~ msgid "White Noise"
+#~ msgstr "白噪声"
+
+#~ msgid "Quick Seek"
+#~ msgstr "快速查找"
+
+#~ msgid "Anti-aliasing"
+#~ msgstr "抗混叠"
+
+#~ msgid "Sequence Length"
+#~ msgstr "序列长度"
+
+#, fuzzy
+#~ msgid "Seek Window"
+#~ msgstr "关闭窗口"
+
+#~ msgid "Overlap Length"
+#~ msgstr "重叠长度"
+
+#~ msgid "Pitch"
+#~ msgstr "音高"
+
+#~ msgid "Semitones"
+#~ msgstr "半音"
+
+#~ msgid "Tempo Difference"
+#~ msgstr "拍子差"
+
+#~ msgid "Rate Difference"
+#~ msgstr "速率差"
+
+#~ msgid "Remove this effect"
+#~ msgstr "删除此音效"
+
+#~ msgid "Enable/disable this effect"
+#~ msgstr "启用/禁用此音效"
+
+#~ msgid "Change the position of this effect"
+#~ msgstr "改变此音效的位置"
+
+#~ msgid "Add Effect"
+#~ msgstr "添加音效"
+
+#, fuzzy
+#~ msgid "Go to the previous effect"
+#~ msgstr "删除此音效"
+
+#~ msgid "Used Plugins List"
+#~ msgstr "使用的插件的列表"
+
+#~ msgid "No Effects"
+#~ msgstr "无音效"
+
+#~ msgid "Audio Stream Not Modified"
+#~ msgstr "音频流未作修改"
+
+#~ msgid "Search Plugin"
+#~ msgstr "搜索插件"
+
+#~ msgid "Plugins List"
+#~ msgstr "插件列表"
+
+#~ msgid "_General"
+#~ msgstr "常规(_G)"
+
+#~ msgid "Service"
+#~ msgstr "服务"
+
+#~ msgid "Launch Service at System Startup"
+#~ msgstr "系统启动时运行服务"
+
+#~ msgid "Shutdown on Window Closing"
+#~ msgstr "窗口关闭时退出"
+
+#~ msgid "Audio"
+#~ msgstr "音频"
+
+#~ msgid "Process All Output Streams"
+#~ msgstr "处理所有输出流"
+
+#~ msgid "Process All Input Streams"
+#~ msgstr "处理所有输入流"
+
+#~ msgid "Ignore Streams from Monitor of Devices"
+#~ msgstr "忽略来自设备 Monitor 的音频流"
+
+#~ msgid "Use Cubic Volume"
+#~ msgstr "使用非线性（立方）音量调节"
+
+#~ msgid "Inactivity Timeout"
+#~ msgstr "空闲超时"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "翻译更新"
+
+#, fuzzy
+#~ msgid "Related to Level Meters and Spectrum"
+#~ msgstr "更新间隔（电平表、频谱）"
+
+#, fuzzy
+#~ msgid "Update Frequency"
+#~ msgstr "分割频率 1"
+
+#, fuzzy
+#~ msgid "Related to LV2 Plugins"
+#~ msgstr "更新频率（LV2插件）"
+
+#~ msgid "Style"
+#~ msgstr "界面风格"
+
+#~ msgid "Use Dark Theme"
+#~ msgstr "使用暗色主题"
+
+#~ msgid "Hide Menus on Outside Clicks"
+#~ msgstr "点击外部时隐藏菜单"
+
+#~ msgid "Experimental Features"
+#~ msgstr "实验性功能"
+
+#~ msgid "Native Plugin Window"
+#~ msgstr "原生插件窗口"
+
+#~ msgid "Allows The Native Plugin Window to be Shown/Hidden"
+#~ msgstr "允许显示或隐藏原生插件窗口"
+
+#~ msgid "_Spectrum"
+#~ msgstr "频谱(_S)"
+
+#~ msgid "Shape"
+#~ msgstr "形状"
+
+#~ msgid "Bars"
+#~ msgstr "柱状"
+
+#~ msgid "Lines"
+#~ msgstr "线型"
+
+#~ msgid "Dots"
+#~ msgstr "点阵"
+
+#~ msgid "Points"
+#~ msgstr "数量"
+
+#~ msgid "Height"
+#~ msgstr "高度"
+
+#~ msgid "Line Width"
+#~ msgstr "线宽"
+
+#~ msgid "Fill"
+#~ msgstr "填充频谱"
+
+#~ msgid "Show Bars Border"
+#~ msgstr "显示条柱边框"
+
+#~ msgid "Rounded Corners"
+#~ msgstr "圆角"
+
+#~ msgid "Dynamic Scale"
+#~ msgstr "动态比例"
+
+#~ msgid "Color"
+#~ msgstr "颜色"
+
+#~ msgid "Lines and Bars"
+#~ msgstr "线形与条柱"
+
+#~ msgid "Axis Labels"
+#~ msgstr "坐标轴标签"
+
+#~ msgid "Frequency Range"
+#~ msgstr "频率范围"
+
+#~ msgid "Minimum"
+#~ msgstr "最低"
+
+#~ msgid "Maximum"
+#~ msgstr "最高"
+
+#~ msgid "Load"
+#~ msgstr "加载"
+
+#~ msgid "Discard the current settings and load this preset"
+#~ msgstr "丢弃当前设置并加载此预设"
+
+#~ msgid "Save current settings to this preset file"
+#~ msgstr "将当前设置保存到这个预设文件"
+
+#~ msgid "Remove this preset file"
+#~ msgstr "删除这个预设文件"
+
+#, fuzzy
+#~ msgid "Try"
+#~ msgstr "干声"
+
+#, fuzzy
+#~ msgid "Try this community preset"
+#~ msgstr "搜索输出预设"
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "导入模型"
+
+#~ msgid "New Preset Name"
+#~ msgstr "新预设名称"
+
+#, fuzzy
+#~ msgid "Search Local Preset"
+#~ msgstr "搜索预设"
+
+#, fuzzy
+#~ msgid "Local Presets List"
+#~ msgstr "预设列表"
+
+#, fuzzy
+#~ msgid "Search Community Preset"
+#~ msgstr "搜索输出预设"
+
+#, fuzzy
+#~ msgid "Community Presets List"
+#~ msgstr "输出预设列表"
+
+#~ msgid "High Frequency Damping"
+#~ msgstr "高频阻尼"
+
+#~ msgid "Room Size"
+#~ msgstr "房间大小"
+
+#~ msgid "Small"
+#~ msgstr "小"
+
+#~ msgid "Medium"
+#~ msgstr "中"
+
+#~ msgid "Large"
+#~ msgstr "大"
+
+#~ msgid "Tunnel"
+#~ msgstr "通道"
+
+#~ msgid "Large/smooth"
+#~ msgstr "大/平整"
+
+#~ msgid "Experimental"
+#~ msgstr "实验性"
+
+#~ msgid "Diffusion"
+#~ msgstr "扩散"
+
+#~ msgid "Pre Delay"
+#~ msgstr "前反射延迟"
+
+#~ msgid "Decay Time"
+#~ msgstr "衰减时间"
+
+#~ msgid "Bass Cut"
+#~ msgstr "低切"
+
+#~ msgid "Treble Cut"
+#~ msgstr "高切"
+
+#~ msgid "Ambience"
+#~ msgstr "氛围"
+
+#~ msgid "Empty Walls"
+#~ msgstr "空旷"
+
+#~ msgid "Room"
+#~ msgstr "房间"
+
+#~ msgid "Large Empty Hall"
+#~ msgstr "空荡的大厅"
+
+#~ msgid "Disco"
+#~ msgstr "舞厅"
+
+#~ msgid "Large Occupied Hall"
+#~ msgstr "拥挤的大厅"
+
+#~ msgid "Import Model"
+#~ msgstr "导入模型"
+
+#~ msgid "Voice Detection"
+#~ msgstr "语音侦测"
+
+#~ msgid "Models"
+#~ msgstr "模型"
+
+#~ msgid "Standard Model"
+#~ msgstr "标准模型"
+
+#~ msgid "RNNoise Models List"
+#~ msgstr "RNNoise 模型列表"
+
+#~ msgid "Model Not Loaded"
+#~ msgstr "模型尚未载入"
+
+#~ msgid "Active Model"
+#~ msgstr "激活模型"
+
+#~ msgid "Standard RNNoise Model"
+#~ msgstr "标准 RNNoise 模型"
+
+#~ msgid "Overview"
+#~ msgstr "概览"
+
+#~ msgid "Show help"
+#~ msgstr "显示帮助"
+
+#~ msgid "Fullscreen/Restore from fullscreen"
+#~ msgstr "全屏/从全屏还原"
+
+#~ msgid "Close the Window"
+#~ msgstr "关闭窗口"
+
+#~ msgid "Quit Easy Effects"
+#~ msgstr "退出 Easy Effects"
+
+#~ msgid "Denoise"
+#~ msgstr "抑制噪音"
+
+#~ msgid "Automatic Gain Control"
+#~ msgstr "自动增益控制"
+
+#~ msgid "Dereverberation"
+#~ msgstr "去混响"
+
+#~ msgid "Voice Activity Probability"
+#~ msgstr "语音状态进入概率"
+
+#~ msgid "Start"
+#~ msgstr "开始概率"
+
+#~ msgid "Continue"
+#~ msgstr "持续概率"
+
+#~ msgid "Noise Suppression"
+#~ msgstr "抑制强度"
+
+#~ msgid "Level"
+#~ msgstr "级别"
+
+#~ msgid "Input Balance"
+#~ msgstr "输出平衡"
+
+#~ msgid "Softclip"
+#~ msgstr "软削波"
+
+#~ msgid "Softclip Level"
+#~ msgstr "软削波等级"
+
+#~ msgid "Stereo Matrix"
+#~ msgstr "立体声阵距"
+
+#~ msgid "LR > LR (Stereo Default)"
+#~ msgstr "LR > LR (默认立体声)"
+
+#~ msgid "LR > MS (Stereo to Mid-Side)"
+#~ msgstr "LR > MS (立体声至中-侧)"
+
+#~ msgid "MS > LR (Mid-Side to Stereo)"
+#~ msgstr "MS > LR (中-侧至立体声)"
+
+#~ msgid "LR > LL (Mono Left Channel)"
+#~ msgstr "LR > LL (单声道左)"
+
+#~ msgid "LR > RR (Mono Right Channel)"
+#~ msgstr "LR > RR (单声道右)"
+
+#~ msgid "LR > L+R (Mono Sum L+R)"
+#~ msgstr "LR > L+R (单声道左右合并)"
+
+#~ msgid "LR > RL (Stereo Flip Channels)"
+#~ msgstr "LR > RL (立体声翻转)"
+
+#~ msgid "Stereo Mode"
+#~ msgstr "立体声模式"
+
+#~ msgid "Side Level"
+#~ msgstr "侧边级别"
+
+#~ msgid "Side Balance"
+#~ msgstr "侧边平衡"
+
+#~ msgid "Middle Level"
+#~ msgstr "中置级别"
+
+#~ msgid "Middle Panorama"
+#~ msgstr "中置全景"
+
+#~ msgid "Output Balance"
+#~ msgstr "输出平衡"
+
+#~ msgid "Delay L/R"
+#~ msgstr "延迟 L/R"
+
+#~ msgid "Delay Left Right"
+#~ msgstr "延迟 L/R"
+
+#~ msgid "Stereo Base"
+#~ msgstr "立体声基线"
+
+#~ msgid "Stereo Phase"
+#~ msgstr "立体声相位"
+
+#~ msgid "Running"
+#~ msgstr "正在运行"
+
+#~ msgid "Suspended"
+#~ msgstr "已暂停"
+
+#~ msgid "Idle"
+#~ msgstr "空闲"
+
+#~ msgid "Creating"
+#~ msgstr "创建中"
+
+#~ msgid "Error"
+#~ msgstr "错误"
+
+#~ msgid "Unknown"
+#~ msgstr "未知"
+
+#~ msgid "Undefined Name - Process ID "
+#~ msgstr "未定义名称 - 进程 ID "
+
+#~ msgid "channels"
+#~ msgstr "声道"
+
+#~ msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
+#~ msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
+
+#~ msgid "Quit Easy Effects. Useful when running in service mode."
+#~ msgstr "退出 Easy Effects。 在服务模式下运行时有用。"
+
+#~ msgid "Print the easyeffects version"
+#~ msgstr "打印 EasyEffects 版本号"
+
+#~ msgid "Reset Easy Effects."
+#~ msgstr "重置 Easy Effects。"
+
+#~ msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+#~ msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
+
+#~ msgid "Show available presets."
+#~ msgstr "显示可用预设。"
+
+#~ msgid "Load a preset. Example: easyeffects -l music"
+#~ msgstr "加载预设。 示例：easyeffects -l music"
+
+#~ msgid "_Output"
+#~ msgstr "输出(_O)"
+
+#~ msgid "_Input"
+#~ msgstr "输入(_I)"
+
+#~ msgid "The File Is Not Regular"
+#~ msgstr "文件不是普通文件"
+
+#~ msgid "The Impulse File May Be Corrupted or Unsupported"
+#~ msgstr "Impulse文件已损坏或不支持"
+
+#~ msgid "Only Stereo Impulse Files Are Supported"
+#~ msgstr "仅支持双声道Impulse文件"
+
+#~ msgid "Impulse File Not Imported"
+#~ msgstr "脉冲文件未导入"
+
+#~ msgid "Import Impulse File"
+#~ msgstr "导入 Impulse 文件"
+
+#~ msgid "Open"
+#~ msgstr "打开"
+
+#~ msgid "Impulse Response"
+#~ msgstr "脉冲响应"
+
+#~ msgid "Load Impulse"
+#~ msgstr "加载脉冲"
+
+#~ msgid "Remove Impulse"
+#~ msgstr "删除脉冲"
+
+#~ msgid "No Impulse File Loaded"
+#~ msgstr "未加载脉冲文件"
+
+#~ msgid "Failed To Load The Impulse File"
+#~ msgstr "加载脉冲文件失败"
+
+#~ msgid "Recorders"
+#~ msgstr "录音程序"
+
+#~ msgid "Players"
+#~ msgstr "播放器"
+
+#~ msgid "Effects"
+#~ msgstr "音效"
+
+#~ msgid "Import APO Preset File"
+#~ msgstr "加载 APO 预设文件"
+
+#~ msgid "APO Presets"
+#~ msgstr "APO 预设"
+
+#~ msgid ""
+#~ "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
+#~ "Content."
+#~ msgstr "APO 预设未成功加载。可能是文件格式不受支持。请检查文件内容。"
+
+#~ msgid "Split channels not yet supported when exporting APO presets."
+#~ msgstr "导出 APO 预设时尚不支持分割通道。"
+
+#~ msgid "Export EqualizerAPO Preset File"
+#~ msgstr "导出 APO 预设文件"
+
+#~ msgid "Save"
+#~ msgstr "是否储存？"
+
+#~ msgid "EqualizerAPO Presets"
+#~ msgstr "EqualizerAPO 预设"
+
+#~ msgid "Import GraphicEQ Preset File"
+#~ msgstr "导入 GraphicEQ 预设文件"
+
+#~ msgid "GraphicEQ Presets"
+#~ msgstr "GraphicEQ 预设"
+
+#~ msgid ""
+#~ "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please "
+#~ "Check Its Content."
+#~ msgstr "GraphicEQ 预设未成功加载。可能是文件格式不受支持。请检查文件内容。"
+
+#~ msgid "Remove Autoloading Preset"
+#~ msgstr "删除自动加载预设"
+
+#~ msgid "Output Level Meter"
+#~ msgstr "输出电平表"
+
+#~ msgid "Remove"
+#~ msgstr "删除"
+
+#~ msgid "Output Device"
+#~ msgstr "输出设备"
+
+#~ msgid "Add"
+#~ msgstr "添加"
+
+#, fuzzy
+#~ msgid "Community Preset"
+#~ msgstr "导入预设"
+
+#~ msgid "Preset Not Loaded Correctly"
+#~ msgstr "预设未成功加载"
+
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "已排除程序列表的格式错误"
+
+#~ msgid "Generic Error While Loading Excluded Apps List"
+#~ msgstr "加载已排除程序列表时出错"
+
+#~ msgid "Wrong Format in Effects List"
+#~ msgstr "效果列表的格式错误"
+
+#~ msgid "Generic Error While Loading Effects List"
+#~ msgstr "加载效果列表时出错"
+
+#~ msgid "One or More Parameters Have a Wrong Format"
+#~ msgstr "一个或多个参数格式错误"
+
+#~ msgid "Generic Error While Loading The Effect"
+#~ msgstr "加载效果时出错"
+
+#~ msgid "Save?"
+#~ msgstr "是否储存？"
+
+#~ msgid "Delete?"
+#~ msgstr "是否删除？"
+
+#, fuzzy
+#~ msgid "No Preset Loaded"
+#~ msgstr "新预设名称"
+
+#, fuzzy
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "预设列表"
+
+#, fuzzy
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "导入预设"
+
+#~ msgid ""
+#~ "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To "
+#~ "The Standard Model."
+#~ msgstr "所选模型未加载成功，可能是文件格式不支持，已退回到标准模型。"
+
+#~ msgid "Import Model File"
+#~ msgstr "导入模型文件"
+
+#~ msgid "RNNoise Models"
+#~ msgstr "RNNoise 模型"
+
+#~ msgid "Bass Enhancer"
+#~ msgstr "低音增强"
+
+#~ msgid "Bass Loudness"
+#~ msgstr "低音响度"
+
+#~ msgid "Convolver"
+#~ msgstr "卷积混响器"
+
+#~ msgid "Crossfeed"
+#~ msgstr "交叉反馈"
+
+#~ msgid "Crystalizer"
+#~ msgstr "音质晶化器"
+
+#~ msgid "Deep Noise Remover"
+#~ msgstr "深度降噪"
+
+#~ msgid "Deesser"
+#~ msgstr "齿音消除"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "回音消除"
+
+#~ msgid "Equalizer"
+#~ msgstr "均衡器"
+
+#~ msgid "Exciter"
+#~ msgstr "激励器"
+
+#~ msgid "Level Meter"
+#~ msgstr "电平表"
+
+#~ msgid "Limiter"
+#~ msgstr "限幅器"
+
+#~ msgid "Maximizer"
+#~ msgstr "放大器"
+
+#~ msgid "Multiband Compressor"
+#~ msgstr "多频段压缩器"
+
+#~ msgid "Multiband Gate"
+#~ msgstr "多频段门限"
+
+#~ msgid "Reverberation"
+#~ msgstr "混响"
+
+#~ msgid "Noise Reduction"
+#~ msgstr "降噪"
+
+#~ msgid "Speech Processor"
+#~ msgstr "语音处理器"
+
+#~ msgid "Stereo Tools"
+#~ msgstr "立体声工具"
+
+#, c++-format
+#~ msgid "{} Not Available"
+#~ msgstr "{} 不可用"
+
+#, c++-format
+#~ msgid ""
+#~ "The software required for the {} effect, \"{}\", is not installed. "
+#~ "Consider using the Easy Effects Flatpak package or installing the "
+#~ "software yourself."
+#~ msgstr ""
+#~ "没有找到使用 {} 效果所需的 {} 软件。请使用Flatpak版Easy Effects，或自行安"
+#~ "装缺失的软件包。"
+
+#, c++-format
+#~ msgid ""
+#~ "The {} effect was disabled when Easy Effects was compiled. This is "
+#~ "perhaps since the software required for this effect, \"{}\", was not "
+#~ "available. Consider using the Easy Effects Flatpak package or building "
+#~ "your own Easy Effects package."
+#~ msgstr ""
+#~ "{} 效果在编译Easy Effects的时候被禁用了。这可能是这个效果所需的软件"
+#~ "\"{}\"在编译时并不存在。请下载Flatpak版Easy Effects，或者重新编译Easy "
+#~ "Effects。"
+
+#~ msgid "-inf"
+#~ msgstr "-inf"
+
+#, c++-format
+#~ msgid "Using {}"
+#~ msgstr "正在使用 {}"
+
+#~ msgid "Ceiling"
+#~ msgstr "上限"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"预设\""
+
+#~ msgid "Import a preset"
+#~ msgstr "导入预设"
+
+#~ msgid "Low-Cut Filter"
+#~ msgstr "低切滤音"
+
+#~ msgid "High-Cut Filter"
+#~ msgstr "高切滤音"
+
+#~ msgid "Uniform"
+#~ msgstr "均值"
+
+#~ msgid "New Output Preset Name"
+#~ msgstr "新输出预设名"
+
+#~ msgid "infinity"
+#~ msgstr "无限"
+
+#~ msgid "IIR"
+#~ msgstr "无限脉冲响应 (IIR)"
+
+#~ msgid "FIR"
+#~ msgstr "有限脉冲响应 (FIR)"
+
+#~ msgid "FFT"
+#~ msgstr "快速傅里叶变换 (FFT)"
+
+#~ msgid "SPM"
+#~ msgstr "自相位调制 (SPM)"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "比率"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "阈值"
+
+#~ msgid "Low-pass"
+#~ msgstr "低通"
+
+#, fuzzy
+#~ msgid "High-pass"
+#~ msgstr "高通滤波器"
+
+#~ msgid "Gating"
+#~ msgstr "门控"
+
+#~ msgid "12dB/oct Lowpass"
+#~ msgstr "12dB/oct 低通"
+
+#~ msgid "24dB/oct Lowpass"
+#~ msgstr "24dB/oct 低通"
+
+#~ msgid "36dB/oct Lowpass"
+#~ msgstr "36dB/oct 低通"
+
+#~ msgid "12dB/oct Highpass"
+#~ msgstr "12dB/oct 高通"
+
+#~ msgid "24dB/oct Highpass"
+#~ msgstr "24dB/oct 高通"
+
+#~ msgid "36dB/oct Highpass"
+#~ msgstr "36dB/oct 高通"
+
+#~ msgid "6dB/oct Bandpass"
+#~ msgstr "6dB/oct 带通"
+
+#~ msgid "12dB/oct Bandpass"
+#~ msgstr "12dB/oct 带通"
+
+#~ msgid "18dB/oct Bandpass"
+#~ msgstr "18dB/oct 带通"
+
+#~ msgid "6dB/oct Bandreject"
+#~ msgstr "6dB/oct 带阻"
+
+#~ msgid "12dB/oct Bandreject"
+#~ msgstr "12dB/oct 带阻"
+
+#~ msgid "18dB/oct Bandreject"
+#~ msgstr "18dB/oct 带阻"
+
+#~ msgid "Inertia"
+#~ msgstr "惯性"
+
+#~ msgid "Band Type"
+#~ msgstr "频段类型"
+
+#~ msgid "Band Mode"
+#~ msgstr "频段模式"
+
+#~ msgid "Band Slope"
+#~ msgstr "频段斜率"
+
+#~ msgid "Loudness List"
+#~ msgstr "响度列表"
+
+#~ msgid "High Speed"
+#~ msgstr "高速"
+
+#~ msgid "High Quality"
+#~ msgstr "高品质"
+
+#~ msgid "High Consistency"
+#~ msgstr "高一贯性"
+
+#~ msgid "Formant"
+#~ msgstr "格式"
+
+#~ msgid "Shifted"
+#~ msgstr "偏移"
+
+#~ msgid "Preserved"
+#~ msgstr "保留"
+
+#~ msgid "Transients"
+#~ msgstr "瞬态"
+
+#~ msgid "Crisp"
+#~ msgstr "清脆"
+
+#~ msgid "Mixed"
+#~ msgstr "混合 (Mixed)"
+
+#~ msgid "Smooth"
+#~ msgstr "平滑"
+
+#~ msgid "Detector"
+#~ msgstr "侦测器"
+
+#~ msgid "Compound"
+#~ msgstr "混合侦测"
+
+#~ msgid "Percussive"
+#~ msgstr "打击乐"
+
+#~ msgid "Soft"
+#~ msgstr "柔声"
+
+#~ msgid "Phase"
+#~ msgstr "相位"
+
+#~ msgid "Laminar"
+#~ msgstr "层流式"
+
+#~ msgid "Independent"
+#~ msgstr "独立式"
+
+#~ msgid "Cents"
+#~ msgstr "音分"
+
+#~ msgid "Octaves"
+#~ msgstr "八度"
+
+#~ msgid "_Manual"
+#~ msgstr "使用手册(_M)"
+
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "打开 Easy Effects 手册"
+
+#~ msgid "{} Is Not Installed On The System"
+#~ msgstr "{} 未在系统中安装"
+
+#~ msgid "High Pass"
+#~ msgstr "高通"
+
+#~ msgid "Low Pass"
+#~ msgstr "低通"
+
+#~ msgid "Cancel"
+#~ msgstr "取消"
+
+#~ msgid " PreAmplification"
+#~ msgstr " 前置放大"
+
+#~ msgid "Close (Press ESC)"
+#~ msgstr "关闭（请按 ESC）"
+
+#~ msgid "Frame Size"
+#~ msgstr "音帧长度"
+
+#~ msgid ""
+#~ "Enable/disable the\n"
+#~ "                                    global bypass"
+#~ msgstr "启用/禁用全局旁通"
+
+#~ msgid " Low-Pass"
+#~ msgstr " 低通"
+
+#~ msgid " Uniform"
+#~ msgstr " 均值"
+
+#~ msgid "Left Delay"
+#~ msgstr "左延迟"
+
+#~ msgid "Right Delay"
+#~ msgstr "右延迟"
+
+#~ msgid "Left Dry Level"
+#~ msgstr "左干声级别"
+
+#~ msgid "Right Dry Level"
+#~ msgstr "右干声级别"
+
+#~ msgid "Left Wet Level"
+#~ msgstr "左湿声级别"
+
+#~ msgid "Right Wet Level"
+#~ msgstr "右湿声级别"
+
+#~ msgid "Fast Fourier Transform Size"
+#~ msgstr "快速傅里叶变换大小"
+
+#~ msgid "Clipping Range"
+#~ msgstr "削波范围"
+
+#~ msgid "Suppression"
+#~ msgstr "抑制"
+
+#~ msgid "Noise Reduction (Fast)"
+#~ msgstr "降噪（快速）"
+
+#~ msgid "Load APO Preset"
+#~ msgstr "加载 APO 预设"
+
+#~ msgid "Output Presets: "
+#~ msgstr "输出预设: "
+
+#~ msgid "Input Presets: "
+#~ msgstr "输入预设: "
+
+#~ msgid "Split Mode"
+#~ msgstr "分割模式"
+
+#~ msgid "Split 1/2"
+#~ msgstr "分割 1/2"
+
+#~ msgid "Split 2/3"
+#~ msgstr "分割 2/3"
+
+#~ msgid "Split Frequency 2"
+#~ msgstr "分割频率 2"
+
+#~ msgid "Split 3/4"
+#~ msgstr "分割 3/4"
+
+#~ msgid "Split Frequency 3"
+#~ msgstr "分割频率 3"
+
+#~ msgid "Sub Band"
+#~ msgstr "子频"
+
+#~ msgid "Band 1 Bypass"
+#~ msgstr "频段 1 旁路"
+
+#~ msgid "Band 1 Detection"
+#~ msgstr "频段 1 侦测"
+
+#~ msgid "Band 1 Attack"
+#~ msgstr "频段 1 起音"
+
+#~ msgid "Band 1 Release"
+#~ msgstr "频段 1 消音"
+
+#~ msgid "Band 1 Threshold"
+#~ msgstr "频段 1 阈值"
+
+#, fuzzy
+#~ msgid "Band 1 Knee"
+#~ msgstr "频段 1 拐点"
+
+#~ msgid "Band 1 Makeup"
+#~ msgstr "频段 1 补偿"
+
+#~ msgid "Max Reduction"
+#~ msgstr "最大衰减"
+
+#~ msgid "Low Band"
+#~ msgstr "低频"
+
+#~ msgid "Band 2 Bypass"
+#~ msgstr "频段 2 旁路"
+
+#~ msgid "Band 2 Detection"
+#~ msgstr "频段 2 侦测"
+
+#~ msgid "Band 2 Attack"
+#~ msgstr "频段 2 起音"
+
+#~ msgid "Band 2 Release"
+#~ msgstr "频段 2 消音"
+
+#~ msgid "Band 2 Threshold"
+#~ msgstr "频段 2 阈值"
+
+#, fuzzy
+#~ msgid "Band 2 Knee"
+#~ msgstr "频段 2 拐点"
+
+#~ msgid "Band 2 Makeup"
+#~ msgstr "频段 2 补偿"
+
+#~ msgid "Band 2 Max Reduction"
+#~ msgstr "频段 2 最大衰减"
+
+#~ msgid "Mid Band"
+#~ msgstr "中频"
+
+#~ msgid "Band 3 Bypass"
+#~ msgstr "频段 3 旁路"
+
+#~ msgid "Band 3 Detection"
+#~ msgstr "频段 3 侦测"
+
+#~ msgid "Band 3 Attack"
+#~ msgstr "频段 3 起音"
+
+#~ msgid "Band 3 Release"
+#~ msgstr "频段 3 消音"
+
+#~ msgid "Band 3 Threshold"
+#~ msgstr "频段 3 阈值"
+
+#, fuzzy
+#~ msgid "Band 3 Knee"
+#~ msgstr "频段 3 拐点"
+
+#~ msgid "Band 3 Makeup"
+#~ msgstr "频段 3 补偿"
+
+#~ msgid "Band 3 Max Reduction"
+#~ msgstr "频段 3 最大衰减"
+
+#~ msgid "High Band"
+#~ msgstr "高频"
+
+#~ msgid "Band 4 Bypass"
+#~ msgstr "频段 4 旁路"
+
+#~ msgid "Band 4 Detection"
+#~ msgstr "频段 4 侦测"
+
+#~ msgid "Band 4 Attack"
+#~ msgstr "频段 4 起音"
+
+#~ msgid "Band 4 Release"
+#~ msgstr "频段 4 消音"
+
+#~ msgid "Band 4 Threshold"
+#~ msgstr "频段 4 阈值"
+
+#, fuzzy
+#~ msgid "Band 4 Knee"
+#~ msgstr "频段 4 拐点"
+
+#~ msgid "Band 4 Makeup"
+#~ msgstr "频段 4 补偿"
+
+#~ msgid "Band 4 Max Reduction"
+#~ msgstr "频段 4 最大衰减"
+
+#~ msgid "Wet Amount"
+#~ msgstr "湿声程度"
+
+#~ msgid "Dry Amount"
+#~ msgstr "干声程度"
+
+#~ msgid ""
+#~ "EasyEffects is an advanced audio manipulation tool. It includes an "
+#~ "equalizer, limiter, compressor and a reverberation tool, just to mention "
+#~ "a few. To complement this there is also a built in spectrum analyzer."
+#~ msgstr ""
+#~ "EasyEffects 是一款多功能音频调整工具程序。它的功能不仅包括均衡器、限幅器、"
+#~ "压缩器和混响工具，还有更多其他工具可共选择。为了使用方便，它还内建有频谱分"
+#~ "析仪。"
+
+#~ msgid ""
+#~ "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+#~ "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+#~ msgstr ""
+#~ "EasyEffects 是 PulseEffects 的后继版本，但它仅支持 PipeWire 的音频服务器。"
+#~ "PulseAudio 用户应继续使用 PulseEffects。"
+
+#~ msgid ""
+#~ "Because EasyEffects uses the default PipeWire sound server it will work "
+#~ "with most, if not all, applications you use. All supported applications "
+#~ "are presented in the main window, where each can be enabled individually."
+#~ msgstr ""
+#~ "由于 EasyEffects 默认使用 PipeWire 音频服务器，这意味着它能与大多数 (但并"
+#~ "非全部) 应用程序配合使用。EasyEffects 的主窗口会显示所有它支持的应用程序，"
+#~ "而且可以单独管理每款应用程序的音效启用状态。"
+
+#~ msgid ""
+#~ "Besides manipulating sound output, EasyEffects is able to apply effects "
+#~ "to an input device, such as a microphone. This is, for example, useful in "
+#~ "audio recording, but it also works well during voice conversations."
+#~ msgstr ""
+#~ "除了处理音频输出外，EasyEffects 还可以将效果应用于输入设备，例如麦克风等，"
+#~ "以便在录音和语音通话时发挥作用。"
+
+#~ msgid ""
+#~ "When EasyEffects is launched it will conveniently remember the "
+#~ "configuration used in the last session. It is also possible to save all "
+#~ "the current settings as profiles."
+#~ msgstr ""
+#~ "启动 EasyEffects 时，载入上一个会话中使用的配置。 也可以将所有当前设置另存"
+#~ "为配置文件。"
+
+#~ msgid "The main page showing two audio output apps"
+#~ msgstr "正在显示两个音频输出应用程序的主页面"
+
+#~ msgid "The bass enhancer page showing audio controls"
+#~ msgstr "低音增强页面显示的音效控件"
+
+#~ msgid "The convolver page showing audio controls"
+#~ msgstr "卷积混响器显示的音频控件"
+
+#~ msgid "This release adds the following features:"
+#~ msgstr "此版本增加了以下功能："
+
+#~ msgid ""
+#~ "The rnnoise library is now optional. This should help package maintainers "
+#~ "to build"
+#~ msgstr "现在 rnnoise 库是可选的。这项改动可以帮助软件包维护者构建"
+
+#~ msgid "a Debian package. See the issue #1000 for more information."
+#~ msgstr "Debian 软件包。请参考 issue #1000 以了解更多信息。"
+
+#~ msgid "The interface of the pitch plugin was improved"
+#~ msgstr "改进了音调插件界面"
+
+#~ msgid "Our application icon is now compatible with desktops that uses QT"
+#~ msgstr "我们的应用图标现已兼容基于QT的桌面环境"
+
+#~ msgid "and #1427"
+#~ msgstr "和 #1427"
+
+#~ msgid "Many translation updates"
+#~ msgstr "许多翻译更新"
+
+#~ msgid ""
+#~ "There is a new setting allowing the user to select an inactivity timeout "
+#~ "for the pipeline. When no client is playing"
+#~ msgstr "有一个新设置允许用户为管道选择不活动超时。当没有客户端正在播放时"
+
+#~ msgid "we do not waste CPU power processing silence."
+#~ msgstr "我们不会浪费 CPU 功率处理静音。"
+
+#~ msgid "This release adds the following feature:"
+#~ msgstr "此版软件新增了以下功能："
+
+#~ msgid "Average"
+#~ msgstr "平均值"
+
+#~ msgid "Failed"
+#~ msgstr "失败"
+
+#~ msgid "Use Default"
+#~ msgstr "使用默认"
+
+#~ msgid "Remove this plugin"
+#~ msgstr "删除这个插件"
+
+#~ msgid "Import Presets"
+#~ msgstr "加载预设"
+
+#~ msgid "Start Service at Login"
+#~ msgstr "登录时启动服务"
+
+#~ msgid "Process All Outputs"
+#~ msgstr "处理所有输出"
+
+#~ msgid "Process All Inputs"
+#~ msgstr "处理所有输入"
+
+#~ msgid "Activate"
+#~ msgstr "激活"
+
+#~ msgid "Add to Blocklist"
+#~ msgstr "加入黑名单"
+
+#~ msgid "Blocklist"
+#~ msgstr "黑名单"
+
+#~ msgid "Add Plugin"
+#~ msgstr "增加插件"
+
+#~ msgid "Speakers"
+#~ msgstr "扬声器"
+
+#~ msgid "Microphone"
+#~ msgstr "麦克风"
+
+#~ msgid "enabled"
+#~ msgstr "已启用"
+
+#~ msgid "disabled"
+#~ msgstr "已禁用"
+
+#~ msgid "Plugins"
+#~ msgstr "插件"
+
+#~ msgid "Format"
+#~ msgstr "格式"
+
+#~ msgid "Latency"
+#~ msgstr "延迟"
+
+#~ msgid "idle"
+#~ msgstr "空闲"
+
+#~ msgid "Faster"
+#~ msgstr "快速"
+
+#~ msgid "Preserve Formant"
+#~ msgstr "共振保护"
+
+#~ msgid "Cmoy"
+#~ msgstr "Cmoy"
+
+#~ msgid "Jmeier"
+#~ msgstr "Jmeier"
+
+#~ msgid "Set the volume and turn on/off effects"
+#~ msgstr "设置音量和 打开/关闭音效"
+
+#~ msgid "Includes an equalizer with built-in presets"
+#~ msgstr "包含预设的均衡器"
+
+#~ msgid "Input Limiter"
+#~ msgstr "输入限幅器"
+
+#~ msgid "Calibration"
+#~ msgstr "校准"
+
+#~ msgid "Settings"
+#~ msgstr "设置"
+
+#~ msgid "Id"
+#~ msgstr "Id"
+
+#~ msgid "Player Name"
+#~ msgstr "播放器名称"
+
+#~ msgid "Maximum Gain Reduction"
+#~ msgstr "最大增益衰减"
+
+#~ msgid "Run in Background"
+#~ msgstr "后台运行"
+
+#~ msgid "Limit"
+#~ msgstr "限制"
+
+#~ msgid "ASC"
+#~ msgstr "ASC"
+
+#~ msgid "ISO226-2003"
+#~ msgstr "ISO226-2003"
+
+#~ msgid "Fletcher-Munson"
+#~ msgstr "Fletcher-Munson"
+
+#~ msgid "Robinson-Dadson"
+#~ msgstr "Robinson-Dadson"
+
+#~ msgid "Signal"
+#~ msgstr "测试信号"
+
+#, fuzzy
+#~ msgid "Wet"
+#~ msgstr "程度"
+
+#~ msgid "Show Spectrum"
+#~ msgstr "显示频谱"
+
+#~ msgid "Border"
+#~ msgstr "显示边界"
+
+#~ msgid "Spectrum Type"
+#~ msgstr "频谱类型"
+
+#~ msgid "Spectrum Color"
+#~ msgstr "光谱颜色"
+
+#~ msgid "S/C Level"
+#~ msgstr "S/C 级别"
+
+#~ msgid "Phase Correlation"
+#~ msgstr "相位相关"
+
+#~ msgid "Automatic Smoothing Control"
+#~ msgstr "自动平滑控制"

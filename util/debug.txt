@@ -1,0 +1,1 @@
+QT_LOGGING_RULES="qt.qml.binding.removal.info=true"

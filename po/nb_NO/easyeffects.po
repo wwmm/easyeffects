@@ -1,0 +1,1389 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2024-02-20 11:02+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"easyeffects/main/nb_NO/>\n"
+"Language: nb_NO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "Inngang"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "Navn"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+#, fuzzy
+msgid "Value"
+msgstr "Gulvverdi"
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "Forhåndsinnstilling"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+#, fuzzy
+msgid "Quit"
+msgstr "_Avslutt"
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr ""
+
+#: src/contents/ui/main.qml:171
+#, fuzzy
+msgid "Presets"
+msgstr "Profiler"
+
+#: src/contents/ui/main.qml:179
+#, fuzzy
+msgid "Preferences"
+msgstr "_Innstillinger"
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "_Om Easy Effects"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "Utgang"
+
+#: src/contents/ui/PipeWireTab.qml:9
+#, fuzzy
+msgid "PipeWire"
+msgstr "PipeWire"
+
+#: src/main.cpp:55
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "Lydeffekter for PipeWire-programmer"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Nivåmåler"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+#, fuzzy
+msgid "Width of the main window."
+msgstr "Skjul vinduet."
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+#, fuzzy
+msgid "Height of the main window."
+msgstr "Skjul vinduet."
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+#, fuzzy
+msgid "Last used preset."
+msgstr "Opprett forhåndsinnstilling"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "Tonekontroll, kompressor og andre lydeffekter"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Lydeffekter for PipeWire-programmer"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#, fuzzy
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "begrenser; kompressor;klang ; equalizer; autovolume;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "Slå på/ Slå av denne applikasjonen"
+
+#~ msgid "Enable"
+#~ msgstr "Slå på"
+
+#, fuzzy
+#~ msgid "Excluded App List: Add/remove this application"
+#~ msgstr "Liste over Ekskluderte App-er: Legg til/ Fjern denne applikasjonen"
+
+#~ msgid "Exclude"
+#~ msgstr "Ekskluder"
+
+#~ msgid "Mute Application"
+#~ msgstr "Demp Applikasjonen"
+
+#~ msgid "Change the volume of this application"
+#~ msgstr "Endre volumet på applikasjonen"
+
+#~ msgid "Application Volume"
+#~ msgstr "Programlydstyrke"
+
+#~ msgid "_Help"
+#~ msgstr "_Hjelp"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "_Tilbakestill innstillingene"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "_Snarveier"
+
+#, fuzzy
+#~ msgid "Presets Menu"
+#~ msgstr "Profilmeny"
+
+#, fuzzy
+#~ msgid "Enable/disable the global bypass"
+#~ msgstr "Skru på/ Skru av global forbipassering"
+
+#, fuzzy
+#~ msgid "Global Bypass"
+#~ msgstr "Global Forbipassering"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Hovedmeny"
+
+#~ msgid "Easy Effects Window"
+#~ msgstr "Easy Effects vindu"
+
+#~ msgid "Applications List"
+#~ msgstr "Applikasjons liste"
+
+#~ msgid "Empty List"
+#~ msgstr "Tom liste"
+
+#~ msgid "No Audio Application Available"
+#~ msgstr "Ingen applikasjon for lyd tilgjengelig"
+
+#, fuzzy
+#~ msgid "Controls"
+#~ msgstr "Kontroll knapper"
+
+#~ msgid "Target"
+#~ msgstr "Mål"
+
+#~ msgid "Silence"
+#~ msgstr "Stillhet"
+
+#~ msgid "Maximum History"
+#~ msgstr "Maksimum historikk"
+
+#~ msgid "Reference"
+#~ msgstr "Referanse"
+
+#~ msgid "Momentary"
+#~ msgstr "Øyeblikkelig"
+
+#~ msgid "Short-Term"
+#~ msgstr "Midlertidig"
+
+#~ msgid "Integrated"
+#~ msgstr "Integrert"
+
+#, fuzzy
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "Geometrisk gjennomsnitt (MSI)"
+
+#, fuzzy
+#~ msgid "History"
+#~ msgstr "Tilbakestill historikk"
+
+#~ msgid "Reset"
+#~ msgstr "Tilbakestill"
+
+#~ msgid "Relative"
+#~ msgstr "Relativ"
+
+#~ msgid "Output Gain"
+#~ msgstr "Utgangs Forsterkning"
+
+#, fuzzy
+#~ msgid "Plugin Input Gain"
+#~ msgstr "Programvareutvidelse inngang forsterkning"
+
+#, fuzzy
+#~ msgid "Plugin Output Gain"
+#~ msgstr "Programvareutvidelse utgang forsterkning"
+
+#~ msgid "Device"
+#~ msgstr "Enhet"
+
+#~ msgid "Profile"
+#~ msgstr "Profil"
+
+#~ msgid "Remove this autoload preset"
+#~ msgstr "Fjern autolasting Forhåndsinnstilling"
+
+#~ msgid "Listen"
+#~ msgstr "Lytt"
+
+#~ msgid "3rd"
+#~ msgstr "Tredje"
+
+#~ msgid "2nd"
+#~ msgstr "Andre"
+
+#~ msgid "Amount"
+#~ msgstr "Mengde"
+
+#~ msgid "Harmonics"
+#~ msgstr "Overtoner"
+
+#~ msgid "Scope"
+#~ msgstr "Omfang"
+
+#~ msgid "Floor"
+#~ msgstr "Gulv"
+
+#~ msgid "Link"
+#~ msgstr "Lenke"
+
+#~ msgid "Application Name"
+#~ msgstr "Programnavn"
+
+#, fuzzy
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "Vis svartelistede programmer"
+
+#, fuzzy
+#~ msgid "Excluded Applications List"
+#~ msgstr "Svartelistede programmer"
+
+#, fuzzy
+#~ msgid "Show Excluded Applications"
+#~ msgstr "Vis svartelistede programmer"
+
+#, fuzzy
+#~ msgid "Show Native Window"
+#~ msgstr "Lukk vinduet"
+
+#~ msgid "Compressor"
+#~ msgstr "Kompressor"
+
+#~ msgid "Mode"
+#~ msgstr "Modus"
+
+#~ msgid "Downward"
+#~ msgstr "Nedover"
+
+#~ msgid "Upward"
+#~ msgstr "Oppover"
+
+#~ msgid "Compression Mode"
+#~ msgstr "Kompresjonsmodus"
+
+#~ msgid "Time"
+#~ msgstr "Tid"
+
+#~ msgid "Threshold"
+#~ msgstr "Terskel"
+
+#, fuzzy
+#~ msgid "Release"
+#~ msgstr "frigjøring grense"
+
+#~ msgid "Ratio"
+#~ msgstr "Forhold"
+
+#~ msgid "Knee"
+#~ msgstr "Kne"
+
+#~ msgid "Stereo Split Mode"
+#~ msgstr "Splittet Stereomodus"
+
+#~ msgid "Source"
+#~ msgstr "Kilde"
+
+#~ msgid "Middle"
+#~ msgstr "Midten"
+
+#~ msgid "Side"
+#~ msgstr "Side"
+
+#~ msgid "Left"
+#~ msgstr "Venstre"
+
+#~ msgid "Right"
+#~ msgstr "Høyre"
+
+#~ msgid "Max"
+#~ msgstr "Maks"
+
+#~ msgid "Left/Right"
+#~ msgstr "Venstre/Høyre"
+
+#~ msgid "Right/Left"
+#~ msgstr "Høyre/Venstre"
+
+#~ msgid "Stereo Split Source"
+#~ msgstr "Splitt Stereokilde"
+
+#, fuzzy
+#~ msgid "Peak"
+#~ msgstr "Top"
+
+#~ msgid "RMS"
+#~ msgstr "RMS"
+
+#~ msgid "Low-Pass Filter"
+#~ msgstr "Lavpassfilter"
+
+#~ msgid "Type"
+#~ msgstr "Type"
+
+#, fuzzy
+#~ msgid "Feed-back"
+#~ msgstr "Respons"
+
+#~ msgid "External"
+#~ msgstr "Ekstern"
+
+#~ msgid "Input Device"
+#~ msgstr "Inndataenhet"
+
+#, fuzzy
+#~ msgid "PreAmplification"
+#~ msgstr "Førforsterkning"
+
+#~ msgid "High-Pass"
+#~ msgstr "Høypass"
+
+#~ msgid "Frequency"
+#~ msgstr "Frekvens"
+
+#~ msgid "Off"
+#~ msgstr "Av"
+
+#~ msgid "12 dB/oct"
+#~ msgstr "12 dB/okt"
+
+#~ msgid "24 dB/oct"
+#~ msgstr "24 dB/okt"
+
+#~ msgid "36 dB/oct"
+#~ msgstr "36 dB/okt"
+
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "Høypassfilter-modus"
+
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "Høypassfilter-frekvens"
+
+#~ msgid "Low-Pass"
+#~ msgstr "Lavpass"
+
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "Lavpassfilter-modus"
+
+#~ msgid "Gain"
+#~ msgstr "Forsterkning"
+
+#~ msgid "Curve"
+#~ msgstr "Kurve"
+
+#~ msgid "L"
+#~ msgstr "V"
+
+#~ msgid "Left Channel"
+#~ msgstr "Venstre kanal"
+
+#~ msgid "R"
+#~ msgstr "H"
+
+#~ msgid "Right Channel"
+#~ msgstr "Høyre kanal"
+
+#~ msgid "Impulses"
+#~ msgstr "Impulser"
+
+#~ msgid "Combine"
+#~ msgstr "Kombiner"
+
+#~ msgid "Stereo Width"
+#~ msgstr "Stereobredde"
+
+#~ msgid "Spectrum"
+#~ msgstr "Spektrum"
+
+#~ msgid "Log Scale"
+#~ msgstr "Log-skala"
+
+#~ msgid "Autogain"
+#~ msgstr "Autoforsterk"
+
+#~ msgid "Rate"
+#~ msgstr "Takt"
+
+#, fuzzy
+#~ msgid "Samples"
+#~ msgstr "Prøver"
+
+#~ msgid "Duration"
+#~ msgstr "Varighet"
+
+#~ msgid "First Kernel"
+#~ msgstr "Første kjerne"
+
+#~ msgid "Second Kernel"
+#~ msgstr "Andre kjerne"
+
+#~ msgid "Output File Name"
+#~ msgstr "Utdata-filnavn"
+
+#~ msgid "Combined Kernel Name"
+#~ msgstr "Kombinert kjernenavn"
+
+#~ msgid "Search"
+#~ msgstr "Søk"
+
+#, fuzzy
+#~ msgid "Impulse Files List"
+#~ msgstr "Impulsfilliste"
+
+#, fuzzy
+#~ msgid "Default"
+#~ msgstr "Standard"
+
+#~ msgid "Mute"
+#~ msgstr "Forstum"
+
+#, fuzzy
+#~ msgid "Post Filter Beta"
+#~ msgstr "Filterlengde"
+
+#~ msgid "Detection"
+#~ msgstr "Oppdagelse"
+
+#~ msgid "Wide"
+#~ msgstr "Bred"
+
+#~ msgid "Split"
+#~ msgstr "Splitt"
+
+#~ msgid "F1 Split"
+#~ msgstr "F1 Splitt"
+
+#~ msgid "Frequency 1 Split"
+#~ msgstr "Frekvens 1 Splitt"
+
+#, fuzzy
+#~ msgid "F2 Peak"
+#~ msgstr "F2 Top"
+
+#~ msgid "F1 Gain"
+#~ msgstr "F1 Forsterkning"
+
+#~ msgid "Reduction"
+#~ msgstr "Reduksjon"
+
+#~ msgid "Invert Phase"
+#~ msgstr "Inverter fase"
+
+#~ msgid "Filter Length"
+#~ msgstr "Filterlengde"
+
+#, fuzzy
+#~ msgid "Residual Echo Suppression"
+#~ msgstr "Reduksjon"
+
+#, fuzzy
+#~ msgid "Near End Echo Suppression"
+#~ msgstr "Reduksjon"
+
+#, fuzzy
+#~ msgid "Enable/disable input monitoring"
+#~ msgstr "Slå på/ Slå av denne applikasjonen"
+
+#~ msgid "Bands"
+#~ msgstr "Bånd"
+
+#~ msgid "Balance"
+#~ msgstr "Balanse"
+
+#, fuzzy
+#~ msgid "Pitch Right"
+#~ msgstr "Høyre"
+
+#~ msgid "Calculate Frequencies"
+#~ msgstr "Beregn frekvenser"
+
+#, fuzzy
+#~ msgid "Sort Bands"
+#~ msgstr "Bånd"
+
+#, fuzzy
+#~ msgid "Export Preset"
+#~ msgstr "Importer forhåndsinnstillinger"
+
+#~ msgid "Quality"
+#~ msgstr "Kvalitet"
+
+#~ msgid "Width"
+#~ msgstr "Bredde"
+
+#, fuzzy
+#~ msgid "Internal"
+#~ msgstr "Ekstern"
+
+#~ msgid "API"
+#~ msgstr "API"
+
+#~ msgid "Access"
+#~ msgstr "Tilgang"
+
+#~ msgid "Description"
+#~ msgstr "Beskrivelse"
+
+#~ msgid "Remove this model file"
+#~ msgstr "Fjern denne modellfilen"
+
+#, fuzzy
+#~ msgid "High-Shelf"
+#~ msgstr "Høypass"
+
+#, fuzzy
+#~ msgid "Band-Pass"
+#~ msgstr "Bånd"
+
+#~ msgid "Resonance"
+#~ msgstr "Resonans"
+
+#, fuzzy
+#~ msgid "Ladder-Pass"
+#~ msgstr "Lavpass"
+
+#, fuzzy
+#~ msgid "Ladder-Rejection"
+#~ msgstr "Maks. reduksjon"
+
+#, fuzzy
+#~ msgid "All-Pass"
+#~ msgstr "Lavpass"
+
+#, fuzzy
+#~ msgid "Filter"
+#~ msgstr "Filter"
+
+#~ msgid "Reset History"
+#~ msgstr "Tilbakestill historikk"
+
+#~ msgid "Oversampling"
+#~ msgstr "Oversampling"
+
+#~ msgid "None"
+#~ msgstr "Ingen"
+
+#~ msgid "Output Volume"
+#~ msgstr "Utgangslydstyrke"
+
+#~ msgid "Classic"
+#~ msgstr "Klassisk"
+
+#~ msgid "Modern"
+#~ msgstr "Moderne"
+
+#, fuzzy
+#~ msgid "Linear Phase"
+#~ msgstr "Inverter fase"
+
+#~ msgid "Band 1"
+#~ msgstr "Bånd 1"
+
+#~ msgid "Band 2"
+#~ msgstr "Bånd 2"
+
+#~ msgid "Band 3"
+#~ msgstr "Bånd 3"
+
+#~ msgid "Band 4"
+#~ msgstr "Bånd 4"
+
+#~ msgid "Band 5"
+#~ msgstr "Bånd 5"
+
+#~ msgid "Band 6"
+#~ msgstr "Bånd 6"
+
+#~ msgid "Band 7"
+#~ msgstr "Bånd 7"
+
+#~ msgid "Band 8"
+#~ msgstr "Bånd 8"
+
+#~ msgid "Band Start"
+#~ msgstr "Bånd-start"
+
+#~ msgid "Band End"
+#~ msgstr "Bånd-slutt"
+
+#, fuzzy
+#~ msgid "Stereo Split"
+#~ msgstr "Stereomodus"
+
+#, fuzzy
+#~ msgid "High-Cut"
+#~ msgstr "Kvalitet"
+
+#, fuzzy
+#~ msgid "Band Reduction"
+#~ msgstr "Maks. reduksjon"
+
+#~ msgid "General"
+#~ msgstr "Generelt"
+
+#, fuzzy
+#~ msgid "Use Default Input"
+#~ msgstr "Bruk forvalgt inngang"
+
+#~ msgid "Custom Input Device"
+#~ msgstr "Egendefinert inngangsenhet"
+
+#~ msgid "Use Default Output"
+#~ msgstr "Bruk forvalgt utgang"
+
+#~ msgid "Custom Output Device"
+#~ msgstr "Egendefinert utgangsenhet"
+
+#~ msgid "Server Information"
+#~ msgstr "Tjenerinfo"
+
+#~ msgid "Library Version"
+#~ msgstr "Biblioteksversjon"
+
+#~ msgid "Output Devices"
+#~ msgstr "Utgangsenheter"
+
+#~ msgid "Output Presets"
+#~ msgstr "Utgangsforhåndsinnstillinger"
+
+#~ msgid "Create Association"
+#~ msgstr "Opprett tilknytning"
+
+#~ msgid "Input Devices"
+#~ msgstr "Inngangsenheter"
+
+#~ msgid "Input Presets"
+#~ msgstr "Inngangsforhåndsinnstillinger"
+
+#~ msgid "Modules"
+#~ msgstr "Moduler"
+
+#, fuzzy
+#~ msgid "Modules List"
+#~ msgstr "Modulliste"
+
+#~ msgid "Clients"
+#~ msgstr "Klienter"
+
+#, fuzzy
+#~ msgid "Clients List"
+#~ msgstr "Klientliste"
+
+#~ msgid "Test Signal"
+#~ msgstr "Testsignal"
+
+#~ msgid "State"
+#~ msgstr "Tilstand"
+
+#~ msgid "Enabled"
+#~ msgstr "Påskrudd"
+
+#~ msgid "Properties"
+#~ msgstr "Egenskaper"
+
+#~ msgid "Channels"
+#~ msgstr "Kanaler"
+
+#~ msgid "Both"
+#~ msgstr "Begge"
+
+#~ msgid "Both Channels"
+#~ msgstr "Begge kanaler"
+
+#~ msgid "Waveform"
+#~ msgstr "Bølgeform"
+
+#~ msgid "Sine Wave"
+#~ msgstr "Sinusbølge"
+
+#~ msgid "White Noise"
+#~ msgstr "Hvit støy"
+
+#, fuzzy
+#~ msgid "Seek Window"
+#~ msgstr "Lukk vinduet"
+
+#, fuzzy
+#~ msgid "Overlap Length"
+#~ msgstr "Filterlengde"
+
+#, fuzzy
+#~ msgid "Tempo Difference"
+#~ msgstr "Referanse"
+
+#, fuzzy
+#~ msgid "Rate Difference"
+#~ msgstr "Referanse"
+
+#, fuzzy
+#~ msgid "Remove this effect"
+#~ msgstr "Fjern denne modellfilen"
+
+#~ msgid "Add Effect"
+#~ msgstr "Legg til effekt"
+
+#, fuzzy
+#~ msgid "Go to the previous effect"
+#~ msgstr "Fjern denne modellfilen"
+
+#, fuzzy
+#~ msgid "No Effects"
+#~ msgstr "EasyEffects"
+
+#~ msgid "Plugins List"
+#~ msgstr "Programtilleggsliste"
+
+#~ msgid "_General"
+#~ msgstr "_Generelt"
+
+#~ msgid "Service"
+#~ msgstr "Tjeneste"
+
+#~ msgid "Launch Service at System Startup"
+#~ msgstr "Start tjeneste ved systemoppstart"
+
+#~ msgid "Audio"
+#~ msgstr "Lyd"
+
+#~ msgid "Inactivity Timeout"
+#~ msgstr "Inaktivitetstidsavbrudd"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "Ekstern"
+
+#, fuzzy
+#~ msgid "Update Frequency"
+#~ msgstr "Frekvens"
+
+#~ msgid "Style"
+#~ msgstr "Stil"
+
+#~ msgid "Use Dark Theme"
+#~ msgstr "Ifør mørk drakt"
+
+#, fuzzy
+#~ msgid "Experimental Features"
+#~ msgstr "Eksperimentelt"
+
+#, fuzzy
+#~ msgid "Native Plugin Window"
+#~ msgstr "Lukk vinduet"
+
+#~ msgid "_Spectrum"
+#~ msgstr "_Spektrum"
+
+#~ msgid "Shape"
+#~ msgstr "Form"
+
+#~ msgid "Bars"
+#~ msgstr "Bjelker"
+
+#~ msgid "Lines"
+#~ msgstr "Linjer"
+
+#~ msgid "Height"
+#~ msgstr "Høyde"
+
+#~ msgid "Line Width"
+#~ msgstr "Linjebredde"
+
+#~ msgid "Color"
+#~ msgstr "Farge"
+
+#~ msgid "Maximum"
+#~ msgstr "Maksimum"
+
+#, fuzzy
+#~ msgid "Try this community preset"
+#~ msgstr "Forhåndsinnstilling"
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Importer modell"
+
+#, fuzzy
+#~ msgid "New Preset Name"
+#~ msgstr "Nytt inngangforhåndsinnstillingsnavn"
+
+#, fuzzy
+#~ msgid "Search Local Preset"
+#~ msgstr "Forhåndsinnstilling"
+
+#, fuzzy
+#~ msgid "Local Presets List"
+#~ msgstr "Inngangforhåndsinnstillingsliste"
+
+#, fuzzy
+#~ msgid "Search Community Preset"
+#~ msgstr "Forhåndsinnstilling"
+
+#, fuzzy
+#~ msgid "Community Presets List"
+#~ msgstr "Inngangforhåndsinnstillingsliste"
+
+#~ msgid "High Frequency Damping"
+#~ msgstr "Høyfrekvensdemping"
+
+#~ msgid "Room Size"
+#~ msgstr "Romstørrelse"
+
+#~ msgid "Small"
+#~ msgstr "Lite"
+
+#~ msgid "Medium"
+#~ msgstr "Middels"
+
+#~ msgid "Large"
+#~ msgstr "Stort"
+
+#~ msgid "Tunnel"
+#~ msgstr "Tunnel"
+
+#~ msgid "Experimental"
+#~ msgstr "Eksperimentelt"
+
+#~ msgid "Large Empty Hall"
+#~ msgstr "Tor tom hall"
+
+#~ msgid "Disco"
+#~ msgstr "Diskotek"
+
+#~ msgid "Import Model"
+#~ msgstr "Importer modell"
+
+#, fuzzy
+#~ msgid "Voice Detection"
+#~ msgstr "Oppdagelse"
+
+#~ msgid "Models"
+#~ msgstr "Modeller"
+
+#~ msgid "Active Model"
+#~ msgstr "Aktiv modell"
+
+#~ msgid "Overview"
+#~ msgstr "Oversikt"
+
+#~ msgid "Close the Window"
+#~ msgstr "Lukk vinduet"
+
+#, fuzzy
+#~ msgid "Quit Easy Effects"
+#~ msgstr "Avslutt EasyEffects"
+
+#, fuzzy
+#~ msgid "Dereverberation"
+#~ msgstr "Tjenerinfo"
+
+#, fuzzy
+#~ msgid "Start"
+#~ msgstr "Bånd-start"
+
+#, fuzzy
+#~ msgid "Noise Suppression"
+#~ msgstr "Reduksjon"
+
+#~ msgid "Stereo Mode"
+#~ msgstr "Stereomodus"
+
+#, fuzzy
+#~ msgid "Error"
+#~ msgstr "feil"
+
+#, fuzzy
+#~ msgid "Unknown"
+#~ msgstr "ukjent"
+
+#, fuzzy
+#~ msgid "channels"
+#~ msgstr "Kanaler"
+
+#, fuzzy
+#~ msgid "Reset Easy Effects."
+#~ msgstr "Avslutt EasyEffects"
+
+#~ msgid "Show available presets."
+#~ msgstr "Vis tilgjengelige forhåndsinnstillinger."
+
+#, fuzzy
+#~ msgid "_Output"
+#~ msgstr "Utgang"
+
+#, fuzzy
+#~ msgid "_Input"
+#~ msgstr "Inngang"
+
+#~ msgid "Open"
+#~ msgstr "Åpne"
+
+#~ msgid "Recorders"
+#~ msgstr "Opptakere"
+
+#~ msgid "Players"
+#~ msgstr "Avspillere"
+
+#~ msgid "Effects"
+#~ msgstr "Effekter"
+
+#, fuzzy
+#~ msgid "Export EqualizerAPO Preset File"
+#~ msgstr "Importer forhåndsinnstillinger"
+
+#~ msgid "Save"
+#~ msgstr "Lagre"
+
+#, fuzzy
+#~ msgid "Import GraphicEQ Preset File"
+#~ msgstr "Importer forhåndsinnstillinger"
+
+#, fuzzy
+#~ msgid "GraphicEQ Presets"
+#~ msgstr "Inngangsforhåndsinnstillinger"
+
+#, fuzzy
+#~ msgid "Output Level Meter"
+#~ msgstr "Utgangsenhet"
+
+#~ msgid "Remove"
+#~ msgstr "Fjern"
+
+#~ msgid "Output Device"
+#~ msgstr "Utgangsenhet"
+
+#~ msgid "Add"
+#~ msgstr "Legg til"
+
+#, fuzzy
+#~ msgid "Community Preset"
+#~ msgstr "Importer forhåndsinnstillinger"
+
+#, fuzzy
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "Svartelistede programmer"
+
+#~ msgid "Save?"
+#~ msgstr "Lagre?"
+
+#~ msgid "Delete?"
+#~ msgstr "Slette?"
+
+#, fuzzy
+#~ msgid "No Preset Loaded"
+#~ msgstr "Nytt inngangforhåndsinnstillingsnavn"
+
+#, fuzzy
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "Inngangforhåndsinnstillingsliste"
+
+#, fuzzy
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "Importer forhåndsinnstillinger"
+
+#~ msgid ""
+#~ "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To "
+#~ "The Standard Model."
+#~ msgstr ""
+#~ "Markert modul er ikke lastet. Det er mulig at formatet ikke støttes. "
+#~ "Faller tilbake til standard modell."
+
+#, fuzzy
+#~ msgid "Import Model File"
+#~ msgstr "Importer modellfil"
+
+#, fuzzy
+#~ msgid "Bass Enhancer"
+#~ msgstr "Bass Forbedring"
+
+#, fuzzy
+#~ msgid "Convolver"
+#~ msgstr "Convolver"
+
+#~ msgid "Crystalizer"
+#~ msgstr "Krystallisering"
+
+#, fuzzy
+#~ msgid "Deep Noise Remover"
+#~ msgstr "Dyp Støyfjerner"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "Ekkokansellering"
+
+#~ msgid "Equalizer"
+#~ msgstr "Tonekontroll"
+
+#~ msgid "Limiter"
+#~ msgstr "Begrenser"
+
+#, fuzzy
+#~ msgid "Maximizer"
+#~ msgstr "Maksimer"
+
+#~ msgid "Multiband Compressor"
+#~ msgstr "Multibånd Kompressor"
+
+#, fuzzy
+#~ msgid "Multiband Gate"
+#~ msgstr "Multiband Avgrenser"
+
+#, fuzzy
+#~ msgid "Reverberation"
+#~ msgstr "Klang"
+
+#~ msgid "Noise Reduction"
+#~ msgstr "Støyreduksjon"
+
+#, fuzzy
+#~ msgid "Speech Processor"
+#~ msgstr "Vokalprosessor"
+
+#, fuzzy
+#~ msgid "Stereo Tools"
+#~ msgstr "Stereo verktøy"
+
+#, c++-format
+#~ msgid "{} Not Available"
+#~ msgstr "{} Ikke tilgjengelig"
+
+#, fuzzy, c++-format
+#~ msgid ""
+#~ "The software required for the {} effect, \"{}\", is not installed. "
+#~ "Consider using the Easy Effects Flatpak package or installing the "
+#~ "software yourself."
+#~ msgstr ""
+#~ "Programvaren som kreves for effekten {},  er ikke installert \"{}\".  "
+#~ "Vurder å bruke Easy Effects Flatpak pakken eller installer programvaren "
+#~ "på egenhånd."
+
+#, c++-format
+#~ msgid ""
+#~ "The {} effect was disabled when Easy Effects was compiled. This is "
+#~ "perhaps since the software required for this effect, \"{}\", was not "
+#~ "available. Consider using the Easy Effects Flatpak package or building "
+#~ "your own Easy Effects package."
+#~ msgstr ""
+#~ "Effekten {} ble deaktivert når Easy Effects ble kompilert. Det er mulig "
+#~ "på grunn av at programvaren som kreves for denne effekten, \"{}\" ikke "
+#~ "var tilgjengelig. Vurder å bruke Easy Effects Flatpak pakken eller "
+#~ "installer programvaren på egenhånd."
+
+#, fuzzy, c++-format
+#~ msgid "Using {}"
+#~ msgstr "Bruker {}"
+
+#~ msgid "\"Presets\""
+#~ msgstr "«Forhåndsinnstillinger»"
+
+#, fuzzy
+#~ msgid "Import a preset"
+#~ msgstr "Importer forhåndsinnstillinger"
+
+#~ msgid "Uniform"
+#~ msgstr "Ensartet"
+
+#~ msgid "infinity"
+#~ msgstr "uendelig"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Forhold"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "Terskel"
+
+#, fuzzy
+#~ msgid "Low-pass"
+#~ msgstr "Lavpass"
+
+#, fuzzy
+#~ msgid "High-pass"
+#~ msgstr "Høypass"
+
+#~ msgid "12dB/oct Lowpass"
+#~ msgstr "12dB/okt lavpass"
+
+#~ msgid "24dB/oct Lowpass"
+#~ msgstr "24dB/okt lavpass"
+
+#~ msgid "36dB/oct Lowpass"
+#~ msgstr "36dB/okt lavpass"
+
+#~ msgid "12dB/oct Highpass"
+#~ msgstr "12dB/okt høypass"
+
+#~ msgid "24dB/oct Highpass"
+#~ msgstr "24dB/okt høypass"
+
+#~ msgid "36dB/oct Highpass"
+#~ msgstr "36dB/okt høypass"
+
+#~ msgid "6dB/oct Bandpass"
+#~ msgstr "6dB/okt båndpass"
+
+#~ msgid "12dB/oct Bandpass"
+#~ msgstr "12dB/okt båndpass"
+
+#~ msgid "18dB/oct Bandpass"
+#~ msgstr "18dB/okt båndpass"
+
+#~ msgid "6dB/oct Bandreject"
+#~ msgstr "6dB/oct båndsperre"
+
+#~ msgid "12dB/oct Bandreject"
+#~ msgstr "12dB/oct båndsperre"
+
+#~ msgid "18dB/oct Bandreject"
+#~ msgstr "18dB/oct båndsperre"
+
+#, fuzzy
+#~ msgid "Loudness List"
+#~ msgstr "Modulliste"
+
+#, fuzzy
+#~ msgid "Formant"
+#~ msgstr "Format"
+
+#, fuzzy
+#~ msgid "Preserved"
+#~ msgstr "Profiler"
+
+#, fuzzy
+#~ msgid "Detector"
+#~ msgstr "Oppdagelse"
+
+#~ msgid "Octaves"
+#~ msgstr "Oktaver"
+
+#, fuzzy
+#~ msgid "_Manual"
+#~ msgstr "_Manuell"
+
+#~ msgid "Cancel"
+#~ msgstr "Avbryt"
+
+#, fuzzy
+#~ msgid " PreAmplification"
+#~ msgstr "Forstum program"
+
+#~ msgid "Frame Size"
+#~ msgstr "Rammestørrelse"
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "Lavpass"
+
+#, fuzzy
+#~ msgid " Uniform"
+#~ msgstr "Ensartet"
+
+#, fuzzy
+#~ msgid "Left Delay"
+#~ msgstr "Venstre kanal"
+
+#, fuzzy
+#~ msgid "Right Delay"
+#~ msgstr "Høyre kanal"
+
+#, fuzzy
+#~ msgid "Noise Reduction (Fast)"
+#~ msgstr "Reduksjon"
+
+#~ msgid ""
+#~ "EasyEffects is an advanced audio manipulation tool. It includes an "
+#~ "equalizer, limiter, compressor and a reverberation tool, just to mention "
+#~ "a few. To complement this there is also a built in spectrum analyzer."
+#~ msgstr ""
+#~ "EasyEffects er et avansert lydmanipuleringsverktøy. Det har tonekontroll, "
+#~ "lydbegrenser, kompressor og etterklangsverktøy, for å nevne noe. En "
+#~ "innebygd spektrumsanalysator komplementerer disse."
+
+#~ msgid ""
+#~ "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+#~ "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+#~ msgstr ""
+#~ "EasyEffects er etterfølgeren til PulseEffects. EasyEffects støtter også "
+#~ "Pipewire sin lydtjener. PulseAudio-brukere bør bruke PulseEffects "
+#~ "istedenfor."
+
+#~ msgid ""
+#~ "When EasyEffects is launched it will conveniently remember the "
+#~ "configuration used in the last session. It is also possible to save all "
+#~ "the current settings as profiles."
+#~ msgstr ""
+#~ "Når EasyEffects startes, vil den huske alle innstillingene du gjorde i "
+#~ "forrige økt. Det er også mulig å lagre innstillingene i ulike profiler."
+
+#~ msgid "The main page showing two audio output apps"
+#~ msgstr "Hovedsiden som viser to programmer der det spilles av lyd"
+
+#, fuzzy
+#~ msgid "The convolver page showing audio controls"
+#~ msgstr "Convolver-siden viser lydkontroller"
+
+#~ msgid "This release adds the following features:"
+#~ msgstr "Denne utgaven bringer følgende funksjoner:"
+
+#, fuzzy
+#~ msgid "and #1427"
+#~ msgstr "Bånd 1"
+
+#, fuzzy
+#~ msgid ""
+#~ "There is a new setting allowing the user to select an inactivity timeout "
+#~ "for the pipeline. When no client is playing"
+#~ msgstr ""
+#~ "Dette er en ny innstilling som lar brukeren velge tidsavbrudd for "
+#~ "inaktivitet. Når ingen klient spiller"
+
+#, fuzzy
+#~ msgid ""
+#~ "to or recording from our devices the filters will be unlinked after the "
+#~ "timeout is reached. This is done to make sure"
+#~ msgstr ""
+#~ "til eller tar opp fra enhetene vil filterne avlenkes etter at "
+#~ "tidsavbruddsperioden er nådd. Dette gjøres for å ikke"
+
+#~ msgid "we do not waste CPU power processing silence."
+#~ msgstr "kaste bort prosessorkraft på å behandle stillhet."
+
+#~ msgid "This release fixes the following bug:"
+#~ msgstr "Denne utgaven fikser følgende feil:"
+
+#~ msgid "This release adds the following feature:"
+#~ msgstr "Denne utgaven fikser følgende funksjon:"
+
+#~ msgid "Support for the next PipeWire release `0.3.44`"
+#~ msgstr "Støtte for neste PipeWire-utgave `0.3.44`"
+
+#~ msgid "The `tbb` library is a new dependency"
+#~ msgstr "`tbb`-biblioteket er en ny avhengighet"
+
+#~ msgid "Updated Chinese translation."
+#~ msgstr "Oppdatert kinesisk oversettelse."
+
+#~ msgid "Updated Italian translation."
+#~ msgstr "Oppdatert italiensk oversettelse."
+
+#~ msgid "gtkmm3 was replaced by gtkmm4"
+#~ msgstr "gtkmm3 erstattes av gtkmm4"
+
+#, fuzzy
+#~ msgid "Gstreamer was replaced by native PipeWire filters."
+#~ msgstr "GStreamer erstattet av systemspesifikke PipeWire-filtre."
+
+#~ msgid "Average"
+#~ msgstr "Gjennomsnitt"
+
+#~ msgid "Use Default"
+#~ msgstr "Bruk forvalg"
+
+#~ msgid "Remove this plugin"
+#~ msgstr "Fjern dette programtillegget"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Aktiv modell"
+
+#~ msgid "Add to Blocklist"
+#~ msgstr "Legg til på svarteliste"
+
+#~ msgid "Blocklist"
+#~ msgstr "Svarteliste"
+
+#~ msgid "Add Plugin"
+#~ msgstr "Legg til programtillegg"
+
+#~ msgid "Speakers"
+#~ msgstr "Høyttalere"
+
+#~ msgid "Microphone"
+#~ msgstr "Mikrofon"
+
+#~ msgid "Plugins"
+#~ msgstr "Programtillegg"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Påskrudd"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Påskrudd"
+
+#~ msgid "Format"
+#~ msgstr "Format"
+
+#~ msgid "Latency"
+#~ msgstr "Forsinkelse"
+
+#~ msgid "Faster"
+#~ msgstr "Raskere"

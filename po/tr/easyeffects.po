@@ -1,0 +1,2748 @@
+# EasyEffects Türkçe Çeviri Dosyası.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# Serdar Sağlam <teknomobil@yandex.com>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2024-05-13 08:00+0000\n"
+"Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
+"tr/>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.5.5-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "Girdi"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "Ad"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+#, fuzzy
+msgid "Value"
+msgstr "Tavan Değeri"
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "Ön Ayar"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+#, fuzzy
+msgid "Quit"
+msgstr "_Çık"
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr "Uygula"
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "Ön Ayarlar"
+
+#: src/contents/ui/main.qml:179
+#, fuzzy
+msgid "Preferences"
+msgstr "_Tercihler"
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "Easy Effects _Hakkında"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "Çıktı"
+
+#: src/contents/ui/PipeWireTab.qml:9
+#, fuzzy
+msgid "PipeWire"
+msgstr "_PipeWire"
+
+#: src/main.cpp:55
+msgid "Audio effects for PipeWire applications"
+msgstr "PipeWire uygulamaları için ses efektleri"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Eğim"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+#, fuzzy
+msgid "Width of the main window."
+msgstr "Pencereyi Gizle."
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+#, fuzzy
+msgid "Height of the main window."
+msgstr "Pencereyi Gizle."
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+#, fuzzy
+msgid "Last used preset."
+msgstr "Yeni bir ön ayar oluştur"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "Ekolayzır, Sıkıştırıcı ve Diğer Ses Efektleri"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "PipeWire Uygulamaları için Ses Efektleri"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr ""
+#~ "sınırlayıcı,kompresör,yankı,ekolayzır,otomatikses;yükseltici;sıkıştırıcı;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "Bu uygulamayı etkinleştir/devre dışı bırak"
+
+#~ msgid "Enable"
+#~ msgstr "Etkinleştir"
+
+#~ msgid "Excluded App List: Add/remove this application"
+#~ msgstr "Hariç Tutulan Uygulama Listesi: Bu uygulamayı ekle/kaldır"
+
+#~ msgid "Exclude"
+#~ msgstr "Hariç tut"
+
+#~ msgid "Mute Application"
+#~ msgstr "Uygulamayı Sessize Al"
+
+#~ msgid "Change the volume of this application"
+#~ msgstr "Bu uygulamanın ses seviyesini değiştir"
+
+#~ msgid "Application Volume"
+#~ msgstr "Uygulama Ses Seviyesi"
+
+#~ msgid "_Help"
+#~ msgstr "_Yardım"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "Ayarları _Sıfırla"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "Kısa_yollar"
+
+#~ msgid "Presets Menu"
+#~ msgstr "Ön Ayarlar Menüsü"
+
+#~ msgid "Enable/disable the global bypass"
+#~ msgstr "Genel atlatmayı etkinleştir/devre dışı bırak"
+
+#~ msgid "Global Bypass"
+#~ msgstr "Genel Atlama"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Ana Menü"
+
+#~ msgid "Easy Effects Window"
+#~ msgstr "Easy Effects Penceresi"
+
+#~ msgid "Applications List"
+#~ msgstr "Uygulama Listesi"
+
+#~ msgid "Empty List"
+#~ msgstr "Boş Liste"
+
+#~ msgid "No Audio Application Available"
+#~ msgstr "Ses Uygulaması Yok"
+
+#~ msgid "Controls"
+#~ msgstr "Denetimler"
+
+#~ msgid "Target"
+#~ msgstr "Hedef"
+
+#~ msgid "Silence"
+#~ msgstr "Sessizlik"
+
+#~ msgid "Maximum History"
+#~ msgstr "Azami Geçmiş"
+
+#~ msgid "Reference"
+#~ msgstr "Referans"
+
+#~ msgid "Momentary"
+#~ msgstr "Anlık"
+
+#~ msgid "Short-Term"
+#~ msgstr "Kısa Süreli"
+
+#~ msgid "Integrated"
+#~ msgstr "Tümleşik"
+
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "Geometrik Ortalama (MSI)"
+
+#~ msgid "Geometric Mean (MS)"
+#~ msgstr "Geometrik Ortalama (MS)"
+
+#~ msgid "Geometric Mean (MI)"
+#~ msgstr "Geometrik Ortalama (MI)"
+
+#~ msgid "Geometric Mean (SI)"
+#~ msgstr "Geometrik Ortalama (SI)"
+
+#~ msgid "History"
+#~ msgstr "Geçmiş"
+
+#~ msgid "Reset"
+#~ msgstr "Sıfırla"
+
+#~ msgid "Loudness"
+#~ msgstr "Yüksek Ses"
+
+#~ msgid "Relative"
+#~ msgstr "Göreceli"
+
+#~ msgid "Range"
+#~ msgstr "Sınır"
+
+#~ msgid "Output Gain"
+#~ msgstr "Çıktı Kazancı"
+
+#~ msgid "Plugin Input Gain"
+#~ msgstr "Eklenti Girdi Kazancı"
+
+#~ msgid "Plugin Output Gain"
+#~ msgstr "Eklenti Çıktı Kazancı"
+
+#~ msgid "Device"
+#~ msgstr "Aygıt"
+
+#~ msgid "Profile"
+#~ msgstr "Profil"
+
+#~ msgid "Remove this autoload preset"
+#~ msgstr "Bu otomatik yükleme ön ayarını kaldır"
+
+#~ msgid "Listen"
+#~ msgstr "Liste"
+
+#~ msgid "Blend Harmonics"
+#~ msgstr "Harmonik Karışımları"
+
+#~ msgid "3rd"
+#~ msgstr "3."
+
+#~ msgid "2nd"
+#~ msgstr "2."
+
+#~ msgid "Amount"
+#~ msgstr "Miktar"
+
+#~ msgid "Harmonics"
+#~ msgstr "Harmonikler"
+
+#~ msgid "Scope"
+#~ msgstr "Kapsam"
+
+#~ msgid "Floor"
+#~ msgstr "Zemin"
+
+#~ msgid "Floor Value"
+#~ msgstr "Zemin Değeri"
+
+#~ msgid "Link"
+#~ msgstr "Bağ"
+
+#~ msgid "Application Name"
+#~ msgstr "Uygulama Adı"
+
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "Hariç Tutulan Uygulamalara Ekle"
+
+#~ msgid "Excluded Applications List"
+#~ msgstr "Hariç Tutulan Uygulamalar Listesi"
+
+#~ msgid "Show Excluded Applications"
+#~ msgstr "Hariç Tutulan Uygulamaları Göster"
+
+#~ msgid "Show Native Window"
+#~ msgstr "Yerel Pencereyi Göster"
+
+#~ msgid "Compressor"
+#~ msgstr "Sıkıştırıcı"
+
+#~ msgid "Mode"
+#~ msgstr "Kip"
+
+#~ msgid "Downward"
+#~ msgstr "Aşağıya"
+
+#~ msgid "Upward"
+#~ msgstr "Yukarı doğru"
+
+#~ msgid "Boosting"
+#~ msgstr "Yükseltme"
+
+#~ msgid "Compression Mode"
+#~ msgstr "Sıkıştırma Kipi"
+
+#~ msgid "Boost Threshold"
+#~ msgstr "Yükseltme Eşiği"
+
+#~ msgid "Boost Amount"
+#~ msgstr "Yükseltme Miktarı"
+
+#~ msgid "Attack"
+#~ msgstr "Atak"
+
+#~ msgid "Time"
+#~ msgstr "Zaman"
+
+#~ msgid "Threshold"
+#~ msgstr "Eşik"
+
+#~ msgid "Attack Time"
+#~ msgstr "Atak Zamanı"
+
+#~ msgid "Attack Threshold"
+#~ msgstr "Atak Eşiği"
+
+#~ msgid "Release"
+#~ msgstr "Bırak"
+
+#~ msgid "Release Time"
+#~ msgstr "Bırakma Zamanı"
+
+#~ msgid "Release Threshold"
+#~ msgstr "Bırakma Eşiği"
+
+#~ msgid "Ratio"
+#~ msgstr "Oran"
+
+#~ msgid "Knee"
+#~ msgstr "Oynak"
+
+#~ msgid "Makeup"
+#~ msgstr "Süs"
+
+#~ msgid "Dry Level"
+#~ msgstr "Kuru Düzey"
+
+#~ msgid "Wet Level"
+#~ msgstr "Islak Düzey"
+
+#~ msgid "Sidechain"
+#~ msgstr "Yanzincir"
+
+#~ msgid "Stereo Split Mode"
+#~ msgstr "Stereo Bölme Kipi"
+
+#~ msgid "Source"
+#~ msgstr "Kaynak"
+
+#~ msgid "Middle"
+#~ msgstr "Orta"
+
+#~ msgid "Side"
+#~ msgstr "Yan"
+
+#~ msgid "Left"
+#~ msgstr "Sol"
+
+#~ msgid "Right"
+#~ msgstr "Sağ"
+
+#~ msgid "Min"
+#~ msgstr "Asgari"
+
+#~ msgid "Max"
+#~ msgstr "Azami"
+
+#~ msgid "Sidechain Source"
+#~ msgstr "Yanzincir Kaynağı"
+
+#~ msgid "Left/Right"
+#~ msgstr "Sol/Sağ"
+
+#~ msgid "Right/Left"
+#~ msgstr "Sağ/Sol"
+
+#~ msgid "Mid/Side"
+#~ msgstr "Orta/Yan"
+
+#~ msgid "Side/Mid"
+#~ msgstr "Yan/Orta"
+
+#~ msgid "Stereo Split Source"
+#~ msgstr "Stereo Bölme Kaynağı"
+
+#~ msgid "Peak"
+#~ msgstr "Doruk"
+
+#~ msgid "RMS"
+#~ msgstr "RMS"
+
+#~ msgid "Low-Pass Filter"
+#~ msgstr "Düşük Geçiş Süzgeci"
+
+#~ msgid "Simple Moving Average"
+#~ msgstr "Basit Hareketli Ortalama"
+
+#~ msgid "Sidechain Mode"
+#~ msgstr "Yanzincir Kipi"
+
+#~ msgid "Listen Sidechain"
+#~ msgstr "Yanzincir Dinle"
+
+#~ msgid "Type"
+#~ msgstr "Tür"
+
+#~ msgid "Feed-forward"
+#~ msgstr "İleri-besleme"
+
+#~ msgid "Feed-back"
+#~ msgstr "Geri-besleme"
+
+#~ msgid "External"
+#~ msgstr "Harici"
+
+#~ msgid "Sidechain Type"
+#~ msgstr "Yanzincir Türü"
+
+#~ msgid "Input Device"
+#~ msgstr "Giriş Aygıtı"
+
+#~ msgid "PreAmplification"
+#~ msgstr "Ön Yükseltme"
+
+#~ msgid "Reactivity"
+#~ msgstr "Tepkinirlik"
+
+#~ msgid "Lookahead"
+#~ msgstr "İlerleme"
+
+#~ msgid "Sidechain Filters"
+#~ msgstr "Yanzincir Süzgeçleri"
+
+#~ msgid "High-Pass"
+#~ msgstr "Yüksek Geçiş"
+
+#~ msgid "Frequency"
+#~ msgstr "Sıklık"
+
+#~ msgid "Off"
+#~ msgstr "Kapalı"
+
+#~ msgid "12 dB/oct"
+#~ msgstr "12 dB/oct"
+
+#~ msgid "24 dB/oct"
+#~ msgstr "24 dB/oct"
+
+#~ msgid "36 dB/oct"
+#~ msgstr "36 dB/oct"
+
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "Yüksek Geçiş Süzgeci Kipi"
+
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "Yüksek Geçiş Süzgeci Frekansı"
+
+#~ msgid "Low-Pass"
+#~ msgstr "Düşük Geçiş"
+
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "Alçak Geçiş Süzgeci Kipi"
+
+#~ msgid "Gain"
+#~ msgstr "Kazanç"
+
+#~ msgid "Curve"
+#~ msgstr "Eğri"
+
+#~ msgid "L"
+#~ msgstr "L"
+
+#~ msgid "Left Channel"
+#~ msgstr "Sol Kanal"
+
+#~ msgid "R"
+#~ msgstr "R"
+
+#~ msgid "Right Channel"
+#~ msgstr "Sağ Kanal"
+
+#~ msgid "Impulses"
+#~ msgstr "Dürtüler"
+
+#~ msgid "Combine"
+#~ msgstr "Birleştir"
+
+#~ msgid "Stereo Width"
+#~ msgstr "Stereo Genişliği"
+
+#~ msgid "Spectrum"
+#~ msgstr "Spektrum"
+
+#~ msgid "Log Scale"
+#~ msgstr "Günlük Ölçeği"
+
+#~ msgid "Autogain"
+#~ msgstr "Otomatik Kazanç"
+
+#~ msgid "Rate"
+#~ msgstr "Oran"
+
+#~ msgid "Samples"
+#~ msgstr "Örnekler"
+
+#~ msgid "Duration"
+#~ msgstr "Süre"
+
+#~ msgid "Combine Impulse Responses"
+#~ msgstr "Dürtü Yanıtlarını Birleştir"
+
+#~ msgid "First Kernel"
+#~ msgstr "İlk Çekirdek"
+
+#~ msgid "Second Kernel"
+#~ msgstr "İkinci Çekirdek"
+
+#~ msgid "Output File Name"
+#~ msgstr "Çıkış Dosyası Adı"
+
+#~ msgid "Combined Kernel Name"
+#~ msgstr "Birleşik Çekirdek Adı"
+
+#~ msgid "Import Impulse"
+#~ msgstr "Dürtü Dosyasını İçeri Al"
+
+#~ msgid "Search"
+#~ msgstr "Ara"
+
+#~ msgid "Search Impulse File"
+#~ msgstr "Dürtü Dosyasını Ara"
+
+#~ msgid "Impulse Files List"
+#~ msgstr "Dürtü Dosyaları Listesi"
+
+#~ msgid "Default"
+#~ msgstr "Öntanımlı"
+
+#~ msgid "Cutoff"
+#~ msgstr "Kesici"
+
+#~ msgid "Feed"
+#~ msgstr "Akış"
+
+#~ msgid "Bypass"
+#~ msgstr "Atla"
+
+#~ msgid "Mute"
+#~ msgstr "Sessiz"
+
+#~ msgid "Attenuation Limit"
+#~ msgstr "Zayıflama Sınırı"
+
+#~ msgid "Minimum Processing Threshold"
+#~ msgstr "Asgari İşleme Eşiği"
+
+#~ msgid "Maximum ERB Processing threshold"
+#~ msgstr "Azami ERB İşleme eşiği"
+
+#~ msgid "Maximum DF Processing Threshold"
+#~ msgstr "Azami DF İşleme Eşiği"
+
+#~ msgid "Minimum Processing Buffer"
+#~ msgstr "Asgari İşleme Tamponu"
+
+#~ msgid "Post Filter Beta"
+#~ msgstr "Süzgeç Sonrası Beta"
+
+#~ msgid "Detection"
+#~ msgstr "Keşif"
+
+#~ msgid "Wide"
+#~ msgstr "Geniş"
+
+#~ msgid "Split"
+#~ msgstr "Böl"
+
+#~ msgid "F1 Split"
+#~ msgstr "F2 Bölme"
+
+#~ msgid "Frequency 1 Split"
+#~ msgstr "Frekans 1 Bölme"
+
+#~ msgid "F2 Peak"
+#~ msgstr "F2 Doruk"
+
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "Frekans 2 Doruk"
+
+#~ msgid "F1 Gain"
+#~ msgstr "F1 Kazancı"
+
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "Frekans 1 Kazancı"
+
+#~ msgid "F2 Level"
+#~ msgstr "F2 Seviye"
+
+#~ msgid "Frequency 2 Level"
+#~ msgstr "Frekans 2 Seviyesi"
+
+#~ msgid "F2 Peak Q"
+#~ msgstr "F2 Doruk Q"
+
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "Frekans 2 Doruk Q"
+
+#~ msgid "Laxity"
+#~ msgstr "Gevşeklik"
+
+#~ msgid "Detected"
+#~ msgstr "Saptanan"
+
+#~ msgid "Reduction"
+#~ msgstr "Azaltma"
+
+#~ msgid "Delay"
+#~ msgstr "Gecikme"
+
+#~ msgid "Invert Phase"
+#~ msgstr "Ters Faz"
+
+#~ msgid "Filter Length"
+#~ msgstr "Süzgeç Uzunluğu"
+
+#~ msgid "Residual Echo Suppression"
+#~ msgstr "Artık Yankı Bastırma"
+
+#~ msgid "Near End Echo Suppression"
+#~ msgstr "Yakın Uç Yankı Bastırma"
+
+#~ msgid "Excluded Apps"
+#~ msgstr "Hariç Tutulan Uygulamalar"
+
+#~ msgid "Enable/disable input monitoring"
+#~ msgstr "Giriş izlemeyi etkinleştir/devre dışı bırak"
+
+#~ msgid "Bands"
+#~ msgstr "Bantlar"
+
+#~ msgid "Balance"
+#~ msgstr "Denge"
+
+#~ msgid "Pitch Left"
+#~ msgstr "Sol Perde"
+
+#~ msgid "Pitch Right"
+#~ msgstr "Sağ Perde"
+
+#~ msgid "Split Channels"
+#~ msgstr "Kanalları Böl"
+
+#~ msgid "Flat Response"
+#~ msgstr "Düz Yanıt"
+
+#~ msgid "Calculate Frequencies"
+#~ msgstr "Frekansları Hesapla"
+
+#~ msgid "Sort Bands"
+#~ msgstr "Bantları Sırala"
+
+#~ msgid "Import Preset"
+#~ msgstr "Ön Ayarı İçe Aktar"
+
+#~ msgid "Export Preset"
+#~ msgstr "Ön Ayarı İçe Aktar"
+
+#~ msgid "Slope"
+#~ msgstr "Eğim"
+
+#~ msgid "Solo"
+#~ msgstr "Tekli"
+
+#~ msgid "Quality"
+#~ msgstr "Kalite"
+
+#~ msgid "Width"
+#~ msgstr "Genişlik"
+
+#~ msgid "Ceil"
+#~ msgstr "Tavan"
+
+#~ msgid "Expander"
+#~ msgstr "Genişletici"
+
+#~ msgid "Expander Mode"
+#~ msgstr "Genişletici Kipi"
+
+#~ msgid "Internal"
+#~ msgstr "Dahili"
+
+#~ msgid "API"
+#~ msgstr "API"
+
+#~ msgid "Access"
+#~ msgstr "Erişim"
+
+#~ msgid "Description"
+#~ msgstr "Açıklama"
+
+#~ msgid "Remove this model file"
+#~ msgstr "Bu model dosyasını kaldır"
+
+#~ msgid "Low-Shelf"
+#~ msgstr "Düşük Raf"
+
+#~ msgid "High-Shelf"
+#~ msgstr "Yüksek Raf"
+
+#~ msgid "Bell"
+#~ msgstr "Çan"
+
+#~ msgid "Band-Pass"
+#~ msgstr "Bant-Geçiş"
+
+#~ msgid "Notch"
+#~ msgstr "Çentik"
+
+#~ msgid "Resonance"
+#~ msgstr "Çınlama"
+
+#~ msgid "Ladder-Pass"
+#~ msgstr "Merdiven-Geçiş"
+
+#~ msgid "Ladder-Rejection"
+#~ msgstr "Merdiven-Reddetme"
+
+#~ msgid "All-Pass"
+#~ msgstr "Tam-Geçiş"
+
+#~ msgid "Equalizer Mode"
+#~ msgstr "Ekolayzır Kipi"
+
+#~ msgid "Filter"
+#~ msgstr "Süzgeç"
+
+#~ msgid "Gate"
+#~ msgstr "Aralık"
+
+#~ msgid "Zone"
+#~ msgstr "Bölge"
+
+#~ msgid "Hysteresis"
+#~ msgstr "Gecikme"
+
+#~ msgid "Mix"
+#~ msgstr "Karıştır"
+
+#~ msgid "Attack Zone Start"
+#~ msgstr "Atak Bölgesi Başlangıcı"
+
+#~ msgid "Release Zone Start"
+#~ msgstr "Bırakma Bölgesi Başlangıcı"
+
+#~ msgid "True Peak"
+#~ msgstr "Gerçek Doruk"
+
+#~ msgid "Reset History"
+#~ msgstr "Geçmişi Sıfırla"
+
+#~ msgid "Oversampling"
+#~ msgstr "Aşırı Örnekleme"
+
+#~ msgid "Dither"
+#~ msgstr "Titreme"
+
+#~ msgid "Herm Thin"
+#~ msgstr "Herm İnce"
+
+#~ msgid "Herm Wide"
+#~ msgstr "Herm Geniş"
+
+#~ msgid "Herm Tail"
+#~ msgstr "Herm Kuyruk"
+
+#~ msgid "Herm Duck"
+#~ msgstr "Herm Ördek"
+
+#~ msgid "Exp Thin"
+#~ msgstr "Exp İnce"
+
+#~ msgid "Exp Wide"
+#~ msgstr "Exp Geniş"
+
+#~ msgid "Exp Tail"
+#~ msgstr "Exp Kuyruk"
+
+#~ msgid "Exp Duck"
+#~ msgstr "Exp Ördek"
+
+#~ msgid "Line Thin"
+#~ msgstr "Hat İnce"
+
+#~ msgid "Line Wide"
+#~ msgstr "Hat Geniş"
+
+#~ msgid "Line Tail"
+#~ msgstr "Hat Kuyruk"
+
+#~ msgid "Line Duck"
+#~ msgstr "Hat Ördek"
+
+#~ msgid "None"
+#~ msgstr "Hiçbiri"
+
+#~ msgid "Half x2(2L)"
+#~ msgstr "Yarım x2(2L)"
+
+#~ msgid "Half x2(3L)"
+#~ msgstr "Yarım x2(3L)"
+
+#~ msgid "Half x3(2L)"
+#~ msgstr "Yarım x3(2L)"
+
+#~ msgid "Half x3(3L)"
+#~ msgstr "Yarım x3(3L)"
+
+#~ msgid "Half x4(2L)"
+#~ msgstr "Yarım x4(2L)"
+
+#~ msgid "Half x4(3L)"
+#~ msgstr "Yarım x4(3L)"
+
+#~ msgid "Half x6(2L)"
+#~ msgstr "Yarım x6(2L)"
+
+#~ msgid "Half x6(3L)"
+#~ msgstr "Yarım x6(3L)"
+
+#~ msgid "Half x8(2L)"
+#~ msgstr "Yarım x8(2L)"
+
+#~ msgid "Half x8(3L)"
+#~ msgstr "Yarım x8(3L)"
+
+#~ msgid "Full x2(2L)"
+#~ msgstr "Tam x2(2L)"
+
+#~ msgid "Full x2(3L)"
+#~ msgstr "Tam x2(3L)"
+
+#~ msgid "Full x3(2L)"
+#~ msgstr "Tam x3(2L)"
+
+#~ msgid "Full x3(3L)"
+#~ msgstr "Tam x3(3L)"
+
+#~ msgid "Full x4(2L)"
+#~ msgstr "Tam x4(2L)"
+
+#~ msgid "Full x4(3L)"
+#~ msgstr "Tam x4(3L)"
+
+#~ msgid "Full x6(2L)"
+#~ msgstr "Tam x6(2L)"
+
+#~ msgid "Full x6(3L)"
+#~ msgstr "Tam x6(3L)"
+
+#~ msgid "Full x8(2L)"
+#~ msgstr "Tam x8(2L)"
+
+#~ msgid "Full x8(3L)"
+#~ msgstr "Tam x8(3L)"
+
+#~ msgid "SC PreAmp"
+#~ msgstr "SC Ön Yükseltme"
+
+#~ msgid "Sidechain PreAmplification"
+#~ msgstr "Yanzincir Ön Yükseltmesi"
+
+#~ msgid "Boost"
+#~ msgstr "Artır"
+
+#~ msgid "Stereo Link"
+#~ msgstr "Stereo Bağ"
+
+#~ msgid "External Sidechain"
+#~ msgstr "Harici Yanzincir"
+
+#~ msgid "External Sidechain Source"
+#~ msgstr "Harici Yanzincir Kaynağı"
+
+#~ msgid "Auto Leveling"
+#~ msgstr "Otomatik Dengeleme"
+
+#~ msgid "Auto Leveling Attack"
+#~ msgstr "Otomatik Dengeleme Saldırısı"
+
+#~ msgid "Auto Leveling Release"
+#~ msgstr "Otomatik Dengeleme Yayını"
+
+#~ msgid "Auto Leveling Knee"
+#~ msgstr "Otomatik Dengeleme Dizliği"
+
+#~ msgid "Gain Left"
+#~ msgstr "Kazanç Sol"
+
+#~ msgid "Gain Right"
+#~ msgstr "Kazanç Sağ"
+
+#~ msgid "Sidechain Left"
+#~ msgstr "Yanzincir Sol"
+
+#~ msgid "Sidechain Right"
+#~ msgstr "Yanzincir Sağ"
+
+#~ msgid "Standard"
+#~ msgstr "Standart"
+
+#~ msgid "Flat"
+#~ msgstr "Düz"
+
+#~ msgid "FFT Size"
+#~ msgstr "FFT Boyutu"
+
+#~ msgid "Output Volume"
+#~ msgstr "Çıkış Ses Seviyesi"
+
+#~ msgid "Clipping"
+#~ msgstr "Kırpma"
+
+#~ msgid "Sidechain Boost"
+#~ msgstr "Yanzincir Güçlendirme"
+
+#~ msgid "Pink BT"
+#~ msgstr "Pink BT"
+
+#~ msgid "Pink MT"
+#~ msgstr "Pink MT"
+
+#~ msgid "Brown BT"
+#~ msgstr "Brown BT"
+
+#~ msgid "Brown MT"
+#~ msgstr "Brown MT"
+
+#~ msgid "Show Native User Interface"
+#~ msgstr "Yerel Kullanıcı Arayüzünü Göster"
+
+#~ msgid "Operating Mode"
+#~ msgstr "Çalışma Kipi"
+
+#~ msgid "Classic"
+#~ msgstr "Klasik"
+
+#~ msgid "Modern"
+#~ msgstr "Çağdaş"
+
+#~ msgid "Linear Phase"
+#~ msgstr "Doğrusal Faz"
+
+#~ msgid "Bands List"
+#~ msgstr "Bant Listesi"
+
+#~ msgid "Band 1"
+#~ msgstr "Bant 1"
+
+#~ msgid "Band 2"
+#~ msgstr "Bant 2"
+
+#~ msgid "Band 3"
+#~ msgstr "Bant 3"
+
+#~ msgid "Band 4"
+#~ msgstr "Bant 4"
+
+#~ msgid "Band 5"
+#~ msgstr "Bant 5"
+
+#~ msgid "Band 6"
+#~ msgstr "Bant 6"
+
+#~ msgid "Band 7"
+#~ msgstr "Bant 7"
+
+#~ msgid "Band 8"
+#~ msgstr "Bant 8"
+
+#~ msgid "Band Start"
+#~ msgstr "Bant Başlangıcı"
+
+#~ msgid "Band End"
+#~ msgstr "Bant Sonu"
+
+#~ msgid "Band Compression Mode"
+#~ msgstr "Bant Sıkıştırma Kipi"
+
+#~ msgid "Band Bypass"
+#~ msgstr "Bant Atlama"
+
+#~ msgid "Band Sidechain Options"
+#~ msgstr "Bant Yanzincir Seçenekleri"
+
+#~ msgid "Stereo Split"
+#~ msgstr "Stereo Bölme"
+
+#~ msgid "Low-Cut"
+#~ msgstr "Düşük-Kesim"
+
+#~ msgid "Low-Cut Filter Frequency"
+#~ msgstr "Düşük-Kesim Süzgeç Frekansı"
+
+#~ msgid "High-Cut"
+#~ msgstr "Yüksek-Kesim"
+
+#~ msgid "High-Cut Filter Frequency"
+#~ msgstr "Yüksek-Kesim Süzgeci Frekansı"
+
+#~ msgid "PreAmp"
+#~ msgstr "Ön Yükseltme"
+
+#~ msgid "Band Gain"
+#~ msgstr "Bant Kazancı"
+
+#~ msgid "Band Envelope"
+#~ msgstr "Bant Zarfı"
+
+#~ msgid "Band Curve"
+#~ msgstr "Bant Eğrisi"
+
+#~ msgid "Band Reduction"
+#~ msgstr "Bant Azaltma"
+
+#~ msgid "General"
+#~ msgstr "Genel"
+
+#~ msgid "Device Management"
+#~ msgstr "Aygıt Yönetimi"
+
+#~ msgid ""
+#~ "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
+#~ "external applications (e.g. Gnome Settings and Plasma System Settings)."
+#~ msgstr ""
+#~ "Harici uygulamalarda (örn. Gnome Ayarları ve Plasma Sistem Ayarları) Easy "
+#~ "Effects alıcısı/kaynağının öntanımlı aygıt olarak ayarlanmaması tavsiye "
+#~ "edilir."
+
+#~ msgid "Use Default Input"
+#~ msgstr "Öntanımlı Girişi Kullan"
+
+#~ msgid "Custom Input Device"
+#~ msgstr "Özel Giriş Aygıtı"
+
+#~ msgid "Use Default Output"
+#~ msgstr "Öntanımlı Çıkışı Kullan"
+
+#~ msgid "Custom Output Device"
+#~ msgstr "Özel Çıkış Aygıtı"
+
+#~ msgid "Server Information"
+#~ msgstr "Sunucu Bilgileri"
+
+#~ msgid "Header Version"
+#~ msgstr "Başlık Sürümü"
+
+#~ msgid "Library Version"
+#~ msgstr "Kütüphane Sürümü"
+
+#~ msgid "Sampling Rate"
+#~ msgstr "Örnekleme Hızı"
+
+#~ msgid "Minimum Quantum"
+#~ msgstr "Asgari Kuantum"
+
+#~ msgid "Maximum Quantum"
+#~ msgstr "Azami Kuantum"
+
+#~ msgid "Default Quantum"
+#~ msgstr "Öntanımlı Kuantum"
+
+#~ msgid "Presets Autoloading"
+#~ msgstr "Ön Ayarları Otomatik Yükle"
+
+#~ msgid ""
+#~ "Only Local Presets can be autoloaded. A Community Preset should be "
+#~ "imported locally in order to be selected and associated to a specific "
+#~ "device."
+#~ msgstr ""
+#~ "Yalnızca yerel ön ayarlar otomatik olarak yüklenebilir. Bir topluluk ön "
+#~ "ayarının seçilebilmesi ve belirli bir aygıtla ilişkilendirilebilmesi için "
+#~ "yerel olarak içe aktarılması gerekir."
+
+#~ msgid "Output Devices"
+#~ msgstr "Çıkış Aygıtları"
+
+#~ msgid "Output Presets"
+#~ msgstr "Çıkış Ön Ayarları"
+
+#~ msgid "Create Association"
+#~ msgstr "Birleşme Oluştur"
+
+#~ msgid "Add Autoloading Output Preset"
+#~ msgstr "Otomatik Yükleme Çıktı Ön Ayarı Ekle"
+
+#~ msgid "Output Autoloading Presets List"
+#~ msgstr "Çıktı Otomatik Yükleme Ön Ayarları Listesi"
+
+#~ msgid "Input Devices"
+#~ msgstr "Giriş Aygıtları"
+
+#~ msgid "Input Presets"
+#~ msgstr "Giriş Ön Ayarları"
+
+#~ msgid "Add Autoloading Input Preset"
+#~ msgstr "Otomatik Yükleme Girdi Ön Ayarı Ekle"
+
+#~ msgid "Input Autoloading Presets List"
+#~ msgstr "Girdi Otomatik Yükleme Ön Ayarları Listesi"
+
+#~ msgid "Modules"
+#~ msgstr "Modüller"
+
+#~ msgid "Modules List"
+#~ msgstr "Modül Listesi"
+
+#~ msgid "Clients"
+#~ msgstr "İstemciler"
+
+#~ msgid "Clients List"
+#~ msgstr "İstemci Listesi"
+
+#~ msgid "Test Signal"
+#~ msgstr "Test Sinyali"
+
+#~ msgid "State"
+#~ msgstr "Durum"
+
+#~ msgid "Enabled"
+#~ msgstr "Etkin"
+
+#~ msgid "Properties"
+#~ msgstr "Özellikler"
+
+#~ msgid "Channels"
+#~ msgstr "Kanallar"
+
+#~ msgid "Both"
+#~ msgstr "Her ikisi"
+
+#~ msgid "Both Channels"
+#~ msgstr "Her İki Kanal"
+
+#~ msgid "Waveform"
+#~ msgstr "Dalga Biçimi"
+
+#~ msgid "Sine Wave"
+#~ msgstr "Sinüs Dalgası"
+
+#~ msgid "White Noise"
+#~ msgstr "Beyaz Gürültü"
+
+#~ msgid "Quick Seek"
+#~ msgstr "Hızlı Arama"
+
+#~ msgid "Anti-aliasing"
+#~ msgstr "Kenar yumuşatma"
+
+#~ msgid "Sequence Length"
+#~ msgstr "Dizi Uzunluğu"
+
+#~ msgid "Seek Window"
+#~ msgstr "Arama Penceresi"
+
+#~ msgid "Overlap Length"
+#~ msgstr "Örtüşme Uzunluğu"
+
+#~ msgid "Pitch"
+#~ msgstr "Perde"
+
+#~ msgid "Semitones"
+#~ msgstr "Yarım Ses"
+
+#~ msgid "Tempo Difference"
+#~ msgstr "Tempo Farkı"
+
+#~ msgid "Rate Difference"
+#~ msgstr "Oran Farkı"
+
+#~ msgid "Remove this effect"
+#~ msgstr "Bu efekti kaldır"
+
+#~ msgid "Enable/disable this effect"
+#~ msgstr "Bu efekti etkinleştir/devre dışı bırak"
+
+#~ msgid "Change the position of this effect"
+#~ msgstr "Bu efektin konumunu değiştir"
+
+#~ msgid "Show/hide effects list"
+#~ msgstr "Efekt listesini göster/gizle"
+
+#~ msgid "Add Effect"
+#~ msgstr "Efekt Ekle"
+
+#~ msgid "Go to the previous effect"
+#~ msgstr "Önceki efekte git"
+
+#~ msgid "Go to the next effect"
+#~ msgstr "Sonraki efekte git"
+
+#~ msgid "Used Plugins List"
+#~ msgstr "Kullanılan Eklentiler Listesi"
+
+#~ msgid "No Effects"
+#~ msgstr "Efekt Yok"
+
+#~ msgid "Audio Stream Not Modified"
+#~ msgstr "Ses Akışı Değiştirilmedi"
+
+#~ msgid "Search Plugin"
+#~ msgstr "Eklenti Ara"
+
+#~ msgid "Plugins List"
+#~ msgstr "Eklenti Listesi"
+
+#~ msgid "_General"
+#~ msgstr "_Genel"
+
+#~ msgid "Service"
+#~ msgstr "Hizmet"
+
+#~ msgid "Launch Service at System Startup"
+#~ msgstr "Sistem Başlangıcında Hizmeti Başlat"
+
+#~ msgid "Shutdown on Window Closing"
+#~ msgstr "Pencere Kapandığında Kapat"
+
+#~ msgid "Audio"
+#~ msgstr "Ses"
+
+#~ msgid "Process All Output Streams"
+#~ msgstr "Tüm Çıkış Akışlarını İşle"
+
+#~ msgid "Process All Input Streams"
+#~ msgstr "Tüm Giriş Akışlarını İşle"
+
+#~ msgid "Ignore Streams from Monitor of Devices"
+#~ msgstr "Aygıtların Ekranından Gelen Akışları Yoksay"
+
+#~ msgid "Use Cubic Volume"
+#~ msgstr "Kübik Ses Kullan"
+
+#~ msgid "Inactivity Timeout"
+#~ msgstr "Tepkisizlik Zaman Aşımı"
+
+#~ msgid "Update Interval"
+#~ msgstr "Güncelleme Aralığı"
+
+#~ msgid "Related to Level Meters and Spectrum"
+#~ msgstr "Seviye Ölçerler ve Spektrum ile ilgili"
+
+#~ msgid "Update Frequency"
+#~ msgstr "Güncelleme Sıklığı"
+
+#~ msgid "Related to LV2 Plugins"
+#~ msgstr "LV2 Eklentileri ile ilgili"
+
+#~ msgid "Style"
+#~ msgstr "Görünüm"
+
+#~ msgid "Use Dark Theme"
+#~ msgstr "Koyu Tema Kullan"
+
+#~ msgid "Hide Menus on Outside Clicks"
+#~ msgstr "Dış Tıklamalarda Menüleri Gizle"
+
+#~ msgid "Experimental Features"
+#~ msgstr "Deneysel özellikler"
+
+#~ msgid "Native Plugin Window"
+#~ msgstr "Yerel Eklenti Penceresi"
+
+#~ msgid "Allows The Native Plugin Window to be Shown/Hidden"
+#~ msgstr "Yerel Eklenti Penceresinin Gösterilmesini/Gizlenmesini Sağlar"
+
+#~ msgid "_Spectrum"
+#~ msgstr "_Spektrum"
+
+#~ msgid "Shape"
+#~ msgstr "Şekil"
+
+#~ msgid "Bars"
+#~ msgstr "Çubuklar"
+
+#~ msgid "Lines"
+#~ msgstr "Çizgiler"
+
+#~ msgid "Dots"
+#~ msgstr "Noktalar"
+
+#~ msgid "Points"
+#~ msgstr "Noktalar"
+
+#~ msgid "Height"
+#~ msgstr "Yükseklik"
+
+#~ msgid "Line Width"
+#~ msgstr "Hat Genişliği"
+
+#~ msgid "Fill"
+#~ msgstr "Dolgu"
+
+#~ msgid "Show Bars Border"
+#~ msgstr "Çubuk Kenarlığını Göster"
+
+#~ msgid "Rounded Corners"
+#~ msgstr "Yuvarlatılmış Köşeler"
+
+#~ msgid "Dynamic Scale"
+#~ msgstr "Dinamik Ölçek"
+
+#~ msgid "Color"
+#~ msgstr "Renk"
+
+#~ msgid "Lines and Bars"
+#~ msgstr "Çizgiler ve Çubuklar"
+
+#~ msgid "Axis Labels"
+#~ msgstr "Eksen Etiketleri"
+
+#~ msgid "Frequency Range"
+#~ msgstr "Frekans Aralığı"
+
+#~ msgid "Minimum"
+#~ msgstr "Asgari"
+
+#~ msgid "Maximum"
+#~ msgstr "Azami"
+
+#~ msgid "Load"
+#~ msgstr "Yük"
+
+#~ msgid "Discard the current settings and load this preset"
+#~ msgstr "Geçerli ayarları gözden çıkar ve bu ön ayarı yükle"
+
+#~ msgid "Save current settings to this preset file"
+#~ msgstr "Geçerli ayarları bu ön ayar dosyasına kaydet"
+
+#~ msgid "Remove this preset file"
+#~ msgstr "Hazır ayar dosyasını kaldır"
+
+#~ msgid "Try"
+#~ msgstr "Dene"
+
+#~ msgid "Try this community preset"
+#~ msgstr "Bu topluluk ön ayarını dene"
+
+#~ msgid "Import"
+#~ msgstr "İçe aktar"
+
+#~ msgid "Import this community preset into the local presets list"
+#~ msgstr "Bu topluluk ön ayarını yerel ön ayarlar listesine aktar"
+
+#~ msgid "Local"
+#~ msgstr "Yerel"
+
+#~ msgid "New Preset Name"
+#~ msgstr "Yeni Ön Ayar Adı"
+
+#~ msgid "Import a preset from the local storage"
+#~ msgstr "Yerel depolama alanından bir ön ayarı içe aktar"
+
+#~ msgid "Search Local Preset"
+#~ msgstr "Yerel Ön Ayar Ara"
+
+#~ msgid "Local Presets List"
+#~ msgstr "Yerel Ön Ayarlar Listesi"
+
+#~ msgid "Community"
+#~ msgstr "Topluluk"
+
+#~ msgid "Search Community Preset"
+#~ msgstr "Topluluk Ön Ayarı Ara"
+
+#~ msgid "Community Presets List"
+#~ msgstr "Topluluk Ön Ayarları Listesi"
+
+#~ msgid "No Community Presets Installed"
+#~ msgstr "Kurulu Topluluk Ön Ayarı Yok"
+
+#~ msgid ""
+#~ "Community Presets packages can be installed from the repository of your "
+#~ "favorite distribution."
+#~ msgstr ""
+#~ "Topluluk ön ayarları paketleri kullandığınız dağıtımın deposundan "
+#~ "kurulabilir."
+
+#~ msgid "Refresh"
+#~ msgstr "Yenile"
+
+#~ msgid "Refresh to show new installed community presets"
+#~ msgstr "Yeni kurulan topluluk ön ayarlarını görüntülemek için yenileyin"
+
+#~ msgid "High Frequency Damping"
+#~ msgstr "Yüksek Frekans Sönümleme"
+
+#~ msgid "Room Size"
+#~ msgstr "Oda Boyutu"
+
+#~ msgid "Small"
+#~ msgstr "Küçük"
+
+#~ msgid "Medium"
+#~ msgstr "Orta"
+
+#~ msgid "Large"
+#~ msgstr "Büyük"
+
+#~ msgid "Tunnel"
+#~ msgstr "Tünel"
+
+#~ msgid "Large/smooth"
+#~ msgstr "Büyük/pürüzsüz"
+
+#~ msgid "Experimental"
+#~ msgstr "Deneysel"
+
+#~ msgid "Diffusion"
+#~ msgstr "Yayılma"
+
+#~ msgid "Pre Delay"
+#~ msgstr "Ön Gecikme"
+
+#~ msgid "Decay Time"
+#~ msgstr "Bozunma Süresi"
+
+#~ msgid "Bass Cut"
+#~ msgstr "Bas Kesim"
+
+#~ msgid "Treble Cut"
+#~ msgstr "Tiz Kesim"
+
+#~ msgid "Ambience"
+#~ msgstr "Ortam"
+
+#~ msgid "Empty Walls"
+#~ msgstr "Boş Duvarlar"
+
+#~ msgid "Room"
+#~ msgstr "Oda"
+
+#~ msgid "Large Empty Hall"
+#~ msgstr "Büyük Boş Salon"
+
+#~ msgid "Disco"
+#~ msgstr "Disko"
+
+#~ msgid "Large Occupied Hall"
+#~ msgstr "Büyük Dolu Salon"
+
+#~ msgid "Import Model"
+#~ msgstr "Modeli İçe Aktar"
+
+#~ msgid "Voice Detection"
+#~ msgstr "Ses Algılama"
+
+#~ msgid "Models"
+#~ msgstr "Modeller"
+
+#~ msgid "Standard Model"
+#~ msgstr "Standart Model"
+
+#~ msgid "RNNoise Models List"
+#~ msgstr "RNNoise Modelleri Listesi"
+
+#~ msgid "Model Not Loaded"
+#~ msgstr "Model Yüklenmedi"
+
+#~ msgid "Active Model"
+#~ msgstr "Etkin Model"
+
+#~ msgid "Standard RNNoise Model"
+#~ msgstr "Standart RNNoise Modeli"
+
+#~ msgid "Overview"
+#~ msgstr "Genel Görünüm"
+
+#~ msgid "Show help"
+#~ msgstr "Yardımı göster"
+
+#~ msgid "Fullscreen/Restore from fullscreen"
+#~ msgstr "Tam ekran/Tam ekrandan çık"
+
+#~ msgid "Close the Window"
+#~ msgstr "Pencereyi Kapat"
+
+#~ msgid "Quit Easy Effects"
+#~ msgstr "Easy Effects'ten Çık"
+
+#~ msgid "Denoise"
+#~ msgstr "Gürültü Gider"
+
+#~ msgid "Automatic Gain Control"
+#~ msgstr "Otomatik Kazanç Denetleyicisi"
+
+#~ msgid "Dereverberation"
+#~ msgstr "Dereverberasyon"
+
+#~ msgid "Voice Activity Probability"
+#~ msgstr "Ses Etkinliği Olasılığı"
+
+#~ msgid "Start"
+#~ msgstr "Başla"
+
+#~ msgid "Continue"
+#~ msgstr "Devam et"
+
+#~ msgid "Noise Suppression"
+#~ msgstr "Gürültü Baskılayıcı"
+
+#~ msgid "Level"
+#~ msgstr "Düzey"
+
+#~ msgid "Input Balance"
+#~ msgstr "Giriş Dengesi"
+
+#~ msgid "Softclip"
+#~ msgstr "Yumuşak kırpım"
+
+#~ msgid "Softclip Level"
+#~ msgstr "Yumuşak Kırpım Seviyesi"
+
+#~ msgid "Stereo Matrix"
+#~ msgstr "Stereo Matris"
+
+#~ msgid "LR > LR (Stereo Default)"
+#~ msgstr "LR > LR (Stereo Öntanımlı)"
+
+#~ msgid "LR > MS (Stereo to Mid-Side)"
+#~ msgstr "LR > MS (Stereo Orta Tarafa)"
+
+#~ msgid "MS > LR (Mid-Side to Stereo)"
+#~ msgstr "MS > LR (Orta Taraftan Stereo)"
+
+#~ msgid "LR > LL (Mono Left Channel)"
+#~ msgstr "LR > LL (Mono Sol Kanal)"
+
+#~ msgid "LR > RR (Mono Right Channel)"
+#~ msgstr "LR > RR (Mono Sağ Kanal)"
+
+#~ msgid "LR > L+R (Mono Sum L+R)"
+#~ msgstr "LR > L+R (Mono İşlem L+R)"
+
+#~ msgid "LR > RL (Stereo Flip Channels)"
+#~ msgstr "LR > RL (Stereo Kanalları Ters Çevir)"
+
+#~ msgid "Stereo Mode"
+#~ msgstr "Stereo Kipi"
+
+#~ msgid "Side Level"
+#~ msgstr "Seviye Tarafı"
+
+#~ msgid "Side Balance"
+#~ msgstr "Denge Tarafı"
+
+#~ msgid "Middle Level"
+#~ msgstr "Orta Seviye"
+
+#~ msgid "Middle Panorama"
+#~ msgstr "Orta Panorama"
+
+#~ msgid "Output Balance"
+#~ msgstr "Çıkış Dengesi"
+
+#~ msgid "Delay L/R"
+#~ msgstr "Gecikme L/R"
+
+#~ msgid "Delay Left Right"
+#~ msgstr "Gecikme Sol Sağ"
+
+#~ msgid "Stereo Base"
+#~ msgstr "Stereo Taban"
+
+#~ msgid "Stereo Phase"
+#~ msgstr "Stereo Faz"
+
+#~ msgid "Running"
+#~ msgstr "Çalışıyor"
+
+#~ msgid "Suspended"
+#~ msgstr "Askıya alındı"
+
+#~ msgid "Idle"
+#~ msgstr "Boşta"
+
+#~ msgid "Creating"
+#~ msgstr "Oluşturuluyor"
+
+#~ msgid "Error"
+#~ msgstr "Hata"
+
+#~ msgid "Unknown"
+#~ msgstr "Bilinmiyor"
+
+#~ msgid "Undefined Name - Process ID "
+#~ msgstr "Tanımsız Ad - Süreç Kimliği "
+
+#~ msgid "channels"
+#~ msgstr "kanallar"
+
+#~ msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
+#~ msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
+
+#~ msgid "Quit Easy Effects. Useful when running in service mode."
+#~ msgstr "Easy Effects'ten çık. Servis kipinde çalışırken kullanışlıdır."
+
+#~ msgid "Print the easyeffects version"
+#~ msgstr "Easyeffects sürümünü yazdır"
+
+#~ msgid "Reset Easy Effects."
+#~ msgstr "Easy Effects’i Sıfırla."
+
+#~ msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+#~ msgstr ""
+#~ "Genel atlama. 1 etkinleştirmek, 2 devre dışı bırakmak ve 3 durumu almak "
+#~ "için"
+
+#~ msgid "Show available presets."
+#~ msgstr "Kullanılabilir hazır ayarları göster."
+
+#~ msgid "Load a preset. Example: easyeffects -l music"
+#~ msgstr "Ön ayar yükle. Örnek: easyeffects -l music"
+
+#~ msgid "_Output"
+#~ msgstr "_Çıkış"
+
+#~ msgid "_Input"
+#~ msgstr "_Giriş"
+
+#~ msgid "The File Is Not Regular"
+#~ msgstr "Dosya Normal Değil"
+
+#~ msgid "The Impulse File May Be Corrupted or Unsupported"
+#~ msgstr "Dürtü Dosyası Bozuk veya Desteklenmiyor Olabilir"
+
+#~ msgid "Only Stereo Impulse Files Are Supported"
+#~ msgstr "Yalnızca Stereo Dürtü Dosyaları Desteklenir"
+
+#~ msgid "Impulse File Not Imported"
+#~ msgstr "Dürtü Dosyası İçe Aktarılmadı"
+
+#~ msgid "Import Impulse File"
+#~ msgstr "Dürtü Dosyasını İçe Aktar"
+
+#~ msgid "Open"
+#~ msgstr "Aç"
+
+#~ msgid "Impulse Response"
+#~ msgstr "Dürtü Yanıtı"
+
+#~ msgid "Load Impulse"
+#~ msgstr "Dürtüyü Yükle"
+
+#~ msgid "Remove Impulse"
+#~ msgstr "Dürtüyü Kaldır"
+
+#~ msgid "No Impulse File Loaded"
+#~ msgstr "Dürtü Dosyası Yüklenmemiş"
+
+#~ msgid "Failed To Load The Impulse File"
+#~ msgstr "Dürtü Dosyası Yüklenemedi"
+
+#~ msgid "Recorders"
+#~ msgstr "Kaydediciler"
+
+#~ msgid "Players"
+#~ msgstr "Oynatıcılar"
+
+#~ msgid "Effects"
+#~ msgstr "Efektler"
+
+#~ msgid "Import APO Preset File"
+#~ msgstr "APO Ön Ayar Dosyasını İçe Aktar"
+
+#~ msgid "APO Presets"
+#~ msgstr "APO Ön Ayarları"
+
+#~ msgid ""
+#~ "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
+#~ "Content."
+#~ msgstr ""
+#~ "APO Ön Ayarı Kurulu Değil. Dosya Biçimi Desteklenmiyor Olabilir. Lütfen "
+#~ "İçeriğini Denetleyin."
+
+#~ msgid "Split channels not yet supported when exporting APO presets."
+#~ msgstr ""
+#~ "APO ön ayarları dışa aktarılırken bölünmüş kanallar henüz desteklenmiyor."
+
+#~ msgid "Export EqualizerAPO Preset File"
+#~ msgstr "EqualizerAPO Ön Ayar Dosyasını Dışa Aktar"
+
+#~ msgid "Save"
+#~ msgstr "Kaydet"
+
+#~ msgid "EqualizerAPO Presets"
+#~ msgstr "EqualizerAPO Ön Ayarları"
+
+#~ msgid "Import GraphicEQ Preset File"
+#~ msgstr "GraphicEQ Ön Ayar Dosyasını İçe Aktar"
+
+#~ msgid "GraphicEQ Presets"
+#~ msgstr "GraphicEQ Ön Ayarları"
+
+#~ msgid ""
+#~ "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please "
+#~ "Check Its Content."
+#~ msgstr ""
+#~ "GraphicEQ Ön Ayarı Yüklü Değil. Dosya Biçimi Desteklenmiyor Olabilir. "
+#~ "Lütfen İçeriğini Denetleyin."
+
+#~ msgid "Remove Autoloading Preset"
+#~ msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
+
+#~ msgid "Output Level Meter"
+#~ msgstr "Çıktı Düzey Ölçer"
+
+#~ msgid "Remove"
+#~ msgstr "Kaldır"
+
+#~ msgid "Output Device"
+#~ msgstr "Çıkış Aygıtı"
+
+#~ msgid "Add"
+#~ msgstr "Ekle"
+
+#~ msgid "Community Preset"
+#~ msgstr "Topluluk Ön Ayarı"
+
+#~ msgid "Package"
+#~ msgstr "Paket"
+
+#~ msgid "Preset Not Loaded Correctly"
+#~ msgstr "Ön Ayar Doğru Yüklenmedi"
+
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "Hariç Tutulan Uygulamalar Listesinde Yanlış Biçim"
+
+#~ msgid "Generic Error While Loading Excluded Apps List"
+#~ msgstr "Hariç Tutulan Uygulamalar Listesi Yüklenirken Genel Hata"
+
+#~ msgid "Wrong Format in Effects List"
+#~ msgstr "Efektler Listesinde Yanlış Biçim"
+
+#~ msgid "Generic Error While Loading Effects List"
+#~ msgstr "Efekt Listesi Yüklenirken Genel Hata"
+
+#~ msgid "One or More Parameters Have a Wrong Format"
+#~ msgstr "Bir veya Daha Fazla Parametre Yanlış Biçime Sahip"
+
+#~ msgid "Generic Error While Loading The Effect"
+#~ msgstr "Efekt Yüklenirken Genel Hata"
+
+#~ msgid "Save?"
+#~ msgstr "Kaydedilsin mi?"
+
+#~ msgid "Delete?"
+#~ msgstr "Silinsin mi?"
+
+#~ msgid "No Preset Loaded"
+#~ msgstr "Ön Ayar Yüklü Değil"
+
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "Yüklenen Son Yerel Ön Ayar"
+
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "Yüklenen Son Topluluk Ön Ayarı"
+
+#~ msgid ""
+#~ "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To "
+#~ "The Standard Model."
+#~ msgstr ""
+#~ "Seçilen Model Yüklenmedi. Biçimi Desteklenmiyor Olabilir. Bunun Yerine "
+#~ "Standart Modele Dönüldü."
+
+#~ msgid "Import Model File"
+#~ msgstr "Model Dosyasını İçe Aktar"
+
+#~ msgid "RNNoise Models"
+#~ msgstr "RNNoise Modelleri"
+
+#~ msgid "Bass Enhancer"
+#~ msgstr "Bas Yükseltici"
+
+#~ msgid "Bass Loudness"
+#~ msgstr "Bas Yüksekliği"
+
+#~ msgid "Convolver"
+#~ msgstr "Sarsıcı"
+
+#~ msgid "Crossfeed"
+#~ msgstr "Çapraz Besleme"
+
+#~ msgid "Crystalizer"
+#~ msgstr "Kristalleştirici"
+
+#~ msgid "Deep Noise Remover"
+#~ msgstr "Derin Gürültü Giderici"
+
+#~ msgid "Deesser"
+#~ msgstr "Deesser"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "Yankı Önleyici"
+
+#~ msgid "Equalizer"
+#~ msgstr "Ekolayzır"
+
+#~ msgid "Exciter"
+#~ msgstr "Uyarıcı"
+
+#~ msgid "Level Meter"
+#~ msgstr "Düzey Ölçer"
+
+#~ msgid "Limiter"
+#~ msgstr "Sınırlayıcı"
+
+#~ msgid "Maximizer"
+#~ msgstr "Yükseltici"
+
+#~ msgid "Multiband Compressor"
+#~ msgstr "Çoklu Bant Şıkıştırıcı"
+
+#~ msgid "Multiband Gate"
+#~ msgstr "Çoklu Bant Geçitleme"
+
+#~ msgid "Reverberation"
+#~ msgstr "Yankılanma"
+
+#~ msgid "Noise Reduction"
+#~ msgstr "Gürültü Azaltma"
+
+#~ msgid "Speech Processor"
+#~ msgstr "Konuşma İşleyici"
+
+#~ msgid "Stereo Tools"
+#~ msgstr "Stereo Araçları"
+
+#, c++-format
+#~ msgid "{} Not Available"
+#~ msgstr "{} Kullanılabilir Değil"
+
+#, c++-format
+#~ msgid ""
+#~ "The software required for the {} effect, \"{}\", is not installed. "
+#~ "Consider using the Easy Effects Flatpak package or installing the "
+#~ "software yourself."
+#~ msgstr ""
+#~ "{} efekti için gerekli olan \"{}\" yazılımı kurulu değil. Easy Effects "
+#~ "Flatpak paketini kullanmayı ya da yazılımı kendiniz kurmayı "
+#~ "düşünebilirsiniz."
+
+#, c++-format
+#~ msgid ""
+#~ "The {} effect was disabled when Easy Effects was compiled. This is "
+#~ "perhaps since the software required for this effect, \"{}\", was not "
+#~ "available. Consider using the Easy Effects Flatpak package or building "
+#~ "your own Easy Effects package."
+#~ msgstr ""
+#~ "Easy Effects derlenirken {} efekti devre dışı bırakılmış. Bunun nedeni "
+#~ "muhtemelen bu efekt için gerekli olan \"{}\" yazılımının olmamasıdır. "
+#~ "Easy Effects Flatpak paketini kullanmayı ya da kendi Easy Effects "
+#~ "paketinizi oluşturmayı düşünebilirsiniz."
+
+#~ msgid "-inf"
+#~ msgstr "-sonsuz"
+
+#, c++-format
+#~ msgid "Using {}"
+#~ msgstr "{} Kullanıyor"
+
+#~ msgid "Ceiling"
+#~ msgstr "Tavan"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"Ön Ayarlar\""
+
+#~ msgid "Import a preset"
+#~ msgstr "Bir ön ayarı içe aktar"
+
+#, fuzzy
+#~ msgid "Low-Cut Filter"
+#~ msgstr "Süzgeç"
+
+#, fuzzy
+#~ msgid "High-Cut Filter"
+#~ msgstr "Yüksek Geçiş Süzgeci"
+
+#~ msgid "Uniform"
+#~ msgstr "Aynı"
+
+#~ msgid "New Output Preset Name"
+#~ msgstr "Yeni Çıkış Ön Ayarı Adı"
+
+#~ msgid "infinity"
+#~ msgstr "sonsuzluk"
+
+#~ msgid "IIR"
+#~ msgstr "IIR"
+
+#~ msgid "FIR"
+#~ msgstr "FIR"
+
+#~ msgid "FFT"
+#~ msgstr "FFT"
+
+#~ msgid "SPM"
+#~ msgstr "SPM"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Oran"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "Eşik"
+
+#, fuzzy
+#~ msgid "Low-pass"
+#~ msgstr "Düşük Geçiş"
+
+#, fuzzy
+#~ msgid "High-pass"
+#~ msgstr "Yüksek Geçiş"
+
+#~ msgid "Gating"
+#~ msgstr "Geçitleme"
+
+#~ msgid "12dB/oct Lowpass"
+#~ msgstr "12dB/oct Düşük geçiş"
+
+#~ msgid "24dB/oct Lowpass"
+#~ msgstr "24dB/oct Düşük geçiş"
+
+#~ msgid "36dB/oct Lowpass"
+#~ msgstr "36dB/oct Düşük geçiş"
+
+#~ msgid "12dB/oct Highpass"
+#~ msgstr "12dB/oct Yüksek geçiş"
+
+#~ msgid "24dB/oct Highpass"
+#~ msgstr "24dB/oct Yüksek geçiş"
+
+#~ msgid "36dB/oct Highpass"
+#~ msgstr "36dB/oct Yüksek geçiş"
+
+#~ msgid "6dB/oct Bandpass"
+#~ msgstr "6dB/oct Bant geçişi"
+
+#~ msgid "12dB/oct Bandpass"
+#~ msgstr "12dB/oct Bant geçişi"
+
+#~ msgid "18dB/oct Bandpass"
+#~ msgstr "18dB/oct Bant geçişi"
+
+#~ msgid "6dB/oct Bandreject"
+#~ msgstr "6dB/oct Bant reddet"
+
+#~ msgid "12dB/oct Bandreject"
+#~ msgstr "12dB/oct Bant reddet"
+
+#~ msgid "18dB/oct Bandreject"
+#~ msgstr "12dB/oct Bant reddet"
+
+#~ msgid "Inertia"
+#~ msgstr "Durağan"
+
+#~ msgid "Band Type"
+#~ msgstr "Bant Türü"
+
+#~ msgid "Band Mode"
+#~ msgstr "Bant Kipi"
+
+#~ msgid "Band Slope"
+#~ msgstr "Bant Eğimi"
+
+#, fuzzy
+#~ msgid "Loudness List"
+#~ msgstr "Yüksek Ses"
+
+#~ msgid "High Speed"
+#~ msgstr "Yüksek Hız"
+
+#~ msgid "High Quality"
+#~ msgstr "Yüksek Kalite"
+
+#~ msgid "High Consistency"
+#~ msgstr "Yüksek Tutarlılık"
+
+#, fuzzy
+#~ msgid "Formant"
+#~ msgstr "Biçim"
+
+#, fuzzy
+#~ msgid "Preserved"
+#~ msgstr "Ön Ayarlar"
+
+#, fuzzy
+#~ msgid "Crisp"
+#~ msgstr "Canlılık"
+
+#, fuzzy
+#~ msgid "Detector"
+#~ msgstr "Keşif"
+
+#, fuzzy
+#~ msgid "Compound"
+#~ msgstr "Sıkıştırma"
+
+#, fuzzy
+#~ msgid "Soft"
+#~ msgstr "Yumuşak kırpım"
+
+#~ msgid "Independent"
+#~ msgstr "Bağımsız"
+
+#~ msgid "Cents"
+#~ msgstr "Küsür"
+
+#~ msgid "Octaves"
+#~ msgstr "Oktav"
+
+#~ msgid "_Manual"
+#~ msgstr "_Kılavuz"
+
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Easy Effects Kılavuzunu Aç"
+
+#~ msgid "{} Is Not Installed On The System"
+#~ msgstr "{} Sistemde Kurulu Değil"
+
+#~ msgid "High Pass"
+#~ msgstr "Yüksek Geçiş"
+
+#~ msgid "Low Pass"
+#~ msgstr "Düşük Geçiş"
+
+#~ msgid "Cancel"
+#~ msgstr "İptal"
+
+#~ msgid " PreAmplification"
+#~ msgstr " Ön Yükseltme"
+
+#~ msgid "Close (Press ESC)"
+#~ msgstr "Kapat (ESC tuşuna basın)"
+
+#~ msgid "Frame Size"
+#~ msgstr "Çerçeve Boyutu"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enable/disable the\n"
+#~ "                                    global bypass"
+#~ msgstr "Genel atlamayı etkinleştir/devre dışı bırak"
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "Düşük Geçiş"
+
+#, fuzzy
+#~ msgid " Uniform"
+#~ msgstr "Aynı"
+
+#~ msgid "Left Delay"
+#~ msgstr "Sol Gecikme"
+
+#~ msgid "Right Delay"
+#~ msgstr "Sağ Gecikme"
+
+#, fuzzy
+#~ msgid "Left Dry Level"
+#~ msgstr "Seviye"
+
+#, fuzzy
+#~ msgid "Right Dry Level"
+#~ msgstr "Seviye"
+
+#, fuzzy
+#~ msgid "Left Wet Level"
+#~ msgstr "Hedef Seviye"
+
+#, fuzzy
+#~ msgid "Right Wet Level"
+#~ msgstr "Hedef Seviye"
+
+#, fuzzy
+#~ msgid "Suppression"
+#~ msgstr "Bastırma Seviyesi"
+
+#~ msgid "Noise Reduction (Fast)"
+#~ msgstr "Gürültü Azaltma (Hızlı)"
+
+#~ msgid "Load APO Preset"
+#~ msgstr "APO Ön Ayarını Yükle"
+
+#~ msgid "Output Presets: "
+#~ msgstr "Çıkış Ön Ayarları: "
+
+#~ msgid "Input Presets: "
+#~ msgstr "Giriş Ön Ayarları: "
+
+#, fuzzy
+#~ msgid "Split Mode"
+#~ msgstr "Ayır"
+
+#~ msgid "Split 1/2"
+#~ msgstr "1/2 Böl"
+
+#~ msgid "Split 2/3"
+#~ msgstr "2/3 Böl"
+
+#, fuzzy
+#~ msgid "Split Frequency 2"
+#~ msgstr "Sıklık"
+
+#~ msgid "Split 3/4"
+#~ msgstr "3/4 Böl"
+
+#, fuzzy
+#~ msgid "Split Frequency 3"
+#~ msgstr "Sıklık"
+
+#~ msgid "Sub Band"
+#~ msgstr "Alt Bant"
+
+#, fuzzy
+#~ msgid "Band 1 Bypass"
+#~ msgstr "Atla"
+
+#, fuzzy
+#~ msgid "Band 1 Detection"
+#~ msgstr "Keşif"
+
+#, fuzzy
+#~ msgid "Band 1 Attack"
+#~ msgstr "Atak"
+
+#, fuzzy
+#~ msgid "Band 1 Release"
+#~ msgstr "Bırak"
+
+#, fuzzy
+#~ msgid "Band 1 Threshold"
+#~ msgstr "Eşik"
+
+#, fuzzy
+#~ msgid "Band 1 Makeup"
+#~ msgstr "Süs"
+
+#~ msgid "Max Reduction"
+#~ msgstr "Azalım"
+
+#~ msgid "Low Band"
+#~ msgstr "Düşük Bant"
+
+#, fuzzy
+#~ msgid "Band 2 Bypass"
+#~ msgstr "Atla"
+
+#, fuzzy
+#~ msgid "Band 2 Detection"
+#~ msgstr "Keşif"
+
+#, fuzzy
+#~ msgid "Band 2 Attack"
+#~ msgstr "Atak"
+
+#, fuzzy
+#~ msgid "Band 2 Release"
+#~ msgstr "Bırak"
+
+#, fuzzy
+#~ msgid "Band 2 Threshold"
+#~ msgstr "Eşik"
+
+#, fuzzy
+#~ msgid "Band 2 Makeup"
+#~ msgstr "Süs"
+
+#, fuzzy
+#~ msgid "Band 2 Max Reduction"
+#~ msgstr "Azalım"
+
+#~ msgid "Mid Band"
+#~ msgstr "Orta Bant"
+
+#, fuzzy
+#~ msgid "Band 3 Bypass"
+#~ msgstr "Atla"
+
+#, fuzzy
+#~ msgid "Band 3 Detection"
+#~ msgstr "Keşif"
+
+#, fuzzy
+#~ msgid "Band 3 Attack"
+#~ msgstr "Atak"
+
+#, fuzzy
+#~ msgid "Band 3 Release"
+#~ msgstr "Bırak"
+
+#, fuzzy
+#~ msgid "Band 3 Threshold"
+#~ msgstr "Eşik"
+
+#, fuzzy
+#~ msgid "Band 3 Makeup"
+#~ msgstr "Süs"
+
+#, fuzzy
+#~ msgid "Band 3 Max Reduction"
+#~ msgstr "Azalım"
+
+#~ msgid "High Band"
+#~ msgstr "Yüksek Bant"
+
+#, fuzzy
+#~ msgid "Band 4 Bypass"
+#~ msgstr "Atla"
+
+#, fuzzy
+#~ msgid "Band 4 Detection"
+#~ msgstr "Keşif"
+
+#, fuzzy
+#~ msgid "Band 4 Attack"
+#~ msgstr "Atak"
+
+#, fuzzy
+#~ msgid "Band 4 Release"
+#~ msgstr "Bırak"
+
+#, fuzzy
+#~ msgid "Band 4 Threshold"
+#~ msgstr "Eşik"
+
+#, fuzzy
+#~ msgid "Band 4 Makeup"
+#~ msgstr "Süs"
+
+#, fuzzy
+#~ msgid "Band 4 Max Reduction"
+#~ msgstr "Azalım"
+
+#, fuzzy
+#~ msgid "Wet Amount"
+#~ msgstr "Miktar"
+
+#, fuzzy
+#~ msgid "Dry Amount"
+#~ msgstr "Miktar"
+
+#~ msgid ""
+#~ "EasyEffects is an advanced audio manipulation tool. It includes an "
+#~ "equalizer, limiter, compressor and a reverberation tool, just to mention "
+#~ "a few. To complement this there is also a built in spectrum analyzer."
+#~ msgstr ""
+#~ "EasyEffects gelişmiş bir ses işleme aracıdır. Ekolayzır, sınırlayıcı, "
+#~ "sıkıştırıcı ve yankılanma araçları içerir. Bunları tamamlamak için ayrıca "
+#~ "bir spektrum analizörü bulunmaktadır."
+
+#~ msgid ""
+#~ "EasyEffects is the successor to PulseEffects. EasyEffects only supports "
+#~ "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+#~ msgstr ""
+#~ "EasyEffects, PulseEffects'in devamıdır. EasyEffects yalnızca PipeWire'ın "
+#~ "ses sunucusunu destekler. PulseAudio kullanıcıları bunun yerine "
+#~ "PulseEffects kullanmalıdır."
+
+#~ msgid ""
+#~ "Because EasyEffects uses the default PipeWire sound server it will work "
+#~ "with most, if not all, applications you use. All supported applications "
+#~ "are presented in the main window, where each can be enabled individually."
+#~ msgstr ""
+#~ "EasyEffects, öntanımlı PipeWire ses sunucusunu kullandığından, "
+#~ "kullandığınız uygulamaların tümü olmasa da çoğu ile çalışacaktır. "
+#~ "Desteklenen tüm uygulamalar, her birinin ayrı ayrı etkinleştirilebileceği "
+#~ "ana pencerede sunulur."
+
+#~ msgid ""
+#~ "Besides manipulating sound output, EasyEffects is able to apply effects "
+#~ "to an input device, such as a microphone. This is, for example, useful in "
+#~ "audio recording, but it also works well during voice conversations."
+#~ msgstr ""
+#~ "Ses çıkışını manipüle etmenin yanı sıra, EasyEffects, mikrofon gibi bir "
+#~ "giriş cihazına da efektler uygulayabilir. Bu özellik ses kaydında da "
+#~ "kullanışlıdır ve sesli konuşmalarda da iyi çalışır."
+
+#~ msgid ""
+#~ "When EasyEffects is launched it will conveniently remember the "
+#~ "configuration used in the last session. It is also possible to save all "
+#~ "the current settings as profiles."
+#~ msgstr ""
+#~ "EasyEffects başlatıldığında, son oturumda kullanılan ayarlamaları "
+#~ "rahatlıkla hatırlayacaktır. Tüm mevcut ayarları profil olarak kaydetmek "
+#~ "de mümkündür."
+
+#~ msgid "The main page showing two audio output apps"
+#~ msgstr "İki ses çıkışı uygulamasını gösteren ana sayfa"
+
+#~ msgid "The bass enhancer page showing audio controls"
+#~ msgstr "Ses denetimlerini gösteren bas yükseltici sayfası"
+
+#~ msgid "The convolver page showing audio controls"
+#~ msgstr "Ses denetimlerini gösteren sarsıcı sayfası"
+
+#~ msgid "This release adds the following features:"
+#~ msgstr "Bu sürüm aşağıdaki özellikleri ekler:"
+
+#~ msgid "This release fixes the following bugs:"
+#~ msgstr "Bu sürüm aşağıdaki hataları düzeltir:"
+
+#, fuzzy
+#~ msgid "and #1427"
+#~ msgstr "Bant 1"
+
+#, fuzzy
+#~ msgid "Many translation updates"
+#~ msgstr "Çeviriler güncellendi"
+
+#~ msgid ""
+#~ "EasyEffects icon has been updated in a way that should make it visible in "
+#~ "QT desktops."
+#~ msgstr ""
+#~ "EasyEffects simgesi, QT masaüstlerinde görünmesini sağlayacak şekilde "
+#~ "güncellendi."
+
+#~ msgid "This release fixes the following bug:"
+#~ msgstr "Bu sürüm aşağıdaki hatayı düzeltir:"
+
+#~ msgid "This release adds the following feature:"
+#~ msgstr "Bu sürüm aşağıdaki özelliği ekler:"
+
+#~ msgid "Better support for computer suspending."
+#~ msgstr "Bilgisayarın askıya alınması için daha iyi destek."
+
+#~ msgid ""
+#~ "LibAdwaita is used to create some parts of our window and for handling "
+#~ "the switching between dark and light themes."
+#~ msgstr ""
+#~ "LibAdwaita, penceremizin bazı bölümlerini oluşturmak ve koyu ile açık "
+#~ "temalar arasında geçiş yapmak için kullanılır."
+
+#~ msgid "The settings menu has been redesigned using LibAdwaita widgets."
+#~ msgstr ""
+#~ "Ayarlar menüsü, LibAdwaita widget'ları kullanılarak yeniden tasarlandı."
+
+#~ msgid ""
+#~ "GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
+#~ msgstr ""
+#~ "GTKMM ve GLIBMM artık bir bağımlılık değil. Artık doğrudan gtk4 "
+#~ "kullanıyoruz."
+
+#~ msgid ""
+#~ "Pavucontrol is not added anymore to input applications list on systems "
+#~ "with localization different than English."
+#~ msgstr ""
+#~ "İngilizce'den farklı yerelleştirmeye sahip sistemlerde giriş uygulamaları "
+#~ "listesine Pavucontrol artık eklenmiyor."
+
+#~ msgid "Updated Chinese translation."
+#~ msgstr "Çince çeviri güncellendi."
+
+#~ msgid "Updated Italian translation."
+#~ msgstr "İtalyanca çeviri güncellendi."
+
+#~ msgid "Fixed the locale in a few widgets"
+#~ msgstr "Birkaç widget'ta yerel ayar düzeltildi"
+
+#~ msgid "Fixed wrong alignment in a few widgets"
+#~ msgstr "Birkaç widget'ta yanlış hizalama düzeltildi"
+
+#~ msgid "Improved equalizer interface."
+#~ msgstr "Ekolayzır arayüzü iyileştirildi."
+
+#~ msgid ""
+#~ "The application and its repository have been renamed from PulseEffects to "
+#~ "`EasyEffects`"
+#~ msgstr ""
+#~ "Uygulama ve deposu, PulseEffects'ten `EasyEffects` olarak yeniden "
+#~ "adlandırıldı"
+
+#~ msgid "gtkmm3 was replaced by gtkmm4"
+#~ msgstr "gtkmm3, gtkmm4 ile değiştirildi"
+
+#~ msgid "Gstreamer was replaced by native PipeWire filters."
+#~ msgstr "Gstreamer, yerel PipeWire süzgeçleriyle değiştirildi."
+
+#~ msgid ""
+#~ "New libraries are being used and some of the librarires that were "
+#~ "optional before are now required"
+#~ msgstr ""
+#~ "Yeni kütüphaneler kullanılıyor ve daha önce isteğe bağlı olan "
+#~ "kütüphanelerden bazıları artık gerekli"
+
+#~ msgid "Average"
+#~ msgstr "Ortalama"
+
+#~ msgid "Failed"
+#~ msgstr "Başarısız"
+
+#~ msgid "Use Default"
+#~ msgstr "Öntanımlıyı Kullan"
+
+#~ msgid "Remove this plugin"
+#~ msgstr "Bu eklentiyi kaldır"
+
+#~ msgid "Import Presets"
+#~ msgstr "Önayarları İçe Aktar"
+
+#~ msgid "Start Service at Login"
+#~ msgstr "Oturum Açarken Hizmeti Başlat"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Etkin Model"
+
+#~ msgid "Add to Blocklist"
+#~ msgstr "Kara Listeye Ekle"
+
+#~ msgid "Blocklist"
+#~ msgstr "Kara Liste"
+
+#~ msgid "Add Plugin"
+#~ msgstr "Eklenti Ekle"
+
+#~ msgid "Speakers"
+#~ msgstr "Hoparlörler"
+
+#~ msgid "Microphone"
+#~ msgstr "Mikrofon"
+
+#~ msgid "enabled"
+#~ msgstr "etkin"
+
+#~ msgid "disabled"
+#~ msgstr "devre dışı"
+
+#~ msgid "Plugins"
+#~ msgstr "Eklentiler"
+
+#~ msgid "Format"
+#~ msgstr "Biçim"
+
+#~ msgid "Latency"
+#~ msgstr "Gecikme"
+
+#~ msgid "idle"
+#~ msgstr "boşta"
+
+#~ msgid "Faster"
+#~ msgstr "Daha Hızlı"
+
+#~ msgid "Preserve Formant"
+#~ msgstr "Biçimlendiriciyi Koru"
+
+#~ msgid "Cmoy"
+#~ msgstr "Cmoy"
+
+#~ msgid "Jmeier"
+#~ msgstr "Jmeier"
+
+#~ msgid "Show Spectrum"
+#~ msgstr "Spektrumu Göster"
+
+#~ msgid "Use Custom Color"
+#~ msgstr "Özel Renk Kullan"
+
+#~ msgid "Use Gradient"
+#~ msgstr "Geçişli Renk Kullan"
+
+#~ msgid "Spectrum Color"
+#~ msgstr "Spektrum Rengi"
+
+#~ msgid "Gradient Color"
+#~ msgstr "Geçiş Rengi"
+
+#~ msgid "Spectrum Type"
+#~ msgstr "Spektrum Türü"
+
+#~ msgid "Exponent"
+#~ msgstr "Katsayı"
+
+#~ msgid "Sampling"
+#~ msgstr "Örnekleme"
+
+#~ msgid "Block Size"
+#~ msgstr "Blok Boyutu"
+
+#~ msgid "Pipeline Input"
+#~ msgstr "Pipeline Giriş"
+
+#~ msgid "Buffer"
+#~ msgstr "Arabellek"
+
+#~ msgid "Niceness"
+#~ msgstr "Hassaslık"
+
+#~ msgid "Priority Type"
+#~ msgstr "Öncelik Türü"
+
+#~ msgid "About"
+#~ msgstr "Hakkında"
+
+#~ msgid "Priority"
+#~ msgstr "Öncelik"
+
+#~ msgid "Resampler"
+#~ msgstr "Örnekleme"
+
+#~ msgid "Protocol"
+#~ msgstr "Protokol"
+
+#~ msgid "Default Sample Format"
+#~ msgstr "Öntanımlı Örnek Biçimi"
+
+#~ msgid "File"
+#~ msgstr "Dosya"
+
+#~ msgid "Configuration"
+#~ msgstr "Yapılandırma"
+
+#~ msgid "Resamplers"
+#~ msgstr "Örnekleyiciler"
+
+#~ msgid "Detect Silence"
+#~ msgstr "Sessizliği Algıla"
+
+#~ msgid "Weights"
+#~ msgstr "Ağırlık"
+
+#~ msgid "Limit"
+#~ msgstr "Sınır"
+
+#~ msgid "ASC"
+#~ msgstr "ASC"
+
+#~ msgid "LR4"
+#~ msgstr "LR4"
+
+#~ msgid "LR8"
+#~ msgstr "LR8"
+
+#~ msgid "Muted"
+#~ msgstr "Sessiz"
+
+#~ msgid "Distant Headphones"
+#~ msgstr "Uzak Kulaklıklar"
+
+#~ msgid "Reset Equalizer"
+#~ msgstr "Ekolayzır Sıfırla"
+
+#~ msgid "RLC (BT)"
+#~ msgstr "RLC (BT)"
+
+#~ msgid "RLC (MT)"
+#~ msgstr "RLC (MT)"
+
+#~ msgid "BWC (BT)"
+#~ msgstr "BWC (BT)"
+
+#~ msgid "BWC (MT)"
+#~ msgstr "BWC (MT)"
+
+#~ msgid "LRX (BT)"
+#~ msgstr "LRX (BT)"
+
+#~ msgid "LRX (MT)"
+#~ msgstr "LRX (MT)"
+
+#~ msgid "APO (DR)"
+#~ msgstr "APO (DR)"
+
+#~ msgid "x1"
+#~ msgstr "x1"
+
+#~ msgid "x2"
+#~ msgstr "x2"
+
+#~ msgid "x3"
+#~ msgstr "x3"
+
+#~ msgid "x4"
+#~ msgstr "x4"
+
+#~ msgid "S/C Level"
+#~ msgstr "S/C Seviye"
+
+#~ msgid "Import Impulse Response File"
+#~ msgstr "Dürtü Yanıt Dosyasını İçeri Aktar"
+
+#~ msgid "Select the impulse Response File"
+#~ msgstr "Dürtü Yanıt Dosyasını Seç"
+
+#~ msgid "Loudness Range"
+#~ msgstr "Yüksek Ses Aralığı"
+
+#~ msgid "Before"
+#~ msgstr "Öncesi"
+
+#~ msgid "After"
+#~ msgstr "Sonrası"
+
+#~ msgid "Webrtc"
+#~ msgstr "Webrtc"
+
+#~ msgid "Extended Filter"
+#~ msgstr "Genişletilmiş Süzgeç"
+
+#~ msgid "Delay Agnostic"
+#~ msgstr "Agnostik Gecikme"
+
+#~ msgid "Low"
+#~ msgstr "Düşük"
+
+#~ msgid "Moderate"
+#~ msgstr "Ölçülü"
+
+#~ msgid "High"
+#~ msgstr "Yüksek"
+
+#~ msgid "Very High"
+#~ msgstr "Çok Yüksek"
+
+#~ msgid "Adaptive Digital"
+#~ msgstr "Dijital Uyarlamalı"
+
+#~ msgid "Fixed Digital"
+#~ msgstr "Dijital Sabitleyici"
+
+#~ msgid "Detection Likelihood"
+#~ msgstr "Algılama Olasılığı"
+
+#~ msgid "Very Low"
+#~ msgstr "Çok Düşük"
+
+#~ msgid ""
+#~ "Automatically apply this preset whenever the currently used device is "
+#~ "plugged in the system"
+#~ msgstr ""
+#~ "Şu anda kullanılan cihaz sisteme takılı olduğunda bu ön ayarı otomatik "
+#~ "olarak uygula"
+
+#~ msgid "Volume"
+#~ msgstr "Ses"
+
+#~ msgid "Sine"
+#~ msgstr "Sinüs"
+
+#~ msgid "Square"
+#~ msgstr "Kare"
+
+#~ msgid "Saw"
+#~ msgstr "Kesir"
+
+#~ msgid "Triangle"
+#~ msgstr "Üçgen"
+
+#~ msgid "Pink Noise"
+#~ msgstr "Pembe Gürültü"
+
+#~ msgid "Ticks"
+#~ msgstr "İşaretler"
+
+#~ msgid "Gaussian Noise"
+#~ msgstr "Gauss Gürültü"
+
+#~ msgid "Blue Noise"
+#~ msgstr "Mavi Gürültü"
+
+#~ msgid "Violet Noise"
+#~ msgstr "Menekşe Gürültü"
+
+#~ msgid "Measure Noise"
+#~ msgstr "Gürültü Ölçümü"
+
+#~ msgid "Subtract Noise"
+#~ msgstr "Gürültü Çıkar"
+
+#~ msgid "Set the volume and turn on/off effects"
+#~ msgstr "Sesi ayarla ve efektleri aç/kapat"
+
+#~ msgid "Includes an equalizer with built-in presets"
+#~ msgstr "Yerleşik ön ayarlara sahip bir ekolayzır içerir"
+
+#~ msgid "Input Limiter"
+#~ msgstr "Giriş Sınırlayıcı"
+
+#~ msgid "Calibration"
+#~ msgstr "Kalibrasyon"
+
+#~ msgid "easyeffects"
+#~ msgstr "easyeffects"
+
+#~ msgid "Pulseaudio"
+#~ msgstr "Pulseaudio"
+
+#~ msgid "paused"
+#~ msgstr "durdurulmuş"
+
+#~ msgid "playing"
+#~ msgstr "oynatılıyor"

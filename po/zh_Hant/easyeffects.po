@@ -1,0 +1,376 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2024-04-27 11:07+0000\n"
+"Last-Translator: Young <young20050727@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
+"easyeffects/main/zh_Hant/>\n"
+"Language: zh_Hant\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.5.1\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "輸入"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "名稱"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+msgid "Value"
+msgstr ""
+
+#: src/contents/ui/main.qml:17
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr ""
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "\"設定檔\""
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+#, fuzzy
+msgid "Quit"
+msgstr "離開"
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr ""
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr ""
+
+#: src/contents/ui/main.qml:179
+msgid "Preferences"
+msgstr ""
+
+#: src/contents/ui/main.qml:187
+msgid "About EasyEffects"
+msgstr ""
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "輸出"
+
+#: src/contents/ui/PipeWireTab.qml:9
+msgid "PipeWire"
+msgstr ""
+
+#: src/main.cpp:55
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "PipeWire 音效程式"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr ""
+
+#: src/main.cpp:60
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+msgid "Width of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+msgid "Height of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+msgid "Last used preset."
+msgstr ""
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+msgid "EasyEffects"
+msgstr ""
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "等化器，壓縮器與其他音效"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "PipeWire 音效程式"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "啟用 / 停用此程式"
+
+#~ msgid "Enable"
+#~ msgstr "啟用"
+
+#~ msgid "Excluded App List: Add/remove this application"
+#~ msgstr "略過的應用程式: 新增或移除此程式"
+
+#~ msgid "Exclude"
+#~ msgstr "略過"
+
+#~ msgid "Mute Application"
+#~ msgstr "靜音"
+
+#~ msgid "Change the volume of this application"
+#~ msgstr "變更此程式的音量"
+
+#~ msgid "Application Volume"
+#~ msgstr "音量"
+
+#~ msgid "_Help"
+#~ msgstr "幫助"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "重設設定值"
+
+#~ msgid "Applications List"
+#~ msgstr "控制列表"
+
+#~ msgid "Empty List"
+#~ msgstr "空白列表"
+
+#~ msgid "No Audio Application Available"
+#~ msgstr "沒有可用的音訊應用程式"
+
+#~ msgid "Short-Term"
+#~ msgstr "短期"
+
+#~ msgid "History"
+#~ msgstr "歷史"
+
+#~ msgid "Reset"
+#~ msgstr "重設"
+
+#~ msgid "Range"
+#~ msgstr "範圍"
+
+#~ msgid "Device"
+#~ msgstr "設備"
+
+#~ msgid "Listen"
+#~ msgstr "聽"
+
+#~ msgid "3rd"
+#~ msgstr "第三"
+
+#~ msgid "2nd"
+#~ msgstr "第二"
+
+#~ msgid "Application Name"
+#~ msgstr "應用程式名稱"
+
+#~ msgid "Mode"
+#~ msgstr "模式"
+
+#~ msgid "Time"
+#~ msgstr "時間"
+
+#~ msgid "Release"
+#~ msgstr "釋出"
+
+#~ msgid "Release Time"
+#~ msgstr "釋出時間"
+
+#~ msgid "Left"
+#~ msgstr "左"
+
+#~ msgid "Right"
+#~ msgstr "右"
+
+#~ msgid "Min"
+#~ msgstr "最小"
+
+#~ msgid "Max"
+#~ msgstr "最大"
+
+#~ msgid "Off"
+#~ msgstr "關閉"
+
+#~ msgid "Search"
+#~ msgstr "搜尋"
+
+#~ msgid "Mute"
+#~ msgstr "靜音"
+
+#, fuzzy
+#~ msgid "Enable/disable input monitoring"
+#~ msgstr "啟用 / 停用此程式"
+
+#~ msgid "Quality"
+#~ msgstr "品質"
+
+#~ msgid "Description"
+#~ msgstr "註釋"
+
+#~ msgid "Remove this model file"
+#~ msgstr "刪除此模型的檔案"
+
+#~ msgid "Standard"
+#~ msgstr "標準"
+
+#~ msgid "Flat"
+#~ msgstr "平坦"
+
+#~ msgid "Output Volume"
+#~ msgstr "輸出音量"
+
+#~ msgid "Classic"
+#~ msgstr "經典"
+
+#~ msgid "Modern"
+#~ msgstr "現代"
+
+#~ msgid "Server Information"
+#~ msgstr "伺服器資訊"
+
+#~ msgid "Input Devices"
+#~ msgstr "輸入裝置"
+
+#~ msgid "Service"
+#~ msgstr "服務"
+
+#~ msgid "Launch Service at System Startup"
+#~ msgstr "開機時啟動"
+
+#~ msgid "Shutdown on Window Closing"
+#~ msgstr "於視窗關閉時結束"
+
+#~ msgid "Audio"
+#~ msgstr "音訊"
+
+#~ msgid "Process All Output Streams"
+#~ msgstr "解析所有的輸出"
+
+#~ msgid "Process All Input Streams"
+#~ msgstr "解析所有的輸入"
+
+#~ msgid "Update Frequency"
+#~ msgstr "更新頻率"
+
+#~ msgid "Use Dark Theme"
+#~ msgstr "使用深色主題"
+
+#~ msgid "Height"
+#~ msgstr "高度"
+
+#~ msgid "Color"
+#~ msgstr "顏色"
+
+#~ msgid "Minimum"
+#~ msgstr "最小"
+
+#~ msgid "Maximum"
+#~ msgstr "最大"
+
+#~ msgid "Load"
+#~ msgstr "讀取"
+
+#~ msgid "Community"
+#~ msgstr "社群"
+
+#~ msgid "Small"
+#~ msgstr "小"
+
+#~ msgid "Medium"
+#~ msgstr "中"
+
+#~ msgid "Large"
+#~ msgstr "大"
+
+#~ msgid "Tunnel"
+#~ msgstr "通道"
+
+#~ msgid "Overview"
+#~ msgstr "概覽"
+
+#~ msgid "Show help"
+#~ msgstr "顯示幫助"
+
+#~ msgid "Fullscreen/Restore from fullscreen"
+#~ msgstr "全螢幕/退出全螢幕"
+
+#~ msgid "Close the Window"
+#~ msgstr "關閉視窗"
+
+#~ msgid "Start"
+#~ msgstr "開始"
+
+#~ msgid "Idle"
+#~ msgstr "閒置"
+
+#~ msgid "Error"
+#~ msgstr "錯誤"
+
+#~ msgid "Unknown"
+#~ msgstr "未知"
+
+#~ msgid "The File Is Not Regular"
+#~ msgstr "此檔案並非一般檔案"
+
+#~ msgid "Save"
+#~ msgstr "儲存"
+
+#~ msgid "Output Device"
+#~ msgstr "輸出裝置"
+
+#~ msgid "Add"
+#~ msgstr "新增"
+
+#~ msgid "Package"
+#~ msgstr "套件"
+
+#~ msgid "Save?"
+#~ msgstr "儲存？"
+
+#~ msgid "Delete?"
+#~ msgstr "刪除？"
+
+#~ msgid "Noise Reduction"
+#~ msgstr "降噪"

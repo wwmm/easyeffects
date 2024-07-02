@@ -1,0 +1,2271 @@
+# Spanish (VE) translation for Pulseeffects.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Pulseeffects package.
+# CCaroV <ccvchristiancv1115_AT_gmail.com>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2023-08-09 14:07+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"Language-Team: Spanish (Venezuela) <https://hosted.weblate.org/projects/"
+"easyeffects/main/es_VE/>\n"
+"Language: es_VE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.0-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "Entrada"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "Nombre"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+#, fuzzy
+msgid "Value"
+msgstr "Fondo"
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "Perfiles"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+msgid "Quit"
+msgstr ""
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr "Aplicar"
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "Perfiles"
+
+#: src/contents/ui/main.qml:179
+msgid "Preferences"
+msgstr ""
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "Salida"
+
+#: src/contents/ui/PipeWireTab.qml:9
+msgid "PipeWire"
+msgstr ""
+
+#: src/main.cpp:55
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "Efectos de Sonido para las aplicaciones de PulseAudio"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Pendiente"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+msgid "Width of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+msgid "Height of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+#, fuzzy
+msgid "Last used preset."
+msgstr "Crear Perfil"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "Ecualizador, Compresor y Otros Efectos de Sonido"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+#, fuzzy
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Efectos de Sonido para las Aplicaciones de PulseAudio"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "limitador;compresor;reverberación;ecualizador;autovolumen;"
+
+#, fuzzy
+#~ msgid "Enable"
+#~ msgstr "Habilitar"
+
+#, fuzzy
+#~ msgid "Mute Application"
+#~ msgstr "Aplicaciones"
+
+#, fuzzy
+#~ msgid "Application Volume"
+#~ msgstr "Aplicaciones"
+
+#, fuzzy
+#~ msgid "_Help"
+#~ msgstr "Ayuda"
+
+#, fuzzy
+#~ msgid "_Reset Settings"
+#~ msgstr "Ajustes"
+
+#, fuzzy
+#~ msgid "Presets Menu"
+#~ msgstr "Perfiles"
+
+#~ msgid "Global Bypass"
+#~ msgstr "Bypass Global"
+
+#, fuzzy
+#~ msgid "Easy Effects Window"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "Applications List"
+#~ msgstr "Aplicaciones"
+
+#, fuzzy
+#~ msgid "Empty List"
+#~ msgstr "Paredes Vacías"
+
+#, fuzzy
+#~ msgid "No Audio Application Available"
+#~ msgstr "Aplicaciones"
+
+#~ msgid "Target"
+#~ msgstr "Objetivo"
+
+#~ msgid "Silence"
+#~ msgstr "Silencio"
+
+#, fuzzy
+#~ msgid "Maximum History"
+#~ msgstr "Máximo"
+
+#~ msgid "Momentary"
+#~ msgstr "Momentáneo"
+
+#, fuzzy
+#~ msgid "Short-Term"
+#~ msgstr "Corto Plazo"
+
+#~ msgid "Integrated"
+#~ msgstr "Integrado"
+
+#, fuzzy
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "Usar la Media Geométrica"
+
+#, fuzzy
+#~ msgid "Geometric Mean (MS)"
+#~ msgstr "Usar la Media Geométrica"
+
+#, fuzzy
+#~ msgid "Geometric Mean (MI)"
+#~ msgstr "Usar la Media Geométrica"
+
+#, fuzzy
+#~ msgid "Geometric Mean (SI)"
+#~ msgstr "Usar la Media Geométrica"
+
+#, fuzzy
+#~ msgid "History"
+#~ msgstr "Restablecer Historial"
+
+#~ msgid "Reset"
+#~ msgstr "Restablecer"
+
+#~ msgid "Loudness"
+#~ msgstr "Loudness"
+
+#~ msgid "Relative"
+#~ msgstr "Reativo"
+
+#~ msgid "Range"
+#~ msgstr "Rango"
+
+#, fuzzy
+#~ msgid "Output Gain"
+#~ msgstr "Ganancia de Entrada"
+
+#, fuzzy
+#~ msgid "Plugin Input Gain"
+#~ msgstr "Ganancia de Entrada"
+
+#, fuzzy
+#~ msgid "Plugin Output Gain"
+#~ msgstr "Caudal de Salida"
+
+#, fuzzy
+#~ msgid "Remove this autoload preset"
+#~ msgstr "Borrar este perfil"
+
+#~ msgid "Listen"
+#~ msgstr "Escuchar"
+
+#~ msgid "Blend Harmonics"
+#~ msgstr "Mezclar Harmónicos"
+
+#~ msgid "3rd"
+#~ msgstr "3era"
+
+#~ msgid "2nd"
+#~ msgstr "2nda"
+
+#~ msgid "Amount"
+#~ msgstr "Cantidad"
+
+#~ msgid "Harmonics"
+#~ msgstr "Harmónicos"
+
+#~ msgid "Scope"
+#~ msgstr "Alcance"
+
+#~ msgid "Floor"
+#~ msgstr "Fondo"
+
+#~ msgid "Link"
+#~ msgstr "Acoplar"
+
+#, fuzzy
+#~ msgid "Application Name"
+#~ msgstr "Aplicaciones"
+
+#, fuzzy
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "Aplicaciones"
+
+#, fuzzy
+#~ msgid "Excluded Applications List"
+#~ msgstr "Aplicaciones"
+
+#, fuzzy
+#~ msgid "Show Excluded Applications"
+#~ msgstr "Aplicaciones"
+
+#, fuzzy
+#~ msgid "Show Native Window"
+#~ msgstr "Ventana"
+
+#~ msgid "Compressor"
+#~ msgstr "Compresor"
+
+#~ msgid "Mode"
+#~ msgstr "Modo"
+
+#~ msgid "Downward"
+#~ msgstr "Hacia Abajo"
+
+#~ msgid "Upward"
+#~ msgstr "Hacia Arriba"
+
+#~ msgid "Compression Mode"
+#~ msgstr "Modo de Compresión"
+
+#, fuzzy
+#~ msgid "Boost Threshold"
+#~ msgstr "Límite"
+
+#, fuzzy
+#~ msgid "Boost Amount"
+#~ msgstr "Cantidad"
+
+#~ msgid "Attack"
+#~ msgstr "Ataque"
+
+#, fuzzy
+#~ msgid "Time"
+#~ msgstr "Tiempo Real"
+
+#~ msgid "Threshold"
+#~ msgstr "Límite"
+
+#, fuzzy
+#~ msgid "Attack Time"
+#~ msgstr "Ataque"
+
+#, fuzzy
+#~ msgid "Attack Threshold"
+#~ msgstr "Límite"
+
+#~ msgid "Release"
+#~ msgstr "Liberar"
+
+#, fuzzy
+#~ msgid "Release Time"
+#~ msgstr "Tiempo Real"
+
+#, fuzzy
+#~ msgid "Release Threshold"
+#~ msgstr "Límite"
+
+#~ msgid "Ratio"
+#~ msgstr "Radio"
+
+#~ msgid "Knee"
+#~ msgstr "Codo"
+
+#~ msgid "Makeup"
+#~ msgstr "Amplificación"
+
+#, fuzzy
+#~ msgid "Dry Level"
+#~ msgstr "Nivel"
+
+#, fuzzy
+#~ msgid "Wet Level"
+#~ msgstr "Nivel Objetivo"
+
+#~ msgid "Sidechain"
+#~ msgstr "Cadena Lateral"
+
+#, fuzzy
+#~ msgid "Stereo Split Mode"
+#~ msgstr "Base Estéreo"
+
+#~ msgid "Source"
+#~ msgstr "Fuente"
+
+#~ msgid "Middle"
+#~ msgstr "Medio"
+
+#~ msgid "Side"
+#~ msgstr "Lado"
+
+#~ msgid "Left"
+#~ msgstr "Izquierda"
+
+#~ msgid "Right"
+#~ msgstr "Derecha"
+
+#, fuzzy
+#~ msgid "Min"
+#~ msgstr "Máximo"
+
+#, fuzzy
+#~ msgid "Max"
+#~ msgstr "Máximo"
+
+#, fuzzy
+#~ msgid "Sidechain Source"
+#~ msgstr "Cadena Lateral"
+
+#, fuzzy
+#~ msgid "Left/Right"
+#~ msgstr "Retraso L/R"
+
+#, fuzzy
+#~ msgid "Right/Left"
+#~ msgstr "Derecha"
+
+#, fuzzy
+#~ msgid "Mid/Side"
+#~ msgstr "Lado"
+
+#, fuzzy
+#~ msgid "Side/Mid"
+#~ msgstr "Lado"
+
+#, fuzzy
+#~ msgid "Stereo Split Source"
+#~ msgstr "Fuente Predeterminada"
+
+#~ msgid "Peak"
+#~ msgstr "Pico"
+
+#~ msgid "RMS"
+#~ msgstr "RMS"
+
+#, fuzzy
+#~ msgid "Low-Pass Filter"
+#~ msgstr "Filtro de Pase Alto"
+
+#, fuzzy
+#~ msgid "Sidechain Mode"
+#~ msgstr "Cadena Lateral"
+
+#, fuzzy
+#~ msgid "Listen Sidechain"
+#~ msgstr "Cadena Lateral"
+
+#~ msgid "Type"
+#~ msgstr "Tipo"
+
+#, fuzzy
+#~ msgid "Feed-forward"
+#~ msgstr "Adelantar"
+
+#~ msgid "Feed-back"
+#~ msgstr "Realimentar"
+
+#, fuzzy
+#~ msgid "Sidechain Type"
+#~ msgstr "Cadena Lateral"
+
+#, fuzzy
+#~ msgid "Input Device"
+#~ msgstr "Efectos de Entrada"
+
+#, fuzzy
+#~ msgid "PreAmplification"
+#~ msgstr "Pre-amplificación"
+
+#~ msgid "Reactivity"
+#~ msgstr "Reactividad"
+
+#~ msgid "Lookahead"
+#~ msgstr "Atenuación"
+
+#, fuzzy
+#~ msgid "Sidechain Filters"
+#~ msgstr "Cadena Lateral"
+
+#, fuzzy
+#~ msgid "High-Pass"
+#~ msgstr "Pase Alto"
+
+#~ msgid "Frequency"
+#~ msgstr "Frecuencia"
+
+#~ msgid "Off"
+#~ msgstr "Apagdo"
+
+#~ msgid "12 dB/oct"
+#~ msgstr "12 dB/oct"
+
+#~ msgid "24 dB/oct"
+#~ msgstr "24 dB/oct"
+
+#~ msgid "36 dB/oct"
+#~ msgstr "36 dB/oct"
+
+#, fuzzy
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "Filtro de Pase Alto"
+
+#, fuzzy
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "Filtro de Pase Alto"
+
+#~ msgid "Low-Pass"
+#~ msgstr "Paso Bajo"
+
+#, fuzzy
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "Filtro de Pase Alto"
+
+#~ msgid "Gain"
+#~ msgstr "Ganancia"
+
+#~ msgid "Curve"
+#~ msgstr "Curva"
+
+#~ msgid "L"
+#~ msgstr "L"
+
+#, fuzzy
+#~ msgid "Left Channel"
+#~ msgstr "Canales"
+
+#~ msgid "R"
+#~ msgstr "R"
+
+#, fuzzy
+#~ msgid "Right Channel"
+#~ msgstr "Dividir Canales"
+
+#, fuzzy
+#~ msgid "Impulses"
+#~ msgstr "Respuesta de Impulse"
+
+#~ msgid "Stereo Width"
+#~ msgstr "Amplitud Estéreo"
+
+#~ msgid "Spectrum"
+#~ msgstr "Espectro"
+
+#, fuzzy
+#~ msgid "Log Scale"
+#~ msgstr "Escala"
+
+#, fuzzy
+#~ msgid "Autogain"
+#~ msgstr "Ganancia Automática"
+
+#~ msgid "Rate"
+#~ msgstr "Tasa"
+
+#~ msgid "Samples"
+#~ msgstr "Muestras"
+
+#~ msgid "Duration"
+#~ msgstr "Duración"
+
+#, fuzzy
+#~ msgid "Combine Impulse Responses"
+#~ msgstr "Respuesta de Impulse"
+
+#~ msgid "Import Impulse"
+#~ msgstr "Importar Archivo Impulse"
+
+#, fuzzy
+#~ msgid "Search Impulse File"
+#~ msgstr "Importar Archivo Impulse"
+
+#, fuzzy
+#~ msgid "Impulse Files List"
+#~ msgstr "Importar Archivo Impulse"
+
+#~ msgid "Default"
+#~ msgstr "Predeterminado"
+
+#~ msgid "Cutoff"
+#~ msgstr "Umbral"
+
+#~ msgid "Feed"
+#~ msgstr "Alimentar"
+
+#~ msgid "Bypass"
+#~ msgstr "Bypass"
+
+#~ msgid "Mute"
+#~ msgstr "Silenciar"
+
+#, fuzzy
+#~ msgid "Attenuation Limit"
+#~ msgstr "Atenuación"
+
+#, fuzzy
+#~ msgid "Post Filter Beta"
+#~ msgstr "Filtro"
+
+#~ msgid "Detection"
+#~ msgstr "Detección"
+
+#~ msgid "Wide"
+#~ msgstr "Ancho"
+
+#~ msgid "Split"
+#~ msgstr "Dividir"
+
+#, fuzzy
+#~ msgid "F1 Split"
+#~ msgstr "Dividir"
+
+#, fuzzy
+#~ msgid "Frequency 1 Split"
+#~ msgstr "Frecuencia"
+
+#, fuzzy
+#~ msgid "F2 Peak"
+#~ msgstr "Pico"
+
+#, fuzzy
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "Frecuencia"
+
+#, fuzzy
+#~ msgid "F1 Gain"
+#~ msgstr "Ganancia"
+
+#, fuzzy
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "Frecuencia"
+
+#, fuzzy
+#~ msgid "F2 Level"
+#~ msgstr "Nivel"
+
+#, fuzzy
+#~ msgid "Frequency 2 Level"
+#~ msgstr "Frecuencia"
+
+#, fuzzy
+#~ msgid "F2 Peak Q"
+#~ msgstr "Pico Q"
+
+#, fuzzy
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "Frecuencia"
+
+#~ msgid "Laxity"
+#~ msgstr "Relajamiento"
+
+#~ msgid "Detected"
+#~ msgstr "Detectado"
+
+#, fuzzy
+#~ msgid "Reduction"
+#~ msgstr "Reducción"
+
+#~ msgid "Delay"
+#~ msgstr "Retraso"
+
+#~ msgid "Invert Phase"
+#~ msgstr "Invertir Fase"
+
+#, fuzzy
+#~ msgid "Filter Length"
+#~ msgstr "Filtro"
+
+#, fuzzy
+#~ msgid "Residual Echo Suppression"
+#~ msgstr "Supresor de Ruido"
+
+#, fuzzy
+#~ msgid "Near End Echo Suppression"
+#~ msgstr "Supresor de Ruido"
+
+#~ msgid "Bands"
+#~ msgstr "Bandas"
+
+#~ msgid "Balance"
+#~ msgstr "Balance"
+
+#, fuzzy
+#~ msgid "Pitch Left"
+#~ msgstr "Cadena Lateral"
+
+#, fuzzy
+#~ msgid "Pitch Right"
+#~ msgstr "Cadena Lateral"
+
+#~ msgid "Split Channels"
+#~ msgstr "Dividir Canales"
+
+#~ msgid "Flat Response"
+#~ msgstr "Respuesta Plana"
+
+#~ msgid "Calculate Frequencies"
+#~ msgstr "Calcular Frecuencias"
+
+#, fuzzy
+#~ msgid "Sort Bands"
+#~ msgstr "Bandas"
+
+#, fuzzy
+#~ msgid "Import Preset"
+#~ msgstr "Importar Perfiles"
+
+#, fuzzy
+#~ msgid "Export Preset"
+#~ msgstr "Importar Perfiles"
+
+#~ msgid "Slope"
+#~ msgstr "Pendiente"
+
+#~ msgid "Solo"
+#~ msgstr "Solo"
+
+#~ msgid "Quality"
+#~ msgstr "Calidad"
+
+#~ msgid "Width"
+#~ msgstr "Anchura"
+
+#, fuzzy
+#~ msgid "Ceil"
+#~ msgstr "Límite"
+
+#, fuzzy
+#~ msgid "Expander Mode"
+#~ msgstr "Modo"
+
+#, fuzzy
+#~ msgid "Internal"
+#~ msgstr "Integrado"
+
+#, fuzzy
+#~ msgid "Description"
+#~ msgstr "Detección"
+
+#, fuzzy
+#~ msgid "Remove this model file"
+#~ msgstr "Borrar este perfil"
+
+#, fuzzy
+#~ msgid "Low-Shelf"
+#~ msgstr "Estante Bajo"
+
+#, fuzzy
+#~ msgid "High-Shelf"
+#~ msgstr "Estante Alto"
+
+#~ msgid "Bell"
+#~ msgstr "Timbre"
+
+#, fuzzy
+#~ msgid "Band-Pass"
+#~ msgstr "Bypass"
+
+#~ msgid "Notch"
+#~ msgstr "Muesca"
+
+#~ msgid "Resonance"
+#~ msgstr "Resonancia"
+
+#, fuzzy
+#~ msgid "Ladder-Pass"
+#~ msgstr "Paso Bajo"
+
+#, fuzzy
+#~ msgid "Ladder-Rejection"
+#~ msgstr "Reducción"
+
+#, fuzzy
+#~ msgid "All-Pass"
+#~ msgstr "Paso Bajo"
+
+#, fuzzy
+#~ msgid "Equalizer Mode"
+#~ msgstr "Ecualizador"
+
+#~ msgid "Filter"
+#~ msgstr "Filtro"
+
+#~ msgid "Gate"
+#~ msgstr "Puerta de Ruido"
+
+#, fuzzy
+#~ msgid "Release Zone Start"
+#~ msgstr "Tiempo Real"
+
+#, fuzzy
+#~ msgid "True Peak"
+#~ msgstr "Frecuencia"
+
+#~ msgid "Reset History"
+#~ msgstr "Restablecer Historial"
+
+#~ msgid "Oversampling"
+#~ msgstr "Sobre Muestreo"
+
+#, fuzzy
+#~ msgid "Herm Wide"
+#~ msgstr "Ancho"
+
+#, fuzzy
+#~ msgid "Exp Wide"
+#~ msgstr "Ancho"
+
+#, fuzzy
+#~ msgid "Line Thin"
+#~ msgstr "Ancho de Linea"
+
+#, fuzzy
+#~ msgid "Line Wide"
+#~ msgstr "Ancho de Linea"
+
+#, fuzzy
+#~ msgid "Line Tail"
+#~ msgstr "Mesa Sinusoidal"
+
+#~ msgid "None"
+#~ msgstr "Ninguno"
+
+#, fuzzy
+#~ msgid "Sidechain PreAmplification"
+#~ msgstr "Pre-amplificación"
+
+#~ msgid "Stereo Link"
+#~ msgstr "Acoplamiento Estéreo"
+
+#, fuzzy
+#~ msgid "External Sidechain"
+#~ msgstr "Cadena Lateral"
+
+#, fuzzy
+#~ msgid "Auto Leveling"
+#~ msgstr "Ganancia Automática"
+
+#, fuzzy
+#~ msgid "Gain Left"
+#~ msgstr "Ganancia"
+
+#, fuzzy
+#~ msgid "Gain Right"
+#~ msgstr "Derecha"
+
+#, fuzzy
+#~ msgid "Sidechain Left"
+#~ msgstr "Cadena Lateral"
+
+#, fuzzy
+#~ msgid "Sidechain Right"
+#~ msgstr "Cadena Lateral"
+
+#, fuzzy
+#~ msgid "FFT Size"
+#~ msgstr "Tamaño del Marco"
+
+#, fuzzy
+#~ msgid "Output Volume"
+#~ msgstr "Salida"
+
+#, fuzzy
+#~ msgid "Clipping"
+#~ msgstr "Mapa de Canales"
+
+#, fuzzy
+#~ msgid "Sidechain Boost"
+#~ msgstr "Cadena Lateral"
+
+#, fuzzy
+#~ msgid "Operating Mode"
+#~ msgstr "Modo de Compresión"
+
+#, fuzzy
+#~ msgid "Modern"
+#~ msgstr "Modo"
+
+#, fuzzy
+#~ msgid "Linear Phase"
+#~ msgstr "Invertir Fase"
+
+#, fuzzy
+#~ msgid "Bands List"
+#~ msgstr "Bandas"
+
+#, fuzzy
+#~ msgid "Band 1"
+#~ msgstr "Bandas"
+
+#, fuzzy
+#~ msgid "Band 2"
+#~ msgstr "Bandas"
+
+#, fuzzy
+#~ msgid "Band 3"
+#~ msgstr "Bandas"
+
+#, fuzzy
+#~ msgid "Band 4"
+#~ msgstr "Bandas"
+
+#, fuzzy
+#~ msgid "Band 5"
+#~ msgstr "Bandas"
+
+#, fuzzy
+#~ msgid "Band 6"
+#~ msgstr "Bandas"
+
+#, fuzzy
+#~ msgid "Band 7"
+#~ msgstr "Bandas"
+
+#, fuzzy
+#~ msgid "Band 8"
+#~ msgstr "Bandas"
+
+#, fuzzy
+#~ msgid "Band End"
+#~ msgstr "Bandas"
+
+#, fuzzy
+#~ msgid "Band Compression Mode"
+#~ msgstr "Modo de Compresión"
+
+#, fuzzy
+#~ msgid "Band Bypass"
+#~ msgstr "Bypass"
+
+#, fuzzy
+#~ msgid "Stereo Split"
+#~ msgstr "Base Estéreo"
+
+#, fuzzy
+#~ msgid "Low-Cut"
+#~ msgstr "Filtro"
+
+#, fuzzy
+#~ msgid "Low-Cut Filter Frequency"
+#~ msgstr "Calcular Frecuencias"
+
+#, fuzzy
+#~ msgid "High-Cut"
+#~ msgstr "Filtro de Pase Alto"
+
+#, fuzzy
+#~ msgid "High-Cut Filter Frequency"
+#~ msgstr "Calcular Frecuencias"
+
+#, fuzzy
+#~ msgid "Band Gain"
+#~ msgstr "Ganancia de Entrada"
+
+#, fuzzy
+#~ msgid "Band Curve"
+#~ msgstr "Curva"
+
+#, fuzzy
+#~ msgid "Band Reduction"
+#~ msgstr "Reducción"
+
+#~ msgid "General"
+#~ msgstr "General"
+
+#, fuzzy
+#~ msgid "Use Default Input"
+#~ msgstr "Usar Predeterminado"
+
+#, fuzzy
+#~ msgid "Use Default Output"
+#~ msgstr "Usar Predeterminado"
+
+#, fuzzy
+#~ msgid "Server Information"
+#~ msgstr "Reverberación"
+
+#, fuzzy
+#~ msgid "Header Version"
+#~ msgstr "Versión"
+
+#, fuzzy
+#~ msgid "Library Version"
+#~ msgstr "Versión"
+
+#, fuzzy
+#~ msgid "Sampling Rate"
+#~ msgstr "Tasa de Muestreo por Defecto"
+
+#, fuzzy
+#~ msgid "Maximum Quantum"
+#~ msgstr "Ganancia Máxima"
+
+#, fuzzy
+#~ msgid "Default Quantum"
+#~ msgstr "Profundidad Predeterminda"
+
+#, fuzzy
+#~ msgid "Output Devices"
+#~ msgstr "Efectos de Salida"
+
+#, fuzzy
+#~ msgid "Output Presets"
+#~ msgstr "Perfiles de Dispositivos de Salida: "
+
+#, fuzzy
+#~ msgid "Output Autoloading Presets List"
+#~ msgstr "Perfiles de Dispositivos de Salida: "
+
+#, fuzzy
+#~ msgid "Input Devices"
+#~ msgstr "Efectos de Entrada"
+
+#, fuzzy
+#~ msgid "Input Presets"
+#~ msgstr "Perfiles de Dispositivos de Entrada: "
+
+#, fuzzy
+#~ msgid "Input Autoloading Presets List"
+#~ msgstr "Perfiles de Dispositivos de Entrada: "
+
+#~ msgid "Modules"
+#~ msgstr "Módulos"
+
+#, fuzzy
+#~ msgid "Modules List"
+#~ msgstr "Módulos"
+
+#~ msgid "Clients"
+#~ msgstr "Clientes"
+
+#, fuzzy
+#~ msgid "Clients List"
+#~ msgstr "Clientes"
+
+#, fuzzy
+#~ msgid "Test Signal"
+#~ msgstr "Señal de Prueba"
+
+#~ msgid "State"
+#~ msgstr "Estado"
+
+#, fuzzy
+#~ msgid "Enabled"
+#~ msgstr "Habilitar"
+
+#~ msgid "Channels"
+#~ msgstr "Canales"
+
+#, fuzzy
+#~ msgid "Both Channels"
+#~ msgstr "Canales"
+
+#, fuzzy
+#~ msgid "Sine Wave"
+#~ msgstr "Mesa Sinusoidal"
+
+#~ msgid "White Noise"
+#~ msgstr "Ruido Blanco"
+
+#, fuzzy
+#~ msgid "Sequence Length"
+#~ msgstr "Frecuencia"
+
+#, fuzzy
+#~ msgid "Seek Window"
+#~ msgstr "Ventana"
+
+#, fuzzy
+#~ msgid "Overlap Length"
+#~ msgstr "Filtro"
+
+#~ msgid "Pitch"
+#~ msgstr "Tono"
+
+#~ msgid "Semitones"
+#~ msgstr "Semitonos"
+
+#, fuzzy
+#~ msgid "Remove this effect"
+#~ msgstr "Borrar este perfil"
+
+#, fuzzy
+#~ msgid "Go to the previous effect"
+#~ msgstr "Borrar este perfil"
+
+#, fuzzy
+#~ msgid "No Effects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "_General"
+#~ msgstr "General"
+
+#, fuzzy
+#~ msgid "Service"
+#~ msgstr "Servidor"
+
+#, fuzzy
+#~ msgid "Process All Output Streams"
+#~ msgstr "Procesar Todas las Salidas"
+
+#, fuzzy
+#~ msgid "Process All Input Streams"
+#~ msgstr "Procesar Todas las Entradas"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "Integrado"
+
+#, fuzzy
+#~ msgid "Update Frequency"
+#~ msgstr "Frecuencia"
+
+#~ msgid "Use Dark Theme"
+#~ msgstr "Usar Tema Oscuro"
+
+#, fuzzy
+#~ msgid "Experimental Features"
+#~ msgstr "Experimental"
+
+#, fuzzy
+#~ msgid "Native Plugin Window"
+#~ msgstr "Ventana"
+
+#, fuzzy
+#~ msgid "_Spectrum"
+#~ msgstr "Espectro"
+
+#~ msgid "Bars"
+#~ msgstr "Barras"
+
+#~ msgid "Lines"
+#~ msgstr "Lineas"
+
+#~ msgid "Points"
+#~ msgstr "Puntos"
+
+#~ msgid "Height"
+#~ msgstr "Altura"
+
+#~ msgid "Line Width"
+#~ msgstr "Ancho de Linea"
+
+#~ msgid "Fill"
+#~ msgstr "Rellenar"
+
+#, fuzzy
+#~ msgid "Frequency Range"
+#~ msgstr "Frecuencia"
+
+#, fuzzy
+#~ msgid "Minimum"
+#~ msgstr "Máximo"
+
+#~ msgid "Maximum"
+#~ msgstr "Máximo"
+
+#, fuzzy
+#~ msgid "Discard the current settings and load this preset"
+#~ msgstr "Guardar esta configuración a este perfil"
+
+#~ msgid "Save current settings to this preset file"
+#~ msgstr "Guardar esta configuración a este perfil"
+
+#~ msgid "Remove this preset file"
+#~ msgstr "Borrar este perfil"
+
+#, fuzzy
+#~ msgid "Try"
+#~ msgstr "Secar"
+
+#, fuzzy
+#~ msgid "Try this community preset"
+#~ msgstr "Perfiles de Dispositivos de Salida: "
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Importar Archivo Impulse"
+
+#, fuzzy
+#~ msgid "New Preset Name"
+#~ msgstr "Perfiles de Dispositivos de Entrada: "
+
+#, fuzzy
+#~ msgid "Search Local Preset"
+#~ msgstr "Perfiles de Dispositivos de Entrada: "
+
+#, fuzzy
+#~ msgid "Local Presets List"
+#~ msgstr "Perfiles de Dispositivos de Entrada: "
+
+#, fuzzy
+#~ msgid "Search Community Preset"
+#~ msgstr "Perfiles de Dispositivos de Salida: "
+
+#, fuzzy
+#~ msgid "Community Presets List"
+#~ msgstr "Perfiles de Dispositivos de Salida: "
+
+#~ msgid "High Frequency Damping"
+#~ msgstr "Amortiguación de Alta Frecuencia"
+
+#~ msgid "Room Size"
+#~ msgstr "Tamaño de la Habitación"
+
+#~ msgid "Small"
+#~ msgstr "Pequeña"
+
+#~ msgid "Medium"
+#~ msgstr "Mediana"
+
+#~ msgid "Large"
+#~ msgstr "Grande"
+
+#~ msgid "Tunnel"
+#~ msgstr "Túnel"
+
+#~ msgid "Large/smooth"
+#~ msgstr "Grande/Liso"
+
+#~ msgid "Experimental"
+#~ msgstr "Experimental"
+
+#~ msgid "Diffusion"
+#~ msgstr "Difusión"
+
+#~ msgid "Pre Delay"
+#~ msgstr "Pre Retraso"
+
+#~ msgid "Decay Time"
+#~ msgstr "Tiempo de Decaimiento"
+
+#~ msgid "Bass Cut"
+#~ msgstr "Corte de Bajos"
+
+#~ msgid "Treble Cut"
+#~ msgstr "Corte de Sobreagudos"
+
+#~ msgid "Ambience"
+#~ msgstr "Ambiente"
+
+#~ msgid "Empty Walls"
+#~ msgstr "Paredes Vacías"
+
+#~ msgid "Room"
+#~ msgstr "Habitación"
+
+#~ msgid "Large Empty Hall"
+#~ msgstr "Habitación Vacía Grande"
+
+#~ msgid "Disco"
+#~ msgstr "Disco"
+
+#~ msgid "Large Occupied Hall"
+#~ msgstr "Habitación Ocupada Grande"
+
+#, fuzzy
+#~ msgid "Import Model"
+#~ msgstr "Importar Archivo Impulse"
+
+#, fuzzy
+#~ msgid "Voice Detection"
+#~ msgstr "Detector de Voz"
+
+#, fuzzy
+#~ msgid "Models"
+#~ msgstr "Modo"
+
+#, fuzzy
+#~ msgid "Active Model"
+#~ msgstr "Modo Agresivo"
+
+#, fuzzy
+#~ msgid "Quit Easy Effects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "Denoise"
+#~ msgstr "Ruido Rojo"
+
+#, fuzzy
+#~ msgid "Automatic Gain Control"
+#~ msgstr "Regulador de Ganancia"
+
+#, fuzzy
+#~ msgid "Dereverberation"
+#~ msgstr "Reverberación"
+
+#, fuzzy
+#~ msgid "Noise Suppression"
+#~ msgstr "Supresor de Ruido"
+
+#, fuzzy
+#~ msgid "Level"
+#~ msgstr "Nivel"
+
+#, fuzzy
+#~ msgid "Input Balance"
+#~ msgstr "Balance"
+
+#~ msgid "Softclip"
+#~ msgstr "Clip Suave"
+
+#, fuzzy
+#~ msgid "Softclip Level"
+#~ msgstr "Clip Suave"
+
+#~ msgid "Stereo Matrix"
+#~ msgstr "Matriz Estéreo"
+
+#~ msgid "LR > LR (Stereo Default)"
+#~ msgstr "LR > LR (Estéreo Predeterminado)"
+
+#~ msgid "LR > MS (Stereo to Mid-Side)"
+#~ msgstr "LR > MS (Estéreo hacia Medio Lado)"
+
+#~ msgid "MS > LR (Mid-Side to Stereo)"
+#~ msgstr "MS > LR (Medio Lado - Estéreo)"
+
+#~ msgid "LR > LL (Mono Left Channel)"
+#~ msgstr "LR > LL (Canal Izquierdo Mono)"
+
+#~ msgid "LR > RR (Mono Right Channel)"
+#~ msgstr "LR > RR (Canal Derecho Mono)"
+
+#~ msgid "LR > L+R (Mono Sum L+R)"
+#~ msgstr "LR > L+R (Suma Mono L+R)"
+
+#~ msgid "LR > RL (Stereo Flip Channels)"
+#~ msgstr "LR > RL (Intercambiar Canales)"
+
+#, fuzzy
+#~ msgid "Stereo Mode"
+#~ msgstr "Base Estéreo"
+
+#~ msgid "Side Level"
+#~ msgstr "Nivel Lateral"
+
+#~ msgid "Side Balance"
+#~ msgstr "Balance Lateral"
+
+#~ msgid "Middle Level"
+#~ msgstr "Nivel Medio"
+
+#~ msgid "Middle Panorama"
+#~ msgstr "Panorama Medio"
+
+#, fuzzy
+#~ msgid "Output Balance"
+#~ msgstr "Balance"
+
+#~ msgid "Delay L/R"
+#~ msgstr "Retraso L/R"
+
+#, fuzzy
+#~ msgid "Delay Left Right"
+#~ msgstr "Retraso L/R"
+
+#~ msgid "Stereo Base"
+#~ msgstr "Base Estéreo"
+
+#~ msgid "Stereo Phase"
+#~ msgstr "Fase Estéreo"
+
+#, fuzzy
+#~ msgid "Creating"
+#~ msgstr "Puerta"
+
+#, fuzzy
+#~ msgid "channels"
+#~ msgstr "Canales"
+
+#, fuzzy
+#~ msgid "Quit Easy Effects. Useful when running in service mode."
+#~ msgstr ""
+#~ "Salir de EasyEffects. Útil cuando se está ejecutando en modo de servicio."
+
+#, fuzzy
+#~ msgid "Reset Easy Effects."
+#~ msgstr "Restablecer EasyEffects."
+
+#~ msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+#~ msgstr ""
+#~ "Bypass global, 1 para habilitar, 2 para deshabilitar y 3 para obtener el "
+#~ "estado"
+
+#~ msgid "Show available presets."
+#~ msgstr "Mostrar perfiles disponibles."
+
+#~ msgid "Load a preset. Example: easyeffects -l music"
+#~ msgstr "Cargar un perfil. Ejemplo: easyeffects -l music"
+
+#, fuzzy
+#~ msgid "_Output"
+#~ msgstr "Salida"
+
+#, fuzzy
+#~ msgid "_Input"
+#~ msgstr "Entrada"
+
+#, fuzzy
+#~ msgid "Impulse File Not Imported"
+#~ msgstr "Importar Archivo Impulse"
+
+#~ msgid "Import Impulse File"
+#~ msgstr "Importar Archivo Impulse"
+
+#~ msgid "Open"
+#~ msgstr "Abrir"
+
+#~ msgid "Impulse Response"
+#~ msgstr "Respuesta de Impulse"
+
+#, fuzzy
+#~ msgid "Load Impulse"
+#~ msgstr "Importar Archivo Impulse"
+
+#, fuzzy
+#~ msgid "Remove Impulse"
+#~ msgstr "Importar Archivo Impulse"
+
+#, fuzzy
+#~ msgid "No Impulse File Loaded"
+#~ msgstr "Importar Archivo Impulse"
+
+#, fuzzy
+#~ msgid "Failed To Load The Impulse File"
+#~ msgstr "No se pudo encontrar el archivo Impulse"
+
+#, fuzzy
+#~ msgid "Recorders"
+#~ msgstr "Bordes"
+
+#, fuzzy
+#~ msgid "Effects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "Import APO Preset File"
+#~ msgstr "Importar Perfiles"
+
+#, fuzzy
+#~ msgid "APO Presets"
+#~ msgstr "Perfiles"
+
+#, fuzzy
+#~ msgid "Export EqualizerAPO Preset File"
+#~ msgstr "Importar Perfiles"
+
+#, fuzzy
+#~ msgid "EqualizerAPO Presets"
+#~ msgstr "Perfiles"
+
+#, fuzzy
+#~ msgid "Import GraphicEQ Preset File"
+#~ msgstr "Importar Perfiles"
+
+#, fuzzy
+#~ msgid "GraphicEQ Presets"
+#~ msgstr "Perfiles de Dispositivos de Entrada: "
+
+#, fuzzy
+#~ msgid "Remove Autoloading Preset"
+#~ msgstr "Borrar este perfil"
+
+#, fuzzy
+#~ msgid "Output Level Meter"
+#~ msgstr "Efectos de Salida"
+
+#, fuzzy
+#~ msgid "Output Device"
+#~ msgstr "Efectos de Salida"
+
+#, fuzzy
+#~ msgid "Community Preset"
+#~ msgstr "Importar Perfiles"
+
+#, fuzzy
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "Aplicaciones"
+
+#, fuzzy
+#~ msgid "No Preset Loaded"
+#~ msgstr "Perfiles de Dispositivos de Entrada: "
+
+#, fuzzy
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "Perfiles de Dispositivos de Entrada: "
+
+#, fuzzy
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "Importar Perfiles"
+
+#, fuzzy
+#~ msgid "Import Model File"
+#~ msgstr "Importar Archivo Impulse"
+
+#~ msgid "Bass Enhancer"
+#~ msgstr "Potenciado de Graves"
+
+#, fuzzy
+#~ msgid "Bass Loudness"
+#~ msgstr "Loudness"
+
+#~ msgid "Convolver"
+#~ msgstr "Convolver"
+
+#~ msgid "Crossfeed"
+#~ msgstr "Crossfeed"
+
+#~ msgid "Crystalizer"
+#~ msgstr "Cristalizador"
+
+#~ msgid "Deesser"
+#~ msgstr "Deesser"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "Cancelador de Eco"
+
+#~ msgid "Equalizer"
+#~ msgstr "Ecualizador"
+
+#~ msgid "Exciter"
+#~ msgstr "Excitador"
+
+#, fuzzy
+#~ msgid "Level Meter"
+#~ msgstr "Efectos de Salida"
+
+#~ msgid "Limiter"
+#~ msgstr "Limitador"
+
+#~ msgid "Maximizer"
+#~ msgstr "Maximizador"
+
+#~ msgid "Multiband Compressor"
+#~ msgstr "Compresor Multibanda"
+
+#~ msgid "Multiband Gate"
+#~ msgstr "Puerta Multibanda"
+
+#~ msgid "Reverberation"
+#~ msgstr "Reverberación"
+
+#, fuzzy
+#~ msgid "Noise Reduction"
+#~ msgstr "Reducción de Ganancia"
+
+#~ msgid "Stereo Tools"
+#~ msgstr "Herramientas Estéreo"
+
+#~ msgid "Ceiling"
+#~ msgstr "Límite"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"Perfiles\""
+
+#, fuzzy
+#~ msgid "Import a preset"
+#~ msgstr "Importar Perfiles"
+
+#, fuzzy
+#~ msgid "Low-Cut Filter"
+#~ msgstr "Filtro"
+
+#, fuzzy
+#~ msgid "High-Cut Filter"
+#~ msgstr "Filtro de Pase Alto"
+
+#~ msgid "Uniform"
+#~ msgstr "Uniforme"
+
+#, fuzzy
+#~ msgid "New Output Preset Name"
+#~ msgstr "Perfiles de Dispositivos de Salida: "
+
+#~ msgid "infinity"
+#~ msgstr "infinidad"
+
+#~ msgid "IIR"
+#~ msgstr "IIR"
+
+#~ msgid "FIR"
+#~ msgstr "FIR"
+
+#~ msgid "FFT"
+#~ msgstr "FFT"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Radio"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "Límite"
+
+#, fuzzy
+#~ msgid "Low-pass"
+#~ msgstr "Paso Bajo"
+
+#, fuzzy
+#~ msgid "High-pass"
+#~ msgstr "Pase Alto"
+
+#~ msgid "Gating"
+#~ msgstr "Puerta"
+
+#~ msgid "12dB/oct Lowpass"
+#~ msgstr "12dB/oct Paso Bajo"
+
+#~ msgid "24dB/oct Lowpass"
+#~ msgstr "24dB/oct Paso Bajo"
+
+#~ msgid "36dB/oct Lowpass"
+#~ msgstr "36dB/oct Paso Bajo"
+
+#~ msgid "12dB/oct Highpass"
+#~ msgstr "12dB/oct Pase Alto"
+
+#~ msgid "24dB/oct Highpass"
+#~ msgstr "24dB/oct Pase Alto"
+
+#~ msgid "36dB/oct Highpass"
+#~ msgstr "36dB/oct Pase Alto"
+
+#~ msgid "6dB/oct Bandpass"
+#~ msgstr "6dB/oct Paso de Banda"
+
+#~ msgid "12dB/oct Bandpass"
+#~ msgstr "12dB/oct Paso de Banda"
+
+#~ msgid "18dB/oct Bandpass"
+#~ msgstr "18dB/oct Paso de Banda"
+
+#~ msgid "6dB/oct Bandreject"
+#~ msgstr "6dB/oct Rechazo de Banda"
+
+#~ msgid "12dB/oct Bandreject"
+#~ msgstr "12dB/oct Rechazo de Banda"
+
+#~ msgid "18dB/oct Bandreject"
+#~ msgstr "18dB/oct Rechazo de Banda"
+
+#~ msgid "Inertia"
+#~ msgstr "Inercia"
+
+#, fuzzy
+#~ msgid "Band Type"
+#~ msgstr "Tipo"
+
+#, fuzzy
+#~ msgid "Band Mode"
+#~ msgstr "Modo"
+
+#, fuzzy
+#~ msgid "Band Slope"
+#~ msgstr "Pendiente"
+
+#, fuzzy
+#~ msgid "Loudness List"
+#~ msgstr "Loudness"
+
+#, fuzzy
+#~ msgid "High Speed"
+#~ msgstr "Estante Alto"
+
+#, fuzzy
+#~ msgid "High Quality"
+#~ msgstr "Calidad"
+
+#, fuzzy
+#~ msgid "Formant"
+#~ msgstr "Formato"
+
+#, fuzzy
+#~ msgid "Preserved"
+#~ msgstr "Perfiles"
+
+#, fuzzy
+#~ msgid "Crisp"
+#~ msgstr "Frescura"
+
+#, fuzzy
+#~ msgid "Detector"
+#~ msgstr "Detección"
+
+#, fuzzy
+#~ msgid "Compound"
+#~ msgstr "Compresión"
+
+#, fuzzy
+#~ msgid "Soft"
+#~ msgstr "Clip Suave"
+
+#~ msgid "Cents"
+#~ msgstr "Acentos"
+
+#~ msgid "Octaves"
+#~ msgstr "Octavas"
+
+#, fuzzy
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Restablecer EasyEffects."
+
+#~ msgid "High Pass"
+#~ msgstr "Pase Alto"
+
+#~ msgid "Low Pass"
+#~ msgstr "Paso Bajo"
+
+#~ msgid "Cancel"
+#~ msgstr "Cancelar"
+
+#, fuzzy
+#~ msgid " PreAmplification"
+#~ msgstr "Pre-amplificación"
+
+#~ msgid "Frame Size"
+#~ msgstr "Tamaño del Marco"
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "Paso Bajo"
+
+#, fuzzy
+#~ msgid " Uniform"
+#~ msgstr "Uniforme"
+
+#, fuzzy
+#~ msgid "Left Delay"
+#~ msgstr "Pre Retraso"
+
+#, fuzzy
+#~ msgid "Right Delay"
+#~ msgstr "Dividir Canales"
+
+#, fuzzy
+#~ msgid "Left Dry Level"
+#~ msgstr "Nivel"
+
+#, fuzzy
+#~ msgid "Right Dry Level"
+#~ msgstr "Nivel"
+
+#, fuzzy
+#~ msgid "Left Wet Level"
+#~ msgstr "Nivel Objetivo"
+
+#, fuzzy
+#~ msgid "Right Wet Level"
+#~ msgstr "Nivel Objetivo"
+
+#, fuzzy
+#~ msgid "Suppression"
+#~ msgstr "Nivel de Supresión"
+
+#, fuzzy
+#~ msgid "Noise Reduction (Fast)"
+#~ msgstr "Reducción de Ganancia"
+
+#~ msgid "Output Presets: "
+#~ msgstr "Perfiles de Dispositivos de Salida: "
+
+#~ msgid "Input Presets: "
+#~ msgstr "Perfiles de Dispositivos de Entrada: "
+
+#, fuzzy
+#~ msgid "Split Mode"
+#~ msgstr "Dividir"
+
+#~ msgid "Split 1/2"
+#~ msgstr "Dividir 1/2"
+
+#~ msgid "Split 2/3"
+#~ msgstr "Dividir 2/3"
+
+#, fuzzy
+#~ msgid "Split Frequency 2"
+#~ msgstr "Frecuencia"
+
+#~ msgid "Split 3/4"
+#~ msgstr "Dividir 3/4"
+
+#, fuzzy
+#~ msgid "Split Frequency 3"
+#~ msgstr "Frecuencia"
+
+#~ msgid "Sub Band"
+#~ msgstr "Sub Banda"
+
+#, fuzzy
+#~ msgid "Band 1 Bypass"
+#~ msgstr "Bypass"
+
+#, fuzzy
+#~ msgid "Band 1 Detection"
+#~ msgstr "Detección"
+
+#, fuzzy
+#~ msgid "Band 1 Attack"
+#~ msgstr "Ataque"
+
+#, fuzzy
+#~ msgid "Band 1 Release"
+#~ msgstr "Liberar"
+
+#, fuzzy
+#~ msgid "Band 1 Threshold"
+#~ msgstr "Límite"
+
+#, fuzzy
+#~ msgid "Band 1 Makeup"
+#~ msgstr "Amplificación"
+
+#~ msgid "Max Reduction"
+#~ msgstr "Reducción"
+
+#~ msgid "Low Band"
+#~ msgstr "Banda Baja"
+
+#, fuzzy
+#~ msgid "Band 2 Bypass"
+#~ msgstr "Bypass"
+
+#, fuzzy
+#~ msgid "Band 2 Detection"
+#~ msgstr "Detección"
+
+#, fuzzy
+#~ msgid "Band 2 Attack"
+#~ msgstr "Ataque"
+
+#, fuzzy
+#~ msgid "Band 2 Release"
+#~ msgstr "Liberar"
+
+#, fuzzy
+#~ msgid "Band 2 Threshold"
+#~ msgstr "Límite"
+
+#, fuzzy
+#~ msgid "Band 2 Makeup"
+#~ msgstr "Amplificación"
+
+#, fuzzy
+#~ msgid "Band 2 Max Reduction"
+#~ msgstr "Reducción"
+
+#~ msgid "Mid Band"
+#~ msgstr "Banda Media"
+
+#, fuzzy
+#~ msgid "Band 3 Bypass"
+#~ msgstr "Bypass"
+
+#, fuzzy
+#~ msgid "Band 3 Detection"
+#~ msgstr "Detección"
+
+#, fuzzy
+#~ msgid "Band 3 Attack"
+#~ msgstr "Ataque"
+
+#, fuzzy
+#~ msgid "Band 3 Release"
+#~ msgstr "Liberar"
+
+#, fuzzy
+#~ msgid "Band 3 Threshold"
+#~ msgstr "Límite"
+
+#, fuzzy
+#~ msgid "Band 3 Makeup"
+#~ msgstr "Amplificación"
+
+#, fuzzy
+#~ msgid "Band 3 Max Reduction"
+#~ msgstr "Reducción"
+
+#~ msgid "High Band"
+#~ msgstr "Banda Alta"
+
+#, fuzzy
+#~ msgid "Band 4 Bypass"
+#~ msgstr "Bypass"
+
+#, fuzzy
+#~ msgid "Band 4 Detection"
+#~ msgstr "Detección"
+
+#, fuzzy
+#~ msgid "Band 4 Attack"
+#~ msgstr "Ataque"
+
+#, fuzzy
+#~ msgid "Band 4 Release"
+#~ msgstr "Liberar"
+
+#, fuzzy
+#~ msgid "Band 4 Threshold"
+#~ msgstr "Límite"
+
+#, fuzzy
+#~ msgid "Band 4 Makeup"
+#~ msgstr "Amplificación"
+
+#, fuzzy
+#~ msgid "Band 4 Max Reduction"
+#~ msgstr "Reducción"
+
+#, fuzzy
+#~ msgid "Wet Amount"
+#~ msgstr "Cantidad"
+
+#, fuzzy
+#~ msgid "Dry Amount"
+#~ msgstr "Cantidad"
+
+#, fuzzy
+#~ msgid ""
+#~ "EasyEffects is an advanced audio manipulation tool. It includes an "
+#~ "equalizer, limiter, compressor and a reverberation tool, just to mention "
+#~ "a few. To complement this there is also a built in spectrum analyzer."
+#~ msgstr ""
+#~ "EasyEffects es una avanzada herramienta de manipulación de audio. Incluye "
+#~ "un ecualizador, limitador, compresor y herramienta de reverberación , "
+#~ "solo por mencionar algunos. Para complementar esto hay también incluido "
+#~ "un analizador de espectro."
+
+#, fuzzy
+#~ msgid ""
+#~ "Because EasyEffects uses the default PipeWire sound server it will work "
+#~ "with most, if not all, applications you use. All supported applications "
+#~ "are presented in the main window, where each can be enabled individually."
+#~ msgstr ""
+#~ "Debido a que EasyEffects usa por defecto el servicio de sonido "
+#~ "PulseAudio, este funcionará con la mayoría, sino que todas, las "
+#~ "aplicaciones que use. Todas las aplicaciones son mostradas en la ventana "
+#~ "principal donde pueden ser habilitadas individualmente."
+
+#~ msgid ""
+#~ "Besides manipulating sound output, EasyEffects is able to apply effects "
+#~ "to an input device, such as a microphone. This is, for example, useful in "
+#~ "audio recording, but it also works well during voice conversations."
+#~ msgstr ""
+#~ "Además de manipular el sonido de salida, EasyEffects puede aplicar "
+#~ "efectos a dispositivos de entrada, como micrófonos. Esto es útil, por "
+#~ "ejemplo, en la grabación de audio, pero también funciona correctamente "
+#~ "durante conversaciones de voces."
+
+#~ msgid ""
+#~ "When EasyEffects is launched it will conveniently remember the "
+#~ "configuration used in the last session. It is also possible to save all "
+#~ "the current settings as profiles."
+#~ msgstr ""
+#~ "Cuando EasyEffects esté activo este convenientemente recordará la "
+#~ "configuración usada en la última sesión. También es posible guardar la "
+#~ "configuración actual como un perfil."
+
+#, fuzzy
+#~ msgid "and #1427"
+#~ msgstr "Bandas"
+
+#~ msgid "Average"
+#~ msgstr "Promedio"
+
+#~ msgid "Failed"
+#~ msgstr "Fallido"
+
+#~ msgid "Use Default"
+#~ msgstr "Usar Predeterminado"
+
+#, fuzzy
+#~ msgid "Remove this plugin"
+#~ msgstr "Borrar este perfil"
+
+#~ msgid "Import Presets"
+#~ msgstr "Importar Perfiles"
+
+#~ msgid "Start Service at Login"
+#~ msgstr "Iniciar Servicio al Iniciar Sesión"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Modo Agresivo"
+
+#, fuzzy
+#~ msgid "Add to Blocklist"
+#~ msgstr "Lista Negra"
+
+#~ msgid "Blocklist"
+#~ msgstr "Lista Negra"
+
+#, fuzzy
+#~ msgid "Microphone"
+#~ msgstr "Calibrar Micrófono"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Habilitar"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Habilitar"
+
+#~ msgid "Format"
+#~ msgstr "Formato"
+
+#~ msgid "Latency"
+#~ msgstr "Latencia"
+
+#~ msgid "Faster"
+#~ msgstr "Más Rápido"
+
+#~ msgid "Preserve Formant"
+#~ msgstr "Conservar Formato"
+
+#~ msgid "Cmoy"
+#~ msgstr "Cmoy"
+
+#~ msgid "Jmeier"
+#~ msgstr "Jmeier"
+
+#~ msgid "Show Spectrum"
+#~ msgstr "Mostrar Espectro"
+
+#~ msgid "Use Custom Color"
+#~ msgstr "Usar Color Personalizado"
+
+#~ msgid "Use Gradient"
+#~ msgstr "Usar Degradado"
+
+#~ msgid "Spectrum Color"
+#~ msgstr "Color del Espectro"
+
+#~ msgid "Gradient Color"
+#~ msgstr "Color del Degradado"
+
+#~ msgid "Spectrum Type"
+#~ msgstr "Tipo de Espectro"
+
+#~ msgid "Exponent"
+#~ msgstr "Exponente"
+
+#~ msgid "Sampling"
+#~ msgstr "Muestreo"
+
+#~ msgid "Block Size"
+#~ msgstr "Tamaño de Bloque"
+
+#~ msgid "Pipeline Input"
+#~ msgstr "Caudal de Entrada"
+
+#~ msgid "Buffer"
+#~ msgstr "Buffer"
+
+#~ msgid "Niceness"
+#~ msgstr "Meticulosidad"
+
+#~ msgid "Priority Type"
+#~ msgstr "Tipo de Prioridad"
+
+#~ msgid "About"
+#~ msgstr "Acerca de"
+
+#~ msgid "Priority"
+#~ msgstr "Prioridad"
+
+# Resampler does not have an official translation
+#~ msgid "Resampler"
+#~ msgstr "Remuestreador"
+
+#~ msgid "Protocol"
+#~ msgstr "Protocolo"
+
+#~ msgid "Default Sample Format"
+#~ msgstr "Formato de Muestreo Predeterminado"
+
+#~ msgid "File"
+#~ msgstr "Archivo"
+
+#~ msgid "Configuration"
+#~ msgstr "Configuración"
+
+# Resamplers does not have an official translation
+#~ msgid "Resamplers"
+#~ msgstr "Remuestreadores"
+
+#~ msgid "Detect Silence"
+#~ msgstr "Detectar Silencio"
+
+#~ msgid "-23"
+#~ msgstr "-23"
+
+#~ msgid "Weights"
+#~ msgstr "Fuerza"
+
+#~ msgid "Limit"
+#~ msgstr "Límite"
+
+#~ msgid "ASC"
+#~ msgstr "ASC"
+
+#~ msgid "LR4"
+#~ msgstr "LR4"
+
+#~ msgid "LR8"
+#~ msgstr "LR8"
+
+#~ msgid "Muted"
+#~ msgstr "Silenciado"
+
+#~ msgid "Distant Headphones"
+#~ msgstr "Audífonos a Distancia"
+
+#~ msgid "Reset Equalizer"
+#~ msgstr "Restablecer Ecualizador"
+
+#~ msgid "RLC (BT)"
+#~ msgstr "RLC (BT)"
+
+#~ msgid "RLC (MT)"
+#~ msgstr "RLC (MT)"
+
+#~ msgid "BWC (BT)"
+#~ msgstr "BWC (BT)"
+
+#~ msgid "BWC (MT)"
+#~ msgstr "BWC (MT)"
+
+#~ msgid "LRX (BT)"
+#~ msgstr "LRX (BT)"
+
+#~ msgid "LRX (MT)"
+#~ msgstr "LRX (MT)"
+
+#~ msgid "APO (DR)"
+#~ msgstr "APO (DR)"
+
+#~ msgid "x1"
+#~ msgstr "x1"
+
+#~ msgid "x2"
+#~ msgstr "x2"
+
+#~ msgid "x3"
+#~ msgstr "x3"
+
+#~ msgid "x4"
+#~ msgstr "x4"
+
+#~ msgid "S/C Level"
+#~ msgstr "Nivel S/C"
+
+#~ msgid "Import Impulse Response File"
+#~ msgstr "Importar Archivo de Respuesta Impulse"
+
+#~ msgid "Select the impulse Response File"
+#~ msgstr "Seleccione el Archivo de Respuesta Impulse"
+
+#~ msgid "Loudness Range"
+#~ msgstr "Rango de Sonoridad"
+
+#~ msgid "Before"
+#~ msgstr "Antes"
+
+#~ msgid "After"
+#~ msgstr "Después"
+
+#~ msgid "Webrtc"
+#~ msgstr "Webrtc"
+
+#~ msgid "Extended Filter"
+#~ msgstr "Filtro Extendido"
+
+#~ msgid "Delay Agnostic"
+#~ msgstr "Retraso Agnóstico"
+
+#~ msgid "Low"
+#~ msgstr "Bajo"
+
+#~ msgid "Moderate"
+#~ msgstr "Moderado"
+
+#~ msgid "High"
+#~ msgstr "Alto"
+
+#~ msgid "Very High"
+#~ msgstr "Muy Alto"
+
+#~ msgid "Adaptive Digital"
+#~ msgstr "Adaptado Digital"
+
+#~ msgid "Fixed Digital"
+#~ msgstr "Arreglo Digital"
+
+#~ msgid "Detection Likelihood"
+#~ msgstr "Probabilidad de Detección"
+
+#~ msgid "Very Low"
+#~ msgstr "Muy Bajo"
+
+#~ msgid ""
+#~ "Automatically apply this preset whenever the currently used device is "
+#~ "plugged in the system"
+#~ msgstr ""
+#~ "Automáticamente aplicar este perfil siempre que el dispositivo actual "
+#~ "esté conectado"
+
+#~ msgid "Volume"
+#~ msgstr "Volumen"
+
+#~ msgid "Sine"
+#~ msgstr "Seno"
+
+#~ msgid "Square"
+#~ msgstr "Cuadrado"
+
+#~ msgid "Saw"
+#~ msgstr "Sierra"
+
+#~ msgid "Triangle"
+#~ msgstr "Triángulo"
+
+#~ msgid "Pink Noise"
+#~ msgstr "Ruido Rosa"
+
+#~ msgid "Ticks"
+#~ msgstr "Ticks"
+
+#~ msgid "Gaussian Noise"
+#~ msgstr "Ruido Gaussiano"
+
+#~ msgid "Blue Noise"
+#~ msgstr "Ruido Azul"
+
+#~ msgid "Violet Noise"
+#~ msgstr "Ruido Violeta"
+
+#~ msgid "Measure Noise"
+#~ msgstr "Medir Ruido"
+
+#~ msgid "Subtract Noise"
+#~ msgstr "Reducir Ruido"
+
+#~ msgid "Set the volume and turn on/off effects"
+#~ msgstr "Establecer el volumen y encender/apagar los efectos"
+
+#~ msgid "Includes an equalizer with built-in presets"
+#~ msgstr "Incluye un ecualizador con perfiles incluidos"
+
+#~ msgid "Input Limiter"
+#~ msgstr "Limitador de Entrada"
+
+#~ msgid "Calibration"
+#~ msgstr "Calibración"
+
+#~ msgid "easyeffects"
+#~ msgstr "easyeffects"
+
+#~ msgid "Pulseaudio"
+#~ msgstr "Pulseaudio"
+
+#~ msgid "paused"
+#~ msgstr "pausado"
+
+#~ msgid "playing"
+#~ msgstr "reproduciendo"

@@ -1,0 +1,512 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2022-12-23 05:48+0000\n"
+"Last-Translator: Ivan Pekov <ivan@mrivanplays.com>\n"
+"Language-Team: Bulgarian <https://hosted.weblate.org/projects/easyeffects/"
+"main/bg/>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.15.1-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "Вход"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "Име"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+#, fuzzy
+msgid "Value"
+msgstr "Минимална стойност"
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "_Относно Easy Effects"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "Предварително задаване"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+msgid "Quit"
+msgstr ""
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr ""
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "Профили"
+
+#: src/contents/ui/main.qml:179
+#, fuzzy
+msgid "Preferences"
+msgstr "_Настройки"
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "_Относно Easy Effects"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "Изход"
+
+#: src/contents/ui/PipeWireTab.qml:9
+msgid "PipeWire"
+msgstr ""
+
+#: src/main.cpp:55
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "Звукови ефекти за приложения, използващи PipeWire"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr ""
+
+#: src/main.cpp:60
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+msgid "Width of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+msgid "Height of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+msgid "Last used preset."
+msgstr ""
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+#, fuzzy
+msgid "EasyEffects"
+msgstr "_Относно Easy Effects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "Еквалайзер, Компресор и други звукови ефекти"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Звукови ефекти за приложения, използващи PipeWire"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "ограничител;компресор;ехо;еквалайзер;автосила;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "Активирай/спри тази програма"
+
+#~ msgid "Enable"
+#~ msgstr "Активирай"
+
+#~ msgid "Excluded App List: Add/remove this application"
+#~ msgstr "Лист на програмите изключения: Добави/Премахни тази програма"
+
+#~ msgid "Exclude"
+#~ msgstr "Премахни"
+
+#~ msgid "Mute Application"
+#~ msgstr "Обеззвучи тази програма"
+
+#~ msgid "Change the volume of this application"
+#~ msgstr "Промени силата на звука на тази програма"
+
+#~ msgid "Application Volume"
+#~ msgstr "Сила на звука на програмата"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "_Върни до фабрични настройки"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "_Преки пътища"
+
+#~ msgid "Presets Menu"
+#~ msgstr "Меню с профили"
+
+#, fuzzy
+#~ msgid "Enable/disable the global bypass"
+#~ msgstr "Активирай/спри тази програма"
+
+#~ msgid "Global Bypass"
+#~ msgstr "Глобален Bypass"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Основно Меню"
+
+#~ msgid "Easy Effects Window"
+#~ msgstr "Прозорец на Easy Effects"
+
+#~ msgid "Applications List"
+#~ msgstr "Лист с програми"
+
+#~ msgid "Empty List"
+#~ msgstr "Листа е празен"
+
+#~ msgid "No Audio Application Available"
+#~ msgstr "Аудио приложение не е налично"
+
+#~ msgid "Target"
+#~ msgstr "Цел"
+
+#~ msgid "Silence"
+#~ msgstr "Тишина"
+
+#~ msgid "Reference"
+#~ msgstr "Справка"
+
+#~ msgid "Momentary"
+#~ msgstr "Моментално"
+
+#~ msgid "Short-Term"
+#~ msgstr "Краткосрочен"
+
+#~ msgid "Integrated"
+#~ msgstr "Интегриран"
+
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "Средно аритметично (MSI)"
+
+#~ msgid "Geometric Mean (MS)"
+#~ msgstr "Средно аритметично (MS)"
+
+#~ msgid "Geometric Mean (MI)"
+#~ msgstr "Средно аритметично (MI)"
+
+#~ msgid "Geometric Mean (SI)"
+#~ msgstr "Средно аритметично (SI)"
+
+#~ msgid "Reset"
+#~ msgstr "Нулиране"
+
+#~ msgid "Relative"
+#~ msgstr "Относително"
+
+#~ msgid "Range"
+#~ msgstr "Диапазон"
+
+#~ msgid "Output Gain"
+#~ msgstr "Изходен gain"
+
+#~ msgid "Plugin Input Gain"
+#~ msgstr "Входен gain на добавка"
+
+#~ msgid "Plugin Output Gain"
+#~ msgstr "Изходен gain на добавка"
+
+#~ msgid "Device"
+#~ msgstr "Устройство"
+
+#~ msgid "Profile"
+#~ msgstr "Профил"
+
+#~ msgid "Listen"
+#~ msgstr "Слушам"
+
+#~ msgid "Blend Harmonics"
+#~ msgstr "Смесени хармоники"
+
+#~ msgid "3rd"
+#~ msgstr "3-то"
+
+#~ msgid "2nd"
+#~ msgstr "2-ро"
+
+#~ msgid "Amount"
+#~ msgstr "Количество"
+
+#~ msgid "Harmonics"
+#~ msgstr "Хармоници"
+
+#~ msgid "Scope"
+#~ msgstr "Обхват"
+
+#~ msgid "Floor"
+#~ msgstr "Под"
+
+#~ msgid "Link"
+#~ msgstr "Линк"
+
+#~ msgid "Application Name"
+#~ msgstr "Име на приложението"
+
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "Добави към изключени приложения"
+
+#~ msgid "Excluded Applications List"
+#~ msgstr "Списък на изключени приложения"
+
+#~ msgid "Show Excluded Applications"
+#~ msgstr "Покажи изключените приложения"
+
+#~ msgid "Compressor"
+#~ msgstr "Аудио компресор"
+
+#~ msgid "Mode"
+#~ msgstr "Режим"
+
+#~ msgid "Downward"
+#~ msgstr "Надолу"
+
+#~ msgid "Upward"
+#~ msgstr "Нагоре"
+
+#~ msgid "Boosting"
+#~ msgstr "Подсилване"
+
+#~ msgid "Compression Mode"
+#~ msgstr "Компресионен режим"
+
+#~ msgid "Boost Threshold"
+#~ msgstr "Праг на подсилване"
+
+#~ msgid "Time"
+#~ msgstr "Време"
+
+#~ msgid "Threshold"
+#~ msgstr "Праг"
+
+#~ msgid "Ratio"
+#~ msgstr "Съотношение"
+
+#~ msgid "Dry Level"
+#~ msgstr "Сухо ниво"
+
+#~ msgid "Sidechain"
+#~ msgstr "Странична верига"
+
+#~ msgid "Source"
+#~ msgstr "Източник"
+
+#~ msgid "Middle"
+#~ msgstr "По средата"
+
+#~ msgid "Side"
+#~ msgstr "Странично"
+
+#~ msgid "Left"
+#~ msgstr "Наляво"
+
+#~ msgid "Right"
+#~ msgstr "Надясно"
+
+#, fuzzy
+#~ msgid "Left/Right"
+#~ msgstr "Надясно"
+
+#, fuzzy
+#~ msgid "Right/Left"
+#~ msgstr "Надясно"
+
+#, fuzzy
+#~ msgid "Mid/Side"
+#~ msgstr "Странично"
+
+#, fuzzy
+#~ msgid "Side/Mid"
+#~ msgstr "Странично"
+
+#~ msgid "Peak"
+#~ msgstr "Връх"
+
+#~ msgid "Sidechain Mode"
+#~ msgstr "Режим на странична верига"
+
+#, fuzzy
+#~ msgid "Listen Sidechain"
+#~ msgstr "Странична верига"
+
+#~ msgid "Type"
+#~ msgstr "Тип"
+
+#~ msgid "Feed-back"
+#~ msgstr "Обратна връзка"
+
+#~ msgid "External"
+#~ msgstr "Външно"
+
+#~ msgid "Sidechain Type"
+#~ msgstr "Тип странична връзка"
+
+#~ msgid "Input Device"
+#~ msgstr "Входно устройство"
+
+#~ msgid "Sidechain Filters"
+#~ msgstr "Филтри на странична верига"
+
+#~ msgid "Frequency"
+#~ msgstr "Честота"
+
+#~ msgid "Off"
+#~ msgstr "Изключено"
+
+#~ msgid "36 dB/oct"
+#~ msgstr "36 dB/oct"
+
+#~ msgid "Gain"
+#~ msgstr "Gain"
+
+#~ msgid "Curve"
+#~ msgstr "Крива"
+
+#~ msgid "L"
+#~ msgstr "Л"
+
+#~ msgid "Left Channel"
+#~ msgstr "Ляв канал"
+
+#~ msgid "R"
+#~ msgstr "Д"
+
+#~ msgid "Right Channel"
+#~ msgstr "Десен канал"
+
+#~ msgid "Impulses"
+#~ msgstr "Импулси"
+
+#~ msgid "Combine"
+#~ msgstr "Комбинирай"
+
+#~ msgid "Spectrum"
+#~ msgstr "Спектър"
+
+#, fuzzy
+#~ msgid "Enable/disable input monitoring"
+#~ msgstr "Активирай/спри тази програма"
+
+#, fuzzy
+#~ msgid "Export Preset"
+#~ msgstr "Предварително задаване"
+
+#, fuzzy
+#~ msgid "True Peak"
+#~ msgstr "Връх"
+
+#, fuzzy
+#~ msgid "Tempo Difference"
+#~ msgstr "Справка"
+
+#, fuzzy
+#~ msgid "Rate Difference"
+#~ msgstr "Справка"
+
+#, fuzzy
+#~ msgid "Update Frequency"
+#~ msgstr "Честота"
+
+#, fuzzy
+#~ msgid "Try this community preset"
+#~ msgstr "Предварително задаване"
+
+#, fuzzy
+#~ msgid "Search Local Preset"
+#~ msgstr "Предварително задаване"
+
+#, fuzzy
+#~ msgid "Local Presets List"
+#~ msgstr "Профили"
+
+#, fuzzy
+#~ msgid "Search Community Preset"
+#~ msgstr "Предварително задаване"
+
+#, fuzzy
+#~ msgid "Community Presets List"
+#~ msgstr "Профили"
+
+#, fuzzy
+#~ msgid "Community Preset"
+#~ msgstr "Предварително задаване"
+
+#, fuzzy
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "Списък на изключени приложения"
+
+#, fuzzy
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "Профили"
+
+#, fuzzy
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "Предварително задаване"
+
+#, fuzzy, c++-format
+#~ msgid "Using {}"
+#~ msgstr "Използвайки"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"Профили\""
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Съотношение"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "Праг"
+
+#~ msgid "_Manual"
+#~ msgstr "_Наръчник"
+
+#, fuzzy
+#~ msgid " PreAmplification"
+#~ msgstr "Обеззвучи тази програма"
+
+#, fuzzy
+#~ msgid ""
+#~ "Enable/disable the\n"
+#~ "                                    global bypass"
+#~ msgstr "Активирай/спри глобалния bypass"

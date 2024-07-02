@@ -1,0 +1,3 @@
+cmake --build . --parallel 16 // building with 16 threads
+
+cmake -G Ninja .. // configuring the build directory to use ninja

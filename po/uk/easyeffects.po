@@ -1,0 +1,695 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2024-03-29 03:02+0000\n"
+"Last-Translator: sensei1304fcc0f2a8360f4ddc <sensei1304@gmail.com>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
+"main/uk/>\n"
+"Language: uk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.5-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "Вхід"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "Назва"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+#, fuzzy
+msgid "Value"
+msgstr "Порогове значення"
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "_Про Easy Effects"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "Пресет"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+#, fuzzy
+msgid "Quit"
+msgstr "_Вихід"
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr ""
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "Профілі"
+
+#: src/contents/ui/main.qml:179
+#, fuzzy
+msgid "Preferences"
+msgstr "_Налаштування"
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "_Про Easy Effects"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "Вихід"
+
+#: src/contents/ui/PipeWireTab.qml:9
+msgid "PipeWire"
+msgstr ""
+
+#: src/main.cpp:55
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "Аудіоефекти для додатків PipeWire"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr ""
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Конверт"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+msgid "Width of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+msgid "Height of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+msgid "Last used preset."
+msgstr ""
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+#, fuzzy
+msgid "EasyEffects"
+msgstr "_Про Easy Effects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "Еквалайзер, компресор та інші звукові ефекти"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Аудіоефекти для додатків PipeWire"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr ""
+#~ "limiter;compressor;reverberation;equalizer;autovolume;обмежувач;компресор;"
+#~ "реверберація;еквалайзер;автогучність;ефекти;звук;пайп;запис;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "Увімкнути / вимкнути цей додаток"
+
+#~ msgid "Enable"
+#~ msgstr "Увімкнути"
+
+#~ msgid "Excluded App List: Add/remove this application"
+#~ msgstr "Список виключених додатків: додати / видалити цей додаток"
+
+#~ msgid "Exclude"
+#~ msgstr "Виключити"
+
+#~ msgid "Mute Application"
+#~ msgstr "Вимкнути звук додатку"
+
+#~ msgid "Change the volume of this application"
+#~ msgstr "Змініть гучність цього додатку"
+
+#~ msgid "Application Volume"
+#~ msgstr "Гучність додатку"
+
+#~ msgid "_Help"
+#~ msgstr "_Допомога"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "_Скинути налаштування"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "_Клавіатурні скорочення"
+
+#~ msgid "Presets Menu"
+#~ msgstr "Меню профілів"
+
+#, fuzzy
+#~ msgid "Enable/disable the global bypass"
+#~ msgstr "Увімкнути/вимкнути глобальний обхід"
+
+#, fuzzy
+#~ msgid "Global Bypass"
+#~ msgstr "Глобальний обхід"
+
+#, fuzzy
+#~ msgid "Primary Menu"
+#~ msgstr "Основне меню"
+
+#~ msgid "Easy Effects Window"
+#~ msgstr "Вікно Eassy Effects"
+
+#~ msgid "Applications List"
+#~ msgstr "Список додатків"
+
+#~ msgid "Empty List"
+#~ msgstr "Порожній список"
+
+#, fuzzy
+#~ msgid "No Audio Application Available"
+#~ msgstr "Немає доступного додатку з аудіо"
+
+#~ msgid "Controls"
+#~ msgstr "Керування"
+
+#~ msgid "Target"
+#~ msgstr "Ціль"
+
+#~ msgid "Silence"
+#~ msgstr "Тиша"
+
+#~ msgid "Maximum History"
+#~ msgstr "Максимальний розмір історії"
+
+#, fuzzy
+#~ msgid "Reference"
+#~ msgstr "Довідка"
+
+#, fuzzy
+#~ msgid "Momentary"
+#~ msgstr "Миттєве"
+
+#, fuzzy
+#~ msgid "Short-Term"
+#~ msgstr "Короткострокові"
+
+#, fuzzy
+#~ msgid "Integrated"
+#~ msgstr "Інтегроване"
+
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "Середнє геометричне (MSI)"
+
+#, fuzzy
+#~ msgid "Geometric Mean (MS)"
+#~ msgstr "Середнє геометричне (MS)"
+
+#, fuzzy
+#~ msgid "Geometric Mean (MI)"
+#~ msgstr "Середнє геометричне (MI)"
+
+#, fuzzy
+#~ msgid "Geometric Mean (SI)"
+#~ msgstr "Середнє геометричне (SІ)"
+
+#~ msgid "History"
+#~ msgstr "Історія"
+
+#~ msgid "Reset"
+#~ msgstr "Скинути"
+
+#~ msgid "Loudness"
+#~ msgstr "Гучність"
+
+#~ msgid "Relative"
+#~ msgstr "Відносне"
+
+#~ msgid "Range"
+#~ msgstr "Діапазон"
+
+#~ msgid "Output Gain"
+#~ msgstr "Вихідний коефіцієнт підсилення"
+
+#~ msgid "Plugin Input Gain"
+#~ msgstr "Підсилення входу з плагіну"
+
+#~ msgid "Plugin Output Gain"
+#~ msgstr "Підсилення виходу з плагіну"
+
+#~ msgid "Device"
+#~ msgstr "Пристрій"
+
+#~ msgid "Profile"
+#~ msgstr "Профіль"
+
+#~ msgid "Remove this autoload preset"
+#~ msgstr "Видаліти цей пресет з автозавантаження"
+
+#~ msgid "Listen"
+#~ msgstr "Прослухати"
+
+#~ msgid "Blend Harmonics"
+#~ msgstr "Змішані гармоніки"
+
+#~ msgid "3rd"
+#~ msgstr "3-й"
+
+#~ msgid "2nd"
+#~ msgstr "2-й"
+
+#~ msgid "Amount"
+#~ msgstr "Кількість"
+
+#~ msgid "Harmonics"
+#~ msgstr "Гармоніки"
+
+#~ msgid "Scope"
+#~ msgstr "Межа застосування"
+
+#~ msgid "Floor"
+#~ msgstr "Поріг"
+
+#~ msgid "Link"
+#~ msgstr "Посилання"
+
+#~ msgid "Application Name"
+#~ msgstr "Назва програми"
+
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "Додати до виключених програм"
+
+#~ msgid "Excluded Applications List"
+#~ msgstr "Список виключених програм"
+
+#~ msgid "Show Excluded Applications"
+#~ msgstr "Показати виключені програми"
+
+#~ msgid "Show Native Window"
+#~ msgstr "Показати нативне вікно"
+
+#~ msgid "Compressor"
+#~ msgstr "Компресор"
+
+#~ msgid "Mode"
+#~ msgstr "Режим"
+
+#~ msgid "Downward"
+#~ msgstr "Вниз"
+
+#~ msgid "Upward"
+#~ msgstr "Вгору"
+
+#~ msgid "Boosting"
+#~ msgstr "Підсилення"
+
+#~ msgid "Compression Mode"
+#~ msgstr "Режим стиснення"
+
+#~ msgid "Boost Threshold"
+#~ msgstr "Поріг підвищення"
+
+#~ msgid "Boost Amount"
+#~ msgstr "Інтенсивність підвищення"
+
+#~ msgid "Attack"
+#~ msgstr "Атака"
+
+#~ msgid "Time"
+#~ msgstr "Час"
+
+#~ msgid "Threshold"
+#~ msgstr "Поріг"
+
+#~ msgid "Attack Time"
+#~ msgstr "Час атаки"
+
+#~ msgid "Attack Threshold"
+#~ msgstr "Поріг атаки"
+
+#~ msgid "Release"
+#~ msgstr "Випуск"
+
+#~ msgid "Release Time"
+#~ msgstr "Час випуску"
+
+#~ msgid "Release Threshold"
+#~ msgstr "Поріг випуску"
+
+#~ msgid "Ratio"
+#~ msgstr "Співвідношення"
+
+#~ msgid "Knee"
+#~ msgstr "Коліно"
+
+#, fuzzy
+#~ msgid "Makeup"
+#~ msgstr "Макіяж"
+
+#~ msgid "Dry Level"
+#~ msgstr "Рівень сухості"
+
+#~ msgid "Wet Level"
+#~ msgstr "Рівень вологості"
+
+#, fuzzy
+#~ msgid "Sidechain"
+#~ msgstr "Побічний ланцюг"
+
+#~ msgid "Stereo Split Mode"
+#~ msgstr "Режим Розділення Стерео"
+
+#~ msgid "Source"
+#~ msgstr "Джерело"
+
+#~ msgid "Middle"
+#~ msgstr "Середина"
+
+#~ msgid "Side"
+#~ msgstr "Сторона"
+
+#, fuzzy
+#~ msgid "Left"
+#~ msgstr "Ліво"
+
+#, fuzzy
+#~ msgid "Right"
+#~ msgstr "Право"
+
+#~ msgid "Min"
+#~ msgstr "Мін"
+
+#~ msgid "Max"
+#~ msgstr "Макс"
+
+#, fuzzy
+#~ msgid "Sidechain Source"
+#~ msgstr "Джерело побічного ланцюгу"
+
+#~ msgid "Left/Right"
+#~ msgstr "Ліво/право"
+
+#~ msgid "Right/Left"
+#~ msgstr "Право/ліво"
+
+#~ msgid "Mid/Side"
+#~ msgstr "Середина/Сторона"
+
+#~ msgid "Side/Mid"
+#~ msgstr "Сторона/Середина"
+
+#~ msgid "Stereo Split Source"
+#~ msgstr "Режим Розділення Стерео"
+
+#~ msgid "Peak"
+#~ msgstr "Пік"
+
+#~ msgid "RMS"
+#~ msgstr "RMS"
+
+#~ msgid "Low-Pass Filter"
+#~ msgstr "Фільтр низьких частот"
+
+#, fuzzy
+#~ msgid "Simple Moving Average"
+#~ msgstr "Просте рухоме середнє"
+
+#, fuzzy
+#~ msgid "Sidechain Mode"
+#~ msgstr "Режим побічного ланцюга"
+
+#, fuzzy
+#~ msgid "Listen Sidechain"
+#~ msgstr "Слухати побічний ланцюг"
+
+#~ msgid "Type"
+#~ msgstr "Тип"
+
+#, fuzzy
+#~ msgid "Feed-forward"
+#~ msgstr "Подача вперед"
+
+#, fuzzy
+#~ msgid "Feed-back"
+#~ msgstr "Подача назад"
+
+#~ msgid "External"
+#~ msgstr "Зовнішній"
+
+#, fuzzy
+#~ msgid "Sidechain Type"
+#~ msgstr "Тип побічного ланцюга"
+
+#~ msgid "Input Device"
+#~ msgstr "Пристрій вводу"
+
+#~ msgid "PreAmplification"
+#~ msgstr "Передпосилення"
+
+#~ msgid "Reactivity"
+#~ msgstr "Реактивність"
+
+#, fuzzy
+#~ msgid "Lookahead"
+#~ msgstr "Дивитися вперед"
+
+#, fuzzy
+#~ msgid "Sidechain Filters"
+#~ msgstr "Фільтри побічного ланцюга"
+
+#, fuzzy
+#~ msgid "High-Pass"
+#~ msgstr "Високі частоти"
+
+#~ msgid "Frequency"
+#~ msgstr "Частота"
+
+#~ msgid "Off"
+#~ msgstr "Вимкнено"
+
+#~ msgid "12 dB/oct"
+#~ msgstr "12 dB/окт"
+
+#~ msgid "24 dB/oct"
+#~ msgstr "23 dB/окт"
+
+#~ msgid "36 dB/oct"
+#~ msgstr "36 dB/окт"
+
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "Режим фільтру високих частот"
+
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "Частота фільтру високих частот"
+
+#, fuzzy
+#~ msgid "Low-Pass"
+#~ msgstr "Низькі частоти"
+
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "Режим фільтру низьких частот"
+
+#~ msgid "Gain"
+#~ msgstr "Посилення"
+
+#~ msgid "Curve"
+#~ msgstr "Крива"
+
+#~ msgid "L"
+#~ msgstr "L"
+
+#~ msgid "Left Channel"
+#~ msgstr "Лівий канал"
+
+#~ msgid "R"
+#~ msgstr "R"
+
+#~ msgid "Right Channel"
+#~ msgstr "Правий канал"
+
+#~ msgid "Impulses"
+#~ msgstr "Імпульси"
+
+#, fuzzy
+#~ msgid "Combine"
+#~ msgstr "Об'єднати"
+
+#~ msgid "Stereo Width"
+#~ msgstr "Ширина стерео"
+
+#~ msgid "Spectrum"
+#~ msgstr "Спектр"
+
+#~ msgid "Log Scale"
+#~ msgstr "Масштабування журналу"
+
+#~ msgid "Autogain"
+#~ msgstr "Автопідсилення"
+
+#~ msgid "Rate"
+#~ msgstr "Оцінка"
+
+#~ msgid "Samples"
+#~ msgstr "Зразки"
+
+#~ msgid "Duration"
+#~ msgstr "Тривалість"
+
+#, fuzzy
+#~ msgid "Combine Impulse Responses"
+#~ msgstr "Комбінувати відповіді імпульсів"
+
+#~ msgid "First Kernel"
+#~ msgstr "Перше ядро"
+
+#~ msgid "Second Kernel"
+#~ msgstr "Друге ядро"
+
+#~ msgid "Output File Name"
+#~ msgstr "Ім'я вихідного файлу"
+
+#~ msgid "Combined Kernel Name"
+#~ msgstr "Ім'я комбінованого ядра"
+
+#~ msgid "Import Impulse"
+#~ msgstr "Імпортувати імпульс"
+
+#~ msgid "Search"
+#~ msgstr "Пошук"
+
+#, fuzzy
+#~ msgid "Search Impulse File"
+#~ msgstr "Шукати файл імпульсів"
+
+#, fuzzy
+#~ msgid "Impulse Files List"
+#~ msgstr "Перелік файлів імпульсів"
+
+#~ msgid "Default"
+#~ msgstr "За замовченням"
+
+#~ msgid "Cutoff"
+#~ msgstr "Відсікання"
+
+#, fuzzy
+#~ msgid "Feed"
+#~ msgstr "Фід"
+
+#, fuzzy
+#~ msgid "Enable/disable input monitoring"
+#~ msgstr "Увімкнути / вимкнути цей додаток"
+
+#, fuzzy
+#~ msgid "Export Preset"
+#~ msgstr "Пресет"
+
+#, fuzzy
+#~ msgid "Reset History"
+#~ msgstr "Очистити історію"
+
+#, fuzzy
+#~ msgid "Update Frequency"
+#~ msgstr "Частота"
+
+#, fuzzy
+#~ msgid "Try this community preset"
+#~ msgstr "Пресет"
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Імпортувати імпульс"
+
+#, fuzzy
+#~ msgid "Search Local Preset"
+#~ msgstr "Пресет"
+
+#, fuzzy
+#~ msgid "Local Presets List"
+#~ msgstr "Пресети"
+
+#, fuzzy
+#~ msgid "Search Community Preset"
+#~ msgstr "Пресет"
+
+#, fuzzy
+#~ msgid "Community Presets List"
+#~ msgstr "Пресети"
+
+#, fuzzy
+#~ msgid "Community Preset"
+#~ msgstr "Пресет"
+
+#, fuzzy
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "Список виключених програм"
+
+#, fuzzy
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "Пресети"
+
+#, fuzzy
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "Пресет"
+
+#, fuzzy, c++-format
+#~ msgid "Using {}"
+#~ msgstr "Використання"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"Профілі\""
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Співвідношення"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "Поріг"
+
+#, fuzzy
+#~ msgid "Loudness List"
+#~ msgstr "Гучність"
+
+#, fuzzy
+#~ msgid "_Manual"
+#~ msgstr "_Посібник"

@@ -1,0 +1,453 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2024-06-26 21:09+0000\n"
+"Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
+"ar/>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 5.6-rc\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "الدخل"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "الاسم"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+msgid "Value"
+msgstr ""
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "حول Easy Effects"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "إعداد مسبق"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+#, fuzzy
+msgid "Quit"
+msgstr "أخرج"
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr ""
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "الإعدادات المسبقة"
+
+#: src/contents/ui/main.qml:179
+#, fuzzy
+msgid "Preferences"
+msgstr "التفضيلات"
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "حول Easy Effects"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "الخرج"
+
+#: src/contents/ui/PipeWireTab.qml:9
+msgid "PipeWire"
+msgstr ""
+
+#: src/main.cpp:55
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "تأثيرات صوتية لتطبيقات PipeWire"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr ""
+
+#: src/main.cpp:60
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+msgid "Width of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+msgid "Height of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+#, fuzzy
+msgid "Last used preset."
+msgstr "أنشئ إعدادًا مسبقًا جديدًا"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+#, fuzzy
+msgid "EasyEffects"
+msgstr "حول Easy Effects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "موازن وضاغط و ومؤثرات أخرى للصوت"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "تأثيرات صوتية لتطبيقات PipeWire"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "محدد;ضاغط;صدى;معادل;ضبط تلقائي لمستوى الصوت;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "مكن/عطل هذا التطبيق"
+
+#~ msgid "Enable"
+#~ msgstr "مكن"
+
+#~ msgid "Excluded App List: Add/remove this application"
+#~ msgstr "قائمة التطبيقات المستثناة: أضف/أزل هذا التطبيق"
+
+#~ msgid "Exclude"
+#~ msgstr "استثني"
+
+#~ msgid "Mute Application"
+#~ msgstr "اكتم صوت التطبيق"
+
+#~ msgid "Change the volume of this application"
+#~ msgstr "غير مستوى صوت هذا التطبيق"
+
+#~ msgid "Application Volume"
+#~ msgstr "مستوى صوت التطبيق"
+
+#~ msgid "_Help"
+#~ msgstr "مساعدة"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "أعد ضبط الإعدادات"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "الاختصارات"
+
+#~ msgid "Presets Menu"
+#~ msgstr "قائمة الإعدادات المسبقة"
+
+#~ msgid "Enable/disable the global bypass"
+#~ msgstr "فعل/عطل تجاهل المؤثرات عمومًا"
+
+#~ msgid "Global Bypass"
+#~ msgstr "تجاهل المؤثرات العامة"
+
+#~ msgid "Primary Menu"
+#~ msgstr "القائمة الأساسية"
+
+#~ msgid "Easy Effects Window"
+#~ msgstr "نافذة Easy Effects"
+
+#~ msgid "Applications List"
+#~ msgstr "قائمة التطبيقات"
+
+#~ msgid "Empty List"
+#~ msgstr "القائمة فارغة"
+
+#~ msgid "No Audio Application Available"
+#~ msgstr "لم يعثر على تطبيق صوتي متاح"
+
+#~ msgid "Controls"
+#~ msgstr "ضوابط"
+
+#~ msgid "Target"
+#~ msgstr "الهدف"
+
+#~ msgid "Silence"
+#~ msgstr "الصمت"
+
+#~ msgid "Maximum History"
+#~ msgstr "أقصى زمن"
+
+#~ msgid "Reference"
+#~ msgstr "المرجع"
+
+#~ msgid "Momentary"
+#~ msgstr "لحظي"
+
+#~ msgid "Short-Term"
+#~ msgstr "قصير المدى"
+
+#~ msgid "Integrated"
+#~ msgstr "متكامل"
+
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "المتوسط الهندسي (MSI)"
+
+#~ msgid "Geometric Mean (MS)"
+#~ msgstr "المتوسط الهندسي (MS)"
+
+#~ msgid "Geometric Mean (MI)"
+#~ msgstr "المتوسط الهندسي (MI)"
+
+#~ msgid "Geometric Mean (SI)"
+#~ msgstr "المتوسط الهندسي (SI)"
+
+#~ msgid "History"
+#~ msgstr "السجل"
+
+#~ msgid "Reset"
+#~ msgstr "إعادة تعيين"
+
+#~ msgid "Loudness"
+#~ msgstr "الجهارة"
+
+#~ msgid "Relative"
+#~ msgstr "نسبي"
+
+#~ msgid "Range"
+#~ msgstr "النطاق"
+
+#~ msgid "Output Gain"
+#~ msgstr "خرج التضخيم"
+
+#~ msgid "Plugin Input Gain"
+#~ msgstr "إضافة دخل التضخيم"
+
+#~ msgid "Plugin Output Gain"
+#~ msgstr "إضافة خرج التضخيم"
+
+#~ msgid "Device"
+#~ msgstr "جهاز"
+
+#~ msgid "Remove this autoload preset"
+#~ msgstr "حذف التحميل التلقائي لهذا الإعداد المسبق"
+
+#~ msgid "Application Name"
+#~ msgstr "اسم التطبيق"
+
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "أضف إلى التطبيقات المستثناة"
+
+#~ msgid "Excluded Applications List"
+#~ msgstr "قائمة التطبيقات المستثناة"
+
+#~ msgid "Show Excluded Applications"
+#~ msgstr "أظهر التطبيقات المستثناة"
+
+#~ msgid "Compressor"
+#~ msgstr "الضاغط الصوتي"
+
+#~ msgid "Input Device"
+#~ msgstr "جهاز الدخل"
+
+#~ msgid "Gain"
+#~ msgstr "التضخيم"
+
+#~ msgid "Left Channel"
+#~ msgstr "القناة اليسرى"
+
+#~ msgid "Right Channel"
+#~ msgstr "القناة اليمنى"
+
+#~ msgid "Autogain"
+#~ msgstr "التضخيم التلقائي"
+
+#~ msgid "Output File Name"
+#~ msgstr "اسم مِلف الخرج"
+
+#~ msgid "Search"
+#~ msgstr "بحث"
+
+#~ msgid "Default"
+#~ msgstr "الافتراضي"
+
+#~ msgid "Excluded Apps"
+#~ msgstr "التطبيقات المستثناة"
+
+#~ msgid "Enable/disable input monitoring"
+#~ msgstr "مكن/عطل مراقب الدخل"
+
+#~ msgid "Import Preset"
+#~ msgstr "استورد إعدادًا مسبقًا"
+
+#~ msgid "Export Preset"
+#~ msgstr "صدر إعدادًا مسبقًا"
+
+#~ msgid "Gain Left"
+#~ msgstr "التضخيم الأيسر"
+
+#~ msgid "Gain Right"
+#~ msgstr "التضخيم الأيمن"
+
+#~ msgid "Output Volume"
+#~ msgstr "مستوى صوت الخرج"
+
+#~ msgid "Device Management"
+#~ msgstr "إدارة الأجهزة"
+
+#~ msgid "Use Default Input"
+#~ msgstr "استخدم الدخل الافتراضي"
+
+#~ msgid "Custom Input Device"
+#~ msgstr "جهاز دخل مخصص"
+
+#~ msgid "Use Default Output"
+#~ msgstr "استخدم الخرج الافتراضي"
+
+#~ msgid "Custom Output Device"
+#~ msgstr "جهاز خرج افتراضي"
+
+#~ msgid "Server Information"
+#~ msgstr "معلومات الخادم"
+
+#~ msgid "Library Version"
+#~ msgstr "إصدار المكتبة"
+
+#~ msgid "Presets Autoloading"
+#~ msgstr "التحميلات التلقائية للإعدادات المسبقة"
+
+#~ msgid "Output Devices"
+#~ msgstr "أجهزة الخرج"
+
+#~ msgid "Output Presets"
+#~ msgstr "إعدادات الخرج المسبقة"
+
+#~ msgid "Add Autoloading Output Preset"
+#~ msgstr "أضف تحميلًا تلقائيًا لإعدادات الخرج المسبقة"
+
+#~ msgid "Output Autoloading Presets List"
+#~ msgstr "قائمة التحميلات التلقائية لإعدادات الخرج المسبقة"
+
+#~ msgid "Input Devices"
+#~ msgstr "أجهزة الدخل"
+
+#~ msgid "Input Presets"
+#~ msgstr "الإعدادات المسبقة للدخل"
+
+#~ msgid "Add Autoloading Input Preset"
+#~ msgstr "أضف تحميلًا تلقائيًا لإعداد الدخل المسبق"
+
+#~ msgid "Input Autoloading Presets List"
+#~ msgstr "قائمة التحميل التلقائي لإعدادات الدخل المسبقة"
+
+#~ msgid "Enabled"
+#~ msgstr "ممكن"
+
+#~ msgid "Channels"
+#~ msgstr "قنوات"
+
+#~ msgid "Add Effect"
+#~ msgstr "أضف مؤثر"
+
+#~ msgid "Go to the previous effect"
+#~ msgstr "انتقل للمؤثر السابق"
+
+#~ msgid "Go to the next effect"
+#~ msgstr "انتقل للمؤثر التالي"
+
+#~ msgid "No Effects"
+#~ msgstr "بدون مؤثرات"
+
+#~ msgid "Use Dark Theme"
+#~ msgstr "استخدم السمة المظلمة"
+
+#~ msgid "Save current settings to this preset file"
+#~ msgstr "احفظ الإعدادات الحالية في مِلَفّ الإعداد المسبق هذا"
+
+#~ msgid "Remove this preset file"
+#~ msgstr "احذف مِلَفّ الإعداد المسبق هذا"
+
+#~ msgid "New Preset Name"
+#~ msgstr "اسم الإعداد المسبق الجديد"
+
+#~ msgid "Import a preset from the local storage"
+#~ msgstr "استورد إعدادًا مسبقًا من جهاز التخزين المحلي"
+
+#~ msgid "Search Local Preset"
+#~ msgstr "ابحث محليًا عن إعداد مسبق"
+
+#~ msgid "Local Presets List"
+#~ msgstr "قائمة الإعدادات المسبقة المحلية"
+
+#~ msgid "Search Community Preset"
+#~ msgstr "ابحث في المجتمع عن إعداد مسبق"
+
+#~ msgid "Community Presets List"
+#~ msgstr "قائمة الإعدادات المسبقة المجتمعية"
+
+#~ msgid "No Community Presets Installed"
+#~ msgstr "لا يوجد إعدادات مسبقة مجتمعية محملة"
+
+#~ msgid "Automatic Gain Control"
+#~ msgstr "متحكم التضخيم التلقائي"
+
+#~ msgid "Remove Autoloading Preset"
+#~ msgstr "احذف الإعداد المسبق المحمل تلقائيًا"
+
+#~ msgid "Community Preset"
+#~ msgstr "إعدادات المجتمع المسبقة"
+
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "صيغة خاطئة في قائمة التطبيقات المستثناة"
+
+#~ msgid "Generic Error While Loading Excluded Apps List"
+#~ msgstr "خطأ عام عند تحميل قائمة التطبيقات المستثناة"
+
+#~ msgid "No Preset Loaded"
+#~ msgstr "لا يوجد إعداد مسبق محمل"
+
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "قائمة الإعداد المسبق المحمل محليًا"
+
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "قائمة الإعداد المسبق المجتمعية المحملة"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"الإعدادات المسبقة\""

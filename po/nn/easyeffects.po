@@ -1,0 +1,1004 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2023-06-03 20:51+0000\n"
+"Last-Translator: Daniel Svindseth <daniel@svindseth.net>\n"
+"Language-Team: Norwegian Nynorsk <https://hosted.weblate.org/projects/"
+"easyeffects/main/nn/>\n"
+"Language: nn\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.18-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "Inngang"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "Namn"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+#, fuzzy
+msgid "Value"
+msgstr "Takverdi"
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "_Om Easy Effects"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "Førehandsinnstilling"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+msgid "Quit"
+msgstr ""
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr ""
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "Førehandsinnstillingar"
+
+#: src/contents/ui/main.qml:179
+#, fuzzy
+msgid "Preferences"
+msgstr "_Innstillingar"
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "_Om Easy Effects"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "Utgang"
+
+#: src/contents/ui/PipeWireTab.qml:9
+msgid "PipeWire"
+msgstr ""
+
+#: src/main.cpp:55
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "Lydeffektar for PipeWire-applikasjonar"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr ""
+
+#: src/main.cpp:60
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+msgid "Width of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+msgid "Height of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+msgid "Last used preset."
+msgstr ""
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+#, fuzzy
+msgid "EasyEffects"
+msgstr "_Om Easy Effects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "Equalizer, kompressor og andre lydeffektar"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Lydeffektar for PipeWire-applikasjonar"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "limiter;compressor;reverbation;equalizer;autovolume;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "Slå på/av denne applikasjonen"
+
+#~ msgid "Enable"
+#~ msgstr "Slå på"
+
+#~ msgid "Excluded App List: Add/remove this application"
+#~ msgstr "Liste over uteletne appar: Legg til/fjern denne applikasjonen"
+
+#~ msgid "Exclude"
+#~ msgstr "Ekskluder"
+
+#~ msgid "Mute Application"
+#~ msgstr "Demp applikasjonen"
+
+#~ msgid "Change the volume of this application"
+#~ msgstr "Endre volumet for denne applikasjonen"
+
+#~ msgid "Application Volume"
+#~ msgstr "Applikasjons-volum"
+
+#~ msgid "_Help"
+#~ msgstr "_Hjelp"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "_Resett innstillingar"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "_Snarvegar"
+
+#~ msgid "Presets Menu"
+#~ msgstr "Førehandsinnstilling-meny"
+
+#~ msgid "Enable/disable the global bypass"
+#~ msgstr "Slå på/av global omveg"
+
+#~ msgid "Global Bypass"
+#~ msgstr "Global forbipassering"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Hovudmeny"
+
+#~ msgid "Easy Effects Window"
+#~ msgstr "Easy Effects-vindauge"
+
+#~ msgid "Applications List"
+#~ msgstr "Applikasjonsliste"
+
+#~ msgid "Empty List"
+#~ msgstr "Tom liste"
+
+#~ msgid "No Audio Application Available"
+#~ msgstr "Ingen lyd-applikasjonar funne"
+
+#~ msgid "Target"
+#~ msgstr "Mål"
+
+#~ msgid "Silence"
+#~ msgstr "Tystnad"
+
+#~ msgid "Maximum History"
+#~ msgstr "Maksimal historie"
+
+#~ msgid "Reference"
+#~ msgstr "Referanse"
+
+#~ msgid "Momentary"
+#~ msgstr "Mellombels"
+
+#~ msgid "Short-Term"
+#~ msgstr "Kortvarig"
+
+#~ msgid "Integrated"
+#~ msgstr "Integrert"
+
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "Geometrisk median (MSI)"
+
+#~ msgid "Geometric Mean (MS)"
+#~ msgstr "Geometrisk median (MS)"
+
+#~ msgid "Geometric Mean (MI)"
+#~ msgstr "Geometrisk median (MI)"
+
+#~ msgid "Geometric Mean (SI)"
+#~ msgstr "Geometrisk median (SI)"
+
+#, fuzzy
+#~ msgid "History"
+#~ msgstr "Resett historikk"
+
+#~ msgid "Reset"
+#~ msgstr "Resett"
+
+#~ msgid "Loudness"
+#~ msgstr "Ljodstyrke"
+
+#~ msgid "Relative"
+#~ msgstr "Relativ"
+
+#~ msgid "Range"
+#~ msgstr "Omfang"
+
+#~ msgid "Output Gain"
+#~ msgstr "Utgangsstyrke"
+
+#~ msgid "Plugin Input Gain"
+#~ msgstr "Plugin-inngangsstyrke"
+
+#~ msgid "Plugin Output Gain"
+#~ msgstr "Plugin-utgangsstyrke"
+
+#~ msgid "Device"
+#~ msgstr "Eining"
+
+#~ msgid "Profile"
+#~ msgstr "Profil"
+
+#~ msgid "Remove this autoload preset"
+#~ msgstr "Fjern denne auto-lasta førehandsinnstillinga"
+
+#~ msgid "Listen"
+#~ msgstr "Lytt"
+
+#~ msgid "Blend Harmonics"
+#~ msgstr "Bland harmonikkar"
+
+#~ msgid "3rd"
+#~ msgstr "3."
+
+#~ msgid "2nd"
+#~ msgstr "2."
+
+#~ msgid "Amount"
+#~ msgstr "Mengd"
+
+#~ msgid "Harmonics"
+#~ msgstr "Overtonar"
+
+#~ msgid "Scope"
+#~ msgstr "Omfang"
+
+#~ msgid "Floor"
+#~ msgstr "Golv"
+
+#~ msgid "Floor Value"
+#~ msgstr "Golvverdi"
+
+#~ msgid "Link"
+#~ msgstr "Lenkje"
+
+#~ msgid "Application Name"
+#~ msgstr "Appliasjonsnamn"
+
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "Legg til i utelatne applikasjonar"
+
+#~ msgid "Excluded Applications List"
+#~ msgstr "Utelatne applikasjonar"
+
+#~ msgid "Show Excluded Applications"
+#~ msgstr "Vis utelatne applikasjonar"
+
+#~ msgid "Compressor"
+#~ msgstr "Kompressor"
+
+#~ msgid "Mode"
+#~ msgstr "Modus"
+
+#~ msgid "Downward"
+#~ msgstr "Nedover"
+
+#~ msgid "Upward"
+#~ msgstr "Oppover"
+
+#~ msgid "Boosting"
+#~ msgstr "Auking"
+
+#~ msgid "Compression Mode"
+#~ msgstr "Kompresjonsmodus"
+
+#~ msgid "Boost Threshold"
+#~ msgstr "Grense for auking"
+
+#~ msgid "Boost Amount"
+#~ msgstr "Aukemengd"
+
+#~ msgid "Attack"
+#~ msgstr "Åtak"
+
+#~ msgid "Time"
+#~ msgstr "Tid"
+
+#~ msgid "Threshold"
+#~ msgstr "Terskel"
+
+#~ msgid "Attack Time"
+#~ msgstr "Åtakstid"
+
+#~ msgid "Attack Threshold"
+#~ msgstr "Åtaksgrense"
+
+#~ msgid "Release"
+#~ msgstr "Frågang"
+
+#~ msgid "Release Time"
+#~ msgstr "Frågangstid"
+
+#~ msgid "Release Threshold"
+#~ msgstr "Frågangsgrense"
+
+#~ msgid "Ratio"
+#~ msgstr "Forhold"
+
+#~ msgid "Knee"
+#~ msgstr "Kne"
+
+#~ msgid "Dry Level"
+#~ msgstr "Tørrnivå"
+
+#~ msgid "Wet Level"
+#~ msgstr "Våtnivå"
+
+#~ msgid "Sidechain"
+#~ msgstr "Sidekjede"
+
+#, fuzzy
+#~ msgid "Stereo Split Mode"
+#~ msgstr "Stereovidde"
+
+#~ msgid "Source"
+#~ msgstr "Kjelde"
+
+#~ msgid "Middle"
+#~ msgstr "Mellom"
+
+#~ msgid "Side"
+#~ msgstr "Side"
+
+#~ msgid "Left"
+#~ msgstr "Venstre"
+
+#~ msgid "Right"
+#~ msgstr "Høgre"
+
+#~ msgid "Min"
+#~ msgstr "Min."
+
+#~ msgid "Max"
+#~ msgstr "Max."
+
+#~ msgid "Sidechain Source"
+#~ msgstr "Sidekjede-kjelde"
+
+#, fuzzy
+#~ msgid "Left/Right"
+#~ msgstr "Høgre"
+
+#, fuzzy
+#~ msgid "Right/Left"
+#~ msgstr "Høgre"
+
+#, fuzzy
+#~ msgid "Mid/Side"
+#~ msgstr "Side"
+
+#, fuzzy
+#~ msgid "Side/Mid"
+#~ msgstr "Side"
+
+#~ msgid "Peak"
+#~ msgstr "Topp"
+
+#~ msgid "RMS"
+#~ msgstr "RMS"
+
+#~ msgid "Low-Pass Filter"
+#~ msgstr "Lågpassfilter"
+
+#~ msgid "Sidechain Mode"
+#~ msgstr "Sidekjede-modus"
+
+#, fuzzy
+#~ msgid "Listen Sidechain"
+#~ msgstr "Ekstern sidekjede"
+
+#~ msgid "Type"
+#~ msgstr "Type"
+
+#~ msgid "Feed-back"
+#~ msgstr "Respons"
+
+#~ msgid "External"
+#~ msgstr "Ekstern"
+
+#~ msgid "Sidechain Type"
+#~ msgstr "Sidekjede-type"
+
+#~ msgid "Input Device"
+#~ msgstr "Inndataeining"
+
+#~ msgid "PreAmplification"
+#~ msgstr "Førforsterking"
+
+#~ msgid "Reactivity"
+#~ msgstr "Reaktivitet"
+
+#~ msgid "Lookahead"
+#~ msgstr "Framomsjåing"
+
+#~ msgid "Sidechain Filters"
+#~ msgstr "Sidekjede-filter"
+
+#~ msgid "High-Pass"
+#~ msgstr "Høgpass"
+
+#~ msgid "Frequency"
+#~ msgstr "Frekvens"
+
+#~ msgid "Off"
+#~ msgstr "Av"
+
+#~ msgid "12 dB/oct"
+#~ msgstr "12 dB/okt"
+
+#~ msgid "24 dB/oct"
+#~ msgstr "24 dB/okt"
+
+#~ msgid "36 dB/oct"
+#~ msgstr "36 dB/okt"
+
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "Høgpassfilter-modus"
+
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "Høgpassfilter-frekvens"
+
+#~ msgid "Low-Pass"
+#~ msgstr "Lågpass"
+
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "Lågpassfilter-modus"
+
+#~ msgid "Gain"
+#~ msgstr "Styrke"
+
+#~ msgid "Curve"
+#~ msgstr "Kurve"
+
+#~ msgid "L"
+#~ msgstr "V"
+
+#~ msgid "Left Channel"
+#~ msgstr "Venstre kanal"
+
+#~ msgid "R"
+#~ msgstr "H"
+
+#~ msgid "Right Channel"
+#~ msgstr "Høgre kanal"
+
+#~ msgid "Impulses"
+#~ msgstr "Impulsar"
+
+#~ msgid "Combine"
+#~ msgstr "Kombiner"
+
+#~ msgid "Stereo Width"
+#~ msgstr "Stereovidde"
+
+#~ msgid "Spectrum"
+#~ msgstr "Spektrum"
+
+#~ msgid "Log Scale"
+#~ msgstr "Log-skala"
+
+#~ msgid "Autogain"
+#~ msgstr "Autostyrke"
+
+#~ msgid "Rate"
+#~ msgstr "Takt"
+
+#~ msgid "Duration"
+#~ msgstr "Varigheit"
+
+#~ msgid "Combine Impulse Responses"
+#~ msgstr "Kombiner impuls-responsar"
+
+#~ msgid "First Kernel"
+#~ msgstr "Fyrste kjerne"
+
+#~ msgid "Second Kernel"
+#~ msgstr "Andre kjerne"
+
+#~ msgid "Output File Name"
+#~ msgstr "Utdata-filnamn"
+
+#~ msgid "Combined Kernel Name"
+#~ msgstr "Kombinert kjernenamn"
+
+#~ msgid "Import Impulse"
+#~ msgstr "Importer impuls"
+
+#~ msgid "Search"
+#~ msgstr "Søk"
+
+#~ msgid "Search Impulse File"
+#~ msgstr "Søk impulsfiler"
+
+#~ msgid "Impulse Files List"
+#~ msgstr "Impulsfil-liste"
+
+#~ msgid "Default"
+#~ msgstr "Standard"
+
+#~ msgid "Cutoff"
+#~ msgstr "Avskjering"
+
+#~ msgid "Feed"
+#~ msgstr "Mat"
+
+#~ msgid "Bypass"
+#~ msgstr "Forbipassering"
+
+#~ msgid "Mute"
+#~ msgstr "Demp"
+
+#, fuzzy
+#~ msgid "Post Filter Beta"
+#~ msgstr "Filterlengd"
+
+#~ msgid "Detection"
+#~ msgstr "Oppdaging"
+
+#~ msgid "Wide"
+#~ msgstr "Vid"
+
+#~ msgid "Split"
+#~ msgstr "Del"
+
+#~ msgid "F1 Split"
+#~ msgstr "F1 del"
+
+#~ msgid "Frequency 1 Split"
+#~ msgstr "Frekvens 1 del"
+
+#~ msgid "F2 Peak"
+#~ msgstr "F2 topp"
+
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "Frekvens 2 topp"
+
+#~ msgid "F1 Gain"
+#~ msgstr "F1 styrke"
+
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "Frekvens 1 styrke"
+
+#~ msgid "F2 Level"
+#~ msgstr "F2 nivå"
+
+#~ msgid "Frequency 2 Level"
+#~ msgstr "Frekvens 2 nivå"
+
+#~ msgid "F2 Peak Q"
+#~ msgstr "F2 topp Q"
+
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "Frekvens 2 topp Q"
+
+#~ msgid "Laxity"
+#~ msgstr "Kraftløyse"
+
+#~ msgid "Detected"
+#~ msgstr "Funne"
+
+#~ msgid "Reduction"
+#~ msgstr "Reduksjon"
+
+#~ msgid "Delay"
+#~ msgstr "Forseinking"
+
+#~ msgid "Filter Length"
+#~ msgstr "Filterlengd"
+
+#~ msgid "Excluded Apps"
+#~ msgstr "Uteletne appar"
+
+#, fuzzy
+#~ msgid "Enable/disable input monitoring"
+#~ msgstr "Slå på/av denne applikasjonen"
+
+#~ msgid "Bands"
+#~ msgstr "Band"
+
+#~ msgid "Balance"
+#~ msgstr "Balanse"
+
+#~ msgid "Pitch Left"
+#~ msgstr "Tonehøgd venstre"
+
+#~ msgid "Pitch Right"
+#~ msgstr "Tonehøgd høgre"
+
+#~ msgid "Split Channels"
+#~ msgstr "Delte kanalar"
+
+#~ msgid "Flat Response"
+#~ msgstr "Flat respons"
+
+#~ msgid "Calculate Frequencies"
+#~ msgstr "Rekn ut frekvensar"
+
+#~ msgid "Sort Bands"
+#~ msgstr "Sorter band"
+
+#~ msgid "Import Preset"
+#~ msgstr "Importer førehandsinnstillingar"
+
+#, fuzzy
+#~ msgid "Export Preset"
+#~ msgstr "Importer førehandsinnstillingar"
+
+#~ msgid "Slope"
+#~ msgstr "Helling"
+
+#~ msgid "Solo"
+#~ msgstr "Solo"
+
+#~ msgid "Quality"
+#~ msgstr "Kvalitet"
+
+#~ msgid "Width"
+#~ msgstr "Vidd"
+
+#~ msgid "Ceil"
+#~ msgstr "Tak"
+
+#, fuzzy
+#~ msgid "Expander Mode"
+#~ msgstr "Bandmodus"
+
+#~ msgid "Internal"
+#~ msgstr "Intern"
+
+#~ msgid "API"
+#~ msgstr "API"
+
+#~ msgid "Access"
+#~ msgstr "Tilgjenge"
+
+#~ msgid "Description"
+#~ msgstr "Skildring"
+
+#~ msgid "Remove this model file"
+#~ msgstr "Fjern denne modellfila"
+
+#, fuzzy
+#~ msgid "High-Shelf"
+#~ msgstr "Høgpass"
+
+#, fuzzy
+#~ msgid "Band-Pass"
+#~ msgstr "Band"
+
+#~ msgid "Resonance"
+#~ msgstr "Resonans"
+
+#, fuzzy
+#~ msgid "Ladder-Pass"
+#~ msgstr "Lågpass"
+
+#, fuzzy
+#~ msgid "All-Pass"
+#~ msgstr "Lågpass"
+
+#, fuzzy
+#~ msgid "Equalizer Mode"
+#~ msgstr "Bandmodus"
+
+#~ msgid "Gate"
+#~ msgstr "Gate"
+
+#~ msgid "Zone"
+#~ msgstr "Sone"
+
+#~ msgid "Mix"
+#~ msgstr "Miks"
+
+#~ msgid "Attack Zone Start"
+#~ msgstr "Åtaksone start"
+
+#~ msgid "Release Zone Start"
+#~ msgstr "Frågongssone start"
+
+#~ msgid "True Peak"
+#~ msgstr "Sann topp"
+
+#~ msgid "Reset History"
+#~ msgstr "Resett historikk"
+
+#~ msgid "Oversampling"
+#~ msgstr "Oversampling"
+
+#~ msgid "Line Thin"
+#~ msgstr "Linje tynn"
+
+#~ msgid "Line Wide"
+#~ msgstr "Linje vid"
+
+#~ msgid "Line Tail"
+#~ msgstr "Linje hale"
+
+#~ msgid "None"
+#~ msgstr "Ingen"
+
+#~ msgid "Half x2(2L)"
+#~ msgstr "Halv x2(2L)"
+
+#~ msgid "Half x2(3L)"
+#~ msgstr "Halv x2(3L)"
+
+#~ msgid "Half x3(2L)"
+#~ msgstr "Halv x3(2L)"
+
+#~ msgid "Half x3(3L)"
+#~ msgstr "Halv x3(3L)"
+
+#~ msgid "Half x4(2L)"
+#~ msgstr "Halv x4(2L)"
+
+#~ msgid "Half x4(3L)"
+#~ msgstr "Halv x4(3L)"
+
+#~ msgid "Half x6(2L)"
+#~ msgstr "Halv x6(2L)"
+
+#~ msgid "Half x6(3L)"
+#~ msgstr "Halv x6(3L)"
+
+#~ msgid "Half x8(2L)"
+#~ msgstr "Halv x8(2L)"
+
+#~ msgid "Half x8(3L)"
+#~ msgstr "Halv x8(3L)"
+
+#~ msgid "Full x2(2L)"
+#~ msgstr "Full x2(2L)"
+
+#~ msgid "Full x2(3L)"
+#~ msgstr "Full x2(3L)"
+
+#~ msgid "Full x3(2L)"
+#~ msgstr "Full x3(2L)"
+
+#~ msgid "Full x3(3L)"
+#~ msgstr "Full x3(3L)"
+
+#~ msgid "Full x4(2L)"
+#~ msgstr "Full x4(2L)"
+
+#~ msgid "Full x4(3L)"
+#~ msgstr "Full x4(3L)"
+
+#~ msgid "Full x6(2L)"
+#~ msgstr "Full x6(2L)"
+
+#~ msgid "Full x6(3L)"
+#~ msgstr "Full x6(3L)"
+
+#~ msgid "Full x8(2L)"
+#~ msgstr "Full x8(2L)"
+
+#~ msgid "Full x8(3L)"
+#~ msgstr "Full x8(3L)"
+
+#~ msgid "Boost"
+#~ msgstr "Forsterking"
+
+#~ msgid "Stereo Link"
+#~ msgstr "Stereolenkje"
+
+#~ msgid "External Sidechain"
+#~ msgstr "Ekstern sidekjede"
+
+#~ msgid "Standard"
+#~ msgstr "Standard"
+
+#~ msgid "Flat"
+#~ msgstr "Flat"
+
+#~ msgid "FFT Size"
+#~ msgstr "FFT-storleik"
+
+#~ msgid "Output Volume"
+#~ msgstr "Utgangsvolum"
+
+#~ msgid "Clipping"
+#~ msgstr "Klipping"
+
+#~ msgid "Classic"
+#~ msgstr "Klassisk"
+
+#~ msgid "Modern"
+#~ msgstr "Moderne"
+
+#~ msgid "Bands List"
+#~ msgstr "Bandliste"
+
+#~ msgid "Band 1"
+#~ msgstr "Band 1"
+
+#~ msgid "Band 2"
+#~ msgstr "Band 2"
+
+#, fuzzy
+#~ msgid "Stereo Split"
+#~ msgstr "Stereovidde"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "Intern"
+
+#, fuzzy
+#~ msgid "Update Frequency"
+#~ msgstr "Frekvens"
+
+#, fuzzy
+#~ msgid "Try this community preset"
+#~ msgstr "Førehandsinnstilling"
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Importer førehandsinnstillingar"
+
+#, fuzzy
+#~ msgid "Search Local Preset"
+#~ msgstr "Førehandsinnstilling"
+
+#, fuzzy
+#~ msgid "Local Presets List"
+#~ msgstr "Førehandsinnstillingar"
+
+#, fuzzy
+#~ msgid "Search Community Preset"
+#~ msgstr "Førehandsinnstilling"
+
+#, fuzzy
+#~ msgid "Community Presets List"
+#~ msgstr "Førehandsinnstillingar"
+
+#, fuzzy
+#~ msgid "EqualizerAPO Presets"
+#~ msgstr "Bandmodus"
+
+#, fuzzy
+#~ msgid "Community Preset"
+#~ msgstr "Importer førehandsinnstillingar"
+
+#, fuzzy
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "Utelatne applikasjonar"
+
+#, fuzzy
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "Førehandsinnstillingar"
+
+#, fuzzy
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "Importer førehandsinnstillingar"
+
+#~ msgid "Ceiling"
+#~ msgstr "Tak"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"Førehandsinnstillingar\""
+
+#~ msgid "Uniform"
+#~ msgstr "Einsarta"
+
+#~ msgid "IIR"
+#~ msgstr "IIR"
+
+#~ msgid "FIR"
+#~ msgstr "FIR"
+
+#~ msgid "FFT"
+#~ msgstr "FFT"
+
+#~ msgid "SPM"
+#~ msgstr "SPM"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Forhold"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "Terskel"
+
+#, fuzzy
+#~ msgid "Low-pass"
+#~ msgstr "Lågpass"
+
+#, fuzzy
+#~ msgid "High-pass"
+#~ msgstr "Høgpass"
+
+#~ msgid "12dB/oct Lowpass"
+#~ msgstr "12dB/okt lågpass"
+
+#~ msgid "24dB/oct Lowpass"
+#~ msgstr "24dB/okt lågpass"
+
+#~ msgid "36dB/oct Lowpass"
+#~ msgstr "36dB/okt lågpass"
+
+#~ msgid "12dB/oct Highpass"
+#~ msgstr "12dB/okt høgpass"
+
+#~ msgid "24dB/oct Highpass"
+#~ msgstr "24dB/okt høgpass"
+
+#~ msgid "36dB/oct Highpass"
+#~ msgstr "36dB/okt høgpass"
+
+#~ msgid "6dB/oct Bandpass"
+#~ msgstr "6dB/okt bandpass"
+
+#~ msgid "12dB/oct Bandpass"
+#~ msgstr "12dB/okt bandpass"
+
+#~ msgid "18dB/oct Bandpass"
+#~ msgstr "18dB/okt bandpass"
+
+#~ msgid "6dB/oct Bandreject"
+#~ msgstr "6dB/okt bandsperre"
+
+#~ msgid "12dB/oct Bandreject"
+#~ msgstr "12dB/okt bandsperre"
+
+#~ msgid "18dB/oct Bandreject"
+#~ msgstr "18dB/okt bandsperre"
+
+#~ msgid "Inertia"
+#~ msgstr "Tregleik"
+
+#~ msgid "Band Type"
+#~ msgstr "Bandtype"
+
+#~ msgid "Band Mode"
+#~ msgstr "Bandmodus"
+
+#~ msgid "Band Slope"
+#~ msgstr "Bandhelling"

@@ -1,0 +1,858 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2023-06-03 20:51+0000\n"
+"Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/easyeffects/main/"
+"eu/>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.18-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "Sarrera"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "Izena"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+#, fuzzy
+msgid "Value"
+msgstr "Zoru-balioa"
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "Easy Effects aplikazioari _buruz"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "Aurrezarpena"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+msgid "Quit"
+msgstr ""
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr ""
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "Aurrezarpenak"
+
+#: src/contents/ui/main.qml:179
+#, fuzzy
+msgid "Preferences"
+msgstr "_Hobespenak"
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "Easy Effects aplikazioari _buruz"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "Irteera"
+
+#: src/contents/ui/PipeWireTab.qml:9
+msgid "PipeWire"
+msgstr ""
+
+#: src/main.cpp:55
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "Audio-efektuak PipeWire aplikazioetarako"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr ""
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Inguratzailea"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+msgid "Width of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+msgid "Height of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+msgid "Last used preset."
+msgstr ""
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+#, fuzzy
+msgid "EasyEffects"
+msgstr "Easy Effects aplikazioari _buruz"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "Ekualizatzailea, konprimatzailea eta beste audio-efektu batzuk"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Audio-efektuak PipeWire aplikazioetarako"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr ""
+#~ "mugatzailea;konprimatzailea;durunda;ekualizadorea;bolumen automatikoa;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "Gaitu/desgaitu aplikazio hau"
+
+#~ msgid "Enable"
+#~ msgstr "Gaitu"
+
+#~ msgid "Excluded App List: Add/remove this application"
+#~ msgstr "Baztertu aplikazio-zerrenda: Gehitu/kendu aplikazio hau"
+
+#~ msgid "Exclude"
+#~ msgstr "Baztertu"
+
+#~ msgid "Mute Application"
+#~ msgstr "Mututu aplikazioa"
+
+#~ msgid "Change the volume of this application"
+#~ msgstr "Aldatu aplikazio honen bolumena"
+
+#~ msgid "Application Volume"
+#~ msgstr "Aplikazio-bolumena"
+
+#~ msgid "_Help"
+#~ msgstr "_Laguntza"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "_Berrezarri ezarpenak"
+
+#~ msgid "_Shortcuts"
+#~ msgstr "L_asterbideak"
+
+#~ msgid "Presets Menu"
+#~ msgstr "Aurrezarpenen menua"
+
+#~ msgid "Enable/disable the global bypass"
+#~ msgstr "Gaitu/desgaitu bypass globala"
+
+#~ msgid "Global Bypass"
+#~ msgstr "Bypass globala"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Menu nagusia"
+
+#~ msgid "Easy Effects Window"
+#~ msgstr "Easy Effects leihoa"
+
+#~ msgid "Applications List"
+#~ msgstr "Aplikazioen zerrenda"
+
+#~ msgid "Empty List"
+#~ msgstr "Zerrenda hutsa"
+
+#~ msgid "No Audio Application Available"
+#~ msgstr "Ez dago audio-aplikaziorik erabilgarri"
+
+#~ msgid "Target"
+#~ msgstr "Helburua"
+
+#~ msgid "Silence"
+#~ msgstr "Isiltasuna"
+
+#~ msgid "Maximum History"
+#~ msgstr "Gehieneko historia"
+
+#~ msgid "Reference"
+#~ msgstr "Erreferentzia"
+
+#~ msgid "Momentary"
+#~ msgstr "Behin-behinekoa"
+
+#~ msgid "Short-Term"
+#~ msgstr "Epe laburrekoa"
+
+#~ msgid "Integrated"
+#~ msgstr "Integratua"
+
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "Batezbesteko geometrikoa (MSI)"
+
+#~ msgid "Geometric Mean (MS)"
+#~ msgstr "Batezbesteko geometrikoa (MS)"
+
+#~ msgid "Geometric Mean (MI)"
+#~ msgstr "Batezbesteko geometrikoa (MI)"
+
+#~ msgid "Geometric Mean (SI)"
+#~ msgstr "Batezbesteko geometrikoa (SI)"
+
+#, fuzzy
+#~ msgid "History"
+#~ msgstr "Berrezarri historia"
+
+#~ msgid "Reset"
+#~ msgstr "Berrezarri"
+
+#~ msgid "Loudness"
+#~ msgstr "Ozentasuna"
+
+#~ msgid "Relative"
+#~ msgstr "Erlatiboa"
+
+#~ msgid "Range"
+#~ msgstr "Barrutia"
+
+#~ msgid "Output Gain"
+#~ msgstr "Irteerako irabazia"
+
+#~ msgid "Plugin Input Gain"
+#~ msgstr "Sarrerako irabaziaren plugina"
+
+#~ msgid "Plugin Output Gain"
+#~ msgstr "Irteerako irabaziaren plugina"
+
+#~ msgid "Device"
+#~ msgstr "Gailua"
+
+#~ msgid "Profile"
+#~ msgstr "Profila"
+
+#~ msgid "Remove this autoload preset"
+#~ msgstr "Kendu automatikoki kargatutako aurrezarpen hau"
+
+#~ msgid "Listen"
+#~ msgstr "Entzun"
+
+#~ msgid "Blend Harmonics"
+#~ msgstr "Nahastu harmonikoak"
+
+#~ msgid "3rd"
+#~ msgstr "3."
+
+#~ msgid "2nd"
+#~ msgstr "2."
+
+#~ msgid "Amount"
+#~ msgstr "Kantitatea"
+
+#~ msgid "Harmonics"
+#~ msgstr "Harmonikoak"
+
+#~ msgid "Scope"
+#~ msgstr "Esparrua"
+
+#~ msgid "Floor"
+#~ msgstr "Zorua"
+
+#~ msgid "Link"
+#~ msgstr "Esteka"
+
+#~ msgid "Application Name"
+#~ msgstr "Aplikazioaren izena"
+
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "Gehitu baztertutako aplikazioei"
+
+#~ msgid "Excluded Applications List"
+#~ msgstr "Baztertutako aplikazioen zerrenda"
+
+#~ msgid "Show Excluded Applications"
+#~ msgstr "Erakutsi baztertutako aplikazioak"
+
+#~ msgid "Compressor"
+#~ msgstr "Konpresorea"
+
+#~ msgid "Mode"
+#~ msgstr "Modua"
+
+#~ msgid "Downward"
+#~ msgstr "Beherantz"
+
+#~ msgid "Upward"
+#~ msgstr "Gorantz"
+
+#~ msgid "Boosting"
+#~ msgstr "Indartzea"
+
+#~ msgid "Compression Mode"
+#~ msgstr "Konpresio-modua"
+
+#~ msgid "Boost Threshold"
+#~ msgstr "Indartze-atalasea"
+
+#~ msgid "Boost Amount"
+#~ msgstr "Indartze kantitatea"
+
+#~ msgid "Attack"
+#~ msgstr "Erasoa"
+
+#~ msgid "Time"
+#~ msgstr "Denbora"
+
+#~ msgid "Threshold"
+#~ msgstr "Atalasea"
+
+#~ msgid "Attack Time"
+#~ msgstr "Eraso-denbora"
+
+#~ msgid "Attack Threshold"
+#~ msgstr "Eraso-atalasea"
+
+#~ msgid "Release"
+#~ msgstr "Askatzea"
+
+#~ msgid "Release Time"
+#~ msgstr "Askatze-denbora"
+
+#~ msgid "Release Threshold"
+#~ msgstr "Askatze-atalasea"
+
+#~ msgid "Ratio"
+#~ msgstr "Ratioa"
+
+#~ msgid "Knee"
+#~ msgstr "Trantsizioa"
+
+#~ msgid "Makeup"
+#~ msgstr "Goratzea"
+
+#~ msgid "Dry Level"
+#~ msgstr "Lehortze-maila"
+
+#~ msgid "Wet Level"
+#~ msgstr "Hezetasun-maila"
+
+#~ msgid "Sidechain"
+#~ msgstr "Alboko katea"
+
+#, fuzzy
+#~ msgid "Stereo Split Mode"
+#~ msgstr "Estereo-zabalera"
+
+#~ msgid "Source"
+#~ msgstr "Iturburua"
+
+#~ msgid "Middle"
+#~ msgstr "Erdia"
+
+#~ msgid "Side"
+#~ msgstr "Alboa"
+
+#~ msgid "Left"
+#~ msgstr "Ezkerra"
+
+#~ msgid "Right"
+#~ msgstr "Eskuina"
+
+#~ msgid "Min"
+#~ msgstr "Min"
+
+#~ msgid "Max"
+#~ msgstr "Max"
+
+#~ msgid "Sidechain Source"
+#~ msgstr "Alboko katearen iturburua"
+
+#, fuzzy
+#~ msgid "Left/Right"
+#~ msgstr "Eskuina"
+
+#, fuzzy
+#~ msgid "Right/Left"
+#~ msgstr "Eskuina"
+
+#, fuzzy
+#~ msgid "Mid/Side"
+#~ msgstr "Alboa"
+
+#, fuzzy
+#~ msgid "Side/Mid"
+#~ msgstr "Alboa"
+
+#~ msgid "Peak"
+#~ msgstr "Gailurra"
+
+#~ msgid "RMS"
+#~ msgstr "RMSa"
+
+#~ msgid "Sidechain Mode"
+#~ msgstr "Alboko katearen modua"
+
+#, fuzzy
+#~ msgid "Listen Sidechain"
+#~ msgstr "Alboko katea"
+
+#~ msgid "Type"
+#~ msgstr "Mota"
+
+#~ msgid "Feed-forward"
+#~ msgstr "Aurrelikatzea"
+
+#~ msgid "Feed-back"
+#~ msgstr "Atzeraelikatzea"
+
+#~ msgid "External"
+#~ msgstr "Kanpokoa"
+
+#~ msgid "Sidechain Type"
+#~ msgstr "Alboko katearen mota"
+
+#~ msgid "Input Device"
+#~ msgstr "Sarrerako gailua"
+
+#~ msgid "PreAmplification"
+#~ msgstr "Aurreanplifikazioa"
+
+#~ msgid "Reactivity"
+#~ msgstr "Erreaktibotasuna"
+
+#~ msgid "Lookahead"
+#~ msgstr "Aurrea hartzea"
+
+#~ msgid "Sidechain Filters"
+#~ msgstr "Alboko katearen iragazkiak"
+
+#~ msgid "High-Pass"
+#~ msgstr "Pasaera altua"
+
+#~ msgid "Frequency"
+#~ msgstr "Maiztasuna"
+
+#~ msgid "Off"
+#~ msgstr "Desaktibatuta"
+
+#~ msgid "12 dB/oct"
+#~ msgstr "12 dB/zortzidun"
+
+#~ msgid "24 dB/oct"
+#~ msgstr "24 dB/zortzidun"
+
+#~ msgid "36 dB/oct"
+#~ msgstr "36 dB/zortzidun"
+
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "Pasaera altuko iragazki-modua"
+
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "Pasaera altuko iragazki-maiztasuna"
+
+#~ msgid "Low-Pass"
+#~ msgstr "Pasaera baxua"
+
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "Pasaera baxuko iragazki-modua"
+
+#~ msgid "Gain"
+#~ msgstr "Irabazia"
+
+#~ msgid "Curve"
+#~ msgstr "Kurba"
+
+#~ msgid "L"
+#~ msgstr "L"
+
+#~ msgid "Left Channel"
+#~ msgstr "Ezkerreko kanala"
+
+#~ msgid "R"
+#~ msgstr "R"
+
+#~ msgid "Right Channel"
+#~ msgstr "Eskuineko kanala"
+
+#~ msgid "Impulses"
+#~ msgstr "Bulkadak"
+
+#~ msgid "Combine"
+#~ msgstr "Konbinatu"
+
+#~ msgid "Stereo Width"
+#~ msgstr "Estereo-zabalera"
+
+#~ msgid "Spectrum"
+#~ msgstr "Espektroa"
+
+#~ msgid "Log Scale"
+#~ msgstr "Eskala logaritmikoa"
+
+#~ msgid "Autogain"
+#~ msgstr "Irabazi automatikoa"
+
+#~ msgid "Rate"
+#~ msgstr "Tasa"
+
+#~ msgid "Samples"
+#~ msgstr "Laginak"
+
+#~ msgid "Duration"
+#~ msgstr "Iraupena"
+
+#~ msgid "Combine Impulse Responses"
+#~ msgstr "Konbinatu bulkada-erantzunak"
+
+#~ msgid "First Kernel"
+#~ msgstr "Lehen nukleoa"
+
+#~ msgid "Second Kernel"
+#~ msgstr "Bigarren nukleoa"
+
+#~ msgid "Output File Name"
+#~ msgstr "Irteerako fitxategiaren izena"
+
+#~ msgid "Combined Kernel Name"
+#~ msgstr "Konbinatutako nukleo-izena"
+
+#~ msgid "Import Impulse"
+#~ msgstr "Inportatu bulkada"
+
+#~ msgid "Search"
+#~ msgstr "Bilatu"
+
+#~ msgid "Search Impulse File"
+#~ msgstr "Bilatu bulkada-iragazkia"
+
+#~ msgid "Impulse Files List"
+#~ msgstr "Bulkada-fitxategien zerrenda"
+
+#~ msgid "Default"
+#~ msgstr "Lehenetsia"
+
+#~ msgid "Cutoff"
+#~ msgstr "Atalasea"
+
+#~ msgid "Feed"
+#~ msgstr "Elikatzea"
+
+#~ msgid "Bypass"
+#~ msgstr "Deribazioa"
+
+#~ msgid "Mute"
+#~ msgstr "Mututu"
+
+#, fuzzy
+#~ msgid "Post Filter Beta"
+#~ msgstr "Iragazki-luzera"
+
+#~ msgid "Detection"
+#~ msgstr "Detekzioa"
+
+#~ msgid "Wide"
+#~ msgstr "Zabala"
+
+#~ msgid "Split"
+#~ msgstr "Zatitzea"
+
+#~ msgid "F1 Split"
+#~ msgstr "F1 zatitzea"
+
+#~ msgid "Frequency 1 Split"
+#~ msgstr "1. maiztasunaren zatitzea"
+
+#~ msgid "F2 Peak"
+#~ msgstr "F2 gailurra"
+
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "2. maiztasunaren gailurra"
+
+#~ msgid "F1 Gain"
+#~ msgstr "F1 irabazia"
+
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "1. maiztasunaren irabasia"
+
+#~ msgid "F2 Level"
+#~ msgstr "F2 maila"
+
+#~ msgid "Frequency 2 Level"
+#~ msgstr "2. maiztasunaren maila"
+
+#~ msgid "F2 Peak Q"
+#~ msgstr "F2 Q gailurra"
+
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "2. maiztasunaren Q gailurra"
+
+#~ msgid "Laxity"
+#~ msgstr "Laxotasuna"
+
+#~ msgid "Detected"
+#~ msgstr "Detektatua"
+
+#~ msgid "Reduction"
+#~ msgstr "Murrizketa"
+
+#~ msgid "Delay"
+#~ msgstr "Atzerapena"
+
+#~ msgid "Filter Length"
+#~ msgstr "Iragazki-luzera"
+
+#~ msgid "Residual Echo Suppression"
+#~ msgstr "Hondar-oihartzuna kentzea"
+
+#~ msgid "Near End Echo Suppression"
+#~ msgstr "Amaiera aldeko oihartzuna kentzea"
+
+#~ msgid "Excluded Apps"
+#~ msgstr "Baztertutako aplikazioak"
+
+#, fuzzy
+#~ msgid "Enable/disable input monitoring"
+#~ msgstr "Gaitu/desgaitu aplikazio hau"
+
+#~ msgid "Bands"
+#~ msgstr "Bandak"
+
+#~ msgid "Balance"
+#~ msgstr "Balantzea"
+
+#~ msgid "Pitch Left"
+#~ msgstr "Ezkerreko tonua"
+
+#~ msgid "Pitch Right"
+#~ msgstr "Eskuineko tonua"
+
+#~ msgid "Split Channels"
+#~ msgstr "Zatitu kanalak"
+
+#~ msgid "Flat Response"
+#~ msgstr "Erantzun laua"
+
+#~ msgid "Calculate Frequencies"
+#~ msgstr "Kalkulatu maiztasunak"
+
+#~ msgid "Sort Bands"
+#~ msgstr "Ordenatu bandak"
+
+#~ msgid "Import Preset"
+#~ msgstr "Inportatu aurrezarpena"
+
+#, fuzzy
+#~ msgid "Export Preset"
+#~ msgstr "Inportatu aurrezarpena"
+
+#~ msgid "Slope"
+#~ msgstr "Malda"
+
+#~ msgid "Quality"
+#~ msgstr "Kalitatea"
+
+#~ msgid "Width"
+#~ msgstr "Zabalera"
+
+#, fuzzy
+#~ msgid "Expander Mode"
+#~ msgstr "Banda modua"
+
+#~ msgid "API"
+#~ msgstr "APIa"
+
+#~ msgid "Access"
+#~ msgstr "Sarbidea"
+
+#~ msgid "Description"
+#~ msgstr "Deskribapena"
+
+#~ msgid "Remove this model file"
+#~ msgstr "Kendu eredu-fitxategi hau"
+
+#, fuzzy
+#~ msgid "High-Shelf"
+#~ msgstr "Pasaera altua"
+
+#, fuzzy
+#~ msgid "Band-Pass"
+#~ msgstr "Bandak"
+
+#~ msgid "Resonance"
+#~ msgstr "Erresonantzia"
+
+#, fuzzy
+#~ msgid "Ladder-Pass"
+#~ msgstr "Pasaera baxua"
+
+#, fuzzy
+#~ msgid "All-Pass"
+#~ msgstr "Pasaera baxua"
+
+#, fuzzy
+#~ msgid "Equalizer Mode"
+#~ msgstr "Banda modua"
+
+#~ msgid "Gate"
+#~ msgstr "Atea"
+
+#~ msgid "Zone"
+#~ msgstr "Zona"
+
+#~ msgid "Hysteresis"
+#~ msgstr "Histeresia"
+
+#~ msgid "Reset History"
+#~ msgstr "Berrezarri historia"
+
+#, fuzzy
+#~ msgid "Stereo Split"
+#~ msgstr "Estereo-zabalera"
+
+#, fuzzy
+#~ msgid "Update Frequency"
+#~ msgstr "Maiztasuna"
+
+#, fuzzy
+#~ msgid "Try this community preset"
+#~ msgstr "Aurrezarpena"
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Inportatu aurrezarpena"
+
+#, fuzzy
+#~ msgid "Search Local Preset"
+#~ msgstr "Aurrezarpena"
+
+#, fuzzy
+#~ msgid "Local Presets List"
+#~ msgstr "Aurrezarpenak"
+
+#, fuzzy
+#~ msgid "Search Community Preset"
+#~ msgstr "Aurrezarpena"
+
+#, fuzzy
+#~ msgid "Community Presets List"
+#~ msgstr "Aurrezarpenak"
+
+#, fuzzy
+#~ msgid "EqualizerAPO Presets"
+#~ msgstr "Banda modua"
+
+#, fuzzy
+#~ msgid "Community Preset"
+#~ msgstr "Inportatu aurrezarpena"
+
+#, fuzzy
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "Baztertutako aplikazioen zerrenda"
+
+#, fuzzy
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "Aurrezarpenak"
+
+#, fuzzy
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "Inportatu aurrezarpena"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"Aurrezarpenak\""
+
+#~ msgid "Uniform"
+#~ msgstr "Uniformea"
+
+#~ msgid "IIR"
+#~ msgstr "IIRa"
+
+#~ msgid "FIR"
+#~ msgstr "FIRa"
+
+#~ msgid "FFT"
+#~ msgstr "FFTa"
+
+#~ msgid "SPM"
+#~ msgstr "SPMa"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Ratioa"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "Atalasea"
+
+#, fuzzy
+#~ msgid "Low-pass"
+#~ msgstr "Pasaera baxua"
+
+#, fuzzy
+#~ msgid "High-pass"
+#~ msgstr "Pasaera altua"
+
+#~ msgid "12dB/oct Lowpass"
+#~ msgstr "12db/zortzidun pasaera baxua"
+
+#~ msgid "24dB/oct Lowpass"
+#~ msgstr "24db/zortzidun pasaera baxua"
+
+#~ msgid "36dB/oct Lowpass"
+#~ msgstr "36db/zortzidun pasaera baxua"
+
+#~ msgid "12dB/oct Highpass"
+#~ msgstr "12db/zortzidun pasaera altua"
+
+#~ msgid "24dB/oct Highpass"
+#~ msgstr "24db/zortzidun pasaera altua"
+
+#~ msgid "36dB/oct Highpass"
+#~ msgstr "36db/zortzidun pasaera altua"
+
+#~ msgid "Inertia"
+#~ msgstr "Inertzia"
+
+#~ msgid "Band Type"
+#~ msgstr "Banda mota"
+
+#~ msgid "Band Mode"
+#~ msgstr "Banda modua"
+
+#~ msgid "Band Slope"
+#~ msgstr "Bandaren malda"

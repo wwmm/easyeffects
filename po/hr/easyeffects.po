@@ -1,0 +1,2297 @@
+# Croatian translation for Pulseeffects.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the EasyEffects package.
+# gogo <trebelnik2@gmail.com>, 2017.
+# rooty <cho4oot@gmail.com>, 2018.
+# flipwise <tyx027@gmail.com>, 2018.
+msgid ""
+msgstr ""
+"Project-Id-Version: EasyEffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2023-11-25 07:02+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
+"main/hr/>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.2.1-rc\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "Ulaz"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "Naziv"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+#, fuzzy
+msgid "Value"
+msgstr "Dno"
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "Predlošci"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+msgid "Quit"
+msgstr ""
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr ""
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "Predlošci"
+
+#: src/contents/ui/main.qml:179
+#, fuzzy
+msgid "Preferences"
+msgstr "Referenca"
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "Izlaz"
+
+#: src/contents/ui/PipeWireTab.qml:9
+msgid "PipeWire"
+msgstr ""
+
+#: src/main.cpp:55
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "Zvučni efekti za Pulseaudio aplikacije"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Pojačanje ulaza"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+msgid "Width of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+msgid "Height of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+#, fuzzy
+msgid "Last used preset."
+msgstr "Stvori predložak"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+#, fuzzy
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "Ekvalizator, kompresor i drugi audio efekti"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Zvučni efekti za PipeWire aplikacije"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "graničnik;kompresor;odjek;ekvalizator;automatska glasnoća zvuka;"
+
+#, fuzzy
+#~ msgid "Enable"
+#~ msgstr "Omogući"
+
+#, fuzzy
+#~ msgid "Mute Application"
+#~ msgstr "Aplikacije"
+
+#, fuzzy
+#~ msgid "Application Volume"
+#~ msgstr "Aplikacije"
+
+#, fuzzy
+#~ msgid "_Help"
+#~ msgstr "Pomoć"
+
+#, fuzzy
+#~ msgid "_Reset Settings"
+#~ msgstr "Postavke"
+
+#, fuzzy
+#~ msgid "_Shortcuts"
+#~ msgstr "Kratkoročno"
+
+#, fuzzy
+#~ msgid "Presets Menu"
+#~ msgstr "Predlošci"
+
+#, fuzzy
+#~ msgid "Global Bypass"
+#~ msgstr "Premosnica"
+
+#~ msgid "Primary Menu"
+#~ msgstr "Primarni izbornik"
+
+#, fuzzy
+#~ msgid "Easy Effects Window"
+#~ msgstr "EasyEffects"
+
+#~ msgid "Applications List"
+#~ msgstr "Popis aplikacija"
+
+#~ msgid "Empty List"
+#~ msgstr "Prazan popis"
+
+#~ msgid "No Audio Application Available"
+#~ msgstr "Nema dostupnih audio aplikacija"
+
+#~ msgid "Controls"
+#~ msgstr "Kontrole"
+
+#~ msgid "Target"
+#~ msgstr "Cilj"
+
+#~ msgid "Silence"
+#~ msgstr "Tišina"
+
+#~ msgid "Maximum History"
+#~ msgstr "Maksimalna povijest"
+
+#~ msgid "Momentary"
+#~ msgstr "Trenutačno"
+
+#~ msgid "Short-Term"
+#~ msgstr "Kratkoročno"
+
+#~ msgid "Integrated"
+#~ msgstr "Integrirano"
+
+#~ msgid "Geometric Mean (MSI)"
+#~ msgstr "Geometrijski prosjek (MSI)"
+
+#~ msgid "Geometric Mean (MS)"
+#~ msgstr "Geometrijski prosjek (MS)"
+
+#~ msgid "Geometric Mean (MI)"
+#~ msgstr "Geometrijski prosjek (MI)"
+
+#~ msgid "Geometric Mean (SI)"
+#~ msgstr "Geometrijski prosjek (SI)"
+
+#, fuzzy
+#~ msgid "History"
+#~ msgstr "Resetiraj povijest"
+
+#~ msgid "Reset"
+#~ msgstr "Vrati na tvorničke postavke"
+
+#~ msgid "Loudness"
+#~ msgstr "Glasnoća"
+
+#~ msgid "Relative"
+#~ msgstr "Relativno"
+
+#~ msgid "Range"
+#~ msgstr "Raspon"
+
+#~ msgid "Output Gain"
+#~ msgstr "Pojačanje izlaza"
+
+#, fuzzy
+#~ msgid "Plugin Input Gain"
+#~ msgstr "Pojačanje ulaza"
+
+#, fuzzy
+#~ msgid "Plugin Output Gain"
+#~ msgstr "Pojačanje ulaza"
+
+#~ msgid "Device"
+#~ msgstr "Uređaj"
+
+#~ msgid "Profile"
+#~ msgstr "Profil"
+
+#, fuzzy
+#~ msgid "Remove this autoload preset"
+#~ msgstr "Kompresija"
+
+#~ msgid "Listen"
+#~ msgstr "Poslušaj"
+
+#~ msgid "Blend Harmonics"
+#~ msgstr "Spajanje harmonijskog reda"
+
+#~ msgid "3rd"
+#~ msgstr "3."
+
+#~ msgid "2nd"
+#~ msgstr "2."
+
+#~ msgid "Amount"
+#~ msgstr "Jačina"
+
+#~ msgid "Harmonics"
+#~ msgstr "Harmonijski red"
+
+#~ msgid "Scope"
+#~ msgstr "Raspon"
+
+#~ msgid "Floor"
+#~ msgstr "Dno"
+
+#, fuzzy
+#~ msgid "Floor Value"
+#~ msgstr "Dno"
+
+#~ msgid "Application Name"
+#~ msgstr "Ime aplikacije"
+
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "Dodaj u izuzete aplikacije"
+
+#~ msgid "Excluded Applications List"
+#~ msgstr "Popis izuzetih aplikacija"
+
+#~ msgid "Show Excluded Applications"
+#~ msgstr "Pokaži izuzete aplikacije"
+
+#, fuzzy
+#~ msgid "Show Native Window"
+#~ msgstr "Prozor"
+
+#~ msgid "Compressor"
+#~ msgstr "Kompresor"
+
+#~ msgid "Mode"
+#~ msgstr "Način"
+
+#~ msgid "Compression Mode"
+#~ msgstr "Modus kompresije"
+
+#, fuzzy
+#~ msgid "Boost Threshold"
+#~ msgstr "Prag"
+
+#, fuzzy
+#~ msgid "Boost Amount"
+#~ msgstr "Jačina"
+
+#~ msgid "Attack"
+#~ msgstr "Pokretanje"
+
+#~ msgid "Time"
+#~ msgstr "Vrijeme"
+
+#~ msgid "Threshold"
+#~ msgstr "Prag"
+
+#, fuzzy
+#~ msgid "Attack Time"
+#~ msgstr "Pokretanje"
+
+#, fuzzy
+#~ msgid "Attack Threshold"
+#~ msgstr "Prag"
+
+#~ msgid "Release"
+#~ msgstr "Vrijeme prijelaza"
+
+#, fuzzy
+#~ msgid "Release Time"
+#~ msgstr "Vrijeme prijelaza"
+
+#, fuzzy
+#~ msgid "Release Threshold"
+#~ msgstr "Prag"
+
+#~ msgid "Ratio"
+#~ msgstr "Omjer"
+
+#, fuzzy
+#~ msgid "Knee"
+#~ msgstr "Koljeno"
+
+#, fuzzy
+#~ msgid "Makeup"
+#~ msgstr "Dorada"
+
+#, fuzzy
+#~ msgid "Dry Level"
+#~ msgstr "Razina"
+
+#, fuzzy
+#~ msgid "Wet Level"
+#~ msgstr "Ciljana razina"
+
+#, fuzzy
+#~ msgid "Sidechain"
+#~ msgstr "Postranični ulaz"
+
+#, fuzzy
+#~ msgid "Stereo Split Mode"
+#~ msgstr "Stereo baza"
+
+#~ msgid "Source"
+#~ msgstr "Izvor"
+
+#~ msgid "Middle"
+#~ msgstr "Sredina"
+
+#~ msgid "Side"
+#~ msgstr "Strana"
+
+#~ msgid "Left"
+#~ msgstr "Lijevo"
+
+#~ msgid "Right"
+#~ msgstr "Desno"
+
+#~ msgid "Min"
+#~ msgstr "Min."
+
+#~ msgid "Max"
+#~ msgstr "Maks."
+
+#, fuzzy
+#~ msgid "Sidechain Source"
+#~ msgstr "Postranični ulaz"
+
+#~ msgid "Left/Right"
+#~ msgstr "Lijevo/Desno"
+
+#~ msgid "Right/Left"
+#~ msgstr "Desno/Lijevo"
+
+#~ msgid "Mid/Side"
+#~ msgstr "Sredina/Strana"
+
+#~ msgid "Side/Mid"
+#~ msgstr "Strana/Sredina"
+
+#, fuzzy
+#~ msgid "Stereo Split Source"
+#~ msgstr "Tvorničke postavke"
+
+#~ msgid "Peak"
+#~ msgstr "Vrhunac"
+
+#~ msgid "RMS"
+#~ msgstr "RMS"
+
+#, fuzzy
+#~ msgid "Low-Pass Filter"
+#~ msgstr "Filter visokog prolaza"
+
+#, fuzzy
+#~ msgid "Sidechain Mode"
+#~ msgstr "Postranični ulaz"
+
+#, fuzzy
+#~ msgid "Listen Sidechain"
+#~ msgstr "Postranični ulaz"
+
+#~ msgid "Type"
+#~ msgstr "Vrsta"
+
+#, fuzzy
+#~ msgid "Feed-back"
+#~ msgstr "Dovod zvuka"
+
+#, fuzzy
+#~ msgid "Sidechain Type"
+#~ msgstr "Postranični ulaz"
+
+#, fuzzy
+#~ msgid "Input Device"
+#~ msgstr "Ulazni uređaj"
+
+#, fuzzy
+#~ msgid "PreAmplification"
+#~ msgstr "Aplikacije"
+
+#~ msgid "Lookahead"
+#~ msgstr "Preduhvatiti"
+
+#, fuzzy
+#~ msgid "Sidechain Filters"
+#~ msgstr "Postranični ulaz"
+
+#, fuzzy
+#~ msgid "High-Pass"
+#~ msgstr "Filter visokog prolaza"
+
+#~ msgid "Frequency"
+#~ msgstr "Frekvencija"
+
+#, fuzzy
+#~ msgid "12 dB/oct"
+#~ msgstr "12dB/oct niski prolaz"
+
+#, fuzzy
+#~ msgid "24 dB/oct"
+#~ msgstr "24dB/oct niski prolaz"
+
+#, fuzzy
+#~ msgid "36 dB/oct"
+#~ msgstr "36dB/oct niski prolaz"
+
+#, fuzzy
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "Filter visokog prolaza"
+
+#, fuzzy
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "Prigušivanje visokih frekvencija"
+
+#, fuzzy
+#~ msgid "Low-Pass"
+#~ msgstr "Nizak prolaz"
+
+#, fuzzy
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "Filter visokog prolaza"
+
+#~ msgid "Gain"
+#~ msgstr "Pojačanje"
+
+#~ msgid "L"
+#~ msgstr "L"
+
+#, fuzzy
+#~ msgid "Left Channel"
+#~ msgstr "Kanali"
+
+#~ msgid "R"
+#~ msgstr "D"
+
+#, fuzzy
+#~ msgid "Right Channel"
+#~ msgstr "Kanali"
+
+#, fuzzy
+#~ msgid "Impulses"
+#~ msgstr "Reakcija impulsa"
+
+#, fuzzy
+#~ msgid "Stereo Width"
+#~ msgstr "Stereo širina"
+
+#~ msgid "Spectrum"
+#~ msgstr "Spektar"
+
+#, fuzzy
+#~ msgid "Autogain"
+#~ msgstr "Automatsko pojačavanje"
+
+#~ msgid "Rate"
+#~ msgstr "Frekvencija"
+
+#, fuzzy
+#~ msgid "Samples"
+#~ msgstr "Semplovi"
+
+#, fuzzy
+#~ msgid "Duration"
+#~ msgstr "Trajanje"
+
+#, fuzzy
+#~ msgid "Combine Impulse Responses"
+#~ msgstr "Reakcija impulsa"
+
+#, fuzzy
+#~ msgid "Output File Name"
+#~ msgstr "Izlaz"
+
+#, fuzzy
+#~ msgid "Import Impulse"
+#~ msgstr "Učitaj impuls"
+
+#, fuzzy
+#~ msgid "Search Impulse File"
+#~ msgstr "Učitaj impuls datoteku"
+
+#, fuzzy
+#~ msgid "Impulse Files List"
+#~ msgstr "Učitaj impuls datoteku"
+
+#~ msgid "Default"
+#~ msgstr "Tvorničke postavke"
+
+#~ msgid "Cutoff"
+#~ msgstr "Prekid"
+
+#~ msgid "Feed"
+#~ msgstr "Dovod zvuka"
+
+#~ msgid "Bypass"
+#~ msgstr "Premosnica"
+
+#~ msgid "Mute"
+#~ msgstr "Bezvučno"
+
+#, fuzzy
+#~ msgid "Attenuation Limit"
+#~ msgstr "Prigušenje"
+
+#, fuzzy
+#~ msgid "Post Filter Beta"
+#~ msgstr "Filter"
+
+#~ msgid "Detection"
+#~ msgstr "Detekcija"
+
+#~ msgid "Wide"
+#~ msgstr "Široko"
+
+#, fuzzy
+#~ msgid "Split"
+#~ msgstr "Razdvojeno"
+
+#, fuzzy
+#~ msgid "F1 Split"
+#~ msgstr "Razdvojeno"
+
+#, fuzzy
+#~ msgid "Frequency 1 Split"
+#~ msgstr "Frekvencija"
+
+#, fuzzy
+#~ msgid "F2 Peak"
+#~ msgstr "Vrhunac"
+
+#, fuzzy
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "Frekvencija"
+
+#, fuzzy
+#~ msgid "F1 Gain"
+#~ msgstr "Pojačanje"
+
+#, fuzzy
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "Frekvencija"
+
+#, fuzzy
+#~ msgid "F2 Level"
+#~ msgstr "Razina"
+
+#, fuzzy
+#~ msgid "Frequency 2 Level"
+#~ msgstr "Frekvencija"
+
+#, fuzzy
+#~ msgid "F2 Peak Q"
+#~ msgstr "Vrhunac Q"
+
+#, fuzzy
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "Frekvencija"
+
+#~ msgid "Laxity"
+#~ msgstr "Popustljivost"
+
+#, fuzzy
+#~ msgid "Detected"
+#~ msgstr "Detektirano"
+
+#, fuzzy
+#~ msgid "Reduction"
+#~ msgstr "Smanjenje"
+
+#~ msgid "Delay"
+#~ msgstr "Kašnjenje"
+
+#~ msgid "Invert Phase"
+#~ msgstr "Inverzija faze"
+
+#, fuzzy
+#~ msgid "Filter Length"
+#~ msgstr "Filter"
+
+#, fuzzy
+#~ msgid "Residual Echo Suppression"
+#~ msgstr "Supresija buke"
+
+#, fuzzy
+#~ msgid "Near End Echo Suppression"
+#~ msgstr "Supresija buke"
+
+#~ msgid "Bands"
+#~ msgstr "Broj raspona"
+
+#~ msgid "Balance"
+#~ msgstr "Ravnoteža"
+
+#, fuzzy
+#~ msgid "Pitch Left"
+#~ msgstr "Postranični ulaz"
+
+#, fuzzy
+#~ msgid "Pitch Right"
+#~ msgstr "Postranični ulaz"
+
+#, fuzzy
+#~ msgid "Split Channels"
+#~ msgstr "Kanali"
+
+#~ msgid "Flat Response"
+#~ msgstr "Ravan izlaz"
+
+#~ msgid "Calculate Frequencies"
+#~ msgstr "Izračunaj frekvencije"
+
+#, fuzzy
+#~ msgid "Sort Bands"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Import Preset"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "Export Preset"
+#~ msgstr "Učitaj predloške"
+
+#~ msgid "Solo"
+#~ msgstr "Solo"
+
+#~ msgid "Quality"
+#~ msgstr "Kvaliteta"
+
+#~ msgid "Width"
+#~ msgstr "Širina"
+
+#, fuzzy
+#~ msgid "Ceil"
+#~ msgstr "Vrh"
+
+#, fuzzy
+#~ msgid "Expander Mode"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Internal"
+#~ msgstr "Integrirano"
+
+#, fuzzy
+#~ msgid "Description"
+#~ msgstr "Detekcija"
+
+#, fuzzy
+#~ msgid "Remove this model file"
+#~ msgstr "Kompresija"
+
+#, fuzzy
+#~ msgid "Low-Shelf"
+#~ msgstr "Niski shelf"
+
+#, fuzzy
+#~ msgid "High-Shelf"
+#~ msgstr "Visoki shelf"
+
+#, fuzzy
+#~ msgid "Band-Pass"
+#~ msgstr "Premosnica"
+
+#~ msgid "Resonance"
+#~ msgstr "Rezonancija"
+
+#, fuzzy
+#~ msgid "Ladder-Pass"
+#~ msgstr "Nizak prolaz"
+
+#, fuzzy
+#~ msgid "Ladder-Rejection"
+#~ msgstr "Ograničenje pojačanja"
+
+#, fuzzy
+#~ msgid "All-Pass"
+#~ msgstr "Nizak prolaz"
+
+#, fuzzy
+#~ msgid "Equalizer Mode"
+#~ msgstr "Ekvalizator"
+
+#, fuzzy
+#~ msgid "Filter"
+#~ msgstr "Filter"
+
+#~ msgid "Gate"
+#~ msgstr "Vrata"
+
+#, fuzzy
+#~ msgid "Release Zone Start"
+#~ msgstr "Vrijeme prijelaza"
+
+#, fuzzy
+#~ msgid "True Peak"
+#~ msgstr "Frekvencija"
+
+#~ msgid "Reset History"
+#~ msgstr "Resetiraj povijest"
+
+#~ msgid "Oversampling"
+#~ msgstr "Jači sampling"
+
+#, fuzzy
+#~ msgid "Herm Wide"
+#~ msgstr "Široko"
+
+#, fuzzy
+#~ msgid "Exp Wide"
+#~ msgstr "Široko"
+
+#, fuzzy
+#~ msgid "Line Thin"
+#~ msgstr "Širina"
+
+#, fuzzy
+#~ msgid "Line Wide"
+#~ msgstr "Širina"
+
+#, fuzzy
+#~ msgid "Line Tail"
+#~ msgstr "Širina"
+
+#, fuzzy
+#~ msgid "Sidechain PreAmplification"
+#~ msgstr "Aplikacije"
+
+#~ msgid "Stereo Link"
+#~ msgstr "Stereo veza"
+
+#, fuzzy
+#~ msgid "External Sidechain"
+#~ msgstr "Postranični ulaz"
+
+#, fuzzy
+#~ msgid "Auto Leveling"
+#~ msgstr "Automatsko pojačavanje"
+
+#, fuzzy
+#~ msgid "Auto Leveling Attack"
+#~ msgstr "Automatsko pojačavanje"
+
+#, fuzzy
+#~ msgid "Auto Leveling Release"
+#~ msgstr "Automatsko pojačavanje"
+
+#, fuzzy
+#~ msgid "Auto Leveling Knee"
+#~ msgstr "Automatsko pojačavanje"
+
+#, fuzzy
+#~ msgid "Gain Left"
+#~ msgstr "Lijevo"
+
+#, fuzzy
+#~ msgid "Gain Right"
+#~ msgstr "Desno"
+
+#, fuzzy
+#~ msgid "Sidechain Left"
+#~ msgstr "Postranični ulaz"
+
+#, fuzzy
+#~ msgid "Sidechain Right"
+#~ msgstr "Postranični ulaz"
+
+#, fuzzy
+#~ msgid "FFT Size"
+#~ msgstr "Veličina okvira"
+
+#, fuzzy
+#~ msgid "Output Volume"
+#~ msgstr "Izlaz"
+
+#, fuzzy
+#~ msgid "Clipping"
+#~ msgstr "Kanali"
+
+#, fuzzy
+#~ msgid "Sidechain Boost"
+#~ msgstr "Postranični ulaz"
+
+#, fuzzy
+#~ msgid "Operating Mode"
+#~ msgstr "Učitaj impuls"
+
+#, fuzzy
+#~ msgid "Modern"
+#~ msgstr "Način"
+
+#, fuzzy
+#~ msgid "Linear Phase"
+#~ msgstr "Inverzija faze"
+
+#, fuzzy
+#~ msgid "Bands List"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 1"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 2"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 3"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 4"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 5"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 6"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 7"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 8"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band End"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band Compression Mode"
+#~ msgstr "Kompresija"
+
+#, fuzzy
+#~ msgid "Band Bypass"
+#~ msgstr "Premosnica"
+
+#, fuzzy
+#~ msgid "Band Sidechain Options"
+#~ msgstr "Postranični ulaz"
+
+#, fuzzy
+#~ msgid "Stereo Split"
+#~ msgstr "Stereo baza"
+
+#, fuzzy
+#~ msgid "Low-Cut"
+#~ msgstr "Filter"
+
+#, fuzzy
+#~ msgid "Low-Cut Filter Frequency"
+#~ msgstr "Filter"
+
+#, fuzzy
+#~ msgid "High-Cut"
+#~ msgstr "Filter visokog prolaza"
+
+#, fuzzy
+#~ msgid "High-Cut Filter Frequency"
+#~ msgstr "Filter visokog prolaza"
+
+#, fuzzy
+#~ msgid "Band Gain"
+#~ msgstr "Pojačanje ulaza"
+
+#, fuzzy
+#~ msgid "Band Reduction"
+#~ msgstr "Ograničenje pojačanja"
+
+#~ msgid "General"
+#~ msgstr "Općenito"
+
+#, fuzzy
+#~ msgid "Use Default Input"
+#~ msgstr "Koristi tvorničke postavke"
+
+#, fuzzy
+#~ msgid "Custom Input Device"
+#~ msgstr "Ulazni uređaj"
+
+#, fuzzy
+#~ msgid "Use Default Output"
+#~ msgstr "Koristi tvorničke postavke"
+
+#, fuzzy
+#~ msgid "Custom Output Device"
+#~ msgstr "Pojačanje ulaza"
+
+#, fuzzy
+#~ msgid "Server Information"
+#~ msgstr "Reverberacija"
+
+#, fuzzy
+#~ msgid "Sampling Rate"
+#~ msgstr "Jači sampling"
+
+#, fuzzy
+#~ msgid "Minimum Quantum"
+#~ msgstr "Frekvencija"
+
+#, fuzzy
+#~ msgid "Maximum Quantum"
+#~ msgstr "Najveće pojačanje"
+
+#, fuzzy
+#~ msgid "Default Quantum"
+#~ msgstr "Tvorničke postavke"
+
+#~ msgid "Output Devices"
+#~ msgstr "Izlazni uređaji"
+
+#, fuzzy
+#~ msgid "Output Presets"
+#~ msgstr "Predlošci: "
+
+#, fuzzy
+#~ msgid "Output Autoloading Presets List"
+#~ msgstr "Predlošci: "
+
+#~ msgid "Input Devices"
+#~ msgstr "Ulazni uređaji"
+
+#, fuzzy
+#~ msgid "Input Presets"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "Input Autoloading Presets List"
+#~ msgstr "Učitaj predloške"
+
+#~ msgid "Modules"
+#~ msgstr "Moduli"
+
+#~ msgid "Modules List"
+#~ msgstr "Popis modula"
+
+#~ msgid "Clients"
+#~ msgstr "Klijenti"
+
+#~ msgid "Clients List"
+#~ msgstr "Popis klijenata"
+
+#~ msgid "Test Signal"
+#~ msgstr "Testni signal"
+
+#~ msgid "State"
+#~ msgstr "Stanje"
+
+#~ msgid "Enabled"
+#~ msgstr "Aktivirano"
+
+#~ msgid "Properties"
+#~ msgstr "Svojstva"
+
+#~ msgid "Channels"
+#~ msgstr "Kanali"
+
+#~ msgid "Both"
+#~ msgstr "Oba"
+
+#~ msgid "Both Channels"
+#~ msgstr "Oba kanala"
+
+#~ msgid "Waveform"
+#~ msgstr "Oblik krivulje"
+
+#~ msgid "Sine Wave"
+#~ msgstr "Sinusoida"
+
+#~ msgid "White Noise"
+#~ msgstr "Bijeli šum"
+
+#~ msgid "Anti-aliasing"
+#~ msgstr "Zaglađivanje rubova"
+
+#, fuzzy
+#~ msgid "Sequence Length"
+#~ msgstr "Raspon frekvencije"
+
+#, fuzzy
+#~ msgid "Seek Window"
+#~ msgstr "Prozor"
+
+#, fuzzy
+#~ msgid "Overlap Length"
+#~ msgstr "Filter"
+
+#~ msgid "Pitch"
+#~ msgstr "Visina"
+
+#~ msgid "Semitones"
+#~ msgstr "Polustepeni"
+
+#, fuzzy
+#~ msgid "Remove this effect"
+#~ msgstr "Kompresija"
+
+#, fuzzy
+#~ msgid "Add Effect"
+#~ msgstr "Ulazni efekti"
+
+#, fuzzy
+#~ msgid "Go to the previous effect"
+#~ msgstr "Kompresija"
+
+#, fuzzy
+#~ msgid "No Effects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "_General"
+#~ msgstr "Općenito"
+
+#, fuzzy
+#~ msgid "Service"
+#~ msgstr "Ulazni uređaj"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "Integrirano"
+
+#, fuzzy
+#~ msgid "Update Frequency"
+#~ msgstr "Frekvencija"
+
+#~ msgid "Style"
+#~ msgstr "Stil"
+
+#~ msgid "Use Dark Theme"
+#~ msgstr "Koristi tamnu temu"
+
+#, fuzzy
+#~ msgid "Experimental Features"
+#~ msgstr "Eksperimentalna"
+
+#, fuzzy
+#~ msgid "Native Plugin Window"
+#~ msgstr "Prozor"
+
+#, fuzzy
+#~ msgid "_Spectrum"
+#~ msgstr "Spektar"
+
+#~ msgid "Shape"
+#~ msgstr "Oblik"
+
+#~ msgid "Bars"
+#~ msgstr "Trake"
+
+#~ msgid "Lines"
+#~ msgstr "Linije"
+
+#~ msgid "Dots"
+#~ msgstr "Točke"
+
+#~ msgid "Points"
+#~ msgstr "Točke"
+
+#~ msgid "Height"
+#~ msgstr "Visina"
+
+#~ msgid "Line Width"
+#~ msgstr "Širina linija"
+
+#~ msgid "Fill"
+#~ msgstr "Ispuna"
+
+#~ msgid "Show Bars Border"
+#~ msgstr "Prikaži konture traka"
+
+#~ msgid "Rounded Corners"
+#~ msgstr "Zaobljeni kutovi"
+
+#~ msgid "Color"
+#~ msgstr "Boja"
+
+#~ msgid "Lines and Bars"
+#~ msgstr "Linije i trake"
+
+#~ msgid "Axis Labels"
+#~ msgstr "Oznake osi"
+
+#~ msgid "Frequency Range"
+#~ msgstr "Raspon frekvencije"
+
+#~ msgid "Minimum"
+#~ msgstr "Minimum"
+
+#~ msgid "Maximum"
+#~ msgstr "Maksimum"
+
+#, fuzzy
+#~ msgid "Discard the current settings and load this preset"
+#~ msgstr "Spremi trenutne postavke u predložak"
+
+#, fuzzy
+#~ msgid "Save current settings to this preset file"
+#~ msgstr "Spremi trenutne postavke u predložak"
+
+#, fuzzy
+#~ msgid "Try"
+#~ msgstr "Suhoća"
+
+#, fuzzy
+#~ msgid "Try this community preset"
+#~ msgstr "Predlošci: "
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Uvezi model"
+
+#, fuzzy
+#~ msgid "New Preset Name"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "Search Local Preset"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "Local Presets List"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "Search Community Preset"
+#~ msgstr "Predlošci: "
+
+#, fuzzy
+#~ msgid "Community Presets List"
+#~ msgstr "Predlošci: "
+
+#~ msgid "High Frequency Damping"
+#~ msgstr "Prigušivanje visokih frekvencija"
+
+#~ msgid "Room Size"
+#~ msgstr "Veličina sobe"
+
+#~ msgid "Small"
+#~ msgstr "Mala"
+
+#~ msgid "Medium"
+#~ msgstr "Srednje velika"
+
+#~ msgid "Large"
+#~ msgstr "Velika"
+
+#~ msgid "Tunnel"
+#~ msgstr "Tunel"
+
+#~ msgid "Large/smooth"
+#~ msgstr "Velika/glatko"
+
+#~ msgid "Experimental"
+#~ msgstr "Eksperimentalna"
+
+#~ msgid "Diffusion"
+#~ msgstr "Difuzija"
+
+#~ msgid "Pre Delay"
+#~ msgstr "Prijevremeno kašnjenje"
+
+#~ msgid "Decay Time"
+#~ msgstr "Vrijeme opadanja"
+
+#~ msgid "Bass Cut"
+#~ msgstr "Odrezivanje basa"
+
+#~ msgid "Treble Cut"
+#~ msgstr "Odrezivanje visokog tona"
+
+#~ msgid "Ambience"
+#~ msgstr "Atmosera"
+
+#~ msgid "Empty Walls"
+#~ msgstr "Prazni zidovi"
+
+#~ msgid "Room"
+#~ msgstr "Soba"
+
+#~ msgid "Large Empty Hall"
+#~ msgstr "Velika prazna dvorana"
+
+#~ msgid "Disco"
+#~ msgstr "Disco"
+
+#~ msgid "Large Occupied Hall"
+#~ msgstr "Velika popunjena dvorana"
+
+#~ msgid "Import Model"
+#~ msgstr "Uvezi model"
+
+#, fuzzy
+#~ msgid "Voice Detection"
+#~ msgstr "Detektor glasa"
+
+#, fuzzy
+#~ msgid "Models"
+#~ msgstr "Način"
+
+#, fuzzy
+#~ msgid "Active Model"
+#~ msgstr "Kompresija"
+
+#, fuzzy
+#~ msgid "Overview"
+#~ msgstr "Ulazni uređaj"
+
+#, fuzzy
+#~ msgid "Quit Easy Effects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "Denoise"
+#~ msgstr "Crveni šum"
+
+#, fuzzy
+#~ msgid "Automatic Gain Control"
+#~ msgstr "Kontrola pojačanja"
+
+#, fuzzy
+#~ msgid "Dereverberation"
+#~ msgstr "Reverberacija"
+
+#, fuzzy
+#~ msgid "Noise Suppression"
+#~ msgstr "Supresija buke"
+
+#, fuzzy
+#~ msgid "Level"
+#~ msgstr "Razina"
+
+#, fuzzy
+#~ msgid "Input Balance"
+#~ msgstr "Ravnoteža"
+
+#, fuzzy
+#~ msgid "Softclip Level"
+#~ msgstr "Stranična razina"
+
+#, fuzzy
+#~ msgid "Stereo Matrix"
+#~ msgstr "Stereo matrica"
+
+#, fuzzy
+#~ msgid "Stereo Mode"
+#~ msgstr "Stereo baza"
+
+#, fuzzy
+#~ msgid "Side Level"
+#~ msgstr "Stranična razina"
+
+#, fuzzy
+#~ msgid "Side Balance"
+#~ msgstr "Stranična ravnoteža"
+
+#, fuzzy
+#~ msgid "Middle Level"
+#~ msgstr "Srednji nivo"
+
+#, fuzzy
+#~ msgid "Middle Panorama"
+#~ msgstr "Srednja panorama"
+
+#, fuzzy
+#~ msgid "Output Balance"
+#~ msgstr "Pojačanje ulaza"
+
+#, fuzzy
+#~ msgid "Delay L/R"
+#~ msgstr "Kašnjenje L/D"
+
+#, fuzzy
+#~ msgid "Delay Left Right"
+#~ msgstr "Kašnjenje L/D"
+
+#, fuzzy
+#~ msgid "Stereo Base"
+#~ msgstr "Stereo baza"
+
+#, fuzzy
+#~ msgid "Stereo Phase"
+#~ msgstr "Stereo faza"
+
+#, fuzzy
+#~ msgid "Creating"
+#~ msgstr "Postavke"
+
+#, fuzzy
+#~ msgid "channels"
+#~ msgstr "Kanali"
+
+#, fuzzy
+#~ msgid "Quit Easy Effects. Useful when running in service mode."
+#~ msgstr ""
+#~ "Zatvori EasyEffects. Korisno pri upotrebi u servisnom načinu pokretanja."
+
+#~ msgid "Reset Easy Effects."
+#~ msgstr "Obnovi EasyEffects."
+
+#~ msgid "Show available presets."
+#~ msgstr "Prikaži dostupne predloške."
+
+#~ msgid "Load a preset. Example: easyeffects -l music"
+#~ msgstr "Učitaj predložak. Primjer: easyeffects -l music"
+
+#, fuzzy
+#~ msgid "_Output"
+#~ msgstr "Izlaz"
+
+#, fuzzy
+#~ msgid "_Input"
+#~ msgstr "Ulaz"
+
+#, fuzzy
+#~ msgid "Impulse File Not Imported"
+#~ msgstr "Učitaj impuls datoteku"
+
+#, fuzzy
+#~ msgid "Import Impulse File"
+#~ msgstr "Učitaj impuls datoteku"
+
+#~ msgid "Open"
+#~ msgstr "Otvori"
+
+#, fuzzy
+#~ msgid "Impulse Response"
+#~ msgstr "Reakcija impulsa"
+
+#, fuzzy
+#~ msgid "Load Impulse"
+#~ msgstr "Reakcija impulsa"
+
+#, fuzzy
+#~ msgid "Remove Impulse"
+#~ msgstr "Učitaj impuls"
+
+#, fuzzy
+#~ msgid "No Impulse File Loaded"
+#~ msgstr "Učitaj impuls datoteku"
+
+#, fuzzy
+#~ msgid "Failed To Load The Impulse File"
+#~ msgstr "Nije bilo moguće učitati impuls datoteku"
+
+#, fuzzy
+#~ msgid "Effects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "Import APO Preset File"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "APO Presets"
+#~ msgstr "Predlošci"
+
+#, fuzzy
+#~ msgid "Export EqualizerAPO Preset File"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "EqualizerAPO Presets"
+#~ msgstr "Predlošci"
+
+#, fuzzy
+#~ msgid "Import GraphicEQ Preset File"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "GraphicEQ Presets"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "Output Level Meter"
+#~ msgstr "Pojačanje ulaza"
+
+#, fuzzy
+#~ msgid "Output Device"
+#~ msgstr "Pojačanje ulaza"
+
+#, fuzzy
+#~ msgid "Community Preset"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "Popis izuzetih aplikacija"
+
+#, fuzzy
+#~ msgid "No Preset Loaded"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "Import Model File"
+#~ msgstr "Učitaj impuls datoteku"
+
+#, fuzzy
+#~ msgid "RNNoise Models"
+#~ msgstr "Kompresija"
+
+#~ msgid "Bass Enhancer"
+#~ msgstr "Pojačanje basa"
+
+#, fuzzy
+#~ msgid "Bass Loudness"
+#~ msgstr "Glasnoća"
+
+#~ msgid "Convolver"
+#~ msgstr "Konvolver"
+
+#~ msgid "Crossfeed"
+#~ msgstr "Križno spajanje"
+
+#, fuzzy
+#~ msgid "Crystalizer"
+#~ msgstr "Kristalizator"
+
+#~ msgid "Deesser"
+#~ msgstr "De-esiranje"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "Poništenje jeke"
+
+#~ msgid "Equalizer"
+#~ msgstr "Ekvalizator"
+
+#~ msgid "Exciter"
+#~ msgstr "Uzbuđivač"
+
+#~ msgid "Limiter"
+#~ msgstr "Graničnik"
+
+#~ msgid "Maximizer"
+#~ msgstr "Maksimizer"
+
+#, fuzzy
+#~ msgid "Multiband Compressor"
+#~ msgstr "Višerasponski kompresor"
+
+#, fuzzy
+#~ msgid "Multiband Gate"
+#~ msgstr "Višerasponska vrata"
+
+#, fuzzy
+#~ msgid "Reverberation"
+#~ msgstr "Reverberacija"
+
+#, fuzzy
+#~ msgid "Noise Reduction"
+#~ msgstr "Ograničenje pojačanja"
+
+#, fuzzy
+#~ msgid "Stereo Tools"
+#~ msgstr "Stereo alati"
+
+#~ msgid "Ceiling"
+#~ msgstr "Vrh"
+
+#, fuzzy
+#~ msgid "\"Presets\""
+#~ msgstr "Predlošci"
+
+#, fuzzy
+#~ msgid "Import a preset"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "Low-Cut Filter"
+#~ msgstr "Filter"
+
+#, fuzzy
+#~ msgid "High-Cut Filter"
+#~ msgstr "Filter visokog prolaza"
+
+#, fuzzy
+#~ msgid "New Output Preset Name"
+#~ msgstr "Predlošci: "
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Omjer"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "Prag"
+
+#, fuzzy
+#~ msgid "Low-pass"
+#~ msgstr "Nizak prolaz"
+
+#, fuzzy
+#~ msgid "High-pass"
+#~ msgstr "Filter visokog prolaza"
+
+#~ msgid "12dB/oct Lowpass"
+#~ msgstr "12dB/oct niski prolaz"
+
+#~ msgid "24dB/oct Lowpass"
+#~ msgstr "24dB/oct niski prolaz"
+
+#~ msgid "36dB/oct Lowpass"
+#~ msgstr "36dB/oct niski prolaz"
+
+#~ msgid "12dB/oct Highpass"
+#~ msgstr "12dB/oct visoki prolaz"
+
+#~ msgid "24dB/oct Highpass"
+#~ msgstr "24dB/oct visoki prolaz"
+
+#~ msgid "36dB/oct Highpass"
+#~ msgstr "36dB/oct visoki prolaz"
+
+#~ msgid "6dB/oct Bandpass"
+#~ msgstr "6dB/oct band prolaz"
+
+#~ msgid "12dB/oct Bandpass"
+#~ msgstr "12dB/oct band prolaz"
+
+#~ msgid "18dB/oct Bandpass"
+#~ msgstr "18dB/oct band prolaz"
+
+#~ msgid "6dB/oct Bandreject"
+#~ msgstr "6dB/oct odbijanje banda"
+
+#~ msgid "12dB/oct Bandreject"
+#~ msgstr "12dB/oct odbijanje banda"
+
+#~ msgid "18dB/oct Bandreject"
+#~ msgstr "18dB/oct odbijanje banda"
+
+#~ msgid "Inertia"
+#~ msgstr "Inercija"
+
+#, fuzzy
+#~ msgid "Band Type"
+#~ msgstr "Premosnica"
+
+#, fuzzy
+#~ msgid "Band Mode"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band Slope"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Loudness List"
+#~ msgstr "Glasnoća"
+
+#, fuzzy
+#~ msgid "High Speed"
+#~ msgstr "Visoki shelf"
+
+#, fuzzy
+#~ msgid "High Quality"
+#~ msgstr "Kvaliteta"
+
+#, fuzzy
+#~ msgid "Formant"
+#~ msgstr "Format"
+
+#, fuzzy
+#~ msgid "Preserved"
+#~ msgstr "Predlošci"
+
+#, fuzzy
+#~ msgid "Crisp"
+#~ msgstr "Oštrina"
+
+#, fuzzy
+#~ msgid "Detector"
+#~ msgstr "Detekcija"
+
+#, fuzzy
+#~ msgid "Compound"
+#~ msgstr "Kompresija"
+
+#~ msgid "Cents"
+#~ msgstr "Centi"
+
+#~ msgid "Octaves"
+#~ msgstr "Oktave"
+
+#, fuzzy
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgid "High Pass"
+#~ msgstr "Filter visokog prolaza"
+
+#~ msgid "Low Pass"
+#~ msgstr "Nizak prolaz"
+
+#~ msgid "Cancel"
+#~ msgstr "Poništi"
+
+#, fuzzy
+#~ msgid " PreAmplification"
+#~ msgstr "Aplikacije"
+
+#~ msgid "Frame Size"
+#~ msgstr "Veličina okvira"
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "Nizak prolaz"
+
+#, fuzzy
+#~ msgid "Left Delay"
+#~ msgstr "Prijevremeno kašnjenje"
+
+#, fuzzy
+#~ msgid "Right Delay"
+#~ msgstr "Kanali"
+
+#, fuzzy
+#~ msgid "Left Dry Level"
+#~ msgstr "Razina"
+
+#, fuzzy
+#~ msgid "Right Dry Level"
+#~ msgstr "Razina"
+
+#, fuzzy
+#~ msgid "Left Wet Level"
+#~ msgstr "Ciljana razina"
+
+#, fuzzy
+#~ msgid "Right Wet Level"
+#~ msgstr "Ciljana razina"
+
+#, fuzzy
+#~ msgid "Suppression"
+#~ msgstr "Razina supresije"
+
+#, fuzzy
+#~ msgid "Noise Reduction (Fast)"
+#~ msgstr "Ograničenje pojačanja"
+
+#, fuzzy
+#~ msgid "Load APO Preset"
+#~ msgstr "Predlošci"
+
+#, fuzzy
+#~ msgid "Output Presets: "
+#~ msgstr "Predlošci: "
+
+#, fuzzy
+#~ msgid "Input Presets: "
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "Split Mode"
+#~ msgstr "Razdvojeno"
+
+#, fuzzy
+#~ msgid "Split 1/2"
+#~ msgstr "Razdvojeno 1/2"
+
+#, fuzzy
+#~ msgid "Split 2/3"
+#~ msgstr "Razdvojeno 2/3"
+
+#, fuzzy
+#~ msgid "Split Frequency 2"
+#~ msgstr "Frekvencija"
+
+#, fuzzy
+#~ msgid "Split 3/4"
+#~ msgstr "Razdvojeno 3/4"
+
+#, fuzzy
+#~ msgid "Split Frequency 3"
+#~ msgstr "Frekvencija"
+
+#, fuzzy
+#~ msgid "Sub Band"
+#~ msgstr "Sub band"
+
+#, fuzzy
+#~ msgid "Band 1 Bypass"
+#~ msgstr "Premosnica"
+
+#, fuzzy
+#~ msgid "Band 1 Solo"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 1 Detection"
+#~ msgstr "Ograničenje pojačanja"
+
+#, fuzzy
+#~ msgid "Band 1 Attack"
+#~ msgstr "Pokretanje"
+
+#, fuzzy
+#~ msgid "Band 1 Release"
+#~ msgstr "Vrijeme prijelaza"
+
+#, fuzzy
+#~ msgid "Band 1 Threshold"
+#~ msgstr "Prag"
+
+#, fuzzy
+#~ msgid "Band 1 Ratio"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 1 Knee"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 1 Makeup"
+#~ msgstr "Dorada"
+
+#~ msgid "Max Reduction"
+#~ msgstr "Smanjenje"
+
+#, fuzzy
+#~ msgid "Low Band"
+#~ msgstr "Niski band"
+
+#, fuzzy
+#~ msgid "Band 2 Bypass"
+#~ msgstr "Premosnica"
+
+#, fuzzy
+#~ msgid "Band 2 Solo"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 2 Detection"
+#~ msgstr "Ograničenje pojačanja"
+
+#, fuzzy
+#~ msgid "Band 2 Attack"
+#~ msgstr "Pokretanje"
+
+#, fuzzy
+#~ msgid "Band 2 Release"
+#~ msgstr "Vrijeme prijelaza"
+
+#, fuzzy
+#~ msgid "Band 2 Threshold"
+#~ msgstr "Prag"
+
+#, fuzzy
+#~ msgid "Band 2 Ratio"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 2 Knee"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 2 Makeup"
+#~ msgstr "Dorada"
+
+#, fuzzy
+#~ msgid "Band 2 Max Reduction"
+#~ msgstr "Ograničenje pojačanja"
+
+#, fuzzy
+#~ msgid "Mid Band"
+#~ msgstr "Srednji band"
+
+#, fuzzy
+#~ msgid "Band 3 Bypass"
+#~ msgstr "Premosnica"
+
+#, fuzzy
+#~ msgid "Band 3 Solo"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 3 Detection"
+#~ msgstr "Ograničenje pojačanja"
+
+#, fuzzy
+#~ msgid "Band 3 Attack"
+#~ msgstr "Pokretanje"
+
+#, fuzzy
+#~ msgid "Band 3 Release"
+#~ msgstr "Vrijeme prijelaza"
+
+#, fuzzy
+#~ msgid "Band 3 Threshold"
+#~ msgstr "Prag"
+
+#, fuzzy
+#~ msgid "Band 3 Ratio"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 3 Knee"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 3 Makeup"
+#~ msgstr "Dorada"
+
+#, fuzzy
+#~ msgid "Band 3 Max Reduction"
+#~ msgstr "Ograničenje pojačanja"
+
+#, fuzzy
+#~ msgid "High Band"
+#~ msgstr "Visoki band"
+
+#, fuzzy
+#~ msgid "Band 4 Bypass"
+#~ msgstr "Premosnica"
+
+#, fuzzy
+#~ msgid "Band 4 Solo"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 4 Detection"
+#~ msgstr "Ograničenje pojačanja"
+
+#, fuzzy
+#~ msgid "Band 4 Attack"
+#~ msgstr "Pokretanje"
+
+#, fuzzy
+#~ msgid "Band 4 Release"
+#~ msgstr "Vrijeme prijelaza"
+
+#, fuzzy
+#~ msgid "Band 4 Threshold"
+#~ msgstr "Prag"
+
+#, fuzzy
+#~ msgid "Band 4 Ratio"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 4 Knee"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Band 4 Makeup"
+#~ msgstr "Dorada"
+
+#, fuzzy
+#~ msgid "Band 4 Max Reduction"
+#~ msgstr "Ograničenje pojačanja"
+
+#, fuzzy
+#~ msgid "Wet Amount"
+#~ msgstr "Jačina"
+
+#, fuzzy
+#~ msgid "Dry Amount"
+#~ msgstr "Jačina"
+
+#, fuzzy
+#~ msgid ""
+#~ "EasyEffects is an advanced audio manipulation tool. It includes an "
+#~ "equalizer, limiter, compressor and a reverberation tool, just to mention "
+#~ "a few. To complement this there is also a built in spectrum analyzer."
+#~ msgstr ""
+#~ "EasyEffects je napredan alat za manipulaciju zvukom. Uključuje "
+#~ "ekvalizator, graničnik, kompresor, alat odjeka te mnoge druge druge "
+#~ "alate. Još sadrži i ugrađeni analizator spektra."
+
+#, fuzzy
+#~ msgid ""
+#~ "Because EasyEffects uses the default PipeWire sound server it will work "
+#~ "with most, if not all, applications you use. All supported applications "
+#~ "are presented in the main window, where each can be enabled individually."
+#~ msgstr ""
+#~ "Zato što EasyEffects koristi zadani PulseAudio zvučni poslužitelj, radit "
+#~ "će s većinom, ako ne i sa svim aplikacijama koje koristite. Sve podržane "
+#~ "aplikacije su prikazane u glavnom prozoru, gdje se na svaku pojedinačno "
+#~ "može omogućiti utjecaj efekata."
+
+#, fuzzy
+#~ msgid ""
+#~ "Besides manipulating sound output, EasyEffects is able to apply effects "
+#~ "to an input device, such as a microphone. This is, for example, useful in "
+#~ "audio recording, but it also works well during voice conversations."
+#~ msgstr ""
+#~ "Osim manipuliranja izlaza zvuka, EasyEffects može primijeniti efekte i na "
+#~ "ulazni uređaj, poput mikrofona. To je na primjer korisno pri snimanju "
+#~ "zvuka, ali isto tako funkcionira dobro i tijekom glasovnih razgovora."
+
+#, fuzzy
+#~ msgid ""
+#~ "When EasyEffects is launched it will conveniently remember the "
+#~ "configuration used in the last session. It is also possible to save all "
+#~ "the current settings as profiles."
+#~ msgstr ""
+#~ "Kad je EasyEffects pokrenut, upotrijebit će podešavanja od prošlog puta. "
+#~ "Također je moguće spremiti sve trenutne postavke kao predloške."
+
+#, fuzzy
+#~ msgid "and #1427"
+#~ msgstr "Broj raspona"
+
+#, fuzzy
+#~ msgid "Average"
+#~ msgstr "Prosjek"
+
+#~ msgid "Failed"
+#~ msgstr "Nije uspjelo"
+
+#, fuzzy
+#~ msgid "Use Default"
+#~ msgstr "Koristi tvorničke postavke"
+
+#, fuzzy
+#~ msgid "Remove this plugin"
+#~ msgstr "Kompresija"
+
+#~ msgid "Import Presets"
+#~ msgstr "Učitaj predloške"
+
+#~ msgid "Start Service at Login"
+#~ msgstr "Pokreni servis pri pokretanju računala"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Kompresija"
+
+#, fuzzy
+#~ msgid "Add to Blocklist"
+#~ msgstr "Crna lista"
+
+#~ msgid "Blocklist"
+#~ msgstr "Crna lista"
+
+#, fuzzy
+#~ msgid "Microphone"
+#~ msgstr "Kalibracija mikrofona"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Omogući"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Omogući"
+
+#~ msgid "Format"
+#~ msgstr "Format"
+
+#~ msgid "Latency"
+#~ msgstr "Latencija"
+
+#~ msgid "Faster"
+#~ msgstr "Brže"
+
+#~ msgid "Preserve Formant"
+#~ msgstr "Sačuvaj formant"
+
+#~ msgid "Cmoy"
+#~ msgstr "Cmoy"
+
+#, fuzzy
+#~ msgid "Output Channel"
+#~ msgstr "Pojačanje ulaza"
+
+#, fuzzy
+#~ msgid "Channel"
+#~ msgstr "Kanali"
+
+#~ msgid "Output Effects"
+#~ msgstr "Izlazni efekti"
+
+#~ msgid "Settings"
+#~ msgstr "Postavke"
+
+#, fuzzy
+#~ msgid "Settings Menu"
+#~ msgstr "Postavke"
+
+#, fuzzy
+#~ msgid "Documentation"
+#~ msgstr "Trajanje"
+
+#, fuzzy
+#~ msgid "Enable Test Signal"
+#~ msgstr "Testni signali"
+
+#, fuzzy
+#~ msgid "Signal"
+#~ msgstr "Testni signali"
+
+#, fuzzy
+#~ msgid "Show Spectrum"
+#~ msgstr "Spektar"
+
+#, fuzzy
+#~ msgid "Spectrum Type"
+#~ msgstr "Spektar"
+
+#, fuzzy
+#~ msgid "Spectrum Color"
+#~ msgstr "Boja spektra"
+
+#, fuzzy
+#~ msgid "Maximum Gain Reduction"
+#~ msgstr "Ograničenje pojačanja"
+
+#, fuzzy
+#~ msgid "Wet"
+#~ msgstr "Otežanja"
+
+#, fuzzy
+#~ msgid "S/C Level"
+#~ msgstr "S/C Razina"
+
+#~ msgid "Short Term"
+#~ msgstr "Kratkoročno"
+
+#~ msgid "Set the volume and turn on/off effects"
+#~ msgstr "Postavi razinu zvuka te uključi/isključi efekte"
+
+#~ msgid "Includes an equalizer with built-in presets"
+#~ msgstr "Uključuje i ekvalizator s ugrađenim predlošcima"
+
+#~ msgid "Input Limiter"
+#~ msgstr "Graničnik ulaza"
+
+#~ msgid "Calibration"
+#~ msgstr "Kalibracija"
+
+#~ msgid "Limit"
+#~ msgstr "Granica"
+
+#~ msgid "ASC"
+#~ msgstr "ASC"
+
+#~ msgid "Audio Effects for PulseAudio Applications"
+#~ msgstr "Zvučni efekti za Pulseaudio aplikacije"
+
+#, fuzzy
+#~ msgid "Audio effects for PulseAudio applications"
+#~ msgstr "Zvučni efekti za Pulseaudio aplikacije"
+
+#, fuzzy
+#~ msgid "Calibration Microphone"
+#~ msgstr "Kalibracija mikrofona"
+
+#~ msgid "Sine"
+#~ msgstr "Sinus"
+
+#~ msgid "Square"
+#~ msgstr "Kvadrat"
+
+#~ msgid "Saw"
+#~ msgstr "Pila"
+
+#~ msgid "Triangle"
+#~ msgstr "Trokut"
+
+#~ msgid "Pink Noise"
+#~ msgstr "Rozi šum"
+
+#~ msgid "Ticks"
+#~ msgstr "Otkucaji"
+
+#~ msgid "Gaussian Noise"
+#~ msgstr "Gaussov šum"
+
+#~ msgid "Blue Noise"
+#~ msgstr "Plavi šum"
+
+#~ msgid "Violet Noise"
+#~ msgstr "Ljubičasti šum"
+
+#~ msgid "Volume"
+#~ msgstr "Glasnoća"
+
+#~ msgid "Measure Noise"
+#~ msgstr "Izmjeri šum"
+
+#~ msgid "Subtract Noise"
+#~ msgstr "Izdvoji šum"
+
+#~ msgid "Extended Filter"
+#~ msgstr "Prošireni filter"
+
+#~ msgid "Low"
+#~ msgstr "Nisko"
+
+#~ msgid "Moderate"
+#~ msgstr "Umjereno"
+
+#~ msgid "High"
+#~ msgstr "Visoko"
+
+#, fuzzy
+#~ msgid "Very High"
+#~ msgstr "Jako visoko"
+
+#~ msgid "Detection Likelihood"
+#~ msgstr "Vjerojatnost detekcije"
+
+#~ msgid "Very Low"
+#~ msgstr "Vrlo nisko"
+
+#~ msgid "Use Custom Color"
+#~ msgstr "Koristi vlastitu boju"
+
+#~ msgid "Import Impulse Response File"
+#~ msgstr "Učitaj datoteku reakcije impulsa"
+
+#, fuzzy
+#~ msgid "Select the impulse Response File"
+#~ msgstr "Odaberite datoteku reakcije impulsa"
+
+#, fuzzy
+#~ msgid "Aggressive Mode"
+#~ msgstr "Kompresija"
+
+#, fuzzy
+#~ msgid "Loudness Range"
+#~ msgstr "Glasnoća"
+
+#, fuzzy
+#~ msgid "Default Clock Rate"
+#~ msgstr "Tvorničke postavke"
+
+#, fuzzy
+#~ msgid "Configuration"
+#~ msgstr "Trajanje"
+
+#, fuzzy
+#~ msgid "Low-pass Frequency"
+#~ msgstr "Izračunaj frekvencije"
+
+#, fuzzy
+#~ msgid "Advanced"
+#~ msgstr "Napredne postavke"
+
+#, fuzzy
+#~ msgid "Apply APO Preset"
+#~ msgstr "Predlošci"
+
+#, fuzzy
+#~ msgid "Detect Silence"
+#~ msgstr "Detekcija"
+
+#, fuzzy
+#~ msgid "Muted"
+#~ msgstr "Bezvučno"
+
+#~ msgid "Distant Headphones"
+#~ msgstr "Udaljene slušalice"
+
+#, fuzzy
+#~ msgid "Minimum Frequency"
+#~ msgstr "Frekvencija"
+
+#, fuzzy
+#~ msgid "Maximum Frequency"
+#~ msgstr "Frekvencija"
+
+#, fuzzy
+#~ msgid "Resamplers"
+#~ msgstr "Promjena frekvencije"
+
+#~ msgid "Buffer"
+#~ msgstr "Latencija međuspremnika"
+
+#, fuzzy
+#~ msgid "Pipeline Output"
+#~ msgstr "Ekvalizator - Izlaz"
+
+#, fuzzy
+#~ msgid "Block Size"
+#~ msgstr "Veličina bloka"
+
+#~ msgid "Resampler"
+#~ msgstr "Promjena frekvencije"
+
+#~ msgid "paused"
+#~ msgstr "pauzirano"
+
+#~ msgid "playing"
+#~ msgstr "reprodukcija"
+
+#~ msgid "Pulseaudio"
+#~ msgstr "Pulseaudio"
+
+#, fuzzy
+#~ msgid "Import APO Presets"
+#~ msgstr "Učitaj predloške"
+
+#, fuzzy
+#~ msgid "Gain Detection"
+#~ msgstr "Ograničenje pojačanja"

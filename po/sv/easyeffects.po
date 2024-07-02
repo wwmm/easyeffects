@@ -1,0 +1,1562 @@
+# Swedish translation of EasyEffects application.
+# Copyright (C) 2017
+# This file is distributed under the same license as the easyeffects package.
+# Patrik Nilsson <translation_AT_hembas.se>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"PO-Revision-Date: 2023-02-20 00:59+0000\n"
+"Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
+"sv/>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.16-dev\n"
+
+#: src/contents/ui/InputTab.qml:9
+msgid "Input"
+msgstr "Ingång"
+
+#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
+#: src/contents/ui/PipeWireTab.qml:15
+msgctxt "@action:button"
+msgid "Add Row"
+msgstr ""
+
+#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
+#: src/contents/ui/PipeWireTab.qml:44
+msgid "Name"
+msgstr "Namn"
+
+#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
+#: src/contents/ui/PipeWireTab.qml:57
+msgid "Value"
+msgstr ""
+
+#: src/contents/ui/main.qml:17
+#, fuzzy
+msgctxt "@title:window"
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/main.qml:98
+#, fuzzy
+msgid "Preset: "
+msgstr "Förinställning"
+
+#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+msgid "Quit"
+msgstr ""
+
+#: src/contents/ui/main.qml:162
+msgid "Apply"
+msgstr ""
+
+#: src/contents/ui/main.qml:171
+msgid "Presets"
+msgstr "Profiler"
+
+#: src/contents/ui/main.qml:179
+msgid "Preferences"
+msgstr ""
+
+#: src/contents/ui/main.qml:187
+#, fuzzy
+msgid "About EasyEffects"
+msgstr "_Om Easy Effects"
+
+#: src/contents/ui/main.qml:223
+msgid "Executable Name"
+msgstr ""
+
+#: src/contents/ui/OutputTab.qml:9
+msgid "Output"
+msgstr "Utgång"
+
+#: src/contents/ui/PipeWireTab.qml:9
+msgid "PipeWire"
+msgstr ""
+
+#: src/main.cpp:55
+msgid "Audio effects for PipeWire applications"
+msgstr "Ljudeffekter för PipeWire-applikationer"
+
+#: src/main.cpp:56
+msgid "(c) 2024"
+msgstr ""
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
+
+#: src/main.cpp:60
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Utmatningsenhet"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
+#. i18n: ectx: label, entry (width), group (Window)
+#: rc.cpp:3
+msgid "Width of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
+#. i18n: ectx: label, entry (height), group (Window)
+#: rc.cpp:6
+msgid "Height of the main window."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
+#. i18n: ectx: label, entry (showTrayIcon), group (Window)
+#: rc.cpp:9
+msgid "Show the tray icon."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
+#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
+#: rc.cpp:12
+#, fuzzy
+msgid "Last used preset."
+msgstr "Skapa en ny förinställning"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+msgid "EasyEffects"
+msgstr "EasyEffects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "Equalizer, kompressor och andra ljudeffekter"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "Ljudeffekter för PipeWire-applikationer"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "begränsare;kompressor;eko;utjämnare;autovolym;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "Aktivera/inaktivera detta program"
+
+#~ msgid "Enable"
+#~ msgstr "Aktivera"
+
+#~ msgid "Mute Application"
+#~ msgstr "Tysta applikationen"
+
+#~ msgid "Application Volume"
+#~ msgstr "Applikationsvolym"
+
+#~ msgid "_Reset Settings"
+#~ msgstr "_Återställ inställningar"
+
+#~ msgid "Presets Menu"
+#~ msgstr "Förinställningsmeny"
+
+#~ msgid "Easy Effects Window"
+#~ msgstr "Easy Effects-fönster"
+
+#~ msgid "Applications List"
+#~ msgstr "Applikationslista"
+
+#~ msgid "No Audio Application Available"
+#~ msgstr "Ingen ljudapplikation tillgänglig"
+
+#~ msgid "Target"
+#~ msgstr "Målvärde (dB)"
+
+#~ msgid "Silence"
+#~ msgstr "Tystnad"
+
+#~ msgid "Maximum History"
+#~ msgstr "Maximal historik"
+
+#, fuzzy
+#~ msgid "History"
+#~ msgstr "Återställ historik"
+
+#~ msgid "Reset"
+#~ msgstr "Återställ"
+
+#~ msgid "Output Gain"
+#~ msgstr "Utgångsförstärkning (dB)"
+
+#~ msgid "Plugin Input Gain"
+#~ msgstr "Plugin ingångsförstärkning (dB)"
+
+#~ msgid "Plugin Output Gain"
+#~ msgstr "Plugin utgångsförstärkning (dB)"
+
+#~ msgid "Device"
+#~ msgstr "Enhet"
+
+#~ msgid "Profile"
+#~ msgstr "Profil"
+
+#~ msgid "Remove this autoload preset"
+#~ msgstr "Ta bort denna modellfil"
+
+#~ msgid "Listen"
+#~ msgstr "Lyssna"
+
+#~ msgid "Application Name"
+#~ msgstr "Applikationsnamn"
+
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "Lägg till i exkluderade applikationer"
+
+#~ msgid "Excluded Applications List"
+#~ msgstr "Lista över exkluderade applikationer"
+
+#~ msgid "Show Excluded Applications"
+#~ msgstr "Visa exkluderade applikationer"
+
+#, fuzzy
+#~ msgid "Show Native Window"
+#~ msgstr "Mellanrum (s)"
+
+#~ msgid "Compressor"
+#~ msgstr "Kompressor"
+
+#~ msgid "Boosting"
+#~ msgstr "Förstärkning"
+
+#~ msgid "Compression Mode"
+#~ msgstr "Komprimeringsläge"
+
+#~ msgid "Boost Threshold"
+#~ msgstr "Tröskelvärde för förstärkning (dB)"
+
+#~ msgid "Boost Amount"
+#~ msgstr "Förstärkningsmängd"
+
+#~ msgid "Attack"
+#~ msgstr "Attack (ms)"
+
+#~ msgid "Threshold"
+#~ msgstr "Tröskelvärde (dB)"
+
+#~ msgid "Attack Time"
+#~ msgstr "Attacktid (ms)"
+
+#~ msgid "Attack Threshold"
+#~ msgstr "Tröskelvärde för attack (dB)"
+
+#~ msgid "Release"
+#~ msgstr "Släpp (s)"
+
+#~ msgid "Release Time"
+#~ msgstr "Tid för frisläppning (s)"
+
+#~ msgid "Release Threshold"
+#~ msgstr "Tröskelvärde för frisläppning (dB)"
+
+#~ msgid "Ratio"
+#~ msgstr "Förhållande (n:1)"
+
+#~ msgid "Knee"
+#~ msgstr "Knävärde (dB)"
+
+#~ msgid "Makeup"
+#~ msgstr "Makeup (dB)"
+
+#~ msgid "Dry Level"
+#~ msgstr "Torrnivå"
+
+#~ msgid "Wet Level"
+#~ msgstr "Våtnivå"
+
+#~ msgid "Sidechain"
+#~ msgstr "Sidokedja"
+
+#, fuzzy
+#~ msgid "Stereo Split Mode"
+#~ msgstr "Stereoläge"
+
+#~ msgid "Middle"
+#~ msgstr "Mitten"
+
+#~ msgid "Side"
+#~ msgstr "Sida"
+
+#, fuzzy
+#~ msgid "Min"
+#~ msgstr "Minst"
+
+#~ msgid "Sidechain Source"
+#~ msgstr "Sidokedjekälla"
+
+#, fuzzy
+#~ msgid "Left/Right"
+#~ msgstr "Fördröj vänster höger"
+
+#, fuzzy
+#~ msgid "Right/Left"
+#~ msgstr "Tonhöjd vänster"
+
+#, fuzzy
+#~ msgid "Mid/Side"
+#~ msgstr "Sida"
+
+#, fuzzy
+#~ msgid "Side/Mid"
+#~ msgstr "Sida"
+
+#, fuzzy
+#~ msgid "Stereo Split Source"
+#~ msgstr "Stereoläge"
+
+#~ msgid "Peak"
+#~ msgstr "Topp"
+
+#~ msgid "Low-Pass Filter"
+#~ msgstr "Lågpassfilter"
+
+#~ msgid "Sidechain Mode"
+#~ msgstr "Sidokedjeläge"
+
+#, fuzzy
+#~ msgid "Listen Sidechain"
+#~ msgstr "Extern sidokedja"
+
+#~ msgid "Feed-back"
+#~ msgstr "Respons"
+
+#~ msgid "Sidechain Type"
+#~ msgstr "Typ av sidokedja"
+
+#~ msgid "Input Device"
+#~ msgstr "Ingångsenhet"
+
+#~ msgid "PreAmplification"
+#~ msgstr "Förförstärkning"
+
+#~ msgid "Sidechain Filters"
+#~ msgstr "Sidokedjefilter"
+
+#~ msgid "High-Pass"
+#~ msgstr "Högpass"
+
+#~ msgid "Frequency"
+#~ msgstr "Frekvens (Hz)"
+
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "Högpassfilterläge"
+
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "Högpassfilterfrekvens"
+
+#~ msgid "Low-Pass"
+#~ msgstr "Lågpass"
+
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "Lågpassfilterläge"
+
+#~ msgid "Gain"
+#~ msgstr "Förstärkning"
+
+#~ msgid "L"
+#~ msgstr "V"
+
+#~ msgid "Left Channel"
+#~ msgstr "Vänster kanal"
+
+#~ msgid "R"
+#~ msgstr "H"
+
+#~ msgid "Right Channel"
+#~ msgstr "Höger kanal"
+
+#~ msgid "Impulses"
+#~ msgstr "Impulser"
+
+#~ msgid "Stereo Width"
+#~ msgstr "Stereobredd"
+
+#~ msgid "Spectrum"
+#~ msgstr "Spektrum"
+
+#~ msgid "Autogain"
+#~ msgstr "Automatisk förstärkning"
+
+#~ msgid "Rate"
+#~ msgstr "Takt"
+
+#~ msgid "Samples"
+#~ msgstr "Prover"
+
+#~ msgid "Duration"
+#~ msgstr "Varaktighet"
+
+#~ msgid "Combine Impulse Responses"
+#~ msgstr "Kombinera impulssvar"
+
+#~ msgid "Output File Name"
+#~ msgstr "Utdatafilnamn"
+
+#~ msgid "Import Impulse"
+#~ msgstr "Importera impuls"
+
+#~ msgid "Search Impulse File"
+#~ msgstr "Sök impulsfil"
+
+#~ msgid "Impulse Files List"
+#~ msgstr "Lista över impulsfiler"
+
+#~ msgid "Cutoff"
+#~ msgstr "Gräns (Hz)"
+
+#~ msgid "Feed"
+#~ msgstr "Mata (dB)"
+
+#, fuzzy
+#~ msgid "Attenuation Limit"
+#~ msgstr "Försvagning"
+
+#, fuzzy
+#~ msgid "Post Filter Beta"
+#~ msgstr "Filterlängd"
+
+#~ msgid "Detection"
+#~ msgstr "Upptäckt"
+
+#~ msgid "Frequency 1 Split"
+#~ msgstr "Frekvens 1 delning (Hz)"
+
+#~ msgid "F2 Peak"
+#~ msgstr "F2 topp"
+
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "Frekvens 2 topp (Hz)"
+
+#~ msgid "F1 Gain"
+#~ msgstr "F1 förstärkning (dB)"
+
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "Frekvens 1 förstärkning (Hz)"
+
+#~ msgid "F2 Level"
+#~ msgstr "F2 nivå"
+
+#~ msgid "Frequency 2 Level"
+#~ msgstr "Frekvens 2 nivå (Hz)"
+
+#~ msgid "F2 Peak Q"
+#~ msgstr "F2 topp Q"
+
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "Frekvens 2 topp Q"
+
+#~ msgid "Detected"
+#~ msgstr "Upptäckt"
+
+#~ msgid "Reduction"
+#~ msgstr "Reduktion"
+
+#~ msgid "Delay"
+#~ msgstr "Fördröjning"
+
+#~ msgid "Filter Length"
+#~ msgstr "Filterlängd"
+
+#, fuzzy
+#~ msgid "Residual Echo Suppression"
+#~ msgstr "Kompressor"
+
+#, fuzzy
+#~ msgid "Near End Echo Suppression"
+#~ msgstr "Kompressor"
+
+#, fuzzy
+#~ msgid "Enable/disable input monitoring"
+#~ msgstr "Aktivera/inaktivera detta program"
+
+#~ msgid "Balance"
+#~ msgstr "Balans"
+
+#~ msgid "Pitch Left"
+#~ msgstr "Tonhöjd vänster"
+
+#~ msgid "Pitch Right"
+#~ msgstr "Tonhöjd höger"
+
+#~ msgid "Split Channels"
+#~ msgstr "Delade kanaler"
+
+#~ msgid "Flat Response"
+#~ msgstr "Platt respons"
+
+#, fuzzy
+#~ msgid "Sort Bands"
+#~ msgstr "Underband"
+
+#~ msgid "Import Preset"
+#~ msgstr "Importera förinställning"
+
+#, fuzzy
+#~ msgid "Export Preset"
+#~ msgstr "Importera förinställning"
+
+#~ msgid "Quality"
+#~ msgstr "Kvalitet"
+
+#~ msgid "Width"
+#~ msgstr "Bredd"
+
+#~ msgid "Ceil"
+#~ msgstr "Tak (dB)"
+
+#, fuzzy
+#~ msgid "Expander Mode"
+#~ msgstr "Bandläge"
+
+#~ msgid "Description"
+#~ msgstr "Beskrivning"
+
+#~ msgid "Remove this model file"
+#~ msgstr "Ta bort denna modellfil"
+
+#, fuzzy
+#~ msgid "Low-Shelf"
+#~ msgstr "Låg hylla"
+
+#, fuzzy
+#~ msgid "High-Shelf"
+#~ msgstr "Hög hylla"
+
+#, fuzzy
+#~ msgid "Band-Pass"
+#~ msgstr "Förbikoppling av band 1"
+
+#, fuzzy
+#~ msgid "Ladder-Pass"
+#~ msgstr "Lågpass"
+
+#, fuzzy
+#~ msgid "Ladder-Rejection"
+#~ msgstr "Bandreduktion"
+
+#, fuzzy
+#~ msgid "All-Pass"
+#~ msgstr "Lågpass"
+
+#, fuzzy
+#~ msgid "Equalizer Mode"
+#~ msgstr "Utjämnare"
+
+#~ msgid "Filter"
+#~ msgstr "Filter"
+
+#~ msgid "Release Zone Start"
+#~ msgstr "Start av frisläppande zon"
+
+#, fuzzy
+#~ msgid "True Peak"
+#~ msgstr "Frekvens 2 topp (Hz)"
+
+#~ msgid "Reset History"
+#~ msgstr "Återställ historik"
+
+#~ msgid "Line Thin"
+#~ msgstr "Linje tunn"
+
+#~ msgid "Line Wide"
+#~ msgstr "Linje bred"
+
+#~ msgid "Line Tail"
+#~ msgstr "Linje svans"
+
+#~ msgid "Sidechain PreAmplification"
+#~ msgstr "Sidokedjeförförstärkning"
+
+#~ msgid "Boost"
+#~ msgstr "Förstärkning"
+
+#~ msgid "Stereo Link"
+#~ msgstr "Stereolänk"
+
+#~ msgid "External Sidechain"
+#~ msgstr "Extern sidokedja"
+
+#~ msgid "Auto Leveling"
+#~ msgstr "Automatisk utjämning"
+
+#~ msgid "Auto Leveling Attack"
+#~ msgstr "Automatisk utjämningsattack"
+
+#~ msgid "Auto Leveling Release"
+#~ msgstr "Automatisk utjämningsutlösning"
+
+#~ msgid "Auto Leveling Knee"
+#~ msgstr "Automatisk knäutjämning"
+
+#~ msgid "Gain Left"
+#~ msgstr "Förstärkning vänster"
+
+#~ msgid "Sidechain Left"
+#~ msgstr "Sidokedja vänster"
+
+#~ msgid "Sidechain Right"
+#~ msgstr "Sidokedja höger"
+
+#~ msgid "FFT Size"
+#~ msgstr "FFT-storlek"
+
+#~ msgid "Output Volume"
+#~ msgstr "Utgångsvolym"
+
+#~ msgid "Clipping"
+#~ msgstr "Klippning"
+
+#~ msgid "Sidechain Boost"
+#~ msgstr "Sidokedjeförstärkning"
+
+#~ msgid "Operating Mode"
+#~ msgstr "Driftläge"
+
+#, fuzzy
+#~ msgid "Linear Phase"
+#~ msgstr "Stereofas"
+
+#~ msgid "Bands List"
+#~ msgstr "Lista över band"
+
+#~ msgid "Band Compression Mode"
+#~ msgstr "Bandkomprimeringsläge"
+
+#~ msgid "Band Sidechain Options"
+#~ msgstr "Alternativ för bandsidokedja"
+
+#, fuzzy
+#~ msgid "Stereo Split"
+#~ msgstr "Stereoläge"
+
+#, fuzzy
+#~ msgid "Low-Cut"
+#~ msgstr "Lågklippt filter"
+
+#~ msgid "Low-Cut Filter Frequency"
+#~ msgstr "Lågklippt filterfrekvens"
+
+#, fuzzy
+#~ msgid "High-Cut"
+#~ msgstr "Högklippt filter"
+
+#~ msgid "High-Cut Filter Frequency"
+#~ msgstr "Högklippt filterfrekvens"
+
+#~ msgid "Band Gain"
+#~ msgstr "Bandförstärkning"
+
+#~ msgid "Band Reduction"
+#~ msgstr "Bandreduktion"
+
+#~ msgid "General"
+#~ msgstr "Allmänt"
+
+#~ msgid "Custom Input Device"
+#~ msgstr "Anpassad indataenhet"
+
+#~ msgid "Custom Output Device"
+#~ msgstr "Anpassad utdataenhet"
+
+#~ msgid "Server Information"
+#~ msgstr "Serverinformation"
+
+#~ msgid "Sampling Rate"
+#~ msgstr "Samplingshastighet"
+
+#~ msgid "Minimum Quantum"
+#~ msgstr "Minsta kvantum"
+
+#~ msgid "Maximum Quantum"
+#~ msgstr "Största kvantum"
+
+#~ msgid "Default Quantum"
+#~ msgstr "Standardkvantum"
+
+#~ msgid "Output Devices"
+#~ msgstr "Utgångsenheter"
+
+#~ msgid "Output Presets"
+#~ msgstr "Utgångsförinställningar"
+
+#~ msgid "Output Autoloading Presets List"
+#~ msgstr "Lista över utgångsförinställningar"
+
+#~ msgid "Input Devices"
+#~ msgstr "Ingångsenheter"
+
+#~ msgid "Input Presets"
+#~ msgstr "Ingångsförinställningar"
+
+#~ msgid "Input Autoloading Presets List"
+#~ msgstr "Lista över ingångsförinställningar"
+
+#~ msgid "Test Signal"
+#~ msgstr "Testsignal"
+
+#~ msgid "Enabled"
+#~ msgstr "Aktiverad"
+
+#~ msgid "Channels"
+#~ msgstr "Kanaler"
+
+#~ msgid "Both Channels"
+#~ msgstr "Båda kanalerna"
+
+#~ msgid "Sine Wave"
+#~ msgstr "Sinusvåg"
+
+#~ msgid "White Noise"
+#~ msgstr "Vitt brus"
+
+#, fuzzy
+#~ msgid "Sequence Length"
+#~ msgstr "Frekvensomfång"
+
+#, fuzzy
+#~ msgid "Seek Window"
+#~ msgstr "Mellanrum (s)"
+
+#, fuzzy
+#~ msgid "Overlap Length"
+#~ msgstr "Filterlängd"
+
+#~ msgid "Remove this effect"
+#~ msgstr "Ta bort denna effekt"
+
+#~ msgid "Add Effect"
+#~ msgstr "Lägg till effekt"
+
+#, fuzzy
+#~ msgid "Go to the previous effect"
+#~ msgstr "Ta bort denna effekt"
+
+#~ msgid "No Effects"
+#~ msgstr "Inga effekter"
+
+#~ msgid "_General"
+#~ msgstr "_Allmänt"
+
+#~ msgid "Service"
+#~ msgstr "Tjänst"
+
+#, fuzzy
+#~ msgid "Update Frequency"
+#~ msgstr "Delad frekvens 1"
+
+#~ msgid "Use Dark Theme"
+#~ msgstr "Använd mörkt tema"
+
+#, fuzzy
+#~ msgid "Native Plugin Window"
+#~ msgstr "Mellanrum (s)"
+
+#~ msgid "_Spectrum"
+#~ msgstr "_Spektrum"
+
+#~ msgid "Points"
+#~ msgstr "Punkter"
+
+#~ msgid "Line Width"
+#~ msgstr "Linjebredd"
+
+#~ msgid "Frequency Range"
+#~ msgstr "Frekvensomfång"
+
+#~ msgid "Minimum"
+#~ msgstr "Minst"
+
+#, fuzzy
+#~ msgid "Discard the current settings and load this preset"
+#~ msgstr "Spara dessa inställningar till fil"
+
+#~ msgid "Save current settings to this preset file"
+#~ msgstr "Spara dessa inställningar till fil"
+
+#, fuzzy
+#~ msgid "Try this community preset"
+#~ msgstr "Sök utgångsförinställning"
+
+#, fuzzy
+#~ msgid "Import"
+#~ msgstr "Importmodell"
+
+#, fuzzy
+#~ msgid "New Preset Name"
+#~ msgstr "Nytt namn på förinställd ingång"
+
+#, fuzzy
+#~ msgid "Search Local Preset"
+#~ msgstr "Sök ingångsförinställning"
+
+#, fuzzy
+#~ msgid "Local Presets List"
+#~ msgstr "Lista över ingångsförinställningar"
+
+#, fuzzy
+#~ msgid "Search Community Preset"
+#~ msgstr "Sök utgångsförinställning"
+
+#, fuzzy
+#~ msgid "Community Presets List"
+#~ msgstr "Lista över utgångsförinställningar"
+
+#~ msgid "Room Size"
+#~ msgstr "Rumsstorlek"
+
+#~ msgid "Small"
+#~ msgstr "Liten"
+
+#~ msgid "Large"
+#~ msgstr "Stor"
+
+#~ msgid "Pre Delay"
+#~ msgstr "Före fördröjning"
+
+#~ msgid "Ambience"
+#~ msgstr "Omgivning"
+
+#~ msgid "Room"
+#~ msgstr "Rum"
+
+#~ msgid "Import Model"
+#~ msgstr "Importmodell"
+
+#, fuzzy
+#~ msgid "Voice Detection"
+#~ msgstr "Försvagning"
+
+#~ msgid "Active Model"
+#~ msgstr "Aktiv modell"
+
+#~ msgid "Overview"
+#~ msgstr "Översikt"
+
+#~ msgid "Quit Easy Effects"
+#~ msgstr "Avsluta Easy Effects"
+
+#, fuzzy
+#~ msgid "Denoise"
+#~ msgstr "Rött brus"
+
+#, fuzzy
+#~ msgid "Dereverberation"
+#~ msgstr "Eko"
+
+#, fuzzy
+#~ msgid "Noise Suppression"
+#~ msgstr "Kompressor"
+
+#, fuzzy
+#~ msgid "Level"
+#~ msgstr "F2 nivå"
+
+#~ msgid "Input Balance"
+#~ msgstr "Ingångsbalans"
+
+#~ msgid "Softclip Level"
+#~ msgstr "Softclipnivå"
+
+#~ msgid "Stereo Matrix"
+#~ msgstr "Stereomatris"
+
+#~ msgid "LR > LL (Mono Left Channel)"
+#~ msgstr "LR > LL (Mono vänster kanal)"
+
+#~ msgid "LR > RR (Mono Right Channel)"
+#~ msgstr "LR > RR (Mono höger kanal)"
+
+#~ msgid "Stereo Mode"
+#~ msgstr "Stereoläge"
+
+#~ msgid "Side Level"
+#~ msgstr "Sidonivå"
+
+#~ msgid "Side Balance"
+#~ msgstr "Sidobalans"
+
+#~ msgid "Middle Level"
+#~ msgstr "Mellannivå"
+
+#~ msgid "Middle Panorama"
+#~ msgstr "Mellanpanorama"
+
+#~ msgid "Output Balance"
+#~ msgstr "Utgångsbalans"
+
+#~ msgid "Delay L/R"
+#~ msgstr "Fördröjning L/R"
+
+#~ msgid "Delay Left Right"
+#~ msgstr "Fördröj vänster höger"
+
+#~ msgid "Stereo Base"
+#~ msgstr "Stereobas"
+
+#~ msgid "Stereo Phase"
+#~ msgstr "Stereofas"
+
+#~ msgid "Creating"
+#~ msgstr "Skapande"
+
+#~ msgid "channels"
+#~ msgstr "kanaler"
+
+#~ msgid "Reset Easy Effects."
+#~ msgstr "Återställ Easy Effects."
+
+#, fuzzy
+#~ msgid "_Output"
+#~ msgstr "Utgång"
+
+#, fuzzy
+#~ msgid "_Input"
+#~ msgstr "Ingång"
+
+#~ msgid "Impulse File Not Imported"
+#~ msgstr "Impulsfilen har inte importerats"
+
+#~ msgid "Import Impulse File"
+#~ msgstr "Importera impulsfil"
+
+#~ msgid "Impulse Response"
+#~ msgstr "Impulssvar"
+
+#~ msgid "Load Impulse"
+#~ msgstr "Ladda impuls"
+
+#~ msgid "Remove Impulse"
+#~ msgstr "Ta bort impuls"
+
+#~ msgid "No Impulse File Loaded"
+#~ msgstr "Ingen impulsfil laddad"
+
+#~ msgid "Failed To Load The Impulse File"
+#~ msgstr "Det gick inte att ladda Impulsfilen"
+
+#~ msgid "Effects"
+#~ msgstr "Effekter"
+
+#~ msgid "Import APO Preset File"
+#~ msgstr "Importera APO-förinställd fil"
+
+#~ msgid "APO Presets"
+#~ msgstr "APO-förinställningar"
+
+#, fuzzy
+#~ msgid "Export EqualizerAPO Preset File"
+#~ msgstr "Importera APO-förinställd fil"
+
+#, fuzzy
+#~ msgid "EqualizerAPO Presets"
+#~ msgstr "APO-förinställningar"
+
+#~ msgid "Import GraphicEQ Preset File"
+#~ msgstr "Importera GraphicEQ-förinställd fil"
+
+#~ msgid "GraphicEQ Presets"
+#~ msgstr "GraphicEQ-förinställningar"
+
+#, fuzzy
+#~ msgid "Output Level Meter"
+#~ msgstr "Utmatningsenhet"
+
+#~ msgid "Remove"
+#~ msgstr "Ta bort"
+
+#~ msgid "Output Device"
+#~ msgstr "Utmatningsenhet"
+
+#, fuzzy
+#~ msgid "Community Preset"
+#~ msgstr "Importera förinställning"
+
+#, fuzzy
+#~ msgid "Wrong Format in Excluded Apps List"
+#~ msgstr "Lista över exkluderade applikationer"
+
+#, fuzzy
+#~ msgid "No Preset Loaded"
+#~ msgstr "Nytt namn på förinställd ingång"
+
+#, fuzzy
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "Lista över ingångsförinställningar"
+
+#, fuzzy
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "Importera förinställning"
+
+#~ msgid "Import Model File"
+#~ msgstr "Importera modellfil"
+
+#~ msgid "RNNoise Models"
+#~ msgstr "RNNoise-modeller"
+
+#~ msgid "Bass Enhancer"
+#~ msgstr "Basförstärkare"
+
+#~ msgid "Crystalizer"
+#~ msgstr "Kristalliserare"
+
+#~ msgid "Echo Canceller"
+#~ msgstr "Ekosläckare"
+
+#~ msgid "Equalizer"
+#~ msgstr "Utjämnare"
+
+#~ msgid "Limiter"
+#~ msgstr "Begränsare"
+
+#~ msgid "Multiband Compressor"
+#~ msgstr "Flerbandskompressor"
+
+#~ msgid "Multiband Gate"
+#~ msgstr "Flerbandsport"
+
+#~ msgid "Reverberation"
+#~ msgstr "Eko"
+
+#~ msgid "Noise Reduction"
+#~ msgstr "Brusreducering"
+
+#~ msgid "Stereo Tools"
+#~ msgstr "Stereoverktyg"
+
+#, fuzzy, c++-format
+#~ msgid "Using {}"
+#~ msgstr "Använder"
+
+#~ msgid "Ceiling"
+#~ msgstr "Tak"
+
+#~ msgid "\"Presets\""
+#~ msgstr "\"Förinställningar\""
+
+#~ msgid "Import a preset"
+#~ msgstr "Importera en förinställning"
+
+#~ msgid "Low-Cut Filter"
+#~ msgstr "Lågklippt filter"
+
+#~ msgid "High-Cut Filter"
+#~ msgstr "Högklippt filter"
+
+#~ msgid "New Output Preset Name"
+#~ msgstr "Nytt namn på förinställd utgång"
+
+#, fuzzy
+#~ msgid "Wet Ratio"
+#~ msgstr "Förhållande (n:1)"
+
+#, fuzzy
+#~ msgid "VAD Threshold"
+#~ msgstr "Tröskelvärde (dB)"
+
+#, fuzzy
+#~ msgid "Low-pass"
+#~ msgstr "Lågpass"
+
+#, fuzzy
+#~ msgid "High-pass"
+#~ msgstr "Högpass"
+
+#~ msgid "Band Type"
+#~ msgstr "Bandtyp"
+
+#~ msgid "Band Mode"
+#~ msgstr "Bandläge"
+
+#, fuzzy
+#~ msgid "Loudness List"
+#~ msgstr "Lista över band"
+
+#~ msgid "High Speed"
+#~ msgstr "Hög hastighet"
+
+#~ msgid "High Quality"
+#~ msgstr "Hög kvalitet"
+
+#~ msgid "Formant"
+#~ msgstr "Formant"
+
+#~ msgid "Preserved"
+#~ msgstr "Bevarad"
+
+#~ msgid "Detector"
+#~ msgstr "Detektor"
+
+#~ msgid "Compound"
+#~ msgstr "Förening"
+
+#~ msgid "Open the Easy Effects Manual"
+#~ msgstr "Öppna Easy Effects Manual"
+
+#~ msgid "High Pass"
+#~ msgstr "Högpass"
+
+#~ msgid "Low Pass"
+#~ msgstr "Lågpass"
+
+#~ msgid "Cancel"
+#~ msgstr "Avbryt"
+
+#, fuzzy
+#~ msgid " PreAmplification"
+#~ msgstr "Förförstärkning"
+
+#~ msgid "Frame Size"
+#~ msgstr "Ramstorlek"
+
+#, fuzzy
+#~ msgid " Low-Pass"
+#~ msgstr "Lågpass"
+
+#~ msgid "Left Delay"
+#~ msgstr "Vänsterfördröjning"
+
+#~ msgid "Right Delay"
+#~ msgstr "Högerfördröjning"
+
+#~ msgid "Left Dry Level"
+#~ msgstr "Vänster torrnivå"
+
+#~ msgid "Right Dry Level"
+#~ msgstr "Höger torrnivå"
+
+#~ msgid "Left Wet Level"
+#~ msgstr "Vänster våtnivå"
+
+#~ msgid "Right Wet Level"
+#~ msgstr "Höger våtnivå"
+
+#, fuzzy
+#~ msgid "Suppression"
+#~ msgstr "Förstärkningsreducering"
+
+#, fuzzy
+#~ msgid "Noise Reduction (Fast)"
+#~ msgstr "Förstärkningsreducering"
+
+#~ msgid "Load APO Preset"
+#~ msgstr "Ladda APO-förinställning"
+
+#~ msgid "Output Presets: "
+#~ msgstr "Utgångsförinställningar: "
+
+#~ msgid "Input Presets: "
+#~ msgstr "Ingångsförinställningar: "
+
+#~ msgid "Split Mode"
+#~ msgstr "Delat läge"
+
+#~ msgid "Split Frequency 2"
+#~ msgstr "Delad frekvens 2"
+
+#~ msgid "Split Frequency 3"
+#~ msgstr "Delad frekvens 3"
+
+#~ msgid "Band 1 Solo"
+#~ msgstr "Band 1 solo"
+
+#~ msgid "Band 1 Detection"
+#~ msgstr "Band 1-detektering"
+
+#~ msgid "Band 1 Attack"
+#~ msgstr "Band 1 attack"
+
+#~ msgid "Band 1 Release"
+#~ msgstr "Band 1 släpp"
+
+#~ msgid "Band 1 Threshold"
+#~ msgstr "Band 1 tröskel"
+
+#~ msgid "Band 1 Ratio"
+#~ msgstr "Band 1-förhållande"
+
+#~ msgid "Band 1 Knee"
+#~ msgstr "Band 1 knä"
+
+#~ msgid "Band 1 Makeup"
+#~ msgstr "Band 1 sammansättning"
+
+#~ msgid "Max Reduction"
+#~ msgstr "Maximal minskning"
+
+#~ msgid "Low Band"
+#~ msgstr "Lågt band"
+
+#~ msgid "Band 2 Bypass"
+#~ msgstr "Förbikoppling av band 2"
+
+#~ msgid "Band 2 Solo"
+#~ msgstr "Band 2 solo"
+
+#~ msgid "Band 2 Detection"
+#~ msgstr "Band 2-detektering"
+
+#~ msgid "Band 2 Attack"
+#~ msgstr "Band 2 attack"
+
+#~ msgid "Band 2 Release"
+#~ msgstr "Band 2 släpp"
+
+#~ msgid "Band 2 Threshold"
+#~ msgstr "Tröskelvärde för band 2"
+
+#~ msgid "Band 2 Ratio"
+#~ msgstr "Band 2-förhållande"
+
+#~ msgid "Band 2 Knee"
+#~ msgstr "Band 2 knä"
+
+#~ msgid "Band 2 Makeup"
+#~ msgstr "Band 2 sammansättning"
+
+#~ msgid "Band 2 Max Reduction"
+#~ msgstr "Band 2 max reduktion"
+
+#~ msgid "Mid Band"
+#~ msgstr "Mittband"
+
+#~ msgid "Band 3 Bypass"
+#~ msgstr "Förbikoppling av band 3"
+
+#~ msgid "Band 3 Solo"
+#~ msgstr "Band 3 solo"
+
+#~ msgid "Band 3 Detection"
+#~ msgstr "Band 3-detektering"
+
+#~ msgid "Band 3 Attack"
+#~ msgstr "Band 3 attack"
+
+#~ msgid "Band 3 Release"
+#~ msgstr "Band 3 släpp"
+
+#~ msgid "Band 3 Threshold"
+#~ msgstr "Band 3 tröskelvärde"
+
+#, fuzzy
+#~ msgid "Band 3 Ratio"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Band 3 Knee"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Band 3 Makeup"
+#~ msgstr "Makeup (dB)"
+
+#, fuzzy
+#~ msgid "Band 3 Max Reduction"
+#~ msgstr "Förstärkningsreducering"
+
+#, fuzzy
+#~ msgid "High Band"
+#~ msgstr "Högpass"
+
+#, fuzzy
+#~ msgid "Band 4 Bypass"
+#~ msgstr "Release (s)"
+
+#, fuzzy
+#~ msgid "Band 4 Solo"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Band 4 Detection"
+#~ msgstr "Förstärkningsreducering"
+
+#, fuzzy
+#~ msgid "Band 4 Attack"
+#~ msgstr "Attack (ms)"
+
+#, fuzzy
+#~ msgid "Band 4 Release"
+#~ msgstr "Release (s)"
+
+#, fuzzy
+#~ msgid "Band 4 Threshold"
+#~ msgstr "Tröskelvärde (dB)"
+
+#, fuzzy
+#~ msgid "Band 4 Ratio"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Band 4 Knee"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Band 4 Makeup"
+#~ msgstr "Makeup (dB)"
+
+#, fuzzy
+#~ msgid "Band 4 Max Reduction"
+#~ msgstr "Förstärkningsreducering"
+
+#~ msgid ""
+#~ "EasyEffects is an advanced audio manipulation tool. It includes an "
+#~ "equalizer, limiter, compressor and a reverberation tool, just to mention "
+#~ "a few. To complement this there is also a built in spectrum analyzer."
+#~ msgstr ""
+#~ "EasyEffects är ett avancerat verktyg för manipulation av ljud. Det "
+#~ "innehåller en ljudutjämnare (equalizer), ljudbegränsare (limiter), "
+#~ "kompressor och ett efterklangsverktyg (eko), för att bara nämna några få. "
+#~ "Där finns även en inbyggd frekvensanalysator som kompletterar dessa."
+
+#~ msgid ""
+#~ "Because EasyEffects uses the default PipeWire sound server it will work "
+#~ "with most, if not all, applications you use. All supported applications "
+#~ "are presented in the main window, where each can be enabled individually."
+#~ msgstr ""
+#~ "Eftersom EasyEffects använder sig av standard PipeWire som ljudserver "
+#~ "stödjer den de flesta, om inte alla, program du använder. Alla "
+#~ "applikationer som stöds presenteras i huvudfönstret, där var och en kan "
+#~ "aktiveras individuellt."
+
+#~ msgid ""
+#~ "Besides manipulating sound output, EasyEffects is able to apply effects "
+#~ "to an input device, such as a microphone. This is, for example, useful in "
+#~ "audio recording, but it also works well during voice conversations."
+#~ msgstr ""
+#~ "Förutom att manipulera dina programs ljud kan EasyEffects tillämpa "
+#~ "effekter på en ingångsenhet, såsom en mikrofon. Detta är exempelvis "
+#~ "användbart vid ljudinspelning, men det fungerar även bra under röstsamtal."
+
+#~ msgid ""
+#~ "When EasyEffects is launched it will conveniently remember the "
+#~ "configuration used in the last session. It is also possible to save all "
+#~ "the current settings as profiles."
+#~ msgstr ""
+#~ "När EasyEffects startas kommer det ihåg konfigurationen som användes "
+#~ "under den senaste sessionen. Det är också möjligt att spara alla aktuella "
+#~ "inställningar som profiler."
+
+#, fuzzy
+#~ msgid "Remove this plugin"
+#~ msgstr "Ingen komprimering"
+
+#, fuzzy
+#~ msgid "Import Presets"
+#~ msgstr "Öppna förinställning"
+
+#, fuzzy
+#~ msgid "Activate"
+#~ msgstr "Ingen komprimering"
+
+#, fuzzy
+#~ msgid "Microphone"
+#~ msgstr "Kalibrering och mikrofon korrigering"
+
+#, fuzzy
+#~ msgid "enabled"
+#~ msgstr "Sinustabell"
+
+#, fuzzy
+#~ msgid "disabled"
+#~ msgstr "Sinustabell"
+
+#~ msgid "Format"
+#~ msgstr "Format"
+
+#~ msgid "Latency"
+#~ msgstr "Latens"
+
+#, fuzzy
+#~ msgid "Output Channel"
+#~ msgstr "Ingångsförstärkning (dB)"
+
+#, fuzzy
+#~ msgid "Channel"
+#~ msgstr "Kanaler"
+
+#, fuzzy
+#~ msgid "Output Effects"
+#~ msgstr "Ingångs-begränsning"
+
+#~ msgid "Settings"
+#~ msgstr "Inställningar"
+
+#, fuzzy
+#~ msgid "Settings Menu"
+#~ msgstr "Inställningar"
+
+#, fuzzy
+#~ msgid "Documentation"
+#~ msgstr "Kalibrering"
+
+#, fuzzy
+#~ msgid "Enable Test Signal"
+#~ msgstr "Testsignal"
+
+#, fuzzy
+#~ msgid "Signal"
+#~ msgstr "Testsignal"
+
+#, fuzzy
+#~ msgid "Show Spectrum"
+#~ msgstr "Spektrum"
+
+#, fuzzy
+#~ msgid "Spectrum Type"
+#~ msgstr "Spektrum"
+
+#, fuzzy
+#~ msgid "Spectrum Color"
+#~ msgstr "Spektrum"
+
+#, fuzzy
+#~ msgid "Maximum Gain Reduction"
+#~ msgstr "Förstärkningsreducering"
+
+#, fuzzy
+#~ msgid "S/C Level"
+#~ msgstr "Nivå"
+
+#~ msgid "Input Limiter"
+#~ msgstr "Ingångs-begränsning"
+
+#~ msgid "Calibration"
+#~ msgstr "Kalibrering"
+
+#, fuzzy
+#~ msgid "Limit"
+#~ msgstr "Gränsvärde (dB)"
+
+#~ msgid "Audio Effects for PulseAudio Applications"
+#~ msgstr "Ljudeffekter för PulseAudio applikationer"
+
+#, fuzzy
+#~ msgid "Audio effects for PulseAudio applications"
+#~ msgstr "Ljudeffekter för PulseAudio applikationer"
+
+#, fuzzy
+#~ msgid "Calibration Microphone"
+#~ msgstr "Kalibrering och mikrofon korrigering"
+
+#~ msgid "Sine"
+#~ msgstr "Sinus"
+
+#~ msgid "Square"
+#~ msgstr "Fyrkant"
+
+#~ msgid "Saw"
+#~ msgstr "Sågtand"
+
+#~ msgid "Triangle"
+#~ msgstr "Triangel"
+
+#~ msgid "Pink Noise"
+#~ msgstr "Skärt brus"
+
+#~ msgid "Ticks"
+#~ msgstr "Tickande"
+
+#~ msgid "Gaussian Noise"
+#~ msgstr "Gaussiskt brus"
+
+#~ msgid "Blue Noise"
+#~ msgstr "Blått brus"
+
+#~ msgid "Violet Noise"
+#~ msgstr "Violett brus"
+
+#~ msgid "Volume"
+#~ msgstr "Volym"
+
+#~ msgid "Measure Noise"
+#~ msgstr "Mät brus"
+
+#~ msgid "Subtract Noise"
+#~ msgstr "Ta bort brus"
+
+#, fuzzy
+#~ msgid "High"
+#~ msgstr "Högpass"
+
+#, fuzzy
+#~ msgid "Very High"
+#~ msgstr "Högpass"
+
+#, fuzzy
+#~ msgid "Detection Likelihood"
+#~ msgstr "Försvagning"
+
+#, fuzzy
+#~ msgid "Select the impulse Response File"
+#~ msgstr "Platt respons"
+
+#, fuzzy
+#~ msgid "Aggressive Mode"
+#~ msgstr "Ingen komprimering"
+
+#, fuzzy
+#~ msgid "Configuration"
+#~ msgstr "Kalibrering"
+
+#, fuzzy
+#~ msgid "Low-pass Frequency"
+#~ msgstr "Återställ frekvens"
+
+#, fuzzy
+#~ msgid "Advanced"
+#~ msgstr "Inställningar"
+
+#, fuzzy
+#~ msgid "Apply APO Preset"
+#~ msgstr "Profiler"
+
+#, fuzzy
+#~ msgid "Detect Silence"
+#~ msgstr "Försvagning"
+
+#, fuzzy
+#~ msgid "Minimum Frequency"
+#~ msgstr "Frekvens (Hz)"
+
+#, fuzzy
+#~ msgid "Resamplers"
+#~ msgstr "Resampler"
+
+#, fuzzy
+#~ msgid "Buffer"
+#~ msgstr "Latens"
+
+#, fuzzy
+#~ msgid "Pipeline Output"
+#~ msgstr "Ljudutjämnare - Utgång"
+
+#, fuzzy
+#~ msgid "Block Size"
+#~ msgstr "Rumsstorlek"
+
+#~ msgid "Resampler"
+#~ msgstr "Resampler"
+
+#, fuzzy
+#~ msgid "Import APO Presets"
+#~ msgstr "Öppna förinställning"
+
+#, fuzzy
+#~ msgid "Gain Detection"
+#~ msgstr "Förstärkningsreducering"
+
+#, fuzzy
+#~ msgid "Suppression Level"
+#~ msgstr "Förstärkningsreducering"
