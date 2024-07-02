@@ -1,0 +1,8 @@
+File=easyeffects_db.kcfg
+NameSpace=db
+ClassName=Main
+Mutators=true
+Notifiers=true
+DefaultValueGetters=true
+Singleton=true
+GenerateProperties=true

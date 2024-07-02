@@ -19,11 +19,6 @@
 
 #pragma once
 
-#include <gdk/gdk.h>
-#include <gio/gio.h>
-#include <gio/gsettingsschema.h>
-#include <glib-object.h>
-#include <glib.h>
 #include <sys/types.h>
 #include <array>
 #include <charconv>
@@ -36,7 +31,6 @@
 #include <string>
 #include <system_error>
 #include <type_traits>
-#include <utility>
 #include <vector>
 
 namespace util {
@@ -63,50 +57,15 @@ auto linear_to_db(const double& amp) -> double;
 auto db_to_linear(const float& db) -> float;
 auto db_to_linear(const double& db) -> double;
 
-auto db20_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean;
-
-auto linear_gain_to_db20(const GValue* value, const GVariantType* expected_type, gpointer user_data) -> GVariant*;
-
-auto db10_gain_to_linear(GValue* value, GVariant* variant, gpointer user_data) -> gboolean;
-
-auto double_to_float(GValue* value, GVariant* variant, gpointer user_data) -> gboolean;
-
-auto db20_gain_to_linear_double(GValue* value, GVariant* variant, gpointer user_data) -> gboolean;
-
-auto linear_double_gain_to_db20(const GValue* value, const GVariantType* expected_type, gpointer user_data)
-    -> GVariant*;
-
-auto double_x10_to_int(GValue* value, GVariant* variant, gpointer user_data) -> gboolean;
-
-auto ms_to_ns(GValue* value, GVariant* variant, gpointer user_data) -> gboolean;
-
 auto remove_filename_extension(const std::string& basename) -> std::string;
 
 void print_thread_id();
-
-auto gchar_array_to_vector(gchar** gchar_array, bool free_data = true) -> std::vector<std::string>;
-
-auto make_gchar_pointer_vector(const std::vector<std::string>& input) -> std::vector<const gchar*>;
-
-auto gsettings_get_color(GSettings* settings, const char* key) -> GdkRGBA;
-
-auto gsettings_get_string(GSettings* settings, const char* key) -> std::string;
-
-auto gsettings_get_range(GSettings* settings, const char* key) -> std::pair<std::string, std::string>;
-
-auto add_new_blocklist_entry(GSettings* settings, const std::string& name) -> bool;
-
-void remove_blocklist_entry(GSettings* settings, const std::string& name);
 
 void idle_add(
     std::function<void()> cb,
     std::function<void()> cleanup_cb = []() {});
 
 auto get_files_name(const std::filesystem::path& dir_path, const std::string& ext) -> std::vector<std::string>;
-
-void reset_all_keys_except(GSettings* settings,
-                           const std::vector<std::string>& blocklist = std::vector<std::string>(),
-                           bool delay = false);
 
 auto str_contains(const std::string& haystack, const std::string& needle) -> bool;
 
@@ -256,36 +215,6 @@ auto linspace(const T& start, const T& stop, const uint& npoints) -> std::vector
   output.push_back(stop);
 
   return output;
-}
-
-// The following is not used and it was made only for reference. May be removed in the future.
-template <Number T>
-auto gsettings_key_check_number_range(GSettings* settings, const char* key, const T& v) -> bool {
-  GSettingsSchema* schema = nullptr;
-  GVariant* g_value = nullptr;
-
-  // Get GSettingsSchema
-  g_object_get(settings, "settings-schema", &schema, nullptr);
-
-  auto* schema_key = g_settings_schema_get_key(schema, key);
-
-  // Get GVariant
-  if constexpr (std::is_same_v<T, double>) {
-    g_value = g_variant_new_double(v);
-  } else if constexpr (std::is_same_v<T, int>) {
-    g_value = g_variant_new_int32(v);
-  }
-
-  if (g_value == nullptr) {
-    return false;
-  }
-
-  const auto is_in_range = g_settings_schema_key_range_check(schema_key, g_value);
-
-  g_variant_unref(g_value);
-  g_settings_schema_unref(schema);
-
-  return is_in_range != 0;
 }
 
 }  // namespace util

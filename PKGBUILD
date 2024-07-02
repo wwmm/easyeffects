@@ -10,9 +10,26 @@ pkgdesc='Audio Effects for PipeWire Applications'
 arch=(x86_64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
-depends=('libadwaita' 'pipewire-pulse' 'lilv' 'libsigc++-3.0' 'libsamplerate' 'zita-convolver' 
-         'libebur128' 'rnnoise' 'soundtouch' 'libbs2b' 'nlohmann-json' 'tbb' 'fmt' 'gsl' 'speexdsp')
-makedepends=('meson' 'itstool' 'appstream-glib' 'git' 'mold' 'ladspa')
+depends=(
+  'kirigami' 
+  'kirigami-addons' 
+  'qqc2-desktop-style' 
+  'breeze-icons' 
+  'qt6-base' 
+  'pipewire-pulse' 
+  'lilv' 
+  'libsigc++-3.0' 
+  'libsamplerate' 
+  'zita-convolver' 
+  'libebur128' 
+  'rnnoise' 
+  'soundtouch' 
+  'libbs2b' 
+  'nlohmann-json' 
+  'tbb' 
+  'speexdsp'
+)
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'intltool' 'appstream-glib' 'mold' 'ladspa')
 optdepends=('calf: limiter, exciter, bass enhancer and others'
             'lsp-plugins: equalizer, compressor, delay, loudness'
             'zam-plugins: maximizer'
