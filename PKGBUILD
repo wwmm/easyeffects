@@ -65,7 +65,7 @@ build() {
 
   cmake \
     -B build  \
-    -S fastgame \
+    -S easyeffects \
     -G Ninja \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
     -Wno-dev
