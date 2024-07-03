@@ -147,6 +147,9 @@ jobs:
         qt6-qtbase-dev
         kirigami-dev
         ki18n-dev
+        kconfigwidgets-dev
+        kconfig-dev
+        kcoreaddons-dev
         appstream-glib-dev
         desktop-file-utils
         fftw-dev
