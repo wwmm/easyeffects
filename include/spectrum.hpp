@@ -65,5 +65,7 @@ class Spectrum : public PluginBase {
 
   uint n_bands = 8192U;
 
-  std::deque<float> deque_in_mono;
+  std::vector<float> latest_samples_mono;
+
+  std::vector<float> hann_window;
 };
