@@ -139,19 +139,18 @@ jobs:
         apk upgrade
 
         # install general build deps
-        apk add meson clang clang-extra-tools build-base bash libc++-dev
+        apk add cmake extra-cmake-modules clang clang-extra-tools build-base bash libc++-dev
 
         # copy pasted from https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
         depends="lv2"
         makedepends="
+        qt6-qtbase-dev
+        kirigami-dev
         appstream-glib-dev
         desktop-file-utils
         fftw-dev
-        fmt-dev
         gsl-dev
-        gtk4.0-dev
         itstool
-        libadwaita-dev
         libbs2b-dev
         libebur128-dev
         libsamplerate-dev
@@ -178,8 +177,9 @@ jobs:
 
     - name: Build with Clang and ${{ matrix.stdlib }}
       run: |
-        CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug ${{ matrix.stdlib == 'libc++' && '-Denable-libcpp-workarounds=true' || '' }}
-        meson compile -C build
+        # CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug ${{ matrix.stdlib == 'libc++' && '-Denable-libcpp-workarounds=true' || '' }}
+        # meson compile -C build
+        CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} cmake -B build -S . -G Ninja -Wno-dev
 
   codeql-analyze:
     name: CodeQL Analyze

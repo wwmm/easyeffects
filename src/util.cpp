@@ -21,19 +21,14 @@
 #include <qdebug.h>
 #include <qlogging.h>
 #include <sys/types.h>
-#include <algorithm>
 #include <array>
 #include <cmath>
-#include <cstring>
 #include <filesystem>
-#include <functional>
 #include <iostream>
 #include <ostream>
 #include <regex>
-#include <sstream>
 #include <string>
 #include <thread>
-#include <utility>
 #include <vector>
 
 namespace util {
