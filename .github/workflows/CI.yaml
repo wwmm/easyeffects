@@ -146,6 +146,7 @@ jobs:
         makedepends="
         qt6-qtbase-dev
         kirigami-dev
+        ki18n-dev
         appstream-glib-dev
         desktop-file-utils
         fftw-dev
