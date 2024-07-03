@@ -30,7 +30,7 @@ REPO_DIR=''
 METAINFO_FILE=''
 
 # Configurable
-DATA_DIR='data'
+DATA_DIR='src/contents'
 
 init() {
   local cmd="$1"

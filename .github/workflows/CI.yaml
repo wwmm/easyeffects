@@ -240,8 +240,7 @@ jobs:
       # build with clang not because we strictly need to (we do need to do some kind of build so config.h shows up)
       # but because any clang compiler failures will cause clang-tidy to fail later on, so we might as well fail fast
       run: |
-        CC=clang CXX=clang++ meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug
-        meson compile -C build
+        CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev -Denable-libportal=true
 
     - name: Install ctcache
       run: |
