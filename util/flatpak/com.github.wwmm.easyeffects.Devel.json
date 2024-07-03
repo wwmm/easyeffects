@@ -1,8 +1,8 @@
 {
     "id": "com.github.wwmm.easyeffects.Devel",
-    "runtime": "org.gnome.Platform",
-    "runtime-version": "46",
-    "sdk": "org.gnome.Sdk",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "23.08",
+    "sdk": "org.kde.Sdk",
     "branch": "stable",
     "command": "easyeffects",
     "finish-args": [
