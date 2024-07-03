@@ -24,6 +24,7 @@
 #include <glib.h>
 #include <sys/types.h>
 #include <algorithm>
+#include <cassert>
 #include <cmath>
 #include <cstddef>
 #include <mutex>
@@ -112,15 +113,15 @@ void Spectrum::process(std::span<float>& left_in,
     deque_in_mono.push_back(0.5F * (left_in[n] + right_in[n]));
   }
 
-  for (size_t n = 0; n < deque_in_mono.size(); n++) {
-    if (n < real_input.size()) {
-      // https :  // en.wikipedia.org/wiki/Hann_function
+  assert(deque_in_mono.size() >= n_bands);
 
-      const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
-                                              static_cast<float>(real_input.size() - 1U)));
+  for (size_t n = 0; n < n_bands; n++) {
+    // https://en.wikipedia.org/wiki/Hann_function
 
-      real_input[n] = deque_in_mono[n] * w;
-    }
+    const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
+                                            static_cast<float>(n_bands - 1U)));
+
+    real_input[n] = deque_in_mono[n] * w;
   }
 
   size_t count = 0U;
