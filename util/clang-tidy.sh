@@ -2,11 +2,6 @@
 set -e
 # write a custom script for ease of use, meson clang-tidy target can't do fixes, and also has somewhat broken threading
 
-if ! meson introspect --projectinfo &> /dev/null; then
-    echo "Error, meson introspect command failed, make sure you are in a meson build directory"
-    exit 1
-fi
-
 if [[ "$PWD" == "" ]]; then
     echo "Error, \$PWD is empty"
     exit 1
