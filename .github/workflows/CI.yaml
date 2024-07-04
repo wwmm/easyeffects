@@ -210,8 +210,10 @@ jobs:
       with:
         languages: cpp # we don't use a matrix build (to analyze multiple lanaguages in parallel) as we are only analyzing c++
         build-mode: manual
+    
+    - name: Building
       run: |
-        CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev
+        cmake -B build -S . -G Ninja -Wno-dev
         cmake --build build
     # - name: Autobuild
     #   uses: github/codeql-action/autobuild@v3.25.11
