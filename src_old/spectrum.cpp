@@ -24,6 +24,7 @@
 #include <glib.h>
 #include <sys/types.h>
 #include <algorithm>
+#include <cassert>
 #include <cmath>
 #include <cstddef>
 #include <mutex>
@@ -44,6 +45,16 @@ Spectrum::Spectrum(const std::string& tag,
       fftw_ready(true) {
   real_input.resize(n_bands);
   output.resize(n_bands / 2U + 1U);
+
+  latest_samples_mono.resize(n_bands);
+
+  // Precompute the Hann window, which is an expensive operation.
+  // https://en.wikipedia.org/wiki/Hann_function
+  hann_window.resize(n_bands);
+  for (size_t n = 0; n < n_bands; n++) {
+    hann_window[n] = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> *
+        static_cast<float>(n) / static_cast<float>(n_bands-1)));
+  }
 
   complex_output = fftwf_alloc_complex(n_bands);
 
@@ -78,21 +89,8 @@ Spectrum::~Spectrum() {
 }
 
 void Spectrum::setup() {
-  deque_in_mono.resize(0U);
-
   std::ranges::fill(real_input, 0.0F);
-
-  /*
-    real_input size is hardcoded to 8192. THe same maxium buffer size hardcoded in PipeWire
-    https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/src/pipewire/filter.c#L48. If we reevei a smaller
-    array we have to insert some zeros in the beginning.
-  */
-
-  if (n_samples < real_input.size()) {
-    while (deque_in_mono.size() != real_input.size() - n_samples) {
-      deque_in_mono.push_back(0.0F);
-    }
-  }
+  std::ranges::fill(latest_samples_mono, 0.0F);
 }
 
 void Spectrum::process(std::span<float>& left_in,
@@ -108,27 +106,23 @@ void Spectrum::process(std::span<float>& left_in,
     return;
   }
 
-  for (uint n = 0U; n < left_in.size(); n++) {
-    deque_in_mono.push_back(0.5F * (left_in[n] + right_in[n]));
+  if (n_samples < n_bands) {
+    // Drop the oldest quantum.
+    for (size_t n = 0; n < n_bands - n_samples; n++)
+      latest_samples_mono[n] = latest_samples_mono[n_samples + n];
+
+    // Copy the new quantum.
+    for (size_t n = 0; n < n_samples; n++)
+      latest_samples_mono[n_bands - n_samples + n] = 0.5F * (left_in[n] + right_in[n]);
+  } else {
+    // Copy the latest n_bands samples.
+    for (size_t n = 0; n < n_bands; n++)
+      latest_samples_mono[n] = 0.5F * (left_in[n_samples - n_bands + n] +
+                                       right_in[n_samples - n_bands + n]);
   }
 
-  for (size_t n = 0; n < deque_in_mono.size(); n++) {
-    if (n < real_input.size()) {
-      // https :  // en.wikipedia.org/wiki/Hann_function
-
-      const float w = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) /
-                                              static_cast<float>(real_input.size() - 1U)));
-
-      real_input[n] = deque_in_mono[n] * w;
-    }
-  }
-
-  size_t count = 0U;
-
-  while (count < n_samples && !deque_in_mono.empty()) {
-    deque_in_mono.pop_front();
-
-    count++;
+  for (size_t n = 0; n < n_bands; n++) {
+    real_input[n] = latest_samples_mono[n] * hann_window[n];
   }
 
   if (send_notifications) {
