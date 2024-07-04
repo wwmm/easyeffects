@@ -23,6 +23,7 @@
 #include <sys/types.h>
 #include <array>
 #include <cmath>
+#include <exception>
 #include <filesystem>
 #include <iostream>
 #include <ostream>
