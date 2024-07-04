@@ -126,6 +126,7 @@ jobs:
       # test also with libc++ as that is not the default, and is good to test as some distros like chimera linux use it over libstdc++
       matrix:
         stdlib: [libstdc++, libc++]
+        abi: ["", "-lc++abi"]
     container:
       image: alpine
 
@@ -183,7 +184,7 @@ jobs:
       run: |
         # CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug ${{ matrix.stdlib == 'libc++' && '-Denable-libcpp-workarounds=true' || '' }}
         # meson compile -C build
-        CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} cmake -B build -S . -G Ninja -Wno-dev
+        CC=clang CXX=clang++ CXXFLAGS="-stdlib=${{ matrix.stdlib }} ${{matrix.abi}}" cmake -B build -S . -G Ninja -Wno-dev
         cmake --build build
 
   codeql-analyze:

@@ -99,9 +99,9 @@ get_version() {
   local version=''
 
   # Read main project meson.build file
-  file="${REPO_DIR}/$(< meson.build)"
+  file="${REPO_DIR}/$(< CMakeLists.txt)"
   if [[ "$?" -ne 0 ]]; then
-    exit_err 'Failed to read meson.build file.'
+    exit_err 'Failed to read the CMakeLists.txt file.'
   fi
   # Extract version string
   # Works as long as "meson_version:" is defined below "version:"

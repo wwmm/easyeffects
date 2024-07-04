@@ -76,4 +76,4 @@ CheckOptions:
 WarningsAsErrors: '*'
 
 # set this to the include directory specifically, not '.*' since we don't want generated files like config.h being scanned
-HeaderFilterRegex: './include/'
+HeaderFilterRegex: '/src/.*(hpp)'
