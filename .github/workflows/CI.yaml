@@ -139,9 +139,9 @@ jobs:
         apk upgrade
 
         # install general build deps
-        apk add cmake extra-cmake-modules clang clang-extra-tools build-base bash libc++ libc++-dev
+        apk add cmake extra-cmake-modules clang clang-extra-tools build-base bash libc++-dev
 
-        # copy pasted from https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
+        # inspired by https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
         depends="lv2"
         makedepends="
         qt6-qtbase-dev
@@ -163,7 +163,6 @@ jobs:
         libtbb-dev
         lilv-dev
         lv2-dev
-        meson
         nlohmann-json
         pipewire-dev
         rnnoise-dev
@@ -183,7 +182,7 @@ jobs:
       run: |
         # CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug ${{ matrix.stdlib == 'libc++' && '-Denable-libcpp-workarounds=true' || '' }}
         # meson compile -C build
-        CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} LDFLAGS=-stdlib=libc++ cmake -B build -S . -G Ninja -Wno-dev
+        CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} cmake -B build -S . -G Ninja -Wno-dev
         cmake --build build
 
   codeql-analyze:
