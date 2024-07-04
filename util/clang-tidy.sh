@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -e
-# write a custom script for ease of use, meson clang-tidy target can't do fixes, and also has somewhat broken threading
 
 if [[ "$PWD" == "" ]]; then
     echo "Error, \$PWD is empty"
