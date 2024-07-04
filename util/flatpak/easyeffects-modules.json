@@ -240,7 +240,7 @@
             "buildsystem": "meson",
             "config-opts": [
                 "-Ddocs=false",
-                "-Dbackend-gtk4=enabled",
+                "-Dbackend-qt6=enabled",
                 "-Dvapi=false"
             ],
             "sources": [
