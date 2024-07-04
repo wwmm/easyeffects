@@ -209,9 +209,12 @@ jobs:
       uses: github/codeql-action/init@v3.25.11
       with:
         languages: cpp # we don't use a matrix build (to analyze multiple lanaguages in parallel) as we are only analyzing c++
-
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v3.25.11
+        build-mode: manual
+      run: |
+        CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev
+        cmake --build build
+    # - name: Autobuild
+    #   uses: github/codeql-action/autobuild@v3.25.11
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3.25.11
