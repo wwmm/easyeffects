@@ -259,47 +259,6 @@
             ]
         },
         {
-            "name": "fmt",
-            "buildsystem": "cmake-ninja",
-            "config-opts": [
-                "-DCMAKE_INSTALL_PREFIX=/app",
-                "-DCMAKE_INSTALL_LIBDIR=/app/lib",
-                "-DBUILD_SHARED_LIBS=ON",
-                "-DFMT_TEST=Off"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/fmtlib/fmt",
-                    "tag": "11.0.0",
-                    "commit": "0041a40c1350ba702d475b9c4ad62da77caea164",
-                    "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/fmtlib/fmt/releases/latest",
-                        "tag-query": ".tag_name",
-                        "version-query": "$tag | sub(\"^jq-\"; \"\")",
-                        "timestamp-query": ".published_at"
-                    }
-                }
-            ]
-        },
-        {
-            "name": "gsl",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://ftp.gnu.org/gnu/gsl/gsl-2.8.tar.gz",
-                    "sha256": "6a99eeed15632c6354895b1dd542ed5a855c0f15d9ad1326c6fe2b2c9e423190",
-                    "x-checker-data": {
-                        "type": "anitya",
-                        "project-id": 1267,
-                        "stable-only": true,
-                        "url-template": "https://ftp.gnu.org/gnu/gsl/gsl-$version.tar.gz"
-                    }
-                }
-            ]
-        },
-        {
             "name": "mold",
             "sources": [
                 {
