@@ -78,7 +78,7 @@
     "modules": [
         {
             "name": "easyeffects",
-            "buildsystem": "meson",
+            "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-Ddevel=true",
                 "-Dbuildtype=debug",
