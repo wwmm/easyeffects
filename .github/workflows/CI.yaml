@@ -208,7 +208,7 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3.25.11
       with:
-        languages: cpp # we don't use a matrix build (to analyze multiple lanaguages in parallel) as we are only analyzing c++
+        languages: cpp 
         build-mode: manual
     
     - name: Building

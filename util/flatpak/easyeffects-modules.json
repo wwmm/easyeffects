@@ -240,7 +240,8 @@
             "buildsystem": "meson",
             "config-opts": [
                 "-Ddocs=false",
-                "-Dbackend-gtk4=enabled"
+                "-Dbackend-gtk4=enabled",
+                "-Dvapi=false"
             ],
             "sources": [
                 {
