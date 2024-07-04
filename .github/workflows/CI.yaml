@@ -139,7 +139,7 @@ jobs:
         apk upgrade
 
         # install general build deps
-        apk add cmake extra-cmake-modules clang clang-extra-tools build-base bash libc++-dev
+        apk add cmake extra-cmake-modules ninja-build clang clang-extra-tools build-base bash libc++-dev
 
         # inspired by https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
         depends="lv2"
