@@ -184,6 +184,7 @@ jobs:
         # CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug ${{ matrix.stdlib == 'libc++' && '-Denable-libcpp-workarounds=true' || '' }}
         # meson compile -C build
         CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} cmake -B build -S . -G Ninja -Wno-dev
+        cmake --build build
 
   codeql-analyze:
     name: CodeQL Analyze
@@ -242,6 +243,7 @@ jobs:
       run: |
         # CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev -Denable-libportal=true
         CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev
+        cmake --build build
 
     - name: Install ctcache
       run: |
