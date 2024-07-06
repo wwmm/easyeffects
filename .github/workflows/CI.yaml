@@ -192,16 +192,13 @@ jobs:
       image: chimeralinux/chimera
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4.1.7
-
     - name: Install deps
       run: |
         apk update
         apk upgrade
 
         # install general build deps
-        apk add cmake extra-cmake-modules samurai clang clang-extra-tools build-base bash libc++-dev
+        apk add cmake extra-cmake-modules samurai clang clang-extra-tools build-base bash libc++-dev nodejs
 
         # inspired by https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
         depends="lv2"
@@ -239,6 +236,9 @@ jobs:
 
         # install libportal since we technically need it for a full check
         apk add libportal-dev
+
+    - name: Checkout repository
+      uses: actions/checkout@v4.1.7
 
     - name: Build with Clang
       run: |
