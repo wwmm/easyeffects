@@ -194,11 +194,12 @@ jobs:
     steps:
     - name: Install deps
       run: |
+        apk add chimera-repo-contrib
         apk update
         apk upgrade
 
         # install general build deps
-        apk add cmake extra-cmake-modules samurai clang clang-extra-tools build-base bash libc++-dev nodejs
+        apk add cmake extra-cmake-modules ninja clang clang-tools-extra build-base bash libcxx-devel nodejs
 
         # inspired by https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
         depends="lv2"
