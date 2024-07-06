@@ -199,7 +199,7 @@ jobs:
         apk upgrade
 
         # install general build deps
-        apk add cmake extra-cmake-modules ninja clang clang-tools-extra base-devel bash libcxx-devel nodejs
+        apk add git cmake extra-cmake-modules ninja clang clang-tools-extra base-devel bash libcxx-devel nodejs
 
         depends="lv2"
         makedepends="
