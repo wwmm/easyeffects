@@ -199,7 +199,7 @@ jobs:
         apk upgrade
 
         # install general build deps
-        apk add cmake extra-cmake-modules ninja clang clang-tools-extra build-base bash libcxx-devel nodejs
+        apk add cmake extra-cmake-modules ninja clang clang-tools-extra base-devel bash libcxx-devel nodejs
 
         # inspired by https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
         depends="lv2"
