@@ -217,18 +217,18 @@ jobs:
         libbs2b-devel
         libebur128-devel
         libsamplerate-devel
-        libsigc++3-devel
+        libsigc++-devel
         libsndfile-devel
-        libtbb-devel
         lilv-devel
-        lv2-devel
+        lv2
         nlohmann-json
+        onetbb-devel
         pipewire-devel
         rnnoise-devel
         soundtouch-devel
         speexdsp-devel
         zita-convolver-devel
-        ladspa-devel
+        ladspa-sdk
         "
 
         # install easyeffects deps
