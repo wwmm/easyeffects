@@ -243,7 +243,7 @@ jobs:
       run: |
         git clone https://github.com/wwmm/easyeffects.git --depth=1 -b eeqt
         cd easyeffects
-        CC=clang CXX=clang++ CXXFLAGS=-stdlib=libstdc++ cmake -B build -S . -G Ninja -Wno-dev -Denable-libcpp-workarounds=true
+        CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev -Denable-libcpp-workarounds=true
         cmake --build build
 
   codeql-analyze:
