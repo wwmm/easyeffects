@@ -240,6 +240,8 @@ jobs:
     - name: Build with Clang
       run: |
         git clone https://github.com/wwmm/easyeffects.git --depth=1
+        cd easyeffects
+        git checkout eeqt
         CC=clang CXX=clang++ CXXFLAGS=-stdlib=libstdc++ cmake -B build -S . -G Ninja -Wno-dev -Denable-libcpp-workarounds=true
         cmake --build build
 
