@@ -205,17 +205,17 @@ jobs:
 
         depends="lv2"
         makedepends="
-        qt6-qtbase-devel
+        appstream
+        appstream-glib-devel
+        desktop-file-utils
+        fftw-devel
+        gettext
+        itstool
         kirigami-devel
         ki18n-devel
         kconfigwidgets-devel
         kconfig-devel
         kcoreaddons-devel
-        appstream-glib-devel
-        desktop-file-utils
-        fftw-devel
-        gsl-devel
-        itstool
         libbs2b-devel
         libebur128-devel
         libsamplerate-devel
@@ -226,6 +226,7 @@ jobs:
         nlohmann-json
         onetbb-devel
         pipewire-devel
+        qt6-qtbase-devel
         rnnoise-devel
         soundtouch-devel
         speexdsp-devel
