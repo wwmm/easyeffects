@@ -122,10 +122,6 @@ jobs:
   alpine-linux:
     name: Alpine Linux
     runs-on: ubuntu-22.04
-    strategy:
-      # test also with libc++ as that is not the default, and is good to test as some distros like chimera linux use it over libstdc++
-      matrix:
-        stdlib: [libstdc++, libc++]
     container:
       image: alpine
 
@@ -178,15 +174,16 @@ jobs:
         # install libportal since we technically need it for a full check
         apk add libportal-dev
 
-    - name: Build with Clang and ${{ matrix.stdlib }}
+    - name: Build with Clang (libstdc++)
       run: |
-        # CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} meson setup build -Dwerror=true -Denable-libportal=true -Dbuildtype=debug ${{ matrix.stdlib == 'libc++' && '-Denable-libcpp-workarounds=true' || '' }}
-        # meson compile -C build
-        CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} cmake -B build -S . -G Ninja -Wno-dev
+        CC=clang CXX=clang++ CXXFLAGS=-stdlib=libstdc++ cmake -B build -S . -G Ninja -Wno-dev -Denable-libcpp-workarounds=true
         cmake --build build
 
   # For some reason a program compiled with libc++ does not link to a Qt built with libstdc++. The linking fails
-  # because of undefined functions. So I moved the libc++ CI a a distribution that uses libc++ by default
+  # because of undefined functions. So I moved the libc++ CI a a distribution that uses libc++ by default.
+  # 
+  # For some reason "actions/checkout@v4.1.7" did not work in the Chimera image. Failed with an error about the nodejs
+  # binary not being found
   chimera-linux:
     name: Chimera Linux
     runs-on: ubuntu-22.04
@@ -240,7 +237,7 @@ jobs:
         # install libportal since we technically need it for a full check
         apk add libportal-devel
 
-    - name: Build with Clang
+    - name: Build with Clang (libc++)
       run: |
         git clone https://github.com/wwmm/easyeffects.git --depth=1 -b eeqt
         cd easyeffects
