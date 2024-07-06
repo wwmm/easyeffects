@@ -185,6 +185,8 @@ jobs:
         CC=clang CXX=clang++ CXXFLAGS=-stdlib=${{ matrix.stdlib }} cmake -B build -S . -G Ninja -Wno-dev
         cmake --build build
 
+  # For some reason a program compiled with libc++ does not link to a Qt built with libstdc++. The linking fails
+  # because of undefined functions. So I moved the libc++ CI a a distribution that uses libc++ by default
   chimera-linux:
     name: Chimera Linux
     runs-on: ubuntu-22.04
@@ -239,9 +241,8 @@ jobs:
 
     - name: Build with Clang
       run: |
-        git clone https://github.com/wwmm/easyeffects.git --depth=1
+        git clone https://github.com/wwmm/easyeffects.git --depth=1 -b eeqt
         cd easyeffects
-        git checkout eeqt
         CC=clang CXX=clang++ CXXFLAGS=-stdlib=libstdc++ cmake -B build -S . -G Ninja -Wno-dev -Denable-libcpp-workarounds=true
         cmake --build build
 
