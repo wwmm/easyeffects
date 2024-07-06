@@ -201,42 +201,41 @@ jobs:
         # install general build deps
         apk add cmake extra-cmake-modules ninja clang clang-tools-extra base-devel bash libcxx-devel nodejs
 
-        # inspired by https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
         depends="lv2"
         makedepends="
-        qt6-qtbase-dev
-        kirigami-dev
-        ki18n-dev
-        kconfigwidgets-dev
-        kconfig-dev
-        kcoreaddons-dev
-        appstream-glib-dev
+        qt6-qtbase-devel
+        kirigami-devel
+        ki18n-devel
+        kconfigwidgets-devel
+        kconfig-devel
+        kcoreaddons-devel
+        appstream-glib-devel
         desktop-file-utils
-        fftw-dev
-        gsl-dev
+        fftw-devel
+        gsl-devel
         itstool
-        libbs2b-dev
-        libebur128-dev
-        libsamplerate-dev
-        libsigc++3-dev
-        libsndfile-dev
-        libtbb-dev
-        lilv-dev
-        lv2-dev
+        libbs2b-devel
+        libebur128-devel
+        libsamplerate-devel
+        libsigc++3-devel
+        libsndfile-devel
+        libtbb-devel
+        lilv-devel
+        lv2-devel
         nlohmann-json
-        pipewire-dev
-        rnnoise-dev
-        soundtouch-dev
-        speexdsp-dev
-        zita-convolver-dev
-        ladspa-dev
+        pipewire-devel
+        rnnoise-devel
+        soundtouch-devel
+        speexdsp-devel
+        zita-convolver-devel
+        ladspa-devel
         "
 
         # install easyeffects deps
         apk add $makedepends $depends
 
         # install libportal since we technically need it for a full check
-        apk add libportal-dev
+        apk add libportal-devel
 
     - name: Checkout repository
       uses: actions/checkout@v4.1.7
