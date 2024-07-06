@@ -237,11 +237,9 @@ jobs:
         # install libportal since we technically need it for a full check
         apk add libportal-devel
 
-    - name: Checkout repository
-      uses: actions/checkout@v4.1.7
-
     - name: Build with Clang
       run: |
+        git clone https://github.com/wwmm/easyeffects.git --depth=1
         CC=clang CXX=clang++ CXXFLAGS=-stdlib=libstdc++ cmake -B build -S . -G Ninja -Wno-dev -Denable-libcpp-workarounds=true
         cmake --build build
 
