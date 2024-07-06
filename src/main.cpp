@@ -93,7 +93,7 @@ int main(int argc, char* argv[]) {
 
   auto ee_db = db::Main::self();
 
-  qmlRegisterSingletonInstance("EEdb", VERSION_MAJOR, VERSION_MINOR, "EEdb", ee_db);
+  qmlRegisterSingletonInstance("EEdb", VERSION_MAJOR, VERSION_MINOR, "EEdb", ee_db);  // NOLINT
 
   // QObject::connect(cfgWindow, &cfg::Window::widthChanged,
   //                  [=]() { util::warning(util::to_string(cfg::Window::width())); });

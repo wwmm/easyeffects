@@ -26,6 +26,7 @@
 #include <exception>
 #include <filesystem>
 #include <iostream>
+#include <numbers>
 #include <ostream>
 #include <regex>
 #include <string>
@@ -88,11 +89,11 @@ auto linear_to_db(const double& amp) -> double {
 }
 
 auto db_to_linear(const float& db) -> float {
-  return std::exp((db / 20.0F) * std::log(10.0F));
+  return std::exp((db / 20.0F) * std::numbers::ln10_v<float>);
 }
 
 auto db_to_linear(const double& db) -> double {
-  return std::exp((db / 20.0) * std::log(10.0));
+  return std::exp((db / 20.0) * std::numbers::ln10);
 }
 
 auto remove_filename_extension(const std::string& basename) -> std::string {

@@ -120,7 +120,7 @@ jobs:
 
 
   alpine-linux:
-    name: Alpine Linux
+    name: Alpine Linux (stdc++)
     runs-on: ubuntu-22.04
     container:
       image: alpine
@@ -185,7 +185,7 @@ jobs:
   # For some reason "actions/checkout@v4.1.7" did not work in the Chimera image. Failed with an error about the nodejs
   # binary not being found
   chimera-linux:
-    name: Chimera Linux
+    name: Chimera Linux (libc++)
     runs-on: ubuntu-22.04
     container:
       image: chimeralinux/chimera

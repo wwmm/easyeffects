@@ -19,4 +19,5 @@ cd "$BUILD_DIR"
 # only scan c++ files in src, we don't want to scan the generated easyeffects-resources.c file
 # it is fine to use -fix everywhere, since it will still exit with error even if errors were all automatically fixed.
 # however we do not use -fix since it is safer to just manually fix things
-python3 ../util/run-clang-tidy.py -p . -config-file=../.clang-tidy "$REPO_DIR"/src/*.cpp "$BUILD_DIR"/src/easyeffects_autogen/mocs_compilation.cpp
+# python3 ../util/run-clang-tidy.py -p . -config-file=../.clang-tidy "$REPO_DIR"/src/*.cpp "$BUILD_DIR"/src/easyeffects_autogen/mocs_compilation.cpp
+python3 ../util/run-clang-tidy.py -p . -config-file=../.clang-tidy "$REPO_DIR"/src/*.cpp 
