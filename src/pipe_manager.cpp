@@ -1255,12 +1255,8 @@ void on_registry_global(void* data,
       return;
     }
 
-    pm->lock();
-
     pw_node_add_listener(proxy, &nd->object_listener, &node_events, nd);
     pw_proxy_add_listener(proxy, &nd->proxy_listener, &node_proxy_events, nd);
-
-    pm->unlock();
 
     // sometimes PipeWire destroys the pointer before signal_idle is called,
     // therefore we make a copy of NodeInfo
@@ -1329,12 +1325,8 @@ void on_registry_global(void* data,
     pd->id = id;
     pd->serial = serial;
 
-    pm->lock();
-
     pw_link_add_listener(proxy, &pd->object_listener, &link_events, pd);
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &link_proxy_events, pd);
-
-    pm->unlock();
 
     auto link_info = link_info_from_props(props);
 
@@ -1375,11 +1367,7 @@ void on_registry_global(void* data,
     pd->id = id;
     pd->serial = serial;
 
-    pm->lock();
-
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &port_proxy_events, pd);
-
-    pm->unlock();
 
     auto port_info = port_info_from_props(props);
 
@@ -1413,12 +1401,8 @@ void on_registry_global(void* data,
     pd->id = id;
     pd->serial = serial;
 
-    pm->lock();
-
     pw_module_add_listener(proxy, &pd->object_listener, &module_events, pd);
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &module_proxy_events, pd);
-
-    pm->unlock();
 
     ModuleInfo m_info{.id = id, .serial = serial};
 
@@ -1448,12 +1432,8 @@ void on_registry_global(void* data,
     pd->id = id;
     pd->serial = serial;
 
-    pm->lock();
-
     pw_client_add_listener(proxy, &pd->object_listener, &client_events, pd);
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &client_proxy_events, pd);
-
-    pm->unlock();
 
     ClientInfo c_info{.id = id, .serial = serial};
 
@@ -1478,11 +1458,7 @@ void on_registry_global(void* data,
         pm->metadata = static_cast<pw_metadata*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_METADATA, 0));
 
         if (pm->metadata != nullptr) {
-          pm->lock();
-
           pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);
-
-          pm->unlock();
         } else {
           util::warning("pw_registry_bind returned a null metadata object");
         }
@@ -1515,12 +1491,8 @@ void on_registry_global(void* data,
         pd->id = id;
         pd->serial = serial;
 
-        pm->lock();
-
         pw_device_add_listener(proxy, &pd->object_listener, &device_events, pd);
         pw_proxy_add_listener(proxy, &pd->proxy_listener, &device_proxy_events, pd);
-
-        pm->unlock();
 
         DeviceInfo d_info{.id = id, .serial = serial, .media_class = media_class};
 
@@ -1918,8 +1890,6 @@ auto PipeManager::link_nodes(const uint& output_node_id,
       }
 
       if (ports_match) {
-        lock();
-
         pw_properties* props = pw_properties_new(nullptr, nullptr);
 
         pw_properties_set(props, PW_KEY_LINK_PASSIVE, (link_passive) ? "true" : "false");
@@ -1928,6 +1898,8 @@ auto PipeManager::link_nodes(const uint& output_node_id,
         pw_properties_set(props, PW_KEY_LINK_OUTPUT_PORT, util::to_string(outp.id).c_str());
         pw_properties_set(props, PW_KEY_LINK_INPUT_NODE, util::to_string(input_node_id).c_str());
         pw_properties_set(props, PW_KEY_LINK_INPUT_PORT, util::to_string(inp.id).c_str());
+
+        lock();
 
         auto* proxy = static_cast<pw_proxy*>(
             pw_core_create_object(core, "link-factory", PW_TYPE_INTERFACE_Link, PW_VERSION_LINK, &props->dict, 0));
