@@ -2,10 +2,10 @@
     <qresource prefix="/ui">
         <file alias="EESpinBox.qml">contents/ui/EESpinBox.qml</file>
         <file alias="EESwitch.qml">contents/ui/EESwitch.qml</file>
-        <file alias="InputTab.qml">contents/ui/InputTab.qml</file>
+        <file alias="InputPage.qml">contents/ui/InputPage.qml</file>
         <file alias="main.qml">contents/ui/main.qml</file>
-        <file alias="OutputTab.qml">contents/ui/OutputTab.qml</file>
-        <file alias="PipeWireTab.qml">contents/ui/PipeWireTab.qml</file>
+        <file alias="OutputPage.qml">contents/ui/OutputPage.qml</file>
+        <file alias="PipeWirePage.qml">contents/ui/PipeWirePage.qml</file>
         <file alias="Common.js">contents/ui/Common.js</file>
     </qresource>
 </RCC>

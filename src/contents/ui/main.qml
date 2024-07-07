@@ -12,9 +12,9 @@ Kirigami.ApplicationWindow {
 
     width: EEdb.width
     height: EEdb.height
-    pageStack.initialPage: outputTab
-    pageStack.globalToolBar.style: Kirigami.Settings.isMobile ? Kirigami.ApplicationHeaderStyle.Titles : Kirigami.ApplicationHeaderStyle.Auto
     title: i18nc("@title:window", "EasyEffects")
+    pageStack.initialPage: outputPage
+    pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.None
     onWidthChanged: {
         EEdb.width = applicationWindow().width;
     }
@@ -27,20 +27,20 @@ Kirigami.ApplicationWindow {
 
     }
 
-    OutputTab {
-        id: outputTab
+    OutputPage {
+        id: outputPage
 
         visible: true
     }
 
-    InputTab {
-        id: intputTab
+    InputPage {
+        id: inputPage
 
         visible: false
     }
 
-    PipeWireTab {
-        id: pipewireTab
+    PipeWirePage {
+        id: pipeWirePage
 
         visible: false
     }
@@ -56,31 +56,11 @@ Kirigami.ApplicationWindow {
 
     }
 
-    Kirigami.OverlayDrawer {
-        id: progressBottomDrawer
-
-        edge: Qt.BottomEdge
-        modal: false
-        parent: applicationWindow().overlay
-        drawerOpen: false
-
-        contentItem: RowLayout {
-            Controls.ProgressBar {
-                from: 0
-                to: 100
-                indeterminate: true
-                Layout.fillWidth: true
-            }
-
-        }
-
-    }
-
     SystemTrayIcon {
         id: tray
 
         visible: EEdb.showTrayIcon
-        icon.name: "easyeffects"
+        icon.name: "com.github.wwmm.easyeffects"
         onActivated: {
             if (!root.visible) {
                 root.show();
@@ -111,70 +91,89 @@ Kirigami.ApplicationWindow {
 
     }
 
-    globalDrawer: Kirigami.GlobalDrawer {
-        id: globalDrawer
+    header: Kirigami.AbstractApplicationHeader {
 
-        drawerOpen: true
-        showHeaderWhenCollapsed: true
-        collapsible: true
-        modal: Kirigami.Settings.isMobile ? true : false
-        actions: [
-            Kirigami.Action {
-                text: outputTab.title
-                icon.name: "document-properties-symbolic"
-                checked: outputTab.visible
-                onTriggered: {
-                    if (!outputTab.visible) {
-                        while (pageStack.depth > 0)pageStack.pop()
-                        pageStack.push(outputTab);
-                    }
-                }
-            },
-            Kirigami.Action {
-                text: intputTab.title
-                icon.name: "dialog-scripts"
-                checked: intputTab.visible
-                onTriggered: {
-                    if (!intputTab.visible) {
-                        while (pageStack.depth > 0)pageStack.pop()
-                        pageStack.push(intputTab);
-                    }
-                }
-            },
-            Kirigami.Action {
-                text: pipewireTab.title
-                icon.name: "show-gpu-effects-symbolic"
-                checked: pipewireTab.visible
-                onTriggered: {
-                    if (!pipewireTab.visible) {
-                        while (pageStack.depth > 0)pageStack.pop()
-                        pageStack.push(pipewireTab);
-                    }
-                }
+        contentItem: RowLayout {
+            anchors {
+                left: parent.left
+                leftMargin: Kirigami.Units.smallSpacing
+                right: parent.right
+                rightMargin: Kirigami.Units.smallSpacing
             }
-        ]
 
-        header: Kirigami.AbstractApplicationHeader {
-
-            contentItem: Kirigami.ActionToolBar {
+            Kirigami.ActionToolBar {
+                alignment: Qt.AlignLeft
                 actions: [
-                    Kirigami.Action {
-                        text: i18n("Apply")
-                        icon.name: "dialog-ok-apply-symbolic"
-                        displayHint: Kirigami.DisplayHint.KeepVisible
-                        onTriggered: {
-                            progressBottomDrawer.open();
-                            FGPresetsBackend.applySettings();
-                        }
-                    },
                     Kirigami.Action {
                         text: i18n("Presets")
                         icon.name: "bookmarks-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         onTriggered: {
-                            presetsMenu.open();
+                            showPassiveNotification("Preset Menu!");
                         }
                     },
+                    Kirigami.Action {
+                        text: i18n("Turn Effects On/Off")
+                        icon.name: "system-shutdown-symbolic"
+                        displayHint: Kirigami.DisplayHint.IconOnly
+                        checkable: true
+                        onTriggered: {
+                            showPassiveNotification("Turn Effects On/Off");
+                        }
+                    }
+                ]
+            }
+
+            Kirigami.ActionToolBar {
+                id: tabbar
+
+                alignment: Qt.AlignHCenter
+                actions: [
+                    Kirigami.Action {
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        icon.name: "audio-speakers-symbolic"
+                        text: "Output"
+                        checkable: true
+                        checked: outputPage.visible
+                        onTriggered: {
+                            if (!outputPage.visible) {
+                                while (pageStack.depth > 0)pageStack.pop()
+                                pageStack.push(outputPage);
+                            }
+                        }
+                    },
+                    Kirigami.Action {
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        icon.name: "audio-input-microphone-symbolic"
+                        text: "Input"
+                        checkable: true
+                        checked: inputPage.visible
+                        onTriggered: {
+                            if (!inputPage.visible) {
+                                while (pageStack.depth > 0)pageStack.pop()
+                                pageStack.push(inputPage);
+                            }
+                        }
+                    },
+                    Kirigami.Action {
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        icon.name: "network-server-symbolic"
+                        text: "PipeWire"
+                        checkable: true
+                        checked: pipeWirePage.visible
+                        onTriggered: {
+                            if (!pipeWirePage.visible) {
+                                while (pageStack.depth > 0)pageStack.pop()
+                                pageStack.push(pipeWirePage);
+                            }
+                        }
+                    }
+                ]
+            }
+
+            Kirigami.ActionToolBar {
+                alignment: Qt.AlignRight
+                actions: [
                     Kirigami.Action {
                         text: i18n("Preferences")
                         icon.name: "gtk-preferences"
@@ -185,7 +184,7 @@ Kirigami.ApplicationWindow {
                     },
                     Kirigami.Action {
                         text: i18n("About EasyEffects")
-                        icon.name: "easyeffects"
+                        icon.name: "com.github.wwmm.easyeffects"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
                             aboutDialog.open();
@@ -200,38 +199,6 @@ Kirigami.ApplicationWindow {
                         }
                     }
                 ]
-
-                anchors {
-                    left: parent.left
-                    leftMargin: Kirigami.Units.smallSpacing
-                    right: parent.right
-                    rightMargin: Kirigami.Units.smallSpacing
-                }
-
-            }
-
-        }
-
-        footer: Controls.ToolBar {
-
-            contentItem: RowLayout {
-                Kirigami.ActionTextField {
-                    id: executableName
-
-                    visible: !globalDrawer.collapsed
-                    Layout.fillWidth: true
-                    placeholderText: i18n("Executable Name")
-                    rightActions: [
-                        Kirigami.Action {
-                            icon.name: "edit-clear"
-                            onTriggered: {
-                                executableName.text = "";
-                                executableName.accepted();
-                            }
-                        }
-                    ]
-                }
-
             }
 
         }

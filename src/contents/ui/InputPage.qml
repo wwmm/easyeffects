@@ -6,18 +6,6 @@ import org.kde.kirigami as Kirigami
 Kirigami.ScrollablePage {
     id: widgetRoot
 
-    title: i18n("Output")
-    actions: [
-        Kirigami.Action {
-            // onTriggered: CppModelEnvVars.append("", "")
-
-            id: addAction
-
-            icon.name: "list-add"
-            text: i18nc("@action:button", "Add Row")
-        }
-    ]
-
     Component {
         id: listDelegate
 
