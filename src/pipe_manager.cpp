@@ -575,7 +575,9 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         pm->stream_input_changed.emit(nd_info_copy);
       });
     }
-  } else if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
+  }
+
+  if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
     const auto nd_info_copy = *nd->nd_info;
 
     util::idle_add([=]() {

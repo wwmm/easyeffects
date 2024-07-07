@@ -23,6 +23,7 @@
 #include <glib-object.h>
 #include <glib.h>
 #include <pipewire/link.h>
+#include <pipewire/node.h>
 #include <sigc++/functors/mem_fun.h>
 #include <spa/utils/defs.h>
 #include <algorithm>
@@ -81,7 +82,6 @@ StreamOutputEffects::StreamOutputEffects(PipeManager* pipe_manager)
   }));
 
   connections.push_back(pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added)));
-  connections.push_back(pm->link_changed.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_link_changed)));
 
   connect_filters();
 
@@ -150,53 +150,6 @@ auto StreamOutputEffects::apps_want_to_play() -> bool {
   return std::ranges::any_of(pm->list_links, [&](const auto& link) {
     return (link.input_node_id == pm->ee_sink_node.id) && (link.state == PW_LINK_STATE_ACTIVE);
   });
-}
-
-void StreamOutputEffects::on_link_changed(const LinkInfo link_info) {
-  // We are not interested in the other link states
-
-  if (link_info.state != PW_LINK_STATE_ACTIVE && link_info.state != PW_LINK_STATE_PAUSED) {
-    return;
-  }
-
-  /*
-    If bypass is enabled do not touch the plugin pipeline
-  */
-
-  if (bypass) {
-    return;
-  }
-
-  if (apps_want_to_play()) {
-    if (list_proxies.empty()) {
-      util::debug("At least one app linked to our device wants to play. Linking our filters.");
-
-      connect_filters();
-    };
-  } else {
-    // no apps want to play, check if the inactivity timer is enabled
-    if (g_settings_get_boolean(global_settings, "inactivity-timer-enable")) {
-      // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
-      int inactivity_timeout = g_settings_get_int(global_settings, "inactivity-timeout");
-      g_timeout_add_seconds(inactivity_timeout, GSourceFunc(+[](StreamOutputEffects* self) {
-                              if (!self->apps_want_to_play() && !self->list_proxies.empty()) {
-                                util::debug("No app linked to our device wants to play. Unlinking our filters.");
-
-                                self->disconnect_filters();
-                              }
-
-                              return G_SOURCE_REMOVE;
-                            }),
-                            this);
-
-    } else {
-      // otherwise, do nothing
-      if (!list_proxies.empty()) {
-        util::debug(
-            "No app linked to our device wants to play, but the inactivity timer is disabled. Leaving filters linked.");
-      };
-    };
-  };
 }
 
 void StreamOutputEffects::connect_filters(const bool& bypass) {

@@ -44,6 +44,4 @@ class StreamOutputEffects : public EffectsBase {
   auto apps_want_to_play() -> bool;
 
   void on_app_added(NodeInfo node_info);
-
-  void on_link_changed(LinkInfo link_info);
 };

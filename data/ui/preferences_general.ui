@@ -88,6 +88,7 @@
                 <child>
                     <object class="AdwActionRow">
                         <property name="title" translatable="yes">Inactivity Timeout</property>
+                        <property name="subtitle" translatable="yes">Input Pipeline</property>
                         <property name="activatable-widget">inactivity_timer_enable</property>
                         <child>
                             <object class="GtkSwitch" id="inactivity_timer_enable">
