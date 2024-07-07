@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-28 14:40+0000\n"
+"POT-Creation-Date: 2024-07-07 15:22+0000\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1916,47 +1916,52 @@ msgstr ""
 msgid "Inactivity Timeout"
 msgstr "Expirarea Activității"
 
-#: data/ui/preferences_general.ui:119
+#: data/ui/preferences_general.ui:91
+#, fuzzy
+msgid "Input Pipeline"
+msgstr "Nivel Input"
+
+#: data/ui/preferences_general.ui:120
 #, fuzzy
 msgid "Update Interval"
 msgstr "Integrat"
 
-#: data/ui/preferences_general.ui:120
+#: data/ui/preferences_general.ui:121
 msgid "Related to Level Meters and Spectrum"
 msgstr ""
 
-#: data/ui/preferences_general.ui:142
+#: data/ui/preferences_general.ui:143
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Frecvență"
 
-#: data/ui/preferences_general.ui:143
+#: data/ui/preferences_general.ui:144
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: data/ui/preferences_general.ui:167 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:170
+#: data/ui/preferences_general.ui:171
 msgid "Use Dark Theme"
 msgstr "Folosește Tema Întunecată"
 
-#: data/ui/preferences_general.ui:182
+#: data/ui/preferences_general.ui:183
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
-#: data/ui/preferences_general.ui:196
+#: data/ui/preferences_general.ui:197
 #, fuzzy
 msgid "Experimental Features"
 msgstr "Experimental"
 
-#: data/ui/preferences_general.ui:199
+#: data/ui/preferences_general.ui:200
 #, fuzzy
 msgid "Native Plugin Window"
 msgstr "Ascunde Fereastra."
 
-#: data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:201
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-28 14:40+0000\n"
+"POT-Creation-Date: 2024-07-07 15:22+0000\n"
 "PO-Revision-Date: 2023-11-25 07:02+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1906,47 +1906,52 @@ msgstr ""
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: data/ui/preferences_general.ui:119
+#: data/ui/preferences_general.ui:91
+#, fuzzy
+msgid "Input Pipeline"
+msgstr "Ulazni uređaj"
+
+#: data/ui/preferences_general.ui:120
 #, fuzzy
 msgid "Update Interval"
 msgstr "Integrirano"
 
-#: data/ui/preferences_general.ui:120
+#: data/ui/preferences_general.ui:121
 msgid "Related to Level Meters and Spectrum"
 msgstr ""
 
-#: data/ui/preferences_general.ui:142
+#: data/ui/preferences_general.ui:143
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Frekvencija"
 
-#: data/ui/preferences_general.ui:143
+#: data/ui/preferences_general.ui:144
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: data/ui/preferences_general.ui:167 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
 msgid "Style"
 msgstr "Stil"
 
-#: data/ui/preferences_general.ui:170
+#: data/ui/preferences_general.ui:171
 msgid "Use Dark Theme"
 msgstr "Koristi tamnu temu"
 
-#: data/ui/preferences_general.ui:182
+#: data/ui/preferences_general.ui:183
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
-#: data/ui/preferences_general.ui:196
+#: data/ui/preferences_general.ui:197
 #, fuzzy
 msgid "Experimental Features"
 msgstr "Eksperimentalna"
 
-#: data/ui/preferences_general.ui:199
+#: data/ui/preferences_general.ui:200
 #, fuzzy
 msgid "Native Plugin Window"
 msgstr "Prozor"
 
-#: data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:201
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
