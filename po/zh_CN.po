@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-07 15:22+0000\n"
+"POT-Creation-Date: 2024-07-07 15:43+0000\n"
 "PO-Revision-Date: 2024-07-07 04:09+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1754,44 +1754,43 @@ msgstr "空闲超时"
 msgid "Input Pipeline"
 msgstr "输入设备"
 
-#: data/ui/preferences_general.ui:120 data/ui/preferences_general.ui:119
+#: data/ui/preferences_general.ui:120
 msgid "Update Interval"
 msgstr "更新间隔"
 
-#: data/ui/preferences_general.ui:121 data/ui/preferences_general.ui:120
+#: data/ui/preferences_general.ui:121
 msgid "Related to Level Meters and Spectrum"
 msgstr "涉及电平表与频谱"
 
-#: data/ui/preferences_general.ui:143 data/ui/preferences_general.ui:142
+#: data/ui/preferences_general.ui:143
 msgid "Update Frequency"
 msgstr "更新频率"
 
-#: data/ui/preferences_general.ui:144 data/ui/preferences_general.ui:143
+#: data/ui/preferences_general.ui:144
 msgid "Related to LV2 Plugins"
 msgstr "涉及 LV2 插件"
 
 #: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
-#: data/ui/preferences_general.ui:167
 msgid "Style"
 msgstr "界面风格"
 
-#: data/ui/preferences_general.ui:171 data/ui/preferences_general.ui:170
+#: data/ui/preferences_general.ui:171
 msgid "Use Dark Theme"
 msgstr "使用暗色主题"
 
-#: data/ui/preferences_general.ui:183 data/ui/preferences_general.ui:182
+#: data/ui/preferences_general.ui:183
 msgid "Hide Menus on Outside Clicks"
 msgstr "点击外部时隐藏菜单"
 
-#: data/ui/preferences_general.ui:197 data/ui/preferences_general.ui:196
+#: data/ui/preferences_general.ui:197
 msgid "Experimental Features"
 msgstr "实验性功能"
 
-#: data/ui/preferences_general.ui:200 data/ui/preferences_general.ui:199
+#: data/ui/preferences_general.ui:200
 msgid "Native Plugin Window"
 msgstr "原生插件窗口"
 
-#: data/ui/preferences_general.ui:201 data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:201
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "允许显示或隐藏原生插件窗口"
 
@@ -2547,10 +2546,12 @@ msgstr "立体声工具"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
+#, c++-format
 msgid "{} Not Available"
 msgstr "{} 不可用"
 
 #: src/ui_helpers.cpp:97
+#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2559,6 +2560,7 @@ msgstr ""
 "失的软件包。"
 
 #: src/ui_helpers.cpp:103
+#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2574,6 +2576,7 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:253
+#, c++-format
 msgid "Using {}"
 msgstr "正在使用 {}"
 
