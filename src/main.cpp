@@ -4,6 +4,7 @@
 #include <qobject.h>
 #include <qqml.h>
 #include <qqmlapplicationengine.h>
+#include <qqmlcontext.h>
 #include <qquickstyle.h>
 #include <qstandardpaths.h>
 #include <qstringliteral.h>
@@ -12,7 +13,6 @@
 #include <KAboutData>
 #include <KLocalizedString>
 #include <QApplication>
-#include <QtQml>
 #include <memory>
 #include "config.h"
 #include "easyeffects_db.h"
