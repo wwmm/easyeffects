@@ -121,8 +121,12 @@ Kirigami.ApplicationWindow {
                         icon.name: "system-shutdown-symbolic"
                         displayHint: Kirigami.DisplayHint.IconOnly
                         checkable: true
+                        checked: !EEdb.bypass
                         onTriggered: {
                             showPassiveNotification("Turn Effects On/Off");
+                            if (checked !== !EEdb.bypass)
+                                EEdb.bypass = !checked;
+
                         }
                     }
                 ]

@@ -27,6 +27,7 @@ FormCard.AbstractFormDelegate {
     property real stepSize: 1
     property bool editable: true
     property string label: ""
+    property string subtitle: ""
     property string unit: ""
     property alias displayText: spinbox.displayText
     property var status: Kirigami.MessageType.Information
@@ -44,13 +45,26 @@ FormCard.AbstractFormDelegate {
             Layout.fillWidth: true
             spacing: Kirigami.Units.smallSpacing
 
-            Label {
-                Layout.fillWidth: true
-                text: control.label
-                elide: Text.ElideRight
-                color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
-                wrapMode: Text.Wrap
-                maximumLineCount: 2
+            ColumnLayout {
+                Label {
+                    Layout.fillWidth: true
+                    text: control.label
+                    elide: Text.ElideRight
+                    color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
+                    wrapMode: Text.Wrap
+                    maximumLineCount: 2
+                }
+
+                Label {
+                    Layout.fillWidth: true
+                    text: control.subtitle
+                    elide: Text.ElideRight
+                    color: Kirigami.Theme.disabledTextColor
+                    wrapMode: Text.Wrap
+                    maximumLineCount: 2
+                    visible: !Common.isEmpty(control.subtitle)
+                }
+
             }
 
             SpinBox {
@@ -76,7 +90,6 @@ FormCard.AbstractFormDelegate {
                 inputMethodHints: Qt.ImhFormattedNumbersOnly
                 textFromValue: (value, locale) => {
                     let unit_str = (Common.isEmpty(unit)) ? "" : " " + unit;
-                    // console.log(value);
                     locale.numberOptions = Locale.OmitGroupSeparator;
                     let t = Number(value / spinbox.decimalFactor).toLocaleString(locale, 'f', control.decimals) + unit_str;
                     textInputSpinBox.text = t;
@@ -85,7 +98,6 @@ FormCard.AbstractFormDelegate {
                 valueFromText: (text, locale) => {
                     let re = /-?\d*[.,]?\d*/;
                     let regex_result = re.exec(text);
-                    // console.log(regex_result);
                     let v = Number.fromLocaleString(locale, regex_result[0]) * spinbox.decimalFactor;
                     v = (!isNaN(v)) ? Math.round(v) : spinbox.value;
                     return v;

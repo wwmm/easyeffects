@@ -21,4 +21,36 @@
             <default>""</default>
         </entry>
     </group>
+    <group name="EffectsPipelines">
+        <entry name="bypass" type="Bool">
+            <label>Puts the Effects Pipelines in Passthrough Mode.</label>
+            <default>false</default>
+        </entry>
+        <entry name="processAllOutputs" type="Bool">
+            <label>Automatically moves Audio Streams to EasyEffects Virtual Sink.</label>
+            <default>true</default>
+        </entry>
+        <entry name="processAllInputs" type="Bool">
+            <label>Automatically moves Audio Streams to EasyEffects Virtual Source.</label>
+            <default>false</default>
+        </entry>
+        <entry name="excludeMonitorStreams" type="Bool">
+            <label>Ignore Streams from Monitor of Devices.</label>
+            <default>true</default>
+        </entry>
+        <entry name="useCubicVolumes" type="Bool">
+            <label>Use Cubic Volume.</label>
+            <default>false</default>
+        </entry>
+        <entry name="inactivityTimerEnable" type="Bool">
+            <label>Enable the Inactivity Timeout</label>
+            <default>true</default>
+        </entry>
+        <entry name="inactivityTimeout" type="Int">
+            <label>Inactivity Timeout.</label>
+            <min>1</min>
+            <max>3600</max>
+            <default>10</default>
+        </entry>
+    </group>
 </kcfg>
