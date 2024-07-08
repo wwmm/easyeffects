@@ -4,8 +4,6 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
-    id: widgetRoot
-
     Component {
         id: listDelegate
 

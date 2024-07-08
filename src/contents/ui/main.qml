@@ -8,7 +8,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ApplicationWindow {
-    id: root
+    id: appWindow
 
     width: EEdb.width
     height: EEdb.height
@@ -22,7 +22,7 @@ Kirigami.ApplicationWindow {
         EEdb.height = applicationWindow().height;
     }
     onVisibleChanged: {
-        if (!root.visible)
+        if (!appWindow.visible)
             EEdb.save();
 
     }
@@ -45,6 +45,10 @@ Kirigami.ApplicationWindow {
         visible: false
     }
 
+    PreferencesSheet {
+        id: preferencesSheet
+    }
+
     Kirigami.Dialog {
         id: aboutDialog
 
@@ -62,12 +66,12 @@ Kirigami.ApplicationWindow {
         visible: EEdb.showTrayIcon
         icon.name: "com.github.wwmm.easyeffects"
         onActivated: {
-            if (!root.visible) {
-                root.show();
-                root.raise();
-                root.requestActivate();
+            if (!appWindow.visible) {
+                appWindow.show();
+                appWindow.raise();
+                appWindow.requestActivate();
             } else {
-                root.hide();
+                appWindow.hide();
             }
         }
 
@@ -176,10 +180,10 @@ Kirigami.ApplicationWindow {
                 actions: [
                     Kirigami.Action {
                         text: i18n("Preferences")
-                        icon.name: "gtk-preferences"
+                        icon.name: "gtk-preferences-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
-                            root.pageStack.layers.push(preferencesPage);
+                            preferencesSheet.open();
                         }
                     },
                     Kirigami.Action {
