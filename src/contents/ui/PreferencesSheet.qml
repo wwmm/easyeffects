@@ -6,9 +6,16 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 Kirigami.OverlaySheet {
+    id: preferencesSheet
+
     implicitWidth: Kirigami.Units.gridUnit * 30
     implicitHeight: appWindow.height * 0.7
     title: i18n("Preferences")
+    onVisibleChanged: {
+        if (!preferencesSheet.visible)
+            stack.replace(mainPage);
+
+    }
 
     Component {
         id: mainPage
