@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-07 15:43+0000\n"
-"PO-Revision-Date: 2024-05-13 08:00+0000\n"
+"PO-Revision-Date: 2024-07-08 05:09+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5.5-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -1750,9 +1750,8 @@ msgid "Inactivity Timeout"
 msgstr "Tepkisizlik Zaman Aşımı"
 
 #: data/ui/preferences_general.ui:91
-#, fuzzy
 msgid "Input Pipeline"
-msgstr "Giriş Aygıtı"
+msgstr "Giriş İşlem Hattı"
 
 #: data/ui/preferences_general.ui:120
 msgid "Update Interval"
