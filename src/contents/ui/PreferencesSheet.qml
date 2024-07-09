@@ -31,25 +31,28 @@ Kirigami.OverlaySheet {
                     rightMargin: Kirigami.Units.smallSpacing
                 }
 
-                EeSwitch {
-                    id: launchServiceOnLogin
+                FormCard.FormCard {
+                    EeSwitch {
+                        id: launchServiceOnLogin
 
-                    label: i18n("Launch Service at System Startup")
-                    // isChecked: EEdb.addRandom
-                    onCheckedChanged: {
+                        label: i18n("Launch Service at System Startup")
+                        // isChecked: EEdb.addRandom
+                        onCheckedChanged: {
+                        }
                     }
-                }
 
-                EeSwitch {
-                    id: showTrayIcon
+                    EeSwitch {
+                        id: showTrayIcon
 
-                    label: i18n("Show the Tray Icon")
-                    isChecked: EEdb.showTrayIcon
-                    onCheckedChanged: {
-                        if (isChecked !== EEdb.showTrayIcon)
-                            EEdb.showTrayIcon = isChecked;
+                        label: i18n("Show the Tray Icon")
+                        isChecked: EEdb.showTrayIcon
+                        onCheckedChanged: {
+                            if (isChecked !== EEdb.showTrayIcon)
+                                EEdb.showTrayIcon = isChecked;
 
+                        }
                     }
+
                 }
 
             }
@@ -70,81 +73,84 @@ Kirigami.OverlaySheet {
                     rightMargin: Kirigami.Units.smallSpacing
                 }
 
-                EeSwitch {
-                    id: processAllOutputs
+                FormCard.FormCard {
+                    EeSwitch {
+                        id: processAllOutputs
 
-                    label: i18n("Process All Output Streams")
-                    isChecked: EEdb.processAllOutputs
-                    onCheckedChanged: {
-                        if (isChecked !== EEdb.processAllOutputs)
-                            EEdb.processAllOutputs = isChecked;
+                        label: i18n("Process All Output Streams")
+                        isChecked: EEdb.processAllOutputs
+                        onCheckedChanged: {
+                            if (isChecked !== EEdb.processAllOutputs)
+                                EEdb.processAllOutputs = isChecked;
 
+                        }
                     }
-                }
 
-                EeSwitch {
-                    id: processAllInputs
+                    EeSwitch {
+                        id: processAllInputs
 
-                    label: i18n("Process All Input Streams")
-                    isChecked: EEdb.processAllInputs
-                    onCheckedChanged: {
-                        if (isChecked !== EEdb.processAllInputs)
-                            EEdb.processAllInputs = isChecked;
+                        label: i18n("Process All Input Streams")
+                        isChecked: EEdb.processAllInputs
+                        onCheckedChanged: {
+                            if (isChecked !== EEdb.processAllInputs)
+                                EEdb.processAllInputs = isChecked;
 
+                        }
                     }
-                }
 
-                EeSwitch {
-                    id: excludeMonitorStreams
+                    EeSwitch {
+                        id: excludeMonitorStreams
 
-                    label: i18n("Ignore Streams from Monitor of Devices")
-                    isChecked: EEdb.excludeMonitorStreams
-                    onCheckedChanged: {
-                        if (isChecked !== EEdb.excludeMonitorStreams)
-                            EEdb.excludeMonitorStreams = isChecked;
+                        label: i18n("Ignore Streams from Monitor of Devices")
+                        isChecked: EEdb.excludeMonitorStreams
+                        onCheckedChanged: {
+                            if (isChecked !== EEdb.excludeMonitorStreams)
+                                EEdb.excludeMonitorStreams = isChecked;
 
+                        }
                     }
-                }
 
-                EeSwitch {
-                    id: useCubicVolumes
+                    EeSwitch {
+                        id: useCubicVolumes
 
-                    label: i18n("Use Cubic Volume")
-                    isChecked: EEdb.useCubicVolumes
-                    onCheckedChanged: {
-                        if (isChecked !== EEdb.useCubicVolumes)
-                            EEdb.useCubicVolumes = isChecked;
+                        label: i18n("Use Cubic Volume")
+                        isChecked: EEdb.useCubicVolumes
+                        onCheckedChanged: {
+                            if (isChecked !== EEdb.useCubicVolumes)
+                                EEdb.useCubicVolumes = isChecked;
 
+                        }
                     }
-                }
 
-                EeSwitch {
-                    id: inactivityTimerEnable
+                    EeSwitch {
+                        id: inactivityTimerEnable
 
-                    label: i18n("Enable the Inactivity Timeout")
-                    isChecked: EEdb.inactivityTimerEnable
-                    onCheckedChanged: {
-                        if (isChecked !== EEdb.inactivityTimerEnable)
-                            EEdb.inactivityTimerEnable = isChecked;
+                        label: i18n("Enable the Inactivity Timeout")
+                        isChecked: EEdb.inactivityTimerEnable
+                        onCheckedChanged: {
+                            if (isChecked !== EEdb.inactivityTimerEnable)
+                                EEdb.inactivityTimerEnable = isChecked;
 
+                        }
                     }
-                }
 
-                EeSpinBox {
-                    id: inactivityTimeout
+                    EeSpinBox {
+                        id: inactivityTimeout
 
-                    label: i18n("Inactivity Timeout")
-                    subtitle: i18n("Input Pipeline")
-                    from: 1
-                    to: 3600
-                    value: EEdb.inactivityTimeout
-                    decimals: 0
-                    stepSize: 1
-                    unit: "s"
-                    enabled: EEdb.inactivityTimerEnable
-                    onValueModified: (v) => {
-                        EEdb.inactivityTimeout = v;
+                        label: i18n("Inactivity Timeout")
+                        subtitle: i18n("Input Pipeline")
+                        from: 1
+                        to: 3600
+                        value: EEdb.inactivityTimeout
+                        decimals: 0
+                        stepSize: 1
+                        unit: "s"
+                        enabled: EEdb.inactivityTimerEnable
+                        onValueModified: (v) => {
+                            EEdb.inactivityTimeout = v;
+                        }
                     }
+
                 }
 
             }
@@ -156,7 +162,7 @@ Kirigami.OverlaySheet {
     Controls.StackView {
         id: stack
 
-        // anchors.fill: parent
+        anchors.fill: parent
         implicitWidth: Kirigami.Units.gridUnit * 30
         implicitHeight: stack.currentItem.implicitHeight
 
