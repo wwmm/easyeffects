@@ -11,73 +11,19 @@ Kirigami.OverlaySheet {
     implicitWidth: Kirigami.Units.gridUnit * 30
     implicitHeight: appWindow.height * 0.7
     title: i18n("Preferences")
+    parent: applicationWindow().overlay
     onVisibleChanged: {
-        if (!preferencesSheet.visible)
-            while (stack.depth > 1)stack.pop();
-
-    }
-
-    Component {
-        id: mainPage
-
-        Kirigami.Page {
-            FormCard.FormCard {
-                anchors {
-                    left: parent.left
-                    leftMargin: Kirigami.Units.smallSpacing
-                    right: parent.right
-                    rightMargin: Kirigami.Units.smallSpacing
-                }
-
-                FormCard.FormButtonDelegate {
-                    id: serviceButton
-
-                    icon.name: "services-symbolic"
-                    text: i18n("Background Service")
-                    onClicked: {
-                        while (stack.depth > 1)stack.pop()
-                        stack.push(servicePage);
-                        headerTitle.text = text;
-                    }
-                }
-
-                FormCard.FormButtonDelegate {
-                    id: audioButton
-
-                    icon.name: "folder-sound-symbolic"
-                    text: i18n("Audio")
-                    onClicked: {
-                        while (stack.depth > 1)stack.pop()
-                        stack.push(audioPage);
-                        headerTitle.text = text;
-                    }
-                }
-
-                FormCard.FormButtonDelegate {
-                    id: spectrumButton
-
-                    icon.name: "folder-chart-symbolic"
-                    text: i18n("Spectrum Analyzer")
-                }
-
-                FormCard.FormButtonDelegate {
-                    id: experimentalButton
-
-                    icon.name: "emblem-warning"
-                    text: i18n("Experimental Features")
-                }
-
-            }
-
+        if (!preferencesSheet.visible) {
+            while (stack.depth > 1)stack.pop()
+            headerTitle.text = i18n("Preferences");
         }
-
     }
 
     Component {
         id: servicePage
 
         Kirigami.Page {
-            FormCard.FormCard {
+            ColumnLayout {
                 anchors {
                     left: parent.left
                     leftMargin: Kirigami.Units.smallSpacing
@@ -85,7 +31,7 @@ Kirigami.OverlaySheet {
                     rightMargin: Kirigami.Units.smallSpacing
                 }
 
-                EESwitch {
+                EeSwitch {
                     id: launchServiceOnLogin
 
                     label: i18n("Launch Service at System Startup")
@@ -94,7 +40,7 @@ Kirigami.OverlaySheet {
                     }
                 }
 
-                EESwitch {
+                EeSwitch {
                     id: showTrayIcon
 
                     label: i18n("Show the Tray Icon")
@@ -116,7 +62,7 @@ Kirigami.OverlaySheet {
         id: audioPage
 
         Kirigami.Page {
-            FormCard.FormCard {
+            ColumnLayout {
                 anchors {
                     left: parent.left
                     leftMargin: Kirigami.Units.smallSpacing
@@ -124,7 +70,7 @@ Kirigami.OverlaySheet {
                     rightMargin: Kirigami.Units.smallSpacing
                 }
 
-                EESwitch {
+                EeSwitch {
                     id: processAllOutputs
 
                     label: i18n("Process All Output Streams")
@@ -136,7 +82,7 @@ Kirigami.OverlaySheet {
                     }
                 }
 
-                EESwitch {
+                EeSwitch {
                     id: processAllInputs
 
                     label: i18n("Process All Input Streams")
@@ -148,7 +94,7 @@ Kirigami.OverlaySheet {
                     }
                 }
 
-                EESwitch {
+                EeSwitch {
                     id: excludeMonitorStreams
 
                     label: i18n("Ignore Streams from Monitor of Devices")
@@ -160,7 +106,7 @@ Kirigami.OverlaySheet {
                     }
                 }
 
-                EESwitch {
+                EeSwitch {
                     id: useCubicVolumes
 
                     label: i18n("Use Cubic Volume")
@@ -172,7 +118,7 @@ Kirigami.OverlaySheet {
                     }
                 }
 
-                EESwitch {
+                EeSwitch {
                     id: inactivityTimerEnable
 
                     label: i18n("Enable the Inactivity Timeout")
@@ -184,7 +130,7 @@ Kirigami.OverlaySheet {
                     }
                 }
 
-                EESpinBox {
+                EeSpinBox {
                     id: inactivityTimeout
 
                     label: i18n("Inactivity Timeout")
@@ -210,13 +156,59 @@ Kirigami.OverlaySheet {
     Controls.StackView {
         id: stack
 
-        initialItem: mainPage
+        // anchors.fill: parent
+        implicitWidth: Kirigami.Units.gridUnit * 30
+        implicitHeight: stack.currentItem.implicitHeight
 
-        anchors {
-            left: parent.left
-            leftMargin: Kirigami.Units.smallSpacing
-            right: parent.right
-            rightMargin: Kirigami.Units.smallSpacing
+        initialItem: Kirigami.Page {
+            id: childItem
+
+            ColumnLayout {
+                anchors.fill: parent
+
+                FormCard.FormCard {
+                    FormCard.FormButtonDelegate {
+                        id: serviceButton
+
+                        icon.name: "services-symbolic"
+                        text: i18n("Background Service")
+                        onClicked: {
+                            while (stack.depth > 1)stack.pop()
+                            stack.push(servicePage);
+                            headerTitle.text = text;
+                        }
+                    }
+
+                    FormCard.FormButtonDelegate {
+                        id: audioButton
+
+                        icon.name: "folder-sound-symbolic"
+                        text: i18n("Audio")
+                        onClicked: {
+                            while (stack.depth > 1)stack.pop()
+                            stack.push(audioPage);
+                            headerTitle.text = text;
+                        }
+                    }
+
+                    FormCard.FormButtonDelegate {
+                        id: spectrumButton
+
+                        icon.name: "folder-chart-symbolic"
+                        text: i18n("Spectrum Analyzer")
+                    }
+
+                    FormCard.FormButtonDelegate {
+                        id: experimentalButton
+
+                        icon.name: "emblem-warning"
+                        text: i18n("Experimental Features")
+                    }
+
+                }
+
+            }
+
         }
 
     }

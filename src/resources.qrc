@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/ui">
-        <file alias="EESpinBox.qml">contents/ui/EESpinBox.qml</file>
-        <file alias="EESwitch.qml">contents/ui/EESwitch.qml</file>
+        <file alias="EeSpinBox.qml">contents/ui/EeSpinBox.qml</file>
+        <file alias="EeSwitch.qml">contents/ui/EeSwitch.qml</file>
         <file alias="InputPage.qml">contents/ui/InputPage.qml</file>
         <file alias="main.qml">contents/ui/main.qml</file>
         <file alias="OutputPage.qml">contents/ui/OutputPage.qml</file>
