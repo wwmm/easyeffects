@@ -396,7 +396,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
   // spectrum array
 
   self->data->connections.push_back(
-      self->data->effects_base->spectrum->power.connect([=](uint rate, uint n_bands, std::vector<double> magnitudes) {
+      self->data->effects_base->spectrum->power.connect([=](uint rate, uint n_bands, double *magnitudes) {
         if (self == nullptr) {
           return;
         }
@@ -419,7 +419,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
         auto* acc = gsl_interp_accel_alloc();
         auto* spline = gsl_spline_alloc(gsl_interp_steffen, n_bands);
 
-        gsl_spline_init(spline, self->data->spectrum_freqs.data(), magnitudes.data(), n_bands);
+        gsl_spline_init(spline, self->data->spectrum_freqs.data(), magnitudes, n_bands);
 
         for (size_t n = 0; n < self->data->spectrum_x_axis.size(); n++) {
           self->data->spectrum_mag[n] =

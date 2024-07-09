@@ -43,8 +43,6 @@ Spectrum::Spectrum(const std::string& tag,
                    PipelineType pipe_type)
     : PluginBase(tag, "spectrum", tags::plugin_package::ee, schema, schema_path, pipe_manager, pipe_type),
       fftw_ready(true) {
-  output.resize(n_bands / 2U + 1U);
-
   // Precompute the Hann window, which is an expensive operation.
   // https://en.wikipedia.org/wiki/Hann_function
   for (size_t n = 0; n < n_bands; n++) {
@@ -137,7 +135,7 @@ void Spectrum::process(std::span<float>& left_in,
         output[i] = static_cast<double>(sqr);
       }
 
-      power.emit(rate, output.size(), output);
+      power.emit(rate, output.size(), output.data());
     });
   }
 }

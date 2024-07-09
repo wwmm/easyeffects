@@ -51,7 +51,7 @@ class Spectrum : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(uint, uint, std::vector<double>)> power;  // rate, nbands, magnitudes
+  sigc::signal<void(uint, uint, double*)> power;  // rate, nbands, magnitudes
 
  private:
   bool fftw_ready = false;
@@ -63,7 +63,7 @@ class Spectrum : public PluginBase {
   static constexpr uint n_bands = 8192U;
 
   std::array<float, n_bands> real_input;
-  std::vector<double> output;
+  std::array<double, n_bands / 2U + 1U> output;
 
   std::array<float, n_bands> latest_samples_mono;
 
