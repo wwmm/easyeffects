@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-07 15:43+0000\n"
+"POT-Creation-Date: 2024-07-09 22:35+0000\n"
 "PO-Revision-Date: 2023-12-31 05:09+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2328,15 +2328,15 @@ msgstr "불러온 Impulse 파일 없음"
 msgid "Failed To Load The Impulse File"
 msgstr "Impulse 파일을 불러오지 못했습니다"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:807
+#: src/effects_box.cpp:358 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:827
+#: src/effects_box.cpp:381 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "재생기"
 
-#: src/effects_box.cpp:352
+#: src/effects_box.cpp:404
 msgid "Effects"
 msgstr "효과음"
 

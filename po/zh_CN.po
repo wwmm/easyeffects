@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-07 15:43+0000\n"
+"POT-Creation-Date: 2024-07-09 22:35+0000\n"
 "PO-Revision-Date: 2024-07-07 04:09+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -2319,15 +2319,15 @@ msgstr "未加载脉冲文件"
 msgid "Failed To Load The Impulse File"
 msgstr "加载脉冲文件失败"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:807
+#: src/effects_box.cpp:358 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:827
+#: src/effects_box.cpp:381 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "播放器"
 
-#: src/effects_box.cpp:352
+#: src/effects_box.cpp:404
 msgid "Effects"
 msgstr "音效"
 

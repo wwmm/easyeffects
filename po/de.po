@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-07 15:43+0000\n"
+"POT-Creation-Date: 2024-07-09 22:35+0000\n"
 "PO-Revision-Date: 2024-01-01 21:04+0000\n"
 "Last-Translator: nova madeline <493ov2lof@mozmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2356,15 +2356,15 @@ msgstr "Keine Impulsdatei geladen"
 msgid "Failed To Load The Impulse File"
 msgstr "Die Impulsdatei konnte nicht geladen werden"
 
-#: src/effects_box.cpp:306 src/plugins_box.cpp:807
+#: src/effects_box.cpp:358 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr "Rekorder"
 
-#: src/effects_box.cpp:329 src/plugins_box.cpp:827
+#: src/effects_box.cpp:381 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "Spieler"
 
-#: src/effects_box.cpp:352
+#: src/effects_box.cpp:404
 msgid "Effects"
 msgstr "Effekte"
 
