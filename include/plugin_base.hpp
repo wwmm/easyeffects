@@ -21,6 +21,7 @@
 
 #include <gio/gio.h>
 #include <glib.h>
+#include <atomic>
 #include <pipewire/filter.h>
 #include <sigc++/signal.h>
 #include <spa/utils/hook.h>
@@ -91,7 +92,8 @@ class PluginBase {
 
   bool package_installed = true;
 
-  bool bypass = false;
+  std::atomic<bool> bypass = {false};
+  static_assert(std::atomic<bool>::is_always_lock_free);
 
   bool connected_to_pw = false;
 
