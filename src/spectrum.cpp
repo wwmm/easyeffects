@@ -43,7 +43,6 @@ Spectrum::Spectrum(const std::string& tag,
                    PipelineType pipe_type)
     : PluginBase(tag, "spectrum", tags::plugin_package::ee, schema, schema_path, pipe_manager, pipe_type),
       fftw_ready(true) {
-  real_input.resize(n_bands);
   output.resize(n_bands / 2U + 1U);
 
   // Precompute the Hann window, which is an expensive operation.

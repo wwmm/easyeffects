@@ -60,10 +60,10 @@ class Spectrum : public PluginBase {
 
   fftwf_complex* complex_output = nullptr;
 
-  std::vector<float> real_input;
-  std::vector<double> output;
-
   static constexpr uint n_bands = 8192U;
+
+  std::array<float, n_bands> real_input;
+  std::vector<double> output;
 
   std::array<float, n_bands> latest_samples_mono;
 
