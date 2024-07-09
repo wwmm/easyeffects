@@ -27,6 +27,7 @@
 #include <cassert>
 #include <cmath>
 #include <cstddef>
+#include <cstring>
 #include <mutex>
 #include <numbers>
 #include <span>
@@ -96,8 +97,8 @@ void Spectrum::process(std::span<float>& left_in,
 
   if (n_samples < n_bands) {
     // Drop the oldest quantum.
-    for (size_t n = 0; n < n_bands - n_samples; n++)
-      latest_samples_mono[n] = latest_samples_mono[n_samples + n];
+    std::memmove(&latest_samples_mono[0], &latest_samples_mono[n_samples],
+        (n_bands - n_samples) * sizeof(float));
 
     // Copy the new quantum.
     for (size_t n = 0; n < n_samples; n++)
