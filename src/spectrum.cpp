@@ -57,8 +57,6 @@ Spectrum::Spectrum(const std::string& tag,
   g_signal_connect(settings, "changed::show", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto* self = static_cast<Spectrum*>(user_data);
 
-                     std::scoped_lock<std::mutex> lock(self->data_mutex);
-
                      self->bypass = g_settings_get_boolean(settings, key) == 0;
                    }),
                    this);
@@ -68,8 +66,6 @@ Spectrum::~Spectrum() {
   if (connected_to_pw) {
     disconnect_from_pw();
   }
-
-  std::scoped_lock<std::mutex> lock(data_mutex);
 
   fftw_ready = false;
 
@@ -91,8 +87,6 @@ void Spectrum::process(std::span<float>& left_in,
                        std::span<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out) {
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
