@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include <atomic>
 #include <fftw3.h>
 #include <sigc++/signal.h>
 #include <sys/types.h>
@@ -51,21 +52,31 @@ class Spectrum : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  sigc::signal<void(uint, uint, std::vector<double>)> power;  // rate, nbands, magnitudes
+  std::tuple<uint, uint, double*> compute_magnitudes();  // rate, nbands, magnitudes
 
  private:
-  bool fftw_ready = false;
+  std::atomic<bool> fftw_ready = false;
 
   fftwf_plan plan = nullptr;
 
   fftwf_complex* complex_output = nullptr;
 
-  std::vector<float> real_input;
-  std::vector<double> output;
+  static constexpr uint n_bands = 8192U;
 
-  uint n_bands = 8192U;
+  std::array<float, n_bands> real_input;
+  std::array<double, n_bands / 2U + 1U> output;
 
-  std::vector<float> latest_samples_mono;
+  std::array<float, n_bands> latest_samples_mono;
 
-  std::vector<float> hann_window;
+  std::array<float, n_bands> hann_window;
+
+  enum {
+    DB_BIT_IDX = (1 << 0),      // To which db_buffers array process() should write.
+    DB_BIT_NEWDATA = (1 << 1),  // If new data has been written by process().
+    DB_BIT_BUSY = (1 << 2),     // If process() is currently writing data.
+  };
+
+  std::array<std::array<float, n_bands>, 2> db_buffers;
+  std::atomic<int> db_control = {0};
+  static_assert(std::atomic<int>::is_always_lock_free);
 };

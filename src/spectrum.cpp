@@ -27,6 +27,7 @@
 #include <cassert>
 #include <cmath>
 #include <cstddef>
+#include <cstring>
 #include <mutex>
 #include <numbers>
 #include <span>
@@ -43,14 +44,8 @@ Spectrum::Spectrum(const std::string& tag,
                    PipelineType pipe_type)
     : PluginBase(tag, "spectrum", tags::plugin_package::ee, schema, schema_path, pipe_manager, pipe_type),
       fftw_ready(true) {
-  real_input.resize(n_bands);
-  output.resize(n_bands / 2U + 1U);
-
-  latest_samples_mono.resize(n_bands);
-
   // Precompute the Hann window, which is an expensive operation.
   // https://en.wikipedia.org/wiki/Hann_function
-  hann_window.resize(n_bands);
   for (size_t n = 0; n < n_bands; n++) {
     hann_window[n] = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> *
         static_cast<float>(n) / static_cast<float>(n_bands-1)));
@@ -63,8 +58,6 @@ Spectrum::Spectrum(const std::string& tag,
   g_signal_connect(settings, "changed::show", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto* self = static_cast<Spectrum*>(user_data);
 
-                     std::scoped_lock<std::mutex> lock(self->data_mutex);
-
                      self->bypass = g_settings_get_boolean(settings, key) == 0;
                    }),
                    this);
@@ -74,8 +67,6 @@ Spectrum::~Spectrum() {
   if (connected_to_pw) {
     disconnect_from_pw();
   }
-
-  std::scoped_lock<std::mutex> lock(data_mutex);
 
   fftw_ready = false;
 
@@ -97,8 +88,6 @@ void Spectrum::process(std::span<float>& left_in,
                        std::span<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out) {
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
@@ -108,8 +97,8 @@ void Spectrum::process(std::span<float>& left_in,
 
   if (n_samples < n_bands) {
     // Drop the oldest quantum.
-    for (size_t n = 0; n < n_bands - n_samples; n++)
-      latest_samples_mono[n] = latest_samples_mono[n_samples + n];
+    std::memmove(&latest_samples_mono[0], &latest_samples_mono[n_samples],
+        (n_bands - n_samples) * sizeof(float));
 
     // Copy the new quantum.
     for (size_t n = 0; n < n_samples; n++)
@@ -121,29 +110,51 @@ void Spectrum::process(std::span<float>& left_in,
                                        right_in[n_samples - n_bands + n]);
   }
 
+  // Grab the current index AND mark as busy at the same time.
+  int index = db_control.fetch_or(DB_BIT_BUSY) & DB_BIT_IDX;
+
+  // Fill the buffer.
+  db_buffers[index] = latest_samples_mono;
+
+  // Mark new data available AND mark as not busy anymore.
+  db_control.store(index | DB_BIT_NEWDATA);
+}
+
+std::tuple<uint, uint, double*> Spectrum::compute_magnitudes() {
+  // Early return if no new data is available, ie if process() has not been
+  // called since our last compute_magnitudes() call.
+  int curr_control = db_control.load();
+  if (!(curr_control & DB_BIT_NEWDATA)) {
+    return std::tuple<uint, uint, double*>(0, 0, nullptr);
+  }
+
+  // CAS loop to toggle the buffer used and remove NEWDATA flag, waiting for !BUSY.
+  int next_control;
+  do {
+    curr_control &= ~DB_BIT_BUSY;
+    next_control = (curr_control ^ DB_BIT_IDX) & DB_BIT_IDX;
+  } while (!db_control.compare_exchange_weak(curr_control, next_control));
+
+  // Buffer with data is at the index which was found inside db_control.
+  int index = curr_control & DB_BIT_IDX;
+  float *buf = db_buffers[index].data();
+
+  // https://en.wikipedia.org/wiki/Hann_function
   for (size_t n = 0; n < n_bands; n++) {
-    real_input[n] = latest_samples_mono[n] * hann_window[n];
+    real_input[n] = buf[n] * hann_window[n];
   }
 
-  if (send_notifications) {
-    util::idle_add([this]() {
-      if (bypass) {
-        return;
-      }
+  fftwf_execute(plan);
 
-      fftwf_execute(plan);
+  for (uint i = 0U; i < output.size(); i++) {
+    float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
-      for (uint i = 0U; i < output.size(); i++) {
-        float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
+    sqr /= static_cast<float>(output.size() * output.size());
 
-        sqr /= static_cast<float>(output.size() * output.size());
-
-        output[i] = static_cast<double>(sqr);
-      }
-
-      power.emit(rate, output.size(), output);
-    });
+    output[i] = static_cast<double>(sqr);
   }
+
+  return std::tuple<uint, uint, double*>(rate, output.size(), output.data());
 }
 
 auto Spectrum::get_latency_seconds() -> float {
