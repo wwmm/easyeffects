@@ -48,7 +48,6 @@ Spectrum::Spectrum(const std::string& tag,
 
   // Precompute the Hann window, which is an expensive operation.
   // https://en.wikipedia.org/wiki/Hann_function
-  hann_window.resize(n_bands);
   for (size_t n = 0; n < n_bands; n++) {
     hann_window[n] = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> *
         static_cast<float>(n) / static_cast<float>(n_bands-1)));

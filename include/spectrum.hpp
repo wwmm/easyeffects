@@ -67,5 +67,5 @@ class Spectrum : public PluginBase {
 
   std::array<float, n_bands> latest_samples_mono;
 
-  std::vector<float> hann_window;
+  std::array<float, n_bands> hann_window;
 };
