@@ -110,29 +110,51 @@ void Spectrum::process(std::span<float>& left_in,
                                        right_in[n_samples - n_bands + n]);
   }
 
+  // Grab the current index AND mark as busy at the same time.
+  int index = db_control.fetch_or(DB_BIT_BUSY) & DB_BIT_IDX;
+
+  // Fill the buffer.
+  db_buffers[index] = latest_samples_mono;
+
+  // Mark new data available AND mark as not busy anymore.
+  db_control.store(index | DB_BIT_NEWDATA);
+}
+
+std::tuple<uint, uint, double*> Spectrum::compute_magnitudes() {
+  // Early return if no new data is available, ie if process() has not been
+  // called since our last compute_magnitudes() call.
+  int curr_control = db_control.load();
+  if (!(curr_control & DB_BIT_NEWDATA)) {
+    return std::tuple<uint, uint, double*>(0, 0, nullptr);
+  }
+
+  // CAS loop to toggle the buffer used and remove NEWDATA flag, waiting for !BUSY.
+  int next_control;
+  do {
+    curr_control &= ~DB_BIT_BUSY;
+    next_control = (curr_control ^ DB_BIT_IDX) & DB_BIT_IDX;
+  } while (!db_control.compare_exchange_weak(curr_control, next_control));
+
+  // Buffer with data is at the index which was found inside db_control.
+  int index = curr_control & DB_BIT_IDX;
+  float *buf = db_buffers[index].data();
+
+  // https://en.wikipedia.org/wiki/Hann_function
   for (size_t n = 0; n < n_bands; n++) {
-    real_input[n] = latest_samples_mono[n] * hann_window[n];
+    real_input[n] = buf[n] * hann_window[n];
   }
 
-  if (send_notifications) {
-    util::idle_add([this]() {
-      if (bypass) {
-        return;
-      }
+  fftwf_execute(plan);
 
-      fftwf_execute(plan);
+  for (uint i = 0U; i < output.size(); i++) {
+    float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
 
-      for (uint i = 0U; i < output.size(); i++) {
-        float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
+    sqr /= static_cast<float>(output.size() * output.size());
 
-        sqr /= static_cast<float>(output.size() * output.size());
-
-        output[i] = static_cast<double>(sqr);
-      }
-
-      power.emit(rate, output.size(), output.data());
-    });
+    output[i] = static_cast<double>(sqr);
   }
+
+  return std::tuple<uint, uint, double*>(rate, output.size(), output.data());
 }
 
 auto Spectrum::get_latency_seconds() -> float {
