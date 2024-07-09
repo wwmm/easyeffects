@@ -46,8 +46,6 @@ Spectrum::Spectrum(const std::string& tag,
   real_input.resize(n_bands);
   output.resize(n_bands / 2U + 1U);
 
-  latest_samples_mono.resize(n_bands);
-
   // Precompute the Hann window, which is an expensive operation.
   // https://en.wikipedia.org/wiki/Hann_function
   hann_window.resize(n_bands);

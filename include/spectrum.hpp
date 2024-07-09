@@ -63,9 +63,9 @@ class Spectrum : public PluginBase {
   std::vector<float> real_input;
   std::vector<double> output;
 
-  uint n_bands = 8192U;
+  static constexpr uint n_bands = 8192U;
 
-  std::vector<float> latest_samples_mono;
+  std::array<float, n_bands> latest_samples_mono;
 
   std::vector<float> hann_window;
 };
