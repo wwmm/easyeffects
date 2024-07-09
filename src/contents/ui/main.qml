@@ -1,5 +1,4 @@
 import AboutEE
-import EEdb
 import Qt.labs.platform
 import QtQuick
 import QtQuick.Controls as Controls

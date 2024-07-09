@@ -1,4 +1,3 @@
-import EEdb
 import QtQml
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -151,6 +150,122 @@ Kirigami.OverlaySheet {
                         }
                     }
 
+                    EeSpinBox {
+                        id: metersUpdateInterval
+
+                        label: i18n("Update Interval")
+                        subtitle: i18n("Related to Level Meters and Spectrum")
+                        from: 10
+                        to: 1000
+                        value: EEdb.metersUpdateInterval
+                        decimals: 0
+                        stepSize: 1
+                        unit: "ms"
+                        onValueModified: (v) => {
+                            EEdb.metersUpdateInterval = v;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    Component {
+        id: spectrumPage
+
+        Kirigami.Page {
+            ColumnLayout {
+                anchors {
+                    left: parent.left
+                    leftMargin: Kirigami.Units.smallSpacing
+                    right: parent.right
+                    rightMargin: Kirigami.Units.smallSpacing
+                }
+
+                FormCard.FormCard {
+                    EeSwitch {
+                        id: spectrumState
+
+                        label: i18n("Enable")
+                        subtitle: i18n("Show the Spectrum Analyzer")
+                        isChecked: EEdbSpectrum.state
+                        onCheckedChanged: {
+                            if (isChecked !== EEdbSpectrum.state)
+                                EEdbSpectrum.state = isChecked;
+
+                        }
+                    }
+
+                    FormCard.FormComboBoxDelegate {
+                        id: spectrumShape
+
+                        text: i18n("Shape")
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: EEdbSpectrum.spectrumShape
+                        editable: false
+                        model: ["Bars", "Lines", "Dots"]
+                        onActivated: (idx) => {
+                            if (idx !== EEdbSpectrum.spectrumShape)
+                                EEdbSpectrum.spectrumShape = idx;
+
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    Component {
+        id: experimentalPage
+
+        Kirigami.Page {
+            ColumnLayout {
+                anchors {
+                    left: parent.left
+                    leftMargin: Kirigami.Units.smallSpacing
+                    right: parent.right
+                    rightMargin: Kirigami.Units.smallSpacing
+                }
+
+                FormCard.FormCard {
+                    EeSwitch {
+                        id: showNativePluginUi
+
+                        label: i18n("Native Plugin Window")
+                        subtitle: i18n("Allows The Native Plugin Window to be Shown/Hidden")
+                        isChecked: EEdb.showNativePluginUi
+                        onCheckedChanged: {
+                            if (isChecked !== EEdb.showNativePluginUi)
+                                EEdb.showNativePluginUi = isChecked;
+
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: lv2uiUpdateFrequency
+
+                        label: i18n("Update Frequency")
+                        subtitle: i18n("Related to LV2 Plugins")
+                        from: 1
+                        to: 60
+                        value: EEdb.lv2uiUpdateFrequency
+                        decimals: 0
+                        stepSize: 1
+                        unit: "Hz"
+                        enabled: EEdb.showNativePluginUi
+                        onValueModified: (v) => {
+                            EEdb.lv2uiUpdateFrequency = v;
+                        }
+                    }
+
                 }
 
             }
@@ -202,6 +317,11 @@ Kirigami.OverlaySheet {
 
                         icon.name: "folder-chart-symbolic"
                         text: i18n("Spectrum Analyzer")
+                        onClicked: {
+                            while (stack.depth > 1)stack.pop()
+                            stack.push(spectrumPage);
+                            headerTitle.text = text;
+                        }
                     }
 
                     FormCard.FormButtonDelegate {
@@ -209,6 +329,11 @@ Kirigami.OverlaySheet {
 
                         icon.name: "emblem-warning"
                         text: i18n("Experimental Features")
+                        onClicked: {
+                            while (stack.depth > 1)stack.pop()
+                            stack.push(experimentalPage);
+                            headerTitle.text = text;
+                        }
                     }
 
                 }

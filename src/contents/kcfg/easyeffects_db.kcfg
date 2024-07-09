@@ -20,6 +20,16 @@
             <label>Last used preset.</label>
             <default>""</default>
         </entry>
+        <entry name="showNativePluginUi" type="Bool">
+            <label>Show Plugin's Native Window</label>
+            <default>false</default>
+        </entry>
+        <entry name="lv2uiUpdateFrequency" type="Int">
+            <label>LV2 Native Window Update Frequency</label>
+            <min>1</min>
+            <max>60</max>
+            <default>30</default>
+        </entry>
     </group>
     <group name="EffectsPipelines">
         <entry name="bypass" type="Bool">
@@ -51,6 +61,12 @@
             <min>1</min>
             <max>3600</max>
             <default>10</default>
+        </entry>
+        <entry name="metersUpdateInterval" type="Int">
+            <label>Level Meter Update Interval</label>
+            <min>10</min>
+            <max>1000</max>
+            <default>50</default>
         </entry>
     </group>
 </kcfg>

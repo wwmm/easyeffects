@@ -1,3 +1,4 @@
+import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -9,6 +10,7 @@ FormCard.AbstractFormDelegate {
 
     property alias isChecked: qtSwitch.checked
     property string label: ""
+    property string subtitle: ""
 
     onClicked: qtSwitch.toggle()
     hoverEnabled: true
@@ -18,14 +20,26 @@ FormCard.AbstractFormDelegate {
         Layout.fillWidth: true
         spacing: Kirigami.Units.smallSpacing
 
-        Label {
-            Layout.fillWidth: true
-            text: control.label
-            elide: Text.ElideRight
-            color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
-            wrapMode: Text.Wrap
-            maximumLineCount: 2
-            Accessible.ignored: true
+        ColumnLayout {
+            Label {
+                Layout.fillWidth: true
+                text: control.label
+                elide: Text.ElideRight
+                color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
+                wrapMode: Text.Wrap
+                maximumLineCount: 2
+            }
+
+            Label {
+                Layout.fillWidth: true
+                text: control.subtitle
+                elide: Text.ElideRight
+                color: Kirigami.Theme.disabledTextColor
+                wrapMode: Text.Wrap
+                maximumLineCount: 2
+                visible: !Common.isEmpty(control.subtitle)
+            }
+
         }
 
         Switch {

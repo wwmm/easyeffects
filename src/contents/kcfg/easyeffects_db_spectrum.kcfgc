@@ -1,6 +1,6 @@
-File=easyeffects_db.kcfg
+File=easyeffects_db_spectrum.kcfg
 NameSpace=db
-ClassName=Main
+ClassName=Spectrum
 Mutators=true
 Notifiers=true
 DefaultValueGetters=true

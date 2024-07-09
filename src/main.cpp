@@ -16,6 +16,7 @@
 #include <memory>
 #include "config.h"
 #include "easyeffects_db.h"
+#include "easyeffects_db_spectrum.h"
 #include "util.hpp"
 
 auto get_lock_file() -> std::unique_ptr<QLockFile> {
@@ -92,16 +93,16 @@ int main(int argc, char* argv[]) {
   // Registering kcfg settings
 
   auto ee_db = db::Main::self();
+  auto ee_db_spectrum = db::Spectrum::self();
 
-  qmlRegisterSingletonInstance("EEdb", VERSION_MAJOR, VERSION_MINOR, "EEdb", ee_db);  // NOLINT
-
-  // QObject::connect(cfgWindow, &cfg::Window::widthChanged,
-  //                  [=]() { util::warning(util::to_string(cfg::Window::width())); });
+  // QObject::connect(ee_db, &db::Main::widthChanged, [=]() { util::warning(util::to_string(db::Main::width())); });
 
   // presets::Backend presetsBackend;
 
   QQmlApplicationEngine engine;
 
+  engine.rootContext()->setContextProperty("EEdb", ee_db);
+  engine.rootContext()->setContextProperty("EEdbSpectrum", ee_db_spectrum);
   engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
   engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
 
@@ -109,7 +110,10 @@ int main(int argc, char* argv[]) {
     return -1;
   }
 
-  QObject::connect(&app, &QApplication::aboutToQuit, [=]() { ee_db->save(); });
+  QObject::connect(&app, &QApplication::aboutToQuit, [=]() {
+    ee_db->save();
+    ee_db_spectrum->save();
+  });
 
   return QApplication::exec();
 }
