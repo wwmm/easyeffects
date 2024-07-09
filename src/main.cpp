@@ -1,6 +1,5 @@
 #include <kaboutdata.h>
 #include <klocalizedcontext.h>
-#include <qlockfile.h>
 #include <qobject.h>
 #include <qqml.h>
 #include <qqmlapplicationengine.h>
@@ -18,38 +17,6 @@
 #include "easyeffects_db.h"
 #include "easyeffects_db_spectrum.h"
 #include "util.hpp"
-
-auto get_lock_file() -> std::unique_ptr<QLockFile> {
-  auto lockFile = std::make_unique<QLockFile>(QString::fromStdString(
-      QStandardPaths::writableLocation(QStandardPaths::TempLocation).toStdString() + "/easyeffects.lock"));
-
-  lockFile->setStaleLockTime(0);
-
-  bool status = lockFile->tryLock(100);
-
-  if (!status) {
-    util::critical("Could not lock the file: " + lockFile->fileName().toStdString());
-
-    switch (lockFile->error()) {
-      case QLockFile::NoError:
-        break;
-      case QLockFile::LockFailedError: {
-        util::critical("Another instance already has the lock");
-        break;
-      }
-      case QLockFile::PermissionError: {
-        util::critical("No permission to reate the lock file");
-        break;
-      }
-      case QLockFile::UnknownError: {
-        util::critical("Unknown error");
-        break;
-      }
-    }
-  }
-
-  return lockFile;
-}
 
 void construct_about_window() {
   KAboutData aboutData(QStringLiteral(COMPONENT_NAME), i18nc("@title", APPLICATION_NAME),
@@ -71,7 +38,7 @@ void construct_about_window() {
 }
 
 int main(int argc, char* argv[]) {
-  auto lockFile = get_lock_file();
+  auto lockFile = util::get_lock_file();
 
   if (!lockFile->isLocked()) {
     return -1;

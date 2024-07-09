@@ -19,13 +19,16 @@
 
 #include "util.hpp"
 #include <qdebug.h>
+#include <qlockfile.h>
 #include <qlogging.h>
+#include <qstandardpaths.h>
 #include <sys/types.h>
 #include <array>
 #include <cmath>
 #include <exception>
 #include <filesystem>
 #include <iostream>
+#include <memory>
 #include <numbers>
 #include <ostream>
 #include <regex>
@@ -283,6 +286,38 @@ auto compare_versions(const std::string& v0, const std::string& v1) -> int {
   }
 
   return 0;
+}
+
+auto get_lock_file() -> std::unique_ptr<QLockFile> {
+  auto lockFile = std::make_unique<QLockFile>(QString::fromStdString(
+      QStandardPaths::writableLocation(QStandardPaths::TempLocation).toStdString() + "/easyeffects.lock"));
+
+  lockFile->setStaleLockTime(0);
+
+  bool status = lockFile->tryLock(100);
+
+  if (!status) {
+    util::critical("Could not lock the file: " + lockFile->fileName().toStdString());
+
+    switch (lockFile->error()) {
+      case QLockFile::NoError:
+        break;
+      case QLockFile::LockFailedError: {
+        util::critical("Another instance already has the lock");
+        break;
+      }
+      case QLockFile::PermissionError: {
+        util::critical("No permission to reate the lock file");
+        break;
+      }
+      case QLockFile::UnknownError: {
+        util::critical("Unknown error");
+        break;
+      }
+    }
+  }
+
+  return lockFile;
 }
 
 }  // namespace util

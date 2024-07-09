@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include <qlockfile.h>
 #include <sys/types.h>
 #include <array>
 #include <charconv>
@@ -61,9 +62,7 @@ auto remove_filename_extension(const std::string& basename) -> std::string;
 
 void print_thread_id();
 
-void idle_add(
-    std::function<void()> cb,
-    std::function<void()> cleanup_cb = []() {});
+void idle_add(std::function<void()> cb, std::function<void()> cleanup_cb = []() {});
 
 auto get_files_name(const std::filesystem::path& dir_path, const std::string& ext) -> std::vector<std::string>;
 
@@ -216,5 +215,7 @@ auto linspace(const T& start, const T& stop, const uint& npoints) -> std::vector
 
   return output;
 }
+
+auto get_lock_file() -> std::unique_ptr<QLockFile>;
 
 }  // namespace util
