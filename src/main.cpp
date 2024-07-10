@@ -5,7 +5,6 @@
 #include <qqmlapplicationengine.h>
 #include <qqmlcontext.h>
 #include <qquickstyle.h>
-#include <qstandardpaths.h>
 #include <qstringliteral.h>
 #include <qtenvironmentvariables.h>
 #include <qurl.h>
