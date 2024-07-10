@@ -186,12 +186,15 @@ Kirigami.OverlaySheet {
                     rightMargin: Kirigami.Units.smallSpacing
                 }
 
+                FormCard.FormHeader {
+                    title: i18n("State")
+                }
+
                 FormCard.FormCard {
                     EeSwitch {
                         id: spectrumState
 
-                        label: i18n("Enable")
-                        subtitle: i18n("Show the Spectrum Analyzer")
+                        label: i18n("Enabled")
                         isChecked: EEdbSpectrum.state
                         onCheckedChanged: {
                             if (isChecked !== EEdbSpectrum.state)
@@ -200,6 +203,13 @@ Kirigami.OverlaySheet {
                         }
                     }
 
+                }
+
+                FormCard.FormHeader {
+                    title: i18n("Style")
+                }
+
+                FormCard.FormCard {
                     FormCard.FormComboBoxDelegate {
                         id: spectrumShape
 
@@ -212,6 +222,99 @@ Kirigami.OverlaySheet {
                             if (idx !== EEdbSpectrum.spectrumShape)
                                 EEdbSpectrum.spectrumShape = idx;
 
+                        }
+                    }
+
+                    EeSwitch {
+                        id: dynamicYScale
+
+                        label: i18n("Dynamic Scale")
+                        isChecked: EEdbSpectrum.dynamicYScale
+                        onCheckedChanged: {
+                            if (isChecked !== EEdbSpectrum.dynamicYScale)
+                                EEdbSpectrum.dynamicYScale = isChecked;
+
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: nPoints
+
+                        label: i18n("Points")
+                        from: 2
+                        to: 2048
+                        value: EEdbSpectrum.nPoints
+                        decimals: 0
+                        stepSize: 1
+                        onValueModified: (v) => {
+                            EEdbSpectrum.nPoints = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: height
+
+                        label: i18n("Height")
+                        from: 100
+                        to: 1000
+                        value: EEdbSpectrum.height
+                        decimals: 0
+                        stepSize: 1
+                        unit: "px"
+                        onValueModified: (v) => {
+                            EEdbSpectrum.height = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: lineWidth
+
+                        label: i18n("Line Width")
+                        from: 10
+                        to: 1000
+                        value: EEdbSpectrum.lineWidth
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: "px"
+                        onValueModified: (v) => {
+                            EEdbSpectrum.lineWidth = v;
+                        }
+                    }
+
+                }
+
+                FormCard.FormHeader {
+                    title: i18n("Frequency Range")
+                }
+
+                FormCard.FormCard {
+                    EeSpinBox {
+                        id: minimumFrequency
+
+                        label: i18n("Minimum")
+                        from: 20
+                        to: 21900
+                        value: EEdbSpectrum.minimumFrequency
+                        decimals: 0
+                        stepSize: 10
+                        unit: "Hz"
+                        onValueModified: (v) => {
+                            EEdbSpectrum.minimumFrequency = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: maximumFrequency
+
+                        label: i18n("Maximum")
+                        from: 120
+                        to: 22000
+                        value: EEdbSpectrum.maximumFrequency
+                        decimals: 0
+                        stepSize: 10
+                        unit: "Hz"
+                        onValueModified: (v) => {
+                            EEdbSpectrum.maximumFrequency = v;
                         }
                     }
 

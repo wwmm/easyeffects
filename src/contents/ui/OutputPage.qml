@@ -4,73 +4,76 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
-    Component {
-        id: listDelegate
 
-        Kirigami.AbstractCard {
+    footer: Kirigami.AbstractApplicationHeader {
 
-            contentItem: Item {
-                implicitWidth: delegateLayout.implicitWidth
-                implicitHeight: delegateLayout.implicitHeight
+        contentItem: RowLayout {
+            anchors {
+                left: parent.left
+                leftMargin: Kirigami.Units.smallSpacing
+                right: parent.right
+                rightMargin: Kirigami.Units.smallSpacing
+            }
 
-                GridLayout {
-                    id: delegateLayout
-
-                    rowSpacing: Kirigami.Units.largeSpacing
-                    columnSpacing: Kirigami.Units.largeSpacing
-                    columns: root.wideScreen ? 4 : 2
-
-                    anchors {
-                        left: parent.left
-                        top: parent.top
-                        right: parent.right
+            Kirigami.ActionToolBar {
+                alignment: Qt.AlignLeft
+                actions: [
+                    Kirigami.Action {
+                        text: "kHz"
+                        enabled: false
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                    },
+                    Kirigami.Action {
+                        text: "0,0 ms"
+                        enabled: false
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                    },
+                    Kirigami.Action {
+                        text: "0 0 dB"
+                        enabled: false
+                        displayHint: Kirigami.DisplayHint.KeepVisible
                     }
+                ]
+            }
 
-                    ColumnLayout {
-                        Controls.TextField {
-                            Layout.fillWidth: true
-                            placeholderText: i18n("Name")
-                            text: name
-                            wrapMode: TextInput.WrapAnywhere
-                            onTextEdited: model.name = this.text
-                        }
+            Kirigami.ActionToolBar {
+                alignment: Qt.AlignHCenter
+                actions: [
+                    Kirigami.Action {
+                        // checked: outputPage.visible
 
-                        Kirigami.Separator {
-                            Layout.fillWidth: true
-                            visible: true
-                        }
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        icon.name: "multimedia-player-symbolic"
+                        text: "Players"
+                        checkable: true
+                    },
+                    Kirigami.Action {
+                        // checked: inputPage.visible
 
-                        Controls.TextField {
-                            Layout.fillWidth: true
-                            placeholderText: i18n("Value")
-                            text: value
-                            wrapMode: TextInput.WrapAnywhere
-                            onTextEdited: model.value = this.text
-                        }
-
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        icon.name: "emblem-music-symbolic"
+                        text: "Effects"
+                        checkable: true
                     }
+                ]
+            }
 
-                    ColumnLayout {
-                        Controls.Button {
-                            onClicked: CppModelEnvVars.remove(index)
-                            Layout.alignment: Qt.AlignRight
-                            icon.name: "delete"
+            Kirigami.ActionToolBar {
+                alignment: Qt.AlignRight
+                actions: [
+                    Kirigami.Action {
+                        text: i18n("Excluded Apps")
+                        icon.name: "im-ban-kick-user-symbolic"
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        onTriggered: {
+                            showPassiveNotification("Blocklist Menu!");
                         }
-
                     }
-
-                }
-
+                ]
             }
 
         }
 
-    }
-
-    Kirigami.CardsListView {
-        id: envVarListView
-
-        delegate: listDelegate
     }
 
 }

@@ -8,6 +8,10 @@
             <label>Show the Spectrum Analyzer.</label>
             <default>true</default>
         </entry>
+        <entry name="dynamicYScale" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
         <entry name="spectrumShape" type="Enum">
             <label>Spectrum Type</label>
             <choices>
@@ -22,6 +26,36 @@
                 </choice>
             </choices>
             <default>0</default>
+        </entry>
+        <entry name="nPoints" type="Int">
+            <label></label>
+            <min>2</min>
+            <max>2048</max>
+            <default>100</default>
+        </entry>
+        <entry name="height" type="Int">
+            <label></label>
+            <min>100</min>
+            <max>1000</max>
+            <default>120</default>
+        </entry>
+        <entry name="lineWidth" type="Double">
+            <label></label>
+            <min>0.1</min>
+            <max>100</max>
+            <default>2</default>
+        </entry>
+        <entry name="minimumFrequency" type="Int">
+            <label></label>
+            <min>20</min>
+            <max>21900</max>
+            <default>20</default>
+        </entry>
+        <entry name="maximumFrequency" type="Int">
+            <label></label>
+            <min>120</min>
+            <max>22000</max>
+            <default>20000</default>
         </entry>
     </group>
 </kcfg>

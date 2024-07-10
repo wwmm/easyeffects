@@ -17,6 +17,7 @@ cat $SCHEMA |
     sed -r 's/key/entry/' | 
     sed -r 's/type="b"/type="Bool"/' |
     sed -r 's/type="i"/type="Int"/' |
+    sed -r 's/type="d"/type="Double"/' |
     sed -r 's/type="s"/type="String"/' |
     sed '1d;2d;3d;$d;' | # removing lines
     sed '$d' |
