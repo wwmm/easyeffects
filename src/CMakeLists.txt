@@ -23,6 +23,7 @@ target_link_libraries(easyeffects PRIVATE
     KF${QT_MAJOR_VERSION}::CoreAddons
     KF${QT_MAJOR_VERSION}::ConfigCore
     KF${QT_MAJOR_VERSION}::ConfigGui
+    Qt${QT_MAJOR_VERSION}::Charts
 )
 
 kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})

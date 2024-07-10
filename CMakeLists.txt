@@ -32,6 +32,7 @@ find_package(Qt${QT_MAJOR_VERSION} REQUIRED NO_MODULE COMPONENTS
     Gui
     QuickControls2
     Widgets
+    Charts
 )
 
 find_package(KF${QT_MAJOR_VERSION} REQUIRED COMPONENTS
