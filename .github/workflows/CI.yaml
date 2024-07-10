@@ -141,6 +141,7 @@ jobs:
         depends="lv2"
         makedepends="
         qt6-qtbase-dev
+        qt6-qtcharts-dev
         kirigami-dev
         ki18n-dev
         kconfigwidgets-dev
@@ -224,6 +225,7 @@ jobs:
         onetbb-devel
         pipewire-devel
         qt6-qtbase-devel
+        qt6-qtcharts-devel
         rnnoise-devel
         soundtouch-devel
         speexdsp-devel
