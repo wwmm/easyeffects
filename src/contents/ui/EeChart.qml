@@ -7,7 +7,7 @@ ChartView {
 
     property int seriesType: 0
     property bool useOpenGL: true
-    property var testData: [Qt.point(50, 0.2), Qt.point(100, 0.4), Qt.point(1000, 0.6), Qt.point(10000, 0.8), Qt.point(15000, 1)]
+    property var testData: [Qt.point(50.5, 0.2), Qt.point(100, 0.4), Qt.point(1000, 0.6), Qt.point(10000, 0.8), Qt.point(15000, 1)]
 
     implicitHeight: EEdbSpectrum.height
     antialiasing: true
@@ -15,10 +15,12 @@ ChartView {
     localizeNumbers: true
     backgroundRoundness: 0
     legend.visible: false
+    dropShadowEnabled: false
     Component.onCompleted: {
         for (let n = 0; n < testData.length; n++) {
             splineSeries.append(testData[n].x, testData[n].y);
             scatterSeries.append(testData[n].x, testData[n].y);
+            areaLineSeries.append(testData[n].x, testData[n].y);
         }
     }
 
@@ -57,6 +59,7 @@ ChartView {
         gridVisible: false
         lineVisible: false
         visible: false
+        labelsVisible: false
     }
 
     BarSeries {
@@ -71,6 +74,7 @@ ChartView {
             id: barSeriesSet
 
             values: widgetRoot.testData
+            onClicked: console.debug("clicked!" + index + " " + this.at(index))
         }
 
     }
@@ -91,6 +95,22 @@ ChartView {
         axisY: axisY
         useOpenGL: useOpenGL
         visible: seriesType === 2
+    }
+
+    AreaSeries {
+        axisX: axisFreqLog
+        useOpenGL: useOpenGL
+        visible: seriesType === 3
+
+        upperSeries: LineSeries {
+            id: areaLineSeries
+
+            axisX: axisFreqLog
+            axisY: axisY
+            useOpenGL: useOpenGL
+            visible: seriesType === 1
+        }
+
     }
 
 }

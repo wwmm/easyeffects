@@ -28,6 +28,9 @@
                 <choice name="dots">
                     <label>Dots</label>
                 </choice>
+                <choice name="area">
+                    <label>Area</label>
+                </choice>
             </choices>
             <default>0</default>
         </entry>

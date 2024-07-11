@@ -217,7 +217,7 @@ Kirigami.OverlaySheet {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: EEdbSpectrum.spectrumShape
                         editable: false
-                        model: [i18n("Bars"), i18n("Lines"), i18n("Dots")]
+                        model: [i18n("Bars"), i18n("Lines"), i18n("Dots"), i18n("Area")]
                         onActivated: (idx) => {
                             if (idx !== EEdbSpectrum.spectrumShape)
                                 EEdbSpectrum.spectrumShape = idx;
