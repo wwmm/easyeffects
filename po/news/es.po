@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-09 22:35+0000\n"
+"POT-Creation-Date: 2024-07-12 14:36+0000\n"
 "PO-Revision-Date: 2024-06-28 01:09+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
@@ -79,7 +79,6 @@ msgstr ""
 "utilizada en la última sesión. También es posible guardar todos los ajustes "
 "actuales como perfiles."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace (wwmm)"
