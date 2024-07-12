@@ -76,12 +76,6 @@
             <max>1000</max>
             <default>140</default>
         </entry>
-        <entry name="lineWidth" type="Double">
-            <label></label>
-            <min>0.1</min>
-            <max>100</max>
-            <default>2</default>
-        </entry>
         <entry name="minimumFrequency" type="Int">
             <label></label>
             <min>20</min>

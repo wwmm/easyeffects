@@ -291,21 +291,6 @@ Kirigami.OverlaySheet {
                         }
                     }
 
-                    EeSpinBox {
-                        id: lineWidth
-
-                        label: i18n("Line Width")
-                        from: 10
-                        to: 1000
-                        value: EEdbSpectrum.lineWidth
-                        decimals: 1
-                        stepSize: 0.1
-                        unit: "px"
-                        onValueModified: (v) => {
-                            EEdbSpectrum.lineWidth = v;
-                        }
-                    }
-
                 }
 
                 FormCard.FormHeader {
