@@ -26,13 +26,13 @@ Kirigami.ApplicationWindow {
 
     }
 
-    OutputPage {
+    PageStreamsEffects {
         id: outputPage
 
         visible: true
     }
 
-    InputPage {
+    PageStreamsEffects {
         id: inputPage
 
         visible: false

@@ -225,21 +225,6 @@ Kirigami.OverlaySheet {
                         }
                     }
 
-                    FormCard.FormComboBoxDelegate {
-                        id: theme
-
-                        text: i18n("Theme")
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: EEdbSpectrum.theme
-                        editable: false
-                        model: [i18n("Light"), i18n("Cerulean Blue"), i18n("Dark"), i18n("Sand Brown"), i18n("Ncs Blue"), i18n("High Contras"), i18n("Icy Blue"), i18n("Qt")]
-                        onActivated: (idx) => {
-                            if (idx !== EEdbSpectrum.theme)
-                                EEdbSpectrum.theme = idx;
-
-                        }
-                    }
-
                     EeSwitch {
                         label: i18n("Enable OpenGL Acceleration")
                         isChecked: EEdbSpectrum.useOpenGL
