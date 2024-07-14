@@ -5,66 +5,74 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
-    // Controls.StackView {
-    //     id: stack
-    //     anchors.fill: parent
-    //     implicitHeight: stack.currentItem.implicitHeight
-    //     implicitWidth: Kirigami.Units.gridUnit * 30
-    //     initialItem: ColumnLayout {
-    //         anchors.fill: parent
-    //     }
-    // }
-
     property int pageType: 0 // 0 for output and 1 for input
 
-    Kirigami.CardsListView {
-        id: listView
+    StackLayout {
+        id: layout
 
-        clip: true
-        reuseItems: true
+        anchors.fill: parent
+        currentIndex: 0
 
-        Kirigami.PlaceholderMessage {
-            anchors.centerIn: parent
-            width: parent.width - (Kirigami.Units.largeSpacing * 4)
-            visible: listView.count === 0
-            text: i18n("No Preset")
-        }
+        Kirigami.CardsListView {
+            id: listView
 
-        delegate: StreamsListDelegate {
-        }
+            clip: true
+            reuseItems: true
 
-        model: ListModel {
-            ListElement {
-                iconName: "multimedia-player-symbolic"
-                appName: "Stream 1"
-                mediaName: "test stream"
-                streamState: "Idle"
-                streamFormat: "F32"
-                streamRate: "44.1 kHz"
-                streamChannels: "6 channels"
-                streamLatency: "30 ms"
-                streamMuted: false
-                streamVolume: 85
+            Kirigami.PlaceholderMessage {
+                anchors.centerIn: parent
+                width: parent.width - (Kirigami.Units.largeSpacing * 4)
+                visible: listView.count === 0
+                text: i18n("No Preset")
             }
 
-            ListElement {
-                iconName: "multimedia-player-symbolic"
-                appName: "Stream 2"
-                mediaName: "test stream"
-                streamState: "Idle"
-                streamFormat: "F32"
-                streamRate: "48 kHz"
-                streamChannels: "2 channels"
-                streamLatency: "50 ms"
-                streamMuted: true
-                streamVolume: 35
+            delegate: StreamsListDelegate {
             }
 
+            model: ListModel {
+                ListElement {
+                    iconName: "firefox"
+                    appName: "Stream 1"
+                    mediaName: "test stream"
+                    streamState: "Idle"
+                    streamFormat: "F32"
+                    streamRate: "44.1 kHz"
+                    streamChannels: "6 channels"
+                    streamLatency: "30 ms"
+                    streamMuted: false
+                    streamVolume: 85
+                }
+
+                ListElement {
+                    iconName: "chromium"
+                    appName: "Stream 2"
+                    mediaName: "test stream"
+                    streamState: "Idle"
+                    streamFormat: "F32"
+                    streamRate: "48 kHz"
+                    streamChannels: "2 channels"
+                    streamLatency: "50 ms"
+                    streamMuted: true
+                    streamVolume: 35
+                }
+
+            }
+
+        }
+
+        Rectangle {
+            color: 'teal'
+            implicitWidth: 200
+            implicitHeight: 200
+            Layout.fillHeight: false
         }
 
     }
 
     header: EeChart {
+        id: spectrumChart
+
+        implicitHeight: EEdbSpectrum.height
         seriesType: EEdbSpectrum.spectrumShape
         useOpenGL: EEdbSpectrum.useOpenGL
     }

@@ -83,11 +83,11 @@ Kirigami.AbstractCard {
 
                     Layout.fillWidth: true
                     orientation: Qt.Horizontal
-                    snapMode: Controls.Slider.SnapAlways
                     value: streamVolume
                     to: 100
                     stepSize: 1
                     enabled: !muteButton.checked
+                    wheelEnabled: false
                 }
 
                 Controls.Label {

@@ -29,12 +29,14 @@ Kirigami.ApplicationWindow {
     PageStreamsEffects {
         id: outputPage
 
+        pageType: 0
         visible: true
     }
 
     PageStreamsEffects {
         id: inputPage
 
+        pageType: 1
         visible: false
     }
 

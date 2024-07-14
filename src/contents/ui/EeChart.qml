@@ -13,16 +13,17 @@ Item {
     readonly property color color1: Kirigami.Theme.negativeTextColor
     readonly property color color2: Kirigami.Theme.alternateBackgroundColor
     readonly property color color3: Qt.darker(color2, 1.1)
+    readonly property color backgroundRectColor: Kirigami.Theme.backgroundColor
     property var testData: [Qt.point(50.5, 0.2), Qt.point(100, 0.4), Qt.point(1000, 0.6), Qt.point(10000, 0.8), Qt.point(15000, 1)]
 
     implicitHeight: EEdbSpectrum.height
     Kirigami.Theme.inherit: false
-    Kirigami.Theme.colorSet: Kirigami.Theme.Header
+    Kirigami.Theme.colorSet: Kirigami.Theme.View
 
     // rectangle used as workaround for the bug linked at the top of this file
     Rectangle {
         implicitHeight: EEdbSpectrum.height
-        color: Kirigami.Theme.backgroundColor
+        color: backgroundRectColor
 
         anchors {
             left: parent.left
@@ -41,7 +42,7 @@ Item {
         implicitHeight: EEdbSpectrum.height
         antialiasing: true
         localizeNumbers: true
-        backgroundColor: Kirigami.Theme.backgroundColor
+        backgroundColor: backgroundRectColor
         backgroundRoundness: 0
         legend.visible: false
         dropShadowEnabled: false
