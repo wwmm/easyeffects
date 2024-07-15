@@ -70,12 +70,13 @@ Kirigami.AbstractCard {
                 Layout.columnSpan: appWindow.wideScreen ? 3 : 1
 
                 Controls.Button {
+                    // onCheckedChanged: showPassiveNotification("The muted state has changed: " + checked)
+
                     id: muteButton
 
                     icon.name: checked ? "audio-volume-muted-symbolic" : "audio-volume-high-symbolic"
                     checkable: true
                     checked: streamMuted
-                    onCheckedChanged: showPassiveNotification("The muted state has changed: " + checked)
                 }
 
                 Controls.Slider {
