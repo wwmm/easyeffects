@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/ui">
+        <file alias="DelegatePluginsList.qml">contents/ui/DelegatePluginsList.qml</file>
+        <file alias="DelegateStreamsList.qml">contents/ui/DelegateStreamsList.qml</file>
         <file alias="EeChart.qml">contents/ui/EeChart.qml</file>
         <file alias="EeSpinBox.qml">contents/ui/EeSpinBox.qml</file>
         <file alias="EeSwitch.qml">contents/ui/EeSwitch.qml</file>
@@ -7,7 +9,6 @@
         <file alias="PageStreamsEffects.qml">contents/ui/PageStreamsEffects.qml</file>
         <file alias="PipeWirePage.qml">contents/ui/PipeWirePage.qml</file>
         <file alias="PreferencesSheet.qml">contents/ui/PreferencesSheet.qml</file>
-        <file alias="StreamsListDelegate.qml">contents/ui/StreamsListDelegate.qml</file>
         <file alias="Common.js">contents/ui/Common.js</file>
     </qresource>
 </RCC>

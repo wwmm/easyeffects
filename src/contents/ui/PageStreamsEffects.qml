@@ -29,7 +29,7 @@ Kirigami.Page {
                     text: i18n("No Preset")
                 }
 
-                delegate: StreamsListDelegate {
+                delegate: DelegateStreamsList {
                 }
 
                 model: ListModel {
@@ -68,8 +68,6 @@ Kirigami.Page {
         GridLayout {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            rowSpacing: Kirigami.Units.largeSpacing
-            columnSpacing: Kirigami.Units.largeSpacing
             columns: 3
             rows: 1
 
@@ -94,6 +92,44 @@ Kirigami.Page {
                     id: pluginsListView
 
                     Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    clip: true
+                    reuseItems: false
+
+                    delegate: DelegatePluginsList {
+                    }
+
+                    model: ListModel {
+                        ListElement {
+                            name: "Autogain"
+                            bypass: false
+                            stateIconName: "arrow-down-symbolic"
+                        }
+
+                    }
+
+                    header: Kirigami.ActionToolBar {
+                        actions: [
+                            Kirigami.Action {
+                                text: pageType === 0 ? i18n("Players") : i18n("Input Device")
+                                icon.name: pageType === 0 ? "source-playlist-symbolic" : "audio-input-microphone-symbolic"
+                                displayHint: Kirigami.DisplayHint.KeepVisible
+                                enabled: false
+                            }
+                        ]
+                    }
+
+                    footer: Kirigami.ActionToolBar {
+                        actions: [
+                            Kirigami.Action {
+                                text: pageType === 0 ? "Output Device" : i18n("Recorders")
+                                icon.name: pageType === 0 ? "audio-speakers-symbolic" : "source-playlist-symbolic"
+                                displayHint: Kirigami.DisplayHint.KeepVisible
+                                enabled: false
+                            }
+                        ]
+                    }
+
                 }
 
             }
