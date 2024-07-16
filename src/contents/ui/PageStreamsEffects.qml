@@ -70,6 +70,7 @@ Kirigami.Page {
             Layout.fillWidth: true
             columns: 3
             rows: 1
+            columnSpacing: 0
 
             ColumnLayout {
                 Kirigami.ActionToolBar {
@@ -94,40 +95,74 @@ Kirigami.Page {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                     clip: true
-                    reuseItems: false
+                    reuseItems: true
 
                     delegate: DelegatePluginsList {
                     }
 
-                    model: ListModel {
-                        ListElement {
-                            name: "Autogain"
-                            bypass: false
-                            stateIconName: "arrow-down-symbolic"
+                    moveDisplaced: Transition {
+                        YAnimator {
+                            duration: Kirigami.Units.longDuration
+                            easing.type: Easing.InOutQuad
                         }
 
                     }
 
-                    header: Kirigami.ActionToolBar {
-                        actions: [
-                            Kirigami.Action {
-                                text: pageType === 0 ? i18n("Players") : i18n("Input Device")
-                                icon.name: pageType === 0 ? "source-playlist-symbolic" : "audio-input-microphone-symbolic"
-                                displayHint: Kirigami.DisplayHint.KeepVisible
-                                enabled: false
-                            }
-                        ]
+                    model: ListModel {
+                        id: pluginsListModel
+
+                        ListElement {
+                            name: "Autogain"
+                            bypass: false
+                            stateIconName: "format-align-vertical-bottom-symbolic"
+                        }
+
+                        ListElement {
+                            name: "Bass Enhancer"
+                            bypass: false
+                            stateIconName: "format-align-vertical-bottom-symbolic"
+                        }
+
+                        ListElement {
+                            name: "Exciter"
+                            bypass: false
+                            stateIconName: "format-align-vertical-bottom-symbolic"
+                        }
+
                     }
 
-                    footer: Kirigami.ActionToolBar {
-                        actions: [
-                            Kirigami.Action {
-                                text: pageType === 0 ? "Output Device" : i18n("Recorders")
-                                icon.name: pageType === 0 ? "audio-speakers-symbolic" : "source-playlist-symbolic"
-                                displayHint: Kirigami.DisplayHint.KeepVisible
-                                enabled: false
-                            }
-                        ]
+                    header: RowLayout {
+                        visible: pluginsListView.count !== 0
+
+                        Kirigami.Icon {
+                            source: pageType === 0 ? "source-playlist-symbolic" : "audio-input-microphone-symbolic"
+                            Layout.preferredWidth: Kirigami.Units.iconSizes.sizeForLabels
+                            Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels
+                            enabled: false
+                        }
+
+                        Controls.Label {
+                            text: pageType === 0 ? i18n("Players") : i18n("Input Device")
+                            enabled: false
+                        }
+
+                    }
+
+                    footer: RowLayout {
+                        visible: pluginsListView.count !== 0
+
+                        Kirigami.Icon {
+                            source: pageType === 0 ? "audio-speakers-symbolic" : "source-playlist-symbolic"
+                            Layout.preferredWidth: Kirigami.Units.iconSizes.sizeForLabels
+                            Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels
+                            enabled: false
+                        }
+
+                        Controls.Label {
+                            text: pageType === 0 ? "Output Device" : i18n("Recorders")
+                            enabled: false
+                        }
+
                     }
 
                 }
