@@ -50,6 +50,8 @@ void critical(const std::string& s, source_location location = source_location::
 void warning(const std::string& s, source_location location = source_location::current());
 void info(const std::string& s, source_location location = source_location::current());
 
+void create_user_directory(const std::filesystem::path& path);
+
 auto normalize(const double& x, const double& max, const double& min = 1.0) -> double;
 
 auto linear_to_db(const float& amp) -> float;

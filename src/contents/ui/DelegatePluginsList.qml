@@ -3,7 +3,8 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
-// Item required to make Kirigami.ListItemDragHandle work. THe item beind dragged can not be the direct child
+//The ItemDelegate must be inside a Item for Kirigami.ListItemDragHandle to work.
+//The item beind dragged can not be the direct child.
 Item {
     width: parent ? parent.width : listItemDelegate.implicitWidth
     height: listItemDelegate.height
@@ -18,13 +19,22 @@ Item {
 
         hoverEnabled: true
         width: parent.width
+        // leftInset: 0
+        // leftPadding: 0
+        // rightInset: 0
+        // rightPadding: 0
         onClicked: {
             showPassiveNotification("Clicked on plugin: " + model.name);
         }
 
-        contentItem: RowLayout {
+        contentItem: GridLayout {
+            Layout.fillWidth: true
+            columns: 4
+            rows: 1
+            columnSpacing: Kirigami.Units.smallSpacing
+
             Kirigami.Icon {
-                source: model.stateIconName
+                source: model.bypass === true ? "media-playback-pause-symbolic" : "format-align-vertical-bottom-symbolic"
                 Layout.preferredWidth: Kirigami.Units.iconSizes.sizeForLabels
                 Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels
                 Layout.alignment: Qt.AlignLeft
@@ -67,7 +77,10 @@ Item {
                 listItem: listItemDelegate
                 listView: pluginsListView
                 onMoveRequested: (oldIndex, newIndex) => {
+                    let indexStart = pluginsListModel.index(0, 0);
+                    let indexEnd = pluginsListModel.index(pluginsListModel.count - 1, 0);
                     pluginsListModel.move(oldIndex, newIndex, 1);
+                    pluginsListModel.dataChanged(indexStart, indexEnd, []);
                 }
             }
 

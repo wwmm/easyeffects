@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/easyeffectsrc" />
+    <group name="StreamOutputs">
+        <entry name="plugins" type="StringList">
+            <label>List of Plugins in the Effects Pipeline</label>
+            <default>autogain,exciter,reverb</default>
+        </entry>
+        <entry name="useDefaultOutputDevice" type="Bool">
+            <label>Use the System Default Output Device</label>
+            <default>true</default>
+        </entry>
+        <entry name="outputDevice" type="String">
+            <label>Output Device</label>
+            <default>""</default>
+        </entry>
+        <entry name="blocklist" type="StringList">
+            <label>List of Blocked Streams</label>
+            <default></default>
+        </entry>
+        <entry name="showBlocklistedApps" type="Bool">
+            <label>Show Blocked Streams in the Streams Tab</label>
+            <default>false</default>
+        </entry>
+        <entry name="showPluginsList" type="Bool">
+            <label>Show the List of Plugins</label>
+            <default>true</default>
+        </entry>
+    </group>
+</kcfg>

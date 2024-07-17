@@ -5,9 +5,42 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
 Kirigami.Page {
+    //To do: the bypass needs to be set from the corresponding plugin database
+
     property int pageType: 0 // 0 for output and 1 for input
+    property var streamDB
 
     padding: 0
+    Component.onCompleted: {
+        let plugins = streamDB.plugins;
+        for (let n = 0; n < plugins.length; n++) {
+            pluginsListModel.append({
+                "name": plugins[n],
+                "translatedName": "",
+                "bypass": false
+            });
+        }
+    }
+
+    Connections {
+        function onPluginsChanged() {
+            console.log("new plugins list: " + streamDB.plugins);
+        }
+
+        target: streamDB
+    }
+
+    Connections {
+        function onDataChanged() {
+            let newList = [];
+            for (let n = 0; n < pluginsListModel.count; n++) {
+                newList.push(pluginsListModel.get(n).name);
+            }
+            streamDB.plugins = newList;
+        }
+
+        target: pluginsListModel
+    }
 
     StackLayout {
         id: stackLayout
@@ -110,25 +143,6 @@ Kirigami.Page {
 
                     model: ListModel {
                         id: pluginsListModel
-
-                        ListElement {
-                            name: "Autogain"
-                            bypass: false
-                            stateIconName: "format-align-vertical-bottom-symbolic"
-                        }
-
-                        ListElement {
-                            name: "Bass Enhancer"
-                            bypass: false
-                            stateIconName: "format-align-vertical-bottom-symbolic"
-                        }
-
-                        ListElement {
-                            name: "Exciter"
-                            bypass: false
-                            stateIconName: "format-align-vertical-bottom-symbolic"
-                        }
-
                     }
 
                     header: RowLayout {
@@ -138,6 +152,7 @@ Kirigami.Page {
                             source: pageType === 0 ? "source-playlist-symbolic" : "audio-input-microphone-symbolic"
                             Layout.preferredWidth: Kirigami.Units.iconSizes.sizeForLabels
                             Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels
+                            Layout.leftMargin: Kirigami.Units.mediumSpacing
                             enabled: false
                         }
 
@@ -155,6 +170,7 @@ Kirigami.Page {
                             source: pageType === 0 ? "audio-speakers-symbolic" : "source-playlist-symbolic"
                             Layout.preferredWidth: Kirigami.Units.iconSizes.sizeForLabels
                             Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels
+                            Layout.leftMargin: Kirigami.Units.mediumSpacing
                             enabled: false
                         }
 

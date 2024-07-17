@@ -1,0 +1,8 @@
+File=easyeffects_db_streamoutputs.kcfg
+NameSpace=db
+ClassName=StreamOutputs
+Mutators=true
+Notifiers=true
+DefaultValueGetters=true
+Singleton=true
+GenerateProperties=true

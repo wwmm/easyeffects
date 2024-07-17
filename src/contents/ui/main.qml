@@ -14,6 +14,7 @@ Kirigami.ApplicationWindow {
     title: i18nc("@title:window", "EasyEffects")
     pageStack.initialPage: outputPage
     pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.None
+    flags: Qt.WA_DeleteOnClose
     onWidthChanged: {
         EEdb.width = applicationWindow().width;
     }
@@ -30,6 +31,7 @@ Kirigami.ApplicationWindow {
         id: outputPage
 
         pageType: 0
+        streamDB: EEdbStreamOutputs
         visible: true
     }
 
@@ -37,6 +39,7 @@ Kirigami.ApplicationWindow {
         id: inputPage
 
         pageType: 1
+        streamDB: EEdbStreamInputs
         visible: false
     }
 

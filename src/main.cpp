@@ -5,6 +5,7 @@
 #include <qqmlapplicationengine.h>
 #include <qqmlcontext.h>
 #include <qquickstyle.h>
+#include <qstandardpaths.h>
 #include <qstringliteral.h>
 #include <qtenvironmentvariables.h>
 #include <qurl.h>
@@ -15,6 +16,8 @@
 #include "config.h"
 #include "easyeffects_db.h"
 #include "easyeffects_db_spectrum.h"
+#include "easyeffects_db_streaminputs.h"
+#include "easyeffects_db_streamoutputs.h"
 #include "util.hpp"
 
 void construct_about_window() {
@@ -56,10 +59,18 @@ int main(int argc, char* argv[]) {
 
   construct_about_window();
 
+  // creating our database directory
+  {
+    auto db_dir_path = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation).append("/easyeffects/db");
+    util::create_user_directory(db_dir_path.toStdString());
+  }
+
   // Registering kcfg settings
 
   auto ee_db = db::Main::self();
   auto ee_db_spectrum = db::Spectrum::self();
+  auto ee_db_streamoutputs = db::StreamOutputs::self();
+  auto ee_db_streaminputs = db::StreamInputs::self();
 
   // QObject::connect(ee_db, &db::Main::widthChanged, [=]() { util::warning(util::to_string(db::Main::width())); });
 
@@ -69,6 +80,8 @@ int main(int argc, char* argv[]) {
 
   engine.rootContext()->setContextProperty("EEdb", ee_db);
   engine.rootContext()->setContextProperty("EEdbSpectrum", ee_db_spectrum);
+  engine.rootContext()->setContextProperty("EEdbStreamOutputs", ee_db_streamoutputs);
+  engine.rootContext()->setContextProperty("EEdbStreamInputs", ee_db_streaminputs);
   engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
   engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
 
@@ -79,6 +92,8 @@ int main(int argc, char* argv[]) {
   QObject::connect(&app, &QApplication::aboutToQuit, [=]() {
     ee_db->save();
     ee_db_spectrum->save();
+    ee_db_streamoutputs->save();
+    ee_db_streaminputs->save();
   });
 
   return QApplication::exec();
