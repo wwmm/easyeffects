@@ -2,12 +2,10 @@
 #include <qabstractitemmodel.h>
 #include <qhash.h>
 #include <qhashfunctions.h>
-#include <qlist.h>
 #include <qobject.h>
 #include <qqml.h>
 #include <qsortfilterproxymodel.h>
 #include <qstringview.h>
-#include <qtmetamacros.h>
 #include <qvariant.h>
 #include <KLocalizedString>
 #include <iterator>
