@@ -18,6 +18,7 @@
 #include "easyeffects_db_spectrum.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
+#include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 void construct_about_window() {
@@ -75,6 +76,7 @@ int main(int argc, char* argv[]) {
   // QObject::connect(ee_db, &db::Main::widthChanged, [=]() { util::warning(util::to_string(db::Main::width())); });
 
   // presets::Backend presetsBackend;
+  tags::plugin_name::Model::self();  // Making sure this singleton class initializes before qml
 
   QQmlApplicationEngine engine;
 

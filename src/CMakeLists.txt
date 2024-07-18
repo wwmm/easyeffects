@@ -8,6 +8,7 @@ kde_target_enable_exceptions(easyeffects PRIVATE)
 
 target_sources(easyeffects PRIVATE
     main.cpp
+    tags_plugin_name.cpp
     util.cpp
     resources.qrc
 )

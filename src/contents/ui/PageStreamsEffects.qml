@@ -42,6 +42,10 @@ Kirigami.Page {
         target: pluginsListModel
     }
 
+    MenuAddPlugins {
+        id: menuAddPlugins
+    }
+
     StackLayout {
         id: stackLayout
 
@@ -117,6 +121,7 @@ Kirigami.Page {
                             displayHint: Kirigami.DisplayHint.KeepVisible
                             onTriggered: {
                                 showPassiveNotification("Adding a Plugin");
+                                menuAddPlugins.open();
                             }
                         }
                     ]
