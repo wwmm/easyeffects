@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-09 22:35+0000\n"
-"PO-Revision-Date: 2024-06-26 21:09+0000\n"
+"PO-Revision-Date: 2024-07-19 03:09+0000\n"
 "Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.6-rc\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -1766,7 +1766,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
 msgid "Style"
-msgstr ""
+msgstr "النمط"
 
 #: data/ui/preferences_general.ui:171
 msgid "Use Dark Theme"
