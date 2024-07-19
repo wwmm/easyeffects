@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-09 22:35+0000\n"
+"POT-Creation-Date: 2024-07-19 14:44+0000\n"
 "PO-Revision-Date: 2023-03-21 06:38+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -72,7 +72,6 @@ msgstr ""
 "Easy Effects 启动时，它会方便地记住上次会话中使用的配置。 也可以将所有当前设"
 "置保存为配置文件。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"

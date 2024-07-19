@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-09 22:35+0000\n"
+"POT-Creation-Date: 2024-07-19 14:44+0000\n"
 "PO-Revision-Date: 2022-07-24 14:24+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -80,7 +80,6 @@ msgstr ""
 "Når EasyEffects startes, vil den huske alle innstillingene du gjorde i "
 "forrige økt. Det er også mulig å lagre innstillingene i ulike profiler."
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
