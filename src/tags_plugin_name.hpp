@@ -29,6 +29,8 @@
 #include <qtmetamacros.h>
 #include <qvariant.h>
 #include <sys/types.h>
+#include <string>
+#include <string_view>
 
 namespace tags::plugin_package {
 
@@ -140,8 +142,15 @@ class Model : public QAbstractListModel {
 
   auto getMap() -> QMap<QString, QString>;
 
+  Q_INVOKABLE QList<QString> getBaseNames();
+  Q_INVOKABLE QString translate(const QString& baseName);
+
  private:
   QMap<QString, QString> modelMap;
 };
+
+auto get_base_name(std::string_view name) -> std::string;
+
+auto get_id(const std::string& name) -> uint;
 
 }  // namespace tags::plugin_name

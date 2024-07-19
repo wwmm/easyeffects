@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"POT-Creation-Date: 2024-07-19 14:11-0300\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -19,90 +19,396 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.16-dev\n"
 
-#: src/contents/ui/InputTab.qml:9
-msgid "Input"
-msgstr "შეყვანა"
+#: src/contents/ui/DelegatePluginsList.qml:53
+#, fuzzy
+msgid "Enable this Effect"
+msgstr "ეფექტები"
 
-#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
-#: src/contents/ui/PipeWireTab.qml:15
-msgctxt "@action:button"
-msgid "Add Row"
+#: src/contents/ui/DelegatePluginsList.qml:66
+msgid "Remove this effect"
 msgstr ""
 
-#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
-#: src/contents/ui/PipeWireTab.qml:44
-msgid "Name"
-msgstr "სახელი"
+#: src/contents/ui/DelegateStreamsList.qml:58
+msgid "Enable"
+msgstr "ჩართვა"
 
-#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
-#: src/contents/ui/PipeWireTab.qml:57
-#, fuzzy
-msgid "Value"
-msgstr "უმცირესი მნიშვნელობა"
+#: src/contents/ui/DelegateStreamsList.qml:63
+msgid "Exclude"
+msgstr "გამორიცხვა"
 
-#: src/contents/ui/main.qml:17
+#: src/contents/ui/main.qml:14
 #, fuzzy
 msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "ეფექტები"
 
-#: src/contents/ui/main.qml:98
+#: src/contents/ui/main.qml:86
 #, fuzzy
 msgid "Preset: "
 msgstr "შაბლონი"
 
-#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+#: src/contents/ui/main.qml:94 src/contents/ui/main.qml:206
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:162
-msgid "Apply"
-msgstr ""
-
-#: src/contents/ui/main.qml:171
+#: src/contents/ui/main.qml:116
 msgid "Presets"
 msgstr "პრესეტები"
 
-#: src/contents/ui/main.qml:179
+#: src/contents/ui/main.qml:124
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:190 src/contents/ui/PreferencesSheet.qml:12
+#: src/contents/ui/PreferencesSheet.qml:17
+#: src/contents/ui/PreferencesSheet.qml:453
+#: src/contents/ui/PreferencesSheet.qml:466
 #, fuzzy
 msgid "Preferences"
 msgstr "_მორგება"
 
-#: src/contents/ui/main.qml:187
+#: src/contents/ui/main.qml:198
 msgid "About EasyEffects"
 msgstr ""
 
-#: src/contents/ui/main.qml:223
-msgid "Executable Name"
+#: src/contents/ui/MenuAddPlugins.qml:41
+msgid "Empty"
 msgstr ""
 
-#: src/contents/ui/OutputTab.qml:9
-msgid "Output"
-msgstr "გამოტანა"
+#: src/contents/ui/MenuAddPlugins.qml:82
+msgid "Added Plugin: "
+msgstr ""
 
-#: src/contents/ui/PipeWireTab.qml:9
+#: src/contents/ui/MenuAddPlugins.qml:97
+msgid "Search"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:77
 #, fuzzy
-msgid "PipeWire"
-msgstr "_PipeWire"
+msgid "No Preset"
+msgstr "პრესეტები"
 
-#: src/main.cpp:55
+#: src/contents/ui/PageStreamsEffects.qml:130
+msgid "Add Effect"
+msgstr "ეფექტის დამატება"
+
+#: src/contents/ui/PageStreamsEffects.qml:176
+msgid "Players"
+msgstr "მოთამაშეები"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:16
+#. i18n: ectx: label, entry (inputDevice), group (StreamInputs)
+#: src/contents/ui/PageStreamsEffects.qml:176 rc.cpp:75
+msgid "Input Device"
+msgstr "შეყვანის მოწყობილობა"
+
+#: src/contents/ui/PageStreamsEffects.qml:194
+msgid "Recorders"
+msgstr "სალამურები"
+
+#: src/contents/ui/PageStreamsEffects.qml:221
+#, fuzzy
+msgid "No Effects"
+msgstr "ეფექტის დამატება"
+
+#: src/contents/ui/PageStreamsEffects.qml:222
+msgid "Audio Stream Not Modified"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:302
+#, fuzzy
+msgid "Excluded Apps"
+msgstr "გამორიცხვა"
+
+#: src/contents/ui/PreferencesSheet.qml:37
+msgid "Launch Service at System Startup"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:46
+msgid "Show the Tray Icon"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:79
+msgid "Process All Output Streams"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:91
+msgid "Process All Input Streams"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:103
+msgid "Ignore Streams from Monitor of Devices"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:115
+msgid "Use Cubic Volume"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:56
+#. i18n: ectx: label, entry (inactivityTimerEnable), group (EffectsPipelines)
+#: src/contents/ui/PreferencesSheet.qml:127 rc.cpp:36
+msgid "Enable the Inactivity Timeout"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:139
+msgid "Inactivity Timeout"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:140
+#, fuzzy
+msgid "Input Pipeline"
+msgstr "შეყვანის მოწყობილობა"
+
+#: src/contents/ui/PreferencesSheet.qml:156
+#, fuzzy
+msgid "Update Interval"
+msgstr "შიდა"
+
+#: src/contents/ui/PreferencesSheet.qml:157
+msgid "Related to Level Meters and Spectrum"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:190
+msgid "State"
+msgstr "მდგომარეობა"
+
+#: src/contents/ui/PreferencesSheet.qml:197
+msgid "Enabled"
+msgstr "ჩართულია"
+
+#: src/contents/ui/PreferencesSheet.qml:209
+msgid "Style"
+msgstr "სტილი"
+
+#: src/contents/ui/PreferencesSheet.qml:216
+msgid "Shape"
+msgstr "ფორმა"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:23
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:57
+msgid "Bars"
+msgstr "მართკუთხედები"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:26
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:60
+msgid "Lines"
+msgstr "ხაზები"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:29
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:63
+msgid "Dots"
+msgstr "წერტილები"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:32
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:66
+msgid "Area"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:12
+#. i18n: ectx: label, entry (useOpenGL), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:229 rc.cpp:48
+msgid "Enable OpenGL Acceleration"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:241
+msgid "Dynamic Scale"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:253
+msgid "Points"
+msgstr "წერტილები"
+
+#: src/contents/ui/PreferencesSheet.qml:267
+#, fuzzy
+msgid "Height"
+msgstr "მარჯვენა"
+
+#: src/contents/ui/PreferencesSheet.qml:282
+#, fuzzy
+msgid "Frequency Range"
+msgstr "სიხშირე"
+
+#: src/contents/ui/PreferencesSheet.qml:289
+msgid "Minimum"
+msgstr "მინიმუმი"
+
+#: src/contents/ui/PreferencesSheet.qml:304
+msgid "Maximum"
+msgstr "მაქსიმუმი"
+
+#: src/contents/ui/PreferencesSheet.qml:340
+msgid "Native Plugin Window"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:341
+msgid "Allows The Native Plugin Window to be Shown/Hidden"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:353
+#, fuzzy
+msgid "Update Frequency"
+msgstr "სიხშირე"
+
+#: src/contents/ui/PreferencesSheet.qml:354
+msgid "Related to LV2 Plugins"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:393
+msgid "Background Service"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:405
+msgid "Audio"
+msgstr "აუდიო"
+
+#: src/contents/ui/PreferencesSheet.qml:417
+#, fuzzy
+msgid "Spectrum Analyzer"
+msgstr "სპექტრი"
+
+#: src/contents/ui/PreferencesSheet.qml:429
+#, fuzzy
+msgid "Experimental Features"
+msgstr "ექსპერიმენტალური"
+
+#: src/main.cpp:26
 msgid "Audio effects for PipeWire applications"
 msgstr ""
 
-#: src/main.cpp:56
+#: src/main.cpp:27
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:60
+#: src/main.cpp:31
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr ""
 
-#: src/main.cpp:60
+#: src/main.cpp:31
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "კონვერტი"
+
+#: src/tags_plugin_name.cpp:29
+msgid "Autogain"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:30
+#, fuzzy
+msgid "Bass Enhancer"
+msgstr "ბალანსი"
+
+#: src/tags_plugin_name.cpp:31
+msgid "Bass Loudness"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:32
+msgid "Compressor"
+msgstr "კომპრესორი"
+
+#: src/tags_plugin_name.cpp:33
+msgid "Convolver"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:34
+msgid "Crossfeed"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:35
+#, fuzzy
+msgid "Crystalizer"
+msgstr "ეკვალაიზერი"
+
+#: src/tags_plugin_name.cpp:36
+msgid "Deep Noise Remover"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:37
+msgid "Deesser"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:38
+msgid "Delay"
+msgstr "დაყოვნება"
+
+#: src/tags_plugin_name.cpp:39
+#, fuzzy
+msgid "Echo Canceller"
+msgstr "გაუქმება"
+
+#: src/tags_plugin_name.cpp:40
+msgid "Equalizer"
+msgstr "ეკვალაიზერი"
+
+#: src/tags_plugin_name.cpp:41
+msgid "Exciter"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:42
+msgid "Expander"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:43
+msgid "Filter"
+msgstr "ფილტრი"
+
+#: src/tags_plugin_name.cpp:44
+msgid "Gate"
+msgstr "გეითი"
+
+#: src/tags_plugin_name.cpp:45
+#, fuzzy
+msgid "Level Meter"
+msgstr "დონე"
+
+#: src/tags_plugin_name.cpp:46
+msgid "Limiter"
+msgstr "შემზღუდველი"
+
+#: src/tags_plugin_name.cpp:47
+msgid "Loudness"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:48
+#, fuzzy
+msgid "Maximizer"
+msgstr "მაქსიმუმი"
+
+#: src/tags_plugin_name.cpp:49
+#, fuzzy
+msgid "Multiband Compressor"
+msgstr "კომპრესორი"
+
+#: src/tags_plugin_name.cpp:50
+msgid "Multiband Gate"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:51
+msgid "Pitch"
+msgstr "Pitch"
+
+#: src/tags_plugin_name.cpp:52
+#, fuzzy
+msgid "Reverberation"
+msgstr "ინფორმაცია სერვერის შესახებ"
+
+#: src/tags_plugin_name.cpp:53
+msgid "Noise Reduction"
+msgstr "ხმაურის შემცირება"
+
+#: src/tags_plugin_name.cpp:54
+msgid "Speech Processor"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:55
+#, fuzzy
+msgid "Stereo Tools"
+msgstr "სტერეო რეჟიმი"
 
 #. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
 #. i18n: ectx: label, entry (width), group (Window)
@@ -128,6 +434,127 @@ msgstr ""
 msgid "Last used preset."
 msgstr ""
 
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:24
+#. i18n: ectx: label, entry (showNativePluginUi), group (Window)
+#: rc.cpp:15
+msgid "Show Plugin's Native Window"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:28
+#. i18n: ectx: label, entry (lv2uiUpdateFrequency), group (Window)
+#: rc.cpp:18
+#, fuzzy
+msgid "LV2 Native Window Update Frequency"
+msgstr "სიხშირე"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:36
+#. i18n: ectx: label, entry (bypass), group (EffectsPipelines)
+#: rc.cpp:21
+msgid "Puts the Effects Pipelines in Passthrough Mode."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:40
+#. i18n: ectx: label, entry (processAllOutputs), group (EffectsPipelines)
+#: rc.cpp:24
+msgid "Automatically moves Audio Streams to EasyEffects Virtual Sink."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:44
+#. i18n: ectx: label, entry (processAllInputs), group (EffectsPipelines)
+#: rc.cpp:27
+msgid "Automatically moves Audio Streams to EasyEffects Virtual Source."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:48
+#. i18n: ectx: label, entry (excludeMonitorStreams), group (EffectsPipelines)
+#: rc.cpp:30
+msgid "Ignore Streams from Monitor of Devices."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:52
+#. i18n: ectx: label, entry (useCubicVolumes), group (EffectsPipelines)
+#: rc.cpp:33
+msgid "Use Cubic Volume."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:60
+#. i18n: ectx: label, entry (inactivityTimeout), group (EffectsPipelines)
+#: rc.cpp:39
+msgid "Inactivity Timeout."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:66
+#. i18n: ectx: label, entry (metersUpdateInterval), group (EffectsPipelines)
+#: rc.cpp:42
+#, fuzzy
+msgid "Level Meter Update Interval"
+msgstr "შიდა"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:8
+#. i18n: ectx: label, entry (state), group (Spectrum)
+#: rc.cpp:45
+msgid "Show the Spectrum Analyzer."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:16
+#. i18n: ectx: label, entry (dynamicYScale), group (Spectrum)
+#: rc.cpp:51
+msgid "Enable Dynamic Scaling for the Vertical Axis"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:20
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: rc.cpp:54
+#, fuzzy
+msgid "Spectrum Type"
+msgstr "სპექტრი"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:8
+#. i18n: ectx: label, entry (plugins), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:8
+#. i18n: ectx: label, entry (plugins), group (StreamOutputs)
+#: rc.cpp:69 rc.cpp:87
+msgid "List of Plugins in the Effects Pipeline"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:12
+#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:12
+#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamOutputs)
+#: rc.cpp:72 rc.cpp:90
+msgid "Use the System Default Output Device"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:20
+#. i18n: ectx: label, entry (blocklist), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:20
+#. i18n: ectx: label, entry (blocklist), group (StreamOutputs)
+#: rc.cpp:78 rc.cpp:96
+msgid "List of Blocked Streams"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:24
+#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:24
+#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamOutputs)
+#: rc.cpp:81 rc.cpp:99
+msgid "Show Blocked Streams in the Streams Tab"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:28
+#. i18n: ectx: label, entry (showPluginsList), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:28
+#. i18n: ectx: label, entry (showPluginsList), group (StreamOutputs)
+#: rc.cpp:84 rc.cpp:102
+msgid "Show the List of Plugins"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:16
+#. i18n: ectx: label, entry (outputDevice), group (StreamOutputs)
+#: rc.cpp:93
+msgid "Output Device"
+msgstr "გამოტანის მოწყობილობები"
+
 #: com.github.wwmm.easyeffects.desktop.template.h:2
 #, fuzzy
 msgid "EasyEffects"
@@ -141,11 +568,22 @@ msgstr ""
 msgid "Audio Effects for PipeWire Applications"
 msgstr ""
 
-#~ msgid "Enable"
-#~ msgstr "ჩართვა"
+#~ msgid "Input"
+#~ msgstr "შეყვანა"
 
-#~ msgid "Exclude"
-#~ msgstr "გამორიცხვა"
+#~ msgid "Name"
+#~ msgstr "სახელი"
+
+#, fuzzy
+#~ msgid "Value"
+#~ msgstr "უმცირესი მნიშვნელობა"
+
+#~ msgid "Output"
+#~ msgstr "გამოტანა"
+
+#, fuzzy
+#~ msgid "PipeWire"
+#~ msgstr "_PipeWire"
 
 #~ msgid "Primary Menu"
 #~ msgstr "ძირითადი მენიუს"
@@ -204,9 +642,6 @@ msgstr ""
 #~ msgid "Application Name"
 #~ msgstr "აპლიკაციის სახელი"
 
-#~ msgid "Compressor"
-#~ msgstr "კომპრესორი"
-
 #~ msgid "Mode"
 #~ msgstr "რეჟიმი"
 
@@ -259,9 +694,6 @@ msgstr ""
 #~ msgid "Left"
 #~ msgstr "მარცხენა"
 
-#~ msgid "Right"
-#~ msgstr "მარჯვენა"
-
 #~ msgid "Min"
 #~ msgstr "მინ"
 
@@ -303,12 +735,6 @@ msgstr ""
 #~ msgid "External"
 #~ msgstr "გარე"
 
-#~ msgid "Input Device"
-#~ msgstr "შეყვანის მოწყობილობა"
-
-#~ msgid "Frequency"
-#~ msgstr "სიხშირე"
-
 #~ msgid "Off"
 #~ msgstr "გამორთ"
 
@@ -332,9 +758,6 @@ msgstr ""
 
 #~ msgid "Combine"
 #~ msgstr "კომბინირება"
-
-#~ msgid "Spectrum"
-#~ msgstr "სპექტრი"
 
 #~ msgid "Rate"
 #~ msgstr "სიხშირე"
@@ -360,14 +783,8 @@ msgstr ""
 #~ msgid "Detected"
 #~ msgstr "გამოვლინდა"
 
-#~ msgid "Delay"
-#~ msgstr "დაყოვნება"
-
 #~ msgid "Bands"
 #~ msgstr "გუნდები"
-
-#~ msgid "Balance"
-#~ msgstr "ბალანსი"
 
 #~ msgid "Split Channels"
 #~ msgstr "არხების გაყოფა"
@@ -423,12 +840,6 @@ msgstr ""
 #~ msgid "Equalizer Mode"
 #~ msgstr "ეკვალაიზერი"
 
-#~ msgid "Filter"
-#~ msgstr "ფილტრი"
-
-#~ msgid "Gate"
-#~ msgstr "გეითი"
-
 #~ msgid "Zone"
 #~ msgstr "ზონა"
 
@@ -477,9 +888,6 @@ msgstr ""
 #~ msgid "Device Management"
 #~ msgstr "მოწყობილობის მართვა"
 
-#~ msgid "Server Information"
-#~ msgstr "ინფორმაცია სერვერის შესახებ"
-
 #~ msgid "Sampling Rate"
 #~ msgstr "სემპლინგისსიჩქარე"
 
@@ -494,12 +902,6 @@ msgstr ""
 
 #~ msgid "Clients"
 #~ msgstr "კლიენტი"
-
-#~ msgid "State"
-#~ msgstr "მდგომარეობა"
-
-#~ msgid "Enabled"
-#~ msgstr "ჩართულია"
 
 #~ msgid "Channels"
 #~ msgstr "არხები"
@@ -516,9 +918,6 @@ msgstr ""
 #~ msgid "White Noise"
 #~ msgstr "თეთრი ხმაური"
 
-#~ msgid "Pitch"
-#~ msgstr "Pitch"
-
 #, fuzzy
 #~ msgid "Tempo Difference"
 #~ msgstr "მითითება"
@@ -527,59 +926,17 @@ msgstr ""
 #~ msgid "Rate Difference"
 #~ msgstr "მითითება"
 
-#~ msgid "Add Effect"
-#~ msgstr "ეფექტის დამატება"
-
 #~ msgid "_General"
 #~ msgstr "_საერთო"
 
 #~ msgid "Service"
 #~ msgstr "სერვისი"
 
-#~ msgid "Audio"
-#~ msgstr "აუდიო"
-
-#, fuzzy
-#~ msgid "Update Interval"
-#~ msgstr "შიდა"
-
-#, fuzzy
-#~ msgid "Update Frequency"
-#~ msgstr "სიხშირე"
-
-#~ msgid "Style"
-#~ msgstr "სტილი"
-
-#, fuzzy
-#~ msgid "Experimental Features"
-#~ msgstr "ექსპერიმენტალური"
-
-#~ msgid "Shape"
-#~ msgstr "ფორმა"
-
-#~ msgid "Bars"
-#~ msgstr "მართკუთხედები"
-
-#~ msgid "Lines"
-#~ msgstr "ხაზები"
-
-#~ msgid "Dots"
-#~ msgstr "წერტილები"
-
-#~ msgid "Points"
-#~ msgstr "წერტილები"
-
 #~ msgid "Line Width"
 #~ msgstr "ხაზის სიგანე"
 
 #~ msgid "Axis Labels"
 #~ msgstr "ღერძის ჭდეები"
-
-#~ msgid "Minimum"
-#~ msgstr "მინიმუმი"
-
-#~ msgid "Maximum"
-#~ msgstr "მაქსიმუმი"
 
 #~ msgid "Load"
 #~ msgstr "ჩატვირთვა"
@@ -656,9 +1013,6 @@ msgstr ""
 #~ msgid "Level"
 #~ msgstr "დონე"
 
-#~ msgid "Stereo Mode"
-#~ msgstr "სტერეო რეჟიმი"
-
 #~ msgid "Running"
 #~ msgstr "გაშვებულია"
 
@@ -683,21 +1037,12 @@ msgstr ""
 #~ msgid "Open"
 #~ msgstr "გახსნა"
 
-#~ msgid "Recorders"
-#~ msgstr "სალამურები"
-
-#~ msgid "Players"
-#~ msgstr "მოთამაშეები"
-
 #, fuzzy
 #~ msgid "EqualizerAPO Presets"
 #~ msgstr "ეკვალაიზერი"
 
 #~ msgid "Remove"
 #~ msgstr "წაშლა"
-
-#~ msgid "Output Device"
-#~ msgstr "გამოტანის მოწყობილობები"
 
 #~ msgid "Add"
 #~ msgstr "დამატება"
@@ -713,19 +1058,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Last Community Preset Loaded"
 #~ msgstr "პრესეტის შემოტანა"
-
-#~ msgid "Equalizer"
-#~ msgstr "ეკვალაიზერი"
-
-#, fuzzy
-#~ msgid "Level Meter"
-#~ msgstr "დონე"
-
-#~ msgid "Limiter"
-#~ msgstr "შემზღუდველი"
-
-#~ msgid "Noise Reduction"
-#~ msgstr "ხმაურის შემცირება"
 
 #, fuzzy, c++-format
 #~ msgid "Using {}"
@@ -791,6 +1123,3 @@ msgstr ""
 
 #~ msgid "Low Pass"
 #~ msgstr "დაბალსიხშირული ფილტრი"
-
-#~ msgid "Cancel"
-#~ msgstr "გაუქმება"

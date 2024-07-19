@@ -42,7 +42,7 @@ Item {
 
             Controls.Label {
                 Layout.fillWidth: !listItemDelegate.hovered
-                text: model.name
+                text: model.translatedName
             }
 
             Kirigami.ActionToolBar {

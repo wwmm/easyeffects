@@ -6,7 +6,7 @@
     <group name="StreamOutputs">
         <entry name="plugins" type="StringList">
             <label>List of Plugins in the Effects Pipeline</label>
-            <default>autogain,exciter,reverb</default>
+            <default></default>
         </entry>
         <entry name="useDefaultOutputDevice" type="Bool">
             <label>Use the System Default Output Device</label>

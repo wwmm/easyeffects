@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"POT-Creation-Date: 2024-07-19 14:11-0300\n"
 "PO-Revision-Date: 2024-05-03 21:07+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -19,93 +19,392 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.5.3\n"
 
-#: src/contents/ui/InputTab.qml:9
-msgid "Input"
-msgstr "Invoer"
-
-#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
-#: src/contents/ui/PipeWireTab.qml:15
-msgctxt "@action:button"
-msgid "Add Row"
-msgstr ""
-
-#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
-#: src/contents/ui/PipeWireTab.qml:44
-msgid "Name"
-msgstr "Naam"
-
-#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
-#: src/contents/ui/PipeWireTab.qml:57
+#: src/contents/ui/DelegatePluginsList.qml:53
 #, fuzzy
-msgid "Value"
-msgstr "Verdieping"
+msgid "Enable this Effect"
+msgstr "Effect omschakelen"
 
-#: src/contents/ui/main.qml:17
+#: src/contents/ui/DelegatePluginsList.qml:66
+msgid "Remove this effect"
+msgstr "Effect verwijderen"
+
+#: src/contents/ui/DelegateStreamsList.qml:58
+msgid "Enable"
+msgstr "Inschakelen"
+
+#: src/contents/ui/DelegateStreamsList.qml:63
+msgid "Exclude"
+msgstr "Uitsluiten"
+
+#: src/contents/ui/main.qml:14
 #, fuzzy
 msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "PulseEffecten"
 
-#: src/contents/ui/main.qml:98
+#: src/contents/ui/main.qml:86
 #, fuzzy
 msgid "Preset: "
 msgstr "Voorinstelling"
 
-#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+#: src/contents/ui/main.qml:94 src/contents/ui/main.qml:206
 #, fuzzy
 msgid "Quit"
 msgstr "_Afsluiten"
 
-#: src/contents/ui/main.qml:162
-msgid "Apply"
-msgstr "Toepassen"
-
-#: src/contents/ui/main.qml:171
+#: src/contents/ui/main.qml:116
 msgid "Presets"
 msgstr "Voorinstellingen"
 
-#: src/contents/ui/main.qml:179
+#: src/contents/ui/main.qml:124
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:190 src/contents/ui/PreferencesSheet.qml:12
+#: src/contents/ui/PreferencesSheet.qml:17
+#: src/contents/ui/PreferencesSheet.qml:453
+#: src/contents/ui/PreferencesSheet.qml:466
 #, fuzzy
 msgid "Preferences"
 msgstr "_Voorkeuren"
 
-#: src/contents/ui/main.qml:187
+#: src/contents/ui/main.qml:198
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "_Over Easy Effects"
 
-#: src/contents/ui/main.qml:223
-msgid "Executable Name"
+#: src/contents/ui/MenuAddPlugins.qml:41
+#, fuzzy
+msgid "Empty"
+msgstr "Lege lijst"
+
+#: src/contents/ui/MenuAddPlugins.qml:82
+#, fuzzy
+msgid "Added Plugin: "
+msgstr "Plug-in toevoegen"
+
+#: src/contents/ui/MenuAddPlugins.qml:97
+msgid "Search"
+msgstr "Zoeken"
+
+#: src/contents/ui/PageStreamsEffects.qml:77
+#, fuzzy
+msgid "No Preset"
+msgstr "Voorinstellingen"
+
+#: src/contents/ui/PageStreamsEffects.qml:130
+msgid "Add Effect"
+msgstr "Effect toevoegen"
+
+#: src/contents/ui/PageStreamsEffects.qml:176
+msgid "Players"
+msgstr "Spelers"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:16
+#. i18n: ectx: label, entry (inputDevice), group (StreamInputs)
+#: src/contents/ui/PageStreamsEffects.qml:176 rc.cpp:75
+msgid "Input Device"
+msgstr "Invoerapparaat"
+
+#: src/contents/ui/PageStreamsEffects.qml:194
+msgid "Recorders"
+msgstr "Opname-apparaten"
+
+#: src/contents/ui/PageStreamsEffects.qml:221
+msgid "No Effects"
+msgstr "Geen effecten"
+
+#: src/contents/ui/PageStreamsEffects.qml:222
+msgid "Audio Stream Not Modified"
+msgstr "Audio-stream onbewerkt"
+
+#: src/contents/ui/PageStreamsEffects.qml:302
+msgid "Excluded Apps"
+msgstr "Uitgesloten apps"
+
+#: src/contents/ui/PreferencesSheet.qml:37
+msgid "Launch Service at System Startup"
+msgstr "Service starten bij opstarten van systeem"
+
+#: src/contents/ui/PreferencesSheet.qml:46
+msgid "Show the Tray Icon"
 msgstr ""
 
-#: src/contents/ui/OutputTab.qml:9
-msgid "Output"
-msgstr "Uitvoer"
+#: src/contents/ui/PreferencesSheet.qml:79
+msgid "Process All Output Streams"
+msgstr "Alle uitvoer-streams verwerken"
 
-#: src/contents/ui/PipeWireTab.qml:9
+#: src/contents/ui/PreferencesSheet.qml:91
+msgid "Process All Input Streams"
+msgstr "Alle invoer-streams verwerken"
+
+#: src/contents/ui/PreferencesSheet.qml:103
+msgid "Ignore Streams from Monitor of Devices"
+msgstr "Streams van apparaatmonitor negeren"
+
+#: src/contents/ui/PreferencesSheet.qml:115
+msgid "Use Cubic Volume"
+msgstr "Kubisch volume gebruiken"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:56
+#. i18n: ectx: label, entry (inactivityTimerEnable), group (EffectsPipelines)
+#: src/contents/ui/PreferencesSheet.qml:127 rc.cpp:36
 #, fuzzy
-msgid "PipeWire"
-msgstr "_PipeWire"
+msgid "Enable the Inactivity Timeout"
+msgstr "Inactiviteits-time-out"
 
-#: src/main.cpp:55
+#: src/contents/ui/PreferencesSheet.qml:139
+msgid "Inactivity Timeout"
+msgstr "Inactiviteits-time-out"
+
+#: src/contents/ui/PreferencesSheet.qml:140
+#, fuzzy
+msgid "Input Pipeline"
+msgstr "Invoerapparaat"
+
+#: src/contents/ui/PreferencesSheet.qml:156
+#, fuzzy
+msgid "Update Interval"
+msgstr "Intern"
+
+#: src/contents/ui/PreferencesSheet.qml:157
+#, fuzzy
+msgid "Related to Level Meters and Spectrum"
+msgstr "Update-interval (niveaumeters en spectrum)"
+
+#: src/contents/ui/PreferencesSheet.qml:190
+msgid "State"
+msgstr "Status"
+
+#: src/contents/ui/PreferencesSheet.qml:197
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
+#: src/contents/ui/PreferencesSheet.qml:209
+msgid "Style"
+msgstr "Stijl"
+
+#: src/contents/ui/PreferencesSheet.qml:216
+msgid "Shape"
+msgstr "Vorm"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:23
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:57
+msgid "Bars"
+msgstr "Balken"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:26
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:60
+msgid "Lines"
+msgstr "Lijnen"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:29
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:63
+msgid "Dots"
+msgstr "Puntjes"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:32
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:66
+msgid "Area"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:12
+#. i18n: ectx: label, entry (useOpenGL), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:229 rc.cpp:48
+msgid "Enable OpenGL Acceleration"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:241
+msgid "Dynamic Scale"
+msgstr "Dynamische schaal"
+
+#: src/contents/ui/PreferencesSheet.qml:253
+msgid "Points"
+msgstr "Points"
+
+#: src/contents/ui/PreferencesSheet.qml:267
+msgid "Height"
+msgstr "Lengte"
+
+#: src/contents/ui/PreferencesSheet.qml:282
+msgid "Frequency Range"
+msgstr "Frequentiebereik"
+
+#: src/contents/ui/PreferencesSheet.qml:289
+msgid "Minimum"
+msgstr "Minimaal"
+
+#: src/contents/ui/PreferencesSheet.qml:304
+msgid "Maximum"
+msgstr "Maximaal"
+
+#: src/contents/ui/PreferencesSheet.qml:340
+msgid "Native Plugin Window"
+msgstr "Inheemse plug-ins-venster"
+
+#: src/contents/ui/PreferencesSheet.qml:341
+msgid "Allows The Native Plugin Window to be Shown/Hidden"
+msgstr ""
+"Staat toe dat het venster voor inheemse plug-ins wordt weergegeven/verborgen"
+
+#: src/contents/ui/PreferencesSheet.qml:353
+#, fuzzy
+msgid "Update Frequency"
+msgstr "Frequentie"
+
+#: src/contents/ui/PreferencesSheet.qml:354
+#, fuzzy
+msgid "Related to LV2 Plugins"
+msgstr "Update-frequentie (LV2-plug-ins)"
+
+#: src/contents/ui/PreferencesSheet.qml:393
+msgid "Background Service"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:405
+msgid "Audio"
+msgstr "Audio"
+
+#: src/contents/ui/PreferencesSheet.qml:417
+#, fuzzy
+msgid "Spectrum Analyzer"
+msgstr "Soort spectrum"
+
+#: src/contents/ui/PreferencesSheet.qml:429
+msgid "Experimental Features"
+msgstr "Experimentele functies"
+
+#: src/main.cpp:26
 msgid "Audio effects for PipeWire applications"
 msgstr "Audio-effecten voor PipeWire-toepassingen"
 
-#: src/main.cpp:56
+#: src/main.cpp:27
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:60
+#: src/main.cpp:31
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:60
+#: src/main.cpp:31
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Envelop"
+
+#: src/tags_plugin_name.cpp:29
+msgid "Autogain"
+msgstr "Automatisch versterken"
+
+#: src/tags_plugin_name.cpp:30
+msgid "Bass Enhancer"
+msgstr "Basversterker"
+
+#: src/tags_plugin_name.cpp:31
+msgid "Bass Loudness"
+msgstr "Hardheid van bas"
+
+#: src/tags_plugin_name.cpp:32
+msgid "Compressor"
+msgstr "Compressor"
+
+#: src/tags_plugin_name.cpp:33
+msgid "Convolver"
+msgstr "Convolutie"
+
+#: src/tags_plugin_name.cpp:34
+msgid "Crossfeed"
+msgstr "Crossfeed"
+
+#: src/tags_plugin_name.cpp:35
+msgid "Crystalizer"
+msgstr "Kristalliseerder"
+
+#: src/tags_plugin_name.cpp:36
+msgid "Deep Noise Remover"
+msgstr "Diepe ruis-verwijderaar"
+
+#: src/tags_plugin_name.cpp:37
+msgid "Deesser"
+msgstr "Deesser"
+
+#: src/tags_plugin_name.cpp:38
+msgid "Delay"
+msgstr "Vertraging"
+
+#: src/tags_plugin_name.cpp:39
+msgid "Echo Canceller"
+msgstr "Echo-onderdrukking"
+
+#: src/tags_plugin_name.cpp:40
+msgid "Equalizer"
+msgstr "Equalizer"
+
+#: src/tags_plugin_name.cpp:41
+msgid "Exciter"
+msgstr "Exciter"
+
+#: src/tags_plugin_name.cpp:42
+msgid "Expander"
+msgstr "Uitbreider"
+
+#: src/tags_plugin_name.cpp:43
+msgid "Filter"
+msgstr "Filter"
+
+#: src/tags_plugin_name.cpp:44
+msgid "Gate"
+msgstr "Gate"
+
+#: src/tags_plugin_name.cpp:45
+msgid "Level Meter"
+msgstr "Niveaumeter"
+
+#: src/tags_plugin_name.cpp:46
+msgid "Limiter"
+msgstr "Limiter"
+
+#: src/tags_plugin_name.cpp:47
+msgid "Loudness"
+msgstr "Hardheid"
+
+#: src/tags_plugin_name.cpp:48
+msgid "Maximizer"
+msgstr "Maximizer"
+
+#: src/tags_plugin_name.cpp:49
+msgid "Multiband Compressor"
+msgstr "Multiband-compressor"
+
+#: src/tags_plugin_name.cpp:50
+msgid "Multiband Gate"
+msgstr "Multiband-gate"
+
+#: src/tags_plugin_name.cpp:51
+msgid "Pitch"
+msgstr "Toonhoogte"
+
+#: src/tags_plugin_name.cpp:52
+msgid "Reverberation"
+msgstr "Nagalm"
+
+#: src/tags_plugin_name.cpp:53
+msgid "Noise Reduction"
+msgstr "Ruisverlaging"
+
+#: src/tags_plugin_name.cpp:54
+msgid "Speech Processor"
+msgstr "Spraakverwerker"
+
+#: src/tags_plugin_name.cpp:55
+msgid "Stereo Tools"
+msgstr "Stereobediening"
 
 #. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
 #. i18n: ectx: label, entry (width), group (Window)
@@ -134,6 +433,132 @@ msgstr ""
 msgid "Last used preset."
 msgstr "Nieuwe voorinstelling aanmaken"
 
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:24
+#. i18n: ectx: label, entry (showNativePluginUi), group (Window)
+#: rc.cpp:15
+#, fuzzy
+msgid "Show Plugin's Native Window"
+msgstr "Inheems venster tonen"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:28
+#. i18n: ectx: label, entry (lv2uiUpdateFrequency), group (Window)
+#: rc.cpp:18
+#, fuzzy
+msgid "LV2 Native Window Update Frequency"
+msgstr "Frequentie"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:36
+#. i18n: ectx: label, entry (bypass), group (EffectsPipelines)
+#: rc.cpp:21
+msgid "Puts the Effects Pipelines in Passthrough Mode."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:40
+#. i18n: ectx: label, entry (processAllOutputs), group (EffectsPipelines)
+#: rc.cpp:24
+msgid "Automatically moves Audio Streams to EasyEffects Virtual Sink."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:44
+#. i18n: ectx: label, entry (processAllInputs), group (EffectsPipelines)
+#: rc.cpp:27
+msgid "Automatically moves Audio Streams to EasyEffects Virtual Source."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:48
+#. i18n: ectx: label, entry (excludeMonitorStreams), group (EffectsPipelines)
+#: rc.cpp:30
+#, fuzzy
+msgid "Ignore Streams from Monitor of Devices."
+msgstr "Streams van apparaatmonitor negeren"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:52
+#. i18n: ectx: label, entry (useCubicVolumes), group (EffectsPipelines)
+#: rc.cpp:33
+#, fuzzy
+msgid "Use Cubic Volume."
+msgstr "Kubisch volume gebruiken"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:60
+#. i18n: ectx: label, entry (inactivityTimeout), group (EffectsPipelines)
+#: rc.cpp:39
+#, fuzzy
+msgid "Inactivity Timeout."
+msgstr "Inactiviteits-time-out"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:66
+#. i18n: ectx: label, entry (metersUpdateInterval), group (EffectsPipelines)
+#: rc.cpp:42
+#, fuzzy
+msgid "Level Meter Update Interval"
+msgstr "Intern"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:8
+#. i18n: ectx: label, entry (state), group (Spectrum)
+#: rc.cpp:45
+#, fuzzy
+msgid "Show the Spectrum Analyzer."
+msgstr "Spectrum tonen"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:16
+#. i18n: ectx: label, entry (dynamicYScale), group (Spectrum)
+#: rc.cpp:51
+msgid "Enable Dynamic Scaling for the Vertical Axis"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:20
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: rc.cpp:54
+msgid "Spectrum Type"
+msgstr "Soort spectrum"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:8
+#. i18n: ectx: label, entry (plugins), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:8
+#. i18n: ectx: label, entry (plugins), group (StreamOutputs)
+#: rc.cpp:69 rc.cpp:87
+msgid "List of Plugins in the Effects Pipeline"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:12
+#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:12
+#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamOutputs)
+#: rc.cpp:72 rc.cpp:90
+#, fuzzy
+msgid "Use the System Default Output Device"
+msgstr "Standaarduitvoer gebruiken"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:20
+#. i18n: ectx: label, entry (blocklist), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:20
+#. i18n: ectx: label, entry (blocklist), group (StreamOutputs)
+#: rc.cpp:78 rc.cpp:96
+msgid "List of Blocked Streams"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:24
+#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:24
+#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamOutputs)
+#: rc.cpp:81 rc.cpp:99
+msgid "Show Blocked Streams in the Streams Tab"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:28
+#. i18n: ectx: label, entry (showPluginsList), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:28
+#. i18n: ectx: label, entry (showPluginsList), group (StreamOutputs)
+#: rc.cpp:84 rc.cpp:102
+msgid "Show the List of Plugins"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:16
+#. i18n: ectx: label, entry (outputDevice), group (StreamOutputs)
+#: rc.cpp:93
+msgid "Output Device"
+msgstr "Uitvoerapparaat"
+
 #: com.github.wwmm.easyeffects.desktop.template.h:2
 msgid "EasyEffects"
 msgstr "PulseEffecten"
@@ -146,6 +571,26 @@ msgstr "Equalizer, compressor en overige audio-effecten"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Audio-effecten voor PipeWire-apps"
 
+#~ msgid "Input"
+#~ msgstr "Invoer"
+
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#, fuzzy
+#~ msgid "Value"
+#~ msgstr "Verdieping"
+
+#~ msgid "Apply"
+#~ msgstr "Toepassen"
+
+#~ msgid "Output"
+#~ msgstr "Uitvoer"
+
+#, fuzzy
+#~ msgid "PipeWire"
+#~ msgstr "_PipeWire"
+
 #~ msgid "@APP_NAME@"
 #~ msgstr "@APP_NAME@"
 
@@ -155,14 +600,8 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Enable/disable this application"
 #~ msgstr "Deze app omschakelen"
 
-#~ msgid "Enable"
-#~ msgstr "Inschakelen"
-
 #~ msgid "Excluded App List: Add/remove this application"
 #~ msgstr "Lijst met uitgesloten apps: Deze app toevoegen/verwijderen"
-
-#~ msgid "Exclude"
-#~ msgstr "Uitsluiten"
 
 #~ msgid "Mute Application"
 #~ msgstr "App dempen"
@@ -199,9 +638,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 
 #~ msgid "Applications List"
 #~ msgstr "App-lijst"
-
-#~ msgid "Empty List"
-#~ msgstr "Lege lijst"
 
 #~ msgid "No Audio Application Available"
 #~ msgstr "Geen audio-app beschikbaar"
@@ -247,9 +683,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 
 #~ msgid "Reset"
 #~ msgstr "Standaardwaarden"
-
-#~ msgid "Loudness"
-#~ msgstr "Hardheid"
 
 #~ msgid "Relative"
 #~ msgstr "Relatief"
@@ -316,12 +749,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 
 #~ msgid "Show Excluded Applications"
 #~ msgstr "Uitgesloten apps tonen"
-
-#~ msgid "Show Native Window"
-#~ msgstr "Inheems venster tonen"
-
-#~ msgid "Compressor"
-#~ msgstr "Compressor"
 
 #~ msgid "Mode"
 #~ msgstr "Modus"
@@ -461,9 +888,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Sidechain Type"
 #~ msgstr "Sidechain-type"
 
-#~ msgid "Input Device"
-#~ msgstr "Invoerapparaat"
-
 #~ msgid "PreAmplification"
 #~ msgstr "Voorversterking"
 
@@ -539,9 +963,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Log Scale"
 #~ msgstr "Logaritmische schaal"
 
-#~ msgid "Autogain"
-#~ msgstr "Automatisch versterken"
-
 #~ msgid "Rate"
 #~ msgstr "Snelheid"
 
@@ -568,9 +989,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 
 #~ msgid "Import Impulse"
 #~ msgstr "Impulse importeren"
-
-#~ msgid "Search"
-#~ msgstr "Zoeken"
 
 #~ msgid "Search Impulse File"
 #~ msgstr "Impulsbestand doorzoeken"
@@ -659,9 +1077,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Reduction"
 #~ msgstr "Vermindering"
 
-#~ msgid "Delay"
-#~ msgstr "Vertraging"
-
 #~ msgid "Invert Phase"
 #~ msgstr "Fase omkeren"
 
@@ -673,9 +1088,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 
 #~ msgid "Near End Echo Suppression"
 #~ msgstr "Echo-onderdrukking aan het einde"
-
-#~ msgid "Excluded Apps"
-#~ msgstr "Uitgesloten apps"
 
 #~ msgid "Enable/disable input monitoring"
 #~ msgstr "Invoer­monitoring in-/uit­schakelen"
@@ -728,9 +1140,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Ceil Value"
 #~ msgstr "Plafondwaarde"
 
-#~ msgid "Expander"
-#~ msgstr "Uitbreider"
-
 #~ msgid "Expander Mode"
 #~ msgstr "Uitbreider­modus"
 
@@ -778,12 +1187,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 
 #~ msgid "Equalizer Mode"
 #~ msgstr "Equalizer-modus"
-
-#~ msgid "Filter"
-#~ msgstr "Filter"
-
-#~ msgid "Gate"
-#~ msgstr "Gate"
 
 #~ msgid "Zone"
 #~ msgstr "Zone"
@@ -1090,9 +1493,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Custom Input Device"
 #~ msgstr "Aangepast invoerapparaat"
 
-#~ msgid "Use Default Output"
-#~ msgstr "Standaarduitvoer gebruiken"
-
 #~ msgid "Custom Output Device"
 #~ msgstr "Aangepast uitvoerapparaat"
 
@@ -1162,12 +1562,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Test Signal"
 #~ msgstr "Signaal testen"
 
-#~ msgid "State"
-#~ msgstr "Status"
-
-#~ msgid "Enabled"
-#~ msgstr "Ingeschakeld"
-
 #~ msgid "Properties"
 #~ msgstr "Eigenschappen"
 
@@ -1204,9 +1598,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Overlap Length"
 #~ msgstr "Overlapslengte"
 
-#~ msgid "Pitch"
-#~ msgstr "Toonhoogte"
-
 #~ msgid "Semitones"
 #~ msgstr "Halve tonen"
 
@@ -1216,17 +1607,8 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Rate Difference"
 #~ msgstr "Snelheidsverschil"
 
-#~ msgid "Remove this effect"
-#~ msgstr "Effect verwijderen"
-
-#~ msgid "Enable/disable this effect"
-#~ msgstr "Effect omschakelen"
-
 #~ msgid "Change the position of this effect"
 #~ msgstr "Positie van effect aanpassen"
-
-#~ msgid "Add Effect"
-#~ msgstr "Effect toevoegen"
 
 #, fuzzy
 #~ msgid "Go to the previous effect"
@@ -1234,12 +1616,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 
 #~ msgid "Used Plugins List"
 #~ msgstr "Lijst met gebruikte plug-ins"
-
-#~ msgid "No Effects"
-#~ msgstr "Geen effecten"
-
-#~ msgid "Audio Stream Not Modified"
-#~ msgstr "Audio-stream onbewerkt"
 
 #~ msgid "Search Plugin"
 #~ msgstr "Zoek-plug-in"
@@ -1253,48 +1629,8 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Service"
 #~ msgstr "Dienst"
 
-#~ msgid "Launch Service at System Startup"
-#~ msgstr "Service starten bij opstarten van systeem"
-
 #~ msgid "Shutdown on Window Closing"
 #~ msgstr "Afsluiten bij sluiten van venster"
-
-#~ msgid "Audio"
-#~ msgstr "Audio"
-
-#~ msgid "Process All Output Streams"
-#~ msgstr "Alle uitvoer-streams verwerken"
-
-#~ msgid "Process All Input Streams"
-#~ msgstr "Alle invoer-streams verwerken"
-
-#~ msgid "Ignore Streams from Monitor of Devices"
-#~ msgstr "Streams van apparaatmonitor negeren"
-
-#~ msgid "Use Cubic Volume"
-#~ msgstr "Kubisch volume gebruiken"
-
-#~ msgid "Inactivity Timeout"
-#~ msgstr "Inactiviteits-time-out"
-
-#, fuzzy
-#~ msgid "Update Interval"
-#~ msgstr "Intern"
-
-#, fuzzy
-#~ msgid "Related to Level Meters and Spectrum"
-#~ msgstr "Update-interval (niveaumeters en spectrum)"
-
-#, fuzzy
-#~ msgid "Update Frequency"
-#~ msgstr "Frequentie"
-
-#, fuzzy
-#~ msgid "Related to LV2 Plugins"
-#~ msgstr "Update-frequentie (LV2-plug-ins)"
-
-#~ msgid "Style"
-#~ msgstr "Stijl"
 
 #~ msgid "Use Dark Theme"
 #~ msgstr "Donker thema"
@@ -1302,37 +1638,8 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Hide Menus on Outside Clicks"
 #~ msgstr "Menu's verbergen bij klikken achtergrond"
 
-#~ msgid "Experimental Features"
-#~ msgstr "Experimentele functies"
-
-#~ msgid "Native Plugin Window"
-#~ msgstr "Inheemse plug-ins-venster"
-
-#~ msgid "Allows The Native Plugin Window to be Shown/Hidden"
-#~ msgstr ""
-#~ "Staat toe dat het venster voor inheemse plug-ins wordt weergegeven/"
-#~ "verborgen"
-
 #~ msgid "_Spectrum"
 #~ msgstr "_Spectrum"
-
-#~ msgid "Shape"
-#~ msgstr "Vorm"
-
-#~ msgid "Bars"
-#~ msgstr "Balken"
-
-#~ msgid "Lines"
-#~ msgstr "Lijnen"
-
-#~ msgid "Dots"
-#~ msgstr "Puntjes"
-
-#~ msgid "Points"
-#~ msgstr "Points"
-
-#~ msgid "Height"
-#~ msgstr "Lengte"
 
 #~ msgid "Line Width"
 #~ msgstr "Lijnbreedte"
@@ -1346,9 +1653,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Rounded Corners"
 #~ msgstr "Afgeronde hoeken"
 
-#~ msgid "Dynamic Scale"
-#~ msgstr "Dynamische schaal"
-
 #~ msgid "Color"
 #~ msgstr "Kleur"
 
@@ -1357,15 +1661,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 
 #~ msgid "Axis Labels"
 #~ msgstr "As-labels"
-
-#~ msgid "Frequency Range"
-#~ msgstr "Frequentiebereik"
-
-#~ msgid "Minimum"
-#~ msgstr "Minimaal"
-
-#~ msgid "Maximum"
-#~ msgstr "Maximaal"
 
 #~ msgid "Load"
 #~ msgstr "Laden"
@@ -1685,12 +1980,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Failed To Load The Impulse File"
 #~ msgstr "Impulsbestand laden mislukt"
 
-#~ msgid "Recorders"
-#~ msgstr "Opname-apparaten"
-
-#~ msgid "Players"
-#~ msgstr "Spelers"
-
 #~ msgid "Effects"
 #~ msgstr "Effecten"
 
@@ -1742,9 +2031,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 
 #~ msgid "Remove"
 #~ msgstr "Verwijderen"
-
-#~ msgid "Output Device"
-#~ msgstr "Uitvoerapparaat"
 
 #~ msgid "Add"
 #~ msgstr "Toevoegen"
@@ -1807,63 +2093,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 
 #~ msgid "RNNoise Models"
 #~ msgstr "RNNoise-modellen"
-
-#~ msgid "Bass Enhancer"
-#~ msgstr "Basversterker"
-
-#~ msgid "Bass Loudness"
-#~ msgstr "Hardheid van bas"
-
-#~ msgid "Convolver"
-#~ msgstr "Convolutie"
-
-#~ msgid "Crossfeed"
-#~ msgstr "Crossfeed"
-
-#~ msgid "Crystalizer"
-#~ msgstr "Kristalliseerder"
-
-#~ msgid "Deep Noise Remover"
-#~ msgstr "Diepe ruis-verwijderaar"
-
-#~ msgid "Deesser"
-#~ msgstr "Deesser"
-
-#~ msgid "Echo Canceller"
-#~ msgstr "Echo-onderdrukking"
-
-#~ msgid "Equalizer"
-#~ msgstr "Equalizer"
-
-#~ msgid "Exciter"
-#~ msgstr "Exciter"
-
-#~ msgid "Level Meter"
-#~ msgstr "Niveaumeter"
-
-#~ msgid "Limiter"
-#~ msgstr "Limiter"
-
-#~ msgid "Maximizer"
-#~ msgstr "Maximizer"
-
-#~ msgid "Multiband Compressor"
-#~ msgstr "Multiband-compressor"
-
-#~ msgid "Multiband Gate"
-#~ msgstr "Multiband-gate"
-
-#~ msgid "Reverberation"
-#~ msgstr "Nagalm"
-
-#~ msgid "Noise Reduction"
-#~ msgstr "Ruisverlaging"
-
-#~ msgid "Speech Processor"
-#~ msgstr "Spraakverwerker"
-
-#~ msgid "Stereo Tools"
-#~ msgstr "Stereobediening"
 
 #, c++-format
 #~ msgid "{} Not Available"
@@ -2410,9 +2639,6 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Blocklist"
 #~ msgstr "Zwarte lijst"
 
-#~ msgid "Add Plugin"
-#~ msgstr "Plug-in toevoegen"
-
 #~ msgid "Speakers"
 #~ msgstr "Luidsprekers"
 
@@ -2509,14 +2735,8 @@ msgstr "Audio-effecten voor PipeWire-apps"
 #~ msgid "Signal"
 #~ msgstr "Signaal"
 
-#~ msgid "Show Spectrum"
-#~ msgstr "Spectrum tonen"
-
 #~ msgid "Border"
 #~ msgstr "Rand"
-
-#~ msgid "Spectrum Type"
-#~ msgstr "Soort spectrum"
 
 #~ msgid "Spectrum Color"
 #~ msgstr "Spectrumkleur"

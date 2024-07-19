@@ -10,6 +10,8 @@ import org.kde.kirigami as Kirigami
 Kirigami.OverlaySheet {
     id: control
 
+    property var streamDB
+
     function showMenuStatus(label) {
         status.text = label;
         status.visible = true;
@@ -30,7 +32,7 @@ Kirigami.OverlaySheet {
         clip: true
         delegate: listDelegate
         reuseItems: true
-        model: PluginsNameModel
+        model: SortedPluginsNameModel
 
         Kirigami.PlaceholderMessage {
             anchors.centerIn: parent
@@ -64,7 +66,23 @@ Kirigami.OverlaySheet {
                 Controls.Button {
                     Layout.alignment: Qt.AlignCenter
                     icon.name: "list-add"
-                    onClicked: showMenuStatus(i18n("Added Plugin: " + model.translatedName))
+                    onClicked: {
+                        let plugins = streamDB.plugins;
+                        let index_list = [];
+                        for (let n = 0; n < plugins.length; n++) {
+                            if (plugins[n].startsWith(model.name)) {
+                                let m = plugins[n].match(/#(\d+)$/);
+                                if (m.length == 2)
+                                    index_list.push(m[1]);
+
+                            }
+                        }
+                        let new_id = (index_list.length === 0) ? 0 : Math.max.apply(null, index_list) + 1;
+                        let new_name = model.name + "#" + new_id;
+                        plugins.push(new_name);
+                        streamDB.plugins = plugins;
+                        showMenuStatus(i18n("Added Plugin: " + model.translatedName));
+                    }
                 }
 
             }
@@ -80,7 +98,7 @@ Kirigami.OverlaySheet {
             Layout.fillWidth: true
             placeholderText: i18n("Search")
             onAccepted: {
-                PluginsNameModel.filterRegularExpression = RegExp(search.text, "i");
+                SortedPluginsNameModel.filterRegularExpression = RegExp(search.text, "i");
             }
         }
 

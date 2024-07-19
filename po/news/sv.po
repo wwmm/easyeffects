@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"POT-Creation-Date: 2024-07-19 14:11-0300\n"
 "PO-Revision-Date: 2023-08-09 08:17+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/"
@@ -19,89 +19,404 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.0-dev\n"
 
-#: src/contents/ui/InputTab.qml:9
-msgid "Input"
-msgstr "Ingång"
+#: src/contents/ui/DelegatePluginsList.qml:53
+#, fuzzy
+msgid "Enable this Effect"
+msgstr "Ta bort denna modellfil"
 
-#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
-#: src/contents/ui/PipeWireTab.qml:15
-msgctxt "@action:button"
-msgid "Add Row"
+#: src/contents/ui/DelegatePluginsList.qml:66
+#, fuzzy
+msgid "Remove this effect"
+msgstr "Ta bort denna modellfil"
+
+#: src/contents/ui/DelegateStreamsList.qml:58
+#, fuzzy
+msgid "Enable"
+msgstr "Sinustabell"
+
+#: src/contents/ui/DelegateStreamsList.qml:63
+msgid "Exclude"
 msgstr ""
 
-#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
-#: src/contents/ui/PipeWireTab.qml:44
-msgid "Name"
-msgstr "Namn"
-
-#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
-#: src/contents/ui/PipeWireTab.qml:57
-msgid "Value"
-msgstr ""
-
-#: src/contents/ui/main.qml:17
+#: src/contents/ui/main.qml:14
 #, fuzzy
 msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "Easy Effects"
 
-#: src/contents/ui/main.qml:98
+#: src/contents/ui/main.qml:86
 #, fuzzy
 msgid "Preset: "
 msgstr "Förinställning"
 
-#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+#: src/contents/ui/main.qml:94 src/contents/ui/main.qml:206
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:162
-msgid "Apply"
-msgstr ""
-
-#: src/contents/ui/main.qml:171
+#: src/contents/ui/main.qml:116
 msgid "Presets"
 msgstr "Profiler"
 
-#: src/contents/ui/main.qml:179
+#: src/contents/ui/main.qml:124
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:190 src/contents/ui/PreferencesSheet.qml:12
+#: src/contents/ui/PreferencesSheet.qml:17
+#: src/contents/ui/PreferencesSheet.qml:453
+#: src/contents/ui/PreferencesSheet.qml:466
 msgid "Preferences"
 msgstr ""
 
-#: src/contents/ui/main.qml:187
+#: src/contents/ui/main.qml:198
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "_Om EasyEffects"
 
-#: src/contents/ui/main.qml:223
-msgid "Executable Name"
+#: src/contents/ui/MenuAddPlugins.qml:41
+msgid "Empty"
 msgstr ""
 
-#: src/contents/ui/OutputTab.qml:9
-msgid "Output"
-msgstr "Utgång"
-
-#: src/contents/ui/PipeWireTab.qml:9
-msgid "PipeWire"
+#: src/contents/ui/MenuAddPlugins.qml:82
+msgid "Added Plugin: "
 msgstr ""
 
-#: src/main.cpp:55
+#: src/contents/ui/MenuAddPlugins.qml:97
+msgid "Search"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:77
+#, fuzzy
+msgid "No Preset"
+msgstr "Profiler"
+
+#: src/contents/ui/PageStreamsEffects.qml:130
+#, fuzzy
+msgid "Add Effect"
+msgstr "EasyEffects"
+
+#: src/contents/ui/PageStreamsEffects.qml:176
+msgid "Players"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:16
+#. i18n: ectx: label, entry (inputDevice), group (StreamInputs)
+#: src/contents/ui/PageStreamsEffects.qml:176 rc.cpp:75
+msgid "Input Device"
+msgstr "Ingångsenhet"
+
+#: src/contents/ui/PageStreamsEffects.qml:194
+msgid "Recorders"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:221
+#, fuzzy
+msgid "No Effects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/PageStreamsEffects.qml:222
+msgid "Audio Stream Not Modified"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:302
+#, fuzzy
+msgid "Excluded Apps"
+msgstr "Applikationslista"
+
+#: src/contents/ui/PreferencesSheet.qml:37
+msgid "Launch Service at System Startup"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:46
+msgid "Show the Tray Icon"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:79
+msgid "Process All Output Streams"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:91
+msgid "Process All Input Streams"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:103
+msgid "Ignore Streams from Monitor of Devices"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:115
+msgid "Use Cubic Volume"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:56
+#. i18n: ectx: label, entry (inactivityTimerEnable), group (EffectsPipelines)
+#: src/contents/ui/PreferencesSheet.qml:127 rc.cpp:36
+msgid "Enable the Inactivity Timeout"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:139
+msgid "Inactivity Timeout"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:140
+#, fuzzy
+msgid "Input Pipeline"
+msgstr "Ingångsenhet"
+
+#: src/contents/ui/PreferencesSheet.qml:156
+msgid "Update Interval"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:157
+msgid "Related to Level Meters and Spectrum"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:190
+msgid "State"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:197
+#, fuzzy
+msgid "Enabled"
+msgstr "Sinustabell"
+
+#: src/contents/ui/PreferencesSheet.qml:209
+msgid "Style"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:216
+msgid "Shape"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:23
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:57
+msgid "Bars"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:26
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:60
+msgid "Lines"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:29
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:63
+msgid "Dots"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:32
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:66
+msgid "Area"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:12
+#. i18n: ectx: label, entry (useOpenGL), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:229 rc.cpp:48
+msgid "Enable OpenGL Acceleration"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:241
+msgid "Dynamic Scale"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:253
+msgid "Points"
+msgstr "Punkter"
+
+#: src/contents/ui/PreferencesSheet.qml:267
+msgid "Height"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:282
+#, fuzzy
+msgid "Frequency Range"
+msgstr "Frekvens (Hz)"
+
+#: src/contents/ui/PreferencesSheet.qml:289
+#, fuzzy
+msgid "Minimum"
+msgstr "Frekvens (Hz)"
+
+#: src/contents/ui/PreferencesSheet.qml:304
+#, fuzzy
+msgid "Maximum"
+msgstr "Frekvens (Hz)"
+
+#: src/contents/ui/PreferencesSheet.qml:340
+msgid "Native Plugin Window"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:341
+msgid "Allows The Native Plugin Window to be Shown/Hidden"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:353
+#, fuzzy
+msgid "Update Frequency"
+msgstr "Delad frekvens 1"
+
+#: src/contents/ui/PreferencesSheet.qml:354
+msgid "Related to LV2 Plugins"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:393
+msgid "Background Service"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:405
+msgid "Audio"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:417
+#, fuzzy
+msgid "Spectrum Analyzer"
+msgstr "Spektrum"
+
+#: src/contents/ui/PreferencesSheet.qml:429
+msgid "Experimental Features"
+msgstr ""
+
+#: src/main.cpp:26
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Ljudeffekter för PulseAudio applikationer"
 
-#: src/main.cpp:56
+#: src/main.cpp:27
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:60
+#: src/main.cpp:31
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:60
+#: src/main.cpp:31
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr ""
+
+#: src/tags_plugin_name.cpp:29
+#, fuzzy
+msgid "Autogain"
+msgstr "Ingångsförstärkning (dB)"
+
+#: src/tags_plugin_name.cpp:30
+#, fuzzy
+msgid "Bass Enhancer"
+msgstr "Ljudförstärkare"
+
+#: src/tags_plugin_name.cpp:31
+msgid "Bass Loudness"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:32
+msgid "Compressor"
+msgstr "Kompressor"
+
+#: src/tags_plugin_name.cpp:33
+msgid "Convolver"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:34
+msgid "Crossfeed"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:35
+#, fuzzy
+msgid "Crystalizer"
+msgstr "Utjämnare"
+
+#: src/tags_plugin_name.cpp:36
+msgid "Deep Noise Remover"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:37
+msgid "Deesser"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:38
+#, fuzzy
+msgid "Delay"
+msgstr "Release (ms)"
+
+#: src/tags_plugin_name.cpp:39
+#, fuzzy
+msgid "Echo Canceller"
+msgstr "Ljudförstärkare"
+
+#: src/tags_plugin_name.cpp:40
+msgid "Equalizer"
+msgstr "Utjämnare"
+
+#: src/tags_plugin_name.cpp:41
+msgid "Exciter"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:42
+msgid "Expander"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:43
+#, fuzzy
+msgid "Filter"
+msgstr "Filter typ"
+
+#: src/tags_plugin_name.cpp:44
+msgid "Gate"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:45
+msgid "Level Meter"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:46
+#, fuzzy
+msgid "Limiter"
+msgstr "Gränsvärde (dB)"
+
+#: src/tags_plugin_name.cpp:47
+msgid "Loudness"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:48
+msgid "Maximizer"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:49
+#, fuzzy
+msgid "Multiband Compressor"
+msgstr "Kompressor"
+
+#: src/tags_plugin_name.cpp:50
+#, fuzzy
+msgid "Multiband Gate"
+msgstr "Kompressor"
+
+#: src/tags_plugin_name.cpp:51
+msgid "Pitch"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:52
+#, fuzzy
+msgid "Reverberation"
+msgstr "Efterljud (eko)"
+
+#: src/tags_plugin_name.cpp:53
+#, fuzzy
+msgid "Noise Reduction"
+msgstr "Förstärkningsreducering"
+
+#: src/tags_plugin_name.cpp:54
+msgid "Speech Processor"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:55
+#, fuzzy
+msgid "Stereo Tools"
+msgstr "Ljudförstärkare"
 
 #. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
 #. i18n: ectx: label, entry (width), group (Window)
@@ -128,6 +443,128 @@ msgstr ""
 msgid "Last used preset."
 msgstr "Ta bort profil"
 
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:24
+#. i18n: ectx: label, entry (showNativePluginUi), group (Window)
+#: rc.cpp:15
+msgid "Show Plugin's Native Window"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:28
+#. i18n: ectx: label, entry (lv2uiUpdateFrequency), group (Window)
+#: rc.cpp:18
+msgid "LV2 Native Window Update Frequency"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:36
+#. i18n: ectx: label, entry (bypass), group (EffectsPipelines)
+#: rc.cpp:21
+msgid "Puts the Effects Pipelines in Passthrough Mode."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:40
+#. i18n: ectx: label, entry (processAllOutputs), group (EffectsPipelines)
+#: rc.cpp:24
+msgid "Automatically moves Audio Streams to EasyEffects Virtual Sink."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:44
+#. i18n: ectx: label, entry (processAllInputs), group (EffectsPipelines)
+#: rc.cpp:27
+msgid "Automatically moves Audio Streams to EasyEffects Virtual Source."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:48
+#. i18n: ectx: label, entry (excludeMonitorStreams), group (EffectsPipelines)
+#: rc.cpp:30
+msgid "Ignore Streams from Monitor of Devices."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:52
+#. i18n: ectx: label, entry (useCubicVolumes), group (EffectsPipelines)
+#: rc.cpp:33
+msgid "Use Cubic Volume."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:60
+#. i18n: ectx: label, entry (inactivityTimeout), group (EffectsPipelines)
+#: rc.cpp:39
+msgid "Inactivity Timeout."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:66
+#. i18n: ectx: label, entry (metersUpdateInterval), group (EffectsPipelines)
+#: rc.cpp:42
+msgid "Level Meter Update Interval"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:8
+#. i18n: ectx: label, entry (state), group (Spectrum)
+#: rc.cpp:45
+#, fuzzy
+msgid "Show the Spectrum Analyzer."
+msgstr "Spektrum"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:16
+#. i18n: ectx: label, entry (dynamicYScale), group (Spectrum)
+#: rc.cpp:51
+msgid "Enable Dynamic Scaling for the Vertical Axis"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:20
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: rc.cpp:54
+#, fuzzy
+msgid "Spectrum Type"
+msgstr "Spektrum"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:8
+#. i18n: ectx: label, entry (plugins), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:8
+#. i18n: ectx: label, entry (plugins), group (StreamOutputs)
+#: rc.cpp:69 rc.cpp:87
+msgid "List of Plugins in the Effects Pipeline"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:12
+#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:12
+#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamOutputs)
+#: rc.cpp:72 rc.cpp:90
+#, fuzzy
+msgid "Use the System Default Output Device"
+msgstr "Ingångsförstärkning (dB)"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:20
+#. i18n: ectx: label, entry (blocklist), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:20
+#. i18n: ectx: label, entry (blocklist), group (StreamOutputs)
+#: rc.cpp:78 rc.cpp:96
+msgid "List of Blocked Streams"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:24
+#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:24
+#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamOutputs)
+#: rc.cpp:81 rc.cpp:99
+msgid "Show Blocked Streams in the Streams Tab"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:28
+#. i18n: ectx: label, entry (showPluginsList), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:28
+#. i18n: ectx: label, entry (showPluginsList), group (StreamOutputs)
+#: rc.cpp:84 rc.cpp:102
+msgid "Show the List of Plugins"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:16
+#. i18n: ectx: label, entry (outputDevice), group (StreamOutputs)
+#: rc.cpp:93
+#, fuzzy
+msgid "Output Device"
+msgstr "Ingångsförstärkning (dB)"
+
 #: com.github.wwmm.easyeffects.desktop.template.h:2
 #, fuzzy
 msgid "EasyEffects"
@@ -140,6 +577,15 @@ msgstr ""
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Ljudeffekter för PipeWire-applikationer"
+
+#~ msgid "Input"
+#~ msgstr "Ingång"
+
+#~ msgid "Name"
+#~ msgstr "Namn"
+
+#~ msgid "Output"
+#~ msgstr "Utgång"
 
 #, fuzzy
 #~ msgid ""
@@ -190,10 +636,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 
 #~ msgid "\"Presets\""
 #~ msgstr "\"Förinställningar\""
-
-#, fuzzy
-#~ msgid "Enable"
-#~ msgstr "Sinustabell"
 
 #~ msgid "Mute Application"
 #~ msgstr "Tysta applikationen"
@@ -263,15 +705,8 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 #~ msgstr "Visa blocklistade applikationer"
 
 #, fuzzy
-#~ msgid "Excluded Applications List"
-#~ msgstr "Applikationslista"
-
-#, fuzzy
 #~ msgid "Show Excluded Applications"
 #~ msgstr "Visa blocklistade applikationer"
-
-#~ msgid "Compressor"
-#~ msgstr "Kompressor"
 
 #~ msgid "Boosting"
 #~ msgstr "Förstärkning"
@@ -342,9 +777,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 #~ msgid "Sidechain Type"
 #~ msgstr "Typ av sidokedja"
 
-#~ msgid "Input Device"
-#~ msgstr "Ingångsenhet"
-
 #~ msgid "PreAmplification"
 #~ msgstr "Förförstärkning"
 
@@ -389,10 +821,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 
 #~ msgid "Spectrum"
 #~ msgstr "Spektrum"
-
-#, fuzzy
-#~ msgid "Autogain"
-#~ msgstr "Ingångsförstärkning (dB)"
 
 #~ msgid "Rate"
 #~ msgstr "Takt"
@@ -599,9 +1027,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 #~ msgid "Split Mode"
 #~ msgstr "Delat läge"
 
-#~ msgid "Split Frequency 1"
-#~ msgstr "Delad frekvens 1"
-
 #~ msgid "Split Frequency 2"
 #~ msgstr "Delad frekvens 2"
 
@@ -766,10 +1191,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 #~ msgstr "Ingångs-begränsning"
 
 #, fuzzy
-#~ msgid "Custom Output Device"
-#~ msgstr "Ingångsförstärkning (dB)"
-
-#, fuzzy
 #~ msgid "Server Information"
 #~ msgstr "Efterljud (eko)"
 
@@ -817,10 +1238,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 #~ msgid "Test Signal"
 #~ msgstr "Testsignal"
 
-#, fuzzy
-#~ msgid "Enabled"
-#~ msgstr "Sinustabell"
-
 #~ msgid "Channels"
 #~ msgstr "Kanaler"
 
@@ -860,18 +1277,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 #~ msgstr "Ingen komprimering"
 
 #, fuzzy
-#~ msgid "Remove this effect"
-#~ msgstr "Ta bort denna modellfil"
-
-#, fuzzy
-#~ msgid "Add Effect"
-#~ msgstr "EasyEffects"
-
-#, fuzzy
-#~ msgid "No Effects"
-#~ msgstr "EasyEffects"
-
-#, fuzzy
 #~ msgid "_General"
 #~ msgstr "Allmänt"
 
@@ -886,20 +1291,9 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 #~ msgid "_Spectrum"
 #~ msgstr "Spektrum"
 
-#~ msgid "Points"
-#~ msgstr "Punkter"
-
 #, fuzzy
 #~ msgid "Line Width"
 #~ msgstr "Bredd"
-
-#, fuzzy
-#~ msgid "Frequency Range"
-#~ msgstr "Frekvens (Hz)"
-
-#, fuzzy
-#~ msgid "Minimum"
-#~ msgstr "Frekvens (Hz)"
 
 #, fuzzy
 #~ msgid "Save current settings to this preset file"
@@ -1113,10 +1507,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 #~ msgstr "Ta bort"
 
 #, fuzzy
-#~ msgid "Output Device"
-#~ msgstr "Ingångsförstärkning (dB)"
-
-#, fuzzy
 #~ msgid "Import Preset"
 #~ msgstr "Öppna förinställning"
 
@@ -1127,53 +1517,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 #, fuzzy
 #~ msgid "RNNoise Models"
 #~ msgstr "Ingen komprimering"
-
-#, fuzzy
-#~ msgid "Bass Enhancer"
-#~ msgstr "Ljudförstärkare"
-
-#, fuzzy
-#~ msgid "Crystalizer"
-#~ msgstr "Utjämnare"
-
-#, fuzzy
-#~ msgid "Delay"
-#~ msgstr "Release (ms)"
-
-#, fuzzy
-#~ msgid "Echo Canceller"
-#~ msgstr "Ljudförstärkare"
-
-#~ msgid "Equalizer"
-#~ msgstr "Utjämnare"
-
-#, fuzzy
-#~ msgid "Filter"
-#~ msgstr "Filter typ"
-
-#, fuzzy
-#~ msgid "Limiter"
-#~ msgstr "Gränsvärde (dB)"
-
-#, fuzzy
-#~ msgid "Multiband Compressor"
-#~ msgstr "Kompressor"
-
-#, fuzzy
-#~ msgid "Multiband Gate"
-#~ msgstr "Kompressor"
-
-#, fuzzy
-#~ msgid "Reverberation"
-#~ msgstr "Efterljud (eko)"
-
-#, fuzzy
-#~ msgid "Noise Reduction"
-#~ msgstr "Förstärkningsreducering"
-
-#, fuzzy
-#~ msgid "Stereo Tools"
-#~ msgstr "Ljudförstärkare"
 
 #, fuzzy
 #~ msgid "Remove this plugin"
@@ -1235,14 +1578,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 #, fuzzy
 #~ msgid "Signal"
 #~ msgstr "Testsignal"
-
-#, fuzzy
-#~ msgid "Show Spectrum"
-#~ msgstr "Spektrum"
-
-#, fuzzy
-#~ msgid "Spectrum Type"
-#~ msgstr "Spektrum"
 
 #, fuzzy
 #~ msgid "Spectrum Color"

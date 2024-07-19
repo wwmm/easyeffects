@@ -1,3 +1,4 @@
+import EEtagsPluginName
 import QtCharts
 import QtQuick
 import QtQuick.Controls as Controls
@@ -7,24 +8,49 @@ import org.kde.kirigami as Kirigami
 Kirigami.Page {
     //To do: the bypass needs to be set from the corresponding plugin database
 
+    id: pageStreamsEffects
+
     property int pageType: 0 // 0 for output and 1 for input
     property var streamDB
 
     padding: 0
     Component.onCompleted: {
         let plugins = streamDB.plugins;
+        let names = PluginsNameModel.getBaseNames();
         for (let n = 0; n < plugins.length; n++) {
-            pluginsListModel.append({
-                "name": plugins[n],
-                "translatedName": "",
-                "bypass": false
-            });
+            for (let k = 0; k < names.length; k++) {
+                if (plugins[n].startsWith(names[k])) {
+                    pluginsListModel.append({
+                        "name": plugins[n],
+                        "baseName": names[k],
+                        "translatedName": PluginsNameModel.translate(names[k]),
+                        "bypass": false
+                    });
+                    break;
+                }
+            }
         }
     }
 
     Connections {
         function onPluginsChanged() {
             console.log("new plugins list: " + streamDB.plugins);
+            pluginsListModel.clear();
+            let plugins = streamDB.plugins;
+            let names = PluginsNameModel.getBaseNames();
+            for (let n = 0; n < plugins.length; n++) {
+                for (let k = 0; k < names.length; k++) {
+                    if (plugins[n].startsWith(names[k])) {
+                        pluginsListModel.append({
+                            "name": plugins[n],
+                            "baseName": names[k],
+                            "translatedName": PluginsNameModel.translate(names[k]),
+                            "bypass": false
+                        });
+                        break;
+                    }
+                }
+            }
         }
 
         target: streamDB
@@ -44,6 +70,8 @@ Kirigami.Page {
 
     MenuAddPlugins {
         id: menuAddPlugins
+
+        streamDB: pageStreamsEffects.streamDB
     }
 
     StackLayout {

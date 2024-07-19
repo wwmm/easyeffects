@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"POT-Creation-Date: 2024-07-19 14:11-0300\n"
 "PO-Revision-Date: 2024-03-24 04:01+0000\n"
 "Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -20,93 +20,391 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.5-dev\n"
 
-#: src/contents/ui/InputTab.qml:9
-msgid "Input"
-msgstr "输入"
-
-#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
-#: src/contents/ui/PipeWireTab.qml:15
-msgctxt "@action:button"
-msgid "Add Row"
-msgstr ""
-
-#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
-#: src/contents/ui/PipeWireTab.qml:44
-msgid "Name"
-msgstr "名称"
-
-#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
-#: src/contents/ui/PipeWireTab.qml:57
+#: src/contents/ui/DelegatePluginsList.qml:53
 #, fuzzy
-msgid "Value"
-msgstr "上限值"
+msgid "Enable this Effect"
+msgstr "启用/禁用此音效"
 
-#: src/contents/ui/main.qml:17
+#: src/contents/ui/DelegatePluginsList.qml:66
+msgid "Remove this effect"
+msgstr "删除此音效"
+
+#: src/contents/ui/DelegateStreamsList.qml:58
+msgid "Enable"
+msgstr "启用"
+
+#: src/contents/ui/DelegateStreamsList.qml:63
+msgid "Exclude"
+msgstr "排除"
+
+#: src/contents/ui/main.qml:14
 #, fuzzy
 msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/main.qml:98
+#: src/contents/ui/main.qml:86
 #, fuzzy
 msgid "Preset: "
 msgstr "预设"
 
-#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+#: src/contents/ui/main.qml:94 src/contents/ui/main.qml:206
 #, fuzzy
 msgid "Quit"
 msgstr "退出(_Q)"
 
-#: src/contents/ui/main.qml:162
-msgid "Apply"
-msgstr ""
-
-#: src/contents/ui/main.qml:171
+#: src/contents/ui/main.qml:116
 msgid "Presets"
 msgstr "预设"
 
-#: src/contents/ui/main.qml:179
+#: src/contents/ui/main.qml:124
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:190 src/contents/ui/PreferencesSheet.qml:12
+#: src/contents/ui/PreferencesSheet.qml:17
+#: src/contents/ui/PreferencesSheet.qml:453
+#: src/contents/ui/PreferencesSheet.qml:466
 #, fuzzy
 msgid "Preferences"
 msgstr "首选项(_P)"
 
-#: src/contents/ui/main.qml:187
+#: src/contents/ui/main.qml:198
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "关于 EasyEffects (_A)"
 
-#: src/contents/ui/main.qml:223
-msgid "Executable Name"
+#: src/contents/ui/MenuAddPlugins.qml:41
+#, fuzzy
+msgid "Empty"
+msgstr "空列表"
+
+#: src/contents/ui/MenuAddPlugins.qml:82
+#, fuzzy
+msgid "Added Plugin: "
+msgstr "增加插件"
+
+#: src/contents/ui/MenuAddPlugins.qml:97
+msgid "Search"
+msgstr "搜索"
+
+#: src/contents/ui/PageStreamsEffects.qml:77
+#, fuzzy
+msgid "No Preset"
+msgstr "预设"
+
+#: src/contents/ui/PageStreamsEffects.qml:130
+msgid "Add Effect"
+msgstr "添加音效"
+
+#: src/contents/ui/PageStreamsEffects.qml:176
+msgid "Players"
+msgstr "播放器"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:16
+#. i18n: ectx: label, entry (inputDevice), group (StreamInputs)
+#: src/contents/ui/PageStreamsEffects.qml:176 rc.cpp:75
+msgid "Input Device"
+msgstr "输入设备"
+
+#: src/contents/ui/PageStreamsEffects.qml:194
+msgid "Recorders"
+msgstr "录音程序"
+
+#: src/contents/ui/PageStreamsEffects.qml:221
+msgid "No Effects"
+msgstr "无音效"
+
+#: src/contents/ui/PageStreamsEffects.qml:222
+msgid "Audio Stream Not Modified"
+msgstr "音频流未作修改"
+
+#: src/contents/ui/PageStreamsEffects.qml:302
+msgid "Excluded Apps"
+msgstr "排除的应用"
+
+#: src/contents/ui/PreferencesSheet.qml:37
+msgid "Launch Service at System Startup"
+msgstr "系统启动时运行服务"
+
+#: src/contents/ui/PreferencesSheet.qml:46
+msgid "Show the Tray Icon"
 msgstr ""
 
-#: src/contents/ui/OutputTab.qml:9
-msgid "Output"
-msgstr "输出"
+#: src/contents/ui/PreferencesSheet.qml:79
+msgid "Process All Output Streams"
+msgstr "处理所有输出流"
 
-#: src/contents/ui/PipeWireTab.qml:9
+#: src/contents/ui/PreferencesSheet.qml:91
+msgid "Process All Input Streams"
+msgstr "处理所有输入流"
+
+#: src/contents/ui/PreferencesSheet.qml:103
+msgid "Ignore Streams from Monitor of Devices"
+msgstr "忽略来自设备 Monitor 的音频流"
+
+#: src/contents/ui/PreferencesSheet.qml:115
+msgid "Use Cubic Volume"
+msgstr "使用非线性（立方）音量调节"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:56
+#. i18n: ectx: label, entry (inactivityTimerEnable), group (EffectsPipelines)
+#: src/contents/ui/PreferencesSheet.qml:127 rc.cpp:36
 #, fuzzy
-msgid "PipeWire"
-msgstr "PipeWire(_P)"
+msgid "Enable the Inactivity Timeout"
+msgstr "空闲超时"
 
-#: src/main.cpp:55
+#: src/contents/ui/PreferencesSheet.qml:139
+msgid "Inactivity Timeout"
+msgstr "空闲超时"
+
+#: src/contents/ui/PreferencesSheet.qml:140
+#, fuzzy
+msgid "Input Pipeline"
+msgstr "输入设备"
+
+#: src/contents/ui/PreferencesSheet.qml:156
+#, fuzzy
+msgid "Update Interval"
+msgstr "翻译更新"
+
+#: src/contents/ui/PreferencesSheet.qml:157
+#, fuzzy
+msgid "Related to Level Meters and Spectrum"
+msgstr "更新间隔（电平表、频谱）"
+
+#: src/contents/ui/PreferencesSheet.qml:190
+msgid "State"
+msgstr "状态"
+
+#: src/contents/ui/PreferencesSheet.qml:197
+msgid "Enabled"
+msgstr "已启用"
+
+#: src/contents/ui/PreferencesSheet.qml:209
+msgid "Style"
+msgstr "界面风格"
+
+#: src/contents/ui/PreferencesSheet.qml:216
+msgid "Shape"
+msgstr "形状"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:23
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:57
+msgid "Bars"
+msgstr "柱状"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:26
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:60
+msgid "Lines"
+msgstr "线型"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:29
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:63
+msgid "Dots"
+msgstr "点阵"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:32
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:66
+msgid "Area"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:12
+#. i18n: ectx: label, entry (useOpenGL), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:229 rc.cpp:48
+msgid "Enable OpenGL Acceleration"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:241
+msgid "Dynamic Scale"
+msgstr "动态比例"
+
+#: src/contents/ui/PreferencesSheet.qml:253
+msgid "Points"
+msgstr "数量"
+
+#: src/contents/ui/PreferencesSheet.qml:267
+msgid "Height"
+msgstr "高度"
+
+#: src/contents/ui/PreferencesSheet.qml:282
+msgid "Frequency Range"
+msgstr "频率范围"
+
+#: src/contents/ui/PreferencesSheet.qml:289
+msgid "Minimum"
+msgstr "最低"
+
+#: src/contents/ui/PreferencesSheet.qml:304
+msgid "Maximum"
+msgstr "最高"
+
+#: src/contents/ui/PreferencesSheet.qml:340
+msgid "Native Plugin Window"
+msgstr "原生插件窗口"
+
+#: src/contents/ui/PreferencesSheet.qml:341
+msgid "Allows The Native Plugin Window to be Shown/Hidden"
+msgstr "允许显示或隐藏原生插件窗口"
+
+#: src/contents/ui/PreferencesSheet.qml:353
+#, fuzzy
+msgid "Update Frequency"
+msgstr "分割频率 1"
+
+#: src/contents/ui/PreferencesSheet.qml:354
+#, fuzzy
+msgid "Related to LV2 Plugins"
+msgstr "更新频率（LV2插件）"
+
+#: src/contents/ui/PreferencesSheet.qml:393
+msgid "Background Service"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:405
+msgid "Audio"
+msgstr "音频"
+
+#: src/contents/ui/PreferencesSheet.qml:417
+#, fuzzy
+msgid "Spectrum Analyzer"
+msgstr "频谱类型"
+
+#: src/contents/ui/PreferencesSheet.qml:429
+msgid "Experimental Features"
+msgstr "实验性功能"
+
+#: src/main.cpp:26
 msgid "Audio effects for PipeWire applications"
 msgstr "为使用 PipeWire 的程序提供音效"
 
-#: src/main.cpp:56
+#: src/main.cpp:27
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:60
+#: src/main.cpp:31
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:60
+#: src/main.cpp:31
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "波封"
+
+#: src/tags_plugin_name.cpp:29
+msgid "Autogain"
+msgstr "自动增益"
+
+#: src/tags_plugin_name.cpp:30
+msgid "Bass Enhancer"
+msgstr "低音增强"
+
+#: src/tags_plugin_name.cpp:31
+msgid "Bass Loudness"
+msgstr "低音响度"
+
+#: src/tags_plugin_name.cpp:32
+msgid "Compressor"
+msgstr "压缩器"
+
+#: src/tags_plugin_name.cpp:33
+msgid "Convolver"
+msgstr "卷积混响器"
+
+#: src/tags_plugin_name.cpp:34
+msgid "Crossfeed"
+msgstr "交叉反馈"
+
+#: src/tags_plugin_name.cpp:35
+msgid "Crystalizer"
+msgstr "音质晶化器"
+
+#: src/tags_plugin_name.cpp:36
+msgid "Deep Noise Remover"
+msgstr "深度降噪"
+
+#: src/tags_plugin_name.cpp:37
+msgid "Deesser"
+msgstr "齿音消除"
+
+#: src/tags_plugin_name.cpp:38
+msgid "Delay"
+msgstr "延迟"
+
+#: src/tags_plugin_name.cpp:39
+msgid "Echo Canceller"
+msgstr "回音消除"
+
+#: src/tags_plugin_name.cpp:40
+msgid "Equalizer"
+msgstr "均衡器"
+
+#: src/tags_plugin_name.cpp:41
+msgid "Exciter"
+msgstr "激励器"
+
+#: src/tags_plugin_name.cpp:42
+msgid "Expander"
+msgstr "扩展器"
+
+#: src/tags_plugin_name.cpp:43
+msgid "Filter"
+msgstr "过滤器"
+
+#: src/tags_plugin_name.cpp:44
+msgid "Gate"
+msgstr "门限"
+
+#: src/tags_plugin_name.cpp:45
+msgid "Level Meter"
+msgstr "电平表"
+
+#: src/tags_plugin_name.cpp:46
+msgid "Limiter"
+msgstr "限幅器"
+
+#: src/tags_plugin_name.cpp:47
+msgid "Loudness"
+msgstr "响度"
+
+#: src/tags_plugin_name.cpp:48
+msgid "Maximizer"
+msgstr "放大器"
+
+#: src/tags_plugin_name.cpp:49
+msgid "Multiband Compressor"
+msgstr "多频段压缩器"
+
+#: src/tags_plugin_name.cpp:50
+msgid "Multiband Gate"
+msgstr "多频段门限"
+
+#: src/tags_plugin_name.cpp:51
+msgid "Pitch"
+msgstr "音高"
+
+#: src/tags_plugin_name.cpp:52
+msgid "Reverberation"
+msgstr "混响"
+
+#: src/tags_plugin_name.cpp:53
+msgid "Noise Reduction"
+msgstr "降噪"
+
+#: src/tags_plugin_name.cpp:54
+msgid "Speech Processor"
+msgstr "语音处理器"
+
+#: src/tags_plugin_name.cpp:55
+msgid "Stereo Tools"
+msgstr "立体声工具"
 
 #. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
 #. i18n: ectx: label, entry (width), group (Window)
@@ -135,6 +433,132 @@ msgstr ""
 msgid "Last used preset."
 msgstr "创建新预设"
 
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:24
+#. i18n: ectx: label, entry (showNativePluginUi), group (Window)
+#: rc.cpp:15
+#, fuzzy
+msgid "Show Plugin's Native Window"
+msgstr "显示原生窗口"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:28
+#. i18n: ectx: label, entry (lv2uiUpdateFrequency), group (Window)
+#: rc.cpp:18
+#, fuzzy
+msgid "LV2 Native Window Update Frequency"
+msgstr "分割频率 1"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:36
+#. i18n: ectx: label, entry (bypass), group (EffectsPipelines)
+#: rc.cpp:21
+msgid "Puts the Effects Pipelines in Passthrough Mode."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:40
+#. i18n: ectx: label, entry (processAllOutputs), group (EffectsPipelines)
+#: rc.cpp:24
+msgid "Automatically moves Audio Streams to EasyEffects Virtual Sink."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:44
+#. i18n: ectx: label, entry (processAllInputs), group (EffectsPipelines)
+#: rc.cpp:27
+msgid "Automatically moves Audio Streams to EasyEffects Virtual Source."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:48
+#. i18n: ectx: label, entry (excludeMonitorStreams), group (EffectsPipelines)
+#: rc.cpp:30
+#, fuzzy
+msgid "Ignore Streams from Monitor of Devices."
+msgstr "忽略来自设备 Monitor 的音频流"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:52
+#. i18n: ectx: label, entry (useCubicVolumes), group (EffectsPipelines)
+#: rc.cpp:33
+#, fuzzy
+msgid "Use Cubic Volume."
+msgstr "使用非线性（立方）音量调节"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:60
+#. i18n: ectx: label, entry (inactivityTimeout), group (EffectsPipelines)
+#: rc.cpp:39
+#, fuzzy
+msgid "Inactivity Timeout."
+msgstr "空闲超时"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:66
+#. i18n: ectx: label, entry (metersUpdateInterval), group (EffectsPipelines)
+#: rc.cpp:42
+#, fuzzy
+msgid "Level Meter Update Interval"
+msgstr "翻译更新"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:8
+#. i18n: ectx: label, entry (state), group (Spectrum)
+#: rc.cpp:45
+#, fuzzy
+msgid "Show the Spectrum Analyzer."
+msgstr "显示频谱"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:16
+#. i18n: ectx: label, entry (dynamicYScale), group (Spectrum)
+#: rc.cpp:51
+msgid "Enable Dynamic Scaling for the Vertical Axis"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:20
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: rc.cpp:54
+msgid "Spectrum Type"
+msgstr "频谱类型"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:8
+#. i18n: ectx: label, entry (plugins), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:8
+#. i18n: ectx: label, entry (plugins), group (StreamOutputs)
+#: rc.cpp:69 rc.cpp:87
+msgid "List of Plugins in the Effects Pipeline"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:12
+#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:12
+#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamOutputs)
+#: rc.cpp:72 rc.cpp:90
+#, fuzzy
+msgid "Use the System Default Output Device"
+msgstr "使用默认输出"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:20
+#. i18n: ectx: label, entry (blocklist), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:20
+#. i18n: ectx: label, entry (blocklist), group (StreamOutputs)
+#: rc.cpp:78 rc.cpp:96
+msgid "List of Blocked Streams"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:24
+#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:24
+#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamOutputs)
+#: rc.cpp:81 rc.cpp:99
+msgid "Show Blocked Streams in the Streams Tab"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:28
+#. i18n: ectx: label, entry (showPluginsList), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:28
+#. i18n: ectx: label, entry (showPluginsList), group (StreamOutputs)
+#: rc.cpp:84 rc.cpp:102
+msgid "Show the List of Plugins"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:16
+#. i18n: ectx: label, entry (outputDevice), group (StreamOutputs)
+#: rc.cpp:93
+msgid "Output Device"
+msgstr "输出设备"
+
 #: com.github.wwmm.easyeffects.desktop.template.h:2
 msgid "EasyEffects"
 msgstr "EasyEffects"
@@ -147,6 +571,23 @@ msgstr "均衡器、压缩器和其他音效"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "为使用 PipeWire 的应用提供音效"
 
+#~ msgid "Input"
+#~ msgstr "输入"
+
+#~ msgid "Name"
+#~ msgstr "名称"
+
+#, fuzzy
+#~ msgid "Value"
+#~ msgstr "上限值"
+
+#~ msgid "Output"
+#~ msgstr "输出"
+
+#, fuzzy
+#~ msgid "PipeWire"
+#~ msgstr "PipeWire(_P)"
+
 #~ msgid "@APP_NAME@"
 #~ msgstr "@APP_NAME@"
 
@@ -156,14 +597,8 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Enable/disable this application"
 #~ msgstr "启用/禁用此应用程序"
 
-#~ msgid "Enable"
-#~ msgstr "启用"
-
 #~ msgid "Excluded App List: Add/remove this application"
 #~ msgstr "排除的应用程序列表：添加/删除此应用程序"
-
-#~ msgid "Exclude"
-#~ msgstr "排除"
 
 #~ msgid "Mute Application"
 #~ msgstr "将程序静音"
@@ -200,9 +635,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Applications List"
 #~ msgstr "应用程序列表"
-
-#~ msgid "Empty List"
-#~ msgstr "空列表"
 
 #~ msgid "No Audio Application Available"
 #~ msgstr "没有可用的音频应用程序"
@@ -249,9 +681,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Reset"
 #~ msgstr "重置"
-
-#~ msgid "Loudness"
-#~ msgstr "响度"
 
 #~ msgid "Relative"
 #~ msgstr "相对值"
@@ -319,12 +748,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Show Excluded Applications"
 #~ msgstr "显示已排除的程序"
-
-#~ msgid "Show Native Window"
-#~ msgstr "显示原生窗口"
-
-#~ msgid "Compressor"
-#~ msgstr "压缩器"
 
 #~ msgid "Mode"
 #~ msgstr "模式"
@@ -464,9 +887,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Sidechain Type"
 #~ msgstr "侧链类型"
 
-#~ msgid "Input Device"
-#~ msgstr "输入设备"
-
 #~ msgid "PreAmplification"
 #~ msgstr "前置放大"
 
@@ -542,9 +962,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Log Scale"
 #~ msgstr "对数坐标"
 
-#~ msgid "Autogain"
-#~ msgstr "自动增益"
-
 #~ msgid "Rate"
 #~ msgstr "速率"
 
@@ -573,9 +990,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Import Impulse"
 #~ msgstr "导入 Impulse 文件"
-
-#~ msgid "Search"
-#~ msgstr "搜索"
 
 #~ msgid "Search Impulse File"
 #~ msgstr "搜索脉冲文件"
@@ -665,9 +1079,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Reduction"
 #~ msgstr "衰减"
 
-#~ msgid "Delay"
-#~ msgstr "延迟"
-
 #~ msgid "Invert Phase"
 #~ msgstr "反转相位"
 
@@ -679,9 +1090,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Near End Echo Suppression"
 #~ msgstr "近端回声抑制"
-
-#~ msgid "Excluded Apps"
-#~ msgstr "排除的应用"
 
 #~ msgid "Enable/disable input monitoring"
 #~ msgstr "启用/禁用此应用程序"
@@ -730,9 +1138,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Ceil"
 #~ msgstr "上限"
-
-#~ msgid "Expander"
-#~ msgstr "扩展器"
 
 #, fuzzy
 #~ msgid "Expander Mode"
@@ -786,12 +1191,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #, fuzzy
 #~ msgid "Equalizer Mode"
 #~ msgstr "均衡器"
-
-#~ msgid "Filter"
-#~ msgstr "过滤器"
-
-#~ msgid "Gate"
-#~ msgstr "门限"
 
 #~ msgid "Zone"
 #~ msgstr "过渡区间"
@@ -1100,9 +1499,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Custom Input Device"
 #~ msgstr "自定义输入设备"
 
-#~ msgid "Use Default Output"
-#~ msgstr "使用默认输出"
-
 #~ msgid "Custom Output Device"
 #~ msgstr "自定义输出设备"
 
@@ -1172,12 +1568,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Test Signal"
 #~ msgstr "测试信号"
 
-#~ msgid "State"
-#~ msgstr "状态"
-
-#~ msgid "Enabled"
-#~ msgstr "已启用"
-
 #~ msgid "Properties"
 #~ msgstr "属性"
 
@@ -1215,9 +1605,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Overlap Length"
 #~ msgstr "重叠长度"
 
-#~ msgid "Pitch"
-#~ msgstr "音高"
-
 #~ msgid "Semitones"
 #~ msgstr "半音"
 
@@ -1227,17 +1614,8 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Rate Difference"
 #~ msgstr "速率差"
 
-#~ msgid "Remove this effect"
-#~ msgstr "删除此音效"
-
-#~ msgid "Enable/disable this effect"
-#~ msgstr "启用/禁用此音效"
-
 #~ msgid "Change the position of this effect"
 #~ msgstr "改变此音效的位置"
-
-#~ msgid "Add Effect"
-#~ msgstr "添加音效"
 
 #, fuzzy
 #~ msgid "Go to the previous effect"
@@ -1245,12 +1623,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Used Plugins List"
 #~ msgstr "使用的插件的列表"
-
-#~ msgid "No Effects"
-#~ msgstr "无音效"
-
-#~ msgid "Audio Stream Not Modified"
-#~ msgstr "音频流未作修改"
 
 #~ msgid "Search Plugin"
 #~ msgstr "搜索插件"
@@ -1264,48 +1636,8 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Service"
 #~ msgstr "服务"
 
-#~ msgid "Launch Service at System Startup"
-#~ msgstr "系统启动时运行服务"
-
 #~ msgid "Shutdown on Window Closing"
 #~ msgstr "窗口关闭时退出"
-
-#~ msgid "Audio"
-#~ msgstr "音频"
-
-#~ msgid "Process All Output Streams"
-#~ msgstr "处理所有输出流"
-
-#~ msgid "Process All Input Streams"
-#~ msgstr "处理所有输入流"
-
-#~ msgid "Ignore Streams from Monitor of Devices"
-#~ msgstr "忽略来自设备 Monitor 的音频流"
-
-#~ msgid "Use Cubic Volume"
-#~ msgstr "使用非线性（立方）音量调节"
-
-#~ msgid "Inactivity Timeout"
-#~ msgstr "空闲超时"
-
-#, fuzzy
-#~ msgid "Update Interval"
-#~ msgstr "翻译更新"
-
-#, fuzzy
-#~ msgid "Related to Level Meters and Spectrum"
-#~ msgstr "更新间隔（电平表、频谱）"
-
-#, fuzzy
-#~ msgid "Update Frequency"
-#~ msgstr "分割频率 1"
-
-#, fuzzy
-#~ msgid "Related to LV2 Plugins"
-#~ msgstr "更新频率（LV2插件）"
-
-#~ msgid "Style"
-#~ msgstr "界面风格"
 
 #~ msgid "Use Dark Theme"
 #~ msgstr "使用暗色主题"
@@ -1313,35 +1645,8 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Hide Menus on Outside Clicks"
 #~ msgstr "点击外部时隐藏菜单"
 
-#~ msgid "Experimental Features"
-#~ msgstr "实验性功能"
-
-#~ msgid "Native Plugin Window"
-#~ msgstr "原生插件窗口"
-
-#~ msgid "Allows The Native Plugin Window to be Shown/Hidden"
-#~ msgstr "允许显示或隐藏原生插件窗口"
-
 #~ msgid "_Spectrum"
 #~ msgstr "频谱(_S)"
-
-#~ msgid "Shape"
-#~ msgstr "形状"
-
-#~ msgid "Bars"
-#~ msgstr "柱状"
-
-#~ msgid "Lines"
-#~ msgstr "线型"
-
-#~ msgid "Dots"
-#~ msgstr "点阵"
-
-#~ msgid "Points"
-#~ msgstr "数量"
-
-#~ msgid "Height"
-#~ msgstr "高度"
 
 #~ msgid "Line Width"
 #~ msgstr "线宽"
@@ -1355,9 +1660,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Rounded Corners"
 #~ msgstr "圆角"
 
-#~ msgid "Dynamic Scale"
-#~ msgstr "动态比例"
-
 #~ msgid "Color"
 #~ msgstr "颜色"
 
@@ -1366,15 +1668,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Axis Labels"
 #~ msgstr "坐标轴标签"
-
-#~ msgid "Frequency Range"
-#~ msgstr "频率范围"
-
-#~ msgid "Minimum"
-#~ msgstr "最低"
-
-#~ msgid "Maximum"
-#~ msgstr "最高"
 
 #~ msgid "Load"
 #~ msgstr "加载"
@@ -1686,12 +1979,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Failed To Load The Impulse File"
 #~ msgstr "加载脉冲文件失败"
 
-#~ msgid "Recorders"
-#~ msgstr "录音程序"
-
-#~ msgid "Players"
-#~ msgstr "播放器"
-
 #~ msgid "Effects"
 #~ msgstr "音效"
 
@@ -1737,9 +2024,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Remove"
 #~ msgstr "删除"
-
-#~ msgid "Output Device"
-#~ msgstr "输出设备"
 
 #~ msgid "Add"
 #~ msgstr "添加"
@@ -1797,63 +2081,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "RNNoise Models"
 #~ msgstr "RNNoise 模型"
-
-#~ msgid "Bass Enhancer"
-#~ msgstr "低音增强"
-
-#~ msgid "Bass Loudness"
-#~ msgstr "低音响度"
-
-#~ msgid "Convolver"
-#~ msgstr "卷积混响器"
-
-#~ msgid "Crossfeed"
-#~ msgstr "交叉反馈"
-
-#~ msgid "Crystalizer"
-#~ msgstr "音质晶化器"
-
-#~ msgid "Deep Noise Remover"
-#~ msgstr "深度降噪"
-
-#~ msgid "Deesser"
-#~ msgstr "齿音消除"
-
-#~ msgid "Echo Canceller"
-#~ msgstr "回音消除"
-
-#~ msgid "Equalizer"
-#~ msgstr "均衡器"
-
-#~ msgid "Exciter"
-#~ msgstr "激励器"
-
-#~ msgid "Level Meter"
-#~ msgstr "电平表"
-
-#~ msgid "Limiter"
-#~ msgstr "限幅器"
-
-#~ msgid "Maximizer"
-#~ msgstr "放大器"
-
-#~ msgid "Multiband Compressor"
-#~ msgstr "多频段压缩器"
-
-#~ msgid "Multiband Gate"
-#~ msgstr "多频段门限"
-
-#~ msgid "Reverberation"
-#~ msgstr "混响"
-
-#~ msgid "Noise Reduction"
-#~ msgstr "降噪"
-
-#~ msgid "Speech Processor"
-#~ msgstr "语音处理器"
-
-#~ msgid "Stereo Tools"
-#~ msgstr "立体声工具"
 
 #, c++-format
 #~ msgid "{} Not Available"
@@ -2378,9 +2605,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Blocklist"
 #~ msgstr "黑名单"
 
-#~ msgid "Add Plugin"
-#~ msgstr "增加插件"
-
 #~ msgid "Speakers"
 #~ msgstr "扬声器"
 
@@ -2466,14 +2690,8 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Wet"
 #~ msgstr "程度"
 
-#~ msgid "Show Spectrum"
-#~ msgstr "显示频谱"
-
 #~ msgid "Border"
 #~ msgstr "显示边界"
-
-#~ msgid "Spectrum Type"
-#~ msgstr "频谱类型"
 
 #~ msgid "Spectrum Color"
 #~ msgstr "光谱颜色"

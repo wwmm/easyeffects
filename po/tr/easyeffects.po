@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-07-02 20:13-0300\n"
+"POT-Creation-Date: 2024-07-19 14:11-0300\n"
 "PO-Revision-Date: 2024-05-13 08:00+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -19,93 +19,387 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.5.5-dev\n"
 
-#: src/contents/ui/InputTab.qml:9
-msgid "Input"
-msgstr "Girdi"
-
-#: src/contents/ui/InputTab.qml:15 src/contents/ui/OutputTab.qml:17
-#: src/contents/ui/PipeWireTab.qml:15
-msgctxt "@action:button"
-msgid "Add Row"
-msgstr ""
-
-#: src/contents/ui/InputTab.qml:44 src/contents/ui/OutputTab.qml:46
-#: src/contents/ui/PipeWireTab.qml:44
-msgid "Name"
-msgstr "Ad"
-
-#: src/contents/ui/InputTab.qml:57 src/contents/ui/OutputTab.qml:59
-#: src/contents/ui/PipeWireTab.qml:57
+#: src/contents/ui/DelegatePluginsList.qml:53
 #, fuzzy
-msgid "Value"
-msgstr "Tavan Değeri"
+msgid "Enable this Effect"
+msgstr "Bu efekti etkinleştir/devre dışı bırak"
 
-#: src/contents/ui/main.qml:17
+#: src/contents/ui/DelegatePluginsList.qml:66
+msgid "Remove this effect"
+msgstr "Bu efekti kaldır"
+
+#: src/contents/ui/DelegateStreamsList.qml:58
+msgid "Enable"
+msgstr "Etkinleştir"
+
+#: src/contents/ui/DelegateStreamsList.qml:63
+msgid "Exclude"
+msgstr "Hariç tut"
+
+#: src/contents/ui/main.qml:14
 #, fuzzy
 msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/main.qml:98
+#: src/contents/ui/main.qml:86
 #, fuzzy
 msgid "Preset: "
 msgstr "Ön Ayar"
 
-#: src/contents/ui/main.qml:106 src/contents/ui/main.qml:195
+#: src/contents/ui/main.qml:94 src/contents/ui/main.qml:206
 #, fuzzy
 msgid "Quit"
 msgstr "_Çık"
 
-#: src/contents/ui/main.qml:162
-msgid "Apply"
-msgstr "Uygula"
-
-#: src/contents/ui/main.qml:171
+#: src/contents/ui/main.qml:116
 msgid "Presets"
 msgstr "Ön Ayarlar"
 
-#: src/contents/ui/main.qml:179
+#: src/contents/ui/main.qml:124
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:190 src/contents/ui/PreferencesSheet.qml:12
+#: src/contents/ui/PreferencesSheet.qml:17
+#: src/contents/ui/PreferencesSheet.qml:453
+#: src/contents/ui/PreferencesSheet.qml:466
 #, fuzzy
 msgid "Preferences"
 msgstr "_Tercihler"
 
-#: src/contents/ui/main.qml:187
+#: src/contents/ui/main.qml:198
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "Easy Effects _Hakkında"
 
-#: src/contents/ui/main.qml:223
-msgid "Executable Name"
+#: src/contents/ui/MenuAddPlugins.qml:41
+#, fuzzy
+msgid "Empty"
+msgstr "Boş Liste"
+
+#: src/contents/ui/MenuAddPlugins.qml:82
+#, fuzzy
+msgid "Added Plugin: "
+msgstr "Eklenti Ekle"
+
+#: src/contents/ui/MenuAddPlugins.qml:97
+msgid "Search"
+msgstr "Ara"
+
+#: src/contents/ui/PageStreamsEffects.qml:77
+#, fuzzy
+msgid "No Preset"
+msgstr "Ön Ayarlar"
+
+#: src/contents/ui/PageStreamsEffects.qml:130
+msgid "Add Effect"
+msgstr "Efekt Ekle"
+
+#: src/contents/ui/PageStreamsEffects.qml:176
+msgid "Players"
+msgstr "Oynatıcılar"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:16
+#. i18n: ectx: label, entry (inputDevice), group (StreamInputs)
+#: src/contents/ui/PageStreamsEffects.qml:176 rc.cpp:75
+msgid "Input Device"
+msgstr "Giriş Aygıtı"
+
+#: src/contents/ui/PageStreamsEffects.qml:194
+msgid "Recorders"
+msgstr "Kaydediciler"
+
+#: src/contents/ui/PageStreamsEffects.qml:221
+msgid "No Effects"
+msgstr "Efekt Yok"
+
+#: src/contents/ui/PageStreamsEffects.qml:222
+msgid "Audio Stream Not Modified"
+msgstr "Ses Akışı Değiştirilmedi"
+
+#: src/contents/ui/PageStreamsEffects.qml:302
+msgid "Excluded Apps"
+msgstr "Hariç Tutulan Uygulamalar"
+
+#: src/contents/ui/PreferencesSheet.qml:37
+msgid "Launch Service at System Startup"
+msgstr "Sistem Başlangıcında Hizmeti Başlat"
+
+#: src/contents/ui/PreferencesSheet.qml:46
+msgid "Show the Tray Icon"
 msgstr ""
 
-#: src/contents/ui/OutputTab.qml:9
-msgid "Output"
-msgstr "Çıktı"
+#: src/contents/ui/PreferencesSheet.qml:79
+msgid "Process All Output Streams"
+msgstr "Tüm Çıkış Akışlarını İşle"
 
-#: src/contents/ui/PipeWireTab.qml:9
+#: src/contents/ui/PreferencesSheet.qml:91
+msgid "Process All Input Streams"
+msgstr "Tüm Giriş Akışlarını İşle"
+
+#: src/contents/ui/PreferencesSheet.qml:103
+msgid "Ignore Streams from Monitor of Devices"
+msgstr "Aygıtların Ekranından Gelen Akışları Yoksay"
+
+#: src/contents/ui/PreferencesSheet.qml:115
+msgid "Use Cubic Volume"
+msgstr "Kübik Ses Kullan"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:56
+#. i18n: ectx: label, entry (inactivityTimerEnable), group (EffectsPipelines)
+#: src/contents/ui/PreferencesSheet.qml:127 rc.cpp:36
 #, fuzzy
-msgid "PipeWire"
-msgstr "_PipeWire"
+msgid "Enable the Inactivity Timeout"
+msgstr "Tepkisizlik Zaman Aşımı"
 
-#: src/main.cpp:55
+#: src/contents/ui/PreferencesSheet.qml:139
+msgid "Inactivity Timeout"
+msgstr "Tepkisizlik Zaman Aşımı"
+
+#: src/contents/ui/PreferencesSheet.qml:140
+#, fuzzy
+msgid "Input Pipeline"
+msgstr "Giriş Aygıtı"
+
+#: src/contents/ui/PreferencesSheet.qml:156
+msgid "Update Interval"
+msgstr "Güncelleme Aralığı"
+
+#: src/contents/ui/PreferencesSheet.qml:157
+msgid "Related to Level Meters and Spectrum"
+msgstr "Seviye Ölçerler ve Spektrum ile ilgili"
+
+#: src/contents/ui/PreferencesSheet.qml:190
+msgid "State"
+msgstr "Durum"
+
+#: src/contents/ui/PreferencesSheet.qml:197
+msgid "Enabled"
+msgstr "Etkin"
+
+#: src/contents/ui/PreferencesSheet.qml:209
+msgid "Style"
+msgstr "Görünüm"
+
+#: src/contents/ui/PreferencesSheet.qml:216
+msgid "Shape"
+msgstr "Şekil"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:23
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:57
+msgid "Bars"
+msgstr "Çubuklar"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:26
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:60
+msgid "Lines"
+msgstr "Çizgiler"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:29
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:63
+msgid "Dots"
+msgstr "Noktalar"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:32
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:66
+msgid "Area"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:12
+#. i18n: ectx: label, entry (useOpenGL), group (Spectrum)
+#: src/contents/ui/PreferencesSheet.qml:229 rc.cpp:48
+msgid "Enable OpenGL Acceleration"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:241
+msgid "Dynamic Scale"
+msgstr "Dinamik Ölçek"
+
+#: src/contents/ui/PreferencesSheet.qml:253
+msgid "Points"
+msgstr "Noktalar"
+
+#: src/contents/ui/PreferencesSheet.qml:267
+msgid "Height"
+msgstr "Yükseklik"
+
+#: src/contents/ui/PreferencesSheet.qml:282
+msgid "Frequency Range"
+msgstr "Frekans Aralığı"
+
+#: src/contents/ui/PreferencesSheet.qml:289
+msgid "Minimum"
+msgstr "Asgari"
+
+#: src/contents/ui/PreferencesSheet.qml:304
+msgid "Maximum"
+msgstr "Azami"
+
+#: src/contents/ui/PreferencesSheet.qml:340
+msgid "Native Plugin Window"
+msgstr "Yerel Eklenti Penceresi"
+
+#: src/contents/ui/PreferencesSheet.qml:341
+msgid "Allows The Native Plugin Window to be Shown/Hidden"
+msgstr "Yerel Eklenti Penceresinin Gösterilmesini/Gizlenmesini Sağlar"
+
+#: src/contents/ui/PreferencesSheet.qml:353
+msgid "Update Frequency"
+msgstr "Güncelleme Sıklığı"
+
+#: src/contents/ui/PreferencesSheet.qml:354
+msgid "Related to LV2 Plugins"
+msgstr "LV2 Eklentileri ile ilgili"
+
+#: src/contents/ui/PreferencesSheet.qml:393
+msgid "Background Service"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:405
+msgid "Audio"
+msgstr "Ses"
+
+#: src/contents/ui/PreferencesSheet.qml:417
+#, fuzzy
+msgid "Spectrum Analyzer"
+msgstr "Spektrum Türü"
+
+#: src/contents/ui/PreferencesSheet.qml:429
+msgid "Experimental Features"
+msgstr "Deneysel özellikler"
+
+#: src/main.cpp:26
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire uygulamaları için ses efektleri"
 
-#: src/main.cpp:56
+#: src/main.cpp:27
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:60
+#: src/main.cpp:31
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:60
+#: src/main.cpp:31
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Eğim"
+
+#: src/tags_plugin_name.cpp:29
+msgid "Autogain"
+msgstr "Otomatik Kazanç"
+
+#: src/tags_plugin_name.cpp:30
+msgid "Bass Enhancer"
+msgstr "Bas Yükseltici"
+
+#: src/tags_plugin_name.cpp:31
+msgid "Bass Loudness"
+msgstr "Bas Yüksekliği"
+
+#: src/tags_plugin_name.cpp:32
+msgid "Compressor"
+msgstr "Sıkıştırıcı"
+
+#: src/tags_plugin_name.cpp:33
+msgid "Convolver"
+msgstr "Sarsıcı"
+
+#: src/tags_plugin_name.cpp:34
+msgid "Crossfeed"
+msgstr "Çapraz Besleme"
+
+#: src/tags_plugin_name.cpp:35
+msgid "Crystalizer"
+msgstr "Kristalleştirici"
+
+#: src/tags_plugin_name.cpp:36
+msgid "Deep Noise Remover"
+msgstr "Derin Gürültü Giderici"
+
+#: src/tags_plugin_name.cpp:37
+msgid "Deesser"
+msgstr "Deesser"
+
+#: src/tags_plugin_name.cpp:38
+msgid "Delay"
+msgstr "Gecikme"
+
+#: src/tags_plugin_name.cpp:39
+msgid "Echo Canceller"
+msgstr "Yankı Önleyici"
+
+#: src/tags_plugin_name.cpp:40
+msgid "Equalizer"
+msgstr "Ekolayzır"
+
+#: src/tags_plugin_name.cpp:41
+msgid "Exciter"
+msgstr "Uyarıcı"
+
+#: src/tags_plugin_name.cpp:42
+msgid "Expander"
+msgstr "Genişletici"
+
+#: src/tags_plugin_name.cpp:43
+msgid "Filter"
+msgstr "Süzgeç"
+
+#: src/tags_plugin_name.cpp:44
+msgid "Gate"
+msgstr "Aralık"
+
+#: src/tags_plugin_name.cpp:45
+msgid "Level Meter"
+msgstr "Düzey Ölçer"
+
+#: src/tags_plugin_name.cpp:46
+msgid "Limiter"
+msgstr "Sınırlayıcı"
+
+#: src/tags_plugin_name.cpp:47
+msgid "Loudness"
+msgstr "Yüksek Ses"
+
+#: src/tags_plugin_name.cpp:48
+msgid "Maximizer"
+msgstr "Yükseltici"
+
+#: src/tags_plugin_name.cpp:49
+msgid "Multiband Compressor"
+msgstr "Çoklu Bant Şıkıştırıcı"
+
+#: src/tags_plugin_name.cpp:50
+msgid "Multiband Gate"
+msgstr "Çoklu Bant Geçitleme"
+
+#: src/tags_plugin_name.cpp:51
+msgid "Pitch"
+msgstr "Perde"
+
+#: src/tags_plugin_name.cpp:52
+msgid "Reverberation"
+msgstr "Yankılanma"
+
+#: src/tags_plugin_name.cpp:53
+msgid "Noise Reduction"
+msgstr "Gürültü Azaltma"
+
+#: src/tags_plugin_name.cpp:54
+msgid "Speech Processor"
+msgstr "Konuşma İşleyici"
+
+#: src/tags_plugin_name.cpp:55
+msgid "Stereo Tools"
+msgstr "Stereo Araçları"
 
 #. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
 #. i18n: ectx: label, entry (width), group (Window)
@@ -134,6 +428,132 @@ msgstr ""
 msgid "Last used preset."
 msgstr "Yeni bir ön ayar oluştur"
 
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:24
+#. i18n: ectx: label, entry (showNativePluginUi), group (Window)
+#: rc.cpp:15
+#, fuzzy
+msgid "Show Plugin's Native Window"
+msgstr "Yerel Pencereyi Göster"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:28
+#. i18n: ectx: label, entry (lv2uiUpdateFrequency), group (Window)
+#: rc.cpp:18
+#, fuzzy
+msgid "LV2 Native Window Update Frequency"
+msgstr "Güncelleme Sıklığı"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:36
+#. i18n: ectx: label, entry (bypass), group (EffectsPipelines)
+#: rc.cpp:21
+msgid "Puts the Effects Pipelines in Passthrough Mode."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:40
+#. i18n: ectx: label, entry (processAllOutputs), group (EffectsPipelines)
+#: rc.cpp:24
+msgid "Automatically moves Audio Streams to EasyEffects Virtual Sink."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:44
+#. i18n: ectx: label, entry (processAllInputs), group (EffectsPipelines)
+#: rc.cpp:27
+msgid "Automatically moves Audio Streams to EasyEffects Virtual Source."
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:48
+#. i18n: ectx: label, entry (excludeMonitorStreams), group (EffectsPipelines)
+#: rc.cpp:30
+#, fuzzy
+msgid "Ignore Streams from Monitor of Devices."
+msgstr "Aygıtların Ekranından Gelen Akışları Yoksay"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:52
+#. i18n: ectx: label, entry (useCubicVolumes), group (EffectsPipelines)
+#: rc.cpp:33
+#, fuzzy
+msgid "Use Cubic Volume."
+msgstr "Kübik Ses Kullan"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:60
+#. i18n: ectx: label, entry (inactivityTimeout), group (EffectsPipelines)
+#: rc.cpp:39
+#, fuzzy
+msgid "Inactivity Timeout."
+msgstr "Tepkisizlik Zaman Aşımı"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:66
+#. i18n: ectx: label, entry (metersUpdateInterval), group (EffectsPipelines)
+#: rc.cpp:42
+#, fuzzy
+msgid "Level Meter Update Interval"
+msgstr "Güncelleme Aralığı"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:8
+#. i18n: ectx: label, entry (state), group (Spectrum)
+#: rc.cpp:45
+#, fuzzy
+msgid "Show the Spectrum Analyzer."
+msgstr "Spektrumu Göster"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:16
+#. i18n: ectx: label, entry (dynamicYScale), group (Spectrum)
+#: rc.cpp:51
+msgid "Enable Dynamic Scaling for the Vertical Axis"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:20
+#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
+#: rc.cpp:54
+msgid "Spectrum Type"
+msgstr "Spektrum Türü"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:8
+#. i18n: ectx: label, entry (plugins), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:8
+#. i18n: ectx: label, entry (plugins), group (StreamOutputs)
+#: rc.cpp:69 rc.cpp:87
+msgid "List of Plugins in the Effects Pipeline"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:12
+#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:12
+#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamOutputs)
+#: rc.cpp:72 rc.cpp:90
+#, fuzzy
+msgid "Use the System Default Output Device"
+msgstr "Öntanımlı Çıkışı Kullan"
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:20
+#. i18n: ectx: label, entry (blocklist), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:20
+#. i18n: ectx: label, entry (blocklist), group (StreamOutputs)
+#: rc.cpp:78 rc.cpp:96
+msgid "List of Blocked Streams"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:24
+#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:24
+#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamOutputs)
+#: rc.cpp:81 rc.cpp:99
+msgid "Show Blocked Streams in the Streams Tab"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:28
+#. i18n: ectx: label, entry (showPluginsList), group (StreamInputs)
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:28
+#. i18n: ectx: label, entry (showPluginsList), group (StreamOutputs)
+#: rc.cpp:84 rc.cpp:102
+msgid "Show the List of Plugins"
+msgstr ""
+
+#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:16
+#. i18n: ectx: label, entry (outputDevice), group (StreamOutputs)
+#: rc.cpp:93
+msgid "Output Device"
+msgstr "Çıkış Aygıtı"
+
 #: com.github.wwmm.easyeffects.desktop.template.h:2
 msgid "EasyEffects"
 msgstr "EasyEffects"
@@ -146,6 +566,26 @@ msgstr "Ekolayzır, Sıkıştırıcı ve Diğer Ses Efektleri"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
+#~ msgid "Input"
+#~ msgstr "Girdi"
+
+#~ msgid "Name"
+#~ msgstr "Ad"
+
+#, fuzzy
+#~ msgid "Value"
+#~ msgstr "Tavan Değeri"
+
+#~ msgid "Apply"
+#~ msgstr "Uygula"
+
+#~ msgid "Output"
+#~ msgstr "Çıktı"
+
+#, fuzzy
+#~ msgid "PipeWire"
+#~ msgstr "_PipeWire"
+
 #~ msgid "@APP_NAME@"
 #~ msgstr "@APP_NAME@"
 
@@ -156,14 +596,8 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Enable/disable this application"
 #~ msgstr "Bu uygulamayı etkinleştir/devre dışı bırak"
 
-#~ msgid "Enable"
-#~ msgstr "Etkinleştir"
-
 #~ msgid "Excluded App List: Add/remove this application"
 #~ msgstr "Hariç Tutulan Uygulama Listesi: Bu uygulamayı ekle/kaldır"
-
-#~ msgid "Exclude"
-#~ msgstr "Hariç tut"
 
 #~ msgid "Mute Application"
 #~ msgstr "Uygulamayı Sessize Al"
@@ -200,9 +634,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Applications List"
 #~ msgstr "Uygulama Listesi"
-
-#~ msgid "Empty List"
-#~ msgstr "Boş Liste"
 
 #~ msgid "No Audio Application Available"
 #~ msgstr "Ses Uygulaması Yok"
@@ -248,9 +679,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Reset"
 #~ msgstr "Sıfırla"
-
-#~ msgid "Loudness"
-#~ msgstr "Yüksek Ses"
 
 #~ msgid "Relative"
 #~ msgstr "Göreceli"
@@ -317,12 +745,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Show Excluded Applications"
 #~ msgstr "Hariç Tutulan Uygulamaları Göster"
-
-#~ msgid "Show Native Window"
-#~ msgstr "Yerel Pencereyi Göster"
-
-#~ msgid "Compressor"
-#~ msgstr "Sıkıştırıcı"
 
 #~ msgid "Mode"
 #~ msgstr "Kip"
@@ -462,9 +884,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Sidechain Type"
 #~ msgstr "Yanzincir Türü"
 
-#~ msgid "Input Device"
-#~ msgstr "Giriş Aygıtı"
-
 #~ msgid "PreAmplification"
 #~ msgstr "Ön Yükseltme"
 
@@ -540,9 +959,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Log Scale"
 #~ msgstr "Günlük Ölçeği"
 
-#~ msgid "Autogain"
-#~ msgstr "Otomatik Kazanç"
-
 #~ msgid "Rate"
 #~ msgstr "Oran"
 
@@ -569,9 +985,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Import Impulse"
 #~ msgstr "Dürtü Dosyasını İçeri Al"
-
-#~ msgid "Search"
-#~ msgstr "Ara"
 
 #~ msgid "Search Impulse File"
 #~ msgstr "Dürtü Dosyasını Ara"
@@ -660,9 +1073,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Reduction"
 #~ msgstr "Azaltma"
 
-#~ msgid "Delay"
-#~ msgstr "Gecikme"
-
 #~ msgid "Invert Phase"
 #~ msgstr "Ters Faz"
 
@@ -674,9 +1084,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Near End Echo Suppression"
 #~ msgstr "Yakın Uç Yankı Bastırma"
-
-#~ msgid "Excluded Apps"
-#~ msgstr "Hariç Tutulan Uygulamalar"
 
 #~ msgid "Enable/disable input monitoring"
 #~ msgstr "Giriş izlemeyi etkinleştir/devre dışı bırak"
@@ -726,9 +1133,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Ceil"
 #~ msgstr "Tavan"
 
-#~ msgid "Expander"
-#~ msgstr "Genişletici"
-
 #~ msgid "Expander Mode"
 #~ msgstr "Genişletici Kipi"
 
@@ -776,12 +1180,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Equalizer Mode"
 #~ msgstr "Ekolayzır Kipi"
-
-#~ msgid "Filter"
-#~ msgstr "Süzgeç"
-
-#~ msgid "Gate"
-#~ msgstr "Aralık"
 
 #~ msgid "Zone"
 #~ msgstr "Bölge"
@@ -1088,9 +1486,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Custom Input Device"
 #~ msgstr "Özel Giriş Aygıtı"
 
-#~ msgid "Use Default Output"
-#~ msgstr "Öntanımlı Çıkışı Kullan"
-
 #~ msgid "Custom Output Device"
 #~ msgstr "Özel Çıkış Aygıtı"
 
@@ -1169,12 +1564,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Test Signal"
 #~ msgstr "Test Sinyali"
 
-#~ msgid "State"
-#~ msgstr "Durum"
-
-#~ msgid "Enabled"
-#~ msgstr "Etkin"
-
 #~ msgid "Properties"
 #~ msgstr "Özellikler"
 
@@ -1211,9 +1600,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Overlap Length"
 #~ msgstr "Örtüşme Uzunluğu"
 
-#~ msgid "Pitch"
-#~ msgstr "Perde"
-
 #~ msgid "Semitones"
 #~ msgstr "Yarım Ses"
 
@@ -1223,20 +1609,11 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Rate Difference"
 #~ msgstr "Oran Farkı"
 
-#~ msgid "Remove this effect"
-#~ msgstr "Bu efekti kaldır"
-
-#~ msgid "Enable/disable this effect"
-#~ msgstr "Bu efekti etkinleştir/devre dışı bırak"
-
 #~ msgid "Change the position of this effect"
 #~ msgstr "Bu efektin konumunu değiştir"
 
 #~ msgid "Show/hide effects list"
 #~ msgstr "Efekt listesini göster/gizle"
-
-#~ msgid "Add Effect"
-#~ msgstr "Efekt Ekle"
 
 #~ msgid "Go to the previous effect"
 #~ msgstr "Önceki efekte git"
@@ -1246,12 +1623,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Used Plugins List"
 #~ msgstr "Kullanılan Eklentiler Listesi"
-
-#~ msgid "No Effects"
-#~ msgstr "Efekt Yok"
-
-#~ msgid "Audio Stream Not Modified"
-#~ msgstr "Ses Akışı Değiştirilmedi"
 
 #~ msgid "Search Plugin"
 #~ msgstr "Eklenti Ara"
@@ -1265,44 +1636,8 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Service"
 #~ msgstr "Hizmet"
 
-#~ msgid "Launch Service at System Startup"
-#~ msgstr "Sistem Başlangıcında Hizmeti Başlat"
-
 #~ msgid "Shutdown on Window Closing"
 #~ msgstr "Pencere Kapandığında Kapat"
-
-#~ msgid "Audio"
-#~ msgstr "Ses"
-
-#~ msgid "Process All Output Streams"
-#~ msgstr "Tüm Çıkış Akışlarını İşle"
-
-#~ msgid "Process All Input Streams"
-#~ msgstr "Tüm Giriş Akışlarını İşle"
-
-#~ msgid "Ignore Streams from Monitor of Devices"
-#~ msgstr "Aygıtların Ekranından Gelen Akışları Yoksay"
-
-#~ msgid "Use Cubic Volume"
-#~ msgstr "Kübik Ses Kullan"
-
-#~ msgid "Inactivity Timeout"
-#~ msgstr "Tepkisizlik Zaman Aşımı"
-
-#~ msgid "Update Interval"
-#~ msgstr "Güncelleme Aralığı"
-
-#~ msgid "Related to Level Meters and Spectrum"
-#~ msgstr "Seviye Ölçerler ve Spektrum ile ilgili"
-
-#~ msgid "Update Frequency"
-#~ msgstr "Güncelleme Sıklığı"
-
-#~ msgid "Related to LV2 Plugins"
-#~ msgstr "LV2 Eklentileri ile ilgili"
-
-#~ msgid "Style"
-#~ msgstr "Görünüm"
 
 #~ msgid "Use Dark Theme"
 #~ msgstr "Koyu Tema Kullan"
@@ -1310,35 +1645,8 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Hide Menus on Outside Clicks"
 #~ msgstr "Dış Tıklamalarda Menüleri Gizle"
 
-#~ msgid "Experimental Features"
-#~ msgstr "Deneysel özellikler"
-
-#~ msgid "Native Plugin Window"
-#~ msgstr "Yerel Eklenti Penceresi"
-
-#~ msgid "Allows The Native Plugin Window to be Shown/Hidden"
-#~ msgstr "Yerel Eklenti Penceresinin Gösterilmesini/Gizlenmesini Sağlar"
-
 #~ msgid "_Spectrum"
 #~ msgstr "_Spektrum"
-
-#~ msgid "Shape"
-#~ msgstr "Şekil"
-
-#~ msgid "Bars"
-#~ msgstr "Çubuklar"
-
-#~ msgid "Lines"
-#~ msgstr "Çizgiler"
-
-#~ msgid "Dots"
-#~ msgstr "Noktalar"
-
-#~ msgid "Points"
-#~ msgstr "Noktalar"
-
-#~ msgid "Height"
-#~ msgstr "Yükseklik"
 
 #~ msgid "Line Width"
 #~ msgstr "Hat Genişliği"
@@ -1352,9 +1660,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Rounded Corners"
 #~ msgstr "Yuvarlatılmış Köşeler"
 
-#~ msgid "Dynamic Scale"
-#~ msgstr "Dinamik Ölçek"
-
 #~ msgid "Color"
 #~ msgstr "Renk"
 
@@ -1363,15 +1668,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Axis Labels"
 #~ msgstr "Eksen Etiketleri"
-
-#~ msgid "Frequency Range"
-#~ msgstr "Frekans Aralığı"
-
-#~ msgid "Minimum"
-#~ msgstr "Asgari"
-
-#~ msgid "Maximum"
-#~ msgstr "Azami"
 
 #~ msgid "Load"
 #~ msgstr "Yük"
@@ -1706,12 +2002,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Failed To Load The Impulse File"
 #~ msgstr "Dürtü Dosyası Yüklenemedi"
 
-#~ msgid "Recorders"
-#~ msgstr "Kaydediciler"
-
-#~ msgid "Players"
-#~ msgstr "Oynatıcılar"
-
 #~ msgid "Effects"
 #~ msgstr "Efektler"
 
@@ -1762,9 +2052,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Remove"
 #~ msgstr "Kaldır"
-
-#~ msgid "Output Device"
-#~ msgstr "Çıkış Aygıtı"
 
 #~ msgid "Add"
 #~ msgstr "Ekle"
@@ -1823,63 +2110,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "RNNoise Models"
 #~ msgstr "RNNoise Modelleri"
-
-#~ msgid "Bass Enhancer"
-#~ msgstr "Bas Yükseltici"
-
-#~ msgid "Bass Loudness"
-#~ msgstr "Bas Yüksekliği"
-
-#~ msgid "Convolver"
-#~ msgstr "Sarsıcı"
-
-#~ msgid "Crossfeed"
-#~ msgstr "Çapraz Besleme"
-
-#~ msgid "Crystalizer"
-#~ msgstr "Kristalleştirici"
-
-#~ msgid "Deep Noise Remover"
-#~ msgstr "Derin Gürültü Giderici"
-
-#~ msgid "Deesser"
-#~ msgstr "Deesser"
-
-#~ msgid "Echo Canceller"
-#~ msgstr "Yankı Önleyici"
-
-#~ msgid "Equalizer"
-#~ msgstr "Ekolayzır"
-
-#~ msgid "Exciter"
-#~ msgstr "Uyarıcı"
-
-#~ msgid "Level Meter"
-#~ msgstr "Düzey Ölçer"
-
-#~ msgid "Limiter"
-#~ msgstr "Sınırlayıcı"
-
-#~ msgid "Maximizer"
-#~ msgstr "Yükseltici"
-
-#~ msgid "Multiband Compressor"
-#~ msgstr "Çoklu Bant Şıkıştırıcı"
-
-#~ msgid "Multiband Gate"
-#~ msgstr "Çoklu Bant Geçitleme"
-
-#~ msgid "Reverberation"
-#~ msgstr "Yankılanma"
-
-#~ msgid "Noise Reduction"
-#~ msgstr "Gürültü Azaltma"
-
-#~ msgid "Speech Processor"
-#~ msgstr "Konuşma İşleyici"
-
-#~ msgid "Stereo Tools"
-#~ msgstr "Stereo Araçları"
 
 #, c++-format
 #~ msgid "{} Not Available"
@@ -2467,9 +2697,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Blocklist"
 #~ msgstr "Kara Liste"
 
-#~ msgid "Add Plugin"
-#~ msgstr "Eklenti Ekle"
-
 #~ msgid "Speakers"
 #~ msgstr "Hoparlörler"
 
@@ -2506,9 +2733,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Jmeier"
 #~ msgstr "Jmeier"
 
-#~ msgid "Show Spectrum"
-#~ msgstr "Spektrumu Göster"
-
 #~ msgid "Use Custom Color"
 #~ msgstr "Özel Renk Kullan"
 
@@ -2520,9 +2744,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Gradient Color"
 #~ msgstr "Geçiş Rengi"
-
-#~ msgid "Spectrum Type"
-#~ msgstr "Spektrum Türü"
 
 #~ msgid "Exponent"
 #~ msgstr "Katsayı"
