@@ -409,8 +409,33 @@ void Lv2Wrapper::set_control_port_value(const std::string& symbol, const float& 
   }
 }
 auto Lv2Wrapper::get_control_port_value(const std::string& symbol) -> float {
+  size_t hash = std::hash<std::string>{}(symbol);
+
+  for (const auto & slot : control_ports_cache) {
+    // We use hash == 0 to mean the cache slot and all following are empty.
+    // We might get collisions with hash == 0, which is fine.
+    if (slot.first == 0)
+      break;
+
+    if (slot.first != hash)
+      continue;
+
+    // Ignore false positives.
+    const Port & p = ports[slot.second];
+    if (p.type == PortType::TYPE_CONTROL && p.symbol == symbol)
+      return p.value;
+  }
+
   for (const auto& p : ports) {
     if (p.type == PortType::TYPE_CONTROL && p.symbol == symbol) {
+      // Add to cache.
+      for (size_t i = 0; i < control_ports_cache.size(); i++) {
+        if (control_ports_cache[i].first == 0) {
+          control_ports_cache[i] = std::pair<size_t, uint>(hash, p.index);
+          break;
+        }
+      }
+
       return p.value;
     }
   }
