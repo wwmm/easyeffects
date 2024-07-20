@@ -280,6 +280,12 @@ class Lv2Wrapper {
 
   std::vector<Port> ports;
 
+  struct {
+    struct { uint left, right; } in;
+    struct { uint left, right; } probe;
+    struct { uint left, right; } out;
+  } data_ports;
+
   std::vector<std::function<void()>> gsettings_sync_funcs;
 
   std::unordered_map<std::string, LV2_URID> map_uri_to_urid;

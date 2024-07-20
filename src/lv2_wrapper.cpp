@@ -148,6 +148,10 @@ void Lv2Wrapper::create_ports() {
   LilvNode* lv2_AtomPort = lilv_new_uri(world, LV2_ATOM__AtomPort);
   LilvNode* lv2_connectionOptional = lilv_new_uri(world, LV2_CORE__connectionOptional);
 
+  data_ports.in.left = data_ports.in.right = UINT_MAX;
+  data_ports.probe.left = data_ports.probe.right = UINT_MAX;
+  data_ports.out.left = data_ports.out.right = UINT_MAX;
+
   for (uint n = 0U; n < n_ports; n++) {
     auto* port = &ports[n];
 
@@ -190,8 +194,25 @@ void Lv2Wrapper::create_ports() {
     } else if (lilv_port_is_a(plugin, lilv_port, lv2_AudioPort)) {
       port->type = TYPE_AUDIO;
 
-      n_audio_in = (port->is_input) ? n_audio_in + 1 : n_audio_in;
-      n_audio_out = (!port->is_input) ? n_audio_out + 1 : n_audio_out;
+      if (port->is_input) {
+        if (n_audio_in == 0)
+          data_ports.in.left = port->index;
+        else if (n_audio_in == 1)
+          data_ports.in.right = port->index;
+        else if (n_audio_in == 2)
+          data_ports.probe.left = port->index;
+        else if (n_audio_in == 3)
+          data_ports.probe.right = port->index;
+
+        n_audio_in++;
+      } else {
+        if (n_audio_out == 0)
+          data_ports.out.left = port->index;
+        else if (n_audio_out == 1)
+          data_ports.out.right = port->index;
+
+        n_audio_out++;
+      }
     } else if (!port->optional) {
       util::warning("Port " + port->name + " has un unsupported type!");
     }
@@ -289,30 +310,14 @@ void Lv2Wrapper::connect_data_ports(std::span<float>& left_in,
     return;
   }
 
-  int count_input = 0;
-  int count_output = 0;
-
-  for (const auto& p : ports) {
-    if (p.type == PortType::TYPE_AUDIO) {
-      if (p.is_input) {
-        if (count_input == 0) {
-          lilv_instance_connect_port(instance, p.index, left_in.data());
-        } else if (count_input == 1) {
-          lilv_instance_connect_port(instance, p.index, right_in.data());
-        }
-
-        count_input++;
-      } else {
-        if (count_output == 0) {
-          lilv_instance_connect_port(instance, p.index, left_out.data());
-        } else if (count_output == 1) {
-          lilv_instance_connect_port(instance, p.index, right_out.data());
-        }
-
-        count_output++;
-      }
-    }
-  }
+  if (data_ports.in.left != UINT_MAX)
+    lilv_instance_connect_port(instance, data_ports.in.left, left_in.data());
+  if (data_ports.in.right != UINT_MAX)
+    lilv_instance_connect_port(instance, data_ports.in.right, right_in.data());
+  if (data_ports.out.left != UINT_MAX)
+    lilv_instance_connect_port(instance, data_ports.out.left, left_out.data());
+  if (data_ports.out.right != UINT_MAX)
+    lilv_instance_connect_port(instance, data_ports.out.right, right_out.data());
 }
 
 void Lv2Wrapper::connect_data_ports(std::span<float>& left_in,
@@ -325,34 +330,18 @@ void Lv2Wrapper::connect_data_ports(std::span<float>& left_in,
     return;
   }
 
-  int count_input = 0;
-  int count_output = 0;
-
-  for (const auto& p : ports) {
-    if (p.type == PortType::TYPE_AUDIO) {
-      if (p.is_input) {
-        if (count_input == 0) {
-          lilv_instance_connect_port(instance, p.index, left_in.data());
-        } else if (count_input == 1) {
-          lilv_instance_connect_port(instance, p.index, right_in.data());
-        } else if (count_input == 2) {
-          lilv_instance_connect_port(instance, p.index, probe_left.data());
-        } else if (count_input == 3) {
-          lilv_instance_connect_port(instance, p.index, probe_right.data());
-        }
-
-        count_input++;
-      } else {
-        if (count_output == 0) {
-          lilv_instance_connect_port(instance, p.index, left_out.data());
-        } else if (count_output == 1) {
-          lilv_instance_connect_port(instance, p.index, right_out.data());
-        }
-
-        count_output++;
-      }
-    }
-  }
+  if (data_ports.in.left != UINT_MAX)
+    lilv_instance_connect_port(instance, data_ports.in.left, left_in.data());
+  if (data_ports.in.right != UINT_MAX)
+    lilv_instance_connect_port(instance, data_ports.in.right, right_in.data());
+  if (data_ports.probe.left != UINT_MAX)
+    lilv_instance_connect_port(instance, data_ports.probe.left, probe_left.data());
+  if (data_ports.probe.right != UINT_MAX)
+    lilv_instance_connect_port(instance, data_ports.probe.right, probe_right.data());
+  if (data_ports.out.left != UINT_MAX)
+    lilv_instance_connect_port(instance, data_ports.out.left, left_out.data());
+  if (data_ports.out.right != UINT_MAX)
+    lilv_instance_connect_port(instance, data_ports.out.right, right_out.data());
 }
 
 void Lv2Wrapper::set_n_samples(const uint& value) {
