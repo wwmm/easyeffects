@@ -110,6 +110,52 @@ void Spectrum::process(std::span<float>& left_in,
                                        right_in[n_samples - n_bands + n]);
   }
 
+  /*
+   * OK, we have the latest_samples_mono array that contains n_bands samples. We
+   * want to export it to the GUI thread. We don't wakeup the GUI thread from
+   * realtime, we only want to update the buffer and let the GUI thread follow
+   * its scheduling and have access to our new buffer. We accept losing old data.
+   *
+   * For that, we want to synchronise both threads. Realtime shouldn't have to
+   * wait (ie loop or syscall). It is fine if GUI waits a little.
+   *
+   * The overall concept is to use two buffers. When realtime comes in, it
+   * writes into one. When GUI arrives, it waits for realtime to be done
+   * writing (if it is busy) and it switches the active buffer to become the
+   * other one. As GUI is the one doing the toggle, it knows it can read at its
+   * pace the inactive buffer. Realtime will always have a buffer to write
+   * into, and it is fine if it overwrites data.
+   *
+   * We use an atomic integer (db_control) that contains three bits:
+   *  - DB_BIT_IDX: the current buffer index.
+   *  - DB_BIT_NEWDATA: indicates if realtime wrote new data.
+   *  - DB_BIT_BUSY: indicates if realtime is currently busy writing data.
+   *
+   * Realtime does this:
+   *  - Grab db_control and enable its BUSY bit.
+   *  - Write data into the correct buffer based on the IDX bit.
+   *  - Write db_control with same index as before, BUSY bit disabled and
+   *    NEWDATA bit enabled.
+   *
+   * GUI does this:
+   *  - Early return if NEWDATA is not enabled. It means realtime hasn't ran
+   *    since the last time GUI ran.
+   *  - Then it tries toggling the IDX bit. "Tries" because the operation fails
+   *    as long as the BUSY bit is active.
+   *  - From now on it can read the previous buffer knowing realtime cannot be
+   *    writing into it.
+   *
+   * This is single-producer single-consumer double-buffering. The
+   * implementation is inspired from the "Real-time 101" ADC19 talk
+   * (David Rowland & Fabian Renn-Giles).
+   *
+   * Talk part 1 & 2, slides (page 74 onwards) and illustrating library:
+   * https://www.youtube.com/watch?v=Q0vrQFyAdWI
+   * https://www.youtube.com/watch?v=PoZAo2Vikbo
+   * https://github.com/drowaudio/presentations/blob/master/ADC%202019%20-%20Real-time%20101/Real-time%20101.pdf
+   * https://github.com/hogliux/farbot
+   */
+
   // Grab the current index AND mark as busy at the same time.
   int index = db_control.fetch_or(DB_BIT_BUSY) & DB_BIT_IDX;
 
