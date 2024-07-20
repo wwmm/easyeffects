@@ -280,6 +280,15 @@ class Lv2Wrapper {
 
   std::vector<Port> ports;
 
+  // Multiband compressor/gate use 1+8*7=57 control ports. Round up to 64.
+  std::array<std::pair<size_t, uint>, 64> control_ports_cache;
+
+  struct {
+    struct { uint left, right; } in;
+    struct { uint left, right; } probe;
+    struct { uint left, right; } out;
+  } data_ports;
+
   std::vector<std::function<void()>> gsettings_sync_funcs;
 
   std::unordered_map<std::string, LV2_URID> map_uri_to_urid;
