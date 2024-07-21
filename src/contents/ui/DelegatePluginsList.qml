@@ -19,10 +19,6 @@ Item {
 
         hoverEnabled: true
         width: parent.width
-        // leftInset: 0
-        // leftPadding: 0
-        // rightInset: 0
-        // rightPadding: 0
         onClicked: {
             showPassiveNotification("Clicked on plugin: " + model.name);
         }
@@ -43,6 +39,7 @@ Item {
             Controls.Label {
                 Layout.fillWidth: !listItemDelegate.hovered
                 text: model.translatedName
+                color: model.bypass ? Kirigami.Theme.disabledTextColor : Kirigami.Theme.textColor
             }
 
             Kirigami.ActionToolBar {
@@ -67,6 +64,10 @@ Item {
                         icon.name: "delete"
                         displayHint: Kirigami.DisplayHint.IconOnly
                         onTriggered: {
+                            pluginsListModel.remove(index, 1);
+                            let indexStart = pluginsListModel.index(0, 0);
+                            let indexEnd = pluginsListModel.index(pluginsListModel.count - 1, 0);
+                            pluginsListModel.dataChanged(indexStart, indexEnd, []);
                             showPassiveNotification("Removed plugin: " + model.name);
                         }
                     }

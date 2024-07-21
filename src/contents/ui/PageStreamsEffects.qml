@@ -1,3 +1,4 @@
+import "Common.js" as Common
 import EEtagsPluginName
 import QtCharts
 import QtQuick
@@ -13,9 +14,7 @@ Kirigami.Page {
     property int pageType: 0 // 0 for output and 1 for input
     property var streamDB
 
-    padding: 0
-    Component.onCompleted: {
-        let plugins = streamDB.plugins;
+    function populatePluginsListModel(plugins) {
         let names = PluginsNameModel.getBaseNames();
         for (let n = 0; n < plugins.length; n++) {
             for (let k = 0; k < names.length; k++) {
@@ -32,25 +31,23 @@ Kirigami.Page {
         }
     }
 
+    padding: 0
+    Component.onCompleted: {
+        populatePluginsListModel(streamDB.plugins);
+    }
+
     Connections {
         function onPluginsChanged() {
-            console.log("new plugins list: " + streamDB.plugins);
-            pluginsListModel.clear();
-            let plugins = streamDB.plugins;
-            let names = PluginsNameModel.getBaseNames();
-            for (let n = 0; n < plugins.length; n++) {
-                for (let k = 0; k < names.length; k++) {
-                    if (plugins[n].startsWith(names[k])) {
-                        pluginsListModel.append({
-                            "name": plugins[n],
-                            "baseName": names[k],
-                            "translatedName": PluginsNameModel.translate(names[k]),
-                            "bypass": false
-                        });
-                        break;
-                    }
-                }
+            const newList = streamDB.plugins;
+            let currentList = [];
+            for (let n = 0; n < pluginsListModel.count; n++) {
+                currentList.push(pluginsListModel.get(n).name);
             }
+            if (Common.equalArrays(newList, currentList))
+                return ;
+
+            pluginsListModel.clear();
+            populatePluginsListModel(newList);
         }
 
         target: streamDB
