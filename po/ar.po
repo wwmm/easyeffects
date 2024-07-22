@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-09 22:35+0000\n"
+"POT-Creation-Date: 2024-07-22 15:12+0000\n"
 "PO-Revision-Date: 2024-07-19 03:09+0000\n"
 "Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1530,7 +1530,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "أجهزة الخرج"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:301
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:309
 msgid "Output Presets"
 msgstr "إعدادات الخرج المسبقة"
 
@@ -1550,7 +1550,7 @@ msgstr "قائمة التحميلات التلقائية لإعدادات الخ
 msgid "Input Devices"
 msgstr "أجهزة الدخل"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:309
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:317
 msgid "Input Presets"
 msgstr "الإعدادات المسبقة للدخل"
 
@@ -2224,35 +2224,35 @@ msgstr ""
 msgid "channels"
 msgstr ""
 
-#: src/application.cpp:510
+#: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:600
+#: src/application.cpp:608
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:603
+#: src/application.cpp:611
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:606
+#: src/application.cpp:614
 msgid "Reset Easy Effects."
 msgstr ""
 
-#: src/application.cpp:609
+#: src/application.cpp:617
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:612
+#: src/application.cpp:620
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:615
+#: src/application.cpp:623
 msgid "Show available presets."
 msgstr ""
 
-#: src/application.cpp:618
+#: src/application.cpp:626
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 

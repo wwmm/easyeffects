@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-09 22:35+0000\n"
+"POT-Creation-Date: 2024-07-22 15:12+0000\n"
 "PO-Revision-Date: 2024-07-08 18:09+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1577,7 +1577,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Устройства вывода"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:301
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:309
 msgid "Output Presets"
 msgstr "Предустановки выхода"
 
@@ -1598,7 +1598,7 @@ msgstr "Список автозагружаемых предустановок �
 msgid "Input Devices"
 msgstr "Устройства ввода"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:309
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:317
 msgid "Input Presets"
 msgstr "Предустановки входа"
 
@@ -2280,35 +2280,35 @@ msgstr "Неопределённое имя — идентификатор пр�
 msgid "channels"
 msgstr "канала(-ов)"
 
-#: src/application.cpp:510
+#: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:600
+#: src/application.cpp:608
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Выход из Easy Effects. Полезно при работе в режиме службы."
 
-#: src/application.cpp:603
+#: src/application.cpp:611
 msgid "Print the easyeffects version"
 msgstr "Вывод версии easyeffects"
 
-#: src/application.cpp:606
+#: src/application.cpp:614
 msgid "Reset Easy Effects."
 msgstr "Сбросить Easy Effects."
 
-#: src/application.cpp:609
+#: src/application.cpp:617
 msgid "Hide the Window."
 msgstr "Скрыть окно."
 
-#: src/application.cpp:612
+#: src/application.cpp:620
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "Глобальный обход. 1 — включить, 2 — отключить, 3 — получить статус"
 
-#: src/application.cpp:615
+#: src/application.cpp:623
 msgid "Show available presets."
 msgstr "Показать доступные предустановки."
 
-#: src/application.cpp:618
+#: src/application.cpp:626
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Загрузить предустановку. Пример: easyeffects -l music"
 

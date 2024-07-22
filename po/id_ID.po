@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-09 22:35+0000\n"
+"POT-Creation-Date: 2024-07-22 15:12+0000\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1665,7 +1665,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Gain Input"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:301
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:309
 msgid "Output Presets"
 msgstr "Preset Output"
 
@@ -1686,7 +1686,7 @@ msgstr "Daftar Keluaran Preset Otomatis"
 msgid "Input Devices"
 msgstr "Pembatas Masukan"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:309
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:317
 #, fuzzy
 msgid "Input Presets"
 msgstr "Preset Input"
@@ -2408,39 +2408,39 @@ msgstr ""
 msgid "channels"
 msgstr "Total Kanal"
 
-#: src/application.cpp:510
+#: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:600
+#: src/application.cpp:608
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Tutup EasyEffects. Berguna Ketika Berjalan dalam Modus Layanan."
 
-#: src/application.cpp:603
+#: src/application.cpp:611
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:606
+#: src/application.cpp:614
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Atur Ulang EasyEffects."
 
-#: src/application.cpp:609
+#: src/application.cpp:617
 msgid "Hide the Window."
 msgstr "Sembunyikan jendela."
 
-#: src/application.cpp:612
+#: src/application.cpp:620
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Bypass global. 1 untuk mengaktifkan, 2 untuk menonaktifkan dan 3 untuk "
 "mendapatkan status"
 
-#: src/application.cpp:615
+#: src/application.cpp:623
 msgid "Show available presets."
 msgstr "Tampilkan Preset Tersedia."
 
-#: src/application.cpp:618
+#: src/application.cpp:626
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Muat Preset. Misalkan: easyeffects -l music"
 
