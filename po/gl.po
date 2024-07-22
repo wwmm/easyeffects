@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-22 15:12+0000\n"
+"POT-Creation-Date: 2024-07-22 16:11+0000\n"
 "PO-Revision-Date: 2022-12-31 05:51+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
@@ -1669,7 +1669,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Saída"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:309
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:277
 #, fuzzy
 msgid "Output Presets"
 msgstr "Preconfiguracións de saída: "
@@ -1692,7 +1692,7 @@ msgstr "Preconfiguracións de saída: "
 msgid "Input Devices"
 msgstr "Nivel de entrada"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:317
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:285
 #, fuzzy
 msgid "Input Presets"
 msgstr "Preconfiguracións de entrada: "
@@ -2420,38 +2420,38 @@ msgstr ""
 msgid "channels"
 msgstr "Canles"
 
-#: src/application.cpp:518
+#: src/application.cpp:486
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:608
+#: src/application.cpp:576
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Saír do EasyEffects. É últil cando se executa no modo de servizo."
 
-#: src/application.cpp:611
+#: src/application.cpp:579
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:614
+#: src/application.cpp:582
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Restabelecer EasyEffects."
 
-#: src/application.cpp:617
+#: src/application.cpp:585
 msgid "Hide the Window."
 msgstr "Agochar a xanela."
 
-#: src/application.cpp:620
+#: src/application.cpp:588
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Desvío global. 1 para activar, 2 para desactivar e 3 para coñecer o estado"
 
-#: src/application.cpp:623
+#: src/application.cpp:591
 msgid "Show available presets."
 msgstr "Mostrar preoconfiguracións dispoñíbeis."
 
-#: src/application.cpp:626
+#: src/application.cpp:594
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Cargar unha preconfiguración. Exemplo: pulseefects-l music"
 
@@ -2581,7 +2581,7 @@ msgid ""
 "Its Content."
 msgstr ""
 
-#: src/pipe_manager_box.cpp:358
+#: src/pipe_manager_box.cpp:355
 #, fuzzy
 msgid "Remove Autoloading Preset"
 msgstr "Retirar este ficheiro de preconfiguracións"
