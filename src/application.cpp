@@ -121,7 +121,7 @@ void on_startup(GApplication* gapp) {
       return;
     }
 
-    util::debug("input autoloading: device " + device.name + " has changed its input route to \"" +
+    util::debug("input autoloading: device \"" + device.name + "\" has changed its input route to \"" +
                 device.input_route_name + "\"");
 
     // Use a NodeInfo vector trying to fix #3180
@@ -130,6 +130,7 @@ void on_startup(GApplication* gapp) {
     for (const auto& [serial, node] : self->pm->node_map) {
       if (node.media_class == tags::pipewire::media_class::source) {
         if (util::str_contains(node.name, device.bus_path) || util::str_contains(node.name, device.bus_id)) {
+          util::debug("input autoloading: add \"" + node.name + "\" as candidate for preset autoloading");
           target_node.push_back(node);
         }
       }
@@ -143,15 +144,18 @@ void on_startup(GApplication* gapp) {
       }
 
       if (node.name == name) {
-        util::debug("input autoloading: target node " + name + " matches the input device name");
+        util::debug("input autoloading: target node \"" + name + "\" matches the input device name");
 
         self->presets_manager->autoload(PresetType::input, node.name, device.input_route_name);
 
         return;
+      } else {
+        util::debug("input autoloading: skip \"" + node.name + "\" candidate since it does not match \"" + name +
+                    "\" input device");
       }
     }
 
-    util::debug("input autoloading: no target nodes match the input device name");
+    util::debug("input autoloading: no target nodes match the input device name \"" + name + "\"");
   }));
 
   self->data->connections.push_back(self->pm->device_output_route_changed.connect([=](const DeviceInfo device) {
@@ -159,7 +163,7 @@ void on_startup(GApplication* gapp) {
       return;
     }
 
-    util::debug("output autoloading: device " + device.name + " has changed its output route to \"" +
+    util::debug("output autoloading: device \"" + device.name + "\" has changed its output route to \"" +
                 device.output_route_name + "\"");
 
     // Use a NodeInfo vector trying to fix #3180
@@ -168,6 +172,7 @@ void on_startup(GApplication* gapp) {
     for (const auto& [serial, node] : self->pm->node_map) {
       if (node.media_class == tags::pipewire::media_class::sink) {
         if (util::str_contains(node.name, device.bus_path) || util::str_contains(node.name, device.bus_id)) {
+          util::debug("output autoloading: add \"" + node.name + "\" as candidate for preset autoloading");
           target_node.push_back(node);
         }
       }
@@ -181,15 +186,18 @@ void on_startup(GApplication* gapp) {
       }
 
       if (node.name == name) {
-        util::debug("output autoloading: target node " + name + " matches the output device name");
+        util::debug("output autoloading: target node \"" + name + "\" matches the output device name");
 
         self->presets_manager->autoload(PresetType::output, node.name, device.output_route_name);
 
         return;
+      } else {
+        util::debug("output autoloading: skip \"" + node.name + "\" candidate since it does not match \"" + name +
+                    "\" output device");
       }
     }
 
-    util::debug("output autoloading: no target nodes match the output device name");
+    util::debug("output autoloading: no target nodes match the output device name \"" + name + "\"");
   }));
 
   self->data->gconnections_soe.push_back(g_signal_connect(
