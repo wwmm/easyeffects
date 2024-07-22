@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-09 22:35+0000\n"
+"POT-Creation-Date: 2024-07-22 15:12+0000\n"
 "PO-Revision-Date: 2023-11-25 07:02+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1680,7 +1680,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Izlazni uređaji"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:301
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:309
 #, fuzzy
 msgid "Output Presets"
 msgstr "Predlošci: "
@@ -1702,7 +1702,7 @@ msgstr "Predlošci: "
 msgid "Input Devices"
 msgstr "Ulazni uređaji"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:309
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:317
 #, fuzzy
 msgid "Input Presets"
 msgstr "Učitaj predloške"
@@ -2428,37 +2428,37 @@ msgstr ""
 msgid "channels"
 msgstr "Kanali"
 
-#: src/application.cpp:510
+#: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:600
+#: src/application.cpp:608
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "Zatvori EasyEffects. Korisno pri upotrebi u servisnom načinu pokretanja."
 
-#: src/application.cpp:603
+#: src/application.cpp:611
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:606
+#: src/application.cpp:614
 msgid "Reset Easy Effects."
 msgstr "Obnovi EasyEffects."
 
-#: src/application.cpp:609
+#: src/application.cpp:617
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:612
+#: src/application.cpp:620
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:615
+#: src/application.cpp:623
 msgid "Show available presets."
 msgstr "Prikaži dostupne predloške."
 
-#: src/application.cpp:618
+#: src/application.cpp:626
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Učitaj predložak. Primjer: easyeffects -l music"
 

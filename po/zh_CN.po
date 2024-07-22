@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-09 22:35+0000\n"
+"POT-Creation-Date: 2024-07-22 15:12+0000\n"
 "PO-Revision-Date: 2024-07-07 04:09+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1536,7 +1536,7 @@ msgstr "仅本地预设可被自动加载。若需要自动加载社区预设，
 msgid "Output Devices"
 msgstr "输出设备"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:301
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:309
 msgid "Output Presets"
 msgstr "输出预设"
 
@@ -1556,7 +1556,7 @@ msgstr "输出自动加载预设列表"
 msgid "Input Devices"
 msgstr "输入设备"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:309
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:317
 msgid "Input Presets"
 msgstr "输入预设"
 
@@ -2230,35 +2230,35 @@ msgstr "未定义名称 - 进程 ID "
 msgid "channels"
 msgstr "声道"
 
-#: src/application.cpp:510
+#: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:600
+#: src/application.cpp:608
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "退出 Easy Effects。 在服务模式下运行时有用。"
 
-#: src/application.cpp:603
+#: src/application.cpp:611
 msgid "Print the easyeffects version"
 msgstr "打印 EasyEffects 版本号"
 
-#: src/application.cpp:606
+#: src/application.cpp:614
 msgid "Reset Easy Effects."
 msgstr "重置 Easy Effects。"
 
-#: src/application.cpp:609
+#: src/application.cpp:617
 msgid "Hide the Window."
 msgstr "隐藏隐藏窗口。"
 
-#: src/application.cpp:612
+#: src/application.cpp:620
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
 
-#: src/application.cpp:615
+#: src/application.cpp:623
 msgid "Show available presets."
 msgstr "显示可用预设。"
 
-#: src/application.cpp:618
+#: src/application.cpp:626
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "加载预设。 示例：easyeffects -l music"
 

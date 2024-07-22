@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-09 22:35+0000\n"
+"POT-Creation-Date: 2024-07-22 15:12+0000\n"
 "PO-Revision-Date: 2024-07-21 20:09+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1535,7 +1535,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Uitvoerapparaten"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:301
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:309
 msgid "Output Presets"
 msgstr "Uitvoervoorinstellingen"
 
@@ -1555,7 +1555,7 @@ msgstr "Lijst van automatisch geladen uitvoervoorinstellingen"
 msgid "Input Devices"
 msgstr "Invoerapparaten"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:309
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:317
 msgid "Input Presets"
 msgstr "Invoervoorinstellingen"
 
@@ -1896,8 +1896,8 @@ msgstr "Importeren"
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
 msgstr ""
-"Importeer deze gemeenschaps­voorinstelling in de lĳst met lokale "
-"voor­instellingen"
+"Importeer deze gemeenschaps­voorinstelling in de lĳst met lokale voor­"
+"instellingen"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
@@ -2232,36 +2232,36 @@ msgstr "Ongedefinieerde naam - Proces-id "
 msgid "channels"
 msgstr "kanalen"
 
-#: src/application.cpp:510
+#: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:600
+#: src/application.cpp:608
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Sluit Easy Effects af. Nuttig in dienstmodus."
 
-#: src/application.cpp:603
+#: src/application.cpp:611
 msgid "Print the easyeffects version"
 msgstr "Print de versie van Easy Effects"
 
-#: src/application.cpp:606
+#: src/application.cpp:614
 msgid "Reset Easy Effects."
 msgstr "Reset Easy Effects."
 
-#: src/application.cpp:609
+#: src/application.cpp:617
 msgid "Hide the Window."
 msgstr "Verberg het venster."
 
-#: src/application.cpp:612
+#: src/application.cpp:620
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Globale omzeiling: 1 = inschakelen, 2 = uitschakelen, 3 = status opvragen"
 
-#: src/application.cpp:615
+#: src/application.cpp:623
 msgid "Show available presets."
 msgstr "Toon de beschikbare voorinstellingen."
 
-#: src/application.cpp:618
+#: src/application.cpp:626
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Laad een voorinstelling. Voorbeeld: easyeffects -l music"
 
