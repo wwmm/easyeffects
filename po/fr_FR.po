@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-22 15:12+0000\n"
+"POT-Creation-Date: 2024-07-22 16:11+0000\n"
 "PO-Revision-Date: 2024-07-11 11:09+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1536,7 +1536,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Périphériques de sortie"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:309
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:277
 msgid "Output Presets"
 msgstr "Préréglages de sortie"
 
@@ -1556,7 +1556,7 @@ msgstr "Liste des préréglages de sortie auto-chargeant"
 msgid "Input Devices"
 msgstr "Périphériques d’entrée"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:317
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:285
 msgid "Input Presets"
 msgstr "Préréglages d’entrée"
 
@@ -2235,37 +2235,37 @@ msgstr "Nom indéterminé - ID du processus "
 msgid "channels"
 msgstr "canaux"
 
-#: src/application.cpp:518
+#: src/application.cpp:486
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:608
+#: src/application.cpp:576
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Quitter Easy Effects. Utile en cas de fonctionnement en mode serveur."
 
-#: src/application.cpp:611
+#: src/application.cpp:579
 msgid "Print the easyeffects version"
 msgstr "Imprimer la version d'easyeffects"
 
-#: src/application.cpp:614
+#: src/application.cpp:582
 msgid "Reset Easy Effects."
 msgstr "Réinitialiser Easy Effects."
 
-#: src/application.cpp:617
+#: src/application.cpp:585
 msgid "Hide the Window."
 msgstr "Masquer la Fenêtre."
 
-#: src/application.cpp:620
+#: src/application.cpp:588
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Contournement global. 1 pour activer, 2 pour désactiver et 3 pour obtenir le "
 "statut"
 
-#: src/application.cpp:623
+#: src/application.cpp:591
 msgid "Show available presets."
 msgstr "Afficher les préréglages disponibles."
 
-#: src/application.cpp:626
+#: src/application.cpp:594
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Chargez un préréglage. Exemple : easyeffects -l musique"
 
@@ -2388,7 +2388,7 @@ msgstr ""
 "Le préréglage GraphicEQ n’a pas été chargé. Le format du fichier peut ne pas "
 "être pris en charge. Veuillez vérifier son contenu."
 
-#: src/pipe_manager_box.cpp:358
+#: src/pipe_manager_box.cpp:355
 msgid "Remove Autoloading Preset"
 msgstr "Supprimer le préréglage du chargement automatique"
 

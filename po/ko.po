@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-22 15:12+0000\n"
+"POT-Creation-Date: 2024-07-22 16:11+0000\n"
 "PO-Revision-Date: 2023-12-31 05:09+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1535,7 +1535,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "출력 장치"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:309
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:277
 msgid "Output Presets"
 msgstr "출력 프리셋"
 
@@ -1555,7 +1555,7 @@ msgstr "출력 자동 로딩 프리셋 목록"
 msgid "Input Devices"
 msgstr "입력 장치"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:317
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:285
 msgid "Input Presets"
 msgstr "입력 프리셋"
 
@@ -2239,35 +2239,35 @@ msgstr ""
 msgid "channels"
 msgstr "채널"
 
-#: src/application.cpp:518
+#: src/application.cpp:486
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:608
+#: src/application.cpp:576
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:611
+#: src/application.cpp:579
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:614
+#: src/application.cpp:582
 msgid "Reset Easy Effects."
 msgstr "EasyEffects를 재설정합니다."
 
-#: src/application.cpp:617
+#: src/application.cpp:585
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:620
+#: src/application.cpp:588
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:623
+#: src/application.cpp:591
 msgid "Show available presets."
 msgstr "사용 가능한 프리셋을 표시합니다."
 
-#: src/application.cpp:626
+#: src/application.cpp:594
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "프리셋을 불러옵니다. 예시: easyeffects -l music"
 
@@ -2388,7 +2388,7 @@ msgstr ""
 "GraphicEQ 프리셋을 불러오지 못했습니다. 파일 형식이 지원되지 않을 수 있습니"
 "다. 내용을 확인해주세요."
 
-#: src/pipe_manager_box.cpp:358
+#: src/pipe_manager_box.cpp:355
 msgid "Remove Autoloading Preset"
 msgstr "자동 로딩 프리셋 제거하기"
 
