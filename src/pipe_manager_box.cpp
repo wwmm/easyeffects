@@ -30,7 +30,6 @@
 #include <gtk/gtkshortcut.h>
 #include <gtk/gtksingleselection.h>
 #include <sigc++/connection.h>
-#include <memory>
 #include <nlohmann/json_fwd.hpp>
 #include <string>
 #include <vector>
@@ -143,8 +142,7 @@ void on_autoloading_add_input_profile(PipeManagerBox* self, GtkButton* btn) {
   std::string device_profile;
 
   for (const auto& device : self->data->application->pm->list_devices) {
-    if (util::str_contains(holder->info->name, device.bus_path) ||
-        util::str_contains(holder->info->name, device.bus_id)) {
+    if (device.id == holder->info->device_id) {
       device_profile = device.input_route_name;
 
       break;
@@ -192,8 +190,7 @@ void on_autoloading_add_output_profile(PipeManagerBox* self, GtkButton* btn) {
   std::string device_profile;
 
   for (const auto& device : self->data->application->pm->list_devices) {
-    if (util::str_contains(holder->info->name, device.bus_path) ||
-        util::str_contains(holder->info->name, device.bus_id)) {
+    if (device.id == holder->info->device_id) {
       device_profile = device.output_route_name;
 
       break;
