@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-22 16:11+0000\n"
-"PO-Revision-Date: 2024-07-21 20:09+0000\n"
+"PO-Revision-Date: 2024-07-23 06:09+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
 "nl/>\n"
@@ -1932,19 +1932,20 @@ msgid "Search Community Preset"
 msgstr "Gemeenschaps­voorinstelling zoeken"
 
 #: data/ui/presets_menu.ui:271
-#, fuzzy
 msgid "Community Presets List"
-msgstr "Lijst met uitvoervoorinstellingen"
+msgstr "Lĳst met gemeenschaps­voorinstellingen"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr ""
+msgstr "Geen gemeenschaps­voorinstellingen geïnstalleerd"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
+"Gemeenschaps­voorinstellings­pakketten kunnen worden geïnstalleerd uit de "
+"repository van uw favoriete distributie."
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
@@ -1952,7 +1953,7 @@ msgstr "Verversen"
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
-msgstr ""
+msgstr "Ververs om nieuw geïnstalleerde gemeenschaps­voorinstellingente tonen"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2406,9 +2407,8 @@ msgstr "Toevoegen"
 
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
-#, fuzzy
 msgid "Community Preset"
-msgstr "Voorinstelling importeren"
+msgstr "Gemeenschaps­voorinstelling"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
@@ -2453,19 +2453,16 @@ msgid "Delete?"
 msgstr "Verwijderen?"
 
 #: src/presets_menu.cpp:558
-#, fuzzy
 msgid "No Preset Loaded"
-msgstr "Naam voor nieuwe voor­instelling"
+msgstr "Geen voor­instelling geladen"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Local Preset Loaded"
-msgstr "Lijst met voor­instellingen"
+msgstr "Laatste lokale voor­instelling geladen"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Community Preset Loaded"
-msgstr "Voorinstelling importeren"
+msgstr "Laatste gemeenschaps­voorinstelling geladen"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
