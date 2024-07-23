@@ -25,12 +25,58 @@
 #include <qlist.h>
 #include <qnamespace.h>
 #include <qobject.h>
+#include <qqmlintegration.h>
+#include <qstringliteral.h>
 #include <qstringview.h>
 #include <qtmetamacros.h>
 #include <qvariant.h>
 #include <sys/types.h>
 #include <string>
-#include <string_view>
+
+namespace tags {
+
+// NOLINTNEXTLINE
+#define CREATE_PROPERTY(type, name, value) \
+  static inline const type name = value;   \
+  Q_PROPERTY(type name MEMBER name CONSTANT)
+
+class PluginName : public QObject {
+  Q_OBJECT
+  QML_UNCREATABLE("Constants with the plugins name")
+  QML_ELEMENT
+  QML_SINGLETON
+
+ public:
+  CREATE_PROPERTY(QString, autogain, QStringLiteral("autogain"));
+  CREATE_PROPERTY(QString, bass_enhancer, QStringLiteral("bass_enhancer"));
+  CREATE_PROPERTY(QString, bass_loudness, QStringLiteral("bass_loudness"));
+  CREATE_PROPERTY(QString, compressor, QStringLiteral("compressor"));
+  CREATE_PROPERTY(QString, convolver, QStringLiteral("convolver"));
+  CREATE_PROPERTY(QString, crossfeed, QStringLiteral("crossfeed"));
+  CREATE_PROPERTY(QString, crystalizer, QStringLiteral("crystalizer"));
+  CREATE_PROPERTY(QString, deepfilternet, QStringLiteral("deepfilternet"));
+  CREATE_PROPERTY(QString, deesser, QStringLiteral("deesser"));
+  CREATE_PROPERTY(QString, delay, QStringLiteral("delay"));
+  CREATE_PROPERTY(QString, echo_canceller, QStringLiteral("echo_canceller"));
+  CREATE_PROPERTY(QString, equalizer, QStringLiteral("equalizer"));
+  CREATE_PROPERTY(QString, exciter, QStringLiteral("exciter"));
+  CREATE_PROPERTY(QString, expander, QStringLiteral("expander"));
+  CREATE_PROPERTY(QString, filter, QStringLiteral("filter"));
+  CREATE_PROPERTY(QString, gate, QStringLiteral("gate"));
+  CREATE_PROPERTY(QString, level_meter, QStringLiteral("level_meter"));
+  CREATE_PROPERTY(QString, limiter, QStringLiteral("limiter"));
+  CREATE_PROPERTY(QString, loudness, QStringLiteral("loudness"));
+  CREATE_PROPERTY(QString, maximizer, QStringLiteral("maximizer"));
+  CREATE_PROPERTY(QString, multiband_compressor, QStringLiteral("multiband_compressor"));
+  CREATE_PROPERTY(QString, multiband_gate, QStringLiteral("multiband_gate"));
+  CREATE_PROPERTY(QString, pitch, QStringLiteral("pitch"));
+  CREATE_PROPERTY(QString, speex, QStringLiteral("speex"));
+  CREATE_PROPERTY(QString, reverb, QStringLiteral("reverb"));
+  CREATE_PROPERTY(QString, rnnoise, QStringLiteral("rnnoise"));
+  CREATE_PROPERTY(QString, stereo_tools, QStringLiteral("stereo_tools"));
+};
+
+}  // namespace tags
 
 namespace tags::plugin_package {
 
@@ -61,60 +107,6 @@ inline constexpr auto zita = "Zita";
 }  // namespace tags::plugin_package
 
 namespace tags::plugin_name {
-
-inline constexpr auto autogain = "autogain";
-
-inline constexpr auto bass_enhancer = "bass_enhancer";
-
-inline constexpr auto bass_loudness = "bass_loudness";
-
-inline constexpr auto compressor = "compressor";
-
-inline constexpr auto convolver = "convolver";
-
-inline constexpr auto crossfeed = "crossfeed";
-
-inline constexpr auto crystalizer = "crystalizer";
-
-inline constexpr auto deepfilternet = "deepfilternet";
-
-inline constexpr auto deesser = "deesser";
-
-inline constexpr auto delay = "delay";
-
-inline constexpr auto echo_canceller = "echo_canceller";
-
-inline constexpr auto equalizer = "equalizer";
-
-inline constexpr auto exciter = "exciter";
-
-inline constexpr auto expander = "expander";
-
-inline constexpr auto filter = "filter";
-
-inline constexpr auto gate = "gate";
-
-inline constexpr auto level_meter = "level_meter";
-
-inline constexpr auto limiter = "limiter";
-
-inline constexpr auto loudness = "loudness";
-
-inline constexpr auto maximizer = "maximizer";
-
-inline constexpr auto multiband_compressor = "multiband_compressor";
-
-inline constexpr auto multiband_gate = "multiband_gate";
-
-inline constexpr auto pitch = "pitch";
-
-inline constexpr auto speex = "speex";
-
-inline constexpr auto reverb = "reverb";
-
-inline constexpr auto rnnoise = "rnnoise";
-
-inline constexpr auto stereo_tools = "stereo_tools";
 
 class Model : public QAbstractListModel {
   Q_OBJECT;
@@ -149,8 +141,21 @@ class Model : public QAbstractListModel {
   QMap<QString, QString> modelMap;
 };
 
-auto get_base_name(std::string_view name) -> std::string;
-
 auto get_id(const std::string& name) -> uint;
 
 }  // namespace tags::plugin_name
+
+namespace TagsPluginName {
+Q_NAMESPACE
+// QML_ELEMENT
+
+enum class Bar {
+  VAL1,
+  VAL2,
+};
+Q_ENUM_NS(Bar)
+
+inline constexpr auto autogain = "autogain";
+
+inline QString exciter = "exciter";
+}  // namespace TagsPluginName

@@ -13,7 +13,6 @@
 #include <iterator>
 #include <regex>
 #include <string>
-#include <string_view>
 #include "config.h"
 #include "util.hpp"
 
@@ -26,33 +25,33 @@ const auto id_regex = std::regex(R"(#(\d+)$)");
 namespace tags::plugin_name {
 
 Model::Model(QObject* parent) : QAbstractListModel(parent) {
-  modelMap = {{autogain, i18n("Autogain")},
-              {bass_enhancer, i18n("Bass Enhancer")},
-              {bass_loudness, i18n("Bass Loudness")},
-              {compressor, i18n("Compressor")},
-              {convolver, i18n("Convolver")},
-              {crossfeed, i18n("Crossfeed")},
-              {crystalizer, i18n("Crystalizer")},
-              {deepfilternet, i18n("Deep Noise Remover")},
-              {deesser, i18n("Deesser")},
-              {delay, i18n("Delay")},
-              {echo_canceller, i18n("Echo Canceller")},
-              {equalizer, i18n("Equalizer")},
-              {exciter, i18n("Exciter")},
-              {expander, i18n("Expander")},
-              {filter, i18n("Filter")},
-              {gate, i18n("Gate")},
-              {level_meter, i18n("Level Meter")},
-              {limiter, i18n("Limiter")},
-              {loudness, i18n("Loudness")},
-              {maximizer, i18n("Maximizer")},
-              {multiband_compressor, i18n("Multiband Compressor")},
-              {multiband_gate, i18n("Multiband Gate")},
-              {pitch, i18n("Pitch")},
-              {reverb, i18n("Reverberation")},
-              {rnnoise, i18n("Noise Reduction")},
-              {speex, i18n("Speech Processor")},
-              {stereo_tools, i18n("Stereo Tools")}};
+  modelMap = {{PluginName::autogain, i18n("Autogain")},
+              {PluginName::bass_enhancer, i18n("Bass Enhancer")},
+              {PluginName::bass_loudness, i18n("Bass Loudness")},
+              {PluginName::compressor, i18n("Compressor")},
+              {PluginName::convolver, i18n("Convolver")},
+              {PluginName::crossfeed, i18n("Crossfeed")},
+              {PluginName::crystalizer, i18n("Crystalizer")},
+              {PluginName::deepfilternet, i18n("Deep Noise Remover")},
+              {PluginName::deesser, i18n("Deesser")},
+              {PluginName::delay, i18n("Delay")},
+              {PluginName::echo_canceller, i18n("Echo Canceller")},
+              {PluginName::equalizer, i18n("Equalizer")},
+              {PluginName::exciter, i18n("Exciter")},
+              {PluginName::expander, i18n("Expander")},
+              {PluginName::filter, i18n("Filter")},
+              {PluginName::gate, i18n("Gate")},
+              {PluginName::level_meter, i18n("Level Meter")},
+              {PluginName::limiter, i18n("Limiter")},
+              {PluginName::loudness, i18n("Loudness")},
+              {PluginName::maximizer, i18n("Maximizer")},
+              {PluginName::multiband_compressor, i18n("Multiband Compressor")},
+              {PluginName::multiband_gate, i18n("Multiband Gate")},
+              {PluginName::pitch, i18n("Pitch")},
+              {PluginName::reverb, i18n("Reverberation")},
+              {PluginName::rnnoise, i18n("Noise Reduction")},
+              {PluginName::speex, i18n("Speech Processor")},
+              {PluginName::stereo_tools, i18n("Stereo Tools")}};
 
   auto* proxyModel = new QSortFilterProxyModel(this);
 
@@ -103,118 +102,6 @@ QString Model::translate(const QString& baseName) {
 
 QList<QString> Model::getBaseNames() {
   return modelMap.keys();
-}
-
-auto get_base_name(std::string_view name) -> std::string {
-  if (name.starts_with(tags::plugin_name::autogain)) {
-    return tags::plugin_name::autogain;
-  }
-
-  if (name.starts_with(tags::plugin_name::bass_enhancer)) {
-    return tags::plugin_name::bass_enhancer;
-  }
-
-  if (name.starts_with(tags::plugin_name::bass_loudness)) {
-    return tags::plugin_name::bass_loudness;
-  }
-
-  if (name.starts_with(tags::plugin_name::compressor)) {
-    return tags::plugin_name::compressor;
-  }
-
-  if (name.starts_with(tags::plugin_name::convolver)) {
-    return tags::plugin_name::convolver;
-  }
-
-  if (name.starts_with(tags::plugin_name::crossfeed)) {
-    return tags::plugin_name::crossfeed;
-  }
-
-  if (name.starts_with(tags::plugin_name::crystalizer)) {
-    return tags::plugin_name::crystalizer;
-  }
-
-  if (name.starts_with(tags::plugin_name::deepfilternet)) {
-    return tags::plugin_name::deepfilternet;
-  }
-
-  if (name.starts_with(tags::plugin_name::deesser)) {
-    return tags::plugin_name::deesser;
-  }
-
-  if (name.starts_with(tags::plugin_name::delay)) {
-    return tags::plugin_name::delay;
-  }
-
-  if (name.starts_with(tags::plugin_name::echo_canceller)) {
-    return tags::plugin_name::echo_canceller;
-  }
-
-  if (name.starts_with(tags::plugin_name::equalizer)) {
-    return tags::plugin_name::equalizer;
-  }
-
-  if (name.starts_with(tags::plugin_name::exciter)) {
-    return tags::plugin_name::exciter;
-  }
-
-  if (name.starts_with(tags::plugin_name::expander)) {
-    return tags::plugin_name::expander;
-  }
-
-  if (name.starts_with(tags::plugin_name::filter)) {
-    return tags::plugin_name::filter;
-  }
-
-  if (name.starts_with(tags::plugin_name::gate)) {
-    return tags::plugin_name::gate;
-  }
-
-  if (name.starts_with(tags::plugin_name::level_meter)) {
-    return tags::plugin_name::level_meter;
-  }
-
-  if (name.starts_with(tags::plugin_name::limiter)) {
-    return tags::plugin_name::limiter;
-  }
-
-  if (name.starts_with(tags::plugin_name::loudness)) {
-    return tags::plugin_name::loudness;
-  }
-
-  if (name.starts_with(tags::plugin_name::maximizer)) {
-    return tags::plugin_name::maximizer;
-  }
-
-  if (name.starts_with(tags::plugin_name::multiband_compressor)) {
-    return tags::plugin_name::multiband_compressor;
-  }
-
-  if (name.starts_with(tags::plugin_name::multiband_gate)) {
-    return tags::plugin_name::multiband_gate;
-  }
-
-  if (name.starts_with(tags::plugin_name::pitch)) {
-    return tags::plugin_name::pitch;
-  }
-
-  if (name.starts_with(tags::plugin_name::reverb)) {
-    return tags::plugin_name::reverb;
-  }
-
-  if (name.starts_with(tags::plugin_name::rnnoise)) {
-    return tags::plugin_name::rnnoise;
-  }
-
-  if (name.starts_with(tags::plugin_name::speex)) {
-    return tags::plugin_name::speex;
-  }
-
-  if (name.starts_with(tags::plugin_name::stereo_tools)) {
-    return tags::plugin_name::stereo_tools;
-  }
-
-  return "";
 }
 
 auto get_id(const std::string& name) -> uint {
