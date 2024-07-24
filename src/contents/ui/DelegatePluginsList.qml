@@ -68,7 +68,6 @@ Item {
                             let indexStart = pluginsListModel.index(0, 0);
                             let indexEnd = pluginsListModel.index(pluginsListModel.count - 1, 0);
                             pluginsListModel.dataChanged(indexStart, indexEnd, []);
-                            showPassiveNotification("Removed plugin: " + model.name);
                         }
                     }
                 ]

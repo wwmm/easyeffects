@@ -80,7 +80,51 @@ Kirigami.OverlaySheet {
                         }
                         let new_id = (index_list.length === 0) ? 0 : Math.max.apply(null, index_list) + 1;
                         let new_name = model.name + "#" + new_id;
-                        plugins.push(new_name);
+                        /*
+                            If the list is not empty and the user is careful protecting
+                            their device with a plugin of type limiter at the last position
+                            of the filter chain, we follow this behaviour trying to insert
+                            the new plugin at the second to last position.
+
+                            To do so, we first check if the new plugin is a limiter or the
+                            level meter and place it directly at the last position (those
+                            plugins do not need to be placed elsewhere and in most of the
+                            cases the user wants them at the bottom of the pipeline).
+
+                            If the last plugin is a limiter, we place the new plugin at
+                            the second to last position.
+
+                            If the last plugin is not a limiter, but a level meter, we still
+                            try to place the new plugin before a limiter, if this limiter is in
+                            the second to last position. The reason is that we still want to preserve the
+                            "limiter protection" in case the last plugins are a limiter followed by a meter.
+                        */
+                        let limiters_and_meters = [PluginName.limiter, PluginName.maximizer, PluginName.level_meter];
+                        let limiters = [PluginName.limiter, PluginName.maximizer];
+                        if (plugins.length === 0) {
+                            plugins.push(new_name);
+                        } else if (limiters_and_meters.some((v) => {
+                            return v === model.name;
+                        })) {
+                            plugins.push(new_name);
+                        } else if (limiters.some((v) => {
+                            return plugins[plugins.length - 1].startsWith(v);
+                        })) {
+                            plugins.splice(-1, 0, new_name);
+                        } else if (plugins[plugins.length - 1].startsWith(PluginName.level_meter)) {
+                            if (plugins.length >= 2) {
+                                if (limiters.some((v) => {
+                                    return plugins[plugins.length - 2].startsWith(v);
+                                }))
+                                    plugins.splice(-2, 0, new_name);
+                                else
+                                    plugins.splice(-1, 0, new_name);
+                            } else {
+                                plugins.splice(-1, 0, new_name);
+                            }
+                        } else {
+                            plugins.push(new_name);
+                        }
                         streamDB.plugins = plugins;
                         showMenuStatus(i18n("Added Plugin: " + model.translatedName));
                     }
