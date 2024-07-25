@@ -45,7 +45,7 @@ constexpr double minimum_linear_d_level = 0.00001;
 using source_location = std::source_location;
 
 void debug(const std::string& s, source_location location = source_location::current());
-void error(const std::string& s, source_location location = source_location::current());
+void fatal(const std::string& s, source_location location = source_location::current());
 void critical(const std::string& s, source_location location = source_location::current());
 void warning(const std::string& s, source_location location = source_location::current());
 void info(const std::string& s, source_location location = source_location::current());

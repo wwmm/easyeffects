@@ -18,6 +18,7 @@
 #include "easyeffects_db_spectrum.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
+#include "pipe_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -75,8 +76,9 @@ int main(int argc, char* argv[]) {
 
   // QObject::connect(ee_db, &db::Main::widthChanged, [=]() { util::warning(util::to_string(db::Main::width())); });
 
-  // presets::Backend presetsBackend;
-  tags::plugin_name::Model::self();  // Making sure this singleton class initializes before qml
+  // Making sure these singleton classes are initialized before qml
+  tags::plugin_name::Model::self();
+  pw::Manager::self();
 
   QQmlApplicationEngine engine;
 

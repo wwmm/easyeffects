@@ -16,9 +16,14 @@ qt_add_qml_module(easyeffects
 
 target_sources(easyeffects PRIVATE
     main.cpp
+    pipe_manager.cpp
     tags_plugin_name.cpp
     util.cpp
     resources.qrc
+)
+
+target_include_directories(easyeffects PRIVATE 
+    ${LIBPIPEWIRE_INCLUDE_DIRS}
 )
 
 target_link_libraries(easyeffects PRIVATE
@@ -33,6 +38,7 @@ target_link_libraries(easyeffects PRIVATE
     KF${QT_MAJOR_VERSION}::ConfigCore
     KF${QT_MAJOR_VERSION}::ConfigGui
     Qt${QT_MAJOR_VERSION}::Charts
+    ${LIBPIPEWIRE_LIBRARIES}
 )
 
 kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})
