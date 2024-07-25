@@ -162,6 +162,7 @@ jobs:
         lv2-dev
         nlohmann-json
         pipewire-dev
+        pkgconf
         rnnoise-dev
         soundtouch-dev
         speexdsp-dev
@@ -224,6 +225,7 @@ jobs:
         nlohmann-json
         onetbb-devel
         pipewire-devel
+        pkgconf
         qt6-qtbase-devel
         qt6-qtcharts-devel
         rnnoise-devel
