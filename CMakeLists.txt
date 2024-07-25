@@ -48,7 +48,7 @@ ki18n_install(po)
 find_package(Threads REQUIRED)
 find_package(PkgConfig REQUIRED)
 
-pkg_check_modules(LIBPIPEWIRE libpipewire-0.3>=1.2.1)
+pkg_check_modules(LIBPIPEWIRE libpipewire-0.3>=1.0.6)
 
 file(GLOB KCFG_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfg)
 file(GLOB KCFGC_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfgc)
