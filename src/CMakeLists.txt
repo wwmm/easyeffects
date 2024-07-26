@@ -41,6 +41,26 @@ target_link_libraries(easyeffects PRIVATE
     ${LIBPIPEWIRE_LIBRARIES}
 )
 
+if(ENABLE_LIBPORTAL)
+    MESSAGE(STATUS "Enabling libportal")
+    target_compile_definitions(easyeffects PRIVATE ENABLE_LIBPORTAL=1)
+endif(ENABLE_LIBPORTAL)
+
+if(ENABLE_MOLD)
+    MESSAGE(STATUS "Enabling mold")
+    target_compile_definitions(easyeffects PRIVATE ENABLE_MOLD=1)
+endif(ENABLE_MOLD)
+
+if(ENABLE_RNNOISE)
+    MESSAGE(STATUS "Enabling rnnoise")
+    target_compile_definitions(easyeffects PRIVATE ENABLE_RNNOISE=1)
+endif(ENABLE_RNNOISE)
+
+if(ENABLE_DEVEL)
+    MESSAGE(STATUS "Enabling devel")
+    target_compile_definitions(easyeffects PRIVATE ENABLE_DEVEL=1)
+endif(ENABLE_DEVEL)
+
 if(ENABLE_LIBCPP_WORKAROUNDS)
     MESSAGE(STATUS "Enabling workarounds for lib++ systems")
     target_compile_definitions(easyeffects PRIVATE ENABLE_LIBCPP_WORKAROUNDS=1)
