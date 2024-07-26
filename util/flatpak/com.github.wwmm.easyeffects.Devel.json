@@ -80,10 +80,10 @@
             "name": "easyeffects",
             "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-Ddevel=true",
+                "-DDEVEL=1",
                 "-Dbuildtype=debug",
-                "-Denable-libportal=true",
-                "-Denable-mold=true"
+                "-DENABLE_LIBPORTAL=1",
+                "-DENABLE_MOLD=1"
             ],
             "run-tests": true,
             "sources": [

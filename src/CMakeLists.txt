@@ -41,6 +41,11 @@ target_link_libraries(easyeffects PRIVATE
     ${LIBPIPEWIRE_LIBRARIES}
 )
 
+if(ENABLE_LIBCPP_WORKAROUNDS)
+    MESSAGE(STATUS "Enabling workarounds for lib++ systems")
+    target_compile_definitions(easyeffects PRIVATE ENABLE_LIBCPP_WORKAROUNDS=1)
+endif(ENABLE_LIBCPP_WORKAROUNDS)
+
 kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})
 
 # install(FILES ${KCFG_FILES} DESTINATION ${KDE_INSTALL_KCFGDIR})
