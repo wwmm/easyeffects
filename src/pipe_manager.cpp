@@ -18,6 +18,7 @@
  */
 
 #include "pipe_manager.hpp"
+#include <bits/basic_string.h>
 #include <pipewire/client.h>
 #include <pipewire/context.h>
 #include <pipewire/core.h>
@@ -33,6 +34,7 @@
 #include <pipewire/proxy.h>
 #include <pipewire/thread-loop.h>
 #include <pipewire/version.h>
+#include <qtmetamacros.h>
 #include <spa/monitor/device.h>
 #include <spa/param/audio/raw-types.h>
 #include <spa/param/audio/raw.h>
@@ -56,6 +58,7 @@
 #include <algorithm>
 #include <array>
 #include <cerrno>
+#include <chrono>
 #include <cstdint>
 #include <cstring>
 #include <ctime>
@@ -220,43 +223,19 @@ void on_destroy_node_proxy(void* data) {
     if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
       const auto nd_info_copy = *nd->nd_info;
 
-      // util::idle_add([=]() {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->source_removed.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->source_removed(nd_info_copy);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
       const auto nd_info_copy = *nd->nd_info;
 
-      // util::idle_add([=]() {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->sink_removed.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->sink_removed(nd_info_copy);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
       const auto serial = nd->nd_info->serial;
 
-      // util::idle_add([=]() {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->stream_output_removed.emit(serial);
-      // });
+      Q_EMIT pm->stream_output_removed(serial);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
       const auto serial = nd->nd_info->serial;
 
-      // util::idle_add([=]() {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->stream_input_removed.emit(serial);
-      // });
+      Q_EMIT pm->stream_input_removed(serial);
     }
   }
 
@@ -377,47 +356,23 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
       const auto nd_info_copy = *nd->nd_info;
 
-      // util::idle_add([=]() {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->source_removed.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->source_removed(nd_info_copy);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
       const auto nd_info_copy = *nd->nd_info;
 
-      // util::idle_add([=]() {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->sink_removed.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->sink_removed(nd_info_copy);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
       const auto serial = nd->nd_info->serial;
 
-      // util::idle_add([=]() {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
+      Q_EMIT pm->stream_output_removed(serial);
 
-      //   // pm->stream_output_removed.emit(serial);
-
-      //   pm->disconnect_stream(nd->nd_info->id);
-      // });
+      pm->disconnect_stream(nd->nd_info->id);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
       const auto serial = nd->nd_info->serial;
 
-      // util::idle_add([=]() {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
+      Q_EMIT pm->stream_input_removed(serial);
 
-      //   // pm->stream_input_removed.emit(serial);
-
-      //   pm->disconnect_stream(nd->nd_info->id);
-      // });
+      pm->disconnect_stream(nd->nd_info->id);
     }
 
     util::debug(nd->nd_info->media_class + " " + util::to_string(nd->nd_info->id) + " " + nd->nd_info->name +
@@ -558,54 +513,30 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     const auto nd_info_copy = *nd->nd_info;
 
     if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
-      // util::idle_add([=]() {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->stream_output_changed.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->stream_output_changed(nd_info_copy);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
-      // util::idle_add([=]() {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->stream_input_changed.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->stream_input_changed(nd_info_copy);
     }
   }
 
   if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
     const auto nd_info_copy = *nd->nd_info;
 
-    // util::idle_add([=]() {
-    //   if (pw::Manager::exiting) {
-    //     return;
-    //   }
-
-    //   // pm->source_changed.emit(nd_info_copy);
-    // });
+    Q_EMIT pm->source_changed(nd_info_copy);
   } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
     const auto nd_info_copy = *nd->nd_info;
 
-    // util::idle_add([=]() {
-    //   if (pw::Manager::exiting) {
-    //     return;
-    //   }
-
-    //   // pm->sink_changed.emit(nd_info_copy);
-    // });
+    Q_EMIT pm->sink_changed(nd_info_copy);
   }
   // const struct spa_dict_item* item = nullptr;
   // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
 }
 
 void on_node_event_param(void* object,
-                         int seq,
-                         uint32_t id,
-                         uint32_t index,
-                         uint32_t next,
+                         [[maybe_unused]] int seq,
+                         [[maybe_unused]] uint32_t id,
+                         [[maybe_unused]] uint32_t index,
+                         [[maybe_unused]] uint32_t next,
                          const struct spa_pod* param) {
   if (pw::Manager::exiting) {
     return;
@@ -746,23 +677,11 @@ void on_node_event_param(void* object,
     if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
       const auto nd_info_copy = *nd->nd_info;
 
-      // util::idle_add([pm, nd_info_copy] {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->stream_output_changed.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->stream_output_changed(nd_info_copy);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
       const auto nd_info_copy = *nd->nd_info;
 
-      // util::idle_add([pm, nd_info_copy] {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->stream_input_changed.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->stream_input_changed(nd_info_copy);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::virtual_source) {
       const auto nd_info_copy = *nd->nd_info;
 
@@ -770,13 +689,7 @@ void on_node_event_param(void* object,
         pm->ee_source_node = nd_info_copy;
       }
 
-      // util::idle_add([pm, nd_info_copy] {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->source_changed.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->source_changed(nd_info_copy);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
       const auto nd_info_copy = *nd->nd_info;
 
@@ -784,13 +697,7 @@ void on_node_event_param(void* object,
         pm->ee_sink_node = nd_info_copy;
       }
 
-      // util::idle_add([pm, nd_info_copy] {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->sink_changed.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->sink_changed(nd_info_copy);
     }
   }
 }
@@ -807,13 +714,7 @@ void on_link_info(void* object, const struct pw_link_info* info) {
 
       link_copy = l;
 
-      // util::idle_add([pm, link_copy] {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->link_changed.emit(link_copy);
-      // });
+      Q_EMIT pm->link_changed(link_copy);
 
       // util::warning(pw_link_state_as_string(l.state));
 
@@ -953,10 +854,10 @@ void on_device_info(void* object, const struct pw_device_info* info) {
 }
 
 void on_device_event_param(void* object,
-                           int seq,
-                           uint32_t id,
-                           uint32_t index,
-                           uint32_t next,
+                           [[maybe_unused]] int seq,
+                           [[maybe_unused]] uint32_t id,
+                           [[maybe_unused]] uint32_t index,
+                           [[maybe_unused]] uint32_t next,
                            const struct spa_pod* param) {
   if (id != SPA_PARAM_Route) {
     return;
@@ -991,26 +892,14 @@ void on_device_event_param(void* object,
         device.input_route_name = name;
         device.input_route_available = available;
 
-        // util::idle_add([pm, device] {
-        //   if (pw::Manager::exiting) {
-        //     return;
-        //   }
-
-        //   // pm->device_input_route_changed.emit(device);
-        // });
+        Q_EMIT pm->device_input_route_changed(device);
       }
     } else if (direction == SPA_DIRECTION_OUTPUT) {
       if (name != device.output_route_name || available != device.output_route_available) {
         device.output_route_name = name;
         device.output_route_available = available;
 
-        // util::idle_add([pm, device] {
-        //   if (pw::Manager::exiting) {
-        //     return;
-        //   }
-
-        //   // pm->device_output_route_changed.emit(device);
-        // });
+        Q_EMIT pm->device_output_route_changed(device);
       }
     }
 
@@ -1052,13 +941,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     pm->default_output_device_name = v.data();
 
-    // util::idle_add([pm] {
-    //   if (pw::Manager::exiting) {
-    //     return;
-    //   }
-
-    //   // pm->new_default_sink_name.emit(pm->default_output_device_name);
-    // });
+    Q_EMIT pm->new_default_sink_name(pm->default_output_device_name);
   }
 
   if (str_key == "default.audio.source") {
@@ -1072,13 +955,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     pm->default_input_device_name = v.data();
 
-    // util::idle_add([pm] {
-    //   if (pw::Manager::exiting) {
-    //     return;
-    //   }
-
-    // pm->new_default_source_name.emit(pm->default_input_device_name);
-    // });
+    Q_EMIT pm->new_default_source_name(pm->default_input_device_name);
   }
 
   return 0;
@@ -1086,63 +963,75 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
 const struct pw_metadata_events metadata_events = {PW_VERSION_METADATA_EVENTS, on_metadata_property};
 
-const struct pw_proxy_events link_proxy_events = {.destroy = on_destroy_link_proxy,
+const struct pw_proxy_events link_proxy_events = {.version = 0,
+                                                  .destroy = on_destroy_link_proxy,
                                                   .bound = nullptr,
                                                   .removed = on_removed_proxy,
                                                   .done = nullptr,
-                                                  .error = nullptr};
+                                                  .error = nullptr,
+                                                  .bound_props = nullptr};
 
-const struct pw_proxy_events port_proxy_events = {.destroy = on_destroy_port_proxy,
+const struct pw_proxy_events port_proxy_events = {.version = 0,
+                                                  .destroy = on_destroy_port_proxy,
                                                   .bound = nullptr,
                                                   .removed = on_removed_proxy,
                                                   .done = nullptr,
-                                                  .error = nullptr};
+                                                  .error = nullptr,
+                                                  .bound_props = nullptr};
 
-const struct pw_proxy_events module_proxy_events = {.destroy = on_destroy_module_proxy,
+const struct pw_proxy_events module_proxy_events = {.version = 0,
+                                                    .destroy = on_destroy_module_proxy,
                                                     .bound = nullptr,
                                                     .removed = on_removed_proxy,
                                                     .done = nullptr,
-                                                    .error = nullptr};
+                                                    .error = nullptr,
+                                                    .bound_props = nullptr};
 
-const struct pw_proxy_events client_proxy_events = {.destroy = on_destroy_client_proxy,
+const struct pw_proxy_events client_proxy_events = {.version = 0,
+                                                    .destroy = on_destroy_client_proxy,
                                                     .bound = nullptr,
                                                     .removed = on_removed_proxy,
                                                     .done = nullptr,
-                                                    .error = nullptr};
+                                                    .error = nullptr,
+                                                    .bound_props = nullptr};
 
-const struct pw_proxy_events device_proxy_events = {.destroy = on_destroy_device_proxy,
+const struct pw_proxy_events device_proxy_events = {.version = 0,
+                                                    .destroy = on_destroy_device_proxy,
                                                     .bound = nullptr,
                                                     .removed = on_removed_proxy,
                                                     .done = nullptr,
-                                                    .error = nullptr};
+                                                    .error = nullptr,
+                                                    .bound_props = nullptr};
 
-const struct pw_proxy_events node_proxy_events = {.destroy = on_destroy_node_proxy,
+const struct pw_proxy_events node_proxy_events = {.version = 0,
+                                                  .destroy = on_destroy_node_proxy,
                                                   .bound = nullptr,
                                                   .removed = on_removed_node_proxy,
                                                   .done = nullptr,
-                                                  .error = nullptr};
+                                                  .error = nullptr,
+                                                  .bound_props = nullptr};
 
-const struct pw_node_events node_events = {.info = on_node_info, .param = on_node_event_param};
+const struct pw_node_events node_events = {.version = 0, .info = on_node_info, .param = on_node_event_param};
 
 const struct pw_link_events link_events = {
+    .version = 0,
     .info = on_link_info,
 };
 
 const struct pw_module_events module_events = {
+    .version = 0,
     .info = on_module_info,
 };
 
-const struct pw_client_events client_events = {
-    .info = on_client_info,
-};
+const struct pw_client_events client_events = {.version = 0, .info = on_client_info, .permissions = nullptr};
 
-const struct pw_device_events device_events = {.info = on_device_info, .param = on_device_event_param};
+const struct pw_device_events device_events = {.version = 0, .info = on_device_info, .param = on_device_event_param};
 
 void on_registry_global(void* data,
                         uint32_t id,
-                        uint32_t permissions,
+                        [[maybe_unused]] uint32_t permissions,
                         const char* type,
-                        uint32_t version,
+                        [[maybe_unused]] uint32_t version,
                         const struct spa_dict* props) {
   if (id == SPA_ID_INVALID) {
     // If PipeWire send us a wrong id, we don't have issues
@@ -1263,37 +1152,13 @@ void on_registry_global(void* data,
     const auto nd_info_copy = *nd->nd_info;
 
     if (media_class == tags::pipewire::media_class::source && node_name != tags::pipewire::ee_source_name) {
-      // util::idle_add([pm, nd_info_copy] {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->source_added.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->source_added(nd_info_copy);
     } else if (media_class == tags::pipewire::media_class::sink && node_name != tags::pipewire::ee_sink_name) {
-      // util::idle_add([pm, nd_info_copy] {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->sink_added.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->sink_added(nd_info_copy);
     } else if (media_class == tags::pipewire::media_class::output_stream) {
-      // util::idle_add([pm, nd_info_copy] {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->stream_output_added.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->stream_output_added(nd_info_copy);
     } else if (media_class == tags::pipewire::media_class::input_stream) {
-      // util::idle_add([pm, nd_info_copy] {
-      //   if (pw::Manager::exiting) {
-      //     return;
-      //   }
-
-      //   // pm->stream_input_added.emit(nd_info_copy);
-      // });
+      Q_EMIT pm->stream_input_added(nd_info_copy);
     }
 
     // We will have debug info about our filters later
@@ -1403,7 +1268,7 @@ void on_registry_global(void* data,
     pw_module_add_listener(proxy, &pd->object_listener, &module_events, pd);
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &module_proxy_events, pd);
 
-    pw::ModuleInfo m_info{.id = id, .serial = serial};
+    pw::ModuleInfo m_info{.id = id, .serial = serial, .name = "", .description = "", .filename = ""};
 
     spa_dict_get_string(props, PW_KEY_MODULE_NAME, m_info.name);
 
@@ -1434,7 +1299,7 @@ void on_registry_global(void* data,
     pw_client_add_listener(proxy, &pd->object_listener, &client_events, pd);
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &client_proxy_events, pd);
 
-    pw::ClientInfo c_info{.id = id, .serial = serial};
+    pw::ClientInfo c_info{.id = id, .serial = serial, .name = "", .access = "", .api = ""};
 
     pm->list_clients.push_back(c_info);
 
@@ -1493,7 +1358,19 @@ void on_registry_global(void* data,
         pw_device_add_listener(proxy, &pd->object_listener, &device_events, pd);
         pw_proxy_add_listener(proxy, &pd->proxy_listener, &device_proxy_events, pd);
 
-        pw::DeviceInfo d_info{.id = id, .serial = serial, .media_class = media_class};
+        pw::DeviceInfo d_info{.id = id,
+                              .serial = serial,
+                              .name = "",
+                              .description = "",
+                              .nick = "",
+                              .media_class = media_class,
+                              .api = "",
+                              .input_route_name = "",
+                              .output_route_name = "",
+                              .bus_id = "",
+                              .bus_path = "",
+                              .input_route_available = SPA_PARAM_AVAILABILITY_no,
+                              .output_route_available = SPA_PARAM_AVAILABILITY_no};
 
         pm->list_devices.push_back(d_info);
       }
@@ -1503,7 +1380,7 @@ void on_registry_global(void* data,
   }
 }
 
-void on_core_error(void* data, uint32_t id, int seq, int res, const char* message) {
+void on_core_error(void* data, uint32_t id, [[maybe_unused]] int seq, int res, const char* message) {
   auto* const pm = static_cast<pw::Manager*>(data);
 
   using namespace std::string_literals;
@@ -1537,7 +1414,7 @@ void on_core_info(void* data, const struct pw_core_info* info) {
   util::debug("core name: "s + info->name);
 }
 
-void on_core_done(void* data, uint32_t id, int seq) {
+void on_core_done(void* data, uint32_t id, [[maybe_unused]] int seq) {
   auto* const pm = static_cast<pw::Manager*>(data);
 
   if (id == PW_ID_CORE) {
@@ -1548,11 +1425,17 @@ void on_core_done(void* data, uint32_t id, int seq) {
 const struct pw_core_events core_events = {.version = PW_VERSION_CORE_EVENTS,
                                            .info = on_core_info,
                                            .done = on_core_done,
-                                           .error = on_core_error};
+                                           .ping = nullptr,
+                                           .error = on_core_error,
+                                           .remove_id = nullptr,
+                                           .bound_id = nullptr,
+                                           .add_mem = nullptr,
+                                           .remove_mem = nullptr,
+                                           .bound_props = nullptr};
 
-const struct pw_registry_events registry_events = {
-    .global = on_registry_global,
-};
+const struct pw_registry_events registry_events = {.version = 0,
+                                                   .global = on_registry_global,
+                                                   .global_remove = nullptr};
 
 }  // namespace
 

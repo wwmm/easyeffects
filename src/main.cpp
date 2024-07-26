@@ -80,6 +80,8 @@ int main(int argc, char* argv[]) {
   tags::plugin_name::Model::self();
   pw::Manager::self();
 
+  QObject::connect(&pw::Manager::self(), &pw::Manager::sink_changed, [](auto info) { util::warning(info.name); });
+
   QQmlApplicationEngine engine;
 
   engine.rootContext()->setContextProperty("EEdb", ee_db);

@@ -145,29 +145,31 @@ class Manager : public QObject {
 
   static auto json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int;
 
-  // sigc::signal<void(const NodeInfo)> stream_output_added;
-  // sigc::signal<void(const NodeInfo)> stream_input_added;
-  // sigc::signal<void(const NodeInfo)> stream_output_changed;
-  // sigc::signal<void(const NodeInfo)> stream_input_changed;
-  // sigc::signal<void(const uint64_t)> stream_output_removed;
-  // sigc::signal<void(const uint64_t)> stream_input_removed;
+ signals:
+
+  void stream_input_added(NodeInfo);
+  void stream_output_added(NodeInfo);
+  void stream_input_changed(NodeInfo);
+  void stream_output_changed(NodeInfo);
+  void stream_input_removed(uint64_t);
+  void stream_output_removed(uint64_t);
 
   /*
     Do not pass NodeInfo by reference. Sometimes it dies before we use it and a segmentation fault happens.
   */
 
-  // sigc::signal<void(NodeInfo)> source_added;
-  // sigc::signal<void(NodeInfo)> source_changed;
-  // sigc::signal<void(NodeInfo)> source_removed;
-  // sigc::signal<void(NodeInfo)> sink_added;
-  // sigc::signal<void(NodeInfo)> sink_changed;
-  // sigc::signal<void(NodeInfo)> sink_removed;
-  // sigc::signal<void(std::string)> new_default_sink_name;
-  // sigc::signal<void(std::string)> new_default_source_name;
-  // sigc::signal<void(DeviceInfo)> device_input_route_changed;
-  // sigc::signal<void(DeviceInfo)> device_output_route_changed;
+  void source_added(NodeInfo);
+  void source_changed(NodeInfo);
+  void source_removed(NodeInfo);
+  void sink_added(NodeInfo);
+  void sink_changed(NodeInfo);
+  void sink_removed(NodeInfo);
+  void new_default_sink_name(std::string);
+  void new_default_source_name(std::string);
+  void device_input_route_changed(DeviceInfo);
+  void device_output_route_changed(DeviceInfo);
 
-  // sigc::signal<void(const LinkInfo)> link_changed;
+  void link_changed(LinkInfo);
 
  private:
   pw_context* context = nullptr;
