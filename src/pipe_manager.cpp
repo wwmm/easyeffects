@@ -365,13 +365,15 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       Q_EMIT pm->stream_output_removed(serial);
 
-      pm->disconnect_stream(nd->nd_info->id);
+      // Do not use disconnect_stream because it uses lock and is intended for calls from a different thread
+      pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", nullptr, nullptr);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
       const auto serial = nd->nd_info->serial;
 
       Q_EMIT pm->stream_input_removed(serial);
 
-      pm->disconnect_stream(nd->nd_info->id);
+      // Do not use disconnect_stream because it uses lock and is intended for calls from a different thread
+      pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", nullptr, nullptr);
     }
 
     util::debug(nd->nd_info->media_class + " " + util::to_string(nd->nd_info->id) + " " + nd->nd_info->name +
@@ -1309,7 +1311,7 @@ void on_registry_global(void* data,
     if (const auto* name = spa_dict_lookup(props, PW_KEY_METADATA_NAME)) {
       using namespace std::string_literals;
 
-      util::debug("found metadata: "s + name);
+      util::debug("found metadata: "s + name);  // NOLINT(missing-includes)
 
       if (std::strcmp(name, "default") == 0) {
         if (pm->metadata != nullptr) {
@@ -1656,9 +1658,11 @@ void Manager::disconnect_stream(const uint& stream_id) const {
     return;
   }
 
-  // target.node for backward compatibility with old PW session managers
-  pw_metadata_set_property(metadata, stream_id, "target.node", nullptr, nullptr);
+  lock();
+
   pw_metadata_set_property(metadata, stream_id, "target.object", nullptr, nullptr);
+
+  sync_wait_unlock();
 }
 
 void Manager::set_node_volume(pw_proxy* proxy, const uint& n_vol_ch, const float& value) const {
