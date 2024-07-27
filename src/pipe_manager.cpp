@@ -1656,13 +1656,9 @@ void Manager::disconnect_stream(const uint& stream_id) const {
     return;
   }
 
-  lock();
-
   // target.node for backward compatibility with old PW session managers
   pw_metadata_set_property(metadata, stream_id, "target.node", nullptr, nullptr);
   pw_metadata_set_property(metadata, stream_id, "target.object", nullptr, nullptr);
-
-  sync_wait_unlock();
 }
 
 void Manager::set_node_volume(pw_proxy* proxy, const uint& n_vol_ch, const float& value) const {
