@@ -6,20 +6,19 @@ import org.kde.kirigami as Kirigami
 //The ItemDelegate must be inside a Item for Kirigami.ListItemDragHandle to work.
 //The item beind dragged can not be the direct child.
 Item {
+    id: delegateItem
+
     width: parent ? parent.width : listItemDelegate.implicitWidth
     height: listItemDelegate.height
 
     Controls.ItemDelegate {
         id: listItemDelegate
 
-        property int wrapMode: Text.WrapAnywhere
-        property int elide: Text.ElideRight
-        property bool selected: listItemDelegate.highlighted || listItemDelegate.down
-        property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
-
         hoverEnabled: true
         width: parent.width
+        highlighted: delegateItem.ListView.isCurrentItem
         onClicked: {
+            delegateItem.ListView.view.currentIndex = index;
             showPassiveNotification("Clicked on plugin: " + model.name);
         }
 
