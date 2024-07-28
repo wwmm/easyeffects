@@ -25,6 +25,7 @@
 #include <spa/param/param.h>
 #include <spa/utils/defs.h>
 #include <sys/types.h>
+#include <QString>
 #include <cstdint>
 #include <string>
 
@@ -137,11 +138,11 @@ struct ModuleInfo {
 
   uint64_t serial = SPA_ID_INVALID;
 
-  std::string name;
+  QString name;
 
-  std::string description;
+  QString description;
 
-  std::string filename;
+  QString filename;
 };
 
 struct ClientInfo {

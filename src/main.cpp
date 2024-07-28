@@ -18,7 +18,7 @@
 #include "easyeffects_db_spectrum.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
-#include "pipe_manager.hpp"
+#include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

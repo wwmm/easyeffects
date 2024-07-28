@@ -17,7 +17,7 @@
  *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "pipe_manager.hpp"
+#include "pw_manager.hpp"
 #include <pipewire/client.h>
 #include <pipewire/context.h>
 #include <pipewire/core.h>
@@ -66,7 +66,7 @@
 #include <string>
 #include <thread>
 #include <vector>
-#include "pipe_objects.hpp"
+#include "pw_objects.hpp"
 #include "tags_app.hpp"
 #include "tags_pipewire.hpp"
 #include "util.hpp"

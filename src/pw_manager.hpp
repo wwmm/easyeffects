@@ -35,7 +35,8 @@
 #include <map>
 #include <string>
 #include <vector>
-#include "pipe_objects.hpp"
+#include "pw_model_module.hpp"
+#include "pw_objects.hpp"
 
 namespace pw {
 
@@ -176,6 +177,8 @@ class Manager : public QObject {
   pw_proxy *proxy_stream_output_sink = nullptr, *proxy_stream_input_source = nullptr;
 
   spa_hook core_listener{}, registry_listener{};
+
+  pw::models::Modules model_modules;
 
   void load_virtual_devices();
   void set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t& target_serial) const;

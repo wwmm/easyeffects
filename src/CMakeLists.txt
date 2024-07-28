@@ -16,7 +16,8 @@ qt_add_qml_module(easyeffects
 
 target_sources(easyeffects PRIVATE
     main.cpp
-    pipe_manager.cpp
+    pw_manager.cpp
+    pw_model_module.cpp
     tags_plugin_name.cpp
     util.cpp
     resources.qrc
