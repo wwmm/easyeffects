@@ -1399,11 +1399,9 @@ void on_core_info(void* data, const struct pw_core_info* info) {
 
   auto* const pm = static_cast<pw::Manager*>(data);
 
-  pm->core_name = info->name;
+  pm->runtimeVersion = info->version;
 
-  pm->version = info->version;
-
-  spa_dict_get_string(info->props, "default.clock.rate", pm->default_clock_rate);
+  spa_dict_get_string(info->props, "default.clock.rate", pm->defaultClockRate);
 
   spa_dict_get_string(info->props, "default.clock.min-quantum", pm->default_min_quantum);
 
@@ -1442,14 +1440,14 @@ const struct pw_registry_events registry_events = {.version = 0,
 
 namespace pw {
 
-Manager::Manager() : header_version(pw_get_headers_version()), library_version(pw_get_library_version()) {
+Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_get_library_version()) {
   pw_init(nullptr, nullptr);
 
   spa_zero(core_listener);
   spa_zero(registry_listener);
 
-  util::debug("compiled with PipeWire: " + header_version);
-  util::debug("linked to PipeWire: " + library_version);
+  util::debug("compiled with PipeWire: " + headerVersion.toStdString());
+  util::debug("linked to PipeWire: " + libraryVersion.toStdString());
 
   // this needs to occur after pw_init(), so putting it before pw_init() in the initializer breaks this
   // NOLINTNEXTLINE(cppcoreguidelines-prefer-member-initializer)

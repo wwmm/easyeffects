@@ -43,6 +43,11 @@ namespace pw {
 class Manager : public QObject {
   Q_OBJECT;
 
+  Q_PROPERTY(QString headerVersion MEMBER headerVersion NOTIFY headerVersionChanged)
+  Q_PROPERTY(QString libraryVersion MEMBER libraryVersion NOTIFY libraryVersionChanged)
+  Q_PROPERTY(QString runtimeVersion MEMBER runtimeVersion NOTIFY runtimeVersionChanged)
+  Q_PROPERTY(QString defaultClockRate MEMBER defaultClockRate NOTIFY defaultClockRateChanged)
+
  public:
   Manager();
   Manager(const Manager&) = delete;
@@ -93,8 +98,10 @@ class Manager : public QObject {
 
   std::array<std::string, 2U> blocklist_media_role = {"event", "Notification"};
 
-  std::string header_version, library_version, core_name, version;
-  std::string default_clock_rate = "0";
+  QString headerVersion;
+  QString libraryVersion;
+  QString runtimeVersion;
+  QString defaultClockRate;
   std::string default_min_quantum = "0";
   std::string default_max_quantum = "0";
   std::string default_quantum = "0";
@@ -147,6 +154,11 @@ class Manager : public QObject {
   static auto json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int;
 
  signals:
+
+  void headerVersionChanged();
+  void libraryVersionChanged();
+  void runtimeVersionChanged();
+  void defaultClockRateChanged();
 
   void stream_input_added(NodeInfo);
   void stream_output_added(NodeInfo);

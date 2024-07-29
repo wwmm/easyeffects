@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.Page {
     id: pwPage
@@ -28,6 +29,49 @@ Kirigami.Page {
             "title": i18n("Test Signal"),
             "icon": "waveform-symbolic"
         });
+    }
+
+    Component {
+        id: generalPage
+
+        FormCard.FormCardPage {
+            FormCard.FormHeader {
+                title: i18n("Device Management")
+            }
+
+            FormCard.FormSectionText {
+                text: i18n("It's recommended to NOT set Easy Effects Sink/Source as Default Device in external applications (e.g. Gnome Settings and Plasma System Settings)")
+            }
+
+            FormCard.FormHeader {
+                title: i18n("Server Information")
+            }
+
+            FormCard.FormCard {
+                FormCard.FormTextDelegate {
+                    text: i18n("Header Version")
+                    description: EEpwManager.headerVersion
+                }
+
+                FormCard.FormTextDelegate {
+                    text: i18n("Library Version")
+                    description: EEpwManager.libraryVersion
+                }
+
+                FormCard.FormTextDelegate {
+                    text: i18n("Runtime Version")
+                    description: EEpwManager.runtimeVersion
+                }
+
+                FormCard.FormTextDelegate {
+                    text: i18n("Default Sampling Rate")
+                    description: EEpwManager.defaultClockRate + " Hz"
+                }
+
+            }
+
+        }
+
     }
 
     GridLayout {
@@ -103,18 +147,7 @@ Kirigami.Page {
             Layout.fillHeight: true
             Layout.fillWidth: true
             Layout.minimumWidth: panelStack.currentItem.implicitWidth
-
-            initialItem: Kirigami.Page {
-                anchors.fill: parent
-
-                Kirigami.PlaceholderMessage {
-                    anchors.centerIn: parent
-                    text: i18n("General")
-                    explanation: i18n("to do")
-                }
-
-            }
-
+            initialItem: generalPage
         }
 
     }
