@@ -1,3 +1,4 @@
+import EEpw
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -68,6 +69,48 @@ Kirigami.Page {
                     description: EEpwManager.defaultClockRate + " Hz"
                 }
 
+                FormCard.FormTextDelegate {
+                    text: i18n("Minimum Quantum")
+                    description: EEpwManager.defaultMinQuantum
+                }
+
+                FormCard.FormTextDelegate {
+                    text: i18n("Maximum Quantum")
+                    description: EEpwManager.defaultMaxQuantum
+                }
+
+                FormCard.FormTextDelegate {
+                    text: i18n("Default Quantum")
+                    description: EEpwManager.defaultQuantum
+                }
+
+            }
+
+        }
+
+    }
+
+    Component {
+        id: modulesPage
+
+        Kirigami.ScrollablePage {
+            Kirigami.CardsListView {
+                id: modulesListView
+
+                clip: true
+                reuseItems: true
+                model: ModelModules
+
+                Kirigami.PlaceholderMessage {
+                    anchors.centerIn: parent
+                    width: parent.width - (Kirigami.Units.largeSpacing * 4)
+                    visible: modulesListView.count === 0
+                    text: i18n("No Modules")
+                }
+
+                delegate: DelegateModulesList {
+                }
+
             }
 
         }
@@ -110,7 +153,25 @@ Kirigami.Page {
                 highlighted: ListView.isCurrentItem
                 onClicked: {
                     ListView.view.currentIndex = index;
-                    showPassiveNotification("Clicked on plugin: " + model.title);
+                    switch (index) {
+                    case 0:
+                        panelStack.replace(generalPage);
+                        break;
+                    case 1:
+                        panelStack.replace(autoloadingPage);
+                        break;
+                    case 2:
+                        panelStack.replace(modulesPage);
+                        break;
+                    case 3:
+                        panelStack.replace(clientsPage);
+                        break;
+                    case 4:
+                        panelStack.replace(testSignalPage);
+                        break;
+                    default:
+                        console.log("pipewire page stackview: invalid index");
+                    }
                 }
 
                 contentItem: RowLayout {

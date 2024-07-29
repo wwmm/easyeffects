@@ -78,7 +78,7 @@ int main(int argc, char* argv[]) {
 
   // Making sure these singleton classes are initialized before qml
   tags::plugin_name::Model::self();
-  auto pm = &pw::Manager::self();
+  pw::Manager::self();
 
   // QObject::connect(&pw::Manager::self(), &pw::Manager::sink_changed, [](auto info) { util::warning(info.name); });
 
@@ -89,7 +89,6 @@ int main(int argc, char* argv[]) {
   engine.rootContext()->setContextProperty("EEdbStreamOutputs", ee_db_streamoutputs);
   engine.rootContext()->setContextProperty("EEdbStreamInputs", ee_db_streaminputs);
   engine.rootContext()->setContextProperty("EEdbStreamInputs", ee_db_streaminputs);
-  engine.rootContext()->setContextProperty("EEpwManager", pm);
   engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
   engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
 

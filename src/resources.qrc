@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/ui">
+        <file alias="DelegateModulesList.qml">contents/ui/DelegateModulesList.qml</file>
         <file alias="DelegatePluginsList.qml">contents/ui/DelegatePluginsList.qml</file>
         <file alias="DelegateStreamsList.qml">contents/ui/DelegateStreamsList.qml</file>
         <file alias="EeChart.qml">contents/ui/EeChart.qml</file>

@@ -33,6 +33,7 @@
 #include <pipewire/proxy.h>
 #include <pipewire/thread-loop.h>
 #include <pipewire/version.h>
+#include <qqml.h>
 #include <qtmetamacros.h>
 #include <spa/monitor/device.h>
 #include <spa/param/audio/raw-types.h>
@@ -66,6 +67,8 @@
 #include <string>
 #include <thread>
 #include <vector>
+#include "config.h"
+#include "pw_model_module.hpp"
 #include "pw_objects.hpp"
 #include "tags_app.hpp"
 #include "tags_pipewire.hpp"
@@ -1275,6 +1278,8 @@ void on_registry_global(void* data,
 
     pm->list_modules.push_back(m_info);
 
+    pm->model_modules.append(m_info);
+
     return;
   }
 
@@ -1403,11 +1408,11 @@ void on_core_info(void* data, const struct pw_core_info* info) {
 
   spa_dict_get_string(info->props, "default.clock.rate", pm->defaultClockRate);
 
-  spa_dict_get_string(info->props, "default.clock.min-quantum", pm->default_min_quantum);
+  spa_dict_get_string(info->props, "default.clock.min-quantum", pm->defaultMinQuantum);
 
-  spa_dict_get_string(info->props, "default.clock.max-quantum", pm->default_max_quantum);
+  spa_dict_get_string(info->props, "default.clock.max-quantum", pm->defaultMaxQuantum);
 
-  spa_dict_get_string(info->props, "default.clock.quantum", pm->default_quantum);
+  spa_dict_get_string(info->props, "default.clock.quantum", pm->defaultQuantum);
 
   util::debug("core version: "s + info->version);
   util::debug("core name: "s + info->name);
@@ -1441,6 +1446,11 @@ const struct pw_registry_events registry_events = {.version = 0,
 namespace pw {
 
 Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_get_library_version()) {
+  qmlRegisterSingletonInstance<pw::Manager>("EEpw", VERSION_MAJOR, VERSION_MINOR, "EEpwManager", this);
+
+  qmlRegisterSingletonInstance<pw::models::Modules>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelModules",
+                                                    &model_modules);
+
   pw_init(nullptr, nullptr);
 
   spa_zero(core_listener);

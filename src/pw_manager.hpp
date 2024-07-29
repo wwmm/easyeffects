@@ -47,6 +47,9 @@ class Manager : public QObject {
   Q_PROPERTY(QString libraryVersion MEMBER libraryVersion NOTIFY libraryVersionChanged)
   Q_PROPERTY(QString runtimeVersion MEMBER runtimeVersion NOTIFY runtimeVersionChanged)
   Q_PROPERTY(QString defaultClockRate MEMBER defaultClockRate NOTIFY defaultClockRateChanged)
+  Q_PROPERTY(QString defaultMinQuantum MEMBER defaultMinQuantum NOTIFY defaultMinQuantumChanged)
+  Q_PROPERTY(QString defaultMaxQuantum MEMBER defaultMaxQuantum NOTIFY defaultMaxQuantumChanged)
+  Q_PROPERTY(QString defaultQuantum MEMBER defaultQuantum NOTIFY defaultQuantumChanged)
 
  public:
   Manager();
@@ -102,9 +105,11 @@ class Manager : public QObject {
   QString libraryVersion;
   QString runtimeVersion;
   QString defaultClockRate;
-  std::string default_min_quantum = "0";
-  std::string default_max_quantum = "0";
-  std::string default_quantum = "0";
+  QString defaultMinQuantum;
+  QString defaultMaxQuantum;
+  QString defaultQuantum;
+
+  pw::models::Modules model_modules;
 
   auto node_map_at_id(const uint& id) -> NodeInfo&;
 
@@ -159,6 +164,9 @@ class Manager : public QObject {
   void libraryVersionChanged();
   void runtimeVersionChanged();
   void defaultClockRateChanged();
+  void defaultMinQuantumChanged();
+  void defaultMaxQuantumChanged();
+  void defaultQuantumChanged();
 
   void stream_input_added(NodeInfo);
   void stream_output_added(NodeInfo);
@@ -189,8 +197,6 @@ class Manager : public QObject {
   pw_proxy *proxy_stream_output_sink = nullptr, *proxy_stream_input_source = nullptr;
 
   spa_hook core_listener{}, registry_listener{};
-
-  pw::models::Modules model_modules;
 
   void load_virtual_devices();
   void set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t& target_serial) const;
