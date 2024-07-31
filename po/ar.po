@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-22 16:11+0000\n"
-"PO-Revision-Date: 2024-07-19 03:09+0000\n"
+"PO-Revision-Date: 2024-07-31 11:16+0000\n"
 "Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
@@ -278,8 +278,9 @@ msgid "Name"
 msgstr "الاسم"
 
 #: data/ui/autoload_row.ui:64
+#, fuzzy
 msgid "Profile"
-msgstr ""
+msgstr "مِلَفّ تعريف"
 
 #: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:246
 #: data/ui/pipe_manager_box.ui:376
@@ -1744,9 +1745,8 @@ msgid "Inactivity Timeout"
 msgstr ""
 
 #: data/ui/preferences_general.ui:91
-#, fuzzy
 msgid "Input Pipeline"
-msgstr "جهاز الدخل"
+msgstr "مجرى الدخل"
 
 #: data/ui/preferences_general.ui:120
 msgid "Update Interval"
@@ -2258,11 +2258,11 @@ msgstr ""
 
 #: src/application_ui.cpp:344
 msgid "_Output"
-msgstr ""
+msgstr "ال_خرج"
 
 #: src/application_ui.cpp:345
 msgid "_Input"
-msgstr ""
+msgstr "ال_دخل"
 
 #: src/application_ui.cpp:346
 msgid "_PipeWire"
