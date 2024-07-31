@@ -55,6 +55,7 @@
 #include <spa/utils/result.h>
 #include <spa/utils/type.h>
 #include <sys/types.h>
+#include <QString>
 #include <algorithm>
 #include <array>
 #include <cerrno>
@@ -753,13 +754,23 @@ void on_destroy_port_proxy(void* data) {
 void on_module_info(void* object, const struct pw_module_info* info) {
   auto* const md = static_cast<proxy_data*>(object);
 
-  for (auto& module : md->pm->list_modules) {
-    if (module.id == info->id) {
-      if (info->filename != nullptr) {
-        module.filename = info->filename;
+  auto list = md->pm->model_modules.get_list();
+
+  for (int n = 0; n < list.size(); n++) {
+    if (list[n].id == info->id) {
+      auto index = md->pm->model_modules.index(n);
+
+      if (info->props != nullptr) {
+        QString description;
+
+        spa_dict_get_string(info->props, PW_KEY_MODULE_DESCRIPTION, description);
+
+        md->pm->model_modules.update_field(index, pw::models::Modules::Roles::Description, description);
       }
 
-      spa_dict_get_string(info->props, PW_KEY_MODULE_DESCRIPTION, module.description);
+      if (info->filename != nullptr) {
+        md->pm->model_modules.update_field(index, pw::models::Modules::Roles::Filename, info->filename);
+      }
 
       break;
     }
@@ -771,9 +782,7 @@ void on_destroy_module_proxy(void* data) {
 
   spa_hook_remove(&md->proxy_listener);
 
-  md->pm->list_modules.erase(std::remove_if(md->pm->list_modules.begin(), md->pm->list_modules.end(),
-                                            [=](const auto& n) { return n.id == md->id; }),
-                             md->pm->list_modules.end());
+  md->pm->model_modules.remove_by_id(md->id);
 }
 
 void on_client_info(void* object, const struct pw_client_info* info) {
@@ -1275,8 +1284,6 @@ void on_registry_global(void* data,
     pw::ModuleInfo m_info{.id = id, .serial = serial, .name = "", .description = "", .filename = ""};
 
     spa_dict_get_string(props, PW_KEY_MODULE_NAME, m_info.name);
-
-    pm->list_modules.push_back(m_info);
 
     pm->model_modules.append(m_info);
 

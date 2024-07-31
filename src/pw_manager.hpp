@@ -81,8 +81,6 @@ class Manager : public QObject {
 
   std::vector<PortInfo> list_ports;
 
-  std::vector<ModuleInfo> list_modules;
-
   std::vector<ClientInfo> list_clients;
 
   std::vector<DeviceInfo> list_devices;

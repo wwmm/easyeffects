@@ -2,6 +2,7 @@
 #include <qabstractitemmodel.h>
 #include <qhash.h>
 #include <qhashfunctions.h>
+#include <qlist.h>
 #include <qnamespace.h>
 #include <qobject.h>
 #include <qstringview.h>
@@ -50,54 +51,8 @@ QVariant Modules::data(const QModelIndex& index, int role) const {
   }
 }
 
-bool Modules::setData(const QModelIndex& index, const QVariant& value, int role) {
-  if (!value.canConvert<Modules>() && role != Qt::EditRole) {
-    return false;
-  }
-
-  auto it = std::next(list.begin(), index.row());
-
-  switch (role) {
-    case Roles::Id: {
-      it->id = value.toInt();
-
-      emit dataChanged(index, index, {Roles::Id});
-
-      break;
-    }
-    case Roles::Serial: {
-      it->serial = value.toInt();
-
-      emit dataChanged(index, index, {Roles::Serial});
-
-      break;
-    }
-    case Roles::Name: {
-      it->name = value.toString();
-
-      emit dataChanged(index, index, {Roles::Name});
-
-      break;
-    }
-    case Roles::Description: {
-      it->description = value.toString();
-
-      emit dataChanged(index, index, {Roles::Description});
-
-      break;
-    }
-    case Roles::Filename: {
-      it->filename = value.toString();
-
-      emit dataChanged(index, index, {Roles::Filename});
-
-      break;
-    }
-    default:
-      break;
-  }
-
-  return true;
+auto Modules::get_list() -> QList<ModuleInfo> {
+  return list;
 }
 
 void Modules::append(const ModuleInfo& info) {
@@ -112,7 +67,21 @@ void Modules::append(const ModuleInfo& info) {
   emit dataChanged(index(0), index(list.size() - 1));
 }
 
-void Modules::remove(const int& rowIndex) {
+void Modules::remove_by_id(const uint& id) {
+  int rowIndex = -1;
+
+  for (int n = 0; n < list.size(); n++) {
+    if (list[n].id == id) {
+      rowIndex = n;
+
+      break;
+    }
+  }
+
+  if (rowIndex == -1) {
+    return;
+  }
+
   beginRemoveRows(QModelIndex(), rowIndex, rowIndex);
 
   list.remove(rowIndex);
