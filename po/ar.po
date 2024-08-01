@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-22 16:11+0000\n"
-"PO-Revision-Date: 2024-07-31 11:16+0000\n"
+"PO-Revision-Date: 2024-08-01 00:09+0000\n"
 "Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
@@ -1670,7 +1670,7 @@ msgstr ""
 
 #: data/ui/plugins_box.ui:28
 msgid "Show/hide effects list"
-msgstr ""
+msgstr "أظهر/اخف قائمة المؤثرات"
 
 #: data/ui/plugins_box.ui:42
 msgid "Add Effect"
@@ -2074,7 +2074,7 @@ msgstr ""
 
 #: data/ui/shortcuts.ui:37
 msgid "Quit Easy Effects"
-msgstr ""
+msgstr "إنهاء Easy Effects"
 
 #: data/ui/speex.ui:33
 msgid "Denoise"
@@ -2234,11 +2234,11 @@ msgstr ""
 
 #: src/application.cpp:579
 msgid "Print the easyeffects version"
-msgstr ""
+msgstr "اطبع إصدار easyeffects"
 
 #: src/application.cpp:582
 msgid "Reset Easy Effects."
-msgstr ""
+msgstr "إعادة ضبط Easy Effects."
 
 #: src/application.cpp:585
 msgid "Hide the Window."
@@ -2315,15 +2315,15 @@ msgstr ""
 
 #: src/effects_box.cpp:358 src/plugins_box.cpp:807
 msgid "Recorders"
-msgstr ""
+msgstr "التسجيلات"
 
 #: src/effects_box.cpp:381 src/plugins_box.cpp:827
 msgid "Players"
-msgstr ""
+msgstr "المشغلات"
 
 #: src/effects_box.cpp:404
 msgid "Effects"
-msgstr ""
+msgstr "المؤثرات"
 
 #: src/equalizer_ui.cpp:521
 msgid "Import APO Preset File"
