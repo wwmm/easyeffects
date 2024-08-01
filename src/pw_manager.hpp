@@ -35,7 +35,8 @@
 #include <map>
 #include <string>
 #include <vector>
-#include "pw_model_module.hpp"
+#include "pw_model_clients.hpp"
+#include "pw_model_modules.hpp"
 #include "pw_objects.hpp"
 
 namespace pw {
@@ -81,8 +82,6 @@ class Manager : public QObject {
 
   std::vector<PortInfo> list_ports;
 
-  std::vector<ClientInfo> list_clients;
-
   std::vector<DeviceInfo> list_devices;
 
   std::string default_output_device_name, default_input_device_name;
@@ -108,6 +107,7 @@ class Manager : public QObject {
   QString defaultQuantum;
 
   pw::models::Modules model_modules;
+  pw::models::Clients model_clients;
 
   auto node_map_at_id(const uint& id) -> NodeInfo&;
 

@@ -62,14 +62,16 @@ class Modules : public QAbstractListModel {
   void remove_by_id(const uint& id);
 
   template <typename T>
-  void update_field(const QModelIndex& index, const Roles& role, const T& value) {
-    auto it = std::next(list.begin(), index.row());
+  void update_field(const int& row, const Roles& role, const T& value) {
+    auto model_index = this->index(row);
+
+    auto it = std::next(list.begin(), row);
 
     switch (role) {
       case Roles::Id: {
         if constexpr (std::is_same_v<T, uint>) {
           it->id = value;
-          emit dataChanged(index, index, {Roles::Id});
+          emit dataChanged(model_index, model_index, {Roles::Id});
         }
 
         break;
@@ -77,7 +79,7 @@ class Modules : public QAbstractListModel {
       case Roles::Serial: {
         if constexpr (std::is_same_v<T, uint64_t>) {
           it->serial = value;
-          emit dataChanged(index, index, {Roles::Serial});
+          emit dataChanged(model_index, model_index, {Roles::Serial});
         }
 
         break;
@@ -85,7 +87,7 @@ class Modules : public QAbstractListModel {
       case Roles::Name: {
         if constexpr (std::is_same_v<T, QString>) {
           it->name = value;
-          emit dataChanged(index, index, {Roles::Name});
+          emit dataChanged(model_index, model_index, {Roles::Name});
         }
 
         break;
@@ -93,7 +95,7 @@ class Modules : public QAbstractListModel {
       case Roles::Description: {
         if constexpr (std::is_same_v<T, QString>) {
           it->description = value;
-          emit dataChanged(index, index, {Roles::Description});
+          emit dataChanged(model_index, model_index, {Roles::Description});
         }
 
         break;
@@ -101,7 +103,7 @@ class Modules : public QAbstractListModel {
       case Roles::Filename: {
         if constexpr (std::is_same_v<T, QString>) {
           it->filename = value;
-          emit dataChanged(index, index, {Roles::Filename});
+          emit dataChanged(model_index, model_index, {Roles::Filename});
         }
 
         break;

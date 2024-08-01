@@ -1,4 +1,4 @@
-#include "pw_model_module.hpp"
+#include "pw_model_clients.hpp"
 #include <qabstractitemmodel.h>
 #include <qhash.h>
 #include <qhashfunctions.h>
@@ -14,21 +14,21 @@
 
 namespace pw::models {
 
-Modules::Modules(QObject* parent) : QAbstractListModel(parent) {}
+Clients::Clients(QObject* parent) : QAbstractListModel(parent) {}
 
-int Modules::rowCount(const QModelIndex& /*parent*/) const {
+int Clients::rowCount(const QModelIndex& /*parent*/) const {
   return list.size();
 }
 
-QHash<int, QByteArray> Modules::roleNames() const {
+QHash<int, QByteArray> Clients::roleNames() const {
   return {{Roles::Id, "id"},
           {Roles::Serial, "serial"},
           {Roles::Name, "name"},
-          {Roles::Description, "description"},
-          {Roles::Filename, "filename"}};
+          {Roles::Access, "access"},
+          {Roles::Api, "api"}};
 }
 
-QVariant Modules::data(const QModelIndex& index, int role) const {
+QVariant Clients::data(const QModelIndex& index, int role) const {
   if (list.empty()) {
     return "";
   }
@@ -42,20 +42,20 @@ QVariant Modules::data(const QModelIndex& index, int role) const {
       return static_cast<qint64>(it->serial);
     case Roles::Name:
       return it->name;
-    case Roles::Description:
-      return it->description;
-    case Roles::Filename:
-      return it->filename;
+    case Roles::Access:
+      return it->access;
+    case Roles::Api:
+      return it->api;
     default:
       return {};
   }
 }
 
-auto Modules::get_list() -> QList<ModuleInfo> {
+auto Clients::get_list() -> QList<ClientInfo> {
   return list;
 }
 
-void Modules::append(const ModuleInfo& info) {
+void Clients::append(const ClientInfo& info) {
   int pos = list.empty() ? 0 : list.size() - 1;
 
   beginInsertRows(QModelIndex(), pos, pos);
@@ -67,7 +67,7 @@ void Modules::append(const ModuleInfo& info) {
   emit dataChanged(index(0), index(list.size() - 1));
 }
 
-void Modules::remove_by_id(const uint& id) {
+void Clients::remove_by_id(const uint& id) {
   int rowIndex = -1;
 
   for (int n = 0; n < list.size(); n++) {
@@ -91,7 +91,7 @@ void Modules::remove_by_id(const uint& id) {
   emit dataChanged(index(0), index(list.size() - 1));
 }
 
-void Modules::reset() {
+void Clients::reset() {
   beginResetModel();
 
   list.clear();
@@ -99,11 +99,11 @@ void Modules::reset() {
   endResetModel();
 }
 
-void Modules::begin_reset() {
+void Clients::begin_reset() {
   beginResetModel();
 }
 
-void Modules::end_reset() {
+void Clients::end_reset() {
   endResetModel();
 }
 

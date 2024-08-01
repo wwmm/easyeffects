@@ -69,7 +69,8 @@
 #include <thread>
 #include <vector>
 #include "config.h"
-#include "pw_model_module.hpp"
+#include "pw_model_clients.hpp"
+#include "pw_model_modules.hpp"
 #include "pw_objects.hpp"
 #include "tags_app.hpp"
 #include "tags_pipewire.hpp"
@@ -758,18 +759,16 @@ void on_module_info(void* object, const struct pw_module_info* info) {
 
   for (int n = 0; n < list.size(); n++) {
     if (list[n].id == info->id) {
-      auto index = md->pm->model_modules.index(n);
-
       if (info->props != nullptr) {
         QString description;
 
         spa_dict_get_string(info->props, PW_KEY_MODULE_DESCRIPTION, description);
 
-        md->pm->model_modules.update_field(index, pw::models::Modules::Roles::Description, description);
+        md->pm->model_modules.update_field(n, pw::models::Modules::Roles::Description, description);
       }
 
       if (info->filename != nullptr) {
-        md->pm->model_modules.update_field(index, pw::models::Modules::Roles::Filename, info->filename);
+        md->pm->model_modules.update_field(n, pw::models::Modules::Roles::Filename, info->filename);
       }
 
       break;
@@ -788,13 +787,23 @@ void on_destroy_module_proxy(void* data) {
 void on_client_info(void* object, const struct pw_client_info* info) {
   auto* const cd = static_cast<proxy_data*>(object);
 
-  for (auto& client : cd->pm->list_clients) {
-    if (client.id == info->id) {
-      spa_dict_get_string(info->props, PW_KEY_APP_NAME, client.name);
+  auto list = cd->pm->model_clients.get_list();
 
-      spa_dict_get_string(info->props, PW_KEY_ACCESS, client.access);
+  for (int n = 0; n < list.size(); n++) {
+    if (list[n].id == info->id && info->props != nullptr) {
+      QString name;
+      QString access;
+      QString api;
 
-      spa_dict_get_string(info->props, PW_KEY_CLIENT_API, client.api);
+      spa_dict_get_string(info->props, PW_KEY_APP_NAME, name);
+
+      spa_dict_get_string(info->props, PW_KEY_ACCESS, access);
+
+      spa_dict_get_string(info->props, PW_KEY_CLIENT_API, api);
+
+      cd->pm->model_clients.update_field(n, pw::models::Clients::Roles::Name, name);
+      cd->pm->model_clients.update_field(n, pw::models::Clients::Roles::Access, access);
+      cd->pm->model_clients.update_field(n, pw::models::Clients::Roles::Api, api);
 
       break;
     }
@@ -806,9 +815,7 @@ void on_destroy_client_proxy(void* data) {
 
   spa_hook_remove(&cd->proxy_listener);
 
-  cd->pm->list_clients.erase(std::remove_if(cd->pm->list_clients.begin(), cd->pm->list_clients.end(),
-                                            [=](const auto& n) { return n.serial == cd->serial; }),
-                             cd->pm->list_clients.end());
+  cd->pm->model_clients.remove_by_id(cd->id);
 }
 
 void on_device_info(void* object, const struct pw_device_info* info) {
@@ -1314,7 +1321,7 @@ void on_registry_global(void* data,
 
     pw::ClientInfo c_info{.id = id, .serial = serial, .name = "", .access = "", .api = ""};
 
-    pm->list_clients.push_back(c_info);
+    pm->model_clients.append(c_info);
 
     return;
   }
@@ -1457,6 +1464,9 @@ Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_
 
   qmlRegisterSingletonInstance<pw::models::Modules>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelModules",
                                                     &model_modules);
+
+  qmlRegisterSingletonInstance<pw::models::Clients>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelClients",
+                                                    &model_clients);
 
   pw_init(nullptr, nullptr);
 

@@ -57,8 +57,8 @@ Kirigami.ApplicationWindow {
         id: aboutDialog
 
         Kirigami.AboutPage {
-            implicitWidth: Kirigami.Units.gridUnit * 24
-            implicitHeight: Kirigami.Units.gridUnit * 21
+            implicitWidth: Kirigami.Units.gridUnit * 30
+            implicitHeight: Kirigami.Units.gridUnit * 30
             aboutData: AboutEE
         }
 

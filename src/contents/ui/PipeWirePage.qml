@@ -117,6 +117,33 @@ Kirigami.Page {
 
     }
 
+    Component {
+        id: clientsPage
+
+        Kirigami.ScrollablePage {
+            Kirigami.CardsListView {
+                id: clientsListView
+
+                clip: true
+                reuseItems: true
+                model: ModelClients
+
+                Kirigami.PlaceholderMessage {
+                    anchors.centerIn: parent
+                    width: parent.width - (Kirigami.Units.largeSpacing * 4)
+                    visible: clientsListView.count === 0
+                    text: i18n("No Clients")
+                }
+
+                delegate: DelegateClientsList {
+                }
+
+            }
+
+        }
+
+    }
+
     GridLayout {
         Layout.fillHeight: true
         Layout.fillWidth: true

@@ -150,11 +150,11 @@ struct ClientInfo {
 
   uint64_t serial = SPA_ID_INVALID;
 
-  std::string name;
+  QString name;
 
-  std::string access;
+  QString access;
 
-  std::string api;
+  QString api;
 };
 
 struct DeviceInfo {
