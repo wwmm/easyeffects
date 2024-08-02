@@ -3,7 +3,6 @@
 #include <qhash.h>
 #include <qhashfunctions.h>
 #include <qlist.h>
-#include <qnamespace.h>
 #include <qobject.h>
 #include <qstringview.h>
 #include <qtmetamacros.h>
