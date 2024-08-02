@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-07-22 16:11+0000\n"
-"PO-Revision-Date: 2024-08-01 00:09+0000\n"
+"PO-Revision-Date: 2024-08-02 22:09+0000\n"
 "Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
@@ -278,9 +278,8 @@ msgid "Name"
 msgstr "الاسم"
 
 #: data/ui/autoload_row.ui:64
-#, fuzzy
 msgid "Profile"
-msgstr "مِلَفّ تعريف"
+msgstr "مِلَفّ تعريفي"
 
 #: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:246
 #: data/ui/pipe_manager_box.ui:376
