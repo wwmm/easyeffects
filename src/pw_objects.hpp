@@ -36,35 +36,35 @@ struct NodeInfo {
 
   uint id = SPA_ID_INVALID;
 
-  uint device_id = SPA_ID_INVALID;
-
   uint64_t serial = SPA_ID_INVALID;
 
-  std::string name;
+  uint device_id = SPA_ID_INVALID;
 
-  std::string description;
+  QString name;
 
-  std::string media_class;
+  QString description;
 
-  std::string media_role;
+  QString media_class;
 
-  std::string app_name;
+  QString media_role;
 
-  std::string app_process_id;
+  QString app_name;
 
-  std::string app_process_binary;
+  QString app_process_id;
 
-  std::string app_icon_name;
+  QString app_process_binary;
 
-  std::string media_icon_name;
+  QString app_icon_name;
 
-  std::string device_icon_name;
+  QString media_icon_name;
 
-  std::string media_name;
+  QString device_icon_name;
 
-  std::string format;
+  QString media_name;
 
-  std::string application_id;
+  QString format;
+
+  QString application_id;
 
   int priority = -1;
 

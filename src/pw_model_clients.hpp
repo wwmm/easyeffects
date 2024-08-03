@@ -71,7 +71,6 @@ class Clients : public QAbstractListModel {
       case Roles::Id: {
         if constexpr (std::is_same_v<T, uint>) {
           it->id = value;
-          emit dataChanged(model_index, model_index, {Roles::Id});
         }
 
         break;
@@ -79,7 +78,6 @@ class Clients : public QAbstractListModel {
       case Roles::Serial: {
         if constexpr (std::is_same_v<T, uint64_t>) {
           it->serial = value;
-          emit dataChanged(model_index, model_index, {Roles::Serial});
         }
 
         break;
@@ -87,7 +85,6 @@ class Clients : public QAbstractListModel {
       case Roles::Name: {
         if constexpr (std::is_same_v<T, QString>) {
           it->name = value;
-          emit dataChanged(model_index, model_index, {Roles::Name});
         }
 
         break;
@@ -95,7 +92,6 @@ class Clients : public QAbstractListModel {
       case Roles::Access: {
         if constexpr (std::is_same_v<T, QString>) {
           it->access = value;
-          emit dataChanged(model_index, model_index, {Roles::Access});
         }
 
         break;
@@ -103,7 +99,6 @@ class Clients : public QAbstractListModel {
       case Roles::Api: {
         if constexpr (std::is_same_v<T, QString>) {
           it->api = value;
-          emit dataChanged(model_index, model_index, {Roles::Api});
         }
 
         break;
@@ -111,6 +106,8 @@ class Clients : public QAbstractListModel {
       default:
         break;
     }
+
+    emit dataChanged(model_index, model_index, {role});
   }
 
  private:

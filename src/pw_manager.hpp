@@ -37,6 +37,7 @@
 #include <vector>
 #include "pw_model_clients.hpp"
 #include "pw_model_modules.hpp"
+#include "pw_model_nodes.hpp"
 #include "pw_objects.hpp"
 
 namespace pw {
@@ -106,12 +107,13 @@ class Manager : public QObject {
   QString defaultMaxQuantum;
   QString defaultQuantum;
 
+  pw::models::Nodes model_nodes;
   pw::models::Modules model_modules;
   pw::models::Clients model_clients;
 
   auto node_map_at_id(const uint& id) -> NodeInfo&;
 
-  auto stream_is_connected(const uint& id, const std::string& media_class) -> bool;
+  auto stream_is_connected(const uint& id, const QString& media_class) -> bool;
 
   void connect_stream_output(const uint& id) const;
 
@@ -196,6 +198,7 @@ class Manager : public QObject {
 
   spa_hook core_listener{}, registry_listener{};
 
+  void register_models();
   void load_virtual_devices();
   void set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t& target_serial) const;
 };

@@ -1,4 +1,5 @@
 import "Common.js" as Common
+import EEpw
 import EEtagsPluginName
 import QtCharts
 import QtQuick
@@ -83,44 +84,18 @@ Kirigami.Page {
 
                 clip: true
                 reuseItems: true
+                model: pageType === 0 ? ModelOutputStreams : ModelInputStreams
 
                 Kirigami.PlaceholderMessage {
                     anchors.centerIn: parent
                     width: parent.width - (Kirigami.Units.largeSpacing * 4)
                     visible: streamsListView.count === 0
-                    text: i18n("No Preset")
+                    text: i18n("Empty List")
+                    explanation: i18n("No Audio Application Available")
+                    icon.name: "emblem-music-symbolic"
                 }
 
                 delegate: DelegateStreamsList {
-                }
-
-                model: ListModel {
-                    ListElement {
-                        iconName: "firefox"
-                        appName: "Stream 1"
-                        mediaName: "test stream"
-                        streamState: "Idle"
-                        streamFormat: "F32"
-                        streamRate: "44.1 kHz"
-                        streamChannels: "6 channels"
-                        streamLatency: "30 ms"
-                        streamMuted: false
-                        streamVolume: 85
-                    }
-
-                    ListElement {
-                        iconName: "chromium"
-                        appName: "Stream 2"
-                        mediaName: "test stream"
-                        streamState: "Idle"
-                        streamFormat: "F32"
-                        streamRate: "48 kHz"
-                        streamChannels: "2 channels"
-                        streamLatency: "50 ms"
-                        streamMuted: true
-                        streamVolume: 35
-                    }
-
                 }
 
             }

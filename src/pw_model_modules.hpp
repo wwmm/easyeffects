@@ -71,7 +71,6 @@ class Modules : public QAbstractListModel {
       case Roles::Id: {
         if constexpr (std::is_same_v<T, uint>) {
           it->id = value;
-          emit dataChanged(model_index, model_index, {Roles::Id});
         }
 
         break;
@@ -79,7 +78,6 @@ class Modules : public QAbstractListModel {
       case Roles::Serial: {
         if constexpr (std::is_same_v<T, uint64_t>) {
           it->serial = value;
-          emit dataChanged(model_index, model_index, {Roles::Serial});
         }
 
         break;
@@ -87,7 +85,6 @@ class Modules : public QAbstractListModel {
       case Roles::Name: {
         if constexpr (std::is_same_v<T, QString>) {
           it->name = value;
-          emit dataChanged(model_index, model_index, {Roles::Name});
         }
 
         break;
@@ -95,7 +92,6 @@ class Modules : public QAbstractListModel {
       case Roles::Description: {
         if constexpr (std::is_same_v<T, QString>) {
           it->description = value;
-          emit dataChanged(model_index, model_index, {Roles::Description});
         }
 
         break;
@@ -103,7 +99,6 @@ class Modules : public QAbstractListModel {
       case Roles::Filename: {
         if constexpr (std::is_same_v<T, QString>) {
           it->filename = value;
-          emit dataChanged(model_index, model_index, {Roles::Filename});
         }
 
         break;
@@ -111,6 +106,8 @@ class Modules : public QAbstractListModel {
       default:
         break;
     }
+
+    emit dataChanged(model_index, model_index, {role});
   }
 
  private:

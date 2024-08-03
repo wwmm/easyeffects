@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-07-19 14:11-0300\n"
+"POT-Creation-Date: 2024-08-03 13:13-0300\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -19,12 +19,35 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.14.2-dev\n"
 
-#: src/contents/ui/DelegatePluginsList.qml:53
+#: src/contents/ui/DelegateClientsList.qml:29
+#: src/contents/ui/DelegateModulesList.qml:29
+msgid "Id"
+msgstr ""
+
+#: src/contents/ui/DelegateClientsList.qml:43
+#: src/contents/ui/DelegateModulesList.qml:43
+msgid "Name"
+msgstr "Nama"
+
+#: src/contents/ui/DelegateClientsList.qml:57
+msgid "Api"
+msgstr ""
+
+#: src/contents/ui/DelegateClientsList.qml:71
+msgid "Access"
+msgstr ""
+
+#: src/contents/ui/DelegateModulesList.qml:57
+#, fuzzy
+msgid "Description"
+msgstr "Deteksi"
+
+#: src/contents/ui/DelegatePluginsList.qml:49
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "Hapus Berkas Preset Ini"
 
-#: src/contents/ui/DelegatePluginsList.qml:66
+#: src/contents/ui/DelegatePluginsList.qml:62
 #, fuzzy
 msgid "Remove this effect"
 msgstr "Hapus Berkas Preset Ini"
@@ -74,57 +97,139 @@ msgstr "_Preferensi"
 msgid "About EasyEffects"
 msgstr "Tentang EasyEffects"
 
-#: src/contents/ui/MenuAddPlugins.qml:41
+#: src/contents/ui/MenuAddPlugins.qml:42
 #, fuzzy
 msgid "Empty"
 msgstr "Daftar Kosong"
 
-#: src/contents/ui/MenuAddPlugins.qml:82
+#: src/contents/ui/MenuAddPlugins.qml:129
 msgid "Added Plugin: "
 msgstr ""
 
-#: src/contents/ui/MenuAddPlugins.qml:97
+#: src/contents/ui/MenuAddPlugins.qml:144
 msgid "Search"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:77
+#: src/contents/ui/PageStreamsEffects.qml:93
 #, fuzzy
-msgid "No Preset"
-msgstr "Preset"
+msgid "Empty List"
+msgstr "Tembok Kosong"
 
-#: src/contents/ui/PageStreamsEffects.qml:130
+#: src/contents/ui/PageStreamsEffects.qml:94
+msgid "No Audio Application Available"
+msgstr "Tidak ada Aplikasi Audio yang tersedia"
+
+#: src/contents/ui/PageStreamsEffects.qml:119
 #, fuzzy
 msgid "Add Effect"
 msgstr "Efek Input"
 
-#: src/contents/ui/PageStreamsEffects.qml:176
+#: src/contents/ui/PageStreamsEffects.qml:165
 msgid "Players"
 msgstr "Pemain"
 
-#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:16
-#. i18n: ectx: label, entry (inputDevice), group (StreamInputs)
-#: src/contents/ui/PageStreamsEffects.qml:176 rc.cpp:75
+#: src/contents/ui/PageStreamsEffects.qml:165
 #, fuzzy
 msgid "Input Device"
 msgstr "Pembatas Masukan"
 
-#: src/contents/ui/PageStreamsEffects.qml:194
+#: src/contents/ui/PageStreamsEffects.qml:183
 msgid "Recorders"
 msgstr "Perekam"
 
-#: src/contents/ui/PageStreamsEffects.qml:221
+#: src/contents/ui/PageStreamsEffects.qml:210
 #, fuzzy
 msgid "No Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:222
+#: src/contents/ui/PageStreamsEffects.qml:211
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:302
+#: src/contents/ui/PageStreamsEffects.qml:291
 #, fuzzy
 msgid "Excluded Apps"
 msgstr "Pengecualian"
+
+#: src/contents/ui/PipeWirePage.qml:14
+msgid "General"
+msgstr "Umum"
+
+#: src/contents/ui/PipeWirePage.qml:18
+#, fuzzy
+msgid "Preset Autoloading"
+msgstr "Hapus Preset Pemuatan Otomatis"
+
+#: src/contents/ui/PipeWirePage.qml:22
+msgid "Modules"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:26
+#, fuzzy
+msgid "Clients"
+msgstr "Sen"
+
+#: src/contents/ui/PipeWirePage.qml:30
+#, fuzzy
+msgid "Test Signal"
+msgstr "Uji Sinyal"
+
+#: src/contents/ui/PipeWirePage.qml:40
+msgid "Device Management"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:44
+msgid ""
+"It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
+"external applications (e.g. Gnome Settings and Plasma System Settings)"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:48
+#, fuzzy
+msgid "Server Information"
+msgstr "Penggemaan"
+
+#: src/contents/ui/PipeWirePage.qml:53
+msgid "Header Version"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:58
+msgid "Library Version"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:63
+msgid "Runtime Version"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:68
+#, fuzzy
+msgid "Default Sampling Rate"
+msgstr "Atur Sampling"
+
+#: src/contents/ui/PipeWirePage.qml:73
+#, fuzzy
+msgid "Minimum Quantum"
+msgstr "Frekuensi"
+
+#: src/contents/ui/PipeWirePage.qml:78
+#, fuzzy
+msgid "Maximum Quantum"
+msgstr "Angkatan Maksimal"
+
+#: src/contents/ui/PipeWirePage.qml:83
+#, fuzzy
+msgid "Default Quantum"
+msgstr "Aturan Bawaan"
+
+#: src/contents/ui/PipeWirePage.qml:108
+#, fuzzy
+msgid "No Modules"
+msgstr "Model RNNoise"
+
+#: src/contents/ui/PipeWirePage.qml:135
+#, fuzzy
+msgid "No Clients"
+msgstr "Sen"
 
 #: src/contents/ui/PreferencesSheet.qml:37
 msgid "Launch Service at System Startup"
@@ -152,9 +257,7 @@ msgstr ""
 msgid "Use Cubic Volume"
 msgstr "Gunakan Volume Kubik"
 
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:56
-#. i18n: ectx: label, entry (inactivityTimerEnable), group (EffectsPipelines)
-#: src/contents/ui/PreferencesSheet.qml:127 rc.cpp:36
+#: src/contents/ui/PreferencesSheet.qml:127
 msgid "Enable the Inactivity Timeout"
 msgstr ""
 
@@ -193,33 +296,23 @@ msgstr "Gaya"
 msgid "Shape"
 msgstr "Rupa"
 
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:23
-#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
-#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:57
+#: src/contents/ui/PreferencesSheet.qml:220
 msgid "Bars"
 msgstr "Batang"
 
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:26
-#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
-#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:60
+#: src/contents/ui/PreferencesSheet.qml:220
 msgid "Lines"
 msgstr "Garis"
 
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:29
-#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
-#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:63
+#: src/contents/ui/PreferencesSheet.qml:220
 msgid "Dots"
 msgstr "Titik"
 
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:32
-#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
-#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:66
+#: src/contents/ui/PreferencesSheet.qml:220
 msgid "Area"
 msgstr ""
 
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:12
-#. i18n: ectx: label, entry (useOpenGL), group (Spectrum)
-#: src/contents/ui/PreferencesSheet.qml:229 rc.cpp:48
+#: src/contents/ui/PreferencesSheet.qml:229
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
@@ -283,288 +376,135 @@ msgstr "Spektrum"
 msgid "Experimental Features"
 msgstr "Eksperimental"
 
-#: src/main.cpp:26
+#: src/main.cpp:27
 msgid "Audio effects for PipeWire applications"
 msgstr "Efek Suara untuk Aplikasi PipeWire"
 
-#: src/main.cpp:27
+#: src/main.cpp:28
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:31
+#: src/main.cpp:32
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:31
+#: src/main.cpp:32
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Besar Lembah"
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:28
 msgid "Autogain"
 msgstr "Autogain"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:29
 msgid "Bass Enhancer"
 msgstr "Penguat Bass"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:30
 msgid "Bass Loudness"
 msgstr "Kenyaringan Bass"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:31
 msgid "Compressor"
 msgstr "Kompresor"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:32
 msgid "Convolver"
 msgstr "Konvolver"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:33
 msgid "Crossfeed"
 msgstr "Crossfeed"
 
-#: src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:34
 msgid "Crystalizer"
 msgstr "Pengkristal Suara"
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:35
 msgid "Deep Noise Remover"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:36
 msgid "Deesser"
 msgstr "Penghilang Desis"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:37
 msgid "Delay"
 msgstr "Penundaan"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:38
 msgid "Echo Canceller"
 msgstr "Penghilang Gema"
 
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:39
 msgid "Equalizer"
 msgstr "Ekualiser"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:40
 msgid "Exciter"
 msgstr "Penguat Frekuensi Tinggi"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:41
 #, fuzzy
 msgid "Expander"
 msgstr "Jumlah Band"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:42
 msgid "Filter"
 msgstr "Filter"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:43
 msgid "Gate"
 msgstr "Gate"
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:44
 #, fuzzy
 msgid "Level Meter"
 msgstr "Gain Input"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "Pembatas"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "Kelantangan"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "Pemaksimal Gain"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Compressor"
 msgstr "Kompresor Multiband"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
 msgstr "Multiband Gate"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "Nada"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:51
 msgid "Reverberation"
 msgstr "Penggemaan"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
 msgstr "Pengurangan Noise"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "Pengolah Stereo"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
-#. i18n: ectx: label, entry (width), group (Window)
-#: rc.cpp:3
-#, fuzzy
-msgid "Width of the main window."
-msgstr "Sembunyikan jendela."
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
-#. i18n: ectx: label, entry (height), group (Window)
-#: rc.cpp:6
-#, fuzzy
-msgid "Height of the main window."
-msgstr "Sembunyikan jendela."
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
-#. i18n: ectx: label, entry (showTrayIcon), group (Window)
-#: rc.cpp:9
-msgid "Show the tray icon."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
-#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
-#: rc.cpp:12
-#, fuzzy
-msgid "Last used preset."
-msgstr "Buat Preset"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:24
-#. i18n: ectx: label, entry (showNativePluginUi), group (Window)
-#: rc.cpp:15
-#, fuzzy
-msgid "Show Plugin's Native Window"
-msgstr "Tutup jendela"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:28
-#. i18n: ectx: label, entry (lv2uiUpdateFrequency), group (Window)
-#: rc.cpp:18
-#, fuzzy
-msgid "LV2 Native Window Update Frequency"
-msgstr "Frekuensi"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:36
-#. i18n: ectx: label, entry (bypass), group (EffectsPipelines)
-#: rc.cpp:21
-msgid "Puts the Effects Pipelines in Passthrough Mode."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:40
-#. i18n: ectx: label, entry (processAllOutputs), group (EffectsPipelines)
-#: rc.cpp:24
-msgid "Automatically moves Audio Streams to EasyEffects Virtual Sink."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:44
-#. i18n: ectx: label, entry (processAllInputs), group (EffectsPipelines)
-#: rc.cpp:27
-msgid "Automatically moves Audio Streams to EasyEffects Virtual Source."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:48
-#. i18n: ectx: label, entry (excludeMonitorStreams), group (EffectsPipelines)
-#: rc.cpp:30
-msgid "Ignore Streams from Monitor of Devices."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:52
-#. i18n: ectx: label, entry (useCubicVolumes), group (EffectsPipelines)
-#: rc.cpp:33
-#, fuzzy
-msgid "Use Cubic Volume."
-msgstr "Gunakan Volume Kubik"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:60
-#. i18n: ectx: label, entry (inactivityTimeout), group (EffectsPipelines)
-#: rc.cpp:39
-msgid "Inactivity Timeout."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:66
-#. i18n: ectx: label, entry (metersUpdateInterval), group (EffectsPipelines)
-#: rc.cpp:42
-#, fuzzy
-msgid "Level Meter Update Interval"
-msgstr "Terintegrasi"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:8
-#. i18n: ectx: label, entry (state), group (Spectrum)
-#: rc.cpp:45
-#, fuzzy
-msgid "Show the Spectrum Analyzer."
-msgstr "Spektrum"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:16
-#. i18n: ectx: label, entry (dynamicYScale), group (Spectrum)
-#: rc.cpp:51
-msgid "Enable Dynamic Scaling for the Vertical Axis"
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:20
-#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
-#: rc.cpp:54
-#, fuzzy
-msgid "Spectrum Type"
-msgstr "Spektrum"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:8
-#. i18n: ectx: label, entry (plugins), group (StreamInputs)
-#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:8
-#. i18n: ectx: label, entry (plugins), group (StreamOutputs)
-#: rc.cpp:69 rc.cpp:87
-msgid "List of Plugins in the Effects Pipeline"
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:12
-#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamInputs)
-#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:12
-#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamOutputs)
-#: rc.cpp:72 rc.cpp:90
-#, fuzzy
-msgid "Use the System Default Output Device"
-msgstr "Gunakan Aturan Bawaan"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:20
-#. i18n: ectx: label, entry (blocklist), group (StreamInputs)
-#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:20
-#. i18n: ectx: label, entry (blocklist), group (StreamOutputs)
-#: rc.cpp:78 rc.cpp:96
-msgid "List of Blocked Streams"
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:24
-#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamInputs)
-#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:24
-#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamOutputs)
-#: rc.cpp:81 rc.cpp:99
-msgid "Show Blocked Streams in the Streams Tab"
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:28
-#. i18n: ectx: label, entry (showPluginsList), group (StreamInputs)
-#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:28
-#. i18n: ectx: label, entry (showPluginsList), group (StreamOutputs)
-#: rc.cpp:84 rc.cpp:102
-msgid "Show the List of Plugins"
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:16
-#. i18n: ectx: label, entry (outputDevice), group (StreamOutputs)
-#: rc.cpp:93
-#, fuzzy
-msgid "Output Device"
-msgstr "Gain Input"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:2
 msgid "EasyEffects"
@@ -578,11 +518,56 @@ msgstr "Equalizer, Compressor and Other Audio Effects"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Efek Audio untuk Aplikasi PipeWire"
 
+#, fuzzy
+#~ msgid "No Preset"
+#~ msgstr "Preset"
+
+#, fuzzy
+#~ msgid "Width of the main window."
+#~ msgstr "Sembunyikan jendela."
+
+#, fuzzy
+#~ msgid "Height of the main window."
+#~ msgstr "Sembunyikan jendela."
+
+#, fuzzy
+#~ msgid "Last used preset."
+#~ msgstr "Buat Preset"
+
+#, fuzzy
+#~ msgid "Show Plugin's Native Window"
+#~ msgstr "Tutup jendela"
+
+#, fuzzy
+#~ msgid "LV2 Native Window Update Frequency"
+#~ msgstr "Frekuensi"
+
+#, fuzzy
+#~ msgid "Use Cubic Volume."
+#~ msgstr "Gunakan Volume Kubik"
+
+#, fuzzy
+#~ msgid "Level Meter Update Interval"
+#~ msgstr "Terintegrasi"
+
+#, fuzzy
+#~ msgid "Show the Spectrum Analyzer."
+#~ msgstr "Spektrum"
+
+#, fuzzy
+#~ msgid "Spectrum Type"
+#~ msgstr "Spektrum"
+
+#, fuzzy
+#~ msgid "Use the System Default Output Device"
+#~ msgstr "Gunakan Aturan Bawaan"
+
+#, fuzzy
+#~ msgid "Output Device"
+#~ msgstr "Gain Input"
+
 #~ msgid "Input"
 #~ msgstr "Masukan"
-
-#~ msgid "Name"
-#~ msgstr "Nama"
 
 #, fuzzy
 #~ msgid "Value"
@@ -645,9 +630,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 
 #~ msgid "Applications List"
 #~ msgstr "Daftar Aplikasi"
-
-#~ msgid "No Audio Application Available"
-#~ msgstr "Tidak ada Aplikasi Audio yang tersedia"
 
 #~ msgid "Target"
 #~ msgstr "Target"
@@ -1191,10 +1173,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgstr "Terintegrasi"
 
 #, fuzzy
-#~ msgid "Description"
-#~ msgstr "Deteksi"
-
-#, fuzzy
 #~ msgid "Remove this model file"
 #~ msgstr "Hapus Berkas Preset Ini"
 
@@ -1489,9 +1467,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgid "Band Reduction"
 #~ msgstr "Pengurangan Kuatan"
 
-#~ msgid "General"
-#~ msgstr "Umum"
-
 #, fuzzy
 #~ msgid "Use Default Input"
 #~ msgstr "Gunakan Aturan Bawaan"
@@ -1503,26 +1478,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #, fuzzy
 #~ msgid "Custom Output Device"
 #~ msgstr "Gain Input"
-
-#, fuzzy
-#~ msgid "Server Information"
-#~ msgstr "Penggemaan"
-
-#, fuzzy
-#~ msgid "Sampling Rate"
-#~ msgstr "Atur Sampling"
-
-#, fuzzy
-#~ msgid "Minimum Quantum"
-#~ msgstr "Frekuensi"
-
-#, fuzzy
-#~ msgid "Maximum Quantum"
-#~ msgstr "Angkatan Maksimal"
-
-#, fuzzy
-#~ msgid "Default Quantum"
-#~ msgstr "Aturan Bawaan"
 
 #, fuzzy
 #~ msgid "Output Devices"
@@ -1547,16 +1502,8 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgstr "Preset Input"
 
 #, fuzzy
-#~ msgid "Clients"
-#~ msgstr "Sen"
-
-#, fuzzy
 #~ msgid "Clients List"
 #~ msgstr "Sen"
-
-#, fuzzy
-#~ msgid "Test Signal"
-#~ msgstr "Uji Sinyal"
 
 #~ msgid "Channels"
 #~ msgstr "Total Kanal"
@@ -1728,9 +1675,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 
 #~ msgid "Ambience"
 #~ msgstr "Suasana"
-
-#~ msgid "Empty Walls"
-#~ msgstr "Tembok Kosong"
 
 #~ msgid "Room"
 #~ msgstr "Ruangan"
@@ -1970,9 +1914,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgid "GraphicEQ Presets"
 #~ msgstr "Preset Input"
 
-#~ msgid "Remove Autoloading Preset"
-#~ msgstr "Hapus Preset Pemuatan Otomatis"
-
 #, fuzzy
 #~ msgid "Output Level Meter"
 #~ msgstr "Gain Input"
@@ -2002,9 +1943,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 
 #~ msgid "Import Model File"
 #~ msgstr "Impor file Model"
-
-#~ msgid "RNNoise Models"
-#~ msgstr "Model RNNoise"
 
 #~ msgid "Ceiling"
 #~ msgstr "Langit-langit"

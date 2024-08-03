@@ -25,14 +25,14 @@ Kirigami.AbstractCard {
 
             Kirigami.Icon {
                 Layout.fillHeight: true
-                source: iconName
+                source: model.appIconName
             }
 
             ColumnLayout {
                 Kirigami.Heading {
                     Layout.fillWidth: true
                     level: 2
-                    text: appName
+                    text: model.name
                 }
 
                 Controls.Label {
@@ -45,7 +45,7 @@ Kirigami.AbstractCard {
                 RowLayout {
                     Controls.Label {
                         wrapMode: Text.WordWrap
-                        text: streamState + " · " + streamFormat + " · " + streamRate + " · " + streamChannels + " · " + streamLatency
+                        text: model.state + " · " + model.format + " · " + model.rate + " · " + model.nVolumeChannels + " · " + model.latency
                         color: Kirigami.Theme.disabledTextColor
                     }
 
@@ -76,7 +76,7 @@ Kirigami.AbstractCard {
 
                     icon.name: checked ? "audio-volume-muted-symbolic" : "audio-volume-high-symbolic"
                     checkable: true
-                    checked: streamMuted
+                    checked: model.mute
                 }
 
                 Controls.Slider {
@@ -84,7 +84,7 @@ Kirigami.AbstractCard {
 
                     Layout.fillWidth: true
                     orientation: Qt.Horizontal
-                    value: streamVolume
+                    value: model.volume
                     to: 100
                     stepSize: 1
                     enabled: !muteButton.checked

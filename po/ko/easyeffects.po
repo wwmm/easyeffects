@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-07-19 14:11-0300\n"
+"POT-Creation-Date: 2024-08-03 13:13-0300\n"
 "PO-Revision-Date: 2023-12-31 05:09+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -19,12 +19,35 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.4-dev\n"
 
-#: src/contents/ui/DelegatePluginsList.qml:53
+#: src/contents/ui/DelegateClientsList.qml:29
+#: src/contents/ui/DelegateModulesList.qml:29
+msgid "Id"
+msgstr ""
+
+#: src/contents/ui/DelegateClientsList.qml:43
+#: src/contents/ui/DelegateModulesList.qml:43
+msgid "Name"
+msgstr "이름"
+
+#: src/contents/ui/DelegateClientsList.qml:57
+msgid "Api"
+msgstr ""
+
+#: src/contents/ui/DelegateClientsList.qml:71
+msgid "Access"
+msgstr "액세스"
+
+#: src/contents/ui/DelegateModulesList.qml:57
+#, fuzzy
+msgid "Description"
+msgstr "탐지"
+
+#: src/contents/ui/DelegatePluginsList.qml:49
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "이 효과 제거하기"
 
-#: src/contents/ui/DelegatePluginsList.qml:66
+#: src/contents/ui/DelegatePluginsList.qml:62
 msgid "Remove this effect"
 msgstr "이 효과 제거하기"
 
@@ -73,55 +96,133 @@ msgstr "환경설정(_P)"
 msgid "About EasyEffects"
 msgstr "EasyEffects 정보(_A)"
 
-#: src/contents/ui/MenuAddPlugins.qml:41
+#: src/contents/ui/MenuAddPlugins.qml:42
 #, fuzzy
 msgid "Empty"
 msgstr "빈 목록"
 
-#: src/contents/ui/MenuAddPlugins.qml:82
+#: src/contents/ui/MenuAddPlugins.qml:129
 #, fuzzy
 msgid "Added Plugin: "
 msgstr "플러그인 추가"
 
-#: src/contents/ui/MenuAddPlugins.qml:97
+#: src/contents/ui/MenuAddPlugins.qml:144
 msgid "Search"
 msgstr "검색하기"
 
-#: src/contents/ui/PageStreamsEffects.qml:77
+#: src/contents/ui/PageStreamsEffects.qml:93
 #, fuzzy
-msgid "No Preset"
-msgstr "프리셋"
+msgid "Empty List"
+msgstr "빈 목록"
 
-#: src/contents/ui/PageStreamsEffects.qml:130
+#: src/contents/ui/PageStreamsEffects.qml:94
+msgid "No Audio Application Available"
+msgstr "사용 가능한 오디오 응용프로그램 없음"
+
+#: src/contents/ui/PageStreamsEffects.qml:119
 msgid "Add Effect"
 msgstr "효과 추가하기"
 
-#: src/contents/ui/PageStreamsEffects.qml:176
+#: src/contents/ui/PageStreamsEffects.qml:165
 msgid "Players"
 msgstr "재생기"
 
-#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:16
-#. i18n: ectx: label, entry (inputDevice), group (StreamInputs)
-#: src/contents/ui/PageStreamsEffects.qml:176 rc.cpp:75
+#: src/contents/ui/PageStreamsEffects.qml:165
 msgid "Input Device"
 msgstr "입력 장치"
 
-#: src/contents/ui/PageStreamsEffects.qml:194
+#: src/contents/ui/PageStreamsEffects.qml:183
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:221
+#: src/contents/ui/PageStreamsEffects.qml:210
 msgid "No Effects"
 msgstr "효과 없음"
 
-#: src/contents/ui/PageStreamsEffects.qml:222
+#: src/contents/ui/PageStreamsEffects.qml:211
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:302
+#: src/contents/ui/PageStreamsEffects.qml:291
 #, fuzzy
 msgid "Excluded Apps"
 msgstr "제외하기"
+
+#: src/contents/ui/PipeWirePage.qml:14
+msgid "General"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:18
+#, fuzzy
+msgid "Preset Autoloading"
+msgstr "프리셋 자동 로딩"
+
+#: src/contents/ui/PipeWirePage.qml:22
+msgid "Modules"
+msgstr "모듈"
+
+#: src/contents/ui/PipeWirePage.qml:26
+msgid "Clients"
+msgstr "클라이언트"
+
+#: src/contents/ui/PipeWirePage.qml:30
+msgid "Test Signal"
+msgstr "테스트 신호"
+
+#: src/contents/ui/PipeWirePage.qml:40
+msgid "Device Management"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:44
+msgid ""
+"It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
+"external applications (e.g. Gnome Settings and Plasma System Settings)"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:48
+#, fuzzy
+msgid "Server Information"
+msgstr "디리버버레이션"
+
+#: src/contents/ui/PipeWirePage.qml:53
+msgid "Header Version"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:58
+msgid "Library Version"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:63
+msgid "Runtime Version"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:68
+msgid "Default Sampling Rate"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:73
+msgid "Minimum Quantum"
+msgstr ""
+
+#: src/contents/ui/PipeWirePage.qml:78
+#, fuzzy
+msgid "Maximum Quantum"
+msgstr "최대 히스토리"
+
+#: src/contents/ui/PipeWirePage.qml:83
+#, fuzzy
+msgid "Default Quantum"
+msgstr "기본값"
+
+#: src/contents/ui/PipeWirePage.qml:108
+#, fuzzy
+msgid "No Modules"
+msgstr "모듈"
+
+#: src/contents/ui/PipeWirePage.qml:135
+#, fuzzy
+msgid "No Clients"
+msgstr "클라이언트"
 
 #: src/contents/ui/PreferencesSheet.qml:37
 msgid "Launch Service at System Startup"
@@ -147,9 +248,7 @@ msgstr ""
 msgid "Use Cubic Volume"
 msgstr ""
 
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:56
-#. i18n: ectx: label, entry (inactivityTimerEnable), group (EffectsPipelines)
-#: src/contents/ui/PreferencesSheet.qml:127 rc.cpp:36
+#: src/contents/ui/PreferencesSheet.qml:127
 msgid "Enable the Inactivity Timeout"
 msgstr ""
 
@@ -187,33 +286,23 @@ msgstr ""
 msgid "Shape"
 msgstr ""
 
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:23
-#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
-#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:57
+#: src/contents/ui/PreferencesSheet.qml:220
 msgid "Bars"
 msgstr ""
 
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:26
-#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
-#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:60
+#: src/contents/ui/PreferencesSheet.qml:220
 msgid "Lines"
 msgstr ""
 
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:29
-#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
-#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:63
+#: src/contents/ui/PreferencesSheet.qml:220
 msgid "Dots"
 msgstr ""
 
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:32
-#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
-#: src/contents/ui/PreferencesSheet.qml:220 rc.cpp:66
+#: src/contents/ui/PreferencesSheet.qml:220
 msgid "Area"
 msgstr ""
 
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:12
-#. i18n: ectx: label, entry (useOpenGL), group (Spectrum)
-#: src/contents/ui/PreferencesSheet.qml:229 rc.cpp:48
+#: src/contents/ui/PreferencesSheet.qml:229
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
@@ -278,281 +367,135 @@ msgstr "스펙트럼"
 msgid "Experimental Features"
 msgstr ""
 
-#: src/main.cpp:26
+#: src/main.cpp:27
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire 음향 효과 애플리케이션"
 
-#: src/main.cpp:27
+#: src/main.cpp:28
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:31
+#: src/main.cpp:32
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:31
+#: src/main.cpp:32
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "엔벌로프"
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:28
 msgid "Autogain"
 msgstr "오토게인"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:29
 msgid "Bass Enhancer"
 msgstr "베이스 인핸서"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:30
 msgid "Bass Loudness"
 msgstr "베이스 음량"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:31
 msgid "Compressor"
 msgstr "컴프레서"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:32
 msgid "Convolver"
 msgstr "콘벌버"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:33
 msgid "Crossfeed"
 msgstr "크로스피드"
 
-#: src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:34
 msgid "Crystalizer"
 msgstr "크리스탈라이저"
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:35
 msgid "Deep Noise Remover"
 msgstr "딥 노이즈 리무버"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:36
 msgid "Deesser"
 msgstr "디이저"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:37
 msgid "Delay"
 msgstr "지연시간"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:38
 msgid "Echo Canceller"
 msgstr "에코 캔슬러"
 
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:39
 msgid "Equalizer"
 msgstr "이퀄라이저"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:40
 msgid "Exciter"
 msgstr "익사이터"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:41
 msgid "Expander"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:42
 #, fuzzy
 msgid "Filter"
 msgstr "필터 길이"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:43
 msgid "Gate"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:44
 msgid "Level Meter"
 msgstr "레벨 미터"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:45
 msgid "Limiter"
 msgstr "리미터"
 
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:46
 msgid "Loudness"
 msgstr "소리의 세기"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:47
 msgid "Maximizer"
 msgstr "맥시마이저"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:48
 msgid "Multiband Compressor"
 msgstr "멀티밴드 컴프레서"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:49
 msgid "Multiband Gate"
 msgstr "멀티밴드 게이트"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:50
 msgid "Pitch"
 msgstr "피치"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:51
 msgid "Reverberation"
 msgstr "리버버레이션"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:52
 msgid "Noise Reduction"
 msgstr "노이즈 저감"
 
-#: src/tags_plugin_name.cpp:54
+#: src/tags_plugin_name.cpp:53
 msgid "Speech Processor"
 msgstr "음성 프로세서"
 
-#: src/tags_plugin_name.cpp:55
+#: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
 msgstr "스테레오 도구"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:8
-#. i18n: ectx: label, entry (width), group (Window)
-#: rc.cpp:3
-msgid "Width of the main window."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:12
-#. i18n: ectx: label, entry (height), group (Window)
-#: rc.cpp:6
-msgid "Height of the main window."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:16
-#. i18n: ectx: label, entry (showTrayIcon), group (Window)
-#: rc.cpp:9
-msgid "Show the tray icon."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:20
-#. i18n: ectx: label, entry (lastUsedPreset), group (Window)
-#: rc.cpp:12
-#, fuzzy
-msgid "Last used preset."
-msgstr "새 프리셋 만들기"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:24
-#. i18n: ectx: label, entry (showNativePluginUi), group (Window)
-#: rc.cpp:15
-msgid "Show Plugin's Native Window"
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:28
-#. i18n: ectx: label, entry (lv2uiUpdateFrequency), group (Window)
-#: rc.cpp:18
-#, fuzzy
-msgid "LV2 Native Window Update Frequency"
-msgstr "주파수"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:36
-#. i18n: ectx: label, entry (bypass), group (EffectsPipelines)
-#: rc.cpp:21
-msgid "Puts the Effects Pipelines in Passthrough Mode."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:40
-#. i18n: ectx: label, entry (processAllOutputs), group (EffectsPipelines)
-#: rc.cpp:24
-msgid "Automatically moves Audio Streams to EasyEffects Virtual Sink."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:44
-#. i18n: ectx: label, entry (processAllInputs), group (EffectsPipelines)
-#: rc.cpp:27
-msgid "Automatically moves Audio Streams to EasyEffects Virtual Source."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:48
-#. i18n: ectx: label, entry (excludeMonitorStreams), group (EffectsPipelines)
-#: rc.cpp:30
-msgid "Ignore Streams from Monitor of Devices."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:52
-#. i18n: ectx: label, entry (useCubicVolumes), group (EffectsPipelines)
-#: rc.cpp:33
-msgid "Use Cubic Volume."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:60
-#. i18n: ectx: label, entry (inactivityTimeout), group (EffectsPipelines)
-#: rc.cpp:39
-msgid "Inactivity Timeout."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db.kcfg:66
-#. i18n: ectx: label, entry (metersUpdateInterval), group (EffectsPipelines)
-#: rc.cpp:42
-#, fuzzy
-msgid "Level Meter Update Interval"
-msgstr "내부"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:8
-#. i18n: ectx: label, entry (state), group (Spectrum)
-#: rc.cpp:45
-msgid "Show the Spectrum Analyzer."
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:16
-#. i18n: ectx: label, entry (dynamicYScale), group (Spectrum)
-#: rc.cpp:51
-msgid "Enable Dynamic Scaling for the Vertical Axis"
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_spectrum.kcfg:20
-#. i18n: ectx: label, entry (spectrumShape), group (Spectrum)
-#: rc.cpp:54
-#, fuzzy
-msgid "Spectrum Type"
-msgstr "스펙트럼"
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:8
-#. i18n: ectx: label, entry (plugins), group (StreamInputs)
-#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:8
-#. i18n: ectx: label, entry (plugins), group (StreamOutputs)
-#: rc.cpp:69 rc.cpp:87
-msgid "List of Plugins in the Effects Pipeline"
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:12
-#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamInputs)
-#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:12
-#. i18n: ectx: label, entry (useDefaultOutputDevice), group (StreamOutputs)
-#: rc.cpp:72 rc.cpp:90
-msgid "Use the System Default Output Device"
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:20
-#. i18n: ectx: label, entry (blocklist), group (StreamInputs)
-#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:20
-#. i18n: ectx: label, entry (blocklist), group (StreamOutputs)
-#: rc.cpp:78 rc.cpp:96
-msgid "List of Blocked Streams"
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:24
-#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamInputs)
-#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:24
-#. i18n: ectx: label, entry (showBlocklistedApps), group (StreamOutputs)
-#: rc.cpp:81 rc.cpp:99
-msgid "Show Blocked Streams in the Streams Tab"
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_streaminputs.kcfg:28
-#. i18n: ectx: label, entry (showPluginsList), group (StreamInputs)
-#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:28
-#. i18n: ectx: label, entry (showPluginsList), group (StreamOutputs)
-#: rc.cpp:84 rc.cpp:102
-msgid "Show the List of Plugins"
-msgstr ""
-
-#. i18n: file: src/contents/kcfg/easyeffects_db_streamoutputs.kcfg:16
-#. i18n: ectx: label, entry (outputDevice), group (StreamOutputs)
-#: rc.cpp:93
-msgid "Output Device"
-msgstr "출력 장치"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:2
 msgid "EasyEffects"
@@ -566,11 +509,31 @@ msgstr "이퀄라이저, 컴프레서 및 기타 오디오 효과"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 
+#, fuzzy
+#~ msgid "No Preset"
+#~ msgstr "프리셋"
+
+#, fuzzy
+#~ msgid "Last used preset."
+#~ msgstr "새 프리셋 만들기"
+
+#, fuzzy
+#~ msgid "LV2 Native Window Update Frequency"
+#~ msgstr "주파수"
+
+#, fuzzy
+#~ msgid "Level Meter Update Interval"
+#~ msgstr "내부"
+
+#, fuzzy
+#~ msgid "Spectrum Type"
+#~ msgstr "스펙트럼"
+
+#~ msgid "Output Device"
+#~ msgstr "출력 장치"
+
 #~ msgid "Input"
 #~ msgstr "인풋"
-
-#~ msgid "Name"
-#~ msgstr "이름"
 
 #, fuzzy
 #~ msgid "Value"
@@ -635,9 +598,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 
 #~ msgid "Applications List"
 #~ msgstr "응용 프로그램 목록"
-
-#~ msgid "No Audio Application Available"
-#~ msgstr "사용 가능한 오디오 응용프로그램 없음"
 
 #~ msgid "Target"
 #~ msgstr "대상"
@@ -968,9 +928,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "Impulse Files List"
 #~ msgstr "Impulse 파일 목록"
 
-#~ msgid "Default"
-#~ msgstr "기본값"
-
 #~ msgid "Cutoff"
 #~ msgstr "컷오프"
 
@@ -985,9 +942,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 
 #~ msgid "Post Filter Beta"
 #~ msgstr "포스트 필터 베타"
-
-#~ msgid "Detection"
-#~ msgstr "탐지"
 
 #~ msgid "Wide"
 #~ msgstr "와이드"
@@ -1057,9 +1011,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "API"
 #~ msgstr "API"
 
-#~ msgid "Access"
-#~ msgstr "액세스"
-
 #~ msgid "High-Shelf"
 #~ msgstr "하이쉘프"
 
@@ -1117,9 +1068,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "Band Reduction"
 #~ msgstr "대역폭 감소"
 
-#~ msgid "Presets Autoloading"
-#~ msgstr "프리셋 자동 로딩"
-
 #~ msgid "Output Devices"
 #~ msgstr "출력 장치"
 
@@ -1144,20 +1092,11 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "Input Autoloading Presets List"
 #~ msgstr "입력 자동 로딩 프리셋 목록"
 
-#~ msgid "Modules"
-#~ msgstr "모듈"
-
 #~ msgid "Modules List"
 #~ msgstr "모듈 목록"
 
-#~ msgid "Clients"
-#~ msgstr "클라이언트"
-
 #~ msgid "Clients List"
 #~ msgstr "클라이언트 목록"
-
-#~ msgid "Test Signal"
-#~ msgstr "테스트 신호"
 
 #~ msgid "Properties"
 #~ msgstr "속성"
@@ -1267,9 +1206,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 
 #~ msgid "Quit Easy Effects"
 #~ msgstr "Easy Effects 종료"
-
-#~ msgid "Dereverberation"
-#~ msgstr "디리버버레이션"
 
 #~ msgid "Level"
 #~ msgstr "F2 레벨"

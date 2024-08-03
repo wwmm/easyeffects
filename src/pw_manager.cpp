@@ -71,6 +71,7 @@
 #include "config.h"
 #include "pw_model_clients.hpp"
 #include "pw_model_modules.hpp"
+#include "pw_model_nodes.hpp"
 #include "pw_objects.hpp"
 #include "tags_app.hpp"
 #include "tags_pipewire.hpp"
@@ -209,42 +210,44 @@ void on_destroy_node_proxy(void* data) {
 
   auto* const pm = nd->pm;
 
-  auto node_it = pm->node_map.find(nd->nd_info->serial);
+  pm->model_nodes.remove_by_serial(nd->nd_info->serial);
 
-  if (node_it == pm->node_map.end()) {
-    return;
-  }
+  // auto node_it = pm->node_map.find(nd->nd_info->serial);
 
-  nd->nd_info->proxy = nullptr;
+  // if (node_it == pm->node_map.end()) {
+  //   return;
+  // }
 
-  node_it->second.proxy = nullptr;
+  // nd->nd_info->proxy = nullptr;
 
-  spa_hook_remove(&nd->proxy_listener);
+  // node_it->second.proxy = nullptr;
 
-  pm->node_map.erase(node_it);
+  // spa_hook_remove(&nd->proxy_listener);
 
-  if (!pw::Manager::exiting) {
-    if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
-      const auto nd_info_copy = *nd->nd_info;
+  // pm->node_map.erase(node_it);
 
-      Q_EMIT pm->source_removed(nd_info_copy);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
-      const auto nd_info_copy = *nd->nd_info;
+  // if (!pw::Manager::exiting) {
+  //   if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
+  //     const auto nd_info_copy = *nd->nd_info;
 
-      Q_EMIT pm->sink_removed(nd_info_copy);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
-      const auto serial = nd->nd_info->serial;
+  //     Q_EMIT pm->source_removed(nd_info_copy);
+  //   } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
+  //     const auto nd_info_copy = *nd->nd_info;
 
-      Q_EMIT pm->stream_output_removed(serial);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
-      const auto serial = nd->nd_info->serial;
+  //     Q_EMIT pm->sink_removed(nd_info_copy);
+  //   } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
+  //     const auto serial = nd->nd_info->serial;
 
-      Q_EMIT pm->stream_input_removed(serial);
-    }
-  }
+  //     Q_EMIT pm->stream_output_removed(serial);
+  //   } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
+  //     const auto serial = nd->nd_info->serial;
 
-  util::debug(nd->nd_info->media_class + " " + util::to_string(nd->nd_info->id) + " " + nd->nd_info->name +
-              " has been removed");
+  //     Q_EMIT pm->stream_input_removed(serial);
+  //   }
+  // }
+
+  util::debug(nd->nd_info->media_class.toStdString() + " " + util::to_string(nd->nd_info->id) + " " +
+              nd->nd_info->name.toStdString() + " has been removed");
 
   delete nd->nd_info;
 }
@@ -292,7 +295,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   bool ignore_input_stream = false;
   bool ignore_output_stream = false;
 
-  if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream && !pm->input_device.name.empty()) {
+  if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream && !pm->input_device.name.isEmpty()) {
     if (const auto* target_object = spa_dict_lookup(info->props, PW_KEY_TARGET_OBJECT)) {
       /*
         target.object can a name or serial number:
@@ -311,8 +314,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       }
 
       if (ignore_input_stream) {
-        util::debug("The input stream " + nd->nd_info->name +
-                    " does not have as target the same mic used as EE input: " + pm->input_device.name +
+        util::debug("The input stream " + nd->nd_info->name.toStdString() +
+                    " does not have as target the same mic used as EE input: " + pm->input_device.name.toStdString() +
                     "\n The user wants it to record from device " + target_object + ". We will ignore this stream.");
 
         remove_node = true;
@@ -320,7 +323,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
   }
 
-  if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream && !pm->output_device.name.empty()) {
+  if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream && !pm->output_device.name.isEmpty()) {
     if (const auto* target_object = spa_dict_lookup(info->props, PW_KEY_TARGET_OBJECT)) {
       /*
         target.object can a name or serial number:
@@ -339,9 +342,10 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       }
 
       if (ignore_output_stream) {
-        util::debug("The output stream " + nd->nd_info->name +
-                    " does not have as target the same output device used as EE: " + pm->output_device.name +
-                    "\n The user wants it to play to device " + target_object + ". We will ignore this stream.");
+        util::debug(
+            "The output stream " + nd->nd_info->name.toStdString() +
+            " does not have as target the same output device used as EE: " + pm->output_device.name.toStdString() +
+            "\n The user wants it to play to device " + target_object + ". We will ignore this stream.");
 
         remove_node = true;
       }
@@ -371,6 +375,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       Q_EMIT pm->stream_output_removed(serial);
 
       // Do not use disconnect_stream because it uses lock and is intended for calls from a different thread
+      // NOLINTNEXTLINE
       pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", nullptr, nullptr);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
       const auto serial = nd->nd_info->serial;
@@ -378,11 +383,12 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       Q_EMIT pm->stream_input_removed(serial);
 
       // Do not use disconnect_stream because it uses lock and is intended for calls from a different thread
+      // NOLINTNEXTLINE
       pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", nullptr, nullptr);
     }
 
-    util::debug(nd->nd_info->media_class + " " + util::to_string(nd->nd_info->id) + " " + nd->nd_info->name +
-                " has been removed");
+    util::debug(nd->nd_info->media_class.toStdString() + " " + util::to_string(nd->nd_info->id) + " " +
+                nd->nd_info->name.toStdString() + " has been removed");
 
     return;
   }
@@ -497,7 +503,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       }
 
       if (const auto id = param.id; id == SPA_PARAM_Props || id == SPA_PARAM_EnumFormat || id == SPA_PARAM_Format) {
-        pw_node_enum_params((struct pw_node*)nd->proxy, 0, id, 0, -1, nullptr);
+        pw_node_enum_params((struct pw_node*)nd->proxy, 0, id, 0, -1, nullptr);  // NOLINT
       }
     }
   }
@@ -578,14 +584,14 @@ void on_node_event_param(void* object,
           break;
         }
 
-        std::string format_str = "unknown";
+        QString format_str = "unknown";
 
         for (const auto type_info : std::to_array(spa_type_audio_format)) {
           if (format == type_info.type) {
             if (type_info.name != nullptr) {
-              std::string long_name = type_info.name;
+              QString long_name = type_info.name;
 
-              format_str = long_name.substr(long_name.rfind(':') + 1U);
+              // format_str = long_name.substr(long_name.rfind(':') + 1U);
             }
           }
         }
@@ -864,7 +870,7 @@ void on_device_info(void* object, const struct pw_device_info* info) {
         }
 
         if (const auto id = param.id; id == SPA_PARAM_Route) {
-          pw_device_enum_params((struct pw_device*)dd->proxy, 0, id, 0, -1, nullptr);
+          pw_device_enum_params((struct pw_device*)dd->proxy, 0, id, 0, -1, nullptr);  // NOLINT
         }
       }
     }
@@ -1085,8 +1091,8 @@ void on_registry_global(void* data,
       }
     }
 
-    std::string media_class;
-    std::string media_role;
+    QString media_class;
+    QString media_role;
 
     if (const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS)) {
       media_class = key_media_class;
@@ -1106,13 +1112,13 @@ void on_registry_global(void* data,
       return;
     }
 
-    std::string node_name;
+    QString node_name;
 
     spa_dict_get_string(props, PW_KEY_NODE_NAME, node_name);
 
     // At least for now I do not think there is a point in showing the spectrum adn the output level filters in menus
 
-    if (util::str_contains(node_name, "output_level") || util::str_contains(node_name, "spectrum")) {
+    if (node_name.contains("output_level") || node_name.contains("spectrum")) {
       return;
     }
 
@@ -1154,16 +1160,18 @@ void on_registry_global(void* data,
 
     spa_dict_get_num(props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
+    pm->model_nodes.append(*nd->nd_info);
+
     const auto [node_it, success] = pm->node_map.insert({serial, *nd->nd_info});
 
     if (!success) {
-      util::warning("Cannot insert node " + util::to_string(id) + " " + node_name +
+      util::warning("Cannot insert node " + util::to_string(id) + " " + node_name.toStdString() +
                     " into the node map because there's already an existing serial " + util::to_string(serial));
 
       return;
     }
 
-    pw_node_add_listener(proxy, &nd->object_listener, &node_events, nd);
+    pw_node_add_listener(proxy, &nd->object_listener, &node_events, nd);  // NOLINT
     pw_proxy_add_listener(proxy, &nd->proxy_listener, &node_proxy_events, nd);
 
     // sometimes PipeWire destroys the pointer before signal_idle is called,
@@ -1184,8 +1192,8 @@ void on_registry_global(void* data,
     // We will have debug info about our filters later
 
     if (!is_ee_filter) {
-      util::debug(media_class + " " + util::to_string(id) + " " + nd->nd_info->name + " with serial " +
-                  util::to_string(serial) + " has been added");
+      util::debug(media_class.toStdString() + " " + util::to_string(id) + " " + nd->nd_info->name.toStdString() +
+                  " with serial " + util::to_string(serial) + " has been added");
     }
 
     return;
@@ -1209,7 +1217,7 @@ void on_registry_global(void* data,
     pd->id = id;
     pd->serial = serial;
 
-    pw_link_add_listener(proxy, &pd->object_listener, &link_events, pd);
+    pw_link_add_listener(proxy, &pd->object_listener, &link_events, pd);  // NOLINT
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &link_proxy_events, pd);
 
     auto link_info = link_info_from_props(props);
@@ -1224,8 +1232,9 @@ void on_registry_global(void* data,
 
       const auto output_node = pm->node_map_at_id(link_info.output_node_id);
 
-      util::debug(output_node.name + " port " + util::to_string(link_info.output_port_id) + " is connected to " +
-                  input_node.name + " port " + util::to_string(link_info.input_port_id));
+      util::debug(output_node.name.toStdString() + " port " + util::to_string(link_info.output_port_id) +
+                  " is connected to " + input_node.name.toStdString() + " port " +
+                  util::to_string(link_info.input_port_id));
     } catch (std::out_of_range& e) {
       util::debug(e.what());
     }
@@ -1285,7 +1294,7 @@ void on_registry_global(void* data,
     pd->id = id;
     pd->serial = serial;
 
-    pw_module_add_listener(proxy, &pd->object_listener, &module_events, pd);
+    pw_module_add_listener(proxy, &pd->object_listener, &module_events, pd);  // NOLINT
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &module_proxy_events, pd);
 
     pw::ModuleInfo m_info{.id = id, .serial = serial, .name = "", .description = "", .filename = ""};
@@ -1316,7 +1325,7 @@ void on_registry_global(void* data,
     pd->id = id;
     pd->serial = serial;
 
-    pw_client_add_listener(proxy, &pd->object_listener, &client_events, pd);
+    pw_client_add_listener(proxy, &pd->object_listener, &client_events, pd);  // NOLINT
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &client_proxy_events, pd);
 
     pw::ClientInfo c_info{.id = id, .serial = serial, .name = "", .access = "", .api = ""};
@@ -1342,7 +1351,7 @@ void on_registry_global(void* data,
         pm->metadata = static_cast<pw_metadata*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_METADATA, 0));
 
         if (pm->metadata != nullptr) {
-          pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);
+          pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);  // NOLINT
         } else {
           util::warning("pw_registry_bind returned a null metadata object");
         }
@@ -1375,7 +1384,7 @@ void on_registry_global(void* data,
         pd->id = id;
         pd->serial = serial;
 
-        pw_device_add_listener(proxy, &pd->object_listener, &device_events, pd);
+        pw_device_add_listener(proxy, &pd->object_listener, &device_events, pd);  // NOLINT
         pw_proxy_add_listener(proxy, &pd->proxy_listener, &device_proxy_events, pd);
 
         pw::DeviceInfo d_info{.id = id,
@@ -1460,13 +1469,7 @@ const struct pw_registry_events registry_events = {.version = 0,
 namespace pw {
 
 Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_get_library_version()) {
-  qmlRegisterSingletonInstance<pw::Manager>("EEpw", VERSION_MAJOR, VERSION_MINOR, "EEpwManager", this);
-
-  qmlRegisterSingletonInstance<pw::models::Modules>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelModules",
-                                                    &model_modules);
-
-  qmlRegisterSingletonInstance<pw::models::Clients>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelClients",
-                                                    &model_clients);
+  register_models();
 
   pw_init(nullptr, nullptr);
 
@@ -1516,9 +1519,9 @@ Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_
     util::fatal("could not get the registry");
   }
 
-  pw_registry_add_listener(registry, &registry_listener, &registry_events, this);
+  pw_registry_add_listener(registry, &registry_listener, &registry_events, this);  // NOLINT
 
-  pw_core_add_listener(core, &core_listener, &core_events, this);
+  pw_core_add_listener(core, &core_listener, &core_events, this);  // NOLINT
 
   if (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID) {
     load_virtual_devices();
@@ -1532,12 +1535,12 @@ Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
     for (const auto& [serial, node] : node_map) {
-      if (ee_sink_node.name.empty() && node.name == tags::pipewire::ee_sink_name) {
+      if (ee_sink_node.name.isEmpty() && node.name == tags::pipewire::ee_sink_name) {
         ee_sink_node = node;
 
         util::debug(tags::pipewire::ee_sink_name + " node successfully retrieved with id "s + util::to_string(node.id) +
                     " and serial " + util::to_string(node.serial));
-      } else if (ee_source_node.name.empty() && node.name == tags::pipewire::ee_source_name) {
+      } else if (ee_source_node.name.isEmpty() && node.name == tags::pipewire::ee_source_name) {
         ee_source_node = node;
 
         util::debug(tags::pipewire::ee_source_name + " node successfully retrieved with id "s +
@@ -1579,6 +1582,18 @@ Manager::~Manager() {
 
   util::debug("Destroying PipeWire's loop...");
   pw_thread_loop_destroy(thread_loop);
+}
+
+void Manager::register_models() {
+  qmlRegisterSingletonInstance<pw::Manager>("EEpw", VERSION_MAJOR, VERSION_MINOR, "EEpwManager", this);
+
+  qmlRegisterSingletonInstance<pw::models::Nodes>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelNodes", &model_nodes);
+
+  qmlRegisterSingletonInstance<pw::models::Modules>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelModules",
+                                                    &model_modules);
+
+  qmlRegisterSingletonInstance<pw::models::Clients>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelClients",
+                                                    &model_clients);
 }
 
 void Manager::load_virtual_devices() {
@@ -1636,7 +1651,7 @@ auto Manager::node_map_at_id(const uint& id) -> NodeInfo& {
   throw std::out_of_range("No node with id " + util::to_string(id) + " in our node_map");
 }
 
-auto Manager::stream_is_connected(const uint& id, const std::string& media_class) -> bool {
+auto Manager::stream_is_connected(const uint& id, const QString& media_class) -> bool {
   if (media_class == tags::pipewire::media_class::output_stream) {
     for (const auto& link : list_links) {
       if (link.output_node_id == id && link.input_node_id == ee_sink_node.id) {
@@ -1672,7 +1687,9 @@ void Manager::set_metadata_target_node(const uint& origin_id,
   lock();
 
   // target.node for backward compatibility with old PW session managers
+  // NOLINTNEXTLINE
   pw_metadata_set_property(metadata, origin_id, "target.node", "Spa:Id", util::to_string(target_id).c_str());
+  // NOLINTNEXTLINE
   pw_metadata_set_property(metadata, origin_id, "target.object", "Spa:Id", util::to_string(target_serial).c_str());
 
   sync_wait_unlock();
@@ -1685,7 +1702,7 @@ void Manager::disconnect_stream(const uint& stream_id) const {
 
   lock();
 
-  pw_metadata_set_property(metadata, stream_id, "target.object", nullptr, nullptr);
+  pw_metadata_set_property(metadata, stream_id, "target.object", nullptr, nullptr);  // NOLINT
 
   sync_wait_unlock();
 }
@@ -1702,6 +1719,7 @@ void Manager::set_node_volume(pw_proxy* proxy, const uint& n_vol_ch, const float
 
   lock();
 
+  // NOLINTNEXTLINE
   pw_node_set_param(
       (struct pw_node*)proxy, SPA_PARAM_Props, 0,
       (spa_pod*)spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_channelVolumes,
@@ -1717,6 +1735,7 @@ void Manager::set_node_mute(pw_proxy* proxy, const bool& state) const {
 
   lock();
 
+  // NOLINTNEXTLINE
   pw_node_set_param((pw_node*)proxy, SPA_PARAM_Props, 0,
                     (spa_pod*)spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
                                                          SPA_PROP_mute, SPA_POD_Bool(state)));
@@ -1848,7 +1867,7 @@ void Manager::unlock() const {
 }
 
 void Manager::sync_wait_unlock() const {
-  pw_core_sync(core, PW_ID_CORE, 0);
+  pw_core_sync(core, PW_ID_CORE, 0);  // NOLINT
 
   pw_thread_loop_wait(thread_loop);
 
@@ -1866,7 +1885,7 @@ auto Manager::wait_full() const -> int {
 void Manager::destroy_object(const int& id) const {
   lock();
 
-  pw_registry_destroy(registry, id);
+  pw_registry_destroy(registry, id);  // NOLINT
 
   sync_wait_unlock();
 }
