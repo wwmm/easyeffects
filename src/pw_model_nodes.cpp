@@ -183,6 +183,8 @@ void Nodes::remove_by_id(const uint& id) {
     return;
   }
 
+  list[rowIndex].proxy = nullptr;
+
   beginRemoveRows(QModelIndex(), rowIndex, rowIndex);
 
   list.remove(rowIndex);
@@ -207,6 +209,8 @@ void Nodes::remove_by_serial(const uint& serial) {
     return;
   }
 
+  list[rowIndex].proxy = nullptr;
+
   beginRemoveRows(QModelIndex(), rowIndex, rowIndex);
 
   list.remove(rowIndex);
@@ -214,6 +218,10 @@ void Nodes::remove_by_serial(const uint& serial) {
   endRemoveRows();
 
   emit dataChanged(index(0), index(list.size() - 1));
+}
+
+auto Nodes::has_serial(const uint& serial) -> bool {
+  return std::find_if(list.begin(), list.end(), [=](const NodeInfo& ni) { return ni.serial == serial; }) != list.end();
 }
 
 void Nodes::reset() {

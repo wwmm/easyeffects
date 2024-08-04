@@ -212,39 +212,29 @@ void on_destroy_node_proxy(void* data) {
 
   pm->model_nodes.remove_by_serial(nd->nd_info->serial);
 
-  // auto node_it = pm->node_map.find(nd->nd_info->serial);
+  nd->nd_info->proxy = nullptr;
 
-  // if (node_it == pm->node_map.end()) {
-  //   return;
-  // }
+  spa_hook_remove(&nd->proxy_listener);
 
-  // nd->nd_info->proxy = nullptr;
+  if (!pw::Manager::exiting) {
+    if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
+      const auto nd_info_copy = *nd->nd_info;
 
-  // node_it->second.proxy = nullptr;
+      Q_EMIT pm->source_removed(nd_info_copy);
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
+      const auto nd_info_copy = *nd->nd_info;
 
-  // spa_hook_remove(&nd->proxy_listener);
+      Q_EMIT pm->sink_removed(nd_info_copy);
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
+      const auto serial = nd->nd_info->serial;
 
-  // pm->node_map.erase(node_it);
+      Q_EMIT pm->stream_output_removed(serial);
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
+      const auto serial = nd->nd_info->serial;
 
-  // if (!pw::Manager::exiting) {
-  //   if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
-  //     const auto nd_info_copy = *nd->nd_info;
-
-  //     Q_EMIT pm->source_removed(nd_info_copy);
-  //   } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
-  //     const auto nd_info_copy = *nd->nd_info;
-
-  //     Q_EMIT pm->sink_removed(nd_info_copy);
-  //   } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
-  //     const auto serial = nd->nd_info->serial;
-
-  //     Q_EMIT pm->stream_output_removed(serial);
-  //   } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
-  //     const auto serial = nd->nd_info->serial;
-
-  //     Q_EMIT pm->stream_input_removed(serial);
-  //   }
-  // }
+      Q_EMIT pm->stream_input_removed(serial);
+    }
+  }
 
   util::debug(nd->nd_info->media_class.toStdString() + " " + util::to_string(nd->nd_info->id) + " " +
               nd->nd_info->name.toStdString() + " has been removed");
@@ -263,9 +253,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   // Check if the node is inside our map
 
-  auto node_it = pm->node_map.find(nd->nd_info->serial);
-
-  if (node_it == pm->node_map.end()) {
+  if (!pm->model_nodes.has_serial(nd->nd_info->serial)) {
     return;
   }
 
@@ -355,11 +343,9 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   if (remove_node) {
     nd->nd_info->proxy = nullptr;
 
-    node_it->second.proxy = nullptr;
-
     spa_hook_remove(&nd->proxy_listener);
 
-    pm->node_map.erase(node_it);
+    pm->model_nodes.remove_by_serial(nd->nd_info->serial);
 
     if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
       const auto nd_info_copy = *nd->nd_info;
@@ -510,7 +496,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   // update NodeInfo inside map
 
-  node_it->second = *nd->nd_info;
+  // node_it->second = *nd->nd_info;
 
   // sometimes PipeWire destroys the pointer before signal_idle is called,
   // therefore we make a copy
