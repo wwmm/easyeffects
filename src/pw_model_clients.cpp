@@ -1,7 +1,6 @@
 #include "pw_model_clients.hpp"
 #include <qabstractitemmodel.h>
 #include <qhash.h>
-#include <qhashfunctions.h>
 #include <qlist.h>
 #include <qobject.h>
 #include <qstringview.h>
