@@ -496,7 +496,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   // update NodeInfo inside map
 
-  // node_it->second = *nd->nd_info;
+  pm->model_nodes.update_info(*nd->nd_info);
 
   // sometimes PipeWire destroys the pointer before signal_idle is called,
   // therefore we make a copy
@@ -882,6 +882,7 @@ void on_device_event_param(void* object,
   enum spa_direction direction {};
   enum spa_param_availability available {};
 
+  // NOLINTNEXTLINE
   if (spa_pod_parse_object(param, SPA_TYPE_OBJECT_ParamRoute, nullptr, SPA_PARAM_ROUTE_direction,
                            SPA_POD_Id(&direction), SPA_PARAM_ROUTE_name, SPA_POD_String(&name),
                            SPA_PARAM_ROUTE_available, SPA_POD_Id(&available)) < 0) {

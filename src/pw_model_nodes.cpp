@@ -224,6 +224,20 @@ auto Nodes::has_serial(const uint& serial) -> bool {
   return std::find_if(list.begin(), list.end(), [=](const NodeInfo& ni) { return ni.serial == serial; }) != list.end();
 }
 
+void Nodes::update_info(const NodeInfo& new_info) {
+  for (int n = 0; n < list.size(); n++) {
+    if (list[n].serial == new_info.serial) {
+      list[n] = new_info;
+
+      auto model_index = this->index(n);
+
+      emit dataChanged(model_index, model_index);
+
+      return;
+    }
+  }
+}
+
 void Nodes::reset() {
   beginResetModel();
 

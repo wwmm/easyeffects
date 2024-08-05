@@ -96,6 +96,8 @@ class Nodes : public QAbstractListModel {
 
   auto has_serial(const uint& serial) -> bool;
 
+  void update_info(const NodeInfo& new_info);
+
   template <typename T>
   void update_field(const int& row, const Roles& role, const T& value) {
     auto model_index = this->index(row);
