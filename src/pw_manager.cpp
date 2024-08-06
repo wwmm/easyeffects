@@ -536,7 +536,7 @@ void on_node_event_param(void* object,
                          [[maybe_unused]] uint32_t index,
                          [[maybe_unused]] uint32_t next,
                          const struct spa_pod* param) {
-  if (pw::Manager::exiting) {
+  if (pw::Manager::exiting || param == nullptr) {
     return;
   }
 
@@ -544,16 +544,16 @@ void on_node_event_param(void* object,
 
   auto* const pm = nd->pm;
 
-  if (param == nullptr) {
+  const auto serial = nd->nd_info->serial;
+
+  const auto rowIndex = pm->model_nodes.get_row_by_serial(serial);
+
+  if (rowIndex == -1) {
     return;
   }
 
   spa_pod_prop* pod_prop = nullptr;
   auto* obj = (spa_pod_object*)param;
-
-  const auto serial = nd->nd_info->serial;
-
-  auto notify = false;
 
   SPA_POD_OBJECT_FOREACH(obj, pod_prop) {
     switch (pod_prop->key) {
@@ -564,12 +564,6 @@ void on_node_event_param(void* object,
           break;
         }
 
-        auto node_it = pm->node_map.find(serial);
-
-        if (node_it == pm->node_map.end()) {
-          break;
-        }
-
         QString format_str = "unknown";
 
         for (const auto type_info : std::to_array(spa_type_audio_format)) {
@@ -577,17 +571,15 @@ void on_node_event_param(void* object,
             if (type_info.name != nullptr) {
               QString long_name = type_info.name;
 
-              // format_str = long_name.substr(long_name.rfind(':') + 1U);
+              format_str = long_name.right(long_name.size() - long_name.lastIndexOf(":") - 1);
             }
           }
         }
 
         if (format_str != nd->nd_info->format) {
-          node_it->second.format = format_str;
-
           nd->nd_info->format = format_str;
 
-          notify = true;
+          pm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::Format, format_str);
         }
 
         break;
@@ -603,13 +595,9 @@ void on_node_event_param(void* object,
           break;
         }
 
-        if (auto node_it = pm->node_map.find(serial); node_it != pm->node_map.end()) {
-          node_it->second.rate = rate;
+        nd->nd_info->rate = rate;
 
-          nd->nd_info->rate = rate;
-
-          notify = true;
-        }
+        pm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::Rate, rate);
 
         break;
       }
@@ -624,22 +612,13 @@ void on_node_event_param(void* object,
           break;
         }
 
-        if (auto node_it = pm->node_map.find(serial); node_it != pm->node_map.end()) {
-          node_it->second.mute = v;
+        nd->nd_info->mute = v;
 
-          nd->nd_info->mute = v;
+        pm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::Mute, v);
 
-          notify = true;
-        }
         break;
       }
       case SPA_PROP_channelVolumes: {
-        auto node_it = pm->node_map.find(serial);
-
-        if (node_it == pm->node_map.end()) {
-          break;
-        }
-
         std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
         const auto n_volumes =
@@ -652,13 +631,11 @@ void on_node_event_param(void* object,
         }
 
         if (n_volumes != nd->nd_info->n_volume_channels || max != nd->nd_info->volume) {
-          node_it->second.n_volume_channels = n_volumes;
-          node_it->second.volume = max;
-
           nd->nd_info->n_volume_channels = n_volumes;
           nd->nd_info->volume = max;
 
-          notify = true;
+          pm->model_nodes.update_field(rowIndex, pw::models::Nodes::NvolumeChannels, n_volumes);
+          pm->model_nodes.update_field(rowIndex, pw::models::Nodes::Volume, max);
         }
 
         break;
@@ -668,36 +645,36 @@ void on_node_event_param(void* object,
     }
   }
 
-  if (notify) {
-    // sometimes PipeWire destroys the pointer before signal_idle is called,
-    // therefore we make a copy
+  // if (notify) {
+  //   // sometimes PipeWire destroys the pointer before signal_idle is called,
+  //   // therefore we make a copy
 
-    if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
-      const auto nd_info_copy = *nd->nd_info;
+  //   if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
+  //     const auto nd_info_copy = *nd->nd_info;
 
-      Q_EMIT pm->stream_output_changed(nd_info_copy);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
-      const auto nd_info_copy = *nd->nd_info;
+  //     Q_EMIT pm->stream_output_changed(nd_info_copy);
+  //   } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
+  //     const auto nd_info_copy = *nd->nd_info;
 
-      Q_EMIT pm->stream_input_changed(nd_info_copy);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::virtual_source) {
-      const auto nd_info_copy = *nd->nd_info;
+  //     Q_EMIT pm->stream_input_changed(nd_info_copy);
+  //   } else if (nd->nd_info->media_class == tags::pipewire::media_class::virtual_source) {
+  //     const auto nd_info_copy = *nd->nd_info;
 
-      if (nd_info_copy.serial == pm->ee_source_node.serial) {
-        pm->ee_source_node = nd_info_copy;
-      }
+  //     if (nd_info_copy.serial == pm->ee_source_node.serial) {
+  //       pm->ee_source_node = nd_info_copy;
+  //     }
 
-      Q_EMIT pm->source_changed(nd_info_copy);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
-      const auto nd_info_copy = *nd->nd_info;
+  //     Q_EMIT pm->source_changed(nd_info_copy);
+  //   } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
+  //     const auto nd_info_copy = *nd->nd_info;
 
-      if (nd_info_copy.serial == pm->ee_sink_node.serial) {
-        pm->ee_sink_node = nd_info_copy;
-      }
+  //     if (nd_info_copy.serial == pm->ee_sink_node.serial) {
+  //       pm->ee_sink_node = nd_info_copy;
+  //     }
 
-      Q_EMIT pm->sink_changed(nd_info_copy);
-    }
-  }
+  //     Q_EMIT pm->sink_changed(nd_info_copy);
+  //   }
+  // }
 }
 
 void on_link_info(void* object, const struct pw_link_info* info) {

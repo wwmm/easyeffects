@@ -98,6 +98,8 @@ class Nodes : public QAbstractListModel {
 
   void update_info(const NodeInfo& new_info);
 
+  auto get_row_by_serial(const uint& serial) -> int;
+
   template <typename T>
   void update_field(const int& row, const Roles& role, const T& value) {
     auto model_index = this->index(row);
@@ -261,7 +263,7 @@ class Nodes : public QAbstractListModel {
       }
       case Roles::Rate: {
         if constexpr (std::is_same_v<T, int>) {
-          it->device_icon_name = value;
+          it->rate = value;
         }
 
         break;

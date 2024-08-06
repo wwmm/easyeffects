@@ -84,7 +84,7 @@ Kirigami.AbstractCard {
 
                     Layout.fillWidth: true
                     orientation: Qt.Horizontal
-                    value: model.volume
+                    value: model.volume * 100
                     to: 100
                     stepSize: 1
                     enabled: !muteButton.checked

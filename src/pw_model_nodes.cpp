@@ -19,6 +19,7 @@
 #include "config.h"
 #include "pipewire/node.h"
 #include "pw_objects.hpp"
+#include "util.hpp"
 
 namespace pw::models {
 
@@ -29,7 +30,7 @@ Nodes::Nodes(QObject* parent) : QAbstractListModel(parent) {
 
   proxyOutputStreams->setSourceModel(this);
   proxyOutputStreams->setFilterRole(Roles::MediaClass);
-  proxyOutputStreams->setSortRole(Roles::MediaClass);
+  proxyOutputStreams->setSortRole(Roles::AppName);
   proxyOutputStreams->setDynamicSortFilter(true);
   proxyOutputStreams->sort(0);
   proxyOutputStreams->setFilterRegularExpression(
@@ -44,7 +45,7 @@ Nodes::Nodes(QObject* parent) : QAbstractListModel(parent) {
 
   proxyInputStreams->setSourceModel(this);
   proxyInputStreams->setFilterRole(Roles::MediaClass);
-  proxyInputStreams->setSortRole(Roles::MediaClass);
+  proxyInputStreams->setSortRole(Roles::AppName);
   proxyInputStreams->setDynamicSortFilter(true);
   proxyInputStreams->sort(0);
   proxyInputStreams->setFilterRegularExpression(
@@ -88,11 +89,17 @@ QHash<int, QByteArray> Nodes::roleNames() const {
 }
 
 QVariant Nodes::data(const QModelIndex& index, int role) const {
-  if (list.empty()) {
+  if (list.empty() || !index.isValid()) {
     return "";
   }
 
   const auto it = std::next(list.begin(), index.row());
+
+  if (it == list.end()) {
+    util::warning("invalid model index.row(): " + util::to_string(index.row()));
+
+    return {};
+  }
 
   switch (role) {
     case Roles::Id:
@@ -236,6 +243,16 @@ void Nodes::update_info(const NodeInfo& new_info) {
       return;
     }
   }
+}
+
+auto Nodes::get_row_by_serial(const uint& serial) -> int {
+  for (int n = 0; n < list.size(); n++) {
+    if (list[n].serial == serial) {
+      return n;
+    }
+  }
+
+  return -1;
 }
 
 void Nodes::reset() {
