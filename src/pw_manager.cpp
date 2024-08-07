@@ -644,37 +644,6 @@ void on_node_event_param(void* object,
         break;
     }
   }
-
-  // if (notify) {
-  //   // sometimes PipeWire destroys the pointer before signal_idle is called,
-  //   // therefore we make a copy
-
-  //   if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
-  //     const auto nd_info_copy = *nd->nd_info;
-
-  //     Q_EMIT pm->stream_output_changed(nd_info_copy);
-  //   } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
-  //     const auto nd_info_copy = *nd->nd_info;
-
-  //     Q_EMIT pm->stream_input_changed(nd_info_copy);
-  //   } else if (nd->nd_info->media_class == tags::pipewire::media_class::virtual_source) {
-  //     const auto nd_info_copy = *nd->nd_info;
-
-  //     if (nd_info_copy.serial == pm->ee_source_node.serial) {
-  //       pm->ee_source_node = nd_info_copy;
-  //     }
-
-  //     Q_EMIT pm->source_changed(nd_info_copy);
-  //   } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
-  //     const auto nd_info_copy = *nd->nd_info;
-
-  //     if (nd_info_copy.serial == pm->ee_sink_node.serial) {
-  //       pm->ee_sink_node = nd_info_copy;
-  //     }
-
-  //     Q_EMIT pm->sink_changed(nd_info_copy);
-  //   }
-  // }
 }
 
 void on_link_info(void* object, const struct pw_link_info* info) {
@@ -1671,40 +1640,44 @@ void Manager::disconnect_stream(const uint& stream_id) const {
   sync_wait_unlock();
 }
 
-void Manager::set_node_volume(pw_proxy* proxy, const uint& n_vol_ch, const float& value) const {
-  std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
+void Manager::setNodeVolume(const uint& serial, const uint& n_vol_ch, const float& value) {
+  if (auto* proxy = model_nodes.get_proxy_by_serial(serial); proxy != nullptr) {
+    std::array<float, SPA_AUDIO_MAX_CHANNELS> volumes{};
 
-  std::ranges::fill(volumes, 0.0F);
-  std::fill_n(volumes.begin(), n_vol_ch, value);
+    std::ranges::fill(volumes, 0.0F);
+    std::fill_n(volumes.begin(), n_vol_ch, value);
 
-  std::array<char, 1024U> buffer{};
+    std::array<char, 1024U> buffer{};
 
-  auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
+    auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
 
-  lock();
+    lock();
 
-  // NOLINTNEXTLINE
-  pw_node_set_param(
-      (struct pw_node*)proxy, SPA_PARAM_Props, 0,
-      (spa_pod*)spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_channelVolumes,
-                                           SPA_POD_Array(sizeof(float), SPA_TYPE_Float, n_vol_ch, volumes.data())));
+    // NOLINTNEXTLINE
+    pw_node_set_param(
+        (struct pw_node*)proxy, SPA_PARAM_Props, 0,
+        (spa_pod*)spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props, SPA_PROP_channelVolumes,
+                                             SPA_POD_Array(sizeof(float), SPA_TYPE_Float, n_vol_ch, volumes.data())));
 
-  sync_wait_unlock();
+    sync_wait_unlock();
+  }
 }
 
-void Manager::set_node_mute(pw_proxy* proxy, const bool& state) const {
-  std::array<char, 1024U> buffer{};
+void Manager::setNodeMute(const uint& serial, const bool& state) {
+  if (auto* proxy = model_nodes.get_proxy_by_serial(serial); proxy != nullptr) {
+    std::array<char, 1024U> buffer{};
 
-  auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
+    auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
 
-  lock();
+    lock();
 
-  // NOLINTNEXTLINE
-  pw_node_set_param((pw_node*)proxy, SPA_PARAM_Props, 0,
-                    (spa_pod*)spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
-                                                         SPA_PROP_mute, SPA_POD_Bool(state)));
+    // NOLINTNEXTLINE
+    pw_node_set_param((pw_node*)proxy, SPA_PARAM_Props, 0,
+                      (spa_pod*)spa_pod_builder_add_object(&builder, SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
+                                                           SPA_PROP_mute, SPA_POD_Bool(state)));
 
-  sync_wait_unlock();
+    sync_wait_unlock();
+  }
 }
 
 auto Manager::count_node_ports(const uint& node_id) -> uint {

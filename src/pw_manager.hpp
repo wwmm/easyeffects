@@ -121,10 +121,6 @@ class Manager : public QObject {
 
   void disconnect_stream(const uint& id) const;
 
-  void set_node_volume(pw_proxy* proxy, const uint& n_vol_ch, const float& value) const;
-
-  void set_node_mute(pw_proxy* proxy, const bool& state) const;
-
   auto count_node_ports(const uint& node_id) -> uint;
 
   /*
@@ -157,6 +153,9 @@ class Manager : public QObject {
   static void unlock_node_map();
 
   static auto json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int;
+
+  Q_INVOKABLE void setNodeMute(const uint& serial, const bool& state);
+  Q_INVOKABLE void setNodeVolume(const uint& serial, const uint& n_vol_ch, const float& value);
 
  signals:
 

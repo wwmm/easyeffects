@@ -18,6 +18,7 @@
 #include <string>
 #include "config.h"
 #include "pipewire/node.h"
+#include "pipewire/proxy.h"
 #include "pw_objects.hpp"
 #include "util.hpp"
 
@@ -149,7 +150,7 @@ QVariant Nodes::data(const QModelIndex& index, int role) const {
     case Roles::Rate:
       return QString::fromStdString(std::format("{0:.1Lf} kHz", static_cast<float>(it->rate) / 1000.0F));
     case Roles::NvolumeChannels:
-      return QString::fromStdString(std::format("{0:d} {1}", it->n_volume_channels, i18n("channels").toStdString()));
+      return it->n_volume_channels;
     case Roles::Latency:
       return QString::fromStdString(std::format("{0:.0f} ms", 1000.0F * it->latency));
     case Roles::Volume:
@@ -253,6 +254,16 @@ auto Nodes::get_row_by_serial(const uint& serial) -> int {
   }
 
   return -1;
+}
+
+auto Nodes::get_proxy_by_serial(const uint& serial) -> pw_proxy* {
+  for (auto& info : list) {
+    if (info.serial == serial) {
+      return info.proxy;
+    }
+  }
+
+  return nullptr;
 }
 
 void Nodes::reset() {

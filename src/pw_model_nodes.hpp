@@ -35,6 +35,7 @@
 #include <string>
 #include <utility>
 #include "pipewire/node.h"
+#include "pipewire/proxy.h"
 #include "pw_objects.hpp"
 
 namespace pw::models {
@@ -99,6 +100,8 @@ class Nodes : public QAbstractListModel {
   void update_info(const NodeInfo& new_info);
 
   auto get_row_by_serial(const uint& serial) -> int;
+
+  auto get_proxy_by_serial(const uint& serial) -> pw_proxy*;
 
   template <typename T>
   void update_field(const int& row, const Roles& role, const T& value) {

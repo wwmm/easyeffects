@@ -1,3 +1,4 @@
+import EEpw
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -45,7 +46,7 @@ Kirigami.AbstractCard {
                 RowLayout {
                     Controls.Label {
                         wrapMode: Text.WordWrap
-                        text: model.state + " · " + model.format + " · " + model.rate + " · " + model.nVolumeChannels + " · " + model.latency
+                        text: model.state + " · " + model.format + " · " + model.rate + " · " + model.nVolumeChannels + i18n(" channels") + " · " + model.latency
                         color: Kirigami.Theme.disabledTextColor
                     }
 
@@ -70,25 +71,39 @@ Kirigami.AbstractCard {
                 Layout.columnSpan: appWindow.wideScreen ? 3 : 1
 
                 Controls.Button {
-                    // onCheckedChanged: showPassiveNotification("The muted state has changed: " + checked)
-
                     id: muteButton
 
                     icon.name: checked ? "audio-volume-muted-symbolic" : "audio-volume-high-symbolic"
                     checkable: true
                     checked: model.mute
+                    onCheckedChanged: {
+                        if (checked !== model.mute)
+                            EEpwManager.setNodeMute(model.serial, checked);
+
+                    }
                 }
 
                 Controls.Slider {
                     id: volumeSlider
 
+                    function prepareVolumeValue(normalizedValue) {
+                        return EEdb.useCubicVolumes === false ? normalizedValue * 100 : Math.cbrt(normalizedValue) * 100;
+                    }
+
                     Layout.fillWidth: true
                     orientation: Qt.Horizontal
-                    value: model.volume * 100
+                    value: prepareVolumeValue(model.volume)
                     to: 100
                     stepSize: 1
                     enabled: !muteButton.checked
                     wheelEnabled: false
+                    onMoved: {
+                        if (value !== prepareVolumeValue(model.volume)) {
+                            let v = value / 100;
+                            v = v * v * v;
+                            EEpwManager.setNodeVolume(model.serial, model.nVolumeChannels, v);
+                        }
+                    }
                 }
 
                 Controls.Label {
