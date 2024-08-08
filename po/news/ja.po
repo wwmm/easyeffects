@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-02 22:17+0000\n"
+"POT-Creation-Date: 2024-08-08 13:52+0000\n"
 "PO-Revision-Date: 2023-03-23 03:22+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -75,7 +75,6 @@ msgstr ""
 "Easy Effects を起動すると、前回のセッションで使用した設定を適用します。また、"
 "現在のすべての設定をプロファイルとして保存することもできます。"
 
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
