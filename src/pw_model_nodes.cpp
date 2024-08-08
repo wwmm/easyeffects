@@ -3,6 +3,7 @@
 #include <qhash.h>
 #include <qhashfunctions.h>
 #include <qlist.h>
+#include <qnamespace.h>
 #include <qobject.h>
 #include <qqml.h>
 #include <qsortfilterproxymodel.h>
@@ -32,6 +33,7 @@ Nodes::Nodes(QObject* parent) : QAbstractListModel(parent) {
   proxyOutputStreams->setSourceModel(this);
   proxyOutputStreams->setFilterRole(Roles::MediaClass);
   proxyOutputStreams->setSortRole(Roles::AppName);
+  proxyOutputStreams->setSortCaseSensitivity(Qt::CaseInsensitive);
   proxyOutputStreams->setDynamicSortFilter(true);
   proxyOutputStreams->sort(0);
   proxyOutputStreams->setFilterRegularExpression(
@@ -47,6 +49,7 @@ Nodes::Nodes(QObject* parent) : QAbstractListModel(parent) {
   proxyInputStreams->setSourceModel(this);
   proxyInputStreams->setFilterRole(Roles::MediaClass);
   proxyInputStreams->setSortRole(Roles::AppName);
+  proxyInputStreams->setSortCaseSensitivity(Qt::CaseInsensitive);
   proxyInputStreams->setDynamicSortFilter(true);
   proxyInputStreams->sort(0);
   proxyInputStreams->setFilterRegularExpression(
@@ -124,7 +127,7 @@ QVariant Nodes::data(const QModelIndex& index, int role) const {
     case Roles::AppProcessBinary:
       return it->app_process_binary;
     case Roles::AppIconName:
-      return it->app_icon_name;
+      return get_app_icon_name(&(*it));
     case Roles::MediaIconName:
       return it->media_icon_name;
     case Roles::DeviceIconName:
@@ -299,28 +302,27 @@ auto Nodes::node_state_to_qstring(const pw_node_state& state) -> QString {
   }
 }
 
-auto Nodes::get_app_icon_name(const NodeInfo& node_info) -> std::string {
+auto Nodes::get_app_icon_name(const NodeInfo* node_info) -> QString {
   // map to handle cases where PipeWire does not set icon name string or app name equal to icon name.
 
-  std::string icon_name;
+  QString icon_name;
 
-  if (!node_info.app_icon_name.isEmpty()) {
-    icon_name = node_info.app_icon_name.toStdString();
-  } else if (!node_info.media_icon_name.isEmpty()) {
-    icon_name = node_info.media_icon_name.toStdString();
-  } else if (!node_info.name.isEmpty()) {
-    const std::string prefix = "alsa_playback.";
+  if (!node_info->app_icon_name.isEmpty()) {
+    icon_name = node_info->app_icon_name;
+  } else if (!node_info->media_icon_name.isEmpty()) {
+    icon_name = node_info->media_icon_name;
+  } else if (!node_info->name.isEmpty()) {
+    const QString prefix = "alsa_playback.";
 
-    if (node_info.name.toStdString().substr(0, prefix.size()) == prefix) {
-      icon_name = node_info.name.toStdString().substr(prefix.size());
+    if (node_info->name.startsWith(prefix)) {
+      icon_name = node_info->name.sliced(prefix.size() + 1);
     } else {
-      icon_name = node_info.name.toStdString();
+      icon_name = node_info->name;
     }
 
     // get lowercase name so if it changes in the future, we have a chance to pick the same index
 
-    std::transform(icon_name.begin(), icon_name.end(), icon_name.begin(),
-                   [](unsigned char c) { return std::tolower(c); });
+    icon_name = icon_name.toLower();
   }
 
   for (const auto& [key, value] : icon_map) {

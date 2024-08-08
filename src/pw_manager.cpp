@@ -571,7 +571,7 @@ void on_node_event_param(void* object,
             if (type_info.name != nullptr) {
               QString long_name = type_info.name;
 
-              format_str = long_name.right(long_name.size() - long_name.lastIndexOf(":") - 1);
+              format_str = long_name.sliced(long_name.lastIndexOf(":") + 1);
             }
           }
         }

@@ -310,7 +310,7 @@ class Nodes : public QAbstractListModel {
 
   static auto node_state_to_qstring(const pw_node_state& state) -> QString;
 
-  auto get_app_icon_name(const NodeInfo& node_info) -> std::string;
+  static auto get_app_icon_name(const NodeInfo* node_info) -> QString;
 };
 
 }  // namespace pw::models
