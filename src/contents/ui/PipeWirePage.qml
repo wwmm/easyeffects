@@ -44,6 +44,62 @@ Kirigami.Page {
                 text: i18n("It's recommended to NOT set Easy Effects Sink/Source as Default Device in external applications (e.g. Gnome Settings and Plasma System Settings)")
             }
 
+            FormCard.FormCard {
+                EeSwitch {
+                    label: i18n("Use Default Input")
+                    isChecked: EEdbStreamInputs.useDefaultInputDevice
+                    onCheckedChanged: {
+                        if (isChecked !== EEdbStreamInputs.useDefaultInputDevice)
+                            EEdbStreamInputs.useDefaultInputDevice = isChecked;
+
+                    }
+                }
+
+                FormCard.FormComboBoxDelegate {
+                    text: i18n("Name")
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: EEdbSpectrum.spectrumShape
+                    editable: false
+                    model: ModelSourceDevices
+                    textRole: "description"
+                    onActivated: (idx) => {
+                        if (idx !== EEdbSpectrum.spectrumShape)
+                            EEdbSpectrum.spectrumShape = idx;
+
+                    }
+                }
+
+            }
+
+            FormCard.FormCard {
+                Layout.topMargin: Kirigami.Units.gridUnit
+
+                EeSwitch {
+                    label: i18n("Use Default Output")
+                    isChecked: EEdbSpectrum.useOpenGL
+                    onCheckedChanged: {
+                        if (isChecked !== EEdbSpectrum.useOpenGL)
+                            EEdbSpectrum.useOpenGL = isChecked;
+
+                    }
+                }
+
+                FormCard.FormComboBoxDelegate {
+                    text: i18n("Name")
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: EEdbSpectrum.spectrumShape
+                    editable: false
+                    model: ModelSinkDevices
+                    textRole: "description"
+                    onActivated: (idx) => {
+                        if (idx !== EEdbSpectrum.spectrumShape)
+                            EEdbSpectrum.spectrumShape = idx;
+
+                    }
+                }
+
+            }
+
             FormCard.FormHeader {
                 title: i18n("Server Information")
             }

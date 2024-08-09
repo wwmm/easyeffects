@@ -8,7 +8,7 @@
             <label>List of Plugins in the Effects Pipeline</label>
             <default></default>
         </entry>
-        <entry name="useDefaultOutputDevice" type="Bool">
+        <entry name="useDefaultInputDevice" type="Bool">
             <label>Use the System Default Output Device</label>
             <default>true</default>
         </entry>

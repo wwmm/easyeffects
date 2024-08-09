@@ -16,11 +16,11 @@
 #include <cctype>
 #include <format>
 #include <iterator>
-#include <string>
 #include "config.h"
 #include "pipewire/node.h"
 #include "pipewire/proxy.h"
 #include "pw_objects.hpp"
+#include "tags_pipewire.hpp"
 #include "util.hpp"
 
 namespace pw::models {
@@ -28,35 +28,75 @@ namespace pw::models {
 Nodes::Nodes(QObject* parent) : QAbstractListModel(parent) {
   // Output streams model
 
-  auto* proxyOutputStreams = new QSortFilterProxyModel(this);
+  {
+    auto* proxyModel = new QSortFilterProxyModel(this);
 
-  proxyOutputStreams->setSourceModel(this);
-  proxyOutputStreams->setFilterRole(Roles::MediaClass);
-  proxyOutputStreams->setSortRole(Roles::AppName);
-  proxyOutputStreams->setSortCaseSensitivity(Qt::CaseInsensitive);
-  proxyOutputStreams->setDynamicSortFilter(true);
-  proxyOutputStreams->sort(0);
-  proxyOutputStreams->setFilterRegularExpression(
-      QRegularExpression("Stream/Output/Audio", QRegularExpression::CaseInsensitiveOption));
+    proxyModel->setSourceModel(this);
+    proxyModel->setFilterRole(Roles::MediaClass);
+    proxyModel->setSortRole(Roles::AppName);
+    proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
+    proxyModel->setDynamicSortFilter(true);
+    proxyModel->sort(0);
+    proxyModel->setFilterRegularExpression(
+        QRegularExpression(tags::pipewire::media_class::output_stream, QRegularExpression::CaseInsensitiveOption));
 
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelOutputStreams",
-                                                      proxyOutputStreams);
+    qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelOutputStreams",
+                                                        proxyModel);
+  }
 
   // Input streams model
 
-  auto* proxyInputStreams = new QSortFilterProxyModel(this);
+  {
+    auto* proxyModel = new QSortFilterProxyModel(this);
 
-  proxyInputStreams->setSourceModel(this);
-  proxyInputStreams->setFilterRole(Roles::MediaClass);
-  proxyInputStreams->setSortRole(Roles::AppName);
-  proxyInputStreams->setSortCaseSensitivity(Qt::CaseInsensitive);
-  proxyInputStreams->setDynamicSortFilter(true);
-  proxyInputStreams->sort(0);
-  proxyInputStreams->setFilterRegularExpression(
-      QRegularExpression("Stream/Input/Audio", QRegularExpression::CaseInsensitiveOption));
+    proxyModel->setSourceModel(this);
+    proxyModel->setFilterRole(Roles::MediaClass);
+    proxyModel->setSortRole(Roles::AppName);
+    proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
+    proxyModel->setDynamicSortFilter(true);
+    proxyModel->sort(0);
+    proxyModel->setFilterRegularExpression(
+        QRegularExpression(tags::pipewire::media_class::input_stream, QRegularExpression::CaseInsensitiveOption));
 
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelInputStreams",
-                                                      proxyInputStreams);
+    qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelInputStreams",
+                                                        proxyModel);
+  }
+
+  // Source devices model
+
+  {
+    auto* proxyModel = new QSortFilterProxyModel(this);
+
+    proxyModel->setSourceModel(this);
+    proxyModel->setFilterRole(Roles::MediaClass);
+    proxyModel->setSortRole(Roles::Description);
+    proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
+    proxyModel->setDynamicSortFilter(true);
+    proxyModel->sort(0);
+    proxyModel->setFilterRegularExpression(
+        QRegularExpression(tags::pipewire::media_class::source, QRegularExpression::CaseInsensitiveOption));
+
+    qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelSourceDevices",
+                                                        proxyModel);
+  }
+
+  // Output devices model
+
+  {
+    auto* proxyModel = new QSortFilterProxyModel(this);
+
+    proxyModel->setSourceModel(this);
+    proxyModel->setFilterRole(Roles::MediaClass);
+    proxyModel->setSortRole(Roles::Description);
+    proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
+    proxyModel->setDynamicSortFilter(true);
+    proxyModel->sort(0);
+    proxyModel->setFilterRegularExpression(
+        QRegularExpression(tags::pipewire::media_class::sink, QRegularExpression::CaseInsensitiveOption));
+
+    qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelSinkDevices",
+                                                        proxyModel);
+  }
 }
 
 int Nodes::rowCount(const QModelIndex& /*parent*/) const {
