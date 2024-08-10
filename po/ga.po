@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-08 13:52+0000\n"
+"POT-Creation-Date: 2024-08-10 14:18+0000\n"
 "PO-Revision-Date: 2024-08-10 14:05+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2560,10 +2560,12 @@ msgstr "Uirlisí Steirió"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
+#, c++-format
 msgid "{} Not Available"
 msgstr "{} Níl sé ar fáil"
 
 #: src/ui_helpers.cpp:97
+#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself."
@@ -2573,6 +2575,7 @@ msgstr ""
 "shuiteáil tú féin."
 
 #: src/ui_helpers.cpp:103
+#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2590,5 +2593,6 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:253
+#, c++-format
 msgid "Using {}"
 msgstr "Ag baint úsáide as {}"
