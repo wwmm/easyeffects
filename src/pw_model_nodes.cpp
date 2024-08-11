@@ -37,8 +37,9 @@ Nodes::Nodes(QObject* parent) : QAbstractListModel(parent) {
     proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
     proxyModel->setDynamicSortFilter(true);
     proxyModel->sort(0);
-    proxyModel->setFilterRegularExpression(
-        QRegularExpression(tags::pipewire::media_class::output_stream, QRegularExpression::CaseInsensitiveOption));
+
+    auto pattern = "^" + QString(tags::pipewire::media_class::output_stream) + "$";
+    proxyModel->setFilterRegularExpression(QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
 
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelOutputStreams",
                                                         proxyModel);
@@ -55,8 +56,9 @@ Nodes::Nodes(QObject* parent) : QAbstractListModel(parent) {
     proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
     proxyModel->setDynamicSortFilter(true);
     proxyModel->sort(0);
-    proxyModel->setFilterRegularExpression(
-        QRegularExpression(tags::pipewire::media_class::input_stream, QRegularExpression::CaseInsensitiveOption));
+
+    auto pattern = "^" + QString(tags::pipewire::media_class::input_stream) + "$";
+    proxyModel->setFilterRegularExpression(QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
 
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelInputStreams",
                                                         proxyModel);
@@ -73,8 +75,9 @@ Nodes::Nodes(QObject* parent) : QAbstractListModel(parent) {
     proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
     proxyModel->setDynamicSortFilter(true);
     proxyModel->sort(0);
-    proxyModel->setFilterRegularExpression(
-        QRegularExpression(tags::pipewire::media_class::source, QRegularExpression::CaseInsensitiveOption));
+
+    auto pattern = "^" + QString(tags::pipewire::media_class::source) + "$";
+    proxyModel->setFilterRegularExpression(QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
 
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelSourceDevices",
                                                         proxyModel);
@@ -91,8 +94,9 @@ Nodes::Nodes(QObject* parent) : QAbstractListModel(parent) {
     proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
     proxyModel->setDynamicSortFilter(true);
     proxyModel->sort(0);
-    proxyModel->setFilterRegularExpression(
-        QRegularExpression(tags::pipewire::media_class::sink, QRegularExpression::CaseInsensitiveOption));
+
+    auto pattern = "^" + QString(tags::pipewire::media_class::sink) + "$";
+    proxyModel->setFilterRegularExpression(QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
 
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelSinkDevices",
                                                         proxyModel);

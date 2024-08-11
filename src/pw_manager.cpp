@@ -1083,9 +1083,15 @@ void on_registry_global(void* data,
     nd->nd_info->proxy = proxy;
     nd->nd_info->serial = serial;
     nd->nd_info->id = id;
-    nd->nd_info->media_class = media_class;
     nd->nd_info->media_role = media_role;
+    nd->nd_info->media_class = media_class;
     nd->nd_info->name = node_name;
+
+    if (node_name == tags::pipewire::ee_source_name) {
+      nd->nd_info->media_class = tags::pipewire::media_class::ee_source;
+    } else if (node_name == tags::pipewire::ee_sink_name) {
+      nd->nd_info->media_class = tags::pipewire::media_class::ee_sink;
+    }
 
     spa_dict_get_string(props, PW_KEY_NODE_DESCRIPTION, nd->nd_info->description);
 
@@ -1125,8 +1131,8 @@ void on_registry_global(void* data,
     // We will have debug info about our filters later
 
     if (!is_ee_filter) {
-      util::debug(media_class.toStdString() + " " + util::to_string(id) + " " + nd->nd_info->name.toStdString() +
-                  " with serial " + util::to_string(serial) + " has been added");
+      util::debug(nd->nd_info->media_class.toStdString() + " " + util::to_string(id) + " " +
+                  nd->nd_info->name.toStdString() + " with serial " + util::to_string(serial) + " has been added");
     }
 
     return;

@@ -41,6 +41,10 @@ inline constexpr auto input_stream = "Stream/Input/Audio";
 
 inline constexpr auto output_stream = "Stream/Output/Audio";
 
+inline constexpr auto ee_sink = "EE/Audio/Sink";
+
+inline constexpr auto ee_source = "EE/Audio/Source";
+
 }  // namespace tags::pipewire::media_class
 
 namespace tags::pipewire::media_role {

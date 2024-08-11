@@ -56,17 +56,17 @@ Kirigami.Page {
                 }
 
                 FormCard.FormComboBoxDelegate {
+                    // onActivated: (idx) => {
+                    //     if (idx !== EEdbSpectrum.spectrumShape)
+                    //         EEdbSpectrum.spectrumShape = idx;
+                    // }
+
                     text: i18n("Name")
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: EEdbSpectrum.spectrumShape
+                    currentIndex: 0
                     editable: false
                     model: ModelSourceDevices
                     textRole: "description"
-                    onActivated: (idx) => {
-                        if (idx !== EEdbSpectrum.spectrumShape)
-                            EEdbSpectrum.spectrumShape = idx;
-
-                    }
                 }
 
             }
@@ -85,17 +85,17 @@ Kirigami.Page {
                 }
 
                 FormCard.FormComboBoxDelegate {
+                    // onActivated: (idx) => {
+                    //     if (idx !== EEdbSpectrum.spectrumShape)
+                    //         EEdbSpectrum.spectrumShape = idx;
+                    // }
+
                     text: i18n("Name")
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: EEdbSpectrum.spectrumShape
+                    currentIndex: 0
                     editable: false
                     model: ModelSinkDevices
                     textRole: "description"
-                    onActivated: (idx) => {
-                        if (idx !== EEdbSpectrum.spectrumShape)
-                            EEdbSpectrum.spectrumShape = idx;
-
-                    }
                 }
 
             }
