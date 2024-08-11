@@ -378,4 +378,12 @@ auto Nodes::get_app_icon_name(const NodeInfo* node_info) -> QString {
   return icon_name;
 }
 
+QString Nodes::getNodeName(const uint& rowIndex) {
+  if (rowIndex >= list.size()) {
+    return "";
+  }
+
+  return list[rowIndex].name;
+}
+
 }  // namespace pw::models

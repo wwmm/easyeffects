@@ -46,6 +46,8 @@ Kirigami.Page {
 
             FormCard.FormCard {
                 EeSwitch {
+                    id: useDefaultInputDevice
+
                     label: i18n("Use Default Input")
                     isChecked: EEdbStreamInputs.useDefaultInputDevice
                     onCheckedChanged: {
@@ -56,17 +58,21 @@ Kirigami.Page {
                 }
 
                 FormCard.FormComboBoxDelegate {
-                    // onActivated: (idx) => {
-                    //     if (idx !== EEdbSpectrum.spectrumShape)
-                    //         EEdbSpectrum.spectrumShape = idx;
-                    // }
-
                     text: i18n("Name")
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: 0
                     editable: false
                     model: ModelSourceDevices
                     textRole: "description"
+                    enabled: !EEdbStreamInputs.useDefaultInputDevice
+                    onActivated: (idx) => {
+                        let proxyIndex = ModelSourceDevices.index(idx, 0);
+                        let sourceIndex = ModelSourceDevices.mapToSource(proxyIndex);
+                        let nodeName = ModelNodes.getNodeName(sourceIndex.row);
+                        if (EEdbStreamInputs.inputDevice !== nodeName)
+                            EEdbStreamInputs.inputDevice = nodeName;
+
+                    }
                 }
 
             }
@@ -75,20 +81,19 @@ Kirigami.Page {
                 Layout.topMargin: Kirigami.Units.gridUnit
 
                 EeSwitch {
+                    id: useDefaultOutputDevice
+
                     label: i18n("Use Default Output")
-                    isChecked: EEdbSpectrum.useOpenGL
+                    isChecked: EEdbStreamOutputs.useDefaultOutputDevice
                     onCheckedChanged: {
-                        if (isChecked !== EEdbSpectrum.useOpenGL)
-                            EEdbSpectrum.useOpenGL = isChecked;
+                        if (isChecked !== EEdbStreamOutputs.useDefaultOutputDevice)
+                            EEdbStreamOutputs.useDefaultOutputDevice = isChecked;
 
                     }
                 }
 
                 FormCard.FormComboBoxDelegate {
-                    // onActivated: (idx) => {
-                    //     if (idx !== EEdbSpectrum.spectrumShape)
-                    //         EEdbSpectrum.spectrumShape = idx;
-                    // }
+                    // EEdbSpectrum.spectrumShape = idx;
 
                     text: i18n("Name")
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
@@ -96,6 +101,15 @@ Kirigami.Page {
                     editable: false
                     model: ModelSinkDevices
                     textRole: "description"
+                    enabled: !EEdbStreamOutputs.useDefaultOutputDevice
+                    onActivated: (idx) => {
+                        let proxyIndex = ModelSinkDevices.index(idx, 0);
+                        let sourceIndex = ModelSinkDevices.mapToSource(proxyIndex);
+                        let nodeName = ModelNodes.getNodeName(sourceIndex.row);
+                        if (EEdbStreamOutputs.outputDevice !== nodeName)
+                            EEdbStreamOutputs.outputDevice = nodeName;
+
+                    }
                 }
 
             }
