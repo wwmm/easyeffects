@@ -6,7 +6,23 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.Page {
+    // let proxyIndex = model.mapFromSource(nodeIndex);
+
     id: pwPage
+
+    function comboFindIndex(model, nodeName) {
+        let idx = 0;
+        let nodeIndex = ModelNodes.getModelIndexByName(nodeName);
+        let modelRow = model.mapFromSource(nodeIndex).row;
+        if (modelRow >= 0)
+            idx = modelRow;
+
+        console.log(nodeName);
+        console.log(nodeIndex);
+        console.log(model.mapFromSource(nodeIndex));
+        console.log(ModelSinkDevices.rowCount());
+        return idx;
+    }
 
     padding: 0
     Component.onCompleted: {
@@ -58,13 +74,25 @@ Kirigami.Page {
                 }
 
                 FormCard.FormComboBoxDelegate {
+                    id: comboInputDevice
+
                     text: i18n("Name")
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: 0
+                    // currentIndex: {
+                    //     if (enabled) {
+                    //         comboFindIndex(ModelSourceDevices, EEdbStreamInputs.inputDevice);
+                    //     } else {
+                    //         let nodeDescription = ModelNodes.getNodeDescription(EEpwManager.defaultInputDeviceName);
+                    //         // let idx = this.find(nodeDescription);
+                    //         // console.log(idx);
+                    //         return 0;
+                    //     }
+                    // }
                     editable: false
                     model: ModelSourceDevices
                     textRole: "description"
                     enabled: !EEdbStreamInputs.useDefaultInputDevice
+                    // Component.onCompleted: currentIndex = indexOfValue(EEdbStreamInputs.inputDevice)
                     onActivated: (idx) => {
                         let proxyIndex = ModelSourceDevices.index(idx, 0);
                         let sourceIndex = ModelSourceDevices.mapToSource(proxyIndex);
@@ -93,11 +121,9 @@ Kirigami.Page {
                 }
 
                 FormCard.FormComboBoxDelegate {
-                    // EEdbSpectrum.spectrumShape = idx;
-
                     text: i18n("Name")
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: 0
+                    // currentIndex: comboFindIndex(ModelSinkDevices, EEdbStreamOutputs.outputDevice)
                     editable: false
                     model: ModelSinkDevices
                     textRole: "description"
@@ -109,6 +135,9 @@ Kirigami.Page {
                         if (EEdbStreamOutputs.outputDevice !== nodeName)
                             EEdbStreamOutputs.outputDevice = nodeName;
 
+                    }
+                    Component.onCompleted: {
+                        comboFindIndex(ModelSinkDevices, EEdbStreamOutputs.outputDevice);
                     }
                 }
 

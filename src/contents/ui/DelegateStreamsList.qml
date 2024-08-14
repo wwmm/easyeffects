@@ -27,6 +27,7 @@ Kirigami.AbstractCard {
             Kirigami.Icon {
                 Layout.fillHeight: true
                 source: model.appIconName
+                fallback: "folder-sound-symbolic"
             }
 
             ColumnLayout {

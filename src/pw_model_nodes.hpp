@@ -104,6 +104,8 @@ class Nodes : public QAbstractListModel {
   auto get_proxy_by_serial(const uint& serial) -> pw_proxy*;
 
   Q_INVOKABLE QString getNodeName(const uint& rowIndex);
+  Q_INVOKABLE QString getNodeDescription(const QString& nodeName);
+  Q_INVOKABLE QModelIndex getModelIndexByName(const QString& nodeName);
 
   template <typename T>
   void update_field(const int& row, const Roles& role, const T& value) {

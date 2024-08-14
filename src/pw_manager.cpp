@@ -898,9 +898,9 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
       return 0;
     }
 
-    pm->default_output_device_name = v.data();
+    pm->defaultOutputDeviceName = v.data();
 
-    Q_EMIT pm->new_default_sink_name(pm->default_output_device_name);
+    Q_EMIT pm->new_default_sink_name(pm->defaultOutputDeviceName);
   }
 
   if (str_key == "default.audio.source") {
@@ -912,9 +912,9 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
       return 0;
     }
 
-    pm->default_input_device_name = v.data();
+    pm->defaultInputDeviceName = v.data();
 
-    Q_EMIT pm->new_default_source_name(pm->default_input_device_name);
+    Q_EMIT pm->new_default_source_name(pm->defaultInputDeviceName);
   }
 
   return 0;

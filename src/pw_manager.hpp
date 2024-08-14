@@ -53,6 +53,9 @@ class Manager : public QObject {
   Q_PROPERTY(QString defaultMaxQuantum MEMBER defaultMaxQuantum NOTIFY defaultMaxQuantumChanged)
   Q_PROPERTY(QString defaultQuantum MEMBER defaultQuantum NOTIFY defaultQuantumChanged)
 
+  Q_PROPERTY(QString defaultOutputDeviceName MEMBER defaultOutputDeviceName NOTIFY defaultOutputDeviceNameChanged)
+  Q_PROPERTY(QString defaultInputDeviceName MEMBER defaultInputDeviceName NOTIFY defaultInputDeviceNameChanged)
+
  public:
   Manager();
   Manager(const Manager&) = delete;
@@ -85,7 +88,7 @@ class Manager : public QObject {
 
   std::vector<DeviceInfo> list_devices;
 
-  std::string default_output_device_name, default_input_device_name;
+  QString defaultInputDeviceName, defaultOutputDeviceName;
 
   NodeInfo ee_sink_node, ee_source_node;
   NodeInfo output_device, input_device;
@@ -167,6 +170,9 @@ class Manager : public QObject {
   void defaultMaxQuantumChanged();
   void defaultQuantumChanged();
 
+  void defaultInputDeviceNameChanged();
+  void defaultOutputDeviceNameChanged();
+
   void stream_input_added(NodeInfo);
   void stream_output_added(NodeInfo);
   void stream_input_changed(NodeInfo);
@@ -184,8 +190,8 @@ class Manager : public QObject {
   void sink_added(NodeInfo);
   void sink_changed(NodeInfo);
   void sink_removed(NodeInfo);
-  void new_default_sink_name(std::string);
-  void new_default_source_name(std::string);
+  void new_default_sink_name(QString);
+  void new_default_source_name(QString);
   void device_input_route_changed(DeviceInfo);
   void device_output_route_changed(DeviceInfo);
 
