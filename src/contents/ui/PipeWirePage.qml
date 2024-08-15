@@ -10,18 +10,14 @@ Kirigami.Page {
 
     id: pwPage
 
-    function comboFindIndex(model, nodeName) {
-        let idx = 0;
+    function comboFindRow(model, nodeName) {
+        let row = -1;
         let nodeIndex = ModelNodes.getModelIndexByName(nodeName);
         let modelRow = model.mapFromSource(nodeIndex).row;
         if (modelRow >= 0)
-            idx = modelRow;
+            row = modelRow;
 
-        console.log(nodeName);
-        console.log(nodeIndex);
-        console.log(model.mapFromSource(nodeIndex));
-        console.log(ModelSinkDevices.rowCount() + " -> " + ModelNodes.rowCount());
-        return idx;
+        return row;
     }
 
     padding: 0
@@ -52,6 +48,30 @@ Kirigami.Page {
         id: generalPage
 
         FormCard.FormCardPage {
+            Connections {
+                function onDataChanged() {
+                    let deviceName = useDefaultInputDevice.isChecked ? EEpwManager.defaultInputDeviceName : EEdbStreamInputs.inputDevice;
+                    let comboRow = comboFindRow(ModelSourceDevices, deviceName);
+                    if (comboRow !== -1)
+                        comboInputDevice.currentIndex = comboRow;
+
+                }
+
+                target: ModelSourceDevices
+            }
+
+            Connections {
+                function onDataChanged() {
+                    let deviceName = useDefaultOutputDevice.isChecked ? EEpwManager.defaultOutputDeviceName : EEdbStreamOutputs.outputDevice;
+                    let comboRow = comboFindRow(ModelSinkDevices, deviceName);
+                    if (comboRow !== -1)
+                        comboOutputDevice.currentIndex = comboRow;
+
+                }
+
+                target: ModelSinkDevices
+            }
+
             FormCard.FormHeader {
                 title: i18n("Device Management")
             }
@@ -78,21 +98,10 @@ Kirigami.Page {
 
                     text: i18n("Name")
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    // currentIndex: {
-                    //     if (enabled) {
-                    //         comboFindIndex(ModelSourceDevices, EEdbStreamInputs.inputDevice);
-                    //     } else {
-                    //         let nodeDescription = ModelNodes.getNodeDescription(EEpwManager.defaultInputDeviceName);
-                    //         // let idx = this.find(nodeDescription);
-                    //         // console.log(idx);
-                    //         return 0;
-                    //     }
-                    // }
                     editable: false
                     model: ModelSourceDevices
                     textRole: "description"
                     enabled: !EEdbStreamInputs.useDefaultInputDevice
-                    // Component.onCompleted: currentIndex = indexOfValue(EEdbStreamInputs.inputDevice)
                     onActivated: (idx) => {
                         let proxyIndex = ModelSourceDevices.index(idx, 0);
                         let sourceIndex = ModelSourceDevices.mapToSource(proxyIndex);
@@ -121,9 +130,10 @@ Kirigami.Page {
                 }
 
                 FormCard.FormComboBoxDelegate {
+                    id: comboOutputDevice
+
                     text: i18n("Name")
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    // currentIndex: comboFindIndex(ModelSinkDevices, EEdbStreamOutputs.outputDevice)
                     editable: false
                     model: ModelSinkDevices
                     textRole: "description"
@@ -135,9 +145,6 @@ Kirigami.Page {
                         if (EEdbStreamOutputs.outputDevice !== nodeName)
                             EEdbStreamOutputs.outputDevice = nodeName;
 
-                    }
-                    Component.onCompleted: {
-                        comboFindIndex(ModelSinkDevices, EEdbStreamOutputs.outputDevice);
                     }
                 }
 

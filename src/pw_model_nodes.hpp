@@ -75,7 +75,7 @@ class Nodes : public QAbstractListModel {
     Volume
   };
 
-  [[nodiscard]] int rowCount(const QModelIndex& /*parent*/) const override;
+  [[nodiscard]] int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 
   [[nodiscard]] QHash<int, QByteArray> roleNames() const override;
 

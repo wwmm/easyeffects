@@ -73,9 +73,9 @@ Nodes::Nodes(QObject* parent)
 
   {
     proxy_source_devices.setSourceModel(this);
-    proxy_source_devices.setFilterRole(Roles::MediaClass);
     proxy_source_devices.setSortRole(Roles::Description);
     proxy_source_devices.setSortCaseSensitivity(Qt::CaseInsensitive);
+    proxy_source_devices.setFilterRole(Roles::MediaClass);
     proxy_source_devices.setDynamicSortFilter(true);
 
     auto pattern = "^" + QString(tags::pipewire::media_class::source) + "$";
@@ -400,13 +400,6 @@ QString Nodes::getNodeDescription(const QString& nodeName) {
 }
 
 QModelIndex Nodes::getModelIndexByName(const QString& nodeName) {
-  qDebug() << proxy_sink_devices.rowCount();
-  qDebug() << this->rowCount(QModelIndex());
-  qDebug() << proxy_sink_devices.data(proxy_sink_devices.index(1, 0), 260);
-  qDebug() << this->data(this->index(1, 0), 260);
-  qDebug() << proxy_sink_devices.mapToSource(proxy_sink_devices.index(0, 0));
-  qDebug() << proxy_sink_devices.mapFromSource(this->index(0));
-
   for (int n = 0; n < list.size(); n++) {
     if (list[n].name == nodeName) {
       return this->index(n);
