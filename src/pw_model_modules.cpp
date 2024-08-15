@@ -55,9 +55,7 @@ auto Modules::get_list() -> QList<ModuleInfo> {
 }
 
 void Modules::append(const ModuleInfo& info) {
-  int pos = list.empty() ? 0 : list.size() - 1;
-
-  beginInsertRows(QModelIndex(), pos, pos);
+  beginInsertRows(QModelIndex(), list.size(), list.size());
 
   list.append(info);
 

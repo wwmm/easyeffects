@@ -25,85 +25,86 @@
 
 namespace pw::models {
 
-Nodes::Nodes(QObject* parent) : QAbstractListModel(parent) {
+Nodes::Nodes(QObject* parent)
+    : QAbstractListModel(parent),
+      proxy_input_streams(QSortFilterProxyModel(this)),
+      proxy_output_streams(QSortFilterProxyModel(this)),
+      proxy_sink_devices(QSortFilterProxyModel(this)),
+      proxy_source_devices(QSortFilterProxyModel(this)) {
   // Output streams model
 
   {
-    auto* proxyModel = new QSortFilterProxyModel(this);
-
-    proxyModel->setSourceModel(this);
-    proxyModel->setFilterRole(Roles::MediaClass);
-    proxyModel->setSortRole(Roles::AppName);
-    proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
-    proxyModel->setDynamicSortFilter(true);
+    proxy_output_streams.setSourceModel(this);
+    proxy_output_streams.setFilterRole(Roles::MediaClass);
+    proxy_output_streams.setSortRole(Roles::AppName);
+    proxy_output_streams.setSortCaseSensitivity(Qt::CaseInsensitive);
+    proxy_output_streams.setDynamicSortFilter(true);
 
     auto pattern = "^" + QString(tags::pipewire::media_class::output_stream) + "$";
-    proxyModel->setFilterRegularExpression(QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
+    proxy_output_streams.setFilterRegularExpression(
+        QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
 
-    proxyModel->sort(0, Qt::AscendingOrder);
+    proxy_output_streams.sort(0, Qt::AscendingOrder);
 
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelOutputStreams",
-                                                        proxyModel);
+                                                        &proxy_output_streams);
   }
 
   // Input streams model
 
   {
-    auto* proxyModel = new QSortFilterProxyModel(this);
-
-    proxyModel->setSourceModel(this);
-    proxyModel->setFilterRole(Roles::MediaClass);
-    proxyModel->setSortRole(Roles::AppName);
-    proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
-    proxyModel->setDynamicSortFilter(true);
+    proxy_input_streams.setSourceModel(this);
+    proxy_input_streams.setFilterRole(Roles::MediaClass);
+    proxy_input_streams.setSortRole(Roles::AppName);
+    proxy_input_streams.setSortCaseSensitivity(Qt::CaseInsensitive);
+    proxy_input_streams.setDynamicSortFilter(true);
 
     auto pattern = "^" + QString(tags::pipewire::media_class::input_stream) + "$";
-    proxyModel->setFilterRegularExpression(QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
+    proxy_input_streams.setFilterRegularExpression(
+        QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
 
-    proxyModel->sort(0, Qt::AscendingOrder);
+    proxy_input_streams.sort(0, Qt::AscendingOrder);
 
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelInputStreams",
-                                                        proxyModel);
+                                                        &proxy_input_streams);
   }
 
   // Source devices model
 
   {
-    auto* proxyModel = new QSortFilterProxyModel(this);
-
-    proxyModel->setSourceModel(this);
-    proxyModel->setFilterRole(Roles::MediaClass);
-    proxyModel->setSortRole(Roles::Description);
-    proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
-    proxyModel->setDynamicSortFilter(true);
+    proxy_source_devices.setSourceModel(this);
+    proxy_source_devices.setFilterRole(Roles::MediaClass);
+    proxy_source_devices.setSortRole(Roles::Description);
+    proxy_source_devices.setSortCaseSensitivity(Qt::CaseInsensitive);
+    proxy_source_devices.setDynamicSortFilter(true);
 
     auto pattern = "^" + QString(tags::pipewire::media_class::source) + "$";
-    proxyModel->setFilterRegularExpression(QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
+    proxy_source_devices.setFilterRegularExpression(
+        QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
 
-    proxyModel->sort(0, Qt::AscendingOrder);
+    proxy_source_devices.sort(0, Qt::AscendingOrder);
 
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelSourceDevices",
-                                                        proxyModel);
+                                                        &proxy_source_devices);
   }
 
   // Output devices model
 
   {
-    auto* proxyModel = new QSortFilterProxyModel(this);
-
-    proxyModel->setSourceModel(this);
-    proxyModel->setFilterRole(Roles::MediaClass);
-    proxyModel->setSortRole(Roles::Description);
-    proxyModel->setSortCaseSensitivity(Qt::CaseInsensitive);
-    proxyModel->setDynamicSortFilter(true);
+    proxy_sink_devices.setSourceModel(this);
+    proxy_sink_devices.setSortRole(Roles::Description);
+    proxy_sink_devices.setSortCaseSensitivity(Qt::CaseInsensitive);
+    proxy_sink_devices.setFilterRole(Roles::MediaClass);
+    proxy_sink_devices.setDynamicSortFilter(true);
 
     auto pattern = "^" + QString(tags::pipewire::media_class::sink) + "$";
-    proxyModel->setFilterRegularExpression(QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
+    proxy_sink_devices.setFilterRegularExpression(
+        QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
 
-    proxyModel->sort(0, Qt::AscendingOrder);
+    proxy_sink_devices.sort(0, Qt::AscendingOrder);
 
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelSinkDevices",
-                                                        proxyModel);
+                                                        &proxy_sink_devices);
   }
 }
 
@@ -216,9 +217,7 @@ auto Nodes::get_list() -> QList<NodeInfo> {
 }
 
 void Nodes::append(const NodeInfo& info) {
-  int pos = list.empty() ? 0 : list.size() - 1;
-
-  beginInsertRows(QModelIndex(), pos, pos);
+  beginInsertRows(QModelIndex(), list.size(), list.size());
 
   list.append(info);
 
@@ -401,6 +400,13 @@ QString Nodes::getNodeDescription(const QString& nodeName) {
 }
 
 QModelIndex Nodes::getModelIndexByName(const QString& nodeName) {
+  qDebug() << proxy_sink_devices.rowCount();
+  qDebug() << this->rowCount(QModelIndex());
+  qDebug() << proxy_sink_devices.data(proxy_sink_devices.index(1, 0), 260);
+  qDebug() << this->data(this->index(1, 0), 260);
+  qDebug() << proxy_sink_devices.mapToSource(proxy_sink_devices.index(0, 0));
+  qDebug() << proxy_sink_devices.mapFromSource(this->index(0));
+
   for (int n = 0; n < list.size(); n++) {
     if (list[n].name == nodeName) {
       return this->index(n);

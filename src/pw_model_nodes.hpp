@@ -25,6 +25,7 @@
 #include <qlist.h>
 #include <qnamespace.h>
 #include <qobject.h>
+#include <qsortfilterproxymodel.h>
 #include <qstringview.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
@@ -32,7 +33,6 @@
 #include <array>
 #include <cstdint>
 #include <iterator>
-#include <string>
 #include <utility>
 #include "pipewire/node.h"
 #include "pipewire/proxy.h"
@@ -305,6 +305,11 @@ class Nodes : public QAbstractListModel {
 
  private:
   QList<NodeInfo> list;
+
+  QSortFilterProxyModel proxy_input_streams;
+  QSortFilterProxyModel proxy_output_streams;
+  QSortFilterProxyModel proxy_sink_devices;
+  QSortFilterProxyModel proxy_source_devices;
 
   constexpr static auto icon_map =
       std::to_array<std::pair<const char*, const char*>>({{"chromium-browser", "chromium"},

@@ -20,7 +20,7 @@ Kirigami.Page {
         console.log(nodeName);
         console.log(nodeIndex);
         console.log(model.mapFromSource(nodeIndex));
-        console.log(ModelSinkDevices.rowCount());
+        console.log(ModelSinkDevices.rowCount() + " -> " + ModelNodes.rowCount());
         return idx;
     }
 
