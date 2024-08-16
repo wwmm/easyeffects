@@ -6,19 +6,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.Page {
-    // let proxyIndex = model.mapFromSource(nodeIndex);
-
     id: pwPage
-
-    function comboFindRow(model, nodeName) {
-        let row = -1;
-        let nodeIndex = ModelNodes.getModelIndexByName(nodeName);
-        let modelRow = model.mapFromSource(nodeIndex).row;
-        if (modelRow >= 0)
-            row = modelRow;
-
-        return row;
-    }
 
     padding: 0
     Component.onCompleted: {
@@ -48,13 +36,35 @@ Kirigami.Page {
         id: generalPage
 
         FormCard.FormCardPage {
+            function comboFindRow(model, nodeName) {
+                let row = -1;
+                let nodeIndex = ModelNodes.getModelIndexByName(nodeName);
+                let modelRow = model.mapFromSource(nodeIndex).row;
+                if (modelRow >= 0)
+                    row = modelRow;
+
+                return row;
+            }
+
+            function updateInputDevComboSelection() {
+                let deviceName = useDefaultInputDevice.isChecked ? EEpwManager.defaultInputDeviceName : EEdbStreamInputs.inputDevice;
+                let comboRow = comboFindRow(ModelSourceDevices, deviceName);
+                if (comboRow !== -1)
+                    comboInputDevice.currentIndex = comboRow;
+
+            }
+
+            function updateOutputDevComboSelection() {
+                let deviceName = useDefaultOutputDevice.isChecked ? EEpwManager.defaultOutputDeviceName : EEdbStreamOutputs.outputDevice;
+                let comboRow = comboFindRow(ModelSinkDevices, deviceName);
+                if (comboRow !== -1)
+                    comboOutputDevice.currentIndex = comboRow;
+
+            }
+
             Connections {
                 function onDataChanged() {
-                    let deviceName = useDefaultInputDevice.isChecked ? EEpwManager.defaultInputDeviceName : EEdbStreamInputs.inputDevice;
-                    let comboRow = comboFindRow(ModelSourceDevices, deviceName);
-                    if (comboRow !== -1)
-                        comboInputDevice.currentIndex = comboRow;
-
+                    updateInputDevComboSelection();
                 }
 
                 target: ModelSourceDevices
@@ -62,11 +72,7 @@ Kirigami.Page {
 
             Connections {
                 function onDataChanged() {
-                    let deviceName = useDefaultOutputDevice.isChecked ? EEpwManager.defaultOutputDeviceName : EEdbStreamOutputs.outputDevice;
-                    let comboRow = comboFindRow(ModelSinkDevices, deviceName);
-                    if (comboRow !== -1)
-                        comboOutputDevice.currentIndex = comboRow;
-
+                    updateOutputDevComboSelection();
                 }
 
                 target: ModelSinkDevices
@@ -87,6 +93,9 @@ Kirigami.Page {
                     label: i18n("Use Default Input")
                     isChecked: EEdbStreamInputs.useDefaultInputDevice
                     onCheckedChanged: {
+                        if (isChecked)
+                            updateInputDevComboSelection();
+
                         if (isChecked !== EEdbStreamInputs.useDefaultInputDevice)
                             EEdbStreamInputs.useDefaultInputDevice = isChecked;
 
@@ -123,6 +132,9 @@ Kirigami.Page {
                     label: i18n("Use Default Output")
                     isChecked: EEdbStreamOutputs.useDefaultOutputDevice
                     onCheckedChanged: {
+                        if (isChecked)
+                            updateOutputDevComboSelection();
+
                         if (isChecked !== EEdbStreamOutputs.useDefaultOutputDevice)
                             EEdbStreamOutputs.useDefaultOutputDevice = isChecked;
 
