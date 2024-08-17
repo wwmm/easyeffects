@@ -267,6 +267,12 @@ void application_class_init(ApplicationClass* klass) {
       self->presets_manager = new PresetsManager();
     }
 
+    if (g_variant_dict_contains(options, "version") != 0) {
+      std::cout << "easyeffects version: " << std::string(VERSION) << '\n';
+
+      return EXIT_SUCCESS;
+    }
+
     if (g_variant_dict_contains(options, "presets") != 0) {
       std::string list;
 
@@ -310,12 +316,6 @@ void application_class_init(ApplicationClass* klass) {
       hide_all_windows(gapp);
 
       g_application_quit(G_APPLICATION(gapp));
-
-      return EXIT_SUCCESS;
-    }
-
-    if (g_variant_dict_contains(options, "version") != 0) {
-      std::cout << "easyeffects version: " << std::string(VERSION) << '\n';
 
       return EXIT_SUCCESS;
     }
