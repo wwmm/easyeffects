@@ -4,6 +4,20 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
+- 
+
+- Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 7.1.8
+Date: 2024-08-17
+
+Description: 
+- Features∶
 - The loudness plugin exposes the ISO 226:2023 standard that is now available in the LSP plugin.
 - Updated translations
 - Performance optmizations to the spectrum plugin and the LADSPA wrapper
@@ -12,7 +26,6 @@ Description:
 - We were not locking PipeWire's thread main loop before setting a  stream volume and mute controls. THis could cause these operations to fail in some situations 
 
 - Other notes∶
-- 
 
 ---
 Version: 7.1.7

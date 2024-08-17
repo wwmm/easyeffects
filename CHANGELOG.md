@@ -1,5 +1,20 @@
 # Changelog
  
+## 7.1.8
+### 2024-08-17
+
+ 
+### Features:
+- The loudness plugin exposes the ISO 226:2023 standard that is now available in the LSP plugin.
+- Updated translations
+- Performance optmizations to the spectrum plugin and the LADSPA wrapper
+
+### Bug fixes:
+- We were not locking PipeWire's thread main loop before setting a  stream volume and mute controls. THis could cause these operations to fail in some situations 
+
+### Other notes:
+
+ 
 ## 7.1.7
 ### 2024-06-21
 
