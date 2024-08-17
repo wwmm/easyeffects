@@ -14,6 +14,8 @@
         <value nick="ISO226-2003" value="1" />
         <value nick="Fletcher-Munson" value="2" />
         <value nick="Robinson-Dadson" value="3" />
+        <value nick="ISO226-2023" value="4" />
+
     </enum>
     <schema id="com.github.wwmm.easyeffects.loudness">
         <key name="bypass" type="b">
