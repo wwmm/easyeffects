@@ -5,7 +5,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import TagsPluginName
 import org.kde.kirigami as Kirigami
 
 Kirigami.OverlaySheet {

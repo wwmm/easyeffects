@@ -42,9 +42,9 @@ namespace tags {
 
 class PluginName : public QObject {
   Q_OBJECT
-  QML_UNCREATABLE("Constants with the plugins name")
   QML_ELEMENT
   QML_SINGLETON
+  QML_NAMED_ELEMENT(TagsPluginName)
 
  public:
   CREATE_PROPERTY(QString, autogain, QStringLiteral("autogain"));

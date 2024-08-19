@@ -5,6 +5,7 @@ import QtCharts
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import TagsPluginName
 import org.kde.kirigami as Kirigami
 
 Kirigami.Page {
@@ -14,6 +15,7 @@ Kirigami.Page {
 
     property int pageType: 0 // 0 for output and 1 for input
     property var streamDB
+    property string logTag: "PageStreamsEffects"
 
     function populatePluginsListModel(plugins) {
         let names = PluginsNameModel.getBaseNames();
@@ -26,9 +28,21 @@ Kirigami.Page {
                         "translatedName": PluginsNameModel.translate(names[k]),
                         "bypass": false
                     });
+                    createPluginStack(names[k]);
                     break;
                 }
             }
+        }
+    }
+
+    function createPluginStack(baseName) {
+        switch (baseName) {
+        case PluginName.autogain:
+            while (pluginsStack.depth > 1)pluginsStack.pop()
+            pluginsStack.push("Autogain.qml");
+            break;
+        default:
+            console.log(logTag + " invalid plugin name: " + baseName);
         }
     }
 
