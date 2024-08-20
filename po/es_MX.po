@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-17 15:18+0000\n"
+"POT-Creation-Date: 2024-08-20 14:04+0000\n"
 "PO-Revision-Date: 2023-11-16 03:06+0000\n"
 "Last-Translator: Carlos Batista <cbatista8a@gmail.com>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -1648,7 +1648,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Efectos de Salida"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:277
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:283
 msgid "Output Presets"
 msgstr "Perfiles de Dispositivos de Salida"
 
@@ -1669,7 +1669,7 @@ msgstr "Perfiles de Dispositivos de Salida"
 msgid "Input Devices"
 msgstr "Efectos de Entrada"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:285
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:291
 msgid "Input Presets"
 msgstr "Perfiles de Dispositivos de Entrada"
 
