@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-20 14:04+0000\n"
-"PO-Revision-Date: 2024-06-26 03:09+0000\n"
+"PO-Revision-Date: 2024-08-21 03:09+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.6-rc\n"
+"X-Generator: Weblate 5.7\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -141,6 +141,8 @@ msgid ""
 "The loudness plugin exposes the ISO 226:2023 standard that is now available "
 "in the LSP plugin."
 msgstr ""
+"Le greffon Sonie intègre la norme ISO 226:2023 qui est maintenant disponible "
+"dans le greffon LSP."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
@@ -155,6 +157,7 @@ msgstr "Traductions mises à jour"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid "Performance optmizations to the spectrum plugin and the LADSPA wrapper"
 msgstr ""
+"Améliorations des performances du greffon du spectre et de l'enveloppe LADSPA"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
@@ -202,6 +205,9 @@ msgid ""
 "volume and mute controls. THis could cause these operations to fail in some "
 "situations"
 msgstr ""
+"Nous ne verrouillions pas la boucle principale du thread de PipeWire avant "
+"de régler les contrôles de volume et de sourdine d'un flux. Cela pouvait "
+"entraîner l'échec de ces opérations dans certaines situations"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
