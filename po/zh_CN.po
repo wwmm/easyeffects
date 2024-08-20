@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-17 15:18+0000\n"
+"POT-Creation-Date: 2024-08-20 00:16+0000\n"
 "PO-Revision-Date: 2024-07-07 04:09+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1536,7 +1536,7 @@ msgstr "仅本地预设可被自动加载。若需要自动加载社区预设，
 msgid "Output Devices"
 msgstr "输出设备"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:277
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:283
 msgid "Output Presets"
 msgstr "输出预设"
 
@@ -1556,7 +1556,7 @@ msgstr "输出自动加载预设列表"
 msgid "Input Devices"
 msgstr "输入设备"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:285
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:291
 msgid "Input Presets"
 msgstr "输入预设"
 

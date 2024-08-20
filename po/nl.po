@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-17 15:18+0000\n"
+"POT-Creation-Date: 2024-08-20 00:16+0000\n"
 "PO-Revision-Date: 2024-07-23 06:09+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1535,7 +1535,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Uitvoerapparaten"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:277
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:283
 msgid "Output Presets"
 msgstr "Uitvoervoorinstellingen"
 
@@ -1555,7 +1555,7 @@ msgstr "Lijst van automatisch geladen uitvoervoorinstellingen"
 msgid "Input Devices"
 msgstr "Invoerapparaten"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:285
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:291
 msgid "Input Presets"
 msgstr "Invoervoorinstellingen"
 

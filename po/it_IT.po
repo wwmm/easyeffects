@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-17 15:18+0000\n"
+"POT-Creation-Date: 2024-08-20 00:16+0000\n"
 "PO-Revision-Date: 2024-07-08 18:09+0000\n"
 "Last-Translator: Giusy Kurmikon <giusykurmikon@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1537,7 +1537,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Dispositivi di Uscita"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:277
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:283
 msgid "Output Presets"
 msgstr "Profili di Uscita"
 
@@ -1557,7 +1557,7 @@ msgstr "Profili di Auto Caricamento in Uscita"
 msgid "Input Devices"
 msgstr "Dispositivi di Ingresso"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:285
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:291
 msgid "Input Presets"
 msgstr "Profili di Ingresso"
 
