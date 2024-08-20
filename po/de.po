@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-17 15:18+0000\n"
+"POT-Creation-Date: 2024-08-20 14:04+0000\n"
 "PO-Revision-Date: 2024-01-01 21:04+0000\n"
 "Last-Translator: nova madeline <493ov2lof@mozmail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1550,7 +1550,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Ausgabegeräte"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:277
+#: data/ui/pipe_manager_box.ui:283 src/application.cpp:283
 msgid "Output Presets"
 msgstr "Ausgabe-Voreinstellungen"
 
@@ -1570,7 +1570,7 @@ msgstr "automatisch geladene Ausgabe-Voreinstellungen"
 msgid "Input Devices"
 msgstr "Eingabegeräte"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:285
+#: data/ui/pipe_manager_box.ui:408 src/application.cpp:291
 msgid "Input Presets"
 msgstr "Eingabe-Voreinstellungen"
 
