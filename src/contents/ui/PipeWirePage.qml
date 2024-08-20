@@ -263,18 +263,10 @@ Kirigami.Page {
     }
 
     GridLayout {
-        Layout.fillHeight: true
-        Layout.fillWidth: true
         columns: 3
         rows: 1
         columnSpacing: 0
-
-        anchors {
-            left: parent.left
-            right: parent.right
-            top: parent.top
-            bottom: parent.bottom
-        }
+        anchors.fill: parent
 
         ListView {
             id: panelListView
@@ -352,7 +344,6 @@ Kirigami.Page {
 
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Layout.minimumWidth: panelStack.currentItem.implicitWidth
             initialItem: generalPage
         }
 

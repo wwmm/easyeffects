@@ -30,6 +30,21 @@
             <max>60</max>
             <default>30</default>
         </entry>
+        <entry name="visiblePage" type="Enum">
+            <label>Saves the last viewed page.</label>
+            <choices>
+                <choice name="outputPage">
+                    <label>Output Page</label>
+                </choice>
+                <choice name="inputPage">
+                    <label>Input Page</label>
+                </choice>
+                <choice name="pwPage">
+                    <label>PipeWire Page</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
     </group>
     <group name="EffectsPipelines">
         <entry name="bypass" type="Bool">

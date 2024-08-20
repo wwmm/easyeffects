@@ -28,5 +28,17 @@
             <label>Show the List of Plugins</label>
             <default>true</default>
         </entry>
+        <entry name="visiblePage" type="Enum">
+            <label>Saves the last viewed page.</label>
+            <choices>
+                <choice name="streamsPage">
+                    <label>Streams Page</label>
+                </choice>
+                <choice name="pluginsPage">
+                    <label>Plugins Page</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
     </group>
 </kcfg>

@@ -17,67 +17,17 @@ Kirigami.Page {
     property var streamDB
     property string logTag: "PageStreamsEffects"
 
-    function populatePluginsListModel(plugins) {
-        let names = PluginsNameModel.getBaseNames();
-        for (let n = 0; n < plugins.length; n++) {
-            for (let k = 0; k < names.length; k++) {
-                if (plugins[n].startsWith(names[k])) {
-                    pluginsListModel.append({
-                        "name": plugins[n],
-                        "baseName": names[k],
-                        "translatedName": PluginsNameModel.translate(names[k]),
-                        "bypass": false
-                    });
-                    createPluginStack(names[k]);
-                    break;
-                }
-            }
-        }
-    }
-
-    function createPluginStack(baseName) {
-        switch (baseName) {
-        case PluginName.autogain:
-            while (pluginsStack.depth > 1)pluginsStack.pop()
-            pluginsStack.push("Autogain.qml");
-            break;
-        default:
-            console.log(logTag + " invalid plugin name: " + baseName);
-        }
-    }
-
     padding: 0
     Component.onCompleted: {
-        populatePluginsListModel(streamDB.plugins);
-    }
-
-    Connections {
-        function onPluginsChanged() {
-            const newList = streamDB.plugins;
-            let currentList = [];
-            for (let n = 0; n < pluginsListModel.count; n++) {
-                currentList.push(pluginsListModel.get(n).name);
-            }
-            if (Common.equalArrays(newList, currentList))
-                return ;
-
-            pluginsListModel.clear();
-            populatePluginsListModel(newList);
+        switch (streamDB.visiblePage) {
+        case 0:
+            stackPages.push(pageStreams);
+            break;
+        case 1:
+            stackPages.push(pagePlugins);
+            break;
+        default:
         }
-
-        target: streamDB
-    }
-
-    Connections {
-        function onDataChanged() {
-            let newList = [];
-            for (let n = 0; n < pluginsListModel.count; n++) {
-                newList.push(pluginsListModel.get(n).name);
-            }
-            streamDB.plugins = newList;
-        }
-
-        target: pluginsListModel
     }
 
     MenuAddPlugins {
@@ -86,11 +36,8 @@ Kirigami.Page {
         streamDB: pageStreamsEffects.streamDB
     }
 
-    StackLayout {
-        id: stackLayout
-
-        anchors.fill: parent
-        currentIndex: 0
+    Component {
+        id: pageStreams
 
         Kirigami.ScrollablePage {
             Kirigami.CardsListView {
@@ -116,12 +63,78 @@ Kirigami.Page {
 
         }
 
+    }
+
+    Component {
+        id: pagePlugins
+
         GridLayout {
+            function populatePluginsListModel(plugins) {
+                let names = PluginsNameModel.getBaseNames();
+                for (let n = 0; n < plugins.length; n++) {
+                    for (let k = 0; k < names.length; k++) {
+                        if (plugins[n].startsWith(names[k])) {
+                            pluginsListModel.append({
+                                "name": plugins[n],
+                                "baseName": names[k],
+                                "translatedName": PluginsNameModel.translate(names[k]),
+                                "bypass": false
+                            });
+                            createPluginStack(names[k]);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            function createPluginStack(baseName) {
+                switch (baseName) {
+                case PluginName.autogain:
+                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    pluginsStack.push("qrc:ui/Autogain.qml");
+                    break;
+                default:
+                    console.log(logTag + " invalid plugin name: " + baseName);
+                }
+            }
+
+            Component.onCompleted: {
+                populatePluginsListModel(streamDB.plugins);
+            }
             Layout.fillHeight: true
             Layout.fillWidth: true
             columns: 3
             rows: 1
             columnSpacing: 0
+
+            Connections {
+                function onPluginsChanged() {
+                    const newList = streamDB.plugins;
+                    let currentList = [];
+                    for (let n = 0; n < pluginsListModel.count; n++) {
+                        currentList.push(pluginsListModel.get(n).name);
+                    }
+                    if (Common.equalArrays(newList, currentList))
+                        return ;
+
+                    pluginsListModel.clear();
+                    populatePluginsListModel(newList);
+                }
+
+                target: streamDB
+            }
+
+            Connections {
+                function onDataChanged() {
+                    let newList = [];
+                    for (let n = 0; n < pluginsListModel.count; n++) {
+                        newList.push(pluginsListModel.get(n).name);
+                    }
+                    streamDB.plugins = newList;
+                }
+
+                target: pluginsListModel
+            }
 
             ColumnLayout {
                 Kirigami.ActionToolBar {
@@ -149,6 +162,10 @@ Kirigami.Page {
                     clip: true
                     reuseItems: true
 
+                    model: ListModel {
+                        id: pluginsListModel
+                    }
+
                     delegate: DelegatePluginsList {
                     }
 
@@ -158,10 +175,6 @@ Kirigami.Page {
                             easing.type: Easing.InOutQuad
                         }
 
-                    }
-
-                    model: ListModel {
-                        id: pluginsListModel
                     }
 
                     header: RowLayout {
@@ -234,6 +247,12 @@ Kirigami.Page {
 
     }
 
+    Controls.StackView {
+        id: stackPages
+
+        anchors.fill: parent
+    }
+
     header: EeChart {
         id: spectrumChart
 
@@ -277,22 +296,20 @@ Kirigami.Page {
                         icon.name: pageType === 0 ? "multimedia-player-symbolic" : "media-record-symbolic"
                         text: "Players"
                         checkable: true
-                        checked: stackLayout.currentIndex === 0
+                        checked: streamDB.visiblePage === 0
                         onTriggered: {
-                            if (checked === true)
-                                stackLayout.currentIndex = 0;
-
+                            stackPages.replace(pageStreams);
+                            streamDB.visiblePage = 0;
                         }
                     },
                     Kirigami.Action {
                         icon.name: "emblem-music-symbolic"
                         text: "Effects"
                         checkable: true
-                        checked: stackLayout.currentIndex === 1
+                        checked: streamDB.visiblePage === 1
                         onTriggered: {
-                            if (checked === true)
-                                stackLayout.currentIndex = 1;
-
+                            stackPages.replace(pagePlugins);
+                            streamDB.visiblePage = 1;
                         }
                     }
                 ]

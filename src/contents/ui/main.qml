@@ -12,7 +12,6 @@ Kirigami.ApplicationWindow {
     width: EEdb.width
     height: EEdb.height
     title: i18nc("@title:window", "EasyEffects")
-    pageStack.initialPage: outputPage
     pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.None
     flags: Qt.WA_DeleteOnClose
     onWidthChanged: {
@@ -22,31 +21,38 @@ Kirigami.ApplicationWindow {
         EEdb.height = applicationWindow().height;
     }
     onVisibleChanged: {
-        if (!appWindow.visible)
+        if (appWindow.visible) {
+            switch (EEdb.visiblePage) {
+            case 0:
+                pageStack.push("qrc:ui/PageStreamsEffects.qml", {
+                    "pageType": 0,
+                    "streamDB": EEdbStreamOutputs,
+                    "visible": true
+                });
+                break;
+            case 1:
+                pageStack.push("qrc:ui/PageStreamsEffects.qml", {
+                    "pageType": 1,
+                    "streamDB": EEdbStreamInputs,
+                    "visible": true
+                });
+                break;
+            case 2:
+                pageStack.push("qrc:ui/PipeWirePage.qml");
+                break;
+            default:
+                null;
+            }
+        } else {
             EEdb.save();
-
+            EEdbSpectrum.save();
+            EEdbStreamOutputs.save();
+            EEdbStreamInputs.save();
+            pageStack.pop();
+        }
     }
-
-    PageStreamsEffects {
-        id: outputPage
-
-        pageType: 0
-        streamDB: EEdbStreamOutputs
-        visible: true
-    }
-
-    PageStreamsEffects {
-        id: inputPage
-
-        pageType: 1
-        streamDB: EEdbStreamInputs
-        visible: false
-    }
-
-    PipeWirePage {
-        id: pipeWirePage
-
-        visible: false
+    Component.onDestruction: {
+        console.log("main window destroyed");
     }
 
     PreferencesSheet {
@@ -146,12 +152,14 @@ Kirigami.ApplicationWindow {
                         icon.name: "audio-speakers-symbolic"
                         text: "Output"
                         checkable: true
-                        checked: outputPage.visible
+                        checked: EEdb.visiblePage === 0
                         onTriggered: {
-                            if (!outputPage.visible) {
-                                while (pageStack.depth > 0)pageStack.pop()
-                                pageStack.push(outputPage);
-                            }
+                            pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
+                                "pageType": 0,
+                                "streamDB": EEdbStreamOutputs,
+                                "visible": true
+                            });
+                            EEdb.visiblePage = 0;
                         }
                     },
                     Kirigami.Action {
@@ -159,12 +167,14 @@ Kirigami.ApplicationWindow {
                         icon.name: "audio-input-microphone-symbolic"
                         text: "Input"
                         checkable: true
-                        checked: inputPage.visible
+                        checked: EEdb.visiblePage === 1
                         onTriggered: {
-                            if (!inputPage.visible) {
-                                while (pageStack.depth > 0)pageStack.pop()
-                                pageStack.push(inputPage);
-                            }
+                            pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
+                                "pageType": 1,
+                                "streamDB": EEdbStreamInputs,
+                                "visible": true
+                            });
+                            EEdb.visiblePage = 1;
                         }
                     },
                     Kirigami.Action {
@@ -172,12 +182,10 @@ Kirigami.ApplicationWindow {
                         icon.name: "network-server-symbolic"
                         text: "PipeWire"
                         checkable: true
-                        checked: pipeWirePage.visible
+                        checked: EEdb.visiblePage === 2
                         onTriggered: {
-                            if (!pipeWirePage.visible) {
-                                while (pageStack.depth > 0)pageStack.pop()
-                                pageStack.push(pipeWirePage);
-                            }
+                            pageStack.replace("qrc:ui/PipeWirePage.qml");
+                            EEdb.visiblePage = 2;
                         }
                     }
                 ]
