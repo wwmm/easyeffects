@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-20 14:04+0000\n"
-"PO-Revision-Date: 2024-06-28 01:09+0000\n"
+"PO-Revision-Date: 2024-08-21 03:09+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.7\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -141,6 +141,8 @@ msgid ""
 "The loudness plugin exposes the ISO 226:2023 standard that is now available "
 "in the LSP plugin."
 msgstr ""
+"El plugin de sonoridad expone la norma ISO 226:2023 que ahora está "
+"disponible en el plugin LSP."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
@@ -155,6 +157,7 @@ msgstr "Traducciones actualizadas"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid "Performance optmizations to the spectrum plugin and the LADSPA wrapper"
 msgstr ""
+"Mejoras de rendimiento en el complemento de espectro y el contenedor LADSPA"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
@@ -202,6 +205,9 @@ msgid ""
 "volume and mute controls. THis could cause these operations to fail in some "
 "situations"
 msgstr ""
+"No estábamos bloqueando el bucle principal del hilo de PipeWire antes de "
+"configurar los controles de volumen y silencio de la transmisión. Esto "
+"podría provocar que estas operaciones fallen en algunos casos"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
