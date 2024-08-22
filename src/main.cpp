@@ -73,9 +73,9 @@ int main(int argc, char* argv[]) {
     return -1;
   }
 
-  local_server->startServer();
-
   QApplication app(argc, argv);
+
+  local_server->startServer();
 
   KLocalizedString::setApplicationDomain(APPLICATION_DOMAIN);
   QCoreApplication::setOrganizationName(QStringLiteral(ORGANIZATION_NAME));
