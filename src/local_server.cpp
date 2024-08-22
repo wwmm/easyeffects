@@ -19,13 +19,17 @@
 
 #include "local_server.hpp"
 #include <qobject.h>
+#include <qtmetamacros.h>
 #include <QLocalServer>
+#include <cstring>
 #include <memory>
+#include <string>
+#include "tags_app.hpp"
 #include "util.hpp"
 
 LocalServer::LocalServer(QObject* parent)
     : QObject(parent), server(std::make_unique<QLocalServer>(this)), clientSocket(nullptr) {
-  connect(server.get(), &QLocalServer::newConnection, this, [&]() {
+  connect(server.get(), &QLocalServer::newConnection, [&]() {
     clientSocket = server->nextPendingConnection();
 
     connect(clientSocket, &QLocalSocket::readyRead, this, &LocalServer::onReadyRead);
@@ -36,20 +40,36 @@ LocalServer::LocalServer(QObject* parent)
 }
 
 void LocalServer::startServer() {
-  if (server->listen(serverName)) {
-    util::debug("Local socket server started. Listening on the name: EasyEffectsServer");
+  QLocalServer::removeServer(tags::app::local_server_name);
+
+  if (server->listen(tags::app::local_server_name)) {
+    util::debug("Local socket server started. Listening on the name: " + std::string(tags::app::local_server_name));
   } else {
     util::debug("Failed to start the server");
   }
 }
 
 void LocalServer::onReadyRead() {
-  QByteArray data = clientSocket->readAll();
+  // QByteArray data = clientSocket->readAll();
 
-  util::debug("Received from client:" + data.toStdString());
+  // util::debug(data.toStdString());
+
+  while (!clientSocket->atEnd()) {
+    char buf[1024];
+
+    auto lineLength = clientSocket->readLine(buf, sizeof(buf));
+
+    if (lineLength != -1) {
+      if (std::strcmp(buf, "show_main_window") == 0) {
+        Q_EMIT onOpenWindow();
+      }
+
+      util::debug(buf);
+    }
+  }
 
   // Echo the data back to the client
-  clientSocket->write("Server received: " + data);
+  // clientSocket->write("Server received: " + data);
 }
 
 void LocalServer::onDisconnected() {

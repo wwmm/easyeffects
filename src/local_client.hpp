@@ -20,27 +20,19 @@
 #pragma once
 
 #include <qtmetamacros.h>
-#include <QLocalServer>
 #include <QLocalSocket>
 #include <QObject>
 #include <memory>
 
-class LocalServer : public QObject {
+class LocalClient : public QObject {
   Q_OBJECT
 
  public:
-  explicit LocalServer(QObject* parent = nullptr);
+  explicit LocalClient(QObject* parent = nullptr);
 
-  void startServer();
-  void onNewConnection();
-  void onReadyRead();
-  void onDisconnected();
-
- signals:
-  void onOpenWindow();
-  void onShowVersion();
+  void show_main_window();
+  void show_version();
 
  private:
-  std::unique_ptr<QLocalServer> server;
-  QLocalSocket* clientSocket;
+  std::unique_ptr<QLocalSocket> client;
 };

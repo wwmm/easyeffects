@@ -15,6 +15,7 @@ qt_add_qml_module(easyeffects
 )
 
 target_sources(easyeffects PRIVATE
+    local_client.cpp
     local_server.cpp
     main.cpp
     pw_manager.cpp

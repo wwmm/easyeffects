@@ -40,6 +40,7 @@
 #include "easyeffects_db_spectrum.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
+#include "local_client.hpp"
 #include "local_server.hpp"
 #include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
@@ -70,12 +71,20 @@ int main(int argc, char* argv[]) {
   auto lockFile = util::get_lock_file();
 
   if (!lockFile->isLocked()) {
-    return -1;
+    auto local_client = std::make_unique<LocalClient>();
+
+    local_client->show_main_window();
+    local_client->show_version();
+
+    return 0;
   }
 
   QApplication app(argc, argv);
 
-  local_server->startServer();
+  local_server->startServer();  // it has to be done after "QApplication app(argc, argv)"
+
+  QObject::connect(local_server.get(), &LocalServer::onOpenWindow,
+                   [&]() { util::debug("another instance as ked to open Window"); });
 
   KLocalizedString::setApplicationDomain(APPLICATION_DOMAIN);
   QCoreApplication::setOrganizationName(QStringLiteral(ORGANIZATION_NAME));
