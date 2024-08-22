@@ -1,3 +1,22 @@
+/*
+ *  Copyright © 2017-2024 Wellington Wallace
+ *
+ *  This file is part of Easy Effects.
+ *
+ *  Easy Effects is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  Easy Effects is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include <kaboutdata.h>
 #include <klocalizedcontext.h>
 #include <qobject.h>
@@ -21,6 +40,7 @@
 #include "easyeffects_db_spectrum.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
+#include "local_server.hpp"
 #include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
@@ -46,11 +66,14 @@ void construct_about_window() {
 
 int main(int argc, char* argv[]) {
   bool can_use_sys_tray = true;
+  auto local_server = std::make_unique<LocalServer>();
   auto lockFile = util::get_lock_file();
 
   if (!lockFile->isLocked()) {
     return -1;
   }
+
+  local_server->startServer();
 
   QApplication app(argc, argv);
 
@@ -81,14 +104,6 @@ int main(int argc, char* argv[]) {
     if (auto xdg_session = std::getenv("XDG_CURRENT_DESKTOP"); xdg_session != nullptr) {
       can_use_sys_tray = std::strcmp(xdg_session, "GNOME") != 0;
     }
-  }
-
-  QLocalServer server;
-
-  if (server.listen("EasyEffectsServer")) {
-    util::debug("Server started. Listening on EasyEffectsServer");
-  } else {
-    util::debug("Failed to start the server");
   }
 
   // Registering kcfg settings
