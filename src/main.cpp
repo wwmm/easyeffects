@@ -12,6 +12,9 @@
 #include <KAboutData>
 #include <KLocalizedString>
 #include <QApplication>
+#include <QLocalServer>
+#include <cstdlib>
+#include <cstring>
 #include <memory>
 #include "config.h"
 #include "easyeffects_db.h"
@@ -42,6 +45,7 @@ void construct_about_window() {
 }
 
 int main(int argc, char* argv[]) {
+  bool can_use_sys_tray = true;
   auto lockFile = util::get_lock_file();
 
   if (!lockFile->isLocked()) {
@@ -67,6 +71,26 @@ int main(int argc, char* argv[]) {
     util::create_user_directory(db_dir_path.toStdString());
   }
 
+  // Verifying if we can use the system tray
+
+  {
+    if (auto xdg_session = std::getenv("XDG_SESSION_DESKTOP"); xdg_session != nullptr) {
+      can_use_sys_tray = std::strcmp(xdg_session, "GNOME") != 0;
+    }
+
+    if (auto xdg_session = std::getenv("XDG_CURRENT_DESKTOP"); xdg_session != nullptr) {
+      can_use_sys_tray = std::strcmp(xdg_session, "GNOME") != 0;
+    }
+  }
+
+  QLocalServer server;
+
+  if (server.listen("EasyEffectsServer")) {
+    util::debug("Server started. Listening on EasyEffectsServer");
+  } else {
+    util::debug("Failed to start the server");
+  }
+
   // Registering kcfg settings
 
   auto ee_db = db::Main::self();
@@ -88,6 +112,7 @@ int main(int argc, char* argv[]) {
   engine.rootContext()->setContextProperty("EEdbSpectrum", ee_db_spectrum);
   engine.rootContext()->setContextProperty("EEdbStreamOutputs", ee_db_streamoutputs);
   engine.rootContext()->setContextProperty("EEdbStreamInputs", ee_db_streaminputs);
+  engine.rootContext()->setContextProperty("canUseSysTray", can_use_sys_tray);
   engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
   engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
 

@@ -41,6 +41,7 @@ target_link_libraries(easyeffects PRIVATE
     KF${QT_MAJOR_VERSION}::ConfigCore
     KF${QT_MAJOR_VERSION}::ConfigGui
     Qt${QT_MAJOR_VERSION}::Charts
+    Qt${QT_MAJOR_VERSION}::Network
     ${LIBPIPEWIRE_LIBRARIES}
 )
 

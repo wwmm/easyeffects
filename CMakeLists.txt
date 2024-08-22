@@ -39,6 +39,7 @@ find_package(Qt${QT_MAJOR_VERSION} REQUIRED NO_MODULE COMPONENTS
     QuickControls2
     Widgets
     Charts
+    Network
 )
 
 find_package(KF${QT_MAJOR_VERSION} REQUIRED COMPONENTS

@@ -73,7 +73,7 @@ Kirigami.ApplicationWindow {
     SystemTrayIcon {
         id: tray
 
-        visible: EEdb.showTrayIcon
+        visible: EEdb.showTrayIcon && canUseSysTray
         icon.name: "com.github.wwmm.easyeffects"
         onActivated: {
             if (!appWindow.visible) {
