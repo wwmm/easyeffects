@@ -32,6 +32,7 @@
 #include <KLocalizedString>
 #include <QApplication>
 #include <QLocalServer>
+#include <QSystemTrayIcon>
 #include <cstdlib>
 #include <cstring>
 #include <memory>
@@ -81,6 +82,8 @@ int main(int argc, char* argv[]) {
 
   QApplication app(argc, argv);
 
+  QApplication::setQuitOnLastWindowClosed(false);
+
   local_server->startServer();  // it has to be done after "QApplication app(argc, argv)"
 
   QObject::connect(local_server.get(), &LocalServer::onOpenWindow,
@@ -105,15 +108,7 @@ int main(int argc, char* argv[]) {
 
   // Verifying if we can use the system tray
 
-  {
-    if (auto xdg_session = std::getenv("XDG_SESSION_DESKTOP"); xdg_session != nullptr) {
-      can_use_sys_tray = std::strcmp(xdg_session, "GNOME") != 0;
-    }
-
-    if (auto xdg_session = std::getenv("XDG_CURRENT_DESKTOP"); xdg_session != nullptr) {
-      can_use_sys_tray = std::strcmp(xdg_session, "GNOME") != 0;
-    }
-  }
+  can_use_sys_tray = QSystemTrayIcon::isSystemTrayAvailable();
 
   // Registering kcfg settings
 

@@ -13,7 +13,7 @@ Kirigami.ApplicationWindow {
     height: EEdb.height
     title: i18nc("@title:window", "EasyEffects")
     pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.None
-    flags: Qt.WA_DeleteOnClose
+    // flags: Qt.WA_DeleteOnClose
     onWidthChanged: {
         EEdb.width = applicationWindow().width;
     }
@@ -50,6 +50,9 @@ Kirigami.ApplicationWindow {
             EEdbStreamInputs.save();
             pageStack.pop();
         }
+    }
+    onClosing: {
+        console.log("main window is closing");
     }
     Component.onDestruction: {
         console.log("main window destroyed");
