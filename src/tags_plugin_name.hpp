@@ -33,18 +33,45 @@
 #include <sys/types.h>
 #include <string>
 
-namespace tags {
+namespace tags::plugin_package {
+
+inline constexpr auto bs2b = "bs2b";
+
+inline constexpr auto calf = "Calf Studio Gear";
+
+inline constexpr auto deepfilternet = "DeepFilterNet";
+
+inline constexpr auto ebur128 = "libebur128";
+
+inline constexpr auto ee = "Easy Effects";
+
+inline constexpr auto lsp = "Linux Studio Plugins";
+
+inline constexpr auto mda = "MDA";
+
+inline constexpr auto rnnoise = "RNNoise";
+
+inline constexpr auto sound_touch = "SoundTouch";
+
+inline constexpr auto speex = "SpeexDSP";
+
+inline constexpr auto zam = "ZamAudio";
+
+inline constexpr auto zita = "Zita";
+
+}  // namespace tags::plugin_package
+
+namespace tags::plugin_name {
 
 // NOLINTNEXTLINE
 #define CREATE_PROPERTY(type, name, value) \
   static inline const type name = value;   \
   Q_PROPERTY(type name MEMBER name CONSTANT)
 
-class PluginName : public QObject {
+class BaseName : public QObject {
   Q_OBJECT
-  QML_ELEMENT
   QML_SINGLETON
-  QML_NAMED_ELEMENT(TagsPluginName)
+  QML_NAMED_ELEMENT(BasePluginName)
 
  public:
   CREATE_PROPERTY(QString, autogain, QStringLiteral("autogain"));
@@ -75,38 +102,6 @@ class PluginName : public QObject {
   CREATE_PROPERTY(QString, rnnoise, QStringLiteral("rnnoise"));
   CREATE_PROPERTY(QString, stereo_tools, QStringLiteral("stereo_tools"));
 };
-
-}  // namespace tags
-
-namespace tags::plugin_package {
-
-inline constexpr auto bs2b = "bs2b";
-
-inline constexpr auto calf = "Calf Studio Gear";
-
-inline constexpr auto deepfilternet = "DeepFilterNet";
-
-inline constexpr auto ebur128 = "libebur128";
-
-inline constexpr auto ee = "Easy Effects";
-
-inline constexpr auto lsp = "Linux Studio Plugins";
-
-inline constexpr auto mda = "MDA";
-
-inline constexpr auto rnnoise = "RNNoise";
-
-inline constexpr auto sound_touch = "SoundTouch";
-
-inline constexpr auto speex = "SpeexDSP";
-
-inline constexpr auto zam = "ZamAudio";
-
-inline constexpr auto zita = "Zita";
-
-}  // namespace tags::plugin_package
-
-namespace tags::plugin_name {
 
 class Model : public QAbstractListModel {
   Q_OBJECT;
@@ -139,6 +134,8 @@ class Model : public QAbstractListModel {
 
  private:
   QMap<QString, QString> modelMap;
+
+  BaseName base_name;
 };
 
 auto get_id(const std::string& name) -> uint;

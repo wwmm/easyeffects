@@ -5,7 +5,6 @@ import QtCharts
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import TagsPluginName
 import org.kde.kirigami as Kirigami
 
 Kirigami.Page {
@@ -89,7 +88,7 @@ Kirigami.Page {
 
             function createPluginStack(baseName) {
                 switch (baseName) {
-                case PluginName.autogain:
+                case BasePluginName.autogain:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Autogain.qml");
                     break;

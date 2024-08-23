@@ -6,14 +6,6 @@ add_executable(easyeffects)
 
 kde_target_enable_exceptions(easyeffects PRIVATE)
 
-qt_add_qml_module(easyeffects 
-    URI "TagsPluginName" 
-    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    NO_RESOURCE_TARGET_PATH
-    SOURCES
-        tags_plugin_name.hpp
-)
-
 target_sources(easyeffects PRIVATE
     local_client.cpp
     local_server.cpp
