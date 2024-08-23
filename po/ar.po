@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-20 14:04+0000\n"
-"PO-Revision-Date: 2024-08-02 22:09+0000\n"
+"PO-Revision-Date: 2024-08-23 05:09+0000\n"
 "Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.7.1-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -1460,7 +1460,7 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
-msgstr ""
+msgstr "عام"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
@@ -1525,6 +1525,8 @@ msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
 msgstr ""
+"يمكن التحميل التلقائي للإعدادات المسبقة المحلية فقط. يجب استيراد الإعداد "
+"المسبق للمجتمع محليًا لكي يتم تحديده وربطه بجهاز معين."
 
 #: data/ui/pipe_manager_box.ui:266
 msgid "Output Devices"
@@ -1705,7 +1707,7 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:5
 msgid "_General"
-msgstr ""
+msgstr "_عام"
 
 #: data/ui/preferences_general.ui:10
 msgid "Service"
@@ -1713,11 +1715,11 @@ msgstr ""
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "شغل الخدمة عند بَدْء تشغيل النظام"
 
 #: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
-msgstr ""
+msgstr "أوقف التشغيل عند غلق النافذة"
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
@@ -1881,7 +1883,7 @@ msgstr ""
 
 #: data/ui/preset_community_row.ui:56
 msgid "Try this community preset"
-msgstr ""
+msgstr "جرّب هذا الإعداد المسبق للمجتمع"
 
 #: data/ui/preset_community_row.ui:65
 msgid "Import"
@@ -1889,11 +1891,11 @@ msgstr ""
 
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
-msgstr ""
+msgstr "استورد هذا الإعداد المسبق للمجتمع إلى قائمة الإعدادات المسبقة المحلية"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
-msgstr ""
+msgstr "محلي"
 
 #: data/ui/presets_menu.ui:48
 msgid "New Preset Name"
@@ -1917,7 +1919,7 @@ msgstr "قائمة الإعدادات المسبقة المحلية"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
-msgstr ""
+msgstr "المجتمع"
 
 #: data/ui/presets_menu.ui:208
 msgid "Search Community Preset"
@@ -1936,6 +1938,7 @@ msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
+"يمكن تثبيت حزم الإعدادات المسبقة للمجتمع من مستودع التوزيعة المفضلة لديك."
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
@@ -1943,7 +1946,7 @@ msgstr ""
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
-msgstr ""
+msgstr "حدث لإظهار الإعدادات المسبقة للمجتمع المثبتة حديثًا"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
