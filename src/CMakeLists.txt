@@ -1,4 +1,4 @@
-configure_file(config.h.in config.h)
+configure_file(config.h.in config.h @ONLY)
 
 add_subdirectory(contents)
 
@@ -7,6 +7,7 @@ add_executable(easyeffects)
 kde_target_enable_exceptions(easyeffects PRIVATE)
 
 target_sources(easyeffects PRIVATE
+    command_line_parser.cpp
     local_client.cpp
     local_server.cpp
     main.cpp

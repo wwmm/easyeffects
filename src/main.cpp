@@ -36,6 +36,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <memory>
+#include "command_line_parser.hpp"
 #include "config.h"
 #include "easyeffects_db.h"
 #include "easyeffects_db_spectrum.h"
@@ -67,79 +68,114 @@ void construct_about_window() {
 }
 
 int main(int argc, char* argv[]) {
-  bool can_use_sys_tray = true;
-  auto local_server = std::make_unique<LocalServer>();
-  auto lockFile = util::get_lock_file();
-
-  if (!lockFile->isLocked()) {
-    auto local_client = std::make_unique<LocalClient>();
-
-    local_client->show_main_window();
-    local_client->show_version();
-
-    return 0;
-  }
-
   QApplication app(argc, argv);
-
-  QApplication::setQuitOnLastWindowClosed(false);
-
-  local_server->startServer();  // it has to be done after "QApplication app(argc, argv)"
-
-  QObject::connect(local_server.get(), &LocalServer::onOpenWindow,
-                   [&]() { util::debug("another instance as ked to open Window"); });
 
   KLocalizedString::setApplicationDomain(APPLICATION_DOMAIN);
   QCoreApplication::setOrganizationName(QStringLiteral(ORGANIZATION_NAME));
   QCoreApplication::setOrganizationDomain(QStringLiteral(ORGANIZATION_DOMAIN));
   QCoreApplication::setApplicationName(QStringLiteral("EasyEffects"));
+  QCoreApplication::setApplicationVersion(PROJECT_VERSION);
 
   if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
     QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
   }
 
-  construct_about_window();
-
-  // creating our database directory
+  // creating our database directory if it does not exist
   {
     auto db_dir_path = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation).append("/easyeffects/db");
     util::create_user_directory(db_dir_path.toStdString());
   }
 
-  // Verifying if we can use the system tray
-
-  can_use_sys_tray = QSystemTrayIcon::isSystemTrayAvailable();
-
-  // Registering kcfg settings
+  // loading our database
 
   auto ee_db = db::Main::self();
   auto ee_db_spectrum = db::Spectrum::self();
   auto ee_db_streamoutputs = db::StreamOutputs::self();
   auto ee_db_streaminputs = db::StreamInputs::self();
 
-  // QObject::connect(ee_db, &db::Main::widthChanged, [=]() { util::warning(util::to_string(db::Main::width())); });
+  QApplication::setQuitOnLastWindowClosed(false);
+
+  // Parsing command line options
+
+  auto cmd_parser = std::make_unique<CommandLineParser>();
+
+  QObject::connect(cmd_parser.get(), &CommandLineParser::onReset, [&]() {
+    util::warning("Resetting settings...");
+
+    ee_db->setDefaults();
+    ee_db_spectrum->setDefaults();
+    ee_db_streamoutputs->setDefaults();
+    ee_db_streaminputs->setDefaults();
+  });
+
+  // Checking if there is already an instance running
+
+  auto lockFile = util::get_lock_file();
+
+  if (!lockFile->isLocked()) {
+    auto local_client = std::make_unique<LocalClient>();
+    bool show_window = true;
+
+    QObject::connect(cmd_parser.get(), &CommandLineParser::onQuit, [&]() {
+      local_client->quit_app();
+      show_window = false;
+    });
+
+    cmd_parser->process(&app);
+
+    if (show_window) {
+      local_client->show_window();
+    }
+
+    return 0;
+  }
+
+  cmd_parser->process(&app);
+
+  // Starting the local socket server
+
+  auto local_server = std::make_unique<LocalServer>();
+
+  local_server->startServer();  // it has to be done after "QApplication app(argc, argv)"
+
+  QObject::connect(local_server.get(), &LocalServer::onQuitApp, [&]() { QApplication::quit(); });
+
+  QObject::connect(local_server.get(), &LocalServer::onShowWindow,
+                   [&]() { util::debug("another instance asked to open Window"); });
+
+  // About window
+
+  construct_about_window();
 
   // Making sure these singleton classes are initialized before qml
+
   tags::plugin_name::Model::self();
   pw::Manager::self();
 
   // QObject::connect(&pw::Manager::self(), &pw::Manager::sink_changed, [](auto info) { util::warning(info.name); });
 
+  // Initializing QML
+
   QQmlApplicationEngine engine;
 
+  engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
+  engine.rootContext()->setContextProperty("canUseSysTray", QSystemTrayIcon::isSystemTrayAvailable());
+
+  // Registering our database singletons in QML so they can be used there
   engine.rootContext()->setContextProperty("EEdb", ee_db);
   engine.rootContext()->setContextProperty("EEdbSpectrum", ee_db_spectrum);
   engine.rootContext()->setContextProperty("EEdbStreamOutputs", ee_db_streamoutputs);
   engine.rootContext()->setContextProperty("EEdbStreamInputs", ee_db_streaminputs);
-  engine.rootContext()->setContextProperty("canUseSysTray", can_use_sys_tray);
-  engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
+
   engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
+
+  // engine.clearComponentCache();
 
   if (engine.rootObjects().isEmpty()) {
     return -1;
   }
 
-  QObject::connect(&app, &QApplication::aboutToQuit, [=]() {
+  QObject::connect(&app, &QApplication::aboutToQuit, [&]() {
     ee_db->save();
     ee_db_spectrum->save();
     ee_db_streamoutputs->save();

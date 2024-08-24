@@ -37,8 +37,8 @@ class LocalServer : public QObject {
   void onDisconnected();
 
  signals:
-  void onOpenWindow();
-  void onShowVersion();
+  void onShowWindow();
+  void onQuitApp();
 
  private:
   std::unique_ptr<QLocalServer> server;

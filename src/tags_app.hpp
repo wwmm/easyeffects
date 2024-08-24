@@ -31,6 +31,4 @@ inline constexpr auto path_stream_inputs = "/com/github/wwmm/easyeffects/streami
 
 inline constexpr auto path_stream_outputs = "/com/github/wwmm/easyeffects/streamoutputs/";
 
-inline constexpr auto local_server_name = "EasyEffectsServer";
-
 }  // namespace tags::app

@@ -20,19 +20,23 @@
 #pragma once
 
 #include <qtmetamacros.h>
-#include <QLocalSocket>
+#include <QApplication>
+#include <QCommandLineParser>
 #include <QObject>
 #include <memory>
 
-class LocalClient : public QObject {
+class CommandLineParser : public QObject {
   Q_OBJECT
 
  public:
-  explicit LocalClient(QObject* parent = nullptr);
+  explicit CommandLineParser(QObject* parent = nullptr);
 
-  void show_window();
-  void quit_app();
+  void process(QApplication* app);
+
+ signals:
+  void onReset();
+  void onQuit();
 
  private:
-  std::unique_ptr<QLocalSocket> client;
+  std::unique_ptr<QCommandLineParser> parser;
 };

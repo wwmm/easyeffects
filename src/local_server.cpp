@@ -24,7 +24,7 @@
 #include <cstring>
 #include <memory>
 #include <string>
-#include "tags_app.hpp"
+#include "tags_local_server.hpp"
 #include "util.hpp"
 
 LocalServer::LocalServer(QObject* parent)
@@ -40,31 +40,27 @@ LocalServer::LocalServer(QObject* parent)
 }
 
 void LocalServer::startServer() {
-  QLocalServer::removeServer(tags::app::local_server_name);
+  QLocalServer::removeServer(tags::local_server::server_name);
 
-  if (server->listen(tags::app::local_server_name)) {
-    util::debug("Local socket server started. Listening on the name: " + std::string(tags::app::local_server_name));
+  if (server->listen(tags::local_server::server_name)) {
+    util::debug("Local socket server started. Listening on the name: " + std::string(tags::local_server::server_name));
   } else {
     util::debug("Failed to start the server");
   }
 }
 
 void LocalServer::onReadyRead() {
-  // QByteArray data = clientSocket->readAll();
-
-  // util::debug(data.toStdString());
-
   while (!clientSocket->atEnd()) {
     char buf[1024];
 
     auto lineLength = clientSocket->readLine(buf, sizeof(buf));
 
     if (lineLength != -1) {
-      if (std::strcmp(buf, "show_main_window") == 0) {
-        Q_EMIT onOpenWindow();
+      if (std::strcmp(buf, tags::local_server::quit_app) == 0) {
+        Q_EMIT onQuitApp();
+      } else if (std::strcmp(buf, tags::local_server::show_window) == 0) {
+        Q_EMIT onShowWindow();
       }
-
-      util::debug(buf);
     }
   }
 

@@ -21,7 +21,7 @@
 #include <qlocalsocket.h>
 #include <qobject.h>
 #include <memory>
-#include "tags_app.hpp"
+#include "tags_local_server.hpp"
 #include "util.hpp"
 
 LocalClient::LocalClient(QObject* parent) : QObject(parent), client(std::make_unique<QLocalSocket>(this)) {
@@ -38,19 +38,19 @@ LocalClient::LocalClient(QObject* parent) : QObject(parent), client(std::make_un
     util::debug("Server message: " + message.toStdString());
   });
 
-  client->connectToServer(tags::app::local_server_name);
+  client->connectToServer(tags::local_server::server_name);
 
   if (!client->waitForConnected()) {
     util::debug("Could not connect to the local server");
   }
 }
 
-void LocalClient::show_main_window() {
-  client->write("show_main_window\n");
+void LocalClient::show_window() {
+  client->write(tags::local_server::show_window);
   client->flush();
 }
 
-void LocalClient::show_version() {
-  client->write("show_version\n");
+void LocalClient::quit_app() {
+  client->write(tags::local_server::quit_app);
   client->flush();
 }

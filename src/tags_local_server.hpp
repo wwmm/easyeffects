@@ -19,20 +19,12 @@
 
 #pragma once
 
-#include <qtmetamacros.h>
-#include <QLocalSocket>
-#include <QObject>
-#include <memory>
+namespace tags::local_server {
 
-class LocalClient : public QObject {
-  Q_OBJECT
+inline constexpr auto server_name = "EasyEffectsServer";
 
- public:
-  explicit LocalClient(QObject* parent = nullptr);
+inline constexpr auto quit_app = "quit_app\n";
 
-  void show_window();
-  void quit_app();
+inline constexpr auto show_window = "show_window\n";
 
- private:
-  std::unique_ptr<QLocalSocket> client;
-};
+}  // namespace tags::local_server
