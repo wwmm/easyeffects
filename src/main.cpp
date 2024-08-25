@@ -93,8 +93,6 @@ int main(int argc, char* argv[]) {
   auto ee_db_streamoutputs = db::StreamOutputs::self();
   auto ee_db_streaminputs = db::StreamInputs::self();
 
-  QApplication::setQuitOnLastWindowClosed(false);
-
   // Parsing command line options
 
   auto cmd_parser = std::make_unique<CommandLineParser>();
@@ -152,7 +150,12 @@ int main(int argc, char* argv[]) {
   tags::plugin_name::Model::self();
   pw::Manager::self();
 
-  // QObject::connect(&pw::Manager::self(), &pw::Manager::sink_changed, [](auto info) { util::warning(info.name); });
+  // service mode
+
+  QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode());
+
+  QObject::connect(db::Main::self(), &db::Main::enableServiceModeChanged,
+                   []() { QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode()); });
 
   // Initializing QML
 

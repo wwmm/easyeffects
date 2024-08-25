@@ -32,10 +32,22 @@ Kirigami.OverlaySheet {
 
                 FormCard.FormCard {
                     EeSwitch {
-                        id: launchServiceOnLogin
+                        id: enableServiceMode
 
-                        label: i18n("Launch Service at System Startup")
-                        // isChecked: EEdb.addRandom
+                        label: i18n("Enable Service Mode")
+                        isChecked: EEdb.enableServiceMode
+                        onCheckedChanged: {
+                            if (isChecked !== EEdb.enableServiceMode)
+                                EEdb.enableServiceMode = isChecked;
+
+                        }
+                    }
+
+                    EeSwitch {
+                        id: autostartOnLogin
+
+                        label: i18n("Autostart on Login")
+                        // isChecked: EEdb.autostartOnLogin
                         onCheckedChanged: {
                         }
                     }
@@ -44,7 +56,8 @@ Kirigami.OverlaySheet {
                         id: showTrayIcon
 
                         label: i18n("Show the Tray Icon")
-                        isChecked: EEdb.showTrayIcon
+                        isChecked: EEdb.showTrayIcon && canUseSysTray
+                        enabled: canUseSysTray
                         onCheckedChanged: {
                             if (isChecked !== EEdb.showTrayIcon)
                                 EEdb.showTrayIcon = isChecked;

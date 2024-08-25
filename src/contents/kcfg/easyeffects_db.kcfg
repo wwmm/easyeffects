@@ -12,8 +12,12 @@
             <label>Height of the main window.</label>
             <default>600</default>
         </entry>
+        <entry name="enableServiceMode" type="Bool">
+            <label>Enable Service Mode</label>
+            <default>true</default>
+        </entry>
         <entry name="showTrayIcon" type="Bool">
-            <label>Show the tray icon.</label>
+            <label>Show the Tray Icon</label>
             <default>true</default>
         </entry>
         <entry name="lastUsedPreset" type="String">

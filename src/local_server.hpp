@@ -42,5 +42,5 @@ class LocalServer : public QObject {
 
  private:
   std::unique_ptr<QLocalServer> server;
-  QLocalSocket* clientSocket;
+  QLocalSocket* clientSocket = nullptr;
 };
