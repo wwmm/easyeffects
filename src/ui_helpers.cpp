@@ -95,7 +95,9 @@ auto missing_plugin_box(const std::string& base_name, const std::string& package
     // For translators: the first {} is replaced by the effect name, the second {} is replaced by the package name.
     auto format_descr =
         fmt::runtime(_("The software required for the {} effect, \"{}\", is not installed. Consider using the Easy "
-                       "Effects Flatpak package or installing the software yourself."));
+                       "Effects Flatpak package or installing the software yourself."
+                       " If you've installed the missing software, you must restart easyeffects "
+                       "using the 'Quit' option in the menu to make it availble to use.";));
 
     if (base_name == tags::plugin_name::rnnoise) {
       // For translators: the first {} is replaced by the effect name, the second {} is replaced by the package name.
