@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-20 14:04+0000\n"
+"POT-Creation-Date: 2024-08-26 23:10+0000\n"
 "PO-Revision-Date: 2023-12-31 05:09+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2571,15 +2571,17 @@ msgid "{} Not Available"
 msgstr "{} 사용 불가"
 
 #: src/ui_helpers.cpp:97
-#, c++-format
+#, fuzzy, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
-"using the Easy Effects Flatpak package or installing the software yourself."
+"using the Easy Effects Flatpak package or installing the software yourself. "
+"If you've installed the missing software, you must restart easyeffects using "
+"the 'Quit' option in the menu to make it availble to use."
 msgstr ""
 "{} 효과 \"{}\"에 필요한 소프트웨어가 설치되지 않았습니다. Easy Effects "
 "Flatpak 패키지를 사용하거나 소프트웨어를 직접 설치해 보세요."
 
-#: src/ui_helpers.cpp:103
+#: src/ui_helpers.cpp:105
 #, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
@@ -2591,12 +2593,12 @@ msgstr ""
 "에 필요한 소프트웨어 \"{}\"를 사용할 수 없었기 때문일 것입니다. Easy Effects "
 "Flatpak 패키지를 사용하거나 자신만의 Easy Effects 패키지를 구축해 보세요."
 
-#: src/ui_helpers.cpp:146 src/ui_helpers.cpp:168
+#: src/ui_helpers.cpp:148 src/ui_helpers.cpp:170
 msgid "-inf"
 msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:253
+#: src/ui_helpers.cpp:255
 #, c++-format
 msgid "Using {}"
 msgstr "{} 사용 중"
