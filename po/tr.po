@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-26 23:10+0000\n"
-"PO-Revision-Date: 2024-07-08 05:09+0000\n"
+"PO-Revision-Date: 2024-08-27 21:09+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.7.1-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -2560,7 +2560,7 @@ msgid "{} Not Available"
 msgstr "{} Kullanılabilir Değil"
 
 #: src/ui_helpers.cpp:97
-#, fuzzy, c++-format
+#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2568,7 +2568,10 @@ msgid ""
 "the 'Quit' option in the menu to make it availble to use."
 msgstr ""
 "{} efekti için gerekli olan \"{}\" yazılımı kurulu değil. Easy Effects "
-"Flatpak paketini kullanmayı ya da yazılımı kendiniz kurmayı düşünebilirsiniz."
+"Flatpak paketini kullanmayı ya da yazılımı kendiniz kurmayı "
+"düşünebilirsiniz. Eksik yazılımı kurduysanız, kullanıma hazır hale getirmek "
+"için menüdeki 'Çık' seçeneğini kullanarak easyeffects'i yeniden "
+"başlatmalısınız."
 
 #: src/ui_helpers.cpp:105
 #, c++-format
