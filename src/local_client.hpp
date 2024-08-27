@@ -31,6 +31,7 @@ class LocalClient : public QObject {
   explicit LocalClient(QObject* parent = nullptr);
 
   void show_window();
+  void hide_window();
   void quit_app();
 
  private:

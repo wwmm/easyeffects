@@ -43,11 +43,15 @@ CommandLineParser::CommandLineParser(QObject* parent)
 void CommandLineParser::process(QApplication* app) {
   parser->process(*app);
 
+  if (parser->isSet("quit")) {
+    Q_EMIT onQuit();
+  }
+
   if (parser->isSet("reset")) {
     Q_EMIT onReset();
   }
 
-  if (parser->isSet("quit")) {
-    Q_EMIT onQuit();
+  if (parser->isSet("hide-window")) {
+    Q_EMIT onHideWindow();
   }
 }

@@ -50,6 +50,11 @@ void LocalClient::show_window() {
   client->flush();
 }
 
+void LocalClient::hide_window() {
+  client->write(tags::local_server::hide_window);
+  client->flush();
+}
+
 void LocalClient::quit_app() {
   client->write(tags::local_server::quit_app);
   client->flush();

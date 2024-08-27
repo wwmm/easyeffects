@@ -27,4 +27,6 @@ inline constexpr auto quit_app = "quit_app\n";
 
 inline constexpr auto show_window = "show_window\n";
 
+inline constexpr auto hide_window = "hide_window\n";
+
 }  // namespace tags::local_server

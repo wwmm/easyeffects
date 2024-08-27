@@ -36,6 +36,7 @@ class CommandLineParser : public QObject {
  signals:
   void onReset();
   void onQuit();
+  void onHideWindow();
 
  private:
   std::unique_ptr<QCommandLineParser> parser;

@@ -33,6 +33,7 @@
 #include <QApplication>
 #include <QLocalServer>
 #include <QSystemTrayIcon>
+#include <QWindow>
 #include <cstdlib>
 #include <cstring>
 #include <memory>
@@ -69,6 +70,7 @@ void construct_about_window() {
 
 int main(int argc, char* argv[]) {
   QApplication app(argc, argv);
+  bool show_window = true;
 
   KLocalizedString::setApplicationDomain(APPLICATION_DOMAIN);
   QCoreApplication::setOrganizationName(QStringLiteral(ORGANIZATION_NAME));
@@ -112,10 +114,14 @@ int main(int argc, char* argv[]) {
 
   if (!lockFile->isLocked()) {
     auto local_client = std::make_unique<LocalClient>();
-    bool show_window = true;
 
     QObject::connect(cmd_parser.get(), &CommandLineParser::onQuit, [&]() {
       local_client->quit_app();
+      show_window = false;
+    });
+
+    QObject::connect(cmd_parser.get(), &CommandLineParser::onHideWindow, [&]() {
+      local_client->hide_window();
       show_window = false;
     });
 
@@ -128,6 +134,8 @@ int main(int argc, char* argv[]) {
     return 0;
   }
 
+  QObject::connect(cmd_parser.get(), &CommandLineParser::onHideWindow, [&]() { show_window = false; });
+
   cmd_parser->process(&app);
 
   // Starting the local socket server
@@ -137,9 +145,6 @@ int main(int argc, char* argv[]) {
   local_server->startServer();  // it has to be done after "QApplication app(argc, argv)"
 
   QObject::connect(local_server.get(), &LocalServer::onQuitApp, [&]() { QApplication::quit(); });
-
-  QObject::connect(local_server.get(), &LocalServer::onShowWindow,
-                   [&]() { util::debug("another instance asked to open Window"); });
 
   // About window
 
@@ -170,7 +175,27 @@ int main(int argc, char* argv[]) {
   engine.rootContext()->setContextProperty("EEdbStreamOutputs", ee_db_streamoutputs);
   engine.rootContext()->setContextProperty("EEdbStreamInputs", ee_db_streaminputs);
 
-  engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
+  QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, [&](QObject* object, const QUrl& url) {
+    if (url.toString() == "qrc:/ui/main.qml") {
+      auto window = qobject_cast<QWindow*>(object);
+
+      window->show();
+      window->raise();
+      window->requestActivate();
+
+      // QObject::connect(window, &QWindow::destroy, [&]() { qDebug() << "destroyed"; });
+
+      // auto t = qobject_cast<QMainWindow*>(object);
+      // t->setAttribute(Qt::WA_DeleteOnClose);
+    }
+  });
+
+  QObject::connect(local_server.get(), &LocalServer::onShowWindow,
+                   [&]() { engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml"))); });
+
+  if (show_window) {
+    engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
+  }
 
   // engine.clearComponentCache();
 
