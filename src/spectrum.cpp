@@ -55,6 +55,31 @@ Spectrum::Spectrum(const std::string& tag,
 
   plan = fftwf_plan_dft_r2c_1d(static_cast<int>(n_bands), real_input.data(), complex_output, FFTW_ESTIMATE);
 
+
+
+  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo");
+
+  package_installed = lv2_wrapper->found_plugin;
+
+  if (!package_installed) {
+    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo is not installed, spectrum will not have A/V sync compensation");
+  }
+
+  lv2_wrapper->set_control_port_value("mode_l", 2);
+  lv2_wrapper->set_control_port_value("mode_r", 2);
+
+  lv2_wrapper->set_control_port_value("dry_l", 0.0F);
+  lv2_wrapper->set_control_port_value("dry_r", 0.0F);
+
+  lv2_wrapper->set_control_port_value("wet_l", static_cast<float>(util::db_to_linear(0.0F)));
+  lv2_wrapper->set_control_port_value("wet_r", static_cast<float>(util::db_to_linear(0.0F)));
+
+  // TODO: configurable delay
+  lv2_wrapper->set_control_port_value("time_l", 1000F);
+  lv2_wrapper->set_control_port_value("time_r", 1000F);
+
+
+
   g_signal_connect(settings, "changed::show", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto* self = static_cast<Spectrum*>(user_data);
 
@@ -82,6 +107,15 @@ Spectrum::~Spectrum() {
 void Spectrum::setup() {
   std::ranges::fill(real_input, 0.0F);
   std::ranges::fill(latest_samples_mono, 0.0F);
+
+  std::ranges::fill(left_delayed_array, 0.0F);
+  std::ranges::fill(right_delayed_array, 0.0F);
+
+  lv2_wrapper->set_n_samples(n_bands);
+
+  if (lv2_wrapper->get_rate() != rate) {
+    lv2_wrapper->create_instance(rate);
+  }
 }
 
 void Spectrum::process(std::span<float>& left_in,
@@ -95,6 +129,17 @@ void Spectrum::process(std::span<float>& left_in,
     return;
   }
 
+  // delay the visualization of the spectrum by the reported latency
+  // of the output device, so that the spectrum is visually in sync
+  // with the audio as experienced by the user
+  if ( !lv2_wrapper->found_plugin || !lv2_wrapper->has_instance() ) {
+    lv2_wrapper->connect_data_ports(left_in, right_in, left_delayed, right_delayed);
+    lv2_wrapper->runt();
+  } else {
+    std::copy(left_in.begin(), left_in.end(), left_delayed.begin());
+    std::copy(right_in.begin(), right_in.end(), right_delayed.begin());
+  }
+
   if (n_samples < n_bands) {
     // Drop the oldest quantum.
     std::memmove(&latest_samples_mono[0], &latest_samples_mono[n_samples],
@@ -102,12 +147,12 @@ void Spectrum::process(std::span<float>& left_in,
 
     // Copy the new quantum.
     for (size_t n = 0; n < n_samples; n++)
-      latest_samples_mono[n_bands - n_samples + n] = 0.5F * (left_in[n] + right_in[n]);
+      latest_samples_mono[n_bands - n_samples + n] = 0.5F * (left_delayed[n] + right_delayed[n]);
   } else {
     // Copy the latest n_bands samples.
     for (size_t n = 0; n < n_bands; n++)
-      latest_samples_mono[n] = 0.5F * (left_in[n_samples - n_bands + n] +
-                                       right_in[n_samples - n_bands + n]);
+      latest_samples_mono[n] = 0.5F * (left_delayed[n_samples - n_bands + n] +
+                                       right_delayed[n_samples - n_bands + n]);
   }
 
   /*
