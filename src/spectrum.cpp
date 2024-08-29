@@ -108,8 +108,8 @@ void Spectrum::setup() {
   std::ranges::fill(real_input, 0.0F);
   std::ranges::fill(latest_samples_mono, 0.0F);
 
-  std::ranges::fill(left_delayed_array, 0.0F);
-  std::ranges::fill(right_delayed_array, 0.0F);
+  std::ranges::fill(left_delayed, 0.0F);
+  std::ranges::fill(right_delayed, 0.0F);
 
   lv2_wrapper->set_n_samples(n_bands);
 
