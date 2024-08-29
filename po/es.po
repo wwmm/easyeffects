@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-26 23:10+0000\n"
-"PO-Revision-Date: 2024-07-08 05:09+0000\n"
+"PO-Revision-Date: 2024-08-29 00:09+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.7.1-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -2565,7 +2565,7 @@ msgid "{} Not Available"
 msgstr "{} No disponible"
 
 #: src/ui_helpers.cpp:97
-#, fuzzy, c++-format
+#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2574,7 +2574,9 @@ msgid ""
 msgstr ""
 "El software necesario para el efecto {}, \"{}\", no está instalado. "
 "Considera la posibilidad de utilizar el paquete Easy Effects Flatpak o de "
-"instalar el software tu mismo."
+"instalar el software tu mismo. Si has instalado el software que falta, debes "
+"reiniciar easyeffects utilizando la opción \"Salir\" del menú para que esté "
+"disponible para su uso."
 
 #: src/ui_helpers.cpp:105
 #, c++-format
