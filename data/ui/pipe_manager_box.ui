@@ -135,6 +135,17 @@
 
                                                 <child>
                                                     <object class="AdwActionRow">
+                                                        <property name="title" translatable="yes">Core Version</property>
+                                                        <child>
+                                                            <object class="GtkLabel" id="core_version">
+                                                                <property name="valign">center</property>
+                                                            </object>
+                                                        </child>
+                                                    </object>
+                                                </child>
+
+                                                <child>
+                                                    <object class="AdwActionRow">
                                                         <property name="title" translatable="yes">Sampling Rate</property>
                                                         <child>
                                                             <object class="GtkLabel" id="server_rate">
