@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-26 23:10+0000\n"
+"POT-Creation-Date: 2024-08-29 20:23+0000\n"
 "PO-Revision-Date: 2023-12-31 05:09+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -220,7 +220,7 @@ msgstr "아웃풋 게인"
 #: data/ui/gate.ui:1272 data/ui/level_meter.ui:263 data/ui/limiter.ui:741
 #: data/ui/loudness.ui:149 data/ui/maximizer.ui:87
 #: data/ui/multiband_compressor.ui:493 data/ui/multiband_gate.ui:493
-#: data/ui/pipe_manager_box.ui:339 data/ui/pitch.ui:219 data/ui/reverb.ui:358
+#: data/ui/pipe_manager_box.ui:350 data/ui/pitch.ui:219 data/ui/reverb.ui:358
 #: data/ui/rnnoise.ui:273 data/ui/speex.ui:187 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:617
 msgid "Input"
@@ -248,7 +248,7 @@ msgstr "플러그인 인풋 게인"
 #: data/ui/filter.ui:399 data/ui/gate.ui:1356 data/ui/limiter.ui:825
 #: data/ui/loudness.ui:233 data/ui/maximizer.ui:171
 #: data/ui/multiband_compressor.ui:577 data/ui/multiband_gate.ui:577
-#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:303 data/ui/reverb.ui:442
+#: data/ui/pipe_manager_box.ui:220 data/ui/pitch.ui:303 data/ui/reverb.ui:442
 #: data/ui/rnnoise.ui:357 data/ui/speex.ui:271 data/ui/stereo_tools.ui:379
 #: data/ui/stereo_tools.ui:701
 msgid "Output"
@@ -268,8 +268,8 @@ msgid "Plugin Output Gain"
 msgstr "플러그인 아웃풋 게인"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:673 data/ui/expander.ui:594
-#: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:235
-#: data/ui/pipe_manager_box.ui:365
+#: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:246
+#: data/ui/pipe_manager_box.ui:376
 msgid "Device"
 msgstr "장치"
 
@@ -283,8 +283,8 @@ msgstr "이름"
 msgid "Profile"
 msgstr "프로필"
 
-#: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:246
-#: data/ui/pipe_manager_box.ui:376
+#: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:257
+#: data/ui/pipe_manager_box.ui:387
 msgid "Preset"
 msgstr "프리셋"
 
@@ -506,14 +506,14 @@ msgstr "측면"
 #: data/ui/compressor.ui:546 data/ui/delay.ui:38 data/ui/equalizer.ui:215
 #: data/ui/expander.ui:467 data/ui/gate.ui:680 data/ui/level_meter.ui:32
 #: data/ui/multiband_compressor_band.ui:480 data/ui/multiband_gate_band.ui:538
-#: data/ui/pipe_manager_box.ui:570 data/ui/stereo_tools.ui:163
+#: data/ui/pipe_manager_box.ui:581 data/ui/stereo_tools.ui:163
 msgid "Left"
 msgstr "좌측"
 
 #: data/ui/compressor.ui:547 data/ui/delay.ui:125 data/ui/equalizer.ui:242
 #: data/ui/expander.ui:468 data/ui/gate.ui:681 data/ui/level_meter.ui:42
 #: data/ui/multiband_compressor_band.ui:481 data/ui/multiband_gate_band.ui:539
-#: data/ui/pipe_manager_box.ui:581 data/ui/stereo_tools.ui:218
+#: data/ui/pipe_manager_box.ui:592 data/ui/stereo_tools.ui:218
 msgid "Right"
 msgstr "우측"
 
@@ -647,7 +647,7 @@ msgstr "하이패스"
 
 #: data/ui/compressor.ui:884 data/ui/equalizer_band.ui:204
 #: data/ui/expander.ui:804 data/ui/filter.ui:166 data/ui/gate.ui:1017
-#: data/ui/pipe_manager_box.ui:627
+#: data/ui/pipe_manager_box.ui:638
 msgid "Frequency"
 msgstr "주파수"
 
@@ -707,7 +707,7 @@ msgstr "커브"
 msgid "L"
 msgstr "L"
 
-#: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:573
+#: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:584
 msgid "Left Channel"
 msgstr "좌측 채널"
 
@@ -715,7 +715,7 @@ msgstr "좌측 채널"
 msgid "R"
 msgstr "R"
 
-#: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:584
+#: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:595
 msgid "Right Channel"
 msgstr "우측 채널"
 
@@ -1506,121 +1506,125 @@ msgid "Library Version"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:138
-msgid "Sampling Rate"
+msgid "Core Version"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:149
-msgid "Minimum Quantum"
+msgid "Sampling Rate"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:160
-msgid "Maximum Quantum"
+msgid "Minimum Quantum"
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:171
+msgid "Maximum Quantum"
+msgstr ""
+
+#: data/ui/pipe_manager_box.ui:182
 msgid "Default Quantum"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:191
+#: data/ui/pipe_manager_box.ui:202
 msgid "Presets Autoloading"
 msgstr "프리셋 자동 로딩"
 
-#: data/ui/pipe_manager_box.ui:217 data/ui/pipe_manager_box.ui:347
+#: data/ui/pipe_manager_box.ui:228 data/ui/pipe_manager_box.ui:358
 msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:266
+#: data/ui/pipe_manager_box.ui:277
 msgid "Output Devices"
 msgstr "출력 장치"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:283
+#: data/ui/pipe_manager_box.ui:294 src/application.cpp:283
 msgid "Output Presets"
 msgstr "출력 프리셋"
 
-#: data/ui/pipe_manager_box.ui:290 data/ui/pipe_manager_box.ui:415
+#: data/ui/pipe_manager_box.ui:301 data/ui/pipe_manager_box.ui:426
 msgid "Create Association"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:303
+#: data/ui/pipe_manager_box.ui:314
 msgid "Add Autoloading Output Preset"
 msgstr "자동 로딩 출력 프리셋 추가하기"
 
-#: data/ui/pipe_manager_box.ui:323
+#: data/ui/pipe_manager_box.ui:334
 msgid "Output Autoloading Presets List"
 msgstr "출력 자동 로딩 프리셋 목록"
 
-#: data/ui/pipe_manager_box.ui:396
+#: data/ui/pipe_manager_box.ui:407
 msgid "Input Devices"
 msgstr "입력 장치"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:291
+#: data/ui/pipe_manager_box.ui:419 src/application.cpp:291
 msgid "Input Presets"
 msgstr "입력 프리셋"
 
-#: data/ui/pipe_manager_box.ui:428
+#: data/ui/pipe_manager_box.ui:439
 msgid "Add Autoloading Input Preset"
 msgstr "자동 로딩 입력 프리셋 추가하기"
 
-#: data/ui/pipe_manager_box.ui:447
+#: data/ui/pipe_manager_box.ui:458
 msgid "Input Autoloading Presets List"
 msgstr "입력 자동 로딩 프리셋 목록"
 
-#: data/ui/pipe_manager_box.ui:477
+#: data/ui/pipe_manager_box.ui:488
 msgid "Modules"
 msgstr "모듈"
 
-#: data/ui/pipe_manager_box.ui:495
+#: data/ui/pipe_manager_box.ui:506
 msgid "Modules List"
 msgstr "모듈 목록"
 
-#: data/ui/pipe_manager_box.ui:509
+#: data/ui/pipe_manager_box.ui:520
 msgid "Clients"
 msgstr "클라이언트"
 
-#: data/ui/pipe_manager_box.ui:527
+#: data/ui/pipe_manager_box.ui:538
 msgid "Clients List"
 msgstr "클라이언트 목록"
 
-#: data/ui/pipe_manager_box.ui:541
+#: data/ui/pipe_manager_box.ui:552
 msgid "Test Signal"
 msgstr "테스트 신호"
 
-#: data/ui/pipe_manager_box.ui:546 data/ui/preferences_spectrum.ui:9
+#: data/ui/pipe_manager_box.ui:557 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
 msgid "State"
 msgstr "상태"
 
-#: data/ui/pipe_manager_box.ui:549 data/ui/preferences_spectrum.ui:12
+#: data/ui/pipe_manager_box.ui:560 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
 msgstr "활성화됨"
 
-#: data/ui/pipe_manager_box.ui:564
+#: data/ui/pipe_manager_box.ui:575
 msgid "Properties"
 msgstr "속성"
 
-#: data/ui/pipe_manager_box.ui:567
+#: data/ui/pipe_manager_box.ui:578
 msgid "Channels"
 msgstr "채널"
 
-#: data/ui/pipe_manager_box.ui:592
+#: data/ui/pipe_manager_box.ui:603
 msgid "Both"
 msgstr ""
 
-#: data/ui/pipe_manager_box.ui:596
+#: data/ui/pipe_manager_box.ui:607
 msgid "Both Channels"
 msgstr "두 채널 모두"
 
-#: data/ui/pipe_manager_box.ui:605
+#: data/ui/pipe_manager_box.ui:616
 msgid "Waveform"
 msgstr "파형"
 
-#: data/ui/pipe_manager_box.ui:609
+#: data/ui/pipe_manager_box.ui:620
 msgid "Sine Wave"
 msgstr "사인파"
 
-#: data/ui/pipe_manager_box.ui:618
+#: data/ui/pipe_manager_box.ui:629
 msgid "White Noise"
 msgstr "백색 소음"
 
