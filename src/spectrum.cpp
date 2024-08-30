@@ -75,8 +75,8 @@ Spectrum::Spectrum(const std::string& tag,
   lv2_wrapper->set_control_port_value("wet_r", static_cast<float>(util::db_to_linear(0.0F)));
 
   // TODO: configurable delay
-  lv2_wrapper->set_control_port_value("time_l", 1000F);
-  lv2_wrapper->set_control_port_value("time_r", 1000F);
+  lv2_wrapper->set_control_port_value("time_l", 1000.0F);
+  lv2_wrapper->set_control_port_value("time_r", 1000.0F);
 
 
 
@@ -108,8 +108,11 @@ void Spectrum::setup() {
   std::ranges::fill(real_input, 0.0F);
   std::ranges::fill(latest_samples_mono, 0.0F);
 
-  std::ranges::fill(left_delayed, 0.0F);
-  std::ranges::fill(right_delayed, 0.0F);
+  std::ranges::fill(left_delayed_array, 0.0F);
+  std::ranges::fill(right_delayed_array, 0.0F);
+
+  left_delayed = std::span<float>(left_delayed_array);
+  right_delayed = std::span<float>(right_delayed_array);
 
   lv2_wrapper->set_n_samples(n_bands);
 
