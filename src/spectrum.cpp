@@ -137,7 +137,7 @@ void Spectrum::process(std::span<float>& left_in,
   // with the audio as experienced by the user
   if ( !lv2_wrapper->found_plugin || !lv2_wrapper->has_instance() ) {
     lv2_wrapper->connect_data_ports(left_in, right_in, left_delayed, right_delayed);
-    lv2_wrapper->runt();
+    lv2_wrapper->run();
   } else {
     std::copy(left_in.begin(), left_in.end(), left_delayed.begin());
     std::copy(right_in.begin(), right_in.end(), right_delayed.begin());
