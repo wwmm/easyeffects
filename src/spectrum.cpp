@@ -143,8 +143,8 @@ void Spectrum::process(std::span<float>& left_in,
 
   if ( n_samples < n_bands) {
     // Drop the oldest quantum.
-    std::memmove(&left_delay_input_array[0], left_delay_input_array[n_samples], (n_bands - n_samples) * sizeof(float));
-    std::memmove(&right_delay_input_array[0], right_delay_input_array[n_samples], (n_bands - n_samples) * sizeof(float));
+    std::memmove(&left_delay_input_array[0], &left_delay_input_array[n_samples], (n_bands - n_samples) * sizeof(float));
+    std::memmove(&right_delay_input_array[0], &right_delay_input_array[n_samples], (n_bands - n_samples) * sizeof(float));
 
     // Copy the new quantum.
     for (size_t n = 0; n < n_samples; n++) {
