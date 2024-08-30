@@ -66,8 +66,8 @@ class Spectrum : public PluginBase {
   std::array<float, n_bands> real_input;
   std::array<double, n_bands / 2U + 1U> output;
   
-  std::vector<float> left_delayed_array;
-  std::vector<float> right_delayed_array;
+  std::vector<float> left_delayed_vector;
+  std::vector<float> right_delayed_vector;
   std::span<float> left_delayed;
   std::span<float> right_delayed;
 
