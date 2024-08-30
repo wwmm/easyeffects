@@ -68,8 +68,8 @@ class Spectrum : public PluginBase {
   
   std::vector<float> left_delayed_vector;
   std::vector<float> right_delayed_vector;
-  std::span<float> left_delayed;
-  std::span<float> right_delayed;
+  std::span<float, std::dynamic_extent> left_delayed;
+  std::span<float, std::dynamic_extent> right_delayed;
 
   std::array<float, n_bands> latest_samples_mono;
 
