@@ -175,29 +175,29 @@ int main(int argc, char* argv[]) {
   engine.rootContext()->setContextProperty("EEdbStreamOutputs", ee_db_streamoutputs);
   engine.rootContext()->setContextProperty("EEdbStreamInputs", ee_db_streaminputs);
 
+  QWindow* window = nullptr;
+
   QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, [&](QObject* object, const QUrl& url) {
     if (url.toString() == "qrc:/ui/main.qml") {
-      auto window = qobject_cast<QWindow*>(object);
+      window = qobject_cast<QWindow*>(object);
 
       window->show();
       window->raise();
       window->requestActivate();
-
-      // QObject::connect(window, &QWindow::destroy, [&]() { qDebug() << "destroyed"; });
-
-      // auto t = qobject_cast<QMainWindow*>(object);
-      // t->setAttribute(Qt::WA_DeleteOnClose);
     }
   });
 
-  QObject::connect(local_server.get(), &LocalServer::onShowWindow,
-                   [&]() { engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml"))); });
+  QObject::connect(local_server.get(), &LocalServer::onShowWindow, [&]() {
+    if (window != nullptr) {
+      window->show();
+      window->raise();
+      window->requestActivate();
+    }
+  });
 
   if (show_window) {
     engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
   }
-
-  // engine.clearComponentCache();
 
   if (engine.rootObjects().isEmpty()) {
     return -1;
