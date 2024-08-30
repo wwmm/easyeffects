@@ -108,8 +108,11 @@ void Spectrum::setup() {
   std::ranges::fill(real_input, 0.0F);
   std::ranges::fill(latest_samples_mono, 0.0F);
 
-  left_delayed.resize(n_samples, 0.0F);
-  right_delayed.resize(n_samples, 0.0F);
+  left_delayed_vector.resize(n_samples, 0.0F);
+  right_delayed_vector.resize(n_samples, 0.0F);
+
+  left_delayed = std::span<float>(left_delayed_vector):
+  right_delayed = std::span<float>(right_delayed_vector);
 
   lv2_wrapper->set_n_samples(n_samples);
 
