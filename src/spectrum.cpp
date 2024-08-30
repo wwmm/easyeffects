@@ -118,10 +118,11 @@ void Spectrum::setup() {
   left_delayed = std::span<float>(left_delayed_array);
   right_delayed = std::span<float>(right_delayed_array);
 
-  // n_bands instead of n_samples, because we the output
+  // n_bands instead of n_samples, because the output
   // array is of size n_bands for the fft. This is necessary
   // because n_samples has a dynamic size, but recomputing
   // the number of bands for the fft is extremely expensive.
+  // So we use a static number, n_bands, for the fft and related code.
   lv2_wrapper->set_n_samples(n_bands);
 
   if (lv2_wrapper->get_rate() != rate) {
