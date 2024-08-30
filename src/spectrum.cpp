@@ -168,14 +168,14 @@ void Spectrum::process(std::span<float>& left_in,
 
     // Downmix the latest n_bands samples from the delayed signal.
     for (size_t n = 0; n < n_bands; n++) {
-      latest_samples_mono[n] = 0.5F * (left_delayed[n_samples - n_bands + n] +
-                                        right_delayed[n_samples - n_bands + n]);
+      latest_samples_mono[n] = 0.5F * (left_delayed[n] +
+                                        right_delayed[n]);
     }
   } else {
     // Downmix the latest n_bands samples from the non-delayed signal.
     for (size_t n = 0; n < n_bands; n++) {
-      latest_samples_mono[n] = 0.5F * (left_delay_input[n_samples - n_bands + n] +
-                                        right_delay_input[n_samples - n_bands + n]);
+      latest_samples_mono[n] = 0.5F * (left_delay_input[n] +
+                                        right_delay_input[n]);
     }
   }
 

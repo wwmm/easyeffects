@@ -70,6 +70,7 @@ class Spectrum : public PluginBase {
   std::array<float, n_bands> right_delay_input_array;
   std::span<float> left_delay_input;
   std::span<float> right_delay_input;
+  
   std::array<float, n_bands> left_delayed_array;
   std::array<float, n_bands> right_delayed_array;
   std::span<float> left_delayed;
