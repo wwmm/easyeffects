@@ -143,19 +143,19 @@ void Spectrum::process(std::span<float>& left_in,
 
   if ( n_samples < n_bands) {
     // Drop the oldest quantum.
-    std::memmove(left_delay_input[0], left_delay_input[n_samples], (n_bands - n_samples) * sizeof(float));
-    std::memmove(right_delay_input[0], right_delay_input[n_samples], (n_bands - n_samples) * sizeof(float));
+    std::memmove(&left_delay_input_array[0], left_delay_input_array[n_samples], (n_bands - n_samples) * sizeof(float));
+    std::memmove(&right_delay_input_array[0], right_delay_input_array[n_samples], (n_bands - n_samples) * sizeof(float));
 
     // Copy the new quantum.
     for (size_t n = 0; n < n_samples; n++) {
-      left_delay_input[n_bands - n_samples + n] = left_in[n];
-      right_delay_input[n_bands - n_samples + n] = right_in[n];
+      left_delay_input_array[n_bands - n_samples + n] = left_in[n];
+      right_delay_input_array[n_bands - n_samples + n] = right_in[n];
     }
   } else {
     // Copy the latest n_bands samples.
     for (size_t n = 0; n < n_bands; n++) {
-      left_delay_input[n] = left_in[n_samples - n_bands + n];
-      right_delay_input[n] = right_in[n_samples - n_bands + n];
+      left_delay_input_array[n] = left_in[n_samples - n_bands + n];
+      right_delay_input_array[n] = right_in[n_samples - n_bands + n];
     }
   }
 
@@ -166,13 +166,13 @@ void Spectrum::process(std::span<float>& left_in,
     lv2_wrapper->connect_data_ports(left_delay_input, right_delay_input, left_delayed, right_delayed);
     lv2_wrapper->run();
 
-    // Copy the latest n_bands samples from the delayed signal.
+    // Downmix the latest n_bands samples from the delayed signal.
     for (size_t n = 0; n < n_bands; n++) {
       latest_samples_mono[n] = 0.5F * (left_delayed[n_samples - n_bands + n] +
                                         right_delayed[n_samples - n_bands + n]);
     }
   } else {
-    // Copy the latest n_bands samples from the non-delayed signal.
+    // Downmix the latest n_bands samples from the non-delayed signal.
     for (size_t n = 0; n < n_bands; n++) {
       latest_samples_mono[n] = 0.5F * (left_delay_input[n_samples - n_bands + n] +
                                         right_delay_input[n_samples - n_bands + n]);
