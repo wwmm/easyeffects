@@ -78,6 +78,9 @@ Spectrum::Spectrum(const std::string& tag,
   lv2_wrapper->set_control_port_value("time_l", 1000.0F);
   lv2_wrapper->set_control_port_value("time_r", 1000.0F);
 
+  left_delayed = std::span<float>(left_delayed_vector);
+  right_delayed = std::span<float>(right_delayed_vector);
+
 
 
   g_signal_connect(settings, "changed::show", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
@@ -108,22 +111,12 @@ void Spectrum::setup() {
   std::ranges::fill(real_input, 0.0F);
   std::ranges::fill(latest_samples_mono, 0.0F);
 
-  std::ranges::fill(left_delay_input_array, 0.0F);
-  std::ranges::fill(right_delay_input_array, 0.0F);
-  left_delay_input = std::span<float>(left_delay_input_array);
-  right_delay_input = std::span<float>(right_delay_input_array);
+  left_delayed_vector.resize(n_samples);
+  right_delayed_vector.resize(n_samples);
+  std::ranges::fill(left_delayed_vector, 0.0F);
+  std::ranges::fill(right_delayed_vector, 0.0F);
 
-  std::ranges::fill(left_delayed_array, 0.0F);
-  std::ranges::fill(right_delayed_array, 0.0F);
-  left_delayed = std::span<float>(left_delayed_array);
-  right_delayed = std::span<float>(right_delayed_array);
-
-  // n_bands instead of n_samples, because the output
-  // array is of size n_bands for the fft. This is necessary
-  // because n_samples has a dynamic size, but recomputing
-  // the number of bands for the fft is extremely expensive.
-  // So we use a static number, n_bands, for the fft and related code.
-  lv2_wrapper->set_n_samples(n_bands);
+  lv2_wrapper->set_n_samples(n_samples);
 
   if (lv2_wrapper->get_rate() != rate) {
     util::debug(log_tag + " creating instance of comp delay x2 stereo for spectrum A/V sync");
@@ -142,41 +135,45 @@ void Spectrum::process(std::span<float>& left_in,
     return;
   }
 
-  if ( n_samples < n_bands) {
-    // Drop the oldest quantum.
-    std::memmove(&left_delay_input_array[0], &left_delay_input_array[n_samples], (n_bands - n_samples) * sizeof(float));
-    std::memmove(&right_delay_input_array[0], &right_delay_input_array[n_samples], (n_bands - n_samples) * sizeof(float));
-
-    // Copy the new quantum.
-    for (size_t n = 0; n < n_samples; n++) {
-      left_delay_input_array[n_bands - n_samples + n] = left_in[n];
-      right_delay_input_array[n_bands - n_samples + n] = right_in[n];
-    }
-  } else {
-    // Copy the latest n_bands samples.
-    for (size_t n = 0; n < n_bands; n++) {
-      left_delay_input_array[n] = left_in[n_samples - n_bands + n];
-      right_delay_input_array[n] = right_in[n_samples - n_bands + n];
-    }
-  }
-
   // delay the visualization of the spectrum by the reported latency
   // of the output device, so that the spectrum is visually in sync
   // with the audio as experienced by the user. (A/V sync)
   if ( lv2_wrapper->found_plugin && lv2_wrapper->has_instance() ) {
-    lv2_wrapper->connect_data_ports(left_delay_input, right_delay_input, left_delayed, right_delayed);
+    lv2_wrapper->connect_data_ports(left_in, right_in, left_delayed, right_delayed);
     lv2_wrapper->run();
 
     // Downmix the latest n_bands samples from the delayed signal.
-    for (size_t n = 0; n < n_bands; n++) {
-      latest_samples_mono[n] = 0.5F * (left_delayed[n] +
-                                        right_delayed[n]);
+    if (n_samples < n_bands) {
+      // Drop the oldest quantum.
+      std::memmove(&latest_samples_mono[0], &latest_samples_mono[n_samples],
+          (n_bands - n_samples) * sizeof(float));
+
+      // Copy the new quantum.
+      for (size_t n = 0; n < n_samples; n++) {
+        latest_samples_mono[n_bands - n_samples + n] = 0.5F * (left_delayed[n] + right_delayed[n]);
+      }
+    } else {
+      // Copy the latest n_bands samples.
+      for (size_t n = 0; n < n_bands; n++)
+        latest_samples_mono[n] = 0.5F * (left_delayed[n_samples - n_bands + n] +
+                                        right_delayed[n_samples - n_bands + n]);
     }
   } else {
     // Downmix the latest n_bands samples from the non-delayed signal.
-    for (size_t n = 0; n < n_bands; n++) {
-      latest_samples_mono[n] = 0.5F * (left_delay_input[n] +
-                                        right_delay_input[n]);
+    if (n_samples < n_bands) {
+      // Drop the oldest quantum.
+      std::memmove(&latest_samples_mono[0], &latest_samples_mono[n_samples],
+          (n_bands - n_samples) * sizeof(float));
+
+      // Copy the new quantum.
+      for (size_t n = 0; n < n_samples; n++) {
+        latest_samples_mono[n_bands - n_samples + n] = 0.5F * (left_in[n] + right_in[n]);
+      }
+    } else {
+      // Copy the latest n_bands samples.
+      for (size_t n = 0; n < n_bands; n++)
+        latest_samples_mono[n] = 0.5F * (left_in[n_samples - n_bands + n] +
+                                        right_in[n_samples - n_bands + n]);
     }
   }
 
