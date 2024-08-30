@@ -78,9 +78,6 @@ Spectrum::Spectrum(const std::string& tag,
   lv2_wrapper->set_control_port_value("time_l", 1000.0F);
   lv2_wrapper->set_control_port_value("time_r", 1000.0F);
 
-  left_delayed = std::span<float>(left_delayed_vector);
-  right_delayed = std::span<float>(right_delayed_vector);
-
 
 
   g_signal_connect(settings, "changed::show", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
@@ -111,10 +108,8 @@ void Spectrum::setup() {
   std::ranges::fill(real_input, 0.0F);
   std::ranges::fill(latest_samples_mono, 0.0F);
 
-  left_delayed_vector.resize(n_samples);
-  right_delayed_vector.resize(n_samples);
-  std::ranges::fill(left_delayed_vector, 0.0F);
-  std::ranges::fill(right_delayed_vector, 0.0F);
+  left_delayed.resize(n_samples, 0.0F);
+  right_delayed.resize(n_samples, 0.0F);
 
   lv2_wrapper->set_n_samples(n_samples);
 
