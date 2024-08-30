@@ -10,7 +10,7 @@ pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
-depends=('fftw' 'fmt' 'gsl' 'gtk4' 'libadwaita' 'libbs2b' 'libebur128' 'libsamplerate' 'libsigc++-3.0' 'libsndfile'
+depends=('fftw' 'fmt' 'gsl' 'gtk4' 'libadwaita' 'libbs2b' 'libebur128' 'libsamplerate' 'libsndfile'
   'lilv' 'lv2' 'nlohmann-json' 'pipewire' 'rnnoise' 'soundtouch' 'speexdsp' 'tbb' 'zita-convolver')
 makedepends=('appstream-glib' 'git' 'itstool' 'meson' 'ladspa')
 optdepends=('calf: limiter, exciter, bass enhancer and others'
