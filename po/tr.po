@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-30 14:42+0000\n"
-"PO-Revision-Date: 2024-08-27 21:09+0000\n"
+"PO-Revision-Date: 2024-08-31 03:09+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
 "tr/>\n"
@@ -1504,9 +1504,8 @@ msgid "Library Version"
 msgstr "Kütüphane Sürümü"
 
 #: data/ui/pipe_manager_box.ui:138
-#, fuzzy
 msgid "Core Version"
-msgstr "Başlık Sürümü"
+msgstr "Çekirdek Sürümü"
 
 #: data/ui/pipe_manager_box.ui:149
 msgid "Sampling Rate"
@@ -2560,12 +2559,10 @@ msgstr "Stereo Araçları"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} Kullanılabilir Değil"
 
 #: src/ui_helpers.cpp:97
-#, fuzzy, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2576,11 +2573,10 @@ msgstr ""
 "{} efekti için gerekli olan \"{}\" yazılımı kurulu değil. Easy Effects "
 "Flatpak paketini kullanmayı ya da yazılımı kendiniz kurmayı "
 "düşünebilirsiniz. Eksik yazılımı kurduysanız, kullanıma hazır hale getirmek "
-"için menüdeki 'Çık' seçeneğini kullanarak easyeffects'i yeniden "
+"için menüdeki 'Çık' seçeneğini kullanarak Easy Effects'i yeniden "
 "başlatmalısınız."
 
-#: src/ui_helpers.cpp:104
-#, c++-format
+#: src/ui_helpers.cpp:104 src/ui_helpers.cpp:105
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2592,15 +2588,28 @@ msgstr ""
 "Effects Flatpak paketini kullanmayı ya da kendi Easy Effects paketinizi "
 "oluşturmayı düşünebilirsiniz."
 
-#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:171
+#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:171 src/ui_helpers.cpp:148
+#: src/ui_helpers.cpp:170
 msgid "-inf"
 msgstr "-sonsuz"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:256
-#, c++-format
+#: src/ui_helpers.cpp:256 src/ui_helpers.cpp:255
 msgid "Using {}"
 msgstr "{} Kullanıyor"
+
+#: src/ui_helpers.cpp:97
+msgid ""
+"The software required for the {} effect, \"{}\", is not installed. Consider "
+"using the Easy Effects Flatpak package or installing the software yourself. "
+"If you've installed the missing software, you must restart easyeffects using "
+"the 'Quit' option in the menu to make it availble to use."
+msgstr ""
+"{} efekti için gerekli olan \"{}\" yazılımı kurulu değil. Easy Effects "
+"Flatpak paketini kullanmayı ya da yazılımı kendiniz kurmayı "
+"düşünebilirsiniz. Eksik yazılımı kurduysanız, kullanıma hazır hale getirmek "
+"için menüdeki 'Çık' seçeneğini kullanarak easyeffects'i yeniden "
+"başlatmalısınız."
 
 #~ msgid "Ceiling"
 #~ msgstr "Tavan"
