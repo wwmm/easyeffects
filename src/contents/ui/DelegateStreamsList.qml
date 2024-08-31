@@ -101,7 +101,7 @@ Kirigami.AbstractCard {
                     onMoved: {
                         if (value !== prepareVolumeValue(model.volume)) {
                             let v = value / 100;
-                            v = v * v * v;
+                            v = EEdb.useCubicVolumes === false ? v : v * v * v;
                             EEpwManager.setNodeVolume(model.serial, model.nVolumeChannels, v);
                         }
                     }

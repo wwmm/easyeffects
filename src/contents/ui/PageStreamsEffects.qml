@@ -136,6 +136,9 @@ Kirigami.Page {
             }
 
             ColumnLayout {
+                Layout.horizontalStretchFactor: 1
+                Layout.fillWidth: true
+
                 Kirigami.ActionToolBar {
                     Layout.margins: Kirigami.Units.smallSpacing
                     alignment: Qt.AlignHCenter
@@ -226,6 +229,7 @@ Kirigami.Page {
 
                 Layout.fillHeight: true
                 Layout.fillWidth: true
+                Layout.horizontalStretchFactor: 3
                 Layout.minimumWidth: pluginsStack.currentItem.implicitWidth
 
                 initialItem: Kirigami.Page {
