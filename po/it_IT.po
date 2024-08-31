@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-30 14:42+0000\n"
-"PO-Revision-Date: 2024-08-27 21:09+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
+"PO-Revision-Date: 2024-08-31 03:09+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -1498,16 +1498,15 @@ msgstr "Informazioni Server"
 
 #: data/ui/pipe_manager_box.ui:116
 msgid "Header Version"
-msgstr "Versione Header"
+msgstr "Versione dell'Header"
 
 #: data/ui/pipe_manager_box.ui:127
 msgid "Library Version"
-msgstr "Versione Libreria"
+msgstr "Versione della Libreria"
 
 #: data/ui/pipe_manager_box.ui:138
-#, fuzzy
 msgid "Core Version"
-msgstr "Versione Header"
+msgstr "Versione di Base"
 
 #: data/ui/pipe_manager_box.ui:149
 msgid "Sampling Rate"
@@ -2248,7 +2247,7 @@ msgstr "Chiudi Easy Effects. Utile in esecuzione come servizio."
 
 #: src/application.cpp:579
 msgid "Print the easyeffects version"
-msgstr "Stampa la versione di easyeffects"
+msgstr "Mostra la versione di easyeffects"
 
 #: src/application.cpp:582
 msgid "Reset Easy Effects."
@@ -2563,12 +2562,10 @@ msgstr "Strumenti Stereo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} Non Disponibile"
 
 #: src/ui_helpers.cpp:97
-#, fuzzy, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2577,13 +2574,12 @@ msgid ""
 "to use."
 msgstr ""
 "Il software richiesto per l'effetto {}, \"{}\", non è installato. Prendi in "
-"considerazione l'utilizzo del pacchetto Easy Effects Flatpak o "
-"l'installazione del software da solo. Se hai installato il software "
-"mancante, devi riavviare easyeffects utilizzando l'opzione 'Quit' nel menu "
-"per renderlo disponibile all'uso."
+"considerazione l'utilizzo del pacchetto Easy Effects di Flatpak o installa "
+"il software in maniera autonoma. Se hai installato il software mancante, "
+"devi riavviare Easy Effects cliccando sulla voce 'Esci' all'interno del menu "
+"per rendere l'effetto disponibile all'uso."
 
-#: src/ui_helpers.cpp:104
-#, c++-format
+#: src/ui_helpers.cpp:104 src/ui_helpers.cpp:105
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2595,15 +2591,28 @@ msgstr ""
 "l'uso del pacchetto Easy Effects Flatpak o installa l'applicazione dal "
 "codice sorgente."
 
-#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:171
+#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:171 src/ui_helpers.cpp:148
+#: src/ui_helpers.cpp:170
 msgid "-inf"
 msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:256
-#, c++-format
+#: src/ui_helpers.cpp:256 src/ui_helpers.cpp:255
 msgid "Using {}"
 msgstr "Utilizzo {}"
+
+#: src/ui_helpers.cpp:97
+msgid ""
+"The software required for the {} effect, \"{}\", is not installed. Consider "
+"using the Easy Effects Flatpak package or installing the software yourself. "
+"If you've installed the missing software, you must restart easyeffects using "
+"the 'Quit' option in the menu to make it availble to use."
+msgstr ""
+"Il software richiesto per l'effetto {}, \"{}\", non è installato. Considera "
+"l'utilizzo della versione Flatpak di Easy Effects o installa il software "
+"mancante. Ad installazione avvenuta, dovrai riavviare Easy Effects "
+"utilizzando l'opzione 'Chiudi' nel menu per rendere l'effetto disponibile "
+"all'uso."
 
 #~ msgid "Ceiling"
 #~ msgstr "Limite Superiore"
