@@ -33,40 +33,34 @@
 #include <sys/types.h>
 #include <string>
 
-namespace tags::plugin_package {
-
-inline constexpr auto bs2b = "bs2b";
-
-inline constexpr auto calf = "Calf Studio Gear";
-
-inline constexpr auto deepfilternet = "DeepFilterNet";
-
-inline constexpr auto ebur128 = "libebur128";
-
-inline constexpr auto ee = "Easy Effects";
-
-inline constexpr auto lsp = "Linux Studio Plugins";
-
-inline constexpr auto mda = "MDA";
-
-inline constexpr auto rnnoise = "RNNoise";
-
-inline constexpr auto sound_touch = "SoundTouch";
-
-inline constexpr auto speex = "SpeexDSP";
-
-inline constexpr auto zam = "ZamAudio";
-
-inline constexpr auto zita = "Zita";
-
-}  // namespace tags::plugin_package
-
-namespace tags::plugin_name {
-
 // NOLINTNEXTLINE
 #define CREATE_PROPERTY(type, name, value) \
   static inline const type name = value;   \
   Q_PROPERTY(type name MEMBER name CONSTANT)
+
+namespace tags::plugin_package {
+
+class Package : public QObject {
+  Q_OBJECT
+
+ public:
+  CREATE_PROPERTY(QString, bs2b, QStringLiteral(" bs2b"));
+  CREATE_PROPERTY(QString, calf, QStringLiteral(" Calf Studio Gear"));
+  CREATE_PROPERTY(QString, deepfilternet, QStringLiteral(" DeepFilterNet"));
+  CREATE_PROPERTY(QString, ebur128, QStringLiteral(" libebur128"));
+  CREATE_PROPERTY(QString, ee, QStringLiteral(" Easy Effects"));
+  CREATE_PROPERTY(QString, lsp, QStringLiteral(" Linux Studio Plugins"));
+  CREATE_PROPERTY(QString, mda, QStringLiteral(" MDA"));
+  CREATE_PROPERTY(QString, rnnoise, QStringLiteral(" RNNoise"));
+  CREATE_PROPERTY(QString, soundTouch, QStringLiteral(" SoundTouch"));
+  CREATE_PROPERTY(QString, speex, QStringLiteral(" SpeexDSP"));
+  CREATE_PROPERTY(QString, zam, QStringLiteral(" ZamAudio"));
+  CREATE_PROPERTY(QString, zita, QStringLiteral(" Zita"));
+};
+
+}  // namespace tags::plugin_package
+
+namespace tags::plugin_name {
 
 class BaseName : public QObject {
   Q_OBJECT
@@ -134,6 +128,7 @@ class Model : public QAbstractListModel {
   QMap<QString, QString> modelMap;
 
   BaseName base_name;
+  plugin_package::Package package;
 };
 
 auto get_id(const std::string& name) -> uint;
@@ -154,3 +149,5 @@ inline constexpr auto autogain = "autogain";
 
 inline QString exciter = "exciter";
 }  // namespace TagsPluginName
+
+#undef CREATE_PROPERTY

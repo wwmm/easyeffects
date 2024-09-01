@@ -125,6 +125,20 @@ Kirigami.Page {
     }
 
     footer: RowLayout {
+        Layout.fillWidth: true
+
+        Controls.Button {
+            Layout.alignment: Qt.AlignCenter
+            text: i18n("Reset")
+            onClicked: showPassiveNotification("Reset")
+        }
+
+        Controls.Label {
+            Layout.alignment: Qt.AlignRight
+            font.bold: true
+            text: i18n("Using") + EEtagsPluginPackage.ebur128
+        }
+
     }
 
 }

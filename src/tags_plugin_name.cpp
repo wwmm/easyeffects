@@ -64,6 +64,9 @@ Model::Model(QObject* parent) : QAbstractListModel(parent) {
   qmlRegisterSingletonInstance<BaseName>("EEtagsPluginName", VERSION_MAJOR, VERSION_MINOR, "BasePluginName",
                                          &base_name);
 
+  qmlRegisterSingletonInstance<tags::plugin_package::Package>("EEtagsPluginName", VERSION_MAJOR, VERSION_MINOR,
+                                                              "EEtagsPluginPackage", &package);
+
   qmlRegisterSingletonInstance<Model>("EEtagsPluginName", VERSION_MAJOR, VERSION_MINOR, "PluginsNameModel", this);
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEtagsPluginName", VERSION_MAJOR, VERSION_MINOR,
