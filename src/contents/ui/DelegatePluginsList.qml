@@ -8,8 +8,17 @@ import org.kde.kirigami as Kirigami
 Item {
     id: delegateItem
 
-    // width: parent ? parent.width : listItemDelegate.implicitWidth
-    width: parent.width > listItemDelegate.implicitWidth ? parent.width : listItemDelegate.implicitWidth
+    required property int index
+    required property bool bypass
+    required property string name
+    required property string translatedName
+
+    width: {
+        if (parent)
+            parent.width > listItemDelegate.implicitWidth ? parent.width : listItemDelegate.implicitWidth;
+        else
+            listItemDelegate.implicitWidth;
+    }
     height: listItemDelegate.height
 
     Controls.ItemDelegate {
@@ -20,7 +29,7 @@ Item {
         highlighted: delegateItem.ListView.isCurrentItem
         onClicked: {
             delegateItem.ListView.view.currentIndex = index;
-            showPassiveNotification("Clicked on plugin: " + model.name);
+            showPassiveNotification("Clicked on plugin: " + name);
         }
 
         contentItem: GridLayout {
@@ -30,7 +39,7 @@ Item {
             columnSpacing: Kirigami.Units.smallSpacing
 
             Kirigami.Icon {
-                source: model.bypass === true ? "media-playback-pause-symbolic" : "format-align-vertical-bottom-symbolic"
+                source: bypass === true ? "media-playback-pause-symbolic" : "format-align-vertical-bottom-symbolic"
                 Layout.preferredWidth: Kirigami.Units.iconSizes.sizeForLabels
                 Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels
                 Layout.alignment: Qt.AlignLeft
@@ -38,8 +47,8 @@ Item {
 
             Controls.Label {
                 Layout.fillWidth: !listItemDelegate.hovered
-                text: model.translatedName
-                color: model.bypass ? Kirigami.Theme.disabledTextColor : Kirigami.Theme.textColor
+                text: translatedName
+                color: bypass ? Kirigami.Theme.disabledTextColor : Kirigami.Theme.textColor
             }
 
             Kirigami.ActionToolBar {
@@ -51,11 +60,11 @@ Item {
                         icon.name: "system-shutdown-symbolic"
                         displayHint: Kirigami.DisplayHint.IconOnly
                         checkable: true
-                        checked: !model.bypass
+                        checked: !bypass
                         onTriggered: {
-                            showPassiveNotification("Enabled:" + model.name);
-                            if (checked !== !model.bypass)
-                                model.bypass = !checked;
+                            showPassiveNotification("Enabled:" + name);
+                            if (checked !== !bypass)
+                                bypass = !checked;
 
                         }
                     },

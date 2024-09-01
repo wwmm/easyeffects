@@ -124,4 +124,7 @@ Kirigami.Page {
 
     }
 
+    footer: RowLayout {
+    }
+
 }

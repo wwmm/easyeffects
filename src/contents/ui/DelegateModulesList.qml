@@ -4,6 +4,11 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
 Kirigami.AbstractCard {
+    required property int id
+    required property int serial
+    required property string name
+    required property string description
+    required property string filename
 
     contentItem: Item {
         implicitWidth: delegateLayout.implicitWidth
@@ -33,7 +38,7 @@ Kirigami.AbstractCard {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignLeft
                 wrapMode: Text.WordWrap
-                text: model.id
+                text: id
                 color: Kirigami.Theme.disabledTextColor
             }
 
@@ -47,7 +52,7 @@ Kirigami.AbstractCard {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignLeft
                 wrapMode: Text.WordWrap
-                text: model.name
+                text: name
                 color: Kirigami.Theme.disabledTextColor
             }
 
@@ -61,7 +66,7 @@ Kirigami.AbstractCard {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignLeft
                 wrapMode: Text.WordWrap
-                text: model.description
+                text: description
                 color: Kirigami.Theme.disabledTextColor
             }
 

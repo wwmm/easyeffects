@@ -49,6 +49,8 @@ Kirigami.OverlaySheet {
         Controls.ItemDelegate {
             id: listItemDelegate
 
+            required property string name
+            required property string translatedName
             property int wrapMode: Text.WrapAnywhere
             property int elide: Text.ElideRight
             property color color: Kirigami.Theme.textColor
@@ -60,7 +62,7 @@ Kirigami.OverlaySheet {
             contentItem: RowLayout {
                 Controls.Label {
                     Layout.fillWidth: true
-                    text: model.translatedName
+                    text: translatedName
                 }
 
                 Controls.Button {
@@ -70,7 +72,7 @@ Kirigami.OverlaySheet {
                         let plugins = streamDB.plugins;
                         let index_list = [];
                         for (let n = 0; n < plugins.length; n++) {
-                            if (plugins[n].startsWith(model.name)) {
+                            if (plugins[n].startsWith(name)) {
                                 let m = plugins[n].match(/#(\d+)$/);
                                 if (m.length == 2)
                                     index_list.push(m[1]);
@@ -78,7 +80,7 @@ Kirigami.OverlaySheet {
                             }
                         }
                         let new_id = (index_list.length === 0) ? 0 : Math.max.apply(null, index_list) + 1;
-                        let new_name = model.name + "#" + new_id;
+                        let new_name = name + "#" + new_id;
                         /*
                             If the list is not empty and the user is careful protecting
                             their device with a plugin of type limiter at the last position
@@ -103,7 +105,7 @@ Kirigami.OverlaySheet {
                         if (plugins.length === 0) {
                             plugins.push(new_name);
                         } else if (limiters_and_meters.some((v) => {
-                            return v === model.name;
+                            return v === name;
                         })) {
                             plugins.push(new_name);
                         } else if (limiters.some((v) => {
@@ -125,7 +127,7 @@ Kirigami.OverlaySheet {
                             plugins.push(new_name);
                         }
                         streamDB.plugins = plugins;
-                        showMenuStatus(i18n("Added Plugin: " + model.translatedName));
+                        showMenuStatus(i18n("Added Plugin: " + translatedName));
                     }
                 }
 

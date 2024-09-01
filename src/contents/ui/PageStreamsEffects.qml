@@ -161,7 +161,6 @@ Kirigami.Page {
                     id: pluginsListView
 
                     Layout.fillHeight: true
-                    // Layout.fillWidth: true
                     implicitWidth: contentItem.childrenRect.width
                     clip: true
                     reuseItems: true

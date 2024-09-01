@@ -70,8 +70,6 @@ namespace tags::plugin_name {
 
 class BaseName : public QObject {
   Q_OBJECT
-  QML_SINGLETON
-  QML_NAMED_ELEMENT(BasePluginName)
 
  public:
   CREATE_PROPERTY(QString, autogain, QStringLiteral("autogain"));
