@@ -136,8 +136,9 @@ Kirigami.Page {
             }
 
             ColumnLayout {
-                Layout.horizontalStretchFactor: 1
-                Layout.fillWidth: true
+                // Layout.horizontalStretchFactor: 1
+                // Layout.fillWidth: true
+                implicitWidth: pluginsListView.width
 
                 Kirigami.ActionToolBar {
                     Layout.margins: Kirigami.Units.smallSpacing
@@ -160,7 +161,8 @@ Kirigami.Page {
                     id: pluginsListView
 
                     Layout.fillHeight: true
-                    Layout.fillWidth: true
+                    // Layout.fillWidth: true
+                    implicitWidth: contentItem.childrenRect.width
                     clip: true
                     reuseItems: true
 

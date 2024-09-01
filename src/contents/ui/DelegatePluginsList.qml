@@ -8,7 +8,8 @@ import org.kde.kirigami as Kirigami
 Item {
     id: delegateItem
 
-    width: parent ? parent.width : listItemDelegate.implicitWidth
+    // width: parent ? parent.width : listItemDelegate.implicitWidth
+    width: parent.width > listItemDelegate.implicitWidth ? parent.width : listItemDelegate.implicitWidth
     height: listItemDelegate.height
 
     Controls.ItemDelegate {
