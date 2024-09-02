@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-08-31 04:34+0000\n"
-"PO-Revision-Date: 2024-08-29 00:09+0000\n"
+"PO-Revision-Date: 2024-09-02 09:09+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.7.1-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -1504,9 +1504,8 @@ msgid "Library Version"
 msgstr "Version de la bibliothèque"
 
 #: data/ui/pipe_manager_box.ui:138
-#, fuzzy
 msgid "Core Version"
-msgstr "Version de l’en-tête"
+msgstr "Version de Base"
 
 #: data/ui/pipe_manager_box.ui:149
 msgid "Sampling Rate"
@@ -2572,7 +2571,7 @@ msgid "{} Not Available"
 msgstr "{} Indisponible"
 
 #: src/ui_helpers.cpp:97
-#, fuzzy, c++-format
+#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2582,8 +2581,9 @@ msgid ""
 msgstr ""
 "Le logiciel requis pour l'effet {}, \"{}\", n'est pas installé. Envisagez "
 "d'utiliser le paquet Easy Effects Flatpak ou d'installer le logiciel vous-"
-"même. Si vous avez installé le logiciel manquant, vous devez redémarrer "
-"easyeffects en utilisant l'option 'Quitter' du menu pour pouvoir l'utiliser."
+"même. Si vous avez installé le logiciel manquant, vous devez redémarrer Easy "
+"Effects en utilisant l'option 'Quitter' dans le menu pour que l'effet puisse "
+"être utilisé."
 
 #: src/ui_helpers.cpp:104
 #, c++-format
