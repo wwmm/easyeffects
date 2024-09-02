@@ -18,6 +18,9 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 FormCard.AbstractFormDelegate {
+    // Layout.fillWidth: true
+    // spacing: Kirigami.Units.smallSpacing
+
     id: control
 
     property int decimals: 2
@@ -33,6 +36,8 @@ FormCard.AbstractFormDelegate {
     property var status: Kirigami.MessageType.Information
     property string statusMessage: ""
     property int boxWidth: 10 * Kirigami.Units.gridUnit
+    property bool labelAbove: false
+    property bool spinboxLayoutFillWidth: false
 
     signal valueModified(real value)
 
@@ -40,101 +45,91 @@ FormCard.AbstractFormDelegate {
     background: null
     onClicked: spinbox.forceActiveFocus()
 
-    contentItem: ColumnLayout {
-        RowLayout {
-            Layout.fillWidth: true
-            spacing: Kirigami.Units.smallSpacing
+    contentItem: GridLayout {
+        Layout.fillWidth: true
+        columns: labelAbove === false ? 2 : 1
+        rows: labelAbove === false ? 1 : 2
+        rowSpacing: Kirigami.Units.smallSpacing
 
-            ColumnLayout {
-                Label {
-                    Layout.fillWidth: true
-                    text: control.label
-                    elide: Text.ElideRight
-                    color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
-                    wrapMode: Text.Wrap
-                    maximumLineCount: 2
-                }
-
-                Label {
-                    Layout.fillWidth: true
-                    text: control.subtitle
-                    elide: Text.ElideRight
-                    color: Kirigami.Theme.disabledTextColor
-                    wrapMode: Text.Wrap
-                    maximumLineCount: 2
-                    visible: !Common.isEmpty(control.subtitle)
-                }
-
+        ColumnLayout {
+            Label {
+                Layout.fillWidth: true
+                text: control.label
+                elide: Text.ElideRight
+                color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
+                wrapMode: Text.Wrap
+                maximumLineCount: 2
             }
 
-            SpinBox {
-                id: spinbox
-
-                readonly property real decimalFactor: Math.pow(10, control.decimals)
-
-                function decimalToInt(decimal) {
-                    return decimal * decimalFactor;
-                }
-
-                implicitWidth: control.boxWidth
-                focusPolicy: control.focusPolicy
-                wheelEnabled: true
-                onValueModified: {
-                    control.valueModified(spinbox.value * 1 / spinbox.decimalFactor);
-                }
-                stepSize: spinbox.decimalToInt(control.stepSize)
-                value: spinbox.decimalToInt(control.value)
-                to: spinbox.decimalToInt(control.to)
-                from: spinbox.decimalToInt(control.from)
-                editable: control.editable
-                inputMethodHints: Qt.ImhFormattedNumbersOnly
-                textFromValue: (value, locale) => {
-                    let unit_str = (Common.isEmpty(unit)) ? "" : " " + unit;
-                    locale.numberOptions = Locale.OmitGroupSeparator;
-                    let t = Number(value / spinbox.decimalFactor).toLocaleString(locale, 'f', control.decimals) + unit_str;
-                    textInputSpinBox.text = t;
-                    return t;
-                }
-                valueFromText: (text, locale) => {
-                    let re = /-?\d*[.,]?\d*/;
-                    let regex_result = re.exec(text);
-                    let v = Number.fromLocaleString(locale, regex_result[0]) * spinbox.decimalFactor;
-                    v = (!isNaN(v)) ? Math.round(v) : spinbox.value;
-                    return v;
-                }
-
-                contentItem: TextInput {
-                    id: textInputSpinBox
-
-                    z: 2
-                    font: spinbox.font
-                    color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
-                    selectionColor: Kirigami.Theme.highlightColor
-                    readOnly: !spinbox.editable
-                    validator: spinbox.validator
-                    inputMethodHints: Qt.ImhFormattedNumbersOnly
-                }
-
-                validator: DoubleValidator {
-                    locale: control.locale.name
-                    notation: DoubleValidator.StandardNotation
-                    decimals: control.decimals
-                    bottom: Math.min(spinbox.from, spinbox.to) * spinbox.decimalFactor
-                    top: Math.max(spinbox.from, spinbox.to) * spinbox.decimalFactor
-                }
-
+            Label {
+                Layout.fillWidth: true
+                text: control.subtitle
+                elide: Text.ElideRight
+                color: Kirigami.Theme.disabledTextColor
+                wrapMode: Text.Wrap
+                maximumLineCount: 2
+                visible: !Common.isEmpty(control.subtitle)
             }
 
         }
 
-        Kirigami.InlineMessage {
-            id: formErrorHandler
+        SpinBox {
+            id: spinbox
 
-            visible: control.statusMessage.length > 0
-            Layout.topMargin: visible ? Kirigami.Units.smallSpacing : 0
-            Layout.fillWidth: true
-            text: control.statusMessage
-            type: control.status
+            readonly property real decimalFactor: Math.pow(10, control.decimals)
+
+            function decimalToInt(decimal) {
+                return decimal * decimalFactor;
+            }
+
+            Layout.fillWidth: control.spinboxLayoutFillWidth
+            implicitWidth: control.boxWidth
+            focusPolicy: control.focusPolicy
+            wheelEnabled: true
+            onValueModified: {
+                control.valueModified(spinbox.value * 1 / spinbox.decimalFactor);
+            }
+            stepSize: spinbox.decimalToInt(control.stepSize)
+            value: spinbox.decimalToInt(control.value)
+            to: spinbox.decimalToInt(control.to)
+            from: spinbox.decimalToInt(control.from)
+            editable: control.editable
+            inputMethodHints: Qt.ImhFormattedNumbersOnly
+            textFromValue: (value, locale) => {
+                let unit_str = (Common.isEmpty(unit)) ? "" : " " + unit;
+                locale.numberOptions = Locale.OmitGroupSeparator;
+                let t = Number(value / spinbox.decimalFactor).toLocaleString(locale, 'f', control.decimals) + unit_str;
+                textInputSpinBox.text = t;
+                return t;
+            }
+            valueFromText: (text, locale) => {
+                let re = /-?\d*[.,]?\d*/;
+                let regex_result = re.exec(text);
+                let v = Number.fromLocaleString(locale, regex_result[0]) * spinbox.decimalFactor;
+                v = (!isNaN(v)) ? Math.round(v) : spinbox.value;
+                return v;
+            }
+
+            contentItem: TextInput {
+                id: textInputSpinBox
+
+                z: 2
+                font: spinbox.font
+                color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
+                selectionColor: Kirigami.Theme.highlightColor
+                readOnly: !spinbox.editable
+                validator: spinbox.validator
+                inputMethodHints: Qt.ImhFormattedNumbersOnly
+            }
+
+            validator: DoubleValidator {
+                locale: control.locale.name
+                notation: DoubleValidator.StandardNotation
+                decimals: control.decimals
+                bottom: Math.min(spinbox.from, spinbox.to) * spinbox.decimalFactor
+                top: Math.max(spinbox.from, spinbox.to) * spinbox.decimalFactor
+            }
+
         }
 
     }
