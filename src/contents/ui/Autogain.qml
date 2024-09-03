@@ -21,49 +21,94 @@ Kirigami.ScrollablePage {
         bottomMargin: Kirigami.Units.mediumSpacing
     }
 
-    RowLayout {
-        spacing: Kirigami.Units.largeSpacing
+    ColumnLayout {
+        Kirigami.CardsLayout {
+            maximumColumnWidth: autogainCard.implicitWidth
 
-        anchors {
-            left: parent.left
-            leftMargin: Kirigami.Units.smallSpacing
-            right: parent.right
-            rightMargin: Kirigami.Units.smallSpacing
-        }
+            Kirigami.Card {
+                id: autogainCard
 
-        FormCard.FormCardPage {
-            FormCard.FormHeader {
-                title: i18n("Controls")
-            }
+                actions: [
+                    Kirigami.Action {
 
-            FormCard.FormCard {
-                EeSpinBox {
-                    id: target
+                        displayComponent: FormCard.FormComboBoxDelegate {
+                            id: reference
 
-                    label: i18n("Target")
-                    from: -100
-                    // value: pluginDB.target
-                    decimals: 0
-                    stepSize: 1
-                    unit: "dB"
-                    onValueModified: (v) => {
-                        pluginDB.target = v;
+                            text: i18n("Reference")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            // currentIndex: EEdbSpectrum.spectrumShape
+                            editable: false
+                            model: [i18n("Momentary"), i18n("Short-Term"), i18n("Integrated"), i18n("Geometric Mean (MSI)"), i18n("Geometric Mean (MS)"), i18n("Geometric Mean (MI)"), i18n("Geometric Mean (SI)")]
+                            onActivated: (idx) => {
+                            }
+                        }
+
+                    },
+                    Kirigami.Action {
+
+                        displayComponent: EeSpinBox {
+                            id: target2
+
+                            label: i18n("Target")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: -100
+                            // value: pluginDB.target
+                            decimals: 0
+                            stepSize: 1
+                            unit: "dB"
+                            onValueModified: (v) => {
+                                pluginDB.target = v;
+                            }
+                        }
+
+                    },
+                    Kirigami.Action {
+
+                        displayComponent: EeSpinBox {
+                            id: silenceThreshold
+
+                            label: i18n("Silence")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: -100
+                            to: 0
+                            // value: pluginDB.silenceThreshold
+                            decimals: 0
+                            stepSize: 1
+                            unit: "dB"
+                            onValueModified: (v) => {
+                                pluginDB.silenceThreshold = v;
+                            }
+                        }
+
+                    },
+                    Kirigami.Action {
+
+                        displayComponent: EeSpinBox {
+                            id: maximumHistory
+
+                            label: i18n("Maximum History")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: 6
+                            to: 3600
+                            // value: pluginDB.maximumHistory
+                            decimals: 0
+                            stepSize: 1
+                            unit: "dB"
+                            onValueModified: (v) => {
+                                pluginDB.maximumHistory = v;
+                            }
+                        }
+
                     }
-                }
+                ]
 
-            }
-
-        }
-
-        FormCard.FormCardPage {
-            FormCard.FormHeader {
-                title: i18n("Loudness")
-            }
-
-            FormCard.FormCard {
-                RowLayout {
-                    Layout.columnSpan: appWindow.wideScreen ? 3 : 1
-                    spacing: Kirigami.Units.smallSpacing
+                contentItem: GridLayout {
+                    Layout.fillWidth: true
+                    columns: 3
+                    columnSpacing: Kirigami.Units.smallSpacing
 
                     FormCard.FormTextDelegate {
                         text: i18n("Momentary")
@@ -81,12 +126,6 @@ Kirigami.ScrollablePage {
                         text: i18n("LUFS")
                     }
 
-                }
-
-                RowLayout {
-                    Layout.columnSpan: appWindow.wideScreen ? 3 : 1
-                    spacing: Kirigami.Units.smallSpacing
-
                     FormCard.FormTextDelegate {
                         text: i18n("Short-Term")
                     }
@@ -102,12 +141,6 @@ Kirigami.ScrollablePage {
                     FormCard.FormTextDelegate {
                         text: i18n("LUFS")
                     }
-
-                }
-
-                RowLayout {
-                    Layout.columnSpan: appWindow.wideScreen ? 3 : 1
-                    spacing: Kirigami.Units.smallSpacing
 
                     FormCard.FormTextDelegate {
                         text: i18n("Integrated")
@@ -127,81 +160,15 @@ Kirigami.ScrollablePage {
 
                 }
 
-            }
-
-        }
-
-    }
-
-    header: Kirigami.ActionToolBar {
-        alignment: Qt.AlignCenter
-        actions: [
-            Kirigami.Action {
-
-                displayComponent: ColumnLayout {
-                    Controls.Label {
-                        text: i18n("Reference")
-                    }
-
-                    Controls.ComboBox {
-                        id: reference
-
-                        Layout.fillWidth: true
-                        // currentIndex: EEdbSpectrum.spectrumShape
-                        editable: false
-                        model: [i18n("Momentary"), i18n("Short-Term"), i18n("Integrated"), i18n("Geometric Mean (MSI)"), i18n("Geometric Mean (MS)"), i18n("Geometric Mean (MI)"), i18n("Geometric Mean (SI)")]
-                        onActivated: (idx) => {
-                        }
-                    }
-
-                }
-
-            },
-            Kirigami.Action {
-
-                displayComponent: EeSpinBox {
-                    id: target2
-
-                    label: i18n("Target")
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: -100
-                    // value: pluginDB.target
-                    decimals: 0
-                    stepSize: 1
-                    unit: "dB"
-                    onValueModified: (v) => {
-                        pluginDB.target = v;
-                    }
-                }
-
-            },
-            Kirigami.Action {
-
-                displayComponent: EeSpinBox {
-                    id: silenceThreshold
-
-                    label: i18n("Silence")
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: -100
-                    to: 0
-                    // value: pluginDB.target
-                    decimals: 0
-                    stepSize: 1
-                    unit: "dB"
-                    onValueModified: (v) => {
-                        pluginDB.target = v;
-                    }
+                header: Kirigami.Heading {
+                    Layout.alignment: Qt.AlignLeft
+                    level: 4
+                    text: i18n("Loudness")
+                    type: Kirigami.Heading.Type.Primary
                 }
 
             }
-        ]
 
-        anchors {
-            left: parent.left
-            top: parent.top
-            right: parent.right
         }
 
     }
@@ -209,16 +176,16 @@ Kirigami.ScrollablePage {
     footer: RowLayout {
         Layout.fillWidth: true
 
-        Controls.Button {
-            Layout.alignment: Qt.AlignCenter
-            text: i18n("Reset")
-            onClicked: showPassiveNotification("Reset")
-        }
-
         Controls.Label {
-            Layout.alignment: Qt.AlignRight
+            Layout.alignment: Qt.AlignLeft
             font.bold: true
             text: i18n("Using") + EEtagsPluginPackage.ebur128
+        }
+
+        Controls.Button {
+            Layout.alignment: Qt.AlignRight
+            text: i18n("Reset")
+            onClicked: showPassiveNotification("Reset")
         }
 
     }
