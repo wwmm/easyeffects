@@ -76,7 +76,7 @@ struct _PipeManagerBox {
 
   GtkButton *autoloading_add_input_profile, *autoloading_add_output_profile;
 
-  GtkLabel *header_version, *library_version, *quantum, *max_quantum, *min_quantum, *server_rate;
+  GtkLabel *header_version, *library_version, *core_version, *quantum, *max_quantum, *min_quantum, *server_rate;
 
   GtkSpinButton* spinbutton_test_signal_frequency;
 
@@ -461,6 +461,7 @@ void setup(PipeManagerBox* self, app::Application* application) {
 
   gtk_label_set_text(self->header_version, pm->header_version.c_str());
   gtk_label_set_text(self->library_version, pm->library_version.c_str());
+  gtk_label_set_text(self->core_version, pm->version.c_str());
   gtk_label_set_text(self->server_rate, fmt::format(ui::get_user_locale(), "{0:Ld} Hz", rate).c_str());
   gtk_label_set_text(self->min_quantum, pm->default_min_quantum.c_str());
   gtk_label_set_text(self->max_quantum, pm->default_max_quantum.c_str());
@@ -878,6 +879,7 @@ void pipe_manager_box_class_init(PipeManagerBoxClass* klass) {
 
   gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, header_version);
   gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, library_version);
+  gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, core_version);
   gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, quantum);
   gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, max_quantum);
   gtk_widget_class_bind_template_child(widget_class, PipeManagerBox, min_quantum);

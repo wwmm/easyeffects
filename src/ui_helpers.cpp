@@ -93,19 +93,20 @@ auto missing_plugin_box(const std::string& base_name, const std::string& package
     const auto format_title = fmt::runtime(_("{} Not Available"));
 
     // For translators: the first {} is replaced by the effect name, the second {} is replaced by the package name.
-    auto format_descr =
-        fmt::runtime(_("The software required for the {} effect, \"{}\", is not installed. Consider using the Easy "
-                       "Effects Flatpak package or installing the software yourself."
-                       " If you've installed the missing software, you must restart easyeffects "
-                       "using the 'Quit' option in the menu to make it availble to use."));
+    auto translated_descr =
+        _("The software required for the {} effect, \"{}\", is not installed. Consider using the Easy Effects Flatpak "
+          "package or installing the software yourself. If you've installed the missing software, you must restart "
+          "Easy Effects using the 'Quit' option inside the menu in order to make the effect availble to use.");
 
     if (base_name == tags::plugin_name::rnnoise) {
       // For translators: the first {} is replaced by the effect name, the second {} is replaced by the package name.
-      format_descr =
-          fmt::runtime(_("The {} effect was disabled when Easy Effects was compiled. This is perhaps since the "
-                         "software required for this effect, \"{}\", was not available. Consider using the Easy "
-                         "Effects Flatpak package or building your own Easy Effects package."));
+      translated_descr =
+          _("The {} effect was disabled when Easy Effects was compiled. This is perhaps since the "
+            "software required for this effect, \"{}\", was not available. Consider using the Easy "
+            "Effects Flatpak package or building your own Easy Effects package.");
     }
+
+    const auto format_descr = fmt::runtime(translated_descr);
 
     const std::string translated_name = tags::plugin_name::get_translated().at(base_name);
 

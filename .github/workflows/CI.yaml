@@ -112,7 +112,7 @@ jobs:
         namcapDisable: true
 
     - name: Upload Package Archive
-      uses: actions/upload-artifact@v4.3.6
+      uses: actions/upload-artifact@v4.4.0
       with:
         name: easyeffects-archlinux-${{ needs.prepare.outputs.github_commit_desc }}-x86_64
         path: ${{ steps.makepkg.outputs.pkgfile0 }}
@@ -201,15 +201,15 @@ jobs:
         source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3.26.5
+      uses: github/codeql-action/init@v3.26.6
       with:
         languages: cpp # we don't use a matrix build (to analyze multiple lanaguages in parallel) as we are only analyzing c++
 
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v3.26.5
+      uses: github/codeql-action/autobuild@v3.26.6
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3.26.5
+      uses: github/codeql-action/analyze@v3.26.6
 
   clang-tidy:
     name: Clang Tidy

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-26 23:10+0000\n"
-"PO-Revision-Date: 2024-08-27 21:09+0000\n"
+"POT-Creation-Date: 2024-08-31 04:34+0000\n"
+"PO-Revision-Date: 2024-09-01 05:09+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :("
 "n>6 && n<11) ? 3 : 4;\n"
-"X-Generator: Weblate 5.7.1-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -218,7 +218,7 @@ msgstr "Gnóthachan Aschuir"
 #: data/ui/gate.ui:1272 data/ui/level_meter.ui:263 data/ui/limiter.ui:741
 #: data/ui/loudness.ui:149 data/ui/maximizer.ui:87
 #: data/ui/multiband_compressor.ui:493 data/ui/multiband_gate.ui:493
-#: data/ui/pipe_manager_box.ui:339 data/ui/pitch.ui:219 data/ui/reverb.ui:358
+#: data/ui/pipe_manager_box.ui:350 data/ui/pitch.ui:219 data/ui/reverb.ui:358
 #: data/ui/rnnoise.ui:273 data/ui/speex.ui:187 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:617
 msgid "Input"
@@ -246,7 +246,7 @@ msgstr "Gnóthachan Ionchurtha Breiseáin"
 #: data/ui/filter.ui:399 data/ui/gate.ui:1356 data/ui/limiter.ui:825
 #: data/ui/loudness.ui:233 data/ui/maximizer.ui:171
 #: data/ui/multiband_compressor.ui:577 data/ui/multiband_gate.ui:577
-#: data/ui/pipe_manager_box.ui:209 data/ui/pitch.ui:303 data/ui/reverb.ui:442
+#: data/ui/pipe_manager_box.ui:220 data/ui/pitch.ui:303 data/ui/reverb.ui:442
 #: data/ui/rnnoise.ui:357 data/ui/speex.ui:271 data/ui/stereo_tools.ui:379
 #: data/ui/stereo_tools.ui:701
 msgid "Output"
@@ -266,8 +266,8 @@ msgid "Plugin Output Gain"
 msgstr "Gnóthachan Aschurtha Breiseáin"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:673 data/ui/expander.ui:594
-#: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:235
-#: data/ui/pipe_manager_box.ui:365
+#: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:246
+#: data/ui/pipe_manager_box.ui:376
 msgid "Device"
 msgstr "Gléas"
 
@@ -281,8 +281,8 @@ msgstr "Ainm"
 msgid "Profile"
 msgstr "Próifíl"
 
-#: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:246
-#: data/ui/pipe_manager_box.ui:376
+#: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:257
+#: data/ui/pipe_manager_box.ui:387
 msgid "Preset"
 msgstr "Réamhshocraithe"
 
@@ -503,14 +503,14 @@ msgstr "Taobh"
 #: data/ui/compressor.ui:546 data/ui/delay.ui:38 data/ui/equalizer.ui:215
 #: data/ui/expander.ui:467 data/ui/gate.ui:680 data/ui/level_meter.ui:32
 #: data/ui/multiband_compressor_band.ui:480 data/ui/multiband_gate_band.ui:538
-#: data/ui/pipe_manager_box.ui:570 data/ui/stereo_tools.ui:163
+#: data/ui/pipe_manager_box.ui:581 data/ui/stereo_tools.ui:163
 msgid "Left"
 msgstr "Ar chlé"
 
 #: data/ui/compressor.ui:547 data/ui/delay.ui:125 data/ui/equalizer.ui:242
 #: data/ui/expander.ui:468 data/ui/gate.ui:681 data/ui/level_meter.ui:42
 #: data/ui/multiband_compressor_band.ui:481 data/ui/multiband_gate_band.ui:539
-#: data/ui/pipe_manager_box.ui:581 data/ui/stereo_tools.ui:218
+#: data/ui/pipe_manager_box.ui:592 data/ui/stereo_tools.ui:218
 msgid "Right"
 msgstr "Ceart"
 
@@ -644,7 +644,7 @@ msgstr "Ard-Phas"
 
 #: data/ui/compressor.ui:884 data/ui/equalizer_band.ui:204
 #: data/ui/expander.ui:804 data/ui/filter.ui:166 data/ui/gate.ui:1017
-#: data/ui/pipe_manager_box.ui:627
+#: data/ui/pipe_manager_box.ui:638
 msgid "Frequency"
 msgstr "Minicíocht"
 
@@ -704,7 +704,7 @@ msgstr "Cuar"
 msgid "L"
 msgstr "L"
 
-#: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:573
+#: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:584
 msgid "Left Channel"
 msgstr "Cainéal Ar Chlé"
 
@@ -712,7 +712,7 @@ msgstr "Cainéal Ar Chlé"
 msgid "R"
 msgstr "R"
 
-#: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:584
+#: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:595
 msgid "Right Channel"
 msgstr "Cainéal Ar Dheis"
 
@@ -1504,26 +1504,30 @@ msgid "Library Version"
 msgstr "Leagan Leabharlainne"
 
 #: data/ui/pipe_manager_box.ui:138
+msgid "Core Version"
+msgstr "Croílár Leagan"
+
+#: data/ui/pipe_manager_box.ui:149
 msgid "Sampling Rate"
 msgstr "Ráta Samplála"
 
-#: data/ui/pipe_manager_box.ui:149
+#: data/ui/pipe_manager_box.ui:160
 msgid "Minimum Quantum"
 msgstr "Candam Íosta"
 
-#: data/ui/pipe_manager_box.ui:160
+#: data/ui/pipe_manager_box.ui:171
 msgid "Maximum Quantum"
 msgstr "Candam Uasta"
 
-#: data/ui/pipe_manager_box.ui:171
+#: data/ui/pipe_manager_box.ui:182
 msgid "Default Quantum"
 msgstr "Candam Réamhshocraithe"
 
-#: data/ui/pipe_manager_box.ui:191
+#: data/ui/pipe_manager_box.ui:202
 msgid "Presets Autoloading"
 msgstr "Réamhshocruithe Uathluchtú"
 
-#: data/ui/pipe_manager_box.ui:217 data/ui/pipe_manager_box.ui:347
+#: data/ui/pipe_manager_box.ui:228 data/ui/pipe_manager_box.ui:358
 msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
@@ -1532,96 +1536,96 @@ msgstr ""
 "Pobail a iompórtáil go háitiúil chun go roghnófar é agus go mbaineann sé le "
 "feiste ar leith."
 
-#: data/ui/pipe_manager_box.ui:266
+#: data/ui/pipe_manager_box.ui:277
 msgid "Output Devices"
 msgstr "Gléasanna Aschurtha"
 
-#: data/ui/pipe_manager_box.ui:283 src/application.cpp:283
+#: data/ui/pipe_manager_box.ui:294 src/application.cpp:283
 msgid "Output Presets"
 msgstr "Réamhshocruithe Aschurtha"
 
-#: data/ui/pipe_manager_box.ui:290 data/ui/pipe_manager_box.ui:415
+#: data/ui/pipe_manager_box.ui:301 data/ui/pipe_manager_box.ui:426
 msgid "Create Association"
 msgstr "Cruthaigh Cumann"
 
-#: data/ui/pipe_manager_box.ui:303
+#: data/ui/pipe_manager_box.ui:314
 msgid "Add Autoloading Output Preset"
 msgstr "Cuir Réamhshocrú Aschurtha Uathluchtaithe Leis"
 
-#: data/ui/pipe_manager_box.ui:323
+#: data/ui/pipe_manager_box.ui:334
 msgid "Output Autoloading Presets List"
 msgstr "Liosta Réamhshocruithe Uathluchtaithe Aschurtha"
 
-#: data/ui/pipe_manager_box.ui:396
+#: data/ui/pipe_manager_box.ui:407
 msgid "Input Devices"
 msgstr "Gléasanna Ionchurtha"
 
-#: data/ui/pipe_manager_box.ui:408 src/application.cpp:291
+#: data/ui/pipe_manager_box.ui:419 src/application.cpp:291
 msgid "Input Presets"
 msgstr "Réamhshocruithe Ionchurtha"
 
-#: data/ui/pipe_manager_box.ui:428
+#: data/ui/pipe_manager_box.ui:439
 msgid "Add Autoloading Input Preset"
 msgstr "Cuir Réamhshocrú Ionchurtha Uathluchtaithe Leis"
 
-#: data/ui/pipe_manager_box.ui:447
+#: data/ui/pipe_manager_box.ui:458
 msgid "Input Autoloading Presets List"
 msgstr "Liosta Réamhshocruithe Uathluchtaithe Ionchurtha"
 
-#: data/ui/pipe_manager_box.ui:477
+#: data/ui/pipe_manager_box.ui:488
 msgid "Modules"
 msgstr "Modúil"
 
-#: data/ui/pipe_manager_box.ui:495
+#: data/ui/pipe_manager_box.ui:506
 msgid "Modules List"
 msgstr "Liosta na Modúl"
 
-#: data/ui/pipe_manager_box.ui:509
+#: data/ui/pipe_manager_box.ui:520
 msgid "Clients"
 msgstr "Cliaint"
 
-#: data/ui/pipe_manager_box.ui:527
+#: data/ui/pipe_manager_box.ui:538
 msgid "Clients List"
 msgstr "Liosta cliant"
 
-#: data/ui/pipe_manager_box.ui:541
+#: data/ui/pipe_manager_box.ui:552
 msgid "Test Signal"
 msgstr "Comhartha Tástála"
 
-#: data/ui/pipe_manager_box.ui:546 data/ui/preferences_spectrum.ui:9
+#: data/ui/pipe_manager_box.ui:557 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
 msgid "State"
 msgstr "An Stát"
 
-#: data/ui/pipe_manager_box.ui:549 data/ui/preferences_spectrum.ui:12
+#: data/ui/pipe_manager_box.ui:560 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
 msgstr "Cumasaithe"
 
-#: data/ui/pipe_manager_box.ui:564
+#: data/ui/pipe_manager_box.ui:575
 msgid "Properties"
 msgstr "Airíonna"
 
-#: data/ui/pipe_manager_box.ui:567
+#: data/ui/pipe_manager_box.ui:578
 msgid "Channels"
 msgstr "Cainéil"
 
-#: data/ui/pipe_manager_box.ui:592
+#: data/ui/pipe_manager_box.ui:603
 msgid "Both"
 msgstr "Tá an dá"
 
-#: data/ui/pipe_manager_box.ui:596
+#: data/ui/pipe_manager_box.ui:607
 msgid "Both Channels"
 msgstr "An Dá Chainéal"
 
-#: data/ui/pipe_manager_box.ui:605
+#: data/ui/pipe_manager_box.ui:616
 msgid "Waveform"
 msgstr "Tonnchruth"
 
-#: data/ui/pipe_manager_box.ui:609
+#: data/ui/pipe_manager_box.ui:620
 msgid "Sine Wave"
 msgstr "Tonn Sín"
 
-#: data/ui/pipe_manager_box.ui:618
+#: data/ui/pipe_manager_box.ui:629
 msgid "White Noise"
 msgstr "Torann Bán"
 
@@ -2569,16 +2573,17 @@ msgstr "{} Níl sé ar fáil"
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
-"If you've installed the missing software, you must restart easyeffects using "
-"the 'Quit' option in the menu to make it availble to use."
+"If you've installed the missing software, you must restart Easy Effects "
+"using the 'Quit' option inside the menu in order to make the effect availble "
+"to use."
 msgstr ""
 "Níl na bogearraí atá riachtanach don éifeacht {}, \"{}\", suiteáilte. "
 "Smaoinigh ar an bpacáiste Easy Effects Flatpak a úsáid nó na bogearraí a "
 "shuiteáil tú féin. Má tá na bogearraí atá in easnamh suiteáilte agat, ní mór "
-"duit easyeffects a atosú ag baint úsáide as an rogha 'Scoir' sa roghchlár le "
-"go mbeidh sé ar fáil le húsáid."
+"duit Easy Effects a atosú ag baint úsáide as an rogha 'Scoir' taobh istigh "
+"den roghchlár chun an éifeacht a úsáid."
 
-#: src/ui_helpers.cpp:105
+#: src/ui_helpers.cpp:104
 #, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
@@ -2591,12 +2596,12 @@ msgstr ""
 "\"{}\", ar fáil. Smaoinigh ar an bpacáiste Easy Effects Flatpak a úsáid nó "
 "do phacáiste Éifeachtaí Éasca féin a thógáil."
 
-#: src/ui_helpers.cpp:148 src/ui_helpers.cpp:170
+#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:171
 msgid "-inf"
 msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:255
+#: src/ui_helpers.cpp:256
 #, c++-format
 msgid "Using {}"
 msgstr "Ag baint úsáide as {}"
