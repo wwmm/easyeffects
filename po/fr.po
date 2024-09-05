@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-05 01:36+0000\n"
-"PO-Revision-Date: 2024-09-02 09:09+0000\n"
+"PO-Revision-Date: 2024-09-05 14:09+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -26,19 +26,20 @@ msgstr "@APP_NAME@"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr "Égaliseur, Compresseur et autres effets audio"
+msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Effets audio pour les applications utilisant le serveur audio PipeWire"
+msgstr "Effets Audio pour les Applications PipeWire"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "limiteur ; compresseur ; réverbération ; égaliseur ; autovolume ;"
+msgstr ""
+"limiteur ; compresseur ; réverbération ; égaliseur ; volume-automatique ;"
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr "Autoriser/Interdire cette application"
+msgstr "Activer/désactiver cette application"
 
 #: data/ui/app_info.ui:213 data/ui/rnnoise.ui:51
 msgid "Enable"
@@ -46,7 +47,7 @@ msgstr "Activer"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr "Liste des applications exclues : ajouter/retirer cette application"
+msgstr "Liste des Applications Exclues : Ajouter/supprimer cette application"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
@@ -62,7 +63,7 @@ msgstr "Modifier le volume de cette application"
 
 #: data/ui/app_info.ui:271
 msgid "Application Volume"
-msgstr "Volume de l’application"
+msgstr "Volume de l’Application"
 
 #: data/ui/application_window.ui:6
 msgid "_Help"
@@ -95,7 +96,7 @@ msgstr "Préréglages"
 
 #: data/ui/application_window.ui:61
 msgid "Presets Menu"
-msgstr "Menu des préréglages"
+msgstr "Menu des Préréglages"
 
 #: data/ui/application_window.ui:68
 msgid "Enable/disable the global bypass"
@@ -103,27 +104,27 @@ msgstr "Activer/désactiver le contournement global"
 
 #: data/ui/application_window.ui:73
 msgid "Global Bypass"
-msgstr "Contournement global"
+msgstr "Contournement Global"
 
 #: data/ui/application_window.ui:83
 msgid "Primary Menu"
-msgstr "Menu principal"
+msgstr "Menu Principal"
 
 #: data/ui/application_window.ui:99
 msgid "Easy Effects Window"
-msgstr "Fenêtre de Easy Effects"
+msgstr "Fenêtre Easy Effects"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
-msgstr "Liste des applications"
+msgstr "Liste des Applications"
 
 #: data/ui/apps_box.ui:27
 msgid "Empty List"
-msgstr "Liste vide"
+msgstr "Liste Vide"
 
 #: data/ui/apps_box.ui:28
 msgid "No Audio Application Available"
-msgstr "Aucune application audio disponible"
+msgstr "Aucune Application Audio Disponible"
 
 #: data/ui/autogain.ui:29 data/ui/filter.ui:38
 msgid "Controls"
@@ -139,7 +140,7 @@ msgstr "Silence"
 
 #: data/ui/autogain.ui:80
 msgid "Maximum History"
-msgstr "Historique maximum"
+msgstr "Historique Maximal"
 
 #: data/ui/autogain.ui:103
 msgid "Reference"
@@ -159,19 +160,19 @@ msgstr "Intégré"
 
 #: data/ui/autogain.ui:112
 msgid "Geometric Mean (MSI)"
-msgstr "Moyenne géométrique (MSI)"
+msgstr "Moyenne Géométrique (MSI)"
 
 #: data/ui/autogain.ui:113
 msgid "Geometric Mean (MS)"
-msgstr "Moyenne géométrique (MS)"
+msgstr "Moyenne Géométrique (MS)"
 
 #: data/ui/autogain.ui:114
 msgid "Geometric Mean (MI)"
-msgstr "Moyenne géométrique (MI)"
+msgstr "Moyenne Géométrique (MI)"
 
 #: data/ui/autogain.ui:115
 msgid "Geometric Mean (SI)"
-msgstr "Moyenne géométrique (SI)"
+msgstr "Moyenne Géométrique (SI)"
 
 #: data/ui/autogain.ui:124
 msgid "History"
@@ -205,7 +206,7 @@ msgstr "Intervalle"
 
 #: data/ui/autogain.ui:383
 msgid "Output Gain"
-msgstr "Gain de sortie"
+msgstr "Gain de Sortie"
 
 #: data/ui/autogain.ui:430 data/ui/bass_enhancer.ui:258
 #: data/ui/bass_loudness.ui:107 data/ui/compressor.ui:650
@@ -234,7 +235,7 @@ msgstr "Entrée"
 #: data/ui/multiband_gate.ui:512 data/ui/pitch.ui:238 data/ui/reverb.ui:377
 #: data/ui/rnnoise.ui:292 data/ui/speex.ui:206 data/ui/stereo_tools.ui:636
 msgid "Plugin Input Gain"
-msgstr "Gain d’entrée du greffon"
+msgstr "Gain d’Entrée du Greffon"
 
 #: data/ui/autogain.ui:514 data/ui/bass_enhancer.ui:342
 #: data/ui/bass_loudness.ui:48 data/ui/bass_loudness.ui:191
@@ -262,7 +263,7 @@ msgstr "Sortie"
 #: data/ui/multiband_gate.ui:596 data/ui/pitch.ui:322 data/ui/reverb.ui:461
 #: data/ui/rnnoise.ui:376 data/ui/speex.ui:290 data/ui/stereo_tools.ui:720
 msgid "Plugin Output Gain"
-msgstr "Gain de sortie du greffon"
+msgstr "Gain de Sortie du Greffon"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:673 data/ui/expander.ui:594
 #: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:246
@@ -296,7 +297,7 @@ msgstr "Écouter"
 
 #: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
-msgstr "Mélanger les harmoniques"
+msgstr "Mélanger les Harmoniques"
 
 #: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
@@ -321,11 +322,11 @@ msgstr "Portée"
 
 #: data/ui/bass_enhancer.ui:208
 msgid "Floor"
-msgstr "Limite inférieure"
+msgstr "Limite Inférieure"
 
 #: data/ui/bass_enhancer.ui:236
 msgid "Floor Value"
-msgstr "Valeur plancher"
+msgstr "Valeur Plancher"
 
 #: data/ui/bass_loudness.ui:69
 msgid "Link"
@@ -333,26 +334,26 @@ msgstr "Lien"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
-msgstr "Nom de l’application"
+msgstr "Nom de l’Application"
 
 #: data/ui/blocklist_menu.ui:42
 msgid "Add to Excluded Applications"
-msgstr "Ajouter aux applications exclues"
+msgstr "Ajouter aux Applications Exclues"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Excluded Applications List"
-msgstr "Liste des applications exclues"
+msgstr "Liste des Applications Exclues"
 
 #: data/ui/blocklist_menu.ui:99
 msgid "Show Excluded Applications"
-msgstr "Afficher les applications exclues"
+msgstr "Afficher les Applications Exclues"
 
 #: data/ui/compressor.ui:25 data/ui/delay.ui:25 data/ui/equalizer.ui:279
 #: data/ui/expander.ui:25 data/ui/filter.ui:25 data/ui/gate.ui:25
 #: data/ui/limiter.ui:25 data/ui/loudness.ui:25
 #: data/ui/multiband_compressor.ui:105 data/ui/multiband_gate.ui:105
 msgid "Show Native Window"
-msgstr "Afficher la fenêtre Native"
+msgstr "Afficher la Fenêtre Native"
 
 #: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:41
 msgid "Compressor"
@@ -383,15 +384,15 @@ msgstr "Renforcement"
 
 #: data/ui/compressor.ui:87 data/ui/multiband_compressor_band.ui:87
 msgid "Compression Mode"
-msgstr "Mode de compression"
+msgstr "Mode de Compression"
 
 #: data/ui/compressor.ui:94 data/ui/multiband_compressor_band.ui:807
 msgid "Boost Threshold"
-msgstr "Seuil de renforcement"
+msgstr "Seuil de Renforcement"
 
 #: data/ui/compressor.ui:133 data/ui/multiband_compressor_band.ui:764
 msgid "Boost Amount"
-msgstr "Quantité de renforcement"
+msgstr "Quantité du Renforcement"
 
 #: data/ui/compressor.ui:179 data/ui/expander.ui:100 data/ui/gate.ui:70
 #: data/ui/limiter.ui:282 data/ui/limiter.ui:501
@@ -415,12 +416,12 @@ msgstr "Seuil"
 #: data/ui/compressor.ui:225 data/ui/expander.ui:146
 #: data/ui/multiband_compressor_band.ui:224
 msgid "Attack Time"
-msgstr "Temps d’attaque"
+msgstr "Temps d’Attaque"
 
 #: data/ui/compressor.ui:246 data/ui/expander.ui:167 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:248
 msgid "Attack Threshold"
-msgstr "Seuil d’attaque"
+msgstr "Seuil d’Attaque"
 
 #: data/ui/compressor.ui:253 data/ui/expander.ui:174 data/ui/gate.ui:76
 #: data/ui/limiter.ui:323 data/ui/limiter.ui:537 data/ui/maximizer.ui:27
@@ -432,12 +433,12 @@ msgstr "Relâchement"
 #: data/ui/compressor.ui:278 data/ui/expander.ui:199
 #: data/ui/multiband_compressor_band.ui:274
 msgid "Release Time"
-msgstr "Temps de relâchement"
+msgstr "Temps de Relâchement"
 
 #: data/ui/compressor.ui:301 data/ui/expander.ui:222 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:301
 msgid "Release Threshold"
-msgstr "Seuil de relâchement"
+msgstr "Seuil de Relâchement"
 
 #: data/ui/compressor.ui:308 data/ui/deesser.ui:334 data/ui/expander.ui:229
 #: data/ui/multiband_compressor_band.ui:308
@@ -453,21 +454,21 @@ msgstr "Genou"
 #: data/ui/gate.ui:430 data/ui/multiband_compressor_band.ui:382
 #: data/ui/multiband_gate_band.ui:411
 msgid "Makeup"
-msgstr "Compensation de gain"
+msgstr "Correction"
 
 #: data/ui/compressor.ui:412 data/ui/delay.ui:62 data/ui/delay.ui:149
 #: data/ui/expander.ui:333 data/ui/gate.ui:346
 #: data/ui/multiband_compressor.ui:174 data/ui/multiband_gate.ui:174
 #: data/ui/reverb.ui:208 data/ui/stereo_tools.ui:528
 msgid "Dry Level"
-msgstr "Niveau des signaux secs"
+msgstr "Niveau des Signaux Secs"
 
 #: data/ui/compressor.ui:446 data/ui/delay.ui:85 data/ui/delay.ui:172
 #: data/ui/expander.ui:367 data/ui/gate.ui:351
 #: data/ui/multiband_compressor.ui:207 data/ui/multiband_gate.ui:207
 #: data/ui/reverb.ui:241 data/ui/rnnoise.ui:90 data/ui/stereo_tools.ui:563
 msgid "Wet Level"
-msgstr "Niveau des signaux humides"
+msgstr "Niveau des Signaux Humides"
 
 #: data/ui/compressor.ui:487 data/ui/compressor.ui:508
 #: data/ui/compressor.ui:1075 data/ui/expander.ui:408 data/ui/expander.ui:429
@@ -475,7 +476,7 @@ msgstr "Niveau des signaux humides"
 #: data/ui/gate.ui:1208 data/ui/multiband_compressor_band.ui:466
 #: data/ui/multiband_gate_band.ui:524
 msgid "Sidechain"
-msgstr "Chaîne latérale"
+msgstr "Chaîne Latérale"
 
 #: data/ui/compressor.ui:519 data/ui/compressor.ui:525 data/ui/expander.ui:440
 #: data/ui/expander.ui:446 data/ui/gate.ui:653 data/ui/gate.ui:659
@@ -580,7 +581,7 @@ msgstr "Filtre Passe-Bas"
 #: data/ui/compressor.ui:610 data/ui/expander.ui:531 data/ui/gate.ui:744
 #: data/ui/multiband_compressor_band.ui:554 data/ui/multiband_gate_band.ui:612
 msgid "Simple Moving Average"
-msgstr "Moyenne mobile simple"
+msgstr "Moyenne Mobile Simple"
 
 #: data/ui/compressor.ui:619 data/ui/expander.ui:540 data/ui/gate.ui:753
 #: data/ui/multiband_compressor_band.ui:563 data/ui/multiband_gate_band.ui:621
@@ -615,11 +616,11 @@ msgstr "Type Chaîne Latérale"
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
 #: src/plugins_box.cpp:806
 msgid "Input Device"
-msgstr "Périphérique d’entrée"
+msgstr "Périphérique d’Entrée"
 
 #: data/ui/compressor.ui:734 data/ui/expander.ui:654 data/ui/gate.ui:867
 msgid "PreAmplification"
-msgstr "Pré amplification"
+msgstr "Pré-Amplification"
 
 #: data/ui/compressor.ui:770 data/ui/expander.ui:690 data/ui/gate.ui:903
 #: data/ui/multiband_compressor_band.ui:699 data/ui/multiband_gate_band.ui:756
@@ -669,12 +670,12 @@ msgstr "36 dB/oct"
 
 #: data/ui/compressor.ui:911 data/ui/expander.ui:831 data/ui/gate.ui:1044
 msgid "High-Pass Filter Mode"
-msgstr "Mode du filtre Passe-Haut"
+msgstr "Mode du Filtre Passe-Haut"
 
 #: data/ui/compressor.ui:936 data/ui/compressor.ui:995 data/ui/expander.ui:856
 #: data/ui/expander.ui:915 data/ui/gate.ui:1069 data/ui/gate.ui:1128
 msgid "High-Pass Filter Frequency"
-msgstr "Fréquence du filtre Passe-Haut"
+msgstr "Fréquence du Filtre Passe-Haut"
 
 #: data/ui/compressor.ui:943 data/ui/expander.ui:863 data/ui/filter.ui:50
 #: data/ui/gate.ui:1076
@@ -683,7 +684,7 @@ msgstr "Passe-Bas"
 
 #: data/ui/compressor.ui:970 data/ui/expander.ui:890 data/ui/gate.ui:1103
 msgid "Low-Pass Filter Mode"
-msgstr "Mode du filtre Passe-Bas"
+msgstr "Mode du Filtre Passe-Bas"
 
 #: data/ui/compressor.ui:1021 data/ui/equalizer_band.ui:235
 #: data/ui/expander.ui:941 data/ui/filter.ui:218
@@ -705,7 +706,7 @@ msgstr "G"
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:584
 msgid "Left Channel"
-msgstr "Canal gauche"
+msgstr "Canal Gauche"
 
 #: data/ui/convolver.ui:53
 msgid "R"
@@ -713,7 +714,7 @@ msgstr "D"
 
 #: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:595
 msgid "Right Channel"
-msgstr "Canal droit"
+msgstr "Canal Droit"
 
 #: data/ui/convolver.ui:71
 msgid "Impulses"
@@ -734,11 +735,11 @@ msgstr "Spectre"
 
 #: data/ui/convolver.ui:121
 msgid "Log Scale"
-msgstr "Échelle logarithmique"
+msgstr "Échelle Logarithmique"
 
 #: data/ui/convolver.ui:131 src/tags_plugin_name.cpp:38
 msgid "Autogain"
-msgstr "Gain automatique"
+msgstr "Gain Automatique"
 
 #: data/ui/convolver.ui:147
 msgid "Rate"
@@ -754,11 +755,11 @@ msgstr "Durée"
 
 #: data/ui/convolver_menu_combine.ui:15
 msgid "Combine Impulse Responses"
-msgstr "Combiner les réponses impulsionnelles"
+msgstr "Combiner les Réponses Impulsionnelles"
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
-msgstr "Premier noyau"
+msgstr "Premier Noyau"
 
 #: data/ui/convolver_menu_combine.ui:82
 msgid "Second Kernel"
@@ -766,15 +767,15 @@ msgstr "Deuxième Noyau"
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
-msgstr "Nom du fichier de sortie"
+msgstr "Nom du Fichier de Sortie"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
-msgstr "Nom du noyau combiné"
+msgstr "Nom du Noyau Combiné"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
-msgstr "Importer une réponse impulsionnelle"
+msgstr "Importer une Réponse Impulsionnelle"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:84 data/ui/presets_menu.ui:206
@@ -783,11 +784,11 @@ msgstr "Rechercher"
 
 #: data/ui/convolver_menu_impulses.ui:27
 msgid "Search Impulse File"
-msgstr "Rechercher un fichier de réponse impulsionnelle"
+msgstr "Rechercher un Fichier de Réponse Impulsionnelle"
 
 #: data/ui/convolver_menu_impulses.ui:47
 msgid "Impulse Files List"
-msgstr "Liste des fichiers de réponse impulsionnelle"
+msgstr "Liste des Fichiers de Réponse Impulsionnelle"
 
 #: data/ui/crossfeed.ui:39
 msgid "Default"
@@ -813,27 +814,27 @@ msgstr "Couper le son"
 
 #: data/ui/deepfilternet.ui:31
 msgid "Attenuation Limit"
-msgstr "Limite d'atténuation"
+msgstr "Limite d'Atténuation"
 
 #: data/ui/deepfilternet.ui:60
 msgid "Minimum Processing Threshold"
-msgstr "Seuil de traitement minimal"
+msgstr "Seuil de Traitement Minimal"
 
 #: data/ui/deepfilternet.ui:86
 msgid "Maximum ERB Processing threshold"
-msgstr "Seuil maximum de traitement ERB"
+msgstr "Seuil Maximum de Traitement ERB"
 
 #: data/ui/deepfilternet.ui:112
 msgid "Maximum DF Processing Threshold"
-msgstr "Seuil maximum de traitement DF"
+msgstr "Seuil Maximum de Traitement DF"
 
 #: data/ui/deepfilternet.ui:138
 msgid "Minimum Processing Buffer"
-msgstr "Tampon de traitement minimal"
+msgstr "Tampon de Traitement Minimal"
 
 #: data/ui/deepfilternet.ui:163
 msgid "Post Filter Beta"
-msgstr "Filtre postérieur Beta"
+msgstr "Filtre Postérieur Beta"
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
@@ -907,23 +908,23 @@ msgstr "Retard"
 #: data/ui/delay.ui:107 data/ui/delay.ui:194 data/ui/stereo_tools.ui:182
 #: data/ui/stereo_tools.ui:207
 msgid "Invert Phase"
-msgstr "Inverser la phase"
+msgstr "Inverser la Phase"
 
 #: data/ui/echo_canceller.ui:27
 msgid "Filter Length"
-msgstr "Longueur du filtre"
+msgstr "Longueur du Filtre"
 
 #: data/ui/echo_canceller.ui:49
 msgid "Residual Echo Suppression"
-msgstr "Suppression de l'écho résiduel"
+msgstr "Suppression de l'Écho Résiduel"
 
 #: data/ui/echo_canceller.ui:70
 msgid "Near End Echo Suppression"
-msgstr "Suppression de l'écho proche"
+msgstr "Suppression de l'Écho Proche"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
-msgstr "Applications exclues"
+msgstr "Applications Exclues"
 
 #: data/ui/effects_box.ui:120
 msgid "Enable/disable input monitoring"
@@ -948,7 +949,7 @@ msgstr "Hauteur Droite"
 
 #: data/ui/equalizer.ui:288
 msgid "Split Channels"
-msgstr "Diviser les canaux"
+msgstr "Diviser les Canaux"
 
 #: data/ui/equalizer.ui:294
 msgid "Flat Response"
@@ -956,19 +957,19 @@ msgstr "Réponse Plate"
 
 #: data/ui/equalizer.ui:302
 msgid "Calculate Frequencies"
-msgstr "Calculer les fréquences"
+msgstr "Calculer les Fréquences"
 
 #: data/ui/equalizer.ui:310
 msgid "Sort Bands"
-msgstr "Tri des bandes"
+msgstr "Tri des Bandes"
 
 #: data/ui/equalizer.ui:325 src/presets_menu.cpp:144
 msgid "Import Preset"
-msgstr "Importer un préréglage"
+msgstr "Importer un Préréglage"
 
 #: data/ui/equalizer.ui:359
 msgid "Export Preset"
-msgstr "Exporter le préréglage"
+msgstr "Exporter un Préréglage"
 
 #: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
 msgid "Slope"
@@ -993,7 +994,7 @@ msgstr "Plafonner"
 
 #: data/ui/exciter.ui:236
 msgid "Ceil Value"
-msgstr "Valeur du plafonnement"
+msgstr "Valeur du Plafonnement"
 
 #: data/ui/expander.ui:51 src/tags_plugin_name.cpp:51
 msgid "Expander"
@@ -1037,11 +1038,11 @@ msgstr "Cloche"
 
 #: data/ui/filter.ui:55
 msgid "Band-Pass"
-msgstr "Passe-bande"
+msgstr "Passe-Bande"
 
 #: data/ui/filter.ui:56
 msgid "Notch"
-msgstr "Réjection de bande"
+msgstr "Réjection de Bande"
 
 #: data/ui/filter.ui:57
 msgid "Resonance"
@@ -1095,11 +1096,11 @@ msgstr "Début Zone de Relâchement"
 
 #: data/ui/level_meter.ui:28
 msgid "True Peak"
-msgstr "Crête réelle"
+msgstr "Crête Réelle"
 
 #: data/ui/level_meter.ui:328
 msgid "Reset History"
-msgstr "Réinitialiser l’historique"
+msgstr "Réinitialiser l’Historique"
 
 #: data/ui/limiter.ui:68
 msgid "Oversampling"
@@ -1249,7 +1250,7 @@ msgstr "SC PréAmp"
 #: data/ui/limiter.ui:229 data/ui/multiband_compressor_band.ui:692
 #: data/ui/multiband_gate_band.ui:749
 msgid "Sidechain PreAmplification"
-msgstr "Pré amplification de la Chaîne Latérale"
+msgstr "Pré-Amplification de la Chaîne Latérale"
 
 #: data/ui/limiter.ui:400
 msgid "Boost"
@@ -1271,19 +1272,19 @@ msgstr "Source Chaîne Latérale Externe"
 
 #: data/ui/limiter.ui:491
 msgid "Auto Leveling"
-msgstr "Auto-nivellement"
+msgstr "Nivellement Automatique"
 
 #: data/ui/limiter.ui:530
 msgid "Auto Leveling Attack"
-msgstr "Auto-nivellement de l’attaque"
+msgstr "Nivellement Automatique de l’Attaque"
 
 #: data/ui/limiter.ui:565
 msgid "Auto Leveling Release"
-msgstr "Auto-nivellement du relâchement"
+msgstr "Nivellement Automatique du Relâchement"
 
 #: data/ui/limiter.ui:599
 msgid "Auto Leveling Knee"
-msgstr "Auto-nivellement du genou"
+msgstr "Nivellement Automatique du Genou"
 
 #: data/ui/limiter.ui:624
 msgid "Gain Left"
@@ -1316,7 +1317,7 @@ msgstr "Taille FFT"
 
 #: data/ui/loudness.ui:83
 msgid "Output Volume"
-msgstr "Volume de sortie"
+msgstr "Volume de Sortie"
 
 #: data/ui/loudness.ui:104
 msgid "Clipping"
@@ -1344,7 +1345,7 @@ msgstr "Marron MT"
 
 #: data/ui/multiband_compressor.ui:114 data/ui/multiband_gate.ui:114
 msgid "Show Native User Interface"
-msgstr "Afficher l'interface utilisateur native"
+msgstr "Afficher l'Interface Utilisateur Native"
 
 #: data/ui/multiband_compressor.ui:143 data/ui/multiband_gate.ui:143
 msgid "Operating Mode"
@@ -1360,7 +1361,7 @@ msgstr "Moderne"
 
 #: data/ui/multiband_compressor.ui:158 data/ui/multiband_gate.ui:158
 msgid "Linear Phase"
-msgstr "Phase linéaire"
+msgstr "Phase Linéaire"
 
 #: data/ui/multiband_compressor.ui:266 data/ui/multiband_gate.ui:266
 msgid "Bands List"
@@ -1408,7 +1409,7 @@ msgstr "Fin de Bande"
 
 #: data/ui/multiband_compressor_band.ui:111
 msgid "Band Compression Mode"
-msgstr "Mode de Compression"
+msgstr "Mode de Compression de la Bande"
 
 #: data/ui/multiband_compressor_band.ui:129 data/ui/multiband_gate_band.ui:98
 msgid "Band Bypass"
@@ -1416,7 +1417,7 @@ msgstr "Contournement de Bande"
 
 #: data/ui/multiband_compressor_band.ui:427 data/ui/multiband_gate_band.ui:485
 msgid "Band Sidechain Options"
-msgstr "Options Chaîne Latérale de la bande"
+msgstr "Options Chaîne Latérale de la Bande"
 
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:558
 msgid "Stereo Split"
@@ -1448,7 +1449,7 @@ msgstr "Gain de Bande"
 
 #: data/ui/multiband_compressor_band.ui:892 data/ui/multiband_gate_band.ui:861
 msgid "Band Envelope"
-msgstr "Enveloppe de bande"
+msgstr "Enveloppe de Bande"
 
 #: data/ui/multiband_compressor_band.ui:917 data/ui/multiband_gate_band.ui:886
 msgid "Band Curve"
@@ -1464,7 +1465,7 @@ msgstr "Général"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr "Gestion des périphériques"
+msgstr "Gestion des Périphériques"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
@@ -1477,23 +1478,23 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
-msgstr "Utiliser l’entrée par défaut"
+msgstr "Utiliser l’Entrée par Défaut"
 
 #: data/ui/pipe_manager_box.ui:65
 msgid "Custom Input Device"
-msgstr "Périphérique d’entrée personnalisé"
+msgstr "Périphérique d’Entrée Personnalisé"
 
 #: data/ui/pipe_manager_box.ui:74 data/ui/pipe_manager_box.ui:80
 msgid "Use Default Output"
-msgstr "Utiliser la sortie par défaut"
+msgstr "Utiliser la Sortie par Défaut"
 
 #: data/ui/pipe_manager_box.ui:101
 msgid "Custom Output Device"
-msgstr "Périphérique de sortie personnalisé"
+msgstr "Périphérique de Sortie Personnalisé"
 
 #: data/ui/pipe_manager_box.ui:112
 msgid "Server Information"
-msgstr "Information du serveur"
+msgstr "Information du Serveur"
 
 #: data/ui/pipe_manager_box.ui:116
 msgid "Header Version"
@@ -1501,7 +1502,7 @@ msgstr "Version de l’en-tête"
 
 #: data/ui/pipe_manager_box.ui:127
 msgid "Library Version"
-msgstr "Version de la bibliothèque"
+msgstr "Version de la Bibliothèque"
 
 #: data/ui/pipe_manager_box.ui:138
 msgid "Core Version"
@@ -1509,23 +1510,23 @@ msgstr "Version de Base"
 
 #: data/ui/pipe_manager_box.ui:149
 msgid "Sampling Rate"
-msgstr "Taux d’échantillonnage"
+msgstr "Taux d’Échantillonnage"
 
 #: data/ui/pipe_manager_box.ui:160
 msgid "Minimum Quantum"
-msgstr "Quantum minimum"
+msgstr "Quantum Minimum"
 
 #: data/ui/pipe_manager_box.ui:171
 msgid "Maximum Quantum"
-msgstr "Quantum maximum"
+msgstr "Quantum Maximum"
 
 #: data/ui/pipe_manager_box.ui:182
 msgid "Default Quantum"
-msgstr "Quantum par défaut"
+msgstr "Quantum par Défaut"
 
 #: data/ui/pipe_manager_box.ui:202
 msgid "Presets Autoloading"
-msgstr "Chargement automatique des préréglages"
+msgstr "Chargement Automatique des Préréglages"
 
 #: data/ui/pipe_manager_box.ui:228 data/ui/pipe_manager_box.ui:358
 msgid ""
@@ -1538,39 +1539,39 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:277
 msgid "Output Devices"
-msgstr "Périphériques de sortie"
+msgstr "Périphériques de Sortie"
 
 #: data/ui/pipe_manager_box.ui:294 src/application.cpp:283
 msgid "Output Presets"
-msgstr "Préréglages de sortie"
+msgstr "Préréglages de Sortie"
 
 #: data/ui/pipe_manager_box.ui:301 data/ui/pipe_manager_box.ui:426
 msgid "Create Association"
-msgstr "Créer une association"
+msgstr "Créer une Association"
 
 #: data/ui/pipe_manager_box.ui:314
 msgid "Add Autoloading Output Preset"
-msgstr "Ajouter un préréglage de sortie auto-chargeant"
+msgstr "Ajouter un Préréglage de Sortie Auto-chargeant"
 
 #: data/ui/pipe_manager_box.ui:334
 msgid "Output Autoloading Presets List"
-msgstr "Liste des préréglages de sortie auto-chargeant"
+msgstr "Liste des Préréglages de Sortie Auto-chargeant"
 
 #: data/ui/pipe_manager_box.ui:407
 msgid "Input Devices"
-msgstr "Périphériques d’entrée"
+msgstr "Périphériques d’Entrée"
 
 #: data/ui/pipe_manager_box.ui:419 src/application.cpp:291
 msgid "Input Presets"
-msgstr "Préréglages d’entrée"
+msgstr "Préréglages d’Entrée"
 
 #: data/ui/pipe_manager_box.ui:439
 msgid "Add Autoloading Input Preset"
-msgstr "Ajouter un préréglage d’entrée auto-chargeant"
+msgstr "Ajouter un Préréglage d’Entrée Auto-chargeant"
 
 #: data/ui/pipe_manager_box.ui:458
 msgid "Input Autoloading Presets List"
-msgstr "Liste des préréglages d’entrée auto-chargeant"
+msgstr "Liste des Préréglages d’Entrée Auto-chargeant"
 
 #: data/ui/pipe_manager_box.ui:488
 msgid "Modules"
@@ -1578,7 +1579,7 @@ msgstr "Modules"
 
 #: data/ui/pipe_manager_box.ui:506
 msgid "Modules List"
-msgstr "Liste des modules"
+msgstr "Liste des Modules"
 
 #: data/ui/pipe_manager_box.ui:520
 msgid "Clients"
@@ -1586,11 +1587,11 @@ msgstr "Clients"
 
 #: data/ui/pipe_manager_box.ui:538
 msgid "Clients List"
-msgstr "Liste des clients"
+msgstr "Liste des Clients"
 
 #: data/ui/pipe_manager_box.ui:552
 msgid "Test Signal"
-msgstr "Signal d’essai"
+msgstr "Signal d’Essai"
 
 #: data/ui/pipe_manager_box.ui:557 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
@@ -1611,27 +1612,27 @@ msgstr "Canaux"
 
 #: data/ui/pipe_manager_box.ui:603
 msgid "Both"
-msgstr "Tous les deux"
+msgstr "Tous les Deux"
 
 #: data/ui/pipe_manager_box.ui:607
 msgid "Both Channels"
-msgstr "Les deux canaux"
+msgstr "Les Deux Canaux"
 
 #: data/ui/pipe_manager_box.ui:616
 msgid "Waveform"
-msgstr "Forme d’onde"
+msgstr "Forme d’Onde"
 
 #: data/ui/pipe_manager_box.ui:620
 msgid "Sine Wave"
-msgstr "Onde sinusoïdale"
+msgstr "Onde Sinusoïdale"
 
 #: data/ui/pipe_manager_box.ui:629
 msgid "White Noise"
-msgstr "Bruit blanc"
+msgstr "Bruit Blanc"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr "Recherche rapide"
+msgstr "Recherche Rapide"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
@@ -1639,15 +1640,15 @@ msgstr "Anti-crénelage"
 
 #: data/ui/pitch.ui:58
 msgid "Sequence Length"
-msgstr "Durée de la séquence"
+msgstr "Durée de la Séquence"
 
 #: data/ui/pitch.ui:80
 msgid "Seek Window"
-msgstr "Fenêtre de recherche"
+msgstr "Fenêtre de Recherche"
 
 #: data/ui/pitch.ui:102
 msgid "Overlap Length"
-msgstr "Durée de chevauchement"
+msgstr "Durée de Chevauchement"
 
 #: data/ui/pitch.ui:130 src/tags_plugin_name.cpp:60
 msgid "Pitch"
@@ -1659,11 +1660,11 @@ msgstr "Demi-tons"
 
 #: data/ui/pitch.ui:156
 msgid "Tempo Difference"
-msgstr "Différence de tempo"
+msgstr "Différence de Tempo"
 
 #: data/ui/pitch.ui:178
 msgid "Rate Difference"
-msgstr "Différence de débit"
+msgstr "Différence de Débit"
 
 #: data/ui/plugin_row.ui:50
 msgid "Remove this effect"
@@ -1683,7 +1684,7 @@ msgstr "Afficher/masquer la liste des effets"
 
 #: data/ui/plugins_box.ui:42
 msgid "Add Effect"
-msgstr "Ajouter un effet"
+msgstr "Ajouter un Effet"
 
 #: data/ui/plugins_box.ui:65
 msgid "Go to the previous effect"
@@ -1695,23 +1696,23 @@ msgstr "Aller à l'effet suivant"
 
 #: data/ui/plugins_box.ui:131
 msgid "Used Plugins List"
-msgstr "Liste des greffons utilisés"
+msgstr "Liste des Greffons Utilisés"
 
 #: data/ui/plugins_box.ui:192
 msgid "No Effects"
-msgstr "Aucun effet"
+msgstr "Aucun Effet"
 
 #: data/ui/plugins_box.ui:193
 msgid "Audio Stream Not Modified"
-msgstr "Flux audio non modifié"
+msgstr "Flux Audio Non Modifié"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
-msgstr "Greffon de recherche"
+msgstr "Greffon de Recherche"
 
 #: data/ui/plugins_menu.ui:74
 msgid "Plugins List"
-msgstr "Liste des greffons"
+msgstr "Liste des Greffons"
 
 #: data/ui/preferences_general.ui:5
 msgid "_General"
@@ -1723,11 +1724,11 @@ msgstr "Service"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr "Lancer le service au démarrage du système"
+msgstr "Lancer le Service au Démarrage du Système"
 
 #: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
-msgstr "Arrêter à la fermeture de la fenêtre"
+msgstr "Arrêter à la Fermeture de la Fenêtre"
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
@@ -1735,43 +1736,43 @@ msgstr "Audio"
 
 #: data/ui/preferences_general.ui:42
 msgid "Process All Output Streams"
-msgstr "Traiter tous les flux de sortie"
+msgstr "Traiter Tous les Flux de Sortie"
 
 #: data/ui/preferences_general.ui:54
 msgid "Process All Input Streams"
-msgstr "Traiter tous les flux d’entrée"
+msgstr "Traiter Tous les Flux d’Entrée"
 
 #: data/ui/preferences_general.ui:66
 msgid "Ignore Streams from Monitor of Devices"
-msgstr "Ignorer les flux du moniteur des périphériques"
+msgstr "Ignorer les Flux du Moniteur des Périphériques"
 
 #: data/ui/preferences_general.ui:78
 msgid "Use Cubic Volume"
-msgstr "Utiliser le volume cubique"
+msgstr "Utiliser le Volume Cubique"
 
 #: data/ui/preferences_general.ui:90
 msgid "Inactivity Timeout"
-msgstr "Délai d’inactivité"
+msgstr "Délai d’Inactivité"
 
 #: data/ui/preferences_general.ui:91
 msgid "Input Pipeline"
-msgstr "Pipeline d’entrée"
+msgstr "Pipeline d’Entrée"
 
 #: data/ui/preferences_general.ui:120
 msgid "Update Interval"
-msgstr "Intervalle de mise à jour"
+msgstr "Intervalle de Mise à Jour"
 
 #: data/ui/preferences_general.ui:121
 msgid "Related to Level Meters and Spectrum"
-msgstr "En rapport avec les indicateurs de niveau et du spectre"
+msgstr "En rapport avec les Indicateurs de Niveau et du Spectre"
 
 #: data/ui/preferences_general.ui:143
 msgid "Update Frequency"
-msgstr "Fréquence de mise à jour"
+msgstr "Fréquence de Mise à Jour"
 
 #: data/ui/preferences_general.ui:144
 msgid "Related to LV2 Plugins"
-msgstr "En rapport avec les plugins LV2"
+msgstr "En Rapport avec les Plugins LV2"
 
 #: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
 msgid "Style"
@@ -1779,23 +1780,23 @@ msgstr "Style"
 
 #: data/ui/preferences_general.ui:171
 msgid "Use Dark Theme"
-msgstr "Utiliser le thème sombre"
+msgstr "Utiliser le Thème Sombre"
 
 #: data/ui/preferences_general.ui:183
 msgid "Hide Menus on Outside Clicks"
-msgstr "Masquer les menus en cliquant en dehors"
+msgstr "Masquer les Menus en Cliquant en Dehors"
 
 #: data/ui/preferences_general.ui:197
 msgid "Experimental Features"
-msgstr "Fonctionnalités expérimentales"
+msgstr "Fonctionnalités Expérimentales"
 
 #: data/ui/preferences_general.ui:200
 msgid "Native Plugin Window"
-msgstr "Fenêtre du greffon natif"
+msgstr "Fenêtre du Greffon Natif"
 
 #: data/ui/preferences_general.ui:201
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
-msgstr "Permet d'afficher/masquer la fenêtre du greffon natif"
+msgstr "Permet d'Afficher/Masquer la Fenêtre du Greffon Natif"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
@@ -1803,7 +1804,7 @@ msgstr "_Spectre"
 
 #: data/ui/preferences_spectrum.ui:24
 msgid "Compensating Delay (ms)"
-msgstr ""
+msgstr "Délai de Compensation (ms)"
 
 #: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
@@ -1831,7 +1832,7 @@ msgstr "Taille"
 
 #: data/ui/preferences_spectrum.ui:114
 msgid "Line Width"
-msgstr "Largeur de ligne"
+msgstr "Largeur de Ligne"
 
 #: data/ui/preferences_spectrum.ui:136
 msgid "Fill"
@@ -1839,15 +1840,15 @@ msgstr "Remplir"
 
 #: data/ui/preferences_spectrum.ui:148
 msgid "Show Bars Border"
-msgstr "Afficher les bordures des barres"
+msgstr "Afficher les Bordures des Barres"
 
 #: data/ui/preferences_spectrum.ui:160
 msgid "Rounded Corners"
-msgstr "Coins arrondis"
+msgstr "Coins Arrondis"
 
 #: data/ui/preferences_spectrum.ui:172
 msgid "Dynamic Scale"
-msgstr "Échelle dynamique"
+msgstr "Échelle Dynamique"
 
 #: data/ui/preferences_spectrum.ui:186
 msgid "Color"
@@ -1855,15 +1856,15 @@ msgstr "Couleur"
 
 #: data/ui/preferences_spectrum.ui:189
 msgid "Lines and Bars"
-msgstr "Lignes et barres"
+msgstr "Lignes et Barres"
 
 #: data/ui/preferences_spectrum.ui:207
 msgid "Axis Labels"
-msgstr "Annotation des axes"
+msgstr "Labels de l'Axe"
 
 #: data/ui/preferences_spectrum.ui:227
 msgid "Frequency Range"
-msgstr "Intervalle de fréquences"
+msgstr "Intervalle de Fréquences"
 
 #: data/ui/preferences_spectrum.ui:230
 msgid "Minimum"
@@ -1912,7 +1913,7 @@ msgstr "Local"
 
 #: data/ui/presets_menu.ui:48
 msgid "New Preset Name"
-msgstr "Nouveau nom de préréglage"
+msgstr "Nouveau Nom de Préréglage"
 
 #: data/ui/presets_menu.ui:56
 msgid "Create a new preset"
@@ -1924,11 +1925,11 @@ msgstr "Importer un préréglage à partir du stockage local"
 
 #: data/ui/presets_menu.ui:86
 msgid "Search Local Preset"
-msgstr "Rechercher un préréglage local"
+msgstr "Rechercher un Préréglage Local"
 
 #: data/ui/presets_menu.ui:147
 msgid "Local Presets List"
-msgstr "Liste des préréglages locaux"
+msgstr "Liste des Préréglages Locaux"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
@@ -1936,15 +1937,15 @@ msgstr "Communité"
 
 #: data/ui/presets_menu.ui:208
 msgid "Search Community Preset"
-msgstr "Rechercher un préréglage de la communauté"
+msgstr "Rechercher un Préréglage de la Communauté"
 
 #: data/ui/presets_menu.ui:271
 msgid "Community Presets List"
-msgstr "Liste des préréglages de la communauté"
+msgstr "Liste des Préréglages de la Communauté"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr "Aucun préréglage communautaire n'est installé"
+msgstr "Aucun Préréglage Communautaire n'est Installé"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
@@ -1970,7 +1971,7 @@ msgstr "Atténuation des Hautes Fréquences"
 # Taking lingual shortcuts to squeeze it in the text box
 #: data/ui/reverb.ui:72
 msgid "Room Size"
-msgstr "Taille de la salle"
+msgstr "Taille de la Salle"
 
 #: data/ui/reverb.ui:82
 msgid "Small"
@@ -2043,11 +2044,11 @@ msgstr "Grande Salle Occupée"
 
 #: data/ui/rnnoise.ui:31
 msgid "Import Model"
-msgstr "Importer un modèle"
+msgstr "Importer un Modèle"
 
 #: data/ui/rnnoise.ui:47 data/ui/speex.ui:59
 msgid "Voice Detection"
-msgstr "Détection de la voix"
+msgstr "Détection de la Voix"
 
 #: data/ui/rnnoise.ui:151
 msgid "Models"
@@ -2057,31 +2058,31 @@ msgstr "Modèles"
 #: data/ui/rnnoise.ui:177 src/rnnoise_ui.cpp:121 src/rnnoise_ui.cpp:298
 #: src/rnnoise_ui.cpp:375
 msgid "Standard Model"
-msgstr "Modèle standard"
+msgstr "Modèle Standard"
 
 #: data/ui/rnnoise.ui:204
 msgid "RNNoise Models List"
-msgstr "Liste des modèles RNNoise"
+msgstr "Liste des Modèles RNNoise"
 
 #: data/ui/rnnoise.ui:228
 msgid "Model Not Loaded"
-msgstr "Modèle non chargé"
+msgstr "Modèle Non Chargé"
 
 #: data/ui/rnnoise.ui:234
 msgid "Active Model"
-msgstr "Modèle actif"
+msgstr "Modèle Actif"
 
 #: data/ui/rnnoise.ui:242
 msgid "Standard RNNoise Model"
-msgstr "Modèle standard RNNoise"
+msgstr "Modèle Standard RNNoise"
 
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
-msgstr "Vue d’ensemble"
+msgstr "Vue d’Ensemble"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr "Afficher l'aide"
+msgstr "Afficher l'Aide"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2089,7 +2090,7 @@ msgstr "Plein écran/Restaurer à partir du plein écran"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
-msgstr "Fermer la fenêtre"
+msgstr "Fermer la Fenêtre"
 
 #: data/ui/shortcuts.ui:37
 msgid "Quit Easy Effects"
@@ -2101,7 +2102,7 @@ msgstr "Débruiter"
 
 #: data/ui/speex.ui:46
 msgid "Automatic Gain Control"
-msgstr "Contrôle automatique du gain"
+msgstr "Contrôle Automatique du Gain"
 
 #: data/ui/speex.ui:72
 msgid "Dereverberation"
@@ -2109,7 +2110,7 @@ msgstr "Dé-réverbération"
 
 #: data/ui/speex.ui:91
 msgid "Voice Activity Probability"
-msgstr "Probabilité d'activité vocale"
+msgstr "Probabilité d'Activité Vocale"
 
 #: data/ui/speex.ui:95
 msgid "Start"
@@ -2121,7 +2122,7 @@ msgstr "Continuer"
 
 #: data/ui/speex.ui:141
 msgid "Noise Suppression"
-msgstr "Suppression du bruit"
+msgstr "Suppression du Bruit"
 
 #: data/ui/speex.ui:145
 msgid "Level"
@@ -2129,15 +2130,15 @@ msgstr "Niveau"
 
 #: data/ui/stereo_tools.ui:78
 msgid "Input Balance"
-msgstr "Balance d’entrée"
+msgstr "Balance d’Entrée"
 
 #: data/ui/stereo_tools.ui:87
 msgid "Softclip"
-msgstr "Écrêtage doux"
+msgstr "Écrêtage Doux"
 
 #: data/ui/stereo_tools.ui:114
 msgid "Softclip Level"
-msgstr "Niveau de l’écrêtage"
+msgstr "Niveau de l’Écrêtage"
 
 #: data/ui/stereo_tools.ui:126
 msgid "Stereo Matrix"
@@ -2145,31 +2146,31 @@ msgstr "Matrice Stéréo"
 
 #: data/ui/stereo_tools.ui:138
 msgid "LR > LR (Stereo Default)"
-msgstr "GD > GD (Stéréo par défaut)"
+msgstr "GD > GD (Stéréo par Défaut)"
 
 #: data/ui/stereo_tools.ui:139
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr "GD > M (Stéréo vers milieu)"
+msgstr "GD > M (Stéréo vers Milieu)"
 
 #: data/ui/stereo_tools.ui:140
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr "M > GD (Milieu vers stéréo)"
+msgstr "M > GD (Milieu vers Stéréo)"
 
 #: data/ui/stereo_tools.ui:141
 msgid "LR > LL (Mono Left Channel)"
-msgstr "GD > GG (Canal gauche mono)"
+msgstr "GD > GG (Canal Gauche Mono)"
 
 #: data/ui/stereo_tools.ui:142
 msgid "LR > RR (Mono Right Channel)"
-msgstr "GD > DD (Canal droit mono)"
+msgstr "GD > DD (Canal Droit Mono)"
 
 #: data/ui/stereo_tools.ui:143
 msgid "LR > L+R (Mono Sum L+R)"
-msgstr "GD > G+D (Somme G+D vers mono)"
+msgstr "GD > G+D (Somme G+D vers Mono)"
 
 #: data/ui/stereo_tools.ui:144
 msgid "LR > RL (Stereo Flip Channels)"
-msgstr "GD > DG (Inversement des canaux stéréo)"
+msgstr "GD > DG (Inversement des Canaux Stéréo)"
 
 #: data/ui/stereo_tools.ui:149
 msgid "Stereo Mode"
@@ -2189,7 +2190,7 @@ msgstr "Niveau Central"
 
 #: data/ui/stereo_tools.ui:339
 msgid "Middle Panorama"
-msgstr "Panorama central"
+msgstr "Panorama Central"
 
 #: data/ui/stereo_tools.ui:417
 msgid "Output Balance"
@@ -2237,7 +2238,7 @@ msgstr "Inconnu"
 
 #: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
-msgstr "Nom indéterminé - ID du processus "
+msgstr "Nom Indéterminé - ID du Processus "
 
 #: src/app_info.cpp:292
 msgid "channels"
@@ -2291,23 +2292,23 @@ msgstr "_PipeWire"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "The File Is Not Regular"
-msgstr "Le fichier est irrégulier"
+msgstr "Le Fichier Est Irrégulier"
 
 #: src/convolver_menu_impulses.cpp:130
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr "Le fichier d’impulsion peut être corrompu ou non pris en charge"
+msgstr "Le Fichier d’Impulsion Peut Être Corrompu ou Non Supporté"
 
 #: src/convolver_menu_impulses.cpp:135
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr "Seuls les fichiers d’impulsion stéréo sont pris en charge"
+msgstr "Seuls les Fichiers d’Impulsion Stéréo Sont Supportés"
 
 #: src/convolver_menu_impulses.cpp:145
 msgid "Impulse File Not Imported"
-msgstr "Fichier d’impulsion non importé"
+msgstr "Fichier d’Impulsion Non Importé"
 
 #: src/convolver_menu_impulses.cpp:153
 msgid "Import Impulse File"
-msgstr "Importer un fichier d’impulsion"
+msgstr "Importer un Fichier d’Impulsion"
 
 #: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:522
 #: src/equalizer_ui.cpp:854 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
@@ -2316,23 +2317,23 @@ msgstr "Ouvrir"
 
 #: src/convolver_menu_impulses.cpp:166
 msgid "Impulse Response"
-msgstr "Réponse impulsionnelle"
+msgstr "Réponse Impulsionnelle"
 
 #: src/convolver_menu_impulses.cpp:293
 msgid "Load Impulse"
-msgstr "Charger une impulsion"
+msgstr "Charger une Impulsion"
 
 #: src/convolver_menu_impulses.cpp:296
 msgid "Remove Impulse"
-msgstr "Supprimer l’impulsion"
+msgstr "Supprimer l’Impulsion"
 
 #: src/convolver_ui.cpp:382
 msgid "No Impulse File Loaded"
-msgstr "Aucun fichier d’impulsion chargé"
+msgstr "Aucun Fichier d’Impulsion Chargé"
 
 #: src/convolver_ui.cpp:408
 msgid "Failed To Load The Impulse File"
-msgstr "Impossible de charger le fichier d’impulsion"
+msgstr "Impossible de Charger le Fichier d’Impulsion"
 
 #: src/effects_box.cpp:358 src/plugins_box.cpp:807
 msgid "Recorders"
@@ -2348,7 +2349,7 @@ msgstr "Effets"
 
 #: src/equalizer_ui.cpp:521
 msgid "Import APO Preset File"
-msgstr "Importer un fichier de préréglage APO"
+msgstr "Importer un Fichier de Préréglage APO"
 
 #: src/equalizer_ui.cpp:529
 msgid "APO Presets"
@@ -2360,7 +2361,7 @@ msgid ""
 "Content."
 msgstr ""
 "Le préréglage APO n’a pas été chargé. Le format du fichier peut ne pas être "
-"pris en charge. Veuillez vérifier son contenu."
+"supporté. Veuillez vérifier son contenu."
 
 #: src/equalizer_ui.cpp:616
 msgid "Split channels not yet supported when exporting APO presets."
@@ -2370,7 +2371,7 @@ msgstr ""
 
 #: src/equalizer_ui.cpp:624
 msgid "Export EqualizerAPO Preset File"
-msgstr "Exporter le fichier de préréglage de l'ÉgaliseurAPO"
+msgstr "Exporter le Fichier de Préréglage de l'ÉgaliseurAPO"
 
 #: src/equalizer_ui.cpp:625
 msgid "Save"
@@ -2382,7 +2383,7 @@ msgstr "Préréglages de l'ÉgaliseurAPO"
 
 #: src/equalizer_ui.cpp:853
 msgid "Import GraphicEQ Preset File"
-msgstr "Importer un fichier de préréglage GraphicEQ"
+msgstr "Importer un Fichier de Préréglage GraphicEQ"
 
 #: src/equalizer_ui.cpp:861
 msgid "GraphicEQ Presets"
@@ -2394,11 +2395,11 @@ msgid ""
 "Its Content."
 msgstr ""
 "Le préréglage GraphicEQ n’a pas été chargé. Le format du fichier peut ne pas "
-"être pris en charge. Veuillez vérifier son contenu."
+"être supporté. Veuillez vérifier son contenu."
 
 #: src/pipe_manager_box.cpp:355
 msgid "Remove Autoloading Preset"
-msgstr "Supprimer le préréglage du chargement automatique"
+msgstr "Supprimer le Préréglage du Chargement Automatique"
 
 #: src/plugin_base.cpp:233
 msgid "Output Level Meter"
@@ -2410,7 +2411,7 @@ msgstr "Supprimer"
 
 #: src/plugins_box.cpp:828
 msgid "Output Device"
-msgstr "Périphérique de sortie"
+msgstr "Périphérique de Sortie"
 
 #: src/plugins_menu.cpp:238
 msgid "Add"
@@ -2419,7 +2420,7 @@ msgstr "Ajouter"
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
 msgid "Community Preset"
-msgstr "Préréglage de la communauté"
+msgstr "Préréglage de la Communauté"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
@@ -2429,32 +2430,32 @@ msgstr "Paquet"
 #: src/presets_manager.cpp:1163 src/presets_manager.cpp:1170
 #: src/presets_manager.cpp:1179 src/presets_manager.cpp:1187
 msgid "Preset Not Loaded Correctly"
-msgstr "Le préréglage n'a pas été chargé correctement"
+msgstr "Le Préréglage N'a Pas Été Chargé Correctement"
 
 #: src/presets_manager.cpp:1147
 msgid "Wrong Format in Excluded Apps List"
-msgstr "Format incorrect dans la liste des applications exclues"
+msgstr "Format Incorrect dans la Liste des Applications Exclues"
 
 #: src/presets_manager.cpp:1154
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
-"Erreur générique lors du chargement de la liste des applications exclues"
+"Erreur Générique Lors du Chargement de la Liste des Applications Exclues"
 
 #: src/presets_manager.cpp:1163
 msgid "Wrong Format in Effects List"
-msgstr "Format incorrect dans la liste des effets"
+msgstr "Format Incorrect dans la Liste des Effets"
 
 #: src/presets_manager.cpp:1170
 msgid "Generic Error While Loading Effects List"
-msgstr "Erreur générique lors du chargement de la liste des effets"
+msgstr "Erreur Générique Lors du Chargement de la Liste des Effets"
 
 #: src/presets_manager.cpp:1180
 msgid "One or More Parameters Have a Wrong Format"
-msgstr "Un ou plusieurs paramètres ont un format incorrect"
+msgstr "Un ou Plusieurs Paramètres Ont un Format Incorrect"
 
 #: src/presets_manager.cpp:1188
 msgid "Generic Error While Loading The Effect"
-msgstr "Erreur générique lors du chargement de l'effet"
+msgstr "Erreur Générique Lors du Chargement de l'Effet"
 
 #: src/presets_menu.cpp:398
 msgid "Save?"
@@ -2466,15 +2467,15 @@ msgstr "Effacer ?"
 
 #: src/presets_menu.cpp:558
 msgid "No Preset Loaded"
-msgstr "Pas de préréglage chargé"
+msgstr "Pas de Préréglage Chargé"
 
 #: src/presets_menu.cpp:573
 msgid "Last Local Preset Loaded"
-msgstr "Dernier préréglage local chargé"
+msgstr "Dernier Préréglage Local Chargé"
 
 #: src/presets_menu.cpp:573
 msgid "Last Community Preset Loaded"
-msgstr "Dernier préréglage de la communauté chargé"
+msgstr "Dernier Préréglage de la Communauté Chargé"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
@@ -2482,11 +2483,11 @@ msgid ""
 "Standard Model."
 msgstr ""
 "Le modèle sélectionné n’a pas été chargé. Son format n’est peut-être pas "
-"pris en charge. Retour au modèle standard."
+"supporté. Retour au modèle standard."
 
 #: src/rnnoise_ui.cpp:159
 msgid "Import Model File"
-msgstr "Importer un fichier modèle"
+msgstr "Importer un Fichier Modèle"
 
 #: src/rnnoise_ui.cpp:172
 msgid "RNNoise Models"
@@ -2494,11 +2495,11 @@ msgstr "Modèles RNNoise"
 
 #: src/tags_plugin_name.cpp:39
 msgid "Bass Enhancer"
-msgstr "Amélioration des basses"
+msgstr "Amélioration des Basses"
 
 #: src/tags_plugin_name.cpp:40
 msgid "Bass Loudness"
-msgstr "Sonie des basses"
+msgstr "Sonie des Basses"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Convolver"
@@ -2506,7 +2507,7 @@ msgstr "Convolueur"
 
 #: src/tags_plugin_name.cpp:43
 msgid "Crossfeed"
-msgstr "Flux croisé"
+msgstr "Flux Croisé"
 
 #: src/tags_plugin_name.cpp:44
 msgid "Crystalizer"
@@ -2522,7 +2523,7 @@ msgstr "Déesseur"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Echo Canceller"
-msgstr "Annulateur d’écho"
+msgstr "Annulateur d’Écho"
 
 #: src/tags_plugin_name.cpp:49
 msgid "Equalizer"
@@ -2534,7 +2535,7 @@ msgstr "Excitateur"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Level Meter"
-msgstr "Indicateur de niveau"
+msgstr "Indicateur de Niveau"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Limiter"
@@ -2546,11 +2547,11 @@ msgstr "Maximiseur"
 
 #: src/tags_plugin_name.cpp:58
 msgid "Multiband Compressor"
-msgstr "Compresseur multibande"
+msgstr "Compresseur Multibande"
 
 #: src/tags_plugin_name.cpp:59
 msgid "Multiband Gate"
-msgstr "Porte multibande"
+msgstr "Porte Multibande"
 
 #: src/tags_plugin_name.cpp:61
 msgid "Reverberation"
@@ -2558,15 +2559,15 @@ msgstr "Réverbération"
 
 #: src/tags_plugin_name.cpp:62
 msgid "Noise Reduction"
-msgstr "Réduction du bruit"
+msgstr "Réduction du Bruit"
 
 #: src/tags_plugin_name.cpp:63
 msgid "Speech Processor"
-msgstr "Processeur vocal"
+msgstr "Processeur Vocal"
 
 #: src/tags_plugin_name.cpp:64
 msgid "Stereo Tools"
-msgstr "Outils stéréo"
+msgstr "Outils Stéréo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
@@ -2599,8 +2600,8 @@ msgid ""
 msgstr ""
 "L'effet {} a été désactivé lorsque Easy Effects a été compilé. C'est peut-"
 "être parce que le logiciel requis pour cet effet, \"{}\", n'était pas "
-"disponible. Envisagez d'utiliser le paquet Easy Effects Flatpak ou de créer "
-"votre propre paquet Easy Effects."
+"disponible. Envisagez d'utiliser le paquet Easy Effects Flatpak ou de "
+"construire votre propre paquet Easy Effects."
 
 #: src/ui_helpers.cpp:149 src/ui_helpers.cpp:171
 msgid "-inf"
