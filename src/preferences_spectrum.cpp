@@ -49,7 +49,7 @@ struct _PreferencesSpectrum {
 
   GtkDropDown* type;
 
-  GtkSpinButton *n_points, *height, *line_width, *minimum_frequency, *maximum_frequency;
+  GtkSpinButton *n_points, *height, *line_width, *minimum_frequency, *maximum_frequency, *avsync_delay;
 
   GSettings* settings;
 
@@ -119,6 +119,7 @@ void preferences_spectrum_class_init(PreferencesSpectrumClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, axis_color_button);
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, minimum_frequency);
   gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, maximum_frequency);
+  gtk_widget_class_bind_template_child(widget_class, PreferencesSpectrum, avsync_delay);
 
   gtk_widget_class_bind_template_callback(widget_class, on_spectrum_color_set);
   gtk_widget_class_bind_template_callback(widget_class, on_spectrum_axis_color_set);
@@ -192,9 +193,9 @@ void preferences_spectrum_init(PreferencesSpectrum* self) {
   // spectrum section gsettings bindings
 
   gsettings_bind_widgets<"show", "fill", "rounded-corners", "show-bar-border", "dynamic-y-scale", "n-points", "height",
-                         "line-width", "minimum-frequency", "maximum-frequency">(
+                         "line-width", "minimum-frequency", "maximum-frequency", "avsync-delay">(
       self->settings, self->show, self->fill, self->rounded_corners, self->show_bar_border, self->dynamic_y_scale,
-      self->n_points, self->height, self->line_width, self->minimum_frequency, self->maximum_frequency);
+      self->n_points, self->height, self->line_width, self->minimum_frequency, self->maximum_frequency, self->avsync_delay);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "type", self->type);
 
