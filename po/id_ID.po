@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-31 04:34+0000\n"
+"POT-Creation-Date: 2024-09-05 01:36+0000\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1926,7 +1926,7 @@ msgstr "Frekuensi"
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
 msgid "Style"
 msgstr "Gaya"
 
@@ -1956,71 +1956,75 @@ msgstr ""
 msgid "_Spectrum"
 msgstr "_Spektrum"
 
-#: data/ui/preferences_spectrum.ui:29
+#: data/ui/preferences_spectrum.ui:24
+msgid "Compensating Delay (ms)"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
 msgstr "Rupa"
 
-#: data/ui/preferences_spectrum.ui:37
+#: data/ui/preferences_spectrum.ui:58
 msgid "Bars"
 msgstr "Batang"
 
-#: data/ui/preferences_spectrum.ui:38
+#: data/ui/preferences_spectrum.ui:59
 msgid "Lines"
 msgstr "Garis"
 
-#: data/ui/preferences_spectrum.ui:39
+#: data/ui/preferences_spectrum.ui:60
 msgid "Dots"
 msgstr "Titik"
 
-#: data/ui/preferences_spectrum.ui:50
+#: data/ui/preferences_spectrum.ui:71
 msgid "Points"
 msgstr "Titik"
 
-#: data/ui/preferences_spectrum.ui:71
+#: data/ui/preferences_spectrum.ui:92
 msgid "Height"
 msgstr "Tinggi"
 
-#: data/ui/preferences_spectrum.ui:93
+#: data/ui/preferences_spectrum.ui:114
 msgid "Line Width"
 msgstr "Lebar Garis"
 
-#: data/ui/preferences_spectrum.ui:115
+#: data/ui/preferences_spectrum.ui:136
 msgid "Fill"
 msgstr "Spektrum Batangan"
 
-#: data/ui/preferences_spectrum.ui:127
+#: data/ui/preferences_spectrum.ui:148
 msgid "Show Bars Border"
 msgstr "Tampilkan batar bar"
 
-#: data/ui/preferences_spectrum.ui:139
+#: data/ui/preferences_spectrum.ui:160
 msgid "Rounded Corners"
 msgstr "Sudut Bulat"
 
-#: data/ui/preferences_spectrum.ui:151
+#: data/ui/preferences_spectrum.ui:172
 msgid "Dynamic Scale"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:165
+#: data/ui/preferences_spectrum.ui:186
 msgid "Color"
 msgstr "Warna"
 
-#: data/ui/preferences_spectrum.ui:168
+#: data/ui/preferences_spectrum.ui:189
 msgid "Lines and Bars"
 msgstr "Garis dan Bar"
 
-#: data/ui/preferences_spectrum.ui:186
+#: data/ui/preferences_spectrum.ui:207
 msgid "Axis Labels"
 msgstr "Label Sumbu"
 
-#: data/ui/preferences_spectrum.ui:206
+#: data/ui/preferences_spectrum.ui:227
 msgid "Frequency Range"
 msgstr "Rentang Frekuensi"
 
-#: data/ui/preferences_spectrum.ui:209
+#: data/ui/preferences_spectrum.ui:230
 msgid "Minimum"
 msgstr "Minimum"
 
-#: data/ui/preferences_spectrum.ui:231
+#: data/ui/preferences_spectrum.ui:252
 msgid "Maximum"
 msgstr "Maksimal"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-31 04:34+0000\n"
+"POT-Creation-Date: 2024-09-05 01:36+0000\n"
 "PO-Revision-Date: 2024-09-02 09:09+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1773,7 +1773,7 @@ msgstr "Fréquence de mise à jour"
 msgid "Related to LV2 Plugins"
 msgstr "En rapport avec les plugins LV2"
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
 msgid "Style"
 msgstr "Style"
 
@@ -1801,71 +1801,75 @@ msgstr "Permet d'afficher/masquer la fenêtre du greffon natif"
 msgid "_Spectrum"
 msgstr "_Spectre"
 
-#: data/ui/preferences_spectrum.ui:29
+#: data/ui/preferences_spectrum.ui:24
+msgid "Compensating Delay (ms)"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
 msgstr "Forme"
 
-#: data/ui/preferences_spectrum.ui:37
+#: data/ui/preferences_spectrum.ui:58
 msgid "Bars"
 msgstr "Barres"
 
-#: data/ui/preferences_spectrum.ui:38
+#: data/ui/preferences_spectrum.ui:59
 msgid "Lines"
 msgstr "Lignes"
 
-#: data/ui/preferences_spectrum.ui:39
+#: data/ui/preferences_spectrum.ui:60
 msgid "Dots"
 msgstr "Points"
 
-#: data/ui/preferences_spectrum.ui:50
+#: data/ui/preferences_spectrum.ui:71
 msgid "Points"
 msgstr "Points"
 
-#: data/ui/preferences_spectrum.ui:71
+#: data/ui/preferences_spectrum.ui:92
 msgid "Height"
 msgstr "Taille"
 
-#: data/ui/preferences_spectrum.ui:93
+#: data/ui/preferences_spectrum.ui:114
 msgid "Line Width"
 msgstr "Largeur de ligne"
 
-#: data/ui/preferences_spectrum.ui:115
+#: data/ui/preferences_spectrum.ui:136
 msgid "Fill"
 msgstr "Remplir"
 
-#: data/ui/preferences_spectrum.ui:127
+#: data/ui/preferences_spectrum.ui:148
 msgid "Show Bars Border"
 msgstr "Afficher les bordures des barres"
 
-#: data/ui/preferences_spectrum.ui:139
+#: data/ui/preferences_spectrum.ui:160
 msgid "Rounded Corners"
 msgstr "Coins arrondis"
 
-#: data/ui/preferences_spectrum.ui:151
+#: data/ui/preferences_spectrum.ui:172
 msgid "Dynamic Scale"
 msgstr "Échelle dynamique"
 
-#: data/ui/preferences_spectrum.ui:165
+#: data/ui/preferences_spectrum.ui:186
 msgid "Color"
 msgstr "Couleur"
 
-#: data/ui/preferences_spectrum.ui:168
+#: data/ui/preferences_spectrum.ui:189
 msgid "Lines and Bars"
 msgstr "Lignes et barres"
 
-#: data/ui/preferences_spectrum.ui:186
+#: data/ui/preferences_spectrum.ui:207
 msgid "Axis Labels"
 msgstr "Annotation des axes"
 
-#: data/ui/preferences_spectrum.ui:206
+#: data/ui/preferences_spectrum.ui:227
 msgid "Frequency Range"
 msgstr "Intervalle de fréquences"
 
-#: data/ui/preferences_spectrum.ui:209
+#: data/ui/preferences_spectrum.ui:230
 msgid "Minimum"
 msgstr "Minimum"
 
-#: data/ui/preferences_spectrum.ui:231
+#: data/ui/preferences_spectrum.ui:252
 msgid "Maximum"
 msgstr "Maximum"
 

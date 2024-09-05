@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-31 04:34+0000\n"
+"POT-Creation-Date: 2024-09-05 01:36+0000\n"
 "PO-Revision-Date: 2024-06-22 08:09+0000\n"
 "Last-Translator: Jakub Pavlů <jakubpavlu4@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1820,7 +1820,7 @@ msgstr "Kmitočet"
 msgid "Related to LV2 Plugins"
 msgstr "Související se zásuvnými moduly LV2"
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
 msgid "Style"
 msgstr "Styl"
 
@@ -1850,71 +1850,75 @@ msgstr "Umožňuje zobrazit/skrýt okno nativního pluginu"
 msgid "_Spectrum"
 msgstr "_Spektrum"
 
-#: data/ui/preferences_spectrum.ui:29
+#: data/ui/preferences_spectrum.ui:24
+msgid "Compensating Delay (ms)"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
 msgstr "Tvar"
 
-#: data/ui/preferences_spectrum.ui:37
+#: data/ui/preferences_spectrum.ui:58
 msgid "Bars"
 msgstr "Pruhy"
 
-#: data/ui/preferences_spectrum.ui:38
+#: data/ui/preferences_spectrum.ui:59
 msgid "Lines"
 msgstr "Čáry"
 
-#: data/ui/preferences_spectrum.ui:39
+#: data/ui/preferences_spectrum.ui:60
 msgid "Dots"
 msgstr "Tečky"
 
-#: data/ui/preferences_spectrum.ui:50
+#: data/ui/preferences_spectrum.ui:71
 msgid "Points"
 msgstr "Body"
 
-#: data/ui/preferences_spectrum.ui:71
+#: data/ui/preferences_spectrum.ui:92
 msgid "Height"
 msgstr "Výška"
 
-#: data/ui/preferences_spectrum.ui:93
+#: data/ui/preferences_spectrum.ui:114
 msgid "Line Width"
 msgstr "Šířka čáry"
 
-#: data/ui/preferences_spectrum.ui:115
+#: data/ui/preferences_spectrum.ui:136
 msgid "Fill"
 msgstr "Výplň"
 
-#: data/ui/preferences_spectrum.ui:127
+#: data/ui/preferences_spectrum.ui:148
 msgid "Show Bars Border"
 msgstr "Ukázat hranici pásem"
 
-#: data/ui/preferences_spectrum.ui:139
+#: data/ui/preferences_spectrum.ui:160
 msgid "Rounded Corners"
 msgstr "Zaoblené rohy"
 
-#: data/ui/preferences_spectrum.ui:151
+#: data/ui/preferences_spectrum.ui:172
 msgid "Dynamic Scale"
 msgstr "Dynamická stupnice"
 
-#: data/ui/preferences_spectrum.ui:165
+#: data/ui/preferences_spectrum.ui:186
 msgid "Color"
 msgstr "Barva"
 
-#: data/ui/preferences_spectrum.ui:168
+#: data/ui/preferences_spectrum.ui:189
 msgid "Lines and Bars"
 msgstr "čáry a pásma"
 
-#: data/ui/preferences_spectrum.ui:186
+#: data/ui/preferences_spectrum.ui:207
 msgid "Axis Labels"
 msgstr "štítky os"
 
-#: data/ui/preferences_spectrum.ui:206
+#: data/ui/preferences_spectrum.ui:227
 msgid "Frequency Range"
 msgstr "Rozsah frekvence"
 
-#: data/ui/preferences_spectrum.ui:209
+#: data/ui/preferences_spectrum.ui:230
 msgid "Minimum"
 msgstr "Minimum"
 
-#: data/ui/preferences_spectrum.ui:231
+#: data/ui/preferences_spectrum.ui:252
 msgid "Maximum"
 msgstr "Nejvýše"
 
