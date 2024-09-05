@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-31 04:34+0000\n"
+"POT-Creation-Date: 2024-09-05 01:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1764,7 +1764,7 @@ msgstr ""
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:26
+#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
 msgid "Style"
 msgstr ""
 
@@ -1792,71 +1792,75 @@ msgstr ""
 msgid "_Spectrum"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:29
-msgid "Shape"
-msgstr ""
-
-#: data/ui/preferences_spectrum.ui:37
-msgid "Bars"
-msgstr ""
-
-#: data/ui/preferences_spectrum.ui:38
-msgid "Lines"
-msgstr ""
-
-#: data/ui/preferences_spectrum.ui:39
-msgid "Dots"
+#: data/ui/preferences_spectrum.ui:24
+msgid "Compensating Delay (ms)"
 msgstr ""
 
 #: data/ui/preferences_spectrum.ui:50
-msgid "Points"
+msgid "Shape"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:58
+msgid "Bars"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:59
+msgid "Lines"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:60
+msgid "Dots"
 msgstr ""
 
 #: data/ui/preferences_spectrum.ui:71
+msgid "Points"
+msgstr ""
+
+#: data/ui/preferences_spectrum.ui:92
 msgid "Height"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:93
+#: data/ui/preferences_spectrum.ui:114
 msgid "Line Width"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:115
+#: data/ui/preferences_spectrum.ui:136
 msgid "Fill"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:127
+#: data/ui/preferences_spectrum.ui:148
 msgid "Show Bars Border"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:139
+#: data/ui/preferences_spectrum.ui:160
 msgid "Rounded Corners"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:151
+#: data/ui/preferences_spectrum.ui:172
 msgid "Dynamic Scale"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:165
+#: data/ui/preferences_spectrum.ui:186
 msgid "Color"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:168
+#: data/ui/preferences_spectrum.ui:189
 msgid "Lines and Bars"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:186
+#: data/ui/preferences_spectrum.ui:207
 msgid "Axis Labels"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:206
+#: data/ui/preferences_spectrum.ui:227
 msgid "Frequency Range"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:209
+#: data/ui/preferences_spectrum.ui:230
 msgid "Minimum"
 msgstr ""
 
-#: data/ui/preferences_spectrum.ui:231
+#: data/ui/preferences_spectrum.ui:252
 msgid "Maximum"
 msgstr ""
 
