@@ -292,13 +292,11 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       uint64_t serial = SPA_ID_INVALID;
 
-      util::str_to_num(target_object, serial);
-
-      if (target_object != pm->input_device.name && target_object != pm->ee_source_node.name) {
-        ignore_input_stream = true;
-      }
-
-      if (serial != SPA_ID_INVALID && (serial != pm->input_device.serial && serial != pm->ee_source_node.serial)) {
+      if (util::str_to_num(target_object, serial)) {
+        if (serial != SPA_ID_INVALID && (serial != pm->input_device.serial && serial != pm->ee_source_node.serial)) {
+          ignore_input_stream = true;
+        }
+      } else if (target_object != pm->input_device.name && target_object != pm->ee_source_node.name) {
         ignore_input_stream = true;
       }
 
@@ -323,11 +321,11 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       util::str_to_num(target_object, serial);
 
-      if (target_object != pm->output_device.name && target_object != pm->ee_sink_node.name) {
-        ignore_output_stream = true;
-      }
-
-      if (serial != SPA_ID_INVALID && (serial != pm->output_device.serial && serial != pm->ee_sink_node.serial)) {
+      if (util::str_to_num(target_object, serial)) {
+        if (serial != SPA_ID_INVALID && (serial != pm->output_device.serial && serial != pm->ee_sink_node.serial)) {
+          ignore_output_stream = true;
+        }
+      } else if (target_object != pm->output_device.name && target_object != pm->ee_sink_node.name) {
         ignore_output_stream = true;
       }
 
