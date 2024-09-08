@@ -18,9 +18,6 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 FormCard.AbstractFormDelegate {
-    // Layout.fillWidth: true
-    // spacing: Kirigami.Units.smallSpacing
-
     id: control
 
     property int decimals: 2
