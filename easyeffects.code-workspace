@@ -12,7 +12,9 @@
       "--cpp_std=c++17"
     ],
     "editor.formatOnSave": true,
-    "editor.rulers": [120],
+    "editor.rulers": [
+      120
+    ],
     "files.associations": {
       "*.page": "xml",
       "*.tcc": "cpp",
@@ -92,6 +94,7 @@
     "prettier.enable": false,
     "xml.format.preservedNewlines": 1,
     "xml.format.enabled": true,
-    "xml.format.maxLineWidth": 0
+    "xml.format.maxLineWidth": 0,
+    "mesonbuild.selectRootDir": false
   }
 }

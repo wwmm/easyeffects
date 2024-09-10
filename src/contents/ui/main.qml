@@ -153,7 +153,7 @@ Kirigami.ApplicationWindow {
                     Kirigami.Action {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         icon.name: "audio-speakers-symbolic"
-                        text: "Output"
+                        text: i18n("Output")
                         checkable: true
                         checked: EEdb.visiblePage === 0
                         onTriggered: {
@@ -168,7 +168,7 @@ Kirigami.ApplicationWindow {
                     Kirigami.Action {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         icon.name: "audio-input-microphone-symbolic"
-                        text: "Input"
+                        text: i18n("Input")
                         checkable: true
                         checked: EEdb.visiblePage === 1
                         onTriggered: {
@@ -183,7 +183,7 @@ Kirigami.ApplicationWindow {
                     Kirigami.Action {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         icon.name: "network-server-symbolic"
-                        text: "PipeWire"
+                        text: i18n("PipeWire")
                         checkable: true
                         checked: EEdb.visiblePage === 2
                         onTriggered: {

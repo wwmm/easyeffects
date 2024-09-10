@@ -298,7 +298,7 @@ Kirigami.Page {
                 actions: [
                     Kirigami.Action {
                         icon.name: pageType === 0 ? "multimedia-player-symbolic" : "media-record-symbolic"
-                        text: "Players"
+                        text: i18n("Players")
                         checkable: true
                         checked: streamDB.visiblePage === 0
                         onTriggered: {
@@ -308,7 +308,7 @@ Kirigami.Page {
                     },
                     Kirigami.Action {
                         icon.name: "emblem-music-symbolic"
-                        text: "Effects"
+                        text: i18n("Effects")
                         checkable: true
                         checked: streamDB.visiblePage === 1
                         onTriggered: {

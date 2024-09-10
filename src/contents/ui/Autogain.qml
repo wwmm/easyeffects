@@ -6,6 +6,20 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 Kirigami.ScrollablePage {
+    // footer: RowLayout {
+    //     Layout.fillWidth: true
+    //     Controls.Label {
+    //         Layout.alignment: Qt.AlignLeft
+    //         font.bold: true
+    //         text: i18n("Using") + EEtagsPluginPackage.ebur128
+    //     }
+    //     Controls.Button {
+    //         Layout.alignment: Qt.AlignRight
+    //         text: i18n("Reset")
+    //         onClicked: showPassiveNotification("Reset")
+    //     }
+    // }
+
     id: autogainPage
 
     property var pluginDB
@@ -164,19 +178,22 @@ Kirigami.ScrollablePage {
 
     }
 
-    footer: RowLayout {
-        Layout.fillWidth: true
+    footer: Controls.ToolBar {
+        RowLayout {
+            anchors.fill: parent
 
-        Controls.Label {
-            Layout.alignment: Qt.AlignLeft
-            font.bold: true
-            text: i18n("Using") + EEtagsPluginPackage.ebur128
-        }
+            Controls.Label {
+                text: i18n("Using") + EEtagsPluginPackage.ebur128
+                horizontalAlignment: Qt.AlignLeft
+                verticalAlignment: Qt.AlignVCenter
+                Layout.fillWidth: true
+            }
 
-        Controls.Button {
-            Layout.alignment: Qt.AlignRight
-            text: i18n("Reset")
-            onClicked: showPassiveNotification("Reset")
+            Controls.ToolButton {
+                text: i18n("Reset")
+                onClicked: showPassiveNotification("Resetting the autogain")
+            }
+
         }
 
     }
