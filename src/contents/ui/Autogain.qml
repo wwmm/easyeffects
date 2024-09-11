@@ -162,6 +162,10 @@ Kirigami.ScrollablePage {
 
         }
 
+        EeInputOutputGain {
+            Layout.fillWidth: true
+        }
+
     }
 
     footer: Controls.ToolBar {
