@@ -231,7 +231,6 @@ Kirigami.Page {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 Layout.horizontalStretchFactor: 3
-                Layout.minimumWidth: pluginsStack.currentItem.implicitWidth
 
                 initialItem: Kirigami.Page {
                     anchors.fill: parent

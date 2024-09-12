@@ -10,33 +10,25 @@ Kirigami.ScrollablePage {
 
     property var pluginDB
 
-    anchors {
-        left: parent.left
-        top: parent.top
-        right: parent.right
-        bottom: parent.bottom
-        leftMargin: Kirigami.Units.mediumSpacing
-        rightMargin: Kirigami.Units.mediumSpacing
-        topMargin: Kirigami.Units.mediumSpacing
-        bottomMargin: Kirigami.Units.mediumSpacing
-    }
-
     ColumnLayout {
         Kirigami.CardsLayout {
-            maximumColumnWidth: cardControls.maximumWidth
+            maximumColumnWidth: {
+                cardLevels.implicitWidth;
+            }
 
-            FormCard.FormCardPage {
-                FormCard.FormCard {
-                    id: cardControls
+            Kirigami.Card {
+                id: cardControls
 
-                    FormCard.FormHeader {
-                        title: i18n("Controls")
-                    }
+                header: Kirigami.Heading {
+                    text: i18n("Controls")
+                    level: 2
+                }
 
+                contentItem: ColumnLayout {
                     FormCard.FormComboBoxDelegate {
                         id: reference
 
-                        text: i18n("Shape")
+                        text: i18n("Reference")
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         // currentIndex: EEdbSpectrum.spectrumShape
                         editable: false
@@ -93,67 +85,65 @@ Kirigami.ScrollablePage {
 
             }
 
-            FormCard.FormCardPage {
-                FormCard.FormCard {
-                    id: cardLevels
+            Kirigami.Card {
+                id: cardLevels
 
-                    FormCard.FormHeader {
-                        title: i18n("Loudness")
+                header: Kirigami.Heading {
+                    text: i18n("Loudness")
+                    level: 2
+                }
+
+                contentItem: GridLayout {
+                    Layout.fillWidth: true
+                    columns: 3
+                    columnSpacing: Kirigami.Units.smallSpacing
+
+                    FormCard.FormTextDelegate {
+                        text: i18n("Momentary")
                     }
 
-                    GridLayout {
+                    Controls.ProgressBar {
                         Layout.fillWidth: true
-                        columns: 3
-                        columnSpacing: Kirigami.Units.smallSpacing
+                        from: 0
+                        to: 100
+                        value: 50
+                        indeterminate: false
+                    }
 
-                        FormCard.FormTextDelegate {
-                            text: i18n("Momentary")
-                        }
+                    FormCard.FormTextDelegate {
+                        text: i18n("LUFS")
+                    }
 
-                        Controls.ProgressBar {
-                            Layout.fillWidth: true
-                            from: 0
-                            to: 100
-                            value: 50
-                            indeterminate: false
-                        }
+                    FormCard.FormTextDelegate {
+                        text: i18n("Short-Term")
+                    }
 
-                        FormCard.FormTextDelegate {
-                            text: i18n("LUFS")
-                        }
+                    Controls.ProgressBar {
+                        Layout.fillWidth: true
+                        from: 0
+                        to: 100
+                        value: 50
+                        indeterminate: false
+                    }
 
-                        FormCard.FormTextDelegate {
-                            text: i18n("Short-Term")
-                        }
+                    FormCard.FormTextDelegate {
+                        text: i18n("LUFS")
+                    }
 
-                        Controls.ProgressBar {
-                            Layout.fillWidth: true
-                            from: 0
-                            to: 100
-                            value: 50
-                            indeterminate: false
-                        }
+                    FormCard.FormTextDelegate {
+                        text: i18n("Integrated")
+                    }
 
-                        FormCard.FormTextDelegate {
-                            text: i18n("LUFS")
-                        }
+                    Controls.ProgressBar {
+                        Layout.fillWidth: true
+                        from: 0
+                        to: 100
+                        value: 50
+                        indeterminate: false
+                    }
 
-                        FormCard.FormTextDelegate {
-                            text: i18n("Integrated")
-                        }
-
-                        Controls.ProgressBar {
-                            Layout.fillWidth: true
-                            from: 0
-                            to: 100
-                            value: 50
-                            indeterminate: false
-                        }
-
-                        FormCard.FormTextDelegate {
-                            text: i18n("LUFS")
-                        }
-
+                    FormCard.FormTextDelegate {
+                        text: i18n("LUFS")
                     }
 
                 }

@@ -4,7 +4,12 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
 Item {
+    implicitHeight: grid.implicitHeight
+    implicitWidth: grid.implicitWidth
+
     GridLayout {
+        id: grid
+
         anchors.fill: parent
         columns: 2
         columnSpacing: Kirigami.Units.smallSpacing
@@ -22,7 +27,6 @@ Item {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.fillWidth: true
                 orientation: Qt.Horizontal
-                snapMode: Controls.Slider.SnapAlways
                 value: 0
                 from: -36
                 to: 36
@@ -84,7 +88,6 @@ Item {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.fillWidth: true
                 orientation: Qt.Horizontal
-                snapMode: Controls.Slider.SnapAlways
                 value: 0
                 from: -36
                 to: 36
