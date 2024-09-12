@@ -1,5 +1,19 @@
 # Changelog
  
+## 7.1.9
+### 2024-09-12
+
+ 
+### Features:
+- Latency compensation can be applied to the spectrum plugin.It will delay its drawing so it matches the latency offset applied by the user on programs like Pavucontrol.
+
+### Bug fixes:
+- The command line option that shows EasyEffects version should work properly now.
+- Fixed a regression in the autoload preset code.
+
+### Other notes:
+
+ 
 ## 7.1.8
 ### 2024-08-17
 

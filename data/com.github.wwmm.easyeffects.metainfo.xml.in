@@ -53,6 +53,18 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.1.9" date="2024-09-12T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Latency compensation can be applied to the spectrum plugin.It will delay its drawing so it matches the latency offset applied by the user on programs like Pavucontrol.</li>
+          <li>Bug fixes:</li>
+          <li>The command line option that shows EasyEffects version should work properly now.</li>
+          <li>Fixed a regression in the autoload preset code.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.1.8" date="2024-08-17T00:00:00Z">
       <description>
         <ul>
