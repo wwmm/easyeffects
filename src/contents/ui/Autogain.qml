@@ -158,22 +158,63 @@ Kirigami.ScrollablePage {
 
     }
 
-    footer: Controls.ToolBar {
-        RowLayout {
-            anchors.fill: parent
+    footer: RowLayout {
+        Controls.Label {
+            text: i18n("Using") + EEtagsPluginPackage.ebur128
+            horizontalAlignment: Qt.AlignLeft
+            verticalAlignment: Qt.AlignVCenter
+            Layout.fillWidth: true
+            color: Kirigami.Theme.disabledTextColor
+        }
 
-            Controls.Label {
-                text: i18n("Using") + EEtagsPluginPackage.ebur128
-                horizontalAlignment: Qt.AlignLeft
-                verticalAlignment: Qt.AlignVCenter
-                Layout.fillWidth: true
-            }
+        Kirigami.ActionToolBar {
+            Layout.margins: Kirigami.Units.smallSpacing
+            alignment: Qt.AlignRight
+            flat: true
+            actions: [
+                Kirigami.Action {
+                    text: "Gain"
+                    icon.name: "player-volume-symbolic"
 
-            Controls.ToolButton {
-                text: i18n("Reset")
-                onClicked: showPassiveNotification("Resetting the autogain")
-            }
+                    Kirigami.Action {
+                        text: "Output Gain"
 
+                        displayComponent: Controls.Slider {
+                            id: inputGain
+
+                            orientation: Qt.Vertical
+                            value: 0
+                            from: -36
+                            to: 36
+                            stepSize: 1
+                        }
+
+                    }
+
+                    Kirigami.Action {
+                        text: "Input Gain"
+
+                        displayComponent: Controls.Slider {
+                            id: inputGain
+
+                            orientation: Qt.Vertical
+                            value: 0
+                            from: -36
+                            to: 36
+                            stepSize: 1
+                        }
+
+                    }
+
+                },
+                Kirigami.Action {
+                    text: i18n("Reset")
+                    icon.name: "edit-reset-symbolic"
+                    onTriggered: {
+                        showPassiveNotification("Resetting the autogain");
+                    }
+                }
+            ]
         }
 
     }
