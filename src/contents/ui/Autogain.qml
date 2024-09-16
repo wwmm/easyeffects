@@ -12,9 +12,7 @@ Kirigami.ScrollablePage {
 
     ColumnLayout {
         Kirigami.CardsLayout {
-            maximumColumnWidth: {
-                cardLevels.implicitWidth;
-            }
+            maximumColumnWidth: Kirigami.Units.gridUnit * 30
 
             Kirigami.Card {
                 id: cardControls
@@ -86,66 +84,56 @@ Kirigami.ScrollablePage {
             }
 
             Kirigami.Card {
+                // contentItem: GridLayout {
+                //     Layout.fillWidth: true
+                //     columns: 3
+                //     columnSpacing: Kirigami.Units.smallSpacing
+                //     FormCard.FormTextDelegate {
+                //         text: i18n("Momentary")
+                //     }
+                //     Controls.ProgressBar {
+                //         Layout.fillWidth: true
+                //         from: 0
+                //         to: 100
+                //         value: 50
+                //         indeterminate: false
+                //     }
+                //     FormCard.FormTextDelegate {
+                //         text: i18n("LUFS")
+                //     }
+                //     FormCard.FormTextDelegate {
+                //         text: i18n("Short-Term")
+                //     }
+                //     Controls.ProgressBar {
+                //         Layout.fillWidth: true
+                //         from: 0
+                //         to: 100
+                //         value: 50
+                //         indeterminate: false
+                //     }
+                //     FormCard.FormTextDelegate {
+                //         text: i18n("LUFS")
+                //     }
+                //     FormCard.FormTextDelegate {
+                //         text: i18n("Integrated")
+                //     }
+                //     Controls.ProgressBar {
+                //         Layout.fillWidth: true
+                //         from: 0
+                //         to: 100
+                //         value: 50
+                //         indeterminate: false
+                //     }
+                //     FormCard.FormTextDelegate {
+                //         text: i18n("LUFS")
+                //     }
+                // }
+
                 id: cardLevels
 
                 header: Kirigami.Heading {
                     text: i18n("Loudness")
                     level: 2
-                }
-
-                contentItem: GridLayout {
-                    Layout.fillWidth: true
-                    columns: 3
-                    columnSpacing: Kirigami.Units.smallSpacing
-
-                    FormCard.FormTextDelegate {
-                        text: i18n("Momentary")
-                    }
-
-                    Controls.ProgressBar {
-                        Layout.fillWidth: true
-                        from: 0
-                        to: 100
-                        value: 50
-                        indeterminate: false
-                    }
-
-                    FormCard.FormTextDelegate {
-                        text: i18n("LUFS")
-                    }
-
-                    FormCard.FormTextDelegate {
-                        text: i18n("Short-Term")
-                    }
-
-                    Controls.ProgressBar {
-                        Layout.fillWidth: true
-                        from: 0
-                        to: 100
-                        value: 50
-                        indeterminate: false
-                    }
-
-                    FormCard.FormTextDelegate {
-                        text: i18n("LUFS")
-                    }
-
-                    FormCard.FormTextDelegate {
-                        text: i18n("Integrated")
-                    }
-
-                    Controls.ProgressBar {
-                        Layout.fillWidth: true
-                        from: 0
-                        to: 100
-                        value: 50
-                        indeterminate: false
-                    }
-
-                    FormCard.FormTextDelegate {
-                        text: i18n("LUFS")
-                    }
-
                 }
 
             }
@@ -163,47 +151,63 @@ Kirigami.ScrollablePage {
             text: i18n("Using") + EEtagsPluginPackage.ebur128
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
-            Layout.fillWidth: true
+            Layout.fillWidth: false
             color: Kirigami.Theme.disabledTextColor
         }
 
         Kirigami.ActionToolBar {
             Layout.margins: Kirigami.Units.smallSpacing
             alignment: Qt.AlignRight
+            position: Controls.ToolBar.Footer
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: "Gain"
-                    icon.name: "player-volume-symbolic"
+                    text: "Output"
 
-                    Kirigami.Action {
-                        text: "Output Gain"
+                    displayComponent: EeSpinBox {
+                        id: outputGain
 
-                        displayComponent: Controls.Slider {
-                            id: inputGain
-
-                            orientation: Qt.Vertical
-                            value: 0
-                            from: -36
-                            to: 36
-                            stepSize: 1
+                        label: i18n("Output")
+                        verticalPadding: 0
+                        horizontalPadding: Kirigami.Units.smallSpacing
+                        from: -36
+                        to: 36
+                        // spinboxLayoutFillWidth: true
+                        boxWidth: 5 * Kirigami.Units.gridUnit
+                        elide: Text.ElideNone
+                        wrapMode: Text.NoWrap
+                        // value: pluginDB.outputGain
+                        decimals: 0
+                        stepSize: 1
+                        unit: "dB"
+                        onValueModified: (v) => {
+                            pluginDB.outputGain = v;
                         }
-
                     }
 
-                    Kirigami.Action {
-                        text: "Input Gain"
+                },
+                Kirigami.Action {
+                    text: "Input"
 
-                        displayComponent: Controls.Slider {
-                            id: inputGain
+                    displayComponent: EeSpinBox {
+                        id: inputGain
 
-                            orientation: Qt.Vertical
-                            value: 0
-                            from: -36
-                            to: 36
-                            stepSize: 1
+                        label: i18n("Input")
+                        verticalPadding: 0
+                        horizontalPadding: Kirigami.Units.smallSpacing
+                        from: -36
+                        to: 36
+                        // spinboxLayoutFillWidth: true
+                        boxWidth: 5 * Kirigami.Units.gridUnit
+                        elide: Text.ElideNone
+                        wrapMode: Text.NoWrap
+                        // value: pluginDB.inputGain
+                        decimals: 0
+                        stepSize: 1
+                        unit: "dB"
+                        onValueModified: (v) => {
+                            pluginDB.inputGain = v;
                         }
-
                     }
 
                 },

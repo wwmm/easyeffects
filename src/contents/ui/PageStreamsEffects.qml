@@ -276,6 +276,7 @@ Kirigami.Page {
 
             Kirigami.ActionToolBar {
                 alignment: Qt.AlignLeft
+                position: Controls.ToolBar.Footer
                 actions: [
                     Kirigami.Action {
                         text: "kHz"
@@ -294,6 +295,7 @@ Kirigami.Page {
 
             Kirigami.ActionToolBar {
                 alignment: Qt.AlignHCenter
+                position: Controls.ToolBar.Footer
                 actions: [
                     Kirigami.Action {
                         icon.name: pageType === 0 ? "multimedia-player-symbolic" : "media-record-symbolic"
@@ -320,6 +322,7 @@ Kirigami.Page {
 
             Kirigami.ActionToolBar {
                 alignment: Qt.AlignRight
+                position: Controls.ToolBar.Footer
                 actions: [
                     Kirigami.Action {
                         text: i18n("Excluded Apps")
