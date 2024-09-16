@@ -186,7 +186,7 @@ void ConvolverUi::import_irs_file(const std::string& file_path) {
 
     out_path.replace_extension(".irs");
 
-    boost::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
+    boost::filesystem::copy_file(p, out_path, boost::filesystem::copy_options::overwrite_existing);
 
     util::debug(log_tag + "imported irs file to: " + out_path.string());
   } else {
