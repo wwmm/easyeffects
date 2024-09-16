@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-11 22:08+0000\n"
-"PO-Revision-Date: 2024-04-02 18:06+0000\n"
+"PO-Revision-Date: 2024-09-16 01:09+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -140,6 +140,8 @@ msgid ""
 "The loudness plugin exposes the ISO 226:2023 standard that is now available "
 "in the LSP plugin."
 msgstr ""
+"Плагин громкости использует стандарт ИСО 226:2023, который теперь доступен в "
+"плагине LSP."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
@@ -153,7 +155,7 @@ msgstr "Обновлены переводы"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid "Performance optmizations to the spectrum plugin and the LADSPA wrapper"
-msgstr ""
+msgstr "Оптимизация производительности плагина спектра и обёртки LADSPA"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
@@ -201,6 +203,9 @@ msgid ""
 "volume and mute controls. THis could cause these operations to fail in some "
 "situations"
 msgstr ""
+"Мы не блокировали основной цикл потока PipeWire перед установкой регуляторов "
+"громкости и отключения звука потока. Это могло привести к тому, что в "
+"некоторых ситуациях эти операции не выполнялись"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
@@ -235,28 +240,41 @@ msgid ""
 "volunteers. You can search them on the repositories of your favorite "
 "distribution."
 msgstr ""
+"Реализована функция Предустановок сообщества. Пользователи могут "
+"устанавливать пакеты, содержащие несколько предустановок Easy Effects, "
+"которые можно импортировать и применять внутри приложения. Эти пакеты будут "
+"поддерживаться и распространяться добровольцами. Вы можете найти их в "
+"репозиториях вашего любимого дистрибутива."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
 msgid ""
 "Added the ability of collapsing the sidebar to hide the effects list and "
 "expand the area of the effects user interface."
 msgstr ""
+"Добавлена возможность свернуть боковую панель, чтобы скрыть список эффектов "
+"и расширить область пользовательского интерфейса эффектов."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
 msgid ""
 "EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an "
 "output device that is different from the one EasyEffects is using."
 msgstr ""
+"EasyEffects не будет трогать потоки, определяющие PW_KEY_TARGET_OBJECT для "
+"устройства вывода, которое отличается от используемого EasyEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
 msgid "Equalizer APO import feature can now apply Band-Pass filters."
 msgstr ""
+"Функция импорта эквалайзера APO теперь может применять фильтры Полосового "
+"фильтра."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid ""
 "A change in GTK 4.14.1 prevented to apply the values inserted into the text "
 "field of our SpinButton widgets. This issue is now resolved."
 msgstr ""
+"Изменение в GTK 4.14.1 не позволяло применять значения, вставленные в "
+"текстовое поле наших виджетов SpinButton. Теперь эта проблема решена."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
 msgid ""
@@ -264,12 +282,18 @@ msgid ""
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
 msgstr ""
+"В последних версиях плагина Maximizer больше нет функции управления "
+"потолком. Поэтому мы удалили его из нашего пользовательского интерфейса (вы "
+"можете использовать входное усиление плагина, чтобы получить ту же "
+"функциональность)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
 msgid ""
 "Equalizer APO import feature does not crash anymore on Flatpak when invalid "
 "values are provided."
 msgstr ""
+"Функция импорта APO Эквалайзера больше не выходит из строя на Flatpak при "
+"предоставлении недопустимых значений."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
 msgid ""
@@ -277,6 +301,9 @@ msgid ""
 "invited to read and follow the guidelines linked inside the README of "
 "EasyEffects master branch."
 msgstr ""
+"Для того, чтобы Предустановки сообщества поставлялись верно, упаковщикам "
+"предлагается прочитать и следовать рекомендациям, размещённым в README "
+"мастер-ветки EasyEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:83
 msgid ""
@@ -284,6 +311,10 @@ msgid ""
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
 msgstr ""
+"Предустановки с эффектами Конвольвер и/или Подавление шума (RNNoise), "
+"созданные до версии 7.2.0, устарели. Пожалуйста, перезагрузите файл irs/"
+"model в пользовательском интерфейсе Конвольвера/RNNoise и пересохраните "
+"предустановку."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:91
 msgid ""
@@ -931,7 +962,6 @@ msgid "Many translation updates"
 msgstr "Крупное обновление переводов"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:373
-#, fuzzy
 msgid ""
 "Fixed a bug where EasyEffects crashed when the number of points displayed in "
 "the spectrum was changed while our pipeline was active and the spectrum "
