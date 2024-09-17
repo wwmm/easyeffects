@@ -89,32 +89,6 @@ Kirigami.ScrollablePage {
                 //     columns: 3
                 //     columnSpacing: Kirigami.Units.smallSpacing
                 //     FormCard.FormTextDelegate {
-                //         text: i18n("Momentary")
-                //     }
-                //     Controls.ProgressBar {
-                //         Layout.fillWidth: true
-                //         from: 0
-                //         to: 100
-                //         value: 50
-                //         indeterminate: false
-                //     }
-                //     FormCard.FormTextDelegate {
-                //         text: i18n("LUFS")
-                //     }
-                //     FormCard.FormTextDelegate {
-                //         text: i18n("Short-Term")
-                //     }
-                //     Controls.ProgressBar {
-                //         Layout.fillWidth: true
-                //         from: 0
-                //         to: 100
-                //         value: 50
-                //         indeterminate: false
-                //     }
-                //     FormCard.FormTextDelegate {
-                //         text: i18n("LUFS")
-                //     }
-                //     FormCard.FormTextDelegate {
                 //         text: i18n("Integrated")
                 //     }
                 //     Controls.ProgressBar {
@@ -134,6 +108,27 @@ Kirigami.ScrollablePage {
                 header: Kirigami.Heading {
                     text: i18n("Loudness")
                     level: 2
+                }
+
+                contentItem: ColumnLayout {
+                    EeProgressBar {
+                        label: i18n("Momentary")
+                        unit: i18n("LUFS")
+                        value: 0.5
+                    }
+
+                    EeProgressBar {
+                        label: i18n("Short-Term")
+                        unit: i18n("LUFS")
+                        value: 0.4
+                    }
+
+                    EeProgressBar {
+                        label: i18n("Integrated")
+                        unit: i18n("LUFS")
+                        value: 0.8
+                    }
+
                 }
 
             }

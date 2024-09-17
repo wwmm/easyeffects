@@ -30,8 +30,6 @@ FormCard.AbstractFormDelegate {
     property string subtitle: ""
     property string unit: ""
     property alias displayText: spinbox.displayText
-    property var status: Kirigami.MessageType.Information
-    property string statusMessage: ""
     property int boxWidth: 10 * Kirigami.Units.gridUnit
     property bool labelAbove: false
     property bool spinboxLayoutFillWidth: false

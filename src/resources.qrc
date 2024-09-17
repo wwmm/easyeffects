@@ -7,6 +7,7 @@
         <file alias="DelegateStreamsList.qml">contents/ui/DelegateStreamsList.qml</file>
         <file alias="EeChart.qml">contents/ui/EeChart.qml</file>
         <file alias="EeInputOutputGain.qml">contents/ui/EeInputOutputGain.qml</file>
+        <file alias="EeProgressBar.qml">contents/ui/EeProgressBar.qml</file>
         <file alias="EeSpinBox.qml">contents/ui/EeSpinBox.qml</file>
         <file alias="EeSwitch.qml">contents/ui/EeSwitch.qml</file>
         <file alias="main.qml">contents/ui/main.qml</file>
