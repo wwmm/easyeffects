@@ -11,11 +11,19 @@ Kirigami.ScrollablePage {
     property var pluginDB
 
     ColumnLayout {
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+
         Kirigami.CardsLayout {
-            maximumColumnWidth: Kirigami.Units.gridUnit * 30
+            id: cardLayout
+
+            Layout.fillWidth: true
+            maximumColumnWidth: Kirigami.Units.gridUnit * 20
 
             Kirigami.Card {
                 id: cardControls
+
+                implicitWidth: cardLayout.maximumColumnWidth
 
                 header: Kirigami.Heading {
                     text: i18n("Controls")
@@ -84,26 +92,9 @@ Kirigami.ScrollablePage {
             }
 
             Kirigami.Card {
-                // contentItem: GridLayout {
-                //     Layout.fillWidth: true
-                //     columns: 3
-                //     columnSpacing: Kirigami.Units.smallSpacing
-                //     FormCard.FormTextDelegate {
-                //         text: i18n("Integrated")
-                //     }
-                //     Controls.ProgressBar {
-                //         Layout.fillWidth: true
-                //         from: 0
-                //         to: 100
-                //         value: 50
-                //         indeterminate: false
-                //     }
-                //     FormCard.FormTextDelegate {
-                //         text: i18n("LUFS")
-                //     }
-                // }
-
                 id: cardLevels
+
+                implicitWidth: cardLayout.maximumColumnWidth
 
                 header: Kirigami.Heading {
                     text: i18n("Loudness")
@@ -111,6 +102,12 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: ColumnLayout {
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                        top: parent.top
+                    }
+
                     EeProgressBar {
                         label: i18n("Momentary")
                         unit: i18n("LUFS")
@@ -129,14 +126,42 @@ Kirigami.ScrollablePage {
                         value: 0.8
                     }
 
+                    EeProgressBar {
+                        label: i18n("Relative")
+                        unit: i18n("LUFS")
+                        value: 0.2
+                    }
+
+                    EeProgressBar {
+                        label: i18n("Range")
+                        unit: i18n("LU")
+                        value: 0.7
+                    }
+
+                    EeProgressBar {
+                        label: i18n("Loudness")
+                        unit: i18n("LUFS")
+                        value: 0.6
+                    }
+
+                    EeProgressBar {
+                        label: i18n("Output Gain")
+                        unit: i18n("dB")
+                        value: 0.3
+                    }
+
                 }
 
             }
 
         }
 
-        EeInputOutputGain {
-            Layout.fillWidth: true
+        Kirigami.Card {
+
+            contentItem: EeInputOutputGain {
+                Layout.fillWidth: true
+            }
+
         }
 
     }

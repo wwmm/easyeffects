@@ -22,7 +22,7 @@ FormCard.AbstractFormDelegate {
 
     background: Rectangle {
         anchors.fill: parent
-        color: Kirigami.Theme.activeBackgroundColor
+        color: Kirigami.Theme.neutralBackgroundColor
         radius: 3
     }
 
@@ -33,7 +33,7 @@ FormCard.AbstractFormDelegate {
             width: clampedValue / (to - from) * parent.width
             height: parent.height
             color: Kirigami.Theme.alternateBackgroundColor
-            radius: 3
+            radius: 5
         }
 
         RowLayout {
