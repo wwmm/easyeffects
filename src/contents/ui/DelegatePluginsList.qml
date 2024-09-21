@@ -39,7 +39,7 @@ Item {
             columnSpacing: Kirigami.Units.smallSpacing
 
             Kirigami.Icon {
-                source: bypass === true ? "media-playback-pause-symbolic" : "format-align-vertical-bottom-symbolic"
+                source: bypass === true ? "media-playback-pause-symbolic" : "composition-symbolic"
                 Layout.preferredWidth: Kirigami.Units.iconSizes.sizeForLabels
                 Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels
                 Layout.alignment: Qt.AlignLeft

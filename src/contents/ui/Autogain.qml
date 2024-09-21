@@ -175,62 +175,17 @@ Kirigami.ScrollablePage {
             color: Kirigami.Theme.disabledTextColor
         }
 
+        EeCircularProgress {
+            implicitWidth: implicitHeight
+            value: 0.65
+        }
+
         Kirigami.ActionToolBar {
             Layout.margins: Kirigami.Units.smallSpacing
             alignment: Qt.AlignRight
             position: Controls.ToolBar.Footer
             flat: true
             actions: [
-                Kirigami.Action {
-                    text: "Output"
-
-                    displayComponent: EeSpinBox {
-                        id: outputGain
-
-                        label: i18n("Output")
-                        verticalPadding: 0
-                        horizontalPadding: Kirigami.Units.smallSpacing
-                        from: -36
-                        to: 36
-                        // spinboxLayoutFillWidth: true
-                        boxWidth: 5 * Kirigami.Units.gridUnit
-                        elide: Text.ElideNone
-                        wrapMode: Text.NoWrap
-                        // value: pluginDB.outputGain
-                        decimals: 0
-                        stepSize: 1
-                        unit: "dB"
-                        onValueModified: (v) => {
-                            pluginDB.outputGain = v;
-                        }
-                    }
-
-                },
-                Kirigami.Action {
-                    text: "Input"
-
-                    displayComponent: EeSpinBox {
-                        id: inputGain
-
-                        label: i18n("Input")
-                        verticalPadding: 0
-                        horizontalPadding: Kirigami.Units.smallSpacing
-                        from: -36
-                        to: 36
-                        // spinboxLayoutFillWidth: true
-                        boxWidth: 5 * Kirigami.Units.gridUnit
-                        elide: Text.ElideNone
-                        wrapMode: Text.NoWrap
-                        // value: pluginDB.inputGain
-                        decimals: 0
-                        stepSize: 1
-                        unit: "dB"
-                        onValueModified: (v) => {
-                            pluginDB.inputGain = v;
-                        }
-                    }
-
-                },
                 Kirigami.Action {
                     text: i18n("Reset")
                     icon.name: "edit-reset-symbolic"
