@@ -32,6 +32,7 @@ FormCard.AbstractFormDelegate {
     property alias displayText: spinbox.displayText
     property int boxWidth: 10 * Kirigami.Units.gridUnit
     property bool labelAbove: false
+    property bool labelFillWidth: true
     property bool spinboxLayoutFillWidth: false
     property int elide: Text.ElideRight
     property int wrapMode: Text.Wrap
@@ -50,7 +51,7 @@ FormCard.AbstractFormDelegate {
 
         ColumnLayout {
             Label {
-                Layout.fillWidth: true
+                Layout.fillWidth: labelFillWidth
                 text: control.label
                 elide: control.elide
                 color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
@@ -59,7 +60,7 @@ FormCard.AbstractFormDelegate {
             }
 
             Label {
-                Layout.fillWidth: true
+                Layout.fillWidth: labelFillWidth
                 text: control.subtitle
                 elide: control.elide
                 color: Kirigami.Theme.disabledTextColor

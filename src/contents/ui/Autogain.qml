@@ -6,6 +6,71 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 Kirigami.ScrollablePage {
+    // header: Kirigami.ActionToolBar {
+    //     Layout.margins: Kirigami.Units.smallSpacing
+    //     alignment: Qt.AlignHCenter
+    //     position: Controls.ToolBar.Header
+    //     flat: true
+    //     actions: [
+    //         Kirigami.Action {
+    //             displayComponent: EeSpinBox {
+    //                 id: inputGain
+    //                 label: i18n("Input")
+    //                 from: -36
+    //                 to: 36
+    //                 // value: pluginDB.inputGain
+    //                 decimals: 0
+    //                 stepSize: 1
+    //                 unit: "dB"
+    //                 boxWidth: 5 * Kirigami.Units.gridUnit
+    //                 onValueModified: (v) => {
+    //                     pluginDB.inputGain = v;
+    //                 }
+    //             }
+    //         },
+    //         Kirigami.Action {
+    //             displayComponent: EeCircularProgress {
+    //                 value: 0.6
+    //             }
+    //         },
+    //         Kirigami.Action {
+    //             displayComponent: EeCircularProgress {
+    //                 value: 0.4
+    //             }
+    //         },
+    //         Kirigami.Action {
+    //             enabled: false
+    //             separator: true
+    //         },
+    //         Kirigami.Action {
+    //             displayComponent: EeSpinBox {
+    //                 id: outputGain
+    //                 label: i18n("Output")
+    //                 from: -36
+    //                 to: 36
+    //                 // value: pluginDB.outputGain
+    //                 decimals: 0
+    //                 stepSize: 1
+    //                 unit: "dB"
+    //                 boxWidth: 5 * Kirigami.Units.gridUnit
+    //                 onValueModified: (v) => {
+    //                     pluginDB.outputGain = v;
+    //                 }
+    //             }
+    //         },
+    //         Kirigami.Action {
+    //             displayComponent: EeCircularProgress {
+    //                 value: 0.3
+    //             }
+    //         },
+    //         Kirigami.Action {
+    //             displayComponent: EeCircularProgress {
+    //                 value: 0.8
+    //             }
+    //         }
+    //     ]
+    // }
+
     id: autogainPage
 
     property var pluginDB
@@ -158,83 +223,13 @@ Kirigami.ScrollablePage {
 
     }
 
-    header: Kirigami.ActionToolBar {
-        Layout.margins: Kirigami.Units.smallSpacing
-        alignment: Qt.AlignHCenter
-        position: Controls.ToolBar.Header
-        flat: true
-        actions: [
-            Kirigami.Action {
+    header: EeInputOutputGain {
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
 
-                displayComponent: EeSpinBox {
-                    id: inputGain
-
-                    label: i18n("Input")
-                    from: -36
-                    to: 36
-                    // value: pluginDB.inputGain
-                    decimals: 0
-                    stepSize: 1
-                    unit: "dB"
-                    boxWidth: 5 * Kirigami.Units.gridUnit
-                    onValueModified: (v) => {
-                        pluginDB.inputGain = v;
-                    }
-                }
-
-            },
-            Kirigami.Action {
-
-                displayComponent: EeCircularProgress {
-                    value: 0.6
-                }
-
-            },
-            Kirigami.Action {
-
-                displayComponent: EeCircularProgress {
-                    value: 0.4
-                }
-
-            },
-            Kirigami.Action {
-                enabled: false
-                separator: true
-            },
-            Kirigami.Action {
-
-                displayComponent: EeSpinBox {
-                    id: outputGain
-
-                    label: i18n("Output")
-                    from: -36
-                    to: 36
-                    // value: pluginDB.outputGain
-                    decimals: 0
-                    stepSize: 1
-                    unit: "dB"
-                    boxWidth: 5 * Kirigami.Units.gridUnit
-                    onValueModified: (v) => {
-                        pluginDB.outputGain = v;
-                    }
-                }
-
-            },
-            Kirigami.Action {
-
-                displayComponent: EeCircularProgress {
-                    value: 0.3
-                }
-
-            },
-            Kirigami.Action {
-
-                displayComponent: EeCircularProgress {
-                    value: 0.8
-                }
-
-            }
-        ]
     }
 
     footer: RowLayout {
