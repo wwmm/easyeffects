@@ -53,7 +53,7 @@ FormCard.AbstractFormDelegate {
             Label {
                 horizontalAlignment: Qt.AlignRight
                 verticalAlignment: Qt.AlignVCenter
-                text: clampedValue + " " + control.unit
+                text: Number(clampedValue).toLocaleString(Qt.locale()) + " " + control.unit
                 elide: control.elide
                 color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
                 wrapMode: control.wrapMode

@@ -11,8 +11,8 @@ Rectangle {
     property real to: 1
     readonly property real clampedValue: Common.clamp(value, from, to)
 
-    implicitWidth: parent.width
-    implicitHeight: parent.height
+    implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
+    implicitHeight: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
     radius: width / 2
     color: Kirigami.Theme.neutralBackgroundColor
     border.color: Kirigami.Theme.activeBackgroundColor
@@ -47,8 +47,10 @@ Rectangle {
     }
 
     Text {
+        id: valueLabel
+
         anchors.centerIn: parent
-        text: root.value.toString()
+        text: Number(root.value).toLocaleString(Qt.locale())
         color: Kirigami.Theme.textColor
     }
 
