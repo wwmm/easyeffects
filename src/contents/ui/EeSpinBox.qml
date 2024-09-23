@@ -36,6 +36,8 @@ FormCard.AbstractFormDelegate {
     property bool spinboxLayoutFillWidth: false
     property int elide: Text.ElideRight
     property int wrapMode: Text.Wrap
+    property int spinboxAlignment: Qt.AlignRight
+    property int labelAlignment: Qt.AlignLeft
 
     signal valueModified(real value)
 
@@ -57,6 +59,7 @@ FormCard.AbstractFormDelegate {
                 color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
                 wrapMode: control.wrapMode
                 maximumLineCount: 2
+                horizontalAlignment: labelAlignment
             }
 
             Label {
@@ -66,6 +69,7 @@ FormCard.AbstractFormDelegate {
                 color: Kirigami.Theme.disabledTextColor
                 wrapMode: control.wrapMode
                 maximumLineCount: 2
+                horizontalAlignment: labelAlignment
                 visible: !Common.isEmpty(control.subtitle)
             }
 
@@ -81,6 +85,7 @@ FormCard.AbstractFormDelegate {
             }
 
             Layout.fillWidth: control.spinboxLayoutFillWidth
+            Layout.alignment: spinboxAlignment
             implicitWidth: control.boxWidth
             focusPolicy: control.focusPolicy
             wheelEnabled: true

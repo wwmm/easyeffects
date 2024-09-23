@@ -6,6 +6,11 @@ import org.kde.kirigami as Kirigami
 Item {
     id: control
 
+    property real inputGain: 0
+    property real outputGain: 0
+    property real from: -36
+    property real to: 36
+
     implicitHeight: grid.implicitHeight
     implicitWidth: grid.implicitWidth
 
@@ -21,25 +26,28 @@ Item {
                 EeSpinBox {
                     id: inputGain
 
+                    Layout.alignment: Qt.AlignLeft
                     label: i18n("Input")
                     labelFillWidth: true
-                    from: -36
-                    to: 36
-                    // value: pluginDB.inputGain
+                    from: control.from
+                    to: control.to
+                    value: control.inputGain
                     decimals: 0
                     stepSize: 1
                     unit: "dB"
                     boxWidth: 5 * Kirigami.Units.gridUnit
                     onValueModified: (v) => {
-                        pluginDB.inputGain = v;
+                        control.inputGain = v;
                     }
                 }
 
                 EeCircularProgress {
+                    Layout.alignment: Qt.AlignRight
                     value: 0.2
                 }
 
                 EeCircularProgress {
+                    Layout.alignment: Qt.AlignRight
                     value: 0.75
                 }
 
@@ -51,15 +59,15 @@ Item {
 
                     label: i18n("Output")
                     labelFillWidth: true
-                    from: -36
-                    to: 36
-                    // value: pluginDB.outputGain
+                    from: control.from
+                    to: control.to
+                    value: control.outputGain
                     decimals: 0
                     stepSize: 1
                     unit: "dB"
                     boxWidth: 5 * Kirigami.Units.gridUnit
                     onValueModified: (v) => {
-                        pluginDB.outputGain = v;
+                        control.outputGain = v;
                     }
                 }
 
