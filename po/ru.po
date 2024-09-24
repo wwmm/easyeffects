@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-11 22:08+0000\n"
-"PO-Revision-Date: 2024-09-08 21:09+0000\n"
+"PO-Revision-Date: 2024-09-24 01:15+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -1807,7 +1807,7 @@ msgstr "Период обновления"
 
 #: data/ui/preferences_general.ui:121
 msgid "Related to Level Meters and Spectrum"
-msgstr "Связанное с уровнемерами и спектром"
+msgstr "Влияет на уровнемеры и спектр"
 
 #: data/ui/preferences_general.ui:143
 msgid "Update Frequency"
@@ -1815,7 +1815,7 @@ msgstr "Частота обновления"
 
 #: data/ui/preferences_general.ui:144
 msgid "Related to LV2 Plugins"
-msgstr "Связанное с плагинами LV2"
+msgstr "Влияет на плагины LV2"
 
 #: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
 msgid "Style"
