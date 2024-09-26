@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 03:29+0000\n"
-"PO-Revision-Date: 2024-09-26 02:35+0000\n"
+"PO-Revision-Date: 2024-09-26 12:23+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
@@ -90,11 +90,11 @@ msgstr "_Ukončit"
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:159
 msgid "Presets"
-msgstr "Přednastavení"
+msgstr "Předvolby"
 
 #: data/ui/application_window.ui:61
 msgid "Presets Menu"
-msgstr "Nabídka profilů"
+msgstr "Nabídka předvoleb"
 
 #: data/ui/application_window.ui:68
 msgid "Enable/disable the global bypass"
@@ -125,9 +125,8 @@ msgid "No Audio Application Available"
 msgstr "Není dostupná žádná zvuková aplikace"
 
 #: data/ui/autogain.ui:29 data/ui/filter.ui:38
-#, fuzzy
 msgid "Controls"
-msgstr "Ovladač zesílení"
+msgstr "Ovládání"
 
 #: data/ui/autogain.ui:33
 msgid "Target"
@@ -138,7 +137,6 @@ msgid "Silence"
 msgstr "Ticho"
 
 #: data/ui/autogain.ui:80
-#, fuzzy
 msgid "Maximum History"
 msgstr "Maximální historie"
 
@@ -175,9 +173,8 @@ msgid "Geometric Mean (SI)"
 msgstr "Geometrický průměr (SI)"
 
 #: data/ui/autogain.ui:124
-#, fuzzy
 msgid "History"
-msgstr "Vymazat Historii"
+msgstr "Historie"
 
 #: data/ui/autogain.ui:129 data/ui/autogain.ui:598 data/ui/bass_enhancer.ui:458
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1307
@@ -285,7 +282,7 @@ msgstr "Profil"
 #: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:257
 #: data/ui/pipe_manager_box.ui:387
 msgid "Preset"
-msgstr "Profil"
+msgstr "Předvolba"
 
 #: data/ui/autoload_row.ui:114
 msgid "Remove this autoload preset"
@@ -438,9 +435,8 @@ msgstr "Uvolnění"
 
 #: data/ui/compressor.ui:301 data/ui/expander.ui:222 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:301
-#, fuzzy
 msgid "Release Threshold"
-msgstr "Práh release"
+msgstr "Práh uvolnění"
 
 #: data/ui/compressor.ui:308 data/ui/deesser.ui:334 data/ui/expander.ui:229
 #: data/ui/multiband_compressor_band.ui:308
@@ -462,16 +458,15 @@ msgstr "Pozvednutí"
 #: data/ui/expander.ui:333 data/ui/gate.ui:346
 #: data/ui/multiband_compressor.ui:174 data/ui/multiband_gate.ui:174
 #: data/ui/reverb.ui:208 data/ui/stereo_tools.ui:528
-#, fuzzy
 msgid "Dry Level"
-msgstr "Dry Level"
+msgstr "Suchá úroveň"
 
 #: data/ui/compressor.ui:446 data/ui/delay.ui:85 data/ui/delay.ui:172
 #: data/ui/expander.ui:367 data/ui/gate.ui:351
 #: data/ui/multiband_compressor.ui:207 data/ui/multiband_gate.ui:207
 #: data/ui/reverb.ui:241 data/ui/rnnoise.ui:90 data/ui/stereo_tools.ui:563
 msgid "Wet Level"
-msgstr "Wet Level"
+msgstr "Vlhká úroveň"
 
 #: data/ui/compressor.ui:487 data/ui/compressor.ui:508
 #: data/ui/compressor.ui:1075 data/ui/expander.ui:408 data/ui/expander.ui:429
@@ -485,9 +480,8 @@ msgstr "Postranní řetězec"
 #: data/ui/expander.ui:446 data/ui/gate.ui:653 data/ui/gate.ui:659
 #: data/ui/multiband_compressor.ui:121 data/ui/multiband_compressor.ui:128
 #: data/ui/multiband_gate.ui:121 data/ui/multiband_gate.ui:128
-#, fuzzy
 msgid "Stereo Split Mode"
-msgstr "Stereo režim"
+msgstr "Režim stereofonního rozdělení"
 
 #: data/ui/compressor.ui:532 data/ui/expander.ui:453 data/ui/gate.ui:666
 #: data/ui/multiband_compressor_band.ui:455 data/ui/multiband_gate_band.ui:513
@@ -542,9 +536,8 @@ msgstr "Zdroj sidechain"
 
 #: data/ui/compressor.ui:567 data/ui/expander.ui:488 data/ui/gate.ui:701
 #: data/ui/multiband_compressor_band.ui:513 data/ui/multiband_gate_band.ui:571
-#, fuzzy
 msgid "Left/Right"
-msgstr "Zpoždění Levá/Pravá"
+msgstr "Levý/Pravý"
 
 #: data/ui/compressor.ui:568 data/ui/expander.ui:489 data/ui/gate.ui:702
 #: data/ui/multiband_compressor_band.ui:514 data/ui/multiband_gate_band.ui:572
@@ -554,18 +547,17 @@ msgstr "Pravý/Levý"
 #: data/ui/compressor.ui:569 data/ui/expander.ui:490 data/ui/gate.ui:703
 #: data/ui/multiband_compressor_band.ui:515 data/ui/multiband_gate_band.ui:573
 msgid "Mid/Side"
-msgstr "Střední/boční"
+msgstr "Střední/Boční"
 
 #: data/ui/compressor.ui:570 data/ui/expander.ui:491 data/ui/gate.ui:704
 #: data/ui/multiband_compressor_band.ui:516 data/ui/multiband_gate_band.ui:574
 msgid "Side/Mid"
-msgstr "Boční/střední"
+msgstr "Boční/Střední"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:502 data/ui/gate.ui:715
 #: data/ui/multiband_compressor_band.ui:527 data/ui/multiband_gate_band.ui:585
-#, fuzzy
 msgid "Stereo Split Source"
-msgstr "Výchozí zdroj"
+msgstr "Zdroj stereofonního rozdělení"
 
 #: data/ui/compressor.ui:607 data/ui/deesser.ui:50 data/ui/expander.ui:528
 #: data/ui/gate.ui:741 data/ui/multiband_compressor_band.ui:551
@@ -595,9 +587,8 @@ msgid "Sidechain Mode"
 msgstr "Režim sidechain"
 
 #: data/ui/compressor.ui:633 data/ui/expander.ui:554 data/ui/gate.ui:767
-#, fuzzy
 msgid "Listen Sidechain"
-msgstr "Externí postranní řetězec"
+msgstr "Sidechain poslechu"
 
 #: data/ui/compressor.ui:662 data/ui/equalizer_band.ui:108
 #: data/ui/expander.ui:583 data/ui/filter.ui:42 data/ui/gate.ui:796
@@ -646,7 +637,6 @@ msgstr "Filtry sidechain"
 
 #: data/ui/compressor.ui:858 data/ui/expander.ui:778 data/ui/filter.ui:51
 #: data/ui/gate.ui:991
-#, fuzzy
 msgid "High-Pass"
 msgstr "High-Pass"
 
@@ -821,9 +811,8 @@ msgid "Mute"
 msgstr "Ztlumit"
 
 #: data/ui/deepfilternet.ui:31
-#, fuzzy
 msgid "Attenuation Limit"
-msgstr "Tlumení"
+msgstr "Limit útlumu"
 
 #: data/ui/deepfilternet.ui:60
 msgid "Minimum Processing Threshold"
@@ -842,9 +831,8 @@ msgid "Minimum Processing Buffer"
 msgstr "Minimální vyrovnávací paměť pro zpracování"
 
 #: data/ui/deepfilternet.ui:163
-#, fuzzy
 msgid "Post Filter Beta"
-msgstr "Délka filtru"
+msgstr "Beta post filtr"
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
@@ -937,9 +925,8 @@ msgid "Excluded Apps"
 msgstr "Vynechané aplikace"
 
 #: data/ui/effects_box.ui:120
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "Povolit/zakázat tuto aplikaci"
+msgstr "Zapnout/vypnout monitorování vstupu"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
@@ -971,18 +958,16 @@ msgid "Calculate Frequencies"
 msgstr "Vypočítat Kmitočty"
 
 #: data/ui/equalizer.ui:310
-#, fuzzy
 msgid "Sort Bands"
-msgstr "Pásma"
+msgstr "Třídění pásem"
 
 #: data/ui/equalizer.ui:325 src/presets_menu.cpp:144
 msgid "Import Preset"
-msgstr "Importovat přednastavení"
+msgstr "Importovat předvolbu"
 
 #: data/ui/equalizer.ui:359
-#, fuzzy
 msgid "Export Preset"
-msgstr "Importovat přednastavení"
+msgstr "Exportovat předvolbu"
 
 #: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
 msgid "Slope"
@@ -1014,9 +999,8 @@ msgid "Expander"
 msgstr "Expandér"
 
 #: data/ui/expander.ui:86
-#, fuzzy
 msgid "Expander Mode"
-msgstr "Režim pásma"
+msgstr "Režim expandéru"
 
 #: data/ui/expander.ui:609 data/ui/gate.ui:822
 msgid "Internal"
@@ -1036,15 +1020,13 @@ msgstr "Popis"
 
 #: data/ui/factory_rnnoise_listview.ui:24
 msgid "Remove this model file"
-msgstr "Odstranit tento soubor s přednastavením"
+msgstr "Odstranit tento modelový soubor"
 
 #: data/ui/filter.ui:52
-#, fuzzy
 msgid "Low-Shelf"
 msgstr "Dolní práh"
 
 #: data/ui/filter.ui:53
-#, fuzzy
 msgid "High-Shelf"
 msgstr "Horní práh"
 
@@ -1053,9 +1035,8 @@ msgid "Bell"
 msgstr "Zvonek"
 
 #: data/ui/filter.ui:55
-#, fuzzy
 msgid "Band-Pass"
-msgstr "Překlenutí"
+msgstr "Pásmová propustnost"
 
 #: data/ui/filter.ui:56
 msgid "Notch"
@@ -1066,24 +1047,20 @@ msgid "Resonance"
 msgstr "Rezonance"
 
 #: data/ui/filter.ui:58
-#, fuzzy
 msgid "Ladder-Pass"
-msgstr "Dolní pásmo"
+msgstr "Stupňovitá propustnost"
 
 #: data/ui/filter.ui:59
-#, fuzzy
 msgid "Ladder-Rejection"
-msgstr "Zmenšení pásma"
+msgstr "Stupňovitá nepropustnost"
 
 #: data/ui/filter.ui:60
-#, fuzzy
 msgid "All-Pass"
-msgstr "Dolní pásmo"
+msgstr "Celková propustnost"
 
 #: data/ui/filter.ui:102
-#, fuzzy
 msgid "Equalizer Mode"
-msgstr "Ekvalizér"
+msgstr "Režim ekvalizéru"
 
 #: data/ui/filter.ui:162 data/ui/multiband_compressor_band.ui:570
 #: data/ui/multiband_gate_band.ui:628 src/tags_plugin_name.cpp:52
@@ -1116,9 +1093,8 @@ msgid "Release Zone Start"
 msgstr "Začátek release zóny"
 
 #: data/ui/level_meter.ui:28
-#, fuzzy
 msgid "True Peak"
-msgstr "Frekvence 2 vrchol"
+msgstr "Opravdový vrchol"
 
 #: data/ui/level_meter.ui:328
 msgid "Reset History"
@@ -1133,14 +1109,12 @@ msgid "Dither"
 msgstr "Dither"
 
 #: data/ui/limiter.ui:94
-#, fuzzy
 msgid "Herm Thin"
-msgstr "Herm tenký"
+msgstr "Herm Thin"
 
 #: data/ui/limiter.ui:95
-#, fuzzy
 msgid "Herm Wide"
-msgstr "Herm široký"
+msgstr "Herm Wide"
 
 #: data/ui/limiter.ui:96
 msgid "Herm Tail"
@@ -1175,9 +1149,8 @@ msgid "Line Wide"
 msgstr "čára široká"
 
 #: data/ui/limiter.ui:104
-#, fuzzy
 msgid "Line Tail"
-msgstr "Šířka čáry"
+msgstr "Line Tail"
 
 #: data/ui/limiter.ui:105
 msgid "Line Duck"
@@ -1300,19 +1273,16 @@ msgid "Auto Leveling"
 msgstr "Automatické vyrovnávání"
 
 #: data/ui/limiter.ui:530
-#, fuzzy
 msgid "Auto Leveling Attack"
-msgstr "Automatické Úrovně"
+msgstr "Attack automatické úrovně"
 
 #: data/ui/limiter.ui:565
-#, fuzzy
 msgid "Auto Leveling Release"
-msgstr "Automatické Úrovně"
+msgstr "Release automatické úrovně"
 
 #: data/ui/limiter.ui:599
-#, fuzzy
 msgid "Auto Leveling Knee"
-msgstr "Automatické Úrovně"
+msgstr "Knee automatické úrovně"
 
 #: data/ui/limiter.ui:624
 msgid "Gain Left"
@@ -1347,14 +1317,12 @@ msgid "Output Volume"
 msgstr "Hlasitost výstupu"
 
 #: data/ui/loudness.ui:104
-#, fuzzy
 msgid "Clipping"
-msgstr "Přiřazení kanálu"
+msgstr "Clipping"
 
 #: data/ui/multiband_compressor.ui:43 data/ui/multiband_gate.ui:42
-#, fuzzy
 msgid "Sidechain Boost"
-msgstr "Postranní řetězec"
+msgstr "Sidechain Boost"
 
 #: data/ui/multiband_compressor.ui:57 data/ui/multiband_gate.ui:57
 msgid "Pink BT"
@@ -1365,7 +1333,6 @@ msgid "Pink MT"
 msgstr "Růžová MT"
 
 #: data/ui/multiband_compressor.ui:59 data/ui/multiband_gate.ui:59
-#, fuzzy
 msgid "Brown BT"
 msgstr "Hnědá BT"
 
@@ -1390,9 +1357,8 @@ msgid "Modern"
 msgstr "Moderní"
 
 #: data/ui/multiband_compressor.ui:158 data/ui/multiband_gate.ui:158
-#, fuzzy
 msgid "Linear Phase"
-msgstr "Obrátit fázi"
+msgstr "Lineární fáze"
 
 #: data/ui/multiband_compressor.ui:266 data/ui/multiband_gate.ui:266
 msgid "Bands List"
@@ -1443,21 +1409,18 @@ msgid "Band Compression Mode"
 msgstr "Kompresní režim pásem"
 
 #: data/ui/multiband_compressor_band.ui:129 data/ui/multiband_gate_band.ui:98
-#, fuzzy
 msgid "Band Bypass"
-msgstr "Překlenutí"
+msgstr "Pásmový bypass"
 
 #: data/ui/multiband_compressor_band.ui:427 data/ui/multiband_gate_band.ui:485
 msgid "Band Sidechain Options"
 msgstr "Možnosti postranního řetězce"
 
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:558
-#, fuzzy
 msgid "Stereo Split"
-msgstr "Stereo režim"
+msgstr "Stereofonní rozdělení"
 
 #: data/ui/multiband_compressor_band.ui:582 data/ui/multiband_gate_band.ui:640
-#, fuzzy
 msgid "Low-Cut"
 msgstr "Nízkopásmový filtr"
 
@@ -1466,7 +1429,6 @@ msgid "Low-Cut Filter Frequency"
 msgstr "Frekvence nízkopásmového filtru"
 
 #: data/ui/multiband_compressor_band.ui:619 data/ui/multiband_gate_band.ui:677
-#, fuzzy
 msgid "High-Cut"
 msgstr "Vysokopásmový filtr"
 
@@ -1539,9 +1501,8 @@ msgid "Library Version"
 msgstr "Verze knihovny"
 
 #: data/ui/pipe_manager_box.ui:138
-#, fuzzy
 msgid "Core Version"
-msgstr "Verze"
+msgstr "Verze jádra"
 
 #: data/ui/pipe_manager_box.ui:149
 msgid "Sampling Rate"
@@ -1561,16 +1522,16 @@ msgstr "Výchozí Kvantum"
 
 #: data/ui/pipe_manager_box.ui:202
 msgid "Presets Autoloading"
-msgstr "Automatické načítání přednastavení"
+msgstr "Automatické načítání předvoleb"
 
 #: data/ui/pipe_manager_box.ui:228 data/ui/pipe_manager_box.ui:358
 msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
 msgstr ""
-"Automaticky lze spouštět pouze místní předvolby. Předvolba Společenství by "
-"měla být importována lokálně, aby mohla být vybrána a přiřazena ke "
-"konkrétnímu zařízení."
+"Automaticky lze spouštět pouze místní předvolby. Komunitní předvolba by měla "
+"být importována lokálně, aby mohla být vybrána a přiřazena ke konkrétnímu "
+"zařízení."
 
 #: data/ui/pipe_manager_box.ui:277
 msgid "Output Devices"
@@ -1578,7 +1539,7 @@ msgstr "Výstupní zařízení"
 
 #: data/ui/pipe_manager_box.ui:294 src/application.cpp:283
 msgid "Output Presets"
-msgstr "Profily pro výstup"
+msgstr "Výstupní předvolby"
 
 #: data/ui/pipe_manager_box.ui:301 data/ui/pipe_manager_box.ui:426
 msgid "Create Association"
@@ -1586,11 +1547,11 @@ msgstr "Vytvořit asociaci"
 
 #: data/ui/pipe_manager_box.ui:314
 msgid "Add Autoloading Output Preset"
-msgstr "Přidat automatické načítání přednastavení výstupu"
+msgstr "Přidat automaticky načítanou výstupní předvolbu"
 
 #: data/ui/pipe_manager_box.ui:334
 msgid "Output Autoloading Presets List"
-msgstr "Seznam automaticky načítaných profilů pro výstup"
+msgstr "Seznam automaticky načítaných výstupních předvoleb"
 
 #: data/ui/pipe_manager_box.ui:407
 msgid "Input Devices"
@@ -1598,15 +1559,15 @@ msgstr "Vstupní zařízení"
 
 #: data/ui/pipe_manager_box.ui:419 src/application.cpp:291
 msgid "Input Presets"
-msgstr "Profily pro vstup"
+msgstr "Vstupní předvolby"
 
 #: data/ui/pipe_manager_box.ui:439
 msgid "Add Autoloading Input Preset"
-msgstr "Přidat automatické načítání přednastavení vstupu"
+msgstr "Přidat automaticky načítanou vstupní předvolbu"
 
 #: data/ui/pipe_manager_box.ui:458
 msgid "Input Autoloading Presets List"
-msgstr "Seznam automaticky načítaných profilů pro vstup"
+msgstr "Seznam automaticky načítaných vstupních předvoleb"
 
 #: data/ui/pipe_manager_box.ui:488
 msgid "Modules"
@@ -1654,9 +1615,8 @@ msgid "Both Channels"
 msgstr "Oba kanály"
 
 #: data/ui/pipe_manager_box.ui:616
-#, fuzzy
 msgid "Waveform"
-msgstr "forma vlny"
+msgstr "Průběh vln"
 
 #: data/ui/pipe_manager_box.ui:620
 msgid "Sine Wave"
@@ -1675,19 +1635,16 @@ msgid "Anti-aliasing"
 msgstr "Vyrovnávání obrazu"
 
 #: data/ui/pitch.ui:58
-#, fuzzy
 msgid "Sequence Length"
-msgstr "Rozsah frekvence"
+msgstr "Délka sekvence"
 
 #: data/ui/pitch.ui:80
-#, fuzzy
 msgid "Seek Window"
-msgstr "Okno"
+msgstr "Hledané okno"
 
 #: data/ui/pitch.ui:102
-#, fuzzy
 msgid "Overlap Length"
-msgstr "Délka filtru"
+msgstr "Délka překryvu"
 
 #: data/ui/pitch.ui:130 src/tags_plugin_name.cpp:60
 msgid "Pitch"
@@ -1698,14 +1655,12 @@ msgid "Semitones"
 msgstr "Půltóny"
 
 #: data/ui/pitch.ui:156
-#, fuzzy
 msgid "Tempo Difference"
-msgstr "Reference"
+msgstr "Rozdíl tempa"
 
 #: data/ui/pitch.ui:178
-#, fuzzy
 msgid "Rate Difference"
-msgstr "Reference"
+msgstr "Rozdíl kmitočtu"
 
 #: data/ui/plugin_row.ui:50
 msgid "Remove this effect"
@@ -1728,9 +1683,8 @@ msgid "Add Effect"
 msgstr "Přidat efekt"
 
 #: data/ui/plugins_box.ui:65
-#, fuzzy
 msgid "Go to the previous effect"
-msgstr "Odstranit tento efekt"
+msgstr "Přejít na předchozí efekt"
 
 #: data/ui/plugins_box.ui:80
 msgid "Go to the next effect"
@@ -1797,23 +1751,20 @@ msgid "Inactivity Timeout"
 msgstr "Časový limit nečinnosti"
 
 #: data/ui/preferences_general.ui:91
-#, fuzzy
 msgid "Input Pipeline"
-msgstr "Vstupní zařízení"
+msgstr "Vstupní pipeline"
 
 #: data/ui/preferences_general.ui:120
-#, fuzzy
 msgid "Update Interval"
-msgstr "Vnitřní"
+msgstr "Interval aktualizací"
 
 #: data/ui/preferences_general.ui:121
 msgid "Related to Level Meters and Spectrum"
 msgstr "Související s hladinoměry a spektrem"
 
 #: data/ui/preferences_general.ui:143
-#, fuzzy
 msgid "Update Frequency"
-msgstr "Kmitočet"
+msgstr "Frekvence aktualizací"
 
 #: data/ui/preferences_general.ui:144
 msgid "Related to LV2 Plugins"
@@ -1832,14 +1783,12 @@ msgid "Hide Menus on Outside Clicks"
 msgstr "Skrýt menu při kliknutí vedle"
 
 #: data/ui/preferences_general.ui:197
-#, fuzzy
 msgid "Experimental Features"
-msgstr "Pokusný"
+msgstr "Experimentální funkce"
 
 #: data/ui/preferences_general.ui:200
-#, fuzzy
 msgid "Native Plugin Window"
-msgstr "Zavřít okno"
+msgstr "Nativní okno modulu"
 
 #: data/ui/preferences_general.ui:201
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
@@ -1851,7 +1800,7 @@ msgstr "_Spektrum"
 
 #: data/ui/preferences_spectrum.ui:24
 msgid "Compensating Delay (ms)"
-msgstr ""
+msgstr "Kompenzace zpoždění (ms)"
 
 #: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
@@ -1926,88 +1875,79 @@ msgid "Load"
 msgstr "Načíst"
 
 #: data/ui/preset_row.ui:39
-#, fuzzy
 msgid "Discard the current settings and load this preset"
-msgstr "Uložit nynější nastavení do tohoto souboru s přednastavením"
+msgstr "Zahodit aktuální nastavení a načíst tuto předvolbu"
 
 #: data/ui/preset_row.ui:48
 msgid "Save current settings to this preset file"
-msgstr "Uložit nynější nastavení do tohoto souboru s přednastavením"
+msgstr "Uložit aktuální nastavení do tohoto souboru předvolby"
 
 #: data/ui/preset_row.ui:58
 msgid "Remove this preset file"
-msgstr "Odstranit tento soubor s přednastavením"
+msgstr "Odstranit tento soubor s předvolbou"
 
 #: data/ui/preset_community_row.ui:55
-#, fuzzy
 msgid "Try"
-msgstr "Zkušební"
+msgstr "Vyzkoušet"
 
 #: data/ui/preset_community_row.ui:56
-#, fuzzy
 msgid "Try this community preset"
-msgstr "Hledat profil pro výstup"
+msgstr "Vyzkoušet tuto komunitní předvolbu"
 
 #: data/ui/preset_community_row.ui:65
-#, fuzzy
 msgid "Import"
-msgstr "Importovat model"
+msgstr "Import"
 
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
-msgstr "Import této předvolby komunity do seznamu místních předvoleb"
+msgstr "Importovat tuto komunitní předvolbu do místního seznamu předvoleb"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
 msgstr "Místní"
 
 #: data/ui/presets_menu.ui:48
-#, fuzzy
 msgid "New Preset Name"
-msgstr "Název nového profilu pro vstup"
+msgstr "Název nové předvolby"
 
 #: data/ui/presets_menu.ui:56
 msgid "Create a new preset"
-msgstr "Vytvořit nové přednastavení"
+msgstr "Vytvořit novou předvolbu"
 
 #: data/ui/presets_menu.ui:70
 msgid "Import a preset from the local storage"
-msgstr "Import předvolby z místního úložiště"
+msgstr "Importovat předvolbu z místního úložiště"
 
 #: data/ui/presets_menu.ui:86
-#, fuzzy
 msgid "Search Local Preset"
-msgstr "Hledat profil pro vstup"
+msgstr "Hledat místní předvolbu"
 
 #: data/ui/presets_menu.ui:147
-#, fuzzy
 msgid "Local Presets List"
-msgstr "Hledat profil pro vstup"
+msgstr "Seznam místních předvoleb"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
 msgstr "Komunita"
 
 #: data/ui/presets_menu.ui:208
-#, fuzzy
 msgid "Search Community Preset"
-msgstr "Hledat profil pro výstup"
+msgstr "Hledat komunitní předvolbu"
 
 #: data/ui/presets_menu.ui:271
-#, fuzzy
 msgid "Community Presets List"
-msgstr "Seznam profilů pro výstup"
+msgstr "Seznam komunitních předvoleb"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr "Nejsou nainstalovány žádné předvolby komunity"
+msgstr "Nejsou nainstalovány žádné komunitní předvolby"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
-"Balíčky komunitních předvoleb lze nainstalovat z úložiště vaší oblíbené "
+"Balíčky komunitních předvoleb lze nainstalovat z repozitáře vaší oblíbené "
 "distribuce."
 
 #: data/ui/presets_menu.ui:298
@@ -2016,7 +1956,7 @@ msgstr "Obnovení"
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
-msgstr "Obnovit pro zobrazení nově nainstalovaných předvoleb komunity"
+msgstr "Obnovte pro zobrazení nově nainstalovaných komunitních předvoleb"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2146,7 +2086,7 @@ msgstr "Zavřít okno"
 
 #: data/ui/shortcuts.ui:37
 msgid "Quit Easy Effects"
-msgstr "Ukončit EasyEffects"
+msgstr "Ukončit Easy Effects"
 
 #: data/ui/speex.ui:33
 msgid "Denoise"
@@ -2302,7 +2242,7 @@ msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
 #: src/application.cpp:575
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "Ukončit EasyEffects. Užitečné, při spuštění servisního režimu."
+msgstr "Ukončit Easy Effects. Užitečné při spuštění v servisním režimu."
 
 #: src/application.cpp:578
 msgid "Print the easyeffects version"
@@ -2322,11 +2262,11 @@ msgstr "Globální propuštění. 1 pro zapnutí, 2 pro vypnutí, 3 pro získán
 
 #: src/application.cpp:590
 msgid "Show available presets."
-msgstr "Ukázat dostupná přednastavení."
+msgstr "Zobrazit dostupné předvolby."
 
 #: src/application.cpp:593
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr "Nahrát přednastavení. Příklad: easyeffects -l music"
+msgstr "Nahrát předvolbu. Příklad: easyeffects -l music"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
@@ -2399,64 +2339,59 @@ msgstr "Efekty"
 
 #: src/equalizer_ui.cpp:521
 msgid "Import APO Preset File"
-msgstr "Importovat přednastavený soubor APO"
+msgstr "Importovat soubor předvoleb APO"
 
 #: src/equalizer_ui.cpp:529
 msgid "APO Presets"
-msgstr "APO Přednastavení"
+msgstr "Předvolby APO"
 
 #: src/equalizer_ui.cpp:554
-#, fuzzy
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
-"Přednastavení APO není načtené. Formát souboru může být chybný. Prosím "
-"zkontrolujte jeho obsah."
+"Předvolba APO nebyla načtena. Formát souboru možná není podporovaný. "
+"Zkontrolujte prosím jeho obsah."
 
 #: src/equalizer_ui.cpp:616
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr "Při exportu předvoleb APO zatím nejsou podporovány rozdělené kanály."
 
 #: src/equalizer_ui.cpp:624
-#, fuzzy
 msgid "Export EqualizerAPO Preset File"
-msgstr "Importovat přednastavený soubor APO"
+msgstr "Exportovat soubor předvolby EqualizerAPO"
 
 #: src/equalizer_ui.cpp:625
 msgid "Save"
 msgstr "Uložit"
 
 #: src/equalizer_ui.cpp:632
-#, fuzzy
 msgid "EqualizerAPO Presets"
-msgstr "APO Přednastavení"
+msgstr "Předvolby EqualizerAPO"
 
 #: src/equalizer_ui.cpp:853
 msgid "Import GraphicEQ Preset File"
-msgstr "Importovat soubor přednastavení GraphicEQ"
+msgstr "Importovat soubor předvolby GraphicEQ"
 
 #: src/equalizer_ui.cpp:861
 msgid "GraphicEQ Presets"
-msgstr "Přednastavení GraphicEQ"
+msgstr "Předvolby GraphicEQ"
 
 #: src/equalizer_ui.cpp:886
-#, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
 msgstr ""
-"Přednastavení GraphicEQ není načtené. Formát souboru může být chybný. Prosím "
-"zkontrolujte jeho obsah."
+"Předvolba GraphicEQ nebyla načtena. Formát souboru možná není podporovaný. "
+"Zkontrolujte prosím jeho obsah."
 
 #: src/pipe_manager_box.cpp:355
 msgid "Remove Autoloading Preset"
-msgstr "Odstranit předvolbu automatického načítání"
+msgstr "Odstranit automaticky načítanou předvolbu"
 
 #: src/plugin_base.cpp:233
-#, fuzzy
 msgid "Output Level Meter"
-msgstr "Výstupní zařízení"
+msgstr "Měřič výstupní úrovně"
 
 #: src/plugins_box.cpp:759
 msgid "Remove"
@@ -2472,9 +2407,8 @@ msgstr "Přidat"
 
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
-#, fuzzy
 msgid "Community Preset"
-msgstr "Importovat přednastavení"
+msgstr "Komunitní předvolba"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
@@ -2487,9 +2421,8 @@ msgid "Preset Not Loaded Correctly"
 msgstr "Předvolba není načtena správně"
 
 #: src/presets_manager.cpp:1147
-#, fuzzy
 msgid "Wrong Format in Excluded Apps List"
-msgstr "Seznam vyloučených aplikací"
+msgstr "Nesprávný formát v seznamu vyloučených aplikací"
 
 #: src/presets_manager.cpp:1154
 msgid "Generic Error While Loading Excluded Apps List"
@@ -2529,7 +2462,7 @@ msgstr "Poslední načtená místní předvolba"
 
 #: src/presets_menu.cpp:573
 msgid "Last Community Preset Loaded"
-msgstr "Poslední načtená předvolba Komunity"
+msgstr "Poslední načtená komunitní předvolba"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
@@ -2588,9 +2521,8 @@ msgid "Exciter"
 msgstr "Zvukový budič"
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Level Meter"
-msgstr "Výstupní zařízení"
+msgstr "Měřič úrovně"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Limiter"
@@ -2631,7 +2563,7 @@ msgid "{} Not Available"
 msgstr "{} Není dostupný"
 
 #: src/ui_helpers.cpp:97
-#, fuzzy, c++-format
+#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2639,8 +2571,11 @@ msgid ""
 "using the 'Quit' option inside the menu in order to make the effect availble "
 "to use."
 msgstr ""
-"Software potřebný pro efekt {}, \"{}\", není nainstalován. Zvažte použití "
-"balíčku Easy Effects Flatpak nebo si software nainstalujte sami."
+"Software potřebný pro efekt {}, „{}“, není nainstalován. Zvažte použití "
+"Flatpak balíčku aplikace Easy Effects nebo ručního nainstalování potřebného "
+"software. Pokud jste nainstalovali chybějící software, musíte restartovat "
+"aplikaci Easy Effects možností „Ukončit“ v nabídce, aby byl efekt v aplikaci "
+"dostupný."
 
 #: src/ui_helpers.cpp:104
 #, c++-format
@@ -2661,9 +2596,9 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:256
-#, fuzzy, c++-format
+#, c++-format
 msgid "Using {}"
-msgstr "Použití"
+msgstr "Používá {}"
 
 #~ msgid "Ceiling"
 #~ msgstr "Strop"
