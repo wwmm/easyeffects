@@ -26,6 +26,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 
@@ -62,12 +63,12 @@ class EffectsBase : public QObject {
   Q_OBJECT;
 
  public:
-  EffectsBase(std::string tag, const std::string& schema, PipeManager* pipe_manager, PipelineType pipe_type);
+  EffectsBase(std::string tag, const std::string& schema, pw::Manager* pipe_manager, PipelineType pipe_type);
   EffectsBase(const EffectsBase&) = delete;
   auto operator=(const EffectsBase&) -> EffectsBase& = delete;
   EffectsBase(const EffectsBase&&) = delete;
   auto operator=(const EffectsBase&&) -> EffectsBase& = delete;
-  virtual ~EffectsBase();
+  ~EffectsBase() override;
 
   const std::string log_tag;
 
@@ -109,8 +110,6 @@ class EffectsBase : public QObject {
 
   void reset_settings();
 
-  sigc::signal<void(const float&)> pipeline_latency;
-
   auto get_plugins_map() -> std::map<std::string, std::shared_ptr<PluginBase>>;
 
   template <typename T>
@@ -118,18 +117,15 @@ class EffectsBase : public QObject {
     return std::dynamic_pointer_cast<T>(plugins[name]);
   }
 
- protected:
-  GSettings *settings = nullptr, *global_settings = nullptr;
+ signals:
+  void pipeline_latency(float value);
 
+ protected:
   std::string schema_base_path;
 
   std::map<std::string, std::shared_ptr<PluginBase>> plugins;
 
   std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
-
-  std::vector<sigc::connection> connections;
-
-  std::vector<gulong> gconnections, gconnections_global;
 
   void create_filters_if_necessary();
 

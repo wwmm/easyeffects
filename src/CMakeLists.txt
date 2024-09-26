@@ -10,7 +10,9 @@ target_sources(easyeffects PRIVATE
     command_line_parser.cpp
     local_client.cpp
     local_server.cpp
+    lv2_wrapper.cpp
     main.cpp
+    plugin_base.cpp
     pw_manager.cpp
     pw_model_clients.cpp
     pw_model_modules.cpp
@@ -22,6 +24,7 @@ target_sources(easyeffects PRIVATE
 
 target_include_directories(easyeffects PRIVATE 
     ${LIBPIPEWIRE_INCLUDE_DIRS}
+    ${LIBLILV_INCLUDE_DIRS}
 )
 
 target_link_libraries(easyeffects PRIVATE
@@ -38,6 +41,7 @@ target_link_libraries(easyeffects PRIVATE
     Qt${QT_MAJOR_VERSION}::Charts
     Qt${QT_MAJOR_VERSION}::Network
     ${LIBPIPEWIRE_LIBRARIES}
+    ${LIBLILV_LIBRARIES}
 )
 
 if(ENABLE_LIBPORTAL)
