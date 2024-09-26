@@ -39,7 +39,7 @@ msgstr ""
 
 #: data/ui/app_info.ui:213 data/ui/rnnoise.ui:51
 msgid "Enable"
-msgstr ""
+msgstr "Habilitar"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
@@ -59,40 +59,40 @@ msgstr ""
 
 #: data/ui/app_info.ui:271
 msgid "Application Volume"
-msgstr ""
+msgstr "Volume do Aplicativo"
 
 #: data/ui/application_window.ui:6
 msgid "_Help"
-msgstr ""
+msgstr "_Ajuda"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
-msgstr ""
+msgstr "_Redefinir as Configurações"
 
 #: data/ui/application_window.ui:18
 msgid "_Preferences"
-msgstr ""
+msgstr "_Preferências"
 
 #: data/ui/application_window.ui:22
 msgid "_Shortcuts"
-msgstr ""
+msgstr "_Atalhos"
 
 #: data/ui/application_window.ui:26
 msgid "_About Easy Effects"
-msgstr ""
+msgstr "_Sobre o Easy Effects"
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr ""
+msgstr "_Sair"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:159
 msgid "Presets"
-msgstr ""
+msgstr "Predefinições"
 
 #: data/ui/application_window.ui:61
 msgid "Presets Menu"
-msgstr ""
+msgstr "Menu de predefinições"
 
 #: data/ui/application_window.ui:68
 msgid "Enable/disable the global bypass"
@@ -108,15 +108,15 @@ msgstr ""
 
 #: data/ui/application_window.ui:99
 msgid "Easy Effects Window"
-msgstr ""
+msgstr "Janela Easy Effects"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
-msgstr ""
+msgstr "Lista de Aplicações"
 
 #: data/ui/apps_box.ui:27
 msgid "Empty List"
-msgstr ""
+msgstr "Lista Vazia"
 
 #: data/ui/apps_box.ui:28
 msgid "No Audio Application Available"
@@ -124,7 +124,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:29 data/ui/filter.ui:38
 msgid "Controls"
-msgstr ""
+msgstr "Controles"
 
 #: data/ui/autogain.ui:33
 msgid "Target"
@@ -140,7 +140,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:103
 msgid "Reference"
-msgstr ""
+msgstr "Referência"
 
 #: data/ui/autogain.ui:109 data/ui/autogain.ui:158 data/ui/level_meter.ui:72
 msgid "Momentary"
@@ -152,7 +152,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:111 data/ui/autogain.ui:233 data/ui/level_meter.ui:145
 msgid "Integrated"
-msgstr ""
+msgstr "Integrado"
 
 #: data/ui/autogain.ui:112
 msgid "Geometric Mean (MSI)"
@@ -172,7 +172,7 @@ msgstr ""
 
 #: data/ui/autogain.ui:124
 msgid "History"
-msgstr ""
+msgstr "Histórico"
 
 #: data/ui/autogain.ui:129 data/ui/autogain.ui:598 data/ui/bass_enhancer.ui:458
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1307
@@ -2227,35 +2227,35 @@ msgstr ""
 msgid "channels"
 msgstr ""
 
-#: src/application.cpp:487
+#: src/application.cpp:487 src/application.cpp:486
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:575
+#: src/application.cpp:575 src/application.cpp:576
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:578
+#: src/application.cpp:578 src/application.cpp:579
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:581
+#: src/application.cpp:581 src/application.cpp:582
 msgid "Reset Easy Effects."
 msgstr ""
 
-#: src/application.cpp:584
+#: src/application.cpp:584 src/application.cpp:585
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:587
+#: src/application.cpp:587 src/application.cpp:588
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:590
+#: src/application.cpp:590 src/application.cpp:591
 msgid "Show available presets."
 msgstr ""
 
-#: src/application.cpp:593
+#: src/application.cpp:593 src/application.cpp:594
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
@@ -2543,12 +2543,10 @@ msgstr ""
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
 msgid "{} Not Available"
 msgstr ""
 
 #: src/ui_helpers.cpp:97
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2558,7 +2556,6 @@ msgid ""
 msgstr ""
 
 #: src/ui_helpers.cpp:104
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2572,6 +2569,5 @@ msgstr ""
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:256
-#, c++-format
 msgid "Using {}"
 msgstr ""
