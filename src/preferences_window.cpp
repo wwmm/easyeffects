@@ -33,7 +33,7 @@
 namespace ui::preferences::window {
 
 struct _PreferencesWindow {
-  AdwPreferencesWindow parent_instance;
+  AdwPreferencesDialog parent_instance;
 
   ui::preferences::general::PreferencesGeneral* page_general;
 
@@ -41,7 +41,7 @@ struct _PreferencesWindow {
 };
 
 // NOLINTNEXTLINE
-G_DEFINE_TYPE(PreferencesWindow, preferences_window, ADW_TYPE_PREFERENCES_WINDOW)
+G_DEFINE_TYPE(PreferencesWindow, preferences_window, ADW_TYPE_PREFERENCES_DIALOG)
 
 void dispose(GObject* object) {
   auto* self = EE_PREFERENCES_WINDOW(object);
@@ -49,8 +49,8 @@ void dispose(GObject* object) {
   gtk_window_set_icon_name(GTK_WINDOW(self),
                            IS_DEVEL_BUILD ? std::string(tags::app::id).append(".Devel").c_str() : tags::app::id);
 
-  adw_preferences_window_remove(ADW_PREFERENCES_WINDOW(self), ADW_PREFERENCES_PAGE(self->page_general));
-  adw_preferences_window_remove(ADW_PREFERENCES_WINDOW(self), ADW_PREFERENCES_PAGE(self->page_spectrum));
+  adw_preferences_dialog_remove(ADW_PREFERENCES_DIALOG(self), ADW_PREFERENCES_PAGE(self->page_general));
+  adw_preferences_dialog_remove(ADW_PREFERENCES_DIALOG(self), ADW_PREFERENCES_PAGE(self->page_spectrum));
 
   util::debug("disposed");
 
@@ -72,8 +72,8 @@ void preferences_window_init(PreferencesWindow* self) {
   self->page_general = ui::preferences::general::create();
   self->page_spectrum = ui::preferences::spectrum::create();
 
-  adw_preferences_window_add(ADW_PREFERENCES_WINDOW(self), ADW_PREFERENCES_PAGE(self->page_general));
-  adw_preferences_window_add(ADW_PREFERENCES_WINDOW(self), ADW_PREFERENCES_PAGE(self->page_spectrum));
+  adw_preferences_dialog_add(ADW_PREFERENCES_DIALOG(self), ADW_PREFERENCES_PAGE(self->page_general));
+  adw_preferences_dialog_add(ADW_PREFERENCES_DIALOG(self), ADW_PREFERENCES_PAGE(self->page_spectrum));
 }
 
 auto create() -> PreferencesWindow* {

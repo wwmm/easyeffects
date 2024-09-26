@@ -511,10 +511,8 @@ void application_init(Application* self) {
                 [](GSimpleAction* action, GVariant* parameter, gpointer gapp) {
                   auto* preferences = ui::preferences::window::create();
 
-                  gtk_window_set_transient_for(GTK_WINDOW(preferences),
-                                               GTK_WINDOW(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
-
-                  gtk_window_present(GTK_WINDOW(preferences));
+                  adw_dialog_present(ADW_DIALOG(preferences),
+                                     GTK_WIDGET(gtk_application_get_active_window(GTK_APPLICATION(gapp))));
                 },
                 nullptr, nullptr, nullptr};
 
