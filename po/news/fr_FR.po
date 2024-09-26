@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-26 03:29+0000\n"
-"PO-Revision-Date: 2024-09-05 14:09+0000\n"
+"PO-Revision-Date: 2024-09-26 12:23+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -143,6 +143,9 @@ msgid ""
 "drawing so it matches the latency offset applied by the user on programs "
 "like Pavucontrol."
 msgstr ""
+"La compensation de latence peut être appliquée au greffon du spectre. cela "
+"retardera son dessin afin qu'il corresponde au décalage de latence appliqué "
+"par l'utilisateur sur des programmes tels que Pavucontrol."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
@@ -186,17 +189,18 @@ msgid "Bug fixes:"
 msgstr "Corrections de bogues :"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
-#, fuzzy
 msgid ""
 "The command line option that shows EasyEffects version should work properly "
 "now."
 msgstr ""
-"L'option de ligne de commande retournant l’état du contournement global "
-"fonctionne à nouveau."
+"L'option de la ligne de commande qui indique la version d'EasyEffects "
+"devrait maintenant fonctionner correctement."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Fixed a regression in the autoload preset code."
 msgstr ""
+"Correction d'une régression dans le code du chargement automatique des "
+"préréglages."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
