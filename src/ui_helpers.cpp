@@ -129,13 +129,13 @@ void show_simple_message_dialog(GtkWidget* parent, const std::string& title, con
     return;
   }
 
-  auto* dialog = adw_message_dialog_new(GTK_WINDOW(parent), title.c_str(), descr.c_str());
+  auto* dialog = adw_alert_dialog_new(title.c_str(), descr.c_str());
 
   const std::string response_id = "close";
-  adw_message_dialog_add_response(ADW_MESSAGE_DIALOG(dialog), response_id.c_str(), "Close (Press ESC)");
-  adw_message_dialog_set_default_response(ADW_MESSAGE_DIALOG(dialog), response_id.c_str());
+  adw_alert_dialog_add_response(ADW_ALERT_DIALOG(dialog), response_id.c_str(), "Close (Press ESC)");
+  adw_alert_dialog_set_default_response(ADW_ALERT_DIALOG(dialog), response_id.c_str());
 
-  gtk_window_present(GTK_WINDOW(dialog));
+  adw_dialog_present(dialog, parent);
 }
 
 auto parse_spinbutton_output(GtkSpinButton* button, const char* unit, const bool& lower_bound) -> gboolean {
