@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-11 22:08+0000\n"
+"POT-Creation-Date: 2024-09-26 03:29+0000\n"
 "PO-Revision-Date: 2024-09-26 02:35+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2296,35 +2296,35 @@ msgstr "Neurčitý název - ID procesu "
 msgid "channels"
 msgstr "Kanály"
 
-#: src/application.cpp:486
+#: src/application.cpp:487
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:576
+#: src/application.cpp:575
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Ukončit EasyEffects. Užitečné, při spuštění servisního režimu."
 
-#: src/application.cpp:579
+#: src/application.cpp:578
 msgid "Print the easyeffects version"
 msgstr "Tisk verze easyeffects"
 
-#: src/application.cpp:582
+#: src/application.cpp:581
 msgid "Reset Easy Effects."
 msgstr "Obnovit EasyEffects."
 
-#: src/application.cpp:585
+#: src/application.cpp:584
 msgid "Hide the Window."
 msgstr "Skrýt Okno."
 
-#: src/application.cpp:588
+#: src/application.cpp:587
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "Globální propuštění. 1 pro zapnutí, 2 pro vypnutí, 3 pro získání stavu"
 
-#: src/application.cpp:591
+#: src/application.cpp:590
 msgid "Show available presets."
 msgstr "Ukázat dostupná přednastavení."
 
-#: src/application.cpp:594
+#: src/application.cpp:593
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Nahrát přednastavení. Příklad: easyeffects -l music"
 

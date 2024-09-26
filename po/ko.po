@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-11 22:08+0000\n"
+"POT-Creation-Date: 2024-09-26 03:29+0000\n"
 "PO-Revision-Date: 2023-12-31 05:09+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2247,35 +2247,35 @@ msgstr ""
 msgid "channels"
 msgstr "채널"
 
-#: src/application.cpp:486
+#: src/application.cpp:487
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:576
+#: src/application.cpp:575
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:579
+#: src/application.cpp:578
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:582
+#: src/application.cpp:581
 msgid "Reset Easy Effects."
 msgstr "EasyEffects를 재설정합니다."
 
-#: src/application.cpp:585
+#: src/application.cpp:584
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:588
+#: src/application.cpp:587
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:591
+#: src/application.cpp:590
 msgid "Show available presets."
 msgstr "사용 가능한 프리셋을 표시합니다."
 
-#: src/application.cpp:594
+#: src/application.cpp:593
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "프리셋을 불러옵니다. 예시: easyeffects -l music"
 
