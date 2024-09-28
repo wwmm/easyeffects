@@ -42,7 +42,7 @@
 #include <spa/param/param.h>
 #include <spa/param/props.h>
 #include <spa/param/route.h>
-#include <spa/pod/builder.h>
+#include <spa/pod/builder.h>  // NOLINT
 #include <spa/pod/iter.h>
 #include <spa/pod/parser.h>
 #include <spa/pod/pod.h>
@@ -1655,7 +1655,7 @@ void Manager::setNodeVolume(const uint& serial, const uint& n_vol_ch, const floa
 
     std::array<char, 1024U> buffer{};
 
-    auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
+    auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));  // NOLINT
 
     lock();
 
@@ -1673,7 +1673,7 @@ void Manager::setNodeMute(const uint& serial, const bool& state) {
   if (auto* proxy = model_nodes.get_proxy_by_serial(serial); proxy != nullptr) {
     std::array<char, 1024U> buffer{};
 
-    auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));
+    auto builder = SPA_POD_BUILDER_INIT(buffer.data(), sizeof(buffer));  // NOLINT
 
     lock();
 

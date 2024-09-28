@@ -8,6 +8,7 @@ kde_target_enable_exceptions(easyeffects PRIVATE)
 
 target_sources(easyeffects PRIVATE
     command_line_parser.cpp
+    effects_base.cpp
     local_client.cpp
     local_server.cpp
     lv2_wrapper.cpp
