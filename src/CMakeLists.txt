@@ -18,6 +18,8 @@ target_sources(easyeffects PRIVATE
     pw_model_clients.cpp
     pw_model_modules.cpp
     pw_model_nodes.cpp
+    stream_input_effects.cpp
+    stream_output_effects.cpp
     tags_plugin_name.cpp
     util.cpp
     resources.qrc
