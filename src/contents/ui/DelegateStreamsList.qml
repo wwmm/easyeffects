@@ -1,3 +1,4 @@
+import EEdbm
 import EEpw
 import QtQuick
 import QtQuick.Controls as Controls
@@ -88,7 +89,7 @@ Kirigami.AbstractCard {
                     id: volumeSlider
 
                     function prepareVolumeValue(normalizedValue) {
-                        return EEdb.useCubicVolumes === false ? normalizedValue * 100 : Math.cbrt(normalizedValue) * 100;
+                        return EEdbm.main.useCubicVolumes === false ? normalizedValue * 100 : Math.cbrt(normalizedValue) * 100;
                     }
 
                     Layout.fillWidth: true
@@ -101,7 +102,7 @@ Kirigami.AbstractCard {
                     onMoved: {
                         if (value !== prepareVolumeValue(model.volume)) {
                             let v = value / 100;
-                            v = EEdb.useCubicVolumes === false ? v : v * v * v;
+                            v = EEdbm.main.useCubicVolumes === false ? v : v * v * v;
                             EEpwManager.setNodeVolume(model.serial, model.nVolumeChannels, v);
                         }
                     }
