@@ -1,3 +1,4 @@
+import EEdbm
 import QtQml
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -35,10 +36,10 @@ Kirigami.OverlaySheet {
                         id: enableServiceMode
 
                         label: i18n("Enable Service Mode")
-                        isChecked: EEdb.enableServiceMode
+                        isChecked: EEdbm.main.enableServiceMode
                         onCheckedChanged: {
-                            if (isChecked !== EEdb.enableServiceMode)
-                                EEdb.enableServiceMode = isChecked;
+                            if (isChecked !== EEdbm.main.enableServiceMode)
+                                EEdbm.main.enableServiceMode = isChecked;
 
                         }
                     }
@@ -47,7 +48,7 @@ Kirigami.OverlaySheet {
                         id: autostartOnLogin
 
                         label: i18n("Autostart on Login")
-                        // isChecked: EEdb.autostartOnLogin
+                        // isChecked: EEdbm.main.autostartOnLogin
                         onCheckedChanged: {
                         }
                     }
@@ -56,11 +57,11 @@ Kirigami.OverlaySheet {
                         id: showTrayIcon
 
                         label: i18n("Show the Tray Icon")
-                        isChecked: EEdb.showTrayIcon && canUseSysTray
+                        isChecked: EEdbm.main.showTrayIcon && canUseSysTray
                         enabled: canUseSysTray
                         onCheckedChanged: {
-                            if (isChecked !== EEdb.showTrayIcon)
-                                EEdb.showTrayIcon = isChecked;
+                            if (isChecked !== EEdbm.main.showTrayIcon)
+                                EEdbm.main.showTrayIcon = isChecked;
 
                         }
                     }
@@ -90,10 +91,10 @@ Kirigami.OverlaySheet {
                         id: processAllOutputs
 
                         label: i18n("Process All Output Streams")
-                        isChecked: EEdb.processAllOutputs
+                        isChecked: EEdbm.main.processAllOutputs
                         onCheckedChanged: {
-                            if (isChecked !== EEdb.processAllOutputs)
-                                EEdb.processAllOutputs = isChecked;
+                            if (isChecked !== EEdbm.main.processAllOutputs)
+                                EEdbm.main.processAllOutputs = isChecked;
 
                         }
                     }
@@ -102,10 +103,10 @@ Kirigami.OverlaySheet {
                         id: processAllInputs
 
                         label: i18n("Process All Input Streams")
-                        isChecked: EEdb.processAllInputs
+                        isChecked: EEdbm.main.processAllInputs
                         onCheckedChanged: {
-                            if (isChecked !== EEdb.processAllInputs)
-                                EEdb.processAllInputs = isChecked;
+                            if (isChecked !== EEdbm.main.processAllInputs)
+                                EEdbm.main.processAllInputs = isChecked;
 
                         }
                     }
@@ -114,10 +115,10 @@ Kirigami.OverlaySheet {
                         id: excludeMonitorStreams
 
                         label: i18n("Ignore Streams from Monitor of Devices")
-                        isChecked: EEdb.excludeMonitorStreams
+                        isChecked: EEdbm.main.excludeMonitorStreams
                         onCheckedChanged: {
-                            if (isChecked !== EEdb.excludeMonitorStreams)
-                                EEdb.excludeMonitorStreams = isChecked;
+                            if (isChecked !== EEdbm.main.excludeMonitorStreams)
+                                EEdbm.main.excludeMonitorStreams = isChecked;
 
                         }
                     }
@@ -126,10 +127,10 @@ Kirigami.OverlaySheet {
                         id: useCubicVolumes
 
                         label: i18n("Use Cubic Volume")
-                        isChecked: EEdb.useCubicVolumes
+                        isChecked: EEdbm.main.useCubicVolumes
                         onCheckedChanged: {
-                            if (isChecked !== EEdb.useCubicVolumes)
-                                EEdb.useCubicVolumes = isChecked;
+                            if (isChecked !== EEdbm.main.useCubicVolumes)
+                                EEdbm.main.useCubicVolumes = isChecked;
 
                         }
                     }
@@ -138,10 +139,10 @@ Kirigami.OverlaySheet {
                         id: inactivityTimerEnable
 
                         label: i18n("Enable the Inactivity Timeout")
-                        isChecked: EEdb.inactivityTimerEnable
+                        isChecked: EEdbm.main.inactivityTimerEnable
                         onCheckedChanged: {
-                            if (isChecked !== EEdb.inactivityTimerEnable)
-                                EEdb.inactivityTimerEnable = isChecked;
+                            if (isChecked !== EEdbm.main.inactivityTimerEnable)
+                                EEdbm.main.inactivityTimerEnable = isChecked;
 
                         }
                     }
@@ -153,13 +154,13 @@ Kirigami.OverlaySheet {
                         subtitle: i18n("Input Pipeline")
                         from: 1
                         to: 3600
-                        value: EEdb.inactivityTimeout
+                        value: EEdbm.main.inactivityTimeout
                         decimals: 0
                         stepSize: 1
                         unit: "s"
-                        enabled: EEdb.inactivityTimerEnable
+                        enabled: EEdbm.main.inactivityTimerEnable
                         onValueModified: (v) => {
-                            EEdb.inactivityTimeout = v;
+                            EEdbm.main.inactivityTimeout = v;
                         }
                     }
 
@@ -170,12 +171,12 @@ Kirigami.OverlaySheet {
                         subtitle: i18n("Related to Level Meters and Spectrum")
                         from: 10
                         to: 1000
-                        value: EEdb.metersUpdateInterval
+                        value: EEdbm.main.metersUpdateInterval
                         decimals: 0
                         stepSize: 1
                         unit: "ms"
                         onValueModified: (v) => {
-                            EEdb.metersUpdateInterval = v;
+                            EEdbm.main.metersUpdateInterval = v;
                         }
                     }
 
@@ -208,10 +209,10 @@ Kirigami.OverlaySheet {
                         id: spectrumState
 
                         label: i18n("Enabled")
-                        isChecked: EEdbSpectrum.state
+                        isChecked: EEdbm.spectrum.state
                         onCheckedChanged: {
-                            if (isChecked !== EEdbSpectrum.state)
-                                EEdbSpectrum.state = isChecked;
+                            if (isChecked !== EEdbm.spectrum.state)
+                                EEdbm.spectrum.state = isChecked;
 
                         }
                     }
@@ -228,22 +229,22 @@ Kirigami.OverlaySheet {
 
                         text: i18n("Shape")
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: EEdbSpectrum.spectrumShape
+                        currentIndex: EEdbm.spectrum.spectrumShape
                         editable: false
                         model: [i18n("Bars"), i18n("Lines"), i18n("Dots"), i18n("Area")]
                         onActivated: (idx) => {
-                            if (idx !== EEdbSpectrum.spectrumShape)
-                                EEdbSpectrum.spectrumShape = idx;
+                            if (idx !== EEdbm.spectrum.spectrumShape)
+                                EEdbm.spectrum.spectrumShape = idx;
 
                         }
                     }
 
                     EeSwitch {
                         label: i18n("Enable OpenGL Acceleration")
-                        isChecked: EEdbSpectrum.useOpenGL
+                        isChecked: EEdbm.spectrum.useOpenGL
                         onCheckedChanged: {
-                            if (isChecked !== EEdbSpectrum.useOpenGL)
-                                EEdbSpectrum.useOpenGL = isChecked;
+                            if (isChecked !== EEdbm.spectrum.useOpenGL)
+                                EEdbm.spectrum.useOpenGL = isChecked;
 
                         }
                     }
@@ -252,10 +253,10 @@ Kirigami.OverlaySheet {
                         id: dynamicYScale
 
                         label: i18n("Dynamic Scale")
-                        isChecked: EEdbSpectrum.dynamicYScale
+                        isChecked: EEdbm.spectrum.dynamicYScale
                         onCheckedChanged: {
-                            if (isChecked !== EEdbSpectrum.dynamicYScale)
-                                EEdbSpectrum.dynamicYScale = isChecked;
+                            if (isChecked !== EEdbm.spectrum.dynamicYScale)
+                                EEdbm.spectrum.dynamicYScale = isChecked;
 
                         }
                     }
@@ -266,11 +267,11 @@ Kirigami.OverlaySheet {
                         label: i18n("Points")
                         from: 2
                         to: 2048
-                        value: EEdbSpectrum.nPoints
+                        value: EEdbm.spectrum.nPoints
                         decimals: 0
                         stepSize: 1
                         onValueModified: (v) => {
-                            EEdbSpectrum.nPoints = v;
+                            EEdbm.spectrum.nPoints = v;
                         }
                     }
 
@@ -280,12 +281,12 @@ Kirigami.OverlaySheet {
                         label: i18n("Height")
                         from: 100
                         to: 1000
-                        value: EEdbSpectrum.height
+                        value: EEdbm.spectrum.height
                         decimals: 0
                         stepSize: 1
                         unit: "px"
                         onValueModified: (v) => {
-                            EEdbSpectrum.height = v;
+                            EEdbm.spectrum.height = v;
                         }
                     }
 
@@ -302,12 +303,12 @@ Kirigami.OverlaySheet {
                         label: i18n("Minimum")
                         from: 20
                         to: 21900
-                        value: EEdbSpectrum.minimumFrequency
+                        value: EEdbm.spectrum.minimumFrequency
                         decimals: 0
                         stepSize: 10
                         unit: "Hz"
                         onValueModified: (v) => {
-                            EEdbSpectrum.minimumFrequency = v;
+                            EEdbm.spectrum.minimumFrequency = v;
                         }
                     }
 
@@ -317,12 +318,12 @@ Kirigami.OverlaySheet {
                         label: i18n("Maximum")
                         from: 120
                         to: 22000
-                        value: EEdbSpectrum.maximumFrequency
+                        value: EEdbm.spectrum.maximumFrequency
                         decimals: 0
                         stepSize: 10
                         unit: "Hz"
                         onValueModified: (v) => {
-                            EEdbSpectrum.maximumFrequency = v;
+                            EEdbm.spectrum.maximumFrequency = v;
                         }
                     }
 
@@ -352,10 +353,10 @@ Kirigami.OverlaySheet {
 
                         label: i18n("Native Plugin Window")
                         subtitle: i18n("Allows The Native Plugin Window to be Shown/Hidden")
-                        isChecked: EEdb.showNativePluginUi
+                        isChecked: EEdbm.main.showNativePluginUi
                         onCheckedChanged: {
-                            if (isChecked !== EEdb.showNativePluginUi)
-                                EEdb.showNativePluginUi = isChecked;
+                            if (isChecked !== EEdbm.main.showNativePluginUi)
+                                EEdbm.main.showNativePluginUi = isChecked;
 
                         }
                     }
@@ -367,13 +368,13 @@ Kirigami.OverlaySheet {
                         subtitle: i18n("Related to LV2 Plugins")
                         from: 1
                         to: 60
-                        value: EEdb.lv2uiUpdateFrequency
+                        value: EEdbm.main.lv2uiUpdateFrequency
                         decimals: 0
                         stepSize: 1
                         unit: "Hz"
-                        enabled: EEdb.showNativePluginUi
+                        enabled: EEdbm.main.showNativePluginUi
                         onValueModified: (v) => {
-                            EEdb.lv2uiUpdateFrequency = v;
+                            EEdbm.main.lv2uiUpdateFrequency = v;
                         }
                     }
 

@@ -20,3 +20,9 @@ function equalArrays(a, b) {
 }
 
 function clamp(num, min, max) { return Math.min(Math.max(num, min), max); }
+
+function printObjectProperties(obj) {
+    for (var prop in obj) {
+        print(prop += " (" + typeof (obj[prop]) + ") = " + obj[prop]);
+    }
+}

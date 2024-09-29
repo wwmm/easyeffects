@@ -1,4 +1,5 @@
 import "Common.js" as Common
+import EEdbm
 import EEpw
 import EEtagsPluginName
 import QtCharts
@@ -259,9 +260,9 @@ Kirigami.Page {
     header: EeChart {
         id: spectrumChart
 
-        implicitHeight: EEdbSpectrum.height
-        seriesType: EEdbSpectrum.spectrumShape
-        useOpenGL: EEdbSpectrum.useOpenGL
+        implicitHeight: EEdbm.spectrum.height
+        seriesType: EEdbm.spectrum.spectrumShape
+        useOpenGL: EEdbm.spectrum.useOpenGL
     }
 
     footer: Kirigami.AbstractApplicationHeader {

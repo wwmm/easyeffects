@@ -1,5 +1,6 @@
 // bug: https://bugreports.qt.io/browse/QTBUG-66150
 
+import EEdbm
 import QtCharts
 import QtQml
 import QtQuick
@@ -16,13 +17,13 @@ Item {
     readonly property color backgroundRectColor: Kirigami.Theme.backgroundColor
     property var testData: [Qt.point(50.5, 0.2), Qt.point(100, 0.4), Qt.point(1000, 0.6), Qt.point(10000, 0.8), Qt.point(15000, 1)]
 
-    implicitHeight: EEdbSpectrum.height
+    implicitHeight: EEdbm.spectrum.height
     Kirigami.Theme.inherit: false
     Kirigami.Theme.colorSet: Kirigami.Theme.View
 
     // rectangle used as workaround for the bug linked at the top of this file
     Rectangle {
-        implicitHeight: EEdbSpectrum.height
+        implicitHeight: EEdbm.spectrum.height
         color: backgroundRectColor
 
         anchors {
@@ -39,7 +40,7 @@ Item {
     ChartView {
         id: chart
 
-        implicitHeight: EEdbSpectrum.height
+        implicitHeight: EEdbm.spectrum.height
         antialiasing: true
         localizeNumbers: true
         backgroundColor: backgroundRectColor
@@ -74,8 +75,8 @@ Item {
             id: axisFreqLog
 
             labelFormat: "%.0f"
-            min: EEdbSpectrum.minimumFrequency
-            max: EEdbSpectrum.maximumFrequency
+            min: EEdbm.spectrum.minimumFrequency
+            max: EEdbm.spectrum.maximumFrequency
             base: 10
             gridVisible: false
             lineVisible: false
@@ -88,8 +89,8 @@ Item {
             id: axisFreq
 
             labelFormat: "%.1f"
-            min: EEdbSpectrum.minimumFrequency
-            max: EEdbSpectrum.maximumFrequency
+            min: EEdbm.spectrum.minimumFrequency
+            max: EEdbm.spectrum.maximumFrequency
             gridVisible: false
             lineVisible: false
             labelsColor: color1

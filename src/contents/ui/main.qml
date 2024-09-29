@@ -1,4 +1,5 @@
 import AboutEE
+import EEdbm
 import Qt.labs.platform
 import QtQuick
 import QtQuick.Controls as Controls
@@ -9,31 +10,30 @@ import org.kde.kirigamiaddons.formcard as FormCard
 Kirigami.ApplicationWindow {
     id: appWindow
 
-    width: EEdb.width
-    height: EEdb.height
+    width: EEdbm.main.width
+    height: EEdbm.main.height
     title: i18nc("@title:window", "EasyEffects")
     pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.None
-    // flags: Qt.WA_DeleteOnClose
     onWidthChanged: {
-        EEdb.width = applicationWindow().width;
+        EEdbm.main.width = applicationWindow().width;
     }
     onHeightChanged: {
-        EEdb.height = applicationWindow().height;
+        EEdbm.main.height = applicationWindow().height;
     }
     onVisibleChanged: {
         if (appWindow.visible) {
-            switch (EEdb.visiblePage) {
+            switch (EEdbm.main.visiblePage) {
             case 0:
                 pageStack.push("qrc:ui/PageStreamsEffects.qml", {
                     "pageType": 0,
-                    "streamDB": EEdbStreamOutputs,
+                    "streamDB": EEdbm.streamOutputs,
                     "visible": true
                 });
                 break;
             case 1:
                 pageStack.push("qrc:ui/PageStreamsEffects.qml", {
                     "pageType": 1,
-                    "streamDB": EEdbStreamInputs,
+                    "streamDB": EEdbm.streamInputs,
                     "visible": true
                 });
                 break;
@@ -44,10 +44,7 @@ Kirigami.ApplicationWindow {
                 null;
             }
         } else {
-            EEdb.save();
-            EEdbSpectrum.save();
-            EEdbStreamOutputs.save();
-            EEdbStreamInputs.save();
+            EEdbm.saveAll();
             pageStack.pop();
         }
     }
@@ -76,7 +73,7 @@ Kirigami.ApplicationWindow {
     SystemTrayIcon {
         id: tray
 
-        visible: EEdb.showTrayIcon && canUseSysTray
+        visible: EEdbm.main.showTrayIcon && canUseSysTray
         icon.name: "com.github.wwmm.easyeffects"
         onActivated: {
             if (!appWindow.visible) {
@@ -92,7 +89,7 @@ Kirigami.ApplicationWindow {
             visible: false
 
             MenuItem {
-                text: i18n("Preset: " + EEdb.lastUsedPreset)
+                text: i18n("Preset: " + EEdbm.main.lastUsedPreset)
                 enabled: false
             }
 
@@ -134,11 +131,11 @@ Kirigami.ApplicationWindow {
                         icon.name: "system-shutdown-symbolic"
                         displayHint: Kirigami.DisplayHint.IconOnly
                         checkable: true
-                        checked: !EEdb.bypass
+                        checked: !EEdbm.main.bypass
                         onTriggered: {
                             showPassiveNotification("Turn Effects On/Off");
-                            if (checked !== !EEdb.bypass)
-                                EEdb.bypass = !checked;
+                            if (checked !== !EEdbm.main.bypass)
+                                EEdbm.main.bypass = !checked;
 
                         }
                     }
@@ -155,14 +152,14 @@ Kirigami.ApplicationWindow {
                         icon.name: "audio-speakers-symbolic"
                         text: i18n("Output")
                         checkable: true
-                        checked: EEdb.visiblePage === 0
+                        checked: EEdbm.main.visiblePage === 0
                         onTriggered: {
                             pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
                                 "pageType": 0,
-                                "streamDB": EEdbStreamOutputs,
+                                "streamDB": EEdbm.streamOutputs,
                                 "visible": true
                             });
-                            EEdb.visiblePage = 0;
+                            EEdbm.main.visiblePage = 0;
                         }
                     },
                     Kirigami.Action {
@@ -170,14 +167,14 @@ Kirigami.ApplicationWindow {
                         icon.name: "audio-input-microphone-symbolic"
                         text: i18n("Input")
                         checkable: true
-                        checked: EEdb.visiblePage === 1
+                        checked: EEdbm.main.visiblePage === 1
                         onTriggered: {
                             pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
                                 "pageType": 1,
-                                "streamDB": EEdbStreamInputs,
+                                "streamDB": EEdbm.streamInputs,
                                 "visible": true
                             });
-                            EEdb.visiblePage = 1;
+                            EEdbm.main.visiblePage = 1;
                         }
                     },
                     Kirigami.Action {
@@ -185,10 +182,10 @@ Kirigami.ApplicationWindow {
                         icon.name: "network-server-symbolic"
                         text: i18n("PipeWire")
                         checkable: true
-                        checked: EEdb.visiblePage === 2
+                        checked: EEdbm.main.visiblePage === 2
                         onTriggered: {
                             pageStack.replace("qrc:ui/PipeWirePage.qml");
-                            EEdb.visiblePage = 2;
+                            EEdbm.main.visiblePage = 2;
                         }
                     }
                 ]
