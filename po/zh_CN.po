@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-28 03:19+0000\n"
-"PO-Revision-Date: 2024-07-07 04:09+0000\n"
-"Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"easyeffects/main/zh_Hans/>\n"
+"PO-Revision-Date: 2024-09-30 07:15+0000\n"
+"Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
+"Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
+"projects/easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -1507,9 +1507,8 @@ msgid "Library Version"
 msgstr "库文件版本"
 
 #: data/ui/pipe_manager_box.ui:138
-#, fuzzy
 msgid "Core Version"
-msgstr "头文件版本"
+msgstr "核心版本"
 
 #: data/ui/pipe_manager_box.ui:149
 msgid "Sampling Rate"
@@ -1755,9 +1754,8 @@ msgid "Inactivity Timeout"
 msgstr "空闲超时"
 
 #: data/ui/preferences_general.ui:91
-#, fuzzy
 msgid "Input Pipeline"
-msgstr "输入设备"
+msgstr "输入流水线"
 
 #: data/ui/preferences_general.ui:120
 msgid "Update Interval"
@@ -1805,7 +1803,7 @@ msgstr "频谱(_S)"
 
 #: data/ui/preferences_spectrum.ui:24
 msgid "Compensating Delay (ms)"
-msgstr ""
+msgstr "补偿延迟（毫秒）"
 
 #: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
