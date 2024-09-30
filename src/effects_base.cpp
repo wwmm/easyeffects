@@ -26,6 +26,11 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include "db_manager.hpp"
+#include "pipeline_type.hpp"
+#include "plugin_base.hpp"
+#include "pw_manager.hpp"
+#include "util.hpp"
 // #include "autogain.hpp"
 // #include "bass_enhancer.hpp"
 // #include "bass_loudness.hpp"
@@ -49,10 +54,7 @@
 // #include "multiband_compressor.hpp"
 // #include "multiband_gate.hpp"
 // #include "output_level.hpp"
-#include "pipeline_type.hpp"
-#include "pw_manager.hpp"
 // #include "pitch.hpp"
-#include "plugin_base.hpp"
 // #include "reverb.hpp"
 // #include "rnnoise.hpp"
 // #include "spectrum.hpp"
@@ -61,15 +63,14 @@
 // #include "tags_app.hpp"
 // #include "tags_plugin_name.hpp"
 // #include "tags_schema.hpp"
-#include "util.hpp"
 
-EffectsBase::EffectsBase(std::string tag, const std::string& schema, pw::Manager* pipe_manager, PipelineType pipe_type)
-    : log_tag(std::move(tag)), pm(pipe_manager), pipeline_type(pipe_type) {
+EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
+    : log_tag(pipe_type == PipelineType::output ? "soe: " : "sie: "), pm(pipe_manager), pipeline_type(pipe_type) {
   using namespace std::string_literals;
 
-  schema_base_path = "/" + schema + "/";
+  // schema_base_path = "/" + schema + "/";
 
-  std::replace(schema_base_path.begin(), schema_base_path.end(), '.', '/');
+  // std::replace(schema_base_path.begin(), schema_base_path.end(), '.', '/');
 
   //   output_level = std::make_shared<OutputLevel>(log_tag, tags::schema::output_level::id,
   //                                                schema_base_path + "outputlevel/", pm, pipeline_type);
@@ -87,51 +88,41 @@ EffectsBase::EffectsBase(std::string tag, const std::string& schema, pw::Manager
 
   create_filters_if_necessary();
 
-  //   gconnections.push_back(g_signal_connect(settings, "changed::plugins",
-  //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto* self = static_cast<EffectsBase*>(user_data);
+  switch (pipeline_type) {
+    case PipelineType::input:
+      connect(db::StreamInputs::self(), &db::StreamInputs::pluginsChanged, [&]() {
+        create_filters_if_necessary();
+        broadcast_pipeline_latency();
+      });
+      break;
+    case PipelineType::output:
+      connect(db::StreamOutputs::self(), &db::StreamOutputs::pluginsChanged, [&]() {
+        create_filters_if_necessary();
+        broadcast_pipeline_latency();
+      });
+      break;
+  }
 
-  //                                             self->create_filters_if_necessary();
+  connect(db::Main::self(), &db::Main::metersUpdateIntervalChanged, [&]() {
+    // spectrum->notification_time_window = 0.001F * db::Main::metersUpdateInterval();
 
-  //                                             self->broadcast_pipeline_latency();
-  //                                           }),
-  //                                           this));
+    for (auto& plugin : plugins | std::views::values) {
+      plugin->notification_time_window = 0.001F * db::Main::metersUpdateInterval();
+    }
+  });
 
-  //   gconnections_global.push_back(g_signal_connect(global_settings, "changed::meters-update-interval",
-  //                                                  G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data)
-  //                                                  {
-  //                                                    auto* self = static_cast<EffectsBase*>(user_data);
+  connect(db::Main::self(), &db::Main::lv2uiUpdateFrequencyChanged, [&]() {
+    auto v = db::Main::lv2uiUpdateFrequency();
 
-  //                                                    auto v = g_settings_get_int(settings, key);
+    for (auto& plugin : plugins | std::views::values) {
+      plugin->set_native_ui_update_frequency(v);
+    }
+  });
 
-  //                                                    self->spectrum->notification_time_window = 0.001F * v;
-
-  //                                                    for (auto& plugin : self->plugins | std::views::values) {
-  //                                                      plugin->notification_time_window = 0.001F * v;
-  //                                                    }
-  //                                                  }),
-  //                                                  this));
-
-  //   gconnections_global.push_back(g_signal_connect(global_settings, "changed::lv2ui-update-frequency",
-  //                                                  G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data)
-  //                                                  {
-  //                                                    auto* self = static_cast<EffectsBase*>(user_data);
-
-  //                                                    auto v = g_settings_get_int(settings, key);
-
-  //                                                    for (auto& plugin : self->plugins | std::views::values) {
-  //                                                      plugin->set_native_ui_update_frequency(v);
-  //                                                    }
-  //                                                  }),
-  //                                                  this));
-
-  //   auto notification_time_window =
-  //       0.001F * static_cast<float>(g_settings_get_int(global_settings, "meters-update-interval"));
-
-  //   spectrum->notification_time_window = notification_time_window;
+  //   spectrum->notification_time_window = 0.001F *db::Main::metersUpdateInterval();
 
   for (auto& plugin : plugins | std::views::values) {
-    // plugin->notification_time_window = notification_time_window;
+    plugin->notification_time_window = 0.001F * db::Main::metersUpdateInterval();
   }
 }
 

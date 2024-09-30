@@ -21,10 +21,10 @@
 
 #include <qobject.h>
 #include <qtmetamacros.h>
-#include "easyeffects_db.h"
-#include "easyeffects_db_spectrum.h"
-#include "easyeffects_db_streaminputs.h"
-#include "easyeffects_db_streamoutputs.h"
+#include "easyeffects_db.h"                // IWYU pragma: export
+#include "easyeffects_db_spectrum.h"       // IWYU pragma: export
+#include "easyeffects_db_streaminputs.h"   // IWYU pragma: export
+#include "easyeffects_db_streamoutputs.h"  // IWYU pragma: export
 
 namespace db {
 

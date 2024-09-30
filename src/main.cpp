@@ -43,6 +43,8 @@
 #include "local_client.hpp"
 #include "local_server.hpp"
 #include "pw_manager.hpp"
+#include "stream_input_effects.hpp"
+#include "stream_output_effects.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -134,7 +136,10 @@ int main(int argc, char* argv[]) {
   // Making sure these singleton classes are initialized before qml
 
   tags::plugin_name::Model::self();
-  pw::Manager::self();
+  auto* pm = &pw::Manager::self();
+
+  auto sie = std::make_unique<StreamInputEffects>(pm);
+  auto soe = std::make_unique<StreamOutputEffects>(pm);
 
   // Initializing QML
 

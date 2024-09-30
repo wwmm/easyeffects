@@ -63,7 +63,7 @@ class EffectsBase : public QObject {
   Q_OBJECT;
 
  public:
-  EffectsBase(std::string tag, const std::string& schema, pw::Manager* pipe_manager, PipelineType pipe_type);
+  EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type);
   EffectsBase(const EffectsBase&) = delete;
   auto operator=(const EffectsBase&) -> EffectsBase& = delete;
   EffectsBase(const EffectsBase&&) = delete;
@@ -121,8 +121,6 @@ class EffectsBase : public QObject {
   void pipeline_latency(float value);
 
  protected:
-  std::string schema_base_path;
-
   std::map<std::string, std::shared_ptr<PluginBase>> plugins;
 
   std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;

@@ -31,14 +31,14 @@
 #include <thread>
 #include <vector>
 #include "effects_base.hpp"
+#include "pipeline_type.hpp"
 #include "pw_manager.hpp"
 #include "pw_objects.hpp"
 #include "tags_pipewire.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
-StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager)
-    : EffectsBase("soe: ", "", pipe_manager, PipelineType::output) {
+StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBase(pipe_manager, PipelineType::output) {
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
   if (PULSE_SINK != nullptr && PULSE_SINK != tags::pipewire::ee_sink_name) {

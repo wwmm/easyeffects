@@ -36,8 +36,7 @@
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
-StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager)
-    : EffectsBase("sie: ", "", pipe_manager, PipelineType::input) {
+StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(pipe_manager, PipelineType::input) {
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
   if (PULSE_SOURCE != nullptr && PULSE_SOURCE != tags::pipewire::ee_source_name) {
