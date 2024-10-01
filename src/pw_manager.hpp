@@ -173,29 +173,29 @@ class Manager : public QObject {
   void defaultInputDeviceNameChanged();
   void defaultOutputDeviceNameChanged();
 
-  void stream_input_added(NodeInfo);
-  void stream_output_added(NodeInfo);
-  void stream_input_changed(NodeInfo);
-  void stream_output_changed(NodeInfo);
-  void stream_input_removed(uint64_t);
-  void stream_output_removed(uint64_t);
+  void stream_input_added(NodeInfo node);
+  void stream_output_added(NodeInfo node);
+  void stream_input_changed(NodeInfo node);
+  void stream_output_changed(NodeInfo node);
+  void stream_input_removed(uint64_t serial);
+  void stream_output_removed(uint64_t serial);
 
   /*
     Do not pass NodeInfo by reference. Sometimes it dies before we use it and a segmentation fault happens.
   */
 
-  void source_added(NodeInfo);
-  void source_changed(NodeInfo);
-  void source_removed(NodeInfo);
-  void sink_added(NodeInfo);
-  void sink_changed(NodeInfo);
-  void sink_removed(NodeInfo);
-  void new_default_sink_name(QString);
-  void new_default_source_name(QString);
-  void device_input_route_changed(DeviceInfo);
-  void device_output_route_changed(DeviceInfo);
+  void source_added(NodeInfo node);
+  void source_changed(NodeInfo node);
+  void source_removed(NodeInfo node);
+  void sink_added(NodeInfo node);
+  void sink_changed(NodeInfo node);
+  void sink_removed(NodeInfo node);
+  void new_default_sink_name(QString name);
+  void new_default_source_name(QString name);
+  void device_input_route_changed(DeviceInfo device);
+  void device_output_route_changed(DeviceInfo device);
 
-  void link_changed(LinkInfo);
+  void link_changed(LinkInfo link);
 
  private:
   pw_context* context = nullptr;

@@ -69,6 +69,7 @@
 #include <thread>
 #include <vector>
 #include "config.h"
+#include "db_manager.hpp"
 #include "pw_model_clients.hpp"
 #include "pw_model_modules.hpp"
 #include "pw_model_nodes.hpp"
@@ -900,6 +901,12 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     pm->defaultOutputDeviceName = v.data();
 
+    util::debug("new default output device: " + pm->defaultOutputDeviceName.toStdString());
+
+    if (db::StreamOutputs::useDefaultOutputDevice()) {
+      db::StreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
+    }
+
     Q_EMIT pm->new_default_sink_name(pm->defaultOutputDeviceName);
   }
 
@@ -913,6 +920,12 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
     }
 
     pm->defaultInputDeviceName = v.data();
+
+    util::debug("new default input device: " + pm->defaultInputDeviceName.toStdString());
+
+    if (db::StreamInputs::useDefaultInputDevice()) {
+      db::StreamInputs::setInputDevice(pm->defaultInputDeviceName);
+    }
 
     Q_EMIT pm->new_default_source_name(pm->defaultInputDeviceName);
   }

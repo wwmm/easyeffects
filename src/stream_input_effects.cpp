@@ -54,75 +54,65 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
     }
   }
 
-  //   connections.push_back(pm->source_added.connect([this](const NodeInfo node) {
-  //     if (node.name == util::gsettings_get_string(settings, "input-device")) {
-  //       pm->input_device = node;
+  connect(pm, &pw::Manager::source_added, [&](pw::NodeInfo node) {
+    if (node.name == db::StreamInputs::inputDevice()) {
+      pm->input_device = node;
 
-  //       if (g_settings_get_boolean(global_settings, "bypass") != 0) {
-  //         g_settings_set_boolean(global_settings, "bypass", 0);
+      if (db::Main::bypass()) {
+        db::Main::setBypass(false);
 
-  //         return;  // filter connected through update_bypass_state
-  //       }
+        return;  // filter connected through update_bypass_state
+      }
 
-  //       set_bypass(false);
-  //     }
-  //   }));
+      set_bypass(false);
+    }
+  });
 
-  //   connections.push_back(pm->source_removed.connect([this](const NodeInfo node) {
-  //     if (g_settings_get_boolean(settings, "use-default-input-device") == 0) {
-  //       if (node.name == util::gsettings_get_string(settings, "input-device")) {
-  //         pm->input_device.id = SPA_ID_INVALID;
-  //         pm->input_device.serial = SPA_ID_INVALID;
-  //       }
-  //     }
-  //   }));
+  connect(pm, &pw::Manager::source_removed, [&](pw::NodeInfo node) {
+    if (db::StreamInputs::useDefaultInputDevice() && node.name == db::StreamInputs::inputDevice()) {
+      pm->input_device.id = SPA_ID_INVALID;
+      pm->input_device.serial = SPA_ID_INVALID;
+    }
+  });
 
-  //   connections.push_back(pm->stream_input_added.connect(sigc::mem_fun(*this, &StreamInputEffects::on_app_added)));
-  //   connections.push_back(pm->link_changed.connect(sigc::mem_fun(*this, &StreamInputEffects::on_link_changed)));
+  connect(pm, &pw::Manager::stream_input_added, this, &StreamInputEffects::on_app_added);
+  connect(pm, &pw::Manager::link_changed, this, &StreamInputEffects::on_link_changed);
 
   connect_filters();
 
-  //   gconnections.push_back(g_signal_connect(settings, "changed::input-device",
-  //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto* self = static_cast<StreamInputEffects*>(user_data);
+  connect(db::StreamInputs::self(), &db::StreamInputs::inputDeviceChanged, [&]() {
+    const auto name = db::StreamInputs::inputDevice();
 
-  //                                             const auto name = util::gsettings_get_string(settings, key);
+    if (name.isEmpty()) {
+      return;
+    }
 
-  //                                             if (name.empty()) {
-  //                                               return;
-  //                                             }
+    for (const auto& [serial, node] : pm->node_map) {
+      if (node.name == name) {
+        pm->input_device = node;
 
-  //                                             for (const auto& [serial, node] : self->pm->node_map) {
-  //                                               if (node.name == name) {
-  //                                                 self->pm->input_device = node;
+        if (db::Main::bypass()) {
+          db::Main::setBypass(false);
 
-  //                                                 if (g_settings_get_boolean(self->global_settings, "bypass") != 0) {
-  //                                                   g_settings_set_boolean(self->global_settings, "bypass", 0);
+          return;  // filter connected through update_bypass_state
+        }
 
-  //                                                   return;  // filter connected through update_bypass_state
-  //                                                 }
+        set_bypass(false);
 
-  //                                                 self->set_bypass(false);
+        break;
+      }
+    }
+  });
 
-  //                                                 break;
-  //                                               }
-  //                                             }
-  //                                           }),
-  //                                           this));
+  connect(db::StreamInputs::self(), &db::StreamInputs::pluginsChanged, [&]() {
+    if (db::Main::bypass()) {
+      db::Main::setBypass(false);
 
-  //   gconnections.push_back(g_signal_connect(settings, "changed::plugins",
-  //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto* self = static_cast<StreamInputEffects*>(user_data);
+      return;  // filter connected through update_bypass_state
+    }
 
-  //                                             if (g_settings_get_boolean(self->global_settings, "bypass") != 0) {
-  //                                               g_settings_set_boolean(self->global_settings, "bypass", 0);
-
-  //                                               return;  // filter connected through update_bypass_state
-  //                                             }
-
-  //                                             self->set_bypass(false);
-  //                                           }),
-  //                                           this));
+    set_bypass(false);
+  });
 }
 
 StreamInputEffects::~StreamInputEffects() {

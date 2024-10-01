@@ -55,74 +55,64 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
     }
   }
 
-  //   connections.push_back(pm->sink_added.connect([this](const NodeInfo node) {
-  //     if (node.name == util::gsettings_get_string(settings, "output-device")) {
-  //       pm->output_device = node;
+  connect(pm, &pw::Manager::sink_added, [&](pw::NodeInfo node) {
+    if (node.name == db::StreamOutputs::outputDevice()) {
+      pm->output_device = node;
 
-  //       if (g_settings_get_boolean(global_settings, "bypass") != 0) {
-  //         g_settings_set_boolean(global_settings, "bypass", 0);
+      if (db::Main::bypass()) {
+        db::Main::setBypass(false);
 
-  //         return;  // filter connected through update_bypass_state
-  //       }
+        return;  // filter connected through update_bypass_state
+      }
 
-  //       set_bypass(false);
-  //     }
-  //   }));
+      set_bypass(false);
+    }
+  });
 
-  //   connections.push_back(pm->sink_removed.connect([this](const NodeInfo node) {
-  //     if (g_settings_get_boolean(settings, "use-default-output-device") == 0) {
-  //       if (node.name == util::gsettings_get_string(settings, "output-device")) {
-  //         pm->output_device.id = SPA_ID_INVALID;
-  //         pm->output_device.serial = SPA_ID_INVALID;
-  //       }
-  //     }
-  //   }));
+  connect(pm, &pw::Manager::sink_removed, [&](pw::NodeInfo node) {
+    if (db::StreamOutputs::useDefaultOutputDevice() && node.name == db::StreamOutputs::outputDevice()) {
+      pm->output_device.id = SPA_ID_INVALID;
+      pm->output_device.serial = SPA_ID_INVALID;
+    }
+  });
 
-  //   connections.push_back(pm->stream_output_added.connect(sigc::mem_fun(*this, &StreamOutputEffects::on_app_added)));
+  connect(pm, &pw::Manager::stream_output_added, this, &StreamOutputEffects::on_app_added);
 
   connect_filters();
 
-  //   gconnections.push_back(g_signal_connect(settings, "changed::output-device",
-  //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto* self = static_cast<StreamOutputEffects*>(user_data);
+  connect(db::StreamOutputs::self(), &db::StreamOutputs::outputDeviceChanged, [&]() {
+    const auto name = db::StreamOutputs::outputDevice();
 
-  //                                             const auto name = util::gsettings_get_string(settings, key);
+    if (name.isEmpty()) {
+      return;
+    }
 
-  //                                             if (name.empty()) {
-  //                                               return;
-  //                                             }
+    for (const auto& [serial, node] : pm->node_map) {
+      if (node.name == name) {
+        pm->output_device = node;
 
-  //                                             for (const auto& [serial, node] : self->pm->node_map) {
-  //                                               if (node.name == name) {
-  //                                                 self->pm->output_device = node;
+        if (db::Main::bypass()) {
+          db::Main::setBypass(false);
 
-  //                                                 if (g_settings_get_boolean(self->global_settings, "bypass") != 0) {
-  //                                                   g_settings_set_boolean(self->global_settings, "bypass", 0);
+          return;  // filter connected through update_bypass_state
+        }
 
-  //                                                   return;  // filter connected through update_bypass_state
-  //                                                 }
+        set_bypass(false);
 
-  //                                                 self->set_bypass(false);
+        break;
+      }
+    }
+  });
 
-  //                                                 break;
-  //                                               }
-  //                                             }
-  //                                           }),
-  //                                           this));
+  connect(db::StreamOutputs::self(), &db::StreamOutputs::pluginsChanged, [&]() {
+    if (db::Main::bypass()) {
+      db::Main::setBypass(false);
 
-  //   gconnections.push_back(g_signal_connect(settings, "changed::plugins",
-  //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto* self = static_cast<StreamOutputEffects*>(user_data);
+      return;  // filter connected through update_bypass_state
+    }
 
-  //                                             if (g_settings_get_boolean(self->global_settings, "bypass") != 0) {
-  //                                               g_settings_set_boolean(self->global_settings, "bypass", 0);
-
-  //                                               return;  // filter connected through update_bypass_state
-  //                                             }
-
-  //                                             self->set_bypass(false);
-  //                                           }),
-  //                                           this));
+    set_bypass(false);
+  });
 }
 
 StreamOutputEffects::~StreamOutputEffects() {
@@ -303,12 +293,13 @@ void StreamOutputEffects::disconnect_filters() {
     }
   }
 
-  //   for (const auto& link : pm->list_links) {
-  //     if (link.input_node_id == spectrum->get_node_id() || link.output_node_id == spectrum->get_node_id() ||
-  //         link.input_node_id == output_level->get_node_id() || link.output_node_id == output_level->get_node_id()) {
-  //       link_id_list.insert(link.id);
-  //     }
-  //   }
+  for (const auto& link : pm->list_links) {
+    //     if (link.input_node_id == spectrum->get_node_id() || link.output_node_id == spectrum->get_node_id() ||
+    //         link.input_node_id == output_level->get_node_id() || link.output_node_id == output_level->get_node_id())
+    //         {
+    //       link_id_list.insert(link.id);
+    //     }
+  }
 
   for (const auto& id : link_id_list) {
     pm->destroy_object(static_cast<int>(id));
