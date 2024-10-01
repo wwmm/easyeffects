@@ -110,10 +110,10 @@ class EffectsBase : public QObject {
 
   void reset_settings();
 
-  auto get_plugins_map() -> std::map<std::string, std::shared_ptr<PluginBase>>;
+  auto get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>>;
 
   template <typename T>
-  auto get_plugin_instance(const std::string& name) -> std::shared_ptr<T> {
+  auto get_plugin_instance(const QString& name) -> std::shared_ptr<T> {
     return std::dynamic_pointer_cast<T>(plugins[name]);
   }
 
@@ -121,7 +121,7 @@ class EffectsBase : public QObject {
   void pipeline_latency(float value);
 
  protected:
-  std::map<std::string, std::shared_ptr<PluginBase>> plugins;
+  std::map<QString, std::shared_ptr<PluginBase>> plugins;
 
   std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
 

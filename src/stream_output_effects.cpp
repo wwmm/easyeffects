@@ -20,6 +20,7 @@
 #include "stream_output_effects.hpp"
 #include <pipewire/link.h>
 #include <pipewire/node.h>
+#include <qcontainerfwd.h>
 #include <qtypes.h>
 #include <spa/utils/defs.h>
 #include <algorithm>
@@ -30,6 +31,7 @@
 #include <string>
 #include <thread>
 #include <vector>
+#include "db_manager.hpp"
 #include "effects_base.hpp"
 #include "pipeline_type.hpp"
 #include "pw_manager.hpp"
@@ -46,7 +48,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
       if (node.name == PULSE_SINK) {
         pm->output_device = node;
 
-        // g_settings_set_string(settings, "output-device", pm->output_device.name.c_str());
+        db::StreamOutputs::setOutputDevice(pm->output_device.name);
 
         break;
       }
@@ -130,15 +132,15 @@ StreamOutputEffects::~StreamOutputEffects() {
 }
 
 void StreamOutputEffects::on_app_added(const pw::NodeInfo node_info) {
-  //   const auto blocklist = util::gchar_array_to_vector(g_settings_get_strv(settings, "blocklist"));
+  const auto blocklist = (bypass) ? QStringList() : db::StreamInputs::blocklist();
 
-  //   auto is_blocklisted = std::ranges::find(blocklist, node_info.application_id) != blocklist.end();
+  auto is_blocklisted = std::ranges::find(blocklist, node_info.application_id) != blocklist.end();
 
-  //   is_blocklisted = is_blocklisted || std::ranges::find(blocklist, node_info.name) != blocklist.end();
+  is_blocklisted = is_blocklisted || std::ranges::find(blocklist, node_info.name) != blocklist.end();
 
-  //   if (g_settings_get_boolean(global_settings, "process-all-outputs") != 0 && !is_blocklisted) {
-  //     pm->connect_stream_output(node_info.id);
-  //   }
+  if (db::Main::processAllOutputs() != 0 && !is_blocklisted) {
+    pm->connect_stream_output(node_info.id);
+  }
 }
 
 auto StreamOutputEffects::apps_want_to_play() -> bool {
@@ -148,7 +150,7 @@ auto StreamOutputEffects::apps_want_to_play() -> bool {
 }
 
 void StreamOutputEffects::connect_filters(const bool& bypass) {
-  const auto output_device_name = QString();  // util::gsettings_get_string(settings, "output-device");
+  const auto output_device_name = db::StreamOutputs::outputDevice();
 
   // checking if the output device exists
 
@@ -176,10 +178,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
     return;
   }
 
-  //   const auto list =
-  //       (bypass) ? std::vector<std::string>() : util::gchar_array_to_vector(g_settings_get_strv(settings,
-  //       "plugins"));
-  const auto list = std::vector<std::string>();
+  const auto list = (bypass) ? QStringList() : db::StreamOutputs::plugins();
 
   uint prev_node_id = pm->ee_sink_node.id;
   uint next_node_id = 0U;
@@ -217,7 +216,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
         continue;
       }
 
-      if (name.starts_with(tags::plugin_name::BaseName::echo_canceller.toStdString())) {
+      if (name.startsWith(tags::plugin_name::BaseName::echo_canceller)) {
         if (plugins[name]->connected_to_pw) {
           for (const auto& link : pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true)) {
             list_proxies.push_back(link);
@@ -286,9 +285,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 void StreamOutputEffects::disconnect_filters() {
   std::set<uint> link_id_list;
 
-  //   const auto selected_plugins_list =
-  //       (bypass) ? std::vector<std::string>() : util::gchar_array_to_vector(g_settings_get_strv(settings,
-  //       "plugins"));
+  const auto selected_plugins_list = (bypass) ? QStringList() : db::StreamOutputs::plugins();
 
   for (const auto& plugin : plugins | std::views::values) {
     for (const auto& link : pm->list_links) {
@@ -298,11 +295,11 @@ void StreamOutputEffects::disconnect_filters() {
     }
 
     if (plugin->connected_to_pw) {
-      //   if (std::ranges::find(selected_plugins_list, plugin->name) == selected_plugins_list.end()) {
-      //     util::debug("disconnecting the " + plugin->name + " filter from PipeWire");
+      if (std::ranges::find(selected_plugins_list, plugin->name) == selected_plugins_list.end()) {
+        util::debug("disconnecting the " + plugin->name.toStdString() + " filter from PipeWire");
 
-      //     plugin->disconnect_from_pw();
-      //   }
+        plugin->disconnect_from_pw();
+      }
     }
   }
 
@@ -321,7 +318,7 @@ void StreamOutputEffects::disconnect_filters() {
 
   list_proxies.clear();
 
-  // remove_unused_filters();
+  remove_unused_filters();
 }
 
 void StreamOutputEffects::set_bypass(const bool& state) {

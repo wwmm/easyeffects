@@ -18,14 +18,14 @@
  */
 
 #include "effects_base.hpp"
+#include <qcontainerfwd.h>
 #include <qtmetamacros.h>
-#include <algorithm>
+#include <QString>
 #include <map>
 #include <memory>
 #include <ranges>
 #include <string>
 #include <utility>
-#include <vector>
 #include "db_manager.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
@@ -141,8 +141,16 @@ void EffectsBase::reset_settings() {
 }
 
 void EffectsBase::create_filters_if_necessary() {
-  //   const auto list = util::gchar_array_to_vector(g_settings_get_strv(settings, "plugins"));
-  const auto list = std::vector<std::string>();  // to do
+  auto list = QStringList();
+
+  switch (pipeline_type) {
+    case PipelineType::input:
+      list = db::StreamInputs::plugins();
+      break;
+    case PipelineType::output:
+      list = db::StreamOutputs::plugins();
+      break;
+  }
 
   if (list.empty()) {
     return;
@@ -223,38 +231,47 @@ void EffectsBase::create_filters_if_necessary() {
 
     // connections.push_back(filter->latency.connect([this]() { broadcast_pipeline_latency(); }));
 
-    plugins.insert(std::make_pair(name, filter));
+    // plugins.insert(std::make_pair(name, filter));
   }
 }
 
 void EffectsBase::remove_unused_filters() {
-  //   const auto list = util::gchar_array_to_vector(g_settings_get_strv(settings, "plugins"));
+  auto list = QStringList();
 
-  //   if (list.empty()) {
-  //     plugins.clear();
+  switch (pipeline_type) {
+    case PipelineType::input:
+      list = db::StreamInputs::plugins();
+      break;
+    case PipelineType::output:
+      list = db::StreamOutputs::plugins();
+      break;
+  }
 
-  //     return;
-  //   }
+  if (list.empty()) {
+    plugins.clear();
 
-  //   for (auto it = plugins.begin(); it != plugins.end();) {
-  //     auto key = it->first;
+    return;
+  }
 
-  //     if (std::ranges::find(list, key) == list.end()) {
-  //       auto plugin = it->second;
+  for (auto it = plugins.begin(); it != plugins.end();) {
+    auto key = it->first;
 
-  //       plugin->bypass = true;
-  //       plugin->set_post_messages(false);
-  //       plugin->latency.clear();
+    if (std::ranges::find(list, key) == list.end()) {
+      auto plugin = it->second;
 
-  //       if (plugin->connected_to_pw) {
-  //         plugin->disconnect_from_pw();
-  //       }
+      plugin->bypass = true;
+      plugin->set_post_messages(false);
+      // plugin->latency.clear();
 
-  //       it = plugins.erase(it);
-  //     } else {
-  //       it++;
-  //     }
-  //   }
+      if (plugin->connected_to_pw) {
+        plugin->disconnect_from_pw();
+      }
+
+      it = plugins.erase(it);
+    } else {
+      it++;
+    }
+  }
 }
 
 void EffectsBase::activate_filters() {
@@ -289,6 +306,6 @@ void EffectsBase::broadcast_pipeline_latency() {
   Q_EMIT pipeline_latency(latency_value);
 }
 
-auto EffectsBase::get_plugins_map() -> std::map<std::string, std::shared_ptr<PluginBase>> {
+auto EffectsBase::get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>> {
   return plugins;
 }

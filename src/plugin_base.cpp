@@ -49,6 +49,7 @@
 #include "pipeline_type.hpp"
 #include "pw_manager.hpp"
 #include "tags_app.hpp"
+#include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 namespace {
@@ -215,8 +216,8 @@ const struct pw_filter_events filter_events = {.version = 0,
 }  // namespace
 
 PluginBase::PluginBase(std::string tag,
-                       std::string plugin_name,
-                       std::string package,
+                       QString plugin_name,
+                       QString package,
                        const std::string& schema,
                        const std::string& schema_path,
                        pw::Manager* pipe_manager,
@@ -231,7 +232,7 @@ PluginBase::PluginBase(std::string tag,
   QString description;
 
   if (name != "output_level" && name != "spectrum") {
-    // description = tags::plugin_name::get_translated()[name];
+    description = tags::plugin_name::Model::self().translate(name);
 
     // bypass = g_settings_get_boolean(settings, "bypass") != 0;
 
@@ -250,7 +251,7 @@ PluginBase::PluginBase(std::string tag,
 
   pf_data.pb = this;
 
-  const auto filter_name = "ee_" + log_tag.substr(0U, log_tag.size() - 2U) + "_" + name;
+  const auto filter_name = "ee_" + log_tag.substr(0U, log_tag.size() - 2U) + "_" + name.toStdString();
 
   pm->lock();
 
@@ -258,7 +259,7 @@ PluginBase::PluginBase(std::string tag,
 
   pw_properties_set(props_filter, PW_KEY_APP_ID, tags::app::id);
   pw_properties_set(props_filter, PW_KEY_NODE_NAME, filter_name.c_str());
-  pw_properties_set(props_filter, PW_KEY_NODE_NICK, name.c_str());
+  pw_properties_set(props_filter, PW_KEY_NODE_NICK, name.toStdString().c_str());
   pw_properties_set(props_filter, PW_KEY_NODE_DESCRIPTION, description.toStdString().c_str());
   pw_properties_set(props_filter, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_filter, PW_KEY_MEDIA_CATEGORY, "Filter");
@@ -372,7 +373,7 @@ auto PluginBase::connect_to_pw() -> bool {
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) != 0) {
     pm->unlock();
 
-    util::warning(log_tag + name + " cannot connect the filter to PipeWire!");
+    util::warning(log_tag + name.toStdString() + " cannot connect the filter to PipeWire!");
 
     return false;
   }
@@ -385,7 +386,7 @@ auto PluginBase::connect_to_pw() -> bool {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
     if (state == PW_FILTER_STATE_ERROR) {
-      util::warning(log_tag + name + " is in an error");
+      util::warning(log_tag + name.toStdString() + " is in an error");
 
       return false;
     }
@@ -408,7 +409,7 @@ auto PluginBase::connect_to_pw() -> bool {
 
   connected_to_pw = true;
 
-  util::debug(log_tag + name + " successfully connected to PipeWire graph");
+  util::debug(log_tag + name.toStdString() + " successfully connected to PipeWire graph");
 
   return true;
 }
