@@ -19,9 +19,11 @@
 
 #pragma once
 
+#include <kconfigskeleton.h>
 #include <pipewire/proxy.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
+#include <QString>
 #include <map>
 #include <memory>
 #include <string>

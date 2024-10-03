@@ -30,6 +30,7 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+#include "tags_plugin_name.hpp"
 #include "util.hpp"
 // #include "autogain.hpp"
 // #include "bass_enhancer.hpp"
@@ -141,16 +142,7 @@ void EffectsBase::reset_settings() {
 }
 
 void EffectsBase::create_filters_if_necessary() {
-  auto list = QStringList();
-
-  switch (pipeline_type) {
-    case PipelineType::input:
-      list = db::StreamInputs::plugins();
-      break;
-    case PipelineType::output:
-      list = db::StreamOutputs::plugins();
-      break;
-  }
+  auto list = (pipeline_type == PipelineType::output ? db::StreamOutputs::plugins() : db::StreamInputs::plugins());
 
   if (list.empty()) {
     return;
@@ -161,7 +153,7 @@ void EffectsBase::create_filters_if_necessary() {
       continue;
     }
 
-    // auto instance_id = util::to_string(tags::plugin_name::get_id(name));
+    auto instance_id = util::to_string(tags::plugin_name::get_id(name));
 
     // auto path = schema_base_path + tags::plugin_name::get_base_name(name) + "/" + instance_id + "/";
 
@@ -229,23 +221,14 @@ void EffectsBase::create_filters_if_necessary() {
     //   filter = std::make_shared<StereoTools>(log_tag, tags::schema::stereo_tools::id, path, pm, pipeline_type);
     // }
 
-    // connections.push_back(filter->latency.connect([this]() { broadcast_pipeline_latency(); }));
+    connect(filter.get(), &PluginBase::latency, [this]() { broadcast_pipeline_latency(); });
 
     // plugins.insert(std::make_pair(name, filter));
   }
 }
 
 void EffectsBase::remove_unused_filters() {
-  auto list = QStringList();
-
-  switch (pipeline_type) {
-    case PipelineType::input:
-      list = db::StreamInputs::plugins();
-      break;
-    case PipelineType::output:
-      list = db::StreamOutputs::plugins();
-      break;
-  }
+  auto list = (pipeline_type == PipelineType::output ? db::StreamOutputs::plugins() : db::StreamInputs::plugins());
 
   if (list.empty()) {
     plugins.clear();
@@ -287,13 +270,15 @@ void EffectsBase::deactivate_filters() {
 }
 
 auto EffectsBase::get_pipeline_latency() -> float {
+  auto list = (pipeline_type == PipelineType::output ? db::StreamOutputs::plugins() : db::StreamInputs::plugins());
+
   float total = 0.0F;
 
-  //   for (const auto& name : util::gchar_array_to_vector(g_settings_get_strv(settings, "plugins"))) {
-  //     if (plugins.contains(name)) {
-  //       total += plugins[name]->get_latency_seconds();
-  //     }
-  //   }
+  for (const auto& name : list) {
+    if (plugins.contains(name)) {
+      total += plugins[name]->get_latency_seconds();
+    }
+  }
 
   return total * 1000.0F;
 }

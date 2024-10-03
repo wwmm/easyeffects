@@ -10,17 +10,18 @@
 #include <qtypes.h>
 #include <qvariant.h>
 #include <KLocalizedString>
+#include <QRegularExpression>
 #include <iterator>
 #include <regex>
-#include <string>
 #include "config.h"
 #include "util.hpp"
 
 namespace {
 
-const auto id_regex = std::regex(R"(#(\d+)$)");
+// const auto id_regex = std::regex(R"(#(\d+)$)");
+const QRegularExpression id_regex(R"(#(\d+)$)");
 
-}
+}  // namespace
 
 namespace tags::plugin_name {
 
@@ -110,17 +111,13 @@ QList<QString> Model::getBaseNames() {
   return modelMap.keys();
 }
 
-auto get_id(const std::string& name) -> uint {
-  std::smatch matches;
+auto get_id(const QString& name) -> uint {
+  QRegularExpressionMatch match = id_regex.match(name);
 
-  std::regex_search(name, matches, id_regex);
-
-  if (matches.size() != 2U) {
-    return 0U;
-  }
-
-  if (uint id = 0U; util::str_to_num(matches[1], id)) {
-    return id;
+  if (match.hasMatch()) {
+    if (uint id = 0U; util::str_to_num(match.captured(1).toStdString(), id)) {
+      return id;
+    }
   }
 
   return 0U;
