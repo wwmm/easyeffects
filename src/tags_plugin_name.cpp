@@ -12,13 +12,11 @@
 #include <KLocalizedString>
 #include <QRegularExpression>
 #include <iterator>
-#include <regex>
 #include "config.h"
 #include "util.hpp"
 
 namespace {
 
-// const auto id_regex = std::regex(R"(#(\d+)$)");
 const QRegularExpression id_regex(R"(#(\d+)$)");
 
 }  // namespace

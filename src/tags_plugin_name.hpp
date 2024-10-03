@@ -31,7 +31,6 @@
 #include <qtmetamacros.h>
 #include <qvariant.h>
 #include <sys/types.h>
-#include <string>
 
 // NOLINTNEXTLINE
 #define CREATE_PROPERTY(type, name, value) \
