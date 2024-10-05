@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-18 00:15+0000\n"
-"PO-Revision-Date: 2024-04-12 23:01+0000\n"
+"PO-Revision-Date: 2024-10-05 21:55+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/pt/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -25,7 +25,7 @@ msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Audio Effects para aplicações PipeWire"
+msgstr "Efeitos de áudio para aplicações do PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:8
 msgid "Wellington Wallace"
