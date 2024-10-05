@@ -23,6 +23,7 @@
 #include <qstandardpaths.h>
 #include "config.h"
 #include "easyeffects_db.h"
+#include "easyeffects_db_autogain.h"
 #include "easyeffects_db_spectrum.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
@@ -49,6 +50,11 @@ Manager::Manager()
 
   connect(main, &db::Main::enableServiceModeChanged,
           []() { QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode()); });
+
+  // testing things
+  auto autogain = db::Autogain("0");
+  autogain.setBypass(true);
+  autogain.save();
 }
 
 Manager::~Manager() {

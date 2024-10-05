@@ -1,0 +1,8 @@
+File=easyeffects_db_autogain.kcfg
+NameSpace=db
+ClassName=Autogain
+Mutators=true
+Notifiers=true
+DefaultValueGetters=true
+Singleton=false
+GenerateProperties=true
