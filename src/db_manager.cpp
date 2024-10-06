@@ -21,6 +21,7 @@
 #include <qapplication.h>
 #include <qqml.h>
 #include <qstandardpaths.h>
+#include <qvariant.h>
 #include "config.h"
 #include "easyeffects_db.h"
 #include "easyeffects_db_autogain.h"
@@ -44,7 +45,7 @@ Manager::Manager()
 
   qmlRegisterSingletonInstance<db::Manager>("EEdbm", VERSION_MAJOR, VERSION_MINOR, "EEdbm", this);
 
-  // service mdoe configuration
+  // service mode configuration
 
   QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode());
 
@@ -52,9 +53,12 @@ Manager::Manager()
           []() { QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode()); });
 
   // testing things
-  auto autogain = db::Autogain("0");
-  autogain.setBypass(true);
-  autogain.save();
+  auto a = new db::Autogain("0");
+  autogain.push_back(a);
+  // autogain->setBypass(true);
+  // autogain->save();
+
+  pluginsMap["autogain#0"] = QVariant::fromValue(a);
 }
 
 Manager::~Manager() {

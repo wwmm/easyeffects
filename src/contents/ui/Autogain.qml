@@ -1,3 +1,4 @@
+import EEdbm
 import EEtagsPluginName
 import QtQuick
 import QtQuick.Controls as Controls
@@ -9,6 +10,10 @@ Kirigami.ScrollablePage {
     id: autogainPage
 
     property var pluginDB
+
+    Component.onCompleted: {
+        console.log(EEdbm.pluginsMap["autogain#0"]);
+    }
 
     ColumnLayout {
         Layout.fillWidth: true
