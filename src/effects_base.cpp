@@ -221,7 +221,7 @@ void EffectsBase::create_filters_if_necessary() {
     //   filter = std::make_shared<StereoTools>(log_tag, tags::schema::stereo_tools::id, path, pm, pipeline_type);
     // }
 
-    connect(filter.get(), &PluginBase::latency, [this]() { broadcast_pipeline_latency(); });
+    // connect(filter.get(), &PluginBase::latency, [this]() { broadcast_pipeline_latency(); });
 
     // plugins.insert(std::make_pair(name, filter));
   }

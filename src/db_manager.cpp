@@ -53,12 +53,14 @@ Manager::Manager()
           []() { QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode()); });
 
   // testing things
-  auto a = new db::Autogain("0");
-  autogain.push_back(a);
+
+  // auto a = new db::Autogain("0");
   // autogain->setBypass(true);
   // autogain->save();
 
-  pluginsMap["autogain#0"] = QVariant::fromValue(a);
+  soePluginsMap["autogain#0"] = QVariant::fromValue(new db::Autogain("0"));
+
+  // qDebug() << soePluginsMap["autogain#0"].value<db::Autogain*>()->maximumHistory();
 }
 
 Manager::~Manager() {

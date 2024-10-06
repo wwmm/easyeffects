@@ -19,11 +19,11 @@
 
 #pragma once
 
+#include <qcontainerfwd.h>
 #include <qmap.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
-#include "easyeffects_db.h"  // IWYU pragma: export
-#include "easyeffects_db_autogain.h"
+#include "easyeffects_db.h"                // IWYU pragma: export
 #include "easyeffects_db_spectrum.h"       // IWYU pragma: export
 #include "easyeffects_db_streaminputs.h"   // IWYU pragma: export
 #include "easyeffects_db_streamoutputs.h"  // IWYU pragma: export
@@ -38,7 +38,8 @@ class Manager : public QObject {
   Q_PROPERTY(db::StreamInputs* streamInputs MEMBER streamInputs NOTIFY streamInputsChanged)
   Q_PROPERTY(db::StreamOutputs* streamOutputs MEMBER streamOutputs NOTIFY streamOutputsChanged)
 
-  Q_PROPERTY(QMap<QString, QVariant> pluginsMap MEMBER pluginsMap NOTIFY pluginsMapChanged)
+  Q_PROPERTY(QMap<QString, QVariant> soePluginsMap MEMBER soePluginsMap NOTIFY soePluginsMapChanged)
+  Q_PROPERTY(QMap<QString, QVariant> siePluginsMap MEMBER siePluginsMap NOTIFY siePluginsMapChanged)
 
  public:
   Manager();
@@ -64,16 +65,16 @@ class Manager : public QObject {
   db::StreamInputs* streamInputs;
   db::StreamOutputs* streamOutputs;
 
-  QMap<QString, QVariant> pluginsMap;
-
-  std::vector<db::Autogain*> autogain;
+  QMap<QString, QVariant> soePluginsMap;
+  QMap<QString, QVariant> siePluginsMap;
 
  signals:
   void mainChanged();
   void spectrumChanged();
   void streamInputsChanged();
   void streamOutputsChanged();
-  void pluginsMapChanged();
+  void soePluginsMapChanged();
+  void siePluginsMapChanged();
 };
 
 }  // namespace db

@@ -12,7 +12,7 @@ Kirigami.ScrollablePage {
     property var pluginDB
 
     Component.onCompleted: {
-        console.log(EEdbm.pluginsMap["autogain#0"]);
+        console.log(EEdbm.soePluginsMap["autogain#0"].maximumHistory);
     }
 
     ColumnLayout {
