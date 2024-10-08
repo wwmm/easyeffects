@@ -19,7 +19,6 @@
 
 #pragma once
 
-#include <qcontainerfwd.h>
 #include <qmap.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
@@ -75,6 +74,9 @@ class Manager : public QObject {
   void streamOutputsChanged();
   void soePluginsMapChanged();
   void siePluginsMapChanged();
+
+ private:
+  void create_plugin_db(const QString& parentGroup, const auto& plugins_list, QMap<QString, QVariant>& plugins_map);
 };
 
 }  // namespace db

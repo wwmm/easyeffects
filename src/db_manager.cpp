@@ -18,16 +18,20 @@
  */
 
 #include "db_manager.hpp"
+#include <kconfigskeleton.h>
 #include <qapplication.h>
 #include <qqml.h>
 #include <qstandardpaths.h>
 #include <qvariant.h>
+#include <QMap>
+#include <QString>
 #include "config.h"
 #include "easyeffects_db.h"
 #include "easyeffects_db_autogain.h"
 #include "easyeffects_db_spectrum.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
+#include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 namespace db {
@@ -45,21 +49,29 @@ Manager::Manager()
 
   qmlRegisterSingletonInstance<db::Manager>("EEdbm", VERSION_MAJOR, VERSION_MINOR, "EEdbm", this);
 
-  // service mode configuration
-
   QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode());
+
+  // creating plugins database
+
+  create_plugin_db("sie", db::StreamInputs::plugins(), siePluginsMap);
+  create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsMap);
+
+  // signals
 
   connect(main, &db::Main::enableServiceModeChanged,
           []() { QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode()); });
 
+  connect(streamInputs, &db::StreamInputs::pluginsChanged,
+          [&]() { create_plugin_db("sie", db::StreamInputs::plugins(), siePluginsMap); });
+
+  connect(streamOutputs, &db::StreamOutputs::pluginsChanged, [&]() {
+    create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsMap);
+    util::warning("hello from db!!!!");
+  });
+
   // testing things
 
-  // auto a = new db::Autogain("0");
-  // autogain->setBypass(true);
-  // autogain->save();
-
-  soePluginsMap["autogain#0"] = QVariant::fromValue(new db::Autogain("0"));
-
+  // soePluginsMap["autogain#0"].value<db::Autogain*>()->setMaximumHistory(7);
   // qDebug() << soePluginsMap["autogain#0"].value<db::Autogain*>()->maximumHistory();
 }
 
@@ -74,6 +86,14 @@ void Manager::saveAll() const {
   spectrum->save();
   streamOutputs->save();
   streamInputs->save();
+
+  for (const auto& plugin_db : siePluginsMap.values()) {
+    plugin_db.value<KConfigSkeleton*>()->save();
+  }
+
+  for (const auto& plugin_db : soePluginsMap.values()) {
+    plugin_db.value<KConfigSkeleton*>()->save();
+  }
 }
 
 void Manager::resetAll() const {
@@ -83,6 +103,31 @@ void Manager::resetAll() const {
   spectrum->setDefaults();
   streamOutputs->setDefaults();
   streamInputs->setDefaults();
+
+  for (const auto& plugin_db : siePluginsMap.values()) {
+    plugin_db.value<KConfigSkeleton*>()->setDefaults();
+  }
+
+  for (const auto& plugin_db : soePluginsMap.values()) {
+    plugin_db.value<KConfigSkeleton*>()->setDefaults();
+  }
+}
+
+void Manager::create_plugin_db(const QString& parentGroup,
+                               const auto& plugins_list,
+                               QMap<QString, QVariant>& plugins_map) {
+  for (const auto& name : plugins_list) {
+    if (!plugins_map.contains(name)) {
+      auto id = tags::plugin_name::get_id(name);
+
+      if (name.startsWith(tags::plugin_name::BaseName::autogain)) {
+        util::warning(id.toStdString());
+
+        plugins_map[tags::plugin_name::BaseName::autogain + "#" + id] =
+            QVariant::fromValue(new db::Autogain(parentGroup, id));
+      }
+    }
+  }
 }
 
 }  // namespace db

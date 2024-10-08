@@ -80,18 +80,23 @@ Kirigami.Page {
                                 "translatedName": PluginsNameModel.translate(names[k]),
                                 "bypass": false
                             });
-                            createPluginStack(names[k]);
+                            if (pageType === 0)
+                                createPluginStack(names[k], EEdbm.soePluginsMap[plugins[n]]);
+                            else
+                                createPluginStack(names[k], EEdbm.siePluginsMap[plugins[n]]);
                             break;
                         }
                     }
                 }
             }
 
-            function createPluginStack(baseName) {
+            function createPluginStack(baseName, pluginDB) {
                 switch (baseName) {
                 case BasePluginName.autogain:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
-                    pluginsStack.push("qrc:ui/Autogain.qml");
+                    pluginsStack.push("qrc:ui/Autogain.qml", {
+                        "pluginDB": pluginDB
+                    });
                     break;
                 default:
                     console.log(logTag + " invalid plugin name: " + baseName);
@@ -109,6 +114,7 @@ Kirigami.Page {
 
             Connections {
                 function onPluginsChanged() {
+                    console.log("hello from qml!!!!!!");
                     const newList = streamDB.plugins;
                     let currentList = [];
                     for (let n = 0; n < pluginsListModel.count; n++) {

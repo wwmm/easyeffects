@@ -109,16 +109,14 @@ QList<QString> Model::getBaseNames() {
   return modelMap.keys();
 }
 
-auto get_id(const QString& name) -> uint {
+auto get_id(const QString& name) -> QString {
   QRegularExpressionMatch match = id_regex.match(name);
 
   if (match.hasMatch()) {
-    if (uint id = 0U; util::str_to_num(match.captured(1).toStdString(), id)) {
-      return id;
-    }
+    return match.captured(1);
   }
 
-  return 0U;
+  return "";
 }
 
 }  // namespace tags::plugin_name

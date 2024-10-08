@@ -130,7 +130,7 @@ class Model : public QAbstractListModel {
   plugin_package::Package package;
 };
 
-auto get_id(const QString& name) -> uint;
+auto get_id(const QString& name) -> QString;
 
 }  // namespace tags::plugin_name
 

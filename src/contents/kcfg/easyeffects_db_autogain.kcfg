@@ -3,30 +3,31 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
     <kcfgfile name="easyeffects/db/autogainrc">
+        <parameter name="masterGroup" />
         <parameter name="instanceIndex" />
     </kcfgfile>
-    <group name="Autogain#$(instanceIndex)">
+    <group parentGroupName="$(masterGroup)" name="Autogain#$(instanceIndex)">
         <entry name="bypass" type="Bool">
             <label></label>
             <default>false</default>
         </entry>
         <entry name="inputGain" type="Double">
             <label></label>
-            <min>36</min>
+            <min>-36</min>
             <max>36</max>
             <default>0</default>
         </entry>
         <entry name="outputGain" type="Double">
             <label></label>
-            <min>36</min>
+            <min>-36</min>
             <max>36</max>
             <default>0</default>
         </entry>
         <entry name="target" type="Double">
             <label></label>
-            <min>100</min>
+            <min>-100</min>
             <max>0</max>
-            <default>23</default>
+            <default>-23</default>
         </entry>
         <entry name="resetHistory" type="Bool">
             <label></label>
@@ -67,9 +68,9 @@
         </entry>
         <entry name="silenceThreshold" type="Double">
             <label></label>
-            <min>100</min>
+            <min>-100</min>
             <max>0</max>
-            <default>70</default>
+            <default>-70</default>
         </entry>
     </group>
 </kcfg>

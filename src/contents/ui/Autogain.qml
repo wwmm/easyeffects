@@ -7,13 +7,13 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 Kirigami.ScrollablePage {
+    // Component.onCompleted: {
+    //     console.log(pluginDB.maximumHistory);
+    // }
+
     id: autogainPage
 
     property var pluginDB
-
-    Component.onCompleted: {
-        console.log(EEdbm.soePluginsMap["autogain#0"].maximumHistory);
-    }
 
     ColumnLayout {
         Layout.fillWidth: true
@@ -40,10 +40,11 @@ Kirigami.ScrollablePage {
 
                         text: i18n("Reference")
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        // currentIndex: EEdbSpectrum.spectrumShape
+                        currentIndex: pluginDB.reference
                         editable: false
                         model: [i18n("Momentary"), i18n("Short-Term"), i18n("Integrated"), i18n("Geometric Mean (MSI)"), i18n("Geometric Mean (MS)"), i18n("Geometric Mean (MI)"), i18n("Geometric Mean (SI)")]
                         onActivated: (idx) => {
+                            pluginDB.reference = idx;
                         }
                     }
 
@@ -52,7 +53,7 @@ Kirigami.ScrollablePage {
 
                         label: i18n("Target")
                         from: -100
-                        // value: pluginDB.target
+                        value: pluginDB.target
                         decimals: 0
                         stepSize: 1
                         unit: "dB"
@@ -67,7 +68,7 @@ Kirigami.ScrollablePage {
                         label: i18n("Silence")
                         from: -100
                         to: 0
-                        // value: pluginDB.silenceThreshold
+                        value: pluginDB.silenceThreshold
                         decimals: 0
                         stepSize: 1
                         unit: "dB"
@@ -82,7 +83,7 @@ Kirigami.ScrollablePage {
                         label: i18n("Maximum History")
                         from: 6
                         to: 3600
-                        // value: pluginDB.maximumHistory
+                        value: pluginDB.maximumHistory
                         decimals: 0
                         stepSize: 1
                         unit: "s"

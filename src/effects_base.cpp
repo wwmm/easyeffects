@@ -153,7 +153,7 @@ void EffectsBase::create_filters_if_necessary() {
       continue;
     }
 
-    auto instance_id = util::to_string(tags::plugin_name::get_id(name));
+    auto instance_id = tags::plugin_name::get_id(name);
 
     // auto path = schema_base_path + tags::plugin_name::get_base_name(name) + "/" + instance_id + "/";
 
