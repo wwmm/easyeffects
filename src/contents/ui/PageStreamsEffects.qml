@@ -136,6 +136,9 @@ Kirigami.Page {
                     for (let n = 0; n < pluginsListModel.count; n++) {
                         newList.push(pluginsListModel.get(n).name);
                     }
+                    if (newList.length === 0) {
+                        while (pluginsStack.depth > 1)pluginsStack.pop()
+                    }
                     streamDB.plugins = newList;
                 }
 
@@ -239,7 +242,7 @@ Kirigami.Page {
                 Layout.fillWidth: true
                 Layout.horizontalStretchFactor: 3
 
-                initialItem: Kirigami.Page {
+                initialItem: Kirigami.ScrollablePage {
                     anchors.fill: parent
 
                     Kirigami.PlaceholderMessage {

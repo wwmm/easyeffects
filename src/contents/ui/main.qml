@@ -160,6 +160,7 @@ Kirigami.ApplicationWindow {
                                 "visible": true
                             });
                             EEdbm.main.visiblePage = 0;
+                            gc();
                         }
                     },
                     Kirigami.Action {
@@ -175,6 +176,7 @@ Kirigami.ApplicationWindow {
                                 "visible": true
                             });
                             EEdbm.main.visiblePage = 1;
+                            gc();
                         }
                     },
                     Kirigami.Action {
@@ -186,6 +188,7 @@ Kirigami.ApplicationWindow {
                         onTriggered: {
                             pageStack.replace("qrc:ui/PipeWirePage.qml");
                             EEdbm.main.visiblePage = 2;
+                            gc();
                         }
                     }
                 ]

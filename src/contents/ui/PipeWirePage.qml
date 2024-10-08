@@ -1,3 +1,4 @@
+import EEdbm
 import EEpw
 import QtQuick
 import QtQuick.Controls as Controls
@@ -47,7 +48,7 @@ Kirigami.Page {
             }
 
             function updateInputDevComboSelection() {
-                let deviceName = useDefaultInputDevice.isChecked ? EEpwManager.defaultInputDeviceName : EEdbStreamInputs.inputDevice;
+                let deviceName = useDefaultInputDevice.isChecked ? EEpwManager.defaultInputDeviceName : EEdbm.streamInputs.inputDevice;
                 let comboRow = comboFindRow(ModelSourceDevices, deviceName);
                 if (comboRow !== -1)
                     comboInputDevice.currentIndex = comboRow;
@@ -55,7 +56,7 @@ Kirigami.Page {
             }
 
             function updateOutputDevComboSelection() {
-                let deviceName = useDefaultOutputDevice.isChecked ? EEpwManager.defaultOutputDeviceName : EEdbStreamOutputs.outputDevice;
+                let deviceName = useDefaultOutputDevice.isChecked ? EEpwManager.defaultOutputDeviceName : EEdbm.streamOutputs.outputDevice;
                 let comboRow = comboFindRow(ModelSinkDevices, deviceName);
                 if (comboRow !== -1)
                     comboOutputDevice.currentIndex = comboRow;
@@ -91,13 +92,13 @@ Kirigami.Page {
                     id: useDefaultInputDevice
 
                     label: i18n("Use Default Input")
-                    isChecked: EEdbStreamInputs.useDefaultInputDevice
+                    isChecked: EEdbm.streamInputs.useDefaultInputDevice
                     onCheckedChanged: {
                         if (isChecked)
                             updateInputDevComboSelection();
 
-                        if (isChecked !== EEdbStreamInputs.useDefaultInputDevice)
-                            EEdbStreamInputs.useDefaultInputDevice = isChecked;
+                        if (isChecked !== EEdbm.streamInputs.useDefaultInputDevice)
+                            EEdbm.streamInputs.useDefaultInputDevice = isChecked;
 
                     }
                 }
@@ -110,13 +111,13 @@ Kirigami.Page {
                     editable: false
                     model: ModelSourceDevices
                     textRole: "description"
-                    enabled: !EEdbStreamInputs.useDefaultInputDevice
+                    enabled: !EEdbm.streamInputs.useDefaultInputDevice
                     onActivated: (idx) => {
                         let proxyIndex = ModelSourceDevices.index(idx, 0);
                         let sourceIndex = ModelSourceDevices.mapToSource(proxyIndex);
                         let nodeName = ModelNodes.getNodeName(sourceIndex.row);
-                        if (EEdbStreamInputs.inputDevice !== nodeName)
-                            EEdbStreamInputs.inputDevice = nodeName;
+                        if (EEdbm.streamInputs.inputDevice !== nodeName)
+                            EEdbm.streamInputs.inputDevice = nodeName;
 
                     }
                 }
@@ -130,13 +131,13 @@ Kirigami.Page {
                     id: useDefaultOutputDevice
 
                     label: i18n("Use Default Output")
-                    isChecked: EEdbStreamOutputs.useDefaultOutputDevice
+                    isChecked: EEdbm.streamOutputs.useDefaultOutputDevice
                     onCheckedChanged: {
                         if (isChecked)
                             updateOutputDevComboSelection();
 
-                        if (isChecked !== EEdbStreamOutputs.useDefaultOutputDevice)
-                            EEdbStreamOutputs.useDefaultOutputDevice = isChecked;
+                        if (isChecked !== EEdbm.streamOutputs.useDefaultOutputDevice)
+                            EEdbm.streamOutputs.useDefaultOutputDevice = isChecked;
 
                     }
                 }
@@ -149,13 +150,13 @@ Kirigami.Page {
                     editable: false
                     model: ModelSinkDevices
                     textRole: "description"
-                    enabled: !EEdbStreamOutputs.useDefaultOutputDevice
+                    enabled: !EEdbm.streamOutputs.useDefaultOutputDevice
                     onActivated: (idx) => {
                         let proxyIndex = ModelSinkDevices.index(idx, 0);
                         let sourceIndex = ModelSinkDevices.mapToSource(proxyIndex);
                         let nodeName = ModelNodes.getNodeName(sourceIndex.row);
-                        if (EEdbStreamOutputs.outputDevice !== nodeName)
-                            EEdbStreamOutputs.outputDevice = nodeName;
+                        if (EEdbm.streamOutputs.outputDevice !== nodeName)
+                            EEdbm.streamOutputs.outputDevice = nodeName;
 
                     }
                 }
