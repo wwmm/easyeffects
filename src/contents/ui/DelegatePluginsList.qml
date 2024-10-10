@@ -29,7 +29,6 @@ Item {
         highlighted: delegateItem.ListView.isCurrentItem
         onClicked: {
             delegateItem.ListView.view.currentIndex = index;
-            showPassiveNotification("Clicked on plugin: " + name);
         }
 
         contentItem: GridLayout {
@@ -53,7 +52,6 @@ Item {
 
             Kirigami.ActionToolBar {
                 alignment: Qt.AlignRight
-                visible: listItemDelegate.hovered
                 actions: [
                     Kirigami.Action {
                         text: i18n("Enable this Effect")

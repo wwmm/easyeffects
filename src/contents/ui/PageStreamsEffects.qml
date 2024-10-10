@@ -146,8 +146,6 @@ Kirigami.Page {
             }
 
             ColumnLayout {
-                // Layout.horizontalStretchFactor: 1
-                // Layout.fillWidth: true
                 implicitWidth: pluginsListView.width
 
                 Kirigami.ActionToolBar {
@@ -174,6 +172,11 @@ Kirigami.Page {
                     implicitWidth: contentItem.childrenRect.width
                     clip: true
                     reuseItems: true
+                    onCurrentIndexChanged: {
+                        if (pluginsListModel.count > 0)
+                            showPassiveNotification("Clicked on plugin: " + pluginsListModel.get(currentIndex).baseName);
+
+                    }
 
                     model: ListModel {
                         id: pluginsListModel
