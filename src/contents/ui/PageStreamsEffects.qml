@@ -13,8 +13,9 @@ Kirigami.Page {
 
     id: pageStreamsEffects
 
-    property int pageType: 0 // 0 for output and 1 for input
-    property var streamDB
+    required property int pageType // 0 for output and 1 for input
+    required property var streamDB
+    required property var pluginsDB
     property string logTag: "PageStreamsEffects"
 
     padding: 0
@@ -80,10 +81,7 @@ Kirigami.Page {
                                 "translatedName": PluginsNameModel.translate(names[k]),
                                 "bypass": false
                             });
-                            if (pageType === 0)
-                                createPluginStack(names[k], EEdbm.soePluginsMap[plugins[n]]);
-                            else
-                                createPluginStack(names[k], EEdbm.siePluginsMap[plugins[n]]);
+                            createPluginStack(names[k], pluginsDB[plugins[n]]);
                             break;
                         }
                     }

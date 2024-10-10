@@ -27,6 +27,7 @@ Kirigami.ApplicationWindow {
                 pageStack.push("qrc:ui/PageStreamsEffects.qml", {
                     "pageType": 0,
                     "streamDB": EEdbm.streamOutputs,
+                    "pluginsDB": EEdbm.soePluginsDB,
                     "visible": true
                 });
                 break;
@@ -34,6 +35,7 @@ Kirigami.ApplicationWindow {
                 pageStack.push("qrc:ui/PageStreamsEffects.qml", {
                     "pageType": 1,
                     "streamDB": EEdbm.streamInputs,
+                    "pluginsDB": EEdbm.siePluginsDB,
                     "visible": true
                 });
                 break;
@@ -156,6 +158,7 @@ Kirigami.ApplicationWindow {
                         onTriggered: {
                             pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
                                 "pageType": 0,
+                                "pluginsDB": EEdbm.soePluginsDB,
                                 "streamDB": EEdbm.streamOutputs,
                                 "visible": true
                             });
@@ -173,6 +176,7 @@ Kirigami.ApplicationWindow {
                             pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
                                 "pageType": 1,
                                 "streamDB": EEdbm.streamInputs,
+                                "pluginsDB": EEdbm.siePluginsDB,
                                 "visible": true
                             });
                             EEdbm.main.visiblePage = 1;

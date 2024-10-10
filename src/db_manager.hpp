@@ -37,8 +37,8 @@ class Manager : public QObject {
   Q_PROPERTY(db::StreamInputs* streamInputs MEMBER streamInputs NOTIFY streamInputsChanged)
   Q_PROPERTY(db::StreamOutputs* streamOutputs MEMBER streamOutputs NOTIFY streamOutputsChanged)
 
-  Q_PROPERTY(QMap<QString, QVariant> soePluginsMap MEMBER soePluginsMap NOTIFY soePluginsMapChanged)
-  Q_PROPERTY(QMap<QString, QVariant> siePluginsMap MEMBER siePluginsMap NOTIFY siePluginsMapChanged)
+  Q_PROPERTY(QMap<QString, QVariant> soePluginsDB MEMBER soePluginsDB NOTIFY soePluginsDBChanged)
+  Q_PROPERTY(QMap<QString, QVariant> siePluginsDB MEMBER siePluginsDB NOTIFY siePluginsDBChanged)
 
  public:
   Manager();
@@ -64,16 +64,16 @@ class Manager : public QObject {
   db::StreamInputs* streamInputs;
   db::StreamOutputs* streamOutputs;
 
-  QMap<QString, QVariant> soePluginsMap;
-  QMap<QString, QVariant> siePluginsMap;
+  QMap<QString, QVariant> soePluginsDB;
+  QMap<QString, QVariant> siePluginsDB;
 
  signals:
   void mainChanged();
   void spectrumChanged();
   void streamInputsChanged();
   void streamOutputsChanged();
-  void soePluginsMapChanged();
-  void siePluginsMapChanged();
+  void soePluginsDBChanged();
+  void siePluginsDBChanged();
 
  private:
   void create_plugin_db(const QString& parentGroup, const auto& plugins_list, QMap<QString, QVariant>& plugins_map);

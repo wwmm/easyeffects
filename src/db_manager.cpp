@@ -53,8 +53,8 @@ Manager::Manager()
 
   // creating plugins database
 
-  create_plugin_db("sie", db::StreamInputs::plugins(), siePluginsMap);
-  create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsMap);
+  create_plugin_db("sie", db::StreamInputs::plugins(), siePluginsDB);
+  create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsDB);
 
   // signals
 
@@ -62,17 +62,17 @@ Manager::Manager()
           []() { QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode()); });
 
   connect(streamInputs, &db::StreamInputs::pluginsChanged,
-          [&]() { create_plugin_db("sie", db::StreamInputs::plugins(), siePluginsMap); });
+          [&]() { create_plugin_db("sie", db::StreamInputs::plugins(), siePluginsDB); });
 
   connect(streamOutputs, &db::StreamOutputs::pluginsChanged, [&]() {
-    create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsMap);
+    create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsDB);
     util::warning("hello from db!!!!");
   });
 
   // testing things
 
-  // soePluginsMap["autogain#0"].value<db::Autogain*>()->setMaximumHistory(7);
-  // qDebug() << soePluginsMap["autogain#0"].value<db::Autogain*>()->maximumHistory();
+  // soePluginsDB["autogain#0"].value<db::Autogain*>()->setMaximumHistory(7);
+  // qDebug() << soePluginsDB["autogain#0"].value<db::Autogain*>()->maximumHistory();
 }
 
 Manager::~Manager() {
@@ -87,11 +87,11 @@ void Manager::saveAll() const {
   streamOutputs->save();
   streamInputs->save();
 
-  for (const auto& plugin_db : siePluginsMap.values()) {
+  for (const auto& plugin_db : siePluginsDB.values()) {
     plugin_db.value<KConfigSkeleton*>()->save();
   }
 
-  for (const auto& plugin_db : soePluginsMap.values()) {
+  for (const auto& plugin_db : soePluginsDB.values()) {
     plugin_db.value<KConfigSkeleton*>()->save();
   }
 }
@@ -104,11 +104,11 @@ void Manager::resetAll() const {
   streamOutputs->setDefaults();
   streamInputs->setDefaults();
 
-  for (const auto& plugin_db : siePluginsMap.values()) {
+  for (const auto& plugin_db : siePluginsDB.values()) {
     plugin_db.value<KConfigSkeleton*>()->setDefaults();
   }
 
-  for (const auto& plugin_db : soePluginsMap.values()) {
+  for (const auto& plugin_db : soePluginsDB.values()) {
     plugin_db.value<KConfigSkeleton*>()->setDefaults();
   }
 }
