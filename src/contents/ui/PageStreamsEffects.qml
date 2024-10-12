@@ -148,8 +148,8 @@ Kirigami.Page {
                     for (let n = 0; n < pluginsListModel.count; n++) {
                         newList.push(pluginsListModel.get(n).name);
                     }
-                    if (pluginsListModel.count > 0) {
-                        let name = pluginsListModel.get(pluginsListView.currentIndex).name;
+                    if (pluginsListModel.currentItem !== null) {
+                        let name = pluginsListView.currentItem.name;
                         if (streamDB.visiblePlugin !== name) {
                             streamDB.visiblePlugin = name;
                             let baseName = pluginsListModel.get(pluginsListView.currentIndex).baseName;
@@ -196,12 +196,14 @@ Kirigami.Page {
                     clip: true
                     reuseItems: true
                     onCurrentIndexChanged: {
-                        if (pluginsListModel.count > 0) {
-                            showPassiveNotification("Clicked on plugin: " + pluginsListModel.get(currentIndex).baseName);
-                            let name = pluginsListModel.get(pluginsListView.currentIndex).name;
-                            let baseName = pluginsListModel.get(pluginsListView.currentIndex).baseName;
-                            streamDB.visiblePlugin = name;
-                            createPluginStack(baseName, pluginsDB[name]);
+                        if (pluginsListModel.currentItem !== null) {
+                            let name = pluginsListView.currentItem.name;
+                            if (streamDB.visiblePlugin !== name) {
+                                streamDB.visiblePlugin = name;
+                                let baseName = pluginsListModel.get(pluginsListView.currentIndex).baseName;
+                                createPluginStack(baseName, pluginsDB[name]);
+                            }
+                            showPassiveNotification("Clicked on plugin: " + name);
                         }
                     }
 
