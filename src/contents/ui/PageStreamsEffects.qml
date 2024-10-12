@@ -71,17 +71,16 @@ Kirigami.Page {
 
         GridLayout {
             function populatePluginsListModel(plugins) {
-                let names = PluginsNameModel.getBaseNames();
+                let baseNames = PluginsNameModel.getBaseNames();
                 for (let n = 0; n < plugins.length; n++) {
-                    for (let k = 0; k < names.length; k++) {
-                        if (plugins[n].startsWith(names[k])) {
+                    for (let k = 0; k < baseNames.length; k++) {
+                        if (plugins[n].startsWith(baseNames[k])) {
                             pluginsListModel.append({
                                 "name": plugins[n],
-                                "baseName": names[k],
-                                "translatedName": PluginsNameModel.translate(names[k]),
+                                "baseName": baseNames[k],
+                                "translatedName": PluginsNameModel.translate(baseNames[k]),
                                 "bypass": false
                             });
-                            createPluginStack(names[k], pluginsDB[plugins[n]]);
                             break;
                         }
                     }
@@ -103,6 +102,17 @@ Kirigami.Page {
 
             Component.onCompleted: {
                 populatePluginsListModel(streamDB.plugins);
+                if (streamDB.plugins.length > 0) {
+                    let firstPlugin = streamDB.plugins[0];
+                    let baseNames = PluginsNameModel.getBaseNames();
+                    for (let k = 0; k < baseNames.length; k++) {
+                        if (firstPlugin.startsWith(baseNames[k])) {
+                            createPluginStack(baseNames[k], pluginsDB[firstPlugin]);
+                            break;
+                        }
+                    }
+                    streamDB.visiblePlugin = firstPlugin;
+                }
             }
             Layout.fillHeight: true
             Layout.fillWidth: true
@@ -121,6 +131,10 @@ Kirigami.Page {
                     if (Common.equalArrays(newList, currentList))
                         return ;
 
+                    let currentSelection = pluginsListModel.get(pluginsListView.currentIndex);
+                    if (pluginsListModel.count > 0)
+                        currentSelection = pluginsListModel.get(pluginsListView.currentIndex);
+
                     pluginsListModel.clear();
                     populatePluginsListModel(newList);
                 }
@@ -134,10 +148,21 @@ Kirigami.Page {
                     for (let n = 0; n < pluginsListModel.count; n++) {
                         newList.push(pluginsListModel.get(n).name);
                     }
+                    if (pluginsListModel.count > 0) {
+                        let name = pluginsListModel.get(pluginsListView.currentIndex).name;
+                        if (streamDB.visiblePlugin !== name) {
+                            streamDB.visiblePlugin = name;
+                            let baseName = pluginsListModel.get(pluginsListView.currentIndex).baseName;
+                            createPluginStack(baseName, pluginsDB[name]);
+                        }
+                    }
+                    if (!Common.equalArrays(streamDB.plugins, newList))
+                        streamDB.plugins = newList;
+
                     if (newList.length === 0) {
+                        streamDB.visiblePlugin = "";
                         while (pluginsStack.depth > 1)pluginsStack.pop()
                     }
-                    streamDB.plugins = newList;
                 }
 
                 target: pluginsListModel
@@ -171,9 +196,13 @@ Kirigami.Page {
                     clip: true
                     reuseItems: true
                     onCurrentIndexChanged: {
-                        if (pluginsListModel.count > 0)
+                        if (pluginsListModel.count > 0) {
                             showPassiveNotification("Clicked on plugin: " + pluginsListModel.get(currentIndex).baseName);
-
+                            let name = pluginsListModel.get(pluginsListView.currentIndex).name;
+                            let baseName = pluginsListModel.get(pluginsListView.currentIndex).baseName;
+                            streamDB.visiblePlugin = name;
+                            createPluginStack(baseName, pluginsDB[name]);
+                        }
                     }
 
                     model: ListModel {

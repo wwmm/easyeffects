@@ -13,7 +13,6 @@
 #include <QRegularExpression>
 #include <iterator>
 #include "config.h"
-#include "util.hpp"
 
 namespace {
 

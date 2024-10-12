@@ -40,5 +40,9 @@
             </choices>
             <default>0</default>
         </entry>
+        <entry name="visiblePlugin" type="String">
+            <label>Visible Plugin</label>
+            <default>""</default>
+        </entry>
     </group>
 </kcfg>
