@@ -177,7 +177,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   if (!list.empty()) {
     for (const auto& name : list) {
-      if (!plugins.contains(name)) {
+      if (!plugins.contains(name) || plugins[name].isNull()) {
         continue;
       }
 
@@ -202,7 +202,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
     // checking if we have to link the echo_canceller probe to the output device
 
     for (const auto& name : list) {
-      if (!plugins.contains(name)) {
+      if (!plugins.contains(name) || plugins[name].isNull()) {
         continue;
       }
 
@@ -278,6 +278,10 @@ void StreamOutputEffects::disconnect_filters() {
   const auto selected_plugins_list = (bypass) ? QStringList() : db::StreamOutputs::plugins();
 
   for (const auto& plugin : plugins | std::views::values) {
+    if (plugin.isNull()) {
+      continue;
+    }
+
     for (const auto& link : pm->list_links) {
       if (link.input_node_id == plugin->get_node_id() || link.output_node_id == plugin->get_node_id()) {
         link_id_list.insert(link.id);

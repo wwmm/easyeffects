@@ -23,16 +23,17 @@
 #include <pipewire/proxy.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
+#include <QPointer>
 #include <QString>
 #include <map>
 #include <memory>
 #include <string>
 #include <vector>
+#include "autogain.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 
-// #include "autogain.hpp"
 // #include "bass_enhancer.hpp"
 // #include "bass_loudness.hpp"
 // #include "compressor.hpp"
@@ -81,7 +82,7 @@ class EffectsBase : public QObject {
   //   std::shared_ptr<OutputLevel> output_level;
   //   std::shared_ptr<Spectrum> spectrum;
 
-  //   std::shared_ptr<AutoGain> autogain;
+  QPointer<AutoGain> autogain;
   //   std::shared_ptr<BassEnhancer> bass_enhancer;
   //   std::shared_ptr<BassLoudness> bass_loudness;
   //   std::shared_ptr<Compressor> compressor;
@@ -112,10 +113,10 @@ class EffectsBase : public QObject {
 
   void reset_settings();
 
-  auto get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>>;
+  auto get_plugins_map() -> std::map<QString, QPointer<PluginBase>>;
 
   template <typename T>
-  auto get_plugin_instance(const QString& name) -> std::shared_ptr<T> {
+  auto get_plugin_instance(const QString& name) -> QPointer<T> {
     return std::dynamic_pointer_cast<T>(plugins[name]);
   }
 
@@ -123,7 +124,7 @@ class EffectsBase : public QObject {
   void pipeline_latency(float value);
 
  protected:
-  std::map<QString, std::shared_ptr<PluginBase>> plugins;
+  std::map<QString, QPointer<PluginBase>> plugins;
 
   std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
 

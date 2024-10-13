@@ -15,8 +15,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(QT_DEFAULT_MAJOR_VERSION 6)
 set(QT_MAJOR_VERSION ${QT_DEFAULT_MAJOR_VERSION})
 
-set(Boost_USE_MULTITHREADED ON)
-
 option(ENABLE_RNNOISE "Whether to use RRNNoise for noise cancellation" ON)
 option(ENABLE_LIBPORTAL "Whether to use libportal to handle autostart files." OFF)
 option(ENABLE_DEVEL "Whether to use development build mode, with .Devel appended to the application ID. For Flatpak builds, user data for development builds is stored separately from stable builds" OFF)
@@ -57,6 +55,7 @@ find_package(PkgConfig REQUIRED)
 
 pkg_check_modules(LIBPIPEWIRE libpipewire-0.3>=1.0.6)
 pkg_check_modules(LIBLILV lilv-0>=0.24)
+pkg_check_modules(LIBEBUR128 libebur128>=1.2.6)
 
 file(GLOB KCFG_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfg)
 file(GLOB KCFGC_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfgc)

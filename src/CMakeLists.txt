@@ -7,6 +7,7 @@ add_executable(easyeffects)
 kde_target_enable_exceptions(easyeffects PRIVATE)
 
 target_sources(easyeffects PRIVATE
+    autogain.cpp
     command_line_parser.cpp
     db_manager.cpp
     effects_base.cpp
@@ -29,6 +30,7 @@ target_sources(easyeffects PRIVATE
 target_include_directories(easyeffects PRIVATE 
     ${LIBPIPEWIRE_INCLUDE_DIRS}
     ${LIBLILV_INCLUDE_DIRS}
+    ${LIBEBUR128_INCLUDE_DIRS}
 )
 
 target_link_libraries(easyeffects PRIVATE
@@ -46,6 +48,7 @@ target_link_libraries(easyeffects PRIVATE
     Qt${QT_MAJOR_VERSION}::Network
     ${LIBPIPEWIRE_LIBRARIES}
     ${LIBLILV_LIBRARIES}
+    ${LIBEBUR128_LIBRARIES}
 )
 
 if(ENABLE_LIBPORTAL)

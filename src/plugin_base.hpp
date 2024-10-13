@@ -43,8 +43,7 @@ class PluginBase : public QObject {
   PluginBase(std::string tag,
              QString plugin_name,
              QString plugin_package,
-             const std::string& schema,
-             const std::string& schema_path,
+             QString instance_id,
              pw::Manager* pipe_manager,
              PipelineType pipe_type,
              const bool& enable_probe = false);
@@ -75,7 +74,7 @@ class PluginBase : public QObject {
 
   const std::string log_tag;
 
-  QString name, package;
+  QString name, package, instance_id;
 
   PipelineType pipeline_type{};
 
