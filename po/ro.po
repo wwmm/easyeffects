@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-09 22:45+0000\n"
-"PO-Revision-Date: 2022-08-17 04:16+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
+"PO-Revision-Date: 2024-10-15 23:15+0000\n"
+"Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
 "Language: ro\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14-dev\n"
+"X-Generator: Weblate 5.8-rc\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -27,121 +27,108 @@ msgstr "@APP_NAME@"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr "Egalizator, compresor și Alte Efecte Audio"
+msgstr "Egalizator, compresor și alte efecte audio"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
-#, fuzzy
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Efecte Audio pentru Aplicații PulseAudio"
+msgstr "Efecte audio pentru aplicațiile PipeWire"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "limitator;compresor;reverberație;egalizator;autovolum"
+msgstr "limitator;compresor;reverberație;egalizator;autovolum;"
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr ""
+msgstr "Activează/dezactivează această aplicație"
 
 #: data/ui/app_info.ui:213 data/ui/rnnoise.ui:51
-#, fuzzy
 msgid "Enable"
 msgstr "Activează"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "Lista de aplicații excluse: Adăugați/eliminați această aplicație"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
-msgstr ""
+msgstr "Exclude"
 
 #: data/ui/app_info.ui:247 data/ui/app_info.ui:249
-#, fuzzy
 msgid "Mute Application"
-msgstr "Aplicații"
+msgstr "Dezactivează sunetul aplicației"
 
 #: data/ui/app_info.ui:269
 msgid "Change the volume of this application"
-msgstr ""
+msgstr "Modifică volumul acestei aplicații"
 
 #: data/ui/app_info.ui:271
-#, fuzzy
 msgid "Application Volume"
-msgstr "Aplicații"
+msgstr "Volumul aplicației"
 
 #: data/ui/application_window.ui:6
-#, fuzzy
 msgid "_Help"
-msgstr "Ajutor"
+msgstr "_Ajutor"
 
 #: data/ui/application_window.ui:12
-#, fuzzy
 msgid "_Reset Settings"
-msgstr "Setări"
+msgstr "_Restaurare valori"
 
 #: data/ui/application_window.ui:18
 msgid "_Preferences"
-msgstr ""
+msgstr "_Preferințe"
 
 #: data/ui/application_window.ui:22
 msgid "_Shortcuts"
-msgstr ""
+msgstr "Ta_ste de comenzi rapide"
 
 #: data/ui/application_window.ui:26
-#, fuzzy
 msgid "_About Easy Effects"
-msgstr "EasyEffects"
+msgstr "_Despre Easy Effects"
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr ""
+msgstr "_Ieșire"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:159
 msgid "Presets"
-msgstr "Presetări"
+msgstr "Preconfigurări"
 
 #: data/ui/application_window.ui:61
-#, fuzzy
 msgid "Presets Menu"
-msgstr "Presetări"
+msgstr "Meniu preconfigurări"
 
 #: data/ui/application_window.ui:68
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "Activează/dezactivează suprimarea globală a efectelor"
 
 #: data/ui/application_window.ui:73
 msgid "Global Bypass"
-msgstr "Evitare Globală"
+msgstr "Suprimare globală a efectelor"
 
 #: data/ui/application_window.ui:83
 msgid "Primary Menu"
-msgstr ""
+msgstr "Meniul principal"
 
 #: data/ui/application_window.ui:99
-#, fuzzy
 msgid "Easy Effects Window"
-msgstr "EasyEffects"
+msgstr "Fereastra Easy Effects"
 
 #: data/ui/apps_box.ui:17
-#, fuzzy
 msgid "Applications List"
-msgstr "Aplicații"
+msgstr "Lista de aplicații"
 
 #: data/ui/apps_box.ui:27
-#, fuzzy
 msgid "Empty List"
-msgstr "Pereți Goi"
+msgstr "Listă goală"
 
 #: data/ui/apps_box.ui:28
-#, fuzzy
 msgid "No Audio Application Available"
-msgstr "Aplicații"
+msgstr "Nicio aplicație audio disponibilă"
 
 #: data/ui/autogain.ui:29 data/ui/filter.ui:38
-#, fuzzy
 msgid "Controls"
-msgstr "Controlor de Gain"
+msgstr "Controale"
 
 #: data/ui/autogain.ui:33
 msgid "Target"
@@ -152,51 +139,44 @@ msgid "Silence"
 msgstr "Liniște"
 
 #: data/ui/autogain.ui:80
-#, fuzzy
 msgid "Maximum History"
-msgstr "Maxim"
+msgstr "Istoric maxim"
 
 #: data/ui/autogain.ui:103
 msgid "Reference"
-msgstr ""
+msgstr "Referință"
 
 #: data/ui/autogain.ui:109 data/ui/autogain.ui:158 data/ui/level_meter.ui:72
 msgid "Momentary"
-msgstr "Momentar"
+msgstr "Momentan"
 
 #: data/ui/autogain.ui:110 data/ui/autogain.ui:196 data/ui/level_meter.ui:109
-#, fuzzy
 msgid "Short-Term"
-msgstr "Pe Termen Scurt"
+msgstr "Pe termen scurt"
 
 #: data/ui/autogain.ui:111 data/ui/autogain.ui:233 data/ui/level_meter.ui:145
 msgid "Integrated"
 msgstr "Integrat"
 
 #: data/ui/autogain.ui:112
-#, fuzzy
 msgid "Geometric Mean (MSI)"
-msgstr "Utilizarea Mijlocului Geometric"
+msgstr "Media geometrică (MSI)"
 
 #: data/ui/autogain.ui:113
-#, fuzzy
 msgid "Geometric Mean (MS)"
-msgstr "Utilizarea Mijlocului Geometric"
+msgstr "Media geometrică (MS)"
 
 #: data/ui/autogain.ui:114
-#, fuzzy
 msgid "Geometric Mean (MI)"
-msgstr "Utilizarea Mijlocului Geometric"
+msgstr "Media geometrică (MI)"
 
 #: data/ui/autogain.ui:115
-#, fuzzy
 msgid "Geometric Mean (SI)"
-msgstr "Utilizarea Mijlocului Geometric"
+msgstr "Media geometrică (SI)"
 
 #: data/ui/autogain.ui:124
-#, fuzzy
 msgid "History"
-msgstr "Resetare Istoric"
+msgstr "Istoric"
 
 #: data/ui/autogain.ui:129 data/ui/autogain.ui:598 data/ui/bass_enhancer.ui:458
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1307
@@ -209,25 +189,24 @@ msgstr "Resetare Istoric"
 #: data/ui/multiband_gate.ui:661 data/ui/pitch.ui:387 data/ui/reverb.ui:527
 #: data/ui/rnnoise.ui:441 data/ui/speex.ui:356 data/ui/stereo_tools.ui:786
 msgid "Reset"
-msgstr "Resetare"
+msgstr "Restabilește"
 
 #: data/ui/autogain.ui:144 data/ui/autogain.ui:346 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:58 src/tags_plugin_name.cpp:56
 msgid "Loudness"
-msgstr "Intensitate"
+msgstr "Intensitate sonoră"
 
 #: data/ui/autogain.ui:270 data/ui/level_meter.ui:181
 msgid "Relative"
-msgstr "Relativ"
+msgstr "Relativă"
 
 #: data/ui/autogain.ui:307 data/ui/level_meter.ui:217
 msgid "Range"
-msgstr "Gamă"
+msgstr "Interval"
 
 #: data/ui/autogain.ui:383
-#, fuzzy
 msgid "Output Gain"
-msgstr "Output"
+msgstr "Câștig de ieșire"
 
 #: data/ui/autogain.ui:430 data/ui/bass_enhancer.ui:258
 #: data/ui/bass_loudness.ui:107 data/ui/compressor.ui:650
@@ -243,7 +222,7 @@ msgstr "Output"
 #: data/ui/rnnoise.ui:273 data/ui/speex.ui:187 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:617
 msgid "Input"
-msgstr "Input"
+msgstr "Intrare"
 
 #: data/ui/autogain.ui:449 data/ui/bass_enhancer.ui:277
 #: data/ui/bass_loudness.ui:126 data/ui/compressor.ui:1158
@@ -255,9 +234,8 @@ msgstr "Input"
 #: data/ui/maximizer.ui:106 data/ui/multiband_compressor.ui:512
 #: data/ui/multiband_gate.ui:512 data/ui/pitch.ui:238 data/ui/reverb.ui:377
 #: data/ui/rnnoise.ui:292 data/ui/speex.ui:206 data/ui/stereo_tools.ui:636
-#, fuzzy
 msgid "Plugin Input Gain"
-msgstr "Input Pipeline"
+msgstr "Câștigul de intrare al modulului"
 
 #: data/ui/autogain.ui:514 data/ui/bass_enhancer.ui:342
 #: data/ui/bass_loudness.ui:48 data/ui/bass_loudness.ui:191
@@ -272,7 +250,7 @@ msgstr "Input Pipeline"
 #: data/ui/rnnoise.ui:357 data/ui/speex.ui:271 data/ui/stereo_tools.ui:379
 #: data/ui/stereo_tools.ui:701
 msgid "Output"
-msgstr "Output"
+msgstr "Ieșire"
 
 #: data/ui/autogain.ui:533 data/ui/bass_enhancer.ui:361
 #: data/ui/bass_loudness.ui:210 data/ui/compressor.ui:1242
@@ -284,15 +262,14 @@ msgstr "Output"
 #: data/ui/maximizer.ui:190 data/ui/multiband_compressor.ui:596
 #: data/ui/multiband_gate.ui:596 data/ui/pitch.ui:322 data/ui/reverb.ui:461
 #: data/ui/rnnoise.ui:376 data/ui/speex.ui:290 data/ui/stereo_tools.ui:720
-#, fuzzy
 msgid "Plugin Output Gain"
-msgstr "Output Pipeline"
+msgstr "Câștigul de ieșire al modulului"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:673 data/ui/expander.ui:594
 #: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:246
 #: data/ui/pipe_manager_box.ui:376
 msgid "Device"
-msgstr ""
+msgstr "Dispozitiv"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
@@ -302,18 +279,16 @@ msgstr "Nume"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:257
 #: data/ui/pipe_manager_box.ui:387
-#, fuzzy
 msgid "Preset"
-msgstr "Presetări"
+msgstr "Preconfigurare"
 
 #: data/ui/autoload_row.ui:114
-#, fuzzy
 msgid "Remove this autoload preset"
-msgstr "Șterge fișierul de presetări"
+msgstr "Elimină această preconfigurare cu încărcare automată"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:627 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/expander.ui:548 data/ui/gate.ui:761
@@ -322,15 +297,15 @@ msgstr "Ascultă"
 
 #: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
-msgstr "Blend Harmonics"
+msgstr "Amestecă armonicele"
 
 #: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
-msgstr "Al treilea"
+msgstr "a 3-a"
 
 #: data/ui/bass_enhancer.ui:89 data/ui/exciter.ui:89
 msgid "2nd"
-msgstr "Al doilea"
+msgstr "a 2-a"
 
 #: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
 msgid "Amount"
@@ -339,52 +314,46 @@ msgstr "Cantitate"
 #: data/ui/bass_enhancer.ui:141 data/ui/bass_enhancer.ui:420
 #: data/ui/exciter.ui:141 data/ui/exciter.ui:420
 msgid "Harmonics"
-msgstr "Harmonics"
+msgstr "Armonice"
 
 #: data/ui/bass_enhancer.ui:175 data/ui/exciter.ui:175
 msgid "Scope"
-msgstr "Scop"
+msgstr "Gama"
 
 #: data/ui/bass_enhancer.ui:208
 msgid "Floor"
-msgstr "Podea"
+msgstr "Limita inferioară"
 
 #: data/ui/bass_enhancer.ui:236
-#, fuzzy
 msgid "Floor Value"
-msgstr "Podea"
+msgstr "Valoarea limitei inferioare"
 
 #: data/ui/bass_loudness.ui:69
 msgid "Link"
-msgstr ""
+msgstr "Legătură"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
-#, fuzzy
 msgid "Application Name"
-msgstr "Aplicații"
+msgstr "Numele aplicației"
 
 #: data/ui/blocklist_menu.ui:42
-#, fuzzy
 msgid "Add to Excluded Applications"
-msgstr "Arată programele din Lista de Blocare în Fila Principală"
+msgstr "Adăugați la aplicațiile excluse"
 
 #: data/ui/blocklist_menu.ui:86
-#, fuzzy
 msgid "Excluded Applications List"
-msgstr "Arată programele din Lista de Blocare în Fila Principală"
+msgstr "Lista aplicațiilor excluse"
 
 #: data/ui/blocklist_menu.ui:99
-#, fuzzy
 msgid "Show Excluded Applications"
-msgstr "Arată programele din Lista de Blocare în Fila Principală"
+msgstr "Afișează aplicațiile excluse"
 
 #: data/ui/compressor.ui:25 data/ui/delay.ui:25 data/ui/equalizer.ui:279
 #: data/ui/expander.ui:25 data/ui/filter.ui:25 data/ui/gate.ui:25
 #: data/ui/limiter.ui:25 data/ui/loudness.ui:25
 #: data/ui/multiband_compressor.ui:105 data/ui/multiband_gate.ui:105
-#, fuzzy
 msgid "Show Native Window"
-msgstr "Ascunde Fereastra."
+msgstr "Afișează fereastra nativă"
 
 #: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:41
 msgid "Compressor"
@@ -411,20 +380,19 @@ msgstr "În Sus"
 
 #: data/ui/compressor.ui:78 data/ui/multiband_compressor_band.ui:102
 msgid "Boosting"
-msgstr ""
+msgstr "Intensificare"
 
 #: data/ui/compressor.ui:87 data/ui/multiband_compressor_band.ui:87
 msgid "Compression Mode"
-msgstr "Mod de Compresie"
+msgstr "Modul de compresie"
 
 #: data/ui/compressor.ui:94 data/ui/multiband_compressor_band.ui:807
 msgid "Boost Threshold"
-msgstr "Prag de Boost"
+msgstr "Pragul de intensificare"
 
 #: data/ui/compressor.ui:133 data/ui/multiband_compressor_band.ui:764
-#, fuzzy
 msgid "Boost Amount"
-msgstr "Cantitate"
+msgstr "Valoarea intensificării"
 
 #: data/ui/compressor.ui:179 data/ui/expander.ui:100 data/ui/gate.ui:70
 #: data/ui/limiter.ui:282 data/ui/limiter.ui:501
@@ -434,9 +402,8 @@ msgstr "Atac"
 
 #: data/ui/compressor.ui:190 data/ui/expander.ui:111
 #: data/ui/multiband_compressor_band.ui:169
-#, fuzzy
 msgid "Time"
-msgstr "În Timp Real"
+msgstr "Timpul"
 
 #: data/ui/compressor.ui:200 data/ui/deesser.ui:301 data/ui/expander.ui:121
 #: data/ui/gate.ui:161 data/ui/gate.ui:253 data/ui/limiter.ui:364
@@ -444,19 +411,17 @@ msgstr "În Timp Real"
 #: data/ui/multiband_gate_band.ui:234 data/ui/multiband_gate_band.ui:326
 #: data/ui/rnnoise.ui:64
 msgid "Threshold"
-msgstr "Prag"
+msgstr "Pragul"
 
 #: data/ui/compressor.ui:225 data/ui/expander.ui:146
 #: data/ui/multiband_compressor_band.ui:224
-#, fuzzy
 msgid "Attack Time"
-msgstr "Atac"
+msgstr "Timpul de atac"
 
 #: data/ui/compressor.ui:246 data/ui/expander.ui:167 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:248
-#, fuzzy
 msgid "Attack Threshold"
-msgstr "Prag"
+msgstr "Pragul de atac"
 
 #: data/ui/compressor.ui:253 data/ui/expander.ui:174 data/ui/gate.ui:76
 #: data/ui/limiter.ui:323 data/ui/limiter.ui:537 data/ui/maximizer.ui:27
@@ -467,15 +432,13 @@ msgstr "Eliberare"
 
 #: data/ui/compressor.ui:278 data/ui/expander.ui:199
 #: data/ui/multiband_compressor_band.ui:274
-#, fuzzy
 msgid "Release Time"
-msgstr "În Timp Real"
+msgstr "Timpul de eliberare"
 
 #: data/ui/compressor.ui:301 data/ui/expander.ui:222 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:301
-#, fuzzy
 msgid "Release Threshold"
-msgstr "Prag Relativ de Eliberare"
+msgstr "Pragul de eliberare"
 
 #: data/ui/compressor.ui:308 data/ui/deesser.ui:334 data/ui/expander.ui:229
 #: data/ui/multiband_compressor_band.ui:308
@@ -497,17 +460,15 @@ msgstr "Compoziție"
 #: data/ui/expander.ui:333 data/ui/gate.ui:346
 #: data/ui/multiband_compressor.ui:174 data/ui/multiband_gate.ui:174
 #: data/ui/reverb.ui:208 data/ui/stereo_tools.ui:528
-#, fuzzy
 msgid "Dry Level"
-msgstr "F2 Nivel"
+msgstr "Nivelul uscat"
 
 #: data/ui/compressor.ui:446 data/ui/delay.ui:85 data/ui/delay.ui:172
 #: data/ui/expander.ui:367 data/ui/gate.ui:351
 #: data/ui/multiband_compressor.ui:207 data/ui/multiband_gate.ui:207
 #: data/ui/reverb.ui:241 data/ui/rnnoise.ui:90 data/ui/stereo_tools.ui:563
-#, fuzzy
 msgid "Wet Level"
-msgstr "Nivelul Țintă"
+msgstr "Nivelul umed"
 
 #: data/ui/compressor.ui:487 data/ui/compressor.ui:508
 #: data/ui/compressor.ui:1075 data/ui/expander.ui:408 data/ui/expander.ui:429
@@ -515,15 +476,14 @@ msgstr "Nivelul Țintă"
 #: data/ui/gate.ui:1208 data/ui/multiband_compressor_band.ui:466
 #: data/ui/multiband_gate_band.ui:524
 msgid "Sidechain"
-msgstr "Lanț Lateral"
+msgstr "Lanț lateral"
 
 #: data/ui/compressor.ui:519 data/ui/compressor.ui:525 data/ui/expander.ui:440
 #: data/ui/expander.ui:446 data/ui/gate.ui:653 data/ui/gate.ui:659
 #: data/ui/multiband_compressor.ui:121 data/ui/multiband_compressor.ui:128
 #: data/ui/multiband_gate.ui:121 data/ui/multiband_gate.ui:128
-#, fuzzy
 msgid "Stereo Split Mode"
-msgstr "Bază Stereo"
+msgstr "Modul de separare stereo"
 
 #: data/ui/compressor.ui:532 data/ui/expander.ui:453 data/ui/gate.ui:666
 #: data/ui/multiband_compressor_band.ui:455 data/ui/multiband_gate_band.ui:513
@@ -538,7 +498,7 @@ msgstr "Mijloc"
 #: data/ui/compressor.ui:545 data/ui/expander.ui:466 data/ui/gate.ui:679
 #: data/ui/multiband_compressor_band.ui:479 data/ui/multiband_gate_band.ui:537
 msgid "Side"
-msgstr "Parte"
+msgstr "Lateral"
 
 #: data/ui/compressor.ui:546 data/ui/delay.ui:38 data/ui/equalizer.ui:215
 #: data/ui/expander.ui:467 data/ui/gate.ui:680 data/ui/level_meter.ui:32
@@ -559,55 +519,47 @@ msgstr "Dreapta"
 #: data/ui/multiband_compressor_band.ui:482
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:540
 #: data/ui/multiband_gate_band.ui:575
-#, fuzzy
 msgid "Min"
-msgstr "Maxim"
+msgstr "Minim"
 
 #: data/ui/compressor.ui:549 data/ui/compressor.ui:572 data/ui/expander.ui:470
 #: data/ui/expander.ui:493 data/ui/gate.ui:683 data/ui/gate.ui:706
 #: data/ui/multiband_compressor_band.ui:483
 #: data/ui/multiband_compressor_band.ui:518 data/ui/multiband_gate_band.ui:541
 #: data/ui/multiband_gate_band.ui:576
-#, fuzzy
 msgid "Max"
 msgstr "Maxim"
 
 #: data/ui/compressor.ui:558 data/ui/expander.ui:479 data/ui/gate.ui:692
 #: data/ui/multiband_compressor.ui:77 data/ui/multiband_compressor_band.ui:492
 #: data/ui/multiband_gate.ui:77 data/ui/multiband_gate_band.ui:550
-#, fuzzy
 msgid "Sidechain Source"
-msgstr "Lanț Lateral"
+msgstr "Sursă lanț lateral"
 
 #: data/ui/compressor.ui:567 data/ui/expander.ui:488 data/ui/gate.ui:701
 #: data/ui/multiband_compressor_band.ui:513 data/ui/multiband_gate_band.ui:571
-#, fuzzy
 msgid "Left/Right"
-msgstr "Întârziere L/R"
+msgstr "Stânga/Dreapta"
 
 #: data/ui/compressor.ui:568 data/ui/expander.ui:489 data/ui/gate.ui:702
 #: data/ui/multiband_compressor_band.ui:514 data/ui/multiband_gate_band.ui:572
-#, fuzzy
 msgid "Right/Left"
-msgstr "Dreapta"
+msgstr "Dreapta/Stânga"
 
 #: data/ui/compressor.ui:569 data/ui/expander.ui:490 data/ui/gate.ui:703
 #: data/ui/multiband_compressor_band.ui:515 data/ui/multiband_gate_band.ui:573
-#, fuzzy
 msgid "Mid/Side"
-msgstr "Parte"
+msgstr "Mijloc/Lateral"
 
 #: data/ui/compressor.ui:570 data/ui/expander.ui:491 data/ui/gate.ui:704
 #: data/ui/multiband_compressor_band.ui:516 data/ui/multiband_gate_band.ui:574
-#, fuzzy
 msgid "Side/Mid"
-msgstr "Parte"
+msgstr "Lateral/Mijloc"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:502 data/ui/gate.ui:715
 #: data/ui/multiband_compressor_band.ui:527 data/ui/multiband_gate_band.ui:585
-#, fuzzy
 msgid "Stereo Split Source"
-msgstr "Sursa Prestabilită"
+msgstr "Sursă separare stereo"
 
 #: data/ui/compressor.ui:607 data/ui/deesser.ui:50 data/ui/expander.ui:528
 #: data/ui/gate.ui:741 data/ui/multiband_compressor_band.ui:551
@@ -623,57 +575,50 @@ msgstr "RMS"
 
 #: data/ui/compressor.ui:609 data/ui/expander.ui:530 data/ui/gate.ui:743
 #: data/ui/multiband_compressor_band.ui:553 data/ui/multiband_gate_band.ui:611
-#, fuzzy
 msgid "Low-Pass Filter"
-msgstr "Mod Filtru Low-pass"
+msgstr "Filtru trece-jos"
 
 #: data/ui/compressor.ui:610 data/ui/expander.ui:531 data/ui/gate.ui:744
 #: data/ui/multiband_compressor_band.ui:554 data/ui/multiband_gate_band.ui:612
 msgid "Simple Moving Average"
-msgstr ""
+msgstr "Media mobilă simplă"
 
 #: data/ui/compressor.ui:619 data/ui/expander.ui:540 data/ui/gate.ui:753
 #: data/ui/multiband_compressor_band.ui:563 data/ui/multiband_gate_band.ui:621
-#, fuzzy
 msgid "Sidechain Mode"
-msgstr "Lanț Lateral"
+msgstr "Modul de lanț lateral"
 
 #: data/ui/compressor.ui:633 data/ui/expander.ui:554 data/ui/gate.ui:767
-#, fuzzy
 msgid "Listen Sidechain"
-msgstr "Lanț Lateral"
+msgstr "Ascultare lanț lateral"
 
 #: data/ui/compressor.ui:662 data/ui/equalizer_band.ui:108
 #: data/ui/expander.ui:583 data/ui/filter.ui:42 data/ui/gate.ui:796
 msgid "Type"
-msgstr "Scrie"
+msgstr "Tip"
 
 #: data/ui/compressor.ui:688
-#, fuzzy
 msgid "Feed-forward"
-msgstr "Feed-forward"
+msgstr "Flux-înainte"
 
 #: data/ui/compressor.ui:689
 msgid "Feed-back"
-msgstr "Feed-back"
+msgstr "Flux-înapoi"
 
 #: data/ui/compressor.ui:690 data/ui/expander.ui:610 data/ui/gate.ui:823
 msgid "External"
-msgstr ""
+msgstr "Extern"
 
 #: data/ui/compressor.ui:699 data/ui/expander.ui:619 data/ui/gate.ui:832
-#, fuzzy
 msgid "Sidechain Type"
-msgstr "Lanț Lateral"
+msgstr "Tipul de lanț lateral"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
 #: src/plugins_box.cpp:806
-#, fuzzy
 msgid "Input Device"
-msgstr "Nivel Input"
+msgstr "Dispozitiv de intrare"
 
 #: data/ui/compressor.ui:734 data/ui/expander.ui:654 data/ui/gate.ui:867
-#, fuzzy
 msgid "PreAmplification"
 msgstr "Preamplificare"
 
@@ -689,15 +634,13 @@ msgid "Lookahead"
 msgstr "Privire Înainte"
 
 #: data/ui/compressor.ui:848 data/ui/expander.ui:768 data/ui/gate.ui:981
-#, fuzzy
 msgid "Sidechain Filters"
-msgstr "Lanț Lateral"
+msgstr "Filtre de lanț lateral"
 
 #: data/ui/compressor.ui:858 data/ui/expander.ui:778 data/ui/filter.ui:51
 #: data/ui/gate.ui:991
-#, fuzzy
 msgid "High-Pass"
-msgstr "High Pass"
+msgstr "Trece-sus"
 
 #: data/ui/compressor.ui:884 data/ui/equalizer_band.ui:204
 #: data/ui/expander.ui:804 data/ui/filter.ui:166 data/ui/gate.ui:1017
@@ -708,7 +651,7 @@ msgstr "Frecvență"
 #: data/ui/compressor.ui:899 data/ui/compressor.ui:958 data/ui/expander.ui:819
 #: data/ui/expander.ui:878 data/ui/gate.ui:1032 data/ui/gate.ui:1091
 msgid "Off"
-msgstr "Oprit"
+msgstr "Dezactivat"
 
 #: data/ui/compressor.ui:900 data/ui/compressor.ui:959 data/ui/expander.ui:820
 #: data/ui/expander.ui:879 data/ui/gate.ui:1033 data/ui/gate.ui:1092
@@ -726,35 +669,31 @@ msgid "36 dB/oct"
 msgstr "36 dB/oct"
 
 #: data/ui/compressor.ui:911 data/ui/expander.ui:831 data/ui/gate.ui:1044
-#, fuzzy
 msgid "High-Pass Filter Mode"
-msgstr "Mod Filtru High-pass"
+msgstr "Modul de filtru trece-sus"
 
 #: data/ui/compressor.ui:936 data/ui/compressor.ui:995 data/ui/expander.ui:856
 #: data/ui/expander.ui:915 data/ui/gate.ui:1069 data/ui/gate.ui:1128
-#, fuzzy
 msgid "High-Pass Filter Frequency"
-msgstr "Frecvență High-pass"
+msgstr "Frecvența filtrului de trece-sus"
 
 #: data/ui/compressor.ui:943 data/ui/expander.ui:863 data/ui/filter.ui:50
 #: data/ui/gate.ui:1076
 msgid "Low-Pass"
-msgstr "Low-Pass"
+msgstr "Trece-jos"
 
 #: data/ui/compressor.ui:970 data/ui/expander.ui:890 data/ui/gate.ui:1103
-#, fuzzy
 msgid "Low-Pass Filter Mode"
-msgstr "Mod Filtru Low-pass"
+msgstr "Modul de filtru trece-jos"
 
 #: data/ui/compressor.ui:1021 data/ui/equalizer_band.ui:235
 #: data/ui/expander.ui:941 data/ui/filter.ui:218
 msgid "Gain"
-msgstr "Gain"
+msgstr "Câștig"
 
 #: data/ui/compressor.ui:1048 data/ui/expander.ui:968 data/ui/gate.ui:1181
-#, fuzzy
 msgid "Envelope"
-msgstr "Pantă"
+msgstr "Anvelopă"
 
 #: data/ui/compressor.ui:1102 data/ui/expander.ui:1022 data/ui/gate.ui:145
 #: data/ui/gate.ui:1235 data/ui/multiband_gate_band.ui:218
@@ -763,48 +702,44 @@ msgstr "Curbă"
 
 #: data/ui/convolver.ui:40
 msgid "L"
-msgstr "L"
+msgstr "S"
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:584
-#, fuzzy
 msgid "Left Channel"
-msgstr "Canale"
+msgstr "Canalul stâng"
 
 #: data/ui/convolver.ui:53
 msgid "R"
-msgstr "R"
+msgstr "D"
 
 #: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:595
-#, fuzzy
 msgid "Right Channel"
-msgstr "Despică Canalele"
+msgstr "Canalul drept"
 
 #: data/ui/convolver.ui:71
-#, fuzzy
 msgid "Impulses"
-msgstr "Răspuns Impuls"
+msgstr "Impulsuri"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "Combinare"
 
 #: data/ui/convolver.ui:86
 msgid "Stereo Width"
-msgstr "Lățime Stereo"
+msgstr "Amplitudine stereo"
 
 #: data/ui/convolver.ui:113 src/plugin_base.cpp:235
 msgid "Spectrum"
-msgstr "Spectru "
+msgstr "Spectru"
 
 #: data/ui/convolver.ui:121
 msgid "Log Scale"
-msgstr ""
+msgstr "Scară logaritmică"
 
 #: data/ui/convolver.ui:131 src/tags_plugin_name.cpp:38
-#, fuzzy
 msgid "Autogain"
-msgstr "Auto Gain"
+msgstr "Câștig automat"
 
 #: data/ui/convolver.ui:147
 msgid "Rate"
@@ -812,99 +747,94 @@ msgstr "Rată"
 
 #: data/ui/convolver.ui:168
 msgid "Samples"
-msgstr "Probe"
+msgstr "Eșantioane"
 
 #: data/ui/convolver.ui:189
 msgid "Duration"
-msgstr "Durație"
+msgstr "Durată"
 
 #: data/ui/convolver_menu_combine.ui:15
-#, fuzzy
 msgid "Combine Impulse Responses"
-msgstr "Răspuns Impuls"
+msgstr "Combină răspunsurile impulsurilor"
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
-msgstr ""
+msgstr "Primul nucleu"
 
 #: data/ui/convolver_menu_combine.ui:82
 msgid "Second Kernel"
-msgstr ""
+msgstr "Al doilea nucleu"
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
-msgstr ""
+msgstr "Numele fișierului de ieșire"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
-msgstr ""
+msgstr "Numele nucleului combinat"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
-msgstr "Importă Impuls"
+msgstr "Importă impuls"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:84 data/ui/presets_menu.ui:206
 msgid "Search"
-msgstr ""
+msgstr "Caută"
 
 #: data/ui/convolver_menu_impulses.ui:27
-#, fuzzy
 msgid "Search Impulse File"
-msgstr "Importă Fișier Impulse"
+msgstr "Caută fișierul de răspuns la impulsuri"
 
 #: data/ui/convolver_menu_impulses.ui:47
-#, fuzzy
 msgid "Impulse Files List"
-msgstr "Importă Fișier Impulse"
+msgstr "Lista fișierelor de răspuns la impulsuri"
 
 #: data/ui/crossfeed.ui:39
 msgid "Default"
-msgstr "Prestablilt"
+msgstr "Implicit"
 
 #: data/ui/crossfeed.ui:56
 msgid "Cutoff"
-msgstr "Cutoff"
+msgstr "Tăiere"
 
 #: data/ui/crossfeed.ui:78
 msgid "Feed"
-msgstr "Feed"
+msgstr "Flux"
 
 #: data/ui/crystalizer_band.ui:11
 msgid "Bypass"
-msgstr "Evitare"
+msgstr "Derivare"
 
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:186
 #: data/ui/multiband_compressor_band.ui:139 data/ui/multiband_gate_band.ui:108
 #: data/ui/stereo_tools.ui:173 data/ui/stereo_tools.ui:198
 msgid "Mute"
-msgstr "Mut"
+msgstr "Dezactivare sunet"
 
 #: data/ui/deepfilternet.ui:31
-#, fuzzy
 msgid "Attenuation Limit"
-msgstr "Atenuare"
+msgstr "Limita de atenuare"
 
 #: data/ui/deepfilternet.ui:60
 msgid "Minimum Processing Threshold"
-msgstr ""
+msgstr "Pragul minim de procesare"
 
 #: data/ui/deepfilternet.ui:86
 msgid "Maximum ERB Processing threshold"
-msgstr ""
+msgstr "Pragul maxim de procesare ERB"
 
 #: data/ui/deepfilternet.ui:112
 msgid "Maximum DF Processing Threshold"
-msgstr ""
+msgstr "Pragul maxim de procesare DF"
 
 #: data/ui/deepfilternet.ui:138
 msgid "Minimum Processing Buffer"
-msgstr ""
+msgstr "Memoria tampon minimă de procesare"
 
 #: data/ui/deepfilternet.ui:163
-#, fuzzy
 msgid "Post Filter Beta"
-msgstr "Filtru"
+msgstr "Filtru posterioar beta"
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
@@ -916,52 +846,47 @@ msgstr "Lat"
 
 #: data/ui/deesser.ui:78
 msgid "Split"
-msgstr "Despică"
+msgstr "Separare"
 
 #: data/ui/deesser.ui:96
 msgid "F1 Split"
-msgstr "F1 Despică"
+msgstr "F1 Separă"
 
 #: data/ui/deesser.ui:115
-#, fuzzy
 msgid "Frequency 1 Split"
-msgstr "Frecvență"
+msgstr "Separare frecvență 1"
 
 #: data/ui/deesser.ui:128
 msgid "F2 Peak"
 msgstr "F2 Vârf"
 
 #: data/ui/deesser.ui:147
-#, fuzzy
 msgid "Frequency 2 Peak"
-msgstr "Frecvență"
+msgstr "Vârf frecvența 2"
 
 #: data/ui/deesser.ui:165
 msgid "F1 Gain"
-msgstr "F1 Gain"
+msgstr "F1 Câștig"
 
 #: data/ui/deesser.ui:192
-#, fuzzy
 msgid "Frequency 1 Gain"
-msgstr "Frecvență"
+msgstr "Câștig frecvența 1"
 
 #: data/ui/deesser.ui:199
 msgid "F2 Level"
 msgstr "F2 Nivel"
 
 #: data/ui/deesser.ui:226
-#, fuzzy
 msgid "Frequency 2 Level"
-msgstr "Frecvență"
+msgstr "Nivel frecvența 2"
 
 #: data/ui/deesser.ui:233
 msgid "F2 Peak Q"
 msgstr "F2 Vârf Q"
 
 #: data/ui/deesser.ui:260
-#, fuzzy
 msgid "Frequency 2 Peak Q"
-msgstr "Frecvență"
+msgstr "Vârf Q frecvența 2"
 
 #: data/ui/deesser.ui:267
 msgid "Laxity"
@@ -973,7 +898,6 @@ msgstr "Detectat"
 
 #: data/ui/deesser.ui:607 data/ui/gate.ui:425 data/ui/gate.ui:1154
 #: data/ui/maximizer.ui:249 data/ui/multiband_gate_band.ui:406
-#, fuzzy
 msgid "Reduction"
 msgstr "Reducere"
 
@@ -984,30 +908,27 @@ msgstr "Întârziere"
 #: data/ui/delay.ui:107 data/ui/delay.ui:194 data/ui/stereo_tools.ui:182
 #: data/ui/stereo_tools.ui:207
 msgid "Invert Phase"
-msgstr "Inversează Faza"
+msgstr "Inversează faza"
 
 #: data/ui/echo_canceller.ui:27
-#, fuzzy
 msgid "Filter Length"
-msgstr "Filtru"
+msgstr "Lungimea filtrului"
 
 #: data/ui/echo_canceller.ui:49
-#, fuzzy
 msgid "Residual Echo Suppression"
-msgstr "Supresor de Zgomot"
+msgstr "Suprimarea ecoului rezidual"
 
 #: data/ui/echo_canceller.ui:70
-#, fuzzy
 msgid "Near End Echo Suppression"
-msgstr "Supresor de Zgomot"
+msgstr "Suprimarea ecoului aproape de sfârșit"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
-msgstr ""
+msgstr "Aplicații excluse"
 
 #: data/ui/effects_box.ui:120
 msgid "Enable/disable input monitoring"
-msgstr ""
+msgstr "Activează/dezactivează monitorizarea intrării"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
@@ -1019,41 +940,36 @@ msgid "Balance"
 msgstr "Balans"
 
 #: data/ui/equalizer.ui:125
-#, fuzzy
 msgid "Pitch Left"
-msgstr "Lanț Lateral"
+msgstr "Tonalitate stânga"
 
 #: data/ui/equalizer.ui:157
-#, fuzzy
 msgid "Pitch Right"
-msgstr "Lanț Lateral"
+msgstr "Tonalitate dreapta"
 
 #: data/ui/equalizer.ui:288
 msgid "Split Channels"
-msgstr "Despică Canalele"
+msgstr "Separă canalele"
 
 #: data/ui/equalizer.ui:294
 msgid "Flat Response"
-msgstr "Răspuns Plat"
+msgstr "Răspuns plat"
 
 #: data/ui/equalizer.ui:302
 msgid "Calculate Frequencies"
-msgstr "Calculează Frecvențele"
+msgstr "Calculează frecvențele"
 
 #: data/ui/equalizer.ui:310
-#, fuzzy
 msgid "Sort Bands"
-msgstr "Benzi"
+msgstr "Sortează benzile"
 
 #: data/ui/equalizer.ui:325 src/presets_menu.cpp:144
-#, fuzzy
 msgid "Import Preset"
-msgstr "Importă Presetări"
+msgstr "Importă preconfigurare"
 
 #: data/ui/equalizer.ui:359
-#, fuzzy
 msgid "Export Preset"
-msgstr "Importă Presetări"
+msgstr "Exportă preconfigurare"
 
 #: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
 msgid "Slope"
@@ -1073,90 +989,78 @@ msgid "Width"
 msgstr "Lățime"
 
 #: data/ui/exciter.ui:208
-#, fuzzy
 msgid "Ceil"
-msgstr "Tavan"
+msgstr "Plafonare"
 
 #: data/ui/exciter.ui:236
 msgid "Ceil Value"
-msgstr ""
+msgstr "Valoarea plafonării"
 
 #: data/ui/expander.ui:51 src/tags_plugin_name.cpp:51
 msgid "Expander"
-msgstr ""
+msgstr "Expandare"
 
 #: data/ui/expander.ui:86
-#, fuzzy
 msgid "Expander Mode"
-msgstr "Mod"
+msgstr "Modul de expandare"
 
 #: data/ui/expander.ui:609 data/ui/gate.ui:822
-#, fuzzy
 msgid "Internal"
-msgstr "Integrat"
+msgstr "Intern"
 
 #: data/ui/factory_clients_listview.ui:72
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:100
 msgid "Access"
-msgstr ""
+msgstr "Acces"
 
 #: data/ui/factory_modules_listview.ui:72
-#, fuzzy
 msgid "Description"
-msgstr "Detectare"
+msgstr "Descriere"
 
 #: data/ui/factory_rnnoise_listview.ui:24
-#, fuzzy
 msgid "Remove this model file"
-msgstr "Șterge fișierul de presetări"
+msgstr "Șterge acest fișier model de preconfigurare"
 
 #: data/ui/filter.ui:52
-#, fuzzy
 msgid "Low-Shelf"
-msgstr "Low Shelf"
+msgstr "Filtru„shelf” trece-jos"
 
 #: data/ui/filter.ui:53
-#, fuzzy
 msgid "High-Shelf"
-msgstr "High Shelf"
+msgstr "Filtru„shelf” trece-sus"
 
 #: data/ui/filter.ui:54
 msgid "Bell"
 msgstr "Clopot"
 
 #: data/ui/filter.ui:55
-#, fuzzy
 msgid "Band-Pass"
-msgstr "Evitare"
+msgstr "Filtru trece-bandă"
 
 #: data/ui/filter.ui:56
 msgid "Notch"
-msgstr "Crestătură"
+msgstr "Decupaj de bandă"
 
 #: data/ui/filter.ui:57
 msgid "Resonance"
 msgstr "Rezonanță"
 
 #: data/ui/filter.ui:58
-#, fuzzy
 msgid "Ladder-Pass"
-msgstr "Low-Pass"
+msgstr "Filtru trece-scară"
 
 #: data/ui/filter.ui:59
-#, fuzzy
 msgid "Ladder-Rejection"
-msgstr "Reducere Gain"
+msgstr "Filtru rejectare-scară"
 
 #: data/ui/filter.ui:60
-#, fuzzy
 msgid "All-Pass"
-msgstr "All Pass"
+msgstr "Filtru trece-tot"
 
 #: data/ui/filter.ui:102
-#, fuzzy
 msgid "Equalizer Mode"
 msgstr "Egalizator"
 
@@ -1167,99 +1071,92 @@ msgstr "Filtru"
 
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:53
 msgid "Gate"
-msgstr "Gate"
+msgstr "Nivel de trecere (poartă)"
 
 #: data/ui/gate.ui:167 data/ui/gate.ui:258 data/ui/multiband_gate_band.ui:240
 #: data/ui/multiband_gate_band.ui:331
 msgid "Zone"
-msgstr ""
+msgstr "Zona"
 
 #: data/ui/gate.ui:237 data/ui/multiband_gate_band.ui:310
 msgid "Hysteresis"
-msgstr ""
+msgstr "Histerezis"
 
 #: data/ui/gate.ui:330
 msgid "Mix"
-msgstr ""
+msgstr "Mixer"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
-msgstr ""
+msgstr "Începutul zonei de atac"
 
 #: data/ui/gate.ui:564
-#, fuzzy
 msgid "Release Zone Start"
-msgstr "În Timp Real"
+msgstr "Începutul zonei de eliberare"
 
 #: data/ui/level_meter.ui:28
-#, fuzzy
 msgid "True Peak"
-msgstr "Frecvență"
+msgstr "Vârful real"
 
 #: data/ui/level_meter.ui:328
 msgid "Reset History"
-msgstr "Resetare Istoric"
+msgstr "Reinițiere istoric"
 
 #: data/ui/limiter.ui:68
 msgid "Oversampling"
-msgstr "Supraprelevare"
+msgstr "Supraeșantionare"
 
 #: data/ui/limiter.ui:80
 msgid "Dither"
-msgstr ""
+msgstr "Filtru Dither (reducere distorsiuni)"
 
 #: data/ui/limiter.ui:94
 msgid "Herm Thin"
-msgstr ""
+msgstr "Filtru „Hermite thin”"
 
 #: data/ui/limiter.ui:95
-#, fuzzy
 msgid "Herm Wide"
-msgstr "Lat"
+msgstr "Filtru „Hermite wide”"
 
 #: data/ui/limiter.ui:96
 msgid "Herm Tail"
-msgstr ""
+msgstr "Filtru „Hermite tail”"
 
 #: data/ui/limiter.ui:97
 msgid "Herm Duck"
-msgstr ""
+msgstr "Filtru „Hermite duck”"
 
 #: data/ui/limiter.ui:98
 msgid "Exp Thin"
-msgstr ""
+msgstr "Filtru „Exp thin”"
 
 #: data/ui/limiter.ui:99
-#, fuzzy
 msgid "Exp Wide"
-msgstr "Lat"
+msgstr "Filtru „Exp wide”"
 
 #: data/ui/limiter.ui:100
 msgid "Exp Tail"
-msgstr ""
+msgstr "Filtru „Exp tail”"
 
 #: data/ui/limiter.ui:101
 msgid "Exp Duck"
-msgstr ""
+msgstr "Filtru „Exp duck”"
 
 #: data/ui/limiter.ui:102
-#, fuzzy
 msgid "Line Thin"
-msgstr "Lățime Linie"
+msgstr "Filtru „Line thin”"
 
 #: data/ui/limiter.ui:103
-#, fuzzy
 msgid "Line Wide"
-msgstr "Lățime Linie"
+msgstr "Filtru „Line wide”"
 
 #: data/ui/limiter.ui:104
-#, fuzzy
 msgid "Line Tail"
-msgstr "Masă Sinusoidală"
+msgstr "Filtru „Line tail”"
 
 #: data/ui/limiter.ui:105
 msgid "Line Duck"
-msgstr ""
+msgstr "Filtru „Line duck”"
 
 #: data/ui/limiter.ui:125 data/ui/multiband_compressor.ui:56
 #: data/ui/multiband_gate.ui:56
@@ -1268,152 +1165,142 @@ msgstr "Niciunul"
 
 #: data/ui/limiter.ui:126
 msgid "Half x2(2L)"
-msgstr ""
+msgstr "Jumătate x2(2L)"
 
 #: data/ui/limiter.ui:127
 msgid "Half x2(3L)"
-msgstr ""
+msgstr "Jumătate x2(3L)"
 
 #: data/ui/limiter.ui:128
 msgid "Half x3(2L)"
-msgstr ""
+msgstr "Jumătate x3(2L)"
 
 #: data/ui/limiter.ui:129
 msgid "Half x3(3L)"
-msgstr ""
+msgstr "Jumătate x3(3L)"
 
 #: data/ui/limiter.ui:130
 msgid "Half x4(2L)"
-msgstr ""
+msgstr "Jumătate x4(2L)"
 
 #: data/ui/limiter.ui:131
 msgid "Half x4(3L)"
-msgstr ""
+msgstr "Jumătate x4(3L)"
 
 #: data/ui/limiter.ui:132
 msgid "Half x6(2L)"
-msgstr ""
+msgstr "Jumătate x6(2L)"
 
 #: data/ui/limiter.ui:133
 msgid "Half x6(3L)"
-msgstr ""
+msgstr "Jumătate x6(3L)"
 
 #: data/ui/limiter.ui:134
 msgid "Half x8(2L)"
-msgstr ""
+msgstr "Jumătate x8(2L)"
 
 #: data/ui/limiter.ui:135
 msgid "Half x8(3L)"
-msgstr ""
+msgstr "Jumătate x8(3L)"
 
 #: data/ui/limiter.ui:136
 msgid "Full x2(2L)"
-msgstr ""
+msgstr "Complet x2(2L)"
 
 #: data/ui/limiter.ui:137
 msgid "Full x2(3L)"
-msgstr ""
+msgstr "Complet x2(3L)"
 
 #: data/ui/limiter.ui:138
 msgid "Full x3(2L)"
-msgstr ""
+msgstr "Complet x3(2L)"
 
 #: data/ui/limiter.ui:139
 msgid "Full x3(3L)"
-msgstr ""
+msgstr "Complet x3(3L)"
 
 #: data/ui/limiter.ui:140
 msgid "Full x4(2L)"
-msgstr ""
+msgstr "Complet x4(2L)"
 
 #: data/ui/limiter.ui:141
 msgid "Full x4(3L)"
-msgstr ""
+msgstr "Complet x4(3L)"
 
 #: data/ui/limiter.ui:142
 msgid "Full x6(2L)"
-msgstr ""
+msgstr "Complet x6(2L)"
 
 #: data/ui/limiter.ui:143
 msgid "Full x6(3L)"
-msgstr ""
+msgstr "Complet x6(3L)"
 
 #: data/ui/limiter.ui:144
 msgid "Full x8(2L)"
-msgstr ""
+msgstr "Complet x8(2L)"
 
 #: data/ui/limiter.ui:145
 msgid "Full x8(3L)"
-msgstr ""
+msgstr "Complet x8(3L)"
 
 #: data/ui/limiter.ui:201
 msgid "SC PreAmp"
-msgstr ""
+msgstr "PreAmp SC"
 
 #: data/ui/limiter.ui:229 data/ui/multiband_compressor_band.ui:692
 #: data/ui/multiband_gate_band.ui:749
-#, fuzzy
 msgid "Sidechain PreAmplification"
-msgstr "Preamplificare"
+msgstr "Preamplificarea lanțului lateral"
 
 #: data/ui/limiter.ui:400
 msgid "Boost"
-msgstr ""
+msgstr "Intensificare"
 
 #: data/ui/limiter.ui:415
 msgid "Stereo Link"
-msgstr "Link Stereo"
+msgstr "Legătură stereo"
 
 #: data/ui/limiter.ui:459 data/ui/multiband_compressor_band.ui:119
 #: data/ui/multiband_gate_band.ui:88
-#, fuzzy
 msgid "External Sidechain"
-msgstr "Lanț Lateral"
+msgstr "Lanț lateral extern"
 
 #: data/ui/limiter.ui:472 data/ui/multiband_compressor.ui:97
 #: data/ui/multiband_gate.ui:97
 msgid "External Sidechain Source"
-msgstr ""
+msgstr "Sursa lanțului lateral extern"
 
 #: data/ui/limiter.ui:491
-#, fuzzy
 msgid "Auto Leveling"
 msgstr "Nivelare Automată"
 
 #: data/ui/limiter.ui:530
-#, fuzzy
 msgid "Auto Leveling Attack"
-msgstr "Nivelare Automată"
+msgstr "Atac cu nivelare automată"
 
 #: data/ui/limiter.ui:565
-#, fuzzy
 msgid "Auto Leveling Release"
-msgstr "Nivelare Automată"
+msgstr "Eliberare cu nivelare automată"
 
 #: data/ui/limiter.ui:599
-#, fuzzy
 msgid "Auto Leveling Knee"
-msgstr "Nivelare Automată"
+msgstr "Genunchi cu nivelare automată"
 
 #: data/ui/limiter.ui:624
-#, fuzzy
 msgid "Gain Left"
-msgstr "Gain"
+msgstr "Câștig stânga"
 
 #: data/ui/limiter.ui:651
-#, fuzzy
 msgid "Gain Right"
-msgstr "Dreapta"
+msgstr "Câștig dreapta"
 
 #: data/ui/limiter.ui:678
-#, fuzzy
 msgid "Sidechain Left"
-msgstr "Lanț Lateral"
+msgstr "Lanț lateral stânga"
 
 #: data/ui/limiter.ui:705
-#, fuzzy
 msgid "Sidechain Right"
-msgstr "Lanț Lateral"
+msgstr "Lanț lateral dreapta"
 
 #: data/ui/loudness.ui:37
 msgid "Standard"
@@ -1428,174 +1315,148 @@ msgid "FFT Size"
 msgstr "Dimensiune FFT"
 
 #: data/ui/loudness.ui:83
-#, fuzzy
 msgid "Output Volume"
-msgstr "Output"
+msgstr "Volum ieșire"
 
 #: data/ui/loudness.ui:104
-#, fuzzy
 msgid "Clipping"
-msgstr "Mapping-ul Canalelor"
+msgstr "Decupare"
 
 #: data/ui/multiband_compressor.ui:43 data/ui/multiband_gate.ui:42
-#, fuzzy
 msgid "Sidechain Boost"
-msgstr "Lanț Lateral"
+msgstr "Intensificare lanț lateral"
 
 #: data/ui/multiband_compressor.ui:57 data/ui/multiband_gate.ui:57
 msgid "Pink BT"
-msgstr ""
+msgstr "Roz BT"
 
 #: data/ui/multiband_compressor.ui:58 data/ui/multiband_gate.ui:58
 msgid "Pink MT"
-msgstr ""
+msgstr "Roz MT"
 
 #: data/ui/multiband_compressor.ui:59 data/ui/multiband_gate.ui:59
 msgid "Brown BT"
-msgstr ""
+msgstr "Maron BT"
 
 #: data/ui/multiband_compressor.ui:60 data/ui/multiband_gate.ui:60
 msgid "Brown MT"
-msgstr ""
+msgstr "Maron MT"
 
 #: data/ui/multiband_compressor.ui:114 data/ui/multiband_gate.ui:114
 msgid "Show Native User Interface"
-msgstr ""
+msgstr "Afișează interfața nativă cu utilizatorul"
 
 #: data/ui/multiband_compressor.ui:143 data/ui/multiband_gate.ui:143
-#, fuzzy
 msgid "Operating Mode"
-msgstr "Importă Model"
+msgstr "Modul de operare"
 
 #: data/ui/multiband_compressor.ui:156 data/ui/multiband_gate.ui:156
 msgid "Classic"
-msgstr ""
+msgstr "Clasic"
 
 #: data/ui/multiband_compressor.ui:157 data/ui/multiband_gate.ui:157
-#, fuzzy
 msgid "Modern"
-msgstr "Mod"
+msgstr "Modern"
 
 #: data/ui/multiband_compressor.ui:158 data/ui/multiband_gate.ui:158
-#, fuzzy
 msgid "Linear Phase"
-msgstr "Inversează Faza"
+msgstr "Fază liniară"
 
 #: data/ui/multiband_compressor.ui:266 data/ui/multiband_gate.ui:266
-#, fuzzy
 msgid "Bands List"
-msgstr "Benzi"
+msgstr "Lista de benzi"
 
 #: data/ui/multiband_compressor.ui:275 data/ui/multiband_gate.ui:275
-#, fuzzy
 msgid "Band 1"
-msgstr "Benzi"
+msgstr "Banda 1"
 
 #: data/ui/multiband_compressor.ui:292 data/ui/multiband_gate.ui:292
-#, fuzzy
 msgid "Band 2"
-msgstr "Benzi"
+msgstr "Banda 2"
 
 #: data/ui/multiband_compressor.ui:318 data/ui/multiband_gate.ui:318
-#, fuzzy
 msgid "Band 3"
-msgstr "Benzi"
+msgstr "Banda 3"
 
 #: data/ui/multiband_compressor.ui:344 data/ui/multiband_gate.ui:344
-#, fuzzy
 msgid "Band 4"
-msgstr "Benzi"
+msgstr "Banda 4"
 
 #: data/ui/multiband_compressor.ui:370 data/ui/multiband_gate.ui:370
-#, fuzzy
 msgid "Band 5"
-msgstr "Benzi"
+msgstr "Banda 5"
 
 #: data/ui/multiband_compressor.ui:396 data/ui/multiband_gate.ui:396
-#, fuzzy
 msgid "Band 6"
-msgstr "Benzi"
+msgstr "Banda 6"
 
 #: data/ui/multiband_compressor.ui:422 data/ui/multiband_gate.ui:422
-#, fuzzy
 msgid "Band 7"
-msgstr "Benzi"
+msgstr "Banda 7"
 
 #: data/ui/multiband_compressor.ui:448 data/ui/multiband_gate.ui:448
-#, fuzzy
 msgid "Band 8"
-msgstr "Benzi"
+msgstr "Banda 8"
 
 #: data/ui/multiband_compressor_band.ui:18 data/ui/multiband_gate_band.ui:18
 msgid "Band Start"
-msgstr ""
+msgstr "Începutul benzii"
 
 #: data/ui/multiband_compressor_band.ui:56 data/ui/multiband_gate_band.ui:56
-#, fuzzy
 msgid "Band End"
-msgstr "Benzi"
+msgstr "Sfârșitul benzii"
 
 #: data/ui/multiband_compressor_band.ui:111
-#, fuzzy
 msgid "Band Compression Mode"
-msgstr "Mod de Compresie"
+msgstr "Modul de compresie a benzii"
 
 #: data/ui/multiband_compressor_band.ui:129 data/ui/multiband_gate_band.ui:98
-#, fuzzy
 msgid "Band Bypass"
-msgstr "Evitare"
+msgstr "Ocolire bandă"
 
 #: data/ui/multiband_compressor_band.ui:427 data/ui/multiband_gate_band.ui:485
 msgid "Band Sidechain Options"
-msgstr ""
+msgstr "Opțiuni lanț lateral de bandă"
 
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:558
-#, fuzzy
 msgid "Stereo Split"
-msgstr "Bază Stereo"
+msgstr "Separare stereo"
 
 #: data/ui/multiband_compressor_band.ui:582 data/ui/multiband_gate_band.ui:640
-#, fuzzy
 msgid "Low-Cut"
-msgstr "Mod Filtru Low-pass"
+msgstr "Filtru taie-jos"
 
 #: data/ui/multiband_compressor_band.ui:609 data/ui/multiband_gate_band.ui:667
-#, fuzzy
 msgid "Low-Cut Filter Frequency"
-msgstr "Frecvență Low-pass"
+msgstr "Frecvența filtrului taie-jos"
 
 #: data/ui/multiband_compressor_band.ui:619 data/ui/multiband_gate_band.ui:677
-#, fuzzy
 msgid "High-Cut"
-msgstr "Filtru High Pass"
+msgstr "Filtru taie-sus"
 
 #: data/ui/multiband_compressor_band.ui:647 data/ui/multiband_gate_band.ui:705
-#, fuzzy
 msgid "High-Cut Filter Frequency"
-msgstr "Frecvență High-pass"
+msgstr "Frecvența filtrului taie-sus"
 
 #: data/ui/multiband_compressor_band.ui:666 data/ui/multiband_gate_band.ui:724
 msgid "PreAmp"
-msgstr ""
+msgstr "PreAmp"
 
 #: data/ui/multiband_compressor_band.ui:867
-#, fuzzy
 msgid "Band Gain"
-msgstr "F1 Gain"
+msgstr "Câștig bandă"
 
 #: data/ui/multiband_compressor_band.ui:892 data/ui/multiband_gate_band.ui:861
 msgid "Band Envelope"
-msgstr ""
+msgstr "Anvelopă bandă"
 
 #: data/ui/multiband_compressor_band.ui:917 data/ui/multiband_gate_band.ui:886
-#, fuzzy
 msgid "Band Curve"
-msgstr "Curbă"
+msgstr "Curbă bandă"
 
 #: data/ui/multiband_gate_band.ui:836
-#, fuzzy
 msgid "Band Reduction"
-msgstr "Reducere Gain"
+msgstr "Reducere bandă"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -1603,147 +1464,133 @@ msgstr "General"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "Administrarea dispozitivelor"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
+"Se recomandă să NU configurați Easy Effects colector/sursă (sink/source) ca "
+"dispozitiv implicit în aplicații externe (de exemplu, Centrul de control "
+"Gnome și Configurări de sistem Plasma)."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
-#, fuzzy
 msgid "Use Default Input"
-msgstr "Folosește Prestabilit"
+msgstr "Utilizează intrarea implicită"
 
 #: data/ui/pipe_manager_box.ui:65
-#, fuzzy
 msgid "Custom Input Device"
-msgstr "Nivel Input"
+msgstr "Dispozitiv de intrare personalizat"
 
 #: data/ui/pipe_manager_box.ui:74 data/ui/pipe_manager_box.ui:80
-#, fuzzy
 msgid "Use Default Output"
-msgstr "Folosește Prestabilit"
+msgstr "Utilizează ieșirea implicită"
 
 #: data/ui/pipe_manager_box.ui:101
 msgid "Custom Output Device"
-msgstr ""
+msgstr "Dispozitiv de ieșire personalizat"
 
 #: data/ui/pipe_manager_box.ui:112
-#, fuzzy
 msgid "Server Information"
-msgstr "Reverberație"
+msgstr "Informații despre server"
 
 #: data/ui/pipe_manager_box.ui:116
-#, fuzzy
 msgid "Header Version"
-msgstr "Versiune"
+msgstr "Versiunea antetului"
 
 #: data/ui/pipe_manager_box.ui:127
-#, fuzzy
 msgid "Library Version"
-msgstr "Versiune"
+msgstr "Versiunea bibliotecii"
 
 #: data/ui/pipe_manager_box.ui:138
-#, fuzzy
 msgid "Core Version"
-msgstr "Versiune"
+msgstr "Versiunea de bază"
 
 #: data/ui/pipe_manager_box.ui:149
-#, fuzzy
 msgid "Sampling Rate"
-msgstr "Rata de Sample Prestabilită"
+msgstr "Rata de eșantionare"
 
 #: data/ui/pipe_manager_box.ui:160
-#, fuzzy
 msgid "Minimum Quantum"
-msgstr "Frecvență Minimă"
+msgstr "Cuantum minim"
 
 #: data/ui/pipe_manager_box.ui:171
-#, fuzzy
 msgid "Maximum Quantum"
-msgstr "Gain-ul Maxim"
+msgstr "Cuantum maxim"
 
 #: data/ui/pipe_manager_box.ui:182
-#, fuzzy
 msgid "Default Quantum"
-msgstr "Sink-ul Prestabilit"
+msgstr "Cuantum implicit"
 
 #: data/ui/pipe_manager_box.ui:202
 msgid "Presets Autoloading"
-msgstr ""
+msgstr "Încărcarea automată a preconfigurărilor"
 
 #: data/ui/pipe_manager_box.ui:228 data/ui/pipe_manager_box.ui:358
 msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
 msgstr ""
+"Numai preconfigurările locale pot fi încărcate automat. O preconfigurare "
+"comunitară trebuie să fie importată local pentru a putea fi selectată și "
+"asociată unui anumit dispozitiv."
 
 #: data/ui/pipe_manager_box.ui:277
-#, fuzzy
 msgid "Output Devices"
-msgstr "Efecte Output"
+msgstr "Dispozitive de ieșire"
 
 #: data/ui/pipe_manager_box.ui:294 src/application.cpp:283
-#, fuzzy
 msgid "Output Presets"
-msgstr "Presetări pentru Output:"
+msgstr "Preconfigurări de ieșire"
 
 #: data/ui/pipe_manager_box.ui:301 data/ui/pipe_manager_box.ui:426
 msgid "Create Association"
-msgstr ""
+msgstr "Creează o asociație"
 
 #: data/ui/pipe_manager_box.ui:314
 msgid "Add Autoloading Output Preset"
-msgstr ""
+msgstr "Adăugați o preconfigurare de ieșire cu încărcare automată"
 
 #: data/ui/pipe_manager_box.ui:334
-#, fuzzy
 msgid "Output Autoloading Presets List"
-msgstr "Presetări pentru Output:"
+msgstr "Lista de preconfigurări de ieșire cu autoîncărcare"
 
 #: data/ui/pipe_manager_box.ui:407
-#, fuzzy
 msgid "Input Devices"
-msgstr "Nivel Input"
+msgstr "Dispozitive de intrare"
 
 #: data/ui/pipe_manager_box.ui:419 src/application.cpp:291
-#, fuzzy
 msgid "Input Presets"
-msgstr "Presetări pentru Input:"
+msgstr "Preconfigurări de intrare"
 
 #: data/ui/pipe_manager_box.ui:439
 msgid "Add Autoloading Input Preset"
-msgstr ""
+msgstr "Adăugați o preconfigurare de intrare cu încărcare automată"
 
 #: data/ui/pipe_manager_box.ui:458
-#, fuzzy
 msgid "Input Autoloading Presets List"
-msgstr "Presetări pentru Input:"
+msgstr "Lista de preconfigurări de intrare cu autoîncărcare"
 
 #: data/ui/pipe_manager_box.ui:488
 msgid "Modules"
 msgstr "Module"
 
 #: data/ui/pipe_manager_box.ui:506
-#, fuzzy
 msgid "Modules List"
-msgstr "Module"
+msgstr "Lista de module"
 
 #: data/ui/pipe_manager_box.ui:520
 msgid "Clients"
 msgstr "Clienți"
 
 #: data/ui/pipe_manager_box.ui:538
-#, fuzzy
 msgid "Clients List"
-msgstr "Clienți"
+msgstr "Lista de clienți"
 
 #: data/ui/pipe_manager_box.ui:552
-#, fuzzy
 msgid "Test Signal"
-msgstr "Semnale de Testare"
+msgstr "Semnal de testare"
 
 #: data/ui/pipe_manager_box.ui:557 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
@@ -1751,13 +1598,12 @@ msgid "State"
 msgstr "Stare"
 
 #: data/ui/pipe_manager_box.ui:560 data/ui/preferences_spectrum.ui:12
-#, fuzzy
 msgid "Enabled"
-msgstr "Activează"
+msgstr "Activat"
 
 #: data/ui/pipe_manager_box.ui:575
 msgid "Properties"
-msgstr ""
+msgstr "Proprietăți"
 
 #: data/ui/pipe_manager_box.ui:578
 msgid "Channels"
@@ -1765,52 +1611,47 @@ msgstr "Canale"
 
 #: data/ui/pipe_manager_box.ui:603
 msgid "Both"
-msgstr ""
+msgstr "Ambele"
 
 #: data/ui/pipe_manager_box.ui:607
-#, fuzzy
 msgid "Both Channels"
-msgstr "Canale"
+msgstr "Ambele canale"
 
 #: data/ui/pipe_manager_box.ui:616
 msgid "Waveform"
-msgstr ""
+msgstr "Forma de undă"
 
 #: data/ui/pipe_manager_box.ui:620
-#, fuzzy
 msgid "Sine Wave"
-msgstr "Masă Sinusoidală"
+msgstr "Undă sinusoidală"
 
 #: data/ui/pipe_manager_box.ui:629
 msgid "White Noise"
-msgstr "Zgomot Alb"
+msgstr "Zgomot alb"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr ""
+msgstr "Căutare rapidă"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "Netezire"
 
 #: data/ui/pitch.ui:58
-#, fuzzy
 msgid "Sequence Length"
-msgstr "Frecvență"
+msgstr "Durata secvenței"
 
 #: data/ui/pitch.ui:80
-#, fuzzy
 msgid "Seek Window"
-msgstr "Fereastră"
+msgstr "Fereastra de căutare"
 
 #: data/ui/pitch.ui:102
-#, fuzzy
 msgid "Overlap Length"
-msgstr "Filtru"
+msgstr "Durata suprapunerii"
 
 #: data/ui/pitch.ui:130 src/tags_plugin_name.cpp:60
 msgid "Pitch"
-msgstr "Pitch"
+msgstr "Înălțime tonalitate"
 
 #: data/ui/pitch.ui:134
 msgid "Semitones"
@@ -1818,174 +1659,159 @@ msgstr "Semitonuri"
 
 #: data/ui/pitch.ui:156
 msgid "Tempo Difference"
-msgstr ""
+msgstr "Diferența de tempo"
 
 #: data/ui/pitch.ui:178
 msgid "Rate Difference"
-msgstr ""
+msgstr "Diferența de frecvență"
 
 #: data/ui/plugin_row.ui:50
-#, fuzzy
 msgid "Remove this effect"
-msgstr "Șterge fișierul de presetări"
+msgstr "Elimină acest efect"
 
 #: data/ui/plugin_row.ui:62
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "Activează/dezactivează acest efect"
 
 #: data/ui/plugin_row.ui:74
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "Schimbă poziția acestui efect"
 
 #: data/ui/plugins_box.ui:28
 msgid "Show/hide effects list"
-msgstr ""
+msgstr "Afișează/ascunde lista de efecte"
 
 #: data/ui/plugins_box.ui:42
-#, fuzzy
 msgid "Add Effect"
-msgstr "Efecte Input"
+msgstr "Adaugă efect"
 
 #: data/ui/plugins_box.ui:65
-#, fuzzy
 msgid "Go to the previous effect"
-msgstr "Șterge fișierul de presetări"
+msgstr "Treceți la efectul anterior"
 
 #: data/ui/plugins_box.ui:80
 msgid "Go to the next effect"
-msgstr ""
+msgstr "Treceți la efectul următor"
 
 #: data/ui/plugins_box.ui:131
 msgid "Used Plugins List"
-msgstr ""
+msgstr "Lista modulelor utilizate"
 
 #: data/ui/plugins_box.ui:192
-#, fuzzy
 msgid "No Effects"
-msgstr "EasyEffects"
+msgstr "Niciun efect"
 
 #: data/ui/plugins_box.ui:193
 msgid "Audio Stream Not Modified"
-msgstr ""
+msgstr "Flux audio nemodificat"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
-msgstr ""
+msgstr "Modul de căutare"
 
 #: data/ui/plugins_menu.ui:74
 msgid "Plugins List"
-msgstr ""
+msgstr "Lista de module"
 
 #: data/ui/preferences_general.ui:5
-#, fuzzy
 msgid "_General"
-msgstr "General"
+msgstr "_General"
 
 #: data/ui/preferences_general.ui:10
-#, fuzzy
 msgid "Service"
-msgstr "Server"
+msgstr "Serviciu"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "Lansare serviciu la pornirea sistemului"
 
 #: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
-msgstr ""
+msgstr "Oprire la închiderea ferestrei"
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: data/ui/preferences_general.ui:42
-#, fuzzy
 msgid "Process All Output Streams"
-msgstr "Procesează Toate Output-urile"
+msgstr "Procesează toate fluxurile de ieșire"
 
 #: data/ui/preferences_general.ui:54
-#, fuzzy
 msgid "Process All Input Streams"
-msgstr "Procesează Toate Input-urile"
+msgstr "Procesează toate fluxurile de intrare"
 
 #: data/ui/preferences_general.ui:66
 msgid "Ignore Streams from Monitor of Devices"
-msgstr ""
+msgstr "Ignoră fluxurile de la monitorul de dispozitive"
 
 #: data/ui/preferences_general.ui:78
 msgid "Use Cubic Volume"
-msgstr ""
+msgstr "Utilizează volumul cubic"
 
 #: data/ui/preferences_general.ui:90
-#, fuzzy
 msgid "Inactivity Timeout"
-msgstr "Expirarea Activității"
+msgstr "Timpul de inactivitate"
 
 #: data/ui/preferences_general.ui:91
-#, fuzzy
 msgid "Input Pipeline"
-msgstr "Nivel Input"
+msgstr "Conducta (pipeline) de intrare"
 
 #: data/ui/preferences_general.ui:120
-#, fuzzy
 msgid "Update Interval"
-msgstr "Integrat"
+msgstr "Intervalul de actualizare"
 
 #: data/ui/preferences_general.ui:121
 msgid "Related to Level Meters and Spectrum"
-msgstr ""
+msgstr "Relativ la contoare de nivel și spectru"
 
 #: data/ui/preferences_general.ui:143
-#, fuzzy
 msgid "Update Frequency"
-msgstr "Frecvență"
+msgstr "Frecvența de actualizare"
 
 #: data/ui/preferences_general.ui:144
 msgid "Related to LV2 Plugins"
-msgstr ""
+msgstr "Relativ la modulele LV2"
 
 #: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
 msgid "Style"
-msgstr ""
+msgstr "Stil"
 
 #: data/ui/preferences_general.ui:171
 msgid "Use Dark Theme"
-msgstr "Folosește Tema Întunecată"
+msgstr "Utilizează tema întunecată"
 
 #: data/ui/preferences_general.ui:183
 msgid "Hide Menus on Outside Clicks"
-msgstr ""
+msgstr "Ascunde meniurile făcând clic în exterior"
 
 #: data/ui/preferences_general.ui:197
-#, fuzzy
 msgid "Experimental Features"
-msgstr "Experimental"
+msgstr "Caracteristici experimentale"
 
 #: data/ui/preferences_general.ui:200
-#, fuzzy
 msgid "Native Plugin Window"
-msgstr "Ascunde Fereastra."
+msgstr "Fereastra modulului nativ"
 
 #: data/ui/preferences_general.ui:201
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
-msgstr ""
+msgstr "Permite afișarea/ascunderea ferestrei modulului nativ"
 
 #: data/ui/preferences_spectrum.ui:5
-#, fuzzy
 msgid "_Spectrum"
-msgstr "Spectru "
+msgstr "_Spectru"
 
 #: data/ui/preferences_spectrum.ui:24
 msgid "Compensating Delay (ms)"
-msgstr ""
+msgstr "Întârziere de compensare (ms)"
 
 #: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
-msgstr ""
+msgstr "Forma"
 
 #: data/ui/preferences_spectrum.ui:58
 msgid "Bars"
-msgstr "Bări "
+msgstr "Bare"
 
 #: data/ui/preferences_spectrum.ui:59
 msgid "Lines"
@@ -1993,7 +1819,7 @@ msgstr "Linii"
 
 #: data/ui/preferences_spectrum.ui:60
 msgid "Dots"
-msgstr ""
+msgstr "Puncte"
 
 #: data/ui/preferences_spectrum.ui:71
 msgid "Points"
@@ -2005,162 +1831,154 @@ msgstr "Înălțime"
 
 #: data/ui/preferences_spectrum.ui:114
 msgid "Line Width"
-msgstr "Lățime Linie"
+msgstr "Lățimea liniei"
 
 #: data/ui/preferences_spectrum.ui:136
 msgid "Fill"
-msgstr "Umple"
+msgstr "Umplere"
 
 #: data/ui/preferences_spectrum.ui:148
 msgid "Show Bars Border"
-msgstr ""
+msgstr "Afișează marginea barelor"
 
 #: data/ui/preferences_spectrum.ui:160
 msgid "Rounded Corners"
-msgstr ""
+msgstr "Colțuri rotunjite"
 
 #: data/ui/preferences_spectrum.ui:172
 msgid "Dynamic Scale"
-msgstr ""
+msgstr "Scară dinamică"
 
 #: data/ui/preferences_spectrum.ui:186
-#, fuzzy
 msgid "Color"
-msgstr "Culoare Axă"
+msgstr "Culoare"
 
 #: data/ui/preferences_spectrum.ui:189
 msgid "Lines and Bars"
-msgstr ""
+msgstr "Linii și bare"
 
 #: data/ui/preferences_spectrum.ui:207
 msgid "Axis Labels"
-msgstr ""
+msgstr "Etichete axe"
 
 #: data/ui/preferences_spectrum.ui:227
-#, fuzzy
 msgid "Frequency Range"
-msgstr "Frecvență"
+msgstr "Gama de frecvențe"
 
 #: data/ui/preferences_spectrum.ui:230
-#, fuzzy
 msgid "Minimum"
-msgstr "Maxim"
+msgstr "Minimă"
 
 #: data/ui/preferences_spectrum.ui:252
 msgid "Maximum"
-msgstr "Maxim"
+msgstr "Maximă"
 
 #: data/ui/preset_row.ui:38 src/convolver_menu_impulses.cpp:225
 msgid "Load"
 msgstr "Încarcă"
 
 #: data/ui/preset_row.ui:39
-#, fuzzy
 msgid "Discard the current settings and load this preset"
-msgstr "Salvează setările curente în acest fișier cu presetări"
+msgstr "Elimină configurarea curentă și încarcă această preconfigurare"
 
 #: data/ui/preset_row.ui:48
 msgid "Save current settings to this preset file"
-msgstr "Salvează setările curente în acest fișier cu presetări"
+msgstr "Salvează configurarea curentă în acest fișier depreconfigurare"
 
 #: data/ui/preset_row.ui:58
 msgid "Remove this preset file"
-msgstr "Șterge fișierul de presetări"
+msgstr "Elimină acest fișier de preconfigurare"
 
 #: data/ui/preset_community_row.ui:55
-#, fuzzy
 msgid "Try"
-msgstr "Uscat"
+msgstr "Încearcă"
 
 #: data/ui/preset_community_row.ui:56
-#, fuzzy
 msgid "Try this community preset"
-msgstr "Presetări pentru Output:"
+msgstr "Încearcă această preconfigurare a comunității"
 
 #: data/ui/preset_community_row.ui:65
-#, fuzzy
 msgid "Import"
-msgstr "Importă Model"
+msgstr "Importă"
 
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
 msgstr ""
+"Importă această preconfigurare a comunității în lista de preconfigurări "
+"locale"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
-msgstr ""
+msgstr "Local"
 
 #: data/ui/presets_menu.ui:48
-#, fuzzy
 msgid "New Preset Name"
-msgstr "Presetări pentru Input:"
+msgstr "Numele noii preconfigurări"
 
 #: data/ui/presets_menu.ui:56
-#, fuzzy
 msgid "Create a new preset"
-msgstr "Creează Presetare"
+msgstr "Creează o nouă preconfigurare"
 
 #: data/ui/presets_menu.ui:70
 msgid "Import a preset from the local storage"
-msgstr ""
+msgstr "Importă o preconfigurare din stocarea locală"
 
 #: data/ui/presets_menu.ui:86
-#, fuzzy
 msgid "Search Local Preset"
-msgstr "Presetări pentru Input:"
+msgstr "Căutare preconfigurare locală"
 
 #: data/ui/presets_menu.ui:147
-#, fuzzy
 msgid "Local Presets List"
-msgstr "Presetări pentru Input:"
+msgstr "Lista preconfigurărilor locale"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
-msgstr ""
+msgstr "Comunitate"
 
 #: data/ui/presets_menu.ui:208
-#, fuzzy
 msgid "Search Community Preset"
-msgstr "Presetări pentru Output:"
+msgstr "Căutare preconfigurare de la comunitate"
 
 #: data/ui/presets_menu.ui:271
-#, fuzzy
 msgid "Community Presets List"
-msgstr "Presetări pentru Output:"
+msgstr "Lista preconfigurărilor de la comunitate"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr ""
+msgstr "Nu sunt instalate preconfigurări de la comunitate"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
+"Pachetele de preconfigurări de la comunitate pot fi instalate din depozitul "
+"distribuției dvs. preferate."
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
-msgstr ""
+msgstr "Actualizare"
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
 msgstr ""
+"Actualizează pentru a afișa noile preconfigurări de la comunitate instalate"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
-msgstr "Amortizare Frecvențe Înalte"
+msgstr "Atenuarea frecvențelor înalte"
 
 #: data/ui/reverb.ui:72
 msgid "Room Size"
-msgstr "Dimensiunea Camerei"
+msgstr "Dimensiunea camerei"
 
 #: data/ui/reverb.ui:82
 msgid "Small"
-msgstr "Mic"
+msgstr "Mică"
 
 #: data/ui/reverb.ui:83
 msgid "Medium"
-msgstr "Mediu"
+msgstr "Medie"
 
 #: data/ui/reverb.ui:84
 msgid "Large"
@@ -2180,23 +1998,23 @@ msgstr "Experimental"
 
 #: data/ui/reverb.ui:106
 msgid "Diffusion"
-msgstr "Difuzie"
+msgstr "Difuzare"
 
 #: data/ui/reverb.ui:142
 msgid "Pre Delay"
-msgstr "Pre Întârziere"
+msgstr "Pre-întârziere"
 
 #: data/ui/reverb.ui:174
 msgid "Decay Time"
-msgstr "Timp Decay"
+msgstr "Timpul de declin"
 
 #: data/ui/reverb.ui:275
 msgid "Bass Cut"
-msgstr "Bass Tăiat"
+msgstr "Tăiere bas"
 
 #: data/ui/reverb.ui:309
 msgid "Treble Cut"
-msgstr "Treble Tăiat"
+msgstr "Tăiere înalte"
 
 #: data/ui/reverb.ui:568
 msgid "Ambience"
@@ -2204,7 +2022,7 @@ msgstr "Ambianță"
 
 #: data/ui/reverb.ui:575
 msgid "Empty Walls"
-msgstr "Pereți Goi"
+msgstr "Pereți goi"
 
 #: data/ui/reverb.ui:588
 msgid "Room"
@@ -2212,193 +2030,177 @@ msgstr "Cameră"
 
 #: data/ui/reverb.ui:595
 msgid "Large Empty Hall"
-msgstr "Hol Gol Mare"
+msgstr "Sală mare goală"
 
 #: data/ui/reverb.ui:608
 msgid "Disco"
-msgstr "Disco"
+msgstr "Discotecă"
 
 #: data/ui/reverb.ui:615
 msgid "Large Occupied Hall"
-msgstr "Hol Plin Mare"
+msgstr "Sală mare ocupată"
 
 #: data/ui/rnnoise.ui:31
 msgid "Import Model"
-msgstr "Importă Model"
+msgstr "Importare model"
 
 #: data/ui/rnnoise.ui:47 data/ui/speex.ui:59
-#, fuzzy
 msgid "Voice Detection"
-msgstr "Detector de Voce"
+msgstr "Detectare voce"
 
 #: data/ui/rnnoise.ui:151
-#, fuzzy
 msgid "Models"
-msgstr "Mod"
+msgstr "Modele"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
 #: data/ui/rnnoise.ui:177 src/rnnoise_ui.cpp:121 src/rnnoise_ui.cpp:298
 #: src/rnnoise_ui.cpp:375
-#, fuzzy
 msgid "Standard Model"
-msgstr "Model Standard RNNoise"
+msgstr "Model standard"
 
 #: data/ui/rnnoise.ui:204
-#, fuzzy
 msgid "RNNoise Models List"
-msgstr "Model Standard RNNoise"
+msgstr "Lista de modele RNNoise"
 
 #: data/ui/rnnoise.ui:228
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "Model neîncărcat"
 
 #: data/ui/rnnoise.ui:234
 msgid "Active Model"
-msgstr "Model Activ"
+msgstr "Model activ"
 
 #: data/ui/rnnoise.ui:242
 msgid "Standard RNNoise Model"
-msgstr "Model Standard RNNoise"
+msgstr "Model standard RNNoise"
 
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
-msgstr ""
+msgstr "Vedere de ansamblu"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "Afișează ajutorul"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr ""
+msgstr "Ecran complet/ Restaurare din ecran complet"
 
 #: data/ui/shortcuts.ui:30
-#, fuzzy
 msgid "Close the Window"
-msgstr "Ascunde Fereastra."
+msgstr "Închide fereastra"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit Easy Effects"
-msgstr "EasyEffects"
+msgstr "Ieșire din Easy Effects"
 
 #: data/ui/speex.ui:33
-#, fuzzy
 msgid "Denoise"
-msgstr "Zgomot Roșu"
+msgstr "Diminuarea zgomotului"
 
 #: data/ui/speex.ui:46
-#, fuzzy
 msgid "Automatic Gain Control"
-msgstr "Control Automatic de Smoothing"
+msgstr "Controlul automat al câștigului"
 
 #: data/ui/speex.ui:72
-#, fuzzy
 msgid "Dereverberation"
-msgstr "Reverberație"
+msgstr "Diminuarea reverberației"
 
 #: data/ui/speex.ui:91
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "Probabilitatea de activitate vocală"
 
 #: data/ui/speex.ui:95
 msgid "Start"
-msgstr ""
+msgstr "Începe"
 
 #: data/ui/speex.ui:117
 msgid "Continue"
-msgstr ""
+msgstr "Continuă"
 
 #: data/ui/speex.ui:141
-#, fuzzy
 msgid "Noise Suppression"
-msgstr "Supresor de Zgomot"
+msgstr "Suprimarea zgomotului"
 
 #: data/ui/speex.ui:145
-#, fuzzy
 msgid "Level"
-msgstr "F2 Nivel"
+msgstr "Nivel"
 
 #: data/ui/stereo_tools.ui:78
-#, fuzzy
 msgid "Input Balance"
-msgstr "Balans"
+msgstr "Balans intrare"
 
 #: data/ui/stereo_tools.ui:87
 msgid "Softclip"
-msgstr "Softclip"
+msgstr "Compresie câștig"
 
 #: data/ui/stereo_tools.ui:114
-#, fuzzy
 msgid "Softclip Level"
-msgstr "Softclip"
+msgstr "Nivelul compresiei câștigului"
 
 #: data/ui/stereo_tools.ui:126
 msgid "Stereo Matrix"
-msgstr "Matrice Stereo"
+msgstr "Matrice stereo"
 
 #: data/ui/stereo_tools.ui:138
 msgid "LR > LR (Stereo Default)"
-msgstr "LR > LR (Prestabilit Stereo)"
+msgstr "SD > SD (Stereo implicit)"
 
 #: data/ui/stereo_tools.ui:139
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr "LR > MS (Stereo către Mijloc)"
+msgstr "SD > M (Stereo către mijloc)"
 
 #: data/ui/stereo_tools.ui:140
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr "MS > LR (Mijloc către Stereo)"
+msgstr "M > SD (Mijloc către stereo)"
 
 #: data/ui/stereo_tools.ui:141
 msgid "LR > LL (Mono Left Channel)"
-msgstr "LR > LL (Mono Canal Stânga)"
+msgstr "SD > SS (Mono canal stânga)"
 
 #: data/ui/stereo_tools.ui:142
 msgid "LR > RR (Mono Right Channel)"
-msgstr "LR > RR (Mono Canal Dreapta)"
+msgstr "SD > DD (Mono canal dreapta)"
 
 #: data/ui/stereo_tools.ui:143
 msgid "LR > L+R (Mono Sum L+R)"
-msgstr "LR > L+R (Mono L+R)"
+msgstr "SD > S+D (Mono S+D)"
 
 #: data/ui/stereo_tools.ui:144
 msgid "LR > RL (Stereo Flip Channels)"
-msgstr "LR > RL (Canalele Stereo Inversate)"
+msgstr "SD > DS (Canalele stereo inversate)"
 
 #: data/ui/stereo_tools.ui:149
-#, fuzzy
 msgid "Stereo Mode"
-msgstr "Bază Stereo"
+msgstr "Modul stereo"
 
 #: data/ui/stereo_tools.ui:234
 msgid "Side Level"
-msgstr "Nivel Lateral"
+msgstr "Nivel lateral"
 
 #: data/ui/stereo_tools.ui:269
 msgid "Side Balance"
-msgstr "Balans Lateral"
+msgstr "Balans lateral"
 
 #: data/ui/stereo_tools.ui:304
 msgid "Middle Level"
-msgstr "Nivel Mijloc"
+msgstr "Nivel mijloc"
 
 #: data/ui/stereo_tools.ui:339
 msgid "Middle Panorama"
-msgstr "Panoramă Mijloc"
+msgstr "Panoramă mijloc"
 
 #: data/ui/stereo_tools.ui:417
-#, fuzzy
 msgid "Output Balance"
-msgstr "Balans"
+msgstr "Balans ieșire"
 
 #: data/ui/stereo_tools.ui:426
 msgid "Delay L/R"
-msgstr "Întârziere L/R"
+msgstr "Întârziere S/D"
 
 #: data/ui/stereo_tools.ui:452
-#, fuzzy
 msgid "Delay Left Right"
-msgstr "Întârziere L/R"
+msgstr "Întârziere stânga / dreapta"
 
 #: data/ui/stereo_tools.ui:461
 msgid "Stereo Base"
@@ -2409,114 +2211,102 @@ msgid "Stereo Phase"
 msgstr "Fază Stereo"
 
 #: src/app_info.cpp:100
-#, fuzzy
 msgid "Running"
-msgstr "rulează"
+msgstr "În execuție"
 
 #: src/app_info.cpp:102
-#, fuzzy
 msgid "Suspended"
-msgstr "suspendat"
+msgstr "Suspendat"
 
 #: src/app_info.cpp:104
 msgid "Idle"
-msgstr ""
+msgstr "Inactiv"
 
 #: src/app_info.cpp:106
-#, fuzzy
 msgid "Creating"
-msgstr "se creează"
+msgstr "Se creează"
 
 #: src/app_info.cpp:108
-#, fuzzy
 msgid "Error"
-msgstr "eroare"
+msgstr "Eroare"
 
 #: src/app_info.cpp:110
 msgid "Unknown"
-msgstr ""
+msgstr "Necunoscut"
 
 #: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
-msgstr ""
+msgstr "Nume nedefinit - ID-ul procesului "
 
 #: src/app_info.cpp:292
-#, fuzzy
 msgid "channels"
-msgstr "Canale"
+msgstr "canale"
 
 #: src/application.cpp:487
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
-msgstr ""
+msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
 #: src/application.cpp:575
-#, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr ""
-"Închideți EasyEffects. Folositor când este folosit în modul de serviciu."
+msgstr "Ieșire din Easy Effects. Util atunci când rulează în modul de serviciu."
 
 #: src/application.cpp:578
 msgid "Print the easyeffects version"
-msgstr ""
+msgstr "Afișează versiunea easyeffects"
 
 #: src/application.cpp:581
-#, fuzzy
 msgid "Reset Easy Effects."
-msgstr "Resetează EasyEffects."
+msgstr "Reinițiază EasyEffects."
 
 #: src/application.cpp:584
 msgid "Hide the Window."
-msgstr "Ascunde Fereastra."
+msgstr "Ascunde fereastra."
 
 #: src/application.cpp:587
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
-"Ocolire Globală. 1 pentru a activa, 2 pentru a dezactiva și 3 pentru a afla "
-"statusul"
+"Ocolire globală. 1 pentru a activa, 2 pentru a dezactiva și 3 pentru a afla "
+"starea"
 
 #: src/application.cpp:590
 msgid "Show available presets."
-msgstr "Arată presetările valabile."
+msgstr "Afișează preconfigurările disponibile."
 
 #: src/application.cpp:593
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr "Încarcă o presetare. Exemplu: easyeffects -l music"
+msgstr "Încarcă o preconfigurare. Exemplu: «easyeffects -l muzică»"
 
 #: src/application_ui.cpp:344
-#, fuzzy
 msgid "_Output"
-msgstr "Output"
+msgstr "_Ieșire"
 
 #: src/application_ui.cpp:345
-#, fuzzy
 msgid "_Input"
-msgstr "Input"
+msgstr "_Intrare"
 
 #: src/application_ui.cpp:346
-#, fuzzy
 msgid "_PipeWire"
-msgstr "PipeWire"
+msgstr "_PipeWire"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "Fișierul nu este un fișier obișnuit"
 
 #: src/convolver_menu_impulses.cpp:130
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "Fișierul de impuls poate fi corupt sau nu este compatibil"
 
 #: src/convolver_menu_impulses.cpp:135
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "Sunt acceptate numai fișierele de impuls stereo"
 
 #: src/convolver_menu_impulses.cpp:145
-#, fuzzy
 msgid "Impulse File Not Imported"
-msgstr "Importă Fișier Impulse"
+msgstr "Fișier de impuls neimportat"
 
 #: src/convolver_menu_impulses.cpp:153
 msgid "Import Impulse File"
-msgstr "Importă Fișier Impulse"
+msgstr "Importare fișier de impuls"
 
 #: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:522
 #: src/equalizer_ui.cpp:854 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
@@ -2525,200 +2315,187 @@ msgstr "Deschide"
 
 #: src/convolver_menu_impulses.cpp:166
 msgid "Impulse Response"
-msgstr "Răspuns Impuls"
+msgstr "Răspuns impuls"
 
 #: src/convolver_menu_impulses.cpp:293
-#, fuzzy
 msgid "Load Impulse"
-msgstr "Importă Impuls"
+msgstr "Încarcă fișier de impuls"
 
 #: src/convolver_menu_impulses.cpp:296
-#, fuzzy
 msgid "Remove Impulse"
-msgstr "Importă Impuls"
+msgstr "Elimină fișier de impuls"
 
 #: src/convolver_ui.cpp:382
-#, fuzzy
 msgid "No Impulse File Loaded"
-msgstr "Importă Fișier Impulse"
+msgstr "Niciun fișier de impuls încărcat"
 
 #: src/convolver_ui.cpp:408
-#, fuzzy
 msgid "Failed To Load The Impulse File"
-msgstr "Nu s-a putut Încărca Fișierul Impulse"
+msgstr "Încărcarea fișierului de impuls a eșuat"
 
 #: src/effects_box.cpp:358 src/plugins_box.cpp:807
-#, fuzzy
 msgid "Recorders"
-msgstr "Bordură"
+msgstr "Înregistrătoare"
 
 #: src/effects_box.cpp:381 src/plugins_box.cpp:827
 msgid "Players"
-msgstr ""
+msgstr "Reproducătoare"
 
 #: src/effects_box.cpp:404
-#, fuzzy
 msgid "Effects"
-msgstr "EasyEffects"
+msgstr "Efecte"
 
 #: src/equalizer_ui.cpp:521
 msgid "Import APO Preset File"
-msgstr "Importă Fișierul de Presetare APO"
+msgstr "Importă fișierul de preconfigurare APO"
 
 #: src/equalizer_ui.cpp:529
 msgid "APO Presets"
-msgstr "Presetări APO"
+msgstr "Preconfigurări APO"
 
 #: src/equalizer_ui.cpp:554
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
+"Preconfigurarea APO nu a fost încărcată. Este posibil ca formatul fișierului "
+"să nu fie compatibil. Verificați conținutul acestuia."
 
 #: src/equalizer_ui.cpp:616
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
+"Canalele separate nu sunt încă acceptate la exportul preconfigurărilor APO."
 
 #: src/equalizer_ui.cpp:624
-#, fuzzy
 msgid "Export EqualizerAPO Preset File"
-msgstr "Importă Fișierul de Presetare APO"
+msgstr "Exportă fișierul de preconfigurare EqualizerAPO"
 
 #: src/equalizer_ui.cpp:625
 msgid "Save"
-msgstr ""
+msgstr "Salvează"
 
 #: src/equalizer_ui.cpp:632
-#, fuzzy
 msgid "EqualizerAPO Presets"
-msgstr "Presetări APO"
+msgstr "Preconfigurări EqualizerAPO"
 
 #: src/equalizer_ui.cpp:853
-#, fuzzy
 msgid "Import GraphicEQ Preset File"
-msgstr "Importă Fișierul de Presetare APO"
+msgstr "Importă fișierul de preconfigurare GraphicEQ"
 
 #: src/equalizer_ui.cpp:861
-#, fuzzy
 msgid "GraphicEQ Presets"
-msgstr "Presetări pentru Input:"
+msgstr "Preconfigurări GraphicEQ"
 
 #: src/equalizer_ui.cpp:886
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
 msgstr ""
+"Preconfigurarea GraphicEQ nu a fost încărcată. Este posibil ca formatul "
+"fișierului să nu fie acceptat. Verificați conținutul acestuia."
 
 #: src/pipe_manager_box.cpp:355
-#, fuzzy
 msgid "Remove Autoloading Preset"
-msgstr "Șterge fișierul de presetări"
+msgstr "Elimină preconfigurarea cu încărcare automată"
 
 #: src/plugin_base.cpp:233
-#, fuzzy
 msgid "Output Level Meter"
-msgstr "Efecte Output"
+msgstr "Vumetru de ieșire"
 
 #: src/plugins_box.cpp:759
 msgid "Remove"
-msgstr ""
+msgstr "Elimină"
 
 #: src/plugins_box.cpp:828
-#, fuzzy
 msgid "Output Device"
-msgstr "Efecte Output"
+msgstr "Dispozitiv de ieșire"
 
 #: src/plugins_menu.cpp:238
 msgid "Add"
-msgstr ""
+msgstr "Adaugă"
 
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
-#, fuzzy
 msgid "Community Preset"
-msgstr "Importă Presetări"
+msgstr "Preconfigurare de la comunitate"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
-msgstr ""
+msgstr "Pachet"
 
 #: src/presets_manager.cpp:1147 src/presets_manager.cpp:1154
 #: src/presets_manager.cpp:1163 src/presets_manager.cpp:1170
 #: src/presets_manager.cpp:1179 src/presets_manager.cpp:1187
 msgid "Preset Not Loaded Correctly"
-msgstr ""
+msgstr "Preconfigurarea nu a fost încărcată corect"
 
 #: src/presets_manager.cpp:1147
-#, fuzzy
 msgid "Wrong Format in Excluded Apps List"
-msgstr "Arată programele din Lista de Blocare în Fila Principală"
+msgstr "Format greșit în lista de aplicații excluse"
 
 #: src/presets_manager.cpp:1154
 msgid "Generic Error While Loading Excluded Apps List"
-msgstr ""
+msgstr "Eroare generică în timpul încărcării listei de aplicații excluse"
 
 #: src/presets_manager.cpp:1163
 msgid "Wrong Format in Effects List"
-msgstr ""
+msgstr "Format greșit în lista de efecte"
 
 #: src/presets_manager.cpp:1170
 msgid "Generic Error While Loading Effects List"
-msgstr ""
+msgstr "Eroare generică în timpul încărcării listei de efecte"
 
 #: src/presets_manager.cpp:1180
 msgid "One or More Parameters Have a Wrong Format"
-msgstr ""
+msgstr "Unul sau mai mulți parametri au un format greșit"
 
 #: src/presets_manager.cpp:1188
 msgid "Generic Error While Loading The Effect"
-msgstr ""
+msgstr "Eroare generică în timpul încărcării efectului"
 
 #: src/presets_menu.cpp:398
 msgid "Save?"
-msgstr ""
+msgstr "Salvați?"
 
 #: src/presets_menu.cpp:417
 msgid "Delete?"
-msgstr ""
+msgstr "Ștergeți?"
 
 #: src/presets_menu.cpp:558
-#, fuzzy
 msgid "No Preset Loaded"
-msgstr "Presetări pentru Input:"
+msgstr "Nicio preconfigurare încărcată"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Local Preset Loaded"
-msgstr "Presetări pentru Input:"
+msgstr "Ultima preconfigurare locală încărcată"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Community Preset Loaded"
-msgstr "Importă Presetări"
+msgstr "Ultima preconfigurare de la comunitate încărcată"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
+"Modelul selectat nu a fost încărcat. Este posibil ca formatul său să nu fie "
+"acceptat. S-a revenit la modelul standard."
 
 #: src/rnnoise_ui.cpp:159
 msgid "Import Model File"
-msgstr "Importă Fișier de Model"
+msgstr "Importă fișierul de model"
 
 #: src/rnnoise_ui.cpp:172
-#, fuzzy
 msgid "RNNoise Models"
-msgstr "Model Standard RNNoise"
+msgstr "Modele RNNoise"
 
 #: src/tags_plugin_name.cpp:39
 msgid "Bass Enhancer"
-msgstr "Amplificator Bass"
+msgstr "Amplificator de bas"
 
 #: src/tags_plugin_name.cpp:40
-#, fuzzy
 msgid "Bass Loudness"
-msgstr "Intensitate"
+msgstr "Intensitate bas"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Convolver"
@@ -2726,7 +2503,7 @@ msgstr "Convolver"
 
 #: src/tags_plugin_name.cpp:43
 msgid "Crossfeed"
-msgstr "Crossfeed"
+msgstr "Flux încrucișat"
 
 #: src/tags_plugin_name.cpp:44
 msgid "Crystalizer"
@@ -2734,7 +2511,7 @@ msgstr "Cristalizator"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Deep Noise Remover"
-msgstr ""
+msgstr "Eliminator al zgomotului profund"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Deesser"
@@ -2742,7 +2519,7 @@ msgstr "Deesser"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Echo Canceller"
-msgstr "Anulator de Ecou"
+msgstr "Anulator de ecou"
 
 #: src/tags_plugin_name.cpp:49
 msgid "Equalizer"
@@ -2753,9 +2530,8 @@ msgid "Exciter"
 msgstr "Excitator"
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Level Meter"
-msgstr "Efecte Output"
+msgstr "Vumetru"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Limiter"
@@ -2767,11 +2543,11 @@ msgstr "Maximizator"
 
 #: src/tags_plugin_name.cpp:58
 msgid "Multiband Compressor"
-msgstr "Compresor Multiband"
+msgstr "Compresor multibandă"
 
 #: src/tags_plugin_name.cpp:59
 msgid "Multiband Gate"
-msgstr "Multiband Gate"
+msgstr "Poartă multibandă"
 
 #: src/tags_plugin_name.cpp:61
 msgid "Reverberation"
@@ -2779,21 +2555,21 @@ msgstr "Reverberație"
 
 #: src/tags_plugin_name.cpp:62
 msgid "Noise Reduction"
-msgstr "Reducere Zgomot"
+msgstr "Reducere zgomot"
 
 #: src/tags_plugin_name.cpp:63
 msgid "Speech Processor"
-msgstr ""
+msgstr "Procesor de vorbire"
 
 #: src/tags_plugin_name.cpp:64
 msgid "Stereo Tools"
-msgstr "Unelte Stereo"
+msgstr "Unelte stereo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
 #, c++-format
 msgid "{} Not Available"
-msgstr ""
+msgstr "Efectul {} nu este disponibil"
 
 #: src/ui_helpers.cpp:97
 #, c++-format
@@ -2804,6 +2580,11 @@ msgid ""
 "using the 'Quit' option inside the menu in order to make the effect availble "
 "to use."
 msgstr ""
+"Software-ul necesar pentru efectul {}, „{}”, nu este instalat. Luați în "
+"considerare utilizarea pachetului Easy Effects Flatpak sau instalarea "
+"software-ului personal. Dacă ați instalat software-ul lipsă, trebuie să "
+"reporniți Easy Effects folosind opțiunea «Ieșire» din meniu pentru a putea "
+"utiliza efectul."
 
 #: src/ui_helpers.cpp:104
 #, c++-format
@@ -2813,16 +2594,20 @@ msgid ""
 "Consider using the Easy Effects Flatpak package or building your own Easy "
 "Effects package."
 msgstr ""
+"Efectul {} a fost dezactivat când a fost compilat Easy Effects. Acest lucru "
+"se datorează probabil faptului că software-ul necesar pentru acest efect, "
+"„{}”, nu era disponibil. Luați în considerare utilizarea pachetului Easy "
+"Effects Flatpak sau construirea propriului pachet Easy Effects."
 
 #: src/ui_helpers.cpp:149 src/ui_helpers.cpp:171
 msgid "-inf"
-msgstr ""
+msgstr "- ∞"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:256
 #, c++-format
 msgid "Using {}"
-msgstr ""
+msgstr "Utilizând {}"
 
 #~ msgid "Ceiling"
 #~ msgstr "Tavan"
