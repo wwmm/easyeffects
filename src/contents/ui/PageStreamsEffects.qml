@@ -16,6 +16,7 @@ Kirigami.Page {
     required property int pageType // 0 for output and 1 for input
     required property var streamDB
     required property var pluginsDB
+    required property var pipelineInstance
     property string logTag: "PageStreamsEffects"
 
     padding: 0
@@ -121,8 +122,7 @@ Kirigami.Page {
             columnSpacing: 0
 
             Connections {
-                function onPluginsChanged() {
-                    console.log("hello from qml!!!!!!");
+                function onPipelineChanged() {
                     const newList = streamDB.plugins;
                     let currentList = [];
                     for (let n = 0; n < pluginsListModel.count; n++) {
@@ -139,7 +139,7 @@ Kirigami.Page {
                     populatePluginsListModel(newList);
                 }
 
-                target: streamDB
+                target: pipelineInstance
             }
 
             Connections {
@@ -148,7 +148,7 @@ Kirigami.Page {
                     for (let n = 0; n < pluginsListModel.count; n++) {
                         newList.push(pluginsListModel.get(n).name);
                     }
-                    if (pluginsListModel.currentItem !== null) {
+                    if (pluginsListView.currentItem) {
                         let name = pluginsListView.currentItem.name;
                         if (streamDB.visiblePlugin !== name) {
                             streamDB.visiblePlugin = name;
@@ -196,7 +196,7 @@ Kirigami.Page {
                     clip: true
                     reuseItems: true
                     onCurrentIndexChanged: {
-                        if (pluginsListModel.currentItem !== null) {
+                        if (pluginsListView.currentItem) {
                             let name = pluginsListView.currentItem.name;
                             if (streamDB.visiblePlugin !== name) {
                                 streamDB.visiblePlugin = name;
@@ -204,6 +204,8 @@ Kirigami.Page {
                                 createPluginStack(baseName, pluginsDB[name]);
                             }
                             showPassiveNotification("Clicked on plugin: " + name);
+                        } else {
+                            console.log("invalid currentItem: " + pluginsListView.currentIndex);
                         }
                     }
 

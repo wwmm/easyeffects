@@ -121,7 +121,8 @@ class EffectsBase : public QObject {
   }
 
  signals:
-  void pipeline_latency(float value);
+  void pipelineLatencyChanged(float value);
+  void pipelineChanged();
 
  protected:
   std::map<QString, QPointer<PluginBase>> plugins;

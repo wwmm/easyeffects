@@ -64,10 +64,8 @@ Manager::Manager()
   connect(streamInputs, &db::StreamInputs::pluginsChanged,
           [&]() { create_plugin_db("sie", db::StreamInputs::plugins(), siePluginsDB); });
 
-  connect(streamOutputs, &db::StreamOutputs::pluginsChanged, [&]() {
-    create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsDB);
-    util::warning("hello from db!!!!");
-  });
+  connect(streamOutputs, &db::StreamOutputs::pluginsChanged,
+          [&]() { create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsDB); });
 
   // testing things
 

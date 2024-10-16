@@ -24,7 +24,6 @@
 #include <QString>
 #include <algorithm>
 #include <map>
-#include <memory>
 #include <ranges>
 #include <string>
 #include <utility>
@@ -295,7 +294,7 @@ void EffectsBase::broadcast_pipeline_latency() {
 
   util::debug(log_tag + "pipeline latency: " + util::to_string(latency_value, "") + " ms");
 
-  Q_EMIT pipeline_latency(latency_value);
+  Q_EMIT pipelineLatencyChanged(latency_value);
 }
 
 auto EffectsBase::get_plugins_map() -> std::map<QString, QPointer<PluginBase>> {

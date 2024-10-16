@@ -21,6 +21,8 @@
 #include <pipewire/link.h>
 #include <pipewire/node.h>
 #include <qcontainerfwd.h>
+#include <qqml.h>
+#include <qtmetamacros.h>
 #include <qtypes.h>
 #include <spa/utils/defs.h>
 #include <algorithm>
@@ -31,6 +33,7 @@
 #include <string>
 #include <thread>
 #include <vector>
+#include "config.h"
 #include "db_manager.hpp"
 #include "effects_base.hpp"
 #include "pipeline_type.hpp"
@@ -41,6 +44,8 @@
 #include "util.hpp"
 
 StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBase(pipe_manager, PipelineType::output) {
+  qmlRegisterSingletonInstance<StreamOutputEffects>("EEsoe", VERSION_MAJOR, VERSION_MINOR, "EEsoe", this);
+
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
   if (PULSE_SINK != nullptr && PULSE_SINK != tags::pipewire::ee_sink_name) {
@@ -55,7 +60,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
     }
   }
 
-  connect(pm, &pw::Manager::sink_added, [&](pw::NodeInfo node) {
+  connect(pm, &pw::Manager::sinkAdded, [&](pw::NodeInfo node) {
     if (node.name == db::StreamOutputs::outputDevice()) {
       pm->output_device = node;
 
@@ -69,14 +74,14 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
     }
   });
 
-  connect(pm, &pw::Manager::sink_removed, [&](pw::NodeInfo node) {
+  connect(pm, &pw::Manager::sinkRemoved, [&](pw::NodeInfo node) {
     if (db::StreamOutputs::useDefaultOutputDevice() && node.name == db::StreamOutputs::outputDevice()) {
       pm->output_device.id = SPA_ID_INVALID;
       pm->output_device.serial = SPA_ID_INVALID;
     }
   });
 
-  connect(pm, &pw::Manager::stream_output_added, this, &StreamOutputEffects::on_app_added);
+  connect(pm, &pw::Manager::streamOutputAdded, this, &StreamOutputEffects::on_app_added);
 
   connect_filters();
 
@@ -112,6 +117,8 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
     }
 
     set_bypass(false);
+
+    Q_EMIT pipelineChanged();
   });
 }
 

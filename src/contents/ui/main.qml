@@ -1,5 +1,7 @@
 import AboutEE
 import EEdbm
+import EEsie
+import EEsoe
 import Qt.labs.platform
 import QtQuick
 import QtQuick.Controls as Controls
@@ -28,6 +30,7 @@ Kirigami.ApplicationWindow {
                     "pageType": 0,
                     "streamDB": EEdbm.streamOutputs,
                     "pluginsDB": EEdbm.soePluginsDB,
+                    "pipelineInstance": EEsoe,
                     "visible": true
                 });
                 break;
@@ -36,6 +39,7 @@ Kirigami.ApplicationWindow {
                     "pageType": 1,
                     "streamDB": EEdbm.streamInputs,
                     "pluginsDB": EEdbm.siePluginsDB,
+                    "pipelineInstance": EEsie,
                     "visible": true
                 });
                 break;
@@ -160,6 +164,7 @@ Kirigami.ApplicationWindow {
                                 "pageType": 0,
                                 "pluginsDB": EEdbm.soePluginsDB,
                                 "streamDB": EEdbm.streamOutputs,
+                                "pipelineInstance": EEsoe,
                                 "visible": true
                             });
                             EEdbm.main.visiblePage = 0;
@@ -177,6 +182,7 @@ Kirigami.ApplicationWindow {
                                 "pageType": 1,
                                 "streamDB": EEdbm.streamInputs,
                                 "pluginsDB": EEdbm.siePluginsDB,
+                                "pipelineInstance": EEsie,
                                 "visible": true
                             });
                             EEdbm.main.visiblePage = 1;

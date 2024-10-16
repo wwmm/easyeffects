@@ -221,19 +221,19 @@ void on_destroy_node_proxy(void* data) {
     if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
       const auto nd_info_copy = *nd->nd_info;
 
-      Q_EMIT pm->source_removed(nd_info_copy);
+      Q_EMIT pm->sourceRemoved(nd_info_copy);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
       const auto nd_info_copy = *nd->nd_info;
 
-      Q_EMIT pm->sink_removed(nd_info_copy);
+      Q_EMIT pm->sinkRemoved(nd_info_copy);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
       const auto serial = nd->nd_info->serial;
 
-      Q_EMIT pm->stream_output_removed(serial);
+      Q_EMIT pm->streamOutputRemoved(serial);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
       const auto serial = nd->nd_info->serial;
 
-      Q_EMIT pm->stream_input_removed(serial);
+      Q_EMIT pm->streamInputRemoved(serial);
     }
   }
 
@@ -351,15 +351,15 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
       const auto nd_info_copy = *nd->nd_info;
 
-      Q_EMIT pm->source_removed(nd_info_copy);
+      Q_EMIT pm->sourceRemoved(nd_info_copy);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
       const auto nd_info_copy = *nd->nd_info;
 
-      Q_EMIT pm->sink_removed(nd_info_copy);
+      Q_EMIT pm->sinkRemoved(nd_info_copy);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
       const auto serial = nd->nd_info->serial;
 
-      Q_EMIT pm->stream_output_removed(serial);
+      Q_EMIT pm->streamOutputRemoved(serial);
 
       // Do not use disconnect_stream because it uses lock and is intended for calls from a different thread
       // NOLINTNEXTLINE
@@ -367,7 +367,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
       const auto serial = nd->nd_info->serial;
 
-      Q_EMIT pm->stream_input_removed(serial);
+      Q_EMIT pm->streamInputRemoved(serial);
 
       // Do not use disconnect_stream because it uses lock and is intended for calls from a different thread
       // NOLINTNEXTLINE
@@ -512,20 +512,20 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     const auto nd_info_copy = *nd->nd_info;
 
     if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
-      Q_EMIT pm->stream_output_changed(nd_info_copy);
+      Q_EMIT pm->streamOutputChanged(nd_info_copy);
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
-      Q_EMIT pm->stream_input_changed(nd_info_copy);
+      Q_EMIT pm->streamInputChanged(nd_info_copy);
     }
   }
 
   if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
     const auto nd_info_copy = *nd->nd_info;
 
-    Q_EMIT pm->source_changed(nd_info_copy);
+    Q_EMIT pm->sourceChanged(nd_info_copy);
   } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
     const auto nd_info_copy = *nd->nd_info;
 
-    Q_EMIT pm->sink_changed(nd_info_copy);
+    Q_EMIT pm->sinkChanged(nd_info_copy);
   }
   // const struct spa_dict_item* item = nullptr;
   // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
@@ -659,7 +659,7 @@ void on_link_info(void* object, const struct pw_link_info* info) {
 
       link_copy = l;
 
-      Q_EMIT pm->link_changed(link_copy);
+      Q_EMIT pm->linkChanged(link_copy);
 
       // util::warning(pw_link_state_as_string(l.state));
 
@@ -852,14 +852,14 @@ void on_device_event_param(void* object,
         device.input_route_name = name;
         device.input_route_available = available;
 
-        Q_EMIT pm->device_input_route_changed(device);
+        Q_EMIT pm->deviceInputRouteChanged(device);
       }
     } else if (direction == SPA_DIRECTION_OUTPUT) {
       if (name != device.output_route_name || available != device.output_route_available) {
         device.output_route_name = name;
         device.output_route_available = available;
 
-        Q_EMIT pm->device_output_route_changed(device);
+        Q_EMIT pm->deviceOutputRouteChanged(device);
       }
     }
 
@@ -907,7 +907,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
       db::StreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
     }
 
-    Q_EMIT pm->new_default_sink_name(pm->defaultOutputDeviceName);
+    Q_EMIT pm->newDefaultSinkName(pm->defaultOutputDeviceName);
   }
 
   if (str_key == "default.audio.source") {
@@ -927,7 +927,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
       db::StreamInputs::setInputDevice(pm->defaultInputDeviceName);
     }
 
-    Q_EMIT pm->new_default_source_name(pm->defaultInputDeviceName);
+    Q_EMIT pm->newDefaultSourceName(pm->defaultInputDeviceName);
   }
 
   return 0;
@@ -1132,13 +1132,13 @@ void on_registry_global(void* data,
     const auto nd_info_copy = *nd->nd_info;
 
     if (media_class == tags::pipewire::media_class::source && node_name != tags::pipewire::ee_source_name) {
-      Q_EMIT pm->source_added(nd_info_copy);
+      Q_EMIT pm->sourceAdded(nd_info_copy);
     } else if (media_class == tags::pipewire::media_class::sink && node_name != tags::pipewire::ee_sink_name) {
-      Q_EMIT pm->sink_added(nd_info_copy);
+      Q_EMIT pm->sinkAdded(nd_info_copy);
     } else if (media_class == tags::pipewire::media_class::output_stream) {
-      Q_EMIT pm->stream_output_added(nd_info_copy);
+      Q_EMIT pm->streamOutputAdded(nd_info_copy);
     } else if (media_class == tags::pipewire::media_class::input_stream) {
-      Q_EMIT pm->stream_input_added(nd_info_copy);
+      Q_EMIT pm->streamInputAdded(nd_info_copy);
     }
 
     // We will have debug info about our filters later

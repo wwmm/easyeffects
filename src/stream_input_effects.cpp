@@ -20,6 +20,8 @@
 #include "stream_input_effects.hpp"
 #include <pipewire/link.h>
 #include <qcontainerfwd.h>
+#include <qqml.h>
+#include <qtmetamacros.h>
 #include <qtypes.h>
 #include <spa/utils/defs.h>
 #include <algorithm>
@@ -30,6 +32,7 @@
 #include <string>
 #include <thread>
 #include <vector>
+#include "config.h"
 #include "db_manager.hpp"
 #include "effects_base.hpp"
 #include "pipeline_type.hpp"
@@ -40,6 +43,8 @@
 #include "util.hpp"
 
 StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(pipe_manager, PipelineType::input) {
+  qmlRegisterSingletonInstance<StreamInputEffects>("EEsie", VERSION_MAJOR, VERSION_MINOR, "EEsie", this);
+
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
   if (PULSE_SOURCE != nullptr && PULSE_SOURCE != tags::pipewire::ee_source_name) {
@@ -54,7 +59,7 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
     }
   }
 
-  connect(pm, &pw::Manager::source_added, [&](pw::NodeInfo node) {
+  connect(pm, &pw::Manager::sourceAdded, [&](pw::NodeInfo node) {
     if (node.name == db::StreamInputs::inputDevice()) {
       pm->input_device = node;
 
@@ -68,15 +73,15 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
     }
   });
 
-  connect(pm, &pw::Manager::source_removed, [&](pw::NodeInfo node) {
+  connect(pm, &pw::Manager::sourceRemoved, [&](pw::NodeInfo node) {
     if (db::StreamInputs::useDefaultInputDevice() && node.name == db::StreamInputs::inputDevice()) {
       pm->input_device.id = SPA_ID_INVALID;
       pm->input_device.serial = SPA_ID_INVALID;
     }
   });
 
-  connect(pm, &pw::Manager::stream_input_added, this, &StreamInputEffects::on_app_added);
-  connect(pm, &pw::Manager::link_changed, this, &StreamInputEffects::on_link_changed);
+  connect(pm, &pw::Manager::streamInputAdded, this, &StreamInputEffects::on_app_added);
+  connect(pm, &pw::Manager::linkChanged, this, &StreamInputEffects::on_link_changed);
 
   connect_filters();
 
@@ -112,6 +117,8 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
     }
 
     set_bypass(false);
+
+    Q_EMIT pipelineChanged();
   });
 }
 
