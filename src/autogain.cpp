@@ -32,7 +32,7 @@
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
-AutoGain::AutoGain(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
+Autogain::Autogain(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
     : PluginBase(tag,
                  tags::plugin_name::BaseName::autogain,
                  tags::plugin_package::Package::ebur128,
@@ -45,7 +45,7 @@ AutoGain::AutoGain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
 
   //   gconnections.push_back(g_signal_connect(settings, "changed::target",
   //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto* self = static_cast<AutoGain*>(user_data);
+  //                                             auto* self = static_cast<Autogain*>(user_data);
 
   //                                             self->target = g_settings_get_double(settings, key);
   //                                           }),
@@ -53,7 +53,7 @@ AutoGain::AutoGain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
 
   //   gconnections.push_back(g_signal_connect(settings, "changed::silence-threshold",
   //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto* self = static_cast<AutoGain*>(user_data);
+  //                                             auto* self = static_cast<Autogain*>(user_data);
 
   //                                             self->silence_threshold = g_settings_get_double(settings, key);
   //                                           }),
@@ -61,7 +61,7 @@ AutoGain::AutoGain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
 
   //   gconnections.push_back(g_signal_connect(settings, "changed::maximum-history",
   //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto* self = static_cast<AutoGain*>(user_data);
+  //                                             auto* self = static_cast<Autogain*>(user_data);
 
   //                                             std::scoped_lock<std::mutex> lock(self->data_mutex);
 
@@ -71,7 +71,7 @@ AutoGain::AutoGain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
 
   //   gconnections.push_back(g_signal_connect(
   //       settings, "changed::reset-history", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //         auto* self = static_cast<AutoGain*>(user_data);
+  //         auto* self = static_cast<Autogain*>(user_data);
 
   //         self->mythreads.emplace_back([self]() {  // Using emplace_back here makes sense
   //           self->data_mutex.lock();
@@ -93,7 +93,7 @@ AutoGain::AutoGain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
 
   //   gconnections.push_back(g_signal_connect(
   //       settings, "changed::reference", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //         auto* self = static_cast<AutoGain*>(user_data);
+  //         auto* self = static_cast<Autogain*>(user_data);
 
   //         self->reference = parse_reference_key(util::gsettings_get_string(settings, key));
   //       }),
@@ -102,7 +102,7 @@ AutoGain::AutoGain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
   setup_input_output_gain();
 }
 
-AutoGain::~AutoGain() {
+Autogain::~Autogain() {
   if (connected_to_pw) {
     disconnect_from_pw();
   }
@@ -122,7 +122,7 @@ AutoGain::~AutoGain() {
   util::debug(log_tag + name.toStdString() + " destroyed");
 }
 
-auto AutoGain::init_ebur128() -> bool {
+auto Autogain::init_ebur128() -> bool {
   if (n_samples == 0U || rate == 0U) {
     return false;
   }
@@ -145,7 +145,7 @@ auto AutoGain::init_ebur128() -> bool {
   return ebur_state != nullptr;
 }
 
-auto AutoGain::parse_reference_key(const std::string& key) -> Reference {
+auto Autogain::parse_reference_key(const std::string& key) -> Reference {
   if (key == "Momentary") {
     return Reference::momentary;
   }
@@ -173,7 +173,7 @@ auto AutoGain::parse_reference_key(const std::string& key) -> Reference {
   return Reference::geometric_mean_msi;
 }
 
-void AutoGain::set_maximum_history(const int& seconds) {
+void Autogain::set_maximum_history(const int& seconds) {
   if (ebur_state == nullptr) {
     return;
   }
@@ -183,7 +183,7 @@ void AutoGain::set_maximum_history(const int& seconds) {
   ebur128_set_max_history(ebur_state, static_cast<ulong>(seconds) * 1000UL);
 }
 
-void AutoGain::setup() {
+void Autogain::setup() {
   if (2U * static_cast<size_t>(n_samples) != data.size()) {
     data.resize(static_cast<size_t>(n_samples) * 2U);
   }
@@ -215,7 +215,7 @@ void AutoGain::setup() {
   }
 }
 
-void AutoGain::process(std::span<float>& left_in,
+void Autogain::process(std::span<float>& left_in,
                        std::span<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out) {
@@ -392,13 +392,13 @@ void AutoGain::process(std::span<float>& left_in,
   }
 }
 
-void AutoGain::process([[maybe_unused]] std::span<float>& left_in,
+void Autogain::process([[maybe_unused]] std::span<float>& left_in,
                        [[maybe_unused]] std::span<float>& right_in,
                        [[maybe_unused]] std::span<float>& left_out,
                        [[maybe_unused]] std::span<float>& right_out,
                        [[maybe_unused]] std::span<float>& probe_left,
                        [[maybe_unused]] std::span<float>& probe_right) {}
 
-auto AutoGain::get_latency_seconds() -> float {
+auto Autogain::get_latency_seconds() -> float {
   return 0.0F;
 }

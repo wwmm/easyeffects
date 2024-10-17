@@ -20,7 +20,7 @@
 #include "effects_base.hpp"
 #include <qcontainerfwd.h>
 #include <qtmetamacros.h>
-#include <QPointer>
+#include <QSharedPointer>
 #include <QString>
 #include <algorithm>
 #include <map>
@@ -159,10 +159,10 @@ void EffectsBase::create_filters_if_necessary() {
 
     auto instance_id = tags::plugin_name::get_id(name);
 
-    QPointer<PluginBase> filter;
+    QSharedPointer<PluginBase> filter;
 
     if (name.startsWith(tags::plugin_name::BaseName::autogain)) {
-      filter = new AutoGain(log_tag, pm, pipeline_type, instance_id);
+      filter = QSharedPointer<Autogain>::create(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::bass_enhancer)) {
       //   filter = std::make_shared<BassEnhancer>(log_tag, tags::schema::bass_enhancer::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::bass_loudness)) {
@@ -297,6 +297,21 @@ void EffectsBase::broadcast_pipeline_latency() {
   Q_EMIT pipelineLatencyChanged(latency_value);
 }
 
-auto EffectsBase::get_plugins_map() -> std::map<QString, QPointer<PluginBase>> {
+auto EffectsBase::get_plugins_map() -> std::map<QString, QSharedPointer<PluginBase>> {
   return plugins;
+}
+
+QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
+  if (!plugins.contains(pluginName)) {
+    return {};
+  }
+
+  if (pluginName.startsWith(tags::plugin_name::BaseName::autogain)) {
+    // return QVariant::fromValue(plugins[pluginName].get());
+    auto p = plugins[pluginName];
+    p->setParent(this);
+    return QVariant::fromValue(dynamic_cast<Autogain*>(p.data()));
+  }
+
+  return {};
 }

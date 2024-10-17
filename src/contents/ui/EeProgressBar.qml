@@ -11,6 +11,7 @@ FormCard.AbstractFormDelegate {
     property real value: 0
     property real from: 0
     property real to: 1
+    property int decimals: 2
     property string label: ""
     property string unit: ""
     property int elide: Text.ElideRight
@@ -30,7 +31,7 @@ FormCard.AbstractFormDelegate {
         anchors.fill: parent
 
         Rectangle {
-            width: clampedValue / (to - from) * parent.width
+            width: (clampedValue - from) / (to - from) * parent.width
             height: parent.height
             color: Kirigami.Theme.alternateBackgroundColor
             radius: 5
@@ -53,7 +54,7 @@ FormCard.AbstractFormDelegate {
             Label {
                 horizontalAlignment: Qt.AlignRight
                 verticalAlignment: Qt.AlignVCenter
-                text: Number(clampedValue).toLocaleString(Qt.locale()) + " " + control.unit
+                text: Number(clampedValue).toLocaleString(Qt.locale(), 'f', decimals) + " " + control.unit
                 elide: control.elide
                 color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
                 wrapMode: control.wrapMode

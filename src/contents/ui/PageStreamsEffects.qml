@@ -94,10 +94,12 @@ Kirigami.Page {
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Autogain.qml", {
                         "name": name,
-                        "pluginDB": pluginDB
+                        "pluginDB": pluginDB,
+                        "pipelineInstance": pipelineInstance
                     });
                     break;
                 default:
+                    while (pluginsStack.depth > 1)pluginsStack.pop()
                     console.log(logTag + " invalid plugin name: " + baseName);
                 }
             }
@@ -149,15 +151,6 @@ Kirigami.Page {
                     for (let n = 0; n < pluginsListModel.count; n++) {
                         newList.push(pluginsListModel.get(n).name);
                     }
-                    if (pluginsListView.currentItem) {
-                        let name = pluginsListView.currentItem.name;
-                        if (streamDB.visiblePlugin !== name) {
-                            streamDB.visiblePlugin = name;
-                            let baseName = pluginsListModel.get(pluginsListView.currentIndex).baseName;
-                            let name = pluginsListModel.get(pluginsListView.currentIndex).name;
-                            createPluginStack(name, baseName, pluginsDB[name]);
-                        }
-                    }
                     if (!Common.equalArrays(streamDB.plugins, newList))
                         streamDB.plugins = newList;
 
@@ -203,7 +196,6 @@ Kirigami.Page {
                             if (streamDB.visiblePlugin !== name) {
                                 streamDB.visiblePlugin = name;
                                 let baseName = pluginsListModel.get(pluginsListView.currentIndex).baseName;
-                                let name = pluginsListModel.get(pluginsListView.currentIndex).name;
                                 createPluginStack(name, baseName, pluginsDB[name]);
                             }
                             showPassiveNotification("Clicked on plugin: " + name);

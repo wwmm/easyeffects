@@ -11,14 +11,28 @@ Kirigami.ScrollablePage {
 
     required property var name
     required property var pluginDB
+    required property var pipelineInstance
+    property var pluginBackend
     property bool runAnimations: true
 
     Component.onCompleted: {
+        pluginBackend = pipelineInstance.getPluginInstance(name);
+        frameAnimation.start();
+    }
+    Component.onDestruction: {
+        frameAnimation.stop();
     }
 
     FrameAnimation {
-        running: runAnimations
+        id: frameAnimation
+
         onTriggered: {
+            // console.log(barMomentary.clampedValue);
+            if (!pluginBackend) {
+                frameAnimation.stop();
+                return ;
+            }
+            barMomentary.value = pluginBackend.momentary;
         }
     }
 
@@ -121,9 +135,14 @@ Kirigami.ScrollablePage {
                     }
 
                     EeProgressBar {
+                        id: barMomentary
+
                         label: i18n("Momentary")
                         unit: i18n("LUFS")
-                        value: 0.5
+                        from: -100
+                        to: 10
+                        value: 0
+                        decimals: 0
                     }
 
                     EeProgressBar {

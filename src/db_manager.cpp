@@ -22,6 +22,7 @@
 #include <qapplication.h>
 #include <qqml.h>
 #include <qstandardpaths.h>
+#include <qtmetamacros.h>
 #include <qvariant.h>
 #include <QMap>
 #include <QString>
@@ -75,6 +76,14 @@ Manager::Manager()
 
 Manager::~Manager() {
   saveAll();
+
+  for (auto& v : soePluginsDB) {
+    delete v.value<KConfigSkeleton*>();
+  }
+
+  for (auto& v : siePluginsDB) {
+    delete v.value<KConfigSkeleton*>();
+  }
 }
 
 void Manager::saveAll() const {
@@ -125,6 +134,12 @@ void Manager::create_plugin_db(const QString& parentGroup,
             QVariant::fromValue(new db::Autogain(parentGroup, id));
       }
     }
+  }
+
+  if (parentGroup == "sie") {
+    Q_EMIT siePluginsDBChanged();
+  } else {
+    Q_EMIT soePluginsDBChanged();
   }
 }
 

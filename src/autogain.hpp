@@ -20,6 +20,7 @@
 #pragma once
 
 #include <ebur128.h>
+#include <qtmetamacros.h>
 #include <sys/types.h>
 #include <QString>
 #include <span>
@@ -30,14 +31,18 @@
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 
-class AutoGain : public PluginBase {
+class Autogain : public PluginBase {
+  Q_OBJECT;
+
+  Q_PROPERTY(double momentary MEMBER momentary NOTIFY momentaryChanged)
+
  public:
-  AutoGain(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
-  AutoGain(const AutoGain&) = delete;
-  auto operator=(const AutoGain&) -> AutoGain& = delete;
-  AutoGain(const AutoGain&&) = delete;
-  auto operator=(const AutoGain&&) -> AutoGain& = delete;
-  ~AutoGain() override;
+  Autogain(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
+  Autogain(const Autogain&) = delete;
+  auto operator=(const Autogain&) -> Autogain& = delete;
+  Autogain(const Autogain&&) = delete;
+  auto operator=(const Autogain&&) -> Autogain& = delete;
+  ~Autogain() override;
 
   enum class Reference {
     momentary,
@@ -71,6 +76,9 @@ class AutoGain : public PluginBase {
   double relative = 0.0;
   double range = 0.0;
   double loudness = 0.0;
+
+ signals:
+  void momentaryChanged();
 
  private:
   bool ebur128_ready = false;
