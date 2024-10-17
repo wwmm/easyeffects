@@ -298,7 +298,7 @@ jobs:
         # install easyeffects deps
         source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
         # install clang
-        pacman -S --noconfirm --needed --asdeps clang
+        pacman -S --noconfirm --needed --asdeps clang openmp
         # install libportal since we technically need it for a full check
         pacman -S --noconfirm --needed --asdeps libportal libportal-gtk4
 
