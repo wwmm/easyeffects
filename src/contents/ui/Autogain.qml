@@ -9,7 +9,18 @@ import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 Kirigami.ScrollablePage {
     id: autogainPage
 
-    property var pluginDB
+    required property var name
+    required property var pluginDB
+    property bool runAnimations: true
+
+    Component.onCompleted: {
+    }
+
+    FrameAnimation {
+        running: runAnimations
+        onTriggered: {
+        }
+    }
 
     ColumnLayout {
         Layout.fillWidth: true

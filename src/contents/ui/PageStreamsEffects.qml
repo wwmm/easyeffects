@@ -88,11 +88,12 @@ Kirigami.Page {
                 }
             }
 
-            function createPluginStack(baseName, pluginDB) {
+            function createPluginStack(name, baseName, pluginDB) {
                 switch (baseName) {
                 case BasePluginName.autogain:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Autogain.qml", {
+                        "name": name,
                         "pluginDB": pluginDB
                     });
                     break;
@@ -108,7 +109,7 @@ Kirigami.Page {
                     let baseNames = PluginsNameModel.getBaseNames();
                     for (let k = 0; k < baseNames.length; k++) {
                         if (firstPlugin.startsWith(baseNames[k])) {
-                            createPluginStack(baseNames[k], pluginsDB[firstPlugin]);
+                            createPluginStack(firstPlugin, baseNames[k], pluginsDB[firstPlugin]);
                             break;
                         }
                     }
@@ -153,7 +154,8 @@ Kirigami.Page {
                         if (streamDB.visiblePlugin !== name) {
                             streamDB.visiblePlugin = name;
                             let baseName = pluginsListModel.get(pluginsListView.currentIndex).baseName;
-                            createPluginStack(baseName, pluginsDB[name]);
+                            let name = pluginsListModel.get(pluginsListView.currentIndex).name;
+                            createPluginStack(name, baseName, pluginsDB[name]);
                         }
                     }
                     if (!Common.equalArrays(streamDB.plugins, newList))
@@ -201,11 +203,10 @@ Kirigami.Page {
                             if (streamDB.visiblePlugin !== name) {
                                 streamDB.visiblePlugin = name;
                                 let baseName = pluginsListModel.get(pluginsListView.currentIndex).baseName;
-                                createPluginStack(baseName, pluginsDB[name]);
+                                let name = pluginsListModel.get(pluginsListView.currentIndex).name;
+                                createPluginStack(name, baseName, pluginsDB[name]);
                             }
                             showPassiveNotification("Clicked on plugin: " + name);
-                        } else {
-                            console.log("invalid currentItem: " + pluginsListView.currentIndex);
                         }
                     }
 
