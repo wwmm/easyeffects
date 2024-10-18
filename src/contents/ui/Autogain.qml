@@ -24,15 +24,23 @@ Kirigami.ScrollablePage {
     }
 
     FrameAnimation {
+        // console.log(pluginBackend.inputPeakLeft);
+
         id: frameAnimation
 
         onTriggered: {
-            // console.log(barMomentary.clampedValue);
             if (!pluginBackend) {
                 frameAnimation.stop();
                 return ;
             }
-            barMomentary.value = pluginBackend.momentary;
+            momentary.value = pluginBackend.momentary;
+            shortterm.value = pluginBackend.shortterm;
+            integrated.value = pluginBackend.integrated;
+            relative.value = pluginBackend.relative;
+            range.value = pluginBackend.range;
+            loudness.value = pluginBackend.loudness;
+            outputGain.value = pluginBackend.outputGain;
+            inputOutputLevels.inputLevelLeft = pluginBackend.inputPeakLeft;
         }
     }
 
@@ -135,7 +143,7 @@ Kirigami.ScrollablePage {
                     }
 
                     EeProgressBar {
-                        id: barMomentary
+                        id: momentary
 
                         label: i18n("Momentary")
                         unit: i18n("LUFS")
@@ -146,39 +154,69 @@ Kirigami.ScrollablePage {
                     }
 
                     EeProgressBar {
+                        id: shortterm
+
                         label: i18n("Short-Term")
                         unit: i18n("LUFS")
-                        value: 0.4
+                        from: -100
+                        to: 10
+                        value: 0
+                        decimals: 0
                     }
 
                     EeProgressBar {
+                        id: integrated
+
                         label: i18n("Integrated")
                         unit: i18n("LUFS")
-                        value: 0.8
+                        from: -100
+                        to: 10
+                        value: 0
+                        decimals: 0
                     }
 
                     EeProgressBar {
+                        id: relative
+
                         label: i18n("Relative")
                         unit: i18n("LUFS")
-                        value: 0.2
+                        from: -100
+                        to: 10
+                        value: 0
+                        decimals: 0
                     }
 
                     EeProgressBar {
+                        id: range
+
                         label: i18n("Range")
                         unit: i18n("LU")
-                        value: 0.7
+                        from: 0
+                        to: 50
+                        value: 0
+                        decimals: 0
                     }
 
                     EeProgressBar {
+                        id: loudness
+
                         label: i18n("Loudness")
                         unit: i18n("LUFS")
-                        value: 0.6
+                        from: -100
+                        to: 10
+                        value: 0
+                        decimals: 0
                     }
 
                     EeProgressBar {
+                        id: outputGain
+
                         label: i18n("Output Gain")
                         unit: i18n("dB")
-                        value: 0.3
+                        from: -100
+                        to: 20
+                        value: 0
+                        decimals: 1
                     }
 
                 }
@@ -190,6 +228,8 @@ Kirigami.ScrollablePage {
     }
 
     header: EeInputOutputGain {
+        id: inputOutputLevels
+
         anchors {
             top: parent.top
             left: parent.left

@@ -39,6 +39,11 @@
 class PluginBase : public QObject {
   Q_OBJECT;
 
+  Q_PROPERTY(float inputPeakLeft MEMBER input_peak_left NOTIFY inputPeakLeftChanged)
+  Q_PROPERTY(float inputPeakRight MEMBER input_peak_right NOTIFY inputPeakRightChanged)
+  Q_PROPERTY(float outputPeakLeft MEMBER output_peak_left NOTIFY outputPeakLeftChanged)
+  Q_PROPERTY(float outputPeakRight MEMBER output_peak_right NOTIFY outputPeakRightChanged)
+
  public:
   PluginBase(std::string tag,
              QString plugin_name,
@@ -148,6 +153,10 @@ class PluginBase : public QObject {
  signals:
   void input_level(float left_level, float right_level);
   void output_level(float left_level, float right_level);
+  void inputPeakLeftChanged();
+  void inputPeakRightChanged();
+  void outputPeakLeftChanged();
+  void outputPeakRightChanged();
 
   void latency();
 
@@ -160,7 +169,7 @@ class PluginBase : public QObject {
 
   data pf_data = {};
 
-  bool post_messages = false;
+  bool post_messages = true;
 
   uint n_ports = 4U;
 

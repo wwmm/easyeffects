@@ -9,6 +9,7 @@ Rectangle {
     property real value: 0.5
     property real from: 0
     property real to: 1
+    property int decimals: 2
     readonly property real clampedValue: Common.clamp(value, from, to)
 
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
@@ -50,7 +51,7 @@ Rectangle {
         id: valueLabel
 
         anchors.centerIn: parent
-        text: Number(root.value).toLocaleString(Qt.locale())
+        text: Number(root.value).toLocaleString(Qt.locale(), 'f', decimals)
         color: Kirigami.Theme.textColor
     }
 

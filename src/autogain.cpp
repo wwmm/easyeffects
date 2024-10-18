@@ -364,7 +364,11 @@ void Autogain::process(std::span<float>& left_in,
 
       if (db_peak > util::minimum_db_level) {
         if (gain * peak < 1.0) {
-          internal_output_gain = gain;
+          internal_output_gain = util::linear_to_db(gain);
+
+          if (gain != 1.0F) {
+            apply_gain(left_out, right_out, static_cast<float>(gain));
+          }
         }
       }
     }
@@ -373,17 +377,13 @@ void Autogain::process(std::span<float>& left_in,
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
 
-  if (internal_output_gain != 1.0F) {
-    apply_gain(left_out, right_out, static_cast<float>(internal_output_gain));
-  }
-
   if (output_gain != 1.0F) {
     apply_gain(left_out, right_out, output_gain);
   }
 
-  if (post_messages) {
-    get_peaks(left_in, right_in, left_out, right_out);
+  get_peaks(left_in, right_in, left_out, right_out);
 
+  if (post_messages) {
     if (send_notifications) {
       //   results.emit(loudness, internal_output_gain, momentary, shortterm, global, relative, range);
 

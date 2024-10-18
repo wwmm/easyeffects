@@ -506,6 +506,9 @@ void PluginBase::get_peaks(const std::span<float>& left_in,
   input_peak_left = (peak_l > input_peak_left) ? peak_l : input_peak_left;
   input_peak_right = (peak_r > input_peak_right) ? peak_r : input_peak_right;
 
+  input_peak_left = util::linear_to_db(input_peak_left);
+  input_peak_right = util::linear_to_db(input_peak_right);
+
   // output level
 
   peak_l = std::ranges::max(left_out);
@@ -513,6 +516,9 @@ void PluginBase::get_peaks(const std::span<float>& left_in,
 
   output_peak_left = (peak_l > output_peak_left) ? peak_l : output_peak_left;
   output_peak_right = (peak_r > output_peak_right) ? peak_r : output_peak_right;
+
+  output_peak_left = util::linear_to_db(output_peak_left);
+  output_peak_right = util::linear_to_db(output_peak_right);
 }
 
 void PluginBase::setup_input_output_gain() {

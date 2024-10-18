@@ -166,8 +166,10 @@ Kirigami.ApplicationWindow {
                         onTriggered: {
                             pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
                                 "pageType": 0,
-                                "pluginsDB": EEdbm.soePluginsDB,
                                 "streamDB": EEdbm.streamOutputs,
+                                "pluginsDB": Qt.binding(function() {
+                                    return EEdbm.soePluginsDB;
+                                }),
                                 "pipelineInstance": EEsoe,
                                 "visible": true
                             });
@@ -185,7 +187,9 @@ Kirigami.ApplicationWindow {
                             pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
                                 "pageType": 1,
                                 "streamDB": EEdbm.streamInputs,
-                                "pluginsDB": EEdbm.siePluginsDB,
+                                "pluginsDB": Qt.binding(function() {
+                                    return EEdbm.siePluginsDB;
+                                }),
                                 "pipelineInstance": EEsie,
                                 "visible": true
                             });

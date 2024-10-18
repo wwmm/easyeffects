@@ -35,6 +35,12 @@ class Autogain : public PluginBase {
   Q_OBJECT;
 
   Q_PROPERTY(double momentary MEMBER momentary NOTIFY momentaryChanged)
+  Q_PROPERTY(double shortterm MEMBER shortterm NOTIFY shorttermChanged)
+  Q_PROPERTY(double integrated MEMBER global NOTIFY integratedChanged)
+  Q_PROPERTY(double relative MEMBER relative NOTIFY relativeChanged)
+  Q_PROPERTY(double range MEMBER range NOTIFY rangeChanged)
+  Q_PROPERTY(double loudness MEMBER loudness NOTIFY loudnessChanged)
+  Q_PROPERTY(double outputGain MEMBER internal_output_gain NOTIFY outputGainChanged)
 
  public:
   Autogain(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
@@ -70,15 +76,18 @@ class Autogain : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  double momentary = 0.0;
-  double shortterm = 0.0;
-  double global = 0.0;
-  double relative = 0.0;
-  double range = 0.0;
-  double loudness = 0.0;
-
  signals:
   void momentaryChanged();
+  void shorttermChanged();
+  void integratedChanged();
+  void relativeChanged();
+  void rangeChanged();
+  void loudnessChanged();
+  void outputGainChanged();
+  void inputPeakLeftChanged();
+  void inputPeakRightChanged();
+  void outputPeakLeftChanged();
+  void outputPeakRightChanged();
 
  private:
   bool ebur128_ready = false;
@@ -87,6 +96,12 @@ class Autogain : public PluginBase {
 
   double target = -23.0;  // target loudness level
   double silence_threshold = -70.0;
+  double momentary = 0.0;
+  double shortterm = 0.0;
+  double global = 0.0;
+  double relative = 0.0;
+  double range = 0.0;
+  double loudness = 0.0;
   double internal_output_gain = 1.0;
 
   Reference reference = Reference::geometric_mean_msi;

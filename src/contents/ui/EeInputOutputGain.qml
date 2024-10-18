@@ -10,6 +10,10 @@ Item {
     property real outputGain: 0
     property real from: -36
     property real to: 36
+    property alias inputLevelLeft: inputLevelLeft.value
+    property alias inputLevelRight: inputLevelRight.value
+    property alias outputLevelLeft: outputLevelLeft.value
+    property alias outputLevelRight: outputLevelRight.value
 
     implicitHeight: grid.implicitHeight
     implicitWidth: grid.implicitWidth
@@ -42,11 +46,20 @@ Item {
                 }
 
                 EeCircularProgress {
+                    id: inputLevelLeft
+
                     Layout.alignment: Qt.AlignRight
-                    value: 0.2
+                    implicitWidth: 5 * Kirigami.Units.largeSpacing
+                    implicitHeight: 5 * Kirigami.Units.largeSpacing
+                    from: -100
+                    to: 10
+                    value: 0
+                    decimals: 0
                 }
 
                 EeCircularProgress {
+                    id: inputLevelRight
+
                     Layout.alignment: Qt.AlignRight
                     value: 0.75
                 }
@@ -72,11 +85,15 @@ Item {
                 }
 
                 EeCircularProgress {
+                    id: outputLevelLeft
+
                     value: 0.35
                     Layout.alignment: Qt.AlignVCenter
                 }
 
                 EeCircularProgress {
+                    id: outputLevelRight
+
                     value: 0.3
                     Layout.alignment: Qt.AlignVCenter
                 }
