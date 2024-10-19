@@ -27,6 +27,7 @@
 #include <string>
 #include <thread>
 #include <vector>
+#include "easyeffects_db_autogain.h"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
@@ -49,16 +50,6 @@ class Autogain : public PluginBase {
   Autogain(const Autogain&&) = delete;
   auto operator=(const Autogain&&) -> Autogain& = delete;
   ~Autogain() override;
-
-  enum class Reference {
-    momentary,
-    shortterm,
-    integrated,
-    geometric_mean_msi,
-    geometric_mean_ms,
-    geometric_mean_mi,
-    geometric_mean_si
-  };
 
   void setup() override;
 
@@ -94,8 +85,6 @@ class Autogain : public PluginBase {
 
   uint old_rate = 0U;
 
-  double target = -23.0;  // target loudness level
-  double silence_threshold = -70.0;
   double momentary = 0.0;
   double shortterm = 0.0;
   double global = 0.0;
@@ -104,17 +93,15 @@ class Autogain : public PluginBase {
   double loudness = 0.0;
   double internal_output_gain = 1.0;
 
-  Reference reference = Reference::geometric_mean_msi;
-
   std::vector<float> data;
 
   ebur128_state* ebur_state = nullptr;
 
   std::vector<std::thread> mythreads;
 
-  auto init_ebur128() -> bool;
+  db::Autogain* settings = nullptr;
 
-  static auto parse_reference_key(const std::string& key) -> Reference;
+  auto init_ebur128() -> bool;
 
   void set_maximum_history(const int& seconds);
 };

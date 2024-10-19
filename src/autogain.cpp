@@ -26,6 +26,8 @@
 #include <mutex>
 #include <span>
 #include <string>
+#include "db_manager.hpp"
+#include "easyeffects_db_autogain.h"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
@@ -38,66 +40,33 @@ Autogain::Autogain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
                  tags::plugin_package::Package::ebur128,
                  instance_id,
                  pipe_manager,
-                 pipe_type) {
-  //   target(g_settings_get_double(settings, "target"))
-  //   silence_threshold(g_settings_get_double(settings, "silence-threshold"))
-  //   reference = parse_reference_key(util::gsettings_get_string(settings, "reference"));
+                 pipe_type),
+      settings(
+          db::Manager::self().get_plugin_db<db::Autogain>(pipe_type,
+                                                          tags::plugin_name::BaseName::autogain + "#" + instance_id)) {
+  connect(settings, &db::Autogain::maximumHistoryChanged, [&]() {
+    std::scoped_lock<std::mutex> lock(data_mutex);
 
-  //   gconnections.push_back(g_signal_connect(settings, "changed::target",
-  //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto* self = static_cast<Autogain*>(user_data);
+    set_maximum_history(settings->maximumHistory());
+  });
 
-  //                                             self->target = g_settings_get_double(settings, key);
-  //                                           }),
-  //                                           this));
+  connect(settings, &db::Autogain::resetHistoryChanged, [&]() {
+    mythreads.emplace_back([&]() {  // Using emplace_back here makes sense
+      data_mutex.lock();
 
-  //   gconnections.push_back(g_signal_connect(settings, "changed::silence-threshold",
-  //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto* self = static_cast<Autogain*>(user_data);
+      ebur128_ready = false;
 
-  //                                             self->silence_threshold = g_settings_get_double(settings, key);
-  //                                           }),
-  //                                           this));
+      data_mutex.unlock();
 
-  //   gconnections.push_back(g_signal_connect(settings, "changed::maximum-history",
-  //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto* self = static_cast<Autogain*>(user_data);
+      auto status = init_ebur128();
 
-  //                                             std::scoped_lock<std::mutex> lock(self->data_mutex);
+      data_mutex.lock();
 
-  //                                             self->set_maximum_history(g_settings_get_int(settings, key));
-  //                                           }),
-  //                                           this));
+      ebur128_ready = status;
 
-  //   gconnections.push_back(g_signal_connect(
-  //       settings, "changed::reset-history", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //         auto* self = static_cast<Autogain*>(user_data);
-
-  //         self->mythreads.emplace_back([self]() {  // Using emplace_back here makes sense
-  //           self->data_mutex.lock();
-
-  //           self->ebur128_ready = false;
-
-  //           self->data_mutex.unlock();
-
-  //           auto status = self->init_ebur128();
-
-  //           self->data_mutex.lock();
-
-  //           self->ebur128_ready = status;
-
-  //           self->data_mutex.unlock();
-  //         });
-  //       }),
-  //       this));
-
-  //   gconnections.push_back(g_signal_connect(
-  //       settings, "changed::reference", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //         auto* self = static_cast<Autogain*>(user_data);
-
-  //         self->reference = parse_reference_key(util::gsettings_get_string(settings, key));
-  //       }),
-  //       this));
+      data_mutex.unlock();
+    });
+  });
 
   setup_input_output_gain();
 }
@@ -140,37 +109,9 @@ auto Autogain::init_ebur128() -> bool {
   ebur128_set_channel(ebur_state, 0U, EBUR128_LEFT);
   ebur128_set_channel(ebur_state, 1U, EBUR128_RIGHT);
 
-  //   set_maximum_history(g_settings_get_int(settings, "maximum-history"));
+  set_maximum_history(settings->maximumHistory());
 
   return ebur_state != nullptr;
-}
-
-auto Autogain::parse_reference_key(const std::string& key) -> Reference {
-  if (key == "Momentary") {
-    return Reference::momentary;
-  }
-
-  if (key == "Shortterm") {
-    return Reference::shortterm;
-  }
-
-  if (key == "Integrated") {
-    return Reference::integrated;
-  }
-
-  if (key == "Geometric Mean (MS)") {
-    return Reference::geometric_mean_ms;
-  }
-
-  if (key == "Geometric Mean (MI)") {
-    return Reference::geometric_mean_mi;
-  }
-
-  if (key == "Geometric Mean (SI)") {
-    return Reference::geometric_mean_si;
-  }
-
-  return Reference::geometric_mean_msi;
 }
 
 void Autogain::set_maximum_history(const int& seconds) {
@@ -274,9 +215,9 @@ void Autogain::process(std::span<float>& left_in,
 
   if (global > 10.0 || std::isinf(global) || std::isnan(global)) {
     /*
-      Sometimes when a stream is started right after Easy Effects has been initialized a very large integrated value is
-      calculated. Probably because of some weird high intensity transient. So it is better to ignore unresonable large
-       values. When they happen we just set the global value to the momentary loudness.
+      Sometimes when a stream is started right after Easy Effects has been initialized a very large integrated value
+      is calculated. Probably because of some weird high intensity transient. So it is better to ignore unresonable
+      large values. When they happen we just set the global value to the momentary loudness.
     */
 
     global = momentary;
@@ -290,7 +231,7 @@ void Autogain::process(std::span<float>& left_in,
     failed = true;
   }
 
-  if (momentary > silence_threshold && !failed) {
+  if (momentary > settings->silenceThreshold() && !failed) {
     double peak_L = 0.0;
     double peak_R = 0.0;
 
@@ -303,28 +244,28 @@ void Autogain::process(std::span<float>& left_in,
     }
 
     if (!failed) {
-      switch (reference) {
-        case Reference::momentary: {
+      switch (settings->reference()) {
+        case db::Autogain::EnumReference::type::momentary: {
           loudness = momentary;
 
           break;
         }
-        case Reference::shortterm: {
+        case db::Autogain::EnumReference::type::shortterm: {
           loudness = shortterm;
 
           break;
         }
-        case Reference::integrated: {
+        case db::Autogain::EnumReference::type::integrated: {
           loudness = global;
 
           break;
         }
-        case Reference::geometric_mean_msi: {
+        case db::Autogain::EnumReference::type::gm_msi: {
           loudness = std::cbrt(momentary * shortterm * global);
 
           break;
         }
-        case Reference::geometric_mean_ms: {
+        case db::Autogain::EnumReference::type::gm_ms: {
           loudness = std::sqrt(std::fabs(momentary * shortterm));
 
           if (momentary < 0 && shortterm < 0) {
@@ -333,7 +274,7 @@ void Autogain::process(std::span<float>& left_in,
 
           break;
         }
-        case Reference::geometric_mean_mi: {
+        case db::Autogain::EnumReference::type::gm_mi: {
           loudness = std::sqrt(std::fabs(momentary * global));
 
           if (momentary < 0 && global < 0) {
@@ -342,7 +283,7 @@ void Autogain::process(std::span<float>& left_in,
 
           break;
         }
-        case Reference::geometric_mean_si: {
+        case db::Autogain::EnumReference::type::gm_si: {
           loudness = std::sqrt(std::fabs(shortterm * global));
 
           if (shortterm < 0 && global < 0) {
@@ -351,9 +292,11 @@ void Autogain::process(std::span<float>& left_in,
 
           break;
         }
+        default:
+          break;
       }
 
-      const double diff = target - loudness;
+      const double diff = settings->target() - loudness;
 
       // 10^(diff/20). The way below should be faster than using pow
       const double gain = std::exp((diff / 20.0) * std::log(10.0));

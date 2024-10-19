@@ -128,8 +128,6 @@ void Manager::create_plugin_db(const QString& parentGroup,
       auto id = tags::plugin_name::get_id(name);
 
       if (name.startsWith(tags::plugin_name::BaseName::autogain)) {
-        util::warning(id.toStdString());
-
         plugins_map[tags::plugin_name::BaseName::autogain + "#" + id] =
             QVariant::fromValue(new db::Autogain(parentGroup, id));
       }

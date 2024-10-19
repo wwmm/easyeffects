@@ -26,6 +26,7 @@
 #include "easyeffects_db_spectrum.h"       // IWYU pragma: export
 #include "easyeffects_db_streaminputs.h"   // IWYU pragma: export
 #include "easyeffects_db_streamoutputs.h"  // IWYU pragma: export
+#include "pipeline_type.hpp"
 
 namespace db {
 
@@ -66,6 +67,18 @@ class Manager : public QObject {
 
   QMap<QString, QVariant> soePluginsDB;
   QMap<QString, QVariant> siePluginsDB;
+
+  template <typename T>
+  auto get_plugin_db(PipelineType pipeline_type, const QString& plugin_name) -> T* {
+    switch (pipeline_type) {
+      case PipelineType::input:
+        return siePluginsDB[plugin_name].value<T*>();
+      case PipelineType::output:
+        return soePluginsDB[plugin_name].value<T*>();
+    }
+
+    return nullptr;
+  }
 
  signals:
   void mainChanged();
