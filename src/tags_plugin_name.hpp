@@ -66,8 +66,8 @@ class BaseName : public QObject {
 
  public:
   CREATE_PROPERTY(QString, autogain, QStringLiteral("autogain"));
-  CREATE_PROPERTY(QString, bass_enhancer, QStringLiteral("bass_enhancer"));
-  CREATE_PROPERTY(QString, bass_loudness, QStringLiteral("bass_loudness"));
+  CREATE_PROPERTY(QString, bassEnhancer, QStringLiteral("bass_enhancer"));
+  CREATE_PROPERTY(QString, bassLoudness, QStringLiteral("bass_loudness"));
   CREATE_PROPERTY(QString, compressor, QStringLiteral("compressor"));
   CREATE_PROPERTY(QString, convolver, QStringLiteral("convolver"));
   CREATE_PROPERTY(QString, crossfeed, QStringLiteral("crossfeed"));
@@ -75,23 +75,25 @@ class BaseName : public QObject {
   CREATE_PROPERTY(QString, deepfilternet, QStringLiteral("deepfilternet"));
   CREATE_PROPERTY(QString, deesser, QStringLiteral("deesser"));
   CREATE_PROPERTY(QString, delay, QStringLiteral("delay"));
-  CREATE_PROPERTY(QString, echo_canceller, QStringLiteral("echo_canceller"));
+  CREATE_PROPERTY(QString, echoCanceller, QStringLiteral("echo_canceller"));
   CREATE_PROPERTY(QString, equalizer, QStringLiteral("equalizer"));
   CREATE_PROPERTY(QString, exciter, QStringLiteral("exciter"));
   CREATE_PROPERTY(QString, expander, QStringLiteral("expander"));
   CREATE_PROPERTY(QString, filter, QStringLiteral("filter"));
   CREATE_PROPERTY(QString, gate, QStringLiteral("gate"));
-  CREATE_PROPERTY(QString, level_meter, QStringLiteral("level_meter"));
+  CREATE_PROPERTY(QString, levelMeter, QStringLiteral("level_meter"));
   CREATE_PROPERTY(QString, limiter, QStringLiteral("limiter"));
   CREATE_PROPERTY(QString, loudness, QStringLiteral("loudness"));
   CREATE_PROPERTY(QString, maximizer, QStringLiteral("maximizer"));
-  CREATE_PROPERTY(QString, multiband_compressor, QStringLiteral("multiband_compressor"));
-  CREATE_PROPERTY(QString, multiband_gate, QStringLiteral("multiband_gate"));
+  CREATE_PROPERTY(QString, multibandCompressor, QStringLiteral("multiband_compressor"));
+  CREATE_PROPERTY(QString, multibandGate, QStringLiteral("multiband_gate"));
+  CREATE_PROPERTY(QString, outputLevel, QStringLiteral("output_level"));
   CREATE_PROPERTY(QString, pitch, QStringLiteral("pitch"));
   CREATE_PROPERTY(QString, speex, QStringLiteral("speex"));
+  CREATE_PROPERTY(QString, spectrum, QStringLiteral("spectrum"));
   CREATE_PROPERTY(QString, reverb, QStringLiteral("reverb"));
   CREATE_PROPERTY(QString, rnnoise, QStringLiteral("rnnoise"));
-  CREATE_PROPERTY(QString, stereo_tools, QStringLiteral("stereo_tools"));
+  CREATE_PROPERTY(QString, stereoTools, QStringLiteral("stereo_tools"));
 };
 
 class Model : public QAbstractListModel {

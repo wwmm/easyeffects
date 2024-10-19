@@ -79,12 +79,6 @@ void on_process(void* userdata, spa_io_position* position) {
     d->pb->setup();
   }
 
-  d->pb->delta_t = 0.001F * static_cast<float>(std::chrono::duration_cast<std::chrono::milliseconds>(
-                                                   std::chrono::system_clock::now() - d->pb->clock_start)
-                                                   .count());
-
-  d->pb->send_notifications = d->pb->delta_t >= d->pb->notification_time_window;
-
   // util::warning("processing: " + util::to_string(n_samples));
 
   auto* in_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_left, n_samples));
@@ -139,12 +133,6 @@ void on_process(void* userdata, spa_io_position* position) {
 
       d->pb->process(left_in, right_in, left_out, right_out, l, r);
     }
-  }
-
-  if (d->pb->send_notifications) {
-    d->pb->clock_start = std::chrono::system_clock::now();
-
-    d->pb->send_notifications = false;
   }
 }
 
@@ -342,8 +330,6 @@ PluginBase::PluginBase(std::string tag,
 }
 
 PluginBase::~PluginBase() {
-  post_messages = false;
-
   pm->lock();
 
   if (listener.link.next != nullptr || listener.link.prev != nullptr) {
@@ -353,10 +339,6 @@ PluginBase::~PluginBase() {
   pw_filter_destroy(filter);
 
   pm->sync_wait_unlock();
-}
-
-void PluginBase::set_post_messages(const bool& state) {
-  post_messages = state;
 }
 
 void PluginBase::reset_settings() {
@@ -494,10 +476,6 @@ void PluginBase::get_peaks(const std::span<float>& left_in,
                            const std::span<float>& right_in,
                            std::span<float>& left_out,
                            std::span<float>& right_out) {
-  if (!post_messages) {
-    return;
-  }
-
   // input level
 
   float peak_l = std::ranges::max(left_in);
@@ -549,22 +527,6 @@ void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, con
 
   std::ranges::for_each(left, [&](auto& v) { v *= gain; });
   std::ranges::for_each(right, [&](auto& v) { v *= gain; });
-}
-
-void PluginBase::notify() {
-  const auto input_peak_db_l = util::linear_to_db(input_peak_left);
-  const auto input_peak_db_r = util::linear_to_db(input_peak_right);
-
-  const auto output_peak_db_l = util::linear_to_db(output_peak_left);
-  const auto output_peak_db_r = util::linear_to_db(output_peak_right);
-
-  Q_EMIT input_level(input_peak_db_l, input_peak_db_r);
-  Q_EMIT output_level(output_peak_db_l, output_peak_db_r);
-
-  input_peak_left = util::minimum_linear_level;
-  input_peak_right = util::minimum_linear_level;
-  output_peak_left = util::minimum_linear_level;
-  output_peak_right = util::minimum_linear_level;
 }
 
 void PluginBase::update_probe_links() {}

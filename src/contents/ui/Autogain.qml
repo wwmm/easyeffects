@@ -13,35 +13,27 @@ Kirigami.ScrollablePage {
     required property var pluginDB
     required property var pipelineInstance
     property var pluginBackend
-    property bool runAnimations: true
+
+    function updateMeters() {
+        if (!pluginBackend) {
+            frameAnimation.stop();
+            return ;
+        }
+        momentary.value = pluginBackend.momentary;
+        shortterm.value = pluginBackend.shortterm;
+        integrated.value = pluginBackend.integrated;
+        relative.value = pluginBackend.relative;
+        range.value = pluginBackend.range;
+        loudness.value = pluginBackend.loudness;
+        outputGain.value = pluginBackend.outputGain;
+        inputOutputLevels.inputLevelLeft = pluginBackend.inputPeakLeft;
+        inputOutputLevels.inputLevelRight = pluginBackend.inputPeakRight;
+        inputOutputLevels.outputLevelLeft = pluginBackend.outputPeakLeft;
+        inputOutputLevels.outputLevelRight = pluginBackend.outputPeakRight;
+    }
 
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
-        frameAnimation.start();
-    }
-    Component.onDestruction: {
-        frameAnimation.stop();
-    }
-
-    FrameAnimation {
-        // console.log(pluginBackend.inputPeakLeft);
-
-        id: frameAnimation
-
-        onTriggered: {
-            if (!pluginBackend) {
-                frameAnimation.stop();
-                return ;
-            }
-            momentary.value = pluginBackend.momentary;
-            shortterm.value = pluginBackend.shortterm;
-            integrated.value = pluginBackend.integrated;
-            relative.value = pluginBackend.relative;
-            range.value = pluginBackend.range;
-            loudness.value = pluginBackend.loudness;
-            outputGain.value = pluginBackend.outputGain;
-            inputOutputLevels.inputLevelLeft = pluginBackend.inputPeakLeft;
-        }
     }
 
     ColumnLayout {

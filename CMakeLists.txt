@@ -56,6 +56,8 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(LIBPIPEWIRE libpipewire-0.3>=1.0.6)
 pkg_check_modules(LIBLILV lilv-0>=0.24)
 pkg_check_modules(LIBEBUR128 libebur128>=1.2.6)
+pkg_check_modules(LIBFFTW3 fftw3)
+pkg_check_modules(LIBFFTW3f fftw3f)
 
 file(GLOB KCFG_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfg)
 file(GLOB KCFGC_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfgc)

@@ -117,12 +117,26 @@ Kirigami.Page {
                     }
                     streamDB.visiblePlugin = firstPlugin;
                 }
+                frameAnimation.start();
+            }
+            Component.onDestruction: {
+                frameAnimation.stop();
             }
             Layout.fillHeight: true
             Layout.fillWidth: true
             columns: 3
             rows: 1
             columnSpacing: 0
+
+            FrameAnimation {
+                id: frameAnimation
+
+                onTriggered: {
+                    if (pluginsStack.depth > 1)
+                        pluginsStack.currentItem.updateMeters();
+
+                }
+            }
 
             Connections {
                 function onPipelineChanged() {
@@ -176,7 +190,6 @@ Kirigami.Page {
                             icon.name: "list-add"
                             displayHint: Kirigami.DisplayHint.KeepVisible
                             onTriggered: {
-                                showPassiveNotification("Adding a Plugin");
                                 menuAddPlugins.open();
                             }
                         }
@@ -190,7 +203,7 @@ Kirigami.Page {
                     implicitWidth: contentItem.childrenRect.width
                     clip: true
                     reuseItems: true
-                    onCurrentIndexChanged: {
+                    onCurrentItemChanged: {
                         if (pluginsListView.currentItem) {
                             let name = pluginsListView.currentItem.name;
                             if (streamDB.visiblePlugin !== name) {
@@ -198,7 +211,6 @@ Kirigami.Page {
                                 let baseName = pluginsListModel.get(pluginsListView.currentIndex).baseName;
                                 createPluginStack(name, baseName, pluginsDB[name]);
                             }
-                            showPassiveNotification("Clicked on plugin: " + name);
                         }
                     }
 

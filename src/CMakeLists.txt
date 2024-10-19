@@ -15,11 +15,13 @@ target_sources(easyeffects PRIVATE
     local_server.cpp
     lv2_wrapper.cpp
     main.cpp
+    output_level.cpp
     plugin_base.cpp
     pw_manager.cpp
     pw_model_clients.cpp
     pw_model_modules.cpp
     pw_model_nodes.cpp
+    spectrum.cpp
     stream_input_effects.cpp
     stream_output_effects.cpp
     tags_plugin_name.cpp
@@ -31,6 +33,8 @@ target_include_directories(easyeffects PRIVATE
     ${LIBPIPEWIRE_INCLUDE_DIRS}
     ${LIBLILV_INCLUDE_DIRS}
     ${LIBEBUR128_INCLUDE_DIRS}
+    ${LIBFFTW3_INCLUDE_DIRS}
+    ${LIBFFTW3f_INCLUDE_DIRS}
 )
 
 target_link_libraries(easyeffects PRIVATE
@@ -49,6 +53,8 @@ target_link_libraries(easyeffects PRIVATE
     ${LIBPIPEWIRE_LIBRARIES}
     ${LIBLILV_LIBRARIES}
     ${LIBEBUR128_LIBRARIES}
+    ${LIBFFTW3_LIBRARIES}
+    ${LIBFFTW3f_LIBRARIES}
 )
 
 if(ENABLE_LIBPORTAL)

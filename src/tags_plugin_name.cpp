@@ -24,8 +24,8 @@ namespace tags::plugin_name {
 
 Model::Model(QObject* parent) : QAbstractListModel(parent) {
   modelMap = {{BaseName::autogain, i18n("Autogain")},
-              {BaseName::bass_enhancer, i18n("Bass Enhancer")},
-              {BaseName::bass_loudness, i18n("Bass Loudness")},
+              {BaseName::bassEnhancer, i18n("Bass Enhancer")},
+              {BaseName::bassLoudness, i18n("Bass Loudness")},
               {BaseName::compressor, i18n("Compressor")},
               {BaseName::convolver, i18n("Convolver")},
               {BaseName::crossfeed, i18n("Crossfeed")},
@@ -33,23 +33,25 @@ Model::Model(QObject* parent) : QAbstractListModel(parent) {
               {BaseName::deepfilternet, i18n("Deep Noise Remover")},
               {BaseName::deesser, i18n("Deesser")},
               {BaseName::delay, i18n("Delay")},
-              {BaseName::echo_canceller, i18n("Echo Canceller")},
+              {BaseName::echoCanceller, i18n("Echo Canceller")},
               {BaseName::equalizer, i18n("Equalizer")},
               {BaseName::exciter, i18n("Exciter")},
               {BaseName::expander, i18n("Expander")},
               {BaseName::filter, i18n("Filter")},
               {BaseName::gate, i18n("Gate")},
-              {BaseName::level_meter, i18n("Level Meter")},
+              {BaseName::levelMeter, i18n("Level Meter")},
               {BaseName::limiter, i18n("Limiter")},
               {BaseName::loudness, i18n("Loudness")},
               {BaseName::maximizer, i18n("Maximizer")},
-              {BaseName::multiband_compressor, i18n("Multiband Compressor")},
-              {BaseName::multiband_gate, i18n("Multiband Gate")},
+              {BaseName::multibandCompressor, i18n("Multiband Compressor")},
+              {BaseName::multibandGate, i18n("Multiband Gate")},
+              {BaseName::outputLevel, i18n("Output Level")},
               {BaseName::pitch, i18n("Pitch")},
               {BaseName::reverb, i18n("Reverberation")},
               {BaseName::rnnoise, i18n("Noise Reduction")},
               {BaseName::speex, i18n("Speech Processor")},
-              {BaseName::stereo_tools, i18n("Stereo Tools")}};
+              {BaseName::spectrum, i18n("Sectrum")},
+              {BaseName::stereoTools, i18n("Stereo Tools")}};
 
   auto* proxyModel = new QSortFilterProxyModel(this);
 

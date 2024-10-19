@@ -24,14 +24,17 @@
 #include <QString>
 #include <algorithm>
 #include <map>
+#include <memory>
 #include <ranges>
 #include <string>
 #include <utility>
 #include "autogain.hpp"
 #include "db_manager.hpp"
+#include "output_level.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+#include "spectrum.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -60,7 +63,6 @@
 // #include "pitch.hpp"
 // #include "reverb.hpp"
 // #include "rnnoise.hpp"
-// #include "spectrum.hpp"
 // #include "speex.hpp"
 // #include "stereo_tools.hpp"
 // #include "tags_app.hpp"
@@ -71,23 +73,17 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
     : log_tag(pipe_type == PipelineType::output ? "soe: " : "sie: "), pm(pipe_manager), pipeline_type(pipe_type) {
   using namespace std::string_literals;
 
-  // schema_base_path = "/" + schema + "/";
+  output_level = std::make_shared<OutputLevel>(log_tag, pm, pipeline_type, "0");
 
-  // std::replace(schema_base_path.begin(), schema_base_path.end(), '.', '/');
+  spectrum = std::make_shared<Spectrum>(log_tag, pm, pipeline_type, "0");
 
-  //   output_level = std::make_shared<OutputLevel>(log_tag, tags::schema::output_level::id,
-  //                                                schema_base_path + "outputlevel/", pm, pipeline_type);
+  if (!output_level->connected_to_pw) {
+    output_level->connect_to_pw();
+  }
 
-  //   spectrum = std::make_shared<Spectrum>(log_tag, tags::schema::spectrum::id, tags::app::path + "/spectrum/"s, pm,
-  //                                         pipeline_type);
-
-  //   if (!output_level->connected_to_pw) {
-  //     output_level->connect_to_pw();
-  //   }
-
-  //   if (!spectrum->connected_to_pw) {
-  //     spectrum->connect_to_pw();
-  //   }
+  if (!spectrum->connected_to_pw) {
+    spectrum->connect_to_pw();
+  }
 
   create_filters_if_necessary();
 
@@ -106,14 +102,6 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
       break;
   }
 
-  connect(db::Main::self(), &db::Main::metersUpdateIntervalChanged, [&]() {
-    // spectrum->notification_time_window = 0.001F * db::Main::metersUpdateInterval();
-
-    for (auto& plugin : plugins | std::views::values) {
-      plugin->notification_time_window = 0.001F * db::Main::metersUpdateInterval();
-    }
-  });
-
   connect(db::Main::self(), &db::Main::lv2uiUpdateFrequencyChanged, [&]() {
     auto v = db::Main::lv2uiUpdateFrequency();
 
@@ -121,14 +109,6 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
       plugin->set_native_ui_update_frequency(v);
     }
   });
-
-  //   spectrum->notification_time_window = 0.001F *db::Main::metersUpdateInterval();
-
-  for (auto& plugin : plugins | std::views::values) {
-    if (!plugin.isNull()) {
-      plugin->notification_time_window = 0.001F * db::Main::metersUpdateInterval();
-    }
-  }
 }
 
 EffectsBase::~EffectsBase() {
@@ -159,13 +139,13 @@ void EffectsBase::create_filters_if_necessary() {
 
     auto instance_id = tags::plugin_name::get_id(name);
 
-    QSharedPointer<PluginBase> filter;
+    std::shared_ptr<PluginBase> filter = nullptr;
 
     if (name.startsWith(tags::plugin_name::BaseName::autogain)) {
-      filter = QSharedPointer<Autogain>::create(log_tag, pm, pipeline_type, instance_id);
-    } else if (name.startsWith(tags::plugin_name::BaseName::bass_enhancer)) {
+      filter = std::make_shared<Autogain>(log_tag, pm, pipeline_type, instance_id);
+    } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
       //   filter = std::make_shared<BassEnhancer>(log_tag, tags::schema::bass_enhancer::id, path, pm, pipeline_type);
-    } else if (name.startsWith(tags::plugin_name::BaseName::bass_loudness)) {
+    } else if (name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
       //   filter = std::make_shared<BassLoudness>(log_tag, tags::schema::bass_loudness::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::compressor)) {
       //   filter = std::make_shared<Compressor>(log_tag, tags::schema::compressor::id, path, pm, pipeline_type);
@@ -181,7 +161,7 @@ void EffectsBase::create_filters_if_necessary() {
       //   filter = std::make_shared<Deesser>(log_tag, tags::schema::deesser::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::delay)) {
       //   filter = std::make_shared<Delay>(log_tag, tags::schema::delay::id, path, pm, pipeline_type);
-    } else if (name.startsWith(tags::plugin_name::BaseName::echo_canceller)) {
+    } else if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
       //   filter = std::make_shared<EchoCanceller>(log_tag, tags::schema::echo_canceller::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
       //   filter = std::make_shared<Exciter>(log_tag, tags::schema::exciter::id, path, pm, pipeline_type);
@@ -196,7 +176,7 @@ void EffectsBase::create_filters_if_necessary() {
       //   filter = std::make_shared<Filter>(log_tag, tags::schema::filter::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
       //   filter = std::make_shared<Gate>(log_tag, tags::schema::gate::id, path, pm, pipeline_type);
-    } else if (name.startsWith(tags::plugin_name::BaseName::level_meter)) {
+    } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
       //   filter = std::make_shared<LevelMeter>(log_tag, tags::schema::level_meter::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::limiter)) {
       //   filter = std::make_shared<Limiter>(log_tag, tags::schema::limiter::id, path, pm, pipeline_type);
@@ -204,10 +184,10 @@ void EffectsBase::create_filters_if_necessary() {
       //   filter = std::make_shared<Loudness>(log_tag, tags::schema::loudness::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::maximizer)) {
       //   filter = std::make_shared<Maximizer>(log_tag, tags::schema::maximizer::id, path, pm, pipeline_type);
-    } else if (name.startsWith(tags::plugin_name::BaseName::multiband_compressor)) {
+    } else if (name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
       //   filter = std::make_shared<MultibandCompressor>(log_tag, tags::schema::multiband_compressor::id, path, pm,
       //                                                  pipeline_type);
-    } else if (name.startsWith(tags::plugin_name::BaseName::multiband_gate)) {
+    } else if (name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
       //   filter = std::make_shared<MultibandGate>(log_tag, tags::schema::multiband_gate::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::pitch)) {
       //   filter = std::make_shared<Pitch>(log_tag, tags::schema::pitch::id, path, pm, pipeline_type);
@@ -217,11 +197,21 @@ void EffectsBase::create_filters_if_necessary() {
       //   filter = std::make_shared<RNNoise>(log_tag, tags::schema::rnnoise::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::speex)) {
       //   filter = std::make_shared<Speex>(log_tag, tags::schema::speex::id, path, pm, pipeline_type);
-    } else if (name.startsWith(tags::plugin_name::BaseName::stereo_tools)) {
+    } else if (name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
       //   filter = std::make_shared<StereoTools>(log_tag, tags::schema::stereo_tools::id, path, pm, pipeline_type);
     }
 
     // connect(filter.get(), &PluginBase::latency, [this]() { broadcast_pipeline_latency(); });
+
+    if (filter != nullptr) {
+      /*
+        The filters inherit from QObject and we do not want QML to take owndership of them. Double free may happen
+        in this case when closing the window or doing similar actions that trigger qml cleanup. The way to avoid this
+        is making sure that the objects managed by the c++ backend already have a parent by the time they are used on
+        QML.
+      */
+      filter->setParent(this);
+    }
 
     plugins.insert(std::make_pair(name, filter));
   }
@@ -242,14 +232,13 @@ void EffectsBase::remove_unused_filters() {
     if (std::ranges::find(list, key) == list.end()) {
       auto plugin = it->second;
 
-      if (plugin.isNull()) {
+      if (plugin == nullptr) {
         it = plugins.erase(it);
 
         continue;
       }
 
       plugin->bypass = true;
-      plugin->set_post_messages(false);
       // plugin->latency.clear();
 
       if (plugin->connected_to_pw) {
@@ -281,7 +270,7 @@ auto EffectsBase::get_pipeline_latency() -> float {
   float total = 0.0F;
 
   for (const auto& name : list) {
-    if (plugins.contains(name) && !plugins[name].isNull()) {
+    if (plugins.contains(name) && plugins[name] != nullptr) {
       total += plugins[name]->get_latency_seconds();
     }
   }
@@ -297,7 +286,7 @@ void EffectsBase::broadcast_pipeline_latency() {
   Q_EMIT pipelineLatencyChanged(latency_value);
 }
 
-auto EffectsBase::get_plugins_map() -> std::map<QString, QSharedPointer<PluginBase>> {
+auto EffectsBase::get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>> {
   return plugins;
 }
 
@@ -307,10 +296,9 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::autogain)) {
-    // return QVariant::fromValue(plugins[pluginName].get());
     auto p = plugins[pluginName];
-    p->setParent(this);
-    return QVariant::fromValue(dynamic_cast<Autogain*>(p.data()));
+
+    return QVariant::fromValue(dynamic_cast<Autogain*>(p.get()));
   }
 
   return {};

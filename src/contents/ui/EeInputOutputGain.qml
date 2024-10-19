@@ -61,7 +61,12 @@ Item {
                     id: inputLevelRight
 
                     Layout.alignment: Qt.AlignRight
-                    value: 0.75
+                    implicitWidth: 5 * Kirigami.Units.largeSpacing
+                    implicitHeight: 5 * Kirigami.Units.largeSpacing
+                    from: -100
+                    to: 10
+                    value: 0
+                    decimals: 0
                 }
 
             }
@@ -87,15 +92,25 @@ Item {
                 EeCircularProgress {
                     id: outputLevelLeft
 
-                    value: 0.35
                     Layout.alignment: Qt.AlignVCenter
+                    implicitWidth: 5 * Kirigami.Units.largeSpacing
+                    implicitHeight: 5 * Kirigami.Units.largeSpacing
+                    from: -100
+                    to: 10
+                    value: 0
+                    decimals: 0
                 }
 
                 EeCircularProgress {
                     id: outputLevelRight
 
-                    value: 0.3
                     Layout.alignment: Qt.AlignVCenter
+                    implicitWidth: 5 * Kirigami.Units.largeSpacing
+                    implicitHeight: 5 * Kirigami.Units.largeSpacing
+                    from: -100
+                    to: 10
+                    value: 0
+                    decimals: 0
                 }
 
             }

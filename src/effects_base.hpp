@@ -23,16 +23,17 @@
 #include <pipewire/proxy.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
-#include <QSharedPointer>
 #include <QString>
 #include <map>
 #include <memory>
 #include <string>
 #include <vector>
 #include "autogain.hpp"
+#include "output_level.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+#include "spectrum.hpp"
 
 // #include "bass_enhancer.hpp"
 // #include "bass_loudness.hpp"
@@ -54,11 +55,9 @@
 // #include "maximizer.hpp"
 // #include "multiband_compressor.hpp"
 // #include "multiband_gate.hpp"
-// #include "output_level.hpp"
 // #include "pitch.hpp"
 // #include "reverb.hpp"
 // #include "rnnoise.hpp"
-// #include "spectrum.hpp"
 // #include "speex.hpp"
 // #include "stereo_tools.hpp"
 
@@ -79,10 +78,10 @@ class EffectsBase : public QObject {
 
   PipelineType pipeline_type;
 
-  //   std::shared_ptr<OutputLevel> output_level;
-  //   std::shared_ptr<Spectrum> spectrum;
+  std::shared_ptr<OutputLevel> output_level;
+  std::shared_ptr<Spectrum> spectrum;
 
-  QSharedPointer<Autogain> autogain;
+  std::shared_ptr<Autogain> autogain;
   //   std::shared_ptr<BassEnhancer> bass_enhancer;
   //   std::shared_ptr<BassLoudness> bass_loudness;
   //   std::shared_ptr<Compressor> compressor;
@@ -113,13 +112,13 @@ class EffectsBase : public QObject {
 
   void reset_settings();
 
-  auto get_plugins_map() -> std::map<QString, QSharedPointer<PluginBase>>;
+  auto get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>>;
 
   Q_INVOKABLE
   QVariant getPluginInstance(const QString& pluginName);
 
   template <typename T>
-  auto get_plugin_instance(const QString& name) -> QSharedPointer<T> {
+  auto get_plugin_instance(const QString& name) -> std::shared_ptr<T> {
     return std::dynamic_pointer_cast<T>(plugins[name]);
   }
 
@@ -128,7 +127,7 @@ class EffectsBase : public QObject {
   void pipelineChanged();
 
  protected:
-  std::map<QString, QSharedPointer<PluginBase>> plugins;
+  std::map<QString, std::shared_ptr<PluginBase>> plugins;
 
   std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
 

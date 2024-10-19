@@ -382,14 +382,6 @@ void Autogain::process(std::span<float>& left_in,
   }
 
   get_peaks(left_in, right_in, left_out, right_out);
-
-  if (post_messages) {
-    if (send_notifications) {
-      //   results.emit(loudness, internal_output_gain, momentary, shortterm, global, relative, range);
-
-      notify();
-    }
-  }
 }
 
 void Autogain::process([[maybe_unused]] std::span<float>& left_in,

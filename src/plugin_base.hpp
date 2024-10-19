@@ -102,12 +102,6 @@ class PluginBase : public QObject {
 
   bool connected_to_pw = false;
 
-  bool send_notifications = false;
-
-  float delta_t = 0.0F;
-
-  float notification_time_window = 1.0F / 20.0F;  // seconds
-
   float latency_value = 0.0F;  // seconds
 
   std::chrono::time_point<std::chrono::system_clock> clock_start;
@@ -117,8 +111,6 @@ class PluginBase : public QObject {
   [[nodiscard]] auto get_node_id() const -> uint;
 
   void set_active(const bool& state) const;
-
-  void set_post_messages(const bool& state);
 
   auto connect_to_pw() -> bool;
 
@@ -151,8 +143,6 @@ class PluginBase : public QObject {
   virtual auto get_latency_seconds() -> float;
 
  signals:
-  void input_level(float left_level, float right_level);
-  void output_level(float left_level, float right_level);
   void inputPeakLeftChanged();
   void inputPeakRightChanged();
   void outputPeakLeftChanged();
@@ -169,8 +159,6 @@ class PluginBase : public QObject {
 
   data pf_data = {};
 
-  bool post_messages = true;
-
   uint n_ports = 4U;
 
   float input_gain = 1.0F;
@@ -181,8 +169,6 @@ class PluginBase : public QObject {
   void setup_input_output_gain();
 
   void initialize_listener();
-
-  void notify();
 
   void get_peaks(const std::span<float>& left_in,
                  const std::span<float>& right_in,

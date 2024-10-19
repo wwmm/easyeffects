@@ -258,7 +258,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
   if (!list.empty()) {
     for (const auto& name : list) {
-      if (!plugins.contains(name) || plugins[name].isNull()) {
+      if (!plugins.contains(name) || plugins[name] == nullptr) {
         continue;
       }
 
@@ -286,11 +286,11 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
     // checking if we have to link the echo_canceller probe to the output device
 
     for (const auto& name : list) {
-      if (!plugins.contains(name) || plugins[name].isNull()) {
+      if (!plugins.contains(name) || plugins[name] == nullptr) {
         continue;
       }
 
-      if (name.startsWith(tags::plugin_name::BaseName::echo_canceller)) {
+      if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
         if (plugins[name]->connected_to_pw) {
           for (const auto& link : pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true)) {
             list_proxies.push_back(link);
@@ -304,26 +304,25 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
   // link spectrum, output level meter and source node
 
-  //   for (const auto node_id : {spectrum->get_node_id(), output_level->get_node_id(), pm->ee_source_node.id}) {
-  //     next_node_id = node_id;
+  for (const auto node_id : {spectrum->get_node_id(), output_level->get_node_id(), pm->ee_source_node.id}) {
+    next_node_id = node_id;
 
-  //     const auto links = pm->link_nodes(prev_node_id, next_node_id);
+    const auto links = pm->link_nodes(prev_node_id, next_node_id);
 
-  //     for (auto* link : links) {
-  //       list_proxies.push_back(link);
-  //     }
+    for (auto* link : links) {
+      list_proxies.push_back(link);
+    }
 
-  //     if (mic_linked && (links.size() == 2U)) {
-  //       prev_node_id = next_node_id;
-  //     } else if (!mic_linked && (!links.empty())) {
-  //       prev_node_id = next_node_id;
-  //       mic_linked = true;
-  //     } else {
-  //       util::warning(" link from node " + util::to_string(prev_node_id) + " to node " +
-  //       util::to_string(next_node_id) +
-  //                     " failed");
-  //     }
-  //   }
+    if (mic_linked && (links.size() == 2U)) {
+      prev_node_id = next_node_id;
+    } else if (!mic_linked && (!links.empty())) {
+      prev_node_id = next_node_id;
+      mic_linked = true;
+    } else {
+      util::warning(" link from node " + util::to_string(prev_node_id) + " to node " + util::to_string(next_node_id) +
+                    " failed");
+    }
+  }
 }
 
 void StreamInputEffects::disconnect_filters() {
@@ -332,7 +331,7 @@ void StreamInputEffects::disconnect_filters() {
   const auto selected_plugins_list = (bypass) ? QStringList() : db::StreamInputs::plugins();
 
   for (const auto& plugin : plugins | std::views::values) {
-    if (plugin.isNull()) {
+    if (plugin == nullptr) {
       continue;
     }
 
@@ -352,10 +351,10 @@ void StreamInputEffects::disconnect_filters() {
   }
 
   for (const auto& link : pm->list_links) {
-    // if (link.input_node_id == spectrum->get_node_id() || link.output_node_id == spectrum->get_node_id() ||
-    //     link.input_node_id == output_level->get_node_id() || link.output_node_id == output_level->get_node_id()) {
-    //   link_id_list.insert(link.id);
-    // }
+    if (link.input_node_id == spectrum->get_node_id() || link.output_node_id == spectrum->get_node_id() ||
+        link.input_node_id == output_level->get_node_id() || link.output_node_id == output_level->get_node_id()) {
+      link_id_list.insert(link.id);
+    }
   }
 
   for (const auto& id : link_id_list) {
