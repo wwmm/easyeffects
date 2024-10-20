@@ -6,8 +6,7 @@ import org.kde.kirigami as Kirigami
 Item {
     id: control
 
-    property real inputGain: 0
-    property real outputGain: 0
+    required property var pluginDB
     property real from: -36
     property real to: 36
     property alias inputLevelLeft: inputLevelLeft.value
@@ -35,13 +34,13 @@ Item {
                     labelFillWidth: true
                     from: control.from
                     to: control.to
-                    value: control.inputGain
+                    value: pluginDB.inputGain
                     decimals: 0
                     stepSize: 1
                     unit: "dB"
                     boxWidth: 5 * Kirigami.Units.gridUnit
                     onValueModified: (v) => {
-                        control.inputGain = v;
+                        pluginDB.inputGain = v;
                     }
                 }
 
@@ -79,13 +78,13 @@ Item {
                     labelFillWidth: true
                     from: control.from
                     to: control.to
-                    value: control.outputGain
+                    value: pluginDB.outputGain
                     decimals: 0
                     stepSize: 1
                     unit: "dB"
                     boxWidth: 5 * Kirigami.Units.gridUnit
                     onValueModified: (v) => {
-                        control.outputGain = v;
+                        pluginDB.outputGain = v;
                     }
                 }
 

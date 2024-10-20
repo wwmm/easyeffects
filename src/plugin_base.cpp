@@ -221,16 +221,6 @@ PluginBase::PluginBase(std::string tag,
 
   if (name != "output_level" && name != "spectrum") {
     description = tags::plugin_name::Model::self().translate(name);
-
-    // bypass = g_settings_get_boolean(settings, "bypass") != 0;
-
-    // gconnections.push_back(g_signal_connect(settings, "changed::bypass",
-    //                                         G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-    //                                           auto* self = static_cast<PluginBase*>(user_data);
-
-    //                                           self->bypass = g_settings_get_boolean(settings, "bypass") != 0;
-    //                                         }),
-    //                                         this));
   } else if (name == "output_level") {
     description = i18n("Output Level Meter");
   } else if (name == "spectrum") {
@@ -497,27 +487,6 @@ void PluginBase::get_peaks(const std::span<float>& left_in,
 
   output_peak_left = util::linear_to_db(output_peak_left);
   output_peak_right = util::linear_to_db(output_peak_right);
-}
-
-void PluginBase::setup_input_output_gain() {
-  // input_gain = static_cast<float>(util::db_to_linear(g_settings_get_double(settings, "input-gain")));
-  // output_gain = static_cast<float>(util::db_to_linear(g_settings_get_double(settings, "output-gain")));
-
-  // g_signal_connect(settings, "changed::input-gain", G_CALLBACK(+[](GSettings* settings, char* key, gpointer
-  // user_data) {
-  //                    auto* self = static_cast<PluginBase*>(user_data);
-
-  //                    self->input_gain = util::db_to_linear(g_settings_get_double(settings, key));
-  //                  }),
-  //                  this);
-
-  // g_signal_connect(settings, "changed::output-gain",
-  //                  G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                    auto* self = static_cast<PluginBase*>(user_data);
-
-  //                    self->output_gain = util::db_to_linear(g_settings_get_double(settings, key));
-  //                  }),
-  //                  this);
 }
 
 void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, const float& gain) {

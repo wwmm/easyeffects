@@ -179,6 +179,19 @@ class PluginBase : public QObject {
 
   void update_filter_params();
 
+  template <typename dbClass>
+  void init_common_controls(dbClass* settings) {
+    bypass = settings->bypass();
+    input_gain = util::db_to_linear(settings->inputGain());
+    output_gain = util::db_to_linear(settings->outputGain());
+
+    connect(settings, &dbClass::bypass, [&, settings]() { bypass = settings->bypass(); });
+    connect(settings, &dbClass::inputGainChanged,
+            [&, settings]() { input_gain = util::db_to_linear(settings->inputGain()); });
+    connect(settings, &dbClass::outputGainChanged,
+            [&, settings]() { output_gain = util::db_to_linear(settings->outputGain()); });
+  }
+
  private:
   uint node_id = 0U;
 

@@ -222,6 +222,8 @@ Kirigami.ScrollablePage {
     header: EeInputOutputGain {
         id: inputOutputLevels
 
+        pluginDB: autogainPage.pluginDB
+
         anchors {
             top: parent.top
             left: parent.left

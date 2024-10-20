@@ -44,6 +44,12 @@ Autogain::Autogain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
       settings(
           db::Manager::self().get_plugin_db<db::Autogain>(pipe_type,
                                                           tags::plugin_name::BaseName::autogain + "#" + instance_id)) {
+  // bypass, input and output gain controls
+
+  init_common_controls<db::Autogain>(settings);
+
+  // specific plugin controls
+
   connect(settings, &db::Autogain::maximumHistoryChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
@@ -67,8 +73,6 @@ Autogain::Autogain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
       data_mutex.unlock();
     });
   });
-
-  setup_input_output_gain();
 }
 
 Autogain::~Autogain() {
@@ -307,11 +311,7 @@ void Autogain::process(std::span<float>& left_in,
 
       if (db_peak > util::minimum_db_level) {
         if (gain * peak < 1.0) {
-          internal_output_gain = util::linear_to_db(gain);
-
-          if (gain != 1.0F) {
-            apply_gain(left_out, right_out, static_cast<float>(gain));
-          }
+          internal_output_gain = gain;
         }
       }
     }
@@ -319,6 +319,12 @@ void Autogain::process(std::span<float>& left_in,
 
   std::copy(left_in.begin(), left_in.end(), left_out.begin());
   std::copy(right_in.begin(), right_in.end(), right_out.begin());
+
+  if (internal_output_gain != 1.0F) {
+    apply_gain(left_out, right_out, static_cast<float>(internal_output_gain));
+  }
+
+  internal_output_gain = util::linear_to_db(internal_output_gain);
 
   if (output_gain != 1.0F) {
     apply_gain(left_out, right_out, output_gain);
