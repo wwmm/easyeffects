@@ -64,6 +64,9 @@
 class EffectsBase : public QObject {
   Q_OBJECT;
 
+  Q_PROPERTY(OutputLevel* outputLevel MEMBER output_level_ptr NOTIFY outputLevelChanged)
+  Q_PROPERTY(float pipelineLatency MEMBER pipeline_latency NOTIFY pipelineLatencyChanged)
+
  public:
   EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type);
   EffectsBase(const EffectsBase&) = delete;
@@ -77,6 +80,8 @@ class EffectsBase : public QObject {
   pw::Manager* pm = nullptr;
 
   PipelineType pipeline_type;
+
+  OutputLevel* output_level_ptr = nullptr;
 
   std::shared_ptr<OutputLevel> output_level;
   std::shared_ptr<Spectrum> spectrum;
@@ -108,8 +113,6 @@ class EffectsBase : public QObject {
   //   std::shared_ptr<Speex> speex;
   //   std::shared_ptr<StereoTools> stereo_tools;
 
-  auto get_pipeline_latency() -> float;
-
   void reset_settings();
 
   auto get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>>;
@@ -123,10 +126,13 @@ class EffectsBase : public QObject {
   }
 
  signals:
-  void pipelineLatencyChanged(float value);
   void pipelineChanged();
+  void outputLevelChanged();
+  void pipelineLatencyChanged();
 
  protected:
+  float pipeline_latency = 0.0F;
+
   std::map<QString, std::shared_ptr<PluginBase>> plugins;
 
   std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
@@ -139,5 +145,5 @@ class EffectsBase : public QObject {
 
   void deactivate_filters();
 
-  void broadcast_pipeline_latency();
+  void calculate_pipeline_latency();
 };

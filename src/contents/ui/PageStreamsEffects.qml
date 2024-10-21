@@ -326,20 +326,45 @@ Kirigami.Page {
             Kirigami.ActionToolBar {
                 alignment: Qt.AlignLeft
                 position: Controls.ToolBar.Footer
+                Component.onCompleted: {
+                    footerFrameAnimation.start();
+                }
+                Component.onDestruction: {
+                    footerFrameAnimation.stop();
+                }
                 actions: [
                     Kirigami.Action {
+                        id: actionRateValue
+
                         text: "kHz"
                         enabled: false
                     },
                     Kirigami.Action {
+                        id: actionLatencyValue
+
                         text: "0,0 ms"
                         enabled: false
                     },
                     Kirigami.Action {
+                        id: actionLevelValue
+
                         text: "0 0 dB"
                         enabled: false
                     }
                 ]
+
+                FrameAnimation {
+                    id: footerFrameAnimation
+
+                    onTriggered: {
+                        let left = Number(pipelineInstance.outputLevel.outputPeakLeft).toLocaleString(Qt.locale(), 'f', 0);
+                        let right = Number(pipelineInstance.outputLevel.outputPeakRight).toLocaleString(Qt.locale(), 'f', 0);
+                        let latency = Number(pipelineInstance.pipelineLatency).toLocaleString(Qt.locale(), 'f', 1);
+                        actionLevelValue.text = `${left} ${right} dB`;
+                        actionLatencyValue.text = `${latency} ms`;
+                    }
+                }
+
             }
 
             Kirigami.ActionToolBar {

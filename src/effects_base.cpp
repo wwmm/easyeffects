@@ -74,6 +74,7 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
   using namespace std::string_literals;
 
   output_level = std::make_shared<OutputLevel>(log_tag, pm, pipeline_type, "0");
+  output_level_ptr = output_level.get();  // used in QML
 
   spectrum = std::make_shared<Spectrum>(log_tag, pm, pipeline_type, "0");
 
@@ -91,13 +92,13 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
     case PipelineType::input:
       connect(db::StreamInputs::self(), &db::StreamInputs::pluginsChanged, [&]() {
         create_filters_if_necessary();
-        broadcast_pipeline_latency();
+        calculate_pipeline_latency();
       });
       break;
     case PipelineType::output:
       connect(db::StreamOutputs::self(), &db::StreamOutputs::pluginsChanged, [&]() {
         create_filters_if_necessary();
-        broadcast_pipeline_latency();
+        calculate_pipeline_latency();
       });
       break;
   }
@@ -201,7 +202,7 @@ void EffectsBase::create_filters_if_necessary() {
       //   filter = std::make_shared<StereoTools>(log_tag, tags::schema::stereo_tools::id, path, pm, pipeline_type);
     }
 
-    // connect(filter.get(), &PluginBase::latency, [this]() { broadcast_pipeline_latency(); });
+    // connect(filter.get(), &PluginBase::latency, [this]() { calculate_pipeline_latency(); });
 
     if (filter != nullptr) {
       /*
@@ -264,26 +265,20 @@ void EffectsBase::deactivate_filters() {
   }
 }
 
-auto EffectsBase::get_pipeline_latency() -> float {
+void EffectsBase::calculate_pipeline_latency() {
   auto list = (pipeline_type == PipelineType::output ? db::StreamOutputs::plugins() : db::StreamInputs::plugins());
 
-  float total = 0.0F;
+  pipeline_latency = 0.0F;
 
   for (const auto& name : list) {
     if (plugins.contains(name) && plugins[name] != nullptr) {
-      total += plugins[name]->get_latency_seconds();
+      pipeline_latency += plugins[name]->get_latency_seconds();
     }
   }
 
-  return total * 1000.0F;
-}
+  pipeline_latency *= 1000.0F;
 
-void EffectsBase::broadcast_pipeline_latency() {
-  const auto latency_value = get_pipeline_latency();
-
-  util::debug(log_tag + "pipeline latency: " + util::to_string(latency_value, "") + " ms");
-
-  Q_EMIT pipelineLatencyChanged(latency_value);
+  util::debug(log_tag + "pipeline latency: " + util::to_string(pipeline_latency, "") + " ms");
 }
 
 auto EffectsBase::get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>> {
