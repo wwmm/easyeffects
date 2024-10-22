@@ -26,10 +26,10 @@ Kirigami.ScrollablePage {
         range.value = pluginBackend.range;
         loudness.value = pluginBackend.loudness;
         outputGain.value = pluginBackend.outputGain;
-        inputOutputLevels.inputLevelLeft = pluginBackend.inputPeakLeft;
-        inputOutputLevels.inputLevelRight = pluginBackend.inputPeakRight;
-        inputOutputLevels.outputLevelLeft = pluginBackend.outputPeakLeft;
-        inputOutputLevels.outputLevelRight = pluginBackend.outputPeakRight;
+        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
+        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
+        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
+        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
     }
 
     Component.onCompleted: {

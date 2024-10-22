@@ -503,3 +503,19 @@ void PluginBase::update_probe_links() {}
 void PluginBase::update_filter_params() {
   pw_loop_invoke(pw_thread_loop_get_loop(pm->thread_loop), update_filter, 1, nullptr, 0, false, this);  // NOLINT
 }
+
+float PluginBase::getInputLevelLeft() const {
+  return input_peak_left;
+}
+
+float PluginBase::getInputLevelRight() const {
+  return input_peak_right;
+}
+
+float PluginBase::getOutputLevelLeft() const {
+  return output_peak_left;
+}
+
+float PluginBase::getOutputLevelRight() const {
+  return output_peak_right;
+}

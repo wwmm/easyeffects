@@ -39,11 +39,6 @@
 class PluginBase : public QObject {
   Q_OBJECT;
 
-  Q_PROPERTY(float inputPeakLeft MEMBER input_peak_left NOTIFY inputPeakLeftChanged)
-  Q_PROPERTY(float inputPeakRight MEMBER input_peak_right NOTIFY inputPeakRightChanged)
-  Q_PROPERTY(float outputPeakLeft MEMBER output_peak_left NOTIFY outputPeakLeftChanged)
-  Q_PROPERTY(float outputPeakRight MEMBER output_peak_right NOTIFY outputPeakRightChanged)
-
  public:
   PluginBase(std::string tag,
              QString plugin_name,
@@ -145,13 +140,17 @@ class PluginBase : public QObject {
 
   virtual auto get_latency_seconds() -> float;
 
- signals:
-  void inputPeakLeftChanged();
-  void inputPeakRightChanged();
-  void outputPeakLeftChanged();
-  void outputPeakRightChanged();
+  Q_INVOKABLE
+  [[nodiscard]] float getInputLevelLeft() const;
 
-  void latency();
+  Q_INVOKABLE
+  [[nodiscard]] float getInputLevelRight() const;
+
+  Q_INVOKABLE
+  [[nodiscard]] float getOutputLevelLeft() const;
+
+  Q_INVOKABLE
+  [[nodiscard]] float getOutputLevelRight() const;
 
  protected:
   std::mutex data_mutex;
