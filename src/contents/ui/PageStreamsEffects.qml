@@ -357,11 +357,13 @@ Kirigami.Page {
                     id: footerFrameAnimation
 
                     onTriggered: {
-                        let left = Number(pipelineInstance.outputLevel.outputPeakLeft).toLocaleString(Qt.locale(), 'f', 0);
-                        let right = Number(pipelineInstance.outputLevel.outputPeakRight).toLocaleString(Qt.locale(), 'f', 0);
-                        let latency = Number(pipelineInstance.pipelineLatency).toLocaleString(Qt.locale(), 'f', 1);
+                        let left = Number(pipelineInstance.getOutputLevelLeft()).toLocaleString(Qt.locale(), 'f', 0);
+                        let right = Number(pipelineInstance.getOutputLevelRight()).toLocaleString(Qt.locale(), 'f', 0);
+                        let latency = Number(pipelineInstance.getPipeLineLatency()).toLocaleString(Qt.locale(), 'f', 1);
+                        let rate = Number(pipelineInstance.getPipeLineRate()).toLocaleString(Qt.locale(), 'f', 1);
                         actionLevelValue.text = `${left} ${right} dB`;
                         actionLatencyValue.text = `${latency} ms`;
+                        actionRateValue.text = `${rate} kHz`;
                     }
                 }
 

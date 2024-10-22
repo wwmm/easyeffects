@@ -20,6 +20,7 @@
 #include "effects_base.hpp"
 #include <qcontainerfwd.h>
 #include <qtmetamacros.h>
+#include <qtypes.h>
 #include <QSharedPointer>
 #include <QString>
 #include <algorithm>
@@ -74,7 +75,6 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
   using namespace std::string_literals;
 
   output_level = std::make_shared<OutputLevel>(log_tag, pm, pipeline_type, "0");
-  output_level_ptr = output_level.get();  // used in QML
 
   spectrum = std::make_shared<Spectrum>(log_tag, pm, pipeline_type, "0");
 
@@ -90,16 +90,10 @@ EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
 
   switch (pipeline_type) {
     case PipelineType::input:
-      connect(db::StreamInputs::self(), &db::StreamInputs::pluginsChanged, [&]() {
-        create_filters_if_necessary();
-        calculate_pipeline_latency();
-      });
+      connect(db::StreamInputs::self(), &db::StreamInputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
       break;
     case PipelineType::output:
-      connect(db::StreamOutputs::self(), &db::StreamOutputs::pluginsChanged, [&]() {
-        create_filters_if_necessary();
-        calculate_pipeline_latency();
-      });
+      connect(db::StreamOutputs::self(), &db::StreamOutputs::pluginsChanged, [&]() { create_filters_if_necessary(); });
       break;
   }
 
@@ -265,22 +259,6 @@ void EffectsBase::deactivate_filters() {
   }
 }
 
-void EffectsBase::calculate_pipeline_latency() {
-  auto list = (pipeline_type == PipelineType::output ? db::StreamOutputs::plugins() : db::StreamInputs::plugins());
-
-  pipeline_latency = 0.0F;
-
-  for (const auto& name : list) {
-    if (plugins.contains(name) && plugins[name] != nullptr) {
-      pipeline_latency += plugins[name]->get_latency_seconds();
-    }
-  }
-
-  pipeline_latency *= 1000.0F;
-
-  util::debug(log_tag + "pipeline latency: " + util::to_string(pipeline_latency, "") + " ms");
-}
-
 auto EffectsBase::get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>> {
   return plugins;
 }
@@ -297,4 +275,37 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
   }
 
   return {};
+}
+
+uint EffectsBase::getPipeLineRate() const {
+  switch (pipeline_type) {
+    case PipelineType::input:
+      return pm->ee_source_node.rate * 0.001F;
+    case PipelineType::output:
+      return pm->ee_sink_node.rate * 0.001F;
+    default:
+      return 0;
+  }
+}
+
+uint EffectsBase::getPipeLineLatency() {
+  auto list = (pipeline_type == PipelineType::output ? db::StreamOutputs::plugins() : db::StreamInputs::plugins());
+
+  auto v = 0.0F;
+
+  for (const auto& name : list) {
+    if (plugins.contains(name) && plugins[name] != nullptr) {
+      v += plugins[name]->get_latency_seconds();
+    }
+  }
+
+  return v * 1000.0F;
+}
+
+float EffectsBase::getOutputLevelLeft() const {
+  return output_level->output_peak_left;
+}
+
+float EffectsBase::getOutputLevelRight() const {
+  return output_level->output_peak_right;
 }

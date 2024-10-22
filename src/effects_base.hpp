@@ -23,6 +23,7 @@
 #include <pipewire/proxy.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
+#include <qtypes.h>
 #include <QString>
 #include <map>
 #include <memory>
@@ -64,9 +65,6 @@
 class EffectsBase : public QObject {
   Q_OBJECT;
 
-  Q_PROPERTY(OutputLevel* outputLevel MEMBER output_level_ptr NOTIFY outputLevelChanged)
-  Q_PROPERTY(float pipelineLatency MEMBER pipeline_latency NOTIFY pipelineLatencyChanged)
-
  public:
   EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type);
   EffectsBase(const EffectsBase&) = delete;
@@ -80,8 +78,6 @@ class EffectsBase : public QObject {
   pw::Manager* pm = nullptr;
 
   PipelineType pipeline_type;
-
-  OutputLevel* output_level_ptr = nullptr;
 
   std::shared_ptr<OutputLevel> output_level;
   std::shared_ptr<Spectrum> spectrum;
@@ -120,6 +116,18 @@ class EffectsBase : public QObject {
   Q_INVOKABLE
   QVariant getPluginInstance(const QString& pluginName);
 
+  Q_INVOKABLE
+  [[nodiscard]] uint getPipeLineRate() const;
+
+  Q_INVOKABLE
+  [[nodiscard]] uint getPipeLineLatency();
+
+  Q_INVOKABLE
+  [[nodiscard]] float getOutputLevelLeft() const;
+
+  Q_INVOKABLE
+  [[nodiscard]] float getOutputLevelRight() const;
+
   template <typename T>
   auto get_plugin_instance(const QString& name) -> std::shared_ptr<T> {
     return std::dynamic_pointer_cast<T>(plugins[name]);
@@ -127,12 +135,8 @@ class EffectsBase : public QObject {
 
  signals:
   void pipelineChanged();
-  void outputLevelChanged();
-  void pipelineLatencyChanged();
 
  protected:
-  float pipeline_latency = 0.0F;
-
   std::map<QString, std::shared_ptr<PluginBase>> plugins;
 
   std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
@@ -144,6 +148,4 @@ class EffectsBase : public QObject {
   void activate_filters();
 
   void deactivate_filters();
-
-  void calculate_pipeline_latency();
 };

@@ -521,9 +521,17 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
     const auto nd_info_copy = *nd->nd_info;
 
+    if (nd_info_copy.serial == pm->ee_source_node.serial) {
+      pm->ee_source_node = nd_info_copy;
+    }
+
     Q_EMIT pm->sourceChanged(nd_info_copy);
   } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
     const auto nd_info_copy = *nd->nd_info;
+
+    if (nd_info_copy.serial == pm->ee_sink_node.serial) {
+      pm->ee_sink_node = nd_info_copy;
+    }
 
     Q_EMIT pm->sinkChanged(nd_info_copy);
   }
@@ -644,6 +652,14 @@ void on_node_event_param(void* object,
       default:
         break;
     }
+  }
+
+  if (nd->nd_info->serial == pm->ee_source_node.serial) {
+    pm->ee_source_node = *nd->nd_info;
+  }
+
+  if (nd->nd_info->serial == pm->ee_sink_node.serial) {
+    pm->ee_sink_node = *nd->nd_info;
   }
 }
 

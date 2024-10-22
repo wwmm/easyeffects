@@ -104,6 +104,9 @@ class PluginBase : public QObject {
 
   float latency_value = 0.0F;  // seconds
 
+  float input_peak_left = util::minimum_linear_level, input_peak_right = util::minimum_linear_level;
+  float output_peak_left = util::minimum_linear_level, output_peak_right = util::minimum_linear_level;
+
   std::chrono::time_point<std::chrono::system_clock> clock_start;
 
   std::vector<float> dummy_left, dummy_right;
@@ -194,7 +197,4 @@ class PluginBase : public QObject {
 
  private:
   uint node_id = 0U;
-
-  float input_peak_left = util::minimum_linear_level, input_peak_right = util::minimum_linear_level;
-  float output_peak_left = util::minimum_linear_level, output_peak_right = util::minimum_linear_level;
 };
