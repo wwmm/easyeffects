@@ -343,3 +343,31 @@ void Autogain::process([[maybe_unused]] std::span<float>& left_in,
 auto Autogain::get_latency_seconds() -> float {
   return 0.0F;
 }
+
+float Autogain::getMomentaryLevel() const {
+  return momentary;
+}
+
+float Autogain::getShorttermLevel() const {
+  return shortterm;
+}
+
+float Autogain::getIntegratedLevel() const {
+  return global;
+}
+
+float Autogain::getRelativeLevel() const {
+  return relative;
+}
+
+float Autogain::getRangeLevel() const {
+  return range;
+}
+
+float Autogain::getLoudnessLevel() const {
+  return loudness;
+}
+
+float Autogain::getOutputGainLevel() const {
+  return internal_output_gain;
+}

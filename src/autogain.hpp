@@ -35,14 +35,6 @@
 class Autogain : public PluginBase {
   Q_OBJECT;
 
-  Q_PROPERTY(double momentary MEMBER momentary NOTIFY momentaryChanged)
-  Q_PROPERTY(double shortterm MEMBER shortterm NOTIFY shorttermChanged)
-  Q_PROPERTY(double integrated MEMBER global NOTIFY integratedChanged)
-  Q_PROPERTY(double relative MEMBER relative NOTIFY relativeChanged)
-  Q_PROPERTY(double range MEMBER range NOTIFY rangeChanged)
-  Q_PROPERTY(double loudness MEMBER loudness NOTIFY loudnessChanged)
-  Q_PROPERTY(double outputGain MEMBER internal_output_gain NOTIFY outputGainChanged)
-
  public:
   Autogain(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
   Autogain(const Autogain&) = delete;
@@ -67,18 +59,26 @@ class Autogain : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
- signals:
-  void momentaryChanged();
-  void shorttermChanged();
-  void integratedChanged();
-  void relativeChanged();
-  void rangeChanged();
-  void loudnessChanged();
-  void outputGainChanged();
-  void inputPeakLeftChanged();
-  void inputPeakRightChanged();
-  void outputPeakLeftChanged();
-  void outputPeakRightChanged();
+  Q_INVOKABLE
+  [[nodiscard]] float getMomentaryLevel() const;
+
+  Q_INVOKABLE
+  [[nodiscard]] float getShorttermLevel() const;
+
+  Q_INVOKABLE
+  [[nodiscard]] float getIntegratedLevel() const;
+
+  Q_INVOKABLE
+  [[nodiscard]] float getRelativeLevel() const;
+
+  Q_INVOKABLE
+  [[nodiscard]] float getRangeLevel() const;
+
+  Q_INVOKABLE
+  [[nodiscard]] float getLoudnessLevel() const;
+
+  Q_INVOKABLE
+  [[nodiscard]] float getOutputGainLevel() const;
 
  private:
   bool ebur128_ready = false;

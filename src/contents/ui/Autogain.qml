@@ -19,13 +19,13 @@ Kirigami.ScrollablePage {
             frameAnimation.stop();
             return ;
         }
-        momentary.value = pluginBackend.momentary;
-        shortterm.value = pluginBackend.shortterm;
-        integrated.value = pluginBackend.integrated;
-        relative.value = pluginBackend.relative;
-        range.value = pluginBackend.range;
-        loudness.value = pluginBackend.loudness;
-        outputGain.value = pluginBackend.outputGain;
+        momentary.value = pluginBackend.getMomentaryLevel();
+        shortterm.value = pluginBackend.getShorttermLevel();
+        integrated.value = pluginBackend.getIntegratedLevel();
+        relative.value = pluginBackend.getRelativeLevel();
+        range.value = pluginBackend.getRangeLevel();
+        loudness.value = pluginBackend.getLoudnessLevel();
+        outputGain.value = pluginBackend.getOutputGainLevel();
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
         inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
