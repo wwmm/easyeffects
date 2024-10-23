@@ -468,25 +468,13 @@ void PluginBase::get_peaks(const std::span<float>& left_in,
                            std::span<float>& right_out) {
   // input level
 
-  float peak_l = std::ranges::max(left_in);
-  float peak_r = std::ranges::max(right_in);
-
-  input_peak_left = (peak_l > input_peak_left) ? peak_l : input_peak_left;
-  input_peak_right = (peak_r > input_peak_right) ? peak_r : input_peak_right;
-
-  input_peak_left = util::linear_to_db(input_peak_left);
-  input_peak_right = util::linear_to_db(input_peak_right);
+  input_peak_left = util::linear_to_db(std::ranges::max(left_in));
+  input_peak_right = util::linear_to_db(std::ranges::max(right_in));
 
   // output level
 
-  peak_l = std::ranges::max(left_out);
-  peak_r = std::ranges::max(right_out);
-
-  output_peak_left = (peak_l > output_peak_left) ? peak_l : output_peak_left;
-  output_peak_right = (peak_r > output_peak_right) ? peak_r : output_peak_right;
-
-  output_peak_left = util::linear_to_db(output_peak_left);
-  output_peak_right = util::linear_to_db(output_peak_right);
+  output_peak_left = util::linear_to_db(std::ranges::max(left_out));
+  output_peak_right = util::linear_to_db(std::ranges::max(right_out));
 }
 
 void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, const float& gain) {

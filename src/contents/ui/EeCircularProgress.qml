@@ -12,6 +12,10 @@ Rectangle {
     property int decimals: 2
     readonly property real clampedValue: Common.clamp(value, from, to)
 
+    function dbToLinear(dbValue) {
+        return Math.exp(dbValue / 20) * Math.LN10;
+    }
+
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
     implicitHeight: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
     radius: width / 2
@@ -22,7 +26,7 @@ Rectangle {
     Kirigami.Theme.inherit: false
 
     Item {
-        height: parent.height * (clampedValue - from) / (to - from)
+        height: parent.height * (dbToLinear(clampedValue) - dbToLinear(from)) / (dbToLinear(to) - dbToLinear(from))
         clip: true
 
         anchors {

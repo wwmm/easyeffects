@@ -51,7 +51,7 @@ Item {
                     implicitWidth: 5 * Kirigami.Units.largeSpacing
                     implicitHeight: 5 * Kirigami.Units.largeSpacing
                     from: -100
-                    to: 10
+                    to: 0
                     value: 0
                     decimals: 0
                 }
@@ -63,7 +63,7 @@ Item {
                     implicitWidth: 5 * Kirigami.Units.largeSpacing
                     implicitHeight: 5 * Kirigami.Units.largeSpacing
                     from: -100
-                    to: 10
+                    to: 0
                     value: 0
                     decimals: 0
                 }
@@ -95,7 +95,7 @@ Item {
                     implicitWidth: 5 * Kirigami.Units.largeSpacing
                     implicitHeight: 5 * Kirigami.Units.largeSpacing
                     from: -100
-                    to: 10
+                    to: 0
                     value: 0
                     decimals: 0
                 }
@@ -107,7 +107,7 @@ Item {
                     implicitWidth: 5 * Kirigami.Units.largeSpacing
                     implicitHeight: 5 * Kirigami.Units.largeSpacing
                     from: -100
-                    to: 10
+                    to: 0
                     value: 0
                     decimals: 0
                 }
