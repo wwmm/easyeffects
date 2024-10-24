@@ -10,6 +10,9 @@ Rectangle {
     property real from: 0
     property real to: 1
     property int decimals: 2
+    property bool convertDecibelToLinear: false
+    readonly property real dbFrom: dbToLinear(from)
+    readonly property real dbTo: dbToLinear(to)
     readonly property real clampedValue: Common.clamp(value, from, to)
 
     function dbToLinear(dbValue) {
@@ -26,7 +29,12 @@ Rectangle {
     Kirigami.Theme.inherit: false
 
     Item {
-        height: parent.height * (dbToLinear(clampedValue) - dbToLinear(from)) / (dbToLinear(to) - dbToLinear(from))
+        height: {
+            if (convertDecibelToLinear)
+                parent.height * (dbToLinear(clampedValue) - dbFrom) / (dbTo - dbFrom);
+            else
+                parent.height * (clampedValue - from) / (to - from);
+        }
         clip: true
 
         anchors {

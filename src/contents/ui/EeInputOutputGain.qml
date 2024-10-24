@@ -29,9 +29,12 @@ Item {
                 EeSpinBox {
                     id: inputGain
 
-                    Layout.alignment: Qt.AlignLeft
+                    horizontalPadding: 0
+                    verticalPadding: 0
                     label: i18n("Input")
-                    labelFillWidth: true
+                    labelFillWidth: false
+                    labelAbove: true
+                    spinboxLayoutFillWidth: true
                     from: control.from
                     to: control.to
                     value: pluginDB.inputGain
@@ -47,25 +50,27 @@ Item {
                 EeCircularProgress {
                     id: inputLevelLeft
 
-                    Layout.alignment: Qt.AlignRight
+                    Layout.alignment: Qt.AlignRight | Qt.AlignBottom
                     implicitWidth: 5 * Kirigami.Units.largeSpacing
                     implicitHeight: 5 * Kirigami.Units.largeSpacing
                     from: -100
                     to: 0
                     value: 0
                     decimals: 0
+                    convertDecibelToLinear: true
                 }
 
                 EeCircularProgress {
                     id: inputLevelRight
 
-                    Layout.alignment: Qt.AlignRight
+                    Layout.alignment: Qt.AlignRight | Qt.AlignBottom
                     implicitWidth: 5 * Kirigami.Units.largeSpacing
                     implicitHeight: 5 * Kirigami.Units.largeSpacing
                     from: -100
                     to: 0
                     value: 0
                     decimals: 0
+                    convertDecibelToLinear: true
                 }
 
             }
@@ -74,8 +79,12 @@ Item {
                 EeSpinBox {
                     id: outputGain
 
+                    horizontalPadding: 0
+                    verticalPadding: 0
                     label: i18n("Output")
                     labelFillWidth: true
+                    labelAbove: true
+                    spinboxLayoutFillWidth: true
                     from: control.from
                     to: control.to
                     value: pluginDB.outputGain
@@ -91,25 +100,27 @@ Item {
                 EeCircularProgress {
                     id: outputLevelLeft
 
-                    Layout.alignment: Qt.AlignVCenter
+                    Layout.alignment: Qt.AlignRight | Qt.AlignBottom
                     implicitWidth: 5 * Kirigami.Units.largeSpacing
                     implicitHeight: 5 * Kirigami.Units.largeSpacing
                     from: -100
                     to: 0
                     value: 0
                     decimals: 0
+                    convertDecibelToLinear: true
                 }
 
                 EeCircularProgress {
                     id: outputLevelRight
 
-                    Layout.alignment: Qt.AlignVCenter
+                    Layout.alignment: Qt.AlignRight | Qt.AlignBottom
                     implicitWidth: 5 * Kirigami.Units.largeSpacing
                     implicitHeight: 5 * Kirigami.Units.largeSpacing
                     from: -100
                     to: 0
                     value: 0
                     decimals: 0
+                    convertDecibelToLinear: true
                 }
 
             }
