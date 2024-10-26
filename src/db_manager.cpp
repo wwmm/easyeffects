@@ -29,6 +29,7 @@
 #include "config.h"
 #include "easyeffects_db.h"
 #include "easyeffects_db_autogain.h"
+#include "easyeffects_db_bass_enhancer.h"
 #include "easyeffects_db_spectrum.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
@@ -67,11 +68,6 @@ Manager::Manager()
 
   connect(streamOutputs, &db::StreamOutputs::pluginsChanged,
           [&]() { create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsDB); });
-
-  // testing things
-
-  // soePluginsDB["autogain#0"].value<db::Autogain*>()->setMaximumHistory(7);
-  // qDebug() << soePluginsDB["autogain#0"].value<db::Autogain*>()->maximumHistory();
 }
 
 Manager::~Manager() {
@@ -130,6 +126,9 @@ void Manager::create_plugin_db(const QString& parentGroup,
       if (name.startsWith(tags::plugin_name::BaseName::autogain)) {
         plugins_map[tags::plugin_name::BaseName::autogain + "#" + id] =
             QVariant::fromValue(new db::Autogain(parentGroup, id));
+      } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
+        plugins_map[tags::plugin_name::BaseName::bassEnhancer + "#" + id] =
+            QVariant::fromValue(new db::BassEnhancer(parentGroup, id));
       }
     }
   }

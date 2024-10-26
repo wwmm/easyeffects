@@ -13,7 +13,7 @@ cd "$UTIL_DIR"
 
 # s/regexp/replacement/
 cat $SCHEMA |
-    sed -r 's/-(.)/\u\1/g' | # removing "-" and putting the next character in upper case
+    sed -r 's/(<key.*)-(.)/\1\u\2/g' | # removing "-" and putting the next character in upper case
     sed -r 's/key/entry/' | 
     sed -r 's/type="b"/type="Bool"/' |
     sed -r 's/type="i"/type="Int"/' |

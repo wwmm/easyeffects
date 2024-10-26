@@ -1,0 +1,8 @@
+File=easyeffects_db_bass_enhancer.kcfg
+NameSpace=db
+ClassName=BassEnhancer
+Mutators=true
+Notifiers=true
+DefaultValueGetters=true
+Singleton=false
+GenerateProperties=true

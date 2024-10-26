@@ -98,6 +98,14 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
+                case BasePluginName.bassEnhancer:
+                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    pluginsStack.push("qrc:ui/BassEnhancer.qml", {
+                        "name": name,
+                        "pluginDB": pluginDB,
+                        "pipelineInstance": pipelineInstance
+                    });
+                    break;
                 default:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     console.log(logTag + " invalid plugin name: " + baseName);
@@ -282,8 +290,6 @@ Kirigami.Page {
                 Layout.horizontalStretchFactor: 3
 
                 initialItem: Kirigami.ScrollablePage {
-                    anchors.fill: parent
-
                     Kirigami.PlaceholderMessage {
                         anchors.centerIn: parent
                         text: i18n("No Effects")

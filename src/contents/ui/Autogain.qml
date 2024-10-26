@@ -15,10 +15,9 @@ Kirigami.ScrollablePage {
     property var pluginBackend
 
     function updateMeters() {
-        if (!pluginBackend) {
-            frameAnimation.stop();
+        if (!pluginBackend)
             return ;
-        }
+
         momentary.value = pluginBackend.getMomentaryLevel();
         shortterm.value = pluginBackend.getShorttermLevel();
         integrated.value = pluginBackend.getIntegratedLevel();
