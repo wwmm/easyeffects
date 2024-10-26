@@ -30,6 +30,7 @@
 #include <string>
 #include <utility>
 #include "autogain.hpp"
+#include "bass_enhancer.hpp"
 #include "db_manager.hpp"
 #include "output_level.hpp"
 #include "pipeline_type.hpp"
@@ -39,7 +40,6 @@
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
-// #include "bass_enhancer.hpp"
 // #include "bass_loudness.hpp"
 // #include "compressor.hpp"
 // #include "convolver.hpp"
@@ -139,7 +139,7 @@ void EffectsBase::create_filters_if_necessary() {
     if (name.startsWith(tags::plugin_name::BaseName::autogain)) {
       filter = std::make_shared<Autogain>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
-      //   filter = std::make_shared<BassEnhancer>(log_tag, tags::schema::bass_enhancer::id, path, pm, pipeline_type);
+      filter = std::make_shared<BassEnhancer>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
       //   filter = std::make_shared<BassLoudness>(log_tag, tags::schema::bass_loudness::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::compressor)) {
@@ -272,6 +272,12 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
     auto p = plugins[pluginName];
 
     return QVariant::fromValue(dynamic_cast<Autogain*>(p.get()));
+  }
+
+  if (pluginName.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
+    auto p = plugins[pluginName];
+
+    return QVariant::fromValue(dynamic_cast<BassEnhancer*>(p.get()));
   }
 
   return {};

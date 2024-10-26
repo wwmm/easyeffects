@@ -8,6 +8,7 @@ kde_target_enable_exceptions(easyeffects PRIVATE)
 
 target_sources(easyeffects PRIVATE
     autogain.cpp
+    bass_enhancer.cpp
     command_line_parser.cpp
     db_manager.cpp
     effects_base.cpp

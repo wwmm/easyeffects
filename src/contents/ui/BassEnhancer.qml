@@ -18,6 +18,10 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return ;
 
+        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
+        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
+        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
+        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
     }
 
     Component.onCompleted: {
@@ -39,7 +43,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using") + EEtagsPluginPackage.ebur128
+            text: i18n("Using") + EEtagsPluginPackage.calf
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
             Layout.fillWidth: false
