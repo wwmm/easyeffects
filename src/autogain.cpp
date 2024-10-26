@@ -95,6 +95,10 @@ Autogain::~Autogain() {
   util::debug(log_tag + name.toStdString() + " destroyed");
 }
 
+void Autogain::reset() {
+  settings->setDefaults();
+}
+
 auto Autogain::init_ebur128() -> bool {
   if (n_samples == 0U || rate == 0U) {
     return false;

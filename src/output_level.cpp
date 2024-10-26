@@ -43,6 +43,8 @@ OutputLevel::~OutputLevel() {
   util::debug(log_tag + name.toStdString() + " destroyed");
 }
 
+void OutputLevel::reset() {}
+
 void OutputLevel::setup() {
   util::debug(log_tag + name.toStdString() + ": PipeWire blocksize: " + util::to_string(n_samples, ""));
   util::debug(log_tag + name.toStdString() + ": PipeWire sampling rate: " + util::to_string(rate, ""));

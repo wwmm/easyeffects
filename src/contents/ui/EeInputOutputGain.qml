@@ -13,6 +13,7 @@ Item {
     property alias inputLevelRight: inputLevelRight.value
     property alias outputLevelLeft: outputLevelLeft.value
     property alias outputLevelRight: outputLevelRight.value
+    readonly property real radius: 2.5 * Kirigami.Units.gridUnit
 
     implicitHeight: grid.implicitHeight
     implicitWidth: grid.implicitWidth
@@ -51,8 +52,8 @@ Item {
                     id: inputLevelLeft
 
                     Layout.alignment: Qt.AlignRight | Qt.AlignBottom
-                    implicitWidth: 5 * Kirigami.Units.largeSpacing
-                    implicitHeight: 5 * Kirigami.Units.largeSpacing
+                    implicitWidth: control.radius
+                    implicitHeight: control.radius
                     from: -100
                     to: 0
                     value: 0
@@ -64,8 +65,8 @@ Item {
                     id: inputLevelRight
 
                     Layout.alignment: Qt.AlignRight | Qt.AlignBottom
-                    implicitWidth: 5 * Kirigami.Units.largeSpacing
-                    implicitHeight: 5 * Kirigami.Units.largeSpacing
+                    implicitWidth: control.radius
+                    implicitHeight: control.radius
                     from: -100
                     to: 0
                     value: 0
@@ -101,8 +102,8 @@ Item {
                     id: outputLevelLeft
 
                     Layout.alignment: Qt.AlignRight | Qt.AlignBottom
-                    implicitWidth: 5 * Kirigami.Units.largeSpacing
-                    implicitHeight: 5 * Kirigami.Units.largeSpacing
+                    implicitWidth: control.radius
+                    implicitHeight: control.radius
                     from: -100
                     to: 0
                     value: 0
@@ -114,8 +115,8 @@ Item {
                     id: outputLevelRight
 
                     Layout.alignment: Qt.AlignRight | Qt.AlignBottom
-                    implicitWidth: 5 * Kirigami.Units.largeSpacing
-                    implicitHeight: 5 * Kirigami.Units.largeSpacing
+                    implicitWidth: control.radius
+                    implicitHeight: control.radius
                     from: -100
                     to: 0
                     value: 0

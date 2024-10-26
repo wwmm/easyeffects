@@ -110,16 +110,6 @@ EffectsBase::~EffectsBase() {
   util::debug("effects_base: destroyed");
 }
 
-void EffectsBase::reset_settings() {
-  //   util::reset_all_keys_except(settings, {"input-device", "output-device"});
-
-  //   spectrum->reset_settings();
-
-  for (auto& plugin : plugins | std::views::values) {
-    plugin->reset_settings();
-  }
-}
-
 void EffectsBase::create_filters_if_necessary() {
   auto list = (pipeline_type == PipelineType::output ? db::StreamOutputs::plugins() : db::StreamInputs::plugins());
 

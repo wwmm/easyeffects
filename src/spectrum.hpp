@@ -41,6 +41,8 @@ class Spectrum : public PluginBase {
   auto operator=(const Spectrum&&) -> Spectrum& = delete;
   ~Spectrum() override;
 
+  void reset() override;
+
   void setup() override;
 
   void process(std::span<float>& left_in,

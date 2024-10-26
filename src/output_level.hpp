@@ -35,6 +35,8 @@ class OutputLevel : public PluginBase {
   auto operator=(const OutputLevel&&) -> OutputLevel& = delete;
   ~OutputLevel() override;
 
+  void reset() override;
+
   void setup() override;
 
   void process(std::span<float>& left_in,

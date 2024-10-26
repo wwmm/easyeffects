@@ -109,8 +109,6 @@ class EffectsBase : public QObject {
   //   std::shared_ptr<Speex> speex;
   //   std::shared_ptr<StereoTools> stereo_tools;
 
-  void reset_settings();
-
   auto get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>>;
 
   Q_INVOKABLE

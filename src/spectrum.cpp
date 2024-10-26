@@ -103,6 +103,8 @@ Spectrum::~Spectrum() {
   util::debug(log_tag + name.toStdString() + " destroyed");
 }
 
+void Spectrum::reset() {}
+
 void Spectrum::setup() {
   std::ranges::fill(real_input, 0.0F);
   std::ranges::fill(latest_samples_mono, 0.0F);

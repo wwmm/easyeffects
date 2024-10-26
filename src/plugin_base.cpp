@@ -331,9 +331,7 @@ PluginBase::~PluginBase() {
   pm->sync_wait_unlock();
 }
 
-void PluginBase::reset_settings() {
-  // util::reset_all_keys_except(settings);
-}
+void PluginBase::reset() {}
 
 auto PluginBase::connect_to_pw() -> bool {
   connected_to_pw = false;

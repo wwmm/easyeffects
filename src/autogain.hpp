@@ -43,6 +43,8 @@ class Autogain : public PluginBase {
   auto operator=(const Autogain&&) -> Autogain& = delete;
   ~Autogain() override;
 
+  void reset() override;
+
   void setup() override;
 
   void process(std::span<float>& left_in,

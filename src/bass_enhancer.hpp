@@ -29,6 +29,8 @@
 #include "pw_manager.hpp"
 
 class BassEnhancer : public PluginBase {
+  Q_OBJECT;
+
  public:
   BassEnhancer(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
   BassEnhancer(const BassEnhancer&) = delete;
@@ -36,6 +38,8 @@ class BassEnhancer : public PluginBase {
   BassEnhancer(const BassEnhancer&&) = delete;
   auto operator=(const BassEnhancer&&) -> BassEnhancer& = delete;
   ~BassEnhancer() override;
+
+  void reset() override;
 
   void setup() override;
 

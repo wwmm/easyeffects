@@ -73,6 +73,7 @@ Kirigami.ScrollablePage {
 
                         label: i18n("Target")
                         from: -100
+                        to: 0
                         value: pluginDB.target
                         decimals: 0
                         stepSize: 1
@@ -250,7 +251,7 @@ Kirigami.ScrollablePage {
                     text: i18n("Reset")
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        showPassiveNotification("Resetting the autogain");
+                        pluginBackend.reset();
                     }
                 }
             ]

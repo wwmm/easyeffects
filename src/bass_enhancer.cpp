@@ -81,6 +81,10 @@ BassEnhancer::~BassEnhancer() {
   util::debug(log_tag + name.toStdString() + " destroyed");
 }
 
+void BassEnhancer::reset() {
+  settings->setDefaults();
+}
+
 void BassEnhancer::setup() {
   if (!lv2_wrapper->found_plugin) {
     return;
@@ -117,7 +121,7 @@ void BassEnhancer::process(std::span<float>& left_in,
 
   get_peaks(left_in, right_in, left_out, right_out);
 
-  harmonics_port_value = lv2_wrapper->get_control_port_value("meter_drive");
+  harmonics_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("meter_drive"));
 }
 
 void BassEnhancer::process([[maybe_unused]] std::span<float>& left_in,

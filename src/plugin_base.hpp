@@ -114,13 +114,14 @@ class PluginBase : public QObject {
 
   void disconnect_from_pw();
 
-  void reset_settings();
-
   void show_native_ui();
 
   void close_native_ui();
 
   void set_native_ui_update_frequency(const uint& value);
+
+  Q_INVOKABLE
+  virtual void reset() = 0;
 
   virtual void setup();
 
