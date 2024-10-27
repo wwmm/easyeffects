@@ -740,7 +740,7 @@ void Lv2Wrapper::native_ui_to_gsettings() {
     return;
   }
 
-  for (const auto& func : gsettings_sync_funcs) {
+  for (const auto& func : sync_funcs) {
     func();
   }
 }

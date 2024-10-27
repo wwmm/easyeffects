@@ -56,6 +56,13 @@ BassEnhancer::BassEnhancer(const std::string& tag,
 
   // specific plugin controls
 
+  lv2_wrapper->set_control_port_value("listen", static_cast<float>(settings->listen()));
+
+  lv2_wrapper->sync_funcs.emplace_back([&]() { settings->setListen(lv2_wrapper->get_control_port_value("listen")); });
+
+  connect(settings, &db::BassEnhancer::listenChanged,
+          [&]() { lv2_wrapper->set_control_port_value("listen", static_cast<float>(settings->listen())); });
+
   //   lv2_wrapper->bind_key_double_db<"amount", "amount">(settings);
 
   //   lv2_wrapper->bind_key_double<"drive", "harmonics">(settings);
@@ -94,6 +101,8 @@ void BassEnhancer::setup() {
 
   if (lv2_wrapper->get_rate() != rate) {
     lv2_wrapper->create_instance(rate);
+
+    // lv2_wrapper->load_ui();
   }
 }
 
