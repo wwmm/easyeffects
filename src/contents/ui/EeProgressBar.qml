@@ -24,7 +24,7 @@ FormCard.AbstractFormDelegate {
     background: Rectangle {
         anchors.fill: parent
         color: Kirigami.Theme.neutralBackgroundColor
-        radius: 3
+        radius: 2
     }
 
     contentItem: Item {
@@ -34,7 +34,7 @@ FormCard.AbstractFormDelegate {
             width: (clampedValue - from) / (to - from) * parent.width
             height: parent.height
             color: Kirigami.Theme.alternateBackgroundColor
-            radius: 5
+            radius: 3
         }
 
         RowLayout {
@@ -42,6 +42,7 @@ FormCard.AbstractFormDelegate {
 
             Label {
                 Layout.fillWidth: true
+                Layout.leftMargin: Kirigami.Units.smallSpacing
                 horizontalAlignment: Qt.AlignLeft
                 verticalAlignment: Qt.AlignVCenter
                 text: control.label
@@ -52,6 +53,7 @@ FormCard.AbstractFormDelegate {
             }
 
             Label {
+                Layout.rightMargin: Kirigami.Units.smallSpacing
                 horizontalAlignment: Qt.AlignRight
                 verticalAlignment: Qt.AlignVCenter
                 text: Number(value).toLocaleString(Qt.locale(), 'f', decimals) + " " + control.unit

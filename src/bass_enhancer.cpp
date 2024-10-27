@@ -24,6 +24,7 @@
 #include <string>
 #include "db_manager.hpp"
 #include "easyeffects_db_bass_enhancer.h"
+#include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
@@ -57,22 +58,11 @@ BassEnhancer::BassEnhancer(const std::string& tag,
   // specific plugin controls
 
   BIND_LV2_PORT("listen", listen, setListen, db::BassEnhancer::listenChanged);
-
-  //   lv2_wrapper->bind_key_double_db<"amount", "amount">(settings);
-
-  //   lv2_wrapper->bind_key_double<"drive", "harmonics">(settings);
-
-  //   lv2_wrapper->bind_key_double<"freq", "scope">(settings);
-
-  //   lv2_wrapper->bind_key_double<"floor", "floor">(settings);
-
-  //   lv2_wrapper->bind_key_double<"blend", "blend">(settings);
-
-  //   lv2_wrapper->bind_key_bool<"floor_active", "floor-active">(settings);
-
-  //   lv2_wrapper->bind_key_bool<"listen", "listen">(settings);
-
-  // bypass, input and output gain controls
+  BIND_LV2_PORT("amount", amount, setAmount, db::BassEnhancer::amountChanged);
+  BIND_LV2_PORT("drive", harmonics, setHarmonics, db::BassEnhancer::harmonicsChanged);
+  BIND_LV2_PORT("freq", scope, setScope, db::BassEnhancer::scopeChanged);
+  BIND_LV2_PORT("blend", blend, setBlend, db::BassEnhancer::blendChanged);
+  BIND_LV2_PORT("floor_active", floorActive, setFloorActive, db::BassEnhancer::floorActiveChanged);
 }
 
 BassEnhancer::~BassEnhancer() {
