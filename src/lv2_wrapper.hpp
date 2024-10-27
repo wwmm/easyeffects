@@ -35,8 +35,6 @@
 #include <unordered_map>
 #include <utility>
 #include <vector>
-#include "string_literal_wrapper.hpp"
-#include "util.hpp"
 
 namespace lv2 {
 
