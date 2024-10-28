@@ -206,7 +206,7 @@ Kirigami.ScrollablePage {
 
                         label: i18n("Output Gain")
                         unit: i18n("dB")
-                        from: -100
+                        from: Common.minimumDecibelLevel
                         to: 20
                         value: 0
                         decimals: 1

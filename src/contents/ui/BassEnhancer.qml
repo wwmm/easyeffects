@@ -1,3 +1,4 @@
+import "Common.js" as Common
 import EEdbm
 import EEtagsPluginName
 import QtQuick
@@ -53,7 +54,7 @@ Kirigami.ScrollablePage {
                         id: amount
 
                         label: i18n("Amount")
-                        from: -100
+                        from: Common.minimumDecibelLevel
                         to: 36
                         value: pluginDB.amount
                         decimals: 0
@@ -97,7 +98,7 @@ Kirigami.ScrollablePage {
                         id: floor
 
                         label: i18n("Floor")
-                        from: -100
+                        from: Common.minimumDecibelLevel
                         to: 36
                         value: pluginDB.floor
                         decimals: 0
@@ -112,7 +113,7 @@ Kirigami.ScrollablePage {
                         id: harmonicsLevel
 
                         label: i18n("Harmonics")
-                        from: -100
+                        from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
                         decimals: 0
