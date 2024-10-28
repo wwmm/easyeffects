@@ -1,3 +1,4 @@
+import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -54,7 +55,7 @@ Item {
                     Layout.alignment: Qt.AlignRight | Qt.AlignBottom
                     implicitWidth: control.radius
                     implicitHeight: control.radius
-                    from: -100
+                    from: Common.minimumDecibelLevel
                     to: 0
                     value: 0
                     decimals: 0
@@ -67,7 +68,7 @@ Item {
                     Layout.alignment: Qt.AlignRight | Qt.AlignBottom
                     implicitWidth: control.radius
                     implicitHeight: control.radius
-                    from: -100
+                    from: Common.minimumDecibelLevel
                     to: 0
                     value: 0
                     decimals: 0
@@ -104,7 +105,7 @@ Item {
                     Layout.alignment: Qt.AlignRight | Qt.AlignBottom
                     implicitWidth: control.radius
                     implicitHeight: control.radius
-                    from: -100
+                    from: Common.minimumDecibelLevel
                     to: 0
                     value: 0
                     decimals: 0
@@ -117,7 +118,7 @@ Item {
                     Layout.alignment: Qt.AlignRight | Qt.AlignBottom
                     implicitWidth: control.radius
                     implicitHeight: control.radius
-                    from: -100
+                    from: Common.minimumDecibelLevel
                     to: 0
                     value: 0
                     decimals: 0

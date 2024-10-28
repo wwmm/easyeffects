@@ -1,3 +1,6 @@
+var minimumLinearLevel = 0.00001;
+var minimumDecibelLevel = -100.0;
+
 function isEmpty(str) {
     return (!str || str.length === 0);
 }

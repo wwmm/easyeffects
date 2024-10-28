@@ -1,3 +1,4 @@
+import "Common.js" as Common
 import EEdbm
 import EEtagsPluginName
 import QtQuick
@@ -72,7 +73,7 @@ Kirigami.ScrollablePage {
                         id: target
 
                         label: i18n("Target")
-                        from: -100
+                        from: Common.minimumDecibelLevel
                         to: 0
                         value: pluginDB.target
                         decimals: 0
@@ -87,7 +88,7 @@ Kirigami.ScrollablePage {
                         id: silenceThreshold
 
                         label: i18n("Silence")
-                        from: -100
+                        from: Common.minimumDecibelLevel
                         to: 0
                         value: pluginDB.silenceThreshold
                         decimals: 0
@@ -139,7 +140,7 @@ Kirigami.ScrollablePage {
 
                         label: i18n("Momentary")
                         unit: i18n("LUFS")
-                        from: -100
+                        from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
                         decimals: 0
@@ -150,7 +151,7 @@ Kirigami.ScrollablePage {
 
                         label: i18n("Short-Term")
                         unit: i18n("LUFS")
-                        from: -100
+                        from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
                         decimals: 0
@@ -161,7 +162,7 @@ Kirigami.ScrollablePage {
 
                         label: i18n("Integrated")
                         unit: i18n("LUFS")
-                        from: -100
+                        from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
                         decimals: 0
@@ -172,7 +173,7 @@ Kirigami.ScrollablePage {
 
                         label: i18n("Relative")
                         unit: i18n("LUFS")
-                        from: -100
+                        from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
                         decimals: 0
@@ -194,7 +195,7 @@ Kirigami.ScrollablePage {
 
                         label: i18n("Loudness")
                         unit: i18n("LUFS")
-                        from: -100
+                        from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
                         decimals: 0

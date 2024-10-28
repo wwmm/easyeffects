@@ -58,7 +58,7 @@ BassEnhancer::BassEnhancer(const std::string& tag,
   // specific plugin controls
 
   BIND_LV2_PORT("listen", listen, setListen, db::BassEnhancer::listenChanged);
-  BIND_LV2_PORT("amount", amount, setAmount, db::BassEnhancer::amountChanged);
+  BIND_LV2_PORT_DB("amount", amount, setAmount, db::BassEnhancer::amountChanged, false);
   BIND_LV2_PORT("drive", harmonics, setHarmonics, db::BassEnhancer::harmonicsChanged);
   BIND_LV2_PORT("freq", scope, setScope, db::BassEnhancer::scopeChanged);
   BIND_LV2_PORT("blend", blend, setBlend, db::BassEnhancer::blendChanged);
