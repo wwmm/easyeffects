@@ -113,17 +113,22 @@ Kirigami.Page {
             }
 
             Component.onCompleted: {
+                pluginsListView.currentIndex = -1;
                 populatePluginsListModel(streamDB.plugins);
                 if (streamDB.plugins.length > 0) {
-                    let firstPlugin = streamDB.plugins[0];
+                    if (!streamDB.plugins.includes(streamDB.visiblePlugin))
+                        streamDB.visiblePlugin = streamDB.plugins[0];
+
+                    pluginsListView.currentIndex = streamDB.plugins.findIndex((v) => {
+                        return v == streamDB.visiblePlugin;
+                    });
                     let baseNames = PluginsNameModel.getBaseNames();
                     for (let k = 0; k < baseNames.length; k++) {
-                        if (firstPlugin.startsWith(baseNames[k])) {
-                            createPluginStack(firstPlugin, baseNames[k], pluginsDB[firstPlugin]);
+                        if (streamDB.visiblePlugin.startsWith(baseNames[k])) {
+                            createPluginStack(streamDB.visiblePlugin, baseNames[k], pluginsDB[streamDB.visiblePlugin]);
                             break;
                         }
                     }
-                    streamDB.visiblePlugin = firstPlugin;
                 }
                 frameAnimation.start();
             }
@@ -156,12 +161,11 @@ Kirigami.Page {
                     if (Common.equalArrays(newList, currentList))
                         return ;
 
-                    let currentSelection = pluginsListModel.get(pluginsListView.currentIndex);
-                    if (pluginsListModel.count > 0)
-                        currentSelection = pluginsListModel.get(pluginsListView.currentIndex);
-
                     pluginsListModel.clear();
                     populatePluginsListModel(newList);
+                    if (newList.length == 1 && pluginsListView.currentIndex == -1)
+                        pluginsListView.currentIndex = 0;
+
                 }
 
                 target: pipelineInstance

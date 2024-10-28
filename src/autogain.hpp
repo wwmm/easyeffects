@@ -82,6 +82,9 @@ class Autogain : public PluginBase {
   Q_INVOKABLE
   [[nodiscard]] float getOutputGainLevel() const;
 
+  Q_INVOKABLE
+  void resetHistory();
+
  private:
   bool ebur128_ready = false;
 

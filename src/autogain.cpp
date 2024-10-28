@@ -55,24 +55,6 @@ Autogain::Autogain(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
 
     set_maximum_history(settings->maximumHistory());
   });
-
-  connect(settings, &db::Autogain::resetHistoryChanged, [&]() {
-    mythreads.emplace_back([&]() {  // Using emplace_back here makes sense
-      data_mutex.lock();
-
-      ebur128_ready = false;
-
-      data_mutex.unlock();
-
-      auto status = init_ebur128();
-
-      data_mutex.lock();
-
-      ebur128_ready = status;
-
-      data_mutex.unlock();
-    });
-  });
 }
 
 Autogain::~Autogain() {
@@ -374,4 +356,22 @@ float Autogain::getLoudnessLevel() const {
 
 float Autogain::getOutputGainLevel() const {
   return internal_output_gain;
+}
+
+void Autogain::resetHistory() {
+  mythreads.emplace_back([&]() {  // Using emplace_back here makes sense
+    data_mutex.lock();
+
+    ebur128_ready = false;
+
+    data_mutex.unlock();
+
+    auto status = init_ebur128();
+
+    data_mutex.lock();
+
+    ebur128_ready = status;
+
+    data_mutex.unlock();
+  });
 }

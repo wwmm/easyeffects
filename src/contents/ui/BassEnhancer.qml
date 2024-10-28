@@ -131,13 +131,6 @@ Kirigami.ScrollablePage {
         id: inputOutputLevels
 
         pluginDB: bassEnchancerPage.pluginDB
-
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-        }
-
     }
 
     footer: RowLayout {

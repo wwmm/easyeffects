@@ -224,13 +224,6 @@ Kirigami.ScrollablePage {
         id: inputOutputLevels
 
         pluginDB: autogainPage.pluginDB
-
-        anchors {
-            top: parent.top
-            left: parent.left
-            right: parent.right
-        }
-
     }
 
     footer: RowLayout {
@@ -249,7 +242,14 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset History")
+                    icon.name: "edit-clear-history-symbolic"
+                    onTriggered: {
+                        pluginBackend.resetHistory();
+                    }
+                },
+                Kirigami.Action {
+                    text: i18n("Reset Settings")
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         pluginBackend.reset();

@@ -29,10 +29,6 @@
             <max>0</max>
             <default>-23</default>
         </entry>
-        <entry name="resetHistory" type="Bool">
-            <label></label>
-            <default>false</default>
-        </entry>
         <entry name="reference" type="Enum">
             <label>Reference</label>
             <choices>
