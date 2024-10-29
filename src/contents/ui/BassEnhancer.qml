@@ -34,6 +34,50 @@ Kirigami.ScrollablePage {
         Layout.fillWidth: true
         Layout.fillHeight: true
 
+        Controls.Label {
+            Layout.alignment: Qt.AlignHCenter
+            text: i18n("Blend Harmonics")
+        }
+
+        RowLayout {
+            Layout.alignment: Qt.AlignHCenter
+            Layout.maximumWidth: 2 * cardLayout.maximumColumnWidth
+
+            Controls.Label {
+                Layout.alignment: Qt.AlignLeft
+                text: i18n("3rd")
+            }
+
+            Controls.Slider {
+                id: blend
+
+                Layout.alignment: Qt.AlignHCenter
+                Layout.fillWidth: true
+                orientation: Qt.Horizontal
+                snapMode: Controls.Slider.SnapAlways
+                value: pluginDB.blend
+                from: -10
+                to: 10
+                stepSize: 1
+                onValueChanged: () => {
+                    if (value !== pluginDB.blend)
+                        pluginDB.blend = value;
+
+                }
+            }
+
+            Controls.Label {
+                Layout.alignment: Qt.AlignRight
+                text: i18n("2rd")
+            }
+
+        }
+
+        Controls.Label {
+            Layout.alignment: Qt.AlignHCenter
+            text: blend.value
+        }
+
         Kirigami.CardsLayout {
             id: cardLayout
 
@@ -41,8 +85,6 @@ Kirigami.ScrollablePage {
 
             Kirigami.Card {
                 id: cardControls
-
-                implicitWidth: cardLayout.maximumColumnWidth
 
                 header: Kirigami.Heading {
                     text: i18n("Controls")
