@@ -181,6 +181,7 @@ Kirigami.ScrollablePage {
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
             Layout.fillWidth: false
+            Layout.leftMargin: Kirigami.Units.smallSpacing
             color: Kirigami.Theme.disabledTextColor
         }
 
