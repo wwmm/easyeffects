@@ -125,7 +125,7 @@ class Lv2Wrapper {
 
   void ui_port_event(const uint& port_index, const float& value);
 
-  void native_ui_to_gsettings();
+  void native_ui_to_database();
 
   // template <StringLiteralWrapper key_wrapper, StringLiteralWrapper gkey_wrapper>
   // void bind_key_bool(GSettings* settings) {

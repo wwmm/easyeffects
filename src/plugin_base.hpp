@@ -114,10 +114,6 @@ class PluginBase : public QObject {
 
   void disconnect_from_pw();
 
-  void show_native_ui();
-
-  void close_native_ui();
-
   void set_native_ui_update_frequency(const uint& value);
 
   Q_INVOKABLE
@@ -152,6 +148,12 @@ class PluginBase : public QObject {
 
   Q_INVOKABLE
   [[nodiscard]] float getOutputLevelRight() const;
+
+  Q_INVOKABLE
+  void show_native_ui();
+
+  Q_INVOKABLE
+  void close_native_ui();
 
  protected:
   std::mutex data_mutex;

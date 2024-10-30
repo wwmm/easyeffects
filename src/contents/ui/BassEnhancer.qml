@@ -192,6 +192,18 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
+                    text: i18n("Show Native Window")
+                    icon.name: "window-duplicate-symbolic"
+                    checkable: true
+                    checked: false
+                    onTriggered: {
+                        if (checked)
+                            pluginBackend.show_native_ui();
+                        else
+                            pluginBackend.close_native_ui();
+                    }
+                },
+                Kirigami.Action {
                     text: i18n("Listen")
                     icon.name: "audio-headset-symbolic"
                     checkable: true

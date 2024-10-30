@@ -192,20 +192,12 @@ Kirigami.Page {
             ColumnLayout {
                 implicitWidth: pluginsListView.width
 
-                Kirigami.ActionToolBar {
+                Controls.Button {
                     Layout.margins: Kirigami.Units.smallSpacing
-                    alignment: Qt.AlignHCenter
-                    flat: false
-                    actions: [
-                        Kirigami.Action {
-                            text: i18n("Add Effect")
-                            icon.name: "list-add"
-                            displayHint: Kirigami.DisplayHint.KeepVisible
-                            onTriggered: {
-                                menuAddPlugins.open();
-                            }
-                        }
-                    ]
+                    Layout.alignment: Qt.AlignHCenter
+                    text: i18n("Add Effect")
+                    icon.name: "list-add"
+                    onClicked: menuAddPlugins.open()
                 }
 
                 ListView {
