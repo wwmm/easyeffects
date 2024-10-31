@@ -175,17 +175,13 @@ class Manager : public QObject {
 
   void streamInputAdded(NodeInfo node);
   void streamOutputAdded(NodeInfo node);
-  void streamInputRemoved(uint64_t serial);
-  void streamOutputRemoved(uint64_t serial);
 
   /*
     Do not pass NodeInfo by reference. Sometimes it dies before we use it and a segmentation fault happens.
   */
 
   void sourceAdded(NodeInfo node);
-  void sourceRemoved(NodeInfo node);
   void sinkAdded(NodeInfo node);
-  void sinkRemoved(NodeInfo node);
   void newDefaultSinkName(QString name);
   void newDefaultSourceName(QString name);
   void deviceInputRouteChanged(DeviceInfo device);

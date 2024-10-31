@@ -33,6 +33,8 @@
 #include <pipewire/proxy.h>
 #include <pipewire/thread-loop.h>
 #include <pipewire/version.h>
+#include <qnamespace.h>
+#include <qobjectdefs.h>
 #include <qqml.h>
 #include <qtmetamacros.h>
 #include <spa/monitor/device.h>
@@ -217,23 +219,15 @@ void on_destroy_node_proxy(void* data) {
 
   spa_hook_remove(&nd->proxy_listener);
 
-  if (!pw::Manager::exiting) {
-    if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
-      const auto nd_info_copy = *nd->nd_info;
-
-      Q_EMIT pm->sourceRemoved(nd_info_copy);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
-      const auto nd_info_copy = *nd->nd_info;
-
-      Q_EMIT pm->sinkRemoved(nd_info_copy);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
-      const auto serial = nd->nd_info->serial;
-
-      Q_EMIT pm->streamOutputRemoved(serial);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
-      const auto serial = nd->nd_info->serial;
-
-      Q_EMIT pm->streamInputRemoved(serial);
+  if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
+    if (db::StreamInputs::useDefaultInputDevice() && nd->nd_info->name == db::StreamInputs::inputDevice()) {
+      pm->input_device.id = SPA_ID_INVALID;
+      pm->input_device.serial = SPA_ID_INVALID;
+    }
+  } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
+    if (db::StreamOutputs::useDefaultOutputDevice() && nd->nd_info->name == db::StreamOutputs::outputDevice()) {
+      pm->output_device.id = SPA_ID_INVALID;
+      pm->output_device.serial = SPA_ID_INVALID;
     }
   }
 
@@ -419,17 +413,35 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   if (!pm->model_nodes.has_serial(nd->nd_info->serial)) {
     pm->model_nodes.append(*nd->nd_info);
 
-    if (nd->nd_info->media_class == tags::pipewire::media_class::source &&
-        nd->nd_info->name != tags::pipewire::ee_source_name) {
-      Q_EMIT pm->sourceAdded(*nd->nd_info);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink &&
-               nd->nd_info->name != tags::pipewire::ee_sink_name) {
-      Q_EMIT pm->sinkAdded(*nd->nd_info);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
-      Q_EMIT pm->streamOutputAdded(*nd->nd_info);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
-      Q_EMIT pm->streamInputAdded(*nd->nd_info);
-    }
+    auto nd_info_copy = *nd->nd_info;
+
+    /*
+      If an streams is already running and EasyEffects is started PipeWire's node info callback will most likely be
+      called before Qt's event loop starts running. As far as I understood setting the slot connection to
+      Qt::QueuedConnection was supposed to queue the call for when the event loops starts running. But somehow this is
+      not happening and the callback seems to be ignored. Either that or the sie and soe instances are getting created
+      after the first calls to the node info callback.
+
+      So we use QMetaObject::invokeMethod to schedule a call when the event loop runs.
+    */
+
+    QMetaObject::invokeMethod(
+        pm,
+        [pm, nd_info_copy] {
+          if (nd_info_copy.media_class == tags::pipewire::media_class::source &&
+              nd_info_copy.name != tags::pipewire::ee_source_name) {
+            Q_EMIT pm->sourceAdded(nd_info_copy);
+          } else if (nd_info_copy.media_class == tags::pipewire::media_class::sink &&
+                     nd_info_copy.name != tags::pipewire::ee_sink_name) {
+            Q_EMIT pm->sinkAdded(nd_info_copy);
+          } else if (nd_info_copy.media_class == tags::pipewire::media_class::output_stream) {
+            Q_EMIT pm->streamOutputAdded(nd_info_copy);
+          } else if (nd_info_copy.media_class == tags::pipewire::media_class::input_stream) {
+            Q_EMIT pm->streamInputAdded(nd_info_copy);
+          }
+        },
+        Qt::QueuedConnection);
+
   } else {
     pm->model_nodes.update_info(*nd->nd_info);
   }

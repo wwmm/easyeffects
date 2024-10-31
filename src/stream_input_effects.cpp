@@ -73,13 +73,6 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
     }
   });
 
-  connect(pm, &pw::Manager::sourceRemoved, [&](pw::NodeInfo node) {
-    if (db::StreamInputs::useDefaultInputDevice() && node.name == db::StreamInputs::inputDevice()) {
-      pm->input_device.id = SPA_ID_INVALID;
-      pm->input_device.serial = SPA_ID_INVALID;
-    }
-  });
-
   connect(pm, &pw::Manager::streamInputAdded, this, &StreamInputEffects::on_app_added);
   connect(pm, &pw::Manager::linkChanged, this, &StreamInputEffects::on_link_changed);
 

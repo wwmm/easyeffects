@@ -74,14 +74,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
     }
   });
 
-  connect(pm, &pw::Manager::sinkRemoved, [&](pw::NodeInfo node) {
-    if (db::StreamOutputs::useDefaultOutputDevice() && node.name == db::StreamOutputs::outputDevice()) {
-      pm->output_device.id = SPA_ID_INVALID;
-      pm->output_device.serial = SPA_ID_INVALID;
-    }
-  });
-
-  connect(pm, &pw::Manager::streamOutputAdded, this, &StreamOutputEffects::on_app_added);
+  connect(pm, &pw::Manager::streamOutputAdded, this, &StreamOutputEffects::on_app_added, Qt::QueuedConnection);
 
   connect_filters();
 
