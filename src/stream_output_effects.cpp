@@ -129,7 +129,7 @@ StreamOutputEffects::~StreamOutputEffects() {
 }
 
 void StreamOutputEffects::on_app_added(const pw::NodeInfo node_info) {
-  const auto blocklist = (bypass) ? QStringList() : db::StreamInputs::blocklist();
+  const auto blocklist = (bypass) ? QStringList() : db::StreamOutputs::blocklist();
 
   auto is_blocklisted = std::ranges::find(blocklist, node_info.application_id) != blocklist.end();
 

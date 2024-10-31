@@ -175,8 +175,6 @@ class Manager : public QObject {
 
   void streamInputAdded(NodeInfo node);
   void streamOutputAdded(NodeInfo node);
-  void streamInputChanged(NodeInfo node);
-  void streamOutputChanged(NodeInfo node);
   void streamInputRemoved(uint64_t serial);
   void streamOutputRemoved(uint64_t serial);
 
@@ -185,10 +183,8 @@ class Manager : public QObject {
   */
 
   void sourceAdded(NodeInfo node);
-  void sourceChanged(NodeInfo node);
   void sourceRemoved(NodeInfo node);
   void sinkAdded(NodeInfo node);
-  void sinkChanged(NodeInfo node);
   void sinkRemoved(NodeInfo node);
   void newDefaultSinkName(QString name);
   void newDefaultSourceName(QString name);

@@ -23,10 +23,10 @@ Kirigami.Page {
     Component.onCompleted: {
         switch (streamDB.visiblePage) {
         case 0:
-            stackPages.push(pageStreams);
+            stackPages.replace(pageStreams);
             break;
         case 1:
-            stackPages.push(pagePlugins);
+            stackPages.replace(pagePlugins);
             break;
         default:
         }

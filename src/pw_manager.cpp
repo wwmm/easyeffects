@@ -252,22 +252,16 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   auto* const pm = nd->pm;
 
-  // Check if the node is inside our map
-
-  if (!pm->model_nodes.has_serial(nd->nd_info->serial)) {
-    return;
-  }
-
   // Check if the node has to be removed
 
-  bool remove_node = false;
+  bool ignore_node = false;
 
   // Exclude blocklisted App id.
   // To be checked here because PW_KEY_APP_ID is not set in on_registry_global.
 
   if (const auto* app_id = spa_dict_lookup(info->props, PW_KEY_APP_ID)) {
     if (std::ranges::find(pm->blocklist_app_id, app_id) != pm->blocklist_app_id.end()) {
-      remove_node = true;
+      ignore_node = true;
     }
   }
 
@@ -277,12 +271,9 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   if (const auto* is_capture_sink = spa_dict_lookup(info->props, PW_KEY_STREAM_CAPTURE_SINK)) {
     if (std::strcmp(is_capture_sink, "true") == 0 && pw::Manager::exclude_monitor_stream) {
-      remove_node = true;
+      ignore_node = true;
     }
   }
-
-  bool ignore_input_stream = false;
-  bool ignore_output_stream = false;
 
   if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream && !pm->input_device.name.isEmpty()) {
     if (const auto* target_object = spa_dict_lookup(info->props, PW_KEY_TARGET_OBJECT)) {
@@ -295,18 +286,16 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       if (util::str_to_num(target_object, serial)) {
         if (serial != SPA_ID_INVALID && (serial != pm->input_device.serial && serial != pm->ee_source_node.serial)) {
-          ignore_input_stream = true;
+          ignore_node = true;
         }
       } else if (target_object != pm->input_device.name && target_object != pm->ee_source_node.name) {
-        ignore_input_stream = true;
+        ignore_node = true;
       }
 
-      if (ignore_input_stream) {
+      if (ignore_node) {
         util::debug("The input stream " + nd->nd_info->name.toStdString() +
                     " does not have as target the same mic used as EE input: " + pm->input_device.name.toStdString() +
                     "\n The user wants it to record from device " + target_object + ". We will ignore this stream.");
-
-        remove_node = true;
       }
     }
   }
@@ -324,133 +313,63 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       if (util::str_to_num(target_object, serial)) {
         if (serial != SPA_ID_INVALID && (serial != pm->output_device.serial && serial != pm->ee_sink_node.serial)) {
-          ignore_output_stream = true;
+          ignore_node = true;
         }
       } else if (target_object != pm->output_device.name && target_object != pm->ee_sink_node.name) {
-        ignore_output_stream = true;
+        ignore_node = true;
       }
 
-      if (ignore_output_stream) {
+      if (ignore_node) {
         util::debug(
             "The output stream " + nd->nd_info->name.toStdString() +
             " does not have as target the same output device used as EE: " + pm->output_device.name.toStdString() +
             "\n The user wants it to play to device " + target_object + ". We will ignore this stream.");
-
-        remove_node = true;
       }
     }
   }
 
-  if (remove_node) {
-    nd->nd_info->proxy = nullptr;
-
-    spa_hook_remove(&nd->proxy_listener);
-
-    pm->model_nodes.remove_by_serial(nd->nd_info->serial);
-
-    if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
-      const auto nd_info_copy = *nd->nd_info;
-
-      Q_EMIT pm->sourceRemoved(nd_info_copy);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
-      const auto nd_info_copy = *nd->nd_info;
-
-      Q_EMIT pm->sinkRemoved(nd_info_copy);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
-      const auto serial = nd->nd_info->serial;
-
-      Q_EMIT pm->streamOutputRemoved(serial);
-
-      // Do not use disconnect_stream because it uses lock and is intended for calls from a different thread
-      // NOLINTNEXTLINE
-      pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", nullptr, nullptr);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
-      const auto serial = nd->nd_info->serial;
-
-      Q_EMIT pm->streamInputRemoved(serial);
-
-      // Do not use disconnect_stream because it uses lock and is intended for calls from a different thread
-      // NOLINTNEXTLINE
-      pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", nullptr, nullptr);
-    }
-
-    util::debug(nd->nd_info->media_class.toStdString() + " " + util::to_string(nd->nd_info->id) + " " +
-                nd->nd_info->name.toStdString() + " has been removed");
-
+  if (ignore_node) {
     return;
   }
 
   // Chech for node info updates
 
-  auto app_info_ui_changed = false;
-
-  if (info->state != nd->nd_info->state) {
-    nd->nd_info->state = info->state;
-
-    app_info_ui_changed = true;
-  }
-
+  nd->nd_info->state = info->state;
   nd->nd_info->n_input_ports = static_cast<int>(info->n_input_ports);
   nd->nd_info->n_output_ports = static_cast<int>(info->n_output_ports);
 
   spa_dict_get_num(info->props, PW_KEY_PRIORITY_SESSION, nd->nd_info->priority);
 
   if (const auto* app_id = spa_dict_lookup(info->props, PW_KEY_APP_ID)) {
-    if (app_id != nd->nd_info->application_id) {
-      nd->nd_info->application_id = app_id;
-    }
+    nd->nd_info->application_id = app_id;
   }
 
   // spa_dict_get_string(props, PW_KEY_APP_PROCESS_BINARY, app_process_binary);
 
   if (const auto* app_name = spa_dict_lookup(info->props, PW_KEY_APP_NAME)) {
-    if (app_name != nd->nd_info->app_name) {
-      nd->nd_info->app_name = app_name;
-
-      app_info_ui_changed = true;
-    }
+    nd->nd_info->app_name = app_name;
   }
 
   if (const auto* app_process_id = spa_dict_lookup(info->props, PW_KEY_APP_PROCESS_ID)) {
-    if (app_process_id != nd->nd_info->app_process_id) {
-      nd->nd_info->app_process_id = app_process_id;
-
-      app_info_ui_changed = true;
-    }
+    nd->nd_info->app_process_id = app_process_id;
   }
 
   if (const auto* app_process_binary = spa_dict_lookup(info->props, PW_KEY_APP_PROCESS_BINARY)) {
-    if (app_process_binary != nd->nd_info->app_process_binary) {
-      nd->nd_info->app_process_binary = app_process_binary;
-
-      app_info_ui_changed = true;
-    }
+    nd->nd_info->app_process_binary = app_process_binary;
   }
 
   if (const auto* app_icon_name = spa_dict_lookup(info->props, PW_KEY_APP_ICON_NAME)) {
-    if (app_icon_name != nd->nd_info->app_icon_name) {
-      nd->nd_info->app_icon_name = app_icon_name;
-
-      app_info_ui_changed = true;
-    }
+    nd->nd_info->app_icon_name = app_icon_name;
   }
 
   if (const auto* media_icon_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_ICON_NAME)) {
-    if (media_icon_name != nd->nd_info->media_icon_name) {
-      nd->nd_info->media_icon_name = media_icon_name;
-
-      app_info_ui_changed = true;
-    }
+    nd->nd_info->media_icon_name = media_icon_name;
   }
 
   spa_dict_get_string(info->props, PW_KEY_DEVICE_ICON_NAME, nd->nd_info->device_icon_name);
 
   if (const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME)) {
-    if (media_name != nd->nd_info->media_name) {
-      nd->nd_info->media_name = media_name;
-
-      app_info_ui_changed = true;
-    }
+    nd->nd_info->media_name = media_name;
   }
 
   if (const auto* node_latency = spa_dict_lookup(info->props, PW_KEY_NODE_LATENCY)) {
@@ -461,25 +380,59 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     int rate = 1;
 
     if (util::str_to_num(str.substr(delimiter_pos + 1U), rate)) {
-      if (rate != nd->nd_info->rate) {
-        nd->nd_info->rate = rate;
-
-        app_info_ui_changed = true;
-      }
+      nd->nd_info->rate = rate;
     }
 
     float pw_lat = 0.0F;
 
     if (util::str_to_num(str.substr(0U, delimiter_pos), pw_lat)) {
-      if (auto latency = (pw_lat / static_cast<float>(nd->nd_info->rate)); latency != nd->nd_info->latency) {
-        nd->nd_info->latency = latency;
-
-        app_info_ui_changed = true;
-      }
+      nd->nd_info->latency = pw_lat / static_cast<float>(nd->nd_info->rate);
     }
   }
 
   spa_dict_get_num(info->props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
+
+  // sometimes PipeWire destroys the pointer before signal_idle is called,
+  // therefore we make a copy
+
+  if (nd->nd_info->connected != pm->stream_is_connected(info->id, nd->nd_info->media_class)) {
+    nd->nd_info->connected = !nd->nd_info->connected;
+  }
+
+  if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
+    const auto nd_info_copy = *nd->nd_info;
+
+    if (nd_info_copy.serial == pm->ee_source_node.serial) {
+      pm->ee_source_node = nd_info_copy;
+    }
+
+  } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
+    const auto nd_info_copy = *nd->nd_info;
+
+    if (nd_info_copy.serial == pm->ee_sink_node.serial) {
+      pm->ee_sink_node = nd_info_copy;
+    }
+  }
+
+  // update NodeInfo inside map or add it if it is not in the model yet
+
+  if (!pm->model_nodes.has_serial(nd->nd_info->serial)) {
+    pm->model_nodes.append(*nd->nd_info);
+
+    if (nd->nd_info->media_class == tags::pipewire::media_class::source &&
+        nd->nd_info->name != tags::pipewire::ee_source_name) {
+      Q_EMIT pm->sourceAdded(*nd->nd_info);
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink &&
+               nd->nd_info->name != tags::pipewire::ee_sink_name) {
+      Q_EMIT pm->sinkAdded(*nd->nd_info);
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
+      Q_EMIT pm->streamOutputAdded(*nd->nd_info);
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
+      Q_EMIT pm->streamInputAdded(*nd->nd_info);
+    }
+  } else {
+    pm->model_nodes.update_info(*nd->nd_info);
+  }
 
   if ((info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) != 0U) {
     auto params = std::span(info->params, info->n_params);
@@ -495,46 +448,6 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
   }
 
-  // update NodeInfo inside map
-
-  pm->model_nodes.update_info(*nd->nd_info);
-
-  // sometimes PipeWire destroys the pointer before signal_idle is called,
-  // therefore we make a copy
-
-  if (nd->nd_info->connected != pm->stream_is_connected(info->id, nd->nd_info->media_class)) {
-    nd->nd_info->connected = !nd->nd_info->connected;
-
-    app_info_ui_changed = true;
-  }
-
-  if (app_info_ui_changed) {
-    const auto nd_info_copy = *nd->nd_info;
-
-    if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
-      Q_EMIT pm->streamOutputChanged(nd_info_copy);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
-      Q_EMIT pm->streamInputChanged(nd_info_copy);
-    }
-  }
-
-  if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
-    const auto nd_info_copy = *nd->nd_info;
-
-    if (nd_info_copy.serial == pm->ee_source_node.serial) {
-      pm->ee_source_node = nd_info_copy;
-    }
-
-    Q_EMIT pm->sourceChanged(nd_info_copy);
-  } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
-    const auto nd_info_copy = *nd->nd_info;
-
-    if (nd_info_copy.serial == pm->ee_sink_node.serial) {
-      pm->ee_sink_node = nd_info_copy;
-    }
-
-    Q_EMIT pm->sinkChanged(nd_info_copy);
-  }
   // const struct spa_dict_item* item = nullptr;
   // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
 }
@@ -1128,7 +1041,15 @@ void on_registry_global(void* data,
 
     spa_dict_get_num(props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
-    pm->model_nodes.append(*nd->nd_info);
+    const auto user_blocklist = (media_class == tags::pipewire::media_class::output_stream)
+                                    ? db::StreamOutputs::blocklist()
+                                    : db::StreamInputs::blocklist();
+
+    nd->nd_info->is_blocklisted =
+        std::ranges::find(user_blocklist, nd->nd_info->application_id) != user_blocklist.end();
+
+    nd->nd_info->is_blocklisted =
+        nd->nd_info->is_blocklisted || std::ranges::find(user_blocklist, nd->nd_info->name) != user_blocklist.end();
 
     const auto [node_it, success] = pm->node_map.insert({serial, *nd->nd_info});
 
@@ -1141,21 +1062,6 @@ void on_registry_global(void* data,
 
     pw_node_add_listener(proxy, &nd->object_listener, &node_events, nd);  // NOLINT
     pw_proxy_add_listener(proxy, &nd->proxy_listener, &node_proxy_events, nd);
-
-    // sometimes PipeWire destroys the pointer before signal_idle is called,
-    // therefore we make a copy of NodeInfo
-
-    const auto nd_info_copy = *nd->nd_info;
-
-    if (media_class == tags::pipewire::media_class::source && node_name != tags::pipewire::ee_source_name) {
-      Q_EMIT pm->sourceAdded(nd_info_copy);
-    } else if (media_class == tags::pipewire::media_class::sink && node_name != tags::pipewire::ee_sink_name) {
-      Q_EMIT pm->sinkAdded(nd_info_copy);
-    } else if (media_class == tags::pipewire::media_class::output_stream) {
-      Q_EMIT pm->streamOutputAdded(nd_info_copy);
-    } else if (media_class == tags::pipewire::media_class::input_stream) {
-      Q_EMIT pm->streamInputAdded(nd_info_copy);
-    }
 
     // We will have debug info about our filters later
 

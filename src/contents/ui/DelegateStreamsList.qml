@@ -59,7 +59,7 @@ Kirigami.AbstractCard {
             ColumnLayout {
                 Controls.CheckBox {
                     text: i18n("Enable")
-                    checked: true
+                    checked: model.connected
                 }
 
                 Controls.CheckBox {
