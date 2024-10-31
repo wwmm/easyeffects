@@ -61,6 +61,7 @@ BassEnhancer::BassEnhancer(const std::string& tag,
   BIND_LV2_PORT_DB("amount", amount, setAmount, db::BassEnhancer::amountChanged, false);
   BIND_LV2_PORT("drive", harmonics, setHarmonics, db::BassEnhancer::harmonicsChanged);
   BIND_LV2_PORT("freq", scope, setScope, db::BassEnhancer::scopeChanged);
+  BIND_LV2_PORT("floor", floor, setFloor, db::BassEnhancer::floorChanged);
   BIND_LV2_PORT("blend", blend, setBlend, db::BassEnhancer::blendChanged);
   BIND_LV2_PORT("floor_active", floorActive, setFloorActive, db::BassEnhancer::floorActiveChanged);
 }
@@ -86,8 +87,6 @@ void BassEnhancer::setup() {
 
   if (lv2_wrapper->get_rate() != rate) {
     lv2_wrapper->create_instance(rate);
-
-    // lv2_wrapper->load_ui();
   }
 }
 

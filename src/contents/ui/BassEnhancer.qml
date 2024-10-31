@@ -99,8 +99,8 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 36
                         value: pluginDB.amount
-                        decimals: 0
-                        stepSize: 1
+                        decimals: 1
+                        stepSize: 0.1
                         unit: "dB"
                         onValueModified: (v) => {
                             pluginDB.amount = v;

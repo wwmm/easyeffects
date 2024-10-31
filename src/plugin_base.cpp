@@ -24,6 +24,9 @@
 #include <pipewire/port.h>
 #include <pipewire/properties.h>
 #include <pipewire/thread-loop.h>
+#include <qnamespace.h>
+#include <qobjectdefs.h>
+#include <qtimer.h>
 #include <qtmetamacros.h>
 #include <spa/node/io.h>
 #include <spa/param/latency-utils.h>
@@ -216,7 +219,8 @@ PluginBase::PluginBase(std::string tag,
       instance_id(std::move(instance_id)),
       pipeline_type(pipe_type),
       enable_probe(enable_probe),
-      pm(pipe_manager) {
+      pm(pipe_manager),
+      native_ui_timer(new QTimer(this)) {
   QString description;
 
   if (name != "output_level" && name != "spectrum") {
@@ -317,6 +321,15 @@ PluginBase::PluginBase(std::string tag,
   }
 
   pm->sync_wait_unlock();
+
+  connect(native_ui_timer, &QTimer::timeout, this, [&]() {
+    if (lv2_wrapper == nullptr || !lv2_wrapper->has_ui()) {
+      return;
+    }
+
+    lv2_wrapper->notify_ui();
+    lv2_wrapper->update_ui();
+  });
 }
 
 PluginBase::~PluginBase() {
@@ -439,11 +452,20 @@ void PluginBase::show_native_ui() {
   }
 
   if (!lv2_wrapper->has_ui()) {
-    lv2_wrapper->load_ui();
+    // using invokeMethod to force this code to run in the main thread and avoid load in the QML thread.
+    QMetaObject::invokeMethod(
+        this,
+        [this] {
+          lv2_wrapper->load_ui();
+          native_ui_timer->start(static_cast<long>(1000.0 / 30));
+        },
+        Qt::QueuedConnection);
   }
 }
 
 void PluginBase::close_native_ui() {
+  native_ui_timer->stop();
+
   if (lv2_wrapper == nullptr) {
     return;
   }

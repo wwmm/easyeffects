@@ -24,6 +24,7 @@
 #include <qtmetamacros.h>
 #include <spa/utils/hook.h>
 #include <sys/types.h>
+#include <QTimer>
 #include <atomic>
 #include <chrono>
 #include <memory>
@@ -199,4 +200,6 @@ class PluginBase : public QObject {
 
  private:
   uint node_id = 0U;
+
+  QTimer* native_ui_timer = nullptr;
 };
