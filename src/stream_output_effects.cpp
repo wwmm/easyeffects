@@ -74,8 +74,6 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
     }
   });
 
-  connect(pm, &pw::Manager::streamOutputAdded, this, &StreamOutputEffects::on_app_added, Qt::QueuedConnection);
-
   connect_filters();
 
   connect(db::StreamOutputs::self(), &db::StreamOutputs::outputDeviceChanged, [&]() {
@@ -119,18 +117,6 @@ StreamOutputEffects::~StreamOutputEffects() {
   disconnect_filters();
 
   util::debug("destroyed");
-}
-
-void StreamOutputEffects::on_app_added(const pw::NodeInfo node_info) {
-  const auto blocklist = (bypass) ? QStringList() : db::StreamOutputs::blocklist();
-
-  auto is_blocklisted = std::ranges::find(blocklist, node_info.application_id) != blocklist.end();
-
-  is_blocklisted = is_blocklisted || std::ranges::find(blocklist, node_info.name) != blocklist.end();
-
-  if (db::Main::processAllOutputs() != 0 && !is_blocklisted) {
-    pm->connect_stream_output(node_info.id);
-  }
 }
 
 auto StreamOutputEffects::apps_want_to_play() -> bool {

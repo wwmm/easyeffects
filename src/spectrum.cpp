@@ -73,8 +73,8 @@ Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
   lv2_wrapper->set_control_port_value("dry_l", 0.0F);
   lv2_wrapper->set_control_port_value("dry_r", 0.0F);
 
-  lv2_wrapper->set_control_port_value("wet_l", static_cast<float>(util::db_to_linear(0.0F)));
-  lv2_wrapper->set_control_port_value("wet_r", static_cast<float>(util::db_to_linear(0.0F)));
+  lv2_wrapper->set_control_port_value("wet_l", util::db_to_linear(0.0F));
+  lv2_wrapper->set_control_port_value("wet_r", util::db_to_linear(0.0F));
 
   //   lv2_wrapper->bind_key_int<"time_l", "avsync-delay">(settings);
   //   lv2_wrapper->bind_key_int<"time_r", "avsync-delay">(settings);

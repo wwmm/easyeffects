@@ -24,6 +24,7 @@
 #include <cmath>
 #include <cstddef>
 #include <mutex>
+#include <numbers>
 #include <span>
 #include <string>
 #include "db_manager.hpp"
@@ -289,7 +290,7 @@ void Autogain::process(std::span<float>& left_in,
       const double diff = settings->target() - loudness;
 
       // 10^(diff/20). The way below should be faster than using pow
-      const double gain = std::exp((diff / 20.0) * std::log(10.0));
+      const double gain = std::exp((diff / 20.0) * std::numbers::ln10);
 
       const double peak = (peak_L > peak_R) ? peak_L : peak_R;
 

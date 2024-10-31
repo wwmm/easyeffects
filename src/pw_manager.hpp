@@ -173,9 +173,6 @@ class Manager : public QObject {
   void defaultInputDeviceNameChanged();
   void defaultOutputDeviceNameChanged();
 
-  void streamInputAdded(NodeInfo node);
-  void streamOutputAdded(NodeInfo node);
-
   /*
     Do not pass NodeInfo by reference. Sometimes it dies before we use it and a segmentation fault happens.
   */

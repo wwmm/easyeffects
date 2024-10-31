@@ -415,32 +415,23 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
     auto nd_info_copy = *nd->nd_info;
 
-    /*
-      If an streams is already running and EasyEffects is started PipeWire's node info callback will most likely be
-      called before Qt's event loop starts running. As far as I understood setting the slot connection to
-      Qt::QueuedConnection was supposed to queue the call for when the event loops starts running. But somehow this is
-      not happening and the callback seems to be ignored. Either that or the sie and soe instances are getting created
-      after the first calls to the node info callback.
-
-      So we use QMetaObject::invokeMethod to schedule a call when the event loop runs.
-    */
-
-    QMetaObject::invokeMethod(
-        pm,
-        [pm, nd_info_copy] {
-          if (nd_info_copy.media_class == tags::pipewire::media_class::source &&
-              nd_info_copy.name != tags::pipewire::ee_source_name) {
-            Q_EMIT pm->sourceAdded(nd_info_copy);
-          } else if (nd_info_copy.media_class == tags::pipewire::media_class::sink &&
-                     nd_info_copy.name != tags::pipewire::ee_sink_name) {
-            Q_EMIT pm->sinkAdded(nd_info_copy);
-          } else if (nd_info_copy.media_class == tags::pipewire::media_class::output_stream) {
-            Q_EMIT pm->streamOutputAdded(nd_info_copy);
-          } else if (nd_info_copy.media_class == tags::pipewire::media_class::input_stream) {
-            Q_EMIT pm->streamInputAdded(nd_info_copy);
-          }
-        },
-        Qt::QueuedConnection);
+    if (nd_info_copy.media_class == tags::pipewire::media_class::source &&
+        nd_info_copy.name != tags::pipewire::ee_source_name) {
+      Q_EMIT pm->sourceAdded(nd_info_copy);
+    } else if (nd_info_copy.media_class == tags::pipewire::media_class::sink &&
+               nd_info_copy.name != tags::pipewire::ee_sink_name) {
+      Q_EMIT pm->sinkAdded(nd_info_copy);
+    } else if (nd_info_copy.media_class == tags::pipewire::media_class::output_stream) {
+      if (db::Main::processAllOutputs() && !nd->nd_info->is_blocklisted) {
+        pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
+                                 util::to_string(pm->ee_sink_node.serial).c_str());
+      }
+    } else if (nd_info_copy.media_class == tags::pipewire::media_class::input_stream) {
+      if (db::Main::processAllInputs() && !nd->nd_info->is_blocklisted) {
+        pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
+                                 util::to_string(pm->ee_source_node.serial).c_str());
+      }
+    }
 
   } else {
     pm->model_nodes.update_info(*nd->nd_info);
@@ -1434,6 +1425,23 @@ Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_
       }
     }
   } while (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID);
+
+  /*
+    By the time our virtual devices are loaded we may have already received some streams. So
+    we connected them here now that our virtual devices are available.
+  */
+
+  for (const auto& [serial, node] : node_map) {
+    if (node.media_class == tags::pipewire::media_class::output_stream) {
+      if (db::Main::processAllOutputs() != 0 && !node.is_blocklisted) {
+        connect_stream_output(node.id);
+      }
+    } else if (node.media_class == tags::pipewire::media_class::input_stream) {
+      if (db::Main::processAllInputs() != 0 && !node.is_blocklisted) {
+        connect_stream_input(node.id);
+      }
+    }
+  }
 }
 
 Manager::~Manager() {

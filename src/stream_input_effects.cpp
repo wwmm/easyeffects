@@ -73,7 +73,6 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
     }
   });
 
-  connect(pm, &pw::Manager::streamInputAdded, this, &StreamInputEffects::on_app_added);
   connect(pm, &pw::Manager::linkChanged, this, &StreamInputEffects::on_link_changed);
 
   connect_filters();
@@ -119,18 +118,6 @@ StreamInputEffects::~StreamInputEffects() {
   disconnect_filters();
 
   util::debug("destroyed");
-}
-
-void StreamInputEffects::on_app_added(const pw::NodeInfo node_info) {
-  const auto blocklist = (bypass) ? QStringList() : db::StreamInputs::blocklist();
-
-  auto is_blocklisted = std::ranges::find(blocklist, node_info.application_id) != blocklist.end();
-
-  is_blocklisted = is_blocklisted || std::ranges::find(blocklist, node_info.name) != blocklist.end();
-
-  if (db::Main::processAllInputs() != 0 && !is_blocklisted) {
-    pm->connect_stream_input(node_info.id);
-  }
 }
 
 auto StreamInputEffects::apps_want_to_play() -> bool {

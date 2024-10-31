@@ -21,7 +21,6 @@
 
 #include "effects_base.hpp"
 #include "pw_manager.hpp"
-#include "pw_objects.hpp"
 
 class StreamOutputEffects : public EffectsBase {
  public:
@@ -42,6 +41,4 @@ class StreamOutputEffects : public EffectsBase {
   void disconnect_filters();
 
   auto apps_want_to_play() -> bool;
-
-  void on_app_added(pw::NodeInfo node_info);
 };
