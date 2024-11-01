@@ -194,6 +194,7 @@ Kirigami.ScrollablePage {
                 Kirigami.Action {
                     text: i18n("Show Native Window")
                     icon.name: "window-duplicate-symbolic"
+                    enabled: EEdbm.main.showNativePluginUi
                     checkable: true
                     checked: false
                     onTriggered: {

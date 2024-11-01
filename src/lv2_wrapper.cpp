@@ -710,10 +710,6 @@ void Lv2Wrapper::close_ui() {
   libhandle = nullptr;
 }
 
-void Lv2Wrapper::set_ui_update_rate(const uint& value) {
-  ui_update_rate = value;
-}
-
 void Lv2Wrapper::ui_port_event(const uint& port_index, const float& value) {
   if (ui_descriptor == nullptr || ui_handle == nullptr) {
     return;

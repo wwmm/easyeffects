@@ -49,6 +49,7 @@
 #include <string>
 #include <thread>
 #include <utility>
+#include "db_manager.hpp"
 #include "pipeline_type.hpp"
 #include "pw_manager.hpp"
 #include "tags_app.hpp"
@@ -322,6 +323,8 @@ PluginBase::PluginBase(std::string tag,
 
   pm->sync_wait_unlock();
 
+  native_ui_timer->setInterval(static_cast<long>(1000.0 / db::Main::lv2uiUpdateFrequency()));
+
   connect(native_ui_timer, &QTimer::timeout, this, [&]() {
     if (lv2_wrapper == nullptr || !lv2_wrapper->has_ui()) {
       return;
@@ -457,7 +460,7 @@ void PluginBase::show_native_ui() {
         this,
         [this] {
           lv2_wrapper->load_ui();
-          native_ui_timer->start(static_cast<long>(1000.0 / 30));
+          native_ui_timer->start();
         },
         Qt::QueuedConnection);
   }
@@ -479,7 +482,7 @@ void PluginBase::set_native_ui_update_frequency(const uint& value) {
     return;
   }
 
-  lv2_wrapper->set_ui_update_rate(value);
+  native_ui_timer->setInterval(static_cast<long>(1000.0 / value));
 }
 
 void PluginBase::get_peaks(const std::span<float>& left_in,

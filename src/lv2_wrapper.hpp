@@ -121,8 +121,6 @@ class Lv2Wrapper {
 
   void close_ui();
 
-  void set_ui_update_rate(const uint& value);
-
   void ui_port_event(const uint& port_index, const float& value);
 
   void native_ui_to_database();
@@ -275,8 +273,6 @@ class Lv2Wrapper {
   uint n_samples = 0U;
 
   uint rate = 0U;
-
-  uint ui_update_rate = 30U;
 
   std::vector<Port> ports;
 
