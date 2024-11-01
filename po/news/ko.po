@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-08-03 13:13-0300\n"
+"POT-Creation-Date: 2024-11-01 00:27-0300\n"
 "PO-Revision-Date: 2023-08-09 08:17+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/"
@@ -19,480 +19,726 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.0-dev\n"
 
-#: src/contents/ui/DelegateClientsList.qml:29
-#: src/contents/ui/DelegateModulesList.qml:29
+#: src/command_line_parser.cpp:35
+msgid "Quit Easy Effects. Useful when running in service mode."
+msgstr ""
+
+#: src/command_line_parser.cpp:36
+#, fuzzy
+msgid "Reset Easy Effects."
+msgstr "EasyEffects"
+
+#: src/command_line_parser.cpp:37 src/command_line_parser.cpp:39
+msgid "Hide the Window."
+msgstr ""
+
+#: src/command_line_parser.cpp:38
+msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+msgstr ""
+
+#: src/command_line_parser.cpp:40
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:54 src/contents/ui/BassEnhancer.qml:90
+msgid "Controls"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:62
+#, fuzzy
+msgid "Reference"
+msgstr "참조"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:141
+msgid "Momentary"
+msgstr "Momentary"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:152
+msgid "Short-Term"
+msgstr "Short-Term"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:163
+msgid "Integrated"
+msgstr "Integrated"
+
+#: src/contents/ui/Autogain.qml:66
+msgid "Geometric Mean (MSI)"
+msgstr "Geometric Mean"
+
+#: src/contents/ui/Autogain.qml:66
+#, fuzzy
+msgid "Geometric Mean (MS)"
+msgstr "Geometric Mean"
+
+#: src/contents/ui/Autogain.qml:66
+#, fuzzy
+msgid "Geometric Mean (MI)"
+msgstr "Geometric Mean"
+
+#: src/contents/ui/Autogain.qml:66
+#, fuzzy
+msgid "Geometric Mean (SI)"
+msgstr "Geometric Mean"
+
+#: src/contents/ui/Autogain.qml:75
+msgid "Target"
+msgstr "대상"
+
+#: src/contents/ui/Autogain.qml:90
+msgid "Silence"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:105
+msgid "Maximum History"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:127 src/contents/ui/Autogain.qml:196
+#: src/tags_plugin_name.cpp:44
+msgid "Loudness"
+msgstr "Loudness"
+
+#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:153
+#: src/contents/ui/Autogain.qml:164 src/contents/ui/Autogain.qml:175
+#: src/contents/ui/Autogain.qml:197
+msgid "LUFS"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:174
+#, fuzzy
+msgid "Relative"
+msgstr "Relative"
+
+#: src/contents/ui/Autogain.qml:185
+msgid "Range"
+msgstr "Range"
+
+#: src/contents/ui/Autogain.qml:186
+#, fuzzy
+msgid "LU"
+msgstr "L"
+
+#: src/contents/ui/Autogain.qml:207
+msgid "Output Gain"
+msgstr "아웃풋 게인"
+
+#: src/contents/ui/Autogain.qml:208
+msgid "dB"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:180
+#, fuzzy
+msgid "Using"
+msgstr "다음 사용 중"
+
+#: src/contents/ui/Autogain.qml:246
+msgid "Reset History"
+msgstr "히스토리 초기화"
+
+#: src/contents/ui/Autogain.qml:253
+msgid "Reset Settings"
+msgstr ""
+
+#: src/contents/ui/BassEnhancer.qml:39
+msgid "Blend Harmonics"
+msgstr "Blend Harmonics"
+
+#: src/contents/ui/BassEnhancer.qml:48
+msgid "3rd"
+msgstr "3rd"
+
+#: src/contents/ui/BassEnhancer.qml:71
+#, fuzzy
+msgid "2rd"
+msgstr "3rd"
+
+#: src/contents/ui/BassEnhancer.qml:98
+#, fuzzy
+msgid "Amount"
+msgstr "Amount"
+
+#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:157
+#, fuzzy
+msgid "Harmonics"
+msgstr "Harmonics"
+
+#: src/contents/ui/BassEnhancer.qml:127
+msgid "Scope"
+msgstr "Scope"
+
+#: src/contents/ui/BassEnhancer.qml:142
+msgid "Floor"
+msgstr "Floor"
+
+#: src/contents/ui/BassEnhancer.qml:195
+msgid "Show Native Window"
+msgstr ""
+
+#: src/contents/ui/BassEnhancer.qml:208
+#, fuzzy
+msgid "Listen"
+msgstr "듣는 중"
+
+#: src/contents/ui/BassEnhancer.qml:219
+msgid "Reset"
+msgstr "리셋"
+
+#: src/contents/ui/DelegateClientsList.qml:34
+#: src/contents/ui/DelegateModulesList.qml:34
 msgid "Id"
 msgstr ""
 
-#: src/contents/ui/DelegateClientsList.qml:43
-#: src/contents/ui/DelegateModulesList.qml:43
+#: src/contents/ui/DelegateClientsList.qml:48
+#: src/contents/ui/DelegateModulesList.qml:48
+#: src/contents/ui/PipeWirePage.qml:109 src/contents/ui/PipeWirePage.qml:148
 msgid "Name"
 msgstr "이름"
 
-#: src/contents/ui/DelegateClientsList.qml:57
+#: src/contents/ui/DelegateClientsList.qml:62
 msgid "Api"
 msgstr ""
 
-#: src/contents/ui/DelegateClientsList.qml:71
+#: src/contents/ui/DelegateClientsList.qml:76
 #, fuzzy
 msgid "Access"
 msgstr "액세스"
 
-#: src/contents/ui/DelegateModulesList.qml:57
+#: src/contents/ui/DelegateModulesList.qml:62
 #, fuzzy
 msgid "Description"
 msgstr "Detection"
 
-#: src/contents/ui/DelegatePluginsList.qml:49
+#: src/contents/ui/DelegatePluginsList.qml:57
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "Easy Effects"
 
-#: src/contents/ui/DelegatePluginsList.qml:62
+#: src/contents/ui/DelegatePluginsList.qml:70
 msgid "Remove this effect"
 msgstr ""
 
-#: src/contents/ui/DelegateStreamsList.qml:58
+#: src/contents/ui/DelegateStreamsList.qml:51
+#, fuzzy
+msgid " channels"
+msgstr "채널"
+
+#: src/contents/ui/DelegateStreamsList.qml:61
 msgid "Enable"
 msgstr ""
 
-#: src/contents/ui/DelegateStreamsList.qml:63
+#: src/contents/ui/DelegateStreamsList.qml:66
 msgid "Exclude"
 msgstr ""
 
-#: src/contents/ui/main.qml:14
+#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+msgid "Input"
+msgstr "인풋"
+
+#: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
+msgid "Output"
+msgstr "아웃풋"
+
+#: src/contents/ui/main.qml:17
 #, fuzzy
 msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/main.qml:86
+#: src/contents/ui/main.qml:102
 #, fuzzy
 msgid "Preset: "
 msgstr "프리셋"
 
-#: src/contents/ui/main.qml:94 src/contents/ui/main.qml:206
+#: src/contents/ui/main.qml:110 src/contents/ui/main.qml:235
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:116
+#: src/contents/ui/main.qml:132
 msgid "Presets"
 msgstr "프리셋"
 
-#: src/contents/ui/main.qml:124
+#: src/contents/ui/main.qml:140
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:190 src/contents/ui/PreferencesSheet.qml:12
-#: src/contents/ui/PreferencesSheet.qml:17
-#: src/contents/ui/PreferencesSheet.qml:453
-#: src/contents/ui/PreferencesSheet.qml:466
+#: src/contents/ui/main.qml:203
+#, fuzzy
+msgid "PipeWire"
+msgstr "PipeWire"
+
+#: src/contents/ui/main.qml:219 src/contents/ui/PreferencesSheet.qml:13
+#: src/contents/ui/PreferencesSheet.qml:18
+#: src/contents/ui/PreferencesSheet.qml:467
+#: src/contents/ui/PreferencesSheet.qml:480
 #, fuzzy
 msgid "Preferences"
 msgstr "참조"
 
-#: src/contents/ui/main.qml:198
+#: src/contents/ui/main.qml:227
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/MenuAddPlugins.qml:42
+#: src/contents/ui/MenuAddPlugins.qml:41
 msgid "Empty"
 msgstr ""
 
-#: src/contents/ui/MenuAddPlugins.qml:129
+#: src/contents/ui/MenuAddPlugins.qml:130
 #, fuzzy
 msgid "Added Plugin: "
 msgstr "플러그인 추가"
 
-#: src/contents/ui/MenuAddPlugins.qml:144
+#: src/contents/ui/MenuAddPlugins.qml:145
 #, fuzzy
 msgid "Search"
 msgstr "검색"
 
-#: src/contents/ui/PageStreamsEffects.qml:93
+#: src/contents/ui/PageStreamsEffects.qml:56
 msgid "Empty List"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:94
+#: src/contents/ui/PageStreamsEffects.qml:57
 msgid "No Audio Application Available"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:119
+#: src/contents/ui/PageStreamsEffects.qml:198
 #, fuzzy
 msgid "Add Effect"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:165
+#: src/contents/ui/PageStreamsEffects.qml:248
+#: src/contents/ui/PageStreamsEffects.qml:380
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:165
+#: src/contents/ui/PageStreamsEffects.qml:248
 msgid "Input Device"
 msgstr "입력 장치"
 
-#: src/contents/ui/PageStreamsEffects.qml:183
+#: src/contents/ui/PageStreamsEffects.qml:266
 msgid "Recorders"
-msgstr ""
-
-#: src/contents/ui/PageStreamsEffects.qml:210
-#, fuzzy
-msgid "No Effects"
-msgstr "EasyEffects"
-
-#: src/contents/ui/PageStreamsEffects.qml:211
-msgid "Audio Stream Not Modified"
 msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:291
 #, fuzzy
+msgid "No Effects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/PageStreamsEffects.qml:292
+msgid "Audio Stream Not Modified"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:390
+#, fuzzy
+msgid "Effects"
+msgstr "EasyEffects"
+
+#: src/contents/ui/PageStreamsEffects.qml:406
+#, fuzzy
 msgid "Excluded Apps"
 msgstr "제외된 프로그램 목록"
 
-#: src/contents/ui/PipeWirePage.qml:14
+#: src/contents/ui/PipeWirePage.qml:15
 msgid "General"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:18
+#: src/contents/ui/PipeWirePage.qml:19
 #, fuzzy
 msgid "Preset Autoloading"
 msgstr "향상된 번역"
 
-#: src/contents/ui/PipeWirePage.qml:22
+#: src/contents/ui/PipeWirePage.qml:23
 msgid "Modules"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:26
+#: src/contents/ui/PipeWirePage.qml:27
 msgid "Clients"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:30
+#: src/contents/ui/PipeWirePage.qml:31
 msgid "Test Signal"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:40
+#: src/contents/ui/PipeWirePage.qml:83
 msgid "Device Management"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:44
+#: src/contents/ui/PipeWirePage.qml:87
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:48
+#: src/contents/ui/PipeWirePage.qml:94
+#, fuzzy
+msgid "Use Default Input"
+msgstr "기본값"
+
+#: src/contents/ui/PipeWirePage.qml:133
+#, fuzzy
+msgid "Use Default Output"
+msgstr "기본값"
+
+#: src/contents/ui/PipeWirePage.qml:167
 msgid "Server Information"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:53
+#: src/contents/ui/PipeWirePage.qml:172
 msgid "Header Version"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:58
+#: src/contents/ui/PipeWirePage.qml:177
 msgid "Library Version"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:63
+#: src/contents/ui/PipeWirePage.qml:182
 msgid "Runtime Version"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:68
+#: src/contents/ui/PipeWirePage.qml:187
 msgid "Default Sampling Rate"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:73
+#: src/contents/ui/PipeWirePage.qml:192
 msgid "Minimum Quantum"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:78
+#: src/contents/ui/PipeWirePage.qml:197
 msgid "Maximum Quantum"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:83
+#: src/contents/ui/PipeWirePage.qml:202
 #, fuzzy
 msgid "Default Quantum"
 msgstr "기본값"
 
-#: src/contents/ui/PipeWirePage.qml:108
+#: src/contents/ui/PipeWirePage.qml:227
 #, fuzzy
 msgid "No Modules"
 msgstr "제거"
 
-#: src/contents/ui/PipeWirePage.qml:135
+#: src/contents/ui/PipeWirePage.qml:254
 msgid "No Clients"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:37
-msgid "Launch Service at System Startup"
+#: src/contents/ui/PreferencesSheet.qml:38
+msgid "Enable Service Mode"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:46
+#: src/contents/ui/PreferencesSheet.qml:50
+msgid "Autostart on Login"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:59
 msgid "Show the Tray Icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:79
+#: src/contents/ui/PreferencesSheet.qml:93
 msgid "Process All Output Streams"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:91
+#: src/contents/ui/PreferencesSheet.qml:105
 msgid "Process All Input Streams"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:103
+#: src/contents/ui/PreferencesSheet.qml:117
 msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:115
+#: src/contents/ui/PreferencesSheet.qml:129
 msgid "Use Cubic Volume"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:127
+#: src/contents/ui/PreferencesSheet.qml:141
 msgid "Enable the Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:139
+#: src/contents/ui/PreferencesSheet.qml:153
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:140
+#: src/contents/ui/PreferencesSheet.qml:154
 #, fuzzy
 msgid "Input Pipeline"
 msgstr "입력 장치"
 
-#: src/contents/ui/PreferencesSheet.qml:156
+#: src/contents/ui/PreferencesSheet.qml:170
 #, fuzzy
 msgid "Update Interval"
 msgstr "업데이트된 번역"
 
-#: src/contents/ui/PreferencesSheet.qml:157
+#: src/contents/ui/PreferencesSheet.qml:171
 msgid "Related to Level Meters and Spectrum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:190
+#: src/contents/ui/PreferencesSheet.qml:204
 #, fuzzy
 msgid "State"
 msgstr "상태"
 
-#: src/contents/ui/PreferencesSheet.qml:197
+#: src/contents/ui/PreferencesSheet.qml:211
 msgid "Enabled"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:209
+#: src/contents/ui/PreferencesSheet.qml:223
 msgid "Style"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:216
+#: src/contents/ui/PreferencesSheet.qml:230
 msgid "Shape"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Bars"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Dots"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:229
+#: src/contents/ui/PreferencesSheet.qml:243
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:241
+#: src/contents/ui/PreferencesSheet.qml:255
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:253
+#: src/contents/ui/PreferencesSheet.qml:267
 msgid "Points"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:281
 #, fuzzy
 msgid "Height"
 msgstr "오른쪽"
 
-#: src/contents/ui/PreferencesSheet.qml:282
+#: src/contents/ui/PreferencesSheet.qml:296
 #, fuzzy
 msgid "Frequency Range"
 msgstr "Frequency 1 Gain"
 
-#: src/contents/ui/PreferencesSheet.qml:289
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Minimum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:304
+#: src/contents/ui/PreferencesSheet.qml:318
 msgid "Maximum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/PreferencesSheet.qml:354
 msgid "Native Plugin Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:355
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:367
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Frequency"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:368
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:393
+#: src/contents/ui/PreferencesSheet.qml:407
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:405
+#: src/contents/ui/PreferencesSheet.qml:419
 msgid "Audio"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:417
+#: src/contents/ui/PreferencesSheet.qml:431
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "스펙트럼"
 
-#: src/contents/ui/PreferencesSheet.qml:429
+#: src/contents/ui/PreferencesSheet.qml:443
 msgid "Experimental Features"
 msgstr ""
 
-#: src/main.cpp:27
+#: src/main.cpp:53
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire 음향 효과 애플리케이션"
 
-#: src/main.cpp:28
+#: src/main.cpp:54
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:32
+#: src/main.cpp:58
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:32
+#: src/main.cpp:58
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Envelope"
 
-#: src/tags_plugin_name.cpp:28
+#: src/plugin_base.cpp:230
+#, fuzzy
+msgid "Output Level Meter"
+msgstr "출력 게인"
+
+#: src/plugin_base.cpp:232
+#, fuzzy
+msgid "Spectrum"
+msgstr "스펙트럼"
+
+#: src/pw_model_nodes.cpp:357
+#, fuzzy
+msgid "Running"
+msgstr "실행 중"
+
+#: src/pw_model_nodes.cpp:359
+#, fuzzy
+msgid "Suspended"
+msgstr "일시 중단됨"
+
+#: src/pw_model_nodes.cpp:361
+msgid "Idle"
+msgstr ""
+
+#: src/pw_model_nodes.cpp:363
+#, fuzzy
+msgid "Creating"
+msgstr "만드는 중"
+
+#: src/pw_model_nodes.cpp:365
+#, fuzzy
+msgid "Error"
+msgstr "에러"
+
+#: src/pw_model_nodes.cpp:367
+msgid "Unknown"
+msgstr ""
+
+#: src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:28
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "음량"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:29
 msgid "Compressor"
 msgstr "컴프레서"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:30
 msgid "Convolver"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:33
 msgid "Deep Noise Remover"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:35
 msgid "Delay"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:37
 msgid "Equalizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:38
 msgid "Exciter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:39
 msgid "Expander"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:40
 #, fuzzy
 msgid "Filter"
 msgstr "Filter Length"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:41
 msgid "Gate"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:43
 msgid "Limiter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:46
-msgid "Loudness"
-msgstr "Loudness"
-
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:46
 #, fuzzy
 msgid "Multiband Compressor"
 msgstr "컴프레서"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:47
 msgid "Multiband Gate"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:48
+#, fuzzy
+msgid "Output Level"
+msgstr "출력 게인"
+
+#: src/tags_plugin_name.cpp:49
 msgid "Pitch"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:50
 msgid "Reverberation"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:51
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Reduction"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
 msgstr ""
+
+#: src/tags_plugin_name.cpp:53
+#, fuzzy
+msgid "Sectrum"
+msgstr "스펙트럼"
 
 #: src/tags_plugin_name.cpp:54
 #, fuzzy
@@ -516,26 +762,8 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgstr "프리셋"
 
 #, fuzzy
-#~ msgid "Spectrum Type"
-#~ msgstr "스펙트럼"
-
-#, fuzzy
-#~ msgid "Output Device"
-#~ msgstr "출력 게인"
-
-#~ msgid "Input"
-#~ msgstr "인풋"
-
-#, fuzzy
 #~ msgid "Value"
 #~ msgstr "Floor Value"
-
-#~ msgid "Output"
-#~ msgstr "아웃풋"
-
-#, fuzzy
-#~ msgid "PipeWire"
-#~ msgstr "PipeWire"
 
 #, fuzzy
 #~ msgid ""
@@ -754,58 +982,11 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "Applications List"
 #~ msgstr "응용 프로그램 목록"
 
-#~ msgid "Target"
-#~ msgstr "대상"
-
-#~ msgid "Momentary"
-#~ msgstr "Momentary"
-
-#~ msgid "Short-Term"
-#~ msgstr "Short-Term"
-
-#~ msgid "Integrated"
-#~ msgstr "Integrated"
-
-#~ msgid "Geometric Mean (MSI)"
-#~ msgstr "Geometric Mean"
-
-#, fuzzy
-#~ msgid "Geometric Mean (MS)"
-#~ msgstr "Geometric Mean"
-
-#, fuzzy
-#~ msgid "Geometric Mean (MI)"
-#~ msgstr "Geometric Mean"
-
-#, fuzzy
-#~ msgid "Geometric Mean (SI)"
-#~ msgstr "Geometric Mean"
-
-#~ msgid "Reset History"
-#~ msgstr "히스토리 초기화"
-
-#, fuzzy
-#~ msgid "Relative"
-#~ msgstr "Relative"
-
-#~ msgid "Range"
-#~ msgstr "Range"
-
-#~ msgid "Output Gain"
-#~ msgstr "아웃풋 게인"
-
 #~ msgid "Plugin Input Gain"
 #~ msgstr "플러그인 인풋 게인"
 
 #~ msgid "Plugin Output Gain"
 #~ msgstr "플러그인 아웃풋 게인"
-
-#~ msgid "Reset"
-#~ msgstr "리셋"
-
-#, fuzzy
-#~ msgid "Using"
-#~ msgstr "다음 사용 중"
 
 #~ msgid "Device"
 #~ msgstr "장치"
@@ -813,32 +994,8 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "Profile"
 #~ msgstr "프로필"
 
-#, fuzzy
-#~ msgid "Listen"
-#~ msgstr "듣는 중"
-
-#~ msgid "Blend Harmonics"
-#~ msgstr "Blend Harmonics"
-
-#~ msgid "3rd"
-#~ msgstr "3rd"
-
 #~ msgid "2nd"
 #~ msgstr "2nd"
-
-#, fuzzy
-#~ msgid "Amount"
-#~ msgstr "Amount"
-
-#, fuzzy
-#~ msgid "Harmonics"
-#~ msgstr "Harmonics"
-
-#~ msgid "Scope"
-#~ msgstr "Scope"
-
-#~ msgid "Floor"
-#~ msgstr "Floor"
 
 #~ msgid "Add to Excluded Applications"
 #~ msgstr "응용 프로그램 제외"
@@ -1002,10 +1159,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #, fuzzy
 #~ msgid "Curve"
 #~ msgstr "Curve"
-
-#, fuzzy
-#~ msgid "L"
-#~ msgstr "L"
 
 #, fuzzy
 #~ msgid "Left Channel"
@@ -1365,26 +1518,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #, fuzzy
 #~ msgid "Output Balance"
 #~ msgstr "출력 게인"
-
-#, fuzzy
-#~ msgid "Running"
-#~ msgstr "실행 중"
-
-#, fuzzy
-#~ msgid "Suspended"
-#~ msgstr "일시 중단됨"
-
-#, fuzzy
-#~ msgid "Creating"
-#~ msgstr "만드는 중"
-
-#, fuzzy
-#~ msgid "Error"
-#~ msgstr "에러"
-
-#, fuzzy
-#~ msgid "channels"
-#~ msgstr "채널"
 
 #, fuzzy
 #~ msgid "Impulse File Not Imported"

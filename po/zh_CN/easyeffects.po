@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-08-03 13:13-0300\n"
+"POT-Creation-Date: 2024-11-01 00:27-0300\n"
 "PO-Revision-Date: 2024-03-24 04:01+0000\n"
 "Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -20,159 +20,340 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.5-dev\n"
 
-#: src/contents/ui/DelegateClientsList.qml:29
-#: src/contents/ui/DelegateModulesList.qml:29
+#: src/command_line_parser.cpp:35
+msgid "Quit Easy Effects. Useful when running in service mode."
+msgstr "退出 Easy Effects。 在服务模式下运行时有用。"
+
+#: src/command_line_parser.cpp:36
+msgid "Reset Easy Effects."
+msgstr "重置 Easy Effects。"
+
+#: src/command_line_parser.cpp:37 src/command_line_parser.cpp:39
+#, fuzzy
+msgid "Hide the Window."
+msgstr "关闭窗口"
+
+#: src/command_line_parser.cpp:38
+msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
+
+#: src/command_line_parser.cpp:40
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "加载预设。 示例：easyeffects -l music"
+
+#: src/contents/ui/Autogain.qml:54 src/contents/ui/BassEnhancer.qml:90
+msgid "Controls"
+msgstr "控制"
+
+#: src/contents/ui/Autogain.qml:62
+msgid "Reference"
+msgstr "参考"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:141
+msgid "Momentary"
+msgstr "瞬时"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:152
+msgid "Short-Term"
+msgstr "短期"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:163
+msgid "Integrated"
+msgstr "综合"
+
+#: src/contents/ui/Autogain.qml:66
+msgid "Geometric Mean (MSI)"
+msgstr "几何平均 (MSI)"
+
+#: src/contents/ui/Autogain.qml:66
+msgid "Geometric Mean (MS)"
+msgstr "几何平均 (MS)"
+
+#: src/contents/ui/Autogain.qml:66
+msgid "Geometric Mean (MI)"
+msgstr "几何平均 (MI)"
+
+#: src/contents/ui/Autogain.qml:66
+msgid "Geometric Mean (SI)"
+msgstr "几何平均 (SI)"
+
+#: src/contents/ui/Autogain.qml:75
+msgid "Target"
+msgstr "目标"
+
+#: src/contents/ui/Autogain.qml:90
+msgid "Silence"
+msgstr "静音"
+
+#: src/contents/ui/Autogain.qml:105
+msgid "Maximum History"
+msgstr "历史记录最大值"
+
+#: src/contents/ui/Autogain.qml:127 src/contents/ui/Autogain.qml:196
+#: src/tags_plugin_name.cpp:44
+msgid "Loudness"
+msgstr "响度"
+
+#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:153
+#: src/contents/ui/Autogain.qml:164 src/contents/ui/Autogain.qml:175
+#: src/contents/ui/Autogain.qml:197
+msgid "LUFS"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:174
+msgid "Relative"
+msgstr "相对值"
+
+#: src/contents/ui/Autogain.qml:185
+msgid "Range"
+msgstr "范围"
+
+#: src/contents/ui/Autogain.qml:186
+#, fuzzy
+msgid "LU"
+msgstr "左"
+
+#: src/contents/ui/Autogain.qml:207
+msgid "Output Gain"
+msgstr "输出增益"
+
+#: src/contents/ui/Autogain.qml:208
+msgid "dB"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:180
+#, fuzzy
+msgid "Using"
+msgstr "正在使用 {}"
+
+#: src/contents/ui/Autogain.qml:246
+msgid "Reset History"
+msgstr "清除记录"
+
+#: src/contents/ui/Autogain.qml:253
+#, fuzzy
+msgid "Reset Settings"
+msgstr "重置设置(_R)"
+
+#: src/contents/ui/BassEnhancer.qml:39
+msgid "Blend Harmonics"
+msgstr "谐波注入"
+
+#: src/contents/ui/BassEnhancer.qml:48
+msgid "3rd"
+msgstr "3 次"
+
+#: src/contents/ui/BassEnhancer.qml:71
+#, fuzzy
+msgid "2rd"
+msgstr "3 次"
+
+#: src/contents/ui/BassEnhancer.qml:98
+msgid "Amount"
+msgstr "程度"
+
+#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:157
+msgid "Harmonics"
+msgstr "谐波"
+
+#: src/contents/ui/BassEnhancer.qml:127
+msgid "Scope"
+msgstr "范围"
+
+#: src/contents/ui/BassEnhancer.qml:142
+msgid "Floor"
+msgstr "下限"
+
+#: src/contents/ui/BassEnhancer.qml:195
+#, fuzzy
+msgid "Show Native Window"
+msgstr "显示原生窗口"
+
+#: src/contents/ui/BassEnhancer.qml:208
+msgid "Listen"
+msgstr "聆听"
+
+#: src/contents/ui/BassEnhancer.qml:219
+msgid "Reset"
+msgstr "重置"
+
+#: src/contents/ui/DelegateClientsList.qml:34
+#: src/contents/ui/DelegateModulesList.qml:34
 msgid "Id"
 msgstr "Id"
 
-#: src/contents/ui/DelegateClientsList.qml:43
-#: src/contents/ui/DelegateModulesList.qml:43
+#: src/contents/ui/DelegateClientsList.qml:48
+#: src/contents/ui/DelegateModulesList.qml:48
+#: src/contents/ui/PipeWirePage.qml:109 src/contents/ui/PipeWirePage.qml:148
 msgid "Name"
 msgstr "名称"
 
-#: src/contents/ui/DelegateClientsList.qml:57
+#: src/contents/ui/DelegateClientsList.qml:62
 msgid "Api"
 msgstr ""
 
-#: src/contents/ui/DelegateClientsList.qml:71
+#: src/contents/ui/DelegateClientsList.qml:76
 msgid "Access"
 msgstr "访问"
 
-#: src/contents/ui/DelegateModulesList.qml:57
+#: src/contents/ui/DelegateModulesList.qml:62
 msgid "Description"
 msgstr "描述"
 
-#: src/contents/ui/DelegatePluginsList.qml:49
+#: src/contents/ui/DelegatePluginsList.qml:57
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "启用/禁用此音效"
 
-#: src/contents/ui/DelegatePluginsList.qml:62
+#: src/contents/ui/DelegatePluginsList.qml:70
 msgid "Remove this effect"
 msgstr "删除此音效"
 
-#: src/contents/ui/DelegateStreamsList.qml:58
+#: src/contents/ui/DelegateStreamsList.qml:51
+#, fuzzy
+msgid " channels"
+msgstr "声道"
+
+#: src/contents/ui/DelegateStreamsList.qml:61
 msgid "Enable"
 msgstr "启用"
 
-#: src/contents/ui/DelegateStreamsList.qml:63
+#: src/contents/ui/DelegateStreamsList.qml:66
 msgid "Exclude"
 msgstr "排除"
 
-#: src/contents/ui/main.qml:14
+#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+msgid "Input"
+msgstr "输入"
+
+#: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
+msgid "Output"
+msgstr "输出"
+
+#: src/contents/ui/main.qml:17
 #, fuzzy
 msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/main.qml:86
+#: src/contents/ui/main.qml:102
 #, fuzzy
 msgid "Preset: "
 msgstr "预设"
 
-#: src/contents/ui/main.qml:94 src/contents/ui/main.qml:206
+#: src/contents/ui/main.qml:110 src/contents/ui/main.qml:235
 #, fuzzy
 msgid "Quit"
 msgstr "退出(_Q)"
 
-#: src/contents/ui/main.qml:116
+#: src/contents/ui/main.qml:132
 msgid "Presets"
 msgstr "预设"
 
-#: src/contents/ui/main.qml:124
+#: src/contents/ui/main.qml:140
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:190 src/contents/ui/PreferencesSheet.qml:12
-#: src/contents/ui/PreferencesSheet.qml:17
-#: src/contents/ui/PreferencesSheet.qml:453
-#: src/contents/ui/PreferencesSheet.qml:466
+#: src/contents/ui/main.qml:203
+#, fuzzy
+msgid "PipeWire"
+msgstr "PipeWire(_P)"
+
+#: src/contents/ui/main.qml:219 src/contents/ui/PreferencesSheet.qml:13
+#: src/contents/ui/PreferencesSheet.qml:18
+#: src/contents/ui/PreferencesSheet.qml:467
+#: src/contents/ui/PreferencesSheet.qml:480
 #, fuzzy
 msgid "Preferences"
 msgstr "首选项(_P)"
 
-#: src/contents/ui/main.qml:198
+#: src/contents/ui/main.qml:227
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "关于 EasyEffects (_A)"
 
-#: src/contents/ui/MenuAddPlugins.qml:42
+#: src/contents/ui/MenuAddPlugins.qml:41
 #, fuzzy
 msgid "Empty"
 msgstr "空列表"
 
-#: src/contents/ui/MenuAddPlugins.qml:129
+#: src/contents/ui/MenuAddPlugins.qml:130
 #, fuzzy
 msgid "Added Plugin: "
 msgstr "增加插件"
 
-#: src/contents/ui/MenuAddPlugins.qml:144
+#: src/contents/ui/MenuAddPlugins.qml:145
 msgid "Search"
 msgstr "搜索"
 
-#: src/contents/ui/PageStreamsEffects.qml:93
+#: src/contents/ui/PageStreamsEffects.qml:56
 #, fuzzy
 msgid "Empty List"
 msgstr "空旷"
 
-#: src/contents/ui/PageStreamsEffects.qml:94
+#: src/contents/ui/PageStreamsEffects.qml:57
 msgid "No Audio Application Available"
 msgstr "没有可用的音频应用程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:119
+#: src/contents/ui/PageStreamsEffects.qml:198
 msgid "Add Effect"
 msgstr "添加音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:165
+#: src/contents/ui/PageStreamsEffects.qml:248
+#: src/contents/ui/PageStreamsEffects.qml:380
 msgid "Players"
 msgstr "播放器"
 
-#: src/contents/ui/PageStreamsEffects.qml:165
+#: src/contents/ui/PageStreamsEffects.qml:248
 msgid "Input Device"
 msgstr "输入设备"
 
-#: src/contents/ui/PageStreamsEffects.qml:183
+#: src/contents/ui/PageStreamsEffects.qml:266
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:210
+#: src/contents/ui/PageStreamsEffects.qml:291
 msgid "No Effects"
 msgstr "无音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:211
+#: src/contents/ui/PageStreamsEffects.qml:292
 msgid "Audio Stream Not Modified"
 msgstr "音频流未作修改"
 
-#: src/contents/ui/PageStreamsEffects.qml:291
+#: src/contents/ui/PageStreamsEffects.qml:390
+msgid "Effects"
+msgstr "音效"
+
+#: src/contents/ui/PageStreamsEffects.qml:406
 msgid "Excluded Apps"
 msgstr "排除的应用"
 
-#: src/contents/ui/PipeWirePage.qml:14
+#: src/contents/ui/PipeWirePage.qml:15
 msgid "General"
 msgstr "通用"
 
-#: src/contents/ui/PipeWirePage.qml:18
+#: src/contents/ui/PipeWirePage.qml:19
 #, fuzzy
 msgid "Preset Autoloading"
 msgstr "自动加载预设"
 
-#: src/contents/ui/PipeWirePage.qml:22
+#: src/contents/ui/PipeWirePage.qml:23
 msgid "Modules"
 msgstr "模块"
 
-#: src/contents/ui/PipeWirePage.qml:26
+#: src/contents/ui/PipeWirePage.qml:27
 msgid "Clients"
 msgstr "客户端"
 
-#: src/contents/ui/PipeWirePage.qml:30
+#: src/contents/ui/PipeWirePage.qml:31
 msgid "Test Signal"
 msgstr "测试信号"
 
-#: src/contents/ui/PipeWirePage.qml:40
+#: src/contents/ui/PipeWirePage.qml:83
 msgid "Device Management"
 msgstr "设备管理"
 
-#: src/contents/ui/PipeWirePage.qml:44
+#: src/contents/ui/PipeWirePage.qml:87
 #, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
@@ -181,316 +362,368 @@ msgstr ""
 "不建议把 EasyEffects Sink/Source 设置为外部应用程序（例如 Gnome 设置或 "
 "Plasma 系统设置）的默认设备。"
 
-#: src/contents/ui/PipeWirePage.qml:48
+#: src/contents/ui/PipeWirePage.qml:94
+msgid "Use Default Input"
+msgstr "使用默认输入"
+
+#: src/contents/ui/PipeWirePage.qml:133
+#, fuzzy
+msgid "Use Default Output"
+msgstr "使用默认输入"
+
+#: src/contents/ui/PipeWirePage.qml:167
 msgid "Server Information"
 msgstr "服务器信息"
 
-#: src/contents/ui/PipeWirePage.qml:53
+#: src/contents/ui/PipeWirePage.qml:172
 msgid "Header Version"
 msgstr "头文件版本"
 
-#: src/contents/ui/PipeWirePage.qml:58
+#: src/contents/ui/PipeWirePage.qml:177
 msgid "Library Version"
 msgstr "库文件版本"
 
-#: src/contents/ui/PipeWirePage.qml:63
+#: src/contents/ui/PipeWirePage.qml:182
 #, fuzzy
 msgid "Runtime Version"
 msgstr "头文件版本"
 
-#: src/contents/ui/PipeWirePage.qml:68
+#: src/contents/ui/PipeWirePage.qml:187
 #, fuzzy
 msgid "Default Sampling Rate"
 msgstr "采样率"
 
-#: src/contents/ui/PipeWirePage.qml:73
+#: src/contents/ui/PipeWirePage.qml:192
 msgid "Minimum Quantum"
 msgstr "最小音频帧 (Quantum)"
 
-#: src/contents/ui/PipeWirePage.qml:78
+#: src/contents/ui/PipeWirePage.qml:197
 msgid "Maximum Quantum"
 msgstr "最大 Quantum"
 
-#: src/contents/ui/PipeWirePage.qml:83
+#: src/contents/ui/PipeWirePage.qml:202
 msgid "Default Quantum"
 msgstr "默认音频帧 (Quantum)"
 
-#: src/contents/ui/PipeWirePage.qml:108
+#: src/contents/ui/PipeWirePage.qml:227
 #, fuzzy
 msgid "No Modules"
 msgstr "模块"
 
-#: src/contents/ui/PipeWirePage.qml:135
+#: src/contents/ui/PipeWirePage.qml:254
 #, fuzzy
 msgid "No Clients"
 msgstr "客户端"
 
-#: src/contents/ui/PreferencesSheet.qml:37
-msgid "Launch Service at System Startup"
-msgstr "系统启动时运行服务"
+#: src/contents/ui/PreferencesSheet.qml:38
+#, fuzzy
+msgid "Enable Service Mode"
+msgstr "均衡器"
 
-#: src/contents/ui/PreferencesSheet.qml:46
+#: src/contents/ui/PreferencesSheet.qml:50
+msgid "Autostart on Login"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:59
 msgid "Show the Tray Icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:79
+#: src/contents/ui/PreferencesSheet.qml:93
 msgid "Process All Output Streams"
 msgstr "处理所有输出流"
 
-#: src/contents/ui/PreferencesSheet.qml:91
+#: src/contents/ui/PreferencesSheet.qml:105
 msgid "Process All Input Streams"
 msgstr "处理所有输入流"
 
-#: src/contents/ui/PreferencesSheet.qml:103
+#: src/contents/ui/PreferencesSheet.qml:117
 msgid "Ignore Streams from Monitor of Devices"
 msgstr "忽略来自设备 Monitor 的音频流"
 
-#: src/contents/ui/PreferencesSheet.qml:115
+#: src/contents/ui/PreferencesSheet.qml:129
 msgid "Use Cubic Volume"
 msgstr "使用非线性（立方）音量调节"
 
-#: src/contents/ui/PreferencesSheet.qml:127
+#: src/contents/ui/PreferencesSheet.qml:141
 #, fuzzy
 msgid "Enable the Inactivity Timeout"
 msgstr "空闲超时"
 
-#: src/contents/ui/PreferencesSheet.qml:139
+#: src/contents/ui/PreferencesSheet.qml:153
 msgid "Inactivity Timeout"
 msgstr "空闲超时"
 
-#: src/contents/ui/PreferencesSheet.qml:140
+#: src/contents/ui/PreferencesSheet.qml:154
 #, fuzzy
 msgid "Input Pipeline"
 msgstr "输入设备"
 
-#: src/contents/ui/PreferencesSheet.qml:156
+#: src/contents/ui/PreferencesSheet.qml:170
 #, fuzzy
 msgid "Update Interval"
 msgstr "翻译更新"
 
-#: src/contents/ui/PreferencesSheet.qml:157
+#: src/contents/ui/PreferencesSheet.qml:171
 #, fuzzy
 msgid "Related to Level Meters and Spectrum"
 msgstr "更新间隔（电平表、频谱）"
 
-#: src/contents/ui/PreferencesSheet.qml:190
+#: src/contents/ui/PreferencesSheet.qml:204
 msgid "State"
 msgstr "状态"
 
-#: src/contents/ui/PreferencesSheet.qml:197
+#: src/contents/ui/PreferencesSheet.qml:211
 msgid "Enabled"
 msgstr "已启用"
 
-#: src/contents/ui/PreferencesSheet.qml:209
+#: src/contents/ui/PreferencesSheet.qml:223
 msgid "Style"
 msgstr "界面风格"
 
-#: src/contents/ui/PreferencesSheet.qml:216
+#: src/contents/ui/PreferencesSheet.qml:230
 msgid "Shape"
 msgstr "形状"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Bars"
 msgstr "柱状"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Lines"
 msgstr "线型"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Dots"
 msgstr "点阵"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:229
+#: src/contents/ui/PreferencesSheet.qml:243
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:241
+#: src/contents/ui/PreferencesSheet.qml:255
 msgid "Dynamic Scale"
 msgstr "动态比例"
 
-#: src/contents/ui/PreferencesSheet.qml:253
+#: src/contents/ui/PreferencesSheet.qml:267
 msgid "Points"
 msgstr "数量"
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:281
 msgid "Height"
 msgstr "高度"
 
-#: src/contents/ui/PreferencesSheet.qml:282
+#: src/contents/ui/PreferencesSheet.qml:296
 msgid "Frequency Range"
 msgstr "频率范围"
 
-#: src/contents/ui/PreferencesSheet.qml:289
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Minimum"
 msgstr "最低"
 
-#: src/contents/ui/PreferencesSheet.qml:304
+#: src/contents/ui/PreferencesSheet.qml:318
 msgid "Maximum"
 msgstr "最高"
 
-#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/PreferencesSheet.qml:354
 msgid "Native Plugin Window"
 msgstr "原生插件窗口"
 
-#: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:355
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "允许显示或隐藏原生插件窗口"
 
-#: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:367
 #, fuzzy
 msgid "Update Frequency"
 msgstr "分割频率 1"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:368
 #, fuzzy
 msgid "Related to LV2 Plugins"
 msgstr "更新频率（LV2插件）"
 
-#: src/contents/ui/PreferencesSheet.qml:393
+#: src/contents/ui/PreferencesSheet.qml:407
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:405
+#: src/contents/ui/PreferencesSheet.qml:419
 msgid "Audio"
 msgstr "音频"
 
-#: src/contents/ui/PreferencesSheet.qml:417
+#: src/contents/ui/PreferencesSheet.qml:431
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "频谱类型"
 
-#: src/contents/ui/PreferencesSheet.qml:429
+#: src/contents/ui/PreferencesSheet.qml:443
 msgid "Experimental Features"
 msgstr "实验性功能"
 
-#: src/main.cpp:27
+#: src/main.cpp:53
 msgid "Audio effects for PipeWire applications"
 msgstr "为使用 PipeWire 的程序提供音效"
 
-#: src/main.cpp:28
+#: src/main.cpp:54
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:32
+#: src/main.cpp:58
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:32
+#: src/main.cpp:58
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "波封"
 
-#: src/tags_plugin_name.cpp:28
+#: src/plugin_base.cpp:230
+msgid "Output Level Meter"
+msgstr "输出电平表"
+
+#: src/plugin_base.cpp:232
+msgid "Spectrum"
+msgstr "频谱"
+
+#: src/pw_model_nodes.cpp:357
+msgid "Running"
+msgstr "正在运行"
+
+#: src/pw_model_nodes.cpp:359
+msgid "Suspended"
+msgstr "已暂停"
+
+#: src/pw_model_nodes.cpp:361
+msgid "Idle"
+msgstr "空闲"
+
+#: src/pw_model_nodes.cpp:363
+msgid "Creating"
+msgstr "创建中"
+
+#: src/pw_model_nodes.cpp:365
+msgid "Error"
+msgstr "错误"
+
+#: src/pw_model_nodes.cpp:367
+msgid "Unknown"
+msgstr "未知"
+
+#: src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "自动增益"
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
 msgstr "低音增强"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
 msgstr "低音响度"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:29
 msgid "Compressor"
 msgstr "压缩器"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:30
 msgid "Convolver"
 msgstr "卷积混响器"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
 msgstr "交叉反馈"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
 msgstr "音质晶化器"
 
-#: src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:33
 msgid "Deep Noise Remover"
 msgstr "深度降噪"
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "齿音消除"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:35
 msgid "Delay"
 msgstr "延迟"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr "回音消除"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:37
 msgid "Equalizer"
 msgstr "均衡器"
 
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:38
 msgid "Exciter"
 msgstr "激励器"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:39
 msgid "Expander"
 msgstr "扩展器"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "过滤器"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:41
 msgid "Gate"
 msgstr "门限"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
 msgstr "电平表"
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:43
 msgid "Limiter"
 msgstr "限幅器"
 
-#: src/tags_plugin_name.cpp:46
-msgid "Loudness"
-msgstr "响度"
-
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
 msgstr "放大器"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:46
 msgid "Multiband Compressor"
 msgstr "多频段压缩器"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:47
 msgid "Multiband Gate"
 msgstr "多频段门限"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:48
+#, fuzzy
+msgid "Output Level"
+msgstr "输出电平表"
+
+#: src/tags_plugin_name.cpp:49
 msgid "Pitch"
 msgstr "音高"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:50
 msgid "Reverberation"
 msgstr "混响"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:51
 msgid "Noise Reduction"
 msgstr "降噪"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
 msgstr "语音处理器"
+
+#: src/tags_plugin_name.cpp:53
+#, fuzzy
+msgid "Sectrum"
+msgstr "频谱"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -508,6 +741,9 @@ msgstr "均衡器、压缩器和其他音效"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "为使用 PipeWire 的应用提供音效"
 
+#~ msgid "Launch Service at System Startup"
+#~ msgstr "系统启动时运行服务"
+
 #, fuzzy
 #~ msgid "No Preset"
 #~ msgstr "预设"
@@ -523,10 +759,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #, fuzzy
 #~ msgid "Last used preset."
 #~ msgstr "创建新预设"
-
-#, fuzzy
-#~ msgid "Show Plugin's Native Window"
-#~ msgstr "显示原生窗口"
 
 #, fuzzy
 #~ msgid "LV2 Native Window Update Frequency"
@@ -562,19 +794,9 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Output Device"
 #~ msgstr "输出设备"
 
-#~ msgid "Input"
-#~ msgstr "输入"
-
 #, fuzzy
 #~ msgid "Value"
 #~ msgstr "上限值"
-
-#~ msgid "Output"
-#~ msgstr "输出"
-
-#, fuzzy
-#~ msgid "PipeWire"
-#~ msgstr "PipeWire(_P)"
 
 #~ msgid "@APP_NAME@"
 #~ msgstr "@APP_NAME@"
@@ -600,9 +822,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "_Help"
 #~ msgstr "帮助(_H)"
 
-#~ msgid "_Reset Settings"
-#~ msgstr "重置设置(_R)"
-
 #~ msgid "_Shortcuts"
 #~ msgstr "快捷键(_S)"
 
@@ -624,57 +843,9 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Applications List"
 #~ msgstr "应用程序列表"
 
-#~ msgid "Controls"
-#~ msgstr "控制"
-
-#~ msgid "Target"
-#~ msgstr "目标"
-
-#~ msgid "Silence"
-#~ msgstr "静音"
-
-#~ msgid "Maximum History"
-#~ msgstr "历史记录最大值"
-
-#~ msgid "Reference"
-#~ msgstr "参考"
-
-#~ msgid "Momentary"
-#~ msgstr "瞬时"
-
-#~ msgid "Short-Term"
-#~ msgstr "短期"
-
-#~ msgid "Integrated"
-#~ msgstr "综合"
-
-#~ msgid "Geometric Mean (MSI)"
-#~ msgstr "几何平均 (MSI)"
-
-#~ msgid "Geometric Mean (MS)"
-#~ msgstr "几何平均 (MS)"
-
-#~ msgid "Geometric Mean (MI)"
-#~ msgstr "几何平均 (MI)"
-
-#~ msgid "Geometric Mean (SI)"
-#~ msgstr "几何平均 (SI)"
-
 #, fuzzy
 #~ msgid "History"
 #~ msgstr "清除记录"
-
-#~ msgid "Reset"
-#~ msgstr "重置"
-
-#~ msgid "Relative"
-#~ msgstr "相对值"
-
-#~ msgid "Range"
-#~ msgstr "范围"
-
-#~ msgid "Output Gain"
-#~ msgstr "输出增益"
 
 #~ msgid "Plugin Input Gain"
 #~ msgstr "插件输入增益"
@@ -691,29 +862,8 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Remove this autoload preset"
 #~ msgstr "删除此自动加载预设"
 
-#~ msgid "Listen"
-#~ msgstr "聆听"
-
-#~ msgid "Blend Harmonics"
-#~ msgstr "谐波注入"
-
-#~ msgid "3rd"
-#~ msgstr "3 次"
-
 #~ msgid "2nd"
 #~ msgstr "2 次"
-
-#~ msgid "Amount"
-#~ msgstr "程度"
-
-#~ msgid "Harmonics"
-#~ msgstr "谐波"
-
-#~ msgid "Scope"
-#~ msgstr "范围"
-
-#~ msgid "Floor"
-#~ msgstr "下限"
 
 #~ msgid "Floor Value"
 #~ msgstr "下限"
@@ -920,9 +1070,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Curve"
 #~ msgstr "压缩曲线"
 
-#~ msgid "L"
-#~ msgstr "左"
-
 #~ msgid "Left Channel"
 #~ msgstr "左声道"
 
@@ -940,9 +1087,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Stereo Width"
 #~ msgstr "立体声宽度"
-
-#~ msgid "Spectrum"
-#~ msgstr "频谱"
 
 #~ msgid "Log Scale"
 #~ msgstr "对数坐标"
@@ -1167,10 +1311,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "All-Pass"
 #~ msgstr "全通"
 
-#, fuzzy
-#~ msgid "Equalizer Mode"
-#~ msgstr "均衡器"
-
 #~ msgid "Zone"
 #~ msgstr "过渡区间"
 
@@ -1188,9 +1328,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "True Peak"
 #~ msgstr "实际峰值"
-
-#~ msgid "Reset History"
-#~ msgstr "清除记录"
 
 #~ msgid "Oversampling"
 #~ msgstr "超采样"
@@ -1458,9 +1595,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Band Reduction"
 #~ msgstr "频段衰减"
-
-#~ msgid "Use Default Input"
-#~ msgstr "使用默认输入"
 
 #~ msgid "Custom Input Device"
 #~ msgstr "自定义输入设备"
@@ -1732,9 +1866,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Fullscreen/Restore from fullscreen"
 #~ msgstr "全屏/从全屏还原"
 
-#~ msgid "Close the Window"
-#~ msgstr "关闭窗口"
-
 #~ msgid "Quit Easy Effects"
 #~ msgstr "退出 Easy Effects"
 
@@ -1825,50 +1956,17 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Stereo Phase"
 #~ msgstr "立体声相位"
 
-#~ msgid "Running"
-#~ msgstr "正在运行"
-
-#~ msgid "Suspended"
-#~ msgstr "已暂停"
-
-#~ msgid "Idle"
-#~ msgstr "空闲"
-
-#~ msgid "Creating"
-#~ msgstr "创建中"
-
-#~ msgid "Error"
-#~ msgstr "错误"
-
-#~ msgid "Unknown"
-#~ msgstr "未知"
-
 #~ msgid "Undefined Name - Process ID "
 #~ msgstr "未定义名称 - 进程 ID "
-
-#~ msgid "channels"
-#~ msgstr "声道"
 
 #~ msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 #~ msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#~ msgid "Quit Easy Effects. Useful when running in service mode."
-#~ msgstr "退出 Easy Effects。 在服务模式下运行时有用。"
-
 #~ msgid "Print the easyeffects version"
 #~ msgstr "打印 EasyEffects 版本号"
 
-#~ msgid "Reset Easy Effects."
-#~ msgstr "重置 Easy Effects。"
-
-#~ msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-#~ msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
-
 #~ msgid "Show available presets."
 #~ msgstr "显示可用预设。"
-
-#~ msgid "Load a preset. Example: easyeffects -l music"
-#~ msgstr "加载预设。 示例：easyeffects -l music"
 
 #~ msgid "_Output"
 #~ msgstr "输出(_O)"
@@ -1909,9 +2007,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Failed To Load The Impulse File"
 #~ msgstr "加载脉冲文件失败"
 
-#~ msgid "Effects"
-#~ msgstr "音效"
-
 #~ msgid "Import APO Preset File"
 #~ msgstr "加载 APO 预设文件"
 
@@ -1948,9 +2043,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Remove Autoloading Preset"
 #~ msgstr "删除自动加载预设"
-
-#~ msgid "Output Level Meter"
-#~ msgstr "输出电平表"
 
 #~ msgid "Remove"
 #~ msgstr "删除"
@@ -2038,10 +2130,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "-inf"
 #~ msgstr "-inf"
-
-#, c++-format
-#~ msgid "Using {}"
-#~ msgstr "正在使用 {}"
 
 #~ msgid "Ceiling"
 #~ msgstr "上限"

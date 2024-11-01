@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-08-03 13:13-0300\n"
+"POT-Creation-Date: 2024-11-01 00:27-0300\n"
 "PO-Revision-Date: 2024-06-22 08:09+0000\n"
 "Last-Translator: Jakub Pavlů <jakubpavlu4@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -18,160 +18,343 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "X-Generator: Weblate 5.6-rc\n"
 
-#: src/contents/ui/DelegateClientsList.qml:29
-#: src/contents/ui/DelegateModulesList.qml:29
+#: src/command_line_parser.cpp:35
+msgid "Quit Easy Effects. Useful when running in service mode."
+msgstr "Ukončit EasyEffects. Užitečné, při spuštění servisního režimu."
+
+#: src/command_line_parser.cpp:36
+msgid "Reset Easy Effects."
+msgstr "Obnovit EasyEffects."
+
+#: src/command_line_parser.cpp:37 src/command_line_parser.cpp:39
+#, fuzzy
+msgid "Hide the Window."
+msgstr "Zavřít okno"
+
+#: src/command_line_parser.cpp:38
+msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+msgstr "Globální propuštění. 1 pro zapnutí, 2 pro vypnutí, 3 pro získání stavu"
+
+#: src/command_line_parser.cpp:40
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "Nahrát přednastavení. Příklad: easyeffects -l music"
+
+#: src/contents/ui/Autogain.qml:54 src/contents/ui/BassEnhancer.qml:90
+#, fuzzy
+msgid "Controls"
+msgstr "Ovladač zesílení"
+
+#: src/contents/ui/Autogain.qml:62
+msgid "Reference"
+msgstr "Reference"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:141
+msgid "Momentary"
+msgstr "Chvilkové"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:152
+msgid "Short-Term"
+msgstr "Kratokodobě"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:163
+msgid "Integrated"
+msgstr "Integrovaná"
+
+#: src/contents/ui/Autogain.qml:66
+msgid "Geometric Mean (MSI)"
+msgstr "Geometrický průměr (MSI)"
+
+#: src/contents/ui/Autogain.qml:66
+msgid "Geometric Mean (MS)"
+msgstr "Geometrický průměr (MS)"
+
+#: src/contents/ui/Autogain.qml:66
+msgid "Geometric Mean (MI)"
+msgstr "Geometrický průměr (MI)"
+
+#: src/contents/ui/Autogain.qml:66
+msgid "Geometric Mean (SI)"
+msgstr "Geometrický průměr (SI)"
+
+#: src/contents/ui/Autogain.qml:75
+msgid "Target"
+msgstr "Cíl"
+
+#: src/contents/ui/Autogain.qml:90
+msgid "Silence"
+msgstr "Ticho"
+
+#: src/contents/ui/Autogain.qml:105
+#, fuzzy
+msgid "Maximum History"
+msgstr "Maximální historie"
+
+#: src/contents/ui/Autogain.qml:127 src/contents/ui/Autogain.qml:196
+#: src/tags_plugin_name.cpp:44
+msgid "Loudness"
+msgstr "Hlasitost"
+
+#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:153
+#: src/contents/ui/Autogain.qml:164 src/contents/ui/Autogain.qml:175
+#: src/contents/ui/Autogain.qml:197
+msgid "LUFS"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:174
+msgid "Relative"
+msgstr "Relativní"
+
+#: src/contents/ui/Autogain.qml:185
+msgid "Range"
+msgstr "Rozsah"
+
+#: src/contents/ui/Autogain.qml:186
+#, fuzzy
+msgid "LU"
+msgstr "L"
+
+#: src/contents/ui/Autogain.qml:207
+msgid "Output Gain"
+msgstr "Výstupní zesílení"
+
+#: src/contents/ui/Autogain.qml:208
+msgid "dB"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:180
+#, fuzzy
+msgid "Using"
+msgstr "Použití"
+
+#: src/contents/ui/Autogain.qml:246
+msgid "Reset History"
+msgstr "Vymazat Historii"
+
+#: src/contents/ui/Autogain.qml:253
+#, fuzzy
+msgid "Reset Settings"
+msgstr "_Resetovat nastavení"
+
+#: src/contents/ui/BassEnhancer.qml:39
+msgid "Blend Harmonics"
+msgstr "Míchat harmonické kmity"
+
+#: src/contents/ui/BassEnhancer.qml:48
+msgid "3rd"
+msgstr "3."
+
+#: src/contents/ui/BassEnhancer.qml:71
+#, fuzzy
+msgid "2rd"
+msgstr "3."
+
+#: src/contents/ui/BassEnhancer.qml:98
+msgid "Amount"
+msgstr "Množství"
+
+#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:157
+msgid "Harmonics"
+msgstr "Harmonické kmity"
+
+#: src/contents/ui/BassEnhancer.qml:127
+msgid "Scope"
+msgstr "Rozsah"
+
+#: src/contents/ui/BassEnhancer.qml:142
+msgid "Floor"
+msgstr "Spodní mez"
+
+#: src/contents/ui/BassEnhancer.qml:195
+#, fuzzy
+msgid "Show Native Window"
+msgstr "Zobrazit nativní okno"
+
+#: src/contents/ui/BassEnhancer.qml:208
+msgid "Listen"
+msgstr "Poslouchat"
+
+#: src/contents/ui/BassEnhancer.qml:219
+msgid "Reset"
+msgstr "Vrátit na výchozí"
+
+#: src/contents/ui/DelegateClientsList.qml:34
+#: src/contents/ui/DelegateModulesList.qml:34
 #, fuzzy
 msgid "Id"
 msgstr "Neaktivní"
 
-#: src/contents/ui/DelegateClientsList.qml:43
-#: src/contents/ui/DelegateModulesList.qml:43
+#: src/contents/ui/DelegateClientsList.qml:48
+#: src/contents/ui/DelegateModulesList.qml:48
+#: src/contents/ui/PipeWirePage.qml:109 src/contents/ui/PipeWirePage.qml:148
 msgid "Name"
 msgstr "Název"
 
-#: src/contents/ui/DelegateClientsList.qml:57
+#: src/contents/ui/DelegateClientsList.qml:62
 msgid "Api"
 msgstr ""
 
-#: src/contents/ui/DelegateClientsList.qml:71
+#: src/contents/ui/DelegateClientsList.qml:76
 msgid "Access"
 msgstr "Přístup"
 
-#: src/contents/ui/DelegateModulesList.qml:57
+#: src/contents/ui/DelegateModulesList.qml:62
 msgid "Description"
 msgstr "Popis"
 
-#: src/contents/ui/DelegatePluginsList.qml:49
+#: src/contents/ui/DelegatePluginsList.qml:57
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "Povolit/zakázat tento efekt"
 
-#: src/contents/ui/DelegatePluginsList.qml:62
+#: src/contents/ui/DelegatePluginsList.qml:70
 msgid "Remove this effect"
 msgstr "Odstranit tento efekt"
 
-#: src/contents/ui/DelegateStreamsList.qml:58
+#: src/contents/ui/DelegateStreamsList.qml:51
+#, fuzzy
+msgid " channels"
+msgstr "Kanály"
+
+#: src/contents/ui/DelegateStreamsList.qml:61
 msgid "Enable"
 msgstr "Povolit"
 
-#: src/contents/ui/DelegateStreamsList.qml:63
+#: src/contents/ui/DelegateStreamsList.qml:66
 msgid "Exclude"
 msgstr "Vyloučit"
 
-#: src/contents/ui/main.qml:14
+#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+msgid "Input"
+msgstr "Vstup"
+
+#: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
+msgid "Output"
+msgstr "Výstup"
+
+#: src/contents/ui/main.qml:17
 #, fuzzy
 msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/main.qml:86
+#: src/contents/ui/main.qml:102
 #, fuzzy
 msgid "Preset: "
 msgstr "Profil"
 
-#: src/contents/ui/main.qml:94 src/contents/ui/main.qml:206
+#: src/contents/ui/main.qml:110 src/contents/ui/main.qml:235
 #, fuzzy
 msgid "Quit"
 msgstr "_Ukončit"
 
-#: src/contents/ui/main.qml:116
+#: src/contents/ui/main.qml:132
 msgid "Presets"
 msgstr "Přednastavení"
 
-#: src/contents/ui/main.qml:124
+#: src/contents/ui/main.qml:140
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:190 src/contents/ui/PreferencesSheet.qml:12
-#: src/contents/ui/PreferencesSheet.qml:17
-#: src/contents/ui/PreferencesSheet.qml:453
-#: src/contents/ui/PreferencesSheet.qml:466
+#: src/contents/ui/main.qml:203
+#, fuzzy
+msgid "PipeWire"
+msgstr "_PipeWire"
+
+#: src/contents/ui/main.qml:219 src/contents/ui/PreferencesSheet.qml:13
+#: src/contents/ui/PreferencesSheet.qml:18
+#: src/contents/ui/PreferencesSheet.qml:467
+#: src/contents/ui/PreferencesSheet.qml:480
 #, fuzzy
 msgid "Preferences"
 msgstr "_Nastavení"
 
-#: src/contents/ui/main.qml:198
+#: src/contents/ui/main.qml:227
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "_O EasyEffects"
 
-#: src/contents/ui/MenuAddPlugins.qml:42
+#: src/contents/ui/MenuAddPlugins.qml:41
 #, fuzzy
 msgid "Empty"
 msgstr "Prázdný seznam"
 
-#: src/contents/ui/MenuAddPlugins.qml:129
+#: src/contents/ui/MenuAddPlugins.qml:130
 #, fuzzy
 msgid "Added Plugin: "
 msgstr "Seznam použitých pluginů"
 
-#: src/contents/ui/MenuAddPlugins.qml:144
+#: src/contents/ui/MenuAddPlugins.qml:145
 msgid "Search"
 msgstr "Hledat"
 
-#: src/contents/ui/PageStreamsEffects.qml:93
+#: src/contents/ui/PageStreamsEffects.qml:56
 #, fuzzy
 msgid "Empty List"
 msgstr "Prázdné zdi"
 
-#: src/contents/ui/PageStreamsEffects.qml:94
+#: src/contents/ui/PageStreamsEffects.qml:57
 msgid "No Audio Application Available"
 msgstr "Není dostupná žádná zvuková aplikace"
 
-#: src/contents/ui/PageStreamsEffects.qml:119
+#: src/contents/ui/PageStreamsEffects.qml:198
 msgid "Add Effect"
 msgstr "Přidat efekt"
 
-#: src/contents/ui/PageStreamsEffects.qml:165
+#: src/contents/ui/PageStreamsEffects.qml:248
+#: src/contents/ui/PageStreamsEffects.qml:380
 msgid "Players"
 msgstr "Přehrávače"
 
-#: src/contents/ui/PageStreamsEffects.qml:165
+#: src/contents/ui/PageStreamsEffects.qml:248
 msgid "Input Device"
 msgstr "Vstupní zařízení"
 
-#: src/contents/ui/PageStreamsEffects.qml:183
+#: src/contents/ui/PageStreamsEffects.qml:266
 msgid "Recorders"
 msgstr "Záznamníky"
 
-#: src/contents/ui/PageStreamsEffects.qml:210
+#: src/contents/ui/PageStreamsEffects.qml:291
 msgid "No Effects"
 msgstr "Žádné efekty"
 
-#: src/contents/ui/PageStreamsEffects.qml:211
+#: src/contents/ui/PageStreamsEffects.qml:292
 msgid "Audio Stream Not Modified"
 msgstr "Audio Stream není modifikovaný"
 
-#: src/contents/ui/PageStreamsEffects.qml:291
+#: src/contents/ui/PageStreamsEffects.qml:390
+msgid "Effects"
+msgstr "Efekty"
+
+#: src/contents/ui/PageStreamsEffects.qml:406
 msgid "Excluded Apps"
 msgstr "Vynechané aplikace"
 
-#: src/contents/ui/PipeWirePage.qml:14
+#: src/contents/ui/PipeWirePage.qml:15
 msgid "General"
 msgstr "Obecné"
 
-#: src/contents/ui/PipeWirePage.qml:18
+#: src/contents/ui/PipeWirePage.qml:19
 #, fuzzy
 msgid "Preset Autoloading"
 msgstr "Automatické načítání přednastavení"
 
-#: src/contents/ui/PipeWirePage.qml:22
+#: src/contents/ui/PipeWirePage.qml:23
 msgid "Modules"
 msgstr "Moduly"
 
-#: src/contents/ui/PipeWirePage.qml:26
+#: src/contents/ui/PipeWirePage.qml:27
 msgid "Clients"
 msgstr "Klienti"
 
-#: src/contents/ui/PipeWirePage.qml:30
+#: src/contents/ui/PipeWirePage.qml:31
 msgid "Test Signal"
 msgstr "Testovací signál"
 
-#: src/contents/ui/PipeWirePage.qml:40
+#: src/contents/ui/PipeWirePage.qml:83
 msgid "Device Management"
 msgstr "Správa zařízení"
 
-#: src/contents/ui/PipeWirePage.qml:44
+#: src/contents/ui/PipeWirePage.qml:87
 #, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
@@ -180,318 +363,371 @@ msgstr ""
 "V externích aplikacích (např. Nastavení Gnome a Nastavení Plasma Systému) se "
 "NEDOPORUČUJE nastavovat Easy Effects Sink/Source jako výchozí zařízení."
 
-#: src/contents/ui/PipeWirePage.qml:48
+#: src/contents/ui/PipeWirePage.qml:94
+msgid "Use Default Input"
+msgstr "Použít výchozí vstup"
+
+#: src/contents/ui/PipeWirePage.qml:133
+#, fuzzy
+msgid "Use Default Output"
+msgstr "Použít výchozí vstup"
+
+#: src/contents/ui/PipeWirePage.qml:167
 msgid "Server Information"
 msgstr "Informace o serveru"
 
-#: src/contents/ui/PipeWirePage.qml:53
+#: src/contents/ui/PipeWirePage.qml:172
 msgid "Header Version"
 msgstr "Verze záhlaví"
 
-#: src/contents/ui/PipeWirePage.qml:58
+#: src/contents/ui/PipeWirePage.qml:177
 msgid "Library Version"
 msgstr "Verze knihovny"
 
-#: src/contents/ui/PipeWirePage.qml:63
+#: src/contents/ui/PipeWirePage.qml:182
 #, fuzzy
 msgid "Runtime Version"
 msgstr "Verze"
 
-#: src/contents/ui/PipeWirePage.qml:68
+#: src/contents/ui/PipeWirePage.qml:187
 #, fuzzy
 msgid "Default Sampling Rate"
 msgstr "Vzorkovací frekvence"
 
-#: src/contents/ui/PipeWirePage.qml:73
+#: src/contents/ui/PipeWirePage.qml:192
 msgid "Minimum Quantum"
 msgstr "Minimální Kvantum"
 
-#: src/contents/ui/PipeWirePage.qml:78
+#: src/contents/ui/PipeWirePage.qml:197
 msgid "Maximum Quantum"
 msgstr "Maximální Kvantum"
 
-#: src/contents/ui/PipeWirePage.qml:83
+#: src/contents/ui/PipeWirePage.qml:202
 msgid "Default Quantum"
 msgstr "Výchozí Kvantum"
 
-#: src/contents/ui/PipeWirePage.qml:108
+#: src/contents/ui/PipeWirePage.qml:227
 #, fuzzy
 msgid "No Modules"
 msgstr "Moduly"
 
-#: src/contents/ui/PipeWirePage.qml:135
+#: src/contents/ui/PipeWirePage.qml:254
 #, fuzzy
 msgid "No Clients"
 msgstr "Klienti"
 
-#: src/contents/ui/PreferencesSheet.qml:37
-msgid "Launch Service at System Startup"
-msgstr "Spustit službu při spuštění systému"
+#: src/contents/ui/PreferencesSheet.qml:38
+#, fuzzy
+msgid "Enable Service Mode"
+msgstr "Ekvalizér"
 
-#: src/contents/ui/PreferencesSheet.qml:46
+#: src/contents/ui/PreferencesSheet.qml:50
+msgid "Autostart on Login"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:59
 msgid "Show the Tray Icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:79
+#: src/contents/ui/PreferencesSheet.qml:93
 msgid "Process All Output Streams"
 msgstr "Zpracovat všechny výstupní streamy"
 
-#: src/contents/ui/PreferencesSheet.qml:91
+#: src/contents/ui/PreferencesSheet.qml:105
 msgid "Process All Input Streams"
 msgstr "Zpracovat všechny vstupní streamy"
 
-#: src/contents/ui/PreferencesSheet.qml:103
+#: src/contents/ui/PreferencesSheet.qml:117
 msgid "Ignore Streams from Monitor of Devices"
 msgstr "Ignorovat streamy z monitoru zařízení"
 
-#: src/contents/ui/PreferencesSheet.qml:115
+#: src/contents/ui/PreferencesSheet.qml:129
 msgid "Use Cubic Volume"
 msgstr "Použít krychlový objem"
 
-#: src/contents/ui/PreferencesSheet.qml:127
+#: src/contents/ui/PreferencesSheet.qml:141
 #, fuzzy
 msgid "Enable the Inactivity Timeout"
 msgstr "časový limit nečinnosti"
 
-#: src/contents/ui/PreferencesSheet.qml:139
+#: src/contents/ui/PreferencesSheet.qml:153
 msgid "Inactivity Timeout"
 msgstr "časový limit nečinnosti"
 
-#: src/contents/ui/PreferencesSheet.qml:140
+#: src/contents/ui/PreferencesSheet.qml:154
 #, fuzzy
 msgid "Input Pipeline"
 msgstr "Vstupní zařízení"
 
-#: src/contents/ui/PreferencesSheet.qml:156
+#: src/contents/ui/PreferencesSheet.qml:170
 #, fuzzy
 msgid "Update Interval"
 msgstr "Vnitřní"
 
-#: src/contents/ui/PreferencesSheet.qml:157
+#: src/contents/ui/PreferencesSheet.qml:171
 msgid "Related to Level Meters and Spectrum"
 msgstr "Související s hladinoměry a spektrem"
 
-#: src/contents/ui/PreferencesSheet.qml:190
+#: src/contents/ui/PreferencesSheet.qml:204
 msgid "State"
 msgstr "Stav"
 
-#: src/contents/ui/PreferencesSheet.qml:197
+#: src/contents/ui/PreferencesSheet.qml:211
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: src/contents/ui/PreferencesSheet.qml:209
+#: src/contents/ui/PreferencesSheet.qml:223
 msgid "Style"
 msgstr "Styl"
 
-#: src/contents/ui/PreferencesSheet.qml:216
+#: src/contents/ui/PreferencesSheet.qml:230
 msgid "Shape"
 msgstr "Tvar"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Bars"
 msgstr "Pruhy"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Lines"
 msgstr "Čáry"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Dots"
 msgstr "Tečky"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:229
+#: src/contents/ui/PreferencesSheet.qml:243
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:241
+#: src/contents/ui/PreferencesSheet.qml:255
 msgid "Dynamic Scale"
 msgstr "Dynamická stupnice"
 
-#: src/contents/ui/PreferencesSheet.qml:253
+#: src/contents/ui/PreferencesSheet.qml:267
 msgid "Points"
 msgstr "Body"
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:281
 msgid "Height"
 msgstr "Výška"
 
-#: src/contents/ui/PreferencesSheet.qml:282
+#: src/contents/ui/PreferencesSheet.qml:296
 msgid "Frequency Range"
 msgstr "Rozsah frekvence"
 
-#: src/contents/ui/PreferencesSheet.qml:289
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Minimum"
 msgstr "Minimum"
 
-#: src/contents/ui/PreferencesSheet.qml:304
+#: src/contents/ui/PreferencesSheet.qml:318
 msgid "Maximum"
 msgstr "Nejvýše"
 
-#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/PreferencesSheet.qml:354
 #, fuzzy
 msgid "Native Plugin Window"
 msgstr "Zavřít okno"
 
-#: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:355
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "Umožňuje zobrazit/skrýt okno nativního pluginu"
 
-#: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:367
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Kmitočet"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:368
 msgid "Related to LV2 Plugins"
 msgstr "Související se zásuvnými moduly LV2"
 
-#: src/contents/ui/PreferencesSheet.qml:393
+#: src/contents/ui/PreferencesSheet.qml:407
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:405
+#: src/contents/ui/PreferencesSheet.qml:419
 msgid "Audio"
 msgstr "Audio"
 
-#: src/contents/ui/PreferencesSheet.qml:417
+#: src/contents/ui/PreferencesSheet.qml:431
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Typ spektra"
 
-#: src/contents/ui/PreferencesSheet.qml:429
+#: src/contents/ui/PreferencesSheet.qml:443
 #, fuzzy
 msgid "Experimental Features"
 msgstr "Pokusný"
 
-#: src/main.cpp:27
+#: src/main.cpp:53
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Zvukové efekty pro programy využívající PulseAudio"
 
-#: src/main.cpp:28
+#: src/main.cpp:54
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:32
+#: src/main.cpp:58
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:32
+#: src/main.cpp:58
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Obálka"
 
-#: src/tags_plugin_name.cpp:28
+#: src/plugin_base.cpp:230
+#, fuzzy
+msgid "Output Level Meter"
+msgstr "Výstupní zařízení"
+
+#: src/plugin_base.cpp:232
+msgid "Spectrum"
+msgstr "Spektrum"
+
+#: src/pw_model_nodes.cpp:357
+msgid "Running"
+msgstr "Běží"
+
+#: src/pw_model_nodes.cpp:359
+msgid "Suspended"
+msgstr "Pozastaveno"
+
+#: src/pw_model_nodes.cpp:361
+msgid "Idle"
+msgstr ""
+
+#: src/pw_model_nodes.cpp:363
+msgid "Creating"
+msgstr "Tvoření"
+
+#: src/pw_model_nodes.cpp:365
+msgid "Error"
+msgstr "Chyba"
+
+#: src/pw_model_nodes.cpp:367
+msgid "Unknown"
+msgstr "Neznámý"
+
+#: src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "Autogain"
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
 msgstr "Zlepšovač hloubek"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
 msgstr "Hlasitost basů"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:29
 msgid "Compressor"
 msgstr "Kompresor"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:30
 msgid "Convolver"
 msgstr "Konvolver"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
 msgstr "Prolínání kanálů"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
 msgstr "Krystalizátor"
 
-#: src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:33
 msgid "Deep Noise Remover"
 msgstr "Hluboký odstraňovač šumu"
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "Odstraňovač sykotu"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:35
 msgid "Delay"
 msgstr "Zpoždění"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr "Potlačovač echa"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:37
 msgid "Equalizer"
 msgstr "Ekvalizér"
 
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:38
 msgid "Exciter"
 msgstr "Zvukový budič"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:39
 msgid "Expander"
 msgstr "Expandér"
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "Filtr"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:41
 msgid "Gate"
 msgstr "Brána"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:42
 #, fuzzy
 msgid "Level Meter"
 msgstr "Výstupní zařízení"
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:43
 msgid "Limiter"
 msgstr "Omezovač"
 
-#: src/tags_plugin_name.cpp:46
-msgid "Loudness"
-msgstr "Hlasitost"
-
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
 msgstr "Zvětšovač"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:46
 msgid "Multiband Compressor"
 msgstr "Vícepásmový kompresor"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:47
 msgid "Multiband Gate"
 msgstr "Vícepásmová brána"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:48
+#, fuzzy
+msgid "Output Level"
+msgstr "Výstupní zařízení"
+
+#: src/tags_plugin_name.cpp:49
 msgid "Pitch"
 msgstr "Výška tónu"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:50
 msgid "Reverberation"
 msgstr "Dozvuk"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:51
 msgid "Noise Reduction"
 msgstr "Redukce šumu"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
 msgstr "Řečový procesor"
+
+#: src/tags_plugin_name.cpp:53
+#, fuzzy
+msgid "Sectrum"
+msgstr "Spektrum"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -509,6 +745,9 @@ msgstr "Ekvalizér, kompresor a jiné zvukové efekty"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Zvukové efekty pro programy využívající PipeWire"
 
+#~ msgid "Launch Service at System Startup"
+#~ msgstr "Spustit službu při spuštění systému"
+
 #, fuzzy
 #~ msgid "No Preset"
 #~ msgstr "Přednastavení"
@@ -524,10 +763,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #, fuzzy
 #~ msgid "Last used preset."
 #~ msgstr "Vytvořit nové přednastavení"
-
-#, fuzzy
-#~ msgid "Show Plugin's Native Window"
-#~ msgstr "Zobrazit nativní okno"
 
 #, fuzzy
 #~ msgid "LV2 Native Window Update Frequency"
@@ -563,22 +798,12 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Output Device"
 #~ msgstr "Výstupní zařízení"
 
-#~ msgid "Input"
-#~ msgstr "Vstup"
-
 #, fuzzy
 #~ msgid "Value"
 #~ msgstr "Spodní mez"
 
 #~ msgid "Apply"
 #~ msgstr "Použít"
-
-#~ msgid "Output"
-#~ msgstr "Výstup"
-
-#, fuzzy
-#~ msgid "PipeWire"
-#~ msgstr "_PipeWire"
 
 #~ msgid "@APP_NAME@"
 #~ msgstr "@APP_NAME@"
@@ -604,9 +829,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "_Help"
 #~ msgstr "_Nápověda"
 
-#~ msgid "_Reset Settings"
-#~ msgstr "_Resetovat nastavení"
-
 #~ msgid "_Shortcuts"
 #~ msgstr "_Klávesové zkratky"
 
@@ -630,58 +852,8 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgstr "Seznam aplikací"
 
 #, fuzzy
-#~ msgid "Controls"
-#~ msgstr "Ovladač zesílení"
-
-#~ msgid "Target"
-#~ msgstr "Cíl"
-
-#~ msgid "Silence"
-#~ msgstr "Ticho"
-
-#, fuzzy
-#~ msgid "Maximum History"
-#~ msgstr "Maximální historie"
-
-#~ msgid "Reference"
-#~ msgstr "Reference"
-
-#~ msgid "Momentary"
-#~ msgstr "Chvilkové"
-
-#~ msgid "Short-Term"
-#~ msgstr "Kratokodobě"
-
-#~ msgid "Integrated"
-#~ msgstr "Integrovaná"
-
-#~ msgid "Geometric Mean (MSI)"
-#~ msgstr "Geometrický průměr (MSI)"
-
-#~ msgid "Geometric Mean (MS)"
-#~ msgstr "Geometrický průměr (MS)"
-
-#~ msgid "Geometric Mean (MI)"
-#~ msgstr "Geometrický průměr (MI)"
-
-#~ msgid "Geometric Mean (SI)"
-#~ msgstr "Geometrický průměr (SI)"
-
-#, fuzzy
 #~ msgid "History"
 #~ msgstr "Vymazat Historii"
-
-#~ msgid "Reset"
-#~ msgstr "Vrátit na výchozí"
-
-#~ msgid "Relative"
-#~ msgstr "Relativní"
-
-#~ msgid "Range"
-#~ msgstr "Rozsah"
-
-#~ msgid "Output Gain"
-#~ msgstr "Výstupní zesílení"
 
 #~ msgid "Plugin Input Gain"
 #~ msgstr "Vstupní zesílení pluginu"
@@ -698,29 +870,8 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Remove this autoload preset"
 #~ msgstr "Odstranit tento automaticky načítaný profil"
 
-#~ msgid "Listen"
-#~ msgstr "Poslouchat"
-
-#~ msgid "Blend Harmonics"
-#~ msgstr "Míchat harmonické kmity"
-
-#~ msgid "3rd"
-#~ msgstr "3."
-
 #~ msgid "2nd"
 #~ msgstr "2."
-
-#~ msgid "Amount"
-#~ msgstr "Množství"
-
-#~ msgid "Harmonics"
-#~ msgstr "Harmonické kmity"
-
-#~ msgid "Scope"
-#~ msgstr "Rozsah"
-
-#~ msgid "Floor"
-#~ msgstr "Spodní mez"
 
 #~ msgid "Floor Value"
 #~ msgstr "Spodní hodnota"
@@ -933,9 +1084,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Curve"
 #~ msgstr "Křivka"
 
-#~ msgid "L"
-#~ msgstr "L"
-
 #~ msgid "Left Channel"
 #~ msgstr "Levý kanál"
 
@@ -953,9 +1101,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #~ msgid "Stereo Width"
 #~ msgstr "Šířka sterea"
-
-#~ msgid "Spectrum"
-#~ msgstr "Spektrum"
 
 #~ msgid "Log Scale"
 #~ msgstr "Logaritmické měřítko"
@@ -1188,10 +1333,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "All-Pass"
 #~ msgstr "Dolní pásmo"
 
-#, fuzzy
-#~ msgid "Equalizer Mode"
-#~ msgstr "Ekvalizér"
-
 #~ msgid "Zone"
 #~ msgstr "Zóna"
 
@@ -1210,9 +1351,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #, fuzzy
 #~ msgid "True Peak"
 #~ msgstr "Frekvence 2 vrchol"
-
-#~ msgid "Reset History"
-#~ msgstr "Vymazat Historii"
 
 #~ msgid "Oversampling"
 #~ msgstr "Převzorkování"
@@ -1491,9 +1629,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #~ msgid "Band Reduction"
 #~ msgstr "Zmenšení pásma"
-
-#~ msgid "Use Default Input"
-#~ msgstr "Použít výchozí vstup"
 
 #~ msgid "Custom Input Device"
 #~ msgstr "Vlastní vstupní zařízení"
@@ -1812,9 +1947,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Fullscreen/Restore from fullscreen"
 #~ msgstr "Celá obrazovka/Obnovit z celé obrazovky"
 
-#~ msgid "Close the Window"
-#~ msgstr "Zavřít okno"
-
 #~ msgid "Quit Easy Effects"
 #~ msgstr "Ukončit EasyEffects"
 
@@ -1905,48 +2037,17 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Stereo Phase"
 #~ msgstr "Fáze sterea"
 
-#~ msgid "Running"
-#~ msgstr "Běží"
-
-#~ msgid "Suspended"
-#~ msgstr "Pozastaveno"
-
-#~ msgid "Creating"
-#~ msgstr "Tvoření"
-
-#~ msgid "Error"
-#~ msgstr "Chyba"
-
-#~ msgid "Unknown"
-#~ msgstr "Neznámý"
-
 #~ msgid "Undefined Name - Process ID "
 #~ msgstr "Neurčitý název - ID procesu "
-
-#~ msgid "channels"
-#~ msgstr "Kanály"
 
 #~ msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 #~ msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#~ msgid "Quit Easy Effects. Useful when running in service mode."
-#~ msgstr "Ukončit EasyEffects. Užitečné, při spuštění servisního režimu."
-
 #~ msgid "Print the easyeffects version"
 #~ msgstr "Tisk verze easyeffects"
 
-#~ msgid "Reset Easy Effects."
-#~ msgstr "Obnovit EasyEffects."
-
-#~ msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-#~ msgstr ""
-#~ "Globální propuštění. 1 pro zapnutí, 2 pro vypnutí, 3 pro získání stavu"
-
 #~ msgid "Show available presets."
 #~ msgstr "Ukázat dostupná přednastavení."
-
-#~ msgid "Load a preset. Example: easyeffects -l music"
-#~ msgstr "Nahrát přednastavení. Příklad: easyeffects -l music"
 
 #~ msgid "_Output"
 #~ msgstr "_Výstup"
@@ -1986,9 +2087,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #~ msgid "Failed To Load The Impulse File"
 #~ msgstr "Nepodařilo se nahrát Impulse soubor"
-
-#~ msgid "Effects"
-#~ msgstr "Efekty"
 
 #~ msgid "Import APO Preset File"
 #~ msgstr "Importovat přednastavený soubor APO"
@@ -2035,10 +2133,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #~ msgid "Remove Autoloading Preset"
 #~ msgstr "Odstranit předvolbu automatického načítání"
-
-#, fuzzy
-#~ msgid "Output Level Meter"
-#~ msgstr "Výstupní zařízení"
 
 #~ msgid "Remove"
 #~ msgstr "Odstranit"
@@ -2130,10 +2224,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #~ msgid "-inf"
 #~ msgstr "-inf"
-
-#, fuzzy, c++-format
-#~ msgid "Using {}"
-#~ msgstr "Použití"
 
 #~ msgid "Ceiling"
 #~ msgstr "Strop"

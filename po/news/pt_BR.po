@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-08-03 13:13-0300\n"
+"POT-Creation-Date: 2024-11-01 00:27-0300\n"
 "PO-Revision-Date: 2024-01-30 16:12+0000\n"
 "Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -21,489 +21,727 @@ msgstr ""
 "X-Generator: Weblate 5.4-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: src/contents/ui/DelegateClientsList.qml:29
-#: src/contents/ui/DelegateModulesList.qml:29
+#: src/command_line_parser.cpp:35
+#, fuzzy
+msgid "Quit Easy Effects. Useful when running in service mode."
+msgstr "Sair do EasyEffects. Útil quando executando em modo de serviço."
+
+#: src/command_line_parser.cpp:36
+#, fuzzy
+msgid "Reset Easy Effects."
+msgstr "Redefinir o EasyEffects."
+
+#: src/command_line_parser.cpp:37 src/command_line_parser.cpp:39
+msgid "Hide the Window."
+msgstr ""
+
+#: src/command_line_parser.cpp:38
+msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+msgstr ""
+
+#: src/command_line_parser.cpp:40
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "Carregar uma predefinição. Exemplo: easyeffects -l musica"
+
+#: src/contents/ui/Autogain.qml:54 src/contents/ui/BassEnhancer.qml:90
+#, fuzzy
+msgid "Controls"
+msgstr "Controlador de Ganho"
+
+#: src/contents/ui/Autogain.qml:62
+msgid "Reference"
+msgstr "Referência"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:141
+msgid "Momentary"
+msgstr "Momentâneo"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:152
+msgid "Short-Term"
+msgstr "Curto Prazo"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:163
+msgid "Integrated"
+msgstr "Integrada"
+
+#: src/contents/ui/Autogain.qml:66
+#, fuzzy
+msgid "Geometric Mean (MSI)"
+msgstr "Média Geométrica"
+
+#: src/contents/ui/Autogain.qml:66
+#, fuzzy
+msgid "Geometric Mean (MS)"
+msgstr "Média Geométrica"
+
+#: src/contents/ui/Autogain.qml:66
+#, fuzzy
+msgid "Geometric Mean (MI)"
+msgstr "Média Geométrica"
+
+#: src/contents/ui/Autogain.qml:66
+#, fuzzy
+msgid "Geometric Mean (SI)"
+msgstr "Média Geométrica"
+
+#: src/contents/ui/Autogain.qml:75
+msgid "Target"
+msgstr "Alvo"
+
+#: src/contents/ui/Autogain.qml:90
+msgid "Silence"
+msgstr "Silencio"
+
+#: src/contents/ui/Autogain.qml:105
+msgid "Maximum History"
+msgstr "Histórico máximo"
+
+#: src/contents/ui/Autogain.qml:127 src/contents/ui/Autogain.qml:196
+#: src/tags_plugin_name.cpp:44
+msgid "Loudness"
+msgstr "Sonoridade"
+
+#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:153
+#: src/contents/ui/Autogain.qml:164 src/contents/ui/Autogain.qml:175
+#: src/contents/ui/Autogain.qml:197
+msgid "LUFS"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:174
+msgid "Relative"
+msgstr "Relativo"
+
+#: src/contents/ui/Autogain.qml:185
+msgid "Range"
+msgstr "Alcance"
+
+#: src/contents/ui/Autogain.qml:186
+#, fuzzy
+msgid "LU"
+msgstr "L"
+
+#: src/contents/ui/Autogain.qml:207
+msgid "Output Gain"
+msgstr "Ganho de Saída"
+
+#: src/contents/ui/Autogain.qml:208
+msgid "dB"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:180
+msgid "Using"
+msgstr "Usando"
+
+#: src/contents/ui/Autogain.qml:246
+msgid "Reset History"
+msgstr "Redefinir Histórico"
+
+#: src/contents/ui/Autogain.qml:253
+#, fuzzy
+msgid "Reset Settings"
+msgstr "_Redefinir as Configurações"
+
+#: src/contents/ui/BassEnhancer.qml:39
+msgid "Blend Harmonics"
+msgstr "Mistura de Harmônicos"
+
+#: src/contents/ui/BassEnhancer.qml:48
+msgid "3rd"
+msgstr "3°"
+
+#: src/contents/ui/BassEnhancer.qml:71
+#, fuzzy
+msgid "2rd"
+msgstr "3°"
+
+#: src/contents/ui/BassEnhancer.qml:98
+msgid "Amount"
+msgstr "Quantidade"
+
+#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:157
+msgid "Harmonics"
+msgstr "Harmônico"
+
+#: src/contents/ui/BassEnhancer.qml:127
+msgid "Scope"
+msgstr "Escopo"
+
+#: src/contents/ui/BassEnhancer.qml:142
+msgid "Floor"
+msgstr "Piso"
+
+#: src/contents/ui/BassEnhancer.qml:195
+msgid "Show Native Window"
+msgstr ""
+
+#: src/contents/ui/BassEnhancer.qml:208
+msgid "Listen"
+msgstr "Escutar"
+
+#: src/contents/ui/BassEnhancer.qml:219
+msgid "Reset"
+msgstr "Resetar"
+
+#: src/contents/ui/DelegateClientsList.qml:34
+#: src/contents/ui/DelegateModulesList.qml:34
 #, fuzzy
 msgid "Id"
 msgstr "Parado"
 
-#: src/contents/ui/DelegateClientsList.qml:43
-#: src/contents/ui/DelegateModulesList.qml:43
+#: src/contents/ui/DelegateClientsList.qml:48
+#: src/contents/ui/DelegateModulesList.qml:48
+#: src/contents/ui/PipeWirePage.qml:109 src/contents/ui/PipeWirePage.qml:148
 msgid "Name"
 msgstr "Nome"
 
-#: src/contents/ui/DelegateClientsList.qml:57
+#: src/contents/ui/DelegateClientsList.qml:62
 msgid "Api"
 msgstr ""
 
-#: src/contents/ui/DelegateClientsList.qml:71
+#: src/contents/ui/DelegateClientsList.qml:76
 #, fuzzy
 msgid "Access"
 msgstr "Acesso"
 
-#: src/contents/ui/DelegateModulesList.qml:57
+#: src/contents/ui/DelegateModulesList.qml:62
 msgid "Description"
 msgstr "Descrição"
 
-#: src/contents/ui/DelegatePluginsList.qml:49
+#: src/contents/ui/DelegatePluginsList.qml:57
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "Remover este arquivo de predefinição"
 
-#: src/contents/ui/DelegatePluginsList.qml:62
+#: src/contents/ui/DelegatePluginsList.qml:70
 #, fuzzy
 msgid "Remove this effect"
 msgstr "Remover este arquivo de predefinição"
 
-#: src/contents/ui/DelegateStreamsList.qml:58
+#: src/contents/ui/DelegateStreamsList.qml:51
+#, fuzzy
+msgid " channels"
+msgstr "Canais"
+
+#: src/contents/ui/DelegateStreamsList.qml:61
 #, fuzzy
 msgid "Enable"
 msgstr "Habilitar"
 
-#: src/contents/ui/DelegateStreamsList.qml:63
+#: src/contents/ui/DelegateStreamsList.qml:66
 msgid "Exclude"
 msgstr "Excluir"
 
-#: src/contents/ui/main.qml:14
+#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+msgid "Input"
+msgstr "Entrada"
+
+#: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
+msgid "Output"
+msgstr "Saída"
+
+#: src/contents/ui/main.qml:17
 #, fuzzy
 msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "Equalizador de Áudio Easy Effects"
 
-#: src/contents/ui/main.qml:86
+#: src/contents/ui/main.qml:102
 #, fuzzy
 msgid "Preset: "
 msgstr "Predefinição"
 
-#: src/contents/ui/main.qml:94 src/contents/ui/main.qml:206
+#: src/contents/ui/main.qml:110 src/contents/ui/main.qml:235
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:116
+#: src/contents/ui/main.qml:132
 msgid "Presets"
 msgstr "Predefinições"
 
-#: src/contents/ui/main.qml:124
+#: src/contents/ui/main.qml:140
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:190 src/contents/ui/PreferencesSheet.qml:12
-#: src/contents/ui/PreferencesSheet.qml:17
-#: src/contents/ui/PreferencesSheet.qml:453
-#: src/contents/ui/PreferencesSheet.qml:466
+#: src/contents/ui/main.qml:203
+msgid "PipeWire"
+msgstr "PipeWire"
+
+#: src/contents/ui/main.qml:219 src/contents/ui/PreferencesSheet.qml:13
+#: src/contents/ui/PreferencesSheet.qml:18
+#: src/contents/ui/PreferencesSheet.qml:467
+#: src/contents/ui/PreferencesSheet.qml:480
 #, fuzzy
 msgid "Preferences"
 msgstr "_Preferências"
 
-#: src/contents/ui/main.qml:198
+#: src/contents/ui/main.qml:227
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "_Sobre EasyEffects"
 
-#: src/contents/ui/MenuAddPlugins.qml:42
+#: src/contents/ui/MenuAddPlugins.qml:41
 #, fuzzy
 msgid "Empty"
 msgstr "Lista vazia"
 
-#: src/contents/ui/MenuAddPlugins.qml:129
+#: src/contents/ui/MenuAddPlugins.qml:130
 msgid "Added Plugin: "
 msgstr ""
 
-#: src/contents/ui/MenuAddPlugins.qml:144
+#: src/contents/ui/MenuAddPlugins.qml:145
 msgid "Search"
 msgstr "Buscar"
 
-#: src/contents/ui/PageStreamsEffects.qml:93
+#: src/contents/ui/PageStreamsEffects.qml:56
 #, fuzzy
 msgid "Empty List"
 msgstr "Paredes Vazias"
 
-#: src/contents/ui/PageStreamsEffects.qml:94
+#: src/contents/ui/PageStreamsEffects.qml:57
 msgid "No Audio Application Available"
 msgstr "Nenhum aplicativo de áudio disponível"
 
-#: src/contents/ui/PageStreamsEffects.qml:119
+#: src/contents/ui/PageStreamsEffects.qml:198
 msgid "Add Effect"
 msgstr "Adicionar efeito"
 
-#: src/contents/ui/PageStreamsEffects.qml:165
+#: src/contents/ui/PageStreamsEffects.qml:248
+#: src/contents/ui/PageStreamsEffects.qml:380
 msgid "Players"
 msgstr "Reprodutores"
 
-#: src/contents/ui/PageStreamsEffects.qml:165
+#: src/contents/ui/PageStreamsEffects.qml:248
 #, fuzzy
 msgid "Input Device"
 msgstr "Dispositivo de Entrada"
 
-#: src/contents/ui/PageStreamsEffects.qml:183
+#: src/contents/ui/PageStreamsEffects.qml:266
 msgid "Recorders"
 msgstr "Gravadores"
 
-#: src/contents/ui/PageStreamsEffects.qml:210
+#: src/contents/ui/PageStreamsEffects.qml:291
 msgid "No Effects"
 msgstr "Sem efeitos"
 
-#: src/contents/ui/PageStreamsEffects.qml:211
+#: src/contents/ui/PageStreamsEffects.qml:292
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:291
+#: src/contents/ui/PageStreamsEffects.qml:390
+msgid "Effects"
+msgstr "Efeitos"
+
+#: src/contents/ui/PageStreamsEffects.qml:406
 msgid "Excluded Apps"
 msgstr "Aplicativos excluídos"
 
-#: src/contents/ui/PipeWirePage.qml:14
+#: src/contents/ui/PipeWirePage.qml:15
 msgid "General"
 msgstr "Geral"
 
-#: src/contents/ui/PipeWirePage.qml:18
+#: src/contents/ui/PipeWirePage.qml:19
 #, fuzzy
 msgid "Preset Autoloading"
 msgstr "O carregamento automático das predefinições foi aprimorado."
 
-#: src/contents/ui/PipeWirePage.qml:22
+#: src/contents/ui/PipeWirePage.qml:23
 msgid "Modules"
 msgstr "Módulos"
 
-#: src/contents/ui/PipeWirePage.qml:26
+#: src/contents/ui/PipeWirePage.qml:27
 msgid "Clients"
 msgstr "Clientes"
 
-#: src/contents/ui/PipeWirePage.qml:30
+#: src/contents/ui/PipeWirePage.qml:31
 #, fuzzy
 msgid "Test Signal"
 msgstr "Sinais de Teste"
 
-#: src/contents/ui/PipeWirePage.qml:40
+#: src/contents/ui/PipeWirePage.qml:83
 msgid "Device Management"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:44
+#: src/contents/ui/PipeWirePage.qml:87
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:48
+#: src/contents/ui/PipeWirePage.qml:94
+#, fuzzy
+msgid "Use Default Input"
+msgstr "Usar Padrão"
+
+#: src/contents/ui/PipeWirePage.qml:133
+#, fuzzy
+msgid "Use Default Output"
+msgstr "Usar Padrão"
+
+#: src/contents/ui/PipeWirePage.qml:167
 #, fuzzy
 msgid "Server Information"
 msgstr "Reverberação"
 
-#: src/contents/ui/PipeWirePage.qml:53
+#: src/contents/ui/PipeWirePage.qml:172
 #, fuzzy
 msgid "Header Version"
 msgstr "Versão"
 
-#: src/contents/ui/PipeWirePage.qml:58
+#: src/contents/ui/PipeWirePage.qml:177
 #, fuzzy
 msgid "Library Version"
 msgstr "Versão"
 
-#: src/contents/ui/PipeWirePage.qml:63
+#: src/contents/ui/PipeWirePage.qml:182
 #, fuzzy
 msgid "Runtime Version"
 msgstr "Versão"
 
-#: src/contents/ui/PipeWirePage.qml:68
+#: src/contents/ui/PipeWirePage.qml:187
 #, fuzzy
 msgid "Default Sampling Rate"
 msgstr "Amostragem"
 
-#: src/contents/ui/PipeWirePage.qml:73
+#: src/contents/ui/PipeWirePage.qml:192
 #, fuzzy
 msgid "Minimum Quantum"
 msgstr "Frequência"
 
-#: src/contents/ui/PipeWirePage.qml:78
+#: src/contents/ui/PipeWirePage.qml:197
 #, fuzzy
 msgid "Maximum Quantum"
 msgstr "Ganho Máximo"
 
-#: src/contents/ui/PipeWirePage.qml:83
+#: src/contents/ui/PipeWirePage.qml:202
 #, fuzzy
 msgid "Default Quantum"
 msgstr "Saída Padrão"
 
-#: src/contents/ui/PipeWirePage.qml:108
+#: src/contents/ui/PipeWirePage.qml:227
 #, fuzzy
 msgid "No Modules"
 msgstr "Módulos"
 
-#: src/contents/ui/PipeWirePage.qml:135
+#: src/contents/ui/PipeWirePage.qml:254
 #, fuzzy
 msgid "No Clients"
 msgstr "Clientes"
 
-#: src/contents/ui/PreferencesSheet.qml:37
-msgid "Launch Service at System Startup"
+#: src/contents/ui/PreferencesSheet.qml:38
+#, fuzzy
+msgid "Enable Service Mode"
+msgstr "Base Stereo"
+
+#: src/contents/ui/PreferencesSheet.qml:50
+msgid "Autostart on Login"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:46
+#: src/contents/ui/PreferencesSheet.qml:59
 msgid "Show the Tray Icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:79
+#: src/contents/ui/PreferencesSheet.qml:93
 #, fuzzy
 msgid "Process All Output Streams"
 msgstr "Processar Todas as Saídas"
 
-#: src/contents/ui/PreferencesSheet.qml:91
+#: src/contents/ui/PreferencesSheet.qml:105
 #, fuzzy
 msgid "Process All Input Streams"
 msgstr "Processar Todas as Entradas"
 
-#: src/contents/ui/PreferencesSheet.qml:103
+#: src/contents/ui/PreferencesSheet.qml:117
 msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:115
+#: src/contents/ui/PreferencesSheet.qml:129
 msgid "Use Cubic Volume"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:127
+#: src/contents/ui/PreferencesSheet.qml:141
 msgid "Enable the Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:139
+#: src/contents/ui/PreferencesSheet.qml:153
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:140
+#: src/contents/ui/PreferencesSheet.qml:154
 #, fuzzy
 msgid "Input Pipeline"
 msgstr "Dispositivo de Entrada"
 
-#: src/contents/ui/PreferencesSheet.qml:156
+#: src/contents/ui/PreferencesSheet.qml:170
 #, fuzzy
 msgid "Update Interval"
 msgstr "Traduções atualizadas"
 
-#: src/contents/ui/PreferencesSheet.qml:157
+#: src/contents/ui/PreferencesSheet.qml:171
 msgid "Related to Level Meters and Spectrum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:190
+#: src/contents/ui/PreferencesSheet.qml:204
 msgid "State"
 msgstr "Estado"
 
-#: src/contents/ui/PreferencesSheet.qml:197
+#: src/contents/ui/PreferencesSheet.qml:211
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: src/contents/ui/PreferencesSheet.qml:209
+#: src/contents/ui/PreferencesSheet.qml:223
 msgid "Style"
 msgstr "Estilo"
 
-#: src/contents/ui/PreferencesSheet.qml:216
+#: src/contents/ui/PreferencesSheet.qml:230
 msgid "Shape"
 msgstr "Forma"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Bars"
 msgstr "Barras"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Lines"
 msgstr "Linhas"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Dots"
 msgstr "Pontos"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:229
+#: src/contents/ui/PreferencesSheet.qml:243
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:241
+#: src/contents/ui/PreferencesSheet.qml:255
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:253
+#: src/contents/ui/PreferencesSheet.qml:267
 msgid "Points"
 msgstr "Pontos"
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:281
 msgid "Height"
 msgstr "Altura"
 
-#: src/contents/ui/PreferencesSheet.qml:282
+#: src/contents/ui/PreferencesSheet.qml:296
 #, fuzzy
 msgid "Frequency Range"
 msgstr "Frequência"
 
-#: src/contents/ui/PreferencesSheet.qml:289
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Minimum"
 msgstr "Mínimo"
 
-#: src/contents/ui/PreferencesSheet.qml:304
+#: src/contents/ui/PreferencesSheet.qml:318
 msgid "Maximum"
 msgstr "Máximo"
 
-#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/PreferencesSheet.qml:354
 msgid "Native Plugin Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:355
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:367
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Frequência"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:368
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:393
+#: src/contents/ui/PreferencesSheet.qml:407
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:405
+#: src/contents/ui/PreferencesSheet.qml:419
 msgid "Audio"
 msgstr "Áudio"
 
-#: src/contents/ui/PreferencesSheet.qml:417
+#: src/contents/ui/PreferencesSheet.qml:431
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Tipo de Espectro"
 
-#: src/contents/ui/PreferencesSheet.qml:429
+#: src/contents/ui/PreferencesSheet.qml:443
 #, fuzzy
 msgid "Experimental Features"
 msgstr "Experimental"
 
-#: src/main.cpp:27
+#: src/main.cpp:53
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
-#: src/main.cpp:28
+#: src/main.cpp:54
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:32
+#: src/main.cpp:58
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:32
+#: src/main.cpp:58
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Inclinação"
 
-#: src/tags_plugin_name.cpp:28
+#: src/plugin_base.cpp:230
+#, fuzzy
+msgid "Output Level Meter"
+msgstr "Ganho de Entrada"
+
+#: src/plugin_base.cpp:232
+msgid "Spectrum"
+msgstr "Espectro"
+
+#: src/pw_model_nodes.cpp:357
+msgid "Running"
+msgstr "Correndo"
+
+#: src/pw_model_nodes.cpp:359
+msgid "Suspended"
+msgstr "Suspenso"
+
+#: src/pw_model_nodes.cpp:361
+msgid "Idle"
+msgstr ""
+
+#: src/pw_model_nodes.cpp:363
+msgid "Creating"
+msgstr "Criando"
+
+#: src/pw_model_nodes.cpp:365
+msgid "Error"
+msgstr "Erro"
+
+#: src/pw_model_nodes.cpp:367
+msgid "Unknown"
+msgstr "Desconhecido"
+
+#: src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "Ganho Automático"
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
 msgstr "Reforçador de Graves"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:28
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "Volume do baixo"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:29
 msgid "Compressor"
 msgstr "Compressor"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:30
 msgid "Convolver"
 msgstr "Convolução"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
 msgstr "Crossfeed"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
 msgstr "Cristalizador"
 
-#: src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:33
 msgid "Deep Noise Remover"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "Deesser"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:35
 msgid "Delay"
 msgstr "Atraso"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr "Cancelador de Eco"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:37
 msgid "Equalizer"
 msgstr "Equalizador"
 
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:38
 msgid "Exciter"
 msgstr "Excitador"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:39
 msgid "Expander"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "Filtro"
 
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:41
 msgid "Gate"
 msgstr "Portão"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:43
 msgid "Limiter"
 msgstr "Limitador"
 
-#: src/tags_plugin_name.cpp:46
-msgid "Loudness"
-msgstr "Sonoridade"
-
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
 msgstr "Maximizador"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:46
 msgid "Multiband Compressor"
 msgstr "Compressor Multibandas"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:47
 msgid "Multiband Gate"
 msgstr "Gate Multibandas"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:48
+#, fuzzy
+msgid "Output Level"
+msgstr "Ganho de Entrada"
+
+#: src/tags_plugin_name.cpp:49
 msgid "Pitch"
 msgstr "Altura"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:50
 #, fuzzy
 msgid "Reverberation"
 msgstr "Reverberação"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:51
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Redução de Ruído"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
 msgstr ""
+
+#: src/tags_plugin_name.cpp:53
+#, fuzzy
+msgid "Sectrum"
+msgstr "Espectro"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -546,24 +784,11 @@ msgstr ""
 #~ msgstr "Usar Padrão"
 
 #, fuzzy
-#~ msgid "Output Device"
-#~ msgstr "Ganho de Entrada"
-
-#~ msgid "Input"
-#~ msgstr "Entrada"
-
-#, fuzzy
 #~ msgid "Value"
 #~ msgstr "Piso"
 
 #~ msgid "Apply"
 #~ msgstr "Aplicar"
-
-#~ msgid "Output"
-#~ msgstr "Saída"
-
-#~ msgid "PipeWire"
-#~ msgstr "PipeWire"
 
 #~ msgid ""
 #~ "Easy Effects is an advanced audio manipulation tool. It includes an "
@@ -1849,9 +2074,6 @@ msgstr ""
 #~ msgid "_Shortcuts"
 #~ msgstr "_Atalhos"
 
-#~ msgid "_Reset Settings"
-#~ msgstr "_Redefinir as Configurações"
-
 #~ msgid "Presets Menu"
 #~ msgstr "Menu de Predefinições"
 
@@ -1867,63 +2089,11 @@ msgstr ""
 #~ msgid "Applications List"
 #~ msgstr "Lista de Aplicativos"
 
-#~ msgid "Target"
-#~ msgstr "Alvo"
-
-#~ msgid "Maximum History"
-#~ msgstr "Histórico máximo"
-
-#~ msgid "Reference"
-#~ msgstr "Referência"
-
-#~ msgid "Momentary"
-#~ msgstr "Momentâneo"
-
-#~ msgid "Short-Term"
-#~ msgstr "Curto Prazo"
-
-#~ msgid "Integrated"
-#~ msgstr "Integrada"
-
-#, fuzzy
-#~ msgid "Geometric Mean (MSI)"
-#~ msgstr "Média Geométrica"
-
-#, fuzzy
-#~ msgid "Geometric Mean (MS)"
-#~ msgstr "Média Geométrica"
-
-#, fuzzy
-#~ msgid "Geometric Mean (MI)"
-#~ msgstr "Média Geométrica"
-
-#, fuzzy
-#~ msgid "Geometric Mean (SI)"
-#~ msgstr "Média Geométrica"
-
-#~ msgid "Reset History"
-#~ msgstr "Redefinir Histórico"
-
-#~ msgid "Relative"
-#~ msgstr "Relativo"
-
-#~ msgid "Range"
-#~ msgstr "Alcance"
-
-#~ msgid "Output Gain"
-#~ msgstr "Ganho de Saída"
-
 #~ msgid "Plugin Input Gain"
 #~ msgstr "Ganho de Entrada do Plugin"
 
 #~ msgid "Plugin Output Gain"
 #~ msgstr "Ganho de Saída do Plugin"
-
-#~ msgid "Reset"
-#~ msgstr "Resetar"
-
-#~ msgid "Using"
-#~ msgstr "Usando"
 
 #~ msgid "Device"
 #~ msgstr "Dispositivo"
@@ -1935,29 +2105,8 @@ msgstr ""
 #~ msgid "Remove this autoload preset"
 #~ msgstr "Remover este arquivo de predefinição"
 
-#~ msgid "Listen"
-#~ msgstr "Escutar"
-
-#~ msgid "Blend Harmonics"
-#~ msgstr "Mistura de Harmônicos"
-
-#~ msgid "3rd"
-#~ msgstr "3°"
-
 #~ msgid "2nd"
 #~ msgstr "2°"
-
-#~ msgid "Amount"
-#~ msgstr "Quantidade"
-
-#~ msgid "Harmonics"
-#~ msgstr "Harmônico"
-
-#~ msgid "Scope"
-#~ msgstr "Escopo"
-
-#~ msgid "Floor"
-#~ msgstr "Piso"
 
 #~ msgid "Floor Value"
 #~ msgstr "Valor do piso"
@@ -2145,9 +2294,6 @@ msgstr ""
 #~ msgid "Curve"
 #~ msgstr "Curva"
 
-#~ msgid "L"
-#~ msgstr "L"
-
 #~ msgid "Left Channel"
 #~ msgstr "Canal esquerdo"
 
@@ -2166,9 +2312,6 @@ msgstr ""
 
 #~ msgid "Stereo Width"
 #~ msgstr "Largura do Stereo"
-
-#~ msgid "Spectrum"
-#~ msgstr "Espectro"
 
 #~ msgid "Log Scale"
 #~ msgstr "Escala logarítmica"
@@ -2797,10 +2940,6 @@ msgstr ""
 #~ msgstr "Redução de Ganho"
 
 #, fuzzy
-#~ msgid "Use Default Input"
-#~ msgstr "Usar Padrão"
-
-#, fuzzy
 #~ msgid "Custom Input Device"
 #~ msgstr "Dispositivo de Entrada"
 
@@ -3100,10 +3239,6 @@ msgstr ""
 #~ msgid "LR > RL (Stereo Flip Channels)"
 #~ msgstr "ED > DL (Alternar Canais Stereo)"
 
-#, fuzzy
-#~ msgid "Stereo Mode"
-#~ msgstr "Base Stereo"
-
 #~ msgid "Invert Phase"
 #~ msgstr "Inverter Fase"
 
@@ -3136,39 +3271,11 @@ msgstr ""
 #~ msgid "Stereo Phase"
 #~ msgstr "Fase Stereo"
 
-#~ msgid "Running"
-#~ msgstr "Correndo"
-
-#~ msgid "Suspended"
-#~ msgstr "Suspenso"
-
-#~ msgid "Creating"
-#~ msgstr "Criando"
-
-#~ msgid "Error"
-#~ msgstr "Erro"
-
-#~ msgid "Unknown"
-#~ msgstr "Desconhecido"
-
-#, fuzzy
-#~ msgid "channels"
-#~ msgstr "Canais"
-
 #~ msgid "Output Presets: "
 #~ msgstr "Predefinições de Saída: "
 
 #~ msgid "Input Presets: "
 #~ msgstr "Predefinições de Entrada: "
-
-#~ msgid "Quit EasyEffects. Useful when running in service mode."
-#~ msgstr "Sair do EasyEffects. Útil quando executando em modo de serviço."
-
-#~ msgid "Load a preset. Example: easyeffects -l music"
-#~ msgstr "Carregar uma predefinição. Exemplo: easyeffects -l musica"
-
-#~ msgid "Reset EasyEffects."
-#~ msgstr "Redefinir o EasyEffects."
 
 #~ msgid "Show available presets."
 #~ msgstr "Mostrar predefinições disponíveis."
@@ -3204,9 +3311,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Failed To Load The Impulse File"
 #~ msgstr "Não Foi Possível Carregar o Arquivo com o Impulso"
-
-#~ msgid "Effects"
-#~ msgstr "Efeitos"
 
 #~ msgid "infinity"
 #~ msgstr "infinito"
@@ -3440,9 +3544,6 @@ msgstr ""
 #~ msgid "Triangle"
 #~ msgstr "Triângulo"
 
-#~ msgid "Silence"
-#~ msgstr "Silencio"
-
 #~ msgid "Pink Noise"
 #~ msgstr "Ruído Rosa"
 
@@ -3503,9 +3604,6 @@ msgstr ""
 
 #~ msgid "Fixed Digital"
 #~ msgstr "Digital Fixo"
-
-#~ msgid "Gain Controller"
-#~ msgstr "Controlador de Ganho"
 
 #~ msgid "Detection Likelihood"
 #~ msgstr "Probabilidade de Detecção"

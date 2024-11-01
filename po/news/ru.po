@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-08-03 13:13-0300\n"
+"POT-Creation-Date: 2024-11-01 00:27-0300\n"
 "PO-Revision-Date: 2024-04-02 18:06+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
@@ -20,479 +20,731 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Weblate 5.5-dev\n"
 
-#: src/contents/ui/DelegateClientsList.qml:29
-#: src/contents/ui/DelegateModulesList.qml:29
+#: src/command_line_parser.cpp:35
+#, fuzzy
+msgid "Quit Easy Effects. Useful when running in service mode."
+msgstr "Выход из EasyEffects. Полезно при запуске в режиме службы."
+
+#: src/command_line_parser.cpp:36
+#, fuzzy
+msgid "Reset Easy Effects."
+msgstr "Сброс настроек EasyEffects."
+
+#: src/command_line_parser.cpp:37 src/command_line_parser.cpp:39
+#, fuzzy
+msgid "Hide the Window."
+msgstr "Закрыть окно"
+
+#: src/command_line_parser.cpp:38
+msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+msgstr "Глобальный обход. 1 — включить, 2 — отключить, 3 — получение статуса"
+
+#: src/command_line_parser.cpp:40
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "Загрузить предустановку. Пример: easyeffects -l music"
+
+#: src/contents/ui/Autogain.qml:54 src/contents/ui/BassEnhancer.qml:90
+#, fuzzy
+msgid "Controls"
+msgstr "Автоконтроль усиления (AGC)"
+
+#: src/contents/ui/Autogain.qml:62
+msgid "Reference"
+msgstr "База"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:141
+msgid "Momentary"
+msgstr "Моментальные измерения"
+
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:152
+msgid "Short-Term"
+msgstr "Краткосрочные измерения"
+
+# Время интеграции — это величина, характеризующая быстродействие измерителя.
+# https://tech.ebu.ch/docs/factsheets/Factsheet-R128-2011-RUS.pdf
+# В документе выше переводчик перевел 'Integrated' как 'Интегрированные',
+# хотя сам же написал, что это "измерения от начала до конца"
+# Яндекс.Переводчик перевел лучше — "Комплексные измерения"
+#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:163
+msgid "Integrated"
+msgstr "Комплексные измерения"
+
+#: src/contents/ui/Autogain.qml:66
+msgid "Geometric Mean (MSI)"
+msgstr "Среднее геометрическое (MSI)"
+
+#: src/contents/ui/Autogain.qml:66
+msgid "Geometric Mean (MS)"
+msgstr "Среднее геометрическое (MS)"
+
+#: src/contents/ui/Autogain.qml:66
+msgid "Geometric Mean (MI)"
+msgstr "Среднее геометрическое (MI)"
+
+#: src/contents/ui/Autogain.qml:66
+msgid "Geometric Mean (SI)"
+msgstr "Среднее геометрическое (SI)"
+
+#: src/contents/ui/Autogain.qml:75
+msgid "Target"
+msgstr "Целевая громкость"
+
+#: src/contents/ui/Autogain.qml:90
+msgid "Silence"
+msgstr "Тишина"
+
+#: src/contents/ui/Autogain.qml:105
+msgid "Maximum History"
+msgstr "Исторически максимальный"
+
+#: src/contents/ui/Autogain.qml:127 src/contents/ui/Autogain.qml:196
+#: src/tags_plugin_name.cpp:44
+msgid "Loudness"
+msgstr "Громкость"
+
+#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:153
+#: src/contents/ui/Autogain.qml:164 src/contents/ui/Autogain.qml:175
+#: src/contents/ui/Autogain.qml:197
+msgid "LUFS"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:174
+msgid "Relative"
+msgstr "Относительное значение"
+
+# ??? Не уверен в переводе
+#: src/contents/ui/Autogain.qml:185
+msgid "Range"
+msgstr "Диапазон"
+
+#: src/contents/ui/Autogain.qml:186
+#, fuzzy
+msgid "LU"
+msgstr "Л"
+
+#: src/contents/ui/Autogain.qml:207
+msgid "Output Gain"
+msgstr "Усиление выхода"
+
+#: src/contents/ui/Autogain.qml:208
+msgid "dB"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:180
+msgid "Using"
+msgstr "Используется"
+
+# #, fuzzy
+#: src/contents/ui/Autogain.qml:246
+msgid "Reset History"
+msgstr "Сброс истории"
+
+#: src/contents/ui/Autogain.qml:253
+#, fuzzy
+msgid "Reset Settings"
+msgstr "_Сброс настроек"
+
+#: src/contents/ui/BassEnhancer.qml:39
+msgid "Blend Harmonics"
+msgstr "Смешение гармоник"
+
+#: src/contents/ui/BassEnhancer.qml:48
+msgid "3rd"
+msgstr "3-ий"
+
+#: src/contents/ui/BassEnhancer.qml:71
+#, fuzzy
+msgid "2rd"
+msgstr "3-ий"
+
+#: src/contents/ui/BassEnhancer.qml:98
+msgid "Amount"
+msgstr "Величина"
+
+#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:157
+msgid "Harmonics"
+msgstr "Гармоники"
+
+#: src/contents/ui/BassEnhancer.qml:127
+msgid "Scope"
+msgstr "Диапазон частот"
+
+#: src/contents/ui/BassEnhancer.qml:142
+msgid "Floor"
+msgstr "Нижний порог"
+
+#: src/contents/ui/BassEnhancer.qml:195
+#, fuzzy
+msgid "Show Native Window"
+msgstr "Закрыть окно"
+
+#: src/contents/ui/BassEnhancer.qml:208
+msgid "Listen"
+msgstr "Прослушать"
+
+#: src/contents/ui/BassEnhancer.qml:219
+msgid "Reset"
+msgstr "Сброс"
+
+#: src/contents/ui/DelegateClientsList.qml:34
+#: src/contents/ui/DelegateModulesList.qml:34
 msgid "Id"
 msgstr "Id"
 
-#: src/contents/ui/DelegateClientsList.qml:43
-#: src/contents/ui/DelegateModulesList.qml:43
+#: src/contents/ui/DelegateClientsList.qml:48
+#: src/contents/ui/DelegateModulesList.qml:48
+#: src/contents/ui/PipeWirePage.qml:109 src/contents/ui/PipeWirePage.qml:148
 msgid "Name"
 msgstr "Название"
 
-#: src/contents/ui/DelegateClientsList.qml:57
+#: src/contents/ui/DelegateClientsList.qml:62
 msgid "Api"
 msgstr ""
 
-#: src/contents/ui/DelegateClientsList.qml:71
+#: src/contents/ui/DelegateClientsList.qml:76
 msgid "Access"
 msgstr "Доступ"
 
-#: src/contents/ui/DelegateModulesList.qml:57
+#: src/contents/ui/DelegateModulesList.qml:62
 msgid "Description"
 msgstr "Описание"
 
-#: src/contents/ui/DelegatePluginsList.qml:49
+#: src/contents/ui/DelegatePluginsList.qml:57
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "Удалить этот файл модели"
 
-#: src/contents/ui/DelegatePluginsList.qml:62
+#: src/contents/ui/DelegatePluginsList.qml:70
 #, fuzzy
 msgid "Remove this effect"
 msgstr "Удалить этот файл модели"
 
-#: src/contents/ui/DelegateStreamsList.qml:58
+#: src/contents/ui/DelegateStreamsList.qml:51
+#, fuzzy
+msgid " channels"
+msgstr "каналы"
+
+#: src/contents/ui/DelegateStreamsList.qml:61
 msgid "Enable"
 msgstr "Включить"
 
-#: src/contents/ui/DelegateStreamsList.qml:63
+#: src/contents/ui/DelegateStreamsList.qml:66
 msgid "Exclude"
 msgstr "Исключить"
 
-#: src/contents/ui/main.qml:14
+# ###############################################
+# https://github.com/wwmm/easyeffects/pull/289
+# Left here for future thinking
+# msgid "Influence of measurements with momentary integration time"
+# msgstr "Влияние измерений с моментальным временем интеграции"
+# msgid "Influence of measurements with short integration time"
+# msgstr "Влияние измерений с малым временем интеграции"
+# msgid "Influence of integrated measurements"
+# msgstr "Влияние комплексных измерений"
+# ###############################################
+#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+msgid "Input"
+msgstr "Вход"
+
+#: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
+msgid "Output"
+msgstr "Выход"
+
+#: src/contents/ui/main.qml:17
 #, fuzzy
 msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "Easy Effects"
 
-#: src/contents/ui/main.qml:86
+#: src/contents/ui/main.qml:102
 #, fuzzy
 msgid "Preset: "
 msgstr "Предустановка"
 
-#: src/contents/ui/main.qml:94 src/contents/ui/main.qml:206
+#: src/contents/ui/main.qml:110 src/contents/ui/main.qml:235
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:116
+#: src/contents/ui/main.qml:132
 msgid "Presets"
 msgstr "Предустановки"
 
-#: src/contents/ui/main.qml:124
+#: src/contents/ui/main.qml:140
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:190 src/contents/ui/PreferencesSheet.qml:12
-#: src/contents/ui/PreferencesSheet.qml:17
-#: src/contents/ui/PreferencesSheet.qml:453
-#: src/contents/ui/PreferencesSheet.qml:466
+#: src/contents/ui/main.qml:203
+msgid "PipeWire"
+msgstr "PipeWire"
+
+#: src/contents/ui/main.qml:219 src/contents/ui/PreferencesSheet.qml:13
+#: src/contents/ui/PreferencesSheet.qml:18
+#: src/contents/ui/PreferencesSheet.qml:467
+#: src/contents/ui/PreferencesSheet.qml:480
 #, fuzzy
 msgid "Preferences"
 msgstr "_Настройки"
 
-#: src/contents/ui/main.qml:198
+#: src/contents/ui/main.qml:227
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "_О программе EasyEffects"
 
-#: src/contents/ui/MenuAddPlugins.qml:42
+#: src/contents/ui/MenuAddPlugins.qml:41
 #, fuzzy
 msgid "Empty"
 msgstr "Пустой список"
 
-#: src/contents/ui/MenuAddPlugins.qml:129
+#: src/contents/ui/MenuAddPlugins.qml:130
 #, fuzzy
 msgid "Added Plugin: "
 msgstr "Добавить плагин"
 
-#: src/contents/ui/MenuAddPlugins.qml:144
+#: src/contents/ui/MenuAddPlugins.qml:145
 msgid "Search"
 msgstr "Поиск"
 
-#: src/contents/ui/PageStreamsEffects.qml:93
+#: src/contents/ui/PageStreamsEffects.qml:56
 #, fuzzy
 msgid "Empty List"
 msgstr "Пустые стены"
 
-#: src/contents/ui/PageStreamsEffects.qml:94
+#: src/contents/ui/PageStreamsEffects.qml:57
 msgid "No Audio Application Available"
 msgstr "Нет доступных приложений аудио"
 
-#: src/contents/ui/PageStreamsEffects.qml:119
+#: src/contents/ui/PageStreamsEffects.qml:198
 msgid "Add Effect"
 msgstr "Добавить эффект"
 
-#: src/contents/ui/PageStreamsEffects.qml:165
+#: src/contents/ui/PageStreamsEffects.qml:248
+#: src/contents/ui/PageStreamsEffects.qml:380
 msgid "Players"
 msgstr "Проигрыватели"
 
 # #, fuzzy
-#: src/contents/ui/PageStreamsEffects.qml:165
+#: src/contents/ui/PageStreamsEffects.qml:248
 msgid "Input Device"
 msgstr "Устройство ввода"
 
-#: src/contents/ui/PageStreamsEffects.qml:183
+#: src/contents/ui/PageStreamsEffects.qml:266
 msgid "Recorders"
 msgstr "Рекордеры"
 
-#: src/contents/ui/PageStreamsEffects.qml:210
+#: src/contents/ui/PageStreamsEffects.qml:291
 msgid "No Effects"
 msgstr "Без эффектов"
 
-#: src/contents/ui/PageStreamsEffects.qml:211
+#: src/contents/ui/PageStreamsEffects.qml:292
 msgid "Audio Stream Not Modified"
 msgstr "Аудиопоток не изменён"
 
-#: src/contents/ui/PageStreamsEffects.qml:291
+#: src/contents/ui/PageStreamsEffects.qml:390
+msgid "Effects"
+msgstr "Эффекты"
+
+#: src/contents/ui/PageStreamsEffects.qml:406
 msgid "Excluded Apps"
 msgstr "Приложения чёрного списка"
 
-#: src/contents/ui/PipeWirePage.qml:14
+#: src/contents/ui/PipeWirePage.qml:15
 msgid "General"
 msgstr "Общие"
 
-#: src/contents/ui/PipeWirePage.qml:18
+#: src/contents/ui/PipeWirePage.qml:19
 #, fuzzy
 msgid "Preset Autoloading"
 msgstr "Улучшена автозагрузка предустановок."
 
-#: src/contents/ui/PipeWirePage.qml:22
+#: src/contents/ui/PipeWirePage.qml:23
 msgid "Modules"
 msgstr "Модули"
 
-#: src/contents/ui/PipeWirePage.qml:26
+#: src/contents/ui/PipeWirePage.qml:27
 msgid "Clients"
 msgstr "Клиенты"
 
-#: src/contents/ui/PipeWirePage.qml:30
+#: src/contents/ui/PipeWirePage.qml:31
 msgid "Test Signal"
 msgstr "Проверочный сигнал"
 
-#: src/contents/ui/PipeWirePage.qml:40
+#: src/contents/ui/PipeWirePage.qml:83
 msgid "Device Management"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:44
+#: src/contents/ui/PipeWirePage.qml:87
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:48
+#: src/contents/ui/PipeWirePage.qml:94
+msgid "Use Default Input"
+msgstr "Использовать стандартный вход"
+
+#: src/contents/ui/PipeWirePage.qml:133
+#, fuzzy
+msgid "Use Default Output"
+msgstr "Использовать стандартный вход"
+
+#: src/contents/ui/PipeWirePage.qml:167
 msgid "Server Information"
 msgstr "Информация о сервере"
 
-#: src/contents/ui/PipeWirePage.qml:53
+#: src/contents/ui/PipeWirePage.qml:172
 msgid "Header Version"
 msgstr "Версия оболочки"
 
-#: src/contents/ui/PipeWirePage.qml:58
+#: src/contents/ui/PipeWirePage.qml:177
 msgid "Library Version"
 msgstr "Версия библиотеки"
 
-#: src/contents/ui/PipeWirePage.qml:63
+#: src/contents/ui/PipeWirePage.qml:182
 #, fuzzy
 msgid "Runtime Version"
 msgstr "Версия"
 
-#: src/contents/ui/PipeWirePage.qml:68
+#: src/contents/ui/PipeWirePage.qml:187
 #, fuzzy
 msgid "Default Sampling Rate"
 msgstr "Частота дискретизации"
 
-#: src/contents/ui/PipeWirePage.qml:73
+#: src/contents/ui/PipeWirePage.qml:192
 msgid "Minimum Quantum"
 msgstr "Минимальное квантование"
 
-#: src/contents/ui/PipeWirePage.qml:78
+#: src/contents/ui/PipeWirePage.qml:197
 msgid "Maximum Quantum"
 msgstr "Максимальное квантование"
 
-#: src/contents/ui/PipeWirePage.qml:83
+#: src/contents/ui/PipeWirePage.qml:202
 msgid "Default Quantum"
 msgstr "Стандартное квантование"
 
-#: src/contents/ui/PipeWirePage.qml:108
+#: src/contents/ui/PipeWirePage.qml:227
 #, fuzzy
 msgid "No Modules"
 msgstr "Модули"
 
-#: src/contents/ui/PipeWirePage.qml:135
+#: src/contents/ui/PipeWirePage.qml:254
 #, fuzzy
 msgid "No Clients"
 msgstr "Клиенты"
 
-#: src/contents/ui/PreferencesSheet.qml:37
-msgid "Launch Service at System Startup"
-msgstr "Запускать службу при старте системы"
+#: src/contents/ui/PreferencesSheet.qml:38
+#, fuzzy
+msgid "Enable Service Mode"
+msgstr "Режим стерео"
 
-#: src/contents/ui/PreferencesSheet.qml:46
+#: src/contents/ui/PreferencesSheet.qml:50
+msgid "Autostart on Login"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:59
 msgid "Show the Tray Icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:79
+#: src/contents/ui/PreferencesSheet.qml:93
 msgid "Process All Output Streams"
 msgstr "Обрабатывать все выходные потоки"
 
-#: src/contents/ui/PreferencesSheet.qml:91
+#: src/contents/ui/PreferencesSheet.qml:105
 msgid "Process All Input Streams"
 msgstr "Обрабатывать все входные потоки"
 
-#: src/contents/ui/PreferencesSheet.qml:103
+#: src/contents/ui/PreferencesSheet.qml:117
 msgid "Ignore Streams from Monitor of Devices"
 msgstr "Игнорировать потоки с монитора устройств"
 
-#: src/contents/ui/PreferencesSheet.qml:115
+#: src/contents/ui/PreferencesSheet.qml:129
 msgid "Use Cubic Volume"
 msgstr "Использовать кубическую громкость"
 
-#: src/contents/ui/PreferencesSheet.qml:127
+#: src/contents/ui/PreferencesSheet.qml:141
 #, fuzzy
 msgid "Enable the Inactivity Timeout"
 msgstr "Тайм-аут бездействия"
 
-#: src/contents/ui/PreferencesSheet.qml:139
+#: src/contents/ui/PreferencesSheet.qml:153
 msgid "Inactivity Timeout"
 msgstr "Тайм-аут бездействия"
 
 # #, fuzzy
-#: src/contents/ui/PreferencesSheet.qml:140
+#: src/contents/ui/PreferencesSheet.qml:154
 #, fuzzy
 msgid "Input Pipeline"
 msgstr "Устройство ввода"
 
-#: src/contents/ui/PreferencesSheet.qml:156
+#: src/contents/ui/PreferencesSheet.qml:170
 #, fuzzy
 msgid "Update Interval"
 msgstr "Обновлены переводы"
 
-#: src/contents/ui/PreferencesSheet.qml:157
+#: src/contents/ui/PreferencesSheet.qml:171
 msgid "Related to Level Meters and Spectrum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:190
+#: src/contents/ui/PreferencesSheet.qml:204
 msgid "State"
 msgstr "Состояние"
 
-#: src/contents/ui/PreferencesSheet.qml:197
+#: src/contents/ui/PreferencesSheet.qml:211
 msgid "Enabled"
 msgstr "Включено"
 
-#: src/contents/ui/PreferencesSheet.qml:209
+#: src/contents/ui/PreferencesSheet.qml:223
 msgid "Style"
 msgstr "Стиль"
 
-#: src/contents/ui/PreferencesSheet.qml:216
+#: src/contents/ui/PreferencesSheet.qml:230
 msgid "Shape"
 msgstr "Форма"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Bars"
 msgstr "Полосы"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Lines"
 msgstr "Линии"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Dots"
 msgstr "Точки"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:229
+#: src/contents/ui/PreferencesSheet.qml:243
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:241
+#: src/contents/ui/PreferencesSheet.qml:255
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:253
+#: src/contents/ui/PreferencesSheet.qml:267
 msgid "Points"
 msgstr "Пункты"
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:281
 msgid "Height"
 msgstr "Высота"
 
-#: src/contents/ui/PreferencesSheet.qml:282
+#: src/contents/ui/PreferencesSheet.qml:296
 msgid "Frequency Range"
 msgstr "Диапазон частот"
 
-#: src/contents/ui/PreferencesSheet.qml:289
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Minimum"
 msgstr "Минимум"
 
-#: src/contents/ui/PreferencesSheet.qml:304
+#: src/contents/ui/PreferencesSheet.qml:318
 msgid "Maximum"
 msgstr "Максимум"
 
-#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/PreferencesSheet.qml:354
 msgid "Native Plugin Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:355
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:367
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Частота раздела 1"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:368
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:393
+#: src/contents/ui/PreferencesSheet.qml:407
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:405
+#: src/contents/ui/PreferencesSheet.qml:419
 msgid "Audio"
 msgstr "Аудио"
 
-#: src/contents/ui/PreferencesSheet.qml:417
+#: src/contents/ui/PreferencesSheet.qml:431
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Тип спектра"
 
-#: src/contents/ui/PreferencesSheet.qml:429
+#: src/contents/ui/PreferencesSheet.qml:443
 #, fuzzy
 msgid "Experimental Features"
 msgstr "Экспериментальный"
 
-#: src/main.cpp:27
+#: src/main.cpp:53
 msgid "Audio effects for PipeWire applications"
 msgstr "Звуковые эффекты для приложений PipeWire"
 
-#: src/main.cpp:28
+#: src/main.cpp:54
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:32
+#: src/main.cpp:58
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Веллингтон Уоллис"
 
-#: src/main.cpp:32
+#: src/main.cpp:58
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Огибающая"
 
-#: src/tags_plugin_name.cpp:28
+#: src/plugin_base.cpp:230
+#, fuzzy
+msgid "Output Level Meter"
+msgstr "Устройство вывода"
+
+#: src/plugin_base.cpp:232
+msgid "Spectrum"
+msgstr "Спектр"
+
+#: src/pw_model_nodes.cpp:357
+msgid "Running"
+msgstr "Выполняется"
+
+#: src/pw_model_nodes.cpp:359
+msgid "Suspended"
+msgstr "Приостановлено"
+
+#: src/pw_model_nodes.cpp:361
+msgid "Idle"
+msgstr "Простаивает"
+
+#: src/pw_model_nodes.cpp:363
+msgid "Creating"
+msgstr "Создание"
+
+#: src/pw_model_nodes.cpp:365
+msgid "Error"
+msgstr "Ошибка"
+
+#: src/pw_model_nodes.cpp:367
+msgid "Unknown"
+msgstr "Неизвестно"
+
+#: src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "Нормализация громкости"
 
 # Энхансер (он же Эксайтер) — это прибор, который генерирует высшие гармоники низких частот, благодаря чему повышается локализация низких частот и их «читаемость».
 # «Бас-Энхансер» или «Глубокий бас»
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
 msgstr "Усиление басов (бас-энхансер)"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
 msgstr "Громкость баса"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:29
 msgid "Compressor"
 msgstr "Компрессор"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:30
 msgid "Convolver"
 msgstr "Конвольвер"
 
-#: src/tags_plugin_name.cpp:33
+#: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
 msgstr "Перекрёстная подача"
 
-#: src/tags_plugin_name.cpp:34
+#: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
 msgstr "Кристаллизатор"
 
-#: src/tags_plugin_name.cpp:35
+#: src/tags_plugin_name.cpp:33
 msgid "Deep Noise Remover"
 msgstr ""
 
 # http://wikisound.org/Деэссер; предназначен для уменьшения или устранения избыточно шипящих звуков в записи человеческого голоса
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "Антишипение (деэссер)"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:35
 msgid "Delay"
 msgstr "Задержка"
 
-#: src/tags_plugin_name.cpp:38
+#: src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr "Эхоподавление"
 
-#: src/tags_plugin_name.cpp:39
+#: src/tags_plugin_name.cpp:37
 msgid "Equalizer"
 msgstr "Эквалайзер"
 
-#: src/tags_plugin_name.cpp:40
+#: src/tags_plugin_name.cpp:38
 msgid "Exciter"
 msgstr "Эксайтер"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:39
 msgid "Expander"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:42
+#: src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "Фильтр"
 
 # http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:41
 msgid "Gate"
 msgstr "Шумовые ворота (гейт)"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:43
 msgid "Limiter"
 msgstr "Ограничитель уровня звука (лимитер)"
 
-#: src/tags_plugin_name.cpp:46
-msgid "Loudness"
-msgstr "Громкость"
-
-#: src/tags_plugin_name.cpp:47
+#: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
 msgstr "Максимизатор"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:46
 msgid "Multiband Compressor"
 msgstr "Многополосный компрессор"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:47
 msgid "Multiband Gate"
 msgstr "Многополосные шумовые ворота"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:48
+#, fuzzy
+msgid "Output Level"
+msgstr "Устройство вывода"
+
+#: src/tags_plugin_name.cpp:49
 msgid "Pitch"
 msgstr "Высота тона"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:50
 msgid "Reverberation"
 msgstr "Реверберация"
 
-#: src/tags_plugin_name.cpp:52
+#: src/tags_plugin_name.cpp:51
 msgid "Noise Reduction"
 msgstr "Подавление шума"
 
-#: src/tags_plugin_name.cpp:53
+#: src/tags_plugin_name.cpp:52
 msgid "Speech Processor"
 msgstr ""
+
+#: src/tags_plugin_name.cpp:53
+#, fuzzy
+msgid "Sectrum"
+msgstr "Спектр"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Stereo Tools"
@@ -510,6 +762,9 @@ msgstr "Эквалайзер, компрессор и прочие звуков�
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Звуковые эффекты для приложений PipeWire"
+
+#~ msgid "Launch Service at System Startup"
+#~ msgstr "Запускать службу при старте системы"
 
 #, fuzzy
 #~ msgid "No Preset"
@@ -550,34 +805,12 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #~ msgid "Use the System Default Output Device"
 #~ msgstr "Использовать стандартный выход"
 
-#~ msgid "Output Device"
-#~ msgstr "Устройство вывода"
-
-# ###############################################
-# https://github.com/wwmm/easyeffects/pull/289
-# Left here for future thinking
-# msgid "Influence of measurements with momentary integration time"
-# msgstr "Влияние измерений с моментальным временем интеграции"
-# msgid "Influence of measurements with short integration time"
-# msgstr "Влияние измерений с малым временем интеграции"
-# msgid "Influence of integrated measurements"
-# msgstr "Влияние комплексных измерений"
-# ###############################################
-#~ msgid "Input"
-#~ msgstr "Вход"
-
 #, fuzzy
 #~ msgid "Value"
 #~ msgstr "Нижний порог"
 
 #~ msgid "Apply"
 #~ msgstr "Применить"
-
-#~ msgid "Output"
-#~ msgstr "Выход"
-
-#~ msgid "PipeWire"
-#~ msgstr "PipeWire"
 
 #~ msgid ""
 #~ "Easy Effects is an advanced audio manipulation tool. It includes an "
@@ -1888,9 +2121,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #~ msgid "_Shortcuts"
 #~ msgstr "_Горячие клавиши"
 
-#~ msgid "_Reset Settings"
-#~ msgstr "_Сброс настроек"
-
 #~ msgid "Presets Menu"
 #~ msgstr "Меню предустановок"
 
@@ -1906,66 +2136,11 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #~ msgid "Applications List"
 #~ msgstr "Список приложений"
 
-#~ msgid "Target"
-#~ msgstr "Целевая громкость"
-
-#~ msgid "Maximum History"
-#~ msgstr "Исторически максимальный"
-
-#~ msgid "Reference"
-#~ msgstr "База"
-
-#~ msgid "Momentary"
-#~ msgstr "Моментальные измерения"
-
-#~ msgid "Short-Term"
-#~ msgstr "Краткосрочные измерения"
-
-# Время интеграции — это величина, характеризующая быстродействие измерителя.
-# https://tech.ebu.ch/docs/factsheets/Factsheet-R128-2011-RUS.pdf
-# В документе выше переводчик перевел 'Integrated' как 'Интегрированные',
-# хотя сам же написал, что это "измерения от начала до конца"
-# Яндекс.Переводчик перевел лучше — "Комплексные измерения"
-#~ msgid "Integrated"
-#~ msgstr "Комплексные измерения"
-
-#~ msgid "Geometric Mean (MSI)"
-#~ msgstr "Среднее геометрическое (MSI)"
-
-#~ msgid "Geometric Mean (MS)"
-#~ msgstr "Среднее геометрическое (MS)"
-
-#~ msgid "Geometric Mean (MI)"
-#~ msgstr "Среднее геометрическое (MI)"
-
-#~ msgid "Geometric Mean (SI)"
-#~ msgstr "Среднее геометрическое (SI)"
-
-# #, fuzzy
-#~ msgid "Reset History"
-#~ msgstr "Сброс истории"
-
-#~ msgid "Relative"
-#~ msgstr "Относительное значение"
-
-# ??? Не уверен в переводе
-#~ msgid "Range"
-#~ msgstr "Диапазон"
-
-#~ msgid "Output Gain"
-#~ msgstr "Усиление выхода"
-
 #~ msgid "Plugin Input Gain"
 #~ msgstr "Усиление входа"
 
 #~ msgid "Plugin Output Gain"
 #~ msgstr "Усиление выхода"
-
-#~ msgid "Reset"
-#~ msgstr "Сброс"
-
-#~ msgid "Using"
-#~ msgstr "Используется"
 
 # #, fuzzy
 #~ msgid "Device"
@@ -1978,29 +2153,8 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #~ msgid "Remove this autoload preset"
 #~ msgstr "Удалить автозагрузку предустановки"
 
-#~ msgid "Listen"
-#~ msgstr "Прослушать"
-
-#~ msgid "Blend Harmonics"
-#~ msgstr "Смешение гармоник"
-
-#~ msgid "3rd"
-#~ msgstr "3-ий"
-
 #~ msgid "2nd"
 #~ msgstr "2-ой"
-
-#~ msgid "Amount"
-#~ msgstr "Величина"
-
-#~ msgid "Harmonics"
-#~ msgstr "Гармоники"
-
-#~ msgid "Scope"
-#~ msgstr "Диапазон частот"
-
-#~ msgid "Floor"
-#~ msgstr "Нижний порог"
 
 #~ msgid "Floor Value"
 #~ msgstr "Величина нижнего порога"
@@ -2177,9 +2331,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #~ msgid "Curve"
 #~ msgstr "Кривая"
 
-#~ msgid "L"
-#~ msgstr "Л"
-
 #~ msgid "Left Channel"
 #~ msgstr "Левый Канал"
 
@@ -2197,9 +2348,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 
 #~ msgid "Stereo Width"
 #~ msgstr "Ширина стерео"
-
-#~ msgid "Spectrum"
-#~ msgstr "Спектр"
 
 #~ msgid "Log Scale"
 #~ msgstr "Логарифмическая шкала"
@@ -2856,9 +3004,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #~ msgid "Band 4 Max Reduction"
 #~ msgstr "Полоса 4 макс. подавление"
 
-#~ msgid "Use Default Input"
-#~ msgstr "Использовать стандартный вход"
-
 # #, fuzzy
 #~ msgid "Custom Input Device"
 #~ msgstr "Выбрать устройство ввода"
@@ -3157,9 +3302,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #~ msgid "Fullscreen/Restore from fullscreen"
 #~ msgstr "Полноэкраный режим / выйти из полного экрана"
 
-#~ msgid "Close the Window"
-#~ msgstr "Закрыть окно"
-
 #~ msgid "Quit EasyEffects"
 #~ msgstr "Выход из EasyEffects"
 
@@ -3199,9 +3341,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #~ msgid "LR > RL (Stereo Flip Channels)"
 #~ msgstr "Стерео > Поменять каналы местами"
 
-#~ msgid "Stereo Mode"
-#~ msgstr "Режим стерео"
-
 #~ msgid "Invert Phase"
 #~ msgstr "Инвертировать фазу"
 
@@ -3232,45 +3371,11 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #~ msgid "Stereo Phase"
 #~ msgstr "Стерео фаза"
 
-#~ msgid "Running"
-#~ msgstr "Выполняется"
-
-#~ msgid "Suspended"
-#~ msgstr "Приостановлено"
-
-#~ msgid "Idle"
-#~ msgstr "Простаивает"
-
-#~ msgid "Creating"
-#~ msgstr "Создание"
-
-#~ msgid "Error"
-#~ msgstr "Ошибка"
-
-#~ msgid "Unknown"
-#~ msgstr "Неизвестно"
-
-#~ msgid "channels"
-#~ msgstr "каналы"
-
 #~ msgid "Output Presets: "
 #~ msgstr "Предустановки выхода: "
 
 #~ msgid "Input Presets: "
 #~ msgstr "Предустановки входа: "
-
-#~ msgid "Quit EasyEffects. Useful when running in service mode."
-#~ msgstr "Выход из EasyEffects. Полезно при запуске в режиме службы."
-
-#~ msgid "Load a preset. Example: easyeffects -l music"
-#~ msgstr "Загрузить предустановку. Пример: easyeffects -l music"
-
-#~ msgid "Reset EasyEffects."
-#~ msgstr "Сброс настроек EasyEffects."
-
-#~ msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-#~ msgstr ""
-#~ "Глобальный обход. 1 — включить, 2 — отключить, 3 — получение статуса"
 
 #~ msgid "Show available presets."
 #~ msgstr "Показать доступные предустановки."
@@ -3304,9 +3409,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #, fuzzy
 #~ msgid "Failed To Load The Impulse File"
 #~ msgstr "Не удалось загрузить файл импульса"
-
-#~ msgid "Effects"
-#~ msgstr "Эффекты"
 
 #~ msgid "infinity"
 #~ msgstr "бесконечно"
@@ -3525,9 +3627,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #~ msgid "Triangle"
 #~ msgstr "Треугольный"
 
-#~ msgid "Silence"
-#~ msgstr "Тишина"
-
 #~ msgid "Pink Noise"
 #~ msgstr "Розовый шум"
 
@@ -3589,9 +3688,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 
 #~ msgid "Fixed Digital"
 #~ msgstr "Фиксированное цифровое сжатие"
-
-#~ msgid "Gain Controller"
-#~ msgstr "Автоконтроль усиления (AGC)"
 
 #~ msgid "Detection Likelihood"
 #~ msgstr "Вероятность обнаружения"
