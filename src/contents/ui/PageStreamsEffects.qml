@@ -59,6 +59,7 @@ Kirigami.Page {
                 }
 
                 delegate: DelegateStreamsList {
+                    readonly property int pageType: pageType
                 }
 
             }

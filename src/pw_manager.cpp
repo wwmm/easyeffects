@@ -423,11 +423,21 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       Q_EMIT pm->sinkAdded(nd_info_copy);
     } else if (nd_info_copy.media_class == tags::pipewire::media_class::output_stream) {
       if (db::Main::processAllOutputs() && !nd->nd_info->is_blocklisted) {
+        // target.node for backward compatibility with old PW session managers
+        // NOLINTNEXTLINE
+        pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
+                                 util::to_string(pm->ee_sink_node.serial).c_str());
+
         pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
                                  util::to_string(pm->ee_sink_node.serial).c_str());
       }
     } else if (nd_info_copy.media_class == tags::pipewire::media_class::input_stream) {
       if (db::Main::processAllInputs() && !nd->nd_info->is_blocklisted) {
+        // target.node for backward compatibility with old PW session managers
+        // NOLINTNEXTLINE
+        pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
+                                 util::to_string(pm->ee_source_node.serial).c_str());
+
         pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
                                  util::to_string(pm->ee_source_node.serial).c_str());
       }
@@ -1434,11 +1444,11 @@ Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_
   for (const auto& [serial, node] : node_map) {
     if (node.media_class == tags::pipewire::media_class::output_stream) {
       if (db::Main::processAllOutputs() != 0 && !node.is_blocklisted) {
-        connect_stream_output(node.id);
+        connectStreamOutput(node.id);
       }
     } else if (node.media_class == tags::pipewire::media_class::input_stream) {
       if (db::Main::processAllInputs() != 0 && !node.is_blocklisted) {
-        connect_stream_input(node.id);
+        connectStreamInput(node.id);
       }
     }
   }
@@ -1563,11 +1573,11 @@ auto Manager::stream_is_connected(const uint& id, const QString& media_class) ->
   return false;
 }
 
-void Manager::connect_stream_output(const uint& id) const {
+void Manager::connectStreamOutput(const uint& id) const {
   set_metadata_target_node(id, ee_sink_node.id, ee_sink_node.serial);
 }
 
-void Manager::connect_stream_input(const uint& id) const {
+void Manager::connectStreamInput(const uint& id) const {
   set_metadata_target_node(id, ee_source_node.id, ee_source_node.serial);
 }
 
@@ -1589,13 +1599,15 @@ void Manager::set_metadata_target_node(const uint& origin_id,
   sync_wait_unlock();
 }
 
-void Manager::disconnect_stream(const uint& stream_id) const {
+void Manager::disconnectStream(const uint& stream_id) const {
   if (metadata == nullptr) {
     return;
   }
 
   lock();
 
+  // target.node for backward compatibility with old PW session managers
+  pw_metadata_set_property(metadata, stream_id, "target.node", nullptr, nullptr);
   pw_metadata_set_property(metadata, stream_id, "target.object", nullptr, nullptr);  // NOLINT
 
   sync_wait_unlock();

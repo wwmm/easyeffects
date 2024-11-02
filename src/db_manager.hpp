@@ -54,11 +54,9 @@ class Manager : public QObject {
     return m;
   }
 
-  Q_INVOKABLE
-  void saveAll() const;
+  Q_INVOKABLE void saveAll() const;
 
-  Q_INVOKABLE
-  void resetAll() const;
+  Q_INVOKABLE void resetAll() const;
 
   db::Main* main;
   db::Spectrum* spectrum;

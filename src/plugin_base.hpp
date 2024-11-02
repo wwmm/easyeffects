@@ -117,8 +117,7 @@ class PluginBase : public QObject {
 
   void set_native_ui_update_frequency(const uint& value);
 
-  Q_INVOKABLE
-  virtual void reset() = 0;
+  Q_INVOKABLE virtual void reset() = 0;
 
   virtual void setup();
 
@@ -138,23 +137,17 @@ class PluginBase : public QObject {
 
   virtual auto get_latency_seconds() -> float;
 
-  Q_INVOKABLE
-  [[nodiscard]] float getInputLevelLeft() const;
+  Q_INVOKABLE [[nodiscard]] float getInputLevelLeft() const;
 
-  Q_INVOKABLE
-  [[nodiscard]] float getInputLevelRight() const;
+  Q_INVOKABLE [[nodiscard]] float getInputLevelRight() const;
 
-  Q_INVOKABLE
-  [[nodiscard]] float getOutputLevelLeft() const;
+  Q_INVOKABLE [[nodiscard]] float getOutputLevelLeft() const;
 
-  Q_INVOKABLE
-  [[nodiscard]] float getOutputLevelRight() const;
+  Q_INVOKABLE [[nodiscard]] float getOutputLevelRight() const;
 
-  Q_INVOKABLE
-  void show_native_ui();
+  Q_INVOKABLE void show_native_ui();
 
-  Q_INVOKABLE
-  void close_native_ui();
+  Q_INVOKABLE void close_native_ui();
 
  protected:
   std::mutex data_mutex;

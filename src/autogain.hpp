@@ -61,29 +61,21 @@ class Autogain : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  Q_INVOKABLE
-  [[nodiscard]] float getMomentaryLevel() const;
+  Q_INVOKABLE [[nodiscard]] float getMomentaryLevel() const;
 
-  Q_INVOKABLE
-  [[nodiscard]] float getShorttermLevel() const;
+  Q_INVOKABLE [[nodiscard]] float getShorttermLevel() const;
 
-  Q_INVOKABLE
-  [[nodiscard]] float getIntegratedLevel() const;
+  Q_INVOKABLE [[nodiscard]] float getIntegratedLevel() const;
 
-  Q_INVOKABLE
-  [[nodiscard]] float getRelativeLevel() const;
+  Q_INVOKABLE [[nodiscard]] float getRelativeLevel() const;
 
-  Q_INVOKABLE
-  [[nodiscard]] float getRangeLevel() const;
+  Q_INVOKABLE [[nodiscard]] float getRangeLevel() const;
 
-  Q_INVOKABLE
-  [[nodiscard]] float getLoudnessLevel() const;
+  Q_INVOKABLE [[nodiscard]] float getLoudnessLevel() const;
 
-  Q_INVOKABLE
-  [[nodiscard]] float getOutputGainLevel() const;
+  Q_INVOKABLE [[nodiscard]] float getOutputGainLevel() const;
 
-  Q_INVOKABLE
-  void resetHistory();
+  Q_INVOKABLE void resetHistory();
 
  private:
   bool ebur128_ready = false;

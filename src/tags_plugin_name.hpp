@@ -136,19 +136,4 @@ auto get_id(const QString& name) -> QString;
 
 }  // namespace tags::plugin_name
 
-namespace TagsPluginName {
-Q_NAMESPACE
-// QML_ELEMENT
-
-enum class Bar {
-  VAL1,
-  VAL2,
-};
-Q_ENUM_NS(Bar)
-
-inline constexpr auto autogain = "autogain";
-
-inline QString exciter = "exciter";
-}  // namespace TagsPluginName
-
 #undef CREATE_PROPERTY

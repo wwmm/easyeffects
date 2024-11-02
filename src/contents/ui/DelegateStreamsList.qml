@@ -60,6 +60,16 @@ Kirigami.AbstractCard {
                 Controls.CheckBox {
                     text: i18n("Enable")
                     checked: model.connected
+                    onCheckedChanged: {
+                        if (checked == true && !model.is_blocklisted) {
+                            if (pageType === 0)
+                                EEpwManager.connectStreamOutput(model.id);
+                            else
+                                EEpwManager.connectStreamInput(model.id);
+                        } else if (checked == false || model.is_blocklisted) {
+                            EEpwManager.disconnectStream(model.id);
+                        }
+                    }
                 }
 
                 Controls.CheckBox {

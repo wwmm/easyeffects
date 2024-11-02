@@ -57,8 +57,7 @@ class BassEnhancer : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  Q_INVOKABLE
-  [[nodiscard]] float getHarmonicsLevel() const;
+  Q_INVOKABLE [[nodiscard]] float getHarmonicsLevel() const;
 
  private:
   float harmonics_port_value = 0.0;

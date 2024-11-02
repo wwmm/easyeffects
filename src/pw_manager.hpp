@@ -118,12 +118,6 @@ class Manager : public QObject {
 
   auto stream_is_connected(const uint& id, const QString& media_class) -> bool;
 
-  void connect_stream_output(const uint& id) const;
-
-  void connect_stream_input(const uint& id) const;
-
-  void disconnect_stream(const uint& id) const;
-
   auto count_node_ports(const uint& node_id) -> uint;
 
   /*
@@ -159,6 +153,9 @@ class Manager : public QObject {
 
   Q_INVOKABLE void setNodeMute(const uint& serial, const bool& state);
   Q_INVOKABLE void setNodeVolume(const uint& serial, const uint& n_vol_ch, const float& value);
+  Q_INVOKABLE void connectStreamOutput(const uint& id) const;
+  Q_INVOKABLE void connectStreamInput(const uint& id) const;
+  Q_INVOKABLE void disconnectStream(const uint& id) const;
 
  signals:
 

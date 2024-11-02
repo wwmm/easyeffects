@@ -111,20 +111,15 @@ class EffectsBase : public QObject {
 
   auto get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>>;
 
-  Q_INVOKABLE
-  QVariant getPluginInstance(const QString& pluginName);
+  Q_INVOKABLE QVariant getPluginInstance(const QString& pluginName);
 
-  Q_INVOKABLE
-  [[nodiscard]] uint getPipeLineRate() const;
+  Q_INVOKABLE [[nodiscard]] uint getPipeLineRate() const;
 
-  Q_INVOKABLE
-  [[nodiscard]] uint getPipeLineLatency();
+  Q_INVOKABLE [[nodiscard]] uint getPipeLineLatency();
 
-  Q_INVOKABLE
-  [[nodiscard]] float getOutputLevelLeft() const;
+  Q_INVOKABLE [[nodiscard]] float getOutputLevelLeft() const;
 
-  Q_INVOKABLE
-  [[nodiscard]] float getOutputLevelRight() const;
+  Q_INVOKABLE [[nodiscard]] float getOutputLevelRight() const;
 
   template <typename T>
   auto get_plugin_instance(const QString& name) -> std::shared_ptr<T> {
