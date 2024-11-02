@@ -12,6 +12,7 @@ target_sources(easyeffects PRIVATE
     command_line_parser.cpp
     db_manager.cpp
     effects_base.cpp
+    exciter.cpp
     local_client.cpp
     local_server.cpp
     lv2_wrapper.cpp

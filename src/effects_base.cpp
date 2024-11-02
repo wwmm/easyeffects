@@ -32,6 +32,7 @@
 #include "autogain.hpp"
 #include "bass_enhancer.hpp"
 #include "db_manager.hpp"
+#include "exciter.hpp"
 #include "output_level.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
@@ -50,7 +51,6 @@
 // #include "delay.hpp"
 // #include "echo_canceller.hpp"
 // #include "equalizer.hpp"
-// #include "exciter.hpp"
 // #include "expander.hpp"
 // #include "filter.hpp"
 // #include "gate.hpp"
@@ -149,7 +149,7 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
       //   filter = std::make_shared<EchoCanceller>(log_tag, tags::schema::echo_canceller::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
-      //   filter = std::make_shared<Exciter>(log_tag, tags::schema::exciter::id, path, pm, pipeline_type);
+      filter = std::make_shared<Exciter>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::expander)) {
       //   filter = std::make_shared<Expander>(log_tag, tags::schema::expander::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::equalizer)) {
@@ -224,7 +224,6 @@ void EffectsBase::remove_unused_filters() {
       }
 
       plugin->bypass = true;
-      // plugin->latency.clear();
 
       if (plugin->connected_to_pw) {
         plugin->disconnect_from_pw();
@@ -268,6 +267,12 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
     auto p = plugins[pluginName];
 
     return QVariant::fromValue(dynamic_cast<BassEnhancer*>(p.get()));
+  }
+
+  if (pluginName.startsWith(tags::plugin_name::BaseName::exciter)) {
+    auto p = plugins[pluginName];
+
+    return QVariant::fromValue(dynamic_cast<Exciter*>(p.get()));
   }
 
   return {};

@@ -530,3 +530,7 @@ float PluginBase::getOutputLevelLeft() const {
 float PluginBase::getOutputLevelRight() const {
   return output_peak_right;
 }
+
+bool PluginBase::hasNativeUi() {
+  return lv2_wrapper->has_ui();
+}

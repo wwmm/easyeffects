@@ -12,6 +12,7 @@
         <file alias="EeProgressBar.qml">contents/ui/EeProgressBar.qml</file>
         <file alias="EeSpinBox.qml">contents/ui/EeSpinBox.qml</file>
         <file alias="EeSwitch.qml">contents/ui/EeSwitch.qml</file>
+        <file alias="Exciter.qml">contents/ui/Exciter.qml</file>
         <file alias="main.qml">contents/ui/main.qml</file>
         <file alias="MenuAddPlugins.qml">contents/ui/MenuAddPlugins.qml</file>
         <file alias="PageStreamsEffects.qml">contents/ui/PageStreamsEffects.qml</file>

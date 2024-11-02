@@ -31,6 +31,7 @@
 #include <vector>
 #include "autogain.hpp"
 #include "bass_enhancer.hpp"
+#include "exciter.hpp"
 #include "output_level.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
@@ -47,7 +48,6 @@
 // #include "delay.hpp"
 // #include "echo_canceller.hpp"
 // #include "equalizer.hpp"
-// #include "exciter.hpp"
 // #include "expander.hpp"
 // #include "filter.hpp"
 // #include "gate.hpp"
@@ -84,6 +84,7 @@ class EffectsBase : public QObject {
 
   std::shared_ptr<Autogain> autogain;
   std::shared_ptr<BassEnhancer> bass_enhancer;
+  std::shared_ptr<Exciter> exciter;
   //   std::shared_ptr<BassLoudness> bass_loudness;
   //   std::shared_ptr<Compressor> compressor;
   //   std::shared_ptr<Convolver> convolver;
@@ -94,7 +95,6 @@ class EffectsBase : public QObject {
   //   std::shared_ptr<Delay> delay;
   //   std::shared_ptr<EchoCanceller> echo_canceller;
   //   std::shared_ptr<Equalizer> equalizer;
-  //   std::shared_ptr<Exciter> exciter;
   //   std::shared_ptr<Expander> expander;
   //   std::shared_ptr<Filter> filter;
   //   std::shared_ptr<Gate> gate;

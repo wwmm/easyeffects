@@ -107,6 +107,14 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
+                case BasePluginName.exciter:
+                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    pluginsStack.push("qrc:ui/Exciter.qml", {
+                        "name": name,
+                        "pluginDB": pluginDB,
+                        "pipelineInstance": pipelineInstance
+                    });
+                    break;
                 default:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     console.log(logTag + " invalid plugin name: " + baseName);

@@ -8,7 +8,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 Kirigami.ScrollablePage {
-    id: bassEnchancerPage
+    id: exciterPage
 
     required property var name
     required property var pluginDB
@@ -125,8 +125,8 @@ Kirigami.ScrollablePage {
                         id: scope
 
                         label: i18n("Scope")
-                        from: 10
-                        to: 250
+                        from: 2000
+                        to: 12000
                         value: pluginDB.scope
                         decimals: 0
                         stepSize: 1
@@ -137,30 +137,30 @@ Kirigami.ScrollablePage {
                     }
 
                     EeSwitch {
-                        id: floorActive
+                        id: ceilActive
 
-                        label: i18n("Floor Active")
-                        isChecked: pluginDB.floorActive
+                        label: i18n("Ceil Active")
+                        isChecked: pluginDB.ceilActive
                         onCheckedChanged: {
-                            if (isChecked !== pluginDB.floorActive)
-                                pluginDB.floorActive = isChecked;
+                            if (isChecked !== pluginDB.ceilActive)
+                                pluginDB.ceilActive = isChecked;
 
                         }
                     }
 
                     EeSpinBox {
-                        id: floor
+                        id: ceil
 
-                        label: i18n("Floor")
-                        from: 10
-                        to: 120
-                        value: pluginDB.floor
+                        label: i18n("Ceil")
+                        from: 10000
+                        to: 20000
+                        value: pluginDB.ceil
                         decimals: 0
                         stepSize: 1
                         unit: "Hz"
-                        enabled: floorActive.isChecked
+                        enabled: ceilActive.isChecked
                         onValueModified: (v) => {
-                            pluginDB.floor = v;
+                            pluginDB.ceil = v;
                         }
                     }
 
@@ -185,7 +185,7 @@ Kirigami.ScrollablePage {
     header: EeInputOutputGain {
         id: inputOutputLevels
 
-        pluginDB: bassEnchancerPage.pluginDB
+        pluginDB: exciterPage.pluginDB
     }
 
     footer: RowLayout {
