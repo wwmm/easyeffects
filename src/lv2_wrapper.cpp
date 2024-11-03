@@ -32,7 +32,6 @@
 #include <lv2/urid/urid.h>
 #include <sys/types.h>
 #include <array>
-#include <chrono>
 #include <climits>
 #include <cmath>
 #include <cstdarg>
@@ -42,7 +41,6 @@
 #include <mutex>
 #include <span>
 #include <string>
-#include <thread>
 #include <utility>
 #include <vector>
 #include "util.hpp"
