@@ -72,10 +72,6 @@ Limiter::Limiter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
   //                                           }),
   //                                           this));
 
-  //   lv2_wrapper->bind_key_double_db<"th", "threshold">(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"scp", "sidechain-preamp">(settings);
-
   //   lv2_wrapper->bind_key_double_db<"knee", "alr-knee">(settings);
 
   BIND_LV2_PORT("mode", mode, setMode, db::Limiter::modeChanged);
@@ -89,7 +85,9 @@ Limiter::Limiter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
   BIND_LV2_PORT("alr", alr, setAlr, db::Limiter::alrChanged);
   BIND_LV2_PORT("alr_at", alrAttack, setAlrAttack, db::Limiter::alrAttackChanged);
   BIND_LV2_PORT("alr_rt", alrRelease, setAlrRelease, db::Limiter::alrReleaseChanged);
-  BIND_LV2_PORT("extsc", externalSidechain, setExternalSidechain, db::Limiter::externalSidechainChanged);
+  BIND_LV2_PORT("extsc", sidechainType, setSidechainType, db::Limiter::sidechainTypeChanged);
+  BIND_LV2_PORT_DB("th", threshold, setThreshold, db::Limiter::thresholdChanged, false);
+  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Limiter::sidechainPreampChanged, true);
 }
 
 Limiter::~Limiter() {
@@ -170,7 +168,7 @@ void Limiter::process(std::span<float>& left_in,
 }
 
 void Limiter::update_sidechain_links() {
-  if (!settings->externalSidechain()) {
+  if (settings->sidechainType() != db::Limiter::EnumSidechainType::type::external) {
     pm->destroy_links(list_proxies);
 
     list_proxies.clear();

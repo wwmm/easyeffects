@@ -223,9 +223,19 @@ PluginBase::PluginBase(std::string tag,
       pm(pipe_manager),
       native_ui_timer(new QTimer(this)) {
   QString description;
+  QString description_pipeline;
+
+  switch (pipeline_type) {
+    case PipelineType::input:
+      description_pipeline = i18n("(Mic)");
+      break;
+    case PipelineType::output:
+      description_pipeline = i18n("(Speakers)");
+      break;
+  }
 
   if (name != "output_level" && name != "spectrum") {
-    description = tags::plugin_name::Model::self().translate(name);
+    description = tags::plugin_name::Model::self().translate(name) + " " + description_pipeline;
   } else if (name == "output_level") {
     description = i18n("Output Level Meter");
   } else if (name == "spectrum") {

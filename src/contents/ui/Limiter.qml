@@ -1,5 +1,6 @@
 import "Common.js" as Common
 import EEdbm
+import EEpw
 import EEtagsPluginName
 import QtQuick
 import QtQuick.Controls as Controls
@@ -37,6 +38,7 @@ Kirigami.ScrollablePage {
             id: cardLayout
 
             Layout.fillWidth: true
+            maximumColumns: 3
 
             Kirigami.Card {
                 id: cardMode
@@ -95,6 +97,21 @@ Kirigami.ScrollablePage {
 
                 contentItem: ColumnLayout {
                     EeSpinBox {
+                        id: threshold
+
+                        label: i18n("Threshold")
+                        from: -48
+                        to: 0
+                        value: pluginDB.threshold
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: "dB"
+                        onValueModified: (v) => {
+                            pluginDB.threshold = v;
+                        }
+                    }
+
+                    EeSpinBox {
                         id: attack
 
                         label: i18n("Attack")
@@ -121,6 +138,88 @@ Kirigami.ScrollablePage {
                         unit: "ms"
                         onValueModified: (v) => {
                             pluginDB.release = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: stereoLink
+
+                        label: i18n("Stereo Link")
+                        from: 0
+                        to: 100
+                        value: pluginDB.stereoLink
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: "%"
+                        onValueModified: (v) => {
+                            pluginDB.stereoLink = v;
+                        }
+                    }
+
+                }
+
+            }
+
+            Kirigami.Card {
+                id: cardSideChain
+
+                header: Kirigami.Heading {
+                    text: i18n("Sidechain")
+                    level: 2
+                }
+
+                contentItem: ColumnLayout {
+                    FormCard.FormComboBoxDelegate {
+                        id: sidechainType
+
+                        text: i18n("SC Type")
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: pluginDB.sidechainType
+                        editable: false
+                        model: [i18n("Internal"), i18n("External"), i18n("Link")]
+                        onActivated: (idx) => {
+                            pluginDB.sidechainType = idx;
+                        }
+                    }
+
+                    FormCard.FormComboBoxDelegate {
+                        id: comboSideChainInputDevice
+
+                        text: i18n("Name")
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        editable: false
+                        model: ModelAllNodes
+                        textRole: "description"
+                        enabled: sidechainType.currentIndex === 1
+                        currentIndex: {
+                            for (let n = 0; n < ModelAllNodes.rowCount(); n++) {
+                                if (ModelAllNodes.getNodeName(n) === pluginDB.sidechainInputDevice) {
+                                    console.log(ModelAllNodes.getNodeName(n) + " -> " + pluginDB.sidechainInputDevice);
+                                    return n;
+                                }
+                            }
+                            return 0;
+                        }
+                        onActivated: (idx) => {
+                            let selectedName = ModelAllNodes.getNodeName(idx);
+                            if (selectedName !== pluginDB.sidechainInputDevice)
+                                pluginDB.sidechainInputDevice = selectedName;
+
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: sidechainPreamp
+
+                        label: i18n("SC Preamp")
+                        from: Common.minimumDecibelLevel
+                        to: 40
+                        value: pluginDB.sidechainPreamp
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: "dB"
+                        onValueModified: (v) => {
+                            pluginDB.sidechainPreamp = v;
                         }
                     }
 
@@ -169,7 +268,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     text: i18n("Gain Boost")
-                    // icon.name: "audio-headset-symbolic"
+                    icon.name: "usermenu-up-symbolic"
                     checkable: true
                     checked: pluginDB.gainBoost
                     onTriggered: {
