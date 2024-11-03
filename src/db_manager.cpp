@@ -31,6 +31,7 @@
 #include "easyeffects_db_autogain.h"
 #include "easyeffects_db_bass_enhancer.h"
 #include "easyeffects_db_exciter.h"
+#include "easyeffects_db_limiter.h"
 #include "easyeffects_db_spectrum.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
@@ -133,6 +134,9 @@ void Manager::create_plugin_db(const QString& parentGroup,
       } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
         plugins_map[tags::plugin_name::BaseName::exciter + "#" + id] =
             QVariant::fromValue(new db::Exciter(parentGroup, id));
+      } else if (name.startsWith(tags::plugin_name::BaseName::limiter)) {
+        plugins_map[tags::plugin_name::BaseName::limiter + "#" + id] =
+            QVariant::fromValue(new db::Limiter(parentGroup, id));
       }
     }
   }

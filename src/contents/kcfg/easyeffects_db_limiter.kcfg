@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/limiterrc">
+        <parameter name="masterGroup" />
+        <parameter name="instanceIndex" />
+    </kcfgfile>
+    <group parentGroupName="$(masterGroup)" name="Limiter#$(instanceIndex)">
+        <entry name="bypass" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="inputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="outputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="mode" type="Enum">
+            <label>Mode</label>
+            <choices>
+                <choice name="hermThin">
+                    <label>Herm Thin</label>
+                </choice>
+                <choice name="hermWide">
+                    <label>Herm Wide</label>
+                </choice>
+                <choice name="hermTail">
+                    <label>Herm Tail</label>
+                </choice>
+                <choice name="hermDuck">
+                    <label>Herm Duck</label>
+                </choice>
+                <choice name="expThin">
+                    <label>Exp Thin</label>
+                </choice>
+                <choice name="expWide">
+                    <label>Exp Wide</label>
+                </choice>
+                <choice name="expTail">
+                    <label>Exp Tail</label>
+                </choice>
+                <choice name="expDuck">
+                    <label>Exp Duck</label>
+                </choice>
+                <choice name="lineThin">
+                    <label>Line Thin</label>
+                </choice>
+                <choice name="lineWide">
+                    <label>Line Wide</label>
+                </choice>
+                <choice name="lineTail">
+                    <label>Line Tail</label>
+                </choice>
+                <choice name="lineDuck">
+                    <label>Line Duck</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
+        <entry name="oversampling" type="Enum">
+            <label>Oversampling</label>
+            <choices>
+                <choice name="none">
+                    <label>None</label>
+                </choice>
+                <choice name="halfx22L">
+                    <label>Half x2(2L)</label>
+                </choice>
+                <choice name="halfx23L">
+                    <label>Half x2(3L)</label>
+                </choice>
+                <choice name="halfx32L">
+                    <label>Half x3(2L)</label>
+                </choice>
+                <choice name="halfx33L">
+                    <label>Half x3(3L)</label>
+                </choice>
+                <choice name="halfx42L">
+                    <label>Half x4(2L)</label>
+                </choice>
+                <choice name="halfx43L">
+                    <label>Half x4(3L)</label>
+                </choice>
+                <choice name="halfx62L">
+                    <label>Half x6(2L)</label>
+                </choice>
+                <choice name="halfx63L">
+                    <label>Half x6(3L)</label>
+                </choice>
+                <choice name="halfx82L">
+                    <label>Half x8(2L)</label>
+                </choice>
+                <choice name="halfx83L">
+                    <label>Half x8(3L)</label>
+                </choice>
+                <choice name="fullx22L">
+                    <label>Full x2(2L)</label>
+                </choice>
+                <choice name="fullx23L">
+                    <label>Full x2(3L)</label>
+                </choice>
+                <choice name="fullx32L">
+                    <label>Full x3(2L)</label>
+                </choice>
+                <choice name="fullx33L">
+                    <label>Full x3(3L)</label>
+                </choice>
+                <choice name="fullx42L">
+                    <label>Full x4(2L)</label>
+                </choice>
+                <choice name="fullx43L">
+                    <label>Full x4(3L)</label>
+                </choice>
+                <choice name="fullx62L">
+                    <label>Full x6(2L)</label>
+                </choice>
+                <choice name="fullx63L">
+                    <label>Full x6(3L)</label>
+                </choice>
+                <choice name="fullx82L">
+                    <label>Full x8(2L)</label>
+                </choice>
+                <choice name="fullx83L">
+                    <label>Full x8(3L)</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
+        <entry name="dithering" type="Enum">
+            <label>Dithering</label>
+            <choices>
+                <choice name="none">
+                    <label>None</label>
+                </choice>
+                <choice name="v7bit">
+                    <label>7bit</label>
+                </choice>
+                <choice name="v8bit">
+                    <label>8bit</label>
+                </choice>
+                <choice name="v11bit">
+                    <label>11bit</label>
+                </choice>
+                <choice name="v12bit">
+                    <label>12bit</label>
+                </choice>
+                <choice name="v15bit">
+                    <label>15bit</label>
+                </choice>
+                <choice name="v16bit">
+                    <label>16bit</label>
+                </choice>
+                <choice name="v23bit">
+                    <label>23bit</label>
+                </choice>
+                <choice name="v24bit">
+                    <label>24bit</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
+        <entry name="lookahead" type="Double">
+            <label></label>
+            <min>0.1</min>
+            <max>20</max>
+            <default>5</default>
+        </entry>
+        <entry name="attack" type="Double">
+            <label></label>
+            <min>0.25</min>
+            <max>20</max>
+            <default>5</default>
+        </entry>
+        <entry name="release" type="Double">
+            <label></label>
+            <min>0.25</min>
+            <max>20</max>
+            <default>5</default>
+        </entry>
+        <entry name="threshold" type="Double">
+            <label></label>
+            <min>-48</min>
+            <max>0</max>
+            <default>0</default>
+        </entry>
+        <entry name="gainBoost" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="sidechainPreamp" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="stereoLink" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>100</max>
+            <default>100</default>
+        </entry>
+        <entry name="alr" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="alrAttack" type="Double">
+            <label></label>
+            <min>0.10</min>
+            <max>200</max>
+            <default>5</default>
+        </entry>
+        <entry name="alrRelease" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>1000</max>
+            <default>50</default>
+        </entry>
+        <entry name="alrKnee" type="Double">
+            <label></label>
+            <min>-12</min>
+            <max>12</max>
+            <default>0</default>
+        </entry>
+        <entry name="externalSidechain" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainInputDevice" type="String">
+            <label></label>
+            <default>""</default>
+        </entry>
+    </group>
+</kcfg>

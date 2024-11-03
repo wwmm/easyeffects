@@ -33,6 +33,7 @@
 #include "bass_enhancer.hpp"
 #include "db_manager.hpp"
 #include "exciter.hpp"
+#include "limiter.hpp"
 #include "output_level.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
@@ -55,7 +56,6 @@
 // #include "filter.hpp"
 // #include "gate.hpp"
 // #include "level_meter.hpp"
-// #include "limiter.hpp"
 // #include "loudness.hpp"
 // #include "maximizer.hpp"
 // #include "multiband_compressor.hpp"
@@ -164,7 +164,7 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
       //   filter = std::make_shared<LevelMeter>(log_tag, tags::schema::level_meter::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::limiter)) {
-      //   filter = std::make_shared<Limiter>(log_tag, tags::schema::limiter::id, path, pm, pipeline_type);
+      filter = std::make_shared<Limiter>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::loudness)) {
       //   filter = std::make_shared<Loudness>(log_tag, tags::schema::loudness::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::maximizer)) {
@@ -273,6 +273,12 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
     auto p = plugins[pluginName];
 
     return QVariant::fromValue(dynamic_cast<Exciter*>(p.get()));
+  }
+
+  if (pluginName.startsWith(tags::plugin_name::BaseName::limiter)) {
+    auto p = plugins[pluginName];
+
+    return QVariant::fromValue(dynamic_cast<Limiter*>(p.get()));
   }
 
   return {};

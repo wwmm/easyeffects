@@ -13,6 +13,7 @@ target_sources(easyeffects PRIVATE
     db_manager.cpp
     effects_base.cpp
     exciter.cpp
+    limiter.cpp
     local_client.cpp
     local_server.cpp
     lv2_wrapper.cpp
