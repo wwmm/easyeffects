@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-23 22:02+0000\n"
-"PO-Revision-Date: 2024-06-04 06:09+0000\n"
-"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
+"PO-Revision-Date: 2024-11-04 03:00+0000\n"
+"Last-Translator: Damiön la Bagh <kat.amsterdam@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/nl/>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.8.2\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -141,6 +141,9 @@ msgid ""
 "drawing so it matches the latency offset applied by the user on programs "
 "like Pavucontrol."
 msgstr ""
+"Fasecompensatie kan op de spectrum-plugin worden toegepast. Hiermee wordt "
+"het tekenen ervan vertraagd, zodat het overeenkomt met de faseverschuiving "
+"die door de gebruiker in programma's zoals Pavucontrol is toegepast."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:75
@@ -188,10 +191,12 @@ msgid ""
 "The command line option that shows EasyEffects version should work properly "
 "now."
 msgstr ""
+"De optie om de versie van EasyEffects weer te geven via de opdrachtregel, "
+"zou nu correct moeten werken."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Fixed a regression in the autoload preset code."
-msgstr ""
+msgstr "Een regressie in de preset code voor het automatisch laden is opgelost."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
@@ -224,6 +229,8 @@ msgid ""
 "The loudness plugin exposes the ISO 226:2023 standard that is now available "
 "in the LSP plugin."
 msgstr ""
+"De geluidsniveau-plugin ondersteunt nu de ISO 226:2023-standaard, die in de "
+"LSP-plugin beschikbaar is."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:126
@@ -238,6 +245,7 @@ msgstr "Bijgewerkte vertalingen"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
 msgid "Performance optmizations to the spectrum plugin and the LADSPA wrapper"
 msgstr ""
+"De spectrum-plugin en de LADSPA-wrapper zijn op prestaties geoptimaliseerd"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:76
 msgid ""
@@ -245,6 +253,9 @@ msgid ""
 "volume and mute controls. THis could cause these operations to fail in some "
 "situations"
 msgstr ""
+"We sloten de hoofd-lus van PipeWire's thread niet af voordat we het "
+"volumeniveau van een stream instelden en de dempingscontroles activeerden. "
+"Hierdoor konden deze bewerkingen in sommige situaties falen"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:85
 msgid ""
@@ -254,28 +265,44 @@ msgid ""
 "volunteers. You can search them on the repositories of your favorite "
 "distribution."
 msgstr ""
+"Gemeenschapsvoorinstellingen zijn nu beschikbaar. Gebruikers kunnen "
+"pakketten downloaden en installeren die meerdere Easy Effects-"
+"voorinstellingen bevatten, die vervolgens kunnen worden geïmporteerd en "
+"toegepast binnen de applicatie. Deze pakketten worden onderhouden en "
+"uitgebracht door vrijwilligers en zijn te vinden in de repositories van uw "
+"favoriete distributie."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:86
 msgid ""
 "Added the ability of collapsing the sidebar to hide the effects list and "
 "expand the area of the effects user interface."
 msgstr ""
+"Er is de mogelijkheid toegevoegd om de zijbalk in te klappen om de "
+"effectenlijst te verbergen en het gebied van de effecten-gebruikersinterface "
+"uit te breiden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:87
 msgid ""
 "EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an "
 "output device that is different from the one EasyEffects is using."
 msgstr ""
+"EasyEffects zal geen streams aanraken die PW_KEY_TARGET_OBJECT definiëren "
+"naar een uitvoerapparaat dat verschilt van het apparaat dat EasyEffects "
+"gebruikt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:88
 msgid "Equalizer APO import feature can now apply Band-Pass filters."
 msgstr ""
+"De importfunctie van Equalizer APO kan nu band-doorlaatfilters toepassen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 msgid ""
 "A change in GTK 4.14.1 prevented to apply the values inserted into the text "
 "field of our SpinButton widgets. This issue is now resolved."
 msgstr ""
+"Een wijziging in GTK 4.14.1 verhinderde dat de waarden die in het tekstveld "
+"van onze SpinButton-widgets werden ingevoerd, konden worden toegepast. Dit "
+"probleem is nu opgelost."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:91
 msgid ""
@@ -283,12 +310,17 @@ msgid ""
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
 msgstr ""
+"De nieuwste releases van de Maximizer-plugin hebben geen plafondregeling "
+"meer. Daarom hebben we deze verwijderd uit onze gebruikersinterface (u kunt "
+"de input gain-plugin gebruiken om dezelfde functionaliteit te behouden)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
 msgid ""
 "Equalizer APO import feature does not crash anymore on Flatpak when invalid "
 "values are provided."
 msgstr ""
+"De importfunctie van Equalizer APO crasht niet meer op Flatpak wanneer "
+"ongeldige waarden worden opgegeven."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:94
 msgid ""
@@ -296,6 +328,9 @@ msgid ""
 "invited to read and follow the guidelines linked inside the README of "
 "EasyEffects master branch."
 msgstr ""
+"Om Gemeenschapsvoorinstellingen correct te kunnen uitbrengen, wordt "
+"packagers aangeraden om de richtlijnen te lezen en te volgen die in de "
+"README van de EasyEffects-masterbranch zijn opgenomen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:95
 msgid ""
@@ -303,6 +338,10 @@ msgid ""
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
 msgstr ""
+"Voorinstellingen met Convolver- en/of Ruisreductie (RNNoise)-effecten die "
+"vóór versie 7.2.0 zijn aangemaakt, zijn niet meer compatibel en worden niet "
+"meer ondersteund. Laad alstublieft het irs/model-bestand opnieuw in de "
+"Convolver/RNNoise-gebruikersinterface en sla de voorinstelling opnieuw op."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
 msgid ""
@@ -310,12 +349,17 @@ msgid ""
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
 msgstr ""
+"Het pijplijnbeheersysteem is verbeterd. Effecten zonder limiter worden nu "
+"geplaatst vóór de limiter, zelfs als de laatste twee plugins in de pijplijn "
+"een limiter gevolgd door een niveaumeter zijn."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:105
 msgid ""
 "Fixed a regression that prevented the level meters to be updated under "
 "certain conditions."
 msgstr ""
+"Een regressie is opgelost die het bijwerken van de niveaumeters onder "
+"bepaalde omstandigheden verhinderde."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
 msgid ""
@@ -323,6 +367,9 @@ msgid ""
 "allow latency offset to be properly applied by video players when PipeWire "
 "&gt; 1.0.3 is released."
 msgstr ""
+"We stellen nu monitor.passthrough = true in op onze virtuele apparaten. Dit "
+"zal het mogelijk maken om de fase-offset correct toe te passen door "
+"videospelers wanneer PipeWire > 1.0.3 wordt uitgebracht."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:262
@@ -336,43 +383,59 @@ msgid ""
 "EE is recording from. THe stream has to be started when EE is already "
 "running for this logic to take effect."
 msgstr ""
+"EasyEffects zal proberen te voorkomen dat het naar zijn virtuele bronnen "
+"overstapt voor streams waarvoor de gebruiker een aangepast target.object "
+"heeft ingesteld dat verschilt van de microfoon waarvan EasyEffects opneemt. "
+"De stream moet zijn gestart wanneer EasyEffects al draait, wil deze logica "
+"effect hebben."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:127
 msgid "The equalizer can export basic APO preset files"
-msgstr ""
+msgstr "De equalizer kan basis-APO-voorinstellingenbestanden exporteren"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
 msgstr ""
+"Onze spelers/opname-apparaten-tabblad zal de naam van de audioclient-binaire "
+"bestand weergeven in de gevallen waarin geen app-naam is gedefinieerd."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:129
 msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
 msgstr ""
+"De versie van EasyEffects kan worden weergegeven in de opdrachtregel door de "
+"optie --version te gebruiken"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:131
 msgid ""
 "A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
 "in place until gtk developers fiz things on their side"
 msgstr ""
+"Een tijdelijke oplossing is geïmplementeerd voor een bug in gtk4 GtkLevelBar "
+"en zal worden behouden totdat de gtk-ontwikkelaars het probleem aan hun kant "
+"oplossen"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:142
 msgid ""
 "Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
 msgstr ""
+"Een regressie die in versie 7.1.2 werd geïntroduceerd en die EasyEffects kon "
+"laten crashen, is opgelost"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:153
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr ""
+msgstr "De DeepFilterNet-plugin kan nu worden toegevoegd aan het presetbestand"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:162
 msgid ""
 "The spectrum has a new option that allows the dynamic vertical scale to be "
 "disabled."
 msgstr ""
+"Het spectrum heeft een nieuwe optie die het mogelijk maakt om de dynamische "
+"verticale schaal uit te schakelen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:163
 #, fuzzy
