@@ -125,24 +125,6 @@ Nodes::Nodes(QObject* parent)
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelSinkDevices",
                                                         &proxy_sink_devices);
   }
-
-  // All nodes model
-
-  {
-    proxy_sink_devices.setSourceModel(this);
-    proxy_sink_devices.setSortRole(Roles::Description);
-    proxy_sink_devices.setSortCaseSensitivity(Qt::CaseInsensitive);
-    proxy_sink_devices.setFilterRole(Roles::Description);
-    proxy_sink_devices.setDynamicSortFilter(true);
-
-    auto pattern = "^\\s*$";
-    proxy_sink_devices.setFilterRegularExpression(
-        QRegularExpression(pattern, QRegularExpression::CaseInsensitiveOption));
-
-    proxy_sink_devices.sort(0, Qt::AscendingOrder);
-
-    qmlRegisterSingletonInstance<Nodes>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelAllNodes", this);
-  }
 }
 
 int Nodes::rowCount(const QModelIndex& /*parent*/) const {

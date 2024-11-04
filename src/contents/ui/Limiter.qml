@@ -188,20 +188,19 @@ Kirigami.ScrollablePage {
                         text: i18n("Name")
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         editable: false
-                        model: ModelAllNodes
+                        model: ModelNodes
                         textRole: "description"
                         enabled: sidechainType.currentIndex === 1
                         currentIndex: {
-                            for (let n = 0; n < ModelAllNodes.rowCount(); n++) {
-                                if (ModelAllNodes.getNodeName(n) === pluginDB.sidechainInputDevice) {
-                                    console.log(ModelAllNodes.getNodeName(n) + " -> " + pluginDB.sidechainInputDevice);
+                            for (let n = 0; n < ModelNodes.rowCount(); n++) {
+                                if (ModelNodes.getNodeName(n) === pluginDB.sidechainInputDevice)
                                     return n;
-                                }
+
                             }
                             return 0;
                         }
                         onActivated: (idx) => {
-                            let selectedName = ModelAllNodes.getNodeName(idx);
+                            let selectedName = ModelNodes.getNodeName(idx);
                             if (selectedName !== pluginDB.sidechainInputDevice)
                                 pluginDB.sidechainInputDevice = selectedName;
 
