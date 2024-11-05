@@ -34,6 +34,7 @@
 #include <QLocalServer>
 #include <QSystemTrayIcon>
 #include <QWindow>
+#include <csignal>
 #include <cstdlib>
 #include <cstring>
 #include <memory>
@@ -47,6 +48,11 @@
 #include "stream_output_effects.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
+
+void csignalHandler(int s) {
+  std::signal(s, SIG_DFL);
+  qApp->quit();
+}
 
 void construct_about_window() {
   KAboutData aboutData(QStringLiteral(COMPONENT_NAME), i18nc("@title", APPLICATION_NAME),
@@ -69,6 +75,10 @@ void construct_about_window() {
 
 int main(int argc, char* argv[]) {
   QApplication app(argc, argv);
+
+  std::signal(SIGINT, csignalHandler);
+  std::signal(SIGTERM, csignalHandler);
+
   bool show_window = true;
 
   KLocalizedString::setApplicationDomain(APPLICATION_DOMAIN);

@@ -45,7 +45,6 @@ FormCard.AbstractFormDelegate {
     onClicked: spinbox.forceActiveFocus()
 
     contentItem: GridLayout {
-        Layout.fillWidth: true
         columns: labelAbove === false ? 2 : 1
         rows: labelAbove === false ? 1 : 2
         rowSpacing: Kirigami.Units.smallSpacing
