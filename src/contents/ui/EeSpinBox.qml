@@ -42,7 +42,6 @@ FormCard.AbstractFormDelegate {
     signal valueModified(real value)
 
     focusPolicy: Kirigami.Settings.isMobile ? Qt.StrongFocus : Qt.NoFocus
-    background: null
     onClicked: spinbox.forceActiveFocus()
 
     contentItem: GridLayout {
@@ -53,6 +52,8 @@ FormCard.AbstractFormDelegate {
 
         ColumnLayout {
             Label {
+                id: label
+
                 Layout.fillWidth: labelFillWidth
                 text: control.label
                 elide: control.elide
@@ -63,6 +64,8 @@ FormCard.AbstractFormDelegate {
             }
 
             Label {
+                id: subtitle
+
                 Layout.fillWidth: labelFillWidth
                 text: control.subtitle
                 elide: control.elide

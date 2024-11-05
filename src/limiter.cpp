@@ -56,23 +56,8 @@ Limiter::Limiter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
 
   // specific plugin controls
 
-  //   gconnections.push_back(g_signal_connect(settings, "changed::external-sidechain",
-  //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto* self = static_cast<Limiter*>(user_data);
-
-  //                                             self->update_sidechain_links(key);
-  //                                           }),
-  //                                           this));
-
-  //   gconnections.push_back(g_signal_connect(settings, "changed::sidechain-input-device",
-  //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto* self = static_cast<Limiter*>(user_data);
-
-  //                                             self->update_sidechain_links(key);
-  //                                           }),
-  //                                           this));
-
-  //   lv2_wrapper->bind_key_double_db<"knee", "alr-knee">(settings);
+  connect(settings, &db::Limiter::sidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::Limiter::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
 
   BIND_LV2_PORT("mode", mode, setMode, db::Limiter::modeChanged);
   BIND_LV2_PORT("ovs", oversampling, setOversampling, db::Limiter::oversamplingChanged);
@@ -88,6 +73,7 @@ Limiter::Limiter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
   BIND_LV2_PORT("extsc", sidechainType, setSidechainType, db::Limiter::sidechainTypeChanged);
   BIND_LV2_PORT_DB("th", threshold, setThreshold, db::Limiter::thresholdChanged, false);
   BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Limiter::sidechainPreampChanged, true);
+  BIND_LV2_PORT_DB("knee", alrKnee, setAlrKnee, db::Limiter::alrKneeChanged, false);
 }
 
 Limiter::~Limiter() {
@@ -161,10 +147,10 @@ void Limiter::process(std::span<float>& left_in,
 
   get_peaks(left_in, right_in, left_out, right_out);
 
-  gain_l_port_value = lv2_wrapper->get_control_port_value("grlm_l");
-  gain_r_port_value = lv2_wrapper->get_control_port_value("grlm_r");
-  sidechain_l_port_value = lv2_wrapper->get_control_port_value("sclm_l");
-  sidechain_r_port_value = lv2_wrapper->get_control_port_value("sclm_r");
+  gain_l_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("grlm_l"));
+  gain_r_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("grlm_r"));
+  sidechain_l_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("sclm_l"));
+  sidechain_r_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("sclm_r"));
 }
 
 void Limiter::update_sidechain_links() {

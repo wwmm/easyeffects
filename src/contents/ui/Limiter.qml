@@ -24,6 +24,10 @@ Kirigami.ScrollablePage {
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
         inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
+        gainLevelLeft.value = pluginBackend.getGainLevelLeft();
+        gainLevelRight.value = pluginBackend.getGainLevelRight();
+        sideChainLevelLeft.value = pluginBackend.getSideChainLevelLeft();
+        sideChainLevelRight.value = pluginBackend.getSideChainLevelRight();
     }
 
     Component.onCompleted: {
@@ -37,8 +41,8 @@ Kirigami.ScrollablePage {
         Kirigami.CardsLayout {
             id: cardLayout
 
-            Layout.fillWidth: true
-            maximumColumns: 3
+            maximumColumns: 4
+            uniformCellWidths: true
 
             Kirigami.Card {
                 id: cardMode
@@ -169,6 +173,8 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: ColumnLayout {
+                    id: cardSideChainColumn
+
                     FormCard.FormComboBoxDelegate {
                         id: sidechainType
 
@@ -185,7 +191,7 @@ Kirigami.ScrollablePage {
                     FormCard.FormComboBoxDelegate {
                         id: comboSideChainInputDevice
 
-                        text: i18n("Name")
+                        text: i18n("Source")
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         editable: false
                         model: ModelNodes
@@ -222,6 +228,179 @@ Kirigami.ScrollablePage {
                         }
                     }
 
+                }
+
+            }
+
+            Kirigami.Card {
+                id: cardALR
+
+                enabled: pluginDB.alr
+
+                header: Kirigami.Heading {
+                    text: i18n("Automatic Level")
+                    level: 2
+                }
+
+                contentItem: ColumnLayout {
+                    EeSpinBox {
+                        id: alrAttack
+
+                        label: i18n("Attack")
+                        from: 0.1
+                        to: 200
+                        value: pluginDB.alrAttack
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: "ms"
+                        onValueModified: (v) => {
+                            pluginDB.alrAttack = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: alrRelease
+
+                        label: i18n("Release")
+                        from: 10
+                        to: 1000
+                        value: pluginDB.alrRelease
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: "ms"
+                        onValueModified: (v) => {
+                            pluginDB.alrRelease = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: alrKnee
+
+                        label: i18n("Knee")
+                        from: -12
+                        to: 12
+                        value: pluginDB.alrKnee
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: "dB"
+                        onValueModified: (v) => {
+                            pluginDB.alrKnee = v;
+                        }
+                    }
+
+                }
+
+            }
+
+        }
+
+        Kirigami.Card {
+            id: cardLevels
+
+            Layout.fillWidth: false
+            Layout.alignment: Qt.AlignHCenter
+
+            contentItem: GridLayout {
+                id: levelGridLayout
+
+                readonly property real radius: 2.5 * Kirigami.Units.gridUnit
+
+                columnSpacing: Kirigami.Units.largeSpacing
+                rowSpacing: Kirigami.Units.largeSpacing
+                columns: 4
+                rows: 3
+
+                Controls.Label {
+                    Layout.columnSpan: 2
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    text: i18n("Gain [dB]")
+                }
+
+                Controls.Label {
+                    Layout.columnSpan: 2
+                    Layout.fillWidth: true
+                    Layout.leftMargin: Kirigami.Units.gridUnit
+                    horizontalAlignment: Text.AlignHCenter
+                    text: i18n("Sidechain [dB]")
+                }
+
+                EeCircularProgress {
+                    id: gainLevelLeft
+
+                    Layout.alignment: Qt.AlignBottom
+                    implicitWidth: levelGridLayout.radius
+                    implicitHeight: levelGridLayout.radius
+                    from: Common.minimumDecibelLevel
+                    to: 0
+                    value: 0
+                    decimals: 0
+                    convertDecibelToLinear: true
+                }
+
+                EeCircularProgress {
+                    id: gainLevelRight
+
+                    Layout.alignment: Qt.AlignBottom
+                    implicitWidth: levelGridLayout.radius
+                    implicitHeight: levelGridLayout.radius
+                    from: Common.minimumDecibelLevel
+                    to: 0
+                    value: 0
+                    decimals: 0
+                    convertDecibelToLinear: true
+                }
+
+                EeCircularProgress {
+                    id: sideChainLevelLeft
+
+                    Layout.alignment: Qt.AlignBottom
+                    Layout.leftMargin: Kirigami.Units.gridUnit
+                    implicitWidth: levelGridLayout.radius
+                    implicitHeight: levelGridLayout.radius
+                    from: Common.minimumDecibelLevel
+                    to: 0
+                    value: 0
+                    decimals: 0
+                    convertDecibelToLinear: true
+                }
+
+                EeCircularProgress {
+                    id: sideChainLevelRight
+
+                    Layout.alignment: Qt.AlignBottom
+                    implicitWidth: levelGridLayout.radius
+                    implicitHeight: levelGridLayout.radius
+                    from: Common.minimumDecibelLevel
+                    to: 0
+                    value: 0
+                    decimals: 0
+                    convertDecibelToLinear: true
+                }
+
+                Controls.Label {
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    text: i18n("L")
+                }
+
+                Controls.Label {
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    text: i18n("R")
+                }
+
+                Controls.Label {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: Kirigami.Units.gridUnit
+                    horizontalAlignment: Text.AlignHCenter
+                    text: i18n("L")
+                }
+
+                Controls.Label {
+                    Layout.fillWidth: true
+                    horizontalAlignment: Text.AlignHCenter
+                    text: i18n("R")
                 }
 
             }
@@ -273,6 +452,17 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (pluginDB.gainBoost != checked)
                             pluginDB.gainBoost = checked;
+
+                    }
+                },
+                Kirigami.Action {
+                    text: i18n("Automatic Level")
+                    icon.name: "usermenu-up-symbolic"
+                    checkable: true
+                    checked: pluginDB.alr
+                    onTriggered: {
+                        if (pluginDB.alr != checked)
+                            pluginDB.alr = checked;
 
                     }
                 },

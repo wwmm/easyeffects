@@ -44,6 +44,7 @@ Kirigami.ScrollablePage {
             id: cardLayout
 
             Layout.fillWidth: true
+            uniformCellWidths: true
 
             Kirigami.Card {
                 id: cardControls
