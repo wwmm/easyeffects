@@ -37,13 +37,9 @@ Kirigami.ScrollablePage {
     }
 
     ColumnLayout {
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-
         Kirigami.CardsLayout {
             id: cardLayout
 
-            Layout.fillWidth: true
             uniformCellWidths: true
 
             Kirigami.Card {
@@ -115,6 +111,10 @@ Kirigami.ScrollablePage {
                         }
                     }
 
+                    Item {
+                        Layout.fillHeight: true
+                    }
+
                 }
 
             }
@@ -130,12 +130,6 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: ColumnLayout {
-                    anchors {
-                        left: parent.left
-                        right: parent.right
-                        top: parent.top
-                    }
-
                     EeProgressBar {
                         id: momentary
 

@@ -35,9 +35,6 @@ Kirigami.ScrollablePage {
     }
 
     ColumnLayout {
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-
         Kirigami.CardsLayout {
             id: cardLayout
 
@@ -48,8 +45,6 @@ Kirigami.ScrollablePage {
                 id: cardMode
 
                 contentItem: ColumnLayout {
-                    anchors.fill: parent
-
                     FormCard.FormComboBoxDelegate {
                         id: mode
 
@@ -89,6 +84,10 @@ Kirigami.ScrollablePage {
                         }
                     }
 
+                    Item {
+                        Layout.fillHeight: true
+                    }
+
                 }
 
             }
@@ -102,8 +101,6 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: ColumnLayout {
-                    anchors.fill: parent
-
                     EeSpinBox {
                         id: threshold
 
@@ -164,6 +161,10 @@ Kirigami.ScrollablePage {
                         }
                     }
 
+                    Item {
+                        Layout.fillHeight: true
+                    }
+
                 }
 
             }
@@ -178,8 +179,6 @@ Kirigami.ScrollablePage {
 
                 contentItem: ColumnLayout {
                     id: cardSideChainColumn
-
-                    anchors.fill: parent
 
                     FormCard.FormComboBoxDelegate {
                         id: sidechainType
@@ -235,6 +234,10 @@ Kirigami.ScrollablePage {
                         }
                     }
 
+                    Item {
+                        Layout.fillHeight: true
+                    }
+
                 }
 
             }
@@ -250,12 +253,9 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: ColumnLayout {
-                    anchors.fill: parent
-
                     EeSpinBox {
                         id: alrAttack
 
-                        Layout.alignment: Qt.AlignTop
                         label: i18n("Attack")
                         from: 0.1
                         to: 200
@@ -271,7 +271,6 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: alrRelease
 
-                        Layout.alignment: Qt.AlignTop
                         label: i18n("Release")
                         from: 10
                         to: 1000
@@ -287,7 +286,6 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: alrKnee
 
-                        Layout.alignment: Qt.AlignTop
                         label: i18n("Knee")
                         from: -12
                         to: 12
@@ -298,6 +296,10 @@ Kirigami.ScrollablePage {
                         onValueModified: (v) => {
                             pluginDB.alrKnee = v;
                         }
+                    }
+
+                    Item {
+                        Layout.fillHeight: true
                     }
 
                 }
