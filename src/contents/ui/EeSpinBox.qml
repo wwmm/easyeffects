@@ -25,6 +25,7 @@ FormCard.AbstractFormDelegate {
     property real from: 0
     property real to: 100
     property real stepSize: 1
+    property real pageSteps: 10
     property bool editable: true
     property string label: ""
     property string subtitle: ""
@@ -38,11 +39,21 @@ FormCard.AbstractFormDelegate {
     property int wrapMode: Text.Wrap
     property int spinboxAlignment: Qt.AlignRight
     property int labelAlignment: Qt.AlignLeft
+    property bool minusInfinityMode: false
 
     signal valueModified(real value)
 
     focusPolicy: Kirigami.Settings.isMobile ? Qt.StrongFocus : Qt.NoFocus
     onClicked: spinbox.forceActiveFocus()
+    Keys.onPressed: (event) => {
+        if (event.key == Qt.Key_PageUp) {
+            control.valueModified(control.value + pageSteps * stepSize);
+            event.accepted = true;
+        } else if (event.key === Qt.Key_PageDown) {
+            control.valueModified(control.value - pageSteps * stepSize);
+            event.accepted = true;
+        }
+    }
 
     contentItem: GridLayout {
         columns: labelAbove === false ? 2 : 1
@@ -103,7 +114,12 @@ FormCard.AbstractFormDelegate {
             textFromValue: (value, locale) => {
                 let unit_str = (Common.isEmpty(unit)) ? "" : " " + unit;
                 locale.numberOptions = Locale.OmitGroupSeparator;
-                let t = Number(value / spinbox.decimalFactor).toLocaleString(locale, 'f', control.decimals) + unit_str;
+                let decimalValue = value / spinbox.decimalFactor;
+                if (control.minusInfinityMode === true && decimalValue <= control.from) {
+                    textInputSpinBox.text = "-inf";
+                    return "-inf";
+                }
+                let t = Number(decimalValue).toLocaleString(locale, 'f', control.decimals) + unit_str;
                 textInputSpinBox.text = t;
                 return t;
             }

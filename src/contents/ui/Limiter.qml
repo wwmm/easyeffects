@@ -223,12 +223,13 @@ Kirigami.ScrollablePage {
                         id: sidechainPreamp
 
                         label: i18n("SC Preamp")
-                        from: Common.minimumDecibelLevel
+                        from: -80.01
                         to: 40
                         value: pluginDB.sidechainPreamp
                         decimals: 2
                         stepSize: 0.01
                         unit: "dB"
+                        minusInfinityMode: true
                         onValueModified: (v) => {
                             pluginDB.sidechainPreamp = v;
                         }
