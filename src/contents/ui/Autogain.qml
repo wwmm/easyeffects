@@ -52,7 +52,7 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: ColumnLayout {
+                contentItem: Column {
                     FormCard.FormComboBoxDelegate {
                         id: reference
 
@@ -64,6 +64,12 @@ Kirigami.ScrollablePage {
                         onActivated: (idx) => {
                             pluginDB.reference = idx;
                         }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeSpinBox {
@@ -79,6 +85,12 @@ Kirigami.ScrollablePage {
                         onValueModified: (v) => {
                             pluginDB.target = v;
                         }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeSpinBox {
@@ -94,6 +106,12 @@ Kirigami.ScrollablePage {
                         onValueModified: (v) => {
                             pluginDB.silenceThreshold = v;
                         }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeSpinBox {
@@ -109,10 +127,12 @@ Kirigami.ScrollablePage {
                         onValueModified: (v) => {
                             pluginDB.maximumHistory = v;
                         }
-                    }
 
-                    Item {
-                        Layout.fillHeight: true
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                 }
@@ -129,7 +149,9 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: ColumnLayout {
+                contentItem: Column {
+                    spacing: Kirigami.Units.gridUnit
+
                     EeProgressBar {
                         id: momentary
 
@@ -139,6 +161,12 @@ Kirigami.ScrollablePage {
                         to: 10
                         value: 0
                         decimals: 0
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeProgressBar {
@@ -150,6 +178,12 @@ Kirigami.ScrollablePage {
                         to: 10
                         value: 0
                         decimals: 0
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeProgressBar {
@@ -161,6 +195,12 @@ Kirigami.ScrollablePage {
                         to: 10
                         value: 0
                         decimals: 0
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeProgressBar {
@@ -172,6 +212,12 @@ Kirigami.ScrollablePage {
                         to: 10
                         value: 0
                         decimals: 0
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeProgressBar {
@@ -183,6 +229,12 @@ Kirigami.ScrollablePage {
                         to: 50
                         value: 0
                         decimals: 0
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeProgressBar {
@@ -194,6 +246,12 @@ Kirigami.ScrollablePage {
                         to: 10
                         value: 0
                         decimals: 0
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeProgressBar {
@@ -205,6 +263,12 @@ Kirigami.ScrollablePage {
                         to: 20
                         value: 0
                         decimals: 1
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                 }

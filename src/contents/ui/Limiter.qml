@@ -44,7 +44,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
                 id: cardMode
 
-                contentItem: ColumnLayout {
+                contentItem: Column {
                     FormCard.FormComboBoxDelegate {
                         id: mode
 
@@ -56,6 +56,12 @@ Kirigami.ScrollablePage {
                         onActivated: (idx) => {
                             pluginDB.mode = idx;
                         }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     FormCard.FormComboBoxDelegate {
@@ -69,6 +75,12 @@ Kirigami.ScrollablePage {
                         onActivated: (idx) => {
                             pluginDB.oversampling = idx;
                         }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     FormCard.FormComboBoxDelegate {
@@ -82,10 +94,12 @@ Kirigami.ScrollablePage {
                         onActivated: (idx) => {
                             pluginDB.dithering = idx;
                         }
-                    }
 
-                    Item {
-                        Layout.fillHeight: true
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                 }
@@ -100,7 +114,7 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: ColumnLayout {
+                contentItem: Column {
                     EeSpinBox {
                         id: threshold
 
@@ -114,6 +128,12 @@ Kirigami.ScrollablePage {
                         onValueModified: (v) => {
                             pluginDB.threshold = v;
                         }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeSpinBox {
@@ -129,6 +149,12 @@ Kirigami.ScrollablePage {
                         onValueModified: (v) => {
                             pluginDB.attack = v;
                         }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeSpinBox {
@@ -144,6 +170,12 @@ Kirigami.ScrollablePage {
                         onValueModified: (v) => {
                             pluginDB.release = v;
                         }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeSpinBox {
@@ -159,10 +191,12 @@ Kirigami.ScrollablePage {
                         onValueModified: (v) => {
                             pluginDB.stereoLink = v;
                         }
-                    }
 
-                    Item {
-                        Layout.fillHeight: true
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                 }
@@ -177,7 +211,7 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: ColumnLayout {
+                contentItem: Column {
                     id: cardSideChainColumn
 
                     FormCard.FormComboBoxDelegate {
@@ -191,6 +225,12 @@ Kirigami.ScrollablePage {
                         onActivated: (idx) => {
                             pluginDB.sidechainType = idx;
                         }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     FormCard.FormComboBoxDelegate {
@@ -216,6 +256,12 @@ Kirigami.ScrollablePage {
                                 pluginDB.sidechainInputDevice = selectedName;
 
                         }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeSpinBox {
@@ -232,10 +278,12 @@ Kirigami.ScrollablePage {
                         onValueModified: (v) => {
                             pluginDB.sidechainPreamp = v;
                         }
-                    }
 
-                    Item {
-                        Layout.fillHeight: true
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                 }
@@ -252,7 +300,7 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: ColumnLayout {
+                contentItem: Column {
                     EeSpinBox {
                         id: alrAttack
 
@@ -266,6 +314,12 @@ Kirigami.ScrollablePage {
                         onValueModified: (v) => {
                             pluginDB.alrAttack = v;
                         }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeSpinBox {
@@ -281,6 +335,12 @@ Kirigami.ScrollablePage {
                         onValueModified: (v) => {
                             pluginDB.alrRelease = v;
                         }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                     EeSpinBox {
@@ -296,10 +356,12 @@ Kirigami.ScrollablePage {
                         onValueModified: (v) => {
                             pluginDB.alrKnee = v;
                         }
-                    }
 
-                    Item {
-                        Layout.fillHeight: true
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                 }
