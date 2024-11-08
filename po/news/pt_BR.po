@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-01 00:27-0300\n"
+"POT-Creation-Date: 2024-11-08 20:08-0300\n"
 "PO-Revision-Date: 2024-01-30 16:12+0000\n"
 "Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -43,142 +43,152 @@ msgstr ""
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carregar uma predefinição. Exemplo: easyeffects -l musica"
 
-#: src/contents/ui/Autogain.qml:54 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Exciter.qml:90
 #, fuzzy
 msgid "Controls"
 msgstr "Controlador de Ganho"
 
-#: src/contents/ui/Autogain.qml:62
+#: src/contents/ui/Autogain.qml:59
 msgid "Reference"
 msgstr "Referência"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:141
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:158
 msgid "Momentary"
 msgstr "Momentâneo"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:152
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:175
 msgid "Short-Term"
 msgstr "Curto Prazo"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:163
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:192
 msgid "Integrated"
 msgstr "Integrada"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 #, fuzzy
 msgid "Geometric Mean (MSI)"
 msgstr "Média Geométrica"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 #, fuzzy
 msgid "Geometric Mean (MS)"
 msgstr "Média Geométrica"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 #, fuzzy
 msgid "Geometric Mean (MI)"
 msgstr "Média Geométrica"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 #, fuzzy
 msgid "Geometric Mean (SI)"
 msgstr "Média Geométrica"
 
-#: src/contents/ui/Autogain.qml:75
+#: src/contents/ui/Autogain.qml:78
 msgid "Target"
 msgstr "Alvo"
 
-#: src/contents/ui/Autogain.qml:90
+#: src/contents/ui/Autogain.qml:99
 msgid "Silence"
 msgstr "Silencio"
 
-#: src/contents/ui/Autogain.qml:105
+#: src/contents/ui/Autogain.qml:120
 msgid "Maximum History"
 msgstr "Histórico máximo"
 
-#: src/contents/ui/Autogain.qml:127 src/contents/ui/Autogain.qml:196
+#: src/contents/ui/Autogain.qml:148 src/contents/ui/Autogain.qml:243
 #: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "Sonoridade"
 
-#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:153
-#: src/contents/ui/Autogain.qml:164 src/contents/ui/Autogain.qml:175
-#: src/contents/ui/Autogain.qml:197
+#: src/contents/ui/Autogain.qml:159 src/contents/ui/Autogain.qml:176
+#: src/contents/ui/Autogain.qml:193 src/contents/ui/Autogain.qml:210
+#: src/contents/ui/Autogain.qml:244
 msgid "LUFS"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:174
+#: src/contents/ui/Autogain.qml:209
 msgid "Relative"
 msgstr "Relativo"
 
-#: src/contents/ui/Autogain.qml:185
+#: src/contents/ui/Autogain.qml:226
 msgid "Range"
 msgstr "Alcance"
 
-#: src/contents/ui/Autogain.qml:186
+#: src/contents/ui/Autogain.qml:227
 #, fuzzy
 msgid "LU"
 msgstr "L"
 
-#: src/contents/ui/Autogain.qml:207
+#: src/contents/ui/Autogain.qml:260
 msgid "Output Gain"
 msgstr "Ganho de Saída"
 
-#: src/contents/ui/Autogain.qml:208
+#: src/contents/ui/Autogain.qml:261
 msgid "dB"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:180
+#: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
 msgid "Using"
 msgstr "Usando"
 
-#: src/contents/ui/Autogain.qml:246
+#: src/contents/ui/Autogain.qml:305
 msgid "Reset History"
 msgstr "Redefinir Histórico"
 
-#: src/contents/ui/Autogain.qml:253
+#: src/contents/ui/Autogain.qml:312
 #, fuzzy
 msgid "Reset Settings"
 msgstr "_Redefinir as Configurações"
 
-#: src/contents/ui/BassEnhancer.qml:39
+#: src/contents/ui/BassEnhancer.qml:39 src/contents/ui/Exciter.qml:39
 msgid "Blend Harmonics"
 msgstr "Mistura de Harmônicos"
 
-#: src/contents/ui/BassEnhancer.qml:48
+#: src/contents/ui/BassEnhancer.qml:48 src/contents/ui/Exciter.qml:48
 msgid "3rd"
 msgstr "3°"
 
-#: src/contents/ui/BassEnhancer.qml:71
+#: src/contents/ui/BassEnhancer.qml:71 src/contents/ui/Exciter.qml:71
 #, fuzzy
 msgid "2rd"
 msgstr "3°"
 
-#: src/contents/ui/BassEnhancer.qml:98
+#: src/contents/ui/BassEnhancer.qml:98 src/contents/ui/Exciter.qml:98
 msgid "Amount"
 msgstr "Quantidade"
 
-#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:157
+#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:170
+#: src/contents/ui/Exciter.qml:113 src/contents/ui/Exciter.qml:170
 msgid "Harmonics"
 msgstr "Harmônico"
 
-#: src/contents/ui/BassEnhancer.qml:127
+#: src/contents/ui/BassEnhancer.qml:127 src/contents/ui/Exciter.qml:127
 msgid "Scope"
 msgstr "Escopo"
 
 #: src/contents/ui/BassEnhancer.qml:142
+#, fuzzy
+msgid "Floor Active"
+msgstr "Valor do piso"
+
+#: src/contents/ui/BassEnhancer.qml:154
 msgid "Floor"
 msgstr "Piso"
 
-#: src/contents/ui/BassEnhancer.qml:195
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/Limiter.qml:511
 msgid "Show Native Window"
 msgstr ""
 
-#: src/contents/ui/BassEnhancer.qml:208
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
 msgid "Listen"
 msgstr "Escutar"
 
-#: src/contents/ui/BassEnhancer.qml:219
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "Resetar"
 
@@ -227,7 +237,7 @@ msgstr "Canais"
 msgid "Enable"
 msgstr "Habilitar"
 
-#: src/contents/ui/DelegateStreamsList.qml:66
+#: src/contents/ui/DelegateStreamsList.qml:76
 msgid "Exclude"
 msgstr "Excluir"
 
@@ -238,6 +248,280 @@ msgstr "Entrada"
 #: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
 msgid "Output"
 msgstr "Saída"
+
+#: src/contents/ui/Exciter.qml:142
+#, fuzzy
+msgid "Ceil Active"
+msgstr "Modo Agressivo"
+
+#: src/contents/ui/Exciter.qml:154
+#, fuzzy
+msgid "Ceil"
+msgstr "Teto"
+
+#: src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "Modo"
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Herm Thin"
+msgstr "Herm Fino"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Wide"
+msgstr "Herm Amplo"
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Herm Tail"
+msgstr "Cauda de Herm"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Exp Thin"
+msgstr "Cauda de Exp"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Wide"
+msgstr "Exp Amplo"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Tail"
+msgstr "Cauda de Exp"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Thin"
+msgstr "Linha Fina"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Wide"
+msgstr "Linha Larga"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Tail"
+msgstr "Cauda da Linha"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:70
+msgid "Oversampling"
+msgstr "Sobreamostragem"
+
+#: src/contents/ui/Limiter.qml:74 src/contents/ui/Limiter.qml:93
+msgid "None"
+msgstr "Nenhuma"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:89
+#, fuzzy
+msgid "Dithering"
+msgstr "Dither"
+
+#: src/contents/ui/Limiter.qml:93
+msgid "7 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "8 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "11 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "12 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "15 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "23 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:113 src/tags_plugin_name.cpp:43
+msgid "Limiter"
+msgstr "Limitador"
+
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "Limiar"
+
+#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "Ataque"
+
+#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "Liberação"
+
+#: src/contents/ui/Limiter.qml:184
+msgid "Stereo Link"
+msgstr "Elo Stereo"
+
+#: src/contents/ui/Limiter.qml:210
+msgid "Sidechain"
+msgstr "Cadeia Lateral"
+
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "SC Type"
+msgstr "Tipo"
+
+#: src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "Internal"
+msgstr "Externo"
+
+#: src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "External"
+msgstr "Externo"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr "Ligação"
+
+#: src/contents/ui/Limiter.qml:239
+msgid "Source"
+msgstr "Fonte"
+
+#: src/contents/ui/Limiter.qml:270
+msgid "SC Preamp"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
+#, fuzzy
+msgid "Automatic Level"
+msgstr "Ganho Automático"
+
+#: src/contents/ui/Limiter.qml:349
+msgid "Knee"
+msgstr "Joelho"
+
+#: src/contents/ui/Limiter.qml:393
+#, fuzzy
+msgid "Gain [dB]"
+msgstr "Ganho"
+
+#: src/contents/ui/Limiter.qml:401
+#, fuzzy
+msgid "Sidechain [dB]"
+msgstr "Modo de cadeia lateral"
+
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "L"
+
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "R"
+
+#: src/contents/ui/Limiter.qml:524
+#, fuzzy
+msgid "Gain Boost"
+msgstr "Impulso de Cadeia Lateral"
 
 #: src/contents/ui/main.qml:17
 #, fuzzy
@@ -301,37 +585,37 @@ msgstr "Paredes Vazias"
 msgid "No Audio Application Available"
 msgstr "Nenhum aplicativo de áudio disponível"
 
-#: src/contents/ui/PageStreamsEffects.qml:198
+#: src/contents/ui/PageStreamsEffects.qml:215
 msgid "Add Effect"
 msgstr "Adicionar efeito"
 
-#: src/contents/ui/PageStreamsEffects.qml:248
-#: src/contents/ui/PageStreamsEffects.qml:380
+#: src/contents/ui/PageStreamsEffects.qml:265
+#: src/contents/ui/PageStreamsEffects.qml:397
 msgid "Players"
 msgstr "Reprodutores"
 
-#: src/contents/ui/PageStreamsEffects.qml:248
+#: src/contents/ui/PageStreamsEffects.qml:265
 #, fuzzy
 msgid "Input Device"
 msgstr "Dispositivo de Entrada"
 
-#: src/contents/ui/PageStreamsEffects.qml:266
+#: src/contents/ui/PageStreamsEffects.qml:283
 msgid "Recorders"
 msgstr "Gravadores"
 
-#: src/contents/ui/PageStreamsEffects.qml:291
+#: src/contents/ui/PageStreamsEffects.qml:308
 msgid "No Effects"
 msgstr "Sem efeitos"
 
-#: src/contents/ui/PageStreamsEffects.qml:292
+#: src/contents/ui/PageStreamsEffects.qml:309
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:407
 msgid "Effects"
 msgstr "Efeitos"
 
-#: src/contents/ui/PageStreamsEffects.qml:406
+#: src/contents/ui/PageStreamsEffects.qml:423
 msgid "Excluded Apps"
 msgstr "Aplicativos excluídos"
 
@@ -576,33 +860,41 @@ msgstr "Tipo de Espectro"
 msgid "Experimental Features"
 msgstr "Experimental"
 
-#: src/main.cpp:53
+#: src/main.cpp:59
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Efeitos de Áudio para Programas que Utilizam Pulseaudio"
 
-#: src/main.cpp:54
+#: src/main.cpp:60
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Inclinação"
 
 #: src/plugin_base.cpp:230
+msgid "(Mic)"
+msgstr ""
+
+#: src/plugin_base.cpp:233
+msgid "(Speakers)"
+msgstr ""
+
+#: src/plugin_base.cpp:240
 #, fuzzy
 msgid "Output Level Meter"
 msgstr "Ganho de Entrada"
 
-#: src/plugin_base.cpp:232
+#: src/plugin_base.cpp:242
 msgid "Spectrum"
 msgstr "Espectro"
 
@@ -698,10 +990,6 @@ msgstr "Portão"
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
 msgstr ""
-
-#: src/tags_plugin_name.cpp:43
-msgid "Limiter"
-msgstr "Limitador"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
@@ -2108,12 +2396,6 @@ msgstr ""
 #~ msgid "2nd"
 #~ msgstr "2°"
 
-#~ msgid "Floor Value"
-#~ msgstr "Valor do piso"
-
-#~ msgid "Link"
-#~ msgstr "Ligação"
-
 #~ msgid "Application Name"
 #~ msgstr "Nome do Aplicativo"
 
@@ -2128,9 +2410,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Show Excluded Applications"
 #~ msgstr "Mostrar aplicativos bloqueados"
-
-#~ msgid "Mode"
-#~ msgstr "Modo"
 
 #~ msgid "Downward"
 #~ msgstr "Para Baixo"
@@ -2151,15 +2430,9 @@ msgstr ""
 #~ msgid "Boost Amount"
 #~ msgstr "Valor do reforço"
 
-#~ msgid "Attack"
-#~ msgstr "Ataque"
-
 #, fuzzy
 #~ msgid "Time"
 #~ msgstr "Tempo"
-
-#~ msgid "Threshold"
-#~ msgstr "Limiar"
 
 #, fuzzy
 #~ msgid "Attack Time"
@@ -2168,9 +2441,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Attack Threshold"
 #~ msgstr "Limiar de Ataque"
-
-#~ msgid "Release"
-#~ msgstr "Liberação"
 
 #, fuzzy
 #~ msgid "Release Time"
@@ -2183,14 +2453,8 @@ msgstr ""
 #~ msgid "Ratio"
 #~ msgstr "Razão"
 
-#~ msgid "Knee"
-#~ msgstr "Joelho"
-
 #~ msgid "Makeup"
 #~ msgstr "Ganho de Saída"
-
-#~ msgid "Sidechain"
-#~ msgstr "Cadeia Lateral"
 
 #~ msgid "Peak"
 #~ msgstr "Pico"
@@ -2203,13 +2467,6 @@ msgstr ""
 
 #~ msgid "Uniform"
 #~ msgstr "Uniforme"
-
-#, fuzzy
-#~ msgid "Sidechain Mode"
-#~ msgstr "Modo de cadeia lateral"
-
-#~ msgid "Source"
-#~ msgstr "Fonte"
 
 #~ msgid "Middle"
 #~ msgstr "Meio"
@@ -2227,18 +2484,11 @@ msgstr ""
 #~ msgid "Sidechain Source"
 #~ msgstr "Fonte da cadeia lateral"
 
-#~ msgid "Type"
-#~ msgstr "Tipo"
-
 #~ msgid "Feed-forward"
 #~ msgstr "Avanço de alimentação"
 
 #~ msgid "Feed-back"
 #~ msgstr "Retorno"
-
-#, fuzzy
-#~ msgid "External"
-#~ msgstr "Externo"
 
 #, fuzzy
 #~ msgid "Sidechain Type"
@@ -2288,17 +2538,11 @@ msgstr ""
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "Filtro Passa-Alta"
 
-#~ msgid "Gain"
-#~ msgstr "Ganho"
-
 #~ msgid "Curve"
 #~ msgstr "Curva"
 
 #~ msgid "Left Channel"
 #~ msgstr "Canal esquerdo"
-
-#~ msgid "R"
-#~ msgstr "R"
 
 #~ msgid "Right Channel"
 #~ msgstr "Canal direito"
@@ -2505,10 +2749,6 @@ msgstr ""
 #~ msgstr "Sozinho"
 
 #, fuzzy
-#~ msgid "Ceil"
-#~ msgstr "Teto"
-
-#, fuzzy
 #~ msgid "Ceil Value"
 #~ msgstr "Valor do Teto"
 
@@ -2562,48 +2802,8 @@ msgstr ""
 #~ msgid "Release Zone Start"
 #~ msgstr "Tempo de liberação"
 
-#, fuzzy
-#~ msgid "Internal"
-#~ msgstr "Externo"
-
 #~ msgid "Gating"
 #~ msgstr "Gating"
-
-#~ msgid "Oversampling"
-#~ msgstr "Sobreamostragem"
-
-#, fuzzy
-#~ msgid "Dither"
-#~ msgstr "Dither"
-
-#, fuzzy
-#~ msgid "Herm Thin"
-#~ msgstr "Herm Fino"
-
-#~ msgid "Herm Wide"
-#~ msgstr "Herm Amplo"
-
-#, fuzzy
-#~ msgid "Herm Tail"
-#~ msgstr "Cauda de Herm"
-
-#~ msgid "Exp Wide"
-#~ msgstr "Exp Amplo"
-
-#~ msgid "Exp Tail"
-#~ msgstr "Cauda de Exp"
-
-#~ msgid "Line Thin"
-#~ msgstr "Linha Fina"
-
-#~ msgid "Line Wide"
-#~ msgstr "Linha Larga"
-
-#~ msgid "Line Tail"
-#~ msgstr "Cauda da Linha"
-
-#~ msgid "None"
-#~ msgstr "Nenhuma"
 
 #~ msgid "Sidechain PreAmplification"
 #~ msgstr "Pré-amplificação de cadeia lateral"
@@ -2611,15 +2811,8 @@ msgstr ""
 #~ msgid "Boost"
 #~ msgstr "Impulso"
 
-#~ msgid "Stereo Link"
-#~ msgstr "Elo Stereo"
-
 #~ msgid "External Sidechain"
 #~ msgstr "Cadeia Lateral Externa"
-
-#, fuzzy
-#~ msgid "Auto Leveling"
-#~ msgstr "Ganho Automático"
 
 #, fuzzy
 #~ msgid "Auto Leveling Attack"
@@ -2671,9 +2864,6 @@ msgstr ""
 
 #~ msgid "Modern"
 #~ msgstr "Moderno"
-
-#~ msgid "Sidechain Boost"
-#~ msgstr "Impulso de Cadeia Lateral"
 
 #~ msgid "Bands List"
 #~ msgstr "Lista de Bandas"
@@ -3363,10 +3553,6 @@ msgstr ""
 
 #~ msgid "Start Service at Login"
 #~ msgstr "Inicializar Serviço no Login"
-
-#, fuzzy
-#~ msgid "Activate"
-#~ msgstr "Modo Agressivo"
 
 #~ msgid "Add to Blocklist"
 #~ msgstr "Adicionar à Lista de Bloqueio"

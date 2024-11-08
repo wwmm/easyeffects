@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-01 00:27-0300\n"
+"POT-Creation-Date: 2024-11-08 20:08-0300\n"
 "PO-Revision-Date: 2024-03-29 03:02+0000\n"
 "Last-Translator: sensei1304fcc0f2a8360f4ddc <sensei1304@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -41,148 +41,157 @@ msgstr ""
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:54 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Exciter.qml:90
 msgid "Controls"
 msgstr "Керування"
 
-#: src/contents/ui/Autogain.qml:62
+#: src/contents/ui/Autogain.qml:59
 #, fuzzy
 msgid "Reference"
 msgstr "Довідка"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:141
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:158
 #, fuzzy
 msgid "Momentary"
 msgstr "Миттєве"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:152
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:175
 #, fuzzy
 msgid "Short-Term"
 msgstr "Короткострокові"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:163
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:192
 #, fuzzy
 msgid "Integrated"
 msgstr "Інтегроване"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MSI)"
 msgstr "Середнє геометричне (MSI)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 #, fuzzy
 msgid "Geometric Mean (MS)"
 msgstr "Середнє геометричне (MS)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 #, fuzzy
 msgid "Geometric Mean (MI)"
 msgstr "Середнє геометричне (MI)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 #, fuzzy
 msgid "Geometric Mean (SI)"
 msgstr "Середнє геометричне (SІ)"
 
-#: src/contents/ui/Autogain.qml:75
+#: src/contents/ui/Autogain.qml:78
 msgid "Target"
 msgstr "Ціль"
 
-#: src/contents/ui/Autogain.qml:90
+#: src/contents/ui/Autogain.qml:99
 msgid "Silence"
 msgstr "Тиша"
 
-#: src/contents/ui/Autogain.qml:105
+#: src/contents/ui/Autogain.qml:120
 #, fuzzy
 msgid "Maximum History"
 msgstr "Максимальний розмір історії"
 
-#: src/contents/ui/Autogain.qml:127 src/contents/ui/Autogain.qml:196
+#: src/contents/ui/Autogain.qml:148 src/contents/ui/Autogain.qml:243
 #: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "Гучність"
 
-#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:153
-#: src/contents/ui/Autogain.qml:164 src/contents/ui/Autogain.qml:175
-#: src/contents/ui/Autogain.qml:197
+#: src/contents/ui/Autogain.qml:159 src/contents/ui/Autogain.qml:176
+#: src/contents/ui/Autogain.qml:193 src/contents/ui/Autogain.qml:210
+#: src/contents/ui/Autogain.qml:244
 msgid "LUFS"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:174
+#: src/contents/ui/Autogain.qml:209
 msgid "Relative"
 msgstr "Відносне"
 
-#: src/contents/ui/Autogain.qml:185
+#: src/contents/ui/Autogain.qml:226
 msgid "Range"
 msgstr "Діапазон"
 
-#: src/contents/ui/Autogain.qml:186
+#: src/contents/ui/Autogain.qml:227
 #, fuzzy
 msgid "LU"
 msgstr "L"
 
-#: src/contents/ui/Autogain.qml:207
+#: src/contents/ui/Autogain.qml:260
 msgid "Output Gain"
 msgstr "Вихідний коефіцієнт підсилення"
 
-#: src/contents/ui/Autogain.qml:208
+#: src/contents/ui/Autogain.qml:261
 msgid "dB"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:180
+#: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
 #, fuzzy
 msgid "Using"
 msgstr "Використання"
 
-#: src/contents/ui/Autogain.qml:246
+#: src/contents/ui/Autogain.qml:305
 #, fuzzy
 msgid "Reset History"
 msgstr "Очистити історію"
 
-#: src/contents/ui/Autogain.qml:253
+#: src/contents/ui/Autogain.qml:312
 #, fuzzy
 msgid "Reset Settings"
 msgstr "_Скинути налаштування"
 
-#: src/contents/ui/BassEnhancer.qml:39
+#: src/contents/ui/BassEnhancer.qml:39 src/contents/ui/Exciter.qml:39
 msgid "Blend Harmonics"
 msgstr "Змішані гармоніки"
 
-#: src/contents/ui/BassEnhancer.qml:48
+#: src/contents/ui/BassEnhancer.qml:48 src/contents/ui/Exciter.qml:48
 msgid "3rd"
 msgstr "3-й"
 
-#: src/contents/ui/BassEnhancer.qml:71
+#: src/contents/ui/BassEnhancer.qml:71 src/contents/ui/Exciter.qml:71
 #, fuzzy
 msgid "2rd"
 msgstr "3-й"
 
-#: src/contents/ui/BassEnhancer.qml:98
+#: src/contents/ui/BassEnhancer.qml:98 src/contents/ui/Exciter.qml:98
 msgid "Amount"
 msgstr "Кількість"
 
-#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:157
+#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:170
+#: src/contents/ui/Exciter.qml:113 src/contents/ui/Exciter.qml:170
 msgid "Harmonics"
 msgstr "Гармоніки"
 
-#: src/contents/ui/BassEnhancer.qml:127
+#: src/contents/ui/BassEnhancer.qml:127 src/contents/ui/Exciter.qml:127
 msgid "Scope"
 msgstr "Межа застосування"
 
 #: src/contents/ui/BassEnhancer.qml:142
+msgid "Floor Active"
+msgstr ""
+
+#: src/contents/ui/BassEnhancer.qml:154
 msgid "Floor"
 msgstr "Поріг"
 
-#: src/contents/ui/BassEnhancer.qml:195
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/Limiter.qml:511
 #, fuzzy
 msgid "Show Native Window"
 msgstr "Показати нативне вікно"
 
-#: src/contents/ui/BassEnhancer.qml:208
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
 msgid "Listen"
 msgstr "Прослухати"
 
-#: src/contents/ui/BassEnhancer.qml:219
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "Скинути"
 
@@ -229,7 +238,7 @@ msgstr "Лівий канал"
 msgid "Enable"
 msgstr "Увімкнути"
 
-#: src/contents/ui/DelegateStreamsList.qml:66
+#: src/contents/ui/DelegateStreamsList.qml:76
 msgid "Exclude"
 msgstr "Виключити"
 
@@ -240,6 +249,275 @@ msgstr "Вхід"
 #: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
 msgid "Output"
 msgstr "Вихід"
+
+#: src/contents/ui/Exciter.qml:142
+#, fuzzy
+msgid "Ceil Active"
+msgstr "Відносне"
+
+#: src/contents/ui/Exciter.qml:154
+msgid "Ceil"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "Режим"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Thin"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Wide"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Tail"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Thin"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Wide"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Tail"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Thin"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Wide"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Tail"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:70
+msgid "Oversampling"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74 src/contents/ui/Limiter.qml:93
+msgid "None"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:89
+msgid "Dithering"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "7 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "8 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "11 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "12 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "15 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "23 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:113 src/tags_plugin_name.cpp:43
+msgid "Limiter"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "Поріг"
+
+#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "Атака"
+
+#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "Випуск"
+
+#: src/contents/ui/Limiter.qml:184
+#, fuzzy
+msgid "Stereo Link"
+msgstr "Ширина стерео"
+
+#: src/contents/ui/Limiter.qml:210
+#, fuzzy
+msgid "Sidechain"
+msgstr "Побічний ланцюг"
+
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "SC Type"
+msgstr "Тип"
+
+#: src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "Internal"
+msgstr "Зовнішній"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "External"
+msgstr "Зовнішній"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr "Посилання"
+
+#: src/contents/ui/Limiter.qml:239
+msgid "Source"
+msgstr "Джерело"
+
+#: src/contents/ui/Limiter.qml:270
+msgid "SC Preamp"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
+#, fuzzy
+msgid "Automatic Level"
+msgstr "Пристрій вводу"
+
+#: src/contents/ui/Limiter.qml:349
+msgid "Knee"
+msgstr "Коліно"
+
+#: src/contents/ui/Limiter.qml:393
+#, fuzzy
+msgid "Gain [dB]"
+msgstr "Посилення"
+
+#: src/contents/ui/Limiter.qml:401
+#, fuzzy
+msgid "Sidechain [dB]"
+msgstr "Режим побічного ланцюга"
+
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "L"
+
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "R"
+
+#: src/contents/ui/Limiter.qml:524
+msgid "Gain Boost"
+msgstr ""
 
 #: src/contents/ui/main.qml:17
 #, fuzzy
@@ -305,38 +583,38 @@ msgstr "Порожній список"
 msgid "No Audio Application Available"
 msgstr "Немає доступного додатку з аудіо"
 
-#: src/contents/ui/PageStreamsEffects.qml:198
+#: src/contents/ui/PageStreamsEffects.qml:215
 msgid "Add Effect"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:248
-#: src/contents/ui/PageStreamsEffects.qml:380
+#: src/contents/ui/PageStreamsEffects.qml:265
+#: src/contents/ui/PageStreamsEffects.qml:397
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:248
+#: src/contents/ui/PageStreamsEffects.qml:265
 msgid "Input Device"
 msgstr "Пристрій вводу"
 
-#: src/contents/ui/PageStreamsEffects.qml:266
+#: src/contents/ui/PageStreamsEffects.qml:283
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:291
+#: src/contents/ui/PageStreamsEffects.qml:308
 #, fuzzy
 msgid "No Effects"
 msgstr "_Про Easy Effects"
 
-#: src/contents/ui/PageStreamsEffects.qml:292
+#: src/contents/ui/PageStreamsEffects.qml:309
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:407
 #, fuzzy
 msgid "Effects"
 msgstr "_Про Easy Effects"
 
-#: src/contents/ui/PageStreamsEffects.qml:406
+#: src/contents/ui/PageStreamsEffects.qml:423
 #, fuzzy
 msgid "Excluded Apps"
 msgstr "Виключити"
@@ -571,32 +849,40 @@ msgstr "Спектр"
 msgid "Experimental Features"
 msgstr ""
 
-#: src/main.cpp:53
+#: src/main.cpp:59
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Аудіоефекти для додатків PipeWire"
 
-#: src/main.cpp:54
+#: src/main.cpp:60
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Конверт"
 
 #: src/plugin_base.cpp:230
+msgid "(Mic)"
+msgstr ""
+
+#: src/plugin_base.cpp:233
+msgid "(Speakers)"
+msgstr ""
+
+#: src/plugin_base.cpp:240
 #, fuzzy
 msgid "Output Level Meter"
 msgstr "Пристрій вводу"
 
-#: src/plugin_base.cpp:232
+#: src/plugin_base.cpp:242
 #, fuzzy
 msgid "Spectrum"
 msgstr "Спектр"
@@ -692,10 +978,6 @@ msgstr ""
 
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
-msgstr ""
-
-#: src/tags_plugin_name.cpp:43
-msgid "Limiter"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:45
@@ -834,9 +1116,6 @@ msgstr "Аудіоефекти для додатків PipeWire"
 #~ msgid "2nd"
 #~ msgstr "2-й"
 
-#~ msgid "Link"
-#~ msgstr "Посилання"
-
 #~ msgid "Application Name"
 #~ msgstr "Назва програми"
 
@@ -848,9 +1127,6 @@ msgstr "Аудіоефекти для додатків PipeWire"
 
 #~ msgid "Show Excluded Applications"
 #~ msgstr "Показати виключені програми"
-
-#~ msgid "Mode"
-#~ msgstr "Режим"
 
 #~ msgid "Downward"
 #~ msgstr "Вниз"
@@ -870,23 +1146,14 @@ msgstr "Аудіоефекти для додатків PipeWire"
 #~ msgid "Boost Amount"
 #~ msgstr "Інтенсивність підвищення"
 
-#~ msgid "Attack"
-#~ msgstr "Атака"
-
 #~ msgid "Time"
 #~ msgstr "Час"
-
-#~ msgid "Threshold"
-#~ msgstr "Поріг"
 
 #~ msgid "Attack Time"
 #~ msgstr "Час атаки"
 
 #~ msgid "Attack Threshold"
 #~ msgstr "Поріг атаки"
-
-#~ msgid "Release"
-#~ msgstr "Випуск"
 
 #~ msgid "Release Time"
 #~ msgstr "Час випуску"
@@ -896,9 +1163,6 @@ msgstr "Аудіоефекти для додатків PipeWire"
 
 #~ msgid "Ratio"
 #~ msgstr "Співвідношення"
-
-#~ msgid "Knee"
-#~ msgstr "Коліно"
 
 #, fuzzy
 #~ msgid "Makeup"
@@ -910,15 +1174,8 @@ msgstr "Аудіоефекти для додатків PipeWire"
 #~ msgid "Wet Level"
 #~ msgstr "Рівень вологості"
 
-#, fuzzy
-#~ msgid "Sidechain"
-#~ msgstr "Побічний ланцюг"
-
 #~ msgid "Stereo Split Mode"
 #~ msgstr "Режим Розділення Стерео"
-
-#~ msgid "Source"
-#~ msgstr "Джерело"
 
 #~ msgid "Middle"
 #~ msgstr "Середина"
@@ -969,15 +1226,8 @@ msgstr "Аудіоефекти для додатків PipeWire"
 #~ msgstr "Просте рухоме середнє"
 
 #, fuzzy
-#~ msgid "Sidechain Mode"
-#~ msgstr "Режим побічного ланцюга"
-
-#, fuzzy
 #~ msgid "Listen Sidechain"
 #~ msgstr "Слухати побічний ланцюг"
-
-#~ msgid "Type"
-#~ msgstr "Тип"
 
 #, fuzzy
 #~ msgid "Feed-forward"
@@ -986,9 +1236,6 @@ msgstr "Аудіоефекти для додатків PipeWire"
 #, fuzzy
 #~ msgid "Feed-back"
 #~ msgstr "Подача назад"
-
-#~ msgid "External"
-#~ msgstr "Зовнішній"
 
 #, fuzzy
 #~ msgid "Sidechain Type"
@@ -1037,14 +1284,8 @@ msgstr "Аудіоефекти для додатків PipeWire"
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "Режим фільтру низьких частот"
 
-#~ msgid "Gain"
-#~ msgstr "Посилення"
-
 #~ msgid "Curve"
 #~ msgstr "Крива"
-
-#~ msgid "R"
-#~ msgstr "R"
 
 #~ msgid "Right Channel"
 #~ msgstr "Правий канал"
@@ -1055,9 +1296,6 @@ msgstr "Аудіоефекти для додатків PipeWire"
 #, fuzzy
 #~ msgid "Combine"
 #~ msgstr "Об'єднати"
-
-#~ msgid "Stereo Width"
-#~ msgstr "Ширина стерео"
 
 #~ msgid "Log Scale"
 #~ msgstr "Масштабування журналу"

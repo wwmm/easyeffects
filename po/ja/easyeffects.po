@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-01 00:27-0300\n"
+"POT-Creation-Date: 2024-11-08 20:08-0300\n"
 "PO-Revision-Date: 2023-03-23 03:20+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -41,139 +41,149 @@ msgstr "グローバルバイパス。1 で有効、2 で無効、3 でステー
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "プリセットを読み込む。例: easyeffects -l music"
 
-#: src/contents/ui/Autogain.qml:54 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Exciter.qml:90
 msgid "Controls"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:62
+#: src/contents/ui/Autogain.qml:59
 msgid "Reference"
 msgstr "リファレンス"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:141
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:158
 msgid "Momentary"
 msgstr "瞬間的"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:152
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:175
 msgid "Short-Term"
 msgstr "短期"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:163
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:192
 msgid "Integrated"
 msgstr "統合"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MSI)"
 msgstr "幾何平均 (MSI)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MS)"
 msgstr "幾何平均 (MS)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MI)"
 msgstr "幾何平均 (MI)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (SI)"
 msgstr "幾何平均 (SI)"
 
-#: src/contents/ui/Autogain.qml:75
+#: src/contents/ui/Autogain.qml:78
 msgid "Target"
 msgstr "ターゲット"
 
-#: src/contents/ui/Autogain.qml:90
+#: src/contents/ui/Autogain.qml:99
 msgid "Silence"
 msgstr "サイレンス"
 
-#: src/contents/ui/Autogain.qml:105
+#: src/contents/ui/Autogain.qml:120
 msgid "Maximum History"
 msgstr "最大履歴"
 
-#: src/contents/ui/Autogain.qml:127 src/contents/ui/Autogain.qml:196
+#: src/contents/ui/Autogain.qml:148 src/contents/ui/Autogain.qml:243
 #: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "ラウドネス"
 
-#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:153
-#: src/contents/ui/Autogain.qml:164 src/contents/ui/Autogain.qml:175
-#: src/contents/ui/Autogain.qml:197
+#: src/contents/ui/Autogain.qml:159 src/contents/ui/Autogain.qml:176
+#: src/contents/ui/Autogain.qml:193 src/contents/ui/Autogain.qml:210
+#: src/contents/ui/Autogain.qml:244
 msgid "LUFS"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:174
+#: src/contents/ui/Autogain.qml:209
 msgid "Relative"
 msgstr "相対的"
 
-#: src/contents/ui/Autogain.qml:185
+#: src/contents/ui/Autogain.qml:226
 msgid "Range"
 msgstr "範囲"
 
-#: src/contents/ui/Autogain.qml:186
+#: src/contents/ui/Autogain.qml:227
 #, fuzzy
 msgid "LU"
 msgstr "L"
 
-#: src/contents/ui/Autogain.qml:207
+#: src/contents/ui/Autogain.qml:260
 msgid "Output Gain"
 msgstr "出力ゲイン"
 
-#: src/contents/ui/Autogain.qml:208
+#: src/contents/ui/Autogain.qml:261
 msgid "dB"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:180
+#: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
 #, fuzzy
 msgid "Using"
 msgstr "使用中"
 
-#: src/contents/ui/Autogain.qml:246
+#: src/contents/ui/Autogain.qml:305
 msgid "Reset History"
 msgstr "履歴をリセット"
 
-#: src/contents/ui/Autogain.qml:253
+#: src/contents/ui/Autogain.qml:312
 #, fuzzy
 msgid "Reset Settings"
 msgstr "_設定をリセット"
 
-#: src/contents/ui/BassEnhancer.qml:39
+#: src/contents/ui/BassEnhancer.qml:39 src/contents/ui/Exciter.qml:39
 msgid "Blend Harmonics"
 msgstr "ブレンドハーモニクス"
 
-#: src/contents/ui/BassEnhancer.qml:48
+#: src/contents/ui/BassEnhancer.qml:48 src/contents/ui/Exciter.qml:48
 msgid "3rd"
 msgstr "3rd"
 
-#: src/contents/ui/BassEnhancer.qml:71
+#: src/contents/ui/BassEnhancer.qml:71 src/contents/ui/Exciter.qml:71
 #, fuzzy
 msgid "2rd"
 msgstr "3rd"
 
-#: src/contents/ui/BassEnhancer.qml:98
+#: src/contents/ui/BassEnhancer.qml:98 src/contents/ui/Exciter.qml:98
 msgid "Amount"
 msgstr "量"
 
-#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:157
+#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:170
+#: src/contents/ui/Exciter.qml:113 src/contents/ui/Exciter.qml:170
 msgid "Harmonics"
 msgstr "ハーモニクス"
 
-#: src/contents/ui/BassEnhancer.qml:127
+#: src/contents/ui/BassEnhancer.qml:127 src/contents/ui/Exciter.qml:127
 msgid "Scope"
 msgstr "範囲"
 
 #: src/contents/ui/BassEnhancer.qml:142
+#, fuzzy
+msgid "Floor Active"
+msgstr "フロア値"
+
+#: src/contents/ui/BassEnhancer.qml:154
 msgid "Floor"
 msgstr "フロア"
 
-#: src/contents/ui/BassEnhancer.qml:195
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/Limiter.qml:511
 #, fuzzy
 msgid "Show Native Window"
 msgstr "ウィンドウを閉じる"
 
-#: src/contents/ui/BassEnhancer.qml:208
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
 msgid "Listen"
 msgstr "聞く"
 
-#: src/contents/ui/BassEnhancer.qml:219
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "リセット"
 
@@ -219,7 +229,7 @@ msgstr "チャンネル"
 msgid "Enable"
 msgstr "有効"
 
-#: src/contents/ui/DelegateStreamsList.qml:66
+#: src/contents/ui/DelegateStreamsList.qml:76
 msgid "Exclude"
 msgstr "除外"
 
@@ -230,6 +240,285 @@ msgstr "入力"
 #: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
 msgid "Output"
 msgstr "出力"
+
+#: src/contents/ui/Exciter.qml:142
+#, fuzzy
+msgid "Ceil Active"
+msgstr "アクティブモデル"
+
+#: src/contents/ui/Exciter.qml:154
+msgid "Ceil"
+msgstr "切り上げ"
+
+#: src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "モード"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Thin"
+msgstr "Herm Thin"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Wide"
+msgstr "Herm Wide"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Tail"
+msgstr "Herm Tail"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Duck"
+msgstr "Herm Duck"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Thin"
+msgstr "Exp Thin"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Wide"
+msgstr "Exp Wide"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Tail"
+msgstr "Exp Tail"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Duck"
+msgstr "Exp Duck"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Thin"
+msgstr "Line Thin"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Wide"
+msgstr "Line Wide"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Tail"
+msgstr "Line Tail"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Duck"
+msgstr "Line Duck"
+
+#: src/contents/ui/Limiter.qml:70
+msgid "Oversampling"
+msgstr "オーバーサンプリング"
+
+#: src/contents/ui/Limiter.qml:74 src/contents/ui/Limiter.qml:93
+msgid "None"
+msgstr "なし"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x2/24 bit"
+msgstr "ハーフ ×2(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x3/24 bit"
+msgstr "ハーフ ×3(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x4/24 bit"
+msgstr "ハーフ ×4(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x6/24 bit"
+msgstr "ハーフ ×6(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x8/24 bit"
+msgstr "ハーフ ×8(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x2/24 bit"
+msgstr "フル x2(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x3/24 bit"
+msgstr "フル ×3(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x4/24 bit"
+msgstr "フル ×4(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x6/24 bit"
+msgstr "フル ×6(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x8/24 bit"
+msgstr "フル ×8(2L)"
+
+#: src/contents/ui/Limiter.qml:89
+#, fuzzy
+msgid "Dithering"
+msgstr "ディザ"
+
+#: src/contents/ui/Limiter.qml:93
+msgid "7 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "8 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "11 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "12 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "15 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "23 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:113 src/tags_plugin_name.cpp:43
+msgid "Limiter"
+msgstr "リミッター"
+
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "しきい値"
+
+#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "アタック"
+
+#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "リリース"
+
+#: src/contents/ui/Limiter.qml:184
+msgid "Stereo Link"
+msgstr "ステレオリンク"
+
+#: src/contents/ui/Limiter.qml:210
+msgid "Sidechain"
+msgstr "サイドチェーン"
+
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "SC Type"
+msgstr "タイプ"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "Internal"
+msgstr "内部"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "External"
+msgstr "外部"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr "リンク"
+
+#: src/contents/ui/Limiter.qml:239
+msgid "Source"
+msgstr "ソース"
+
+#: src/contents/ui/Limiter.qml:270
+#, fuzzy
+msgid "SC Preamp"
+msgstr "SC プリアンプ"
+
+#: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
+#, fuzzy
+msgid "Automatic Level"
+msgstr "オートレベリング"
+
+#: src/contents/ui/Limiter.qml:349
+msgid "Knee"
+msgstr "ニー"
+
+#: src/contents/ui/Limiter.qml:393
+#, fuzzy
+msgid "Gain [dB]"
+msgstr "ゲイン"
+
+#: src/contents/ui/Limiter.qml:401
+#, fuzzy
+msgid "Sidechain [dB]"
+msgstr "サイドチェーンモード"
+
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "L"
+
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "R"
+
+#: src/contents/ui/Limiter.qml:524
+#, fuzzy
+msgid "Gain Boost"
+msgstr "サイドチェーンブースト"
 
 #: src/contents/ui/main.qml:17
 #, fuzzy
@@ -295,36 +584,36 @@ msgstr "何もない壁"
 msgid "No Audio Application Available"
 msgstr "オーディオアプリケーションがありません"
 
-#: src/contents/ui/PageStreamsEffects.qml:198
+#: src/contents/ui/PageStreamsEffects.qml:215
 msgid "Add Effect"
 msgstr "エフェクトの追加"
 
-#: src/contents/ui/PageStreamsEffects.qml:248
-#: src/contents/ui/PageStreamsEffects.qml:380
+#: src/contents/ui/PageStreamsEffects.qml:265
+#: src/contents/ui/PageStreamsEffects.qml:397
 msgid "Players"
 msgstr "プレイヤー"
 
-#: src/contents/ui/PageStreamsEffects.qml:248
+#: src/contents/ui/PageStreamsEffects.qml:265
 msgid "Input Device"
 msgstr "入力デバイス"
 
-#: src/contents/ui/PageStreamsEffects.qml:266
+#: src/contents/ui/PageStreamsEffects.qml:283
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/contents/ui/PageStreamsEffects.qml:291
+#: src/contents/ui/PageStreamsEffects.qml:308
 msgid "No Effects"
 msgstr "エフェクトなし"
 
-#: src/contents/ui/PageStreamsEffects.qml:292
+#: src/contents/ui/PageStreamsEffects.qml:309
 msgid "Audio Stream Not Modified"
 msgstr "オーディオストリームは変更されていません"
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:407
 msgid "Effects"
 msgstr "エフェクト"
 
-#: src/contents/ui/PageStreamsEffects.qml:406
+#: src/contents/ui/PageStreamsEffects.qml:423
 msgid "Excluded Apps"
 msgstr "除外されたアプリ"
 
@@ -564,31 +853,40 @@ msgstr "スペクトラム"
 msgid "Experimental Features"
 msgstr "実験的"
 
-#: src/main.cpp:53
+#: src/main.cpp:59
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
-#: src/main.cpp:54
+#: src/main.cpp:60
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "包装"
 
 #: src/plugin_base.cpp:230
+msgid "(Mic)"
+msgstr ""
+
+#: src/plugin_base.cpp:233
+#, fuzzy
+msgid "(Speakers)"
+msgstr "スピーカー"
+
+#: src/plugin_base.cpp:240
 msgid "Output Level Meter"
 msgstr "出力レベルメーター"
 
-#: src/plugin_base.cpp:232
+#: src/plugin_base.cpp:242
 #, fuzzy
 msgid "Spectrum"
 msgstr "_スペクトラム"
@@ -686,10 +984,6 @@ msgstr "ゲート"
 #, fuzzy
 msgid "Level Meter"
 msgstr "出力レベルメーター"
-
-#: src/tags_plugin_name.cpp:43
-msgid "Limiter"
-msgstr "リミッター"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
@@ -863,12 +1157,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "2nd"
 #~ msgstr "2nd"
 
-#~ msgid "Floor Value"
-#~ msgstr "フロア値"
-
-#~ msgid "Link"
-#~ msgstr "リンク"
-
 #~ msgid "Application Name"
 #~ msgstr "アプリケーション名"
 
@@ -880,9 +1168,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
 #~ msgid "Show Excluded Applications"
 #~ msgstr "除外されたアプリケーションを表示"
-
-#~ msgid "Mode"
-#~ msgstr "モード"
 
 #~ msgid "Downward"
 #~ msgstr "下方向"
@@ -902,23 +1187,14 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Boost Amount"
 #~ msgstr "ブースト量"
 
-#~ msgid "Attack"
-#~ msgstr "アタック"
-
 #~ msgid "Time"
 #~ msgstr "時間"
-
-#~ msgid "Threshold"
-#~ msgstr "しきい値"
 
 #~ msgid "Attack Time"
 #~ msgstr "アタックタイム"
 
 #~ msgid "Attack Threshold"
 #~ msgstr "アタックしきい値"
-
-#~ msgid "Release"
-#~ msgstr "リリース"
 
 #~ msgid "Release Time"
 #~ msgstr "リリース時間"
@@ -929,9 +1205,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Ratio"
 #~ msgstr "比率"
 
-#~ msgid "Knee"
-#~ msgstr "ニー"
-
 #~ msgid "Makeup"
 #~ msgstr "メイクアップ"
 
@@ -941,15 +1214,9 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Wet Level"
 #~ msgstr "Wet レベル"
 
-#~ msgid "Sidechain"
-#~ msgstr "サイドチェーン"
-
 #, fuzzy
 #~ msgid "Stereo Split Mode"
 #~ msgstr "ステレオモード"
-
-#~ msgid "Source"
-#~ msgstr "ソース"
 
 #~ msgid "Middle"
 #~ msgstr "中央"
@@ -1004,24 +1271,15 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Simple Moving Average"
 #~ msgstr "単純移動平均"
 
-#~ msgid "Sidechain Mode"
-#~ msgstr "サイドチェーンモード"
-
 #, fuzzy
 #~ msgid "Listen Sidechain"
 #~ msgstr "外部サイドチェーン"
-
-#~ msgid "Type"
-#~ msgstr "タイプ"
 
 #~ msgid "Feed-forward"
 #~ msgstr "フィードフォワード"
 
 #~ msgid "Feed-back"
 #~ msgstr "フィードバック"
-
-#~ msgid "External"
-#~ msgstr "外部"
 
 #~ msgid "Sidechain Type"
 #~ msgstr "サイドチェーンタイプ"
@@ -1068,17 +1326,11 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "ローパスフィルターモード"
 
-#~ msgid "Gain"
-#~ msgstr "ゲイン"
-
 #~ msgid "Curve"
 #~ msgstr "カーブ"
 
 #~ msgid "Left Channel"
 #~ msgstr "左チャンネル"
-
-#~ msgid "R"
-#~ msgstr "R"
 
 #~ msgid "Right Channel"
 #~ msgstr "右チャンネル"
@@ -1254,12 +1506,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Width"
 #~ msgstr "幅"
 
-#~ msgid "Ceil"
-#~ msgstr "切り上げ"
-
-#~ msgid "Internal"
-#~ msgstr "内部"
-
 #~ msgid "API"
 #~ msgstr "API"
 
@@ -1318,113 +1564,35 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "True Peak"
 #~ msgstr "周波数 2 ピーク"
 
-#~ msgid "Oversampling"
-#~ msgstr "オーバーサンプリング"
-
-#~ msgid "Dither"
-#~ msgstr "ディザ"
-
-#~ msgid "Herm Thin"
-#~ msgstr "Herm Thin"
-
-#~ msgid "Herm Wide"
-#~ msgstr "Herm Wide"
-
-#~ msgid "Herm Tail"
-#~ msgstr "Herm Tail"
-
-#~ msgid "Herm Duck"
-#~ msgstr "Herm Duck"
-
-#~ msgid "Exp Thin"
-#~ msgstr "Exp Thin"
-
-#~ msgid "Exp Wide"
-#~ msgstr "Exp Wide"
-
-#~ msgid "Exp Tail"
-#~ msgstr "Exp Tail"
-
-#~ msgid "Exp Duck"
-#~ msgstr "Exp Duck"
-
-#~ msgid "Line Thin"
-#~ msgstr "Line Thin"
-
-#~ msgid "Line Wide"
-#~ msgstr "Line Wide"
-
-#~ msgid "Line Tail"
-#~ msgstr "Line Tail"
-
-#~ msgid "Line Duck"
-#~ msgstr "Line Duck"
-
-#~ msgid "None"
-#~ msgstr "なし"
-
-#~ msgid "Half x2(2L)"
-#~ msgstr "ハーフ ×2(2L)"
-
 #~ msgid "Half x2(3L)"
 #~ msgstr "ハーフ ×2(3L)"
-
-#~ msgid "Half x3(2L)"
-#~ msgstr "ハーフ ×3(2L)"
 
 #~ msgid "Half x3(3L)"
 #~ msgstr "ハーフ ×3(3L)"
 
-#~ msgid "Half x4(2L)"
-#~ msgstr "ハーフ ×4(2L)"
-
 #~ msgid "Half x4(3L)"
 #~ msgstr "ハーフ ×4(3L)"
-
-#~ msgid "Half x6(2L)"
-#~ msgstr "ハーフ ×6(2L)"
 
 #~ msgid "Half x6(3L)"
 #~ msgstr "ハーフ ×6(3L)"
 
-#~ msgid "Half x8(2L)"
-#~ msgstr "ハーフ ×8(2L)"
-
 #~ msgid "Half x8(3L)"
 #~ msgstr "ハーフ ×8(3L)"
-
-#~ msgid "Full x2(2L)"
-#~ msgstr "フル x2(2L)"
 
 #~ msgid "Full x2(3L)"
 #~ msgstr "フル x2(3L)"
 
-#~ msgid "Full x3(2L)"
-#~ msgstr "フル ×3(2L)"
-
 #~ msgid "Full x3(3L)"
 #~ msgstr "フル ×3(3L)"
-
-#~ msgid "Full x4(2L)"
-#~ msgstr "フル ×4(2L)"
 
 #~ msgid "Full x4(3L)"
 #~ msgstr "フル ×4(3L)"
 
-#~ msgid "Full x6(2L)"
-#~ msgstr "フル ×6(2L)"
-
 #~ msgid "Full x6(3L)"
 #~ msgstr "フル ×6(3L)"
 
-#~ msgid "Full x8(2L)"
-#~ msgstr "フル ×8(2L)"
-
 #~ msgid "Full x8(3L)"
 #~ msgstr "フル ×8(3L)"
-
-#~ msgid "SC PreAmp"
-#~ msgstr "SC プリアンプ"
 
 #~ msgid "Sidechain PreAmplification"
 #~ msgstr "サイドチェーン PreAmplification"
@@ -1432,17 +1600,11 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Boost"
 #~ msgstr "ブースト"
 
-#~ msgid "Stereo Link"
-#~ msgstr "ステレオリンク"
-
 #~ msgid "External Sidechain"
 #~ msgstr "外部サイドチェーン"
 
 #~ msgid "External Sidechain Source"
 #~ msgstr "外部サイドチェーンソース"
-
-#~ msgid "Auto Leveling"
-#~ msgstr "オートレベリング"
 
 #~ msgid "Auto Leveling Attack"
 #~ msgstr "オートレベリングアタック"
@@ -1479,9 +1641,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
 #~ msgid "Clipping"
 #~ msgstr "クリッピング"
-
-#~ msgid "Sidechain Boost"
-#~ msgstr "サイドチェーンブースト"
 
 #~ msgid "Pink BT"
 #~ msgstr "ピンク BT"
@@ -3226,18 +3385,11 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Reset Our Devices Volume on Startup"
 #~ msgstr "起動時にデバイスの音量をリセット"
 
-#, fuzzy
-#~ msgid "Activate"
-#~ msgstr "アクティブモデル"
-
 #~ msgid "Add to Blocklist"
 #~ msgstr "ブロックリストに追加"
 
 #~ msgid "Blocklist"
 #~ msgstr "ブロックリスト"
-
-#~ msgid "Speakers"
-#~ msgstr "スピーカー"
 
 #~ msgid "Microphone"
 #~ msgstr "マイク"

@@ -30,6 +30,7 @@
 #include "easyeffects_db.h"
 #include "easyeffects_db_autogain.h"
 #include "easyeffects_db_bass_enhancer.h"
+#include "easyeffects_db_compressor.h"
 #include "easyeffects_db_exciter.h"
 #include "easyeffects_db_limiter.h"
 #include "easyeffects_db_spectrum.h"
@@ -128,12 +129,19 @@ void Manager::create_plugin_db(const QString& parentGroup,
       if (name.startsWith(tags::plugin_name::BaseName::autogain)) {
         plugins_map[tags::plugin_name::BaseName::autogain + "#" + id] =
             QVariant::fromValue(new db::Autogain(parentGroup, id));
+        //
       } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
         plugins_map[tags::plugin_name::BaseName::bassEnhancer + "#" + id] =
             QVariant::fromValue(new db::BassEnhancer(parentGroup, id));
+        //
+      } else if (name.startsWith(tags::plugin_name::BaseName::compressor)) {
+        plugins_map[tags::plugin_name::BaseName::compressor + "#" + id] =
+            QVariant::fromValue(new db::Compressor(parentGroup, id));
+        //
       } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
         plugins_map[tags::plugin_name::BaseName::exciter + "#" + id] =
             QVariant::fromValue(new db::Exciter(parentGroup, id));
+        //
       } else if (name.startsWith(tags::plugin_name::BaseName::limiter)) {
         plugins_map[tags::plugin_name::BaseName::limiter + "#" + id] =
             QVariant::fromValue(new db::Limiter(parentGroup, id));

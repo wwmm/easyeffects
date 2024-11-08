@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-01 00:27-0300\n"
+"POT-Creation-Date: 2024-11-08 20:08-0300\n"
 "PO-Revision-Date: 2023-12-31 05:09+0000\n"
 "Last-Translator: 이정희 <daemul72@gmail.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -40,140 +40,149 @@ msgstr ""
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "프리셋을 불러옵니다. 예시: easyeffects -l music"
 
-#: src/contents/ui/Autogain.qml:54 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Exciter.qml:90
 msgid "Controls"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:62
+#: src/contents/ui/Autogain.qml:59
 msgid "Reference"
 msgstr "참조"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:141
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:158
 msgid "Momentary"
 msgstr "순간"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:152
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:175
 msgid "Short-Term"
 msgstr "단기"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:163
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:192
 msgid "Integrated"
 msgstr "통합"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MSI)"
 msgstr "기하 평균 (MSI)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MS)"
 msgstr "기하 평균 (MS)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MI)"
 msgstr "기하 평균 (MI)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (SI)"
 msgstr "기하 평균 (SI)"
 
-#: src/contents/ui/Autogain.qml:75
+#: src/contents/ui/Autogain.qml:78
 msgid "Target"
 msgstr "대상"
 
-#: src/contents/ui/Autogain.qml:90
+#: src/contents/ui/Autogain.qml:99
 msgid "Silence"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:105
+#: src/contents/ui/Autogain.qml:120
 #, fuzzy
 msgid "Maximum History"
 msgstr "최대 히스토리"
 
-#: src/contents/ui/Autogain.qml:127 src/contents/ui/Autogain.qml:196
+#: src/contents/ui/Autogain.qml:148 src/contents/ui/Autogain.qml:243
 #: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "소리의 세기"
 
-#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:153
-#: src/contents/ui/Autogain.qml:164 src/contents/ui/Autogain.qml:175
-#: src/contents/ui/Autogain.qml:197
+#: src/contents/ui/Autogain.qml:159 src/contents/ui/Autogain.qml:176
+#: src/contents/ui/Autogain.qml:193 src/contents/ui/Autogain.qml:210
+#: src/contents/ui/Autogain.qml:244
 msgid "LUFS"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:174
+#: src/contents/ui/Autogain.qml:209
 msgid "Relative"
 msgstr "상대적"
 
-#: src/contents/ui/Autogain.qml:185
+#: src/contents/ui/Autogain.qml:226
 msgid "Range"
 msgstr "범위"
 
-#: src/contents/ui/Autogain.qml:186
+#: src/contents/ui/Autogain.qml:227
 #, fuzzy
 msgid "LU"
 msgstr "L"
 
-#: src/contents/ui/Autogain.qml:207
+#: src/contents/ui/Autogain.qml:260
 msgid "Output Gain"
 msgstr "아웃풋 게인"
 
-#: src/contents/ui/Autogain.qml:208
+#: src/contents/ui/Autogain.qml:261
 msgid "dB"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:180
+#: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
 #, fuzzy
 msgid "Using"
 msgstr "{} 사용 중"
 
-#: src/contents/ui/Autogain.qml:246
+#: src/contents/ui/Autogain.qml:305
 msgid "Reset History"
 msgstr "히스토리 재지정"
 
-#: src/contents/ui/Autogain.qml:253
+#: src/contents/ui/Autogain.qml:312
 #, fuzzy
 msgid "Reset Settings"
 msgstr "설정 재지정(_R)"
 
-#: src/contents/ui/BassEnhancer.qml:39
+#: src/contents/ui/BassEnhancer.qml:39 src/contents/ui/Exciter.qml:39
 msgid "Blend Harmonics"
 msgstr "고조파 섞기"
 
-#: src/contents/ui/BassEnhancer.qml:48
+#: src/contents/ui/BassEnhancer.qml:48 src/contents/ui/Exciter.qml:48
 msgid "3rd"
 msgstr "세번째"
 
-#: src/contents/ui/BassEnhancer.qml:71
+#: src/contents/ui/BassEnhancer.qml:71 src/contents/ui/Exciter.qml:71
 #, fuzzy
 msgid "2rd"
 msgstr "세번째"
 
-#: src/contents/ui/BassEnhancer.qml:98
+#: src/contents/ui/BassEnhancer.qml:98 src/contents/ui/Exciter.qml:98
 msgid "Amount"
 msgstr "수량"
 
-#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:157
+#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:170
+#: src/contents/ui/Exciter.qml:113 src/contents/ui/Exciter.qml:170
 msgid "Harmonics"
 msgstr "고조파"
 
-#: src/contents/ui/BassEnhancer.qml:127
+#: src/contents/ui/BassEnhancer.qml:127 src/contents/ui/Exciter.qml:127
 msgid "Scope"
 msgstr "스코프"
 
 #: src/contents/ui/BassEnhancer.qml:142
+msgid "Floor Active"
+msgstr ""
+
+#: src/contents/ui/BassEnhancer.qml:154
 msgid "Floor"
 msgstr "플로어"
 
-#: src/contents/ui/BassEnhancer.qml:195
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/Limiter.qml:511
 #, fuzzy
 msgid "Show Native Window"
 msgstr "탐색 창"
 
-#: src/contents/ui/BassEnhancer.qml:208
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
 msgid "Listen"
 msgstr "듣기"
 
-#: src/contents/ui/BassEnhancer.qml:219
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "재지정"
 
@@ -219,7 +228,7 @@ msgstr "채널"
 msgid "Enable"
 msgstr "활성화"
 
-#: src/contents/ui/DelegateStreamsList.qml:66
+#: src/contents/ui/DelegateStreamsList.qml:76
 msgid "Exclude"
 msgstr "제외하기"
 
@@ -230,6 +239,278 @@ msgstr "인풋"
 #: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
 msgid "Output"
 msgstr "아웃풋"
+
+#: src/contents/ui/Exciter.qml:142
+#, fuzzy
+msgid "Ceil Active"
+msgstr "상대적"
+
+#: src/contents/ui/Exciter.qml:154
+msgid "Ceil"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "모드"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Thin"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Herm Wide"
+msgstr "와이드"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Tail"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Thin"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Exp Wide"
+msgstr "와이드"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Tail"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Thin"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Line Wide"
+msgstr "사인파"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Tail"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:70
+#, fuzzy
+msgid "Oversampling"
+msgstr "오버랩 길이"
+
+#: src/contents/ui/Limiter.qml:74 src/contents/ui/Limiter.qml:93
+msgid "None"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:89
+msgid "Dithering"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "7 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "8 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "11 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "12 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "15 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "23 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:113 src/tags_plugin_name.cpp:43
+msgid "Limiter"
+msgstr "리미터"
+
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "한계값"
+
+#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "어택"
+
+#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "릴리스"
+
+#: src/contents/ui/Limiter.qml:184
+#, fuzzy
+msgid "Stereo Link"
+msgstr "스테레오 너비"
+
+#: src/contents/ui/Limiter.qml:210
+msgid "Sidechain"
+msgstr "사이드체인"
+
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "SC Type"
+msgstr "유형"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "Internal"
+msgstr "내부"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "External"
+msgstr "외부"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr "링크"
+
+#: src/contents/ui/Limiter.qml:239
+msgid "Source"
+msgstr "소스"
+
+#: src/contents/ui/Limiter.qml:270
+msgid "SC Preamp"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
+#, fuzzy
+msgid "Automatic Level"
+msgstr "출력 레벨 미터"
+
+#: src/contents/ui/Limiter.qml:349
+#, fuzzy
+msgid "Knee"
+msgstr "Knee"
+
+#: src/contents/ui/Limiter.qml:393
+#, fuzzy
+msgid "Gain [dB]"
+msgstr "게인"
+
+#: src/contents/ui/Limiter.qml:401
+#, fuzzy
+msgid "Sidechain [dB]"
+msgstr "사이드체인 모드"
+
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "L"
+
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "R"
+
+#: src/contents/ui/Limiter.qml:524
+msgid "Gain Boost"
+msgstr ""
 
 #: src/contents/ui/main.qml:17
 #, fuzzy
@@ -296,36 +577,36 @@ msgstr "빈 목록"
 msgid "No Audio Application Available"
 msgstr "사용 가능한 오디오 응용프로그램 없음"
 
-#: src/contents/ui/PageStreamsEffects.qml:198
+#: src/contents/ui/PageStreamsEffects.qml:215
 msgid "Add Effect"
 msgstr "효과 추가하기"
 
-#: src/contents/ui/PageStreamsEffects.qml:248
-#: src/contents/ui/PageStreamsEffects.qml:380
+#: src/contents/ui/PageStreamsEffects.qml:265
+#: src/contents/ui/PageStreamsEffects.qml:397
 msgid "Players"
 msgstr "재생기"
 
-#: src/contents/ui/PageStreamsEffects.qml:248
+#: src/contents/ui/PageStreamsEffects.qml:265
 msgid "Input Device"
 msgstr "입력 장치"
 
-#: src/contents/ui/PageStreamsEffects.qml:266
+#: src/contents/ui/PageStreamsEffects.qml:283
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:291
+#: src/contents/ui/PageStreamsEffects.qml:308
 msgid "No Effects"
 msgstr "효과 없음"
 
-#: src/contents/ui/PageStreamsEffects.qml:292
+#: src/contents/ui/PageStreamsEffects.qml:309
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:407
 msgid "Effects"
 msgstr "효과음"
 
-#: src/contents/ui/PageStreamsEffects.qml:406
+#: src/contents/ui/PageStreamsEffects.qml:423
 #, fuzzy
 msgid "Excluded Apps"
 msgstr "제외하기"
@@ -564,32 +845,40 @@ msgstr "스펙트럼"
 msgid "Experimental Features"
 msgstr ""
 
-#: src/main.cpp:53
+#: src/main.cpp:59
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire 음향 효과 애플리케이션"
 
-#: src/main.cpp:54
+#: src/main.cpp:60
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "엔벌로프"
 
 #: src/plugin_base.cpp:230
+msgid "(Mic)"
+msgstr ""
+
+#: src/plugin_base.cpp:233
+msgid "(Speakers)"
+msgstr ""
+
+#: src/plugin_base.cpp:240
 msgid "Output Level Meter"
 msgstr "출력 레벨 미터"
 
-#: src/plugin_base.cpp:232
+#: src/plugin_base.cpp:242
 #, fuzzy
 msgid "Spectrum"
 msgstr "스펙트럼"
@@ -686,10 +975,6 @@ msgstr ""
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
 msgstr "레벨 미터"
-
-#: src/tags_plugin_name.cpp:43
-msgid "Limiter"
-msgstr "리미터"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
@@ -840,9 +1125,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "2nd"
 #~ msgstr "두번째"
 
-#~ msgid "Link"
-#~ msgstr "링크"
-
 #~ msgid "Application Name"
 #~ msgstr "응용프로그램 이름"
 
@@ -854,9 +1136,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 
 #~ msgid "Show Excluded Applications"
 #~ msgstr "제외된 프로그램 보기"
-
-#~ msgid "Mode"
-#~ msgstr "모드"
 
 #~ msgid "Downward"
 #~ msgstr "아래방향"
@@ -876,23 +1155,14 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "Boost Amount"
 #~ msgstr "부스트 양"
 
-#~ msgid "Attack"
-#~ msgstr "어택"
-
 #~ msgid "Time"
 #~ msgstr "타임"
-
-#~ msgid "Threshold"
-#~ msgstr "한계값"
 
 #~ msgid "Attack Time"
 #~ msgstr "어택 타임"
 
 #~ msgid "Attack Threshold"
 #~ msgstr "어택 한계값"
-
-#~ msgid "Release"
-#~ msgstr "릴리스"
 
 #~ msgid "Release Time"
 #~ msgstr "릴리스 타임"
@@ -903,10 +1173,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "Ratio"
 #~ msgstr "비율"
 
-#, fuzzy
-#~ msgid "Knee"
-#~ msgstr "Knee"
-
 #~ msgid "Makeup"
 #~ msgstr "메이크업"
 
@@ -916,14 +1182,8 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "Wet Level"
 #~ msgstr "웨트 레벨"
 
-#~ msgid "Sidechain"
-#~ msgstr "사이드체인"
-
 #~ msgid "Stereo Split Mode"
 #~ msgstr "스테레오 분할 모드"
-
-#~ msgid "Source"
-#~ msgstr "소스"
 
 #~ msgid "Middle"
 #~ msgstr "중간"
@@ -970,23 +1230,14 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "Simple Moving Average"
 #~ msgstr "단순 이동 평균"
 
-#~ msgid "Sidechain Mode"
-#~ msgstr "사이드체인 모드"
-
 #~ msgid "Listen Sidechain"
 #~ msgstr "사이드체인 듣기"
-
-#~ msgid "Type"
-#~ msgstr "유형"
 
 #~ msgid "Feed-forward"
 #~ msgstr "피드포워드"
 
 #~ msgid "Feed-back"
 #~ msgstr "피드백"
-
-#~ msgid "External"
-#~ msgstr "외부"
 
 #~ msgid "Sidechain Type"
 #~ msgstr "사이드체인 유형"
@@ -1024,17 +1275,11 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "로우패스 필터 모드"
 
-#~ msgid "Gain"
-#~ msgstr "게인"
-
 #~ msgid "Curve"
 #~ msgstr "커브"
 
 #~ msgid "Left Channel"
 #~ msgstr "좌측 채널"
-
-#~ msgid "R"
-#~ msgstr "R"
 
 #~ msgid "Right Channel"
 #~ msgstr "우측 채널"
@@ -1044,9 +1289,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 
 #~ msgid "Combine"
 #~ msgstr "결합하기"
-
-#~ msgid "Stereo Width"
-#~ msgstr "스테레오 너비"
 
 #~ msgid "Log Scale"
 #~ msgstr "로그 스케일"
@@ -1098,9 +1340,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 
 #~ msgid "Post Filter Beta"
 #~ msgstr "포스트 필터 베타"
-
-#~ msgid "Wide"
-#~ msgstr "와이드"
 
 #~ msgid "Split"
 #~ msgstr "분할"
@@ -1160,9 +1399,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 
 #~ msgid "Export Preset"
 #~ msgstr "프리셋 내보내기"
-
-#~ msgid "Internal"
-#~ msgstr "내부"
 
 #~ msgid "API"
 #~ msgstr "API"
@@ -1263,9 +1499,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "Waveform"
 #~ msgstr "파형"
 
-#~ msgid "Sine Wave"
-#~ msgstr "사인파"
-
 #~ msgid "White Noise"
 #~ msgstr "백색 소음"
 
@@ -1277,9 +1510,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 
 #~ msgid "Sequence Length"
 #~ msgstr "시퀀스 길이"
-
-#~ msgid "Overlap Length"
-#~ msgstr "오버랩 길이"
 
 #~ msgid "Semitones"
 #~ msgstr "세미톤"

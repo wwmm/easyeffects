@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-01 00:27-0300\n"
+"POT-Creation-Date: 2024-11-08 20:08-0300\n"
 "PO-Revision-Date: 2024-03-24 04:01+0000\n"
 "Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -41,139 +41,149 @@ msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "加载预设。 示例：easyeffects -l music"
 
-#: src/contents/ui/Autogain.qml:54 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Exciter.qml:90
 msgid "Controls"
 msgstr "控制"
 
-#: src/contents/ui/Autogain.qml:62
+#: src/contents/ui/Autogain.qml:59
 msgid "Reference"
 msgstr "参考"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:141
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:158
 msgid "Momentary"
 msgstr "瞬时"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:152
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:175
 msgid "Short-Term"
 msgstr "短期"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:163
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:192
 msgid "Integrated"
 msgstr "综合"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MSI)"
 msgstr "几何平均 (MSI)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MS)"
 msgstr "几何平均 (MS)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MI)"
 msgstr "几何平均 (MI)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (SI)"
 msgstr "几何平均 (SI)"
 
-#: src/contents/ui/Autogain.qml:75
+#: src/contents/ui/Autogain.qml:78
 msgid "Target"
 msgstr "目标"
 
-#: src/contents/ui/Autogain.qml:90
+#: src/contents/ui/Autogain.qml:99
 msgid "Silence"
 msgstr "静音"
 
-#: src/contents/ui/Autogain.qml:105
+#: src/contents/ui/Autogain.qml:120
 msgid "Maximum History"
 msgstr "历史记录最大值"
 
-#: src/contents/ui/Autogain.qml:127 src/contents/ui/Autogain.qml:196
+#: src/contents/ui/Autogain.qml:148 src/contents/ui/Autogain.qml:243
 #: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "响度"
 
-#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:153
-#: src/contents/ui/Autogain.qml:164 src/contents/ui/Autogain.qml:175
-#: src/contents/ui/Autogain.qml:197
+#: src/contents/ui/Autogain.qml:159 src/contents/ui/Autogain.qml:176
+#: src/contents/ui/Autogain.qml:193 src/contents/ui/Autogain.qml:210
+#: src/contents/ui/Autogain.qml:244
 msgid "LUFS"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:174
+#: src/contents/ui/Autogain.qml:209
 msgid "Relative"
 msgstr "相对值"
 
-#: src/contents/ui/Autogain.qml:185
+#: src/contents/ui/Autogain.qml:226
 msgid "Range"
 msgstr "范围"
 
-#: src/contents/ui/Autogain.qml:186
+#: src/contents/ui/Autogain.qml:227
 #, fuzzy
 msgid "LU"
 msgstr "左"
 
-#: src/contents/ui/Autogain.qml:207
+#: src/contents/ui/Autogain.qml:260
 msgid "Output Gain"
 msgstr "输出增益"
 
-#: src/contents/ui/Autogain.qml:208
+#: src/contents/ui/Autogain.qml:261
 msgid "dB"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:180
+#: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
 #, fuzzy
 msgid "Using"
 msgstr "正在使用 {}"
 
-#: src/contents/ui/Autogain.qml:246
+#: src/contents/ui/Autogain.qml:305
 msgid "Reset History"
 msgstr "清除记录"
 
-#: src/contents/ui/Autogain.qml:253
+#: src/contents/ui/Autogain.qml:312
 #, fuzzy
 msgid "Reset Settings"
 msgstr "重置设置(_R)"
 
-#: src/contents/ui/BassEnhancer.qml:39
+#: src/contents/ui/BassEnhancer.qml:39 src/contents/ui/Exciter.qml:39
 msgid "Blend Harmonics"
 msgstr "谐波注入"
 
-#: src/contents/ui/BassEnhancer.qml:48
+#: src/contents/ui/BassEnhancer.qml:48 src/contents/ui/Exciter.qml:48
 msgid "3rd"
 msgstr "3 次"
 
-#: src/contents/ui/BassEnhancer.qml:71
+#: src/contents/ui/BassEnhancer.qml:71 src/contents/ui/Exciter.qml:71
 #, fuzzy
 msgid "2rd"
 msgstr "3 次"
 
-#: src/contents/ui/BassEnhancer.qml:98
+#: src/contents/ui/BassEnhancer.qml:98 src/contents/ui/Exciter.qml:98
 msgid "Amount"
 msgstr "程度"
 
-#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:157
+#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:170
+#: src/contents/ui/Exciter.qml:113 src/contents/ui/Exciter.qml:170
 msgid "Harmonics"
 msgstr "谐波"
 
-#: src/contents/ui/BassEnhancer.qml:127
+#: src/contents/ui/BassEnhancer.qml:127 src/contents/ui/Exciter.qml:127
 msgid "Scope"
 msgstr "范围"
 
 #: src/contents/ui/BassEnhancer.qml:142
+#, fuzzy
+msgid "Floor Active"
+msgstr "下限"
+
+#: src/contents/ui/BassEnhancer.qml:154
 msgid "Floor"
 msgstr "下限"
 
-#: src/contents/ui/BassEnhancer.qml:195
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/Limiter.qml:511
 #, fuzzy
 msgid "Show Native Window"
 msgstr "显示原生窗口"
 
-#: src/contents/ui/BassEnhancer.qml:208
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
 msgid "Listen"
 msgstr "聆听"
 
-#: src/contents/ui/BassEnhancer.qml:219
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "重置"
 
@@ -218,7 +228,7 @@ msgstr "声道"
 msgid "Enable"
 msgstr "启用"
 
-#: src/contents/ui/DelegateStreamsList.qml:66
+#: src/contents/ui/DelegateStreamsList.qml:76
 msgid "Exclude"
 msgstr "排除"
 
@@ -229,6 +239,286 @@ msgstr "输入"
 #: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
 msgid "Output"
 msgstr "输出"
+
+#: src/contents/ui/Exciter.qml:142
+#, fuzzy
+msgid "Ceil Active"
+msgstr "激活"
+
+#: src/contents/ui/Exciter.qml:154
+msgid "Ceil"
+msgstr "上限"
+
+#: src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "模式"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Thin"
+msgstr "窄式埃尔米特插值"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Wide"
+msgstr "宽式埃尔米特插值"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Tail"
+msgstr "尾式埃尔米特插值"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Duck"
+msgstr "蹲式埃尔米特插值"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Thin"
+msgstr "窄式指数插值"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Wide"
+msgstr "宽式指数插值"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Tail"
+msgstr "尾式指数插值"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Duck"
+msgstr "蹲式指数插值"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Thin"
+msgstr "窄式线性插值"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Wide"
+msgstr "宽式线性插值"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Tail"
+msgstr "尾式线性插值"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Duck"
+msgstr "蹲式线性插值"
+
+#: src/contents/ui/Limiter.qml:70
+msgid "Oversampling"
+msgstr "超采样"
+
+#: src/contents/ui/Limiter.qml:74 src/contents/ui/Limiter.qml:93
+msgid "None"
+msgstr "无"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x2/24 bit"
+msgstr "部分 2倍 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x3/24 bit"
+msgstr "部分 3倍 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x4/24 bit"
+msgstr "部分 4倍 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x6/24 bit"
+msgstr "部分 6倍 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x8/24 bit"
+msgstr "部分 8倍 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x2/24 bit"
+msgstr "全部 2倍 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x3/24 bit"
+msgstr "全部 3倍 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x4/24 bit"
+msgstr "全部 4倍 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x6/24 bit"
+msgstr "全部 6倍 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x8/24 bit"
+msgstr "全部 8倍 (2L)"
+
+#: src/contents/ui/Limiter.qml:89
+#, fuzzy
+msgid "Dithering"
+msgstr "抖动"
+
+#: src/contents/ui/Limiter.qml:93
+msgid "7 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "8 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "11 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "12 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "15 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "23 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:113 src/tags_plugin_name.cpp:43
+msgid "Limiter"
+msgstr "限幅器"
+
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "阈值"
+
+#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "建立"
+
+#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "释放"
+
+#: src/contents/ui/Limiter.qml:184
+msgid "Stereo Link"
+msgstr "立体声连锁"
+
+#: src/contents/ui/Limiter.qml:210
+msgid "Sidechain"
+msgstr "侧链"
+
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "SC Type"
+msgstr "类型"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "Internal"
+msgstr "内部"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "External"
+msgstr "外部"
+
+#: src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "Link"
+msgstr "连接"
+
+#: src/contents/ui/Limiter.qml:239
+msgid "Source"
+msgstr "源"
+
+#: src/contents/ui/Limiter.qml:270
+#, fuzzy
+msgid "SC Preamp"
+msgstr "侧链前置放大"
+
+#: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
+#, fuzzy
+msgid "Automatic Level"
+msgstr "自动调平"
+
+#: src/contents/ui/Limiter.qml:349
+msgid "Knee"
+msgstr "拐点"
+
+#: src/contents/ui/Limiter.qml:393
+#, fuzzy
+msgid "Gain [dB]"
+msgstr "增益"
+
+#: src/contents/ui/Limiter.qml:401
+#, fuzzy
+msgid "Sidechain [dB]"
+msgstr "侧链模式"
+
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "左"
+
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "右"
+
+#: src/contents/ui/Limiter.qml:524
+#, fuzzy
+msgid "Gain Boost"
+msgstr "侧链增强"
 
 #: src/contents/ui/main.qml:17
 #, fuzzy
@@ -295,36 +585,36 @@ msgstr "空旷"
 msgid "No Audio Application Available"
 msgstr "没有可用的音频应用程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:198
+#: src/contents/ui/PageStreamsEffects.qml:215
 msgid "Add Effect"
 msgstr "添加音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:248
-#: src/contents/ui/PageStreamsEffects.qml:380
+#: src/contents/ui/PageStreamsEffects.qml:265
+#: src/contents/ui/PageStreamsEffects.qml:397
 msgid "Players"
 msgstr "播放器"
 
-#: src/contents/ui/PageStreamsEffects.qml:248
+#: src/contents/ui/PageStreamsEffects.qml:265
 msgid "Input Device"
 msgstr "输入设备"
 
-#: src/contents/ui/PageStreamsEffects.qml:266
+#: src/contents/ui/PageStreamsEffects.qml:283
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:291
+#: src/contents/ui/PageStreamsEffects.qml:308
 msgid "No Effects"
 msgstr "无音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:292
+#: src/contents/ui/PageStreamsEffects.qml:309
 msgid "Audio Stream Not Modified"
 msgstr "音频流未作修改"
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:407
 msgid "Effects"
 msgstr "音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:406
+#: src/contents/ui/PageStreamsEffects.qml:423
 msgid "Excluded Apps"
 msgstr "排除的应用"
 
@@ -563,31 +853,40 @@ msgstr "频谱类型"
 msgid "Experimental Features"
 msgstr "实验性功能"
 
-#: src/main.cpp:53
+#: src/main.cpp:59
 msgid "Audio effects for PipeWire applications"
 msgstr "为使用 PipeWire 的程序提供音效"
 
-#: src/main.cpp:54
+#: src/main.cpp:60
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "波封"
 
 #: src/plugin_base.cpp:230
+msgid "(Mic)"
+msgstr ""
+
+#: src/plugin_base.cpp:233
+#, fuzzy
+msgid "(Speakers)"
+msgstr "扬声器"
+
+#: src/plugin_base.cpp:240
 msgid "Output Level Meter"
 msgstr "输出电平表"
 
-#: src/plugin_base.cpp:232
+#: src/plugin_base.cpp:242
 msgid "Spectrum"
 msgstr "频谱"
 
@@ -682,10 +981,6 @@ msgstr "门限"
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
 msgstr "电平表"
-
-#: src/tags_plugin_name.cpp:43
-msgid "Limiter"
-msgstr "限幅器"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
@@ -865,13 +1160,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "2nd"
 #~ msgstr "2 次"
 
-#~ msgid "Floor Value"
-#~ msgstr "下限"
-
-#, fuzzy
-#~ msgid "Link"
-#~ msgstr "连接"
-
 #~ msgid "Application Name"
 #~ msgstr "应用程序名称"
 
@@ -883,9 +1171,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Show Excluded Applications"
 #~ msgstr "显示已排除的程序"
-
-#~ msgid "Mode"
-#~ msgstr "模式"
 
 #~ msgid "Downward"
 #~ msgstr "向下"
@@ -905,23 +1190,14 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Boost Amount"
 #~ msgstr "增强量"
 
-#~ msgid "Attack"
-#~ msgstr "建立"
-
 #~ msgid "Time"
 #~ msgstr "时间"
-
-#~ msgid "Threshold"
-#~ msgstr "阈值"
 
 #~ msgid "Attack Time"
 #~ msgstr "建立时间"
 
 #~ msgid "Attack Threshold"
 #~ msgstr "建立阈值"
-
-#~ msgid "Release"
-#~ msgstr "释放"
 
 #~ msgid "Release Time"
 #~ msgstr "释放时间"
@@ -932,9 +1208,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Ratio"
 #~ msgstr "比率"
 
-#~ msgid "Knee"
-#~ msgstr "拐点"
-
 #~ msgid "Makeup"
 #~ msgstr "补偿"
 
@@ -944,14 +1217,8 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Wet Level"
 #~ msgstr "湿声级别"
 
-#~ msgid "Sidechain"
-#~ msgstr "侧链"
-
 #~ msgid "Stereo Split Mode"
 #~ msgstr "分离立体声模式"
-
-#~ msgid "Source"
-#~ msgstr "源"
 
 #~ msgid "Middle"
 #~ msgstr "中央"
@@ -1001,23 +1268,14 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Simple Moving Average"
 #~ msgstr "简单移动平均法"
 
-#~ msgid "Sidechain Mode"
-#~ msgstr "侧链模式"
-
 #~ msgid "Listen Sidechain"
 #~ msgstr "播放侧链"
-
-#~ msgid "Type"
-#~ msgstr "类型"
 
 #~ msgid "Feed-forward"
 #~ msgstr "前馈式"
 
 #~ msgid "Feed-back"
 #~ msgstr "反馈式"
-
-#~ msgid "External"
-#~ msgstr "外部"
 
 #~ msgid "Sidechain Type"
 #~ msgstr "侧链类型"
@@ -1064,17 +1322,11 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "低通滤波模式"
 
-#~ msgid "Gain"
-#~ msgstr "增益"
-
 #~ msgid "Curve"
 #~ msgstr "压缩曲线"
 
 #~ msgid "Left Channel"
 #~ msgstr "左声道"
-
-#~ msgid "R"
-#~ msgstr "右"
 
 #~ msgid "Right Channel"
 #~ msgstr "右声道"
@@ -1265,15 +1517,9 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Width"
 #~ msgstr "宽度"
 
-#~ msgid "Ceil"
-#~ msgstr "上限"
-
 #, fuzzy
 #~ msgid "Expander Mode"
 #~ msgstr "频段模式"
-
-#~ msgid "Internal"
-#~ msgstr "内部"
 
 #~ msgid "API"
 #~ msgstr "API"
@@ -1329,113 +1575,35 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "True Peak"
 #~ msgstr "实际峰值"
 
-#~ msgid "Oversampling"
-#~ msgstr "超采样"
-
-#~ msgid "Dither"
-#~ msgstr "抖动"
-
-#~ msgid "Herm Thin"
-#~ msgstr "窄式埃尔米特插值"
-
-#~ msgid "Herm Wide"
-#~ msgstr "宽式埃尔米特插值"
-
-#~ msgid "Herm Tail"
-#~ msgstr "尾式埃尔米特插值"
-
-#~ msgid "Herm Duck"
-#~ msgstr "蹲式埃尔米特插值"
-
-#~ msgid "Exp Thin"
-#~ msgstr "窄式指数插值"
-
-#~ msgid "Exp Wide"
-#~ msgstr "宽式指数插值"
-
-#~ msgid "Exp Tail"
-#~ msgstr "尾式指数插值"
-
-#~ msgid "Exp Duck"
-#~ msgstr "蹲式指数插值"
-
-#~ msgid "Line Thin"
-#~ msgstr "窄式线性插值"
-
-#~ msgid "Line Wide"
-#~ msgstr "宽式线性插值"
-
-#~ msgid "Line Tail"
-#~ msgstr "尾式线性插值"
-
-#~ msgid "Line Duck"
-#~ msgstr "蹲式线性插值"
-
-#~ msgid "None"
-#~ msgstr "无"
-
-#~ msgid "Half x2(2L)"
-#~ msgstr "部分 2倍 (2L)"
-
 #~ msgid "Half x2(3L)"
 #~ msgstr "部分 2倍 (3L)"
-
-#~ msgid "Half x3(2L)"
-#~ msgstr "部分 3倍 (2L)"
 
 #~ msgid "Half x3(3L)"
 #~ msgstr "部分 3倍 (3L)"
 
-#~ msgid "Half x4(2L)"
-#~ msgstr "部分 4倍 (2L)"
-
 #~ msgid "Half x4(3L)"
 #~ msgstr "部分 4倍 (3L)"
-
-#~ msgid "Half x6(2L)"
-#~ msgstr "部分 6倍 (2L)"
 
 #~ msgid "Half x6(3L)"
 #~ msgstr "部分 6倍 (3L)"
 
-#~ msgid "Half x8(2L)"
-#~ msgstr "部分 8倍 (2L)"
-
 #~ msgid "Half x8(3L)"
 #~ msgstr "部分 8倍 (3L)"
-
-#~ msgid "Full x2(2L)"
-#~ msgstr "全部 2倍 (2L)"
 
 #~ msgid "Full x2(3L)"
 #~ msgstr "全部 2倍 (3L)"
 
-#~ msgid "Full x3(2L)"
-#~ msgstr "全部 3倍 (2L)"
-
 #~ msgid "Full x3(3L)"
 #~ msgstr "全部 3倍 (3L)"
-
-#~ msgid "Full x4(2L)"
-#~ msgstr "全部 4倍 (2L)"
 
 #~ msgid "Full x4(3L)"
 #~ msgstr "全部 4倍 (3L)"
 
-#~ msgid "Full x6(2L)"
-#~ msgstr "全部 6倍 (2L)"
-
 #~ msgid "Full x6(3L)"
 #~ msgstr "全部 6倍 (3L)"
 
-#~ msgid "Full x8(2L)"
-#~ msgstr "全部 8倍 (2L)"
-
 #~ msgid "Full x8(3L)"
 #~ msgstr "全部 8倍 (3L)"
-
-#~ msgid "SC PreAmp"
-#~ msgstr "侧链前置放大"
 
 #~ msgid "Sidechain PreAmplification"
 #~ msgstr "侧链前置放大"
@@ -1443,17 +1611,11 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Boost"
 #~ msgstr "增强"
 
-#~ msgid "Stereo Link"
-#~ msgstr "立体声连锁"
-
 #~ msgid "External Sidechain"
 #~ msgstr "外部侧链"
 
 #~ msgid "External Sidechain Source"
 #~ msgstr "外部侧链声源"
-
-#~ msgid "Auto Leveling"
-#~ msgstr "自动调平"
 
 #~ msgid "Auto Leveling Attack"
 #~ msgstr "自动调平建立"
@@ -1490,9 +1652,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Clipping"
 #~ msgstr "削波"
-
-#~ msgid "Sidechain Boost"
-#~ msgstr "侧链增强"
 
 #~ msgid "Pink BT"
 #~ msgstr "粉噪 双线性变换"
@@ -2614,17 +2773,11 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Process All Inputs"
 #~ msgstr "处理所有输入"
 
-#~ msgid "Activate"
-#~ msgstr "激活"
-
 #~ msgid "Add to Blocklist"
 #~ msgstr "加入黑名单"
 
 #~ msgid "Blocklist"
 #~ msgstr "黑名单"
-
-#~ msgid "Speakers"
-#~ msgstr "扬声器"
 
 #~ msgid "Microphone"
 #~ msgstr "麦克风"

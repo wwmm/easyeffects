@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-01 00:27-0300\n"
+"POT-Creation-Date: 2024-11-08 20:08-0300\n"
 "PO-Revision-Date: 2022-09-29 07:18+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -44,143 +44,153 @@ msgstr ""
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Učitaj predložak. Primjer: easyeffects -l music"
 
-#: src/contents/ui/Autogain.qml:54 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Exciter.qml:90
 #, fuzzy
 msgid "Controls"
 msgstr "Kontrola pojačanja"
 
-#: src/contents/ui/Autogain.qml:62
+#: src/contents/ui/Autogain.qml:59
 msgid "Reference"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:141
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:158
 msgid "Momentary"
 msgstr "Trenutačno"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:152
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:175
 #, fuzzy
 msgid "Short-Term"
 msgstr "Kratkoročno"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:163
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:192
 msgid "Integrated"
 msgstr "Integrirano"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MSI)"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MS)"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MI)"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (SI)"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:75
+#: src/contents/ui/Autogain.qml:78
 msgid "Target"
 msgstr "Meta"
 
-#: src/contents/ui/Autogain.qml:90
+#: src/contents/ui/Autogain.qml:99
 #, fuzzy
 msgid "Silence"
 msgstr "Tišina"
 
-#: src/contents/ui/Autogain.qml:105
+#: src/contents/ui/Autogain.qml:120
 #, fuzzy
 msgid "Maximum History"
 msgstr "Najveće pojačanje"
 
-#: src/contents/ui/Autogain.qml:127 src/contents/ui/Autogain.qml:196
+#: src/contents/ui/Autogain.qml:148 src/contents/ui/Autogain.qml:243
 #: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "Glasnoća"
 
-#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:153
-#: src/contents/ui/Autogain.qml:164 src/contents/ui/Autogain.qml:175
-#: src/contents/ui/Autogain.qml:197
+#: src/contents/ui/Autogain.qml:159 src/contents/ui/Autogain.qml:176
+#: src/contents/ui/Autogain.qml:193 src/contents/ui/Autogain.qml:210
+#: src/contents/ui/Autogain.qml:244
 msgid "LUFS"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:174
+#: src/contents/ui/Autogain.qml:209
 msgid "Relative"
 msgstr "Relativno"
 
-#: src/contents/ui/Autogain.qml:185
+#: src/contents/ui/Autogain.qml:226
 msgid "Range"
 msgstr "Raspon"
 
-#: src/contents/ui/Autogain.qml:186
+#: src/contents/ui/Autogain.qml:227
 #, fuzzy
 msgid "LU"
 msgstr "L"
 
-#: src/contents/ui/Autogain.qml:207
+#: src/contents/ui/Autogain.qml:260
 #, fuzzy
 msgid "Output Gain"
 msgstr "Pojačanje ulaza"
 
-#: src/contents/ui/Autogain.qml:208
+#: src/contents/ui/Autogain.qml:261
 msgid "dB"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:180
+#: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
 msgid "Using"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:246
+#: src/contents/ui/Autogain.qml:305
 #, fuzzy
 msgid "Reset History"
 msgstr "Vrati izvornu kvalitetu"
 
-#: src/contents/ui/Autogain.qml:253
+#: src/contents/ui/Autogain.qml:312
 #, fuzzy
 msgid "Reset Settings"
 msgstr "Postavke"
 
-#: src/contents/ui/BassEnhancer.qml:39
+#: src/contents/ui/BassEnhancer.qml:39 src/contents/ui/Exciter.qml:39
 msgid "Blend Harmonics"
 msgstr "Spajanje harmonijskog reda"
 
-#: src/contents/ui/BassEnhancer.qml:48
+#: src/contents/ui/BassEnhancer.qml:48 src/contents/ui/Exciter.qml:48
 msgid "3rd"
 msgstr "3."
 
-#: src/contents/ui/BassEnhancer.qml:71
+#: src/contents/ui/BassEnhancer.qml:71 src/contents/ui/Exciter.qml:71
 #, fuzzy
 msgid "2rd"
 msgstr "3."
 
-#: src/contents/ui/BassEnhancer.qml:98
+#: src/contents/ui/BassEnhancer.qml:98 src/contents/ui/Exciter.qml:98
 msgid "Amount"
 msgstr "Jačina"
 
-#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:157
+#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:170
+#: src/contents/ui/Exciter.qml:113 src/contents/ui/Exciter.qml:170
 msgid "Harmonics"
 msgstr "Harmonijski red"
 
-#: src/contents/ui/BassEnhancer.qml:127
+#: src/contents/ui/BassEnhancer.qml:127 src/contents/ui/Exciter.qml:127
 msgid "Scope"
 msgstr "Raspon"
 
 #: src/contents/ui/BassEnhancer.qml:142
+#, fuzzy
+msgid "Floor Active"
+msgstr "Dno"
+
+#: src/contents/ui/BassEnhancer.qml:154
 msgid "Floor"
 msgstr "Dno"
 
-#: src/contents/ui/BassEnhancer.qml:195
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/Limiter.qml:511
 msgid "Show Native Window"
 msgstr ""
 
-#: src/contents/ui/BassEnhancer.qml:208
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
 msgid "Listen"
 msgstr "Poslušaj"
 
-#: src/contents/ui/BassEnhancer.qml:219
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "Vrati na tvorničke postavke"
 
@@ -228,7 +238,7 @@ msgstr "Kanali"
 msgid "Enable"
 msgstr "Omogući"
 
-#: src/contents/ui/DelegateStreamsList.qml:66
+#: src/contents/ui/DelegateStreamsList.qml:76
 msgid "Exclude"
 msgstr ""
 
@@ -239,6 +249,288 @@ msgstr "Ulaz"
 #: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
 msgid "Output"
 msgstr "Izlaz"
+
+#: src/contents/ui/Exciter.qml:142
+#, fuzzy
+msgid "Ceil Active"
+msgstr "Kompresija"
+
+#: src/contents/ui/Exciter.qml:154
+#, fuzzy
+msgid "Ceil"
+msgstr "Vrh"
+
+#: src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "Način"
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Herm Thin"
+msgstr "Široko"
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Herm Wide"
+msgstr "Široko"
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Herm Tail"
+msgstr "Široko"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Exp Thin"
+msgstr "Široko"
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Exp Wide"
+msgstr "Široko"
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Exp Tail"
+msgstr "Široko"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Line Thin"
+msgstr "Širina"
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Line Wide"
+msgstr "Širina"
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Line Tail"
+msgstr "Širina"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:70
+msgid "Oversampling"
+msgstr "Jači sampling"
+
+#: src/contents/ui/Limiter.qml:74 src/contents/ui/Limiter.qml:93
+msgid "None"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:89
+msgid "Dithering"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "7 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "8 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "11 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "12 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "15 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "23 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:113 src/tags_plugin_name.cpp:43
+msgid "Limiter"
+msgstr "Graničnik"
+
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "Prag"
+
+#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "Pokretanje"
+
+#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "Vrijeme prijelaza"
+
+#: src/contents/ui/Limiter.qml:184
+msgid "Stereo Link"
+msgstr "Stereo veza"
+
+#: src/contents/ui/Limiter.qml:210
+#, fuzzy
+msgid "Sidechain"
+msgstr "Postranični ulaz"
+
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "SC Type"
+msgstr "Premosnica"
+
+#: src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "Internal"
+msgstr "Integrirano"
+
+#: src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "External"
+msgstr "Postranični ulaz"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:239
+#, fuzzy
+msgid "Source"
+msgstr "Izvor"
+
+#: src/contents/ui/Limiter.qml:270
+msgid "SC Preamp"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
+#, fuzzy
+msgid "Automatic Level"
+msgstr "Automatsko pojačavanje"
+
+#: src/contents/ui/Limiter.qml:349
+#, fuzzy
+msgid "Knee"
+msgstr "Koljeno"
+
+#: src/contents/ui/Limiter.qml:393
+#, fuzzy
+msgid "Gain [dB]"
+msgstr "Pojačanje"
+
+#: src/contents/ui/Limiter.qml:401
+#, fuzzy
+msgid "Sidechain [dB]"
+msgstr "Postranični ulaz"
+
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "L"
+
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "D"
+
+#: src/contents/ui/Limiter.qml:524
+#, fuzzy
+msgid "Gain Boost"
+msgstr "Postranični ulaz"
 
 #: src/contents/ui/main.qml:17
 #, fuzzy
@@ -302,40 +594,40 @@ msgstr "Prazna soba"
 msgid "No Audio Application Available"
 msgstr "Aplikacije"
 
-#: src/contents/ui/PageStreamsEffects.qml:198
+#: src/contents/ui/PageStreamsEffects.qml:215
 #, fuzzy
 msgid "Add Effect"
 msgstr "Ulazni efekti"
 
-#: src/contents/ui/PageStreamsEffects.qml:248
-#: src/contents/ui/PageStreamsEffects.qml:380
+#: src/contents/ui/PageStreamsEffects.qml:265
+#: src/contents/ui/PageStreamsEffects.qml:397
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:248
+#: src/contents/ui/PageStreamsEffects.qml:265
 #, fuzzy
 msgid "Input Device"
 msgstr "Ulazni uređaj"
 
-#: src/contents/ui/PageStreamsEffects.qml:266
+#: src/contents/ui/PageStreamsEffects.qml:283
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:291
+#: src/contents/ui/PageStreamsEffects.qml:308
 #, fuzzy
 msgid "No Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:292
+#: src/contents/ui/PageStreamsEffects.qml:309
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:407
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:406
+#: src/contents/ui/PageStreamsEffects.qml:423
 #, fuzzy
 msgid "Excluded Apps"
 msgstr "Aplikacije"
@@ -580,32 +872,40 @@ msgstr "Spektar"
 msgid "Experimental Features"
 msgstr "Eksperimentalna"
 
-#: src/main.cpp:53
+#: src/main.cpp:59
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Zvučni efekti za Pulseaudio aplikacije"
 
-#: src/main.cpp:54
+#: src/main.cpp:60
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr ""
 
 #: src/plugin_base.cpp:230
+msgid "(Mic)"
+msgstr ""
+
+#: src/plugin_base.cpp:233
+msgid "(Speakers)"
+msgstr ""
+
+#: src/plugin_base.cpp:240
 #, fuzzy
 msgid "Output Level Meter"
 msgstr "Pojačanje ulaza"
 
-#: src/plugin_base.cpp:232
+#: src/plugin_base.cpp:242
 msgid "Spectrum"
 msgstr "Spektar"
 
@@ -705,10 +1005,6 @@ msgstr "Vrata"
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
 msgstr ""
-
-#: src/tags_plugin_name.cpp:43
-msgid "Limiter"
-msgstr "Graničnik"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
@@ -892,10 +1188,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #~ msgstr "2."
 
 #, fuzzy
-#~ msgid "Floor Value"
-#~ msgstr "Dno"
-
-#, fuzzy
 #~ msgid "Application Name"
 #~ msgstr "Aplikacije"
 
@@ -906,9 +1198,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #, fuzzy
 #~ msgid "Show Excluded Applications"
 #~ msgstr "Aplikacije"
-
-#~ msgid "Mode"
-#~ msgstr "Način"
 
 #, fuzzy
 #~ msgid "Compression Mode"
@@ -922,15 +1211,9 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #~ msgid "Boost Amount"
 #~ msgstr "Jačina"
 
-#~ msgid "Attack"
-#~ msgstr "Pokretanje"
-
 #, fuzzy
 #~ msgid "Time"
 #~ msgstr "Vrijeme opadanja intenziteta signala"
-
-#~ msgid "Threshold"
-#~ msgstr "Prag"
 
 #, fuzzy
 #~ msgid "Attack Time"
@@ -939,9 +1222,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #, fuzzy
 #~ msgid "Attack Threshold"
 #~ msgstr "Prag"
-
-#~ msgid "Release"
-#~ msgstr "Vrijeme prijelaza"
 
 #, fuzzy
 #~ msgid "Release Time"
@@ -955,16 +1235,8 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #~ msgstr "Omjer"
 
 #, fuzzy
-#~ msgid "Knee"
-#~ msgstr "Koljeno"
-
-#, fuzzy
 #~ msgid "Makeup"
 #~ msgstr "Dorada"
-
-#, fuzzy
-#~ msgid "Sidechain"
-#~ msgstr "Postranični ulaz"
 
 #~ msgid "Peak"
 #~ msgstr "Vrhunac"
@@ -975,14 +1247,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #, fuzzy
 #~ msgid "Low-Pass"
 #~ msgstr "Nizak prolaz"
-
-#, fuzzy
-#~ msgid "Sidechain Mode"
-#~ msgstr "Postranični ulaz"
-
-#, fuzzy
-#~ msgid "Source"
-#~ msgstr "Izvor"
 
 #, fuzzy
 #~ msgid "Middle"
@@ -1052,15 +1316,9 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "Filter visokog prolaza"
 
-#~ msgid "Gain"
-#~ msgstr "Pojačanje"
-
 #, fuzzy
 #~ msgid "Left Channel"
 #~ msgstr "Kanali"
-
-#~ msgid "R"
-#~ msgstr "D"
 
 #, fuzzy
 #~ msgid "Right Channel"
@@ -1226,10 +1484,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #~ msgstr "Nizak prolaz"
 
 #, fuzzy
-#~ msgid "Band Type"
-#~ msgstr "Premosnica"
-
-#, fuzzy
 #~ msgid "Band Mode"
 #~ msgstr "Broj raspona"
 
@@ -1245,10 +1499,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 
 #~ msgid "Solo"
 #~ msgstr "Solo"
-
-#, fuzzy
-#~ msgid "Ceil"
-#~ msgstr "Vrh"
 
 #, fuzzy
 #~ msgid "Remove this model file"
@@ -1297,43 +1547,9 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #~ msgid "Release Zone Start"
 #~ msgstr "Vrijeme prijelaza"
 
-#~ msgid "Oversampling"
-#~ msgstr "Jači sampling"
-
-#, fuzzy
-#~ msgid "Herm Wide"
-#~ msgstr "Široko"
-
-#, fuzzy
-#~ msgid "Exp Wide"
-#~ msgstr "Široko"
-
-#, fuzzy
-#~ msgid "Line Thin"
-#~ msgstr "Širina"
-
-#, fuzzy
-#~ msgid "Line Wide"
-#~ msgstr "Širina"
-
-#, fuzzy
-#~ msgid "Line Tail"
-#~ msgstr "Širina"
-
 #, fuzzy
 #~ msgid "Sidechain PreAmplification"
 #~ msgstr "Aplikacije"
-
-#~ msgid "Stereo Link"
-#~ msgstr "Stereo veza"
-
-#, fuzzy
-#~ msgid "External Sidechain"
-#~ msgstr "Postranični ulaz"
-
-#, fuzzy
-#~ msgid "Auto Leveling"
-#~ msgstr "Automatsko pojačavanje"
 
 #, fuzzy
 #~ msgid "Auto Leveling Attack"
@@ -1381,10 +1597,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #, fuzzy
 #~ msgid "Modern"
 #~ msgstr "Način"
-
-#, fuzzy
-#~ msgid "Sidechain Boost"
-#~ msgstr "Postranični ulaz"
 
 #, fuzzy
 #~ msgid "Bands List"
@@ -2030,10 +2242,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 
 #~ msgid "Start Service at Login"
 #~ msgstr "Pokreni servis pri pokretanju računala"
-
-#, fuzzy
-#~ msgid "Activate"
-#~ msgstr "Kompresija"
 
 #, fuzzy
 #~ msgid "Add to Blocklist"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-01 00:27-0300\n"
+"POT-Creation-Date: 2024-11-08 20:08-0300\n"
 "PO-Revision-Date: 2023-06-03 20:51+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -40,138 +40,147 @@ msgstr ""
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:54 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Exciter.qml:90
 msgid "Controls"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:62
+#: src/contents/ui/Autogain.qml:59
 msgid "Reference"
 msgstr "Erreferentzia"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:141
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:158
 msgid "Momentary"
 msgstr "Behin-behinekoa"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:152
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:175
 msgid "Short-Term"
 msgstr "Epe laburrekoa"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:163
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:192
 msgid "Integrated"
 msgstr "Integratua"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MSI)"
 msgstr "Batezbesteko geometrikoa (MSI)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MS)"
 msgstr "Batezbesteko geometrikoa (MS)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MI)"
 msgstr "Batezbesteko geometrikoa (MI)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (SI)"
 msgstr "Batezbesteko geometrikoa (SI)"
 
-#: src/contents/ui/Autogain.qml:75
+#: src/contents/ui/Autogain.qml:78
 msgid "Target"
 msgstr "Helburua"
 
-#: src/contents/ui/Autogain.qml:90
+#: src/contents/ui/Autogain.qml:99
 msgid "Silence"
 msgstr "Isiltasuna"
 
-#: src/contents/ui/Autogain.qml:105
+#: src/contents/ui/Autogain.qml:120
 #, fuzzy
 msgid "Maximum History"
 msgstr "Gehieneko historia"
 
-#: src/contents/ui/Autogain.qml:127 src/contents/ui/Autogain.qml:196
+#: src/contents/ui/Autogain.qml:148 src/contents/ui/Autogain.qml:243
 #: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "Ozentasuna"
 
-#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:153
-#: src/contents/ui/Autogain.qml:164 src/contents/ui/Autogain.qml:175
-#: src/contents/ui/Autogain.qml:197
+#: src/contents/ui/Autogain.qml:159 src/contents/ui/Autogain.qml:176
+#: src/contents/ui/Autogain.qml:193 src/contents/ui/Autogain.qml:210
+#: src/contents/ui/Autogain.qml:244
 msgid "LUFS"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:174
+#: src/contents/ui/Autogain.qml:209
 msgid "Relative"
 msgstr "Erlatiboa"
 
-#: src/contents/ui/Autogain.qml:185
+#: src/contents/ui/Autogain.qml:226
 msgid "Range"
 msgstr "Barrutia"
 
-#: src/contents/ui/Autogain.qml:186
+#: src/contents/ui/Autogain.qml:227
 #, fuzzy
 msgid "LU"
 msgstr "L"
 
-#: src/contents/ui/Autogain.qml:207
+#: src/contents/ui/Autogain.qml:260
 msgid "Output Gain"
 msgstr "Irteerako irabazia"
 
-#: src/contents/ui/Autogain.qml:208
+#: src/contents/ui/Autogain.qml:261
 msgid "dB"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:180
+#: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
 msgid "Using"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:246
+#: src/contents/ui/Autogain.qml:305
 msgid "Reset History"
 msgstr "Berrezarri historia"
 
-#: src/contents/ui/Autogain.qml:253
+#: src/contents/ui/Autogain.qml:312
 #, fuzzy
 msgid "Reset Settings"
 msgstr "_Berrezarri ezarpenak"
 
-#: src/contents/ui/BassEnhancer.qml:39
+#: src/contents/ui/BassEnhancer.qml:39 src/contents/ui/Exciter.qml:39
 msgid "Blend Harmonics"
 msgstr "Nahastu harmonikoak"
 
-#: src/contents/ui/BassEnhancer.qml:48
+#: src/contents/ui/BassEnhancer.qml:48 src/contents/ui/Exciter.qml:48
 msgid "3rd"
 msgstr "3."
 
-#: src/contents/ui/BassEnhancer.qml:71
+#: src/contents/ui/BassEnhancer.qml:71 src/contents/ui/Exciter.qml:71
 #, fuzzy
 msgid "2rd"
 msgstr "3."
 
-#: src/contents/ui/BassEnhancer.qml:98
+#: src/contents/ui/BassEnhancer.qml:98 src/contents/ui/Exciter.qml:98
 msgid "Amount"
 msgstr "Kantitatea"
 
-#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:157
+#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:170
+#: src/contents/ui/Exciter.qml:113 src/contents/ui/Exciter.qml:170
 msgid "Harmonics"
 msgstr "Harmonikoak"
 
-#: src/contents/ui/BassEnhancer.qml:127
+#: src/contents/ui/BassEnhancer.qml:127 src/contents/ui/Exciter.qml:127
 msgid "Scope"
 msgstr "Esparrua"
 
 #: src/contents/ui/BassEnhancer.qml:142
+msgid "Floor Active"
+msgstr ""
+
+#: src/contents/ui/BassEnhancer.qml:154
 msgid "Floor"
 msgstr "Zorua"
 
-#: src/contents/ui/BassEnhancer.qml:195
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/Limiter.qml:511
 msgid "Show Native Window"
 msgstr ""
 
-#: src/contents/ui/BassEnhancer.qml:208
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
 msgid "Listen"
 msgstr "Entzun"
 
-#: src/contents/ui/BassEnhancer.qml:219
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "Berrezarri"
 
@@ -217,7 +226,7 @@ msgstr "Zatitu kanalak"
 msgid "Enable"
 msgstr "Gaitu"
 
-#: src/contents/ui/DelegateStreamsList.qml:66
+#: src/contents/ui/DelegateStreamsList.qml:76
 msgid "Exclude"
 msgstr "Baztertu"
 
@@ -228,6 +237,277 @@ msgstr "Sarrera"
 #: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
 msgid "Output"
 msgstr "Irteera"
+
+#: src/contents/ui/Exciter.qml:142
+#, fuzzy
+msgid "Ceil Active"
+msgstr "Erlatiboa"
+
+#: src/contents/ui/Exciter.qml:154
+msgid "Ceil"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "Modua"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Thin"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Herm Wide"
+msgstr "Zabala"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Tail"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Thin"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Exp Wide"
+msgstr "Zabala"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Tail"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Thin"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Line Wide"
+msgstr "Zabala"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Tail"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Duck"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:70
+msgid "Oversampling"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74 src/contents/ui/Limiter.qml:93
+msgid "None"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:89
+msgid "Dithering"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "7 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "8 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "11 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "12 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "15 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "23 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:113 src/tags_plugin_name.cpp:43
+msgid "Limiter"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "Atalasea"
+
+#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "Erasoa"
+
+#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "Askatzea"
+
+#: src/contents/ui/Limiter.qml:184
+#, fuzzy
+msgid "Stereo Link"
+msgstr "Estereo-zabalera"
+
+#: src/contents/ui/Limiter.qml:210
+msgid "Sidechain"
+msgstr "Alboko katea"
+
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "SC Type"
+msgstr "Mota"
+
+#: src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "Internal"
+msgstr "Kanpokoa"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "External"
+msgstr "Kanpokoa"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr "Esteka"
+
+#: src/contents/ui/Limiter.qml:239
+msgid "Source"
+msgstr "Iturburua"
+
+#: src/contents/ui/Limiter.qml:270
+msgid "SC Preamp"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
+#, fuzzy
+msgid "Automatic Level"
+msgstr "Sarrerako gailua"
+
+#: src/contents/ui/Limiter.qml:349
+msgid "Knee"
+msgstr "Trantsizioa"
+
+#: src/contents/ui/Limiter.qml:393
+#, fuzzy
+msgid "Gain [dB]"
+msgstr "Irabazia"
+
+#: src/contents/ui/Limiter.qml:401
+#, fuzzy
+msgid "Sidechain [dB]"
+msgstr "Alboko katearen modua"
+
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "L"
+
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "R"
+
+#: src/contents/ui/Limiter.qml:524
+msgid "Gain Boost"
+msgstr ""
 
 #: src/contents/ui/main.qml:17
 #, fuzzy
@@ -291,38 +571,38 @@ msgstr "Zerrenda hutsa"
 msgid "No Audio Application Available"
 msgstr "Ez dago audio-aplikaziorik erabilgarri"
 
-#: src/contents/ui/PageStreamsEffects.qml:198
+#: src/contents/ui/PageStreamsEffects.qml:215
 msgid "Add Effect"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:248
-#: src/contents/ui/PageStreamsEffects.qml:380
+#: src/contents/ui/PageStreamsEffects.qml:265
+#: src/contents/ui/PageStreamsEffects.qml:397
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:248
+#: src/contents/ui/PageStreamsEffects.qml:265
 msgid "Input Device"
 msgstr "Sarrerako gailua"
 
-#: src/contents/ui/PageStreamsEffects.qml:266
+#: src/contents/ui/PageStreamsEffects.qml:283
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:291
+#: src/contents/ui/PageStreamsEffects.qml:308
 #, fuzzy
 msgid "No Effects"
 msgstr "Easy Effects aplikazioari _buruz"
 
-#: src/contents/ui/PageStreamsEffects.qml:292
+#: src/contents/ui/PageStreamsEffects.qml:309
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:407
 #, fuzzy
 msgid "Effects"
 msgstr "Easy Effects aplikazioari _buruz"
 
-#: src/contents/ui/PageStreamsEffects.qml:406
+#: src/contents/ui/PageStreamsEffects.qml:423
 msgid "Excluded Apps"
 msgstr "Baztertutako aplikazioak"
 
@@ -555,32 +835,40 @@ msgstr "Espektroa"
 msgid "Experimental Features"
 msgstr ""
 
-#: src/main.cpp:53
+#: src/main.cpp:59
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Audio-efektuak PipeWire aplikazioetarako"
 
-#: src/main.cpp:54
+#: src/main.cpp:60
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Inguratzailea"
 
 #: src/plugin_base.cpp:230
+msgid "(Mic)"
+msgstr ""
+
+#: src/plugin_base.cpp:233
+msgid "(Speakers)"
+msgstr ""
+
+#: src/plugin_base.cpp:240
 #, fuzzy
 msgid "Output Level Meter"
 msgstr "Sarrerako gailua"
 
-#: src/plugin_base.cpp:232
+#: src/plugin_base.cpp:242
 #, fuzzy
 msgid "Spectrum"
 msgstr "Espektroa"
@@ -680,10 +968,6 @@ msgstr "Atea"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
-msgstr ""
-
-#: src/tags_plugin_name.cpp:43
-msgid "Limiter"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:45
@@ -825,9 +1109,6 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 #~ msgid "2nd"
 #~ msgstr "2."
 
-#~ msgid "Link"
-#~ msgstr "Esteka"
-
 #~ msgid "Application Name"
 #~ msgstr "Aplikazioaren izena"
 
@@ -839,9 +1120,6 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 
 #~ msgid "Show Excluded Applications"
 #~ msgstr "Erakutsi baztertutako aplikazioak"
-
-#~ msgid "Mode"
-#~ msgstr "Modua"
 
 #~ msgid "Downward"
 #~ msgstr "Beherantz"
@@ -861,23 +1139,14 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 #~ msgid "Boost Amount"
 #~ msgstr "Indartze kantitatea"
 
-#~ msgid "Attack"
-#~ msgstr "Erasoa"
-
 #~ msgid "Time"
 #~ msgstr "Denbora"
-
-#~ msgid "Threshold"
-#~ msgstr "Atalasea"
 
 #~ msgid "Attack Time"
 #~ msgstr "Eraso-denbora"
 
 #~ msgid "Attack Threshold"
 #~ msgstr "Eraso-atalasea"
-
-#~ msgid "Release"
-#~ msgstr "Askatzea"
 
 #~ msgid "Release Time"
 #~ msgstr "Askatze-denbora"
@@ -888,9 +1157,6 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 #~ msgid "Ratio"
 #~ msgstr "Ratioa"
 
-#~ msgid "Knee"
-#~ msgstr "Trantsizioa"
-
 #~ msgid "Makeup"
 #~ msgstr "Goratzea"
 
@@ -900,15 +1166,9 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 #~ msgid "Wet Level"
 #~ msgstr "Hezetasun-maila"
 
-#~ msgid "Sidechain"
-#~ msgstr "Alboko katea"
-
 #, fuzzy
 #~ msgid "Stereo Split Mode"
 #~ msgstr "Estereo-zabalera"
-
-#~ msgid "Source"
-#~ msgstr "Iturburua"
 
 #~ msgid "Middle"
 #~ msgstr "Erdia"
@@ -950,24 +1210,15 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 #~ msgid "RMS"
 #~ msgstr "RMSa"
 
-#~ msgid "Sidechain Mode"
-#~ msgstr "Alboko katearen modua"
-
 #, fuzzy
 #~ msgid "Listen Sidechain"
 #~ msgstr "Alboko katea"
-
-#~ msgid "Type"
-#~ msgstr "Mota"
 
 #~ msgid "Feed-forward"
 #~ msgstr "Aurrelikatzea"
 
 #~ msgid "Feed-back"
 #~ msgstr "Atzeraelikatzea"
-
-#~ msgid "External"
-#~ msgstr "Kanpokoa"
 
 #~ msgid "Sidechain Type"
 #~ msgstr "Alboko katearen mota"
@@ -1014,17 +1265,11 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "Pasaera baxuko iragazki-modua"
 
-#~ msgid "Gain"
-#~ msgstr "Irabazia"
-
 #~ msgid "Curve"
 #~ msgstr "Kurba"
 
 #~ msgid "Left Channel"
 #~ msgstr "Ezkerreko kanala"
-
-#~ msgid "R"
-#~ msgstr "R"
 
 #~ msgid "Right Channel"
 #~ msgstr "Eskuineko kanala"
@@ -1034,9 +1279,6 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 
 #~ msgid "Combine"
 #~ msgstr "Konbinatu"
-
-#~ msgid "Stereo Width"
-#~ msgstr "Estereo-zabalera"
 
 #~ msgid "Log Scale"
 #~ msgstr "Eskala logaritmikoa"
@@ -1092,9 +1334,6 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 
 #~ msgid "Detection"
 #~ msgstr "Detekzioa"
-
-#~ msgid "Wide"
-#~ msgstr "Zabala"
 
 #~ msgid "Split"
 #~ msgstr "Zatitzea"

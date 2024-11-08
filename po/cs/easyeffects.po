@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-01 00:27-0300\n"
+"POT-Creation-Date: 2024-11-08 20:08-0300\n"
 "PO-Revision-Date: 2024-06-22 08:09+0000\n"
 "Last-Translator: Jakub Pavlů <jakubpavlu4@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -39,141 +39,151 @@ msgstr "Globální propuštění. 1 pro zapnutí, 2 pro vypnutí, 3 pro získán
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Nahrát přednastavení. Příklad: easyeffects -l music"
 
-#: src/contents/ui/Autogain.qml:54 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
+#: src/contents/ui/Exciter.qml:90
 #, fuzzy
 msgid "Controls"
 msgstr "Ovladač zesílení"
 
-#: src/contents/ui/Autogain.qml:62
+#: src/contents/ui/Autogain.qml:59
 msgid "Reference"
 msgstr "Reference"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:141
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:158
 msgid "Momentary"
 msgstr "Chvilkové"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:152
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:175
 msgid "Short-Term"
 msgstr "Kratokodobě"
 
-#: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:163
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:192
 msgid "Integrated"
 msgstr "Integrovaná"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MSI)"
 msgstr "Geometrický průměr (MSI)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MS)"
 msgstr "Geometrický průměr (MS)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MI)"
 msgstr "Geometrický průměr (MI)"
 
-#: src/contents/ui/Autogain.qml:66
+#: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (SI)"
 msgstr "Geometrický průměr (SI)"
 
-#: src/contents/ui/Autogain.qml:75
+#: src/contents/ui/Autogain.qml:78
 msgid "Target"
 msgstr "Cíl"
 
-#: src/contents/ui/Autogain.qml:90
+#: src/contents/ui/Autogain.qml:99
 msgid "Silence"
 msgstr "Ticho"
 
-#: src/contents/ui/Autogain.qml:105
+#: src/contents/ui/Autogain.qml:120
 #, fuzzy
 msgid "Maximum History"
 msgstr "Maximální historie"
 
-#: src/contents/ui/Autogain.qml:127 src/contents/ui/Autogain.qml:196
+#: src/contents/ui/Autogain.qml:148 src/contents/ui/Autogain.qml:243
 #: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "Hlasitost"
 
-#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:153
-#: src/contents/ui/Autogain.qml:164 src/contents/ui/Autogain.qml:175
-#: src/contents/ui/Autogain.qml:197
+#: src/contents/ui/Autogain.qml:159 src/contents/ui/Autogain.qml:176
+#: src/contents/ui/Autogain.qml:193 src/contents/ui/Autogain.qml:210
+#: src/contents/ui/Autogain.qml:244
 msgid "LUFS"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:174
+#: src/contents/ui/Autogain.qml:209
 msgid "Relative"
 msgstr "Relativní"
 
-#: src/contents/ui/Autogain.qml:185
+#: src/contents/ui/Autogain.qml:226
 msgid "Range"
 msgstr "Rozsah"
 
-#: src/contents/ui/Autogain.qml:186
+#: src/contents/ui/Autogain.qml:227
 #, fuzzy
 msgid "LU"
 msgstr "L"
 
-#: src/contents/ui/Autogain.qml:207
+#: src/contents/ui/Autogain.qml:260
 msgid "Output Gain"
 msgstr "Výstupní zesílení"
 
-#: src/contents/ui/Autogain.qml:208
+#: src/contents/ui/Autogain.qml:261
 msgid "dB"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:231 src/contents/ui/BassEnhancer.qml:180
+#: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
 #, fuzzy
 msgid "Using"
 msgstr "Použití"
 
-#: src/contents/ui/Autogain.qml:246
+#: src/contents/ui/Autogain.qml:305
 msgid "Reset History"
 msgstr "Vymazat Historii"
 
-#: src/contents/ui/Autogain.qml:253
+#: src/contents/ui/Autogain.qml:312
 #, fuzzy
 msgid "Reset Settings"
 msgstr "_Resetovat nastavení"
 
-#: src/contents/ui/BassEnhancer.qml:39
+#: src/contents/ui/BassEnhancer.qml:39 src/contents/ui/Exciter.qml:39
 msgid "Blend Harmonics"
 msgstr "Míchat harmonické kmity"
 
-#: src/contents/ui/BassEnhancer.qml:48
+#: src/contents/ui/BassEnhancer.qml:48 src/contents/ui/Exciter.qml:48
 msgid "3rd"
 msgstr "3."
 
-#: src/contents/ui/BassEnhancer.qml:71
+#: src/contents/ui/BassEnhancer.qml:71 src/contents/ui/Exciter.qml:71
 #, fuzzy
 msgid "2rd"
 msgstr "3."
 
-#: src/contents/ui/BassEnhancer.qml:98
+#: src/contents/ui/BassEnhancer.qml:98 src/contents/ui/Exciter.qml:98
 msgid "Amount"
 msgstr "Množství"
 
-#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:157
+#: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:170
+#: src/contents/ui/Exciter.qml:113 src/contents/ui/Exciter.qml:170
 msgid "Harmonics"
 msgstr "Harmonické kmity"
 
-#: src/contents/ui/BassEnhancer.qml:127
+#: src/contents/ui/BassEnhancer.qml:127 src/contents/ui/Exciter.qml:127
 msgid "Scope"
 msgstr "Rozsah"
 
 #: src/contents/ui/BassEnhancer.qml:142
+#, fuzzy
+msgid "Floor Active"
+msgstr "Spodní hodnota"
+
+#: src/contents/ui/BassEnhancer.qml:154
 msgid "Floor"
 msgstr "Spodní mez"
 
-#: src/contents/ui/BassEnhancer.qml:195
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/Limiter.qml:511
 #, fuzzy
 msgid "Show Native Window"
 msgstr "Zobrazit nativní okno"
 
-#: src/contents/ui/BassEnhancer.qml:208
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
 msgid "Listen"
 msgstr "Poslouchat"
 
-#: src/contents/ui/BassEnhancer.qml:219
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "Vrátit na výchozí"
 
@@ -219,7 +229,7 @@ msgstr "Kanály"
 msgid "Enable"
 msgstr "Povolit"
 
-#: src/contents/ui/DelegateStreamsList.qml:66
+#: src/contents/ui/DelegateStreamsList.qml:76
 msgid "Exclude"
 msgstr "Vyloučit"
 
@@ -230,6 +240,288 @@ msgstr "Vstup"
 #: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
 msgid "Output"
 msgstr "Výstup"
+
+#: src/contents/ui/Exciter.qml:142
+#, fuzzy
+msgid "Ceil Active"
+msgstr "Agresivní režim"
+
+#: src/contents/ui/Exciter.qml:154
+msgid "Ceil"
+msgstr "Strop"
+
+#: src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "Režim"
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Herm Thin"
+msgstr "Herm tenký"
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Herm Wide"
+msgstr "Herm široký"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Tail"
+msgstr "Herm Tail"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Herm Duck"
+msgstr "Herm Duck"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Thin"
+msgstr "Exp Thin"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Wide"
+msgstr "Exp Wide"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Tail"
+msgstr "Exp Tail"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Exp Duck"
+msgstr "Exp Duck"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Thin"
+msgstr "čára tenká"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Wide"
+msgstr "čára široká"
+
+#: src/contents/ui/Limiter.qml:55
+#, fuzzy
+msgid "Line Tail"
+msgstr "Šířka čáry"
+
+#: src/contents/ui/Limiter.qml:55
+msgid "Line Duck"
+msgstr "Line Duck"
+
+#: src/contents/ui/Limiter.qml:70
+msgid "Oversampling"
+msgstr "Převzorkování"
+
+#: src/contents/ui/Limiter.qml:74 src/contents/ui/Limiter.qml:93
+msgid "None"
+msgstr "Žádný"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x2/24 bit"
+msgstr "Polovina x2(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x3/24 bit"
+msgstr "Polovina x3(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x4/24 bit"
+msgstr "Polovina x4(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x6/24 bit"
+msgstr "Polovina x6(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x8/24 bit"
+msgstr "Polovina x8(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x2/24 bit"
+msgstr "Kompletní x2(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x3/24 bit"
+msgstr "Kompletní x3(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x4/24 bit"
+msgstr "Kompletní x4(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x6/24 bit"
+msgstr "Kompletní x6(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x8/24 bit"
+msgstr "Kompletní x8(2L)"
+
+#: src/contents/ui/Limiter.qml:89
+#, fuzzy
+msgid "Dithering"
+msgstr "Dither"
+
+#: src/contents/ui/Limiter.qml:93
+msgid "7 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "8 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "11 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "12 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "15 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "23 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:93
+msgid "24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:113 src/tags_plugin_name.cpp:43
+msgid "Limiter"
+msgstr "Omezovač"
+
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "Práh"
+
+#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "Náběh"
+
+#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "Uvolnění"
+
+#: src/contents/ui/Limiter.qml:184
+msgid "Stereo Link"
+msgstr "Spojení sterea"
+
+#: src/contents/ui/Limiter.qml:210
+msgid "Sidechain"
+msgstr "Postranní řetězec"
+
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "SC Type"
+msgstr "Typ"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "Internal"
+msgstr "Vnitřní"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "External"
+msgstr "Externí"
+
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr "Odkaz"
+
+#: src/contents/ui/Limiter.qml:239
+msgid "Source"
+msgstr "Zdroj"
+
+#: src/contents/ui/Limiter.qml:270
+#, fuzzy
+msgid "SC Preamp"
+msgstr "SC Předzesilovač"
+
+#: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
+#, fuzzy
+msgid "Automatic Level"
+msgstr "Automatické vyrovnávání"
+
+#: src/contents/ui/Limiter.qml:349
+msgid "Knee"
+msgstr "Přechod"
+
+#: src/contents/ui/Limiter.qml:393
+#, fuzzy
+msgid "Gain [dB]"
+msgstr "Zesílení"
+
+#: src/contents/ui/Limiter.qml:401
+#, fuzzy
+msgid "Sidechain [dB]"
+msgstr "Režim sidechain"
+
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "L"
+
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "P"
+
+#: src/contents/ui/Limiter.qml:524
+#, fuzzy
+msgid "Gain Boost"
+msgstr "Postranní řetězec"
 
 #: src/contents/ui/main.qml:17
 #, fuzzy
@@ -296,36 +588,36 @@ msgstr "Prázdné zdi"
 msgid "No Audio Application Available"
 msgstr "Není dostupná žádná zvuková aplikace"
 
-#: src/contents/ui/PageStreamsEffects.qml:198
+#: src/contents/ui/PageStreamsEffects.qml:215
 msgid "Add Effect"
 msgstr "Přidat efekt"
 
-#: src/contents/ui/PageStreamsEffects.qml:248
-#: src/contents/ui/PageStreamsEffects.qml:380
+#: src/contents/ui/PageStreamsEffects.qml:265
+#: src/contents/ui/PageStreamsEffects.qml:397
 msgid "Players"
 msgstr "Přehrávače"
 
-#: src/contents/ui/PageStreamsEffects.qml:248
+#: src/contents/ui/PageStreamsEffects.qml:265
 msgid "Input Device"
 msgstr "Vstupní zařízení"
 
-#: src/contents/ui/PageStreamsEffects.qml:266
+#: src/contents/ui/PageStreamsEffects.qml:283
 msgid "Recorders"
 msgstr "Záznamníky"
 
-#: src/contents/ui/PageStreamsEffects.qml:291
+#: src/contents/ui/PageStreamsEffects.qml:308
 msgid "No Effects"
 msgstr "Žádné efekty"
 
-#: src/contents/ui/PageStreamsEffects.qml:292
+#: src/contents/ui/PageStreamsEffects.qml:309
 msgid "Audio Stream Not Modified"
 msgstr "Audio Stream není modifikovaný"
 
-#: src/contents/ui/PageStreamsEffects.qml:390
+#: src/contents/ui/PageStreamsEffects.qml:407
 msgid "Effects"
 msgstr "Efekty"
 
-#: src/contents/ui/PageStreamsEffects.qml:406
+#: src/contents/ui/PageStreamsEffects.qml:423
 msgid "Excluded Apps"
 msgstr "Vynechané aplikace"
 
@@ -564,33 +856,41 @@ msgstr "Typ spektra"
 msgid "Experimental Features"
 msgstr "Pokusný"
 
-#: src/main.cpp:53
+#: src/main.cpp:59
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Zvukové efekty pro programy využívající PulseAudio"
 
-#: src/main.cpp:54
+#: src/main.cpp:60
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:58
+#: src/main.cpp:64
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Obálka"
 
 #: src/plugin_base.cpp:230
+msgid "(Mic)"
+msgstr ""
+
+#: src/plugin_base.cpp:233
+msgid "(Speakers)"
+msgstr ""
+
+#: src/plugin_base.cpp:240
 #, fuzzy
 msgid "Output Level Meter"
 msgstr "Výstupní zařízení"
 
-#: src/plugin_base.cpp:232
+#: src/plugin_base.cpp:242
 msgid "Spectrum"
 msgstr "Spektrum"
 
@@ -686,10 +986,6 @@ msgstr "Brána"
 #, fuzzy
 msgid "Level Meter"
 msgstr "Výstupní zařízení"
-
-#: src/tags_plugin_name.cpp:43
-msgid "Limiter"
-msgstr "Omezovač"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
@@ -873,12 +1169,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "2nd"
 #~ msgstr "2."
 
-#~ msgid "Floor Value"
-#~ msgstr "Spodní hodnota"
-
-#~ msgid "Link"
-#~ msgstr "Odkaz"
-
 #~ msgid "Application Name"
 #~ msgstr "Název aplikace"
 
@@ -890,9 +1180,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #~ msgid "Show Excluded Applications"
 #~ msgstr "Zobrazit vyloučené aplikace"
-
-#~ msgid "Mode"
-#~ msgstr "Režim"
 
 #~ msgid "Downward"
 #~ msgstr "Dolů"
@@ -912,23 +1199,14 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Boost Amount"
 #~ msgstr "Velikost zesílení"
 
-#~ msgid "Attack"
-#~ msgstr "Náběh"
-
 #~ msgid "Time"
 #~ msgstr "Čas"
-
-#~ msgid "Threshold"
-#~ msgstr "Práh"
 
 #~ msgid "Attack Time"
 #~ msgstr "Náběh"
 
 #~ msgid "Attack Threshold"
 #~ msgstr "Prahová hodnota útoku"
-
-#~ msgid "Release"
-#~ msgstr "Uvolnění"
 
 #~ msgid "Release Time"
 #~ msgstr "Uvolnění"
@@ -940,9 +1218,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Ratio"
 #~ msgstr "Poměr"
 
-#~ msgid "Knee"
-#~ msgstr "Přechod"
-
 #~ msgid "Makeup"
 #~ msgstr "Pozvednutí"
 
@@ -953,15 +1228,9 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Wet Level"
 #~ msgstr "Wet Level"
 
-#~ msgid "Sidechain"
-#~ msgstr "Postranní řetězec"
-
 #, fuzzy
 #~ msgid "Stereo Split Mode"
 #~ msgstr "Stereo režim"
-
-#~ msgid "Source"
-#~ msgstr "Zdroj"
 
 #~ msgid "Middle"
 #~ msgstr "Střední"
@@ -1013,24 +1282,15 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Simple Moving Average"
 #~ msgstr "Jednoduchý klouzavý průměr"
 
-#~ msgid "Sidechain Mode"
-#~ msgstr "Režim sidechain"
-
 #, fuzzy
 #~ msgid "Listen Sidechain"
 #~ msgstr "Externí postranní řetězec"
-
-#~ msgid "Type"
-#~ msgstr "Typ"
 
 #~ msgid "Feed-forward"
 #~ msgstr "Feed-forward"
 
 #~ msgid "Feed-back"
 #~ msgstr "Kanál-zpět"
-
-#~ msgid "External"
-#~ msgstr "Externí"
 
 #~ msgid "Sidechain Type"
 #~ msgstr "Druh sidechain"
@@ -1078,17 +1338,11 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "Režim filtrování nízkých frekvencí"
 
-#~ msgid "Gain"
-#~ msgstr "Zesílení"
-
 #~ msgid "Curve"
 #~ msgstr "Křivka"
 
 #~ msgid "Left Channel"
 #~ msgstr "Levý kanál"
-
-#~ msgid "R"
-#~ msgstr "P"
 
 #~ msgid "Right Channel"
 #~ msgstr "Pravý kanál"
@@ -1281,18 +1535,12 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Width"
 #~ msgstr "Šířka"
 
-#~ msgid "Ceil"
-#~ msgstr "Strop"
-
 #~ msgid "Ceil Value"
 #~ msgstr "Horní mezní hodnota"
 
 #, fuzzy
 #~ msgid "Expander Mode"
 #~ msgstr "Režim pásma"
-
-#~ msgid "Internal"
-#~ msgstr "Vnitřní"
 
 #~ msgid "API"
 #~ msgstr "API"
@@ -1352,116 +1600,35 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "True Peak"
 #~ msgstr "Frekvence 2 vrchol"
 
-#~ msgid "Oversampling"
-#~ msgstr "Převzorkování"
-
-#~ msgid "Dither"
-#~ msgstr "Dither"
-
-#, fuzzy
-#~ msgid "Herm Thin"
-#~ msgstr "Herm tenký"
-
-#, fuzzy
-#~ msgid "Herm Wide"
-#~ msgstr "Herm široký"
-
-#~ msgid "Herm Tail"
-#~ msgstr "Herm Tail"
-
-#~ msgid "Herm Duck"
-#~ msgstr "Herm Duck"
-
-#~ msgid "Exp Thin"
-#~ msgstr "Exp Thin"
-
-#~ msgid "Exp Wide"
-#~ msgstr "Exp Wide"
-
-#~ msgid "Exp Tail"
-#~ msgstr "Exp Tail"
-
-#~ msgid "Exp Duck"
-#~ msgstr "Exp Duck"
-
-#~ msgid "Line Thin"
-#~ msgstr "čára tenká"
-
-#~ msgid "Line Wide"
-#~ msgstr "čára široká"
-
-#, fuzzy
-#~ msgid "Line Tail"
-#~ msgstr "Šířka čáry"
-
-#~ msgid "Line Duck"
-#~ msgstr "Line Duck"
-
-#~ msgid "None"
-#~ msgstr "Žádný"
-
-#~ msgid "Half x2(2L)"
-#~ msgstr "Polovina x2(2L)"
-
 #~ msgid "Half x2(3L)"
 #~ msgstr "Polovina x2(3L)"
-
-#~ msgid "Half x3(2L)"
-#~ msgstr "Polovina x3(2L)"
 
 #~ msgid "Half x3(3L)"
 #~ msgstr "Polovina x3(3L)"
 
-#~ msgid "Half x4(2L)"
-#~ msgstr "Polovina x4(2L)"
-
 #~ msgid "Half x4(3L)"
 #~ msgstr "Polovina x4(3L)"
-
-#~ msgid "Half x6(2L)"
-#~ msgstr "Polovina x6(2L)"
 
 #~ msgid "Half x6(3L)"
 #~ msgstr "Polovina x6(3L)"
 
-#~ msgid "Half x8(2L)"
-#~ msgstr "Polovina x8(2L)"
-
 #~ msgid "Half x8(3L)"
 #~ msgstr "Polovina x8(3L)"
-
-#~ msgid "Full x2(2L)"
-#~ msgstr "Kompletní x2(2L)"
 
 #~ msgid "Full x2(3L)"
 #~ msgstr "Kompletní x2(3L)"
 
-#~ msgid "Full x3(2L)"
-#~ msgstr "Kompletní x3(2L)"
-
 #~ msgid "Full x3(3L)"
 #~ msgstr "Kompletní x3(3L)"
-
-#~ msgid "Full x4(2L)"
-#~ msgstr "Kompletní x4(2L)"
 
 #~ msgid "Full x4(3L)"
 #~ msgstr "Kompletní x4(3L)"
 
-#~ msgid "Full x6(2L)"
-#~ msgstr "Kompletní x6(2L)"
-
 #~ msgid "Full x6(3L)"
 #~ msgstr "Kompletní x6(3L)"
 
-#~ msgid "Full x8(2L)"
-#~ msgstr "Kompletní x8(2L)"
-
 #~ msgid "Full x8(3L)"
 #~ msgstr "Kompletní x8(3L)"
-
-#~ msgid "SC PreAmp"
-#~ msgstr "SC Předzesilovač"
 
 #~ msgid "Sidechain PreAmplification"
 #~ msgstr "Předzesílení postranního řetězce"
@@ -1469,17 +1636,11 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Boost"
 #~ msgstr "Zesílení"
 
-#~ msgid "Stereo Link"
-#~ msgstr "Spojení sterea"
-
 #~ msgid "External Sidechain"
 #~ msgstr "Externí postranní řetězec"
 
 #~ msgid "External Sidechain Source"
 #~ msgstr "Externí zdroj postranního řetězce"
-
-#~ msgid "Auto Leveling"
-#~ msgstr "Automatické vyrovnávání"
 
 #, fuzzy
 #~ msgid "Auto Leveling Attack"
@@ -1520,10 +1681,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #, fuzzy
 #~ msgid "Clipping"
 #~ msgstr "Přiřazení kanálu"
-
-#, fuzzy
-#~ msgid "Sidechain Boost"
-#~ msgstr "Postranní řetězec"
 
 #~ msgid "Pink BT"
 #~ msgstr "Růžová BT"
@@ -2738,10 +2895,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #~ msgid "Start Service at Login"
 #~ msgstr "Spustit službu při přihlášení"
-
-#, fuzzy
-#~ msgid "Activate"
-#~ msgstr "Agresivní režim"
 
 #, fuzzy
 #~ msgid "Add to Blocklist"
