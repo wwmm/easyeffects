@@ -125,11 +125,19 @@ FormCard.AbstractFormDelegate {
                 return t;
             }
             valueFromText: (text, locale) => {
+                if (text === "-inf") {
+                    let v = control.from * spinbox.decimalFactor;
+                    return Math.round(v);
+                }
                 let re = /-?\d*[.,]?\d*/;
                 let regex_result = re.exec(text);
                 let v = Number.fromLocaleString(locale, regex_result[0]) * spinbox.decimalFactor;
                 v = (!isNaN(v)) ? Math.round(v) : spinbox.value;
                 return v;
+            }
+
+            validator: RegularExpressionValidator {
+                regularExpression: /^-inf|^-?\d*[.,]?\d*/
             }
 
             contentItem: TextInput {
@@ -142,14 +150,6 @@ FormCard.AbstractFormDelegate {
                 readOnly: !spinbox.editable
                 validator: spinbox.validator
                 inputMethodHints: Qt.ImhFormattedNumbersOnly
-            }
-
-            validator: DoubleValidator {
-                locale: control.locale.name
-                notation: DoubleValidator.StandardNotation
-                decimals: control.decimals
-                bottom: Math.min(spinbox.from, spinbox.to) * spinbox.decimalFactor
-                top: Math.max(spinbox.from, spinbox.to) * spinbox.decimalFactor
             }
 
         }
