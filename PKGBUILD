@@ -13,6 +13,7 @@ license=('GPL3')
 depends=(
   'kirigami' 
   'kirigami-addons' 
+  'kconfigwidgets'
   'qqc2-desktop-style' 
   'breeze-icons' 
   'qt6-base'
