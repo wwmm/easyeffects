@@ -62,18 +62,14 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
   BIND_LV2_PORT("cm", mode, setMode, db::Compressor::modeChanged);
   BIND_LV2_PORT("sct", sidechainType, setSidechainType, db::Compressor::sidechainTypeChanged);
   BIND_LV2_PORT("scm", sidechainMode, setSidechainMode, db::Compressor::sidechainModeChanged);
-
-  // lv2_wrapper->bind_key_enum<"scs", "sidechain-source">(settings);
-
-  // lv2_wrapper->bind_key_enum<"sscs", "stereo-split-source">(settings);
+  BIND_LV2_PORT("scl", sidechainListen, setSidechainListen, db::Compressor::sidechainListenChanged);
+  BIND_LV2_PORT("scs", sidechainSource, setSidechainSource, db::Compressor::sidechainSourceChanged);
+  BIND_LV2_PORT("sscs", stereoSplitSource, setStereoSplitSource, db::Compressor::stereoSplitSourceChanged);
+  BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::Compressor::stereoSplitChanged);
 
   // lv2_wrapper->bind_key_enum<"shpm", "hpf-mode">(settings);
 
   // lv2_wrapper->bind_key_enum<"slpm", "lpf-mode">(settings);
-
-  // lv2_wrapper->bind_key_bool<"ssplit", "stereo-split">(settings);
-
-  // lv2_wrapper->bind_key_bool<"scl", "sidechain-listen">(settings);
 
   // lv2_wrapper->bind_key_double<"at", "attack">(settings);
 

@@ -217,7 +217,7 @@ Kirigami.ScrollablePage {
                     FormCard.FormComboBoxDelegate {
                         id: sidechainType
 
-                        text: i18n("SC Type")
+                        text: i18n("Type")
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: pluginDB.sidechainType
                         editable: false
@@ -236,7 +236,7 @@ Kirigami.ScrollablePage {
                     FormCard.FormComboBoxDelegate {
                         id: comboSideChainInputDevice
 
-                        text: i18n("Source")
+                        text: i18n("Input Device")
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         editable: false
                         model: ModelNodes
@@ -267,7 +267,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: sidechainPreamp
 
-                        label: i18n("SC Preamp")
+                        label: i18n("Preamp")
                         from: -80.01
                         to: 40
                         value: pluginDB.sidechainPreamp

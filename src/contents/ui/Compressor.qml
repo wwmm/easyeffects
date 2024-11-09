@@ -28,6 +28,10 @@ Kirigami.ScrollablePage {
         reductionLevelRight.value = pluginBackend.getReductionLevelRight();
         sideChainLevelLeft.value = pluginBackend.getSideChainLevelLeft();
         sideChainLevelRight.value = pluginBackend.getSideChainLevelRight();
+        curveLevelLeft.value = pluginBackend.getCurveLevelLeft();
+        curveLevelRight.value = pluginBackend.getCurveLevelRight();
+        envelopeLevelLeft.value = pluginBackend.getEnvelopeLevelLeft();
+        envelopeLevelRight.value = pluginBackend.getEnvelopeLevelRight();
     }
 
     Component.onCompleted: {
@@ -152,7 +156,7 @@ Kirigami.ScrollablePage {
                     FormCard.FormComboBoxDelegate {
                         id: sidechainType
 
-                        text: i18n("SC Type")
+                        text: i18n("Type")
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: pluginDB.sidechainType
                         editable: false
@@ -169,9 +173,65 @@ Kirigami.ScrollablePage {
                     }
 
                     FormCard.FormComboBoxDelegate {
-                        id: comboSideChainInputDevice
+                        id: sidechainMode
+
+                        text: i18n("Mode")
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: pluginDB.sidechainMode
+                        editable: false
+                        model: [i18n("Peak"), i18n("RMS"), i18n("Low-Pass"), i18n("SMA")]
+                        onActivated: (idx) => {
+                            pluginDB.sidechainMode = idx;
+                        }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    FormCard.FormComboBoxDelegate {
+                        readonly property var sourceModel: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]
+                        readonly property var stereSplitModel: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]
 
                         text: i18n("Source")
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        // currentIndex: pluginDB.stereoSplit === false ? pluginDB.sidechainSource : pluginDB.stereoSplitSource
+                        editable: false
+                        model: pluginDB.stereoSplit === false ? sourceModel : stereSplitModel
+                        onActivated: (idx) => {
+                            if (pluginDB.stereoSplit)
+                                pluginDB.stereoSplitSource = idx;
+                            else
+                                pluginDB.sidechainSource = idx;
+                        }
+                        onModelChanged: {
+                            if (pluginDB.stereoSplit)
+                                currentIndex = Qt.binding(function() {
+                                return pluginDB.stereoSplitSource;
+                            });
+                            else
+                                currentIndex = Qt.binding(function() {
+                                return pluginDB.sidechainSource;
+                            });
+                            console.log("model: " + currentIndex);
+                        }
+                        onCurrentIndexChanged: {
+                            console.log(currentValue);
+                        }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    FormCard.FormComboBoxDelegate {
+                        id: comboSideChainInputDevice
+
+                        text: i18n("Input Device")
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         editable: false
                         model: ModelNodes
@@ -227,113 +287,230 @@ Kirigami.ScrollablePage {
 
         }
 
-        Kirigami.Card {
-            id: cardLevels
+        Kirigami.CardsLayout {
+            id: cardLayoutLevel
 
-            Layout.fillWidth: false
-            Layout.alignment: Qt.AlignHCenter
+            maximumColumns: 2
+            uniformCellWidths: true
 
-            contentItem: GridLayout {
-                id: levelGridLayout
+            Kirigami.Card {
+                id: cardLevels1
 
-                readonly property real radius: 2.5 * Kirigami.Units.gridUnit
+                Layout.fillWidth: false
+                Layout.alignment: Qt.AlignHCenter
 
-                columnSpacing: Kirigami.Units.largeSpacing
-                rowSpacing: Kirigami.Units.largeSpacing
-                columns: 4
-                rows: 3
+                contentItem: GridLayout {
+                    readonly property real radius: 2.5 * Kirigami.Units.gridUnit
 
-                Controls.Label {
-                    Layout.columnSpan: 2
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignHCenter
-                    text: i18n("Reduction")
+                    columnSpacing: Kirigami.Units.largeSpacing
+                    rowSpacing: Kirigami.Units.largeSpacing
+                    columns: 4
+                    rows: 3
+
+                    Controls.Label {
+                        Layout.columnSpan: 2
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("Reduction")
+                    }
+
+                    Controls.Label {
+                        Layout.columnSpan: 2
+                        Layout.fillWidth: true
+                        Layout.leftMargin: Kirigami.Units.gridUnit
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("Sidechain")
+                    }
+
+                    EeCircularProgress {
+                        id: reductionLevelLeft
+
+                        Layout.alignment: Qt.AlignBottom
+                        implicitWidth: parent.radius
+                        implicitHeight: parent.radius
+                        from: Common.minimumDecibelLevel
+                        to: 0
+                        value: 0
+                        decimals: 0
+                        convertDecibelToLinear: true
+                    }
+
+                    EeCircularProgress {
+                        id: reductionLevelRight
+
+                        Layout.alignment: Qt.AlignBottom
+                        implicitWidth: parent.radius
+                        implicitHeight: parent.radius
+                        from: Common.minimumDecibelLevel
+                        to: 0
+                        value: 0
+                        decimals: 0
+                        convertDecibelToLinear: true
+                    }
+
+                    EeCircularProgress {
+                        id: sideChainLevelLeft
+
+                        Layout.alignment: Qt.AlignBottom
+                        Layout.leftMargin: Kirigami.Units.gridUnit
+                        implicitWidth: parent.radius
+                        implicitHeight: parent.radius
+                        from: Common.minimumDecibelLevel
+                        to: 0
+                        value: 0
+                        decimals: 0
+                        convertDecibelToLinear: true
+                    }
+
+                    EeCircularProgress {
+                        id: sideChainLevelRight
+
+                        Layout.alignment: Qt.AlignBottom
+                        implicitWidth: parent.radius
+                        implicitHeight: parent.radius
+                        from: Common.minimumDecibelLevel
+                        to: 0
+                        value: 0
+                        decimals: 0
+                        convertDecibelToLinear: true
+                    }
+
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("L")
+                    }
+
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("R")
+                    }
+
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        Layout.leftMargin: Kirigami.Units.gridUnit
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("L")
+                    }
+
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("R")
+                    }
+
                 }
 
-                Controls.Label {
-                    Layout.columnSpan: 2
-                    Layout.fillWidth: true
-                    Layout.leftMargin: Kirigami.Units.gridUnit
-                    horizontalAlignment: Text.AlignHCenter
-                    text: i18n("Sidechain")
-                }
+            }
 
-                EeCircularProgress {
-                    id: reductionLevelLeft
+            Kirigami.Card {
+                id: cardLevels2
 
-                    Layout.alignment: Qt.AlignBottom
-                    implicitWidth: levelGridLayout.radius
-                    implicitHeight: levelGridLayout.radius
-                    from: Common.minimumDecibelLevel
-                    to: 0
-                    value: 0
-                    decimals: 0
-                    convertDecibelToLinear: true
-                }
+                Layout.fillWidth: false
+                Layout.alignment: Qt.AlignHCenter
 
-                EeCircularProgress {
-                    id: reductionLevelRight
+                contentItem: GridLayout {
+                    readonly property real radius: 2.5 * Kirigami.Units.gridUnit
 
-                    Layout.alignment: Qt.AlignBottom
-                    implicitWidth: levelGridLayout.radius
-                    implicitHeight: levelGridLayout.radius
-                    from: Common.minimumDecibelLevel
-                    to: 0
-                    value: 0
-                    decimals: 0
-                    convertDecibelToLinear: true
-                }
+                    columnSpacing: Kirigami.Units.largeSpacing
+                    rowSpacing: Kirigami.Units.largeSpacing
+                    columns: 4
+                    rows: 3
 
-                EeCircularProgress {
-                    id: sideChainLevelLeft
+                    Controls.Label {
+                        Layout.columnSpan: 2
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("Curve")
+                    }
 
-                    Layout.alignment: Qt.AlignBottom
-                    Layout.leftMargin: Kirigami.Units.gridUnit
-                    implicitWidth: levelGridLayout.radius
-                    implicitHeight: levelGridLayout.radius
-                    from: Common.minimumDecibelLevel
-                    to: 0
-                    value: 0
-                    decimals: 0
-                    convertDecibelToLinear: true
-                }
+                    Controls.Label {
+                        Layout.columnSpan: 2
+                        Layout.fillWidth: true
+                        Layout.leftMargin: Kirigami.Units.gridUnit
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("Envelope")
+                    }
 
-                EeCircularProgress {
-                    id: sideChainLevelRight
+                    EeCircularProgress {
+                        id: curveLevelLeft
 
-                    Layout.alignment: Qt.AlignBottom
-                    implicitWidth: levelGridLayout.radius
-                    implicitHeight: levelGridLayout.radius
-                    from: Common.minimumDecibelLevel
-                    to: 0
-                    value: 0
-                    decimals: 0
-                    convertDecibelToLinear: true
-                }
+                        Layout.alignment: Qt.AlignBottom
+                        implicitWidth: parent.radius
+                        implicitHeight: parent.radius
+                        from: Common.minimumDecibelLevel
+                        to: 0
+                        value: 0
+                        decimals: 0
+                        convertDecibelToLinear: true
+                    }
 
-                Controls.Label {
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignHCenter
-                    text: i18n("L")
-                }
+                    EeCircularProgress {
+                        id: curveLevelRight
 
-                Controls.Label {
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignHCenter
-                    text: i18n("R")
-                }
+                        Layout.alignment: Qt.AlignBottom
+                        implicitWidth: parent.radius
+                        implicitHeight: parent.radius
+                        from: Common.minimumDecibelLevel
+                        to: 0
+                        value: 0
+                        decimals: 0
+                        convertDecibelToLinear: true
+                    }
 
-                Controls.Label {
-                    Layout.fillWidth: true
-                    Layout.leftMargin: Kirigami.Units.gridUnit
-                    horizontalAlignment: Text.AlignHCenter
-                    text: i18n("L")
-                }
+                    EeCircularProgress {
+                        id: envelopeLevelLeft
 
-                Controls.Label {
-                    Layout.fillWidth: true
-                    horizontalAlignment: Text.AlignHCenter
-                    text: i18n("R")
+                        Layout.alignment: Qt.AlignBottom
+                        Layout.leftMargin: Kirigami.Units.gridUnit
+                        implicitWidth: parent.radius
+                        implicitHeight: parent.radius
+                        from: Common.minimumDecibelLevel
+                        to: 0
+                        value: 0
+                        decimals: 0
+                        convertDecibelToLinear: true
+                    }
+
+                    EeCircularProgress {
+                        id: envelopeLevelRight
+
+                        Layout.alignment: Qt.AlignBottom
+                        implicitWidth: parent.radius
+                        implicitHeight: parent.radius
+                        from: Common.minimumDecibelLevel
+                        to: 0
+                        value: 0
+                        decimals: 0
+                        convertDecibelToLinear: true
+                    }
+
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("L")
+                    }
+
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("R")
+                    }
+
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        Layout.leftMargin: Kirigami.Units.gridUnit
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("L")
+                    }
+
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("R")
+                    }
+
                 }
 
             }
@@ -375,6 +552,28 @@ Kirigami.ScrollablePage {
                             pluginBackend.show_native_ui();
                         else
                             pluginBackend.close_native_ui();
+                    }
+                },
+                Kirigami.Action {
+                    text: i18n("Listen")
+                    icon.name: "audio-headset-symbolic"
+                    checkable: true
+                    checked: pluginDB.sidechainListen
+                    onTriggered: {
+                        if (pluginDB.sidechainListen != checked)
+                            pluginDB.sidechainListen = checked;
+
+                    }
+                },
+                Kirigami.Action {
+                    text: i18n("Stereo Split")
+                    icon.name: "view-split-left-right-symbolic"
+                    checkable: true
+                    checked: pluginDB.stereoSplit
+                    onTriggered: {
+                        if (pluginDB.stereoSplit != checked)
+                            pluginDB.stereoSplit = checked;
+
                     }
                 },
                 Kirigami.Action {
