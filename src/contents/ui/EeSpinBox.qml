@@ -131,9 +131,14 @@ FormCard.AbstractFormDelegate {
                 }
                 let re = /^[-+]?(\d+(?:[.,]\d+)*)/;
                 let regex_result = re.exec(text);
-                let v = Number.fromLocaleString(locale, regex_result[0]) * spinbox.decimalFactor;
-                v = (!isNaN(v)) ? Math.round(v) : spinbox.value;
-                return v;
+                try {
+                    let v = Number.fromLocaleString(locale, regex_result[0]) * spinbox.decimalFactor;
+                    v = (!isNaN(v)) ? Math.round(v) : spinbox.value;
+                    return v;
+                } catch (error) {
+                    console.log(error);
+                    return spinbox.value;
+                }
             }
 
             validator: RegularExpressionValidator {
