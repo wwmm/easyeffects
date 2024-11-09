@@ -120,6 +120,9 @@
                 <choice name="external">
                     <label>External</label>
                 </choice>
+                <choice name="link">
+                    <label>Link</label>
+                </choice>
             </choices>
             <default>0</default>
         </entry>

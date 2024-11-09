@@ -31,6 +31,7 @@
 #include <vector>
 #include "autogain.hpp"
 #include "bass_enhancer.hpp"
+#include "compressor.hpp"
 #include "exciter.hpp"
 #include "limiter.hpp"
 #include "output_level.hpp"
@@ -40,7 +41,6 @@
 #include "spectrum.hpp"
 
 // #include "bass_loudness.hpp"
-// #include "compressor.hpp"
 // #include "convolver.hpp"
 // #include "crossfeed.hpp"
 // #include "crystalizer.hpp"
@@ -84,10 +84,10 @@ class EffectsBase : public QObject {
 
   std::shared_ptr<Autogain> autogain;
   std::shared_ptr<BassEnhancer> bass_enhancer;
+  std::shared_ptr<Compressor> compressor;
   std::shared_ptr<Exciter> exciter;
   std::shared_ptr<Limiter> limiter;
   //   std::shared_ptr<BassLoudness> bass_loudness;
-  //   std::shared_ptr<Compressor> compressor;
   //   std::shared_ptr<Convolver> convolver;
   //   std::shared_ptr<Crossfeed> crossfeed;
   //   std::shared_ptr<Crystalizer> crystalizer;

@@ -9,7 +9,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard 1.0 as FormCard
 
 Kirigami.ScrollablePage {
-    id: limiterPage
+    id: compressorPage
 
     required property var name
     required property var pluginDB
@@ -24,8 +24,8 @@ Kirigami.ScrollablePage {
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
         inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
-        gainLevelLeft.value = pluginBackend.getGainLevelLeft();
-        gainLevelRight.value = pluginBackend.getGainLevelRight();
+        reductionLevelLeft.value = pluginBackend.getReductionLevelLeft();
+        reductionLevelRight.value = pluginBackend.getReductionLevelRight();
         sideChainLevelLeft.value = pluginBackend.getSideChainLevelLeft();
         sideChainLevelRight.value = pluginBackend.getSideChainLevelRight();
     }
@@ -38,79 +38,14 @@ Kirigami.ScrollablePage {
         Kirigami.CardsLayout {
             id: cardLayout
 
-            maximumColumns: 4
+            maximumColumns: 2
             uniformCellWidths: true
-
-            Kirigami.Card {
-                id: cardMode
-
-                contentItem: Column {
-                    FormCard.FormComboBoxDelegate {
-                        id: mode
-
-                        text: i18n("Mode")
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.mode
-                        editable: false
-                        model: [i18n("Herm Thin"), i18n("Herm Wide"), i18n("Herm Tail"), i18n("Herm Duck"), i18n("Exp Thin"), i18n("Exp Wide"), i18n("Exp Tail"), i18n("Exp Duck"), i18n("Line Thin"), i18n("Line Wide"), i18n("Line Tail"), i18n("Line Duck")]
-                        onActivated: (idx) => {
-                            pluginDB.mode = idx;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-
-                    }
-
-                    FormCard.FormComboBoxDelegate {
-                        id: oversampling
-
-                        text: i18n("Oversampling")
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.oversampling
-                        editable: false
-                        model: [i18n("None"), i18n("Half x2/16 bit"), i18n("Half x2/24 bit"), i18n("Half x3/16 bit"), i18n("Half x3/24 bit"), i18n("Half x4/16 bit"), i18n("Half x4/24 bit"), i18n("Half x6/16 bit"), i18n("Half x6/24 bit"), i18n("Half x8/16 bit"), i18n("Half x8/24 bit"), i18n("Full x2/16 bit"), i18n("Full x2/24 bit"), i18n("Full x3/16 bit"), i18n("Full x3/24 bit"), i18n("Full x4/16 bit"), i18n("Full x4/24 bit"), i18n("Full x6/16 bit"), i18n("Full x6/24 bit"), i18n("Full x8/16 bit"), i18n("Full x8/24 bit")]
-                        onActivated: (idx) => {
-                            pluginDB.oversampling = idx;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-
-                    }
-
-                    FormCard.FormComboBoxDelegate {
-                        id: dithering
-
-                        text: i18n("Dithering")
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.dithering
-                        editable: false
-                        model: [i18n("None"), i18n("7 bit"), i18n("8 bit"), i18n("11 bit"), i18n("12 bit"), i18n("15 bit"), i18n("16 bit"), i18n("23 bit"), i18n("24 bit")]
-                        onActivated: (idx) => {
-                            pluginDB.dithering = idx;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-
-                    }
-
-                }
-
-            }
 
             Kirigami.Card {
                 id: cardLimiter
 
                 header: Kirigami.Heading {
-                    text: i18n("Limiter")
+                    text: i18n("Compressor")
                     level: 2
                 }
 
@@ -221,7 +156,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: pluginDB.sidechainType
                         editable: false
-                        model: [i18n("Internal"), i18n("External"), i18n("Link")]
+                        model: [i18n("Feed-forward"), i18n("Feed-back"), i18n("External"), i18n("Link")]
                         onActivated: (idx) => {
                             pluginDB.sidechainType = idx;
                         }
@@ -241,7 +176,7 @@ Kirigami.ScrollablePage {
                         editable: false
                         model: ModelNodes
                         textRole: "description"
-                        enabled: sidechainType.currentIndex === 1
+                        enabled: sidechainType.currentIndex === 2
                         currentIndex: {
                             for (let n = 0; n < ModelNodes.rowCount(); n++) {
                                 if (ModelNodes.getNodeName(n) === pluginDB.sidechainInputDevice)
@@ -290,84 +225,6 @@ Kirigami.ScrollablePage {
 
             }
 
-            Kirigami.Card {
-                id: cardALR
-
-                enabled: pluginDB.alr
-
-                header: Kirigami.Heading {
-                    text: i18n("Automatic Level")
-                    level: 2
-                }
-
-                contentItem: Column {
-                    EeSpinBox {
-                        id: alrAttack
-
-                        label: i18n("Attack")
-                        from: 0.1
-                        to: 200
-                        value: pluginDB.alrAttack
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: "ms"
-                        onValueModified: (v) => {
-                            pluginDB.alrAttack = v;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-
-                    }
-
-                    EeSpinBox {
-                        id: alrRelease
-
-                        label: i18n("Release")
-                        from: 10
-                        to: 1000
-                        value: pluginDB.alrRelease
-                        decimals: 1
-                        stepSize: 0.1
-                        unit: "ms"
-                        onValueModified: (v) => {
-                            pluginDB.alrRelease = v;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-
-                    }
-
-                    EeSpinBox {
-                        id: alrKnee
-
-                        label: i18n("Knee")
-                        from: -12
-                        to: 12
-                        value: pluginDB.alrKnee
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: "dB"
-                        onValueModified: (v) => {
-                            pluginDB.alrKnee = v;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-
-                    }
-
-                }
-
-            }
-
         }
 
         Kirigami.Card {
@@ -390,7 +247,7 @@ Kirigami.ScrollablePage {
                     Layout.columnSpan: 2
                     Layout.fillWidth: true
                     horizontalAlignment: Text.AlignHCenter
-                    text: i18n("Gain")
+                    text: i18n("Reduction")
                 }
 
                 Controls.Label {
@@ -402,7 +259,7 @@ Kirigami.ScrollablePage {
                 }
 
                 EeCircularProgress {
-                    id: gainLevelLeft
+                    id: reductionLevelLeft
 
                     Layout.alignment: Qt.AlignBottom
                     implicitWidth: levelGridLayout.radius
@@ -415,7 +272,7 @@ Kirigami.ScrollablePage {
                 }
 
                 EeCircularProgress {
-                    id: gainLevelRight
+                    id: reductionLevelRight
 
                     Layout.alignment: Qt.AlignBottom
                     implicitWidth: levelGridLayout.radius
@@ -488,7 +345,7 @@ Kirigami.ScrollablePage {
     header: EeInputOutputGain {
         id: inputOutputLevels
 
-        pluginDB: limiterPage.pluginDB
+        pluginDB: compressorPage.pluginDB
     }
 
     footer: RowLayout {
@@ -518,28 +375,6 @@ Kirigami.ScrollablePage {
                             pluginBackend.show_native_ui();
                         else
                             pluginBackend.close_native_ui();
-                    }
-                },
-                Kirigami.Action {
-                    text: i18n("Gain Boost")
-                    icon.name: "usermenu-up-symbolic"
-                    checkable: true
-                    checked: pluginDB.gainBoost
-                    onTriggered: {
-                        if (pluginDB.gainBoost != checked)
-                            pluginDB.gainBoost = checked;
-
-                    }
-                },
-                Kirigami.Action {
-                    text: i18n("Automatic Level")
-                    icon.name: "usermenu-up-symbolic"
-                    checkable: true
-                    checked: pluginDB.alr
-                    onTriggered: {
-                        if (pluginDB.alr != checked)
-                            pluginDB.alr = checked;
-
                     }
                 },
                 Kirigami.Action {

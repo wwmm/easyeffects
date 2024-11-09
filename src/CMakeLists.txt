@@ -10,6 +10,7 @@ target_sources(easyeffects PRIVATE
     autogain.cpp
     bass_enhancer.cpp
     command_line_parser.cpp
+    compressor.cpp
     db_manager.cpp
     effects_base.cpp
     exciter.cpp
