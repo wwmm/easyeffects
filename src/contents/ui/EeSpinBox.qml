@@ -113,14 +113,14 @@ FormCard.AbstractFormDelegate {
             editable: control.editable
             inputMethodHints: Qt.ImhFormattedNumbersOnly
             textFromValue: (value, locale) => {
-                let unit_str = (Common.isEmpty(unit)) ? "" : " " + unit;
+                const unit_str = (Common.isEmpty(unit)) ? "" : " " + unit;
                 locale.numberOptions = Locale.OmitGroupSeparator;
-                let decimalValue = value / spinbox.decimalFactor;
+                const decimalValue = value / spinbox.decimalFactor;
                 if (control.minusInfinityMode === true && decimalValue <= control.from) {
                     textInputSpinBox.text = "-inf";
                     return "-inf";
                 }
-                let t = Number(decimalValue).toLocaleString(locale, 'f', control.decimals) + unit_str;
+                const t = Number(decimalValue).toLocaleString(locale, 'f', control.decimals) + unit_str;
                 textInputSpinBox.text = t;
                 return t;
             }
@@ -129,8 +129,8 @@ FormCard.AbstractFormDelegate {
                     let v = control.from * spinbox.decimalFactor;
                     return Math.round(v);
                 }
-                let re = /^[-+]?\d+(?:[.,]\d+)*/;
-                let regex_result = re.exec(text);
+                const re = /^[-+]?\d+(?:[.,]\d+)*/;
+                const regex_result = re.exec(text);
                 try {
                     let v = Number.fromLocaleString(locale, regex_result[0]) * spinbox.decimalFactor;
                     v = (!isNaN(v)) ? Math.round(v) : spinbox.value;
