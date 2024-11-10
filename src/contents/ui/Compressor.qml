@@ -316,6 +316,27 @@ Kirigami.ScrollablePage {
 
                     }
 
+                    EeSpinBox {
+                        id: sidechainLookahead
+
+                        label: i18n("Lookahead")
+                        from: 0
+                        to: 20
+                        value: pluginDB.sidechainLookahead
+                        decimals: 3
+                        stepSize: 0.001
+                        unit: "ms"
+                        onValueModified: (v) => {
+                            pluginDB.sidechainLookahead = v;
+                        }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
                 }
 
             }

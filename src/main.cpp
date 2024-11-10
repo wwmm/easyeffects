@@ -91,6 +91,7 @@ int main(int argc, char* argv[]) {
   QCoreApplication::setApplicationName(QStringLiteral("EasyEffects"));
   QCoreApplication::setApplicationVersion(PROJECT_VERSION);
 
+  QApplication::setStyle(QStringLiteral("breeze"));
   if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
     QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
   }
