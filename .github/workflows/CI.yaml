@@ -148,6 +148,7 @@ jobs:
         kconfigwidgets-dev
         kconfig-dev
         kcoreaddons-dev
+        qqc2-desktop-style-dev
         appstream-glib-dev
         desktop-file-utils
         fftw-dev
@@ -217,6 +218,7 @@ jobs:
         kconfigwidgets-devel
         kconfig-devel
         kcoreaddons-devel
+        qqc2-desktop-style-devel
         libbs2b-devel
         libebur128-devel
         libsamplerate-devel
