@@ -72,8 +72,8 @@ Item {
                         displayHint: Kirigami.DisplayHint.IconOnly
                         onTriggered: {
                             pluginsListModel.remove(index, 1);
-                            let indexStart = pluginsListModel.index(0, 0);
-                            let indexEnd = pluginsListModel.index(pluginsListModel.count - 1, 0);
+                            const indexStart = pluginsListModel.index(0, 0);
+                            const indexEnd = pluginsListModel.index(pluginsListModel.count - 1, 0);
                             pluginsListModel.dataChanged(indexStart, indexEnd, []);
                         }
                     }
@@ -84,8 +84,8 @@ Item {
                 listItem: listItemDelegate
                 listView: pluginsListView
                 onMoveRequested: (oldIndex, newIndex) => {
-                    let indexStart = pluginsListModel.index(0, 0);
-                    let indexEnd = pluginsListModel.index(pluginsListModel.count - 1, 0);
+                    const indexStart = pluginsListModel.index(0, 0);
+                    const indexEnd = pluginsListModel.index(pluginsListModel.count - 1, 0);
                     pluginsListModel.move(oldIndex, newIndex, 1);
                     pluginsListModel.dataChanged(indexStart, indexEnd, []);
                 }
