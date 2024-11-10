@@ -18,6 +18,7 @@
  */
 
 #include <kaboutdata.h>
+#include <kicontheme.h>
 #include <klocalizedcontext.h>
 #include <qobject.h>
 #include <qqml.h>
@@ -29,6 +30,7 @@
 #include <qtenvironmentvariables.h>
 #include <qurl.h>
 #include <KAboutData>
+#include <KIconTheme>
 #include <KLocalizedString>
 #include <QApplication>
 #include <QLocalServer>
@@ -74,6 +76,8 @@ void construct_about_window() {
 }
 
 int main(int argc, char* argv[]) {
+  KIconTheme::initTheme();
+
   QApplication app(argc, argv);
 
   std::signal(SIGINT, csignalHandler);

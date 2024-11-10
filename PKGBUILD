@@ -12,7 +12,8 @@ url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
 depends=(
   'kirigami' 
-  'kirigami-addons' 
+  'kirigami-addons'
+  'kiconthemes'
   'kconfigwidgets'
   'qqc2-desktop-style' 
   'breeze-icons' 

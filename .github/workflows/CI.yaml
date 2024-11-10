@@ -142,6 +142,7 @@ jobs:
         makedepends="
         qt6-qtbase-dev
         qt6-qtcharts-dev
+        kiconthemes-dev
         kirigami-dev
         ki18n-dev
         kconfigwidgets-dev
@@ -210,6 +211,7 @@ jobs:
         fftw-devel
         gettext
         itstool
+        kiconthemes
         kirigami-devel
         ki18n-devel
         kconfigwidgets-devel

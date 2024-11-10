@@ -42,18 +42,19 @@ target_include_directories(easyeffects PRIVATE
 )
 
 target_link_libraries(easyeffects PRIVATE
-    Qt${QT_MAJOR_VERSION}::Core
-    Qt${QT_MAJOR_VERSION}::Quick
-    Qt${QT_MAJOR_VERSION}::Qml
-    Qt${QT_MAJOR_VERSION}::Gui
-    Qt${QT_MAJOR_VERSION}::QuickControls2
-    Qt${QT_MAJOR_VERSION}::Widgets
-    KF${QT_MAJOR_VERSION}::I18n
-    KF${QT_MAJOR_VERSION}::CoreAddons
+    Qt${QT_MAJOR_VERSION}::Charts
     KF${QT_MAJOR_VERSION}::ConfigCore
     KF${QT_MAJOR_VERSION}::ConfigGui
-    Qt${QT_MAJOR_VERSION}::Charts
+    Qt${QT_MAJOR_VERSION}::Core
+    KF${QT_MAJOR_VERSION}::CoreAddons
+    Qt${QT_MAJOR_VERSION}::Gui
+    KF${QT_MAJOR_VERSION}::I18n
+    KF${QT_MAJOR_VERSION}::IconThemes
     Qt${QT_MAJOR_VERSION}::Network
+    Qt${QT_MAJOR_VERSION}::Qml
+    Qt${QT_MAJOR_VERSION}::Quick
+    Qt${QT_MAJOR_VERSION}::QuickControls2
+    Qt${QT_MAJOR_VERSION}::Widgets
     ${LIBPIPEWIRE_LIBRARIES}
     ${LIBLILV_LIBRARIES}
     ${LIBEBUR128_LIBRARIES}

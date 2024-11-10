@@ -42,7 +42,7 @@ Kirigami.ScrollablePage {
         Kirigami.CardsLayout {
             id: cardLayout
 
-            maximumColumns: 2
+            maximumColumns: 3
             uniformCellWidths: true
 
             Kirigami.Card {
@@ -143,7 +143,6 @@ Kirigami.ScrollablePage {
             }
 
             Kirigami.Card {
-                id: cardSideChain
 
                 header: Kirigami.Heading {
                     text: i18n("Sidechain")
@@ -192,33 +191,16 @@ Kirigami.ScrollablePage {
                     }
 
                     FormCard.FormComboBoxDelegate {
-                        readonly property var sourceModel: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]
-                        readonly property var stereSplitModel: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]
+                        id: sidechainSource
 
                         text: i18n("Source")
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        // currentIndex: pluginDB.stereoSplit === false ? pluginDB.sidechainSource : pluginDB.stereoSplitSource
+                        currentIndex: pluginDB.sidechainSource
                         editable: false
-                        model: pluginDB.stereoSplit === false ? sourceModel : stereSplitModel
+                        model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]
+                        visible: !pluginDB.stereoSplit
                         onActivated: (idx) => {
-                            if (pluginDB.stereoSplit)
-                                pluginDB.stereoSplitSource = idx;
-                            else
-                                pluginDB.sidechainSource = idx;
-                        }
-                        onModelChanged: {
-                            if (pluginDB.stereoSplit)
-                                currentIndex = Qt.binding(function() {
-                                return pluginDB.stereoSplitSource;
-                            });
-                            else
-                                currentIndex = Qt.binding(function() {
-                                return pluginDB.sidechainSource;
-                            });
-                            console.log("model: " + currentIndex);
-                        }
-                        onCurrentIndexChanged: {
-                            console.log(currentValue);
+                            pluginDB.sidechainSource = idx;
                         }
 
                         anchors {
@@ -228,6 +210,38 @@ Kirigami.ScrollablePage {
 
                     }
 
+                    FormCard.FormComboBoxDelegate {
+                        id: stereoSplitSource
+
+                        text: i18n("Source")
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: pluginDB.stereoSplitSource
+                        editable: false
+                        model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]
+                        visible: pluginDB.stereoSplit
+                        onActivated: (idx) => {
+                            pluginDB.stereoSplitSource = idx;
+                        }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                }
+
+            }
+
+            Kirigami.Card {
+
+                header: Kirigami.Heading {
+                    text: i18n("Sidechain")
+                    level: 2
+                }
+
+                contentItem: Column {
                     FormCard.FormComboBoxDelegate {
                         id: comboSideChainInputDevice
 
@@ -262,7 +276,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: sidechainPreamp
 
-                        label: i18n("SC Preamp")
+                        label: i18n("Preamp")
                         from: -80.01
                         to: 40
                         value: pluginDB.sidechainPreamp
@@ -272,6 +286,27 @@ Kirigami.ScrollablePage {
                         minusInfinityMode: true
                         onValueModified: (v) => {
                             pluginDB.sidechainPreamp = v;
+                        }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    EeSpinBox {
+                        id: sidechainReactivity
+
+                        label: i18n("Reactivity")
+                        from: 0
+                        to: 250
+                        value: pluginDB.sidechainReactivity
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: "ms"
+                        onValueModified: (v) => {
+                            pluginDB.sidechainReactivity = v;
                         }
 
                         anchors {

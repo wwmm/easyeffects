@@ -28,25 +28,31 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 include(KDEInstallDirs)
 include(KDECMakeSettings)
 include(KDECompilerSettings NO_POLICY_SCOPE)
+include(ECMFindQmlModule)
+include(ECMQmlModule)
 
 find_package(Qt${QT_MAJOR_VERSION} REQUIRED NO_MODULE COMPONENTS
+    Charts
     Core
-    Quick
-    Qml
     Gui
+    Network
+    Qml
+    Quick
     QuickControls2
     Widgets
-    Charts
-    Network
 )
 
 find_package(KF${QT_MAJOR_VERSION} REQUIRED COMPONENTS
-    Kirigami
-    I18n
-    CoreAddons
     Config
     ConfigWidgets
+    CoreAddons
+    I18n
+    IconThemes
+    Kirigami
+    QQC2DesktopStyle
 )
+
+ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
 
 ki18n_install(po)
 

@@ -66,6 +66,10 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
   BIND_LV2_PORT("scs", sidechainSource, setSidechainSource, db::Compressor::sidechainSourceChanged);
   BIND_LV2_PORT("sscs", stereoSplitSource, setStereoSplitSource, db::Compressor::stereoSplitSourceChanged);
   BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::Compressor::stereoSplitChanged);
+  BIND_LV2_PORT("scr", sidechainReactivity, setSidechainReactivity, db::Compressor::sidechainReactivityChanged);
+  BIND_LV2_PORT("scr", sidechainLookahead, setSidechainLookahead, db::Compressor::sidechainLookaheadChanged);
+
+  // lv2_wrapper->bind_key_double<"sla", "sidechain-lookahead">(settings);
 
   // lv2_wrapper->bind_key_enum<"shpm", "hpf-mode">(settings);
 
@@ -76,10 +80,6 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
   // lv2_wrapper->bind_key_double<"rt", "release">(settings);
 
   // lv2_wrapper->bind_key_double<"cr", "ratio">(settings);
-
-  // lv2_wrapper->bind_key_double<"scr", "sidechain-reactivity">(settings);
-
-  // lv2_wrapper->bind_key_double<"sla", "sidechain-lookahead">(settings);
 
   // lv2_wrapper->bind_key_double<"shpf", "hpf-frequency">(settings);
 
