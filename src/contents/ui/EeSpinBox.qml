@@ -129,7 +129,7 @@ FormCard.AbstractFormDelegate {
                     let v = control.from * spinbox.decimalFactor;
                     return Math.round(v);
                 }
-                let re = /^[-+]?(\d+(?:[.,]\d+)*)/;
+                let re = /^[-+]?\d+(?:[.,]\d+)*/;
                 let regex_result = re.exec(text);
                 try {
                     let v = Number.fromLocaleString(locale, regex_result[0]) * spinbox.decimalFactor;
