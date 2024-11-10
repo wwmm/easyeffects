@@ -73,14 +73,14 @@ Kirigami.OverlaySheet {
                         let index_list = [];
                         for (let n = 0; n < plugins.length; n++) {
                             if (plugins[n].startsWith(name)) {
-                                let m = plugins[n].match(/#(\d+)$/);
+                                const m = plugins[n].match(/#(\d+)$/);
                                 if (m.length == 2)
                                     index_list.push(m[1]);
 
                             }
                         }
-                        let new_id = (index_list.length === 0) ? 0 : Math.max.apply(null, index_list) + 1;
-                        let new_name = name + "#" + new_id;
+                        const new_id = (index_list.length === 0) ? 0 : Math.max.apply(null, index_list) + 1;
+                        const new_name = name + "#" + new_id;
                         /*
                             If the list is not empty and the user is careful protecting
                             their device with a plugin of type limiter at the last position
@@ -100,8 +100,8 @@ Kirigami.OverlaySheet {
                             the second to last position. The reason is that we still want to preserve the
                             "limiter protection" in case the last plugins are a limiter followed by a meter.
                         */
-                        let limiters_and_meters = [BasePluginName.limiter, BasePluginName.maximizer, BasePluginName.level_meter];
-                        let limiters = [BasePluginName.limiter, BasePluginName.maximizer];
+                        const limiters_and_meters = [BasePluginName.limiter, BasePluginName.maximizer, BasePluginName.level_meter];
+                        const limiters = [BasePluginName.limiter, BasePluginName.maximizer];
                         if (plugins.length === 0) {
                             plugins.push(new_name);
                         } else if (limiters_and_meters.some((v) => {

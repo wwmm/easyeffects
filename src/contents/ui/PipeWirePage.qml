@@ -39,8 +39,8 @@ Kirigami.Page {
         FormCard.FormCardPage {
             function comboFindRow(model, nodeName) {
                 let row = -1;
-                let nodeIndex = ModelNodes.getModelIndexByName(nodeName);
-                let modelRow = model.mapFromSource(nodeIndex).row;
+                const nodeIndex = ModelNodes.getModelIndexByName(nodeName);
+                const modelRow = model.mapFromSource(nodeIndex).row;
                 if (modelRow >= 0)
                     row = modelRow;
 
@@ -48,16 +48,16 @@ Kirigami.Page {
             }
 
             function updateInputDevComboSelection() {
-                let deviceName = useDefaultInputDevice.isChecked ? EEpwManager.defaultInputDeviceName : EEdbm.streamInputs.inputDevice;
-                let comboRow = comboFindRow(ModelSourceDevices, deviceName);
+                const deviceName = useDefaultInputDevice.isChecked ? EEpwManager.defaultInputDeviceName : EEdbm.streamInputs.inputDevice;
+                const comboRow = comboFindRow(ModelSourceDevices, deviceName);
                 if (comboRow !== -1)
                     comboInputDevice.currentIndex = comboRow;
 
             }
 
             function updateOutputDevComboSelection() {
-                let deviceName = useDefaultOutputDevice.isChecked ? EEpwManager.defaultOutputDeviceName : EEdbm.streamOutputs.outputDevice;
-                let comboRow = comboFindRow(ModelSinkDevices, deviceName);
+                const deviceName = useDefaultOutputDevice.isChecked ? EEpwManager.defaultOutputDeviceName : EEdbm.streamOutputs.outputDevice;
+                const comboRow = comboFindRow(ModelSinkDevices, deviceName);
                 if (comboRow !== -1)
                     comboOutputDevice.currentIndex = comboRow;
 
@@ -113,9 +113,9 @@ Kirigami.Page {
                     textRole: "description"
                     enabled: !EEdbm.streamInputs.useDefaultInputDevice
                     onActivated: (idx) => {
-                        let proxyIndex = ModelSourceDevices.index(idx, 0);
-                        let sourceIndex = ModelSourceDevices.mapToSource(proxyIndex);
-                        let nodeName = ModelNodes.getNodeName(sourceIndex.row);
+                        const proxyIndex = ModelSourceDevices.index(idx, 0);
+                        const sourceIndex = ModelSourceDevices.mapToSource(proxyIndex);
+                        const nodeName = ModelNodes.getNodeName(sourceIndex.row);
                         if (EEdbm.streamInputs.inputDevice !== nodeName)
                             EEdbm.streamInputs.inputDevice = nodeName;
 
@@ -152,9 +152,9 @@ Kirigami.Page {
                     textRole: "description"
                     enabled: !EEdbm.streamOutputs.useDefaultOutputDevice
                     onActivated: (idx) => {
-                        let proxyIndex = ModelSinkDevices.index(idx, 0);
-                        let sourceIndex = ModelSinkDevices.mapToSource(proxyIndex);
-                        let nodeName = ModelNodes.getNodeName(sourceIndex.row);
+                        const proxyIndex = ModelSinkDevices.index(idx, 0);
+                        const sourceIndex = ModelSinkDevices.mapToSource(proxyIndex);
+                        const nodeName = ModelNodes.getNodeName(sourceIndex.row);
                         if (EEdbm.streamOutputs.outputDevice !== nodeName)
                             EEdbm.streamOutputs.outputDevice = nodeName;
 
