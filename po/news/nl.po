@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-23 22:02+0000\n"
+"POT-Creation-Date: 2024-11-11 22:34+0000\n"
 "PO-Revision-Date: 2024-11-04 03:00+0000\n"
 "Last-Translator: Damiön la Bagh <kat.amsterdam@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/"
@@ -196,7 +196,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Fixed a regression in the autoload preset code."
-msgstr "Een regressie in de preset code voor het automatisch laden is opgelost."
+msgstr ""
+"Een regressie in de preset code voor het automatisch laden is opgelost."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
