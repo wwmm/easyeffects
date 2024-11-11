@@ -74,7 +74,7 @@ Kirigami.OverlaySheet {
                         for (let n = 0; n < plugins.length; n++) {
                             if (plugins[n].startsWith(name)) {
                                 const m = plugins[n].match(/#(\d+)$/);
-                                if (m.length == 2)
+                                if (m.length === 2)
                                     index_list.push(m[1]);
 
                             }
