@@ -188,7 +188,7 @@ Kirigami.Page {
 
                     pluginsListModel.clear();
                     populatePluginsListModel(newList);
-                    if (newList.length == 1 && pluginsListView.currentIndex == -1)
+                    if (newList.length === 1 && pluginsListView.currentIndex === -1)
                         pluginsListView.currentIndex = 0;
 
                 }

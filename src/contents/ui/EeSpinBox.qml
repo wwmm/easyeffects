@@ -47,7 +47,7 @@ FormCard.AbstractFormDelegate {
     focusPolicy: Kirigami.Settings.isMobile ? Qt.StrongFocus : Qt.NoFocus
     onClicked: spinbox.forceActiveFocus()
     Keys.onPressed: (event) => {
-        if (event.key == Qt.Key_PageUp) {
+        if (event.key === Qt.Key_PageUp) {
             control.valueModified(control.value + pageSteps * stepSize);
             event.accepted = true;
         } else if (event.key === Qt.Key_PageDown) {
