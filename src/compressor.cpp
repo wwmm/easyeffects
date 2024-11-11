@@ -68,20 +68,16 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
   BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::Compressor::stereoSplitChanged);
   BIND_LV2_PORT("scr", sidechainReactivity, setSidechainReactivity, db::Compressor::sidechainReactivityChanged);
   BIND_LV2_PORT("sla", sidechainLookahead, setSidechainLookahead, db::Compressor::sidechainLookaheadChanged);
-
-  // lv2_wrapper->bind_key_enum<"shpm", "hpf-mode">(settings);
-
-  // lv2_wrapper->bind_key_enum<"slpm", "lpf-mode">(settings);
+  BIND_LV2_PORT("shpm", hpfMode, setHpfMode, db::Compressor::hpfModeChanged);
+  BIND_LV2_PORT("slpm", lpfMode, setLpfMode, db::Compressor::lpfModeChanged);
+  BIND_LV2_PORT("shpf", hpfFrequency, setHpfFrequency, db::Compressor::hpfFrequencyChanged);
+  BIND_LV2_PORT("slpf", lpfFrequency, setLpfFrequency, db::Compressor::lpfFrequencyChanged);
 
   // lv2_wrapper->bind_key_double<"at", "attack">(settings);
 
   // lv2_wrapper->bind_key_double<"rt", "release">(settings);
 
   // lv2_wrapper->bind_key_double<"cr", "ratio">(settings);
-
-  // lv2_wrapper->bind_key_double<"shpf", "hpf-frequency">(settings);
-
-  // lv2_wrapper->bind_key_double<"slpf", "lpf-frequency">(settings);
 
   // lv2_wrapper->bind_key_double_db<"bth", "boost-threshold">(settings);
 

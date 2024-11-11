@@ -42,11 +42,10 @@ Kirigami.ScrollablePage {
         Kirigami.CardsLayout {
             id: cardLayout
 
-            maximumColumns: 3
+            maximumColumns: 4
             uniformCellWidths: true
 
             Kirigami.Card {
-                id: cardLimiter
 
                 header: Kirigami.Heading {
                     text: i18n("Compressor")
@@ -150,82 +149,95 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: Column {
-                    id: cardSideChainColumn
-
-                    FormCard.FormComboBoxDelegate {
-                        id: sidechainType
-
-                        text: i18n("Type")
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.sidechainType
-                        editable: false
-                        model: [i18n("Feed-forward"), i18n("Feed-back"), i18n("External"), i18n("Link")]
-                        onActivated: (idx) => {
-                            pluginDB.sidechainType = idx;
-                        }
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
 
                         anchors {
                             left: parent.left
                             right: parent.right
                         }
 
-                    }
+                        FormCard.FormComboBoxDelegate {
+                            id: sidechainType
 
-                    FormCard.FormComboBoxDelegate {
-                        id: sidechainMode
-
-                        text: i18n("Mode")
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.sidechainMode
-                        editable: false
-                        model: [i18n("Peak"), i18n("RMS"), i18n("Low-Pass"), i18n("SMA")]
-                        onActivated: (idx) => {
-                            pluginDB.sidechainMode = idx;
+                            text: i18n("Type")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: pluginDB.sidechainType
+                            editable: false
+                            model: [i18n("Feed-forward"), i18n("Feed-back"), i18n("External"), i18n("Link")]
+                            onActivated: (idx) => {
+                                pluginDB.sidechainType = idx;
+                            }
                         }
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                        FormCard.FormComboBoxDelegate {
+                            id: sidechainMode
+
+                            text: i18n("Mode")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: pluginDB.sidechainMode
+                            editable: false
+                            model: [i18n("Peak"), i18n("RMS"), i18n("Low-Pass"), i18n("SMA")]
+                            onActivated: (idx) => {
+                                pluginDB.sidechainMode = idx;
+                            }
                         }
 
-                    }
+                        FormCard.FormComboBoxDelegate {
+                            id: sidechainSource
 
-                    FormCard.FormComboBoxDelegate {
-                        id: sidechainSource
-
-                        text: i18n("Source")
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.sidechainSource
-                        editable: false
-                        model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]
-                        visible: !pluginDB.stereoSplit
-                        onActivated: (idx) => {
-                            pluginDB.sidechainSource = idx;
+                            Layout.columnSpan: 2
+                            text: i18n("Source")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: pluginDB.sidechainSource
+                            editable: false
+                            model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]
+                            visible: !pluginDB.stereoSplit
+                            onActivated: (idx) => {
+                                pluginDB.sidechainSource = idx;
+                            }
                         }
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                        FormCard.FormComboBoxDelegate {
+                            id: stereoSplitSource
+
+                            Layout.columnSpan: 2
+                            text: i18n("Source")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: pluginDB.stereoSplitSource
+                            editable: false
+                            model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]
+                            visible: pluginDB.stereoSplit
+                            onActivated: (idx) => {
+                                pluginDB.stereoSplitSource = idx;
+                            }
                         }
 
-                    }
+                        FormCard.FormComboBoxDelegate {
+                            id: comboSideChainInputDevice
 
-                    FormCard.FormComboBoxDelegate {
-                        id: stereoSplitSource
+                            Layout.columnSpan: 2
+                            text: i18n("Input Device")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            editable: false
+                            model: ModelNodes
+                            textRole: "description"
+                            enabled: sidechainType.currentIndex === 2
+                            currentIndex: {
+                                for (let n = 0; n < ModelNodes.rowCount(); n++) {
+                                    if (ModelNodes.getNodeName(n) === pluginDB.sidechainInputDevice)
+                                        return n;
 
-                        text: i18n("Source")
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.stereoSplitSource
-                        editable: false
-                        model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]
-                        visible: pluginDB.stereoSplit
-                        onActivated: (idx) => {
-                            pluginDB.stereoSplitSource = idx;
-                        }
+                                }
+                                return 0;
+                            }
+                            onActivated: (idx) => {
+                                let selectedName = ModelNodes.getNodeName(idx);
+                                if (selectedName !== pluginDB.sidechainInputDevice)
+                                    pluginDB.sidechainInputDevice = selectedName;
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                            }
                         }
 
                     }
@@ -242,93 +254,153 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: Column {
-                    FormCard.FormComboBoxDelegate {
-                        id: comboSideChainInputDevice
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
 
-                        text: i18n("Input Device")
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        editable: false
-                        model: ModelNodes
-                        textRole: "description"
-                        enabled: sidechainType.currentIndex === 2
-                        currentIndex: {
-                            for (let n = 0; n < ModelNodes.rowCount(); n++) {
-                                if (ModelNodes.getNodeName(n) === pluginDB.sidechainInputDevice)
-                                    return n;
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
 
+                        EeSpinBox {
+                            id: sidechainPreamp
+
+                            label: i18n("Preamp")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: -80.01
+                            to: 40
+                            value: pluginDB.sidechainPreamp
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: (v) => {
+                                pluginDB.sidechainPreamp = v;
                             }
-                            return 0;
-                        }
-                        onActivated: (idx) => {
-                            let selectedName = ModelNodes.getNodeName(idx);
-                            if (selectedName !== pluginDB.sidechainInputDevice)
-                                pluginDB.sidechainInputDevice = selectedName;
-
                         }
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                        EeSpinBox {
+                            id: sidechainReactivity
+
+                            label: i18n("Reactivity")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: 0
+                            to: 250
+                            value: pluginDB.sidechainReactivity
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "ms"
+                            onValueModified: (v) => {
+                                pluginDB.sidechainReactivity = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: sidechainLookahead
+
+                            Layout.columnSpan: 2
+                            label: i18n("Lookahead")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: 0
+                            to: 20
+                            value: pluginDB.sidechainLookahead
+                            decimals: 3
+                            stepSize: 0.001
+                            unit: "ms"
+                            onValueModified: (v) => {
+                                pluginDB.sidechainLookahead = v;
+                            }
+                        }
+
+                        FormCard.FormComboBoxDelegate {
+                            id: hpfMode
+
+                            horizontalPadding: 0
+                            verticalPadding: 0
+                            text: i18n("High-Pass")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: pluginDB.hpfMode
+                            editable: false
+                            model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")]
+                            onActivated: (idx) => {
+                                pluginDB.hpfMode = idx;
+                            }
+                        }
+
+                        FormCard.FormComboBoxDelegate {
+                            id: lpfMode
+
+                            horizontalPadding: 0
+                            verticalPadding: 0
+                            text: i18n("Low-Pass")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: pluginDB.lpfMode
+                            editable: false
+                            model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")]
+                            onActivated: (idx) => {
+                                pluginDB.lpfMode = idx;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: hpfFrequency
+
+                            horizontalPadding: 0
+                            verticalPadding: 0
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: 10
+                            to: 20000
+                            value: pluginDB.hpfFrequency
+                            decimals: 0
+                            stepSize: 1
+                            unit: "Hz"
+                            enabled: hpfMode.currentIndex !== 0
+                            onValueModified: (v) => {
+                                pluginDB.hpfFrequency = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: lpfFrequency
+
+                            horizontalPadding: 0
+                            verticalPadding: 0
+                            labelFillWidth: false
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: 10
+                            to: 20000
+                            value: pluginDB.lpfFrequency
+                            decimals: 0
+                            stepSize: 1
+                            unit: "Hz"
+                            enabled: lpfMode.currentIndex !== 0
+                            onValueModified: (v) => {
+                                pluginDB.lpfFrequency = v;
+                            }
                         }
 
                     }
 
-                    EeSpinBox {
-                        id: sidechainPreamp
+                }
 
-                        label: i18n("Preamp")
-                        from: -80.01
-                        to: 40
-                        value: pluginDB.sidechainPreamp
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: "dB"
-                        minusInfinityMode: true
-                        onValueModified: (v) => {
-                            pluginDB.sidechainPreamp = v;
-                        }
+            }
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+            Kirigami.Card {
 
-                    }
+                header: Kirigami.Heading {
+                    text: i18n("Audio Mixing")
+                    level: 2
+                }
 
-                    EeSpinBox {
-                        id: sidechainReactivity
-
-                        label: i18n("Reactivity")
-                        from: 0
-                        to: 250
-                        value: pluginDB.sidechainReactivity
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: "ms"
-                        onValueModified: (v) => {
-                            pluginDB.sidechainReactivity = v;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-
-                    }
-
-                    EeSpinBox {
-                        id: sidechainLookahead
-
-                        label: i18n("Lookahead")
-                        from: 0
-                        to: 20
-                        value: pluginDB.sidechainLookahead
-                        decimals: 3
-                        stepSize: 0.001
-                        unit: "ms"
-                        onValueModified: (v) => {
-                            pluginDB.sidechainLookahead = v;
-                        }
+                contentItem: Column {
+                    GridLayout {
+                        columns: 2
 
                         anchors {
                             left: parent.left
