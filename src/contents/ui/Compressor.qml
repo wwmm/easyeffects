@@ -399,8 +399,42 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: Column {
-                    GridLayout {
-                        columns: 2
+                    EeSpinBox {
+                        id: dry
+
+                        label: i18n("Dry")
+                        from: -80.01
+                        to: 20
+                        value: pluginDB.dry
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: "dB"
+                        minusInfinityMode: true
+                        onValueModified: (v) => {
+                            pluginDB.dry = v;
+                        }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    EeSpinBox {
+                        id: wet
+
+                        label: i18n("Wet")
+                        from: -80.01
+                        to: 20
+                        value: pluginDB.wet
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: "dB"
+                        minusInfinityMode: true
+                        onValueModified: (v) => {
+                            pluginDB.wet = v;
+                        }
 
                         anchors {
                             left: parent.left
@@ -416,14 +450,10 @@ Kirigami.ScrollablePage {
         }
 
         Kirigami.CardsLayout {
-            id: cardLayoutLevel
-
             maximumColumns: 2
             uniformCellWidths: true
 
             Kirigami.Card {
-                id: cardLevels1
-
                 Layout.fillWidth: false
                 Layout.alignment: Qt.AlignHCenter
 
@@ -533,8 +563,6 @@ Kirigami.ScrollablePage {
             }
 
             Kirigami.Card {
-                id: cardLevels2
-
                 Layout.fillWidth: false
                 Layout.alignment: Qt.AlignHCenter
 

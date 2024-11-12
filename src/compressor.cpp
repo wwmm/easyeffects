@@ -72,6 +72,9 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
   BIND_LV2_PORT("slpm", lpfMode, setLpfMode, db::Compressor::lpfModeChanged);
   BIND_LV2_PORT("shpf", hpfFrequency, setHpfFrequency, db::Compressor::hpfFrequencyChanged);
   BIND_LV2_PORT("slpf", lpfFrequency, setLpfFrequency, db::Compressor::lpfFrequencyChanged);
+  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Compressor::sidechainPreampChanged, true);
+  BIND_LV2_PORT_DB("cdr", dry, setDry, db::Compressor::dryChanged, true);
+  BIND_LV2_PORT_DB("cwt", wet, setWet, db::Compressor::wetChanged, true);
 
   // lv2_wrapper->bind_key_double<"at", "attack">(settings);
 
@@ -89,14 +92,8 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
 
   // lv2_wrapper->bind_key_double_db<"mk", "makeup">(settings);
 
-  // lv2_wrapper->bind_key_double_db<"scp", "sidechain-preamp">(settings);
-
   // The following controls can assume -inf
   // lv2_wrapper->bind_key_double_db<"rrl", "release-threshold", false>(settings);
-
-  // lv2_wrapper->bind_key_double_db<"cdr", "dry", false>(settings);
-
-  // lv2_wrapper->bind_key_double_db<"cwt", "wet", false>(settings);
 }
 
 Compressor::~Compressor() {

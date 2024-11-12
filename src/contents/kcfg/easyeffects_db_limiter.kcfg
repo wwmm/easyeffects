@@ -212,7 +212,7 @@
         </entry>
         <entry name="sidechainPreamp" type="Double">
             <label></label>
-            <min>-100</min>
+            <min>-80.01</min>
             <max>40</max>
             <default>0</default>
         </entry>
