@@ -9,7 +9,7 @@ const import_apo_preset = (text_file) => {
     }
 
     // INTERNAL METHODS
-    // Parse APO preamp
+    // Parse APO preamp.
     const parse_apo_preamp = (line, preamp) => {
         const apo_preamp = line.match(/preamp\s*:\s*([+-]?\d+(?:\.\d+)?)\s*db/i);
 
@@ -22,7 +22,7 @@ const import_apo_preset = (text_file) => {
         return (isNaN(preamp_num)) ? null : preamp_num;
     }
 
-    // Parse filter type
+    // Parse filter type.
     const parse_apo_filter_type = (line, filter) => {
         // Look for disabled filter.
         if (line.match(/filter\s*\d*\s*:\s*off\s/i) !== null) {
@@ -65,7 +65,7 @@ const import_apo_preset = (text_file) => {
         return true;
     }
 
-    // Parse filter gain
+    // Parse filter gain.
     const parse_apo_gain = (line, filter) => {
         const filter_gain = line.match(/gain\s+([+-]?\d+(?:\.\d+)?)\s*db/i);
 
@@ -84,7 +84,7 @@ const import_apo_preset = (text_file) => {
         return true;
     }
 
-    // Parse filter quality
+    // Parse filter quality.
     const parse_apo_quality = (line, filter) => {
         const filter_q = line.match(/q\s+(\d+(?:\.\d+)?)/i);
 
@@ -133,7 +133,7 @@ const import_apo_preset = (text_file) => {
 
             parse_apo_quality(line, filter);
         } else if (filter.type === "PK" || filter.type === "MODAL" || filter.type === "PEQ") {
-            // Peak/Bell filter
+            // Peak/Bell filter.
             parse_apo_gain(line, filter);
 
             parse_apo_quality(line, filter);
@@ -142,34 +142,34 @@ const import_apo_preset = (text_file) => {
             // (LSP does not import Band-pass, but we do it anyway).
             parse_apo_quality(line, filter);
         } else if (filter.type == "LS" || filter.type == "LSC" || filter.type == "HS" || filter.type == "HSC") {
-            // Low-shelf and High-shelf filters (with center freq., x dB per oct.)
+            // Low-shelf and High-shelf filters (with center freq., x dB per oct.).
             parse_apo_gain(line, filter);
 
             // Q value is optional for these filters according to APO config documentation,
             // but LSP import function always sets it to 2/3.
             filter.quality = 2 / 3;
         } else if (filter.type == "LS 6DB") {
-            // Low-shelf filter (6 dB per octave with corner freq.)
+            // Low-shelf filter (6 dB per octave with corner freq.).
             parse_apo_gain(line, filter);
 
             // LSP import function sets custom freq and quality for this filter.
             filter.freq = filter.freq * 2 / 3;
             filter.quality = Math.sqrt(2) / 3;
         } else if (filter.type == "LS 12DB") {
-            // Low-shelf filter (12 dB per octave with corner freq.)
+            // Low-shelf filter (12 dB per octave with corner freq.).
             parse_apo_gain(line, filter);
 
             // LSP import function sets custom freq for this filter.
             filter.freq = filter.freq * 3 / 2;
         } else if (filter.type == "HS 6DB") {
-            // High-shelf filter (6 dB per octave with corner freq.)
+            // High-shelf filter (6 dB per octave with corner freq.).
             parse_apo_gain(line, filter);
 
             // LSP import function sets custom freq and quality for this filter.
             filter.freq = filter.freq / (1 / Math.sqrt(2));
             filter.quality = Math.sqrt(2) / 3;
         } else if (filter.type == "HS 12DB") {
-            // High-shelf filter (12 dB per octave with corner freq.)
+            // High-shelf filter (12 dB per octave with corner freq.).
             parse_apo_gain(line, filter);
 
             // LSP import function sets custom freq for this filter.
@@ -196,7 +196,7 @@ const import_apo_preset = (text_file) => {
 
     const lines = text_file.match(/[^\n]+/g);
     for (const line of lines) {
-        // Avoid commented lines
+        // Avoid commented lines.
         if (line.match(/^[ \t]*#/) !== null) {
             continue;
         }
@@ -211,7 +211,84 @@ const import_apo_preset = (text_file) => {
             preamp = new_preamp ?? preamp;
         }
     }
+};
 
-    console.log(preamp);
-    console.log(bands);
-};  
+const import_graphiceq_preset = (text_file) => {
+  // INTERNAL PROPERTIES
+  // GraphicEq filter class.
+  class GraphicEQ_Band {
+    freq = 1000;
+    gain = 0;
+  }
+
+  // INTERNAL METHODS
+  const parse_graphiceq_config = (srt, bands) => {
+    // The first parsing stage is to ensure the given string contains a
+    // substring corresponding to the GraphicEQ format reported in the documentation:
+    // https://sourceforge.net/p/equalizerapo/wiki/Configuration%20reference/#graphiceq-since-version-10
+
+    // In order to do it, the following regular expression is used:
+    const re_geq = /graphiceq\s*:((?:\s*\d+(?:,\d+)?(?:\.\d+)?\s+[+-]?\d+(?:\.\d+)?[ \t]*(?:;|$))+)/i;
+
+    // That regex is quite permissive since:
+    // - It's case insensitive;
+    // - Gain values can be signed (with leading +/-);
+    // - Frequency values can use a comma as thousand separator.
+
+    // Note that the last class does not include the newline as whitespaces to allow
+    // matching the `$` as the end of line (not needed in this case, but it will also
+    // work if the input string will be multiline in the future).
+    // This ensures the last band is captured with or without the final `;`.
+    // The regex has been tested at https://regex101.com/r/JRwf4G/1
+
+    const geq_format = srt.match(re_geq);
+
+    // If the format of the string is correct, we capture the full match and a
+    // group related to the sequential bands.
+    if (geq_format === null && geq_format.length !== 2) {
+      return false;
+    }
+
+    // Save the substring with all the bands and use it to extract the values.
+    const bands_substr = geq_format[1];
+
+    // Couldn't we extract the values in one only regex checking also the GraphicEQ format?
+    // No, there's no way. Even with Perl Compatible Regex (PCRE) checking the whole format
+    // and capturing the values will return only the last repeated group (the last band),
+    // but we need all of them.
+
+    // So we use the following regex to extract the values from each band.
+    const re_geq_band = /(\d+(?:,\d+)?(?:\.\d+)?)\s+([+-]?\d+(?:\.\d+)?)/g;
+
+    // And matchAll with global flag to get all the capturing groups
+    const geq_bands_str = bands_substr.matchAll(re_geq_band);
+
+    // Save values on new objects and push them to bands array.
+    for (const geq_band of geq_bands_str) {
+      let geq_band_obj = new GraphicEQ_Band();
+
+      geq_band_obj.freq = geq_band[1];
+      geq_band_obj.gain = geq_band[2];
+
+      bands.push(geq_band_obj);
+    }
+
+    return bands.length > 0;
+  };
+
+  // FUNCTION BODY
+  let bands = [];
+
+  const lines = text_file.match(/[^\n]+/g);
+
+  for (const line of lines) {
+    // Avoid commented lines.
+    if (line.match(/^[ \t]*#/) !== null) {
+      continue;
+    }
+
+    if (parse_graphiceq_config(line, bands)) {
+      break;
+    }
+  }
+}
