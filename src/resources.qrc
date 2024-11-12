@@ -21,5 +21,6 @@
         <file alias="PipeWirePage.qml">contents/ui/PipeWirePage.qml</file>
         <file alias="PreferencesSheet.qml">contents/ui/PreferencesSheet.qml</file>
         <file alias="Common.js">contents/ui/Common.js</file>
+        <file alias="EqualizerUi.js">contents/ui/EqualizerUi.js</file>
     </qresource>
 </RCC>
