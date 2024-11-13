@@ -6,6 +6,38 @@ add_executable(easyeffects)
 
 kde_target_enable_exceptions(easyeffects PRIVATE)
 
+kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})
+
+# install(FILES ${KCFG_FILES} DESTINATION ${KDE_INSTALL_KCFGDIR})
+
+#https://github.com/KDE/kconfig/blob/3856c80e4061a1b8e34848198b186faed27b5190/KF6ConfigMacros.cmake#L136
+
+# file(WRITE "${CMAKE_BINARY_DIR}/replace.cmake"
+#     [=[
+#     file(GLOB dbList ${CMAKE_BINARY_DIR}/easyeffects_db_*.h)
+    
+#     foreach(dbFile ${dbList})
+#         MESSAGE(STATUS ${dbFile})
+#         file(READ "${dbFile}" TEXT)
+#         string(REPLACE "KConfigCompilerSignallingItem" "Q_INVOKABLE KConfigCompilerSignallingItem" TEXT "${TEXT}")
+#         file(WRITE "${dbFile}" "${TEXT}")
+#     endforeach()
+
+#     # string(REPLACE "KConfigCompilerSignallingItem" "Q_INVOKABLE KConfigCompilerSignallingItem" TEXT "${TEXT}")
+#     # file(WRITE "${TARGET}" "${TEXT}")
+#     ]=]
+# )
+
+# get_target_property(ee_kcfg_sources easyeffects SOURCES)
+
+# add_custom_target(preparekcfg ALL
+#     COMMAND ${CMAKE_COMMAND} -P "${CMAKE_BINARY_DIR}/replace.cmake"
+#     DEPENDS ${ee_kcfg_sources}
+#     COMMENT "preparing kcfg headers..."
+# )
+
+# add_dependencies(easyeffects preparekcfg)
+
 target_sources(easyeffects PRIVATE
     autogain.cpp
     bass_enhancer.cpp
@@ -86,9 +118,5 @@ if(ENABLE_LIBCPP_WORKAROUNDS)
     MESSAGE(STATUS "Enabling workarounds for lib++ systems")
     target_compile_definitions(easyeffects PRIVATE ENABLE_LIBCPP_WORKAROUNDS=1)
 endif(ENABLE_LIBCPP_WORKAROUNDS)
-
-kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})
-
-# install(FILES ${KCFG_FILES} DESTINATION ${KDE_INSTALL_KCFGDIR})
 
 install(TARGETS easyeffects ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
