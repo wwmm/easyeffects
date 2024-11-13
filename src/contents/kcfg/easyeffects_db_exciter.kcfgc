@@ -1,6 +1,8 @@
 File=easyeffects_db_exciter.kcfg
 NameSpace=db
 ClassName=Exciter
+Inherits=KConfigBaseEE
+IncludeFiles=kconfig_base_ee.hpp
 Mutators=true
 Notifiers=true
 DefaultValueGetters=true

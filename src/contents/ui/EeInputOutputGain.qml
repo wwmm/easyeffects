@@ -8,8 +8,6 @@ Item {
     id: control
 
     required property var pluginDB
-    property real from: -36
-    property real to: 36
     property alias inputLevelLeft: inputLevelLeft.value
     property alias inputLevelRight: inputLevelRight.value
     property alias outputLevelLeft: outputLevelLeft.value
@@ -37,8 +35,8 @@ Item {
                     labelFillWidth: false
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: control.from
-                    to: control.to
+                    from: pluginDB.getMinValue("inputGain")
+                    to: pluginDB.getMaxValue("inputGain")
                     value: pluginDB.inputGain
                     decimals: 0
                     stepSize: 1
@@ -87,8 +85,8 @@ Item {
                     labelFillWidth: true
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: control.from
-                    to: control.to
+                    from: pluginDB.getMinValue("outputGain")
+                    to: pluginDB.getMaxValue("outputGain")
                     value: pluginDB.outputGain
                     decimals: 0
                     stepSize: 1

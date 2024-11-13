@@ -10,34 +10,6 @@ kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})
 
 # install(FILES ${KCFG_FILES} DESTINATION ${KDE_INSTALL_KCFGDIR})
 
-#https://github.com/KDE/kconfig/blob/3856c80e4061a1b8e34848198b186faed27b5190/KF6ConfigMacros.cmake#L136
-
-# file(WRITE "${CMAKE_BINARY_DIR}/replace.cmake"
-#     [=[
-#     file(GLOB dbList ${CMAKE_BINARY_DIR}/easyeffects_db_*.h)
-    
-#     foreach(dbFile ${dbList})
-#         MESSAGE(STATUS ${dbFile})
-#         file(READ "${dbFile}" TEXT)
-#         string(REPLACE "KConfigCompilerSignallingItem" "Q_INVOKABLE KConfigCompilerSignallingItem" TEXT "${TEXT}")
-#         file(WRITE "${dbFile}" "${TEXT}")
-#     endforeach()
-
-#     # string(REPLACE "KConfigCompilerSignallingItem" "Q_INVOKABLE KConfigCompilerSignallingItem" TEXT "${TEXT}")
-#     # file(WRITE "${TARGET}" "${TEXT}")
-#     ]=]
-# )
-
-# get_target_property(ee_kcfg_sources easyeffects SOURCES)
-
-# add_custom_target(preparekcfg ALL
-#     COMMAND ${CMAKE_COMMAND} -P "${CMAKE_BINARY_DIR}/replace.cmake"
-#     DEPENDS ${ee_kcfg_sources}
-#     COMMENT "preparing kcfg headers..."
-# )
-
-# add_dependencies(easyeffects preparekcfg)
-
 target_sources(easyeffects PRIVATE
     autogain.cpp
     bass_enhancer.cpp
@@ -46,6 +18,7 @@ target_sources(easyeffects PRIVATE
     db_manager.cpp
     effects_base.cpp
     exciter.cpp
+    kconfig_base_ee.cpp
     limiter.cpp
     local_client.cpp
     local_server.cpp

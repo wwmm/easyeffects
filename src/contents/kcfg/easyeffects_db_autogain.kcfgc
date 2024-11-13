@@ -1,6 +1,8 @@
 File=easyeffects_db_autogain.kcfg
 NameSpace=db
 ClassName=Autogain
+Inherits=KConfigBaseEE
+IncludeFiles=kconfig_base_ee.hpp
 Mutators=true
 Notifiers=true
 DefaultValueGetters=true

@@ -269,8 +269,8 @@ Kirigami.ScrollablePage {
                             label: i18n("Preamp")
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: -80.01
-                            to: 40
+                            from: pluginDB.getMinValue("sidechainPreamp")
+                            to: pluginDB.getMaxValue("sidechainPreamp")
                             value: pluginDB.sidechainPreamp
                             decimals: 2
                             stepSize: 0.01
@@ -287,8 +287,8 @@ Kirigami.ScrollablePage {
                             label: i18n("Reactivity")
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: 0
-                            to: 250
+                            from: pluginDB.getMinValue("sidechainReactivity")
+                            to: pluginDB.getMaxValue("sidechainReactivity")
                             value: pluginDB.sidechainReactivity
                             decimals: 2
                             stepSize: 0.01
@@ -305,8 +305,8 @@ Kirigami.ScrollablePage {
                             label: i18n("Lookahead")
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: 0
-                            to: 20
+                            from: pluginDB.getMinValue("sidechainLookahead")
+                            to: pluginDB.getMaxValue("sidechainLookahead")
                             value: pluginDB.sidechainLookahead
                             decimals: 3
                             stepSize: 0.001
