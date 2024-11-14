@@ -76,8 +76,8 @@ Kirigami.ScrollablePage {
                         id: target
 
                         label: i18n("Target")
-                        from: Common.minimumDecibelLevel
-                        to: 0
+                        from: pluginDB.getMinValue("target")
+                        to: pluginDB.getMaxValue("target")
                         value: pluginDB.target
                         decimals: 0
                         stepSize: 1
@@ -97,8 +97,8 @@ Kirigami.ScrollablePage {
                         id: silenceThreshold
 
                         label: i18n("Silence")
-                        from: Common.minimumDecibelLevel
-                        to: 0
+                        from: pluginDB.getMinValue("silenceThreshold")
+                        to: pluginDB.getMaxValue("silenceThreshold")
                         value: pluginDB.silenceThreshold
                         decimals: 0
                         stepSize: 1
@@ -118,8 +118,8 @@ Kirigami.ScrollablePage {
                         id: maximumHistory
 
                         label: i18n("Maximum History")
-                        from: 6
-                        to: 3600
+                        from: pluginDB.getMinValue("maximumHistory")
+                        to: pluginDB.getMaxValue("maximumHistory")
                         value: pluginDB.maximumHistory
                         decimals: 0
                         stepSize: 1

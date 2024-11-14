@@ -120,8 +120,8 @@ Kirigami.ScrollablePage {
                         id: stereoLink
 
                         label: i18n("Stereo Link")
-                        from: 0
-                        to: 100
+                        from: pluginDB.getMinValue("stereoLink")
+                        to: pluginDB.getMaxValue("stereoLink")
                         value: pluginDB.stereoLink
                         decimals: 1
                         stepSize: 0.1
@@ -353,8 +353,8 @@ Kirigami.ScrollablePage {
                             verticalPadding: 0
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: 10
-                            to: 20000
+                            from: pluginDB.getMinValue("hpfFrequency")
+                            to: pluginDB.getMaxValue("hpfFrequency")
                             value: pluginDB.hpfFrequency
                             decimals: 0
                             stepSize: 1
@@ -373,8 +373,8 @@ Kirigami.ScrollablePage {
                             labelFillWidth: false
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: 10
-                            to: 20000
+                            from: pluginDB.getMinValue("lpfFrequency")
+                            to: pluginDB.getMaxValue("lpfFrequency")
                             value: pluginDB.lpfFrequency
                             decimals: 0
                             stepSize: 1
@@ -403,8 +403,8 @@ Kirigami.ScrollablePage {
                         id: dry
 
                         label: i18n("Dry")
-                        from: -80.01
-                        to: 20
+                        from: pluginDB.getMinValue("dry")
+                        to: pluginDB.getMaxValue("dry")
                         value: pluginDB.dry
                         decimals: 2
                         stepSize: 0.01
@@ -425,8 +425,8 @@ Kirigami.ScrollablePage {
                         id: wet
 
                         label: i18n("Wet")
-                        from: -80.01
-                        to: 20
+                        from: pluginDB.getMinValue("wet")
+                        to: pluginDB.getMaxValue("wet")
                         value: pluginDB.wet
                         decimals: 2
                         stepSize: 0.01

@@ -56,8 +56,8 @@ Kirigami.ScrollablePage {
                 orientation: Qt.Horizontal
                 snapMode: Controls.Slider.SnapAlways
                 value: pluginDB.blend
-                from: -10
-                to: 10
+                from: pluginDB.getMinValue("blend")
+                to: pluginDB.getMaxValue("blend")
                 stepSize: 1
                 onValueChanged: () => {
                     if (value !== pluginDB.blend)
@@ -96,8 +96,8 @@ Kirigami.ScrollablePage {
                         id: amount
 
                         label: i18n("Amount")
-                        from: Common.minimumDecibelLevel
-                        to: 36
+                        from: pluginDB.getMinValue("amount")
+                        to: pluginDB.getMaxValue("amount")
                         value: pluginDB.amount
                         decimals: 1
                         stepSize: 0.1
@@ -111,8 +111,8 @@ Kirigami.ScrollablePage {
                         id: harmonics
 
                         label: i18n("Harmonics")
-                        from: 0.1
-                        to: 10
+                        from: pluginDB.getMinValue("harmonics")
+                        to: pluginDB.getMaxValue("harmonics")
                         value: pluginDB.harmonics
                         decimals: 1
                         stepSize: 0.1
@@ -125,8 +125,8 @@ Kirigami.ScrollablePage {
                         id: scope
 
                         label: i18n("Scope")
-                        from: 10
-                        to: 250
+                        from: pluginDB.getMinValue("scope")
+                        to: pluginDB.getMaxValue("scope")
                         value: pluginDB.scope
                         decimals: 0
                         stepSize: 1
@@ -152,8 +152,8 @@ Kirigami.ScrollablePage {
                         id: floor
 
                         label: i18n("Floor")
-                        from: 10
-                        to: 120
+                        from: pluginDB.getMinValue("floor")
+                        to: pluginDB.getMaxValue("floor")
                         value: pluginDB.floor
                         decimals: 0
                         stepSize: 1

@@ -119,8 +119,8 @@ Kirigami.ScrollablePage {
                         id: threshold
 
                         label: i18n("Threshold")
-                        from: -48
-                        to: 0
+                        from: pluginDB.getMinValue("threshold")
+                        to: pluginDB.getMaxValue("threshold")
                         value: pluginDB.threshold
                         decimals: 2
                         stepSize: 0.01
@@ -140,8 +140,8 @@ Kirigami.ScrollablePage {
                         id: attack
 
                         label: i18n("Attack")
-                        from: 0.25
-                        to: 20
+                        from: pluginDB.getMinValue("attack")
+                        to: pluginDB.getMaxValue("attack")
                         value: pluginDB.attack
                         decimals: 2
                         stepSize: 0.01
@@ -161,8 +161,8 @@ Kirigami.ScrollablePage {
                         id: release
 
                         label: i18n("Release")
-                        from: 0.25
-                        to: 20
+                        from: pluginDB.getMinValue("release")
+                        to: pluginDB.getMaxValue("release")
                         value: pluginDB.release
                         decimals: 2
                         stepSize: 0.01
@@ -182,8 +182,8 @@ Kirigami.ScrollablePage {
                         id: stereoLink
 
                         label: i18n("Stereo Link")
-                        from: 0
-                        to: 100
+                        from: pluginDB.getMinValue("stereoLink")
+                        to: pluginDB.getMaxValue("stereoLink")
                         value: pluginDB.stereoLink
                         decimals: 1
                         stepSize: 0.1
@@ -268,8 +268,8 @@ Kirigami.ScrollablePage {
                         id: sidechainPreamp
 
                         label: i18n("Preamp")
-                        from: -80.01
-                        to: 40
+                        from: pluginDB.getMinValue("sidechainPreamp")
+                        to: pluginDB.getMaxValue("sidechainPreamp")
                         value: pluginDB.sidechainPreamp
                         decimals: 2
                         stepSize: 0.01
@@ -305,8 +305,8 @@ Kirigami.ScrollablePage {
                         id: alrAttack
 
                         label: i18n("Attack")
-                        from: 0.1
-                        to: 200
+                        from: pluginDB.getMinValue("alrAttack")
+                        to: pluginDB.getMaxValue("alrAttack")
                         value: pluginDB.alrAttack
                         decimals: 2
                         stepSize: 0.01
@@ -326,8 +326,8 @@ Kirigami.ScrollablePage {
                         id: alrRelease
 
                         label: i18n("Release")
-                        from: 10
-                        to: 1000
+                        from: pluginDB.getMinValue("alrRelease")
+                        to: pluginDB.getMaxValue("alrRelease")
                         value: pluginDB.alrRelease
                         decimals: 1
                         stepSize: 0.1
@@ -347,8 +347,8 @@ Kirigami.ScrollablePage {
                         id: alrKnee
 
                         label: i18n("Knee")
-                        from: -12
-                        to: 12
+                        from: pluginDB.getMinValue("alrKnee")
+                        to: pluginDB.getMaxValue("alrKnee")
                         value: pluginDB.alrKnee
                         decimals: 2
                         stepSize: 0.01
