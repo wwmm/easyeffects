@@ -8,5 +8,3 @@ Notifiers=true
 DefaultValueGetters=true
 Singleton=false
 GenerateProperties=true
-MemberVariables=public
-ItemAccessors=true

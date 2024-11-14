@@ -72,23 +72,19 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
   BIND_LV2_PORT("slpm", lpfMode, setLpfMode, db::Compressor::lpfModeChanged);
   BIND_LV2_PORT("shpf", hpfFrequency, setHpfFrequency, db::Compressor::hpfFrequencyChanged);
   BIND_LV2_PORT("slpf", lpfFrequency, setLpfFrequency, db::Compressor::lpfFrequencyChanged);
+  BIND_LV2_PORT("cr", ratio, setRatio, db::Compressor::ratioChanged);
   BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Compressor::sidechainPreampChanged, true);
   BIND_LV2_PORT_DB("cdr", dry, setDry, db::Compressor::dryChanged, true);
   BIND_LV2_PORT_DB("cwt", wet, setWet, db::Compressor::wetChanged, true);
+  BIND_LV2_PORT_DB("bth", boostThreshold, setBoostThreshold, db::Compressor::boostThresholdChanged, true);
+  BIND_LV2_PORT_DB("bsa", boostAmount, setBoostAmount, db::Compressor::boostAmountChanged, true);
+  BIND_LV2_PORT_DB("kn", knee, setKnee, db::Compressor::kneeChanged, true);
 
   // lv2_wrapper->bind_key_double<"at", "attack">(settings);
 
   // lv2_wrapper->bind_key_double<"rt", "release">(settings);
 
-  // lv2_wrapper->bind_key_double<"cr", "ratio">(settings);
-
-  // lv2_wrapper->bind_key_double_db<"bth", "boost-threshold">(settings);
-
-  // lv2_wrapper->bind_key_double_db<"bsa", "boost-amount">(settings);
-
   // lv2_wrapper->bind_key_double_db<"al", "threshold">(settings);
-
-  // lv2_wrapper->bind_key_double_db<"kn", "knee">(settings);
 
   // lv2_wrapper->bind_key_double_db<"mk", "makeup">(settings);
 
