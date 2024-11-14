@@ -42,7 +42,7 @@ Kirigami.ScrollablePage {
         Kirigami.CardsLayout {
             id: cardLayout
 
-            maximumColumns: 4
+            maximumColumns: 5
             uniformCellWidths: true
 
             Kirigami.Card {
@@ -53,120 +53,189 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: Column {
-                    FormCard.FormComboBoxDelegate {
-                        id: mode
-
-                        text: i18n("Mode")
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.mode
-                        editable: false
-                        model: [i18n("Downward"), i18n("Upward"), i18n("Boosting")]
-                        onActivated: (idx) => {
-                            pluginDB.mode = idx;
-                        }
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
 
                         anchors {
                             left: parent.left
                             right: parent.right
+                        }
+
+                        FormCard.FormComboBoxDelegate {
+                            id: mode
+
+                            Layout.columnSpan: 2
+                            text: i18n("Mode")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: pluginDB.mode
+                            editable: false
+                            model: [i18n("Downward"), i18n("Upward"), i18n("Boosting")]
+                            onActivated: (idx) => {
+                                pluginDB.mode = idx;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: boostThreshold
+
+                            Layout.columnSpan: 2
+                            label: i18n("Boost Threshold")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("boostThreshold")
+                            to: pluginDB.getMaxValue("boostThreshold")
+                            value: pluginDB.boostThreshold
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            enabled: mode.currentIndex === 1
+                            visible: mode.currentIndex === 1
+                            onValueModified: (v) => {
+                                pluginDB.boostThreshold = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: boostAmount
+
+                            Layout.columnSpan: 2
+                            label: i18n("Boost Amount")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("boostAmount")
+                            to: pluginDB.getMaxValue("boostAmount")
+                            value: pluginDB.boostAmount
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            enabled: mode.currentIndex === 2
+                            visible: mode.currentIndex === 2
+                            onValueModified: (v) => {
+                                pluginDB.boostAmount = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: ratio
+
+                            label: i18n("Ratio")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("ratio")
+                            to: pluginDB.getMaxValue("ratio")
+                            value: pluginDB.ratio
+                            decimals: 0
+                            stepSize: 1
+                            onValueModified: (v) => {
+                                pluginDB.ratio = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: knee
+
+                            label: i18n("Knee")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("knee")
+                            to: pluginDB.getMaxValue("knee")
+                            value: pluginDB.knee
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            onValueModified: (v) => {
+                                pluginDB.knee = v;
+                            }
                         }
 
                     }
 
-                    EeSpinBox {
-                        id: boostThreshold
+                }
 
-                        label: i18n("Boost Threshold")
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("boostThreshold")
-                        to: pluginDB.getMaxValue("boostThreshold")
-                        value: pluginDB.boostThreshold
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: "dB"
-                        minusInfinityMode: true
-                        enabled: mode.currentIndex === 1
-                        visible: mode.currentIndex === 1
-                        onValueModified: (v) => {
-                            pluginDB.boostThreshold = v;
-                        }
+            }
+
+            Kirigami.Card {
+
+                header: Kirigami.Heading {
+                    text: i18n("Threshold and Time")
+                    level: 2
+                }
+
+                contentItem: Column {
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
 
                         anchors {
                             left: parent.left
                             right: parent.right
                         }
 
-                    }
+                        EeSpinBox {
+                            id: threshold
 
-                    EeSpinBox {
-                        id: boostAmount
-
-                        label: i18n("Boost Amount")
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("boostAmount")
-                        to: pluginDB.getMaxValue("boostAmount")
-                        value: pluginDB.boostAmount
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: "dB"
-                        minusInfinityMode: true
-                        enabled: mode.currentIndex === 2
-                        visible: mode.currentIndex === 2
-                        onValueModified: (v) => {
-                            pluginDB.boostAmount = v;
+                            label: i18n("Attack")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("threshold")
+                            to: pluginDB.getMaxValue("threshold")
+                            value: pluginDB.threshold
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            onValueModified: (v) => {
+                                pluginDB.threshold = v;
+                            }
                         }
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                        EeSpinBox {
+                            id: attack
+
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("attack")
+                            to: pluginDB.getMaxValue("attack")
+                            value: pluginDB.attack
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "ms"
+                            onValueModified: (v) => {
+                                pluginDB.attack = v;
+                            }
                         }
 
-                    }
+                        EeSpinBox {
+                            id: releaseThreshold
 
-                    EeSpinBox {
-                        id: ratio
-
-                        label: i18n("Ratio")
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("ratio")
-                        to: pluginDB.getMaxValue("ratio")
-                        value: pluginDB.ratio
-                        decimals: 0
-                        stepSize: 1
-                        minusInfinityMode: true
-                        onValueModified: (v) => {
-                            pluginDB.ratio = v;
+                            label: i18n("Release")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("releaseThreshold")
+                            to: pluginDB.getMaxValue("releaseThreshold")
+                            value: pluginDB.releaseThreshold
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            onValueModified: (v) => {
+                                pluginDB.releaseThreshold = v;
+                            }
                         }
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        EeSpinBox {
+                            id: release
 
-                    }
-
-                    EeSpinBox {
-                        id: knee
-
-                        label: i18n("Knee")
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("knee")
-                        to: pluginDB.getMaxValue("knee")
-                        value: pluginDB.knee
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: "dB"
-                        minusInfinityMode: true
-                        onValueModified: (v) => {
-                            pluginDB.knee = v;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("release")
+                            to: pluginDB.getMaxValue("release")
+                            value: pluginDB.release
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "ms"
+                            onValueModified: (v) => {
+                                pluginDB.release = v;
+                            }
                         }
 
                     }
@@ -195,6 +264,7 @@ Kirigami.ScrollablePage {
                         FormCard.FormComboBoxDelegate {
                             id: sidechainType
 
+                            Layout.columnSpan: 2
                             text: i18n("Type")
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: pluginDB.sidechainType
@@ -202,49 +272,6 @@ Kirigami.ScrollablePage {
                             model: [i18n("Feed-forward"), i18n("Feed-back"), i18n("External"), i18n("Link")]
                             onActivated: (idx) => {
                                 pluginDB.sidechainType = idx;
-                            }
-                        }
-
-                        FormCard.FormComboBoxDelegate {
-                            id: sidechainMode
-
-                            text: i18n("Mode")
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.sidechainMode
-                            editable: false
-                            model: [i18n("Peak"), i18n("RMS"), i18n("Low-Pass"), i18n("SMA")]
-                            onActivated: (idx) => {
-                                pluginDB.sidechainMode = idx;
-                            }
-                        }
-
-                        FormCard.FormComboBoxDelegate {
-                            id: sidechainSource
-
-                            Layout.columnSpan: 2
-                            text: i18n("Source")
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.sidechainSource
-                            editable: false
-                            model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]
-                            visible: !pluginDB.stereoSplit
-                            onActivated: (idx) => {
-                                pluginDB.sidechainSource = idx;
-                            }
-                        }
-
-                        FormCard.FormComboBoxDelegate {
-                            id: stereoSplitSource
-
-                            Layout.columnSpan: 2
-                            text: i18n("Source")
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.stereoSplitSource
-                            editable: false
-                            model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]
-                            visible: pluginDB.stereoSplit
-                            onActivated: (idx) => {
-                                pluginDB.stereoSplitSource = idx;
                             }
                         }
 
@@ -271,6 +298,47 @@ Kirigami.ScrollablePage {
                                 if (selectedName !== pluginDB.sidechainInputDevice)
                                     pluginDB.sidechainInputDevice = selectedName;
 
+                            }
+                        }
+
+                        FormCard.FormComboBoxDelegate {
+                            id: sidechainMode
+
+                            text: i18n("Mode")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: pluginDB.sidechainMode
+                            editable: false
+                            model: [i18n("Peak"), i18n("RMS"), i18n("Low-Pass"), i18n("SMA")]
+                            onActivated: (idx) => {
+                                pluginDB.sidechainMode = idx;
+                            }
+                        }
+
+                        FormCard.FormComboBoxDelegate {
+                            id: sidechainSource
+
+                            text: i18n("Source")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: pluginDB.sidechainSource
+                            editable: false
+                            model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]
+                            visible: !pluginDB.stereoSplit
+                            onActivated: (idx) => {
+                                pluginDB.sidechainSource = idx;
+                            }
+                        }
+
+                        FormCard.FormComboBoxDelegate {
+                            id: stereoSplitSource
+
+                            text: i18n("Source")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: pluginDB.stereoSplitSource
+                            editable: false
+                            model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]
+                            visible: pluginDB.stereoSplit
+                            onActivated: (idx) => {
+                                pluginDB.stereoSplitSource = idx;
                             }
                         }
 
@@ -393,7 +461,7 @@ Kirigami.ScrollablePage {
                             decimals: 0
                             stepSize: 1
                             unit: "Hz"
-                            enabled: hpfMode.currentIndex !== 0
+                            visible: hpfMode.currentIndex !== 0
                             onValueModified: (v) => {
                                 pluginDB.hpfFrequency = v;
                             }
@@ -413,7 +481,7 @@ Kirigami.ScrollablePage {
                             decimals: 0
                             stepSize: 1
                             unit: "Hz"
-                            enabled: lpfMode.currentIndex !== 0
+                            visible: lpfMode.currentIndex !== 0
                             onValueModified: (v) => {
                                 pluginDB.lpfFrequency = v;
                             }
@@ -428,7 +496,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Audio Mixing")
+                    text: i18n("Output")
                     level: 2
                 }
 
@@ -437,6 +505,8 @@ Kirigami.ScrollablePage {
                         id: dry
 
                         label: i18n("Dry")
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
                         from: pluginDB.getMinValue("dry")
                         to: pluginDB.getMaxValue("dry")
                         value: pluginDB.dry
@@ -459,6 +529,8 @@ Kirigami.ScrollablePage {
                         id: wet
 
                         label: i18n("Wet")
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
                         from: pluginDB.getMinValue("wet")
                         to: pluginDB.getMaxValue("wet")
                         value: pluginDB.wet
@@ -468,6 +540,30 @@ Kirigami.ScrollablePage {
                         minusInfinityMode: true
                         onValueModified: (v) => {
                             pluginDB.wet = v;
+                        }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    EeSpinBox {
+                        id: makeup
+
+                        Layout.columnSpan: 2
+                        label: i18n("Makeup")
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: pluginDB.getMinValue("makeup")
+                        to: pluginDB.getMaxValue("makeup")
+                        value: pluginDB.makeup
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: "dB"
+                        onValueModified: (v) => {
+                            pluginDB.makeup = v;
                         }
 
                         anchors {
