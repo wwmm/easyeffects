@@ -27,6 +27,7 @@
 #include "easyeffects_db_compressor.h"
 #include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
+#include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 #include "pw_objects.hpp"

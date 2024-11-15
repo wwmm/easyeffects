@@ -20,27 +20,24 @@
 #pragma once
 
 #include <pipewire/proxy.h>
-#include <qtmetamacros.h>
 #include <sys/types.h>
 #include <QString>
 #include <span>
 #include <string>
 #include <vector>
-#include "easyeffects_db_compressor.h"
+#include "easyeffects_db_gate.h"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 
-class Compressor : public PluginBase {
-  Q_OBJECT;
-
+class Gate : public PluginBase {
  public:
-  Compressor(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
-  Compressor(const Compressor&) = delete;
-  auto operator=(const Compressor&) -> Compressor& = delete;
-  Compressor(const Compressor&&) = delete;
-  auto operator=(const Compressor&&) -> Compressor& = delete;
-  ~Compressor() override;
+  Gate(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
+  Gate(const Gate&) = delete;
+  auto operator=(const Gate&) -> Gate& = delete;
+  Gate(const Gate&&) = delete;
+  auto operator=(const Gate&&) -> Gate& = delete;
+  ~Gate() override;
 
   void reset() override;
 
@@ -62,24 +59,19 @@ class Compressor : public PluginBase {
 
   void update_probe_links() override;
 
-  Q_INVOKABLE [[nodiscard]] float getReductionLevelLeft() const;
-  Q_INVOKABLE [[nodiscard]] float getReductionLevelRight() const;
-  Q_INVOKABLE [[nodiscard]] float getSideChainLevelLeft() const;
-  Q_INVOKABLE [[nodiscard]] float getSideChainLevelRight() const;
-  Q_INVOKABLE [[nodiscard]] float getCurveLevelLeft() const;
-  Q_INVOKABLE [[nodiscard]] float getCurveLevelRight() const;
-  Q_INVOKABLE [[nodiscard]] float getEnvelopeLevelLeft() const;
-  Q_INVOKABLE [[nodiscard]] float getEnvelopeLevelRight() const;
-
  private:
   uint latency_n_frames = 0U;
 
-  float reduction_left = 0.0F, reduction_right = 0.0F;
-  float sidechain_left = 0.0F, sidechain_right = 0.0F;
-  float curve_left = 0.0F, curve_right = 0.0F;
-  float envelope_left = 0.0F, envelope_right = 0.0F;
+  float attack_zone_start_port_value = 0.0F;
+  float attack_threshold_port_value = 0.0F;
+  float release_zone_start_port_value = 0.0F;
+  float release_threshold_port_value = 0.0F;
+  float reduction_port_value = 0.0F;
+  float sidechain_port_value = 0.0F;
+  float curve_port_value = 0.0F;
+  float envelope_port_value = 0.0F;
 
-  db::Compressor* settings = nullptr;
+  db::Gate* settings = nullptr;
 
   std::vector<pw_proxy*> list_proxies;
 

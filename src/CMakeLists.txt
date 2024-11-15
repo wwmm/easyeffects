@@ -18,6 +18,7 @@ target_sources(easyeffects PRIVATE
     db_manager.cpp
     effects_base.cpp
     exciter.cpp
+    gate.cpp
     kconfig_base_ee.cpp
     limiter.cpp
     local_client.cpp
