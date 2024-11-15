@@ -374,7 +374,7 @@ auto PluginBase::connect_to_pw() -> bool {
     return false;
   }
 
-  initialize_listener();
+  pw_filter_add_listener(filter, &listener, &filter_events, &pf_data);
 
   pm->sync_wait_unlock();
 
@@ -408,10 +408,6 @@ auto PluginBase::connect_to_pw() -> bool {
   util::debug(log_tag + name.toStdString() + " successfully connected to PipeWire graph");
 
   return true;
-}
-
-void PluginBase::initialize_listener() {
-  pw_filter_add_listener(filter, &listener, &filter_events, &pf_data);
 }
 
 auto PluginBase::get_node_id() const -> uint {

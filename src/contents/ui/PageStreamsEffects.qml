@@ -59,7 +59,6 @@ Kirigami.Page {
                 }
 
                 delegate: DelegateStreamsList {
-                    readonly property int pageType: pageType
                 }
 
             }
@@ -402,7 +401,7 @@ Kirigami.Page {
                 actions: [
                     Kirigami.Action {
                         icon.name: pageType === 0 ? "multimedia-player-symbolic" : "media-record-symbolic"
-                        text: i18n("Players")
+                        text: pageType === 0 ? i18n("Players") : i18n("Recorders")
                         checkable: true
                         checked: streamDB.visiblePage === 0
                         onTriggered: {

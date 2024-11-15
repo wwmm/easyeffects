@@ -169,8 +169,6 @@ class PluginBase : public QObject {
 
   void setup_input_output_gain();
 
-  void initialize_listener();
-
   void get_peaks(const std::span<float>& left_in,
                  const std::span<float>& right_in,
                  std::span<float>& left_out,

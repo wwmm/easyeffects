@@ -20,7 +20,9 @@
 #include "stream_input_effects.hpp"
 #include <pipewire/link.h>
 #include <qcontainerfwd.h>
+#include <qnamespace.h>
 #include <qqml.h>
+#include <qtimer.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <spa/utils/defs.h>
@@ -73,9 +75,8 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
     }
   });
 
-  connect(pm, &pw::Manager::linkChanged, this, &StreamInputEffects::on_link_changed);
-
-  connect_filters();
+  connect(pm, &pw::Manager::newDefaultSourceName, this, &StreamInputEffects::onNewDefaultSourceName,
+          Qt::QueuedConnection);
 
   connect(db::StreamInputs::self(), &db::StreamInputs::inputDeviceChanged, [&]() {
     const auto name = db::StreamInputs::inputDevice();
@@ -112,12 +113,22 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
     Q_EMIT pipelineChanged();
   });
+
+  connect(pm, &pw::Manager::linkChanged, this, &StreamInputEffects::on_link_changed);
+
+  connect_filters();
 }
 
 StreamInputEffects::~StreamInputEffects() {
   disconnect_filters();
 
   util::debug("destroyed");
+}
+
+void StreamInputEffects::onNewDefaultSourceName(const QString& name) {
+  if (db::StreamInputs::useDefaultInputDevice()) {
+    db::StreamInputs::setInputDevice(name);
+  }
 }
 
 auto StreamInputEffects::apps_want_to_play() -> bool {
@@ -154,29 +165,23 @@ void StreamInputEffects::on_link_changed(const pw::LinkInfo link_info) {
       connect_filters();
     };
   } else {
-    // no apps want to play, check if the inactivity timer is enabled
-    // if (g_settings_get_boolean(global_settings, "inactivity-timer-enable")) {
-    //   // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
-    //   int inactivity_timeout = g_settings_get_int(global_settings, "inactivity-timeout");
-    //   g_timeout_add_seconds(inactivity_timeout, GSourceFunc(+[](StreamInputEffects* self) {
-    //                           if (!self->apps_want_to_play() && !self->list_proxies.empty()) {
-    //                             util::debug("No app linked to our device wants to play. Unlinking our filters.");
+    if (db::Main::inactivityTimerEnable()) {
+      // if the timer is enabled, wait for the timeout, then unlink plugin pipeline
 
-    //                             self->disconnect_filters();
-    //                           }
+      QTimer::singleShot(db::Main::inactivityTimeout() * 1000, this, [&]() {
+        if (!apps_want_to_play() && !list_proxies.empty()) {
+          util::debug("No app linked to our device wants to play. Unlinking our filters.");
 
-    //                           return G_SOURCE_REMOVE;
-    //                         }),
-    //                         this);
-
-    // } else {
-    //   // otherwise, do nothing
-    //   if (!list_proxies.empty()) {
-    //     util::debug(
-    //         "No app linked to our device wants to play, but the inactivity timer is disabled. Leaving filters
-    //         linked.");
-    //   }
-    // }
+          disconnect_filters();
+        }
+      });
+    } else {
+      // otherwise, do nothing
+      if (!list_proxies.empty()) {
+        util::debug(
+            "No app linked to our device wants to play, but the inactivity timer is disabled. Leaving filters linked.");
+      }
+    }
   }
 }
 

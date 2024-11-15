@@ -3,7 +3,7 @@ import QtQml
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.formcard 1.0 as FormCard
+import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.OverlaySheet {
     id: preferencesSheet
@@ -151,9 +151,8 @@ Kirigami.OverlaySheet {
                         id: inactivityTimeout
 
                         label: i18n("Inactivity Timeout")
-                        subtitle: i18n("Input Pipeline")
-                        from: 1
-                        to: 3600
+                        from: EEdbm.main.getMinValue("inactivityTimeout")
+                        to: EEdbm.main.getMaxValue("inactivityTimeout")
                         value: EEdbm.main.inactivityTimeout
                         decimals: 0
                         stepSize: 1
@@ -161,22 +160,6 @@ Kirigami.OverlaySheet {
                         enabled: EEdbm.main.inactivityTimerEnable
                         onValueModified: (v) => {
                             EEdbm.main.inactivityTimeout = v;
-                        }
-                    }
-
-                    EeSpinBox {
-                        id: metersUpdateInterval
-
-                        label: i18n("Update Interval")
-                        subtitle: i18n("Related to Level Meters and Spectrum")
-                        from: 10
-                        to: 1000
-                        value: EEdbm.main.metersUpdateInterval
-                        decimals: 0
-                        stepSize: 1
-                        unit: "ms"
-                        onValueModified: (v) => {
-                            EEdbm.main.metersUpdateInterval = v;
                         }
                     }
 

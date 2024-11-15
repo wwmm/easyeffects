@@ -72,7 +72,8 @@ class Nodes : public QAbstractListModel {
     Rate,
     NvolumeChannels,
     Latency,
-    Volume
+    Volume,
+    IsBlocklisted
   };
 
   [[nodiscard]] int rowCount(const QModelIndex& parent = QModelIndex()) const override;
@@ -292,6 +293,13 @@ class Nodes : public QAbstractListModel {
       case Roles::Volume: {
         if constexpr (std::is_same_v<T, float>) {
           it->volume = value;
+        }
+
+        break;
+      }
+      case Roles::IsBlocklisted: {
+        if constexpr (std::is_same_v<T, bool>) {
+          it->is_blocklisted = value;
         }
 
         break;

@@ -6,6 +6,21 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
 Kirigami.AbstractCard {
+    required property bool connected
+    required property bool isBlocklisted
+    required property bool mute
+    required property int id
+    required property int serial
+    required property int nVolumeChannels
+    required property real volume
+    required property string name
+    required property string appIconName
+    required property string mediaName
+    required property string mediaClass
+    required property string state
+    required property string format
+    required property string rate
+    required property string latency
 
     contentItem: Item {
         implicitWidth: delegateLayout.implicitWidth
@@ -27,7 +42,7 @@ Kirigami.AbstractCard {
 
             Kirigami.Icon {
                 Layout.fillHeight: true
-                source: model.appIconName
+                source: appIconName
                 fallback: "folder-sound-symbolic"
             }
 
@@ -35,7 +50,7 @@ Kirigami.AbstractCard {
                 Kirigami.Heading {
                     Layout.fillWidth: true
                     level: 2
-                    text: model.name
+                    text: name
                 }
 
                 Controls.Label {
@@ -48,7 +63,7 @@ Kirigami.AbstractCard {
                 RowLayout {
                     Controls.Label {
                         wrapMode: Text.WordWrap
-                        text: model.state + " · " + model.format + " · " + model.rate + " · " + model.nVolumeChannels + i18n(" channels") + " · " + model.latency
+                        text: state + " · " + format + " · " + rate + " · " + nVolumeChannels + i18n(" channels") + " · " + latency
                         color: Kirigami.Theme.disabledTextColor
                     }
 
@@ -59,15 +74,15 @@ Kirigami.AbstractCard {
             ColumnLayout {
                 Controls.CheckBox {
                     text: i18n("Enable")
-                    checked: model.connected
+                    checked: connected
                     onCheckedChanged: {
-                        if (checked == true && !model.is_blocklisted) {
-                            if (pageType === 0)
-                                EEpwManager.connectStreamOutput(model.id);
-                            else
-                                EEpwManager.connectStreamInput(model.id);
-                        } else if (checked == false || model.is_blocklisted) {
-                            EEpwManager.disconnectStream(model.id);
+                        if (checked == true && !isBlocklisted) {
+                            if (mediaClass === "Stream/Output/Audio")
+                                EEpwManager.connectStreamOutput(id);
+                            else if (mediaClass === "Stream/Input/Audio")
+                                EEpwManager.connectStreamInput(id);
+                        } else if (checked == false || isBlocklisted) {
+                            EEpwManager.disconnectStream(id);
                         }
                     }
                 }
@@ -87,10 +102,10 @@ Kirigami.AbstractCard {
 
                     icon.name: checked ? "audio-volume-muted-symbolic" : "audio-volume-high-symbolic"
                     checkable: true
-                    checked: model.mute
+                    checked: mute
                     onCheckedChanged: {
-                        if (checked !== model.mute)
-                            EEpwManager.setNodeMute(model.serial, checked);
+                        if (checked !== mute)
+                            EEpwManager.setNodeMute(serial, checked);
 
                     }
                 }
@@ -104,16 +119,16 @@ Kirigami.AbstractCard {
 
                     Layout.fillWidth: true
                     orientation: Qt.Horizontal
-                    value: prepareVolumeValue(model.volume)
+                    value: prepareVolumeValue(volume)
                     to: 100
                     stepSize: 1
                     enabled: !muteButton.checked
                     wheelEnabled: false
                     onMoved: {
-                        if (value !== prepareVolumeValue(model.volume)) {
+                        if (value !== prepareVolumeValue(volume)) {
                             let v = value / 100;
                             v = EEdbm.main.useCubicVolumes === false ? v : v * v * v;
-                            EEpwManager.setNodeVolume(model.serial, model.nVolumeChannels, v);
+                            EEpwManager.setNodeVolume(serial, nVolumeChannels, v);
                         }
                     }
                 }

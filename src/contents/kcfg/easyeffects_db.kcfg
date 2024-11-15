@@ -81,11 +81,5 @@
             <max>3600</max>
             <default>10</default>
         </entry>
-        <entry name="metersUpdateInterval" type="Int">
-            <label>Level Meter Update Interval</label>
-            <min>10</min>
-            <max>1000</max>
-            <default>50</default>
-        </entry>
     </group>
 </kcfg>

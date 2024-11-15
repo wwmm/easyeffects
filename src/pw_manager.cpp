@@ -422,21 +422,21 @@ void on_node_info(void* object, const struct pw_node_info* info) {
                nd_info_copy.name != tags::pipewire::ee_sink_name) {
       Q_EMIT pm->sinkAdded(nd_info_copy);
     } else if (nd_info_copy.media_class == tags::pipewire::media_class::output_stream) {
-      if (db::Main::processAllOutputs() && !nd->nd_info->is_blocklisted) {
+      if (db::Main::processAllOutputs() && !nd->nd_info->connected && !nd->nd_info->is_blocklisted) {
         // target.node for backward compatibility with old PW session managers
         // NOLINTNEXTLINE
         pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
-                                 util::to_string(pm->ee_sink_node.serial).c_str());
+                                 util::to_string(pm->ee_sink_node.id).c_str());
 
         pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
                                  util::to_string(pm->ee_sink_node.serial).c_str());
       }
     } else if (nd_info_copy.media_class == tags::pipewire::media_class::input_stream) {
-      if (db::Main::processAllInputs() && !nd->nd_info->is_blocklisted) {
+      if (db::Main::processAllInputs() && !nd->nd_info->connected && !nd->nd_info->is_blocklisted) {
         // target.node for backward compatibility with old PW session managers
         // NOLINTNEXTLINE
         pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
-                                 util::to_string(pm->ee_source_node.serial).c_str());
+                                 util::to_string(pm->ee_source_node.id).c_str());
 
         pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
                                  util::to_string(pm->ee_source_node.serial).c_str());
@@ -845,10 +845,6 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 
     util::debug("new default output device: " + pm->defaultOutputDeviceName.toStdString());
 
-    if (db::StreamOutputs::useDefaultOutputDevice()) {
-      db::StreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
-    }
-
     Q_EMIT pm->newDefaultSinkName(pm->defaultOutputDeviceName);
   }
 
@@ -864,10 +860,6 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
     pm->defaultInputDeviceName = v.data();
 
     util::debug("new default input device: " + pm->defaultInputDeviceName.toStdString());
-
-    if (db::StreamInputs::useDefaultInputDevice()) {
-      db::StreamInputs::setInputDevice(pm->defaultInputDeviceName);
-    }
 
     Q_EMIT pm->newDefaultSourceName(pm->defaultInputDeviceName);
   }

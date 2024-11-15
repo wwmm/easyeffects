@@ -157,7 +157,8 @@ QHash<int, QByteArray> Nodes::roleNames() const {
           {Roles::Rate, "rate"},
           {Roles::NvolumeChannels, "nVolumeChannels"},
           {Roles::Latency, "latency"},
-          {Roles::Volume, "volume"}};
+          {Roles::Volume, "volume"},
+          {Roles::IsBlocklisted, "isBlocklisted"}};
 }
 
 QVariant Nodes::data(const QModelIndex& index, int role) const {
@@ -226,6 +227,8 @@ QVariant Nodes::data(const QModelIndex& index, int role) const {
       return QString::fromStdString(std::format("{0:.0f} ms", 1000.0F * it->latency));
     case Roles::Volume:
       return it->volume;
+    case Roles::IsBlocklisted:
+      return it->is_blocklisted;
     default:
       return {};
   }
