@@ -109,11 +109,8 @@
         <entry name="sidechainType" type="Enum">
             <label>Sidechain Type</label>
             <choices>
-                <choice name="feedForward">
-                    <label>Feed-forward</label>
-                </choice>
-                <choice name="feedBack">
-                    <label>Feed-back</label>
+                <choice name="internal">
+                    <label>Internal</label>
                 </choice>
                 <choice name="external">
                     <label>External</label>

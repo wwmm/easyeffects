@@ -9,7 +9,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
-    id: compressorPage
+    id: gatePage
 
     required property var name
     required property var pluginDB
@@ -32,6 +32,10 @@ Kirigami.ScrollablePage {
         curveLevelRight.value = pluginBackend.getCurveLevelRight();
         envelopeLevelLeft.value = pluginBackend.getEnvelopeLevelLeft();
         envelopeLevelRight.value = pluginBackend.getEnvelopeLevelRight();
+        attackZoneStart.value = pluginBackend.getAttackZoneStart();
+        attackThreshold.value = pluginBackend.getAttackThreshold();
+        releaseZoneStart.value = pluginBackend.getReleaseZoneStart();
+        releaseThreshold.value = pluginBackend.getReleaseThreshold();
     }
 
     Component.onCompleted: {
@@ -48,7 +52,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Compressor")
+                    text: i18n("Gate")
                     level: 2
                 }
 
@@ -60,138 +64,12 @@ Kirigami.ScrollablePage {
                         anchors {
                             left: parent.left
                             right: parent.right
-                        }
-
-                        FormCard.FormComboBoxDelegate {
-                            id: mode
-
-                            Layout.columnSpan: 2
-                            text: i18n("Mode")
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.mode
-                            editable: false
-                            model: [i18n("Downward"), i18n("Upward"), i18n("Boosting")]
-                            onActivated: (idx) => {
-                                pluginDB.mode = idx;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: boostThreshold
-
-                            Layout.columnSpan: 2
-                            label: i18n("Boost Threshold")
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("boostThreshold")
-                            to: pluginDB.getMaxValue("boostThreshold")
-                            value: pluginDB.boostThreshold
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: "dB"
-                            enabled: mode.currentIndex === 1
-                            visible: mode.currentIndex === 1
-                            onValueModified: (v) => {
-                                pluginDB.boostThreshold = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: boostAmount
-
-                            Layout.columnSpan: 2
-                            label: i18n("Boost Amount")
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("boostAmount")
-                            to: pluginDB.getMaxValue("boostAmount")
-                            value: pluginDB.boostAmount
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: "dB"
-                            enabled: mode.currentIndex === 2
-                            visible: mode.currentIndex === 2
-                            onValueModified: (v) => {
-                                pluginDB.boostAmount = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: ratio
-
-                            label: i18n("Ratio")
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("ratio")
-                            to: pluginDB.getMaxValue("ratio")
-                            value: pluginDB.ratio
-                            decimals: 0
-                            stepSize: 1
-                            onValueModified: (v) => {
-                                pluginDB.ratio = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: knee
-
-                            label: i18n("Knee")
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("knee")
-                            to: pluginDB.getMaxValue("knee")
-                            value: pluginDB.knee
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: "dB"
-                            onValueModified: (v) => {
-                                pluginDB.knee = v;
-                            }
-                        }
-
-                    }
-
-                }
-
-            }
-
-            Kirigami.Card {
-
-                header: Kirigami.Heading {
-                    text: i18n("Threshold and Time")
-                    level: 2
-                }
-
-                contentItem: Column {
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-
-                        EeSpinBox {
-                            id: threshold
-
-                            label: i18n("Attack")
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("threshold")
-                            to: pluginDB.getMaxValue("threshold")
-                            value: pluginDB.threshold
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: "dB"
-                            onValueModified: (v) => {
-                                pluginDB.threshold = v;
-                            }
                         }
 
                         EeSpinBox {
                             id: attack
 
+                            label: i18n("Attack")
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pluginDB.getMinValue("attack")
@@ -206,25 +84,9 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            id: releaseThreshold
-
-                            label: i18n("Release")
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("releaseThreshold")
-                            to: pluginDB.getMaxValue("releaseThreshold")
-                            value: pluginDB.releaseThreshold
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: "dB"
-                            onValueModified: (v) => {
-                                pluginDB.releaseThreshold = v;
-                            }
-                        }
-
-                        EeSpinBox {
                             id: release
 
+                            label: i18n("Release")
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pluginDB.getMinValue("release")
@@ -235,6 +97,130 @@ Kirigami.ScrollablePage {
                             unit: "ms"
                             onValueModified: (v) => {
                                 pluginDB.release = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: reduction
+
+                            Layout.columnSpan: 2
+                            label: i18n("Reduction")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("reduction")
+                            to: pluginDB.getMaxValue("reduction")
+                            value: pluginDB.reduction
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            onValueModified: (v) => {
+                                pluginDB.reduction = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: curveThreshold
+
+                            label: i18n("Threshold")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("curveThreshold")
+                            to: pluginDB.getMaxValue("curveThreshold")
+                            value: pluginDB.curveThreshold
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            onValueModified: (v) => {
+                                pluginDB.curveThreshold = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: curveZone
+
+                            label: i18n("Zone")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("curveZone")
+                            to: pluginDB.getMaxValue("curveZone")
+                            value: pluginDB.curveZone
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            onValueModified: (v) => {
+                                pluginDB.curveZone = v;
+                            }
+                        }
+
+                    }
+
+                }
+
+            }
+
+            Kirigami.Card {
+
+                header: Kirigami.Heading {
+                    text: i18n("Hysteresis")
+                    level: 2
+                }
+
+                contentItem: Column {
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                        EeSwitch {
+                            id: hysteresis
+
+                            Layout.columnSpan: 2
+                            label: i18n("Enable")
+                            isChecked: pluginDB.hysteresis
+                            onCheckedChanged: {
+                                if (isChecked !== pluginDB.hysteresis)
+                                    pluginDB.hysteresis = isChecked;
+
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: hysteresisThreshold
+
+                            label: i18n("Threshold")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("hysteresisThreshold")
+                            to: pluginDB.getMaxValue("hysteresisThreshold")
+                            value: pluginDB.hysteresisThreshold
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            enabled: hysteresis.isChecked
+                            onValueModified: (v) => {
+                                pluginDB.hysteresisThreshold = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: hysteresisZone
+
+                            label: i18n("Zone")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("hysteresisZone")
+                            to: pluginDB.getMaxValue("hysteresisZone")
+                            value: pluginDB.hysteresisZone
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            enabled: hysteresis.isChecked
+                            onValueModified: (v) => {
+                                pluginDB.hysteresisZone = v;
                             }
                         }
 
@@ -269,7 +255,7 @@ Kirigami.ScrollablePage {
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: pluginDB.sidechainType
                             editable: false
-                            model: [i18n("Feed-forward"), i18n("Feed-back"), i18n("External"), i18n("Link")]
+                            model: [i18n("Internal"), i18n("External"), i18n("Link")]
                             onActivated: (idx) => {
                                 pluginDB.sidechainType = idx;
                             }
@@ -284,7 +270,7 @@ Kirigami.ScrollablePage {
                             editable: false
                             model: ModelNodes
                             textRole: "description"
-                            enabled: sidechainType.currentIndex === 2
+                            enabled: sidechainType.currentIndex === 1
                             currentIndex: {
                                 for (let n = 0; n < ModelNodes.rowCount(); n++) {
                                     if (ModelNodes.getNodeName(n) === pluginDB.sidechainInputDevice)
@@ -582,7 +568,7 @@ Kirigami.ScrollablePage {
         }
 
         Kirigami.CardsLayout {
-            maximumColumns: 2
+            maximumColumns: 3
             uniformCellWidths: true
 
             Kirigami.Card {
@@ -803,6 +789,116 @@ Kirigami.ScrollablePage {
 
             }
 
+            Kirigami.Card {
+                Layout.fillWidth: false
+                Layout.alignment: Qt.AlignHCenter
+
+                contentItem: GridLayout {
+                    readonly property real radius: 2.5 * Kirigami.Units.gridUnit
+
+                    columnSpacing: Kirigami.Units.largeSpacing
+                    rowSpacing: Kirigami.Units.largeSpacing
+                    columns: 4
+                    rows: 3
+                    uniformCellWidths: true
+
+                    Controls.Label {
+                        Layout.columnSpan: 2
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("Attack")
+                    }
+
+                    Controls.Label {
+                        Layout.columnSpan: 2
+                        Layout.fillWidth: true
+                        Layout.leftMargin: Kirigami.Units.gridUnit
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("Release")
+                    }
+
+                    EeCircularProgress {
+                        id: attackZoneStart
+
+                        Layout.alignment: Qt.AlignBottom | Text.AlignHCenter
+                        implicitWidth: parent.radius
+                        implicitHeight: parent.radius
+                        from: Common.minimumDecibelLevel
+                        to: 0
+                        value: 0
+                        decimals: 0
+                        convertDecibelToLinear: true
+                    }
+
+                    EeCircularProgress {
+                        id: attackThreshold
+
+                        Layout.alignment: Qt.AlignBottom | Text.AlignHCenter
+                        implicitWidth: parent.radius
+                        implicitHeight: parent.radius
+                        from: Common.minimumDecibelLevel
+                        to: 0
+                        value: 0
+                        decimals: 0
+                        convertDecibelToLinear: true
+                    }
+
+                    EeCircularProgress {
+                        id: releaseZoneStart
+
+                        Layout.alignment: Qt.AlignBottom | Text.AlignHCenter
+                        Layout.leftMargin: Kirigami.Units.gridUnit
+                        implicitWidth: parent.radius
+                        implicitHeight: parent.radius
+                        from: Common.minimumDecibelLevel
+                        to: 0
+                        value: 0
+                        decimals: 0
+                        convertDecibelToLinear: true
+                    }
+
+                    EeCircularProgress {
+                        id: releaseThreshold
+
+                        Layout.alignment: Qt.AlignBottom | Text.AlignHCenter
+                        implicitWidth: parent.radius
+                        implicitHeight: parent.radius
+                        from: Common.minimumDecibelLevel
+                        to: 0
+                        value: 0
+                        decimals: 0
+                        convertDecibelToLinear: true
+                    }
+
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("Start")
+                    }
+
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("Threshold")
+                    }
+
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        Layout.leftMargin: Kirigami.Units.gridUnit
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("Start")
+                    }
+
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        horizontalAlignment: Text.AlignHCenter
+                        text: i18n("Threshold")
+                    }
+
+                }
+
+            }
+
         }
 
     }
@@ -810,7 +906,7 @@ Kirigami.ScrollablePage {
     header: EeInputOutputGain {
         id: inputOutputLevels
 
-        pluginDB: compressorPage.pluginDB
+        pluginDB: gatePage.pluginDB
     }
 
     footer: RowLayout {

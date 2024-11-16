@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-08 20:08-0300\n"
+"POT-Creation-Date: 2024-11-16 13:17-0300\n"
 "PO-Revision-Date: 2023-08-09 08:17+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/"
@@ -124,7 +124,8 @@ msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
+#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
 msgid "Using"
 msgstr "Använder"
 
@@ -172,19 +173,274 @@ msgstr "Ingen komprimering"
 msgid "Floor"
 msgstr ""
 
-#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
+#: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
 #: src/contents/ui/Limiter.qml:511
 msgid "Show Native Window"
 msgstr ""
 
-#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Compressor.qml:846
+#: src/contents/ui/Exciter.qml:221 src/contents/ui/Gate.qml:942
 msgid "Listen"
 msgstr "Lyssna"
 
-#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
+#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
 #: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "Återställ"
+
+#: src/contents/ui/Compressor.qml:51 src/tags_plugin_name.cpp:29
+msgid "Compressor"
+msgstr "Kompressor"
+
+#: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
+#: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+#, fuzzy
+msgid "Mode"
+msgstr "Bandläge"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Downward"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Upward"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Boosting"
+msgstr "Förstärkning"
+
+#: src/contents/ui/Compressor.qml:83
+msgid "Boost Threshold"
+msgstr "Tröskelvärde för förstärkning (dB)"
+
+#: src/contents/ui/Compressor.qml:103
+#, fuzzy
+msgid "Boost Amount"
+msgstr "Förstärkningsmängd"
+
+#: src/contents/ui/Compressor.qml:122
+msgid "Ratio"
+msgstr "Förhållande (n:1)"
+
+#: src/contents/ui/Compressor.qml:138 src/contents/ui/Limiter.qml:349
+msgid "Knee"
+msgstr "Knävärde (dB)"
+
+#: src/contents/ui/Compressor.qml:161
+#, fuzzy
+msgid "Threshold and Time"
+msgstr "Tröskelvärde (dB)"
+
+#: src/contents/ui/Compressor.qml:178 src/contents/ui/Gate.qml:72
+#: src/contents/ui/Gate.qml:809 src/contents/ui/Limiter.qml:142
+#: src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "Attack (ms)"
+
+#: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
+#: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
+#: src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "Släpp (s)"
+
+#: src/contents/ui/Compressor.qml:250 src/contents/ui/Compressor.qml:354
+#: src/contents/ui/Compressor.qml:612 src/contents/ui/Gate.qml:236
+#: src/contents/ui/Gate.qml:340 src/contents/ui/Gate.qml:598
+#: src/contents/ui/Limiter.qml:210 src/contents/ui/Limiter.qml:401
+msgid "Sidechain"
+msgstr "Sidokedja"
+
+#: src/contents/ui/Compressor.qml:268 src/contents/ui/Gate.qml:254
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "Type"
+msgstr "Bandtyp"
+
+#: src/contents/ui/Compressor.qml:272
+msgid "Feed-forward"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:272
+msgid "Feed-back"
+msgstr "Respons"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "External"
+msgstr "Extern sidokedja"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+msgid "Input Device"
+msgstr "Ingångsenhet"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "Peak"
+msgstr "Topp"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "RMS"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Compressor.qml:441
+#: src/contents/ui/Gate.qml:297 src/contents/ui/Gate.qml:427
+msgid "Low-Pass"
+msgstr "Lågpass"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "SMA"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:320 src/contents/ui/Compressor.qml:334
+#: src/contents/ui/Gate.qml:306 src/contents/ui/Gate.qml:320
+msgid "Source"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Middle"
+msgstr "Mitten"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Side"
+msgstr "Sida"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#, fuzzy
+msgid "Left"
+msgstr "Förstärkning vänster"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Right"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Min"
+msgstr "Frekvens (Hz)"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Max"
+msgstr "Frekvens (Hz)"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Left/Right"
+msgstr "Release (ms)"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+msgid "Right/Left"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Mid/Side"
+msgstr "Sida"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Side/Mid"
+msgstr "Sida"
+
+#: src/contents/ui/Compressor.qml:371 src/contents/ui/Gate.qml:357
+#: src/contents/ui/Limiter.qml:270
+msgid "Preamp"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:389 src/contents/ui/Gate.qml:375
+msgid "Reactivity"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:407 src/contents/ui/Gate.qml:393
+msgid "Lookahead"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:426 src/contents/ui/Gate.qml:412
+msgid "High-Pass"
+msgstr "Högpass"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "Off"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "12 dB/oct"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "24 dB/oct"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "36 dB/oct"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+msgid "Output"
+msgstr "Utgång"
+
+#: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+msgid "Dry"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+msgid "Wet"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:558 src/contents/ui/Gate.qml:544
+msgid "Makeup"
+msgstr "Makeup (dB)"
+
+#: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
+#: src/contents/ui/Gate.qml:590
+msgid "Reduction"
+msgstr "Reduktion"
+
+#: src/contents/ui/Compressor.qml:671 src/contents/ui/Compressor.qml:684
+#: src/contents/ui/Compressor.qml:780 src/contents/ui/Compressor.qml:793
+#: src/contents/ui/Gate.qml:657 src/contents/ui/Gate.qml:670
+#: src/contents/ui/Gate.qml:766 src/contents/ui/Gate.qml:779
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "V"
+
+#: src/contents/ui/Compressor.qml:677 src/contents/ui/Compressor.qml:690
+#: src/contents/ui/Compressor.qml:786 src/contents/ui/Compressor.qml:799
+#: src/contents/ui/Gate.qml:663 src/contents/ui/Gate.qml:676
+#: src/contents/ui/Gate.qml:772 src/contents/ui/Gate.qml:785
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "H"
+
+#: src/contents/ui/Compressor.qml:713 src/contents/ui/Gate.qml:699
+msgid "Curve"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:721 src/contents/ui/Gate.qml:707
+msgid "Envelope"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:857 src/contents/ui/Gate.qml:953
+#, fuzzy
+msgid "Stereo Split"
+msgstr "Stereobredd"
 
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
@@ -219,27 +475,23 @@ msgstr "Ta bort denna modellfil"
 msgid "Remove this effect"
 msgstr "Ta bort denna modellfil"
 
-#: src/contents/ui/DelegateStreamsList.qml:51
+#: src/contents/ui/DelegateStreamsList.qml:66
 #, fuzzy
 msgid " channels"
 msgstr "Kanaler"
 
-#: src/contents/ui/DelegateStreamsList.qml:61
+#: src/contents/ui/DelegateStreamsList.qml:76 src/contents/ui/Gate.qml:182
 #, fuzzy
 msgid "Enable"
 msgstr "Sinustabell"
 
-#: src/contents/ui/DelegateStreamsList.qml:76
+#: src/contents/ui/DelegateStreamsList.qml:91
 msgid "Exclude"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
 msgid "Input"
 msgstr "Ingång"
-
-#: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
-msgid "Output"
-msgstr "Utgång"
 
 #: src/contents/ui/Exciter.qml:142
 #, fuzzy
@@ -250,10 +502,31 @@ msgstr "Ingen komprimering"
 msgid "Ceil"
 msgstr "Tak (dB)"
 
-#: src/contents/ui/Limiter.qml:51
-#, fuzzy
-msgid "Mode"
-msgstr "Bandläge"
+#: src/contents/ui/Gate.qml:55 src/tags_plugin_name.cpp:41
+msgid "Gate"
+msgstr ""
+
+#: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
+#: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "Tröskelvärde (dB)"
+
+#: src/contents/ui/Gate.qml:141 src/contents/ui/Gate.qml:212
+msgid "Zone"
+msgstr ""
+
+#: src/contents/ui/Gate.qml:164
+msgid "Hysteresis"
+msgstr ""
+
+#: src/contents/ui/Gate.qml:258 src/contents/ui/Limiter.qml:224
+msgid "Internal"
+msgstr ""
+
+#: src/contents/ui/Gate.qml:876 src/contents/ui/Gate.qml:889
+msgid "Start"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:55
 #, fuzzy
@@ -435,79 +708,19 @@ msgstr ""
 msgid "Limiter"
 msgstr "Gränsvärde (dB)"
 
-#: src/contents/ui/Limiter.qml:121
-msgid "Threshold"
-msgstr "Tröskelvärde (dB)"
-
-#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
-msgid "Attack"
-msgstr "Attack (ms)"
-
-#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
-msgid "Release"
-msgstr "Släpp (s)"
-
 #: src/contents/ui/Limiter.qml:184
 msgid "Stereo Link"
 msgstr "Stereolänk"
-
-#: src/contents/ui/Limiter.qml:210
-msgid "Sidechain"
-msgstr "Sidokedja"
-
-#: src/contents/ui/Limiter.qml:220
-#, fuzzy
-msgid "SC Type"
-msgstr "Bandtyp"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "Internal"
-msgstr ""
-
-#: src/contents/ui/Limiter.qml:224
-#, fuzzy
-msgid "External"
-msgstr "Extern sidokedja"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "Link"
-msgstr ""
-
-#: src/contents/ui/Limiter.qml:239
-msgid "Source"
-msgstr ""
-
-#: src/contents/ui/Limiter.qml:270
-msgid "SC Preamp"
-msgstr ""
 
 #: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
 #, fuzzy
 msgid "Automatic Level"
 msgstr "Automatisk utjämning"
 
-#: src/contents/ui/Limiter.qml:349
-msgid "Knee"
-msgstr "Knävärde (dB)"
-
 #: src/contents/ui/Limiter.qml:393
 #, fuzzy
-msgid "Gain [dB]"
-msgstr "Förstärkning"
-
-#: src/contents/ui/Limiter.qml:401
-#, fuzzy
-msgid "Sidechain [dB]"
-msgstr "Sidokedjeläge"
-
-#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
-#, fuzzy
-msgid "L"
-msgstr "V"
-
-#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
-msgid "R"
-msgstr "H"
+msgid "Gain"
+msgstr "F1 förstärkning (dB)"
 
 #: src/contents/ui/Limiter.qml:524
 #, fuzzy
@@ -520,35 +733,35 @@ msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "Easy Effects"
 
-#: src/contents/ui/main.qml:102
+#: src/contents/ui/main.qml:103
 #, fuzzy
 msgid "Preset: "
 msgstr "Förinställning"
 
-#: src/contents/ui/main.qml:110 src/contents/ui/main.qml:235
+#: src/contents/ui/main.qml:111 src/contents/ui/main.qml:233
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:132
+#: src/contents/ui/main.qml:133
 msgid "Presets"
 msgstr "Profiler"
 
-#: src/contents/ui/main.qml:140
+#: src/contents/ui/main.qml:141
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:203
+#: src/contents/ui/main.qml:202
 msgid "PipeWire"
 msgstr ""
 
-#: src/contents/ui/main.qml:219 src/contents/ui/PreferencesSheet.qml:13
+#: src/contents/ui/main.qml:217 src/contents/ui/PreferencesSheet.qml:13
 #: src/contents/ui/PreferencesSheet.qml:18
-#: src/contents/ui/PreferencesSheet.qml:467
-#: src/contents/ui/PreferencesSheet.qml:480
+#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:463
 msgid "Preferences"
 msgstr ""
 
-#: src/contents/ui/main.qml:227
+#: src/contents/ui/main.qml:225
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "_Om EasyEffects"
@@ -574,39 +787,36 @@ msgstr ""
 msgid "No Audio Application Available"
 msgstr "Applikationsnamn"
 
-#: src/contents/ui/PageStreamsEffects.qml:215
+#: src/contents/ui/PageStreamsEffects.qml:230
 #, fuzzy
 msgid "Add Effect"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-#: src/contents/ui/PageStreamsEffects.qml:397
+#: src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-msgid "Input Device"
-msgstr "Ingångsenhet"
-
-#: src/contents/ui/PageStreamsEffects.qml:283
+#: src/contents/ui/PageStreamsEffects.qml:298
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:308
+#: src/contents/ui/PageStreamsEffects.qml:323
 #, fuzzy
 msgid "No Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:309
+#: src/contents/ui/PageStreamsEffects.qml:324
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:407
+#: src/contents/ui/PageStreamsEffects.qml:422
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:423
+#: src/contents/ui/PageStreamsEffects.qml:438
 #, fuzzy
 msgid "Excluded Apps"
 msgstr "Applikationslista"
@@ -735,133 +945,120 @@ msgstr ""
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:154
-#, fuzzy
-msgid "Input Pipeline"
-msgstr "Ingångsenhet"
-
-#: src/contents/ui/PreferencesSheet.qml:170
-msgid "Update Interval"
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:171
-msgid "Related to Level Meters and Spectrum"
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:204
+#: src/contents/ui/PreferencesSheet.qml:187
 msgid "State"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:211
+#: src/contents/ui/PreferencesSheet.qml:194
 #, fuzzy
 msgid "Enabled"
 msgstr "Sinustabell"
 
-#: src/contents/ui/PreferencesSheet.qml:223
+#: src/contents/ui/PreferencesSheet.qml:206
 msgid "Style"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:230
+#: src/contents/ui/PreferencesSheet.qml:213
 msgid "Shape"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Bars"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Dots"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:243
+#: src/contents/ui/PreferencesSheet.qml:226
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:255
+#: src/contents/ui/PreferencesSheet.qml:238
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Points"
 msgstr "Punkter"
 
-#: src/contents/ui/PreferencesSheet.qml:281
+#: src/contents/ui/PreferencesSheet.qml:264
 msgid "Height"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:296
+#: src/contents/ui/PreferencesSheet.qml:279
 #, fuzzy
 msgid "Frequency Range"
 msgstr "Frekvens (Hz)"
 
-#: src/contents/ui/PreferencesSheet.qml:303
+#: src/contents/ui/PreferencesSheet.qml:286
 #, fuzzy
 msgid "Minimum"
 msgstr "Frekvens (Hz)"
 
-#: src/contents/ui/PreferencesSheet.qml:318
+#: src/contents/ui/PreferencesSheet.qml:301
 #, fuzzy
 msgid "Maximum"
 msgstr "Frekvens (Hz)"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:337
 msgid "Native Plugin Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:355
+#: src/contents/ui/PreferencesSheet.qml:338
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:367
+#: src/contents/ui/PreferencesSheet.qml:350
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Delad frekvens 1"
 
-#: src/contents/ui/PreferencesSheet.qml:368
+#: src/contents/ui/PreferencesSheet.qml:351
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:407
+#: src/contents/ui/PreferencesSheet.qml:390
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:402
 msgid "Audio"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:431
+#: src/contents/ui/PreferencesSheet.qml:414
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Spektrum"
 
-#: src/contents/ui/PreferencesSheet.qml:443
+#: src/contents/ui/PreferencesSheet.qml:426
 msgid "Experimental Features"
 msgstr ""
 
-#: src/main.cpp:59
+#: src/main.cpp:61
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Ljudeffekter för PulseAudio applikationer"
 
-#: src/main.cpp:60
+#: src/main.cpp:62
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr ""
@@ -883,28 +1080,28 @@ msgstr "Ingångsförstärkning (dB)"
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: src/pw_model_nodes.cpp:357
+#: src/pw_model_nodes.cpp:360
 msgid "Running"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:359
+#: src/pw_model_nodes.cpp:362
 msgid "Suspended"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:361
+#: src/pw_model_nodes.cpp:364
 msgid "Idle"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:363
+#: src/pw_model_nodes.cpp:366
 #, fuzzy
 msgid "Creating"
 msgstr "Inställningar"
 
-#: src/pw_model_nodes.cpp:365
+#: src/pw_model_nodes.cpp:368
 msgid "Error"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:367
+#: src/pw_model_nodes.cpp:370
 msgid "Unknown"
 msgstr ""
 
@@ -921,10 +1118,6 @@ msgstr "Ljudförstärkare"
 #: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
 msgstr ""
-
-#: src/tags_plugin_name.cpp:29
-msgid "Compressor"
-msgstr "Kompressor"
 
 #: src/tags_plugin_name.cpp:30
 msgid "Convolver"
@@ -973,10 +1166,6 @@ msgstr ""
 #, fuzzy
 msgid "Filter"
 msgstr "Filter typ"
-
-#: src/tags_plugin_name.cpp:41
-msgid "Gate"
-msgstr ""
 
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
@@ -1041,6 +1230,18 @@ msgstr ""
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Ljudeffekter för PipeWire-applikationer"
+
+#, fuzzy
+#~ msgid "Gain [dB]"
+#~ msgstr "Förstärkning"
+
+#, fuzzy
+#~ msgid "Sidechain [dB]"
+#~ msgstr "Sidokedjeläge"
+
+#, fuzzy
+#~ msgid "Input Pipeline"
+#~ msgstr "Ingångsenhet"
 
 #, fuzzy
 #~ msgid "No Preset"
@@ -1150,14 +1351,8 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 #~ msgid "Show Excluded Applications"
 #~ msgstr "Visa blocklistade applikationer"
 
-#~ msgid "Boosting"
-#~ msgstr "Förstärkning"
-
 #~ msgid "Compression Mode"
 #~ msgstr "Komprimeringsläge"
-
-#~ msgid "Boost Threshold"
-#~ msgstr "Tröskelvärde för förstärkning (dB)"
 
 #~ msgid "Attack Time"
 #~ msgstr "Attacktid (ms)"
@@ -1171,29 +1366,8 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 #~ msgid "Release Threshold"
 #~ msgstr "Tröskelvärde för frisläppning (dB)"
 
-#~ msgid "Ratio"
-#~ msgstr "Förhållande (n:1)"
-
-#~ msgid "Makeup"
-#~ msgstr "Makeup (dB)"
-
-#~ msgid "Peak"
-#~ msgstr "Topp"
-
-#~ msgid "Low-Pass"
-#~ msgstr "Lågpass"
-
-#~ msgid "Middle"
-#~ msgstr "Mitten"
-
-#~ msgid "Side"
-#~ msgstr "Sida"
-
 #~ msgid "Sidechain Source"
 #~ msgstr "Sidokedjekälla"
-
-#~ msgid "Feed-back"
-#~ msgstr "Respons"
 
 #~ msgid "Sidechain Type"
 #~ msgstr "Typ av sidokedja"
@@ -1203,9 +1377,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 
 #~ msgid "Sidechain Filters"
 #~ msgstr "Sidokedjefilter"
-
-#~ msgid "High-Pass"
-#~ msgstr "Högpass"
 
 #~ msgid "Frequency"
 #~ msgstr "Frekvens (Hz)"
@@ -1227,9 +1398,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 
 #~ msgid "Impulses"
 #~ msgstr "Impulser"
-
-#~ msgid "Stereo Width"
-#~ msgstr "Stereobredd"
 
 #~ msgid "Rate"
 #~ msgstr "Takt"
@@ -1273,9 +1441,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 #~ msgid "Frequency 2 Peak"
 #~ msgstr "Frekvens 2 topp (Hz)"
 
-#~ msgid "F1 Gain"
-#~ msgstr "F1 förstärkning (dB)"
-
 #~ msgid "Frequency 1 Gain"
 #~ msgstr "Frekvens 1 förstärkning (Hz)"
 
@@ -1293,9 +1458,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 
 #~ msgid "Detected"
 #~ msgstr "Upptäckt"
-
-#~ msgid "Reduction"
-#~ msgstr "Reduktion"
 
 #~ msgid "Frame Size"
 #~ msgstr "Ramstorlek"
@@ -1354,9 +1516,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 
 #~ msgid "Auto Leveling Knee"
 #~ msgstr "Automatisk knäutjämning"
-
-#~ msgid "Gain Left"
-#~ msgstr "Förstärkning vänster"
 
 #~ msgid "Sidechain Left"
 #~ msgstr "Sidokedja vänster"
@@ -1773,10 +1932,6 @@ msgstr "Ljudeffekter för PipeWire-applikationer"
 
 #, fuzzy
 #~ msgid "Delay L/R"
-#~ msgstr "Release (ms)"
-
-#, fuzzy
-#~ msgid "Delay Left Right"
 #~ msgstr "Release (ms)"
 
 #, fuzzy

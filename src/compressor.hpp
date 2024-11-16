@@ -64,10 +64,13 @@ class Compressor : public PluginBase {
 
   Q_INVOKABLE [[nodiscard]] float getReductionLevelLeft() const;
   Q_INVOKABLE [[nodiscard]] float getReductionLevelRight() const;
+
   Q_INVOKABLE [[nodiscard]] float getSideChainLevelLeft() const;
   Q_INVOKABLE [[nodiscard]] float getSideChainLevelRight() const;
+
   Q_INVOKABLE [[nodiscard]] float getCurveLevelLeft() const;
   Q_INVOKABLE [[nodiscard]] float getCurveLevelRight() const;
+
   Q_INVOKABLE [[nodiscard]] float getEnvelopeLevelLeft() const;
   Q_INVOKABLE [[nodiscard]] float getEnvelopeLevelRight() const;
 

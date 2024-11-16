@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-08 20:08-0300\n"
+"POT-Creation-Date: 2024-11-16 13:17-0300\n"
 "PO-Revision-Date: 2023-08-09 08:17+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/"
@@ -127,7 +127,8 @@ msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
+#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
 #, fuzzy
 msgid "Using"
 msgstr "다음 사용 중"
@@ -176,20 +177,286 @@ msgstr ""
 msgid "Floor"
 msgstr "Floor"
 
-#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
+#: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
 #: src/contents/ui/Limiter.qml:511
 msgid "Show Native Window"
 msgstr ""
 
-#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Compressor.qml:846
+#: src/contents/ui/Exciter.qml:221 src/contents/ui/Gate.qml:942
 #, fuzzy
 msgid "Listen"
 msgstr "듣는 중"
 
-#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
+#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
 #: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "리셋"
+
+#: src/contents/ui/Compressor.qml:51 src/tags_plugin_name.cpp:29
+msgid "Compressor"
+msgstr "컴프레서"
+
+#: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
+#: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "모드"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Downward"
+msgstr "Downward"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Upward"
+msgstr "Upward"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Boosting"
+msgstr "증폭"
+
+#: src/contents/ui/Compressor.qml:83
+#, fuzzy
+msgid "Boost Threshold"
+msgstr "Boost Threshold"
+
+#: src/contents/ui/Compressor.qml:103
+#, fuzzy
+msgid "Boost Amount"
+msgstr "Boost Amount"
+
+#: src/contents/ui/Compressor.qml:122
+#, fuzzy
+msgid "Ratio"
+msgstr "Ratio"
+
+#: src/contents/ui/Compressor.qml:138 src/contents/ui/Limiter.qml:349
+#, fuzzy
+msgid "Knee"
+msgstr "Knee"
+
+#: src/contents/ui/Compressor.qml:161
+#, fuzzy
+msgid "Threshold and Time"
+msgstr "Threshold"
+
+#: src/contents/ui/Compressor.qml:178 src/contents/ui/Gate.qml:72
+#: src/contents/ui/Gate.qml:809 src/contents/ui/Limiter.qml:142
+#: src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "어택"
+
+#: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
+#: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
+#: src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "릴리스"
+
+#: src/contents/ui/Compressor.qml:250 src/contents/ui/Compressor.qml:354
+#: src/contents/ui/Compressor.qml:612 src/contents/ui/Gate.qml:236
+#: src/contents/ui/Gate.qml:340 src/contents/ui/Gate.qml:598
+#: src/contents/ui/Limiter.qml:210 src/contents/ui/Limiter.qml:401
+#, fuzzy
+msgid "Sidechain"
+msgstr "Sidechain"
+
+#: src/contents/ui/Compressor.qml:268 src/contents/ui/Gate.qml:254
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "Type"
+msgstr "타입"
+
+#: src/contents/ui/Compressor.qml:272
+msgid "Feed-forward"
+msgstr "Feed-forward"
+
+#: src/contents/ui/Compressor.qml:272
+msgid "Feed-back"
+msgstr "피드백"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "External"
+msgstr "External"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+msgid "Input Device"
+msgstr "입력 장치"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+#, fuzzy
+msgid "Peak"
+msgstr "Peak"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "RMS"
+msgstr "RMS"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Compressor.qml:441
+#: src/contents/ui/Gate.qml:297 src/contents/ui/Gate.qml:427
+msgid "Low-Pass"
+msgstr "Low-Pass"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "SMA"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:320 src/contents/ui/Compressor.qml:334
+#: src/contents/ui/Gate.qml:306 src/contents/ui/Gate.qml:320
+msgid "Source"
+msgstr "소스"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Middle"
+msgstr "중간"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Side"
+msgstr "Side"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Left"
+msgstr "왼쪽"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#, fuzzy
+msgid "Right"
+msgstr "오른쪽"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+msgid "Min"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+msgid "Max"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Left/Right"
+msgstr "오른쪽"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+msgid "Right/Left"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Mid/Side"
+msgstr "Side"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Side/Mid"
+msgstr "Side"
+
+#: src/contents/ui/Compressor.qml:371 src/contents/ui/Gate.qml:357
+#: src/contents/ui/Limiter.qml:270
+msgid "Preamp"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:389 src/contents/ui/Gate.qml:375
+#, fuzzy
+msgid "Reactivity"
+msgstr "Reactivity"
+
+#: src/contents/ui/Compressor.qml:407 src/contents/ui/Gate.qml:393
+#, fuzzy
+msgid "Lookahead"
+msgstr "Lookahead"
+
+#: src/contents/ui/Compressor.qml:426 src/contents/ui/Gate.qml:412
+#, fuzzy
+msgid "High-Pass"
+msgstr "High-Pass"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+#, fuzzy
+msgid "Off"
+msgstr "끄기"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "12 dB/oct"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "24 dB/oct"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "36 dB/oct"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+msgid "Output"
+msgstr "아웃풋"
+
+#: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+msgid "Dry"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+msgid "Wet"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:558 src/contents/ui/Gate.qml:544
+#, fuzzy
+msgid "Makeup"
+msgstr "Makeup"
+
+#: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
+#: src/contents/ui/Gate.qml:590
+#, fuzzy
+msgid "Reduction"
+msgstr "Reduction"
+
+#: src/contents/ui/Compressor.qml:671 src/contents/ui/Compressor.qml:684
+#: src/contents/ui/Compressor.qml:780 src/contents/ui/Compressor.qml:793
+#: src/contents/ui/Gate.qml:657 src/contents/ui/Gate.qml:670
+#: src/contents/ui/Gate.qml:766 src/contents/ui/Gate.qml:779
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "L"
+
+#: src/contents/ui/Compressor.qml:677 src/contents/ui/Compressor.qml:690
+#: src/contents/ui/Compressor.qml:786 src/contents/ui/Compressor.qml:799
+#: src/contents/ui/Gate.qml:663 src/contents/ui/Gate.qml:676
+#: src/contents/ui/Gate.qml:772 src/contents/ui/Gate.qml:785
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+#, fuzzy
+msgid "R"
+msgstr "R"
+
+#: src/contents/ui/Compressor.qml:713 src/contents/ui/Gate.qml:699
+#, fuzzy
+msgid "Curve"
+msgstr "Curve"
+
+#: src/contents/ui/Compressor.qml:721 src/contents/ui/Gate.qml:707
+#, fuzzy
+msgid "Envelope"
+msgstr "Envelope"
+
+#: src/contents/ui/Compressor.qml:857 src/contents/ui/Gate.qml:953
+#, fuzzy
+msgid "Stereo Split"
+msgstr "Stereo Width"
 
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
@@ -225,26 +492,22 @@ msgstr "Easy Effects"
 msgid "Remove this effect"
 msgstr ""
 
-#: src/contents/ui/DelegateStreamsList.qml:51
+#: src/contents/ui/DelegateStreamsList.qml:66
 #, fuzzy
 msgid " channels"
 msgstr "채널"
 
-#: src/contents/ui/DelegateStreamsList.qml:61
+#: src/contents/ui/DelegateStreamsList.qml:76 src/contents/ui/Gate.qml:182
 msgid "Enable"
 msgstr ""
 
-#: src/contents/ui/DelegateStreamsList.qml:76
+#: src/contents/ui/DelegateStreamsList.qml:91
 msgid "Exclude"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
 msgid "Input"
 msgstr "인풋"
-
-#: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
-msgid "Output"
-msgstr "아웃풋"
 
 #: src/contents/ui/Exciter.qml:142
 #, fuzzy
@@ -255,9 +518,32 @@ msgstr "Relative"
 msgid "Ceil"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:51
-msgid "Mode"
-msgstr "모드"
+#: src/contents/ui/Gate.qml:55 src/tags_plugin_name.cpp:41
+msgid "Gate"
+msgstr ""
+
+#: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
+#: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "Threshold"
+
+#: src/contents/ui/Gate.qml:141 src/contents/ui/Gate.qml:212
+msgid "Zone"
+msgstr ""
+
+#: src/contents/ui/Gate.qml:164
+msgid "Hysteresis"
+msgstr ""
+
+#: src/contents/ui/Gate.qml:258 src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "Internal"
+msgstr "External"
+
+#: src/contents/ui/Gate.qml:876 src/contents/ui/Gate.qml:889
+msgid "Start"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:55
 msgid "Herm Thin"
@@ -438,84 +724,20 @@ msgstr ""
 msgid "Limiter"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:121
-msgid "Threshold"
-msgstr "Threshold"
-
-#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
-msgid "Attack"
-msgstr "어택"
-
-#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
-msgid "Release"
-msgstr "릴리스"
-
 #: src/contents/ui/Limiter.qml:184
 #, fuzzy
 msgid "Stereo Link"
 msgstr "Stereo Width"
-
-#: src/contents/ui/Limiter.qml:210
-#, fuzzy
-msgid "Sidechain"
-msgstr "Sidechain"
-
-#: src/contents/ui/Limiter.qml:220
-#, fuzzy
-msgid "SC Type"
-msgstr "타입"
-
-#: src/contents/ui/Limiter.qml:224
-#, fuzzy
-msgid "Internal"
-msgstr "External"
-
-#: src/contents/ui/Limiter.qml:224
-#, fuzzy
-msgid "External"
-msgstr "External"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "Link"
-msgstr ""
-
-#: src/contents/ui/Limiter.qml:239
-msgid "Source"
-msgstr "소스"
-
-#: src/contents/ui/Limiter.qml:270
-msgid "SC Preamp"
-msgstr ""
 
 #: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
 #, fuzzy
 msgid "Automatic Level"
 msgstr "출력 게인"
 
-#: src/contents/ui/Limiter.qml:349
-#, fuzzy
-msgid "Knee"
-msgstr "Knee"
-
 #: src/contents/ui/Limiter.qml:393
 #, fuzzy
-msgid "Gain [dB]"
-msgstr "Gain"
-
-#: src/contents/ui/Limiter.qml:401
-#, fuzzy
-msgid "Sidechain [dB]"
-msgstr "Sidechain Mode"
-
-#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
-#, fuzzy
-msgid "L"
-msgstr "L"
-
-#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
-#, fuzzy
-msgid "R"
-msgstr "R"
+msgid "Gain"
+msgstr "F1 Gain"
 
 #: src/contents/ui/Limiter.qml:524
 msgid "Gain Boost"
@@ -527,37 +749,37 @@ msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/main.qml:102
+#: src/contents/ui/main.qml:103
 #, fuzzy
 msgid "Preset: "
 msgstr "프리셋"
 
-#: src/contents/ui/main.qml:110 src/contents/ui/main.qml:235
+#: src/contents/ui/main.qml:111 src/contents/ui/main.qml:233
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:132
+#: src/contents/ui/main.qml:133
 msgid "Presets"
 msgstr "프리셋"
 
-#: src/contents/ui/main.qml:140
+#: src/contents/ui/main.qml:141
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:203
+#: src/contents/ui/main.qml:202
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:219 src/contents/ui/PreferencesSheet.qml:13
+#: src/contents/ui/main.qml:217 src/contents/ui/PreferencesSheet.qml:13
 #: src/contents/ui/PreferencesSheet.qml:18
-#: src/contents/ui/PreferencesSheet.qml:467
-#: src/contents/ui/PreferencesSheet.qml:480
+#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:463
 #, fuzzy
 msgid "Preferences"
 msgstr "참조"
 
-#: src/contents/ui/main.qml:227
+#: src/contents/ui/main.qml:225
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "EasyEffects"
@@ -584,39 +806,36 @@ msgstr ""
 msgid "No Audio Application Available"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:215
+#: src/contents/ui/PageStreamsEffects.qml:230
 #, fuzzy
 msgid "Add Effect"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-#: src/contents/ui/PageStreamsEffects.qml:397
+#: src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-msgid "Input Device"
-msgstr "입력 장치"
-
-#: src/contents/ui/PageStreamsEffects.qml:283
+#: src/contents/ui/PageStreamsEffects.qml:298
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:308
+#: src/contents/ui/PageStreamsEffects.qml:323
 #, fuzzy
 msgid "No Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:309
+#: src/contents/ui/PageStreamsEffects.qml:324
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:407
+#: src/contents/ui/PageStreamsEffects.qml:422
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:423
+#: src/contents/ui/PageStreamsEffects.qml:438
 #, fuzzy
 msgid "Excluded Apps"
 msgstr "제외된 프로그램 목록"
@@ -740,133 +959,119 @@ msgstr ""
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:154
-#, fuzzy
-msgid "Input Pipeline"
-msgstr "입력 장치"
-
-#: src/contents/ui/PreferencesSheet.qml:170
-#, fuzzy
-msgid "Update Interval"
-msgstr "업데이트된 번역"
-
-#: src/contents/ui/PreferencesSheet.qml:171
-msgid "Related to Level Meters and Spectrum"
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:204
+#: src/contents/ui/PreferencesSheet.qml:187
 #, fuzzy
 msgid "State"
 msgstr "상태"
 
-#: src/contents/ui/PreferencesSheet.qml:211
+#: src/contents/ui/PreferencesSheet.qml:194
 msgid "Enabled"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:223
+#: src/contents/ui/PreferencesSheet.qml:206
 msgid "Style"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:230
+#: src/contents/ui/PreferencesSheet.qml:213
 msgid "Shape"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Bars"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Dots"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:243
+#: src/contents/ui/PreferencesSheet.qml:226
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:255
+#: src/contents/ui/PreferencesSheet.qml:238
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Points"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:281
+#: src/contents/ui/PreferencesSheet.qml:264
 #, fuzzy
 msgid "Height"
 msgstr "오른쪽"
 
-#: src/contents/ui/PreferencesSheet.qml:296
+#: src/contents/ui/PreferencesSheet.qml:279
 #, fuzzy
 msgid "Frequency Range"
 msgstr "Frequency 1 Gain"
 
-#: src/contents/ui/PreferencesSheet.qml:303
+#: src/contents/ui/PreferencesSheet.qml:286
 msgid "Minimum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:318
+#: src/contents/ui/PreferencesSheet.qml:301
 msgid "Maximum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:337
 msgid "Native Plugin Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:355
+#: src/contents/ui/PreferencesSheet.qml:338
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:367
+#: src/contents/ui/PreferencesSheet.qml:350
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Frequency"
 
-#: src/contents/ui/PreferencesSheet.qml:368
+#: src/contents/ui/PreferencesSheet.qml:351
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:407
+#: src/contents/ui/PreferencesSheet.qml:390
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:402
 msgid "Audio"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:431
+#: src/contents/ui/PreferencesSheet.qml:414
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "스펙트럼"
 
-#: src/contents/ui/PreferencesSheet.qml:443
+#: src/contents/ui/PreferencesSheet.qml:426
 msgid "Experimental Features"
 msgstr ""
 
-#: src/main.cpp:59
+#: src/main.cpp:61
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire 음향 효과 애플리케이션"
 
-#: src/main.cpp:60
+#: src/main.cpp:62
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
@@ -890,31 +1095,31 @@ msgstr "출력 게인"
 msgid "Spectrum"
 msgstr "스펙트럼"
 
-#: src/pw_model_nodes.cpp:357
+#: src/pw_model_nodes.cpp:360
 #, fuzzy
 msgid "Running"
 msgstr "실행 중"
 
-#: src/pw_model_nodes.cpp:359
+#: src/pw_model_nodes.cpp:362
 #, fuzzy
 msgid "Suspended"
 msgstr "일시 중단됨"
 
-#: src/pw_model_nodes.cpp:361
+#: src/pw_model_nodes.cpp:364
 msgid "Idle"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:363
+#: src/pw_model_nodes.cpp:366
 #, fuzzy
 msgid "Creating"
 msgstr "만드는 중"
 
-#: src/pw_model_nodes.cpp:365
+#: src/pw_model_nodes.cpp:368
 #, fuzzy
 msgid "Error"
 msgstr "에러"
 
-#: src/pw_model_nodes.cpp:367
+#: src/pw_model_nodes.cpp:370
 msgid "Unknown"
 msgstr ""
 
@@ -930,10 +1135,6 @@ msgstr ""
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "음량"
-
-#: src/tags_plugin_name.cpp:29
-msgid "Compressor"
-msgstr "컴프레서"
 
 #: src/tags_plugin_name.cpp:30
 msgid "Convolver"
@@ -979,10 +1180,6 @@ msgstr ""
 #, fuzzy
 msgid "Filter"
 msgstr "Filter Length"
-
-#: src/tags_plugin_name.cpp:41
-msgid "Gate"
-msgstr ""
 
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
@@ -1044,6 +1241,22 @@ msgstr "이퀄라이저, 컴프레서 그리고 기타 오디오 효과"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
+
+#, fuzzy
+#~ msgid "Gain [dB]"
+#~ msgstr "Gain"
+
+#, fuzzy
+#~ msgid "Sidechain [dB]"
+#~ msgstr "Sidechain Mode"
+
+#, fuzzy
+#~ msgid "Input Pipeline"
+#~ msgstr "입력 장치"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "업데이트된 번역"
 
 #, fuzzy
 #~ msgid "No Preset"
@@ -1291,26 +1504,9 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgid "Show Excluded Applications"
 #~ msgstr "제외된 프로그램 보기"
 
-#~ msgid "Downward"
-#~ msgstr "Downward"
-
-#~ msgid "Upward"
-#~ msgstr "Upward"
-
-#~ msgid "Boosting"
-#~ msgstr "증폭"
-
 #, fuzzy
 #~ msgid "Compression Mode"
 #~ msgstr "Compression Mode"
-
-#, fuzzy
-#~ msgid "Boost Threshold"
-#~ msgstr "Boost Threshold"
-
-#, fuzzy
-#~ msgid "Boost Amount"
-#~ msgstr "Boost Amount"
 
 #~ msgid "Time"
 #~ msgstr "타임"
@@ -1330,44 +1526,11 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgstr "Release Threshold"
 
 #, fuzzy
-#~ msgid "Ratio"
-#~ msgstr "Ratio"
-
-#, fuzzy
-#~ msgid "Makeup"
-#~ msgstr "Makeup"
-
-#, fuzzy
-#~ msgid "Peak"
-#~ msgstr "Peak"
-
-#~ msgid "RMS"
-#~ msgstr "RMS"
-
-#~ msgid "Low-Pass"
-#~ msgstr "Low-Pass"
-
-#, fuzzy
 #~ msgid "Uniform"
 #~ msgstr "Uniform"
 
-#~ msgid "Middle"
-#~ msgstr "중간"
-
-#~ msgid "Side"
-#~ msgstr "Side"
-
-#~ msgid "Left"
-#~ msgstr "왼쪽"
-
 #~ msgid "Sidechain Source"
 #~ msgstr "Sidechain Source"
-
-#~ msgid "Feed-forward"
-#~ msgstr "Feed-forward"
-
-#~ msgid "Feed-back"
-#~ msgstr "피드백"
 
 #~ msgid "Sidechain Type"
 #~ msgstr "Sidechain 타입"
@@ -1376,24 +1539,8 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgstr "PreAmplification"
 
 #, fuzzy
-#~ msgid "Reactivity"
-#~ msgstr "Reactivity"
-
-#, fuzzy
-#~ msgid "Lookahead"
-#~ msgstr "Lookahead"
-
-#, fuzzy
 #~ msgid "Sidechain Filters"
 #~ msgstr "Sidechain Filters"
-
-#, fuzzy
-#~ msgid "High-Pass"
-#~ msgstr "High-Pass"
-
-#, fuzzy
-#~ msgid "Off"
-#~ msgstr "끄기"
 
 #, fuzzy
 #~ msgid "High-Pass Filter Mode"
@@ -1406,10 +1553,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #, fuzzy
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "Low-Pass Filter Mode"
-
-#, fuzzy
-#~ msgid "Curve"
-#~ msgstr "Curve"
 
 #, fuzzy
 #~ msgid "Left Channel"
@@ -1505,10 +1648,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #, fuzzy
 #~ msgid "Frequency 2 Peak"
 #~ msgstr "Frequency 2 Peak"
-
-#, fuzzy
-#~ msgid "F1 Gain"
-#~ msgstr "F1 Gain"
 
 #, fuzzy
 #~ msgid "F2 Level"

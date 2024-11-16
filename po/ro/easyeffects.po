@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-08 20:08-0300\n"
+"POT-Creation-Date: 2024-11-16 13:17-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -136,7 +136,8 @@ msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
+#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
 msgid "Using"
 msgstr ""
 
@@ -184,20 +185,282 @@ msgstr "Model Activ"
 msgid "Floor"
 msgstr "Podea"
 
-#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
+#: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
 #: src/contents/ui/Limiter.qml:511
 #, fuzzy
 msgid "Show Native Window"
 msgstr "Ascunde Fereastra."
 
-#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Compressor.qml:846
+#: src/contents/ui/Exciter.qml:221 src/contents/ui/Gate.qml:942
 msgid "Listen"
 msgstr "Ascultă"
 
-#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
+#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
 #: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "Resetare"
+
+#: src/contents/ui/Compressor.qml:51 src/tags_plugin_name.cpp:29
+msgid "Compressor"
+msgstr "Compresor"
+
+#: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
+#: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "Mod"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Downward"
+msgstr "În Jos"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Upward"
+msgstr "În Sus"
+
+#: src/contents/ui/Compressor.qml:73
+#, fuzzy
+msgid "Boosting"
+msgstr "Cantitate"
+
+#: src/contents/ui/Compressor.qml:83
+msgid "Boost Threshold"
+msgstr "Prag de Boost"
+
+#: src/contents/ui/Compressor.qml:103
+#, fuzzy
+msgid "Boost Amount"
+msgstr "Cantitate"
+
+#: src/contents/ui/Compressor.qml:122
+msgid "Ratio"
+msgstr "Raport"
+
+#: src/contents/ui/Compressor.qml:138 src/contents/ui/Limiter.qml:349
+msgid "Knee"
+msgstr "Genunchi"
+
+#: src/contents/ui/Compressor.qml:161
+#, fuzzy
+msgid "Threshold and Time"
+msgstr "Prag"
+
+#: src/contents/ui/Compressor.qml:178 src/contents/ui/Gate.qml:72
+#: src/contents/ui/Gate.qml:809 src/contents/ui/Limiter.qml:142
+#: src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "Atac"
+
+#: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
+#: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
+#: src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "Eliberare"
+
+#: src/contents/ui/Compressor.qml:250 src/contents/ui/Compressor.qml:354
+#: src/contents/ui/Compressor.qml:612 src/contents/ui/Gate.qml:236
+#: src/contents/ui/Gate.qml:340 src/contents/ui/Gate.qml:598
+#: src/contents/ui/Limiter.qml:210 src/contents/ui/Limiter.qml:401
+msgid "Sidechain"
+msgstr "Lanț Lateral"
+
+#: src/contents/ui/Compressor.qml:268 src/contents/ui/Gate.qml:254
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "Type"
+msgstr "Scrie"
+
+#: src/contents/ui/Compressor.qml:272
+#, fuzzy
+msgid "Feed-forward"
+msgstr "Feed-forward"
+
+#: src/contents/ui/Compressor.qml:272
+msgid "Feed-back"
+msgstr "Feed-back"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "External"
+msgstr "Integrat"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+#, fuzzy
+msgid "Input Device"
+msgstr "Nivel Input"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "Peak"
+msgstr "Vârf"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "RMS"
+msgstr "RMS"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Compressor.qml:441
+#: src/contents/ui/Gate.qml:297 src/contents/ui/Gate.qml:427
+msgid "Low-Pass"
+msgstr "Low-Pass"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "SMA"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:320 src/contents/ui/Compressor.qml:334
+#: src/contents/ui/Gate.qml:306 src/contents/ui/Gate.qml:320
+msgid "Source"
+msgstr "Sursă"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Middle"
+msgstr "Mijloc"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Side"
+msgstr "Parte"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Left"
+msgstr "Stânga"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Right"
+msgstr "Dreapta"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Min"
+msgstr "Maxim"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Max"
+msgstr "Maxim"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Left/Right"
+msgstr "Întârziere L/R"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Right/Left"
+msgstr "Dreapta"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Mid/Side"
+msgstr "Parte"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Side/Mid"
+msgstr "Parte"
+
+#: src/contents/ui/Compressor.qml:371 src/contents/ui/Gate.qml:357
+#: src/contents/ui/Limiter.qml:270
+msgid "Preamp"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:389 src/contents/ui/Gate.qml:375
+msgid "Reactivity"
+msgstr "Reactivitate"
+
+#: src/contents/ui/Compressor.qml:407 src/contents/ui/Gate.qml:393
+msgid "Lookahead"
+msgstr "Privire Înainte"
+
+#: src/contents/ui/Compressor.qml:426 src/contents/ui/Gate.qml:412
+#, fuzzy
+msgid "High-Pass"
+msgstr "High Pass"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "Off"
+msgstr "Oprit"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "12 dB/oct"
+msgstr "12 dB/oct"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "24 dB/oct"
+msgstr "24 dB/oct"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "36 dB/oct"
+msgstr "36 dB/oct"
+
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+msgid "Output"
+msgstr "Output"
+
+#: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+#, fuzzy
+msgid "Dry"
+msgstr "Uscat"
+
+#: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+#, fuzzy
+msgid "Wet"
+msgstr "Greutăți"
+
+#: src/contents/ui/Compressor.qml:558 src/contents/ui/Gate.qml:544
+msgid "Makeup"
+msgstr "Compoziție"
+
+#: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
+#: src/contents/ui/Gate.qml:590
+#, fuzzy
+msgid "Reduction"
+msgstr "Reducere"
+
+#: src/contents/ui/Compressor.qml:671 src/contents/ui/Compressor.qml:684
+#: src/contents/ui/Compressor.qml:780 src/contents/ui/Compressor.qml:793
+#: src/contents/ui/Gate.qml:657 src/contents/ui/Gate.qml:670
+#: src/contents/ui/Gate.qml:766 src/contents/ui/Gate.qml:779
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "L"
+
+#: src/contents/ui/Compressor.qml:677 src/contents/ui/Compressor.qml:690
+#: src/contents/ui/Compressor.qml:786 src/contents/ui/Compressor.qml:799
+#: src/contents/ui/Gate.qml:663 src/contents/ui/Gate.qml:676
+#: src/contents/ui/Gate.qml:772 src/contents/ui/Gate.qml:785
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "R"
+
+#: src/contents/ui/Compressor.qml:713 src/contents/ui/Gate.qml:699
+msgid "Curve"
+msgstr "Curbă"
+
+#: src/contents/ui/Compressor.qml:721 src/contents/ui/Gate.qml:707
+#, fuzzy
+msgid "Envelope"
+msgstr "Pantă"
+
+#: src/contents/ui/Compressor.qml:857 src/contents/ui/Gate.qml:953
+#, fuzzy
+msgid "Stereo Split"
+msgstr "Bază Stereo"
 
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
@@ -233,27 +496,23 @@ msgstr "Șterge fișierul de presetări"
 msgid "Remove this effect"
 msgstr "Șterge fișierul de presetări"
 
-#: src/contents/ui/DelegateStreamsList.qml:51
+#: src/contents/ui/DelegateStreamsList.qml:66
 #, fuzzy
 msgid " channels"
 msgstr "Canale"
 
-#: src/contents/ui/DelegateStreamsList.qml:61
+#: src/contents/ui/DelegateStreamsList.qml:76 src/contents/ui/Gate.qml:182
 #, fuzzy
 msgid "Enable"
 msgstr "Activează"
 
-#: src/contents/ui/DelegateStreamsList.qml:76
+#: src/contents/ui/DelegateStreamsList.qml:91
 msgid "Exclude"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
 msgid "Input"
 msgstr "Input"
-
-#: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
-msgid "Output"
-msgstr "Output"
 
 #: src/contents/ui/Exciter.qml:142
 #, fuzzy
@@ -265,9 +524,32 @@ msgstr "Model Activ"
 msgid "Ceil"
 msgstr "Tavan"
 
-#: src/contents/ui/Limiter.qml:51
-msgid "Mode"
-msgstr "Mod"
+#: src/contents/ui/Gate.qml:55 src/tags_plugin_name.cpp:41
+msgid "Gate"
+msgstr "Gate"
+
+#: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
+#: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "Prag"
+
+#: src/contents/ui/Gate.qml:141 src/contents/ui/Gate.qml:212
+msgid "Zone"
+msgstr ""
+
+#: src/contents/ui/Gate.qml:164
+msgid "Hysteresis"
+msgstr ""
+
+#: src/contents/ui/Gate.qml:258 src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "Internal"
+msgstr "Integrat"
+
+#: src/contents/ui/Gate.qml:876 src/contents/ui/Gate.qml:889
+msgid "Start"
+msgstr ""
 
 #: src/contents/ui/Limiter.qml:55
 #, fuzzy
@@ -454,80 +736,19 @@ msgstr ""
 msgid "Limiter"
 msgstr "Limitator"
 
-#: src/contents/ui/Limiter.qml:121
-msgid "Threshold"
-msgstr "Prag"
-
-#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
-msgid "Attack"
-msgstr "Atac"
-
-#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
-msgid "Release"
-msgstr "Eliberare"
-
 #: src/contents/ui/Limiter.qml:184
 msgid "Stereo Link"
 msgstr "Link Stereo"
-
-#: src/contents/ui/Limiter.qml:210
-msgid "Sidechain"
-msgstr "Lanț Lateral"
-
-#: src/contents/ui/Limiter.qml:220
-#, fuzzy
-msgid "SC Type"
-msgstr "Scrie"
-
-#: src/contents/ui/Limiter.qml:224
-#, fuzzy
-msgid "Internal"
-msgstr "Integrat"
-
-#: src/contents/ui/Limiter.qml:224
-#, fuzzy
-msgid "External"
-msgstr "Integrat"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "Link"
-msgstr ""
-
-#: src/contents/ui/Limiter.qml:239
-msgid "Source"
-msgstr "Sursă"
-
-#: src/contents/ui/Limiter.qml:270
-msgid "SC Preamp"
-msgstr ""
 
 #: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
 #, fuzzy
 msgid "Automatic Level"
 msgstr "Nivelare Automată"
 
-#: src/contents/ui/Limiter.qml:349
-msgid "Knee"
-msgstr "Genunchi"
-
 #: src/contents/ui/Limiter.qml:393
 #, fuzzy
-msgid "Gain [dB]"
-msgstr "Gain"
-
-#: src/contents/ui/Limiter.qml:401
-#, fuzzy
-msgid "Sidechain [dB]"
-msgstr "Lanț Lateral"
-
-#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
-#, fuzzy
-msgid "L"
-msgstr "L"
-
-#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
-msgid "R"
-msgstr "R"
+msgid "Gain"
+msgstr "F1 Gain"
 
 #: src/contents/ui/Limiter.qml:524
 #, fuzzy
@@ -540,36 +761,36 @@ msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/main.qml:102
+#: src/contents/ui/main.qml:103
 #, fuzzy
 msgid "Preset: "
 msgstr "Presetări"
 
-#: src/contents/ui/main.qml:110 src/contents/ui/main.qml:235
+#: src/contents/ui/main.qml:111 src/contents/ui/main.qml:233
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:132
+#: src/contents/ui/main.qml:133
 msgid "Presets"
 msgstr "Presetări"
 
-#: src/contents/ui/main.qml:140
+#: src/contents/ui/main.qml:141
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:203
+#: src/contents/ui/main.qml:202
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:219 src/contents/ui/PreferencesSheet.qml:13
+#: src/contents/ui/main.qml:217 src/contents/ui/PreferencesSheet.qml:13
 #: src/contents/ui/PreferencesSheet.qml:18
-#: src/contents/ui/PreferencesSheet.qml:467
-#: src/contents/ui/PreferencesSheet.qml:480
+#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:463
 msgid "Preferences"
 msgstr ""
 
-#: src/contents/ui/main.qml:227
+#: src/contents/ui/main.qml:225
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "EasyEffects"
@@ -597,41 +818,37 @@ msgstr "Pereți Goi"
 msgid "No Audio Application Available"
 msgstr "Aplicații"
 
-#: src/contents/ui/PageStreamsEffects.qml:215
+#: src/contents/ui/PageStreamsEffects.qml:230
 #, fuzzy
 msgid "Add Effect"
 msgstr "Efecte Input"
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-#: src/contents/ui/PageStreamsEffects.qml:397
+#: src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-#, fuzzy
-msgid "Input Device"
-msgstr "Nivel Input"
-
-#: src/contents/ui/PageStreamsEffects.qml:283
+#: src/contents/ui/PageStreamsEffects.qml:298
+#: src/contents/ui/PageStreamsEffects.qml:412
 #, fuzzy
 msgid "Recorders"
 msgstr "Bordură"
 
-#: src/contents/ui/PageStreamsEffects.qml:308
+#: src/contents/ui/PageStreamsEffects.qml:323
 #, fuzzy
 msgid "No Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:309
+#: src/contents/ui/PageStreamsEffects.qml:324
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:407
+#: src/contents/ui/PageStreamsEffects.qml:422
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:423
+#: src/contents/ui/PageStreamsEffects.qml:438
 #, fuzzy
 msgid "Excluded Apps"
 msgstr "Arată programele din Lista de Blocare în Fila Principală"
@@ -769,135 +986,121 @@ msgstr "Expirarea Activității"
 msgid "Inactivity Timeout"
 msgstr "Expirarea Activității"
 
-#: src/contents/ui/PreferencesSheet.qml:154
-#, fuzzy
-msgid "Input Pipeline"
-msgstr "Nivel Input"
-
-#: src/contents/ui/PreferencesSheet.qml:170
-#, fuzzy
-msgid "Update Interval"
-msgstr "Integrat"
-
-#: src/contents/ui/PreferencesSheet.qml:171
-msgid "Related to Level Meters and Spectrum"
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:204
+#: src/contents/ui/PreferencesSheet.qml:187
 msgid "State"
 msgstr "Stare"
 
-#: src/contents/ui/PreferencesSheet.qml:211
+#: src/contents/ui/PreferencesSheet.qml:194
 #, fuzzy
 msgid "Enabled"
 msgstr "Activează"
 
-#: src/contents/ui/PreferencesSheet.qml:223
+#: src/contents/ui/PreferencesSheet.qml:206
 msgid "Style"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:230
+#: src/contents/ui/PreferencesSheet.qml:213
 msgid "Shape"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Bars"
 msgstr "Bări "
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Lines"
 msgstr "Linii"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Dots"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:243
+#: src/contents/ui/PreferencesSheet.qml:226
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:255
+#: src/contents/ui/PreferencesSheet.qml:238
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Points"
 msgstr "Puncte"
 
-#: src/contents/ui/PreferencesSheet.qml:281
+#: src/contents/ui/PreferencesSheet.qml:264
 msgid "Height"
 msgstr "Înălțime"
 
-#: src/contents/ui/PreferencesSheet.qml:296
+#: src/contents/ui/PreferencesSheet.qml:279
 #, fuzzy
 msgid "Frequency Range"
 msgstr "Frecvență"
 
-#: src/contents/ui/PreferencesSheet.qml:303
+#: src/contents/ui/PreferencesSheet.qml:286
 #, fuzzy
 msgid "Minimum"
 msgstr "Maxim"
 
-#: src/contents/ui/PreferencesSheet.qml:318
+#: src/contents/ui/PreferencesSheet.qml:301
 msgid "Maximum"
 msgstr "Maxim"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:337
 #, fuzzy
 msgid "Native Plugin Window"
 msgstr "Ascunde Fereastra."
 
-#: src/contents/ui/PreferencesSheet.qml:355
+#: src/contents/ui/PreferencesSheet.qml:338
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:367
+#: src/contents/ui/PreferencesSheet.qml:350
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Frecvență"
 
-#: src/contents/ui/PreferencesSheet.qml:368
+#: src/contents/ui/PreferencesSheet.qml:351
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:407
+#: src/contents/ui/PreferencesSheet.qml:390
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:402
 msgid "Audio"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:431
+#: src/contents/ui/PreferencesSheet.qml:414
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Tip Spectru"
 
-#: src/contents/ui/PreferencesSheet.qml:443
+#: src/contents/ui/PreferencesSheet.qml:426
 #, fuzzy
 msgid "Experimental Features"
 msgstr "Experimental"
 
-#: src/main.cpp:59
+#: src/main.cpp:61
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Efecte audio pentru aplicații PulseAudio"
 
-#: src/main.cpp:60
+#: src/main.cpp:62
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
@@ -920,31 +1123,31 @@ msgstr "Efecte Output"
 msgid "Spectrum"
 msgstr "Spectru "
 
-#: src/pw_model_nodes.cpp:357
+#: src/pw_model_nodes.cpp:360
 #, fuzzy
 msgid "Running"
 msgstr "rulează"
 
-#: src/pw_model_nodes.cpp:359
+#: src/pw_model_nodes.cpp:362
 #, fuzzy
 msgid "Suspended"
 msgstr "suspendat"
 
-#: src/pw_model_nodes.cpp:361
+#: src/pw_model_nodes.cpp:364
 msgid "Idle"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:363
+#: src/pw_model_nodes.cpp:366
 #, fuzzy
 msgid "Creating"
 msgstr "se creează"
 
-#: src/pw_model_nodes.cpp:365
+#: src/pw_model_nodes.cpp:368
 #, fuzzy
 msgid "Error"
 msgstr "eroare"
 
-#: src/pw_model_nodes.cpp:367
+#: src/pw_model_nodes.cpp:370
 msgid "Unknown"
 msgstr ""
 
@@ -961,10 +1164,6 @@ msgstr "Amplificator Bass"
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "Intensitate"
-
-#: src/tags_plugin_name.cpp:29
-msgid "Compressor"
-msgstr "Compresor"
 
 #: src/tags_plugin_name.cpp:30
 msgid "Convolver"
@@ -1010,10 +1209,6 @@ msgstr "Mod"
 #: src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "Filtru"
-
-#: src/tags_plugin_name.cpp:41
-msgid "Gate"
-msgstr "Gate"
 
 #: src/tags_plugin_name.cpp:42
 #, fuzzy
@@ -1074,6 +1269,22 @@ msgstr "Egalizator, compresor și Alte Efecte Audio"
 #, fuzzy
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Efecte Audio pentru Aplicații PulseAudio"
+
+#, fuzzy
+#~ msgid "Gain [dB]"
+#~ msgstr "Gain"
+
+#, fuzzy
+#~ msgid "Sidechain [dB]"
+#~ msgstr "Lanț Lateral"
+
+#, fuzzy
+#~ msgid "Input Pipeline"
+#~ msgstr "Nivel Input"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "Integrat"
 
 #, fuzzy
 #~ msgid "No Preset"
@@ -1189,21 +1400,8 @@ msgstr "Efecte Audio pentru Aplicații PulseAudio"
 #~ msgid "Show Excluded Applications"
 #~ msgstr "Arată programele din Lista de Blocare în Fila Principală"
 
-#~ msgid "Downward"
-#~ msgstr "În Jos"
-
-#~ msgid "Upward"
-#~ msgstr "În Sus"
-
 #~ msgid "Compression Mode"
 #~ msgstr "Mod de Compresie"
-
-#~ msgid "Boost Threshold"
-#~ msgstr "Prag de Boost"
-
-#, fuzzy
-#~ msgid "Boost Amount"
-#~ msgstr "Cantitate"
 
 #, fuzzy
 #~ msgid "Time"
@@ -1225,12 +1423,6 @@ msgstr "Efecte Audio pentru Aplicații PulseAudio"
 #~ msgid "Release Threshold"
 #~ msgstr "Prag Relativ de Eliberare"
 
-#~ msgid "Ratio"
-#~ msgstr "Raport"
-
-#~ msgid "Makeup"
-#~ msgstr "Compoziție"
-
 #, fuzzy
 #~ msgid "Dry Level"
 #~ msgstr "F2 Nivel"
@@ -1243,55 +1435,13 @@ msgstr "Efecte Audio pentru Aplicații PulseAudio"
 #~ msgid "Stereo Split Mode"
 #~ msgstr "Bază Stereo"
 
-#~ msgid "Middle"
-#~ msgstr "Mijloc"
-
-#~ msgid "Side"
-#~ msgstr "Parte"
-
-#~ msgid "Left"
-#~ msgstr "Stânga"
-
-#~ msgid "Right"
-#~ msgstr "Dreapta"
-
-#, fuzzy
-#~ msgid "Min"
-#~ msgstr "Maxim"
-
-#, fuzzy
-#~ msgid "Max"
-#~ msgstr "Maxim"
-
 #, fuzzy
 #~ msgid "Sidechain Source"
 #~ msgstr "Lanț Lateral"
 
 #, fuzzy
-#~ msgid "Left/Right"
-#~ msgstr "Întârziere L/R"
-
-#, fuzzy
-#~ msgid "Right/Left"
-#~ msgstr "Dreapta"
-
-#, fuzzy
-#~ msgid "Mid/Side"
-#~ msgstr "Parte"
-
-#, fuzzy
-#~ msgid "Side/Mid"
-#~ msgstr "Parte"
-
-#, fuzzy
 #~ msgid "Stereo Split Source"
 #~ msgstr "Sursa Prestabilită"
-
-#~ msgid "Peak"
-#~ msgstr "Vârf"
-
-#~ msgid "RMS"
-#~ msgstr "RMS"
 
 #, fuzzy
 #~ msgid "Low-Pass Filter"
@@ -1302,13 +1452,6 @@ msgstr "Efecte Audio pentru Aplicații PulseAudio"
 #~ msgstr "Lanț Lateral"
 
 #, fuzzy
-#~ msgid "Feed-forward"
-#~ msgstr "Feed-forward"
-
-#~ msgid "Feed-back"
-#~ msgstr "Feed-back"
-
-#, fuzzy
 #~ msgid "Sidechain Type"
 #~ msgstr "Lanț Lateral"
 
@@ -1316,34 +1459,12 @@ msgstr "Efecte Audio pentru Aplicații PulseAudio"
 #~ msgid "PreAmplification"
 #~ msgstr "Preamplificare"
 
-#~ msgid "Reactivity"
-#~ msgstr "Reactivitate"
-
-#~ msgid "Lookahead"
-#~ msgstr "Privire Înainte"
-
 #, fuzzy
 #~ msgid "Sidechain Filters"
 #~ msgstr "Lanț Lateral"
 
-#, fuzzy
-#~ msgid "High-Pass"
-#~ msgstr "High Pass"
-
 #~ msgid "Frequency"
 #~ msgstr "Frecvență"
-
-#~ msgid "Off"
-#~ msgstr "Oprit"
-
-#~ msgid "12 dB/oct"
-#~ msgstr "12 dB/oct"
-
-#~ msgid "24 dB/oct"
-#~ msgstr "24 dB/oct"
-
-#~ msgid "36 dB/oct"
-#~ msgstr "36 dB/oct"
 
 #, fuzzy
 #~ msgid "High-Pass Filter Mode"
@@ -1353,15 +1474,9 @@ msgstr "Efecte Audio pentru Aplicații PulseAudio"
 #~ msgid "High-Pass Filter Frequency"
 #~ msgstr "Frecvență High-pass"
 
-#~ msgid "Low-Pass"
-#~ msgstr "Low-Pass"
-
 #, fuzzy
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "Mod Filtru Low-pass"
-
-#~ msgid "Curve"
-#~ msgstr "Curbă"
 
 #, fuzzy
 #~ msgid "Left Channel"
@@ -1448,9 +1563,6 @@ msgstr "Efecte Audio pentru Aplicații PulseAudio"
 #~ msgid "Frequency 2 Peak"
 #~ msgstr "Frecvență"
 
-#~ msgid "F1 Gain"
-#~ msgstr "F1 Gain"
-
 #, fuzzy
 #~ msgid "Frequency 1 Gain"
 #~ msgstr "Frecvență"
@@ -1474,10 +1586,6 @@ msgstr "Efecte Audio pentru Aplicații PulseAudio"
 
 #~ msgid "Detected"
 #~ msgstr "Detectat"
-
-#, fuzzy
-#~ msgid "Reduction"
-#~ msgstr "Reducere"
 
 #~ msgid "Invert Phase"
 #~ msgstr "Inversează Faza"
@@ -1700,10 +1808,6 @@ msgstr "Efecte Audio pentru Aplicații PulseAudio"
 #~ msgstr "Evitare"
 
 #, fuzzy
-#~ msgid "Stereo Split"
-#~ msgstr "Bază Stereo"
-
-#, fuzzy
 #~ msgid "Low-Cut"
 #~ msgstr "Mod Filtru Low-pass"
 
@@ -1837,10 +1941,6 @@ msgstr "Efecte Audio pentru Aplicații PulseAudio"
 
 #~ msgid "Remove this preset file"
 #~ msgstr "Șterge fișierul de presetări"
-
-#, fuzzy
-#~ msgid "Try"
-#~ msgstr "Uscat"
 
 #, fuzzy
 #~ msgid "Try this community preset"
@@ -2625,9 +2725,6 @@ msgstr "Efecte Audio pentru Aplicații PulseAudio"
 
 #~ msgid "Detect Silence"
 #~ msgstr "Detectează Tăcerea"
-
-#~ msgid "Weights"
-#~ msgstr "Greutăți"
 
 #~ msgid "Provided by"
 #~ msgstr "Furnizat de"

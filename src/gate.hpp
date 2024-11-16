@@ -20,6 +20,7 @@
 #pragma once
 
 #include <pipewire/proxy.h>
+#include <qtmetamacros.h>
 #include <sys/types.h>
 #include <QString>
 #include <span>
@@ -31,6 +32,8 @@
 #include "pw_manager.hpp"
 
 class Gate : public PluginBase {
+  Q_OBJECT;
+
  public:
   Gate(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
   Gate(const Gate&) = delete;
@@ -59,17 +62,35 @@ class Gate : public PluginBase {
 
   void update_probe_links() override;
 
+  Q_INVOKABLE [[nodiscard]] float getReductionLevelLeft() const;
+  Q_INVOKABLE [[nodiscard]] float getReductionLevelRight() const;
+
+  Q_INVOKABLE [[nodiscard]] float getSideChainLevelLeft() const;
+  Q_INVOKABLE [[nodiscard]] float getSideChainLevelRight() const;
+
+  Q_INVOKABLE [[nodiscard]] float getCurveLevelLeft() const;
+  Q_INVOKABLE [[nodiscard]] float getCurveLevelRight() const;
+
+  Q_INVOKABLE [[nodiscard]] float getEnvelopeLevelLeft() const;
+  Q_INVOKABLE [[nodiscard]] float getEnvelopeLevelRight() const;
+
+  Q_INVOKABLE [[nodiscard]] float getAttackZoneStart() const;
+  Q_INVOKABLE [[nodiscard]] float getAttackThreshold() const;
+
+  Q_INVOKABLE [[nodiscard]] float getReleaseZoneStart() const;
+  Q_INVOKABLE [[nodiscard]] float getReleaseThreshold() const;
+
  private:
   uint latency_n_frames = 0U;
 
-  float attack_zone_start_port_value = 0.0F;
-  float attack_threshold_port_value = 0.0F;
-  float release_zone_start_port_value = 0.0F;
-  float release_threshold_port_value = 0.0F;
-  float reduction_port_value = 0.0F;
-  float sidechain_port_value = 0.0F;
-  float curve_port_value = 0.0F;
-  float envelope_port_value = 0.0F;
+  float reduction_left = 0.0F, reduction_right = 0.0F;
+  float sidechain_left = 0.0F, sidechain_right = 0.0F;
+  float curve_left = 0.0F, curve_right = 0.0F;
+  float envelope_left = 0.0F, envelope_right = 0.0F;
+  float attack_zone_start = 0.0F;
+  float attack_threshold = 0.0F;
+  float release_zone_start = 0.0F;
+  float release_threshold = 0.0F;
 
   db::Gate* settings = nullptr;
 

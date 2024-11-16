@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-08 20:08-0300\n"
+"POT-Creation-Date: 2024-11-16 13:17-0300\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -133,7 +133,8 @@ msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
+#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
 msgid "Using"
 msgstr ""
 
@@ -181,20 +182,290 @@ msgstr "Monitor Lantai"
 msgid "Floor"
 msgstr "Monitor Lantai"
 
-#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
+#: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
 #: src/contents/ui/Limiter.qml:511
 #, fuzzy
 msgid "Show Native Window"
 msgstr "Tutup jendela"
 
-#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Compressor.qml:846
+#: src/contents/ui/Exciter.qml:221 src/contents/ui/Gate.qml:942
 msgid "Listen"
 msgstr "Uji Pengaturan"
 
-#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
+#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
 #: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "Atur Ulang"
+
+#: src/contents/ui/Compressor.qml:51 src/tags_plugin_name.cpp:29
+msgid "Compressor"
+msgstr "Kompresor"
+
+#: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
+#: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "Modus"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Downward"
+msgstr "Kompresi Menekan"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Upward"
+msgstr "Kompresi Mengangkat"
+
+#: src/contents/ui/Compressor.qml:73
+#, fuzzy
+msgid "Boosting"
+msgstr "Besaran"
+
+#: src/contents/ui/Compressor.qml:83
+#, fuzzy
+msgid "Boost Threshold"
+msgstr "Ambang Batas"
+
+#: src/contents/ui/Compressor.qml:103
+#, fuzzy
+msgid "Boost Amount"
+msgstr "Besaran"
+
+#: src/contents/ui/Compressor.qml:122
+msgid "Ratio"
+msgstr "Rasio"
+
+#: src/contents/ui/Compressor.qml:138 src/contents/ui/Limiter.qml:349
+msgid "Knee"
+msgstr "Knee"
+
+#: src/contents/ui/Compressor.qml:161
+#, fuzzy
+msgid "Threshold and Time"
+msgstr "Ambang Batas"
+
+#: src/contents/ui/Compressor.qml:178 src/contents/ui/Gate.qml:72
+#: src/contents/ui/Gate.qml:809 src/contents/ui/Limiter.qml:142
+#: src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "Attack"
+
+#: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
+#: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
+#: src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "Rilis"
+
+#: src/contents/ui/Compressor.qml:250 src/contents/ui/Compressor.qml:354
+#: src/contents/ui/Compressor.qml:612 src/contents/ui/Gate.qml:236
+#: src/contents/ui/Gate.qml:340 src/contents/ui/Gate.qml:598
+#: src/contents/ui/Limiter.qml:210 src/contents/ui/Limiter.qml:401
+msgid "Sidechain"
+msgstr "Sidechain"
+
+#: src/contents/ui/Compressor.qml:268 src/contents/ui/Gate.qml:254
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "Type"
+msgstr "Tipe"
+
+#: src/contents/ui/Compressor.qml:272
+#, fuzzy
+msgid "Feed-forward"
+msgstr "Feed-forward"
+
+#: src/contents/ui/Compressor.qml:272
+#, fuzzy
+msgid "Feed-back"
+msgstr "Volume Penyuapan"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "External"
+msgstr "Terintegrasi"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+#, fuzzy
+msgid "Input Device"
+msgstr "Pembatas Masukan"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "Peak"
+msgstr "Peak"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "RMS"
+msgstr "RMS"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Compressor.qml:441
+#: src/contents/ui/Gate.qml:297 src/contents/ui/Gate.qml:427
+#, fuzzy
+msgid "Low-Pass"
+msgstr "Band Rendah"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "SMA"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:320 src/contents/ui/Compressor.qml:334
+#: src/contents/ui/Gate.qml:306 src/contents/ui/Gate.qml:320
+msgid "Source"
+msgstr "Sumber"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#, fuzzy
+msgid "Middle"
+msgstr "Volume Kanal Tengah"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Side"
+msgstr "Volume Kanal Sisi"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Left"
+msgstr "Kiri"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Right"
+msgstr "Kanan"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Min"
+msgstr "Minimum"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Max"
+msgstr "Maksimal"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Left/Right"
+msgstr "Penundaan Kiri Kanan"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Right/Left"
+msgstr "Kanan"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Mid/Side"
+msgstr "Volume Kanal Sisi"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Side/Mid"
+msgstr "Volume Kanal Sisi"
+
+#: src/contents/ui/Compressor.qml:371 src/contents/ui/Gate.qml:357
+#: src/contents/ui/Limiter.qml:270
+#, fuzzy
+msgid "Preamp"
+msgstr "SC PreAmp"
+
+#: src/contents/ui/Compressor.qml:389 src/contents/ui/Gate.qml:375
+msgid "Reactivity"
+msgstr "Pengaktifan Ulang"
+
+#: src/contents/ui/Compressor.qml:407 src/contents/ui/Gate.qml:393
+msgid "Lookahead"
+msgstr "Lookahead"
+
+#: src/contents/ui/Compressor.qml:426 src/contents/ui/Gate.qml:412
+#, fuzzy
+msgid "High-Pass"
+msgstr "High Pass"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "Off"
+msgstr "Mati"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+#, fuzzy
+msgid "12 dB/oct"
+msgstr "Lowpass 12dB/oktaf"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+#, fuzzy
+msgid "24 dB/oct"
+msgstr "Lowpass 24dB/oktaf"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+#, fuzzy
+msgid "36 dB/oct"
+msgstr "Lowpass 36dB/oktaf"
+
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+msgid "Output"
+msgstr "Output"
+
+#: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+#, fuzzy
+msgid "Dry"
+msgstr "Dry"
+
+#: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+#, fuzzy
+msgid "Wet"
+msgstr "Tinggi"
+
+#: src/contents/ui/Compressor.qml:558 src/contents/ui/Gate.qml:544
+msgid "Makeup"
+msgstr "Penguatan"
+
+#: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
+#: src/contents/ui/Gate.qml:590
+#, fuzzy
+msgid "Reduction"
+msgstr "Pengurangan"
+
+#: src/contents/ui/Compressor.qml:671 src/contents/ui/Compressor.qml:684
+#: src/contents/ui/Compressor.qml:780 src/contents/ui/Compressor.qml:793
+#: src/contents/ui/Gate.qml:657 src/contents/ui/Gate.qml:670
+#: src/contents/ui/Gate.qml:766 src/contents/ui/Gate.qml:779
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "Kiri"
+
+#: src/contents/ui/Compressor.qml:677 src/contents/ui/Compressor.qml:690
+#: src/contents/ui/Compressor.qml:786 src/contents/ui/Compressor.qml:799
+#: src/contents/ui/Gate.qml:663 src/contents/ui/Gate.qml:676
+#: src/contents/ui/Gate.qml:772 src/contents/ui/Gate.qml:785
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "Kanan"
+
+#: src/contents/ui/Compressor.qml:713 src/contents/ui/Gate.qml:699
+msgid "Curve"
+msgstr "Bentuk Kurva"
+
+#: src/contents/ui/Compressor.qml:721 src/contents/ui/Gate.qml:707
+#, fuzzy
+msgid "Envelope"
+msgstr "Besar Lembah"
+
+#: src/contents/ui/Compressor.qml:857 src/contents/ui/Gate.qml:953
+#, fuzzy
+msgid "Stereo Split"
+msgstr "Mode Stereo"
 
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
@@ -230,27 +501,23 @@ msgstr "Hapus Berkas Preset Ini"
 msgid "Remove this effect"
 msgstr "Hapus Berkas Preset Ini"
 
-#: src/contents/ui/DelegateStreamsList.qml:51
+#: src/contents/ui/DelegateStreamsList.qml:66
 #, fuzzy
 msgid " channels"
 msgstr "Total Kanal"
 
-#: src/contents/ui/DelegateStreamsList.qml:61
+#: src/contents/ui/DelegateStreamsList.qml:76 src/contents/ui/Gate.qml:182
 #, fuzzy
 msgid "Enable"
 msgstr "Hidupkan"
 
-#: src/contents/ui/DelegateStreamsList.qml:76
+#: src/contents/ui/DelegateStreamsList.qml:91
 msgid "Exclude"
 msgstr "Pengecualian"
 
-#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
 msgid "Input"
 msgstr "Masukan"
-
-#: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
-msgid "Output"
-msgstr "Output"
 
 #: src/contents/ui/Exciter.qml:142
 #, fuzzy
@@ -262,9 +529,33 @@ msgstr "Model Aktif"
 msgid "Ceil"
 msgstr "Langit-langit"
 
-#: src/contents/ui/Limiter.qml:51
-msgid "Mode"
-msgstr "Modus"
+#: src/contents/ui/Gate.qml:55 src/tags_plugin_name.cpp:41
+msgid "Gate"
+msgstr "Gate"
+
+#: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
+#: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "Ambang Batas"
+
+#: src/contents/ui/Gate.qml:141 src/contents/ui/Gate.qml:212
+msgid "Zone"
+msgstr ""
+
+#: src/contents/ui/Gate.qml:164
+msgid "Hysteresis"
+msgstr ""
+
+#: src/contents/ui/Gate.qml:258 src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "Internal"
+msgstr "Terintegrasi"
+
+#: src/contents/ui/Gate.qml:876 src/contents/ui/Gate.qml:889
+#, fuzzy
+msgid "Start"
+msgstr "Mulai Band"
 
 #: src/contents/ui/Limiter.qml:55
 #, fuzzy
@@ -460,81 +751,19 @@ msgstr ""
 msgid "Limiter"
 msgstr "Pembatas"
 
-#: src/contents/ui/Limiter.qml:121
-msgid "Threshold"
-msgstr "Ambang Batas"
-
-#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
-msgid "Attack"
-msgstr "Attack"
-
-#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
-msgid "Release"
-msgstr "Rilis"
-
 #: src/contents/ui/Limiter.qml:184
 msgid "Stereo Link"
 msgstr "Penautan Stereo"
-
-#: src/contents/ui/Limiter.qml:210
-msgid "Sidechain"
-msgstr "Sidechain"
-
-#: src/contents/ui/Limiter.qml:220
-#, fuzzy
-msgid "SC Type"
-msgstr "Tipe"
-
-#: src/contents/ui/Limiter.qml:224
-#, fuzzy
-msgid "Internal"
-msgstr "Terintegrasi"
-
-#: src/contents/ui/Limiter.qml:224
-#, fuzzy
-msgid "External"
-msgstr "Terintegrasi"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "Link"
-msgstr ""
-
-#: src/contents/ui/Limiter.qml:239
-msgid "Source"
-msgstr "Sumber"
-
-#: src/contents/ui/Limiter.qml:270
-#, fuzzy
-msgid "SC Preamp"
-msgstr "SC PreAmp"
 
 #: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
 #, fuzzy
 msgid "Automatic Level"
 msgstr "Gain Otomatis"
 
-#: src/contents/ui/Limiter.qml:349
-msgid "Knee"
-msgstr "Knee"
-
 #: src/contents/ui/Limiter.qml:393
 #, fuzzy
-msgid "Gain [dB]"
+msgid "Gain"
 msgstr "Besar Gain"
-
-#: src/contents/ui/Limiter.qml:401
-#, fuzzy
-msgid "Sidechain [dB]"
-msgstr "Sidechain"
-
-#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
-#, fuzzy
-msgid "L"
-msgstr "Kiri"
-
-#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
-msgid "R"
-msgstr "Kanan"
 
 #: src/contents/ui/Limiter.qml:524
 #, fuzzy
@@ -547,37 +776,37 @@ msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/main.qml:102
+#: src/contents/ui/main.qml:103
 #, fuzzy
 msgid "Preset: "
 msgstr "Preset"
 
-#: src/contents/ui/main.qml:110 src/contents/ui/main.qml:235
+#: src/contents/ui/main.qml:111 src/contents/ui/main.qml:233
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:132
+#: src/contents/ui/main.qml:133
 msgid "Presets"
 msgstr "Preset"
 
-#: src/contents/ui/main.qml:140
+#: src/contents/ui/main.qml:141
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:203
+#: src/contents/ui/main.qml:202
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:219 src/contents/ui/PreferencesSheet.qml:13
+#: src/contents/ui/main.qml:217 src/contents/ui/PreferencesSheet.qml:13
 #: src/contents/ui/PreferencesSheet.qml:18
-#: src/contents/ui/PreferencesSheet.qml:467
-#: src/contents/ui/PreferencesSheet.qml:480
+#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:463
 #, fuzzy
 msgid "Preferences"
 msgstr "_Preferensi"
 
-#: src/contents/ui/main.qml:227
+#: src/contents/ui/main.qml:225
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "Tentang EasyEffects"
@@ -604,40 +833,36 @@ msgstr "Tembok Kosong"
 msgid "No Audio Application Available"
 msgstr "Tidak ada Aplikasi Audio yang tersedia"
 
-#: src/contents/ui/PageStreamsEffects.qml:215
+#: src/contents/ui/PageStreamsEffects.qml:230
 #, fuzzy
 msgid "Add Effect"
 msgstr "Efek Input"
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-#: src/contents/ui/PageStreamsEffects.qml:397
+#: src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Players"
 msgstr "Pemain"
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-#, fuzzy
-msgid "Input Device"
-msgstr "Pembatas Masukan"
-
-#: src/contents/ui/PageStreamsEffects.qml:283
+#: src/contents/ui/PageStreamsEffects.qml:298
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Recorders"
 msgstr "Perekam"
 
-#: src/contents/ui/PageStreamsEffects.qml:308
+#: src/contents/ui/PageStreamsEffects.qml:323
 #, fuzzy
 msgid "No Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:309
+#: src/contents/ui/PageStreamsEffects.qml:324
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:407
+#: src/contents/ui/PageStreamsEffects.qml:422
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:423
+#: src/contents/ui/PageStreamsEffects.qml:438
 #, fuzzy
 msgid "Excluded Apps"
 msgstr "Pengecualian"
@@ -771,132 +996,118 @@ msgstr ""
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:154
-#, fuzzy
-msgid "Input Pipeline"
-msgstr "Pembatas Masukan"
-
-#: src/contents/ui/PreferencesSheet.qml:170
-#, fuzzy
-msgid "Update Interval"
-msgstr "Terintegrasi"
-
-#: src/contents/ui/PreferencesSheet.qml:171
-msgid "Related to Level Meters and Spectrum"
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:204
+#: src/contents/ui/PreferencesSheet.qml:187
 msgid "State"
 msgstr "Status"
 
-#: src/contents/ui/PreferencesSheet.qml:211
+#: src/contents/ui/PreferencesSheet.qml:194
 #, fuzzy
 msgid "Enabled"
 msgstr "Hidupkan"
 
-#: src/contents/ui/PreferencesSheet.qml:223
+#: src/contents/ui/PreferencesSheet.qml:206
 msgid "Style"
 msgstr "Gaya"
 
-#: src/contents/ui/PreferencesSheet.qml:230
+#: src/contents/ui/PreferencesSheet.qml:213
 msgid "Shape"
 msgstr "Rupa"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Bars"
 msgstr "Batang"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Lines"
 msgstr "Garis"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Dots"
 msgstr "Titik"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:243
+#: src/contents/ui/PreferencesSheet.qml:226
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:255
+#: src/contents/ui/PreferencesSheet.qml:238
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Points"
 msgstr "Titik"
 
-#: src/contents/ui/PreferencesSheet.qml:281
+#: src/contents/ui/PreferencesSheet.qml:264
 msgid "Height"
 msgstr "Tinggi"
 
-#: src/contents/ui/PreferencesSheet.qml:296
+#: src/contents/ui/PreferencesSheet.qml:279
 msgid "Frequency Range"
 msgstr "Rentang Frekuensi"
 
-#: src/contents/ui/PreferencesSheet.qml:303
+#: src/contents/ui/PreferencesSheet.qml:286
 msgid "Minimum"
 msgstr "Minimum"
 
-#: src/contents/ui/PreferencesSheet.qml:318
+#: src/contents/ui/PreferencesSheet.qml:301
 msgid "Maximum"
 msgstr "Maksimal"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:337
 #, fuzzy
 msgid "Native Plugin Window"
 msgstr "Tutup jendela"
 
-#: src/contents/ui/PreferencesSheet.qml:355
+#: src/contents/ui/PreferencesSheet.qml:338
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:367
+#: src/contents/ui/PreferencesSheet.qml:350
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Frekuensi"
 
-#: src/contents/ui/PreferencesSheet.qml:368
+#: src/contents/ui/PreferencesSheet.qml:351
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:407
+#: src/contents/ui/PreferencesSheet.qml:390
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:402
 msgid "Audio"
 msgstr "Audio"
 
-#: src/contents/ui/PreferencesSheet.qml:431
+#: src/contents/ui/PreferencesSheet.qml:414
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Spektrum"
 
-#: src/contents/ui/PreferencesSheet.qml:443
+#: src/contents/ui/PreferencesSheet.qml:426
 #, fuzzy
 msgid "Experimental Features"
 msgstr "Eksperimental"
 
-#: src/main.cpp:59
+#: src/main.cpp:61
 msgid "Audio effects for PipeWire applications"
 msgstr "Efek Suara untuk Aplikasi PipeWire"
 
-#: src/main.cpp:60
+#: src/main.cpp:62
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
@@ -920,31 +1131,31 @@ msgstr "Gain Input"
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: src/pw_model_nodes.cpp:357
+#: src/pw_model_nodes.cpp:360
 #, fuzzy
 msgid "Running"
 msgstr "berjalan"
 
-#: src/pw_model_nodes.cpp:359
+#: src/pw_model_nodes.cpp:362
 #, fuzzy
 msgid "Suspended"
 msgstr "Ditangguhkan"
 
-#: src/pw_model_nodes.cpp:361
+#: src/pw_model_nodes.cpp:364
 msgid "Idle"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:363
+#: src/pw_model_nodes.cpp:366
 #, fuzzy
 msgid "Creating"
 msgstr "membuat"
 
-#: src/pw_model_nodes.cpp:365
+#: src/pw_model_nodes.cpp:368
 #, fuzzy
 msgid "Error"
 msgstr "error"
 
-#: src/pw_model_nodes.cpp:367
+#: src/pw_model_nodes.cpp:370
 #, fuzzy
 msgid "Unknown"
 msgstr "tidak dikenal"
@@ -960,10 +1171,6 @@ msgstr "Penguat Bass"
 #: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
 msgstr "Kenyaringan Bass"
-
-#: src/tags_plugin_name.cpp:29
-msgid "Compressor"
-msgstr "Kompresor"
 
 #: src/tags_plugin_name.cpp:30
 msgid "Convolver"
@@ -1009,10 +1216,6 @@ msgstr "Jumlah Band"
 #: src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "Filter"
-
-#: src/tags_plugin_name.cpp:41
-msgid "Gate"
-msgstr "Gate"
 
 #: src/tags_plugin_name.cpp:42
 #, fuzzy
@@ -1072,6 +1275,22 @@ msgstr "Equalizer, Compressor and Other Audio Effects"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Efek Audio untuk Aplikasi PipeWire"
+
+#, fuzzy
+#~ msgid "Gain [dB]"
+#~ msgstr "Besar Gain"
+
+#, fuzzy
+#~ msgid "Sidechain [dB]"
+#~ msgstr "Sidechain"
+
+#, fuzzy
+#~ msgid "Input Pipeline"
+#~ msgstr "Pembatas Masukan"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "Terintegrasi"
 
 #, fuzzy
 #~ msgid "No Preset"
@@ -1210,23 +1429,9 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgid "Show Excluded Applications"
 #~ msgstr "Aplikasi"
 
-#~ msgid "Downward"
-#~ msgstr "Kompresi Menekan"
-
-#~ msgid "Upward"
-#~ msgstr "Kompresi Mengangkat"
-
 #, fuzzy
 #~ msgid "Compression Mode"
 #~ msgstr "Modus Kompresi"
-
-#, fuzzy
-#~ msgid "Boost Threshold"
-#~ msgstr "Ambang Batas"
-
-#, fuzzy
-#~ msgid "Boost Amount"
-#~ msgstr "Besaran"
 
 #, fuzzy
 #~ msgid "Time"
@@ -1248,12 +1453,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgid "Release Threshold"
 #~ msgstr "Ambang Batas"
 
-#~ msgid "Ratio"
-#~ msgstr "Rasio"
-
-#~ msgid "Makeup"
-#~ msgstr "Penguatan"
-
 #~ msgid "Dry Level"
 #~ msgstr "Tingkat Dry"
 
@@ -1265,55 +1464,12 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgstr "Mode Stereo"
 
 #, fuzzy
-#~ msgid "Middle"
-#~ msgstr "Volume Kanal Tengah"
-
-#~ msgid "Side"
-#~ msgstr "Volume Kanal Sisi"
-
-#~ msgid "Left"
-#~ msgstr "Kiri"
-
-#~ msgid "Right"
-#~ msgstr "Kanan"
-
-#, fuzzy
-#~ msgid "Min"
-#~ msgstr "Minimum"
-
-#, fuzzy
-#~ msgid "Max"
-#~ msgstr "Maksimal"
-
-#, fuzzy
 #~ msgid "Sidechain Source"
 #~ msgstr "Sidechain"
 
 #, fuzzy
-#~ msgid "Left/Right"
-#~ msgstr "Penundaan Kiri Kanan"
-
-#, fuzzy
-#~ msgid "Right/Left"
-#~ msgstr "Kanan"
-
-#, fuzzy
-#~ msgid "Mid/Side"
-#~ msgstr "Volume Kanal Sisi"
-
-#, fuzzy
-#~ msgid "Side/Mid"
-#~ msgstr "Volume Kanal Sisi"
-
-#, fuzzy
 #~ msgid "Stereo Split Source"
 #~ msgstr "Aturan Bawaan"
-
-#~ msgid "Peak"
-#~ msgstr "Peak"
-
-#~ msgid "RMS"
-#~ msgstr "RMS"
 
 #, fuzzy
 #~ msgid "Low-Pass Filter"
@@ -1324,14 +1480,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgstr "Sidechain"
 
 #, fuzzy
-#~ msgid "Feed-forward"
-#~ msgstr "Feed-forward"
-
-#, fuzzy
-#~ msgid "Feed-back"
-#~ msgstr "Volume Penyuapan"
-
-#, fuzzy
 #~ msgid "Sidechain Type"
 #~ msgstr "Sidechain"
 
@@ -1339,37 +1487,12 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgid "PreAmplification"
 #~ msgstr "Pra-Amplifikasi"
 
-#~ msgid "Reactivity"
-#~ msgstr "Pengaktifan Ulang"
-
-#~ msgid "Lookahead"
-#~ msgstr "Lookahead"
-
 #, fuzzy
 #~ msgid "Sidechain Filters"
 #~ msgstr "Sidechain"
 
-#, fuzzy
-#~ msgid "High-Pass"
-#~ msgstr "High Pass"
-
 #~ msgid "Frequency"
 #~ msgstr "Frekuensi"
-
-#~ msgid "Off"
-#~ msgstr "Mati"
-
-#, fuzzy
-#~ msgid "12 dB/oct"
-#~ msgstr "Lowpass 12dB/oktaf"
-
-#, fuzzy
-#~ msgid "24 dB/oct"
-#~ msgstr "Lowpass 24dB/oktaf"
-
-#, fuzzy
-#~ msgid "36 dB/oct"
-#~ msgstr "Lowpass 36dB/oktaf"
 
 #, fuzzy
 #~ msgid "High-Pass Filter Mode"
@@ -1380,15 +1503,8 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgstr "Frekuensi Tinggi"
 
 #, fuzzy
-#~ msgid "Low-Pass"
-#~ msgstr "Band Rendah"
-
-#, fuzzy
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "Filter High Pass"
-
-#~ msgid "Curve"
-#~ msgstr "Bentuk Kurva"
 
 #, fuzzy
 #~ msgid "Left Channel"
@@ -1486,10 +1602,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgstr "Frekuensi"
 
 #, fuzzy
-#~ msgid "F1 Gain"
-#~ msgstr "Besar Gain"
-
-#, fuzzy
 #~ msgid "Frequency 1 Gain"
 #~ msgstr "Frekuensi"
 
@@ -1514,10 +1626,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 
 #~ msgid "Detected"
 #~ msgstr "Terlacak"
-
-#, fuzzy
-#~ msgid "Reduction"
-#~ msgstr "Pengurangan"
 
 #~ msgid "Invert Phase"
 #~ msgstr "Balikkan Phase"
@@ -1773,10 +1881,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgstr "Opsi Sidechain Band"
 
 #, fuzzy
-#~ msgid "Stereo Split"
-#~ msgstr "Mode Stereo"
-
-#, fuzzy
 #~ msgid "Low-Cut"
 #~ msgstr "Filter Low-Cut"
 
@@ -1937,10 +2041,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgstr "Hapus Berkas Preset Ini"
 
 #, fuzzy
-#~ msgid "Try"
-#~ msgstr "Dry"
-
-#, fuzzy
 #~ msgid "Try this community preset"
 #~ msgstr "Cari Preset Keluaran"
 
@@ -2065,10 +2165,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #, fuzzy
 #~ msgid "Dereverberation"
 #~ msgstr "Penggemaan"
-
-#, fuzzy
-#~ msgid "Start"
-#~ msgstr "Mulai Band"
 
 #, fuzzy
 #~ msgid "Noise Suppression"
@@ -2800,10 +2896,6 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #, fuzzy
 #~ msgid "Maximum Gain Reduction"
 #~ msgstr "Pengurangan Kuatan"
-
-#, fuzzy
-#~ msgid "Wet"
-#~ msgstr "Tinggi"
 
 #~ msgid "S/C Level"
 #~ msgstr "Level Sisi/Tengah"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-08 20:08-0300\n"
+"POT-Creation-Date: 2024-11-16 13:17-0300\n"
 "PO-Revision-Date: 2024-05-13 08:00+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -123,7 +123,8 @@ msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
+#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
 #, fuzzy
 msgid "Using"
 msgstr "{} Kullanıyor"
@@ -172,20 +173,270 @@ msgstr "Zemin Değeri"
 msgid "Floor"
 msgstr "Zemin"
 
-#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
+#: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
 #: src/contents/ui/Limiter.qml:511
 #, fuzzy
 msgid "Show Native Window"
 msgstr "Yerel Pencereyi Göster"
 
-#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Compressor.qml:846
+#: src/contents/ui/Exciter.qml:221 src/contents/ui/Gate.qml:942
 msgid "Listen"
 msgstr "Liste"
 
-#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
+#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
 #: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "Sıfırla"
+
+#: src/contents/ui/Compressor.qml:51 src/tags_plugin_name.cpp:29
+msgid "Compressor"
+msgstr "Sıkıştırıcı"
+
+#: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
+#: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "Kip"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Downward"
+msgstr "Aşağıya"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Upward"
+msgstr "Yukarı doğru"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Boosting"
+msgstr "Yükseltme"
+
+#: src/contents/ui/Compressor.qml:83
+msgid "Boost Threshold"
+msgstr "Yükseltme Eşiği"
+
+#: src/contents/ui/Compressor.qml:103
+msgid "Boost Amount"
+msgstr "Yükseltme Miktarı"
+
+#: src/contents/ui/Compressor.qml:122
+msgid "Ratio"
+msgstr "Oran"
+
+#: src/contents/ui/Compressor.qml:138 src/contents/ui/Limiter.qml:349
+msgid "Knee"
+msgstr "Oynak"
+
+#: src/contents/ui/Compressor.qml:161
+#, fuzzy
+msgid "Threshold and Time"
+msgstr "Eşik"
+
+#: src/contents/ui/Compressor.qml:178 src/contents/ui/Gate.qml:72
+#: src/contents/ui/Gate.qml:809 src/contents/ui/Limiter.qml:142
+#: src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "Atak"
+
+#: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
+#: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
+#: src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "Bırak"
+
+#: src/contents/ui/Compressor.qml:250 src/contents/ui/Compressor.qml:354
+#: src/contents/ui/Compressor.qml:612 src/contents/ui/Gate.qml:236
+#: src/contents/ui/Gate.qml:340 src/contents/ui/Gate.qml:598
+#: src/contents/ui/Limiter.qml:210 src/contents/ui/Limiter.qml:401
+msgid "Sidechain"
+msgstr "Yanzincir"
+
+#: src/contents/ui/Compressor.qml:268 src/contents/ui/Gate.qml:254
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "Type"
+msgstr "Tür"
+
+#: src/contents/ui/Compressor.qml:272
+msgid "Feed-forward"
+msgstr "İleri-besleme"
+
+#: src/contents/ui/Compressor.qml:272
+msgid "Feed-back"
+msgstr "Geri-besleme"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+msgid "External"
+msgstr "Harici"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr "Bağ"
+
+#: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+msgid "Input Device"
+msgstr "Giriş Aygıtı"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "Peak"
+msgstr "Doruk"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "RMS"
+msgstr "RMS"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Compressor.qml:441
+#: src/contents/ui/Gate.qml:297 src/contents/ui/Gate.qml:427
+msgid "Low-Pass"
+msgstr "Düşük Geçiş"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+#, fuzzy
+msgid "SMA"
+msgstr "SPM"
+
+#: src/contents/ui/Compressor.qml:320 src/contents/ui/Compressor.qml:334
+#: src/contents/ui/Gate.qml:306 src/contents/ui/Gate.qml:320
+msgid "Source"
+msgstr "Kaynak"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Middle"
+msgstr "Orta"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Side"
+msgstr "Yan"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Left"
+msgstr "Sol"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Right"
+msgstr "Sağ"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+msgid "Min"
+msgstr "Asgari"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+msgid "Max"
+msgstr "Azami"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+msgid "Left/Right"
+msgstr "Sol/Sağ"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+msgid "Right/Left"
+msgstr "Sağ/Sol"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+msgid "Mid/Side"
+msgstr "Orta/Yan"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+msgid "Side/Mid"
+msgstr "Yan/Orta"
+
+#: src/contents/ui/Compressor.qml:371 src/contents/ui/Gate.qml:357
+#: src/contents/ui/Limiter.qml:270
+#, fuzzy
+msgid "Preamp"
+msgstr "SC Ön Yükseltme"
+
+#: src/contents/ui/Compressor.qml:389 src/contents/ui/Gate.qml:375
+msgid "Reactivity"
+msgstr "Tepkinirlik"
+
+#: src/contents/ui/Compressor.qml:407 src/contents/ui/Gate.qml:393
+msgid "Lookahead"
+msgstr "İlerleme"
+
+#: src/contents/ui/Compressor.qml:426 src/contents/ui/Gate.qml:412
+msgid "High-Pass"
+msgstr "Yüksek Geçiş"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "Off"
+msgstr "Kapalı"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "12 dB/oct"
+msgstr "12 dB/oct"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "24 dB/oct"
+msgstr "24 dB/oct"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "36 dB/oct"
+msgstr "36 dB/oct"
+
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+msgid "Output"
+msgstr "Çıktı"
+
+#: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+#, fuzzy
+msgid "Dry"
+msgstr "Dene"
+
+#: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+#, fuzzy
+msgid "Wet"
+msgstr "Webrtc"
+
+#: src/contents/ui/Compressor.qml:558 src/contents/ui/Gate.qml:544
+msgid "Makeup"
+msgstr "Süs"
+
+#: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
+#: src/contents/ui/Gate.qml:590
+msgid "Reduction"
+msgstr "Azaltma"
+
+#: src/contents/ui/Compressor.qml:671 src/contents/ui/Compressor.qml:684
+#: src/contents/ui/Compressor.qml:780 src/contents/ui/Compressor.qml:793
+#: src/contents/ui/Gate.qml:657 src/contents/ui/Gate.qml:670
+#: src/contents/ui/Gate.qml:766 src/contents/ui/Gate.qml:779
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "L"
+
+#: src/contents/ui/Compressor.qml:677 src/contents/ui/Compressor.qml:690
+#: src/contents/ui/Compressor.qml:786 src/contents/ui/Compressor.qml:799
+#: src/contents/ui/Gate.qml:663 src/contents/ui/Gate.qml:676
+#: src/contents/ui/Gate.qml:772 src/contents/ui/Gate.qml:785
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "R"
+
+#: src/contents/ui/Compressor.qml:713 src/contents/ui/Gate.qml:699
+msgid "Curve"
+msgstr "Eğri"
+
+#: src/contents/ui/Compressor.qml:721 src/contents/ui/Gate.qml:707
+#, fuzzy
+msgid "Envelope"
+msgstr "Bant Zarfı"
+
+#: src/contents/ui/Compressor.qml:857 src/contents/ui/Gate.qml:953
+msgid "Stereo Split"
+msgstr "Stereo Bölme"
 
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
@@ -220,26 +471,22 @@ msgstr "Bu efekti etkinleştir/devre dışı bırak"
 msgid "Remove this effect"
 msgstr "Bu efekti kaldır"
 
-#: src/contents/ui/DelegateStreamsList.qml:51
+#: src/contents/ui/DelegateStreamsList.qml:66
 #, fuzzy
 msgid " channels"
 msgstr "kanallar"
 
-#: src/contents/ui/DelegateStreamsList.qml:61
+#: src/contents/ui/DelegateStreamsList.qml:76 src/contents/ui/Gate.qml:182
 msgid "Enable"
 msgstr "Etkinleştir"
 
-#: src/contents/ui/DelegateStreamsList.qml:76
+#: src/contents/ui/DelegateStreamsList.qml:91
 msgid "Exclude"
 msgstr "Hariç tut"
 
-#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
 msgid "Input"
 msgstr "Girdi"
-
-#: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
-msgid "Output"
-msgstr "Çıktı"
 
 #: src/contents/ui/Exciter.qml:142
 #, fuzzy
@@ -250,9 +497,31 @@ msgstr "Etkin Model"
 msgid "Ceil"
 msgstr "Tavan"
 
-#: src/contents/ui/Limiter.qml:51
-msgid "Mode"
-msgstr "Kip"
+#: src/contents/ui/Gate.qml:55 src/tags_plugin_name.cpp:41
+msgid "Gate"
+msgstr "Aralık"
+
+#: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
+#: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "Eşik"
+
+#: src/contents/ui/Gate.qml:141 src/contents/ui/Gate.qml:212
+msgid "Zone"
+msgstr "Bölge"
+
+#: src/contents/ui/Gate.qml:164
+msgid "Hysteresis"
+msgstr "Gecikme"
+
+#: src/contents/ui/Gate.qml:258 src/contents/ui/Limiter.qml:224
+msgid "Internal"
+msgstr "Dahili"
+
+#: src/contents/ui/Gate.qml:876 src/contents/ui/Gate.qml:889
+msgid "Start"
+msgstr "Başla"
 
 #: src/contents/ui/Limiter.qml:55
 msgid "Herm Thin"
@@ -441,79 +710,19 @@ msgstr ""
 msgid "Limiter"
 msgstr "Sınırlayıcı"
 
-#: src/contents/ui/Limiter.qml:121
-msgid "Threshold"
-msgstr "Eşik"
-
-#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
-msgid "Attack"
-msgstr "Atak"
-
-#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
-msgid "Release"
-msgstr "Bırak"
-
 #: src/contents/ui/Limiter.qml:184
 msgid "Stereo Link"
 msgstr "Stereo Bağ"
-
-#: src/contents/ui/Limiter.qml:210
-msgid "Sidechain"
-msgstr "Yanzincir"
-
-#: src/contents/ui/Limiter.qml:220
-#, fuzzy
-msgid "SC Type"
-msgstr "Tür"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "Internal"
-msgstr "Dahili"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "External"
-msgstr "Harici"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "Link"
-msgstr "Bağ"
-
-#: src/contents/ui/Limiter.qml:239
-msgid "Source"
-msgstr "Kaynak"
-
-#: src/contents/ui/Limiter.qml:270
-#, fuzzy
-msgid "SC Preamp"
-msgstr "SC Ön Yükseltme"
 
 #: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
 #, fuzzy
 msgid "Automatic Level"
 msgstr "Otomatik Dengeleme"
 
-#: src/contents/ui/Limiter.qml:349
-msgid "Knee"
-msgstr "Oynak"
-
 #: src/contents/ui/Limiter.qml:393
 #, fuzzy
-msgid "Gain [dB]"
-msgstr "Kazanç"
-
-#: src/contents/ui/Limiter.qml:401
-#, fuzzy
-msgid "Sidechain [dB]"
-msgstr "Yanzincir Kipi"
-
-#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
-#, fuzzy
-msgid "L"
-msgstr "L"
-
-#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
-msgid "R"
-msgstr "R"
+msgid "Gain"
+msgstr "F1 Kazancı"
 
 #: src/contents/ui/Limiter.qml:524
 #, fuzzy
@@ -526,38 +735,38 @@ msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/main.qml:102
+#: src/contents/ui/main.qml:103
 #, fuzzy
 msgid "Preset: "
 msgstr "Ön Ayar"
 
-#: src/contents/ui/main.qml:110 src/contents/ui/main.qml:235
+#: src/contents/ui/main.qml:111 src/contents/ui/main.qml:233
 #, fuzzy
 msgid "Quit"
 msgstr "_Çık"
 
-#: src/contents/ui/main.qml:132
+#: src/contents/ui/main.qml:133
 msgid "Presets"
 msgstr "Ön Ayarlar"
 
-#: src/contents/ui/main.qml:140
+#: src/contents/ui/main.qml:141
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:203
+#: src/contents/ui/main.qml:202
 #, fuzzy
 msgid "PipeWire"
 msgstr "_PipeWire"
 
-#: src/contents/ui/main.qml:219 src/contents/ui/PreferencesSheet.qml:13
+#: src/contents/ui/main.qml:217 src/contents/ui/PreferencesSheet.qml:13
 #: src/contents/ui/PreferencesSheet.qml:18
-#: src/contents/ui/PreferencesSheet.qml:467
-#: src/contents/ui/PreferencesSheet.qml:480
+#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:463
 #, fuzzy
 msgid "Preferences"
 msgstr "_Tercihler"
 
-#: src/contents/ui/main.qml:227
+#: src/contents/ui/main.qml:225
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "Easy Effects _Hakkında"
@@ -585,36 +794,33 @@ msgstr "Boş Duvarlar"
 msgid "No Audio Application Available"
 msgstr "Ses Uygulaması Yok"
 
-#: src/contents/ui/PageStreamsEffects.qml:215
+#: src/contents/ui/PageStreamsEffects.qml:230
 msgid "Add Effect"
 msgstr "Efekt Ekle"
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-#: src/contents/ui/PageStreamsEffects.qml:397
+#: src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Players"
 msgstr "Oynatıcılar"
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-msgid "Input Device"
-msgstr "Giriş Aygıtı"
-
-#: src/contents/ui/PageStreamsEffects.qml:283
+#: src/contents/ui/PageStreamsEffects.qml:298
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Recorders"
 msgstr "Kaydediciler"
 
-#: src/contents/ui/PageStreamsEffects.qml:308
+#: src/contents/ui/PageStreamsEffects.qml:323
 msgid "No Effects"
 msgstr "Efekt Yok"
 
-#: src/contents/ui/PageStreamsEffects.qml:309
+#: src/contents/ui/PageStreamsEffects.qml:324
 msgid "Audio Stream Not Modified"
 msgstr "Ses Akışı Değiştirilmedi"
 
-#: src/contents/ui/PageStreamsEffects.qml:407
+#: src/contents/ui/PageStreamsEffects.qml:422
 msgid "Effects"
 msgstr "Efektler"
 
-#: src/contents/ui/PageStreamsEffects.qml:423
+#: src/contents/ui/PageStreamsEffects.qml:438
 msgid "Excluded Apps"
 msgstr "Hariç Tutulan Uygulamalar"
 
@@ -744,127 +950,114 @@ msgstr "Tepkisizlik Zaman Aşımı"
 msgid "Inactivity Timeout"
 msgstr "Tepkisizlik Zaman Aşımı"
 
-#: src/contents/ui/PreferencesSheet.qml:154
-#, fuzzy
-msgid "Input Pipeline"
-msgstr "Giriş Aygıtı"
-
-#: src/contents/ui/PreferencesSheet.qml:170
-msgid "Update Interval"
-msgstr "Güncelleme Aralığı"
-
-#: src/contents/ui/PreferencesSheet.qml:171
-msgid "Related to Level Meters and Spectrum"
-msgstr "Seviye Ölçerler ve Spektrum ile ilgili"
-
-#: src/contents/ui/PreferencesSheet.qml:204
+#: src/contents/ui/PreferencesSheet.qml:187
 msgid "State"
 msgstr "Durum"
 
-#: src/contents/ui/PreferencesSheet.qml:211
+#: src/contents/ui/PreferencesSheet.qml:194
 msgid "Enabled"
 msgstr "Etkin"
 
-#: src/contents/ui/PreferencesSheet.qml:223
+#: src/contents/ui/PreferencesSheet.qml:206
 msgid "Style"
 msgstr "Görünüm"
 
-#: src/contents/ui/PreferencesSheet.qml:230
+#: src/contents/ui/PreferencesSheet.qml:213
 msgid "Shape"
 msgstr "Şekil"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Bars"
 msgstr "Çubuklar"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Lines"
 msgstr "Çizgiler"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Dots"
 msgstr "Noktalar"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:243
+#: src/contents/ui/PreferencesSheet.qml:226
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:255
+#: src/contents/ui/PreferencesSheet.qml:238
 msgid "Dynamic Scale"
 msgstr "Dinamik Ölçek"
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Points"
 msgstr "Noktalar"
 
-#: src/contents/ui/PreferencesSheet.qml:281
+#: src/contents/ui/PreferencesSheet.qml:264
 msgid "Height"
 msgstr "Yükseklik"
 
-#: src/contents/ui/PreferencesSheet.qml:296
+#: src/contents/ui/PreferencesSheet.qml:279
 msgid "Frequency Range"
 msgstr "Frekans Aralığı"
 
-#: src/contents/ui/PreferencesSheet.qml:303
+#: src/contents/ui/PreferencesSheet.qml:286
 msgid "Minimum"
 msgstr "Asgari"
 
-#: src/contents/ui/PreferencesSheet.qml:318
+#: src/contents/ui/PreferencesSheet.qml:301
 msgid "Maximum"
 msgstr "Azami"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:337
 msgid "Native Plugin Window"
 msgstr "Yerel Eklenti Penceresi"
 
-#: src/contents/ui/PreferencesSheet.qml:355
+#: src/contents/ui/PreferencesSheet.qml:338
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "Yerel Eklenti Penceresinin Gösterilmesini/Gizlenmesini Sağlar"
 
-#: src/contents/ui/PreferencesSheet.qml:367
+#: src/contents/ui/PreferencesSheet.qml:350
 msgid "Update Frequency"
 msgstr "Güncelleme Sıklığı"
 
-#: src/contents/ui/PreferencesSheet.qml:368
+#: src/contents/ui/PreferencesSheet.qml:351
 msgid "Related to LV2 Plugins"
 msgstr "LV2 Eklentileri ile ilgili"
 
-#: src/contents/ui/PreferencesSheet.qml:407
+#: src/contents/ui/PreferencesSheet.qml:390
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:402
 msgid "Audio"
 msgstr "Ses"
 
-#: src/contents/ui/PreferencesSheet.qml:431
+#: src/contents/ui/PreferencesSheet.qml:414
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Spektrum Türü"
 
-#: src/contents/ui/PreferencesSheet.qml:443
+#: src/contents/ui/PreferencesSheet.qml:426
 msgid "Experimental Features"
 msgstr "Deneysel özellikler"
 
-#: src/main.cpp:59
+#: src/main.cpp:61
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire uygulamaları için ses efektleri"
 
-#: src/main.cpp:60
+#: src/main.cpp:62
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
@@ -887,27 +1080,27 @@ msgstr "Çıktı Düzey Ölçer"
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: src/pw_model_nodes.cpp:357
+#: src/pw_model_nodes.cpp:360
 msgid "Running"
 msgstr "Çalışıyor"
 
-#: src/pw_model_nodes.cpp:359
+#: src/pw_model_nodes.cpp:362
 msgid "Suspended"
 msgstr "Askıya alındı"
 
-#: src/pw_model_nodes.cpp:361
+#: src/pw_model_nodes.cpp:364
 msgid "Idle"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:363
+#: src/pw_model_nodes.cpp:366
 msgid "Creating"
 msgstr "Oluşturuluyor"
 
-#: src/pw_model_nodes.cpp:365
+#: src/pw_model_nodes.cpp:368
 msgid "Error"
 msgstr "Hata"
 
-#: src/pw_model_nodes.cpp:367
+#: src/pw_model_nodes.cpp:370
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
@@ -922,10 +1115,6 @@ msgstr "Bas Yükseltici"
 #: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
 msgstr "Bas Yüksekliği"
-
-#: src/tags_plugin_name.cpp:29
-msgid "Compressor"
-msgstr "Sıkıştırıcı"
 
 #: src/tags_plugin_name.cpp:30
 msgid "Convolver"
@@ -970,10 +1159,6 @@ msgstr "Genişletici"
 #: src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "Süzgeç"
-
-#: src/tags_plugin_name.cpp:41
-msgid "Gate"
-msgstr "Aralık"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
@@ -1032,6 +1217,24 @@ msgstr "Ekolayzır, Sıkıştırıcı ve Diğer Ses Efektleri"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "PipeWire Uygulamaları için Ses Efektleri"
+
+#, fuzzy
+#~ msgid "Gain [dB]"
+#~ msgstr "Kazanç"
+
+#, fuzzy
+#~ msgid "Sidechain [dB]"
+#~ msgstr "Yanzincir Kipi"
+
+#, fuzzy
+#~ msgid "Input Pipeline"
+#~ msgstr "Giriş Aygıtı"
+
+#~ msgid "Update Interval"
+#~ msgstr "Güncelleme Aralığı"
+
+#~ msgid "Related to Level Meters and Spectrum"
+#~ msgstr "Seviye Ölçerler ve Spektrum ile ilgili"
 
 #~ msgid "Launch Service at System Startup"
 #~ msgstr "Sistem Başlangıcında Hizmeti Başlat"
@@ -1172,23 +1375,8 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Show Excluded Applications"
 #~ msgstr "Hariç Tutulan Uygulamaları Göster"
 
-#~ msgid "Downward"
-#~ msgstr "Aşağıya"
-
-#~ msgid "Upward"
-#~ msgstr "Yukarı doğru"
-
-#~ msgid "Boosting"
-#~ msgstr "Yükseltme"
-
 #~ msgid "Compression Mode"
 #~ msgstr "Sıkıştırma Kipi"
-
-#~ msgid "Boost Threshold"
-#~ msgstr "Yükseltme Eşiği"
-
-#~ msgid "Boost Amount"
-#~ msgstr "Yükseltme Miktarı"
 
 #~ msgid "Time"
 #~ msgstr "Zaman"
@@ -1205,12 +1393,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Release Threshold"
 #~ msgstr "Bırakma Eşiği"
 
-#~ msgid "Ratio"
-#~ msgstr "Oran"
-
-#~ msgid "Makeup"
-#~ msgstr "Süs"
-
 #~ msgid "Dry Level"
 #~ msgstr "Kuru Düzey"
 
@@ -1220,47 +1402,11 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Stereo Split Mode"
 #~ msgstr "Stereo Bölme Kipi"
 
-#~ msgid "Middle"
-#~ msgstr "Orta"
-
-#~ msgid "Side"
-#~ msgstr "Yan"
-
-#~ msgid "Left"
-#~ msgstr "Sol"
-
-#~ msgid "Right"
-#~ msgstr "Sağ"
-
-#~ msgid "Min"
-#~ msgstr "Asgari"
-
-#~ msgid "Max"
-#~ msgstr "Azami"
-
 #~ msgid "Sidechain Source"
 #~ msgstr "Yanzincir Kaynağı"
 
-#~ msgid "Left/Right"
-#~ msgstr "Sol/Sağ"
-
-#~ msgid "Right/Left"
-#~ msgstr "Sağ/Sol"
-
-#~ msgid "Mid/Side"
-#~ msgstr "Orta/Yan"
-
-#~ msgid "Side/Mid"
-#~ msgstr "Yan/Orta"
-
 #~ msgid "Stereo Split Source"
 #~ msgstr "Stereo Bölme Kaynağı"
-
-#~ msgid "Peak"
-#~ msgstr "Doruk"
-
-#~ msgid "RMS"
-#~ msgstr "RMS"
 
 #~ msgid "Low-Pass Filter"
 #~ msgstr "Düşük Geçiş Süzgeci"
@@ -1271,44 +1417,17 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Listen Sidechain"
 #~ msgstr "Yanzincir Dinle"
 
-#~ msgid "Feed-forward"
-#~ msgstr "İleri-besleme"
-
-#~ msgid "Feed-back"
-#~ msgstr "Geri-besleme"
-
 #~ msgid "Sidechain Type"
 #~ msgstr "Yanzincir Türü"
 
 #~ msgid "PreAmplification"
 #~ msgstr "Ön Yükseltme"
 
-#~ msgid "Reactivity"
-#~ msgstr "Tepkinirlik"
-
-#~ msgid "Lookahead"
-#~ msgstr "İlerleme"
-
 #~ msgid "Sidechain Filters"
 #~ msgstr "Yanzincir Süzgeçleri"
 
-#~ msgid "High-Pass"
-#~ msgstr "Yüksek Geçiş"
-
 #~ msgid "Frequency"
 #~ msgstr "Sıklık"
-
-#~ msgid "Off"
-#~ msgstr "Kapalı"
-
-#~ msgid "12 dB/oct"
-#~ msgstr "12 dB/oct"
-
-#~ msgid "24 dB/oct"
-#~ msgstr "24 dB/oct"
-
-#~ msgid "36 dB/oct"
-#~ msgstr "36 dB/oct"
 
 #~ msgid "High-Pass Filter Mode"
 #~ msgstr "Yüksek Geçiş Süzgeci Kipi"
@@ -1316,14 +1435,8 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "High-Pass Filter Frequency"
 #~ msgstr "Yüksek Geçiş Süzgeci Frekansı"
 
-#~ msgid "Low-Pass"
-#~ msgstr "Düşük Geçiş"
-
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "Alçak Geçiş Süzgeci Kipi"
-
-#~ msgid "Curve"
-#~ msgstr "Eğri"
 
 #~ msgid "Left Channel"
 #~ msgstr "Sol Kanal"
@@ -1430,9 +1543,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Frequency 2 Peak"
 #~ msgstr "Frekans 2 Doruk"
 
-#~ msgid "F1 Gain"
-#~ msgstr "F1 Kazancı"
-
 #~ msgid "Frequency 1 Gain"
 #~ msgstr "Frekans 1 Kazancı"
 
@@ -1453,9 +1563,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Detected"
 #~ msgstr "Saptanan"
-
-#~ msgid "Reduction"
-#~ msgstr "Azaltma"
 
 #~ msgid "Invert Phase"
 #~ msgstr "Ters Faz"
@@ -1549,12 +1656,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "All-Pass"
 #~ msgstr "Tam-Geçiş"
-
-#~ msgid "Zone"
-#~ msgstr "Bölge"
-
-#~ msgid "Hysteresis"
-#~ msgstr "Gecikme"
 
 #~ msgid "Mix"
 #~ msgstr "Karıştır"
@@ -1715,9 +1816,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Band Sidechain Options"
 #~ msgstr "Bant Yanzincir Seçenekleri"
 
-#~ msgid "Stereo Split"
-#~ msgstr "Stereo Bölme"
-
 #~ msgid "Low-Cut"
 #~ msgstr "Düşük-Kesim"
 
@@ -1735,9 +1833,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Band Gain"
 #~ msgstr "Bant Kazancı"
-
-#~ msgid "Band Envelope"
-#~ msgstr "Bant Zarfı"
 
 #~ msgid "Band Curve"
 #~ msgstr "Bant Eğrisi"
@@ -1910,9 +2005,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Remove this preset file"
 #~ msgstr "Hazır ayar dosyasını kaldır"
 
-#~ msgid "Try"
-#~ msgstr "Dene"
-
 #~ msgid "Try this community preset"
 #~ msgstr "Bu topluluk ön ayarını dene"
 
@@ -2063,9 +2155,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Voice Activity Probability"
 #~ msgstr "Ses Etkinliği Olasılığı"
-
-#~ msgid "Start"
-#~ msgstr "Başla"
 
 #~ msgid "Continue"
 #~ msgstr "Devam et"
@@ -2356,9 +2445,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "FFT"
 #~ msgstr "FFT"
-
-#~ msgid "SPM"
-#~ msgstr "SPM"
 
 #, fuzzy
 #~ msgid "Wet Ratio"
@@ -3038,9 +3124,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "After"
 #~ msgstr "Sonrası"
-
-#~ msgid "Webrtc"
-#~ msgstr "Webrtc"
 
 #~ msgid "Extended Filter"
 #~ msgstr "Genişletilmiş Süzgeç"

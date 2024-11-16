@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-08 20:08-0300\n"
+"POT-Creation-Date: 2024-11-16 13:17-0300\n"
 "PO-Revision-Date: 2024-06-22 08:09+0000\n"
 "Last-Translator: Jakub Pavlů <jakubpavlu4@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -123,7 +123,8 @@ msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
+#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
 #, fuzzy
 msgid "Using"
 msgstr "Použití"
@@ -172,20 +173,273 @@ msgstr "Spodní hodnota"
 msgid "Floor"
 msgstr "Spodní mez"
 
-#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
+#: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
 #: src/contents/ui/Limiter.qml:511
 #, fuzzy
 msgid "Show Native Window"
 msgstr "Zobrazit nativní okno"
 
-#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Compressor.qml:846
+#: src/contents/ui/Exciter.qml:221 src/contents/ui/Gate.qml:942
 msgid "Listen"
 msgstr "Poslouchat"
 
-#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
+#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
 #: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "Vrátit na výchozí"
+
+#: src/contents/ui/Compressor.qml:51 src/tags_plugin_name.cpp:29
+msgid "Compressor"
+msgstr "Kompresor"
+
+#: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
+#: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "Režim"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Downward"
+msgstr "Dolů"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Upward"
+msgstr "Nahoru"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Boosting"
+msgstr "Zesílení"
+
+#: src/contents/ui/Compressor.qml:83
+msgid "Boost Threshold"
+msgstr "Práh zesílení"
+
+#: src/contents/ui/Compressor.qml:103
+msgid "Boost Amount"
+msgstr "Velikost zesílení"
+
+#: src/contents/ui/Compressor.qml:122
+msgid "Ratio"
+msgstr "Poměr"
+
+#: src/contents/ui/Compressor.qml:138 src/contents/ui/Limiter.qml:349
+msgid "Knee"
+msgstr "Přechod"
+
+#: src/contents/ui/Compressor.qml:161
+#, fuzzy
+msgid "Threshold and Time"
+msgstr "Práh"
+
+#: src/contents/ui/Compressor.qml:178 src/contents/ui/Gate.qml:72
+#: src/contents/ui/Gate.qml:809 src/contents/ui/Limiter.qml:142
+#: src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "Náběh"
+
+#: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
+#: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
+#: src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "Uvolnění"
+
+#: src/contents/ui/Compressor.qml:250 src/contents/ui/Compressor.qml:354
+#: src/contents/ui/Compressor.qml:612 src/contents/ui/Gate.qml:236
+#: src/contents/ui/Gate.qml:340 src/contents/ui/Gate.qml:598
+#: src/contents/ui/Limiter.qml:210 src/contents/ui/Limiter.qml:401
+msgid "Sidechain"
+msgstr "Postranní řetězec"
+
+#: src/contents/ui/Compressor.qml:268 src/contents/ui/Gate.qml:254
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "Type"
+msgstr "Typ"
+
+#: src/contents/ui/Compressor.qml:272
+msgid "Feed-forward"
+msgstr "Feed-forward"
+
+#: src/contents/ui/Compressor.qml:272
+msgid "Feed-back"
+msgstr "Kanál-zpět"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+msgid "External"
+msgstr "Externí"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr "Odkaz"
+
+#: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+msgid "Input Device"
+msgstr "Vstupní zařízení"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "Peak"
+msgstr "Vrchol"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "RMS"
+msgstr "RMS"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Compressor.qml:441
+#: src/contents/ui/Gate.qml:297 src/contents/ui/Gate.qml:427
+msgid "Low-Pass"
+msgstr "Dolní pásmo"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+#, fuzzy
+msgid "SMA"
+msgstr "SPM"
+
+#: src/contents/ui/Compressor.qml:320 src/contents/ui/Compressor.qml:334
+#: src/contents/ui/Gate.qml:306 src/contents/ui/Gate.qml:320
+msgid "Source"
+msgstr "Zdroj"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Middle"
+msgstr "Střední"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Side"
+msgstr "Postranní"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Left"
+msgstr "Levý"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Right"
+msgstr "Pravý"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+msgid "Min"
+msgstr "Minimum"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+msgid "Max"
+msgstr "Maximum"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Left/Right"
+msgstr "Zpoždění Levá/Pravá"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+msgid "Right/Left"
+msgstr "Pravý/Levý"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+msgid "Mid/Side"
+msgstr "Střední/boční"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+msgid "Side/Mid"
+msgstr "Boční/střední"
+
+#: src/contents/ui/Compressor.qml:371 src/contents/ui/Gate.qml:357
+#: src/contents/ui/Limiter.qml:270
+#, fuzzy
+msgid "Preamp"
+msgstr "SC Předzesilovač"
+
+#: src/contents/ui/Compressor.qml:389 src/contents/ui/Gate.qml:375
+msgid "Reactivity"
+msgstr "Reaktivita"
+
+#: src/contents/ui/Compressor.qml:407 src/contents/ui/Gate.qml:393
+msgid "Lookahead"
+msgstr "Výhled"
+
+#: src/contents/ui/Compressor.qml:426 src/contents/ui/Gate.qml:412
+#, fuzzy
+msgid "High-Pass"
+msgstr "High-Pass"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "Off"
+msgstr "Vypnuto"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "12 dB/oct"
+msgstr "12 dB/okt"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "24 dB/oct"
+msgstr "24 dB/okt"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "36 dB/oct"
+msgstr "36 dB/okt"
+
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+msgid "Output"
+msgstr "Výstup"
+
+#: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+#, fuzzy
+msgid "Dry"
+msgstr "Zkušební"
+
+#: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+#, fuzzy
+msgid "Wet"
+msgstr "Váhy"
+
+#: src/contents/ui/Compressor.qml:558 src/contents/ui/Gate.qml:544
+msgid "Makeup"
+msgstr "Pozvednutí"
+
+#: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
+#: src/contents/ui/Gate.qml:590
+msgid "Reduction"
+msgstr "Snížení"
+
+#: src/contents/ui/Compressor.qml:671 src/contents/ui/Compressor.qml:684
+#: src/contents/ui/Compressor.qml:780 src/contents/ui/Compressor.qml:793
+#: src/contents/ui/Gate.qml:657 src/contents/ui/Gate.qml:670
+#: src/contents/ui/Gate.qml:766 src/contents/ui/Gate.qml:779
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "L"
+
+#: src/contents/ui/Compressor.qml:677 src/contents/ui/Compressor.qml:690
+#: src/contents/ui/Compressor.qml:786 src/contents/ui/Compressor.qml:799
+#: src/contents/ui/Gate.qml:663 src/contents/ui/Gate.qml:676
+#: src/contents/ui/Gate.qml:772 src/contents/ui/Gate.qml:785
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "P"
+
+#: src/contents/ui/Compressor.qml:713 src/contents/ui/Gate.qml:699
+msgid "Curve"
+msgstr "Křivka"
+
+#: src/contents/ui/Compressor.qml:721 src/contents/ui/Gate.qml:707
+#, fuzzy
+msgid "Envelope"
+msgstr "Pásmová obálka"
+
+#: src/contents/ui/Compressor.qml:857 src/contents/ui/Gate.qml:953
+#, fuzzy
+msgid "Stereo Split"
+msgstr "Stereo režim"
 
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
@@ -220,26 +474,22 @@ msgstr "Povolit/zakázat tento efekt"
 msgid "Remove this effect"
 msgstr "Odstranit tento efekt"
 
-#: src/contents/ui/DelegateStreamsList.qml:51
+#: src/contents/ui/DelegateStreamsList.qml:66
 #, fuzzy
 msgid " channels"
 msgstr "Kanály"
 
-#: src/contents/ui/DelegateStreamsList.qml:61
+#: src/contents/ui/DelegateStreamsList.qml:76 src/contents/ui/Gate.qml:182
 msgid "Enable"
 msgstr "Povolit"
 
-#: src/contents/ui/DelegateStreamsList.qml:76
+#: src/contents/ui/DelegateStreamsList.qml:91
 msgid "Exclude"
 msgstr "Vyloučit"
 
-#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
 msgid "Input"
 msgstr "Vstup"
-
-#: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
-msgid "Output"
-msgstr "Výstup"
 
 #: src/contents/ui/Exciter.qml:142
 #, fuzzy
@@ -250,9 +500,31 @@ msgstr "Agresivní režim"
 msgid "Ceil"
 msgstr "Strop"
 
-#: src/contents/ui/Limiter.qml:51
-msgid "Mode"
-msgstr "Režim"
+#: src/contents/ui/Gate.qml:55 src/tags_plugin_name.cpp:41
+msgid "Gate"
+msgstr "Brána"
+
+#: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
+#: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "Práh"
+
+#: src/contents/ui/Gate.qml:141 src/contents/ui/Gate.qml:212
+msgid "Zone"
+msgstr "Zóna"
+
+#: src/contents/ui/Gate.qml:164
+msgid "Hysteresis"
+msgstr "Hystereze"
+
+#: src/contents/ui/Gate.qml:258 src/contents/ui/Limiter.qml:224
+msgid "Internal"
+msgstr "Vnitřní"
+
+#: src/contents/ui/Gate.qml:876 src/contents/ui/Gate.qml:889
+msgid "Start"
+msgstr "Začít"
 
 #: src/contents/ui/Limiter.qml:55
 #, fuzzy
@@ -444,79 +716,19 @@ msgstr ""
 msgid "Limiter"
 msgstr "Omezovač"
 
-#: src/contents/ui/Limiter.qml:121
-msgid "Threshold"
-msgstr "Práh"
-
-#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
-msgid "Attack"
-msgstr "Náběh"
-
-#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
-msgid "Release"
-msgstr "Uvolnění"
-
 #: src/contents/ui/Limiter.qml:184
 msgid "Stereo Link"
 msgstr "Spojení sterea"
-
-#: src/contents/ui/Limiter.qml:210
-msgid "Sidechain"
-msgstr "Postranní řetězec"
-
-#: src/contents/ui/Limiter.qml:220
-#, fuzzy
-msgid "SC Type"
-msgstr "Typ"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "Internal"
-msgstr "Vnitřní"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "External"
-msgstr "Externí"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "Link"
-msgstr "Odkaz"
-
-#: src/contents/ui/Limiter.qml:239
-msgid "Source"
-msgstr "Zdroj"
-
-#: src/contents/ui/Limiter.qml:270
-#, fuzzy
-msgid "SC Preamp"
-msgstr "SC Předzesilovač"
 
 #: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
 #, fuzzy
 msgid "Automatic Level"
 msgstr "Automatické vyrovnávání"
 
-#: src/contents/ui/Limiter.qml:349
-msgid "Knee"
-msgstr "Přechod"
-
 #: src/contents/ui/Limiter.qml:393
 #, fuzzy
-msgid "Gain [dB]"
-msgstr "Zesílení"
-
-#: src/contents/ui/Limiter.qml:401
-#, fuzzy
-msgid "Sidechain [dB]"
-msgstr "Režim sidechain"
-
-#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
-#, fuzzy
-msgid "L"
-msgstr "L"
-
-#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
-msgid "R"
-msgstr "P"
+msgid "Gain"
+msgstr "F1 Zesílení"
 
 #: src/contents/ui/Limiter.qml:524
 #, fuzzy
@@ -529,38 +741,38 @@ msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/main.qml:102
+#: src/contents/ui/main.qml:103
 #, fuzzy
 msgid "Preset: "
 msgstr "Profil"
 
-#: src/contents/ui/main.qml:110 src/contents/ui/main.qml:235
+#: src/contents/ui/main.qml:111 src/contents/ui/main.qml:233
 #, fuzzy
 msgid "Quit"
 msgstr "_Ukončit"
 
-#: src/contents/ui/main.qml:132
+#: src/contents/ui/main.qml:133
 msgid "Presets"
 msgstr "Přednastavení"
 
-#: src/contents/ui/main.qml:140
+#: src/contents/ui/main.qml:141
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:203
+#: src/contents/ui/main.qml:202
 #, fuzzy
 msgid "PipeWire"
 msgstr "_PipeWire"
 
-#: src/contents/ui/main.qml:219 src/contents/ui/PreferencesSheet.qml:13
+#: src/contents/ui/main.qml:217 src/contents/ui/PreferencesSheet.qml:13
 #: src/contents/ui/PreferencesSheet.qml:18
-#: src/contents/ui/PreferencesSheet.qml:467
-#: src/contents/ui/PreferencesSheet.qml:480
+#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:463
 #, fuzzy
 msgid "Preferences"
 msgstr "_Nastavení"
 
-#: src/contents/ui/main.qml:227
+#: src/contents/ui/main.qml:225
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "_O EasyEffects"
@@ -588,36 +800,33 @@ msgstr "Prázdné zdi"
 msgid "No Audio Application Available"
 msgstr "Není dostupná žádná zvuková aplikace"
 
-#: src/contents/ui/PageStreamsEffects.qml:215
+#: src/contents/ui/PageStreamsEffects.qml:230
 msgid "Add Effect"
 msgstr "Přidat efekt"
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-#: src/contents/ui/PageStreamsEffects.qml:397
+#: src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Players"
 msgstr "Přehrávače"
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-msgid "Input Device"
-msgstr "Vstupní zařízení"
-
-#: src/contents/ui/PageStreamsEffects.qml:283
+#: src/contents/ui/PageStreamsEffects.qml:298
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Recorders"
 msgstr "Záznamníky"
 
-#: src/contents/ui/PageStreamsEffects.qml:308
+#: src/contents/ui/PageStreamsEffects.qml:323
 msgid "No Effects"
 msgstr "Žádné efekty"
 
-#: src/contents/ui/PageStreamsEffects.qml:309
+#: src/contents/ui/PageStreamsEffects.qml:324
 msgid "Audio Stream Not Modified"
 msgstr "Audio Stream není modifikovaný"
 
-#: src/contents/ui/PageStreamsEffects.qml:407
+#: src/contents/ui/PageStreamsEffects.qml:422
 msgid "Effects"
 msgstr "Efekty"
 
-#: src/contents/ui/PageStreamsEffects.qml:423
+#: src/contents/ui/PageStreamsEffects.qml:438
 msgid "Excluded Apps"
 msgstr "Vynechané aplikace"
 
@@ -746,132 +955,118 @@ msgstr "časový limit nečinnosti"
 msgid "Inactivity Timeout"
 msgstr "časový limit nečinnosti"
 
-#: src/contents/ui/PreferencesSheet.qml:154
-#, fuzzy
-msgid "Input Pipeline"
-msgstr "Vstupní zařízení"
-
-#: src/contents/ui/PreferencesSheet.qml:170
-#, fuzzy
-msgid "Update Interval"
-msgstr "Vnitřní"
-
-#: src/contents/ui/PreferencesSheet.qml:171
-msgid "Related to Level Meters and Spectrum"
-msgstr "Související s hladinoměry a spektrem"
-
-#: src/contents/ui/PreferencesSheet.qml:204
+#: src/contents/ui/PreferencesSheet.qml:187
 msgid "State"
 msgstr "Stav"
 
-#: src/contents/ui/PreferencesSheet.qml:211
+#: src/contents/ui/PreferencesSheet.qml:194
 msgid "Enabled"
 msgstr "Povoleno"
 
-#: src/contents/ui/PreferencesSheet.qml:223
+#: src/contents/ui/PreferencesSheet.qml:206
 msgid "Style"
 msgstr "Styl"
 
-#: src/contents/ui/PreferencesSheet.qml:230
+#: src/contents/ui/PreferencesSheet.qml:213
 msgid "Shape"
 msgstr "Tvar"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Bars"
 msgstr "Pruhy"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Lines"
 msgstr "Čáry"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Dots"
 msgstr "Tečky"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:243
+#: src/contents/ui/PreferencesSheet.qml:226
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:255
+#: src/contents/ui/PreferencesSheet.qml:238
 msgid "Dynamic Scale"
 msgstr "Dynamická stupnice"
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Points"
 msgstr "Body"
 
-#: src/contents/ui/PreferencesSheet.qml:281
+#: src/contents/ui/PreferencesSheet.qml:264
 msgid "Height"
 msgstr "Výška"
 
-#: src/contents/ui/PreferencesSheet.qml:296
+#: src/contents/ui/PreferencesSheet.qml:279
 msgid "Frequency Range"
 msgstr "Rozsah frekvence"
 
-#: src/contents/ui/PreferencesSheet.qml:303
+#: src/contents/ui/PreferencesSheet.qml:286
 msgid "Minimum"
 msgstr "Minimum"
 
-#: src/contents/ui/PreferencesSheet.qml:318
+#: src/contents/ui/PreferencesSheet.qml:301
 msgid "Maximum"
 msgstr "Nejvýše"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:337
 #, fuzzy
 msgid "Native Plugin Window"
 msgstr "Zavřít okno"
 
-#: src/contents/ui/PreferencesSheet.qml:355
+#: src/contents/ui/PreferencesSheet.qml:338
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "Umožňuje zobrazit/skrýt okno nativního pluginu"
 
-#: src/contents/ui/PreferencesSheet.qml:367
+#: src/contents/ui/PreferencesSheet.qml:350
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Kmitočet"
 
-#: src/contents/ui/PreferencesSheet.qml:368
+#: src/contents/ui/PreferencesSheet.qml:351
 msgid "Related to LV2 Plugins"
 msgstr "Související se zásuvnými moduly LV2"
 
-#: src/contents/ui/PreferencesSheet.qml:407
+#: src/contents/ui/PreferencesSheet.qml:390
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:402
 msgid "Audio"
 msgstr "Audio"
 
-#: src/contents/ui/PreferencesSheet.qml:431
+#: src/contents/ui/PreferencesSheet.qml:414
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Typ spektra"
 
-#: src/contents/ui/PreferencesSheet.qml:443
+#: src/contents/ui/PreferencesSheet.qml:426
 #, fuzzy
 msgid "Experimental Features"
 msgstr "Pokusný"
 
-#: src/main.cpp:59
+#: src/main.cpp:61
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Zvukové efekty pro programy využívající PulseAudio"
 
-#: src/main.cpp:60
+#: src/main.cpp:62
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
@@ -894,27 +1089,27 @@ msgstr "Výstupní zařízení"
 msgid "Spectrum"
 msgstr "Spektrum"
 
-#: src/pw_model_nodes.cpp:357
+#: src/pw_model_nodes.cpp:360
 msgid "Running"
 msgstr "Běží"
 
-#: src/pw_model_nodes.cpp:359
+#: src/pw_model_nodes.cpp:362
 msgid "Suspended"
 msgstr "Pozastaveno"
 
-#: src/pw_model_nodes.cpp:361
+#: src/pw_model_nodes.cpp:364
 msgid "Idle"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:363
+#: src/pw_model_nodes.cpp:366
 msgid "Creating"
 msgstr "Tvoření"
 
-#: src/pw_model_nodes.cpp:365
+#: src/pw_model_nodes.cpp:368
 msgid "Error"
 msgstr "Chyba"
 
-#: src/pw_model_nodes.cpp:367
+#: src/pw_model_nodes.cpp:370
 msgid "Unknown"
 msgstr "Neznámý"
 
@@ -929,10 +1124,6 @@ msgstr "Zlepšovač hloubek"
 #: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
 msgstr "Hlasitost basů"
-
-#: src/tags_plugin_name.cpp:29
-msgid "Compressor"
-msgstr "Kompresor"
 
 #: src/tags_plugin_name.cpp:30
 msgid "Convolver"
@@ -977,10 +1168,6 @@ msgstr "Expandér"
 #: src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "Filtr"
-
-#: src/tags_plugin_name.cpp:41
-msgid "Gate"
-msgstr "Brána"
 
 #: src/tags_plugin_name.cpp:42
 #, fuzzy
@@ -1040,6 +1227,25 @@ msgstr "Ekvalizér, kompresor a jiné zvukové efekty"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Zvukové efekty pro programy využívající PipeWire"
+
+#, fuzzy
+#~ msgid "Gain [dB]"
+#~ msgstr "Zesílení"
+
+#, fuzzy
+#~ msgid "Sidechain [dB]"
+#~ msgstr "Režim sidechain"
+
+#, fuzzy
+#~ msgid "Input Pipeline"
+#~ msgstr "Vstupní zařízení"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "Vnitřní"
+
+#~ msgid "Related to Level Meters and Spectrum"
+#~ msgstr "Související s hladinoměry a spektrem"
 
 #~ msgid "Launch Service at System Startup"
 #~ msgstr "Spustit službu při spuštění systému"
@@ -1181,23 +1387,8 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Show Excluded Applications"
 #~ msgstr "Zobrazit vyloučené aplikace"
 
-#~ msgid "Downward"
-#~ msgstr "Dolů"
-
-#~ msgid "Upward"
-#~ msgstr "Nahoru"
-
-#~ msgid "Boosting"
-#~ msgstr "Zesílení"
-
 #~ msgid "Compression Mode"
 #~ msgstr "Kompresní režim"
-
-#~ msgid "Boost Threshold"
-#~ msgstr "Práh zesílení"
-
-#~ msgid "Boost Amount"
-#~ msgstr "Velikost zesílení"
 
 #~ msgid "Time"
 #~ msgstr "Čas"
@@ -1215,12 +1406,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Release Threshold"
 #~ msgstr "Práh release"
 
-#~ msgid "Ratio"
-#~ msgstr "Poměr"
-
-#~ msgid "Makeup"
-#~ msgstr "Pozvednutí"
-
 #, fuzzy
 #~ msgid "Dry Level"
 #~ msgstr "Dry Level"
@@ -1232,49 +1417,12 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Stereo Split Mode"
 #~ msgstr "Stereo režim"
 
-#~ msgid "Middle"
-#~ msgstr "Střední"
-
-#~ msgid "Side"
-#~ msgstr "Postranní"
-
-#~ msgid "Left"
-#~ msgstr "Levý"
-
-#~ msgid "Right"
-#~ msgstr "Pravý"
-
-#~ msgid "Min"
-#~ msgstr "Minimum"
-
-#~ msgid "Max"
-#~ msgstr "Maximum"
-
 #~ msgid "Sidechain Source"
 #~ msgstr "Zdroj sidechain"
 
 #, fuzzy
-#~ msgid "Left/Right"
-#~ msgstr "Zpoždění Levá/Pravá"
-
-#~ msgid "Right/Left"
-#~ msgstr "Pravý/Levý"
-
-#~ msgid "Mid/Side"
-#~ msgstr "Střední/boční"
-
-#~ msgid "Side/Mid"
-#~ msgstr "Boční/střední"
-
-#, fuzzy
 #~ msgid "Stereo Split Source"
 #~ msgstr "Výchozí zdroj"
-
-#~ msgid "Peak"
-#~ msgstr "Vrchol"
-
-#~ msgid "RMS"
-#~ msgstr "RMS"
 
 #~ msgid "Low-Pass Filter"
 #~ msgstr "Nízkofrekvenční filtr"
@@ -1286,45 +1434,17 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Listen Sidechain"
 #~ msgstr "Externí postranní řetězec"
 
-#~ msgid "Feed-forward"
-#~ msgstr "Feed-forward"
-
-#~ msgid "Feed-back"
-#~ msgstr "Kanál-zpět"
-
 #~ msgid "Sidechain Type"
 #~ msgstr "Druh sidechain"
 
 #~ msgid "PreAmplification"
 #~ msgstr "Předzesílení"
 
-#~ msgid "Reactivity"
-#~ msgstr "Reaktivita"
-
-#~ msgid "Lookahead"
-#~ msgstr "Výhled"
-
 #~ msgid "Sidechain Filters"
 #~ msgstr "Filtry sidechain"
 
-#, fuzzy
-#~ msgid "High-Pass"
-#~ msgstr "High-Pass"
-
 #~ msgid "Frequency"
 #~ msgstr "Kmitočet"
-
-#~ msgid "Off"
-#~ msgstr "Vypnuto"
-
-#~ msgid "12 dB/oct"
-#~ msgstr "12 dB/okt"
-
-#~ msgid "24 dB/oct"
-#~ msgstr "24 dB/okt"
-
-#~ msgid "36 dB/oct"
-#~ msgstr "36 dB/okt"
 
 #~ msgid "High-Pass Filter Mode"
 #~ msgstr "Režim vysokopásmového filtru"
@@ -1332,14 +1452,8 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "High-Pass Filter Frequency"
 #~ msgstr "Filtr vysokého kmitočtu"
 
-#~ msgid "Low-Pass"
-#~ msgstr "Dolní pásmo"
-
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "Režim filtrování nízkých frekvencí"
-
-#~ msgid "Curve"
-#~ msgstr "Křivka"
 
 #~ msgid "Left Channel"
 #~ msgstr "Levý kanál"
@@ -1448,9 +1562,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Frequency 2 Peak"
 #~ msgstr "Frekvence 2 vrchol"
 
-#~ msgid "F1 Gain"
-#~ msgstr "F1 Zesílení"
-
 #~ msgid "Frequency 1 Gain"
 #~ msgstr "Frekvence 1 zvýšení"
 
@@ -1471,9 +1582,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #~ msgid "Detected"
 #~ msgstr "Zjištěno"
-
-#~ msgid "Reduction"
-#~ msgstr "Snížení"
 
 #~ msgid "Invert Phase"
 #~ msgstr "Obrátit fázi"
@@ -1580,12 +1688,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #, fuzzy
 #~ msgid "All-Pass"
 #~ msgstr "Dolní pásmo"
-
-#~ msgid "Zone"
-#~ msgstr "Zóna"
-
-#~ msgid "Hysteresis"
-#~ msgstr "Hystereze"
 
 #~ msgid "Mix"
 #~ msgstr "Mix"
@@ -1755,10 +1857,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgstr "Možnosti postranního řetězce"
 
 #, fuzzy
-#~ msgid "Stereo Split"
-#~ msgstr "Stereo režim"
-
-#, fuzzy
 #~ msgid "Low-Cut"
 #~ msgstr "Nízkopásmový filtr"
 
@@ -1777,9 +1875,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #~ msgid "Band Gain"
 #~ msgstr "Pásmové zesílení"
-
-#~ msgid "Band Envelope"
-#~ msgstr "Pásmová obálka"
 
 #~ msgid "Band Curve"
 #~ msgstr "Pásmová křivka"
@@ -1958,10 +2053,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgstr "Odstranit tento soubor s přednastavením"
 
 #, fuzzy
-#~ msgid "Try"
-#~ msgstr "Zkušební"
-
-#, fuzzy
 #~ msgid "Try this community preset"
 #~ msgstr "Hledat profil pro výstup"
 
@@ -2118,9 +2209,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #~ msgid "Voice Activity Probability"
 #~ msgstr "Pravděpodobnost Hlasové Aktivity"
-
-#~ msgid "Start"
-#~ msgstr "Začít"
 
 #~ msgid "Continue"
 #~ msgstr "Pokračovat"
@@ -2415,9 +2503,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #~ msgid "FFT"
 #~ msgstr "FFT"
-
-#~ msgid "SPM"
-#~ msgstr "SPM"
 
 #, fuzzy
 #~ msgid "Wet Ratio"
@@ -3003,10 +3088,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #, fuzzy
 #~ msgid "Maximum Gain Reduction"
 #~ msgstr "Zmenšení zesílení"
-
-#, fuzzy
-#~ msgid "Wet"
-#~ msgstr "Váhy"
 
 #~ msgid "S/C Level"
 #~ msgstr "Úroveň S/C"

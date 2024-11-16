@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-08 20:08-0300\n"
+"POT-Creation-Date: 2024-11-16 13:17-0300\n"
 "PO-Revision-Date: 2023-03-23 03:22+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -125,7 +125,8 @@ msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
+#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
 msgid "Using"
 msgstr "使用中"
 
@@ -173,20 +174,275 @@ msgstr "フロア値"
 msgid "Floor"
 msgstr "フロア"
 
-#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
+#: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
 #: src/contents/ui/Limiter.qml:511
 #, fuzzy
 msgid "Show Native Window"
 msgstr "ウィンドウを閉じる"
 
-#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Compressor.qml:846
+#: src/contents/ui/Exciter.qml:221 src/contents/ui/Gate.qml:942
 msgid "Listen"
 msgstr "聞く"
 
-#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
+#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
 #: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "リセット"
+
+#: src/contents/ui/Compressor.qml:51 src/tags_plugin_name.cpp:29
+msgid "Compressor"
+msgstr "コンプレッサー"
+
+#: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
+#: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "モード"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Downward"
+msgstr "下方向"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Upward"
+msgstr "上方向"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Boosting"
+msgstr "ブースト"
+
+#: src/contents/ui/Compressor.qml:83
+msgid "Boost Threshold"
+msgstr "ブーストしきい値"
+
+#: src/contents/ui/Compressor.qml:103
+msgid "Boost Amount"
+msgstr "ブースト量"
+
+#: src/contents/ui/Compressor.qml:122
+msgid "Ratio"
+msgstr "比率"
+
+#: src/contents/ui/Compressor.qml:138 src/contents/ui/Limiter.qml:349
+msgid "Knee"
+msgstr "ニー"
+
+#: src/contents/ui/Compressor.qml:161
+#, fuzzy
+msgid "Threshold and Time"
+msgstr "しきい値"
+
+#: src/contents/ui/Compressor.qml:178 src/contents/ui/Gate.qml:72
+#: src/contents/ui/Gate.qml:809 src/contents/ui/Limiter.qml:142
+#: src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "アタック"
+
+#: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
+#: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
+#: src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "リリース"
+
+#: src/contents/ui/Compressor.qml:250 src/contents/ui/Compressor.qml:354
+#: src/contents/ui/Compressor.qml:612 src/contents/ui/Gate.qml:236
+#: src/contents/ui/Gate.qml:340 src/contents/ui/Gate.qml:598
+#: src/contents/ui/Limiter.qml:210 src/contents/ui/Limiter.qml:401
+msgid "Sidechain"
+msgstr "サイドチェーン"
+
+#: src/contents/ui/Compressor.qml:268 src/contents/ui/Gate.qml:254
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "Type"
+msgstr "タイプ"
+
+#: src/contents/ui/Compressor.qml:272
+msgid "Feed-forward"
+msgstr "フィードフォワード"
+
+#: src/contents/ui/Compressor.qml:272
+msgid "Feed-back"
+msgstr "フィードバック"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+msgid "External"
+msgstr "外部"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+msgid "Link"
+msgstr "リンク"
+
+#: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+msgid "Input Device"
+msgstr "入力デバイス"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "Peak"
+msgstr "ピーク"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "RMS"
+msgstr "RMS"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Compressor.qml:441
+#: src/contents/ui/Gate.qml:297 src/contents/ui/Gate.qml:427
+msgid "Low-Pass"
+msgstr "ローパス"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+#, fuzzy
+msgid "SMA"
+msgstr "SPM"
+
+#: src/contents/ui/Compressor.qml:320 src/contents/ui/Compressor.qml:334
+#: src/contents/ui/Gate.qml:306 src/contents/ui/Gate.qml:320
+msgid "Source"
+msgstr "ソース"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Middle"
+msgstr "中央"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Side"
+msgstr "サイド"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Left"
+msgstr "左"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Right"
+msgstr "右"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Min"
+msgstr "最小"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Max"
+msgstr "最大"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Left/Right"
+msgstr "ディレイ 左 右"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Right/Left"
+msgstr "右"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Mid/Side"
+msgstr "サイド"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+#, fuzzy
+msgid "Side/Mid"
+msgstr "サイド"
+
+#: src/contents/ui/Compressor.qml:371 src/contents/ui/Gate.qml:357
+#: src/contents/ui/Limiter.qml:270
+#, fuzzy
+msgid "Preamp"
+msgstr "SC プリアンプ"
+
+#: src/contents/ui/Compressor.qml:389 src/contents/ui/Gate.qml:375
+msgid "Reactivity"
+msgstr "反応性"
+
+#: src/contents/ui/Compressor.qml:407 src/contents/ui/Gate.qml:393
+msgid "Lookahead"
+msgstr "ルックアヘッド"
+
+#: src/contents/ui/Compressor.qml:426 src/contents/ui/Gate.qml:412
+msgid "High-Pass"
+msgstr "ハイパス"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "Off"
+msgstr "オフ"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "12 dB/oct"
+msgstr "12 dB/oct"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "24 dB/oct"
+msgstr "24 dB/oct"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "36 dB/oct"
+msgstr "36 dB/oct"
+
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+msgid "Output"
+msgstr "出力"
+
+#: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+msgid "Dry"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+msgid "Wet"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:558 src/contents/ui/Gate.qml:544
+msgid "Makeup"
+msgstr "メイクアップ"
+
+#: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
+#: src/contents/ui/Gate.qml:590
+msgid "Reduction"
+msgstr "減少"
+
+#: src/contents/ui/Compressor.qml:671 src/contents/ui/Compressor.qml:684
+#: src/contents/ui/Compressor.qml:780 src/contents/ui/Compressor.qml:793
+#: src/contents/ui/Gate.qml:657 src/contents/ui/Gate.qml:670
+#: src/contents/ui/Gate.qml:766 src/contents/ui/Gate.qml:779
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "L"
+
+#: src/contents/ui/Compressor.qml:677 src/contents/ui/Compressor.qml:690
+#: src/contents/ui/Compressor.qml:786 src/contents/ui/Compressor.qml:799
+#: src/contents/ui/Gate.qml:663 src/contents/ui/Gate.qml:676
+#: src/contents/ui/Gate.qml:772 src/contents/ui/Gate.qml:785
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "R"
+
+#: src/contents/ui/Compressor.qml:713 src/contents/ui/Gate.qml:699
+msgid "Curve"
+msgstr "カーブ"
+
+#: src/contents/ui/Compressor.qml:721 src/contents/ui/Gate.qml:707
+#, fuzzy
+msgid "Envelope"
+msgstr "バンドエンベロープ"
+
+#: src/contents/ui/Compressor.qml:857 src/contents/ui/Gate.qml:953
+#, fuzzy
+msgid "Stereo Split"
+msgstr "ステレオ幅"
 
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
@@ -221,26 +477,22 @@ msgstr "このエフェクトの有効化/無効化"
 msgid "Remove this effect"
 msgstr "このエフェクトを削除"
 
-#: src/contents/ui/DelegateStreamsList.qml:51
+#: src/contents/ui/DelegateStreamsList.qml:66
 #, fuzzy
 msgid " channels"
 msgstr "チャンネル"
 
-#: src/contents/ui/DelegateStreamsList.qml:61
+#: src/contents/ui/DelegateStreamsList.qml:76 src/contents/ui/Gate.qml:182
 msgid "Enable"
 msgstr "有効"
 
-#: src/contents/ui/DelegateStreamsList.qml:76
+#: src/contents/ui/DelegateStreamsList.qml:91
 msgid "Exclude"
 msgstr "除外"
 
-#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
 msgid "Input"
 msgstr "入力"
-
-#: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
-msgid "Output"
-msgstr "出力"
 
 #: src/contents/ui/Exciter.qml:142
 #, fuzzy
@@ -251,9 +503,32 @@ msgstr "アクティブモデル"
 msgid "Ceil"
 msgstr "切り上げ"
 
-#: src/contents/ui/Limiter.qml:51
-msgid "Mode"
-msgstr "モード"
+#: src/contents/ui/Gate.qml:55 src/tags_plugin_name.cpp:41
+msgid "Gate"
+msgstr "ゲート"
+
+#: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
+#: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "しきい値"
+
+#: src/contents/ui/Gate.qml:141 src/contents/ui/Gate.qml:212
+msgid "Zone"
+msgstr "ゾーン"
+
+#: src/contents/ui/Gate.qml:164
+msgid "Hysteresis"
+msgstr "ヒステリシス"
+
+#: src/contents/ui/Gate.qml:258 src/contents/ui/Limiter.qml:224
+msgid "Internal"
+msgstr "内部"
+
+#: src/contents/ui/Gate.qml:876 src/contents/ui/Gate.qml:889
+#, fuzzy
+msgid "Start"
+msgstr "バンドスタート"
 
 #: src/contents/ui/Limiter.qml:55
 msgid "Herm Thin"
@@ -442,79 +717,19 @@ msgstr ""
 msgid "Limiter"
 msgstr "リミッター"
 
-#: src/contents/ui/Limiter.qml:121
-msgid "Threshold"
-msgstr "しきい値"
-
-#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
-msgid "Attack"
-msgstr "アタック"
-
-#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
-msgid "Release"
-msgstr "リリース"
-
 #: src/contents/ui/Limiter.qml:184
 msgid "Stereo Link"
 msgstr "ステレオリンク"
-
-#: src/contents/ui/Limiter.qml:210
-msgid "Sidechain"
-msgstr "サイドチェーン"
-
-#: src/contents/ui/Limiter.qml:220
-#, fuzzy
-msgid "SC Type"
-msgstr "タイプ"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "Internal"
-msgstr "内部"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "External"
-msgstr "外部"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "Link"
-msgstr "リンク"
-
-#: src/contents/ui/Limiter.qml:239
-msgid "Source"
-msgstr "ソース"
-
-#: src/contents/ui/Limiter.qml:270
-#, fuzzy
-msgid "SC Preamp"
-msgstr "SC プリアンプ"
 
 #: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
 #, fuzzy
 msgid "Automatic Level"
 msgstr "オートレベリング"
 
-#: src/contents/ui/Limiter.qml:349
-msgid "Knee"
-msgstr "ニー"
-
 #: src/contents/ui/Limiter.qml:393
 #, fuzzy
-msgid "Gain [dB]"
-msgstr "ゲイン"
-
-#: src/contents/ui/Limiter.qml:401
-#, fuzzy
-msgid "Sidechain [dB]"
-msgstr "サイドチェーンモード"
-
-#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
-#, fuzzy
-msgid "L"
-msgstr "L"
-
-#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
-msgid "R"
-msgstr "R"
+msgid "Gain"
+msgstr "F1 ゲイン"
 
 #: src/contents/ui/Limiter.qml:524
 #, fuzzy
@@ -527,36 +742,36 @@ msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "Easy Effects"
 
-#: src/contents/ui/main.qml:102
+#: src/contents/ui/main.qml:103
 #, fuzzy
 msgid "Preset: "
 msgstr "プリセット"
 
-#: src/contents/ui/main.qml:110 src/contents/ui/main.qml:235
+#: src/contents/ui/main.qml:111 src/contents/ui/main.qml:233
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:132
+#: src/contents/ui/main.qml:133
 msgid "Presets"
 msgstr "プリセット"
 
-#: src/contents/ui/main.qml:140
+#: src/contents/ui/main.qml:141
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:203
+#: src/contents/ui/main.qml:202
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:219 src/contents/ui/PreferencesSheet.qml:13
+#: src/contents/ui/main.qml:217 src/contents/ui/PreferencesSheet.qml:13
 #: src/contents/ui/PreferencesSheet.qml:18
-#: src/contents/ui/PreferencesSheet.qml:467
-#: src/contents/ui/PreferencesSheet.qml:480
+#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:463
 #, fuzzy
 msgid "Preferences"
 msgstr "_環境設定"
 
-#: src/contents/ui/main.qml:227
+#: src/contents/ui/main.qml:225
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "_EasyEffects について"
@@ -584,36 +799,33 @@ msgstr "何もない壁"
 msgid "No Audio Application Available"
 msgstr "オーディオアプリケーションがありません"
 
-#: src/contents/ui/PageStreamsEffects.qml:215
+#: src/contents/ui/PageStreamsEffects.qml:230
 msgid "Add Effect"
 msgstr "エフェクトの追加"
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-#: src/contents/ui/PageStreamsEffects.qml:397
+#: src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Players"
 msgstr "プレイヤー"
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-msgid "Input Device"
-msgstr "入力デバイス"
-
-#: src/contents/ui/PageStreamsEffects.qml:283
+#: src/contents/ui/PageStreamsEffects.qml:298
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/contents/ui/PageStreamsEffects.qml:308
+#: src/contents/ui/PageStreamsEffects.qml:323
 msgid "No Effects"
 msgstr "エフェクトなし"
 
-#: src/contents/ui/PageStreamsEffects.qml:309
+#: src/contents/ui/PageStreamsEffects.qml:324
 msgid "Audio Stream Not Modified"
 msgstr "オーディオストリームは変更されていません"
 
-#: src/contents/ui/PageStreamsEffects.qml:407
+#: src/contents/ui/PageStreamsEffects.qml:422
 msgid "Effects"
 msgstr "エフェクト"
 
-#: src/contents/ui/PageStreamsEffects.qml:423
+#: src/contents/ui/PageStreamsEffects.qml:438
 msgid "Excluded Apps"
 msgstr "除外されたアプリ"
 
@@ -742,130 +954,116 @@ msgstr "非アクティブタイムアウト"
 msgid "Inactivity Timeout"
 msgstr "非アクティブタイムアウト"
 
-#: src/contents/ui/PreferencesSheet.qml:154
-#, fuzzy
-msgid "Input Pipeline"
-msgstr "入力デバイス"
-
-#: src/contents/ui/PreferencesSheet.qml:170
-#, fuzzy
-msgid "Update Interval"
-msgstr "翻訳の更新"
-
-#: src/contents/ui/PreferencesSheet.qml:171
-msgid "Related to Level Meters and Spectrum"
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:204
+#: src/contents/ui/PreferencesSheet.qml:187
 msgid "State"
 msgstr "状態"
 
-#: src/contents/ui/PreferencesSheet.qml:211
+#: src/contents/ui/PreferencesSheet.qml:194
 msgid "Enabled"
 msgstr "有効"
 
-#: src/contents/ui/PreferencesSheet.qml:223
+#: src/contents/ui/PreferencesSheet.qml:206
 msgid "Style"
 msgstr "スタイル"
 
-#: src/contents/ui/PreferencesSheet.qml:230
+#: src/contents/ui/PreferencesSheet.qml:213
 msgid "Shape"
 msgstr "形状"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Bars"
 msgstr "バー"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Lines"
 msgstr "線"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Dots"
 msgstr "ドット"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:243
+#: src/contents/ui/PreferencesSheet.qml:226
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:255
+#: src/contents/ui/PreferencesSheet.qml:238
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Points"
 msgstr "ポイント"
 
-#: src/contents/ui/PreferencesSheet.qml:281
+#: src/contents/ui/PreferencesSheet.qml:264
 msgid "Height"
 msgstr "高さ"
 
-#: src/contents/ui/PreferencesSheet.qml:296
+#: src/contents/ui/PreferencesSheet.qml:279
 msgid "Frequency Range"
 msgstr "周波数範囲"
 
-#: src/contents/ui/PreferencesSheet.qml:303
+#: src/contents/ui/PreferencesSheet.qml:286
 msgid "Minimum"
 msgstr "最小"
 
-#: src/contents/ui/PreferencesSheet.qml:318
+#: src/contents/ui/PreferencesSheet.qml:301
 msgid "Maximum"
 msgstr "最大"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:337
 msgid "Native Plugin Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:355
+#: src/contents/ui/PreferencesSheet.qml:338
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:367
+#: src/contents/ui/PreferencesSheet.qml:350
 #, fuzzy
 msgid "Update Frequency"
 msgstr "スプリット周波数 1"
 
-#: src/contents/ui/PreferencesSheet.qml:368
+#: src/contents/ui/PreferencesSheet.qml:351
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:407
+#: src/contents/ui/PreferencesSheet.qml:390
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:402
 msgid "Audio"
 msgstr "オーディオ"
 
-#: src/contents/ui/PreferencesSheet.qml:431
+#: src/contents/ui/PreferencesSheet.qml:414
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "スペクトラム"
 
-#: src/contents/ui/PreferencesSheet.qml:443
+#: src/contents/ui/PreferencesSheet.qml:426
 #, fuzzy
 msgid "Experimental Features"
 msgstr "実験的"
 
-#: src/main.cpp:59
+#: src/main.cpp:61
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
-#: src/main.cpp:60
+#: src/main.cpp:62
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
@@ -890,27 +1088,27 @@ msgstr "出力デバイス"
 msgid "Spectrum"
 msgstr "_スペクトラム"
 
-#: src/pw_model_nodes.cpp:357
+#: src/pw_model_nodes.cpp:360
 msgid "Running"
 msgstr "実行中"
 
-#: src/pw_model_nodes.cpp:359
+#: src/pw_model_nodes.cpp:362
 msgid "Suspended"
 msgstr "サスペンド"
 
-#: src/pw_model_nodes.cpp:361
+#: src/pw_model_nodes.cpp:364
 msgid "Idle"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:363
+#: src/pw_model_nodes.cpp:366
 msgid "Creating"
 msgstr "作成中"
 
-#: src/pw_model_nodes.cpp:365
+#: src/pw_model_nodes.cpp:368
 msgid "Error"
 msgstr "エラー"
 
-#: src/pw_model_nodes.cpp:367
+#: src/pw_model_nodes.cpp:370
 msgid "Unknown"
 msgstr "不明"
 
@@ -925,10 +1123,6 @@ msgstr "ベースエンハンサー"
 #: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
 msgstr "低音ラウドネス"
-
-#: src/tags_plugin_name.cpp:29
-msgid "Compressor"
-msgstr "コンプレッサー"
 
 #: src/tags_plugin_name.cpp:30
 msgid "Convolver"
@@ -973,10 +1167,6 @@ msgstr ""
 #: src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "フィルター"
-
-#: src/tags_plugin_name.cpp:41
-msgid "Gate"
-msgstr "ゲート"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
@@ -1036,6 +1226,22 @@ msgstr "イコライザー、コンプレッサーなどのオーディオエフ
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "PipeWire アプリケーション用オーディオエフェクト"
+
+#, fuzzy
+#~ msgid "Gain [dB]"
+#~ msgstr "ゲイン"
+
+#, fuzzy
+#~ msgid "Sidechain [dB]"
+#~ msgstr "サイドチェーンモード"
+
+#, fuzzy
+#~ msgid "Input Pipeline"
+#~ msgstr "入力デバイス"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "翻訳の更新"
 
 #~ msgid "Launch Service at System Startup"
 #~ msgstr "システム起動時にサービスを起動"
@@ -2159,23 +2365,8 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Show Excluded Applications"
 #~ msgstr "除外されたアプリケーションを表示"
 
-#~ msgid "Downward"
-#~ msgstr "下方向"
-
-#~ msgid "Upward"
-#~ msgstr "上方向"
-
-#~ msgid "Boosting"
-#~ msgstr "ブースト"
-
 #~ msgid "Compression Mode"
 #~ msgstr "圧縮モード"
-
-#~ msgid "Boost Threshold"
-#~ msgstr "ブーストしきい値"
-
-#~ msgid "Boost Amount"
-#~ msgstr "ブースト量"
 
 #~ msgid "Time"
 #~ msgstr "時間"
@@ -2192,44 +2383,11 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Release Threshold"
 #~ msgstr "リリースしきい値"
 
-#~ msgid "Ratio"
-#~ msgstr "比率"
-
-#~ msgid "Makeup"
-#~ msgstr "メイクアップ"
-
-#~ msgid "Peak"
-#~ msgstr "ピーク"
-
-#~ msgid "RMS"
-#~ msgstr "RMS"
-
-#~ msgid "Low-Pass"
-#~ msgstr "ローパス"
-
 #~ msgid "Uniform"
 #~ msgstr "ユニフォーム"
 
-#~ msgid "Middle"
-#~ msgstr "中央"
-
-#~ msgid "Side"
-#~ msgstr "サイド"
-
-#~ msgid "Left"
-#~ msgstr "左"
-
-#~ msgid "Right"
-#~ msgstr "右"
-
 #~ msgid "Sidechain Source"
 #~ msgstr "サイドチェーンソース"
-
-#~ msgid "Feed-forward"
-#~ msgstr "フィードフォワード"
-
-#~ msgid "Feed-back"
-#~ msgstr "フィードバック"
 
 #~ msgid "Sidechain Type"
 #~ msgstr "サイドチェーンタイプ"
@@ -2237,32 +2395,11 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "PreAmplification"
 #~ msgstr "プリアンプリーション"
 
-#~ msgid "Reactivity"
-#~ msgstr "反応性"
-
-#~ msgid "Lookahead"
-#~ msgstr "ルックアヘッド"
-
 #~ msgid "Sidechain Filters"
 #~ msgstr "サイドチェーンフィルター"
 
-#~ msgid "High-Pass"
-#~ msgstr "ハイパス"
-
 #~ msgid "Frequency"
 #~ msgstr "周波数"
-
-#~ msgid "Off"
-#~ msgstr "オフ"
-
-#~ msgid "12 dB/oct"
-#~ msgstr "12 dB/oct"
-
-#~ msgid "24 dB/oct"
-#~ msgstr "24 dB/oct"
-
-#~ msgid "36 dB/oct"
-#~ msgstr "36 dB/oct"
 
 #~ msgid "High-Pass Filter Mode"
 #~ msgstr "ハイパスフィルターモード"
@@ -2272,9 +2409,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "ローパスフィルターモード"
-
-#~ msgid "Curve"
-#~ msgstr "カーブ"
 
 #~ msgid "Left Channel"
 #~ msgstr "左チャンネル"
@@ -2287,9 +2421,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
 #~ msgid "Combine"
 #~ msgstr "コンバイン"
-
-#~ msgid "Stereo Width"
-#~ msgstr "ステレオ幅"
 
 #~ msgid "Log Scale"
 #~ msgstr "ログスケール"
@@ -2363,9 +2494,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Frequency 2 Peak"
 #~ msgstr "周波数 2 ピーク"
 
-#~ msgid "F1 Gain"
-#~ msgstr "F1 ゲイン"
-
 #~ msgid "Frequency 1 Gain"
 #~ msgstr "周波数 1 ゲイン"
 
@@ -2387,9 +2515,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Detected"
 #~ msgstr "検出"
 
-#~ msgid "Reduction"
-#~ msgstr "減少"
-
 #~ msgid "Frame Size"
 #~ msgstr "フレームサイズ"
 
@@ -2407,9 +2532,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
 #~ msgid "FFT"
 #~ msgstr "FFT"
-
-#~ msgid "SPM"
-#~ msgstr "SPM"
 
 #~ msgid "Split Channels"
 #~ msgstr "チャンネルの分割"
@@ -2512,12 +2634,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
 #~ msgid "Inertia"
 #~ msgstr "慣性"
-
-#~ msgid "Zone"
-#~ msgstr "ゾーン"
-
-#~ msgid "Hysteresis"
-#~ msgstr "ヒステリシス"
 
 #~ msgid "Attack Zone Start"
 #~ msgstr "アタックゾーンスタート"
@@ -2657,9 +2773,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Band 8"
 #~ msgstr "バンド 8"
 
-#~ msgid "Band Start"
-#~ msgstr "バンドスタート"
-
 #~ msgid "Band End"
 #~ msgstr "バンドエンド"
 
@@ -2689,9 +2802,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
 #~ msgid "Band Gain"
 #~ msgstr "バンドゲイン"
-
-#~ msgid "Band Envelope"
-#~ msgstr "バンドエンベロープ"
 
 #~ msgid "Band Curve"
 #~ msgstr "バンドカーブ"
@@ -3199,9 +3309,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
 #~ msgid "Delay L/R"
 #~ msgstr "ディレイ L/R"
-
-#~ msgid "Delay Left Right"
-#~ msgstr "ディレイ 左 右"
 
 #~ msgid "Stereo Base"
 #~ msgstr "ステレオベース"

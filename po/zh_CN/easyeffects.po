@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-08 20:08-0300\n"
+"POT-Creation-Date: 2024-11-16 13:17-0300\n"
 "PO-Revision-Date: 2024-03-24 04:01+0000\n"
 "Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -123,7 +123,8 @@ msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Exciter.qml:193 src/contents/ui/Limiter.qml:496
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
+#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
 #, fuzzy
 msgid "Using"
 msgstr "正在使用 {}"
@@ -172,20 +173,271 @@ msgstr "下限"
 msgid "Floor"
 msgstr "下限"
 
-#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Exciter.qml:208
+#: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
+#: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
 #: src/contents/ui/Limiter.qml:511
 #, fuzzy
 msgid "Show Native Window"
 msgstr "显示原生窗口"
 
-#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Exciter.qml:221
+#: src/contents/ui/BassEnhancer.qml:221 src/contents/ui/Compressor.qml:846
+#: src/contents/ui/Exciter.qml:221 src/contents/ui/Gate.qml:942
 msgid "Listen"
 msgstr "聆听"
 
-#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
+#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
 #: src/contents/ui/Limiter.qml:546
 msgid "Reset"
 msgstr "重置"
+
+#: src/contents/ui/Compressor.qml:51 src/tags_plugin_name.cpp:29
+msgid "Compressor"
+msgstr "压缩器"
+
+#: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
+#: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+msgid "Mode"
+msgstr "模式"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Downward"
+msgstr "向下"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Upward"
+msgstr "向上"
+
+#: src/contents/ui/Compressor.qml:73
+msgid "Boosting"
+msgstr "加强"
+
+#: src/contents/ui/Compressor.qml:83
+msgid "Boost Threshold"
+msgstr "增强阈值"
+
+#: src/contents/ui/Compressor.qml:103
+msgid "Boost Amount"
+msgstr "增强量"
+
+#: src/contents/ui/Compressor.qml:122
+msgid "Ratio"
+msgstr "比率"
+
+#: src/contents/ui/Compressor.qml:138 src/contents/ui/Limiter.qml:349
+msgid "Knee"
+msgstr "拐点"
+
+#: src/contents/ui/Compressor.qml:161
+#, fuzzy
+msgid "Threshold and Time"
+msgstr "阈值"
+
+#: src/contents/ui/Compressor.qml:178 src/contents/ui/Gate.qml:72
+#: src/contents/ui/Gate.qml:809 src/contents/ui/Limiter.qml:142
+#: src/contents/ui/Limiter.qml:307
+msgid "Attack"
+msgstr "建立"
+
+#: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
+#: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
+#: src/contents/ui/Limiter.qml:328
+msgid "Release"
+msgstr "释放"
+
+#: src/contents/ui/Compressor.qml:250 src/contents/ui/Compressor.qml:354
+#: src/contents/ui/Compressor.qml:612 src/contents/ui/Gate.qml:236
+#: src/contents/ui/Gate.qml:340 src/contents/ui/Gate.qml:598
+#: src/contents/ui/Limiter.qml:210 src/contents/ui/Limiter.qml:401
+msgid "Sidechain"
+msgstr "侧链"
+
+#: src/contents/ui/Compressor.qml:268 src/contents/ui/Gate.qml:254
+#: src/contents/ui/Limiter.qml:220
+#, fuzzy
+msgid "Type"
+msgstr "类型"
+
+#: src/contents/ui/Compressor.qml:272
+msgid "Feed-forward"
+msgstr "前馈式"
+
+#: src/contents/ui/Compressor.qml:272
+msgid "Feed-back"
+msgstr "反馈式"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+msgid "External"
+msgstr "外部"
+
+#: src/contents/ui/Compressor.qml:272 src/contents/ui/Gate.qml:258
+#: src/contents/ui/Limiter.qml:224
+#, fuzzy
+msgid "Link"
+msgstr "连接"
+
+#: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+msgid "Input Device"
+msgstr "输入设备"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "Peak"
+msgstr "峰值"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+msgid "RMS"
+msgstr "均方根值"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Compressor.qml:441
+#: src/contents/ui/Gate.qml:297 src/contents/ui/Gate.qml:427
+msgid "Low-Pass"
+msgstr "低通"
+
+#: src/contents/ui/Compressor.qml:311 src/contents/ui/Gate.qml:297
+#, fuzzy
+msgid "SMA"
+msgstr "自相位调制 (SPM)"
+
+#: src/contents/ui/Compressor.qml:320 src/contents/ui/Compressor.qml:334
+#: src/contents/ui/Gate.qml:306 src/contents/ui/Gate.qml:320
+msgid "Source"
+msgstr "源"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Middle"
+msgstr "中央"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Side"
+msgstr "侧边"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Left"
+msgstr "左"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+msgid "Right"
+msgstr "右"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+msgid "Min"
+msgstr "输入端最低值"
+
+#: src/contents/ui/Compressor.qml:324 src/contents/ui/Compressor.qml:338
+#: src/contents/ui/Gate.qml:310 src/contents/ui/Gate.qml:324
+msgid "Max"
+msgstr "输入端最高值"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+msgid "Left/Right"
+msgstr "左/右"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+msgid "Right/Left"
+msgstr "右/左"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+msgid "Mid/Side"
+msgstr "中置/侧边"
+
+#: src/contents/ui/Compressor.qml:338 src/contents/ui/Gate.qml:324
+msgid "Side/Mid"
+msgstr "侧边/中置"
+
+#: src/contents/ui/Compressor.qml:371 src/contents/ui/Gate.qml:357
+#: src/contents/ui/Limiter.qml:270
+#, fuzzy
+msgid "Preamp"
+msgstr "侧链前置放大"
+
+#: src/contents/ui/Compressor.qml:389 src/contents/ui/Gate.qml:375
+msgid "Reactivity"
+msgstr "响应"
+
+#: src/contents/ui/Compressor.qml:407 src/contents/ui/Gate.qml:393
+msgid "Lookahead"
+msgstr "前视时间"
+
+#: src/contents/ui/Compressor.qml:426 src/contents/ui/Gate.qml:412
+msgid "High-Pass"
+msgstr "高通滤波器"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "Off"
+msgstr "关闭"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "12 dB/oct"
+msgstr "每八度 12 dB"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "24 dB/oct"
+msgstr "每八度 24 dB"
+
+#: src/contents/ui/Compressor.qml:430 src/contents/ui/Compressor.qml:445
+#: src/contents/ui/Gate.qml:416 src/contents/ui/Gate.qml:431
+msgid "36 dB/oct"
+msgstr "每八度 36 dB"
+
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+msgid "Output"
+msgstr "输出"
+
+#: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+#, fuzzy
+msgid "Dry"
+msgstr "干声"
+
+#: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+#, fuzzy
+msgid "Wet"
+msgstr "程度"
+
+#: src/contents/ui/Compressor.qml:558 src/contents/ui/Gate.qml:544
+msgid "Makeup"
+msgstr "补偿"
+
+#: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
+#: src/contents/ui/Gate.qml:590
+msgid "Reduction"
+msgstr "衰减"
+
+#: src/contents/ui/Compressor.qml:671 src/contents/ui/Compressor.qml:684
+#: src/contents/ui/Compressor.qml:780 src/contents/ui/Compressor.qml:793
+#: src/contents/ui/Gate.qml:657 src/contents/ui/Gate.qml:670
+#: src/contents/ui/Gate.qml:766 src/contents/ui/Gate.qml:779
+#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
+#, fuzzy
+msgid "L"
+msgstr "左"
+
+#: src/contents/ui/Compressor.qml:677 src/contents/ui/Compressor.qml:690
+#: src/contents/ui/Compressor.qml:786 src/contents/ui/Compressor.qml:799
+#: src/contents/ui/Gate.qml:663 src/contents/ui/Gate.qml:676
+#: src/contents/ui/Gate.qml:772 src/contents/ui/Gate.qml:785
+#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
+msgid "R"
+msgstr "右"
+
+#: src/contents/ui/Compressor.qml:713 src/contents/ui/Gate.qml:699
+msgid "Curve"
+msgstr "压缩曲线"
+
+#: src/contents/ui/Compressor.qml:721 src/contents/ui/Gate.qml:707
+#, fuzzy
+msgid "Envelope"
+msgstr "频段包络"
+
+#: src/contents/ui/Compressor.qml:857 src/contents/ui/Gate.qml:953
+msgid "Stereo Split"
+msgstr "立体声分离"
 
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
@@ -219,26 +471,22 @@ msgstr "启用/禁用此音效"
 msgid "Remove this effect"
 msgstr "删除此音效"
 
-#: src/contents/ui/DelegateStreamsList.qml:51
+#: src/contents/ui/DelegateStreamsList.qml:66
 #, fuzzy
 msgid " channels"
 msgstr "声道"
 
-#: src/contents/ui/DelegateStreamsList.qml:61
+#: src/contents/ui/DelegateStreamsList.qml:76 src/contents/ui/Gate.qml:182
 msgid "Enable"
 msgstr "启用"
 
-#: src/contents/ui/DelegateStreamsList.qml:76
+#: src/contents/ui/DelegateStreamsList.qml:91
 msgid "Exclude"
 msgstr "排除"
 
-#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
 msgid "Input"
 msgstr "输入"
-
-#: src/contents/ui/EeInputOutputGain.qml:86 src/contents/ui/main.qml:163
-msgid "Output"
-msgstr "输出"
 
 #: src/contents/ui/Exciter.qml:142
 #, fuzzy
@@ -249,9 +497,31 @@ msgstr "激活"
 msgid "Ceil"
 msgstr "上限"
 
-#: src/contents/ui/Limiter.qml:51
-msgid "Mode"
-msgstr "模式"
+#: src/contents/ui/Gate.qml:55 src/tags_plugin_name.cpp:41
+msgid "Gate"
+msgstr "门限"
+
+#: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
+#: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
+#: src/contents/ui/Limiter.qml:121
+msgid "Threshold"
+msgstr "阈值"
+
+#: src/contents/ui/Gate.qml:141 src/contents/ui/Gate.qml:212
+msgid "Zone"
+msgstr "过渡区间"
+
+#: src/contents/ui/Gate.qml:164
+msgid "Hysteresis"
+msgstr "迟滞"
+
+#: src/contents/ui/Gate.qml:258 src/contents/ui/Limiter.qml:224
+msgid "Internal"
+msgstr "内部"
+
+#: src/contents/ui/Gate.qml:876 src/contents/ui/Gate.qml:889
+msgid "Start"
+msgstr "开始概率"
 
 #: src/contents/ui/Limiter.qml:55
 msgid "Herm Thin"
@@ -440,80 +710,19 @@ msgstr ""
 msgid "Limiter"
 msgstr "限幅器"
 
-#: src/contents/ui/Limiter.qml:121
-msgid "Threshold"
-msgstr "阈值"
-
-#: src/contents/ui/Limiter.qml:142 src/contents/ui/Limiter.qml:307
-msgid "Attack"
-msgstr "建立"
-
-#: src/contents/ui/Limiter.qml:163 src/contents/ui/Limiter.qml:328
-msgid "Release"
-msgstr "释放"
-
 #: src/contents/ui/Limiter.qml:184
 msgid "Stereo Link"
 msgstr "立体声连锁"
-
-#: src/contents/ui/Limiter.qml:210
-msgid "Sidechain"
-msgstr "侧链"
-
-#: src/contents/ui/Limiter.qml:220
-#, fuzzy
-msgid "SC Type"
-msgstr "类型"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "Internal"
-msgstr "内部"
-
-#: src/contents/ui/Limiter.qml:224
-msgid "External"
-msgstr "外部"
-
-#: src/contents/ui/Limiter.qml:224
-#, fuzzy
-msgid "Link"
-msgstr "连接"
-
-#: src/contents/ui/Limiter.qml:239
-msgid "Source"
-msgstr "源"
-
-#: src/contents/ui/Limiter.qml:270
-#, fuzzy
-msgid "SC Preamp"
-msgstr "侧链前置放大"
 
 #: src/contents/ui/Limiter.qml:299 src/contents/ui/Limiter.qml:535
 #, fuzzy
 msgid "Automatic Level"
 msgstr "自动调平"
 
-#: src/contents/ui/Limiter.qml:349
-msgid "Knee"
-msgstr "拐点"
-
 #: src/contents/ui/Limiter.qml:393
 #, fuzzy
-msgid "Gain [dB]"
-msgstr "增益"
-
-#: src/contents/ui/Limiter.qml:401
-#, fuzzy
-msgid "Sidechain [dB]"
-msgstr "侧链模式"
-
-#: src/contents/ui/Limiter.qml:460 src/contents/ui/Limiter.qml:473
-#, fuzzy
-msgid "L"
-msgstr "左"
-
-#: src/contents/ui/Limiter.qml:466 src/contents/ui/Limiter.qml:479
-msgid "R"
-msgstr "右"
+msgid "Gain"
+msgstr "F1 增益"
 
 #: src/contents/ui/Limiter.qml:524
 #, fuzzy
@@ -526,38 +735,38 @@ msgctxt "@title:window"
 msgid "EasyEffects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/main.qml:102
+#: src/contents/ui/main.qml:103
 #, fuzzy
 msgid "Preset: "
 msgstr "预设"
 
-#: src/contents/ui/main.qml:110 src/contents/ui/main.qml:235
+#: src/contents/ui/main.qml:111 src/contents/ui/main.qml:233
 #, fuzzy
 msgid "Quit"
 msgstr "退出(_Q)"
 
-#: src/contents/ui/main.qml:132
+#: src/contents/ui/main.qml:133
 msgid "Presets"
 msgstr "预设"
 
-#: src/contents/ui/main.qml:140
+#: src/contents/ui/main.qml:141
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:203
+#: src/contents/ui/main.qml:202
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire(_P)"
 
-#: src/contents/ui/main.qml:219 src/contents/ui/PreferencesSheet.qml:13
+#: src/contents/ui/main.qml:217 src/contents/ui/PreferencesSheet.qml:13
 #: src/contents/ui/PreferencesSheet.qml:18
-#: src/contents/ui/PreferencesSheet.qml:467
-#: src/contents/ui/PreferencesSheet.qml:480
+#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:463
 #, fuzzy
 msgid "Preferences"
 msgstr "首选项(_P)"
 
-#: src/contents/ui/main.qml:227
+#: src/contents/ui/main.qml:225
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "关于 EasyEffects (_A)"
@@ -585,36 +794,33 @@ msgstr "空旷"
 msgid "No Audio Application Available"
 msgstr "没有可用的音频应用程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:215
+#: src/contents/ui/PageStreamsEffects.qml:230
 msgid "Add Effect"
 msgstr "添加音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-#: src/contents/ui/PageStreamsEffects.qml:397
+#: src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Players"
 msgstr "播放器"
 
-#: src/contents/ui/PageStreamsEffects.qml:265
-msgid "Input Device"
-msgstr "输入设备"
-
-#: src/contents/ui/PageStreamsEffects.qml:283
+#: src/contents/ui/PageStreamsEffects.qml:298
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:308
+#: src/contents/ui/PageStreamsEffects.qml:323
 msgid "No Effects"
 msgstr "无音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:309
+#: src/contents/ui/PageStreamsEffects.qml:324
 msgid "Audio Stream Not Modified"
 msgstr "音频流未作修改"
 
-#: src/contents/ui/PageStreamsEffects.qml:407
+#: src/contents/ui/PageStreamsEffects.qml:422
 msgid "Effects"
 msgstr "音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:423
+#: src/contents/ui/PageStreamsEffects.qml:438
 msgid "Excluded Apps"
 msgstr "排除的应用"
 
@@ -743,131 +949,116 @@ msgstr "空闲超时"
 msgid "Inactivity Timeout"
 msgstr "空闲超时"
 
-#: src/contents/ui/PreferencesSheet.qml:154
-#, fuzzy
-msgid "Input Pipeline"
-msgstr "输入设备"
-
-#: src/contents/ui/PreferencesSheet.qml:170
-#, fuzzy
-msgid "Update Interval"
-msgstr "翻译更新"
-
-#: src/contents/ui/PreferencesSheet.qml:171
-#, fuzzy
-msgid "Related to Level Meters and Spectrum"
-msgstr "更新间隔（电平表、频谱）"
-
-#: src/contents/ui/PreferencesSheet.qml:204
+#: src/contents/ui/PreferencesSheet.qml:187
 msgid "State"
 msgstr "状态"
 
-#: src/contents/ui/PreferencesSheet.qml:211
+#: src/contents/ui/PreferencesSheet.qml:194
 msgid "Enabled"
 msgstr "已启用"
 
-#: src/contents/ui/PreferencesSheet.qml:223
+#: src/contents/ui/PreferencesSheet.qml:206
 msgid "Style"
 msgstr "界面风格"
 
-#: src/contents/ui/PreferencesSheet.qml:230
+#: src/contents/ui/PreferencesSheet.qml:213
 msgid "Shape"
 msgstr "形状"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Bars"
 msgstr "柱状"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Lines"
 msgstr "线型"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Dots"
 msgstr "点阵"
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:243
+#: src/contents/ui/PreferencesSheet.qml:226
 msgid "Enable OpenGL Acceleration"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:255
+#: src/contents/ui/PreferencesSheet.qml:238
 msgid "Dynamic Scale"
 msgstr "动态比例"
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Points"
 msgstr "数量"
 
-#: src/contents/ui/PreferencesSheet.qml:281
+#: src/contents/ui/PreferencesSheet.qml:264
 msgid "Height"
 msgstr "高度"
 
-#: src/contents/ui/PreferencesSheet.qml:296
+#: src/contents/ui/PreferencesSheet.qml:279
 msgid "Frequency Range"
 msgstr "频率范围"
 
-#: src/contents/ui/PreferencesSheet.qml:303
+#: src/contents/ui/PreferencesSheet.qml:286
 msgid "Minimum"
 msgstr "最低"
 
-#: src/contents/ui/PreferencesSheet.qml:318
+#: src/contents/ui/PreferencesSheet.qml:301
 msgid "Maximum"
 msgstr "最高"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:337
 msgid "Native Plugin Window"
 msgstr "原生插件窗口"
 
-#: src/contents/ui/PreferencesSheet.qml:355
+#: src/contents/ui/PreferencesSheet.qml:338
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "允许显示或隐藏原生插件窗口"
 
-#: src/contents/ui/PreferencesSheet.qml:367
+#: src/contents/ui/PreferencesSheet.qml:350
 #, fuzzy
 msgid "Update Frequency"
 msgstr "分割频率 1"
 
-#: src/contents/ui/PreferencesSheet.qml:368
+#: src/contents/ui/PreferencesSheet.qml:351
 #, fuzzy
 msgid "Related to LV2 Plugins"
 msgstr "更新频率（LV2插件）"
 
-#: src/contents/ui/PreferencesSheet.qml:407
+#: src/contents/ui/PreferencesSheet.qml:390
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:402
 msgid "Audio"
 msgstr "音频"
 
-#: src/contents/ui/PreferencesSheet.qml:431
+#: src/contents/ui/PreferencesSheet.qml:414
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "频谱类型"
 
-#: src/contents/ui/PreferencesSheet.qml:443
+#: src/contents/ui/PreferencesSheet.qml:426
 msgid "Experimental Features"
 msgstr "实验性功能"
 
-#: src/main.cpp:59
+#: src/main.cpp:61
 msgid "Audio effects for PipeWire applications"
 msgstr "为使用 PipeWire 的程序提供音效"
 
-#: src/main.cpp:60
+#: src/main.cpp:62
 msgid "(c) 2024"
 msgstr ""
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
-#: src/main.cpp:64
+#: src/main.cpp:66
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
@@ -890,27 +1081,27 @@ msgstr "输出电平表"
 msgid "Spectrum"
 msgstr "频谱"
 
-#: src/pw_model_nodes.cpp:357
+#: src/pw_model_nodes.cpp:360
 msgid "Running"
 msgstr "正在运行"
 
-#: src/pw_model_nodes.cpp:359
+#: src/pw_model_nodes.cpp:362
 msgid "Suspended"
 msgstr "已暂停"
 
-#: src/pw_model_nodes.cpp:361
+#: src/pw_model_nodes.cpp:364
 msgid "Idle"
 msgstr "空闲"
 
-#: src/pw_model_nodes.cpp:363
+#: src/pw_model_nodes.cpp:366
 msgid "Creating"
 msgstr "创建中"
 
-#: src/pw_model_nodes.cpp:365
+#: src/pw_model_nodes.cpp:368
 msgid "Error"
 msgstr "错误"
 
-#: src/pw_model_nodes.cpp:367
+#: src/pw_model_nodes.cpp:370
 msgid "Unknown"
 msgstr "未知"
 
@@ -925,10 +1116,6 @@ msgstr "低音增强"
 #: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
 msgstr "低音响度"
-
-#: src/tags_plugin_name.cpp:29
-msgid "Compressor"
-msgstr "压缩器"
 
 #: src/tags_plugin_name.cpp:30
 msgid "Convolver"
@@ -973,10 +1160,6 @@ msgstr "扩展器"
 #: src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "过滤器"
-
-#: src/tags_plugin_name.cpp:41
-msgid "Gate"
-msgstr "门限"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
@@ -1035,6 +1218,26 @@ msgstr "均衡器、压缩器和其他音效"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "为使用 PipeWire 的应用提供音效"
+
+#, fuzzy
+#~ msgid "Gain [dB]"
+#~ msgstr "增益"
+
+#, fuzzy
+#~ msgid "Sidechain [dB]"
+#~ msgstr "侧链模式"
+
+#, fuzzy
+#~ msgid "Input Pipeline"
+#~ msgstr "输入设备"
+
+#, fuzzy
+#~ msgid "Update Interval"
+#~ msgstr "翻译更新"
+
+#, fuzzy
+#~ msgid "Related to Level Meters and Spectrum"
+#~ msgstr "更新间隔（电平表、频谱）"
 
 #~ msgid "Launch Service at System Startup"
 #~ msgstr "系统启动时运行服务"
@@ -1172,23 +1375,8 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Show Excluded Applications"
 #~ msgstr "显示已排除的程序"
 
-#~ msgid "Downward"
-#~ msgstr "向下"
-
-#~ msgid "Upward"
-#~ msgstr "向上"
-
-#~ msgid "Boosting"
-#~ msgstr "加强"
-
 #~ msgid "Compression Mode"
 #~ msgstr "压缩模式"
-
-#~ msgid "Boost Threshold"
-#~ msgstr "增强阈值"
-
-#~ msgid "Boost Amount"
-#~ msgstr "增强量"
 
 #~ msgid "Time"
 #~ msgstr "时间"
@@ -1205,12 +1393,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Release Threshold"
 #~ msgstr "释放阈值"
 
-#~ msgid "Ratio"
-#~ msgstr "比率"
-
-#~ msgid "Makeup"
-#~ msgstr "补偿"
-
 #~ msgid "Dry Level"
 #~ msgstr "干声级别"
 
@@ -1220,47 +1402,11 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Stereo Split Mode"
 #~ msgstr "分离立体声模式"
 
-#~ msgid "Middle"
-#~ msgstr "中央"
-
-#~ msgid "Side"
-#~ msgstr "侧边"
-
-#~ msgid "Left"
-#~ msgstr "左"
-
-#~ msgid "Right"
-#~ msgstr "右"
-
-#~ msgid "Min"
-#~ msgstr "输入端最低值"
-
-#~ msgid "Max"
-#~ msgstr "输入端最高值"
-
 #~ msgid "Sidechain Source"
 #~ msgstr "侧链声源"
 
-#~ msgid "Left/Right"
-#~ msgstr "左/右"
-
-#~ msgid "Right/Left"
-#~ msgstr "右/左"
-
-#~ msgid "Mid/Side"
-#~ msgstr "中置/侧边"
-
-#~ msgid "Side/Mid"
-#~ msgstr "侧边/中置"
-
 #~ msgid "Stereo Split Source"
 #~ msgstr "分离立体声源"
-
-#~ msgid "Peak"
-#~ msgstr "峰值"
-
-#~ msgid "RMS"
-#~ msgstr "均方根值"
 
 #~ msgid "Low-Pass Filter"
 #~ msgstr "低通滤波器"
@@ -1271,44 +1417,17 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Listen Sidechain"
 #~ msgstr "播放侧链"
 
-#~ msgid "Feed-forward"
-#~ msgstr "前馈式"
-
-#~ msgid "Feed-back"
-#~ msgstr "反馈式"
-
 #~ msgid "Sidechain Type"
 #~ msgstr "侧链类型"
 
 #~ msgid "PreAmplification"
 #~ msgstr "前置放大"
 
-#~ msgid "Reactivity"
-#~ msgstr "响应"
-
-#~ msgid "Lookahead"
-#~ msgstr "前视时间"
-
 #~ msgid "Sidechain Filters"
 #~ msgstr "侧链过滤器"
 
-#~ msgid "High-Pass"
-#~ msgstr "高通滤波器"
-
 #~ msgid "Frequency"
 #~ msgstr "频率"
-
-#~ msgid "Off"
-#~ msgstr "关闭"
-
-#~ msgid "12 dB/oct"
-#~ msgstr "每八度 12 dB"
-
-#~ msgid "24 dB/oct"
-#~ msgstr "每八度 24 dB"
-
-#~ msgid "36 dB/oct"
-#~ msgstr "每八度 36 dB"
 
 #~ msgid "High-Pass Filter Mode"
 #~ msgstr "高通滤波模式"
@@ -1316,14 +1435,8 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "High-Pass Filter Frequency"
 #~ msgstr "高通滤波频率"
 
-#~ msgid "Low-Pass"
-#~ msgstr "低通"
-
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "低通滤波模式"
-
-#~ msgid "Curve"
-#~ msgstr "压缩曲线"
 
 #~ msgid "Left Channel"
 #~ msgstr "左声道"
@@ -1433,9 +1546,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Frequency 2 Peak"
 #~ msgstr "频率 2 峰值"
 
-#~ msgid "F1 Gain"
-#~ msgstr "F1 增益"
-
 #~ msgid "Frequency 1 Gain"
 #~ msgstr "频率 1 增益"
 
@@ -1456,9 +1566,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Detected"
 #~ msgstr "已侦测到"
-
-#~ msgid "Reduction"
-#~ msgstr "衰减"
 
 #~ msgid "Invert Phase"
 #~ msgstr "反转相位"
@@ -1556,12 +1663,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "All-Pass"
 #~ msgstr "全通"
-
-#~ msgid "Zone"
-#~ msgstr "过渡区间"
-
-#~ msgid "Hysteresis"
-#~ msgstr "迟滞"
 
 #~ msgid "Mix"
 #~ msgstr "干湿声混合"
@@ -1723,9 +1824,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Band Sidechain Options"
 #~ msgstr "频段侧链选项"
 
-#~ msgid "Stereo Split"
-#~ msgstr "立体声分离"
-
 #, fuzzy
 #~ msgid "Low-Cut"
 #~ msgstr "低切滤音"
@@ -1745,9 +1843,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Band Gain"
 #~ msgstr "频段增益"
-
-#~ msgid "Band Envelope"
-#~ msgstr "频段包络"
 
 #~ msgid "Band Curve"
 #~ msgstr "频段曲线"
@@ -1908,10 +2003,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgstr "删除这个预设文件"
 
 #, fuzzy
-#~ msgid "Try"
-#~ msgstr "干声"
-
-#, fuzzy
 #~ msgid "Try this community preset"
 #~ msgstr "搜索输出预设"
 
@@ -2039,9 +2130,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Voice Activity Probability"
 #~ msgstr "语音状态进入概率"
-
-#~ msgid "Start"
-#~ msgstr "开始概率"
 
 #~ msgid "Continue"
 #~ msgstr "持续概率"
@@ -2322,9 +2410,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "FFT"
 #~ msgstr "快速傅里叶变换 (FFT)"
-
-#~ msgid "SPM"
-#~ msgstr "自相位调制 (SPM)"
 
 #, fuzzy
 #~ msgid "Wet Ratio"
@@ -2853,10 +2938,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Signal"
 #~ msgstr "测试信号"
-
-#, fuzzy
-#~ msgid "Wet"
-#~ msgstr "程度"
 
 #~ msgid "Border"
 #~ msgstr "显示边界"

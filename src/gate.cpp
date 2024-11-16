@@ -62,46 +62,27 @@ Gate::Gate(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_
   BIND_LV2_PORT("sci", sidechainType, setSidechainType, db::Gate::sidechainTypeChanged);
   BIND_LV2_PORT("scm", sidechainMode, setSidechainMode, db::Gate::sidechainModeChanged);
   BIND_LV2_PORT("scl", sidechainListen, setSidechainListen, db::Gate::sidechainListenChanged);
+  BIND_LV2_PORT("scs", sidechainSource, setSidechainSource, db::Gate::sidechainSourceChanged);
+  BIND_LV2_PORT("sscs", stereoSplitSource, setStereoSplitSource, db::Gate::stereoSplitSourceChanged);
+  BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::Gate::stereoSplitChanged);
+  BIND_LV2_PORT("scr", sidechainReactivity, setSidechainReactivity, db::Gate::sidechainReactivityChanged);
+  BIND_LV2_PORT("sla", sidechainLookahead, setSidechainLookahead, db::Gate::sidechainLookaheadChanged);
+  BIND_LV2_PORT("shpm", hpfMode, setHpfMode, db::Gate::hpfModeChanged);
+  BIND_LV2_PORT("slpm", lpfMode, setLpfMode, db::Gate::lpfModeChanged);
+  BIND_LV2_PORT("shpf", hpfFrequency, setHpfFrequency, db::Gate::hpfFrequencyChanged);
+  BIND_LV2_PORT("slpf", lpfFrequency, setLpfFrequency, db::Gate::lpfFrequencyChanged);
+  BIND_LV2_PORT("at", attack, setAttack, db::Gate::attackChanged);
+  BIND_LV2_PORT("rt", release, setRelease, db::Gate::releaseChanged);
+  BIND_LV2_PORT("gh", hysteresis, setHysteresis, db::Gate::hysteresisChanged);
   BIND_LV2_PORT_DB("cdr", dry, setDry, db::Gate::dryChanged, true);
   BIND_LV2_PORT_DB("cwt", wet, setWet, db::Gate::wetChanged, true);
-
-  //   lv2_wrapper->bind_key_enum<"scs", "sidechain-source">(settings);
-
-  //   lv2_wrapper->bind_key_enum<"sscs", "stereo-split-source">(settings);
-
-  //   lv2_wrapper->bind_key_enum<"shpm", "hpf-mode">(settings);
-
-  //   lv2_wrapper->bind_key_enum<"slpm", "lpf-mode">(settings);
-
-  //   lv2_wrapper->bind_key_bool<"ssplit", "stereo-split">(settings);
-
-  //   lv2_wrapper->bind_key_double<"at", "attack">(settings);
-
-  //   lv2_wrapper->bind_key_double<"rt", "release">(settings);
-
-  //   lv2_wrapper->bind_key_double<"scr", "sidechain-reactivity">(settings);
-
-  //   lv2_wrapper->bind_key_double<"sla", "sidechain-lookahead">(settings);
-
-  //   lv2_wrapper->bind_key_double<"shpf", "hpf-frequency">(settings);
-
-  //   lv2_wrapper->bind_key_double<"slpf", "lpf-frequency">(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"gt", "curve-threshold">(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"gz", "curve-zone">(settings);
-
-  //   lv2_wrapper->bind_key_bool<"gh", "hysteresis">(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"ht", "hysteresis-threshold">(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"hz", "hysteresis-zone">(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"gr", "reduction">(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"mk", "makeup">(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"scp", "sidechain-preamp">(settings);
+  BIND_LV2_PORT_DB("mk", makeup, setMakeup, db::Gate::makeupChanged, false);
+  BIND_LV2_PORT_DB("gr", reduction, setReduction, db::Gate::reductionChanged, false);
+  BIND_LV2_PORT_DB("gt", curveThreshold, setCurveThreshold, db::Gate::curveThresholdChanged, false);
+  BIND_LV2_PORT_DB("gz", curveZone, setCurveZone, db::Gate::curveZoneChanged, false);
+  BIND_LV2_PORT_DB("ht", hysteresisThreshold, setHysteresisThreshold, db::Gate::hysteresisThresholdChanged, false);
+  BIND_LV2_PORT_DB("hz", hysteresisZone, setHysteresisZone, db::Gate::hysteresisZoneChanged, false);
+  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Gate::sidechainPreampChanged, true);
 }
 
 Gate::~Gate() {
@@ -175,22 +156,23 @@ void Gate::process(std::span<float>& left_in,
 
   get_peaks(left_in, right_in, left_out, right_out);
 
-  attack_zone_start_port_value = lv2_wrapper->get_control_port_value("gzs");
-  attack_threshold_port_value = lv2_wrapper->get_control_port_value("gt");
-  release_zone_start_port_value = lv2_wrapper->get_control_port_value("hts");
-  release_threshold_port_value = lv2_wrapper->get_control_port_value("hzs");
+  reduction_left = util::linear_to_db(lv2_wrapper->get_control_port_value("rlm_l"));
+  reduction_right = util::linear_to_db(lv2_wrapper->get_control_port_value("rlm_r"));
 
-  reduction_port_value =
-      0.5F * (lv2_wrapper->get_control_port_value("rlm_l") + lv2_wrapper->get_control_port_value("rlm_r"));
+  sidechain_left = util::linear_to_db(lv2_wrapper->get_control_port_value("slm_l"));
+  sidechain_right = util::linear_to_db(lv2_wrapper->get_control_port_value("slm_r"));
 
-  sidechain_port_value =
-      0.5F * (lv2_wrapper->get_control_port_value("slm_l") + lv2_wrapper->get_control_port_value("slm_r"));
+  curve_left = util::linear_to_db(lv2_wrapper->get_control_port_value("clm_l"));
+  curve_right = util::linear_to_db(lv2_wrapper->get_control_port_value("clm_r"));
 
-  curve_port_value =
-      0.5F * (lv2_wrapper->get_control_port_value("clm_l") + lv2_wrapper->get_control_port_value("clm_r"));
+  envelope_left = util::linear_to_db(lv2_wrapper->get_control_port_value("elm_l"));
+  envelope_right = util::linear_to_db(lv2_wrapper->get_control_port_value("elm_r"));
 
-  envelope_port_value =
-      0.5F * (lv2_wrapper->get_control_port_value("elm_l") + lv2_wrapper->get_control_port_value("elm_r"));
+  attack_zone_start = util::linear_to_db(lv2_wrapper->get_control_port_value("gzs"));
+  attack_threshold = util::linear_to_db(lv2_wrapper->get_control_port_value("gt"));
+
+  release_zone_start = util::linear_to_db(lv2_wrapper->get_control_port_value("hts"));
+  release_threshold = util::linear_to_db(lv2_wrapper->get_control_port_value("hzs"));
 }
 
 void Gate::update_sidechain_links() {
@@ -229,4 +211,49 @@ void Gate::update_probe_links() {
 
 auto Gate::get_latency_seconds() -> float {
   return this->latency_value;
+}
+
+float Gate::getReductionLevelLeft() const {
+  return reduction_left;
+}
+
+float Gate::getReductionLevelRight() const {
+  return reduction_right;
+}
+
+float Gate::getSideChainLevelLeft() const {
+  return sidechain_left;
+}
+
+float Gate::getSideChainLevelRight() const {
+  return sidechain_right;
+}
+
+float Gate::getCurveLevelLeft() const {
+  return curve_left;
+}
+
+float Gate::getCurveLevelRight() const {
+  return curve_right;
+}
+
+float Gate::getEnvelopeLevelLeft() const {
+  return envelope_left;
+}
+
+float Gate::getEnvelopeLevelRight() const {
+  return envelope_right;
+}
+
+float Gate::getAttackZoneStart() const {
+  return attack_zone_start;
+}
+float Gate::getAttackThreshold() const {
+  return attack_threshold;
+}
+float Gate::getReleaseZoneStart() const {
+  return release_zone_start;
+}
+float Gate::getReleaseThreshold() const {
+  return release_threshold;
 }
