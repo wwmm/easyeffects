@@ -17,7 +17,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return;
+            return ;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -116,6 +116,19 @@ Kirigami.ScrollablePage {
             position: Controls.ToolBar.Footer
             flat: true
             actions: [
+                Kirigami.Action {
+                    text: i18n("Show Native Window")
+                    icon.name: "window-duplicate-symbolic"
+                    enabled: EEdbm.main.showNativePluginUi
+                    checkable: true
+                    checked: pluginBackend.hasNativeUi()
+                    onTriggered: {
+                        if (checked)
+                            pluginBackend.show_native_ui();
+                        else
+                            pluginBackend.close_native_ui();
+                    }
+                },
                 Kirigami.Action {
                     text: i18n("Reset")
                     icon.name: "edit-reset-symbolic"
