@@ -199,7 +199,7 @@ Kirigami.Page {
                         currentList.push(pluginsListModel.get(n).name);
                     }
                     if (Common.equalArrays(newList, currentList))
-                        return;
+                        return ;
 
                     pluginsListModel.clear();
                     populatePluginsListModel(newList);

@@ -18,7 +18,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return;
+            return ;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
