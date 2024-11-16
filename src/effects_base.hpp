@@ -34,6 +34,7 @@
 #include "compressor.hpp"
 #include "exciter.hpp"
 #include "limiter.hpp"
+#include "maximizer.hpp"
 #include "output_level.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
@@ -53,7 +54,6 @@
 // #include "filter.hpp"
 // #include "gate.hpp"
 // #include "loudness.hpp"
-// #include "maximizer.hpp"
 // #include "multiband_compressor.hpp"
 // #include "multiband_gate.hpp"
 // #include "pitch.hpp"
@@ -87,6 +87,7 @@ class EffectsBase : public QObject {
   std::shared_ptr<Compressor> compressor;
   std::shared_ptr<Exciter> exciter;
   std::shared_ptr<Limiter> limiter;
+  std::shared_ptr<Maximizer> maximizer;
   //   std::shared_ptr<BassLoudness> bass_loudness;
   //   std::shared_ptr<Convolver> convolver;
   //   std::shared_ptr<Crossfeed> crossfeed;
@@ -100,7 +101,6 @@ class EffectsBase : public QObject {
   //   std::shared_ptr<Filter> filter;
   //   std::shared_ptr<Gate> gate;
   //   std::shared_ptr<Loudness> loudness;
-  //   std::shared_ptr<Maximizer> maximizer;
   //   std::shared_ptr<MultibandCompressor> multiband_compressor;
   //   std::shared_ptr<MultibandGate> multiband_gate;
   //   std::shared_ptr<Pitch> pitch;

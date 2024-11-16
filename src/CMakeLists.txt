@@ -25,6 +25,7 @@ target_sources(easyeffects PRIVATE
     local_server.cpp
     lv2_wrapper.cpp
     main.cpp
+    maximizer.cpp
     output_level.cpp
     plugin_base.cpp
     pw_manager.cpp
@@ -39,7 +40,7 @@ target_sources(easyeffects PRIVATE
     resources.qrc
 )
 
-target_include_directories(easyeffects PRIVATE 
+target_include_directories(easyeffects PRIVATE
     ${LIBPIPEWIRE_INCLUDE_DIRS}
     ${LIBLILV_INCLUDE_DIRS}
     ${LIBEBUR128_INCLUDE_DIRS}

@@ -15,6 +15,7 @@
         <file alias="EeSwitch.qml">contents/ui/EeSwitch.qml</file>
         <file alias="Exciter.qml">contents/ui/Exciter.qml</file>
         <file alias="Limiter.qml">contents/ui/Limiter.qml</file>
+        <file alias="Maximizer.qml">contents/ui/Maximizer.qml</file>
         <file alias="main.qml">contents/ui/main.qml</file>
         <file alias="MenuAddPlugins.qml">contents/ui/MenuAddPlugins.qml</file>
         <file alias="PageStreamsEffects.qml">contents/ui/PageStreamsEffects.qml</file>
