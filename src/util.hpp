@@ -64,8 +64,6 @@ auto remove_filename_extension(const std::string& basename) -> std::string;
 
 void print_thread_id();
 
-void idle_add(std::function<void()> cb, std::function<void()> cleanup_cb = []() {});
-
 auto get_files_name(const std::filesystem::path& dir_path, const std::string& ext) -> std::vector<std::string>;
 
 auto str_contains(const std::string& haystack, const std::string& needle) -> bool;

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/crystalizerrc">
+        <parameter name="masterGroup" />
+        <parameter name="instanceIndex" />
+    </kcfgfile>
+    <group parentGroupName="$(masterGroup)" name="Crystalizer#$(instanceIndex)">
+        <entry name="bypass" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="inputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="outputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+
+        <entry name="intensityBand0" type="Double">
+            <label></label>
+            <min>-40</min>
+            <max>32</max>
+            <default>0</default>
+        </entry>
+        <entry name="intensityBand1" type="Double">
+            <label></label>
+            <min>-40</min>
+            <max>32</max>
+            <default>-1</default>
+        </entry>
+        <entry name="intensityBand2" type="Double">
+            <label></label>
+            <min>-40</min>
+            <max>32</max>
+            <default>-2</default>
+        </entry>
+        <entry name="intensityBand3" type="Double">
+            <label></label>
+            <min>-40</min>
+            <max>32</max>
+            <default>-3</default>
+        </entry>
+        <entry name="intensityBand4" type="Double">
+            <label></label>
+            <min>-40</min>
+            <max>32</max>
+            <default>-4</default>
+        </entry>
+        <entry name="intensityBand5" type="Double">
+            <label></label>
+            <min>-40</min>
+            <max>32</max>
+            <default>-5</default>
+        </entry>
+        <entry name="intensityBand6" type="Double">
+            <label></label>
+            <min>-40</min>
+            <max>32</max>
+            <default>-6</default>
+        </entry>
+        <entry name="intensityBand7" type="Double">
+            <label></label>
+            <min>-40</min>
+            <max>32</max>
+            <default>-7</default>
+        </entry>
+        <entry name="intensityBand8" type="Double">
+            <label></label>
+            <min>-40</min>
+            <max>32</max>
+            <default>-8</default>
+        </entry>
+        <entry name="intensityBand9" type="Double">
+            <label></label>
+            <min>-40</min>
+            <max>32</max>
+            <default>-9</default>
+        </entry>
+        <entry name="intensityBand10" type="Double">
+            <label></label>
+            <min>-40</min>
+            <max>32</max>
+            <default>-10</default>
+        </entry>
+        <entry name="intensityBand11" type="Double">
+            <label></label>
+            <min>-40</min>
+            <max>32</max>
+            <default>-11</default>
+        </entry>
+        <entry name="intensityBand12" type="Double">
+            <label></label>
+            <min>-40</min>
+            <max>32</max>
+            <default>-12</default>
+        </entry>
+
+        <entry name="muteBand0" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="muteBand1" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="muteBand2" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="muteBand3" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="muteBand4" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="muteBand5" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="muteBand6" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="muteBand7" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="muteBand8" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="muteBand9" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="muteBand10" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="muteBand11" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="muteBand12" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+
+        <entry name="bypassBand0" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="bypassBand1" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="bypassBand2" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="bypassBand3" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="bypassBand4" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="bypassBand5" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="bypassBand6" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="bypassBand7" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="bypassBand8" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="bypassBand9" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="bypassBand10" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="bypassBand11" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="bypassBand12" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+    </group>
+</kcfg>

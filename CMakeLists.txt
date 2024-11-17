@@ -68,6 +68,9 @@ pkg_check_modules(LIBFFTW3f fftw3f)
 file(GLOB KCFG_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfg)
 file(GLOB KCFGC_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfgc)
 
+find_library(LIBZITACONVOLVER NAMES zita-convolver)
+find_path(LIBZITACONVOLVER_INCLUDE_DIRS NAMES zita-convolver.h)
+
 add_subdirectory(src)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

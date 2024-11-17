@@ -31,6 +31,7 @@
 #include "easyeffects_db_autogain.h"
 #include "easyeffects_db_bass_enhancer.h"
 #include "easyeffects_db_compressor.h"
+#include "easyeffects_db_crystalizer.h"
 #include "easyeffects_db_exciter.h"
 #include "easyeffects_db_gate.h"
 #include "easyeffects_db_limiter.h"
@@ -139,6 +140,10 @@ void Manager::create_plugin_db(const QString& parentGroup,
       } else if (name.startsWith(tags::plugin_name::BaseName::compressor)) {
         plugins_map[tags::plugin_name::BaseName::compressor + "#" + id] =
             QVariant::fromValue(new db::Compressor(parentGroup, id));
+        //
+      } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
+        plugins_map[tags::plugin_name::BaseName::crystalizer + "#" + id] =
+            QVariant::fromValue(new db::Crystalizer(parentGroup, id));
         //
       } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
         plugins_map[tags::plugin_name::BaseName::exciter + "#" + id] =

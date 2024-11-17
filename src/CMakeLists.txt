@@ -15,9 +15,14 @@ target_sources(easyeffects PRIVATE
     bass_enhancer.cpp
     command_line_parser.cpp
     compressor.cpp
+    crystalizer.cpp
     db_manager.cpp
     effects_base.cpp
     exciter.cpp
+    fir_filter_bandpass.cpp
+    fir_filter_base.cpp
+    fir_filter_highpass.cpp
+    fir_filter_lowpass.cpp
     gate.cpp
     kconfig_base_ee.cpp
     limiter.cpp
@@ -46,6 +51,7 @@ target_include_directories(easyeffects PRIVATE
     ${LIBEBUR128_INCLUDE_DIRS}
     ${LIBFFTW3_INCLUDE_DIRS}
     ${LIBFFTW3f_INCLUDE_DIRS}
+    ${LIBZITACONVOLVER_INCLUDE_DIRS}
 )
 
 target_link_libraries(easyeffects PRIVATE
@@ -67,6 +73,7 @@ target_link_libraries(easyeffects PRIVATE
     ${LIBEBUR128_LIBRARIES}
     ${LIBFFTW3_LIBRARIES}
     ${LIBFFTW3f_LIBRARIES}
+    ${LIBZITACONVOLVER}
 )
 
 if(ENABLE_LIBPORTAL)

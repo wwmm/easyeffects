@@ -257,45 +257,33 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
     return {};
   }
 
-  if (pluginName.startsWith(tags::plugin_name::BaseName::autogain)) {
-    auto p = plugins[pluginName];
+  auto p = plugins[pluginName];
 
+  if (pluginName.startsWith(tags::plugin_name::BaseName::autogain)) {
     return QVariant::fromValue(dynamic_cast<Autogain*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
-    auto p = plugins[pluginName];
-
     return QVariant::fromValue(dynamic_cast<BassEnhancer*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::compressor)) {
-    auto p = plugins[pluginName];
-
     return QVariant::fromValue(dynamic_cast<Compressor*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::exciter)) {
-    auto p = plugins[pluginName];
-
     return QVariant::fromValue(dynamic_cast<Exciter*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::gate)) {
-    auto p = plugins[pluginName];
-
     return QVariant::fromValue(dynamic_cast<Gate*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::limiter)) {
-    auto p = plugins[pluginName];
-
     return QVariant::fromValue(dynamic_cast<Limiter*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::maximizer)) {
-    auto p = plugins[pluginName];
-
     return QVariant::fromValue(dynamic_cast<Maximizer*>(p.get()));
   }
 
