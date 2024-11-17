@@ -13,7 +13,7 @@ cd "$UTIL_DIR"
 
 # s/regexp/replacement/
 cat $SCHEMA |
-    sed -r 's/(<key.*)-(.)/\1\u\2/g' | # removing "-" and putting the next character in upper case
+    sed -r 's/(<key\sname="[a-z]*)-([a-z])/\1\u\2/g' | # removing "-" and putting the next character in upper case
     sed -r 's/key/entry/' | 
     sed -r 's/type="b"/type="Bool"/' |
     sed -r 's/type="i"/type="Int"/' |
@@ -30,6 +30,6 @@ cat $SCHEMA |
     xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd"> \
     <kcfgfile name="easyeffectsrc" /> \
     <group name="imported">' |
-    sed -r 's/(<entry.*>)/\1\n\t\t\t\t<label><\/label>/g' |
-    sed -r 's/<range min="(.*)" max="(.*)".*\/>/\t<min>\1<\/min>\n\t\t\t\t<max>\2<\/max>/g' |
-    sed -r 's/(<default.*>)/\t\1/g' > $OUTPUT_FILE
+    sed -r 's/(<entry[^>]*>)/\1\n\t\t\t\t<label><\/label>/g' |
+    sed -r 's/<range min="([0-9.]*)" max="([0-9.]*)"\s*\/>/\t<min>\1<\/min>\n\t\t\t\t<max>\2<\/max>/g' |
+    sed -r 's/(<default[^>]*>)/\t\1/g' > $OUTPUT_FILE
