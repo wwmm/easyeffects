@@ -30,20 +30,33 @@ Kirigami.ScrollablePage {
     }
 
     ColumnLayout {
+        height: crystalizerPage.height - crystalizerPage.header.height - crystalizerPage.footer.height - Kirigami.Units.gridUnit
+
         Kirigami.CardsLayout {
             id: cardLayout
-
-            Layout.fillWidth: true
 
             Kirigami.Card {
                 id: cardControls
 
-                header: Kirigami.Heading {
-                    text: i18n("Controls")
-                    level: 2
-                }
+                contentItem: RowLayout {
+                    CrystalizerBand {
+                        intensity: pluginDB.intensityBand0
+                        minIntensity: pluginDB.getMinValue("intensityBand0")
+                        maxIntensity: pluginDB.getMaxValue("intensityBand0")
+                        mute: pluginDB.muteBand0
+                        bypass: pluginDB.bypassBand0
+                        bandFrequency: "250 Hz"
+                        onIntensityModified: (v) => {
+                            pluginDB.intensityBand0 = v;
+                        }
+                        onMuteModified: (v) => {
+                            pluginDB.muteBand0 = v;
+                        }
+                        onBypassModified: (v) => {
+                            pluginDB.bypassBand0 = v;
+                        }
+                    }
 
-                contentItem: ColumnLayout {
                 }
 
             }
