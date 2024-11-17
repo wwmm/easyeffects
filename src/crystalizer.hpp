@@ -62,8 +62,6 @@ class Crystalizer : public PluginBase {
                std::span<float>& probe_left,
                std::span<float>& probe_right) override;
 
-  [[nodiscard]] auto get_latency() const -> float;
-
   auto get_latency_seconds() -> float override;
 
  private:

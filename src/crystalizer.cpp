@@ -39,8 +39,8 @@
 
 Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
     : PluginBase(tag,
-                 tags::plugin_name::BaseName::compressor,
-                 tags::plugin_package::Package::lsp,
+                 tags::plugin_name::BaseName::crystalizer,
+                 tags::plugin_package::Package::ee,
                  instance_id,
                  pipe_manager,
                  pipe_type),

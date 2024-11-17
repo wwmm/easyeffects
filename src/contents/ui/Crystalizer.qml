@@ -8,7 +8,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
-    id: maximizerPage
+    id: crystalizerPage
 
     required property var name
     required property var pluginDB
@@ -23,7 +23,6 @@ Kirigami.ScrollablePage {
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
         inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
-        reductionLevel.value = pluginBackend.getReductionLevel();
     }
 
     Component.onCompleted: {
@@ -45,47 +44,6 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: ColumnLayout {
-                    EeSpinBox {
-                        id: release
-
-                        label: i18n("Release")
-                        from: pluginDB.getMinValue("release")
-                        to: pluginDB.getMaxValue("release")
-                        value: pluginDB.release
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: "ms"
-                        onValueModified: (v) => {
-                            pluginDB.release = v;
-                        }
-                    }
-
-                    EeSpinBox {
-                        id: threshold
-
-                        label: i18n("Threshold")
-                        from: pluginDB.getMinValue("threshold")
-                        to: pluginDB.getMaxValue("threshold")
-                        value: pluginDB.threshold
-                        decimals: 1
-                        stepSize: 0.1
-                        unit: "dB"
-                        onValueModified: (v) => {
-                            pluginDB.threshold = v;
-                        }
-                    }
-
-                    EeProgressBar {
-                        id: reductionLevel
-
-                        label: i18n("Reduction")
-                        unit: i18n("dB")
-                        from: 0
-                        to: 40
-                        value: 0
-                        decimals: 0
-                    }
-
                 }
 
             }
@@ -97,12 +55,12 @@ Kirigami.ScrollablePage {
     header: EeInputOutputGain {
         id: inputOutputLevels
 
-        pluginDB: maximizerPage.pluginDB
+        pluginDB: crystalizerPage.pluginDB
     }
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using") + EEtagsPluginPackage.zam
+            text: i18n("Using") + EEtagsPluginPackage.zita
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
             Layout.fillWidth: false
@@ -116,19 +74,6 @@ Kirigami.ScrollablePage {
             position: Controls.ToolBar.Footer
             flat: true
             actions: [
-                Kirigami.Action {
-                    text: i18n("Show Native Window")
-                    icon.name: "window-duplicate-symbolic"
-                    enabled: EEdbm.main.showNativePluginUi
-                    checkable: true
-                    checked: pluginBackend.hasNativeUi()
-                    onTriggered: {
-                        if (checked)
-                            pluginBackend.show_native_ui();
-                        else
-                            pluginBackend.close_native_ui();
-                    }
-                },
                 Kirigami.Action {
                     text: i18n("Reset")
                     icon.name: "edit-reset-symbolic"

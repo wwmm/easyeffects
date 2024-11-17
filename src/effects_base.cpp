@@ -32,6 +32,7 @@
 #include "autogain.hpp"
 #include "bass_enhancer.hpp"
 #include "compressor.hpp"
+#include "crystalizer.hpp"
 #include "db_manager.hpp"
 #include "exciter.hpp"
 #include "gate.hpp"
@@ -48,7 +49,6 @@
 // #include "bass_loudness.hpp"
 // #include "convolver.hpp"
 // #include "crossfeed.hpp"
-// #include "crystalizer.hpp"
 // #include "deepfilternet.hpp"
 // #include "deesser.hpp"
 // #include "delay.hpp"
@@ -139,7 +139,7 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
       //   filter = std::make_shared<Crossfeed>(log_tag, tags::schema::crossfeed::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
-      //   filter = std::make_shared<Crystalizer>(log_tag, tags::schema::crystalizer::id, path, pm, pipeline_type);
+      filter = std::make_shared<Crystalizer>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
       //   filter = std::make_shared<DeepFilterNet>(log_tag, tags::schema::deepfilternet::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::deesser)) {
@@ -185,8 +185,6 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
       //   filter = std::make_shared<StereoTools>(log_tag, tags::schema::stereo_tools::id, path, pm, pipeline_type);
     }
-
-    // connect(filter.get(), &PluginBase::latency, [this]() { calculate_pipeline_latency(); });
 
     if (filter != nullptr) {
       /*
@@ -269,6 +267,10 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::compressor)) {
     return QVariant::fromValue(dynamic_cast<Compressor*>(p.get()));
+  }
+
+  if (pluginName.startsWith(tags::plugin_name::BaseName::crystalizer)) {
+    return QVariant::fromValue(dynamic_cast<Crystalizer*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::exciter)) {

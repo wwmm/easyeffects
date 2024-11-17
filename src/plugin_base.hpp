@@ -167,8 +167,6 @@ class PluginBase : public QObject {
 
   std::unique_ptr<lv2::Lv2Wrapper> lv2_wrapper;
 
-  void setup_input_output_gain();
-
   void get_peaks(const std::span<float>& left_in,
                  const std::span<float>& right_in,
                  std::span<float>& left_out,

@@ -3,6 +3,7 @@
         <file alias="Autogain.qml">contents/ui/Autogain.qml</file>
         <file alias="BassEnhancer.qml">contents/ui/BassEnhancer.qml</file>
         <file alias="Compressor.qml">contents/ui/Compressor.qml</file>
+        <file alias="Crystalizer.qml">contents/ui/Crystalizer.qml</file>
         <file alias="DelegateClientsList.qml">contents/ui/DelegateClientsList.qml</file>
         <file alias="DelegateModulesList.qml">contents/ui/DelegateModulesList.qml</file>
         <file alias="DelegatePluginsList.qml">contents/ui/DelegatePluginsList.qml</file>
