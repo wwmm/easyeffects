@@ -31,5 +31,5 @@ cat $SCHEMA |
     <kcfgfile name="easyeffectsrc" /> \
     <group name="imported">' |
     sed -r 's/(<entry[^>]*>)/\1\n\t\t\t\t<label><\/label>/g' |
-    sed -r 's/<range min="([0-9.]*)" max="([0-9.]*)"\s*\/>/\t<min>\1<\/min>\n\t\t\t\t<max>\2<\/max>/g' |
+    sed -r 's/<range min="([-+]?[0-9.]*)" max="([-+]?[0-9.]*)"\s*\/>/\t<min>\1<\/min>\n\t\t\t\t<max>\2<\/max>/g' |
     sed -r 's/(<default[^>]*>)/\t\1/g' > $OUTPUT_FILE
