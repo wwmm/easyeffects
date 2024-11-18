@@ -32,7 +32,6 @@ Item {
         }
 
         contentItem: GridLayout {
-            Layout.fillWidth: true
             columns: 4
             rows: 1
             columnSpacing: Kirigami.Units.smallSpacing

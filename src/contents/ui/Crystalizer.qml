@@ -32,29 +32,46 @@ Kirigami.ScrollablePage {
     ColumnLayout {
         height: crystalizerPage.height - crystalizerPage.header.height - crystalizerPage.footer.height - Kirigami.Units.gridUnit
 
-        Kirigami.CardsLayout {
-            id: cardLayout
+        Kirigami.Card {
+            id: cardControls
 
-            Kirigami.Card {
-                id: cardControls
+            //     CrystalizerBand {
+            //         intensity: pluginDB["intensityBand0"]
+            //         minIntensity: pluginDB.getMinValue("intensityBand0")
+            //         maxIntensity: pluginDB.getMaxValue("intensityBand0")
+            //         mute: pluginDB["muteBand0"]
+            //         bypass: pluginDB["bypassBand0"]
+            //         bandFrequency: "250 Hz"
+            //         onIntensityModified: (v) => {
+            //             pluginDB["intensityBand0"] = v;
+            //         }
+            //         onMuteModified: (v) => {
+            //             pluginDB["muteBand0"] = v;
+            //         }
+            //         onBypassModified: (v) => {
+            //             pluginDB["bypassBand0"] = v;
+            //         }
+            // }
+            Layout.alignment: Qt.AlignHCenter
+            Layout.fillWidth: false
+            Layout.fillHeight: true
+            implicitWidth: 36 * Kirigami.Units.gridUnit
 
-                contentItem: RowLayout {
-                    CrystalizerBand {
-                        intensity: pluginDB["intensityBand0"]
-                        minIntensity: pluginDB.getMinValue("intensityBand0")
-                        maxIntensity: pluginDB.getMaxValue("intensityBand0")
-                        mute: pluginDB["muteBand0"]
-                        bypass: pluginDB["bypassBand0"]
-                        bandFrequency: "250 Hz"
-                        onIntensityModified: (v) => {
-                            pluginDB["intensityBand0"] = v;
-                        }
-                        onMuteModified: (v) => {
-                            pluginDB["muteBand0"] = v;
-                        }
-                        onBypassModified: (v) => {
-                            pluginDB["bypassBand0"] = v;
-                        }
+            contentItem: RowLayout {
+                ListView {
+                    id: listview
+
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    clip: true
+                    reuseItems: false
+                    orientation: ListView.Horizontal
+                    model: 13
+
+                    Controls.ScrollBar.horizontal: Controls.ScrollBar {
+                    }
+
+                    delegate: CrystalizerBand {
                     }
 
                 }
