@@ -40,20 +40,20 @@ Kirigami.ScrollablePage {
 
                 contentItem: RowLayout {
                     CrystalizerBand {
-                        intensity: pluginDB.intensityBand0
+                        intensity: pluginDB["intensityBand0"]
                         minIntensity: pluginDB.getMinValue("intensityBand0")
                         maxIntensity: pluginDB.getMaxValue("intensityBand0")
-                        mute: pluginDB.muteBand0
-                        bypass: pluginDB.bypassBand0
+                        mute: pluginDB["muteBand0"]
+                        bypass: pluginDB["bypassBand0"]
                         bandFrequency: "250 Hz"
                         onIntensityModified: (v) => {
-                            pluginDB.intensityBand0 = v;
+                            pluginDB["intensityBand0"] = v;
                         }
                         onMuteModified: (v) => {
-                            pluginDB.muteBand0 = v;
+                            pluginDB["muteBand0"] = v;
                         }
                         onBypassModified: (v) => {
-                            pluginDB.bypassBand0 = v;
+                            pluginDB["bypassBand0"] = v;
                         }
                     }
 
