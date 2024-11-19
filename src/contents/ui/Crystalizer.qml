@@ -25,7 +25,6 @@ Kirigami.ScrollablePage {
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
     }
 
-    horizontalScrollBarPolicy: Qt.ScrollBarAsNeeded
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
@@ -39,13 +38,13 @@ Kirigami.ScrollablePage {
             Layout.alignment: Qt.AlignHCenter
             Layout.fillWidth: false
             Layout.fillHeight: true
-            implicitWidth: 53 * Kirigami.Units.gridUnit
 
             contentItem: ListView {
                 id: listview
 
+                implicitWidth: contentItem.childrenRect.width < crystalizerPage.width ? contentItem.childrenRect.width : crystalizerPage.width - 4 * (cardControls.leftPadding + cardControls.rightPadding)
                 clip: true
-                reuseItems: false
+                reuseItems: true
                 orientation: ListView.Horizontal
                 model: 13
 
@@ -53,6 +52,9 @@ Kirigami.ScrollablePage {
                     pluginDB: {
                         crystalizerPage.pluginDB;
                     }
+                }
+
+                Controls.ScrollBar.horizontal: Controls.ScrollBar {
                 }
 
             }
