@@ -293,7 +293,7 @@ void Crystalizer::bind_band(const int& n) {
                                               auto* self = static_cast<Crystalizer*>(user_data);
 
                                               self->band_intensity.at(index) =
-                                                  g_settings_get_double(settings, key) != 0;
+                                                  util::db_to_linear(g_settings_get_double(settings, key));
                                             }
                                           }),
                                           this));
