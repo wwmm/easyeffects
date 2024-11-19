@@ -15,11 +15,60 @@ Controls.ItemDelegate {
     hoverEnabled: false
     height: ListView.view.height
 
+    Controls.Popup {
+        id: menu
+
+        parent: menuButton
+        x: Math.round((parent.width - width) / 2)
+        y: parent.height
+        closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+        onClosed: {
+            menuButton.checked = false;
+        }
+
+        contentItem: ColumnLayout {
+            Controls.Button {
+                Layout.alignment: Qt.AlignCenter
+                text: i18n("Mute")
+                checkable: true
+                checked: pluginDB["muteBand" + index]
+                onCheckedChanged: {
+                    if (checked != pluginDB["muteBand" + index])
+                        pluginDB["muteBand" + index] = checked;
+
+                }
+            }
+
+            Controls.Button {
+                Layout.alignment: Qt.AlignCenter
+                text: i18n("Bypass")
+                checkable: true
+                checked: pluginDB["bypassBand" + index]
+                onCheckedChanged: {
+                    if (checked != pluginDB["bypassBand" + index])
+                        pluginDB["bypassBand" + index] = checked;
+
+                }
+            }
+
+        }
+
+    }
+
     contentItem: ColumnLayout {
         Controls.Button {
+            id: menuButton
+
             Layout.alignment: Qt.AlignCenter
             icon.name: "emblem-system-symbolic"
-            onClicked: menuDialog.open()
+            checkable: true
+            checked: false
+            onCheckedChanged: {
+                if (checked)
+                    menu.open();
+                else
+                    menu.close();
+            }
         }
 
         Controls.Label {
@@ -69,6 +118,7 @@ Controls.ItemDelegate {
             to: pluginDB.getMaxValue("intensityBand" + index)
             value: pluginDB["intensityBand" + index]
             stepSize: 1
+            enabled: !pluginDB["muteBand" + index] && !pluginDB["bypassBand" + index]
             onMoved: {
                 if (value != pluginDB["intensityBand" + index])
                     pluginDB["intensityBand" + index] = value;
