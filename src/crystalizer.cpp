@@ -37,6 +37,20 @@
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
+// NOLINTNEXTLINE
+#define BIND_BAND(index)                                                                                    \
+  {                                                                                                         \
+    band_intensity.at(index) = util::db_to_linear(settings->intensityBand##index());                        \
+    band_mute.at(index) = settings->muteBand##index();                                                      \
+    band_bypass.at(index) = settings->bypassBand##index();                                                  \
+    connect(settings, &db::Crystalizer::intensityBand##index##Changed,                                      \
+            [this]() { band_intensity.at(index) = util::db_to_linear(settings->intensityBand##index()); }); \
+    connect(settings, &db::Crystalizer::muteBand##index##Changed,                                           \
+            [this]() { band_mute.at(index) = settings->muteBand##index(); });                               \
+    connect(settings, &db::Crystalizer::bypassBand##index##Changed,                                         \
+            [this]() { band_bypass.at(index) = settings->bypassBand##index(); });                           \
+  }
+
 Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
     : PluginBase(tag,
                  tags::plugin_name::BaseName::crystalizer,
@@ -72,11 +86,21 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   frequencies[12] = 15020.0F;
   frequencies[13] = 20020.0F;
 
-  for (uint n = 0U; n < nbands; n++) {
-    bind_band(static_cast<int>(n));
-  }
-
   init_common_controls<db::Crystalizer>(settings);
+
+  BIND_BAND(0);
+  BIND_BAND(1);
+  BIND_BAND(2);
+  BIND_BAND(3);
+  BIND_BAND(4);
+  BIND_BAND(5);
+  BIND_BAND(6);
+  BIND_BAND(7);
+  BIND_BAND(8);
+  BIND_BAND(9);
+  BIND_BAND(10);
+  BIND_BAND(11);
+  BIND_BAND(12);
 }
 
 Crystalizer::~Crystalizer() {
@@ -271,67 +295,6 @@ void Crystalizer::process([[maybe_unused]] std::span<float>& left_in,
                           [[maybe_unused]] std::span<float>& right_out,
                           [[maybe_unused]] std::span<float>& probe_left,
                           [[maybe_unused]] std::span<float>& probe_right) {}
-
-void Crystalizer::bind_band(const int& n) {
-  const std::string bandn = "band" + util::to_string(n);
-
-  // band_intensity.at(n) = util::db_to_linear(settings->intensityBand0());
-
-  // connect(settings, &db::Crystalizer::intensityBand0Changed, [&]() {});
-
-  //   band_intensity.at(n) =
-  //       static_cast<float>(util::db_to_linear(g_settings_get_double(settings, ("intensity-" + bandn).c_str())));
-
-  //   band_mute.at(n) = g_settings_get_boolean(settings, ("mute-" + bandn).c_str()) != 0;
-  //   band_bypass.at(n) = g_settings_get_boolean(settings, ("bypass-" + bandn).c_str()) != 0;
-
-  using namespace std::string_literals;
-
-  //   gconnections.push_back(g_signal_connect(settings, ("changed::"s + "intensity-"s + bandn).c_str(),
-  //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto s_key = std::string(key);
-
-  //                                             int index = 0;
-
-  //                                             if (util::str_to_num(s_key.substr(s_key.find("-band") + 5U), index)) {
-  //                                               auto* self = static_cast<Crystalizer*>(user_data);
-
-  //                                               self->band_intensity.at(index) =
-  //                                                   g_settings_get_double(settings, key) != 0;
-  //                                             }
-  //                                           }),
-  //                                           this));
-
-  //   gconnections.push_back(g_signal_connect(settings, ("changed::"s + "mute-"s + bandn).c_str(),
-  //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto s_key = std::string(key);
-
-  //                                             int index = 0;
-
-  //                                             if (util::str_to_num(s_key.substr(s_key.find("-band") + 5U), index)) {
-  //                                               auto* self = static_cast<Crystalizer*>(user_data);
-
-  //                                               self->band_mute.at(index) = g_settings_get_boolean(settings, key) !=
-  //                                               0;
-  //                                             }
-  //                                           }),
-  //                                           this));
-
-  //   gconnections.push_back(g_signal_connect(settings, ("changed::"s + "bypass-"s + bandn).c_str(),
-  //                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                             auto s_key = std::string(key);
-
-  //                                             int index = 0;
-
-  //                                             if (util::str_to_num(s_key.substr(s_key.find("-band") + 5U), index)) {
-  //                                               auto* self = static_cast<Crystalizer*>(user_data);
-
-  //                                               self->band_bypass.at(index) = g_settings_get_boolean(settings, key)
-  //                                               != 0;
-  //                                             }
-  //                                           }),
-  //                                           this));
-}
 
 auto Crystalizer::get_latency_seconds() -> float {
   return this->latency_value;

@@ -100,8 +100,6 @@ class Crystalizer : public PluginBase {
 
   std::deque<float> deque_out_L, deque_out_R;
 
-  void bind_band(const int& n);
-
   template <typename T1>
   void enhance_peaks(T1& data_left, T1& data_right) {
     for (uint n = 0U; n < nbands; n++) {
