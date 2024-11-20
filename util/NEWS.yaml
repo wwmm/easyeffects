@@ -13,6 +13,19 @@ Description:
 - 
 
 ---
+Version: 7.2.0
+Date: 2024-11-20
+
+Description: 
+- Features∶
+- Updated translations
+
+- Bug fixes∶
+- Fixed a bug in the crystalizer plugin where the scale values were not being properly applied.
+
+- Other notes∶
+
+---
 Version: 7.1.9
 Date: 2024-09-12
 

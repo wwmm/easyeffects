@@ -1,5 +1,18 @@
 # Changelog
  
+## 7.2.0
+### 2024-11-20
+
+ 
+### Features:
+- Updated translations
+
+### Bug fixes:
+- Fixed a bug in the crystalizer plugin where the scale values were not being properly applied.
+
+### Other notes:
+
+ 
 ## 7.1.9
 ### 2024-09-12
 
