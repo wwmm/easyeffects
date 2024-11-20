@@ -34,7 +34,7 @@ Kirigami.ScrollablePage {
         Kirigami.CardsLayout {
             id: cardLayout
 
-            maximumColumns: 5
+            maximumColumns: 4
             uniformCellWidths: true
 
             Kirigami.Card {
@@ -45,6 +45,24 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: Column {
+                    EeSwitch {
+                        id: softclip
+
+                        label: i18n("Softclip")
+                        isChecked: pluginDB.softclip
+                        onCheckedChanged: {
+                            if (isChecked !== pluginDB.softclip)
+                                pluginDB.softclip = isChecked;
+
+                        }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
                     EeSpinBox {
                         id: balanceIn
 
@@ -78,6 +96,7 @@ Kirigami.ScrollablePage {
                         value: pluginDB.scLevel
                         decimals: 3
                         stepSize: 0.001
+                        enabled: pluginDB.softclip
                         onValueModified: (v) => {
                             pluginDB.scLevel = v;
                         }
@@ -124,6 +143,176 @@ Kirigami.ScrollablePage {
                             }
                         }
 
+                        EeSpinBox {
+                            id: slev
+
+                            label: i18n("Side Level")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("slev")
+                            to: pluginDB.getMaxValue("slev")
+                            value: pluginDB.slev
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: (v) => {
+                                pluginDB.slev = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: sbal
+
+                            label: i18n("Side Balance")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("sbal")
+                            to: pluginDB.getMaxValue("sbal")
+                            value: pluginDB.sbal
+                            decimals: 2
+                            stepSize: 0.01
+                            onValueModified: (v) => {
+                                pluginDB.sbal = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: mlev
+
+                            label: i18n("Middle Level")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("mlev")
+                            to: pluginDB.getMaxValue("mlev")
+                            value: pluginDB.mlev
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: (v) => {
+                                pluginDB.mlev = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: mpan
+
+                            label: i18n("Middle Panorama")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("mpan")
+                            to: pluginDB.getMaxValue("mpan")
+                            value: pluginDB.mpan
+                            decimals: 2
+                            stepSize: 0.01
+                            onValueModified: (v) => {
+                                pluginDB.mpan = v;
+                            }
+                        }
+
+                    }
+
+                }
+
+            }
+
+            Kirigami.Card {
+
+                contentItem: Column {
+                    Kirigami.Heading {
+                        text: i18n("Left")
+                        level: 2
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    EeSwitch {
+                        id: mutel
+
+                        label: i18n("Mute")
+                        isChecked: pluginDB.mutel
+                        onCheckedChanged: {
+                            if (isChecked !== pluginDB.mutel)
+                                pluginDB.mutel = isChecked;
+
+                        }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    EeSwitch {
+                        id: phasel
+
+                        label: i18n("Invert Phase")
+                        isChecked: pluginDB.phasel
+                        onCheckedChanged: {
+                            if (isChecked !== pluginDB.phasel)
+                                pluginDB.phasel = isChecked;
+
+                        }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    Kirigami.Heading {
+                        text: i18n("Right")
+                        level: 2
+                        topPadding: Kirigami.Units.gridUnit * 2
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    EeSwitch {
+                        id: muter
+
+                        label: i18n("Mute")
+                        isChecked: pluginDB.muter
+                        onCheckedChanged: {
+                            if (isChecked !== pluginDB.muter)
+                                pluginDB.muter = isChecked;
+
+                        }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    EeSwitch {
+                        id: phaser
+
+                        label: i18n("Invert Phase")
+                        isChecked: pluginDB.phaser
+                        onCheckedChanged: {
+                            if (isChecked !== pluginDB.phaser)
+                                pluginDB.phaser = isChecked;
+
+                        }
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                 }
@@ -138,72 +327,115 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: Column {
-                    EeSpinBox {
-                        id: balanceOut
-
-                        label: i18n("Balance")
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("balanceOut")
-                        to: pluginDB.getMaxValue("balanceOut")
-                        value: pluginDB.balanceOut
-                        decimals: 2
-                        stepSize: 0.01
-                        onValueModified: (v) => {
-                            pluginDB.balanceOut = v;
-                        }
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
 
                         anchors {
                             left: parent.left
                             right: parent.right
                         }
 
-                    }
+                        EeSpinBox {
+                            id: balanceOut
 
-                    EeSpinBox {
-                        id: dry
-
-                        label: i18n("Dry")
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("dry")
-                        to: pluginDB.getMaxValue("dry")
-                        value: pluginDB.dry
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: "dB"
-                        minusInfinityMode: true
-                        onValueModified: (v) => {
-                            pluginDB.dry = v;
+                            label: i18n("Balance")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("balanceOut")
+                            to: pluginDB.getMaxValue("balanceOut")
+                            value: pluginDB.balanceOut
+                            decimals: 2
+                            stepSize: 0.01
+                            onValueModified: (v) => {
+                                pluginDB.balanceOut = v;
+                            }
                         }
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                        EeSpinBox {
+                            id: delay
+
+                            label: i18n("Delay")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("delay")
+                            to: pluginDB.getMaxValue("delay")
+                            value: pluginDB.delay
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "ms"
+                            onValueModified: (v) => {
+                                pluginDB.delay = v;
+                            }
                         }
 
-                    }
+                        EeSpinBox {
+                            id: stereoBase
 
-                    EeSpinBox {
-                        id: wet
-
-                        label: i18n("Wet")
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("wet")
-                        to: pluginDB.getMaxValue("wet")
-                        value: pluginDB.wet
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: "dB"
-                        minusInfinityMode: true
-                        onValueModified: (v) => {
-                            pluginDB.wet = v;
+                            label: i18n("Stereo Base")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("stereoBase")
+                            to: pluginDB.getMaxValue("stereoBase")
+                            value: pluginDB.stereoBase
+                            decimals: 2
+                            stepSize: 0.01
+                            onValueModified: (v) => {
+                                pluginDB.stereoBase = v;
+                            }
                         }
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                        EeSpinBox {
+                            id: stereoPhase
+
+                            label: i18n("Stereo Phase")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("stereoPhase")
+                            to: pluginDB.getMaxValue("stereoPhase")
+                            value: pluginDB.stereoPhase
+                            decimals: 0
+                            stepSize: 1
+                            unit: "°"
+                            onValueModified: (v) => {
+                                pluginDB.stereoPhase = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: dry
+
+                            label: i18n("Dry")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("dry")
+                            to: pluginDB.getMaxValue("dry")
+                            value: pluginDB.dry
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: (v) => {
+                                pluginDB.dry = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: wet
+
+                            label: i18n("Wet")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("wet")
+                            to: pluginDB.getMaxValue("wet")
+                            value: pluginDB.wet
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: (v) => {
+                                pluginDB.wet = v;
+                            }
                         }
 
                     }
@@ -224,7 +456,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using") + EEtagsPluginPackage.cal
+            text: i18n("Using") + EEtagsPluginPackage.calf
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
             Layout.fillWidth: false
