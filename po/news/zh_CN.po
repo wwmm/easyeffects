@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-16 13:17-0300\n"
+"POT-Creation-Date: 2024-11-20 20:13-0300\n"
 "PO-Revision-Date: 2023-03-21 06:38+0000\n"
 "Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -44,7 +44,7 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "加载预设。 示例：easyeffects -l music"
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
-#: src/contents/ui/Exciter.qml:90
+#: src/contents/ui/Exciter.qml:90 src/contents/ui/Maximizer.qml:43
 msgid "Controls"
 msgstr ""
 
@@ -121,14 +121,17 @@ msgstr "左"
 msgid "Output Gain"
 msgstr "输出增益"
 
-#: src/contents/ui/Autogain.qml:261
+#: src/contents/ui/Autogain.qml:261 src/contents/ui/Maximizer.qml:82
 msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
-#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
-msgid "Using"
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Crystalizer.qml:74
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Gate.qml:914
+#: src/contents/ui/Limiter.qml:496 src/contents/ui/Maximizer.qml:105
+#: src/contents/ui/StereoTools.qml:459
+#, fuzzy
+msgid "Using %1"
 msgstr "使用"
 
 #: src/contents/ui/Autogain.qml:305
@@ -177,7 +180,8 @@ msgstr "下限"
 
 #: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
 #: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
-#: src/contents/ui/Limiter.qml:511
+#: src/contents/ui/Limiter.qml:511 src/contents/ui/Maximizer.qml:120
+#: src/contents/ui/StereoTools.qml:474
 #, fuzzy
 msgid "Show Native Window"
 msgstr "关闭窗口"
@@ -188,8 +192,9 @@ msgid "Listen"
 msgstr "聆听"
 
 #: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
-#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
-#: src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Crystalizer.qml:89 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Gate.qml:964 src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Maximizer.qml:133 src/contents/ui/StereoTools.qml:487
 msgid "Reset"
 msgstr "重置"
 
@@ -199,6 +204,7 @@ msgstr "压缩器"
 
 #: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
 #: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+#: src/contents/ui/StereoTools.qml:136
 msgid "Mode"
 msgstr "模式"
 
@@ -243,7 +249,7 @@ msgstr "起始时间"
 
 #: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
 #: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
-#: src/contents/ui/Limiter.qml:328
+#: src/contents/ui/Limiter.qml:328 src/contents/ui/Maximizer.qml:51
 msgid "Release"
 msgstr "消音时间"
 
@@ -280,7 +286,7 @@ msgid "Link"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
-#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:306
 msgid "Input Device"
 msgstr "输入设备"
 
@@ -315,10 +321,12 @@ msgid "Side"
 msgstr "侧边"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:224
 msgid "Left"
 msgstr "左"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:271
 msgid "Right"
 msgstr "右"
 
@@ -391,16 +399,19 @@ msgstr ""
 msgid "36 dB/oct"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:86
 #: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+#: src/contents/ui/StereoTools.qml:325
 msgid "Output"
 msgstr "输出"
 
 #: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+#: src/contents/ui/StereoTools.qml:408
 msgid "Dry"
 msgstr "干声"
 
 #: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+#: src/contents/ui/StereoTools.qml:426
 #, fuzzy
 msgid "Wet"
 msgstr "程度"
@@ -410,7 +421,7 @@ msgid "Makeup"
 msgstr "补偿"
 
 #: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
-#: src/contents/ui/Gate.qml:590
+#: src/contents/ui/Gate.qml:590 src/contents/ui/Maximizer.qml:81
 msgid "Reduction"
 msgstr "衰减"
 
@@ -445,6 +456,15 @@ msgstr "波封"
 msgid "Stereo Split"
 msgstr "立体声宽度"
 
+#: src/contents/ui/CrystalizerBand.qml:33 src/contents/ui/StereoTools.qml:237
+#: src/contents/ui/StereoTools.qml:285
+msgid "Mute"
+msgstr "静音静音"
+
+#: src/contents/ui/CrystalizerBand.qml:45
+msgid "Bypass"
+msgstr "旁路"
+
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
 msgid "Id"
@@ -468,12 +488,12 @@ msgstr "访问"
 msgid "Description"
 msgstr "描述"
 
-#: src/contents/ui/DelegatePluginsList.qml:57
+#: src/contents/ui/DelegatePluginsList.qml:56
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "删除这个音效"
 
-#: src/contents/ui/DelegatePluginsList.qml:70
+#: src/contents/ui/DelegatePluginsList.qml:69
 msgid "Remove this effect"
 msgstr "删除这个音效"
 
@@ -490,7 +510,8 @@ msgstr "启用"
 msgid "Exclude"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/StereoTools.qml:43
 msgid "Input"
 msgstr "输入"
 
@@ -509,7 +530,7 @@ msgstr "门限"
 
 #: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
 #: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
-#: src/contents/ui/Limiter.qml:121
+#: src/contents/ui/Limiter.qml:121 src/contents/ui/Maximizer.qml:66
 msgid "Threshold"
 msgstr "阈值"
 
@@ -782,44 +803,44 @@ msgstr "增加插件"
 msgid "Search"
 msgstr "搜索"
 
-#: src/contents/ui/PageStreamsEffects.qml:56
+#: src/contents/ui/PageStreamsEffects.qml:58
 #, fuzzy
 msgid "Empty List"
 msgstr "空旷"
 
-#: src/contents/ui/PageStreamsEffects.qml:57
+#: src/contents/ui/PageStreamsEffects.qml:59
 msgid "No Audio Application Available"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:230
+#: src/contents/ui/PageStreamsEffects.qml:256
 #, fuzzy
 msgid "Add Effect"
 msgstr "音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:280
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:306
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Players"
 msgstr "播放器"
 
-#: src/contents/ui/PageStreamsEffects.qml:298
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:323
+#: src/contents/ui/PageStreamsEffects.qml:349
 msgid "No Effects"
 msgstr "无音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:350
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:422
+#: src/contents/ui/PageStreamsEffects.qml:456
 #, fuzzy
 msgid "Effects"
 msgstr "无音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:472
 #, fuzzy
 msgid "Excluded Apps"
 msgstr "已排除程序列表"
@@ -1042,6 +1063,82 @@ msgstr "频谱类型"
 msgid "Experimental Features"
 msgstr "实验性"
 
+#: src/contents/ui/StereoTools.qml:51
+msgid "Softclip"
+msgstr "柔化处理"
+
+#: src/contents/ui/StereoTools.qml:69 src/contents/ui/StereoTools.qml:342
+msgid "Balance"
+msgstr "平衡"
+
+#: src/contents/ui/StereoTools.qml:91
+msgid "S/C Level"
+msgstr "S/C 级别"
+
+#: src/contents/ui/StereoTools.qml:118
+msgid "Stereo Matrix"
+msgstr "立体声阵距"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > LR (Stereo Default)"
+msgstr "LR > LR (默认立体声)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > MS (Stereo to Mid-Side)"
+msgstr "LR > MS (立体声至中-侧)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "MS > LR (Mid-Side to Stereo)"
+msgstr "MS > LR (中-侧至立体声)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > LL (Mono Left Channel)"
+msgstr "LR > LL (单声道左)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > RR (Mono Right Channel)"
+msgstr "LR > RR (单声道右)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > L+R (Mono Sum L+R)"
+msgstr "LR > L+R (单声道左右合并)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > RL (Stereo Flip Channels)"
+msgstr "LR > RL (立体声翻转)"
+
+#: src/contents/ui/StereoTools.qml:149
+msgid "Side Level"
+msgstr "侧边级别"
+
+#: src/contents/ui/StereoTools.qml:167
+msgid "Side Balance"
+msgstr "侧边平衡"
+
+#: src/contents/ui/StereoTools.qml:183
+msgid "Middle Level"
+msgstr "中置级别"
+
+#: src/contents/ui/StereoTools.qml:201
+msgid "Middle Panorama"
+msgstr "中置全景"
+
+#: src/contents/ui/StereoTools.qml:255 src/contents/ui/StereoTools.qml:303
+msgid "Invert Phase"
+msgstr "反转相位"
+
+#: src/contents/ui/StereoTools.qml:358 src/tags_plugin_name.cpp:35
+msgid "Delay"
+msgstr "延迟"
+
+#: src/contents/ui/StereoTools.qml:375
+msgid "Stereo Base"
+msgstr "立体声基线"
+
+#: src/contents/ui/StereoTools.qml:391
+msgid "Stereo Phase"
+msgstr "立体声相位"
+
 #: src/main.cpp:61
 msgid "Audio effects for PipeWire applications"
 msgstr "为使用 PipeWire 的程序提供音效"
@@ -1136,10 +1233,6 @@ msgstr ""
 #: src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "齿音消除"
-
-#: src/tags_plugin_name.cpp:35
-msgid "Delay"
-msgstr "延迟"
 
 #: src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
@@ -2200,12 +2293,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Feed"
 #~ msgstr "反馈"
 
-#~ msgid "Bypass"
-#~ msgstr "旁路"
-
-#~ msgid "Mute"
-#~ msgstr "静音静音"
-
 #~ msgid "Detection"
 #~ msgstr "侦测"
 
@@ -2767,68 +2854,17 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ msgid "Quit EasyEffects"
 #~ msgstr "退出 EasyEffects"
 
-#~ msgid "Balance"
-#~ msgstr "平衡"
-
 #~ msgid "Input Balance"
 #~ msgstr "输出平衡"
 
-#~ msgid "Softclip"
-#~ msgstr "柔化处理"
-
 #~ msgid "Softclip Level"
 #~ msgstr "软削波等级"
-
-#~ msgid "Stereo Matrix"
-#~ msgstr "立体声阵距"
-
-#~ msgid "LR > LR (Stereo Default)"
-#~ msgstr "LR > LR (默认立体声)"
-
-#~ msgid "LR > MS (Stereo to Mid-Side)"
-#~ msgstr "LR > MS (立体声至中-侧)"
-
-#~ msgid "MS > LR (Mid-Side to Stereo)"
-#~ msgstr "MS > LR (中-侧至立体声)"
-
-#~ msgid "LR > LL (Mono Left Channel)"
-#~ msgstr "LR > LL (单声道左)"
-
-#~ msgid "LR > RR (Mono Right Channel)"
-#~ msgstr "LR > RR (单声道右)"
-
-#~ msgid "LR > L+R (Mono Sum L+R)"
-#~ msgstr "LR > L+R (单声道左右合并)"
-
-#~ msgid "LR > RL (Stereo Flip Channels)"
-#~ msgstr "LR > RL (立体声翻转)"
-
-#~ msgid "Invert Phase"
-#~ msgstr "反转相位"
-
-#~ msgid "Side Level"
-#~ msgstr "侧边级别"
-
-#~ msgid "Side Balance"
-#~ msgstr "侧边平衡"
-
-#~ msgid "Middle Level"
-#~ msgstr "中置级别"
-
-#~ msgid "Middle Panorama"
-#~ msgstr "中置全景"
 
 #~ msgid "Output Balance"
 #~ msgstr "输出平衡"
 
 #~ msgid "Delay L/R"
 #~ msgstr "延迟 L/R"
-
-#~ msgid "Stereo Base"
-#~ msgstr "立体声基线"
-
-#~ msgid "Stereo Phase"
-#~ msgstr "立体声相位"
 
 #~ msgid "Output Presets: "
 #~ msgstr "输出预设: "
@@ -3012,9 +3048,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Spectrum Color"
 #~ msgstr "光谱颜色"
-
-#~ msgid "S/C Level"
-#~ msgstr "S/C 级别"
 
 #~ msgid "Phase Correlation"
 #~ msgstr "相位相关"

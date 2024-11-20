@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-16 13:17-0300\n"
+"POT-Creation-Date: 2024-11-20 20:13-0300\n"
 "PO-Revision-Date: 2024-01-30 16:12+0000\n"
 "Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -44,7 +44,7 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carregar uma predefinição. Exemplo: easyeffects -l musica"
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
-#: src/contents/ui/Exciter.qml:90
+#: src/contents/ui/Exciter.qml:90 src/contents/ui/Maximizer.qml:43
 #, fuzzy
 msgid "Controls"
 msgstr "Controlador de Ganho"
@@ -125,14 +125,17 @@ msgstr "L"
 msgid "Output Gain"
 msgstr "Ganho de Saída"
 
-#: src/contents/ui/Autogain.qml:261
+#: src/contents/ui/Autogain.qml:261 src/contents/ui/Maximizer.qml:82
 msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
-#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
-msgid "Using"
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Crystalizer.qml:74
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Gate.qml:914
+#: src/contents/ui/Limiter.qml:496 src/contents/ui/Maximizer.qml:105
+#: src/contents/ui/StereoTools.qml:459
+#, fuzzy
+msgid "Using %1"
 msgstr "Usando"
 
 #: src/contents/ui/Autogain.qml:305
@@ -181,7 +184,8 @@ msgstr "Piso"
 
 #: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
 #: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
-#: src/contents/ui/Limiter.qml:511
+#: src/contents/ui/Limiter.qml:511 src/contents/ui/Maximizer.qml:120
+#: src/contents/ui/StereoTools.qml:474
 msgid "Show Native Window"
 msgstr ""
 
@@ -191,8 +195,9 @@ msgid "Listen"
 msgstr "Escutar"
 
 #: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
-#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
-#: src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Crystalizer.qml:89 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Gate.qml:964 src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Maximizer.qml:133 src/contents/ui/StereoTools.qml:487
 msgid "Reset"
 msgstr "Resetar"
 
@@ -202,6 +207,7 @@ msgstr "Compressor"
 
 #: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
 #: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+#: src/contents/ui/StereoTools.qml:136
 msgid "Mode"
 msgstr "Modo"
 
@@ -247,7 +253,7 @@ msgstr "Ataque"
 
 #: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
 #: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
-#: src/contents/ui/Limiter.qml:328
+#: src/contents/ui/Limiter.qml:328 src/contents/ui/Maximizer.qml:51
 msgid "Release"
 msgstr "Liberação"
 
@@ -284,7 +290,7 @@ msgid "Link"
 msgstr "Ligação"
 
 #: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
-#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:306
 #, fuzzy
 msgid "Input Device"
 msgstr "Dispositivo de Entrada"
@@ -321,10 +327,12 @@ msgid "Side"
 msgstr "Lado"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:224
 msgid "Left"
 msgstr "Esquerda"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:271
 msgid "Right"
 msgstr "Direita"
 
@@ -398,16 +406,19 @@ msgstr "24dB/oct"
 msgid "36 dB/oct"
 msgstr "36dB/oct"
 
-#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:86
 #: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+#: src/contents/ui/StereoTools.qml:325
 msgid "Output"
 msgstr "Saída"
 
 #: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+#: src/contents/ui/StereoTools.qml:408
 msgid "Dry"
 msgstr "Seco"
 
 #: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+#: src/contents/ui/StereoTools.qml:426
 #, fuzzy
 msgid "Wet"
 msgstr "Pesos"
@@ -417,7 +428,7 @@ msgid "Makeup"
 msgstr "Ganho de Saída"
 
 #: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
-#: src/contents/ui/Gate.qml:590
+#: src/contents/ui/Gate.qml:590 src/contents/ui/Maximizer.qml:81
 #, fuzzy
 msgid "Reduction"
 msgstr "Redução"
@@ -453,6 +464,15 @@ msgstr "Inclinação"
 msgid "Stereo Split"
 msgstr "Largura do Stereo"
 
+#: src/contents/ui/CrystalizerBand.qml:33 src/contents/ui/StereoTools.qml:237
+#: src/contents/ui/StereoTools.qml:285
+msgid "Mute"
+msgstr "Mudo"
+
+#: src/contents/ui/CrystalizerBand.qml:45
+msgid "Bypass"
+msgstr "Ignorar"
+
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
 #, fuzzy
@@ -478,12 +498,12 @@ msgstr "Acesso"
 msgid "Description"
 msgstr "Descrição"
 
-#: src/contents/ui/DelegatePluginsList.qml:57
+#: src/contents/ui/DelegatePluginsList.qml:56
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "Remover este arquivo de predefinição"
 
-#: src/contents/ui/DelegatePluginsList.qml:70
+#: src/contents/ui/DelegatePluginsList.qml:69
 #, fuzzy
 msgid "Remove this effect"
 msgstr "Remover este arquivo de predefinição"
@@ -502,7 +522,8 @@ msgstr "Habilitar"
 msgid "Exclude"
 msgstr "Excluir"
 
-#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/StereoTools.qml:43
 msgid "Input"
 msgstr "Entrada"
 
@@ -522,7 +543,7 @@ msgstr "Portão"
 
 #: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
 #: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
-#: src/contents/ui/Limiter.qml:121
+#: src/contents/ui/Limiter.qml:121 src/contents/ui/Maximizer.qml:66
 msgid "Threshold"
 msgstr "Limiar"
 
@@ -796,42 +817,42 @@ msgstr ""
 msgid "Search"
 msgstr "Buscar"
 
-#: src/contents/ui/PageStreamsEffects.qml:56
+#: src/contents/ui/PageStreamsEffects.qml:58
 #, fuzzy
 msgid "Empty List"
 msgstr "Paredes Vazias"
 
-#: src/contents/ui/PageStreamsEffects.qml:57
+#: src/contents/ui/PageStreamsEffects.qml:59
 msgid "No Audio Application Available"
 msgstr "Nenhum aplicativo de áudio disponível"
 
-#: src/contents/ui/PageStreamsEffects.qml:230
+#: src/contents/ui/PageStreamsEffects.qml:256
 msgid "Add Effect"
 msgstr "Adicionar efeito"
 
-#: src/contents/ui/PageStreamsEffects.qml:280
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:306
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Players"
 msgstr "Reprodutores"
 
-#: src/contents/ui/PageStreamsEffects.qml:298
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Recorders"
 msgstr "Gravadores"
 
-#: src/contents/ui/PageStreamsEffects.qml:323
+#: src/contents/ui/PageStreamsEffects.qml:349
 msgid "No Effects"
 msgstr "Sem efeitos"
 
-#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:350
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:422
+#: src/contents/ui/PageStreamsEffects.qml:456
 msgid "Effects"
 msgstr "Efeitos"
 
-#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:472
 msgid "Excluded Apps"
 msgstr "Aplicativos excluídos"
 
@@ -1062,6 +1083,82 @@ msgstr "Tipo de Espectro"
 msgid "Experimental Features"
 msgstr "Experimental"
 
+#: src/contents/ui/StereoTools.qml:51
+msgid "Softclip"
+msgstr "Clipe Macio"
+
+#: src/contents/ui/StereoTools.qml:69 src/contents/ui/StereoTools.qml:342
+msgid "Balance"
+msgstr "Balanço"
+
+#: src/contents/ui/StereoTools.qml:91
+msgid "S/C Level"
+msgstr "Nível de S/C"
+
+#: src/contents/ui/StereoTools.qml:118
+msgid "Stereo Matrix"
+msgstr "Matriz Stereo"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > LR (Stereo Default)"
+msgstr "ED > ED (Stereo Padrão)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > MS (Stereo to Mid-Side)"
+msgstr "ED > ML (Stereo para Meio-Lado)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "MS > LR (Mid-Side to Stereo)"
+msgstr "ML > ED (Meio-Lado para Stereo)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > LL (Mono Left Channel)"
+msgstr "ED > EE (Canal Esquerdo Mono)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > RR (Mono Right Channel)"
+msgstr "ED > DD (Canal Direito Mono)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > L+R (Mono Sum L+R)"
+msgstr "ED > E+D (Soma Mono E+D)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > RL (Stereo Flip Channels)"
+msgstr "ED > DL (Alternar Canais Stereo)"
+
+#: src/contents/ui/StereoTools.qml:149
+msgid "Side Level"
+msgstr "Nível Lateral"
+
+#: src/contents/ui/StereoTools.qml:167
+msgid "Side Balance"
+msgstr "Balanço Lateral"
+
+#: src/contents/ui/StereoTools.qml:183
+msgid "Middle Level"
+msgstr "Nível do Meio"
+
+#: src/contents/ui/StereoTools.qml:201
+msgid "Middle Panorama"
+msgstr "Panorama do Meio"
+
+#: src/contents/ui/StereoTools.qml:255 src/contents/ui/StereoTools.qml:303
+msgid "Invert Phase"
+msgstr "Inverter Fase"
+
+#: src/contents/ui/StereoTools.qml:358 src/tags_plugin_name.cpp:35
+msgid "Delay"
+msgstr "Atraso"
+
+#: src/contents/ui/StereoTools.qml:375
+msgid "Stereo Base"
+msgstr "Base Stereo"
+
+#: src/contents/ui/StereoTools.qml:391
+msgid "Stereo Phase"
+msgstr "Fase Stereo"
+
 #: src/main.cpp:61
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
@@ -1156,10 +1253,6 @@ msgstr ""
 #: src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "Deesser"
-
-#: src/tags_plugin_name.cpp:35
-msgid "Delay"
-msgstr "Atraso"
 
 #: src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
@@ -2739,12 +2832,6 @@ msgstr ""
 #~ msgid "Feed"
 #~ msgstr "Alimentação"
 
-#~ msgid "Bypass"
-#~ msgstr "Ignorar"
-
-#~ msgid "Mute"
-#~ msgstr "Mudo"
-
 #~ msgid "Detection"
 #~ msgstr "Detecção"
 
@@ -3510,58 +3597,13 @@ msgstr ""
 #~ msgid "Quit EasyEffects"
 #~ msgstr "EasyEffects"
 
-#~ msgid "Balance"
-#~ msgstr "Balanço"
-
 #, fuzzy
 #~ msgid "Input Balance"
 #~ msgstr "Balanço"
 
-#~ msgid "Softclip"
-#~ msgstr "Clipe Macio"
-
 #, fuzzy
 #~ msgid "Softclip Level"
 #~ msgstr "Clipe Macio"
-
-#~ msgid "Stereo Matrix"
-#~ msgstr "Matriz Stereo"
-
-#~ msgid "LR > LR (Stereo Default)"
-#~ msgstr "ED > ED (Stereo Padrão)"
-
-#~ msgid "LR > MS (Stereo to Mid-Side)"
-#~ msgstr "ED > ML (Stereo para Meio-Lado)"
-
-#~ msgid "MS > LR (Mid-Side to Stereo)"
-#~ msgstr "ML > ED (Meio-Lado para Stereo)"
-
-#~ msgid "LR > LL (Mono Left Channel)"
-#~ msgstr "ED > EE (Canal Esquerdo Mono)"
-
-#~ msgid "LR > RR (Mono Right Channel)"
-#~ msgstr "ED > DD (Canal Direito Mono)"
-
-#~ msgid "LR > L+R (Mono Sum L+R)"
-#~ msgstr "ED > E+D (Soma Mono E+D)"
-
-#~ msgid "LR > RL (Stereo Flip Channels)"
-#~ msgstr "ED > DL (Alternar Canais Stereo)"
-
-#~ msgid "Invert Phase"
-#~ msgstr "Inverter Fase"
-
-#~ msgid "Side Level"
-#~ msgstr "Nível Lateral"
-
-#~ msgid "Side Balance"
-#~ msgstr "Balanço Lateral"
-
-#~ msgid "Middle Level"
-#~ msgstr "Nível do Meio"
-
-#~ msgid "Middle Panorama"
-#~ msgstr "Panorama do Meio"
 
 #, fuzzy
 #~ msgid "Output Balance"
@@ -3569,12 +3611,6 @@ msgstr ""
 
 #~ msgid "Delay L/R"
 #~ msgstr "Atraso E/D"
-
-#~ msgid "Stereo Base"
-#~ msgstr "Base Stereo"
-
-#~ msgid "Stereo Phase"
-#~ msgstr "Fase Stereo"
 
 #~ msgid "Output Presets: "
 #~ msgstr "Predefinições de Saída: "
@@ -3775,9 +3811,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Maximum Gain Reduction"
 #~ msgstr "Redução de Ganho"
-
-#~ msgid "S/C Level"
-#~ msgstr "Nível de S/C"
 
 #~ msgid "Short Term"
 #~ msgstr "Curto Prazo"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-16 13:17-0300\n"
+"POT-Creation-Date: 2024-11-20 20:13-0300\n"
 "PO-Revision-Date: 2023-06-03 20:51+0000\n"
 "Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -41,7 +41,7 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
-#: src/contents/ui/Exciter.qml:90
+#: src/contents/ui/Exciter.qml:90 src/contents/ui/Maximizer.qml:43
 msgid "Controls"
 msgstr ""
 
@@ -118,14 +118,16 @@ msgstr "L"
 msgid "Output Gain"
 msgstr "Irteerako irabazia"
 
-#: src/contents/ui/Autogain.qml:261
+#: src/contents/ui/Autogain.qml:261 src/contents/ui/Maximizer.qml:82
 msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
-#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
-msgid "Using"
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Crystalizer.qml:74
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Gate.qml:914
+#: src/contents/ui/Limiter.qml:496 src/contents/ui/Maximizer.qml:105
+#: src/contents/ui/StereoTools.qml:459
+msgid "Using %1"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:305
@@ -173,7 +175,8 @@ msgstr "Zorua"
 
 #: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
 #: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
-#: src/contents/ui/Limiter.qml:511
+#: src/contents/ui/Limiter.qml:511 src/contents/ui/Maximizer.qml:120
+#: src/contents/ui/StereoTools.qml:474
 msgid "Show Native Window"
 msgstr ""
 
@@ -183,8 +186,9 @@ msgid "Listen"
 msgstr "Entzun"
 
 #: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
-#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
-#: src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Crystalizer.qml:89 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Gate.qml:964 src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Maximizer.qml:133 src/contents/ui/StereoTools.qml:487
 msgid "Reset"
 msgstr "Berrezarri"
 
@@ -194,6 +198,7 @@ msgstr "Konpresorea"
 
 #: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
 #: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+#: src/contents/ui/StereoTools.qml:136
 msgid "Mode"
 msgstr "Modua"
 
@@ -238,7 +243,7 @@ msgstr "Erasoa"
 
 #: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
 #: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
-#: src/contents/ui/Limiter.qml:328
+#: src/contents/ui/Limiter.qml:328 src/contents/ui/Maximizer.qml:51
 msgid "Release"
 msgstr "Askatzea"
 
@@ -274,7 +279,7 @@ msgid "Link"
 msgstr "Esteka"
 
 #: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
-#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:306
 msgid "Input Device"
 msgstr "Sarrerako gailua"
 
@@ -310,10 +315,12 @@ msgid "Side"
 msgstr "Alboa"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:224
 msgid "Left"
 msgstr "Ezkerra"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:271
 #, fuzzy
 msgid "Right"
 msgstr "Eskuina"
@@ -385,16 +392,19 @@ msgstr "24 dB/zortzidun"
 msgid "36 dB/oct"
 msgstr "36 dB/zortzidun"
 
-#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:86
 #: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+#: src/contents/ui/StereoTools.qml:325
 msgid "Output"
 msgstr "Irteera"
 
 #: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+#: src/contents/ui/StereoTools.qml:408
 msgid "Dry"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+#: src/contents/ui/StereoTools.qml:426
 msgid "Wet"
 msgstr ""
 
@@ -403,7 +413,7 @@ msgid "Makeup"
 msgstr "Goratzea"
 
 #: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
-#: src/contents/ui/Gate.qml:590
+#: src/contents/ui/Gate.qml:590 src/contents/ui/Maximizer.qml:81
 #, fuzzy
 msgid "Reduction"
 msgstr "Murrizketa"
@@ -439,6 +449,15 @@ msgstr "Inguratzailea"
 msgid "Stereo Split"
 msgstr "Estereo-zabalera"
 
+#: src/contents/ui/CrystalizerBand.qml:33 src/contents/ui/StereoTools.qml:237
+#: src/contents/ui/StereoTools.qml:285
+msgid "Mute"
+msgstr "Mututu"
+
+#: src/contents/ui/CrystalizerBand.qml:45
+msgid "Bypass"
+msgstr "Deribazioa"
+
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
 msgid "Id"
@@ -462,12 +481,12 @@ msgstr "Sarbidea"
 msgid "Description"
 msgstr "Deskribapena"
 
-#: src/contents/ui/DelegatePluginsList.qml:57
+#: src/contents/ui/DelegatePluginsList.qml:56
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "Easy Effects aplikazioari _buruz"
 
-#: src/contents/ui/DelegatePluginsList.qml:70
+#: src/contents/ui/DelegatePluginsList.qml:69
 #, fuzzy
 msgid "Remove this effect"
 msgstr "Kendu eredu-fitxategi hau"
@@ -485,7 +504,8 @@ msgstr "Gaitu"
 msgid "Exclude"
 msgstr "Baztertu"
 
-#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/StereoTools.qml:43
 msgid "Input"
 msgstr "Sarrera"
 
@@ -504,7 +524,7 @@ msgstr "Atea"
 
 #: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
 #: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
-#: src/contents/ui/Limiter.qml:121
+#: src/contents/ui/Limiter.qml:121 src/contents/ui/Maximizer.qml:66
 msgid "Threshold"
 msgstr "Atalasea"
 
@@ -776,44 +796,44 @@ msgstr ""
 msgid "Search"
 msgstr "Bilatu"
 
-#: src/contents/ui/PageStreamsEffects.qml:56
+#: src/contents/ui/PageStreamsEffects.qml:58
 #, fuzzy
 msgid "Empty List"
 msgstr "Zerrenda hutsa"
 
-#: src/contents/ui/PageStreamsEffects.qml:57
+#: src/contents/ui/PageStreamsEffects.qml:59
 msgid "No Audio Application Available"
 msgstr "Ez dago audio-aplikaziorik erabilgarri"
 
-#: src/contents/ui/PageStreamsEffects.qml:230
+#: src/contents/ui/PageStreamsEffects.qml:256
 msgid "Add Effect"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:280
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:306
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:298
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:323
+#: src/contents/ui/PageStreamsEffects.qml:349
 #, fuzzy
 msgid "No Effects"
 msgstr "Easy Effects aplikazioari _buruz"
 
-#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:350
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:422
+#: src/contents/ui/PageStreamsEffects.qml:456
 #, fuzzy
 msgid "Effects"
 msgstr "Easy Effects aplikazioari _buruz"
 
-#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:472
 msgid "Excluded Apps"
 msgstr "Baztertutako aplikazioak"
 
@@ -1033,6 +1053,91 @@ msgstr "Espektroa"
 msgid "Experimental Features"
 msgstr ""
 
+#: src/contents/ui/StereoTools.qml:51
+msgid "Softclip"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:69 src/contents/ui/StereoTools.qml:342
+#, fuzzy
+msgid "Balance"
+msgstr "Balantzea"
+
+#: src/contents/ui/StereoTools.qml:91
+#, fuzzy
+msgid "S/C Level"
+msgstr "F2 maila"
+
+#: src/contents/ui/StereoTools.qml:118
+#, fuzzy
+msgid "Stereo Matrix"
+msgstr "Estereo-zabalera"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > LR (Stereo Default)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > MS (Stereo to Mid-Side)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "MS > LR (Mid-Side to Stereo)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:140
+#, fuzzy
+msgid "LR > LL (Mono Left Channel)"
+msgstr "Ezkerreko kanala"
+
+#: src/contents/ui/StereoTools.qml:140
+#, fuzzy
+msgid "LR > RR (Mono Right Channel)"
+msgstr "Eskuineko kanala"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > L+R (Mono Sum L+R)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > RL (Stereo Flip Channels)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:149
+#, fuzzy
+msgid "Side Level"
+msgstr "Hezetasun-maila"
+
+#: src/contents/ui/StereoTools.qml:167
+msgid "Side Balance"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:183
+#, fuzzy
+msgid "Middle Level"
+msgstr "Erdia"
+
+#: src/contents/ui/StereoTools.qml:201
+msgid "Middle Panorama"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:255 src/contents/ui/StereoTools.qml:303
+msgid "Invert Phase"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:358 src/tags_plugin_name.cpp:35
+msgid "Delay"
+msgstr "Atzerapena"
+
+#: src/contents/ui/StereoTools.qml:375
+#, fuzzy
+msgid "Stereo Base"
+msgstr "Estereo-zabalera"
+
+#: src/contents/ui/StereoTools.qml:391
+#, fuzzy
+msgid "Stereo Phase"
+msgstr "Estereo-zabalera"
+
 #: src/main.cpp:61
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
@@ -1128,10 +1233,6 @@ msgstr ""
 #: src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr ""
-
-#: src/tags_plugin_name.cpp:35
-msgid "Delay"
-msgstr "Atzerapena"
 
 #: src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
@@ -1344,9 +1445,6 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 #~ msgid "Dry Level"
 #~ msgstr "Lehortze-maila"
 
-#~ msgid "Wet Level"
-#~ msgstr "Hezetasun-maila"
-
 #~ msgid "Sidechain Source"
 #~ msgstr "Alboko katearen iturburua"
 
@@ -1374,12 +1472,6 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 
 #~ msgid "Low-Pass Filter Mode"
 #~ msgstr "Pasaera baxuko iragazki-modua"
-
-#~ msgid "Left Channel"
-#~ msgstr "Ezkerreko kanala"
-
-#~ msgid "Right Channel"
-#~ msgstr "Eskuineko kanala"
 
 #~ msgid "Impulses"
 #~ msgstr "Bulkadak"
@@ -1429,12 +1521,6 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 #~ msgid "Feed"
 #~ msgstr "Elikatzea"
 
-#~ msgid "Bypass"
-#~ msgstr "Deribazioa"
-
-#~ msgid "Mute"
-#~ msgstr "Mututu"
-
 #, fuzzy
 #~ msgid "Post Filter Beta"
 #~ msgstr "Iragazki-luzera"
@@ -1456,9 +1542,6 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 
 #~ msgid "Frequency 2 Peak"
 #~ msgstr "2. maiztasunaren gailurra"
-
-#~ msgid "F2 Level"
-#~ msgstr "F2 maila"
 
 #~ msgid "Frequency 2 Level"
 #~ msgstr "2. maiztasunaren maila"

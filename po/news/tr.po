@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-16 13:17-0300\n"
+"POT-Creation-Date: 2024-11-20 20:13-0300\n"
 "PO-Revision-Date: 2024-04-28 15:36+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/"
@@ -43,7 +43,7 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Bir ön ayar yükle. Örnek: easyeffects -l music"
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
-#: src/contents/ui/Exciter.qml:90
+#: src/contents/ui/Exciter.qml:90 src/contents/ui/Maximizer.qml:43
 #, fuzzy
 msgid "Controls"
 msgstr "Kazanç Denetleyicisi"
@@ -127,14 +127,16 @@ msgstr "L"
 msgid "Output Gain"
 msgstr "Çıkış Kazancı"
 
-#: src/contents/ui/Autogain.qml:261
+#: src/contents/ui/Autogain.qml:261 src/contents/ui/Maximizer.qml:82
 msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
-#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
-msgid "Using"
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Crystalizer.qml:74
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Gate.qml:914
+#: src/contents/ui/Limiter.qml:496 src/contents/ui/Maximizer.qml:105
+#: src/contents/ui/StereoTools.qml:459
+msgid "Using %1"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:305
@@ -183,7 +185,8 @@ msgstr "Zemin"
 
 #: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
 #: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
-#: src/contents/ui/Limiter.qml:511
+#: src/contents/ui/Limiter.qml:511 src/contents/ui/Maximizer.qml:120
+#: src/contents/ui/StereoTools.qml:474
 #, fuzzy
 msgid "Show Native Window"
 msgstr "Pencereyi Kapat"
@@ -194,8 +197,9 @@ msgid "Listen"
 msgstr "Liste"
 
 #: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
-#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
-#: src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Crystalizer.qml:89 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Gate.qml:964 src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Maximizer.qml:133 src/contents/ui/StereoTools.qml:487
 msgid "Reset"
 msgstr "Sıfırla"
 
@@ -205,6 +209,7 @@ msgstr "Sıkıştırıcı"
 
 #: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
 #: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+#: src/contents/ui/StereoTools.qml:136
 msgid "Mode"
 msgstr "Kip"
 
@@ -252,7 +257,7 @@ msgstr "Atak"
 
 #: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
 #: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
-#: src/contents/ui/Limiter.qml:328
+#: src/contents/ui/Limiter.qml:328 src/contents/ui/Maximizer.qml:51
 msgid "Release"
 msgstr "Bırak"
 
@@ -289,7 +294,7 @@ msgid "Link"
 msgstr "Bağ"
 
 #: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
-#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:306
 msgid "Input Device"
 msgstr "Giriş Aygıtı"
 
@@ -325,10 +330,12 @@ msgid "Side"
 msgstr "Yan"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:224
 msgid "Left"
 msgstr "Sol"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:271
 msgid "Right"
 msgstr "Sağ"
 
@@ -401,16 +408,19 @@ msgstr "24 dB/oct"
 msgid "36 dB/oct"
 msgstr "36 dB/oct"
 
-#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:86
 #: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+#: src/contents/ui/StereoTools.qml:325
 msgid "Output"
 msgstr "Çıkış"
 
 #: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+#: src/contents/ui/StereoTools.qml:408
 msgid "Dry"
 msgstr "Sertlik"
 
 #: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+#: src/contents/ui/StereoTools.qml:426
 #, fuzzy
 msgid "Wet"
 msgstr "Webrtc"
@@ -420,7 +430,7 @@ msgid "Makeup"
 msgstr "Süs"
 
 #: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
-#: src/contents/ui/Gate.qml:590
+#: src/contents/ui/Gate.qml:590 src/contents/ui/Maximizer.qml:81
 #, fuzzy
 msgid "Reduction"
 msgstr "Azalım"
@@ -456,6 +466,15 @@ msgstr "Eğim"
 msgid "Stereo Split"
 msgstr "Stereo Genişliği"
 
+#: src/contents/ui/CrystalizerBand.qml:33 src/contents/ui/StereoTools.qml:237
+#: src/contents/ui/StereoTools.qml:285
+msgid "Mute"
+msgstr "Sessiz"
+
+#: src/contents/ui/CrystalizerBand.qml:45
+msgid "Bypass"
+msgstr "Atla"
+
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
 #, fuzzy
@@ -480,12 +499,12 @@ msgstr ""
 msgid "Description"
 msgstr "Açıklama"
 
-#: src/contents/ui/DelegatePluginsList.qml:57
+#: src/contents/ui/DelegatePluginsList.qml:56
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "Bu model dosyasını kaldır"
 
-#: src/contents/ui/DelegatePluginsList.qml:70
+#: src/contents/ui/DelegatePluginsList.qml:69
 #, fuzzy
 msgid "Remove this effect"
 msgstr "Bu model dosyasını kaldır"
@@ -505,7 +524,8 @@ msgstr "Etkinleştir"
 msgid "Exclude"
 msgstr "hariç tutuldu"
 
-#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/StereoTools.qml:43
 msgid "Input"
 msgstr "Giriş"
 
@@ -525,7 +545,7 @@ msgstr "Aralık"
 
 #: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
 #: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
-#: src/contents/ui/Limiter.qml:121
+#: src/contents/ui/Limiter.qml:121 src/contents/ui/Maximizer.qml:66
 msgid "Threshold"
 msgstr "Eşik"
 
@@ -804,46 +824,46 @@ msgstr "Eklenti Ekle"
 msgid "Search"
 msgstr "Ara"
 
-#: src/contents/ui/PageStreamsEffects.qml:56
+#: src/contents/ui/PageStreamsEffects.qml:58
 #, fuzzy
 msgid "Empty List"
 msgstr "Boş Duvarlar"
 
-#: src/contents/ui/PageStreamsEffects.qml:57
+#: src/contents/ui/PageStreamsEffects.qml:59
 #, fuzzy
 msgid "No Audio Application Available"
 msgstr "Uygulama Adı"
 
-#: src/contents/ui/PageStreamsEffects.qml:230
+#: src/contents/ui/PageStreamsEffects.qml:256
 #, fuzzy
 msgid "Add Effect"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:280
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:306
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Players"
 msgstr "Oynatıcılar"
 
-#: src/contents/ui/PageStreamsEffects.qml:298
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Recorders"
 msgstr "Kaydediciler"
 
-#: src/contents/ui/PageStreamsEffects.qml:323
+#: src/contents/ui/PageStreamsEffects.qml:349
 #, fuzzy
 msgid "No Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:350
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:422
+#: src/contents/ui/PageStreamsEffects.qml:456
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:472
 #, fuzzy
 msgid "Excluded Apps"
 msgstr "hariç tutuldu"
@@ -1070,6 +1090,82 @@ msgstr "Spektrum Türü"
 msgid "Experimental Features"
 msgstr "Deneysel"
 
+#: src/contents/ui/StereoTools.qml:51
+msgid "Softclip"
+msgstr "Yumuşak kırpım"
+
+#: src/contents/ui/StereoTools.qml:69 src/contents/ui/StereoTools.qml:342
+msgid "Balance"
+msgstr "Denge"
+
+#: src/contents/ui/StereoTools.qml:91
+msgid "S/C Level"
+msgstr "S/C Seviye"
+
+#: src/contents/ui/StereoTools.qml:118
+msgid "Stereo Matrix"
+msgstr "Stereo Matris"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > LR (Stereo Default)"
+msgstr "LR > LR (Stereo Öntanımlı)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > MS (Stereo to Mid-Side)"
+msgstr "LR > MS (Stereo Orta Tarafa)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "MS > LR (Mid-Side to Stereo)"
+msgstr "MS > LR (Orta Taraftan Stereo)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > LL (Mono Left Channel)"
+msgstr "LR > LL (Mono Sol Kanal)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > RR (Mono Right Channel)"
+msgstr "LR > RR (Mono Sağ Kanal)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > L+R (Mono Sum L+R)"
+msgstr "LR > L+R (Mono İşlem L+R)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > RL (Stereo Flip Channels)"
+msgstr "LR > RL (Stereo Kanalları Ters Çevir)"
+
+#: src/contents/ui/StereoTools.qml:149
+msgid "Side Level"
+msgstr "Seviye Tarafı"
+
+#: src/contents/ui/StereoTools.qml:167
+msgid "Side Balance"
+msgstr "Denge Tarafı"
+
+#: src/contents/ui/StereoTools.qml:183
+msgid "Middle Level"
+msgstr "Orta Seviye"
+
+#: src/contents/ui/StereoTools.qml:201
+msgid "Middle Panorama"
+msgstr "Orta Panorama"
+
+#: src/contents/ui/StereoTools.qml:255 src/contents/ui/StereoTools.qml:303
+msgid "Invert Phase"
+msgstr "Ters Faz"
+
+#: src/contents/ui/StereoTools.qml:358 src/tags_plugin_name.cpp:35
+msgid "Delay"
+msgstr "Gecikme"
+
+#: src/contents/ui/StereoTools.qml:375
+msgid "Stereo Base"
+msgstr "Stereo Taban"
+
+#: src/contents/ui/StereoTools.qml:391
+msgid "Stereo Phase"
+msgstr "Stereo Faz"
+
 #: src/main.cpp:61
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire uygulamaları için ses efektleri"
@@ -1165,10 +1261,6 @@ msgstr ""
 #: src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "Deesser"
-
-#: src/tags_plugin_name.cpp:35
-msgid "Delay"
-msgstr "Gecikme"
 
 #: src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
@@ -1809,12 +1901,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Feed"
 #~ msgstr "Akış"
-
-#~ msgid "Bypass"
-#~ msgstr "Atla"
-
-#~ msgid "Mute"
-#~ msgstr "Sessiz"
 
 #~ msgid "Detection"
 #~ msgstr "Keşif"
@@ -2505,69 +2591,18 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "Quit EasyEffects"
 #~ msgstr "EasyEffects'ten Çık"
 
-#~ msgid "Balance"
-#~ msgstr "Denge"
-
 #~ msgid "Input Balance"
 #~ msgstr "Giriş Dengesi"
-
-#~ msgid "Softclip"
-#~ msgstr "Yumuşak kırpım"
 
 #, fuzzy
 #~ msgid "Softclip Level"
 #~ msgstr "Yumuşak kırpım"
-
-#~ msgid "Stereo Matrix"
-#~ msgstr "Stereo Matris"
-
-#~ msgid "LR > LR (Stereo Default)"
-#~ msgstr "LR > LR (Stereo Öntanımlı)"
-
-#~ msgid "LR > MS (Stereo to Mid-Side)"
-#~ msgstr "LR > MS (Stereo Orta Tarafa)"
-
-#~ msgid "MS > LR (Mid-Side to Stereo)"
-#~ msgstr "MS > LR (Orta Taraftan Stereo)"
-
-#~ msgid "LR > LL (Mono Left Channel)"
-#~ msgstr "LR > LL (Mono Sol Kanal)"
-
-#~ msgid "LR > RR (Mono Right Channel)"
-#~ msgstr "LR > RR (Mono Sağ Kanal)"
-
-#~ msgid "LR > L+R (Mono Sum L+R)"
-#~ msgstr "LR > L+R (Mono İşlem L+R)"
-
-#~ msgid "LR > RL (Stereo Flip Channels)"
-#~ msgstr "LR > RL (Stereo Kanalları Ters Çevir)"
-
-#~ msgid "Invert Phase"
-#~ msgstr "Ters Faz"
-
-#~ msgid "Side Level"
-#~ msgstr "Seviye Tarafı"
-
-#~ msgid "Side Balance"
-#~ msgstr "Denge Tarafı"
-
-#~ msgid "Middle Level"
-#~ msgstr "Orta Seviye"
-
-#~ msgid "Middle Panorama"
-#~ msgstr "Orta Panorama"
 
 #~ msgid "Output Balance"
 #~ msgstr "Çıkış Dengesi"
 
 #~ msgid "Delay L/R"
 #~ msgstr "Gecikme L/R"
-
-#~ msgid "Stereo Base"
-#~ msgstr "Stereo Taban"
-
-#~ msgid "Stereo Phase"
-#~ msgstr "Stereo Faz"
 
 #~ msgid "Output Presets: "
 #~ msgstr "Çıkış Ön Ayarları: "
@@ -2816,9 +2851,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "x4"
 #~ msgstr "x4"
-
-#~ msgid "S/C Level"
-#~ msgstr "S/C Seviye"
 
 #~ msgid "Import Impulse Response File"
 #~ msgstr "Dürtü Yanıt Dosyasını İçeri Aktar"

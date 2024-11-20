@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-16 13:17-0300\n"
+"POT-Creation-Date: 2024-11-20 20:13-0300\n"
 "PO-Revision-Date: 2024-06-26 21:09+0000\n"
 "Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -42,7 +42,7 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
-#: src/contents/ui/Exciter.qml:90
+#: src/contents/ui/Exciter.qml:90 src/contents/ui/Maximizer.qml:43
 msgid "Controls"
 msgstr "ضوابط"
 
@@ -118,14 +118,16 @@ msgstr ""
 msgid "Output Gain"
 msgstr "خرج التضخيم"
 
-#: src/contents/ui/Autogain.qml:261
+#: src/contents/ui/Autogain.qml:261 src/contents/ui/Maximizer.qml:82
 msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
-#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
-msgid "Using"
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Crystalizer.qml:74
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Gate.qml:914
+#: src/contents/ui/Limiter.qml:496 src/contents/ui/Maximizer.qml:105
+#: src/contents/ui/StereoTools.qml:459
+msgid "Using %1"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:305
@@ -173,7 +175,8 @@ msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
 #: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
-#: src/contents/ui/Limiter.qml:511
+#: src/contents/ui/Limiter.qml:511 src/contents/ui/Maximizer.qml:120
+#: src/contents/ui/StereoTools.qml:474
 msgid "Show Native Window"
 msgstr ""
 
@@ -183,8 +186,9 @@ msgid "Listen"
 msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
-#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
-#: src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Crystalizer.qml:89 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Gate.qml:964 src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Maximizer.qml:133 src/contents/ui/StereoTools.qml:487
 msgid "Reset"
 msgstr "إعادة تعيين"
 
@@ -194,6 +198,7 @@ msgstr "الضاغط الصوتي"
 
 #: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
 #: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+#: src/contents/ui/StereoTools.qml:136
 msgid "Mode"
 msgstr ""
 
@@ -237,7 +242,7 @@ msgstr ""
 
 #: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
 #: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
-#: src/contents/ui/Limiter.qml:328
+#: src/contents/ui/Limiter.qml:328 src/contents/ui/Maximizer.qml:51
 msgid "Release"
 msgstr ""
 
@@ -272,7 +277,7 @@ msgid "Link"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
-#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:306
 msgid "Input Device"
 msgstr "جهاز الدخل"
 
@@ -307,10 +312,12 @@ msgid "Side"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:224
 msgid "Left"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:271
 #, fuzzy
 msgid "Right"
 msgstr "التضخيم الأيمن"
@@ -379,16 +386,19 @@ msgstr ""
 msgid "36 dB/oct"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:86
 #: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+#: src/contents/ui/StereoTools.qml:325
 msgid "Output"
 msgstr "الخرج"
 
 #: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+#: src/contents/ui/StereoTools.qml:408
 msgid "Dry"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+#: src/contents/ui/StereoTools.qml:426
 msgid "Wet"
 msgstr ""
 
@@ -397,7 +407,7 @@ msgid "Makeup"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
-#: src/contents/ui/Gate.qml:590
+#: src/contents/ui/Gate.qml:590 src/contents/ui/Maximizer.qml:81
 msgid "Reduction"
 msgstr ""
 
@@ -429,6 +439,16 @@ msgstr ""
 msgid "Stereo Split"
 msgstr ""
 
+#: src/contents/ui/CrystalizerBand.qml:33 src/contents/ui/StereoTools.qml:237
+#: src/contents/ui/StereoTools.qml:285
+msgid "Mute"
+msgstr ""
+
+#: src/contents/ui/CrystalizerBand.qml:45
+#, fuzzy
+msgid "Bypass"
+msgstr "تجاهل المؤثرات العامة"
+
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
 msgid "Id"
@@ -452,12 +472,12 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: src/contents/ui/DelegatePluginsList.qml:57
+#: src/contents/ui/DelegatePluginsList.qml:56
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "حول Easy Effects"
 
-#: src/contents/ui/DelegatePluginsList.qml:70
+#: src/contents/ui/DelegatePluginsList.qml:69
 #, fuzzy
 msgid "Remove this effect"
 msgstr "احذف مِلَفّ الإعداد المسبق هذا"
@@ -475,7 +495,8 @@ msgstr "مكن"
 msgid "Exclude"
 msgstr "استثني"
 
-#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/StereoTools.qml:43
 msgid "Input"
 msgstr "الدخل"
 
@@ -494,7 +515,7 @@ msgstr ""
 
 #: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
 #: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
-#: src/contents/ui/Limiter.qml:121
+#: src/contents/ui/Limiter.qml:121 src/contents/ui/Maximizer.qml:66
 msgid "Threshold"
 msgstr ""
 
@@ -764,43 +785,43 @@ msgstr ""
 msgid "Search"
 msgstr "بحث"
 
-#: src/contents/ui/PageStreamsEffects.qml:56
+#: src/contents/ui/PageStreamsEffects.qml:58
 #, fuzzy
 msgid "Empty List"
 msgstr "القائمة فارغة"
 
-#: src/contents/ui/PageStreamsEffects.qml:57
+#: src/contents/ui/PageStreamsEffects.qml:59
 msgid "No Audio Application Available"
 msgstr "لم يعثر على تطبيق صوتي متاح"
 
-#: src/contents/ui/PageStreamsEffects.qml:230
+#: src/contents/ui/PageStreamsEffects.qml:256
 msgid "Add Effect"
 msgstr "أضف مؤثر"
 
-#: src/contents/ui/PageStreamsEffects.qml:280
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:306
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:298
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:323
+#: src/contents/ui/PageStreamsEffects.qml:349
 msgid "No Effects"
 msgstr "بدون مؤثرات"
 
-#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:350
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:422
+#: src/contents/ui/PageStreamsEffects.qml:456
 #, fuzzy
 msgid "Effects"
 msgstr "بدون مؤثرات"
 
-#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:472
 msgid "Excluded Apps"
 msgstr "التطبيقات المستثناة"
 
@@ -1018,6 +1039,84 @@ msgstr ""
 msgid "Experimental Features"
 msgstr ""
 
+#: src/contents/ui/StereoTools.qml:51
+msgid "Softclip"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:69 src/contents/ui/StereoTools.qml:342
+msgid "Balance"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:91
+msgid "S/C Level"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:118
+msgid "Stereo Matrix"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > LR (Stereo Default)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > MS (Stereo to Mid-Side)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "MS > LR (Mid-Side to Stereo)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:140
+#, fuzzy
+msgid "LR > LL (Mono Left Channel)"
+msgstr "القناة اليسرى"
+
+#: src/contents/ui/StereoTools.qml:140
+#, fuzzy
+msgid "LR > RR (Mono Right Channel)"
+msgstr "القناة اليمنى"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > L+R (Mono Sum L+R)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > RL (Stereo Flip Channels)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:149
+msgid "Side Level"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:167
+msgid "Side Balance"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:183
+msgid "Middle Level"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:201
+msgid "Middle Panorama"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:255 src/contents/ui/StereoTools.qml:303
+msgid "Invert Phase"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:358 src/tags_plugin_name.cpp:35
+msgid "Delay"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:375
+msgid "Stereo Base"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:391
+msgid "Stereo Phase"
+msgstr ""
+
 #: src/main.cpp:61
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
@@ -1109,10 +1208,6 @@ msgstr ""
 
 #: src/tags_plugin_name.cpp:34
 msgid "Deesser"
-msgstr ""
-
-#: src/tags_plugin_name.cpp:35
-msgid "Delay"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:36
@@ -1244,9 +1339,6 @@ msgstr "تأثيرات صوتية لتطبيقات PipeWire"
 #~ msgid "Enable/disable the global bypass"
 #~ msgstr "فعل/عطل تجاهل المؤثرات عمومًا"
 
-#~ msgid "Global Bypass"
-#~ msgstr "تجاهل المؤثرات العامة"
-
 #~ msgid "Primary Menu"
 #~ msgstr "القائمة الأساسية"
 
@@ -1279,12 +1371,6 @@ msgstr "تأثيرات صوتية لتطبيقات PipeWire"
 
 #~ msgid "Show Excluded Applications"
 #~ msgstr "أظهر التطبيقات المستثناة"
-
-#~ msgid "Left Channel"
-#~ msgstr "القناة اليسرى"
-
-#~ msgid "Right Channel"
-#~ msgstr "القناة اليمنى"
 
 #~ msgid "Output File Name"
 #~ msgstr "اسم مِلف الخرج"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-16 13:17-0300\n"
+"POT-Creation-Date: 2024-11-20 20:13-0300\n"
 "PO-Revision-Date: 2024-04-02 18:06+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
@@ -44,7 +44,7 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Загрузить предустановку. Пример: easyeffects -l music"
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
-#: src/contents/ui/Exciter.qml:90
+#: src/contents/ui/Exciter.qml:90 src/contents/ui/Maximizer.qml:43
 #, fuzzy
 msgid "Controls"
 msgstr "Автоконтроль усиления (AGC)"
@@ -127,14 +127,17 @@ msgstr "Л"
 msgid "Output Gain"
 msgstr "Усиление выхода"
 
-#: src/contents/ui/Autogain.qml:261
+#: src/contents/ui/Autogain.qml:261 src/contents/ui/Maximizer.qml:82
 msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
-#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
-msgid "Using"
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Crystalizer.qml:74
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Gate.qml:914
+#: src/contents/ui/Limiter.qml:496 src/contents/ui/Maximizer.qml:105
+#: src/contents/ui/StereoTools.qml:459
+#, fuzzy
+msgid "Using %1"
 msgstr "Используется"
 
 # #, fuzzy
@@ -184,7 +187,8 @@ msgstr "Нижний порог"
 
 #: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
 #: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
-#: src/contents/ui/Limiter.qml:511
+#: src/contents/ui/Limiter.qml:511 src/contents/ui/Maximizer.qml:120
+#: src/contents/ui/StereoTools.qml:474
 #, fuzzy
 msgid "Show Native Window"
 msgstr "Закрыть окно"
@@ -195,8 +199,9 @@ msgid "Listen"
 msgstr "Прослушать"
 
 #: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
-#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
-#: src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Crystalizer.qml:89 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Gate.qml:964 src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Maximizer.qml:133 src/contents/ui/StereoTools.qml:487
 msgid "Reset"
 msgstr "Сброс"
 
@@ -206,6 +211,7 @@ msgstr "Компрессор"
 
 #: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
 #: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+#: src/contents/ui/StereoTools.qml:136
 msgid "Mode"
 msgstr "Режим"
 
@@ -250,7 +256,7 @@ msgstr "Атака"
 
 #: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
 #: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
-#: src/contents/ui/Limiter.qml:328
+#: src/contents/ui/Limiter.qml:328 src/contents/ui/Maximizer.qml:51
 msgid "Release"
 msgstr "Восстановление"
 
@@ -288,7 +294,7 @@ msgstr "Указатель"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
-#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:306
 msgid "Input Device"
 msgstr "Устройство ввода"
 
@@ -326,10 +332,12 @@ msgid "Side"
 msgstr "Боковой"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:224
 msgid "Left"
 msgstr "Левый"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:271
 msgid "Right"
 msgstr "Правый"
 
@@ -404,16 +412,19 @@ msgstr "24 Дб/окт"
 msgid "36 dB/oct"
 msgstr "36 Дб/окт"
 
-#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:86
 #: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+#: src/contents/ui/StereoTools.qml:325
 msgid "Output"
 msgstr "Выход"
 
 #: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+#: src/contents/ui/StereoTools.qml:408
 msgid "Dry"
 msgstr "Влажность"
 
 #: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+#: src/contents/ui/StereoTools.qml:426
 #, fuzzy
 msgid "Wet"
 msgstr "Вес в расчете громкости"
@@ -423,7 +434,7 @@ msgid "Makeup"
 msgstr "Усиление вверх"
 
 #: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
-#: src/contents/ui/Gate.qml:590
+#: src/contents/ui/Gate.qml:590 src/contents/ui/Maximizer.qml:81
 msgid "Reduction"
 msgstr "Ослабление"
 
@@ -458,6 +469,15 @@ msgstr "Огибающая полосы"
 msgid "Stereo Split"
 msgstr "Ширина стерео"
 
+#: src/contents/ui/CrystalizerBand.qml:33 src/contents/ui/StereoTools.qml:237
+#: src/contents/ui/StereoTools.qml:285
+msgid "Mute"
+msgstr "Приглушить"
+
+#: src/contents/ui/CrystalizerBand.qml:45
+msgid "Bypass"
+msgstr "Обход"
+
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
 msgid "Id"
@@ -481,12 +501,12 @@ msgstr "Доступ"
 msgid "Description"
 msgstr "Описание"
 
-#: src/contents/ui/DelegatePluginsList.qml:57
+#: src/contents/ui/DelegatePluginsList.qml:56
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "Удалить этот файл модели"
 
-#: src/contents/ui/DelegatePluginsList.qml:70
+#: src/contents/ui/DelegatePluginsList.qml:69
 #, fuzzy
 msgid "Remove this effect"
 msgstr "Удалить этот файл модели"
@@ -514,7 +534,8 @@ msgstr "Исключить"
 # msgid "Influence of integrated measurements"
 # msgstr "Влияние комплексных измерений"
 # ###############################################
-#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/StereoTools.qml:43
 msgid "Input"
 msgstr "Вход"
 
@@ -534,7 +555,7 @@ msgstr "Шумовые ворота (гейт)"
 
 #: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
 #: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
-#: src/contents/ui/Limiter.qml:121
+#: src/contents/ui/Limiter.qml:121 src/contents/ui/Maximizer.qml:66
 msgid "Threshold"
 msgstr "Порог срабатывания"
 
@@ -818,42 +839,42 @@ msgstr "Добавить плагин"
 msgid "Search"
 msgstr "Поиск"
 
-#: src/contents/ui/PageStreamsEffects.qml:56
+#: src/contents/ui/PageStreamsEffects.qml:58
 #, fuzzy
 msgid "Empty List"
 msgstr "Пустые стены"
 
-#: src/contents/ui/PageStreamsEffects.qml:57
+#: src/contents/ui/PageStreamsEffects.qml:59
 msgid "No Audio Application Available"
 msgstr "Нет доступных приложений аудио"
 
-#: src/contents/ui/PageStreamsEffects.qml:230
+#: src/contents/ui/PageStreamsEffects.qml:256
 msgid "Add Effect"
 msgstr "Добавить эффект"
 
-#: src/contents/ui/PageStreamsEffects.qml:280
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:306
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Players"
 msgstr "Проигрыватели"
 
-#: src/contents/ui/PageStreamsEffects.qml:298
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Recorders"
 msgstr "Рекордеры"
 
-#: src/contents/ui/PageStreamsEffects.qml:323
+#: src/contents/ui/PageStreamsEffects.qml:349
 msgid "No Effects"
 msgstr "Без эффектов"
 
-#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:350
 msgid "Audio Stream Not Modified"
 msgstr "Аудиопоток не изменён"
 
-#: src/contents/ui/PageStreamsEffects.qml:422
+#: src/contents/ui/PageStreamsEffects.qml:456
 msgid "Effects"
 msgstr "Эффекты"
 
-#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:472
 msgid "Excluded Apps"
 msgstr "Приложения чёрного списка"
 
@@ -1074,6 +1095,82 @@ msgstr "Тип спектра"
 msgid "Experimental Features"
 msgstr "Экспериментальный"
 
+#: src/contents/ui/StereoTools.qml:51
+msgid "Softclip"
+msgstr "Софтклиппер"
+
+#: src/contents/ui/StereoTools.qml:69 src/contents/ui/StereoTools.qml:342
+msgid "Balance"
+msgstr "Баланс"
+
+#: src/contents/ui/StereoTools.qml:91
+msgid "S/C Level"
+msgstr "Уровень Раздельный/Центр"
+
+#: src/contents/ui/StereoTools.qml:118
+msgid "Stereo Matrix"
+msgstr "Матрица стерео"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > LR (Stereo Default)"
+msgstr "ЛП > ЛП (стерео по умолчанию)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > MS (Stereo to Mid-Side)"
+msgstr "Стерео > Моно-Раздельно"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "MS > LR (Mid-Side to Stereo)"
+msgstr "Моно-Раздельно > Стерео"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > LL (Mono Left Channel)"
+msgstr "Стерео > Моно левый канал"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > RR (Mono Right Channel)"
+msgstr "Стерео > Моно правый канал"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > L+R (Mono Sum L+R)"
+msgstr "Стерео > Моно левый+правый каналы"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > RL (Stereo Flip Channels)"
+msgstr "Стерео > Поменять каналы местами"
+
+#: src/contents/ui/StereoTools.qml:149
+msgid "Side Level"
+msgstr "Боковой уровень"
+
+#: src/contents/ui/StereoTools.qml:167
+msgid "Side Balance"
+msgstr "Боковой баланс"
+
+#: src/contents/ui/StereoTools.qml:183
+msgid "Middle Level"
+msgstr "Средний уровень"
+
+#: src/contents/ui/StereoTools.qml:201
+msgid "Middle Panorama"
+msgstr "Срединная панорама"
+
+#: src/contents/ui/StereoTools.qml:255 src/contents/ui/StereoTools.qml:303
+msgid "Invert Phase"
+msgstr "Инвертировать фазу"
+
+#: src/contents/ui/StereoTools.qml:358 src/tags_plugin_name.cpp:35
+msgid "Delay"
+msgstr "Задержка"
+
+#: src/contents/ui/StereoTools.qml:375
+msgid "Stereo Base"
+msgstr "Стерео база"
+
+#: src/contents/ui/StereoTools.qml:391
+msgid "Stereo Phase"
+msgstr "Стерео фаза"
+
 #: src/main.cpp:61
 msgid "Audio effects for PipeWire applications"
 msgstr "Звуковые эффекты для приложений PipeWire"
@@ -1170,10 +1267,6 @@ msgstr ""
 #: src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "Антишипение (деэссер)"
-
-#: src/tags_plugin_name.cpp:35
-msgid "Delay"
-msgstr "Задержка"
 
 #: src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
@@ -2786,12 +2879,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #~ msgid "Feed"
 #~ msgstr "Подача"
 
-#~ msgid "Bypass"
-#~ msgstr "Обход"
-
-#~ msgid "Mute"
-#~ msgstr "Приглушить"
-
 #~ msgid "Detection"
 #~ msgstr "Определение"
 
@@ -3586,68 +3673,17 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #~ msgid "Quit EasyEffects"
 #~ msgstr "Выход из EasyEffects"
 
-#~ msgid "Balance"
-#~ msgstr "Баланс"
-
 #~ msgid "Input Balance"
 #~ msgstr "Баланс входа"
 
-#~ msgid "Softclip"
-#~ msgstr "Софтклиппер"
-
 #~ msgid "Softclip Level"
 #~ msgstr "Уровень софтклипа"
-
-#~ msgid "Stereo Matrix"
-#~ msgstr "Матрица стерео"
-
-#~ msgid "LR > LR (Stereo Default)"
-#~ msgstr "ЛП > ЛП (стерео по умолчанию)"
-
-#~ msgid "LR > MS (Stereo to Mid-Side)"
-#~ msgstr "Стерео > Моно-Раздельно"
-
-#~ msgid "MS > LR (Mid-Side to Stereo)"
-#~ msgstr "Моно-Раздельно > Стерео"
-
-#~ msgid "LR > LL (Mono Left Channel)"
-#~ msgstr "Стерео > Моно левый канал"
-
-#~ msgid "LR > RR (Mono Right Channel)"
-#~ msgstr "Стерео > Моно правый канал"
-
-#~ msgid "LR > L+R (Mono Sum L+R)"
-#~ msgstr "Стерео > Моно левый+правый каналы"
-
-#~ msgid "LR > RL (Stereo Flip Channels)"
-#~ msgstr "Стерео > Поменять каналы местами"
-
-#~ msgid "Invert Phase"
-#~ msgstr "Инвертировать фазу"
-
-#~ msgid "Side Level"
-#~ msgstr "Боковой уровень"
-
-#~ msgid "Side Balance"
-#~ msgstr "Боковой баланс"
-
-#~ msgid "Middle Level"
-#~ msgstr "Средний уровень"
-
-#~ msgid "Middle Panorama"
-#~ msgstr "Срединная панорама"
 
 #~ msgid "Output Balance"
 #~ msgstr "Баланс выхода"
 
 #~ msgid "Delay L/R"
 #~ msgstr "Задержка Л/П"
-
-#~ msgid "Stereo Base"
-#~ msgstr "Стерео база"
-
-#~ msgid "Stereo Phase"
-#~ msgstr "Стерео фаза"
 
 #~ msgid "Output Presets: "
 #~ msgstr "Предустановки выхода: "
@@ -3818,9 +3854,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 #, fuzzy
 #~ msgid "Maximum Gain Reduction"
 #~ msgstr "Увеличение ослабления"
-
-#~ msgid "S/C Level"
-#~ msgstr "Уровень Раздельный/Центр"
 
 #~ msgid "Phase Correlation"
 #~ msgstr "Корреляция фазы"

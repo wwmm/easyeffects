@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-16 13:17-0300\n"
+"POT-Creation-Date: 2024-11-20 20:13-0300\n"
 "PO-Revision-Date: 2023-03-23 03:22+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -43,7 +43,7 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "プリセットを読み込む。例: easyeffects -l music"
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
-#: src/contents/ui/Exciter.qml:90
+#: src/contents/ui/Exciter.qml:90 src/contents/ui/Maximizer.qml:43
 msgid "Controls"
 msgstr ""
 
@@ -120,14 +120,17 @@ msgstr "L"
 msgid "Output Gain"
 msgstr "出力ゲイン"
 
-#: src/contents/ui/Autogain.qml:261
+#: src/contents/ui/Autogain.qml:261 src/contents/ui/Maximizer.qml:82
 msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
-#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
-msgid "Using"
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Crystalizer.qml:74
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Gate.qml:914
+#: src/contents/ui/Limiter.qml:496 src/contents/ui/Maximizer.qml:105
+#: src/contents/ui/StereoTools.qml:459
+#, fuzzy
+msgid "Using %1"
 msgstr "使用中"
 
 #: src/contents/ui/Autogain.qml:305
@@ -176,7 +179,8 @@ msgstr "フロア"
 
 #: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
 #: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
-#: src/contents/ui/Limiter.qml:511
+#: src/contents/ui/Limiter.qml:511 src/contents/ui/Maximizer.qml:120
+#: src/contents/ui/StereoTools.qml:474
 #, fuzzy
 msgid "Show Native Window"
 msgstr "ウィンドウを閉じる"
@@ -187,8 +191,9 @@ msgid "Listen"
 msgstr "聞く"
 
 #: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
-#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
-#: src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Crystalizer.qml:89 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Gate.qml:964 src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Maximizer.qml:133 src/contents/ui/StereoTools.qml:487
 msgid "Reset"
 msgstr "リセット"
 
@@ -198,6 +203,7 @@ msgstr "コンプレッサー"
 
 #: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
 #: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+#: src/contents/ui/StereoTools.qml:136
 msgid "Mode"
 msgstr "モード"
 
@@ -242,7 +248,7 @@ msgstr "アタック"
 
 #: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
 #: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
-#: src/contents/ui/Limiter.qml:328
+#: src/contents/ui/Limiter.qml:328 src/contents/ui/Maximizer.qml:51
 msgid "Release"
 msgstr "リリース"
 
@@ -278,7 +284,7 @@ msgid "Link"
 msgstr "リンク"
 
 #: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
-#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:306
 msgid "Input Device"
 msgstr "入力デバイス"
 
@@ -314,10 +320,12 @@ msgid "Side"
 msgstr "サイド"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:224
 msgid "Left"
 msgstr "左"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:271
 msgid "Right"
 msgstr "右"
 
@@ -391,16 +399,19 @@ msgstr "24 dB/oct"
 msgid "36 dB/oct"
 msgstr "36 dB/oct"
 
-#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:86
 #: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+#: src/contents/ui/StereoTools.qml:325
 msgid "Output"
 msgstr "出力"
 
 #: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+#: src/contents/ui/StereoTools.qml:408
 msgid "Dry"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+#: src/contents/ui/StereoTools.qml:426
 msgid "Wet"
 msgstr ""
 
@@ -409,7 +420,7 @@ msgid "Makeup"
 msgstr "メイクアップ"
 
 #: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
-#: src/contents/ui/Gate.qml:590
+#: src/contents/ui/Gate.qml:590 src/contents/ui/Maximizer.qml:81
 msgid "Reduction"
 msgstr "減少"
 
@@ -444,6 +455,15 @@ msgstr "バンドエンベロープ"
 msgid "Stereo Split"
 msgstr "ステレオ幅"
 
+#: src/contents/ui/CrystalizerBand.qml:33 src/contents/ui/StereoTools.qml:237
+#: src/contents/ui/StereoTools.qml:285
+msgid "Mute"
+msgstr "ミュート"
+
+#: src/contents/ui/CrystalizerBand.qml:45
+msgid "Bypass"
+msgstr "バイパス"
+
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
 #, fuzzy
@@ -468,12 +488,12 @@ msgstr "アクセス"
 msgid "Description"
 msgstr "説明"
 
-#: src/contents/ui/DelegatePluginsList.qml:57
+#: src/contents/ui/DelegatePluginsList.qml:56
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "このエフェクトの有効化/無効化"
 
-#: src/contents/ui/DelegatePluginsList.qml:70
+#: src/contents/ui/DelegatePluginsList.qml:69
 msgid "Remove this effect"
 msgstr "このエフェクトを削除"
 
@@ -490,7 +510,8 @@ msgstr "有効"
 msgid "Exclude"
 msgstr "除外"
 
-#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/StereoTools.qml:43
 msgid "Input"
 msgstr "入力"
 
@@ -509,7 +530,7 @@ msgstr "ゲート"
 
 #: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
 #: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
-#: src/contents/ui/Limiter.qml:121
+#: src/contents/ui/Limiter.qml:121 src/contents/ui/Maximizer.qml:66
 msgid "Threshold"
 msgstr "しきい値"
 
@@ -790,42 +811,42 @@ msgstr "プラグインを追加"
 msgid "Search"
 msgstr "検索"
 
-#: src/contents/ui/PageStreamsEffects.qml:56
+#: src/contents/ui/PageStreamsEffects.qml:58
 #, fuzzy
 msgid "Empty List"
 msgstr "何もない壁"
 
-#: src/contents/ui/PageStreamsEffects.qml:57
+#: src/contents/ui/PageStreamsEffects.qml:59
 msgid "No Audio Application Available"
 msgstr "オーディオアプリケーションがありません"
 
-#: src/contents/ui/PageStreamsEffects.qml:230
+#: src/contents/ui/PageStreamsEffects.qml:256
 msgid "Add Effect"
 msgstr "エフェクトの追加"
 
-#: src/contents/ui/PageStreamsEffects.qml:280
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:306
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Players"
 msgstr "プレイヤー"
 
-#: src/contents/ui/PageStreamsEffects.qml:298
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/contents/ui/PageStreamsEffects.qml:323
+#: src/contents/ui/PageStreamsEffects.qml:349
 msgid "No Effects"
 msgstr "エフェクトなし"
 
-#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:350
 msgid "Audio Stream Not Modified"
 msgstr "オーディオストリームは変更されていません"
 
-#: src/contents/ui/PageStreamsEffects.qml:422
+#: src/contents/ui/PageStreamsEffects.qml:456
 msgid "Effects"
 msgstr "エフェクト"
 
-#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:472
 msgid "Excluded Apps"
 msgstr "除外されたアプリ"
 
@@ -1049,6 +1070,83 @@ msgstr "スペクトラム"
 msgid "Experimental Features"
 msgstr "実験的"
 
+#: src/contents/ui/StereoTools.qml:51
+msgid "Softclip"
+msgstr "ソフトクリップ"
+
+#: src/contents/ui/StereoTools.qml:69 src/contents/ui/StereoTools.qml:342
+msgid "Balance"
+msgstr "バランス"
+
+#: src/contents/ui/StereoTools.qml:91
+#, fuzzy
+msgid "S/C Level"
+msgstr "サイドレベル"
+
+#: src/contents/ui/StereoTools.qml:118
+msgid "Stereo Matrix"
+msgstr "ステレオマトリックス"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > LR (Stereo Default)"
+msgstr "LR > LR (ステレオデフォルト)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > MS (Stereo to Mid-Side)"
+msgstr "LR > MS (ステレオからミッドサイド)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "MS > LR (Mid-Side to Stereo)"
+msgstr "MS > LR (ミッドサイドからステレオ)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > LL (Mono Left Channel)"
+msgstr "LR > LL (モノラル左チャンネル)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > RR (Mono Right Channel)"
+msgstr "LR > RR (モノラル右チャンネル)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > L+R (Mono Sum L+R)"
+msgstr "LR > L+R (モノラル合計 L+R)"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > RL (Stereo Flip Channels)"
+msgstr "LR > RL (ステレオチャンネル反転)"
+
+#: src/contents/ui/StereoTools.qml:149
+msgid "Side Level"
+msgstr "サイドレベル"
+
+#: src/contents/ui/StereoTools.qml:167
+msgid "Side Balance"
+msgstr "サイドバランス"
+
+#: src/contents/ui/StereoTools.qml:183
+msgid "Middle Level"
+msgstr "中間レベル"
+
+#: src/contents/ui/StereoTools.qml:201
+msgid "Middle Panorama"
+msgstr "中間パノラマ"
+
+#: src/contents/ui/StereoTools.qml:255 src/contents/ui/StereoTools.qml:303
+msgid "Invert Phase"
+msgstr "位相反転"
+
+#: src/contents/ui/StereoTools.qml:358 src/tags_plugin_name.cpp:35
+msgid "Delay"
+msgstr "ディレイ"
+
+#: src/contents/ui/StereoTools.qml:375
+msgid "Stereo Base"
+msgstr "ステレオベース"
+
+#: src/contents/ui/StereoTools.qml:391
+msgid "Stereo Phase"
+msgstr "ステレオ位相"
+
 #: src/main.cpp:61
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire アプリケーション用オーディオエフェクト"
@@ -1143,10 +1241,6 @@ msgstr ""
 #: src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "ディエッサー"
-
-#: src/tags_plugin_name.cpp:35
-msgid "Delay"
-msgstr "ディレイ"
 
 #: src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
@@ -2467,12 +2561,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Feed"
 #~ msgstr "フィード"
 
-#~ msgid "Bypass"
-#~ msgstr "バイパス"
-
-#~ msgid "Mute"
-#~ msgstr "ミュート"
-
 #~ msgid "Detection"
 #~ msgstr "検出"
 
@@ -3253,68 +3341,17 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgid "Quit EasyEffects"
 #~ msgstr "EasyEffects を終了"
 
-#~ msgid "Balance"
-#~ msgstr "バランス"
-
 #~ msgid "Input Balance"
 #~ msgstr "入力バランス"
 
-#~ msgid "Softclip"
-#~ msgstr "ソフトクリップ"
-
 #~ msgid "Softclip Level"
 #~ msgstr "ソフトクリップレベル"
-
-#~ msgid "Stereo Matrix"
-#~ msgstr "ステレオマトリックス"
-
-#~ msgid "LR > LR (Stereo Default)"
-#~ msgstr "LR > LR (ステレオデフォルト)"
-
-#~ msgid "LR > MS (Stereo to Mid-Side)"
-#~ msgstr "LR > MS (ステレオからミッドサイド)"
-
-#~ msgid "MS > LR (Mid-Side to Stereo)"
-#~ msgstr "MS > LR (ミッドサイドからステレオ)"
-
-#~ msgid "LR > LL (Mono Left Channel)"
-#~ msgstr "LR > LL (モノラル左チャンネル)"
-
-#~ msgid "LR > RR (Mono Right Channel)"
-#~ msgstr "LR > RR (モノラル右チャンネル)"
-
-#~ msgid "LR > L+R (Mono Sum L+R)"
-#~ msgstr "LR > L+R (モノラル合計 L+R)"
-
-#~ msgid "LR > RL (Stereo Flip Channels)"
-#~ msgstr "LR > RL (ステレオチャンネル反転)"
-
-#~ msgid "Invert Phase"
-#~ msgstr "位相反転"
-
-#~ msgid "Side Level"
-#~ msgstr "サイドレベル"
-
-#~ msgid "Side Balance"
-#~ msgstr "サイドバランス"
-
-#~ msgid "Middle Level"
-#~ msgstr "中間レベル"
-
-#~ msgid "Middle Panorama"
-#~ msgstr "中間パノラマ"
 
 #~ msgid "Output Balance"
 #~ msgstr "出力バランス"
 
 #~ msgid "Delay L/R"
 #~ msgstr "ディレイ L/R"
-
-#~ msgid "Stereo Base"
-#~ msgstr "ステレオベース"
-
-#~ msgid "Stereo Phase"
-#~ msgstr "ステレオ位相"
 
 #~ msgid "Output Presets: "
 #~ msgstr "出力プリセット: "

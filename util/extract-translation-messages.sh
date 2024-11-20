@@ -3,6 +3,8 @@
 # https://techbase.kde.org/Development/Tutorials/Localization/i18n_Build_Systems/Outside_KDE_repositories
 # the command extractrc is provided by the pacakge kde-dev-scripts
 
+# https://api.kde.org/frameworks/ki18n/html/prg_guide.html
+
 BASEDIR="../"	# root of translatable sources
 PROJECT="easyeffects"	# project name
 BUGADDR="https://github.com/wwmm/easyeffects/issues"	# MSGID-Bugs

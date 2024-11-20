@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2024-11-16 13:17-0300\n"
+"POT-Creation-Date: 2024-11-20 20:13-0300\n"
 "PO-Revision-Date: 2023-11-25 07:02+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -45,7 +45,7 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Učitaj predložak. Primjer: easyeffects -l music"
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:90
-#: src/contents/ui/Exciter.qml:90
+#: src/contents/ui/Exciter.qml:90 src/contents/ui/Maximizer.qml:43
 msgid "Controls"
 msgstr "Kontrole"
 
@@ -122,14 +122,16 @@ msgstr "L"
 msgid "Output Gain"
 msgstr "Pojačanje izlaza"
 
-#: src/contents/ui/Autogain.qml:261
+#: src/contents/ui/Autogain.qml:261 src/contents/ui/Maximizer.qml:82
 msgid "dB"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/BassEnhancer.qml:193
-#: src/contents/ui/Compressor.qml:818 src/contents/ui/Exciter.qml:193
-#: src/contents/ui/Gate.qml:914 src/contents/ui/Limiter.qml:496
-msgid "Using"
+#: src/contents/ui/Compressor.qml:818 src/contents/ui/Crystalizer.qml:74
+#: src/contents/ui/Exciter.qml:193 src/contents/ui/Gate.qml:914
+#: src/contents/ui/Limiter.qml:496 src/contents/ui/Maximizer.qml:105
+#: src/contents/ui/StereoTools.qml:459
+msgid "Using %1"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:305
@@ -178,7 +180,8 @@ msgstr "Dno"
 
 #: src/contents/ui/BassEnhancer.qml:208 src/contents/ui/Compressor.qml:833
 #: src/contents/ui/Exciter.qml:208 src/contents/ui/Gate.qml:929
-#: src/contents/ui/Limiter.qml:511
+#: src/contents/ui/Limiter.qml:511 src/contents/ui/Maximizer.qml:120
+#: src/contents/ui/StereoTools.qml:474
 #, fuzzy
 msgid "Show Native Window"
 msgstr "Prozor"
@@ -189,8 +192,9 @@ msgid "Listen"
 msgstr "Poslušaj"
 
 #: src/contents/ui/BassEnhancer.qml:232 src/contents/ui/Compressor.qml:868
-#: src/contents/ui/Exciter.qml:232 src/contents/ui/Gate.qml:964
-#: src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Crystalizer.qml:89 src/contents/ui/Exciter.qml:232
+#: src/contents/ui/Gate.qml:964 src/contents/ui/Limiter.qml:546
+#: src/contents/ui/Maximizer.qml:133 src/contents/ui/StereoTools.qml:487
 msgid "Reset"
 msgstr "Vrati na tvorničke postavke"
 
@@ -200,6 +204,7 @@ msgstr "Kompresor"
 
 #: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:307
 #: src/contents/ui/Gate.qml:293 src/contents/ui/Limiter.qml:51
+#: src/contents/ui/StereoTools.qml:136
 msgid "Mode"
 msgstr "Način"
 
@@ -248,7 +253,7 @@ msgstr "Pokretanje"
 
 #: src/contents/ui/Compressor.qml:211 src/contents/ui/Gate.qml:89
 #: src/contents/ui/Gate.qml:817 src/contents/ui/Limiter.qml:163
-#: src/contents/ui/Limiter.qml:328
+#: src/contents/ui/Limiter.qml:328 src/contents/ui/Maximizer.qml:51
 msgid "Release"
 msgstr "Vrijeme prijelaza"
 
@@ -287,7 +292,7 @@ msgid "Link"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:282 src/contents/ui/Gate.qml:268
-#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:280
+#: src/contents/ui/Limiter.qml:239 src/contents/ui/PageStreamsEffects.qml:306
 #, fuzzy
 msgid "Input Device"
 msgstr "Ulazni uređaj"
@@ -324,10 +329,12 @@ msgid "Side"
 msgstr "Strana"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:224
 msgid "Left"
 msgstr "Lijevo"
 
 #: src/contents/ui/Compressor.qml:324 src/contents/ui/Gate.qml:310
+#: src/contents/ui/StereoTools.qml:271
 msgid "Right"
 msgstr "Desno"
 
@@ -398,17 +405,20 @@ msgstr "24dB/oct niski prolaz"
 msgid "36 dB/oct"
 msgstr "36dB/oct niski prolaz"
 
-#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:84
+#: src/contents/ui/Compressor.qml:501 src/contents/ui/EeInputOutputGain.qml:86
 #: src/contents/ui/Gate.qml:487 src/contents/ui/main.qml:164
+#: src/contents/ui/StereoTools.qml:325
 msgid "Output"
 msgstr "Izlaz"
 
 #: src/contents/ui/Compressor.qml:509 src/contents/ui/Gate.qml:495
+#: src/contents/ui/StereoTools.qml:408
 #, fuzzy
 msgid "Dry"
 msgstr "Suhoća"
 
 #: src/contents/ui/Compressor.qml:533 src/contents/ui/Gate.qml:519
+#: src/contents/ui/StereoTools.qml:426
 #, fuzzy
 msgid "Wet"
 msgstr "Otežanja"
@@ -419,7 +429,7 @@ msgid "Makeup"
 msgstr "Dorada"
 
 #: src/contents/ui/Compressor.qml:604 src/contents/ui/Gate.qml:107
-#: src/contents/ui/Gate.qml:590
+#: src/contents/ui/Gate.qml:590 src/contents/ui/Maximizer.qml:81
 #, fuzzy
 msgid "Reduction"
 msgstr "Smanjenje"
@@ -455,6 +465,15 @@ msgstr "Pojačanje ulaza"
 msgid "Stereo Split"
 msgstr "Stereo baza"
 
+#: src/contents/ui/CrystalizerBand.qml:33 src/contents/ui/StereoTools.qml:237
+#: src/contents/ui/StereoTools.qml:285
+msgid "Mute"
+msgstr "Bezvučno"
+
+#: src/contents/ui/CrystalizerBand.qml:45
+msgid "Bypass"
+msgstr "Premosnica"
+
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
 msgid "Id"
@@ -479,12 +498,12 @@ msgstr ""
 msgid "Description"
 msgstr "Detekcija"
 
-#: src/contents/ui/DelegatePluginsList.qml:57
+#: src/contents/ui/DelegatePluginsList.qml:56
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "Kompresija"
 
-#: src/contents/ui/DelegatePluginsList.qml:70
+#: src/contents/ui/DelegatePluginsList.qml:69
 #, fuzzy
 msgid "Remove this effect"
 msgstr "Kompresija"
@@ -503,7 +522,8 @@ msgstr "Omogući"
 msgid "Exclude"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:34 src/contents/ui/main.qml:183
+#: src/contents/ui/EeInputOutputGain.qml:36 src/contents/ui/main.qml:183
+#: src/contents/ui/StereoTools.qml:43
 msgid "Input"
 msgstr "Ulaz"
 
@@ -523,7 +543,7 @@ msgstr "Vrata"
 
 #: src/contents/ui/Gate.qml:124 src/contents/ui/Gate.qml:194
 #: src/contents/ui/Gate.qml:882 src/contents/ui/Gate.qml:895
-#: src/contents/ui/Limiter.qml:121
+#: src/contents/ui/Limiter.qml:121 src/contents/ui/Maximizer.qml:66
 msgid "Threshold"
 msgstr "Prag"
 
@@ -801,45 +821,45 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:56
+#: src/contents/ui/PageStreamsEffects.qml:58
 #, fuzzy
 msgid "Empty List"
 msgstr "Prazni zidovi"
 
-#: src/contents/ui/PageStreamsEffects.qml:57
+#: src/contents/ui/PageStreamsEffects.qml:59
 msgid "No Audio Application Available"
 msgstr "Nema dostupnih audio aplikacija"
 
-#: src/contents/ui/PageStreamsEffects.qml:230
+#: src/contents/ui/PageStreamsEffects.qml:256
 #, fuzzy
 msgid "Add Effect"
 msgstr "Ulazni efekti"
 
-#: src/contents/ui/PageStreamsEffects.qml:280
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:306
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:298
-#: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:446
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:323
+#: src/contents/ui/PageStreamsEffects.qml:349
 #, fuzzy
 msgid "No Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:324
+#: src/contents/ui/PageStreamsEffects.qml:350
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:422
+#: src/contents/ui/PageStreamsEffects.qml:456
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:472
 #, fuzzy
 msgid "Excluded Apps"
 msgstr "Popis izuzetih aplikacija"
@@ -1064,6 +1084,93 @@ msgstr "Spektar"
 msgid "Experimental Features"
 msgstr "Eksperimentalna"
 
+#: src/contents/ui/StereoTools.qml:51
+#, fuzzy
+msgid "Softclip"
+msgstr "Stranična razina"
+
+#: src/contents/ui/StereoTools.qml:69 src/contents/ui/StereoTools.qml:342
+msgid "Balance"
+msgstr "Ravnoteža"
+
+#: src/contents/ui/StereoTools.qml:91
+#, fuzzy
+msgid "S/C Level"
+msgstr "S/C Razina"
+
+#: src/contents/ui/StereoTools.qml:118
+#, fuzzy
+msgid "Stereo Matrix"
+msgstr "Stereo matrica"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > LR (Stereo Default)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > MS (Stereo to Mid-Side)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "MS > LR (Mid-Side to Stereo)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:140
+#, fuzzy
+msgid "LR > LL (Mono Left Channel)"
+msgstr "Kanali"
+
+#: src/contents/ui/StereoTools.qml:140
+#, fuzzy
+msgid "LR > RR (Mono Right Channel)"
+msgstr "Kanali"
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > L+R (Mono Sum L+R)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:140
+msgid "LR > RL (Stereo Flip Channels)"
+msgstr ""
+
+#: src/contents/ui/StereoTools.qml:149
+#, fuzzy
+msgid "Side Level"
+msgstr "Stranična razina"
+
+#: src/contents/ui/StereoTools.qml:167
+#, fuzzy
+msgid "Side Balance"
+msgstr "Stranična ravnoteža"
+
+#: src/contents/ui/StereoTools.qml:183
+#, fuzzy
+msgid "Middle Level"
+msgstr "Srednji nivo"
+
+#: src/contents/ui/StereoTools.qml:201
+#, fuzzy
+msgid "Middle Panorama"
+msgstr "Srednja panorama"
+
+#: src/contents/ui/StereoTools.qml:255 src/contents/ui/StereoTools.qml:303
+msgid "Invert Phase"
+msgstr "Inverzija faze"
+
+#: src/contents/ui/StereoTools.qml:358 src/tags_plugin_name.cpp:35
+msgid "Delay"
+msgstr "Kašnjenje"
+
+#: src/contents/ui/StereoTools.qml:375
+#, fuzzy
+msgid "Stereo Base"
+msgstr "Stereo baza"
+
+#: src/contents/ui/StereoTools.qml:391
+#, fuzzy
+msgid "Stereo Phase"
+msgstr "Stereo faza"
+
 #: src/main.cpp:61
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
@@ -1161,10 +1268,6 @@ msgstr ""
 #: src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "De-esiranje"
-
-#: src/tags_plugin_name.cpp:35
-msgid "Delay"
-msgstr "Kašnjenje"
 
 #: src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
@@ -1453,14 +1556,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #~ msgstr "Filter visokog prolaza"
 
 #, fuzzy
-#~ msgid "Left Channel"
-#~ msgstr "Kanali"
-
-#, fuzzy
-#~ msgid "Right Channel"
-#~ msgstr "Kanali"
-
-#, fuzzy
 #~ msgid "Impulses"
 #~ msgstr "Reakcija impulsa"
 
@@ -1507,12 +1602,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 
 #~ msgid "Feed"
 #~ msgstr "Dovod zvuka"
-
-#~ msgid "Bypass"
-#~ msgstr "Premosnica"
-
-#~ msgid "Mute"
-#~ msgstr "Bezvučno"
 
 #, fuzzy
 #~ msgid "Attenuation Limit"
@@ -1575,9 +1664,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #~ msgid "Detected"
 #~ msgstr "Detektirano"
 
-#~ msgid "Invert Phase"
-#~ msgstr "Inverzija faze"
-
 #, fuzzy
 #~ msgid "Filter Length"
 #~ msgstr "Filter"
@@ -1592,9 +1678,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 
 #~ msgid "Bands"
 #~ msgstr "Broj raspona"
-
-#~ msgid "Balance"
-#~ msgstr "Ravnoteža"
 
 #, fuzzy
 #~ msgid "Pitch Left"
@@ -2059,32 +2142,8 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #~ msgstr "Ravnoteža"
 
 #, fuzzy
-#~ msgid "Softclip Level"
-#~ msgstr "Stranična razina"
-
-#, fuzzy
-#~ msgid "Stereo Matrix"
-#~ msgstr "Stereo matrica"
-
-#, fuzzy
 #~ msgid "Stereo Mode"
 #~ msgstr "Stereo baza"
-
-#, fuzzy
-#~ msgid "Side Level"
-#~ msgstr "Stranična razina"
-
-#, fuzzy
-#~ msgid "Side Balance"
-#~ msgstr "Stranična ravnoteža"
-
-#, fuzzy
-#~ msgid "Middle Level"
-#~ msgstr "Srednji nivo"
-
-#, fuzzy
-#~ msgid "Middle Panorama"
-#~ msgstr "Srednja panorama"
 
 #, fuzzy
 #~ msgid "Output Balance"
@@ -2097,14 +2156,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #, fuzzy
 #~ msgid "Delay Left Right"
 #~ msgstr "Kašnjenje L/D"
-
-#, fuzzy
-#~ msgid "Stereo Base"
-#~ msgstr "Stereo baza"
-
-#, fuzzy
-#~ msgid "Stereo Phase"
-#~ msgstr "Stereo faza"
 
 #~ msgid "Show available presets."
 #~ msgstr "Prikaži dostupne predloške."
@@ -2740,10 +2791,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 #, fuzzy
 #~ msgid "Maximum Gain Reduction"
 #~ msgstr "Ograničenje pojačanja"
-
-#, fuzzy
-#~ msgid "S/C Level"
-#~ msgstr "S/C Razina"
 
 #~ msgid "Short Term"
 #~ msgstr "Kratkoročno"
