@@ -38,6 +38,7 @@ target_sources(easyeffects PRIVATE
     pw_model_modules.cpp
     pw_model_nodes.cpp
     spectrum.cpp
+    stereo_tools.cpp
     stream_input_effects.cpp
     stream_output_effects.cpp
     tags_plugin_name.cpp

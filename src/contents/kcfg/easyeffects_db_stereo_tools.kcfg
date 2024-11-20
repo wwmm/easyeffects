@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/stereotoolsrc">
+        <parameter name="masterGroup" />
+        <parameter name="instanceIndex" />
+    </kcfgfile>
+    <group parentGroupName="$(masterGroup)" name="StereoTools#$(instanceIndex)">
+        <entry name="bypass" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="inputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="outputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="balanceIn" type="Double">
+            <label></label>
+            <min>-1</min>
+            <max>1</max>
+            <default>0</default>
+        </entry>
+        <entry name="balanceOut" type="Double">
+            <label></label>
+            <min>-1</min>
+            <max>1</max>
+            <default>0</default>
+        </entry>
+        <entry name="softclip" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="mutel" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="muter" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="phasel" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="phaser" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="mode" type="Enum">
+            <label></label>
+            <choices>
+                <choice name="lr_lr">
+                    <label>LR > LR (Stereo Default)</label>
+                </choice>
+                <choice name="lr_ms">
+                    <label>LR > MS (Stereo to Mid-Side)</label>
+                </choice>
+                <choice name="ms_lr">
+                    <label>MS > LR (Mid-Side to Stereo)</label>
+                </choice>
+                <choice name="lr_ll">
+                    <label>LR > LL (Mono Left Channel)</label>
+                </choice>
+                <choice name="lr_rr">
+                    <label>LR > RR (Mono Right Channel)</label>
+                </choice>
+                <choice name="lr_l_plus_r">
+                    <label>LR > L+R (Mono Sum L+R)</label>
+                </choice>
+                <choice name="lr_rl">
+                    <label>LR > RL (Stereo Flip Channels)</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
+        <entry name="slev" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="sbal" type="Double">
+            <label></label>
+            <min>-1</min>
+            <max>1</max>
+            <default>0</default>
+        </entry>
+        <entry name="mlev" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="mpan" type="Double">
+            <label></label>
+            <min>-1</min>
+            <max>1</max>
+            <default>0</default>
+        </entry>
+        <entry name="stereoBase" type="Double">
+            <label></label>
+            <min>-1</min>
+            <max>1</max>
+            <default>0</default>
+        </entry>
+        <entry name="delay" type="Double">
+            <label></label>
+            <min>-20</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+        <entry name="scLevel" type="Double">
+            <label></label>
+            <min>1</min>
+            <max>100</max>
+            <default>1</default>
+        </entry>
+        <entry name="stereoPhase" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>360</max>
+            <default>0</default>
+        </entry>
+        <entry name="dry" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>20</max>
+            <default>-100</default>
+        </entry>
+        <entry name="wet" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+    </group>
+</kcfg>

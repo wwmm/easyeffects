@@ -42,6 +42,7 @@
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 #include "spectrum.hpp"
+#include "stereo_tools.hpp"
 
 // #include "bass_loudness.hpp"
 // #include "convolver.hpp"
@@ -60,7 +61,6 @@
 // #include "reverb.hpp"
 // #include "rnnoise.hpp"
 // #include "speex.hpp"
-// #include "stereo_tools.hpp"
 
 class EffectsBase : public QObject {
   Q_OBJECT;
@@ -90,6 +90,7 @@ class EffectsBase : public QObject {
   std::shared_ptr<Gate> gate;
   std::shared_ptr<Limiter> limiter;
   std::shared_ptr<Maximizer> maximizer;
+  std::shared_ptr<StereoTools> stereo_tools;
   //   std::shared_ptr<BassLoudness> bass_loudness;
   //   std::shared_ptr<Convolver> convolver;
   //   std::shared_ptr<Crossfeed> crossfeed;
@@ -107,7 +108,6 @@ class EffectsBase : public QObject {
   //   std::shared_ptr<Reverb> reverb;
   //   std::shared_ptr<RNNoise> rnnoise;
   //   std::shared_ptr<Speex> speex;
-  //   std::shared_ptr<StereoTools> stereo_tools;
 
   auto get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>>;
 
