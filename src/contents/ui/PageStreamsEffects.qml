@@ -18,6 +18,8 @@ Kirigami.Page {
     required property var pluginsDB
     required property var pipelineInstance
     property string logTag: "PageStreamsEffects"
+    property int minLeftLevel: -99
+    property int minRightLevel: -99
 
     padding: 0
     Component.onCompleted: {
@@ -415,11 +417,19 @@ Kirigami.Page {
                     id: footerFrameAnimation
 
                     onTriggered: {
-                        let left = Number(pipelineInstance.getOutputLevelLeft()).toLocaleString(Qt.locale(), 'f', 0);
-                        let right = Number(pipelineInstance.getOutputLevelRight()).toLocaleString(Qt.locale(), 'f', 0);
-                        let latency = Number(pipelineInstance.getPipeLineLatency()).toLocaleString(Qt.locale(), 'f', 1);
-                        let rate = Number(pipelineInstance.getPipeLineRate()).toLocaleString(Qt.locale(), 'f', 1);
-                        actionLevelValue.text = `${left} ${right} dB`;
+                        let left = Number(pipelineInstance.getOutputLevelLeft());
+                        let right = Number(pipelineInstance.getOutputLevelRight());
+                        if (isNaN(left) || left < minLeftLevel)
+                            left = minLeftLevel;
+
+                        if (isNaN(right) || right < minRightLevel)
+                            right = minRightLevel;
+
+                        const localeLeft = left.toLocaleString(Qt.locale(), 'f', 0);
+                        const localeRight = right.toLocaleString(Qt.locale(), 'f', 0);
+                        const latency = Number(pipelineInstance.getPipeLineLatency()).toLocaleString(Qt.locale(), 'f', 1);
+                        const rate = Number(pipelineInstance.getPipeLineRate()).toLocaleString(Qt.locale(), 'f', 1);
+                        actionLevelValue.text = `${localeLeft} ${localeRight} dB`;
                         actionLatencyValue.text = `${latency} ms`;
                         actionRateValue.text = `${rate} kHz`;
                     }

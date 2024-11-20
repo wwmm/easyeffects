@@ -43,18 +43,18 @@ class Package : public QObject {
   Q_OBJECT
 
  public:
-  CREATE_PROPERTY(QString, bs2b, QStringLiteral(" bs2b"));
-  CREATE_PROPERTY(QString, calf, QStringLiteral(" Calf Studio Gear"));
-  CREATE_PROPERTY(QString, deepfilternet, QStringLiteral(" DeepFilterNet"));
-  CREATE_PROPERTY(QString, ebur128, QStringLiteral(" libebur128"));
-  CREATE_PROPERTY(QString, ee, QStringLiteral(" Easy Effects"));
-  CREATE_PROPERTY(QString, lsp, QStringLiteral(" Linux Studio Plugins"));
-  CREATE_PROPERTY(QString, mda, QStringLiteral(" MDA"));
-  CREATE_PROPERTY(QString, rnnoise, QStringLiteral(" RNNoise"));
-  CREATE_PROPERTY(QString, soundTouch, QStringLiteral(" SoundTouch"));
-  CREATE_PROPERTY(QString, speex, QStringLiteral(" SpeexDSP"));
-  CREATE_PROPERTY(QString, zam, QStringLiteral(" ZamAudio"));
-  CREATE_PROPERTY(QString, zita, QStringLiteral(" Zita"));
+  CREATE_PROPERTY(QString, bs2b, QStringLiteral("bs2b"));
+  CREATE_PROPERTY(QString, calf, QStringLiteral("Calf Studio Gear"));
+  CREATE_PROPERTY(QString, deepfilternet, QStringLiteral("DeepFilterNet"));
+  CREATE_PROPERTY(QString, ebur128, QStringLiteral("libebur128"));
+  CREATE_PROPERTY(QString, ee, QStringLiteral("Easy Effects"));
+  CREATE_PROPERTY(QString, lsp, QStringLiteral("Linux Studio Plugins"));
+  CREATE_PROPERTY(QString, mda, QStringLiteral("MDA"));
+  CREATE_PROPERTY(QString, rnnoise, QStringLiteral("RNNoise"));
+  CREATE_PROPERTY(QString, soundTouch, QStringLiteral("SoundTouch"));
+  CREATE_PROPERTY(QString, speex, QStringLiteral("SpeexDSP"));
+  CREATE_PROPERTY(QString, zam, QStringLiteral("ZamAudio"));
+  CREATE_PROPERTY(QString, zita, QStringLiteral("Zita"));
 };
 
 }  // namespace tags::plugin_package

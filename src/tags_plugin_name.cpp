@@ -113,11 +113,7 @@ QList<QString> Model::getBaseNames() {
 auto get_id(const QString& name) -> QString {
   QRegularExpressionMatch match = id_regex.match(name);
 
-  if (match.hasMatch()) {
-    return match.captured(1);
-  }
-
-  return "";
+  return match.hasMatch() ? match.captured(1) : "";
 }
 
 }  // namespace tags::plugin_name
