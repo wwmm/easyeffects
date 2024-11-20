@@ -14,10 +14,12 @@ Item {
     property alias outputLevelRight: outputLevelRight.value
     readonly property real radius: 2.5 * Kirigami.Units.gridUnit
 
-    implicitHeight: grid.implicitHeight
-    implicitWidth: grid.implicitWidth
+    implicitHeight: column.implicitHeight
+    implicitWidth: column.implicitWidth
 
     ColumnLayout {
+        id: column
+
         anchors.fill: parent
 
         Kirigami.CardsLayout {

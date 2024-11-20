@@ -138,6 +138,8 @@ void StereoTools::process(std::span<float>& left_in,
   if (output_gain != 1.0F) {
     apply_gain(left_out, right_out, output_gain);
   }
+
+  get_peaks(left_in, right_in, left_out, right_out);
 }
 
 void StereoTools::process([[maybe_unused]] std::span<float>& left_in,
