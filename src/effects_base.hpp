@@ -34,6 +34,7 @@
 #include "compressor.hpp"
 #include "crystalizer.hpp"
 #include "exciter.hpp"
+#include "filter.hpp"
 #include "gate.hpp"
 #include "limiter.hpp"
 #include "maximizer.hpp"
@@ -53,7 +54,6 @@
 // #include "echo_canceller.hpp"
 // #include "equalizer.hpp"
 // #include "expander.hpp"
-// #include "filter.hpp"
 // #include "loudness.hpp"
 // #include "multiband_compressor.hpp"
 // #include "multiband_gate.hpp"
@@ -87,6 +87,7 @@ class EffectsBase : public QObject {
   std::shared_ptr<Compressor> compressor;
   std::shared_ptr<Crystalizer> crystalizer;
   std::shared_ptr<Exciter> exciter;
+  std::shared_ptr<Filter> filter;
   std::shared_ptr<Gate> gate;
   std::shared_ptr<Limiter> limiter;
   std::shared_ptr<Maximizer> maximizer;
@@ -100,7 +101,6 @@ class EffectsBase : public QObject {
   //   std::shared_ptr<EchoCanceller> echo_canceller;
   //   std::shared_ptr<Equalizer> equalizer;
   //   std::shared_ptr<Expander> expander;
-  //   std::shared_ptr<Filter> filter;
   //   std::shared_ptr<Loudness> loudness;
   //   std::shared_ptr<MultibandCompressor> multiband_compressor;
   //   std::shared_ptr<MultibandGate> multiband_gate;

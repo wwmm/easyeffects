@@ -33,6 +33,7 @@
 #include "easyeffects_db_compressor.h"
 #include "easyeffects_db_crystalizer.h"
 #include "easyeffects_db_exciter.h"
+#include "easyeffects_db_filter.h"
 #include "easyeffects_db_gate.h"
 #include "easyeffects_db_limiter.h"
 #include "easyeffects_db_maximizer.h"
@@ -149,6 +150,10 @@ void Manager::create_plugin_db(const QString& parentGroup,
       } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
         plugins_map[tags::plugin_name::BaseName::exciter + "#" + id] =
             QVariant::fromValue(new db::Exciter(parentGroup, id));
+        //
+      } else if (name.startsWith(tags::plugin_name::BaseName::filter)) {
+        plugins_map[tags::plugin_name::BaseName::filter + "#" + id] =
+            QVariant::fromValue(new db::Filter(parentGroup, id));
         //
       } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
         plugins_map[tags::plugin_name::BaseName::gate + "#" + id] = QVariant::fromValue(new db::Gate(parentGroup, id));

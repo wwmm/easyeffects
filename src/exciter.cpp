@@ -42,12 +42,14 @@ Exciter::Exciter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
       settings(
           db::Manager::self().get_plugin_db<db::Exciter>(pipe_type,
                                                          tags::plugin_name::BaseName::exciter + "#" + instance_id)) {
-  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://calf.sourceforge.net/plugins/Exciter");
+  const auto lv2_plugin_uri = "http://calf.sourceforge.net/plugins/Exciter";
+
+  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
 
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {
-    util::debug(log_tag + "http://calf.sourceforge.net/plugins/Exciter is not installed");
+    util::debug(log_tag + lv2_plugin_uri + " is not installed");
   }
 
   init_common_controls<db::Exciter>(settings);

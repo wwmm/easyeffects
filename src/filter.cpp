@@ -17,13 +17,13 @@
  *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "maximizer.hpp"
+#include "filter.hpp"
 #include <algorithm>
 #include <memory>
 #include <span>
 #include <string>
 #include "db_manager.hpp"
-#include "easyeffects_db_maximizer.h"
+#include "easyeffects_db_filter.h"
 #include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
 #include "pipeline_type.hpp"
@@ -32,17 +32,16 @@
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
-Maximizer::Maximizer(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
+Filter::Filter(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
     : PluginBase(tag,
-                 tags::plugin_name::BaseName::maximizer,
-                 tags::plugin_package::Package::zam,
+                 tags::plugin_name::BaseName::filter,
+                 tags::plugin_package::Package::lsp,
                  instance_id,
                  pipe_manager,
                  pipe_type),
-      settings(db::Manager::self().get_plugin_db<db::Maximizer>(
-          pipe_type,
-          tags::plugin_name::BaseName::maximizer + "#" + instance_id)) {
-  const auto lv2_plugin_uri = "urn:zamaudio:ZaMaximX2";
+      settings(db::Manager::self().get_plugin_db<db::Filter>(pipe_type,
+                                                             tags::plugin_name::BaseName::filter + "#" + instance_id)) {
+  const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/filter_stereo";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
 
@@ -52,15 +51,22 @@ Maximizer::Maximizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
     util::debug(log_tag + lv2_plugin_uri + " is not installed");
   }
 
-  init_common_controls<db::Maximizer>(settings);
+  init_common_controls<db::Filter>(settings);
 
   // specific plugin controls
 
-  BIND_LV2_PORT("rel", release, setRelease, db::Maximizer::releaseChanged);
-  BIND_LV2_PORT("thresh", threshold, setThreshold, db::Maximizer::thresholdChanged);
+  BIND_LV2_PORT("f", frequency, setFrequency, db::Filter::frequencyChanged);
+  BIND_LV2_PORT("w", width, setWidth, db::Filter::widthChanged);
+  BIND_LV2_PORT("q", quality, setQuality, db::Filter::qualityChanged);
+  BIND_LV2_PORT("bal", balance, setBalance, db::Filter::balanceChanged);
+  BIND_LV2_PORT_DB("g", gain, setGain, db::Filter::gainChanged, false);
+  BIND_LV2_PORT("ft", type, setType, db::Filter::typeChanged);
+  BIND_LV2_PORT("fm", mode, setMode, db::Filter::modeChanged);
+  BIND_LV2_PORT("mode", equalMode, setEqualMode, db::Filter::equalModeChanged);
+  BIND_LV2_PORT("s", slope, setSlope, db::Filter::slopeChanged);
 }
 
-Maximizer::~Maximizer() {
+Filter::~Filter() {
   if (connected_to_pw) {
     disconnect_from_pw();
   }
@@ -68,11 +74,11 @@ Maximizer::~Maximizer() {
   util::debug(log_tag + name.toStdString() + " destroyed");
 }
 
-void Maximizer::reset() {
+void Filter::reset() {
   settings->setDefaults();
 }
 
-void Maximizer::setup() {
+void Filter::setup() {
   if (!lv2_wrapper->found_plugin) {
     return;
   }
@@ -84,10 +90,10 @@ void Maximizer::setup() {
   }
 }
 
-void Maximizer::process(std::span<float>& left_in,
-                        std::span<float>& right_in,
-                        std::span<float>& left_out,
-                        std::span<float>& right_out) {
+void Filter::process(std::span<float>& left_in,
+                     std::span<float>& right_in,
+                     std::span<float>& left_out,
+                     std::span<float>& right_out) {
   if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance() || bypass) {
     std::copy(left_in.begin(), left_in.end(), left_out.begin());
     std::copy(right_in.begin(), right_in.end(), right_out.begin());
@@ -108,7 +114,7 @@ void Maximizer::process(std::span<float>& left_in,
 
   // This plugin gives the latency in number of samples
 
-  const auto lv = static_cast<uint>(lv2_wrapper->get_control_port_value("lv2_latency"));
+  const auto lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
 
   if (latency_n_frames != lv) {
     latency_n_frames = lv;
@@ -121,21 +127,15 @@ void Maximizer::process(std::span<float>& left_in,
   }
 
   get_peaks(left_in, right_in, left_out, right_out);
-
-  reduction_port_value = lv2_wrapper->get_control_port_value("gr");
 }
 
-void Maximizer::process([[maybe_unused]] std::span<float>& left_in,
-                        [[maybe_unused]] std::span<float>& right_in,
-                        [[maybe_unused]] std::span<float>& left_out,
-                        [[maybe_unused]] std::span<float>& right_out,
-                        [[maybe_unused]] std::span<float>& probe_left,
-                        [[maybe_unused]] std::span<float>& probe_right) {}
+void Filter::process([[maybe_unused]] std::span<float>& left_in,
+                     [[maybe_unused]] std::span<float>& right_in,
+                     [[maybe_unused]] std::span<float>& left_out,
+                     [[maybe_unused]] std::span<float>& right_out,
+                     [[maybe_unused]] std::span<float>& probe_left,
+                     [[maybe_unused]] std::span<float>& probe_right) {}
 
-auto Maximizer::get_latency_seconds() -> float {
+auto Filter::get_latency_seconds() -> float {
   return this->latency_value;
-}
-
-float Maximizer::getReductionLevel() const {
-  return this->reduction_port_value;
 }

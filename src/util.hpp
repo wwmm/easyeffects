@@ -35,8 +35,6 @@
 #include <vector>
 
 namespace util {
-// Minimum dB level reported here has to be used in gsettings and spinbuttons
-// as minimal values for controls that replicates the -infinity state (linear 0).
 constexpr float minimum_db_level = -100.0F;
 constexpr double minimum_db_d_level = -100.0;
 constexpr float minimum_linear_level = 0.00001F;

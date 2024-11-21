@@ -44,12 +44,14 @@ Gate::Gate(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_
                  true),
       settings(db::Manager::self().get_plugin_db<db::Gate>(pipe_type,
                                                            tags::plugin_name::BaseName::gate + "#" + instance_id)) {
-  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_gate_stereo");
+  const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/sc_gate_stereo";
+
+  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
 
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {
-    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_gate_stereo is not installed");
+    util::debug(log_tag + lv2_plugin_uri + " is not installed");
   }
 
   init_common_controls<db::Gate>(settings);
@@ -74,14 +76,16 @@ Gate::Gate(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_
   BIND_LV2_PORT("at", attack, setAttack, db::Gate::attackChanged);
   BIND_LV2_PORT("rt", release, setRelease, db::Gate::releaseChanged);
   BIND_LV2_PORT("gh", hysteresis, setHysteresis, db::Gate::hysteresisChanged);
-  BIND_LV2_PORT_DB("cdr", dry, setDry, db::Gate::dryChanged, true);
-  BIND_LV2_PORT_DB("cwt", wet, setWet, db::Gate::wetChanged, true);
   BIND_LV2_PORT_DB("mk", makeup, setMakeup, db::Gate::makeupChanged, false);
   BIND_LV2_PORT_DB("gr", reduction, setReduction, db::Gate::reductionChanged, false);
   BIND_LV2_PORT_DB("gt", curveThreshold, setCurveThreshold, db::Gate::curveThresholdChanged, false);
   BIND_LV2_PORT_DB("gz", curveZone, setCurveZone, db::Gate::curveZoneChanged, false);
   BIND_LV2_PORT_DB("ht", hysteresisThreshold, setHysteresisThreshold, db::Gate::hysteresisThresholdChanged, false);
   BIND_LV2_PORT_DB("hz", hysteresisZone, setHysteresisZone, db::Gate::hysteresisZoneChanged, false);
+
+  // dB controls with -inf mode.
+  BIND_LV2_PORT_DB("cdr", dry, setDry, db::Gate::dryChanged, true);
+  BIND_LV2_PORT_DB("cwt", wet, setWet, db::Gate::wetChanged, true);
   BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Gate::sidechainPreampChanged, true);
 }
 
@@ -138,9 +142,7 @@ void Gate::process(std::span<float>& left_in,
     apply_gain(left_out, right_out, output_gain);
   }
 
-  /*
-   This plugin gives the latency in number of samples
- */
+  // This plugin gives the latency in number of samples
 
   const auto lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
 

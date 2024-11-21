@@ -45,12 +45,14 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
       settings(db::Manager::self().get_plugin_db<db::Compressor>(
           pipe_type,
           tags::plugin_name::BaseName::compressor + "#" + instance_id)) {
-  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_compressor_stereo");
+  const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/sc_compressor_stereo";
+
+  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
 
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {
-    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_compressor_stereo is not installed");
+    util::debug(log_tag + lv2_plugin_uri + " is not installed");
   }
 
   init_common_controls<db::Compressor>(settings);
@@ -76,15 +78,17 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
   BIND_LV2_PORT("cr", ratio, setRatio, db::Compressor::ratioChanged);
   BIND_LV2_PORT("at", attack, setAttack, db::Compressor::attackChanged);
   BIND_LV2_PORT("rt", release, setRelease, db::Compressor::releaseChanged);
-  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Compressor::sidechainPreampChanged, true);
-  BIND_LV2_PORT_DB("cdr", dry, setDry, db::Compressor::dryChanged, true);
-  BIND_LV2_PORT_DB("cwt", wet, setWet, db::Compressor::wetChanged, true);
   BIND_LV2_PORT_DB("bth", boostThreshold, setBoostThreshold, db::Compressor::boostThresholdChanged, false);
   BIND_LV2_PORT_DB("bsa", boostAmount, setBoostAmount, db::Compressor::boostAmountChanged, false);
   BIND_LV2_PORT_DB("kn", knee, setKnee, db::Compressor::kneeChanged, false);
   BIND_LV2_PORT_DB("mk", makeup, setMakeup, db::Compressor::makeupChanged, false);
   BIND_LV2_PORT_DB("al", threshold, setThreshold, db::Compressor::thresholdChanged, false);
   BIND_LV2_PORT_DB("rrl", releaseThreshold, setReleaseThreshold, db::Compressor::releaseThresholdChanged, true);
+
+  // dB controls with -inf mode.
+  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Compressor::sidechainPreampChanged, true);
+  BIND_LV2_PORT_DB("cdr", dry, setDry, db::Compressor::dryChanged, true);
+  BIND_LV2_PORT_DB("cwt", wet, setWet, db::Compressor::wetChanged, true);
 }
 
 Compressor::~Compressor() {
@@ -140,9 +144,7 @@ void Compressor::process(std::span<float>& left_in,
     apply_gain(left_out, right_out, output_gain);
   }
 
-  /*
-   This plugin gives the latency in number of samples
- */
+  // This plugin gives the latency in number of samples
 
   const auto lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
 

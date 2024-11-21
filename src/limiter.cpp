@@ -44,12 +44,14 @@ Limiter::Limiter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
       settings(
           db::Manager::self().get_plugin_db<db::Limiter>(pipe_type,
                                                          tags::plugin_name::BaseName::limiter + "#" + instance_id)) {
-  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_limiter_stereo");
+  const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/sc_limiter_stereo";
+
+  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
 
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {
-    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_limiter_stereo is not installed");
+    util::debug(log_tag + lv2_plugin_uri + " is not installed");
   }
 
   init_common_controls<db::Limiter>(settings);
@@ -72,8 +74,10 @@ Limiter::Limiter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
   BIND_LV2_PORT("alr_rt", alrRelease, setAlrRelease, db::Limiter::alrReleaseChanged);
   BIND_LV2_PORT("extsc", sidechainType, setSidechainType, db::Limiter::sidechainTypeChanged);
   BIND_LV2_PORT_DB("th", threshold, setThreshold, db::Limiter::thresholdChanged, false);
-  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Limiter::sidechainPreampChanged, true);
   BIND_LV2_PORT_DB("knee", alrKnee, setAlrKnee, db::Limiter::alrKneeChanged, false);
+
+  // dB controls with -inf mode.
+  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Limiter::sidechainPreampChanged, true);
 }
 
 Limiter::~Limiter() {
@@ -129,9 +133,7 @@ void Limiter::process(std::span<float>& left_in,
     apply_gain(left_out, right_out, output_gain);
   }
 
-  /*
-   This plugin gives the latency in number of samples
- */
+  // This plugin gives the latency in number of samples
 
   const auto lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
 
