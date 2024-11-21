@@ -45,7 +45,7 @@ Filter::Filter(const std::string& tag,
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {
-    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_gate_stereo is not installed");
+    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/filter_stereo is not installed");
   }
 
   lv2_wrapper->bind_key_double<"f", "frequency">(settings);
