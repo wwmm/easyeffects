@@ -74,14 +74,16 @@ Gate::Gate(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_
   BIND_LV2_PORT("at", attack, setAttack, db::Gate::attackChanged);
   BIND_LV2_PORT("rt", release, setRelease, db::Gate::releaseChanged);
   BIND_LV2_PORT("gh", hysteresis, setHysteresis, db::Gate::hysteresisChanged);
-  BIND_LV2_PORT_DB("cdr", dry, setDry, db::Gate::dryChanged, true);
-  BIND_LV2_PORT_DB("cwt", wet, setWet, db::Gate::wetChanged, true);
   BIND_LV2_PORT_DB("mk", makeup, setMakeup, db::Gate::makeupChanged, false);
   BIND_LV2_PORT_DB("gr", reduction, setReduction, db::Gate::reductionChanged, false);
   BIND_LV2_PORT_DB("gt", curveThreshold, setCurveThreshold, db::Gate::curveThresholdChanged, false);
   BIND_LV2_PORT_DB("gz", curveZone, setCurveZone, db::Gate::curveZoneChanged, false);
   BIND_LV2_PORT_DB("ht", hysteresisThreshold, setHysteresisThreshold, db::Gate::hysteresisThresholdChanged, false);
   BIND_LV2_PORT_DB("hz", hysteresisZone, setHysteresisZone, db::Gate::hysteresisZoneChanged, false);
+
+  // dB controls with -inf mode.
+  BIND_LV2_PORT_DB("cdr", dry, setDry, db::Gate::dryChanged, true);
+  BIND_LV2_PORT_DB("cwt", wet, setWet, db::Gate::wetChanged, true);
   BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Gate::sidechainPreampChanged, true);
 }
 

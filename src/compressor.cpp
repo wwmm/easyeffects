@@ -76,15 +76,17 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
   BIND_LV2_PORT("cr", ratio, setRatio, db::Compressor::ratioChanged);
   BIND_LV2_PORT("at", attack, setAttack, db::Compressor::attackChanged);
   BIND_LV2_PORT("rt", release, setRelease, db::Compressor::releaseChanged);
-  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Compressor::sidechainPreampChanged, true);
-  BIND_LV2_PORT_DB("cdr", dry, setDry, db::Compressor::dryChanged, true);
-  BIND_LV2_PORT_DB("cwt", wet, setWet, db::Compressor::wetChanged, true);
   BIND_LV2_PORT_DB("bth", boostThreshold, setBoostThreshold, db::Compressor::boostThresholdChanged, false);
   BIND_LV2_PORT_DB("bsa", boostAmount, setBoostAmount, db::Compressor::boostAmountChanged, false);
   BIND_LV2_PORT_DB("kn", knee, setKnee, db::Compressor::kneeChanged, false);
   BIND_LV2_PORT_DB("mk", makeup, setMakeup, db::Compressor::makeupChanged, false);
   BIND_LV2_PORT_DB("al", threshold, setThreshold, db::Compressor::thresholdChanged, false);
   BIND_LV2_PORT_DB("rrl", releaseThreshold, setReleaseThreshold, db::Compressor::releaseThresholdChanged, true);
+
+  // dB controls with -inf mode.
+  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Compressor::sidechainPreampChanged, true);
+  BIND_LV2_PORT_DB("cdr", dry, setDry, db::Compressor::dryChanged, true);
+  BIND_LV2_PORT_DB("cwt", wet, setWet, db::Compressor::wetChanged, true);
 }
 
 Compressor::~Compressor() {
