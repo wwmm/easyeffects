@@ -45,6 +45,7 @@
 #include "db_manager.hpp"
 #include "local_client.hpp"
 #include "local_server.hpp"
+#include "presets_manager.hpp"
 #include "pw_manager.hpp"
 #include "stream_input_effects.hpp"
 #include "stream_output_effects.hpp"
@@ -86,7 +87,7 @@ int main(int argc, char* argv[]) {
   bool show_window = true;
 
   KLocalizedString::setApplicationDomain(APPLICATION_DOMAIN);
-  QCoreApplication::setOrganizationName(QStringLiteral(ORGANIZATION_NAME));
+  // QCoreApplication::setOrganizationName(QStringLiteral(ORGANIZATION_NAME));
   QCoreApplication::setOrganizationDomain(QStringLiteral(ORGANIZATION_DOMAIN));
   QCoreApplication::setApplicationName(QStringLiteral("EasyEffects"));
   QCoreApplication::setApplicationVersion(PROJECT_VERSION);
@@ -151,6 +152,9 @@ int main(int argc, char* argv[]) {
   // Making sure these singleton classes are initialized before qml
 
   tags::plugin_name::Model::self();
+
+  presets::Manager::self();
+
   auto* pm = &pw::Manager::self();
 
   auto sie = std::make_unique<StreamInputEffects>(pm);

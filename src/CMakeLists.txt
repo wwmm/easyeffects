@@ -34,6 +34,7 @@ target_sources(easyeffects PRIVATE
     maximizer.cpp
     output_level.cpp
     plugin_base.cpp
+    presets_manager.cpp
     pw_manager.cpp
     pw_model_clients.cpp
     pw_model_modules.cpp

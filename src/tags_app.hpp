@@ -31,4 +31,6 @@ inline constexpr auto path_stream_inputs = "/com/github/wwmm/easyeffects/streami
 
 inline constexpr auto path_stream_outputs = "/com/github/wwmm/easyeffects/streamoutputs/";
 
+inline constexpr auto flatpak_info_file = "/.flatpak-info";
+
 }  // namespace tags::app
