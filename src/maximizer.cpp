@@ -106,9 +106,7 @@ void Maximizer::process(std::span<float>& left_in,
     apply_gain(left_out, right_out, output_gain);
   }
 
-  /*
-   This plugin gives the latency in number of samples
- */
+  // This plugin gives the latency in number of samples
 
   const auto lv = static_cast<uint>(lv2_wrapper->get_control_port_value("lv2_latency"));
 
