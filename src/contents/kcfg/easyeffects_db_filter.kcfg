@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/filterrc">
+        <parameter name="masterGroup" />
+        <parameter name="instanceIndex" />
+    </kcfgfile>
+    <group parentGroupName="$(masterGroup)" name="Filter#$(instanceIndex)">
+        <entry name="bypass" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="inputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="outputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="type" type="Enum">
+            <label>Type</label>
+            <choices>
+                <choice name="lowPass">
+                    <label>Low-pass</label>
+                </choice>
+                <choice name="highPass">
+                    <label>High-pass</label>
+                </choice>
+                <choice name="lowShelf">
+                    <label>Low-shelf</label>
+                </choice>
+                <choice name="highShelf">
+                    <label>High-shelf</label>
+                </choice>
+                <choice name="bell">
+                    <label>Bell</label>
+                </choice>
+                <choice name="bandPass">
+                    <label>Band-pass</label>
+                </choice>
+                <choice name="notch">
+                    <label>Notch</label>
+                </choice>
+                <choice name="resonance">
+                    <label>Resonance</label>
+                </choice>
+                <choice name="ladderPass">
+                    <label>Ladder-pass</label>
+                </choice>
+                <choice name="ladderRejection">
+                    <label>Ladder-rejection</label>
+                </choice>
+                <choice name="allPass">
+                    <label>All-pass</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
+        <entry name="equalMode" type="Enum">
+            <label>Equalizer Mode</label>
+            <choices>
+                <choice name="iir">
+                    <label>IIR</label>
+                </choice>
+                <choice name="fir">
+                    <label>FIR</label>
+                </choice>
+                <choice name="fft">
+                    <label>FFT</label>
+                </choice>
+                <choice name="spm">
+                    <label>SPM</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
+        <entry name="mode" type="Enum">
+            <label>Filter Mode</label>
+            <choices>
+                <choice name="rlcBt">
+                    <label>RLC (BT)</label>
+                </choice>
+                <choice name="rlcMt">
+                    <label>RLC (MT)</label>
+                </choice>
+                <choice name="bwcBt">
+                    <label>BWC (BT)</label>
+                </choice>
+                <choice name="bwcMt">
+                    <label>BWC (MT)</label>
+                </choice>
+                <choice name="lrxBt">
+                    <label>LRX (BT)</label>
+                </choice>
+                <choice name="lrxMt">
+                    <label>LRX (MT)</label>
+                </choice>
+                <choice name="apoDr">
+                    <label>APO (DR)</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
+        <entry name="slope" type="Enum">
+            <label>Slope</label>
+            <choices>
+                <choice name="x1">
+                    <label>x1</label>
+                </choice>
+                <choice name="x2">
+                    <label>x2</label>
+                </choice>
+                <choice name="x3">
+                    <label>x3</label>
+                </choice>
+                <choice name="x4">
+                    <label>x4</label>
+                </choice>
+                <choice name="x6">
+                    <label>x6</label>
+                </choice>
+                <choice name="x8">
+                    <label>x8</label>
+                </choice>
+                <choice name="x12">
+                    <label>x12</label>
+                </choice>
+                <choice name="x16">
+                    <label>x16</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
+        <entry name="frequency" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>24000</max>
+            <default>2000</default>
+        </entry>
+        <entry name="width" type="Double">
+            <label></label>
+            <min>0.0</min>
+            <max>12.0</max>
+            <default>4.0</default>
+        </entry>
+        <entry name="quality" type="Double">
+            <label></label>
+            <min>0.0</min>
+            <max>100.0</max>
+            <default>0.0</default>
+        </entry>
+        <entry name="gain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="balance" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>100</max>
+            <default>0</default>
+        </entry>
+    </group>
+</kcfg>

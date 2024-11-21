@@ -35,6 +35,7 @@
 #include "crystalizer.hpp"
 #include "db_manager.hpp"
 #include "exciter.hpp"
+#include "filter.hpp"
 #include "gate.hpp"
 #include "limiter.hpp"
 #include "maximizer.hpp"
@@ -56,19 +57,15 @@
 // #include "echo_canceller.hpp"
 // #include "equalizer.hpp"
 // #include "expander.hpp"
-// #include "filter.hpp"
 // #include "level_meter.hpp"
 // #include "loudness.hpp"
 // #include "multiband_compressor.hpp"
 // #include "multiband_gate.hpp"
-// #include "output_level.hpp"
 // #include "pitch.hpp"
 // #include "reverb.hpp"
 // #include "rnnoise.hpp"
 // #include "speex.hpp"
-// #include "stereo_tools.hpp"
 // #include "tags_app.hpp"
-// #include "tags_plugin_name.hpp"
 // #include "tags_schema.hpp"
 
 EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
@@ -159,7 +156,7 @@ void EffectsBase::create_filters_if_necessary() {
       //       schema_base_path + "equalizer/" + instance_id + "/leftchannel/",
       //       schema_base_path + "equalizer/" + instance_id + "/rightchannel/", pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::filter)) {
-      //   filter = std::make_shared<Filter>(log_tag, tags::schema::filter::id, path, pm, pipeline_type);
+      filter = std::make_shared<Filter>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
       filter = std::make_shared<Gate>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
@@ -276,6 +273,10 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::exciter)) {
     return QVariant::fromValue(dynamic_cast<Exciter*>(p.get()));
+  }
+
+  if (pluginName.startsWith(tags::plugin_name::BaseName::filter)) {
+    return QVariant::fromValue(dynamic_cast<Filter*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::gate)) {
