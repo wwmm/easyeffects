@@ -410,6 +410,14 @@ Kirigami.Page {
 
                         text: "0 0 dB"
                         enabled: false
+
+                        displayComponent: Controls.Label {
+                            text: actionLevelValue.text
+                            textFormat: Text.RichText
+                            wrapMode: Text.Wrap
+                            enabled: false
+                        }
+
                     }
                 ]
 
@@ -425,11 +433,11 @@ Kirigami.Page {
                         if (isNaN(right) || right < minRightLevel)
                             right = minRightLevel;
 
-                        const localeLeft = left.toLocaleString(Qt.locale(), 'f', 0);
-                        const localeRight = right.toLocaleString(Qt.locale(), 'f', 0);
+                        const localeLeft = left.toLocaleString(Qt.locale(), 'f', 0).padStart(4, ' ');
+                        const localeRight = right.toLocaleString(Qt.locale(), 'f', 0).padStart(4, ' ');
                         const latency = Number(pipelineInstance.getPipeLineLatency()).toLocaleString(Qt.locale(), 'f', 1);
                         const rate = Number(pipelineInstance.getPipeLineRate()).toLocaleString(Qt.locale(), 'f', 1);
-                        actionLevelValue.text = `${localeLeft} ${localeRight} dB`;
+                        actionLevelValue.text = `<pre>${localeLeft} ${localeRight} dB</pre>`;
                         actionLatencyValue.text = `${latency} ms`;
                         actionRateValue.text = `${rate} kHz`;
                     }
