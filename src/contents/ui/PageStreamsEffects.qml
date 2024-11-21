@@ -447,9 +447,9 @@ Kirigami.Page {
                         if (isNaN(right) || right < minRightLevel)
                             right = minRightLevel;
 
-                        if (left > 0 || right > 0 && actionLevelSaturation.visible !== true)
+                        if ((left > 0 || right > 0) && actionLevelSaturation.visible !== true)
                             actionLevelSaturation.visible = true;
-                        else if (actionLevelSaturation.visible != false)
+                        else if (actionLevelSaturation.visible !== false)
                             actionLevelSaturation.visible = false;
                         const localeLeft = left.toLocaleString(Qt.locale(), 'f', 0).padStart(4, ' ');
                         const localeRight = right.toLocaleString(Qt.locale(), 'f', 0).padStart(4, ' ');
