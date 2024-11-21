@@ -59,25 +59,25 @@
             <label></label>
             <choices>
                 <choice name="lr_lr">
-                    <label>LR > LR (Stereo Default)</label>
+                    <label>LR &gt; LR (Stereo Default)</label>
                 </choice>
                 <choice name="lr_ms">
-                    <label>LR > MS (Stereo to Mid-Side)</label>
+                    <label>LR &gt; MS (Stereo to Mid-Side)</label>
                 </choice>
                 <choice name="ms_lr">
-                    <label>MS > LR (Mid-Side to Stereo)</label>
+                    <label>MS &gt; LR (Mid-Side to Stereo)</label>
                 </choice>
                 <choice name="lr_ll">
-                    <label>LR > LL (Mono Left Channel)</label>
+                    <label>LR &gt; LL (Mono Left Channel)</label>
                 </choice>
                 <choice name="lr_rr">
-                    <label>LR > RR (Mono Right Channel)</label>
+                    <label>LR &gt; RR (Mono Right Channel)</label>
                 </choice>
                 <choice name="lr_l_plus_r">
-                    <label>LR > L+R (Mono Sum L+R)</label>
+                    <label>LR &gt; L+R (Mono Sum L+R)</label>
                 </choice>
                 <choice name="lr_rl">
-                    <label>LR > RL (Stereo Flip Channels)</label>
+                    <label>LR &gt; RL (Stereo Flip Channels)</label>
                 </choice>
             </choices>
             <default>0</default>
