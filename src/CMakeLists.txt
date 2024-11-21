@@ -39,6 +39,7 @@ target_sources(easyeffects PRIVATE
     pw_model_modules.cpp
     pw_model_nodes.cpp
     spectrum.cpp
+    speex.cpp
     stereo_tools.cpp
     stream_input_effects.cpp
     stream_output_effects.cpp
@@ -53,6 +54,7 @@ target_include_directories(easyeffects PRIVATE
     ${LIBEBUR128_INCLUDE_DIRS}
     ${LIBFFTW3_INCLUDE_DIRS}
     ${LIBFFTW3f_INCLUDE_DIRS}
+    ${LIBSPEEXDSP_INCLUDE_DIRS}
     ${LIBZITACONVOLVER_INCLUDE_DIRS}
 )
 
@@ -75,6 +77,7 @@ target_link_libraries(easyeffects PRIVATE
     ${LIBEBUR128_LIBRARIES}
     ${LIBFFTW3_LIBRARIES}
     ${LIBFFTW3f_LIBRARIES}
+    ${LIBSPEEXDSP_LIBRARIES}
     ${LIBZITACONVOLVER}
 )
 
