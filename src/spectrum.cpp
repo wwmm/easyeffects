@@ -117,6 +117,10 @@ void Spectrum::setup() {
 
   lv2_wrapper->set_n_samples(n_samples);
 
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
+
   if (lv2_wrapper->get_rate() != rate) {
     util::debug(log_tag + " creating instance of comp delay x2 stereo for spectrum A/V sync");
     lv2_wrapper->create_instance(rate);

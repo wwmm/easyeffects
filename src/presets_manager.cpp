@@ -21,12 +21,19 @@
 #include <qfilesystemwatcher.h>
 #include <qqml.h>
 #include <qstandardpaths.h>
+#include <KLocalizedString>
 #include <QString>
 #include <exception>
 #include <filesystem>
+#include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
+#include <regex>
 #include <string>
+#include <utility>
 #include <vector>
 #include "config.h"
+#include "easyeffects_db_streaminputs.h"
+#include "easyeffects_db_streamoutputs.h"
 #include "preset_type.hpp"
 #include "tags_app.hpp"
 #include "util.hpp"
@@ -138,6 +145,177 @@ auto Manager::get_local_presets_name(const PresetType& preset_type) -> std::vect
   auto names = search_names(it);
 
   return names;
+}
+
+auto Manager::get_all_community_presets_paths(const PresetType& preset_type) -> std::vector<std::string> {
+  std::vector<std::string> cp_paths;
+
+  const auto scan_level = 2U;
+
+  const auto cp_dir_vect = (preset_type == PresetType::output) ? system_data_dir_output : system_data_dir_input;
+
+  for (const auto& cp_dir : cp_dir_vect) {
+    auto cp_fs_path = std::filesystem::path{cp_dir};
+
+    if (!std::filesystem::exists(cp_fs_path)) {
+      continue;
+    }
+
+    // Scan community package directories for 2 levels (the folder itself and only its subfolders).
+    auto it = std::filesystem::directory_iterator{cp_fs_path};
+
+    try {
+      while (it != std::filesystem::directory_iterator{}) {
+        if (auto package_path = it->path(); std::filesystem::is_directory(it->status())) {
+          const auto package_path_name = package_path.string();
+
+          util::debug("scan directory for community presets: " + package_path_name);
+
+          auto package_it = std::filesystem::directory_iterator{package_path};
+
+          /* When C++23 is available, the following line is enough:
+          cp_paths.append_range(
+              scan_community_package_recursive(package_it, scan_level, package_path_name));
+          */
+
+          const auto sub_cp_vect = scan_community_package_recursive(package_it, scan_level, package_path_name);
+
+          cp_paths.insert(cp_paths.end(), sub_cp_vect.cbegin(), sub_cp_vect.cend());
+        }
+
+        ++it;
+      }
+    } catch (const std::exception& e) {
+      util::warning(e.what());
+    }
+  }
+
+  return cp_paths;
+}
+
+auto Manager::scan_community_package_recursive(std::filesystem::directory_iterator& it,
+                                               const uint& top_scan_level,
+                                               const std::string& origin) -> std::vector<std::string> {
+  const auto scan_level = top_scan_level - 1U;
+
+  std::vector<std::string> cp_paths;
+
+  try {
+    while (it != std::filesystem::directory_iterator{}) {
+      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().c_str() == json_ext) {
+        cp_paths.emplace_back(origin + "/" + it->path().stem().c_str());
+      } else if (scan_level > 0U && std::filesystem::is_directory(it->status())) {
+        if (auto path = it->path(); !path.empty()) {
+          auto subdir_it = std::filesystem::directory_iterator{path};
+
+          /* When C++23 is available, the following line is enough:
+          cp_paths.append_range(
+              scan_community_package_recursive(subdir_it, scan_level, origin + "/" + path.filename().c_str()));
+          */
+
+          const auto sub_cp_vect =
+              scan_community_package_recursive(subdir_it, scan_level, origin + "/" + path.filename().c_str());
+
+          cp_paths.insert(cp_paths.end(), sub_cp_vect.cbegin(), sub_cp_vect.cend());
+        }
+      }
+
+      ++it;
+    }
+  } catch (const std::exception& e) {
+    util::warning(e.what());
+  }
+
+  return cp_paths;
+}
+
+auto Manager::get_community_preset_info(const PresetType& preset_type,
+                                        const std::string& path) -> std::pair<std::string, std::string> {
+  // Given the full path of a community preset, extract and return:
+  // 1. the preset name
+  // 2. the package name
+
+  static const auto re_pack_name = std::regex(R"(^\/([^/]+))");
+  static const auto re_preset_name = std::regex(R"([^/]+$)");
+
+  const auto cp_dir_vect = (preset_type == PresetType::output) ? system_data_dir_output : system_data_dir_input;
+
+  for (const auto& cp_dir : cp_dir_vect) {
+    // In order to extract the package name, let's check if
+    // the preset belongs to the selected system data directory.
+
+    const auto cp_dir_size = cp_dir.size();
+
+    // Skip if the lenght of the path is shorter than `cp_dir + "/"`.
+    if (path.size() <= cp_dir_size + 1U) {
+      continue;
+    }
+
+    // Check if the preset is contained in the selected system data directory.
+    // starts_with gets a string_view, so we use the version with character array.
+    if (!path.starts_with(cp_dir.c_str())) {
+      continue;
+    }
+
+    // Extract the package name.
+    std::smatch pack_match;
+
+    // Get the subdirectory/package.
+    // - Full match: "/pack_name"
+    // - Group 1: "pack_name"
+    std::regex_search(path.cbegin() + cp_dir_size, path.cend(), pack_match, re_pack_name);
+
+    // Skip if the match failed.
+    if (pack_match.size() != 2U) {
+      continue;
+    }
+
+    // Extract the preset name.
+    std::smatch name_match;
+
+    std::regex_search(path.cbegin() + cp_dir_size, path.cend(), name_match, re_preset_name);
+
+    // Skip if the match failed.
+    if (name_match.size() != 1U) {
+      continue;
+    }
+
+    return std::make_pair(name_match.str(0), pack_match.str(1));
+  }
+
+  util::warning("can't extract info strings for the community preset: " + path);
+
+  // Placeholders in case of issues
+  return std::make_pair(i18n("Community Preset").toStdString(), i18n("Package").toStdString());
+}
+
+void Manager::save_blocklist(const PresetType& preset_type, nlohmann::json& json) {
+  std::vector<std::string> blocklist;
+
+  switch (preset_type) {
+    case PresetType::output: {
+      const auto list = db::StreamOutputs::blocklist();
+
+      for (const auto& l : list) {
+        blocklist.push_back(l.toStdString());
+      }
+
+      json["output"]["blocklist"] = blocklist;
+
+      break;
+    }
+    case PresetType::input: {
+      const auto list = db::StreamInputs::blocklist();
+
+      for (const auto& l : list) {
+        blocklist.push_back(l.toStdString());
+      }
+
+      json["input"]["blocklist"] = blocklist;
+
+      break;
+    }
+  }
 }
 
 }  // namespace presets

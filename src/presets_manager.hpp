@@ -22,8 +22,12 @@
 #include <qfilesystemwatcher.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
+#include <qtypes.h>
 #include <filesystem>
+#include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
 #include <string>
+#include <utility>
 #include <vector>
 #include "preset_type.hpp"
 
@@ -60,6 +64,11 @@ class Manager : public QObject {
 
   auto get_local_presets_name(const PresetType& preset_type) -> std::vector<std::string>;
 
+  auto get_all_community_presets_paths(const PresetType& preset_type) -> std::vector<std::string>;
+
+  auto get_community_preset_info(const PresetType& preset_type,
+                                 const std::string& path) -> std::pair<std::string, std::string>;
+
  signals:
   // signal sending title and description strings
   void presetLoadError(const QString& msg1, const QString& msg2);
@@ -75,6 +84,12 @@ class Manager : public QObject {
   QFileSystemWatcher user_output_watcher, user_input_watcher, autoload_output_watcher, autoload_input_watcher;
 
   static void create_user_directory(const std::filesystem::path& path);
+
+  auto scan_community_package_recursive(std::filesystem::directory_iterator& it,
+                                        const uint& top_scan_level,
+                                        const std::string& origin = "") -> std::vector<std::string>;
+
+  static void save_blocklist(const PresetType& preset_type, nlohmann::json& json);
 };
 
 }  // namespace presets
