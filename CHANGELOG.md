@@ -1,5 +1,17 @@
 # Changelog
  
+## 7.2.1
+### 2024-11-22
+
+ 
+### Features:
+
+### Bug fixes:
+- Fixed a bug that makes the application crash when the option Linux Studio Plugins package is not installed.
+
+### Other notes:
+
+ 
 ## 7.2.0
 ### 2024-11-20
 

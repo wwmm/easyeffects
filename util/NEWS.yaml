@@ -7,6 +7,19 @@ Description:
 - 
 
 - Bug fixes∶
+- 
+
+- Other notes∶
+- 
+
+---
+Version: 7.2.1
+Date: 2024-11-22
+
+Description: 
+- Features∶
+
+- Bug fixes∶
 - Fixed a bug that makes the application crash when the option Linux Studio Plugins package is not installed.
 
 - Other notes∶

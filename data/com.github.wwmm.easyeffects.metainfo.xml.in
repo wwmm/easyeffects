@@ -53,6 +53,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.2.1" date="2024-11-22T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Bug fixes:</li>
+          <li>Fixed a bug that makes the application crash when the option Linux Studio Plugins package is not installed.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.2.0" date="2024-11-20T00:00:00Z">
       <description>
         <ul>
