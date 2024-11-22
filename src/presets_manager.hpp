@@ -19,11 +19,13 @@
 
 #pragma once
 
+#include <qfilesystemwatcher.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
 #include <filesystem>
 #include <string>
 #include <vector>
+#include "preset_type.hpp"
 
 namespace presets {
 
@@ -36,7 +38,7 @@ class Manager : public QObject {
   auto operator=(const Manager&) -> Manager& = delete;
   Manager(const Manager&&) = delete;
   auto operator=(const Manager&&) -> Manager& = delete;
-  ~Manager() override;
+  ~Manager() override = default;
 
   static Manager& self() {
     static Manager pm;
@@ -54,17 +56,23 @@ class Manager : public QObject {
 
   const std::string json_ext = ".json";
 
+  auto search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string>;
+
+  auto get_local_presets_name(const PresetType& preset_type) -> std::vector<std::string>;
+
  signals:
   // signal sending title and description strings
   void presetLoadError(const QString& msg1, const QString& msg2);
 
  private:
-  std::string user_config_dir;
+  std::string app_config_dir;
 
   std::filesystem::path user_input_dir, user_output_dir, user_irs_dir, user_rnnoise_dir, autoload_input_dir,
       autoload_output_dir;
 
   std::vector<std::string> system_data_dir_input, system_data_dir_output, system_data_dir_irs, system_data_dir_rnnoise;
+
+  QFileSystemWatcher user_output_watcher, user_input_watcher, autoload_output_watcher, autoload_input_watcher;
 
   static void create_user_directory(const std::filesystem::path& path);
 };

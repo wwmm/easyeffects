@@ -18,21 +18,31 @@
  */
 
 #include "presets_manager.hpp"
+#include <qfilesystemwatcher.h>
+#include <qqml.h>
 #include <qstandardpaths.h>
+#include <QString>
+#include <exception>
 #include <filesystem>
+#include <string>
+#include <vector>
+#include "config.h"
+#include "preset_type.hpp"
 #include "tags_app.hpp"
 #include "util.hpp"
 
 namespace presets {
 
 Manager::Manager()
-    : user_config_dir(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation).toStdString()),
-      user_input_dir(user_config_dir + "/easyeffects/input"),
-      user_output_dir(user_config_dir + "/easyeffects/output"),
-      user_irs_dir(user_config_dir + "/easyeffects/irs"),
-      user_rnnoise_dir(user_config_dir + "/easyeffects/rnnoise"),
-      autoload_input_dir(user_config_dir + "/easyeffects/autoload/input"),
-      autoload_output_dir(user_config_dir + "/easyeffects/autoload/output") {
+    : app_config_dir(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation).toStdString()),
+      user_input_dir(app_config_dir + "/input"),
+      user_output_dir(app_config_dir + "/output"),
+      user_irs_dir(app_config_dir + "/irs"),
+      user_rnnoise_dir(app_config_dir + "/rnnoise"),
+      autoload_input_dir(app_config_dir + "/autoload/input"),
+      autoload_output_dir(app_config_dir + "/autoload/output") {
+  qmlRegisterSingletonInstance<presets::Manager>("EEpresets", VERSION_MAJOR, VERSION_MINOR, "EEpresetsManager", this);
+
   // Initialize input and output directories for community presets.
   // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox).
   if (std::filesystem::is_regular_file(tags::app::flatpak_info_file)) {
@@ -43,16 +53,13 @@ Manager::Manager()
   }
 
   // Regular paths.
-  //   for (const gchar* const* xdg_data_dirs = g_get_system_data_dirs(); *xdg_data_dirs != nullptr;) {
-  for (const auto& dir : QStandardPaths::standardLocations(QStandardPaths::AppLocalDataLocation)) {
-    // dir += dir.endsWith("/") ? "" : "/";
+  for (auto& dir : QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)) {
+    dir += dir.endsWith("/") ? "" : "/";
 
-    util::warning(dir.toStdString());
-
-    // system_data_dir_input.push_back(dir + "easyeffects/input");
-    // system_data_dir_output.push_back(dir + "easyeffects/output");
-    // system_data_dir_irs.push_back(dir + "easyeffects/irs");
-    // system_data_dir_rnnoise.push_back(dir + "easyeffects/rnnoise");
+    system_data_dir_input.push_back(dir.toStdString() + "input");
+    system_data_dir_output.push_back(dir.toStdString() + "output");
+    system_data_dir_irs.push_back(dir.toStdString() + "irs");
+    system_data_dir_rnnoise.push_back(dir.toStdString() + "rnnoise");
   }
 
   // create user presets directories
@@ -63,9 +70,31 @@ Manager::Manager()
   create_user_directory(user_rnnoise_dir);
   create_user_directory(autoload_input_dir);
   create_user_directory(autoload_output_dir);
-}
 
-Manager::~Manager() {}
+  user_output_watcher.addPath(QString::fromStdString(user_output_dir.string()));
+
+  connect(&user_output_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
+
+  });
+
+  user_input_watcher.addPath(QString::fromStdString(user_input_dir.string()));
+
+  connect(&user_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
+
+  });
+
+  autoload_output_watcher.addPath(QString::fromStdString(autoload_output_dir.string()));
+
+  connect(&autoload_output_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
+
+  });
+
+  autoload_input_watcher.addPath(QString::fromStdString(autoload_input_dir.string()));
+
+  connect(&autoload_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
+
+  });
+}
 
 void Manager::create_user_directory(const std::filesystem::path& path) {
   if (std::filesystem::is_directory(path)) {
@@ -81,6 +110,34 @@ void Manager::create_user_directory(const std::filesystem::path& path) {
   }
 
   util::warning("failed to create user presets directory: " + path.string());
+}
+
+auto Manager::search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string> {
+  std::vector<std::string> names;
+
+  try {
+    while (it != std::filesystem::directory_iterator{}) {
+      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().c_str() == json_ext) {
+        names.emplace_back(it->path().stem().c_str());
+      }
+
+      ++it;
+    }
+  } catch (const std::exception& e) {
+    util::warning(e.what());
+  }
+
+  return names;
+}
+
+auto Manager::get_local_presets_name(const PresetType& preset_type) -> std::vector<std::string> {
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+
+  auto it = std::filesystem::directory_iterator{conf_dir};
+
+  auto names = search_names(it);
+
+  return names;
 }
 
 }  // namespace presets
