@@ -47,22 +47,23 @@ Spectrum::Spectrum(const std::string& tag,
   // Precompute the Hann window, which is an expensive operation.
   // https://en.wikipedia.org/wiki/Hann_function
   for (size_t n = 0; n < n_bands; n++) {
-    hann_window[n] = 0.5F * (1.0F - std::cos(2.0F * std::numbers::pi_v<float> *
-        static_cast<float>(n) / static_cast<float>(n_bands-1)));
+    hann_window[n] =
+        0.5F *
+        (1.0F - std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(n_bands - 1)));
   }
 
   complex_output = fftwf_alloc_complex(n_bands);
 
   plan = fftwf_plan_dft_r2c_1d(static_cast<int>(n_bands), real_input.data(), complex_output, FFTW_ESTIMATE);
 
-
-
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo");
 
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {
-    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo is not installed, spectrum will not have A/V sync compensation");
+    util::debug(log_tag +
+                "http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo is not installed, spectrum will not have A/V sync "
+                "compensation");
   }
 
   lv2_wrapper->set_control_port_value("mode_l", 2);
@@ -76,8 +77,6 @@ Spectrum::Spectrum(const std::string& tag,
 
   lv2_wrapper->bind_key_int<"time_l", "avsync-delay">(settings);
   lv2_wrapper->bind_key_int<"time_r", "avsync-delay">(settings);
-
-
 
   g_signal_connect(settings, "changed::show", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                      auto* self = static_cast<Spectrum*>(user_data);
@@ -115,6 +114,10 @@ void Spectrum::setup() {
 
   lv2_wrapper->set_n_samples(n_samples);
 
+  if (!lv2_wrapper->found_plugin) {
+    return;
+  }
+
   if (lv2_wrapper->get_rate() != rate) {
     util::debug(log_tag + " creating instance of comp delay x2 stereo for spectrum A/V sync");
     lv2_wrapper->create_instance(rate);
@@ -135,15 +138,14 @@ void Spectrum::process(std::span<float>& left_in,
   // delay the visualization of the spectrum by the reported latency
   // of the output device, so that the spectrum is visually in sync
   // with the audio as experienced by the user. (A/V sync)
-  if ( lv2_wrapper->found_plugin && lv2_wrapper->has_instance() ) {
+  if (lv2_wrapper->found_plugin && lv2_wrapper->has_instance()) {
     lv2_wrapper->connect_data_ports(left_in, right_in, left_delayed, right_delayed);
     lv2_wrapper->run();
 
     // Downmix the latest n_bands samples from the delayed signal.
     if (n_samples < n_bands) {
       // Drop the oldest quantum.
-      std::memmove(&latest_samples_mono[0], &latest_samples_mono[n_samples],
-          (n_bands - n_samples) * sizeof(float));
+      std::memmove(&latest_samples_mono[0], &latest_samples_mono[n_samples], (n_bands - n_samples) * sizeof(float));
 
       // Copy the new quantum.
       for (size_t n = 0; n < n_samples; n++) {
@@ -152,15 +154,14 @@ void Spectrum::process(std::span<float>& left_in,
     } else {
       // Copy the latest n_bands samples.
       for (size_t n = 0; n < n_bands; n++)
-        latest_samples_mono[n] = 0.5F * (left_delayed[n_samples - n_bands + n] +
-                                        right_delayed[n_samples - n_bands + n]);
+        latest_samples_mono[n] =
+            0.5F * (left_delayed[n_samples - n_bands + n] + right_delayed[n_samples - n_bands + n]);
     }
   } else {
     // Downmix the latest n_bands samples from the non-delayed signal.
     if (n_samples < n_bands) {
       // Drop the oldest quantum.
-      std::memmove(&latest_samples_mono[0], &latest_samples_mono[n_samples],
-          (n_bands - n_samples) * sizeof(float));
+      std::memmove(&latest_samples_mono[0], &latest_samples_mono[n_samples], (n_bands - n_samples) * sizeof(float));
 
       // Copy the new quantum.
       for (size_t n = 0; n < n_samples; n++) {
@@ -169,8 +170,7 @@ void Spectrum::process(std::span<float>& left_in,
     } else {
       // Copy the latest n_bands samples.
       for (size_t n = 0; n < n_bands; n++)
-        latest_samples_mono[n] = 0.5F * (left_in[n_samples - n_bands + n] +
-                                        right_in[n_samples - n_bands + n]);
+        latest_samples_mono[n] = 0.5F * (left_in[n_samples - n_bands + n] + right_in[n_samples - n_bands + n]);
     }
   }
 
@@ -247,7 +247,7 @@ std::tuple<uint, uint, double*> Spectrum::compute_magnitudes() {
 
   // Buffer with data is at the index which was found inside db_control.
   int index = curr_control & DB_BIT_IDX;
-  float *buf = db_buffers[index].data();
+  float* buf = db_buffers[index].data();
 
   // https://en.wikipedia.org/wiki/Hann_function
   for (size_t n = 0; n < n_bands; n++) {

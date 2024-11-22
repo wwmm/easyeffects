@@ -7,10 +7,9 @@ Description:
 - 
 
 - Bug fixes∶
-- 
+- Fixed a bug that makes the application crash when the option Linux Studio Plugins package is not installed.
 
 - Other notes∶
-- 
 
 ---
 Version: 7.2.0
