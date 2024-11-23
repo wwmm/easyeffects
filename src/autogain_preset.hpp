@@ -19,4 +19,20 @@
 
 #pragma once
 
-enum class PresetType { input, output };
+#include <nlohmann/json_fwd.hpp>
+#include <string>
+#include "easyeffects_db_autogain.h"
+#include "pipeline_type.hpp"
+#include "plugin_preset_base.hpp"
+
+class AutoGainPreset : public PluginPresetBase {
+ public:
+  explicit AutoGainPreset(PipelineType pipeline_type, const std::string& instance_name);
+
+ private:
+  db::Autogain* settings = nullptr;
+
+  void save(nlohmann::json& json) override;
+
+  void load(const nlohmann::json& json) override;
+};

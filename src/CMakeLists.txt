@@ -12,6 +12,7 @@ kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})
 
 target_sources(easyeffects PRIVATE
     autogain.cpp
+    autogain_preset.cpp
     bass_enhancer.cpp
     command_line_parser.cpp
     compressor.cpp

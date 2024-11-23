@@ -18,28 +18,18 @@
  */
 
 #include "plugin_preset_base.hpp"
-#include "preset_type.hpp"
+#include <string>
+#include <utility>
+#include "pipeline_type.hpp"
 
-PluginPresetBase::PluginPresetBase(const char* schema_id,
-                                   const char* schema_path_input,
-                                   const char* schema_path_output,
-                                   PresetType preset_type,
-                                   const int& index)
-    : index(index), preset_type(preset_type) {
-  switch (preset_type) {
-    case PresetType::input:
+PluginPresetBase::PluginPresetBase(PipelineType pipeline_type, std::string instance_name)
+    : instance_name(std::move(instance_name)), pipeline_type(pipeline_type) {
+  switch (pipeline_type) {
+    case PipelineType::input:
       section = "input";
-
-      // settings = g_settings_new_with_path(schema_id, (schema_path_input + util::to_string(index) + "/").c_str());
       break;
-    case PresetType::output:
+    case PipelineType::output:
       section = "output";
-
-      // settings = g_settings_new_with_path(schema_id, (schema_path_output + util::to_string(index) + "/").c_str());
       break;
   }
-}
-
-PluginPresetBase::~PluginPresetBase() {
-  // g_object_unref(settings);
 }

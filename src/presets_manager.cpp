@@ -39,12 +39,13 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include "autogain_preset.hpp"
 #include "config.h"
 #include "easyeffects_db.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
+#include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
-#include "preset_type.hpp"
 #include "tags_app.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
@@ -148,8 +149,8 @@ auto Manager::search_names(std::filesystem::directory_iterator& it) -> std::vect
   return names;
 }
 
-auto Manager::get_local_presets_name(const PresetType& preset_type) -> std::vector<std::string> {
-  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+auto Manager::get_local_presets_name(const PipelineType& pipeline_type) -> std::vector<std::string> {
+  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
 
   auto it = std::filesystem::directory_iterator{conf_dir};
 
@@ -158,12 +159,12 @@ auto Manager::get_local_presets_name(const PresetType& preset_type) -> std::vect
   return names;
 }
 
-auto Manager::get_all_community_presets_paths(const PresetType& preset_type) -> std::vector<std::string> {
+auto Manager::get_all_community_presets_paths(const PipelineType& pipeline_type) -> std::vector<std::string> {
   std::vector<std::string> cp_paths;
 
   const auto scan_level = 2U;
 
-  const auto cp_dir_vect = (preset_type == PresetType::output) ? system_data_dir_output : system_data_dir_input;
+  const auto cp_dir_vect = (pipeline_type == PipelineType::output) ? system_data_dir_output : system_data_dir_input;
 
   for (const auto& cp_dir : cp_dir_vect) {
     auto cp_fs_path = std::filesystem::path{cp_dir};
@@ -240,7 +241,7 @@ auto Manager::scan_community_package_recursive(std::filesystem::directory_iterat
   return cp_paths;
 }
 
-auto Manager::get_community_preset_info(const PresetType& preset_type,
+auto Manager::get_community_preset_info(const PipelineType& pipeline_type,
                                         const std::string& path) -> std::pair<std::string, std::string> {
   // Given the full path of a community preset, extract and return:
   // 1. the preset name
@@ -249,7 +250,7 @@ auto Manager::get_community_preset_info(const PresetType& preset_type,
   static const auto re_pack_name = std::regex(R"(^\/([^/]+))");
   static const auto re_preset_name = std::regex(R"([^/]+$)");
 
-  const auto cp_dir_vect = (preset_type == PresetType::output) ? system_data_dir_output : system_data_dir_input;
+  const auto cp_dir_vect = (pipeline_type == PipelineType::output) ? system_data_dir_output : system_data_dir_input;
 
   for (const auto& cp_dir : cp_dir_vect) {
     // In order to extract the package name, let's check if
@@ -300,11 +301,11 @@ auto Manager::get_community_preset_info(const PresetType& preset_type,
   return std::make_pair(i18n("Community Preset").toStdString(), i18n("Package").toStdString());
 }
 
-void Manager::save_blocklist(const PresetType& preset_type, nlohmann::json& json) {
+void Manager::save_blocklist(const PipelineType& pipeline_type, nlohmann::json& json) {
   std::vector<std::string> blocklist;
 
-  switch (preset_type) {
-    case PresetType::output: {
+  switch (pipeline_type) {
+    case PipelineType::output: {
       const auto list = db::StreamOutputs::blocklist();
 
       for (const auto& l : list) {
@@ -315,7 +316,7 @@ void Manager::save_blocklist(const PresetType& preset_type, nlohmann::json& json
 
       break;
     }
-    case PresetType::input: {
+    case PipelineType::input: {
       const auto list = db::StreamInputs::blocklist();
 
       for (const auto& l : list) {
@@ -329,11 +330,11 @@ void Manager::save_blocklist(const PresetType& preset_type, nlohmann::json& json
   }
 }
 
-auto Manager::load_blocklist(const PresetType& preset_type, const nlohmann::json& json) -> bool {
+auto Manager::load_blocklist(const PipelineType& pipeline_type, const nlohmann::json& json) -> bool {
   std::vector<std::string> blocklist;
 
-  switch (preset_type) {
-    case PresetType::input: {
+  switch (pipeline_type) {
+    case PipelineType::input: {
       try {
         auto list = json.at("input").at("blocklist").get<std::vector<std::string>>();
 
@@ -362,7 +363,7 @@ auto Manager::load_blocklist(const PresetType& preset_type, const nlohmann::json
 
       break;
     }
-    case PresetType::output: {
+    case PipelineType::output: {
       try {
         auto list = json.at("output").at("blocklist").get<std::vector<std::string>>();
 
@@ -396,15 +397,15 @@ auto Manager::load_blocklist(const PresetType& preset_type, const nlohmann::json
   return true;
 }
 
-void Manager::save_preset_file(const PresetType& preset_type, const std::string& name) {
+void Manager::save_preset_file(const PipelineType& pipeline_type, const std::string& name) {
   nlohmann::json json;
 
   std::filesystem::path output_file;
 
-  save_blocklist(preset_type, json);
+  save_blocklist(pipeline_type, json);
 
-  switch (preset_type) {
-    case PresetType::output: {
+  switch (pipeline_type) {
+    case PipelineType::output: {
       const auto plugins = db::StreamOutputs::plugins();
 
       std::vector<std::string> list;
@@ -417,13 +418,13 @@ void Manager::save_preset_file(const PresetType& preset_type, const std::string&
 
       json["output"]["plugins_order"] = list;
 
-      write_plugins_preset(preset_type, plugins, json);
+      write_plugins_preset(pipeline_type, plugins, json);
 
       output_file = user_output_dir / std::filesystem::path{name + json_ext};
 
       break;
     }
-    case PresetType::input: {
+    case PipelineType::input: {
       const auto plugins = db::StreamInputs::plugins();
 
       std::vector<std::string> list;
@@ -436,7 +437,7 @@ void Manager::save_preset_file(const PresetType& preset_type, const std::string&
 
       json["input"]["plugins_order"] = list;
 
-      write_plugins_preset(preset_type, plugins, json);
+      write_plugins_preset(pipeline_type, plugins, json);
 
       output_file = user_input_dir / std::filesystem::path{name + json_ext};
 
@@ -453,22 +454,22 @@ void Manager::save_preset_file(const PresetType& preset_type, const std::string&
   util::debug("saved preset: " + output_file.string());
 }
 
-void Manager::add(const PresetType& preset_type, const std::string& name) {
+void Manager::add(const PipelineType& pipeline_type, const std::string& name) {
   // This method assumes the filename is valid.
 
-  for (const auto& p : get_local_presets_name(preset_type)) {
+  for (const auto& p : get_local_presets_name(pipeline_type)) {
     if (p == name) {
       return;
     }
   }
 
-  save_preset_file(preset_type, name);
+  save_preset_file(pipeline_type, name);
 }
 
-void Manager::remove(const PresetType& preset_type, const std::string& name) {
+void Manager::remove(const PipelineType& pipeline_type, const std::string& name) {
   std::filesystem::path preset_file;
 
-  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
 
   preset_file = conf_dir / std::filesystem::path{name + json_ext};
 
@@ -479,18 +480,18 @@ void Manager::remove(const PresetType& preset_type, const std::string& name) {
   }
 }
 
-auto Manager::read_effects_pipeline_from_preset(const PresetType& preset_type,
+auto Manager::read_effects_pipeline_from_preset(const PipelineType& pipeline_type,
                                                 const std::filesystem::path& input_file,
                                                 nlohmann::json& json,
                                                 std::vector<std::string>& plugins) -> bool {
-  const auto* preset_type_str = (preset_type == PresetType::input) ? "input" : "output";
+  const auto* pipeline_type_str = (pipeline_type == PipelineType::input) ? "input" : "output";
 
   try {
     std::ifstream is(input_file);
 
     is >> json;
 
-    for (const auto& p : json.at(preset_type_str).at("plugins_order").get<std::vector<std::string>>()) {
+    for (const auto& p : json.at(pipeline_type_str).at("plugins_order").get<std::vector<std::string>>()) {
       for (const auto& v : tags::plugin_name::Model::self().getBaseNames()) {
         if (p.starts_with(v.toStdString())) {
           /*
@@ -526,11 +527,11 @@ auto Manager::read_effects_pipeline_from_preset(const PresetType& preset_type,
     new_list.append(QString::fromStdString(app));
   }
 
-  switch (preset_type) {
-    case PresetType::input:
+  switch (pipeline_type) {
+    case PipelineType::input:
       db::StreamInputs::setPlugins(new_list);
       break;
-    case PresetType::output:
+    case PipelineType::output:
       db::StreamOutputs::setPlugins(new_list);
       break;
   }
@@ -538,11 +539,11 @@ auto Manager::read_effects_pipeline_from_preset(const PresetType& preset_type,
   return true;
 }
 
-auto Manager::read_plugins_preset(const PresetType& preset_type,
+auto Manager::read_plugins_preset(const PipelineType& pipeline_type,
                                   const std::vector<std::string>& plugins,
                                   const nlohmann::json& json) -> bool {
   for (const auto& name : plugins) {
-    if (auto wrapper = create_wrapper(preset_type, QString::fromStdString(name)); wrapper != std::nullopt) {
+    if (auto wrapper = create_wrapper(pipeline_type, QString::fromStdString(name)); wrapper != std::nullopt) {
       try {
         if (wrapper.has_value()) {
           wrapper.value()->read(json);
@@ -564,9 +565,11 @@ auto Manager::read_plugins_preset(const PresetType& preset_type,
   return true;
 }
 
-void Manager::write_plugins_preset(const PresetType& preset_type, const QStringList& plugins, nlohmann::json& json) {
+void Manager::write_plugins_preset(const PipelineType& pipeline_type,
+                                   const QStringList& plugins,
+                                   nlohmann::json& json) {
   for (const auto& name : plugins) {
-    if (auto wrapper = create_wrapper(preset_type, name); wrapper != std::nullopt) {
+    if (auto wrapper = create_wrapper(pipeline_type, name); wrapper != std::nullopt) {
       if (wrapper.has_value()) {
         wrapper.value()->write(json);
       }
@@ -574,19 +577,19 @@ void Manager::write_plugins_preset(const PresetType& preset_type, const QStringL
   }
 }
 
-auto Manager::load_preset_file(const PresetType& preset_type, const std::filesystem::path& input_file) -> bool {
+auto Manager::load_preset_file(const PipelineType& pipeline_type, const std::filesystem::path& input_file) -> bool {
   nlohmann::json json;
 
   std::vector<std::string> plugins;
 
   // Read effects_pipeline
-  if (!read_effects_pipeline_from_preset(preset_type, input_file, json, plugins)) {
+  if (!read_effects_pipeline_from_preset(pipeline_type, input_file, json, plugins)) {
     return false;
   }
 
   // After the plugin order list, load the blocklist and then
   // apply the parameters of the loaded plugins.
-  if (load_blocklist(preset_type, json) && read_plugins_preset(preset_type, plugins, json)) {
+  if (load_blocklist(pipeline_type, json) && read_plugins_preset(pipeline_type, plugins, json)) {
     util::debug("successfully loaded the preset: " + input_file.string());
 
     return true;
@@ -595,8 +598,8 @@ auto Manager::load_preset_file(const PresetType& preset_type, const std::filesys
   return false;
 }
 
-auto Manager::load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool {
-  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+auto Manager::load_local_preset_file(const PipelineType& pipeline_type, const std::string& name) -> bool {
+  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
 
   const auto input_file = conf_dir / std::filesystem::path{name + json_ext};
 
@@ -607,18 +610,18 @@ auto Manager::load_local_preset_file(const PresetType& preset_type, const std::s
     return false;
   }
 
-  set_last_preset_keys(preset_type, name);
+  set_last_preset_keys(pipeline_type, name);
 
-  const auto loaded = load_preset_file(preset_type, input_file);
+  const auto loaded = load_preset_file(pipeline_type, input_file);
 
   if (!loaded) {
-    set_last_preset_keys(preset_type);
+    set_last_preset_keys(pipeline_type);
   }
 
   return loaded;
 }
 
-auto Manager::load_community_preset_file(const PresetType& preset_type,
+auto Manager::load_community_preset_file(const PipelineType& pipeline_type,
                                          const std::string& full_path_stem,
                                          const std::string& package_name) -> bool {
   const auto input_file = std::filesystem::path{full_path_stem + json_ext};
@@ -630,18 +633,18 @@ auto Manager::load_community_preset_file(const PresetType& preset_type,
     return false;
   }
 
-  set_last_preset_keys(preset_type, input_file.stem().string(), package_name);
+  set_last_preset_keys(pipeline_type, input_file.stem().string(), package_name);
 
-  const auto loaded = load_preset_file(preset_type, input_file);
+  const auto loaded = load_preset_file(pipeline_type, input_file);
 
   if (!loaded) {
-    set_last_preset_keys(preset_type);
+    set_last_preset_keys(pipeline_type);
   }
 
   return loaded;
 }
 
-void Manager::import_from_filesystem(const PresetType& preset_type, const std::string& file_path) {
+void Manager::import_from_filesystem(const PipelineType& pipeline_type, const std::string& file_path) {
   // When importing presets from the filesystem, we overwrite the file if it already exists.
 
   std::filesystem::path p{file_path};
@@ -656,7 +659,7 @@ void Manager::import_from_filesystem(const PresetType& preset_type, const std::s
     return;
   }
 
-  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
 
   const std::filesystem::path out_path = conf_dir / p.filename();
 
@@ -670,7 +673,7 @@ void Manager::import_from_filesystem(const PresetType& preset_type, const std::s
   }
 }
 
-auto Manager::import_addons_from_community_package(const PresetType& preset_type,
+auto Manager::import_addons_from_community_package(const PipelineType& pipeline_type,
                                                    const std::filesystem::path& path,
                                                    const std::string& package) -> bool {
   /* Here we parse the json community preset in order to import the list of addons:
@@ -693,7 +696,7 @@ auto Manager::import_addons_from_community_package(const PresetType& preset_type
     std::vector<std::string> conv_irs;
     std::vector<std::string> rn_models;
 
-    const auto* pt_key = (preset_type == PresetType::output) ? "output" : "input";
+    const auto* pt_key = (pipeline_type == PipelineType::output) ? "output" : "input";
 
     // Fill conv_irs and rn_models vectors extracting the addon names from
     // the json preset and append the respective file extension.
@@ -713,8 +716,11 @@ auto Manager::import_addons_from_community_package(const PresetType& preset_type
 
       bool found = false;
 
-      for (const auto& xdg_dir : system_data_dir_irs) {
-        if (util::search_filename(std::filesystem::path{xdg_dir + "/" + package}, irs_name, path, 3U)) {
+      for (auto xdg_dir : system_data_dir_irs) {
+        xdg_dir.append("/");
+        xdg_dir.append(package);
+
+        if (util::search_filename(std::filesystem::path{xdg_dir}, irs_name, path, 3U)) {
           const auto out_path = std::filesystem::path{user_irs_dir} / irs_name;
 
           std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
@@ -739,8 +745,11 @@ auto Manager::import_addons_from_community_package(const PresetType& preset_type
 
       bool found = false;
 
-      for (const auto& xdg_dir : system_data_dir_rnnoise) {
-        if (util::search_filename(std::filesystem::path{xdg_dir + "/" + package}, model_name, path, 3U)) {
+      for (auto xdg_dir : system_data_dir_rnnoise) {
+        xdg_dir.append("/");
+        xdg_dir.append(package);
+
+        if (util::search_filename(std::filesystem::path{xdg_dir}, model_name, path, 3U)) {
           const auto out_path = std::filesystem::path{user_rnnoise_dir} / model_name;
 
           std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
@@ -768,7 +777,7 @@ auto Manager::import_addons_from_community_package(const PresetType& preset_type
   }
 }
 
-void Manager::import_from_community_package(const PresetType& preset_type,
+void Manager::import_from_community_package(const PipelineType& pipeline_type,
                                             const std::string& file_path,
                                             const std::string& package) {
   // When importing presets from a community package, we do NOT overwrite
@@ -800,7 +809,7 @@ void Manager::import_from_community_package(const PresetType& preset_type,
 
   static const auto max_copy_attempts = 10;
 
-  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir.string() : user_input_dir.string();
+  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir.string() : user_input_dir.string();
 
   std::filesystem::path out_path;
 
@@ -835,7 +844,7 @@ void Manager::import_from_community_package(const PresetType& preset_type,
   }
 
   // Now we know that the preset is OK to be copied, but we first check for addons.
-  if (!import_addons_from_community_package(preset_type, p, package)) {
+  if (!import_addons_from_community_package(pipeline_type, p, package)) {
     util::warning("can't import addons for the community preset: " + p.string() +
                   "; import stage aborted, please reload the community preset list");
 
@@ -849,7 +858,7 @@ void Manager::import_from_community_package(const PresetType& preset_type,
   util::debug("successfully imported the community preset to: " + out_path.string());
 }
 
-void Manager::add_autoload(const PresetType& preset_type,
+void Manager::add_autoload(const PipelineType& pipeline_type,
                            const std::string& preset_name,
                            const std::string& device_name,
                            const std::string& device_description,
@@ -858,11 +867,11 @@ void Manager::add_autoload(const PresetType& preset_type,
 
   std::filesystem::path output_file;
 
-  switch (preset_type) {
-    case PresetType::output:
+  switch (pipeline_type) {
+    case PipelineType::output:
       output_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
       break;
-    case PresetType::input:
+    case PipelineType::input:
       output_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
       break;
   }
@@ -879,17 +888,17 @@ void Manager::add_autoload(const PresetType& preset_type,
   util::debug("added autoload preset file: " + output_file.string());
 }
 
-void Manager::remove_autoload(const PresetType& preset_type,
+void Manager::remove_autoload(const PipelineType& pipeline_type,
                               const std::string& preset_name,
                               const std::string& device_name,
                               const std::string& device_profile) {
   std::filesystem::path input_file;
 
-  switch (preset_type) {
-    case PresetType::output:
+  switch (pipeline_type) {
+    case PipelineType::output:
       input_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
       break;
-    case PresetType::input:
+    case PipelineType::input:
       input_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
       break;
   }
@@ -911,16 +920,16 @@ void Manager::remove_autoload(const PresetType& preset_type,
   }
 }
 
-auto Manager::find_autoload(const PresetType& preset_type,
+auto Manager::find_autoload(const PipelineType& pipeline_type,
                             const std::string& device_name,
                             const std::string& device_profile) -> std::string {
   std::filesystem::path input_file;
 
-  switch (preset_type) {
-    case PresetType::output:
+  switch (pipeline_type) {
+    case PipelineType::output:
       input_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
       break;
-    case PresetType::input:
+    case PipelineType::input:
       input_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
       break;
   }
@@ -938,10 +947,10 @@ auto Manager::find_autoload(const PresetType& preset_type,
   return json.value("preset-name", "");
 }
 
-void Manager::autoload(const PresetType& preset_type,
+void Manager::autoload(const PipelineType& pipeline_type,
                        const std::string& device_name,
                        const std::string& device_profile) {
-  const auto name = find_autoload(preset_type, device_name, device_profile);
+  const auto name = find_autoload(pipeline_type, device_name, device_profile);
 
   if (name.empty()) {
     return;
@@ -949,19 +958,19 @@ void Manager::autoload(const PresetType& preset_type,
 
   util::debug("autoloading local preset " + name + " for device " + device_name);
 
-  load_local_preset_file(preset_type, name);
+  load_local_preset_file(pipeline_type, name);
 }
 
-auto Manager::get_autoload_profiles(const PresetType& preset_type) -> std::vector<nlohmann::json> {
+auto Manager::get_autoload_profiles(const PipelineType& pipeline_type) -> std::vector<nlohmann::json> {
   std::filesystem::path autoload_dir;
   std::vector<nlohmann::json> list;
 
-  switch (preset_type) {
-    case PresetType::output:
+  switch (pipeline_type) {
+    case PipelineType::output:
       autoload_dir = autoload_output_dir;
 
       break;
-    case PresetType::input:
+    case PipelineType::input:
       autoload_dir = autoload_input_dir;
       break;
   }
@@ -993,53 +1002,53 @@ auto Manager::get_autoload_profiles(const PresetType& preset_type) -> std::vecto
   }
 }
 
-void Manager::set_last_preset_keys(const PresetType& preset_type,
+void Manager::set_last_preset_keys(const PipelineType& pipeline_type,
                                    const std::string& preset_name,
                                    const std::string& package_name) {
   // In order to avoid race conditions, the community package key should be set before the preset name.
   if (package_name.empty()) {
-    switch (preset_type) {
-      case PresetType::input:
+    switch (pipeline_type) {
+      case PipelineType::input:
         db::Main::setLastLoadedInputCommunityPackage("");
         break;
-      case PresetType::output:
+      case PipelineType::output:
         db::Main::setLastLoadedOutputCommunityPackage("");
         break;
     }
   } else {
-    switch (preset_type) {
-      case PresetType::input:
+    switch (pipeline_type) {
+      case PipelineType::input:
         db::Main::setLastLoadedInputCommunityPackage(QString::fromStdString(package_name));
         break;
-      case PresetType::output:
+      case PipelineType::output:
         db::Main::setLastLoadedOutputCommunityPackage(QString::fromStdString(package_name));
         break;
     }
   }
 
   if (preset_name.empty()) {
-    switch (preset_type) {
-      case PresetType::input:
+    switch (pipeline_type) {
+      case PipelineType::input:
         db::Main::setLastLoadedInputPreset("");
         break;
-      case PresetType::output:
+      case PipelineType::output:
         db::Main::setLastLoadedOutputPreset("");
         break;
     }
   } else {
-    switch (preset_type) {
-      case PresetType::input:
+    switch (pipeline_type) {
+      case PipelineType::input:
         db::Main::setLastLoadedInputPreset(QString::fromStdString(package_name));
         break;
-      case PresetType::output:
+      case PipelineType::output:
         db::Main::setLastLoadedOutputPreset(QString::fromStdString(package_name));
         break;
     }
   }
 }
 
-auto Manager::preset_file_exists(const PresetType& preset_type, const std::string& name) -> bool {
-  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+auto Manager::preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool {
+  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
 
   const auto input_file = conf_dir / std::filesystem::path{name + json_ext};
 
@@ -1113,116 +1122,114 @@ void Manager::notify_error(const PresetError& preset_error, const std::string& p
   }
 }
 
-auto Manager::create_wrapper(const PresetType& preset_type,
+auto Manager::create_wrapper(const PipelineType& pipeline_type,
                              const QString& filter_name) -> std::optional<std::unique_ptr<PluginPresetBase>> {
-  auto instance_id = tags::plugin_name::get_id(filter_name);
-
   if (filter_name.startsWith(tags::plugin_name::BaseName::autogain)) {
-    // return std::make_unique<AutoGainPreset>(preset_type, instance_id);
+    return std::make_unique<AutoGainPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
-    // return std::make_unique<BassEnhancerPreset>(preset_type, instance_id);
+    // return std::make_unique<BassEnhancerPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
-    // return std::make_unique<BassLoudnessPreset>(preset_type, instance_id);
+    // return std::make_unique<BassLoudnessPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::compressor)) {
-    // return std::make_unique<CompressorPreset>(preset_type, instance_id);
+    // return std::make_unique<CompressorPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::convolver)) {
-    // return std::make_unique<ConvolverPreset>(preset_type, instance_id);
+    // return std::make_unique<ConvolverPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
-    // return std::make_unique<CrossfeedPreset>(preset_type, instance_id);
+    // return std::make_unique<CrossfeedPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
-    // return std::make_unique<CrystalizerPreset>(preset_type, instance_id);
+    // return std::make_unique<CrystalizerPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::deesser)) {
-    // return std::make_unique<DeesserPreset>(preset_type, instance_id);
+    // return std::make_unique<DeesserPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::delay)) {
-    // return std::make_unique<DelayPreset>(preset_type, instance_id);
+    // return std::make_unique<DelayPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
-    // return std::make_unique<DeepFilterNetPreset>(preset_type, instance_id);
+    // return std::make_unique<DeepFilterNetPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
-    // return std::make_unique<EchoCancellerPreset>(preset_type, instance_id);
+    // return std::make_unique<EchoCancellerPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::equalizer)) {
-    // return std::make_unique<EqualizerPreset>(preset_type, instance_id);
+    // return std::make_unique<EqualizerPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::exciter)) {
-    // return std::make_unique<ExciterPreset>(preset_type, instance_id);
+    // return std::make_unique<ExciterPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::expander)) {
-    // return std::make_unique<ExpanderPreset>(preset_type, instance_id);
+    // return std::make_unique<ExpanderPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::filter)) {
-    // return std::make_unique<FilterPreset>(preset_type, instance_id);
+    // return std::make_unique<FilterPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::gate)) {
-    // return std::make_unique<GatePreset>(preset_type, instance_id);
+    // return std::make_unique<GatePreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
-    // return std::make_unique<LevelMeterPreset>(preset_type, instance_id);
+    // return std::make_unique<LevelMeterPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::limiter)) {
-    // return std::make_unique<LimiterPreset>(preset_type, instance_id);
+    // return std::make_unique<LimiterPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::loudness)) {
-    // return std::make_unique<LoudnessPreset>(preset_type, instance_id);
+    // return std::make_unique<LoudnessPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::maximizer)) {
-    // return std::make_unique<MaximizerPreset>(preset_type, instance_id);
+    // return std::make_unique<MaximizerPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
-    // return std::make_unique<MultibandCompressorPreset>(preset_type, instance_id);
+    // return std::make_unique<MultibandCompressorPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
-    // return std::make_unique<MultibandGatePreset>(preset_type, instance_id);
+    // return std::make_unique<MultibandGatePreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::pitch)) {
-    // return std::make_unique<PitchPreset>(preset_type, instance_id);
+    // return std::make_unique<PitchPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::reverb)) {
-    // return std::make_unique<ReverbPreset>(preset_type, instance_id);
+    // return std::make_unique<ReverbPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
-    // return std::make_unique<RNNoisePreset>(preset_type, instance_id);
+    // return std::make_unique<RNNoisePreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::speex)) {
-    // return std::make_unique<SpeexPreset>(preset_type, instance_id);
+    // return std::make_unique<SpeexPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
-    // return std::make_unique<StereoToolsPreset>(preset_type, instance_id);
+    // return std::make_unique<StereoToolsPreset>(pipeline_type, filter_name.toStdString());
   }
 
   util::warning("The filter name " + filter_name.toStdString() + " base name could not be recognized");

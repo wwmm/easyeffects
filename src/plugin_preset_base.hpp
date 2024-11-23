@@ -19,25 +19,34 @@
 
 #pragma once
 
+#include <qhashfunctions.h>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <string>
-#include "preset_type.hpp"
+#include "db_manager.hpp"
+#include "pipeline_type.hpp"
 #include "util.hpp"
 
 class PluginPresetBase {
  public:
-  PluginPresetBase(const char* schema_id,
-                   const char* schema_path_input,
-                   const char* schema_path_output,
-                   PresetType preset_type,
-                   const int& index);
+  PluginPresetBase(PipelineType pipeline_type, std::string instance_name);
   PluginPresetBase(const PluginPresetBase&) = delete;
   auto operator=(const PluginPresetBase&) -> PluginPresetBase& = delete;
   PluginPresetBase(const PluginPresetBase&&) = delete;
   auto operator=(const PluginPresetBase&&) -> PluginPresetBase& = delete;
 
-  virtual ~PluginPresetBase();
+  virtual ~PluginPresetBase() = default;
+
+  template <typename dbType>
+  auto get_db_instance(const PipelineType& pipeline_type) -> dbType* {
+    auto instance = db::Manager::self().get_plugin_db<dbType>(pipeline_type, QString::fromStdString(instance_name));
+
+    if (instance == nullptr) {
+      util::warning("Failed to get the database instance for: " + instance_name);
+    }
+
+    return instance;
+  }
 
   void write(nlohmann::json& json) {
     try {
@@ -59,46 +68,17 @@ class PluginPresetBase {
     // For simplicity, exceptions raised while reading presets parameters
     // should be handled outside this method.
 
-    // g_settings_delay(settings);
-
     load(json);
-
-    // g_settings_apply(settings);
   }
 
  protected:
-  int index = 0;
-
   std::string section, instance_name;
 
-  PresetType preset_type;
+  PipelineType pipeline_type;
 
   virtual void save(nlohmann::json& json) = 0;
 
   virtual void load(const nlohmann::json& json) = 0;
-
-  // template <typename T>
-  // auto get_default(GSettings* settings, const std::string& key) -> T {
-  //   GVariant* variant = g_settings_get_default_value(settings, key.c_str());
-
-  //   T value{};
-
-  //   if constexpr (std::is_same_v<T, double>) {
-  //     value = g_variant_get_double(variant);
-  //   } else if constexpr (std::is_same_v<T, int>) {
-  //     value = g_variant_get_int32(variant);
-  //   } else if constexpr (std::is_same_v<T, bool>) {
-  //     value = g_variant_get_boolean(variant);
-  //   } else if constexpr (std::is_same_v<T, gchar*>) {
-  //     gsize* length = nullptr;
-
-  //     value = const_cast<gchar*>(g_variant_get_string(variant, length));
-  //   }
-
-  //   g_variant_unref(variant);
-
-  //   return value;
-  // }
 
   // template <typename T>
   // void update_key(const nlohmann::json& json,
@@ -145,16 +125,4 @@ class PluginPresetBase {
   // }
 
  private:
-  /*
-    Very naive test for equal values...
-  */
-
-  // template <typename T>
-  // auto is_different(const T& a, const T& b) -> bool {
-  //   if constexpr (std::is_same_v<T, gchar*>) {
-  //     return static_cast<bool>(g_strcmp0(a, b) != 0);
-  //   }
-
-  //   return a != b;
-  // }
 };

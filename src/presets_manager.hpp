@@ -32,8 +32,8 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
-#include "preset_type.hpp"
 
 namespace presets {
 
@@ -66,62 +66,62 @@ class Manager : public QObject {
 
   auto search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string>;
 
-  auto get_local_presets_name(const PresetType& preset_type) -> std::vector<std::string>;
+  auto get_local_presets_name(const PipelineType& pipeline_type) -> std::vector<std::string>;
 
-  auto get_all_community_presets_paths(const PresetType& preset_type) -> std::vector<std::string>;
+  auto get_all_community_presets_paths(const PipelineType& pipeline_type) -> std::vector<std::string>;
 
-  auto get_community_preset_info(const PresetType& preset_type,
+  auto get_community_preset_info(const PipelineType& pipeline_type,
                                  const std::string& path) -> std::pair<std::string, std::string>;
 
-  static void write_plugins_preset(const PresetType& preset_type, const QStringList& plugins, nlohmann::json& json);
+  static void write_plugins_preset(const PipelineType& pipeline_type, const QStringList& plugins, nlohmann::json& json);
 
-  void add(const PresetType& preset_type, const std::string& name);
+  void add(const PipelineType& pipeline_type, const std::string& name);
 
-  void save_preset_file(const PresetType& preset_type, const std::string& name);
+  void save_preset_file(const PipelineType& pipeline_type, const std::string& name);
 
-  void remove(const PresetType& preset_type, const std::string& name);
+  void remove(const PipelineType& pipeline_type, const std::string& name);
 
-  auto load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool;
+  auto load_local_preset_file(const PipelineType& pipeline_type, const std::string& name) -> bool;
 
-  auto load_community_preset_file(const PresetType& preset_type,
+  auto load_community_preset_file(const PipelineType& pipeline_type,
                                   const std::string& full_path_stem,
                                   const std::string& package_name) -> bool;
 
-  auto read_effects_pipeline_from_preset(const PresetType& preset_type,
+  auto read_effects_pipeline_from_preset(const PipelineType& pipeline_type,
                                          const std::filesystem::path& input_file,
                                          nlohmann::json& json,
                                          std::vector<std::string>& plugins) -> bool;
 
-  auto read_plugins_preset(const PresetType& preset_type,
+  auto read_plugins_preset(const PipelineType& pipeline_type,
                            const std::vector<std::string>& plugins,
                            const nlohmann::json& json) -> bool;
 
-  auto find_autoload(const PresetType& preset_type,
+  auto find_autoload(const PipelineType& pipeline_type,
                      const std::string& device_name,
                      const std::string& device_profile) -> std::string;
 
-  void import_from_filesystem(const PresetType& preset_type, const std::string& file_path);
+  void import_from_filesystem(const PipelineType& pipeline_type, const std::string& file_path);
 
-  void import_from_community_package(const PresetType& preset_type,
+  void import_from_community_package(const PipelineType& pipeline_type,
                                      const std::string& file_path,
                                      const std::string& package);
 
-  void add_autoload(const PresetType& preset_type,
+  void add_autoload(const PipelineType& pipeline_type,
                     const std::string& preset_name,
                     const std::string& device_name,
                     const std::string& device_description,
                     const std::string& device_profile);
 
-  void remove_autoload(const PresetType& preset_type,
+  void remove_autoload(const PipelineType& pipeline_type,
                        const std::string& preset_name,
                        const std::string& device_name,
                        const std::string& device_profile);
 
-  void autoload(const PresetType& preset_type, const std::string& device_name, const std::string& device_profile);
+  void autoload(const PipelineType& pipeline_type, const std::string& device_name, const std::string& device_profile);
 
-  auto get_autoload_profiles(const PresetType& preset_type) -> std::vector<nlohmann::json>;
+  auto get_autoload_profiles(const PipelineType& pipeline_type) -> std::vector<nlohmann::json>;
 
-  auto preset_file_exists(const PresetType& preset_type, const std::string& name) -> bool;
+  auto preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool;
 
  signals:
   // signal sending title and description strings
@@ -143,23 +143,23 @@ class Manager : public QObject {
                                         const uint& top_scan_level,
                                         const std::string& origin = "") -> std::vector<std::string>;
 
-  static void save_blocklist(const PresetType& preset_type, nlohmann::json& json);
+  static void save_blocklist(const PipelineType& pipeline_type, nlohmann::json& json);
 
-  auto load_blocklist(const PresetType& preset_type, const nlohmann::json& json) -> bool;
+  auto load_blocklist(const PipelineType& pipeline_type, const nlohmann::json& json) -> bool;
 
-  auto import_addons_from_community_package(const PresetType& preset_type,
+  auto import_addons_from_community_package(const PipelineType& pipeline_type,
                                             const std::filesystem::path& path,
                                             const std::string& package) -> bool;
 
-  static void set_last_preset_keys(const PresetType& preset_type,
+  static void set_last_preset_keys(const PipelineType& pipeline_type,
                                    const std::string& preset_name = "",
                                    const std::string& package_name = "");
 
-  auto load_preset_file(const PresetType& preset_type, const std::filesystem::path& input_file) -> bool;
+  auto load_preset_file(const PipelineType& pipeline_type, const std::filesystem::path& input_file) -> bool;
 
   void notify_error(const PresetError& preset_error, const std::string& plugin_name = "");
 
-  static auto create_wrapper(const PresetType& preset_type,
+  static auto create_wrapper(const PipelineType& pipeline_type,
                              const QString& filter_name) -> std::optional<std::unique_ptr<PluginPresetBase>>;
 };
 
