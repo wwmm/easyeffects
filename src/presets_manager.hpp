@@ -19,16 +19,20 @@
 
 #pragma once
 
+#include <qcontainerfwd.h>
 #include <qfilesystemwatcher.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <filesystem>
+#include <memory>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
+#include <optional>
 #include <string>
 #include <utility>
 #include <vector>
+#include "plugin_preset_base.hpp"
 #include "preset_type.hpp"
 
 namespace presets {
@@ -69,11 +73,26 @@ class Manager : public QObject {
   auto get_community_preset_info(const PresetType& preset_type,
                                  const std::string& path) -> std::pair<std::string, std::string>;
 
+  static void write_plugins_preset(const PresetType& preset_type, const QStringList& plugins, nlohmann::json& json);
+
+  void save_preset_file(const PresetType& preset_type, const std::string& name);
+
+  void remove(const PresetType& preset_type, const std::string& name);
+
   auto load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool;
 
   auto load_community_preset_file(const PresetType& preset_type,
                                   const std::string& full_path_stem,
                                   const std::string& package_name) -> bool;
+
+  auto read_effects_pipeline_from_preset(const PresetType& preset_type,
+                                         const std::filesystem::path& input_file,
+                                         nlohmann::json& json,
+                                         std::vector<std::string>& plugins) -> bool;
+
+  auto read_plugins_preset(const PresetType& preset_type,
+                           const std::vector<std::string>& plugins,
+                           const nlohmann::json& json) -> bool;
 
   auto find_autoload(const PresetType& preset_type,
                      const std::string& device_name,
@@ -127,6 +146,9 @@ class Manager : public QObject {
   auto load_preset_file(const PresetType& preset_type, const std::filesystem::path& input_file) -> bool;
 
   void notify_error(const PresetError& preset_error, const std::string& plugin_name = "");
+
+  static auto create_wrapper(const PresetType& preset_type,
+                             const QString& filter_name) -> std::optional<std::unique_ptr<PluginPresetBase>>;
 };
 
 }  // namespace presets

@@ -29,17 +29,21 @@
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
+#include <memory>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
+#include <optional>
 #include <regex>
 #include <stdexcept>
 #include <string>
+#include <string_view>
 #include <utility>
 #include <vector>
 #include "config.h"
 #include "easyeffects_db.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
+#include "plugin_preset_base.hpp"
 #include "preset_type.hpp"
 #include "tags_app.hpp"
 #include "tags_plugin_name.hpp"
@@ -392,23 +396,189 @@ auto Manager::load_blocklist(const PresetType& preset_type, const nlohmann::json
   return true;
 }
 
+void Manager::save_preset_file(const PresetType& preset_type, const std::string& name) {
+  nlohmann::json json;
+
+  std::filesystem::path output_file;
+
+  save_blocklist(preset_type, json);
+
+  switch (preset_type) {
+    case PresetType::output: {
+      const auto plugins = db::StreamOutputs::plugins();
+
+      std::vector<std::string> list;
+
+      list.reserve(plugins.size());
+
+      for (const auto& p : plugins) {
+        list.push_back(p.toStdString());
+      }
+
+      json["output"]["plugins_order"] = list;
+
+      write_plugins_preset(preset_type, plugins, json);
+
+      output_file = user_output_dir / std::filesystem::path{name + json_ext};
+
+      break;
+    }
+    case PresetType::input: {
+      const auto plugins = db::StreamInputs::plugins();
+
+      std::vector<std::string> list;
+
+      list.reserve(plugins.size());
+
+      for (const auto& p : plugins) {
+        list.push_back(p.toStdString());
+      }
+
+      json["input"]["plugins_order"] = list;
+
+      write_plugins_preset(preset_type, plugins, json);
+
+      output_file = user_input_dir / std::filesystem::path{name + json_ext};
+
+      break;
+    }
+  }
+
+  std::ofstream o(output_file.c_str());
+
+  o << std::setw(4) << json << '\n';
+
+  // std::cout << std::setw(4) << json << std::endl;
+
+  util::debug("saved preset: " + output_file.string());
+}
+
+void Manager::remove(const PresetType& preset_type, const std::string& name) {
+  std::filesystem::path preset_file;
+
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+
+  preset_file = conf_dir / std::filesystem::path{name + json_ext};
+
+  if (std::filesystem::exists(preset_file)) {
+    std::filesystem::remove(preset_file);
+
+    util::debug("removed preset: " + preset_file.string());
+  }
+}
+
+auto Manager::read_effects_pipeline_from_preset(const PresetType& preset_type,
+                                                const std::filesystem::path& input_file,
+                                                nlohmann::json& json,
+                                                std::vector<std::string>& plugins) -> bool {
+  const auto* preset_type_str = (preset_type == PresetType::input) ? "input" : "output";
+
+  try {
+    std::ifstream is(input_file);
+
+    is >> json;
+
+    for (const auto& p : json.at(preset_type_str).at("plugins_order").get<std::vector<std::string>>()) {
+      for (const auto& v : tags::plugin_name::Model::self().getBaseNames()) {
+        if (p.starts_with(v.toStdString())) {
+          /*
+            Old format presets do not have the instance id number in the filter names. They are equal to the
+            base name.
+          */
+
+          if (p != v) {
+            plugins.push_back(p);
+          } else {
+            plugins.push_back(p + "#0");
+          }
+
+          break;
+        }
+      }
+    }
+  } catch (const nlohmann::json::exception& e) {
+    notify_error(PresetError::pipeline_format);
+
+    util::warning(e.what());
+
+    return false;
+  } catch (...) {
+    notify_error(PresetError::pipeline_generic);
+
+    return false;
+  }
+
+  auto new_list = QStringList();
+
+  for (const auto& app : plugins) {
+    new_list.append(QString::fromStdString(app));
+  }
+
+  switch (preset_type) {
+    case PresetType::input:
+      db::StreamInputs::setPlugins(new_list);
+      break;
+    case PresetType::output:
+      db::StreamOutputs::setPlugins(new_list);
+      break;
+  }
+
+  return true;
+}
+
+auto Manager::read_plugins_preset(const PresetType& preset_type,
+                                  const std::vector<std::string>& plugins,
+                                  const nlohmann::json& json) -> bool {
+  for (const auto& name : plugins) {
+    if (auto wrapper = create_wrapper(preset_type, QString::fromStdString(name)); wrapper != std::nullopt) {
+      try {
+        if (wrapper.has_value()) {
+          wrapper.value()->read(json);
+        }
+      } catch (const nlohmann::json::exception& e) {
+        notify_error(PresetError::plugin_format, name);
+
+        util::warning(e.what());
+
+        return false;
+      } catch (...) {
+        notify_error(PresetError::plugin_generic, name);
+
+        return false;
+      }
+    }
+  }
+
+  return true;
+}
+
+void Manager::write_plugins_preset(const PresetType& preset_type, const QStringList& plugins, nlohmann::json& json) {
+  for (const auto& name : plugins) {
+    if (auto wrapper = create_wrapper(preset_type, name); wrapper != std::nullopt) {
+      if (wrapper.has_value()) {
+        wrapper.value()->write(json);
+      }
+    }
+  }
+}
+
 auto Manager::load_preset_file(const PresetType& preset_type, const std::filesystem::path& input_file) -> bool {
   nlohmann::json json;
 
   std::vector<std::string> plugins;
 
   // Read effects_pipeline
-  // if (!read_effects_pipeline_from_preset(preset_type, input_file, json, plugins)) {
-  //   return false;
-  // }
+  if (!read_effects_pipeline_from_preset(preset_type, input_file, json, plugins)) {
+    return false;
+  }
 
   // After the plugin order list, load the blocklist and then
   // apply the parameters of the loaded plugins.
-  // if (load_blocklist(preset_type, json) && read_plugins_preset(preset_type, plugins, json)) {
-  //   util::debug("successfully loaded the preset: " + input_file.string());
+  if (load_blocklist(preset_type, json) && read_plugins_preset(preset_type, plugins, json)) {
+    util::debug("successfully loaded the preset: " + input_file.string());
 
-  //   return true;
-  // }
+    return true;
+  }
 
   return false;
 }
@@ -721,6 +891,123 @@ void Manager::notify_error(const PresetError& preset_error, const std::string& p
     default:
       break;
   }
+}
+
+auto Manager::create_wrapper(const PresetType& preset_type,
+                             const QString& filter_name) -> std::optional<std::unique_ptr<PluginPresetBase>> {
+  auto instance_id = tags::plugin_name::get_id(filter_name);
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::autogain)) {
+    // return std::make_unique<AutoGainPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
+    // return std::make_unique<BassEnhancerPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
+    // return std::make_unique<BassLoudnessPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::compressor)) {
+    // return std::make_unique<CompressorPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::convolver)) {
+    // return std::make_unique<ConvolverPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
+    // return std::make_unique<CrossfeedPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
+    // return std::make_unique<CrystalizerPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::deesser)) {
+    // return std::make_unique<DeesserPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::delay)) {
+    // return std::make_unique<DelayPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
+    // return std::make_unique<DeepFilterNetPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
+    // return std::make_unique<EchoCancellerPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::equalizer)) {
+    // return std::make_unique<EqualizerPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::exciter)) {
+    // return std::make_unique<ExciterPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::expander)) {
+    // return std::make_unique<ExpanderPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::filter)) {
+    // return std::make_unique<FilterPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::gate)) {
+    // return std::make_unique<GatePreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
+    // return std::make_unique<LevelMeterPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::limiter)) {
+    // return std::make_unique<LimiterPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::loudness)) {
+    // return std::make_unique<LoudnessPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::maximizer)) {
+    // return std::make_unique<MaximizerPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
+    // return std::make_unique<MultibandCompressorPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
+    // return std::make_unique<MultibandGatePreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::pitch)) {
+    // return std::make_unique<PitchPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::reverb)) {
+    // return std::make_unique<ReverbPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
+    // return std::make_unique<RNNoisePreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::speex)) {
+    // return std::make_unique<SpeexPreset>(preset_type, instance_id);
+  }
+
+  if (filter_name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
+    // return std::make_unique<StereoToolsPreset>(preset_type, instance_id);
+  }
+
+  util::warning("The filter name " + filter_name.toStdString() + " base name could not be recognized");
+
+  return std::nullopt;
 }
 
 }  // namespace presets
