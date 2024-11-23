@@ -90,6 +90,10 @@ class Manager : public QObject {
                                         const std::string& origin = "") -> std::vector<std::string>;
 
   static void save_blocklist(const PresetType& preset_type, nlohmann::json& json);
+
+  auto load_blocklist(const PresetType& preset_type, const nlohmann::json& json) -> bool;
+
+  void notify_error(const PresetError& preset_error, const std::string& plugin_name = "");
 };
 
 }  // namespace presets

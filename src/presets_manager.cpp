@@ -18,9 +18,11 @@
  */
 
 #include "presets_manager.hpp"
+#include <qcontainerfwd.h>
 #include <qfilesystemwatcher.h>
 #include <qqml.h>
 #include <qstandardpaths.h>
+#include <qtmetamacros.h>
 #include <KLocalizedString>
 #include <QString>
 #include <exception>
@@ -28,6 +30,7 @@
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <regex>
+#include <stdexcept>
 #include <string>
 #include <utility>
 #include <vector>
@@ -36,6 +39,7 @@
 #include "easyeffects_db_streamoutputs.h"
 #include "preset_type.hpp"
 #include "tags_app.hpp"
+#include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 namespace presets {
@@ -315,6 +319,140 @@ void Manager::save_blocklist(const PresetType& preset_type, nlohmann::json& json
 
       break;
     }
+  }
+}
+
+auto Manager::load_blocklist(const PresetType& preset_type, const nlohmann::json& json) -> bool {
+  std::vector<std::string> blocklist;
+
+  switch (preset_type) {
+    case PresetType::input: {
+      try {
+        auto list = json.at("input").at("blocklist").get<std::vector<std::string>>();
+
+        auto new_list = QStringList();
+
+        for (const auto& app : list) {
+          new_list.append(QString::fromStdString(app));
+        }
+
+        db::StreamInputs::setBlocklist(new_list);
+      } catch (const nlohmann::json::exception& e) {
+        db::StreamInputs::setBlocklist(QStringList{});
+
+        notify_error(PresetError::blocklist_format);
+
+        util::warning(e.what());
+
+        return false;
+      } catch (...) {
+        db::StreamInputs::setBlocklist(QStringList{});
+
+        notify_error(PresetError::blocklist_generic);
+
+        return false;
+      }
+
+      break;
+    }
+    case PresetType::output: {
+      try {
+        auto list = json.at("output").at("blocklist").get<std::vector<std::string>>();
+
+        auto new_list = QStringList();
+
+        for (const auto& app : list) {
+          new_list.append(QString::fromStdString(app));
+        }
+
+        db::StreamOutputs::setBlocklist(new_list);
+      } catch (const nlohmann::json::exception& e) {
+        db::StreamOutputs::setBlocklist(QStringList{});
+
+        notify_error(PresetError::blocklist_format);
+
+        util::warning(e.what());
+
+        return false;
+      } catch (...) {
+        db::StreamOutputs::setBlocklist(QStringList{});
+
+        notify_error(PresetError::blocklist_generic);
+
+        return false;
+      }
+
+      break;
+    }
+  }
+
+  return true;
+}
+
+void Manager::notify_error(const PresetError& preset_error, const std::string& plugin_name) {
+  QString plugin_translated;
+
+  try {
+    const auto base_name = tags::plugin_name::Model::self().getBaseName(QString::fromStdString(plugin_name));
+    plugin_translated = tags::plugin_name::Model::self().translate(base_name) + ": ";
+  } catch (std::out_of_range& e) {
+    util::debug(e.what());
+  }
+
+  switch (preset_error) {
+    case PresetError::blocklist_format: {
+      util::warning(
+          "A parsing error occurred while trying to load the blocklist from the preset. The file could be invalid "
+          "or corrupted. Please check its content.");
+
+      Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"), i18n("Wrong Format in Excluded Apps List"));
+
+      break;
+    }
+    case PresetError::blocklist_generic: {
+      util::warning("A generic error occurred while trying to load the blocklist from the preset.");
+
+      Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"),
+                             i18n("Generic Error While Loading Excluded Apps List"));
+
+      break;
+    }
+    case PresetError::pipeline_format: {
+      util::warning(
+          "A parsing error occurred while trying to load the pipeline from the preset. The file could be invalid "
+          "or corrupted. Please check its content.");
+
+      Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"), i18n("Wrong Format in Effects List"));
+
+      break;
+    }
+    case PresetError::pipeline_generic: {
+      util::warning("A generic error occurred while trying to load the pipeline from the preset.");
+
+      Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"), i18n("Generic Error While Loading Effects List"));
+
+      break;
+    }
+    case PresetError::plugin_format: {
+      util::warning("A parsing error occurred while trying to load the " + plugin_name +
+                    " plugin from the preset. The file could be invalid or "
+                    "corrupted. Please check its content.");
+
+      Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"),
+                             plugin_translated + i18n("One or More Parameters Have a Wrong Format"));
+
+      break;
+    }
+    case PresetError::plugin_generic: {
+      util::warning("A generic error occurred while trying to load the " + plugin_name + " plugin from the preset.");
+
+      Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"),
+                             plugin_translated + i18n("Generic Error While Loading The Effect"));
+
+      break;
+    }
+    default:
+      break;
   }
 }
 

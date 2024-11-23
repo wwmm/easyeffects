@@ -116,4 +116,14 @@ auto get_id(const QString& name) -> QString {
   return match.hasMatch() ? match.captured(1) : "";
 }
 
+auto Model::getBaseName(const QString& name) -> QString {
+  for (const auto& key : modelMap.keys()) {
+    if (name.startsWith(key)) {
+      return key;
+    }
+  }
+
+  return "";
+}
+
 }  // namespace tags::plugin_name
