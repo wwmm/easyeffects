@@ -499,7 +499,7 @@ auto Manager::read_effects_pipeline_from_preset(const PipelineType& pipeline_typ
             base name.
           */
 
-          if (p != v) {
+          if (p != v.toStdString()) {
             plugins.push_back(p);
           } else {
             plugins.push_back(p + "#0");
