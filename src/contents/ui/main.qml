@@ -100,7 +100,7 @@ Kirigami.ApplicationWindow {
             visible: false
 
             MenuItem {
-                text: i18n("Preset: " + EEdbm.main.lastUsedPreset)
+                // text: i18n("Preset: " + EEdbm.main.lastUsedPreset)
                 enabled: false
             }
 

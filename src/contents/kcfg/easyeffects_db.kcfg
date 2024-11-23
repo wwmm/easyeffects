@@ -20,8 +20,20 @@
             <label>Show the Tray Icon</label>
             <default>true</default>
         </entry>
-        <entry name="lastUsedPreset" type="String">
-            <label>Last used preset.</label>
+        <entry name="lastLoadedInputPreset" type="String">
+            <label>Last used input preset.</label>
+            <default>""</default>
+        </entry>
+        <entry name="lastLoadedOutputPreset" type="String">
+            <label>Last used output preset.</label>
+            <default>""</default>
+        </entry>
+        <entry name="lastLoadedInputCommunityPackage" type="String">
+            <label>Last used input community package.</label>
+            <default>""</default>
+        </entry>
+        <entry name="lastLoadedOutputCommunityPackage" type="String">
+            <label>Last used output community package.</label>
             <default>""</default>
         </entry>
         <entry name="showNativePluginUi" type="Bool">

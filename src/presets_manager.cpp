@@ -27,6 +27,8 @@
 #include <QString>
 #include <exception>
 #include <filesystem>
+#include <fstream>
+#include <iomanip>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <regex>
@@ -35,6 +37,7 @@
 #include <utility>
 #include <vector>
 #include "config.h"
+#include "easyeffects_db.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
 #include "preset_type.hpp"
@@ -387,6 +390,270 @@ auto Manager::load_blocklist(const PresetType& preset_type, const nlohmann::json
   }
 
   return true;
+}
+
+auto Manager::load_preset_file(const PresetType& preset_type, const std::filesystem::path& input_file) -> bool {
+  nlohmann::json json;
+
+  std::vector<std::string> plugins;
+
+  // Read effects_pipeline
+  // if (!read_effects_pipeline_from_preset(preset_type, input_file, json, plugins)) {
+  //   return false;
+  // }
+
+  // After the plugin order list, load the blocklist and then
+  // apply the parameters of the loaded plugins.
+  // if (load_blocklist(preset_type, json) && read_plugins_preset(preset_type, plugins, json)) {
+  //   util::debug("successfully loaded the preset: " + input_file.string());
+
+  //   return true;
+  // }
+
+  return false;
+}
+
+auto Manager::load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool {
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+
+  const auto input_file = conf_dir / std::filesystem::path{name + json_ext};
+
+  // Check preset existence
+  if (!std::filesystem::exists(input_file)) {
+    util::debug("can't find the local preset \"" + name + "\" on the filesystem");
+
+    return false;
+  }
+
+  set_last_preset_keys(preset_type, name);
+
+  const auto loaded = load_preset_file(preset_type, input_file);
+
+  if (!loaded) {
+    set_last_preset_keys(preset_type);
+  }
+
+  return loaded;
+}
+
+auto Manager::load_community_preset_file(const PresetType& preset_type,
+                                         const std::string& full_path_stem,
+                                         const std::string& package_name) -> bool {
+  const auto input_file = std::filesystem::path{full_path_stem + json_ext};
+
+  // Check preset existence
+  if (!std::filesystem::exists(input_file)) {
+    util::warning("the community preset \"" + input_file.string() + "\" does not exist on the filesystem");
+
+    return false;
+  }
+
+  set_last_preset_keys(preset_type, input_file.stem().string(), package_name);
+
+  const auto loaded = load_preset_file(preset_type, input_file);
+
+  if (!loaded) {
+    set_last_preset_keys(preset_type);
+  }
+
+  return loaded;
+}
+
+void Manager::add_autoload(const PresetType& preset_type,
+                           const std::string& preset_name,
+                           const std::string& device_name,
+                           const std::string& device_description,
+                           const std::string& device_profile) {
+  nlohmann::json json;
+
+  std::filesystem::path output_file;
+
+  switch (preset_type) {
+    case PresetType::output:
+      output_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
+      break;
+    case PresetType::input:
+      output_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
+      break;
+  }
+
+  std::ofstream o(output_file);
+
+  json["device"] = device_name;
+  json["device-description"] = device_description;
+  json["device-profile"] = device_profile;
+  json["preset-name"] = preset_name;
+
+  o << std::setw(4) << json << '\n';
+
+  util::debug("added autoload preset file: " + output_file.string());
+}
+
+void Manager::remove_autoload(const PresetType& preset_type,
+                              const std::string& preset_name,
+                              const std::string& device_name,
+                              const std::string& device_profile) {
+  std::filesystem::path input_file;
+
+  switch (preset_type) {
+    case PresetType::output:
+      input_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
+      break;
+    case PresetType::input:
+      input_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
+      break;
+  }
+
+  if (!std::filesystem::is_regular_file(input_file)) {
+    return;
+  }
+
+  nlohmann::json json;
+
+  std::ifstream is(input_file);
+
+  is >> json;
+
+  if (preset_name == json.value("preset-name", "") && device_profile == json.value("device-profile", "")) {
+    std::filesystem::remove(input_file);
+
+    util::debug("removed autoload: " + input_file.string());
+  }
+}
+
+auto Manager::find_autoload(const PresetType& preset_type,
+                            const std::string& device_name,
+                            const std::string& device_profile) -> std::string {
+  std::filesystem::path input_file;
+
+  switch (preset_type) {
+    case PresetType::output:
+      input_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
+      break;
+    case PresetType::input:
+      input_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
+      break;
+  }
+
+  if (!std::filesystem::is_regular_file(input_file)) {
+    return "";
+  }
+
+  nlohmann::json json;
+
+  std::ifstream is(input_file);
+
+  is >> json;
+
+  return json.value("preset-name", "");
+}
+
+void Manager::autoload(const PresetType& preset_type,
+                       const std::string& device_name,
+                       const std::string& device_profile) {
+  const auto name = find_autoload(preset_type, device_name, device_profile);
+
+  if (name.empty()) {
+    return;
+  }
+
+  util::debug("autoloading local preset " + name + " for device " + device_name);
+
+  load_local_preset_file(preset_type, name);
+}
+
+auto Manager::get_autoload_profiles(const PresetType& preset_type) -> std::vector<nlohmann::json> {
+  std::filesystem::path autoload_dir;
+  std::vector<nlohmann::json> list;
+
+  switch (preset_type) {
+    case PresetType::output:
+      autoload_dir = autoload_output_dir;
+
+      break;
+    case PresetType::input:
+      autoload_dir = autoload_input_dir;
+      break;
+  }
+
+  auto it = std::filesystem::directory_iterator{autoload_dir};
+
+  try {
+    while (it != std::filesystem::directory_iterator{}) {
+      if (std::filesystem::is_regular_file(it->status())) {
+        if (it->path().extension().c_str() == json_ext) {
+          nlohmann::json json;
+
+          std::ifstream is(autoload_dir / it->path());
+
+          is >> json;
+
+          list.push_back(json);
+        }
+      }
+
+      ++it;
+    }
+
+    return list;
+  } catch (const std::exception& e) {
+    util::warning(e.what());
+
+    return list;
+  }
+}
+
+void Manager::set_last_preset_keys(const PresetType& preset_type,
+                                   const std::string& preset_name,
+                                   const std::string& package_name) {
+  // In order to avoid race conditions, the community package key should be set before the preset name.
+  if (package_name.empty()) {
+    switch (preset_type) {
+      case PresetType::input:
+        db::Main::setLastLoadedInputCommunityPackage("");
+        break;
+      case PresetType::output:
+        db::Main::setLastLoadedOutputCommunityPackage("");
+        break;
+    }
+  } else {
+    switch (preset_type) {
+      case PresetType::input:
+        db::Main::setLastLoadedInputCommunityPackage(QString::fromStdString(package_name));
+        break;
+      case PresetType::output:
+        db::Main::setLastLoadedOutputCommunityPackage(QString::fromStdString(package_name));
+        break;
+    }
+  }
+
+  if (preset_name.empty()) {
+    switch (preset_type) {
+      case PresetType::input:
+        db::Main::setLastLoadedInputPreset("");
+        break;
+      case PresetType::output:
+        db::Main::setLastLoadedOutputPreset("");
+        break;
+    }
+  } else {
+    switch (preset_type) {
+      case PresetType::input:
+        db::Main::setLastLoadedInputPreset(QString::fromStdString(package_name));
+        break;
+      case PresetType::output:
+        db::Main::setLastLoadedOutputPreset(QString::fromStdString(package_name));
+        break;
+    }
+  }
+}
+
+auto Manager::preset_file_exists(const PresetType& preset_type, const std::string& name) -> bool {
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+
+  const auto input_file = conf_dir / std::filesystem::path{name + json_ext};
+
+  return std::filesystem::exists(input_file);
 }
 
 void Manager::notify_error(const PresetError& preset_error, const std::string& plugin_name) {

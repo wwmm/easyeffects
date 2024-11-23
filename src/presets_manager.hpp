@@ -69,6 +69,33 @@ class Manager : public QObject {
   auto get_community_preset_info(const PresetType& preset_type,
                                  const std::string& path) -> std::pair<std::string, std::string>;
 
+  auto load_local_preset_file(const PresetType& preset_type, const std::string& name) -> bool;
+
+  auto load_community_preset_file(const PresetType& preset_type,
+                                  const std::string& full_path_stem,
+                                  const std::string& package_name) -> bool;
+
+  auto find_autoload(const PresetType& preset_type,
+                     const std::string& device_name,
+                     const std::string& device_profile) -> std::string;
+
+  void add_autoload(const PresetType& preset_type,
+                    const std::string& preset_name,
+                    const std::string& device_name,
+                    const std::string& device_description,
+                    const std::string& device_profile);
+
+  void remove_autoload(const PresetType& preset_type,
+                       const std::string& preset_name,
+                       const std::string& device_name,
+                       const std::string& device_profile);
+
+  void autoload(const PresetType& preset_type, const std::string& device_name, const std::string& device_profile);
+
+  auto get_autoload_profiles(const PresetType& preset_type) -> std::vector<nlohmann::json>;
+
+  auto preset_file_exists(const PresetType& preset_type, const std::string& name) -> bool;
+
  signals:
   // signal sending title and description strings
   void presetLoadError(const QString& msg1, const QString& msg2);
@@ -92,6 +119,12 @@ class Manager : public QObject {
   static void save_blocklist(const PresetType& preset_type, nlohmann::json& json);
 
   auto load_blocklist(const PresetType& preset_type, const nlohmann::json& json) -> bool;
+
+  static void set_last_preset_keys(const PresetType& preset_type,
+                                   const std::string& preset_name = "",
+                                   const std::string& package_name = "");
+
+  auto load_preset_file(const PresetType& preset_type, const std::filesystem::path& input_file) -> bool;
 
   void notify_error(const PresetError& preset_error, const std::string& plugin_name = "");
 };
