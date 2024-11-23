@@ -80,49 +80,5 @@ class PluginPresetBase {
 
   virtual void load(const nlohmann::json& json) = 0;
 
-  // template <typename T>
-  // void update_key(const nlohmann::json& json,
-  //                 GSettings* settings,
-  //                 const std::string& key,
-  //                 const std::string& json_key) {
-  //   T new_value;
-
-  //   if constexpr (!std::is_same_v<T, gchar*>) {
-  //     new_value = json.value(json_key, get_default<T>(settings, key));
-  //   } else {
-  //     std::string tmp = json.value(json_key, get_default<T>(settings, key));
-  //     new_value = g_strdup(tmp.c_str());
-  //   }
-
-  //   T current_value;
-
-  //   if constexpr (std::is_same_v<T, double>) {
-  //     current_value = g_settings_get_double(settings, key.c_str());
-  //   } else if constexpr (std::is_same_v<T, int>) {
-  //     current_value = g_settings_get_int(settings, key.c_str());
-  //   } else if constexpr (std::is_same_v<T, bool>) {
-  //     current_value = g_settings_get_boolean(settings, key.c_str());
-  //   } else if constexpr (std::is_same_v<T, gchar*>) {
-  //     current_value = g_settings_get_string(settings, key.c_str());
-  //   }
-
-  //   if (is_different(current_value, new_value)) {
-  //     if constexpr (std::is_same_v<T, double>) {
-  //       g_settings_set_double(settings, key.c_str(), new_value);
-  //     } else if constexpr (std::is_same_v<T, int>) {
-  //       g_settings_set_int(settings, key.c_str(), new_value);
-  //     } else if constexpr (std::is_same_v<T, bool>) {
-  //       g_settings_set_boolean(settings, key.c_str(), new_value);
-  //     } else if constexpr (std::is_same_v<T, gchar*>) {
-  //       g_settings_set_string(settings, key.c_str(), new_value);
-  //     }
-  //   }
-
-  //   if constexpr (std::is_same_v<T, gchar*>) {
-  //     g_free(new_value);
-  //     g_free(current_value);
-  //   }
-  // }
-
  private:
 };

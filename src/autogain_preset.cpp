@@ -32,31 +32,31 @@ AutoGainPreset::AutoGainPreset(PipelineType pipeline_type, const std::string& in
 void AutoGainPreset::save(nlohmann::json& json) {
   json[section][instance_name]["bypass"] = settings->bypass();
 
-  // json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = settings->inputGain();
 
-  // json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = settings->outputGain();
 
-  // json[section][instance_name]["target"] = g_settings_get_double(settings, "target");
+  json[section][instance_name]["target"] = settings->target();
 
-  // json[section][instance_name]["silence-threshold"] = g_settings_get_double(settings, "silence-threshold");
+  json[section][instance_name]["silence-threshold"] = settings->silenceThreshold();
 
-  // json[section][instance_name]["maximum-history"] = g_settings_get_int(settings, "maximum-history");
+  json[section][instance_name]["maximum-history"] = settings->maximumHistory();
 
-  // json[section][instance_name]["reference"] = util::gsettings_get_string(settings, "reference");
+  json[section][instance_name]["reference"] = settings->reference();
 }
 
 void AutoGainPreset::load(const nlohmann::json& json) {
   settings->setBypass(json.value("bypass", settings->defaultBypassValue()));
 
-  // update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
+  settings->setInputGain(json.value("input-gain", settings->defaultInputGainValue()));
 
-  // update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
+  settings->setOutputGain(json.value("output-gain", settings->defaultOutputGainValue()));
 
-  // update_key<double>(json.at(section).at(instance_name), settings, "target", "target");
+  settings->setTarget(json.value("target", settings->defaultTargetValue()));
 
-  // update_key<double>(json.at(section).at(instance_name), settings, "silence-threshold", "silence-threshold");
+  settings->setSilenceThreshold(json.value("silence-threshold", settings->defaultSilenceThresholdValue()));
 
-  // update_key<int>(json.at(section).at(instance_name), settings, "maximum-history", "maximum-history");
+  settings->setMaximumHistory(json.value("maximum-history", settings->defaultMaximumHistoryValue()));
 
-  // update_key<gchar*>(json.at(section).at(instance_name), settings, "reference", "reference");
+  settings->setReference(json.value("reference", settings->defaultReferenceValue()));
 }
