@@ -23,6 +23,7 @@
 #include <qqml.h>
 #include <qstandardpaths.h>
 #include <qtmetamacros.h>
+#include <qtypes.h>
 #include <KLocalizedString>
 #include <QString>
 #include <exception>
@@ -452,6 +453,18 @@ void Manager::save_preset_file(const PresetType& preset_type, const std::string&
   util::debug("saved preset: " + output_file.string());
 }
 
+void Manager::add(const PresetType& preset_type, const std::string& name) {
+  // This method assumes the filename is valid.
+
+  for (const auto& p : get_local_presets_name(preset_type)) {
+    if (p == name) {
+      return;
+    }
+  }
+
+  save_preset_file(preset_type, name);
+}
+
 void Manager::remove(const PresetType& preset_type, const std::string& name) {
   std::filesystem::path preset_file;
 
@@ -626,6 +639,214 @@ auto Manager::load_community_preset_file(const PresetType& preset_type,
   }
 
   return loaded;
+}
+
+void Manager::import_from_filesystem(const PresetType& preset_type, const std::string& file_path) {
+  // When importing presets from the filesystem, we overwrite the file if it already exists.
+
+  std::filesystem::path p{file_path};
+
+  if (!std::filesystem::is_regular_file(p)) {
+    util::warning(p.string() + " is not a file!");
+
+    return;
+  }
+
+  if (p.extension().c_str() != json_ext) {
+    return;
+  }
+
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir : user_input_dir;
+
+  const std::filesystem::path out_path = conf_dir / p.filename();
+
+  try {
+    std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
+
+    util::debug("imported preset to: " + out_path.string());
+  } catch (const std::exception& e) {
+    util::warning("can't import preset to: " + out_path.string());
+    util::warning(e.what());
+  }
+}
+
+auto Manager::import_addons_from_community_package(const PresetType& preset_type,
+                                                   const std::filesystem::path& path,
+                                                   const std::string& package) -> bool {
+  /* Here we parse the json community preset in order to import the list of addons:
+   * 1. Convolver Impulse Response Files
+   * 2. RNNoise Models
+   */
+
+  // This method assumes that the path is valid and package string is not empty,
+  // their check has already been made in import_from_community_package();
+  std::ifstream is(path);
+
+  nlohmann::json json;
+
+  const auto irs_ext = ".irs";
+  const auto rnnn_ext = ".rnnn";
+
+  try {
+    is >> json;
+
+    std::vector<std::string> conv_irs;
+    std::vector<std::string> rn_models;
+
+    const auto* pt_key = (preset_type == PresetType::output) ? "output" : "input";
+
+    // Fill conv_irs and rn_models vectors extracting the addon names from
+    // the json preset and append the respective file extension.
+    for (const auto& plugin : json.at(pt_key).at("plugins_order").get<std::vector<std::string>>()) {
+      if (plugin.starts_with(tags::plugin_name::BaseName::convolver.toStdString())) {
+        conv_irs.push_back(json.at(pt_key).at(plugin).at("kernel-name").get<std::string>() + irs_ext);
+      }
+
+      if (plugin.starts_with(tags::plugin_name::BaseName::rnnoise.toStdString())) {
+        rn_models.push_back(json.at(pt_key).at(plugin).at("model-name").get<std::string>() + rnnn_ext);
+      }
+    }
+
+    // For every filename of both vectors, search the full path and copy the file locally.
+    for (const auto& irs_name : conv_irs) {
+      std::string path;
+
+      bool found = false;
+
+      for (const auto& xdg_dir : system_data_dir_irs) {
+        if (util::search_filename(std::filesystem::path{xdg_dir + "/" + package}, irs_name, path, 3U)) {
+          const auto out_path = std::filesystem::path{user_irs_dir} / irs_name;
+
+          std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
+
+          util::debug("successfully imported community preset addon " + irs_name + " locally");
+
+          found = true;
+
+          break;
+        }
+      }
+
+      if (!found) {
+        util::warning("community preset addon " + irs_name + " not found!");
+
+        return false;
+      }
+    }
+
+    for (const auto& model_name : rn_models) {
+      std::string path;
+
+      bool found = false;
+
+      for (const auto& xdg_dir : system_data_dir_rnnoise) {
+        if (util::search_filename(std::filesystem::path{xdg_dir + "/" + package}, model_name, path, 3U)) {
+          const auto out_path = std::filesystem::path{user_rnnoise_dir} / model_name;
+
+          std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
+
+          util::debug("successfully imported community preset addon " + model_name + " locally");
+
+          found = true;
+
+          break;
+        }
+      }
+
+      if (!found) {
+        util::warning("community preset addon " + model_name + " not found!");
+
+        return false;
+      }
+    }
+
+    return true;
+  } catch (const std::exception& e) {
+    util::warning(e.what());
+
+    return false;
+  }
+}
+
+void Manager::import_from_community_package(const PresetType& preset_type,
+                                            const std::string& file_path,
+                                            const std::string& package) {
+  // When importing presets from a community package, we do NOT overwrite
+  // the local preset if it has the same name.
+
+  std::filesystem::path p{file_path};
+
+  if (!std::filesystem::exists(p) || package.empty()) {
+    util::warning(p.string() + " does not exist! Please reload the community preset list");
+
+    return;
+  }
+
+  if (!std::filesystem::is_regular_file(p)) {
+    util::warning(p.string() + " is not a file! Please reload the community preset list");
+
+    return;
+  }
+
+  if (p.extension().c_str() != json_ext) {
+    return;
+  }
+
+  bool preset_can_be_copied = false;
+
+  // We limit the max copy attempts in order to not flood the local directory
+  // if the user keeps clicking the import button.
+  uint i = 0U;
+
+  static const auto max_copy_attempts = 10;
+
+  const auto conf_dir = (preset_type == PresetType::output) ? user_output_dir.string() : user_input_dir.string();
+
+  std::filesystem::path out_path;
+
+  try {
+    do {
+      // In case of destination file already existing, we try to append
+      // an incremental numeric suffix.
+      const auto suffix = (i == 0U) ? "" : "-" + util::to_string(i);
+
+      out_path = conf_dir + "/" + p.stem().c_str() + suffix + json_ext;
+
+      if (!std::filesystem::exists(out_path)) {
+        preset_can_be_copied = true;
+
+        break;
+      }
+    } while (++i < max_copy_attempts);
+  } catch (const std::exception& e) {
+    util::warning("can't import the community preset: " + p.string());
+
+    util::warning(e.what());
+
+    return;
+  }
+
+  if (!preset_can_be_copied) {
+    util::warning("can't import the community preset: " + p.string());
+
+    util::warning("exceeded the maximum copy attempts; please delete or rename your local preset");
+
+    return;
+  }
+
+  // Now we know that the preset is OK to be copied, but we first check for addons.
+  if (!import_addons_from_community_package(preset_type, p, package)) {
+    util::warning("can't import addons for the community preset: " + p.string() +
+                  "; import stage aborted, please reload the community preset list");
+
+    util::warning("if the issue goes on, contact the maintainer of the community package");
+
+    return;
+  }
+
+  std::filesystem::copy_file(p, out_path);
+
+  util::debug("successfully imported the community preset to: " + out_path.string());
 }
 
 void Manager::add_autoload(const PresetType& preset_type,

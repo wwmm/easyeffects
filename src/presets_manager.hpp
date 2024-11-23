@@ -75,6 +75,8 @@ class Manager : public QObject {
 
   static void write_plugins_preset(const PresetType& preset_type, const QStringList& plugins, nlohmann::json& json);
 
+  void add(const PresetType& preset_type, const std::string& name);
+
   void save_preset_file(const PresetType& preset_type, const std::string& name);
 
   void remove(const PresetType& preset_type, const std::string& name);
@@ -97,6 +99,12 @@ class Manager : public QObject {
   auto find_autoload(const PresetType& preset_type,
                      const std::string& device_name,
                      const std::string& device_profile) -> std::string;
+
+  void import_from_filesystem(const PresetType& preset_type, const std::string& file_path);
+
+  void import_from_community_package(const PresetType& preset_type,
+                                     const std::string& file_path,
+                                     const std::string& package);
 
   void add_autoload(const PresetType& preset_type,
                     const std::string& preset_name,
@@ -138,6 +146,10 @@ class Manager : public QObject {
   static void save_blocklist(const PresetType& preset_type, nlohmann::json& json);
 
   auto load_blocklist(const PresetType& preset_type, const nlohmann::json& json) -> bool;
+
+  auto import_addons_from_community_package(const PresetType& preset_type,
+                                            const std::filesystem::path& path,
+                                            const std::string& package) -> bool;
 
   static void set_last_preset_keys(const PresetType& preset_type,
                                    const std::string& preset_name = "",
