@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-16 14:17+0000\n"
-"PO-Revision-Date: 2024-11-16 08:08+0000\n"
+"PO-Revision-Date: 2024-11-24 14:00+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
@@ -1459,7 +1459,7 @@ msgstr "Curva da Banda"
 
 #: data/ui/multiband_gate_band.ui:836
 msgid "Band Reduction"
-msgstr "Redução da Banda"
+msgstr "Redução da Bandas"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
