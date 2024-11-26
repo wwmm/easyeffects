@@ -74,7 +74,7 @@ class Manager : public QObject {
 
   static void write_plugins_preset(const PipelineType& pipeline_type, const QStringList& plugins, nlohmann::json& json);
 
-  void add(const PipelineType& pipeline_type, const std::string& name);
+  void add(const PipelineType& pipeline_type, const QString& name);
 
   void save_preset_file(const PipelineType& pipeline_type, const std::string& name);
 

@@ -500,7 +500,7 @@ void Manager::save_preset_file(const PipelineType& pipeline_type, const std::str
   util::debug("saved preset: " + output_file.string());
 }
 
-void Manager::add(const PipelineType& pipeline_type, const std::string& name) {
+void Manager::add(const PipelineType& pipeline_type, const QString& name) {
   // This method assumes the filename is valid.
 
   for (const auto& p : get_local_presets_name(pipeline_type)) {
@@ -509,7 +509,7 @@ void Manager::add(const PipelineType& pipeline_type, const std::string& name) {
     }
   }
 
-  save_preset_file(pipeline_type, name);
+  save_preset_file(pipeline_type, name.toStdString());
 }
 
 void Manager::remove(const PipelineType& pipeline_type, const std::string& name) {
