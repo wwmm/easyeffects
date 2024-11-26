@@ -1,10 +1,10 @@
 import "Common.js" as Common
-import EEtagsPluginName
 import QtCore
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
+import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
 
 Kirigami.OverlaySheet {
@@ -32,7 +32,7 @@ Kirigami.OverlaySheet {
         clip: true
         delegate: listDelegate
         reuseItems: true
-        model: SortedPluginsNameModel
+        model: TagsPluginName.SortedPluginsNameModel
 
         Kirigami.PlaceholderMessage {
             anchors.centerIn: parent
@@ -100,8 +100,8 @@ Kirigami.OverlaySheet {
                             the second to last position. The reason is that we still want to preserve the
                             "limiter protection" in case the last plugins are a limiter followed by a meter.
                         */
-                        const limiters_and_meters = [BasePluginName.limiter, BasePluginName.maximizer, BasePluginName.level_meter];
-                        const limiters = [BasePluginName.limiter, BasePluginName.maximizer];
+                        const limiters_and_meters = [TagsPluginName.BasePluginName.limiter, TagsPluginName.BasePluginName.maximizer, TagsPluginName.BasePluginName.level_meter];
+                        const limiters = [TagsPluginName.BasePluginName.limiter, TagsPluginName.BasePluginName.maximizer];
                         if (plugins.length === 0) {
                             plugins.push(new_name);
                         } else if (limiters_and_meters.some((v) => {
@@ -112,7 +112,7 @@ Kirigami.OverlaySheet {
                             return plugins[plugins.length - 1].startsWith(v);
                         })) {
                             plugins.splice(-1, 0, new_name);
-                        } else if (plugins[plugins.length - 1].startsWith(BasePluginName.level_meter)) {
+                        } else if (plugins[plugins.length - 1].startsWith(TagsPluginName.BasePluginName.level_meter)) {
                             if (plugins.length >= 2) {
                                 if (limiters.some((v) => {
                                     return plugins[plugins.length - 2].startsWith(v);
@@ -144,7 +144,7 @@ Kirigami.OverlaySheet {
             Layout.fillWidth: true
             placeholderText: i18n("Search")
             onAccepted: {
-                SortedPluginsNameModel.filterRegularExpression = RegExp(search.text, "i");
+                TagsPluginName.SortedPluginsNameModel.filterRegularExpression = RegExp(search.text, "i");
             }
         }
 

@@ -65,8 +65,8 @@ Nodes::Nodes(QObject* parent)
 
     proxy_output_streams.sort(0, Qt::AscendingOrder);
 
-    qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelOutputStreams",
-                                                        &proxy_output_streams);
+    qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR,
+                                                        "ModelOutputStreams", &proxy_output_streams);
   }
 
   // Input streams model
@@ -84,8 +84,8 @@ Nodes::Nodes(QObject* parent)
 
     proxy_input_streams.sort(0, Qt::AscendingOrder);
 
-    qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelInputStreams",
-                                                        &proxy_input_streams);
+    qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR,
+                                                        "ModelInputStreams", &proxy_input_streams);
   }
 
   // Source devices model
@@ -103,8 +103,8 @@ Nodes::Nodes(QObject* parent)
 
     proxy_source_devices.sort(0, Qt::AscendingOrder);
 
-    qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelSourceDevices",
-                                                        &proxy_source_devices);
+    qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR,
+                                                        "ModelSourceDevices", &proxy_source_devices);
   }
 
   // Output devices model
@@ -122,7 +122,7 @@ Nodes::Nodes(QObject* parent)
 
     proxy_sink_devices.sort(0, Qt::AscendingOrder);
 
-    qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelSinkDevices",
+    qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelSinkDevices",
                                                         &proxy_sink_devices);
   }
 }

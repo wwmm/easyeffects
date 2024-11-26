@@ -49,7 +49,7 @@ Kirigami.Page {
 
             function updateInputDevComboSelection() {
                 const deviceName = useDefaultInputDevice.isChecked ? PW.Manager.defaultInputDeviceName : DB.Manager.streamInputs.inputDevice;
-                const comboRow = comboFindRow(ModelSourceDevices, deviceName);
+                const comboRow = comboFindRow(PW.ModelSourceDevices, deviceName);
                 if (comboRow !== -1)
                     comboInputDevice.currentIndex = comboRow;
 
@@ -57,7 +57,7 @@ Kirigami.Page {
 
             function updateOutputDevComboSelection() {
                 const deviceName = useDefaultOutputDevice.isChecked ? PW.Manager.defaultOutputDeviceName : DB.Manager.streamOutputs.outputDevice;
-                const comboRow = comboFindRow(ModelSinkDevices, deviceName);
+                const comboRow = comboFindRow(PW.ModelSinkDevices, deviceName);
                 if (comboRow !== -1)
                     comboOutputDevice.currentIndex = comboRow;
 
@@ -68,7 +68,7 @@ Kirigami.Page {
                     updateInputDevComboSelection();
                 }
 
-                target: ModelSourceDevices
+                target: PW.ModelSourceDevices
             }
 
             Connections {
@@ -76,7 +76,7 @@ Kirigami.Page {
                     updateOutputDevComboSelection();
                 }
 
-                target: ModelSinkDevices
+                target: PW.ModelSinkDevices
             }
 
             FormCard.FormHeader {
@@ -109,12 +109,12 @@ Kirigami.Page {
                     text: i18n("Name")
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     editable: false
-                    model: ModelSourceDevices
+                    model: PW.ModelSourceDevices
                     textRole: "description"
                     enabled: !DB.Manager.streamInputs.useDefaultInputDevice
                     onActivated: (idx) => {
-                        const proxyIndex = ModelSourceDevices.index(idx, 0);
-                        const sourceIndex = ModelSourceDevices.mapToSource(proxyIndex);
+                        const proxyIndex = PW.ModelSourceDevices.index(idx, 0);
+                        const sourceIndex = PW.ModelSourceDevices.mapToSource(proxyIndex);
                         const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
                         if (DB.Manager.streamInputs.inputDevice !== nodeName)
                             DB.Manager.streamInputs.inputDevice = nodeName;
@@ -148,12 +148,12 @@ Kirigami.Page {
                     text: i18n("Name")
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     editable: false
-                    model: ModelSinkDevices
+                    model: PW.ModelSinkDevices
                     textRole: "description"
                     enabled: !DB.Manager.streamOutputs.useDefaultOutputDevice
                     onActivated: (idx) => {
-                        const proxyIndex = ModelSinkDevices.index(idx, 0);
-                        const sourceIndex = ModelSinkDevices.mapToSource(proxyIndex);
+                        const proxyIndex = PW.ModelSinkDevices.index(idx, 0);
+                        const sourceIndex = PW.ModelSinkDevices.mapToSource(proxyIndex);
                         const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
                         if (DB.Manager.streamOutputs.outputDevice !== nodeName)
                             DB.Manager.streamOutputs.outputDevice = nodeName;

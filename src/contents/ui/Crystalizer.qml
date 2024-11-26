@@ -1,9 +1,9 @@
 import "Common.js" as Common
-import EEtagsPluginName
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
+import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -71,7 +71,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", EEtagsPluginPackage.zita)
+            text: i18n("Using %1", TagsPluginName.EEtagsPluginPackage.zita)
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
             Layout.fillWidth: false

@@ -61,15 +61,15 @@ Model::Model(QObject* parent) : QAbstractListModel(parent) {
   proxyModel->setDynamicSortFilter(true);
   proxyModel->sort(0);
 
-  qmlRegisterSingletonInstance<BaseName>("EEtagsPluginName", VERSION_MAJOR, VERSION_MINOR, "BasePluginName",
+  qmlRegisterSingletonInstance<BaseName>("ee.tags.plugin.name", VERSION_MAJOR, VERSION_MINOR, "BasePluginName",
                                          &base_name);
 
-  qmlRegisterSingletonInstance<tags::plugin_package::Package>("EEtagsPluginName", VERSION_MAJOR, VERSION_MINOR,
+  qmlRegisterSingletonInstance<tags::plugin_package::Package>("ee.tags.plugin.name", VERSION_MAJOR, VERSION_MINOR,
                                                               "EEtagsPluginPackage", &package);
 
-  qmlRegisterSingletonInstance<Model>("EEtagsPluginName", VERSION_MAJOR, VERSION_MINOR, "PluginsNameModel", this);
+  qmlRegisterSingletonInstance<Model>("ee.tags.plugin.name", VERSION_MAJOR, VERSION_MINOR, "PluginsNameModel", this);
 
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEtagsPluginName", VERSION_MAJOR, VERSION_MINOR,
+  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.tags.plugin.name", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedPluginsNameModel", proxyModel);
 }
 
