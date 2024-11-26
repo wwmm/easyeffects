@@ -1,8 +1,8 @@
-import EEpw
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
+import ee.pipewire as PW
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -39,7 +39,7 @@ Kirigami.Page {
         FormCard.FormCardPage {
             function comboFindRow(model, nodeName) {
                 let row = -1;
-                const nodeIndex = ModelNodes.getModelIndexByName(nodeName);
+                const nodeIndex = PW.ModelNodes.getModelIndexByName(nodeName);
                 const modelRow = model.mapFromSource(nodeIndex).row;
                 if (modelRow >= 0)
                     row = modelRow;
@@ -48,7 +48,7 @@ Kirigami.Page {
             }
 
             function updateInputDevComboSelection() {
-                const deviceName = useDefaultInputDevice.isChecked ? EEpwManager.defaultInputDeviceName : DB.Manager.streamInputs.inputDevice;
+                const deviceName = useDefaultInputDevice.isChecked ? PW.Manager.defaultInputDeviceName : DB.Manager.streamInputs.inputDevice;
                 const comboRow = comboFindRow(ModelSourceDevices, deviceName);
                 if (comboRow !== -1)
                     comboInputDevice.currentIndex = comboRow;
@@ -56,7 +56,7 @@ Kirigami.Page {
             }
 
             function updateOutputDevComboSelection() {
-                const deviceName = useDefaultOutputDevice.isChecked ? EEpwManager.defaultOutputDeviceName : DB.Manager.streamOutputs.outputDevice;
+                const deviceName = useDefaultOutputDevice.isChecked ? PW.Manager.defaultOutputDeviceName : DB.Manager.streamOutputs.outputDevice;
                 const comboRow = comboFindRow(ModelSinkDevices, deviceName);
                 if (comboRow !== -1)
                     comboOutputDevice.currentIndex = comboRow;
@@ -115,7 +115,7 @@ Kirigami.Page {
                     onActivated: (idx) => {
                         const proxyIndex = ModelSourceDevices.index(idx, 0);
                         const sourceIndex = ModelSourceDevices.mapToSource(proxyIndex);
-                        const nodeName = ModelNodes.getNodeName(sourceIndex.row);
+                        const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
                         if (DB.Manager.streamInputs.inputDevice !== nodeName)
                             DB.Manager.streamInputs.inputDevice = nodeName;
 
@@ -154,7 +154,7 @@ Kirigami.Page {
                     onActivated: (idx) => {
                         const proxyIndex = ModelSinkDevices.index(idx, 0);
                         const sourceIndex = ModelSinkDevices.mapToSource(proxyIndex);
-                        const nodeName = ModelNodes.getNodeName(sourceIndex.row);
+                        const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
                         if (DB.Manager.streamOutputs.outputDevice !== nodeName)
                             DB.Manager.streamOutputs.outputDevice = nodeName;
 
@@ -170,37 +170,37 @@ Kirigami.Page {
             FormCard.FormCard {
                 FormCard.FormTextDelegate {
                     text: i18n("Header Version")
-                    description: EEpwManager.headerVersion
+                    description: PW.Manager.headerVersion
                 }
 
                 FormCard.FormTextDelegate {
                     text: i18n("Library Version")
-                    description: EEpwManager.libraryVersion
+                    description: PW.Manager.libraryVersion
                 }
 
                 FormCard.FormTextDelegate {
                     text: i18n("Runtime Version")
-                    description: EEpwManager.runtimeVersion
+                    description: PW.Manager.runtimeVersion
                 }
 
                 FormCard.FormTextDelegate {
                     text: i18n("Default Sampling Rate")
-                    description: EEpwManager.defaultClockRate + " Hz"
+                    description: PW.Manager.defaultClockRate + " Hz"
                 }
 
                 FormCard.FormTextDelegate {
                     text: i18n("Minimum Quantum")
-                    description: EEpwManager.defaultMinQuantum
+                    description: PW.Manager.defaultMinQuantum
                 }
 
                 FormCard.FormTextDelegate {
                     text: i18n("Maximum Quantum")
-                    description: EEpwManager.defaultMaxQuantum
+                    description: PW.Manager.defaultMaxQuantum
                 }
 
                 FormCard.FormTextDelegate {
                     text: i18n("Default Quantum")
-                    description: EEpwManager.defaultQuantum
+                    description: PW.Manager.defaultQuantum
                 }
 
             }

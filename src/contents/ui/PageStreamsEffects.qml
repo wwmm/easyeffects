@@ -1,11 +1,11 @@
 import "Common.js" as Common
-import EEpw
 import EEtagsPluginName
 import QtCharts
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
+import ee.pipewire as PW
 import org.kde.kirigami as Kirigami
 
 Kirigami.Page {

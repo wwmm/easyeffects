@@ -1,8 +1,8 @@
-import EEpw
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
+import ee.pipewire as PW
 import org.kde.kirigami as Kirigami
 
 Kirigami.AbstractCard {
@@ -78,11 +78,11 @@ Kirigami.AbstractCard {
                     onCheckedChanged: {
                         if (checked == true && !isBlocklisted) {
                             if (mediaClass === "Stream/Output/Audio")
-                                EEpwManager.connectStreamOutput(id);
+                                PW.Manager.connectStreamOutput(id);
                             else if (mediaClass === "Stream/Input/Audio")
-                                EEpwManager.connectStreamInput(id);
+                                PW.Manager.connectStreamInput(id);
                         } else if (checked == false || isBlocklisted) {
-                            EEpwManager.disconnectStream(id);
+                            PW.Manager.disconnectStream(id);
                         }
                     }
                 }
@@ -105,7 +105,7 @@ Kirigami.AbstractCard {
                     checked: mute
                     onCheckedChanged: {
                         if (checked !== mute)
-                            EEpwManager.setNodeMute(serial, checked);
+                            PW.Manager.setNodeMute(serial, checked);
 
                     }
                 }
@@ -128,7 +128,7 @@ Kirigami.AbstractCard {
                         if (value !== prepareVolumeValue(volume)) {
                             let v = value / 100;
                             v = DB.Manager.main.useCubicVolumes === false ? v : v * v * v;
-                            EEpwManager.setNodeVolume(serial, nVolumeChannels, v);
+                            PW.Manager.setNodeVolume(serial, nVolumeChannels, v);
                         }
                     }
                 }

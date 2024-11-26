@@ -1481,14 +1481,15 @@ Manager::~Manager() {
 }
 
 void Manager::register_models() {
-  qmlRegisterSingletonInstance<pw::Manager>("EEpw", VERSION_MAJOR, VERSION_MINOR, "EEpwManager", this);
+  qmlRegisterSingletonInstance<pw::Manager>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
-  qmlRegisterSingletonInstance<pw::models::Nodes>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelNodes", &model_nodes);
+  qmlRegisterSingletonInstance<pw::models::Nodes>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelNodes",
+                                                  &model_nodes);
 
-  qmlRegisterSingletonInstance<pw::models::Modules>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelModules",
+  qmlRegisterSingletonInstance<pw::models::Modules>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelModules",
                                                     &model_modules);
 
-  qmlRegisterSingletonInstance<pw::models::Clients>("EEpw", VERSION_MAJOR, VERSION_MINOR, "ModelClients",
+  qmlRegisterSingletonInstance<pw::models::Clients>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelClients",
                                                     &model_clients);
 }
 
