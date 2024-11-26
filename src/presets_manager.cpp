@@ -27,7 +27,6 @@
 #include <qtypes.h>
 #include <KLocalizedString>
 #include <QString>
-#include <algorithm>
 #include <exception>
 #include <filesystem>
 #include <fstream>
