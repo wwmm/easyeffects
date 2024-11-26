@@ -1,7 +1,7 @@
-import EEdbm
 import QtQml
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import ee.database as DB
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -36,10 +36,10 @@ Kirigami.OverlaySheet {
                         id: enableServiceMode
 
                         label: i18n("Enable Service Mode")
-                        isChecked: EEdbm.main.enableServiceMode
+                        isChecked: DB.Manager.main.enableServiceMode
                         onCheckedChanged: {
-                            if (isChecked !== EEdbm.main.enableServiceMode)
-                                EEdbm.main.enableServiceMode = isChecked;
+                            if (isChecked !== DB.Manager.main.enableServiceMode)
+                                DB.Manager.main.enableServiceMode = isChecked;
 
                         }
                     }
@@ -48,7 +48,7 @@ Kirigami.OverlaySheet {
                         id: autostartOnLogin
 
                         label: i18n("Autostart on Login")
-                        // isChecked: EEdbm.main.autostartOnLogin
+                        // isChecked: DB.Manager.main.autostartOnLogin
                         onCheckedChanged: {
                         }
                     }
@@ -57,11 +57,11 @@ Kirigami.OverlaySheet {
                         id: showTrayIcon
 
                         label: i18n("Show the Tray Icon")
-                        isChecked: EEdbm.main.showTrayIcon && canUseSysTray
+                        isChecked: DB.Manager.main.showTrayIcon && canUseSysTray
                         enabled: canUseSysTray
                         onCheckedChanged: {
-                            if (isChecked !== EEdbm.main.showTrayIcon)
-                                EEdbm.main.showTrayIcon = isChecked;
+                            if (isChecked !== DB.Manager.main.showTrayIcon)
+                                DB.Manager.main.showTrayIcon = isChecked;
 
                         }
                     }
@@ -91,10 +91,10 @@ Kirigami.OverlaySheet {
                         id: processAllOutputs
 
                         label: i18n("Process All Output Streams")
-                        isChecked: EEdbm.main.processAllOutputs
+                        isChecked: DB.Manager.main.processAllOutputs
                         onCheckedChanged: {
-                            if (isChecked !== EEdbm.main.processAllOutputs)
-                                EEdbm.main.processAllOutputs = isChecked;
+                            if (isChecked !== DB.Manager.main.processAllOutputs)
+                                DB.Manager.main.processAllOutputs = isChecked;
 
                         }
                     }
@@ -103,10 +103,10 @@ Kirigami.OverlaySheet {
                         id: processAllInputs
 
                         label: i18n("Process All Input Streams")
-                        isChecked: EEdbm.main.processAllInputs
+                        isChecked: DB.Manager.main.processAllInputs
                         onCheckedChanged: {
-                            if (isChecked !== EEdbm.main.processAllInputs)
-                                EEdbm.main.processAllInputs = isChecked;
+                            if (isChecked !== DB.Manager.main.processAllInputs)
+                                DB.Manager.main.processAllInputs = isChecked;
 
                         }
                     }
@@ -115,10 +115,10 @@ Kirigami.OverlaySheet {
                         id: excludeMonitorStreams
 
                         label: i18n("Ignore Streams from Monitor of Devices")
-                        isChecked: EEdbm.main.excludeMonitorStreams
+                        isChecked: DB.Manager.main.excludeMonitorStreams
                         onCheckedChanged: {
-                            if (isChecked !== EEdbm.main.excludeMonitorStreams)
-                                EEdbm.main.excludeMonitorStreams = isChecked;
+                            if (isChecked !== DB.Manager.main.excludeMonitorStreams)
+                                DB.Manager.main.excludeMonitorStreams = isChecked;
 
                         }
                     }
@@ -127,10 +127,10 @@ Kirigami.OverlaySheet {
                         id: useCubicVolumes
 
                         label: i18n("Use Cubic Volume")
-                        isChecked: EEdbm.main.useCubicVolumes
+                        isChecked: DB.Manager.main.useCubicVolumes
                         onCheckedChanged: {
-                            if (isChecked !== EEdbm.main.useCubicVolumes)
-                                EEdbm.main.useCubicVolumes = isChecked;
+                            if (isChecked !== DB.Manager.main.useCubicVolumes)
+                                DB.Manager.main.useCubicVolumes = isChecked;
 
                         }
                     }
@@ -139,10 +139,10 @@ Kirigami.OverlaySheet {
                         id: inactivityTimerEnable
 
                         label: i18n("Enable the Inactivity Timeout")
-                        isChecked: EEdbm.main.inactivityTimerEnable
+                        isChecked: DB.Manager.main.inactivityTimerEnable
                         onCheckedChanged: {
-                            if (isChecked !== EEdbm.main.inactivityTimerEnable)
-                                EEdbm.main.inactivityTimerEnable = isChecked;
+                            if (isChecked !== DB.Manager.main.inactivityTimerEnable)
+                                DB.Manager.main.inactivityTimerEnable = isChecked;
 
                         }
                     }
@@ -151,15 +151,15 @@ Kirigami.OverlaySheet {
                         id: inactivityTimeout
 
                         label: i18n("Inactivity Timeout")
-                        from: EEdbm.main.getMinValue("inactivityTimeout")
-                        to: EEdbm.main.getMaxValue("inactivityTimeout")
-                        value: EEdbm.main.inactivityTimeout
+                        from: DB.Manager.main.getMinValue("inactivityTimeout")
+                        to: DB.Manager.main.getMaxValue("inactivityTimeout")
+                        value: DB.Manager.main.inactivityTimeout
                         decimals: 0
                         stepSize: 1
                         unit: "s"
-                        enabled: EEdbm.main.inactivityTimerEnable
+                        enabled: DB.Manager.main.inactivityTimerEnable
                         onValueModified: (v) => {
-                            EEdbm.main.inactivityTimeout = v;
+                            DB.Manager.main.inactivityTimeout = v;
                         }
                     }
 
@@ -192,10 +192,10 @@ Kirigami.OverlaySheet {
                         id: spectrumState
 
                         label: i18n("Enabled")
-                        isChecked: EEdbm.spectrum.state
+                        isChecked: DB.Manager.spectrum.state
                         onCheckedChanged: {
-                            if (isChecked !== EEdbm.spectrum.state)
-                                EEdbm.spectrum.state = isChecked;
+                            if (isChecked !== DB.Manager.spectrum.state)
+                                DB.Manager.spectrum.state = isChecked;
 
                         }
                     }
@@ -212,22 +212,22 @@ Kirigami.OverlaySheet {
 
                         text: i18n("Shape")
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: EEdbm.spectrum.spectrumShape
+                        currentIndex: DB.Manager.spectrum.spectrumShape
                         editable: false
                         model: [i18n("Bars"), i18n("Lines"), i18n("Dots"), i18n("Area")]
                         onActivated: (idx) => {
-                            if (idx !== EEdbm.spectrum.spectrumShape)
-                                EEdbm.spectrum.spectrumShape = idx;
+                            if (idx !== DB.Manager.spectrum.spectrumShape)
+                                DB.Manager.spectrum.spectrumShape = idx;
 
                         }
                     }
 
                     EeSwitch {
                         label: i18n("Enable OpenGL Acceleration")
-                        isChecked: EEdbm.spectrum.useOpenGL
+                        isChecked: DB.Manager.spectrum.useOpenGL
                         onCheckedChanged: {
-                            if (isChecked !== EEdbm.spectrum.useOpenGL)
-                                EEdbm.spectrum.useOpenGL = isChecked;
+                            if (isChecked !== DB.Manager.spectrum.useOpenGL)
+                                DB.Manager.spectrum.useOpenGL = isChecked;
 
                         }
                     }
@@ -236,10 +236,10 @@ Kirigami.OverlaySheet {
                         id: dynamicYScale
 
                         label: i18n("Dynamic Scale")
-                        isChecked: EEdbm.spectrum.dynamicYScale
+                        isChecked: DB.Manager.spectrum.dynamicYScale
                         onCheckedChanged: {
-                            if (isChecked !== EEdbm.spectrum.dynamicYScale)
-                                EEdbm.spectrum.dynamicYScale = isChecked;
+                            if (isChecked !== DB.Manager.spectrum.dynamicYScale)
+                                DB.Manager.spectrum.dynamicYScale = isChecked;
 
                         }
                     }
@@ -250,11 +250,11 @@ Kirigami.OverlaySheet {
                         label: i18n("Points")
                         from: 2
                         to: 2048
-                        value: EEdbm.spectrum.nPoints
+                        value: DB.Manager.spectrum.nPoints
                         decimals: 0
                         stepSize: 1
                         onValueModified: (v) => {
-                            EEdbm.spectrum.nPoints = v;
+                            DB.Manager.spectrum.nPoints = v;
                         }
                     }
 
@@ -264,12 +264,12 @@ Kirigami.OverlaySheet {
                         label: i18n("Height")
                         from: 100
                         to: 1000
-                        value: EEdbm.spectrum.height
+                        value: DB.Manager.spectrum.height
                         decimals: 0
                         stepSize: 1
                         unit: "px"
                         onValueModified: (v) => {
-                            EEdbm.spectrum.height = v;
+                            DB.Manager.spectrum.height = v;
                         }
                     }
 
@@ -286,12 +286,12 @@ Kirigami.OverlaySheet {
                         label: i18n("Minimum")
                         from: 20
                         to: 21900
-                        value: EEdbm.spectrum.minimumFrequency
+                        value: DB.Manager.spectrum.minimumFrequency
                         decimals: 0
                         stepSize: 10
                         unit: "Hz"
                         onValueModified: (v) => {
-                            EEdbm.spectrum.minimumFrequency = v;
+                            DB.Manager.spectrum.minimumFrequency = v;
                         }
                     }
 
@@ -301,12 +301,12 @@ Kirigami.OverlaySheet {
                         label: i18n("Maximum")
                         from: 120
                         to: 22000
-                        value: EEdbm.spectrum.maximumFrequency
+                        value: DB.Manager.spectrum.maximumFrequency
                         decimals: 0
                         stepSize: 10
                         unit: "Hz"
                         onValueModified: (v) => {
-                            EEdbm.spectrum.maximumFrequency = v;
+                            DB.Manager.spectrum.maximumFrequency = v;
                         }
                     }
 
@@ -336,10 +336,10 @@ Kirigami.OverlaySheet {
 
                         label: i18n("Native Plugin Window")
                         subtitle: i18n("Allows The Native Plugin Window to be Shown/Hidden")
-                        isChecked: EEdbm.main.showNativePluginUi
+                        isChecked: DB.Manager.main.showNativePluginUi
                         onCheckedChanged: {
-                            if (isChecked !== EEdbm.main.showNativePluginUi)
-                                EEdbm.main.showNativePluginUi = isChecked;
+                            if (isChecked !== DB.Manager.main.showNativePluginUi)
+                                DB.Manager.main.showNativePluginUi = isChecked;
 
                         }
                     }
@@ -351,13 +351,13 @@ Kirigami.OverlaySheet {
                         subtitle: i18n("Related to LV2 Plugins")
                         from: 1
                         to: 60
-                        value: EEdbm.main.lv2uiUpdateFrequency
+                        value: DB.Manager.main.lv2uiUpdateFrequency
                         decimals: 0
                         stepSize: 1
                         unit: "Hz"
-                        enabled: EEdbm.main.showNativePluginUi
+                        enabled: DB.Manager.main.showNativePluginUi
                         onValueModified: (v) => {
-                            EEdbm.main.lv2uiUpdateFrequency = v;
+                            DB.Manager.main.lv2uiUpdateFrequency = v;
                         }
                     }
 

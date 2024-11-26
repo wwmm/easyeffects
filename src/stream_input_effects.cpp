@@ -45,7 +45,7 @@
 #include "util.hpp"
 
 StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(pipe_manager, PipelineType::input) {
-  qmlRegisterSingletonInstance<StreamInputEffects>("EEsie", VERSION_MAJOR, VERSION_MINOR, "EEsie", this);
+  qmlRegisterSingletonInstance<StreamInputEffects>("ee.pipeline", VERSION_MAJOR, VERSION_MINOR, "Input", this);
 
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 

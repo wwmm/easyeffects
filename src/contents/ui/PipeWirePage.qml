@@ -1,8 +1,8 @@
-import EEdbm
 import EEpw
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import ee.database as DB
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -48,7 +48,7 @@ Kirigami.Page {
             }
 
             function updateInputDevComboSelection() {
-                const deviceName = useDefaultInputDevice.isChecked ? EEpwManager.defaultInputDeviceName : EEdbm.streamInputs.inputDevice;
+                const deviceName = useDefaultInputDevice.isChecked ? EEpwManager.defaultInputDeviceName : DB.Manager.streamInputs.inputDevice;
                 const comboRow = comboFindRow(ModelSourceDevices, deviceName);
                 if (comboRow !== -1)
                     comboInputDevice.currentIndex = comboRow;
@@ -56,7 +56,7 @@ Kirigami.Page {
             }
 
             function updateOutputDevComboSelection() {
-                const deviceName = useDefaultOutputDevice.isChecked ? EEpwManager.defaultOutputDeviceName : EEdbm.streamOutputs.outputDevice;
+                const deviceName = useDefaultOutputDevice.isChecked ? EEpwManager.defaultOutputDeviceName : DB.Manager.streamOutputs.outputDevice;
                 const comboRow = comboFindRow(ModelSinkDevices, deviceName);
                 if (comboRow !== -1)
                     comboOutputDevice.currentIndex = comboRow;
@@ -92,13 +92,13 @@ Kirigami.Page {
                     id: useDefaultInputDevice
 
                     label: i18n("Use Default Input")
-                    isChecked: EEdbm.streamInputs.useDefaultInputDevice
+                    isChecked: DB.Manager.streamInputs.useDefaultInputDevice
                     onCheckedChanged: {
                         if (isChecked)
                             updateInputDevComboSelection();
 
-                        if (isChecked !== EEdbm.streamInputs.useDefaultInputDevice)
-                            EEdbm.streamInputs.useDefaultInputDevice = isChecked;
+                        if (isChecked !== DB.Manager.streamInputs.useDefaultInputDevice)
+                            DB.Manager.streamInputs.useDefaultInputDevice = isChecked;
 
                     }
                 }
@@ -111,13 +111,13 @@ Kirigami.Page {
                     editable: false
                     model: ModelSourceDevices
                     textRole: "description"
-                    enabled: !EEdbm.streamInputs.useDefaultInputDevice
+                    enabled: !DB.Manager.streamInputs.useDefaultInputDevice
                     onActivated: (idx) => {
                         const proxyIndex = ModelSourceDevices.index(idx, 0);
                         const sourceIndex = ModelSourceDevices.mapToSource(proxyIndex);
                         const nodeName = ModelNodes.getNodeName(sourceIndex.row);
-                        if (EEdbm.streamInputs.inputDevice !== nodeName)
-                            EEdbm.streamInputs.inputDevice = nodeName;
+                        if (DB.Manager.streamInputs.inputDevice !== nodeName)
+                            DB.Manager.streamInputs.inputDevice = nodeName;
 
                     }
                 }
@@ -131,13 +131,13 @@ Kirigami.Page {
                     id: useDefaultOutputDevice
 
                     label: i18n("Use Default Output")
-                    isChecked: EEdbm.streamOutputs.useDefaultOutputDevice
+                    isChecked: DB.Manager.streamOutputs.useDefaultOutputDevice
                     onCheckedChanged: {
                         if (isChecked)
                             updateOutputDevComboSelection();
 
-                        if (isChecked !== EEdbm.streamOutputs.useDefaultOutputDevice)
-                            EEdbm.streamOutputs.useDefaultOutputDevice = isChecked;
+                        if (isChecked !== DB.Manager.streamOutputs.useDefaultOutputDevice)
+                            DB.Manager.streamOutputs.useDefaultOutputDevice = isChecked;
 
                     }
                 }
@@ -150,13 +150,13 @@ Kirigami.Page {
                     editable: false
                     model: ModelSinkDevices
                     textRole: "description"
-                    enabled: !EEdbm.streamOutputs.useDefaultOutputDevice
+                    enabled: !DB.Manager.streamOutputs.useDefaultOutputDevice
                     onActivated: (idx) => {
                         const proxyIndex = ModelSinkDevices.index(idx, 0);
                         const sourceIndex = ModelSinkDevices.mapToSource(proxyIndex);
                         const nodeName = ModelNodes.getNodeName(sourceIndex.row);
-                        if (EEdbm.streamOutputs.outputDevice !== nodeName)
-                            EEdbm.streamOutputs.outputDevice = nodeName;
+                        if (DB.Manager.streamOutputs.outputDevice !== nodeName)
+                            DB.Manager.streamOutputs.outputDevice = nodeName;
 
                     }
                 }

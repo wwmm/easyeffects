@@ -1,11 +1,11 @@
 import "Common.js" as Common
-import EEdbm
 import EEpw
 import EEtagsPluginName
 import QtCharts
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import ee.database as DB
 import org.kde.kirigami as Kirigami
 
 Kirigami.Page {
@@ -384,9 +384,9 @@ Kirigami.Page {
     header: EeChart {
         id: spectrumChart
 
-        implicitHeight: EEdbm.spectrum.height
-        seriesType: EEdbm.spectrum.spectrumShape
-        useOpenGL: EEdbm.spectrum.useOpenGL
+        implicitHeight: DB.Manager.spectrum.height
+        seriesType: DB.Manager.spectrum.spectrumShape
+        useOpenGL: DB.Manager.spectrum.useOpenGL
     }
 
     footer: Kirigami.AbstractApplicationHeader {

@@ -1,9 +1,9 @@
 import "Common.js" as Common
-import EEdbm
 import EEtagsPluginName
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import ee.database as DB
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -214,7 +214,7 @@ Kirigami.ScrollablePage {
                 Kirigami.Action {
                     text: i18n("Show Native Window")
                     icon.name: "window-duplicate-symbolic"
-                    enabled: EEdbm.main.showNativePluginUi
+                    enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
                     checked: pluginBackend.hasNativeUi()
                     onTriggered: {

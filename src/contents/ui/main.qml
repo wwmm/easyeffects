@@ -1,49 +1,48 @@
 import AboutEE
-import EEdbm
-import EEsie
-import EEsoe
 import Qt.labs.platform
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import ee.database as DB
+import ee.pipeline as Pipeline
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ApplicationWindow {
     id: appWindow
 
-    width: EEdbm.main.width
-    height: EEdbm.main.height
+    width: DB.Manager.main.width
+    height: DB.Manager.main.height
     title: i18nc("@title:window", "EasyEffects")
     pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.None
     onWidthChanged: {
-        EEdbm.main.width = applicationWindow().width;
+        DB.Manager.main.width = applicationWindow().width;
     }
     onHeightChanged: {
-        EEdbm.main.height = applicationWindow().height;
+        DB.Manager.main.height = applicationWindow().height;
     }
     onVisibleChanged: {
         if (appWindow.visible) {
-            switch (EEdbm.main.visiblePage) {
+            switch (DB.Manager.main.visiblePage) {
             case 0:
                 pageStack.push("qrc:ui/PageStreamsEffects.qml", {
                     "pageType": 0,
-                    "streamDB": EEdbm.streamOutputs,
+                    "streamDB": DB.Manager.streamOutputs,
                     "pluginsDB": Qt.binding(function() {
-                        return EEdbm.soePluginsDB;
+                        return DB.Manager.soePluginsDB;
                     }),
-                    "pipelineInstance": EEsoe,
+                    "pipelineInstance": Pipeline.Output,
                     "visible": true
                 });
                 break;
             case 1:
                 pageStack.push("qrc:ui/PageStreamsEffects.qml", {
                     "pageType": 1,
-                    "streamDB": EEdbm.streamInputs,
+                    "streamDB": DB.Manager.streamInputs,
                     "pluginsDB": Qt.binding(function() {
-                        return EEdbm.siePluginsDB;
+                        return DB.Manager.siePluginsDB;
                     }),
-                    "pipelineInstance": EEsie,
+                    "pipelineInstance": Pipeline.Input,
                     "visible": true
                 });
                 break;
@@ -54,7 +53,7 @@ Kirigami.ApplicationWindow {
                 null;
             }
         } else {
-            EEdbm.saveAll();
+            DB.Manager.saveAll();
             pageStack.pop();
         }
     }
@@ -84,7 +83,7 @@ Kirigami.ApplicationWindow {
     SystemTrayIcon {
         id: tray
 
-        visible: EEdbm.main.showTrayIcon && canUseSysTray
+        visible: DB.Manager.main.showTrayIcon && canUseSysTray
         icon.name: "com.github.wwmm.easyeffects"
         onActivated: {
             if (!appWindow.visible) {
@@ -100,7 +99,7 @@ Kirigami.ApplicationWindow {
             visible: false
 
             MenuItem {
-                // text: i18n("Preset: " + EEdbm.main.lastUsedPreset)
+                // text: i18n("Preset: " + DB.Manager.main.lastUsedPreset)
                 enabled: false
             }
 
@@ -142,11 +141,11 @@ Kirigami.ApplicationWindow {
                         icon.name: "system-shutdown-symbolic"
                         displayHint: Kirigami.DisplayHint.IconOnly
                         checkable: true
-                        checked: !EEdbm.main.bypass
+                        checked: !DB.Manager.main.bypass
                         onTriggered: {
                             showPassiveNotification("Turn Effects On/Off");
-                            if (checked !== !EEdbm.main.bypass)
-                                EEdbm.main.bypass = !checked;
+                            if (checked !== !DB.Manager.main.bypass)
+                                DB.Manager.main.bypass = !checked;
 
                         }
                     }
@@ -163,18 +162,18 @@ Kirigami.ApplicationWindow {
                         icon.name: "audio-speakers-symbolic"
                         text: i18n("Output")
                         checkable: true
-                        checked: EEdbm.main.visiblePage === 0
+                        checked: DB.Manager.main.visiblePage === 0
                         onTriggered: {
                             pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
                                 "pageType": 0,
-                                "streamDB": EEdbm.streamOutputs,
+                                "streamDB": DB.Manager.streamOutputs,
                                 "pluginsDB": Qt.binding(function() {
-                                    return EEdbm.soePluginsDB;
+                                    return DB.Manager.soePluginsDB;
                                 }),
-                                "pipelineInstance": EEsoe,
+                                "pipelineInstance": Pipeline.Output,
                                 "visible": true
                             });
-                            EEdbm.main.visiblePage = 0;
+                            DB.Manager.main.visiblePage = 0;
                         }
                     },
                     Kirigami.Action {
@@ -182,18 +181,18 @@ Kirigami.ApplicationWindow {
                         icon.name: "audio-input-microphone-symbolic"
                         text: i18n("Input")
                         checkable: true
-                        checked: EEdbm.main.visiblePage === 1
+                        checked: DB.Manager.main.visiblePage === 1
                         onTriggered: {
                             pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
                                 "pageType": 1,
-                                "streamDB": EEdbm.streamInputs,
+                                "streamDB": DB.Manager.streamInputs,
                                 "pluginsDB": Qt.binding(function() {
-                                    return EEdbm.siePluginsDB;
+                                    return DB.Manager.siePluginsDB;
                                 }),
-                                "pipelineInstance": EEsie,
+                                "pipelineInstance": Pipeline.Input,
                                 "visible": true
                             });
-                            EEdbm.main.visiblePage = 1;
+                            DB.Manager.main.visiblePage = 1;
                         }
                     },
                     Kirigami.Action {
@@ -201,10 +200,10 @@ Kirigami.ApplicationWindow {
                         icon.name: "network-server-symbolic"
                         text: i18n("PipeWire")
                         checkable: true
-                        checked: EEdbm.main.visiblePage === 2
+                        checked: DB.Manager.main.visiblePage === 2
                         onTriggered: {
                             pageStack.replace("qrc:ui/PipeWirePage.qml");
-                            EEdbm.main.visiblePage = 2;
+                            DB.Manager.main.visiblePage = 2;
                         }
                     }
                 ]
