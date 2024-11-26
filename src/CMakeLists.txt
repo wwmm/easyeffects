@@ -37,6 +37,7 @@ target_sources(easyeffects PRIVATE
     plugin_base.cpp
     plugin_preset_base.cpp
     presets_manager.cpp
+    presets_list_model.cpp
     pw_manager.cpp
     pw_model_clients.cpp
     pw_model_modules.cpp

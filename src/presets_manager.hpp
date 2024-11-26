@@ -34,6 +34,7 @@
 #include <vector>
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
+#include "presets_list_model.hpp"
 
 namespace presets {
 
@@ -64,9 +65,7 @@ class Manager : public QObject {
 
   const std::string json_ext = ".json";
 
-  auto search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string>;
-
-  auto get_local_presets_name(const PipelineType& pipeline_type) -> std::vector<std::string>;
+  auto get_local_presets_name(const PipelineType& pipeline_type) -> QStringList;
 
   auto get_all_community_presets_paths(const PipelineType& pipeline_type) -> std::vector<std::string>;
 
@@ -137,7 +136,11 @@ class Manager : public QObject {
 
   QFileSystemWatcher user_output_watcher, user_input_watcher, autoload_output_watcher, autoload_input_watcher;
 
+  ListModel outputListModel, inputListModel;
+
   static void create_user_directory(const std::filesystem::path& path);
+
+  auto search_names(std::filesystem::directory_iterator& it) -> QStringList;
 
   auto scan_community_package_recursive(std::filesystem::directory_iterator& it,
                                         const uint& top_scan_level,

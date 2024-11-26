@@ -21,11 +21,13 @@
 #include <qcontainerfwd.h>
 #include <qfilesystemwatcher.h>
 #include <qqml.h>
+#include <qsortfilterproxymodel.h>
 #include <qstandardpaths.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <KLocalizedString>
 #include <QString>
+#include <algorithm>
 #include <exception>
 #include <filesystem>
 #include <fstream>
@@ -62,6 +64,12 @@ Manager::Manager()
       autoload_output_dir(app_config_dir + "/autoload/output") {
   qmlRegisterSingletonInstance<presets::Manager>("EEpresets", VERSION_MAJOR, VERSION_MINOR, "EEpresetsManager", this);
 
+  qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpresets", VERSION_MAJOR, VERSION_MINOR,
+                                                      "InputPresetsListModel", inputListModel.getProxy());
+
+  qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpresets", VERSION_MAJOR, VERSION_MINOR,
+                                                      "OutputPresetsListModel", outputListModel.getProxy());
+
   // Initialize input and output directories for community presets.
   // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox).
   if (std::filesystem::is_regular_file(tags::app::flatpak_info_file)) {
@@ -90,27 +98,66 @@ Manager::Manager()
   create_user_directory(autoload_input_dir);
   create_user_directory(autoload_output_dir);
 
-  user_output_watcher.addPath(QString::fromStdString(user_output_dir.string()));
+  for (const auto& name : get_local_presets_name(PipelineType::input)) {
+    inputListModel.append(name);
+  }
 
-  connect(&user_output_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-
-  });
+  for (const auto& name : get_local_presets_name(PipelineType::output)) {
+    outputListModel.append(name);
+  }
 
   user_input_watcher.addPath(QString::fromStdString(user_input_dir.string()));
-
-  connect(&user_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-
-  });
-
+  user_output_watcher.addPath(QString::fromStdString(user_output_dir.string()));
+  autoload_input_watcher.addPath(QString::fromStdString(autoload_input_dir.string()));
   autoload_output_watcher.addPath(QString::fromStdString(autoload_output_dir.string()));
 
-  connect(&autoload_output_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
+  connect(&user_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
+    auto model_list = inputListModel.getList();
+    auto folder_list = get_local_presets_name(PipelineType::input);
+
+    inputListModel.begin_reset();
+
+    for (const auto& v : folder_list) {
+      if (!model_list.contains(v)) {
+        inputListModel.append(v);
+      }
+    }
+
+    for (const auto& v : model_list) {
+      if (!folder_list.contains(v)) {
+        inputListModel.remove(v);
+      }
+    }
+
+    inputListModel.end_reset();
+  });
+
+  connect(&user_output_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
+    auto model_list = outputListModel.getList();
+    auto folder_list = get_local_presets_name(PipelineType::output);
+
+    outputListModel.begin_reset();
+
+    for (const auto& v : folder_list) {
+      if (!model_list.contains(v)) {
+        outputListModel.append(v);
+      }
+    }
+
+    for (const auto& v : model_list) {
+      if (!folder_list.contains(v)) {
+        outputListModel.remove(v);
+      }
+    }
+
+    outputListModel.end_reset();
+  });
+
+  connect(&autoload_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
 
   });
 
-  autoload_input_watcher.addPath(QString::fromStdString(autoload_input_dir.string()));
-
-  connect(&autoload_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
+  connect(&autoload_output_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
 
   });
 }
@@ -131,13 +178,13 @@ void Manager::create_user_directory(const std::filesystem::path& path) {
   util::warning("failed to create user presets directory: " + path.string());
 }
 
-auto Manager::search_names(std::filesystem::directory_iterator& it) -> std::vector<std::string> {
-  std::vector<std::string> names;
+auto Manager::search_names(std::filesystem::directory_iterator& it) -> QStringList {
+  QStringList names;
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
       if (std::filesystem::is_regular_file(it->status()) && it->path().extension().c_str() == json_ext) {
-        names.emplace_back(it->path().stem().c_str());
+        names.append(QString::fromStdString(it->path().stem()));
       }
 
       ++it;
@@ -149,7 +196,7 @@ auto Manager::search_names(std::filesystem::directory_iterator& it) -> std::vect
   return names;
 }
 
-auto Manager::get_local_presets_name(const PipelineType& pipeline_type) -> std::vector<std::string> {
+auto Manager::get_local_presets_name(const PipelineType& pipeline_type) -> QStringList {
   const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
 
   auto it = std::filesystem::directory_iterator{conf_dir};
