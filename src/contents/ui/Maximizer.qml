@@ -102,7 +102,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", TagsPluginName.EEtagsPluginPackage.zam)
+            text: i18n("Using %1", TagsPluginName.Package.zam)
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
             Layout.fillWidth: false

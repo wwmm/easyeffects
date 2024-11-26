@@ -92,7 +92,7 @@ Kirigami.Page {
 
             function createPluginStack(name, baseName, pluginDB) {
                 switch (baseName) {
-                case TagsPluginName.BasePluginName.autogain:
+                case TagsPluginName.BaseName.autogain:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Autogain.qml", {
                         "name": name,
@@ -100,7 +100,7 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
-                case TagsPluginName.BasePluginName.bassEnhancer:
+                case TagsPluginName.BaseName.bassEnhancer:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/BassEnhancer.qml", {
                         "name": name,
@@ -108,7 +108,7 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
-                case TagsPluginName.BasePluginName.compressor:
+                case TagsPluginName.BaseName.compressor:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Compressor.qml", {
                         "name": name,
@@ -116,7 +116,7 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
-                case TagsPluginName.BasePluginName.crystalizer:
+                case TagsPluginName.BaseName.crystalizer:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Crystalizer.qml", {
                         "name": name,
@@ -124,7 +124,7 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
-                case TagsPluginName.BasePluginName.exciter:
+                case TagsPluginName.BaseName.exciter:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Exciter.qml", {
                         "name": name,
@@ -132,7 +132,7 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
-                case TagsPluginName.BasePluginName.filter:
+                case TagsPluginName.BaseName.filter:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Filter.qml", {
                         "name": name,
@@ -140,7 +140,7 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
-                case TagsPluginName.BasePluginName.gate:
+                case TagsPluginName.BaseName.gate:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Gate.qml", {
                         "name": name,
@@ -148,7 +148,7 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
-                case TagsPluginName.BasePluginName.limiter:
+                case TagsPluginName.BaseName.limiter:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Limiter.qml", {
                         "name": name,
@@ -156,7 +156,7 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
-                case TagsPluginName.BasePluginName.maximizer:
+                case TagsPluginName.BaseName.maximizer:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Maximizer.qml", {
                         "name": name,
@@ -164,7 +164,7 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
-                case TagsPluginName.BasePluginName.speex:
+                case TagsPluginName.BaseName.speex:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Speex.qml", {
                         "name": name,
@@ -172,7 +172,7 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
-                case TagsPluginName.BasePluginName.stereoTools:
+                case TagsPluginName.BaseName.stereoTools:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/StereoTools.qml", {
                         "name": name,
