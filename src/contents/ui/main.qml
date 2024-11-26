@@ -69,6 +69,10 @@ Kirigami.ApplicationWindow {
         id: preferencesSheet
     }
 
+    PresetsSheet {
+        id: presetsSheet
+    }
+
     Kirigami.Dialog {
         id: aboutDialog
 
@@ -133,7 +137,7 @@ Kirigami.ApplicationWindow {
                         icon.name: "bookmarks-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         onTriggered: {
-                            showPassiveNotification("Preset Menu!");
+                            presetsSheet.open();
                         }
                     },
                     Kirigami.Action {
