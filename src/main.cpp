@@ -57,25 +57,6 @@ void csignalHandler(int s) {
   qApp->quit();
 }
 
-void construct_about_window() {
-  KAboutData aboutData(QStringLiteral(COMPONENT_NAME), i18nc("@title", APPLICATION_NAME),
-                       QStringLiteral(PROJECT_VERSION), i18n("Audio effects for PipeWire applications"),
-                       KAboutLicense::GPL_V3, i18n("(c) 2024"), QStringLiteral(""),
-                       QStringLiteral("https://github.com/wwmm/easyeffects"),
-                       QStringLiteral("https://github.com/wwmm/easyeffects/issues"));
-
-  aboutData.addAuthor(i18nc("@info:credit", "Wellington Wallace"), i18nc("@info:credit", "Developer"),
-                      QStringLiteral("wellingtonwallace@gmail.com"));
-
-  // Set aboutData as information about the app
-  KAboutData::setApplicationData(aboutData);
-
-  qmlRegisterSingletonType("AboutEE",  // How the import statement should look like
-                           VERSION_MAJOR, VERSION_MINOR, "AboutEE", [](QQmlEngine* engine, QJSEngine*) -> QJSValue {
-                             return engine->toScriptValue(KAboutData::applicationData());
-                           });
-}
-
 int main(int argc, char* argv[]) {
   KIconTheme::initTheme();
 
@@ -87,10 +68,9 @@ int main(int argc, char* argv[]) {
   bool show_window = true;
 
   KLocalizedString::setApplicationDomain(APPLICATION_DOMAIN);
-  // QCoreApplication::setOrganizationName(QStringLiteral(ORGANIZATION_NAME));
   QCoreApplication::setOrganizationDomain(QStringLiteral(ORGANIZATION_DOMAIN));
-  QCoreApplication::setApplicationName(QStringLiteral("EasyEffects"));
-  QCoreApplication::setApplicationVersion(PROJECT_VERSION);
+  QCoreApplication::setApplicationName(QStringLiteral(APPLICATION_DOMAIN));
+  QCoreApplication::setApplicationVersion(QStringLiteral(PROJECT_VERSION));
 
   QApplication::setStyle(QStringLiteral("breeze"));
   if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
@@ -145,10 +125,6 @@ int main(int argc, char* argv[]) {
 
   QObject::connect(local_server.get(), &LocalServer::onQuitApp, [&]() { QApplication::quit(); });
 
-  // About window
-
-  construct_about_window();
-
   // Making sure these singleton classes are initialized before qml
 
   tags::plugin_name::Model::self();
@@ -180,6 +156,7 @@ int main(int argc, char* argv[]) {
 
   engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
   engine.rootContext()->setContextProperty("canUseSysTray", QSystemTrayIcon::isSystemTrayAvailable());
+  engine.rootContext()->setContextProperty("projectVersion", PROJECT_VERSION);
 
   QWindow* window = nullptr;
 

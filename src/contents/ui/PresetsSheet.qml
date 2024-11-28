@@ -9,24 +9,19 @@ import org.kde.kirigami as Kirigami
 Kirigami.OverlaySheet {
     id: control
 
+    parent: applicationWindow().overlay
+    implicitHeight: parent.height
+    implicitWidth: appWindow.width * 0.5
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
 
-    ColumnLayout {
-        Layout.maximumWidth: appWindow.width * 0.5 // Kirigami.Units.gridUnit * 40
-        Layout.preferredWidth: Layout.maximumWidth
-        Layout.preferredHeight: Layout.maximumHeight
+    Controls.StackView {
+        id: stackView
 
-        Controls.StackView {
-            id: stackView
+        // implicitWidth: stack.currentItem.implicitWidth
+        implicitHeight: control.height - 3 * control.header.height
 
-            Layout.fillHeight: true
-            Layout.fillWidth: true
-            Layout.preferredHeight: control.height - control.header.height
-
-            initialItem: PresetsLocalPage {
-            }
-
+        initialItem: PresetsLocalPage {
         }
 
     }

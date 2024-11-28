@@ -1,4 +1,3 @@
-import AboutEE
 import Qt.labs.platform
 import QtQuick
 import QtQuick.Controls as Controls
@@ -13,7 +12,7 @@ Kirigami.ApplicationWindow {
 
     width: DB.Manager.main.width
     height: DB.Manager.main.height
-    title: i18nc("@title:window", "EasyEffects")
+    title: i18nc("@title:window", "Easy Effects")
     pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.None
     onWidthChanged: {
         DB.Manager.main.width = applicationWindow().width;
@@ -73,13 +72,44 @@ Kirigami.ApplicationWindow {
         id: presetsSheet
     }
 
-    Kirigami.Dialog {
-        id: aboutDialog
+    Kirigami.OverlaySheet {
+        id: aboutSheet
+
+        closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+        focus: true
+        implicitHeight: aboutPage.implicitHeight + 2 * aboutSheet.header.implicitHeight
 
         Kirigami.AboutPage {
+            id: aboutPage
+
             implicitWidth: Kirigami.Units.gridUnit * 30
-            implicitHeight: Kirigami.Units.gridUnit * 30
-            aboutData: AboutEE
+            aboutData: {
+                "displayName": i18nc("@title", "Easy Effects"),
+                "productName": "kirigami/app",
+                "componentName": "easyeffects",
+                "shortDescription": i18n("Audio effects for PipeWire applications"),
+                "homepage": "https://github.com/wwmm/easyeffects",
+                "bugAddress": "https://github.com/wwmm/easyeffects/issues",
+                "version": projectVersion,
+                "programIconName": "com.github.wwmm.easyeffects.svg",
+                "otherText": "",
+                "authors": [{
+                    "name": i18nc("@info:credit", "Wellington Wallace"),
+                    "task": i18nc("@info:credit", "Developer"),
+                    "emailAddress": "wellingtonwallace@gmail.com",
+                    "webAddress": "",
+                    "ocsUsername": ""
+                }],
+                "credits": [],
+                "translators": [],
+                "licenses": [{
+                    "name": "GPL v3",
+                    "text": "https://github.com/wwmm/easyeffects/blob/master/LICENSE",
+                    "spdx": "GPL-3.0"
+                }],
+                "copyrightStatement": "© 2017-2024 EasyEffects Team",
+                "desktopFileName": "com.github.wwmm.easyeffects.desktop"
+            }
         }
 
     }
@@ -131,6 +161,7 @@ Kirigami.ApplicationWindow {
 
             Kirigami.ActionToolBar {
                 alignment: Qt.AlignLeft
+                overflowIconName: "overflow-menu-left"
                 actions: [
                     Kirigami.Action {
                         text: i18n("Presets")
@@ -147,7 +178,6 @@ Kirigami.ApplicationWindow {
                         checkable: true
                         checked: !DB.Manager.main.bypass
                         onTriggered: {
-                            showPassiveNotification("Turn Effects On/Off");
                             if (checked !== !DB.Manager.main.bypass)
                                 DB.Manager.main.bypass = !checked;
 
@@ -215,6 +245,7 @@ Kirigami.ApplicationWindow {
 
             Kirigami.ActionToolBar {
                 alignment: Qt.AlignRight
+                overflowIconName: "application-menu-symbolic"
                 actions: [
                     Kirigami.Action {
                         text: i18n("Preferences")
@@ -229,7 +260,7 @@ Kirigami.ApplicationWindow {
                         icon.name: "com.github.wwmm.easyeffects"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
-                            aboutDialog.open();
+                            aboutSheet.open();
                         }
                     },
                     Kirigami.Action {

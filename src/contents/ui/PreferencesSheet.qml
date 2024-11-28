@@ -8,10 +8,12 @@ import org.kde.kirigamiaddons.formcard as FormCard
 Kirigami.OverlaySheet {
     id: preferencesSheet
 
-    implicitWidth: Kirigami.Units.gridUnit * 30
-    implicitHeight: appWindow.height * 0.7
-    title: i18n("Preferences")
     parent: applicationWindow().overlay
+    implicitHeight: parent.height < stack.currentItem.implicitHeight ? parent.height : stack.currentItem.implicitHeight + 2 * aboutSheet.header.implicitHeight
+    implicitWidth: Kirigami.Units.gridUnit * 30
+    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+    focus: true
+    title: i18n("Preferences")
     onVisibleChanged: {
         if (!preferencesSheet.visible) {
             while (stack.depth > 1)stack.pop()
@@ -372,8 +374,7 @@ Kirigami.OverlaySheet {
     Controls.StackView {
         id: stack
 
-        anchors.fill: parent
-        implicitWidth: Kirigami.Units.gridUnit * 30
+        implicitWidth: stack.currentItem.implicitWidth
         implicitHeight: stack.currentItem.implicitHeight
 
         initialItem: Kirigami.Page {

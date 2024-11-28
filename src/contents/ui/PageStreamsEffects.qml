@@ -402,6 +402,7 @@ Kirigami.Page {
             Kirigami.ActionToolBar {
                 alignment: Qt.AlignLeft
                 position: Controls.ToolBar.Footer
+                overflowIconName: "info-symbolic"
                 Component.onCompleted: {
                     footerFrameAnimation.start();
                 }
@@ -501,6 +502,7 @@ Kirigami.Page {
             Kirigami.ActionToolBar {
                 alignment: Qt.AlignRight
                 position: Controls.ToolBar.Footer
+                overflowIconName: "im-ban-kick-user-symbolic"
                 actions: [
                     Kirigami.Action {
                         text: i18n("Excluded Apps")
