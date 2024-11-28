@@ -10,16 +10,14 @@ Kirigami.OverlaySheet {
     id: control
 
     parent: applicationWindow().overlay
-    implicitHeight: parent.height
-    implicitWidth: appWindow.width * 0.5
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
 
     Controls.StackView {
         id: stackView
 
-        // implicitWidth: stack.currentItem.implicitWidth
-        implicitHeight: control.height - 3 * control.header.height
+        implicitWidth: appWindow.width * 0.5
+        implicitHeight: control.parent.height - 2 * control.header.height - control.y
 
         initialItem: PresetsLocalPage {
         }

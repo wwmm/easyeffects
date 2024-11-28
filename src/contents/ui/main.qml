@@ -77,7 +77,6 @@ Kirigami.ApplicationWindow {
 
         closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
         focus: true
-        implicitHeight: aboutPage.implicitHeight + 2 * aboutSheet.header.implicitHeight
 
         Kirigami.AboutPage {
             id: aboutPage
