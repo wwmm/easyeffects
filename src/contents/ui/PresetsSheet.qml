@@ -3,69 +3,73 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import ee.tags.plugin.name as TagsPluginName
+import ee.database as DB
 import org.kde.kirigami as Kirigami
 
 Kirigami.OverlaySheet {
     id: control
 
-    parent: applicationWindow().overlay
-    implicitWidth: Kirigami.Units.gridUnit * 50
-    implicitHeight: appWindow.height * 0.75
+    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+    focus: true
 
-    StackLayout {
-        id: stackLayout
+    ColumnLayout {
+        Layout.maximumWidth: appWindow.width * 0.5 // Kirigami.Units.gridUnit * 40
+        Layout.preferredWidth: Layout.maximumWidth
+        Layout.preferredHeight: Layout.maximumHeight
 
-        anchors.fill: parent
-        currentIndex: tabBar.currentIndex
+        Controls.StackView {
+            id: stackView
 
-        //todo: replace the test rectangles by the proper section codes
-        Rectangle {
-            color: 'teal'
-            implicitWidth: parent.width
-            implicitHeight: 200
-        }
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+            Layout.preferredHeight: control.height - control.header.height
 
-        Rectangle {
-            color: 'plum'
-            implicitWidth: parent.width
-            implicitHeight: 200
-        }
+            initialItem: PresetsLocalPage {
+            }
 
-        Rectangle {
-            color: 'red'
-            implicitWidth: parent.width
-            implicitHeight: 200
         }
 
     }
 
-    header: RowLayout {
-        anchors.fill: parent
+    header: Kirigami.ActionToolBar {
+        id: tabbar
 
-        Controls.TabBar {
-            id: tabBar
-
-            position: Controls.TabBar.Header
-            Layout.alignment: Qt.AlignHCenter
-
-            Controls.TabButton {
+        alignment: Qt.AlignHCenter
+        actions: [
+            Kirigami.Action {
+                displayHint: Kirigami.DisplayHint.KeepVisible
                 text: i18n("Local")
                 icon.name: "system-file-manager-symbolic"
-            }
-
-            Controls.TabButton {
+                checkable: true
+                checked: DB.Manager.main.visiblePresetSheetPage === 0
+                onTriggered: {
+                    stackView.replace("qrc:ui/PresetsLocalPage.qml");
+                    DB.Manager.main.visiblePresetSheetPage = 0;
+                }
+            },
+            Kirigami.Action {
+                displayHint: Kirigami.DisplayHint.KeepVisible
                 text: i18n("Community")
                 icon.name: "system-users-symbolic"
-            }
-
-            Controls.TabButton {
+                checkable: true
+                checked: DB.Manager.main.visiblePresetSheetPage === 1
+                onTriggered: {
+                    // stackView.replace("qrc:ui/PageStreamsEffects.qml");
+                    DB.Manager.main.visiblePresetSheetPage = 1;
+                }
+            },
+            Kirigami.Action {
+                displayHint: Kirigami.DisplayHint.KeepVisible
                 text: i18n("Autoloading")
                 icon.name: "task-recurring-symbolic"
+                checkable: true
+                checked: DB.Manager.main.visiblePresetSheetPage === 2
+                onTriggered: {
+                    // stackView.replace("qrc:ui/PipeWirePage.qml");
+                    DB.Manager.main.visiblePresetSheetPage = 2;
+                }
             }
-
-        }
-
+        ]
     }
 
 }

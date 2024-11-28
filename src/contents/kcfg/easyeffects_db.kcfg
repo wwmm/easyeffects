@@ -61,6 +61,21 @@
             </choices>
             <default>0</default>
         </entry>
+        <entry name="visiblePresetSheetPage" type="Enum">
+            <label>Saves the last viewed page.</label>
+            <choices>
+                <choice name="localPage">
+                    <label>Local Page</label>
+                </choice>
+                <choice name="communityPage">
+                    <label>Community Page</label>
+                </choice>
+                <choice name="autoloadingPage">
+                    <label>Autoloading Page</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
     </group>
     <group name="EffectsPipelines">
         <entry name="bypass" type="Bool">

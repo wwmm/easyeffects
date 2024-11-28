@@ -61,13 +61,13 @@ Manager::Manager()
       user_rnnoise_dir(app_config_dir + "/rnnoise"),
       autoload_input_dir(app_config_dir + "/autoload/input"),
       autoload_output_dir(app_config_dir + "/autoload/output") {
-  qmlRegisterSingletonInstance<presets::Manager>("EEpresets", VERSION_MAJOR, VERSION_MINOR, "EEpresetsManager", this);
+  qmlRegisterSingletonInstance<presets::Manager>("ee.presets", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpresets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "InputPresetsListModel", inputListModel.getProxy());
+  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
+                                                      "SortedInputListModel", inputListModel.getProxy());
 
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("EEpresets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "OutputPresetsListModel", outputListModel.getProxy());
+  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
+                                                      "SortedOutputListModel", outputListModel.getProxy());
 
   // Initialize input and output directories for community presets.
   // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox).
