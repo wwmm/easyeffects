@@ -160,6 +160,20 @@ int main(int argc, char* argv[]) {
   auto sie = std::make_unique<StreamInputEffects>(pm);
   auto soe = std::make_unique<StreamOutputEffects>(pm);
 
+  // initializing the global bypass
+  {
+    auto update_bypass_state = [&]() {
+      soe->set_bypass(db::Main::bypass());
+      sie->set_bypass(db::Main::bypass());
+
+      util::info((db::Main::bypass() ? "enabling global bypass" : "disabling global bypass"));
+    };
+
+    update_bypass_state();
+
+    QObject::connect(db::Main::self(), &db::Main::bypassChanged, update_bypass_state);
+  }
+
   // Initializing QML
 
   QQmlApplicationEngine engine;
