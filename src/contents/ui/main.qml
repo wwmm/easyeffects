@@ -75,8 +75,10 @@ Kirigami.ApplicationWindow {
     Kirigami.OverlaySheet {
         id: aboutSheet
 
+        parent: applicationWindow().overlay
         closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
         focus: true
+        y: appWindow.header.height + Kirigami.Units.gridUnit
 
         Kirigami.AboutPage {
             id: aboutPage

@@ -12,6 +12,7 @@ Kirigami.OverlaySheet {
     parent: applicationWindow().overlay
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
+    y: appWindow.header.height + Kirigami.Units.gridUnit
 
     Controls.StackView {
         id: stackView

@@ -12,6 +12,7 @@ Kirigami.OverlaySheet {
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
     title: i18n("Preferences")
+    y: appWindow.header.height + Kirigami.Units.gridUnit
     onVisibleChanged: {
         if (!preferencesSheet.visible) {
             while (stack.depth > 1)stack.pop()
