@@ -53,9 +53,9 @@ class ListModel : public QAbstractListModel {
 
   void remove(const QString& name);
 
-  Q_INVOKABLE void append(const QString& name);
+  void append(const QString& name);
 
-  Q_INVOKABLE void remove(const int& rowIndex);
+  void remove(const int& rowIndex);
 
   Q_INVOKABLE QSortFilterProxyModel* getProxy();
 

@@ -443,7 +443,7 @@ auto Manager::load_blocklist(const PipelineType& pipeline_type, const nlohmann::
   return true;
 }
 
-void Manager::save_preset_file(const PipelineType& pipeline_type, const std::string& name) {
+void Manager::save_preset_file(const PipelineType& pipeline_type, const QString& name) {
   nlohmann::json json;
 
   std::filesystem::path output_file;
@@ -466,7 +466,7 @@ void Manager::save_preset_file(const PipelineType& pipeline_type, const std::str
 
       write_plugins_preset(pipeline_type, plugins, json);
 
-      output_file = user_output_dir / std::filesystem::path{name + json_ext};
+      output_file = user_output_dir / std::filesystem::path{name.toStdString() + json_ext};
 
       break;
     }
@@ -485,7 +485,7 @@ void Manager::save_preset_file(const PipelineType& pipeline_type, const std::str
 
       write_plugins_preset(pipeline_type, plugins, json);
 
-      output_file = user_input_dir / std::filesystem::path{name + json_ext};
+      output_file = user_input_dir / std::filesystem::path{name.toStdString() + json_ext};
 
       break;
     }
@@ -500,30 +500,36 @@ void Manager::save_preset_file(const PipelineType& pipeline_type, const std::str
   util::debug("saved preset: " + output_file.string());
 }
 
-void Manager::add(const PipelineType& pipeline_type, const QString& name) {
+bool Manager::add(const PipelineType& pipeline_type, const QString& name) {
   // This method assumes the filename is valid.
 
   for (const auto& p : get_local_presets_name(pipeline_type)) {
     if (p == name) {
-      return;
+      return false;
     }
   }
 
-  save_preset_file(pipeline_type, name.toStdString());
+  save_preset_file(pipeline_type, name);
+
+  return true;
 }
 
-void Manager::remove(const PipelineType& pipeline_type, const std::string& name) {
+bool Manager::remove(const PipelineType& pipeline_type, const QString& name) {
   std::filesystem::path preset_file;
 
   const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
 
-  preset_file = conf_dir / std::filesystem::path{name + json_ext};
+  preset_file = conf_dir / std::filesystem::path{name.toStdString() + json_ext};
 
   if (std::filesystem::exists(preset_file)) {
     std::filesystem::remove(preset_file);
 
     util::debug("removed preset: " + preset_file.string());
+
+    return true;
   }
+
+  return false;
 }
 
 auto Manager::read_effects_pipeline_from_preset(const PipelineType& pipeline_type,

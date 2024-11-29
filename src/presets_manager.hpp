@@ -74,12 +74,6 @@ class Manager : public QObject {
 
   static void write_plugins_preset(const PipelineType& pipeline_type, const QStringList& plugins, nlohmann::json& json);
 
-  void add(const PipelineType& pipeline_type, const QString& name);
-
-  void save_preset_file(const PipelineType& pipeline_type, const std::string& name);
-
-  void remove(const PipelineType& pipeline_type, const std::string& name);
-
   auto load_local_preset_file(const PipelineType& pipeline_type, const std::string& name) -> bool;
 
   auto load_community_preset_file(const PipelineType& pipeline_type,
@@ -121,6 +115,12 @@ class Manager : public QObject {
   auto get_autoload_profiles(const PipelineType& pipeline_type) -> std::vector<nlohmann::json>;
 
   auto preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool;
+
+  Q_INVOKABLE bool add(const PipelineType& pipeline_type, const QString& name);
+
+  Q_INVOKABLE void save_preset_file(const PipelineType& pipeline_type, const QString& name);
+
+  Q_INVOKABLE bool remove(const PipelineType& pipeline_type, const QString& name);
 
  signals:
   // signal sending title and description strings
