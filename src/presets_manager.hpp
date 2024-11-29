@@ -74,11 +74,9 @@ class Manager : public QObject {
 
   static void write_plugins_preset(const PipelineType& pipeline_type, const QStringList& plugins, nlohmann::json& json);
 
-  auto load_local_preset_file(const PipelineType& pipeline_type, const std::string& name) -> bool;
-
   auto load_community_preset_file(const PipelineType& pipeline_type,
                                   const std::string& full_path_stem,
-                                  const std::string& package_name) -> bool;
+                                  const QString& package_name) -> bool;
 
   auto read_effects_pipeline_from_preset(const PipelineType& pipeline_type,
                                          const std::filesystem::path& input_file,
@@ -118,9 +116,11 @@ class Manager : public QObject {
 
   Q_INVOKABLE bool add(const PipelineType& pipeline_type, const QString& name);
 
-  Q_INVOKABLE void save_preset_file(const PipelineType& pipeline_type, const QString& name);
+  Q_INVOKABLE bool savePresetFile(const PipelineType& pipeline_type, const QString& name);
 
   Q_INVOKABLE bool remove(const PipelineType& pipeline_type, const QString& name);
+
+  Q_INVOKABLE bool loadLocalPresetFile(const PipelineType& pipeline_type, const QString& name);
 
  signals:
   // signal sending title and description strings
@@ -155,8 +155,8 @@ class Manager : public QObject {
                                             const std::string& package) -> bool;
 
   static void set_last_preset_keys(const PipelineType& pipeline_type,
-                                   const std::string& preset_name = "",
-                                   const std::string& package_name = "");
+                                   const QString& preset_name = "",
+                                   const QString& package_name = "");
 
   auto load_preset_file(const PipelineType& pipeline_type, const std::filesystem::path& input_file) -> bool;
 

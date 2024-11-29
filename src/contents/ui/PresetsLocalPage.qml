@@ -11,6 +11,13 @@ import org.kde.kirigami as Kirigami
 ColumnLayout {
     id: columnLayout
 
+    readonly property int pipeline: {
+        if (DB.Manager.main.visiblePage === 0)
+            return 1;
+        else if (DB.Manager.main.visiblePage === 1)
+            return 0;
+    }
+
     function showPresetsMenuStatus(label) {
         status.text = label;
         status.visible = true;
@@ -49,7 +56,6 @@ ColumnLayout {
                 icon.name: "list-add-symbolic"
                 onTriggered: {
                     if (!Common.isEmpty(newPresetName.text)) {
-                        const pipeline = DB.Manager.main.visiblePage === 0 ? 1 : 0;
                         if (Presets.Manager.add(pipeline, newPresetName.text) === true) {
                             newPresetName.accepted();
                             showPresetsMenuStatus(i18n("New Preset Created: " + newPresetName.text));
@@ -122,6 +128,16 @@ ColumnLayout {
 
             hoverEnabled: true
             width: listView.width
+            onClicked: {
+                if (Presets.Manager.loadLocalPresetFile(pipeline, name) === true) {
+                    showPresetsMenuStatus(i18n("The Preset " + name + " Has Been Loaded"));
+                    if (DB.Manager.main.visiblePage === 0) {
+                    } else if (DB.Manager.main.visiblePage === 1) {
+                    }
+                } else {
+                    showPresetsMenuStatus(i18n("The Preset " + name + " Has Been Loaded with errors"));
+                }
+            }
 
             contentItem: RowLayout {
                 Controls.Label {
@@ -136,7 +152,7 @@ ColumnLayout {
                             icon.name: "document-save-symbolic"
                             displayHint: Kirigami.DisplayHint.AlwaysHide
                             onTriggered: {
-                                if (FGPresetsBackend.savePreset(name))
+                                if (Presets.Manager.savePresetFile(pipeline, name) === true)
                                     showPresetsMenuStatus(i18n("Settings Saved to: " + name));
                                 else
                                     showPresetsMenuStatus(i18n("Failed to Save Settings to: " + name));
@@ -147,7 +163,6 @@ ColumnLayout {
                             icon.name: "delete"
                             displayHint: Kirigami.DisplayHint.AlwaysHide
                             onTriggered: {
-                                const pipeline = DB.Manager.main.visiblePage === 0 ? 1 : 0;
                                 if (Presets.Manager.remove(pipeline, name) === true)
                                     showPresetsMenuStatus(i18n("The Preset " + name + " Has Been Removed"));
                                 else

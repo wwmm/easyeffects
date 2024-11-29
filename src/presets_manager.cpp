@@ -443,7 +443,11 @@ auto Manager::load_blocklist(const PipelineType& pipeline_type, const nlohmann::
   return true;
 }
 
-void Manager::save_preset_file(const PipelineType& pipeline_type, const QString& name) {
+bool Manager::savePresetFile(const PipelineType& pipeline_type, const QString& name) {
+  /*
+    Todo: we have to test if the file was really save instead of assuming we always succeed
+  */
+
   nlohmann::json json;
 
   std::filesystem::path output_file;
@@ -498,6 +502,8 @@ void Manager::save_preset_file(const PipelineType& pipeline_type, const QString&
   // std::cout << std::setw(4) << json << std::endl;
 
   util::debug("saved preset: " + output_file.string());
+
+  return true;
 }
 
 bool Manager::add(const PipelineType& pipeline_type, const QString& name) {
@@ -509,7 +515,7 @@ bool Manager::add(const PipelineType& pipeline_type, const QString& name) {
     }
   }
 
-  save_preset_file(pipeline_type, name);
+  savePresetFile(pipeline_type, name);
 
   return true;
 }
@@ -650,14 +656,14 @@ auto Manager::load_preset_file(const PipelineType& pipeline_type, const std::fil
   return false;
 }
 
-auto Manager::load_local_preset_file(const PipelineType& pipeline_type, const std::string& name) -> bool {
+bool Manager::loadLocalPresetFile(const PipelineType& pipeline_type, const QString& name) {
   const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
 
-  const auto input_file = conf_dir / std::filesystem::path{name + json_ext};
+  const auto input_file = conf_dir / std::filesystem::path{name.toStdString() + json_ext};
 
   // Check preset existence
   if (!std::filesystem::exists(input_file)) {
-    util::debug("can't find the local preset \"" + name + "\" on the filesystem");
+    util::debug("can't find the local preset \"" + name.toStdString() + "\" on the filesystem");
 
     return false;
   }
@@ -675,7 +681,7 @@ auto Manager::load_local_preset_file(const PipelineType& pipeline_type, const st
 
 auto Manager::load_community_preset_file(const PipelineType& pipeline_type,
                                          const std::string& full_path_stem,
-                                         const std::string& package_name) -> bool {
+                                         const QString& package_name) -> bool {
   const auto input_file = std::filesystem::path{full_path_stem + json_ext};
 
   // Check preset existence
@@ -685,7 +691,7 @@ auto Manager::load_community_preset_file(const PipelineType& pipeline_type,
     return false;
   }
 
-  set_last_preset_keys(pipeline_type, input_file.stem().string(), package_name);
+  set_last_preset_keys(pipeline_type, QString::fromStdString(input_file.stem().string()), package_name);
 
   const auto loaded = load_preset_file(pipeline_type, input_file);
 
@@ -1010,7 +1016,7 @@ void Manager::autoload(const PipelineType& pipeline_type,
 
   util::debug("autoloading local preset " + name + " for device " + device_name);
 
-  load_local_preset_file(pipeline_type, name);
+  loadLocalPresetFile(pipeline_type, QString::fromStdString(name));
 }
 
 auto Manager::get_autoload_profiles(const PipelineType& pipeline_type) -> std::vector<nlohmann::json> {
@@ -1055,10 +1061,10 @@ auto Manager::get_autoload_profiles(const PipelineType& pipeline_type) -> std::v
 }
 
 void Manager::set_last_preset_keys(const PipelineType& pipeline_type,
-                                   const std::string& preset_name,
-                                   const std::string& package_name) {
+                                   const QString& preset_name,
+                                   const QString& package_name) {
   // In order to avoid race conditions, the community package key should be set before the preset name.
-  if (package_name.empty()) {
+  if (package_name.isEmpty()) {
     switch (pipeline_type) {
       case PipelineType::input:
         db::Main::setLastLoadedInputCommunityPackage("");
@@ -1070,15 +1076,15 @@ void Manager::set_last_preset_keys(const PipelineType& pipeline_type,
   } else {
     switch (pipeline_type) {
       case PipelineType::input:
-        db::Main::setLastLoadedInputCommunityPackage(QString::fromStdString(package_name));
+        db::Main::setLastLoadedInputCommunityPackage(package_name);
         break;
       case PipelineType::output:
-        db::Main::setLastLoadedOutputCommunityPackage(QString::fromStdString(package_name));
+        db::Main::setLastLoadedOutputCommunityPackage(package_name);
         break;
     }
   }
 
-  if (preset_name.empty()) {
+  if (preset_name.isEmpty()) {
     switch (pipeline_type) {
       case PipelineType::input:
         db::Main::setLastLoadedInputPreset("");
@@ -1090,10 +1096,10 @@ void Manager::set_last_preset_keys(const PipelineType& pipeline_type,
   } else {
     switch (pipeline_type) {
       case PipelineType::input:
-        db::Main::setLastLoadedInputPreset(QString::fromStdString(package_name));
+        db::Main::setLastLoadedInputPreset(package_name);
         break;
       case PipelineType::output:
-        db::Main::setLastLoadedOutputPreset(QString::fromStdString(package_name));
+        db::Main::setLastLoadedOutputPreset(package_name);
         break;
     }
   }
