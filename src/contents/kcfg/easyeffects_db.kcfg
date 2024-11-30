@@ -22,19 +22,19 @@
         </entry>
         <entry name="lastLoadedInputPreset" type="String">
             <label>Last used input preset.</label>
-            <default>""</default>
+            <default code="true">""</default>
         </entry>
         <entry name="lastLoadedOutputPreset" type="String">
             <label>Last used output preset.</label>
-            <default>""</default>
+            <default code="true">""</default>
         </entry>
         <entry name="lastLoadedInputCommunityPackage" type="String">
             <label>Last used input community package.</label>
-            <default>""</default>
+            <default code="true">""</default>
         </entry>
         <entry name="lastLoadedOutputCommunityPackage" type="String">
             <label>Last used output community package.</label>
-            <default>""</default>
+            <default code="true">""</default>
         </entry>
         <entry name="showNativePluginUi" type="Bool">
             <label>Show Plugin's Native Window</label>

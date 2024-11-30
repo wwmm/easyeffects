@@ -105,6 +105,28 @@ Manager::Manager()
     outputListModel.append(name);
   }
 
+  prepare_filesystem_watchers();
+  prepare_last_used_preset_key(PipelineType::input);
+  prepare_last_used_preset_key(PipelineType::output);
+}
+
+void Manager::create_user_directory(const std::filesystem::path& path) {
+  if (std::filesystem::is_directory(path)) {
+    util::debug("user presets directory already exists: " + path.string());
+
+    return;
+  }
+
+  if (std::filesystem::create_directories(path)) {
+    util::debug("user presets directory created: " + path.string());
+
+    return;
+  }
+
+  util::warning("failed to create user presets directory: " + path.string());
+}
+
+void Manager::prepare_filesystem_watchers() {
   user_input_watcher.addPath(QString::fromStdString(user_input_dir.string()));
   user_output_watcher.addPath(QString::fromStdString(user_output_dir.string()));
   autoload_input_watcher.addPath(QString::fromStdString(autoload_input_dir.string()));
@@ -161,20 +183,34 @@ Manager::Manager()
   });
 }
 
-void Manager::create_user_directory(const std::filesystem::path& path) {
-  if (std::filesystem::is_directory(path)) {
-    util::debug("user presets directory already exists: " + path.string());
+void Manager::prepare_last_used_preset_key(const PipelineType& pipeline_type) {
+  const auto preset_name =
+      pipeline_type == PipelineType::input ? db::Main::lastLoadedInputPreset() : db::Main::lastLoadedOutputPreset();
 
-    return;
+  bool reset_key = true;
+
+  if (!preset_name.isEmpty()) {
+    for (const auto& name : get_local_presets_name(pipeline_type)) {
+      if (name == preset_name) {
+        reset_key = false;
+
+        break;
+      }
+    }
+  } else {
+    reset_key = false;
   }
 
-  if (std::filesystem::create_directories(path)) {
-    util::debug("user presets directory created: " + path.string());
-
-    return;
+  if (reset_key) {
+    switch (pipeline_type) {
+      case PipelineType::input:
+        db::Main::setLastLoadedInputPreset(db::Main::defaultLastLoadedInputPresetValue());
+        break;
+      case PipelineType::output:
+        db::Main::setLastLoadedOutputPreset(db::Main::defaultLastLoadedOutputPresetValue());
+        break;
+    }
   }
-
-  util::warning("failed to create user presets directory: " + path.string());
 }
 
 auto Manager::search_names(std::filesystem::directory_iterator& it) -> QStringList {
@@ -1064,13 +1100,14 @@ void Manager::set_last_preset_keys(const PipelineType& pipeline_type,
                                    const QString& preset_name,
                                    const QString& package_name) {
   // In order to avoid race conditions, the community package key should be set before the preset name.
+
   if (package_name.isEmpty()) {
     switch (pipeline_type) {
       case PipelineType::input:
-        db::Main::setLastLoadedInputCommunityPackage("");
+        db::Main::setLastLoadedInputCommunityPackage(db::Main::defaultLastLoadedInputCommunityPackageValue());
         break;
       case PipelineType::output:
-        db::Main::setLastLoadedOutputCommunityPackage("");
+        db::Main::setLastLoadedOutputCommunityPackage(db::Main::defaultLastLoadedOutputCommunityPackageValue());
         break;
     }
   } else {
@@ -1087,19 +1124,19 @@ void Manager::set_last_preset_keys(const PipelineType& pipeline_type,
   if (preset_name.isEmpty()) {
     switch (pipeline_type) {
       case PipelineType::input:
-        db::Main::setLastLoadedInputPreset("");
+        db::Main::setLastLoadedInputPreset(db::Main::defaultLastLoadedInputPresetValue());
         break;
       case PipelineType::output:
-        db::Main::setLastLoadedOutputPreset("");
+        db::Main::setLastLoadedOutputPreset(db::Main::defaultLastLoadedOutputPresetValue());
         break;
     }
   } else {
     switch (pipeline_type) {
       case PipelineType::input:
-        db::Main::setLastLoadedInputPreset(package_name);
+        db::Main::setLastLoadedInputPreset(preset_name);
         break;
       case PipelineType::output:
-        db::Main::setLastLoadedOutputPreset(package_name);
+        db::Main::setLastLoadedOutputPreset(preset_name);
         break;
     }
   }

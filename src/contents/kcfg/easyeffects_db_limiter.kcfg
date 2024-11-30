@@ -246,7 +246,7 @@
         </entry>
         <entry name="sidechainInputDevice" type="String">
             <label></label>
-            <default>""</default>
+            <default code="true">""</default>
         </entry>
     </group>
 </kcfg>

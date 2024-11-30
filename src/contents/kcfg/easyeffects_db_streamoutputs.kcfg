@@ -14,7 +14,7 @@
         </entry>
         <entry name="outputDevice" type="String">
             <label>Output Device</label>
-            <default>""</default>
+            <default code="true">""</default>
         </entry>
         <entry name="blocklist" type="StringList">
             <label>List of Blocked Streams</label>
@@ -42,7 +42,7 @@
         </entry>
         <entry name="visiblePlugin" type="String">
             <label>Visible Plugin</label>
-            <default>""</default>
+            <default code="true">""</default>
         </entry>
     </group>
 </kcfg>

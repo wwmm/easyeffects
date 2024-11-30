@@ -17,6 +17,20 @@ ColumnLayout {
         else if (DB.Manager.main.visiblePage === 1)
             return 0;
     }
+    readonly property string lastLoadedPresetName: {
+        if (DB.Manager.main.visiblePage === 0)
+            return DB.Manager.main.lastLoadedOutputPreset;
+        else if (DB.Manager.main.visiblePage === 1)
+            return DB.Manager.main.lastLoadedInputPreset;
+        return "";
+    }
+    readonly property string lastLoadedCommunityPackage: {
+        if (DB.Manager.main.visiblePage === 0)
+            return DB.Manager.main.lastLoadedOutputCommunityPackage;
+        else if (DB.Manager.main.visiblePage === 1)
+            return DB.Manager.main.lastLoadedInputCommunityPackage;
+        return "";
+    }
 
     function showPresetsMenuStatus(label) {
         status.text = label;
@@ -129,14 +143,9 @@ ColumnLayout {
             hoverEnabled: true
             width: listView.width
             onClicked: {
-                if (Presets.Manager.loadLocalPresetFile(pipeline, name) === true) {
-                    showPresetsMenuStatus(i18n("The Preset " + name + " Has Been Loaded"));
-                    if (DB.Manager.main.visiblePage === 0) {
-                    } else if (DB.Manager.main.visiblePage === 1) {
-                    }
-                } else {
-                    showPresetsMenuStatus(i18n("The Preset " + name + " Has Been Loaded with errors"));
-                }
+                if (Presets.Manager.loadLocalPresetFile(pipeline, name) === false)
+                    showPresetsMenuStatus(i18n("The Preset " + name + "failed to load"));
+
             }
 
             contentItem: RowLayout {
@@ -182,9 +191,29 @@ ColumnLayout {
         id: status
 
         Layout.fillWidth: true
+        Layout.maximumWidth: parent.width
         visible: false
         showCloseButton: true
+    }
+
+    Kirigami.Heading {
+        id: lastLoadedPresetTitle
+
+        Layout.alignment: Qt.AlignHCenter
+        level: 2
+        text: {
+            if (Common.isEmpty(lastLoadedPresetName))
+                return i18n("No Preset Loaded");
+
+            return Common.isEmpty(lastLoadedCommunityPackage) ? i18n("Last Local Preset Loaded") : i18n("Last Community Preset Loaded");
+        }
+    }
+
+    Kirigami.InlineMessage {
+        Layout.fillWidth: true
         Layout.maximumWidth: parent.width
+        text: lastLoadedPresetName
+        visible: !Common.isEmpty(lastLoadedPresetName)
     }
 
 }

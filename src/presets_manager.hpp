@@ -140,6 +140,10 @@ class Manager : public QObject {
 
   static void create_user_directory(const std::filesystem::path& path);
 
+  void prepare_filesystem_watchers();
+
+  void prepare_last_used_preset_key(const PipelineType& pipeline_type);
+
   auto search_names(std::filesystem::directory_iterator& it) -> QStringList;
 
   auto scan_community_package_recursive(std::filesystem::directory_iterator& it,
