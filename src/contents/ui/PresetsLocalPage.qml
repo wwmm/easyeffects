@@ -37,6 +37,20 @@ ColumnLayout {
         status.visible = true;
     }
 
+    FileDialog {
+        id: fileDialog
+
+        fileMode: FileDialog.OpenFiles
+        currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
+        nameFilters: ["JSON files (*.json)"]
+        onAccepted: {
+            if (Presets.Manager.importPresets(pipeline, fileDialog.selectedFiles) === true)
+                showPresetsMenuStatus(i18n("Preset files imported!"));
+            else
+                showPresetsMenuStatus(i18n("Failed to import the presets!"));
+        }
+    }
+
     Kirigami.ActionTextField {
         id: newPresetName
 

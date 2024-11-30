@@ -122,6 +122,8 @@ class Manager : public QObject {
 
   Q_INVOKABLE bool loadLocalPresetFile(const PipelineType& pipeline_type, const QString& name);
 
+  Q_INVOKABLE bool importPresets(const PipelineType& pipeline_type, const QList<QString>& url_list);
+
  signals:
   // signal sending title and description strings
   void presetLoadError(const QString& msg1, const QString& msg2);

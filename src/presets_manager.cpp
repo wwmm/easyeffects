@@ -25,8 +25,10 @@
 #include <qstandardpaths.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
+#include <qurl.h>
 #include <KLocalizedString>
 #include <QString>
+#include <algorithm>
 #include <exception>
 #include <filesystem>
 #include <fstream>
@@ -736,6 +738,39 @@ auto Manager::load_community_preset_file(const PipelineType& pipeline_type,
   }
 
   return loaded;
+}
+
+bool Manager::importPresets(const PipelineType& pipeline_type, const QList<QString>& url_list) {
+  return std::ranges::all_of(url_list, [&](auto u) {
+    auto url = QUrl(u);
+
+    if (url.isLocalFile()) {
+      auto input_path = std::filesystem::path{url.toLocalFile().toStdString()};
+
+      const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
+
+      const std::filesystem::path out_path = conf_dir / input_path.filename();
+
+      try {
+        std::filesystem::copy_file(input_path, out_path, std::filesystem::copy_options::overwrite_existing);
+
+        util::debug("imported preset to: " + out_path.string());
+
+        return true;
+      } catch (const std::exception& e) {
+        util::warning("can't import preset to: " + out_path.string());
+        util::warning(e.what());
+
+        return false;
+      }
+    } else {
+      util::warning(url.toString().toStdString() + " is not a local file!");
+
+      return false;
+    }
+
+    return false;
+  });
 }
 
 void Manager::import_from_filesystem(const PipelineType& pipeline_type, const std::string& file_path) {
