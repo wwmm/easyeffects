@@ -1,3 +1,4 @@
+import "Common.js" as Common
 import QtCore
 import QtQuick
 import QtQuick.Controls as Controls
@@ -9,16 +10,48 @@ import org.kde.kirigami as Kirigami
 Kirigami.OverlaySheet {
     id: control
 
+    readonly property string lastLoadedPresetName: {
+        if (DB.Manager.main.visiblePage === 0)
+            return DB.Manager.main.lastLoadedOutputPreset;
+        else if (DB.Manager.main.visiblePage === 1)
+            return DB.Manager.main.lastLoadedInputPreset;
+        return "";
+    }
+    readonly property string lastLoadedCommunityPackage: {
+        if (DB.Manager.main.visiblePage === 0)
+            return DB.Manager.main.lastLoadedOutputCommunityPackage;
+        else if (DB.Manager.main.visiblePage === 1)
+            return DB.Manager.main.lastLoadedInputCommunityPackage;
+        return "";
+    }
+
     parent: applicationWindow().overlay
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
     y: appWindow.header.height + Kirigami.Units.gridUnit
+    onVisibleChanged: {
+        if (control.visible) {
+            switch (DB.Manager.main.visiblePresetSheetPage) {
+            case 0:
+                stackView.replace("qrc:ui/PresetsLocalPage.qml");
+                break;
+            case 1:
+                stackView.replace("qrc:ui/PresetsCommunityPage.qml");
+                break;
+            case 2:
+                // pageStack.push("qrc:ui/PipeWirePage.qml");
+                break;
+            default:
+                null;
+            }
+        }
+    }
 
     Controls.StackView {
         id: stackView
 
         implicitWidth: appWindow.width * 0.5
-        implicitHeight: control.parent.height - 2 * control.header.height - control.y
+        implicitHeight: control.parent.height - 2 * (control.header.height + control.footer.height) - control.y
 
         initialItem: PresetsLocalPage {
         }
@@ -48,7 +81,7 @@ Kirigami.OverlaySheet {
                 checkable: true
                 checked: DB.Manager.main.visiblePresetSheetPage === 1
                 onTriggered: {
-                    // stackView.replace("qrc:ui/PageStreamsEffects.qml");
+                    stackView.replace("qrc:ui/PresetsCommunityPage.qml");
                     DB.Manager.main.visiblePresetSheetPage = 1;
                 }
             },
@@ -64,6 +97,20 @@ Kirigami.OverlaySheet {
                 }
             }
         ]
+    }
+
+    footer: Kirigami.InlineMessage {
+        Layout.fillWidth: true
+        Layout.maximumWidth: parent.width
+        position: Kirigami.InlineMessage.Position.Footer
+        visible: true
+        text: {
+            if (Common.isEmpty(lastLoadedPresetName))
+                return i18n("No Preset Loaded");
+
+            const tag = Common.isEmpty(lastLoadedCommunityPackage) ? i18n("<strong>Local: </strong>") : i18n("<strong>Community: </strong>");
+            return tag + lastLoadedPresetName;
+        }
     }
 
 }

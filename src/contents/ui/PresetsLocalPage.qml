@@ -17,20 +17,6 @@ ColumnLayout {
         else if (DB.Manager.main.visiblePage === 1)
             return 0;
     }
-    readonly property string lastLoadedPresetName: {
-        if (DB.Manager.main.visiblePage === 0)
-            return DB.Manager.main.lastLoadedOutputPreset;
-        else if (DB.Manager.main.visiblePage === 1)
-            return DB.Manager.main.lastLoadedInputPreset;
-        return "";
-    }
-    readonly property string lastLoadedCommunityPackage: {
-        if (DB.Manager.main.visiblePage === 0)
-            return DB.Manager.main.lastLoadedOutputCommunityPackage;
-        else if (DB.Manager.main.visiblePage === 1)
-            return DB.Manager.main.lastLoadedInputCommunityPackage;
-        return "";
-    }
 
     function showPresetsMenuStatus(label) {
         status.text = label;
@@ -208,26 +194,6 @@ ColumnLayout {
         Layout.maximumWidth: parent.width
         visible: false
         showCloseButton: true
-    }
-
-    Kirigami.Heading {
-        id: lastLoadedPresetTitle
-
-        Layout.alignment: Qt.AlignHCenter
-        level: 2
-        text: {
-            if (Common.isEmpty(lastLoadedPresetName))
-                return i18n("No Preset Loaded");
-
-            return Common.isEmpty(lastLoadedCommunityPackage) ? i18n("Last Local Preset Loaded") : i18n("Last Community Preset Loaded");
-        }
-    }
-
-    Kirigami.InlineMessage {
-        Layout.fillWidth: true
-        Layout.maximumWidth: parent.width
-        text: lastLoadedPresetName
-        visible: !Common.isEmpty(lastLoadedPresetName)
     }
 
 }

@@ -27,6 +27,7 @@
         <file alias="PreferencesSheet.qml">contents/ui/PreferencesSheet.qml</file>
         <file alias="PresetsSheet.qml">contents/ui/PresetsSheet.qml</file>
         <file alias="PresetsLocalPage.qml">contents/ui/PresetsLocalPage.qml</file>
+        <file alias="PresetsCommunityPage.qml">contents/ui/PresetsCommunityPage.qml</file>
         <file alias="Speex.qml">contents/ui/Speex.qml</file>
         <file alias="StereoTools.qml">contents/ui/StereoTools.qml</file>
         <file alias="Common.js">contents/ui/Common.js</file>

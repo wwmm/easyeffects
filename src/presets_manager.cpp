@@ -773,35 +773,6 @@ bool Manager::importPresets(const PipelineType& pipeline_type, const QList<QStri
   });
 }
 
-void Manager::import_from_filesystem(const PipelineType& pipeline_type, const std::string& file_path) {
-  // When importing presets from the filesystem, we overwrite the file if it already exists.
-
-  std::filesystem::path p{file_path};
-
-  if (!std::filesystem::is_regular_file(p)) {
-    util::warning(p.string() + " is not a file!");
-
-    return;
-  }
-
-  if (p.extension().c_str() != json_ext) {
-    return;
-  }
-
-  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
-
-  const std::filesystem::path out_path = conf_dir / p.filename();
-
-  try {
-    std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
-
-    util::debug("imported preset to: " + out_path.string());
-  } catch (const std::exception& e) {
-    util::warning("can't import preset to: " + out_path.string());
-    util::warning(e.what());
-  }
-}
-
 auto Manager::import_addons_from_community_package(const PipelineType& pipeline_type,
                                                    const std::filesystem::path& path,
                                                    const std::string& package) -> bool {

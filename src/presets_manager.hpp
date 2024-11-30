@@ -91,8 +91,6 @@ class Manager : public QObject {
                      const std::string& device_name,
                      const std::string& device_profile) -> std::string;
 
-  void import_from_filesystem(const PipelineType& pipeline_type, const std::string& file_path);
-
   void import_from_community_package(const PipelineType& pipeline_type,
                                      const std::string& file_path,
                                      const std::string& package);
