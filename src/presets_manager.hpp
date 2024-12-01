@@ -25,6 +25,7 @@
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <filesystem>
+#include <functional>
 #include <memory>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
@@ -141,6 +142,8 @@ class Manager : public QObject {
   ListModel outputListModel, inputListModel, communityOutputListModel, communityInputListModel;
 
   static void create_user_directory(const std::filesystem::path& path);
+
+  static void refresh_list_models(ListModel& model, std::function<QList<std::filesystem::path>()> get_paths);
 
   void prepare_filesystem_watchers();
 

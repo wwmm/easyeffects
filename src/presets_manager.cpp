@@ -32,6 +32,7 @@
 #include <exception>
 #include <filesystem>
 #include <fstream>
+#include <functional>
 #include <iomanip>
 #include <memory>
 #include <nlohmann/json.hpp>
@@ -49,6 +50,7 @@
 #include "easyeffects_db_streamoutputs.h"
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
+#include "presets_list_model.hpp"
 #include "tags_app.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
@@ -106,13 +108,9 @@ Manager::Manager()
   create_user_directory(autoload_input_dir);
   create_user_directory(autoload_output_dir);
 
-  for (const auto& path : get_local_presets_paths(PipelineType::input)) {
-    inputListModel.append(path);
-  }
+  refresh_list_models(inputListModel, [this]() { return get_local_presets_paths(PipelineType::input); });
 
-  for (const auto& path : get_local_presets_paths(PipelineType::output)) {
-    outputListModel.append(path);
-  }
+  refresh_list_models(outputListModel, [this]() { return get_local_presets_paths(PipelineType::output); });
 
   refreshCommunityPresets(PipelineType::input);
   refreshCommunityPresets(PipelineType::output);
@@ -138,6 +136,27 @@ void Manager::create_user_directory(const std::filesystem::path& path) {
   util::warning("failed to create user presets directory: " + path.string());
 }
 
+void Manager::refresh_list_models(ListModel& model, std::function<QList<std::filesystem::path>()> get_paths) {
+  auto model_list = model.getList();
+  auto local_list = get_paths();
+
+  model.begin_reset();
+
+  for (const auto& v : local_list) {
+    if (!model_list.contains(v)) {
+      model.append(v);
+    }
+  }
+
+  for (const auto& v : model_list) {
+    if (!local_list.contains(v)) {
+      model.remove(v);
+    }
+  }
+
+  model.end_reset();
+}
+
 void Manager::prepare_filesystem_watchers() {
   user_input_watcher.addPath(QString::fromStdString(user_input_dir.string()));
   user_output_watcher.addPath(QString::fromStdString(user_output_dir.string()));
@@ -145,45 +164,11 @@ void Manager::prepare_filesystem_watchers() {
   autoload_output_watcher.addPath(QString::fromStdString(autoload_output_dir.string()));
 
   connect(&user_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-    auto model_list = inputListModel.getList();
-    auto local_list = get_local_presets_paths(PipelineType::input);
-
-    inputListModel.begin_reset();
-
-    for (const auto& v : local_list) {
-      if (!model_list.contains(v)) {
-        inputListModel.append(v);
-      }
-    }
-
-    for (const auto& v : model_list) {
-      if (!local_list.contains(v)) {
-        inputListModel.remove(v);
-      }
-    }
-
-    inputListModel.end_reset();
+    refresh_list_models(inputListModel, [this]() { return get_local_presets_paths(PipelineType::input); });
   });
 
   connect(&user_output_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-    auto model_list = outputListModel.getList();
-    auto local_list = get_local_presets_paths(PipelineType::output);
-
-    outputListModel.begin_reset();
-
-    for (const auto& v : local_list) {
-      if (!model_list.contains(v)) {
-        outputListModel.append(v);
-      }
-    }
-
-    for (const auto& v : model_list) {
-      if (!local_list.contains(v)) {
-        outputListModel.remove(v);
-      }
-    }
-
-    outputListModel.end_reset();
+    refresh_list_models(outputListModel, [this]() { return get_local_presets_paths(PipelineType::output); });
   });
 
   connect(&autoload_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
@@ -390,46 +375,14 @@ auto Manager::get_community_preset_info(const PipelineType& pipeline_type,
 void Manager::refreshCommunityPresets(const PipelineType& pipeline_type) {
   switch (pipeline_type) {
     case PipelineType::input: {
-      auto model_list = communityInputListModel.getList();
-      auto local_list = get_all_community_presets_paths(PipelineType::input);
-
-      communityInputListModel.begin_reset();
-
-      for (const auto& v : local_list) {
-        if (!model_list.contains(v)) {
-          communityInputListModel.append(v);
-        }
-      }
-
-      for (const auto& v : model_list) {
-        if (!local_list.contains(v)) {
-          communityInputListModel.remove(v);
-        }
-      }
-
-      communityInputListModel.end_reset();
+      refresh_list_models(communityInputListModel,
+                          [this]() { return get_all_community_presets_paths(PipelineType::input); });
 
       break;
     }
     case PipelineType::output: {
-      auto model_list = communityOutputListModel.getList();
-      auto local_list = get_all_community_presets_paths(PipelineType::output);
-
-      communityOutputListModel.begin_reset();
-
-      for (const auto& v : local_list) {
-        if (!model_list.contains(v)) {
-          communityOutputListModel.append(v);
-        }
-      }
-
-      for (const auto& v : model_list) {
-        if (!local_list.contains(v)) {
-          communityOutputListModel.remove(v);
-        }
-      }
-
-      communityOutputListModel.end_reset();
+      refresh_list_models(communityOutputListModel,
+                          [this]() { return get_all_community_presets_paths(PipelineType::output); });
 
       break;
     }
