@@ -65,7 +65,7 @@ class Manager : public QObject {
 
   const std::string json_ext = ".json";
 
-  auto get_local_presets_name(const PipelineType& pipeline_type) -> QStringList;
+  auto get_local_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
 
   auto get_community_preset_info(const PipelineType& pipeline_type,
                                  const std::string& path) -> std::pair<std::string, std::string>;
@@ -144,7 +144,7 @@ class Manager : public QObject {
 
   void prepare_last_used_preset_key(const PipelineType& pipeline_type);
 
-  auto search_names(std::filesystem::directory_iterator& it) -> QStringList;
+  auto search_presets_path(std::filesystem::directory_iterator& it) -> QList<std::filesystem::path>;
 
   auto scan_community_package_recursive(std::filesystem::directory_iterator& it,
                                         const uint& top_scan_level,

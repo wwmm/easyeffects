@@ -28,7 +28,9 @@
 #include <qsortfilterproxymodel.h>
 #include <qstringview.h>
 #include <qtmetamacros.h>
+#include <qtypes.h>
 #include <qvariant.h>
+#include <filesystem>
 #include <iterator>
 #include "config.h"
 
@@ -41,74 +43,50 @@ ListModel::ListModel(QObject* parent) : QAbstractListModel(parent), proxy(new QS
 }
 
 int ListModel::rowCount(const QModelIndex& /*parent*/) const {
-  return list.size();
+  return listPaths.size();
 }
 
 QHash<int, QByteArray> ListModel::roleNames() const {
-  return {{Roles::Name, "name"}};
+  return {{Roles::Name, "name"}, {Roles::Path, "path"}};
 }
 
 QVariant ListModel::data(const QModelIndex& index, int role) const {
-  if (list.empty()) {
+  if (listPaths.empty()) {
     return "";
   }
 
-  const auto it = std::next(list.begin(), index.row());
+  const auto it = std::next(listPaths.begin(), index.row());
 
   switch (role) {
     case Roles::Name:
-      return *it;
+      return QString::fromStdString(it->stem().string());
+    case Roles::Path:
+      return QString::fromStdString(it->string());
     default:
       return {};
   }
 }
 
-bool ListModel::setData(const QModelIndex& index, const QVariant& value, int role) {
-  if (!value.canConvert<QString>() && role != Qt::EditRole) {
-    return false;
-  }
-
-  auto it = std::next(list.begin(), index.row());
-
-  switch (role) {
-    case Roles::Name: {
-      *it = value.toString();
-
-      emit dataChanged(index, index, {Roles::Name});
-
-      break;
-    }
-    default:
-      break;
-  }
-
-  return true;
-}
-
-void ListModel::append(const QString& name) {
-  int pos = list.empty() ? 0 : list.size() - 1;
+void ListModel::append(const std::filesystem::path& path) {
+  int pos = listPaths.empty() ? 0 : listPaths.size() - 1;
 
   beginInsertRows(QModelIndex(), pos, pos);
 
-  list.append(name);
+  listPaths.append(path);
 
   endInsertRows();
 
-  emit dataChanged(index(0), index(list.size() - 1));
-}
-
-void ListModel::remove(const int& rowIndex) {
-  beginRemoveRows(QModelIndex(), rowIndex, rowIndex);
-
-  list.remove(rowIndex);
-
-  endRemoveRows();
-
-  emit dataChanged(index(0), index(list.size() - 1));
+  emit dataChanged(index(0), index(listPaths.size() - 1));
 }
 
 void ListModel::remove(const QString& name) {
-  auto rowIndex = list.indexOf(name);
+  qsizetype rowIndex = -1;
+
+  for (qsizetype n = 0; n < listPaths.size(); n++) {
+    if (listPaths[n].stem().string() == name) {
+      rowIndex = n;
+    }
+  }
 
   if (rowIndex == -1) {
     return;
@@ -116,17 +94,39 @@ void ListModel::remove(const QString& name) {
 
   beginRemoveRows(QModelIndex(), rowIndex, rowIndex);
 
-  list.remove(rowIndex);
+  listPaths.remove(rowIndex);
 
   endRemoveRows();
 
-  emit dataChanged(index(0), index(list.size() - 1));
+  emit dataChanged(index(0), index(listPaths.size() - 1));
+}
+
+void ListModel::remove(const int& rowIndex) {
+  beginRemoveRows(QModelIndex(), rowIndex, rowIndex);
+
+  listPaths.remove(rowIndex);
+
+  endRemoveRows();
+
+  emit dataChanged(index(0), index(listPaths.size() - 1));
+}
+
+void ListModel::remove(const std::filesystem::path& path) {
+  qsizetype rowIndex = listPaths.indexOf(path);
+
+  beginRemoveRows(QModelIndex(), rowIndex, rowIndex);
+
+  listPaths.remove(rowIndex);
+
+  endRemoveRows();
+
+  emit dataChanged(index(0), index(listPaths.size() - 1));
 }
 
 void ListModel::reset() {
   beginResetModel();
 
-  list.clear();
+  listPaths.clear();
 
   endResetModel();
 }
@@ -139,8 +139,8 @@ void ListModel::end_reset() {
   endResetModel();
 }
 
-auto ListModel::getList() -> QList<QString> {
-  return list;
+auto ListModel::getList() -> QList<std::filesystem::path> {
+  return listPaths;
 }
 
 QSortFilterProxyModel* ListModel::getProxy() {

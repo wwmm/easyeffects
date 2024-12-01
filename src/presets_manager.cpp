@@ -99,12 +99,12 @@ Manager::Manager()
   create_user_directory(autoload_input_dir);
   create_user_directory(autoload_output_dir);
 
-  for (const auto& name : get_local_presets_name(PipelineType::input)) {
-    inputListModel.append(name);
+  for (const auto& path : get_local_presets_paths(PipelineType::input)) {
+    inputListModel.append(path);
   }
 
-  for (const auto& name : get_local_presets_name(PipelineType::output)) {
-    outputListModel.append(name);
+  for (const auto& path : get_local_presets_paths(PipelineType::output)) {
+    outputListModel.append(path);
   }
 
   prepare_filesystem_watchers();
@@ -136,18 +136,18 @@ void Manager::prepare_filesystem_watchers() {
 
   connect(&user_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
     auto model_list = inputListModel.getList();
-    auto folder_list = get_local_presets_name(PipelineType::input);
+    auto local_list = get_local_presets_paths(PipelineType::input);
 
     inputListModel.begin_reset();
 
-    for (const auto& v : folder_list) {
+    for (const auto& v : local_list) {
       if (!model_list.contains(v)) {
         inputListModel.append(v);
       }
     }
 
     for (const auto& v : model_list) {
-      if (!folder_list.contains(v)) {
+      if (!local_list.contains(v)) {
         inputListModel.remove(v);
       }
     }
@@ -157,18 +157,18 @@ void Manager::prepare_filesystem_watchers() {
 
   connect(&user_output_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
     auto model_list = outputListModel.getList();
-    auto folder_list = get_local_presets_name(PipelineType::output);
+    auto local_list = get_local_presets_paths(PipelineType::output);
 
     outputListModel.begin_reset();
 
-    for (const auto& v : folder_list) {
+    for (const auto& v : local_list) {
       if (!model_list.contains(v)) {
         outputListModel.append(v);
       }
     }
 
     for (const auto& v : model_list) {
-      if (!folder_list.contains(v)) {
+      if (!local_list.contains(v)) {
         outputListModel.remove(v);
       }
     }
@@ -192,8 +192,8 @@ void Manager::prepare_last_used_preset_key(const PipelineType& pipeline_type) {
   bool reset_key = true;
 
   if (!preset_name.isEmpty()) {
-    for (const auto& name : get_local_presets_name(pipeline_type)) {
-      if (name == preset_name) {
+    for (const auto& p : get_local_presets_paths(pipeline_type)) {
+      if (p.stem().string() == preset_name) {
         reset_key = false;
 
         break;
@@ -215,13 +215,14 @@ void Manager::prepare_last_used_preset_key(const PipelineType& pipeline_type) {
   }
 }
 
-auto Manager::search_names(std::filesystem::directory_iterator& it) -> QStringList {
-  QStringList names;
+auto Manager::search_presets_path(std::filesystem::directory_iterator& it) -> QList<std::filesystem::path> {
+  QList<std::filesystem::path> paths;
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
       if (std::filesystem::is_regular_file(it->status()) && it->path().extension().string() == json_ext) {
-        names.append(QString::fromStdString(it->path().stem()));
+        // names.append(QString::fromStdString(it->path().stem()));
+        paths.append(it->path());
       }
 
       ++it;
@@ -230,15 +231,15 @@ auto Manager::search_names(std::filesystem::directory_iterator& it) -> QStringLi
     util::warning(e.what());
   }
 
-  return names;
+  return paths;
 }
 
-auto Manager::get_local_presets_name(const PipelineType& pipeline_type) -> QStringList {
+auto Manager::get_local_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path> {
   const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
 
   auto it = std::filesystem::directory_iterator{conf_dir};
 
-  auto names = search_names(it);
+  auto names = search_presets_path(it);
 
   return names;
 }
@@ -538,8 +539,8 @@ bool Manager::savePresetFile(const PipelineType& pipeline_type, const QString& n
 bool Manager::add(const PipelineType& pipeline_type, const QString& name) {
   // This method assumes the filename is valid.
 
-  for (const auto& p : get_local_presets_name(pipeline_type)) {
-    if (p == name) {
+  for (const auto& p : get_local_presets_paths(pipeline_type)) {
+    if (p.stem().string() == name) {
       return false;
     }
   }

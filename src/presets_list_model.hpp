@@ -26,6 +26,7 @@
 #include <qobject.h>
 #include <qsortfilterproxymodel.h>
 #include <qtmetamacros.h>
+#include <filesystem>
 
 class ListModel : public QAbstractListModel {
   Q_OBJECT;
@@ -33,7 +34,7 @@ class ListModel : public QAbstractListModel {
  public:
   explicit ListModel(QObject* parent = nullptr);
 
-  enum Roles { Name = Qt::UserRole };
+  enum Roles { Name = Qt::UserRole, Path };
 
   [[nodiscard]] int rowCount(const QModelIndex& /*parent*/) const override;
 
@@ -41,26 +42,26 @@ class ListModel : public QAbstractListModel {
 
   [[nodiscard]] QVariant data(const QModelIndex& index, int role) const override;
 
-  bool setData(const QModelIndex& index, const QVariant& value, int role) override;
-
   void reset();
 
   void begin_reset();
 
   void end_reset();
 
-  auto getList() -> QList<QString>;
+  auto getList() -> QList<std::filesystem::path>;
+
+  void append(const std::filesystem::path& path);
 
   void remove(const QString& name);
 
-  void append(const QString& name);
-
   void remove(const int& rowIndex);
+
+  void remove(const std::filesystem::path& path);
 
   Q_INVOKABLE QSortFilterProxyModel* getProxy();
 
  private:
-  QList<QString> list;
+  QList<std::filesystem::path> listPaths;
 
   QSortFilterProxyModel* proxy = nullptr;
 };
