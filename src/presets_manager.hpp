@@ -67,8 +67,6 @@ class Manager : public QObject {
 
   auto get_local_presets_name(const PipelineType& pipeline_type) -> QStringList;
 
-  auto get_all_community_presets_paths(const PipelineType& pipeline_type) -> std::vector<std::string>;
-
   auto get_community_preset_info(const PipelineType& pipeline_type,
                                  const std::string& path) -> std::pair<std::string, std::string>;
 
@@ -122,6 +120,8 @@ class Manager : public QObject {
 
   Q_INVOKABLE bool importPresets(const PipelineType& pipeline_type, const QList<QString>& url_list);
 
+  Q_INVOKABLE QStringList getAllCommunityPresetsPaths(const PipelineType& pipeline_type);
+
  signals:
   // signal sending title and description strings
   void presetLoadError(const QString& msg1, const QString& msg2);
@@ -148,7 +148,7 @@ class Manager : public QObject {
 
   auto scan_community_package_recursive(std::filesystem::directory_iterator& it,
                                         const uint& top_scan_level,
-                                        const std::string& origin = "") -> std::vector<std::string>;
+                                        const QString& origin = "") -> QStringList;
 
   static void save_blocklist(const PipelineType& pipeline_type, nlohmann::json& json);
 

@@ -120,7 +120,10 @@ ColumnLayout {
     Controls.Button {
         Layout.alignment: Qt.AlignCenter
         text: i18n("Refresh")
-        onClicked: showPassiveNotification("refreshing!")
+        onClicked: {
+            showPassiveNotification("refreshing!");
+            console.log(Presets.Manager.getAllCommunityPresetsPaths(pipeline));
+        }
     }
 
     Kirigami.InlineMessage {

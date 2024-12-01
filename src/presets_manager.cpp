@@ -220,7 +220,7 @@ auto Manager::search_names(std::filesystem::directory_iterator& it) -> QStringLi
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
-      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().c_str() == json_ext) {
+      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().string() == json_ext) {
         names.append(QString::fromStdString(it->path().stem()));
       }
 
@@ -243,8 +243,8 @@ auto Manager::get_local_presets_name(const PipelineType& pipeline_type) -> QStri
   return names;
 }
 
-auto Manager::get_all_community_presets_paths(const PipelineType& pipeline_type) -> std::vector<std::string> {
-  std::vector<std::string> cp_paths;
+QStringList Manager::getAllCommunityPresetsPaths(const PipelineType& pipeline_type) {
+  QStringList cp_paths;
 
   const auto scan_level = 2U;
 
@@ -269,14 +269,10 @@ auto Manager::get_all_community_presets_paths(const PipelineType& pipeline_type)
 
           auto package_it = std::filesystem::directory_iterator{package_path};
 
-          /* When C++23 is available, the following line is enough:
-          cp_paths.append_range(
-              scan_community_package_recursive(package_it, scan_level, package_path_name));
-          */
+          const auto sub_cp_vect =
+              scan_community_package_recursive(package_it, scan_level, QString::fromStdString(package_path_name));
 
-          const auto sub_cp_vect = scan_community_package_recursive(package_it, scan_level, package_path_name);
-
-          cp_paths.insert(cp_paths.end(), sub_cp_vect.cbegin(), sub_cp_vect.cend());
+          cp_paths.append(sub_cp_vect);
         }
 
         ++it;
@@ -291,28 +287,23 @@ auto Manager::get_all_community_presets_paths(const PipelineType& pipeline_type)
 
 auto Manager::scan_community_package_recursive(std::filesystem::directory_iterator& it,
                                                const uint& top_scan_level,
-                                               const std::string& origin) -> std::vector<std::string> {
+                                               const QString& origin) -> QStringList {
   const auto scan_level = top_scan_level - 1U;
 
-  std::vector<std::string> cp_paths;
+  QStringList cp_paths;
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
-      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().c_str() == json_ext) {
-        cp_paths.emplace_back(origin + "/" + it->path().stem().c_str());
+      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().string() == json_ext) {
+        cp_paths.append(origin + "/" + QString::fromStdString(it->path().stem().string()));
       } else if (scan_level > 0U && std::filesystem::is_directory(it->status())) {
         if (auto path = it->path(); !path.empty()) {
           auto subdir_it = std::filesystem::directory_iterator{path};
 
-          /* When C++23 is available, the following line is enough:
-          cp_paths.append_range(
-              scan_community_package_recursive(subdir_it, scan_level, origin + "/" + path.filename().c_str()));
-          */
+          const auto sub_cp_vect = scan_community_package_recursive(
+              subdir_it, scan_level, origin + "/" + QString::fromStdString(path.filename().string()));
 
-          const auto sub_cp_vect =
-              scan_community_package_recursive(subdir_it, scan_level, origin + "/" + path.filename().c_str());
-
-          cp_paths.insert(cp_paths.end(), sub_cp_vect.cbegin(), sub_cp_vect.cend());
+          cp_paths.append(sub_cp_vect);
         }
       }
 

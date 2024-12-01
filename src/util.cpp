@@ -184,7 +184,7 @@ auto search_filename(const std::filesystem::path& path,
   // Get the file in this directory, if exists.
   if (std::filesystem::exists(fn) && std::filesystem::is_regular_file(fn)) {
     // File found, abort the search.
-    full_path_result = fn.c_str();
+    full_path_result = fn.string();
 
     return true;
   }
