@@ -71,6 +71,13 @@ Manager::Manager()
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedOutputListModel", outputListModel.getProxy());
 
+  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
+                                                      "SortedCommunityOutputListModel",
+                                                      communityOutputListModel.getProxy());
+
+  qmlRegisterSingletonInstance<QSortFilterProxyModel>(
+      "ee.presets", VERSION_MAJOR, VERSION_MINOR, "SortedCommunityInputListModel", communityInputListModel.getProxy());
+
   // Initialize input and output directories for community presets.
   // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox).
   if (std::filesystem::is_regular_file(tags::app::flatpak_info_file)) {
@@ -106,6 +113,9 @@ Manager::Manager()
   for (const auto& path : get_local_presets_paths(PipelineType::output)) {
     outputListModel.append(path);
   }
+
+  refreshCommunityPresets(PipelineType::input);
+  refreshCommunityPresets(PipelineType::output);
 
   prepare_filesystem_watchers();
   prepare_last_used_preset_key(PipelineType::input);
@@ -243,8 +253,8 @@ auto Manager::get_local_presets_paths(const PipelineType& pipeline_type) -> QLis
   return names;
 }
 
-QStringList Manager::getAllCommunityPresetsPaths(const PipelineType& pipeline_type) {
-  QStringList cp_paths;
+auto Manager::get_all_community_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path> {
+  QList<std::filesystem::path> cp_paths;
 
   const auto scan_level = 2U;
 
@@ -287,15 +297,16 @@ QStringList Manager::getAllCommunityPresetsPaths(const PipelineType& pipeline_ty
 
 auto Manager::scan_community_package_recursive(std::filesystem::directory_iterator& it,
                                                const uint& top_scan_level,
-                                               const QString& origin) -> QStringList {
+                                               const QString& origin) -> QList<std::filesystem::path> {
   const auto scan_level = top_scan_level - 1U;
 
-  QStringList cp_paths;
+  QList<std::filesystem::path> cp_paths;
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
       if (std::filesystem::is_regular_file(it->status()) && it->path().extension().string() == json_ext) {
-        cp_paths.append(origin + "/" + QString::fromStdString(it->path().stem().string()));
+        // cp_paths.append(origin + "/" + QString::fromStdString(it->path().stem().string()));
+        cp_paths.append(it->path());
       } else if (scan_level > 0U && std::filesystem::is_directory(it->status())) {
         if (auto path = it->path(); !path.empty()) {
           auto subdir_it = std::filesystem::directory_iterator{path};
@@ -374,6 +385,55 @@ auto Manager::get_community_preset_info(const PipelineType& pipeline_type,
 
   // Placeholders in case of issues
   return std::make_pair(i18n("Community Preset").toStdString(), i18n("Package").toStdString());
+}
+
+void Manager::refreshCommunityPresets(const PipelineType& pipeline_type) {
+  switch (pipeline_type) {
+    case PipelineType::input: {
+      auto model_list = communityInputListModel.getList();
+      auto local_list = get_all_community_presets_paths(PipelineType::input);
+
+      communityInputListModel.begin_reset();
+
+      for (const auto& v : local_list) {
+        if (!model_list.contains(v)) {
+          communityInputListModel.append(v);
+        }
+      }
+
+      for (const auto& v : model_list) {
+        if (!local_list.contains(v)) {
+          communityInputListModel.remove(v);
+        }
+      }
+
+      communityInputListModel.end_reset();
+
+      break;
+    }
+    case PipelineType::output: {
+      auto model_list = communityOutputListModel.getList();
+      auto local_list = get_all_community_presets_paths(PipelineType::output);
+
+      communityOutputListModel.begin_reset();
+
+      for (const auto& v : local_list) {
+        if (!model_list.contains(v)) {
+          communityOutputListModel.append(v);
+        }
+      }
+
+      for (const auto& v : model_list) {
+        if (!local_list.contains(v)) {
+          communityOutputListModel.remove(v);
+        }
+      }
+
+      communityOutputListModel.end_reset();
+
+      break;
+    }
+  }
 }
 
 void Manager::save_blocklist(const PipelineType& pipeline_type, nlohmann::json& json) {

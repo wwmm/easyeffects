@@ -67,6 +67,8 @@ class Manager : public QObject {
 
   auto get_local_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
 
+  auto get_all_community_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
+
   auto get_community_preset_info(const PipelineType& pipeline_type,
                                  const std::string& path) -> std::pair<std::string, std::string>;
 
@@ -120,7 +122,7 @@ class Manager : public QObject {
 
   Q_INVOKABLE bool importPresets(const PipelineType& pipeline_type, const QList<QString>& url_list);
 
-  Q_INVOKABLE QStringList getAllCommunityPresetsPaths(const PipelineType& pipeline_type);
+  Q_INVOKABLE void refreshCommunityPresets(const PipelineType& pipeline_type);
 
  signals:
   // signal sending title and description strings
@@ -136,7 +138,7 @@ class Manager : public QObject {
 
   QFileSystemWatcher user_output_watcher, user_input_watcher, autoload_output_watcher, autoload_input_watcher;
 
-  ListModel outputListModel, inputListModel;
+  ListModel outputListModel, inputListModel, communityOutputListModel, communityInputListModel;
 
   static void create_user_directory(const std::filesystem::path& path);
 
@@ -148,7 +150,7 @@ class Manager : public QObject {
 
   auto scan_community_package_recursive(std::filesystem::directory_iterator& it,
                                         const uint& top_scan_level,
-                                        const QString& origin = "") -> QStringList;
+                                        const QString& origin = "") -> QList<std::filesystem::path>;
 
   static void save_blocklist(const PipelineType& pipeline_type, nlohmann::json& json);
 

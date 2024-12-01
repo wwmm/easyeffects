@@ -83,7 +83,7 @@ void ListModel::remove(const QString& name) {
   qsizetype rowIndex = -1;
 
   for (qsizetype n = 0; n < listPaths.size(); n++) {
-    if (listPaths[n].stem().string() == name) {
+    if (listPaths[n].stem().string() == name.toStdString()) {
       rowIndex = n;
     }
   }

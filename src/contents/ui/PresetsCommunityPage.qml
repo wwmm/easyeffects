@@ -122,7 +122,7 @@ ColumnLayout {
         text: i18n("Refresh")
         onClicked: {
             showPassiveNotification("refreshing!");
-            console.log(Presets.Manager.getAllCommunityPresetsPaths(pipeline));
+            Presets.Manager.refreshCommunityPresets(pipeline);
         }
     }
 
