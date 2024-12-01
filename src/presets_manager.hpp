@@ -75,10 +75,6 @@ class Manager : public QObject {
 
   static void write_plugins_preset(const PipelineType& pipeline_type, const QStringList& plugins, nlohmann::json& json);
 
-  auto load_community_preset_file(const PipelineType& pipeline_type,
-                                  const std::string& full_path_stem,
-                                  const QString& package_name) -> bool;
-
   auto read_effects_pipeline_from_preset(const PipelineType& pipeline_type,
                                          const std::filesystem::path& input_file,
                                          nlohmann::json& json,
@@ -91,10 +87,6 @@ class Manager : public QObject {
   auto find_autoload(const PipelineType& pipeline_type,
                      const std::string& device_name,
                      const std::string& device_profile) -> std::string;
-
-  void import_from_community_package(const PipelineType& pipeline_type,
-                                     const std::string& file_path,
-                                     const std::string& package);
 
   void add_autoload(const PipelineType& pipeline_type,
                     const std::string& preset_name,
@@ -124,6 +116,14 @@ class Manager : public QObject {
   Q_INVOKABLE bool importPresets(const PipelineType& pipeline_type, const QList<QString>& url_list);
 
   Q_INVOKABLE void refreshCommunityPresets(const PipelineType& pipeline_type);
+
+  Q_INVOKABLE bool loadCommunityPresetFile(const PipelineType& pipeline_type,
+                                           const QString& file_path,
+                                           const QString& package_name);
+
+  Q_INVOKABLE bool importFromCommunityPackage(const PipelineType& pipeline_type,
+                                              const QString& file_path,
+                                              const QString& package);
 
  signals:
   // signal sending title and description strings

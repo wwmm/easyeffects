@@ -76,6 +76,7 @@ ColumnLayout {
             id: listItemDelegate
 
             required property string name
+            required property string path
             required property string presetPackage
             property bool selected: listItemDelegate.highlighted || listItemDelegate.down
             property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
@@ -83,6 +84,9 @@ ColumnLayout {
             hoverEnabled: true
             width: listView.width
             onClicked: {
+                if (Presets.Manager.loadCommunityPresetFile(pipeline, path, presetPackage) === false)
+                    showPresetsMenuStatus(i18n("The Preset " + name + "failed to load"));
+
             }
 
             contentItem: RowLayout {
@@ -100,15 +104,14 @@ ColumnLayout {
                             enabled: false
                         },
                         Kirigami.Action {
-                            // if (Presets.Manager.savePresetFile(pipeline, name) === true)
-                            //     showPresetsMenuStatus(i18n("Settings Saved to: " + name));
-                            // else
-                            //     showPresetsMenuStatus(i18n("Failed to Save Settings to: " + name));
-
                             text: i18n("Copy to the Local List")
                             icon.name: "document-import-symbolic"
                             displayHint: Kirigami.DisplayHint.AlwaysHide
                             onTriggered: {
+                                if (Presets.Manager.importFromCommunityPackage(pipeline, path, presetPackage) === true)
+                                    showPresetsMenuStatus(i18n("Imported the Community Preset: " + name));
+                                else
+                                    showPresetsMenuStatus(i18n("Failed to Import the Community Preset: " + name));
                             }
                         }
                     ]

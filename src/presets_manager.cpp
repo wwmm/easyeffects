@@ -723,10 +723,10 @@ bool Manager::loadLocalPresetFile(const PipelineType& pipeline_type, const QStri
   return loaded;
 }
 
-auto Manager::load_community_preset_file(const PipelineType& pipeline_type,
-                                         const std::string& full_path_stem,
-                                         const QString& package_name) -> bool {
-  const auto input_file = std::filesystem::path{full_path_stem + json_ext};
+bool Manager::loadCommunityPresetFile(const PipelineType& pipeline_type,
+                                      const QString& file_path,
+                                      const QString& package_name) {
+  const auto input_file = std::filesystem::path{file_path.toStdString()};
 
   // Check preset existence
   if (!std::filesystem::exists(input_file)) {
@@ -883,28 +883,28 @@ auto Manager::import_addons_from_community_package(const PipelineType& pipeline_
   }
 }
 
-void Manager::import_from_community_package(const PipelineType& pipeline_type,
-                                            const std::string& file_path,
-                                            const std::string& package) {
+bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
+                                         const QString& file_path,
+                                         const QString& package) {
   // When importing presets from a community package, we do NOT overwrite
   // the local preset if it has the same name.
 
-  std::filesystem::path p{file_path};
+  std::filesystem::path p{file_path.toStdString()};
 
-  if (!std::filesystem::exists(p) || package.empty()) {
+  if (!std::filesystem::exists(p) || package.isEmpty()) {
     util::warning(p.string() + " does not exist! Please reload the community preset list");
 
-    return;
+    return false;
   }
 
   if (!std::filesystem::is_regular_file(p)) {
     util::warning(p.string() + " is not a file! Please reload the community preset list");
 
-    return;
+    return false;
   }
 
   if (p.extension().c_str() != json_ext) {
-    return;
+    return false;
   }
 
   bool preset_can_be_copied = false;
@@ -938,7 +938,7 @@ void Manager::import_from_community_package(const PipelineType& pipeline_type,
 
     util::warning(e.what());
 
-    return;
+    return false;
   }
 
   if (!preset_can_be_copied) {
@@ -946,22 +946,24 @@ void Manager::import_from_community_package(const PipelineType& pipeline_type,
 
     util::warning("exceeded the maximum copy attempts; please delete or rename your local preset");
 
-    return;
+    return false;
   }
 
   // Now we know that the preset is OK to be copied, but we first check for addons.
-  if (!import_addons_from_community_package(pipeline_type, p, package)) {
+  if (!import_addons_from_community_package(pipeline_type, p, package.toStdString())) {
     util::warning("can't import addons for the community preset: " + p.string() +
                   "; import stage aborted, please reload the community preset list");
 
     util::warning("if the issue goes on, contact the maintainer of the community package");
 
-    return;
+    return false;
   }
 
   std::filesystem::copy_file(p, out_path);
 
   util::debug("successfully imported the community preset to: " + out_path.string());
+
+  return true;
 }
 
 void Manager::add_autoload(const PipelineType& pipeline_type,
