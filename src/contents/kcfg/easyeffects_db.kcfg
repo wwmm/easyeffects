@@ -46,6 +46,10 @@
             <max>60</max>
             <default>30</default>
         </entry>
+        <entry name="autoloadingUsesFallback" type="Bool">
+            <label>When enabled presets autoloading will use a fallback when no profile is available for the target device.</label>
+            <default>false</default>
+        </entry>
         <entry name="visiblePage" type="Enum">
             <label>Saves the last viewed page.</label>
             <choices>
@@ -72,6 +76,18 @@
                 </choice>
                 <choice name="autoloadingPage">
                     <label>Autoloading Page</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
+        <entry name="visibleAutoloadingTab" type="Enum">
+            <label>Saves the last viewed tab.</label>
+            <choices>
+                <choice name="outputTab">
+                    <label>Output Devices</label>
+                </choice>
+                <choice name="inputTab">
+                    <label>Input Devices</label>
                 </choice>
             </choices>
             <default>0</default>

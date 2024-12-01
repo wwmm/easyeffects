@@ -39,7 +39,7 @@ Kirigami.OverlaySheet {
                 stackView.replace("qrc:ui/PresetsCommunityPage.qml");
                 break;
             case 2:
-                // pageStack.push("qrc:ui/PipeWirePage.qml");
+                stackView.replace("qrc:ui/PresetsAutoloadingPage.qml");
                 break;
             default:
                 null;
@@ -52,10 +52,6 @@ Kirigami.OverlaySheet {
 
         implicitWidth: appWindow.width * 0.5
         implicitHeight: control.parent.height - 2 * (control.header.height + control.footer.height) - control.y
-
-        initialItem: PresetsLocalPage {
-        }
-
     }
 
     header: Kirigami.ActionToolBar {
@@ -92,25 +88,55 @@ Kirigami.OverlaySheet {
                 checkable: true
                 checked: DB.Manager.main.visiblePresetSheetPage === 2
                 onTriggered: {
-                    // stackView.replace("qrc:ui/PipeWirePage.qml");
+                    stackView.replace("qrc:ui/PresetsAutoloadingPage.qml");
                     DB.Manager.main.visiblePresetSheetPage = 2;
                 }
             }
         ]
     }
 
-    footer: Kirigami.InlineMessage {
-        Layout.fillWidth: true
-        Layout.maximumWidth: parent.width
-        position: Kirigami.InlineMessage.Position.Footer
-        visible: true
-        text: {
-            if (Common.isEmpty(lastLoadedPresetName))
-                return i18n("No Preset Loaded");
+    footer: ColumnLayout {
+        Kirigami.InlineMessage {
+            Layout.fillWidth: true
+            Layout.maximumWidth: parent.width
+            position: Kirigami.InlineMessage.Position.Footer
+            visible: DB.Manager.main.visiblePresetSheetPage !== 2
+            text: {
+                if (Common.isEmpty(lastLoadedPresetName))
+                    return i18n("No Preset Loaded");
 
-            const tag = Common.isEmpty(lastLoadedCommunityPackage) ? i18n("<strong>Local: </strong>") : i18n("<strong>Community: </strong>");
-            return tag + lastLoadedPresetName;
+                const tag = Common.isEmpty(lastLoadedCommunityPackage) ? i18n("<strong>Local: </strong>") : i18n("<strong>Community: </strong>");
+                return tag + lastLoadedPresetName;
+            }
         }
+
+        Kirigami.ActionToolBar {
+            alignment: Qt.AlignHCenter
+            visible: DB.Manager.main.visiblePresetSheetPage === 2
+            actions: [
+                Kirigami.Action {
+                    displayHint: Kirigami.DisplayHint.KeepVisible
+                    icon.name: "audio-speakers-symbolic"
+                    text: i18n("Output")
+                    checkable: true
+                    checked: DB.Manager.main.visibleAutoloadingTab === 0
+                    onTriggered: {
+                        DB.Manager.main.visibleAutoloadingTab = 0;
+                    }
+                },
+                Kirigami.Action {
+                    displayHint: Kirigami.DisplayHint.KeepVisible
+                    icon.name: "audio-input-microphone-symbolic"
+                    text: i18n("Input")
+                    checkable: true
+                    checked: DB.Manager.main.visibleAutoloadingTab === 1
+                    onTriggered: {
+                        DB.Manager.main.visibleAutoloadingTab = 1;
+                    }
+                }
+            ]
+        }
+
     }
 
 }
