@@ -109,11 +109,13 @@ Manager::Manager()
   create_user_directory(autoload_output_dir);
 
   refresh_list_models(inputListModel, [this]() { return get_local_presets_paths(PipelineType::input); });
-
   refresh_list_models(outputListModel, [this]() { return get_local_presets_paths(PipelineType::output); });
 
   refreshCommunityPresets(PipelineType::input);
   refreshCommunityPresets(PipelineType::output);
+
+  communityInputListModel.set_filter_role(ListModel::Roles::Path);
+  communityOutputListModel.set_filter_role(ListModel::Roles::Path);
 
   prepare_filesystem_watchers();
   prepare_last_used_preset_key(PipelineType::input);

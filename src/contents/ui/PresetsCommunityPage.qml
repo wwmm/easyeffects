@@ -44,7 +44,7 @@ ColumnLayout {
     Kirigami.SearchField {
         id: search
 
-        readonly property var sortedListModel: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+        readonly property var sortedListModel: DB.Manager.main.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
 
         Layout.fillWidth: true
         placeholderText: i18n("Search")
@@ -54,14 +54,13 @@ ColumnLayout {
     }
 
     ListView {
-        // model: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
-
         id: listView
 
         Layout.fillWidth: true
         Layout.fillHeight: true
         clip: true
         reuseItems: true
+        model: DB.Manager.main.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
 
         Kirigami.PlaceholderMessage {
             anchors.centerIn: parent
@@ -77,15 +76,13 @@ ColumnLayout {
             id: listItemDelegate
 
             required property string name
+            required property string presetPackage
             property bool selected: listItemDelegate.highlighted || listItemDelegate.down
             property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
 
             hoverEnabled: true
             width: listView.width
             onClicked: {
-                if (Presets.Manager.loadLocalPresetFile(pipeline, name) === false)
-                    showPresetsMenuStatus(i18n("The Preset " + name + "failed to load"));
-
             }
 
             contentItem: RowLayout {
@@ -97,14 +94,20 @@ ColumnLayout {
                     alignment: Qt.AlignRight
                     actions: [
                         Kirigami.Action {
+                            text: presetPackage
+                            displayHint: Kirigami.DisplayHint.KeepVisible
+                            icon.name: "package-symbolic"
+                            enabled: false
+                        },
+                        Kirigami.Action {
                             // if (Presets.Manager.savePresetFile(pipeline, name) === true)
                             //     showPresetsMenuStatus(i18n("Settings Saved to: " + name));
                             // else
                             //     showPresetsMenuStatus(i18n("Failed to Save Settings to: " + name));
 
-                            text: i18n("Import")
+                            text: i18n("Copy to the Local List")
                             icon.name: "document-import-symbolic"
-                            displayHint: Kirigami.DisplayHint.KeepVisible
+                            displayHint: Kirigami.DisplayHint.AlwaysHide
                             onTriggered: {
                             }
                         }
@@ -121,7 +124,6 @@ ColumnLayout {
         Layout.alignment: Qt.AlignCenter
         text: i18n("Refresh")
         onClicked: {
-            showPassiveNotification("refreshing!");
             Presets.Manager.refreshCommunityPresets(pipeline);
         }
     }

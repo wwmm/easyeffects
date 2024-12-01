@@ -34,7 +34,7 @@ class ListModel : public QAbstractListModel {
  public:
   explicit ListModel(QObject* parent = nullptr);
 
-  enum Roles { Name = Qt::UserRole, Path };
+  enum Roles { Name = Qt::UserRole, Path, PresetPackage };
 
   [[nodiscard]] int rowCount(const QModelIndex& /*parent*/) const override;
 
