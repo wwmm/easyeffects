@@ -58,6 +58,8 @@ class ListModel : public QAbstractListModel {
 
   void remove(const std::filesystem::path& path);
 
+  void set_filter_role(const Roles& role);
+
   Q_INVOKABLE QSortFilterProxyModel* getProxy();
 
  private:

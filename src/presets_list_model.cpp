@@ -146,3 +146,7 @@ auto ListModel::getList() -> QList<std::filesystem::path> {
 QSortFilterProxyModel* ListModel::getProxy() {
   return proxy;
 }
+
+void ListModel::set_filter_role(const Roles& role) {
+  proxy->setFilterRole(role);
+}

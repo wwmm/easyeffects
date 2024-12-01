@@ -193,7 +193,7 @@ void Manager::prepare_last_used_preset_key(const PipelineType& pipeline_type) {
 
   if (!preset_name.isEmpty()) {
     for (const auto& p : get_local_presets_paths(pipeline_type)) {
-      if (p.stem().string() == preset_name) {
+      if (p.stem().string() == preset_name.toStdString()) {
         reset_key = false;
 
         break;
@@ -221,7 +221,6 @@ auto Manager::search_presets_path(std::filesystem::directory_iterator& it) -> QL
   try {
     while (it != std::filesystem::directory_iterator{}) {
       if (std::filesystem::is_regular_file(it->status()) && it->path().extension().string() == json_ext) {
-        // names.append(QString::fromStdString(it->path().stem()));
         paths.append(it->path());
       }
 
@@ -540,7 +539,7 @@ bool Manager::add(const PipelineType& pipeline_type, const QString& name) {
   // This method assumes the filename is valid.
 
   for (const auto& p : get_local_presets_paths(pipeline_type)) {
-    if (p.stem().string() == name) {
+    if (p.stem().string() == name.toStdString()) {
       return false;
     }
   }
