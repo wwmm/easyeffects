@@ -34,7 +34,8 @@
 #include <iterator>
 #include "config.h"
 
-ListModel::ListModel(QObject* parent) : QAbstractListModel(parent), proxy(new QSortFilterProxyModel(this)) {
+ListModel::ListModel(QObject* parent, const bool& autoloading_model)
+    : QAbstractListModel(parent), proxy(new QSortFilterProxyModel(this)), autoloading_model(autoloading_model) {
   proxy->setSourceModel(this);
   proxy->setFilterRole(Roles::Name);
   proxy->setSortRole(Roles::Name);

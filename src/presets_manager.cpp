@@ -64,21 +64,25 @@ Manager::Manager()
       user_irs_dir(app_config_dir + "/irs"),
       user_rnnoise_dir(app_config_dir + "/rnnoise"),
       autoload_input_dir(app_config_dir + "/autoload/input"),
-      autoload_output_dir(app_config_dir + "/autoload/output") {
+      autoload_output_dir(app_config_dir + "/autoload/output"),
+      outputListModel(new ListModel(this)),
+      inputListModel(new ListModel(this)),
+      communityOutputListModel(new ListModel(this)),
+      communityInputListModel(new ListModel(this)) {
   qmlRegisterSingletonInstance<presets::Manager>("ee.presets", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedInputListModel", inputListModel.getProxy());
+                                                      "SortedInputListModel", inputListModel->getProxy());
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedOutputListModel", outputListModel.getProxy());
+                                                      "SortedOutputListModel", outputListModel->getProxy());
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedCommunityOutputListModel",
-                                                      communityOutputListModel.getProxy());
+                                                      communityOutputListModel->getProxy());
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>(
-      "ee.presets", VERSION_MAJOR, VERSION_MINOR, "SortedCommunityInputListModel", communityInputListModel.getProxy());
+      "ee.presets", VERSION_MAJOR, VERSION_MINOR, "SortedCommunityInputListModel", communityInputListModel->getProxy());
 
   // Initialize input and output directories for community presets.
   // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox).
@@ -114,8 +118,8 @@ Manager::Manager()
   refreshCommunityPresets(PipelineType::input);
   refreshCommunityPresets(PipelineType::output);
 
-  communityInputListModel.set_filter_role(ListModel::Roles::Path);
-  communityOutputListModel.set_filter_role(ListModel::Roles::Path);
+  communityInputListModel->set_filter_role(ListModel::Roles::Path);
+  communityOutputListModel->set_filter_role(ListModel::Roles::Path);
 
   prepare_filesystem_watchers();
   prepare_last_used_preset_key(PipelineType::input);
@@ -138,25 +142,25 @@ void Manager::create_user_directory(const std::filesystem::path& path) {
   util::warning("failed to create user presets directory: " + path.string());
 }
 
-void Manager::refresh_list_models(ListModel& model, std::function<QList<std::filesystem::path>()> get_paths) {
-  auto model_list = model.getList();
+void Manager::refresh_list_models(ListModel* model, std::function<QList<std::filesystem::path>()> get_paths) {
+  auto model_list = model->getList();
   auto local_list = get_paths();
 
-  model.begin_reset();
+  model->begin_reset();
 
   for (const auto& v : local_list) {
     if (!model_list.contains(v)) {
-      model.append(v);
+      model->append(v);
     }
   }
 
   for (const auto& v : model_list) {
     if (!local_list.contains(v)) {
-      model.remove(v);
+      model->remove(v);
     }
   }
 
-  model.end_reset();
+  model->end_reset();
 }
 
 void Manager::prepare_filesystem_watchers() {

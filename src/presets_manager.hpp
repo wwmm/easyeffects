@@ -139,11 +139,11 @@ class Manager : public QObject {
 
   QFileSystemWatcher user_output_watcher, user_input_watcher, autoload_output_watcher, autoload_input_watcher;
 
-  ListModel outputListModel, inputListModel, communityOutputListModel, communityInputListModel;
+  ListModel *outputListModel, *inputListModel, *communityOutputListModel, *communityInputListModel;
 
   static void create_user_directory(const std::filesystem::path& path);
 
-  static void refresh_list_models(ListModel& model, std::function<QList<std::filesystem::path>()> get_paths);
+  static void refresh_list_models(ListModel* model, std::function<QList<std::filesystem::path>()> get_paths);
 
   void prepare_filesystem_watchers();
 
