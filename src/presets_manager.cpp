@@ -67,8 +67,8 @@ Manager::Manager()
       autoload_output_dir(app_config_dir + "/autoload/output"),
       outputListModel(new ListModel(this)),
       inputListModel(new ListModel(this)),
-      communityOutputListModel(new ListModel(this)),
-      communityInputListModel(new ListModel(this)) {
+      communityOutputListModel(new ListModel(this, ListModel::ModelType::Community)),
+      communityInputListModel(new ListModel(this, ListModel::ModelType::Community)) {
   qmlRegisterSingletonInstance<presets::Manager>("ee.presets", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
@@ -117,9 +117,6 @@ Manager::Manager()
 
   refreshCommunityPresets(PipelineType::input);
   refreshCommunityPresets(PipelineType::output);
-
-  communityInputListModel->set_filter_role(ListModel::Roles::Path);
-  communityOutputListModel->set_filter_role(ListModel::Roles::Path);
 
   prepare_filesystem_watchers();
   prepare_last_used_preset_key(PipelineType::input);

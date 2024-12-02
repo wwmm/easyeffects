@@ -34,11 +34,25 @@
 #include <iterator>
 #include "config.h"
 
-ListModel::ListModel(QObject* parent, const bool& autoloading_model)
-    : QAbstractListModel(parent), proxy(new QSortFilterProxyModel(this)), autoloading_model(autoloading_model) {
+ListModel::ListModel(QObject* parent, const ModelType& model_type)
+    : QAbstractListModel(parent), proxy(new QSortFilterProxyModel(this)), model_type(model_type) {
   proxy->setSourceModel(this);
-  proxy->setFilterRole(Roles::Name);
-  proxy->setSortRole(Roles::Name);
+
+  switch (model_type) {
+    case Local:
+      proxy->setFilterRole(Roles::Name);
+      proxy->setSortRole(Roles::Name);
+      break;
+    case Community:
+      proxy->setFilterRole(Roles::Path);
+      proxy->setSortRole(Roles::Path);
+      break;
+    case Autoloading:
+      proxy->setFilterRole(Roles::Name);
+      proxy->setSortRole(Roles::Name);
+      break;
+  }
+
   proxy->setDynamicSortFilter(true);
   proxy->sort(0);
 }

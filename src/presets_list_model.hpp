@@ -32,11 +32,11 @@ class ListModel : public QAbstractListModel {
   Q_OBJECT;
 
  public:
-  explicit ListModel(QObject* parent = nullptr, const bool& autoloading_model = false);
+  enum ModelType { Local = Qt::UserRole, Community, Autoloading };
+
+  explicit ListModel(QObject* parent = nullptr, const ModelType& model_type = ModelType::Local);
 
   enum Roles { Name = Qt::UserRole, Path, PresetPackage };
-
-  enum Type { Local = Qt::UserRole, Community, Autoloading };
 
   [[nodiscard]] int rowCount(const QModelIndex& /*parent*/) const override;
 
@@ -69,5 +69,5 @@ class ListModel : public QAbstractListModel {
 
   QSortFilterProxyModel* proxy = nullptr;
 
-  bool autoloading_model = false;
+  ModelType model_type;
 };
