@@ -58,6 +58,7 @@ Kirigami.OverlaySheet {
         id: tabbar
 
         alignment: Qt.AlignHCenter
+        position: Controls.ToolBar.Header
         actions: [
             Kirigami.Action {
                 displayHint: Kirigami.DisplayHint.KeepVisible
@@ -112,6 +113,7 @@ Kirigami.OverlaySheet {
 
         Kirigami.ActionToolBar {
             alignment: Qt.AlignHCenter
+            position: Controls.ToolBar.Footer
             visible: DB.Manager.main.visiblePresetSheetPage === 2
             actions: [
                 Kirigami.Action {

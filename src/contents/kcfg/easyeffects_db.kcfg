@@ -46,9 +46,21 @@
             <max>60</max>
             <default>30</default>
         </entry>
-        <entry name="autoloadingUsesFallback" type="Bool">
+        <entry name="inputAutoloadingUsesFallback" type="Bool">
             <label>When enabled presets autoloading will use a fallback when no profile is available for the target device.</label>
             <default>false</default>
+        </entry>
+        <entry name="outputAutoloadingUsesFallback" type="Bool">
+            <label>When enabled presets autoloading will use a fallback when no profile is available for the target device.</label>
+            <default>false</default>
+        </entry>
+        <entry name="inputAutoloadingFallbackPreset" type="String">
+            <label>Fallback preset used when no profile is available for the target device</label>
+            <default code="true">""</default>
+        </entry>
+        <entry name="outputAutoloadingFallbackPreset" type="String">
+            <label>Fallback preset used when no profile is available for the target device</label>
+            <default code="true">""</default>
         </entry>
         <entry name="visiblePage" type="Enum">
             <label>Saves the last viewed page.</label>

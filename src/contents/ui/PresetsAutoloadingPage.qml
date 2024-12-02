@@ -96,24 +96,44 @@ ColumnLayout {
             verticalPadding: 0
             text: i18n("Fallback Preset")
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-            currentIndex: 0
+            currentIndex: {
+                const fallbackPreset = DB.Manager.main.visibleAutoloadingTab === 0 ? DB.Manager.main.outputAutoloadingFallbackPreset : DB.Manager.main.inputAutoloadingFallbackPreset;
+                for (let n = 0; n < model.rowCount(); n++) {
+                    const proxyIndex = model.index(n, 0);
+                    const name = model.data(proxyIndex, 256); // 256 = Qt::UserRole
+                    if (name === fallbackPreset)
+                        return n;
+
+                }
+                return 0;
+            }
             textRole: "name"
             editable: false
-            enabled: DB.Manager.main.autoloadingUsesFallback
+            enabled: DB.Manager.main.visibleAutoloadingTab === 0 ? DB.Manager.main.outputAutoloadingUsesFallback : DB.Manager.main.inputAutoloadingUsesFallback
             model: DB.Manager.main.visibleAutoloadingTab === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
             onActivated: (idx) => {
+                if (DB.Manager.main.visibleAutoloadingTab === 0)
+                    DB.Manager.main.outputAutoloadingFallbackPreset = currentText;
+                else if (DB.Manager.main.visibleAutoloadingTab === 1)
+                    DB.Manager.main.inputAutoloadingFallbackPreset = currentText;
             }
         }
 
         EeSwitch {
             Layout.fillWidth: false
             Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-            isChecked: DB.Manager.main.autoloadingUsesFallback
+            isChecked: DB.Manager.main.visibleAutoloadingTab === 0 ? DB.Manager.main.outputAutoloadingUsesFallback : DB.Manager.main.inputAutoloadingUsesFallback
             verticalPadding: 0
             onCheckedChanged: {
-                if (isChecked !== DB.Manager.main.autoloadingUsesFallback)
-                    DB.Manager.main.autoloadingUsesFallback = isChecked;
+                if (DB.Manager.main.visibleAutoloadingTab === 0) {
+                    if (isChecked !== DB.Manager.main.outputAutoloadingUsesFallback)
+                        DB.Manager.main.outputAutoloadingUsesFallback = isChecked;
 
+                } else if (DB.Manager.main.visibleAutoloadingTab === 1) {
+                    if (isChecked !== DB.Manager.main.inputAutoloadingUsesFallback)
+                        DB.Manager.main.inputAutoloadingUsesFallback = isChecked;
+
+                }
             }
         }
 

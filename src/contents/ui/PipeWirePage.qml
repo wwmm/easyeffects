@@ -16,10 +16,6 @@ Kirigami.Page {
             "icon": "documentinfo-symbolic"
         });
         panelModel.append({
-            "title": i18n("Preset Autoloading"),
-            "icon": "bookmarks-symbolic"
-        });
-        panelModel.append({
             "title": i18n("Modules"),
             "icon": "code-block-symbolic"
         });
@@ -218,7 +214,7 @@ Kirigami.Page {
 
                 clip: true
                 reuseItems: true
-                model: ModelModules
+                model: PW.ModelModules
 
                 Kirigami.PlaceholderMessage {
                     anchors.centerIn: parent
@@ -245,7 +241,7 @@ Kirigami.Page {
 
                 clip: true
                 reuseItems: true
-                model: ModelClients
+                model: PW.ModelClients
 
                 Kirigami.PlaceholderMessage {
                     anchors.centerIn: parent
@@ -296,15 +292,12 @@ Kirigami.Page {
                         panelStack.replace(generalPage);
                         break;
                     case 1:
-                        panelStack.replace(autoloadingPage);
-                        break;
-                    case 2:
                         panelStack.replace(modulesPage);
                         break;
-                    case 3:
+                    case 2:
                         panelStack.replace(clientsPage);
                         break;
-                    case 4:
+                    case 3:
                         panelStack.replace(testSignalPage);
                         break;
                     default:
