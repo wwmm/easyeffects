@@ -74,7 +74,7 @@ ColumnLayout {
             Layout.fillHeight: true
             clip: true
             reuseItems: true
-            model: []
+            model: DB.Manager.main.visibleAutoloadingTab === 0 ? Presets.SortedAutoloadingOutputListModel : Presets.SortedAutoloadingInputListModel
 
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
@@ -82,6 +82,36 @@ ColumnLayout {
                 visible: streamsListView.count === 0
                 text: i18n("Empty List")
                 icon.name: "notification-empty"
+            }
+
+            delegate: Kirigami.AbstractCard {
+                required property string deviceName
+
+                Item {
+                    implicitWidth: delegateLayout.implicitWidth
+                    implicitHeight: delegateLayout.implicitHeight
+
+                    GridLayout {
+                        id: delegateLayout
+
+                        rows: 3
+
+                        anchors {
+                            left: parent.left
+                            top: parent.top
+                            right: parent.right
+                        }
+
+                        Kirigami.Heading {
+                            Layout.fillWidth: false
+                            level: 2
+                            text: deviceName
+                        }
+
+                    }
+
+                }
+
             }
 
         }

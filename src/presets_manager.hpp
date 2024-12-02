@@ -66,43 +66,6 @@ class Manager : public QObject {
 
   const std::string json_ext = ".json";
 
-  auto get_local_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
-
-  auto get_all_community_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
-
-  auto get_community_preset_info(const PipelineType& pipeline_type,
-                                 const std::string& path) -> std::pair<std::string, std::string>;
-
-  static void write_plugins_preset(const PipelineType& pipeline_type, const QStringList& plugins, nlohmann::json& json);
-
-  auto read_effects_pipeline_from_preset(const PipelineType& pipeline_type,
-                                         const std::filesystem::path& input_file,
-                                         nlohmann::json& json,
-                                         std::vector<std::string>& plugins) -> bool;
-
-  auto read_plugins_preset(const PipelineType& pipeline_type,
-                           const std::vector<std::string>& plugins,
-                           const nlohmann::json& json) -> bool;
-
-  auto find_autoload(const PipelineType& pipeline_type,
-                     const std::string& device_name,
-                     const std::string& device_profile) -> std::string;
-
-  void add_autoload(const PipelineType& pipeline_type,
-                    const std::string& preset_name,
-                    const std::string& device_name,
-                    const std::string& device_description,
-                    const std::string& device_profile);
-
-  void remove_autoload(const PipelineType& pipeline_type,
-                       const std::string& preset_name,
-                       const std::string& device_name,
-                       const std::string& device_profile);
-
-  void autoload(const PipelineType& pipeline_type, const std::string& device_name, const std::string& device_profile);
-
-  auto get_autoload_profiles(const PipelineType& pipeline_type) -> std::vector<nlohmann::json>;
-
   auto preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool;
 
   Q_INVOKABLE bool add(const PipelineType& pipeline_type, const QString& name);
@@ -139,13 +102,50 @@ class Manager : public QObject {
 
   QFileSystemWatcher user_output_watcher, user_input_watcher, autoload_output_watcher, autoload_input_watcher;
 
-  ListModel *outputListModel, *inputListModel, *communityOutputListModel, *communityInputListModel;
+  ListModel *outputListModel, *inputListModel, *communityOutputListModel, *communityInputListModel,
+      *autoloadingOutputListmodel, *autoloadingInputListmodel;
 
   static void create_user_directory(const std::filesystem::path& path);
+
+  auto get_local_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
+
+  auto get_autoloading_profiles_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
+
+  auto get_all_community_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
 
   static void refresh_list_models(ListModel* model, std::function<QList<std::filesystem::path>()> get_paths);
 
   void prepare_filesystem_watchers();
+
+  static void write_plugins_preset(const PipelineType& pipeline_type, const QStringList& plugins, nlohmann::json& json);
+
+  auto read_effects_pipeline_from_preset(const PipelineType& pipeline_type,
+                                         const std::filesystem::path& input_file,
+                                         nlohmann::json& json,
+                                         std::vector<std::string>& plugins) -> bool;
+
+  auto read_plugins_preset(const PipelineType& pipeline_type,
+                           const std::vector<std::string>& plugins,
+                           const nlohmann::json& json) -> bool;
+
+  auto find_autoload(const PipelineType& pipeline_type,
+                     const std::string& device_name,
+                     const std::string& device_profile) -> std::string;
+
+  void add_autoload(const PipelineType& pipeline_type,
+                    const std::string& preset_name,
+                    const std::string& device_name,
+                    const std::string& device_description,
+                    const std::string& device_profile);
+
+  void remove_autoload(const PipelineType& pipeline_type,
+                       const std::string& preset_name,
+                       const std::string& device_name,
+                       const std::string& device_profile);
+
+  void autoload(const PipelineType& pipeline_type, const std::string& device_name, const std::string& device_profile);
+
+  auto get_autoload_profiles(const PipelineType& pipeline_type) -> std::vector<nlohmann::json>;
 
   void prepare_last_used_preset_key(const PipelineType& pipeline_type);
 

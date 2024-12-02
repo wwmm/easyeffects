@@ -68,7 +68,9 @@ Manager::Manager()
       outputListModel(new ListModel(this)),
       inputListModel(new ListModel(this)),
       communityOutputListModel(new ListModel(this, ListModel::ModelType::Community)),
-      communityInputListModel(new ListModel(this, ListModel::ModelType::Community)) {
+      communityInputListModel(new ListModel(this, ListModel::ModelType::Community)),
+      autoloadingOutputListmodel(new ListModel(this, ListModel::ModelType::Autoloading)),
+      autoloadingInputListmodel(new ListModel(this, ListModel::ModelType::Autoloading)) {
   qmlRegisterSingletonInstance<presets::Manager>("ee.presets", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
@@ -83,6 +85,14 @@ Manager::Manager()
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>(
       "ee.presets", VERSION_MAJOR, VERSION_MINOR, "SortedCommunityInputListModel", communityInputListModel->getProxy());
+
+  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
+                                                      "SortedAutoloadingInputListModel",
+                                                      autoloadingInputListmodel->getProxy());
+
+  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
+                                                      "SortedAutoloadingOutputListModel",
+                                                      autoloadingOutputListmodel->getProxy());
 
   // Initialize input and output directories for community presets.
   // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox).
@@ -114,6 +124,11 @@ Manager::Manager()
 
   refresh_list_models(inputListModel, [this]() { return get_local_presets_paths(PipelineType::input); });
   refresh_list_models(outputListModel, [this]() { return get_local_presets_paths(PipelineType::output); });
+
+  refresh_list_models(autoloadingInputListmodel,
+                      [this]() { return get_autoloading_profiles_paths(PipelineType::input); });
+  refresh_list_models(autoloadingOutputListmodel,
+                      [this]() { return get_autoloading_profiles_paths(PipelineType::output); });
 
   refreshCommunityPresets(PipelineType::input);
   refreshCommunityPresets(PipelineType::output);
@@ -175,11 +190,13 @@ void Manager::prepare_filesystem_watchers() {
   });
 
   connect(&autoload_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-
+    refresh_list_models(autoloadingInputListmodel,
+                        [this]() { return get_autoloading_profiles_paths(PipelineType::input); });
   });
 
   connect(&autoload_output_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-
+    refresh_list_models(autoloadingOutputListmodel,
+                        [this]() { return get_autoloading_profiles_paths(PipelineType::output); });
   });
 }
 
@@ -236,9 +253,23 @@ auto Manager::get_local_presets_paths(const PipelineType& pipeline_type) -> QLis
 
   auto it = std::filesystem::directory_iterator{conf_dir};
 
-  auto names = search_presets_path(it);
+  auto paths = search_presets_path(it);
 
-  return names;
+  return paths;
+}
+
+auto Manager::get_autoloading_profiles_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path> {
+  const auto conf_dir = (pipeline_type == PipelineType::output) ? autoload_output_dir : autoload_input_dir;
+
+  auto it = std::filesystem::directory_iterator{conf_dir};
+
+  auto paths = search_presets_path(it);
+
+  for (const auto& p : paths) {
+    util::warning(p.string());
+  }
+
+  return paths;
 }
 
 auto Manager::get_all_community_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path> {
@@ -313,66 +344,6 @@ auto Manager::scan_community_package_recursive(std::filesystem::directory_iterat
   }
 
   return cp_paths;
-}
-
-auto Manager::get_community_preset_info(const PipelineType& pipeline_type,
-                                        const std::string& path) -> std::pair<std::string, std::string> {
-  // Given the full path of a community preset, extract and return:
-  // 1. the preset name
-  // 2. the package name
-
-  static const auto re_pack_name = std::regex(R"(^\/([^/]+))");
-  static const auto re_preset_name = std::regex(R"([^/]+$)");
-
-  const auto cp_dir_vect = (pipeline_type == PipelineType::output) ? system_data_dir_output : system_data_dir_input;
-
-  for (const auto& cp_dir : cp_dir_vect) {
-    // In order to extract the package name, let's check if
-    // the preset belongs to the selected system data directory.
-
-    const auto cp_dir_size = cp_dir.size();
-
-    // Skip if the lenght of the path is shorter than `cp_dir + "/"`.
-    if (path.size() <= cp_dir_size + 1U) {
-      continue;
-    }
-
-    // Check if the preset is contained in the selected system data directory.
-    // starts_with gets a string_view, so we use the version with character array.
-    if (!path.starts_with(cp_dir.c_str())) {
-      continue;
-    }
-
-    // Extract the package name.
-    std::smatch pack_match;
-
-    // Get the subdirectory/package.
-    // - Full match: "/pack_name"
-    // - Group 1: "pack_name"
-    std::regex_search(path.cbegin() + cp_dir_size, path.cend(), pack_match, re_pack_name);
-
-    // Skip if the match failed.
-    if (pack_match.size() != 2U) {
-      continue;
-    }
-
-    // Extract the preset name.
-    std::smatch name_match;
-
-    std::regex_search(path.cbegin() + cp_dir_size, path.cend(), name_match, re_preset_name);
-
-    // Skip if the match failed.
-    if (name_match.size() != 1U) {
-      continue;
-    }
-
-    return std::make_pair(name_match.str(0), pack_match.str(1));
-  }
-
-  util::warning("can't extract info strings for the community preset: " + path);
-
-  // Placeholders in case of issues
-  return std::make_pair(i18n("Community Preset").toStdString(), i18n("Package").toStdString());
 }
 
 void Manager::refreshCommunityPresets(const PipelineType& pipeline_type) {

@@ -62,7 +62,10 @@ int ListModel::rowCount(const QModelIndex& /*parent*/) const {
 }
 
 QHash<int, QByteArray> ListModel::roleNames() const {
-  return {{Roles::Name, "name"}, {Roles::Path, "path"}, {Roles::PresetPackage, "presetPackage"}};
+  return {{Roles::Name, "name"},
+          {Roles::Path, "path"},
+          {Roles::PresetPackage, "presetPackage"},
+          {Roles::DeviceName, "deviceName"}};
 }
 
 QVariant ListModel::data(const QModelIndex& index, int role) const {
@@ -79,6 +82,8 @@ QVariant ListModel::data(const QModelIndex& index, int role) const {
       return QString::fromStdString(it->string());
     case Roles::PresetPackage:
       return QString::fromStdString(it->parent_path().stem().string());  // getting the parent folder
+    case Roles::DeviceName:
+      return {};
     default:
       return {};
   }
