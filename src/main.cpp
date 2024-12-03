@@ -134,6 +134,13 @@ int main(int argc, char* argv[]) {
   auto sie = std::make_unique<StreamInputEffects>(pm);
   auto soe = std::make_unique<StreamOutputEffects>(pm);
 
+  {
+    pw::Manager::exclude_monitor_stream = db::Main::excludeMonitorStreams();
+
+    QObject::connect(db::Main::self(), &db::Main::excludeMonitorStreamsChanged,
+                     []() { pw::Manager::exclude_monitor_stream = db::Main::excludeMonitorStreams(); });
+  }
+
   // initializing the global bypass
   {
     auto update_bypass_state = [&]() {

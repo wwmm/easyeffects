@@ -33,9 +33,11 @@
 #include <pipewire/proxy.h>
 #include <pipewire/thread-loop.h>
 #include <pipewire/version.h>
+#include <qmap.h>
 #include <qobjectdefs.h>
 #include <qqml.h>
 #include <qtmetamacros.h>
+#include <qvariant.h>
 #include <spa/monitor/device.h>
 #include <spa/param/audio/raw-types.h>
 #include <spa/param/audio/raw.h>
@@ -799,6 +801,8 @@ void on_device_event_param(void* object,
       if (name != device.output_route_name || available != device.output_route_available) {
         device.output_route_name = name;
         device.output_route_available = available;
+
+        util::warning("ola from PW 1 !!!!!!!!!!");
 
         Q_EMIT pm->deviceOutputRouteChanged(device);
       }
@@ -1838,6 +1842,21 @@ auto Manager::json_object_find(const char* obj, const char* key, char* value, co
   }
 
   return -ENOENT;
+}
+
+QMap<QString, QVariant> Manager::getDeviceRoute(const uint& deviceId) const {
+  for (auto& device : list_devices) {
+    if (device.id == deviceId) {
+      QMap<QString, QVariant> res;
+
+      res["input"] = QVariant::fromValue(QString::fromStdString(device.input_route_name));
+      res["output"] = QVariant::fromValue(QString::fromStdString(device.output_route_name));
+
+      return res;
+    }
+  }
+
+  return {};
 }
 
 }  // namespace pw

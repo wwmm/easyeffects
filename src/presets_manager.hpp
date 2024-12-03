@@ -67,6 +67,8 @@ class Manager : public QObject {
 
   auto preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool;
 
+  void autoload(const PipelineType& pipeline_type, const std::string& device_name, const std::string& device_profile);
+
   Q_INVOKABLE bool add(const PipelineType& pipeline_type, const QString& name);
 
   Q_INVOKABLE bool savePresetFile(const PipelineType& pipeline_type, const QString& name);
@@ -86,6 +88,17 @@ class Manager : public QObject {
   Q_INVOKABLE bool importFromCommunityPackage(const PipelineType& pipeline_type,
                                               const QString& file_path,
                                               const QString& package);
+
+  Q_INVOKABLE void addAutoload(const PipelineType& pipelineType,
+                               const QString& presetName,
+                               const QString& deviceName,
+                               const QString& deviceDescription,
+                               const QString& deviceProfile);
+
+  Q_INVOKABLE void removeAutoload(const PipelineType& pipelineType,
+                                  const QString& presetName,
+                                  const QString& deviceName,
+                                  const QString& deviceProfile);
 
  signals:
   // signal sending title and description strings
@@ -130,19 +143,6 @@ class Manager : public QObject {
   auto find_autoload(const PipelineType& pipeline_type,
                      const std::string& device_name,
                      const std::string& device_profile) -> std::string;
-
-  void add_autoload(const PipelineType& pipeline_type,
-                    const std::string& preset_name,
-                    const std::string& device_name,
-                    const std::string& device_description,
-                    const std::string& device_profile);
-
-  void remove_autoload(const PipelineType& pipeline_type,
-                       const std::string& preset_name,
-                       const std::string& device_name,
-                       const std::string& device_profile);
-
-  void autoload(const PipelineType& pipeline_type, const std::string& device_name, const std::string& device_profile);
 
   auto get_autoload_profiles(const PipelineType& pipeline_type) -> std::vector<nlohmann::json>;
 

@@ -39,16 +39,17 @@
 #include "db_manager.hpp"
 #include "effects_base.hpp"
 #include "pipeline_type.hpp"
+#include "presets_manager.hpp"
 #include "pw_manager.hpp"
 #include "pw_objects.hpp"
+#include "spa/param/param.h"
 #include "tags_pipewire.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBase(pipe_manager, PipelineType::output) {
-  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
+  // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<StreamOutputEffects>("ee.pipeline", VERSION_MAJOR, VERSION_MINOR, "Output", this);
-  // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
@@ -116,13 +117,46 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
     Q_EMIT pipelineChanged();
   });
 
-  connect(pm, &pw::Manager::linkChanged, this, &StreamOutputEffects::on_link_changed);
+  connect(pm, &pw::Manager::linkChanged, this, &StreamOutputEffects::on_link_changed, Qt::QueuedConnection);
+
+  connect(
+      pm, &pw::Manager::deviceOutputRouteChanged, this,
+      [this](const pw::DeviceInfo device) {
+        util::warning("ola from main!!!!!!!!!!");
+
+        if (device.output_route_available == SPA_PARAM_AVAILABILITY_no) {
+          return;
+        }
+
+        util::debug("output autoloading: device \"" + device.name + "\" has changed its output route to \"" +
+                    device.output_route_name + "\"");
+
+        const auto name = db::StreamOutputs::outputDevice();
+
+        for (const auto& [serial, node] : pm->node_map) {
+          if (node.media_class == tags::pipewire::media_class::sink && node.device_id == device.id &&
+              node.name == name) {
+            util::debug("output autoloading: target node \"" + name.toStdString() +
+                        "\" matches the output device name");
+
+            presets::Manager::self().autoload(PipelineType::output, node.name.toStdString(), device.output_route_name);
+
+            return;
+          } else {
+            util::debug("output autoloading: skip \"" + node.name.toStdString() +
+                        "\" candidate since it does not match \"" + name.toStdString() + "\" output device");
+          }
+        }
+
+        util::debug("output autoloading: no target nodes match the output device name \"" + name.toStdString() + "\"");
+      },
+      Qt::QueuedConnection);
 
   connect_filters();
 }
 
 StreamOutputEffects::~StreamOutputEffects() {
-  disconnect_filters();
+  // disconnect_filters();
 
   util::debug("destroyed");
 }

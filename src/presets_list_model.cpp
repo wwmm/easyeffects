@@ -196,6 +196,8 @@ QSortFilterProxyModel* ListModel::getProxy() {
   return proxy;
 }
 
-void ListModel::set_filter_role(const Roles& role) {
-  proxy->setFilterRole(role);
+void ListModel::emit_data_changed(const std::filesystem::path& path) {
+  qsizetype rowIndex = listPaths.indexOf(path);
+
+  emit dataChanged(index(rowIndex), index(rowIndex));
 }

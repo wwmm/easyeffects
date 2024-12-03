@@ -24,6 +24,7 @@
 #include <pipewire/extensions/metadata.h>
 #include <pipewire/proxy.h>
 #include <pipewire/thread-loop.h>
+#include <qmap.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
 #include <spa/utils/hook.h>
@@ -156,6 +157,7 @@ class Manager : public QObject {
   Q_INVOKABLE void connectStreamOutput(const uint& id) const;
   Q_INVOKABLE void connectStreamInput(const uint& id) const;
   Q_INVOKABLE void disconnectStream(const uint& id) const;
+  Q_INVOKABLE [[nodiscard]] QMap<QString, QVariant> getDeviceRoute(const uint& deviceId) const;
 
  signals:
 

@@ -38,9 +38,6 @@ ColumnLayout {
             textRole: "description"
             editable: false
             model: DB.Manager.main.visibleAutoloadingTab === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
-            onActivated: (idx) => {
-                console.log(deviceId + " : " + deviceName);
-            }
         }
 
         Kirigami.Icon {
@@ -60,8 +57,6 @@ ColumnLayout {
             textRole: "name"
             editable: false
             model: DB.Manager.main.visibleAutoloadingTab === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
-            onActivated: (idx) => {
-            }
         }
 
         Controls.Button {
@@ -69,7 +64,15 @@ ColumnLayout {
             text: i18n("Create")
             icon.name: "list-add-symbolic"
             onClicked: {
-                showPassiveNotification("creating profile");
+                const deviceId = device.deviceId;
+                const deviceName = device.deviceName;
+                const deviceDescription = device.currentText;
+                const presetName = preset.currentText;
+                const deviceRoute = PW.Manager.getDeviceRoute(deviceId);
+                if (DB.Manager.main.visibleAutoloadingTab === 0)
+                    Presets.Manager.addAutoload(1, presetName, deviceName, deviceDescription, deviceRoute["output"]);
+                else if (DB.Manager.main.visibleAutoloadingTab === 1)
+                    Presets.Manager.addAutoload(0, presetName, deviceName, deviceDescription, deviceRoute["input"]);
             }
         }
 
@@ -135,7 +138,10 @@ ColumnLayout {
                             Layout.rowSpan: 4
                             icon.name: "delete"
                             onClicked: {
-                                showPassiveNotification("deleting profile");
+                                if (DB.Manager.main.visibleAutoloadingTab === 0)
+                                    Presets.Manager.removeAutoload(1, devicePreset, deviceName, deviceProfile);
+                                else if (DB.Manager.main.visibleAutoloadingTab === 1)
+                                    Presets.Manager.removeAutoload(0, devicePreset, deviceName, deviceProfile);
                             }
                         }
 

@@ -265,10 +265,6 @@ auto Manager::get_autoloading_profiles_paths(const PipelineType& pipeline_type) 
 
   auto paths = search_presets_path(it);
 
-  for (const auto& p : paths) {
-    util::warning(p.string());
-  }
-
   return paths;
 }
 
@@ -938,48 +934,67 @@ bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
   return true;
 }
 
-void Manager::add_autoload(const PipelineType& pipeline_type,
-                           const std::string& preset_name,
-                           const std::string& device_name,
-                           const std::string& device_description,
-                           const std::string& device_profile) {
+void Manager::addAutoload(const PipelineType& pipelineType,
+                          const QString& presetName,
+                          const QString& deviceName,
+                          const QString& deviceDescription,
+                          const QString& deviceProfile) {
   nlohmann::json json;
 
   std::filesystem::path output_file;
 
-  switch (pipeline_type) {
+  switch (pipelineType) {
     case PipelineType::output:
-      output_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
+      output_file = autoload_output_dir /
+                    std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() + json_ext};
       break;
     case PipelineType::input:
-      output_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
+      output_file = autoload_input_dir /
+                    std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() + json_ext};
       break;
   }
 
+  bool already_exists = std::filesystem::exists(output_file);
+
   std::ofstream o(output_file);
 
-  json["device"] = device_name;
-  json["device-description"] = device_description;
-  json["device-profile"] = device_profile;
-  json["preset-name"] = preset_name;
+  json["device"] = deviceName.toStdString();
+  json["device-description"] = deviceDescription.toStdString();
+  json["device-profile"] = deviceProfile.toStdString();
+  json["preset-name"] = presetName.toStdString();
 
   o << std::setw(4) << json << '\n';
 
   util::debug("added autoload preset file: " + output_file.string());
+
+  o.close();
+
+  if (already_exists) {
+    switch (pipelineType) {
+      case PipelineType::output:
+        autoloadingOutputListmodel->emit_data_changed(output_file);
+        break;
+      case PipelineType::input:
+        autoloadingInputListmodel->emit_data_changed(output_file);
+        break;
+    }
+  }
 }
 
-void Manager::remove_autoload(const PipelineType& pipeline_type,
-                              const std::string& preset_name,
-                              const std::string& device_name,
-                              const std::string& device_profile) {
+void Manager::removeAutoload(const PipelineType& pipelineType,
+                             const QString& presetName,
+                             const QString& deviceName,
+                             const QString& deviceProfile) {
   std::filesystem::path input_file;
 
-  switch (pipeline_type) {
+  switch (pipelineType) {
     case PipelineType::output:
-      input_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
+      input_file = autoload_output_dir /
+                   std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() + json_ext};
       break;
     case PipelineType::input:
-      input_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
+      input_file = autoload_input_dir /
+                   std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() + json_ext};
       break;
   }
 
@@ -993,7 +1008,7 @@ void Manager::remove_autoload(const PipelineType& pipeline_type,
 
   is >> json;
 
-  if (preset_name == json.value("preset-name", "") && device_profile == json.value("device-profile", "")) {
+  if (presetName == json.value("preset-name", "") && deviceProfile.toStdString() == json.value("device-profile", "")) {
     std::filesystem::remove(input_file);
 
     util::debug("removed autoload: " + input_file.string());

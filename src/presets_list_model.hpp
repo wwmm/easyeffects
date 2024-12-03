@@ -60,7 +60,7 @@ class ListModel : public QAbstractListModel {
 
   void remove(const std::filesystem::path& path);
 
-  void set_filter_role(const Roles& role);
+  void emit_data_changed(const std::filesystem::path& path);
 
   Q_INVOKABLE QSortFilterProxyModel* getProxy();
 
