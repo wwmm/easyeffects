@@ -31,7 +31,10 @@
 #include <qtypes.h>
 #include <qvariant.h>
 #include <filesystem>
+#include <fstream>
 #include <iterator>
+#include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
 #include "config.h"
 
 ListModel::ListModel(QObject* parent, const ModelType& model_type)
@@ -48,8 +51,8 @@ ListModel::ListModel(QObject* parent, const ModelType& model_type)
       proxy->setSortRole(Roles::Path);
       break;
     case Autoloading:
-      proxy->setFilterRole(Roles::Name);
-      proxy->setSortRole(Roles::Name);
+      proxy->setFilterRole(Roles::DeviceDescription);
+      proxy->setSortRole(Roles::DeviceDescription);
       break;
   }
 
@@ -65,7 +68,10 @@ QHash<int, QByteArray> ListModel::roleNames() const {
   return {{Roles::Name, "name"},
           {Roles::Path, "path"},
           {Roles::PresetPackage, "presetPackage"},
-          {Roles::DeviceName, "deviceName"}};
+          {Roles::DeviceName, "deviceName"},
+          {Roles::DeviceDescription, "deviceDescription"},
+          {Roles::DeviceProfile, "deviceProfile"},
+          {Roles::DevicePreset, "devicePreset"}};
 }
 
 QVariant ListModel::data(const QModelIndex& index, int role) const {
@@ -75,18 +81,41 @@ QVariant ListModel::data(const QModelIndex& index, int role) const {
 
   const auto it = std::next(listPaths.begin(), index.row());
 
-  switch (role) {
-    case Roles::Name:
-      return QString::fromStdString(it->stem().string());
-    case Roles::Path:
-      return QString::fromStdString(it->string());
-    case Roles::PresetPackage:
-      return QString::fromStdString(it->parent_path().stem().string());  // getting the parent folder
-    case Roles::DeviceName:
-      return {};
-    default:
-      return {};
+  if (model_type == ModelType::Local || model_type == ModelType::Community) {
+    switch (role) {
+      case Roles::Name:
+        return QString::fromStdString(it->stem().string());
+      case Roles::Path:
+        return QString::fromStdString(it->string());
+      case Roles::PresetPackage:
+        return QString::fromStdString(it->parent_path().stem().string());  // getting the parent folder
+      default:
+        return {};
+    }
   }
+
+  if (model_type == ModelType::Autoloading) {
+    nlohmann::json json;
+
+    std::ifstream is(*it);
+
+    is >> json;
+
+    switch (role) {
+      case Roles::DeviceName:
+        return QString::fromStdString(json.value("device", ""));
+      case Roles::DeviceDescription:
+        return QString::fromStdString(json.value("device-description", ""));
+      case Roles::DeviceProfile:
+        return QString::fromStdString(json.value("device-profile", ""));
+      case Roles::DevicePreset:
+        return QString::fromStdString(json.value("preset-name", ""));
+      default:
+        return {};
+    }
+  }
+
+  return {};
 }
 
 void ListModel::append(const std::filesystem::path& path) {

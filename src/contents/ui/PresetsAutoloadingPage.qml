@@ -86,15 +86,19 @@ ColumnLayout {
 
             delegate: Kirigami.AbstractCard {
                 required property string deviceName
+                required property string deviceDescription
+                required property string deviceProfile
+                required property string devicePreset
 
-                Item {
+                contentItem: Item {
                     implicitWidth: delegateLayout.implicitWidth
                     implicitHeight: delegateLayout.implicitHeight
 
                     GridLayout {
                         id: delegateLayout
 
-                        rows: 3
+                        columns: 3
+                        rows: 4
 
                         anchors {
                             left: parent.left
@@ -102,10 +106,68 @@ ColumnLayout {
                             right: parent.right
                         }
 
-                        Kirigami.Heading {
-                            Layout.fillWidth: false
-                            level: 2
+                        Controls.Label {
+                            Layout.alignment: Qt.AlignRight
+                            wrapMode: Text.WordWrap
+                            horizontalAlignment: Qt.AlignRight
+                            text: i18n("Device")
+                        }
+
+                        Controls.Label {
+                            Layout.fillWidth: true
+                            wrapMode: Text.WrapAnywhere
                             text: deviceName
+                            color: Kirigami.Theme.disabledTextColor
+                        }
+
+                        Controls.Button {
+                            Layout.alignment: Qt.AlignCenter | Qt.AlignRight
+                            Layout.rowSpan: 4
+                            icon.name: "delete"
+                            onClicked: {
+                                showPassiveNotification("deleting profile");
+                            }
+                        }
+
+                        Controls.Label {
+                            Layout.alignment: Qt.AlignRight
+                            wrapMode: Text.WordWrap
+                            horizontalAlignment: Qt.AlignRight
+                            text: i18n("Description")
+                        }
+
+                        Controls.Label {
+                            Layout.fillWidth: true
+                            wrapMode: Text.WrapAnywhere
+                            text: deviceDescription
+                            color: Kirigami.Theme.disabledTextColor
+                        }
+
+                        Controls.Label {
+                            Layout.alignment: Qt.AlignRight
+                            wrapMode: Text.WordWrap
+                            horizontalAlignment: Qt.AlignRight
+                            text: i18n("Hardware Profile")
+                        }
+
+                        Controls.Label {
+                            Layout.fillWidth: true
+                            wrapMode: Text.WrapAnywhere
+                            text: deviceProfile
+                            color: Kirigami.Theme.disabledTextColor
+                        }
+
+                        Controls.Label {
+                            Layout.alignment: Qt.AlignRight
+                            wrapMode: Text.WordWrap
+                            text: i18n("Local Preset")
+                        }
+
+                        Controls.Label {
+                            Layout.fillWidth: true
+                            wrapMode: Text.WrapAnywhere
+                            text: devicePreset
+                            color: Kirigami.Theme.disabledTextColor
                         }
 
                     }
