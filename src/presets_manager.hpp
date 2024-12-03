@@ -31,7 +31,6 @@
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
 #include <string>
-#include <utility>
 #include <vector>
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
