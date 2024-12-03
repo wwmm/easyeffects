@@ -27,7 +27,6 @@
 #include <qnamespace.h>
 #include <qobjectdefs.h>
 #include <qtimer.h>
-#include <qtmetamacros.h>
 #include <spa/node/io.h>
 #include <spa/param/latency-utils.h>
 #include <spa/param/latency.h>
@@ -462,6 +461,8 @@ void PluginBase::show_native_ui() {
 
   if (!lv2_wrapper->has_ui()) {
     // using invokeMethod to force this code to run in the main thread and avoid load in the QML thread.
+
+    // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
     QMetaObject::invokeMethod(
         this,
         [this] {
@@ -469,6 +470,8 @@ void PluginBase::show_native_ui() {
           native_ui_timer->start();
         },
         Qt::QueuedConnection);
+
+    // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
   }
 }
 

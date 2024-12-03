@@ -69,6 +69,7 @@ Manager::Manager()
       communityInputListModel(new ListModel(this, ListModel::ModelType::Community)),
       autoloadingOutputListmodel(new ListModel(this, ListModel::ModelType::Autoloading)),
       autoloadingInputListmodel(new ListModel(this, ListModel::ModelType::Autoloading)) {
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<presets::Manager>("ee.presets", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
@@ -91,6 +92,7 @@ Manager::Manager()
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedAutoloadingOutputListModel",
                                                       autoloadingOutputListmodel->getProxy());
+  // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 
   // Initialize input and output directories for community presets.
   // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox).

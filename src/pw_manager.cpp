@@ -33,7 +33,6 @@
 #include <pipewire/proxy.h>
 #include <pipewire/thread-loop.h>
 #include <pipewire/version.h>
-#include <qnamespace.h>
 #include <qobjectdefs.h>
 #include <qqml.h>
 #include <qtmetamacros.h>
@@ -1218,7 +1217,7 @@ void on_registry_global(void* data,
     if (const auto* name = spa_dict_lookup(props, PW_KEY_METADATA_NAME)) {
       using namespace std::string_literals;
 
-      util::debug("found metadata: "s + name);  // NOLINT(missing-includes)
+      util::debug("found metadata: "s + name);  // NOLINT(missing-includes, misc-include-cleaner)
 
       if (std::strcmp(name, "default") == 0) {
         if (pm->metadata != nullptr) {
@@ -1481,6 +1480,7 @@ Manager::~Manager() {
 }
 
 void Manager::register_models() {
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<pw::Manager>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
   qmlRegisterSingletonInstance<pw::models::Nodes>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelNodes",
@@ -1491,6 +1491,7 @@ void Manager::register_models() {
 
   qmlRegisterSingletonInstance<pw::models::Clients>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelClients",
                                                     &model_clients);
+  // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 }
 
 void Manager::load_virtual_devices() {

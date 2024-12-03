@@ -1,6 +1,6 @@
 #pragma once
 
-// NOLINTNEXTLINE
+// NOLINTBEGIN(bugprone-macro-parentheses,cppcoreguidelines-macro-usage)
 #define BIND_LV2_PORT(key, getter, setter, onChangedSignal)                                                      \
   {                                                                                                              \
     lv2_wrapper->set_control_port_value(key, static_cast<float>(settings->getter()));                            \
@@ -9,7 +9,6 @@
             [&]() { lv2_wrapper->set_control_port_value(key, static_cast<float>(settings->getter())); });        \
   }
 
-// NOLINTNEXTLINE
 #define BIND_LV2_PORT_DB(key, getter, setter, onChangedSignal, enforceLowerBound)                               \
   {                                                                                                             \
     auto db_v = settings->getter();                                                                             \
@@ -31,3 +30,4 @@
       lv2_wrapper->set_control_port_value(key, linear_v);                                                       \
     });                                                                                                         \
   }
+// NOLINTEND(bugprone-macro-parentheses,cppcoreguidelines-macro-usage)

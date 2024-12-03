@@ -45,7 +45,9 @@
 #include "util.hpp"
 
 StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(pipe_manager, PipelineType::input) {
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<StreamInputEffects>("ee.pipeline", VERSION_MAJOR, VERSION_MINOR, "Input", this);
+  // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 

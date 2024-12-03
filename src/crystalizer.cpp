@@ -134,6 +134,8 @@ void Crystalizer::setup() {
     plugin realtime thread we send it to the main thread.
   */
 
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
+
   QMetaObject::invokeMethod(
       this,
       [this] {
@@ -189,6 +191,8 @@ void Crystalizer::setup() {
         data_mutex.unlock();
       },
       Qt::QueuedConnection);
+
+  // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }
 
 void Crystalizer::process(std::span<float>& left_in,

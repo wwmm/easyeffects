@@ -58,6 +58,7 @@ Manager::Manager()
 
   util::create_user_directory(db_dir_path.toStdString());
 
+  // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<db::Manager>("ee.database", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
   QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode());

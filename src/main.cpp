@@ -17,7 +17,6 @@
  *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include <kaboutdata.h>
 #include <kicontheme.h>
 #include <klocalizedcontext.h>
 #include <qobject.h>
@@ -25,7 +24,6 @@
 #include <qqmlapplicationengine.h>
 #include <qqmlcontext.h>
 #include <qquickstyle.h>
-#include <qstandardpaths.h>
 #include <qstringliteral.h>
 #include <qtenvironmentvariables.h>
 #include <qurl.h>

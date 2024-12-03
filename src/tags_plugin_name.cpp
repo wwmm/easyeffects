@@ -7,7 +7,6 @@
 #include <qqml.h>
 #include <qsortfilterproxymodel.h>
 #include <qstringview.h>
-#include <qtypes.h>
 #include <qvariant.h>
 #include <KLocalizedString>
 #include <QRegularExpression>
@@ -61,6 +60,7 @@ Model::Model(QObject* parent) : QAbstractListModel(parent) {
   proxyModel->setDynamicSortFilter(true);
   proxyModel->sort(0);
 
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<BaseName>("ee.tags.plugin.name", VERSION_MAJOR, VERSION_MINOR, "BaseName", &base_name);
 
   qmlRegisterSingletonInstance<tags::plugin_package::Package>("ee.tags.plugin.name", VERSION_MAJOR, VERSION_MINOR,
@@ -70,6 +70,7 @@ Model::Model(QObject* parent) : QAbstractListModel(parent) {
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.tags.plugin.name", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedNameModel", proxyModel);
+  // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 }
 
 int Model::rowCount(const QModelIndex& /*parent*/) const {

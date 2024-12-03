@@ -27,8 +27,7 @@
 #include "tags_local_server.hpp"
 #include "util.hpp"
 
-LocalServer::LocalServer(QObject* parent)
-    : QObject(parent), server(std::make_unique<QLocalServer>(this)), clientSocket(nullptr) {
+LocalServer::LocalServer(QObject* parent) : QObject(parent), server(std::make_unique<QLocalServer>(this)) {
   connect(server.get(), &QLocalServer::newConnection, [&]() {
     clientSocket = server->nextPendingConnection();
 

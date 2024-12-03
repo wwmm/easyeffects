@@ -46,7 +46,9 @@
 #include "util.hpp"
 
 StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBase(pipe_manager, PipelineType::output) {
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<StreamOutputEffects>("ee.pipeline", VERSION_MAJOR, VERSION_MINOR, "Output", this);
+  // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 

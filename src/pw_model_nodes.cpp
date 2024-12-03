@@ -65,6 +65,7 @@ Nodes::Nodes(QObject* parent)
 
     proxy_output_streams.sort(0, Qt::AscendingOrder);
 
+    // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR,
                                                         "ModelOutputStreams", &proxy_output_streams);
   }
@@ -84,6 +85,7 @@ Nodes::Nodes(QObject* parent)
 
     proxy_input_streams.sort(0, Qt::AscendingOrder);
 
+    // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR,
                                                         "ModelInputStreams", &proxy_input_streams);
   }
@@ -103,6 +105,7 @@ Nodes::Nodes(QObject* parent)
 
     proxy_source_devices.sort(0, Qt::AscendingOrder);
 
+    // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR,
                                                         "ModelSourceDevices", &proxy_source_devices);
   }
@@ -122,6 +125,7 @@ Nodes::Nodes(QObject* parent)
 
     proxy_sink_devices.sort(0, Qt::AscendingOrder);
 
+    // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelSinkDevices",
                                                         &proxy_sink_devices);
   }

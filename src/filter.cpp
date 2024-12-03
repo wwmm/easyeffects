@@ -18,6 +18,7 @@
  */
 
 #include "filter.hpp"
+#include <qtypes.h>
 #include <algorithm>
 #include <memory>
 #include <span>

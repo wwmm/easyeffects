@@ -19,7 +19,6 @@
 
 #include "effects_base.hpp"
 #include <qcontainerfwd.h>
-#include <qtmetamacros.h>
 #include <qtypes.h>
 #include <QSharedPointer>
 #include <QString>
