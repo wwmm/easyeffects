@@ -802,8 +802,6 @@ void on_device_event_param(void* object,
         device.output_route_name = name;
         device.output_route_available = available;
 
-        util::warning("ola from PW 1 !!!!!!!!!!");
-
         Q_EMIT pm->deviceOutputRouteChanged(device);
       }
     }

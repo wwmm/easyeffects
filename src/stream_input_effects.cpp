@@ -64,19 +64,22 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
     }
   }
 
-  connect(pm, &pw::Manager::sourceAdded, [&](pw::NodeInfo node) {
-    if (node.name == db::StreamInputs::inputDevice()) {
-      pm->input_device = node;
+  connect(
+      pm, &pw::Manager::sourceAdded, this,
+      [&](pw::NodeInfo node) {
+        if (node.name == db::StreamInputs::inputDevice()) {
+          pm->input_device = node;
 
-      if (db::Main::bypass()) {
-        db::Main::setBypass(false);
+          if (db::Main::bypass()) {
+            db::Main::setBypass(false);
 
-        return;  // filter connected through update_bypass_state
-      }
+            return;  // filter connected through update_bypass_state
+          }
 
-      set_bypass(false);
-    }
-  });
+          set_bypass(false);
+        }
+      },
+      Qt::QueuedConnection);
 
   connect(pm, &pw::Manager::newDefaultSourceName, this, &StreamInputEffects::onNewDefaultSourceName,
           Qt::QueuedConnection);
@@ -150,12 +153,6 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
       Qt::QueuedConnection);
 
   connect_filters();
-}
-
-StreamInputEffects::~StreamInputEffects() {
-  // disconnect_filters();
-
-  util::debug("destroyed");
 }
 
 void StreamInputEffects::onNewDefaultSourceName(const QString& name) {
@@ -260,7 +257,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
     timeout++;
 
-    if (timeout > 10000) {
+    if (timeout > 5000) {
       util::warning("Information about the ports of the input device " + pm->input_device.name.toStdString() +
                     " with id " + util::to_string(pm->input_device.id) +
                     " are taking to long to be available. Aborting the link");

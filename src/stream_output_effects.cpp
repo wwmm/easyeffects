@@ -65,19 +65,22 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
     }
   }
 
-  connect(pm, &pw::Manager::sinkAdded, [&](pw::NodeInfo node) {
-    if (node.name == db::StreamOutputs::outputDevice()) {
-      pm->output_device = node;
+  connect(
+      pm, &pw::Manager::sinkAdded, this,
+      [&](pw::NodeInfo node) {
+        if (node.name == db::StreamOutputs::outputDevice()) {
+          pm->output_device = node;
 
-      if (db::Main::bypass()) {
-        db::Main::setBypass(false);
+          if (db::Main::bypass()) {
+            db::Main::setBypass(false);
 
-        return;  // filter connected through update_bypass_state
-      }
+            return;  // filter connected through update_bypass_state
+          }
 
-      set_bypass(false);
-    }
-  });
+          set_bypass(false);
+        }
+      },
+      Qt::QueuedConnection);
 
   connect(pm, &pw::Manager::newDefaultSinkName, this, &StreamOutputEffects::onNewDefaultSinkName, Qt::QueuedConnection);
 
@@ -121,9 +124,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
 
   connect(
       pm, &pw::Manager::deviceOutputRouteChanged, this,
-      [this](const pw::DeviceInfo device) {
-        util::warning("ola from main!!!!!!!!!!");
-
+      [&](const pw::DeviceInfo device) {
         if (device.output_route_available == SPA_PARAM_AVAILABILITY_no) {
           return;
         }
@@ -153,12 +154,6 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
       Qt::QueuedConnection);
 
   connect_filters();
-}
-
-StreamOutputEffects::~StreamOutputEffects() {
-  // disconnect_filters();
-
-  util::debug("destroyed");
 }
 
 void StreamOutputEffects::onNewDefaultSinkName(const QString& name) {
@@ -326,7 +321,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
     timeout++;
 
-    if (timeout > 10000) {  // 10 seconds
+    if (timeout > 5000) {  // 5 seconds
       util::warning("Information about the ports of the output device " + pm->output_device.name.toStdString() +
                     " with id " + util::to_string(pm->output_device.id) +
                     " are taking to long to be available. Aborting the link");
