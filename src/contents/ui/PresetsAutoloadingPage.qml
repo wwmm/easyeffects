@@ -22,6 +22,15 @@ ColumnLayout {
         FormCard.FormComboBoxDelegate {
             id: device
 
+            readonly property int deviceId: {
+                const proxyIndex = model.index(currentIndex, 0);
+                return model.data(proxyIndex, 258); // 256 = Qt::UserRole
+            }
+            readonly property string deviceName: {
+                const proxyIndex = model.index(currentIndex, 0);
+                return model.data(proxyIndex, 259); // 256 = Qt::UserRole
+            }
+
             verticalPadding: 0
             text: i18n("Device")
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
@@ -30,6 +39,7 @@ ColumnLayout {
             editable: false
             model: DB.Manager.main.visibleAutoloadingTab === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
             onActivated: (idx) => {
+                console.log(deviceId + " : " + deviceName);
             }
         }
 
