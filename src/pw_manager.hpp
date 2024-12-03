@@ -94,10 +94,10 @@ class Manager : public QObject {
   NodeInfo ee_sink_node, ee_source_node;
   NodeInfo output_device, input_device;
 
-  constexpr static auto blocklist_node_name =
-      std::to_array({"Easy Effects", "EasyEffects", "easyeffects", "easyeffects_soe", "easyeffects_sie",
-                     "EasyEffectsWebrtcProbe", "libcanberra", "gsd-media-keys", "GNOME Shell", "speech-dispatcher",
-                     "speech-dispatcher-dummy", "speech-dispatcher-espeak-ng", "Mutter", "gameoverlayui"});
+  constexpr static auto blocklist_node_name = std::to_array(
+      {"Easy Effects", "EasyEffects", "easyeffects", "easyeffects_sie", "easyeffects_soe", "EasyEffectsWebrtcProbe",
+       "gameoverlayui", "GNOME Shell", "gsd-media-keys", "libcanberra", "Mutter", "pwvucontrol-peak-detect",
+       "speech-dispatcher", "speech-dispatcher-dummy", "speech-dispatcher-espeak-ng"});
 
   std::array<std::string, 2U> blocklist_app_id = {"org.PulseAudio.pavucontrol", "org.gnome.VolumeControl"};
 
