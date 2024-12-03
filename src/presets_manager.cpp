@@ -38,10 +38,8 @@
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
-#include <regex>
 #include <stdexcept>
 #include <string>
-#include <utility>
 #include <vector>
 #include "autogain_preset.hpp"
 #include "config.h"
