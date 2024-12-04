@@ -41,7 +41,6 @@
 #include "presets_manager.hpp"
 #include "pw_manager.hpp"
 #include "pw_objects.hpp"
-#include "spa/param/param.h"
 #include "tags_pipewire.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
@@ -77,6 +76,8 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
           }
 
           set_bypass(false);
+
+          presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_name);
         }
       },
       Qt::QueuedConnection);
@@ -103,6 +104,8 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
         set_bypass(false);
 
+        presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_name);
+
         break;
       }
     }
@@ -123,32 +126,9 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   connect(pm, &pw::Manager::linkChanged, this, &StreamInputEffects::on_link_changed, Qt::QueuedConnection);
 
   connect(
-      pm, &pw::Manager::deviceInputRouteChanged, this,
-      [&](const pw::DeviceInfo device) {
-        if (device.input_route_available == SPA_PARAM_AVAILABILITY_no) {
-          return;
-        }
-
-        util::debug("input autoloading: device \"" + device.name + "\" has changed its input route to \"" +
-                    device.input_route_name + "\"");
-
-        const auto name = db::StreamInputs::inputDevice();
-
-        for (const auto& [serial, node] : pm->node_map) {
-          if (node.media_class == tags::pipewire::media_class::source && node.device_id == device.id &&
-              node.name == name) {
-            util::debug("input autoloading: target node \"" + name.toStdString() + "\" matches the input device name");
-
-            presets::Manager::self().autoload(PipelineType::input, node.name.toStdString(), device.input_route_name);
-
-            return;
-          } else {
-            util::debug("input autoloading: skip \"" + node.name.toStdString() +
-                        "\" candidate since it does not match \"" + name.toStdString() + "\" input device");
-          }
-        }
-
-        util::debug("input autoloading: no target nodes match the input device name \"" + name.toStdString() + "\"");
+      pm, &pw::Manager::sourceProfileNameChanged, this,
+      [](pw::NodeInfo node) {
+        presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_name);
       },
       Qt::QueuedConnection);
 

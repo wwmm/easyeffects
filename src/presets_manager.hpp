@@ -67,7 +67,7 @@ class Manager : public QObject {
 
   auto preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool;
 
-  void autoload(const PipelineType& pipeline_type, const std::string& device_name, const std::string& device_profile);
+  void autoload(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile);
 
   Q_INVOKABLE bool add(const PipelineType& pipeline_type, const QString& name);
 
@@ -141,8 +141,8 @@ class Manager : public QObject {
                            const nlohmann::json& json) -> bool;
 
   auto find_autoload(const PipelineType& pipeline_type,
-                     const std::string& device_name,
-                     const std::string& device_profile) -> std::string;
+                     const QString& device_name,
+                     const QString& device_profile) -> std::string;
 
   auto get_autoload_profiles(const PipelineType& pipeline_type) -> std::vector<nlohmann::json>;
 

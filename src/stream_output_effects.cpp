@@ -42,7 +42,6 @@
 #include "presets_manager.hpp"
 #include "pw_manager.hpp"
 #include "pw_objects.hpp"
-#include "spa/param/param.h"
 #include "tags_pipewire.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
@@ -78,6 +77,8 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
           }
 
           set_bypass(false);
+
+          presets::Manager::self().autoload(PipelineType::output, node.name, node.device_profile_name);
         }
       },
       Qt::QueuedConnection);
@@ -103,6 +104,8 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
 
         set_bypass(false);
 
+        presets::Manager::self().autoload(PipelineType::output, node.name, node.device_profile_name);
+
         break;
       }
     }
@@ -123,33 +126,9 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
   connect(pm, &pw::Manager::linkChanged, this, &StreamOutputEffects::on_link_changed, Qt::QueuedConnection);
 
   connect(
-      pm, &pw::Manager::deviceOutputRouteChanged, this,
-      [&](const pw::DeviceInfo device) {
-        if (device.output_route_available == SPA_PARAM_AVAILABILITY_no) {
-          return;
-        }
-
-        util::debug("output autoloading: device \"" + device.name + "\" has changed its output route to \"" +
-                    device.output_route_name + "\"");
-
-        const auto name = db::StreamOutputs::outputDevice();
-
-        for (const auto& [serial, node] : pm->node_map) {
-          if (node.media_class == tags::pipewire::media_class::sink && node.device_id == device.id &&
-              node.name == name) {
-            util::debug("output autoloading: target node \"" + name.toStdString() +
-                        "\" matches the output device name");
-
-            presets::Manager::self().autoload(PipelineType::output, node.name.toStdString(), device.output_route_name);
-
-            return;
-          } else {
-            util::debug("output autoloading: skip \"" + node.name.toStdString() +
-                        "\" candidate since it does not match \"" + name.toStdString() + "\" output device");
-          }
-        }
-
-        util::debug("output autoloading: no target nodes match the output device name \"" + name.toStdString() + "\"");
+      pm, &pw::Manager::sinkProfileNameChanged, this,
+      [](pw::NodeInfo node) {
+        presets::Manager::self().autoload(PipelineType::output, node.name, node.device_profile_name);
       },
       Qt::QueuedConnection);
 

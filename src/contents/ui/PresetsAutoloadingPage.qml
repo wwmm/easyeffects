@@ -31,6 +31,10 @@ ColumnLayout {
                 const proxyIndex = model.index(currentIndex, 0);
                 return model.data(proxyIndex, PW.ModelNodes.Name);
             }
+            readonly property string deviceProfileName: {
+                const proxyIndex = model.index(currentIndex, 0);
+                return model.data(proxyIndex, PW.ModelNodes.DeviceProfileName);
+            }
 
             verticalPadding: 0
             text: i18n("Device")
@@ -38,11 +42,11 @@ ColumnLayout {
             currentIndex: 0
             textRole: "description"
             editable: false
-            model: DB.Manager.main.visibleAutoloadingTab === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
+            model: DB.Manager.main.visiblePage === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
         }
 
         Kirigami.Icon {
-            source: DB.Manager.main.visibleAutoloadingTab === 1 ? "audio-input-microphone-symbolic" : "audio-speakers-symbolic"
+            source: DB.Manager.main.visiblePage === 1 ? "audio-input-microphone-symbolic" : "audio-speakers-symbolic"
             Layout.preferredWidth: Kirigami.Units.iconSizes.medium
             Layout.preferredHeight: Kirigami.Units.iconSizes.medium
             Layout.alignment: Qt.AlignBottom | Qt.AlignHCenter
@@ -57,7 +61,7 @@ ColumnLayout {
             currentIndex: 0
             textRole: "name"
             editable: false
-            model: DB.Manager.main.visibleAutoloadingTab === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+            model: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
         }
 
         Controls.Button {
@@ -69,11 +73,11 @@ ColumnLayout {
                 const deviceName = device.deviceName;
                 const deviceDescription = device.currentText;
                 const presetName = preset.currentText;
-                const deviceRoute = PW.Manager.getDeviceRoute(deviceId);
-                if (DB.Manager.main.visibleAutoloadingTab === 0)
-                    Presets.Manager.addAutoload(1, presetName, deviceName, deviceDescription, deviceRoute["output"]);
-                else if (DB.Manager.main.visibleAutoloadingTab === 1)
-                    Presets.Manager.addAutoload(0, presetName, deviceName, deviceDescription, deviceRoute["input"]);
+                const deviceRoute = device.deviceProfileName;
+                if (DB.Manager.main.visiblePage === 0)
+                    Presets.Manager.addAutoload(1, presetName, deviceName, deviceDescription, deviceRoute);
+                else if (DB.Manager.main.visiblePage === 1)
+                    Presets.Manager.addAutoload(0, presetName, deviceName, deviceDescription, deviceRoute);
             }
         }
 
@@ -88,7 +92,7 @@ ColumnLayout {
             Layout.fillHeight: true
             clip: true
             reuseItems: true
-            model: DB.Manager.main.visibleAutoloadingTab === 0 ? Presets.SortedAutoloadingOutputListModel : Presets.SortedAutoloadingInputListModel
+            model: DB.Manager.main.visiblePage === 0 ? Presets.SortedAutoloadingOutputListModel : Presets.SortedAutoloadingInputListModel
 
             Kirigami.PlaceholderMessage {
                 anchors.centerIn: parent
@@ -139,9 +143,9 @@ ColumnLayout {
                             Layout.rowSpan: 4
                             icon.name: "delete"
                             onClicked: {
-                                if (DB.Manager.main.visibleAutoloadingTab === 0)
+                                if (DB.Manager.main.visiblePage === 0)
                                     Presets.Manager.removeAutoload(1, devicePreset, deviceName, deviceProfile);
-                                else if (DB.Manager.main.visibleAutoloadingTab === 1)
+                                else if (DB.Manager.main.visiblePage === 1)
                                     Presets.Manager.removeAutoload(0, devicePreset, deviceName, deviceProfile);
                             }
                         }
@@ -206,7 +210,7 @@ ColumnLayout {
             text: i18n("Fallback Preset")
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: {
-                const fallbackPreset = DB.Manager.main.visibleAutoloadingTab === 0 ? DB.Manager.main.outputAutoloadingFallbackPreset : DB.Manager.main.inputAutoloadingFallbackPreset;
+                const fallbackPreset = DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingFallbackPreset : DB.Manager.main.inputAutoloadingFallbackPreset;
                 for (let n = 0; n < model.rowCount(); n++) {
                     const proxyIndex = model.index(n, 0);
                     const name = model.data(proxyIndex, TypePresets.ListModel.Name);
@@ -218,12 +222,12 @@ ColumnLayout {
             }
             textRole: "name"
             editable: false
-            enabled: DB.Manager.main.visibleAutoloadingTab === 0 ? DB.Manager.main.outputAutoloadingUsesFallback : DB.Manager.main.inputAutoloadingUsesFallback
-            model: DB.Manager.main.visibleAutoloadingTab === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+            enabled: DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingUsesFallback : DB.Manager.main.inputAutoloadingUsesFallback
+            model: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
             onActivated: (idx) => {
-                if (DB.Manager.main.visibleAutoloadingTab === 0)
+                if (DB.Manager.main.visiblePage === 0)
                     DB.Manager.main.outputAutoloadingFallbackPreset = currentText;
-                else if (DB.Manager.main.visibleAutoloadingTab === 1)
+                else if (DB.Manager.main.visiblePage === 1)
                     DB.Manager.main.inputAutoloadingFallbackPreset = currentText;
             }
         }
@@ -231,14 +235,14 @@ ColumnLayout {
         EeSwitch {
             Layout.fillWidth: false
             Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-            isChecked: DB.Manager.main.visibleAutoloadingTab === 0 ? DB.Manager.main.outputAutoloadingUsesFallback : DB.Manager.main.inputAutoloadingUsesFallback
+            isChecked: DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingUsesFallback : DB.Manager.main.inputAutoloadingUsesFallback
             verticalPadding: 0
             onCheckedChanged: {
-                if (DB.Manager.main.visibleAutoloadingTab === 0) {
+                if (DB.Manager.main.visiblePage === 0) {
                     if (isChecked !== DB.Manager.main.outputAutoloadingUsesFallback)
                         DB.Manager.main.outputAutoloadingUsesFallback = isChecked;
 
-                } else if (DB.Manager.main.visibleAutoloadingTab === 1) {
+                } else if (DB.Manager.main.visiblePage === 1) {
                     if (isChecked !== DB.Manager.main.inputAutoloadingUsesFallback)
                         DB.Manager.main.inputAutoloadingUsesFallback = isChecked;
 

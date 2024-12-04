@@ -87,8 +87,6 @@ class Manager : public QObject {
 
   std::vector<PortInfo> list_ports;
 
-  std::vector<DeviceInfo> list_devices;
-
   QString defaultInputDeviceName, defaultOutputDeviceName;
 
   NodeInfo ee_sink_node, ee_source_node;
@@ -157,7 +155,6 @@ class Manager : public QObject {
   Q_INVOKABLE void connectStreamOutput(const uint& id) const;
   Q_INVOKABLE void connectStreamInput(const uint& id) const;
   Q_INVOKABLE void disconnectStream(const uint& id) const;
-  Q_INVOKABLE [[nodiscard]] QMap<QString, QVariant> getDeviceRoute(const uint& deviceId) const;
 
  signals:
 
@@ -180,8 +177,9 @@ class Manager : public QObject {
   void sinkAdded(NodeInfo node);
   void newDefaultSinkName(QString name);
   void newDefaultSourceName(QString name);
-  void deviceInputRouteChanged(DeviceInfo device);
-  void deviceOutputRouteChanged(DeviceInfo device);
+
+  void sinkProfileNameChanged(NodeInfo node);
+  void sourceProfileNameChanged(NodeInfo node);
 
   void linkChanged(LinkInfo link);
 

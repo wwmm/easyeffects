@@ -387,8 +387,13 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   spa_dict_get_num(info->props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
+  bool deviceProfileChanged = false;
+
   if (const auto* device_profile_name = spa_dict_lookup(info->props, "device.profile.name")) {
-    nd->nd_info->device_profile_name = device_profile_name;
+    if (nd->nd_info->device_profile_name != device_profile_name) {
+      nd->nd_info->device_profile_name = device_profile_name;
+      deviceProfileChanged = true;
+    }
   }
 
   if (const auto* device_profile_description = spa_dict_lookup(info->props, "device.profile.description")) {
@@ -419,7 +424,11 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   // update NodeInfo inside map or add it if it is not in the model yet
 
+  auto node_it = pm->node_map.find(nd->nd_info->serial);
+
   if (!pm->model_nodes.has_serial(nd->nd_info->serial)) {
+    node_it->second = *nd->nd_info;
+
     pm->model_nodes.append(*nd->nd_info);
 
     auto nd_info_copy = *nd->nd_info;
@@ -437,6 +446,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
                                  util::to_string(pm->ee_sink_node.id).c_str());
 
+        // NOLINTNEXTLINE
         pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
                                  util::to_string(pm->ee_sink_node.serial).c_str());
       }
@@ -447,13 +457,26 @@ void on_node_info(void* object, const struct pw_node_info* info) {
         pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
                                  util::to_string(pm->ee_source_node.id).c_str());
 
+        // NOLINTNEXTLINE
         pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
                                  util::to_string(pm->ee_source_node.serial).c_str());
       }
     }
 
   } else {
+    node_it->second = *nd->nd_info;
+
     pm->model_nodes.update_info(*nd->nd_info);
+  }
+
+  if (deviceProfileChanged) {
+    if (nd->nd_info->media_class == tags::pipewire::media_class::source &&
+        nd->nd_info->name != tags::pipewire::ee_source_name) {
+      Q_EMIT pm->sourceProfileNameChanged(*nd->nd_info);
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink &&
+               nd->nd_info->name != tags::pipewire::ee_sink_name) {
+      Q_EMIT pm->sinkProfileNameChanged(*nd->nd_info);
+    }
   }
 
   if ((info->change_mask & PW_NODE_CHANGE_MASK_PARAMS) != 0U) {
@@ -708,126 +731,6 @@ void on_destroy_client_proxy(void* data) {
   cd->pm->model_clients.remove_by_id(cd->id);
 }
 
-void on_device_info(void* object, const struct pw_device_info* info) {
-  auto* const dd = static_cast<proxy_data*>(object);
-
-  for (auto& device : dd->pm->list_devices) {
-    if (device.id != info->id) {
-      continue;
-    }
-
-    spa_dict_get_string(info->props, PW_KEY_DEVICE_NAME, device.name);
-
-    spa_dict_get_string(info->props, PW_KEY_DEVICE_NICK, device.nick);
-
-    spa_dict_get_string(info->props, PW_KEY_DEVICE_DESCRIPTION, device.description);
-
-    spa_dict_get_string(info->props, PW_KEY_DEVICE_API, device.api);
-
-    if (spa_dict_get_string(info->props, SPA_KEY_DEVICE_BUS_ID, device.bus_id)) {
-      std::ranges::replace(device.bus_id, ':', '_');
-      std::ranges::replace(device.bus_id, '+', '_');
-    }
-
-    if (spa_dict_get_string(info->props, PW_KEY_DEVICE_BUS_PATH, device.bus_path)) {
-      std::ranges::replace(device.bus_path, ':', '_');
-      std::ranges::replace(device.bus_path, '+', '_');
-    }
-
-    /*
-        For some reason bluez5 devices do not define bus-path or bus-id. So as a workaround we set
-       SPA_KEY_API_BLUEZ5_ADDRESS as bus_path
-    */
-
-    if (device.api == "bluez5") {
-      if (spa_dict_get_string(info->props, SPA_KEY_API_BLUEZ5_ADDRESS, device.bus_path)) {
-        std::replace(device.bus_path.begin(), device.bus_path.end(), ':', '_');
-      }
-    }
-
-    if ((info->change_mask & PW_DEVICE_CHANGE_MASK_PARAMS) != 0U) {
-      auto params = std::span(info->params, info->n_params);
-
-      for (auto param : params) {
-        if ((param.flags & SPA_PARAM_INFO_READ) == 0U) {
-          continue;
-        }
-
-        if (const auto id = param.id; id == SPA_PARAM_Route) {
-          pw_device_enum_params((struct pw_device*)dd->proxy, 0, id, 0, -1, nullptr);  // NOLINT
-        }
-      }
-    }
-
-    break;
-  }
-}
-
-void on_device_event_param(void* object,
-                           [[maybe_unused]] int seq,
-                           [[maybe_unused]] uint32_t id,
-                           [[maybe_unused]] uint32_t index,
-                           [[maybe_unused]] uint32_t next,
-                           const struct spa_pod* param) {
-  if (id != SPA_PARAM_Route) {
-    return;
-  }
-
-  auto* const dd = static_cast<proxy_data*>(object);
-
-  const char* name = nullptr;
-
-  enum spa_direction direction {};
-  enum spa_param_availability available {};
-
-  // NOLINTNEXTLINE
-  if (spa_pod_parse_object(param, SPA_TYPE_OBJECT_ParamRoute, nullptr, SPA_PARAM_ROUTE_direction,
-                           SPA_POD_Id(&direction), SPA_PARAM_ROUTE_name, SPA_POD_String(&name),
-                           SPA_PARAM_ROUTE_available, SPA_POD_Id(&available)) < 0) {
-    return;
-  }
-
-  if (name == nullptr) {
-    return;
-  }
-
-  for (auto& device : dd->pm->list_devices) {
-    if (device.id != dd->id) {
-      continue;
-    }
-
-    auto* const pm = dd->pm;
-
-    if (direction == SPA_DIRECTION_INPUT) {
-      if (name != device.input_route_name || available != device.input_route_available) {
-        device.input_route_name = name;
-        device.input_route_available = available;
-
-        Q_EMIT pm->deviceInputRouteChanged(device);
-      }
-    } else if (direction == SPA_DIRECTION_OUTPUT) {
-      if (name != device.output_route_name || available != device.output_route_available) {
-        device.output_route_name = name;
-        device.output_route_available = available;
-
-        Q_EMIT pm->deviceOutputRouteChanged(device);
-      }
-    }
-
-    break;
-  }
-}
-
-void on_destroy_device_proxy(void* data) {
-  auto* const dd = static_cast<proxy_data*>(data);
-
-  spa_hook_remove(&dd->proxy_listener);
-
-  dd->pm->list_devices.erase(std::remove_if(dd->pm->list_devices.begin(), dd->pm->list_devices.end(),
-                                            [=](const auto& n) { return n.id == dd->id; }),
-                             dd->pm->list_devices.end());
-}
-
 auto on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) -> int {
   auto* const pm = static_cast<pw::Manager*>(data);
 
@@ -910,14 +813,6 @@ const struct pw_proxy_events client_proxy_events = {.version = 0,
                                                     .error = nullptr,
                                                     .bound_props = nullptr};
 
-const struct pw_proxy_events device_proxy_events = {.version = 0,
-                                                    .destroy = on_destroy_device_proxy,
-                                                    .bound = nullptr,
-                                                    .removed = on_removed_proxy,
-                                                    .done = nullptr,
-                                                    .error = nullptr,
-                                                    .bound_props = nullptr};
-
 const struct pw_proxy_events node_proxy_events = {.version = 0,
                                                   .destroy = on_destroy_node_proxy,
                                                   .bound = nullptr,
@@ -939,8 +834,6 @@ const struct pw_module_events module_events = {
 };
 
 const struct pw_client_events client_events = {.version = 0, .info = on_client_info, .permissions = nullptr};
-
-const struct pw_device_events device_events = {.version = 0, .info = on_device_info, .param = on_device_event_param};
 
 void on_registry_global(void* data,
                         uint32_t id,
@@ -1243,53 +1136,6 @@ void on_registry_global(void* data,
         } else {
           util::warning("pw_registry_bind returned a null metadata object");
         }
-      }
-    }
-
-    return;
-  }
-
-  if (std::strcmp(type, PW_TYPE_INTERFACE_Device) == 0) {
-    if (const auto* key_media_class = spa_dict_lookup(props, PW_KEY_MEDIA_CLASS)) {
-      const std::string media_class = key_media_class;
-
-      if (media_class == tags::pipewire::media_class::device) {
-        uint64_t serial = 0U;
-
-        if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
-          util::warning(
-              "An error occurred while converting the object serial. This device cannot be handled by Easy Effects.");
-          return;
-        }
-
-        auto* proxy =
-            static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_DEVICE, sizeof(proxy_data)));
-
-        auto* const pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
-
-        pd->proxy = proxy;
-        pd->pm = pm;
-        pd->id = id;
-        pd->serial = serial;
-
-        pw_device_add_listener(proxy, &pd->object_listener, &device_events, pd);  // NOLINT
-        pw_proxy_add_listener(proxy, &pd->proxy_listener, &device_proxy_events, pd);
-
-        pw::DeviceInfo d_info{.id = id,
-                              .serial = serial,
-                              .name = "",
-                              .description = "",
-                              .nick = "",
-                              .media_class = media_class,
-                              .api = "",
-                              .input_route_name = "",
-                              .output_route_name = "",
-                              .bus_id = "",
-                              .bus_path = "",
-                              .input_route_available = SPA_PARAM_AVAILABILITY_no,
-                              .output_route_available = SPA_PARAM_AVAILABILITY_no};
-
-        pm->list_devices.push_back(d_info);
       }
     }
 
@@ -1611,7 +1457,7 @@ void Manager::disconnectStream(const uint& stream_id) const {
   lock();
 
   // target.node for backward compatibility with old PW session managers
-  pw_metadata_set_property(metadata, stream_id, "target.node", nullptr, nullptr);
+  pw_metadata_set_property(metadata, stream_id, "target.node", nullptr, nullptr);    // NOLINT
   pw_metadata_set_property(metadata, stream_id, "target.object", nullptr, nullptr);  // NOLINT
 
   sync_wait_unlock();
@@ -1848,21 +1694,6 @@ auto Manager::json_object_find(const char* obj, const char* key, char* value, co
   }
 
   return -ENOENT;
-}
-
-QMap<QString, QVariant> Manager::getDeviceRoute(const uint& deviceId) const {
-  for (auto& device : list_devices) {
-    if (device.id == deviceId) {
-      QMap<QString, QVariant> res;
-
-      res["input"] = QVariant::fromValue(QString::fromStdString(device.input_route_name));
-      res["output"] = QVariant::fromValue(QString::fromStdString(device.output_route_name));
-
-      return res;
-    }
-  }
-
-  return {};
 }
 
 }  // namespace pw

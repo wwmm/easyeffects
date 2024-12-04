@@ -1017,16 +1017,18 @@ void Manager::removeAutoload(const PipelineType& pipelineType,
 }
 
 auto Manager::find_autoload(const PipelineType& pipeline_type,
-                            const std::string& device_name,
-                            const std::string& device_profile) -> std::string {
+                            const QString& device_name,
+                            const QString& device_profile) -> std::string {
   std::filesystem::path input_file;
 
   switch (pipeline_type) {
     case PipelineType::output:
-      input_file = autoload_output_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
+      input_file = autoload_output_dir /
+                   std::filesystem::path{device_name.toStdString() + ":" + device_profile.toStdString() + json_ext};
       break;
     case PipelineType::input:
-      input_file = autoload_input_dir / std::filesystem::path{device_name + ":" + device_profile + json_ext};
+      input_file = autoload_input_dir /
+                   std::filesystem::path{device_name.toStdString() + ":" + device_profile.toStdString() + json_ext};
       break;
   }
 
@@ -1043,16 +1045,33 @@ auto Manager::find_autoload(const PipelineType& pipeline_type,
   return json.value("preset-name", "");
 }
 
-void Manager::autoload(const PipelineType& pipeline_type,
-                       const std::string& device_name,
-                       const std::string& device_profile) {
+void Manager::autoload(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile) {
   const auto name = find_autoload(pipeline_type, device_name, device_profile);
 
   if (name.empty()) {
+    switch (pipeline_type) {
+      case PipelineType::input: {
+        if (db::Main::inputAutoloadingUsesFallback()) {
+          util::debug("autoloading fallback preset " + name + " for device " + device_name.toStdString());
+
+          loadLocalPresetFile(pipeline_type, db::Main::inputAutoloadingFallbackPreset());
+        }
+        break;
+      }
+      case PipelineType::output: {
+        if (db::Main::outputAutoloadingUsesFallback()) {
+          util::debug("autoloading fallback preset " + name + " for device " + device_name.toStdString());
+
+          loadLocalPresetFile(pipeline_type, db::Main::outputAutoloadingFallbackPreset());
+        }
+        break;
+      }
+    }
+
     return;
   }
 
-  util::debug("autoloading local preset " + name + " for device " + device_name);
+  util::debug("autoloading local preset " + name + " for device " + device_name.toStdString());
 
   loadLocalPresetFile(pipeline_type, QString::fromStdString(name));
 }
