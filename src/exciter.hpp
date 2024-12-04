@@ -29,7 +29,7 @@
 #include "pw_manager.hpp"
 
 class Exciter : public PluginBase {
-  Q_OBJECT;
+  Q_OBJECT
 
  public:
   Exciter(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);

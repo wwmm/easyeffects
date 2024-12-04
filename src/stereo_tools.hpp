@@ -29,7 +29,7 @@
 #include "pw_manager.hpp"
 
 class StereoTools : public PluginBase {
-  Q_OBJECT;
+  Q_OBJECT
 
  public:
   StereoTools(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);

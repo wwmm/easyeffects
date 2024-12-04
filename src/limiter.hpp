@@ -32,7 +32,7 @@
 #include "pw_manager.hpp"
 
 class Limiter : public PluginBase {
-  Q_OBJECT;
+  Q_OBJECT
 
  public:
   Limiter(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);

@@ -34,7 +34,7 @@
 #include "pw_manager.hpp"
 
 class Speex : public PluginBase {
-  Q_OBJECT;
+  Q_OBJECT
 
  public:
   Speex(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);

@@ -31,7 +31,7 @@
 namespace db {
 
 class Manager : public QObject {
-  Q_OBJECT;
+  Q_OBJECT
 
   Q_PROPERTY(db::Main* main MEMBER main NOTIFY mainChanged)
   Q_PROPERTY(db::Spectrum* spectrum MEMBER spectrum NOTIFY spectrumChanged)

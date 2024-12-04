@@ -38,7 +38,7 @@
 #include "util.hpp"
 
 class PluginBase : public QObject {
-  Q_OBJECT;
+  Q_OBJECT
 
  public:
   PluginBase(std::string tag,

@@ -97,7 +97,7 @@ class BaseName : public QObject {
 };
 
 class Model : public QAbstractListModel {
-  Q_OBJECT;
+  Q_OBJECT
 
  public:
   explicit Model(QObject* parent = nullptr);

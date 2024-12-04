@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import ee.database as DB
 import ee.pipewire as PW
 import ee.presets as Presets
+import ee.type.presets as TypePresets
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -208,7 +209,7 @@ ColumnLayout {
                 const fallbackPreset = DB.Manager.main.visibleAutoloadingTab === 0 ? DB.Manager.main.outputAutoloadingFallbackPreset : DB.Manager.main.inputAutoloadingFallbackPreset;
                 for (let n = 0; n < model.rowCount(); n++) {
                     const proxyIndex = model.index(n, 0);
-                    const name = model.data(proxyIndex, 256); // 256 = Qt::UserRole
+                    const name = model.data(proxyIndex, TypePresets.ListModel.Name);
                     if (name === fallbackPreset)
                         return n;
 

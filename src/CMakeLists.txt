@@ -10,6 +10,13 @@ kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})
 
 # install(FILES ${KCFG_FILES} DESTINATION ${KDE_INSTALL_KCFGDIR})
 
+qt_add_qml_module(easyeffects
+    URI ee.type.presets
+    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+    SOURCES
+        presets_list_model.cpp presets_list_model.hpp
+)
+
 target_sources(easyeffects PRIVATE
     autogain.cpp
     autogain_preset.cpp

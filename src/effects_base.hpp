@@ -63,7 +63,7 @@
 // #include "rnnoise.hpp"
 
 class EffectsBase : public QObject {
-  Q_OBJECT;
+  Q_OBJECT
 
  public:
   EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type);

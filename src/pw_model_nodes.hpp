@@ -41,7 +41,7 @@
 namespace pw::models {
 
 class Nodes : public QAbstractListModel {
-  Q_OBJECT;
+  Q_OBJECT
 
  public:
   explicit Nodes(QObject* parent = nullptr);

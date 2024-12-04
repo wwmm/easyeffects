@@ -44,7 +44,7 @@
 namespace pw {
 
 class Manager : public QObject {
-  Q_OBJECT;
+  Q_OBJECT
 
   Q_PROPERTY(QString headerVersion MEMBER headerVersion NOTIFY headerVersionChanged)
   Q_PROPERTY(QString libraryVersion MEMBER libraryVersion NOTIFY libraryVersionChanged)

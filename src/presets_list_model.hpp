@@ -24,12 +24,14 @@
 #include <qlist.h>
 #include <qnamespace.h>
 #include <qobject.h>
+#include <qqmlintegration.h>
 #include <qsortfilterproxymodel.h>
 #include <qtmetamacros.h>
 #include <filesystem>
 
 class ListModel : public QAbstractListModel {
-  Q_OBJECT;
+  Q_OBJECT
+  QML_ELEMENT
 
  public:
   enum ModelType { Local = Qt::UserRole, Community, Autoloading };

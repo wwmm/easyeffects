@@ -36,7 +36,7 @@
 namespace pw::models {
 
 class Clients : public QAbstractListModel {
-  Q_OBJECT;
+  Q_OBJECT
 
  public:
   explicit Clients(QObject* parent = nullptr);

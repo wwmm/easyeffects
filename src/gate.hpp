@@ -32,7 +32,7 @@
 #include "pw_manager.hpp"
 
 class Gate : public PluginBase {
-  Q_OBJECT;
+  Q_OBJECT
 
  public:
   Gate(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);

@@ -36,7 +36,7 @@
 namespace pw::models {
 
 class Modules : public QAbstractListModel {
-  Q_OBJECT;
+  Q_OBJECT
 
  public:
   explicit Modules(QObject* parent = nullptr);
