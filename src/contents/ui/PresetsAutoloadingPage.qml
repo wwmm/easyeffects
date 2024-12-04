@@ -24,11 +24,11 @@ ColumnLayout {
 
             readonly property int deviceId: {
                 const proxyIndex = model.index(currentIndex, 0);
-                return model.data(proxyIndex, 258); // 256 = Qt::UserRole
+                return model.data(proxyIndex, PW.ModelNodes.DeviceId);
             }
             readonly property string deviceName: {
                 const proxyIndex = model.index(currentIndex, 0);
-                return model.data(proxyIndex, 259); // 256 = Qt::UserRole
+                return model.data(proxyIndex, PW.ModelNodes.Name);
             }
 
             verticalPadding: 0

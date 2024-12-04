@@ -387,6 +387,14 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   spa_dict_get_num(info->props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
+  if (const auto* device_profile_name = spa_dict_lookup(info->props, "device.profile.name")) {
+    nd->nd_info->device_profile_name = device_profile_name;
+  }
+
+  if (const auto* device_profile_description = spa_dict_lookup(info->props, "device.profile.description")) {
+    nd->nd_info->device_profile_description = device_profile_description;
+  }
+
   // sometimes PipeWire destroys the pointer before signal_idle is called,
   // therefore we make a copy
 
@@ -1399,9 +1407,9 @@ Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_
     util::fatal("could not get the registry");
   }
 
-  pw_registry_add_listener(registry, &registry_listener, &registry_events, this);  // NOLINT
-
   pw_core_add_listener(core, &core_listener, &core_events, this);  // NOLINT
+
+  pw_registry_add_listener(registry, &registry_listener, &registry_events, this);  // NOLINT
 
   if (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID) {
     load_virtual_devices();

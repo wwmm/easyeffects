@@ -60,6 +60,10 @@ struct NodeInfo {
 
   QString device_icon_name;
 
+  QString device_profile_name;
+
+  QString device_profile_description;
+
   QString media_name;
 
   QString format;

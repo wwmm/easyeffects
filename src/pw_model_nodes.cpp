@@ -162,7 +162,9 @@ QHash<int, QByteArray> Nodes::roleNames() const {
           {Roles::NvolumeChannels, "nVolumeChannels"},
           {Roles::Latency, "latency"},
           {Roles::Volume, "volume"},
-          {Roles::IsBlocklisted, "isBlocklisted"}};
+          {Roles::IsBlocklisted, "isBlocklisted"},
+          {Roles::DeviceProfileName, "deviceProfileName"},
+          {Roles::DeviceProfileDescription, "DeviceProfileDescription"}};
 }
 
 QVariant Nodes::data(const QModelIndex& index, int role) const {
@@ -233,6 +235,10 @@ QVariant Nodes::data(const QModelIndex& index, int role) const {
       return it->volume;
     case Roles::IsBlocklisted:
       return it->is_blocklisted;
+    case Roles::DeviceProfileName:
+      return it->device_profile_name;
+    case Roles::DeviceProfileDescription:
+      return it->device_profile_description;
     default:
       return {};
   }

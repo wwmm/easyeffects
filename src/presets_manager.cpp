@@ -1008,7 +1008,8 @@ void Manager::removeAutoload(const PipelineType& pipelineType,
 
   is >> json;
 
-  if (presetName == json.value("preset-name", "") && deviceProfile.toStdString() == json.value("device-profile", "")) {
+  if (presetName.toStdString() == json.value("preset-name", "") &&
+      deviceProfile.toStdString() == json.value("device-profile", "")) {
     std::filesystem::remove(input_file);
 
     util::debug("removed autoload: " + input_file.string());

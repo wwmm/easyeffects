@@ -73,8 +73,11 @@ class Nodes : public QAbstractListModel {
     NvolumeChannels,
     Latency,
     Volume,
-    IsBlocklisted
+    IsBlocklisted,
+    DeviceProfileName,
+    DeviceProfileDescription
   };
+  Q_ENUM(Roles)
 
   [[nodiscard]] int rowCount(const QModelIndex& parent = QModelIndex()) const override;
 
@@ -300,6 +303,20 @@ class Nodes : public QAbstractListModel {
       case Roles::IsBlocklisted: {
         if constexpr (std::is_same_v<T, bool>) {
           it->is_blocklisted = value;
+        }
+
+        break;
+      }
+      case Roles::DeviceProfileName: {
+        if constexpr (std::is_same_v<T, QString>) {
+          it->device_profile_name = value;
+        }
+
+        break;
+      }
+      case Roles::DeviceProfileDescription: {
+        if constexpr (std::is_same_v<T, QString>) {
+          it->device_profile_description = value;
         }
 
         break;
