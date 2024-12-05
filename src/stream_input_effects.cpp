@@ -66,6 +66,10 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   connect(
       pm, &pw::Manager::sourceAdded, this,
       [&](pw::NodeInfo node) {
+        if (db::StreamInputs::useDefaultInputDevice()) {
+          return;
+        }
+
         if (node.name == db::StreamInputs::inputDevice()) {
           pm->input_device = node;
 
@@ -82,8 +86,35 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
       },
       Qt::QueuedConnection);
 
-  connect(pm, &pw::Manager::newDefaultSourceName, this, &StreamInputEffects::onNewDefaultSourceName,
-          Qt::QueuedConnection);
+  connect(
+      pm, &pw::Manager::newDefaultSourceName, this,
+      [this](QString name) {
+        if (!db::StreamInputs::useDefaultInputDevice()) {
+          return;
+        }
+
+        if (name != tags::pipewire::ee_source_name) {
+          db::StreamInputs::setInputDevice(name);
+        } else {
+          /*
+            If the user (or wireplumber) made the mistake of setting our virtual devices as default we take the first
+            device we can find.
+          */
+          for (const auto& [serial, node] : pm->node_map) {
+            if (node.media_class == tags::pipewire::media_class::source && node.name != name) {
+              db::StreamInputs::setInputDevice(node.name);
+              return;
+            }
+          }
+        }
+      },
+      Qt::QueuedConnection);
+
+  connect(db::StreamInputs::self(), &db::StreamInputs::useDefaultInputDeviceChanged, [&]() {
+    if (db::StreamInputs::useDefaultInputDevice()) {
+      db::StreamInputs::setInputDevice(pm->defaultInputDeviceName);
+    }
+  });
 
   connect(db::StreamInputs::self(), &db::StreamInputs::inputDeviceChanged, [&]() {
     const auto name = db::StreamInputs::inputDevice();
@@ -133,12 +164,6 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
       Qt::QueuedConnection);
 
   connect_filters();
-}
-
-void StreamInputEffects::onNewDefaultSourceName(const QString& name) {
-  if (db::StreamInputs::useDefaultInputDevice()) {
-    db::StreamInputs::setInputDevice(name);
-  }
 }
 
 auto StreamInputEffects::apps_want_to_play() -> bool {
@@ -231,6 +256,8 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
   // waiting for the input device ports information to be available.
 
   int timeout = 0;
+
+  util::warning("before: " + util::to_string(pm->input_device.id) + " -> " + pm->input_device.name.toStdString());
 
   while (pm->count_node_ports(pm->input_device.id) < 1) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));

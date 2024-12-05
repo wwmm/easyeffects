@@ -85,6 +85,12 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
 
   connect(pm, &pw::Manager::newDefaultSinkName, this, &StreamOutputEffects::onNewDefaultSinkName, Qt::QueuedConnection);
 
+  connect(db::StreamOutputs::self(), &db::StreamOutputs::useDefaultOutputDeviceChanged, [&]() {
+    if (db::StreamOutputs::useDefaultOutputDevice()) {
+      db::StreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
+    }
+  });
+
   connect(db::StreamOutputs::self(), &db::StreamOutputs::outputDeviceChanged, [&]() {
     const auto name = db::StreamOutputs::outputDevice();
 

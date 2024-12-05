@@ -1,3 +1,4 @@
+import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -112,9 +113,11 @@ Kirigami.Page {
                         const proxyIndex = PW.ModelSourceDevices.index(idx, 0);
                         const sourceIndex = PW.ModelSourceDevices.mapToSource(proxyIndex);
                         const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
-                        if (DB.Manager.streamInputs.inputDevice !== nodeName)
-                            DB.Manager.streamInputs.inputDevice = nodeName;
+                        if (DB.Manager.streamInputs.inputDevice !== nodeName) {
+                            if (!Common.isEmpty(nodeName))
+                                DB.Manager.streamInputs.inputDevice = nodeName;
 
+                        }
                     }
                 }
 
@@ -151,9 +154,11 @@ Kirigami.Page {
                         const proxyIndex = PW.ModelSinkDevices.index(idx, 0);
                         const sourceIndex = PW.ModelSinkDevices.mapToSource(proxyIndex);
                         const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
-                        if (DB.Manager.streamOutputs.outputDevice !== nodeName)
-                            DB.Manager.streamOutputs.outputDevice = nodeName;
+                        if (DB.Manager.streamOutputs.outputDevice !== nodeName) {
+                            if (!Common.isEmpty(nodeName))
+                                DB.Manager.streamOutputs.outputDevice = nodeName;
 
+                        }
                     }
                 }
 
