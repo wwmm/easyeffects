@@ -230,13 +230,11 @@ void on_destroy_node_proxy(void* data) {
     if (nd->nd_info->name == db::StreamInputs::inputDevice()) {
       pm->input_device.id = SPA_ID_INVALID;
       pm->input_device.serial = SPA_ID_INVALID;
-      db::StreamInputs::setInputDevice("");
     }
   } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
     if (nd->nd_info->name == db::StreamOutputs::outputDevice()) {
       pm->output_device.id = SPA_ID_INVALID;
       pm->output_device.serial = SPA_ID_INVALID;
-      db::StreamOutputs::setOutputDevice("");
     }
   }
 
