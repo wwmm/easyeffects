@@ -70,10 +70,6 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   connect(
       pm, &pw::Manager::sourceAdded, this,
       [&](pw::NodeInfo node) {
-        if (db::StreamInputs::useDefaultInputDevice()) {
-          return;
-        }
-
         if (node.name == db::StreamInputs::inputDevice()) {
           pm->input_device = node;
 

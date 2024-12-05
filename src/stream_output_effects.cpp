@@ -71,10 +71,6 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
   connect(
       pm, &pw::Manager::sinkAdded, this,
       [&](pw::NodeInfo node) {
-        if (db::StreamOutputs::useDefaultOutputDevice()) {
-          return;
-        }
-
         if (node.name == db::StreamOutputs::outputDevice()) {
           pm->output_device = node;
 
