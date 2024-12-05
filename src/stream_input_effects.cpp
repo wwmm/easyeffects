@@ -63,6 +63,10 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
     }
   }
 
+  if (db::StreamInputs::inputDevice().isEmpty()) {
+    db::StreamInputs::setInputDevice(pm->defaultInputDeviceName);
+  }
+
   connect(
       pm, &pw::Manager::sourceAdded, this,
       [&](pw::NodeInfo node) {
@@ -88,45 +92,54 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
   connect(
       pm, &pw::Manager::newDefaultSourceName, this,
-      [this](QString name) {
-        if (!db::StreamInputs::useDefaultInputDevice()) {
+      [](QString name) {
+        if (db::StreamInputs::useDefaultInputDevice() || db::StreamInputs::inputDevice().isEmpty()) {
+          db::StreamInputs::setInputDevice(name);
+        }
+      },
+      Qt::QueuedConnection);
+
+  connect(
+      db::StreamInputs::self(), &db::StreamInputs::useDefaultInputDeviceChanged, this,
+      [&]() {
+        if (db::StreamInputs::useDefaultInputDevice()) {
+          db::StreamInputs::setInputDevice(pm->defaultInputDeviceName);
+        }
+      },
+      Qt::QueuedConnection);
+
+  connect(
+      db::StreamInputs::self(), &db::StreamInputs::inputDeviceChanged, this,
+      [&]() {
+        const auto name = db::StreamInputs::inputDevice();
+
+        if (name.isEmpty()) {
           return;
         }
 
-        if (name != tags::pipewire::ee_source_name) {
-          db::StreamInputs::setInputDevice(name);
-        } else {
-          /*
-            If the user (or wireplumber) made the mistake of setting our virtual devices as default we take the first
-            device we can find.
-          */
-          for (const auto& [serial, node] : pm->node_map) {
-            if (node.media_class == tags::pipewire::media_class::source && node.name != name) {
-              db::StreamInputs::setInputDevice(node.name);
-              return;
+        for (const auto& [serial, node] : pm->node_map) {
+          if (node.name == name) {
+            pm->input_device = node;
+
+            if (db::Main::bypass()) {
+              db::Main::setBypass(false);
+
+              return;  // filter connected through update_bypass_state
             }
+
+            set_bypass(false);
+
+            presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_name);
+
+            break;
           }
         }
       },
       Qt::QueuedConnection);
 
-  connect(db::StreamInputs::self(), &db::StreamInputs::useDefaultInputDeviceChanged, [&]() {
-    if (db::StreamInputs::useDefaultInputDevice()) {
-      db::StreamInputs::setInputDevice(pm->defaultInputDeviceName);
-    }
-  });
-
-  connect(db::StreamInputs::self(), &db::StreamInputs::inputDeviceChanged, [&]() {
-    const auto name = db::StreamInputs::inputDevice();
-
-    if (name.isEmpty()) {
-      return;
-    }
-
-    for (const auto& [serial, node] : pm->node_map) {
-      if (node.name == name) {
-        pm->input_device = node;
-
+  connect(
+      db::StreamInputs::self(), &db::StreamInputs::pluginsChanged, this,
+      [&]() {
         if (db::Main::bypass()) {
           db::Main::setBypass(false);
 
@@ -135,24 +148,9 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
         set_bypass(false);
 
-        presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_name);
-
-        break;
-      }
-    }
-  });
-
-  connect(db::StreamInputs::self(), &db::StreamInputs::pluginsChanged, [&]() {
-    if (db::Main::bypass()) {
-      db::Main::setBypass(false);
-
-      return;  // filter connected through update_bypass_state
-    }
-
-    set_bypass(false);
-
-    Q_EMIT pipelineChanged();
-  });
+        Q_EMIT pipelineChanged();
+      },
+      Qt::QueuedConnection);
 
   connect(pm, &pw::Manager::linkChanged, this, &StreamInputEffects::on_link_changed, Qt::QueuedConnection);
 

@@ -64,9 +64,17 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
     }
   }
 
+  if (db::StreamOutputs::outputDevice().isEmpty()) {
+    db::StreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
+  }
+
   connect(
       pm, &pw::Manager::sinkAdded, this,
       [&](pw::NodeInfo node) {
+        if (db::StreamOutputs::useDefaultOutputDevice()) {
+          return;
+        }
+
         if (node.name == db::StreamOutputs::outputDevice()) {
           pm->output_device = node;
 
@@ -83,25 +91,56 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
       },
       Qt::QueuedConnection);
 
-  connect(pm, &pw::Manager::newDefaultSinkName, this, &StreamOutputEffects::onNewDefaultSinkName, Qt::QueuedConnection);
+  connect(
+      pm, &pw::Manager::newDefaultSinkName, this,
+      [](QString name) {
+        if (db::StreamOutputs::useDefaultOutputDevice() || db::StreamOutputs::outputDevice().isEmpty()) {
+          db::StreamOutputs::setOutputDevice(name);
+        }
+      },
+      Qt::QueuedConnection);
 
-  connect(db::StreamOutputs::self(), &db::StreamOutputs::useDefaultOutputDeviceChanged, [&]() {
-    if (db::StreamOutputs::useDefaultOutputDevice()) {
-      db::StreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
-    }
-  });
+  connect(
+      db::StreamOutputs::self(), &db::StreamOutputs::useDefaultOutputDeviceChanged, this,
+      [&]() {
+        if (db::StreamOutputs::useDefaultOutputDevice()) {
+          db::StreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
+        }
+      },
+      Qt::QueuedConnection);
 
-  connect(db::StreamOutputs::self(), &db::StreamOutputs::outputDeviceChanged, [&]() {
-    const auto name = db::StreamOutputs::outputDevice();
+  connect(
+      db::StreamOutputs::self(), &db::StreamOutputs::outputDeviceChanged, this,
+      [&]() {
+        const auto name = db::StreamOutputs::outputDevice();
 
-    if (name.isEmpty()) {
-      return;
-    }
+        if (name.isEmpty()) {
+          return;
+        }
 
-    for (const auto& [serial, node] : pm->node_map) {
-      if (node.name == name) {
-        pm->output_device = node;
+        for (const auto& [serial, node] : pm->node_map) {
+          if (node.name == name) {
+            pm->output_device = node;
 
+            if (db::Main::bypass()) {
+              db::Main::setBypass(false);
+
+              return;  // filter connected through update_bypass_state
+            }
+
+            set_bypass(false);
+
+            presets::Manager::self().autoload(PipelineType::output, node.name, node.device_profile_name);
+
+            break;
+          }
+        }
+      },
+      Qt::QueuedConnection);
+
+  connect(
+      db::StreamOutputs::self(), &db::StreamOutputs::pluginsChanged, this,
+      [&]() {
         if (db::Main::bypass()) {
           db::Main::setBypass(false);
 
@@ -110,24 +149,9 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
 
         set_bypass(false);
 
-        presets::Manager::self().autoload(PipelineType::output, node.name, node.device_profile_name);
-
-        break;
-      }
-    }
-  });
-
-  connect(db::StreamOutputs::self(), &db::StreamOutputs::pluginsChanged, [&]() {
-    if (db::Main::bypass()) {
-      db::Main::setBypass(false);
-
-      return;  // filter connected through update_bypass_state
-    }
-
-    set_bypass(false);
-
-    Q_EMIT pipelineChanged();
-  });
+        Q_EMIT pipelineChanged();
+      },
+      Qt::QueuedConnection);
 
   connect(pm, &pw::Manager::linkChanged, this, &StreamOutputEffects::on_link_changed, Qt::QueuedConnection);
 
@@ -139,12 +163,6 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
       Qt::QueuedConnection);
 
   connect_filters();
-}
-
-void StreamOutputEffects::onNewDefaultSinkName(const QString& name) {
-  if (db::StreamOutputs::useDefaultOutputDevice()) {
-    db::StreamOutputs::setOutputDevice(name);
-  }
 }
 
 auto StreamOutputEffects::apps_want_to_play() -> bool {

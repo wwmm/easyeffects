@@ -214,21 +214,29 @@ void on_destroy_node_proxy(void* data) {
 
   auto* const pm = nd->pm;
 
-  pm->model_nodes.remove_by_serial(nd->nd_info->serial);
+  spa_hook_remove(&nd->proxy_listener);
 
   nd->nd_info->proxy = nullptr;
 
-  spa_hook_remove(&nd->proxy_listener);
+  pm->model_nodes.remove_by_serial(nd->nd_info->serial);
+
+  auto node_it = pm->node_map.find(nd->nd_info->serial);
+
+  node_it->second.proxy = nullptr;
+
+  pm->node_map.erase(node_it);
 
   if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
-    if (db::StreamInputs::useDefaultInputDevice() && nd->nd_info->name == db::StreamInputs::inputDevice()) {
+    if (nd->nd_info->name == db::StreamInputs::inputDevice()) {
       pm->input_device.id = SPA_ID_INVALID;
       pm->input_device.serial = SPA_ID_INVALID;
+      db::StreamInputs::setInputDevice("");
     }
   } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
-    if (db::StreamOutputs::useDefaultOutputDevice() && nd->nd_info->name == db::StreamOutputs::outputDevice()) {
+    if (nd->nd_info->name == db::StreamOutputs::outputDevice()) {
       pm->output_device.id = SPA_ID_INVALID;
       pm->output_device.serial = SPA_ID_INVALID;
+      db::StreamOutputs::setOutputDevice("");
     }
   }
 
