@@ -2,6 +2,7 @@
     <qresource prefix="/ui">
         <file alias="Autogain.qml">contents/ui/Autogain.qml</file>
         <file alias="BassEnhancer.qml">contents/ui/BassEnhancer.qml</file>
+        <file alias="BlocklistSheet.qml">contents/ui/BlocklistSheet.qml</file>
         <file alias="Compressor.qml">contents/ui/Compressor.qml</file>
         <file alias="Crystalizer.qml">contents/ui/Crystalizer.qml</file>
         <file alias="CrystalizerBand.qml">contents/ui/CrystalizerBand.qml</file>

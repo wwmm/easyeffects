@@ -10,7 +10,7 @@ import org.kde.kirigami as Kirigami
 Kirigami.OverlaySheet {
     id: control
 
-    property var streamDB
+    required property var streamDB
 
     function showMenuStatus(label) {
         status.text = label;
@@ -18,9 +18,12 @@ Kirigami.OverlaySheet {
     }
 
     parent: applicationWindow().overlay
+    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+    focus: true
+    y: appWindow.header.height + Kirigami.Units.gridUnit
     showCloseButton: false
     implicitWidth: Kirigami.Units.gridUnit * 30
-    implicitHeight: appWindow.height * 0.75
+    implicitHeight: control.parent.height - 2 * (control.header.height + control.footer.height) - control.y
     onClosed: {
         status.visible = false;
     }
@@ -28,7 +31,6 @@ Kirigami.OverlaySheet {
     ListView {
         id: listView
 
-        Layout.fillWidth: true
         clip: true
         delegate: listDelegate
         reuseItems: true

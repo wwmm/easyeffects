@@ -67,6 +67,8 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
     db::StreamInputs::setInputDevice(pm->defaultInputDeviceName);
   }
 
+  connect_filters();
+
   connect(
       pm, &pw::Manager::sourceAdded, this,
       [&](pw::NodeInfo node) {
@@ -156,8 +158,6 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
         presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_name);
       },
       Qt::QueuedConnection);
-
-  connect_filters();
 }
 
 auto StreamInputEffects::apps_want_to_play() -> bool {

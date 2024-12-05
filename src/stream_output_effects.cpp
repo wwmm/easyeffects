@@ -68,6 +68,8 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
     db::StreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
   }
 
+  connect_filters();
+
   connect(
       pm, &pw::Manager::sinkAdded, this,
       [&](pw::NodeInfo node) {
@@ -157,8 +159,6 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
         presets::Manager::self().autoload(PipelineType::output, node.name, node.device_profile_name);
       },
       Qt::QueuedConnection);
-
-  connect_filters();
 }
 
 auto StreamOutputEffects::apps_want_to_play() -> bool {

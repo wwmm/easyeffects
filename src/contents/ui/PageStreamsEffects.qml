@@ -40,6 +40,12 @@ Kirigami.Page {
         streamDB: pageStreamsEffects.streamDB
     }
 
+    BlocklistSheet {
+        id: blocklistSheet
+
+        streamDB: pageStreamsEffects.streamDB
+    }
+
     Component {
         id: pageStreams
 
@@ -509,7 +515,7 @@ Kirigami.Page {
                         icon.name: "im-ban-kick-user-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         onTriggered: {
-                            showPassiveNotification("Blocklist Menu!");
+                            blocklistSheet.open();
                         }
                     }
                 ]
