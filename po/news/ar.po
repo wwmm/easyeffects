@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-17 22:27+0000\n"
-"PO-Revision-Date: 2024-06-24 22:09+0000\n"
-"Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
+"PO-Revision-Date: 2024-12-06 07:00+0000\n"
+"Last-Translator: \".ahhhh...secret\" <kil123414@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ar/>\n"
 "Language: ar\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.6-rc\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
-msgstr "Easy Effects"
+msgstr "ايزي ايفيكت"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr "تأثيرات صوتية لتطبيقات PipeWire"
+msgstr "تأثيرات صوتية لتطبيقات بايب واير"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid ""
@@ -34,12 +34,17 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
+"ايزي ايفيكت هي أداة متقدمة لمعالجة الصوت. فهو يشتمل على معادل الصوت، والمحدد،"
+" والضاغط، وأداة الصدى، على سبيل المثال لا الحصر. ولتكملة هذا، يوجد أيضًا محلل "
+"طيف مدمج."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"بايب واير ايزي ايفيكت هو خليفة لبرنامج بولس ايفيكت ولكن ايزي ايفيكت فقط يدعم "
+"بايب واير ولكل من يستعمل بولس اوديو يعود يستخدم بولس ايفيكتس"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
@@ -47,6 +52,9 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
+"بسبب ان ايزي ايفيكت يستخدم خادم بايب واير الإفتراضي فسوف يعمل مع الأغلب اذا "
+"ماكان كل البرامج المدعومة التي تظهر في النافذة الرئيسية بحيث ان يمكن تشغيلهم "
+"بشكل منفصل"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
@@ -218,7 +226,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:377
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:503
 msgid "Updated translations"
-msgstr ""
+msgstr "الترجمات المحدثة"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:83
 msgid "The equalizer can export basic APO preset files"
