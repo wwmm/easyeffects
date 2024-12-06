@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-16 14:17+0000\n"
-"PO-Revision-Date: 2024-05-26 00:09+0000\n"
-"Last-Translator: Flaausch <alplakayt@gmail.com>\n"
+"PO-Revision-Date: 2024-12-06 07:00+0000\n"
+"Last-Translator: T1z3n <info@njbraun.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/de/>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -38,13 +38,12 @@ msgstr ""
 "nennen. Ergänzend dazu gibt es auch einen eingebauten Spektrumanalysator."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
 "EasyEffects ist der Nachfolger von PulseEffects. EasyEffects unterstützt nur "
-"den Audioserver von PipeWire. PulseAudio-Nutzer sollte stattdessen "
+"den Audioserver von PipeWire. PulseAudio-Nutzer sollten stattdessen "
 "PulseEffects verwenden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
