@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-16 14:17+0000\n"
-"PO-Revision-Date: 2024-09-11 00:09+0000\n"
-"Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
+"PO-Revision-Date: 2024-12-06 12:40+0000\n"
+"Last-Translator: \".ahhhh...secret\" <kil123414@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
 "Language: ar\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -293,7 +293,7 @@ msgstr "حذف التحميل التلقائي لهذا الإعداد المس�
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:627 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/expander.ui:548 data/ui/gate.ui:761
 msgid "Listen"
-msgstr ""
+msgstr "استمع"
 
 #: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
@@ -301,15 +301,15 @@ msgstr ""
 
 #: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
-msgstr ""
+msgstr "الثالث"
 
 #: data/ui/bass_enhancer.ui:89 data/ui/exciter.ui:89
 msgid "2nd"
-msgstr ""
+msgstr "الثاني"
 
 #: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
 msgid "Amount"
-msgstr ""
+msgstr "كمية"
 
 #: data/ui/bass_enhancer.ui:141 data/ui/bass_enhancer.ui:420
 #: data/ui/exciter.ui:141 data/ui/exciter.ui:420
@@ -318,11 +318,11 @@ msgstr ""
 
 #: data/ui/bass_enhancer.ui:175 data/ui/exciter.ui:175
 msgid "Scope"
-msgstr ""
+msgstr "التركيز"
 
 #: data/ui/bass_enhancer.ui:208
 msgid "Floor"
-msgstr ""
+msgstr "الأرضية"
 
 #: data/ui/bass_enhancer.ui:236
 msgid "Floor Value"
@@ -330,7 +330,7 @@ msgstr ""
 
 #: data/ui/bass_loudness.ui:69
 msgid "Link"
-msgstr ""
+msgstr "ربط"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
@@ -353,7 +353,7 @@ msgstr "أظهر التطبيقات المستثناة"
 #: data/ui/limiter.ui:25 data/ui/loudness.ui:25
 #: data/ui/multiband_compressor.ui:105 data/ui/multiband_gate.ui:105
 msgid "Show Native Window"
-msgstr ""
+msgstr "اظهر النافذة المدعومة"
 
 #: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:41
 msgid "Compressor"
@@ -366,7 +366,7 @@ msgstr "الضاغط الصوتي"
 #: data/ui/limiter.ui:56 data/ui/multiband_compressor_band.ui:536
 #: data/ui/multiband_gate_band.ui:594
 msgid "Mode"
-msgstr ""
+msgstr "الوضع"
 
 #: data/ui/compressor.ui:76 data/ui/expander.ui:76
 #: data/ui/multiband_compressor_band.ui:100
@@ -384,7 +384,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:87 data/ui/multiband_compressor_band.ui:87
 msgid "Compression Mode"
-msgstr ""
+msgstr "وضع الضغط"
 
 #: data/ui/compressor.ui:94 data/ui/multiband_compressor_band.ui:807
 msgid "Boost Threshold"
@@ -398,12 +398,12 @@ msgstr ""
 #: data/ui/limiter.ui:282 data/ui/limiter.ui:501
 #: data/ui/multiband_compressor_band.ui:189 data/ui/multiband_gate_band.ui:143
 msgid "Attack"
-msgstr ""
+msgstr "هجوم"
 
 #: data/ui/compressor.ui:190 data/ui/expander.ui:111
 #: data/ui/multiband_compressor_band.ui:169
 msgid "Time"
-msgstr ""
+msgstr "الوقت"
 
 #: data/ui/compressor.ui:200 data/ui/deesser.ui:301 data/ui/expander.ui:121
 #: data/ui/gate.ui:161 data/ui/gate.ui:253 data/ui/limiter.ui:364
@@ -428,7 +428,7 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:198 data/ui/multiband_gate_band.ui:149
 #: data/ui/rnnoise.ui:116
 msgid "Release"
-msgstr ""
+msgstr "الإصدار"
 
 #: data/ui/compressor.ui:278 data/ui/expander.ui:199
 #: data/ui/multiband_compressor_band.ui:274
@@ -443,7 +443,7 @@ msgstr ""
 #: data/ui/compressor.ui:308 data/ui/deesser.ui:334 data/ui/expander.ui:229
 #: data/ui/multiband_compressor_band.ui:308
 msgid "Ratio"
-msgstr ""
+msgstr "نسبة"
 
 #: data/ui/compressor.ui:344 data/ui/expander.ui:265 data/ui/limiter.ui:572
 #: data/ui/multiband_compressor_band.ui:345
@@ -488,31 +488,31 @@ msgstr ""
 #: data/ui/compressor.ui:532 data/ui/expander.ui:453 data/ui/gate.ui:666
 #: data/ui/multiband_compressor_band.ui:455 data/ui/multiband_gate_band.ui:513
 msgid "Source"
-msgstr ""
+msgstr "مصدر"
 
 #: data/ui/compressor.ui:544 data/ui/expander.ui:465 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:536
 msgid "Middle"
-msgstr ""
+msgstr "المنتصف"
 
 #: data/ui/compressor.ui:545 data/ui/expander.ui:466 data/ui/gate.ui:679
 #: data/ui/multiband_compressor_band.ui:479 data/ui/multiband_gate_band.ui:537
 msgid "Side"
-msgstr ""
+msgstr "جانب"
 
 #: data/ui/compressor.ui:546 data/ui/delay.ui:38 data/ui/equalizer.ui:215
 #: data/ui/expander.ui:467 data/ui/gate.ui:680 data/ui/level_meter.ui:32
 #: data/ui/multiband_compressor_band.ui:480 data/ui/multiband_gate_band.ui:538
 #: data/ui/pipe_manager_box.ui:581 data/ui/stereo_tools.ui:163
 msgid "Left"
-msgstr ""
+msgstr "يسار"
 
 #: data/ui/compressor.ui:547 data/ui/delay.ui:125 data/ui/equalizer.ui:242
 #: data/ui/expander.ui:468 data/ui/gate.ui:681 data/ui/level_meter.ui:42
 #: data/ui/multiband_compressor_band.ui:481 data/ui/multiband_gate_band.ui:539
 #: data/ui/pipe_manager_box.ui:592 data/ui/stereo_tools.ui:218
 msgid "Right"
-msgstr ""
+msgstr "يمين"
 
 #: data/ui/compressor.ui:548 data/ui/compressor.ui:571 data/ui/expander.ui:469
 #: data/ui/expander.ui:492 data/ui/gate.ui:682 data/ui/gate.ui:705
@@ -520,7 +520,7 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:540
 #: data/ui/multiband_gate_band.ui:575
 msgid "Min"
-msgstr ""
+msgstr "الأدنى"
 
 #: data/ui/compressor.ui:549 data/ui/compressor.ui:572 data/ui/expander.ui:470
 #: data/ui/expander.ui:493 data/ui/gate.ui:683 data/ui/gate.ui:706
@@ -528,7 +528,7 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:518 data/ui/multiband_gate_band.ui:541
 #: data/ui/multiband_gate_band.ui:576
 msgid "Max"
-msgstr ""
+msgstr "الأقصى"
 
 #: data/ui/compressor.ui:558 data/ui/expander.ui:479 data/ui/gate.ui:692
 #: data/ui/multiband_compressor.ui:77 data/ui/multiband_compressor_band.ui:492
@@ -539,22 +539,22 @@ msgstr ""
 #: data/ui/compressor.ui:567 data/ui/expander.ui:488 data/ui/gate.ui:701
 #: data/ui/multiband_compressor_band.ui:513 data/ui/multiband_gate_band.ui:571
 msgid "Left/Right"
-msgstr ""
+msgstr "يمين/يسار"
 
 #: data/ui/compressor.ui:568 data/ui/expander.ui:489 data/ui/gate.ui:702
 #: data/ui/multiband_compressor_band.ui:514 data/ui/multiband_gate_band.ui:572
 msgid "Right/Left"
-msgstr ""
+msgstr "يسار/يمين"
 
 #: data/ui/compressor.ui:569 data/ui/expander.ui:490 data/ui/gate.ui:703
 #: data/ui/multiband_compressor_band.ui:515 data/ui/multiband_gate_band.ui:573
 msgid "Mid/Side"
-msgstr ""
+msgstr "الجانب/المنتصف"
 
 #: data/ui/compressor.ui:570 data/ui/expander.ui:491 data/ui/gate.ui:704
 #: data/ui/multiband_compressor_band.ui:516 data/ui/multiband_gate_band.ui:574
 msgid "Side/Mid"
-msgstr ""
+msgstr "المنتصف/الجانب"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:502 data/ui/gate.ui:715
 #: data/ui/multiband_compressor_band.ui:527 data/ui/multiband_gate_band.ui:585
@@ -571,7 +571,7 @@ msgstr ""
 #: data/ui/gate.ui:742 data/ui/multiband_compressor_band.ui:552
 #: data/ui/multiband_gate_band.ui:610
 msgid "RMS"
-msgstr ""
+msgstr "آر ام اس"
 
 #: data/ui/compressor.ui:609 data/ui/expander.ui:530 data/ui/gate.ui:743
 #: data/ui/multiband_compressor_band.ui:553 data/ui/multiband_gate_band.ui:611
@@ -595,7 +595,7 @@ msgstr ""
 #: data/ui/compressor.ui:662 data/ui/equalizer_band.ui:108
 #: data/ui/expander.ui:583 data/ui/filter.ui:42 data/ui/gate.ui:796
 msgid "Type"
-msgstr ""
+msgstr "نوع"
 
 #: data/ui/compressor.ui:688
 msgid "Feed-forward"
@@ -651,7 +651,7 @@ msgstr ""
 #: data/ui/compressor.ui:899 data/ui/compressor.ui:958 data/ui/expander.ui:819
 #: data/ui/expander.ui:878 data/ui/gate.ui:1032 data/ui/gate.ui:1091
 msgid "Off"
-msgstr ""
+msgstr "مطفي"
 
 #: data/ui/compressor.ui:900 data/ui/compressor.ui:959 data/ui/expander.ui:820
 #: data/ui/expander.ui:879 data/ui/gate.ui:1033 data/ui/gate.ui:1092
@@ -702,7 +702,7 @@ msgstr ""
 
 #: data/ui/convolver.ui:40
 msgid "L"
-msgstr ""
+msgstr "س"
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:584
 msgid "Left Channel"
@@ -710,7 +710,7 @@ msgstr "القناة اليسرى"
 
 #: data/ui/convolver.ui:53
 msgid "R"
-msgstr ""
+msgstr "م"
 
 #: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:595
 msgid "Right Channel"
@@ -759,11 +759,11 @@ msgstr ""
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
-msgstr ""
+msgstr "النواة الأول"
 
 #: data/ui/convolver_menu_combine.ui:82
 msgid "Second Kernel"
-msgstr ""
+msgstr "النواة الثانية"
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
@@ -771,7 +771,7 @@ msgstr "اسم مِلف الخرج"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
-msgstr ""
+msgstr "نواة باسماء مندمجة"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
@@ -804,13 +804,13 @@ msgstr ""
 
 #: data/ui/crystalizer_band.ui:11
 msgid "Bypass"
-msgstr ""
+msgstr "تخطي"
 
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:186
 #: data/ui/multiband_compressor_band.ui:139 data/ui/multiband_gate_band.ui:108
 #: data/ui/stereo_tools.ui:173 data/ui/stereo_tools.ui:198
 msgid "Mute"
-msgstr ""
+msgstr "كتم"
 
 #: data/ui/deepfilternet.ui:31
 msgid "Attenuation Limit"
@@ -838,7 +838,7 @@ msgstr ""
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
-msgstr ""
+msgstr "كشف"
 
 #: data/ui/deesser.ui:77
 msgid "Wide"
@@ -846,7 +846,7 @@ msgstr ""
 
 #: data/ui/deesser.ui:78
 msgid "Split"
-msgstr ""
+msgstr "تقسيم"
 
 #: data/ui/deesser.ui:96
 msgid "F1 Split"
@@ -894,7 +894,7 @@ msgstr ""
 
 #: data/ui/deesser.ui:577
 msgid "Detected"
-msgstr ""
+msgstr "كشفت"
 
 #: data/ui/deesser.ui:607 data/ui/gate.ui:425 data/ui/gate.ui:1154
 #: data/ui/maximizer.ui:249 data/ui/multiband_gate_band.ui:406
@@ -903,7 +903,7 @@ msgstr ""
 
 #: data/ui/delay.ui:41 data/ui/delay.ui:128 src/tags_plugin_name.cpp:47
 msgid "Delay"
-msgstr ""
+msgstr "تأخير"
 
 #: data/ui/delay.ui:107 data/ui/delay.ui:194 data/ui/stereo_tools.ui:182
 #: data/ui/stereo_tools.ui:207
@@ -937,19 +937,19 @@ msgstr ""
 #: data/ui/equalizer.ui:93 data/ui/filter.ui:270 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:391
 msgid "Balance"
-msgstr ""
+msgstr "توازن"
 
 #: data/ui/equalizer.ui:125
 msgid "Pitch Left"
-msgstr ""
+msgstr "طبعة صوتية يسار"
 
 #: data/ui/equalizer.ui:157
 msgid "Pitch Right"
-msgstr ""
+msgstr "طبعة صوتية يمين"
 
 #: data/ui/equalizer.ui:288
 msgid "Split Channels"
-msgstr ""
+msgstr "تقسيم القنوات"
 
 #: data/ui/equalizer.ui:294
 msgid "Flat Response"
@@ -982,7 +982,7 @@ msgstr ""
 
 #: data/ui/equalizer_band.ui:270 data/ui/filter.ui:244 data/ui/pitch.ui:28
 msgid "Quality"
-msgstr ""
+msgstr "الجودة"
 
 #: data/ui/equalizer_band.ui:300 data/ui/filter.ui:192
 msgid "Width"
@@ -1010,11 +1010,11 @@ msgstr ""
 
 #: data/ui/factory_clients_listview.ui:72
 msgid "API"
-msgstr ""
+msgstr "واجهة برمجية"
 
 #: data/ui/factory_clients_listview.ui:100
 msgid "Access"
-msgstr ""
+msgstr "الوصول"
 
 #: data/ui/factory_modules_listview.ui:72
 msgid "Description"
@@ -2104,7 +2104,7 @@ msgstr ""
 
 #: data/ui/speex.ui:95
 msgid "Start"
-msgstr ""
+msgstr "ابدأ"
 
 #: data/ui/speex.ui:117
 msgid "Continue"
@@ -2164,7 +2164,7 @@ msgstr ""
 
 #: data/ui/stereo_tools.ui:149
 msgid "Stereo Mode"
-msgstr ""
+msgstr "وضع ستيريو"
 
 #: data/ui/stereo_tools.ui:234
 msgid "Side Level"
@@ -2220,7 +2220,7 @@ msgstr ""
 
 #: src/app_info.cpp:108
 msgid "Error"
-msgstr ""
+msgstr "خطأ"
 
 #: src/app_info.cpp:110
 msgid "Unknown"
@@ -2252,7 +2252,7 @@ msgstr "إعادة ضبط Easy Effects."
 
 #: src/application.cpp:584
 msgid "Hide the Window."
-msgstr ""
+msgstr "اخفي النافذة"
 
 #: src/application.cpp:587
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
@@ -2276,7 +2276,7 @@ msgstr "ال_دخل"
 
 #: src/application_ui.cpp:346
 msgid "_PipeWire"
-msgstr ""
+msgstr "_بايب واير"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "The File Is Not Regular"
@@ -2359,7 +2359,7 @@ msgstr ""
 
 #: src/equalizer_ui.cpp:625
 msgid "Save"
-msgstr ""
+msgstr "حفظ"
 
 #: src/equalizer_ui.cpp:632
 msgid "EqualizerAPO Presets"
@@ -2440,11 +2440,11 @@ msgstr ""
 
 #: src/presets_menu.cpp:398
 msgid "Save?"
-msgstr ""
+msgstr "حفظ؟"
 
 #: src/presets_menu.cpp:417
 msgid "Delete?"
-msgstr ""
+msgstr "حذف؟"
 
 #: src/presets_menu.cpp:558
 msgid "No Preset Loaded"
@@ -2538,7 +2538,7 @@ msgstr ""
 
 #: src/tags_plugin_name.cpp:62
 msgid "Noise Reduction"
-msgstr ""
+msgstr "تخفيض الإزعاج"
 
 #: src/tags_plugin_name.cpp:63
 msgid "Speech Processor"
