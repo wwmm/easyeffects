@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-17 22:27+0000\n"
-"PO-Revision-Date: 2024-12-06 07:00+0000\n"
-"Last-Translator: \".ahhhh...secret\" <kil123414@gmail.com>\n"
+"PO-Revision-Date: 2024-12-06 12:39+0000\n"
+"Last-Translator: forge <potato120.2007@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ar/>\n"
 "Language: ar\n"
@@ -76,7 +76,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "الصفحة الرئيسية تظهر تطبيقان من مخرجات الصوت"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid "The bass enhancer page showing audio controls"
@@ -123,7 +123,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:528
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:541
 msgid "Features:"
-msgstr ""
+msgstr "السمات:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid ""
@@ -168,7 +168,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:520
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:533
 msgid "Bug fixes:"
-msgstr ""
+msgstr "إصلاح الأخطاء:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
