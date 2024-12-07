@@ -47,9 +47,13 @@ Kirigami.OverlaySheet {
                     text: i18n("Add to Excluded Applications")
                     icon.name: "list-add-symbolic"
                     onTriggered: {
-                        if (!Common.isEmpty(newBlockedApp.text))
-                            streamDB.blocklist.append(newBlockedApp.text);
-
+                        const name = newBlockedApp.text;
+                        if (!Common.isEmpty(name)) {
+                            if (!streamDB.blocklist.includes(name)) {
+                                streamDB.blocklist.push(name);
+                                newBlockedApp.text = "";
+                            }
+                        }
                     }
                 }
             ]
@@ -93,7 +97,12 @@ Kirigami.OverlaySheet {
             delegate: Controls.ItemDelegate {
                 id: listItemDelegate
 
-                required property string name
+                readonly property string name: {
+                    if (streamDB.blocklist.length > 0)
+                        return streamDB.blocklist[index];
+
+                    return "";
+                }
                 property bool selected: listItemDelegate.highlighted || listItemDelegate.down
                 property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
 
@@ -113,6 +122,10 @@ Kirigami.OverlaySheet {
                                 icon.name: "delete"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
+                                    const targetIndex = streamDB.blocklist.indexOf(name);
+                                    if (targetIndex > -1)
+                                        streamDB.blocklist.splice(targetIndex, 1);
+
                                 }
                             }
                         ]
