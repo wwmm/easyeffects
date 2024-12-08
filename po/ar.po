@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-16 14:17+0000\n"
-"PO-Revision-Date: 2024-12-06 12:40+0000\n"
+"PO-Revision-Date: 2024-12-08 00:00+0000\n"
 "Last-Translator: \".ahhhh...secret\" <kil123414@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
@@ -297,7 +297,7 @@ msgstr "استمع"
 
 #: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
-msgstr ""
+msgstr "مزج التوافقيات"
 
 #: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
@@ -314,7 +314,7 @@ msgstr "كمية"
 #: data/ui/bass_enhancer.ui:141 data/ui/bass_enhancer.ui:420
 #: data/ui/exciter.ui:141 data/ui/exciter.ui:420
 msgid "Harmonics"
-msgstr ""
+msgstr "توافقية الموجة"
 
 #: data/ui/bass_enhancer.ui:175 data/ui/exciter.ui:175
 msgid "Scope"
