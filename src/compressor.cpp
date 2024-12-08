@@ -31,6 +31,7 @@
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 #include "pw_objects.hpp"
+#include "spa/utils/defs.h"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -184,15 +185,9 @@ void Compressor::update_sidechain_links() {
 
   const auto device_name = settings->sidechainInputDevice();
 
-  auto input_device = pm->ee_source_node;
+  auto input_device = pm->model_nodes.get_node_by_name(device_name);
 
-  for (const auto& [serial, node] : pm->node_map) {
-    if (node.name == device_name) {
-      input_device = node;
-
-      break;
-    }
-  }
+  input_device = input_device.serial == SPA_ID_INVALID ? pm->ee_source_node : input_device;
 
   pm->destroy_links(list_proxies);
 

@@ -107,6 +107,8 @@ class Nodes : public QAbstractListModel {
 
   auto get_proxy_by_serial(const uint& serial) -> pw_proxy*;
 
+  auto get_node_by_name(const QString& name) -> NodeInfo;
+
   Q_INVOKABLE QString getNodeName(const uint& rowIndex);
   Q_INVOKABLE QString getNodeDescription(const QString& nodeName);
   Q_INVOKABLE QModelIndex getModelIndexByName(const QString& nodeName);

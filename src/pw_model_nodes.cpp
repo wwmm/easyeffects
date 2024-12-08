@@ -36,6 +36,7 @@
 #include <format>
 #include <iterator>
 #include "config.h"
+#include "db_manager.hpp"
 #include "pipewire/node.h"
 #include "pipewire/proxy.h"
 #include "pw_objects.hpp"
@@ -129,6 +130,35 @@ Nodes::Nodes(QObject* parent)
     qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.pipewire", VERSION_MAJOR, VERSION_MINOR, "ModelSinkDevices",
                                                         &proxy_sink_devices);
   }
+
+  // connect(
+  //     db::Manager::self().streamOutputs, &db::StreamOutputs::blocklistChanged, this,
+  //     [this]() {
+  //       const auto blocklist = db::StreamOutputs::blocklist();
+  //       for (qsizetype n = 0; n < list.size(); n++) {
+  //         if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id)) {
+  //           update_field(n, Roles::IsBlocklisted, true);
+  //           util::warning(list[n].name.toStdString());
+  //         } else {
+  //           update_field(n, Roles::IsBlocklisted, false);
+  //         }
+  //       }
+  //     },
+  //     Qt::QueuedConnection);
+
+  // connect(
+  //     db::Manager::self().streamInputs, &db::StreamInputs::blocklistChanged, this,
+  //     [this]() {
+  //       const auto blocklist = db::StreamInputs::blocklist();
+  //       for (qsizetype n = 0; n < list.size(); n++) {
+  //         if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id)) {
+  //           update_field(n, Roles::IsBlocklisted, true);
+  //         } else {
+  //           update_field(n, Roles::IsBlocklisted, false);
+  //         }
+  //       }
+  //     },
+  //     Qt::QueuedConnection);
 }
 
 int Nodes::rowCount(const QModelIndex& /*parent*/) const {
@@ -439,6 +469,16 @@ QModelIndex Nodes::getModelIndexByName(const QString& nodeName) {
   }
 
   return this->index(-1);
+}
+
+auto Nodes::get_node_by_name(const QString& name) -> NodeInfo {
+  for (const auto& node : list) {
+    if (node.name == name) {
+      return node;
+    }
+  }
+
+  return {};
 }
 
 }  // namespace pw::models
