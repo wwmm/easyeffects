@@ -22,6 +22,7 @@
 #include <qhash.h>
 #include <qhashfunctions.h>
 #include <qlist.h>
+#include <qnamespace.h>
 #include <qobject.h>
 #include <qsortfilterproxymodel.h>
 #include <qstringview.h>
@@ -55,6 +56,7 @@ ListModel::ListModel(QObject* parent, const ModelType& model_type)
   }
 
   proxy->setDynamicSortFilter(true);
+  proxy->setSortCaseSensitivity(Qt::CaseInsensitive);
   proxy->sort(0);
 }
 

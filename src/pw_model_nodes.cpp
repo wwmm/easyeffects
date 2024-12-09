@@ -36,7 +36,6 @@
 #include <format>
 #include <iterator>
 #include "config.h"
-#include "db_manager.hpp"
 #include "pipewire/node.h"
 #include "pipewire/proxy.h"
 #include "pw_objects.hpp"
