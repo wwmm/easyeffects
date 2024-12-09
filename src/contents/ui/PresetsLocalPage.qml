@@ -69,13 +69,16 @@ ColumnLayout {
                 text: i18n("Create Preset")
                 icon.name: "list-add-symbolic"
                 onTriggered: {
-                    if (!Common.isEmpty(newPresetName.text)) {
-                        if (Presets.Manager.add(pipeline, newPresetName.text) === true) {
+                    // remove the final preset extension if specified
+                    const newName = newPresetName.text.replace(/\.json$/, "");
+                    // trim to exclude names containing only multiple spaces
+                    if (!Common.isEmpty(newName.trim())) {
+                        if (Presets.Manager.add(pipeline, newName) === true) {
                             newPresetName.accepted();
-                            showPresetsMenuStatus(i18n("New Preset Created: " + newPresetName.text));
+                            showPresetsMenuStatus(i18n("New Preset Created: " + newName));
                             newPresetName.text = "";
                         } else {
-                            showPresetsMenuStatus(i18n("Failed to Create Preset: " + newPresetName.text));
+                            showPresetsMenuStatus(i18n("Failed to Create Preset: " + newName));
                         }
                     }
                 }
@@ -97,7 +100,7 @@ ColumnLayout {
         }
 
         validator: RegularExpressionValidator {
-            regularExpression: /[^\\/]{100}$/ //less than 100 characters and no / or \
+            regularExpression: /^[^\\/]{1,100}$/ //strings without `/` or `\` (max 100 chars)
         }
 
     }
