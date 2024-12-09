@@ -134,7 +134,7 @@ Kirigami.ApplicationWindow {
             visible: false
 
             MenuItem {
-                // text: i18n("Preset: " + DB.Manager.main.lastUsedPreset)
+                // text: i18n("Preset") + ": " + DB.Manager.main.lastUsedPreset
                 enabled: false
             }
 

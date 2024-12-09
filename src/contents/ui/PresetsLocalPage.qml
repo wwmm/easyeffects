@@ -69,13 +69,16 @@ ColumnLayout {
                 text: i18n("Create Preset")
                 icon.name: "list-add-symbolic"
                 onTriggered: {
-                    if (!Common.isEmpty(newPresetName.text)) {
-                        if (Presets.Manager.add(pipeline, newPresetName.text) === true) {
+                    // remove the final preset extension if specified
+                    const newName = newPresetName.text.replace(/\.json$/, "");
+                    // trim to exclude names containing only multiple spaces
+                    if (!Common.isEmpty(newName.trim())) {
+                        if (Presets.Manager.add(pipeline, newName) === true) {
                             newPresetName.accepted();
-                            showPresetsMenuStatus(i18n("New Preset Created: " + newPresetName.text));
+                            showPresetsMenuStatus(i18n("New Preset Created") + ": " + newName);
                             newPresetName.text = "";
                         } else {
-                            showPresetsMenuStatus(i18n("Failed to Create Preset: " + newPresetName.text));
+                            showPresetsMenuStatus(i18n("Failed to Create Preset") + ": " + newName);
                         }
                     }
                 }
@@ -97,7 +100,7 @@ ColumnLayout {
         }
 
         validator: RegularExpressionValidator {
-            regularExpression: /[^\\/]{100}$/ //less than 100 characters and no / or \
+            regularExpression: /^[^\\/]{1,100}$/ //strings without `/` or `\` (max 100 chars)
         }
 
     }
@@ -144,7 +147,7 @@ ColumnLayout {
             width: listView.width
             onClicked: {
                 if (Presets.Manager.loadLocalPresetFile(pipeline, name) === false)
-                    showPresetsMenuStatus(i18n("The Preset " + name + "failed to load"));
+                    showPresetsMenuStatus(i18n("The Preset %1 failed to load", name));
 
             }
 
@@ -162,9 +165,9 @@ ColumnLayout {
                             displayHint: Kirigami.DisplayHint.AlwaysHide
                             onTriggered: {
                                 if (Presets.Manager.savePresetFile(pipeline, name) === true)
-                                    showPresetsMenuStatus(i18n("Settings Saved to: " + name));
+                                    showPresetsMenuStatus(i18n("Settings Saved to: %1", name));
                                 else
-                                    showPresetsMenuStatus(i18n("Failed to Save Settings to: " + name));
+                                    showPresetsMenuStatus(i18n("Failed to Save Settings to: %1", name));
                             }
                         },
                         Kirigami.Action {
@@ -173,9 +176,9 @@ ColumnLayout {
                             displayHint: Kirigami.DisplayHint.AlwaysHide
                             onTriggered: {
                                 if (Presets.Manager.remove(pipeline, name) === true)
-                                    showPresetsMenuStatus(i18n("The Preset " + name + " Has Been Removed"));
+                                    showPresetsMenuStatus(i18n("The Preset %1 Has Been Removed", name));
                                 else
-                                    showPresetsMenuStatus(i18n("The Preset " + name + " Coult Not Be Removed"));
+                                    showPresetsMenuStatus(i18n("The Preset %1 Could Not Be Removed", name));
                             }
                         }
                     ]

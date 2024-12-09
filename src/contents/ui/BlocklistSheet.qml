@@ -48,7 +48,8 @@ Kirigami.OverlaySheet {
                     icon.name: "list-add-symbolic"
                     onTriggered: {
                         const name = newBlockedApp.text;
-                        if (!Common.isEmpty(name)) {
+                        // trim to exclude names containing only multiple spaces
+                        if (!Common.isEmpty(name.trim())) {
                             if (!streamDB.blocklist.includes(name)) {
                                 streamDB.blocklist.push(name);
                                 newBlockedApp.text = "";
@@ -73,7 +74,7 @@ Kirigami.OverlaySheet {
             }
 
             validator: RegularExpressionValidator {
-                regularExpression: /[^\\/]{100}$/ //less than 100 characters and no / or \
+                regularExpression: /^[^\\/]{1,100}$/ //strings without `/` or `\` (max 100 chars)
             }
 
         }
@@ -118,7 +119,7 @@ Kirigami.OverlaySheet {
                         alignment: Qt.AlignRight
                         actions: [
                             Kirigami.Action {
-                                text: i18n("Delete this Preset")
+                                text: i18n("Delete this App")
                                 icon.name: "delete"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {

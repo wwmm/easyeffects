@@ -156,7 +156,7 @@ Kirigami.ScrollablePage {
                         id: momentary
 
                         label: i18n("Momentary")
-                        unit: i18n("LUFS")
+                        unit: "LUFS"
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
@@ -173,7 +173,7 @@ Kirigami.ScrollablePage {
                         id: shortterm
 
                         label: i18n("Short-Term")
-                        unit: i18n("LUFS")
+                        unit: "LUFS"
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
@@ -190,7 +190,7 @@ Kirigami.ScrollablePage {
                         id: integrated
 
                         label: i18n("Integrated")
-                        unit: i18n("LUFS")
+                        unit: "LUFS"
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
@@ -207,7 +207,7 @@ Kirigami.ScrollablePage {
                         id: relative
 
                         label: i18n("Relative")
-                        unit: i18n("LUFS")
+                        unit: "LUFS"
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
@@ -224,7 +224,7 @@ Kirigami.ScrollablePage {
                         id: range
 
                         label: i18n("Range")
-                        unit: i18n("LU")
+                        unit: "LU"
                         from: 0
                         to: 50
                         value: 0
@@ -241,7 +241,7 @@ Kirigami.ScrollablePage {
                         id: loudness
 
                         label: i18n("Loudness")
-                        unit: i18n("LUFS")
+                        unit: "LUFS"
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
@@ -258,7 +258,7 @@ Kirigami.ScrollablePage {
                         id: outputGain
 
                         label: i18n("Output Gain")
-                        unit: i18n("dB")
+                        unit: "dB"
                         from: Common.minimumDecibelLevel
                         to: 20
                         value: 0

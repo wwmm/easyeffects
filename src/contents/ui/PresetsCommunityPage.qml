@@ -85,7 +85,7 @@ ColumnLayout {
             width: listView.width
             onClicked: {
                 if (Presets.Manager.loadCommunityPresetFile(pipeline, path, presetPackage) === false)
-                    showPresetsMenuStatus(i18n("The Preset " + name + "failed to load"));
+                    showPresetsMenuStatus(i18n("The Preset %1 failed to load", name));
 
             }
 
@@ -109,9 +109,9 @@ ColumnLayout {
                             displayHint: Kirigami.DisplayHint.AlwaysHide
                             onTriggered: {
                                 if (Presets.Manager.importFromCommunityPackage(pipeline, path, presetPackage) === true)
-                                    showPresetsMenuStatus(i18n("Imported the Community Preset: " + name));
+                                    showPresetsMenuStatus(i18n("Imported the Community Preset") + ": " + name);
                                 else
-                                    showPresetsMenuStatus(i18n("Failed to Import the Community Preset: " + name));
+                                    showPresetsMenuStatus(i18n("Failed to Import the Community Preset") + ": " + name);
                             }
                         }
                     ]
