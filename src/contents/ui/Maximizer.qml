@@ -79,7 +79,7 @@ Kirigami.ScrollablePage {
                         id: reductionLevel
 
                         label: i18n("Reduction")
-                        unit: i18n("dB")
+                        unit: "dB"
                         from: 0
                         to: 40
                         value: 0
