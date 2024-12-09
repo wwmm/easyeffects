@@ -108,14 +108,27 @@ Kirigami.OverlaySheet {
                 property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
 
                 hoverEnabled: true
+                down: false
                 width: listView.width
 
                 contentItem: RowLayout {
+                    Layout.maximumWidth: listView.width
+
                     Controls.Label {
+                        Layout.alignment: Qt.AlignLeft
+                        Layout.fillWidth: true
+                        Layout.horizontalStretchFactor: 1
                         text: name
+                        elide: Text.ElideRight
+                        wrapMode: Text.WrapAnywhere
+                        maximumLineCount: 2
                     }
 
                     Kirigami.ActionToolBar {
+                        id: delegateActionToolBar
+
+                        Layout.fillWidth: true
+                        Layout.horizontalStretchFactor: 2
                         alignment: Qt.AlignRight
                         actions: [
                             Kirigami.Action {
