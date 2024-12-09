@@ -117,75 +117,85 @@ ColumnLayout {
         }
     }
 
-    ListView {
-        id: listView
+    RowLayout {
+        id: listviewRow
 
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-        clip: true
-        reuseItems: true
-        model: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+        ListView {
+            id: listView
 
-        Kirigami.PlaceholderMessage {
-            anchors.centerIn: parent
-            width: parent.width - (Kirigami.Units.largeSpacing * 4)
-            visible: listView.count === 0
-            text: i18n("Empty")
-        }
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            clip: true
+            reuseItems: true
+            model: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+            Controls.ScrollBar.vertical: listViewScrollBar
 
-        Controls.ScrollBar.vertical: Controls.ScrollBar {
-        }
+            Kirigami.PlaceholderMessage {
+                anchors.centerIn: parent
+                width: parent.width - (Kirigami.Units.largeSpacing * 4)
+                visible: listView.count === 0
+                text: i18n("Empty")
+            }
 
-        delegate: Controls.ItemDelegate {
-            id: listItemDelegate
+            delegate: Controls.ItemDelegate {
+                id: listItemDelegate
 
-            required property string name
-            property bool selected: listItemDelegate.highlighted || listItemDelegate.down
-            property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
+                required property string name
+                property bool selected: listItemDelegate.highlighted || listItemDelegate.down
+                property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
 
-            hoverEnabled: true
-            width: listView.width
-            onClicked: {
-                if (Presets.Manager.loadLocalPresetFile(pipeline, name) === false)
-                    showPresetsMenuStatus(i18n("The Preset %1 failed to load", name));
+                hoverEnabled: true
+                width: listView.width
+                onClicked: {
+                    if (Presets.Manager.loadLocalPresetFile(pipeline, name) === false)
+                        showPresetsMenuStatus(i18n("The Preset %1 failed to load", name));
+
+                }
+
+                contentItem: RowLayout {
+                    Controls.Label {
+                        text: name
+                    }
+
+                    Kirigami.ActionToolBar {
+                        alignment: Qt.AlignRight
+                        actions: [
+                            Kirigami.Action {
+                                text: i18n("Save Settings to this Preset")
+                                icon.name: "document-save-symbolic"
+                                displayHint: Kirigami.DisplayHint.AlwaysHide
+                                onTriggered: {
+                                    if (Presets.Manager.savePresetFile(pipeline, name) === true)
+                                        showPresetsMenuStatus(i18n("Settings Saved to: %1", name));
+                                    else
+                                        showPresetsMenuStatus(i18n("Failed to Save Settings to: %1", name));
+                                }
+                            },
+                            Kirigami.Action {
+                                text: i18n("Delete this Preset")
+                                icon.name: "delete"
+                                displayHint: Kirigami.DisplayHint.AlwaysHide
+                                onTriggered: {
+                                    if (Presets.Manager.remove(pipeline, name) === true)
+                                        showPresetsMenuStatus(i18n("The Preset %1 Has Been Removed", name));
+                                    else
+                                        showPresetsMenuStatus(i18n("The Preset %1 Could Not Be Removed", name));
+                                }
+                            }
+                        ]
+                    }
+
+                }
 
             }
 
-            contentItem: RowLayout {
-                Controls.Label {
-                    text: name
-                }
+        }
 
-                Kirigami.ActionToolBar {
-                    alignment: Qt.AlignRight
-                    actions: [
-                        Kirigami.Action {
-                            text: i18n("Save Settings to this Preset")
-                            icon.name: "document-save-symbolic"
-                            displayHint: Kirigami.DisplayHint.AlwaysHide
-                            onTriggered: {
-                                if (Presets.Manager.savePresetFile(pipeline, name) === true)
-                                    showPresetsMenuStatus(i18n("Settings Saved to: %1", name));
-                                else
-                                    showPresetsMenuStatus(i18n("Failed to Save Settings to: %1", name));
-                            }
-                        },
-                        Kirigami.Action {
-                            text: i18n("Delete this Preset")
-                            icon.name: "delete"
-                            displayHint: Kirigami.DisplayHint.AlwaysHide
-                            onTriggered: {
-                                if (Presets.Manager.remove(pipeline, name) === true)
-                                    showPresetsMenuStatus(i18n("The Preset %1 Has Been Removed", name));
-                                else
-                                    showPresetsMenuStatus(i18n("The Preset %1 Could Not Be Removed", name));
-                            }
-                        }
-                    ]
-                }
+        Controls.ScrollBar {
+            id: listViewScrollBar
 
-            }
-
+            parent: listviewRow
+            Layout.fillHeight: true
         }
 
     }

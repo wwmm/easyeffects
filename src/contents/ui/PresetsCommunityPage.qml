@@ -53,72 +53,82 @@ ColumnLayout {
         }
     }
 
-    ListView {
-        id: listView
+    RowLayout {
+        id: listviewRow
 
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-        clip: true
-        reuseItems: true
-        model: DB.Manager.main.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
+        ListView {
+            id: listView
 
-        Kirigami.PlaceholderMessage {
-            anchors.centerIn: parent
-            width: parent.width - (Kirigami.Units.largeSpacing * 4)
-            visible: listView.count === 0
-            text: i18n("Empty")
-        }
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            clip: true
+            reuseItems: true
+            model: DB.Manager.main.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
+            Controls.ScrollBar.vertical: listViewScrollBar
 
-        Controls.ScrollBar.vertical: Controls.ScrollBar {
-        }
-
-        delegate: Controls.ItemDelegate {
-            id: listItemDelegate
-
-            required property string name
-            required property string path
-            required property string presetPackage
-            property bool selected: listItemDelegate.highlighted || listItemDelegate.down
-            property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
-
-            hoverEnabled: true
-            width: listView.width
-            onClicked: {
-                if (Presets.Manager.loadCommunityPresetFile(pipeline, path, presetPackage) === false)
-                    showPresetsMenuStatus(i18n("The Preset %1 failed to load", name));
-
+            Kirigami.PlaceholderMessage {
+                anchors.centerIn: parent
+                width: parent.width - (Kirigami.Units.largeSpacing * 4)
+                visible: listView.count === 0
+                text: i18n("Empty")
             }
 
-            contentItem: RowLayout {
-                Controls.Label {
-                    text: name
+            delegate: Controls.ItemDelegate {
+                id: listItemDelegate
+
+                required property string name
+                required property string path
+                required property string presetPackage
+                property bool selected: listItemDelegate.highlighted || listItemDelegate.down
+                property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
+
+                hoverEnabled: true
+                width: listView.width
+                onClicked: {
+                    if (Presets.Manager.loadCommunityPresetFile(pipeline, path, presetPackage) === false)
+                        showPresetsMenuStatus(i18n("The Preset %1 failed to load", name));
+
                 }
 
-                Kirigami.ActionToolBar {
-                    alignment: Qt.AlignRight
-                    actions: [
-                        Kirigami.Action {
-                            text: presetPackage
-                            displayHint: Kirigami.DisplayHint.KeepVisible
-                            icon.name: "package-symbolic"
-                            enabled: false
-                        },
-                        Kirigami.Action {
-                            text: i18n("Copy to the Local List")
-                            icon.name: "document-import-symbolic"
-                            displayHint: Kirigami.DisplayHint.AlwaysHide
-                            onTriggered: {
-                                if (Presets.Manager.importFromCommunityPackage(pipeline, path, presetPackage) === true)
-                                    showPresetsMenuStatus(i18n("Imported the Community Preset") + ": " + name);
-                                else
-                                    showPresetsMenuStatus(i18n("Failed to Import the Community Preset") + ": " + name);
+                contentItem: RowLayout {
+                    Controls.Label {
+                        text: name
+                    }
+
+                    Kirigami.ActionToolBar {
+                        alignment: Qt.AlignRight
+                        actions: [
+                            Kirigami.Action {
+                                text: presetPackage
+                                displayHint: Kirigami.DisplayHint.KeepVisible
+                                icon.name: "package-symbolic"
+                                enabled: false
+                            },
+                            Kirigami.Action {
+                                text: i18n("Copy to the Local List")
+                                icon.name: "document-import-symbolic"
+                                displayHint: Kirigami.DisplayHint.AlwaysHide
+                                onTriggered: {
+                                    if (Presets.Manager.importFromCommunityPackage(pipeline, path, presetPackage) === true)
+                                        showPresetsMenuStatus(i18n("Imported the Community Preset") + ": " + name);
+                                    else
+                                        showPresetsMenuStatus(i18n("Failed to Import the Community Preset") + ": " + name);
+                                }
                             }
-                        }
-                    ]
+                        ]
+                    }
+
                 }
 
             }
 
+        }
+
+        Controls.ScrollBar {
+            id: listViewScrollBar
+
+            parent: listviewRow
+            Layout.fillHeight: true
         }
 
     }
