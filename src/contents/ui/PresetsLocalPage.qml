@@ -75,10 +75,10 @@ ColumnLayout {
                     if (!Common.isEmpty(newName.trim())) {
                         if (Presets.Manager.add(pipeline, newName) === true) {
                             newPresetName.accepted();
-                            showPresetsMenuStatus(i18n("New Preset Created: " + newName));
+                            showPresetsMenuStatus(i18n("New Preset Created") + ": " + newName);
                             newPresetName.text = "";
                         } else {
-                            showPresetsMenuStatus(i18n("Failed to Create Preset: " + newName));
+                            showPresetsMenuStatus(i18n("Failed to Create Preset") + ": " + newName);
                         }
                     }
                 }
@@ -147,7 +147,7 @@ ColumnLayout {
             width: listView.width
             onClicked: {
                 if (Presets.Manager.loadLocalPresetFile(pipeline, name) === false)
-                    showPresetsMenuStatus(i18n("The Preset " + name + "failed to load"));
+                    showPresetsMenuStatus(i18n("The Preset %1 failed to load", name));
 
             }
 
@@ -165,9 +165,9 @@ ColumnLayout {
                             displayHint: Kirigami.DisplayHint.AlwaysHide
                             onTriggered: {
                                 if (Presets.Manager.savePresetFile(pipeline, name) === true)
-                                    showPresetsMenuStatus(i18n("Settings Saved to: " + name));
+                                    showPresetsMenuStatus(i18n("Settings Saved to: %1", name));
                                 else
-                                    showPresetsMenuStatus(i18n("Failed to Save Settings to: " + name));
+                                    showPresetsMenuStatus(i18n("Failed to Save Settings to: %1", name));
                             }
                         },
                         Kirigami.Action {
@@ -176,9 +176,9 @@ ColumnLayout {
                             displayHint: Kirigami.DisplayHint.AlwaysHide
                             onTriggered: {
                                 if (Presets.Manager.remove(pipeline, name) === true)
-                                    showPresetsMenuStatus(i18n("The Preset " + name + " Has Been Removed"));
+                                    showPresetsMenuStatus(i18n("The Preset %1 Has Been Removed", name));
                                 else
-                                    showPresetsMenuStatus(i18n("The Preset " + name + " Coult Not Be Removed"));
+                                    showPresetsMenuStatus(i18n("The Preset %1 Could Not Be Removed", name));
                             }
                         }
                     ]
