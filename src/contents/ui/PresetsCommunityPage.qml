@@ -49,7 +49,8 @@ ColumnLayout {
         Layout.fillWidth: true
         placeholderText: i18n("Search")
         onAccepted: {
-            sortedListModel.filterRegularExpression = RegExp(search.text, "i");
+            const re = Common.regExpEscape(search.text);
+            sortedListModel.filterRegularExpression = RegExp(re, "i");
         }
     }
 

@@ -11,7 +11,7 @@ function equalArrays(a, b) {
     }
 
     for (let n = 0; n < a.length; n++) {
-        // We use this function in a situation where the order of the elements matter. So if the same value is on 
+        // We use this function in a situation where the order of the elements matter. So if the same value is on
         // another position the arrays are different
 
         if (a[n] !== b[n]) {
@@ -23,6 +23,10 @@ function equalArrays(a, b) {
 }
 
 function clamp(num, min, max) { return Math.min(Math.max(num, min), max); }
+
+function regExpEscape(str) {
+    return str.replace(/[\\/^$*+?.()|[\]{}\-]/g, '\\$&');
+}
 
 function printObjectProperties(obj) {
     for (var prop in obj) {

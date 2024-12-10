@@ -146,7 +146,8 @@ Kirigami.OverlaySheet {
             Layout.fillWidth: true
             placeholderText: i18n("Search")
             onAccepted: {
-                TagsPluginName.SortedNameModel.filterRegularExpression = RegExp(search.text, "i");
+                const re = Common.regExpEscape(search.text);
+                TagsPluginName.SortedNameModel.filterRegularExpression = RegExp(re, "i");
             }
         }
 
