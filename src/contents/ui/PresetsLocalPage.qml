@@ -70,7 +70,7 @@ ColumnLayout {
                 icon.name: "list-add-symbolic"
                 onTriggered: {
                     // remove the final preset extension if specified
-                    const newName = newPresetName.text.replace(/\.json$/, "");
+                    const newName = newPresetName.text.replace(/(?:\.json)+$/, "");
                     // trim to exclude names containing only multiple spaces
                     if (!Common.isEmpty(newName.trim())) {
                         if (Presets.Manager.add(pipeline, newName) === true) {
