@@ -1,8 +1,15 @@
 var minimumLinearLevel = 0.00001;
 var minimumDecibelLevel = -100.0;
 
-function isEmpty(str) {
-    return (!str || str.length === 0);
+function isEmpty(v) {
+    switch (typeof v) {
+        case "string":
+            return v.length === 0;
+        case "number":
+            return isNaN(v);
+        default:
+            return false;
+  }
 }
 
 function equalArrays(a, b) {
