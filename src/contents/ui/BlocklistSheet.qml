@@ -22,7 +22,6 @@ Kirigami.OverlaySheet {
         id: columnLayout
 
         Layout.preferredWidth: Kirigami.Units.gridUnit * 30
-        implicitHeight: control.parent.height - 2 * (control.header.height + control.footer.height) - control.y
 
         Kirigami.ActionTextField {
             id: newBlockedApp
@@ -79,74 +78,88 @@ Kirigami.OverlaySheet {
 
         }
 
-        ListView {
-            id: listView
+        RowLayout {
+            id: listviewRow
 
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            clip: true
-            reuseItems: true
-            model: streamDB.blocklist
+            ListView {
+                id: listView
 
-            Kirigami.PlaceholderMessage {
-                anchors.centerIn: parent
-                width: parent.width - (Kirigami.Units.largeSpacing * 4)
-                visible: listView.count === 0
-                text: i18n("Empty")
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                Layout.minimumHeight: control.parent.height - 2 * (control.header.height + control.footer.height + newBlockedApp.height) - control.y
+                clip: true
+                reuseItems: true
+                model: streamDB.blocklist
+                Controls.ScrollBar.vertical: listViewScrollBar
+
+                Kirigami.PlaceholderMessage {
+                    anchors.centerIn: parent
+                    width: parent.width - (Kirigami.Units.largeSpacing * 4)
+                    visible: listView.count === 0
+                    text: i18n("Empty")
+                }
+
+                delegate: Controls.ItemDelegate {
+                    id: listItemDelegate
+
+                    readonly property string name: {
+                        if (streamDB.blocklist.length > 0)
+                            return streamDB.blocklist[index];
+
+                        return "";
+                    }
+                    property bool selected: listItemDelegate.highlighted || listItemDelegate.down
+                    property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
+
+                    hoverEnabled: true
+                    down: false
+                    width: listView.width
+
+                    contentItem: RowLayout {
+                        Layout.maximumWidth: listView.width
+
+                        Controls.Label {
+                            Layout.alignment: Qt.AlignLeft
+                            Layout.fillWidth: true
+                            Layout.horizontalStretchFactor: 1
+                            text: name
+                            elide: Text.ElideRight
+                            wrapMode: Text.WrapAnywhere
+                            maximumLineCount: 2
+                        }
+
+                        Kirigami.ActionToolBar {
+                            id: delegateActionToolBar
+
+                            Layout.fillWidth: true
+                            Layout.horizontalStretchFactor: 2
+                            alignment: Qt.AlignRight
+                            actions: [
+                                Kirigami.Action {
+                                    text: i18n("Delete this App")
+                                    icon.name: "delete"
+                                    displayHint: Kirigami.DisplayHint.AlwaysHide
+                                    onTriggered: {
+                                        const targetIndex = streamDB.blocklist.indexOf(name);
+                                        if (targetIndex > -1)
+                                            streamDB.blocklist.splice(targetIndex, 1);
+
+                                    }
+                                }
+                            ]
+                        }
+
+                    }
+
+                }
+
             }
 
-            delegate: Controls.ItemDelegate {
-                id: listItemDelegate
+            Controls.ScrollBar {
+                id: listViewScrollBar
 
-                readonly property string name: {
-                    if (streamDB.blocklist.length > 0)
-                        return streamDB.blocklist[index];
-
-                    return "";
-                }
-                property bool selected: listItemDelegate.highlighted || listItemDelegate.down
-                property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
-
-                hoverEnabled: true
-                down: false
-                width: listView.width
-
-                contentItem: RowLayout {
-                    Layout.maximumWidth: listView.width
-
-                    Controls.Label {
-                        Layout.alignment: Qt.AlignLeft
-                        Layout.fillWidth: true
-                        Layout.horizontalStretchFactor: 1
-                        text: name
-                        elide: Text.ElideRight
-                        wrapMode: Text.WrapAnywhere
-                        maximumLineCount: 2
-                    }
-
-                    Kirigami.ActionToolBar {
-                        id: delegateActionToolBar
-
-                        Layout.fillWidth: true
-                        Layout.horizontalStretchFactor: 2
-                        alignment: Qt.AlignRight
-                        actions: [
-                            Kirigami.Action {
-                                text: i18n("Delete this App")
-                                icon.name: "delete"
-                                displayHint: Kirigami.DisplayHint.AlwaysHide
-                                onTriggered: {
-                                    const targetIndex = streamDB.blocklist.indexOf(name);
-                                    if (targetIndex > -1)
-                                        streamDB.blocklist.splice(targetIndex, 1);
-
-                                }
-                            }
-                        ]
-                    }
-
-                }
-
+                parent: listviewRow
+                Layout.fillHeight: true
             }
 
         }
