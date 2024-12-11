@@ -53,15 +53,9 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
   auto* PULSE_SINK = std::getenv("PULSE_SINK");
 
   if (PULSE_SINK != nullptr && PULSE_SINK != tags::pipewire::ee_sink_name) {
-    for (const auto& [serial, node] : pm->node_map) {
-      if (node.name == PULSE_SINK) {
-        pm->output_device = node;
+    auto node = pm->model_nodes.get_node_by_name(PULSE_SINK);
 
-        db::StreamOutputs::setOutputDevice(pm->output_device.name);
-
-        break;
-      }
-    }
+    pm->output_device = node.serial == SPA_ID_INVALID ? node : pm->output_device;
   }
 
   if (db::StreamOutputs::outputDevice().isEmpty()) {
@@ -116,22 +110,18 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
           return;
         }
 
-        for (const auto& [serial, node] : pm->node_map) {
-          if (node.name == name) {
-            pm->output_device = node;
+        if (auto node = pm->model_nodes.get_node_by_name(name); node.serial != SPA_ID_INVALID) {
+          pm->output_device = node;
 
-            if (db::Main::bypass()) {
-              db::Main::setBypass(false);
+          if (db::Main::bypass()) {
+            db::Main::setBypass(false);
 
-              return;  // filter connected through update_bypass_state
-            }
-
-            set_bypass(false);
-
-            presets::Manager::self().autoload(PipelineType::output, node.name, node.device_profile_name);
-
-            break;
+            return;  // filter connected through update_bypass_state
           }
+
+          set_bypass(false);
+
+          presets::Manager::self().autoload(PipelineType::output, node.name, node.device_profile_name);
         }
       },
       Qt::QueuedConnection);
@@ -226,14 +216,10 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   bool dev_exists = false;
 
-  for (const auto& [serial, node] : pm->node_map) {
-    if (node.name == output_device_name) {
-      dev_exists = true;
+  if (auto node = pm->model_nodes.get_node_by_name(output_device_name); node.serial != SPA_ID_INVALID) {
+    dev_exists = true;
 
-      pm->output_device = node;
-
-      break;
-    }
+    pm->output_device = node;
   }
 
   if (!dev_exists) {
