@@ -1015,9 +1015,9 @@ void on_registry_global(void* data,
     pm->list_links.push_back(link_info);
 
     try {
-      const auto input_node = pm->node_map_at_id(link_info.input_node_id);
+      const auto input_node = pm->model_nodes.get_node_by_id(link_info.input_node_id);
 
-      const auto output_node = pm->node_map_at_id(link_info.output_node_id);
+      const auto output_node = pm->model_nodes.get_node_by_id(link_info.output_node_id);
 
       util::debug(output_node.name.toStdString() + " port " + util::to_string(link_info.output_port_id) +
                   " is connected to " + input_node.name.toStdString() + " port " +
@@ -1274,27 +1274,26 @@ Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_
   do {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
-    for (const auto& [serial, node] : node_map) {
-      if (ee_sink_node.name.isEmpty() && node.name == tags::pipewire::ee_sink_name) {
-        ee_sink_node = node;
-
-        util::debug(tags::pipewire::ee_sink_name + " node successfully retrieved with id "s + util::to_string(node.id) +
-                    " and serial " + util::to_string(node.serial));
-      } else if (ee_source_node.name.isEmpty() && node.name == tags::pipewire::ee_source_name) {
-        ee_source_node = node;
-
-        util::debug(tags::pipewire::ee_source_name + " node successfully retrieved with id "s +
-                    util::to_string(node.id) + " and serial " + util::to_string(node.serial));
-      }
-    }
+    ee_sink_node = model_nodes.get_node_by_name(tags::pipewire::ee_sink_name);
+    ee_source_node = model_nodes.get_node_by_name(tags::pipewire::ee_source_name);
   } while (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID);
+
+  if (ee_sink_node.id != SPA_ID_INVALID) {
+    util::debug(tags::pipewire::ee_sink_name + " node successfully retrieved with id "s +
+                util::to_string(ee_sink_node.id) + " and serial " + util::to_string(ee_sink_node.serial));
+  }
+
+  if (ee_source_node.id == SPA_ID_INVALID) {
+    util::debug(tags::pipewire::ee_source_name + " node successfully retrieved with id "s +
+                util::to_string(ee_source_node.id) + " and serial " + util::to_string(ee_source_node.serial));
+  }
 
   /*
     By the time our virtual devices are loaded we may have already received some streams. So
     we connected them here now that our virtual devices are available.
   */
 
-  for (const auto& [serial, node] : node_map) {
+  for (const auto& node : model_nodes.get_list()) {
     if (node.media_class == tags::pipewire::media_class::output_stream) {
       if (db::Main::processAllOutputs() != 0 && !node.is_blocklisted) {
         connectStreamOutput(node.id);

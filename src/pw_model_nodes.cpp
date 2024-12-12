@@ -480,4 +480,14 @@ auto Nodes::get_node_by_name(const QString& name) -> NodeInfo {
   return {};
 }
 
+auto Nodes::get_node_by_id(const uint& id) -> NodeInfo {
+  for (const auto& node : list) {
+    if (node.id == id) {
+      return node;
+    }
+  }
+
+  return {};
+}
+
 }  // namespace pw::models
