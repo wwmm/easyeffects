@@ -220,12 +220,6 @@ void on_destroy_node_proxy(void* data) {
 
   pm->model_nodes.remove_by_serial(nd->nd_info->serial);
 
-  auto node_it = pm->node_map.find(nd->nd_info->serial);
-
-  node_it->second.proxy = nullptr;
-
-  pm->node_map.erase(node_it);
-
   if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
     if (nd->nd_info->name == db::StreamInputs::inputDevice()) {
       pm->input_device.id = SPA_ID_INVALID;
@@ -428,13 +422,9 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
   }
 
-  // update NodeInfo inside map or add it if it is not in the model yet
-
-  auto node_it = pm->node_map.find(nd->nd_info->serial);
+  // update NodeInfo or add it if it is not in the model yet
 
   if (!pm->model_nodes.has_serial(nd->nd_info->serial)) {
-    node_it->second = *nd->nd_info;
-
     pm->model_nodes.append(*nd->nd_info);
 
     auto nd_info_copy = *nd->nd_info;
@@ -470,8 +460,6 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
 
   } else {
-    node_it->second = *nd->nd_info;
-
     pm->model_nodes.update_info(*nd->nd_info);
   }
 
@@ -964,15 +952,6 @@ void on_registry_global(void* data,
     nd->nd_info->is_blocklisted =
         nd->nd_info->is_blocklisted || std::ranges::find(user_blocklist, nd->nd_info->name) != user_blocklist.end();
 
-    const auto [node_it, success] = pm->node_map.insert({serial, *nd->nd_info});
-
-    if (!success) {
-      util::warning("Cannot insert node " + util::to_string(id) + " " + node_name.toStdString() +
-                    " into the node map because there's already an existing serial " + util::to_string(serial));
-
-      return;
-    }
-
     pw_node_add_listener(proxy, &nd->object_listener, &node_events, nd);  // NOLINT
     pw_proxy_add_listener(proxy, &nd->proxy_listener, &node_proxy_events, nd);
 
@@ -1396,18 +1375,6 @@ void Manager::load_virtual_devices() {
       pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_source->dict, 0));
 
   pw_properties_free(props_source);
-}
-
-auto Manager::node_map_at_id(const uint& id) -> NodeInfo& {
-  // Helper method to access easily a node by id, same functionality as map.at()
-
-  for (auto& [serial, node] : node_map) {
-    if (node.id == id) {
-      return node;
-    }
-  }
-
-  throw std::out_of_range("No node with id " + util::to_string(id) + " in our node_map");
 }
 
 auto Manager::stream_is_connected(const uint& id, const QString& media_class) -> bool {

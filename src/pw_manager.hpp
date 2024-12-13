@@ -81,8 +81,6 @@ class Manager : public QObject {
 
   spa_hook metadata_listener{};
 
-  std::map<uint64_t, NodeInfo> node_map;
-
   std::vector<LinkInfo> list_links;
 
   std::vector<PortInfo> list_ports;
@@ -113,8 +111,6 @@ class Manager : public QObject {
   pw::models::Modules model_modules;
   pw::models::Clients model_clients;
 
-  auto node_map_at_id(const uint& id) -> NodeInfo&;
-
   auto stream_is_connected(const uint& id, const QString& media_class) -> bool;
 
   auto count_node_ports(const uint& node_id) -> uint;
@@ -143,10 +139,6 @@ class Manager : public QObject {
   void sync_wait_unlock() const;
 
   [[nodiscard]] auto wait_full() const -> int;
-
-  static void lock_node_map();
-
-  static void unlock_node_map();
 
   static auto json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int;
 
