@@ -18,6 +18,7 @@
  */
 
 #include "util.hpp"
+#include "pipe_manager.hpp"
 #include <gdk/gdk.h>
 #include <gio/gio.h>
 #include <gio/gsettingsschema.h>
@@ -310,6 +311,11 @@ void idle_add(std::function<void()> cb, std::function<void()> cleanup_cb) {
   g_idle_add((GSourceFunc) +
                  [](Data* d) {
                    if (d == nullptr) {
+                     return G_SOURCE_REMOVE;
+                   }
+
+                   if (PipeManager::exiting) {
+                     delete d;
                      return G_SOURCE_REMOVE;
                    }
 
