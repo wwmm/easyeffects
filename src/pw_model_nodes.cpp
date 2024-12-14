@@ -36,6 +36,7 @@
 #include <format>
 #include <iterator>
 #include "config.h"
+#include "db_manager.hpp"
 #include "pipewire/node.h"
 #include "pipewire/proxy.h"
 #include "pw_objects.hpp"
@@ -130,34 +131,35 @@ Nodes::Nodes(QObject* parent)
                                                         &proxy_sink_devices);
   }
 
-  // connect(
-  //     db::Manager::self().streamOutputs, &db::StreamOutputs::blocklistChanged, this,
-  //     [this]() {
-  //       const auto blocklist = db::StreamOutputs::blocklist();
-  //       for (qsizetype n = 0; n < list.size(); n++) {
-  //         if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id)) {
-  //           update_field(n, Roles::IsBlocklisted, true);
-  //           util::warning(list[n].name.toStdString());
-  //         } else {
-  //           update_field(n, Roles::IsBlocklisted, false);
-  //         }
-  //       }
-  //     },
-  //     Qt::QueuedConnection);
+  connect(
+      db::Manager::self().streamOutputs, &db::StreamOutputs::blocklistChanged, this,
+      [this]() {
+        const auto blocklist = db::StreamOutputs::blocklist();
 
-  // connect(
-  //     db::Manager::self().streamInputs, &db::StreamInputs::blocklistChanged, this,
-  //     [this]() {
-  //       const auto blocklist = db::StreamInputs::blocklist();
-  //       for (qsizetype n = 0; n < list.size(); n++) {
-  //         if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id)) {
-  //           update_field(n, Roles::IsBlocklisted, true);
-  //         } else {
-  //           update_field(n, Roles::IsBlocklisted, false);
-  //         }
-  //       }
-  //     },
-  //     Qt::QueuedConnection);
+        for (qsizetype n = 0; n < list.size(); n++) {
+          if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id)) {
+            update_field(n, Roles::IsBlocklisted, true);
+          } else {
+            update_field(n, Roles::IsBlocklisted, false);
+          }
+        }
+      },
+      Qt::QueuedConnection);
+
+  connect(
+      db::Manager::self().streamInputs, &db::StreamInputs::blocklistChanged, this,
+      [this]() {
+        const auto blocklist = db::StreamInputs::blocklist();
+
+        for (qsizetype n = 0; n < list.size(); n++) {
+          if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id)) {
+            update_field(n, Roles::IsBlocklisted, true);
+          } else {
+            update_field(n, Roles::IsBlocklisted, false);
+          }
+        }
+      },
+      Qt::QueuedConnection);
 }
 
 int Nodes::rowCount(const QModelIndex& /*parent*/) const {
@@ -271,6 +273,68 @@ QVariant Nodes::data(const QModelIndex& index, int role) const {
     default:
       return {};
   }
+}
+
+bool Nodes::setData(const QModelIndex& index, const QVariant& value, int role) {
+  auto it = std::next(list.begin(), index.row());
+
+  switch (role) {
+    case Roles::IsBlocklisted: {
+      if (value.canConvert<bool>()) {
+        it->is_blocklisted = value.toBool();
+
+        if (it->is_blocklisted) {
+          if (it->media_class == tags::pipewire::media_class::output_stream) {
+            auto blocklist = db::StreamOutputs::blocklist();
+
+            blocklist.append(it->name);
+
+            db::StreamOutputs::setBlocklist(blocklist);
+          } else if (it->media_class == tags::pipewire::media_class::input_stream) {
+            auto blocklist = db::StreamInputs::blocklist();
+
+            blocklist.append(it->name);
+
+            db::StreamInputs::setBlocklist(blocklist);
+          }
+        } else {
+          if (it->media_class == tags::pipewire::media_class::output_stream) {
+            auto blocklist = db::StreamOutputs::blocklist();
+
+            auto idx = blocklist.indexOf(it->name);
+
+            idx = (idx == -1) ? blocklist.indexOf(it->application_id) : idx;
+
+            if (idx != -1) {
+              blocklist.removeAt(idx);
+
+              db::StreamOutputs::setBlocklist(blocklist);
+            }
+          } else if (it->media_class == tags::pipewire::media_class::input_stream) {
+            auto blocklist = db::StreamInputs::blocklist();
+
+            auto idx = blocklist.indexOf(it->name);
+
+            idx = (idx == -1) ? blocklist.indexOf(it->application_id) : idx;
+
+            if (idx != -1) {
+              blocklist.removeAt(idx);
+
+              db::StreamInputs::setBlocklist(blocklist);
+            }
+          }
+        }
+
+        emit dataChanged(index, index, {Roles::IsBlocklisted});
+      }
+
+      break;
+    }
+    default:
+      break;
+  }
+
+  return true;
 }
 
 auto Nodes::get_list() -> QList<NodeInfo> {

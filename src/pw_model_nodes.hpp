@@ -85,6 +85,8 @@ class Nodes : public QAbstractListModel {
 
   [[nodiscard]] QVariant data(const QModelIndex& index, int role) const override;
 
+  bool setData(const QModelIndex& index, const QVariant& value, int role) override;
+
   void reset();
 
   void begin_reset();

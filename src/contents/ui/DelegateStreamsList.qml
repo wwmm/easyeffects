@@ -6,6 +6,7 @@ import ee.pipewire as PW
 import org.kde.kirigami as Kirigami
 
 Kirigami.AbstractCard {
+    required property var model
     required property bool connected
     required property bool isBlocklisted
     required property bool mute
@@ -89,7 +90,12 @@ Kirigami.AbstractCard {
 
                 Controls.CheckBox {
                     text: i18n("Exclude")
-                    checked: false
+                    checked: isBlocklisted
+                    onCheckedChanged: {
+                        if (model.isBlocklisted !== checked)
+                            model.isBlocklisted = checked;
+
+                    }
                 }
 
             }
