@@ -39,6 +39,7 @@
 #include "db_manager.hpp"
 #include "pipewire/node.h"
 #include "pipewire/proxy.h"
+#include "pw_manager.hpp"
 #include "pw_objects.hpp"
 #include "tags_pipewire.hpp"
 #include "util.hpp"
@@ -137,10 +138,20 @@ Nodes::Nodes(QObject* parent)
         const auto blocklist = db::StreamOutputs::blocklist();
 
         for (qsizetype n = 0; n < list.size(); n++) {
+          if (list[n].media_class != tags::pipewire::media_class::output_stream) {
+            continue;
+          }
+
           if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id)) {
             update_field(n, Roles::IsBlocklisted, true);
+
+            pw::Manager::self().disconnectStream(list[n].id);
           } else {
             update_field(n, Roles::IsBlocklisted, false);
+
+            if (db::Main::processAllOutputs()) {
+              pw::Manager::self().connectStreamOutput(list[n].id);
+            }
           }
         }
       },
@@ -152,10 +163,20 @@ Nodes::Nodes(QObject* parent)
         const auto blocklist = db::StreamInputs::blocklist();
 
         for (qsizetype n = 0; n < list.size(); n++) {
+          if (list[n].media_class != tags::pipewire::media_class::input_stream) {
+            continue;
+          }
+
           if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id)) {
             update_field(n, Roles::IsBlocklisted, true);
+
+            pw::Manager::self().disconnectStream(list[n].id);
           } else {
             update_field(n, Roles::IsBlocklisted, false);
+
+            if (db::Main::processAllInputs()) {
+              pw::Manager::self().connectStreamInput(list[n].id);
+            }
           }
         }
       },
@@ -287,15 +308,18 @@ bool Nodes::setData(const QModelIndex& index, const QVariant& value, int role) {
           if (it->media_class == tags::pipewire::media_class::output_stream) {
             auto blocklist = db::StreamOutputs::blocklist();
 
-            blocklist.append(it->name);
+            if (blocklist.indexOf(it->name) == -1) {
+              blocklist.append(it->name);
+              db::StreamOutputs::setBlocklist(blocklist);
+            }
 
-            db::StreamOutputs::setBlocklist(blocklist);
           } else if (it->media_class == tags::pipewire::media_class::input_stream) {
             auto blocklist = db::StreamInputs::blocklist();
 
-            blocklist.append(it->name);
-
-            db::StreamInputs::setBlocklist(blocklist);
+            if (blocklist.indexOf(it->name) == -1) {
+              blocklist.append(it->name);
+              db::StreamInputs::setBlocklist(blocklist);
+            }
           }
         } else {
           if (it->media_class == tags::pipewire::media_class::output_stream) {

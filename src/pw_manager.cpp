@@ -460,6 +460,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
 
   } else {
+    nd->nd_info->is_blocklisted = pm->model_nodes.get_node_by_id(nd->nd_info->id).is_blocklisted;
+
     pm->model_nodes.update_info(*nd->nd_info);
   }
 
@@ -1274,11 +1276,11 @@ Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_
 
   for (const auto& node : model_nodes.get_list()) {
     if (node.media_class == tags::pipewire::media_class::output_stream) {
-      if (db::Main::processAllOutputs() != 0 && !node.is_blocklisted) {
+      if (db::Main::processAllOutputs() && !node.is_blocklisted) {
         connectStreamOutput(node.id);
       }
     } else if (node.media_class == tags::pipewire::media_class::input_stream) {
-      if (db::Main::processAllInputs() != 0 && !node.is_blocklisted) {
+      if (db::Main::processAllInputs() && !node.is_blocklisted) {
         connectStreamInput(node.id);
       }
     }

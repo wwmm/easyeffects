@@ -23,6 +23,16 @@ Kirigami.AbstractCard {
     required property string rate
     required property string latency
 
+    visible: {
+        if (!isBlocklisted)
+            return true;
+
+        if (mediaClass === "Stream/Output/Audio")
+            return DB.Manager.streamOutputs.showBlocklistedApps;
+        else if (mediaClass === "Stream/Input/Audio")
+            return DB.Manager.streamInputs.showBlocklistedApps;
+    }
+
     contentItem: Item {
         implicitWidth: delegateLayout.implicitWidth
         implicitHeight: delegateLayout.implicitHeight
