@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-16 14:17+0000\n"
+"POT-Creation-Date: 2024-12-17 21:09+0000\n"
 "PO-Revision-Date: 2024-09-08 21:09+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1540,7 +1540,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Çıkış Aygıtları"
 
-#: data/ui/pipe_manager_box.ui:294 src/application.cpp:283
+#: data/ui/pipe_manager_box.ui:294 src/application.cpp:284
 msgid "Output Presets"
 msgstr "Çıkış Ön Ayarları"
 
@@ -1560,7 +1560,7 @@ msgstr "Çıktı Otomatik Yükleme Ön Ayarları Listesi"
 msgid "Input Devices"
 msgstr "Giriş Aygıtları"
 
-#: data/ui/pipe_manager_box.ui:419 src/application.cpp:291
+#: data/ui/pipe_manager_box.ui:419 src/application.cpp:292
 msgid "Input Presets"
 msgstr "Giriş Ön Ayarları"
 
@@ -2239,38 +2239,59 @@ msgstr "Tanımsız Ad - Süreç Kimliği "
 msgid "channels"
 msgstr "kanallar"
 
-#: src/application.cpp:487
+#: src/application.cpp:301
+#, fuzzy
+msgid "Output Preset"
+msgstr "Çıkış Ön Ayarları"
+
+#: src/application.cpp:302
+#, fuzzy
+msgid "Input Preset"
+msgstr "Giriş Ön Ayarları"
+
+#: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:575
+#: src/application.cpp:606
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Easy Effects'ten çık. Servis kipinde çalışırken kullanışlıdır."
 
-#: src/application.cpp:578
+#: src/application.cpp:609
 msgid "Print the easyeffects version"
 msgstr "Easyeffects sürümünü yazdır"
 
-#: src/application.cpp:581
+#: src/application.cpp:612
 msgid "Reset Easy Effects."
 msgstr "Easy Effects’i Sıfırla."
 
-#: src/application.cpp:584
+#: src/application.cpp:615
 msgid "Hide the Window."
 msgstr "Pencereyi Gizle."
 
-#: src/application.cpp:587
+#: src/application.cpp:618
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Genel atlama. 1 etkinleştirmek, 2 devre dışı bırakmak ve 3 durumu almak için"
 
-#: src/application.cpp:590
+#: src/application.cpp:621
 msgid "Show available presets."
 msgstr "Kullanılabilir hazır ayarları göster."
 
-#: src/application.cpp:593
+#: src/application.cpp:624
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Ön ayar yükle. Örnek: easyeffects -l music"
+
+#: src/application.cpp:627
+#, fuzzy
+msgid "Show the active presets."
+msgstr "Kullanılabilir hazır ayarları göster."
+
+#: src/application.cpp:630
+msgid ""
+"Show the loaded preset of a specific category. Takes 'input' or 'output' as "
+"a value. Example: easyeffects -s input"
+msgstr ""
 
 #: src/application_ui.cpp:344
 msgid "_Output"
@@ -2419,33 +2440,33 @@ msgstr "Topluluk Ön Ayarı"
 msgid "Package"
 msgstr "Paket"
 
-#: src/presets_manager.cpp:1147 src/presets_manager.cpp:1154
-#: src/presets_manager.cpp:1163 src/presets_manager.cpp:1170
-#: src/presets_manager.cpp:1179 src/presets_manager.cpp:1187
+#: src/presets_manager.cpp:1155 src/presets_manager.cpp:1162
+#: src/presets_manager.cpp:1171 src/presets_manager.cpp:1178
+#: src/presets_manager.cpp:1187 src/presets_manager.cpp:1195
 msgid "Preset Not Loaded Correctly"
 msgstr "Ön Ayar Doğru Yüklenmedi"
 
-#: src/presets_manager.cpp:1147
+#: src/presets_manager.cpp:1155
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Hariç Tutulan Uygulamalar Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:1154
+#: src/presets_manager.cpp:1162
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Hariç Tutulan Uygulamalar Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:1163
+#: src/presets_manager.cpp:1171
 msgid "Wrong Format in Effects List"
 msgstr "Efektler Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:1170
+#: src/presets_manager.cpp:1178
 msgid "Generic Error While Loading Effects List"
 msgstr "Efekt Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:1180
+#: src/presets_manager.cpp:1188
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Bir veya Daha Fazla Parametre Yanlış Biçime Sahip"
 
-#: src/presets_manager.cpp:1188
+#: src/presets_manager.cpp:1196
 msgid "Generic Error While Loading The Effect"
 msgstr "Efekt Yüklenirken Genel Hata"
 
@@ -2595,12 +2616,12 @@ msgstr ""
 "Effects Flatpak paketini kullanmayı ya da kendi Easy Effects paketinizi "
 "oluşturmayı düşünebilirsiniz."
 
-#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:171
+#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
 msgstr "-sonsuz"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:256
+#: src/ui_helpers.cpp:254
 #, c++-format
 msgid "Using {}"
 msgstr "{} Kullanıyor"

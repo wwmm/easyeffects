@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-16 14:17+0000\n"
+"POT-Creation-Date: 2024-12-17 21:09+0000\n"
 "PO-Revision-Date: 2024-09-30 07:15+0000\n"
 "Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -1540,7 +1540,7 @@ msgstr "仅本地预设可被自动加载。若需要自动加载社区预设，
 msgid "Output Devices"
 msgstr "输出设备"
 
-#: data/ui/pipe_manager_box.ui:294 src/application.cpp:283
+#: data/ui/pipe_manager_box.ui:294 src/application.cpp:284
 msgid "Output Presets"
 msgstr "输出预设"
 
@@ -1560,7 +1560,7 @@ msgstr "输出自动加载预设列表"
 msgid "Input Devices"
 msgstr "输入设备"
 
-#: data/ui/pipe_manager_box.ui:419 src/application.cpp:291
+#: data/ui/pipe_manager_box.ui:419 src/application.cpp:292
 msgid "Input Presets"
 msgstr "输入预设"
 
@@ -2237,37 +2237,58 @@ msgstr "未定义名称 - 进程 ID "
 msgid "channels"
 msgstr "声道"
 
-#: src/application.cpp:487
+#: src/application.cpp:301
+#, fuzzy
+msgid "Output Preset"
+msgstr "输出预设"
+
+#: src/application.cpp:302
+#, fuzzy
+msgid "Input Preset"
+msgstr "输入预设"
+
+#: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:575
+#: src/application.cpp:606
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "退出 Easy Effects。 在服务模式下运行时有用。"
 
-#: src/application.cpp:578
+#: src/application.cpp:609
 msgid "Print the easyeffects version"
 msgstr "打印 EasyEffects 版本号"
 
-#: src/application.cpp:581
+#: src/application.cpp:612
 msgid "Reset Easy Effects."
 msgstr "重置 Easy Effects。"
 
-#: src/application.cpp:584
+#: src/application.cpp:615
 msgid "Hide the Window."
 msgstr "隐藏隐藏窗口。"
 
-#: src/application.cpp:587
+#: src/application.cpp:618
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
 
-#: src/application.cpp:590
+#: src/application.cpp:621
 msgid "Show available presets."
 msgstr "显示可用预设。"
 
-#: src/application.cpp:593
+#: src/application.cpp:624
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "加载预设。 示例：easyeffects -l music"
+
+#: src/application.cpp:627
+#, fuzzy
+msgid "Show the active presets."
+msgstr "显示可用预设。"
+
+#: src/application.cpp:630
+msgid ""
+"Show the loaded preset of a specific category. Takes 'input' or 'output' as "
+"a value. Example: easyeffects -s input"
+msgstr ""
 
 #: src/application_ui.cpp:344
 msgid "_Output"
@@ -2411,33 +2432,33 @@ msgstr "社区预设"
 msgid "Package"
 msgstr "包"
 
-#: src/presets_manager.cpp:1147 src/presets_manager.cpp:1154
-#: src/presets_manager.cpp:1163 src/presets_manager.cpp:1170
-#: src/presets_manager.cpp:1179 src/presets_manager.cpp:1187
+#: src/presets_manager.cpp:1155 src/presets_manager.cpp:1162
+#: src/presets_manager.cpp:1171 src/presets_manager.cpp:1178
+#: src/presets_manager.cpp:1187 src/presets_manager.cpp:1195
 msgid "Preset Not Loaded Correctly"
 msgstr "预设未成功加载"
 
-#: src/presets_manager.cpp:1147
+#: src/presets_manager.cpp:1155
 msgid "Wrong Format in Excluded Apps List"
 msgstr "已排除程序列表的格式错误"
 
-#: src/presets_manager.cpp:1154
+#: src/presets_manager.cpp:1162
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "加载已排除程序列表时出错"
 
-#: src/presets_manager.cpp:1163
+#: src/presets_manager.cpp:1171
 msgid "Wrong Format in Effects List"
 msgstr "效果列表的格式错误"
 
-#: src/presets_manager.cpp:1170
+#: src/presets_manager.cpp:1178
 msgid "Generic Error While Loading Effects List"
 msgstr "加载效果列表时出错"
 
-#: src/presets_manager.cpp:1180
+#: src/presets_manager.cpp:1188
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "一个或多个参数格式错误"
 
-#: src/presets_manager.cpp:1188
+#: src/presets_manager.cpp:1196
 msgid "Generic Error While Loading The Effect"
 msgstr "加载效果时出错"
 
@@ -2580,12 +2601,12 @@ msgstr ""
 "{} 效果在编译Easy Effects的时候被禁用了。这可能是这个效果所需的软件\"{}\"在编"
 "译时并不存在。请下载Flatpak版Easy Effects，或者重新编译Easy Effects。"
 
-#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:171
+#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
 msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:256
+#: src/ui_helpers.cpp:254
 #, c++-format
 msgid "Using {}"
 msgstr "正在使用 {}"

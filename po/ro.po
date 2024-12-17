@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-16 14:17+0000\n"
+"POT-Creation-Date: 2024-12-17 21:09+0000\n"
 "PO-Revision-Date: 2024-10-15 23:15+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1540,7 +1540,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Dispozitive de ieșire"
 
-#: data/ui/pipe_manager_box.ui:294 src/application.cpp:283
+#: data/ui/pipe_manager_box.ui:294 src/application.cpp:284
 msgid "Output Presets"
 msgstr "Preconfigurări de ieșire"
 
@@ -1560,7 +1560,7 @@ msgstr "Lista de preconfigurări de ieșire cu autoîncărcare"
 msgid "Input Devices"
 msgstr "Dispozitive de intrare"
 
-#: data/ui/pipe_manager_box.ui:419 src/application.cpp:291
+#: data/ui/pipe_manager_box.ui:419 src/application.cpp:292
 msgid "Input Presets"
 msgstr "Preconfigurări de intrare"
 
@@ -2242,40 +2242,61 @@ msgstr "Nume nedefinit - ID-ul procesului "
 msgid "channels"
 msgstr "canale"
 
-#: src/application.cpp:487
+#: src/application.cpp:301
+#, fuzzy
+msgid "Output Preset"
+msgstr "Preconfigurări de ieșire"
+
+#: src/application.cpp:302
+#, fuzzy
+msgid "Input Preset"
+msgstr "Preconfigurări de intrare"
+
+#: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:575
+#: src/application.cpp:606
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "Ieșire din Easy Effects. Util atunci când rulează în modul de serviciu."
 
-#: src/application.cpp:578
+#: src/application.cpp:609
 msgid "Print the easyeffects version"
 msgstr "Afișează versiunea easyeffects"
 
-#: src/application.cpp:581
+#: src/application.cpp:612
 msgid "Reset Easy Effects."
 msgstr "Reinițiază EasyEffects."
 
-#: src/application.cpp:584
+#: src/application.cpp:615
 msgid "Hide the Window."
 msgstr "Ascunde fereastra."
 
-#: src/application.cpp:587
+#: src/application.cpp:618
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Ocolire globală. 1 pentru a activa, 2 pentru a dezactiva și 3 pentru a afla "
 "starea"
 
-#: src/application.cpp:590
+#: src/application.cpp:621
 msgid "Show available presets."
 msgstr "Afișează preconfigurările disponibile."
 
-#: src/application.cpp:593
+#: src/application.cpp:624
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Încarcă o preconfigurare. Exemplu: «easyeffects -l muzică»"
+
+#: src/application.cpp:627
+#, fuzzy
+msgid "Show the active presets."
+msgstr "Afișează preconfigurările disponibile."
+
+#: src/application.cpp:630
+msgid ""
+"Show the loaded preset of a specific category. Takes 'input' or 'output' as "
+"a value. Example: easyeffects -s input"
+msgstr ""
 
 #: src/application_ui.cpp:344
 msgid "_Output"
@@ -2424,33 +2445,33 @@ msgstr "Preconfigurare de la comunitate"
 msgid "Package"
 msgstr "Pachet"
 
-#: src/presets_manager.cpp:1147 src/presets_manager.cpp:1154
-#: src/presets_manager.cpp:1163 src/presets_manager.cpp:1170
-#: src/presets_manager.cpp:1179 src/presets_manager.cpp:1187
+#: src/presets_manager.cpp:1155 src/presets_manager.cpp:1162
+#: src/presets_manager.cpp:1171 src/presets_manager.cpp:1178
+#: src/presets_manager.cpp:1187 src/presets_manager.cpp:1195
 msgid "Preset Not Loaded Correctly"
 msgstr "Preconfigurarea nu a fost încărcată corect"
 
-#: src/presets_manager.cpp:1147
+#: src/presets_manager.cpp:1155
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Format greșit în lista de aplicații excluse"
 
-#: src/presets_manager.cpp:1154
+#: src/presets_manager.cpp:1162
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Eroare generică în timpul încărcării listei de aplicații excluse"
 
-#: src/presets_manager.cpp:1163
+#: src/presets_manager.cpp:1171
 msgid "Wrong Format in Effects List"
 msgstr "Format greșit în lista de efecte"
 
-#: src/presets_manager.cpp:1170
+#: src/presets_manager.cpp:1178
 msgid "Generic Error While Loading Effects List"
 msgstr "Eroare generică în timpul încărcării listei de efecte"
 
-#: src/presets_manager.cpp:1180
+#: src/presets_manager.cpp:1188
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Unul sau mai mulți parametri au un format greșit"
 
-#: src/presets_manager.cpp:1188
+#: src/presets_manager.cpp:1196
 msgid "Generic Error While Loading The Effect"
 msgstr "Eroare generică în timpul încărcării efectului"
 
@@ -2600,12 +2621,12 @@ msgstr ""
 "„{}”, nu era disponibil. Luați în considerare utilizarea pachetului Easy "
 "Effects Flatpak sau construirea propriului pachet Easy Effects."
 
-#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:171
+#: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
 msgstr "- ∞"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
-#: src/ui_helpers.cpp:256
+#: src/ui_helpers.cpp:254
 #, c++-format
 msgid "Using {}"
 msgstr "Utilizând {}"
