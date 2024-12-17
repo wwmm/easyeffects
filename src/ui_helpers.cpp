@@ -161,20 +161,18 @@ auto parse_spinbutton_input(GtkSpinButton* button, gdouble* new_value, const boo
 
   gtk_spin_button_get_range(button, &min, &max);
 
-  std::istringstream str(gtk_editable_get_text(GTK_EDITABLE(button)));
+  std::string s = gtk_editable_get_text(GTK_EDITABLE(button));
 
-  if (!lower_bound) {
-    auto s = str.str();
+  // Workaround to fix locale issue in #3532; see PR #3557.
+  s.erase(std::remove(s.begin(), s.end(), ' '), s.end());
 
-    util::str_trim_start(s);
+  if (!lower_bound && s.starts_with(_("-inf"))) {
+    *new_value = util::minimum_db_d_level;
 
-    if (s.starts_with(_("-inf"))) {
-      *new_value = util::minimum_db_d_level;
-
-      return TRUE;
-    }
+    return TRUE;
   }
 
+  std::istringstream str(s);
   str.imbue(ui::get_user_locale());
 
   auto v = 0.0;
