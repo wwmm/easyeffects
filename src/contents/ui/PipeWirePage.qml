@@ -264,6 +264,14 @@ Kirigami.Page {
 
     }
 
+    Component {
+        id: testSignalPage
+
+        Kirigami.ScrollablePage {
+        }
+
+    }
+
     GridLayout {
         columns: 3
         rows: 1

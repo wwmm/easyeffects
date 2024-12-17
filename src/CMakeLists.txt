@@ -55,6 +55,7 @@ target_sources(easyeffects PRIVATE
     stream_input_effects.cpp
     stream_output_effects.cpp
     tags_plugin_name.cpp
+    test_signals.cpp
     util.cpp
     resources.qrc
 )
