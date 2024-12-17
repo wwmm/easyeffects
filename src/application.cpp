@@ -31,6 +31,7 @@
 #include <iostream>
 #include <ostream>
 #include <string>
+#include <cstring>
 #include <thread>
 #include "application_ui.hpp"
 #include "config.h"
@@ -291,6 +292,36 @@ void application_class_init(ApplicationClass* klass) {
       std::cout << _("Input Presets") + ": "s + list << '\n';
 
       return EXIT_SUCCESS;
+    }
+
+    if (g_variant_dict_contains(options, "active-presets") != 0) {
+      const auto& output_preset = self->presets_manager->get_loaded_preset(PresetType::output);
+      const auto& input_preset = self->presets_manager->get_loaded_preset(PresetType::input);
+
+      std::cout << _("Output Preset") + ": "s + output_preset << '\n';
+      std:: cout << _("Input Preset") + ": "s + input_preset << '\n';
+
+      return EXIT_SUCCESS;
+    }
+
+    if (g_variant_dict_contains(options, "active-preset") != 0) {
+      const char* value = nullptr;
+
+      if (g_variant_dict_lookup(options, "active-preset", "&s", &value) != 0) {
+        if (strcmp(value, "input") != 0 && strcmp(value, "output") != 0) {
+          util::error("active-preset must have a value of input or output");
+
+          return EXIT_FAILURE;
+        } else {
+          const PresetType& type = (strcmp(value, "input") == 0) ? PresetType::input : PresetType::output;
+
+          const auto& preset = self->presets_manager->get_loaded_preset(type);
+
+          std::cout << preset << '\n';
+
+          return EXIT_SUCCESS;
+        }
+      }
     }
 
     if (g_variant_dict_contains(options, "bypass") != 0) {
@@ -591,6 +622,12 @@ auto application_new() -> GApplication* {
 
   g_application_add_main_option(G_APPLICATION(app), "load-preset", 'l', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING,
                                 _("Load a preset. Example: easyeffects -l music"), nullptr);
+
+  g_application_add_main_option(G_APPLICATION(app), "active-presets", 'a', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE, 
+                                _("Show the active presets."), nullptr);
+
+  g_application_add_main_option(G_APPLICATION(app), "active-preset", 's', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING,
+                                _("Show the loaded preset of a specific category. Takes 'input' or 'output' as a value. Example: easyeffects -s input"), nullptr);
 
   return G_APPLICATION(app);
 }

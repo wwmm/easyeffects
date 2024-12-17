@@ -71,6 +71,8 @@ class PresetsManager {
 
   void save_preset_file(const PresetType& preset_type, const std::string& name);
 
+  auto get_loaded_preset(const PresetType& preset_type) -> std::string;
+
   static void write_plugins_preset(const PresetType& preset_type,
                                    const std::vector<std::string>& plugins,
                                    nlohmann::json& json);

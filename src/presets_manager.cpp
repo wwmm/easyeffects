@@ -580,6 +580,14 @@ void PresetsManager::save_preset_file(const PresetType& preset_type, const std::
   util::debug("saved preset: " + output_file.string());
 }
 
+auto PresetsManager::get_loaded_preset(const PresetType& preset_type) -> std::string {
+  const auto* key = (preset_type == PresetType::input) ? "last-loaded-input-preset" : "last-loaded-output-preset";
+
+  const auto* preset = g_settings_get_string(settings, key);
+
+  return preset;
+}
+
 void PresetsManager::write_plugins_preset(const PresetType& preset_type,
                                           const std::vector<std::string>& plugins,
                                           nlohmann::json& json) {
