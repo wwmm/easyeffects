@@ -82,6 +82,7 @@ Kirigami.ScrollablePage {
             id: cardLayout
 
             Layout.fillWidth: true
+            Layout.topMargin: Kirigami.Units.largeSpacing
 
             Kirigami.Card {
                 id: cardControls

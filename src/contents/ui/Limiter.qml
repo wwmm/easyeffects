@@ -375,6 +375,7 @@ Kirigami.ScrollablePage {
 
             Layout.fillWidth: false
             Layout.alignment: Qt.AlignHCenter
+            Layout.topMargin: Kirigami.Units.largeSpacing
 
             contentItem: GridLayout {
                 id: levelGridLayout
