@@ -68,7 +68,7 @@ Kirigami.ScrollablePage {
 
             Controls.Label {
                 Layout.alignment: Qt.AlignRight
-                text: i18n("2rd")
+                text: i18n("2nd")
             }
 
         }
