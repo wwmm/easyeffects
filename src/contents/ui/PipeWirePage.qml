@@ -267,7 +267,88 @@ Kirigami.Page {
     Component {
         id: testSignalPage
 
-        Kirigami.ScrollablePage {
+        FormCard.FormCardPage {
+            FormCard.FormHeader {
+                title: i18n("State")
+            }
+
+            FormCard.FormCard {
+                EeSwitch {
+                    id: enableTestSignals
+
+                    label: i18n("Enabled")
+                    // isChecked: DB.Manager.main.enableServiceMode
+                    onCheckedChanged: {
+                    }
+                }
+
+            }
+
+            FormCard.FormHeader {
+                title: i18n("Channels")
+            }
+
+            FormCard.FormCard {
+                enabled: enableTestSignals.isChecked
+
+                FormCard.FormRadioDelegate {
+                    id: leftChannel
+
+                    text: i18n("Left")
+                }
+
+                FormCard.FormRadioDelegate {
+                    id: rightChannel
+
+                    text: i18n("Right")
+                }
+
+                FormCard.FormRadioDelegate {
+                    id: bothChannels
+
+                    text: i18n("Both")
+                    checked: true
+                }
+
+            }
+
+            FormCard.FormHeader {
+                title: i18n("Waveform")
+            }
+
+            FormCard.FormCard {
+                enabled: enableTestSignals.isChecked
+
+                FormCard.FormRadioDelegate {
+                    id: sineWave
+
+                    text: i18n("Sine Wave")
+                    checked: true
+                }
+
+                FormCard.FormRadioDelegate {
+                    id: whiteNoise
+
+                    text: i18n("White Noise")
+                }
+
+                EeSpinBox {
+                    id: minimumFrequency
+
+                    label: i18n("Frequency")
+                    from: 10
+                    to: 22000
+                    value: 1000
+                    decimals: 0
+                    stepSize: 1
+                    unit: "Hz"
+                    enabled: sineWave.checked
+                    onValueModified: (v) => {
+                    }
+                }
+
+            }
+
         }
 
     }
