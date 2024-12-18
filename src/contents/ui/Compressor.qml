@@ -87,7 +87,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("boostThreshold")
                             value: pluginDB.boostThreshold
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             enabled: mode.currentIndex === 1
                             visible: mode.currentIndex === 1
@@ -107,7 +107,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("boostAmount")
                             value: pluginDB.boostAmount
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             enabled: mode.currentIndex === 2
                             visible: mode.currentIndex === 2
@@ -142,7 +142,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("knee")
                             value: pluginDB.knee
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             onValueModified: (v) => {
                                 pluginDB.knee = v;
@@ -182,7 +182,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("threshold")
                             value: pluginDB.threshold
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             onValueModified: (v) => {
                                 pluginDB.threshold = v;
@@ -215,7 +215,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("releaseThreshold")
                             value: pluginDB.releaseThreshold
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             onValueModified: (v) => {
                                 pluginDB.releaseThreshold = v;
@@ -375,7 +375,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("sidechainPreamp")
                             value: pluginDB.sidechainPreamp
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: (v) => {
@@ -513,7 +513,7 @@ Kirigami.ScrollablePage {
                         to: pluginDB.getMaxValue("dry")
                         value: pluginDB.dry
                         decimals: 2
-                        stepSize: 0.01
+                        stepSize: 0.1
                         unit: "dB"
                         minusInfinityMode: true
                         onValueModified: (v) => {
@@ -537,7 +537,7 @@ Kirigami.ScrollablePage {
                         to: pluginDB.getMaxValue("wet")
                         value: pluginDB.wet
                         decimals: 2
-                        stepSize: 0.01
+                        stepSize: 0.1
                         unit: "dB"
                         minusInfinityMode: true
                         onValueModified: (v) => {
@@ -562,7 +562,7 @@ Kirigami.ScrollablePage {
                         to: pluginDB.getMaxValue("makeup")
                         value: pluginDB.makeup
                         decimals: 2
-                        stepSize: 0.01
+                        stepSize: 0.1
                         unit: "dB"
                         onValueModified: (v) => {
                             pluginDB.makeup = v;

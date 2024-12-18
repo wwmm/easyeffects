@@ -145,7 +145,7 @@ Kirigami.ScrollablePage {
                         to: pluginDB.getMaxValue("gain")
                         value: pluginDB.gain
                         decimals: 2
-                        stepSize: 0.01
+                        stepSize: 0.1
                         unit: "dB"
                         onValueModified: (v) => {
                             pluginDB.gain = v;

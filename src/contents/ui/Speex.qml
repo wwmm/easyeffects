@@ -89,7 +89,7 @@ Kirigami.ScrollablePage {
                         from: pluginDB.getMinValue("noiseSuppression")
                         to: pluginDB.getMaxValue("noiseSuppression")
                         value: pluginDB.noiseSuppression
-                        decimals: 1
+                        decimals: 2
                         stepSize: 0.1
                         unit: "dB"
                         onValueModified: (v) => {
