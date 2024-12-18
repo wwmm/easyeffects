@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-17 21:09+0000\n"
-"PO-Revision-Date: 2024-10-16 06:16+0000\n"
+"PO-Revision-Date: 2024-12-18 12:00+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.8-rc\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -189,6 +189,8 @@ msgid ""
 "Fixed a bug that makes the application crash when the option Linux Studio "
 "Plugins package is not installed."
 msgstr ""
+"S-a remediat o eroare care face ca aplicația să se blocheze atunci când "
+"pachetul opțional Linux Studio Plugins nu este instalat."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -230,13 +232,12 @@ msgid "Updated translations"
 msgstr "Traduceri actualizate"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
-#, fuzzy
 msgid ""
 "Fixed a bug in the crystalizer plugin where the scale values were not being "
 "properly applied."
 msgstr ""
-"A fost rezolvată o eroare care ar putea face ca modulul de tonalitate "
-"„pitch” să nu fie inițializat corespunzător"
+"A fost remediată o eroare în modulul plugin crystalizer în care valorile "
+"scalei nu erau aplicate corect."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
 msgid ""

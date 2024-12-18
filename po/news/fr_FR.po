@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-17 21:09+0000\n"
-"PO-Revision-Date: 2024-09-26 12:23+0000\n"
+"PO-Revision-Date: 2024-12-18 20:35+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -188,6 +188,8 @@ msgid ""
 "Fixed a bug that makes the application crash when the option Linux Studio "
 "Plugins package is not installed."
 msgstr ""
+"Correction d'un bogue entraînant le blocage de l'application lorsque "
+"l'option Linux Studio Plugins n'est pas installée."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -229,13 +231,12 @@ msgid "Updated translations"
 msgstr "Traductions mises à jour"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
-#, fuzzy
 msgid ""
 "Fixed a bug in the crystalizer plugin where the scale values were not being "
 "properly applied."
 msgstr ""
-"Correction d’un bogue qui pouvait empêcher l’initialisation correcte du "
-"greffon Hauteur"
+"Correction d'un bogue dans le greffon cristallisateur pour lequel les "
+"valeurs d'échelle n'étaient pas correctement appliquées."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
 msgid ""
