@@ -111,7 +111,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("reduction")
                             value: pluginDB.reduction
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             onValueModified: (v) => {
                                 pluginDB.reduction = v;
@@ -128,7 +128,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("curveThreshold")
                             value: pluginDB.curveThreshold
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             onValueModified: (v) => {
                                 pluginDB.curveThreshold = v;
@@ -145,7 +145,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("curveZone")
                             value: pluginDB.curveZone
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             onValueModified: (v) => {
                                 pluginDB.curveZone = v;
@@ -198,7 +198,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("hysteresisThreshold")
                             value: pluginDB.hysteresisThreshold
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             enabled: hysteresis.isChecked
                             onValueModified: (v) => {
@@ -216,7 +216,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("hysteresisZone")
                             value: pluginDB.hysteresisZone
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             enabled: hysteresis.isChecked
                             onValueModified: (v) => {
@@ -361,7 +361,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("sidechainPreamp")
                             value: pluginDB.sidechainPreamp
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: (v) => {
@@ -499,7 +499,7 @@ Kirigami.ScrollablePage {
                         to: pluginDB.getMaxValue("dry")
                         value: pluginDB.dry
                         decimals: 2
-                        stepSize: 0.01
+                        stepSize: 0.1
                         unit: "dB"
                         minusInfinityMode: true
                         onValueModified: (v) => {
@@ -523,7 +523,7 @@ Kirigami.ScrollablePage {
                         to: pluginDB.getMaxValue("wet")
                         value: pluginDB.wet
                         decimals: 2
-                        stepSize: 0.01
+                        stepSize: 0.1
                         unit: "dB"
                         minusInfinityMode: true
                         onValueModified: (v) => {
@@ -548,7 +548,7 @@ Kirigami.ScrollablePage {
                         to: pluginDB.getMaxValue("makeup")
                         value: pluginDB.makeup
                         decimals: 2
-                        stepSize: 0.01
+                        stepSize: 0.1
                         unit: "dB"
                         onValueModified: (v) => {
                             pluginDB.makeup = v;
@@ -570,6 +570,7 @@ Kirigami.ScrollablePage {
         Kirigami.CardsLayout {
             maximumColumns: 3
             uniformCellWidths: true
+            Layout.topMargin: Kirigami.Units.largeSpacing
 
             Kirigami.Card {
                 Layout.fillWidth: false

@@ -123,7 +123,7 @@ Kirigami.ScrollablePage {
                         to: pluginDB.getMaxValue("threshold")
                         value: pluginDB.threshold
                         decimals: 2
-                        stepSize: 0.01
+                        stepSize: 0.1
                         unit: "dB"
                         onValueModified: (v) => {
                             pluginDB.threshold = v;
@@ -272,7 +272,7 @@ Kirigami.ScrollablePage {
                         to: pluginDB.getMaxValue("sidechainPreamp")
                         value: pluginDB.sidechainPreamp
                         decimals: 2
-                        stepSize: 0.01
+                        stepSize: 0.1
                         unit: "dB"
                         minusInfinityMode: true
                         onValueModified: (v) => {
@@ -351,7 +351,7 @@ Kirigami.ScrollablePage {
                         to: pluginDB.getMaxValue("alrKnee")
                         value: pluginDB.alrKnee
                         decimals: 2
-                        stepSize: 0.01
+                        stepSize: 0.1
                         unit: "dB"
                         onValueModified: (v) => {
                             pluginDB.alrKnee = v;
@@ -375,6 +375,7 @@ Kirigami.ScrollablePage {
 
             Layout.fillWidth: false
             Layout.alignment: Qt.AlignHCenter
+            Layout.topMargin: Kirigami.Units.largeSpacing
 
             contentItem: GridLayout {
                 id: levelGridLayout

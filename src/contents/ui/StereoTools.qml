@@ -153,7 +153,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("slev")
                             value: pluginDB.slev
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: (v) => {
@@ -187,7 +187,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("mlev")
                             value: pluginDB.mlev
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: (v) => {
@@ -412,7 +412,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("dry")
                             value: pluginDB.dry
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: (v) => {
@@ -430,7 +430,7 @@ Kirigami.ScrollablePage {
                             to: pluginDB.getMaxValue("wet")
                             value: pluginDB.wet
                             decimals: 2
-                            stepSize: 0.01
+                            stepSize: 0.1
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: (v) => {

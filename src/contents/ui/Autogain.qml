@@ -79,8 +79,8 @@ Kirigami.ScrollablePage {
                         from: pluginDB.getMinValue("target")
                         to: pluginDB.getMaxValue("target")
                         value: pluginDB.target
-                        decimals: 0
-                        stepSize: 1
+                        decimals: 2
+                        stepSize: 0.1
                         unit: "dB"
                         onValueModified: (v) => {
                             pluginDB.target = v;
@@ -100,8 +100,8 @@ Kirigami.ScrollablePage {
                         from: pluginDB.getMinValue("silenceThreshold")
                         to: pluginDB.getMaxValue("silenceThreshold")
                         value: pluginDB.silenceThreshold
-                        decimals: 0
-                        stepSize: 1
+                        decimals: 2
+                        stepSize: 0.1
                         unit: "dB"
                         onValueModified: (v) => {
                             pluginDB.silenceThreshold = v;
@@ -262,7 +262,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 20
                         value: 0
-                        decimals: 1
+                        decimals: 0
 
                         anchors {
                             left: parent.left
