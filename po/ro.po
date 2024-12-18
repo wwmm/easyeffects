@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-17 21:09+0000\n"
-"PO-Revision-Date: 2024-10-15 23:15+0000\n"
+"PO-Revision-Date: 2024-12-18 12:00+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.8-rc\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -2243,14 +2243,12 @@ msgid "channels"
 msgstr "canale"
 
 #: src/application.cpp:301
-#, fuzzy
 msgid "Output Preset"
-msgstr "Preconfigurări de ieșire"
+msgstr "Preconfigurare de ieșire"
 
 #: src/application.cpp:302
-#, fuzzy
 msgid "Input Preset"
-msgstr "Preconfigurări de intrare"
+msgstr "Preconfigurare de intrare"
 
 #: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
@@ -2288,15 +2286,17 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Încarcă o preconfigurare. Exemplu: «easyeffects -l muzică»"
 
 #: src/application.cpp:627
-#, fuzzy
 msgid "Show the active presets."
-msgstr "Afișează preconfigurările disponibile."
+msgstr "Afișează preconfigurările active."
 
 #: src/application.cpp:630
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
 msgstr ""
+"Afișează preconfigurarea încărcată a unei anumite categorii. Preia „input” "
+"(intrare) sau „output” (ieșire) ca valoare. De exemplu: «easyeffects -s "
+"input»"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
