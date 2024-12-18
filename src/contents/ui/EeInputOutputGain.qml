@@ -40,8 +40,8 @@ Item {
                     from: pluginDB.getMinValue("inputGain")
                     to: pluginDB.getMaxValue("inputGain")
                     value: pluginDB.inputGain
-                    decimals: 0
-                    stepSize: 1
+                    decimals: 2
+                    stepSize: 0.1
                     unit: "dB"
                     boxWidth: 5 * Kirigami.Units.gridUnit
                     onValueModified: (v) => {
@@ -90,8 +90,8 @@ Item {
                     from: pluginDB.getMinValue("outputGain")
                     to: pluginDB.getMaxValue("outputGain")
                     value: pluginDB.outputGain
-                    decimals: 0
-                    stepSize: 1
+                    decimals: 2
+                    stepSize: 0.1
                     unit: "dB"
                     boxWidth: 5 * Kirigami.Units.gridUnit
                     onValueModified: (v) => {
