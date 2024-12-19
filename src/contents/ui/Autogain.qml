@@ -160,7 +160,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
-                        decimals: 0
+                        decimals: 1
 
                         anchors {
                             left: parent.left
@@ -177,7 +177,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
-                        decimals: 0
+                        decimals: 1
 
                         anchors {
                             left: parent.left
@@ -194,7 +194,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
-                        decimals: 0
+                        decimals: 1
 
                         anchors {
                             left: parent.left
@@ -211,7 +211,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
-                        decimals: 0
+                        decimals: 1
 
                         anchors {
                             left: parent.left
@@ -228,7 +228,7 @@ Kirigami.ScrollablePage {
                         from: 0
                         to: 50
                         value: 0
-                        decimals: 0
+                        decimals: 1
 
                         anchors {
                             left: parent.left
@@ -245,7 +245,7 @@ Kirigami.ScrollablePage {
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
-                        decimals: 0
+                        decimals: 1
 
                         anchors {
                             left: parent.left
