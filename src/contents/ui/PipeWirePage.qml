@@ -28,6 +28,23 @@ Kirigami.Page {
             "title": i18n("Test Signal"),
             "icon": "waveform-symbolic"
         });
+        panelListView.currentIndex = DB.Manager.main.visiblePipeWirePage;
+        switch (DB.Manager.main.visiblePipeWirePage) {
+        case 0:
+            panelStack.replace(generalPage);
+            break;
+        case 1:
+            panelStack.replace(modulesPage);
+            break;
+        case 2:
+            panelStack.replace(clientsPage);
+            break;
+        case 3:
+            panelStack.replace(testSignalPage);
+            break;
+        default:
+            null;
+        }
     }
 
     Component {
@@ -277,8 +294,11 @@ Kirigami.Page {
                     id: enableTestSignals
 
                     label: i18n("Enabled")
-                    // isChecked: DB.Manager.main.enableServiceMode
+                    isChecked: DB.Manager.testSignals.enable
                     onCheckedChanged: {
+                        if (isChecked !== DB.Manager.testSignals.enable)
+                            DB.Manager.testSignals.enable = isChecked;
+
                     }
                 }
 
@@ -295,19 +315,36 @@ Kirigami.Page {
                     id: leftChannel
 
                     text: i18n("Left")
+                    checked: DB.Manager.testSignals.channels === 0
+                    onCheckedChanged: {
+                        if (checked !== DB.Manager.testSignals.channels)
+                            DB.Manager.testSignals.channels = 0;
+
+                    }
                 }
 
                 FormCard.FormRadioDelegate {
                     id: rightChannel
 
                     text: i18n("Right")
+                    checked: DB.Manager.testSignals.channels === 1
+                    onCheckedChanged: {
+                        if (checked !== DB.Manager.testSignals.channels)
+                            DB.Manager.testSignals.channels = 1;
+
+                    }
                 }
 
                 FormCard.FormRadioDelegate {
                     id: bothChannels
 
                     text: i18n("Both")
-                    checked: true
+                    checked: DB.Manager.testSignals.channels === 2
+                    onCheckedChanged: {
+                        if (checked !== DB.Manager.testSignals.channels)
+                            DB.Manager.testSignals.channels = 2;
+
+                    }
                 }
 
             }
@@ -323,27 +360,41 @@ Kirigami.Page {
                     id: sineWave
 
                     text: i18n("Sine Wave")
-                    checked: true
+                    checked: DB.Manager.testSignals.signalType === 0
+                    onCheckedChanged: {
+                        if (checked !== DB.Manager.testSignals.signalType)
+                            DB.Manager.testSignals.signalType = 0;
+
+                    }
                 }
 
                 FormCard.FormRadioDelegate {
                     id: whiteNoise
 
                     text: i18n("White Noise")
+                    checked: DB.Manager.testSignals.signalType === 1
+                    onCheckedChanged: {
+                        if (checked !== DB.Manager.testSignals.signalType)
+                            DB.Manager.testSignals.signalType = 1;
+
+                    }
                 }
 
                 EeSpinBox {
-                    id: minimumFrequency
+                    id: frequency
 
                     label: i18n("Frequency")
                     from: 10
                     to: 22000
-                    value: 1000
+                    value: DB.Manager.testSignals.frequency
                     decimals: 0
                     stepSize: 1
                     unit: "Hz"
                     enabled: sineWave.checked
                     onValueModified: (v) => {
+                        if (v !== DB.Manager.testSignals.frequency)
+                            DB.Manager.testSignals.frequency = v;
+
                     }
                 }
 
@@ -384,15 +435,19 @@ Kirigami.Page {
                     switch (index) {
                     case 0:
                         panelStack.replace(generalPage);
+                        DB.Manager.main.visiblePipeWirePage = 0;
                         break;
                     case 1:
                         panelStack.replace(modulesPage);
+                        DB.Manager.main.visiblePipeWirePage = 1;
                         break;
                     case 2:
                         panelStack.replace(clientsPage);
+                        DB.Manager.main.visiblePipeWirePage = 2;
                         break;
                     case 3:
                         panelStack.replace(testSignalPage);
+                        DB.Manager.main.visiblePipeWirePage = 3;
                         break;
                     default:
                         console.log("pipewire page stackview: invalid index");
@@ -432,7 +487,6 @@ Kirigami.Page {
 
             Layout.fillHeight: true
             Layout.fillWidth: true
-            initialItem: generalPage
         }
 
     }

@@ -26,6 +26,7 @@
 #include "easyeffects_db_spectrum.h"       // IWYU pragma: export
 #include "easyeffects_db_streaminputs.h"   // IWYU pragma: export
 #include "easyeffects_db_streamoutputs.h"  // IWYU pragma: export
+#include "easyeffects_db_test_signals.h"   // IWYU pragma: export
 #include "pipeline_type.hpp"
 
 namespace db {
@@ -37,6 +38,7 @@ class Manager : public QObject {
   Q_PROPERTY(db::Spectrum* spectrum MEMBER spectrum NOTIFY spectrumChanged)
   Q_PROPERTY(db::StreamInputs* streamInputs MEMBER streamInputs NOTIFY streamInputsChanged)
   Q_PROPERTY(db::StreamOutputs* streamOutputs MEMBER streamOutputs NOTIFY streamOutputsChanged)
+  Q_PROPERTY(db::TestSignals* testSignals MEMBER testSignals NOTIFY testSignalsChanged)
 
   Q_PROPERTY(QMap<QString, QVariant> soePluginsDB MEMBER soePluginsDB NOTIFY soePluginsDBChanged)
   Q_PROPERTY(QMap<QString, QVariant> siePluginsDB MEMBER siePluginsDB NOTIFY siePluginsDBChanged)
@@ -62,6 +64,7 @@ class Manager : public QObject {
   db::Spectrum* spectrum;
   db::StreamInputs* streamInputs;
   db::StreamOutputs* streamOutputs;
+  db::TestSignals* testSignals;
 
   QMap<QString, QVariant> soePluginsDB;
   QMap<QString, QVariant> siePluginsDB;
@@ -85,6 +88,7 @@ class Manager : public QObject {
   void streamOutputsChanged();
   void soePluginsDBChanged();
   void siePluginsDBChanged();
+  void testSignalsChanged();
 
  private:
   void create_plugin_db(const QString& parentGroup, const auto& plugins_list, QMap<QString, QVariant>& plugins_map);

@@ -30,6 +30,7 @@
 #include <numbers>
 #include <span>
 #include <thread>
+#include "db_manager.hpp"
 #include "pw_manager.hpp"
 #include "tags_app.hpp"
 #include "util.hpp"
@@ -135,7 +136,16 @@ void on_filter_state_changed(void* userdata,
   }
 }
 
-const struct pw_filter_events filter_events = {.state_changed = on_filter_state_changed, .process = on_process};
+const struct pw_filter_events filter_events = {.version = 0,
+                                               .destroy = nullptr,
+                                               .state_changed = on_filter_state_changed,
+                                               .io_changed = nullptr,
+                                               .param_changed = nullptr,
+                                               .add_buffer = nullptr,
+                                               .remove_buffer = nullptr,
+                                               .process = on_process,
+                                               .drained = nullptr,
+                                               .command = nullptr};
 
 }  // namespace
 
@@ -212,6 +222,25 @@ TestSignals::TestSignals(pw::Manager* pipe_manager) : pm(pipe_manager), random_g
   node_id = pw_filter_get_node_id(filter);
 
   pm->sync_wait_unlock();
+
+  signal_type = static_cast<TestSignalType>(db::TestSignals::signalType());
+
+  set_frequency(db::TestSignals::frequency());
+
+  set_state(db::TestSignals::enable());
+
+  set_channel(db::TestSignals::channels());
+
+  connect(db::TestSignals::self(), &db::TestSignals::enableChanged, [this]() { set_state(db::TestSignals::enable()); });
+
+  connect(db::TestSignals::self(), &db::TestSignals::frequencyChanged,
+          [this]() { set_frequency(db::TestSignals::frequency()); });
+
+  connect(db::TestSignals::self(), &db::TestSignals::channelsChanged,
+          [this]() { set_channel(db::TestSignals::channels()); });
+
+  connect(db::TestSignals::self(), &db::TestSignals::signalTypeChanged,
+          [this]() { signal_type = static_cast<TestSignalType>(db::TestSignals::signalType()); });
 }
 
 TestSignals::~TestSignals() {
@@ -254,4 +283,26 @@ auto TestSignals::white_noise() -> float {
   const auto v = normal_distribution(random_generator);
 
   return (v > 1.0F) ? 1.0F : ((v < -1.0F) ? -1.0F : v);
+}
+
+void TestSignals::set_channel(const int& value) {
+  switch (value) {
+    case 0: {
+      create_left_channel = true;
+      create_right_channel = false;
+      break;
+    }
+    case 1: {
+      create_left_channel = false;
+      create_right_channel = true;
+      break;
+    }
+    case 2: {
+      create_left_channel = true;
+      create_right_channel = true;
+      break;
+    }
+    default:
+      break;
+  }
 }

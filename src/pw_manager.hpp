@@ -33,7 +33,6 @@
 #include <array>
 #include <cstddef>
 #include <cstdint>
-#include <map>
 #include <string>
 #include <vector>
 #include "pw_model_clients.hpp"

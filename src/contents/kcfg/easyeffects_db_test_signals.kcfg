@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/easyeffectsrc" />
+    <group name="TestSignals">
+        <entry name="enable" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="frequency" type="Double">
+            <label>Sine Wave Frequency</label>
+            <min>10</min>
+            <max>22000</max>
+            <default>1000</default>
+        </entry>
+        <entry name="channels" type="Enum">
+            <label>Type</label>
+            <choices>
+                <choice name="left">
+                    <label>Left</label>
+                </choice>
+                <choice name="right">
+                    <label>Right</label>
+                </choice>
+                <choice name="both">
+                    <label>Both</label>
+                </choice>
+            </choices>
+            <default>2</default>
+        </entry>
+        <entry name="signalType" type="Enum">
+            <label>Signal Type</label>
+            <choices>
+                <choice name="sineWave">
+                    <label>Sine Wave</label>
+                </choice>
+                <choice name="whiteNoise">
+                    <label>White Noise</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
+    </group>
+</kcfg>

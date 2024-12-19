@@ -104,6 +104,24 @@
             </choices>
             <default>0</default>
         </entry>
+        <entry name="visiblePipeWirePage" type="Enum">
+            <label>Saves the last viewed page.</label>
+            <choices>
+                <choice name="generalPage">
+                    <label>General Settings</label>
+                </choice>
+                <choice name="modulesPage">
+                    <label>Modules</label>
+                </choice>
+                <choice name="clientsPage">
+                    <label>Clients</label>
+                </choice>
+                <choice name="testSignalsPage">
+                    <label>Test Signals</label>
+                </choice>
+            </choices>
+            <default>0</default>
+        </entry>
     </group>
     <group name="EffectsPipelines">
         <entry name="bypass" type="Bool">

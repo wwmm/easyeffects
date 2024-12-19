@@ -48,6 +48,7 @@
 #include "stream_input_effects.hpp"
 #include "stream_output_effects.hpp"
 #include "tags_plugin_name.hpp"
+#include "test_signals.hpp"
 #include "util.hpp"
 
 void csignalHandler(int s) {
@@ -133,6 +134,8 @@ int main(int argc, char* argv[]) {
 
   auto sie = std::make_unique<StreamInputEffects>(pm);
   auto soe = std::make_unique<StreamOutputEffects>(pm);
+
+  TestSignals::self(pm);
 
   {
     pw::Manager::exclude_monitor_stream = db::Main::excludeMonitorStreams();

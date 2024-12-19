@@ -51,7 +51,8 @@ Manager::Manager()
     : main(db::Main::self()),
       spectrum(db::Spectrum::self()),
       streamInputs(db::StreamInputs::self()),
-      streamOutputs(db::StreamOutputs::self()) {
+      streamOutputs(db::StreamOutputs::self()),
+      testSignals(db::TestSignals::self()) {
   // creating our database directory if it does not exist
 
   auto db_dir_path = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation).append("/easyeffects/db");
@@ -99,6 +100,7 @@ void Manager::saveAll() const {
   spectrum->save();
   streamOutputs->save();
   streamInputs->save();
+  testSignals->save();
 
   for (const auto& plugin_db : siePluginsDB.values()) {
     plugin_db.value<KConfigSkeleton*>()->save();
@@ -116,6 +118,7 @@ void Manager::resetAll() const {
   spectrum->setDefaults();
   streamOutputs->setDefaults();
   streamInputs->setDefaults();
+  testSignals->setDefaults();
 
   for (const auto& plugin_db : siePluginsDB.values()) {
     plugin_db.value<KConfigSkeleton*>()->setDefaults();

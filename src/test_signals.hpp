@@ -43,6 +43,11 @@ class TestSignals : public QObject {
   auto operator=(const TestSignals&&) -> TestSignals& = delete;
   ~TestSignals() override;
 
+  static TestSignals& self(pw::Manager* pm) {
+    static TestSignals ts = TestSignals(pm);
+    return ts;
+  }
+
   struct data;
 
   struct port {
@@ -84,8 +89,6 @@ class TestSignals : public QObject {
 
   void set_active(const bool& state) const;
 
-  void set_signal_type(const TestSignalType& value);
-
   auto white_noise() -> float;
 
  private:
@@ -104,4 +107,6 @@ class TestSignals : public QObject {
   std::mt19937 random_generator;
 
   std::normal_distribution<float> normal_distribution{0.0F, 0.3F};
+
+  void set_channel(const int& value);
 };
