@@ -48,10 +48,12 @@ FormCard.AbstractFormDelegate {
     onClicked: spinbox.forceActiveFocus()
     Keys.onPressed: (event) => {
         if (event.key === Qt.Key_PageUp) {
-            control.valueModified(control.value + pageSteps * stepSize);
+            const v = control.value + pageSteps * stepSize;
+            control.valueModified(Common.clamp(v, control.from, control.to));
             event.accepted = true;
         } else if (event.key === Qt.Key_PageDown) {
-            control.valueModified(control.value - pageSteps * stepSize);
+            const v = control.value - pageSteps * stepSize;
+            control.valueModified(Common.clamp(v, control.from, control.to));
             event.accepted = true;
         }
     }
@@ -95,7 +97,8 @@ FormCard.AbstractFormDelegate {
             readonly property real decimalFactor: Math.pow(10, control.decimals)
 
             function decimalToInt(decimal) {
-                return decimal * decimalFactor;
+                // Return the toFixed string in order to avoid rounding issues
+                return (decimal * decimalFactor).toFixed(0);
             }
 
             Layout.fillWidth: control.spinboxLayoutFillWidth
@@ -104,7 +107,8 @@ FormCard.AbstractFormDelegate {
             focusPolicy: control.focusPolicy
             wheelEnabled: true
             onValueModified: {
-                control.valueModified(spinbox.value * 1 / spinbox.decimalFactor);
+                // Signal the toFixed string in order to avoid rounding issues
+                control.valueModified((spinbox.value / spinbox.decimalFactor).toFixed(control.decimals));
             }
             stepSize: spinbox.decimalToInt(control.stepSize)
             value: spinbox.decimalToInt(control.value)
@@ -125,16 +129,14 @@ FormCard.AbstractFormDelegate {
                 return t;
             }
             valueFromText: (text, locale) => {
-                if (text === "-inf") {
-                    let v = control.from * spinbox.decimalFactor;
-                    return Math.round(v);
-                }
+                if (text === "-inf")
+                    return Math.floor(control.from * spinbox.decimalFactor);
+
                 const re = /^[-+]?\d+(?:[.,]\d+)*/;
-                const regex_result = re.exec(text);
+                const regex_result = re.exec(text) ?? [];
                 try {
-                    let v = Number.fromLocaleString(locale, regex_result[0]) * spinbox.decimalFactor;
-                    v = (!isNaN(v)) ? Math.round(v) : spinbox.value;
-                    return v;
+                    const n = Number.fromLocaleString(locale, regex_result[0]);
+                    return (!isNaN(n)) ? Math.round(n * spinbox.decimalFactor) : spinbox.value;
                 } catch (error) {
                     console.log(error);
                     return spinbox.value;
