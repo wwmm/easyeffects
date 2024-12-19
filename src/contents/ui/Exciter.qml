@@ -100,7 +100,7 @@ Kirigami.ScrollablePage {
                         from: pluginDB.getMinValue("amount")
                         to: pluginDB.getMaxValue("amount")
                         value: pluginDB.amount
-                        decimals: 1
+                        decimals: 2
                         stepSize: 0.1
                         unit: "dB"
                         onValueModified: (v) => {
