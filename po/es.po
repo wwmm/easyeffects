@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-17 21:09+0000\n"
-"PO-Revision-Date: 2024-09-05 14:09+0000\n"
+"PO-Revision-Date: 2024-12-20 01:00+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
 "es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -2243,14 +2243,12 @@ msgid "channels"
 msgstr "canales"
 
 #: src/application.cpp:301
-#, fuzzy
 msgid "Output Preset"
-msgstr "Perfiles de salida"
+msgstr "Preajuste de salida"
 
 #: src/application.cpp:302
-#, fuzzy
 msgid "Input Preset"
-msgstr "Perfiles de entrada"
+msgstr "Preajuste de entrada"
 
 #: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
@@ -2287,15 +2285,16 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Cargar un perfil. Por ejemplo: easyeffects -l musica"
 
 #: src/application.cpp:627
-#, fuzzy
 msgid "Show the active presets."
-msgstr "Mostrar los perfiles disponibles."
+msgstr "Mostrar los ajustes preestablecidos activos."
 
 #: src/application.cpp:630
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
 msgstr ""
+"Muestra el valor preestablecido cargado de una categoría específica. Toma "
+"\"entrada\" o \"salida\" como valor. Ejemplo: easyeffects -s input"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
