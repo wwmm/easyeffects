@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-17 21:09+0000\n"
-"PO-Revision-Date: 2024-09-26 12:23+0000\n"
+"PO-Revision-Date: 2024-12-20 01:00+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.9.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -188,6 +188,8 @@ msgid ""
 "Fixed a bug that makes the application crash when the option Linux Studio "
 "Plugins package is not installed."
 msgstr ""
+"Se corrigió un error que hacía que la aplicación se bloqueara cuando la "
+"opción del paquete de complementos de Linux Studio no estaba instalada."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -229,13 +231,12 @@ msgid "Updated translations"
 msgstr "Traducciones actualizadas"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
-#, fuzzy
 msgid ""
 "Fixed a bug in the crystalizer plugin where the scale values were not being "
 "properly applied."
 msgstr ""
-"Se ha corregido un error que podía hacer que el plugin de tonalidad (pitch) "
-"no se inicializara correctamente"
+"Se corrigió un error en el complemento Crystallizer por el cual los valores "
+"de escala no se aplicaban correctamente."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
 msgid ""
