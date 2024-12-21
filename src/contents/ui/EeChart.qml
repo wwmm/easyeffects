@@ -55,6 +55,11 @@ Item {
 
         implicitHeight: DB.Manager.spectrum.height
         antialiasing: true
+        marginBottom: -5 // https://github.com/qt/qtgraphs/blob/dev/src/graphs2d/qgraphsview_p.h
+        marginTop: 0
+        marginLeft: 0
+        axisX: axisFreq
+        axisY: axisAmplitude
         Component.onCompleted: {
             for (let n = 0; n < testData.length; n++) {
                 splineSeries.append(testData[n].x, testData[n].y);
@@ -64,12 +69,11 @@ Item {
         }
 
         anchors {
-            left: parent.left
-            leftMargin: 0
-            right: parent.right
+            fill: parent
+            leftMargin: -60
             rightMargin: 0
-            top: parent.top
             topMargin: 0
+            bottomMargin: 0
         }
 
         ValueAxis {
@@ -79,17 +83,21 @@ Item {
             min: DB.Manager.spectrum.minimumFrequency
             max: DB.Manager.spectrum.maximumFrequency
             gridVisible: false
+            subGridVisible: false
             lineVisible: false
+            labelDecimals: 0
         }
 
         ValueAxis {
-            id: axisY
+            id: axisAmplitude
 
             labelFormat: "%.1e"
             gridVisible: false
+            subGridVisible: false
             lineVisible: false
             visible: false
             labelsVisible: false
+            titleVisible: false
         }
 
         BarSeries {
@@ -126,6 +134,12 @@ Item {
                 visible: seriesType === 1
             }
 
+        }
+
+        theme: GraphsTheme {
+            colorScheme: GraphsTheme.ColorScheme.Dark // Light, Dark, Automatic
+            theme: GraphsTheme.Theme.OrangeSeries // QtGreen, QtGreenNeon, MixSeries, OrangeSeries, YellowSeries, BlueSeries, PurpleSeries, GreySeries
+            plotAreaBackgroundColor: "transparent"
         }
 
     }
