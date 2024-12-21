@@ -32,7 +32,7 @@ include(ECMFindQmlModule)
 include(ECMQmlModule)
 
 find_package(Qt${QT_MAJOR_VERSION} REQUIRED NO_MODULE COMPONENTS
-    Charts
+    Graphs
     Core
     Gui
     Network

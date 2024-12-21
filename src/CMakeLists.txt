@@ -72,7 +72,7 @@ target_include_directories(easyeffects PRIVATE
 )
 
 target_link_libraries(easyeffects PRIVATE
-    Qt${QT_MAJOR_VERSION}::Charts
+    Qt${QT_MAJOR_VERSION}::Graphs
     KF${QT_MAJOR_VERSION}::ConfigCore
     KF${QT_MAJOR_VERSION}::ConfigGui
     Qt${QT_MAJOR_VERSION}::Core
