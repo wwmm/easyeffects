@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-17 21:09+0000\n"
-"PO-Revision-Date: 2024-11-24 14:00+0000\n"
+"PO-Revision-Date: 2024-12-21 05:36+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
@@ -18,13 +18,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.9-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "@APP_NAME@"
-msgstr "Equalizador de Áudio @APP_NAME@"
+msgstr "@NOME_DO_APLICATIVO@"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -90,7 +90,7 @@ msgstr "_Sobre o Easy Effects"
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr "_Sair"
+msgstr "_Desistir"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:159
@@ -266,7 +266,7 @@ msgstr "Saída"
 #: data/ui/multiband_gate.ui:596 data/ui/pitch.ui:322 data/ui/reverb.ui:461
 #: data/ui/rnnoise.ui:376 data/ui/speex.ui:290 data/ui/stereo_tools.ui:720
 msgid "Plugin Output Gain"
-msgstr "Ganho de Saída do Módulo de Extensão"
+msgstr "Ganho de saída do plugin"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:673 data/ui/expander.ui:594
 #: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:246
@@ -312,7 +312,7 @@ msgstr "2º"
 
 #: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
 msgid "Amount"
-msgstr "Quantidade"
+msgstr "Quantia"
 
 #: data/ui/bass_enhancer.ui:141 data/ui/bass_enhancer.ui:420
 #: data/ui/exciter.ui:141 data/ui/exciter.ui:420
@@ -2244,14 +2244,12 @@ msgid "channels"
 msgstr "canais"
 
 #: src/application.cpp:301
-#, fuzzy
 msgid "Output Preset"
-msgstr "Predefinições de Saída"
+msgstr "Predefinição de saída"
 
 #: src/application.cpp:302
-#, fuzzy
 msgid "Input Preset"
-msgstr "Predefinições de Entrada"
+msgstr "Predefinição de entrada"
 
 #: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
@@ -2291,15 +2289,16 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carregar uma predefinição. Por exemplo: easyeffects -l music"
 
 #: src/application.cpp:627
-#, fuzzy
 msgid "Show the active presets."
-msgstr "Exibir as predefinições que estão disponíveis."
+msgstr "Mostrar as predefinições ativas."
 
 #: src/application.cpp:630
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
 msgstr ""
+"Mostra a predefinição carregada de uma categoria específica. Aceita 'input' "
+"ou 'output' como um valor. Exemplo: easyeffects -s input"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
