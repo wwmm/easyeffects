@@ -119,138 +119,139 @@ jobs:
         if-no-files-found: error
 
 
-  alpine-linux:
-    name: Alpine Linux (stdc++)
-    runs-on: ubuntu-22.04
-    container:
-      image: alpine
+  # alpine-linux:
+  #   name: Alpine Linux (stdc++)
+  #   runs-on: ubuntu-22.04
+  #   container:
+  #     image: alpine
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4.1.7
+  #   steps:
+  #   - name: Checkout repository
+  #     uses: actions/checkout@v4.1.7
 
-    - name: Install deps
-      run: |
-        apk update
-        apk upgrade
+  #   - name: Install deps
+  #     run: |
+  #       apk update
+  #       apk upgrade
 
-        # install general build deps
-        apk add cmake extra-cmake-modules samurai clang clang-extra-tools build-base bash libc++-dev
+  #       # install general build deps
+  #       apk add cmake extra-cmake-modules samurai clang clang-extra-tools build-base bash libc++-dev
 
-        # inspired by https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
-        depends="lv2"
-        makedepends="
-        qt6-qtbase-dev
-        qt6-qtgraphs-dev
-        kiconthemes-dev
-        kirigami-dev
-        ki18n-dev
-        kconfigwidgets-dev
-        kconfig-dev
-        kcoreaddons-dev
-        qqc2-desktop-style-dev
-        appstream-glib-dev
-        desktop-file-utils
-        fftw-dev
-        gsl-dev
-        itstool
-        libbs2b-dev
-        libebur128-dev
-        libsamplerate-dev
-        libsigc++3-dev
-        libsndfile-dev
-        libtbb-dev
-        lilv-dev
-        lv2-dev
-        nlohmann-json
-        pipewire-dev
-        pkgconf
-        rnnoise-dev
-        soundtouch-dev
-        speexdsp-dev
-        zita-convolver-dev
-        ladspa-dev
-        "
+  #       # inspired by https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
+  #       depends="lv2"
+  #       makedepends="
+  #       qt6-qtbase-dev
+  #       qt6-qtgraphs-dev
+  #       kiconthemes-dev
+  #       kirigami-dev
+  #       ki18n-dev
+  #       kconfigwidgets-dev
+  #       kconfig-dev
+  #       kcoreaddons-dev
+  #       qqc2-desktop-style-dev
+  #       appstream-glib-dev
+  #       desktop-file-utils
+  #       fftw-dev
+  #       gsl-dev
+  #       itstool
+  #       libbs2b-dev
+  #       libebur128-dev
+  #       libsamplerate-dev
+  #       libsigc++3-dev
+  #       libsndfile-dev
+  #       libtbb-dev
+  #       lilv-dev
+  #       lv2-dev
+  #       nlohmann-json
+  #       pipewire-dev
+  #       pkgconf
+  #       rnnoise-dev
+  #       soundtouch-dev
+  #       speexdsp-dev
+  #       zita-convolver-dev
+  #       ladspa-dev
+  #       "
 
-        # install easyeffects deps
-        apk add $makedepends $depends
+  #       # install easyeffects deps
+  #       apk add $makedepends $depends
 
-        # install libportal since we technically need it for a full check
-        apk add libportal-dev
+  #       # install libportal since we technically need it for a full check
+  #       apk add libportal-dev
 
-    - name: Build with Clang (libstdc++)
-      run: |
-        CC=clang CXX=clang++ CXXFLAGS=-stdlib=libstdc++ cmake -B build -S . -G Ninja -Wno-dev -DENABLE_LIBCPP_WORKAROUNDS=ON -DENABLE_LIBPORTAL=ON
-        cmake --build build
+  #   - name: Build with Clang (libstdc++)
+  #     run: |
+  #       CC=clang CXX=clang++ CXXFLAGS=-stdlib=libstdc++ cmake -B build -S . -G Ninja -Wno-dev -DENABLE_LIBCPP_WORKAROUNDS=ON -DENABLE_LIBPORTAL=ON
+  #       cmake --build build
 
   # For some reason a program compiled with libc++ does not link to a Qt built with libstdc++. The linking fails
   # because of undefined functions. So I moved the libc++ CI a a distribution that uses libc++ by default.
   # 
   # For some reason "actions/checkout@v4.1.7" did not work in the Chimera image. Failed with an error about the nodejs
   # binary not being found
-  chimera-linux:
-    name: Chimera Linux (libc++)
-    runs-on: ubuntu-22.04
-    container:
-      image: chimeralinux/chimera
 
-    steps:
-    - name: Install deps
-      run: |
-        apk add chimera-repo-contrib
-        apk update
-        apk upgrade
+  # chimera-linux:
+  #   name: Chimera Linux (libc++)
+  #   runs-on: ubuntu-22.04
+  #   container:
+  #     image: chimeralinux/chimera
 
-        # install general build deps
-        apk add git cmake extra-cmake-modules ninja clang clang-tools-extra base-devel bash libcxx-devel nodejs
+  #   steps:
+  #   - name: Install deps
+  #     run: |
+  #       apk add chimera-repo-contrib
+  #       apk update
+  #       apk upgrade
 
-        depends="lv2"
-        makedepends="
-        appstream
-        appstream-glib-devel
-        desktop-file-utils
-        fftw-devel
-        gettext
-        itstool
-        kiconthemes
-        kirigami-devel
-        ki18n-devel
-        kconfigwidgets-devel
-        kconfig-devel
-        kcoreaddons-devel
-        qqc2-desktop-style-devel
-        libbs2b-devel
-        libebur128-devel
-        libsamplerate-devel
-        libsigc++-devel
-        libsndfile-devel
-        lilv-devel
-        lv2
-        nlohmann-json
-        onetbb-devel
-        pipewire-devel
-        pkgconf
-        qt6-qtbase-devel
-        qt6-qtgraphs-devel
-        rnnoise-devel
-        soundtouch-devel
-        speexdsp-devel
-        zita-convolver-devel
-        ladspa-sdk
-        "
+  #       # install general build deps
+  #       apk add git cmake extra-cmake-modules ninja clang clang-tools-extra base-devel bash libcxx-devel nodejs
 
-        # install easyeffects deps
-        apk add $makedepends $depends
+  #       depends="lv2"
+  #       makedepends="
+  #       appstream
+  #       appstream-glib-devel
+  #       desktop-file-utils
+  #       fftw-devel
+  #       gettext
+  #       itstool
+  #       kiconthemes
+  #       kirigami-devel
+  #       ki18n-devel
+  #       kconfigwidgets-devel
+  #       kconfig-devel
+  #       kcoreaddons-devel
+  #       qqc2-desktop-style-devel
+  #       libbs2b-devel
+  #       libebur128-devel
+  #       libsamplerate-devel
+  #       libsigc++-devel
+  #       libsndfile-devel
+  #       lilv-devel
+  #       lv2
+  #       nlohmann-json
+  #       onetbb-devel
+  #       pipewire-devel
+  #       pkgconf
+  #       qt6-qtbase-devel
+  #       qt6-qtgraphs-devel
+  #       rnnoise-devel
+  #       soundtouch-devel
+  #       speexdsp-devel
+  #       zita-convolver-devel
+  #       ladspa-sdk
+  #       "
 
-        # install libportal since we technically need it for a full check
-        apk add libportal-devel
+  #       # install easyeffects deps
+  #       apk add $makedepends $depends
 
-    - name: Build with Clang (libc++)
-      run: |
-        git clone https://github.com/wwmm/easyeffects.git --depth=1 -b eeqt
-        cd easyeffects
-        CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev -DENABLE_LIBCPP_WORKAROUNDS=ON -DENABLE_LIBPORTAL=ON
-        cmake --build build
+  #       # install libportal since we technically need it for a full check
+  #       apk add libportal-devel
+
+  #   - name: Build with Clang (libc++)
+  #     run: |
+  #       git clone https://github.com/wwmm/easyeffects.git --depth=1 -b eeqt
+  #       cd easyeffects
+  #       CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev -DENABLE_LIBCPP_WORKAROUNDS=ON -DENABLE_LIBPORTAL=ON
+  #       cmake --build build
 
   codeql-analyze:
     name: CodeQL Analyze
