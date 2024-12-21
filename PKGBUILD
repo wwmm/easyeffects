@@ -18,7 +18,7 @@ depends=(
   'qqc2-desktop-style' 
   'breeze-icons' 
   'qt6-base'
-  'qt6-charts' 
+  'qt6-graphs' 
   'pipewire-pulse' 
   'lilv'
   'libsamplerate' 

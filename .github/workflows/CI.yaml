@@ -141,7 +141,7 @@ jobs:
         depends="lv2"
         makedepends="
         qt6-qtbase-dev
-        qt6-qtcharts-dev
+        qt6-qtgraphs-dev
         kiconthemes-dev
         kirigami-dev
         ki18n-dev
@@ -231,7 +231,7 @@ jobs:
         pipewire-devel
         pkgconf
         qt6-qtbase-devel
-        qt6-qtcharts-devel
+        qt6-qtgraphs-devel
         rnnoise-devel
         soundtouch-devel
         speexdsp-devel

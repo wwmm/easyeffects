@@ -1,6 +1,6 @@
 // bug: https://bugreports.qt.io/browse/QTBUG-66150
 
-import QtCharts
+import QtGraphs
 import QtQml
 import QtQuick
 import ee.database as DB
@@ -37,16 +37,24 @@ Item {
 
     }
 
-    ChartView {
+    GraphsView {
+        // LogValueAxis {
+        //     id: axisFreqLog
+        //     labelFormat: "%.0f"
+        //     min: DB.Manager.spectrum.minimumFrequency
+        //     max: DB.Manager.spectrum.maximumFrequency
+        //     base: 10
+        //     gridVisible: false
+        //     lineVisible: false
+        //     labelsColor: color1
+        //     gridLineColor: color3
+        //     minorGridLineColor: color2
+        // }
+
         id: chart
 
         implicitHeight: DB.Manager.spectrum.height
         antialiasing: true
-        localizeNumbers: true
-        backgroundColor: backgroundRectColor
-        backgroundRoundness: 0
-        legend.visible: false
-        dropShadowEnabled: false
         Component.onCompleted: {
             for (let n = 0; n < testData.length; n++) {
                 splineSeries.append(testData[n].x, testData[n].y);
@@ -64,27 +72,6 @@ Item {
             topMargin: 0
         }
 
-        margins {
-            left: 0
-            right: 0
-            top: 0
-            bottom: 0
-        }
-
-        LogValueAxis {
-            id: axisFreqLog
-
-            labelFormat: "%.0f"
-            min: DB.Manager.spectrum.minimumFrequency
-            max: DB.Manager.spectrum.maximumFrequency
-            base: 10
-            gridVisible: false
-            lineVisible: false
-            labelsColor: color1
-            gridLineColor: color3
-            minorGridLineColor: color2
-        }
-
         ValueAxis {
             id: axisFreq
 
@@ -93,9 +80,6 @@ Item {
             max: DB.Manager.spectrum.maximumFrequency
             gridVisible: false
             lineVisible: false
-            labelsColor: color1
-            gridLineColor: color3
-            minorGridLineColor: color2
         }
 
         ValueAxis {
@@ -106,24 +90,17 @@ Item {
             lineVisible: false
             visible: false
             labelsVisible: false
-            labelsColor: color1
-            gridLineColor: color3
-            minorGridLineColor: color2
         }
 
         BarSeries {
             id: barSeries
 
-            axisX: axisFreqLog
-            axisY: axisY
-            useOpenGL: useOpenGL
             visible: seriesType === 0
 
             BarSet {
                 id: barSeriesSet
 
                 values: widgetRoot.testData
-                onClicked: console.debug("clicked!" + index + " " + this.at(index))
             }
 
         }
@@ -131,32 +108,21 @@ Item {
         SplineSeries {
             id: splineSeries
 
-            axisX: axisFreqLog
-            axisY: axisY
-            useOpenGL: useOpenGL
             visible: seriesType === 1
         }
 
         ScatterSeries {
             id: scatterSeries
 
-            axisX: axisFreqLog
-            axisY: axisY
-            useOpenGL: useOpenGL
             visible: seriesType === 2
         }
 
         AreaSeries {
-            axisX: axisFreqLog
-            useOpenGL: useOpenGL
             visible: seriesType === 3
 
             upperSeries: LineSeries {
                 id: areaLineSeries
 
-                axisX: axisFreqLog
-                axisY: axisY
-                useOpenGL: useOpenGL
                 visible: seriesType === 1
             }
 
