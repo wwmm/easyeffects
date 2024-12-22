@@ -211,6 +211,7 @@ jobs:
   #       appstream-glib-devel
   #       desktop-file-utils
   #       fftw-devel
+  #       gsl-devel
   #       gettext
   #       itstool
   #       kiconthemes

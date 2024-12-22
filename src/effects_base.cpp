@@ -18,11 +18,18 @@
  */
 
 #include "effects_base.hpp"
+#include <gsl/gsl_interp.h>
+#include <gsl/gsl_spline.h>
 #include <qcontainerfwd.h>
+#include <qnamespace.h>
+#include <qobjectdefs.h>
+#include <qpoint.h>
+#include <qtmetamacros.h>
 #include <qtypes.h>
 #include <QSharedPointer>
 #include <QString>
 #include <algorithm>
+#include <cstddef>
 #include <map>
 #include <memory>
 #include <ranges>
@@ -333,4 +340,71 @@ float EffectsBase::getOutputLevelLeft() const {
 
 float EffectsBase::getOutputLevelRight() const {
   return output_level->output_peak_right;
+}
+
+void EffectsBase::requestSpectrumData() {
+  /*
+    Technically we can do the same as the other Q_INVOKABLE methods and run the whole thing in the QML thread. But in
+    this case we have some heavy operations that need to be done. It is probably better to do them in the main thread
+    and deliver the spectrum list to QML through a signal.
+  */
+  QMetaObject::invokeMethod(
+      this,
+      [this] {
+        auto [rate, list] = spectrum->compute_magnitudes();
+
+        if (list.empty() || rate == 0) {
+          return;
+        }
+
+        const qsizetype n_bands = list.size();
+
+        QList<double> frequencies(n_bands);
+
+        for (qsizetype n = 0; n < n_bands; n++) {
+          frequencies[n] = 0.5F * static_cast<float>(rate) * static_cast<float>(n) / static_cast<float>(n_bands);
+        }
+
+        const auto min_freq = static_cast<float>(db::Spectrum::minimumFrequency());
+        const auto max_freq = static_cast<float>(db::Spectrum::maximumFrequency());
+
+        if (min_freq > (max_freq - 100.0F)) {
+          return;
+        }
+
+        auto log_x_axis = util::logspace(min_freq, max_freq, db::Spectrum::nPoints());
+
+        auto* acc = gsl_interp_accel_alloc();
+        auto* spline = gsl_spline_alloc(gsl_interp_steffen, n_bands);
+
+        gsl_spline_init(spline, frequencies.data(), list.data(), n_bands);
+
+        QList<double> spectrum_mag(log_x_axis.size());
+
+        for (size_t n = 0; n < log_x_axis.size(); n++) {
+          spectrum_mag[n] = gsl_spline_eval(spline, log_x_axis[n], acc);
+        }
+
+        gsl_spline_free(spline);
+        gsl_interp_accel_free(acc);
+
+        std::ranges::for_each(spectrum_mag, [](auto& v) {
+          v = 10.0F * std::log10(v);
+
+          if (!std::isinf(v)) {
+            v = (v > util::minimum_db_level) ? v : util::minimum_db_level;
+          } else {
+            v = util::minimum_db_level;
+          }
+        });
+
+        QList<QPointF> output_data(spectrum_mag.size());
+
+        for (qsizetype n = 0; n < spectrum_mag.size(); n++) {
+          output_data[n] = QPointF(log_x_axis[n], spectrum_mag[n]);
+        }
+
+        Q_EMIT newSpectrumData(output_data);
+      },
+      Qt::QueuedConnection);
 }

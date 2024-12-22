@@ -69,6 +69,7 @@ target_include_directories(easyeffects PRIVATE
     ${LIBSPEEXDSP_INCLUDE_DIRS}
     ${LIBNLOHMANNJSON_INCLUDE_DIRS}
     ${LIBZITACONVOLVER_INCLUDE_DIRS}
+    ${LIBGSL_INCLUDE_DIRS}
 )
 
 target_link_libraries(easyeffects PRIVATE
@@ -92,6 +93,7 @@ target_link_libraries(easyeffects PRIVATE
     ${LIBFFTW3f_LIBRARIES}
     ${LIBSPEEXDSP_LIBRARIES}
     ${LIBNLOHMANNJSON_LIBRARIES}
+    ${LIBGSL_LIBRARIES}
     ${LIBZITACONVOLVER}
 )
 

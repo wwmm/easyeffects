@@ -19,7 +19,9 @@
 
 #include "spectrum.hpp"
 #include <fftw3.h>
+#include <qlist.h>
 #include <sys/types.h>
+#include <QString>
 #include <algorithm>
 #include <cassert>
 #include <cmath>
@@ -235,12 +237,12 @@ void Spectrum::process(std::span<float>& left_in,
   db_control.store(index | DB_BIT_NEWDATA);
 }
 
-std::tuple<uint, uint, double*> Spectrum::compute_magnitudes() {
+auto Spectrum::compute_magnitudes() -> std::tuple<uint, QList<double>> {
   // Early return if no new data is available, ie if process() has not been
   // called since our last compute_magnitudes() call.
   int curr_control = db_control.load();
   if (!(curr_control & DB_BIT_NEWDATA)) {
-    return {0, 0, nullptr};
+    return {0, {}};
   }
 
   // CAS loop to toggle the buffer used and remove NEWDATA flag, waiting for !BUSY.
@@ -269,7 +271,7 @@ std::tuple<uint, uint, double*> Spectrum::compute_magnitudes() {
     output[i] = static_cast<double>(sqr);
   }
 
-  return {rate, output.size(), output.data()};
+  return {rate, output};
 }
 
 void Spectrum::process([[maybe_unused]] std::span<float>& left_in,

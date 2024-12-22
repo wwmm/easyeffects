@@ -21,7 +21,9 @@
 
 #include <kconfigskeleton.h>
 #include <pipewire/proxy.h>
+#include <qlist.h>
 #include <qobject.h>
+#include <qpoint.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <QString>
@@ -121,8 +123,11 @@ class EffectsBase : public QObject {
 
   Q_INVOKABLE [[nodiscard]] float getOutputLevelRight() const;
 
+  Q_INVOKABLE void requestSpectrumData();
+
  signals:
   void pipelineChanged();
+  void newSpectrumData(QList<QPointF> newData);
 
  protected:
   std::map<QString, std::shared_ptr<PluginBase>> plugins;

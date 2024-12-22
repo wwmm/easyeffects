@@ -66,6 +66,7 @@ pkg_check_modules(LIBFFTW3 fftw3)
 pkg_check_modules(LIBFFTW3f fftw3f)
 pkg_check_modules(LIBSPEEXDSP speexdsp)
 pkg_check_modules(LIBNLOHMANNJSON nlohmann_json)
+pkg_check_modules(LIBGSL gsl)
 
 file(GLOB KCFG_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfg)
 file(GLOB KCFGC_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfgc)
