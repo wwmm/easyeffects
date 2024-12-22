@@ -246,8 +246,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/libportal.git",
-                    "tag": "0.8.1",
-                    "commit": "26c15008cbe579f57f89468384f8efc033f25f6f",
+                    "tag": "0.9.0",
+                    "commit": "731e7410fa5765e7c4eb76a51140a19637620c13",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/flatpak/libportal/releases/latest",
