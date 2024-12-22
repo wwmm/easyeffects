@@ -8,171 +8,174 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-17 21:09+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-12-22 04:00+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
+"ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "@APP_NAME@"
-msgstr ""
+msgstr "@App_name@"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr ""
+msgstr "சமநிலைப்படுத்தி, அமுக்கி மற்றும் பிற ஆடியோ விளைவுகள்"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "Audio Effects for PipeWire Applications"
-msgstr ""
+msgstr "பைப்வேர் பயன்பாடுகளுக்கான ஆடியோ விளைவுகள்"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:7
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr ""
+msgstr "லிமிட்டர்; அமுக்கி; எதிரொலித்தல்; சமநிலைப்படுத்தி; ஆட்டோவோலூம்;"
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
-msgstr ""
+msgstr "இந்த பயன்பாட்டை இயக்கவும்/முடக்கவும்"
 
 #: data/ui/app_info.ui:213 data/ui/rnnoise.ui:51
 msgid "Enable"
-msgstr ""
+msgstr "இயக்கு"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "விலக்கப்பட்ட பயன்பாட்டு பட்டியல்: இந்த பயன்பாட்டைச் சேர்க்கவும்/அகற்று"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
-msgstr ""
+msgstr "விலக்கு"
 
 #: data/ui/app_info.ui:247 data/ui/app_info.ui:249
 msgid "Mute Application"
-msgstr ""
+msgstr "முடக்கு பயன்பாடு"
 
 #: data/ui/app_info.ui:269
 msgid "Change the volume of this application"
-msgstr ""
+msgstr "இந்த பயன்பாட்டின் அளவை மாற்றவும்"
 
 #: data/ui/app_info.ui:271
 msgid "Application Volume"
-msgstr ""
+msgstr "பயன்பாட்டு தொகுதி"
 
 #: data/ui/application_window.ui:6
 msgid "_Help"
-msgstr ""
+msgstr "உதவி (_H)"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
-msgstr ""
+msgstr "_ ரெசெட் அமைப்புகள்"
 
 #: data/ui/application_window.ui:18
 msgid "_Preferences"
-msgstr ""
+msgstr "_ முனைகள்"
 
 #: data/ui/application_window.ui:22
 msgid "_Shortcuts"
-msgstr ""
+msgstr "_SHORTCUTS"
 
 #: data/ui/application_window.ui:26
 msgid "_About Easy Effects"
-msgstr ""
+msgstr "_ எளிதான விளைவுகள்"
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr ""
+msgstr "_Quit"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:159
 msgid "Presets"
-msgstr ""
+msgstr "முன்னமைவுகள்"
 
 #: data/ui/application_window.ui:61
 msgid "Presets Menu"
-msgstr ""
+msgstr "முன்னமைவு பட்டியல்"
 
 #: data/ui/application_window.ui:68
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "உலகளாவிய பைபாசை இயக்கவும்/முடக்கவும்"
 
 #: data/ui/application_window.ui:73
 msgid "Global Bypass"
-msgstr ""
+msgstr "உலகளாவிய பைபாச்"
 
 #: data/ui/application_window.ui:83
 msgid "Primary Menu"
-msgstr ""
+msgstr "முதன்மை பட்டியல்"
 
 #: data/ui/application_window.ui:99
 msgid "Easy Effects Window"
-msgstr ""
+msgstr "எளிதான விளைவுகள் சாளரம்"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
-msgstr ""
+msgstr "பயன்பாடுகள் பட்டியல்"
 
 #: data/ui/apps_box.ui:27
 msgid "Empty List"
-msgstr ""
+msgstr "வெற்று பட்டியல்"
 
 #: data/ui/apps_box.ui:28
 msgid "No Audio Application Available"
-msgstr ""
+msgstr "ஆடியோ பயன்பாடு எதுவும் கிடைக்கவில்லை"
 
 #: data/ui/autogain.ui:29 data/ui/filter.ui:38
 msgid "Controls"
-msgstr ""
+msgstr "கட்டுப்பாடுகள்"
 
 #: data/ui/autogain.ui:33
 msgid "Target"
-msgstr ""
+msgstr "இலக்கு"
 
 #: data/ui/autogain.ui:56
 msgid "Silence"
-msgstr ""
+msgstr "ம .னம்"
 
 #: data/ui/autogain.ui:80
 msgid "Maximum History"
-msgstr ""
+msgstr "அதிகபட்ச வரலாறு"
 
 #: data/ui/autogain.ui:103
 msgid "Reference"
-msgstr ""
+msgstr "குறிப்பு"
 
 #: data/ui/autogain.ui:109 data/ui/autogain.ui:158 data/ui/level_meter.ui:72
 msgid "Momentary"
-msgstr ""
+msgstr "கணம்"
 
 #: data/ui/autogain.ui:110 data/ui/autogain.ui:196 data/ui/level_meter.ui:109
 msgid "Short-Term"
-msgstr ""
+msgstr "குறுகிய கால"
 
 #: data/ui/autogain.ui:111 data/ui/autogain.ui:233 data/ui/level_meter.ui:145
 msgid "Integrated"
-msgstr ""
+msgstr "ஒருங்கிணைந்த"
 
 #: data/ui/autogain.ui:112
 msgid "Geometric Mean (MSI)"
-msgstr ""
+msgstr "வடிவியல் சராசரி (எம்.எச்.ஐ)"
 
 #: data/ui/autogain.ui:113
 msgid "Geometric Mean (MS)"
-msgstr ""
+msgstr "வடிவியல் சராசரி (எம்.எச்)"
 
 #: data/ui/autogain.ui:114
 msgid "Geometric Mean (MI)"
-msgstr ""
+msgstr "வடிவியல் சராசரி (எம்ஐ)"
 
 #: data/ui/autogain.ui:115
 msgid "Geometric Mean (SI)"
-msgstr ""
+msgstr "வடிவியல் சராசரி (எச்.ஐ)"
 
 #: data/ui/autogain.ui:124
 msgid "History"
-msgstr ""
+msgstr "வரலாறு"
 
 #: data/ui/autogain.ui:129 data/ui/autogain.ui:598 data/ui/bass_enhancer.ui:458
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1307
@@ -185,24 +188,24 @@ msgstr ""
 #: data/ui/multiband_gate.ui:661 data/ui/pitch.ui:387 data/ui/reverb.ui:527
 #: data/ui/rnnoise.ui:441 data/ui/speex.ui:356 data/ui/stereo_tools.ui:786
 msgid "Reset"
-msgstr ""
+msgstr "மீட்டமை"
 
 #: data/ui/autogain.ui:144 data/ui/autogain.ui:346 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:58 src/tags_plugin_name.cpp:56
 msgid "Loudness"
-msgstr ""
+msgstr "உரித்தல்"
 
 #: data/ui/autogain.ui:270 data/ui/level_meter.ui:181
 msgid "Relative"
-msgstr ""
+msgstr "உறவினர்"
 
 #: data/ui/autogain.ui:307 data/ui/level_meter.ui:217
 msgid "Range"
-msgstr ""
+msgstr "வீச்சு"
 
 #: data/ui/autogain.ui:383
 msgid "Output Gain"
-msgstr ""
+msgstr "வெளியீட்டு ஆதாயம்"
 
 #: data/ui/autogain.ui:430 data/ui/bass_enhancer.ui:258
 #: data/ui/bass_loudness.ui:107 data/ui/compressor.ui:650
@@ -218,7 +221,7 @@ msgstr ""
 #: data/ui/rnnoise.ui:273 data/ui/speex.ui:187 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:617
 msgid "Input"
-msgstr ""
+msgstr "உள்ளீடு"
 
 #: data/ui/autogain.ui:449 data/ui/bass_enhancer.ui:277
 #: data/ui/bass_loudness.ui:126 data/ui/compressor.ui:1158
@@ -231,7 +234,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:512 data/ui/pitch.ui:238 data/ui/reverb.ui:377
 #: data/ui/rnnoise.ui:292 data/ui/speex.ui:206 data/ui/stereo_tools.ui:636
 msgid "Plugin Input Gain"
-msgstr ""
+msgstr "சொருகி உள்ளீட்டு ஆதாயம்"
 
 #: data/ui/autogain.ui:514 data/ui/bass_enhancer.ui:342
 #: data/ui/bass_loudness.ui:48 data/ui/bass_loudness.ui:191
@@ -246,7 +249,7 @@ msgstr ""
 #: data/ui/rnnoise.ui:357 data/ui/speex.ui:271 data/ui/stereo_tools.ui:379
 #: data/ui/stereo_tools.ui:701
 msgid "Output"
-msgstr ""
+msgstr "வெளியீடு"
 
 #: data/ui/autogain.ui:533 data/ui/bass_enhancer.ui:361
 #: data/ui/bass_loudness.ui:210 data/ui/compressor.ui:1242
@@ -259,101 +262,101 @@ msgstr ""
 #: data/ui/multiband_gate.ui:596 data/ui/pitch.ui:322 data/ui/reverb.ui:461
 #: data/ui/rnnoise.ui:376 data/ui/speex.ui:290 data/ui/stereo_tools.ui:720
 msgid "Plugin Output Gain"
-msgstr ""
+msgstr "சொருகி வெளியீட்டு ஆதாயம்"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:673 data/ui/expander.ui:594
 #: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:246
 #: data/ui/pipe_manager_box.ui:376
 msgid "Device"
-msgstr ""
+msgstr "சாதனம்"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
 #: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:43
 msgid "Name"
-msgstr ""
+msgstr "பெயர்"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
-msgstr ""
+msgstr "சுயவிவரம்"
 
 #: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:257
 #: data/ui/pipe_manager_box.ui:387
 msgid "Preset"
-msgstr ""
+msgstr "முன்னமைவு"
 
 #: data/ui/autoload_row.ui:114
 msgid "Remove this autoload preset"
-msgstr ""
+msgstr "இந்த ஆட்டோலோட் முன்னமைவை அகற்று"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:627 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/expander.ui:548 data/ui/gate.ui:761
 msgid "Listen"
-msgstr ""
+msgstr "கேளுங்கள்"
 
 #: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
-msgstr ""
+msgstr "ஆர்மோனிக்ச் கலக்கவும்"
 
 #: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
-msgstr ""
+msgstr "ஒரு சலுகை"
 
 #: data/ui/bass_enhancer.ui:89 data/ui/exciter.ui:89
 msgid "2nd"
-msgstr ""
+msgstr "பேரிக்காய்"
 
 #: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
 msgid "Amount"
-msgstr ""
+msgstr "தொகை"
 
 #: data/ui/bass_enhancer.ui:141 data/ui/bass_enhancer.ui:420
 #: data/ui/exciter.ui:141 data/ui/exciter.ui:420
 msgid "Harmonics"
-msgstr ""
+msgstr "ஆர்மோனிக்ச்"
 
 #: data/ui/bass_enhancer.ui:175 data/ui/exciter.ui:175
 msgid "Scope"
-msgstr ""
+msgstr "நோக்கம்"
 
 #: data/ui/bass_enhancer.ui:208
 msgid "Floor"
-msgstr ""
+msgstr "தளம்"
 
 #: data/ui/bass_enhancer.ui:236
 msgid "Floor Value"
-msgstr ""
+msgstr "தரையில் மதிப்பு"
 
 #: data/ui/bass_loudness.ui:69
 msgid "Link"
-msgstr ""
+msgstr "இணைப்பு"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
-msgstr ""
+msgstr "பயன்பாட்டு பெயர்"
 
 #: data/ui/blocklist_menu.ui:42
 msgid "Add to Excluded Applications"
-msgstr ""
+msgstr "விலக்கப்பட்ட பயன்பாடுகளில் சேர்க்கவும்"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Excluded Applications List"
-msgstr ""
+msgstr "விலக்கப்பட்ட பயன்பாடுகள் பட்டியல்"
 
 #: data/ui/blocklist_menu.ui:99
 msgid "Show Excluded Applications"
-msgstr ""
+msgstr "விலக்கப்பட்ட பயன்பாடுகளைக் காட்டு"
 
 #: data/ui/compressor.ui:25 data/ui/delay.ui:25 data/ui/equalizer.ui:279
 #: data/ui/expander.ui:25 data/ui/filter.ui:25 data/ui/gate.ui:25
 #: data/ui/limiter.ui:25 data/ui/loudness.ui:25
 #: data/ui/multiband_compressor.ui:105 data/ui/multiband_gate.ui:105
 msgid "Show Native Window"
-msgstr ""
+msgstr "சொந்த சாளரத்தைக் காட்டு"
 
 #: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:41
 msgid "Compressor"
-msgstr ""
+msgstr "காற்றமுக்கி"
 
 #: data/ui/compressor.ui:63 data/ui/compressor.ui:595 data/ui/compressor.ui:871
 #: data/ui/deesser.ui:68 data/ui/equalizer.ui:61 data/ui/equalizer_band.ui:134
@@ -362,44 +365,44 @@ msgstr ""
 #: data/ui/limiter.ui:56 data/ui/multiband_compressor_band.ui:536
 #: data/ui/multiband_gate_band.ui:594
 msgid "Mode"
-msgstr ""
+msgstr "பயன்முறை"
 
 #: data/ui/compressor.ui:76 data/ui/expander.ui:76
 #: data/ui/multiband_compressor_band.ui:100
 msgid "Downward"
-msgstr ""
+msgstr "கீழ்நோக்கி"
 
 #: data/ui/compressor.ui:77 data/ui/expander.ui:77
 #: data/ui/multiband_compressor_band.ui:101
 msgid "Upward"
-msgstr ""
+msgstr "மேல்நோக்கி"
 
 #: data/ui/compressor.ui:78 data/ui/multiband_compressor_band.ui:102
 msgid "Boosting"
-msgstr ""
+msgstr "அதிகரிக்கும்"
 
 #: data/ui/compressor.ui:87 data/ui/multiband_compressor_band.ui:87
 msgid "Compression Mode"
-msgstr ""
+msgstr "சுருக்க முறை"
 
 #: data/ui/compressor.ui:94 data/ui/multiband_compressor_band.ui:807
 msgid "Boost Threshold"
-msgstr ""
+msgstr "வாசலை அதிகரிக்கும்"
 
 #: data/ui/compressor.ui:133 data/ui/multiband_compressor_band.ui:764
 msgid "Boost Amount"
-msgstr ""
+msgstr "தொகையை அதிகரிக்கும்"
 
 #: data/ui/compressor.ui:179 data/ui/expander.ui:100 data/ui/gate.ui:70
 #: data/ui/limiter.ui:282 data/ui/limiter.ui:501
 #: data/ui/multiband_compressor_band.ui:189 data/ui/multiband_gate_band.ui:143
 msgid "Attack"
-msgstr ""
+msgstr "தாக்குதல்"
 
 #: data/ui/compressor.ui:190 data/ui/expander.ui:111
 #: data/ui/multiband_compressor_band.ui:169
 msgid "Time"
-msgstr ""
+msgstr "நேரம்"
 
 #: data/ui/compressor.ui:200 data/ui/deesser.ui:301 data/ui/expander.ui:121
 #: data/ui/gate.ui:161 data/ui/gate.ui:253 data/ui/limiter.ui:364
@@ -407,64 +410,64 @@ msgstr ""
 #: data/ui/multiband_gate_band.ui:234 data/ui/multiband_gate_band.ui:326
 #: data/ui/rnnoise.ui:64
 msgid "Threshold"
-msgstr ""
+msgstr "வாசல்"
 
 #: data/ui/compressor.ui:225 data/ui/expander.ui:146
 #: data/ui/multiband_compressor_band.ui:224
 msgid "Attack Time"
-msgstr ""
+msgstr "தாக்குதல் நேரம்"
 
 #: data/ui/compressor.ui:246 data/ui/expander.ui:167 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:248
 msgid "Attack Threshold"
-msgstr ""
+msgstr "தாக்குதல் வாசல்"
 
 #: data/ui/compressor.ui:253 data/ui/expander.ui:174 data/ui/gate.ui:76
 #: data/ui/limiter.ui:323 data/ui/limiter.ui:537 data/ui/maximizer.ui:27
 #: data/ui/multiband_compressor_band.ui:198 data/ui/multiband_gate_band.ui:149
 #: data/ui/rnnoise.ui:116
 msgid "Release"
-msgstr ""
+msgstr "வெளியீடு"
 
 #: data/ui/compressor.ui:278 data/ui/expander.ui:199
 #: data/ui/multiband_compressor_band.ui:274
 msgid "Release Time"
-msgstr ""
+msgstr "வெளியீட்டு நேரம்"
 
 #: data/ui/compressor.ui:301 data/ui/expander.ui:222 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:301
 msgid "Release Threshold"
-msgstr ""
+msgstr "வாசல் வெளியீடு"
 
 #: data/ui/compressor.ui:308 data/ui/deesser.ui:334 data/ui/expander.ui:229
 #: data/ui/multiband_compressor_band.ui:308
 msgid "Ratio"
-msgstr ""
+msgstr "விகிதம்"
 
 #: data/ui/compressor.ui:344 data/ui/expander.ui:265 data/ui/limiter.ui:572
 #: data/ui/multiband_compressor_band.ui:345
 msgid "Knee"
-msgstr ""
+msgstr "முழங்கால்"
 
 #: data/ui/compressor.ui:378 data/ui/deesser.ui:368 data/ui/expander.ui:299
 #: data/ui/gate.ui:430 data/ui/multiband_compressor_band.ui:382
 #: data/ui/multiband_gate_band.ui:411
 msgid "Makeup"
-msgstr ""
+msgstr "ஒப்பனை"
 
 #: data/ui/compressor.ui:412 data/ui/delay.ui:62 data/ui/delay.ui:149
 #: data/ui/expander.ui:333 data/ui/gate.ui:346
 #: data/ui/multiband_compressor.ui:174 data/ui/multiband_gate.ui:174
 #: data/ui/reverb.ui:208 data/ui/stereo_tools.ui:528
 msgid "Dry Level"
-msgstr ""
+msgstr "உலர் நிலை"
 
 #: data/ui/compressor.ui:446 data/ui/delay.ui:85 data/ui/delay.ui:172
 #: data/ui/expander.ui:367 data/ui/gate.ui:351
 #: data/ui/multiband_compressor.ui:207 data/ui/multiband_gate.ui:207
 #: data/ui/reverb.ui:241 data/ui/rnnoise.ui:90 data/ui/stereo_tools.ui:563
 msgid "Wet Level"
-msgstr ""
+msgstr "ஈரமான நிலை"
 
 #: data/ui/compressor.ui:487 data/ui/compressor.ui:508
 #: data/ui/compressor.ui:1075 data/ui/expander.ui:408 data/ui/expander.ui:429
@@ -472,43 +475,43 @@ msgstr ""
 #: data/ui/gate.ui:1208 data/ui/multiband_compressor_band.ui:466
 #: data/ui/multiband_gate_band.ui:524
 msgid "Sidechain"
-msgstr ""
+msgstr "சிட்செயின்"
 
 #: data/ui/compressor.ui:519 data/ui/compressor.ui:525 data/ui/expander.ui:440
 #: data/ui/expander.ui:446 data/ui/gate.ui:653 data/ui/gate.ui:659
 #: data/ui/multiband_compressor.ui:121 data/ui/multiband_compressor.ui:128
 #: data/ui/multiband_gate.ui:121 data/ui/multiband_gate.ui:128
 msgid "Stereo Split Mode"
-msgstr ""
+msgstr "ச்டீரியோ பிளவு முறை"
 
 #: data/ui/compressor.ui:532 data/ui/expander.ui:453 data/ui/gate.ui:666
 #: data/ui/multiband_compressor_band.ui:455 data/ui/multiband_gate_band.ui:513
 msgid "Source"
-msgstr ""
+msgstr "மூலம்"
 
 #: data/ui/compressor.ui:544 data/ui/expander.ui:465 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:536
 msgid "Middle"
-msgstr ""
+msgstr "நடுத்தர"
 
 #: data/ui/compressor.ui:545 data/ui/expander.ui:466 data/ui/gate.ui:679
 #: data/ui/multiband_compressor_band.ui:479 data/ui/multiband_gate_band.ui:537
 msgid "Side"
-msgstr ""
+msgstr "பக்கம்"
 
 #: data/ui/compressor.ui:546 data/ui/delay.ui:38 data/ui/equalizer.ui:215
 #: data/ui/expander.ui:467 data/ui/gate.ui:680 data/ui/level_meter.ui:32
 #: data/ui/multiband_compressor_band.ui:480 data/ui/multiband_gate_band.ui:538
 #: data/ui/pipe_manager_box.ui:581 data/ui/stereo_tools.ui:163
 msgid "Left"
-msgstr ""
+msgstr "இடது"
 
 #: data/ui/compressor.ui:547 data/ui/delay.ui:125 data/ui/equalizer.ui:242
 #: data/ui/expander.ui:468 data/ui/gate.ui:681 data/ui/level_meter.ui:42
 #: data/ui/multiband_compressor_band.ui:481 data/ui/multiband_gate_band.ui:539
 #: data/ui/pipe_manager_box.ui:592 data/ui/stereo_tools.ui:218
 msgid "Right"
-msgstr ""
+msgstr "வலது"
 
 #: data/ui/compressor.ui:548 data/ui/compressor.ui:571 data/ui/expander.ui:469
 #: data/ui/expander.ui:492 data/ui/gate.ui:682 data/ui/gate.ui:705
@@ -516,7 +519,7 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:540
 #: data/ui/multiband_gate_band.ui:575
 msgid "Min"
-msgstr ""
+msgstr "மணித்துளி"
 
 #: data/ui/compressor.ui:549 data/ui/compressor.ui:572 data/ui/expander.ui:470
 #: data/ui/expander.ui:493 data/ui/gate.ui:683 data/ui/gate.ui:706
@@ -524,2046 +527,2063 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:518 data/ui/multiband_gate_band.ui:541
 #: data/ui/multiband_gate_band.ui:576
 msgid "Max"
-msgstr ""
+msgstr "அதிகபட்சம்"
 
 #: data/ui/compressor.ui:558 data/ui/expander.ui:479 data/ui/gate.ui:692
 #: data/ui/multiband_compressor.ui:77 data/ui/multiband_compressor_band.ui:492
 #: data/ui/multiband_gate.ui:77 data/ui/multiband_gate_band.ui:550
 msgid "Sidechain Source"
-msgstr ""
+msgstr "பக்கவாட்டு மூல"
 
 #: data/ui/compressor.ui:567 data/ui/expander.ui:488 data/ui/gate.ui:701
 #: data/ui/multiband_compressor_band.ui:513 data/ui/multiband_gate_band.ui:571
 msgid "Left/Right"
-msgstr ""
+msgstr "இடது/வலது"
 
 #: data/ui/compressor.ui:568 data/ui/expander.ui:489 data/ui/gate.ui:702
 #: data/ui/multiband_compressor_band.ui:514 data/ui/multiband_gate_band.ui:572
 msgid "Right/Left"
-msgstr ""
+msgstr "வலது/இடது"
 
 #: data/ui/compressor.ui:569 data/ui/expander.ui:490 data/ui/gate.ui:703
 #: data/ui/multiband_compressor_band.ui:515 data/ui/multiband_gate_band.ui:573
 msgid "Mid/Side"
-msgstr ""
+msgstr "நடுப்பகுதி/பக்க"
 
 #: data/ui/compressor.ui:570 data/ui/expander.ui:491 data/ui/gate.ui:704
 #: data/ui/multiband_compressor_band.ui:516 data/ui/multiband_gate_band.ui:574
 msgid "Side/Mid"
-msgstr ""
+msgstr "பக்க/நடுப்பகுதி"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:502 data/ui/gate.ui:715
 #: data/ui/multiband_compressor_band.ui:527 data/ui/multiband_gate_band.ui:585
 msgid "Stereo Split Source"
-msgstr ""
+msgstr "ச்டீரியோ பிளவு மூல"
 
 #: data/ui/compressor.ui:607 data/ui/deesser.ui:50 data/ui/expander.ui:528
 #: data/ui/gate.ui:741 data/ui/multiband_compressor_band.ui:551
 #: data/ui/multiband_gate_band.ui:609
 msgid "Peak"
-msgstr ""
+msgstr "உச்ச"
 
 #: data/ui/compressor.ui:608 data/ui/deesser.ui:49 data/ui/expander.ui:529
 #: data/ui/gate.ui:742 data/ui/multiband_compressor_band.ui:552
 #: data/ui/multiband_gate_band.ui:610
 msgid "RMS"
-msgstr ""
+msgstr "Rms"
 
 #: data/ui/compressor.ui:609 data/ui/expander.ui:530 data/ui/gate.ui:743
 #: data/ui/multiband_compressor_band.ui:553 data/ui/multiband_gate_band.ui:611
 msgid "Low-Pass Filter"
-msgstr ""
+msgstr "குறைந்த பாச் வடிகட்டி"
 
 #: data/ui/compressor.ui:610 data/ui/expander.ui:531 data/ui/gate.ui:744
 #: data/ui/multiband_compressor_band.ui:554 data/ui/multiband_gate_band.ui:612
 msgid "Simple Moving Average"
-msgstr ""
+msgstr "எளிய நகரும் சராசரி"
 
 #: data/ui/compressor.ui:619 data/ui/expander.ui:540 data/ui/gate.ui:753
 #: data/ui/multiband_compressor_band.ui:563 data/ui/multiband_gate_band.ui:621
 msgid "Sidechain Mode"
-msgstr ""
+msgstr "பக்கவாட்டு பயன்முறை"
 
 #: data/ui/compressor.ui:633 data/ui/expander.ui:554 data/ui/gate.ui:767
 msgid "Listen Sidechain"
-msgstr ""
+msgstr "சைட்செயினைக் கேளுங்கள்"
 
 #: data/ui/compressor.ui:662 data/ui/equalizer_band.ui:108
 #: data/ui/expander.ui:583 data/ui/filter.ui:42 data/ui/gate.ui:796
 msgid "Type"
-msgstr ""
+msgstr "வகை"
 
 #: data/ui/compressor.ui:688
 msgid "Feed-forward"
-msgstr ""
+msgstr "ஊட்ட-முன்னோக்கி"
 
 #: data/ui/compressor.ui:689
 msgid "Feed-back"
-msgstr ""
+msgstr "தீவனம்"
 
 #: data/ui/compressor.ui:690 data/ui/expander.ui:610 data/ui/gate.ui:823
 msgid "External"
-msgstr ""
+msgstr "வெளிப்புறம்"
 
 #: data/ui/compressor.ui:699 data/ui/expander.ui:619 data/ui/gate.ui:832
 msgid "Sidechain Type"
-msgstr ""
+msgstr "பக்கவாட்டு வகை"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
 #: src/plugins_box.cpp:806
 msgid "Input Device"
-msgstr ""
+msgstr "உள்ளீட்டு சாதனம்"
 
 #: data/ui/compressor.ui:734 data/ui/expander.ui:654 data/ui/gate.ui:867
 msgid "PreAmplification"
-msgstr ""
+msgstr "முன்னுரிமை"
 
 #: data/ui/compressor.ui:770 data/ui/expander.ui:690 data/ui/gate.ui:903
 #: data/ui/multiband_compressor_band.ui:699 data/ui/multiband_gate_band.ui:756
 msgid "Reactivity"
-msgstr ""
+msgstr "வினைத்திறன்"
 
 #: data/ui/compressor.ui:806 data/ui/expander.ui:726 data/ui/gate.ui:939
 #: data/ui/limiter.ui:241 data/ui/multiband_compressor_band.ui:732
 #: data/ui/multiband_gate_band.ui:788
 msgid "Lookahead"
-msgstr ""
+msgstr "லுக்எட்"
 
 #: data/ui/compressor.ui:848 data/ui/expander.ui:768 data/ui/gate.ui:981
 msgid "Sidechain Filters"
-msgstr ""
+msgstr "சைட்செயின் வடிப்பான்கள்"
 
 #: data/ui/compressor.ui:858 data/ui/expander.ui:778 data/ui/filter.ui:51
 #: data/ui/gate.ui:991
 msgid "High-Pass"
-msgstr ""
+msgstr "உயர்-பாச்"
 
 #: data/ui/compressor.ui:884 data/ui/equalizer_band.ui:204
 #: data/ui/expander.ui:804 data/ui/filter.ui:166 data/ui/gate.ui:1017
 #: data/ui/pipe_manager_box.ui:638
 msgid "Frequency"
-msgstr ""
+msgstr "மீடிறன், மீள்திறன், நிகழ்வெண், நிகழ்வு"
 
 #: data/ui/compressor.ui:899 data/ui/compressor.ui:958 data/ui/expander.ui:819
 #: data/ui/expander.ui:878 data/ui/gate.ui:1032 data/ui/gate.ui:1091
 msgid "Off"
-msgstr ""
+msgstr "அணை"
 
 #: data/ui/compressor.ui:900 data/ui/compressor.ui:959 data/ui/expander.ui:820
 #: data/ui/expander.ui:879 data/ui/gate.ui:1033 data/ui/gate.ui:1092
 msgid "12 dB/oct"
-msgstr ""
+msgstr "12 டி.பி./அக்"
 
 #: data/ui/compressor.ui:901 data/ui/compressor.ui:960 data/ui/expander.ui:821
 #: data/ui/expander.ui:880 data/ui/gate.ui:1034 data/ui/gate.ui:1093
 msgid "24 dB/oct"
-msgstr ""
+msgstr "24 டி.பி./அக்"
 
 #: data/ui/compressor.ui:902 data/ui/compressor.ui:961 data/ui/expander.ui:822
 #: data/ui/expander.ui:881 data/ui/gate.ui:1035 data/ui/gate.ui:1094
 msgid "36 dB/oct"
-msgstr ""
+msgstr "36 dB/OCT"
 
 #: data/ui/compressor.ui:911 data/ui/expander.ui:831 data/ui/gate.ui:1044
 msgid "High-Pass Filter Mode"
-msgstr ""
+msgstr "உயர்-பாச் வடிகட்டி முறை"
 
 #: data/ui/compressor.ui:936 data/ui/compressor.ui:995 data/ui/expander.ui:856
 #: data/ui/expander.ui:915 data/ui/gate.ui:1069 data/ui/gate.ui:1128
 msgid "High-Pass Filter Frequency"
-msgstr ""
+msgstr "உயர்-பாச் வடிகட்டி அதிர்வெண்"
 
 #: data/ui/compressor.ui:943 data/ui/expander.ui:863 data/ui/filter.ui:50
 #: data/ui/gate.ui:1076
 msgid "Low-Pass"
-msgstr ""
+msgstr "குறைந்த பாச்"
 
 #: data/ui/compressor.ui:970 data/ui/expander.ui:890 data/ui/gate.ui:1103
 msgid "Low-Pass Filter Mode"
-msgstr ""
+msgstr "குறைந்த பாச் வடிகட்டி பயன்முறை"
 
 #: data/ui/compressor.ui:1021 data/ui/equalizer_band.ui:235
 #: data/ui/expander.ui:941 data/ui/filter.ui:218
 msgid "Gain"
-msgstr ""
+msgstr "பெருக்கம்"
 
 #: data/ui/compressor.ui:1048 data/ui/expander.ui:968 data/ui/gate.ui:1181
 msgid "Envelope"
-msgstr ""
+msgstr "உறை"
 
 #: data/ui/compressor.ui:1102 data/ui/expander.ui:1022 data/ui/gate.ui:145
 #: data/ui/gate.ui:1235 data/ui/multiband_gate_band.ui:218
 msgid "Curve"
-msgstr ""
+msgstr "வளைவு"
 
 #: data/ui/convolver.ui:40
 msgid "L"
-msgstr ""
+msgstr "எல்"
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:584
 msgid "Left Channel"
-msgstr ""
+msgstr "இடது சேனல்"
 
 #: data/ui/convolver.ui:53
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:595
 msgid "Right Channel"
-msgstr ""
+msgstr "சரியான சேனல்"
 
 #: data/ui/convolver.ui:71
 msgid "Impulses"
-msgstr ""
+msgstr "தூண்டுதல்கள்"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "இணைக்கவும்"
 
 #: data/ui/convolver.ui:86
 msgid "Stereo Width"
-msgstr ""
+msgstr "ச்டீரியோ அகலம்"
 
 #: data/ui/convolver.ui:113 src/plugin_base.cpp:235
 msgid "Spectrum"
-msgstr ""
+msgstr "நிறமாலை"
 
 #: data/ui/convolver.ui:121
 msgid "Log Scale"
-msgstr ""
+msgstr "பதிவு அளவு"
 
 #: data/ui/convolver.ui:131 src/tags_plugin_name.cpp:38
 msgid "Autogain"
-msgstr ""
+msgstr "ஆட்டோகெயின்"
 
 #: data/ui/convolver.ui:147
 msgid "Rate"
-msgstr ""
+msgstr "விகிதம்"
 
 #: data/ui/convolver.ui:168
 msgid "Samples"
-msgstr ""
+msgstr "மாதிரிகள்"
 
 #: data/ui/convolver.ui:189
 msgid "Duration"
-msgstr ""
+msgstr "காலம்"
 
 #: data/ui/convolver_menu_combine.ui:15
 msgid "Combine Impulse Responses"
-msgstr ""
+msgstr "உந்துவிசை பதில்களை இணைக்கவும்"
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
-msgstr ""
+msgstr "முதல் கர்னல்"
 
 #: data/ui/convolver_menu_combine.ui:82
 msgid "Second Kernel"
-msgstr ""
+msgstr "இரண்டாவது கர்னல்"
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
-msgstr ""
+msgstr "வெளியீட்டு கோப்பு பெயர்"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
-msgstr ""
+msgstr "ஒருங்கிணைந்த கர்னல் பெயர்"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
-msgstr ""
+msgstr "உந்துவிசை இறக்குமதி செய்யுங்கள்"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:84 data/ui/presets_menu.ui:206
 msgid "Search"
-msgstr ""
+msgstr "தேடல்"
 
 #: data/ui/convolver_menu_impulses.ui:27
 msgid "Search Impulse File"
-msgstr ""
+msgstr "உந்துவிசை கோப்பைத் தேடுங்கள்"
 
 #: data/ui/convolver_menu_impulses.ui:47
 msgid "Impulse Files List"
-msgstr ""
+msgstr "உந்துவிசை கோப்புகள் பட்டியல்"
 
 #: data/ui/crossfeed.ui:39
 msgid "Default"
-msgstr ""
+msgstr "இயல்புநிலை"
 
 #: data/ui/crossfeed.ui:56
 msgid "Cutoff"
-msgstr ""
+msgstr "வெட்டு"
 
 #: data/ui/crossfeed.ui:78
 msgid "Feed"
-msgstr ""
+msgstr "தீவனம்"
 
 #: data/ui/crystalizer_band.ui:11
 msgid "Bypass"
-msgstr ""
+msgstr "பைபாச்"
 
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:186
 #: data/ui/multiband_compressor_band.ui:139 data/ui/multiband_gate_band.ui:108
 #: data/ui/stereo_tools.ui:173 data/ui/stereo_tools.ui:198
 msgid "Mute"
-msgstr ""
+msgstr "முடக்கு"
 
 #: data/ui/deepfilternet.ui:31
 msgid "Attenuation Limit"
-msgstr ""
+msgstr "விழிப்புணர்வு வரம்பு"
 
 #: data/ui/deepfilternet.ui:60
 msgid "Minimum Processing Threshold"
-msgstr ""
+msgstr "குறைந்தபட்ச செயலாக்க வாசல்"
 
 #: data/ui/deepfilternet.ui:86
 msgid "Maximum ERB Processing threshold"
-msgstr ""
+msgstr "அதிகபட்ச ஈஆர்பி செயலாக்க வாசல்"
 
 #: data/ui/deepfilternet.ui:112
 msgid "Maximum DF Processing Threshold"
-msgstr ""
+msgstr "அதிகபட்ச டி.எஃப் செயலாக்க வாசல்"
 
 #: data/ui/deepfilternet.ui:138
 msgid "Minimum Processing Buffer"
-msgstr ""
+msgstr "குறைந்தபட்ச செயலாக்க இடையகம்"
 
 #: data/ui/deepfilternet.ui:163
 msgid "Post Filter Beta"
-msgstr ""
+msgstr "வடிகட்டி பீட்டாவை இடுங்கள்"
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
-msgstr ""
+msgstr "கண்டறிதல்"
 
 #: data/ui/deesser.ui:77
 msgid "Wide"
-msgstr ""
+msgstr "அகலமான"
 
 #: data/ui/deesser.ui:78
 msgid "Split"
-msgstr ""
+msgstr "பிளவு"
 
 #: data/ui/deesser.ui:96
 msgid "F1 Split"
-msgstr ""
+msgstr "எஃப் 1 பிளவு"
 
 #: data/ui/deesser.ui:115
 msgid "Frequency 1 Split"
-msgstr ""
+msgstr "அதிர்வெண் 1 பிளவு"
 
 #: data/ui/deesser.ui:128
 msgid "F2 Peak"
-msgstr ""
+msgstr "எஃப் 2 உச்ச"
 
 #: data/ui/deesser.ui:147
 msgid "Frequency 2 Peak"
-msgstr ""
+msgstr "அதிர்வெண் 2 உச்சநிலை"
 
 #: data/ui/deesser.ui:165
 msgid "F1 Gain"
-msgstr ""
+msgstr "எஃப் 1 ஆதாயம்"
 
 #: data/ui/deesser.ui:192
 msgid "Frequency 1 Gain"
-msgstr ""
+msgstr "அதிர்வெண் 1 ஆதாயம்"
 
 #: data/ui/deesser.ui:199
 msgid "F2 Level"
-msgstr ""
+msgstr "எஃப் 2 நிலை"
 
 #: data/ui/deesser.ui:226
 msgid "Frequency 2 Level"
-msgstr ""
+msgstr "அதிர்வெண் 2 நிலை"
 
 #: data/ui/deesser.ui:233
 msgid "F2 Peak Q"
-msgstr ""
+msgstr "F2 உச்ச Q."
 
 #: data/ui/deesser.ui:260
 msgid "Frequency 2 Peak Q"
-msgstr ""
+msgstr "அதிர்வெண் 2 உச்ச q"
 
 #: data/ui/deesser.ui:267
 msgid "Laxity"
-msgstr ""
+msgstr "மெழுகுவர்த்தி"
 
 #: data/ui/deesser.ui:577
 msgid "Detected"
-msgstr ""
+msgstr "கண்டறியப்பட்டது"
 
 #: data/ui/deesser.ui:607 data/ui/gate.ui:425 data/ui/gate.ui:1154
 #: data/ui/maximizer.ui:249 data/ui/multiband_gate_band.ui:406
 msgid "Reduction"
-msgstr ""
+msgstr "குறைப்பு"
 
 #: data/ui/delay.ui:41 data/ui/delay.ui:128 src/tags_plugin_name.cpp:47
 msgid "Delay"
-msgstr ""
+msgstr "சுணக்கம்"
 
 #: data/ui/delay.ui:107 data/ui/delay.ui:194 data/ui/stereo_tools.ui:182
 #: data/ui/stereo_tools.ui:207
 msgid "Invert Phase"
-msgstr ""
+msgstr "தலைகீழ் கட்டம்"
 
 #: data/ui/echo_canceller.ui:27
 msgid "Filter Length"
-msgstr ""
+msgstr "வடிகட்டி நீளம்"
 
 #: data/ui/echo_canceller.ui:49
 msgid "Residual Echo Suppression"
-msgstr ""
+msgstr "மீதமுள்ள எதிரொலி அடக்குமுறை"
 
 #: data/ui/echo_canceller.ui:70
 msgid "Near End Echo Suppression"
-msgstr ""
+msgstr "முடிவுக்கு அருகில் எதிரொலி அடக்குமுறை"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
-msgstr ""
+msgstr "விலக்கப்பட்ட பயன்பாடுகள்"
 
 #: data/ui/effects_box.ui:120
 msgid "Enable/disable input monitoring"
-msgstr ""
+msgstr "உள்ளீட்டு கண்காணிப்பை இயக்கவும்/முடக்கவும்"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
-msgstr ""
+msgstr "பட்டைகள்"
 
 #: data/ui/equalizer.ui:93 data/ui/filter.ui:270 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:391
 msgid "Balance"
-msgstr ""
+msgstr "இருப்பு"
 
 #: data/ui/equalizer.ui:125
 msgid "Pitch Left"
-msgstr ""
+msgstr "சுருதி இடது"
 
 #: data/ui/equalizer.ui:157
 msgid "Pitch Right"
-msgstr ""
+msgstr "சுருதி வலது"
 
 #: data/ui/equalizer.ui:288
 msgid "Split Channels"
-msgstr ""
+msgstr "பிளவு சேனல்கள்"
 
 #: data/ui/equalizer.ui:294
 msgid "Flat Response"
-msgstr ""
+msgstr "தட்டையான பதில்"
 
 #: data/ui/equalizer.ui:302
 msgid "Calculate Frequencies"
-msgstr ""
+msgstr "அதிர்வெண்களைக் கணக்கிடுங்கள்"
 
 #: data/ui/equalizer.ui:310
 msgid "Sort Bands"
-msgstr ""
+msgstr "பட்டைகள் வரிசைப்படுத்துங்கள்"
 
 #: data/ui/equalizer.ui:325 src/presets_menu.cpp:144
 msgid "Import Preset"
-msgstr ""
+msgstr "முன்னமைக்கப்பட்ட இறக்குமதி"
 
 #: data/ui/equalizer.ui:359
 msgid "Export Preset"
-msgstr ""
+msgstr "ஏற்றுமதி முன்னமைவு"
 
 #: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
 msgid "Slope"
-msgstr ""
+msgstr "சாய்வு"
 
 #: data/ui/equalizer_band.ui:173 data/ui/multiband_compressor_band.ui:149
 #: data/ui/multiband_gate_band.ui:118
 msgid "Solo"
-msgstr ""
+msgstr "தனி"
 
 #: data/ui/equalizer_band.ui:270 data/ui/filter.ui:244 data/ui/pitch.ui:28
 msgid "Quality"
-msgstr ""
+msgstr "தகுதி"
 
 #: data/ui/equalizer_band.ui:300 data/ui/filter.ui:192
 msgid "Width"
-msgstr ""
+msgstr "அகலம்"
 
 #: data/ui/exciter.ui:208
 msgid "Ceil"
-msgstr ""
+msgstr "சீல்"
 
 #: data/ui/exciter.ui:236
 msgid "Ceil Value"
-msgstr ""
+msgstr "சீல் மதிப்பு"
 
 #: data/ui/expander.ui:51 src/tags_plugin_name.cpp:51
 msgid "Expander"
-msgstr ""
+msgstr "விரிவாக்க"
 
 #: data/ui/expander.ui:86
 msgid "Expander Mode"
-msgstr ""
+msgstr "விரிவாக்க முறை"
 
 #: data/ui/expander.ui:609 data/ui/gate.ui:822
 msgid "Internal"
-msgstr ""
+msgstr "உள்"
 
 #: data/ui/factory_clients_listview.ui:72
 msgid "API"
-msgstr ""
+msgstr "பநிஇ"
 
 #: data/ui/factory_clients_listview.ui:100
 msgid "Access"
-msgstr ""
+msgstr "அணுகல்"
 
 #: data/ui/factory_modules_listview.ui:72
 msgid "Description"
-msgstr ""
+msgstr "விவரம்"
 
 #: data/ui/factory_rnnoise_listview.ui:24
 msgid "Remove this model file"
-msgstr ""
+msgstr "இந்த மாதிரி கோப்பை அகற்று"
 
 #: data/ui/filter.ui:52
 msgid "Low-Shelf"
-msgstr ""
+msgstr "குறைந்த-அலமாரியில்"
 
 #: data/ui/filter.ui:53
 msgid "High-Shelf"
-msgstr ""
+msgstr "உயர்-அலமாரியில்"
 
 #: data/ui/filter.ui:54
 msgid "Bell"
-msgstr ""
+msgstr "மணி"
 
 #: data/ui/filter.ui:55
 msgid "Band-Pass"
-msgstr ""
+msgstr "பேண்ட்-பாச்"
 
 #: data/ui/filter.ui:56
 msgid "Notch"
-msgstr ""
+msgstr "உச்சநிலை"
 
 #: data/ui/filter.ui:57
 msgid "Resonance"
-msgstr ""
+msgstr "ஒத்திசை"
 
 #: data/ui/filter.ui:58
 msgid "Ladder-Pass"
-msgstr ""
+msgstr "ஏணி-பாச்"
 
 #: data/ui/filter.ui:59
 msgid "Ladder-Rejection"
-msgstr ""
+msgstr "ஏணி-நிராகரிப்பு"
 
 #: data/ui/filter.ui:60
 msgid "All-Pass"
-msgstr ""
+msgstr "ஆல்-பாச்"
 
 #: data/ui/filter.ui:102
 msgid "Equalizer Mode"
-msgstr ""
+msgstr "சமநிலைப்படுத்தி பயன்முறை"
 
 #: data/ui/filter.ui:162 data/ui/multiband_compressor_band.ui:570
 #: data/ui/multiband_gate_band.ui:628 src/tags_plugin_name.cpp:52
 msgid "Filter"
-msgstr ""
+msgstr "வடிப்பி"
 
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:53
 msgid "Gate"
-msgstr ""
+msgstr "வாயில்"
 
 #: data/ui/gate.ui:167 data/ui/gate.ui:258 data/ui/multiband_gate_band.ui:240
 #: data/ui/multiband_gate_band.ui:331
 msgid "Zone"
-msgstr ""
+msgstr "மண்டலம்"
 
 #: data/ui/gate.ui:237 data/ui/multiband_gate_band.ui:310
 msgid "Hysteresis"
-msgstr ""
+msgstr "கருப்பை"
 
 #: data/ui/gate.ui:330
 msgid "Mix"
-msgstr ""
+msgstr "கலக்க"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
-msgstr ""
+msgstr "தாக்குதல் மண்டலம் தொடக்க"
 
 #: data/ui/gate.ui:564
 msgid "Release Zone Start"
-msgstr ""
+msgstr "வெளியீட்டு மண்டலம் தொடக்க"
 
 #: data/ui/level_meter.ui:28
 msgid "True Peak"
-msgstr ""
+msgstr "உண்மையான உச்சநிலை"
 
 #: data/ui/level_meter.ui:328
 msgid "Reset History"
-msgstr ""
+msgstr "வரலாற்றை மீட்டமை"
 
 #: data/ui/limiter.ui:68
 msgid "Oversampling"
-msgstr ""
+msgstr "மிகைப்படுத்தல்"
 
 #: data/ui/limiter.ui:80
 msgid "Dither"
-msgstr ""
+msgstr "இன்று"
 
 #: data/ui/limiter.ui:94
 msgid "Herm Thin"
-msgstr ""
+msgstr "எர்ம் மெல்லிய"
 
 #: data/ui/limiter.ui:95
 msgid "Herm Wide"
-msgstr ""
+msgstr "எர்ம் அகலம்"
 
 #: data/ui/limiter.ui:96
 msgid "Herm Tail"
-msgstr ""
+msgstr "எர்ம் வால்"
 
 #: data/ui/limiter.ui:97
 msgid "Herm Duck"
-msgstr ""
+msgstr "எர்ம் வாத்து"
 
 #: data/ui/limiter.ui:98
 msgid "Exp Thin"
-msgstr ""
+msgstr "எக்ச்ப் மெல்லிய"
 
 #: data/ui/limiter.ui:99
 msgid "Exp Wide"
-msgstr ""
+msgstr "எக்ச்ப் அகலம்"
 
 #: data/ui/limiter.ui:100
 msgid "Exp Tail"
-msgstr ""
+msgstr "எக்ச்ப் வால்"
 
 #: data/ui/limiter.ui:101
 msgid "Exp Duck"
-msgstr ""
+msgstr "எக்ச்ப் வாத்து"
 
 #: data/ui/limiter.ui:102
 msgid "Line Thin"
-msgstr ""
+msgstr "வரி மெல்லிய"
 
 #: data/ui/limiter.ui:103
 msgid "Line Wide"
-msgstr ""
+msgstr "வரி அகலம்"
 
 #: data/ui/limiter.ui:104
 msgid "Line Tail"
-msgstr ""
+msgstr "வரி வால்"
 
 #: data/ui/limiter.ui:105
 msgid "Line Duck"
-msgstr ""
+msgstr "வரி வாத்து"
 
 #: data/ui/limiter.ui:125 data/ui/multiband_compressor.ui:56
 #: data/ui/multiband_gate.ui:56
 msgid "None"
-msgstr ""
+msgstr "எதுவுமில்லை"
 
 #: data/ui/limiter.ui:126
 msgid "Half x2(2L)"
-msgstr ""
+msgstr "தேர்தல் (சொல்லுங்கள்)"
 
 #: data/ui/limiter.ui:127
 msgid "Half x2(3L)"
-msgstr ""
+msgstr "தேர்தல் (ஆன்)"
 
 #: data/ui/limiter.ui:128
 msgid "Half x3(2L)"
-msgstr ""
+msgstr "கச்சா (சொல்லுங்கள்)"
 
 #: data/ui/limiter.ui:129
 msgid "Half x3(3L)"
-msgstr ""
+msgstr "காசா கூட்டணி (ஆன்)"
 
 #: data/ui/limiter.ui:130
 msgid "Half x4(2L)"
-msgstr ""
+msgstr "அரை ஃச் 4 (சொல்லுங்கள்)"
 
 #: data/ui/limiter.ui:131
 msgid "Half x4(3L)"
-msgstr ""
+msgstr "அரை ஃச் 4 (அலி)"
 
 #: data/ui/limiter.ui:132
 msgid "Half x6(2L)"
-msgstr ""
+msgstr "அரை ஃச் 6 (2 எல்)"
 
 #: data/ui/limiter.ui:133
 msgid "Half x6(3L)"
-msgstr ""
+msgstr "அரை x6 (3l)"
 
 #: data/ui/limiter.ui:134
 msgid "Half x8(2L)"
-msgstr ""
+msgstr "அரை ஃச் 8 (2 எல்)"
 
 #: data/ui/limiter.ui:135
 msgid "Half x8(3L)"
-msgstr ""
+msgstr "கணக்கீடு (அலி) கூட்டணி"
 
 #: data/ui/limiter.ui:136
 msgid "Full x2(2L)"
-msgstr ""
+msgstr "முழு ஃச் 2 (2 எல்)"
 
 #: data/ui/limiter.ui:137
 msgid "Full x2(3L)"
-msgstr ""
+msgstr "முழு ஃச் 2 (3 எல்)"
 
 #: data/ui/limiter.ui:138
 msgid "Full x3(2L)"
-msgstr ""
+msgstr "முழு ஃச் 3 (2 எல்)"
 
 #: data/ui/limiter.ui:139
 msgid "Full x3(3L)"
-msgstr ""
+msgstr "முழு ஃச் 3 (3 எல்)"
 
 #: data/ui/limiter.ui:140
 msgid "Full x4(2L)"
-msgstr ""
+msgstr "முழு ஃச் 4 (2 எல்)"
 
 #: data/ui/limiter.ui:141
 msgid "Full x4(3L)"
-msgstr ""
+msgstr "முழு ஃச் 4 (3 எல்)"
 
 #: data/ui/limiter.ui:142
 msgid "Full x6(2L)"
-msgstr ""
+msgstr "முழு ஃச் 6 (2 எல்)"
 
 #: data/ui/limiter.ui:143
 msgid "Full x6(3L)"
-msgstr ""
+msgstr "முழு ஃச் 6 (3 எல்)"
 
 #: data/ui/limiter.ui:144
 msgid "Full x8(2L)"
-msgstr ""
+msgstr "முழு ஃச் 8 (2 எல்)"
 
 #: data/ui/limiter.ui:145
 msgid "Full x8(3L)"
-msgstr ""
+msgstr "முழு ஃச் 8 (3 எல்)"
 
 #: data/ui/limiter.ui:201
 msgid "SC PreAmp"
-msgstr ""
+msgstr "எச்சி ப்ரீஆம்ப்"
 
 #: data/ui/limiter.ui:229 data/ui/multiband_compressor_band.ui:692
 #: data/ui/multiband_gate_band.ui:749
 msgid "Sidechain PreAmplification"
-msgstr ""
+msgstr "Sidechain preamplification"
 
 #: data/ui/limiter.ui:400
 msgid "Boost"
-msgstr ""
+msgstr "பூச்ட்"
 
 #: data/ui/limiter.ui:415
 msgid "Stereo Link"
-msgstr ""
+msgstr "ச்டீரியோ இணைப்பு"
 
 #: data/ui/limiter.ui:459 data/ui/multiband_compressor_band.ui:119
 #: data/ui/multiband_gate_band.ui:88
 msgid "External Sidechain"
-msgstr ""
+msgstr "வெளிப்புற பக்கவாட்டு"
 
 #: data/ui/limiter.ui:472 data/ui/multiband_compressor.ui:97
 #: data/ui/multiband_gate.ui:97
 msgid "External Sidechain Source"
-msgstr ""
+msgstr "வெளிப்புற பக்கவாட்டு மூல"
 
 #: data/ui/limiter.ui:491
 msgid "Auto Leveling"
-msgstr ""
+msgstr "ஆட்டோ சமநிலை"
 
 #: data/ui/limiter.ui:530
 msgid "Auto Leveling Attack"
-msgstr ""
+msgstr "ஆட்டோ சமன் செய்யும் தாக்குதல்"
 
 #: data/ui/limiter.ui:565
 msgid "Auto Leveling Release"
-msgstr ""
+msgstr "ஆட்டோ சமநிலை வெளியீடு"
 
 #: data/ui/limiter.ui:599
 msgid "Auto Leveling Knee"
-msgstr ""
+msgstr "ஆட்டோ சமன் செய்யும் முழங்கால்"
 
 #: data/ui/limiter.ui:624
 msgid "Gain Left"
-msgstr ""
+msgstr "இடதுபுறம் கிடைக்கும்"
 
 #: data/ui/limiter.ui:651
 msgid "Gain Right"
-msgstr ""
+msgstr "சரியானதைப் பெறுங்கள்"
 
 #: data/ui/limiter.ui:678
 msgid "Sidechain Left"
-msgstr ""
+msgstr "சைட்செயின் இடது"
 
 #: data/ui/limiter.ui:705
 msgid "Sidechain Right"
-msgstr ""
+msgstr "பக்கவாட்டு சரி"
 
 #: data/ui/loudness.ui:37
 msgid "Standard"
-msgstr ""
+msgstr "தரநிலை"
 
 #: data/ui/loudness.ui:44
 msgid "Flat"
-msgstr ""
+msgstr "கிடைவளைவு"
 
 #: data/ui/loudness.ui:59
 msgid "FFT Size"
-msgstr ""
+msgstr "FFT அளவு"
 
 #: data/ui/loudness.ui:83
 msgid "Output Volume"
-msgstr ""
+msgstr "வெளியீட்டு தொகுதி"
 
 #: data/ui/loudness.ui:104
 msgid "Clipping"
-msgstr ""
+msgstr "கிளிப்பிங்"
 
 #: data/ui/multiband_compressor.ui:43 data/ui/multiband_gate.ui:42
 msgid "Sidechain Boost"
-msgstr ""
+msgstr "சைட்செயின் பூச்ட்"
 
 #: data/ui/multiband_compressor.ui:57 data/ui/multiband_gate.ui:57
 msgid "Pink BT"
-msgstr ""
+msgstr "இளஞ்சிவப்பு பி.டி."
 
 #: data/ui/multiband_compressor.ui:58 data/ui/multiband_gate.ui:58
 msgid "Pink MT"
-msgstr ""
+msgstr "பிங்க் எம்டி"
 
 #: data/ui/multiband_compressor.ui:59 data/ui/multiband_gate.ui:59
 msgid "Brown BT"
-msgstr ""
+msgstr "பிரவுன் பி.டி."
 
 #: data/ui/multiband_compressor.ui:60 data/ui/multiband_gate.ui:60
 msgid "Brown MT"
-msgstr ""
+msgstr "பிரவுன் எம்டி"
 
 #: data/ui/multiband_compressor.ui:114 data/ui/multiband_gate.ui:114
 msgid "Show Native User Interface"
-msgstr ""
+msgstr "சொந்த பயனர் இடைமுகத்தைக் காட்டு"
 
 #: data/ui/multiband_compressor.ui:143 data/ui/multiband_gate.ui:143
 msgid "Operating Mode"
-msgstr ""
+msgstr "இயக்க முறை"
 
 #: data/ui/multiband_compressor.ui:156 data/ui/multiband_gate.ui:156
 msgid "Classic"
-msgstr ""
+msgstr "கிளாசிக்"
 
 #: data/ui/multiband_compressor.ui:157 data/ui/multiband_gate.ui:157
 msgid "Modern"
-msgstr ""
+msgstr "நவீன"
 
 #: data/ui/multiband_compressor.ui:158 data/ui/multiband_gate.ui:158
 msgid "Linear Phase"
-msgstr ""
+msgstr "நேரியல் கட்டம்"
 
 #: data/ui/multiband_compressor.ui:266 data/ui/multiband_gate.ui:266
 msgid "Bands List"
-msgstr ""
+msgstr "பட்டைகள் பட்டியல்"
 
 #: data/ui/multiband_compressor.ui:275 data/ui/multiband_gate.ui:275
 msgid "Band 1"
-msgstr ""
+msgstr "பேண்ட் 1"
 
 #: data/ui/multiband_compressor.ui:292 data/ui/multiband_gate.ui:292
 msgid "Band 2"
-msgstr ""
+msgstr "பேண்ட் 2"
 
 #: data/ui/multiband_compressor.ui:318 data/ui/multiband_gate.ui:318
 msgid "Band 3"
-msgstr ""
+msgstr "பேண்ட் 3"
 
 #: data/ui/multiband_compressor.ui:344 data/ui/multiband_gate.ui:344
 msgid "Band 4"
-msgstr ""
+msgstr "பேண்ட் 4"
 
 #: data/ui/multiband_compressor.ui:370 data/ui/multiband_gate.ui:370
 msgid "Band 5"
-msgstr ""
+msgstr "பேண்ட் 5"
 
 #: data/ui/multiband_compressor.ui:396 data/ui/multiband_gate.ui:396
 msgid "Band 6"
-msgstr ""
+msgstr "பேண்ட் 6"
 
 #: data/ui/multiband_compressor.ui:422 data/ui/multiband_gate.ui:422
 msgid "Band 7"
-msgstr ""
+msgstr "பேண்ட் 7"
 
 #: data/ui/multiband_compressor.ui:448 data/ui/multiband_gate.ui:448
 msgid "Band 8"
-msgstr ""
+msgstr "பேண்ட் 8"
 
 #: data/ui/multiband_compressor_band.ui:18 data/ui/multiband_gate_band.ui:18
 msgid "Band Start"
-msgstr ""
+msgstr "இசைக்குழு தொடக்க"
 
 #: data/ui/multiband_compressor_band.ui:56 data/ui/multiband_gate_band.ui:56
 msgid "Band End"
-msgstr ""
+msgstr "இசைக்குழு முடிவு"
 
 #: data/ui/multiband_compressor_band.ui:111
 msgid "Band Compression Mode"
-msgstr ""
+msgstr "பேண்ட் சுருக்க முறை"
 
 #: data/ui/multiband_compressor_band.ui:129 data/ui/multiband_gate_band.ui:98
 msgid "Band Bypass"
-msgstr ""
+msgstr "பேண்ட் பைபாச்"
 
 #: data/ui/multiband_compressor_band.ui:427 data/ui/multiband_gate_band.ui:485
 msgid "Band Sidechain Options"
-msgstr ""
+msgstr "பேண்ட் சைட்செயின் விருப்பங்கள்"
 
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:558
 msgid "Stereo Split"
-msgstr ""
+msgstr "ச்டீரியோ பிளவு"
 
 #: data/ui/multiband_compressor_band.ui:582 data/ui/multiband_gate_band.ui:640
 msgid "Low-Cut"
-msgstr ""
+msgstr "குறைந்த வெட்டு"
 
 #: data/ui/multiband_compressor_band.ui:609 data/ui/multiband_gate_band.ui:667
 msgid "Low-Cut Filter Frequency"
-msgstr ""
+msgstr "குறைந்த வெட்டு வடிகட்டி அதிர்வெண்"
 
 #: data/ui/multiband_compressor_band.ui:619 data/ui/multiband_gate_band.ui:677
 msgid "High-Cut"
-msgstr ""
+msgstr "உயர் வெட்டு"
 
 #: data/ui/multiband_compressor_band.ui:647 data/ui/multiband_gate_band.ui:705
 msgid "High-Cut Filter Frequency"
-msgstr ""
+msgstr "உயர் வெட்டு வடிகட்டி அதிர்வெண்"
 
 #: data/ui/multiband_compressor_band.ui:666 data/ui/multiband_gate_band.ui:724
 msgid "PreAmp"
-msgstr ""
+msgstr "Preamp"
 
 #: data/ui/multiband_compressor_band.ui:867
 msgid "Band Gain"
-msgstr ""
+msgstr "பேண்ட் ஆதாயம்"
 
 #: data/ui/multiband_compressor_band.ui:892 data/ui/multiband_gate_band.ui:861
 msgid "Band Envelope"
-msgstr ""
+msgstr "இசைக்குழு உறை"
 
 #: data/ui/multiband_compressor_band.ui:917 data/ui/multiband_gate_band.ui:886
 msgid "Band Curve"
-msgstr ""
+msgstr "பேண்ட் வளைவு"
 
 #: data/ui/multiband_gate_band.ui:836
 msgid "Band Reduction"
-msgstr ""
+msgstr "இசைக்குழு குறைப்பு"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
-msgstr ""
+msgstr "பொது"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "சாதன மேலாண்மை"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
+"வெளிப்புற பயன்பாடுகளில் (எ.கா. க்னோம் அமைப்புகள் மற்றும் பிளாச்மா கணினி அமைப்புகள்) எளிதா"
+"ன விளைவுகள் மூழ்கி/மூலமாக இயல்புநிலை சாதனமாக அமைக்க வேண்டாம்."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
-msgstr ""
+msgstr "இயல்புநிலை உள்ளீட்டைப் பயன்படுத்தவும்"
 
 #: data/ui/pipe_manager_box.ui:65
 msgid "Custom Input Device"
-msgstr ""
+msgstr "தனிப்பயன் உள்ளீட்டு சாதனம்"
 
 #: data/ui/pipe_manager_box.ui:74 data/ui/pipe_manager_box.ui:80
 msgid "Use Default Output"
-msgstr ""
+msgstr "இயல்புநிலை வெளியீட்டைப் பயன்படுத்தவும்"
 
 #: data/ui/pipe_manager_box.ui:101
 msgid "Custom Output Device"
-msgstr ""
+msgstr "தனிப்பயன் வெளியீட்டு சாதனம்"
 
 #: data/ui/pipe_manager_box.ui:112
 msgid "Server Information"
-msgstr ""
+msgstr "சேவையக செய்தி"
 
 #: data/ui/pipe_manager_box.ui:116
 msgid "Header Version"
-msgstr ""
+msgstr "தலைப்பு பதிப்பு"
 
 #: data/ui/pipe_manager_box.ui:127
 msgid "Library Version"
-msgstr ""
+msgstr "நூலக பதிப்பு"
 
 #: data/ui/pipe_manager_box.ui:138
 msgid "Core Version"
-msgstr ""
+msgstr "மைய பதிப்பு"
 
 #: data/ui/pipe_manager_box.ui:149
 msgid "Sampling Rate"
-msgstr ""
+msgstr "மாதிரி வீதம்"
 
 #: data/ui/pipe_manager_box.ui:160
 msgid "Minimum Quantum"
-msgstr ""
+msgstr "குறைந்தபட்ச தொகை"
 
 #: data/ui/pipe_manager_box.ui:171
 msgid "Maximum Quantum"
-msgstr ""
+msgstr "அதிகபட்ச தொகை"
 
 #: data/ui/pipe_manager_box.ui:182
 msgid "Default Quantum"
-msgstr ""
+msgstr "இயல்புநிலை குவாண்டம்"
 
 #: data/ui/pipe_manager_box.ui:202
 msgid "Presets Autoloading"
-msgstr ""
+msgstr "முன்னமைவுகள் ஆட்டோலோடிங்"
 
 #: data/ui/pipe_manager_box.ui:228 data/ui/pipe_manager_box.ui:358
 msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
 msgstr ""
+"உள்ளக முன்னமைவுகளை மட்டுமே ஆட்டோலோட் செய்ய முடியும். ஒரு குறிப்பிட்ட சாதனத்துடன் "
+"தேர்ந்தெடுக்கப்பட்டு தொடர்புடைய ஒரு சமூக முன்னமைவு உள்நாட்டில் இறக்குமதி செய்யப்பட வேண்டும்."
 
 #: data/ui/pipe_manager_box.ui:277
 msgid "Output Devices"
-msgstr ""
+msgstr "வெளியீட்டு சாதனங்கள்"
 
 #: data/ui/pipe_manager_box.ui:294 src/application.cpp:284
 msgid "Output Presets"
-msgstr ""
+msgstr "வெளியீட்டு முன்னமைவுகள்"
 
 #: data/ui/pipe_manager_box.ui:301 data/ui/pipe_manager_box.ui:426
 msgid "Create Association"
-msgstr ""
+msgstr "சங்கத்தை உருவாக்கவும்"
 
 #: data/ui/pipe_manager_box.ui:314
 msgid "Add Autoloading Output Preset"
-msgstr ""
+msgstr "ஆட்டோலோடிங் வெளியீட்டு முன்னமைவைச் சேர்க்கவும்"
 
 #: data/ui/pipe_manager_box.ui:334
 msgid "Output Autoloading Presets List"
-msgstr ""
+msgstr "வெளியீட்டு ஆட்டோலோடிங் முன்னமைவுகள் பட்டியல்"
 
 #: data/ui/pipe_manager_box.ui:407
 msgid "Input Devices"
-msgstr ""
+msgstr "உள்ளீட்டு சாதனங்கள்"
 
 #: data/ui/pipe_manager_box.ui:419 src/application.cpp:292
 msgid "Input Presets"
-msgstr ""
+msgstr "உள்ளீட்டு முன்னமைவுகள்"
 
 #: data/ui/pipe_manager_box.ui:439
 msgid "Add Autoloading Input Preset"
-msgstr ""
+msgstr "ஆட்டோலோடிங் உள்ளீட்டு முன்னமைவைச் சேர்க்கவும்"
 
 #: data/ui/pipe_manager_box.ui:458
 msgid "Input Autoloading Presets List"
-msgstr ""
+msgstr "உள்ளீட்டு ஆட்டோலோடிங் முன்னமைவு பட்டியல்"
 
 #: data/ui/pipe_manager_box.ui:488
 msgid "Modules"
-msgstr ""
+msgstr "தொகுதிகள்"
 
 #: data/ui/pipe_manager_box.ui:506
 msgid "Modules List"
-msgstr ""
+msgstr "தொகுதிகள் பட்டியல்"
 
 #: data/ui/pipe_manager_box.ui:520
 msgid "Clients"
-msgstr ""
+msgstr "வாடிக்கையாளர்கள்"
 
 #: data/ui/pipe_manager_box.ui:538
 msgid "Clients List"
-msgstr ""
+msgstr "வாடிக்கையாளர்கள் பட்டியல்"
 
 #: data/ui/pipe_manager_box.ui:552
 msgid "Test Signal"
-msgstr ""
+msgstr "சோதனை சமிக்ஞை"
 
 #: data/ui/pipe_manager_box.ui:557 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
 msgid "State"
-msgstr ""
+msgstr "மாநிலம்"
 
 #: data/ui/pipe_manager_box.ui:560 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
-msgstr ""
+msgstr "இயக்கப்பட்டது"
 
 #: data/ui/pipe_manager_box.ui:575
 msgid "Properties"
-msgstr ""
+msgstr "பண்புகள்"
 
 #: data/ui/pipe_manager_box.ui:578
 msgid "Channels"
-msgstr ""
+msgstr "சேனல்கள்"
 
 #: data/ui/pipe_manager_box.ui:603
 msgid "Both"
-msgstr ""
+msgstr "இரண்டும்"
 
 #: data/ui/pipe_manager_box.ui:607
 msgid "Both Channels"
-msgstr ""
+msgstr "இரண்டு சேனல்களும்"
 
 #: data/ui/pipe_manager_box.ui:616
 msgid "Waveform"
-msgstr ""
+msgstr "அலைவடிவம், அலைப்படம்"
 
 #: data/ui/pipe_manager_box.ui:620
 msgid "Sine Wave"
-msgstr ""
+msgstr "சைன் அலை"
 
 #: data/ui/pipe_manager_box.ui:629
 msgid "White Noise"
-msgstr ""
+msgstr "வெண்ணிறைச்சல்"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr ""
+msgstr "விரைவான தேடல்"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "எதிர்ப்பு மாற்று"
 
 #: data/ui/pitch.ui:58
 msgid "Sequence Length"
-msgstr ""
+msgstr "வரிசை நீளம்"
 
 #: data/ui/pitch.ui:80
 msgid "Seek Window"
-msgstr ""
+msgstr "சாளரத்தைத் தேடுங்கள்"
 
 #: data/ui/pitch.ui:102
 msgid "Overlap Length"
-msgstr ""
+msgstr "ஒன்றுடன் ஒன்று நீளம்"
 
 #: data/ui/pitch.ui:130 src/tags_plugin_name.cpp:60
 msgid "Pitch"
-msgstr ""
+msgstr "குனிவு"
 
 #: data/ui/pitch.ui:134
 msgid "Semitones"
-msgstr ""
+msgstr "செமிடெச்"
 
 #: data/ui/pitch.ui:156
 msgid "Tempo Difference"
-msgstr ""
+msgstr "டெம்போ வேறுபாடு"
 
 #: data/ui/pitch.ui:178
 msgid "Rate Difference"
-msgstr ""
+msgstr "வீத வேறுபாடு"
 
 #: data/ui/plugin_row.ui:50
 msgid "Remove this effect"
-msgstr ""
+msgstr "இந்த விளைவை அகற்று"
 
 #: data/ui/plugin_row.ui:62
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "இந்த விளைவை இயக்கவும்/முடக்கவும்"
 
 #: data/ui/plugin_row.ui:74
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "இந்த விளைவின் நிலையை மாற்றவும்"
 
 #: data/ui/plugins_box.ui:28
 msgid "Show/hide effects list"
-msgstr ""
+msgstr "விளைவுகள் பட்டியலைக் காட்டு/மறைக்கவும்"
 
 #: data/ui/plugins_box.ui:42
 msgid "Add Effect"
-msgstr ""
+msgstr "விளைவைச் சேர்க்கவும்"
 
 #: data/ui/plugins_box.ui:65
 msgid "Go to the previous effect"
-msgstr ""
+msgstr "முந்தைய விளைவுக்குச் செல்லுங்கள்"
 
 #: data/ui/plugins_box.ui:80
 msgid "Go to the next effect"
-msgstr ""
+msgstr "அடுத்த விளைவுக்குச் செல்லுங்கள்"
 
 #: data/ui/plugins_box.ui:131
 msgid "Used Plugins List"
-msgstr ""
+msgstr "பயன்படுத்தப்பட்ட செருகுநிரல்கள் பட்டியல்"
 
 #: data/ui/plugins_box.ui:192
 msgid "No Effects"
-msgstr ""
+msgstr "விளைவுகள் இல்லை"
 
 #: data/ui/plugins_box.ui:193
 msgid "Audio Stream Not Modified"
-msgstr ""
+msgstr "ஆடியோ ச்ட்ரீம் மாற்றப்படவில்லை"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
-msgstr ""
+msgstr "சொருகி தேடுங்கள்"
 
 #: data/ui/plugins_menu.ui:74
 msgid "Plugins List"
-msgstr ""
+msgstr "செருகுநிரல்கள் பட்டியல்"
 
 #: data/ui/preferences_general.ui:5
 msgid "_General"
-msgstr ""
+msgstr "_ பொது"
 
 #: data/ui/preferences_general.ui:10
 msgid "Service"
-msgstr ""
+msgstr "பணி"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "கணினி தொடக்கத்தில் சேவையைத் தொடங்கவும்"
 
 #: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
-msgstr ""
+msgstr "சாளர மூடுதலில் பணிநிறுத்தம்"
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
-msgstr ""
+msgstr "ஆடியோ"
 
 #: data/ui/preferences_general.ui:42
 msgid "Process All Output Streams"
-msgstr ""
+msgstr "அனைத்து வெளியீட்டு நீரோடைகளையும் செயலாக்கவும்"
 
 #: data/ui/preferences_general.ui:54
 msgid "Process All Input Streams"
-msgstr ""
+msgstr "அனைத்து உள்ளீட்டு நீரோடைகளையும் செயலாக்கவும்"
 
 #: data/ui/preferences_general.ui:66
 msgid "Ignore Streams from Monitor of Devices"
-msgstr ""
+msgstr "சாதனங்களின் மானிட்டரிலிருந்து நீரோடைகளை புறக்கணிக்கவும்"
 
 #: data/ui/preferences_general.ui:78
 msgid "Use Cubic Volume"
-msgstr ""
+msgstr "கன அளவைப் பயன்படுத்தவும்"
 
 #: data/ui/preferences_general.ui:90
 msgid "Inactivity Timeout"
-msgstr ""
+msgstr "செயலற்ற நேரம் முடிந்தது"
 
 #: data/ui/preferences_general.ui:91
 msgid "Input Pipeline"
-msgstr ""
+msgstr "உள்ளீட்டு குழாய்"
 
 #: data/ui/preferences_general.ui:120
 msgid "Update Interval"
-msgstr ""
+msgstr "புதுப்பிப்பு இடைவெளி"
 
 #: data/ui/preferences_general.ui:121
 msgid "Related to Level Meters and Spectrum"
-msgstr ""
+msgstr "நிலை மீட்டர் மற்றும் ச்பெக்ட்ரம் தொடர்பானது"
 
 #: data/ui/preferences_general.ui:143
 msgid "Update Frequency"
-msgstr ""
+msgstr "புதுப்பிப்பு அதிர்வெண்"
 
 #: data/ui/preferences_general.ui:144
 msgid "Related to LV2 Plugins"
-msgstr ""
+msgstr "எல்வி 2 செருகுநிரல்கள் தொடர்பானது"
 
 #: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
 msgid "Style"
-msgstr ""
+msgstr "சூல் தண்டு"
 
 #: data/ui/preferences_general.ui:171
 msgid "Use Dark Theme"
-msgstr ""
+msgstr "இருண்ட கருப்பொருளைப் பயன்படுத்தவும்"
 
 #: data/ui/preferences_general.ui:183
 msgid "Hide Menus on Outside Clicks"
-msgstr ""
+msgstr "வெளிப்புற கிளிக்குகளில் மெனுக்களை மறைக்கவும்"
 
 #: data/ui/preferences_general.ui:197
 msgid "Experimental Features"
-msgstr ""
+msgstr "சோதனை நற்பொருத்தங்கள்"
 
 #: data/ui/preferences_general.ui:200
 msgid "Native Plugin Window"
-msgstr ""
+msgstr "சொந்த சொருகி சாளரம்"
 
 #: data/ui/preferences_general.ui:201
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
-msgstr ""
+msgstr "சொந்த சொருகி சாளரத்தை காட்ட/மறைக்க அனுமதிக்கிறது"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
-msgstr ""
+msgstr "_ச்பெக்ட்ரம்"
 
 #: data/ui/preferences_spectrum.ui:24
 msgid "Compensating Delay (ms)"
-msgstr ""
+msgstr "ஈடுசெய்யும் நேரந்தவறுகை (எம்.எச்)"
 
 #: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
-msgstr ""
+msgstr "வடிவம்"
 
 #: data/ui/preferences_spectrum.ui:58
 msgid "Bars"
-msgstr ""
+msgstr "பார்கள்"
 
 #: data/ui/preferences_spectrum.ui:59
 msgid "Lines"
-msgstr ""
+msgstr "வரிகள்"
 
 #: data/ui/preferences_spectrum.ui:60
 msgid "Dots"
-msgstr ""
+msgstr "புள்ளிகள்"
 
 #: data/ui/preferences_spectrum.ui:71
 msgid "Points"
-msgstr ""
+msgstr "பிரிவகம்"
 
 #: data/ui/preferences_spectrum.ui:92
 msgid "Height"
-msgstr ""
+msgstr "உயரம்"
 
 #: data/ui/preferences_spectrum.ui:114
 msgid "Line Width"
-msgstr ""
+msgstr "வரி அகலம்"
 
 #: data/ui/preferences_spectrum.ui:136
 msgid "Fill"
-msgstr ""
+msgstr "நிரப்பவும்"
 
 #: data/ui/preferences_spectrum.ui:148
 msgid "Show Bars Border"
-msgstr ""
+msgstr "பார்கள் எல்லையைக் காட்டு"
 
 #: data/ui/preferences_spectrum.ui:160
 msgid "Rounded Corners"
-msgstr ""
+msgstr "வட்டமான மூலைகள்"
 
 #: data/ui/preferences_spectrum.ui:172
 msgid "Dynamic Scale"
-msgstr ""
+msgstr "மாறும் அளவு"
 
 #: data/ui/preferences_spectrum.ui:186
 msgid "Color"
-msgstr ""
+msgstr "நிறம்"
 
 #: data/ui/preferences_spectrum.ui:189
 msgid "Lines and Bars"
-msgstr ""
+msgstr "கோடுகள் மற்றும் பார்கள்"
 
 #: data/ui/preferences_spectrum.ui:207
 msgid "Axis Labels"
-msgstr ""
+msgstr "அச்சு லேபிள்கள்"
 
 #: data/ui/preferences_spectrum.ui:227
 msgid "Frequency Range"
-msgstr ""
+msgstr "அதிர்வெண் வரம்பு"
 
 #: data/ui/preferences_spectrum.ui:230
 msgid "Minimum"
-msgstr ""
+msgstr "சிறுமம்"
 
 #: data/ui/preferences_spectrum.ui:252
 msgid "Maximum"
-msgstr ""
+msgstr "பெருமம்"
 
 #: data/ui/preset_row.ui:38 src/convolver_menu_impulses.cpp:225
 msgid "Load"
-msgstr ""
+msgstr "சுமை"
 
 #: data/ui/preset_row.ui:39
 msgid "Discard the current settings and load this preset"
-msgstr ""
+msgstr "தற்போதைய அமைப்புகளை நிராகரித்து இந்த முன்னமைவை ஏற்றவும்"
 
 #: data/ui/preset_row.ui:48
 msgid "Save current settings to this preset file"
-msgstr ""
+msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பில் தற்போதைய அமைப்புகளை சேமிக்கவும்"
 
 #: data/ui/preset_row.ui:58
 msgid "Remove this preset file"
-msgstr ""
+msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பை அகற்று"
 
 #: data/ui/preset_community_row.ui:55
 msgid "Try"
-msgstr ""
+msgstr "முயற்சிக்கவும்"
 
 #: data/ui/preset_community_row.ui:56
 msgid "Try this community preset"
-msgstr ""
+msgstr "இந்த சமூக முன்னமைவை முயற்சிக்கவும்"
 
 #: data/ui/preset_community_row.ui:65
 msgid "Import"
-msgstr ""
+msgstr "இறக்குமதி"
 
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
-msgstr ""
+msgstr "இந்த சமூக முன்னமைவை உள்ளக முன்னமைவு பட்டியலில் இறக்குமதி செய்யுங்கள்"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
-msgstr ""
+msgstr "உள்ளக"
 
 #: data/ui/presets_menu.ui:48
 msgid "New Preset Name"
-msgstr ""
+msgstr "புதிய முன்னமைக்கப்பட்ட பெயர்"
 
 #: data/ui/presets_menu.ui:56
 msgid "Create a new preset"
-msgstr ""
+msgstr "புதிய முன்னமைவை உருவாக்கவும்"
 
 #: data/ui/presets_menu.ui:70
 msgid "Import a preset from the local storage"
-msgstr ""
+msgstr "உள்ளக சேமிப்பகத்திலிருந்து ஒரு முன்னமைவை இறக்குமதி செய்யுங்கள்"
 
 #: data/ui/presets_menu.ui:86
 msgid "Search Local Preset"
-msgstr ""
+msgstr "உள்ளக முன்னமைவைத் தேடுங்கள்"
 
 #: data/ui/presets_menu.ui:147
 msgid "Local Presets List"
-msgstr ""
+msgstr "உள்ளக முன்னமைவுகள் பட்டியல்"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
-msgstr ""
+msgstr "சமூகம்"
 
 #: data/ui/presets_menu.ui:208
 msgid "Search Community Preset"
-msgstr ""
+msgstr "சமூக முன்னமைவைத் தேடுங்கள்"
 
 #: data/ui/presets_menu.ui:271
 msgid "Community Presets List"
-msgstr ""
+msgstr "சமூக முன்னமைவு பட்டியல்"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr ""
+msgstr "சமூக முன்னமைவுகள் எதுவும் நிறுவப்படவில்லை"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
+"உங்களுக்கு பிடித்த விநியோகத்தின் களஞ்சியத்திலிருந்து சமூக முன்னமைவு தொகுப்புகள் "
+"நிறுவப்படலாம்."
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
-msgstr ""
+msgstr "புதுப்பிப்பு"
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
-msgstr ""
+msgstr "புதிய நிறுவப்பட்ட சமூக முன்னமைவுகளைக் காட்ட புதுப்பிக்கவும்"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
-msgstr ""
+msgstr "அதிக அதிர்வெண் ஈரமாக்குதல்"
 
 #: data/ui/reverb.ui:72
 msgid "Room Size"
-msgstr ""
+msgstr "அறை அளவு"
 
 #: data/ui/reverb.ui:82
 msgid "Small"
-msgstr ""
+msgstr "சிறிய"
 
 #: data/ui/reverb.ui:83
 msgid "Medium"
-msgstr ""
+msgstr "சராசரி"
 
 #: data/ui/reverb.ui:84
 msgid "Large"
-msgstr ""
+msgstr "பெரிய"
 
 #: data/ui/reverb.ui:85
 msgid "Tunnel"
-msgstr ""
+msgstr "சுரங்கப்பாதை"
 
 #: data/ui/reverb.ui:86
 msgid "Large/smooth"
-msgstr ""
+msgstr "பெரிய/மென்மையான"
 
 #: data/ui/reverb.ui:87
 msgid "Experimental"
-msgstr ""
+msgstr "சோதனை"
 
 #: data/ui/reverb.ui:106
 msgid "Diffusion"
-msgstr ""
+msgstr "விரவல்"
 
 #: data/ui/reverb.ui:142
 msgid "Pre Delay"
-msgstr ""
+msgstr "முன் நேரந்தவறுகை"
 
 #: data/ui/reverb.ui:174
 msgid "Decay Time"
-msgstr ""
+msgstr "சிதைவு நேரம்"
 
 #: data/ui/reverb.ui:275
 msgid "Bass Cut"
-msgstr ""
+msgstr "பாச் வெட்டு"
 
 #: data/ui/reverb.ui:309
 msgid "Treble Cut"
-msgstr ""
+msgstr "ட்ரெபிள் வெட்டு"
 
 #: data/ui/reverb.ui:568
 msgid "Ambience"
-msgstr ""
+msgstr "சூழல்"
 
 #: data/ui/reverb.ui:575
 msgid "Empty Walls"
-msgstr ""
+msgstr "வெற்று சுவர்கள்"
 
 #: data/ui/reverb.ui:588
 msgid "Room"
-msgstr ""
+msgstr "அறை"
 
 #: data/ui/reverb.ui:595
 msgid "Large Empty Hall"
-msgstr ""
+msgstr "பெரிய வெற்று மண்டபம்"
 
 #: data/ui/reverb.ui:608
 msgid "Disco"
-msgstr ""
+msgstr "டிச்கோ"
 
 #: data/ui/reverb.ui:615
 msgid "Large Occupied Hall"
-msgstr ""
+msgstr "பெரிய ஆக்கிரமிக்கப்பட்ட மண்டபம்"
 
 #: data/ui/rnnoise.ui:31
 msgid "Import Model"
-msgstr ""
+msgstr "இறக்குமதி மாதிரி"
 
 #: data/ui/rnnoise.ui:47 data/ui/speex.ui:59
 msgid "Voice Detection"
-msgstr ""
+msgstr "குரல் கண்டறிதல்"
 
 #: data/ui/rnnoise.ui:151
 msgid "Models"
-msgstr ""
+msgstr "மாதிரிகள்"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
 #: data/ui/rnnoise.ui:177 src/rnnoise_ui.cpp:121 src/rnnoise_ui.cpp:298
 #: src/rnnoise_ui.cpp:375
 msgid "Standard Model"
-msgstr ""
+msgstr "நிலையான மாதிரி"
 
 #: data/ui/rnnoise.ui:204
 msgid "RNNoise Models List"
-msgstr ""
+msgstr "Rnnoise மாதிரிகள் பட்டியல்"
 
 #: data/ui/rnnoise.ui:228
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "மாதிரி ஏற்றப்படவில்லை"
 
 #: data/ui/rnnoise.ui:234
 msgid "Active Model"
-msgstr ""
+msgstr "செயலில் மாதிரி"
 
 #: data/ui/rnnoise.ui:242
 msgid "Standard RNNoise Model"
-msgstr ""
+msgstr "நிலையான Rnnoise மாதிரி"
 
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
-msgstr ""
+msgstr "கண்ணோட்டம்"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "உதவியைக் காட்டு"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr ""
+msgstr "முழுத்திரை/முழு திரையில் இருந்து மீட்டமை"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
-msgstr ""
+msgstr "சாளரத்தை மூடு"
 
 #: data/ui/shortcuts.ui:37
 msgid "Quit Easy Effects"
-msgstr ""
+msgstr "எளிதான விளைவுகளை விட்டு வெளியேறவும்"
 
 #: data/ui/speex.ui:33
 msgid "Denoise"
-msgstr ""
+msgstr "டெனோயிச்"
 
 #: data/ui/speex.ui:46
 msgid "Automatic Gain Control"
-msgstr ""
+msgstr "தானியங்கு மிகைப்பு கட்டுப்பாடு"
 
 #: data/ui/speex.ui:72
 msgid "Dereverberation"
-msgstr ""
+msgstr "Dereverberation"
 
 #: data/ui/speex.ui:91
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "குரல் செயல்பாடு நிகழ்தகவு"
 
 #: data/ui/speex.ui:95
 msgid "Start"
-msgstr ""
+msgstr "தொடங்கு"
 
 #: data/ui/speex.ui:117
 msgid "Continue"
-msgstr ""
+msgstr "தொடரவும்"
 
 #: data/ui/speex.ui:141
 msgid "Noise Suppression"
-msgstr ""
+msgstr "இரைச்சல் நீக்கம்"
 
 #: data/ui/speex.ui:145
 msgid "Level"
-msgstr ""
+msgstr "நிலை"
 
 #: data/ui/stereo_tools.ui:78
 msgid "Input Balance"
-msgstr ""
+msgstr "உள்ளீட்டு இருப்பு"
 
 #: data/ui/stereo_tools.ui:87
 msgid "Softclip"
-msgstr ""
+msgstr "சாப்ட் கிளிப்"
 
 #: data/ui/stereo_tools.ui:114
 msgid "Softclip Level"
-msgstr ""
+msgstr "சாப்ட் கிளிப் நிலை"
 
 #: data/ui/stereo_tools.ui:126
 msgid "Stereo Matrix"
-msgstr ""
+msgstr "ச்டீரியோ மேட்ரிக்ச்"
 
 #: data/ui/stereo_tools.ui:138
 msgid "LR > LR (Stereo Default)"
-msgstr ""
+msgstr "Lr> lr (ச்டீரியோ இயல்புநிலை)"
 
 #: data/ui/stereo_tools.ui:139
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr ""
+msgstr "Lr> MS (ச்டீரியோ முதல் நடுப்பகுதி வரை)"
 
 #: data/ui/stereo_tools.ui:140
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr ""
+msgstr "MS> LR (ச்டீரியோவுக்கு நடுப்பகுதி)"
 
 #: data/ui/stereo_tools.ui:141
 msgid "LR > LL (Mono Left Channel)"
-msgstr ""
+msgstr "Lr> ll (மோனோ இடது சேனல்)"
 
 #: data/ui/stereo_tools.ui:142
 msgid "LR > RR (Mono Right Channel)"
-msgstr ""
+msgstr "Lr> rr (மோனோ வலது சேனல்)"
 
 #: data/ui/stereo_tools.ui:143
 msgid "LR > L+R (Mono Sum L+R)"
-msgstr ""
+msgstr "Lr> l+r (மோனோ சம் எல்+ஆர்)"
 
 #: data/ui/stereo_tools.ui:144
 msgid "LR > RL (Stereo Flip Channels)"
-msgstr ""
+msgstr "Lr> rl (ச்டீரியோ ஃபிளிப் சேனல்கள்)"
 
 #: data/ui/stereo_tools.ui:149
 msgid "Stereo Mode"
-msgstr ""
+msgstr "ச்டீரியோ பயன்முறை"
 
 #: data/ui/stereo_tools.ui:234
 msgid "Side Level"
-msgstr ""
+msgstr "பக்க நிலை"
 
 #: data/ui/stereo_tools.ui:269
 msgid "Side Balance"
-msgstr ""
+msgstr "பக்க இருப்பு"
 
 #: data/ui/stereo_tools.ui:304
 msgid "Middle Level"
-msgstr ""
+msgstr "நடுத்தர நிலை"
 
 #: data/ui/stereo_tools.ui:339
 msgid "Middle Panorama"
-msgstr ""
+msgstr "நடுத்தர பனோரமா"
 
 #: data/ui/stereo_tools.ui:417
 msgid "Output Balance"
-msgstr ""
+msgstr "வெளியீட்டு இருப்பு"
 
 #: data/ui/stereo_tools.ui:426
 msgid "Delay L/R"
-msgstr ""
+msgstr "நேரந்தவறுகை l/r"
 
 #: data/ui/stereo_tools.ui:452
 msgid "Delay Left Right"
-msgstr ""
+msgstr "இடது வலதுபுறம் நேரந்தவறுகை"
 
 #: data/ui/stereo_tools.ui:461
 msgid "Stereo Base"
-msgstr ""
+msgstr "ச்டீரியோ அடிப்படை"
 
 #: data/ui/stereo_tools.ui:496
 msgid "Stereo Phase"
-msgstr ""
+msgstr "ச்டீரியோ கட்டம்"
 
 #: src/app_info.cpp:100
 msgid "Running"
-msgstr ""
+msgstr "இயங்கும்"
 
 #: src/app_info.cpp:102
 msgid "Suspended"
-msgstr ""
+msgstr "இடைநீக்கம்"
 
 #: src/app_info.cpp:104
 msgid "Idle"
-msgstr ""
+msgstr "நிலையிக்கம்"
 
 #: src/app_info.cpp:106
 msgid "Creating"
-msgstr ""
+msgstr "உருவாக்குதல்"
 
 #: src/app_info.cpp:108
 msgid "Error"
-msgstr ""
+msgstr "பிழை"
 
 #: src/app_info.cpp:110
 msgid "Unknown"
-msgstr ""
+msgstr "தெரியவில்லை"
 
 #: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
-msgstr ""
+msgstr "வரையறுக்கப்படாத பெயர் - செயல்முறை ஐடி "
 
 #: src/app_info.cpp:292
 msgid "channels"
-msgstr ""
+msgstr "சேனல்கள்"
 
 #: src/application.cpp:301
 msgid "Output Preset"
-msgstr ""
+msgstr "வெளியீட்டு முன்னமைவு"
 
 #: src/application.cpp:302
 msgid "Input Preset"
-msgstr ""
+msgstr "உள்ளீட்டு முன்னமைவு"
 
 #: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
-msgstr ""
+msgstr "வலைபெயர்ப்பு https://hosted.weblate.org/projects/easyeffects/"
 
 #: src/application.cpp:606
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
+"எளிதான விளைவுகளை விட்டு வெளியேறவும். பணி பயன்முறையில் இயங்கும்போது பயனுள்ளதாக "
+"இருக்கும்."
 
 #: src/application.cpp:609
 msgid "Print the easyeffects version"
-msgstr ""
+msgstr "ஈசி எஃபெக்ட்ச் பதிப்பை அச்சிடுக"
 
 #: src/application.cpp:612
 msgid "Reset Easy Effects."
-msgstr ""
+msgstr "எளிதான விளைவுகளை மீட்டமைக்கவும்."
 
 #: src/application.cpp:615
 msgid "Hide the Window."
-msgstr ""
+msgstr "சாளரத்தை மறைக்கவும்."
 
 #: src/application.cpp:618
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-msgstr ""
+msgstr "உலகளாவிய பைபாச். 1 இயக்க, 2 முடக்க மற்றும் 3 நிலையைப் பெற 3"
 
 #: src/application.cpp:621
 msgid "Show available presets."
-msgstr ""
+msgstr "கிடைக்கக்கூடிய முன்னமைவுகளைக் காட்டு."
 
 #: src/application.cpp:624
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr ""
+msgstr "முன்னமைவை ஏற்றவும். எடுத்துக்காட்டு: ஈசி எஃபெக்ட்ச் -எல் இசை"
 
 #: src/application.cpp:627
 msgid "Show the active presets."
-msgstr ""
+msgstr "செயலில் உள்ள முன்னமைவுகளைக் காட்டு."
 
 #: src/application.cpp:630
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
 msgstr ""
+"ஒரு குறிப்பிட்ட வகையின் ஏற்றப்பட்ட முன்னமைவைக் காட்டு. 'உள்ளீடு' அல்லது 'வெளியீடு' ஒரு "
+"மதிப்பாக எடுக்கும். எடுத்துக்காட்டு: எளிதான விளைவுகள் -S உள்ளீடு"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
-msgstr ""
+msgstr "_Output"
 
 #: src/application_ui.cpp:345
 msgid "_Input"
-msgstr ""
+msgstr "_Input"
 
 #: src/application_ui.cpp:346
 msgid "_PipeWire"
-msgstr ""
+msgstr "_ பிபிபீயர்"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "கோப்பு வழக்கமானதல்ல"
 
 #: src/convolver_menu_impulses.cpp:130
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "உந்துவிசை கோப்பு சிதைந்து அல்லது ஆதரிக்கப்படாததாக இருக்கலாம்"
 
 #: src/convolver_menu_impulses.cpp:135
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "ச்டீரியோ உந்துவிசை கோப்புகள் மட்டுமே ஆதரிக்கப்படுகின்றன"
 
 #: src/convolver_menu_impulses.cpp:145
 msgid "Impulse File Not Imported"
-msgstr ""
+msgstr "உந்துவிசை கோப்பு இறக்குமதி செய்யப்படவில்லை"
 
 #: src/convolver_menu_impulses.cpp:153
 msgid "Import Impulse File"
-msgstr ""
+msgstr "உந்துவிசை கோப்பை இறக்குமதி செய்யுங்கள்"
 
 #: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:522
 #: src/equalizer_ui.cpp:854 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
 msgid "Open"
-msgstr ""
+msgstr "திற"
 
 #: src/convolver_menu_impulses.cpp:166
 msgid "Impulse Response"
-msgstr ""
+msgstr "கணத்தாக்க மறுமொழி"
 
 #: src/convolver_menu_impulses.cpp:293
 msgid "Load Impulse"
-msgstr ""
+msgstr "உந்துவிசை சுமை"
 
 #: src/convolver_menu_impulses.cpp:296
 msgid "Remove Impulse"
-msgstr ""
+msgstr "தூண்டுதலை அகற்று"
 
 #: src/convolver_ui.cpp:382
 msgid "No Impulse File Loaded"
-msgstr ""
+msgstr "உந்துவிசை கோப்பு ஏற்றப்படவில்லை"
 
 #: src/convolver_ui.cpp:408
 msgid "Failed To Load The Impulse File"
-msgstr ""
+msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
 
 #: src/effects_box.cpp:358 src/plugins_box.cpp:807
 msgid "Recorders"
-msgstr ""
+msgstr "ரெக்கார்டர்கள்"
 
 #: src/effects_box.cpp:381 src/plugins_box.cpp:827
 msgid "Players"
-msgstr ""
+msgstr "வீரர்கள்"
 
 #: src/effects_box.cpp:404
 msgid "Effects"
-msgstr ""
+msgstr "விளைவுகள்"
 
 #: src/equalizer_ui.cpp:521
 msgid "Import APO Preset File"
-msgstr ""
+msgstr "அப்போ முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
 
 #: src/equalizer_ui.cpp:529
 msgid "APO Presets"
-msgstr ""
+msgstr "அப்போ முன்னமைவுகள்"
 
 #: src/equalizer_ui.cpp:554
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
+"அப்போ முன்னமைவு ஏற்றப்படவில்லை. கோப்பு வடிவம் ஆதரிக்கப்படாமல் இருக்கலாம். அதன் உள்ளடக்கத்தை "
+"சரிபார்க்கவும்."
 
 #: src/equalizer_ui.cpp:616
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
+"அப்போ முன்னமைவுகளை ஏற்றுமதி செய்யும் போது பிளவு சேனல்கள் இன்னும் ஆதரிக்கப்படவில்லை."
 
 #: src/equalizer_ui.cpp:624
 msgid "Export EqualizerAPO Preset File"
-msgstr ""
+msgstr "சமநிலைப்படுத்தி முன்னமைக்கப்பட்ட கோப்பை ஏற்றுமதி செய்யுங்கள்"
 
 #: src/equalizer_ui.cpp:625
 msgid "Save"
-msgstr ""
+msgstr "சேமி"
 
 #: src/equalizer_ui.cpp:632
 msgid "EqualizerAPO Presets"
-msgstr ""
+msgstr "சமநிலைப்படுத்தி முன்னமைவுகள்"
 
 #: src/equalizer_ui.cpp:853
 msgid "Import GraphicEQ Preset File"
-msgstr ""
+msgstr "கிராஃபிசெக் முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
 
 #: src/equalizer_ui.cpp:861
 msgid "GraphicEQ Presets"
-msgstr ""
+msgstr "கிராஃபிசெக் முன்னமைவுகள்"
 
 #: src/equalizer_ui.cpp:886
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
 msgstr ""
+"கிராஃபிசெக் முன்னமைவு ஏற்றப்படவில்லை. கோப்பு வடிவம் ஆதரிக்கப்படாமல் இருக்கலாம். அதன் "
+"உள்ளடக்கத்தை சரிபார்க்கவும்."
 
 #: src/pipe_manager_box.cpp:355
 msgid "Remove Autoloading Preset"
-msgstr ""
+msgstr "ஆட்டோலோடிங் முன்னமைவை அகற்று"
 
 #: src/plugin_base.cpp:233
 msgid "Output Level Meter"
-msgstr ""
+msgstr "வெளியீட்டு நிலை மீட்டர்"
 
 #: src/plugins_box.cpp:759
 msgid "Remove"
-msgstr ""
+msgstr "அகற்று"
 
 #: src/plugins_box.cpp:828
 msgid "Output Device"
-msgstr ""
+msgstr "வெளியீட்டு சாதனம்"
 
 #: src/plugins_menu.cpp:238
 msgid "Add"
-msgstr ""
+msgstr "கூட்டு"
 
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
 msgid "Community Preset"
-msgstr ""
+msgstr "சமூக முன்னமைவு"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
-msgstr ""
+msgstr "தொகுப்பு"
 
 #: src/presets_manager.cpp:1155 src/presets_manager.cpp:1162
 #: src/presets_manager.cpp:1171 src/presets_manager.cpp:1178
 #: src/presets_manager.cpp:1187 src/presets_manager.cpp:1195
 msgid "Preset Not Loaded Correctly"
-msgstr ""
+msgstr "முன்னமைவு சரியாக ஏற்றப்படவில்லை"
 
 #: src/presets_manager.cpp:1155
 msgid "Wrong Format in Excluded Apps List"
-msgstr ""
+msgstr "விலக்கப்பட்ட பயன்பாடுகள் பட்டியலில் தவறான வடிவம்"
 
 #: src/presets_manager.cpp:1162
 msgid "Generic Error While Loading Excluded Apps List"
-msgstr ""
+msgstr "விலக்கப்பட்ட பயன்பாடுகள் பட்டியலை ஏற்றும்போது பொதுவான பிழை"
 
 #: src/presets_manager.cpp:1171
 msgid "Wrong Format in Effects List"
-msgstr ""
+msgstr "விளைவுகள் பட்டியலில் தவறான வடிவம்"
 
 #: src/presets_manager.cpp:1178
 msgid "Generic Error While Loading Effects List"
-msgstr ""
+msgstr "விளைவுகள் பட்டியலை ஏற்றும்போது பொதுவான பிழை"
 
 #: src/presets_manager.cpp:1188
 msgid "One or More Parameters Have a Wrong Format"
-msgstr ""
+msgstr "ஒன்று அல்லது அதற்கு மேற்பட்ட அளவுருக்கள் தவறான வடிவத்தைக் கொண்டுள்ளன"
 
 #: src/presets_manager.cpp:1196
 msgid "Generic Error While Loading The Effect"
-msgstr ""
+msgstr "விளைவை ஏற்றும்போது பொதுவான பிழை"
 
 #: src/presets_menu.cpp:398
 msgid "Save?"
-msgstr ""
+msgstr "சேமிக்கவா?"
 
 #: src/presets_menu.cpp:417
 msgid "Delete?"
-msgstr ""
+msgstr "நீக்கவா?"
 
 #: src/presets_menu.cpp:558
 msgid "No Preset Loaded"
-msgstr ""
+msgstr "முன்னமைவு ஏற்றப்படவில்லை"
 
 #: src/presets_menu.cpp:573
 msgid "Last Local Preset Loaded"
-msgstr ""
+msgstr "கடைசி உள்ளக முன்னமைவு ஏற்றப்பட்டது"
 
 #: src/presets_menu.cpp:573
 msgid "Last Community Preset Loaded"
-msgstr ""
+msgstr "கடைசி சமூக முன்னமைவு ஏற்றப்பட்டது"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
+"தேர்ந்தெடுக்கப்பட்ட மாதிரி ஏற்றப்படவில்லை. அதன் வடிவம் ஆதரிக்கப்படாமல் இருக்கலாம். நிலையான "
+"மாடலுக்கு மீண்டும் விழுந்தது."
 
 #: src/rnnoise_ui.cpp:159
 msgid "Import Model File"
-msgstr ""
+msgstr "மாதிரி கோப்பை இறக்குமதி செய்யுங்கள்"
 
 #: src/rnnoise_ui.cpp:172
 msgid "RNNoise Models"
-msgstr ""
+msgstr "Rnnoise மாதிரிகள்"
 
 #: src/tags_plugin_name.cpp:39
 msgid "Bass Enhancer"
-msgstr ""
+msgstr "பாச் மேம்படுத்துபவர்"
 
 #: src/tags_plugin_name.cpp:40
 msgid "Bass Loudness"
-msgstr ""
+msgstr "பாச் ஒலி"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Convolver"
-msgstr ""
+msgstr "கான்வால்வர்"
 
 #: src/tags_plugin_name.cpp:43
 msgid "Crossfeed"
-msgstr ""
+msgstr "குறுக்குவெட்டு"
 
 #: src/tags_plugin_name.cpp:44
 msgid "Crystalizer"
-msgstr ""
+msgstr "படிகதாரர்"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Deep Noise Remover"
-msgstr ""
+msgstr "ஆழமான இரைச்சல் நீக்கி"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Deesser"
-msgstr ""
+msgstr "டீசர்"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Echo Canceller"
-msgstr ""
+msgstr "எக்கோ ரத்துசெய்தல்"
 
 #: src/tags_plugin_name.cpp:49
 msgid "Equalizer"
-msgstr ""
+msgstr "சமநிலைப்படுத்தி"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Exciter"
-msgstr ""
+msgstr "ஊக்கம்"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Level Meter"
-msgstr ""
+msgstr "நிலை மீட்டர்"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Limiter"
-msgstr ""
+msgstr "லிமிட்டர்"
 
 #: src/tags_plugin_name.cpp:57
 msgid "Maximizer"
-msgstr ""
+msgstr "அதிகபட்சம்"
 
 #: src/tags_plugin_name.cpp:58
 msgid "Multiband Compressor"
-msgstr ""
+msgstr "மல்டிபாண்ட் அமுக்கி"
 
 #: src/tags_plugin_name.cpp:59
 msgid "Multiband Gate"
-msgstr ""
+msgstr "மல்டிபாண்ட் கேட்"
 
 #: src/tags_plugin_name.cpp:61
 msgid "Reverberation"
-msgstr ""
+msgstr "எதிரொலித்தல்"
 
 #: src/tags_plugin_name.cpp:62
 msgid "Noise Reduction"
-msgstr ""
+msgstr "ஒலி குறைப்பு"
 
 #: src/tags_plugin_name.cpp:63
 msgid "Speech Processor"
-msgstr ""
+msgstr "பேச்சு செயலி"
 
 #: src/tags_plugin_name.cpp:64
 msgid "Stereo Tools"
-msgstr ""
+msgstr "ச்டீரியோ கருவிகள்"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
 #, c++-format
 msgid "{} Not Available"
-msgstr ""
+msgstr "{} கிடைக்கவில்லை"
 
 #: src/ui_helpers.cpp:97
 #, c++-format
@@ -2574,6 +2594,10 @@ msgid ""
 "using the 'Quit' option inside the menu in order to make the effect availble "
 "to use."
 msgstr ""
+"}} விளைவு, \"{}\" க்கு தேவையான மென்பொருள் நிறுவப்படவில்லை. ஈசி எஃபெக்ட்ச் பிளாட்பாக் "
+"தொகுப்பைப் பயன்படுத்துவதைக் கவனியுங்கள் அல்லது மென்பொருளை நீங்களே நிறுவவும். காணாமல் போன "
+"மென்பொருளை நீங்கள் நிறுவியிருந்தால், விளைவைப் பயன்படுத்துவதற்கு மெனுவுக்குள் 'வெளியேறு' "
+"விருப்பத்தைப் பயன்படுத்தி எளிதான விளைவுகளை மறுதொடக்கம் செய்ய வேண்டும்."
 
 #: src/ui_helpers.cpp:104
 #, c++-format
@@ -2583,13 +2607,17 @@ msgid ""
 "Consider using the Easy Effects Flatpak package or building your own Easy "
 "Effects package."
 msgstr ""
+"எளிதான விளைவுகள் தொகுக்கப்பட்டபோது {} விளைவு முடக்கப்பட்டது. இந்த விளைவுக்கு தேவையான "
+"மென்பொருள், \"{}\" கிடைக்கவில்லை என்பதால் இது இருக்கலாம். ஈசி எஃபெக்ட்ச் பிளாட்பாக் "
+"தொகுப்பைப் பயன்படுத்துவதைக் கவனியுங்கள் அல்லது உங்கள் சொந்த ஈசி எஃபெக்ட்ச் தொகுப்பை "
+"உருவாக்குதல்."
 
 #: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
-msgstr ""
+msgstr "-இன்ஃப்"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
 #, c++-format
 msgid "Using {}"
-msgstr ""
+msgstr "{} ஐப் பயன்படுத்துதல்"
