@@ -79,6 +79,7 @@ Item {
             subGridVisible: false
             lineVisible: false
             labelDecimals: 0
+            tickInterval: 0
         }
 
         ValueAxis {
