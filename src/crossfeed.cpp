@@ -19,7 +19,6 @@
 
 #include "crossfeed.hpp"
 #include "db_manager.hpp"
-#include "easyeffects_db_crossfeed.h"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

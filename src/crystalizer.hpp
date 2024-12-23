@@ -30,6 +30,7 @@
 #include <string>
 #include <vector>
 #include "easyeffects_db_crystalizer.h"
+#include "fir_filter_bandpass.hpp"
 #include "fir_filter_base.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"

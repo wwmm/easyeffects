@@ -18,20 +18,12 @@
  */
 
 #include "autogain.hpp"
-#include <ebur128.h>
-#include <sys/types.h>
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
 #include <mutex>
 #include <numbers>
-#include <span>
-#include <string>
 #include "db_manager.hpp"
-#include "easyeffects_db_autogain.h"
-#include "pipeline_type.hpp"
-#include "plugin_base.hpp"
-#include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

@@ -19,11 +19,6 @@
 
 #include "output_level.hpp"
 #include <algorithm>
-#include <span>
-#include <string>
-#include "pipeline_type.hpp"
-#include "plugin_base.hpp"
-#include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
