@@ -67,14 +67,13 @@ pkg_check_modules(LIBFFTW3f fftw3f)
 pkg_check_modules(LIBSPEEXDSP speexdsp)
 pkg_check_modules(LIBNLOHMANNJSON nlohmann_json)
 pkg_check_modules(LIBGSL gsl)
+pkg_check_modules(LIBBS2B libbs2b)
 
 file(GLOB KCFG_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfg)
 file(GLOB KCFGC_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfgc)
 
 find_library(LIBZITACONVOLVER NAMES zita-convolver)
 find_path(LIBZITACONVOLVER_INCLUDE_DIRS NAMES zita-convolver.h)
-find_library(LIBBS2B NAMES libbs2b)
-find_path(LIBBS2B_INCLUDE_DIRS NAMES bs2bclass.h)
 
 add_subdirectory(src)
 

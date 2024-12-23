@@ -28,16 +28,16 @@ Kirigami.ScrollablePage {
     function applyPreset(name) {
         switch (name) {
         case "cmoy":
-            fcut.value = 700;
-            feed.value = 6;
+            pluginDB.fcut = 700;
+            pluginDB.feed = 6;
             break;
         case "jmeier":
-            fcut.value = 650;
-            feed.value = 9.5;
+            pluginDB.fcut = 650;
+            pluginDB.feed = 9.5;
             break;
         default:
-            fcut.value = 700;
-            feed.value = 4.5;
+            pluginDB.fcut = 700;
+            pluginDB.feed = 4.5;
         }
     }
 

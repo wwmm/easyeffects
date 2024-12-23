@@ -18,7 +18,16 @@
  */
 
 #include "crossfeed.hpp"
+#include <algorithm>
+#include <cstddef>
+#include <mutex>
+#include <span>
+#include <string>
 #include "db_manager.hpp"
+#include "easyeffects_db_crossfeed.h"
+#include "pipeline_type.hpp"
+#include "plugin_base.hpp"
+#include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

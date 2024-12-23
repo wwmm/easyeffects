@@ -20,6 +20,8 @@
 #pragma once
 
 #include <bs2bclass.h>
+#include <qtmetamacros.h>
+#include <QString>
 #include <span>
 #include <string>
 #include <vector>
