@@ -23,6 +23,7 @@ target_sources(easyeffects PRIVATE
     bass_enhancer.cpp
     command_line_parser.cpp
     compressor.cpp
+    crossfeed.cpp
     crystalizer.cpp
     db_manager.cpp
     effects_base.cpp
@@ -69,6 +70,7 @@ target_include_directories(easyeffects PRIVATE
     ${LIBSPEEXDSP_INCLUDE_DIRS}
     ${LIBNLOHMANNJSON_INCLUDE_DIRS}
     ${LIBZITACONVOLVER_INCLUDE_DIRS}
+    ${LIBBS2B_INCLUDE_DIRS}
 )
 
 target_link_libraries(easyeffects PRIVATE
@@ -93,6 +95,7 @@ target_link_libraries(easyeffects PRIVATE
     ${LIBSPEEXDSP_LIBRARIES}
     ${LIBNLOHMANNJSON_LIBRARIES}
     ${LIBZITACONVOLVER}
+    ${LIBBS2B}
 )
 
 if(ENABLE_LIBPORTAL)

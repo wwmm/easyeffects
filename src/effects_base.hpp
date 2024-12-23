@@ -32,6 +32,7 @@
 #include "autogain.hpp"
 #include "bass_enhancer.hpp"
 #include "compressor.hpp"
+#include "crossfeed.hpp"
 #include "crystalizer.hpp"
 #include "exciter.hpp"
 #include "filter.hpp"
@@ -48,7 +49,6 @@
 
 // #include "bass_loudness.hpp"
 // #include "convolver.hpp"
-// #include "crossfeed.hpp"
 // #include "deepfilternet.hpp"
 // #include "deesser.hpp"
 // #include "delay.hpp"
@@ -85,6 +85,7 @@ class EffectsBase : public QObject {
   std::shared_ptr<Autogain> autogain;
   std::shared_ptr<BassEnhancer> bass_enhancer;
   std::shared_ptr<Compressor> compressor;
+  std::shared_ptr<Crossfeed> crossfeed;
   std::shared_ptr<Crystalizer> crystalizer;
   std::shared_ptr<Exciter> exciter;
   std::shared_ptr<Filter> filter;
@@ -95,7 +96,6 @@ class EffectsBase : public QObject {
   std::shared_ptr<StereoTools> stereo_tools;
   //   std::shared_ptr<BassLoudness> bass_loudness;
   //   std::shared_ptr<Convolver> convolver;
-  //   std::shared_ptr<Crossfeed> crossfeed;
   //   std::shared_ptr<DeepFilterNet> deepfilternet;
   //   std::shared_ptr<Deesser> deesser;
   //   std::shared_ptr<Delay> delay;

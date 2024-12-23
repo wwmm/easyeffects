@@ -31,6 +31,7 @@
 #include "autogain.hpp"
 #include "bass_enhancer.hpp"
 #include "compressor.hpp"
+#include "crossfeed.hpp"
 #include "crystalizer.hpp"
 #include "db_manager.hpp"
 #include "exciter.hpp"
@@ -50,7 +51,6 @@
 
 // #include "bass_loudness.hpp"
 // #include "convolver.hpp"
-// #include "crossfeed.hpp"
 // #include "deepfilternet.hpp"
 // #include "deesser.hpp"
 // #include "delay.hpp"
@@ -135,7 +135,7 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::convolver)) {
       //   filter = std::make_shared<Convolver>(log_tag, tags::schema::convolver::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
-      //   filter = std::make_shared<Crossfeed>(log_tag, tags::schema::crossfeed::id, path, pm, pipeline_type);
+      filter = std::make_shared<Crossfeed>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
       filter = std::make_shared<Crystalizer>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
@@ -265,6 +265,10 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::compressor)) {
     return QVariant::fromValue(dynamic_cast<Compressor*>(p.get()));
+  }
+
+  if (pluginName.startsWith(tags::plugin_name::BaseName::crossfeed)) {
+    return QVariant::fromValue(dynamic_cast<Crossfeed*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::crystalizer)) {

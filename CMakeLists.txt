@@ -72,6 +72,8 @@ file(GLOB KCFGC_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfgc)
 
 find_library(LIBZITACONVOLVER NAMES zita-convolver)
 find_path(LIBZITACONVOLVER_INCLUDE_DIRS NAMES zita-convolver.h)
+find_library(LIBBS2B NAMES libbs2b)
+find_path(LIBBS2B_INCLUDE_DIRS NAMES bs2bclass.h)
 
 add_subdirectory(src)
 
