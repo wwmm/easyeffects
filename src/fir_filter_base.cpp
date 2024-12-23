@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -74,8 +74,8 @@ void FirFilterBase::set_transition_band(const float& value) {
 
 void FirFilterBase::setup() {}
 
-auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& transition_band) const
-    -> std::vector<float> {
+auto FirFilterBase::create_lowpass_kernel(const float& cutoff,
+                                          const float& transition_band) const -> std::vector<float> {
   std::vector<float> output;
 
   if (rate == 0U) {
