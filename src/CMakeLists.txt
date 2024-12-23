@@ -71,6 +71,7 @@ target_include_directories(easyeffects PRIVATE
     ${LIBNLOHMANNJSON_INCLUDE_DIRS}
     ${LIBZITACONVOLVER_INCLUDE_DIRS}
     ${LIBBS2B_INCLUDE_DIRS}
+    ${LIBGSL_INCLUDE_DIRS}
 )
 
 target_link_libraries(easyeffects PRIVATE
@@ -94,6 +95,7 @@ target_link_libraries(easyeffects PRIVATE
     ${LIBFFTW3f_LIBRARIES}
     ${LIBSPEEXDSP_LIBRARIES}
     ${LIBNLOHMANNJSON_LIBRARIES}
+    ${LIBGSL_LIBRARIES}
     ${LIBZITACONVOLVER}
     ${LIBBS2B}
 )

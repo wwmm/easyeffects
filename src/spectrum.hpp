@@ -20,6 +20,7 @@
 #pragma once
 
 #include <fftw3.h>
+#include <qlist.h>
 #include <sys/types.h>
 #include <QString>
 #include <array>
@@ -59,7 +60,7 @@ class Spectrum : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  std::tuple<uint, uint, double*> compute_magnitudes();  // rate, nbands, magnitudes
+  auto compute_magnitudes() -> std::tuple<uint, QList<double>>;  // rate, magnitudes
 
  private:
   std::atomic<bool> fftw_ready = false;
@@ -71,7 +72,8 @@ class Spectrum : public PluginBase {
   static constexpr uint n_bands = 8192U;
 
   std::array<float, n_bands> real_input;
-  std::array<double, n_bands / 2U + 1U> output;
+
+  QList<double> output = QList<double>((n_bands / 2U + 1U));
 
   std::vector<float> left_delayed_vector;
   std::vector<float> right_delayed_vector;

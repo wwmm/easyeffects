@@ -400,6 +400,29 @@ Kirigami.Page {
         implicitHeight: DB.Manager.spectrum.height
         seriesType: DB.Manager.spectrum.spectrumShape
         useOpenGL: DB.Manager.spectrum.useOpenGL
+        Component.onCompleted: {
+            headerFrameAnimation.start();
+        }
+        Component.onDestruction: {
+            headerFrameAnimation.stop();
+        }
+
+        FrameAnimation {
+            id: headerFrameAnimation
+
+            onTriggered: {
+                pipelineInstance.requestSpectrumData();
+            }
+        }
+
+        Connections {
+            function onNewSpectrumData(newData) {
+                spectrumChart.updateData(newData);
+            }
+
+            target: pipelineInstance
+        }
+
     }
 
     footer: Kirigami.AbstractApplicationHeader {

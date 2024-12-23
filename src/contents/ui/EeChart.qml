@@ -15,7 +15,13 @@ Item {
     readonly property color color2: Kirigami.Theme.alternateBackgroundColor
     readonly property color color3: Qt.darker(color2, 1.1)
     readonly property color backgroundRectColor: Kirigami.Theme.backgroundColor
-    property var testData: [Qt.point(50.5, 0.2), Qt.point(100, 0.4), Qt.point(1000, 0.6), Qt.point(10000, 0.8), Qt.point(15000, 1)]
+    property var graphData: [Qt.point(50.5, 0.2), Qt.point(100, 0.4), Qt.point(1000, 0.6), Qt.point(10000, 0.8), Qt.point(15000, 1)]
+
+    function updateData(newData) {
+        if (splineSeries.visible === true)
+            splineSeries.replace(newData);
+
+    }
 
     implicitHeight: DB.Manager.spectrum.height
     Kirigami.Theme.inherit: false
@@ -38,19 +44,6 @@ Item {
     }
 
     GraphsView {
-        // LogValueAxis {
-        //     id: axisFreqLog
-        //     labelFormat: "%.0f"
-        //     min: DB.Manager.spectrum.minimumFrequency
-        //     max: DB.Manager.spectrum.maximumFrequency
-        //     base: 10
-        //     gridVisible: false
-        //     lineVisible: false
-        //     labelsColor: color1
-        //     gridLineColor: color3
-        //     minorGridLineColor: color2
-        // }
-
         id: chart
 
         implicitHeight: DB.Manager.spectrum.height
@@ -61,16 +54,16 @@ Item {
         axisX: axisFreq
         axisY: axisAmplitude
         Component.onCompleted: {
-            for (let n = 0; n < testData.length; n++) {
-                splineSeries.append(testData[n].x, testData[n].y);
-                scatterSeries.append(testData[n].x, testData[n].y);
-                areaLineSeries.append(testData[n].x, testData[n].y);
+            for (let n = 0; n < graphData.length; n++) {
+                splineSeries.append(graphData[n].x, graphData[n].y);
+                scatterSeries.append(graphData[n].x, graphData[n].y);
+                areaLineSeries.append(graphData[n].x, graphData[n].y);
             }
         }
 
         anchors {
             fill: parent
-            leftMargin: -60
+            leftMargin: -55
             rightMargin: 0
             topMargin: 0
             bottomMargin: 0
@@ -86,6 +79,7 @@ Item {
             subGridVisible: false
             lineVisible: false
             labelDecimals: 0
+            tickInterval: 0
         }
 
         ValueAxis {
@@ -98,6 +92,8 @@ Item {
             visible: false
             labelsVisible: false
             titleVisible: false
+            min: -100
+            max: 0
         }
 
         BarSeries {
@@ -108,7 +104,7 @@ Item {
             BarSet {
                 id: barSeriesSet
 
-                values: widgetRoot.testData
+                values: widgetRoot.graphData
             }
 
         }
