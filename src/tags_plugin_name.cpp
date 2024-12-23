@@ -55,8 +55,8 @@ Model::Model(QObject* parent) : QAbstractListModel(parent) {
   auto* proxyModel = new QSortFilterProxyModel(this);
 
   proxyModel->setSourceModel(this);
-  proxyModel->setFilterRole(Model::Roles::Name);
-  proxyModel->setSortRole(Model::Roles::Name);
+  proxyModel->setFilterRole(Model::Roles::TranslatedName);
+  proxyModel->setSortRole(Model::Roles::TranslatedName);
   proxyModel->setDynamicSortFilter(true);
   proxyModel->sort(0);
 
