@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -20,20 +20,9 @@
 #include "crystalizer.hpp"
 #include <qnamespace.h>
 #include <qobjectdefs.h>
-#include <sys/types.h>
-#include <algorithm>
 #include <cstddef>
-#include <memory>
 #include <mutex>
-#include <span>
-#include <string>
 #include "db_manager.hpp"
-#include "easyeffects_db_crystalizer.h"
-#include "fir_filter_bandpass.hpp"
-#include "fir_filter_base.hpp"
-#include "pipeline_type.hpp"
-#include "plugin_base.hpp"
-#include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

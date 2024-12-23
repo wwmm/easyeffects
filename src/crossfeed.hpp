@@ -19,28 +19,25 @@
 
 #pragma once
 
-#include <pipewire/proxy.h>
-#include <qtmetamacros.h>
-#include <sys/types.h>
-#include <QString>
+#include <bs2bclass.h>
 #include <span>
 #include <string>
 #include <vector>
-#include "easyeffects_db_limiter.h"
+#include "easyeffects_db_crossfeed.h"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 
-class Limiter : public PluginBase {
+class Crossfeed : public PluginBase {
   Q_OBJECT
 
  public:
-  Limiter(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
-  Limiter(const Limiter&) = delete;
-  auto operator=(const Limiter&) -> Limiter& = delete;
-  Limiter(const Limiter&&) = delete;
-  auto operator=(const Limiter&&) -> Limiter& = delete;
-  ~Limiter() override;
+  Crossfeed(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
+  Crossfeed(const Crossfeed&) = delete;
+  auto operator=(const Crossfeed&) -> Crossfeed& = delete;
+  Crossfeed(const Crossfeed&&) = delete;
+  auto operator=(const Crossfeed&&) -> Crossfeed& = delete;
+  ~Crossfeed() override;
 
   void reset() override;
 
@@ -58,26 +55,12 @@ class Limiter : public PluginBase {
                std::span<float>& probe_left,
                std::span<float>& probe_right) override;
 
-  void update_probe_links() override;
-
   auto get_latency_seconds() -> float override;
 
-  Q_INVOKABLE [[nodiscard]] float getGainLevelLeft() const;
-  Q_INVOKABLE [[nodiscard]] float getGainLevelRight() const;
-  Q_INVOKABLE [[nodiscard]] float getSideChainLevelLeft() const;
-  Q_INVOKABLE [[nodiscard]] float getSideChainLevelRight() const;
-
  private:
-  uint latency_n_frames = 0U;
+  std::vector<float> data;
 
-  float gain_l_port_value = 0.0F;
-  float gain_r_port_value = 0.0F;
-  float sidechain_l_port_value = 0.0F;
-  float sidechain_r_port_value = 0.0F;
+  bs2b_base bs2b;
 
-  db::Limiter* settings = nullptr;
-
-  std::vector<pw_proxy*> list_proxies;
-
-  void update_sidechain_links();
+  db::Crossfeed* settings = nullptr;
 };

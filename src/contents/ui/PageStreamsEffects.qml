@@ -121,6 +121,14 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
+                case TagsPluginName.BaseName.crossfeed:
+                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    pluginsStack.push("qrc:ui/Crossfeed.qml", {
+                        "name": name,
+                        "pluginDB": pluginDB,
+                        "pipelineInstance": pipelineInstance
+                    });
+                    break;
                 case TagsPluginName.BaseName.crystalizer:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Crystalizer.qml", {

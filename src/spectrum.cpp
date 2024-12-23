@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -18,10 +18,7 @@
  */
 
 #include "spectrum.hpp"
-#include <fftw3.h>
 #include <qlist.h>
-#include <sys/types.h>
-#include <QString>
 #include <algorithm>
 #include <cassert>
 #include <cmath>
@@ -29,13 +26,7 @@
 #include <cstring>
 #include <memory>
 #include <numbers>
-#include <span>
-#include <string>
-#include <tuple>
 #include "lv2_wrapper.hpp"
-#include "pipeline_type.hpp"
-#include "plugin_base.hpp"
-#include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

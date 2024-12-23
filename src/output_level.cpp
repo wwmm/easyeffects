@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -19,11 +19,6 @@
 
 #include "output_level.hpp"
 #include <algorithm>
-#include <span>
-#include <string>
-#include "pipeline_type.hpp"
-#include "plugin_base.hpp"
-#include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

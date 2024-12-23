@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -30,6 +30,7 @@
 #include <string>
 #include <vector>
 #include "easyeffects_db_crystalizer.h"
+#include "fir_filter_bandpass.hpp"
 #include "fir_filter_base.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"

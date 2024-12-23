@@ -108,7 +108,7 @@ Kirigami.ApplicationWindow {
                     "text": "https://github.com/wwmm/easyeffects/blob/master/LICENSE",
                     "spdx": "GPL-3.0"
                 }],
-                "copyrightStatement": "© 2017-2024 EasyEffects Team",
+                "copyrightStatement": "© 2017-2025 EasyEffects Team",
                 "desktopFileName": "com.github.wwmm.easyeffects.desktop"
             }
         }

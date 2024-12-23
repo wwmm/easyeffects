@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -31,6 +31,7 @@
 #include "easyeffects_db_autogain.h"
 #include "easyeffects_db_bass_enhancer.h"
 #include "easyeffects_db_compressor.h"
+#include "easyeffects_db_crossfeed.h"
 #include "easyeffects_db_crystalizer.h"
 #include "easyeffects_db_exciter.h"
 #include "easyeffects_db_filter.h"
@@ -147,6 +148,10 @@ void Manager::create_plugin_db(const QString& parentGroup,
       } else if (name.startsWith(tags::plugin_name::BaseName::compressor)) {
         plugins_map[tags::plugin_name::BaseName::compressor + "#" + id] =
             QVariant::fromValue(new db::Compressor(parentGroup, id));
+        //
+      } else if (name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
+        plugins_map[tags::plugin_name::BaseName::crossfeed + "#" + id] =
+            QVariant::fromValue(new db::Crossfeed(parentGroup, id));
         //
       } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
         plugins_map[tags::plugin_name::BaseName::crystalizer + "#" + id] =
