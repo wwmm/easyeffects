@@ -21,6 +21,7 @@ target_sources(easyeffects PRIVATE
     autogain.cpp
     autogain_preset.cpp
     bass_enhancer.cpp
+    bass_enhancer_preset.cpp
     command_line_parser.cpp
     compressor.cpp
     crossfeed.cpp

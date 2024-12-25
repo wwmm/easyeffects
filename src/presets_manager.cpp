@@ -42,6 +42,7 @@
 #include <string>
 #include <vector>
 #include "autogain_preset.hpp"
+#include "bass_enhancer_preset.hpp"
 #include "config.h"
 #include "easyeffects_db.h"
 #include "easyeffects_db_streaminputs.h"
@@ -1245,7 +1246,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type,
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
-    // return std::make_unique<BassEnhancerPreset>(pipeline_type, filter_name.toStdString());
+    return std::make_unique<BassEnhancerPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {

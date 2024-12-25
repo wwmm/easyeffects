@@ -18,6 +18,7 @@
  */
 
 #include "autogain_preset.hpp"
+#include <iostream>
 #include <nlohmann/json_fwd.hpp>
 #include <string>
 #include "easyeffects_db_autogain.h"
@@ -46,17 +47,23 @@ void AutoGainPreset::save(nlohmann::json& json) {
 }
 
 void AutoGainPreset::load(const nlohmann::json& json) {
-  settings->setBypass(json.value("bypass", settings->defaultBypassValue()));
+  settings->setBypass(json.at(section).at(instance_name).value("bypass", settings->defaultBypassValue()));
 
-  settings->setInputGain(json.value("input-gain", settings->defaultInputGainValue()));
+  settings->setInputGain(json.at(section).at(instance_name).value("input-gain", settings->defaultInputGainValue()));
 
-  settings->setOutputGain(json.value("output-gain", settings->defaultOutputGainValue()));
+  settings->setOutputGain(json.at(section).at(instance_name).value("output-gain", settings->defaultOutputGainValue()));
 
-  settings->setTarget(json.value("target", settings->defaultTargetValue()));
+  settings->setTarget(json.at(section).at(instance_name).value("target", settings->defaultTargetValue()));
 
-  settings->setSilenceThreshold(json.value("silence-threshold", settings->defaultSilenceThresholdValue()));
+  settings->setSilenceThreshold(
+      json.at(section).at(instance_name).value("silence-threshold", settings->defaultSilenceThresholdValue()));
 
-  settings->setMaximumHistory(json.value("maximum-history", settings->defaultMaximumHistoryValue()));
+  settings->setMaximumHistory(
+      json.at(section).at(instance_name).value("maximum-history", settings->defaultMaximumHistoryValue()));
 
-  settings->setReference(json.value("reference", settings->defaultReferenceValue()));
+  // Hum... I have to think about how to deal with enums without requiring changes to the preset format...
+
+  // settings->setReference(json.at(section).at(instance_name).value("reference", settings->defaultReferenceValue()));
+
+  // std::cout << json.at(section).at(instance_name).value("reference", settings->defaultReferenceValue()) << std::endl;
 }
