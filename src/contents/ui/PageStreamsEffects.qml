@@ -397,9 +397,12 @@ Kirigami.Page {
     header: EeChart {
         id: spectrumChart
 
-        implicitHeight: DB.Manager.spectrum.height
         seriesType: DB.Manager.spectrum.spectrumShape
         useOpenGL: DB.Manager.spectrum.useOpenGL
+        xMin: DB.Manager.spectrum.minimumFrequency
+        xMax: DB.Manager.spectrum.maximumFrequency
+        yMin: -100
+        yMax: 0
         Component.onCompleted: {
             headerFrameAnimation.start();
         }
