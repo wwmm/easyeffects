@@ -29,31 +29,11 @@
             <max>0</max>
             <default>-23</default>
         </entry>
-        <entry name="reference" type="Enum">
+        <entry name="referenceLabels" type="StringList">
+            <default>Momentary,Shortterm,integrated,Geometric Mean (MSI),Geometric Mean (MS),Geometric Mean (MI),Geometric Mean (SI)</default>
+        </entry>
+        <entry name="reference" type="Int">
             <label>Reference</label>
-            <choices>
-                <choice name="momentary">
-                    <label>Momentary</label>
-                </choice>
-                <choice name="shortterm">
-                    <label>Shortterm</label>
-                </choice>
-                <choice name="integrated">
-                    <label>Integrated</label>
-                </choice>
-                <choice name="gm_msi">
-                    <label>Geometric Mean (MSI)</label>
-                </choice>
-                <choice name="gm_ms">
-                    <label>Geometric Mean (MS)</label>
-                </choice>
-                <choice name="gm_mi">
-                    <label>Geometric Mean (MI)</label>
-                </choice>
-                <choice name="gm_si">
-                    <label>Geometric Mean (SI)</label>
-                </choice>
-            </choices>
             <default>3</default>
         </entry>
         <entry name="maximumHistory" type="Int">

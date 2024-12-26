@@ -18,7 +18,6 @@
  */
 
 #include "autogain_preset.hpp"
-#include <iostream>
 #include <nlohmann/json_fwd.hpp>
 #include <string>
 #include "easyeffects_db_autogain.h"
@@ -43,7 +42,7 @@ void AutoGainPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["maximum-history"] = settings->maximumHistory();
 
-  json[section][instance_name]["reference"] = settings->reference();
+  json[section][instance_name]["reference"] = settings->referenceLabels()[settings->reference()].toStdString();
 }
 
 void AutoGainPreset::load(const nlohmann::json& json) {
@@ -61,9 +60,8 @@ void AutoGainPreset::load(const nlohmann::json& json) {
   settings->setMaximumHistory(
       json.at(section).at(instance_name).value("maximum-history", settings->defaultMaximumHistoryValue()));
 
-  // Hum... I have to think about how to deal with enums without requiring changes to the preset format...
-
-  // settings->setReference(json.at(section).at(instance_name).value("reference", settings->defaultReferenceValue()));
-
-  // std::cout << json.at(section).at(instance_name).value("reference", settings->defaultReferenceValue()) << std::endl;
+  if (const auto idx = settings->referenceLabels().indexOf(json.at(section).at(instance_name).value("reference", ""));
+      idx != -1) {
+    settings->setReference(idx);
+  }
 }

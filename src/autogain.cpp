@@ -18,12 +18,20 @@
  */
 
 #include "autogain.hpp"
+#include <ebur128.h>
+#include <qtypes.h>
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
 #include <mutex>
 #include <numbers>
+#include <span>
+#include <string>
 #include "db_manager.hpp"
+#include "easyeffects_db_autogain.h"
+#include "pipeline_type.hpp"
+#include "plugin_base.hpp"
+#include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -227,56 +235,32 @@ void Autogain::process(std::span<float>& left_in,
     }
 
     if (!failed) {
-      switch (settings->reference()) {
-        case db::Autogain::EnumReference::type::momentary: {
-          loudness = momentary;
+      if (settings->referenceLabels()[settings->reference()] == "Momentary") {
+        loudness = momentary;
+      } else if (settings->referenceLabels()[settings->reference()] == "Shortterm") {
+        loudness = shortterm;
+      } else if (settings->referenceLabels()[settings->reference()] == "Integrated") {
+        loudness = global;
+      } else if (settings->referenceLabels()[settings->reference()] == "Geometric Mean (MSI)") {
+        loudness = std::cbrt(momentary * shortterm * global);
+      } else if (settings->referenceLabels()[settings->reference()] == "Geometric Mean (MS)") {
+        loudness = std::sqrt(std::fabs(momentary * shortterm));
 
-          break;
+        if (momentary < 0 && shortterm < 0) {
+          loudness *= -1;
         }
-        case db::Autogain::EnumReference::type::shortterm: {
-          loudness = shortterm;
+      } else if (settings->referenceLabels()[settings->reference()] == "Geometric Mean (MI)") {
+        loudness = std::sqrt(std::fabs(momentary * global));
 
-          break;
+        if (momentary < 0 && global < 0) {
+          loudness *= -1;
         }
-        case db::Autogain::EnumReference::type::integrated: {
-          loudness = global;
+      } else if (settings->referenceLabels()[settings->reference()] == "Geometric Mean (SI)") {
+        loudness = std::sqrt(std::fabs(shortterm * global));
 
-          break;
+        if (shortterm < 0 && global < 0) {
+          loudness *= -1;
         }
-        case db::Autogain::EnumReference::type::gm_msi: {
-          loudness = std::cbrt(momentary * shortterm * global);
-
-          break;
-        }
-        case db::Autogain::EnumReference::type::gm_ms: {
-          loudness = std::sqrt(std::fabs(momentary * shortterm));
-
-          if (momentary < 0 && shortterm < 0) {
-            loudness *= -1;
-          }
-
-          break;
-        }
-        case db::Autogain::EnumReference::type::gm_mi: {
-          loudness = std::sqrt(std::fabs(momentary * global));
-
-          if (momentary < 0 && global < 0) {
-            loudness *= -1;
-          }
-
-          break;
-        }
-        case db::Autogain::EnumReference::type::gm_si: {
-          loudness = std::sqrt(std::fabs(shortterm * global));
-
-          if (shortterm < 0 && global < 0) {
-            loudness *= -1;
-          }
-
-          break;
-        }
-        default:
-          break;
       }
 
       const double diff = settings->target() - loudness;
