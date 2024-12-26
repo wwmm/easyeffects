@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-17 21:09+0000\n"
-"PO-Revision-Date: 2023-11-25 07:02+0000\n"
+"PO-Revision-Date: 2024-12-26 00:03+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
 "main/hr/>\n"
@@ -17,9 +17,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.2.1-rc\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:4
@@ -297,14 +297,12 @@ msgstr "Profil"
 
 #: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:257
 #: data/ui/pipe_manager_box.ui:387
-#, fuzzy
 msgid "Preset"
-msgstr "Predlošci"
+msgstr "Predložak"
 
 #: data/ui/autoload_row.ui:114
-#, fuzzy
 msgid "Remove this autoload preset"
-msgstr "Kompresija"
+msgstr "Ukloni ovaj automatski učitani predložak"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:627 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/expander.ui:548 data/ui/gate.ui:761
@@ -338,12 +336,11 @@ msgstr "Raspon"
 
 #: data/ui/bass_enhancer.ui:208
 msgid "Floor"
-msgstr "Dno"
+msgstr "Donja granica"
 
 #: data/ui/bass_enhancer.ui:236
-#, fuzzy
 msgid "Floor Value"
-msgstr "Dno"
+msgstr "Vrijednost donje granice"
 
 #: data/ui/bass_loudness.ui:69
 msgid "Link"
@@ -369,9 +366,8 @@ msgstr "Pokaži izuzete aplikacije"
 #: data/ui/expander.ui:25 data/ui/filter.ui:25 data/ui/gate.ui:25
 #: data/ui/limiter.ui:25 data/ui/loudness.ui:25
 #: data/ui/multiband_compressor.ui:105 data/ui/multiband_gate.ui:105
-#, fuzzy
 msgid "Show Native Window"
-msgstr "Prozor"
+msgstr "Prikaži izvorni prozor"
 
 #: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:41
 msgid "Compressor"
@@ -384,35 +380,33 @@ msgstr "Kompresor"
 #: data/ui/limiter.ui:56 data/ui/multiband_compressor_band.ui:536
 #: data/ui/multiband_gate_band.ui:594
 msgid "Mode"
-msgstr "Način"
+msgstr "Modus"
 
 #: data/ui/compressor.ui:76 data/ui/expander.ui:76
 #: data/ui/multiband_compressor_band.ui:100
 msgid "Downward"
-msgstr ""
+msgstr "Naniže"
 
 #: data/ui/compressor.ui:77 data/ui/expander.ui:77
 #: data/ui/multiband_compressor_band.ui:101
 msgid "Upward"
-msgstr ""
+msgstr "Naviše"
 
 #: data/ui/compressor.ui:78 data/ui/multiband_compressor_band.ui:102
 msgid "Boosting"
-msgstr ""
+msgstr "Pojačavanje"
 
 #: data/ui/compressor.ui:87 data/ui/multiband_compressor_band.ui:87
 msgid "Compression Mode"
 msgstr "Modus kompresije"
 
 #: data/ui/compressor.ui:94 data/ui/multiband_compressor_band.ui:807
-#, fuzzy
 msgid "Boost Threshold"
-msgstr "Prag"
+msgstr "Prag pojačanja"
 
 #: data/ui/compressor.ui:133 data/ui/multiband_compressor_band.ui:764
-#, fuzzy
 msgid "Boost Amount"
-msgstr "Jačina"
+msgstr "Količina pojačanja"
 
 #: data/ui/compressor.ui:179 data/ui/expander.ui:100 data/ui/gate.ui:70
 #: data/ui/limiter.ui:282 data/ui/limiter.ui:501
@@ -753,23 +747,20 @@ msgid "L"
 msgstr "L"
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:584
-#, fuzzy
 msgid "Left Channel"
-msgstr "Kanali"
+msgstr "Lijevi kanal"
 
 #: data/ui/convolver.ui:53
 msgid "R"
 msgstr "D"
 
 #: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:595
-#, fuzzy
 msgid "Right Channel"
-msgstr "Kanali"
+msgstr "Desni kanal"
 
 #: data/ui/convolver.ui:71
-#, fuzzy
 msgid "Impulses"
-msgstr "Reakcija impulsa"
+msgstr "Impulsi"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
@@ -777,7 +768,6 @@ msgid "Combine"
 msgstr ""
 
 #: data/ui/convolver.ui:86
-#, fuzzy
 msgid "Stereo Width"
 msgstr "Stereo širina"
 
@@ -787,24 +777,21 @@ msgstr "Spektar"
 
 #: data/ui/convolver.ui:121
 msgid "Log Scale"
-msgstr ""
+msgstr "Logaritamska skala"
 
 #: data/ui/convolver.ui:131 src/tags_plugin_name.cpp:38
-#, fuzzy
 msgid "Autogain"
-msgstr "Automatsko pojačavanje"
+msgstr "Automatsko pojačanje"
 
 #: data/ui/convolver.ui:147
 msgid "Rate"
 msgstr "Frekvencija"
 
 #: data/ui/convolver.ui:168
-#, fuzzy
 msgid "Samples"
-msgstr "Semplovi"
+msgstr "Uzorci"
 
 #: data/ui/convolver.ui:189
-#, fuzzy
 msgid "Duration"
 msgstr "Trajanje"
 
@@ -815,40 +802,36 @@ msgstr "Reakcija impulsa"
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
-msgstr ""
+msgstr "Prvi kernel"
 
 #: data/ui/convolver_menu_combine.ui:82
 msgid "Second Kernel"
-msgstr ""
+msgstr "Drugi kernel"
 
 #: data/ui/convolver_menu_combine.ui:91
-#, fuzzy
 msgid "Output File Name"
-msgstr "Izlaz"
+msgstr "Ime izlazne datoteke"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
 msgstr ""
 
 #: data/ui/convolver_menu_impulses.ui:16
-#, fuzzy
 msgid "Import Impulse"
-msgstr "Učitaj impuls"
+msgstr "Uvezi impuls"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:84 data/ui/presets_menu.ui:206
 msgid "Search"
-msgstr ""
+msgstr "Traži"
 
 #: data/ui/convolver_menu_impulses.ui:27
-#, fuzzy
 msgid "Search Impulse File"
-msgstr "Učitaj impuls datoteku"
+msgstr "Traži datoteku impulsa"
 
 #: data/ui/convolver_menu_impulses.ui:47
-#, fuzzy
 msgid "Impulse Files List"
-msgstr "Učitaj impuls datoteku"
+msgstr "Popis datoteka impulsa"
 
 #: data/ui/crossfeed.ui:39
 msgid "Default"
@@ -900,7 +883,7 @@ msgstr "Filter"
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
-msgstr "Detekcija"
+msgstr "Otkrivanje"
 
 #: data/ui/deesser.ui:77
 msgid "Wide"
@@ -966,15 +949,13 @@ msgid "Laxity"
 msgstr "Popustljivost"
 
 #: data/ui/deesser.ui:577
-#, fuzzy
 msgid "Detected"
-msgstr "Detektirano"
+msgstr "Otkriveno"
 
 #: data/ui/deesser.ui:607 data/ui/gate.ui:425 data/ui/gate.ui:1154
 #: data/ui/maximizer.ui:249 data/ui/multiband_gate_band.ui:406
-#, fuzzy
 msgid "Reduction"
-msgstr "Smanjenje"
+msgstr "Smanjivanje"
 
 #: data/ui/delay.ui:41 data/ui/delay.ui:128 src/tags_plugin_name.cpp:47
 msgid "Delay"
@@ -986,9 +967,8 @@ msgid "Invert Phase"
 msgstr "Inverzija faze"
 
 #: data/ui/echo_canceller.ui:27
-#, fuzzy
 msgid "Filter Length"
-msgstr "Filter"
+msgstr "Duljina filtra"
 
 #: data/ui/echo_canceller.ui:49
 #, fuzzy
@@ -1002,15 +982,15 @@ msgstr "Supresija buke"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
-msgstr ""
+msgstr "Isključene aplikacije"
 
 #: data/ui/effects_box.ui:120
 msgid "Enable/disable input monitoring"
-msgstr ""
+msgstr "Aktiviraj/deaktiviraj praćenje unosa"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
-msgstr "Broj raspona"
+msgstr "Trake"
 
 #: data/ui/equalizer.ui:93 data/ui/filter.ui:270 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:391
@@ -1028,9 +1008,8 @@ msgid "Pitch Right"
 msgstr "Postranični ulaz"
 
 #: data/ui/equalizer.ui:288
-#, fuzzy
 msgid "Split Channels"
-msgstr "Kanali"
+msgstr "Rastavi kanale"
 
 #: data/ui/equalizer.ui:294
 msgid "Flat Response"
@@ -1041,19 +1020,16 @@ msgid "Calculate Frequencies"
 msgstr "Izračunaj frekvencije"
 
 #: data/ui/equalizer.ui:310
-#, fuzzy
 msgid "Sort Bands"
-msgstr "Broj raspona"
+msgstr "Razvrstaj trake"
 
 #: data/ui/equalizer.ui:325 src/presets_menu.cpp:144
-#, fuzzy
 msgid "Import Preset"
-msgstr "Učitaj predloške"
+msgstr "Uvezi predloške"
 
 #: data/ui/equalizer.ui:359
-#, fuzzy
 msgid "Export Preset"
-msgstr "Učitaj predloške"
+msgstr "Izvezi predloške"
 
 #: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
 msgid "Slope"
@@ -1091,27 +1067,24 @@ msgid "Expander Mode"
 msgstr "Broj raspona"
 
 #: data/ui/expander.ui:609 data/ui/gate.ui:822
-#, fuzzy
 msgid "Internal"
-msgstr "Integrirano"
+msgstr "Interni"
 
 #: data/ui/factory_clients_listview.ui:72
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:100
 msgid "Access"
-msgstr ""
+msgstr "Pristup"
 
 #: data/ui/factory_modules_listview.ui:72
-#, fuzzy
 msgid "Description"
-msgstr "Detekcija"
+msgstr "Opis"
 
 #: data/ui/factory_rnnoise_listview.ui:24
-#, fuzzy
 msgid "Remove this model file"
-msgstr "Kompresija"
+msgstr "Ukloni ovu datoteku modela"
 
 #: data/ui/filter.ui:52
 #, fuzzy
@@ -1125,7 +1098,7 @@ msgstr "Visoki shelf"
 
 #: data/ui/filter.ui:54
 msgid "Bell"
-msgstr ""
+msgstr "Zvono"
 
 #: data/ui/filter.ui:55
 #, fuzzy
@@ -1397,14 +1370,12 @@ msgid "Auto Leveling Knee"
 msgstr "Automatsko pojačavanje"
 
 #: data/ui/limiter.ui:624
-#, fuzzy
 msgid "Gain Left"
-msgstr "Lijevo"
+msgstr "Pojačanje lijevo"
 
 #: data/ui/limiter.ui:651
-#, fuzzy
 msgid "Gain Right"
-msgstr "Desno"
+msgstr "Pojačanje desno"
 
 #: data/ui/limiter.ui:678
 #, fuzzy
@@ -1418,26 +1389,23 @@ msgstr "Postranični ulaz"
 
 #: data/ui/loudness.ui:37
 msgid "Standard"
-msgstr ""
+msgstr "Standardno"
 
 #: data/ui/loudness.ui:44
 msgid "Flat"
 msgstr ""
 
 #: data/ui/loudness.ui:59
-#, fuzzy
 msgid "FFT Size"
-msgstr "Veličina okvira"
+msgstr "FFT veličina"
 
 #: data/ui/loudness.ui:83
-#, fuzzy
 msgid "Output Volume"
-msgstr "Izlaz"
+msgstr "Izlazna glasnoća"
 
 #: data/ui/loudness.ui:104
-#, fuzzy
 msgid "Clipping"
-msgstr "Kanali"
+msgstr "Odrezivanje"
 
 #: data/ui/multiband_compressor.ui:43 data/ui/multiband_gate.ui:42
 #, fuzzy
@@ -1462,85 +1430,71 @@ msgstr ""
 
 #: data/ui/multiband_compressor.ui:114 data/ui/multiband_gate.ui:114
 msgid "Show Native User Interface"
-msgstr ""
+msgstr "Prikaži izvorno korisničko sučelje"
 
 #: data/ui/multiband_compressor.ui:143 data/ui/multiband_gate.ui:143
-#, fuzzy
 msgid "Operating Mode"
-msgstr "Učitaj impuls"
+msgstr "Modus rada"
 
 #: data/ui/multiband_compressor.ui:156 data/ui/multiband_gate.ui:156
 msgid "Classic"
-msgstr ""
+msgstr "Klasični"
 
 #: data/ui/multiband_compressor.ui:157 data/ui/multiband_gate.ui:157
-#, fuzzy
 msgid "Modern"
-msgstr "Način"
+msgstr "Moderni"
 
 #: data/ui/multiband_compressor.ui:158 data/ui/multiband_gate.ui:158
-#, fuzzy
 msgid "Linear Phase"
-msgstr "Inverzija faze"
+msgstr "Linearna faza"
 
 #: data/ui/multiband_compressor.ui:266 data/ui/multiband_gate.ui:266
-#, fuzzy
 msgid "Bands List"
-msgstr "Broj raspona"
+msgstr "Popis traka"
 
 #: data/ui/multiband_compressor.ui:275 data/ui/multiband_gate.ui:275
-#, fuzzy
 msgid "Band 1"
-msgstr "Broj raspona"
+msgstr "Traka 1"
 
 #: data/ui/multiband_compressor.ui:292 data/ui/multiband_gate.ui:292
-#, fuzzy
 msgid "Band 2"
-msgstr "Broj raspona"
+msgstr "Traka 2"
 
 #: data/ui/multiband_compressor.ui:318 data/ui/multiband_gate.ui:318
-#, fuzzy
 msgid "Band 3"
-msgstr "Broj raspona"
+msgstr "Traka 3"
 
 #: data/ui/multiband_compressor.ui:344 data/ui/multiband_gate.ui:344
-#, fuzzy
 msgid "Band 4"
-msgstr "Broj raspona"
+msgstr "Traka 4"
 
 #: data/ui/multiband_compressor.ui:370 data/ui/multiband_gate.ui:370
-#, fuzzy
 msgid "Band 5"
-msgstr "Broj raspona"
+msgstr "Traka 5"
 
 #: data/ui/multiband_compressor.ui:396 data/ui/multiband_gate.ui:396
-#, fuzzy
 msgid "Band 6"
-msgstr "Broj raspona"
+msgstr "Traka 6"
 
 #: data/ui/multiband_compressor.ui:422 data/ui/multiband_gate.ui:422
-#, fuzzy
 msgid "Band 7"
-msgstr "Broj raspona"
+msgstr "Traka 7"
 
 #: data/ui/multiband_compressor.ui:448 data/ui/multiband_gate.ui:448
-#, fuzzy
 msgid "Band 8"
-msgstr "Broj raspona"
+msgstr "Traka 8"
 
 #: data/ui/multiband_compressor_band.ui:18 data/ui/multiband_gate_band.ui:18
 msgid "Band Start"
-msgstr ""
+msgstr "Početak trake"
 
 #: data/ui/multiband_compressor_band.ui:56 data/ui/multiband_gate_band.ui:56
-#, fuzzy
 msgid "Band End"
-msgstr "Broj raspona"
+msgstr "Kraj trake"
 
 #: data/ui/multiband_compressor_band.ui:111
-#, fuzzy
 msgid "Band Compression Mode"
-msgstr "Kompresija"
+msgstr "Modus kompresije traka"
 
 #: data/ui/multiband_compressor_band.ui:129 data/ui/multiband_gate_band.ui:98
 #, fuzzy
@@ -1582,9 +1536,8 @@ msgid "PreAmp"
 msgstr ""
 
 #: data/ui/multiband_compressor_band.ui:867
-#, fuzzy
 msgid "Band Gain"
-msgstr "Pojačanje ulaza"
+msgstr "Pojačanje trake"
 
 #: data/ui/multiband_compressor_band.ui:892 data/ui/multiband_gate_band.ui:861
 msgid "Band Envelope"
@@ -1592,12 +1545,11 @@ msgstr ""
 
 #: data/ui/multiband_compressor_band.ui:917 data/ui/multiband_gate_band.ui:886
 msgid "Band Curve"
-msgstr ""
+msgstr "Krivulja trake"
 
 #: data/ui/multiband_gate_band.ui:836
-#, fuzzy
 msgid "Band Reduction"
-msgstr "Ograničenje pojačanja"
+msgstr "Smanjivanje trake"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -1605,7 +1557,7 @@ msgstr "Općenito"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "Upravljanje uređajima"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
@@ -1614,14 +1566,12 @@ msgid ""
 msgstr ""
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
-#, fuzzy
 msgid "Use Default Input"
-msgstr "Koristi tvorničke postavke"
+msgstr "Koristi standardni unos"
 
 #: data/ui/pipe_manager_box.ui:65
-#, fuzzy
 msgid "Custom Input Device"
-msgstr "Ulazni uređaj"
+msgstr "Prilagođeni uređaj unosa"
 
 #: data/ui/pipe_manager_box.ui:74 data/ui/pipe_manager_box.ui:80
 #, fuzzy
@@ -1634,17 +1584,16 @@ msgid "Custom Output Device"
 msgstr "Pojačanje ulaza"
 
 #: data/ui/pipe_manager_box.ui:112
-#, fuzzy
 msgid "Server Information"
-msgstr "Reverberacija"
+msgstr "Podaci servera"
 
 #: data/ui/pipe_manager_box.ui:116
 msgid "Header Version"
-msgstr ""
+msgstr "Verzija zaglavlja"
 
 #: data/ui/pipe_manager_box.ui:127
 msgid "Library Version"
-msgstr ""
+msgstr "Verzija biblioteke"
 
 #: data/ui/pipe_manager_box.ui:138
 msgid "Core Version"
@@ -1691,7 +1640,7 @@ msgstr "Predlošci: "
 
 #: data/ui/pipe_manager_box.ui:301 data/ui/pipe_manager_box.ui:426
 msgid "Create Association"
-msgstr ""
+msgstr "Stvori vezu"
 
 #: data/ui/pipe_manager_box.ui:314
 msgid "Add Autoloading Output Preset"
@@ -1806,55 +1755,51 @@ msgstr "Visina"
 
 #: data/ui/pitch.ui:134
 msgid "Semitones"
-msgstr "Polustepeni"
+msgstr "Polutonovi"
 
 #: data/ui/pitch.ui:156
 msgid "Tempo Difference"
-msgstr ""
+msgstr "Razlika tempa"
 
 #: data/ui/pitch.ui:178
 msgid "Rate Difference"
-msgstr ""
+msgstr "Razlika stope"
 
 #: data/ui/plugin_row.ui:50
-#, fuzzy
 msgid "Remove this effect"
-msgstr "Kompresija"
+msgstr "Ukloni ovaj efekt"
 
 #: data/ui/plugin_row.ui:62
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "Aktiviraj/deaktiviraj ovaj efekt"
 
 #: data/ui/plugin_row.ui:74
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "Promijeni položaj ovog efekta"
 
 #: data/ui/plugins_box.ui:28
 msgid "Show/hide effects list"
-msgstr ""
+msgstr "Prikaži/sakrij popis efekata"
 
 #: data/ui/plugins_box.ui:42
-#, fuzzy
 msgid "Add Effect"
-msgstr "Ulazni efekti"
+msgstr "Dodaj efekt"
 
 #: data/ui/plugins_box.ui:65
-#, fuzzy
 msgid "Go to the previous effect"
-msgstr "Kompresija"
+msgstr "Idi na prethodni efekt"
 
 #: data/ui/plugins_box.ui:80
 msgid "Go to the next effect"
-msgstr ""
+msgstr "Idi na sljedeći efekt"
 
 #: data/ui/plugins_box.ui:131
 msgid "Used Plugins List"
-msgstr ""
+msgstr "Popis korištenih dodataka"
 
 #: data/ui/plugins_box.ui:192
-#, fuzzy
 msgid "No Effects"
-msgstr "EasyEffects"
+msgstr "Bez efekata"
 
 #: data/ui/plugins_box.ui:193
 msgid "Audio Stream Not Modified"
@@ -1862,33 +1807,31 @@ msgstr ""
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
-msgstr ""
+msgstr "Traži dodatak"
 
 #: data/ui/plugins_menu.ui:74
 msgid "Plugins List"
-msgstr ""
+msgstr "Popis dodataka"
 
 #: data/ui/preferences_general.ui:5
-#, fuzzy
 msgid "_General"
-msgstr "Općenito"
+msgstr "_Općenito"
 
 #: data/ui/preferences_general.ui:10
-#, fuzzy
 msgid "Service"
-msgstr "Ulazni uređaj"
+msgstr "Usluga"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "Pokreni uslugu pri pokretanju sustava"
 
 #: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
-msgstr ""
+msgstr "Zatvori nakon zatvaranja prozora"
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: data/ui/preferences_general.ui:42
 msgid "Process All Output Streams"
@@ -1916,22 +1859,20 @@ msgid "Input Pipeline"
 msgstr "Ulazni uređaj"
 
 #: data/ui/preferences_general.ui:120
-#, fuzzy
 msgid "Update Interval"
-msgstr "Integrirano"
+msgstr "Interval aktualiziranja"
 
 #: data/ui/preferences_general.ui:121
 msgid "Related to Level Meters and Spectrum"
 msgstr ""
 
 #: data/ui/preferences_general.ui:143
-#, fuzzy
 msgid "Update Frequency"
-msgstr "Frekvencija"
+msgstr "Frekvencija aktualiziranja"
 
 #: data/ui/preferences_general.ui:144
 msgid "Related to LV2 Plugins"
-msgstr ""
+msgstr "Povezano s LV2 dodacima"
 
 #: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
 msgid "Style"
@@ -1946,27 +1887,24 @@ msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
 #: data/ui/preferences_general.ui:197
-#, fuzzy
 msgid "Experimental Features"
-msgstr "Eksperimentalna"
+msgstr "Eksperimentalne funkcije"
 
 #: data/ui/preferences_general.ui:200
-#, fuzzy
 msgid "Native Plugin Window"
-msgstr "Prozor"
+msgstr "Prozor izvornog dodatka"
 
 #: data/ui/preferences_general.ui:201
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
-msgstr ""
+msgstr "Dozvoljava prikazivanje/skrivanje prozora izvornog dodatka"
 
 #: data/ui/preferences_spectrum.ui:5
-#, fuzzy
 msgid "_Spectrum"
-msgstr "Spektar"
+msgstr "_Spektar"
 
 #: data/ui/preferences_spectrum.ui:24
 msgid "Compensating Delay (ms)"
-msgstr ""
+msgstr "Kompenzacija kašnjenja (ms)"
 
 #: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
@@ -1974,7 +1912,7 @@ msgstr "Oblik"
 
 #: data/ui/preferences_spectrum.ui:58
 msgid "Bars"
-msgstr "Trake"
+msgstr "Stupci"
 
 #: data/ui/preferences_spectrum.ui:59
 msgid "Lines"
@@ -2002,7 +1940,7 @@ msgstr "Ispuna"
 
 #: data/ui/preferences_spectrum.ui:148
 msgid "Show Bars Border"
-msgstr "Prikaži konture traka"
+msgstr "Prikaži konture stupaca"
 
 #: data/ui/preferences_spectrum.ui:160
 msgid "Rounded Corners"
@@ -2010,7 +1948,7 @@ msgstr "Zaobljeni kutovi"
 
 #: data/ui/preferences_spectrum.ui:172
 msgid "Dynamic Scale"
-msgstr ""
+msgstr "Dinamička skala"
 
 #: data/ui/preferences_spectrum.ui:186
 msgid "Color"
@@ -2018,7 +1956,7 @@ msgstr "Boja"
 
 #: data/ui/preferences_spectrum.ui:189
 msgid "Lines and Bars"
-msgstr "Linije i trake"
+msgstr "Linije i stupci"
 
 #: data/ui/preferences_spectrum.ui:207
 msgid "Axis Labels"
@@ -2038,100 +1976,91 @@ msgstr "Maksimum"
 
 #: data/ui/preset_row.ui:38 src/convolver_menu_impulses.cpp:225
 msgid "Load"
-msgstr ""
+msgstr "Učitaj"
 
 #: data/ui/preset_row.ui:39
-#, fuzzy
 msgid "Discard the current settings and load this preset"
-msgstr "Spremi trenutne postavke u predložak"
+msgstr "Odabaci trenutačne postavke i učitaj ovaj predložak"
 
 #: data/ui/preset_row.ui:48
-#, fuzzy
 msgid "Save current settings to this preset file"
-msgstr "Spremi trenutne postavke u predložak"
+msgstr "Spremi trenutačne postavke u ovu datoteku predloška"
 
 #: data/ui/preset_row.ui:58
 msgid "Remove this preset file"
-msgstr ""
+msgstr "Ukloni ovu datoteku predloška"
 
 #: data/ui/preset_community_row.ui:55
-#, fuzzy
 msgid "Try"
-msgstr "Suhoća"
+msgstr "Isprobaj"
 
 #: data/ui/preset_community_row.ui:56
-#, fuzzy
 msgid "Try this community preset"
-msgstr "Predlošci: "
+msgstr "Isprobaj ovaj predložak zajednice"
 
 #: data/ui/preset_community_row.ui:65
-#, fuzzy
 msgid "Import"
-msgstr "Uvezi model"
+msgstr "Uvezi"
 
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
-msgstr ""
+msgstr "Uvezi ovaj predložak zajednice u popis lokalnih predložaka"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
-msgstr ""
+msgstr "Lokalni"
 
 #: data/ui/presets_menu.ui:48
-#, fuzzy
 msgid "New Preset Name"
-msgstr "Učitaj predloške"
+msgstr "Ime novog predloška"
 
 #: data/ui/presets_menu.ui:56
-#, fuzzy
 msgid "Create a new preset"
-msgstr "Stvori predložak"
+msgstr "Stvori novi predložak"
 
 #: data/ui/presets_menu.ui:70
 msgid "Import a preset from the local storage"
-msgstr ""
+msgstr "Uvezi predložak iz lokalne memorije"
 
 #: data/ui/presets_menu.ui:86
-#, fuzzy
 msgid "Search Local Preset"
-msgstr "Učitaj predloške"
+msgstr "Traži lokalni predložak"
 
 #: data/ui/presets_menu.ui:147
-#, fuzzy
 msgid "Local Presets List"
-msgstr "Učitaj predloške"
+msgstr "Popis lokalnih predložaka"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
-msgstr ""
+msgstr "Zajednica"
 
 #: data/ui/presets_menu.ui:208
-#, fuzzy
 msgid "Search Community Preset"
-msgstr "Predlošci: "
+msgstr "Traži predložak zajednice"
 
 #: data/ui/presets_menu.ui:271
-#, fuzzy
 msgid "Community Presets List"
-msgstr "Predlošci: "
+msgstr "Popis predložaka zajednice"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr ""
+msgstr "Nijedan predložak zajednice nije instaliran"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
+"Paketi predložaka zajednice se mogu instalirati iz repozitorija tvoje "
+"omiljene distribucije."
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
-msgstr ""
+msgstr "Osvježi"
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
-msgstr ""
+msgstr "Osvježi za prikaz novo instaliranih predložaka zajednice"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2214,20 +2143,18 @@ msgid "Import Model"
 msgstr "Uvezi model"
 
 #: data/ui/rnnoise.ui:47 data/ui/speex.ui:59
-#, fuzzy
 msgid "Voice Detection"
-msgstr "Detektor glasa"
+msgstr "Otkrivanje glasa"
 
 #: data/ui/rnnoise.ui:151
-#, fuzzy
 msgid "Models"
-msgstr "Način"
+msgstr "Modeli"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
 #: data/ui/rnnoise.ui:177 src/rnnoise_ui.cpp:121 src/rnnoise_ui.cpp:298
 #: src/rnnoise_ui.cpp:375
 msgid "Standard Model"
-msgstr ""
+msgstr "Standardni model"
 
 #: data/ui/rnnoise.ui:204
 msgid "RNNoise Models List"
@@ -2235,25 +2162,23 @@ msgstr ""
 
 #: data/ui/rnnoise.ui:228
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "Model nije učitan"
 
 #: data/ui/rnnoise.ui:234
-#, fuzzy
 msgid "Active Model"
-msgstr "Kompresija"
+msgstr "Aktivni model"
 
 #: data/ui/rnnoise.ui:242
 msgid "Standard RNNoise Model"
 msgstr ""
 
 #: data/ui/shortcuts.ui:11
-#, fuzzy
 msgid "Overview"
-msgstr "Ulazni uređaj"
+msgstr "Pregled"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "Prikaži pomoć"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2261,31 +2186,27 @@ msgstr ""
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
-msgstr ""
+msgstr "Zatvori prozor"
 
 #: data/ui/shortcuts.ui:37
-#, fuzzy
 msgid "Quit Easy Effects"
-msgstr "EasyEffects"
+msgstr "Zatvori Easy Effects"
 
 #: data/ui/speex.ui:33
-#, fuzzy
 msgid "Denoise"
-msgstr "Crveni šum"
+msgstr "Ukloni šumove"
 
 #: data/ui/speex.ui:46
-#, fuzzy
 msgid "Automatic Gain Control"
-msgstr "Kontrola pojačanja"
+msgstr "Kontrola automatskog pojačanja"
 
 #: data/ui/speex.ui:72
-#, fuzzy
 msgid "Dereverberation"
-msgstr "Reverberacija"
+msgstr "Uklanjanje jeke"
 
 #: data/ui/speex.ui:91
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "Vjerojatnost glasovne aktivnosti"
 
 #: data/ui/speex.ui:95
 msgid "Start"
@@ -2293,15 +2214,13 @@ msgstr ""
 
 #: data/ui/speex.ui:117
 msgid "Continue"
-msgstr ""
+msgstr "Nastavi"
 
 #: data/ui/speex.ui:141
-#, fuzzy
 msgid "Noise Suppression"
-msgstr "Supresija buke"
+msgstr "Suzbijanje šumova"
 
 #: data/ui/speex.ui:145
-#, fuzzy
 msgid "Level"
 msgstr "Razina"
 
@@ -2353,9 +2272,8 @@ msgid "LR > RL (Stereo Flip Channels)"
 msgstr ""
 
 #: data/ui/stereo_tools.ui:149
-#, fuzzy
 msgid "Stereo Mode"
-msgstr "Stereo baza"
+msgstr "Stereo modus"
 
 #: data/ui/stereo_tools.ui:234
 #, fuzzy
@@ -2383,14 +2301,12 @@ msgid "Output Balance"
 msgstr "Pojačanje ulaza"
 
 #: data/ui/stereo_tools.ui:426
-#, fuzzy
 msgid "Delay L/R"
 msgstr "Kašnjenje L/D"
 
 #: data/ui/stereo_tools.ui:452
-#, fuzzy
 msgid "Delay Left Right"
-msgstr "Kašnjenje L/D"
+msgstr "Kašnjenje lijevo desno"
 
 #: data/ui/stereo_tools.ui:461
 #, fuzzy
@@ -2404,69 +2320,63 @@ msgstr "Stereo faza"
 
 #: src/app_info.cpp:100
 msgid "Running"
-msgstr ""
+msgstr "Pokreće se"
 
 #: src/app_info.cpp:102
 msgid "Suspended"
-msgstr ""
+msgstr "Odgođeno"
 
 #: src/app_info.cpp:104
 msgid "Idle"
-msgstr ""
+msgstr "Neaktivno"
 
 #: src/app_info.cpp:106
-#, fuzzy
 msgid "Creating"
-msgstr "Postavke"
+msgstr "Stvaranje"
 
 #: src/app_info.cpp:108
 msgid "Error"
-msgstr ""
+msgstr "Greška"
 
 #: src/app_info.cpp:110
 msgid "Unknown"
-msgstr ""
+msgstr "Nepoznato"
 
 #: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
-msgstr ""
+msgstr "Nedefinirano ime – ID procesa "
 
 #: src/app_info.cpp:292
-#, fuzzy
 msgid "channels"
-msgstr "Kanali"
+msgstr "kanali"
 
 #: src/application.cpp:301
-#, fuzzy
 msgid "Output Preset"
-msgstr "Predlošci: "
+msgstr "Izlazni predložak"
 
 #: src/application.cpp:302
-#, fuzzy
 msgid "Input Preset"
-msgstr "Učitaj predloške"
+msgstr "Ulazni predložak"
 
 #: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
-msgstr ""
+msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
 #: src/application.cpp:606
-#, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr ""
-"Zatvori EasyEffects. Korisno pri upotrebi u servisnom načinu pokretanja."
+msgstr "Zatvori Easy Effects. Korisno pri pokretanju u modusu usluga."
 
 #: src/application.cpp:609
 msgid "Print the easyeffects version"
-msgstr ""
+msgstr "Ispiši easyeffects verziju"
 
 #: src/application.cpp:612
 msgid "Reset Easy Effects."
-msgstr "Obnovi EasyEffects."
+msgstr "Resetiraj Easy Effects."
 
 #: src/application.cpp:615
 msgid "Hide the Window."
-msgstr ""
+msgstr "Sakrij prozor."
 
 #: src/application.cpp:618
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
@@ -2481,15 +2391,16 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Učitaj predložak. Primjer: easyeffects -l music"
 
 #: src/application.cpp:627
-#, fuzzy
 msgid "Show the active presets."
-msgstr "Prikaži dostupne predloške."
+msgstr "Prikaži aktivne predloške."
 
 #: src/application.cpp:630
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
 msgstr ""
+"Prikaži učitani predložak određene kategorije. Uzima „input” ili „output” "
+"kao vrijednost. Primjer: easyeffects -s input"
 
 #: src/application_ui.cpp:344
 #, fuzzy
@@ -2793,16 +2704,14 @@ msgid "Reverberation"
 msgstr "Reverberacija"
 
 #: src/tags_plugin_name.cpp:62
-#, fuzzy
 msgid "Noise Reduction"
-msgstr "Ograničenje pojačanja"
+msgstr "Smanjenje šumova"
 
 #: src/tags_plugin_name.cpp:63
 msgid "Speech Processor"
-msgstr ""
+msgstr "Procesor govora"
 
 #: src/tags_plugin_name.cpp:64
-#, fuzzy
 msgid "Stereo Tools"
 msgstr "Stereo alati"
 
@@ -2810,7 +2719,7 @@ msgstr "Stereo alati"
 #: src/ui_helpers.cpp:93
 #, c++-format
 msgid "{} Not Available"
-msgstr ""
+msgstr "{} nije dostupan"
 
 #: src/ui_helpers.cpp:97
 #, c++-format
@@ -2839,7 +2748,7 @@ msgstr ""
 #: src/ui_helpers.cpp:254
 #, c++-format
 msgid "Using {}"
-msgstr ""
+msgstr "Koristi se {}"
 
 #~ msgid "Ceiling"
 #~ msgstr "Vrh"
