@@ -31,11 +31,13 @@ LimiterPreset::LimiterPreset(PipelineType pipeline_type, const std::string& inst
 }
 
 void LimiterPreset::save(nlohmann::json& json) {
-  json[section][instance_name]["mode"] = settings->modeLabels()[settings->mode()].toStdString();
+  json[section][instance_name]["mode"] = settings->defaultModeLabelsValue()[settings->mode()].toStdString();
 
-  // json[section][instance_name]["oversampling"] = util::gsettings_get_string(settings, "oversampling");
+  json[section][instance_name]["oversampling"] =
+      settings->defaultOversamplingLabelsValue()[settings->oversampling()].toStdString();
 
-  // json[section][instance_name]["dithering"] = util::gsettings_get_string(settings, "dithering");
+  json[section][instance_name]["dithering"] =
+      settings->defaultDitheringLabelsValue()[settings->dithering()].toStdString();
 
   // json[section][instance_name]["sidechain-type"] =;
 
@@ -69,10 +71,6 @@ void LimiterPreset::save(nlohmann::json& json) {
 }
 
 void LimiterPreset::load(const nlohmann::json& json) {
-  // update_key<gchar*>(json.at(section).at(instance_name), settings, "oversampling", "oversampling");
-
-  // update_key<gchar*>(json.at(section).at(instance_name), settings, "dithering", "dithering");
-
   // update_key<bool>(json.at(section).at(instance_name), settings, "external-sidechain", "external-sidechain");
 
   UPDATE_PROPERTY("bypass", Bypass);
@@ -90,8 +88,7 @@ void LimiterPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("alr", Alr);
   UPDATE_PROPERTY("gain-boost", GainBoost);
 
-  if (const auto idx = settings->modeLabels().indexOf(json.at(section).at(instance_name).value("mode", ""));
-      idx != -1) {
-    settings->setMode(idx);
-  }
+  UPDATE_ENUM_LIKE_PROPERTY("mode", Mode);
+  UPDATE_ENUM_LIKE_PROPERTY("oversampling", Oversampling);
+  UPDATE_ENUM_LIKE_PROPERTY("dithering", Dithering);
 }

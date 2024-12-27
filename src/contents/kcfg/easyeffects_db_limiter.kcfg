@@ -30,106 +30,18 @@
             <label>Mode</label>
             <default>0</default>
         </entry>
-        <entry name="oversampling" type="Enum">
+        <entry name="oversamplingLabels" type="StringList">
+            <default>None,Half x2(2L),Half x2(3L),Half x3(2L),Half x3(3L),Half x4(2L),Half x4(3L),Half x6(2L),Half x6(3L),Half x8(2L),Half x8(3L),Full x2(2L),Full x2(3L),Full x3(2L),Full x3(3L),Full x4(2L),Full x4(3L),Full x6(2L),Full x6(3L),Full x8(2L),Full x8(3L)</default>
+        </entry>
+        <entry name="oversampling" type="Int">
             <label>Oversampling</label>
-            <choices>
-                <choice name="none">
-                    <label>None</label>
-                </choice>
-                <choice name="halfx22L">
-                    <label>Half x2(2L)</label>
-                </choice>
-                <choice name="halfx23L">
-                    <label>Half x2(3L)</label>
-                </choice>
-                <choice name="halfx32L">
-                    <label>Half x3(2L)</label>
-                </choice>
-                <choice name="halfx33L">
-                    <label>Half x3(3L)</label>
-                </choice>
-                <choice name="halfx42L">
-                    <label>Half x4(2L)</label>
-                </choice>
-                <choice name="halfx43L">
-                    <label>Half x4(3L)</label>
-                </choice>
-                <choice name="halfx62L">
-                    <label>Half x6(2L)</label>
-                </choice>
-                <choice name="halfx63L">
-                    <label>Half x6(3L)</label>
-                </choice>
-                <choice name="halfx82L">
-                    <label>Half x8(2L)</label>
-                </choice>
-                <choice name="halfx83L">
-                    <label>Half x8(3L)</label>
-                </choice>
-                <choice name="fullx22L">
-                    <label>Full x2(2L)</label>
-                </choice>
-                <choice name="fullx23L">
-                    <label>Full x2(3L)</label>
-                </choice>
-                <choice name="fullx32L">
-                    <label>Full x3(2L)</label>
-                </choice>
-                <choice name="fullx33L">
-                    <label>Full x3(3L)</label>
-                </choice>
-                <choice name="fullx42L">
-                    <label>Full x4(2L)</label>
-                </choice>
-                <choice name="fullx43L">
-                    <label>Full x4(3L)</label>
-                </choice>
-                <choice name="fullx62L">
-                    <label>Full x6(2L)</label>
-                </choice>
-                <choice name="fullx63L">
-                    <label>Full x6(3L)</label>
-                </choice>
-                <choice name="fullx82L">
-                    <label>Full x8(2L)</label>
-                </choice>
-                <choice name="fullx83L">
-                    <label>Full x8(3L)</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
-        <entry name="dithering" type="Enum">
+        <entry name="ditheringLabels" type="StringList">
+            <default>None,7bit,8bit,11bit,12bit,15bit,16bit,23bit,24bit</default>
+        </entry>
+        <entry name="dithering" type="Int">
             <label>Dithering</label>
-            <choices>
-                <choice name="none">
-                    <label>None</label>
-                </choice>
-                <choice name="v7bit">
-                    <label>7bit</label>
-                </choice>
-                <choice name="v8bit">
-                    <label>8bit</label>
-                </choice>
-                <choice name="v11bit">
-                    <label>11bit</label>
-                </choice>
-                <choice name="v12bit">
-                    <label>12bit</label>
-                </choice>
-                <choice name="v15bit">
-                    <label>15bit</label>
-                </choice>
-                <choice name="v16bit">
-                    <label>16bit</label>
-                </choice>
-                <choice name="v23bit">
-                    <label>23bit</label>
-                </choice>
-                <choice name="v24bit">
-                    <label>24bit</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
         <entry name="sidechainType" type="Enum">
