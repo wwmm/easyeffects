@@ -47,6 +47,7 @@
 #include "easyeffects_db.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
+#include "exciter_preset.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
 #include "presets_list_model.hpp"
@@ -1290,7 +1291,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type,
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::exciter)) {
-    // return std::make_unique<ExciterPreset>(pipeline_type, filter_name.toStdString());
+    return std::make_unique<ExciterPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::expander)) {

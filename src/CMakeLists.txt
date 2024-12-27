@@ -29,6 +29,7 @@ target_sources(easyeffects PRIVATE
     db_manager.cpp
     effects_base.cpp
     exciter.cpp
+    exciter_preset.cpp
     filter.cpp
     fir_filter_bandpass.cpp
     fir_filter_base.cpp
