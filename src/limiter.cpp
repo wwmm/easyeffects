@@ -21,6 +21,7 @@
 #include <algorithm>
 #include <memory>
 #include "db_manager.hpp"
+#include "easyeffects_db_limiter.h"
 #include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
 #include "spa/utils/defs.h"

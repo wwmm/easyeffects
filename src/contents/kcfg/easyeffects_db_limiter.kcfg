@@ -23,46 +23,11 @@
             <max>36</max>
             <default>0</default>
         </entry>
-        <entry name="mode" type="Enum">
+        <entry name="modeLabels" type="StringList">
+            <default>Herm Thin,Herm Wide,Herm Tail,Herm Duck,Exp Thin,Exp Wide,Exp Tail,Exp Duck,Line Thin,Line Wide,Line Tail,Line Duck</default>
+        </entry>
+        <entry name="mode" type="Int">
             <label>Mode</label>
-            <choices>
-                <choice name="hermThin">
-                    <label>Herm Thin</label>
-                </choice>
-                <choice name="hermWide">
-                    <label>Herm Wide</label>
-                </choice>
-                <choice name="hermTail">
-                    <label>Herm Tail</label>
-                </choice>
-                <choice name="hermDuck">
-                    <label>Herm Duck</label>
-                </choice>
-                <choice name="expThin">
-                    <label>Exp Thin</label>
-                </choice>
-                <choice name="expWide">
-                    <label>Exp Wide</label>
-                </choice>
-                <choice name="expTail">
-                    <label>Exp Tail</label>
-                </choice>
-                <choice name="expDuck">
-                    <label>Exp Duck</label>
-                </choice>
-                <choice name="lineThin">
-                    <label>Line Thin</label>
-                </choice>
-                <choice name="lineWide">
-                    <label>Line Wide</label>
-                </choice>
-                <choice name="lineTail">
-                    <label>Line Tail</label>
-                </choice>
-                <choice name="lineDuck">
-                    <label>Line Duck</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
         <entry name="oversampling" type="Enum">

@@ -38,6 +38,7 @@ target_sources(easyeffects PRIVATE
     gate.cpp
     kconfig_base_ee.cpp
     limiter.cpp
+    limiter_preset.cpp
     local_client.cpp
     local_server.cpp
     lv2_wrapper.cpp

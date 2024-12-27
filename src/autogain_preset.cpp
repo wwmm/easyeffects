@@ -23,6 +23,7 @@
 #include "easyeffects_db_autogain.h"
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
+#include "presets_macros.hpp"
 
 AutoGainPreset::AutoGainPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
@@ -46,19 +47,12 @@ void AutoGainPreset::save(nlohmann::json& json) {
 }
 
 void AutoGainPreset::load(const nlohmann::json& json) {
-  settings->setBypass(json.at(section).at(instance_name).value("bypass", settings->defaultBypassValue()));
-
-  settings->setInputGain(json.at(section).at(instance_name).value("input-gain", settings->defaultInputGainValue()));
-
-  settings->setOutputGain(json.at(section).at(instance_name).value("output-gain", settings->defaultOutputGainValue()));
-
-  settings->setTarget(json.at(section).at(instance_name).value("target", settings->defaultTargetValue()));
-
-  settings->setSilenceThreshold(
-      json.at(section).at(instance_name).value("silence-threshold", settings->defaultSilenceThresholdValue()));
-
-  settings->setMaximumHistory(
-      json.at(section).at(instance_name).value("maximum-history", settings->defaultMaximumHistoryValue()));
+  UPDATE_PROPERTY("bypass", Bypass);
+  UPDATE_PROPERTY("input-gain", InputGain);
+  UPDATE_PROPERTY("output-gain", OutputGain);
+  UPDATE_PROPERTY("target", Target);
+  UPDATE_PROPERTY("silence-threshold", SilenceThreshold);
+  UPDATE_PROPERTY("maximum-history", MaximumHistory);
 
   if (const auto idx = settings->referenceLabels().indexOf(json.at(section).at(instance_name).value("reference", ""));
       idx != -1) {
