@@ -39,7 +39,8 @@ void LimiterPreset::save(nlohmann::json& json) {
   json[section][instance_name]["dithering"] =
       settings->defaultDitheringLabelsValue()[settings->dithering()].toStdString();
 
-  // json[section][instance_name]["sidechain-type"] =;
+  json[section][instance_name]["sidechain-type"] =
+      settings->defaultSidechainTypeLabelsValue()[settings->sidechainType()].toStdString();
 
   json[section][instance_name]["bypass"] = settings->bypass();
 
@@ -71,8 +72,6 @@ void LimiterPreset::save(nlohmann::json& json) {
 }
 
 void LimiterPreset::load(const nlohmann::json& json) {
-  // update_key<bool>(json.at(section).at(instance_name), settings, "external-sidechain", "external-sidechain");
-
   UPDATE_PROPERTY("bypass", Bypass);
   UPDATE_PROPERTY("input-gain", InputGain);
   UPDATE_PROPERTY("output-gain", OutputGain);
@@ -91,4 +90,5 @@ void LimiterPreset::load(const nlohmann::json& json) {
   UPDATE_ENUM_LIKE_PROPERTY("mode", Mode);
   UPDATE_ENUM_LIKE_PROPERTY("oversampling", Oversampling);
   UPDATE_ENUM_LIKE_PROPERTY("dithering", Dithering);
+  UPDATE_ENUM_LIKE_PROPERTY("sidechain-type", SidechainType);
 }

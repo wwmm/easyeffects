@@ -44,19 +44,11 @@
             <label>Dithering</label>
             <default>0</default>
         </entry>
-        <entry name="sidechainType" type="Enum">
+        <entry name="sidechainTypeLabels" type="StringList">
+            <default>Internal,External,Link</default>
+        </entry>
+        <entry name="sidechainType" type="Int">
             <label>Sidechain type</label>
-            <choices>
-                <choice name="internal">
-                    <label>Internal</label>
-                </choice>
-                <choice name="external">
-                    <label>External</label>
-                </choice>
-                <choice name="link">
-                    <label>Link</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
         <entry name="lookahead" type="Double">

@@ -235,27 +235,27 @@ void Autogain::process(std::span<float>& left_in,
     }
 
     if (!failed) {
-      if (settings->referenceLabels()[settings->reference()] == "Momentary") {
+      if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Momentary") {
         loudness = momentary;
-      } else if (settings->referenceLabels()[settings->reference()] == "Shortterm") {
+      } else if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Shortterm") {
         loudness = shortterm;
-      } else if (settings->referenceLabels()[settings->reference()] == "Integrated") {
+      } else if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Integrated") {
         loudness = global;
-      } else if (settings->referenceLabels()[settings->reference()] == "Geometric Mean (MSI)") {
+      } else if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Geometric Mean (MSI)") {
         loudness = std::cbrt(momentary * shortterm * global);
-      } else if (settings->referenceLabels()[settings->reference()] == "Geometric Mean (MS)") {
+      } else if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Geometric Mean (MS)") {
         loudness = std::sqrt(std::fabs(momentary * shortterm));
 
         if (momentary < 0 && shortterm < 0) {
           loudness *= -1;
         }
-      } else if (settings->referenceLabels()[settings->reference()] == "Geometric Mean (MI)") {
+      } else if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Geometric Mean (MI)") {
         loudness = std::sqrt(std::fabs(momentary * global));
 
         if (momentary < 0 && global < 0) {
           loudness *= -1;
         }
-      } else if (settings->referenceLabels()[settings->reference()] == "Geometric Mean (SI)") {
+      } else if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Geometric Mean (SI)") {
         loudness = std::sqrt(std::fabs(shortterm * global));
 
         if (shortterm < 0 && global < 0) {
