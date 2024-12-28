@@ -151,7 +151,7 @@ void Limiter::process(std::span<float>& left_in,
 }
 
 void Limiter::update_sidechain_links() {
-  if (settings->defaultSidechainTypeLabelsValue()[settings->sidechainType()] == "External") {
+  if (settings->defaultSidechainTypeLabelsValue()[settings->sidechainType()] != "External") {
     pm->destroy_links(list_proxies);
 
     list_proxies.clear();

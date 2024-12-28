@@ -1,6 +1,7 @@
 import QtGraphs
 import QtQml
 import QtQuick
+import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
 import org.kde.kirigami as Kirigami
@@ -31,6 +32,19 @@ Item {
     Kirigami.Theme.colorSet: Kirigami.Theme.View
 
     ColumnLayout {
+        // Row {
+        //     Layout.fillWidth: true
+        //     Layout.fillHeight: false
+        //     Repeater {
+        //         id: axisRepeater
+        //         model: 10
+        //         Controls.Label {
+        //             width: chart.width / axisRepeater.count
+        //             text: index
+        //         }
+        //     }
+        // }
+
         id: columnLayout
 
         anchors.fill: parent
