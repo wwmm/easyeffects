@@ -7,6 +7,10 @@ function isEmpty(v) {
             return v.length === 0;
         case "number":
             return isNaN(v);
+        case "undefined":
+            return true;
+        case "object":
+            return v === null;
         default:
             return false;
   }
