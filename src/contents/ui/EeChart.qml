@@ -42,7 +42,7 @@ Item {
 
             Layout.leftMargin: -60
             antialiasing: true
-            marginBottom: -5 // https://github.com/qt/qtgraphs/blob/dev/src/graphs2d/qgraphsview_p.h
+            marginBottom: -40 // https://github.com/qt/qtgraphs/blob/dev/src/graphs2d/qgraphsview_p.h
             marginTop: 0
             marginLeft: 0
             marginRight: 0
@@ -101,6 +101,7 @@ Item {
                 gridVisible: false
                 subGridVisible: false
                 lineVisible: false
+                visible: false
                 labelDecimals: 0
             }
 
@@ -130,7 +131,7 @@ Item {
             Layout.fillWidth: true
             Layout.fillHeight: false
             padding: 0
-            visible: false
+            visible: true
 
             Repeater {
                 id: axisRepeater
@@ -142,14 +143,19 @@ Item {
 
                 Controls.Label {
                     padding: 0
-                    width: widgetRoot.width / (axisRepeater.nTicks)
+                    width: widgetRoot.width / (axisRepeater.nTicks - 1)
                     text: xMin + (index) * axisRepeater.step
                     horizontalAlignment: {
                         if (index === (axisRepeater.count - 1))
                             return Qt.AlignRight;
                         else
-                            return Qt.AligLeft;
+                            return Qt.AlignLeft;
                     }
+
+                    background: Rectangle {
+                        color: chart.theme.backgroundColor
+                    }
+
                 }
 
             }
