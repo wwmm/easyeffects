@@ -271,8 +271,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/fmtlib/fmt",
-                    "tag": "11.1.0",
-                    "commit": "0e8aad961d66904cfda8d7cc894f6f6eee2d9f30",
+                    "tag": "11.1.1",
+                    "commit": "e3ddede6c4ee818825c4e5a6dfa1d384860c27d9",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/fmtlib/fmt/releases/latest",
