@@ -32,31 +32,20 @@ Item {
     Kirigami.Theme.colorSet: Kirigami.Theme.View
 
     ColumnLayout {
-        // Row {
-        //     Layout.fillWidth: true
-        //     Layout.fillHeight: false
-        //     Repeater {
-        //         id: axisRepeater
-        //         model: 10
-        //         Controls.Label {
-        //             width: chart.width / axisRepeater.count
-        //             text: index
-        //         }
-        //     }
-        // }
-
         id: columnLayout
 
         anchors.fill: parent
+        spacing: 0
 
         GraphsView {
             id: chart
 
-            Layout.leftMargin: -55
+            Layout.leftMargin: -60
             antialiasing: true
             marginBottom: -5 // https://github.com/qt/qtgraphs/blob/dev/src/graphs2d/qgraphsview_p.h
             marginTop: 0
             marginLeft: 0
+            marginRight: 0
             Layout.fillWidth: true
             Layout.fillHeight: true
             Component.onCompleted: {
@@ -104,7 +93,7 @@ Item {
             }
 
             axisX: ValueAxis {
-                id: axisFreq
+                id: horizontalAxis
 
                 labelFormat: "%.1f"
                 min: xMin
@@ -113,11 +102,10 @@ Item {
                 subGridVisible: false
                 lineVisible: false
                 labelDecimals: 0
-                tickInterval: 0
             }
 
             axisY: ValueAxis {
-                id: axisAmplitude
+                id: verticalAxis
 
                 labelFormat: "%.1e"
                 gridVisible: false
@@ -134,6 +122,36 @@ Item {
                 colorScheme: GraphsTheme.ColorScheme.Dark // Light, Dark, Automatic
                 theme: GraphsTheme.Theme.OrangeSeries // QtGreen, QtGreenNeon, MixSeries, OrangeSeries, YellowSeries, BlueSeries, PurpleSeries, GreySeries
                 plotAreaBackgroundColor: "transparent"
+            }
+
+        }
+
+        Row {
+            Layout.fillWidth: true
+            Layout.fillHeight: false
+            padding: 0
+            visible: false
+
+            Repeater {
+                id: axisRepeater
+
+                readonly property real nTicks: 11
+                readonly property real step: (xMax - xMin) / (nTicks - 1)
+
+                model: nTicks
+
+                Controls.Label {
+                    padding: 0
+                    width: widgetRoot.width / (axisRepeater.nTicks)
+                    text: xMin + (index) * axisRepeater.step
+                    horizontalAlignment: {
+                        if (index === (axisRepeater.count - 1))
+                            return Qt.AlignRight;
+                        else
+                            return Qt.AligLeft;
+                    }
+                }
+
             }
 
         }
