@@ -138,16 +138,31 @@ Item {
 
                 readonly property real nTicks: 11
                 readonly property real step: (xMax - xMin) / (nTicks - 1)
+                readonly property real labelWidth: widgetRoot.width / (nTicks - 1)
 
                 model: nTicks
 
                 Controls.Label {
+                    readonly property real value: xMin + (index) * axisRepeater.step
+
                     padding: 0
-                    width: widgetRoot.width / (axisRepeater.nTicks - 1)
-                    text: xMin + (index) * axisRepeater.step
+                    color: chart.theme.labelTextColor
+                    leftPadding: {
+                        if (index !== (axisRepeater.count - 1))
+                            return 0;
+                        else
+                            return -axisRepeater.labelWidth - 6 * Kirigami.Units.smallSpacing;
+                    }
+                    width: axisRepeater.labelWidth
+                    text: {
+                        if (index !== (axisRepeater.count - 1))
+                            return value;
+                        else
+                            return "Hz";
+                    }
                     horizontalAlignment: {
                         if (index === (axisRepeater.count - 1))
-                            return Qt.AlignRight;
+                            return Qt.AlignHCenter;
                         else
                             return Qt.AlignLeft;
                     }
