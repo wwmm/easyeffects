@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-17 21:09+0000\n"
+"POT-Creation-Date: 2024-12-31 17:18+0000\n"
 "PO-Revision-Date: 2024-02-20 11:02+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -20,19 +20,19 @@ msgstr ""
 "X-Generator: Weblate 5.5-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
-#: data/com.github.wwmm.easyeffects.desktop.in:4
+#: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "@APP_NAME@"
 msgstr "@APP_NAME@"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:5
+#: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Tonekontroll, kompressor og andre lydeffekter"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:6
+#: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Lydeffekter for PipeWire-programmer"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:7
+#: data/com.github.wwmm.easyeffects.desktop.in:6
 #, fuzzy
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr "begrenser; kompressor;klang ; equalizer; autovolume;"

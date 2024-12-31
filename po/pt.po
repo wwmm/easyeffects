@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-17 21:09+0000\n"
+"POT-Creation-Date: 2024-12-31 17:18+0000\n"
 "PO-Revision-Date: 2024-10-05 21:55+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/easyeffects/"
@@ -20,23 +20,23 @@ msgstr ""
 "X-Generator: Weblate 5.8-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
-#: data/com.github.wwmm.easyeffects.desktop.in:4
+#: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "@APP_NAME@"
 msgstr "@APP_NAME@"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:5
+#: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Equalizador, Compressor e Outros Efeitos de Áudio"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:6
+#: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Efeitos de áudio para aplicações do PipeWire"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:7
+#: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr ""
-"limitador;compressor;reverberação;equalizador;volume automático;efeitos;"
-"sonoros;som;áudio;"
+"limitador;compressor;reverberação;equalizador;volume "
+"automático;efeitos;sonoros;som;áudio;"
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"

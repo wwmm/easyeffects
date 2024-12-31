@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-17 21:09+0000\n"
+"POT-Creation-Date: 2024-12-31 17:18+0000\n"
 "PO-Revision-Date: 2024-12-28 03:00+0000\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -20,22 +20,21 @@ msgstr ""
 "X-Generator: Weblate 5.10-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
-#: data/com.github.wwmm.easyeffects.desktop.in:4
+#: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "@APP_NAME@"
 msgstr "@APP_NAME@"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:5
+#: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Ekolayzır, Sıkıştırıcı ve Diğer Ses Efektleri"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:6
+#: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PipeWire Applications"
 msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
-#: data/com.github.wwmm.easyeffects.desktop.in:7
+#: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr ""
-"sınırlayıcı,kompresör,yankı,ekolayzır,otomatikses;yükseltici;sıkıştırıcı;"
+msgstr "sınırlayıcı,kompresör,yankı,ekolayzır,otomatikses;yükseltici;sıkıştırıcı;"
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
