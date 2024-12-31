@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-31 17:18+0000\n"
-"PO-Revision-Date: 2024-12-18 12:00+0000\n"
+"PO-Revision-Date: 2025-01-01 09:00+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.9.2-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -386,15 +386,14 @@ msgstr ""
 "în anumite condiții."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
-#, fuzzy
 msgid ""
 "We now set monitor.passthrough = true in our virtual devices. This will "
 "allow latency offset to be properly applied by video players when PipeWire > "
 "1.0.3 is released."
 msgstr ""
-"Am definit acum monitor.passthrough = true în dispozitivele noastre "
+"Am definit acum „monitor.passthrough = true” în dispozitivele noastre "
 "virtuale. Acest lucru va permite compensarea latenței să fie aplicată în mod "
-"corespunzător de reproducătoarele video atunci când PipeWire &gt; 1.0.3 este "
+"corespunzător de reproducătoarele video atunci când PipeWire > 1.0.3 este "
 "lansat."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
@@ -1669,7 +1668,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:610
 msgid "gtkmm3 was replaced by gtkmm4"
-msgstr "gtkmm3 a fost înlocuită cu gtkmm4"
+msgstr "Biblioteca gtkmm3 a fost înlocuită cu biblioteca gtkmm4"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:611
 msgid "Gstreamer was replaced by native PipeWire filters."
