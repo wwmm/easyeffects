@@ -8,10 +8,6 @@
             <label>Show the Spectrum Analyzer.</label>
             <default>true</default>
         </entry>
-        <entry name="useOpenGL" type="Bool">
-            <label>Enable OpenGL Acceleration</label>
-            <default>true</default>
-        </entry>
         <entry name="dynamicYScale" type="Bool">
             <label>Enable Dynamic Scaling for the Vertical Axis</label>
             <default>true</default>

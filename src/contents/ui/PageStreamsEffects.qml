@@ -398,7 +398,6 @@ Kirigami.Page {
         id: spectrumChart
 
         seriesType: DB.Manager.spectrum.spectrumShape
-        useOpenGL: DB.Manager.spectrum.useOpenGL
         xMin: DB.Manager.spectrum.minimumFrequency
         xMax: DB.Manager.spectrum.maximumFrequency
         yMin: -100

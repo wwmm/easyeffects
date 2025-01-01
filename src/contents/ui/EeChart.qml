@@ -10,20 +10,40 @@ Item {
     id: widgetRoot
 
     property int seriesType: 0
-    property bool useOpenGL: true
+    property bool logarithimicHorizontalAxis: true
+    property bool logarithimicVerticalAxis: false
     property real xMin: 0
     property real xMax: 1
     property real yMin: 0
     property real yMax: 1
+    readonly property real xMinLog: Math.log10(xMin)
+    readonly property real xMaxLog: Math.log10(xMax)
+    readonly property real yMinLog: Math.log10(yMin)
+    readonly property real yMaxLog: Math.log10(yMin)
     readonly property color color1: Kirigami.Theme.negativeTextColor
     readonly property color color2: Kirigami.Theme.alternateBackgroundColor
     readonly property color color3: Qt.darker(color2, 1.1)
     readonly property color backgroundRectColor: Kirigami.Theme.backgroundColor
-    property var graphData: [Qt.point(50.5, 0.2), Qt.point(100, 0.4), Qt.point(1000, 0.6), Qt.point(10000, 0.8), Qt.point(15000, 1)]
+    property var inputData: []
 
     function updateData(newData) {
+        inputData = newData;
+        for (let n = 0; n < newData.length; n++) {
+            if (logarithimicHorizontalAxis === true)
+                newData[n].x = Math.log10(newData[n].x);
+
+            if (logarithimicVerticalAxis === true)
+                newData[n].y = Math.log10(newData[n].y);
+
+        }
         if (splineSeries.visible === true)
             splineSeries.replace(newData);
+
+        if (scatterSeries.visible === true)
+            scatterSeries.replace(newData);
+
+        if (areaSeries.visible === true)
+            areaLineSeries.replace(newData);
 
     }
 
@@ -48,13 +68,6 @@ Item {
             marginRight: 0
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Component.onCompleted: {
-                for (let n = 0; n < graphData.length; n++) {
-                    splineSeries.append(graphData[n].x, graphData[n].y);
-                    scatterSeries.append(graphData[n].x, graphData[n].y);
-                    areaLineSeries.append(graphData[n].x, graphData[n].y);
-                }
-            }
 
             BarSeries {
                 id: barSeries
@@ -62,9 +75,9 @@ Item {
                 visible: seriesType === 0
 
                 BarSet {
-                    id: barSeriesSet
+                    // values: widgetRoot.graphData
 
-                    values: widgetRoot.graphData
+                    id: barSeriesSet
                 }
 
             }
@@ -82,12 +95,12 @@ Item {
             }
 
             AreaSeries {
+                id: areaSeries
+
                 visible: seriesType === 3
 
                 upperSeries: LineSeries {
                     id: areaLineSeries
-
-                    visible: seriesType === 1
                 }
 
             }
@@ -96,8 +109,8 @@ Item {
                 id: horizontalAxis
 
                 labelFormat: "%.1f"
-                min: xMin
-                max: xMax
+                min: logarithimicHorizontalAxis !== true ? xMin : xMinLog
+                max: logarithimicHorizontalAxis !== true ? xMax : xMaxLog
                 gridVisible: false
                 subGridVisible: false
                 lineVisible: false
@@ -115,13 +128,13 @@ Item {
                 visible: false
                 labelsVisible: false
                 titleVisible: false
-                min: yMin
-                max: yMax
+                min: logarithimicVerticalAxis !== true ? yMin : yMinLog
+                max: logarithimicVerticalAxis !== true ? yMax : yMaxLog
             }
 
             theme: GraphsTheme {
                 colorScheme: GraphsTheme.ColorScheme.Dark // Light, Dark, Automatic
-                theme: GraphsTheme.Theme.OrangeSeries // QtGreen, QtGreenNeon, MixSeries, OrangeSeries, YellowSeries, BlueSeries, PurpleSeries, GreySeries
+                theme: GraphsTheme.Theme.BlueSeries // QtGreen, QtGreenNeon, MixSeries, OrangeSeries, YellowSeries, BlueSeries, PurpleSeries, GreySeries
                 plotAreaBackgroundColor: "transparent"
             }
 
@@ -137,13 +150,23 @@ Item {
                 id: axisRepeater
 
                 readonly property real nTicks: 11
-                readonly property real step: (xMax - xMin) / (nTicks - 1)
+                readonly property real step: {
+                    if (logarithimicHorizontalAxis !== true)
+                        return (xMax - xMin) / (nTicks - 1);
+                    else
+                        return (xMaxLog - xMinLog) / (nTicks - 1);
+                }
                 readonly property real labelWidth: widgetRoot.width / (nTicks - 1)
 
                 model: nTicks
 
                 Controls.Label {
-                    readonly property real value: xMin + (index) * axisRepeater.step
+                    readonly property real value: {
+                        if (logarithimicHorizontalAxis !== true)
+                            return xMin + (index) * axisRepeater.step;
+                        else
+                            return Math.pow(10, xMinLog + (index) * axisRepeater.step);
+                    }
 
                     padding: 0
                     color: chart.theme.labelTextColor
@@ -156,7 +179,7 @@ Item {
                     width: axisRepeater.labelWidth
                     text: {
                         if (index !== (axisRepeater.count - 1))
-                            return value;
+                            return Number(value).toLocaleString(Qt.locale(), 'f', 0);
                         else
                             return "Hz";
                     }

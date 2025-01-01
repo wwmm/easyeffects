@@ -196,16 +196,6 @@ Kirigami.OverlaySheet {
                 }
 
                 EeSwitch {
-                    label: i18n("Enable OpenGL Acceleration")
-                    isChecked: DB.Manager.spectrum.useOpenGL
-                    onCheckedChanged: {
-                        if (isChecked !== DB.Manager.spectrum.useOpenGL)
-                            DB.Manager.spectrum.useOpenGL = isChecked;
-
-                    }
-                }
-
-                EeSwitch {
                     id: dynamicYScale
 
                     label: i18n("Dynamic Scale")
