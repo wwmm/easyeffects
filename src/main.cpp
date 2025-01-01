@@ -186,6 +186,12 @@ int main(int argc, char* argv[]) {
     }
   });
 
+  QObject::connect(local_server.get(), &LocalServer::onHideWindow, [&]() {
+    if (window != nullptr) {
+      window->hide();
+    }
+  });
+
   if (show_window) {
     engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
   }

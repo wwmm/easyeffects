@@ -59,6 +59,8 @@ void LocalServer::onReadyRead() {
         Q_EMIT onQuitApp();
       } else if (std::strcmp(buf, tags::local_server::show_window) == 0) {
         Q_EMIT onShowWindow();
+      } else if (std::strcmp(buf, tags::local_server::hide_window) == 0) {
+        Q_EMIT onHideWindow();
       }
     }
   }

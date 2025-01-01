@@ -38,6 +38,7 @@ class LocalServer : public QObject {
 
  signals:
   void onShowWindow();
+  void onHideWindow();
   void onQuitApp();
 
  private:
