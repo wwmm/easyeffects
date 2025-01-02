@@ -397,7 +397,10 @@ Kirigami.Page {
     header: EeChart {
         id: spectrumChart
 
+        implicitHeight: DB.Manager.spectrum.height
         seriesType: DB.Manager.spectrum.spectrumShape
+        colorScheme: DB.Manager.spectrum.spectrumColorScheme
+        colorTheme: DB.Manager.spectrum.spectrumColorTheme
         xMin: DB.Manager.spectrum.minimumFrequency
         xMax: DB.Manager.spectrum.maximumFrequency
         yMin: -100

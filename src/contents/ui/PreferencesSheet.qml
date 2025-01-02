@@ -181,6 +181,36 @@ Kirigami.OverlaySheet {
 
             FormCard.FormCard {
                 FormCard.FormComboBoxDelegate {
+                    id: spectrumColorScheme
+
+                    text: i18n("Color Scheme")
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: DB.Manager.spectrum.spectrumColorScheme
+                    editable: false
+                    model: [i18n("Automatic"), i18n("Light"), i18n("Dark")]
+                    onActivated: (idx) => {
+                        if (idx !== DB.Manager.spectrum.spectrumColorScheme)
+                            DB.Manager.spectrum.spectrumColorScheme = idx;
+
+                    }
+                }
+
+                FormCard.FormComboBoxDelegate {
+                    id: spectrumColorTheme
+
+                    text: i18n("Color Theme")
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: DB.Manager.spectrum.spectrumColorTheme
+                    editable: false
+                    model: [i18n("Green"), i18n("Green Neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey")]
+                    onActivated: (idx) => {
+                        if (idx !== DB.Manager.spectrum.spectrumColorTheme)
+                            DB.Manager.spectrum.spectrumColorTheme = idx;
+
+                    }
+                }
+
+                FormCard.FormComboBoxDelegate {
                     id: spectrumShape
 
                     text: i18n("Shape")

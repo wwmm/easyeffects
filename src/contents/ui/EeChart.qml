@@ -3,13 +3,14 @@ import QtQml
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.database as DB
 import org.kde.kirigami as Kirigami
 
 Item {
     id: widgetRoot
 
     property int seriesType: 0
+    property int colorScheme: GraphsTheme.ColorScheme.Dark
+    property int colorTheme: GraphsTheme.Theme.QtGreenNeon
     property bool logarithimicHorizontalAxis: true
     property bool logarithimicVerticalAxis: false
     property real xMin: 0
@@ -47,7 +48,6 @@ Item {
 
     }
 
-    implicitHeight: DB.Manager.spectrum.height
     Kirigami.Theme.inherit: false
     Kirigami.Theme.colorSet: Kirigami.Theme.View
 
@@ -133,9 +133,15 @@ Item {
             }
 
             theme: GraphsTheme {
-                colorScheme: GraphsTheme.ColorScheme.Dark // Light, Dark, Automatic
-                theme: GraphsTheme.Theme.BlueSeries // QtGreen, QtGreenNeon, MixSeries, OrangeSeries, YellowSeries, BlueSeries, PurpleSeries, GreySeries
+                colorScheme: widgetRoot.colorScheme
+                theme: widgetRoot.colorTheme
                 plotAreaBackgroundColor: "transparent"
+                onColorSchemeChanged: {
+                    plotAreaBackgroundColor = "transparent";
+                }
+                onThemeChanged: {
+                    plotAreaBackgroundColor = "transparent";
+                }
             }
 
         }
