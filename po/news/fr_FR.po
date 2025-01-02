@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-31 17:18+0000\n"
-"PO-Revision-Date: 2024-12-18 20:35+0000\n"
+"PO-Revision-Date: 2025-01-02 06:00+0000\n"
 "Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.9.2-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -390,16 +390,14 @@ msgstr ""
 "niveau dans certaines conditions."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
-#, fuzzy
 msgid ""
 "We now set monitor.passthrough = true in our virtual devices. This will "
 "allow latency offset to be properly applied by video players when PipeWire > "
 "1.0.3 is released."
 msgstr ""
 "Nous avons maintenant défini monitor.passthrough = true dans nos "
-"périphériques virtuels. Cela permettra aux lecteurs vidéo d'appliquer "
-"correctement le décalage de latence lorsque PipeWire &gt; 1.0.3 sera "
-"disponible."
+"périphériques virtuels. Cela permettra de compenser correctement la latence "
+"appliquée par les lecteurs vidéo lorsque PipeWire > 1.0.3 sera disponible."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
