@@ -35,6 +35,7 @@
 #include <ranges>
 #include <string>
 #include <utility>
+#include <vector>
 #include "autogain.hpp"
 #include "bass_enhancer.hpp"
 #include "compressor.hpp"
@@ -376,7 +377,14 @@ void EffectsBase::requestSpectrumData() {
           return;
         }
 
-        auto log_x_axis = util::logspace(min_freq, max_freq, db::Spectrum::nPoints());
+        // auto log_x_axis = util::logspace(min_freq, max_freq, db::Spectrum::nPoints());
+        std::vector<float> log_x_axis;
+
+        if (db::Spectrum::logarithimicHorizontalAxis()) {
+          log_x_axis = util::logspace(min_freq, max_freq, db::Spectrum::nPoints());
+        } else {
+          log_x_axis = util::linspace(min_freq, max_freq, db::Spectrum::nPoints());
+        }
 
         auto* acc = gsl_interp_accel_alloc();
         auto* spline = gsl_spline_alloc(gsl_interp_steffen, n_bands);

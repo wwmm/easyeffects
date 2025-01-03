@@ -46,6 +46,12 @@ Item {
         if (areaSeries.visible === true)
             areaLineSeries.replace(newData);
 
+        if (barSeries.visible === true) {
+            barSeriesSet.clear();
+            for (let n = 0; n < newData.length; n++) {
+                barSeriesSet.append(newData[n].y);
+            }
+        }
     }
 
     Kirigami.Theme.inherit: false
@@ -68,6 +74,12 @@ Item {
             marginRight: 0
             Layout.fillWidth: true
             Layout.fillHeight: true
+            axisX: {
+                if (barSeries.visible === false)
+                    return horizontalAxis;
+                else
+                    return barAxis;
+            }
 
             BarSeries {
                 id: barSeries
@@ -75,8 +87,6 @@ Item {
                 visible: seriesType === 0
 
                 BarSet {
-                    // values: widgetRoot.graphData
-
                     id: barSeriesSet
                 }
 
@@ -105,7 +115,7 @@ Item {
 
             }
 
-            axisX: ValueAxis {
+            ValueAxis {
                 id: horizontalAxis
 
                 labelFormat: "%.1f"
@@ -116,6 +126,15 @@ Item {
                 lineVisible: false
                 visible: false
                 labelDecimals: 0
+            }
+
+            BarCategoryAxis {
+                id: barAxis
+
+                categories: [2024, 2025, 2026]
+                gridVisible: false
+                subGridVisible: false
+                visible: false
             }
 
             axisY: ValueAxis {

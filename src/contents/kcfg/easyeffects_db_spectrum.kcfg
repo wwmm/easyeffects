@@ -12,6 +12,10 @@
             <label>Enable Dynamic Scaling for the Vertical Axis</label>
             <default>true</default>
         </entry>
+        <entry name="logarithimicHorizontalAxis" type="Bool">
+            <label>Enable logarithmic scale for the Frequency Axis</label>
+            <default>true</default>
+        </entry>
         <entry name="spectrumShape" type="Enum">
             <label>Spectrum Type</label>
             <choices>
@@ -28,7 +32,7 @@
                     <label>Area</label>
                 </choice>
             </choices>
-            <default>1</default>
+            <default>0</default>
         </entry>
         <entry name="spectrumColorScheme" type="Enum">
             <label>Spectrum Color Scheme</label>

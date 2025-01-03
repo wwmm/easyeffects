@@ -237,6 +237,18 @@ Kirigami.OverlaySheet {
                     }
                 }
 
+                EeSwitch {
+                    id: logarithimicHorizontalAxis
+
+                    label: i18n("Logarithmic Frequency Axis")
+                    isChecked: DB.Manager.spectrum.logarithimicHorizontalAxis
+                    onCheckedChanged: {
+                        if (isChecked !== DB.Manager.spectrum.logarithimicHorizontalAxis)
+                            DB.Manager.spectrum.logarithimicHorizontalAxis = isChecked;
+
+                    }
+                }
+
                 EeSpinBox {
                     id: nPoints
 

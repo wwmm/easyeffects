@@ -405,6 +405,7 @@ Kirigami.Page {
         xMax: DB.Manager.spectrum.maximumFrequency
         yMin: -100
         yMax: 0
+        logarithimicHorizontalAxis: DB.Manager.spectrum.logarithimicHorizontalAxis
         Component.onCompleted: {
             headerFrameAnimation.start();
         }
