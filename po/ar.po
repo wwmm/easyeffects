@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-31 17:18+0000\n"
-"PO-Revision-Date: 2024-12-08 00:00+0000\n"
-"Last-Translator: \".ahhhh...secret\" <kil123414@gmail.com>\n"
+"PO-Revision-Date: 2025-01-03 00:01+0000\n"
+"Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
 "Language: ar\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.9-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -718,7 +718,7 @@ msgstr "القناة اليمنى"
 
 #: data/ui/convolver.ui:71
 msgid "Impulses"
-msgstr ""
+msgstr "النبضات"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
@@ -941,11 +941,11 @@ msgstr "توازن"
 
 #: data/ui/equalizer.ui:125
 msgid "Pitch Left"
-msgstr "طبعة صوتية يسار"
+msgstr "نبرة الصوت يسار"
 
 #: data/ui/equalizer.ui:157
 msgid "Pitch Right"
-msgstr "طبعة صوتية يمين"
+msgstr "نبرة الصوت يمين"
 
 #: data/ui/equalizer.ui:288
 msgid "Split Channels"
@@ -1647,7 +1647,7 @@ msgstr ""
 
 #: data/ui/pitch.ui:130 src/tags_plugin_name.cpp:60
 msgid "Pitch"
-msgstr ""
+msgstr "نبرة الصوت"
 
 #: data/ui/pitch.ui:134
 msgid "Semitones"
