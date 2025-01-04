@@ -280,7 +280,10 @@ Kirigami.Page {
                 implicitWidth: pluginsListView.width
 
                 Controls.Button {
-                    Layout.margins: Kirigami.Units.smallSpacing
+                    Layout.topMargin: Kirigami.Units.largeSpacing
+                    Layout.bottomMargin: Kirigami.Units.smallSpacing
+                    Layout.leftMargin: Kirigami.Units.smallSpacing
+                    Layout.rightMargin: Kirigami.Units.smallSpacing
                     Layout.alignment: Qt.AlignHCenter
                     text: i18n("Add Effect")
                     icon.name: "list-add"

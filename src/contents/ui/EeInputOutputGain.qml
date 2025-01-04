@@ -25,6 +25,9 @@ Item {
         Kirigami.CardsLayout {
             id: grid
 
+            Layout.topMargin: Kirigami.Units.largeSpacing
+            Layout.leftMargin: 3 * Kirigami.Units.mediumSpacing
+            Layout.rightMargin: 3 * Kirigami.Units.mediumSpacing
             Layout.fillWidth: true
 
             RowLayout {
