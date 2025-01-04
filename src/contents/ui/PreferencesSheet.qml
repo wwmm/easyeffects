@@ -6,8 +6,6 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.OverlaySheet {
-    // do not remember the property to get it
-
     id: preferencesSheet
 
     parent: applicationWindow().overlay
