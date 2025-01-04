@@ -44,12 +44,10 @@ Model::Model(QObject* parent) : QAbstractListModel(parent) {
               {BaseName::maximizer, i18n("Maximizer")},
               {BaseName::multibandCompressor, i18n("Multiband Compressor")},
               {BaseName::multibandGate, i18n("Multiband Gate")},
-              {BaseName::outputLevel, i18n("Output Level")},
               {BaseName::pitch, i18n("Pitch")},
               {BaseName::reverb, i18n("Reverberation")},
               {BaseName::rnnoise, i18n("Noise Reduction")},
               {BaseName::speex, i18n("Speech Processor")},
-              {BaseName::spectrum, i18n("Spectrum")},
               {BaseName::stereoTools, i18n("Stereo Tools")}};
 
   auto* proxyModel = new QSortFilterProxyModel(this);

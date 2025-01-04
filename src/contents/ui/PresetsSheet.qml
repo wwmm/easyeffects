@@ -101,7 +101,7 @@ Kirigami.OverlaySheet {
         Layout.fillWidth: true
         Layout.maximumWidth: parent.width
         position: Kirigami.InlineMessage.Position.Footer
-        visible: DB.Manager.main.visiblePresetSheetPage !== 2
+        visible: true // DB.Manager.main.visiblePresetSheetPage !== 2
         text: {
             if (Common.isEmpty(lastLoadedPresetName))
                 return i18n("No Preset Loaded");

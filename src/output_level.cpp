@@ -19,16 +19,16 @@
 
 #include "output_level.hpp"
 #include <algorithm>
+#include <span>
+#include <string>
+#include "pipeline_type.hpp"
+#include "plugin_base.hpp"
+#include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 OutputLevel::OutputLevel(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
-    : PluginBase(tag,
-                 tags::plugin_name::BaseName::outputLevel,
-                 tags::plugin_package::Package::ee,
-                 instance_id,
-                 pipe_manager,
-                 pipe_type) {}
+    : PluginBase(tag, "output_level", tags::plugin_package::Package::ee, instance_id, pipe_manager, pipe_type) {}
 
 OutputLevel::~OutputLevel() {
   if (connected_to_pw) {

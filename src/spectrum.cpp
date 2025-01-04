@@ -18,7 +18,9 @@
  */
 
 #include "spectrum.hpp"
+#include <fftw3.h>
 #include <qlist.h>
+#include <QString>
 #include <algorithm>
 #include <cassert>
 #include <cmath>
@@ -26,17 +28,16 @@
 #include <cstring>
 #include <memory>
 #include <numbers>
+#include <string>
 #include "lv2_wrapper.hpp"
+#include "pipeline_type.hpp"
+#include "plugin_base.hpp"
+#include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
-    : PluginBase(tag,
-                 tags::plugin_name::BaseName::spectrum,
-                 tags::plugin_package::Package::ee,
-                 instance_id,
-                 pipe_manager,
-                 pipe_type),
+    : PluginBase(tag, "spectrum", tags::plugin_package::Package::ee, instance_id, pipe_manager, pipe_type),
       fftw_ready(true) {
   // Precompute the Hann window, which is an expensive operation.
   // https://en.wikipedia.org/wiki/Hann_function
