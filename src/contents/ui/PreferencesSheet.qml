@@ -6,6 +6,8 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.OverlaySheet {
+    // do not remember the property to get it
+
     id: preferencesSheet
 
     parent: applicationWindow().overlay
@@ -13,6 +15,7 @@ Kirigami.OverlaySheet {
     focus: true
     title: i18n("Preferences")
     y: appWindow.header.height + Kirigami.Units.gridUnit
+    implicitHeight: Math.min(2 * preferencesSheet.header.height + stack.implicitHeight, preferencesSheet.parent.height - 2 * preferencesSheet.header.height - preferencesSheet.y)
     onVisibleChanged: {
         if (!preferencesSheet.visible) {
             while (stack.depth > 1)stack.pop()
