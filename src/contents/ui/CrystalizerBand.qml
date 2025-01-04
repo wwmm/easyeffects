@@ -11,6 +11,10 @@ Controls.ItemDelegate {
     property bool mute
     property bool bypass
 
+    function toLocaleLabel(num, decimal, unit) {
+        return Number(num).toLocaleString(Qt.locale(), 'f', decimal) + ` ${unit}`;
+    }
+
     down: false
     hoverEnabled: false
     height: ListView.view.height
@@ -77,31 +81,31 @@ Controls.ItemDelegate {
             text: {
                 switch (index) {
                 case 0:
-                    return Number(250).toLocaleString(Qt.locale(), 'f', 0) + " Hz";
+                    return toLocaleLabel(250, 0, "Hz");
                 case 1:
-                    return Number(750).toLocaleString(Qt.locale(), 'f', 0) + " Hz";
+                    return toLocaleLabel(750, 0, "Hz");
                 case 2:
-                    return Number(1.5).toLocaleString(Qt.locale(), 'f', 1) + " kHz";
+                    return toLocaleLabel(1.5, 1, "kHz");
                 case 3:
-                    return Number(2.5).toLocaleString(Qt.locale(), 'f', 1) + " kHz";
+                    return toLocaleLabel(2.5, 1, "kHz");
                 case 4:
-                    return Number(3.5).toLocaleString(Qt.locale(), 'f', 1) + " kHz";
+                    return toLocaleLabel(3.5, 1, "kHz");
                 case 5:
-                    return Number(4.5).toLocaleString(Qt.locale(), 'f', 1) + " kHz";
+                    return toLocaleLabel(4.5, 1, "kHz");
                 case 6:
-                    return Number(5.5).toLocaleString(Qt.locale(), 'f', 1) + " kHz";
+                    return toLocaleLabel(5.5, 1, "kHz");
                 case 7:
-                    return Number(6.5).toLocaleString(Qt.locale(), 'f', 1) + " kHz";
+                    return toLocaleLabel(6.5, 1, "kHz");
                 case 8:
-                    return Number(7.5).toLocaleString(Qt.locale(), 'f', 1) + " kHz";
+                    return toLocaleLabel(7.5, 1, "kHz");
                 case 9:
-                    return Number(8.5).toLocaleString(Qt.locale(), 'f', 1) + " kHz";
+                    return toLocaleLabel(8.5, 1, "kHz");
                 case 10:
-                    return Number(9.5).toLocaleString(Qt.locale(), 'f', 1) + " kHz";
+                    return toLocaleLabel(9.5, 1, "kHz");
                 case 11:
-                    return Number(12.5).toLocaleString(Qt.locale(), 'f', 1) + " kHz";
+                    return toLocaleLabel(12.5, 1, "kHz");
                 case 12:
-                    return Number(17.5).toLocaleString(Qt.locale(), 'f', 1) + " kHz";
+                    return toLocaleLabel(17.5, 1, "kHz");
                 default:
                     return "Hz";
                 }

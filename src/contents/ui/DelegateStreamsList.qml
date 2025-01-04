@@ -130,7 +130,8 @@ Kirigami.AbstractCard {
                     id: volumeSlider
 
                     function prepareVolumeValue(normalizedValue) {
-                        return DB.Manager.main.useCubicVolumes === false ? normalizedValue * 100 : Math.cbrt(normalizedValue) * 100;
+                        const v = DB.Manager.main.useCubicVolumes === false ? normalizedValue : Math.cbrt(normalizedValue);
+                        return v * 100;
                     }
 
                     Layout.fillWidth: true

@@ -188,9 +188,9 @@ Item {
                 Controls.Label {
                     readonly property real value: {
                         if (logarithimicHorizontalAxis !== true)
-                            return xMin + (index) * axisRepeater.step;
+                            return xMin + index * axisRepeater.step;
                         else
-                            return Math.pow(10, xMinLog + (index) * axisRepeater.step);
+                            return Math.pow(10, xMinLog + index * axisRepeater.step);
                     }
 
                     padding: 0
