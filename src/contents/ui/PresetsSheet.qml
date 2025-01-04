@@ -29,6 +29,7 @@ Kirigami.OverlaySheet {
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
     y: appWindow.header.height + Kirigami.Units.gridUnit
+    implicitWidth: Math.min(stackView.implicitWidth, appWindow.width * 0.8)
     onVisibleChanged: {
         if (control.visible) {
             switch (DB.Manager.main.visiblePresetSheetPage) {
@@ -50,7 +51,7 @@ Kirigami.OverlaySheet {
     Controls.StackView {
         id: stackView
 
-        implicitWidth: appWindow.width * 0.5
+        implicitWidth: Math.max(appWindow.width * 0.5, Kirigami.Units.gridUnit * 40)
         implicitHeight: control.parent.height - 2 * (control.header.height + control.footer.height) - control.y
     }
 

@@ -13,6 +13,7 @@ Kirigami.OverlaySheet {
     focus: true
     title: i18n("Preferences")
     y: appWindow.header.height + Kirigami.Units.gridUnit
+    implicitWidth: Math.min(stack.implicitWidth, appWindow.width * 0.8)
     implicitHeight: Math.min(2 * preferencesSheet.header.height + stack.implicitHeight, preferencesSheet.parent.height - 2 * preferencesSheet.header.height - preferencesSheet.y)
     onVisibleChanged: {
         if (!preferencesSheet.visible) {
