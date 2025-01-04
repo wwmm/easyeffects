@@ -49,7 +49,7 @@ Model::Model(QObject* parent) : QAbstractListModel(parent) {
               {BaseName::reverb, i18n("Reverberation")},
               {BaseName::rnnoise, i18n("Noise Reduction")},
               {BaseName::speex, i18n("Speech Processor")},
-              {BaseName::spectrum, i18n("Sectrum")},
+              {BaseName::spectrum, i18n("Spectrum")},
               {BaseName::stereoTools, i18n("Stereo Tools")}};
 
   auto* proxyModel = new QSortFilterProxyModel(this);
