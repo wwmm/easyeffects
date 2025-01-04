@@ -30,6 +30,7 @@ Kirigami.OverlaySheet {
     focus: true
     y: appWindow.header.height + Kirigami.Units.gridUnit
     implicitWidth: Math.min(stackView.implicitWidth, appWindow.width * 0.8)
+    implicitHeight: control.parent.height - (control.header.height + control.footer.height) - control.y
     onVisibleChanged: {
         if (control.visible) {
             switch (DB.Manager.main.visiblePresetSheetPage) {
@@ -52,7 +53,7 @@ Kirigami.OverlaySheet {
         id: stackView
 
         implicitWidth: Math.max(appWindow.width * 0.5, Kirigami.Units.gridUnit * 40)
-        implicitHeight: control.parent.height - 2 * (control.header.height + control.footer.height) - control.y
+        implicitHeight: control.height - (control.header.height + control.footer.height) - control.y
     }
 
     header: Kirigami.ActionToolBar {
@@ -101,7 +102,7 @@ Kirigami.OverlaySheet {
         Layout.fillWidth: true
         Layout.maximumWidth: parent.width
         position: Kirigami.InlineMessage.Position.Footer
-        visible: true // DB.Manager.main.visiblePresetSheetPage !== 2
+        visible: DB.Manager.main.visiblePresetSheetPage !== 2
         text: {
             if (Common.isEmpty(lastLoadedPresetName))
                 return i18n("No Preset Loaded");
