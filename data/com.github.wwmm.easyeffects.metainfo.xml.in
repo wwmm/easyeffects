@@ -15,7 +15,6 @@
   <developer id="com.github.wwmm">
     <name>Wellington Wallace</name>
   </developer>
-  <developer_name>Wellington Wallace</developer_name>
   <requires>
     <internet>offline-only</internet>
   </requires>
@@ -53,6 +52,17 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.2.2" date="2025-01-05T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Updated translations</li>
+          <li>Bug fixes:</li>
+          <li>Added a workaround for a glibc(or maybe libstdc++) bug that affects locale management. What in turns breaks our spinbuttons on some locales.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.2.1" date="2024-11-22T00:00:00Z">
       <description>
         <ul>

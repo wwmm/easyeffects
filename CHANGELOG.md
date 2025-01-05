@@ -1,5 +1,18 @@
 # Changelog
  
+## 7.2.2
+### 2025-01-05
+
+ 
+### Features:
+- Updated translations
+
+### Bug fixes:
+- Added a workaround for a glibc(or maybe libstdc++) bug that affects locale management. What in turns breaks our spinbuttons on some locales. 
+
+### Other notes:
+
+ 
 ## 7.2.1
 ### 2024-11-22
 

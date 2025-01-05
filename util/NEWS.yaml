@@ -13,6 +13,19 @@ Description:
 - 
 
 ---
+Version: 7.2.2
+Date: 2025-01-05
+
+Description: 
+- Features∶
+- Updated translations
+
+- Bug fixes∶
+- Added a workaround for a glibc(or maybe libstdc++) bug that affects locale management. What in turns breaks our spinbuttons on some locales. 
+
+- Other notes∶
+
+---
 Version: 7.2.1
 Date: 2024-11-22
 
