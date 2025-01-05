@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-31 17:18+0000\n"
-"PO-Revision-Date: 2024-12-21 01:11+0000\n"
+"PO-Revision-Date: 2025-01-05 13:24+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/changelog/pt_BR/>\n"
@@ -386,7 +386,6 @@ msgstr ""
 "certas condições."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:135
-#, fuzzy
 msgid ""
 "We now set monitor.passthrough = true in our virtual devices. This will "
 "allow latency offset to be properly applied by video players when PipeWire > "
@@ -394,7 +393,7 @@ msgid ""
 msgstr ""
 "Agora definimos monitor.passthrough = true em nossos dispositivos virtuais. "
 "Isso permitirá que o deslocamento de latência seja aplicado corretamente "
-"pelos players de vídeo quando o PipeWire &gt; 1.0.3 for lançado."
+"pelos reprodutores de vídeo quando o PipeWire > 1.0.3 for lançado."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
