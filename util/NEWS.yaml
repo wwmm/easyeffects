@@ -4,13 +4,25 @@ Date: UNRELEASED_DATE
 
 Description: 
 - Features∶
-- Improved compatibility with future PipeWire releases.
+- 
 
 - Bug fixes∶
 - 
 
 - Other notes∶
 - 
+
+---
+Version: 7.2.3
+Date: 2025-01-06
+
+Description: 
+- Features∶
+- Improved compatibility with future PipeWire releases. This version will avoid compilation errors like https://github.com/wwmm/easyeffects/issues/3620
+
+- Bug fixes∶
+
+- Other notes∶
 
 ---
 Version: 7.2.2

@@ -1,5 +1,17 @@
 # Changelog
  
+## 7.2.3
+### 2025-01-06
+
+ 
+### Features:
+- Improved compatibility with future PipeWire releases. This version will avoid compilation errors like https://github.com/wwmm/easyeffects/issues/3620
+
+### Bug fixes:
+
+### Other notes:
+
+ 
 ## 7.2.2
 ### 2025-01-05
 
