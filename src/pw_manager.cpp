@@ -954,7 +954,7 @@ void on_registry_global(void* data,
     nd->nd_info->is_blocklisted =
         nd->nd_info->is_blocklisted || std::ranges::find(user_blocklist, nd->nd_info->name) != user_blocklist.end();
 
-    pw_node_add_listener(proxy, &nd->object_listener, &node_events, nd);  // NOLINT
+    pw_proxy_add_object_listener(proxy, &nd->object_listener, &node_events, nd);  // NOLINT
     pw_proxy_add_listener(proxy, &nd->proxy_listener, &node_proxy_events, nd);
 
     // We will have debug info about our filters later
@@ -985,7 +985,7 @@ void on_registry_global(void* data,
     pd->id = id;
     pd->serial = serial;
 
-    pw_link_add_listener(proxy, &pd->object_listener, &link_events, pd);  // NOLINT
+    pw_proxy_add_object_listener(proxy, &pd->object_listener, &link_events, pd);  // NOLINT
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &link_proxy_events, pd);
 
     auto link_info = link_info_from_props(props);
@@ -1062,7 +1062,7 @@ void on_registry_global(void* data,
     pd->id = id;
     pd->serial = serial;
 
-    pw_module_add_listener(proxy, &pd->object_listener, &module_events, pd);  // NOLINT
+    pw_proxy_add_object_listener(proxy, &pd->object_listener, &module_events, pd);  // NOLINT
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &module_proxy_events, pd);
 
     pw::ModuleInfo m_info{.id = id, .serial = serial, .name = "", .description = "", .filename = ""};
@@ -1093,7 +1093,7 @@ void on_registry_global(void* data,
     pd->id = id;
     pd->serial = serial;
 
-    pw_client_add_listener(proxy, &pd->object_listener, &client_events, pd);  // NOLINT
+    pw_proxy_add_object_listener(proxy, &pd->object_listener, &client_events, pd);  // NOLINT
     pw_proxy_add_listener(proxy, &pd->proxy_listener, &client_proxy_events, pd);
 
     pw::ClientInfo c_info{.id = id, .serial = serial, .name = "", .access = "", .api = ""};

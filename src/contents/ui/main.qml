@@ -64,6 +64,21 @@ Kirigami.ApplicationWindow {
         console.log("main window destroyed");
     }
 
+    Shortcut {
+        sequences: ["F11"]
+        onActivated: {
+            if (appWindow.visibility !== Window.FullScreen)
+                appWindow.showFullScreen();
+            else
+                appWindow.showNormal();
+        }
+    }
+
+    Shortcut {
+        sequences: ["Ctrl+W"]
+        onActivated: appWindow.close()
+    }
+
     PreferencesSheet {
         id: preferencesSheet
     }
