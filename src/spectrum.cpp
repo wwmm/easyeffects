@@ -20,6 +20,7 @@
 #include "spectrum.hpp"
 #include <fftw3.h>
 #include <qlist.h>
+#include <qtypes.h>
 #include <QString>
 #include <algorithm>
 #include <cassert>
@@ -28,7 +29,9 @@
 #include <cstring>
 #include <memory>
 #include <numbers>
+#include <span>
 #include <string>
+#include <tuple>
 #include "lv2_wrapper.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"

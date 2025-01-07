@@ -18,11 +18,18 @@
  */
 
 #include "compressor.hpp"
+#include <qtypes.h>
 #include <algorithm>
 #include <memory>
+#include <span>
+#include <string>
 #include "db_manager.hpp"
+#include "easyeffects_db_compressor.h"
 #include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
+#include "pipeline_type.hpp"
+#include "plugin_base.hpp"
+#include "pw_manager.hpp"
 #include "pw_objects.hpp"
 #include "spa/utils/defs.h"
 #include "tags_plugin_name.hpp"

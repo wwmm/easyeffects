@@ -87,6 +87,10 @@ Kirigami.ApplicationWindow {
         id: presetsSheet
     }
 
+    ShortcutsSheet {
+        id: shortcutsSheet
+    }
+
     Kirigami.OverlaySheet {
         id: aboutSheet
 
@@ -270,6 +274,14 @@ Kirigami.ApplicationWindow {
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
                             preferencesSheet.open();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Shortcuts")
+                        icon.name: "configure-shortcuts-symbolic"
+                        displayHint: Kirigami.DisplayHint.AlwaysHide
+                        onTriggered: {
+                            shortcutsSheet.open();
                         }
                     },
                     Kirigami.Action {

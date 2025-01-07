@@ -135,6 +135,7 @@ Item {
                 gridVisible: false
                 subGridVisible: false
                 visible: false
+                lineVisible: false
             }
 
             axisY: ValueAxis {
