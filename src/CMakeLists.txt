@@ -26,6 +26,7 @@ target_sources(easyeffects PRIVATE
     compressor.cpp
     crossfeed.cpp
     crystalizer.cpp
+    crystalizer_preset.cpp
     db_manager.cpp
     effects_base.cpp
     exciter.cpp

@@ -64,6 +64,9 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
 
   connect_filters();
 
+  presets::Manager::self().autoload(PipelineType::output, pm->output_device.name,
+                                    pm->output_device.device_profile_name);
+
   connect(
       pm, &pw::Manager::sinkAdded, this,
       [&](pw::NodeInfo node) {

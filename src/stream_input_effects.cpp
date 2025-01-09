@@ -63,6 +63,8 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
 
   connect_filters();
 
+  presets::Manager::self().autoload(PipelineType::input, pm->input_device.name, pm->input_device.device_profile_name);
+
   connect(
       pm, &pw::Manager::sourceAdded, this,
       [&](pw::NodeInfo node) {
