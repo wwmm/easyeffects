@@ -107,6 +107,32 @@ Kirigami.OverlaySheet {
             text: i18n("Quit EasyEffects")
         }
 
+        Kirigami.Chip {
+            Layout.alignment: Qt.AlignRight
+            text: "PgUp"
+            closable: false
+            checkable: false
+            down: false
+            hoverEnabled: false
+        }
+
+        Controls.Label {
+            text: i18n("Can Be Used on Numeric Controls")
+        }
+
+        Kirigami.Chip {
+            Layout.alignment: Qt.AlignRight
+            text: "PgDn"
+            closable: false
+            checkable: false
+            down: false
+            hoverEnabled: false
+        }
+
+        Controls.Label {
+            text: i18n("Can Be Used on Numeric Controls")
+        }
+
     }
 
     header: RowLayout {

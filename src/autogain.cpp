@@ -75,6 +75,8 @@ Autogain::~Autogain() {
     ebur128_destroy(&ebur_state);
   }
 
+  settings->disconnect();
+
   util::debug(log_tag + name.toStdString() + " destroyed");
 }
 

@@ -91,6 +91,15 @@ Kirigami.ApplicationWindow {
         id: shortcutsSheet
     }
 
+    Kirigami.PromptDialog {
+        id: resetPromptDialog
+
+        title: i18n("Reset Settings?")
+        subtitle: i18n("Are you sure you want to reset all EasyEffects settings?")
+        standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+        onAccepted: DB.Manager.resetAll()
+    }
+
     Kirigami.OverlaySheet {
         id: aboutSheet
 
@@ -283,6 +292,22 @@ Kirigami.ApplicationWindow {
                         onTriggered: {
                             shortcutsSheet.open();
                         }
+                    },
+                    Kirigami.Action {
+                        separator: true
+                        displayHint: Kirigami.DisplayHint.AlwaysHide
+                    },
+                    Kirigami.Action {
+                        text: i18n("Reset")
+                        icon.name: "edit-reset-symbolic"
+                        displayHint: Kirigami.DisplayHint.AlwaysHide
+                        onTriggered: {
+                            resetPromptDialog.open();
+                        }
+                    },
+                    Kirigami.Action {
+                        separator: true
+                        displayHint: Kirigami.DisplayHint.AlwaysHide
                     },
                     Kirigami.Action {
                         text: i18n("About EasyEffects")

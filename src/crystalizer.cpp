@@ -20,9 +20,19 @@
 #include "crystalizer.hpp"
 #include <qnamespace.h>
 #include <qobjectdefs.h>
+#include <qtypes.h>
+#include <algorithm>
 #include <cstddef>
+#include <memory>
 #include <mutex>
+#include <span>
+#include <string>
 #include "db_manager.hpp"
+#include "easyeffects_db_crystalizer.h"
+#include "fir_filter_bandpass.hpp"
+#include "pipeline_type.hpp"
+#include "plugin_base.hpp"
+#include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -102,6 +112,8 @@ Crystalizer::~Crystalizer() {
   filters_are_ready = false;
 
   data_mutex.unlock();
+
+  settings->disconnect();
 
   util::debug(log_tag + name.toStdString() + " destroyed");
 }

@@ -18,10 +18,19 @@
  */
 
 #include "speex.hpp"
+#include <speex/speex_preprocess.h>
+#include <speex/speexdsp_config_types.h>
 #include <algorithm>
+#include <climits>
 #include <cstddef>
 #include <mutex>
+#include <span>
+#include <string>
 #include "db_manager.hpp"
+#include "easyeffects_db_speex.h"
+#include "pipeline_type.hpp"
+#include "plugin_base.hpp"
+#include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -152,6 +161,8 @@ Speex::~Speex() {
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   free_speex();
+
+  settings->disconnect();
 
   util::debug(log_tag + name.toStdString() + " destroyed");
 }

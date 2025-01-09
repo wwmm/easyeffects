@@ -20,9 +20,15 @@
 #include "bass_enhancer.hpp"
 #include <algorithm>
 #include <memory>
+#include <span>
+#include <string>
 #include "db_manager.hpp"
+#include "easyeffects_db_bass_enhancer.h"
 #include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
+#include "pipeline_type.hpp"
+#include "plugin_base.hpp"
+#include "pw_manager.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -66,6 +72,8 @@ BassEnhancer::~BassEnhancer() {
   if (connected_to_pw) {
     disconnect_from_pw();
   }
+
+  settings->disconnect();
 
   util::debug(log_tag + name.toStdString() + " destroyed");
 }
