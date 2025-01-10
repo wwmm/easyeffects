@@ -112,7 +112,7 @@ jobs:
         namcapDisable: true
 
     - name: Upload Package Archive
-      uses: actions/upload-artifact@v4.5.0
+      uses: actions/upload-artifact@v4.6.0
       with:
         name: easyeffects-archlinux-${{ needs.prepare.outputs.github_commit_desc }}-x86_64
         path: ${{ steps.makepkg.outputs.pkgfile0 }}
