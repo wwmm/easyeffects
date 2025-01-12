@@ -57,6 +57,7 @@ target_sources(easyeffects PRIVATE
     spectrum.cpp
     speex.cpp
     stereo_tools.cpp
+    stereo_tools_preset.cpp
     stream_input_effects.cpp
     stream_output_effects.cpp
     tags_plugin_name.cpp

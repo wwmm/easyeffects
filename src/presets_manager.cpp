@@ -53,6 +53,7 @@
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
 #include "presets_list_model.hpp"
+#include "stereo_tools_preset.hpp"
 #include "tags_app.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
@@ -1349,7 +1350,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type,
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
-    // return std::make_unique<StereoToolsPreset>(pipeline_type, filter_name.toStdString());
+    return std::make_unique<StereoToolsPreset>(pipeline_type, filter_name.toStdString());
   }
 
   util::warning("The filter name " + filter_name.toStdString() + " base name could not be recognized");

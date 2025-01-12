@@ -55,31 +55,11 @@
             <label></label>
             <default>false</default>
         </entry>
-        <entry name="mode" type="Enum">
+        <entry name="modeLabels" type="StringList">
+            <default>LR &gt; LR (Stereo Default),LR &gt; MS (Stereo to Mid-Side),MS &gt; LR (Mid-Side to Stereo),LR &gt; LL (Mono Left Channel),LR &gt; RR (Mono Right Channel),LR &gt; L+R (Mono Sum L+R),LR &gt; RL (Stereo Flip Channels)</default>
+        </entry>
+        <entry name="mode" type="Int">
             <label></label>
-            <choices>
-                <choice name="lr_lr">
-                    <label>LR &gt; LR (Stereo Default)</label>
-                </choice>
-                <choice name="lr_ms">
-                    <label>LR &gt; MS (Stereo to Mid-Side)</label>
-                </choice>
-                <choice name="ms_lr">
-                    <label>MS &gt; LR (Mid-Side to Stereo)</label>
-                </choice>
-                <choice name="lr_ll">
-                    <label>LR &gt; LL (Mono Left Channel)</label>
-                </choice>
-                <choice name="lr_rr">
-                    <label>LR &gt; RR (Mono Right Channel)</label>
-                </choice>
-                <choice name="lr_l_plus_r">
-                    <label>LR &gt; L+R (Mono Sum L+R)</label>
-                </choice>
-                <choice name="lr_rl">
-                    <label>LR &gt; RL (Stereo Flip Channels)</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
         <entry name="slev" type="Double">

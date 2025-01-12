@@ -23,6 +23,7 @@
 #include "easyeffects_db_exciter.h"
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
+#include "presets_macros.hpp"
 
 ExciterPreset::ExciterPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
@@ -50,21 +51,13 @@ void ExciterPreset::save(nlohmann::json& json) {
 }
 
 void ExciterPreset::load(const nlohmann::json& json) {
-  settings->setBypass(json.at(section).at(instance_name).value("bypass", settings->defaultBypassValue()));
-
-  settings->setInputGain(json.at(section).at(instance_name).value("input-gain", settings->defaultInputGainValue()));
-
-  settings->setOutputGain(json.at(section).at(instance_name).value("output-gain", settings->defaultOutputGainValue()));
-
-  settings->setAmount(json.at(section).at(instance_name).value("amount", settings->defaultAmountValue()));
-
-  settings->setHarmonics(json.at(section).at(instance_name).value("harmonics", settings->defaultHarmonicsValue()));
-
-  settings->setScope(json.at(section).at(instance_name).value("scope", settings->defaultScopeValue()));
-
-  settings->setCeil(json.at(section).at(instance_name).value("ceil", settings->defaultCeilValue()));
-
-  settings->setBlend(json.at(section).at(instance_name).value("blend", settings->defaultBlendValue()));
-
-  settings->setCeilActive(json.at(section).at(instance_name).value("ceil-active", settings->defaultCeilActiveValue()));
+  UPDATE_PROPERTY("bypass", Bypass);
+  UPDATE_PROPERTY("input-gain", InputGain);
+  UPDATE_PROPERTY("output-gain", OutputGain);
+  UPDATE_PROPERTY("amount", Amount);
+  UPDATE_PROPERTY("harmonics", Harmonics);
+  UPDATE_PROPERTY("scope", Scope);
+  UPDATE_PROPERTY("ceil", Ceil);
+  UPDATE_PROPERTY("blend", Blend);
+  UPDATE_PROPERTY("ceil-active", CeilActive);
 }
