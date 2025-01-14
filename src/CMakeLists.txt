@@ -45,6 +45,7 @@ target_sources(easyeffects PRIVATE
     lv2_wrapper.cpp
     main.cpp
     maximizer.cpp
+    maximizer_preset.cpp
     output_level.cpp
     plugin_base.cpp
     plugin_preset_base.cpp
