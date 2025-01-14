@@ -53,6 +53,7 @@
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
 #include "presets_list_model.hpp"
+#include "speex_preset.hpp"
 #include "stereo_tools_preset.hpp"
 #include "tags_app.hpp"
 #include "tags_plugin_name.hpp"
@@ -1243,8 +1244,8 @@ void Manager::notify_error(const PresetError& preset_error, const std::string& p
   }
 }
 
-auto Manager::create_wrapper(const PipelineType& pipeline_type,
-                             const QString& filter_name) -> std::optional<std::unique_ptr<PluginPresetBase>> {
+auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& filter_name)
+    -> std::optional<std::unique_ptr<PluginPresetBase>> {
   if (filter_name.startsWith(tags::plugin_name::BaseName::autogain)) {
     return std::make_unique<AutoGainPreset>(pipeline_type, filter_name.toStdString());
   }
@@ -1346,7 +1347,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type,
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::speex)) {
-    // return std::make_unique<SpeexPreset>(pipeline_type, filter_name.toStdString());
+    return std::make_unique<SpeexPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::stereoTools)) {

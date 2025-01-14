@@ -56,6 +56,7 @@ target_sources(easyeffects PRIVATE
     pw_model_nodes.cpp
     spectrum.cpp
     speex.cpp
+    speex_preset.cpp
     stereo_tools.cpp
     stereo_tools_preset.cpp
     stream_input_effects.cpp
