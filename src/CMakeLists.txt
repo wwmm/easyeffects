@@ -33,6 +33,7 @@ target_sources(easyeffects PRIVATE
     exciter.cpp
     exciter_preset.cpp
     filter.cpp
+    filter_preset.cpp
     fir_filter_bandpass.cpp
     fir_filter_base.cpp
     fir_filter_highpass.cpp
