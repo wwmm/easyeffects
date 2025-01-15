@@ -44,6 +44,7 @@
 #include "autogain_preset.hpp"
 #include "bass_enhancer_preset.hpp"
 #include "config.h"
+#include "crossfeed_preset.hpp"
 #include "crystalizer_preset.hpp"
 #include "easyeffects_db.h"
 #include "easyeffects_db_streaminputs.h"
@@ -1268,7 +1269,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
-    // return std::make_unique<CrossfeedPreset>(pipeline_type, filter_name.toStdString());
+    return std::make_unique<CrossfeedPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::crystalizer)) {

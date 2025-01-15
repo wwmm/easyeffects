@@ -25,6 +25,7 @@ target_sources(easyeffects PRIVATE
     command_line_parser.cpp
     compressor.cpp
     crossfeed.cpp
+    crossfeed_preset.cpp
     crystalizer.cpp
     crystalizer_preset.cpp
     db_manager.cpp
