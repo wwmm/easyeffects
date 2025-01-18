@@ -35,19 +35,11 @@
             <max>20</max>
             <default>0</default>
         </entry>
-        <entry name="mode" type="Enum">
+        <entry name="modeLabels" type="StringList">
+            <default>Downward,Upward,Boosting</default>
+        </entry>
+        <entry name="mode" type="Int">
             <label>Mode</label>
-            <choices>
-                <choice name="downward">
-                    <label>Downward</label>
-                </choice>
-                <choice name="upward">
-                    <label>Upward</label>
-                </choice>
-                <choice name="boosting">
-                    <label>Boosting</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
         <entry name="attack" type="Double">
@@ -126,22 +118,11 @@
             </choices>
             <default>0</default>
         </entry>
-        <entry name="sidechainMode" type="Enum">
+        <entry name="sidechainModeLabels" type="StringList">
+            <default>Peak,RMS,Low-Pass,SMA</default>
+        </entry>
+        <entry name="sidechainMode" type="Int">
             <label>Sidechain Mode</label>
-            <choices>
-                <choice name="peak">
-                    <label>Peak</label>
-                </choice>
-                <choice name="rms">
-                    <label>RMS</label>
-                </choice>
-                <choice name="lowPass">
-                    <label>Low-Pass</label>
-                </choice>
-                <choice name="sma">
-                    <label>SMA</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
         <entry name="stereoSplit" type="Bool">

@@ -24,6 +24,7 @@ target_sources(easyeffects PRIVATE
     bass_enhancer_preset.cpp
     command_line_parser.cpp
     compressor.cpp
+    compressor_preset.cpp
     crossfeed.cpp
     crossfeed_preset.cpp
     crystalizer.cpp
