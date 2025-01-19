@@ -26,7 +26,6 @@
 #include <sys/types.h>
 #include <QTimer>
 #include <atomic>
-#include <chrono>
 #include <memory>
 #include <mutex>
 #include <span>
@@ -105,8 +104,6 @@ class PluginBase : public QObject {
   // (when nothing is playing), so 0.0F is more suitable for this purpose.
   float input_peak_left = 0.0F, input_peak_right = 0.0F;
   float output_peak_left = 0.0F, output_peak_right = 0.0F;
-
-  std::chrono::time_point<std::chrono::system_clock> clock_start;
 
   std::vector<float> dummy_left, dummy_right;
 

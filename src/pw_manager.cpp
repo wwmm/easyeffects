@@ -1345,7 +1345,6 @@ void Manager::load_virtual_devices() {
   pw_properties_set(props_sink, PW_KEY_NODE_NAME, tags::pipewire::ee_sink_name);
   pw_properties_set(props_sink, PW_KEY_NODE_DESCRIPTION, "Easy Effects Sink");
   pw_properties_set(props_sink, PW_KEY_NODE_VIRTUAL, "true");
-  pw_properties_set(props_sink, PW_KEY_NODE_PASSIVE, "out");
   pw_properties_set(props_sink, "factory.name", "support.null-audio-sink");
   pw_properties_set(props_sink, PW_KEY_MEDIA_CLASS, tags::pipewire::media_class::sink);
   pw_properties_set(props_sink, "audio.position", "FL,FR");

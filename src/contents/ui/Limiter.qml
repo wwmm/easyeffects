@@ -214,74 +214,88 @@ Kirigami.ScrollablePage {
                 contentItem: Column {
                     id: cardSideChainColumn
 
-                    FormCard.FormComboBoxDelegate {
-                        id: sidechainType
-
-                        text: i18n("Type")
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.sidechainType
-                        editable: false
-                        model: [i18n("Internal"), i18n("External"), i18n("Link")]
-                        onActivated: (idx) => {
-                            pluginDB.sidechainType = idx;
-                        }
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
 
                         anchors {
                             left: parent.left
                             right: parent.right
                         }
 
-                    }
+                        FormCard.FormComboBoxDelegate {
+                            id: sidechainType
 
-                    FormCard.FormComboBoxDelegate {
-                        id: comboSideChainInputDevice
+                            Layout.columnSpan: 2
+                            text: i18n("Type")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: pluginDB.sidechainType
+                            editable: false
+                            model: [i18n("Internal"), i18n("External"), i18n("Link")]
+                            onActivated: (idx) => {
+                                pluginDB.sidechainType = idx;
+                            }
+                        }
 
-                        text: i18n("Input Device")
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        editable: false
-                        model: PW.ModelNodes
-                        textRole: "description"
-                        enabled: sidechainType.currentIndex === 1
-                        currentIndex: {
-                            for (let n = 0; n < PW.ModelNodes.rowCount(); n++) {
-                                if (PW.ModelNodes.getNodeName(n) === pluginDB.sidechainInputDevice)
-                                    return n;
+                        FormCard.FormComboBoxDelegate {
+                            id: comboSideChainInputDevice
+
+                            Layout.columnSpan: 2
+                            text: i18n("Input Device")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            editable: false
+                            model: PW.ModelNodes
+                            textRole: "description"
+                            enabled: sidechainType.currentIndex === 1
+                            currentIndex: {
+                                for (let n = 0; n < PW.ModelNodes.rowCount(); n++) {
+                                    if (PW.ModelNodes.getNodeName(n) === pluginDB.sidechainInputDevice)
+                                        return n;
+
+                                }
+                                return 0;
+                            }
+                            onActivated: (idx) => {
+                                let selectedName = PW.ModelNodes.getNodeName(idx);
+                                if (selectedName !== pluginDB.sidechainInputDevice)
+                                    pluginDB.sidechainInputDevice = selectedName;
 
                             }
-                            return 0;
-                        }
-                        onActivated: (idx) => {
-                            let selectedName = PW.ModelNodes.getNodeName(idx);
-                            if (selectedName !== pluginDB.sidechainInputDevice)
-                                pluginDB.sidechainInputDevice = selectedName;
-
                         }
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                        EeSpinBox {
+                            id: sidechainPreamp
+
+                            label: i18n("Preamp")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("sidechainPreamp")
+                            to: pluginDB.getMaxValue("sidechainPreamp")
+                            value: pluginDB.sidechainPreamp
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: (v) => {
+                                pluginDB.sidechainPreamp = v;
+                            }
                         }
 
-                    }
+                        EeSpinBox {
+                            id: lookahead
 
-                    EeSpinBox {
-                        id: sidechainPreamp
-
-                        label: i18n("Preamp")
-                        from: pluginDB.getMinValue("sidechainPreamp")
-                        to: pluginDB.getMaxValue("sidechainPreamp")
-                        value: pluginDB.sidechainPreamp
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: "dB"
-                        minusInfinityMode: true
-                        onValueModified: (v) => {
-                            pluginDB.sidechainPreamp = v;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                            label: i18n("Lookahead")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("lookahead")
+                            to: pluginDB.getMaxValue("lookahead")
+                            value: pluginDB.lookahead
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "ms"
+                            onValueModified: (v) => {
+                                pluginDB.lookahead = v;
+                            }
                         }
 
                     }

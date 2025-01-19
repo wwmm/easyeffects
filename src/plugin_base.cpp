@@ -77,8 +77,6 @@ void on_process(void* userdata, spa_io_position* position) {
     std::ranges::fill(d->pb->dummy_left, 0.0F);
     std::ranges::fill(d->pb->dummy_right, 0.0F);
 
-    d->pb->clock_start = std::chrono::system_clock::now();
-
     d->pb->setup();
   }
 

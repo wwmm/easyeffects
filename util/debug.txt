@@ -1,1 +1,6 @@
 QT_LOGGING_RULES="qt.qml.binding.removal.info=true"
+
+Creating test files
+
+sox -n -c 2 -r 48000 -b 16 pink_noise.wav synth 10 pinknoise gain -12
+sox -n -c 2 -r 48000 -b 16 silence.wav trim 0 10
