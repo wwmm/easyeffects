@@ -128,8 +128,8 @@ void Gate::process(std::span<float>& left_in,
                    std::span<float>& probe_left,
                    std::span<float>& probe_right) {
   if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance() || bypass) {
-    std::copy(left_in.begin(), left_in.end(), left_out.begin());
-    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+    std::ranges::copy(left_in, left_out.begin());
+    std::ranges::copy(right_in, right_out.begin());
 
     return;
   }

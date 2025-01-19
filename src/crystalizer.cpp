@@ -203,8 +203,8 @@ void Crystalizer::process(std::span<float>& left_in,
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (bypass || !filters_are_ready) {
-    std::copy(left_in.begin(), left_in.end(), left_out.begin());
-    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+    std::ranges::copy(left_in, left_out.begin());
+    std::ranges::copy(right_in, right_out.begin());
 
     return;
   }
@@ -214,8 +214,8 @@ void Crystalizer::process(std::span<float>& left_in,
   }
 
   if (n_samples_is_power_of_2 && blocksize == n_samples) {
-    std::copy(left_in.begin(), left_in.end(), left_out.begin());
-    std::copy(right_in.begin(), right_in.end(), right_out.begin());
+    std::ranges::copy(left_in, left_out.begin());
+    std::ranges::copy(right_in, right_out.begin());
 
     enhance_peaks(left_out, right_out);
   } else {

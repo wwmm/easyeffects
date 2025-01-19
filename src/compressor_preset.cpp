@@ -37,54 +37,57 @@ void CompressorPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["output-gain"] = settings->outputGain();
 
-  // json[section][instance_name]["dry"] = g_settings_get_double(settings, "dry");
+  json[section][instance_name]["dry"] = settings->dry();
 
-  // json[section][instance_name]["wet"] = g_settings_get_double(settings, "wet");
+  json[section][instance_name]["wet"] = settings->wet();
 
-  // json[section][instance_name]["mode"] = util::gsettings_get_string(settings, "mode");
+  json[section][instance_name]["mode"] = settings->defaultModeLabelsValue()[settings->mode()].toStdString();
 
-  // json[section][instance_name]["attack"] = g_settings_get_double(settings, "attack");
+  json[section][instance_name]["attack"] = settings->attack();
 
-  // json[section][instance_name]["release"] = g_settings_get_double(settings, "release");
+  json[section][instance_name]["release"] = settings->release();
 
-  // json[section][instance_name]["release-threshold"] = g_settings_get_double(settings, "release-threshold");
+  json[section][instance_name]["release-threshold"] = settings->releaseThreshold();
 
-  // json[section][instance_name]["threshold"] = g_settings_get_double(settings, "threshold");
+  json[section][instance_name]["threshold"] = settings->threshold();
 
-  // json[section][instance_name]["ratio"] = g_settings_get_double(settings, "ratio");
+  json[section][instance_name]["ratio"] = settings->ratio();
 
-  // json[section][instance_name]["knee"] = g_settings_get_double(settings, "knee");
+  json[section][instance_name]["knee"] = settings->knee();
 
-  // json[section][instance_name]["makeup"] = g_settings_get_double(settings, "makeup");
+  json[section][instance_name]["makeup"] = settings->makeup();
 
-  // json[section][instance_name]["boost-threshold"] = g_settings_get_double(settings, "boost-threshold");
+  json[section][instance_name]["boost-threshold"] = settings->boostThreshold();
 
-  // json[section][instance_name]["boost-amount"] = g_settings_get_double(settings, "boost-amount");
+  json[section][instance_name]["boost-amount"] = settings->boostAmount();
 
-  // json[section][instance_name]["stereo-split"] = g_settings_get_boolean(settings, "stereo-split") != 0;
+  json[section][instance_name]["stereo-split"] = settings->stereoSplit();
 
-  // json[section][instance_name]["sidechain"]["type"] = util::gsettings_get_string(settings, "sidechain-type");
+  json[section][instance_name]["sidechain"]["type"] =
+      settings->defaultSidechainTypeLabelsValue()[settings->sidechainType()].toStdString();
 
-  // json[section][instance_name]["sidechain"]["mode"] = util::gsettings_get_string(settings, "sidechain-mode");
+  json[section][instance_name]["sidechain"]["mode"] =
+      settings->defaultSidechainModeLabelsValue()[settings->sidechainMode()].toStdString();
 
-  // json[section][instance_name]["sidechain"]["source"] = util::gsettings_get_string(settings, "sidechain-source");
+  json[section][instance_name]["sidechain"]["source"] =
+      settings->defaultSidechainSourceLabelsValue()[settings->sidechainSource()].toStdString();
 
-  // json[section][instance_name]["sidechain"]["stereo-split-source"] =
-  //     util::gsettings_get_string(settings, "stereo-split-source");
+  json[section][instance_name]["sidechain"]["stereo-split-source"] =
+      settings->defaultStereoSplitSourceLabelsValue()[settings->stereoSplitSource()].toStdString();
 
-  // json[section][instance_name]["sidechain"]["preamp"] = g_settings_get_double(settings, "sidechain-preamp");
+  json[section][instance_name]["sidechain"]["preamp"] = settings->sidechainPreamp();
 
-  // json[section][instance_name]["sidechain"]["reactivity"] = g_settings_get_double(settings, "sidechain-reactivity");
+  json[section][instance_name]["sidechain"]["reactivity"] = settings->sidechainReactivity();
 
-  // json[section][instance_name]["sidechain"]["lookahead"] = g_settings_get_double(settings, "sidechain-lookahead");
+  json[section][instance_name]["sidechain"]["lookahead"] = settings->sidechainLookahead();
 
-  // json[section][instance_name]["hpf-mode"] = util::gsettings_get_string(settings, "hpf-mode");
+  json[section][instance_name]["hpf-mode"] = settings->defaultHpfModeLabelsValue()[settings->hpfMode()].toStdString();
 
-  // json[section][instance_name]["hpf-frequency"] = g_settings_get_double(settings, "hpf-frequency");
+  json[section][instance_name]["hpf-frequency"] = settings->hpfFrequency();
 
-  // json[section][instance_name]["lpf-mode"] = util::gsettings_get_string(settings, "lpf-mode");
+  json[section][instance_name]["lpf-mode"] = settings->defaultLpfModeLabelsValue()[settings->lpfMode()].toStdString();
 
-  // json[section][instance_name]["lpf-frequency"] = g_settings_get_double(settings, "lpf-frequency");
+  json[section][instance_name]["lpf-frequency"] = settings->lpfFrequency();
 }
 
 void CompressorPreset::load(const nlohmann::json& json) {
