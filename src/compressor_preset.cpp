@@ -94,8 +94,8 @@ void CompressorPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("bypass", Bypass);
   UPDATE_PROPERTY("input-gain", InputGain);
   UPDATE_PROPERTY("output-gain", OutputGain);
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "dry", "dry");
+  UPDATE_PROPERTY("dry", Dry);
+  UPDATE_PROPERTY("wet", Wet);
 
   // update_key<double>(json.at(section).at(instance_name), settings, "wet", "wet");
 
