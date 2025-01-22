@@ -158,66 +158,72 @@ Item {
                 plotAreaBackgroundColor: "transparent"
                 onColorSchemeChanged: {
                     plotAreaBackgroundColor = "transparent";
+                    axisRectangle.color = chart.theme.backgroundColor;
                 }
                 onThemeChanged: {
                     plotAreaBackgroundColor = "transparent";
+                    axisRectangle.color = chart.theme.backgroundColor;
                 }
             }
 
         }
 
-        Row {
+        Rectangle {
+            id: axisRectangle
+
             Layout.fillWidth: true
             Layout.fillHeight: false
-            padding: 0
-            visible: true
+            color: chart.theme.backgroundColor
+            implicitHeight: axisRow.implicitHeight
 
-            Repeater {
-                id: axisRepeater
+            Row {
+                id: axisRow
 
-                readonly property real nTicks: 11
-                readonly property real step: {
-                    if (logarithimicHorizontalAxis !== true)
-                        return (xMax - xMin) / (nTicks - 1);
-                    else
-                        return (xMaxLog - xMinLog) / (nTicks - 1);
-                }
-                readonly property real labelWidth: widgetRoot.width / (nTicks - 1)
+                padding: 0
 
-                model: nTicks
+                Repeater {
+                    id: axisRepeater
 
-                Controls.Label {
-                    readonly property real value: {
+                    readonly property real nTicks: 11
+                    readonly property real step: {
                         if (logarithimicHorizontalAxis !== true)
-                            return xMin + index * axisRepeater.step;
+                            return (xMax - xMin) / (nTicks - 1);
                         else
-                            return Math.pow(10, xMinLog + index * axisRepeater.step);
+                            return (xMaxLog - xMinLog) / (nTicks - 1);
                     }
+                    readonly property real labelWidth: widgetRoot.width / (nTicks - 1)
 
-                    padding: 0
-                    color: chart.theme.labelTextColor
-                    leftPadding: {
-                        if (index !== (axisRepeater.count - 1))
-                            return 0;
-                        else
-                            return -axisRepeater.labelWidth - 6 * Kirigami.Units.smallSpacing;
-                    }
-                    width: axisRepeater.labelWidth
-                    text: {
-                        if (index !== (axisRepeater.count - 1))
-                            return Number(value).toLocaleString(Qt.locale(), 'f', 0);
-                        else
-                            return "Hz";
-                    }
-                    horizontalAlignment: {
-                        if (index === (axisRepeater.count - 1))
-                            return Qt.AlignHCenter;
-                        else
-                            return Qt.AlignLeft;
-                    }
+                    model: nTicks
 
-                    background: Rectangle {
-                        color: chart.theme.backgroundColor
+                    Controls.Label {
+                        readonly property real value: {
+                            if (logarithimicHorizontalAxis !== true)
+                                return xMin + index * axisRepeater.step;
+                            else
+                                return Math.pow(10, xMinLog + index * axisRepeater.step);
+                        }
+
+                        padding: 0
+                        color: chart.theme.labelTextColor
+                        leftPadding: {
+                            if (index !== (axisRepeater.count - 1))
+                                return 0;
+                            else
+                                return -axisRepeater.labelWidth - 6 * Kirigami.Units.smallSpacing;
+                        }
+                        width: axisRepeater.labelWidth
+                        text: {
+                            if (index !== (axisRepeater.count - 1))
+                                return Number(value).toLocaleString(Qt.locale(), 'f', 0);
+                            else
+                                return "Hz";
+                        }
+                        horizontalAlignment: {
+                            if (index === (axisRepeater.count - 1))
+                                return Qt.AlignHCenter;
+                            else
+                                return Qt.AlignLeft;
+                        }
                     }
 
                 }

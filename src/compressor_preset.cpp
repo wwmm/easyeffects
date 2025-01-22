@@ -96,53 +96,30 @@ void CompressorPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("output-gain", OutputGain);
   UPDATE_PROPERTY("dry", Dry);
   UPDATE_PROPERTY("wet", Wet);
+  UPDATE_PROPERTY("attack", Attack);
+  UPDATE_PROPERTY("release", Release);
+  UPDATE_PROPERTY("release-threshold", ReleaseThreshold);
+  UPDATE_PROPERTY("threshold", Threshold);
+  UPDATE_PROPERTY("ratio", Ratio);
+  UPDATE_PROPERTY("knee", Knee);
+  UPDATE_PROPERTY("makeup", Makeup);
+  UPDATE_PROPERTY("boost-threshold", BoostThreshold);
+  UPDATE_PROPERTY("boost-amount", BoostAmount);
+  UPDATE_PROPERTY("stereo-split", StereoSplit);
+  UPDATE_PROPERTY("makeup", Makeup);
+  UPDATE_PROPERTY("hpf-frequency", HpfFrequency);
+  UPDATE_PROPERTY("lpf-frequency", LpfFrequency);
 
-  // update_key<double>(json.at(section).at(instance_name), settings, "wet", "wet");
+  UPDATE_ENUM_LIKE_PROPERTY("mode", Mode);
+  UPDATE_ENUM_LIKE_PROPERTY("hpf-mode", HpfMode);
+  UPDATE_ENUM_LIKE_PROPERTY("lpf-mode", LpfMode);
 
-  // update_key<gchar*>(json.at(section).at(instance_name), settings, "mode", "mode");
+  UPDATE_PROPERTY_INSIDE_SUBSECTION("sidechain", "preamp", SidechainPreamp);
+  UPDATE_PROPERTY_INSIDE_SUBSECTION("sidechain", "reactivity", SidechainReactivity);
+  UPDATE_PROPERTY_INSIDE_SUBSECTION("sidechain", "lookahead", SidechainLookahead);
 
-  // update_key<double>(json.at(section).at(instance_name), settings, "attack", "attack");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "release", "release");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "release-threshold", "release-threshold");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "threshold", "threshold");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "ratio", "ratio");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "knee", "knee");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "makeup", "makeup");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "boost-threshold", "boost-threshold");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "boost-amount", "boost-amount");
-
-  // update_key<bool>(json.at(section).at(instance_name), settings, "stereo-split", "stereo-split");
-
-  // update_key<gchar*>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-type", "type");
-
-  // update_key<gchar*>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-mode", "mode");
-
-  // update_key<gchar*>(json.at(section).at(instance_name).at("sidechain"), settings, "stereo-split-source",
-  //                    "stereo-split-source");
-
-  // update_key<gchar*>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-source", "source");
-
-  // update_key<double>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-preamp", "preamp");
-
-  // update_key<double>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-reactivity",
-  //                    "reactivity");
-
-  // update_key<double>(json.at(section).at(instance_name).at("sidechain"), settings, "sidechain-lookahead",
-  // "lookahead");
-
-  // update_key<gchar*>(json.at(section).at(instance_name), settings, "hpf-mode", "hpf-mode");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "hpf-frequency", "hpf-frequency");
-
-  // update_key<gchar*>(json.at(section).at(instance_name), settings, "lpf-mode", "lpf-mode");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "lpf-frequency", "lpf-frequency");
+  UPDATE_ENUM_LIKE_PROPERTY_INSIDE_SUBSECTION("sidechain", "type", SidechainType);
+  UPDATE_ENUM_LIKE_PROPERTY_INSIDE_SUBSECTION("sidechain", "mode", SidechainMode);
+  UPDATE_ENUM_LIKE_PROPERTY_INSIDE_SUBSECTION("sidechain", "source", SidechainSource);
+  UPDATE_ENUM_LIKE_PROPERTY_INSIDE_SUBSECTION("sidechain", "stereo-split-source", StereoSplitSource);
 }
