@@ -52,6 +52,7 @@
 #include "easyeffects_db_streamoutputs.h"
 #include "exciter_preset.hpp"
 #include "filter_preset.hpp"
+#include "gate_preset.hpp"
 #include "limiter_preset.hpp"
 #include "maximizer_preset.hpp"
 #include "pipeline_type.hpp"
@@ -1311,7 +1312,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::gate)) {
-    // return std::make_unique<GatePreset>(pipeline_type, filter_name.toStdString());
+    return std::make_unique<GatePreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::levelMeter)) {

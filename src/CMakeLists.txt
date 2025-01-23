@@ -40,6 +40,7 @@ target_sources(easyeffects PRIVATE
     fir_filter_highpass.cpp
     fir_filter_lowpass.cpp
     gate.cpp
+    gate_preset.cpp
     kconfig_base_ee.cpp
     limiter.cpp
     limiter_preset.cpp

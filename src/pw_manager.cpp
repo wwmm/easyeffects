@@ -646,9 +646,9 @@ void on_destroy_link_proxy(void* data) {
 
   spa_hook_remove(&ld->proxy_listener);
 
-  ld->pm->list_links.erase(std::remove_if(ld->pm->list_links.begin(), ld->pm->list_links.end(),
-                                          [=](const auto& n) { return n.serial == ld->serial; }),
-                           ld->pm->list_links.end());
+  auto it = std::ranges::remove_if(ld->pm->list_links, [=](const auto& n) { return n.serial == ld->serial; });
+
+  ld->pm->list_links.erase(it.begin(), it.end());
 }
 
 void on_destroy_port_proxy(void* data) {
@@ -656,9 +656,9 @@ void on_destroy_port_proxy(void* data) {
 
   spa_hook_remove(&pd->proxy_listener);
 
-  pd->pm->list_ports.erase(std::remove_if(pd->pm->list_ports.begin(), pd->pm->list_ports.end(),
-                                          [=](const auto& n) { return n.serial == pd->serial; }),
-                           pd->pm->list_ports.end());
+  auto it = std::ranges::remove_if(pd->pm->list_ports, [=](const auto& n) { return n.serial == pd->serial; });
+
+  pd->pm->list_ports.erase(it.begin(), it.end());
 }
 
 void on_module_info(void* object, const struct pw_module_info* info) {
@@ -775,7 +775,8 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
   return 0;
 }
 
-const struct pw_metadata_events metadata_events = {PW_VERSION_METADATA_EVENTS, on_metadata_property};
+const struct pw_metadata_events metadata_events = {.version = PW_VERSION_METADATA_EVENTS,
+                                                   .property = on_metadata_property};
 
 const struct pw_proxy_events link_proxy_events = {.version = 0,
                                                   .destroy = on_destroy_link_proxy,
@@ -885,8 +886,7 @@ void on_registry_global(void* data,
                        tags::pipewire::media_class::sink, tags::pipewire::media_class::source,
                        tags::pipewire::media_class::virtual_source});
 
-    if (!is_ee_filter &&
-        !std::any_of(class_array.begin(), class_array.end(), [&](const auto& str) { return str == media_class; })) {
+    if (!is_ee_filter && !std::ranges::any_of(class_array, [&](const auto& str) { return str == media_class; })) {
       return;
     }
 
@@ -1652,7 +1652,7 @@ auto Manager::json_object_find(const char* obj, const char* key, char* value, co
     return -EINVAL;
   }
 
-  while (spa_json_get_string(sjson.data() + 1, res.data(), res.size() * sizeof(char) - 1) > 0) {
+  while (spa_json_get_string(sjson.data() + 1, res.data(), (res.size() * sizeof(char)) - 1) > 0) {
     if (std::strcmp(res.data(), key) == 0) {
       if (spa_json_get_string(sjson.data() + 1, value, static_cast<int>(len)) <= 0) {
         continue;

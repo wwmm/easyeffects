@@ -35,19 +35,11 @@
             <max>20</max>
             <default>0</default>
         </entry>
-        <entry name="mode" type="Enum">
+        <entry name="modeLabels" type="StringList">
+            <default>Downward,Upward,Boosting</default>
+        </entry>
+        <entry name="mode" type="Int">
             <label>Mode</label>
-            <choices>
-                <choice name="downward">
-                    <label>Downward</label>
-                </choice>
-                <choice name="upward">
-                    <label>Upward</label>
-                </choice>
-                <choice name="boosting">
-                    <label>Boosting</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
         <entry name="attack" type="Double">
@@ -106,89 +98,36 @@
             <label></label>
             <default>false</default>
         </entry>
-        <entry name="sidechainType" type="Enum">
+        <entry name="sidechainTypeLabels" type="StringList">
+            <default>Internal,External,Link</default>
+        </entry>
+        <entry name="sidechainType" type="Int">
             <label>Sidechain Type</label>
-            <choices>
-                <choice name="internal">
-                    <label>Internal</label>
-                </choice>
-                <choice name="external">
-                    <label>External</label>
-                </choice>
-                <choice name="link">
-                    <label>Link</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
-        <entry name="sidechainMode" type="Enum">
+        <entry name="sidechainModeLabels" type="StringList">
+            <default>Peak,RMS,Low-Pass,SMA</default>
+        </entry>
+        <entry name="sidechainMode" type="Int">
             <label>Sidechain Mode</label>
-            <choices>
-                <choice name="peak">
-                    <label>Peak</label>
-                </choice>
-                <choice name="rms">
-                    <label>RMS</label>
-                </choice>
-                <choice name="lowPass">
-                    <label>Low-Pass</label>
-                </choice>
-                <choice name="sma">
-                    <label>SMA</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
         <entry name="stereoSplit" type="Bool">
             <label></label>
             <default>false</default>
         </entry>
-        <entry name="sidechainSource" type="Enum">
+        <entry name="sidechainSourceLabels" type="StringList">
+            <default>Middle,Side,Left,Right,Min,Max</default>
+        </entry>
+        <entry name="sidechainSource" type="Int">
             <label>Sidechain Source</label>
-            <choices>
-                <choice name="middle">
-                    <label>Middle</label>
-                </choice>
-                <choice name="side">
-                    <label>Side</label>
-                </choice>
-                <choice name="left">
-                    <label>Left</label>
-                </choice>
-                <choice name="right">
-                    <label>Right</label>
-                </choice>
-                <choice name="min">
-                    <label>Min</label>
-                </choice>
-                <choice name="max">
-                    <label>Max</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
-        <entry name="stereoSplitSource" type="Enum">
+        <entry name="stereoSplitSourceLabels" type="StringList">
+            <default>Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max</default>
+        </entry>
+        <entry name="stereoSplitSource" type="Int">
             <label>Stereo Split Mode</label>
-            <choices>
-                <choice name="leftRight">
-                    <label>Left/Right</label>
-                </choice>
-                <choice name="rightLeft">
-                    <label>Right/Left</label>
-                </choice>
-                <choice name="midSide">
-                    <label>Mid/Side</label>
-                </choice>
-                <choice name="sideMid">
-                    <label>Side/Mid</label>
-                </choice>
-                <choice name="min">
-                    <label>Min</label>
-                </choice>
-                <choice name="max">
-                    <label>Max</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
         <entry name="sidechainPreamp" type="Double">
@@ -209,22 +148,11 @@
             <max>20</max>
             <default>0</default>
         </entry>
-        <entry name="hpfMode" type="Enum">
+        <entry name="hpfModeLabels" type="StringList">
+            <default>Off,12 dB/oct,24 dB/oct,36 dB/oct</default>
+        </entry>
+        <entry name="hpfMode" type="Int">
             <label>High-pass Filter Mode</label>
-            <choices>
-                <choice name="off">
-                    <label>Off</label>
-                </choice>
-                <choice name="v12dBoct">
-                    <label>12 dB/oct</label>
-                </choice>
-                <choice name="v24dBoct">
-                    <label>24 dB/oct</label>
-                </choice>
-                <choice name="v36dBoct">
-                    <label>36 dB/oct</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
         <entry name="hpfFrequency" type="Double">
@@ -233,22 +161,11 @@
             <max>20000</max>
             <default>10</default>
         </entry>
+        <entry name="lpfModeLabels" type="StringList">
+            <default>Off,12 dB/oct,24 dB/oct,36 dB/oct</default>
+        </entry>
         <entry name="lpfMode" type="Enum">
             <label>Low-pass Filter Mode</label>
-            <choices>
-                <choice name="off">
-                    <label>Off</label>
-                </choice>
-                <choice name="v12dBoct">
-                    <label>12 dB/oct</label>
-                </choice>
-                <choice name="v24dBoct">
-                    <label>24 dB/oct</label>
-                </choice>
-                <choice name="v36dBoct">
-                    <label>36 dB/oct</label>
-                </choice>
-            </choices>
             <default>0</default>
         </entry>
         <entry name="lpfFrequency" type="Double">

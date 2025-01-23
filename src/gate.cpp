@@ -181,7 +181,7 @@ void Gate::process(std::span<float>& left_in,
 }
 
 void Gate::update_sidechain_links() {
-  if (settings->sidechainType() != db::Gate::EnumSidechainType::type::external) {
+  if (settings->defaultSidechainTypeLabelsValue()[settings->sidechainType()] != "External") {
     pm->destroy_links(list_proxies);
 
     list_proxies.clear();
