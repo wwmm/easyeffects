@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffectsrc/db/convolverrc">
+        <parameter name="masterGroup" />
+        <parameter name="instanceIndex" />
+    </kcfgfile>
+    <group parentGroupName="$(masterGroup)" name="Convolver#$(instanceIndex)">
+        <entry name="bypass" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="inputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="outputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="kernelName" type="String">
+            <default>""</default>
+        </entry>
+        <entry name="irWidth" type="Int">
+            <min>0</min>
+            <max>200</max>
+            <default>100</default>
+        </entry>
+        <entry name="autogain" type="Bool">
+            <default>true</default>
+        </entry>
+    </group>
+</kcfg>
