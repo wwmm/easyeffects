@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -28,10 +28,10 @@
 #include <spa/utils/defs.h>
 #include <array>
 #include <cstdlib>
+#include <cstring>
 #include <iostream>
 #include <ostream>
 #include <string>
-#include <cstring>
 #include <thread>
 #include "application_ui.hpp"
 #include "config.h"
@@ -299,7 +299,7 @@ void application_class_init(ApplicationClass* klass) {
       const auto& input_preset = self->presets_manager->get_loaded_preset(PresetType::input);
 
       std::cout << _("Output Preset") + ": "s + output_preset << '\n';
-      std:: cout << _("Input Preset") + ": "s + input_preset << '\n';
+      std::cout << _("Input Preset") + ": "s + input_preset << '\n';
 
       return EXIT_SUCCESS;
     }
@@ -623,11 +623,13 @@ auto application_new() -> GApplication* {
   g_application_add_main_option(G_APPLICATION(app), "load-preset", 'l', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING,
                                 _("Load a preset. Example: easyeffects -l music"), nullptr);
 
-  g_application_add_main_option(G_APPLICATION(app), "active-presets", 'a', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE, 
+  g_application_add_main_option(G_APPLICATION(app), "active-presets", 'a', G_OPTION_FLAG_NONE, G_OPTION_ARG_NONE,
                                 _("Show the active presets."), nullptr);
 
   g_application_add_main_option(G_APPLICATION(app), "active-preset", 's', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING,
-                                _("Show the loaded preset of a specific category. Takes 'input' or 'output' as a value. Example: easyeffects -s input"), nullptr);
+                                _("Show the loaded preset of a specific category. Takes 'input' or 'output' as a "
+                                  "value. Example: easyeffects -s input"),
+                                nullptr);
 
   return G_APPLICATION(app);
 }

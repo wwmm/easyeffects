@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -195,7 +195,8 @@ void preferences_spectrum_init(PreferencesSpectrum* self) {
   gsettings_bind_widgets<"show", "fill", "rounded-corners", "show-bar-border", "dynamic-y-scale", "n-points", "height",
                          "line-width", "minimum-frequency", "maximum-frequency", "avsync-delay">(
       self->settings, self->show, self->fill, self->rounded_corners, self->show_bar_border, self->dynamic_y_scale,
-      self->n_points, self->height, self->line_width, self->minimum_frequency, self->maximum_frequency, self->avsync_delay);
+      self->n_points, self->height, self->line_width, self->minimum_frequency, self->maximum_frequency,
+      self->avsync_delay);
 
   ui::gsettings_bind_enum_to_combo_widget(self->settings, "type", self->type);
 

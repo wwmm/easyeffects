@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -294,8 +294,7 @@ void on_listen_mic_toggled(EffectsBox* self, GtkToggleButton* button) {
   self->data->application->sie->set_listen_to_mic(gtk_toggle_button_get_active(button) != 0);
 }
 
-static gboolean
-spectrum_data_update(GtkWidget* widget, GdkFrameClock* frame_clock, EffectsBox* self) {
+static gboolean spectrum_data_update(GtkWidget* widget, GdkFrameClock* frame_clock, EffectsBox* self) {
   if (!ui::chart::get_is_visible(self->spectrum_chart)) {
     return G_SOURCE_CONTINUE;
   }
@@ -324,8 +323,7 @@ spectrum_data_update(GtkWidget* widget, GdkFrameClock* frame_clock, EffectsBox* 
   gsl_spline_init(spline, self->data->spectrum_freqs.data(), magnitudes, n_bands);
 
   for (size_t n = 0; n < self->data->spectrum_x_axis.size(); n++) {
-    self->data->spectrum_mag[n] =
-        static_cast<float>(gsl_spline_eval(spline, self->data->spectrum_x_axis[n], acc));
+    self->data->spectrum_mag[n] = static_cast<float>(gsl_spline_eval(spline, self->data->spectrum_x_axis[n], acc));
   }
 
   gsl_spline_free(spline);
@@ -447,8 +445,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
   // spectrum array
 
-  gtk_widget_add_tick_callback(GTK_WIDGET(self->spectrum_chart), (GtkTickCallback)spectrum_data_update,
-                               self, NULL);
+  gtk_widget_add_tick_callback(GTK_WIDGET(self->spectrum_chart), (GtkTickCallback)spectrum_data_update, self, NULL);
 
   // As we are showing the window we want the filters to send notifications about level meters, etc
 

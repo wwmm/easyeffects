@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -411,7 +411,7 @@ void Lv2Wrapper::set_control_port_value(const std::string& symbol, const float& 
 auto Lv2Wrapper::get_control_port_value(const std::string& symbol) -> float {
   size_t hash = std::hash<std::string>{}(symbol);
 
-  for (const auto & slot : control_ports_cache) {
+  for (const auto& slot : control_ports_cache) {
     // We use hash == 0 to mean the cache slot and all following are empty.
     // We might get collisions with hash == 0, which is fine.
     if (slot.first == 0)
@@ -421,7 +421,7 @@ auto Lv2Wrapper::get_control_port_value(const std::string& symbol) -> float {
       continue;
 
     // Ignore false positives.
-    const Port & p = ports[slot.second];
+    const Port& p = ports[slot.second];
     if (p.type == PortType::TYPE_CONTROL && p.symbol == symbol)
       return p.value;
   }
