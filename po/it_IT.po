@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-31 17:18+0000\n"
+"POT-Creation-Date: 2025-01-25 16:10+0000\n"
 "PO-Revision-Date: 2024-09-06 11:09+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2352,15 +2352,15 @@ msgstr "Nessun File di Risposta Impulsiva Caricato"
 msgid "Failed To Load The Impulse File"
 msgstr "Impossibile Caricare il File di Risposta Impulsiva"
 
-#: src/effects_box.cpp:358 src/plugins_box.cpp:807
+#: src/effects_box.cpp:356 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr "Registratori"
 
-#: src/effects_box.cpp:381 src/plugins_box.cpp:827
+#: src/effects_box.cpp:379 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "Riproduttori"
 
-#: src/effects_box.cpp:404
+#: src/effects_box.cpp:402
 msgid "Effects"
 msgstr "Effetti"
 
