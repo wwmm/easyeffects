@@ -74,8 +74,8 @@ void FirFilterBase::set_transition_band(const float& value) {
 
 void FirFilterBase::setup() {}
 
-auto FirFilterBase::create_lowpass_kernel(const float& cutoff,
-                                          const float& transition_band) const -> std::vector<float> {
+auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& transition_band) const
+    -> std::vector<float> {
   std::vector<float> output;
 
   if (rate == 0U) {

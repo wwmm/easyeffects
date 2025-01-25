@@ -140,9 +140,8 @@ class Manager : public QObject {
                            const std::vector<std::string>& plugins,
                            const nlohmann::json& json) -> bool;
 
-  auto find_autoload(const PipelineType& pipeline_type,
-                     const QString& device_name,
-                     const QString& device_profile) -> std::string;
+  auto find_autoload(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile)
+      -> std::string;
 
   auto get_autoload_profiles(const PipelineType& pipeline_type) -> std::vector<nlohmann::json>;
 
@@ -170,8 +169,8 @@ class Manager : public QObject {
 
   void notify_error(const PresetError& preset_error, const std::string& plugin_name = "");
 
-  static auto create_wrapper(const PipelineType& pipeline_type,
-                             const QString& filter_name) -> std::optional<std::unique_ptr<PluginPresetBase>>;
+  static auto create_wrapper(const PipelineType& pipeline_type, const QString& filter_name)
+      -> std::optional<std::unique_ptr<PluginPresetBase>>;
 };
 
 }  // namespace presets

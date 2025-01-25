@@ -92,8 +92,8 @@ class FirFilterBase {
 
   Convproc* conv = nullptr;
 
-  [[nodiscard]] auto create_lowpass_kernel(const float& cutoff,
-                                           const float& transition_band) const -> std::vector<float>;
+  [[nodiscard]] auto create_lowpass_kernel(const float& cutoff, const float& transition_band) const
+      -> std::vector<float>;
 
   void setup_zita();
 
