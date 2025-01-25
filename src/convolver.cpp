@@ -53,8 +53,8 @@ constexpr auto CONVPROC_SCHEDULER_CLASS = SCHED_FIFO;
 
 Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
     : PluginBase(tag,
-                 tags::plugin_name::BaseName::compressor,
-                 tags::plugin_package::Package::lsp,
+                 tags::plugin_name::BaseName::convolver,
+                 tags::plugin_package::Package::zita,
                  instance_id,
                  pipe_manager,
                  pipe_type),

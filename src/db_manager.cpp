@@ -31,6 +31,7 @@
 #include "easyeffects_db_autogain.h"
 #include "easyeffects_db_bass_enhancer.h"
 #include "easyeffects_db_compressor.h"
+#include "easyeffects_db_convolver.h"
 #include "easyeffects_db_crossfeed.h"
 #include "easyeffects_db_crystalizer.h"
 #include "easyeffects_db_exciter.h"
@@ -148,6 +149,10 @@ void Manager::create_plugin_db(const QString& parentGroup,
       } else if (name.startsWith(tags::plugin_name::BaseName::compressor)) {
         plugins_map[tags::plugin_name::BaseName::compressor + "#" + id] =
             QVariant::fromValue(new db::Compressor(parentGroup, id));
+        //
+      } else if (name.startsWith(tags::plugin_name::BaseName::convolver)) {
+        plugins_map[tags::plugin_name::BaseName::convolver + "#" + id] =
+            QVariant::fromValue(new db::Convolver(parentGroup, id));
         //
       } else if (name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
         plugins_map[tags::plugin_name::BaseName::crossfeed + "#" + id] =
