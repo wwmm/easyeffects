@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-31 17:18+0000\n"
+"POT-Creation-Date: 2025-01-25 16:10+0000\n"
 "PO-Revision-Date: 2024-12-22 04:00+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2347,15 +2347,15 @@ msgstr "உந்துவிசை கோப்பு ஏற்றப்பட�
 msgid "Failed To Load The Impulse File"
 msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
 
-#: src/effects_box.cpp:358 src/plugins_box.cpp:807
+#: src/effects_box.cpp:356 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr "ரெக்கார்டர்கள்"
 
-#: src/effects_box.cpp:381 src/plugins_box.cpp:827
+#: src/effects_box.cpp:379 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "வீரர்கள்"
 
-#: src/effects_box.cpp:404
+#: src/effects_box.cpp:402
 msgid "Effects"
 msgstr "விளைவுகள்"
 

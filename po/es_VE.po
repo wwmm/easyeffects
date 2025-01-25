@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-31 17:18+0000\n"
+"POT-Creation-Date: 2025-01-25 16:10+0000\n"
 "PO-Revision-Date: 2023-08-09 14:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Spanish (Venezuela) <https://hosted.weblate.org/projects/"
@@ -2561,16 +2561,16 @@ msgstr "Importar Archivo Impulse"
 msgid "Failed To Load The Impulse File"
 msgstr "No se pudo encontrar el archivo Impulse"
 
-#: src/effects_box.cpp:358 src/plugins_box.cpp:807
+#: src/effects_box.cpp:356 src/plugins_box.cpp:807
 #, fuzzy
 msgid "Recorders"
 msgstr "Bordes"
 
-#: src/effects_box.cpp:381 src/plugins_box.cpp:827
+#: src/effects_box.cpp:379 src/plugins_box.cpp:827
 msgid "Players"
 msgstr ""
 
-#: src/effects_box.cpp:404
+#: src/effects_box.cpp:402
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"
