@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -18,7 +18,6 @@
  */
 
 #include "util.hpp"
-#include "pipe_manager.hpp"
 #include <gdk/gdk.h>
 #include <gio/gio.h>
 #include <gio/gsettingsschema.h>
@@ -42,6 +41,7 @@
 #include <thread>
 #include <utility>
 #include <vector>
+#include "pipe_manager.hpp"
 
 namespace util {
 

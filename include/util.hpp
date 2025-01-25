@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -98,9 +98,7 @@ auto add_new_blocklist_entry(GSettings* settings, const std::string& name) -> bo
 
 void remove_blocklist_entry(GSettings* settings, const std::string& name);
 
-void idle_add(
-    std::function<void()> cb,
-    std::function<void()> cleanup_cb = []() {});
+void idle_add(std::function<void()> cb, std::function<void()> cleanup_cb = []() {});
 
 auto get_files_name(const std::filesystem::path& dir_path, const std::string& ext) -> std::vector<std::string>;
 

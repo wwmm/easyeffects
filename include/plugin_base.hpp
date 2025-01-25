@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -21,11 +21,11 @@
 
 #include <gio/gio.h>
 #include <glib.h>
-#include <atomic>
 #include <pipewire/filter.h>
 #include <sigc++/signal.h>
 #include <spa/utils/hook.h>
 #include <sys/types.h>
+#include <atomic>
 #include <chrono>
 #include <memory>
 #include <mutex>

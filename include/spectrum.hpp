@@ -1,5 +1,5 @@
 /*
- *  Copyright © 2017-2024 Wellington Wallace
+ *  Copyright © 2017-2025 Wellington Wallace
  *
  *  This file is part of Easy Effects.
  *
@@ -19,10 +19,10 @@
 
 #pragma once
 
-#include <atomic>
 #include <fftw3.h>
 #include <sigc++/signal.h>
 #include <sys/types.h>
+#include <atomic>
 #include <deque>
 #include <span>
 #include <string>
@@ -65,7 +65,7 @@ class Spectrum : public PluginBase {
 
   std::array<float, n_bands> real_input;
   std::array<double, n_bands / 2U + 1U> output;
-  
+
   std::vector<float> left_delayed_vector;
   std::vector<float> right_delayed_vector;
   std::span<float> left_delayed;
