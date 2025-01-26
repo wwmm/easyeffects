@@ -26,6 +26,7 @@ target_sources(easyeffects PRIVATE
     compressor.cpp
     compressor_preset.cpp
     convolver.cpp
+    convolver_preset.cpp
     crossfeed.cpp
     crossfeed_preset.cpp
     crystalizer.cpp
