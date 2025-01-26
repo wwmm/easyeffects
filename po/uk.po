@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-25 16:10+0000\n"
-"PO-Revision-Date: 2024-12-27 11:00+0000\n"
-"Last-Translator: Володимир Давибіда <mrvovavova17@gmail.com>\n"
+"PO-Revision-Date: 2025-01-26 14:51+0000\n"
+"Last-Translator: Максим Горпиніч <maksimgorpinic2005a@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -99,17 +99,14 @@ msgid "Presets Menu"
 msgstr "Меню профілів"
 
 #: data/ui/application_window.ui:68
-#, fuzzy
 msgid "Enable/disable the global bypass"
 msgstr "Увімкнути/вимкнути глобальний обхід"
 
 #: data/ui/application_window.ui:73
-#, fuzzy
 msgid "Global Bypass"
 msgstr "Глобальний обхід"
 
 #: data/ui/application_window.ui:83
-#, fuzzy
 msgid "Primary Menu"
 msgstr "Основне меню"
 
@@ -126,7 +123,6 @@ msgid "Empty List"
 msgstr "Порожній список"
 
 #: data/ui/apps_box.ui:28
-#, fuzzy
 msgid "No Audio Application Available"
 msgstr "Немає доступного додатку з аудіо"
 
@@ -147,22 +143,18 @@ msgid "Maximum History"
 msgstr "Максимальний розмір історії"
 
 #: data/ui/autogain.ui:103
-#, fuzzy
 msgid "Reference"
 msgstr "Довідка"
 
 #: data/ui/autogain.ui:109 data/ui/autogain.ui:158 data/ui/level_meter.ui:72
-#, fuzzy
 msgid "Momentary"
 msgstr "Миттєве"
 
 #: data/ui/autogain.ui:110 data/ui/autogain.ui:196 data/ui/level_meter.ui:109
-#, fuzzy
 msgid "Short-Term"
 msgstr "Короткострокові"
 
 #: data/ui/autogain.ui:111 data/ui/autogain.ui:233 data/ui/level_meter.ui:145
-#, fuzzy
 msgid "Integrated"
 msgstr "Інтегроване"
 
@@ -171,17 +163,14 @@ msgid "Geometric Mean (MSI)"
 msgstr "Середнє геометричне (MSI)"
 
 #: data/ui/autogain.ui:113
-#, fuzzy
 msgid "Geometric Mean (MS)"
 msgstr "Середнє геометричне (MS)"
 
 #: data/ui/autogain.ui:114
-#, fuzzy
 msgid "Geometric Mean (MI)"
 msgstr "Середнє геометричне (MI)"
 
 #: data/ui/autogain.ui:115
-#, fuzzy
 msgid "Geometric Mean (SI)"
 msgstr "Середнє геометричне (SІ)"
 
@@ -294,7 +283,6 @@ msgstr "Профіль"
 
 #: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:257
 #: data/ui/pipe_manager_box.ui:387
-#, fuzzy
 msgid "Preset"
 msgstr "Пресет"
 
@@ -465,7 +453,6 @@ msgstr "Коліно"
 #: data/ui/compressor.ui:378 data/ui/deesser.ui:368 data/ui/expander.ui:299
 #: data/ui/gate.ui:430 data/ui/multiband_compressor_band.ui:382
 #: data/ui/multiband_gate_band.ui:411
-#, fuzzy
 msgid "Makeup"
 msgstr "Макіяж"
 
@@ -488,7 +475,6 @@ msgstr "Рівень вологості"
 #: data/ui/expander.ui:995 data/ui/gate.ui:621 data/ui/gate.ui:642
 #: data/ui/gate.ui:1208 data/ui/multiband_compressor_band.ui:466
 #: data/ui/multiband_gate_band.ui:524
-#, fuzzy
 msgid "Sidechain"
 msgstr "Побічний ланцюг"
 
@@ -518,7 +504,6 @@ msgstr "Сторона"
 #: data/ui/expander.ui:467 data/ui/gate.ui:680 data/ui/level_meter.ui:32
 #: data/ui/multiband_compressor_band.ui:480 data/ui/multiband_gate_band.ui:538
 #: data/ui/pipe_manager_box.ui:581 data/ui/stereo_tools.ui:163
-#, fuzzy
 msgid "Left"
 msgstr "Ліво"
 
@@ -526,7 +511,6 @@ msgstr "Ліво"
 #: data/ui/expander.ui:468 data/ui/gate.ui:681 data/ui/level_meter.ui:42
 #: data/ui/multiband_compressor_band.ui:481 data/ui/multiband_gate_band.ui:539
 #: data/ui/pipe_manager_box.ui:592 data/ui/stereo_tools.ui:218
-#, fuzzy
 msgid "Right"
 msgstr "Право"
 
@@ -601,12 +585,10 @@ msgstr "Проста ковзна середня"
 
 #: data/ui/compressor.ui:619 data/ui/expander.ui:540 data/ui/gate.ui:753
 #: data/ui/multiband_compressor_band.ui:563 data/ui/multiband_gate_band.ui:621
-#, fuzzy
 msgid "Sidechain Mode"
 msgstr "Режим побічного ланцюга"
 
 #: data/ui/compressor.ui:633 data/ui/expander.ui:554 data/ui/gate.ui:767
-#, fuzzy
 msgid "Listen Sidechain"
 msgstr "Слухати побічний ланцюг"
 
@@ -616,12 +598,10 @@ msgid "Type"
 msgstr "Тип"
 
 #: data/ui/compressor.ui:688
-#, fuzzy
 msgid "Feed-forward"
 msgstr "Подача вперед"
 
 #: data/ui/compressor.ui:689
-#, fuzzy
 msgid "Feed-back"
 msgstr "Подача назад"
 
@@ -630,7 +610,6 @@ msgid "External"
 msgstr "Зовнішній"
 
 #: data/ui/compressor.ui:699 data/ui/expander.ui:619 data/ui/gate.ui:832
-#, fuzzy
 msgid "Sidechain Type"
 msgstr "Тип побічного ланцюга"
 
@@ -651,18 +630,15 @@ msgstr "Реактивність"
 #: data/ui/compressor.ui:806 data/ui/expander.ui:726 data/ui/gate.ui:939
 #: data/ui/limiter.ui:241 data/ui/multiband_compressor_band.ui:732
 #: data/ui/multiband_gate_band.ui:788
-#, fuzzy
 msgid "Lookahead"
 msgstr "Дивитися вперед"
 
 #: data/ui/compressor.ui:848 data/ui/expander.ui:768 data/ui/gate.ui:981
-#, fuzzy
 msgid "Sidechain Filters"
 msgstr "Фільтри побічного ланцюга"
 
 #: data/ui/compressor.ui:858 data/ui/expander.ui:778 data/ui/filter.ui:51
 #: data/ui/gate.ui:991
-#, fuzzy
 msgid "High-Pass"
 msgstr "Високі частоти"
 
@@ -703,7 +679,6 @@ msgstr "Частота фільтру високих частот"
 
 #: data/ui/compressor.ui:943 data/ui/expander.ui:863 data/ui/filter.ui:50
 #: data/ui/gate.ui:1076
-#, fuzzy
 msgid "Low-Pass"
 msgstr "Низькі частоти"
 
@@ -717,7 +692,6 @@ msgid "Gain"
 msgstr "Посилення"
 
 #: data/ui/compressor.ui:1048 data/ui/expander.ui:968 data/ui/gate.ui:1181
-#, fuzzy
 msgid "Envelope"
 msgstr "Конверт"
 
@@ -748,7 +722,6 @@ msgstr "Імпульси"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
-#, fuzzy
 msgid "Combine"
 msgstr "Об'єднати"
 
@@ -781,7 +754,6 @@ msgid "Duration"
 msgstr "Тривалість"
 
 #: data/ui/convolver_menu_combine.ui:15
-#, fuzzy
 msgid "Combine Impulse Responses"
 msgstr "Комбінувати відповіді імпульсів"
 
@@ -815,7 +787,6 @@ msgid "Search Impulse File"
 msgstr "Шукати файл імпульсу"
 
 #: data/ui/convolver_menu_impulses.ui:47
-#, fuzzy
 msgid "Impulse Files List"
 msgstr "Перелік файлів імпульсів"
 
@@ -828,7 +799,6 @@ msgid "Cutoff"
 msgstr "Відсікання"
 
 #: data/ui/crossfeed.ui:78
-#, fuzzy
 msgid "Feed"
 msgstr "Фід"
 
@@ -864,7 +834,7 @@ msgstr "Мінімальний буфер обробки"
 
 #: data/ui/deepfilternet.ui:163
 msgid "Post Filter Beta"
-msgstr ""
+msgstr "Бета-версія фільтра публікацій"
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
@@ -884,7 +854,7 @@ msgstr "F1 Розділити"
 
 #: data/ui/deesser.ui:115
 msgid "Frequency 1 Split"
-msgstr ""
+msgstr "Частота 1 Спліт"
 
 #: data/ui/deesser.ui:128
 msgid "F2 Peak"
@@ -892,35 +862,35 @@ msgstr "F2 Вибрати"
 
 #: data/ui/deesser.ui:147
 msgid "Frequency 2 Peak"
-msgstr ""
+msgstr "Частота 2 пік"
 
 #: data/ui/deesser.ui:165
 msgid "F1 Gain"
-msgstr ""
+msgstr "F1 Посилення"
 
 #: data/ui/deesser.ui:192
 msgid "Frequency 1 Gain"
-msgstr ""
+msgstr "Підсилення частоти 1"
 
 #: data/ui/deesser.ui:199
 msgid "F2 Level"
-msgstr ""
+msgstr "Рівень F2"
 
 #: data/ui/deesser.ui:226
 msgid "Frequency 2 Level"
-msgstr ""
+msgstr "Частота 2 Рівень"
 
 #: data/ui/deesser.ui:233
 msgid "F2 Peak Q"
-msgstr ""
+msgstr "F2 Пік Q"
 
 #: data/ui/deesser.ui:260
 msgid "Frequency 2 Peak Q"
-msgstr ""
+msgstr "Частота 2 Пік Q"
 
 #: data/ui/deesser.ui:267
 msgid "Laxity"
-msgstr ""
+msgstr "В’ялість"
 
 #: data/ui/deesser.ui:577
 msgid "Detected"
@@ -942,49 +912,48 @@ msgstr "Інвертувати фазу"
 
 #: data/ui/echo_canceller.ui:27
 msgid "Filter Length"
-msgstr ""
+msgstr "Довжина фільтра"
 
 #: data/ui/echo_canceller.ui:49
 msgid "Residual Echo Suppression"
-msgstr ""
+msgstr "Придушення залишкової луни"
 
 #: data/ui/echo_canceller.ui:70
 msgid "Near End Echo Suppression"
-msgstr ""
+msgstr "Придушення відлуння на ближньому кінці"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
-msgstr ""
+msgstr "Виключені програми"
 
 #: data/ui/effects_box.ui:120
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "Увімкнути / вимкнути цей додаток"
+msgstr "Увімкнути/вимкнути моніторинг входу"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
-msgstr ""
+msgstr "Гурти"
 
 #: data/ui/equalizer.ui:93 data/ui/filter.ui:270 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:391
 msgid "Balance"
-msgstr ""
+msgstr "Баланс"
 
 #: data/ui/equalizer.ui:125
 msgid "Pitch Left"
-msgstr ""
+msgstr "Крок ліворуч"
 
 #: data/ui/equalizer.ui:157
 msgid "Pitch Right"
-msgstr ""
+msgstr "Крок праворуч"
 
 #: data/ui/equalizer.ui:288
 msgid "Split Channels"
-msgstr ""
+msgstr "Розділення каналів"
 
 #: data/ui/equalizer.ui:294
 msgid "Flat Response"
-msgstr ""
+msgstr "Рівна відповідь"
 
 #: data/ui/equalizer.ui:302
 msgid "Calculate Frequencies"
