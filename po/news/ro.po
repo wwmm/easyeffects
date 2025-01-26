@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-25 16:10+0000\n"
-"PO-Revision-Date: 2025-01-01 09:00+0000\n"
+"PO-Revision-Date: 2025-01-26 07:05+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ro/>\n"
@@ -139,13 +139,12 @@ msgid "Features:"
 msgstr "Caracteristici:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
-#, fuzzy
 msgid ""
 "Improved compatibility with future PipeWire releases. This version will "
 "avoid compilation errors like issue 3620"
 msgstr ""
-"Compatibilitate îmbunătățită cu versiunile PipeWire recente. Mai multe "
-"informații la"
+"Compatibilitate îmbunătățită cu viitoarele versiuni PipeWire. Această "
+"versiune va evita erorile de compilare precum problema 3620"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
@@ -239,6 +238,9 @@ msgid ""
 "Added a workaround for a glibc(or maybe libstdc++) bug that affects locale "
 "management. What in turns breaks our spinbuttons on some locales."
 msgstr ""
+"Am adăugat o soluție pentru o eroare glibc (sau poate libstdc++) care "
+"afectează gestionarea «locale». Ceea ce, la rândul său, rupe butoanele "
+"noastre de rotire pe unele configurații regionale."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
 msgid ""
