@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-25 16:10+0000\n"
-"PO-Revision-Date: 2025-01-02 06:00+0000\n"
-"Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2025-01-27 07:01+0000\n"
+"Last-Translator: Bundy01 <bundy@posteo.eu>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
 "Language: fr_FR\n"
@@ -138,13 +138,12 @@ msgid "Features:"
 msgstr "Fonctionnalités :"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
-#, fuzzy
 msgid ""
 "Improved compatibility with future PipeWire releases. This version will "
 "avoid compilation errors like issue 3620"
 msgstr ""
-"Compatibilité améliorée avec les versions récentes de PipeWire. Plus "
-"d'informations à l'adresse suivante"
+"Amélioration de la compatibilité avec les futures versions de PipeWire. "
+"Cette version évitera les erreurs de compilation comme le problème 3620"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
@@ -238,6 +237,9 @@ msgid ""
 "Added a workaround for a glibc(or maybe libstdc++) bug that affects locale "
 "management. What in turns breaks our spinbuttons on some locales."
 msgstr ""
+"Ajout d'une solution de contournement pour un bogue de glibc (ou peut-être "
+"de libstdc++) qui affecte la gestion locale. Ce qui a pour effet de casser "
+"nos boutons rotatifs à certains endroits."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
 msgid ""
