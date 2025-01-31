@@ -17,6 +17,7 @@ Item {
     property real xMax: 1
     property real yMin: 0
     property real yMax: 1
+    property string xUnit: ""
     readonly property real xMinLog: Math.log10(xMin)
     readonly property real xMaxLog: Math.log10(xMax)
     readonly property real yMinLog: Math.log10(yMin)
@@ -54,6 +55,8 @@ Item {
         }
     }
 
+    implicitHeight: columnLayout.implicitHeight
+    implicitWidth: columnLayout.implicitWidth
     Kirigami.Theme.inherit: false
     Kirigami.Theme.colorSet: Kirigami.Theme.View
 
@@ -66,11 +69,10 @@ Item {
         GraphsView {
             id: chart
 
-            Layout.leftMargin: -60
             antialiasing: true
             marginBottom: -40 // https://github.com/qt/qtgraphs/blob/dev/src/graphs2d/qgraphsview_p.h
             marginTop: 0
-            marginLeft: 0
+            marginLeft: -60
             marginRight: 0
             Layout.fillWidth: true
             Layout.fillHeight: true
@@ -216,7 +218,7 @@ Item {
                             if (index !== (axisRepeater.count - 1))
                                 return Number(value).toLocaleString(Qt.locale(), 'f', 0);
                             else
-                                return "Hz";
+                                return xUnit;
                         }
                         horizontalAlignment: {
                             if (index === (axisRepeater.count - 1))

@@ -30,35 +30,103 @@ Kirigami.ScrollablePage {
     }
 
     ColumnLayout {
-        Kirigami.CardsLayout {
-            id: cardLayout
+        anchors {
+            top: parent.top
+            bottom: parent.bottom
+        }
 
-            Layout.fillWidth: true
+        Kirigami.Card {
+            Layout.fillHeight: true
+            actions: [
+                Kirigami.Action {
+                    text: qsTr("Impulses")
+                    icon.name: "waveform-symbolic"
+                    onTriggered: {
+                    }
+                },
+                Kirigami.Action {
+                    text: qsTr("Combine")
+                    icon.name: "path-combine-symbolic"
+                    onTriggered: {
+                    }
+                },
+                Kirigami.Action {
+                    id: spectrumAction
 
-            Kirigami.Card {
-                id: cardPresets
-
-                header: Kirigami.Heading {
-                    text: i18n("To do")
-                    level: 2
+                    text: i18n("Spectrum")
+                    icon.name: "folder-chart-symbolic"
+                    checkable: true
+                    onTriggered: {
+                        if (checked)
+                            convolverChart.xUnit = "Hz";
+                        else
+                            convolverChart.xUnit = "s";
+                    }
+                },
+                Kirigami.Action {
+                    text: qsTr("Log Scale")
+                    visible: spectrumAction.checked
+                    checkable: true
+                    icon.name: "transform-scale-symbolic"
+                    onTriggered: {
+                        convolverChart.logarithimicHorizontalAxis = checked;
+                    }
                 }
+            ]
 
-                contentItem: ColumnLayout {
-                }
-
+            banner {
+                title: "Impulse Name"
+                titleAlignment: Qt.AlignHCenter | Qt.AlignBottom
             }
 
-            Kirigami.Card {
-                id: cardControls
+            contentItem: EeChart {
+                id: convolverChart
 
-                header: Kirigami.Heading {
-                    text: i18n("To do")
-                    level: 2
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                seriesType: 1 // spline series
+                colorScheme: DB.Manager.spectrum.spectrumColorScheme
+                colorTheme: DB.Manager.spectrum.spectrumColorTheme
+                xUnit: "s"
+                xMin: 0
+                xMax: 10
+                yMin: -100
+                yMax: 0
+                logarithimicHorizontalAxis: false
+            }
+
+        }
+
+        RowLayout {
+            Layout.alignment: Qt.AlignHCenter
+            Layout.maximumWidth: 0.5 * parent.width
+
+            Controls.Label {
+                Layout.alignment: Qt.AlignHCenter
+                text: i18n("Stereo Width")
+            }
+
+            Controls.Slider {
+                id: irWidth
+
+                Layout.alignment: Qt.AlignHCenter
+                Layout.fillWidth: true
+                orientation: Qt.Horizontal
+                snapMode: Controls.Slider.SnapAlways
+                value: pluginDB.irWidth
+                from: pluginDB.getMinValue("irWidth")
+                to: pluginDB.getMaxValue("irWidth")
+                stepSize: 1
+                onValueChanged: () => {
+                    if (value !== pluginDB.irWidth)
+                        pluginDB.irWidth = value;
+
                 }
+            }
 
-                contentItem: ColumnLayout {
-                }
-
+            Controls.Label {
+                Layout.alignment: Qt.AlignHCenter
+                text: irWidth.value + " %"
             }
 
         }
@@ -88,13 +156,6 @@ Kirigami.ScrollablePage {
             position: Controls.ToolBar.Footer
             flat: true
             actions: [
-                Kirigami.Action {
-                    text: i18n("Spectrum")
-                    icon.name: "folder-chart-symbolic"
-                    checkable: true
-                    onTriggered: {
-                    }
-                },
                 Kirigami.Action {
                     text: i18n("Autogain")
                     icon.name: "audio-volume-medium-symbolic"
