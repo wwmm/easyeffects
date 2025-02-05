@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-25 16:10+0000\n"
-"PO-Revision-Date: 2024-12-20 01:00+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2025-02-06 03:02+0000\n"
+"Last-Translator: Felipe Valenzuela Cornejo <correo@fvalenzuela.cl>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9.2-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -138,13 +138,12 @@ msgid "Features:"
 msgstr "Características:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
-#, fuzzy
 msgid ""
 "Improved compatibility with future PipeWire releases. This version will "
 "avoid compilation errors like issue 3620"
 msgstr ""
-"Compatibilidad mejorada con las versiones recientes de PipeWire. Mas "
-"información en"
+"Compatibilidad mejorada con las versiones futuras de PipeWire. Esta versión "
+"evitará errores de compilación como en la issue 3620"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
@@ -238,6 +237,9 @@ msgid ""
 "Added a workaround for a glibc(or maybe libstdc++) bug that affects locale "
 "management. What in turns breaks our spinbuttons on some locales."
 msgstr ""
+"Se agrega solución alternativa para el error de glibc(o incluso libstdc++) "
+"que afecta la administración local. En cambio rompe los botones giratorios "
+"en algunas ubicaciones."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
 msgid ""
