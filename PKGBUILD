@@ -49,5 +49,5 @@ build() {
 
 package() {
   cd ..
-  DESTDIR="${pkgdir}" ninja install -C build
+  DESTDIR="${pkgdir}" ninja -C build install
 }
