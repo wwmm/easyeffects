@@ -71,6 +71,22 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         convolverChart.logarithimicHorizontalAxis = checked;
                     }
+                },
+                Kirigami.Action {
+
+                    displayComponent: RowLayout {
+                        Controls.RadioButton {
+                            text: i18n("Left")
+                            checked: true
+                        }
+
+                        Controls.RadioButton {
+                            text: i18n("Right")
+                            checked: false
+                        }
+
+                    }
+
                 }
             ]
 
@@ -79,20 +95,71 @@ Kirigami.ScrollablePage {
                 titleAlignment: Qt.AlignHCenter | Qt.AlignBottom
             }
 
-            contentItem: EeChart {
-                id: convolverChart
+            contentItem: ColumnLayout {
+                EeChart {
+                    id: convolverChart
 
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                seriesType: 1 // spline series
-                colorScheme: DB.Manager.spectrum.spectrumColorScheme
-                colorTheme: DB.Manager.spectrum.spectrumColorTheme
-                xUnit: "s"
-                xMin: 0
-                xMax: 10
-                yMin: -100
-                yMax: 0
-                logarithimicHorizontalAxis: false
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    seriesType: 1 // spline series
+                    colorScheme: DB.Manager.spectrum.spectrumColorScheme
+                    colorTheme: DB.Manager.spectrum.spectrumColorTheme
+                    xUnit: "s"
+                    xMin: 0
+                    xMax: 10
+                    yMin: -100
+                    yMax: 0
+                    logarithimicHorizontalAxis: false
+                }
+
+                GridLayout {
+                    id: delegateLayout
+
+                    Layout.alignment: Qt.AlignHCenter
+                    uniformCellWidths: true
+                    rowSpacing: Kirigami.Units.largeSpacing
+                    columnSpacing: Kirigami.Units.largeSpacing
+                    columns: 3
+                    rows: 2
+
+                    Controls.Label {
+                        Layout.alignment: Qt.AlignHCenter
+                        text: i18n("Rate")
+                    }
+
+                    Controls.Label {
+                        Layout.alignment: Qt.AlignHCenter
+                        text: i18n("Samples")
+                    }
+
+                    Controls.Label {
+                        Layout.alignment: Qt.AlignHCenter
+                        text: i18n("Duration")
+                    }
+
+                    Controls.Label {
+                        id: irRate
+
+                        Layout.alignment: Qt.AlignHCenter
+                        text: ""
+                    }
+
+                    Controls.Label {
+                        id: irSamples
+
+                        Layout.alignment: Qt.AlignHCenter
+                        text: ""
+                    }
+
+                    Controls.Label {
+                        id: irDuration
+
+                        Layout.alignment: Qt.AlignHCenter
+                        text: ""
+                    }
+
+                }
+
             }
 
         }
