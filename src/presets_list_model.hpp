@@ -34,7 +34,7 @@ class ListModel : public QAbstractListModel {
   QML_ELEMENT
 
  public:
-  enum ModelType { Local = Qt::UserRole, Community, Autoloading };
+  enum ModelType { Local = Qt::UserRole, Community, Autoloading, IRS };
 
   explicit ListModel(QObject* parent = nullptr, const ModelType& model_type = ModelType::Local);
 

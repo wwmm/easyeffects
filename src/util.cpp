@@ -38,7 +38,7 @@
 
 namespace util {
 
-auto prepare_debug_message(const std::string& message, source_location location) -> std::string {
+static auto prepare_debug_message(const std::string& message, source_location location) -> std::string {
   auto file_path = std::filesystem::path{location.file_name()};
 
   std::string msg = file_path.filename().string() + ":" + to_string(location.line()) + "\t" + message;
@@ -117,20 +117,6 @@ auto db_to_linear(const double& db) -> double {
 
 auto remove_filename_extension(const std::string& basename) -> std::string {
   return basename.substr(0U, basename.find_last_of('.'));
-}
-
-auto get_files_name(const std::filesystem::path& dir_path, const std::string& ext) -> std::vector<std::string> {
-  std::vector<std::string> names;
-
-  for (std::filesystem::directory_iterator it{dir_path}; it != std::filesystem::directory_iterator{}; ++it) {
-    if (std::filesystem::is_regular_file(it->status())) {
-      if (it->path().extension() == ext) {
-        names.push_back(it->path().stem().string());
-      }
-    }
-  }
-
-  return names;
 }
 
 auto str_contains(const std::string& haystack, const std::string& needle) -> bool {

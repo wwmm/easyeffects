@@ -63,7 +63,7 @@ class Manager : public QObject {
     plugin_generic
   };
 
-  const std::string json_ext = ".json";
+  constexpr static std::string json_ext = ".json";
 
   auto preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool;
 
@@ -112,14 +112,17 @@ class Manager : public QObject {
 
   std::vector<std::string> system_data_dir_input, system_data_dir_output, system_data_dir_irs, system_data_dir_rnnoise;
 
-  QFileSystemWatcher user_output_watcher, user_input_watcher, autoload_output_watcher, autoload_input_watcher;
+  QFileSystemWatcher user_output_watcher, user_input_watcher, autoload_output_watcher, autoload_input_watcher,
+      irs_watcher;
 
   ListModel *outputListModel, *inputListModel, *communityOutputListModel, *communityInputListModel,
-      *autoloadingOutputListmodel, *autoloadingInputListmodel;
+      *autoloadingOutputListmodel, *autoloadingInputListmodel, *irsListModel;
 
   static void create_user_directory(const std::filesystem::path& path);
 
   auto get_local_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
+
+  auto get_local_irs_paths() -> QList<std::filesystem::path>;
 
   auto get_autoloading_profiles_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
 
@@ -147,7 +150,8 @@ class Manager : public QObject {
 
   void prepare_last_used_preset_key(const PipelineType& pipeline_type);
 
-  auto search_presets_path(std::filesystem::directory_iterator& it) -> QList<std::filesystem::path>;
+  static auto search_presets_path(std::filesystem::directory_iterator& it, const std::string& file_extension = json_ext)
+      -> QList<std::filesystem::path>;
 
   auto scan_community_package_recursive(std::filesystem::directory_iterator& it,
                                         const uint& top_scan_level,

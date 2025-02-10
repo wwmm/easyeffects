@@ -62,8 +62,6 @@ auto remove_filename_extension(const std::string& basename) -> std::string;
 
 void print_thread_id();
 
-auto get_files_name(const std::filesystem::path& dir_path, const std::string& ext) -> std::vector<std::string>;
-
 auto str_contains(const std::string& haystack, const std::string& needle) -> bool;
 
 auto compare_versions(const std::string& v0, const std::string& v1) -> int;
