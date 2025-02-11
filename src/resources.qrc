@@ -5,6 +5,7 @@
         <file alias="BlocklistSheet.qml">contents/ui/BlocklistSheet.qml</file>
         <file alias="Compressor.qml">contents/ui/Compressor.qml</file>
         <file alias="Convolver.qml">contents/ui/Convolver.qml</file>
+        <file alias="ConvolverImpulseSheet.qml">contents/ui/ConvolverImpulseSheet.qml</file>
         <file alias="Crossfeed.qml">contents/ui/Crossfeed.qml</file>
         <file alias="Crystalizer.qml">contents/ui/Crystalizer.qml</file>
         <file alias="CrystalizerBand.qml">contents/ui/CrystalizerBand.qml</file>

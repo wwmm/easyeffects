@@ -29,6 +29,12 @@ Kirigami.ScrollablePage {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
+    ConvolverImpulseSheet {
+        id: impulseSheet
+
+        pluginDB: convolverPage.pluginDB
+    }
+
     ColumnLayout {
         anchors {
             top: parent.top
@@ -42,6 +48,7 @@ Kirigami.ScrollablePage {
                     text: qsTr("Impulses")
                     icon.name: "waveform-symbolic"
                     onTriggered: {
+                        impulseSheet.open();
                     }
                 },
                 Kirigami.Action {

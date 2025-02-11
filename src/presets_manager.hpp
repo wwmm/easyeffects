@@ -63,7 +63,11 @@ class Manager : public QObject {
     plugin_generic
   };
 
+  enum class ImpulseImportState { success, no_regular_file, no_frame, no_stereo };
+
   constexpr static std::string json_ext = ".json";
+
+  constexpr static std::string irs_ext = ".irs";
 
   auto preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool;
 
@@ -78,6 +82,10 @@ class Manager : public QObject {
   Q_INVOKABLE bool loadLocalPresetFile(const PipelineType& pipeline_type, const QString& name);
 
   Q_INVOKABLE bool importPresets(const PipelineType& pipeline_type, const QList<QString>& url_list);
+
+  Q_INVOKABLE int importImpulses(const QList<QString>& url_list);
+
+  Q_INVOKABLE static void removeImpulseFile(const QString& filePath);
 
   Q_INVOKABLE void refreshCommunityPresets(const PipelineType& pipeline_type);
 
@@ -175,6 +183,8 @@ class Manager : public QObject {
 
   static auto create_wrapper(const PipelineType& pipeline_type, const QString& filter_name)
       -> std::optional<std::unique_ptr<PluginPresetBase>>;
+
+  auto import_irs_file(const std::string& file_path) -> ImpulseImportState;
 };
 
 }  // namespace presets

@@ -38,6 +38,7 @@
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
+#include <sndfile.hh>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -105,6 +106,9 @@ Manager::Manager()
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedAutoloadingOutputListModel",
                                                       autoloadingOutputListmodel->getProxy());
+
+  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
+                                                      "SortedImpulseListModel", irsListModel->getProxy());
   // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 
   // Initialize input and output directories for community presets.
@@ -773,6 +777,68 @@ bool Manager::importPresets(const PipelineType& pipeline_type, const QList<QStri
 
     return false;
   });
+}
+
+auto Manager::import_irs_file(const std::string& file_path) -> ImpulseImportState {
+  std::filesystem::path p{file_path};
+
+  if (!std::filesystem::is_regular_file(p)) {
+    util::warning(p.string() + " is not a file!");
+
+    return ImpulseImportState::no_regular_file;
+  }
+
+  auto file = SndfileHandle(file_path.c_str());
+
+  if (file.frames() == 0) {
+    util::warning("Cannot import the impulse response! The format may be corrupted or unsupported.");
+    util::warning(file_path + " loading failed");
+
+    return ImpulseImportState::no_frame;
+  }
+
+  if (file.channels() != 2) {
+    util::warning("Only stereo impulse files are supported!");
+    util::warning(file_path + " loading failed");
+
+    return ImpulseImportState::no_stereo;
+  }
+
+  auto out_path = user_irs_dir / p.filename();
+
+  out_path.replace_extension(irs_ext);
+
+  std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
+
+  util::debug("Irs file successfully imported to: " + out_path.string());
+
+  return ImpulseImportState::success;
+}
+
+int Manager::importImpulses(const QList<QString>& url_list) {
+  for (const auto& u : url_list) {
+    auto url = QUrl(u);
+
+    if (url.isLocalFile()) {
+      auto path = std::filesystem::path{url.toLocalFile().toStdString()};
+
+      if (auto import_state = import_irs_file(path); import_state != ImpulseImportState::success) {
+        return static_cast<int>(import_state);
+      }
+    }
+  }
+
+  return static_cast<int>(ImpulseImportState::success);
+}
+
+void Manager::removeImpulseFile(const QString& filePath) {
+  // const auto irs_file = user_irs_dir / std::filesystem::path{name + irs_ext};
+
+  if (std::filesystem::exists(filePath.toStdString())) {
+    std::filesystem::remove(filePath.toStdString());
+
+    util::debug("removed irs file: " + filePath.toStdString());
+  }
 }
 
 auto Manager::import_addons_from_community_package(const PipelineType& pipeline_type,
