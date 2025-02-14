@@ -21,17 +21,21 @@
 #include <qnamespace.h>
 #include <qstandardpaths.h>
 #include <sched.h>
+#include <sndfile.h>
 #include <sys/types.h>
 #include <zita-convolver.h>
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
+#include <execution>
 #include <filesystem>
 #include <memory>
 #include <mutex>
+#include <numeric>
 #include <sndfile.hh>
 #include <span>
 #include <string>
+#include <tuple>
 #include <vector>
 #include "db_manager.hpp"
 #include "easyeffects_db_convolver.h"
@@ -556,4 +560,176 @@ void Convolver::prepare_kernel() {
 
     data_mutex.unlock();
   }
+}
+
+void Convolver::direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c) {
+  std::vector<size_t> indices(c.size());
+
+  std::iota(indices.begin(), indices.end(), 0U);
+
+  auto each = [&](const int n) {
+    c[n] = 0.0F;
+
+    // Static cast to avoid gcc signedness warning.
+
+    const int a_size = static_cast<int>(a.size());
+    const int b_size = static_cast<int>(b.size());
+
+    for (int m = 0; m < b_size; m++) {
+      if (const auto z = n - m; z >= 0 && z < a_size - 1) {
+        c[n] += b[m] * a[z];
+      }
+    }
+  };
+#if defined(ENABLE_LIBCPP_WORKAROUNDS) && (_LIBCPP_VERSION < 170000 || defined(_LIBCPP_HAS_NO_INCOMPLETE_PSTL))
+  std::for_each(indices.begin(), indices.end(), each);
+#else
+  std::for_each(std::execution::par_unseq, indices.begin(), indices.end(), each);
+#endif
+}
+
+auto Convolver::simple_read_kernel(const std::string& kernel_path)
+    -> std::tuple<int, std::vector<float>, std::vector<float>> {
+  int rate = 0;
+  std::vector<float> buffer;
+  std::vector<float> kernel_L;
+  std::vector<float> kernel_R;
+
+  auto file_path = std::filesystem::path{kernel_path};
+
+  util::debug("reading the impulse file: " + file_path.string());
+
+  if (file_path.extension() != irs_ext) {
+    file_path += irs_ext;
+  }
+
+  if (!std::filesystem::exists(file_path)) {
+    util::debug("file: " + file_path.string() + " does not exist");
+
+    return std::make_tuple(rate, kernel_L, kernel_R);
+  }
+
+  auto sndfile = SndfileHandle(file_path.string());
+
+  if (sndfile.channels() != 2 || sndfile.frames() == 0) {
+    util::warning(" Only stereo impulse responses are supported.");
+    util::warning(" The impulse file was not loaded!");
+
+    return std::make_tuple(rate, kernel_L, kernel_R);
+  }
+
+  buffer.resize(sndfile.frames() * sndfile.channels());
+  kernel_L.resize(sndfile.frames());
+  kernel_R.resize(sndfile.frames());
+
+  sndfile.readf(buffer.data(), sndfile.frames());
+
+  for (size_t n = 0U; n < kernel_L.size(); n++) {
+    kernel_L[n] = buffer[2U * n];
+    kernel_R[n] = buffer[(2U * n) + 1U];
+  }
+
+  rate = sndfile.samplerate();
+
+  return std::make_tuple(rate, kernel_L, kernel_R);
+}
+
+void Convolver::combine_kernels(const std::string& kernel_1_name,
+                                const std::string& kernel_2_name,
+                                const std::string& output_file_name) {
+  if (output_file_name.empty()) {
+    // The method combine_kernels run in a secondary thread. But the widgets have to be used in the main thread.
+
+    // g_object_ref(self);
+
+    // util::idle_add([=] { gtk_spinner_stop(self->spinner); }, [=]() { g_object_unref(self); });
+
+    return;
+  }
+
+  const auto kernel_1_path = search_irs_path(kernel_1_name);
+  const auto kernel_2_path = search_irs_path(kernel_2_name);
+
+  // If the search fails, the path is empty
+  if (kernel_1_path.empty()) {
+    util::warning(log_tag + kernel_1_path + ": irs filename does not exist.");
+
+    return;
+  }
+
+  if (kernel_2_path.empty()) {
+    util::warning(log_tag + kernel_2_path + ": irs filename does not exist.");
+
+    return;
+  }
+
+  auto [rate1, kernel_1_L, kernel_1_R] = simple_read_kernel(kernel_1_path);
+  auto [rate2, kernel_2_L, kernel_2_R] = simple_read_kernel(kernel_2_path);
+
+  if (rate1 == 0 || rate2 == 0) {
+    // g_object_ref(self);
+
+    // util::idle_add([=] { gtk_spinner_stop(self->spinner); }, [=]() { g_object_unref(self); });
+
+    return;
+  }
+
+  if (rate1 > rate2) {
+    util::debug("resampling the kernel " + kernel_2_name + " to " + util::to_string(rate1) + " Hz");
+
+    auto resampler = std::make_unique<Resampler>(rate2, rate1);
+
+    kernel_2_L = resampler->process(kernel_2_L, true);
+
+    resampler = std::make_unique<Resampler>(rate2, rate1);
+
+    kernel_2_R = resampler->process(kernel_2_R, true);
+  } else if (rate2 > rate1) {
+    util::debug("resampling the kernel " + kernel_1_name + " to " + util::to_string(rate2) + " Hz");
+
+    auto resampler = std::make_unique<Resampler>(rate1, rate2);
+
+    kernel_1_L = resampler->process(kernel_1_L, true);
+
+    resampler = std::make_unique<Resampler>(rate1, rate2);
+
+    kernel_1_R = resampler->process(kernel_1_R, true);
+  }
+
+  std::vector<float> kernel_L(kernel_1_L.size() + kernel_2_L.size() - 1U);
+  std::vector<float> kernel_R(kernel_1_R.size() + kernel_2_R.size() - 1U);
+
+  // As the convolution is commutative we change the order based on which will run faster.
+
+  if (kernel_1_L.size() > kernel_2_L.size()) {
+    direct_conv(kernel_1_L, kernel_2_L, kernel_L);
+    direct_conv(kernel_1_R, kernel_2_R, kernel_R);
+  } else {
+    direct_conv(kernel_2_L, kernel_1_L, kernel_L);
+    direct_conv(kernel_2_R, kernel_1_R, kernel_R);
+  }
+
+  std::vector<float> buffer(kernel_L.size() * 2U);  // 2 channels interleaved
+
+  for (size_t n = 0U; n < kernel_L.size(); n++) {
+    buffer[2U * n] = kernel_L[n];
+    buffer[(2U * n) + 1U] = kernel_R[n];
+  }
+
+  const auto output_file_path = local_dir_irs / std::filesystem::path{output_file_name + irs_ext};
+
+  auto mode = SFM_WRITE;
+  auto format = SF_FORMAT_WAV | SF_FORMAT_PCM_32;
+  auto n_channels = 2;
+  auto rate = (rate1 > rate2) ? rate1 : rate2;
+
+  auto sndfile = SndfileHandle(output_file_path.string(), mode, format, n_channels, rate);
+
+  sndfile.writef(buffer.data(), static_cast<sf_count_t>(kernel_L.size()));
+
+  util::debug("combined kernel saved: " + output_file_path.string());
+
+  // g_object_ref(self);
+
+  // util::idle_add([=] { gtk_spinner_stop(self->spinner); }, [=]() { g_object_unref(self); });
 }

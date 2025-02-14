@@ -147,7 +147,7 @@ class Manager : public QObject {
   Q_INVOKABLE void connectStreamInput(const uint& id) const;
   Q_INVOKABLE void disconnectStream(const uint& id) const;
 
- signals:
+ Q_SIGNALS:
 
   void headerVersionChanged();
   void libraryVersionChanged();

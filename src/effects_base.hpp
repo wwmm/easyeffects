@@ -125,7 +125,7 @@ class EffectsBase : public QObject {
 
   Q_INVOKABLE void requestSpectrumData();
 
- signals:
+ Q_SIGNALS:
   void pipelineChanged();
   void newSpectrumData(QList<QPointF> newData);
 

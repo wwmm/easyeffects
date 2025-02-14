@@ -81,7 +81,7 @@ class Manager : public QObject {
     return nullptr;
   }
 
- signals:
+ Q_SIGNALS:
   void mainChanged();
   void spectrumChanged();
   void streamInputsChanged();

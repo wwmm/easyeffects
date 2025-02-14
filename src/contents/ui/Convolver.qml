@@ -3,6 +3,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
+import ee.presets as Presets
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -35,6 +36,59 @@ Kirigami.ScrollablePage {
         pluginDB: convolverPage.pluginDB
     }
 
+    Kirigami.Dialog {
+        id: combineDialog
+
+        title: "Combine Impulse Responses"
+        padding: Kirigami.Units.largeSpacing
+        standardButtons: Kirigami.Dialog.NoButton
+        flatFooterButtons: false
+
+        ColumnLayout {
+            FormCard.FormComboBoxDelegate {
+                id: firstImpulse
+
+                Layout.columnSpan: 2
+                text: i18n("First")
+                displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                currentIndex: 0
+                editable: false
+                textRole: "name"
+                model: Presets.SortedImpulseListModel
+            }
+
+            FormCard.FormComboBoxDelegate {
+                id: secondImpulse
+
+                Layout.columnSpan: 2
+                text: i18n("Second")
+                displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                currentIndex: 0
+                editable: false
+                textRole: "name"
+                model: Presets.SortedImpulseListModel
+            }
+
+            FormCard.FormTextFieldDelegate {
+                id: combinedImpulseName
+
+                label: "Output Impulse Name"
+            }
+
+        }
+
+        customFooterActions: Kirigami.Action {
+            text: i18n("Combine")
+            icon.name: "path-combine-symbolic"
+            onTriggered: {
+                console.log(firstImpulse.currentText);
+                console.log(secondImpulse.currentText);
+                combinedImpulseName.clear();
+            }
+        }
+
+    }
+
     ColumnLayout {
         anchors {
             top: parent.top
@@ -55,6 +109,7 @@ Kirigami.ScrollablePage {
                     text: qsTr("Combine")
                     icon.name: "path-combine-symbolic"
                     onTriggered: {
+                        combineDialog.open();
                     }
                 },
                 Kirigami.Action {

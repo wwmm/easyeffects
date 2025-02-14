@@ -27,6 +27,7 @@
 #include <span>
 #include <string>
 #include <thread>
+#include <tuple>
 #include <vector>
 #include "easyeffects_db_convolver.h"
 #include "pipeline_type.hpp"
@@ -104,6 +105,14 @@ class Convolver : public PluginBase {
   auto get_zita_buffer_size() -> uint;
 
   void prepare_kernel();
+
+  static void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c);
+
+  auto simple_read_kernel(const std::string& kernel_path) -> std::tuple<int, std::vector<float>, std::vector<float>>;
+
+  void combine_kernels(const std::string& kernel_1_name,
+                       const std::string& kernel_2_name,
+                       const std::string& output_file_name);
 
   template <typename T1>
   void do_convolution(T1& data_left, T1& data_right) {

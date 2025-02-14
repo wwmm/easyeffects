@@ -108,7 +108,7 @@ class Manager : public QObject {
                                   const QString& deviceName,
                                   const QString& deviceProfile);
 
- signals:
+ Q_SIGNALS:
   // signal sending title and description strings
   void presetLoadError(const QString& msg1, const QString& msg2);
 

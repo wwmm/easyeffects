@@ -79,7 +79,7 @@ void Clients::append(const ClientInfo& info) {
 
   endInsertRows();
 
-  emit dataChanged(index(0), index(list.size() - 1));
+  Q_EMIT dataChanged(index(0), index(list.size() - 1));
 }
 
 void Clients::remove_by_id(const uint& id) {
@@ -103,7 +103,7 @@ void Clients::remove_by_id(const uint& id) {
 
   endRemoveRows();
 
-  emit dataChanged(index(0), index(list.size() - 1));
+  Q_EMIT dataChanged(index(0), index(list.size() - 1));
 }
 
 void Clients::reset() {

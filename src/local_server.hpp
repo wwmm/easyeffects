@@ -36,7 +36,7 @@ class LocalServer : public QObject {
   void onReadyRead();
   void onDisconnected();
 
- signals:
+ Q_SIGNALS:
   void onShowWindow();
   void onHideWindow();
   void onQuitApp();

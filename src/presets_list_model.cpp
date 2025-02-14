@@ -131,7 +131,7 @@ void ListModel::append(const std::filesystem::path& path) {
 
   endInsertRows();
 
-  emit dataChanged(index(0), index(listPaths.size() - 1));
+  Q_EMIT dataChanged(index(0), index(listPaths.size() - 1));
 }
 
 void ListModel::remove(const QString& name) {
@@ -153,7 +153,7 @@ void ListModel::remove(const QString& name) {
 
   endRemoveRows();
 
-  emit dataChanged(index(0), index(listPaths.size() - 1));
+  Q_EMIT dataChanged(index(0), index(listPaths.size() - 1));
 }
 
 void ListModel::remove(const int& rowIndex) {
@@ -163,7 +163,7 @@ void ListModel::remove(const int& rowIndex) {
 
   endRemoveRows();
 
-  emit dataChanged(index(0), index(listPaths.size() - 1));
+  Q_EMIT dataChanged(index(0), index(listPaths.size() - 1));
 }
 
 void ListModel::remove(const std::filesystem::path& path) {
@@ -175,7 +175,7 @@ void ListModel::remove(const std::filesystem::path& path) {
 
   endRemoveRows();
 
-  emit dataChanged(index(0), index(listPaths.size() - 1));
+  Q_EMIT dataChanged(index(0), index(listPaths.size() - 1));
 }
 
 void ListModel::reset() {
@@ -205,5 +205,5 @@ QSortFilterProxyModel* ListModel::getProxy() {
 void ListModel::emit_data_changed(const std::filesystem::path& path) {
   qsizetype rowIndex = listPaths.indexOf(path);
 
-  emit dataChanged(index(rowIndex), index(rowIndex));
+  Q_EMIT dataChanged(index(rowIndex), index(rowIndex));
 }

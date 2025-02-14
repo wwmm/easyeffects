@@ -33,7 +33,7 @@ class CommandLineParser : public QObject {
 
   void process(QApplication* app);
 
- signals:
+ Q_SIGNALS:
   void onReset();
   void onQuit();
   void onHideWindow();

@@ -107,7 +107,7 @@ class Modules : public QAbstractListModel {
         break;
     }
 
-    emit dataChanged(model_index, model_index, {role});
+    Q_EMIT dataChanged(model_index, model_index, {role});
   }
 
  private:

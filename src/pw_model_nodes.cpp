@@ -349,7 +349,7 @@ bool Nodes::setData(const QModelIndex& index, const QVariant& value, int role) {
           }
         }
 
-        emit dataChanged(index, index, {Roles::IsBlocklisted});
+        Q_EMIT dataChanged(index, index, {Roles::IsBlocklisted});
       }
 
       break;
@@ -372,7 +372,7 @@ void Nodes::append(const NodeInfo& info) {
 
   endInsertRows();
 
-  emit dataChanged(index(0), index(list.size() - 1));
+  Q_EMIT dataChanged(index(0), index(list.size() - 1));
 }
 
 void Nodes::remove_by_id(const uint& id) {
@@ -398,7 +398,7 @@ void Nodes::remove_by_id(const uint& id) {
 
   endRemoveRows();
 
-  emit dataChanged(index(0), index(list.size() - 1));
+  Q_EMIT dataChanged(index(0), index(list.size() - 1));
 }
 
 void Nodes::remove_by_serial(const uint& serial) {
@@ -424,7 +424,7 @@ void Nodes::remove_by_serial(const uint& serial) {
 
   endRemoveRows();
 
-  emit dataChanged(index(0), index(list.size() - 1));
+  Q_EMIT dataChanged(index(0), index(list.size() - 1));
 }
 
 auto Nodes::has_serial(const uint& serial) -> bool {
@@ -438,7 +438,7 @@ void Nodes::update_info(const NodeInfo& new_info) {
 
       auto model_index = this->index(n);
 
-      emit dataChanged(model_index, model_index);
+      Q_EMIT dataChanged(model_index, model_index);
 
       return;
     }

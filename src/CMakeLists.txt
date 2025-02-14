@@ -104,6 +104,7 @@ target_link_libraries(easyeffects PRIVATE
     Qt${QT_MAJOR_VERSION}::Quick
     Qt${QT_MAJOR_VERSION}::QuickControls2
     Qt${QT_MAJOR_VERSION}::Widgets
+    TBB::tbb
     ${LIBPIPEWIRE_LIBRARIES}
     ${LIBLILV_LIBRARIES}
     ${LIBEBUR128_LIBRARIES}
@@ -117,6 +118,8 @@ target_link_libraries(easyeffects PRIVATE
     ${LIBSNDFILE_LIBRARIES}
     ${LIBZITACONVOLVER}
 )
+
+target_compile_definitions(easyeffects PRIVATE QT_NO_KEYWORDS=1)
 
 if(ENABLE_LIBPORTAL)
     MESSAGE(STATUS "Enabling libportal")
