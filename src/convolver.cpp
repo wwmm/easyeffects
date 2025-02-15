@@ -20,6 +20,7 @@
 #include "convolver.hpp"
 #include <qnamespace.h>
 #include <qstandardpaths.h>
+#include <qtmetamacros.h>
 #include <sched.h>
 #include <sndfile.h>
 #include <sys/types.h>
@@ -168,7 +169,7 @@ void Convolver::setup() {
 
         latency_n_frames = 0U;
 
-        read_kernel_file();
+        load_kernel_file();
 
         if (kernel_is_initialized) {
           kernel_L = original_kernel_L;
@@ -323,7 +324,58 @@ auto Convolver::search_irs_path(const std::string& name) -> std::string {
   return irs_full_path;
 }
 
-void Convolver::read_kernel_file() {
+auto Convolver::read_kernel_file(const std::string& kernel_path)
+    -> std::tuple<int, std::vector<float>, std::vector<float>> {
+  int rate = 0;
+  std::vector<float> buffer;
+  std::vector<float> kernel_L;
+  std::vector<float> kernel_R;
+
+  auto file_path = std::filesystem::path{kernel_path};
+
+  util::debug("reading the impulse file: " + file_path.string());
+
+  if (file_path.extension() != irs_ext) {
+    file_path += irs_ext;
+  }
+
+  if (!std::filesystem::exists(file_path)) {
+    util::debug("file: " + file_path.string() + " does not exist");
+
+    return std::make_tuple(rate, kernel_L, kernel_R);
+  }
+
+  auto sndfile = SndfileHandle(file_path.string());
+
+  if (sndfile.channels() != 2 || sndfile.frames() == 0) {
+    util::warning(" Only stereo impulse responses are supported.");
+    util::warning(" The impulse file was not loaded!");
+
+    return std::make_tuple(rate, kernel_L, kernel_R);
+  }
+
+  util::debug(log_tag + name.toStdString() + ": irs file: " + kernel_path);
+  util::debug(log_tag + name.toStdString() + ": irs rate: " + util::to_string(sndfile.samplerate()) + " Hz");
+  util::debug(log_tag + name.toStdString() + ": irs channels: " + util::to_string(sndfile.channels()));
+  util::debug(log_tag + name.toStdString() + ": irs frames: " + util::to_string(sndfile.frames()));
+
+  buffer.resize(sndfile.frames() * sndfile.channels());
+  kernel_L.resize(sndfile.frames());
+  kernel_R.resize(sndfile.frames());
+
+  sndfile.readf(buffer.data(), sndfile.frames());
+
+  for (size_t n = 0U; n < kernel_L.size(); n++) {
+    kernel_L[n] = buffer[2U * n];
+    kernel_R[n] = buffer[(2U * n) + 1U];
+  }
+
+  rate = sndfile.samplerate();
+
+  return std::make_tuple(rate, kernel_L, kernel_R);
+}
+
+void Convolver::load_kernel_file() {
   kernel_is_initialized = false;
 
   const auto name = settings->kernelName();
@@ -336,69 +388,45 @@ void Convolver::read_kernel_file() {
 
   const auto path = search_irs_path(name.toStdString());
 
+  auto [kernel_rate, kernel_L, kernel_R] = read_kernel_file(path);
+
   // If the search fails, the path is empty
-  if (path.empty()) {
-    util::warning(log_tag + name.toStdString() + ": irs filename does not exist. Entering passthrough mode...");
+  if (rate == 0 || kernel_L.empty() || kernel_R.empty()) {
+    util::warning(log_tag + name.toStdString() + " is invalid. Entering passthrough mode...");
 
     return;
   }
 
-  util::debug("trying to load irs: " + path);
-
-  // SndfileHandle might have issues with std::string, so we provide cstring
-
-  SndfileHandle file = SndfileHandle(path.c_str());
-
-  if (file.channels() == 0 || file.frames() == 0) {
-    util::warning(log_tag + name.toStdString() + ": irs file does not exists or it is empty: " + path);
-    util::warning(log_tag + name.toStdString() + ": Entering passthrough mode...");
-
-    return;
-  }
-
-  util::debug(log_tag + name.toStdString() + ": irs file: " + path);
-  util::debug(log_tag + name.toStdString() + ": irs rate: " + util::to_string(file.samplerate()) + " Hz");
-  util::debug(log_tag + name.toStdString() + ": irs channels: " + util::to_string(file.channels()));
-  util::debug(log_tag + name.toStdString() + ": irs frames: " + util::to_string(file.frames()));
-
-  // for now only stereo irs files are supported
-
-  if (file.channels() != 2) {
-    util::warning(log_tag + name.toStdString() + " Only stereo impulse responses are supported.");
-    util::warning(log_tag + name.toStdString() + " The impulse file was not loaded!");
-
-    return;
-  }
-
-  std::vector<float> buffer(file.frames() * file.channels());
-  std::vector<float> buffer_L(file.frames());
-  std::vector<float> buffer_R(file.frames());
-
-  file.readf(buffer.data(), file.frames());
-
-  for (size_t n = 0U; n < buffer_L.size(); n++) {
-    buffer_L[n] = buffer[2U * n];
-    buffer_R[n] = buffer[(2U * n) + 1U];
-  }
-
-  if (file.samplerate() != static_cast<int>(rate)) {
+  if (kernel_rate != static_cast<int>(rate)) {
     util::debug(log_tag + name.toStdString() + " resampling the kernel to " + util::to_string(rate));
 
-    auto resampler = std::make_unique<Resampler>(file.samplerate(), rate);
+    auto resampler = std::make_unique<Resampler>(kernel_rate, rate);
 
-    original_kernel_L = resampler->process(buffer_L, true);
+    original_kernel_L = resampler->process(kernel_L, true);
 
-    resampler = std::make_unique<Resampler>(file.samplerate(), rate);
+    resampler = std::make_unique<Resampler>(kernel_rate, rate);
 
-    original_kernel_R = resampler->process(buffer_R, true);
+    original_kernel_R = resampler->process(kernel_R, true);
   } else {
-    original_kernel_L = buffer_L;
-    original_kernel_R = buffer_R;
+    original_kernel_L = kernel_L;
+    original_kernel_R = kernel_R;
   }
+
+  const auto dt = 1.0 / rate;
+
+  const double duration = (static_cast<double>(kernel_L.size()) - 1.0) * dt;
+
+  kernelRate = QString::fromStdString(util::to_string(kernel_rate));
+  kernelSamples = QString::fromStdString(util::to_string(kernel_L.size()));
+  kernelDuration = QString::fromStdString(util::to_string(duration));
+
+  Q_EMIT kernelRateChanged();
+  Q_EMIT kernelDurationChanged();
+  Q_EMIT kernelSamplesChanged();
 
   kernel_is_initialized = true;
 
-  util::debug(log_tag + name.toStdString() + ": kernel correctly initialized");
+  util::debug(log_tag + name.toStdString() + ": kernel correctly loaded");
 }
 
 void Convolver::apply_kernel_autogain() {
@@ -543,7 +571,7 @@ void Convolver::prepare_kernel() {
 
   data_mutex.unlock();
 
-  read_kernel_file();
+  load_kernel_file();
 
   if (kernel_is_initialized) {
     kernel_L = original_kernel_L;
@@ -588,59 +616,11 @@ void Convolver::direct_conv(const std::vector<float>& a, const std::vector<float
 #endif
 }
 
-auto Convolver::simple_read_kernel(const std::string& kernel_path)
-    -> std::tuple<int, std::vector<float>, std::vector<float>> {
-  int rate = 0;
-  std::vector<float> buffer;
-  std::vector<float> kernel_L;
-  std::vector<float> kernel_R;
-
-  auto file_path = std::filesystem::path{kernel_path};
-
-  util::debug("reading the impulse file: " + file_path.string());
-
-  if (file_path.extension() != irs_ext) {
-    file_path += irs_ext;
-  }
-
-  if (!std::filesystem::exists(file_path)) {
-    util::debug("file: " + file_path.string() + " does not exist");
-
-    return std::make_tuple(rate, kernel_L, kernel_R);
-  }
-
-  auto sndfile = SndfileHandle(file_path.string());
-
-  if (sndfile.channels() != 2 || sndfile.frames() == 0) {
-    util::warning(" Only stereo impulse responses are supported.");
-    util::warning(" The impulse file was not loaded!");
-
-    return std::make_tuple(rate, kernel_L, kernel_R);
-  }
-
-  buffer.resize(sndfile.frames() * sndfile.channels());
-  kernel_L.resize(sndfile.frames());
-  kernel_R.resize(sndfile.frames());
-
-  sndfile.readf(buffer.data(), sndfile.frames());
-
-  for (size_t n = 0U; n < kernel_L.size(); n++) {
-    kernel_L[n] = buffer[2U * n];
-    kernel_R[n] = buffer[(2U * n) + 1U];
-  }
-
-  rate = sndfile.samplerate();
-
-  return std::make_tuple(rate, kernel_L, kernel_R);
-}
-
 void Convolver::combine_kernels(const std::string& kernel_1_name,
                                 const std::string& kernel_2_name,
                                 const std::string& output_file_name) {
   if (output_file_name.empty()) {
     // The method combine_kernels run in a secondary thread. But the widgets have to be used in the main thread.
-
-    // g_object_ref(self);
 
     // util::idle_add([=] { gtk_spinner_stop(self->spinner); }, [=]() { g_object_unref(self); });
 
@@ -663,12 +643,10 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
     return;
   }
 
-  auto [rate1, kernel_1_L, kernel_1_R] = simple_read_kernel(kernel_1_path);
-  auto [rate2, kernel_2_L, kernel_2_R] = simple_read_kernel(kernel_2_path);
+  auto [rate1, kernel_1_L, kernel_1_R] = read_kernel_file(kernel_1_path);
+  auto [rate2, kernel_2_L, kernel_2_R] = read_kernel_file(kernel_2_path);
 
   if (rate1 == 0 || rate2 == 0) {
-    // g_object_ref(self);
-
     // util::idle_add([=] { gtk_spinner_stop(self->spinner); }, [=]() { g_object_unref(self); });
 
     return;
@@ -728,8 +706,6 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
   sndfile.writef(buffer.data(), static_cast<sf_count_t>(kernel_L.size()));
 
   util::debug("combined kernel saved: " + output_file_path.string());
-
-  // g_object_ref(self);
 
   // util::idle_add([=] { gtk_spinner_stop(self->spinner); }, [=]() { g_object_unref(self); });
 }

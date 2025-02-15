@@ -75,12 +75,25 @@ Kirigami.ScrollablePage {
                 label: "Output Impulse Name"
             }
 
+            Controls.ProgressBar {
+                id: progressBar
+
+                Layout.fillWidth: true
+                Layout.maximumWidth: firstImpulse.contentItem.implicitWidth
+                Layout.alignment: Qt.AlignHCenter
+                from: 0
+                to: 100
+                indeterminate: true
+                visible: false
+            }
+
         }
 
         customFooterActions: Kirigami.Action {
             text: i18n("Combine")
             icon.name: "path-combine-symbolic"
             onTriggered: {
+                progressBar.visible = true;
                 console.log(firstImpulse.currentText);
                 console.log(secondImpulse.currentText);
                 combinedImpulseName.clear();
@@ -153,8 +166,10 @@ Kirigami.ScrollablePage {
             ]
 
             banner {
-                title: "Impulse Name"
+                title: pluginDB.kernelName
                 titleAlignment: Qt.AlignHCenter | Qt.AlignBottom
+                titleLevel: 2
+                titleIcon: "waveform-symbolic"
             }
 
             contentItem: ColumnLayout {
@@ -203,21 +218,24 @@ Kirigami.ScrollablePage {
                         id: irRate
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: ""
+                        text: pluginBackend.kernelRate + " Hz"
+                        enabled: false
                     }
 
                     Controls.Label {
                         id: irSamples
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: ""
+                        text: pluginBackend.kernelSamples
+                        enabled: false
                     }
 
                     Controls.Label {
                         id: irDuration
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: ""
+                        text: Number(pluginBackend.kernelDuration).toLocaleString(Qt.locale(), 'f', 3) + " s"
+                        enabled: false
                     }
 
                 }

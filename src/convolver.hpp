@@ -38,6 +38,10 @@
 class Convolver : public PluginBase {
   Q_OBJECT
 
+  Q_PROPERTY(QString kernelRate MEMBER kernelRate NOTIFY kernelRateChanged)
+  Q_PROPERTY(QString kernelSamples MEMBER kernelSamples NOTIFY kernelSamplesChanged)
+  Q_PROPERTY(QString kernelDuration MEMBER kernelDuration NOTIFY kernelDurationChanged)
+
  public:
   Convolver(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
   Convolver(const Convolver&) = delete;
@@ -68,6 +72,12 @@ class Convolver : public PluginBase {
 
   auto search_irs_path(const std::string& name) -> std::string;
 
+ Q_SIGNALS:
+
+  void kernelRateChanged();
+  void kernelSamplesChanged();
+  void kernelDurationChanged();
+
  private:
   db::Convolver* settings = nullptr;
 
@@ -94,7 +104,9 @@ class Convolver : public PluginBase {
 
   std::vector<std::thread> mythreads;
 
-  void read_kernel_file();
+  QString kernelRate;
+  QString kernelSamples;
+  QString kernelDuration;
 
   void apply_kernel_autogain();
 
@@ -108,7 +120,9 @@ class Convolver : public PluginBase {
 
   static void direct_conv(const std::vector<float>& a, const std::vector<float>& b, std::vector<float>& c);
 
-  auto simple_read_kernel(const std::string& kernel_path) -> std::tuple<int, std::vector<float>, std::vector<float>>;
+  auto read_kernel_file(const std::string& kernel_path) -> std::tuple<int, std::vector<float>, std::vector<float>>;
+
+  void load_kernel_file();
 
   void combine_kernels(const std::string& kernel_1_name,
                        const std::string& kernel_2_name,
