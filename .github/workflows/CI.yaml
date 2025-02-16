@@ -41,7 +41,7 @@ jobs:
 
   flatpak:
     name: Flatpak
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     env:
       FLATPAK_BUILD_PATH: flatpak_app/files/share
     needs: prepare
@@ -60,7 +60,7 @@ jobs:
         jq '.modules[0]."config-opts" += ["-Dwerror=true"]' util/flatpak/com.github.wwmm.easyeffects.Devel.json > "$updated_manifest"
         mv "$updated_manifest" util/flatpak/com.github.wwmm.easyeffects.Devel.json
 
-    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.3
+    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.4
       with:
         bundle: easyeffects-flatpak-${{ needs.prepare.outputs.github_commit_desc }}.flatpak
         manifest-path: util/flatpak/com.github.wwmm.easyeffects.Devel.json
