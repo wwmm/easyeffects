@@ -620,9 +620,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
                                 const std::string& kernel_2_name,
                                 const std::string& output_file_name) {
   if (output_file_name.empty()) {
-    // The method combine_kernels run in a secondary thread. But the widgets have to be used in the main thread.
-
-    // util::idle_add([=] { gtk_spinner_stop(self->spinner); }, [=]() { g_object_unref(self); });
+    Q_EMIT kernelCombinationStopped();
 
     return;
   }
@@ -634,11 +632,15 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
   if (kernel_1_path.empty()) {
     util::warning(log_tag + kernel_1_path + ": irs filename does not exist.");
 
+    Q_EMIT kernelCombinationStopped();
+
     return;
   }
 
   if (kernel_2_path.empty()) {
     util::warning(log_tag + kernel_2_path + ": irs filename does not exist.");
+
+    Q_EMIT kernelCombinationStopped();
 
     return;
   }
@@ -647,7 +649,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
   auto [rate2, kernel_2_L, kernel_2_R] = read_kernel_file(kernel_2_path);
 
   if (rate1 == 0 || rate2 == 0) {
-    // util::idle_add([=] { gtk_spinner_stop(self->spinner); }, [=]() { g_object_unref(self); });
+    Q_EMIT kernelCombinationStopped();
 
     return;
   }
@@ -707,5 +709,12 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
 
   util::debug("combined kernel saved: " + output_file_path.string());
 
-  // util::idle_add([=] { gtk_spinner_stop(self->spinner); }, [=]() { g_object_unref(self); });
+  Q_EMIT kernelCombinationStopped();
+}
+
+void Convolver::combineKernels(const QString& kernel1, const QString& kernel2, const QString& outputName) {
+  mythreads.emplace_back(  // Using emplace_back here makes sense
+      [this, kernel1, kernel2, outputName]() {
+        combine_kernels(kernel1.toStdString(), kernel2.toStdString(), outputName.toStdString());
+      });
 }

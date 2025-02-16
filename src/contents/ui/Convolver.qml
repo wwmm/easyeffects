@@ -30,6 +30,14 @@ Kirigami.ScrollablePage {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
+    Connections {
+        function onKernelCombinationStopped() {
+            progressBar.visible = false;
+        }
+
+        target: pluginBackend
+    }
+
     ConvolverImpulseSheet {
         id: impulseSheet
 
@@ -94,8 +102,7 @@ Kirigami.ScrollablePage {
             icon.name: "path-combine-symbolic"
             onTriggered: {
                 progressBar.visible = true;
-                console.log(firstImpulse.currentText);
-                console.log(secondImpulse.currentText);
+                pluginBackend.combineKernels(firstImpulse.currentText, secondImpulse.currentText, combinedImpulseName.text);
                 combinedImpulseName.clear();
             }
         }

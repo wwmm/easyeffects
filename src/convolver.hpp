@@ -72,11 +72,14 @@ class Convolver : public PluginBase {
 
   auto search_irs_path(const std::string& name) -> std::string;
 
+  Q_INVOKABLE void combineKernels(const QString& kernel1, const QString& kernel2, const QString& outputName);
+
  Q_SIGNALS:
 
   void kernelRateChanged();
   void kernelSamplesChanged();
   void kernelDurationChanged();
+  void kernelCombinationStopped();
 
  private:
   db::Convolver* settings = nullptr;
