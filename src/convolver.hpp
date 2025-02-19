@@ -131,6 +131,10 @@ class Convolver : public PluginBase {
                        const std::string& kernel_2_name,
                        const std::string& output_file_name);
 
+  static auto interpolate(const std::vector<double>& x_source,
+                          const std::vector<double>& y_source,
+                          const std::vector<double>& x_new) -> std::vector<double>;
+
   template <typename T1>
   void do_convolution(T1& data_left, T1& data_right) {
     std::span conv_left_in(conv->inpdata(0), get_zita_buffer_size());

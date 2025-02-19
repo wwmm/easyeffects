@@ -18,9 +18,13 @@
  */
 
 #include "convolver.hpp"
+#include <gsl/gsl_interp.h>
+#include <gsl/gsl_spline.h>
+#include <qlist.h>
 #include <qnamespace.h>
 #include <qstandardpaths.h>
 #include <qtmetamacros.h>
+#include <qtypes.h>
 #include <sched.h>
 #include <sndfile.h>
 #include <sys/types.h>
@@ -67,6 +71,13 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
           db::Manager::self().get_plugin_db<db::Convolver>(pipe_type,
                                                            tags::plugin_name::BaseName::convolver + "#" + instance_id)),
       app_config_dir(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation).toStdString()) {
+  /*
+    Setting valid rate and n_sampls values instead of zero allows the concolver ui to properly show the impulse
+    response file parameters even if nothing is playing audio.
+  */
+  util::str_to_num(pw::Manager::self().defaultClockRate.toStdString(), rate);
+  util::str_to_num(pw::Manager::self().defaultQuantum.toStdString(), n_samples);
+
   init_common_controls<db::Convolver>(settings);
 
   // Initialize directories for local and community irs
@@ -83,6 +94,8 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
     system_data_dir_irs.push_back(dir.toStdString() + "irs");
   }
+
+  prepare_kernel();
 
   connect(settings, &db::Convolver::irWidthChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
@@ -169,21 +182,7 @@ void Convolver::setup() {
 
         latency_n_frames = 0U;
 
-        load_kernel_file();
-
-        if (kernel_is_initialized) {
-          kernel_L = original_kernel_L;
-          kernel_R = original_kernel_R;
-
-          set_kernel_stereo_width();
-          apply_kernel_autogain();
-
-          setup_zita();
-        }
-
-        std::scoped_lock<std::mutex> lock(data_mutex);
-
-        ready = kernel_is_initialized && zita_ready;
+        prepare_kernel();
       },
       Qt::QueuedConnection);
 
@@ -420,6 +419,12 @@ void Convolver::load_kernel_file() {
   kernelSamples = QString::fromStdString(util::to_string(kernel_L.size()));
   kernelDuration = QString::fromStdString(util::to_string(duration));
 
+  QList<float> time_axis(kernel_L.size());
+
+  for (qsizetype n = 0U; n < time_axis.size(); n++) {
+    time_axis[n] = static_cast<double>(n) * dt;
+  }
+
   Q_EMIT kernelRateChanged();
   Q_EMIT kernelDurationChanged();
   Q_EMIT kernelSamplesChanged();
@@ -561,10 +566,6 @@ auto Convolver::get_latency_seconds() -> float {
 }
 
 void Convolver::prepare_kernel() {
-  if (n_samples == 0U || rate == 0U) {
-    return;
-  }
-
   data_mutex.lock();
 
   ready = false;
@@ -717,4 +718,24 @@ void Convolver::combineKernels(const QString& kernel1, const QString& kernel2, c
       [this, kernel1, kernel2, outputName]() {
         combine_kernels(kernel1.toStdString(), kernel2.toStdString(), outputName.toStdString());
       });
+}
+
+auto Convolver::interpolate(const std::vector<double>& x_source,
+                            const std::vector<double>& y_source,
+                            const std::vector<double>& x_new) -> std::vector<double> {
+  auto* acc = gsl_interp_accel_alloc();
+  auto* spline = gsl_spline_alloc(gsl_interp_steffen, x_source.size());
+
+  gsl_spline_init(spline, x_source.data(), y_source.data(), x_source.size());
+
+  std::vector<double> output(x_new.size());
+
+  for (size_t n = 0; n < x_new.size(); n++) {
+    output[n] = static_cast<float>(gsl_spline_eval(spline, x_new[n], acc));
+  }
+
+  gsl_spline_free(spline);
+  gsl_interp_accel_free(acc);
+
+  return output;
 }

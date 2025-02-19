@@ -105,6 +105,8 @@ target_link_libraries(easyeffects PRIVATE
     Qt${QT_MAJOR_VERSION}::QuickControls2
     Qt${QT_MAJOR_VERSION}::Widgets
     TBB::tbb
+    GSL::gsl
+    GSL::gslcblas
     ${LIBPIPEWIRE_LIBRARIES}
     ${LIBLILV_LIBRARIES}
     ${LIBEBUR128_LIBRARIES}
