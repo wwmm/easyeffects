@@ -45,6 +45,14 @@ class Convolver : public PluginBase {
   Q_PROPERTY(QString kernelDuration MEMBER kernelDuration NOTIFY kernelDurationChanged)
 
   Q_PROPERTY(int interpPoints MEMBER interpPoints NOTIFY interpPointsChanged)
+
+  Q_PROPERTY(double chartMinTimeAxis MEMBER chartMinTimeAxis NOTIFY chartMinTimeAxisChanged)
+  Q_PROPERTY(double chartMaxTimeAxis MEMBER chartMaxTimeAxis NOTIFY chartMaxTimeAxisChanged)
+  Q_PROPERTY(double chartMinMagL MEMBER chartMinMagL NOTIFY chartMinMagLChanged)
+  Q_PROPERTY(double chartMinMagR MEMBER chartMinMagR NOTIFY chartMinMagRChanged)
+  Q_PROPERTY(double chartMaxMagL MEMBER chartMaxMagL NOTIFY chartMaxMagLChanged)
+  Q_PROPERTY(double chartMaxMagR MEMBER chartMaxMagR NOTIFY chartMaxMagRChanged)
+
   Q_PROPERTY(QList<QPointF> chartMagL MEMBER chartMagL NOTIFY chartMagLChanged)
   Q_PROPERTY(QList<QPointF> chartMagR MEMBER chartMagR NOTIFY chartMagRChanged)
 
@@ -85,9 +93,18 @@ class Convolver : public PluginBase {
   void kernelRateChanged();
   void kernelSamplesChanged();
   void kernelDurationChanged();
+
   void interpPointsChanged();
+
   void chartMagLChanged();
   void chartMagRChanged();
+  void chartMinTimeAxisChanged();
+  void chartMaxTimeAxisChanged();
+  void chartMinMagLChanged();
+  void chartMinMagRChanged();
+  void chartMaxMagLChanged();
+  void chartMaxMagRChanged();
+
   void kernelCombinationStopped();
 
  private:
@@ -107,6 +124,8 @@ class Convolver : public PluginBase {
   uint latency_n_frames = 0U;
 
   int interpPoints = 1000;
+
+  double chartMinTimeAxis, chartMaxTimeAxis, chartMinMagL, chartMinMagR, chartMaxMagL, chartMaxMagR;
 
   QString kernelRate;
   QString kernelSamples;
@@ -145,7 +164,7 @@ class Convolver : public PluginBase {
                        const std::string& output_file_name);
 
   static auto interpolate(const std::vector<double>& x_source,
-                          const std::vector<float>& y_source,
+                          const std::vector<double>& y_source,
                           const std::vector<double>& x_new) -> std::vector<double>;
 
   template <typename T1>

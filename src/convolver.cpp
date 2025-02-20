@@ -429,8 +429,23 @@ void Convolver::load_kernel_file() {
 
   auto x_linear = util::linspace(time_axis.front(), time_axis.back(), interpPoints);
 
-  auto magL = interpolate(time_axis, kernel_L, x_linear);
-  auto magR = interpolate(time_axis, kernel_R, x_linear);
+  std::vector<double> copy_helper(kernel_L.size());
+
+  std::ranges::copy(kernel_L, copy_helper.begin());
+
+  auto magL = interpolate(time_axis, copy_helper, x_linear);
+
+  std::ranges::copy(kernel_R, copy_helper.begin());
+
+  auto magR = interpolate(time_axis, copy_helper, x_linear);
+
+  chartMinTimeAxis = std::ranges::min(x_linear);
+  chartMaxTimeAxis = std::ranges::max(x_linear);
+
+  chartMinMagL = std::ranges::min(magL);
+  chartMaxMagL = std::ranges::max(magL);
+  chartMinMagR = std::ranges::min(magR);
+  chartMaxMagR = std::ranges::max(magR);
 
   chartMagL.resize(interpPoints);
   chartMagR.resize(interpPoints);
@@ -443,6 +458,14 @@ void Convolver::load_kernel_file() {
   Q_EMIT kernelRateChanged();
   Q_EMIT kernelDurationChanged();
   Q_EMIT kernelSamplesChanged();
+
+  Q_EMIT chartMinTimeAxisChanged();
+  Q_EMIT chartMaxTimeAxisChanged();
+  Q_EMIT chartMinMagLChanged();
+  Q_EMIT chartMinMagRChanged();
+  Q_EMIT chartMaxMagLChanged();
+  Q_EMIT chartMaxMagRChanged();
+
   Q_EMIT chartMagLChanged();
   Q_EMIT chartMagRChanged();
 
@@ -738,12 +761,12 @@ void Convolver::combineKernels(const QString& kernel1, const QString& kernel2, c
 }
 
 auto Convolver::interpolate(const std::vector<double>& x_source,
-                            const std::vector<float>& y_source,
+                            const std::vector<double>& y_source,
                             const std::vector<double>& x_new) -> std::vector<double> {
   auto* acc = gsl_interp_accel_alloc();
   auto* spline = gsl_spline_alloc(gsl_interp_steffen, x_source.size());
 
-  gsl_spline_init(spline, x_source.data(), reinterpret_cast<const double*>(y_source.data()), x_source.size());
+  gsl_spline_init(spline, x_source.data(), y_source.data(), x_source.size());
 
   std::vector<double> output(x_new.size());
 

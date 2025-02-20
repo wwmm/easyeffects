@@ -23,9 +23,6 @@ Item {
     readonly property real xMaxLog: Math.log10(xMax)
     readonly property real yMinLog: Math.log10(yMin)
     readonly property real yMaxLog: Math.log10(yMin)
-    readonly property color color1: Kirigami.Theme.negativeTextColor
-    readonly property color color2: Kirigami.Theme.alternateBackgroundColor
-    readonly property color color3: Qt.darker(color2, 1.1)
     readonly property color backgroundRectColor: Kirigami.Theme.backgroundColor
     property var inputData: []
 

@@ -14,7 +14,7 @@ Kirigami.ScrollablePage {
     required property var name
     required property var pluginDB
     required property var pipelineInstance
-    property var pluginBackend
+    property var pluginBackend: null
 
     function updateMeters() {
         if (!pluginBackend)
@@ -28,6 +28,7 @@ Kirigami.ScrollablePage {
 
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
+        convolverChart.updateData(pluginBackend.chartMagL);
     }
 
     Connections {
@@ -193,12 +194,17 @@ Kirigami.ScrollablePage {
                     colorScheme: DB.Manager.spectrum.spectrumColorScheme
                     colorTheme: DB.Manager.spectrum.spectrumColorTheme
                     xUnit: "s"
-                    xMin: 0
-                    xMax: 1
-                    yMin: -1
-                    yMax: 1
+                    xMin: pluginBackend.chartMinTimeAxis
+                    xMax: pluginBackend.chartMaxTimeAxis
+                    yMin: pluginBackend.chartMinMagL
+                    yMax: pluginBackend.chartMaxMagL
                     xAxisDecimals: 1
                     logarithimicHorizontalAxis: false
+                    onWidthChanged: {
+                        if (pluginBackend)
+                            pluginBackend.interpPoints = convolverChart.width;
+
+                    }
                 }
 
                 GridLayout {
