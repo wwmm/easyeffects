@@ -28,7 +28,7 @@ Kirigami.ScrollablePage {
 
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
-        convolverChart.updateData(pluginBackend.chartMagL);
+        convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagL : pluginBackend.chartMagR);
     }
 
     Connections {
@@ -37,7 +37,15 @@ Kirigami.ScrollablePage {
         }
 
         function onChartMagLChanged() {
-            convolverChart.updateData(pluginBackend.chartMagL);
+            if (chartChannel.left)
+                convolverChart.updateData(pluginBackend.chartMagL);
+
+        }
+
+        function onChartMagRChanged() {
+            if (chartChannel.right)
+                convolverChart.updateData(pluginBackend.chartMagR);
+
         }
 
         target: pluginBackend
@@ -160,16 +168,34 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
+                    id: chartChannel
+
+                    property bool left: true
+                    property bool right: false
 
                     displayComponent: RowLayout {
                         Controls.RadioButton {
+                            id: radioLeft
+
                             text: i18n("Left")
-                            checked: true
+                            checked: chartChannel.left
+                            onCheckedChanged: {
+                                if (checked !== chartChannel.left) {
+                                    chartChannel.left = checked;
+                                    convolverChart.updateData(pluginBackend.chartMagL);
+                                }
+                            }
                         }
 
                         Controls.RadioButton {
                             text: i18n("Right")
-                            checked: false
+                            checked: chartChannel.right
+                            onCheckedChanged: {
+                                if (checked !== chartChannel.right) {
+                                    chartChannel.right = checked;
+                                    convolverChart.updateData(pluginBackend.chartMagR);
+                                }
+                            }
                         }
 
                     }
@@ -196,8 +222,8 @@ Kirigami.ScrollablePage {
                     xUnit: "s"
                     xMin: pluginBackend.chartMinTimeAxis
                     xMax: pluginBackend.chartMaxTimeAxis
-                    yMin: pluginBackend.chartMinMagL
-                    yMax: pluginBackend.chartMaxMagL
+                    yMin: chartChannel.left ? pluginBackend.chartMinMagL : pluginBackend.chartMinMagR
+                    yMax: chartChannel.left ? pluginBackend.chartMaxMagL : pluginBackend.chartMaxMagR
                     xAxisDecimals: 1
                     logarithimicHorizontalAxis: false
                     onWidthChanged: {
