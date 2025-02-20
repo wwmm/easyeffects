@@ -22,6 +22,7 @@
 #include <gsl/gsl_spline.h>
 #include <qlist.h>
 #include <qnamespace.h>
+#include <qpoint.h>
 #include <qstandardpaths.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
@@ -29,6 +30,7 @@
 #include <sndfile.h>
 #include <sys/types.h>
 #include <zita-convolver.h>
+#include <QString>
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
@@ -419,15 +421,30 @@ void Convolver::load_kernel_file() {
   kernelSamples = QString::fromStdString(util::to_string(kernel_L.size()));
   kernelDuration = QString::fromStdString(util::to_string(duration));
 
-  QList<float> time_axis(kernel_L.size());
+  std::vector<double> time_axis(kernel_L.size());
 
-  for (qsizetype n = 0U; n < time_axis.size(); n++) {
+  for (size_t n = 0U; n < time_axis.size(); n++) {
     time_axis[n] = static_cast<double>(n) * dt;
+  }
+
+  auto x_linear = util::linspace(time_axis.front(), time_axis.back(), interpPoints);
+
+  auto magL = interpolate(time_axis, kernel_L, x_linear);
+  auto magR = interpolate(time_axis, kernel_R, x_linear);
+
+  chartMagL.resize(interpPoints);
+  chartMagR.resize(interpPoints);
+
+  for (qsizetype n = 0; n < interpPoints; n++) {
+    chartMagL[n] = QPointF(x_linear[n], magL[n]);
+    chartMagR[n] = QPointF(x_linear[n], magR[n]);
   }
 
   Q_EMIT kernelRateChanged();
   Q_EMIT kernelDurationChanged();
   Q_EMIT kernelSamplesChanged();
+  Q_EMIT chartMagLChanged();
+  Q_EMIT chartMagRChanged();
 
   kernel_is_initialized = true;
 
@@ -721,12 +738,12 @@ void Convolver::combineKernels(const QString& kernel1, const QString& kernel2, c
 }
 
 auto Convolver::interpolate(const std::vector<double>& x_source,
-                            const std::vector<double>& y_source,
+                            const std::vector<float>& y_source,
                             const std::vector<double>& x_new) -> std::vector<double> {
   auto* acc = gsl_interp_accel_alloc();
   auto* spline = gsl_spline_alloc(gsl_interp_steffen, x_source.size());
 
-  gsl_spline_init(spline, x_source.data(), y_source.data(), x_source.size());
+  gsl_spline_init(spline, x_source.data(), reinterpret_cast<const double*>(y_source.data()), x_source.size());
 
   std::vector<double> output(x_new.size());
 

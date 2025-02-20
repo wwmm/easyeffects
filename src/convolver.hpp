@@ -19,6 +19,8 @@
 
 #pragma once
 
+#include <qlist.h>
+#include <qpoint.h>
 #include <qtmetamacros.h>
 #include <sys/types.h>
 #include <zita-convolver.h>
@@ -41,6 +43,10 @@ class Convolver : public PluginBase {
   Q_PROPERTY(QString kernelRate MEMBER kernelRate NOTIFY kernelRateChanged)
   Q_PROPERTY(QString kernelSamples MEMBER kernelSamples NOTIFY kernelSamplesChanged)
   Q_PROPERTY(QString kernelDuration MEMBER kernelDuration NOTIFY kernelDurationChanged)
+
+  Q_PROPERTY(int interpPoints MEMBER interpPoints NOTIFY interpPointsChanged)
+  Q_PROPERTY(QList<QPointF> chartMagL MEMBER chartMagL NOTIFY chartMagLChanged)
+  Q_PROPERTY(QList<QPointF> chartMagR MEMBER chartMagR NOTIFY chartMagRChanged)
 
  public:
   Convolver(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
@@ -79,6 +85,9 @@ class Convolver : public PluginBase {
   void kernelRateChanged();
   void kernelSamplesChanged();
   void kernelDurationChanged();
+  void interpPointsChanged();
+  void chartMagLChanged();
+  void chartMagRChanged();
   void kernelCombinationStopped();
 
  private:
@@ -97,19 +106,23 @@ class Convolver : public PluginBase {
   uint blocksize = 512U;
   uint latency_n_frames = 0U;
 
+  int interpPoints = 1000;
+
+  QString kernelRate;
+  QString kernelSamples;
+  QString kernelDuration;
+
   std::vector<float> kernel_L, kernel_R;
   std::vector<float> original_kernel_L, original_kernel_R;
   std::vector<float> data_L, data_R;
 
   std::deque<float> deque_out_L, deque_out_R;
 
+  QList<QPointF> chartMagL, chartMagR;
+
   Convproc* conv = nullptr;
 
   std::vector<std::thread> mythreads;
-
-  QString kernelRate;
-  QString kernelSamples;
-  QString kernelDuration;
 
   void apply_kernel_autogain();
 
@@ -132,7 +145,7 @@ class Convolver : public PluginBase {
                        const std::string& output_file_name);
 
   static auto interpolate(const std::vector<double>& x_source,
-                          const std::vector<double>& y_source,
+                          const std::vector<float>& y_source,
                           const std::vector<double>& x_new) -> std::vector<double>;
 
   template <typename T1>

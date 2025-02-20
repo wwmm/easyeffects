@@ -18,6 +18,7 @@ Item {
     property real yMin: 0
     property real yMax: 1
     property string xUnit: ""
+    property int xAxisDecimals: 0
     readonly property real xMinLog: Math.log10(xMin)
     readonly property real xMaxLog: Math.log10(xMax)
     readonly property real yMinLog: Math.log10(yMin)
@@ -216,7 +217,7 @@ Item {
                         width: axisRepeater.labelWidth
                         text: {
                             if (index !== (axisRepeater.count - 1))
-                                return Number(value).toLocaleString(Qt.locale(), 'f', 0);
+                                return Number(value).toLocaleString(Qt.locale(), 'f', xAxisDecimals);
                             else
                                 return xUnit;
                         }

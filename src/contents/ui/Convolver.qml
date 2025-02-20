@@ -35,6 +35,10 @@ Kirigami.ScrollablePage {
             progressBar.visible = false;
         }
 
+        function onChartMagLChanged() {
+            convolverChart.updateData(pluginBackend.chartMagL);
+        }
+
         target: pluginBackend
     }
 
@@ -190,9 +194,10 @@ Kirigami.ScrollablePage {
                     colorTheme: DB.Manager.spectrum.spectrumColorTheme
                     xUnit: "s"
                     xMin: 0
-                    xMax: 10
-                    yMin: -100
-                    yMax: 0
+                    xMax: 1
+                    yMin: -1
+                    yMax: 1
+                    xAxisDecimals: 1
                     logarithimicHorizontalAxis: false
                 }
 
