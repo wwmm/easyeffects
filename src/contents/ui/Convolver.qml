@@ -152,13 +152,21 @@ Kirigami.ScrollablePage {
                     icon.name: "folder-chart-symbolic"
                     checkable: true
                     onTriggered: {
-                        if (checked)
+                        if (checked) {
                             convolverChart.xUnit = "Hz";
-                        else
+                            if (!spectrumLogScale.checked)
+                                convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagLfftLinear : pluginBackend.chartMagRfftLinear);
+                            else
+                                convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagLfftLog : pluginBackend.chartMagRfftLog);
+                        } else {
                             convolverChart.xUnit = "s";
+                            convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagL : pluginBackend.chartMagR);
+                        }
                     }
                 },
                 Kirigami.Action {
+                    id: spectrumLogScale
+
                     text: qsTr("Log Scale")
                     visible: spectrumAction.checked
                     checkable: true

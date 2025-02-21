@@ -787,7 +787,7 @@ auto Convolver::interpolate(const std::vector<double>& x_source,
 
 void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
                                  const std::vector<float>& kernel_R,
-                                 const float& kernel_rate) const {
+                                 const float& kernel_rate) {
   if (kernel_L.empty() || kernel_R.empty() || kernel_L.size() != kernel_R.size()) {
     util::debug(" aborting the impulse fft calculation...");
 
@@ -894,4 +894,22 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
 
   auto log_spectrum_L = interpolate(freq_axis, spectrum_L, log_freq_axis);
   auto log_spectrum_R = interpolate(freq_axis, spectrum_R, log_freq_axis);
+
+  chartMagLfftLinear.resize(interpPoints);
+  chartMagRfftLinear.resize(interpPoints);
+  chartMagLfftLog.resize(interpPoints);
+  chartMagRfftLog.resize(interpPoints);
+
+  for (qsizetype n = 0; n < interpPoints; n++) {
+    chartMagLfftLinear[n] = QPointF(linear_freq_axis[n], linear_spectrum_L[n]);
+    chartMagRfftLinear[n] = QPointF(linear_freq_axis[n], linear_spectrum_R[n]);
+
+    chartMagLfftLog[n] = QPointF(log_freq_axis[n], log_spectrum_L[n]);
+    chartMagRfftLog[n] = QPointF(log_freq_axis[n], log_spectrum_R[n]);
+  }
+
+  Q_EMIT chartMagLfftLinearChanged();
+  Q_EMIT chartMagRfftLinearChanged();
+  Q_EMIT chartMagLfftLogChanged();
+  Q_EMIT chartMagRfftLogChanged();
 }

@@ -56,6 +56,11 @@ class Convolver : public PluginBase {
   Q_PROPERTY(QList<QPointF> chartMagL MEMBER chartMagL NOTIFY chartMagLChanged)
   Q_PROPERTY(QList<QPointF> chartMagR MEMBER chartMagR NOTIFY chartMagRChanged)
 
+  Q_PROPERTY(QList<QPointF> chartMagLfftLinear MEMBER chartMagLfftLinear NOTIFY chartMagLfftLinearChanged)
+  Q_PROPERTY(QList<QPointF> chartMagRfftLinear MEMBER chartMagRfftLinear NOTIFY chartMagRfftLinearChanged)
+  Q_PROPERTY(QList<QPointF> chartMagLfftLog MEMBER chartMagLfftLog NOTIFY chartMagLfftLogChanged)
+  Q_PROPERTY(QList<QPointF> chartMagRfftLog MEMBER chartMagRfftLog NOTIFY chartMagRfftLogChanged)
+
  public:
   Convolver(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
   Convolver(const Convolver&) = delete;
@@ -96,14 +101,19 @@ class Convolver : public PluginBase {
 
   void interpPointsChanged();
 
-  void chartMagLChanged();
-  void chartMagRChanged();
   void chartMinTimeAxisChanged();
   void chartMaxTimeAxisChanged();
   void chartMinMagLChanged();
   void chartMinMagRChanged();
   void chartMaxMagLChanged();
   void chartMaxMagRChanged();
+  void chartMagLChanged();
+  void chartMagRChanged();
+
+  void chartMagLfftLinearChanged();
+  void chartMagRfftLinearChanged();
+  void chartMagLfftLogChanged();
+  void chartMagRfftLogChanged();
 
   void kernelCombinationStopped();
 
@@ -137,7 +147,7 @@ class Convolver : public PluginBase {
 
   std::deque<float> deque_out_L, deque_out_R;
 
-  QList<QPointF> chartMagL, chartMagR;
+  QList<QPointF> chartMagL, chartMagR, chartMagLfftLinear, chartMagRfftLinear, chartMagLfftLog, chartMagRfftLog;
 
   Convproc* conv = nullptr;
 
@@ -169,7 +179,7 @@ class Convolver : public PluginBase {
 
   void chart_kernel_fft(const std::vector<float>& kernel_L,
                         const std::vector<float>& kernel_R,
-                        const float& kernel_rate) const;
+                        const float& kernel_rate);
 
   template <typename T1>
   void do_convolution(T1& data_left, T1& data_right) {
