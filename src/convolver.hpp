@@ -167,6 +167,10 @@ class Convolver : public PluginBase {
                           const std::vector<double>& y_source,
                           const std::vector<double>& x_new) -> std::vector<double>;
 
+  void chart_kernel_fft(const std::vector<float>& kernel_L,
+                        const std::vector<float>& kernel_R,
+                        const float& kernel_rate) const;
+
   template <typename T1>
   void do_convolution(T1& data_left, T1& data_right) {
     std::span conv_left_in(conv->inpdata(0), get_zita_buffer_size());

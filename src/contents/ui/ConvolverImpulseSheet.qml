@@ -43,7 +43,7 @@ Kirigami.OverlaySheet {
     }
 
     ColumnLayout {
-        implicitHeight: control.height - (control.header.height + control.footer.height) - control.y
+        height: control.height - (control.header.height + control.footer.height) - control.y
 
         Kirigami.SearchField {
             id: search

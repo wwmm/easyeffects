@@ -381,13 +381,12 @@ void EffectsBase::requestSpectrumData() {
           return;
         }
 
-        // auto log_x_axis = util::logspace(min_freq, max_freq, db::Spectrum::nPoints());
-        std::vector<float> log_x_axis;
+        std::vector<float> x_axis;
 
         if (db::Spectrum::logarithimicHorizontalAxis()) {
-          log_x_axis = util::logspace(min_freq, max_freq, db::Spectrum::nPoints());
+          x_axis = util::logspace(min_freq, max_freq, db::Spectrum::nPoints());
         } else {
-          log_x_axis = util::linspace(min_freq, max_freq, db::Spectrum::nPoints());
+          x_axis = util::linspace(min_freq, max_freq, db::Spectrum::nPoints());
         }
 
         auto* acc = gsl_interp_accel_alloc();
@@ -395,10 +394,10 @@ void EffectsBase::requestSpectrumData() {
 
         gsl_spline_init(spline, frequencies.data(), list.data(), n_bands);
 
-        QList<double> spectrum_mag(log_x_axis.size());
+        QList<double> spectrum_mag(x_axis.size());
 
-        for (size_t n = 0; n < log_x_axis.size(); n++) {
-          spectrum_mag[n] = gsl_spline_eval(spline, log_x_axis[n], acc);
+        for (size_t n = 0; n < x_axis.size(); n++) {
+          spectrum_mag[n] = gsl_spline_eval(spline, x_axis[n], acc);
         }
 
         gsl_spline_free(spline);
@@ -417,7 +416,7 @@ void EffectsBase::requestSpectrumData() {
         QList<QPointF> output_data(spectrum_mag.size());
 
         for (qsizetype n = 0; n < spectrum_mag.size(); n++) {
-          output_data[n] = QPointF(log_x_axis[n], spectrum_mag[n]);
+          output_data[n] = QPointF(x_axis[n], spectrum_mag[n]);
         }
 
         Q_EMIT newSpectrumData(output_data);
