@@ -190,7 +190,14 @@ Kirigami.ScrollablePage {
                             onCheckedChanged: {
                                 if (checked !== chartChannel.left) {
                                     chartChannel.left = checked;
-                                    convolverChart.updateData(pluginBackend.chartMagL);
+                                    if (!spectrumAction.checked) {
+                                        convolverChart.updateData(pluginBackend.chartMagL);
+                                    } else {
+                                        if (!spectrumLogScale.checked)
+                                            convolverChart.updateData(pluginBackend.chartMagLfftLinear);
+                                        else
+                                            convolverChart.updateData(pluginBackend.chartMagLfftLog);
+                                    }
                                 }
                             }
                         }
@@ -201,7 +208,14 @@ Kirigami.ScrollablePage {
                             onCheckedChanged: {
                                 if (checked !== chartChannel.right) {
                                     chartChannel.right = checked;
-                                    convolverChart.updateData(pluginBackend.chartMagR);
+                                    if (!spectrumAction.checked) {
+                                        convolverChart.updateData(pluginBackend.chartMagR);
+                                    } else {
+                                        if (!spectrumLogScale.checked)
+                                            convolverChart.updateData(pluginBackend.chartMagRfftLinear);
+                                        else
+                                            convolverChart.updateData(pluginBackend.chartMagRfftLog);
+                                    }
                                 }
                             }
                         }
@@ -228,10 +242,46 @@ Kirigami.ScrollablePage {
                     colorScheme: DB.Manager.spectrum.spectrumColorScheme
                     colorTheme: DB.Manager.spectrum.spectrumColorTheme
                     xUnit: "s"
-                    xMin: pluginBackend.chartMinTimeAxis
-                    xMax: pluginBackend.chartMaxTimeAxis
-                    yMin: chartChannel.left ? pluginBackend.chartMinMagL : pluginBackend.chartMinMagR
-                    yMax: chartChannel.left ? pluginBackend.chartMaxMagL : pluginBackend.chartMaxMagR
+                    xMin: {
+                        if (!spectrumAction.checked) {
+                            return pluginBackend.rangeTimeAxis.x;
+                        } else {
+                            if (spectrumLogScale.checked)
+                                return pluginBackend.rangeFreqAxisLog.x;
+                            else
+                                return pluginBackend.rangeFreqAxisLinear.x;
+                        }
+                    }
+                    xMax: {
+                        if (!spectrumAction.checked) {
+                            return pluginBackend.rangeTimeAxis.y;
+                        } else {
+                            if (spectrumLogScale.checked)
+                                return pluginBackend.rangeFreqAxisLog.y;
+                            else
+                                return pluginBackend.rangeFreqAxisLinear.y;
+                        }
+                    }
+                    yMin: {
+                        if (!spectrumAction.checked) {
+                            return chartChannel.left ? pluginBackend.rangeMagL.x : pluginBackend.rangeMagR.x;
+                        } else {
+                            if (spectrumLogScale.checked)
+                                return chartChannel.left ? pluginBackend.rangeMagLfftLog.x : pluginBackend.rangeMagRfftLog.x;
+                            else
+                                return chartChannel.left ? pluginBackend.rangeMagLfftLinear.x : pluginBackend.rangeMagRfftLinear.x;
+                        }
+                    }
+                    yMax: {
+                        if (!spectrumAction.checked) {
+                            return chartChannel.left ? pluginBackend.rangeMagL.y : pluginBackend.rangeMagR.y;
+                        } else {
+                            if (spectrumLogScale.checked)
+                                return chartChannel.left ? pluginBackend.rangeMagLfftLog.y : pluginBackend.rangeMagRfftLog.y;
+                            else
+                                return chartChannel.left ? pluginBackend.rangeMagLfftLinear.y : pluginBackend.rangeMagRfftLinear.y;
+                        }
+                    }
                     xAxisDecimals: 1
                     logarithimicHorizontalAxis: false
                     onWidthChanged: {
