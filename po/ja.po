@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-01-25 16:10+0000\n"
-"PO-Revision-Date: 2025-02-21 15:35+0000\n"
+"PO-Revision-Date: 2025-02-22 05:12+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
 "main/ja/>\n"
@@ -1542,15 +1542,15 @@ msgstr "出力プリセット"
 
 #: data/ui/pipe_manager_box.ui:301 data/ui/pipe_manager_box.ui:426
 msgid "Create Association"
-msgstr "アソシエーションを作成"
+msgstr "アソシエーション作成"
 
 #: data/ui/pipe_manager_box.ui:314
 msgid "Add Autoloading Output Preset"
-msgstr "自動読み込み出力プリセットを追加"
+msgstr "自動読み込み出力プリセット追加"
 
 #: data/ui/pipe_manager_box.ui:334
 msgid "Output Autoloading Presets List"
-msgstr "自動読み込み出力プリセットリスト"
+msgstr "自動読み込み出力プリセット一覧"
 
 #: data/ui/pipe_manager_box.ui:407
 msgid "Input Devices"
@@ -1562,11 +1562,11 @@ msgstr "入力プリセット"
 
 #: data/ui/pipe_manager_box.ui:439
 msgid "Add Autoloading Input Preset"
-msgstr "自動読み込み入力プリセットを追加"
+msgstr "自動読み込み入力プリセット追加"
 
 #: data/ui/pipe_manager_box.ui:458
 msgid "Input Autoloading Presets List"
-msgstr "自動読み込み入力プリセットリスト"
+msgstr "自動読み込み入力プリセット一覧"
 
 #: data/ui/pipe_manager_box.ui:488
 msgid "Modules"
@@ -1574,7 +1574,7 @@ msgstr "モジュール"
 
 #: data/ui/pipe_manager_box.ui:506
 msgid "Modules List"
-msgstr "モジュールリスト"
+msgstr "モジュール一覧"
 
 #: data/ui/pipe_manager_box.ui:520
 msgid "Clients"
@@ -1582,7 +1582,7 @@ msgstr "クライアント"
 
 #: data/ui/pipe_manager_box.ui:538
 msgid "Clients List"
-msgstr "クライアントリスト"
+msgstr "クライアント一覧"
 
 #: data/ui/pipe_manager_box.ui:552
 msgid "Test Signal"
@@ -1611,7 +1611,7 @@ msgstr "両方"
 
 #: data/ui/pipe_manager_box.ui:607
 msgid "Both Channels"
-msgstr "両方チャンネル"
+msgstr "両チャンネル"
 
 #: data/ui/pipe_manager_box.ui:616
 msgid "Waveform"
@@ -1627,26 +1627,23 @@ msgstr "ホワイトノイズ"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr ""
+msgstr "クイックシーク"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "アンチエイリアス"
 
 #: data/ui/pitch.ui:58
-#, fuzzy
 msgid "Sequence Length"
-msgstr "周波数範囲"
+msgstr "シーケンス長"
 
 #: data/ui/pitch.ui:80
-#, fuzzy
 msgid "Seek Window"
-msgstr "ウィンドウを閉じる"
+msgstr "ウィンドウシーク"
 
 #: data/ui/pitch.ui:102
-#, fuzzy
 msgid "Overlap Length"
-msgstr "フィルター長"
+msgstr "オーバーラップ長"
 
 #: data/ui/pitch.ui:130 src/tags_plugin_name.cpp:60
 msgid "Pitch"
@@ -1657,14 +1654,12 @@ msgid "Semitones"
 msgstr "半音"
 
 #: data/ui/pitch.ui:156
-#, fuzzy
 msgid "Tempo Difference"
-msgstr "リファレンス"
+msgstr "テンポの変化"
 
 #: data/ui/pitch.ui:178
-#, fuzzy
 msgid "Rate Difference"
-msgstr "リファレンス"
+msgstr "速度の変化"
 
 #: data/ui/plugin_row.ui:50
 msgid "Remove this effect"
@@ -1680,24 +1675,23 @@ msgstr "このエフェクトの位置を変更する"
 
 #: data/ui/plugins_box.ui:28
 msgid "Show/hide effects list"
-msgstr ""
+msgstr "エフェクト一覧を表示/非表示"
 
 #: data/ui/plugins_box.ui:42
 msgid "Add Effect"
-msgstr "エフェクトの追加"
+msgstr "エフェクト追加"
 
 #: data/ui/plugins_box.ui:65
-#, fuzzy
 msgid "Go to the previous effect"
-msgstr "このエフェクトを削除"
+msgstr "前のエフェクトへ"
 
 #: data/ui/plugins_box.ui:80
 msgid "Go to the next effect"
-msgstr ""
+msgstr "次のエフェクトへ"
 
 #: data/ui/plugins_box.ui:131
 msgid "Used Plugins List"
-msgstr "使用プラグインリスト"
+msgstr "使用されているプラグイン一覧"
 
 #: data/ui/plugins_box.ui:192
 msgid "No Effects"
@@ -1709,11 +1703,11 @@ msgstr "オーディオストリームは変更されていません"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
-msgstr "プラグインを検索"
+msgstr "プラグイン検索"
 
 #: data/ui/plugins_menu.ui:74
 msgid "Plugins List"
-msgstr "プラグインリスト"
+msgstr "プラグイン一覧"
 
 #: data/ui/preferences_general.ui:5
 msgid "_General"
@@ -1756,28 +1750,24 @@ msgid "Inactivity Timeout"
 msgstr "非アクティブタイムアウト"
 
 #: data/ui/preferences_general.ui:91
-#, fuzzy
 msgid "Input Pipeline"
-msgstr "入力デバイス"
+msgstr "入力パイプライン"
 
 #: data/ui/preferences_general.ui:120
-#, fuzzy
 msgid "Update Interval"
-msgstr "翻訳の更新"
+msgstr "更新間隔"
 
 #: data/ui/preferences_general.ui:121
-#, fuzzy
 msgid "Related to Level Meters and Spectrum"
-msgstr "更新間隔（レベルメータ、スペクトラム）"
+msgstr "レベルメーターとスペクトラムに影響します"
 
 #: data/ui/preferences_general.ui:143
-#, fuzzy
 msgid "Update Frequency"
-msgstr "スプリット周波数 1"
+msgstr "更新頻度"
 
 #: data/ui/preferences_general.ui:144
 msgid "Related to LV2 Plugins"
-msgstr ""
+msgstr "LV2 プラグインに影響します"
 
 #: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
 msgid "Style"
@@ -1792,18 +1782,16 @@ msgid "Hide Menus on Outside Clicks"
 msgstr "外側クリックでメニュー非表示"
 
 #: data/ui/preferences_general.ui:197
-#, fuzzy
 msgid "Experimental Features"
-msgstr "実験的"
+msgstr "実験的機能"
 
 #: data/ui/preferences_general.ui:200
-#, fuzzy
 msgid "Native Plugin Window"
-msgstr "ウィンドウを閉じる"
+msgstr "ネイティブプラグインウィンドウ"
 
 #: data/ui/preferences_general.ui:201
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
-msgstr ""
+msgstr "ネイティブプラグインウィンドウの表示/非表示を許可します"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
@@ -1811,7 +1799,7 @@ msgstr "_スペクトラム"
 
 #: data/ui/preferences_spectrum.ui:24
 msgid "Compensating Delay (ms)"
-msgstr ""
+msgstr "遅延補正 (ms)"
 
 #: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
@@ -1831,7 +1819,7 @@ msgstr "ドット"
 
 #: data/ui/preferences_spectrum.ui:71
 msgid "Points"
-msgstr "ポイント"
+msgstr "ポイント数"
 
 #: data/ui/preferences_spectrum.ui:92
 msgid "Height"
@@ -1855,7 +1843,7 @@ msgstr "角丸"
 
 #: data/ui/preferences_spectrum.ui:172
 msgid "Dynamic Scale"
-msgstr ""
+msgstr "動的スケール"
 
 #: data/ui/preferences_spectrum.ui:186
 msgid "Color"
@@ -1883,12 +1871,11 @@ msgstr "最大"
 
 #: data/ui/preset_row.ui:38 src/convolver_menu_impulses.cpp:225
 msgid "Load"
-msgstr "ロード"
+msgstr "読み込み"
 
 #: data/ui/preset_row.ui:39
-#, fuzzy
 msgid "Discard the current settings and load this preset"
-msgstr "現在の設定をこのプリセットファイルに保存"
+msgstr "現在の設定を破棄し、このプリセットを読み込む"
 
 #: data/ui/preset_row.ui:48
 msgid "Save current settings to this preset file"
@@ -1900,30 +1887,27 @@ msgstr "このプリセットファイルを削除"
 
 #: data/ui/preset_community_row.ui:55
 msgid "Try"
-msgstr ""
+msgstr "試す"
 
 #: data/ui/preset_community_row.ui:56
-#, fuzzy
 msgid "Try this community preset"
-msgstr "出力プリセットを検索"
+msgstr "このコミュニティプリセットを試す"
 
 #: data/ui/preset_community_row.ui:65
-#, fuzzy
 msgid "Import"
-msgstr "モデルのインポート"
+msgstr "インポート"
 
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
-msgstr ""
+msgstr "このコミュニティプリセットをローカルプリセット一覧にインポートする"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
-msgstr ""
+msgstr "ローカル"
 
 #: data/ui/presets_menu.ui:48
-#, fuzzy
 msgid "New Preset Name"
-msgstr "新規入力プリセット名"
+msgstr "新規プリセット名"
 
 #: data/ui/presets_menu.ui:56
 msgid "Create a new preset"
@@ -1931,53 +1915,50 @@ msgstr "プリセットを作成"
 
 #: data/ui/presets_menu.ui:70
 msgid "Import a preset from the local storage"
-msgstr ""
+msgstr "ローカルストレージからプリセットをインポート"
 
 #: data/ui/presets_menu.ui:86
-#, fuzzy
 msgid "Search Local Preset"
-msgstr "入力プリセットを検索"
+msgstr "ローカルプリセットを検索"
 
 #: data/ui/presets_menu.ui:147
-#, fuzzy
 msgid "Local Presets List"
-msgstr "入力プリセットリスト"
+msgstr "ローカルプリセット一覧"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
-msgstr ""
+msgstr "コミュニティ"
 
 #: data/ui/presets_menu.ui:208
-#, fuzzy
 msgid "Search Community Preset"
-msgstr "出力プリセットを検索"
+msgstr "コミュニティプリセットを検索"
 
 #: data/ui/presets_menu.ui:271
-#, fuzzy
 msgid "Community Presets List"
-msgstr "出力プリセットリスト"
+msgstr "コミュニティプリセット一覧"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr ""
+msgstr "コミュニティプリセットはインストールされていません"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
-msgstr ""
+msgstr "コミュニティプリセットパッケージはディストリビューションのリポジトリからイン"
+"ストールできます。"
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
-msgstr ""
+msgstr "更新"
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
-msgstr ""
+msgstr "更新して新しくインストールされたコミュニティプリセットを表示"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
-msgstr "高周波ダンピング"
+msgstr "高周波減衰値"
 
 #: data/ui/reverb.ui:72
 msgid "Room Size"
@@ -2009,11 +1990,11 @@ msgstr "実験的"
 
 #: data/ui/reverb.ui:106
 msgid "Diffusion"
-msgstr "拡散"
+msgstr "残響"
 
 #: data/ui/reverb.ui:142
 msgid "Pre Delay"
-msgstr "プリディレイ"
+msgstr "追加ディレイ"
 
 #: data/ui/reverb.ui:174
 msgid "Decay Time"
@@ -2021,7 +2002,7 @@ msgstr "減衰時間"
 
 #: data/ui/reverb.ui:275
 msgid "Bass Cut"
-msgstr "ベースカット"
+msgstr "低音カット"
 
 #: data/ui/reverb.ui:309
 msgid "Treble Cut"
@@ -2033,7 +2014,7 @@ msgstr "環境"
 
 #: data/ui/reverb.ui:575
 msgid "Empty Walls"
-msgstr "何もない壁"
+msgstr "空の壁"
 
 #: data/ui/reverb.ui:588
 msgid "Room"
@@ -2053,7 +2034,7 @@ msgstr "占有面積の大きいホール"
 
 #: data/ui/rnnoise.ui:31
 msgid "Import Model"
-msgstr "モデルのインポート"
+msgstr "モデルインポート"
 
 #: data/ui/rnnoise.ui:47 data/ui/speex.ui:59
 msgid "Voice Detection"
@@ -2071,7 +2052,7 @@ msgstr "標準モデル"
 
 #: data/ui/rnnoise.ui:204
 msgid "RNNoise Models List"
-msgstr "RNNoise モデルリスト"
+msgstr "RNNoise モデル一覧"
 
 #: data/ui/rnnoise.ui:228
 msgid "Model Not Loaded"
@@ -2079,7 +2060,7 @@ msgstr "モデルがロードされていません"
 
 #: data/ui/rnnoise.ui:234
 msgid "Active Model"
-msgstr "アクティブモデル"
+msgstr "有効なモデル"
 
 #: data/ui/rnnoise.ui:242
 msgid "Standard RNNoise Model"
@@ -2091,7 +2072,7 @@ msgstr "概要"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "ヘルプを表示"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2127,11 +2108,11 @@ msgstr "スタート"
 
 #: data/ui/speex.ui:117
 msgid "Continue"
-msgstr "続ける"
+msgstr "継続"
 
 #: data/ui/speex.ui:141
 msgid "Noise Suppression"
-msgstr "ノイズ対策"
+msgstr "ノイズ抑制"
 
 #: data/ui/speex.ui:145
 msgid "Level"
@@ -2159,11 +2140,11 @@ msgstr "LR > LR (ステレオデフォルト)"
 
 #: data/ui/stereo_tools.ui:139
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr "LR > MS (ステレオからミッドサイド)"
+msgstr "LR > MS (ステレオからM/S)"
 
 #: data/ui/stereo_tools.ui:140
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr "MS > LR (ミッドサイドからステレオ)"
+msgstr "MS > LR (M/Sからステレオ)"
 
 #: data/ui/stereo_tools.ui:141
 msgid "LR > LL (Mono Left Channel)"
@@ -2175,7 +2156,7 @@ msgstr "LR > RR (モノラル右チャンネル)"
 
 #: data/ui/stereo_tools.ui:143
 msgid "LR > L+R (Mono Sum L+R)"
-msgstr "LR > L+R (モノラル合計 L+R)"
+msgstr "LR > L+R (モノラル統合 L+R)"
 
 #: data/ui/stereo_tools.ui:144
 msgid "LR > RL (Stereo Flip Channels)"
@@ -2195,11 +2176,11 @@ msgstr "サイドバランス"
 
 #: data/ui/stereo_tools.ui:304
 msgid "Middle Level"
-msgstr "中間レベル"
+msgstr "中央レベル"
 
 #: data/ui/stereo_tools.ui:339
 msgid "Middle Panorama"
-msgstr "中間パノラマ"
+msgstr "中央パノラマ"
 
 #: data/ui/stereo_tools.ui:417
 msgid "Output Balance"
@@ -2227,7 +2208,7 @@ msgstr "実行中"
 
 #: src/app_info.cpp:102
 msgid "Suspended"
-msgstr "サスペンド"
+msgstr "停止"
 
 #: src/app_info.cpp:104
 msgid "Idle"
@@ -2247,19 +2228,17 @@ msgstr "不明"
 
 #: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
-msgstr ""
+msgstr "未定義の名前 - プロセス ID "
 
 #: src/app_info.cpp:292
 msgid "channels"
 msgstr "チャンネル"
 
 #: src/application.cpp:301
-#, fuzzy
 msgid "Output Preset"
 msgstr "出力プリセット"
 
 #: src/application.cpp:302
-#, fuzzy
 msgid "Input Preset"
 msgstr "入力プリセット"
 
@@ -2274,15 +2253,15 @@ msgstr ""
 
 #: src/application.cpp:609
 msgid "Print the easyeffects version"
-msgstr ""
+msgstr "Easy Effectsのバージョンを表示"
 
 #: src/application.cpp:612
 msgid "Reset Easy Effects."
-msgstr "Easy Effects をリセット。"
+msgstr "Easy Effects をリセットします。"
 
 #: src/application.cpp:615
 msgid "Hide the Window."
-msgstr "ウィンドウを隠す。"
+msgstr "ウィンドウを隠します。"
 
 #: src/application.cpp:618
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
@@ -2294,18 +2273,19 @@ msgstr "利用可能なプリセットを表示します。"
 
 #: src/application.cpp:624
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr "プリセットを読み込む。例: easyeffects -l music"
+msgstr "プリセットを読み込みます。例: easyeffects -l music"
 
 #: src/application.cpp:627
-#, fuzzy
 msgid "Show the active presets."
-msgstr "利用可能なプリセットを表示します。"
+msgstr "有効なプリセットを表示します。"
 
 #: src/application.cpp:630
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
 msgstr ""
+"指定されたカテゴリーの読み込まれたプリセットを表示します。'input' または "
+"'output' を指定してください。例: easyeffects -s input"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
@@ -2325,8 +2305,7 @@ msgstr "このファイルは正しくありません"
 
 #: src/convolver_menu_impulses.cpp:130
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
-"インパルスファイルが破損しているか、サポートされていない可能性があります"
+msgstr "インパルスファイルが破損しているか、サポートされていません"
 
 #: src/convolver_menu_impulses.cpp:135
 msgid "Only Stereo Impulse Files Are Supported"
@@ -2351,15 +2330,15 @@ msgstr "インパルスレスポンス"
 
 #: src/convolver_menu_impulses.cpp:293
 msgid "Load Impulse"
-msgstr "インパルスを読み込み"
+msgstr "インパルス読み込み"
 
 #: src/convolver_menu_impulses.cpp:296
 msgid "Remove Impulse"
-msgstr "インパルスを削除"
+msgstr "インパルス削除"
 
 #: src/convolver_ui.cpp:382
 msgid "No Impulse File Loaded"
-msgstr "読み込まれたインパルスファイルはありません"
+msgstr "インパルスファイルが読み込まれていません"
 
 #: src/convolver_ui.cpp:408
 msgid "Failed To Load The Impulse File"
@@ -2371,7 +2350,7 @@ msgstr "レコーダー"
 
 #: src/effects_box.cpp:379 src/plugins_box.cpp:827
 msgid "Players"
-msgstr "プレイヤー"
+msgstr "プレーヤー"
 
 #: src/effects_box.cpp:402
 msgid "Effects"
@@ -2389,27 +2368,25 @@ msgstr "APO プリセット"
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
-msgstr ""
-"APO プリセットが読み込まれていません。ファイル形式が間違っている可能性があり"
-"ます。内容を確認してください。"
+msgstr "APO "
+"プリセットが読み込まれていません。ファイル形式がサポートされていない可能性が"
+"あります。内容を確認してください。"
 
 #: src/equalizer_ui.cpp:616
 msgid "Split channels not yet supported when exporting APO presets."
-msgstr ""
+msgstr "APO プリセットのチャンネル分割エクスポートはサポートされていません。"
 
 #: src/equalizer_ui.cpp:624
-#, fuzzy
 msgid "Export EqualizerAPO Preset File"
-msgstr "APO プリセットファイルをインポート"
+msgstr "EqualizerAPO プリセットファイルをエクスポート"
 
 #: src/equalizer_ui.cpp:625
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: src/equalizer_ui.cpp:632
-#, fuzzy
 msgid "EqualizerAPO Presets"
-msgstr "APO プリセット"
+msgstr "EqualizerAPO プリセット"
 
 #: src/equalizer_ui.cpp:853
 msgid "Import GraphicEQ Preset File"
@@ -2449,75 +2426,69 @@ msgstr "追加"
 
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
-#, fuzzy
 msgid "Community Preset"
-msgstr "プリセットをインポート"
+msgstr "コミュニティプリセット"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
-msgstr ""
+msgstr "パッケージ"
 
 #: src/presets_manager.cpp:1155 src/presets_manager.cpp:1162
 #: src/presets_manager.cpp:1171 src/presets_manager.cpp:1178
 #: src/presets_manager.cpp:1187 src/presets_manager.cpp:1195
 msgid "Preset Not Loaded Correctly"
-msgstr ""
+msgstr "プリセットが正しく読み込まれていません"
 
 #: src/presets_manager.cpp:1155
-#, fuzzy
 msgid "Wrong Format in Excluded Apps List"
-msgstr "除外されたアプリケーションリスト"
+msgstr "間違った形式の除外されたアプリ一覧"
 
 #: src/presets_manager.cpp:1162
 msgid "Generic Error While Loading Excluded Apps List"
-msgstr ""
+msgstr "除外されたアプリ一覧の読み込み中に発生した一般的なエラー"
 
 #: src/presets_manager.cpp:1171
 msgid "Wrong Format in Effects List"
-msgstr ""
+msgstr "エフェクト一覧の間違った形式"
 
 #: src/presets_manager.cpp:1178
 msgid "Generic Error While Loading Effects List"
-msgstr ""
+msgstr "エフェクト一覧の読み込み中に発生した一般的なエラー"
 
 #: src/presets_manager.cpp:1188
 msgid "One or More Parameters Have a Wrong Format"
-msgstr ""
+msgstr "1つ以上のパラメータに間違った形式が設定されています"
 
 #: src/presets_manager.cpp:1196
 msgid "Generic Error While Loading The Effect"
-msgstr ""
+msgstr "エフェクトの読み込み中に発生した一般的なエラー"
 
 #: src/presets_menu.cpp:398
 msgid "Save?"
-msgstr ""
+msgstr "保存しますか？"
 
 #: src/presets_menu.cpp:417
 msgid "Delete?"
-msgstr ""
+msgstr "削除しますか？"
 
 #: src/presets_menu.cpp:558
-#, fuzzy
 msgid "No Preset Loaded"
-msgstr "新規入力プリセット名"
+msgstr "プリセットが読み込まれていません"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Local Preset Loaded"
-msgstr "入力プリセットリスト"
+msgstr "最後に読み込まれたローカルプリセット"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Community Preset Loaded"
-msgstr "プリセットをインポート"
+msgstr "最後に読み込まれたコミュニティプリセット"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
-msgstr ""
-"選択されたモデルが読み込まれていません。そのフォーマットはサポートされていな"
-"い可能性があります。標準モデルに戻しました。"
+msgstr "選択されたモデルが読み込まれていません。サポートされていないフォーマットの可"
+"能性があります。標準モデルに戻しました。"
 
 #: src/rnnoise_ui.cpp:159
 msgid "Import Model File"
@@ -2533,7 +2504,7 @@ msgstr "ベースエンハンサー"
 
 #: src/tags_plugin_name.cpp:40
 msgid "Bass Loudness"
-msgstr "低音ラウドネス"
+msgstr "ベースラウドネス"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Convolver"
@@ -2549,7 +2520,7 @@ msgstr "クリスタライザー"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Deep Noise Remover"
-msgstr ""
+msgstr "ディープノイズリムーバー"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Deesser"
@@ -2568,9 +2539,8 @@ msgid "Exciter"
 msgstr "エキサイター"
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Level Meter"
-msgstr "出力レベルメーター"
+msgstr "レベルメーター"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Limiter"
@@ -2608,7 +2578,7 @@ msgstr "ステレオツール"
 #: src/ui_helpers.cpp:93
 #, c++-format
 msgid "{} Not Available"
-msgstr "{} 利用不可"
+msgstr "{} は利用できません"
 
 #: src/ui_helpers.cpp:97
 #, c++-format
@@ -2619,6 +2589,10 @@ msgid ""
 "using the 'Quit' option inside the menu in order to make the effect availble "
 "to use."
 msgstr ""
+"{} エフェクトに必要なソフトウェア「{}」がインストールされていません。Easy "
+"Effects の Flatpak 版を利用するかソフトウェアをインストールしてください。"
+"ソフトウェアをインストールした後は Easy Effects "
+"メニュー内の「Quit」から再起動して有効化してください。"
 
 #: src/ui_helpers.cpp:104
 #, c++-format
@@ -2628,6 +2602,10 @@ msgid ""
 "Consider using the Easy Effects Flatpak package or building your own Easy "
 "Effects package."
 msgstr ""
+"{} エフェクトは Easy Effects "
+"のコンパイル時に無効化されました。そのため、このエフェクトに必要なソフトウェ"
+"ア「{}」は利用できません。Easy Effects の Flatpak 版を利用するか自分で Easy "
+"Effects をビルドしてください。"
 
 #: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
@@ -2635,9 +2613,9 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
-#, fuzzy, c++-format
+#, c++-format
 msgid "Using {}"
-msgstr "使用中"
+msgstr "{} を使用しています"
 
 #~ msgid "Ceiling"
 #~ msgstr "シーリング"
