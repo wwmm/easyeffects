@@ -417,6 +417,7 @@ Kirigami.Page {
         yMin: -100
         yMax: 0
         logarithimicHorizontalAxis: DB.Manager.spectrum.logarithimicHorizontalAxis
+        dynamicYScale: DB.Manager.spectrum.dynamicYScale
         xUnit: "Hz"
         Component.onCompleted: {
             headerFrameAnimation.start();
@@ -435,19 +436,6 @@ Kirigami.Page {
 
         Connections {
             function onNewSpectrumData(newData) {
-                let minY = 1000;
-                let maxY = -1000;
-                for (let n = 0; n < newData.length; n++) {
-                    minY = newData[n].y < minY ? newData[n].y : minY;
-                    maxY = newData[n].y > maxY ? newData[n].y : maxY;
-                }
-                if (DB.Manager.spectrum.dynamicYScale === true) {
-                    spectrumChart.yMin = minY;
-                    spectrumChart.yMax = maxY;
-                } else {
-                    spectrumChart.yMin = minY < spectrumChart.yMin ? minY : spectrumChart.yMin;
-                    spectrumChart.yMax = maxY > spectrumChart.yMax ? maxY : spectrumChart.yMax;
-                }
                 spectrumChart.updateData(newData);
             }
 

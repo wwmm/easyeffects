@@ -13,6 +13,8 @@ Item {
     property int colorTheme: GraphsTheme.Theme.QtGreenNeon
     property bool logarithimicHorizontalAxis: true
     property bool logarithimicVerticalAxis: false
+    property bool dynamicXScale: true
+    property bool dynamicYScale: true
     property real xMin: 0
     property real xMax: 1
     property real yMin: 0
@@ -22,12 +24,36 @@ Item {
     readonly property real xMinLog: Math.log10(xMin)
     readonly property real xMaxLog: Math.log10(xMax)
     readonly property real yMinLog: Math.log10(yMin)
-    readonly property real yMaxLog: Math.log10(yMin)
+    readonly property real yMaxLog: Math.log10(yMax)
     readonly property color backgroundRectColor: Kirigami.Theme.backgroundColor
     property var inputData: []
 
     function updateData(newData) {
         inputData = newData;
+        let minX = Number.POSITIVE_INFINITY;
+        let maxX = Number.NEGATIVE_INFINITY;
+        let minY = Number.POSITIVE_INFINITY;
+        let maxY = Number.NEGATIVE_INFINITY;
+        for (let n = 0; n < newData.length; n++) {
+            minX = newData[n].x < minX ? newData[n].x : minX;
+            maxX = newData[n].x > maxX ? newData[n].x : maxX;
+            minY = newData[n].y < minY ? newData[n].y : minY;
+            maxY = newData[n].y > maxY ? newData[n].y : maxY;
+        }
+        if (dynamicXScale === true) {
+            xMin = minX;
+            xMax = maxX;
+        } else {
+            xMin = minX < xMin ? minX : xMin;
+            xMax = maxX > xMax ? maxX : xMax;
+        }
+        if (dynamicYScale === true) {
+            yMin = minY;
+            yMax = maxY;
+        } else {
+            yMin = minY < yMin ? minY : yMin;
+            yMax = maxY > yMax ? maxY : yMax;
+        }
         for (let n = 0; n < newData.length; n++) {
             if (logarithimicHorizontalAxis === true)
                 newData[n].x = Math.log10(newData[n].x);

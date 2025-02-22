@@ -46,21 +46,8 @@ class Convolver : public PluginBase {
 
   Q_PROPERTY(int interpPoints MEMBER interpPoints NOTIFY interpPointsChanged)
 
-  Q_PROPERTY(QPointF rangeTimeAxis MEMBER rangeTimeAxis NOTIFY rangeTimeAxisChanged)
-  Q_PROPERTY(QPointF rangeMagL MEMBER rangeMagL NOTIFY rangeMagLChanged)
-  Q_PROPERTY(QPointF rangeMagR MEMBER rangeMagR NOTIFY rangeMagRChanged)
-
   Q_PROPERTY(QList<QPointF> chartMagL MEMBER chartMagL NOTIFY chartMagLChanged)
   Q_PROPERTY(QList<QPointF> chartMagR MEMBER chartMagR NOTIFY chartMagRChanged)
-
-  Q_PROPERTY(QPointF rangeFreqAxisLinear MEMBER rangeFreqAxisLinear NOTIFY rangeFreqAxisLinearChanged)
-  Q_PROPERTY(QPointF rangeFreqAxisLog MEMBER rangeFreqAxisLog NOTIFY rangeFreqAxisLogChanged)
-
-  Q_PROPERTY(QPointF rangeMagLfftLinear MEMBER rangeMagLfftLinear NOTIFY rangeMagLfftLinearChanged)
-  Q_PROPERTY(QPointF rangeMagRfftLinear MEMBER rangeMagRfftLinear NOTIFY rangeMagRfftLinearChanged)
-
-  Q_PROPERTY(QPointF rangeMagLfftLog MEMBER rangeMagLfftLog NOTIFY rangeMagLfftLogChanged)
-  Q_PROPERTY(QPointF rangeMagRfftLog MEMBER rangeMagRfftLog NOTIFY rangeMagRfftLogChanged)
 
   Q_PROPERTY(QList<QPointF> chartMagLfftLinear MEMBER chartMagLfftLinear NOTIFY chartMagLfftLinearChanged)
   Q_PROPERTY(QList<QPointF> chartMagRfftLinear MEMBER chartMagRfftLinear NOTIFY chartMagRfftLinearChanged)
@@ -107,20 +94,8 @@ class Convolver : public PluginBase {
 
   void interpPointsChanged();
 
-  void rangeTimeAxisChanged();
-  void rangeMagLChanged();
-  void rangeMagRChanged();
   void chartMagLChanged();
   void chartMagRChanged();
-
-  void rangeFreqAxisLinearChanged();
-  void rangeFreqAxisLogChanged();
-
-  void rangeMagLfftLinearChanged();
-  void rangeMagRfftLinearChanged();
-
-  void rangeMagLfftLogChanged();
-  void rangeMagRfftLogChanged();
 
   void chartMagLfftLinearChanged();
   void chartMagRfftLinearChanged();
@@ -156,9 +131,6 @@ class Convolver : public PluginBase {
   std::vector<float> data_L, data_R;
 
   std::deque<float> deque_out_L, deque_out_R;
-
-  QPointF rangeTimeAxis, rangeMagL, rangeMagR, rangeFreqAxisLinear, rangeFreqAxisLog, rangeMagLfftLinear,
-      rangeMagRfftLinear, rangeMagLfftLog, rangeMagRfftLog;
 
   QList<QPointF> chartMagL, chartMagR, chartMagLfftLinear, chartMagRfftLinear, chartMagLfftLog, chartMagRfftLog;
 

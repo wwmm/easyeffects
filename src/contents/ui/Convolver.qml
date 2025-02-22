@@ -37,14 +37,38 @@ Kirigami.ScrollablePage {
         }
 
         function onChartMagLChanged() {
-            if (chartChannel.left)
+            if (chartChannel.left && !spectrumAction.checked)
                 convolverChart.updateData(pluginBackend.chartMagL);
 
         }
 
         function onChartMagRChanged() {
-            if (chartChannel.right)
+            if (chartChannel.right && !spectrumAction.checked)
                 convolverChart.updateData(pluginBackend.chartMagR);
+
+        }
+
+        function onChartMagLfftLinearChanged() {
+            if (chartChannel.left && spectrumAction.checked && !convolverChart.logarithimicHorizontalAxis)
+                convolverChart.updateData(pluginBackend.chartMagLfftLinear);
+
+        }
+
+        function onChartMagRfftLinearChanged() {
+            if (chartChannel.right && spectrumAction.checked && !convolverChart.logarithimicHorizontalAxis)
+                convolverChart.updateData(pluginBackend.chartMagRfftLinear);
+
+        }
+
+        function onChartMagLfftLogChanged() {
+            if (chartChannel.left && spectrumAction.checked && convolverChart.logarithimicHorizontalAxis)
+                convolverChart.updateData(pluginBackend.chartMagLfftLog);
+
+        }
+
+        function onChartMagRfftLogChanged() {
+            if (chartChannel.right && spectrumAction.checked && convolverChart.logarithimicHorizontalAxis)
+                convolverChart.updateData(pluginBackend.chartMagRfftLog);
 
         }
 
@@ -154,7 +178,7 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (checked) {
                             convolverChart.xUnit = "Hz";
-                            if (!spectrumLogScale.checked)
+                            if (!convolverChart.logarithimicHorizontalAxis)
                                 convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagLfftLinear : pluginBackend.chartMagRfftLinear);
                             else
                                 convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagLfftLog : pluginBackend.chartMagRfftLog);
@@ -193,7 +217,7 @@ Kirigami.ScrollablePage {
                                     if (!spectrumAction.checked) {
                                         convolverChart.updateData(pluginBackend.chartMagL);
                                     } else {
-                                        if (!spectrumLogScale.checked)
+                                        if (!convolverChart.logarithimicHorizontalAxis)
                                             convolverChart.updateData(pluginBackend.chartMagLfftLinear);
                                         else
                                             convolverChart.updateData(pluginBackend.chartMagLfftLog);
@@ -211,7 +235,7 @@ Kirigami.ScrollablePage {
                                     if (!spectrumAction.checked) {
                                         convolverChart.updateData(pluginBackend.chartMagR);
                                     } else {
-                                        if (!spectrumLogScale.checked)
+                                        if (!convolverChart.logarithimicHorizontalAxis)
                                             convolverChart.updateData(pluginBackend.chartMagRfftLinear);
                                         else
                                             convolverChart.updateData(pluginBackend.chartMagRfftLog);
@@ -242,46 +266,6 @@ Kirigami.ScrollablePage {
                     colorScheme: DB.Manager.spectrum.spectrumColorScheme
                     colorTheme: DB.Manager.spectrum.spectrumColorTheme
                     xUnit: "s"
-                    xMin: {
-                        if (!spectrumAction.checked) {
-                            return pluginBackend.rangeTimeAxis.x;
-                        } else {
-                            if (spectrumLogScale.checked)
-                                return pluginBackend.rangeFreqAxisLog.x;
-                            else
-                                return pluginBackend.rangeFreqAxisLinear.x;
-                        }
-                    }
-                    xMax: {
-                        if (!spectrumAction.checked) {
-                            return pluginBackend.rangeTimeAxis.y;
-                        } else {
-                            if (spectrumLogScale.checked)
-                                return pluginBackend.rangeFreqAxisLog.y;
-                            else
-                                return pluginBackend.rangeFreqAxisLinear.y;
-                        }
-                    }
-                    yMin: {
-                        if (!spectrumAction.checked) {
-                            return chartChannel.left ? pluginBackend.rangeMagL.x : pluginBackend.rangeMagR.x;
-                        } else {
-                            if (spectrumLogScale.checked)
-                                return chartChannel.left ? pluginBackend.rangeMagLfftLog.x : pluginBackend.rangeMagRfftLog.x;
-                            else
-                                return chartChannel.left ? pluginBackend.rangeMagLfftLinear.x : pluginBackend.rangeMagRfftLinear.x;
-                        }
-                    }
-                    yMax: {
-                        if (!spectrumAction.checked) {
-                            return chartChannel.left ? pluginBackend.rangeMagL.y : pluginBackend.rangeMagR.y;
-                        } else {
-                            if (spectrumLogScale.checked)
-                                return chartChannel.left ? pluginBackend.rangeMagLfftLog.y : pluginBackend.rangeMagRfftLog.y;
-                            else
-                                return chartChannel.left ? pluginBackend.rangeMagLfftLinear.y : pluginBackend.rangeMagRfftLinear.y;
-                        }
-                    }
                     xAxisDecimals: 1
                     logarithimicHorizontalAxis: false
                     onWidthChanged: {

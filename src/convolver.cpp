@@ -441,14 +441,6 @@ void Convolver::load_kernel_file() {
 
   auto magR = interpolate(time_axis, copy_helper, x_linear);
 
-  rangeTimeAxis.setX(std::ranges::min(x_linear));
-  rangeTimeAxis.setY(std::ranges::max(x_linear));
-
-  rangeMagL.setX(std::ranges::min(magL));
-  rangeMagL.setY(std::ranges::max(magL));
-  rangeMagR.setX(std::ranges::min(magR));
-  rangeMagR.setY(std::ranges::max(magR));
-
   chartMagL.resize(interpPoints);
   chartMagR.resize(interpPoints);
 
@@ -460,10 +452,6 @@ void Convolver::load_kernel_file() {
   Q_EMIT kernelRateChanged();
   Q_EMIT kernelDurationChanged();
   Q_EMIT kernelSamplesChanged();
-
-  Q_EMIT rangeTimeAxisChanged();
-  Q_EMIT rangeMagLChanged();
-  Q_EMIT rangeMagRChanged();
 
   Q_EMIT chartMagLChanged();
   Q_EMIT chartMagRChanged();
@@ -879,19 +867,6 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
   auto linear_spectrum_L = interpolate(freq_axis, spectrum_L, linear_freq_axis);
   auto linear_spectrum_R = interpolate(freq_axis, spectrum_R, linear_freq_axis);
 
-  rangeFreqAxisLinear.setX(std::ranges::min(linear_freq_axis));
-  rangeFreqAxisLinear.setY(std::ranges::max(linear_freq_axis));
-
-  rangeMagLfftLinear.setX(std::ranges::min(linear_spectrum_L));
-  rangeMagLfftLinear.setY(std::ranges::max(linear_spectrum_L));
-
-  rangeMagRfftLinear.setX(std::ranges::min(linear_spectrum_R));
-  rangeMagRfftLinear.setY(std::ranges::max(linear_spectrum_R));
-
-  Q_EMIT rangeFreqAxisLinearChanged();
-  Q_EMIT rangeMagLfftLinearChanged();
-  Q_EMIT rangeMagRfftLinearChanged();
-
   // initializing the logarithmic frequency axis
 
   auto max_freq = std::ranges::max(freq_axis);
@@ -905,18 +880,29 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
   auto log_spectrum_L = interpolate(freq_axis, spectrum_L, log_freq_axis);
   auto log_spectrum_R = interpolate(freq_axis, spectrum_R, log_freq_axis);
 
-  rangeFreqAxisLog.setX(std::ranges::min(log_freq_axis));
-  rangeFreqAxisLog.setY(std::ranges::max(log_freq_axis));
+  {
+    auto min_left = std::ranges::min(linear_spectrum_L);
+    auto max_left = std::ranges::max(linear_spectrum_L);
+    auto min_right = std::ranges::min(linear_spectrum_R);
+    auto max_right = std::ranges::max(linear_spectrum_R);
 
-  rangeMagLfftLog.setX(std::ranges::min(log_spectrum_L));
-  rangeMagLfftLog.setY(std::ranges::max(log_spectrum_L));
+    for (int n = 0U; n < interpPoints; n++) {
+      linear_spectrum_L[n] = (linear_spectrum_L[n] - min_left) / (max_left - min_left);
+      linear_spectrum_R[n] = (linear_spectrum_R[n] - min_right) / (max_right - min_right);
+    }
+  }
 
-  rangeMagRfftLog.setX(std::ranges::min(log_spectrum_R));
-  rangeMagRfftLog.setY(std::ranges::max(log_spectrum_R));
+  {
+    auto min_left = std::ranges::min(log_spectrum_L);
+    auto max_left = std::ranges::max(log_spectrum_L);
+    auto min_right = std::ranges::min(log_spectrum_R);
+    auto max_right = std::ranges::max(log_spectrum_R);
 
-  Q_EMIT rangeFreqAxisLogChanged();
-  Q_EMIT rangeMagLfftLogChanged();
-  Q_EMIT rangeMagRfftLogChanged();
+    for (int n = 0U; n < interpPoints; n++) {
+      log_spectrum_L[n] = (log_spectrum_L[n] - min_left) / (max_left - min_left);
+      log_spectrum_R[n] = (log_spectrum_R[n] - min_right) / (max_right - min_right);
+    }
+  }
 
   chartMagLfftLinear.resize(interpPoints);
   chartMagRfftLinear.resize(interpPoints);
