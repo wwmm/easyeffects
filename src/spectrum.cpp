@@ -32,6 +32,7 @@
 #include <span>
 #include <string>
 #include <tuple>
+#include "easyeffects_db_spectrum.h"
 #include "lv2_wrapper.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
@@ -42,6 +43,7 @@
 Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
     : PluginBase(tag, "spectrum", tags::plugin_package::Package::ee, instance_id, pipe_manager, pipe_type),
       fftw_ready(true) {
+  bypass = !db::Spectrum::state();
   // Precompute the Hann window, which is an expensive operation.
   // https://en.wikipedia.org/wiki/Hann_function
   for (size_t n = 0; n < n_bands; n++) {
@@ -76,12 +78,7 @@ Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
   //   lv2_wrapper->bind_key_int<"time_l", "avsync-delay">(settings);
   //   lv2_wrapper->bind_key_int<"time_r", "avsync-delay">(settings);
 
-  //   g_signal_connect(settings, "changed::show", G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                      auto* self = static_cast<Spectrum*>(user_data);
-
-  //                      self->bypass = g_settings_get_boolean(settings, key) == 0;
-  //                    }),
-  //                    this);
+  connect(db::Spectrum::self(), &db::Spectrum::stateChanged, [&]() { bypass = !db::Spectrum::state(); });
 }
 
 Spectrum::~Spectrum() {
@@ -128,8 +125,8 @@ void Spectrum::process(std::span<float>& left_in,
                        std::span<float>& right_in,
                        std::span<float>& left_out,
                        std::span<float>& right_out) {
-  std::copy(left_in.begin(), left_in.end(), left_out.begin());
-  std::copy(right_in.begin(), right_in.end(), right_out.begin());
+  std::ranges::copy(left_in, left_out.begin());
+  std::ranges::copy(right_in, right_out.begin());
 
   if (bypass || !fftw_ready) {
     return;
@@ -259,7 +256,7 @@ auto Spectrum::compute_magnitudes() -> std::tuple<uint, QList<double>> {
   fftwf_execute(plan);
 
   for (uint i = 0U; i < output.size(); i++) {
-    float sqr = complex_output[i][0] * complex_output[i][0] + complex_output[i][1] * complex_output[i][1];
+    float sqr = (complex_output[i][0] * complex_output[i][0]) + (complex_output[i][1] * complex_output[i][1]);
 
     sqr /= static_cast<float>(output.size() * output.size());
 

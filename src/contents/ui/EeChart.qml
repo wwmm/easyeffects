@@ -26,10 +26,13 @@ Item {
     readonly property real yMinLog: Math.log10(yMin)
     readonly property real yMaxLog: Math.log10(yMax)
     readonly property color backgroundRectColor: Kirigami.Theme.backgroundColor
-    property var inputData: []
 
-    function updateData(newData) {
-        inputData = newData;
+    function updateData(inputData) {
+        //We do not want the object received as argument to be modified here
+        let newData = [];
+        for (let n = 0; n < inputData.length; n++) {
+            newData.push(inputData[n]);
+        }
         let minX = Number.POSITIVE_INFINITY;
         let maxX = Number.NEGATIVE_INFINITY;
         let minY = Number.POSITIVE_INFINITY;

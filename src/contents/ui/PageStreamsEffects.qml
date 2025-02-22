@@ -419,6 +419,7 @@ Kirigami.Page {
         logarithimicHorizontalAxis: DB.Manager.spectrum.logarithimicHorizontalAxis
         dynamicYScale: DB.Manager.spectrum.dynamicYScale
         xUnit: "Hz"
+        visible: DB.Manager.spectrum.state
         Component.onCompleted: {
             headerFrameAnimation.start();
         }

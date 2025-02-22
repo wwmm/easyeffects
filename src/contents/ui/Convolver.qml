@@ -185,6 +185,8 @@ Kirigami.ScrollablePage {
                         } else {
                             convolverChart.xUnit = "s";
                             convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagL : pluginBackend.chartMagR);
+                            spectrumLogScale.checked = false;
+                            convolverChart.logarithimicHorizontalAxis = checked;
                         }
                     }
                 },
