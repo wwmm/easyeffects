@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-22 14:35+0000\n"
-"PO-Revision-Date: 2024-12-18 12:00+0000\n"
+"PO-Revision-Date: 2025-02-23 20:36+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.9.2-dev\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -31,7 +31,7 @@ msgstr "Egalizator, compresor și alte efecte audio"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Efecte audio pentru aplicațiile PipeWire"
+msgstr "Efecte audio pentru aplicații PipeWire"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
@@ -1471,7 +1471,7 @@ msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
-"Se recomandă să NU configurați Easy Effects colector/sursă (sink/source) ca "
+"Se recomandă să NU configurați Easy Effects receptor/sursă (sink/source) ca "
 "dispozitiv implicit în aplicații externe (de exemplu, Centrul de control "
 "Gnome și Configurări de sistem Plasma)."
 
