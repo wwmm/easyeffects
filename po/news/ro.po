@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-22 14:35+0000\n"
-"PO-Revision-Date: 2025-02-09 07:02+0000\n"
+"PO-Revision-Date: 2025-02-24 09:09+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.10.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -26,7 +26,7 @@ msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Efecte audio pentru aplicațiile PipeWire"
+msgstr "Efecte audio pentru aplicații PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid ""
@@ -963,9 +963,9 @@ msgid ""
 "of problems our users were having when using OBS."
 msgstr ""
 "A fost adăugată o nouă opțiune de configurare. Aceasta permite EasyEffects "
-"să ignore fluxurile al căror scop este de a monitoriza dispozitivele de "
-"recepție. Acest lucru va ajuta la rezolvarea unora dintre problemele pe care "
-"le aveau utilizatorii noștri atunci când foloseau OBS."
+"să ignore fluxurile al căror scop este de a monitoriza dispozitivele "
+"receptoare. Acest lucru va ajuta la rezolvarea unora dintre problemele pe "
+"care le aveau utilizatorii noștri atunci când foloseau OBS."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:405
 msgid "The code that shows the stream sample format has been improved"
