@@ -8,6 +8,7 @@ import org.kde.kirigami as Kirigami
 Item {
     id: delegateItem
 
+    required property var listModel
     required property int index
     required property bool bypass
     required property string name
@@ -70,10 +71,10 @@ Item {
                         icon.name: "delete"
                         displayHint: Kirigami.DisplayHint.IconOnly
                         onTriggered: {
-                            pluginsListModel.remove(index, 1);
-                            const indexStart = pluginsListModel.index(0, 0);
-                            const indexEnd = pluginsListModel.index(pluginsListModel.count - 1, 0);
-                            pluginsListModel.dataChanged(indexStart, indexEnd, []);
+                            listModel.remove(index, 1);
+                            const indexStart = listModel.index(0, 0);
+                            const indexEnd = listModel.index(listModel.count - 1, 0);
+                            listModel.dataChanged(indexStart, indexEnd, []);
                         }
                     }
                 ]
@@ -83,10 +84,10 @@ Item {
                 listItem: listItemDelegate
                 listView: pluginsListView
                 onMoveRequested: (oldIndex, newIndex) => {
-                    const indexStart = pluginsListModel.index(0, 0);
-                    const indexEnd = pluginsListModel.index(pluginsListModel.count - 1, 0);
-                    pluginsListModel.move(oldIndex, newIndex, 1);
-                    pluginsListModel.dataChanged(indexStart, indexEnd, []);
+                    const indexStart = listModel.index(0, 0);
+                    const indexEnd = listModel.index(listModel.count - 1, 0);
+                    listModel.move(oldIndex, newIndex, 1);
+                    listModel.dataChanged(indexStart, indexEnd, []);
                 }
             }
 

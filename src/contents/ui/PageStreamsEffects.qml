@@ -33,6 +33,10 @@ Kirigami.Page {
         }
     }
 
+    ListModel {
+        id: pluginsListModel
+    }
+
     MenuAddPlugins {
         id: menuAddPlugins
 
@@ -315,12 +319,10 @@ Kirigami.Page {
                             }
                         }
                     }
-
-                    model: ListModel {
-                        id: pluginsListModel
-                    }
+                    model: pluginsListModel
 
                     delegate: DelegatePluginsList {
+                        listModel: pluginsListModel
                     }
 
                     moveDisplaced: Transition {
