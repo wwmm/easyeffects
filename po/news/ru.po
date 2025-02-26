@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-02-22 14:35+0000\n"
-"PO-Revision-Date: 2024-09-26 12:23+0000\n"
-"Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
+"PO-Revision-Date: 2025-02-26 04:01+0000\n"
+"Last-Translator: \"О. П.\" <olegpohilcenko@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.10.2-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -137,11 +137,12 @@ msgid "Features:"
 msgstr "Возможности:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
-#, fuzzy
 msgid ""
 "Improved compatibility with future PipeWire releases. This version will "
 "avoid compilation errors like issue 3620"
-msgstr "Улучшена совместимость с последними версиями PipeWire. Подробности в"
+msgstr ""
+"Улучшена совместимость с будущими релизами PipeWire. Эта версия позволит "
+"избежать ошибок компиляции, таких как issue 3620"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
@@ -235,21 +236,25 @@ msgid ""
 "Added a workaround for a glibc(or maybe libstdc++) bug that affects locale "
 "management. What in turns breaks our spinbuttons on some locales."
 msgstr ""
+"Добавлен костыль для ошибки glibc (или, может быть, libstdc++), которая "
+"влияет на управление локалями. Что в свою очередь ломает наши числовые поля "
+"с прокруткой в некоторых локалях."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
 msgid ""
 "Fixed a bug that makes the application crash when the option Linux Studio "
 "Plugins package is not installed."
 msgstr ""
+"Исправлена ошибка, приводившая к сбою приложения, если не установлен пакет "
+"плагинов Linux Studio Plugins."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
-#, fuzzy
 msgid ""
 "Fixed a bug in the crystalizer plugin where the scale values were not being "
 "properly applied."
 msgstr ""
-"Исправлена ошибка, при которой плагин высоты тона не мог правильно "
-"инициализироваться"
+"Исправлена ошибка в плагине кристаллизатора, из-за которой значения масштаба "
+"не применялись должным образом."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 msgid ""
@@ -398,7 +403,6 @@ msgstr ""
 "определённых условиях."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:155
-#, fuzzy
 msgid ""
 "We now set monitor.passthrough = true in our virtual devices. This will "
 "allow latency offset to be properly applied by video players when PipeWire > "
@@ -406,7 +410,7 @@ msgid ""
 msgstr ""
 "Теперь мы устанавливаем monitor.passthrough = true в наших виртуальных "
 "устройствах. Это позволит видеоплеерам правильно применять смещение "
-"задержки, как только выйдет PipeWire &gt; 1.0.3."
+"задержки, как только выйдет PipeWire > 1.0.3."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:156
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:303
@@ -1363,9 +1367,9 @@ msgid ""
 "The preset autoloading support implementation was redesigned again. It "
 "should work on more hardware now. For more information see issue 1051."
 msgstr ""
-"Реализация поддержки автозагрузки предустановок была снова переработана. "
-"Теперь она должна работать на большем количестве оборудования. Подробности в "
-"проблеме 1051."
+"Реализация поддержки автозагрузки профилей была заново переписана. Теперь "
+"она должна работать с большим количеством оборудования. Более детальная "
+"информация в отчёте 1051."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:549
 msgid ""
