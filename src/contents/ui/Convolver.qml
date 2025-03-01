@@ -199,6 +199,10 @@ Kirigami.ScrollablePage {
                     icon.name: "transform-scale-symbolic"
                     onTriggered: {
                         convolverChart.logarithimicHorizontalAxis = checked;
+                        if (checked)
+                            convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagLfftLog : pluginBackend.chartMagRfftLog);
+                        else
+                            convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagLfftLinear : pluginBackend.chartMagRfftLinear);
                     }
                 },
                 Kirigami.Action {
