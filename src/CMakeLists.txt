@@ -62,6 +62,7 @@ target_sources(easyeffects PRIVATE
     pw_model_modules.cpp
     pw_model_nodes.cpp
     resampler.cpp
+    rnnoise.cpp
     spectrum.cpp
     speex.cpp
     speex_preset.cpp
@@ -88,6 +89,7 @@ target_include_directories(easyeffects PRIVATE
     ${LIBBS2B_INCLUDE_DIRS}
     ${LIBSAMPLERATE_INCLUDE_DIRS}
     ${LIBSNDFILE_INCLUDE_DIRS}
+    ${LIBRNNOISE_INCLUDE_DIRS}
 )
 
 target_link_libraries(easyeffects PRIVATE
@@ -118,6 +120,7 @@ target_link_libraries(easyeffects PRIVATE
     ${LIBBS2B_LIBRARIES}
     ${LIBSAMPLERATE_LIBRARIES}
     ${LIBSNDFILE_LIBRARIES}
+    ${LIBRNNOISE_LIBRARIES}
     ${LIBZITACONVOLVER}
 )
 

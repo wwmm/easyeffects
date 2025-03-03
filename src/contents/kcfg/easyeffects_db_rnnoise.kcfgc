@@ -1,0 +1,10 @@
+File=easyeffects_db_rnnoise.kcfg
+NameSpace=db
+ClassName=RNNoise
+Inherits=KConfigBaseEE
+IncludeFiles=kconfig_base_ee.hpp
+Mutators=true
+Notifiers=true
+DefaultValueGetters=true
+Singleton=false
+GenerateProperties=true

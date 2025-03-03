@@ -39,6 +39,7 @@
 #include "easyeffects_db_gate.h"
 #include "easyeffects_db_limiter.h"
 #include "easyeffects_db_maximizer.h"
+#include "easyeffects_db_rnnoise.h"
 #include "easyeffects_db_spectrum.h"
 #include "easyeffects_db_speex.h"
 #include "easyeffects_db_stereo_tools.h"
@@ -180,6 +181,10 @@ void Manager::create_plugin_db(const QString& parentGroup,
       } else if (name.startsWith(tags::plugin_name::BaseName::maximizer)) {
         plugins_map[tags::plugin_name::BaseName::maximizer + "#" + id] =
             QVariant::fromValue(new db::Maximizer(parentGroup, id));
+        //
+      } else if (name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
+        plugins_map[tags::plugin_name::BaseName::rnnoise + "#" + id] =
+            QVariant::fromValue(new db::RNNoise(parentGroup, id));
         //
       } else if (name.startsWith(tags::plugin_name::BaseName::speex)) {
         plugins_map[tags::plugin_name::BaseName::speex + "#" + id] =

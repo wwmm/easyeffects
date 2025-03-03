@@ -72,6 +72,7 @@ pkg_check_modules(LIBGSL gsl)
 pkg_check_modules(LIBBS2B libbs2b)
 pkg_check_modules(LIBSAMPLERATE samplerate)
 pkg_check_modules(LIBSNDFILE sndfile)
+pkg_check_modules(LIBRNNOISE rnnoise)
 
 file(GLOB KCFG_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfg)
 file(GLOB KCFGC_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfgc)
