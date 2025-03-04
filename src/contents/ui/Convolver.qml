@@ -310,7 +310,7 @@ Kirigami.ScrollablePage {
                         id: irRate
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: pluginBackend.kernelRate + " Hz"
+                        text: (pluginBackend ? pluginBackend.kernelRate : "") + " Hz"
                         enabled: false
                     }
 
@@ -318,7 +318,7 @@ Kirigami.ScrollablePage {
                         id: irSamples
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: pluginBackend.kernelSamples
+                        text: pluginBackend ? pluginBackend.kernelSamples : "0"
                         enabled: false
                     }
 
@@ -326,7 +326,7 @@ Kirigami.ScrollablePage {
                         id: irDuration
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: Number(pluginBackend.kernelDuration).toLocaleString(Qt.locale(), 'f', 3) + " s"
+                        text: Number(pluginBackend ? pluginBackend.kernelDuration : 0).toLocaleString(Qt.locale(), 'f', 3) + " s"
                         enabled: false
                     }
 

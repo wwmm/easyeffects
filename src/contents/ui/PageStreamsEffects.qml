@@ -189,6 +189,14 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
+                case TagsPluginName.BaseName.rnnoise:
+                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    pluginsStack.push("qrc:ui/RNNoise.qml", {
+                        "name": name,
+                        "pluginDB": pluginDB,
+                        "pipelineInstance": pipelineInstance
+                    });
+                    break;
                 case TagsPluginName.BaseName.speex:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Speex.qml", {
