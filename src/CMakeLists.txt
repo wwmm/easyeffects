@@ -63,6 +63,7 @@ target_sources(easyeffects PRIVATE
     pw_model_nodes.cpp
     resampler.cpp
     rnnoise.cpp
+    rnnoise_preset.cpp
     spectrum.cpp
     speex.cpp
     speex_preset.cpp

@@ -60,6 +60,7 @@
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
 #include "presets_list_model.hpp"
+#include "rnnoise_preset.hpp"
 #include "speex_preset.hpp"
 #include "stereo_tools_preset.hpp"
 #include "tags_app.hpp"
@@ -1431,7 +1432,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
-    // return std::make_unique<RNNoisePreset>(pipeline_type, filter_name.toStdString());
+    return std::make_unique<RNNoisePreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::speex)) {
