@@ -57,6 +57,10 @@ ListModel::ListModel(QObject* parent, const ModelType& model_type)
       proxy->setFilterRole(Roles::Name);
       proxy->setSortRole(Roles::Name);
       break;
+    case RNNOISE:
+      proxy->setFilterRole(Roles::Name);
+      proxy->setSortRole(Roles::Name);
+      break;
   }
 
   proxy->setDynamicSortFilter(true);
@@ -85,7 +89,8 @@ QVariant ListModel::data(const QModelIndex& index, int role) const {
 
   const auto it = std::next(listPaths.begin(), index.row());
 
-  if (model_type == ModelType::Local || model_type == ModelType::Community || model_type == ModelType::IRS) {
+  if (model_type == ModelType::Local || model_type == ModelType::Community || model_type == ModelType::IRS ||
+      model_type == ModelType::RNNOISE) {
     switch (role) {
       case Roles::Name:
         return QString::fromStdString(it->stem().string());

@@ -65,9 +65,13 @@ class Manager : public QObject {
 
   enum class ImpulseImportState { success, no_regular_file, no_frame, no_stereo };
 
+  enum class RNNoiseImportState { success, no_regular_file };
+
   constexpr static std::string json_ext = ".json";
 
   constexpr static std::string irs_ext = ".irs";
+
+  constexpr static std::string rnnoise_ext = ".rnnn";
 
   auto preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool;
 
@@ -84,6 +88,8 @@ class Manager : public QObject {
   Q_INVOKABLE bool importPresets(const PipelineType& pipeline_type, const QList<QString>& url_list);
 
   Q_INVOKABLE int importImpulses(const QList<QString>& url_list);
+
+  Q_INVOKABLE int importRNNoiseModel(const QList<QString>& url_list);
 
   Q_INVOKABLE static void removeImpulseFile(const QString& filePath);
 
@@ -121,16 +127,18 @@ class Manager : public QObject {
   std::vector<std::string> system_data_dir_input, system_data_dir_output, system_data_dir_irs, system_data_dir_rnnoise;
 
   QFileSystemWatcher user_output_watcher, user_input_watcher, autoload_output_watcher, autoload_input_watcher,
-      irs_watcher;
+      irs_watcher, rnnoise_watcher;
 
   ListModel *outputListModel, *inputListModel, *communityOutputListModel, *communityInputListModel,
-      *autoloadingOutputListmodel, *autoloadingInputListmodel, *irsListModel;
+      *autoloadingOutputListmodel, *autoloadingInputListmodel, *irsListModel, *rnnoiseListModel;
 
   static void create_user_directory(const std::filesystem::path& path);
 
   auto get_local_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
 
   auto get_local_irs_paths() -> QList<std::filesystem::path>;
+
+  auto get_local_rnnoise_paths() -> QList<std::filesystem::path>;
 
   auto get_autoloading_profiles_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
 
@@ -185,6 +193,8 @@ class Manager : public QObject {
       -> std::optional<std::unique_ptr<PluginPresetBase>>;
 
   auto import_irs_file(const std::string& file_path) -> ImpulseImportState;
+
+  auto import_rnnoise_file(const std::string& file_path) -> RNNoiseImportState;
 };
 
 }  // namespace presets

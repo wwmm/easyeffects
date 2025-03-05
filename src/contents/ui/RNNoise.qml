@@ -5,6 +5,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
 import ee.database as DB
+import ee.presets as Presets
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -27,22 +28,26 @@ Kirigami.ScrollablePage {
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
     }
 
+    function showStatus(label) {
+        status.text = label;
+        status.visible = true;
+    }
+
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
     FileDialog {
-        // if (Presets.Manager.importImpulses(fileDialog.selectedFiles) === 0)
-        //     showImpulseMenuStatus(i18n("Preset files imported!"));
-        // else
-        //     showImpulseMenuStatus(i18n("Failed to import the impulse file!"));
-
         id: fileDialog
 
         fileMode: FileDialog.OpenFiles
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         nameFilters: ["RNNoise (*.rnnn)"]
         onAccepted: {
+            if (Presets.Manager.importRNNoiseModel(fileDialog.selectedFiles) === 0)
+                showStatus(i18n("Model files imported!"));
+            else
+                showStatus(i18n("Failed to import the model file!"));
         }
     }
 
@@ -133,7 +138,64 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ListView {
+                    id: listView
+
+                    clip: true
+                    reuseItems: true
+                    model: Presets.SortedRNNoiseListModel
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+
+                    Kirigami.PlaceholderMessage {
+                        anchors.centerIn: parent
+                        width: parent.width - (Kirigami.Units.largeSpacing * 4)
+                        visible: listView.count === 0
+                        text: i18n("Empty")
+                    }
+
+                    delegate: Controls.ItemDelegate {
+                        id: listItemDelegate
+
+                        required property string name
+                        required property string path
+                        property bool selected: listItemDelegate.highlighted || listItemDelegate.down
+                        property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
+
+                        hoverEnabled: true
+                        width: listView.width
+                        onClicked: {
+                            pluginDB.kernelName = name;
+                            showStatus(i18n("Loaded Model: %1", name));
+                        }
+
+                        contentItem: RowLayout {
+                            Controls.Label {
+                                text: name
+                            }
+
+                            Kirigami.ActionToolBar {
+                                alignment: Qt.AlignRight
+                                actions: [
+                                    Kirigami.Action {
+                                        // if (Presets.Manager.removeImpulseFile(path) === true)
+                                        //     showStatus(i18n("Removed Model: %1", name));
+                                        // else
+                                        //     showStatus(i18n("Failed to Remove: %1", name));
+
+                                        text: i18n("Delete this Model")
+                                        icon.name: "delete"
+                                        displayHint: Kirigami.DisplayHint.AlwaysHide
+                                        onTriggered: {
+                                        }
+                                    }
+                                ]
+                            }
+
+                        }
+
+                    }
+
                 }
 
             }
@@ -148,38 +210,50 @@ Kirigami.ScrollablePage {
         pluginDB: rnnoisePage.pluginDB
     }
 
-    footer: RowLayout {
-        Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.rnnoise}</b>`)
-            textFormat: Text.RichText
-            horizontalAlignment: Qt.AlignLeft
-            verticalAlignment: Qt.AlignVCenter
-            Layout.fillWidth: false
-            Layout.leftMargin: Kirigami.Units.smallSpacing
-            color: Kirigami.Theme.disabledTextColor
+    footer: ColumnLayout {
+        Kirigami.InlineMessage {
+            id: status
+
+            Layout.fillWidth: true
+            Layout.maximumWidth: parent.width
+            visible: false
+            showCloseButton: true
         }
 
-        Kirigami.ActionToolBar {
-            Layout.margins: Kirigami.Units.smallSpacing
-            alignment: Qt.AlignRight
-            position: Controls.ToolBar.Footer
-            flat: true
-            actions: [
-                Kirigami.Action {
-                    text: i18n("Import Model")
-                    icon.name: "document-import-symbolic"
-                    onTriggered: {
-                        fileDialog.open();
+        RowLayout {
+            Controls.Label {
+                text: i18n("Using %1", `<b>${TagsPluginName.Package.rnnoise}</b>`)
+                textFormat: Text.RichText
+                horizontalAlignment: Qt.AlignLeft
+                verticalAlignment: Qt.AlignVCenter
+                Layout.fillWidth: false
+                Layout.leftMargin: Kirigami.Units.smallSpacing
+                color: Kirigami.Theme.disabledTextColor
+            }
+
+            Kirigami.ActionToolBar {
+                Layout.margins: Kirigami.Units.smallSpacing
+                alignment: Qt.AlignRight
+                position: Controls.ToolBar.Footer
+                flat: true
+                actions: [
+                    Kirigami.Action {
+                        text: i18n("Import Model")
+                        icon.name: "document-import-symbolic"
+                        onTriggered: {
+                            fileDialog.open();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Reset")
+                        icon.name: "edit-reset-symbolic"
+                        onTriggered: {
+                            pluginBackend.reset();
+                        }
                     }
-                },
-                Kirigami.Action {
-                    text: i18n("Reset")
-                    icon.name: "edit-reset-symbolic"
-                    onTriggered: {
-                        pluginBackend.reset();
-                    }
-                }
-            ]
+                ]
+            }
+
         }
 
     }

@@ -83,7 +83,8 @@ Manager::Manager()
       communityInputListModel(new ListModel(this, ListModel::ModelType::Community)),
       autoloadingOutputListmodel(new ListModel(this, ListModel::ModelType::Autoloading)),
       autoloadingInputListmodel(new ListModel(this, ListModel::ModelType::Autoloading)),
-      irsListModel(new ListModel(this, ListModel::ModelType::IRS)) {
+      irsListModel(new ListModel(this, ListModel::ModelType::IRS)),
+      rnnoiseListModel(new ListModel(this, ListModel::ModelType::RNNOISE)) {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<presets::Manager>("ee.presets", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
@@ -110,6 +111,9 @@ Manager::Manager()
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedImpulseListModel", irsListModel->getProxy());
+
+  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
+                                                      "SortedRNNoiseListModel", rnnoiseListModel->getProxy());
   // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 
   // Initialize input and output directories for community presets.
@@ -149,6 +153,8 @@ Manager::Manager()
                       [this]() { return get_autoloading_profiles_paths(PipelineType::output); });
 
   refresh_list_models(irsListModel, [this]() { return get_local_irs_paths(); });
+
+  refresh_list_models(rnnoiseListModel, [this]() { return get_local_rnnoise_paths(); });
 
   refreshCommunityPresets(PipelineType::input);
   refreshCommunityPresets(PipelineType::output);
@@ -201,6 +207,7 @@ void Manager::prepare_filesystem_watchers() {
   autoload_input_watcher.addPath(QString::fromStdString(autoload_input_dir.string()));
   autoload_output_watcher.addPath(QString::fromStdString(autoload_output_dir.string()));
   irs_watcher.addPath(QString::fromStdString(user_irs_dir.string()));
+  rnnoise_watcher.addPath(QString::fromStdString(user_rnnoise_dir.string()));
 
   connect(&user_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
     refresh_list_models(inputListModel, [this]() { return get_local_presets_paths(PipelineType::input); });
@@ -222,6 +229,9 @@ void Manager::prepare_filesystem_watchers() {
 
   connect(&irs_watcher, &QFileSystemWatcher::directoryChanged,
           [&]() { refresh_list_models(irsListModel, [this]() { return get_local_irs_paths(); }); });
+
+  connect(&rnnoise_watcher, &QFileSystemWatcher::directoryChanged,
+          [&]() { refresh_list_models(rnnoiseListModel, [this]() { return get_local_rnnoise_paths(); }); });
 }
 
 void Manager::prepare_last_used_preset_key(const PipelineType& pipeline_type) {
@@ -286,7 +296,15 @@ auto Manager::get_local_presets_paths(const PipelineType& pipeline_type) -> QLis
 auto Manager::get_local_irs_paths() -> QList<std::filesystem::path> {
   auto it = std::filesystem::directory_iterator{user_irs_dir};
 
-  auto paths = search_presets_path(it, ".irs");
+  auto paths = search_presets_path(it, irs_ext);
+
+  return paths;
+}
+
+auto Manager::get_local_rnnoise_paths() -> QList<std::filesystem::path> {
+  auto it = std::filesystem::directory_iterator{user_rnnoise_dir};
+
+  auto paths = search_presets_path(it, rnnoise_ext);
 
   return paths;
 }
@@ -830,6 +848,42 @@ int Manager::importImpulses(const QList<QString>& url_list) {
   }
 
   return static_cast<int>(ImpulseImportState::success);
+}
+
+auto Manager::import_rnnoise_file(const std::string& file_path) -> RNNoiseImportState {
+  std::filesystem::path p{file_path};
+
+  if (!std::filesystem::is_regular_file(p)) {
+    util::warning(p.string() + " is not a file!");
+
+    return RNNoiseImportState::no_regular_file;
+  }
+
+  auto out_path = user_rnnoise_dir / p.filename();
+
+  out_path.replace_extension(rnnoise_ext);
+
+  std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
+
+  util::debug("Irs file successfully imported to: " + out_path.string());
+
+  return RNNoiseImportState::success;
+}
+
+int Manager::importRNNoiseModel(const QList<QString>& url_list) {
+  for (const auto& u : url_list) {
+    auto url = QUrl(u);
+
+    if (url.isLocalFile()) {
+      auto path = std::filesystem::path{url.toLocalFile().toStdString()};
+
+      if (auto import_state = import_rnnoise_file(path); import_state != RNNoiseImportState::success) {
+        return static_cast<int>(import_state);
+      }
+    }
+  }
+
+  return static_cast<int>(RNNoiseImportState::success);
 }
 
 void Manager::removeImpulseFile(const QString& filePath) {
