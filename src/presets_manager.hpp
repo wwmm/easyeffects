@@ -93,6 +93,8 @@ class Manager : public QObject {
 
   Q_INVOKABLE static void removeImpulseFile(const QString& filePath);
 
+  Q_INVOKABLE static void removeRNNoiseModel(const QString& filePath);
+
   Q_INVOKABLE void refreshCommunityPresets(const PipelineType& pipeline_type);
 
   Q_INVOKABLE bool loadCommunityPresetFile(const PipelineType& pipeline_type,

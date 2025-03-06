@@ -26,6 +26,10 @@
         <entry name="modelName" type="String">
             <default>""</default>
         </entry>
+        <entry name="useStandardModel" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
         <entry name="enableVad" type="Bool">
             <default>false</default>
         </entry>

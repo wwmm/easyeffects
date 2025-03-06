@@ -132,68 +132,100 @@ Kirigami.ScrollablePage {
                 id: cardModels
 
                 implicitWidth: cardLayout.maximumColumnWidth
+                actions: [
+                    Kirigami.Action {
+
+                        displayComponent: EeSwitch {
+                            label: i18n("Use the Standard Model")
+                            isChecked: pluginDB.useStandardModel
+                            onCheckedChanged: {
+                                if (isChecked !== pluginDB.useStandardModel)
+                                    pluginDB.useStandardModel = isChecked;
+
+                            }
+                        }
+
+                    }
+                ]
 
                 header: Kirigami.Heading {
-                    text: i18n("Models")
+                    text: i18n("User Models")
                     level: 2
+                    enabled: !pluginDB.useStandardModel
                 }
 
-                contentItem: ListView {
-                    id: listView
+                contentItem: RowLayout {
+                    id: listviewRow
 
-                    clip: true
-                    reuseItems: true
-                    model: Presets.SortedRNNoiseListModel
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
+                    ListView {
+                        id: listView
 
-                    Kirigami.PlaceholderMessage {
-                        anchors.centerIn: parent
-                        width: parent.width - (Kirigami.Units.largeSpacing * 4)
-                        visible: listView.count === 0
-                        text: i18n("Empty")
+                        clip: true
+                        reuseItems: true
+                        model: Presets.SortedRNNoiseListModel
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        enabled: !pluginDB.useStandardModel
+                        Controls.ScrollBar.vertical: listViewScrollBar
+
+                        Kirigami.PlaceholderMessage {
+                            anchors.centerIn: parent
+                            width: parent.width - (Kirigami.Units.largeSpacing * 4)
+                            visible: listView.count === 0
+                            text: i18n("Empty")
+                        }
+
+                        delegate: Controls.ItemDelegate {
+                            id: listItemDelegate
+
+                            required property string name
+                            required property string path
+                            required property int index
+                            property bool selected: listItemDelegate.highlighted || listItemDelegate.down
+                            property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
+
+                            hoverEnabled: true
+                            width: listView.width
+                            highlighted: listItemDelegate.ListView.isCurrentItem
+                            onClicked: {
+                                pluginDB.kernelName = name;
+                                listItemDelegate.ListView.view.currentIndex = index;
+                                showStatus(i18n("Loaded Model: %1", name));
+                            }
+
+                            contentItem: RowLayout {
+                                Controls.Label {
+                                    text: name
+                                }
+
+                                Kirigami.ActionToolBar {
+                                    alignment: Qt.AlignRight
+                                    actions: [
+                                        Kirigami.Action {
+                                            text: i18n("Delete this Model")
+                                            icon.name: "delete"
+                                            displayHint: Kirigami.DisplayHint.AlwaysHide
+                                            onTriggered: {
+                                                if (Presets.Manager.removeRNNoiseModel(path) === true)
+                                                    showStatus(i18n("Removed Model: %1", name));
+                                                else
+                                                    showStatus(i18n("Failed to Remove: %1", name));
+                                            }
+                                        }
+                                    ]
+                                }
+
+                            }
+
+                        }
+
                     }
 
-                    delegate: Controls.ItemDelegate {
-                        id: listItemDelegate
+                    Controls.ScrollBar {
+                        id: listViewScrollBar
 
-                        required property string name
-                        required property string path
-                        property bool selected: listItemDelegate.highlighted || listItemDelegate.down
-                        property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
-
-                        hoverEnabled: true
-                        width: listView.width
-                        onClicked: {
-                            pluginDB.kernelName = name;
-                            showStatus(i18n("Loaded Model: %1", name));
-                        }
-
-                        contentItem: RowLayout {
-                            Controls.Label {
-                                text: name
-                            }
-
-                            Kirigami.ActionToolBar {
-                                alignment: Qt.AlignRight
-                                actions: [
-                                    Kirigami.Action {
-                                        // if (Presets.Manager.removeImpulseFile(path) === true)
-                                        //     showStatus(i18n("Removed Model: %1", name));
-                                        // else
-                                        //     showStatus(i18n("Failed to Remove: %1", name));
-
-                                        text: i18n("Delete this Model")
-                                        icon.name: "delete"
-                                        displayHint: Kirigami.DisplayHint.AlwaysHide
-                                        onTriggered: {
-                                        }
-                                    }
-                                ]
-                            }
-
-                        }
-
+                        parent: listviewRow
+                        Layout.fillHeight: true
                     }
 
                 }
