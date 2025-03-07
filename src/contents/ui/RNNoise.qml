@@ -7,6 +7,7 @@ import QtQuick.Layouts
 import ee.database as DB
 import ee.presets as Presets
 import ee.tags.plugin.name as TagsPluginName
+import ee.type.presets as TypePresets
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -167,6 +168,16 @@ Kirigami.ScrollablePage {
                         Layout.fillHeight: true
                         enabled: !pluginDB.useStandardModel
                         Controls.ScrollBar.vertical: listViewScrollBar
+                        Component.onCompleted: {
+                            for (let n = 0; n < model.rowCount(); n++) {
+                                const proxyIndex = model.index(n, 0);
+                                const name = model.data(proxyIndex, TypePresets.ListModel.Name);
+                                if (name === pluginDB.modelName) {
+                                    currentIndex = n;
+                                    break;
+                                }
+                            }
+                        }
 
                         Kirigami.PlaceholderMessage {
                             anchors.centerIn: parent
@@ -181,14 +192,12 @@ Kirigami.ScrollablePage {
                             required property string name
                             required property string path
                             required property int index
-                            property bool selected: listItemDelegate.highlighted || listItemDelegate.down
-                            property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
 
                             hoverEnabled: true
                             width: listView.width
                             highlighted: listItemDelegate.ListView.isCurrentItem
                             onClicked: {
-                                pluginDB.kernelName = name;
+                                pluginDB.modelName = name;
                                 listItemDelegate.ListView.view.currentIndex = index;
                                 showStatus(i18n("Loaded Model: %1", name));
                             }

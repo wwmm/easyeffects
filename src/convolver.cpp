@@ -312,7 +312,7 @@ auto Convolver::search_irs_path(const std::string& name) -> std::string {
     const auto local_irs_file = std::filesystem::path{local_dir_irs + "/" + irs_filename};
 
     if (std::filesystem::exists(local_irs_file)) {
-      irs_full_path = local_irs_file.c_str();
+      irs_full_path = local_irs_file.string();
     }
   } else {
     // Search irs file in community package paths.

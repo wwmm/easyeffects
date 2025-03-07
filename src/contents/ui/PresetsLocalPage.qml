@@ -142,8 +142,6 @@ ColumnLayout {
                 id: listItemDelegate
 
                 required property string name
-                property bool selected: listItemDelegate.highlighted || listItemDelegate.down
-                property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
 
                 hoverEnabled: true
                 width: listView.width

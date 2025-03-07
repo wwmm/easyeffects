@@ -118,6 +118,8 @@ class RNNoise : public PluginBase {
 
   auto get_model_from_name() -> RNNModel*;
 
+  void prepare_model();
+
   void free_rnnoise();
 
   template <typename T1, typename T2>

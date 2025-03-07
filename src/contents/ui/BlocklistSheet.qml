@@ -108,8 +108,6 @@ Kirigami.OverlaySheet {
 
                         return "";
                     }
-                    property bool selected: listItemDelegate.highlighted || listItemDelegate.down
-                    property color color: selected ? Kirigami.Theme.highlightedTextColor : Kirigami.Theme.textColor
 
                     hoverEnabled: true
                     down: false

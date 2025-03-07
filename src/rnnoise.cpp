@@ -75,33 +75,16 @@ RNNoise::RNNoise(const std::string& tag, pw::Manager* pipe_manager, PipelineType
     system_data_dir_rnnoise.push_back(dir.toStdString() + "rnnoise");
   }
 
-  connect(settings, &db::RNNoise::modelNameChanged, [&]() {
-    data_mutex.lock();
-
-    rnnoise_ready = false;
-
-    data_mutex.unlock();
-
-#ifdef ENABLE_RNNOISE
-    free_rnnoise();
-
-    auto* m = get_model_from_name();
-
-    model = m;
-
-    state_left = rnnoise_create(model);
-    state_right = rnnoise_create(model);
-
-    rnnoise_ready = true;
-#endif
-  });
-
 #ifdef ENABLE_RNNOISE
 
   init_release();
 
   wet_ratio =
       (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
+
+  connect(settings, &db::RNNoise::useStandardModelChanged, [&]() { prepare_model(); });
+
+  connect(settings, &db::RNNoise::modelNameChanged, [&]() { prepare_model(); });
 
   connect(settings, &db::RNNoise::wetChanged, [&]() {
     wet_ratio =
@@ -300,7 +283,7 @@ auto RNNoise::search_model_path(const std::string& name) -> std::string {
     const auto local_model_file = std::filesystem::path{local_dir_rnnoise + "/" + model_filename};
 
     if (std::filesystem::exists(local_model_file)) {
-      model_full_path = local_model_file.c_str();
+      model_full_path = local_model_file.string();
     }
   } else {
     // Search model in community package paths
@@ -323,12 +306,10 @@ auto RNNoise::get_model_from_name() -> RNNModel* {
   const auto name = settings->modelName().toStdString();
 
   // Standard Model
-  if (name.empty()) {
+  if (settings->useStandardModel()) {
     standard_model = true;
 
-    util::warning(log_tag + " empty model name set, using the standard model");
-
-    // model_changed.emit(false);
+    util::warning(log_tag + " using the standard model");
 
     return m;
   }
@@ -340,8 +321,6 @@ auto RNNoise::get_model_from_name() -> RNNModel* {
     standard_model = true;
 
     util::debug(log_tag + name + " model does not exist on the filesystem, using the standard model.");
-
-    // model_changed.emit(false);
 
     return m;
   }
@@ -361,9 +340,30 @@ auto RNNoise::get_model_from_name() -> RNNModel* {
     util::warning(log_tag + name + " failed to load the custom model. Using the standard one.");
   }
 
-  // model_changed.emit(standard_model);
-
   return m;
+}
+
+void RNNoise::prepare_model() {
+  if (settings->modelName().isEmpty()) {
+    settings->setUseStandardModel(true);
+  }
+
+  data_mutex.lock();
+
+  rnnoise_ready = false;
+
+  data_mutex.unlock();
+
+  free_rnnoise();
+
+  auto* m = get_model_from_name();
+
+  model = m;
+
+  state_left = rnnoise_create(model);
+  state_right = rnnoise_create(model);
+
+  rnnoise_ready = true;
 }
 
 void RNNoise::free_rnnoise() {

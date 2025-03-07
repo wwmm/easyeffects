@@ -84,6 +84,7 @@ Kirigami.Page {
         GridLayout {
             function populatePluginsListModel(plugins) {
                 let baseNames = TagsPluginName.PluginsNameModel.getBaseNames();
+                pluginsListModel.clear();
                 for (let n = 0; n < plugins.length; n++) {
                     for (let k = 0; k < baseNames.length; k++) {
                         if (plugins[n].startsWith(baseNames[k])) {
@@ -268,7 +269,6 @@ Kirigami.Page {
                     if (Common.equalArrays(newList, currentList))
                         return ;
 
-                    pluginsListModel.clear();
                     populatePluginsListModel(newList);
                     if (newList.length === 1 && pluginsListView.currentIndex === -1)
                         pluginsListView.currentIndex = 0;

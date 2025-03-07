@@ -558,7 +558,7 @@ bool Manager::savePresetFile(const PipelineType& pipeline_type, const QString& n
     }
   }
 
-  std::ofstream o(output_file.c_str());
+  std::ofstream o(output_file.string());
 
   o << std::setw(4) << json << '\n';
 
@@ -807,7 +807,7 @@ auto Manager::import_irs_file(const std::string& file_path) -> ImpulseImportStat
     return ImpulseImportState::no_regular_file;
   }
 
-  auto file = SndfileHandle(file_path.c_str());
+  auto file = SndfileHandle(file_path);
 
   if (file.frames() == 0) {
     util::warning("Cannot import the impulse response! The format may be corrupted or unsupported.");
@@ -1026,7 +1026,7 @@ bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
     return false;
   }
 
-  if (p.extension().c_str() != json_ext) {
+  if (p.extension().string() != json_ext) {
     return false;
   }
 
@@ -1048,7 +1048,7 @@ bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
       // an incremental numeric suffix.
       const auto suffix = (i == 0U) ? "" : "-" + util::to_string(i);
 
-      out_path = conf_dir + "/" + p.stem().c_str() + suffix + json_ext;
+      out_path = conf_dir + "/" + p.stem().string() + suffix + json_ext;
 
       if (!std::filesystem::exists(out_path)) {
         preset_can_be_copied = true;
@@ -1250,7 +1250,7 @@ auto Manager::get_autoload_profiles(const PipelineType& pipeline_type) -> std::v
   try {
     while (it != std::filesystem::directory_iterator{}) {
       if (std::filesystem::is_regular_file(it->status())) {
-        if (it->path().extension().c_str() == json_ext) {
+        if (it->path().extension().string() == json_ext) {
           nlohmann::json json;
 
           std::ifstream is(autoload_dir / it->path());
