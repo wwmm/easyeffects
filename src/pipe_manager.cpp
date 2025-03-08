@@ -1581,7 +1581,12 @@ PipeManager::PipeManager() : header_version(pw_get_headers_version()), library_v
 
   pw_properties* props_context = pw_properties_new(nullptr, nullptr);
 
-  pw_properties_set(props_context, PW_KEY_CONFIG_NAME, "client-rt.conf");
+  const auto comparison_result = util::compare_versions(libraryVersion.toStdString(), "1.4.0");
+
+  if (comparison_result == -1) {
+    pw_properties_set(props_context, PW_KEY_CONFIG_NAME, "client-rt.conf");
+  }
+
   pw_properties_set(props_context, PW_KEY_MEDIA_TYPE, "Audio");
   pw_properties_set(props_context, PW_KEY_MEDIA_CATEGORY, "Manager");
   pw_properties_set(props_context, PW_KEY_MEDIA_ROLE, "Music");
