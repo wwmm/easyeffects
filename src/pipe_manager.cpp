@@ -1581,7 +1581,7 @@ PipeManager::PipeManager() : header_version(pw_get_headers_version()), library_v
 
   pw_properties* props_context = pw_properties_new(nullptr, nullptr);
 
-  const auto comparison_result = util::compare_versions(libraryVersion.toStdString(), "1.4.0");
+  const auto comparison_result = util::compare_versions(library_version, "1.4.0");
 
   if (comparison_result == -1) {
     pw_properties_set(props_context, PW_KEY_CONFIG_NAME, "client-rt.conf");
