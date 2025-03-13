@@ -28,10 +28,8 @@
 #include <qobject.h>
 #include <qtmetamacros.h>
 #include <spa/utils/hook.h>
-#include <spa/utils/json.h>
 #include <sys/types.h>
 #include <array>
-#include <cstddef>
 #include <cstdint>
 #include <string>
 #include <vector>
@@ -138,8 +136,6 @@ class Manager : public QObject {
   void sync_wait_unlock() const;
 
   [[nodiscard]] auto wait_full() const -> int;
-
-  static auto json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int;
 
   Q_INVOKABLE void setNodeMute(const uint& serial, const bool& state);
   Q_INVOKABLE void setNodeVolume(const uint& serial, const uint& n_vol_ch, const float& value);

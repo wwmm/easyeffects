@@ -53,7 +53,6 @@
 #include <spa/utils/defs.h>
 #include <spa/utils/dict.h>
 #include <spa/utils/hook.h>
-#include <spa/utils/json.h>
 #include <spa/utils/keys.h>
 #include <spa/utils/result.h>
 #include <spa/utils/type.h>
@@ -66,6 +65,8 @@
 #include <cstdint>
 #include <cstring>
 #include <ctime>
+#include <nlohmann/json.hpp>
+#include <nlohmann/json_fwd.hpp>
 #include <span>
 #include <stdexcept>
 #include <string>
@@ -741,33 +742,29 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
   }
 
   if (str_key == "default.audio.sink") {
-    std::array<char, 1024U> v{};
+    auto v = nlohmann::json::parse(str_value).value("name", "");
 
-    pw::Manager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
-
-    if (std::strcmp(v.data(), tags::pipewire::ee_sink_name) == 0) {
+    if (v == tags::pipewire::ee_sink_name) {
       return 0;
     }
 
-    pm->defaultOutputDeviceName = v.data();
+    util::debug("new default output device: " + v);
 
-    util::debug("new default output device: " + pm->defaultOutputDeviceName.toStdString());
+    pm->defaultOutputDeviceName = QString::fromStdString(v);
 
     Q_EMIT pm->newDefaultSinkName(pm->defaultOutputDeviceName);
   }
 
   if (str_key == "default.audio.source") {
-    std::array<char, 1024U> v{};
+    auto v = nlohmann::json::parse(str_value).value("name", "");
 
-    pw::Manager::json_object_find(str_value.c_str(), "name", v.data(), v.size() * sizeof(char));
-
-    if (std::strcmp(v.data(), tags::pipewire::ee_source_name) == 0) {
+    if (v == tags::pipewire::ee_source_name) {
       return 0;
     }
 
-    pm->defaultInputDeviceName = v.data();
+    util::debug("new default input device: " + v);
 
-    util::debug("new default input device: " + pm->defaultInputDeviceName.toStdString());
+    pm->defaultInputDeviceName = QString::fromStdString(v);
 
     Q_EMIT pm->newDefaultSourceName(pm->defaultInputDeviceName);
   }
@@ -1638,40 +1635,6 @@ void Manager::destroy_links(const std::vector<pw_proxy*>& list) const {
       sync_wait_unlock();
     }
   }
-}
-
-/*
-  Function inspired by code present in PipeWire's sources:
-  https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/spa/include/spa/utils/json.h#L350
-*/
-
-auto Manager::json_object_find(const char* obj, const char* key, char* value, const size_t& len) -> int {
-  const char* v = nullptr;
-
-  std::array<spa_json, 2U> sjson{};
-  std::array<char, 128U> res{};
-
-  spa_json_init(sjson.data(), obj, strlen(obj));
-
-  if (spa_json_enter_object(sjson.data(), sjson.data() + 1) <= 0) {
-    return -EINVAL;
-  }
-
-  while (spa_json_get_string(sjson.data() + 1, res.data(), (res.size() * sizeof(char)) - 1) > 0) {
-    if (std::strcmp(res.data(), key) == 0) {
-      if (spa_json_get_string(sjson.data() + 1, value, static_cast<int>(len)) <= 0) {
-        continue;
-      }
-
-      return 0;
-    }
-
-    if (spa_json_next(sjson.data() + 1, &v) <= 0) {
-      break;
-    }
-  }
-
-  return -ENOENT;
 }
 
 }  // namespace pw
