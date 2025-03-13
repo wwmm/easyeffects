@@ -262,6 +262,7 @@ void RNNoise::process(std::span<float>& left_in,
 
   get_peaks(left_in, right_in, left_out, right_out);
 }
+
 void RNNoise::process([[maybe_unused]] std::span<float>& left_in,
                       [[maybe_unused]] std::span<float>& right_in,
                       [[maybe_unused]] std::span<float>& left_out,

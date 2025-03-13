@@ -50,6 +50,7 @@
 #include "maximizer.hpp"
 #include "output_level.hpp"
 #include "pipeline_type.hpp"
+#include "pitch.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 #include "rnnoise.hpp"
@@ -70,10 +71,7 @@
 // #include "loudness.hpp"
 // #include "multiband_compressor.hpp"
 // #include "multiband_gate.hpp"
-// #include "pitch.hpp"
 // #include "reverb.hpp"
-// #include "rnnoise.hpp"
-// #include "speex.hpp"
 // #include "tags_app.hpp"
 // #include "tags_schema.hpp"
 
@@ -182,7 +180,7 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
       //   filter = std::make_shared<MultibandGate>(log_tag, tags::schema::multiband_gate::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::pitch)) {
-      //   filter = std::make_shared<Pitch>(log_tag, tags::schema::pitch::id, path, pm, pipeline_type);
+      filter = std::make_shared<Pitch>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::reverb)) {
       //   filter = std::make_shared<Reverb>(log_tag, tags::schema::reverb::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
@@ -306,6 +304,10 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::maximizer)) {
     return QVariant::fromValue(dynamic_cast<Maximizer*>(p.get()));
+  }
+
+  if (pluginName.startsWith(tags::plugin_name::BaseName::pitch)) {
+    return QVariant::fromValue(dynamic_cast<Pitch*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::rnnoise)) {

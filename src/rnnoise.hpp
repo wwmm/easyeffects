@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include <qtmetamacros.h>
 #include <sys/types.h>
 #include <QString>
 #include <algorithm>
@@ -40,6 +41,8 @@
 #include "resampler.hpp"
 
 class RNNoise : public PluginBase {
+  Q_OBJECT
+
  public:
   RNNoise(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
   RNNoise(const RNNoise&) = delete;

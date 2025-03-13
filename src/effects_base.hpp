@@ -44,6 +44,7 @@
 #include "maximizer.hpp"
 #include "output_level.hpp"
 #include "pipeline_type.hpp"
+#include "pitch.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 #include "rnnoise.hpp"
@@ -61,7 +62,6 @@
 // #include "loudness.hpp"
 // #include "multiband_compressor.hpp"
 // #include "multiband_gate.hpp"
-// #include "pitch.hpp"
 // #include "reverb.hpp"
 
 class EffectsBase : public QObject {
@@ -95,6 +95,7 @@ class EffectsBase : public QObject {
   std::shared_ptr<Gate> gate;
   std::shared_ptr<Limiter> limiter;
   std::shared_ptr<Maximizer> maximizer;
+  std::shared_ptr<Pitch> pitch;
   std::shared_ptr<RNNoise> rnnoise;
   std::shared_ptr<Speex> speex;
   std::shared_ptr<StereoTools> stereo_tools;
@@ -108,7 +109,6 @@ class EffectsBase : public QObject {
   //   std::shared_ptr<Loudness> loudness;
   //   std::shared_ptr<MultibandCompressor> multiband_compressor;
   //   std::shared_ptr<MultibandGate> multiband_gate;
-  //   std::shared_ptr<Pitch> pitch;
   //   std::shared_ptr<Reverb> reverb;
 
   auto get_plugins_map() -> std::map<QString, std::shared_ptr<PluginBase>>;

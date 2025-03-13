@@ -53,6 +53,7 @@ target_sources(easyeffects PRIVATE
     maximizer.cpp
     maximizer_preset.cpp
     output_level.cpp
+    pitch.cpp
     plugin_base.cpp
     plugin_preset_base.cpp
     presets_manager.cpp
@@ -110,6 +111,7 @@ target_link_libraries(easyeffects PRIVATE
     TBB::tbb
     GSL::gsl
     GSL::gslcblas
+    SoundTouch::SoundTouch
     ${LIBPIPEWIRE_LIBRARIES}
     ${LIBLILV_LIBRARIES}
     ${LIBEBUR128_LIBRARIES}
