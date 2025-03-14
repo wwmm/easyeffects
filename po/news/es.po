@@ -8,8 +8,9 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-07 03:15+0000\n"
-"PO-Revision-Date: 2025-02-06 03:02+0000\n"
-"Last-Translator: Felipe Valenzuela Cornejo <correo@fvalenzuela.cl>\n"
+"PO-Revision-Date: 2025-03-14 16:42+0000\n"
+"Last-Translator: BMO de Finn la casa del árbol del reino de Ooo "
+"<weblate.dense888@passinbox.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
 "Language: es\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.11-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -277,8 +278,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
 msgid "Fixed a regression in the autoload preset code."
-msgstr ""
-"Se ha corregido una regresión en el código de preajuste de carga automática."
+msgstr "Se corrigió una regresión en el código preestablecido de autocarga."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:113
 msgid ""
@@ -291,7 +291,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
 msgid "Performance optmizations to the spectrum plugin and the LADSPA wrapper"
 msgstr ""
-"Mejoras de rendimiento en el complemento de espectro y el contenedor LADSPA"
+"Optimizaciones de rendimiento a el plugin de espectro y el contenedor LADSPA"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid ""
@@ -311,19 +311,19 @@ msgid ""
 "volunteers. You can search them on the repositories of your favorite "
 "distribution."
 msgstr ""
-"Se han implementado los preajustes comunitarios. Los usuarios pueden "
-"instalar paquetes que contienen varios preajustes de Easy Effects para "
-"importarlos y aplicarlos dentro de la aplicación. Estos paquetes serán "
-"mantenidos y enviados por voluntarios. Puede buscarlos en los repositorios "
-"de su distribución favorita."
+"Se implementó los preajustes comunitarios. Los usuarios pueden instalar "
+"paquetes que contienen múltiples preajustes de Easy Effects para importarlos "
+"y aplicarlos dentro de la aplicación. Estos paquetes serán mantenidos y "
+"enviados por voluntarios. Puede buscarlos en los repositorios de su "
+"distribución favorita."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:127
 msgid ""
 "Added the ability of collapsing the sidebar to hide the effects list and "
 "expand the area of the effects user interface."
 msgstr ""
-"Se ha añadido la posibilidad de colapsar la barra lateral para ocultar la "
-"lista de efectos y ampliar el área de la interfaz de usuario de efectos."
+"Se añadió la posibilidad de colapsar la barra lateral para ocultar la lista "
+"de efectos y expandir el área de la interfaz de usuario de efectos."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid ""
@@ -405,7 +405,6 @@ msgstr ""
 "actualizaran en determinadas condiciones."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:155
-#, fuzzy
 msgid ""
 "We now set monitor.passthrough = true in our virtual devices. This will "
 "allow latency offset to be properly applied by video players when PipeWire > "
@@ -413,7 +412,8 @@ msgid ""
 msgstr ""
 "Ahora establecemos monitor.passthrough = true en nuestros dispositivos "
 "virtuales. Esto permitirá que los reproductores de vídeo apliquen "
-"correctamente la compensación de latencia cuando se publique PipeWire 1.0.3."
+"correctamente la compensación de latencia cuando se publique PipeWire > "
+"1.0.3."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:156
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:303
