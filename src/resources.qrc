@@ -27,6 +27,7 @@
         <file alias="main.qml">contents/ui/main.qml</file>
         <file alias="MenuAddPlugins.qml">contents/ui/MenuAddPlugins.qml</file>
         <file alias="PageStreamsEffects.qml">contents/ui/PageStreamsEffects.qml</file>
+        <file alias="Pitch.qml">contents/ui/Pitch.qml</file>
         <file alias="PipeWirePage.qml">contents/ui/PipeWirePage.qml</file>
         <file alias="PreferencesSheet.qml">contents/ui/PreferencesSheet.qml</file>
         <file alias="PresetsSheet.qml">contents/ui/PresetsSheet.qml</file>
