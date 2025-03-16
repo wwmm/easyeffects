@@ -85,7 +85,6 @@ class Manager : public QObject {
   QString defaultInputDeviceName, defaultOutputDeviceName;
 
   NodeInfo ee_sink_node, ee_source_node;
-  NodeInfo output_device, input_device;
 
   constexpr static auto blocklist_node_name = std::to_array(
       {"Easy Effects", "EasyEffects", "easyeffects", "easyeffects_sie", "easyeffects_soe", "EasyEffectsWebrtcProbe",

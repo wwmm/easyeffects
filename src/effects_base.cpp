@@ -54,6 +54,7 @@
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 #include "rnnoise.hpp"
+#include "spa/utils/defs.h"
 #include "spectrum.hpp"
 #include "speex.hpp"
 #include "stereo_tools.hpp"
@@ -328,9 +329,18 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 uint EffectsBase::getPipeLineRate() const {
   switch (pipeline_type) {
     case PipelineType::input:
-      return pm->ee_source_node.rate * 0.001F;
-    case PipelineType::output:
-      return pm->ee_sink_node.rate * 0.001F;
+      if (auto node = pm->model_nodes.get_node_by_name(db::StreamInputs::inputDevice());
+          node.serial != SPA_ID_INVALID) {
+        return node.rate * 0.001F;
+      }
+      return 0.0F;
+    case PipelineType::output: {
+      if (auto node = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice());
+          node.serial != SPA_ID_INVALID) {
+        return node.rate * 0.001F;
+      }
+      return 0.0F;
+    }
     default:
       return 0;
   }

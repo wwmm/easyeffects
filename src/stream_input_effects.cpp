@@ -49,28 +49,10 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<StreamInputEffects>("ee.pipeline", VERSION_MAJOR, VERSION_MINOR, "Input", this);
 
-  auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
-
-  if (PULSE_SOURCE != nullptr && PULSE_SOURCE != tags::pipewire::ee_source_name) {
-    auto node = pm->model_nodes.get_node_by_name(PULSE_SOURCE);
-
-    pm->input_device = node.serial == SPA_ID_INVALID ? node : pm->input_device;
-  }
-
-  if (db::StreamInputs::inputDevice().isEmpty()) {
-    db::StreamInputs::setInputDevice(pm->defaultInputDeviceName);
-  }
-
-  connect_filters();
-
-  presets::Manager::self().autoload(PipelineType::input, pm->input_device.name, pm->input_device.device_profile_name);
-
   connect(
       pm, &pw::Manager::sourceAdded, this,
       [&](pw::NodeInfo node) {
         if (node.name == db::StreamInputs::inputDevice()) {
-          pm->input_device = node;
-
           if (db::Main::bypass()) {
             db::Main::setBypass(false);
 
@@ -112,8 +94,6 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
         }
 
         if (auto node = pm->model_nodes.get_node_by_name(name); node.serial != SPA_ID_INVALID) {
-          pm->input_device = node;
-
           if (db::Main::bypass()) {
             db::Main::setBypass(false);
 
@@ -150,6 +130,24 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
         presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_name);
       },
       Qt::QueuedConnection);
+
+  auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
+
+  if (PULSE_SOURCE != nullptr && PULSE_SOURCE != tags::pipewire::ee_source_name) {
+    auto node = pm->model_nodes.get_node_by_name(PULSE_SOURCE);
+
+    db::StreamInputs::setInputDevice(PULSE_SOURCE);
+  }
+
+  if (db::StreamInputs::inputDevice().isEmpty()) {
+    db::StreamInputs::setInputDevice(pm->defaultInputDeviceName);
+  }
+
+  connect_filters();
+
+  if (auto node = pm->model_nodes.get_node_by_name(db::StreamInputs::inputDevice()); node.serial != SPA_ID_INVALID) {
+    presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_name);
+  }
 }
 
 auto StreamInputEffects::apps_want_to_play() -> bool {
@@ -207,26 +205,19 @@ void StreamInputEffects::on_link_changed(const pw::LinkInfo link_info) {
 }
 
 void StreamInputEffects::connect_filters(const bool& bypass) {
-  const auto input_device_name = db::StreamInputs::inputDevice();
-
   // checking if the output device exists
 
-  if (input_device_name.isEmpty()) {
+  if (db::StreamInputs::inputDevice().isEmpty()) {
     util::debug("No input device set. Aborting the link");
 
     return;
   }
 
-  bool dev_exists = false;
+  auto input_device = pm->model_nodes.get_node_by_name(db::StreamInputs::inputDevice());
 
-  if (auto node = pm->model_nodes.get_node_by_name(input_device_name); node.serial != SPA_ID_INVALID) {
-    dev_exists = true;
-
-    pm->input_device = node;
-  }
-
-  if (!dev_exists) {
-    util::debug("The input device " + input_device_name.toStdString() + " is not available. Aborting the link");
+  if (input_device.serial == SPA_ID_INVALID) {
+    util::debug("The input device " + db::StreamInputs::inputDevice().toStdString() +
+                " is not available. Aborting the link");
 
     return;
   }
@@ -239,23 +230,22 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
   int timeout = 0;
 
-  util::warning("before: " + util::to_string(pm->input_device.id) + " -> " + pm->input_device.name.toStdString());
+  util::warning("before: " + util::to_string(input_device.id) + " -> " + input_device.name.toStdString());
 
-  while (pm->count_node_ports(pm->input_device.id) < 1) {
+  while (pm->count_node_ports(input_device.id) < 1) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
     timeout++;
 
     if (timeout > 5000) {
-      util::warning("Information about the ports of the input device " + pm->input_device.name.toStdString() +
-                    " with id " + util::to_string(pm->input_device.id) +
-                    " are taking to long to be available. Aborting the link");
+      util::warning("Information about the ports of the input device " + input_device.name.toStdString() + " with id " +
+                    util::to_string(input_device.id) + " are taking to long to be available. Aborting the link");
 
       return;
     }
   }
 
-  uint prev_node_id = pm->input_device.id;
+  uint prev_node_id = input_device.id;
   uint next_node_id = 0U;
 
   // link plugins
@@ -296,7 +286,9 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
       if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
         if (plugins[name]->connected_to_pw) {
-          for (const auto& link : pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true)) {
+          auto output_device = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice());
+
+          for (const auto& link : pm->link_nodes(output_device.id, plugins[name]->get_node_id(), true)) {
             list_proxies.push_back(link);
           }
         }
@@ -382,7 +374,9 @@ void StreamInputEffects::set_bypass(const bool& state) {
 
 void StreamInputEffects::set_listen_to_mic(const bool& state) {
   if (state) {
-    for (const auto& link : pm->link_nodes(pm->ee_source_node.id, pm->output_device.id, false, false)) {
+    auto output_device = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice());
+
+    for (const auto& link : pm->link_nodes(pm->ee_source_node.id, output_device.id, false, false)) {
       list_proxies_listen_mic.push_back(link);
     }
   } else {

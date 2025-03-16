@@ -50,29 +50,10 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
   // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<StreamOutputEffects>("ee.pipeline", VERSION_MAJOR, VERSION_MINOR, "Output", this);
 
-  auto* PULSE_SINK = std::getenv("PULSE_SINK");
-
-  if (PULSE_SINK != nullptr && PULSE_SINK != tags::pipewire::ee_sink_name) {
-    auto node = pm->model_nodes.get_node_by_name(PULSE_SINK);
-
-    pm->output_device = node.serial == SPA_ID_INVALID ? node : pm->output_device;
-  }
-
-  if (db::StreamOutputs::outputDevice().isEmpty()) {
-    db::StreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
-  }
-
-  connect_filters();
-
-  presets::Manager::self().autoload(PipelineType::output, pm->output_device.name,
-                                    pm->output_device.device_profile_name);
-
   connect(
       pm, &pw::Manager::sinkAdded, this,
       [&](pw::NodeInfo node) {
         if (node.name == db::StreamOutputs::outputDevice()) {
-          pm->output_device = node;
-
           if (db::Main::bypass()) {
             db::Main::setBypass(false);
 
@@ -114,8 +95,6 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
         }
 
         if (auto node = pm->model_nodes.get_node_by_name(name); node.serial != SPA_ID_INVALID) {
-          pm->output_device = node;
-
           if (db::Main::bypass()) {
             db::Main::setBypass(false);
 
@@ -152,6 +131,24 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
         presets::Manager::self().autoload(PipelineType::output, node.name, node.device_profile_name);
       },
       Qt::QueuedConnection);
+
+  auto* PULSE_SINK = std::getenv("PULSE_SINK");
+
+  if (PULSE_SINK != nullptr && PULSE_SINK != tags::pipewire::ee_sink_name) {
+    auto node = pm->model_nodes.get_node_by_name(PULSE_SINK);
+
+    db::StreamOutputs::setOutputDevice(PULSE_SINK);
+  }
+
+  if (db::StreamOutputs::outputDevice().isEmpty()) {
+    db::StreamOutputs::setOutputDevice(pm->defaultOutputDeviceName);
+  }
+
+  connect_filters();
+
+  if (auto node = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice()); node.serial != SPA_ID_INVALID) {
+    presets::Manager::self().autoload(PipelineType::output, node.name, node.device_profile_name);
+  }
 }
 
 auto StreamOutputEffects::apps_want_to_play() -> bool {
@@ -207,26 +204,19 @@ void StreamOutputEffects::on_link_changed(const pw::LinkInfo link_info) {
 }
 
 void StreamOutputEffects::connect_filters(const bool& bypass) {
-  const auto output_device_name = db::StreamOutputs::outputDevice();
-
   // checking if the output device exists
 
-  if (output_device_name.isEmpty()) {
+  if (db::StreamOutputs::outputDevice().isEmpty()) {
     util::debug("No output device set. Aborting the link");
 
     return;
   }
 
-  bool dev_exists = false;
+  auto output_device = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice());
 
-  if (auto node = pm->model_nodes.get_node_by_name(output_device_name); node.serial != SPA_ID_INVALID) {
-    dev_exists = true;
-
-    pm->output_device = node;
-  }
-
-  if (!dev_exists) {
-    util::debug("The output device " + output_device_name.toStdString() + " is not available. Aborting the link");
+  if (output_device.serial == SPA_ID_INVALID) {
+    util::debug("The output device " + db::StreamOutputs::outputDevice().toStdString() +
+                " is not available. Aborting the link");
 
     return;
   }
@@ -271,7 +261,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
       if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
         if (plugins[name]->connected_to_pw) {
-          for (const auto& link : pm->link_nodes(pm->output_device.id, plugins[name]->get_node_id(), true)) {
+          for (const auto& link : pm->link_nodes(output_device.id, plugins[name]->get_node_id(), true)) {
             list_proxies.push_back(link);
           }
         }
@@ -304,14 +294,14 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   int timeout = 0;
 
-  while (pm->count_node_ports(pm->output_device.id) < 2) {
+  while (pm->count_node_ports(output_device.id) < 2) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
     timeout++;
 
     if (timeout > 5000) {  // 5 seconds
-      util::warning("Information about the ports of the output device " + pm->output_device.name.toStdString() +
-                    " with id " + util::to_string(pm->output_device.id) +
+      util::warning("Information about the ports of the output device " + output_device.name.toStdString() +
+                    " with id " + util::to_string(output_device.id) +
                     " are taking to long to be available. Aborting the link");
 
       return;
@@ -320,7 +310,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   // link output device
 
-  next_node_id = pm->output_device.id;
+  next_node_id = output_device.id;
 
   const auto links = pm->link_nodes(prev_node_id, next_node_id);
 

@@ -221,18 +221,6 @@ void on_destroy_node_proxy(void* data) {
 
   pm->model_nodes.remove_by_serial(nd->nd_info->serial);
 
-  if (nd->nd_info->media_class == tags::pipewire::media_class::source) {
-    if (nd->nd_info->name == db::StreamInputs::inputDevice()) {
-      pm->input_device.id = SPA_ID_INVALID;
-      pm->input_device.serial = SPA_ID_INVALID;
-    }
-  } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink) {
-    if (nd->nd_info->name == db::StreamOutputs::outputDevice()) {
-      pm->output_device.id = SPA_ID_INVALID;
-      pm->output_device.serial = SPA_ID_INVALID;
-    }
-  }
-
   util::debug(nd->nd_info->media_class.toStdString() + " " + util::to_string(nd->nd_info->id) + " " +
               nd->nd_info->name.toStdString() + " has been removed");
 
@@ -271,7 +259,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
   }
 
-  if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream && !pm->input_device.name.isEmpty()) {
+  if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
     if (const auto* target_object = spa_dict_lookup(info->props, PW_KEY_TARGET_OBJECT)) {
       /*
         target.object can a name or serial number:
@@ -280,23 +268,25 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       uint64_t serial = SPA_ID_INVALID;
 
+      auto input_device = pm->model_nodes.get_node_by_name(db::StreamInputs::inputDevice());
+
       if (util::str_to_num(target_object, serial)) {
-        if (serial != SPA_ID_INVALID && (serial != pm->input_device.serial && serial != pm->ee_source_node.serial)) {
+        if (serial != SPA_ID_INVALID && (serial != input_device.serial && serial != pm->ee_source_node.serial)) {
           ignore_node = true;
         }
-      } else if (target_object != pm->input_device.name && target_object != pm->ee_source_node.name) {
+      } else if (target_object != input_device.name && target_object != pm->ee_source_node.name) {
         ignore_node = true;
       }
 
       if (ignore_node) {
         util::debug("The input stream " + nd->nd_info->name.toStdString() +
-                    " does not have as target the same mic used as EE input: " + pm->input_device.name.toStdString() +
+                    " does not have as target the same mic used as EE input: " + input_device.name.toStdString() +
                     "\n The user wants it to record from device " + target_object + ". We will ignore this stream.");
       }
     }
   }
 
-  if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream && !pm->output_device.name.isEmpty()) {
+  if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
     if (const auto* target_object = spa_dict_lookup(info->props, PW_KEY_TARGET_OBJECT)) {
       /*
         target.object can a name or serial number:
@@ -307,19 +297,20 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
       util::str_to_num(target_object, serial);
 
+      auto output_device = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice());
+
       if (util::str_to_num(target_object, serial)) {
-        if (serial != SPA_ID_INVALID && (serial != pm->output_device.serial && serial != pm->ee_sink_node.serial)) {
+        if (serial != SPA_ID_INVALID && (serial != output_device.serial && serial != pm->ee_sink_node.serial)) {
           ignore_node = true;
         }
-      } else if (target_object != pm->output_device.name && target_object != pm->ee_sink_node.name) {
+      } else if (target_object != output_device.name && target_object != pm->ee_sink_node.name) {
         ignore_node = true;
       }
 
       if (ignore_node) {
-        util::debug(
-            "The output stream " + nd->nd_info->name.toStdString() +
-            " does not have as target the same output device used as EE: " + pm->output_device.name.toStdString() +
-            "\n The user wants it to play to device " + target_object + ". We will ignore this stream.");
+        util::debug("The output stream " + nd->nd_info->name.toStdString() +
+                    " does not have as target the same output device used as EE: " + output_device.name.toStdString() +
+                    "\n The user wants it to play to device " + target_object + ". We will ignore this stream.");
       }
     }
   }
