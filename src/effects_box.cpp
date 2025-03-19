@@ -357,17 +357,17 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
       adw_view_stack_page_set_icon_name(self->apps_box_page, "media-record-symbolic");
 
-      auto set_device_state_label = [=](const int& rate) {
-        auto device_rate = static_cast<float>(rate) * 0.001F;
+      auto set_device_state_label = [=]() {
+        auto source_rate = static_cast<float>(application->pm->ee_source_node.rate) * 0.001F;
 
-        gtk_label_set_text(self->device_state, fmt::format(ui::get_user_locale(), "{0:.1Lf} kHz", device_rate).c_str());
+        gtk_label_set_text(self->device_state, fmt::format(ui::get_user_locale(), "{0:.1Lf} kHz", source_rate).c_str());
       };
 
-      set_device_state_label(application->pm->input_device.rate);
+      set_device_state_label();
 
       self->data->connections.push_back(application->pm->source_changed.connect([=](const auto nd_info) {
-        if (nd_info.name == application->pm->input_device.name) {
-          set_device_state_label(nd_info.rate);
+        if (nd_info.id == application->pm->ee_source_node.id) {
+          set_device_state_label();
         }
       }));
 
@@ -380,17 +380,17 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
 
       adw_view_stack_page_set_icon_name(self->apps_box_page, "multimedia-player-symbolic");
 
-      auto set_device_state_label = [=](const int& rate) {
-        auto device_rate = static_cast<float>(rate) * 0.001F;
+      auto set_device_state_label = [=]() {
+        auto sink_rate = static_cast<float>(application->pm->ee_sink_node.rate) * 0.001F;
 
-        gtk_label_set_text(self->device_state, fmt::format(ui::get_user_locale(), "{0:.1Lf} kHz", device_rate).c_str());
+        gtk_label_set_text(self->device_state, fmt::format(ui::get_user_locale(), "{0:.1Lf} kHz", sink_rate).c_str());
       };
 
-      set_device_state_label(application->pm->output_device.rate);
+      set_device_state_label();
 
       self->data->connections.push_back(application->pm->sink_changed.connect([=](const auto nd_info) {
-        if (nd_info.name == application->pm->output_device.name) {
-          set_device_state_label(nd_info.rate);
+        if (nd_info.id == application->pm->ee_sink_node.id) {
+          set_device_state_label();
         }
       }));
 
