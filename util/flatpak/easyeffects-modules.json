@@ -125,20 +125,15 @@
             "name": "rnnoise",
             "sources": [
                 {
+                    "//": "get latest fixes from upstream to fix aarch64 build",
                     "type": "archive",
-                    "url": "https://github.com/xiph/rnnoise/releases/download/v0.2/rnnoise-0.2.tar.gz",
-                    "sha256": "90fce4b00b9ff24c08dbfe31b82ffd43bae383d85c5535676d28b0a2b11c0d37",
-                    "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/xiph/rnnoise/releases/latest",
-                        "version-query": ".tag_name | sub(\"^v\"; \"\")",
-                        "url-query": ".assets[] | select(.name==\"rnnoise-\" + $version + \".tar.gz\") | .browser_download_url"
-                    }
+                    "url": "https://github.com/xiph/rnnoise/archive/2e3c812c62c32b3ac486c3cd4f4894e6f57d45fd.zip",
+                    "sha256": "5bb718f676214097c5cd0b8defbed1cef50f26c4cea981df5bc7a3abd4b4ea15"
                 },
                 {
-                    "//": "downloads the file as found by this script https://github.com/xiph/rnnoise/blob/904a876dce1f9ab8860c0a5000ed151f9f6eef58/download_model.sh",
-                    "type": "archive",
-                    "url": "https://media.xiph.org/rnnoise/models/rnnoise_data-0b50c45.tar.gz",
+                    "//": "downloads the file as found by this script https://github.com/xiph/rnnoise/blob/2e3c812c62c32b3ac486c3cd4f4894e6f57d45fd/download_model.sh",
+                    "type": "file",
+                    "url": "https://media.xiph.org/rnnoise/models/rnnoise_data-4ac81c5c0884ec4bd5907026aaae16209b7b76cd9d7f71af582094a2f98f4b43.tar.gz",
                     "sha256": "4ac81c5c0884ec4bd5907026aaae16209b7b76cd9d7f71af582094a2f98f4b43"
                 }
             ],
