@@ -21,7 +21,7 @@
 
 namespace tags::app {
 
-inline constexpr auto minimum_pw_version = "0.3.70";
+inline constexpr auto minimum_pw_version = "0.3.44";
 
 inline constexpr auto id = "com.github.wwmm.easyeffects";
 
