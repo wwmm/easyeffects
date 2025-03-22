@@ -58,6 +58,7 @@
 #include "limiter_preset.hpp"
 #include "maximizer_preset.hpp"
 #include "pipeline_type.hpp"
+#include "pitch_preset.hpp"
 #include "plugin_preset_base.hpp"
 #include "presets_list_model.hpp"
 #include "rnnoise_preset.hpp"
@@ -1484,7 +1485,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::pitch)) {
-    // return std::make_unique<PitchPreset>(pipeline_type, filter_name.toStdString());
+    return std::make_unique<PitchPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::reverb)) {

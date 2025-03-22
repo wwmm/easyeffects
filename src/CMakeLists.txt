@@ -54,6 +54,7 @@ target_sources(easyeffects PRIVATE
     maximizer_preset.cpp
     output_level.cpp
     pitch.cpp
+    pitch_preset.cpp
     plugin_base.cpp
     plugin_preset_base.cpp
     presets_manager.cpp
