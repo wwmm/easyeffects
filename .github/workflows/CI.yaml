@@ -201,15 +201,15 @@ jobs:
         source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3.28.12
+      uses: github/codeql-action/init@v3.28.13
       with:
         languages: cpp # we don't use a matrix build (to analyze multiple lanaguages in parallel) as we are only analyzing c++
 
     - name: Autobuild
-      uses: github/codeql-action/autobuild@v3.28.12
+      uses: github/codeql-action/autobuild@v3.28.13
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3.28.12
+      uses: github/codeql-action/analyze@v3.28.13
 
   clang-tidy:
     name: Clang Tidy
