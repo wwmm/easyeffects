@@ -37,6 +37,7 @@
 #include "convolver.hpp"
 #include "crossfeed.hpp"
 #include "crystalizer.hpp"
+#include "delay.hpp"
 #include "exciter.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
@@ -55,7 +56,6 @@
 // #include "bass_loudness.hpp"
 // #include "deepfilternet.hpp"
 // #include "deesser.hpp"
-// #include "delay.hpp"
 // #include "echo_canceller.hpp"
 // #include "equalizer.hpp"
 // #include "expander.hpp"
@@ -90,6 +90,7 @@ class EffectsBase : public QObject {
   std::shared_ptr<Convolver> convolver;
   std::shared_ptr<Crossfeed> crossfeed;
   std::shared_ptr<Crystalizer> crystalizer;
+  std::shared_ptr<Delay> delay;
   std::shared_ptr<Exciter> exciter;
   std::shared_ptr<Filter> filter;
   std::shared_ptr<Gate> gate;
@@ -102,7 +103,6 @@ class EffectsBase : public QObject {
   //   std::shared_ptr<BassLoudness> bass_loudness;
   //   std::shared_ptr<DeepFilterNet> deepfilternet;
   //   std::shared_ptr<Deesser> deesser;
-  //   std::shared_ptr<Delay> delay;
   //   std::shared_ptr<EchoCanceller> echo_canceller;
   //   std::shared_ptr<Equalizer> equalizer;
   //   std::shared_ptr<Expander> expander;

@@ -43,6 +43,7 @@
 #include "crossfeed.hpp"
 #include "crystalizer.hpp"
 #include "db_manager.hpp"
+#include "delay.hpp"
 #include "exciter.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
@@ -285,6 +286,10 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::crystalizer)) {
     return QVariant::fromValue(dynamic_cast<Crystalizer*>(p.get()));
+  }
+
+  if (pluginName.startsWith(tags::plugin_name::BaseName::delay)) {
+    return QVariant::fromValue(dynamic_cast<Delay*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::exciter)) {

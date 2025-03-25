@@ -416,7 +416,7 @@ Kirigami.ScrollablePage {
                     text: i18n("Sidechain")
                 }
 
-                EeCircularProgress {
+                EeAudioLevel {
                     id: gainLevelLeft
 
                     Layout.alignment: Qt.AlignBottom
@@ -429,7 +429,7 @@ Kirigami.ScrollablePage {
                     convertDecibelToLinear: true
                 }
 
-                EeCircularProgress {
+                EeAudioLevel {
                     id: gainLevelRight
 
                     Layout.alignment: Qt.AlignBottom
@@ -442,7 +442,7 @@ Kirigami.ScrollablePage {
                     convertDecibelToLinear: true
                 }
 
-                EeCircularProgress {
+                EeAudioLevel {
                     id: sideChainLevelLeft
 
                     Layout.alignment: Qt.AlignBottom
@@ -456,7 +456,7 @@ Kirigami.ScrollablePage {
                     convertDecibelToLinear: true
                 }
 
-                EeCircularProgress {
+                EeAudioLevel {
                     id: sideChainLevelRight
 
                     Layout.alignment: Qt.AlignBottom

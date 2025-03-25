@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/delayrc">
+        <parameter name="masterGroup" />
+        <parameter name="instanceIndex" />
+    </kcfgfile>
+    <group parentGroupName="$(masterGroup)" name="Delay#$(instanceIndex)">
+        <entry name="bypass" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="inputGain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="outputGain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="dryL" type="Double">
+            <min>-100</min>
+            <max>20</max>
+            <default>-100</default>
+        </entry>
+        <entry name="dryR" type="Double">
+            <min>-100</min>
+            <max>20</max>
+            <default>-100</default>
+        </entry>
+        <entry name="wetL" type="Double">
+            <min>-100</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+        <entry name="wetR" type="Double">
+            <min>-100</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+        <entry name="timeL" type="Double">
+            <min>0</min>
+            <max>1000</max>
+            <default>0</default>
+        </entry>
+        <entry name="timeR" type="Double">
+            <min>0</min>
+            <max>1000</max>
+            <default>0</default>
+        </entry>
+        <entry name="invertPhaseL" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="invertPhaseR" type="Bool">
+            <default>false</default>
+        </entry>
+    </group>
+</kcfg>

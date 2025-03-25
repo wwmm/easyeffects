@@ -613,7 +613,7 @@ Kirigami.ScrollablePage {
                         text: i18n("Sidechain")
                     }
 
-                    EeCircularProgress {
+                    EeAudioLevel {
                         id: reductionLevelLeft
 
                         Layout.alignment: Qt.AlignBottom
@@ -626,7 +626,7 @@ Kirigami.ScrollablePage {
                         convertDecibelToLinear: true
                     }
 
-                    EeCircularProgress {
+                    EeAudioLevel {
                         id: reductionLevelRight
 
                         Layout.alignment: Qt.AlignBottom
@@ -639,7 +639,7 @@ Kirigami.ScrollablePage {
                         convertDecibelToLinear: true
                     }
 
-                    EeCircularProgress {
+                    EeAudioLevel {
                         id: sideChainLevelLeft
 
                         Layout.alignment: Qt.AlignBottom
@@ -653,7 +653,7 @@ Kirigami.ScrollablePage {
                         convertDecibelToLinear: true
                     }
 
-                    EeCircularProgress {
+                    EeAudioLevel {
                         id: sideChainLevelRight
 
                         Layout.alignment: Qt.AlignBottom
@@ -722,7 +722,7 @@ Kirigami.ScrollablePage {
                         text: i18n("Envelope")
                     }
 
-                    EeCircularProgress {
+                    EeAudioLevel {
                         id: curveLevelLeft
 
                         Layout.alignment: Qt.AlignBottom
@@ -735,7 +735,7 @@ Kirigami.ScrollablePage {
                         convertDecibelToLinear: true
                     }
 
-                    EeCircularProgress {
+                    EeAudioLevel {
                         id: curveLevelRight
 
                         Layout.alignment: Qt.AlignBottom
@@ -748,7 +748,7 @@ Kirigami.ScrollablePage {
                         convertDecibelToLinear: true
                     }
 
-                    EeCircularProgress {
+                    EeAudioLevel {
                         id: envelopeLevelLeft
 
                         Layout.alignment: Qt.AlignBottom
@@ -762,7 +762,7 @@ Kirigami.ScrollablePage {
                         convertDecibelToLinear: true
                     }
 
-                    EeCircularProgress {
+                    EeAudioLevel {
                         id: envelopeLevelRight
 
                         Layout.alignment: Qt.AlignBottom

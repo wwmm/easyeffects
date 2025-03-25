@@ -52,7 +52,7 @@ Item {
                     }
                 }
 
-                EeCircularProgress {
+                EeAudioLevel {
                     id: inputLevelLeft
 
                     Layout.alignment: Qt.AlignRight | Qt.AlignBottom
@@ -65,7 +65,7 @@ Item {
                     convertDecibelToLinear: true
                 }
 
-                EeCircularProgress {
+                EeAudioLevel {
                     id: inputLevelRight
 
                     Layout.alignment: Qt.AlignRight | Qt.AlignBottom
@@ -102,7 +102,7 @@ Item {
                     }
                 }
 
-                EeCircularProgress {
+                EeAudioLevel {
                     id: outputLevelLeft
 
                     Layout.alignment: Qt.AlignRight | Qt.AlignBottom
@@ -115,7 +115,7 @@ Item {
                     convertDecibelToLinear: true
                 }
 
-                EeCircularProgress {
+                EeAudioLevel {
                     id: outputLevelRight
 
                     Layout.alignment: Qt.AlignRight | Qt.AlignBottom

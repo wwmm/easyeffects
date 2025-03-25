@@ -21,7 +21,7 @@ Rectangle {
 
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
     implicitHeight: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
-    radius: width / 2
+    radius: Kirigami.Units.largeSpacing
     color: Kirigami.Theme.neutralBackgroundColor
     border.color: Kirigami.Theme.activeBackgroundColor
     border.width: 2
@@ -46,7 +46,7 @@ Rectangle {
         Rectangle {
             width: root.width - root.border.width * 2
             height: root.height - root.border.width * 2
-            radius: width / 2
+            radius: Kirigami.Units.mediumSpacing
             color: Kirigami.Theme.alternateBackgroundColor
 
             anchors {
