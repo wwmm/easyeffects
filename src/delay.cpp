@@ -53,23 +53,21 @@ Delay::Delay(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
 
   init_common_controls<db::Delay>(settings);
 
+  BIND_LV2_PORT("mode_l", modeL, setModeL, db::Delay::modeLChanged);
+  BIND_LV2_PORT("mode_r", modeR, setModeR, db::Delay::modeRChanged);
+
   BIND_LV2_PORT("time_l", timeL, setTimeL, db::Delay::timeLChanged);
   BIND_LV2_PORT("time_r", timeR, setTimeR, db::Delay::timeRChanged);
 
-  BIND_LV2_PORT("phase_l", invertPhaseL, setTimeL, db::Delay::invertPhaseLChanged);
-  BIND_LV2_PORT("phase_r", invertPhaseR, setTimeR, db::Delay::invertPhaseRChanged);
-
-  // lv2_wrapper->set_control_port_value("mode_l", 2);
-  // lv2_wrapper->set_control_port_value("mode_r", 2);
+  BIND_LV2_PORT("phase_l", invertPhaseL, setInvertPhaseL, db::Delay::invertPhaseLChanged);
+  BIND_LV2_PORT("phase_r", invertPhaseR, setInvertPhaseR, db::Delay::invertPhaseRChanged);
 
   // The following controls can assume -inf
-  // BIND_LV2_PORT_DB("cdr", dry, setDry, db::Compressor::dryChanged, true);
-  // BIND_LV2_PORT_DB("cwt", wet, setWet, db::Compressor::wetChanged, true);
-  // lv2_wrapper->bind_key_double_db<"dry_l", "dry-l", false>(settings);
-  // lv2_wrapper->bind_key_double_db<"dry_r", "dry-r", false>(settings);
+  BIND_LV2_PORT_DB("dry_l", dryL, setDryL, db::Delay::dryLChanged, true);
+  BIND_LV2_PORT_DB("dry_r", dryR, setDryR, db::Delay::dryRChanged, true);
 
-  // lv2_wrapper->bind_key_double_db<"wet_l", "wet-l", false>(settings);
-  // lv2_wrapper->bind_key_double_db<"wet_r", "wet-r", false>(settings);
+  BIND_LV2_PORT_DB("wet_l", wetL, setWetL, db::Delay::wetLChanged, true);
+  BIND_LV2_PORT_DB("wet_r", wetR, setWetR, db::Delay::wetRChanged, true);
 }
 
 Delay::~Delay() {

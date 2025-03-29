@@ -97,9 +97,9 @@ Item {
             id: chart
 
             antialiasing: true
-            marginBottom: -40 // https://github.com/qt/qtgraphs/blob/dev/src/graphs2d/qgraphsview_p.h
+            marginBottom: 0 // https://github.com/qt/qtgraphs/blob/dev/src/graphs2d/qgraphsview_p.h
             marginTop: 0
-            marginLeft: -60
+            marginLeft: 0
             marginRight: 0
             Layout.fillWidth: true
             Layout.fillHeight: true

@@ -21,24 +21,38 @@
             <default>0</default>
         </entry>
         <entry name="dryL" type="Double">
-            <min>-100</min>
+            <min>-80.01</min>
             <max>20</max>
             <default>-100</default>
         </entry>
         <entry name="dryR" type="Double">
-            <min>-100</min>
+            <min>-80.01</min>
             <max>20</max>
             <default>-100</default>
         </entry>
         <entry name="wetL" type="Double">
-            <min>-100</min>
+            <min>-80.01</min>
             <max>20</max>
             <default>0</default>
         </entry>
         <entry name="wetR" type="Double">
-            <min>-100</min>
+            <min>-80.01</min>
             <max>20</max>
             <default>0</default>
+        </entry>
+        <entry name="modeLeftLabels" type="StringList">
+            <default>Samples,Distance,Time</default>
+        </entry>
+        <entry name="modeL" type="Int">
+            <label>Left Channel Mode</label>
+            <default>2</default>
+        </entry>
+        <entry name="modeRightLabels" type="StringList">
+            <default>Samples,Distance,Time</default>
+        </entry>
+        <entry name="modeR" type="Int">
+            <label>Right Channel Mode</label>
+            <default>2</default>
         </entry>
         <entry name="timeL" type="Double">
             <min>0</min>

@@ -152,7 +152,7 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::deesser)) {
       //   filter = std::make_shared<Deesser>(log_tag, tags::schema::deesser::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::delay)) {
-      //   filter = std::make_shared<Delay>(log_tag, tags::schema::delay::id, path, pm, pipeline_type);
+      filter = std::make_shared<Delay>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
       //   filter = std::make_shared<EchoCanceller>(log_tag, tags::schema::echo_canceller::id, path, pm, pipeline_type);
     } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {

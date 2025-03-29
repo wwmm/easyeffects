@@ -9,6 +9,7 @@
         <file alias="Crossfeed.qml">contents/ui/Crossfeed.qml</file>
         <file alias="Crystalizer.qml">contents/ui/Crystalizer.qml</file>
         <file alias="CrystalizerBand.qml">contents/ui/CrystalizerBand.qml</file>
+        <file alias="Delay.qml">contents/ui/Delay.qml</file>
         <file alias="DelegateClientsList.qml">contents/ui/DelegateClientsList.qml</file>
         <file alias="DelegateModulesList.qml">contents/ui/DelegateModulesList.qml</file>
         <file alias="DelegatePluginsList.qml">contents/ui/DelegatePluginsList.qml</file>
