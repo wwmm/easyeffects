@@ -33,6 +33,7 @@ target_sources(easyeffects PRIVATE
     crystalizer_preset.cpp
     db_manager.cpp
     delay.cpp
+    delay_preset.cpp
     effects_base.cpp
     exciter.cpp
     exciter_preset.cpp
