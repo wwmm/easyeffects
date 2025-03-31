@@ -1,1 +1,15 @@
-<svg height="16" viewBox="0 0 4.2333332 4.2333333" width="16" xmlns="http://www.w3.org/2000/svg"><rect height="3.175" ry=".132292" width=".264583" x="1.984375" y=".529167"/><rect height="2.116667" ry=".132292" width=".264583" x="3.175" y="1.058333"/><rect height="2.116667" ry=".132292" width=".264583" x=".79375" y="1.058333"/><circle cx="2.116667" cy="1.322917" r=".396875"/><circle cx="3.307292" cy="2.38125" r=".396875"/><circle cx=".926042" cy="1.984375" r=".396875"/></svg>
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <g class="ColorScheme-Text" fill="currentColor">
+        <rect id="rect1" x="7.5" y="2" width="1" height="12" ry=".5"/>
+        <rect id="rect2" x="12" y="4" width="1" height="8" ry=".5"/>
+        <rect id="rect3" x="3" y="4" width="1" height="8" ry=".5"/>
+        <circle id="circle1" cx="8" cy="5" r="1.5"/>
+        <circle id="circle2" cx="12.5" cy="9" r="1.5"/>
+        <circle id="circle3" cx="3.5" cy="7.5" r="1.5"/>
+    </g>
+    <style type="text/css" id="current-color-scheme">
+        .ColorScheme-Text {
+            color: #232629;
+        }
+    </style>
+</svg>
