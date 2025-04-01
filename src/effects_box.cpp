@@ -401,7 +401,7 @@ void setup(EffectsBox* self, app::Application* application, PipelineType pipelin
   self->plugins_box_page =
       adw_view_stack_add_titled(self->stack, GTK_WIDGET(self->pluginsBox), "plugins", _("Effects"));
 
-  adw_view_stack_page_set_icon_name(self->plugins_box_page, "emblem-music-symbolic");
+  adw_view_stack_page_set_icon_name(self->plugins_box_page, "folder-music-symbolic");
 
   // setting up the boxes we added to the stack
 

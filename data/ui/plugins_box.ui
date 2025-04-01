@@ -188,7 +188,7 @@
 
                 <child type="overlay">
                     <object class="AdwStatusPage" id="overlay_no_plugins">
-                        <property name="icon-name">emblem-music-symbolic</property>
+                        <property name="icon-name">folder-music-symbolic</property>
                         <property name="title" translatable="yes">No Effects</property>
                         <property name="description" translatable="yes">Audio Stream Not Modified</property>
                     </object>
