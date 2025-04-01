@@ -66,7 +66,7 @@ Kirigami.Page {
                     visible: streamsListView.count === 0
                     text: i18n("Empty List")
                     explanation: i18n("No Audio Application Available")
-                    icon.name: "emblem-music-symbolic"
+                    icon.name: "folder-music-symbolic"
                 }
 
                 delegate: DelegateStreamsList {
@@ -414,7 +414,7 @@ Kirigami.Page {
                         anchors.centerIn: parent
                         text: i18n("No Effects")
                         explanation: i18n("Audio Stream Not Modified")
-                        icon.name: "emblem-music-symbolic"
+                        icon.name: "folder-music-symbolic"
                     }
 
                 }
@@ -569,7 +569,7 @@ Kirigami.Page {
                         }
                     },
                     Kirigami.Action {
-                        icon.name: "emblem-music-symbolic"
+                        icon.name: "folder-music-symbolic"
                         text: i18n("Effects")
                         checkable: true
                         checked: streamDB.visiblePage === 1
