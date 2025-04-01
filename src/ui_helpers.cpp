@@ -117,7 +117,7 @@ auto missing_plugin_box(const std::string& base_name, const std::string& package
     util::debug(e.what());
   }
 
-  adw_status_page_set_icon_name(ADW_STATUS_PAGE(status_page), "emblem-music-symbolic");
+  adw_status_page_set_icon_name(ADW_STATUS_PAGE(status_page), "folder-music-symbolic");
 
   gtk_box_append(GTK_BOX(box), status_page);
 
