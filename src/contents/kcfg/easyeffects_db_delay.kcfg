@@ -70,5 +70,35 @@
         <entry name="invertPhaseR" type="Bool">
             <default>false</default>
         </entry>
+        <entry name="sampleL" type="Double">
+            <min>0</min>
+            <max>10000</max>
+            <default>0</default>
+        </entry>
+        <entry name="sampleR" type="Double">
+            <min>0</min>
+            <max>10000</max>
+            <default>0</default>
+        </entry>
+        <entry name="centimetersL" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>0</default>
+        </entry>
+        <entry name="centimetersR" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>0</default>
+        </entry>
+        <entry name="temperatureL" type="Double">
+            <min>-60</min>
+            <max>60</max>
+            <default>20</default>
+        </entry>
+        <entry name="temperatureR" type="Double">
+            <min>-60</min>
+            <max>60</max>
+            <default>20</default>
+        </entry>
     </group>
 </kcfg>
