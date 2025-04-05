@@ -175,6 +175,21 @@ Kirigami.OverlaySheet {
                     }
                 }
 
+                EeSpinBox {
+                    id: avsyncDelay
+
+                    label: i18n("Audio Delay Compensation")
+                    from: 0
+                    to: 1000
+                    value: DB.Manager.spectrum.avsyncDelay
+                    decimals: 0
+                    stepSize: 1
+                    unit: "ms"
+                    onValueModified: (v) => {
+                        DB.Manager.spectrum.avsyncDelay = v;
+                    }
+                }
+
             }
 
             FormCard.FormHeader {

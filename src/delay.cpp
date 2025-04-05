@@ -59,6 +59,18 @@ Delay::Delay(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
   BIND_LV2_PORT("time_l", timeL, setTimeL, db::Delay::timeLChanged);
   BIND_LV2_PORT("time_r", timeR, setTimeR, db::Delay::timeRChanged);
 
+  BIND_LV2_PORT("sample_l", sampleL, setSampleL, db::Delay::sampleLChanged);
+  BIND_LV2_PORT("sample_r", sampleR, setSampleR, db::Delay::sampleRChanged);
+
+  BIND_LV2_PORT("m_l", metersL, setMetersL, db::Delay::metersLChanged);
+  BIND_LV2_PORT("m_r", metersR, setMetersR, db::Delay::metersRChanged);
+
+  BIND_LV2_PORT("cm_l", centimetersL, setCentimetersL, db::Delay::centimetersLChanged);
+  BIND_LV2_PORT("cm_r", centimetersR, setCentimetersR, db::Delay::centimetersRChanged);
+
+  BIND_LV2_PORT("t_l", temperatureL, setTemperatureL, db::Delay::temperatureLChanged);
+  BIND_LV2_PORT("t_r", temperatureR, setTemperatureR, db::Delay::temperatureRChanged);
+
   BIND_LV2_PORT("phase_l", invertPhaseL, setInvertPhaseL, db::Delay::invertPhaseLChanged);
   BIND_LV2_PORT("phase_r", invertPhaseR, setInvertPhaseR, db::Delay::invertPhaseRChanged);
 

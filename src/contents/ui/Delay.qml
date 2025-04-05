@@ -47,6 +47,7 @@ Kirigami.ScrollablePage {
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
+                        Layout.alignment: Qt.AlignTop
 
                         FormCard.FormComboBoxDelegate {
                             id: modeL
@@ -59,6 +60,98 @@ Kirigami.ScrollablePage {
                             model: [i18n("Samples"), i18n("Distance"), i18n("Time")]
                             onActivated: (idx) => {
                                 pluginDB.modeL = idx;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: sampleL
+
+                            Layout.columnSpan: 2
+                            visible: pluginDB.modeL === 0 ? true : false
+                            label: i18n("Samples")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("sampleL")
+                            to: pluginDB.getMaxValue("sampleL")
+                            value: pluginDB.sampleL
+                            decimals: 0
+                            stepSize: 1
+                            onValueModified: (v) => {
+                                pluginDB.sampleL = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: timeL
+
+                            Layout.columnSpan: 2
+                            visible: pluginDB.modeL === 2 ? true : false
+                            label: i18n("Time")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("timeL")
+                            to: pluginDB.getMaxValue("timeL")
+                            value: pluginDB.timeL
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "ms"
+                            onValueModified: (v) => {
+                                pluginDB.timeL = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: metersL
+
+                            visible: pluginDB.modeL === 1 ? true : false
+                            label: i18n("Meters")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("metersL")
+                            to: pluginDB.getMaxValue("metersL")
+                            value: pluginDB.metersL
+                            decimals: 0
+                            stepSize: 1
+                            unit: "m"
+                            onValueModified: (v) => {
+                                pluginDB.metersL = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: centimetersL
+
+                            visible: pluginDB.modeL === 1 ? true : false
+                            label: i18n("Centimeters")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("centimetersL")
+                            to: pluginDB.getMaxValue("centimetersL")
+                            value: pluginDB.centimetersL
+                            decimals: 1
+                            stepSize: 0.1
+                            unit: "cm"
+                            onValueModified: (v) => {
+                                pluginDB.centimetersL = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: temperatureL
+
+                            Layout.columnSpan: 2
+                            visible: pluginDB.modeL === 1 ? true : false
+                            label: i18n("Temperature")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("temperatureL")
+                            to: pluginDB.getMaxValue("temperatureL")
+                            value: pluginDB.temperatureL
+                            decimals: 1
+                            stepSize: 0.1
+                            unit: "°C"
+                            onValueModified: (v) => {
+                                pluginDB.temperatureL = v;
                             }
                         }
 
@@ -115,6 +208,7 @@ Kirigami.ScrollablePage {
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
+                        Layout.alignment: Qt.AlignTop
 
                         FormCard.FormComboBoxDelegate {
                             id: modeR
@@ -127,6 +221,98 @@ Kirigami.ScrollablePage {
                             model: [i18n("Samples"), i18n("Distance"), i18n("Time")]
                             onActivated: (idx) => {
                                 pluginDB.modeR = idx;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: sampleR
+
+                            Layout.columnSpan: 2
+                            visible: pluginDB.modeR === 0 ? true : false
+                            label: i18n("Samples")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("sampleR")
+                            to: pluginDB.getMaxValue("sampleR")
+                            value: pluginDB.sampleR
+                            decimals: 0
+                            stepSize: 1
+                            onValueModified: (v) => {
+                                pluginDB.sampleR = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: timeR
+
+                            Layout.columnSpan: 2
+                            visible: pluginDB.modeR === 2 ? true : false
+                            label: i18n("Time")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("timeR")
+                            to: pluginDB.getMaxValue("timeR")
+                            value: pluginDB.timeR
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "ms"
+                            onValueModified: (v) => {
+                                pluginDB.timeR = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: metersR
+
+                            visible: pluginDB.modeR === 1 ? true : false
+                            label: i18n("Meters")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("metersR")
+                            to: pluginDB.getMaxValue("metersR")
+                            value: pluginDB.metersR
+                            decimals: 0
+                            stepSize: 1
+                            unit: "m"
+                            onValueModified: (v) => {
+                                pluginDB.metersR = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: centimetersR
+
+                            visible: pluginDB.modeR === 1 ? true : false
+                            label: i18n("Centimeters")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("centimetersR")
+                            to: pluginDB.getMaxValue("centimetersR")
+                            value: pluginDB.centimetersR
+                            decimals: 1
+                            stepSize: 0.1
+                            unit: "cm"
+                            onValueModified: (v) => {
+                                pluginDB.centimetersR = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: temperatureR
+
+                            Layout.columnSpan: 2
+                            visible: pluginDB.modeR === 1 ? true : false
+                            label: i18n("Temperature")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("temperatureR")
+                            to: pluginDB.getMaxValue("temperatureR")
+                            value: pluginDB.temperatureR
+                            decimals: 1
+                            stepSize: 0.1
+                            unit: "°C"
+                            onValueModified: (v) => {
+                                pluginDB.temperatureR = v;
                             }
                         }
 

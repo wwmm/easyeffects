@@ -38,9 +38,29 @@ void DelayPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["output-gain"] = settings->outputGain();
 
+  json[section][instance_name]["mode-l"] = settings->defaultModeLLabelsValue()[settings->modeL()].toStdString();
+
+  json[section][instance_name]["mode-r"] = settings->defaultModeRLabelsValue()[settings->modeR()].toStdString();
+
   json[section][instance_name]["time-l"] = settings->timeL();
 
   json[section][instance_name]["time-r"] = settings->timeR();
+
+  json[section][instance_name]["sample-l"] = settings->sampleL();
+
+  json[section][instance_name]["sample-r"] = settings->sampleR();
+
+  json[section][instance_name]["meters-l"] = settings->metersL();
+
+  json[section][instance_name]["meters-r"] = settings->metersR();
+
+  json[section][instance_name]["centimeters-l"] = settings->centimetersL();
+
+  json[section][instance_name]["centimeters-r"] = settings->centimetersR();
+
+  json[section][instance_name]["temperature-l"] = settings->temperatureL();
+
+  json[section][instance_name]["temperature-r"] = settings->temperatureR();
 
   json[section][instance_name]["dry-l"] = settings->dryL();
 
@@ -61,10 +81,20 @@ void DelayPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("output-gain", OutputGain);
   UPDATE_PROPERTY("time-l", TimeL);
   UPDATE_PROPERTY("time-r", TimeR);
+  UPDATE_PROPERTY("sample-l", SampleL);
+  UPDATE_PROPERTY("sample-r", SampleR);
+  UPDATE_PROPERTY("meters-l", MetersL);
+  UPDATE_PROPERTY("meters-r", MetersR);
+  UPDATE_PROPERTY("centimeters-l", CentimetersL);
+  UPDATE_PROPERTY("centimeters-r", CentimetersR);
+  UPDATE_PROPERTY("temperature-l", TemperatureL);
+  UPDATE_PROPERTY("temperature-r", TemperatureR);
   UPDATE_PROPERTY("dry-l", DryL);
   UPDATE_PROPERTY("dry-r", DryR);
   UPDATE_PROPERTY("wet-l", WetL);
   UPDATE_PROPERTY("wet-r", WetR);
   UPDATE_PROPERTY("invert-phase-l", InvertPhaseL);
   UPDATE_PROPERTY("invert-phase-r", InvertPhaseR);
+
+  UPDATE_ENUM_LIKE_PROPERTY("mode-l", ModeL);
 }

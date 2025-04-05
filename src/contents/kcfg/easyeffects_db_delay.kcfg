@@ -40,14 +40,14 @@
             <max>20</max>
             <default>0</default>
         </entry>
-        <entry name="modeLeftLabels" type="StringList">
+        <entry name="modeLLabels" type="StringList">
             <default>Samples,Distance,Time</default>
         </entry>
         <entry name="modeL" type="Int">
             <label>Left Channel Mode</label>
             <default>2</default>
         </entry>
-        <entry name="modeRightLabels" type="StringList">
+        <entry name="modeRLabels" type="StringList">
             <default>Samples,Distance,Time</default>
         </entry>
         <entry name="modeR" type="Int">
@@ -78,6 +78,16 @@
         <entry name="sampleR" type="Double">
             <min>0</min>
             <max>10000</max>
+            <default>0</default>
+        </entry>
+        <entry name="metersL" type="Double">
+            <min>0</min>
+            <max>200</max>
+            <default>0</default>
+        </entry>
+        <entry name="metersR" type="Double">
+            <min>0</min>
+            <max>200</max>
             <default>0</default>
         </entry>
         <entry name="centimetersL" type="Double">

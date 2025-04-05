@@ -103,5 +103,11 @@
             <max>22000</max>
             <default>20000</default>
         </entry>
+        <entry name="avsyncDelay" type="Int">
+            <label>Audio and Video Synchronization Delay</label>
+            <min>0</min>
+            <max>1000</max>
+            <default>0</default>
+        </entry>
     </group>
 </kcfg>

@@ -33,6 +33,7 @@
 #include <string>
 #include <tuple>
 #include "easyeffects_db_spectrum.h"
+#include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
@@ -42,6 +43,7 @@
 
 Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
     : PluginBase(tag, "spectrum", tags::plugin_package::Package::ee, instance_id, pipe_manager, pipe_type),
+      settings(db::Spectrum::self()),
       fftw_ready(true) {
   bypass = !db::Spectrum::state();
   // Precompute the Hann window, which is an expensive operation.
@@ -75,8 +77,8 @@ Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
   lv2_wrapper->set_control_port_value("wet_l", util::db_to_linear(0.0F));
   lv2_wrapper->set_control_port_value("wet_r", util::db_to_linear(0.0F));
 
-  //   lv2_wrapper->bind_key_int<"time_l", "avsync-delay">(settings);
-  //   lv2_wrapper->bind_key_int<"time_r", "avsync-delay">(settings);
+  BIND_LV2_PORT("time_l", avsyncDelay, setAvsyncDelay, db::Spectrum::avsyncDelayChanged);
+  BIND_LV2_PORT("time_r", avsyncDelay, setAvsyncDelay, db::Spectrum::avsyncDelayChanged);
 
   connect(db::Spectrum::self(), &db::Spectrum::stateChanged, [&]() { bypass = !db::Spectrum::state(); });
 }

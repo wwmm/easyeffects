@@ -29,6 +29,7 @@
 #include <string>
 #include <tuple>
 #include <vector>
+#include "easyeffects_db_spectrum.h"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
@@ -63,6 +64,8 @@ class Spectrum : public PluginBase {
   auto compute_magnitudes() -> std::tuple<uint, QList<double>>;  // rate, magnitudes
 
  private:
+  db::Spectrum* settings = nullptr;
+
   std::atomic<bool> fftw_ready = false;
 
   fftwf_plan plan = nullptr;
@@ -73,7 +76,7 @@ class Spectrum : public PluginBase {
 
   std::array<float, n_bands> real_input;
 
-  QList<double> output = QList<double>((n_bands / 2U + 1U));
+  QList<double> output = QList<double>(((n_bands / 2U) + 1U));
 
   std::vector<float> left_delayed_vector;
   std::vector<float> right_delayed_vector;
