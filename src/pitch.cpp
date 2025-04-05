@@ -193,6 +193,30 @@ Pitch::Pitch(const std::string& tag,
                                           }),
                                           this));
 
+  // For cents
+  gconnections.push_back(g_signal_connect(settings, "changed::cents",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto* self = static_cast<Pitch*>(user_data);
+                                            self->cents = g_settings_get_double(settings, key);
+                                            if (!self->soundtouch_ready) {
+                                              return;
+                                            }
+                                            self->update_pitch();
+                                          }),
+                                          this));
+
+  // For octaves
+  gconnections.push_back(g_signal_connect(settings, "changed::octaves",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto* self = static_cast<Pitch*>(user_data);
+                                            self->octaves = g_settings_get_double(settings, key);
+                                            if (!self->soundtouch_ready) {
+                                              return;
+                                            }
+                                            self->update_pitch();
+                                          }),
+                                          this));
+
   setup_input_output_gain();
 }
 
@@ -413,13 +437,11 @@ void Pitch::set_rate_difference() {
 
 void Pitch::init_soundtouch() {
   delete snd_touch;
-
   snd_touch = new soundtouch::SoundTouch();
-
   snd_touch->setSampleRate(rate);
   snd_touch->setChannels(2);
-
-  set_semitones();
+  // Calling for an update of the total coefficient:
+  update_pitch();
   set_quick_seek();
   set_anti_alias();
   set_sequence_length();
@@ -432,3 +454,14 @@ void Pitch::init_soundtouch() {
 auto Pitch::get_latency_seconds() -> float {
   return latency_value;
 }
+
+void Pitch::update_pitch() {
+  if (snd_touch == nullptr) {
+    return;
+  }
+  // Calculate total change in semitones:
+  double total_semitones = semitones + (octaves * 12.0) + (cents / 100.0);
+  std::scoped_lock<std::mutex> lock(data_mutex);
+  snd_touch->setPitchSemiTones(total_semitones);
+}
+

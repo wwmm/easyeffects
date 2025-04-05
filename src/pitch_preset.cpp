@@ -57,6 +57,10 @@ void PitchPreset::save(nlohmann::json& json) {
   json[section][instance_name]["rate-difference"] = g_settings_get_double(settings, "rate-difference");
 
   json[section][instance_name]["semitones"] = g_settings_get_double(settings, "semitones");
+
+  // New keys:
+  json[section][instance_name]["cents"] = g_settings_get_double(settings, "cents");
+  json[section][instance_name]["octaves"] = g_settings_get_double(settings, "octaves");
 }
 
 void PitchPreset::load(const nlohmann::json& json) {
@@ -81,4 +85,8 @@ void PitchPreset::load(const nlohmann::json& json) {
   update_key<double>(json.at(section).at(instance_name), settings, "rate-difference", "rate-difference");
 
   update_key<double>(json.at(section).at(instance_name), settings, "semitones", "semitones");
+
+  // New keys:
+  update_key<double>(json.at(section).at(instance_name), settings, "cents", "cents");
+  update_key<double>(json.at(section).at(instance_name), settings, "octaves", "octaves");
 }
