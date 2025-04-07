@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-03-07 03:15+0000\n"
-"PO-Revision-Date: 2024-10-05 21:55+0000\n"
+"PO-Revision-Date: 2025-04-07 05:01+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/easyeffects/"
 "main/pt/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.11-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -105,7 +105,7 @@ msgstr ""
 
 #: data/ui/application_window.ui:73
 msgid "Global Bypass"
-msgstr ""
+msgstr "Ignorar Globalmente"
 
 #: data/ui/application_window.ui:83
 msgid "Primary Menu"
@@ -1457,7 +1457,7 @@ msgstr "Curva da Banda"
 
 #: data/ui/multiband_gate_band.ui:836
 msgid "Band Reduction"
-msgstr ""
+msgstr "Redução da Bandas"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -1533,6 +1533,9 @@ msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
 msgstr ""
+"Somente predefinições locais podem ser carregadas automaticamente. Um "
+"Community Preset deve ser importado localmente para ser selecionado e "
+"associado a um dispositivo específico."
 
 #: data/ui/pipe_manager_box.ui:277
 msgid "Output Devices"
@@ -1753,7 +1756,7 @@ msgstr "Tempo Limite de Inatividade"
 
 #: data/ui/preferences_general.ui:91
 msgid "Input Pipeline"
-msgstr ""
+msgstr "Pipeline de entrada"
 
 #: data/ui/preferences_general.ui:120
 msgid "Update Interval"
@@ -1801,7 +1804,7 @@ msgstr "_Espectro"
 
 #: data/ui/preferences_spectrum.ui:24
 msgid "Compensating Delay (ms)"
-msgstr ""
+msgstr "Atraso de compensação (ms)"
 
 #: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
@@ -1861,7 +1864,7 @@ msgstr "Rótulos dos Eixos"
 
 #: data/ui/preferences_spectrum.ui:227
 msgid "Frequency Range"
-msgstr ""
+msgstr "Faixa de frequência"
 
 #: data/ui/preferences_spectrum.ui:230
 msgid "Minimum"
@@ -1893,7 +1896,7 @@ msgstr "Tente"
 
 #: data/ui/preset_community_row.ui:56
 msgid "Try this community preset"
-msgstr ""
+msgstr "Experimente esta predefinição da comunidade"
 
 #: data/ui/preset_community_row.ui:65
 msgid "Import"
@@ -1902,6 +1905,7 @@ msgstr "Importar"
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
 msgstr ""
+"Importe esta predefinição de comunidade para a lista de predefinições locais"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
@@ -1933,21 +1937,23 @@ msgstr "Comunidade"
 
 #: data/ui/presets_menu.ui:208
 msgid "Search Community Preset"
-msgstr ""
+msgstr "Predefinição da comunidade de pesquisa"
 
 #: data/ui/presets_menu.ui:271
 msgid "Community Presets List"
-msgstr ""
+msgstr "Lista de predefinições da comunidade"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr ""
+msgstr "Nenhuma predefinição da comunidade instalada"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
+"Os pacotes Predefinições da comunidade podem ser instalados a partir do "
+"repositório da sua distribuição favorita."
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
@@ -1955,7 +1961,7 @@ msgstr "Atualizar"
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
-msgstr ""
+msgstr "Atualize para mostrar as novas predefinições de comunidade instaladas"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2236,14 +2242,12 @@ msgid "channels"
 msgstr "canais"
 
 #: src/application.cpp:301
-#, fuzzy
 msgid "Output Preset"
-msgstr "Predefinições de Saída"
+msgstr "Predefinição de saída"
 
 #: src/application.cpp:302
-#, fuzzy
 msgid "Input Preset"
-msgstr "Predefinições de Entrada"
+msgstr "Predefinição de entrada"
 
 #: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
@@ -2283,15 +2287,16 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carregar uma predefinição. Por exemplo: easyeffects -l music"
 
 #: src/application.cpp:627
-#, fuzzy
 msgid "Show the active presets."
-msgstr "Exibir as predefinições que estão disponíveis."
+msgstr "Mostrar as predefinições ativas."
 
 #: src/application.cpp:630
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
 msgstr ""
+"Mostra a predefinição carregada de uma categoria específica. Aceita 'input' "
+"ou 'output' como um valor. Exemplo: easyeffects -s input"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
@@ -2435,7 +2440,7 @@ msgstr "Adicionar"
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
 msgid "Community Preset"
-msgstr ""
+msgstr "Predefinição da comunidade"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
@@ -2453,7 +2458,7 @@ msgstr "Formato errado na lista de apps excluídas"
 
 #: src/presets_manager.cpp:1162
 msgid "Generic Error While Loading Excluded Apps List"
-msgstr ""
+msgstr "Erro genérico ao carregar a lista de apps excluídos"
 
 #: src/presets_manager.cpp:1171
 msgid "Wrong Format in Effects List"
@@ -2461,7 +2466,7 @@ msgstr "Formato errado na lista de efeitos"
 
 #: src/presets_manager.cpp:1178
 msgid "Generic Error While Loading Effects List"
-msgstr ""
+msgstr "Erro genérico ao carregar a lista de efeitos"
 
 #: src/presets_manager.cpp:1188
 msgid "One or More Parameters Have a Wrong Format"
@@ -2469,7 +2474,7 @@ msgstr "Um ou mais parâmetros tem um formato errado"
 
 #: src/presets_manager.cpp:1196
 msgid "Generic Error While Loading The Effect"
-msgstr ""
+msgstr "Erro genérico ao carregar o efeito"
 
 #: src/presets_menu.cpp:398
 msgid "Save?"
@@ -2485,11 +2490,11 @@ msgstr "Nenhuma predefinição carregada"
 
 #: src/presets_menu.cpp:573
 msgid "Last Local Preset Loaded"
-msgstr ""
+msgstr "Última predefinição local carregada"
 
 #: src/presets_menu.cpp:573
 msgid "Last Community Preset Loaded"
-msgstr ""
+msgstr "Última predefinição da comunidade carregada"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
@@ -2598,6 +2603,11 @@ msgid ""
 "using the 'Quit' option inside the menu in order to make the effect availble "
 "to use."
 msgstr ""
+"O software necessário para o efeito {}, \"{}\", não está instalado. "
+"Considere usar o pacote Flatpak do Easy Effects ou instalar o software você "
+"mesmo. Se já instalou o software ausente, deve reiniciar o Easy Effects "
+"usando a opção 'Sair' dentro do menu para que o efeito esteja disponível "
+"para uso."
 
 #: src/ui_helpers.cpp:104
 #, c++-format
