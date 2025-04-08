@@ -88,6 +88,8 @@ Spectrum::~Spectrum() {
     disconnect_from_pw();
   }
 
+  settings->disconnect();
+
   fftw_ready = false;
 
   if (complex_output != nullptr) {

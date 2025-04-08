@@ -107,13 +107,13 @@ Crystalizer::~Crystalizer() {
     disconnect_from_pw();
   }
 
+  settings->disconnect();
+
   data_mutex.lock();
 
   filters_are_ready = false;
 
   data_mutex.unlock();
-
-  settings->disconnect();
 
   util::debug(log_tag + name.toStdString() + " destroyed");
 }

@@ -97,4 +97,5 @@ void DelayPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("invert-phase-r", InvertPhaseR);
 
   UPDATE_ENUM_LIKE_PROPERTY("mode-l", ModeL);
+  UPDATE_ENUM_LIKE_PROPERTY("mode-r", ModeR);
 }

@@ -63,6 +63,8 @@ Autogain::~Autogain() {
     disconnect_from_pw();
   }
 
+  settings->disconnect();
+
   for (auto& t : mythreads) {
     t.join();
   }
@@ -168,7 +170,7 @@ void Autogain::process(std::span<float>& left_in,
 
   for (size_t n = 0U; n < n_samples; n++) {
     data[2U * n] = left_in[n];
-    data[2U * n + 1U] = right_in[n];
+    data[(2U * n) + 1U] = right_in[n];
   }
 
   ebur128_add_frames_float(ebur_state, data.data(), n_samples);

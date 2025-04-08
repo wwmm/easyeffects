@@ -103,7 +103,7 @@ void Crossfeed::process(std::span<float>& left_in,
 
   for (size_t n = 0U; n < left_in.size(); n++) {
     data[n * 2U] = left_in[n];
-    data[n * 2U + 1U] = right_in[n];
+    data[(n * 2U) + 1U] = right_in[n];
   }
 
   bs2b.cross_feed(data.data(), n_samples);

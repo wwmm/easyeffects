@@ -158,11 +158,11 @@ Speex::~Speex() {
     disconnect_from_pw();
   }
 
+  settings->disconnect();
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   free_speex();
-
-  settings->disconnect();
 
   util::debug(log_tag + name.toStdString() + " destroyed");
 }

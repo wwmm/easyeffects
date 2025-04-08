@@ -91,6 +91,8 @@ Pitch::~Pitch() {
     disconnect_from_pw();
   }
 
+  settings->disconnect();
+
   util::debug(log_tag + name.toStdString() + " destroyed");
 }
 

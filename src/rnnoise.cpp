@@ -118,6 +118,8 @@ RNNoise::~RNNoise() {
     disconnect_from_pw();
   }
 
+  settings->disconnect();
+
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   resampler_ready = false;

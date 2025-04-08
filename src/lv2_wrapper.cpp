@@ -50,7 +50,7 @@ namespace lv2 {
 constexpr auto min_quantum = 32;
 constexpr auto max_quantum = 8192;
 
-auto lv2_printf([[maybe_unused]] LV2_Log_Handle handle, [[maybe_unused]] LV2_URID type, const char* format, ...)
+static auto lv2_printf([[maybe_unused]] LV2_Log_Handle handle, [[maybe_unused]] LV2_URID type, const char* format, ...)
     -> int {
   va_list args;
 

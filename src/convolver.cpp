@@ -123,6 +123,8 @@ Convolver::~Convolver() {
     disconnect_from_pw();
   }
 
+  settings->disconnect();
+
   for (auto& t : mythreads) {
     t.join();
   }
