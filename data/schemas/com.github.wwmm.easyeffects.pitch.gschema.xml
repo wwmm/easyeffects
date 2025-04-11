@@ -12,24 +12,18 @@
             <range min="-36" max="36" />
             <default>0</default>
         </key>
-        <key name="semitones" type="d">
-            <range min="-12.0" max="12.0" />
-            <default>0.0</default>
-        </key>
-        <!-- New keys -->
         <key name="cents" type="d">
-            <default>0.0</default>
-            <summary>Pitch shift in cents</summary>
-            <description>Amount to shift pitch in cents.</description>
+            <range min="-100" max="100" />
+            <default>0</default>
         </key>
-
+        <key name="semitones" type="d">
+            <range min="-12" max="12" />
+            <default>0</default>
+        </key>
         <key name="octaves" type="d">
-            <default>0.0</default>
-            <summary>Pitch shift in octaves</summary>
-            <description>Amount to shift pitch in octaves.</description>
+            <range min="-3" max="3" />
+            <default>0</default>
         </key>
-        <!-- End of new keys -->
-
         <key name="quick-seek" type="b">
             <default>false</default>
         </key>

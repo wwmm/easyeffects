@@ -60,15 +60,13 @@ struct _PitchBox {
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
       *plugin_credit;
 
-  GtkSpinButton *semitones, *sequence_length, *seek_window, *overlap_length, *tempo_difference, *rate_difference;
+  GtkSpinButton *cents, *semitones, *octaves, *sequence_length, *seek_window, *overlap_length, *tempo_difference, *rate_difference;
 
   GtkSwitch *quick_seek, *anti_alias;
 
   GSettings* settings;
 
   Data* data;
-
-  GtkSpinButton *cents, *octaves;
 };
 
 // NOLINTNEXTLINE
@@ -196,7 +194,6 @@ void pitch_box_class_init(PitchBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PitchBox, tempo_difference);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, rate_difference);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, semitones);
-  // New:
   gtk_widget_class_bind_template_child(widget_class, PitchBox, cents);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, octaves);
 

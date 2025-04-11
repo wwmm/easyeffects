@@ -179,21 +179,6 @@ Pitch::Pitch(const std::string& tag,
                                           }),
                                           this));
 
-  gconnections.push_back(g_signal_connect(settings, "changed::semitones",
-                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-                                            auto* self = static_cast<Pitch*>(user_data);
-
-                                            self->semitones = g_settings_get_double(settings, key);
-
-                                            if (!self->soundtouch_ready) {
-                                              return;
-                                            }
-
-                                            self->set_semitones();
-                                          }),
-                                          this));
-
-  // For cents
   gconnections.push_back(g_signal_connect(settings, "changed::cents",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto* self = static_cast<Pitch*>(user_data);
@@ -205,7 +190,17 @@ Pitch::Pitch(const std::string& tag,
                                           }),
                                           this));
 
-  // For octaves
+  gconnections.push_back(g_signal_connect(settings, "changed::semitones",
+                                          G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                                            auto* self = static_cast<Pitch*>(user_data);
+                                            self->semitones = g_settings_get_double(settings, key);
+                                            if (!self->soundtouch_ready) {
+                                              return;
+                                            }
+                                            self->update_pitch();
+                                          }),
+                                          this));
+
   gconnections.push_back(g_signal_connect(settings, "changed::octaves",
                                           G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
                                             auto* self = static_cast<Pitch*>(user_data);
@@ -355,16 +350,6 @@ void Pitch::process(std::span<float>& left_in,
   }
 }
 
-void Pitch::set_semitones() {
-  if (snd_touch == nullptr) {
-    return;
-  }
-
-  std::scoped_lock<std::mutex> lock(data_mutex);
-
-  snd_touch->setPitchSemiTones(semitones);
-}
-
 void Pitch::set_sequence_length() {
   if (snd_touch == nullptr) {
     return;
@@ -440,7 +425,6 @@ void Pitch::init_soundtouch() {
   snd_touch = new soundtouch::SoundTouch();
   snd_touch->setSampleRate(rate);
   snd_touch->setChannels(2);
-  // Calling for an update of the total coefficient:
   update_pitch();
   set_quick_seek();
   set_anti_alias();
@@ -459,7 +443,6 @@ void Pitch::update_pitch() {
   if (snd_touch == nullptr) {
     return;
   }
-  // Calculate total change in semitones:
   double total_semitones = semitones + (octaves * 12.0) + (cents / 100.0);
   std::scoped_lock<std::mutex> lock(data_mutex);
   snd_touch->setPitchSemiTones(total_semitones);
