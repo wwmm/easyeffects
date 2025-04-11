@@ -60,7 +60,7 @@ struct _PitchBox {
   GtkLabel *input_level_left_label, *input_level_right_label, *output_level_left_label, *output_level_right_label,
       *plugin_credit;
 
-  GtkSpinButton *semitones, *sequence_length, *seek_window, *overlap_length, *tempo_difference, *rate_difference;
+  GtkSpinButton *cents, *semitones, *octaves, *sequence_length, *seek_window, *overlap_length, *tempo_difference, *rate_difference;
 
   GtkSwitch *quick_seek, *anti_alias;
 
@@ -126,9 +126,10 @@ void setup(PitchBox* self, std::shared_ptr<Pitch> pitch, const std::string& sche
   gsettings_bind_widgets<"input-gain", "output-gain">(self->settings, self->input_gain, self->output_gain);
 
   gsettings_bind_widgets<"quick-seek", "anti-alias", "sequence-length", "seek-window", "overlap-length",
-                         "tempo-difference", "rate-difference", "semitones">(
-      self->settings, self->quick_seek, self->anti_alias, self->sequence_length, self->seek_window,
-      self->overlap_length, self->tempo_difference, self->rate_difference, self->semitones);
+  "tempo-difference", "rate-difference", "semitones", "cents", "octaves">(
+    self->settings, self->quick_seek, self->anti_alias, self->sequence_length, self->seek_window,
+    self->overlap_length, self->tempo_difference, self->rate_difference, self->semitones, self->cents, self->octaves);
+
 }
 
 void dispose(GObject* object) {
@@ -193,6 +194,8 @@ void pitch_box_class_init(PitchBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, PitchBox, tempo_difference);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, rate_difference);
   gtk_widget_class_bind_template_child(widget_class, PitchBox, semitones);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, cents);
+  gtk_widget_class_bind_template_child(widget_class, PitchBox, octaves);
 
   gtk_widget_class_bind_template_callback(widget_class, on_reset);
 }
