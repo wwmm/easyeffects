@@ -197,8 +197,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/nlohmann/json",
-                    "tag": "v3.11.3",
-                    "commit": "9cca280a4d0ccf0c08f47a99aa71d1b0e52f8d03",
+                    "tag": "v3.12.0",
+                    "commit": "55f93686c01528224f448c19128836e7df245f72",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/nlohmann/json/releases/latest",
