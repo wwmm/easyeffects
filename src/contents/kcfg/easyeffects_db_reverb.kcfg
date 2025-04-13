@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/reverbrc">
+        <parameter name="masterGroup" />
+        <parameter name="instanceIndex" />
+    </kcfgfile>
+    <group parentGroupName="$(masterGroup)" name="Reverb#$(instanceIndex)">
+        <entry name="bypass" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="inputGain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="outputGain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="roomSizeLabels" type="StringList">
+            <default>Small,Medium,Large,Tunnel-like,Large/smooth,Experimental</default>
+        </entry>
+        <entry name="roomSize" type="Int">
+            <label></label>
+            <default>2</default>
+        </entry>
+        <entry name="decayTime" type="Double">
+            <min>0.4</min>
+            <max>15</max>
+            <default>1.5</default>
+        </entry>
+        <entry name="hfDamp" type="Double">
+            <min>2000</min>
+            <max>20000</max>
+            <default>5000</default>
+        </entry>
+        <entry name="diffusion" type="Double">
+            <min>0</min>
+            <max>1</max>
+            <default>0.5</default>
+        </entry>
+        <entry name="amount" type="Double">
+            <min>-100</min>
+            <max>6</max>
+            <default>-12</default>
+        </entry>
+        <entry name="dry" type="Double">
+            <min>-100</min>
+            <max>6</max>
+            <default>0</default>
+        </entry>
+        <entry name="predelay" type="Double">
+            <min>0</min>
+            <max>500</max>
+            <default>0</default>
+        </entry>
+        <entry name="bassCut" type="Double">
+            <min>20</min>
+            <max>20000</max>
+            <default>300</default>
+        </entry>
+        <entry name="trebleCut" type="Double">
+            <min>20</min>
+            <max>20000</max>
+            <default>5000</default>
+        </entry>
+    </group>
+</kcfg>

@@ -54,6 +54,7 @@
 #include "pitch.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+#include "reverb.hpp"
 #include "rnnoise.hpp"
 #include "spa/utils/defs.h"
 #include "spectrum.hpp"
@@ -73,7 +74,6 @@
 // #include "loudness.hpp"
 // #include "multiband_compressor.hpp"
 // #include "multiband_gate.hpp"
-// #include "reverb.hpp"
 // #include "tags_app.hpp"
 // #include "tags_schema.hpp"
 
@@ -184,7 +184,7 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::pitch)) {
       filter = std::make_shared<Pitch>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::reverb)) {
-      //   filter = std::make_shared<Reverb>(log_tag, tags::schema::reverb::id, path, pm, pipeline_type);
+      filter = std::make_shared<Reverb>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
       filter = std::make_shared<RNNoise>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::speex)) {
@@ -314,6 +314,10 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::pitch)) {
     return QVariant::fromValue(dynamic_cast<Pitch*>(p.get()));
+  }
+
+  if (pluginName.startsWith(tags::plugin_name::BaseName::reverb)) {
+    return QVariant::fromValue(dynamic_cast<Reverb*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::rnnoise)) {
