@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-12 01:56+0000\n"
-"PO-Revision-Date: 2025-04-14 14:41+0000\n"
-"Last-Translator: Loïc Guégant <loic.guegant@freesbee.fr>\n"
+"PO-Revision-Date: 2025-04-14 21:31+0000\n"
+"Last-Translator: Bundy01 <bundy@posteo.eu>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr\n"
@@ -46,6 +46,7 @@ msgid "Enable"
 msgstr "Activer"
 
 #: data/ui/app_info.ui:225
+#, fuzzy
 msgid "Excluded App List: Add/remove this application"
 msgstr "Liste des applications exclues : ajouter / supprimer cette application"
 
@@ -337,14 +338,17 @@ msgid "Application Name"
 msgstr "Nom de l’Application"
 
 #: data/ui/blocklist_menu.ui:42
+#, fuzzy
 msgid "Add to Excluded Applications"
 msgstr "Ajouter aux applications exclues"
 
 #: data/ui/blocklist_menu.ui:86
+#, fuzzy
 msgid "Excluded Applications List"
 msgstr "Liste des applications exclues"
 
 #: data/ui/blocklist_menu.ui:99
+#, fuzzy
 msgid "Show Excluded Applications"
 msgstr "Afficher les applications exclues"
 
@@ -923,6 +927,7 @@ msgid "Near End Echo Suppression"
 msgstr "Suppression de l'Écho Proche"
 
 #: data/ui/effects_box.ui:114
+#, fuzzy
 msgid "Excluded Apps"
 msgstr "Applications exclues"
 
@@ -2453,10 +2458,12 @@ msgid "Preset Not Loaded Correctly"
 msgstr "Le Préréglage N'a Pas Été Chargé Correctement"
 
 #: src/presets_manager.cpp:1155
+#, fuzzy
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Format incorrect dans la liste des applications exclues"
 
 #: src/presets_manager.cpp:1162
+#, fuzzy
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 "Erreur générique lors du chargement de la liste des applications exclues"
