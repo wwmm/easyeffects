@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-12 01:56+0000\n"
-"PO-Revision-Date: 2024-12-19 04:01+0000\n"
-"Last-Translator: Bundy01 <Bundy01@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2025-04-14 14:41+0000\n"
+"Last-Translator: Loïc Guégant <loic.guegant@freesbee.fr>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
 "Language: fr\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.9.2-dev\n"
+"X-Generator: Weblate 5.11-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -47,7 +47,7 @@ msgstr "Activer"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr "Liste des Applications Exclues : Ajouter/supprimer cette application"
+msgstr "Liste des applications exclues : ajouter / supprimer cette application"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
@@ -338,15 +338,15 @@ msgstr "Nom de l’Application"
 
 #: data/ui/blocklist_menu.ui:42
 msgid "Add to Excluded Applications"
-msgstr "Ajouter aux Applications Exclues"
+msgstr "Ajouter aux applications exclues"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Excluded Applications List"
-msgstr "Liste des Applications Exclues"
+msgstr "Liste des applications exclues"
 
 #: data/ui/blocklist_menu.ui:99
 msgid "Show Excluded Applications"
-msgstr "Afficher les Applications Exclues"
+msgstr "Afficher les applications exclues"
 
 #: data/ui/compressor.ui:25 data/ui/delay.ui:25 data/ui/equalizer.ui:279
 #: data/ui/expander.ui:25 data/ui/filter.ui:25 data/ui/gate.ui:25
@@ -924,7 +924,7 @@ msgstr "Suppression de l'Écho Proche"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
-msgstr "Applications Exclues"
+msgstr "Applications exclues"
 
 #: data/ui/effects_box.ui:120
 msgid "Enable/disable input monitoring"
@@ -2454,12 +2454,12 @@ msgstr "Le Préréglage N'a Pas Été Chargé Correctement"
 
 #: src/presets_manager.cpp:1155
 msgid "Wrong Format in Excluded Apps List"
-msgstr "Format Incorrect dans la Liste des Applications Exclues"
+msgstr "Format incorrect dans la liste des applications exclues"
 
 #: src/presets_manager.cpp:1162
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
-"Erreur Générique Lors du Chargement de la Liste des Applications Exclues"
+"Erreur générique lors du chargement de la liste des applications exclues"
 
 #: src/presets_manager.cpp:1171
 msgid "Wrong Format in Effects List"
