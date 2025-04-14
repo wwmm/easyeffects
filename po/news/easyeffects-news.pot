@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-12 01:56+0000\n"
+"POT-Creation-Date: 2025-04-14 21:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,6 +57,10 @@ msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
+msgstr ""
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
+msgid "Wellington Wallace"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42

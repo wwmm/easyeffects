@@ -46,7 +46,6 @@ msgid "Enable"
 msgstr "Activer"
 
 #: data/ui/app_info.ui:225
-#, fuzzy
 msgid "Excluded App List: Add/remove this application"
 msgstr "Liste des applications exclues : ajouter / supprimer cette application"
 
@@ -338,17 +337,14 @@ msgid "Application Name"
 msgstr "Nom de l’Application"
 
 #: data/ui/blocklist_menu.ui:42
-#, fuzzy
 msgid "Add to Excluded Applications"
 msgstr "Ajouter aux applications exclues"
 
 #: data/ui/blocklist_menu.ui:86
-#, fuzzy
 msgid "Excluded Applications List"
 msgstr "Liste des applications exclues"
 
 #: data/ui/blocklist_menu.ui:99
-#, fuzzy
 msgid "Show Excluded Applications"
 msgstr "Afficher les applications exclues"
 
@@ -927,7 +923,6 @@ msgid "Near End Echo Suppression"
 msgstr "Suppression de l'Écho Proche"
 
 #: data/ui/effects_box.ui:114
-#, fuzzy
 msgid "Excluded Apps"
 msgstr "Applications exclues"
 
@@ -2458,12 +2453,10 @@ msgid "Preset Not Loaded Correctly"
 msgstr "Le Préréglage N'a Pas Été Chargé Correctement"
 
 #: src/presets_manager.cpp:1155
-#, fuzzy
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Format incorrect dans la liste des applications exclues"
 
 #: src/presets_manager.cpp:1162
-#, fuzzy
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 "Erreur générique lors du chargement de la liste des applications exclues"
@@ -2598,12 +2591,10 @@ msgstr "Outils Stéréo"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} Indisponible"
 
 #: src/ui_helpers.cpp:97
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2618,7 +2609,6 @@ msgstr ""
 "être utilisé."
 
 #: src/ui_helpers.cpp:104
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2636,7 +2626,6 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
-#, c++-format
 msgid "Using {}"
 msgstr "Utilise {}"
 
