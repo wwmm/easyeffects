@@ -67,6 +67,7 @@ target_sources(easyeffects PRIVATE
     pw_model_nodes.cpp
     resampler.cpp
     reverb.cpp
+    reverb_preset.cpp
     rnnoise.cpp
     rnnoise_preset.cpp
     spectrum.cpp

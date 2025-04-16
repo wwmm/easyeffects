@@ -25,6 +25,7 @@
 #include <string>
 #include "db_manager.hpp"
 #include "easyeffects_db_reverb.h"
+#include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
@@ -51,24 +52,18 @@ Reverb::Reverb(const std::string& tag, pw::Manager* pipe_manager, PipelineType p
 
   init_common_controls<db::Reverb>(settings);
 
-  // lv2_wrapper->bind_key_double<"decay_time", "decay-time">(settings);
-
-  // lv2_wrapper->bind_key_double<"hf_damp", "hf-damp">(settings);
-
-  // lv2_wrapper->bind_key_double<"diffusion", "diffusion">(settings);
-
-  // lv2_wrapper->bind_key_double<"predelay", "predelay">(settings);
-
-  // lv2_wrapper->bind_key_double<"bass_cut", "bass-cut">(settings);
-
-  // lv2_wrapper->bind_key_double<"treble_cut", "treble-cut">(settings);
-
-  // lv2_wrapper->bind_key_enum<"room_size", "room-size">(settings);
+  BIND_LV2_PORT("decay_time", decayTime, setDecayTime, db::Reverb::decayTimeChanged);
+  BIND_LV2_PORT("hf_damp", hfDamp, setHfDamp, db::Reverb::hfDampChanged);
+  BIND_LV2_PORT("diffusion", diffusion, setDiffusion, db::Reverb::diffusionChanged);
+  BIND_LV2_PORT("predelay", predelay, setPredelay, db::Reverb::predelayChanged);
+  BIND_LV2_PORT("bass_cut", bassCut, setBassCut, db::Reverb::bassCutChanged);
+  BIND_LV2_PORT("treble_cut", trebleCut, setTrebleCut, db::Reverb::trebleCutChanged);
+  BIND_LV2_PORT("room_size", roomSize, setRoomSize, db::Reverb::roomSizeChanged);
 
   // // The following controls can assume -inf
-  // lv2_wrapper->bind_key_double_db<"amount", "amount", false>(settings);
 
-  // lv2_wrapper->bind_key_double_db<"dry", "dry", false>(settings);
+  BIND_LV2_PORT_DB("amount", amount, setAmount, db::Reverb::amountChanged, true);
+  BIND_LV2_PORT_DB("dry", dry, setDry, db::Reverb::dryChanged, true);
 }
 
 Reverb::~Reverb() {
