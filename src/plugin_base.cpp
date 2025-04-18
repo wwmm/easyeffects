@@ -452,7 +452,7 @@ auto PluginBase::get_latency_seconds() -> float {
   return 0.0F;
 }
 
-void PluginBase::show_native_ui() {
+void PluginBase::showNativeUi() {
   if (lv2_wrapper == nullptr) {
     return;
   }
@@ -473,7 +473,7 @@ void PluginBase::show_native_ui() {
   }
 }
 
-void PluginBase::close_native_ui() {
+void PluginBase::closeNativeUi() {
   native_ui_timer->stop();
 
   if (lv2_wrapper == nullptr) {

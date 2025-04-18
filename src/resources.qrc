@@ -35,6 +35,7 @@
         <file alias="PresetsAutoloadingPage.qml">contents/ui/PresetsAutoloadingPage.qml</file>
         <file alias="PresetsLocalPage.qml">contents/ui/PresetsLocalPage.qml</file>
         <file alias="PresetsCommunityPage.qml">contents/ui/PresetsCommunityPage.qml</file>
+        <file alias="Reverb.qml">contents/ui/Reverb.qml</file>
         <file alias="RNNoise.qml">contents/ui/RNNoise.qml</file>
         <file alias="ShortcutsSheet.qml">contents/ui/ShortcutsSheet.qml</file>
         <file alias="Speex.qml">contents/ui/Speex.qml</file>

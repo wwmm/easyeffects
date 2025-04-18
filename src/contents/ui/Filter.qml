@@ -220,9 +220,9 @@ Kirigami.ScrollablePage {
                     checked: pluginBackend.hasNativeUi()
                     onTriggered: {
                         if (checked)
-                            pluginBackend.show_native_ui();
+                            pluginBackend.showNativeUi();
                         else
-                            pluginBackend.close_native_ui();
+                            pluginBackend.closeNativeUi();
                     }
                 },
                 Kirigami.Action {

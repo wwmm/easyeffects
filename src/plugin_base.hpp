@@ -145,9 +145,9 @@ class PluginBase : public QObject {
 
   Q_INVOKABLE [[nodiscard]] float getOutputLevelRight() const;
 
-  Q_INVOKABLE void show_native_ui();
+  Q_INVOKABLE void showNativeUi();
 
-  Q_INVOKABLE void close_native_ui();
+  Q_INVOKABLE void closeNativeUi();
 
   Q_INVOKABLE bool hasNativeUi();
 

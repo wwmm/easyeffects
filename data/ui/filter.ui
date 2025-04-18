@@ -19,7 +19,7 @@
                         <property name="spacing">12</property>
                         <property name="orientation">vertical</property>
                         <child>
-                            <object class="GtkToggleButton" id="show_native_ui">
+                            <object class="GtkToggleButton" id="showNativeUi">
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="label" translatable="yes">Show Native Window</property>

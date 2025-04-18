@@ -61,7 +61,6 @@ void ReverbPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("bypass", Bypass);
   UPDATE_PROPERTY("input-gain", InputGain);
   UPDATE_PROPERTY("output-gain", OutputGain);
-  UPDATE_PROPERTY("room-size", RoomSize);
   UPDATE_PROPERTY("decay-time", DecayTime);
   UPDATE_PROPERTY("hf-damp", HfDamp);
   UPDATE_PROPERTY("diffusion", Diffusion);
@@ -70,4 +69,6 @@ void ReverbPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("predelay", Predelay);
   UPDATE_PROPERTY("bass-cut", BassCut);
   UPDATE_PROPERTY("treble-cut", TrebleCut);
+
+  UPDATE_ENUM_LIKE_PROPERTY("room-size", RoomSize);
 }
