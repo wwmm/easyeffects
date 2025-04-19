@@ -88,6 +88,21 @@ Kirigami.ScrollablePage {
                         }
                     }
 
+                    EeSpinBox {
+                        id: diffusion
+
+                        label: i18n("Diffusion")
+                        from: pluginDB.getMinValue("diffusion")
+                        to: pluginDB.getMaxValue("diffusion")
+                        value: pluginDB.diffusion
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: "%"
+                        onValueModified: (v) => {
+                            pluginDB.diffusion = v;
+                        }
+                    }
+
                 }
 
             }
@@ -100,62 +115,105 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: ColumnLayout {
-                    EeSpinBox {
-                        id: hfDamp
-
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
                         Layout.alignment: Qt.AlignTop
-                        label: i18n("High Frequency Damping")
-                        labelAbove: true
-                        spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("hfDamp")
-                        to: pluginDB.getMaxValue("hfDamp")
-                        value: pluginDB.hfDamp
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: "Hz"
-                        onValueModified: (v) => {
-                            pluginDB.hfDamp = v;
+
+                        EeSpinBox {
+                            id: hfDamp
+
+                            Layout.columnSpan: 2
+                            label: i18n("High Frequency Damping")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("hfDamp")
+                            to: pluginDB.getMaxValue("hfDamp")
+                            value: pluginDB.hfDamp
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "Hz"
+                            onValueModified: (v) => {
+                                pluginDB.hfDamp = v;
+                            }
                         }
+
+                        EeSpinBox {
+                            id: bassCut
+
+                            label: i18n("Bass Cut")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("bassCut")
+                            to: pluginDB.getMaxValue("bassCut")
+                            value: pluginDB.bassCut
+                            decimals: 0
+                            stepSize: 1
+                            unit: "Hz"
+                            onValueModified: (v) => {
+                                pluginDB.bassCut = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: trebleCut
+
+                            label: i18n("Treble Cut")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("trebleCut")
+                            to: pluginDB.getMaxValue("trebleCut")
+                            value: pluginDB.trebleCut
+                            decimals: 0
+                            stepSize: 1
+                            unit: "Hz"
+                            onValueModified: (v) => {
+                                pluginDB.trebleCut = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: dry
+
+                            label: i18n("Dry")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("dry")
+                            to: pluginDB.getMaxValue("dry")
+                            value: pluginDB.dry
+                            decimals: 1
+                            stepSize: 0.1
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: (v) => {
+                                pluginDB.dry = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: wet
+
+                            label: i18n("Wet")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("amount")
+                            to: pluginDB.getMaxValue("amount")
+                            value: pluginDB.amount
+                            decimals: 1
+                            stepSize: 0.1
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: (v) => {
+                                pluginDB.amount = v;
+                            }
+                        }
+
                     }
 
                 }
 
             }
 
-        }
-
-        Controls.Label {
-            Layout.alignment: Qt.AlignHCenter
-            text: i18n("Diffusion")
-        }
-
-        RowLayout {
-            Layout.alignment: Qt.AlignHCenter
-            Layout.maximumWidth: 2 * cardLayout.maximumColumnWidth
-
-            Controls.Slider {
-                id: diffusion
-
-                Layout.alignment: Qt.AlignHCenter
-                Layout.fillWidth: true
-                orientation: Qt.Horizontal
-                snapMode: Controls.Slider.SnapAlways
-                value: pluginDB.diffusion
-                from: pluginDB.getMinValue("diffusion")
-                to: pluginDB.getMaxValue("diffusion")
-                stepSize: 0.01
-                onValueChanged: () => {
-                    if (value !== pluginDB.diffusion)
-                        pluginDB.diffusion = value;
-
-                }
-            }
-
-        }
-
-        Controls.Label {
-            Layout.alignment: Qt.AlignHCenter
-            text: Number(diffusion.value * 100).toLocaleString(Qt.locale(), 'f', 0) + " %"
         }
 
     }
