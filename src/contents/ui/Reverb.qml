@@ -218,6 +218,89 @@ Kirigami.ScrollablePage {
 
     }
 
+    Kirigami.MenuDialog {
+        id: presetsDialog
+
+        title: i18n("Reverberation Presets")
+        actions: [
+            Kirigami.Action {
+                icon.name: "bookmarks-symbolic"
+                text: i18n("Ambience")
+                onTriggered: {
+                    pluginDB.decayTime = 1.10354;
+                    pluginDB.hfDamp = 2182.58;
+                    pluginDB.roomSize = 4;
+                    pluginDB.diffusion = 0.69;
+                    pluginDB.amount = Common.linearTodb(0.291183);
+                    pluginDB.dry = Common.linearTodb(1);
+                    pluginDB.predelay = 6.5;
+                    pluginDB.bassCut = 514.079;
+                    pluginDB.trebleCut = 4064.15;
+                }
+            },
+            Kirigami.Action {
+                icon.name: "bookmarks-symbolic"
+                text: i18n("Empty Walls")
+                onTriggered: {
+                    pluginDB.decayTime = 0.505687;
+                    pluginDB.hfDamp = 3971.64;
+                    pluginDB.roomSize = 4;
+                    pluginDB.diffusion = 0.17;
+                    pluginDB.amount = Common.linearTodb(0.198884);
+                    pluginDB.dry = Common.linearTodb(1);
+                    pluginDB.predelay = 13;
+                    pluginDB.bassCut = 240.453;
+                    pluginDB.trebleCut = 3303.47;
+                }
+            },
+            Kirigami.Action {
+                icon.name: "bookmarks-symbolic"
+                text: i18n("Room")
+                onTriggered: {
+                    pluginDB.decayTime = 0.445945;
+                    pluginDB.hfDamp = 5508.46;
+                    pluginDB.roomSize = 4;
+                    pluginDB.diffusion = 0.54;
+                    pluginDB.amount = Common.linearTodb(0.469761);
+                    pluginDB.dry = Common.linearTodb(1);
+                    pluginDB.predelay = 25;
+                    pluginDB.bassCut = 257.65;
+                    pluginDB.trebleCut = 20000;
+                }
+            },
+            Kirigami.Action {
+                icon.name: "bookmarks-symbolic"
+                text: i18n("Large Empty Hall")
+                onTriggered: {
+                    pluginBackend.reset();
+                    pluginDB.decayTime = 2.00689;
+                    pluginDB.hfDamp = 20000;
+                    pluginDB.amount = Common.linearTodb(0.366022);
+                }
+            },
+            Kirigami.Action {
+                icon.name: "bookmarks-symbolic"
+                text: i18n("Disco")
+                onTriggered: {
+                    pluginBackend.reset();
+                    pluginDB.decayTime = 1;
+                    pluginDB.hfDamp = 3396.49;
+                    pluginDB.amount = Common.linearTodb(0.269807);
+                }
+            },
+            Kirigami.Action {
+                icon.name: "bookmarks-symbolic"
+                text: i18n("Large Occupied Hall")
+                onTriggered: {
+                    pluginBackend.reset();
+                    pluginDB.decayTime = 1;
+                    pluginDB.hfDamp = 3396.49;
+                    pluginDB.amount = Common.linearTodb(0.269807);
+                }
+            }
+        ]
+    }
+
     header: EeInputOutputGain {
         id: inputOutputLevels
 
@@ -241,6 +324,14 @@ Kirigami.ScrollablePage {
             position: Controls.ToolBar.Footer
             flat: true
             actions: [
+                Kirigami.Action {
+                    text: i18n("Presets")
+                    icon.name: "bookmarks-symbolic"
+                    enabled: DB.Manager.main.showNativePluginUi
+                    onTriggered: {
+                        presetsDialog.open();
+                    }
+                },
                 Kirigami.Action {
                     text: i18n("Show Native Window")
                     icon.name: "window-duplicate-symbolic"

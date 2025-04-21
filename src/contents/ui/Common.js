@@ -13,7 +13,7 @@ function isEmpty(v) {
             return v === null;
         default:
             return false;
-  }
+    }
 }
 
 function equalArrays(a, b) {
@@ -37,6 +37,14 @@ function clamp(num, min, max) { return Math.min(Math.max(num, min), max); }
 
 function regExpEscape(str) {
     return str.replace(/[\\/^$*+?.()|[\]{}\-]/g, '\\$&');
+}
+
+function linearTodb(value) {
+    if (value >= minimumLinearLevel) {
+        return 20.0 * Math.log10(value);
+    }
+
+    return minimumDecibelLevel;
 }
 
 function printObjectProperties(obj) {
