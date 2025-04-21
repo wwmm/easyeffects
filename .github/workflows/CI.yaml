@@ -60,7 +60,7 @@ jobs:
         jq '.modules[0]."config-opts" += ["-Dwerror=true"]' util/flatpak/com.github.wwmm.easyeffects.Devel.json > "$updated_manifest"
         mv "$updated_manifest" util/flatpak/com.github.wwmm.easyeffects.Devel.json
 
-    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.4
+    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.5
       with:
         bundle: easyeffects-flatpak-${{ needs.prepare.outputs.github_commit_desc }}.flatpak
         manifest-path: util/flatpak/com.github.wwmm.easyeffects.Devel.json
