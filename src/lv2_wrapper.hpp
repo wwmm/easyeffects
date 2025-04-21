@@ -140,6 +140,8 @@ class Lv2Wrapper {
 
   const LV2UI_Idle_Interface* idle_iface = nullptr;
 
+  const LV2UI_Show_Interface* show_iface = nullptr;
+
   void* libhandle = nullptr;
 
   uint n_ports = 0U;

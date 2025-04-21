@@ -548,8 +548,6 @@ void Lv2Wrapper::load_ui() {
       continue;
     }
 
-    const LV2UI_Show_Interface* show_iface = nullptr;
-
     uint32_t index = 0U;
 
     while ((ui_descriptor = descfn(index++)) != nullptr) {
@@ -727,6 +725,10 @@ void Lv2Wrapper::close_ui() {
   std::scoped_lock<std::mutex> lk(ui_mutex);
 
   if (ui_descriptor != nullptr && ui_handle != nullptr) {
+    if (show_iface != nullptr) {
+      show_iface->hide(ui_handle);
+    }
+
     ui_descriptor->cleanup(ui_handle);
   }
 
@@ -737,6 +739,7 @@ void Lv2Wrapper::close_ui() {
   ui_handle = nullptr;
   ui_descriptor = nullptr;
   libhandle = nullptr;
+  show_iface = nullptr;
 }
 
 void Lv2Wrapper::ui_port_event(const uint& port_index, const float& value) {
