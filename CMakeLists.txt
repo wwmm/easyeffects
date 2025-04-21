@@ -60,7 +60,7 @@ find_package(Threads REQUIRED)
 find_package(PkgConfig REQUIRED)
 find_package(TBB REQUIRED)
 find_package(GSL REQUIRED)
-find_package(SoundTouch REQUIRED)
+# find_package(SoundTouch REQUIRED) # As of SoundTouch 2.4.0 its cmake files are bugged
 
 pkg_check_modules(LIBPIPEWIRE libpipewire-0.3>=1.0.6)
 pkg_check_modules(LIBLILV lilv-0>=0.24)
@@ -74,6 +74,7 @@ pkg_check_modules(LIBBS2B libbs2b)
 pkg_check_modules(LIBSAMPLERATE samplerate)
 pkg_check_modules(LIBSNDFILE sndfile)
 pkg_check_modules(LIBRNNOISE rnnoise)
+pkg_check_modules(LIBSOUNDTOUCH soundtouch)
 
 file(GLOB KCFG_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfg)
 file(GLOB KCFGC_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfgc)

@@ -97,6 +97,7 @@ target_include_directories(easyeffects PRIVATE
     ${LIBSAMPLERATE_INCLUDE_DIRS}
     ${LIBSNDFILE_INCLUDE_DIRS}
     ${LIBRNNOISE_INCLUDE_DIRS}
+    ${LIBSOUNDTOUCH_INCLUDE_DIRS}
 )
 
 target_link_libraries(easyeffects PRIVATE
@@ -116,7 +117,7 @@ target_link_libraries(easyeffects PRIVATE
     TBB::tbb
     GSL::gsl
     GSL::gslcblas
-    SoundTouch::SoundTouch
+    #SoundTouch::SoundTouch # As of SoundTouch 2.4.0 its cmake files are bugged
     ${LIBPIPEWIRE_LIBRARIES}
     ${LIBLILV_LIBRARIES}
     ${LIBEBUR128_LIBRARIES}
@@ -129,6 +130,7 @@ target_link_libraries(easyeffects PRIVATE
     ${LIBSAMPLERATE_LIBRARIES}
     ${LIBSNDFILE_LIBRARIES}
     ${LIBRNNOISE_LIBRARIES}
+    ${LIBSOUNDTOUCH_LIBRARIES}
     ${LIBZITACONVOLVER}
 )
 

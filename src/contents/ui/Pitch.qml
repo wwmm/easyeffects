@@ -78,7 +78,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: overlapLength
 
-                        label: i18n("OVerlap Length")
+                        label: i18n("Overlap Length")
                         from: pluginDB.getMinValue("overlapLength")
                         to: pluginDB.getMaxValue("overlapLength")
                         value: pluginDB.overlapLength
@@ -104,67 +104,95 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
                     spacing: Kirigami.Units.gridUnit
 
-                    EeSpinBox {
-                        id: semitones
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+                        Layout.alignment: Qt.AlignTop
 
-                        label: i18n("Semitones")
-                        from: pluginDB.getMinValue("semitones")
-                        to: pluginDB.getMaxValue("semitones")
-                        value: pluginDB.semitones
-                        decimals: 2
-                        stepSize: 0.01
-                        onValueModified: (v) => {
-                            pluginDB.semitones = v;
+                        EeSpinBox {
+                            id: octaves
+
+                            Layout.columnSpan: 2
+                            label: i18n("Octaves")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("octaves")
+                            to: pluginDB.getMaxValue("octaves")
+                            value: pluginDB.octaves
+                            decimals: 0
+                            stepSize: 1
+                            onValueModified: (v) => {
+                                pluginDB.octaves = v;
+                            }
                         }
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                        EeSpinBox {
+                            id: cents
+
+                            label: i18n("Cents")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("cents")
+                            to: pluginDB.getMaxValue("cents")
+                            value: pluginDB.cents
+                            decimals: 0
+                            stepSize: 1
+                            onValueModified: (v) => {
+                                pluginDB.cents = v;
+                            }
                         }
 
-                    }
+                        EeSpinBox {
+                            id: semitones
 
-                    EeSpinBox {
-                        id: tempoDifference
-
-                        label: i18n("Tempo Difference")
-                        from: pluginDB.getMinValue("tempoDifference")
-                        to: pluginDB.getMaxValue("tempoDifference")
-                        value: pluginDB.tempoDifference
-                        decimals: 0
-                        stepSize: 1
-                        unit: "%"
-                        onValueModified: (v) => {
-                            pluginDB.tempoDifference = v;
+                            label: i18n("Semitones")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("semitones")
+                            to: pluginDB.getMaxValue("semitones")
+                            value: pluginDB.semitones
+                            decimals: 0
+                            stepSize: 1
+                            onValueModified: (v) => {
+                                pluginDB.semitones = v;
+                            }
                         }
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                        EeSpinBox {
+                            id: tempoDifference
+
+                            label: i18n("Tempo Difference")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("tempoDifference")
+                            to: pluginDB.getMaxValue("tempoDifference")
+                            value: pluginDB.tempoDifference
+                            decimals: 0
+                            stepSize: 1
+                            unit: "%"
+                            onValueModified: (v) => {
+                                pluginDB.tempoDifference = v;
+                            }
                         }
 
-                    }
+                        EeSpinBox {
+                            id: rateDifference
 
-                    EeSpinBox {
-                        id: rateDifference
-
-                        label: i18n("Rate Difference")
-                        from: pluginDB.getMinValue("rateDifference")
-                        to: pluginDB.getMaxValue("rateDifference")
-                        value: pluginDB.rateDifference
-                        decimals: 0
-                        stepSize: 1
-                        unit: "%"
-                        onValueModified: (v) => {
-                            pluginDB.rateDifference = v;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                            label: i18n("Rate Difference")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("rateDifference")
+                            to: pluginDB.getMaxValue("rateDifference")
+                            value: pluginDB.rateDifference
+                            decimals: 0
+                            stepSize: 1
+                            unit: "%"
+                            onValueModified: (v) => {
+                                pluginDB.rateDifference = v;
+                            }
                         }
 
                     }

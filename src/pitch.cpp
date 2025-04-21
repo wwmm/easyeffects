@@ -83,7 +83,11 @@ Pitch::Pitch(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
 
   connect(settings, &db::Pitch::rateDifferenceChanged, [&]() { set_rate_difference(); });
 
+  connect(settings, &db::Pitch::octavesChanged, [&]() { set_semitones(); });
+
   connect(settings, &db::Pitch::semitonesChanged, [&]() { set_semitones(); });
+
+  connect(settings, &db::Pitch::centsChanged, [&]() { set_semitones(); });
 }
 
 Pitch::~Pitch() {
@@ -230,7 +234,7 @@ void Pitch::set_semitones() {
 
   std::scoped_lock<std::mutex> lock(data_mutex);
 
-  snd_touch->setPitchSemiTones(settings->semitones());
+  snd_touch->setPitchSemiTones(settings->semitones() + (settings->octaves() * 12.0) + (settings->cents() / 100.0));
 }
 
 void Pitch::set_sequence_length() {
