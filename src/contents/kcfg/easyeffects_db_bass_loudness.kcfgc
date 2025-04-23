@@ -1,0 +1,10 @@
+File=easyeffects_db_bass_loudness.kcfg
+NameSpace=db
+ClassName=BassLoudness
+Inherits=KConfigBaseEE
+IncludeFiles=kconfig_base_ee.hpp
+Mutators=true
+Notifiers=true
+DefaultValueGetters=true
+Singleton=false
+GenerateProperties=true
