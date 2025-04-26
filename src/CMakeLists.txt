@@ -23,6 +23,7 @@ target_sources(easyeffects PRIVATE
     bass_enhancer.cpp
     bass_enhancer_preset.cpp
     bass_loudness.cpp
+    bass_loudness_preset.cpp
     command_line_parser.cpp
     compressor.cpp
     compressor_preset.cpp

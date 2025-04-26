@@ -44,6 +44,7 @@
 #include <vector>
 #include "autogain_preset.hpp"
 #include "bass_enhancer_preset.hpp"
+#include "bass_loudness_preset.hpp"
 #include "compressor_preset.hpp"
 #include "config.h"
 #include "convolver_preset.hpp"
@@ -1407,7 +1408,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
-    // return std::make_unique<BassLoudnessPreset>(pipeline_type, filter_name.toStdString());
+    return std::make_unique<BassLoudnessPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::compressor)) {
