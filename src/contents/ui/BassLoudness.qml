@@ -8,7 +8,7 @@ import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
-    id: crossfeedPage
+    id: bassLoudnessPage
 
     required property var name
     required property var pluginDB
@@ -23,22 +23,6 @@ Kirigami.ScrollablePage {
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
         inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
-    }
-
-    function applyPreset(name) {
-        switch (name) {
-        case "cmoy":
-            pluginDB.fcut = 700;
-            pluginDB.feed = 6;
-            break;
-        case "jmeier":
-            pluginDB.fcut = 650;
-            pluginDB.feed = 9.5;
-            break;
-        default:
-            pluginDB.fcut = 700;
-            pluginDB.feed = 4.5;
-        }
     }
 
     Component.onCompleted: {
@@ -61,32 +45,47 @@ Kirigami.ScrollablePage {
 
                 contentItem: ColumnLayout {
                     EeSpinBox {
-                        id: fcut
+                        id: loudness
 
-                        label: i18n("Cutoff")
-                        from: pluginDB.getMinValue("fcut")
-                        to: pluginDB.getMaxValue("fcut")
-                        value: pluginDB.fcut
-                        decimals: 0
-                        stepSize: 1
-                        unit: "Hz"
-                        onValueModified: (v) => {
-                            pluginDB.fcut = v;
-                        }
-                    }
-
-                    EeSpinBox {
-                        id: feed
-
-                        label: i18n("Feed")
-                        from: pluginDB.getMinValue("feed")
-                        to: pluginDB.getMaxValue("feed")
-                        value: pluginDB.feed
+                        label: i18n("Loudness")
+                        from: pluginDB.getMinValue("loudness")
+                        to: pluginDB.getMaxValue("loudness")
+                        value: pluginDB.loudness
                         decimals: 1
                         stepSize: 0.1
                         unit: "dB"
                         onValueModified: (v) => {
-                            pluginDB.feed = v;
+                            pluginDB.loudness = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: output
+
+                        label: i18n("Output")
+                        from: pluginDB.getMinValue("output")
+                        to: pluginDB.getMaxValue("output")
+                        value: pluginDB.output
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: "dB"
+                        onValueModified: (v) => {
+                            pluginDB.output = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: link
+
+                        label: i18n("Link")
+                        from: pluginDB.getMinValue("link")
+                        to: pluginDB.getMaxValue("link")
+                        value: pluginDB.link
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: "dB"
+                        onValueModified: (v) => {
+                            pluginDB.link = v;
                         }
                     }
 
@@ -98,44 +97,15 @@ Kirigami.ScrollablePage {
 
     }
 
-    Kirigami.MenuDialog {
-        id: presetsDialog
-
-        title: i18n("Crossfeed Presets")
-        actions: [
-            Kirigami.Action {
-                icon.name: "bookmarks-symbolic"
-                text: i18n("Default")
-                onTriggered: {
-                    applyPreset("default");
-                }
-            },
-            Kirigami.Action {
-                icon.name: "bookmarks-symbolic"
-                text: i18n("Cmoy")
-                onTriggered: {
-                    applyPreset("cmoy");
-                }
-            },
-            Kirigami.Action {
-                icon.name: "bookmarks-symbolic"
-                text: i18n("Jmeier")
-                onTriggered: {
-                    applyPreset("jmeier");
-                }
-            }
-        ]
-    }
-
     header: EeInputOutputGain {
         id: inputOutputLevels
 
-        pluginDB: crossfeedPage.pluginDB
+        pluginDB: bassLoudnessPage.pluginDB
     }
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.bs2b}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.mda}</b>`)
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -150,14 +120,6 @@ Kirigami.ScrollablePage {
             position: Controls.ToolBar.Footer
             flat: true
             actions: [
-                Kirigami.Action {
-                    text: i18n("Presets")
-                    icon.name: "bookmarks-symbolic"
-                    enabled: DB.Manager.main.showNativePluginUi
-                    onTriggered: {
-                        presetsDialog.open();
-                    }
-                },
                 Kirigami.Action {
                     text: i18n("Reset")
                     icon.name: "edit-reset-symbolic"

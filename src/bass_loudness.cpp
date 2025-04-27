@@ -56,9 +56,9 @@ BassLoudness::BassLoudness(const std::string& tag,
 
   init_common_controls<db::BassLoudness>(settings);
 
-  BIND_LV2_PORT("loudness", loudness, setLoudness, db::BassLoudness::loudnessChanged);
-  BIND_LV2_PORT("output", output, setOutput, db::BassLoudness::outputChanged);
-  BIND_LV2_PORT("link", link, setLink, db::BassLoudness::linkChanged);
+  BIND_LV2_PORT_DB("loudness", loudness, setLoudness, db::BassLoudness::loudnessChanged, false);
+  BIND_LV2_PORT_DB("output", output, setOutput, db::BassLoudness::outputChanged, false);
+  BIND_LV2_PORT_DB("link", link, setLink, db::BassLoudness::linkChanged, false);
 }
 
 BassLoudness::~BassLoudness() {
