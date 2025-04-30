@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 14:42+0000\n"
-"PO-Revision-Date: 2024-04-27 11:07+0000\n"
-"Last-Translator: Young <young20050727@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
-"easyeffects/main/zh_Hant/>\n"
+"PO-Revision-Date: 2025-04-30 10:59+0000\n"
+"Last-Translator: neko0xff <neko_0xff@protonmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/easyeffects/main/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5.1\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -34,7 +34,7 @@ msgstr "PipeWire 音效程式"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
+msgstr "限制器;壓縮器;混響;均衡器;自動音量;"
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
@@ -66,56 +66,56 @@ msgstr "音量"
 
 #: data/ui/application_window.ui:6
 msgid "_Help"
-msgstr "幫助"
+msgstr "幫助(H_)"
 
 #: data/ui/application_window.ui:12
 msgid "_Reset Settings"
-msgstr "重設設定值"
+msgstr "重設設定值(R_)"
 
 #: data/ui/application_window.ui:18
 msgid "_Preferences"
-msgstr ""
+msgstr "偏好設定(P_)"
 
 #: data/ui/application_window.ui:22
 msgid "_Shortcuts"
-msgstr ""
+msgstr "捷徑(S_)"
 
 #: data/ui/application_window.ui:26
 msgid "_About Easy Effects"
-msgstr ""
+msgstr "關於Easy Effects(A_)"
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr "離開"
+msgstr "離開(Q_)"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:159
 msgid "Presets"
-msgstr ""
+msgstr "預設值"
 
 #: data/ui/application_window.ui:61
 msgid "Presets Menu"
-msgstr ""
+msgstr "預設選單"
 
 #: data/ui/application_window.ui:68
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "啟用/停用全局旁路"
 
 #: data/ui/application_window.ui:73
 msgid "Global Bypass"
-msgstr ""
+msgstr "全局繞過"
 
 #: data/ui/application_window.ui:83
 msgid "Primary Menu"
-msgstr ""
+msgstr "主選單"
 
 #: data/ui/application_window.ui:99
 msgid "Easy Effects Window"
-msgstr ""
+msgstr "Easy Effects 視窗"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
-msgstr "控制列表"
+msgstr "應用程式清單"
 
 #: data/ui/apps_box.ui:27
 msgid "Empty List"
@@ -127,27 +127,27 @@ msgstr "沒有可用的音訊應用程式"
 
 #: data/ui/autogain.ui:29 data/ui/filter.ui:38
 msgid "Controls"
-msgstr ""
+msgstr "控制"
 
 #: data/ui/autogain.ui:33
 msgid "Target"
-msgstr ""
+msgstr "目標"
 
 #: data/ui/autogain.ui:56
 msgid "Silence"
-msgstr ""
+msgstr "寧靜"
 
 #: data/ui/autogain.ui:80
 msgid "Maximum History"
-msgstr ""
+msgstr "最大化歷史記錄"
 
 #: data/ui/autogain.ui:103
 msgid "Reference"
-msgstr ""
+msgstr "參考資料"
 
 #: data/ui/autogain.ui:109 data/ui/autogain.ui:158 data/ui/level_meter.ui:72
 msgid "Momentary"
-msgstr ""
+msgstr "瞬間"
 
 #: data/ui/autogain.ui:110 data/ui/autogain.ui:196 data/ui/level_meter.ui:109
 msgid "Short-Term"
@@ -155,23 +155,23 @@ msgstr "短期"
 
 #: data/ui/autogain.ui:111 data/ui/autogain.ui:233 data/ui/level_meter.ui:145
 msgid "Integrated"
-msgstr ""
+msgstr "融合的"
 
 #: data/ui/autogain.ui:112
 msgid "Geometric Mean (MSI)"
-msgstr ""
+msgstr "幾何平均值 (MSI)"
 
 #: data/ui/autogain.ui:113
 msgid "Geometric Mean (MS)"
-msgstr ""
+msgstr "幾何平均值 (MS)"
 
 #: data/ui/autogain.ui:114
 msgid "Geometric Mean (MI)"
-msgstr ""
+msgstr "幾何平均值 (MI)"
 
 #: data/ui/autogain.ui:115
 msgid "Geometric Mean (SI)"
-msgstr ""
+msgstr "幾何平均值 (SI)"
 
 #: data/ui/autogain.ui:124
 msgid "History"
@@ -193,11 +193,11 @@ msgstr "重設"
 #: data/ui/autogain.ui:144 data/ui/autogain.ui:346 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:58 src/tags_plugin_name.cpp:56
 msgid "Loudness"
-msgstr ""
+msgstr "音量"
 
 #: data/ui/autogain.ui:270 data/ui/level_meter.ui:181
 msgid "Relative"
-msgstr ""
+msgstr "相對"
 
 #: data/ui/autogain.ui:307 data/ui/level_meter.ui:217
 msgid "Range"
@@ -205,7 +205,7 @@ msgstr "範圍"
 
 #: data/ui/autogain.ui:383
 msgid "Output Gain"
-msgstr ""
+msgstr "輸出增益 (Gain)"
 
 #: data/ui/autogain.ui:430 data/ui/bass_enhancer.ui:258
 #: data/ui/bass_loudness.ui:107 data/ui/compressor.ui:650
@@ -234,7 +234,7 @@ msgstr "輸入"
 #: data/ui/multiband_gate.ui:512 data/ui/pitch.ui:282 data/ui/reverb.ui:377
 #: data/ui/rnnoise.ui:292 data/ui/speex.ui:206 data/ui/stereo_tools.ui:636
 msgid "Plugin Input Gain"
-msgstr ""
+msgstr "外掛程式輸入增益"
 
 #: data/ui/autogain.ui:514 data/ui/bass_enhancer.ui:342
 #: data/ui/bass_loudness.ui:48 data/ui/bass_loudness.ui:191
@@ -262,7 +262,7 @@ msgstr "輸出"
 #: data/ui/multiband_gate.ui:596 data/ui/pitch.ui:366 data/ui/reverb.ui:461
 #: data/ui/rnnoise.ui:376 data/ui/speex.ui:290 data/ui/stereo_tools.ui:720
 msgid "Plugin Output Gain"
-msgstr ""
+msgstr "外掛程式輸出增益"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:673 data/ui/expander.ui:594
 #: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:246
@@ -278,25 +278,25 @@ msgstr "名稱"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
-msgstr ""
+msgstr "設定檔"
 
 #: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:257
 #: data/ui/pipe_manager_box.ui:387
 msgid "Preset"
-msgstr ""
+msgstr "設定檔"
 
 #: data/ui/autoload_row.ui:114
 msgid "Remove this autoload preset"
-msgstr ""
+msgstr "移除此自動加載設定檔"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:627 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/expander.ui:548 data/ui/gate.ui:761
 msgid "Listen"
-msgstr "聽"
+msgstr "聆聽"
 
 #: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
-msgstr ""
+msgstr "混合和諧"
 
 #: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
@@ -307,21 +307,23 @@ msgid "2nd"
 msgstr "第二"
 
 #: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
+#, fuzzy
 msgid "Amount"
-msgstr ""
+msgstr "金額"
 
 #: data/ui/bass_enhancer.ui:141 data/ui/bass_enhancer.ui:420
 #: data/ui/exciter.ui:141 data/ui/exciter.ui:420
 msgid "Harmonics"
-msgstr ""
+msgstr "諧波"
 
 #: data/ui/bass_enhancer.ui:175 data/ui/exciter.ui:175
 msgid "Scope"
-msgstr ""
+msgstr "範圍"
 
 #: data/ui/bass_enhancer.ui:208
+#, fuzzy
 msgid "Floor"
-msgstr ""
+msgstr "樓層"
 
 #: data/ui/bass_enhancer.ui:236
 msgid "Floor Value"
@@ -329,7 +331,7 @@ msgstr ""
 
 #: data/ui/bass_loudness.ui:69
 msgid "Link"
-msgstr ""
+msgstr "連結"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
@@ -337,26 +339,26 @@ msgstr "應用程式名稱"
 
 #: data/ui/blocklist_menu.ui:42
 msgid "Add to Excluded Applications"
-msgstr ""
+msgstr "新增至排除的應用程式"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Excluded Applications List"
-msgstr ""
+msgstr "排除的應用程式清單"
 
 #: data/ui/blocklist_menu.ui:99
 msgid "Show Excluded Applications"
-msgstr ""
+msgstr "顯示排除的應用程式"
 
 #: data/ui/compressor.ui:25 data/ui/delay.ui:25 data/ui/equalizer.ui:279
 #: data/ui/expander.ui:25 data/ui/filter.ui:25 data/ui/gate.ui:25
 #: data/ui/limiter.ui:25 data/ui/loudness.ui:25
 #: data/ui/multiband_compressor.ui:105 data/ui/multiband_gate.ui:105
 msgid "Show Native Window"
-msgstr ""
+msgstr "顯示原生視窗"
 
 #: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:41
 msgid "Compressor"
-msgstr ""
+msgstr "壓縮機"
 
 #: data/ui/compressor.ui:63 data/ui/compressor.ui:595 data/ui/compressor.ui:871
 #: data/ui/deesser.ui:68 data/ui/equalizer.ui:61 data/ui/equalizer_band.ui:134
@@ -370,20 +372,20 @@ msgstr "模式"
 #: data/ui/compressor.ui:76 data/ui/expander.ui:76
 #: data/ui/multiband_compressor_band.ui:100
 msgid "Downward"
-msgstr ""
+msgstr "向下"
 
 #: data/ui/compressor.ui:77 data/ui/expander.ui:77
 #: data/ui/multiband_compressor_band.ui:101
 msgid "Upward"
-msgstr ""
+msgstr "向上"
 
 #: data/ui/compressor.ui:78 data/ui/multiband_compressor_band.ui:102
 msgid "Boosting"
-msgstr ""
+msgstr "提升"
 
 #: data/ui/compressor.ui:87 data/ui/multiband_compressor_band.ui:87
 msgid "Compression Mode"
-msgstr ""
+msgstr "壓縮模式"
 
 #: data/ui/compressor.ui:94 data/ui/multiband_compressor_band.ui:807
 msgid "Boost Threshold"
@@ -538,12 +540,12 @@ msgstr ""
 #: data/ui/compressor.ui:567 data/ui/expander.ui:488 data/ui/gate.ui:701
 #: data/ui/multiband_compressor_band.ui:513 data/ui/multiband_gate_band.ui:571
 msgid "Left/Right"
-msgstr ""
+msgstr "左/右"
 
 #: data/ui/compressor.ui:568 data/ui/expander.ui:489 data/ui/gate.ui:702
 #: data/ui/multiband_compressor_band.ui:514 data/ui/multiband_gate_band.ui:572
 msgid "Right/Left"
-msgstr ""
+msgstr "右/左"
 
 #: data/ui/compressor.ui:569 data/ui/expander.ui:490 data/ui/gate.ui:703
 #: data/ui/multiband_compressor_band.ui:515 data/ui/multiband_gate_band.ui:573
@@ -705,7 +707,7 @@ msgstr ""
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:584
 msgid "Left Channel"
-msgstr ""
+msgstr "左聲道"
 
 #: data/ui/convolver.ui:53
 msgid "R"
@@ -926,13 +928,12 @@ msgid "Excluded Apps"
 msgstr ""
 
 #: data/ui/effects_box.ui:120
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "啟用 / 停用此程式"
+msgstr "啟用/停用輸入監控"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
-msgstr ""
+msgstr "頻帶"
 
 #: data/ui/equalizer.ui:93 data/ui/filter.ui:270 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:391
@@ -941,7 +942,7 @@ msgstr ""
 
 #: data/ui/equalizer.ui:125
 msgid "Pitch Left"
-msgstr ""
+msgstr "左距離"
 
 #: data/ui/equalizer.ui:157
 msgid "Pitch Right"
@@ -961,7 +962,7 @@ msgstr ""
 
 #: data/ui/equalizer.ui:310
 msgid "Sort Bands"
-msgstr ""
+msgstr "頻帶範圍"
 
 #: data/ui/equalizer.ui:325 src/presets_menu.cpp:144
 msgid "Import Preset"
@@ -1038,7 +1039,7 @@ msgstr ""
 
 #: data/ui/filter.ui:55
 msgid "Band-Pass"
-msgstr ""
+msgstr "頻帶通過"
 
 #: data/ui/filter.ui:56
 msgid "Notch"
@@ -1288,7 +1289,7 @@ msgstr ""
 
 #: data/ui/limiter.ui:624
 msgid "Gain Left"
-msgstr ""
+msgstr "左增益 (Gain)"
 
 #: data/ui/limiter.ui:651
 msgid "Gain Right"
@@ -1296,7 +1297,7 @@ msgstr ""
 
 #: data/ui/limiter.ui:678
 msgid "Sidechain Left"
-msgstr ""
+msgstr "側鏈左側"
 
 #: data/ui/limiter.ui:705
 msgid "Sidechain Right"
@@ -1364,59 +1365,59 @@ msgstr ""
 
 #: data/ui/multiband_compressor.ui:266 data/ui/multiband_gate.ui:266
 msgid "Bands List"
-msgstr ""
+msgstr "頻帶清單"
 
 #: data/ui/multiband_compressor.ui:275 data/ui/multiband_gate.ui:275
 msgid "Band 1"
-msgstr ""
+msgstr "頻帶 1"
 
 #: data/ui/multiband_compressor.ui:292 data/ui/multiband_gate.ui:292
 msgid "Band 2"
-msgstr ""
+msgstr "頻帶 2"
 
 #: data/ui/multiband_compressor.ui:318 data/ui/multiband_gate.ui:318
 msgid "Band 3"
-msgstr ""
+msgstr "頻帶 3"
 
 #: data/ui/multiband_compressor.ui:344 data/ui/multiband_gate.ui:344
 msgid "Band 4"
-msgstr ""
+msgstr "頻帶 4"
 
 #: data/ui/multiband_compressor.ui:370 data/ui/multiband_gate.ui:370
 msgid "Band 5"
-msgstr ""
+msgstr "頻帶 5"
 
 #: data/ui/multiband_compressor.ui:396 data/ui/multiband_gate.ui:396
 msgid "Band 6"
-msgstr ""
+msgstr "頻帶 6"
 
 #: data/ui/multiband_compressor.ui:422 data/ui/multiband_gate.ui:422
 msgid "Band 7"
-msgstr ""
+msgstr "頻帶 7"
 
 #: data/ui/multiband_compressor.ui:448 data/ui/multiband_gate.ui:448
 msgid "Band 8"
-msgstr ""
+msgstr "頻帶 8"
 
 #: data/ui/multiband_compressor_band.ui:18 data/ui/multiband_gate_band.ui:18
 msgid "Band Start"
-msgstr ""
+msgstr "頻帶開始"
 
 #: data/ui/multiband_compressor_band.ui:56 data/ui/multiband_gate_band.ui:56
 msgid "Band End"
-msgstr ""
+msgstr "頻帶結束"
 
 #: data/ui/multiband_compressor_band.ui:111
 msgid "Band Compression Mode"
-msgstr ""
+msgstr "頻帶壓縮模式"
 
 #: data/ui/multiband_compressor_band.ui:129 data/ui/multiband_gate_band.ui:98
 msgid "Band Bypass"
-msgstr ""
+msgstr "頻帶繞過"
 
 #: data/ui/multiband_compressor_band.ui:427 data/ui/multiband_gate_band.ui:485
 msgid "Band Sidechain Options"
-msgstr ""
+msgstr "頻帶側鏈選項"
 
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:558
 msgid "Stereo Split"
@@ -1444,19 +1445,19 @@ msgstr ""
 
 #: data/ui/multiband_compressor_band.ui:867
 msgid "Band Gain"
-msgstr ""
+msgstr "頻帶增益 (Gain)"
 
 #: data/ui/multiband_compressor_band.ui:892 data/ui/multiband_gate_band.ui:861
 msgid "Band Envelope"
-msgstr ""
+msgstr "頻帶封套"
 
 #: data/ui/multiband_compressor_band.ui:917 data/ui/multiband_gate_band.ui:886
 msgid "Band Curve"
-msgstr ""
+msgstr "頻帶曲線"
 
 #: data/ui/multiband_gate_band.ui:836
 msgid "Band Reduction"
-msgstr ""
+msgstr "頻帶縮減"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
@@ -1756,9 +1757,8 @@ msgid "Inactivity Timeout"
 msgstr ""
 
 #: data/ui/preferences_general.ui:91
-#, fuzzy
 msgid "Input Pipeline"
-msgstr "輸入裝置"
+msgstr "輸入管線(Pipeline)"
 
 #: data/ui/preferences_general.ui:120
 msgid "Update Interval"
@@ -2142,35 +2142,36 @@ msgstr ""
 
 #: data/ui/stereo_tools.ui:138
 msgid "LR > LR (Stereo Default)"
-msgstr ""
+msgstr "LR > LR（立體聲預設值）"
 
 #: data/ui/stereo_tools.ui:139
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr ""
+msgstr "LR > MS（立體聲至中間面）"
 
 #: data/ui/stereo_tools.ui:140
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr ""
+msgstr "MS > LR（中置轉立體聲）"
 
 #: data/ui/stereo_tools.ui:141
 msgid "LR > LL (Mono Left Channel)"
-msgstr ""
+msgstr "LR > LL（單聲道左聲道）"
 
 #: data/ui/stereo_tools.ui:142
 msgid "LR > RR (Mono Right Channel)"
-msgstr ""
+msgstr "LR > RR（單聲道右聲道）"
 
 #: data/ui/stereo_tools.ui:143
+#, fuzzy
 msgid "LR > L+R (Mono Sum L+R)"
-msgstr ""
+msgstr "LR > L+R (Mono Sum L+R)"
 
 #: data/ui/stereo_tools.ui:144
 msgid "LR > RL (Stereo Flip Channels)"
-msgstr ""
+msgstr "LR > RL（立體聲翻轉頻道）"
 
 #: data/ui/stereo_tools.ui:149
 msgid "Stereo Mode"
-msgstr ""
+msgstr "立體聲模式"
 
 #: data/ui/stereo_tools.ui:234
 msgid "Side Level"
@@ -2198,7 +2199,7 @@ msgstr ""
 
 #: data/ui/stereo_tools.ui:452
 msgid "Delay Left Right"
-msgstr ""
+msgstr "延遲 左右"
 
 #: data/ui/stereo_tools.ui:461
 msgid "Stereo Base"
@@ -2241,14 +2242,12 @@ msgid "channels"
 msgstr ""
 
 #: src/application.cpp:301
-#, fuzzy
 msgid "Output Preset"
-msgstr "輸出裝置"
+msgstr "輸出設定檔"
 
 #: src/application.cpp:302
-#, fuzzy
 msgid "Input Preset"
-msgstr "輸入裝置"
+msgstr "輸入設定檔"
 
 #: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
@@ -2552,11 +2551,11 @@ msgstr ""
 
 #: src/tags_plugin_name.cpp:58
 msgid "Multiband Compressor"
-msgstr ""
+msgstr "多頻段壓縮器"
 
 #: src/tags_plugin_name.cpp:59
 msgid "Multiband Gate"
-msgstr ""
+msgstr "多頻段閘門"
 
 #: src/tags_plugin_name.cpp:61
 msgid "Reverberation"
