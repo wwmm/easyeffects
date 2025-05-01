@@ -40,6 +40,7 @@
 #include "easyeffects_db_filter.h"
 #include "easyeffects_db_gate.h"
 #include "easyeffects_db_limiter.h"
+#include "easyeffects_db_loudness.h"
 #include "easyeffects_db_maximizer.h"
 #include "easyeffects_db_pitch.h"
 #include "easyeffects_db_reverb.h"
@@ -189,6 +190,10 @@ void Manager::create_plugin_db(const QString& parentGroup,
       } else if (name.startsWith(tags::plugin_name::BaseName::limiter)) {
         plugins_map[tags::plugin_name::BaseName::limiter + "#" + id] =
             QVariant::fromValue(new db::Limiter(parentGroup, id));
+        //
+      } else if (name.startsWith(tags::plugin_name::BaseName::loudness)) {
+        plugins_map[tags::plugin_name::BaseName::loudness + "#" + id] =
+            QVariant::fromValue(new db::Loudness(parentGroup, id));
         //
       } else if (name.startsWith(tags::plugin_name::BaseName::maximizer)) {
         plugins_map[tags::plugin_name::BaseName::maximizer + "#" + id] =
