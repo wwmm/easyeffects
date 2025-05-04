@@ -20,6 +20,7 @@
 #pragma once
 
 #include <qobject.h>
+#include <qtmetamacros.h>
 #include <sys/types.h>
 #include <span>
 #include <string>
@@ -29,6 +30,8 @@
 #include "pw_manager.hpp"
 
 class Loudness : public PluginBase {
+  Q_OBJECT
+
  public:
   Loudness(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
   Loudness(const Loudness&) = delete;

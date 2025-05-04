@@ -19,10 +19,15 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return ;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
+        momentary.value = pluginBackend.getMomentaryLevel();
+        shortterm.value = pluginBackend.getShorttermLevel();
+        integrated.value = pluginBackend.getIntegratedLevel();
+        relative.value = pluginBackend.getRelativeLevel();
+        range.value = pluginBackend.getRangeLevel();
+        truePeakL.value = pluginBackend.getTruePeakL();
+        truePeakR.value = pluginBackend.getTruePeakR();
+        inputL.value = pluginBackend.getInputLevelLeft();
+        inputR.value = pluginBackend.getInputLevelRight();
     }
 
     Component.onCompleted: {
@@ -34,20 +39,203 @@ Kirigami.ScrollablePage {
             id: cardLayout
 
             Layout.fillWidth: true
+            uniformCellWidths: true
+
+            ColumnLayout {
+                Kirigami.Card {
+                    id: cardInputLevels
+
+                    header: Kirigami.Heading {
+                        text: i18n("Input Level")
+                        level: 2
+                    }
+
+                    contentItem: Column {
+                        spacing: Kirigami.Units.gridUnit
+
+                        EeProgressBar {
+                            id: inputL
+
+                            label: i18n("Left")
+                            unit: "dB"
+                            from: Common.minimumDecibelLevel
+                            to: 10
+                            value: 0
+                            decimals: 1
+
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                            }
+
+                        }
+
+                        EeProgressBar {
+                            id: inputR
+
+                            label: i18n("Right")
+                            unit: "dB"
+                            from: Common.minimumDecibelLevel
+                            to: 10
+                            value: 0
+                            decimals: 1
+
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                            }
+
+                        }
+
+                    }
+
+                }
+
+                Kirigami.Card {
+                    id: cardPeak
+
+                    header: Kirigami.Heading {
+                        text: i18n("True Peak")
+                        level: 2
+                    }
+
+                    contentItem: Column {
+                        spacing: Kirigami.Units.gridUnit
+
+                        EeProgressBar {
+                            id: truePeakL
+
+                            label: i18n("Left")
+                            unit: "dB"
+                            from: Common.minimumDecibelLevel
+                            to: 10
+                            value: 0
+                            decimals: 1
+
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                            }
+
+                        }
+
+                        EeProgressBar {
+                            id: truePeakR
+
+                            label: i18n("Right")
+                            unit: "dB"
+                            from: Common.minimumDecibelLevel
+                            to: 10
+                            value: 0
+                            decimals: 1
+
+                            anchors {
+                                left: parent.left
+                                right: parent.right
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
 
             Kirigami.Card {
-                id: cardControls
+                id: cardLoudness
 
                 header: Kirigami.Heading {
-                    text: i18n("Controls")
+                    text: i18n("Loudness")
                     level: 2
                 }
 
-                contentItem: ColumnLayout {
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
-                        Layout.alignment: Qt.AlignTop
+                contentItem: Column {
+                    spacing: Kirigami.Units.gridUnit
+
+                    EeProgressBar {
+                        id: momentary
+
+                        label: i18n("Momentary")
+                        unit: "LUFS"
+                        from: Common.minimumDecibelLevel
+                        to: 10
+                        value: 0
+                        decimals: 1
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    EeProgressBar {
+                        id: shortterm
+
+                        label: i18n("Short-Term")
+                        unit: "LUFS"
+                        from: Common.minimumDecibelLevel
+                        to: 10
+                        value: 0
+                        decimals: 1
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    EeProgressBar {
+                        id: integrated
+
+                        label: i18n("Integrated")
+                        unit: "LUFS"
+                        from: Common.minimumDecibelLevel
+                        to: 10
+                        value: 0
+                        decimals: 1
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    EeProgressBar {
+                        id: relative
+
+                        label: i18n("Relative")
+                        unit: "LUFS"
+                        from: Common.minimumDecibelLevel
+                        to: 10
+                        value: 0
+                        decimals: 1
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                    }
+
+                    EeProgressBar {
+                        id: range
+
+                        label: i18n("Range")
+                        unit: "LU"
+                        from: 0
+                        to: 50
+                        value: 0
+                        decimals: 1
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
                     }
 
                 }
@@ -56,12 +244,6 @@ Kirigami.ScrollablePage {
 
         }
 
-    }
-
-    header: EeInputOutputGain {
-        id: inputOutputLevels
-
-        pluginDB: levelMeterPage.pluginDB
     }
 
     footer: RowLayout {
@@ -81,6 +263,13 @@ Kirigami.ScrollablePage {
             position: Controls.ToolBar.Footer
             flat: true
             actions: [
+                Kirigami.Action {
+                    text: i18n("Reset History")
+                    icon.name: "edit-clear-history-symbolic"
+                    onTriggered: {
+                        pluginBackend.resetHistory();
+                    }
+                },
                 Kirigami.Action {
                     text: i18n("Reset")
                     icon.name: "edit-reset-symbolic"

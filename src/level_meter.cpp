@@ -170,6 +170,9 @@ void LevelMeter::process(std::span<float>& left_in,
     true_peak_R = 0.0;
   }
 
+  true_peak_L = util::linear_to_db(true_peak_L);
+  true_peak_R = util::linear_to_db(true_peak_R);
+
   get_peaks(left_in, right_in, left_out, right_out);
 }
 
@@ -220,4 +223,12 @@ float LevelMeter::getRelativeLevel() const {
 
 float LevelMeter::getRangeLevel() const {
   return range;
+}
+
+float LevelMeter::getTruePeakL() const {
+  return true_peak_L;
+}
+
+float LevelMeter::getTruePeakR() const {
+  return true_peak_R;
 }

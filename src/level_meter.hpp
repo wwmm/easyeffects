@@ -33,6 +33,8 @@
 #include "pw_manager.hpp"
 
 class LevelMeter : public PluginBase {
+  Q_OBJECT
+
  public:
   LevelMeter(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_i);
   LevelMeter(const LevelMeter&) = delete;
@@ -68,6 +70,10 @@ class LevelMeter : public PluginBase {
   Q_INVOKABLE [[nodiscard]] float getRelativeLevel() const;
 
   Q_INVOKABLE [[nodiscard]] float getRangeLevel() const;
+
+  Q_INVOKABLE [[nodiscard]] float getTruePeakL() const;
+
+  Q_INVOKABLE [[nodiscard]] float getTruePeakR() const;
 
   Q_INVOKABLE void resetHistory();
 
