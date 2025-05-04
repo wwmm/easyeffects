@@ -198,6 +198,14 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
+                case TagsPluginName.BaseName.loudness:
+                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    pluginsStack.push("qrc:ui/Loudness.qml", {
+                        "name": name,
+                        "pluginDB": pluginDB,
+                        "pipelineInstance": pipelineInstance
+                    });
+                    break;
                 case TagsPluginName.BaseName.maximizer:
                     while (pluginsStack.depth > 1)pluginsStack.pop()
                     pluginsStack.push("qrc:ui/Maximizer.qml", {

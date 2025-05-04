@@ -25,6 +25,7 @@
         <file alias="Filter.qml">contents/ui/Filter.qml</file>
         <file alias="Gate.qml">contents/ui/Gate.qml</file>
         <file alias="Limiter.qml">contents/ui/Limiter.qml</file>
+        <file alias="Loudness.qml">contents/ui/Loudness.qml</file>
         <file alias="Maximizer.qml">contents/ui/Maximizer.qml</file>
         <file alias="main.qml">contents/ui/main.qml</file>
         <file alias="MenuAddPlugins.qml">contents/ui/MenuAddPlugins.qml</file>
