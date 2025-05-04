@@ -57,6 +57,7 @@
 #include "exciter_preset.hpp"
 #include "filter_preset.hpp"
 #include "gate_preset.hpp"
+#include "level_meter_preset.hpp"
 #include "limiter_preset.hpp"
 #include "loudness_preset.hpp"
 #include "maximizer_preset.hpp"
@@ -1465,7 +1466,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
-    // return std::make_unique<LevelMeterPreset>(pipeline_type, filter_name.toStdString());
+    return std::make_unique<LevelMeterPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::limiter)) {

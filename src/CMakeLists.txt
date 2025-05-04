@@ -48,6 +48,8 @@ target_sources(easyeffects PRIVATE
     gate.cpp
     gate_preset.cpp
     kconfig_base_ee.cpp
+    level_meter.cpp
+    level_meter_preset.cpp
     limiter.cpp
     limiter_preset.cpp
     local_client.cpp
