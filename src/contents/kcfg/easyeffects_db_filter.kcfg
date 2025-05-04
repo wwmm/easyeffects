@@ -24,7 +24,7 @@
             <default>0</default>
         </entry>
         <entry name="typeLabels" type="StringList">
-            <default>Low-pass,High-pass,Low-shelf,Bell,Band-pass,Notch,Resonance,Ladder-pass,Ladder-rejection,All-pass</default>
+            <default>Low-pass,High-pass,Low-shelf,High-shelf,Bell,Band-pass,Notch,Resonance,Ladder-pass,Ladder-rejection,All-pass</default>
         </entry>
         <entry name="type" type="Int">
             <label>Type</label>

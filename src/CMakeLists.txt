@@ -53,6 +53,7 @@ target_sources(easyeffects PRIVATE
     local_client.cpp
     local_server.cpp
     loudness.cpp
+    loudness_preset.cpp
     lv2_wrapper.cpp
     main.cpp
     maximizer.cpp
