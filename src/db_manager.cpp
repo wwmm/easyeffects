@@ -37,6 +37,7 @@
 #include "easyeffects_db_crystalizer.h"
 #include "easyeffects_db_delay.h"
 #include "easyeffects_db_exciter.h"
+#include "easyeffects_db_expander.h"
 #include "easyeffects_db_filter.h"
 #include "easyeffects_db_gate.h"
 #include "easyeffects_db_level_meter.h"
@@ -180,6 +181,10 @@ void Manager::create_plugin_db(const QString& parentGroup,
       } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
         plugins_map[tags::plugin_name::BaseName::exciter + "#" + id] =
             QVariant::fromValue(new db::Exciter(parentGroup, id));
+        //
+      } else if (name.startsWith(tags::plugin_name::BaseName::expander)) {
+        plugins_map[tags::plugin_name::BaseName::expander + "#" + id] =
+            QVariant::fromValue(new db::Expander(parentGroup, id));
         //
       } else if (name.startsWith(tags::plugin_name::BaseName::filter)) {
         plugins_map[tags::plugin_name::BaseName::filter + "#" + id] =

@@ -46,6 +46,7 @@
 #include "db_manager.hpp"
 #include "delay.hpp"
 #include "exciter.hpp"
+#include "expander.hpp"
 #include "filter.hpp"
 #include "gate.hpp"
 #include "level_meter.hpp"
@@ -70,7 +71,6 @@
 // #include "deesser.hpp"
 // #include "echo_canceller.hpp"
 // #include "equalizer.hpp"
-// #include "expander.hpp"
 // #include "multiband_compressor.hpp"
 // #include "multiband_gate.hpp"
 
@@ -155,7 +155,7 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
       filter = std::make_shared<Exciter>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::expander)) {
-      //   filter = std::make_shared<Expander>(log_tag, tags::schema::expander::id, path, pm, pipeline_type);
+      filter = std::make_shared<Expander>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::equalizer)) {
       //   filter = std::make_shared<Equalizer>(
       //       log_tag, tags::schema::equalizer::id, path, tags::schema::equalizer::channel_id,
@@ -295,6 +295,10 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::exciter)) {
     return QVariant::fromValue(dynamic_cast<Exciter*>(p.get()));
+  }
+
+  if (pluginName.startsWith(tags::plugin_name::BaseName::expander)) {
+    return QVariant::fromValue(dynamic_cast<Expander*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::filter)) {

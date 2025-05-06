@@ -39,6 +39,7 @@ target_sources(easyeffects PRIVATE
     effects_base.cpp
     exciter.cpp
     exciter_preset.cpp
+    expander.cpp
     filter.cpp
     filter_preset.cpp
     fir_filter_bandpass.cpp

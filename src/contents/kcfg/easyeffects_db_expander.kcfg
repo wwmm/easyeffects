@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/expanderrc">
+        <parameter name="masterGroup" />
+        <parameter name="instanceIndex" />
+    </kcfgfile>
+    <group parentGroupName="$(masterGroup)" name="Expander#$(instanceIndex)">
+        <entry name="bypass" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="inputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="outputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="dry" type="Double">
+            <label></label>
+            <min>-80.01</min>
+            <max>20</max>
+            <default>-100</default>
+        </entry>
+        <entry name="wet" type="Double">
+            <label></label>
+            <min>-80.01</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+        <entry name="modeLabels" type="StringList">
+            <default>Downward,Upward</default>
+        </entry>
+        <entry name="mode" type="Int">
+            <label>Mode</label>
+            <default>1</default>
+        </entry>
+        <entry name="attack" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>2000</max>
+            <default>20</default>
+        </entry>
+        <entry name="release" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>5000</max>
+            <default>100</default>
+        </entry>
+        <entry name="releaseThreshold" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>0</max>
+            <default>-100</default>
+        </entry>
+        <entry name="threshold" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>0</max>
+            <default>-12</default>
+        </entry>
+        <entry name="ratio" type="Double">
+            <label></label>
+            <min>1</min>
+            <max>100</max>
+            <default>4</default>
+        </entry>
+        <entry name="knee" type="Double">
+            <label></label>
+            <min>-24</min>
+            <max>0</max>
+            <default>-6</default>
+        </entry>
+        <entry name="makeup" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>60</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainListen" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainTypeLabels" type="StringList">
+            <default>Feed-forward,Feed-back,External,Link</default>
+        </entry>
+        <entry name="sidechainType" type="Int">
+            <label>Sidechain Type</label>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainModeLabels" type="StringList">
+            <default>Peak,RMS,Low-Pass,SMA</default>
+        </entry>
+        <entry name="sidechainMode" type="Int">
+            <label>Sidechain Mode</label>
+            <default>0</default>
+        </entry>
+        <entry name="stereoSplit" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainSourceLabels" type="StringList">
+            <default>Middle,Side,Left,Right,Min,Max</default>
+        </entry>
+        <entry name="sidechainSource" type="Int">
+            <label>Sidechain Source</label>
+            <default>0</default>
+        </entry>
+        <entry name="stereoSplitSourceLabels" type="StringList">
+            <default>Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max</default>
+        </entry>
+        <entry name="stereoSplitSource" type="Int">
+            <label>Stereo Split Mode</label>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainPreamp" type="Double">
+            <label></label>
+            <min>-80.01</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainReactivity" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>250</max>
+            <default>10</default>
+        </entry>
+        <entry name="sidechainLookahead" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+        <entry name="hpfModeLabels" type="StringList">
+            <default>Off,12 dB/oct,24 dB/oct,36 dB/oct</default>
+        </entry>
+        <entry name="hpfMode" type="Int">
+            <label>High-pass Filter Mode</label>
+            <default>0</default>
+        </entry>
+        <entry name="hpfFrequency" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>10</default>
+        </entry>
+        <entry name="lpfModeLabels" type="StringList">
+            <default>Off,12 dB/oct,24 dB/oct,36 dB/oct</default>
+        </entry>
+        <entry name="lpfMode" type="Enum">
+            <label>Low-pass Filter Mode</label>
+            <default>0</default>
+        </entry>
+        <entry name="lpfFrequency" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>20000</default>
+        </entry>
+        <entry name="sidechainInputDevice" type="String">
+            <label></label>
+            <default code="true">""</default>
+        </entry>
+    </group>
+</kcfg>
