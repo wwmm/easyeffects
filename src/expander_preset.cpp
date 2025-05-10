@@ -17,20 +17,20 @@
  *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "compressor_preset.hpp"
+#include "expander_preset.hpp"
 #include <nlohmann/json_fwd.hpp>
 #include <string>
-#include "easyeffects_db_compressor.h"
+#include "easyeffects_db_expander.h"
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
 #include "presets_macros.hpp"
 
-CompressorPreset::CompressorPreset(PipelineType pipeline_type, const std::string& instance_name)
+ExpanderPreset::ExpanderPreset(PipelineType pipeline_type, const std::string& instance_name)
     : PluginPresetBase(pipeline_type, instance_name) {
-  settings = get_db_instance<db::Compressor>(pipeline_type);
+  settings = get_db_instance<db::Expander>(pipeline_type);
 }
 
-void CompressorPreset::save(nlohmann::json& json) {
+void ExpanderPreset::save(nlohmann::json& json) {
   json[section][instance_name]["bypass"] = settings->bypass();
 
   json[section][instance_name]["input-gain"] = settings->inputGain();
@@ -56,10 +56,6 @@ void CompressorPreset::save(nlohmann::json& json) {
   json[section][instance_name]["knee"] = settings->knee();
 
   json[section][instance_name]["makeup"] = settings->makeup();
-
-  json[section][instance_name]["boost-threshold"] = settings->boostThreshold();
-
-  json[section][instance_name]["boost-amount"] = settings->boostAmount();
 
   json[section][instance_name]["stereo-split"] = settings->stereoSplit();
 
@@ -90,7 +86,7 @@ void CompressorPreset::save(nlohmann::json& json) {
   json[section][instance_name]["lpf-frequency"] = settings->lpfFrequency();
 }
 
-void CompressorPreset::load(const nlohmann::json& json) {
+void ExpanderPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("bypass", Bypass);
   UPDATE_PROPERTY("input-gain", InputGain);
   UPDATE_PROPERTY("output-gain", OutputGain);
@@ -103,8 +99,6 @@ void CompressorPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("ratio", Ratio);
   UPDATE_PROPERTY("knee", Knee);
   UPDATE_PROPERTY("makeup", Makeup);
-  UPDATE_PROPERTY("boost-threshold", BoostThreshold);
-  UPDATE_PROPERTY("boost-amount", BoostAmount);
   UPDATE_PROPERTY("stereo-split", StereoSplit);
   UPDATE_PROPERTY("hpf-frequency", HpfFrequency);
   UPDATE_PROPERTY("lpf-frequency", LpfFrequency);

@@ -89,7 +89,7 @@
             <default>false</default>
         </entry>
         <entry name="sidechainTypeLabels" type="StringList">
-            <default>Feed-forward,Feed-back,External,Link</default>
+            <default>Internal,External,Link</default>
         </entry>
         <entry name="sidechainType" type="Int">
             <label>Sidechain Type</label>

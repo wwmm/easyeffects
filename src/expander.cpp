@@ -60,49 +60,31 @@ Expander::Expander(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
   connect(settings, &db::Expander::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
 
   BIND_LV2_PORT("em", mode, setMode, db::Expander::modeChanged);
-
-  //   lv2_wrapper->bind_key_enum<"sci", "sidechain-type">(settings);
-
+  BIND_LV2_PORT("sci", sidechainType, setSidechainType, db::Expander::sidechainTypeChanged);
   BIND_LV2_PORT("scm", sidechainMode, setSidechainMode, db::Expander::sidechainModeChanged);
   BIND_LV2_PORT("scs", sidechainSource, setSidechainSource, db::Expander::sidechainSourceChanged);
   BIND_LV2_PORT("sscs", stereoSplitSource, setStereoSplitSource, db::Expander::stereoSplitSourceChanged);
+  BIND_LV2_PORT("shpm", hpfMode, setHpfMode, db::Expander::hpfModeChanged);
+  BIND_LV2_PORT("slpm", lpfMode, setLpfMode, db::Expander::lpfModeChanged);
+  BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::Expander::stereoSplitChanged);
+  BIND_LV2_PORT("scl", sidechainListen, setSidechainListen, db::Expander::sidechainListenChanged);
+  BIND_LV2_PORT("at", attack, setAttack, db::Expander::attackChanged);
+  BIND_LV2_PORT("rt", release, setRelease, db::Expander::releaseChanged);
+  BIND_LV2_PORT("er", ratio, setRatio, db::Expander::ratioChanged);
+  BIND_LV2_PORT("scr", sidechainReactivity, setSidechainReactivity, db::Expander::sidechainReactivityChanged);
+  BIND_LV2_PORT("sla", sidechainLookahead, setSidechainLookahead, db::Expander::sidechainLookaheadChanged);
+  BIND_LV2_PORT_DB("al", threshold, setThreshold, db::Expander::thresholdChanged, false);
+  BIND_LV2_PORT_DB("kn", knee, setKnee, db::Expander::kneeChanged, false);
+  BIND_LV2_PORT_DB("mk", makeup, setMakeup, db::Expander::makeupChanged, false);
+  BIND_LV2_PORT("shpf", hpfFrequency, setHpfFrequency, db::Expander::hpfFrequencyChanged);
+  BIND_LV2_PORT("slpf", lpfFrequency, setLpfFrequency, db::Expander::lpfFrequencyChanged);
 
-  //   lv2_wrapper->bind_key_enum<"shpm", "hpf-mode">(settings);
+  // The following controls can assume -inf
 
-  //   lv2_wrapper->bind_key_enum<"slpm", "lpf-mode">(settings);
-
-  //   lv2_wrapper->bind_key_bool<"ssplit", "stereo-split">(settings);
-
-  //   lv2_wrapper->bind_key_bool<"scl", "sidechain-listen">(settings);
-
-  //   lv2_wrapper->bind_key_double<"at", "attack">(settings);
-
-  //   lv2_wrapper->bind_key_double<"rt", "release">(settings);
-
-  //   lv2_wrapper->bind_key_double<"er", "ratio">(settings);
-
-  //   lv2_wrapper->bind_key_double<"scr", "sidechain-reactivity">(settings);
-
-  //   lv2_wrapper->bind_key_double<"sla", "sidechain-lookahead">(settings);
-
-  //   lv2_wrapper->bind_key_double<"shpf", "hpf-frequency">(settings);
-
-  //   lv2_wrapper->bind_key_double<"slpf", "lpf-frequency">(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"al", "threshold">(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"kn", "knee">(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"mk", "makeup">(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"scp", "sidechain-preamp">(settings);
-
-  //   // The following controls can assume -inf
-  //   lv2_wrapper->bind_key_double_db<"rrl", "release-threshold", false>(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"cdr", "dry", false>(settings);
-
-  //   lv2_wrapper->bind_key_double_db<"cwt", "wet", false>(settings);
+  BIND_LV2_PORT_DB("rrl", releaseThreshold, setReleaseThreshold, db::Expander::releaseThresholdChanged, true);
+  BIND_LV2_PORT_DB("cdr", dry, setDry, db::Expander::dryChanged, true);
+  BIND_LV2_PORT_DB("cwt", wet, setWet, db::Expander::wetChanged, true);
+  BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Expander::sidechainPreampChanged, true);
 }
 
 Expander::~Expander() {
