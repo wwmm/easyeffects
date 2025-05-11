@@ -22,6 +22,7 @@
         <file alias="EeSpinBox.qml">contents/ui/EeSpinBox.qml</file>
         <file alias="EeSwitch.qml">contents/ui/EeSwitch.qml</file>
         <file alias="Exciter.qml">contents/ui/Exciter.qml</file>
+        <file alias="Expander.qml">contents/ui/Expander.qml</file>
         <file alias="Filter.qml">contents/ui/Filter.qml</file>
         <file alias="Gate.qml">contents/ui/Gate.qml</file>
         <file alias="LevelMeter.qml">contents/ui/LevelMeter.qml</file>

@@ -37,15 +37,15 @@
 
 Expander::Expander(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id)
     : PluginBase(tag,
-                 tags::plugin_name::BaseName::compressor,
+                 tags::plugin_name::BaseName::expander,
                  tags::plugin_package::Package::lsp,
                  instance_id,
                  pipe_manager,
                  pipe_type,
                  true),
-      settings(db::Manager::self().get_plugin_db<db::Expander>(
-          pipe_type,
-          tags::plugin_name::BaseName::compressor + "#" + instance_id)) {
+      settings(
+          db::Manager::self().get_plugin_db<db::Expander>(pipe_type,
+                                                          tags::plugin_name::BaseName::expander + "#" + instance_id)) {
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_expander_stereo");
 
   package_installed = lv2_wrapper->found_plugin;
