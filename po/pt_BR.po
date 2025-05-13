@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 14:42+0000\n"
-"PO-Revision-Date: 2024-12-21 05:36+0000\n"
+"PO-Revision-Date: 2025-05-13 04:01+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. Translators: This is a variable for the application name, don't translate!
@@ -2379,7 +2379,7 @@ msgstr "Efeitos"
 
 #: src/equalizer_ui.cpp:521
 msgid "Import APO Preset File"
-msgstr "Importar o Arquivo com as Predefinições do APO"
+msgstr "Importar arquivo predefinido APO"
 
 #: src/equalizer_ui.cpp:529
 msgid "APO Presets"
@@ -2401,7 +2401,7 @@ msgstr ""
 
 #: src/equalizer_ui.cpp:624
 msgid "Export EqualizerAPO Preset File"
-msgstr "Importar o Arquivo com as Predefinições do APO"
+msgstr "Exportar arquivo predefinido do Equalizepopo"
 
 #: src/equalizer_ui.cpp:625
 msgid "Save"
