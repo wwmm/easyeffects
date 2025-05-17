@@ -36,6 +36,7 @@
 #include "easyeffects_db_crossfeed.h"
 #include "easyeffects_db_crystalizer.h"
 #include "easyeffects_db_delay.h"
+#include "easyeffects_db_echo_canceller.h"
 #include "easyeffects_db_exciter.h"
 #include "easyeffects_db_expander.h"
 #include "easyeffects_db_filter.h"
@@ -177,6 +178,10 @@ void Manager::create_plugin_db(const QString& parentGroup,
       } else if (name.startsWith(tags::plugin_name::BaseName::delay)) {
         plugins_map[tags::plugin_name::BaseName::delay + "#" + id] =
             QVariant::fromValue(new db::Delay(parentGroup, id));
+        //
+      } else if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
+        plugins_map[tags::plugin_name::BaseName::echoCanceller + "#" + id] =
+            QVariant::fromValue(new db::EchoCanceller(parentGroup, id));
         //
       } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
         plugins_map[tags::plugin_name::BaseName::exciter + "#" + id] =

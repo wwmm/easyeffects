@@ -45,6 +45,7 @@
 #include "crystalizer.hpp"
 #include "db_manager.hpp"
 #include "delay.hpp"
+#include "echo_canceller.hpp"
 #include "exciter.hpp"
 #include "expander.hpp"
 #include "filter.hpp"
@@ -69,7 +70,6 @@
 
 // #include "deepfilternet.hpp"
 // #include "deesser.hpp"
-// #include "echo_canceller.hpp"
 // #include "equalizer.hpp"
 // #include "multiband_compressor.hpp"
 // #include "multiband_gate.hpp"
@@ -151,7 +151,7 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::delay)) {
       filter = std::make_shared<Delay>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
-      //   filter = std::make_shared<EchoCanceller>(log_tag, tags::schema::echo_canceller::id, path, pm, pipeline_type);
+      filter = std::make_shared<EchoCanceller>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
       filter = std::make_shared<Exciter>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::expander)) {
@@ -291,6 +291,10 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::delay)) {
     return QVariant::fromValue(dynamic_cast<Delay*>(p.get()));
+  }
+
+  if (pluginName.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
+    return QVariant::fromValue(dynamic_cast<EchoCanceller*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::exciter)) {

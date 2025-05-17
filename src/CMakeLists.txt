@@ -36,6 +36,7 @@ target_sources(easyeffects PRIVATE
     db_manager.cpp
     delay.cpp
     delay_preset.cpp
+    echo_canceller.cpp
     effects_base.cpp
     exciter.cpp
     exciter_preset.cpp
