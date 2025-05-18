@@ -54,6 +54,7 @@
 #include "easyeffects_db.h"
 #include "easyeffects_db_streaminputs.h"
 #include "easyeffects_db_streamoutputs.h"
+#include "echo_canceller_preset.hpp"
 #include "exciter_preset.hpp"
 #include "expander_preset.hpp"
 #include "filter_preset.hpp"
@@ -1443,7 +1444,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
-    // return std::make_unique<EchoCancellerPreset>(pipeline_type, filter_name.toStdString());
+    return std::make_unique<EchoCancellerPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::equalizer)) {
