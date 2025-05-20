@@ -5,9 +5,81 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Speech Processor</title>
-    <p>This plugin allows EasyEffects to use the Speex preprocessor to attenuate disturbing background noises from a signal.</p>
-    <p>Compared to Noise Reduction which uses RNNoise to suppress noises, Speech Processor has the benefit of using less computational resources, at the cost of sacrificing noise suppression quality.</p>
-    <p>For more information on noise suppression in general, refer to the manual page on Noise Reduction.</p>
+    <p> The <strong>Speech Processor</strong> effect in EasyEffects is powered by the <strong>SpeexDSP</strong> library, a lightweight and efficient audio processing toolkit originally derived from the Speex codec project. The Speech Processor provides real-time voice enhancement features suitable for telephony, voice chat, or low-resource environments. </p>
+    <section>
+        <title>State Settings</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Noise Suppression</em>
+                </title>
+                <p>Reduces steady background noise such as fan hum or air conditioning. This feature uses spectral subtraction algorithms implemented by SpeexDSP to attenuate non-speech components while preserving intelligibility.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Automatic Gain Control (AGC)</em>
+                </title>
+                <p>Automatically adjusts the input gain to maintain consistent voice volume, regardless of the speaker’s distance or tone. This ensures a stable output level for speech clarity.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Voice Activity Detection (VAD)</em>
+                </title>
+                <p>Detects whether the incoming signal contains speech. When inactive (i.e., during silence or noise), processing is minimized to save resources and reduce unwanted output.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Dereverberation</em>
+                </title>
+                <p> Reduces reverberation caused by reflective environments (e.g., tiled rooms or large halls). This improves speech clarity by suppressing echo tails.</p>
+            </item>
+        </terms>
+    </section>
+    <section>
+        <title>Voice Activity Probability Settings</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Start</em>
+                </title>
+                <p>Sets the threshold for transitioning from non-speech to speech. A higher value makes detection more conservative.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Continue</em>
+                </title>
+                <p>Sets the threshold for remaining in the speech-detected state. A higher value reduces the chance of speech drop-out.</p>
+            </item>
+        </terms>
+    </section>
+    <section>
+        <title>Noise Suppression Settings</title>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Level</em>
+                </title>
+                <p>Defines how aggressively noise suppression is applied. Lower (more negative) values provide stronger noise removal but may affect voice quality.</p>
+            </item>
+        </terms>
+    </section>
+    <section>
+        <title>Summary</title>
+        <p> The Speech Processor is a <strong>lightweight and versatile solution</strong> for real-time speech enhancement, especially suited for: </p>
+        <list>
+            <item>
+                <p>Voice calls</p>
+            </item>
+            <item>
+                <p>Online meetings</p>
+            </item>
+            <item>
+                <p>Embedded systems or low-power devices</p>
+            </item>
+        </list>
+        <p> Its combination of <strong>noise suppression</strong>, <strong>AGC</strong>, <strong>VAD</strong>, and <strong>dereverberation</strong> provides a practical and efficient toolchain for improving voice intelligibility in challenging environments. </p>
+
+    </section>
     <section>
         <title>References</title>
         <list>
