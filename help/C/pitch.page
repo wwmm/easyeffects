@@ -5,119 +5,61 @@
         <link type="guide" xref="index#plugins" />
     </info>
     <title>Pitch</title>
-    <p>Pitch shifting is a sound recording technique in which the original Pitch of a sound is raised or lowered. Easy Effects uses the pitch shifter from SoundTouch.</p>
-    <terms>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Mode</em>
-            </title>
-            <p>Controls the method used for pitch shifting.</p>
-            <list>
-                <item>
-                    <p>
-                        <em style="strong">High Speed</em> - Uses a method with a CPU cost that is relatively moderate and predictable. </p>
-                </item>
-                <item>
-                    <p>
-                        <em style="strong">High Quality</em> - Uses the highest quality method for pitch shifting. This CPU cost is approximately proportional to the required frequency shift. </p>
-                </item>
-                <item>
-                    <p>
-                        <em style="strong">High Consistency</em> - Uses the method that gives greatest consistency when used to create small variations in pitch around the 1.0-ratio level. Unlike the previous two options, this avoids discontinuities when moving across the 1.0 pitch scale. It also consumes more CPU than the others in the case where the pitch scale is exactly 1.0. </p>
-                </item>
-            </list>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Formant</em>
-            </title>
-            <p>Controls the handling of formant shape (spectral envelope) when pitch-shifting.</p>
-            <list>
-                <item>
-                    <p>
-                        <em style="strong">Shifted</em> - Applies no special formant processing. The spectral envelope will be pitch shifted as normal. </p>
-                </item>
-                <item>
-                    <p>
-                        <em style="strong">Preserved</em> - Preserves the spectral envelope of the unshifted signal. This permits shifting the note frequency without so substantially affecting the perceived pitch profile of the voice or instrument. </p>
-                </item>
-            </list>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Transients</em>
-            </title>
-            <p>Controls the component frequency phase-reset mechanism that may be used at transient points to provide clarity and realism to percussion and other significant transient sounds.</p>
-            <list>
-                <item>
-                    <p>
-                        <em style="strong">Crisp</em> - Resets component phases at the peak of each transient (the start of a significant note or percussive event). This usually results in a clear-sounding output, but it is not always consistent, and may cause interruptions in stable sounds present at the same time as transient events. </p>
-                </item>
-                <item>
-                    <p>
-                        <em style="strong">Mixed</em> - Resets component phases at the peak of each transient, outside a frequency range typical of musical fundamental frequencies. The results may be more regular for mixed stable and percussive notes than Crisp option, but with a "phasier" sound. The balance may sound very good for certain types of music and fairly bad for others. </p>
-                </item>
-                <item>
-                    <p>
-                        <em style="strong">Smooth</em> - Does not reset component phases at any point. The results will be smoother and more regular but may be less clear than the other transient options. </p>
-                </item>
-            </list>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Detector</em>
-            </title>
-            <p>Controls the type of transient detector used.</p>
-            <list>
-                <item>
-                    <p>
-                        <em style="strong">Compound</em> - Uses a general purpose transient detector which is likely to be good for most situations. </p>
-                </item>
-                <item>
-                    <p>
-                        <em style="strong">Percussive</em> - Detects percussive transients. </p>
-                </item>
-                <item>
-                    <p>
-                        <em style="strong">Soft</em> - Uses an onset detector with less of a bias toward percussive transients. This may give better results with certain material (e.g. relatively monophonic piano music). </p>
-                </item>
-            </list>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Phase</em>
-            </title>
-            <p>Controls the adjustment of component frequency phases from one analysis window to the next during non-transient segments.</p>
-            <list>
-                <item>
-                    <p>
-                        <em style="strong">Laminar</em> - Adjusts phases when stretching in such a way as to try to retain the continuity of phase relationships between adjacent frequency bins whose phases are behaving in similar ways. This should give good results in most situations. </p>
-                </item>
-                <item>
-                    <p>
-                        <em style="strong">Independent</em> - Adjusts the phase in each frequency bin independently from its neighbours. This usually results in a slightly softer, phasier sound. </p>
-                </item>
-            </list>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Cents</em>
-            </title>
-            <p>Number of cents the Pitch will be increased or decreased.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Semitones</em>
-            </title>
-            <p>Number of semitones the Pitch will be increased or decreased.</p>
-        </item>
-        <item>
-            <title>
-                <em style="strong" its:withinText="nested">Octaves</em>
-            </title>
-            <p>Number of octaves the Pitch will be increased or decreased.</p>
-        </item>
-    </terms>
+    <p> Pitch shifting is a technique used to change the original frequency (pitch) of a sound, either raising or lowering it. In EasyEffects, pitch shifting is implemented using the <strong>SoundTouch</strong> library. </p>
+    <section>
+        <title>Quality Settings</title>
+        <terms> </terms>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Quick Seek</em>
+                </title>
+                <p>Enables a fast-seeking algorithm that improves performance at the cost of slightly reduced audio quality. Useful for real-time processing when CPU resources are limited.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Anti-Aliasing</em>
+                </title>
+                <p>Activates filtering to suppress aliasing artifacts that can occur during pitch shifting. Recommended for preserving sound clarity.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Sequence Length (ms)</em>
+                </title>
+                <p>Sets the length of the analysis window. A longer window improves low-frequency resolution but adds processing delay.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Overlap Length (ms)</em>
+                </title>
+                <p> Determines how much adjacent audio frames overlap. More overlap results in smoother transitions and reduces artifacts between frames.</p>
+            </item>
+        </terms>
+    </section>
+    <section>
+        <title>Pitch Settings</title>
+        <terms> </terms>
+        <terms>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Semitone</em>
+                </title>
+                <p>Adjusts the pitch up or down in semitone steps. One octave equals 12 semitones. Positive values raise the pitch, negative values lower it.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Tempo Difference (%)</em>
+                </title>
+                <p>Changes the playback speed (tempo) without affecting the pitch. 100% is the original speed; higher values increase tempo, lower values slow it down.</p>
+            </item>
+            <item>
+                <title>
+                    <em style="strong" its:withinText="nested">Rate Difference (%)</em>
+                </title>
+                <p>Alters both the pitch and speed proportionally, similar to speeding up or slowing down an analog tape.</p>
+            </item>
+        </terms>
+    </section>
     <section>
         <title>References</title>
         <list>
