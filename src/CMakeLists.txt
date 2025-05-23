@@ -36,6 +36,7 @@ target_sources(easyeffects PRIVATE
     db_manager.cpp
     delay.cpp
     delay_preset.cpp
+    deesser.cpp
     echo_canceller.cpp
     echo_canceller_preset.cpp
     effects_base.cpp

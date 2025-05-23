@@ -35,6 +35,7 @@
 #include "easyeffects_db_convolver.h"
 #include "easyeffects_db_crossfeed.h"
 #include "easyeffects_db_crystalizer.h"
+#include "easyeffects_db_deesser.h"
 #include "easyeffects_db_delay.h"
 #include "easyeffects_db_echo_canceller.h"
 #include "easyeffects_db_exciter.h"
@@ -178,6 +179,10 @@ void Manager::create_plugin_db(const QString& parentGroup,
       } else if (name.startsWith(tags::plugin_name::BaseName::delay)) {
         plugins_map[tags::plugin_name::BaseName::delay + "#" + id] =
             QVariant::fromValue(new db::Delay(parentGroup, id));
+        //
+      } else if (name.startsWith(tags::plugin_name::BaseName::deesser)) {
+        plugins_map[tags::plugin_name::BaseName::deesser + "#" + id] =
+            QVariant::fromValue(new db::Deesser(parentGroup, id));
         //
       } else if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
         plugins_map[tags::plugin_name::BaseName::echoCanceller + "#" + id] =
