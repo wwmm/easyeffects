@@ -50,6 +50,7 @@
 #include "convolver_preset.hpp"
 #include "crossfeed_preset.hpp"
 #include "crystalizer_preset.hpp"
+#include "deesser_preset.hpp"
 #include "delay_preset.hpp"
 #include "easyeffects_db.h"
 #include "easyeffects_db_streaminputs.h"
@@ -1432,7 +1433,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::deesser)) {
-    // return std::make_unique<DeesserPreset>(pipeline_type, filter_name.toStdString());
+    return std::make_unique<DeesserPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::delay)) {
