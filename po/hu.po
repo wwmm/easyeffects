@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 14:42+0000\n"
-"PO-Revision-Date: 2024-04-03 16:48+0000\n"
-"Last-Translator: Noel <chatenium@gmail.com>\n"
+"PO-Revision-Date: 2025-05-27 13:01+0000\n"
+"Last-Translator: Buddhalint <gamemastercsatornaja@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/easyeffects/"
 "main/hu/>\n"
 "Language: hu\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -46,15 +46,15 @@ msgstr "Engedélyezés"
 
 #: data/ui/app_info.ui:225
 msgid "Excluded App List: Add/remove this application"
-msgstr ""
+msgstr "Kivont Alkalmazások Listája: Alkalmazás hozzáadása/kivétele"
 
 #: data/ui/app_info.ui:226
 msgid "Exclude"
-msgstr ""
+msgstr "Kivonás"
 
 #: data/ui/app_info.ui:247 data/ui/app_info.ui:249
 msgid "Mute Application"
-msgstr ""
+msgstr "Alkalmazás némítása"
 
 #: data/ui/app_info.ui:269
 msgid "Change the volume of this application"
@@ -197,15 +197,16 @@ msgstr "Hangerő"
 
 #: data/ui/autogain.ui:270 data/ui/level_meter.ui:181
 msgid "Relative"
-msgstr ""
+msgstr "Relatív"
 
 #: data/ui/autogain.ui:307 data/ui/level_meter.ui:217
 msgid "Range"
 msgstr ""
 
 #: data/ui/autogain.ui:383
+#, fuzzy
 msgid "Output Gain"
-msgstr ""
+msgstr "Kimeneti erősítés"
 
 #: data/ui/autogain.ui:430 data/ui/bass_enhancer.ui:258
 #: data/ui/bass_loudness.ui:107 data/ui/compressor.ui:650
@@ -221,7 +222,7 @@ msgstr ""
 #: data/ui/rnnoise.ui:273 data/ui/speex.ui:187 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:617
 msgid "Input"
-msgstr ""
+msgstr "Bemenet"
 
 #: data/ui/autogain.ui:449 data/ui/bass_enhancer.ui:277
 #: data/ui/bass_loudness.ui:126 data/ui/compressor.ui:1158
@@ -337,15 +338,15 @@ msgstr "Alkalmazás neve"
 
 #: data/ui/blocklist_menu.ui:42
 msgid "Add to Excluded Applications"
-msgstr ""
+msgstr "Kivont alkalmazásokhoz adás"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Excluded Applications List"
-msgstr ""
+msgstr "Kivont alkalmazások listája"
 
 #: data/ui/blocklist_menu.ui:99
 msgid "Show Excluded Applications"
-msgstr ""
+msgstr "Kivont alkalmazások mutatása"
 
 #: data/ui/compressor.ui:25 data/ui/delay.ui:25 data/ui/equalizer.ui:279
 #: data/ui/expander.ui:25 data/ui/filter.ui:25 data/ui/gate.ui:25
@@ -402,7 +403,7 @@ msgstr ""
 #: data/ui/compressor.ui:190 data/ui/expander.ui:111
 #: data/ui/multiband_compressor_band.ui:169
 msgid "Time"
-msgstr ""
+msgstr "Idő"
 
 #: data/ui/compressor.ui:200 data/ui/deesser.ui:301 data/ui/expander.ui:121
 #: data/ui/gate.ui:161 data/ui/gate.ui:253 data/ui/limiter.ui:364
@@ -410,7 +411,7 @@ msgstr ""
 #: data/ui/multiband_gate_band.ui:234 data/ui/multiband_gate_band.ui:326
 #: data/ui/rnnoise.ui:64
 msgid "Threshold"
-msgstr ""
+msgstr "Küszöb"
 
 #: data/ui/compressor.ui:225 data/ui/expander.ui:146
 #: data/ui/multiband_compressor_band.ui:224
@@ -442,7 +443,7 @@ msgstr ""
 #: data/ui/compressor.ui:308 data/ui/deesser.ui:334 data/ui/expander.ui:229
 #: data/ui/multiband_compressor_band.ui:308
 msgid "Ratio"
-msgstr ""
+msgstr "Arány"
 
 #: data/ui/compressor.ui:344 data/ui/expander.ui:265 data/ui/limiter.ui:572
 #: data/ui/multiband_compressor_band.ui:345
@@ -487,7 +488,7 @@ msgstr ""
 #: data/ui/compressor.ui:532 data/ui/expander.ui:453 data/ui/gate.ui:666
 #: data/ui/multiband_compressor_band.ui:455 data/ui/multiband_gate_band.ui:513
 msgid "Source"
-msgstr ""
+msgstr "Forrás"
 
 #: data/ui/compressor.ui:544 data/ui/expander.ui:465 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:536
@@ -504,14 +505,14 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:480 data/ui/multiband_gate_band.ui:538
 #: data/ui/pipe_manager_box.ui:581 data/ui/stereo_tools.ui:163
 msgid "Left"
-msgstr ""
+msgstr "Bal"
 
 #: data/ui/compressor.ui:547 data/ui/delay.ui:125 data/ui/equalizer.ui:242
 #: data/ui/expander.ui:468 data/ui/gate.ui:681 data/ui/level_meter.ui:42
 #: data/ui/multiband_compressor_band.ui:481 data/ui/multiband_gate_band.ui:539
 #: data/ui/pipe_manager_box.ui:592 data/ui/stereo_tools.ui:218
 msgid "Right"
-msgstr ""
+msgstr "Jobb"
 
 #: data/ui/compressor.ui:548 data/ui/compressor.ui:571 data/ui/expander.ui:469
 #: data/ui/expander.ui:492 data/ui/gate.ui:682 data/ui/gate.ui:705
@@ -519,7 +520,7 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:540
 #: data/ui/multiband_gate_band.ui:575
 msgid "Min"
-msgstr ""
+msgstr "Min"
 
 #: data/ui/compressor.ui:549 data/ui/compressor.ui:572 data/ui/expander.ui:470
 #: data/ui/expander.ui:493 data/ui/gate.ui:683 data/ui/gate.ui:706
@@ -527,7 +528,7 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:518 data/ui/multiband_gate_band.ui:541
 #: data/ui/multiband_gate_band.ui:576
 msgid "Max"
-msgstr ""
+msgstr "Max"
 
 #: data/ui/compressor.ui:558 data/ui/expander.ui:479 data/ui/gate.ui:692
 #: data/ui/multiband_compressor.ui:77 data/ui/multiband_compressor_band.ui:492
@@ -538,22 +539,23 @@ msgstr ""
 #: data/ui/compressor.ui:567 data/ui/expander.ui:488 data/ui/gate.ui:701
 #: data/ui/multiband_compressor_band.ui:513 data/ui/multiband_gate_band.ui:571
 msgid "Left/Right"
-msgstr ""
+msgstr "Bal/Jobb"
 
 #: data/ui/compressor.ui:568 data/ui/expander.ui:489 data/ui/gate.ui:702
 #: data/ui/multiband_compressor_band.ui:514 data/ui/multiband_gate_band.ui:572
 msgid "Right/Left"
-msgstr ""
+msgstr "Jobb/Bal"
 
 #: data/ui/compressor.ui:569 data/ui/expander.ui:490 data/ui/gate.ui:703
 #: data/ui/multiband_compressor_band.ui:515 data/ui/multiband_gate_band.ui:573
+#, fuzzy
 msgid "Mid/Side"
-msgstr ""
+msgstr "Közép/Oldal"
 
 #: data/ui/compressor.ui:570 data/ui/expander.ui:491 data/ui/gate.ui:704
 #: data/ui/multiband_compressor_band.ui:516 data/ui/multiband_gate_band.ui:574
 msgid "Side/Mid"
-msgstr ""
+msgstr "Oldal/Közép"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:502 data/ui/gate.ui:715
 #: data/ui/multiband_compressor_band.ui:527 data/ui/multiband_gate_band.ui:585
@@ -570,7 +572,7 @@ msgstr ""
 #: data/ui/gate.ui:742 data/ui/multiband_compressor_band.ui:552
 #: data/ui/multiband_gate_band.ui:610
 msgid "RMS"
-msgstr ""
+msgstr "RMS"
 
 #: data/ui/compressor.ui:609 data/ui/expander.ui:530 data/ui/gate.ui:743
 #: data/ui/multiband_compressor_band.ui:553 data/ui/multiband_gate_band.ui:611
@@ -594,7 +596,7 @@ msgstr ""
 #: data/ui/compressor.ui:662 data/ui/equalizer_band.ui:108
 #: data/ui/expander.ui:583 data/ui/filter.ui:42 data/ui/gate.ui:796
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
 #: data/ui/compressor.ui:688
 msgid "Feed-forward"
@@ -615,7 +617,7 @@ msgstr ""
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
 #: src/plugins_box.cpp:806
 msgid "Input Device"
-msgstr ""
+msgstr "Bemeneti eszköz"
 
 #: data/ui/compressor.ui:734 data/ui/expander.ui:654 data/ui/gate.ui:867
 msgid "PreAmplification"
@@ -645,27 +647,27 @@ msgstr ""
 #: data/ui/expander.ui:804 data/ui/filter.ui:166 data/ui/gate.ui:1017
 #: data/ui/pipe_manager_box.ui:638
 msgid "Frequency"
-msgstr ""
+msgstr "Frekvencia"
 
 #: data/ui/compressor.ui:899 data/ui/compressor.ui:958 data/ui/expander.ui:819
 #: data/ui/expander.ui:878 data/ui/gate.ui:1032 data/ui/gate.ui:1091
 msgid "Off"
-msgstr ""
+msgstr "Kikapcs"
 
 #: data/ui/compressor.ui:900 data/ui/compressor.ui:959 data/ui/expander.ui:820
 #: data/ui/expander.ui:879 data/ui/gate.ui:1033 data/ui/gate.ui:1092
 msgid "12 dB/oct"
-msgstr ""
+msgstr "12 dB/okt"
 
 #: data/ui/compressor.ui:901 data/ui/compressor.ui:960 data/ui/expander.ui:821
 #: data/ui/expander.ui:880 data/ui/gate.ui:1034 data/ui/gate.ui:1093
 msgid "24 dB/oct"
-msgstr ""
+msgstr "24 db/okt"
 
 #: data/ui/compressor.ui:902 data/ui/compressor.ui:961 data/ui/expander.ui:822
 #: data/ui/expander.ui:881 data/ui/gate.ui:1035 data/ui/gate.ui:1094
 msgid "36 dB/oct"
-msgstr ""
+msgstr "36 dB/okt"
 
 #: data/ui/compressor.ui:911 data/ui/expander.ui:831 data/ui/gate.ui:1044
 msgid "High-Pass Filter Mode"
@@ -687,8 +689,9 @@ msgstr ""
 
 #: data/ui/compressor.ui:1021 data/ui/equalizer_band.ui:235
 #: data/ui/expander.ui:941 data/ui/filter.ui:218
+#, fuzzy
 msgid "Gain"
-msgstr ""
+msgstr "Erősítés"
 
 #: data/ui/compressor.ui:1048 data/ui/expander.ui:968 data/ui/gate.ui:1181
 msgid "Envelope"
@@ -701,28 +704,30 @@ msgstr ""
 
 #: data/ui/convolver.ui:40
 msgid "L"
-msgstr ""
+msgstr "B"
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:584
+#, fuzzy
 msgid "Left Channel"
-msgstr ""
+msgstr "Bal Csatorna"
 
 #: data/ui/convolver.ui:53
 msgid "R"
-msgstr ""
+msgstr "J"
 
 #: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:595
+#, fuzzy
 msgid "Right Channel"
-msgstr ""
+msgstr "Jobb Csatorna"
 
 #: data/ui/convolver.ui:71
 msgid "Impulses"
-msgstr ""
+msgstr "Impulzusok"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "Kombinálás"
 
 #: data/ui/convolver.ui:86
 msgid "Stereo Width"
@@ -730,19 +735,21 @@ msgstr ""
 
 #: data/ui/convolver.ui:113 src/plugin_base.cpp:235
 msgid "Spectrum"
-msgstr ""
+msgstr "Spektrum"
 
 #: data/ui/convolver.ui:121
 msgid "Log Scale"
 msgstr ""
 
 #: data/ui/convolver.ui:131 src/tags_plugin_name.cpp:38
+#, fuzzy
 msgid "Autogain"
-msgstr ""
+msgstr "Auto-erősítés"
 
 #: data/ui/convolver.ui:147
+#, fuzzy
 msgid "Rate"
-msgstr ""
+msgstr "Ráta"
 
 #: data/ui/convolver.ui:168
 msgid "Samples"
@@ -750,7 +757,7 @@ msgstr ""
 
 #: data/ui/convolver.ui:189
 msgid "Duration"
-msgstr ""
+msgstr "Időtartam"
 
 #: data/ui/convolver_menu_combine.ui:15
 msgid "Combine Impulse Responses"
@@ -766,7 +773,7 @@ msgstr ""
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
-msgstr ""
+msgstr "Kimeneti fájl neve"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
@@ -779,7 +786,7 @@ msgstr ""
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:84 data/ui/presets_menu.ui:206
 msgid "Search"
-msgstr ""
+msgstr "Keresés"
 
 #: data/ui/convolver_menu_impulses.ui:27
 msgid "Search Impulse File"
@@ -791,7 +798,7 @@ msgstr ""
 
 #: data/ui/crossfeed.ui:39
 msgid "Default"
-msgstr ""
+msgstr "Alap"
 
 #: data/ui/crossfeed.ui:56
 msgid "Cutoff"
@@ -836,8 +843,9 @@ msgid "Post Filter Beta"
 msgstr ""
 
 #: data/ui/deesser.ui:40
+#, fuzzy
 msgid "Detection"
-msgstr ""
+msgstr "Észlelés"
 
 #: data/ui/deesser.ui:77
 msgid "Wide"
@@ -893,16 +901,16 @@ msgstr ""
 
 #: data/ui/deesser.ui:577
 msgid "Detected"
-msgstr ""
+msgstr "Észlelve"
 
 #: data/ui/deesser.ui:607 data/ui/gate.ui:425 data/ui/gate.ui:1154
 #: data/ui/maximizer.ui:249 data/ui/multiband_gate_band.ui:406
 msgid "Reduction"
-msgstr ""
+msgstr "Redukció"
 
 #: data/ui/delay.ui:41 data/ui/delay.ui:128 src/tags_plugin_name.cpp:47
 msgid "Delay"
-msgstr ""
+msgstr "Késleltetés"
 
 #: data/ui/delay.ui:107 data/ui/delay.ui:194 data/ui/stereo_tools.ui:182
 #: data/ui/stereo_tools.ui:207
@@ -923,7 +931,7 @@ msgstr ""
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
-msgstr ""
+msgstr "Kivont alkalmazások"
 
 #: data/ui/effects_box.ui:120
 msgid "Enable/disable input monitoring"
@@ -936,7 +944,7 @@ msgstr ""
 #: data/ui/equalizer.ui:93 data/ui/filter.ui:270 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:391
 msgid "Balance"
-msgstr ""
+msgstr "Egyensúly"
 
 #: data/ui/equalizer.ui:125
 msgid "Pitch Left"
@@ -964,11 +972,11 @@ msgstr ""
 
 #: data/ui/equalizer.ui:325 src/presets_menu.cpp:144
 msgid "Import Preset"
-msgstr ""
+msgstr "Profil importálás"
 
 #: data/ui/equalizer.ui:359
 msgid "Export Preset"
-msgstr ""
+msgstr "Profil exportálás"
 
 #: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
 msgid "Slope"
@@ -977,15 +985,15 @@ msgstr ""
 #: data/ui/equalizer_band.ui:173 data/ui/multiband_compressor_band.ui:149
 #: data/ui/multiband_gate_band.ui:118
 msgid "Solo"
-msgstr ""
+msgstr "Solo"
 
 #: data/ui/equalizer_band.ui:270 data/ui/filter.ui:244 data/ui/pitch.ui:28
 msgid "Quality"
-msgstr ""
+msgstr "Minőség"
 
 #: data/ui/equalizer_band.ui:300 data/ui/filter.ui:192
 msgid "Width"
-msgstr ""
+msgstr "Szélesség"
 
 #: data/ui/exciter.ui:208
 msgid "Ceil"
@@ -1009,15 +1017,15 @@ msgstr ""
 
 #: data/ui/factory_clients_listview.ui:72
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:100
 msgid "Access"
-msgstr ""
+msgstr "Hozzáférés"
 
 #: data/ui/factory_modules_listview.ui:72
 msgid "Description"
-msgstr ""
+msgstr "Leírás"
 
 #: data/ui/factory_rnnoise_listview.ui:24
 msgid "Remove this model file"
@@ -1033,7 +1041,7 @@ msgstr ""
 
 #: data/ui/filter.ui:54
 msgid "Bell"
-msgstr ""
+msgstr "Csengő"
 
 #: data/ui/filter.ui:55
 msgid "Band-Pass"
@@ -1045,7 +1053,7 @@ msgstr ""
 
 #: data/ui/filter.ui:57
 msgid "Resonance"
-msgstr ""
+msgstr "Rezonancia"
 
 #: data/ui/filter.ui:58
 msgid "Ladder-Pass"
@@ -1066,7 +1074,7 @@ msgstr ""
 #: data/ui/filter.ui:162 data/ui/multiband_compressor_band.ui:570
 #: data/ui/multiband_gate_band.ui:628 src/tags_plugin_name.cpp:52
 msgid "Filter"
-msgstr ""
+msgstr "Szűrő"
 
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:53
 msgid "Gate"
@@ -1083,7 +1091,7 @@ msgstr ""
 
 #: data/ui/gate.ui:330
 msgid "Mix"
-msgstr ""
+msgstr "Mix"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
@@ -1159,8 +1167,9 @@ msgstr ""
 
 #: data/ui/limiter.ui:125 data/ui/multiband_compressor.ui:56
 #: data/ui/multiband_gate.ui:56
+#, fuzzy
 msgid "None"
-msgstr ""
+msgstr "Semmi"
 
 #: data/ui/limiter.ui:126
 msgid "Half x2(2L)"
@@ -1828,7 +1837,7 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:92
 msgid "Height"
-msgstr ""
+msgstr "Magasság"
 
 #: data/ui/preferences_spectrum.ui:114
 msgid "Line Width"
@@ -1836,23 +1845,24 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:136
 msgid "Fill"
-msgstr ""
+msgstr "Kitöltés"
 
 #: data/ui/preferences_spectrum.ui:148
 msgid "Show Bars Border"
 msgstr ""
 
 #: data/ui/preferences_spectrum.ui:160
+#, fuzzy
 msgid "Rounded Corners"
-msgstr ""
+msgstr "Kerekített sarkok"
 
 #: data/ui/preferences_spectrum.ui:172
 msgid "Dynamic Scale"
-msgstr ""
+msgstr "Dinamikus méret"
 
 #: data/ui/preferences_spectrum.ui:186
 msgid "Color"
-msgstr ""
+msgstr "Szín"
 
 #: data/ui/preferences_spectrum.ui:189
 msgid "Lines and Bars"
@@ -1868,11 +1878,11 @@ msgstr ""
 
 #: data/ui/preferences_spectrum.ui:230
 msgid "Minimum"
-msgstr ""
+msgstr "Minimum"
 
 #: data/ui/preferences_spectrum.ui:252
 msgid "Maximum"
-msgstr ""
+msgstr "Maximum"
 
 #: data/ui/preset_row.ui:38 src/convolver_menu_impulses.cpp:225
 msgid "Load"
@@ -1891,8 +1901,9 @@ msgid "Remove this preset file"
 msgstr ""
 
 #: data/ui/preset_community_row.ui:55
+#, fuzzy
 msgid "Try"
-msgstr ""
+msgstr "Próba"
 
 #: data/ui/preset_community_row.ui:56
 msgid "Try this community preset"
@@ -1900,15 +1911,16 @@ msgstr ""
 
 #: data/ui/preset_community_row.ui:65
 msgid "Import"
-msgstr ""
+msgstr "Importálás"
 
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
 msgstr ""
 
 #: data/ui/presets_menu.ui:26
+#, fuzzy
 msgid "Local"
-msgstr ""
+msgstr "Helyi"
 
 #: data/ui/presets_menu.ui:48
 msgid "New Preset Name"
@@ -1932,7 +1944,7 @@ msgstr ""
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
-msgstr ""
+msgstr "Közösség"
 
 #: data/ui/presets_menu.ui:208
 msgid "Search Community Preset"
@@ -1954,7 +1966,7 @@ msgstr ""
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
-msgstr ""
+msgstr "Frissítés"
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
@@ -1970,15 +1982,15 @@ msgstr ""
 
 #: data/ui/reverb.ui:82
 msgid "Small"
-msgstr ""
+msgstr "Kicsi"
 
 #: data/ui/reverb.ui:83
 msgid "Medium"
-msgstr ""
+msgstr "Közepes"
 
 #: data/ui/reverb.ui:84
 msgid "Large"
-msgstr ""
+msgstr "Nagy"
 
 #: data/ui/reverb.ui:85
 msgid "Tunnel"
@@ -1990,7 +2002,7 @@ msgstr ""
 
 #: data/ui/reverb.ui:87
 msgid "Experimental"
-msgstr ""
+msgstr "Kísérleti"
 
 #: data/ui/reverb.ui:106
 msgid "Diffusion"
@@ -2022,27 +2034,30 @@ msgstr ""
 
 #: data/ui/reverb.ui:588
 msgid "Room"
-msgstr ""
+msgstr "Szoba"
 
 #: data/ui/reverb.ui:595
 msgid "Large Empty Hall"
-msgstr ""
+msgstr "Nagy üres folyosó"
 
 #: data/ui/reverb.ui:608
+#, fuzzy
 msgid "Disco"
-msgstr ""
+msgstr "Diszkó"
 
 #: data/ui/reverb.ui:615
+#, fuzzy
 msgid "Large Occupied Hall"
-msgstr ""
+msgstr "Nagy zajos folyosó"
 
 #: data/ui/rnnoise.ui:31
 msgid "Import Model"
 msgstr ""
 
 #: data/ui/rnnoise.ui:47 data/ui/speex.ui:59
+#, fuzzy
 msgid "Voice Detection"
-msgstr ""
+msgstr "Hangészlelés"
 
 #: data/ui/rnnoise.ui:151
 msgid "Models"
@@ -2072,11 +2087,11 @@ msgstr ""
 
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
-msgstr ""
+msgstr "Áttekintés"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "Segítség mutatása"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
@@ -2084,11 +2099,11 @@ msgstr ""
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
-msgstr ""
+msgstr "Ablak bezárása"
 
 #: data/ui/shortcuts.ui:37
 msgid "Quit Easy Effects"
-msgstr ""
+msgstr "Kilépés az Easy Effects-ből"
 
 #: data/ui/speex.ui:33
 msgid "Denoise"
@@ -2108,23 +2123,24 @@ msgstr ""
 
 #: data/ui/speex.ui:95
 msgid "Start"
-msgstr ""
+msgstr "Start"
 
 #: data/ui/speex.ui:117
 msgid "Continue"
-msgstr ""
+msgstr "Folytatás"
 
 #: data/ui/speex.ui:141
+#, fuzzy
 msgid "Noise Suppression"
-msgstr ""
+msgstr "Zajszűrés"
 
 #: data/ui/speex.ui:145
 msgid "Level"
-msgstr ""
+msgstr "Szint"
 
 #: data/ui/stereo_tools.ui:78
 msgid "Input Balance"
-msgstr ""
+msgstr "Bemeneti egyensúly"
 
 #: data/ui/stereo_tools.ui:87
 msgid "Softclip"
@@ -2136,39 +2152,44 @@ msgstr ""
 
 #: data/ui/stereo_tools.ui:126
 msgid "Stereo Matrix"
-msgstr ""
+msgstr "Sztereó mátrix"
 
 #: data/ui/stereo_tools.ui:138
 msgid "LR > LR (Stereo Default)"
-msgstr ""
+msgstr "BJ > BJ (Sztereó Alap)"
 
 #: data/ui/stereo_tools.ui:139
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr ""
+msgstr "BJ > KO (Sztereó Közép-Oldalra)"
 
 #: data/ui/stereo_tools.ui:140
+#, fuzzy
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr ""
+msgstr "KO > BJ (Közép-Oldal Sztereóra)"
 
 #: data/ui/stereo_tools.ui:141
+#, fuzzy
 msgid "LR > LL (Mono Left Channel)"
-msgstr ""
+msgstr "BJ > BB (Monó Bal Csatorna)"
 
 #: data/ui/stereo_tools.ui:142
+#, fuzzy
 msgid "LR > RR (Mono Right Channel)"
-msgstr ""
+msgstr "BJ > JJ (Monó Jobb Csatorna)"
 
 #: data/ui/stereo_tools.ui:143
+#, fuzzy
 msgid "LR > L+R (Mono Sum L+R)"
-msgstr ""
+msgstr "BJ > B+J (Monó Szumma B+J)"
 
 #: data/ui/stereo_tools.ui:144
+#, fuzzy
 msgid "LR > RL (Stereo Flip Channels)"
-msgstr ""
+msgstr "BJ > JB (Sztereó Csatornák Felcserélése)"
 
 #: data/ui/stereo_tools.ui:149
 msgid "Stereo Mode"
-msgstr ""
+msgstr "Sztereó Mód"
 
 #: data/ui/stereo_tools.ui:234
 msgid "Side Level"
@@ -2188,11 +2209,11 @@ msgstr ""
 
 #: data/ui/stereo_tools.ui:417
 msgid "Output Balance"
-msgstr ""
+msgstr "Kimeneti Egyensúly"
 
 #: data/ui/stereo_tools.ui:426
 msgid "Delay L/R"
-msgstr ""
+msgstr "Késleltetés B/J"
 
 #: data/ui/stereo_tools.ui:452
 msgid "Delay Left Right"
@@ -2224,19 +2245,19 @@ msgstr ""
 
 #: src/app_info.cpp:108
 msgid "Error"
-msgstr ""
+msgstr "Hiba"
 
 #: src/app_info.cpp:110
 msgid "Unknown"
-msgstr ""
+msgstr "Ismeretlen"
 
 #: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
-msgstr ""
+msgstr "Nem Meghatározott Név - Folyamat Azonosító "
 
 #: src/app_info.cpp:292
 msgid "channels"
-msgstr ""
+msgstr "csatornák"
 
 #: src/application.cpp:301
 #, fuzzy
@@ -2250,7 +2271,7 @@ msgstr "Előre beállított"
 
 #: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
-msgstr ""
+msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
 #: src/application.cpp:606
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -2258,15 +2279,15 @@ msgstr ""
 
 #: src/application.cpp:609
 msgid "Print the easyeffects version"
-msgstr ""
+msgstr "EasyEffects verzió kiírása"
 
 #: src/application.cpp:612
 msgid "Reset Easy Effects."
-msgstr ""
+msgstr "Easy Effects Visszaállítása."
 
 #: src/application.cpp:615
 msgid "Hide the Window."
-msgstr ""
+msgstr "Ablak elrejtése."
 
 #: src/application.cpp:618
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
@@ -2274,7 +2295,7 @@ msgstr ""
 
 #: src/application.cpp:621
 msgid "Show available presets."
-msgstr ""
+msgstr "Elérhető profilok mutatása."
 
 #: src/application.cpp:624
 msgid "Load a preset. Example: easyeffects -l music"
@@ -2292,15 +2313,15 @@ msgstr ""
 
 #: src/application_ui.cpp:344
 msgid "_Output"
-msgstr ""
+msgstr "_Kimenet"
 
 #: src/application_ui.cpp:345
 msgid "_Input"
-msgstr ""
+msgstr "_Bemenet"
 
 #: src/application_ui.cpp:346
 msgid "_PipeWire"
-msgstr ""
+msgstr "_PipeWire"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "The File Is Not Regular"
@@ -2325,7 +2346,7 @@ msgstr ""
 #: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:522
 #: src/equalizer_ui.cpp:854 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
 msgid "Open"
-msgstr ""
+msgstr "Megnyitás"
 
 #: src/convolver_menu_impulses.cpp:166
 msgid "Impulse Response"
@@ -2357,7 +2378,7 @@ msgstr ""
 
 #: src/effects_box.cpp:402
 msgid "Effects"
-msgstr ""
+msgstr "Effektek"
 
 #: src/equalizer_ui.cpp:521
 msgid "Import APO Preset File"
@@ -2383,7 +2404,7 @@ msgstr ""
 
 #: src/equalizer_ui.cpp:625
 msgid "Save"
-msgstr ""
+msgstr "Mentés"
 
 #: src/equalizer_ui.cpp:632
 msgid "EqualizerAPO Presets"
@@ -2413,15 +2434,15 @@ msgstr ""
 
 #: src/plugins_box.cpp:759
 msgid "Remove"
-msgstr ""
+msgstr "Eltávolítás"
 
 #: src/plugins_box.cpp:828
 msgid "Output Device"
-msgstr ""
+msgstr "Kimeneti Eszköz"
 
 #: src/plugins_menu.cpp:238
 msgid "Add"
-msgstr ""
+msgstr "Hozzáadás"
 
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
@@ -2430,7 +2451,7 @@ msgstr ""
 
 #: src/presets_manager.cpp:439
 msgid "Package"
-msgstr ""
+msgstr "Csomag"
 
 #: src/presets_manager.cpp:1155 src/presets_manager.cpp:1162
 #: src/presets_manager.cpp:1171 src/presets_manager.cpp:1178
@@ -2464,11 +2485,11 @@ msgstr ""
 
 #: src/presets_menu.cpp:398
 msgid "Save?"
-msgstr ""
+msgstr "Mented?"
 
 #: src/presets_menu.cpp:417
 msgid "Delete?"
-msgstr ""
+msgstr "Törlöd?"
 
 #: src/presets_menu.cpp:558
 msgid "No Preset Loaded"
@@ -2561,8 +2582,9 @@ msgid "Reverberation"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:62
+#, fuzzy
 msgid "Noise Reduction"
-msgstr ""
+msgstr "Zajcsökkentés"
 
 #: src/tags_plugin_name.cpp:63
 msgid "Speech Processor"
@@ -2570,13 +2592,13 @@ msgstr ""
 
 #: src/tags_plugin_name.cpp:64
 msgid "Stereo Tools"
-msgstr ""
+msgstr "Sztereó Eszközök"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
 #, c++-format
 msgid "{} Not Available"
-msgstr ""
+msgstr "{} Nem Elérhető"
 
 #: src/ui_helpers.cpp:97
 #, c++-format
@@ -2599,13 +2621,13 @@ msgstr ""
 
 #: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
-msgstr ""
+msgstr "- ∞"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
 #, c++-format
 msgid "Using {}"
-msgstr ""
+msgstr "Használatban {}"
 
 #~ msgid "\"Presets\""
 #~ msgstr "\"Profilok\""
