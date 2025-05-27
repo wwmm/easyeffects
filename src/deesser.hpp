@@ -29,6 +29,8 @@
 #include "pw_manager.hpp"
 
 class Deesser : public PluginBase {
+  Q_OBJECT
+
  public:
   Deesser(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
   Deesser(const Deesser&) = delete;
