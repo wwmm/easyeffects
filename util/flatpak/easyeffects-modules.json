@@ -303,8 +303,8 @@
                     "only-arches": [
                         "x86_64"
                     ],
-                    "url": "https://github.com/rui314/mold/releases/download/v2.39.1/mold-2.39.1-x86_64-linux.tar.gz",
-                    "sha256": "1d57def0aadf23b0d4014b898aea6eb763c5ff2a878adc6dda35915f893f519d",
+                    "url": "https://github.com/rui314/mold/releases/download/v2.40.0/mold-2.40.0-x86_64-linux.tar.gz",
+                    "sha256": "143e9d9624a2a7ffa25565a8bd3818479029c83b4f5913ed11dd2acaace3fab3",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 241732,
