@@ -318,8 +318,8 @@
                     "only-arches": [
                         "aarch64"
                     ],
-                    "url": "https://github.com/rui314/mold/releases/download/v2.39.1/mold-2.39.1-aarch64-linux.tar.gz",
-                    "sha256": "411c375e4cc59bc5bdb6684e0ebc78efe09acc2971e41791838bbb1b37f58ae4",
+                    "url": "https://github.com/rui314/mold/releases/download/v2.40.0/mold-2.40.0-aarch64-linux.tar.gz",
+                    "sha256": "56442e2e5ee2a23bf1a8bd0d90bc21be5fffa226c96a62c35f225ebd6c9452ab",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 241732,
