@@ -16,6 +16,7 @@ FormCard.AbstractFormDelegate {
     property string unit: ""
     property int elide: Text.ElideRight
     property int wrapMode: Text.Wrap
+    property bool rightToLeft: false
     readonly property real clampedValue: Common.clamp(value, from, to)
 
     Kirigami.Theme.colorSet: Kirigami.Theme.Button
@@ -31,10 +32,11 @@ FormCard.AbstractFormDelegate {
         anchors.fill: parent
 
         Rectangle {
-            width: (clampedValue - from) / (to - from) * parent.width
+            width: rightToLeft === false ? (clampedValue - from) / (to - from) * parent.width : (clampedValue - to) / (from - to) * parent.width
             height: parent.height
             color: Kirigami.Theme.alternateBackgroundColor
             radius: 3
+            anchors.right: rightToLeft ? parent.right : undefined
         }
 
         RowLayout {

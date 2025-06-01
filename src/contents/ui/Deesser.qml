@@ -289,9 +289,10 @@ Kirigami.ScrollablePage {
                         label: i18n("Gain Reduction")
                         unit: "dB"
                         from: Common.minimumDecibelLevel
-                        to: 10
+                        to: 0
                         value: 0
                         decimals: 1
+                        rightToLeft: true
 
                         anchors {
                             left: parent.left
