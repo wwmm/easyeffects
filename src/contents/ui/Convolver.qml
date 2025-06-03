@@ -274,7 +274,10 @@ Kirigami.ScrollablePage {
             ]
 
             banner {
-                title: pluginDB.kernelName
+                title: {
+                    const name = pluginDB.kernelName;
+                    return (name.length === 0 || name === '""') ? i18n("Convolver Impulse Is Not Set") : name;
+                }
                 titleAlignment: Qt.AlignHCenter | Qt.AlignBottom
                 titleLevel: 2
                 titleIcon: "waveform-symbolic"
