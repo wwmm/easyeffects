@@ -122,6 +122,10 @@ Kirigami.ScrollablePage {
                 id: combinedImpulseName
 
                 label: "Output Impulse Name"
+
+                validator: RegularExpressionValidator {
+                    regularExpression: /^[^\\/]{1,100}$/ //strings without `/` or `\` (max 100 chars)
+                }
             }
 
             Controls.ProgressBar {
@@ -142,7 +146,10 @@ Kirigami.ScrollablePage {
             icon.name: "path-combine-symbolic"
             onTriggered: {
                 progressBar.visible = true;
-                pluginBackend.combineKernels(firstImpulse.currentText, secondImpulse.currentText, combinedImpulseName.text);
+
+                const saneCombinedImpulseName = combinedImpulseName.text.trim().replace(/(?:\.irs)+$/, "");
+                pluginBackend.combineKernels(firstImpulse.currentText, secondImpulse.currentText, saneCombinedImpulseName);
+
                 combinedImpulseName.clear();
             }
         }
