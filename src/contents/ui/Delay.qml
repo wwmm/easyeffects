@@ -1,4 +1,3 @@
-import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -17,7 +16,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -58,7 +57,7 @@ Kirigami.ScrollablePage {
                             currentIndex: pluginDB.modeL
                             editable: false
                             model: [i18n("Samples"), i18n("Distance"), i18n("Time")]
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 pluginDB.modeL = idx;
                             }
                         }
@@ -76,7 +75,7 @@ Kirigami.ScrollablePage {
                             value: pluginDB.sampleL
                             decimals: 0
                             stepSize: 1
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.sampleL = v;
                             }
                         }
@@ -95,7 +94,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.timeL = v;
                             }
                         }
@@ -113,7 +112,7 @@ Kirigami.ScrollablePage {
                             decimals: 0
                             stepSize: 1
                             unit: "m"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.metersL = v;
                             }
                         }
@@ -131,7 +130,7 @@ Kirigami.ScrollablePage {
                             decimals: 1
                             stepSize: 0.1
                             unit: "cm"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.centimetersL = v;
                             }
                         }
@@ -150,7 +149,7 @@ Kirigami.ScrollablePage {
                             decimals: 1
                             stepSize: 0.1
                             unit: "°C"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.temperatureL = v;
                             }
                         }
@@ -168,7 +167,7 @@ Kirigami.ScrollablePage {
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.dryL = v;
                             }
                         }
@@ -186,15 +185,12 @@ Kirigami.ScrollablePage {
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.wetL = v;
                             }
                         }
-
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -219,7 +215,7 @@ Kirigami.ScrollablePage {
                             currentIndex: pluginDB.modeR
                             editable: false
                             model: [i18n("Samples"), i18n("Distance"), i18n("Time")]
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 pluginDB.modeR = idx;
                             }
                         }
@@ -237,7 +233,7 @@ Kirigami.ScrollablePage {
                             value: pluginDB.sampleR
                             decimals: 0
                             stepSize: 1
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.sampleR = v;
                             }
                         }
@@ -256,7 +252,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.timeR = v;
                             }
                         }
@@ -274,7 +270,7 @@ Kirigami.ScrollablePage {
                             decimals: 0
                             stepSize: 1
                             unit: "m"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.metersR = v;
                             }
                         }
@@ -292,7 +288,7 @@ Kirigami.ScrollablePage {
                             decimals: 1
                             stepSize: 0.1
                             unit: "cm"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.centimetersR = v;
                             }
                         }
@@ -311,7 +307,7 @@ Kirigami.ScrollablePage {
                             decimals: 1
                             stepSize: 0.1
                             unit: "°C"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.temperatureR = v;
                             }
                         }
@@ -329,7 +325,7 @@ Kirigami.ScrollablePage {
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.dryR = v;
                             }
                         }
@@ -347,19 +343,14 @@ Kirigami.ScrollablePage {
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.wetR = v;
                             }
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
 
     header: EeInputOutputGain {
@@ -393,7 +384,6 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (checked !== pluginDB.invertPhaseL)
                             pluginDB.invertPhaseL = checked;
-
                     }
                 },
                 Kirigami.Action {
@@ -404,7 +394,6 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (checked !== pluginDB.invertPhaseR)
                             pluginDB.invertPhaseR = checked;
-
                     }
                 },
                 Kirigami.Action {
@@ -429,7 +418,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }

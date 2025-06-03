@@ -1,8 +1,6 @@
 import "Common.js" as Common
-import QtCore
 import QtQuick
 import QtQuick.Controls as Controls
-import QtQuick.Dialogs
 import QtQuick.Layouts
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
@@ -42,7 +40,6 @@ Kirigami.OverlaySheet {
             visible: listView.count === 0
             text: i18n("Empty")
         }
-
     }
 
     Component {
@@ -78,7 +75,6 @@ Kirigami.OverlaySheet {
                                 const m = plugins[n].match(/#(\d+)$/);
                                 if (m.length === 2)
                                     index_list.push(m[1]);
-
                             }
                         }
                         const new_id = (index_list.length === 0) ? 0 : Math.max.apply(null, index_list) + 1;
@@ -106,17 +102,17 @@ Kirigami.OverlaySheet {
                         const limiters = [TagsPluginName.BaseName.limiter, TagsPluginName.BaseName.maximizer];
                         if (plugins.length === 0) {
                             plugins.push(new_name);
-                        } else if (limiters_and_meters.some((v) => {
+                        } else if (limiters_and_meters.some(v => {
                             return v === name;
                         })) {
                             plugins.push(new_name);
-                        } else if (limiters.some((v) => {
+                        } else if (limiters.some(v => {
                             return plugins[plugins.length - 1].startsWith(v);
                         })) {
                             plugins.splice(-1, 0, new_name);
                         } else if (plugins[plugins.length - 1].startsWith(TagsPluginName.BaseName.level_meter)) {
                             if (plugins.length >= 2) {
-                                if (limiters.some((v) => {
+                                if (limiters.some(v => {
                                     return plugins[plugins.length - 2].startsWith(v);
                                 }))
                                     plugins.splice(-2, 0, new_name);
@@ -132,11 +128,8 @@ Kirigami.OverlaySheet {
                         showMenuStatus(i18n("Added Plugin") + ": " + translatedName);
                     }
                 }
-
             }
-
         }
-
     }
 
     header: ColumnLayout {
@@ -150,7 +143,6 @@ Kirigami.OverlaySheet {
                 TagsPluginName.SortedNameModel.filterRegularExpression = RegExp(re, "i");
             }
         }
-
     }
 
     footer: ColumnLayout {
@@ -162,7 +154,5 @@ Kirigami.OverlaySheet {
             showCloseButton: true
             Layout.maximumWidth: parent.width
         }
-
     }
-
 }

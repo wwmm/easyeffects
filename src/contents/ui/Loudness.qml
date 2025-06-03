@@ -1,4 +1,3 @@
-import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -17,7 +16,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -57,7 +56,7 @@ Kirigami.ScrollablePage {
                             currentIndex: pluginDB.std
                             editable: false
                             model: ["Flat", "ISO226-2003", "Fletcher-Munson", "Robinson-Dadson"]
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 pluginDB.std = idx;
                             }
                         }
@@ -70,7 +69,7 @@ Kirigami.ScrollablePage {
                             currentIndex: pluginDB.fft
                             editable: false
                             model: [256, 512, 1024, 2048, 4096, 8192, 16384]
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 pluginDB.fft = idx;
                             }
                         }
@@ -87,7 +86,7 @@ Kirigami.ScrollablePage {
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.volume = v;
                             }
                         }
@@ -105,19 +104,14 @@ Kirigami.ScrollablePage {
                             stepSize: 0.01
                             unit: "dB"
                             enabled: pluginDB.clipping
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.clippingRange = v;
                             }
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
 
     header: EeInputOutputGain {
@@ -164,7 +158,6 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (pluginDB.clipping != checked)
                             pluginDB.clipping = checked;
-
                     }
                 },
                 Kirigami.Action {
@@ -176,7 +169,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }

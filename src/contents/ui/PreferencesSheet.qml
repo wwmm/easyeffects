@@ -1,6 +1,6 @@
-import QtQml
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import QtQml // Despite of Qt extension says this import is needed. WE crash without it
 import ee.database as DB
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
@@ -17,7 +17,8 @@ Kirigami.OverlaySheet {
     implicitHeight: Math.min(2 * preferencesSheet.header.height + stack.implicitHeight, preferencesSheet.parent.height - 2 * preferencesSheet.header.height - preferencesSheet.y)
     onVisibleChanged: {
         if (!preferencesSheet.visible) {
-            while (stack.depth > 1)stack.pop()
+            while (stack.depth > 1)
+                stack.pop();
             headerTitle.text = i18n("Preferences");
         }
     }
@@ -35,7 +36,6 @@ Kirigami.OverlaySheet {
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.enableServiceMode)
                             DB.Manager.main.enableServiceMode = isChecked;
-
                     }
                 }
 
@@ -44,8 +44,7 @@ Kirigami.OverlaySheet {
 
                     label: i18n("Autostart on Login")
                     // isChecked: DB.Manager.main.autostartOnLogin
-                    onCheckedChanged: {
-                    }
+                    onCheckedChanged: {}
                 }
 
                 EeSwitch {
@@ -57,14 +56,10 @@ Kirigami.OverlaySheet {
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.showTrayIcon)
                             DB.Manager.main.showTrayIcon = isChecked;
-
                     }
                 }
-
             }
-
         }
-
     }
 
     Component {
@@ -80,7 +75,6 @@ Kirigami.OverlaySheet {
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.processAllOutputs)
                             DB.Manager.main.processAllOutputs = isChecked;
-
                     }
                 }
 
@@ -92,7 +86,6 @@ Kirigami.OverlaySheet {
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.processAllInputs)
                             DB.Manager.main.processAllInputs = isChecked;
-
                     }
                 }
 
@@ -104,7 +97,6 @@ Kirigami.OverlaySheet {
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.excludeMonitorStreams)
                             DB.Manager.main.excludeMonitorStreams = isChecked;
-
                     }
                 }
 
@@ -116,7 +108,6 @@ Kirigami.OverlaySheet {
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.useCubicVolumes)
                             DB.Manager.main.useCubicVolumes = isChecked;
-
                     }
                 }
 
@@ -128,7 +119,6 @@ Kirigami.OverlaySheet {
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.inactivityTimerEnable)
                             DB.Manager.main.inactivityTimerEnable = isChecked;
-
                     }
                 }
 
@@ -143,15 +133,12 @@ Kirigami.OverlaySheet {
                     stepSize: 1
                     unit: "s"
                     enabled: DB.Manager.main.inactivityTimerEnable
-                    onValueModified: (v) => {
+                    onValueModified: v => {
                         DB.Manager.main.inactivityTimeout = v;
                     }
                 }
-
             }
-
         }
-
     }
 
     Component {
@@ -171,7 +158,6 @@ Kirigami.OverlaySheet {
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.spectrum.state)
                             DB.Manager.spectrum.state = isChecked;
-
                     }
                 }
 
@@ -185,11 +171,10 @@ Kirigami.OverlaySheet {
                     decimals: 0
                     stepSize: 1
                     unit: "ms"
-                    onValueModified: (v) => {
+                    onValueModified: v => {
                         DB.Manager.spectrum.avsyncDelay = v;
                     }
                 }
-
             }
 
             FormCard.FormHeader {
@@ -205,10 +190,9 @@ Kirigami.OverlaySheet {
                     currentIndex: DB.Manager.spectrum.spectrumColorScheme
                     editable: false
                     model: [i18n("Automatic"), i18n("Light"), i18n("Dark")]
-                    onActivated: (idx) => {
+                    onActivated: idx => {
                         if (idx !== DB.Manager.spectrum.spectrumColorScheme)
                             DB.Manager.spectrum.spectrumColorScheme = idx;
-
                     }
                 }
 
@@ -220,10 +204,9 @@ Kirigami.OverlaySheet {
                     currentIndex: DB.Manager.spectrum.spectrumColorTheme
                     editable: false
                     model: [i18n("Green"), i18n("Green Neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey")]
-                    onActivated: (idx) => {
+                    onActivated: idx => {
                         if (idx !== DB.Manager.spectrum.spectrumColorTheme)
                             DB.Manager.spectrum.spectrumColorTheme = idx;
-
                     }
                 }
 
@@ -235,10 +218,9 @@ Kirigami.OverlaySheet {
                     currentIndex: DB.Manager.spectrum.spectrumShape
                     editable: false
                     model: [i18n("Bars"), i18n("Lines"), i18n("Dots"), i18n("Area")]
-                    onActivated: (idx) => {
+                    onActivated: idx => {
                         if (idx !== DB.Manager.spectrum.spectrumShape)
                             DB.Manager.spectrum.spectrumShape = idx;
-
                     }
                 }
 
@@ -250,7 +232,6 @@ Kirigami.OverlaySheet {
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.spectrum.dynamicYScale)
                             DB.Manager.spectrum.dynamicYScale = isChecked;
-
                     }
                 }
 
@@ -262,7 +243,6 @@ Kirigami.OverlaySheet {
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.spectrum.logarithimicHorizontalAxis)
                             DB.Manager.spectrum.logarithimicHorizontalAxis = isChecked;
-
                     }
                 }
 
@@ -275,7 +255,7 @@ Kirigami.OverlaySheet {
                     value: DB.Manager.spectrum.nPoints
                     decimals: 0
                     stepSize: 1
-                    onValueModified: (v) => {
+                    onValueModified: v => {
                         DB.Manager.spectrum.nPoints = v;
                     }
                 }
@@ -290,11 +270,10 @@ Kirigami.OverlaySheet {
                     decimals: 0
                     stepSize: 1
                     unit: "px"
-                    onValueModified: (v) => {
+                    onValueModified: v => {
                         DB.Manager.spectrum.height = v;
                     }
                 }
-
             }
 
             FormCard.FormHeader {
@@ -312,7 +291,7 @@ Kirigami.OverlaySheet {
                     decimals: 0
                     stepSize: 10
                     unit: "Hz"
-                    onValueModified: (v) => {
+                    onValueModified: v => {
                         DB.Manager.spectrum.minimumFrequency = v;
                     }
                 }
@@ -327,15 +306,12 @@ Kirigami.OverlaySheet {
                     decimals: 0
                     stepSize: 10
                     unit: "Hz"
-                    onValueModified: (v) => {
+                    onValueModified: v => {
                         DB.Manager.spectrum.maximumFrequency = v;
                     }
                 }
-
             }
-
         }
-
     }
 
     Component {
@@ -352,7 +328,6 @@ Kirigami.OverlaySheet {
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.showNativePluginUi)
                             DB.Manager.main.showNativePluginUi = isChecked;
-
                     }
                 }
 
@@ -368,15 +343,12 @@ Kirigami.OverlaySheet {
                     stepSize: 1
                     unit: "Hz"
                     enabled: DB.Manager.main.showNativePluginUi
-                    onValueModified: (v) => {
+                    onValueModified: v => {
                         DB.Manager.main.lv2uiUpdateFrequency = v;
                     }
                 }
-
             }
-
         }
-
     }
 
     Controls.StackView {
@@ -393,7 +365,8 @@ Kirigami.OverlaySheet {
                     icon.name: "services-symbolic"
                     text: i18n("Background Service")
                     onClicked: {
-                        while (stack.depth > 1)stack.pop()
+                        while (stack.depth > 1)
+                            stack.pop();
                         stack.push(servicePage);
                         headerTitle.text = text;
                     }
@@ -405,7 +378,8 @@ Kirigami.OverlaySheet {
                     icon.name: "folder-sound-symbolic"
                     text: i18n("Audio")
                     onClicked: {
-                        while (stack.depth > 1)stack.pop()
+                        while (stack.depth > 1)
+                            stack.pop();
                         stack.push(audioPage);
                         headerTitle.text = text;
                     }
@@ -417,7 +391,8 @@ Kirigami.OverlaySheet {
                     icon.name: "folder-chart-symbolic"
                     text: i18n("Spectrum Analyzer")
                     onClicked: {
-                        while (stack.depth > 1)stack.pop()
+                        while (stack.depth > 1)
+                            stack.pop();
                         stack.push(spectrumPage);
                         headerTitle.text = text;
                     }
@@ -429,16 +404,14 @@ Kirigami.OverlaySheet {
                     icon.name: "emblem-warning"
                     text: i18n("Experimental Features")
                     onClicked: {
-                        while (stack.depth > 1)stack.pop()
+                        while (stack.depth > 1)
+                            stack.pop();
                         stack.push(experimentalPage);
                         headerTitle.text = text;
                     }
                 }
-
             }
-
         }
-
     }
 
     header: RowLayout {
@@ -448,7 +421,8 @@ Kirigami.OverlaySheet {
             icon.name: "draw-arrow-back"
             visible: stack.depth !== 1
             onClicked: {
-                while (stack.depth > 1)stack.pop()
+                while (stack.depth > 1)
+                    stack.pop();
                 headerTitle.text = i18n("Preferences");
             }
         }
@@ -464,7 +438,5 @@ Kirigami.OverlaySheet {
             Layout.fillWidth: true
             text: i18n("Preferences")
         }
-
     }
-
 }

@@ -5,7 +5,6 @@ import QtQuick.Layouts
 import ee.database as DB
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
     id: levelMeterPage
@@ -17,7 +16,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         momentary.value = pluginBackend.getMomentaryLevel();
         shortterm.value = pluginBackend.getShorttermLevel();
@@ -67,7 +66,6 @@ Kirigami.ScrollablePage {
                                 left: parent.left
                                 right: parent.right
                             }
-
                         }
 
                         EeProgressBar {
@@ -84,11 +82,8 @@ Kirigami.ScrollablePage {
                                 left: parent.left
                                 right: parent.right
                             }
-
                         }
-
                     }
-
                 }
 
                 Kirigami.Card {
@@ -116,7 +111,6 @@ Kirigami.ScrollablePage {
                                 left: parent.left
                                 right: parent.right
                             }
-
                         }
 
                         EeProgressBar {
@@ -133,13 +127,9 @@ Kirigami.ScrollablePage {
                                 left: parent.left
                                 right: parent.right
                             }
-
                         }
-
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -167,7 +157,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeProgressBar {
@@ -184,7 +173,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeProgressBar {
@@ -201,7 +189,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeProgressBar {
@@ -218,7 +205,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeProgressBar {
@@ -235,15 +221,10 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
 
     footer: RowLayout {
@@ -279,7 +260,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }

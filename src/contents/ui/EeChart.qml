@@ -1,5 +1,4 @@
 import QtGraphs
-import QtQml
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -63,7 +62,6 @@ Item {
 
             if (logarithimicVerticalAxis === true)
                 newData[n].y = Math.log10(newData[n].y);
-
         }
         if (splineSeries.visible === true)
             splineSeries.replace(newData);
@@ -118,7 +116,6 @@ Item {
                 BarSet {
                     id: barSeriesSet
                 }
-
             }
 
             SplineSeries {
@@ -141,7 +138,6 @@ Item {
                 upperSeries: LineSeries {
                     id: areaLineSeries
                 }
-
             }
 
             ValueAxis {
@@ -194,7 +190,6 @@ Item {
                     axisRectangle.color = chart.theme.backgroundColor;
                 }
             }
-
         }
 
         Rectangle {
@@ -254,13 +249,8 @@ Item {
                                 return Qt.AlignLeft;
                         }
                     }
-
                 }
-
             }
-
         }
-
     }
-
 }

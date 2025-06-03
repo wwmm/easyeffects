@@ -1,11 +1,9 @@
-import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
     id: pitchPage
@@ -17,7 +15,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -55,7 +53,7 @@ Kirigami.ScrollablePage {
                         decimals: 0
                         stepSize: 1
                         unit: "ms"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.sequenceLength = v;
                         }
                     }
@@ -70,7 +68,7 @@ Kirigami.ScrollablePage {
                         decimals: 0
                         stepSize: 1
                         unit: "ms"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.seekWindow = v;
                         }
                     }
@@ -85,13 +83,11 @@ Kirigami.ScrollablePage {
                         decimals: 0
                         stepSize: 1
                         unit: "ms"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.overlapLength = v;
                         }
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -124,7 +120,7 @@ Kirigami.ScrollablePage {
                             value: pluginDB.octaves
                             decimals: 0
                             stepSize: 1
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.octaves = v;
                             }
                         }
@@ -140,7 +136,7 @@ Kirigami.ScrollablePage {
                             value: pluginDB.cents
                             decimals: 0
                             stepSize: 1
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.cents = v;
                             }
                         }
@@ -156,7 +152,7 @@ Kirigami.ScrollablePage {
                             value: pluginDB.semitones
                             decimals: 0
                             stepSize: 1
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.semitones = v;
                             }
                         }
@@ -173,7 +169,7 @@ Kirigami.ScrollablePage {
                             decimals: 0
                             stepSize: 1
                             unit: "%"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.tempoDifference = v;
                             }
                         }
@@ -190,19 +186,14 @@ Kirigami.ScrollablePage {
                             decimals: 0
                             stepSize: 1
                             unit: "%"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.rateDifference = v;
                             }
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
 
     header: EeInputOutputGain {
@@ -236,7 +227,6 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (pluginDB.quickSeek !== checked)
                             pluginDB.quickSeek = checked;
-
                     }
                 },
                 Kirigami.Action {
@@ -247,7 +237,6 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (pluginDB.antiAlias !== checked)
                             pluginDB.antiAlias = checked;
-
                     }
                 },
                 Kirigami.Action {
@@ -259,7 +248,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }

@@ -5,7 +5,6 @@ import QtQuick.Layouts
 import ee.database as DB
 import ee.pipeline as Pipeline
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ApplicationWindow {
     id: appWindow

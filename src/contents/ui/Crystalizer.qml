@@ -1,11 +1,9 @@
-import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
     id: crystalizerPage
@@ -17,7 +15,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -54,13 +52,9 @@ Kirigami.ScrollablePage {
                     }
                 }
 
-                Controls.ScrollBar.horizontal: Controls.ScrollBar {
-                }
-
+                Controls.ScrollBar.horizontal: Controls.ScrollBar {}
             }
-
         }
-
     }
 
     header: EeInputOutputGain {
@@ -95,7 +89,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }

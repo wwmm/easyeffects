@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Controls as Controls
-import QtQuick.Dialogs
 import QtQuick.Layouts
 import ee.database as DB
 import ee.pipewire as PW
@@ -80,7 +79,6 @@ ColumnLayout {
                     Presets.Manager.addAutoload(0, presetName, deviceName, deviceDescription, deviceRoute);
             }
         }
-
     }
 
     Kirigami.ScrollablePage {
@@ -190,15 +188,10 @@ ColumnLayout {
                             text: devicePreset
                             color: Kirigami.Theme.disabledTextColor
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
 
     RowLayout {
@@ -216,7 +209,6 @@ ColumnLayout {
                     const name = model.data(proxyIndex, TypePresets.ListModel.Name);
                     if (name === fallbackPreset)
                         return n;
-
                 }
                 return 0;
             }
@@ -224,7 +216,7 @@ ColumnLayout {
             editable: false
             enabled: DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingUsesFallback : DB.Manager.main.inputAutoloadingUsesFallback
             model: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
-            onActivated: (idx) => {
+            onActivated: idx => {
                 if (DB.Manager.main.visiblePage === 0)
                     DB.Manager.main.outputAutoloadingFallbackPreset = currentText;
                 else if (DB.Manager.main.visiblePage === 1)
@@ -241,15 +233,12 @@ ColumnLayout {
                 if (DB.Manager.main.visiblePage === 0) {
                     if (isChecked !== DB.Manager.main.outputAutoloadingUsesFallback)
                         DB.Manager.main.outputAutoloadingUsesFallback = isChecked;
-
                 } else if (DB.Manager.main.visiblePage === 1) {
                     if (isChecked !== DB.Manager.main.inputAutoloadingUsesFallback)
                         DB.Manager.main.inputAutoloadingUsesFallback = isChecked;
-
                 }
             }
         }
-
     }
 
     Kirigami.InlineMessage {
@@ -260,5 +249,4 @@ ColumnLayout {
         visible: false
         showCloseButton: true
     }
-
 }

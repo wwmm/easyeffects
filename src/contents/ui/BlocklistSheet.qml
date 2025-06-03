@@ -1,7 +1,6 @@
 import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
-import QtQuick.Dialogs
 import QtQuick.Layouts
 import ee.database as DB
 import org.kde.kirigami as Kirigami
@@ -75,7 +74,6 @@ Kirigami.OverlaySheet {
             validator: RegularExpressionValidator {
                 regularExpression: /^[^\\/]{1,100}$/ //strings without `/` or `\` (max 100 chars)
             }
-
         }
 
         RowLayout {
@@ -141,16 +139,12 @@ Kirigami.OverlaySheet {
                                         const targetIndex = streamDB.blocklist.indexOf(name);
                                         if (targetIndex > -1)
                                             streamDB.blocklist.splice(targetIndex, 1);
-
                                     }
                                 }
                             ]
                         }
-
                     }
-
                 }
-
             }
 
             Controls.ScrollBar {
@@ -159,9 +153,7 @@ Kirigami.OverlaySheet {
                 parent: listviewRow
                 Layout.fillHeight: true
             }
-
         }
-
     }
 
     footer: Kirigami.ActionToolBar {
@@ -177,10 +169,8 @@ Kirigami.OverlaySheet {
                 onTriggered: {
                     if (checked !== streamDB.showBlocklistedApps)
                         streamDB.showBlocklistedApps = checked;
-
                 }
             }
         ]
     }
-
 }

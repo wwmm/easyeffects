@@ -1,8 +1,4 @@
-import "Common.js" as Common
-import QtCore
-import QtQuick
 import QtQuick.Controls as Controls
-import QtQuick.Dialogs
 import QtQuick.Layouts
 import ee.database as DB
 import org.kde.kirigami as Kirigami
@@ -71,7 +67,6 @@ Kirigami.OverlaySheet {
                 down: false
                 hoverEnabled: false
             }
-
         }
 
         Controls.Label {
@@ -100,7 +95,6 @@ Kirigami.OverlaySheet {
                 down: false
                 hoverEnabled: false
             }
-
         }
 
         Controls.Label {
@@ -132,7 +126,6 @@ Kirigami.OverlaySheet {
         Controls.Label {
             text: i18n("Can Be Used on Numeric Controls")
         }
-
     }
 
     header: RowLayout {
@@ -146,7 +139,5 @@ Kirigami.OverlaySheet {
             Layout.fillWidth: true
             text: i18n("Shortcuts")
         }
-
     }
-
 }

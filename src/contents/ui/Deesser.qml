@@ -17,7 +17,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -59,7 +59,7 @@ Kirigami.ScrollablePage {
                             currentIndex: pluginDB.detection
                             editable: false
                             model: [i18n("RMS"), i18n("Peak")]
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 pluginDB.detection = idx;
                             }
                         }
@@ -72,7 +72,7 @@ Kirigami.ScrollablePage {
                             currentIndex: pluginDB.mode
                             editable: false
                             model: [i18n("Wide"), i18n("Split")]
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 pluginDB.mode = idx;
                             }
                         }
@@ -89,7 +89,7 @@ Kirigami.ScrollablePage {
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.threshold = v;
                             }
                         }
@@ -105,7 +105,7 @@ Kirigami.ScrollablePage {
                             value: pluginDB.ratio
                             decimals: 0
                             stepSize: 1
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.ratio = v;
                             }
                         }
@@ -122,7 +122,7 @@ Kirigami.ScrollablePage {
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.makeup = v;
                             }
                         }
@@ -138,15 +138,12 @@ Kirigami.ScrollablePage {
                             value: pluginDB.laxity
                             decimals: 0
                             stepSize: 1
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.laxity = v;
                             }
                         }
-
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -174,7 +171,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "Hz"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.f1Freq = v;
                             }
                         }
@@ -191,7 +188,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "Hz"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.f2Freq = v;
                             }
                         }
@@ -208,7 +205,7 @@ Kirigami.ScrollablePage {
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.f1Level = v;
                             }
                         }
@@ -225,7 +222,7 @@ Kirigami.ScrollablePage {
                             decimals: 1
                             stepSize: 0.1
                             unit: "dBFS"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.f2Level = v;
                             }
                         }
@@ -242,15 +239,12 @@ Kirigami.ScrollablePage {
                             value: pluginDB.f2Q
                             decimals: 3
                             stepSize: 0.001
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.f2Q = v;
                             }
                         }
-
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -280,7 +274,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeProgressBar {
@@ -298,15 +291,10 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
 
     header: EeInputOutputGain {
@@ -353,7 +341,6 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (pluginDB.scListen != checked)
                             pluginDB.scListen = checked;
-
                     }
                 },
                 Kirigami.Action {
@@ -365,7 +352,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }

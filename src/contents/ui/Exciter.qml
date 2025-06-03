@@ -5,7 +5,6 @@ import QtQuick.Layouts
 import ee.database as DB
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
     id: exciterPage
@@ -17,7 +16,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -62,7 +61,6 @@ Kirigami.ScrollablePage {
                 onValueChanged: () => {
                     if (value !== pluginDB.blend)
                         pluginDB.blend = value;
-
                 }
             }
 
@@ -70,7 +68,6 @@ Kirigami.ScrollablePage {
                 Layout.alignment: Qt.AlignRight
                 text: i18n("2nd")
             }
-
         }
 
         Controls.Label {
@@ -103,7 +100,7 @@ Kirigami.ScrollablePage {
                         decimals: 2
                         stepSize: 0.1
                         unit: "dB"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.amount = v;
                         }
                     }
@@ -117,7 +114,7 @@ Kirigami.ScrollablePage {
                         value: pluginDB.harmonics
                         decimals: 1
                         stepSize: 0.1
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.harmonics = v;
                         }
                     }
@@ -132,7 +129,7 @@ Kirigami.ScrollablePage {
                         decimals: 0
                         stepSize: 1
                         unit: "Hz"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.scope = v;
                         }
                     }
@@ -145,7 +142,6 @@ Kirigami.ScrollablePage {
                         onCheckedChanged: {
                             if (isChecked !== pluginDB.ceilActive)
                                 pluginDB.ceilActive = isChecked;
-
                         }
                     }
 
@@ -160,7 +156,7 @@ Kirigami.ScrollablePage {
                         stepSize: 1
                         unit: "Hz"
                         enabled: ceilActive.isChecked
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.ceil = v;
                         }
                     }
@@ -174,13 +170,9 @@ Kirigami.ScrollablePage {
                         value: 0
                         decimals: 0
                     }
-
                 }
-
             }
-
         }
-
     }
 
     header: EeInputOutputGain {
@@ -227,7 +219,6 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (pluginDB.listen != checked)
                             pluginDB.listen = checked;
-
                     }
                 },
                 Kirigami.Action {
@@ -239,7 +230,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }

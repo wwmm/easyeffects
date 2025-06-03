@@ -1,4 +1,3 @@
-import "Common.js" as Common
 import QtCore
 import QtQuick
 import QtQuick.Controls as Controls
@@ -9,7 +8,6 @@ import ee.presets as Presets
 import ee.tags.plugin.name as TagsPluginName
 import ee.type.presets as TypePresets
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
     id: rnnoisePage
@@ -21,7 +19,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -76,7 +74,6 @@ Kirigami.ScrollablePage {
                         onCheckedChanged: {
                             if (isChecked !== pluginDB.enableVad)
                                 pluginDB.enableVad = isChecked;
-
                         }
                     }
 
@@ -90,7 +87,7 @@ Kirigami.ScrollablePage {
                         decimals: 0
                         stepSize: 1
                         unit: "%"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.vadThres = v;
                         }
                     }
@@ -105,7 +102,7 @@ Kirigami.ScrollablePage {
                         decimals: 2
                         stepSize: 0.01
                         unit: "dB"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.wet = v;
                         }
                     }
@@ -120,13 +117,11 @@ Kirigami.ScrollablePage {
                         decimals: 2
                         stepSize: 0.01
                         unit: "ms"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.release = v;
                         }
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -142,10 +137,8 @@ Kirigami.ScrollablePage {
                             onCheckedChanged: {
                                 if (isChecked !== pluginDB.useStandardModel)
                                     pluginDB.useStandardModel = isChecked;
-
                             }
                         }
-
                     }
                 ]
 
@@ -223,11 +216,8 @@ Kirigami.ScrollablePage {
                                         }
                                     ]
                                 }
-
                             }
-
                         }
-
                     }
 
                     Controls.ScrollBar {
@@ -236,13 +226,9 @@ Kirigami.ScrollablePage {
                         parent: listviewRow
                         Layout.fillHeight: true
                     }
-
                 }
-
             }
-
         }
-
     }
 
     header: EeInputOutputGain {
@@ -294,9 +280,6 @@ Kirigami.ScrollablePage {
                     }
                 ]
             }
-
         }
-
     }
-
 }

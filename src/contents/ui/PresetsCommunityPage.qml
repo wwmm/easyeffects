@@ -1,8 +1,6 @@
 import "Common.js" as Common
-import QtCore
 import QtQuick
 import QtQuick.Controls as Controls
-import QtQuick.Dialogs
 import QtQuick.Layouts
 import ee.database as DB
 import ee.presets as Presets
@@ -86,7 +84,6 @@ ColumnLayout {
                 onClicked: {
                     if (Presets.Manager.loadCommunityPresetFile(pipeline, path, presetPackage) === false)
                         showPresetsMenuStatus(i18n("The Preset %1 failed to load", name));
-
                 }
 
                 contentItem: RowLayout {
@@ -116,11 +113,8 @@ ColumnLayout {
                             }
                         ]
                     }
-
                 }
-
             }
-
         }
 
         Controls.ScrollBar {
@@ -129,7 +123,6 @@ ColumnLayout {
             parent: listviewRow
             Layout.fillHeight: true
         }
-
     }
 
     Controls.Button {
@@ -148,5 +141,4 @@ ColumnLayout {
         visible: false
         showCloseButton: true
     }
-
 }

@@ -1,6 +1,5 @@
 import "Common.js" as Common
 import QtQuick
-import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
@@ -47,7 +46,7 @@ Item {
                     stepSize: 0.1
                     unit: "dB"
                     boxWidth: 5 * Kirigami.Units.gridUnit
-                    onValueModified: (v) => {
+                    onValueModified: v => {
                         pluginDB.inputGain = v;
                     }
                 }
@@ -77,7 +76,6 @@ Item {
                     decimals: 0
                     convertDecibelToLinear: true
                 }
-
             }
 
             RowLayout {
@@ -97,7 +95,7 @@ Item {
                     stepSize: 0.1
                     unit: "dB"
                     boxWidth: 5 * Kirigami.Units.gridUnit
-                    onValueModified: (v) => {
+                    onValueModified: v => {
                         pluginDB.outputGain = v;
                     }
                 }
@@ -127,11 +125,7 @@ Item {
                     decimals: 0
                     convertDecibelToLinear: true
                 }
-
             }
-
         }
-
     }
-
 }

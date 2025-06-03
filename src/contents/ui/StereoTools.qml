@@ -1,4 +1,3 @@
-import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -18,7 +17,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -53,14 +52,12 @@ Kirigami.ScrollablePage {
                         onCheckedChanged: {
                             if (isChecked !== pluginDB.softclip)
                                 pluginDB.softclip = isChecked;
-
                         }
 
                         anchors {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeSpinBox {
@@ -74,7 +71,7 @@ Kirigami.ScrollablePage {
                         value: pluginDB.balanceIn
                         decimals: 2
                         stepSize: 0.01
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.balanceIn = v;
                         }
 
@@ -82,7 +79,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeSpinBox {
@@ -97,7 +93,7 @@ Kirigami.ScrollablePage {
                         decimals: 3
                         stepSize: 0.001
                         enabled: pluginDB.softclip
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.scLevel = v;
                         }
 
@@ -105,11 +101,8 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -138,7 +131,7 @@ Kirigami.ScrollablePage {
                             currentIndex: pluginDB.mode
                             editable: false
                             model: [i18n("LR > LR (Stereo Default)"), i18n("LR > MS (Stereo to Mid-Side)"), i18n("MS > LR (Mid-Side to Stereo)"), i18n("LR > LL (Mono Left Channel)"), i18n("LR > RR (Mono Right Channel)"), i18n("LR > L+R (Mono Sum L+R)"), i18n("LR > RL (Stereo Flip Channels)")]
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 pluginDB.mode = idx;
                             }
                         }
@@ -156,7 +149,7 @@ Kirigami.ScrollablePage {
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.slev = v;
                             }
                         }
@@ -172,7 +165,7 @@ Kirigami.ScrollablePage {
                             value: pluginDB.sbal
                             decimals: 2
                             stepSize: 0.01
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.sbal = v;
                             }
                         }
@@ -190,7 +183,7 @@ Kirigami.ScrollablePage {
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.mlev = v;
                             }
                         }
@@ -206,15 +199,12 @@ Kirigami.ScrollablePage {
                             value: pluginDB.mpan
                             decimals: 2
                             stepSize: 0.01
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.mpan = v;
                             }
                         }
-
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -228,7 +218,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeSwitch {
@@ -239,14 +228,12 @@ Kirigami.ScrollablePage {
                         onCheckedChanged: {
                             if (isChecked !== pluginDB.mutel)
                                 pluginDB.mutel = isChecked;
-
                         }
 
                         anchors {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeSwitch {
@@ -257,14 +244,12 @@ Kirigami.ScrollablePage {
                         onCheckedChanged: {
                             if (isChecked !== pluginDB.phasel)
                                 pluginDB.phasel = isChecked;
-
                         }
 
                         anchors {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     Kirigami.Heading {
@@ -276,7 +261,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeSwitch {
@@ -287,14 +271,12 @@ Kirigami.ScrollablePage {
                         onCheckedChanged: {
                             if (isChecked !== pluginDB.muter)
                                 pluginDB.muter = isChecked;
-
                         }
 
                         anchors {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeSwitch {
@@ -305,18 +287,14 @@ Kirigami.ScrollablePage {
                         onCheckedChanged: {
                             if (isChecked !== pluginDB.phaser)
                                 pluginDB.phaser = isChecked;
-
                         }
 
                         anchors {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -347,7 +325,7 @@ Kirigami.ScrollablePage {
                             value: pluginDB.balanceOut
                             decimals: 2
                             stepSize: 0.01
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.balanceOut = v;
                             }
                         }
@@ -364,7 +342,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.delay = v;
                             }
                         }
@@ -380,7 +358,7 @@ Kirigami.ScrollablePage {
                             value: pluginDB.stereoBase
                             decimals: 2
                             stepSize: 0.01
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.stereoBase = v;
                             }
                         }
@@ -397,7 +375,7 @@ Kirigami.ScrollablePage {
                             decimals: 0
                             stepSize: 1
                             unit: "°"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.stereoPhase = v;
                             }
                         }
@@ -415,7 +393,7 @@ Kirigami.ScrollablePage {
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.dry = v;
                             }
                         }
@@ -433,19 +411,14 @@ Kirigami.ScrollablePage {
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.wet = v;
                             }
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
 
     header: EeInputOutputGain {
@@ -493,7 +466,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }

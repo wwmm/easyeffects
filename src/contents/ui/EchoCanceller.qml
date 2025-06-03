@@ -1,11 +1,9 @@
-import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
     id: echoCancellerPage
@@ -17,7 +15,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -54,7 +52,7 @@ Kirigami.ScrollablePage {
                         decimals: 0
                         stepSize: 1
                         unit: "ms"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.filterLength = v;
                         }
                     }
@@ -69,7 +67,7 @@ Kirigami.ScrollablePage {
                         decimals: 0
                         stepSize: 1
                         unit: "dB"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.residualEchoSuppression = v;
                         }
                     }
@@ -84,17 +82,13 @@ Kirigami.ScrollablePage {
                         decimals: 0
                         stepSize: 1
                         unit: "dB"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.nearEndSuppression = v;
                         }
                     }
-
                 }
-
             }
-
         }
-
     }
 
     header: EeInputOutputGain {
@@ -129,7 +123,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }

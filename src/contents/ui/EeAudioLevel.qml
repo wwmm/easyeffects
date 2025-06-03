@@ -1,6 +1,5 @@
 import "Common.js" as Common
 import QtQuick
-import QtQuick.Controls
 import org.kde.kirigami as Kirigami
 
 Rectangle {
@@ -54,9 +53,7 @@ Rectangle {
                 left: parent.left
                 margins: root.border.width
             }
-
         }
-
     }
 
     Text {
@@ -66,5 +63,4 @@ Rectangle {
         text: Number(root.value).toLocaleString(Qt.locale(), 'f', decimals)
         color: Kirigami.Theme.textColor
     }
-
 }

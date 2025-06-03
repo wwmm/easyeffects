@@ -1,4 +1,3 @@
-import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -17,7 +16,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -52,7 +51,7 @@ Kirigami.ScrollablePage {
                         currentIndex: pluginDB.type
                         editable: false
                         model: [i18n("Low-pass"), i18n("High-pass"), i18n("Low-shelf"), i18n("High-shelf"), i18n("Bell"), i18n("Band-pass"), i18n("Notch"), i18n("Resonance"), i18n("Ladder-pass"), i18n("Ladder-rejection"), i18n("All-pass")]
-                        onActivated: (idx) => {
+                        onActivated: idx => {
                             pluginDB.type = idx;
                         }
                     }
@@ -65,7 +64,7 @@ Kirigami.ScrollablePage {
                         currentIndex: pluginDB.mode
                         editable: false
                         model: ["RLC (BT)", "RLC (MT)", "BWC (BT)", "BWC (MT)", "LRX (BT)", "LRX (MT)", "APO (DR)"]
-                        onActivated: (idx) => {
+                        onActivated: idx => {
                             pluginDB.mode = idx;
                         }
                     }
@@ -78,7 +77,7 @@ Kirigami.ScrollablePage {
                         currentIndex: pluginDB.equalMode
                         editable: false
                         model: ["IIR", "FIR", "FFT", "SPM"]
-                        onActivated: (idx) => {
+                        onActivated: idx => {
                             pluginDB.equalMode = idx;
                         }
                     }
@@ -91,13 +90,11 @@ Kirigami.ScrollablePage {
                         currentIndex: pluginDB.slope
                         editable: false
                         model: ["x1", "x2", "x3", "x4", "x6", "x8", "x12", "x16"]
-                        onActivated: (idx) => {
+                        onActivated: idx => {
                             pluginDB.slope = idx;
                         }
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -118,7 +115,7 @@ Kirigami.ScrollablePage {
                         decimals: 0
                         stepSize: 1
                         unit: "Hz"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.frequency = v;
                         }
                     }
@@ -132,7 +129,7 @@ Kirigami.ScrollablePage {
                         value: pluginDB.width
                         decimals: 0
                         stepSize: 1
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.width = v;
                         }
                     }
@@ -147,7 +144,7 @@ Kirigami.ScrollablePage {
                         decimals: 2
                         stepSize: 0.01
                         unit: "dB"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.gain = v;
                         }
                     }
@@ -161,7 +158,7 @@ Kirigami.ScrollablePage {
                         value: pluginDB.quality
                         decimals: 2
                         stepSize: 0.01
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.quality = v;
                         }
                     }
@@ -176,17 +173,13 @@ Kirigami.ScrollablePage {
                         decimals: 1
                         stepSize: 0.1
                         unit: "%"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.balance = v;
                         }
                     }
-
                 }
-
             }
-
         }
-
     }
 
     header: EeInputOutputGain {
@@ -234,7 +227,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }
