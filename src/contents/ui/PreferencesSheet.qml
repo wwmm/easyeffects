@@ -1,6 +1,6 @@
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import QtQml // Despite of Qt extension says this import is needed. WE crash without it
+import QtQml // Despite of what Qt extension says this import is needed. We crash without it
 import ee.database as DB
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
