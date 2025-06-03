@@ -18,7 +18,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -26,9 +26,18 @@ Kirigami.ScrollablePage {
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
     }
 
+    function validChartMag(chartMag) {
+        // Determine if chartMag is a non-empty QList.
+        return chartMag?.length > 0;
+    }
+
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
-        convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagL : pluginBackend.chartMagR);
+
+        const chart = chartChannel.left ? pluginBackend.chartMagL : pluginBackend.chartMagR;
+        if (validChartMag(chart)) {
+            convolverChart.updateData(chart);
+        }
     }
 
     Connections {
@@ -37,39 +46,34 @@ Kirigami.ScrollablePage {
         }
 
         function onChartMagLChanged() {
-            if (chartChannel.left && !spectrumAction.checked)
+            if (validChartMag(pluginBackend.chartMagL) && chartChannel.left && !spectrumAction.checked)
                 convolverChart.updateData(pluginBackend.chartMagL);
-
         }
 
         function onChartMagRChanged() {
-            if (chartChannel.right && !spectrumAction.checked)
+            if (validChartMag(pluginBackend.chartMagR) && chartChannel.right && !spectrumAction.checked) {
                 convolverChart.updateData(pluginBackend.chartMagR);
-
+            }
         }
 
         function onChartMagLfftLinearChanged() {
-            if (chartChannel.left && spectrumAction.checked && !convolverChart.logarithimicHorizontalAxis)
+            if (validChartMag(pluginBackend.chartMagLfftLinear) && chartChannel.left && spectrumAction.checked && !convolverChart.logarithimicHorizontalAxis)
                 convolverChart.updateData(pluginBackend.chartMagLfftLinear);
-
         }
 
         function onChartMagRfftLinearChanged() {
-            if (chartChannel.right && spectrumAction.checked && !convolverChart.logarithimicHorizontalAxis)
+            if (validChartMag(pluginBackend.chartMagRfftLinear) && chartChannel.right && spectrumAction.checked && !convolverChart.logarithimicHorizontalAxis)
                 convolverChart.updateData(pluginBackend.chartMagRfftLinear);
-
         }
 
         function onChartMagLfftLogChanged() {
-            if (chartChannel.left && spectrumAction.checked && convolverChart.logarithimicHorizontalAxis)
+            if (validChartMag(pluginBackend.chartMagLfftLog) && chartChannel.left && spectrumAction.checked && convolverChart.logarithimicHorizontalAxis)
                 convolverChart.updateData(pluginBackend.chartMagLfftLog);
-
         }
 
         function onChartMagRfftLogChanged() {
-            if (chartChannel.right && spectrumAction.checked && convolverChart.logarithimicHorizontalAxis)
+            if (validChartMag(pluginBackend.chartMagRfftLog) && chartChannel.right && spectrumAction.checked && convolverChart.logarithimicHorizontalAxis)
                 convolverChart.updateData(pluginBackend.chartMagRfftLog);
-
         }
 
         target: pluginBackend
@@ -131,7 +135,6 @@ Kirigami.ScrollablePage {
                 indeterminate: true
                 visible: false
             }
-
         }
 
         customFooterActions: Kirigami.Action {
@@ -143,7 +146,6 @@ Kirigami.ScrollablePage {
                 combinedImpulseName.clear();
             }
         }
-
     }
 
     ColumnLayout {
@@ -178,13 +180,24 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (checked) {
                             convolverChart.xUnit = "Hz";
-                            if (!convolverChart.logarithimicHorizontalAxis)
-                                convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagLfftLinear : pluginBackend.chartMagRfftLinear);
-                            else
-                                convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagLfftLog : pluginBackend.chartMagRfftLog);
+                            if (!convolverChart.logarithimicHorizontalAxis) {
+                                const chart = chartChannel.left ? pluginBackend.chartMagLfftLinear : pluginBackend.chartMagRfftLinear;
+
+                                if (validChartMag(chart))
+                                    convolverChart.updateData(chart);
+                            } else {
+                                const chart = chartChannel.left ? pluginBackend.chartMagLfftLog : pluginBackend.chartMagRfftLog;
+
+                                if (validChartMag(chart))
+                                    convolverChart.updateData(chart);
+                            }
                         } else {
                             convolverChart.xUnit = "s";
-                            convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagL : pluginBackend.chartMagR);
+
+                            const chart = chartChannel.left ? pluginBackend.chartMagL : pluginBackend.chartMagR;
+                            if (validChartMag(chart))
+                                convolverChart.updateData(chart);
+
                             spectrumLogScale.checked = false;
                             convolverChart.logarithimicHorizontalAxis = checked;
                         }
@@ -199,10 +212,17 @@ Kirigami.ScrollablePage {
                     icon.name: "transform-scale-symbolic"
                     onTriggered: {
                         convolverChart.logarithimicHorizontalAxis = checked;
-                        if (checked)
-                            convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagLfftLog : pluginBackend.chartMagRfftLog);
-                        else
-                            convolverChart.updateData(chartChannel.left ? pluginBackend.chartMagLfftLinear : pluginBackend.chartMagRfftLinear);
+                        if (checked) {
+                            const chart = chartChannel.left ? pluginBackend.chartMagLfftLog : pluginBackend.chartMagRfftLog;
+
+                            if (validChartMag(chart))
+                                convolverChart.updateData(chart);
+                        } else {
+                            const chart = chartChannel.left ? pluginBackend.chartMagLfftLinear : pluginBackend.chartMagRfftLinear;
+
+                            if (validChartMag(chart))
+                                convolverChart.updateData(chart);
+                        }
                     }
                 },
                 Kirigami.Action {
@@ -221,12 +241,12 @@ Kirigami.ScrollablePage {
                                 if (checked !== chartChannel.left) {
                                     chartChannel.left = checked;
                                     if (!spectrumAction.checked) {
-                                        convolverChart.updateData(pluginBackend.chartMagL);
+                                        if (validChartMag(pluginBackend.chartMagL))
+                                            convolverChart.updateData(pluginBackend.chartMagL);
                                     } else {
-                                        if (!convolverChart.logarithimicHorizontalAxis)
-                                            convolverChart.updateData(pluginBackend.chartMagLfftLinear);
-                                        else
-                                            convolverChart.updateData(pluginBackend.chartMagLfftLog);
+                                        const chart = !convolverChart.logarithimicHorizontalAxis ? pluginBackend.chartMagLfftLinear : pluginBackend.chartMagLfftLog;
+                                        if (validChartMag(chart))
+                                            convolverChart.updateData(chart);
                                     }
                                 }
                             }
@@ -239,19 +259,17 @@ Kirigami.ScrollablePage {
                                 if (checked !== chartChannel.right) {
                                     chartChannel.right = checked;
                                     if (!spectrumAction.checked) {
-                                        convolverChart.updateData(pluginBackend.chartMagR);
+                                        if (validChartMag(pluginBackend.chartMagR))
+                                            convolverChart.updateData(pluginBackend.chartMagR);
                                     } else {
-                                        if (!convolverChart.logarithimicHorizontalAxis)
-                                            convolverChart.updateData(pluginBackend.chartMagRfftLinear);
-                                        else
-                                            convolverChart.updateData(pluginBackend.chartMagRfftLog);
+                                        const chart = !convolverChart.logarithimicHorizontalAxis ? pluginBackend.chartMagRfftLinear : pluginBackend.chartMagRfftLog;
+                                        if (validChartMag(chart))
+                                            convolverChart.updateData(chart);
                                     }
                                 }
                             }
                         }
-
                     }
-
                 }
             ]
 
@@ -277,7 +295,6 @@ Kirigami.ScrollablePage {
                     onWidthChanged: {
                         if (pluginBackend)
                             pluginBackend.interpPoints = convolverChart.width;
-
                     }
                 }
 
@@ -329,11 +346,8 @@ Kirigami.ScrollablePage {
                         text: Number(pluginBackend ? pluginBackend.kernelDuration : 0).toLocaleString(Qt.locale(), 'f', 3) + " s"
                         enabled: false
                     }
-
                 }
-
             }
-
         }
 
         RowLayout {
@@ -359,7 +373,6 @@ Kirigami.ScrollablePage {
                 onValueChanged: () => {
                     if (value !== pluginDB.irWidth)
                         pluginDB.irWidth = value;
-
                 }
             }
 
@@ -367,9 +380,7 @@ Kirigami.ScrollablePage {
                 Layout.alignment: Qt.AlignHCenter
                 text: irWidth.value + " %"
             }
-
         }
-
     }
 
     header: EeInputOutputGain {
@@ -403,7 +414,6 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (checked !== pluginDB.autogain)
                             pluginDB.autogain = checked;
-
                     }
                 },
                 Kirigami.Action {
@@ -415,7 +425,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }
