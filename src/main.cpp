@@ -19,6 +19,7 @@
 
 #include <kicontheme.h>
 #include <klocalizedcontext.h>
+#include <qcontainerfwd.h>
 #include <qobject.h>
 #include <qqml.h>
 #include <qqmlapplicationengine.h>
@@ -35,12 +36,11 @@
 #include <QSystemTrayIcon>
 #include <QWindow>
 #include <csignal>
-#include <cstdlib>
-#include <cstring>
 #include <memory>
 #include "command_line_parser.hpp"
 #include "config.h"
 #include "db_manager.hpp"
+#include "global_shortcuts.hpp"
 #include "local_client.hpp"
 #include "local_server.hpp"
 #include "presets_manager.hpp"
@@ -51,7 +51,7 @@
 #include "test_signals.hpp"
 #include "util.hpp"
 
-void csignalHandler(int s) {
+static void csignalHandler(int s) {
   std::signal(s, SIG_DFL);
   qApp->quit();
 }
@@ -157,6 +157,10 @@ int main(int argc, char* argv[]) {
 
     QObject::connect(db::Main::self(), &db::Main::bypassChanged, update_bypass_state);
   }
+
+  // Global shortcuts
+
+  // auto global_shortcuts = std::make_unique<GlobalShortcuts>();
 
   // Initializing QML
 

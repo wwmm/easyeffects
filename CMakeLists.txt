@@ -32,8 +32,9 @@ include(ECMFindQmlModule)
 include(ECMQmlModule)
 
 find_package(Qt${QT_MAJOR_VERSION} REQUIRED NO_MODULE COMPONENTS
-    Graphs
     Core
+    DBus
+    Graphs
     Gui
     Network
     Qml

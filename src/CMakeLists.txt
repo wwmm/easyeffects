@@ -53,6 +53,7 @@ target_sources(easyeffects PRIVATE
     fir_filter_lowpass.cpp
     gate.cpp
     gate_preset.cpp
+    global_shortcuts.cpp
     kconfig_base_ee.cpp
     level_meter.cpp
     level_meter_preset.cpp
@@ -113,14 +114,15 @@ target_include_directories(easyeffects PRIVATE
 )
 
 target_link_libraries(easyeffects PRIVATE
-    Qt${QT_MAJOR_VERSION}::Graphs
     KF${QT_MAJOR_VERSION}::ConfigCore
     KF${QT_MAJOR_VERSION}::ConfigGui
-    Qt${QT_MAJOR_VERSION}::Core
     KF${QT_MAJOR_VERSION}::CoreAddons
-    Qt${QT_MAJOR_VERSION}::Gui
     KF${QT_MAJOR_VERSION}::I18n
     KF${QT_MAJOR_VERSION}::IconThemes
+    Qt${QT_MAJOR_VERSION}::Core
+    Qt${QT_MAJOR_VERSION}::DBus
+    Qt${QT_MAJOR_VERSION}::Gui
+    Qt${QT_MAJOR_VERSION}::Graphs
     Qt${QT_MAJOR_VERSION}::Network
     Qt${QT_MAJOR_VERSION}::Qml
     Qt${QT_MAJOR_VERSION}::Quick
