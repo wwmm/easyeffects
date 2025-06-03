@@ -27,7 +27,7 @@ Kirigami.ApplicationWindow {
                 pageStack.push("qrc:ui/PageStreamsEffects.qml", {
                     "pageType": 0,
                     "streamDB": DB.Manager.streamOutputs,
-                    "pluginsDB": Qt.binding(function() {
+                    "pluginsDB": Qt.binding(function () {
                         return DB.Manager.soePluginsDB;
                     }),
                     "pipelineInstance": Pipeline.Output,
@@ -38,7 +38,7 @@ Kirigami.ApplicationWindow {
                 pageStack.push("qrc:ui/PageStreamsEffects.qml", {
                     "pageType": 1,
                     "streamDB": DB.Manager.streamInputs,
-                    "pluginsDB": Qt.binding(function() {
+                    "pluginsDB": Qt.binding(function () {
                         return DB.Manager.siePluginsDB;
                     }),
                     "pipelineInstance": Pipeline.Input,
@@ -122,25 +122,28 @@ Kirigami.ApplicationWindow {
                 "version": projectVersion,
                 "programIconName": "com.github.wwmm.easyeffects.svg",
                 "otherText": "",
-                "authors": [{
-                    "name": i18nc("@info:credit", "Wellington Wallace"),
-                    "task": i18nc("@info:credit", "Developer"),
-                    "emailAddress": "wellingtonwallace@gmail.com",
-                    "webAddress": "",
-                    "ocsUsername": ""
-                }],
+                "authors": [
+                    {
+                        "name": i18nc("@info:credit", "Wellington Wallace"),
+                        "task": i18nc("@info:credit", "Developer"),
+                        "emailAddress": "wellingtonwallace@gmail.com",
+                        "webAddress": "",
+                        "ocsUsername": ""
+                    }
+                ],
                 "credits": [],
                 "translators": [],
-                "licenses": [{
-                    "name": "GPL v3",
-                    "text": "https://github.com/wwmm/easyeffects/blob/master/LICENSE",
-                    "spdx": "GPL-3.0"
-                }],
+                "licenses": [
+                    {
+                        "name": "GPL v3",
+                        "text": "https://github.com/wwmm/easyeffects/blob/master/LICENSE",
+                        "spdx": "GPL-3.0"
+                    }
+                ],
                 "copyrightStatement": "© 2017-2025 EasyEffects Team",
                 "desktopFileName": "com.github.wwmm.easyeffects.desktop"
             }
         }
-
     }
 
     SystemTrayIcon {
@@ -166,16 +169,13 @@ Kirigami.ApplicationWindow {
                 enabled: false
             }
 
-            MenuSeparator {
-            }
+            MenuSeparator {}
 
             MenuItem {
                 text: i18n("Quit")
                 onTriggered: Qt.quit()
             }
-
         }
-
     }
 
     header: Kirigami.AbstractApplicationHeader {
@@ -210,7 +210,6 @@ Kirigami.ApplicationWindow {
                         onTriggered: {
                             if (checked !== !DB.Manager.main.bypass)
                                 DB.Manager.main.bypass = !checked;
-
                         }
                     }
                 ]
@@ -231,7 +230,7 @@ Kirigami.ApplicationWindow {
                             pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
                                 "pageType": 0,
                                 "streamDB": DB.Manager.streamOutputs,
-                                "pluginsDB": Qt.binding(function() {
+                                "pluginsDB": Qt.binding(function () {
                                     return DB.Manager.soePluginsDB;
                                 }),
                                 "pipelineInstance": Pipeline.Output,
@@ -250,7 +249,7 @@ Kirigami.ApplicationWindow {
                             pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
                                 "pageType": 1,
                                 "streamDB": DB.Manager.streamInputs,
-                                "pluginsDB": Qt.binding(function() {
+                                "pluginsDB": Qt.binding(function () {
                                     return DB.Manager.siePluginsDB;
                                 }),
                                 "pipelineInstance": Pipeline.Input,
@@ -327,9 +326,6 @@ Kirigami.ApplicationWindow {
                     }
                 ]
             }
-
         }
-
     }
-
 }

@@ -15,6 +15,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(QT_DEFAULT_MAJOR_VERSION 6)
 set(QT_MAJOR_VERSION ${QT_DEFAULT_MAJOR_VERSION})
 
+set(QT_QML_GENERATE_QMLLS_INI ON)
+
 option(ENABLE_RNNOISE "Whether to use RRNNoise for noise cancellation" ON)
 option(ENABLE_LIBPORTAL "Whether to use libportal to handle autostart files." OFF)
 option(ENABLE_DEVEL "Whether to use development build mode, with .Devel appended to the application ID. For Flatpak builds, user data for development builds is stored separately from stable builds" OFF)
