@@ -36,11 +36,14 @@ class GlobalShortcuts : public QObject {
  public Q_SLOTS:
   void onSessionCreatedResponse(uint responseCode, const QVariantMap& results);
 
+  void process_activated_signal(const QDBusObjectPath& session_handle,
+                                const QString& shortcut_id,
+                                qulonglong timestamp,
+                                const QVariantMap& options);
+
  private:
   const QString handle_token = QString("ee%1").arg(QCoreApplication::applicationPid());
   const QString session_handle_token = QString("ee%1").arg(QCoreApplication::applicationPid());
 
-  QDBusInterface iface;
-
-  QDBusObjectPath response_handle;
+  QDBusObjectPath response_handle, session_obj_path;
 };
