@@ -70,6 +70,8 @@ void str_trim_start(std::string& str);
 void str_trim_end(std::string& str);
 void str_trim(std::string& str);
 
+auto random_string(const size_t& length) -> std::string;
+
 auto search_filename(const std::filesystem::path& path,
                      const std::string& filename,
                      std::string& full_path_result,
