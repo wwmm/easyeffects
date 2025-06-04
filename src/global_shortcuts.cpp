@@ -31,7 +31,6 @@
 #include <QDBusMetaType>
 #include <QDBusReply>
 #include <utility>
-#include "util.hpp"
 
 // Based on https://github.com/SourceReviver/qt_wayland_globalshortcut_via_portal/blob/main/wayland_shortcut.cpp
 
@@ -40,8 +39,8 @@ GlobalShortcuts::GlobalShortcuts(QObject* parent) : QObject(parent) {
   qDBusRegisterMetaType<QList<QPair<QString, QVariantMap>>>();
 
   QMap<QString, QVariant> options;
-  options["handle_token"] = handle_token;
-  options["session_handle_token"] = handle_token;
+  options["handle_token"] = QString("easyeffects%1").arg(util::random_string(32));
+  options["session_handle_token"] = session_handle_token;
 
   QList<QVariant> args_create_session;
 
@@ -64,27 +63,36 @@ GlobalShortcuts::GlobalShortcuts(QObject* parent) : QObject(parent) {
 
 void GlobalShortcuts::onSessionCreatedResponse(uint responseCode, const QVariantMap& results) {
   if (responseCode != 0) {
-    util::warning("Session creation was denied or failed. Response code: " + util::to_string(responseCode));
+    util::warning("D-Bus CreateSession for GlobalShortcuts was denied or failed. Response code: " +
+                  util::to_string(responseCode));
+
     return;
   }
 
-  if (results.contains("session_handle")) {
-    session_obj_path = QDBusObjectPath(results.value("session_handle").value<QString>());
+  if (!results.contains("session_handle")) {
+    util::warning("Missing session_handle on GlobalShortcuts CreateSession response.");
+
+    return;
   }
+
+  session_obj_path = QDBusObjectPath(results.value("session_handle").value<QString>());
 
   QDBusConnection::sessionBus().disconnect("org.freedesktop.portal.Desktop", response_handle.path(),
                                            "org.freedesktop.portal.Request", "Response", this,
                                            SLOT(onSessionCreatedResponse(uint, QVariantMap)));
 
-  util::info("Session created: " + session_obj_path.path().toStdString());
+  util::info("D-Bus session for GlobalShortcuts created.");
+
+  // For security reasons, it's better to show the session handle only in development/debug mode.
+  // util::info("Session handle object response:" + session_obj_path.path().toStdString());
 
   // a(sa{sv})
   QList<QPair<QString, QVariantMap>> shortcuts;
 
   QPair<QString, QVariantMap> shortcut;
   QVariantMap shortcut_options;
-  shortcut.first = "global_bypass";
-  shortcut_options.insert("description", "global bypass");
+  shortcut.first = "toggle_global_bypass";
+  shortcut_options.insert("description", "Toggle Global Bypass");
   shortcut_options.insert("preferred_trigger", "CTRL+ALT+E");
   shortcut.second = shortcut_options;
 
@@ -92,7 +100,7 @@ void GlobalShortcuts::onSessionCreatedResponse(uint responseCode, const QVariant
 
   QMap<QString, QVariant> bind_opts;
 
-  bind_opts.insert("handle_token", handle_token);
+  bind_opts.insert("handle_token", QString("easyeffects%1").arg(util::random_string(32)));
 
   QList<QVariant> bind_shortcut_args;
 
@@ -111,7 +119,7 @@ void GlobalShortcuts::onSessionCreatedResponse(uint responseCode, const QVariant
 
   QDBusMessage bind_ret = QDBusConnection::sessionBus().call(bind_shortcut);
 
-  qDebug() << "bind message return->" << bind_ret;
+  // qDebug() << "GlobalShortcuts BindShortcuts response ->" << bind_ret;
 
   QDBusConnection::sessionBus().connect(
       "org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.GlobalShortcuts",
@@ -122,5 +130,6 @@ void GlobalShortcuts::process_activated_signal(const QDBusObjectPath& session_ha
                                                const QString& shortcut_id,
                                                qulonglong timestamp,
                                                const QVariantMap& options) {
-  qDebug() << "Got Signal ->" << session_handle.path() << shortcut_id << timestamp << options;
+  // TODO: Add below the operations for bound global shortcuts.
+  qDebug() << "Got GlobalShortcuts Activated Signal ->" << session_handle.path() << shortcut_id << timestamp << options;
 }

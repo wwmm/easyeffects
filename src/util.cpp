@@ -31,6 +31,7 @@
 #include <memory>
 #include <numbers>
 #include <ostream>
+#include <random>
 #include <regex>
 #include <string>
 #include <thread>
@@ -150,6 +151,21 @@ void str_trim(std::string& str) {
   // Trim both sides of the given string. See above.
   str_trim_end(str);
   str_trim_start(str);
+}
+
+auto random_string(const size_t& length) -> std::string {
+  static const std::string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+  std::random_device rd;      // Non-deterministic random number generator
+  std::mt19937 engine(rd());  // Mersenne Twister engine
+  std::uniform_int_distribution<> dist(0, characters.size() - 1);
+  std::string result;
+
+  for (size_t i = 0U; i < length; ++i) {
+    result += characters[dist(engine)];
+  }
+
+  return result;
 }
 
 auto search_filename(const std::filesystem::path& path,

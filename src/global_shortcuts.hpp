@@ -26,6 +26,7 @@
 #include <QApplication>
 #include <QDBusInterface>
 #include <QObject>
+#include "util.hpp"
 
 class GlobalShortcuts : public QObject {
   Q_OBJECT
@@ -42,8 +43,7 @@ class GlobalShortcuts : public QObject {
                                 const QVariantMap& options);
 
  private:
-  const QString handle_token = QString("ee%1").arg(QCoreApplication::applicationPid());
-  const QString session_handle_token = QString("ee%1").arg(QCoreApplication::applicationPid());
+  const QString session_handle_token = QString("easyeffects%1").arg(util::random_string(32));
 
   QDBusObjectPath response_handle, session_obj_path;
 };
