@@ -36,6 +36,10 @@
             <label>Last used output community package.</label>
             <default code="true">""</default>
         </entry>
+        <entry name="xdgGlobalShortcuts" type="Bool">
+            <label>Enable support for XDG Global Shortcuts</label>
+            <default>false</default>
+        </entry>
         <entry name="showNativePluginUi" type="Bool">
             <label>Show Plugin's Native Window</label>
             <default>false</default>

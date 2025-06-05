@@ -320,6 +320,18 @@ Kirigami.OverlaySheet {
         ColumnLayout {
             FormCard.FormCard {
                 EeSwitch {
+                    id: xdgGlobalShortcuts
+
+                    label: i18n("Global Shortcuts")
+                    subtitle: i18n("Enables support for XDG Global Shortcuts (Easy Effects service needs to be restarted)")
+                    isChecked: DB.Manager.main.xdgGlobalShortcuts
+                    onCheckedChanged: {
+                        if (isChecked !== DB.Manager.main.xdgGlobalShortcuts)
+                            DB.Manager.main.xdgGlobalShortcuts = isChecked;
+                    }
+                }
+
+                EeSwitch {
                     id: showNativePluginUi
 
                     label: i18n("Native Plugin Window")

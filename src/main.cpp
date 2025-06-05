@@ -160,7 +160,13 @@ int main(int argc, char* argv[]) {
 
   // Global shortcuts
 
-  // auto global_shortcuts = std::make_unique<GlobalShortcuts>();
+  std::unique_ptr<GlobalShortcuts> global_shortcuts;
+
+  if (db::Main::xdgGlobalShortcuts()) {
+    util::info("XDG Global Shortcuts experimental feature is enabled for this session.");
+
+    global_shortcuts = std::make_unique<GlobalShortcuts>();
+  }
 
   // Initializing QML
 
