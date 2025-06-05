@@ -129,7 +129,7 @@
     </group>
     <group name="EffectsPipelines">
         <entry name="bypass" type="Bool">
-            <label>Puts the Effects Pipelines in Passthrough Mode.</label>
+            <label>Global Bypass: Puts the Effects Pipelines in Passthrough Mode.</label>
             <default>false</default>
         </entry>
         <entry name="processAllOutputs" type="Bool">

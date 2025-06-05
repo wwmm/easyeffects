@@ -74,6 +74,13 @@ Kirigami.ApplicationWindow {
     }
 
     Shortcut {
+        sequences: ["Ctrl+B"]
+        onActivated: {
+            DB.Manager.main.bypass = !DB.Manager.main.bypass;
+        }
+    }
+
+    Shortcut {
         sequences: ["Ctrl+W"]
         onActivated: appWindow.close()
     }
@@ -200,7 +207,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Turn Effects On/Off")
+                        text: i18n("Global Bypass: Turn Effects On/Off")
                         icon.name: "system-shutdown-symbolic"
                         icon.color: checked === true ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
                         displayHint: Kirigami.DisplayHint.IconOnly

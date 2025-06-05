@@ -61,6 +61,34 @@ Kirigami.OverlaySheet {
             }
 
             Kirigami.Chip {
+                text: "B"
+                closable: false
+                checkable: false
+                down: false
+                hoverEnabled: false
+            }
+        }
+
+        Controls.Label {
+            text: i18n("Toggle Global Bypass")
+        }
+
+        RowLayout {
+            Layout.alignment: Qt.AlignRight
+
+            Kirigami.Chip {
+                text: "Ctrl"
+                checkable: false
+                down: false
+                hoverEnabled: false
+                closable: false
+            }
+
+            Controls.Label {
+                text: i18n("+")
+            }
+
+            Kirigami.Chip {
                 text: "W"
                 closable: false
                 checkable: false
