@@ -160,13 +160,37 @@ int main(int argc, char* argv[]) {
 
   // Global shortcuts
 
-  std::unique_ptr<GlobalShortcuts> global_shortcuts;
+  std::unique_ptr<GlobalShortcuts> global_shortcuts = std::make_unique<GlobalShortcuts>();
 
-  if (db::Main::xdgGlobalShortcuts()) {
+  auto bind_global_shortcuts = [&]() {
     util::info("XDG Global Shortcuts experimental feature is enabled for this session.");
 
-    global_shortcuts = std::make_unique<GlobalShortcuts>();
-  }
+    if (qEnvironmentVariable("XDG_SESSION_DESKTOP") == "KDE" || qEnvironmentVariable("XDG_CURRENT_DESKTOP") == "KDE") {
+      // Do the binding call only if really necessary
+      if (!db::Main::xdgGlobalShortcutsBound()) {
+        global_shortcuts->bind_shortcuts();
+      }
+    } else {
+      // Some desktops like gnome and hyprland seem to need the call to always be made
+      // https://github.com/wwmm/easyeffects/issues/3834#issuecomment-2940756992
+      // https://github.com/wwmm/easyeffects/issues/3834#issuecomment-2941713432
+      global_shortcuts->bind_shortcuts();
+    }
+  };
+
+  QObject::connect(global_shortcuts.get(), &GlobalShortcuts::onBindShortcuts, [&]() {
+    if (db::Main::xdgGlobalShortcuts()) {
+      bind_global_shortcuts();
+    }
+  });
+
+  QObject::connect(db::Main::self(), &db::Main::xdgGlobalShortcutsChanged, [&]() {
+    if (db::Main::xdgGlobalShortcuts()) {
+      bind_global_shortcuts();
+    } else {
+      db::Main::setXdgGlobalShortcutsBound(false);
+    }
+  });
 
   // Initializing QML
 

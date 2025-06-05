@@ -40,6 +40,10 @@
             <label>Enable support for XDG Global Shortcuts</label>
             <default>false</default>
         </entry>
+        <entry name="xdgGlobalShortcutsBound" type="Bool">
+            <label>True if global shortcuts have already been bound</label>
+            <default>false</default>
+        </entry>
         <entry name="showNativePluginUi" type="Bool">
             <label>Show Plugin's Native Window</label>
             <default>false</default>

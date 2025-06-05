@@ -26,6 +26,7 @@
 #include <QApplication>
 #include <QDBusInterface>
 #include <QObject>
+#include <array>
 #include "util.hpp"
 
 struct GlobalShortcutData {
@@ -38,10 +39,16 @@ class GlobalShortcuts : public QObject {
   Q_OBJECT
 
  public:
-  std::array<GlobalShortcutData, 1> ee_global_shortcuts_array = {
-      {"toggle_global_bypass", "Toggle Global Bypass", "CTRL+ALT+E"}};
-
   explicit GlobalShortcuts(QObject* parent = nullptr);
+
+  void bind_shortcuts();
+
+  std::array<GlobalShortcutData, 1> ee_global_shortcuts_array = {{{.shortcut_id = "toggle_global_bypass",
+                                                                   .description = "Toggle Global Bypass",
+                                                                   .preferred_trigger = "CTRL+ALT+E"}}};
+
+ Q_SIGNALS:
+  void onBindShortcuts();
 
  public Q_SLOTS:
   void onSessionCreatedResponse(uint responseCode, const QVariantMap& results);

@@ -26,11 +26,14 @@
 #include <qlogging.h>
 #include <qobject.h>
 #include <qobjectdefs.h>
+#include <qtmetamacros.h>
 #include <qtypes.h>
 #include <QDBusConnection>
 #include <QDBusMetaType>
 #include <QDBusReply>
 #include <utility>
+#include "easyeffects_db.h"
+#include "util.hpp"
 
 // Based on https://github.com/SourceReviver/qt_wayland_globalshortcut_via_portal/blob/main/wayland_shortcut.cpp
 // Documentation: https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.GlobalShortcuts.html
@@ -84,6 +87,22 @@ void GlobalShortcuts::onSessionCreatedResponse(uint responseCode, const QVariant
 
   util::info("D-Bus session for GlobalShortcuts created.");
 
+  Q_EMIT onBindShortcuts();
+
+  QDBusConnection::sessionBus().connect(
+      "org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.GlobalShortcuts",
+      "Activated", this, SLOT(process_activated_signal(QDBusObjectPath, QString, qulonglong, QVariantMap)));
+}
+
+void GlobalShortcuts::process_activated_signal(const QDBusObjectPath& session_handle,
+                                               const QString& shortcut_id,
+                                               qulonglong timestamp,
+                                               const QVariantMap& options) {
+  // TODO: Add below the operations for bound global shortcuts.
+  qDebug() << "Got GlobalShortcuts Activated Signal ->" << session_handle.path() << shortcut_id << timestamp << options;
+}
+
+void GlobalShortcuts::bind_shortcuts() {
   // For security reasons, it's better to show the session handle only in development/debug mode.
   // util::info("Session handle object response:" + session_obj_path.path().toStdString());
 
@@ -131,15 +150,5 @@ void GlobalShortcuts::onSessionCreatedResponse(uint responseCode, const QVariant
 
   // qDebug() << "GlobalShortcuts BindShortcuts response ->" << bind_ret;
 
-  QDBusConnection::sessionBus().connect(
-      "org.freedesktop.portal.Desktop", "/org/freedesktop/portal/desktop", "org.freedesktop.portal.GlobalShortcuts",
-      "Activated", this, SLOT(process_activated_signal(QDBusObjectPath, QString, qulonglong, QVariantMap)));
-}
-
-void GlobalShortcuts::process_activated_signal(const QDBusObjectPath& session_handle,
-                                               const QString& shortcut_id,
-                                               qulonglong timestamp,
-                                               const QVariantMap& options) {
-  // TODO: Add below the operations for bound global shortcuts.
-  qDebug() << "Got GlobalShortcuts Activated Signal ->" << session_handle.path() << shortcut_id << timestamp << options;
+  db::Main::setXdgGlobalShortcutsBound(true);
 }

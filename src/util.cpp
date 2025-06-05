@@ -25,12 +25,12 @@
 #include <sys/types.h>
 #include <array>
 #include <cmath>
+#include <cstddef>
 #include <exception>
 #include <filesystem>
 #include <iostream>
 #include <memory>
 #include <numbers>
-#include <ostream>
 #include <random>
 #include <regex>
 #include <string>

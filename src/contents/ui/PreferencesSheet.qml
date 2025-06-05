@@ -323,7 +323,7 @@ Kirigami.OverlaySheet {
                     id: xdgGlobalShortcuts
 
                     label: i18n("Global Shortcuts")
-                    subtitle: i18n("Enables support for XDG Global Shortcuts (Easy Effects service needs to be restarted)")
+                    subtitle: i18n("Enables support for XDG Global Shortcuts")
                     isChecked: DB.Manager.main.xdgGlobalShortcuts
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.xdgGlobalShortcuts)
