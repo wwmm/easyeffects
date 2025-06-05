@@ -28,10 +28,19 @@
 #include <QObject>
 #include "util.hpp"
 
+struct GlobalShortcutData {
+  QString shortcut_id;
+  QString description;
+  QString preferred_trigger;
+};
+
 class GlobalShortcuts : public QObject {
   Q_OBJECT
 
  public:
+  std::array<GlobalShortcutData, 1> ee_global_shortcuts_array = {
+      {"toggle_global_bypass", "Toggle Global Bypass", "CTRL+ALT+E"}};
+
   explicit GlobalShortcuts(QObject* parent = nullptr);
 
  public Q_SLOTS:

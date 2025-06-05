@@ -33,6 +33,7 @@
 #include <utility>
 
 // Based on https://github.com/SourceReviver/qt_wayland_globalshortcut_via_portal/blob/main/wayland_shortcut.cpp
+// Documentation: https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.GlobalShortcuts.html
 
 GlobalShortcuts::GlobalShortcuts(QObject* parent) : QObject(parent) {
   qDBusRegisterMetaType<std::pair<QString, QVariantMap>>();
@@ -89,14 +90,17 @@ void GlobalShortcuts::onSessionCreatedResponse(uint responseCode, const QVariant
   // a(sa{sv})
   QList<QPair<QString, QVariantMap>> shortcuts;
 
-  QPair<QString, QVariantMap> shortcut;
-  QVariantMap shortcut_options;
-  shortcut.first = "toggle_global_bypass";
-  shortcut_options.insert("description", "Toggle Global Bypass");
-  shortcut_options.insert("preferred_trigger", "CTRL+ALT+E");
-  shortcut.second = shortcut_options;
+  for (const auto& gsd : ee_global_shortcuts_array) {
+    QPair<QString, QVariantMap> shortcut;
 
-  shortcuts.append(shortcut);
+    QVariantMap shortcut_options;
+    shortcut.first = gsd.shortcut_id;
+    shortcut_options.insert("description", gsd.shortcut_id);
+    shortcut_options.insert("preferred_trigger", gsd.preferred_trigger);
+    shortcut.second = shortcut_options;
+
+    shortcuts.append(shortcut);
+  }
 
   QMap<QString, QVariant> bind_opts;
 
@@ -104,9 +108,15 @@ void GlobalShortcuts::onSessionCreatedResponse(uint responseCode, const QVariant
 
   QList<QVariant> bind_shortcut_args;
 
+  /*
+   * 1. session handle object
+   * 2. shortcuts list
+   * 3. window identifier (https://flatpak.github.io/xdg-desktop-portal/docs/window-identifiers.html)
+   * 4. options (contains request handle token)
+   */
   bind_shortcut_args.append(session_obj_path);
   bind_shortcut_args.append(QVariant::fromValue(shortcuts));
-  bind_shortcut_args.append(QString());
+  bind_shortcut_args.append(QString());  // can be empty
   bind_shortcut_args.append(bind_opts);
 
   QDBusMessage bind_shortcut =
