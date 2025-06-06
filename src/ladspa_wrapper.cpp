@@ -606,7 +606,7 @@ void LadspaWrapper::connect_data_ports(const std::span<const float>& left_in,
   }
 
   if (right_in_idx != null_ul) {
-    descriptor->connect_port(instance, right_in_idx, const_cast<LADSPA_Data*>(left_in.data()));
+    descriptor->connect_port(instance, right_in_idx, const_cast<LADSPA_Data*>(right_in.data()));
   }
 
   if (probe_left_idx == null_ul || probe_right_idx == null_ul) {
@@ -658,7 +658,7 @@ void LadspaWrapper::connect_data_ports(const std::span<const float>& left_in,
   }
 
   if (right_out_idx != null_ul) {
-    descriptor->connect_port(instance, right_out_idx, left_out.data());
+    descriptor->connect_port(instance, right_out_idx, right_out.data());
   }
 }
 
