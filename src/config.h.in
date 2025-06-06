@@ -1,5 +1,7 @@
 #define PROJECT_VERSION "@PROJECT_VERSION@"
 
+#define LIB_DIR "@KDE_INSTALL_FULL_LIBDIR@"
+
 // clang-format off
 #define VERSION_MAJOR @PROJECT_VERSION_MAJOR@
 

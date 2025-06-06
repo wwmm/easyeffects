@@ -55,6 +55,7 @@ target_sources(easyeffects PRIVATE
     gate_preset.cpp
     global_shortcuts.cpp
     kconfig_base_ee.cpp
+    ladspa_wrapper.cpp
     level_meter.cpp
     level_meter_preset.cpp
     limiter.cpp
