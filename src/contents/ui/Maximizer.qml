@@ -75,6 +75,7 @@ Kirigami.ScrollablePage {
 
                     EeProgressBar {
                         id: reductionLevel
+                        Layout.topMargin: Kirigami.Units.largeSpacing
 
                         label: i18n("Reduction")
                         unit: "dB"
