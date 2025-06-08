@@ -10,9 +10,9 @@ Item {
 
     required property var listModel
     required property int index
-    required property bool bypass
     required property string name
     required property string translatedName
+    required property var pluginDB
 
     width: {
         if (parent)
@@ -38,7 +38,7 @@ Item {
             columnSpacing: Kirigami.Units.smallSpacing
 
             Kirigami.Icon {
-                source: bypass === true ? "media-playback-pause-symbolic" : "composition-symbolic"
+                source: pluginDB.bypass === true ? "media-playback-pause-symbolic" : "composition-symbolic"
                 Layout.preferredWidth: Kirigami.Units.iconSizes.sizeForLabels
                 Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels
                 Layout.alignment: Qt.AlignLeft
@@ -47,7 +47,7 @@ Item {
             Controls.Label {
                 Layout.fillWidth: !listItemDelegate.hovered
                 text: translatedName
-                color: bypass ? Kirigami.Theme.disabledTextColor : Kirigami.Theme.textColor
+                color: pluginDB.bypass ? Kirigami.Theme.disabledTextColor : Kirigami.Theme.textColor
             }
 
             Kirigami.ActionToolBar {
@@ -58,14 +58,14 @@ Item {
                         icon.name: "system-shutdown-symbolic"
                         displayHint: Kirigami.DisplayHint.IconOnly
                         checkable: true
-                        checked: !bypass
+                        checked: !pluginDB.bypass
                         onTriggered: {
-                            if (checked === !bypass) {
+                            if (checked === !pluginDB.bypass) {
                                 return;
                             }
 
-                            bypass = !checked;
-                            const prefix = bypass ? i18n("Effect Disabled") : i18n("Effect Enabled");
+                            pluginDB.bypass = !checked;
+                            const prefix = pluginDB.bypass ? i18n("Effect Disabled") : i18n("Effect Enabled");
                             showPassiveNotification(prefix + ": " + name);
                         }
                     },

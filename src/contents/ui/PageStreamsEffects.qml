@@ -88,7 +88,7 @@ Kirigami.Page {
                                 "name": plugins[n],
                                 "baseName": baseNames[k],
                                 "translatedName": TagsPluginName.PluginsNameModel.translate(baseNames[k]),
-                                "bypass": false
+                                "pluginDB": pluginsDB[plugins[n]]
                             });
                             break;
                         }

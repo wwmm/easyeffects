@@ -44,6 +44,7 @@
 #include "crossfeed.hpp"
 #include "crystalizer.hpp"
 #include "db_manager.hpp"
+#include "deepfilternet.hpp"
 #include "deesser.hpp"
 #include "delay.hpp"
 #include "echo_canceller.hpp"
@@ -69,7 +70,6 @@
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
-// #include "deepfilternet.hpp"
 // #include "equalizer.hpp"
 // #include "multiband_compressor.hpp"
 // #include "multiband_gate.hpp"
@@ -145,7 +145,7 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
       filter = std::make_shared<Crystalizer>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
-      //   filter = std::make_shared<DeepFilterNet>(log_tag, tags::schema::deepfilternet::id, path, pm, pipeline_type);
+      filter = std::make_shared<DeepFilterNet>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::deesser)) {
       filter = std::make_shared<Deesser>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::delay)) {
@@ -291,6 +291,10 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::delay)) {
     return QVariant::fromValue(dynamic_cast<Delay*>(p.get()));
+  }
+
+  if (pluginName.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
+    return QVariant::fromValue(dynamic_cast<DeepFilterNet*>(p.get()));
   }
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::deesser)) {
