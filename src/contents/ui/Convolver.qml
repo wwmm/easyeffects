@@ -362,6 +362,7 @@ Kirigami.ScrollablePage {
         RowLayout {
             Layout.alignment: Qt.AlignHCenter
             Layout.maximumWidth: 0.5 * parent.width
+            Layout.topMargin: Kirigami.Units.mediumSpacing * 2
 
             Controls.Label {
                 Layout.alignment: Qt.AlignHCenter
