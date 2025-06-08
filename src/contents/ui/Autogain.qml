@@ -17,7 +17,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         momentary.value = pluginBackend.getMomentaryLevel();
         shortterm.value = pluginBackend.getShorttermLevel();
@@ -61,7 +61,7 @@ Kirigami.ScrollablePage {
                         currentIndex: pluginDB.reference
                         editable: false
                         model: [i18n("Momentary"), i18n("Short-Term"), i18n("Integrated"), i18n("Geometric Mean (MSI)"), i18n("Geometric Mean (MS)"), i18n("Geometric Mean (MI)"), i18n("Geometric Mean (SI)")]
-                        onActivated: (idx) => {
+                        onActivated: idx => {
                             pluginDB.reference = idx;
                         }
 
@@ -69,7 +69,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeSpinBox {
@@ -82,7 +81,7 @@ Kirigami.ScrollablePage {
                         decimals: 2
                         stepSize: 0.1
                         unit: "dB"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.target = v;
                         }
 
@@ -90,7 +89,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeSpinBox {
@@ -103,7 +101,7 @@ Kirigami.ScrollablePage {
                         decimals: 2
                         stepSize: 0.1
                         unit: "dB"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.silenceThreshold = v;
                         }
 
@@ -111,7 +109,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeSpinBox {
@@ -124,7 +121,7 @@ Kirigami.ScrollablePage {
                         decimals: 0
                         stepSize: 1
                         unit: "s"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.maximumHistory = v;
                         }
 
@@ -132,11 +129,8 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -166,7 +160,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeProgressBar {
@@ -183,7 +176,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeProgressBar {
@@ -200,7 +192,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeProgressBar {
@@ -217,7 +208,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeProgressBar {
@@ -234,7 +224,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeProgressBar {
@@ -251,7 +240,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeProgressBar {
@@ -268,15 +256,10 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
 
     header: EeInputOutputGain {
@@ -318,7 +301,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }

@@ -46,7 +46,7 @@ FormCard.AbstractFormDelegate {
 
     focusPolicy: Kirigami.Settings.isMobile ? Qt.StrongFocus : Qt.NoFocus
     onClicked: spinbox.forceActiveFocus()
-    Keys.onPressed: (event) => {
+    Keys.onPressed: event => {
         if (event.key === Qt.Key_PageUp) {
             const v = control.value + pageSteps * stepSize;
             control.valueModified(Common.clamp(v, control.from, control.to));
@@ -88,7 +88,6 @@ FormCard.AbstractFormDelegate {
                 horizontalAlignment: labelAlignment
                 visible: !Common.isEmpty(control.subtitle)
             }
-
         }
 
         SpinBox {
@@ -158,9 +157,6 @@ FormCard.AbstractFormDelegate {
                 validator: spinbox.validator
                 inputMethodHints: Qt.ImhFormattedNumbersOnly
             }
-
         }
-
     }
-
 }

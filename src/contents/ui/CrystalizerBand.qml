@@ -40,7 +40,6 @@ Controls.ItemDelegate {
                 onCheckedChanged: {
                     if (checked != pluginDB["muteBand" + index])
                         pluginDB["muteBand" + index] = checked;
-
                 }
             }
 
@@ -52,12 +51,9 @@ Controls.ItemDelegate {
                 onCheckedChanged: {
                     if (checked != pluginDB["bypassBand" + index])
                         pluginDB["bypassBand" + index] = checked;
-
                 }
             }
-
         }
-
     }
 
     contentItem: ColumnLayout {
@@ -127,7 +123,6 @@ Controls.ItemDelegate {
             onMoved: {
                 if (value != pluginDB["intensityBand" + index])
                     pluginDB["intensityBand" + index] = value;
-
             }
         }
 
@@ -136,7 +131,5 @@ Controls.ItemDelegate {
             text: Number(intensitySlider.value).toLocaleString(Qt.locale(), 'f', 0)
             enabled: false
         }
-
     }
-
 }

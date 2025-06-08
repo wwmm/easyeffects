@@ -63,7 +63,6 @@ Item {
                             showPassiveNotification("Enabled:" + name);
                             if (checked !== !bypass)
                                 bypass = !checked;
-
                         }
                     },
                     Kirigami.Action {
@@ -90,9 +89,6 @@ Item {
                     listModel.dataChanged(indexStart, indexEnd, []);
                 }
             }
-
         }
-
     }
-
 }

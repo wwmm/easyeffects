@@ -39,7 +39,6 @@ FormCard.AbstractFormDelegate {
                 maximumLineCount: 2
                 visible: !Common.isEmpty(control.subtitle)
             }
-
         }
 
         Switch {
@@ -51,7 +50,5 @@ FormCard.AbstractFormDelegate {
             Layout.leftMargin: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
             enabled: control.enabled
         }
-
     }
-
 }
