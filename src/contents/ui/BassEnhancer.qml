@@ -163,6 +163,7 @@ Kirigami.ScrollablePage {
 
                     EeProgressBar {
                         id: harmonicsLevel
+                        Layout.topMargin: Kirigami.Units.largeSpacing
 
                         label: i18n("Harmonics")
                         from: Common.minimumDecibelLevel

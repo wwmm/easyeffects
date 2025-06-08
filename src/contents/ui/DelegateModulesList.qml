@@ -69,9 +69,6 @@ Kirigami.AbstractCard {
                 text: description
                 color: Kirigami.Theme.disabledTextColor
             }
-
         }
-
     }
-
 }

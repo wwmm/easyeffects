@@ -69,13 +69,9 @@ Kirigami.Page {
                     icon.name: "folder-music-symbolic"
                 }
 
-                delegate: DelegateStreamsList {
-                }
-
+                delegate: DelegateStreamsList {}
             }
-
         }
-
     }
 
     Component {
@@ -103,7 +99,8 @@ Kirigami.Page {
             function createPluginStack(name, baseName, pluginDB) {
                 switch (baseName) {
                 case TagsPluginName.BaseName.autogain:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Autogain.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -111,7 +108,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.bassEnhancer:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/BassEnhancer.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -119,7 +117,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.bassLoudness:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/BassLoudness.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -127,7 +126,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.compressor:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Compressor.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -135,7 +135,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.convolver:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Convolver.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -143,7 +144,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.crossfeed:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Crossfeed.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -151,7 +153,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.crystalizer:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Crystalizer.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -159,7 +162,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.delay:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Delay.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -167,7 +171,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.deesser:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Deesser.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -175,7 +180,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.exciter:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Exciter.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -183,7 +189,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.echoCanceller:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/EchoCanceller.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -191,7 +198,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.expander:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Expander.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -199,7 +207,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.filter:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Filter.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -207,7 +216,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.gate:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Gate.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -215,7 +225,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.levelMeter:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/LevelMeter.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -223,7 +234,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.limiter:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Limiter.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -231,7 +243,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.loudness:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Loudness.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -239,7 +252,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.maximizer:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Maximizer.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -247,7 +261,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.pitch:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Pitch.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -255,7 +270,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.reverb:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Reverb.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -263,7 +279,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.rnnoise:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/RNNoise.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -271,7 +288,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.speex:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/Speex.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -279,7 +297,8 @@ Kirigami.Page {
                     });
                     break;
                 case TagsPluginName.BaseName.stereoTools:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     pluginsStack.push("qrc:ui/StereoTools.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
@@ -287,7 +306,8 @@ Kirigami.Page {
                     });
                     break;
                 default:
-                    while (pluginsStack.depth > 1)pluginsStack.pop()
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
                     console.log(logTag + " invalid plugin name: " + baseName);
                 }
             }
@@ -299,7 +319,7 @@ Kirigami.Page {
                     if (!streamDB.plugins.includes(streamDB.visiblePlugin))
                         streamDB.visiblePlugin = streamDB.plugins[0];
 
-                    pluginsListView.currentIndex = streamDB.plugins.findIndex((v) => {
+                    pluginsListView.currentIndex = streamDB.plugins.findIndex(v => {
                         return v == streamDB.visiblePlugin;
                     });
                     let baseNames = TagsPluginName.PluginsNameModel.getBaseNames();
@@ -327,7 +347,6 @@ Kirigami.Page {
                 onTriggered: {
                     if (pluginsStack.depth > 1)
                         pluginsStack.currentItem.updateMeters();
-
                 }
             }
 
@@ -339,12 +358,11 @@ Kirigami.Page {
                         currentList.push(pluginsListModel.get(n).name);
                     }
                     if (Common.equalArrays(newList, currentList))
-                        return ;
+                        return;
 
                     populatePluginsListModel(newList);
                     if (newList.length === 1 && pluginsListView.currentIndex === -1)
                         pluginsListView.currentIndex = 0;
-
                 }
 
                 target: pipelineInstance
@@ -361,7 +379,8 @@ Kirigami.Page {
 
                     if (newList.length === 0) {
                         streamDB.visiblePlugin = "";
-                        while (pluginsStack.depth > 1)pluginsStack.pop()
+                        while (pluginsStack.depth > 1)
+                            pluginsStack.pop();
                     }
                 }
 
@@ -410,7 +429,6 @@ Kirigami.Page {
                             duration: Kirigami.Units.longDuration
                             easing.type: Easing.InOutQuad
                         }
-
                     }
 
                     header: RowLayout {
@@ -428,7 +446,6 @@ Kirigami.Page {
                             text: pageType === 0 ? i18n("Players") : i18n("Input Device")
                             enabled: false
                         }
-
                     }
 
                     footer: RowLayout {
@@ -446,11 +463,8 @@ Kirigami.Page {
                             text: pageType === 0 ? "Output Device" : i18n("Recorders")
                             enabled: false
                         }
-
                     }
-
                 }
-
             }
 
             Kirigami.Separator {
@@ -472,13 +486,9 @@ Kirigami.Page {
                         explanation: i18n("Audio Stream Not Modified")
                         icon.name: "folder-music-symbolic"
                     }
-
                 }
-
             }
-
         }
-
     }
 
     Controls.StackView {
@@ -524,7 +534,6 @@ Kirigami.Page {
 
             target: pipelineInstance
         }
-
     }
 
     footer: Kirigami.AbstractApplicationHeader {
@@ -572,7 +581,6 @@ Kirigami.Page {
                             wrapMode: Text.Wrap
                             enabled: false
                         }
-
                     },
                     Kirigami.Action {
                         id: actionLevelSaturation
@@ -607,7 +615,6 @@ Kirigami.Page {
                         actionRateValue.text = `${rate} kHz`;
                     }
                 }
-
             }
 
             Kirigami.ActionToolBar {
@@ -652,9 +659,6 @@ Kirigami.Page {
                     }
                 ]
             }
-
         }
-
     }
-
 }

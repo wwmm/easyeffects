@@ -18,7 +18,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -78,7 +78,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.attack = v;
                             }
                         }
@@ -95,7 +95,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.release = v;
                             }
                         }
@@ -113,7 +113,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.reduction = v;
                             }
                         }
@@ -130,7 +130,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.curveThreshold = v;
                             }
                         }
@@ -147,15 +147,12 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.curveZone = v;
                             }
                         }
-
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -184,7 +181,6 @@ Kirigami.ScrollablePage {
                             onCheckedChanged: {
                                 if (isChecked !== pluginDB.hysteresis)
                                     pluginDB.hysteresis = isChecked;
-
                             }
                         }
 
@@ -201,7 +197,7 @@ Kirigami.ScrollablePage {
                             stepSize: 0.01
                             unit: "dB"
                             enabled: hysteresis.isChecked
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.hysteresisThreshold = v;
                             }
                         }
@@ -219,15 +215,12 @@ Kirigami.ScrollablePage {
                             stepSize: 0.01
                             unit: "dB"
                             enabled: hysteresis.isChecked
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.hysteresisZone = v;
                             }
                         }
-
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -256,7 +249,7 @@ Kirigami.ScrollablePage {
                             currentIndex: pluginDB.sidechainType
                             editable: false
                             model: [i18n("Internal"), i18n("External"), i18n("Link")]
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 pluginDB.sidechainType = idx;
                             }
                         }
@@ -275,15 +268,13 @@ Kirigami.ScrollablePage {
                                 for (let n = 0; n < PW.ModelNodes.rowCount(); n++) {
                                     if (PW.ModelNodes.getNodeName(n) === pluginDB.sidechainInputDevice)
                                         return n;
-
                                 }
                                 return 0;
                             }
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 let selectedName = PW.ModelNodes.getNodeName(idx);
                                 if (selectedName !== pluginDB.sidechainInputDevice)
                                     pluginDB.sidechainInputDevice = selectedName;
-
                             }
                         }
 
@@ -295,7 +286,7 @@ Kirigami.ScrollablePage {
                             currentIndex: pluginDB.sidechainMode
                             editable: false
                             model: [i18n("Peak"), i18n("RMS"), i18n("Low-Pass"), i18n("SMA")]
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 pluginDB.sidechainMode = idx;
                             }
                         }
@@ -309,7 +300,7 @@ Kirigami.ScrollablePage {
                             editable: false
                             model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]
                             visible: !pluginDB.stereoSplit
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 pluginDB.sidechainSource = idx;
                             }
                         }
@@ -323,15 +314,12 @@ Kirigami.ScrollablePage {
                             editable: false
                             model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]
                             visible: pluginDB.stereoSplit
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 pluginDB.stereoSplitSource = idx;
                             }
                         }
-
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -364,7 +352,7 @@ Kirigami.ScrollablePage {
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.sidechainPreamp = v;
                             }
                         }
@@ -381,7 +369,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.sidechainReactivity = v;
                             }
                         }
@@ -399,7 +387,7 @@ Kirigami.ScrollablePage {
                             decimals: 3
                             stepSize: 0.001
                             unit: "ms"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.sidechainLookahead = v;
                             }
                         }
@@ -414,7 +402,7 @@ Kirigami.ScrollablePage {
                             currentIndex: pluginDB.hpfMode
                             editable: false
                             model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")]
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 pluginDB.hpfMode = idx;
                             }
                         }
@@ -429,7 +417,7 @@ Kirigami.ScrollablePage {
                             currentIndex: pluginDB.lpfMode
                             editable: false
                             model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")]
-                            onActivated: (idx) => {
+                            onActivated: idx => {
                                 pluginDB.lpfMode = idx;
                             }
                         }
@@ -448,7 +436,7 @@ Kirigami.ScrollablePage {
                             stepSize: 1
                             unit: "Hz"
                             visible: hpfMode.currentIndex !== 0
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.hpfFrequency = v;
                             }
                         }
@@ -470,15 +458,12 @@ Kirigami.ScrollablePage {
                             stepSize: 1
                             unit: "Hz"
                             visible: lpfMode.currentIndex !== 0
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.lpfFrequency = v;
                             }
                         }
-
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -502,7 +487,7 @@ Kirigami.ScrollablePage {
                         stepSize: 0.01
                         unit: "dB"
                         minusInfinityMode: true
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.dry = v;
                         }
 
@@ -510,7 +495,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeSpinBox {
@@ -526,7 +510,7 @@ Kirigami.ScrollablePage {
                         stepSize: 0.01
                         unit: "dB"
                         minusInfinityMode: true
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.wet = v;
                         }
 
@@ -534,7 +518,6 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
 
                     EeSpinBox {
@@ -550,7 +533,7 @@ Kirigami.ScrollablePage {
                         decimals: 2
                         stepSize: 0.01
                         unit: "dB"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.makeup = v;
                         }
 
@@ -558,13 +541,9 @@ Kirigami.ScrollablePage {
                             left: parent.left
                             right: parent.right
                         }
-
                     }
-
                 }
-
             }
-
         }
 
         Kirigami.CardsLayout {
@@ -586,15 +565,17 @@ Kirigami.ScrollablePage {
 
                     Controls.Label {
                         Layout.columnSpan: 2
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
+                        topPadding: Kirigami.Units.smallSpacing
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("Reduction")
                     }
 
                     Controls.Label {
                         Layout.columnSpan: 2
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         Layout.leftMargin: Kirigami.Units.gridUnit
+                        topPadding: Kirigami.Units.smallSpacing
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("Sidechain")
                     }
@@ -653,32 +634,30 @@ Kirigami.ScrollablePage {
                     }
 
                     Controls.Label {
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("L")
                     }
 
                     Controls.Label {
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("R")
                     }
 
                     Controls.Label {
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         Layout.leftMargin: Kirigami.Units.gridUnit
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("L")
                     }
 
                     Controls.Label {
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("R")
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -695,15 +674,17 @@ Kirigami.ScrollablePage {
 
                     Controls.Label {
                         Layout.columnSpan: 2
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
+                        topPadding: Kirigami.Units.smallSpacing
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("Curve")
                     }
 
                     Controls.Label {
                         Layout.columnSpan: 2
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         Layout.leftMargin: Kirigami.Units.gridUnit
+                        topPadding: Kirigami.Units.smallSpacing
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("Envelope")
                     }
@@ -762,32 +743,30 @@ Kirigami.ScrollablePage {
                     }
 
                     Controls.Label {
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("L")
                     }
 
                     Controls.Label {
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("R")
                     }
 
                     Controls.Label {
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         Layout.leftMargin: Kirigami.Units.gridUnit
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("L")
                     }
 
                     Controls.Label {
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("R")
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -797,23 +776,24 @@ Kirigami.ScrollablePage {
                 contentItem: GridLayout {
                     readonly property real radius: 2.5 * Kirigami.Units.gridUnit
 
-                    columnSpacing: Kirigami.Units.largeSpacing
+                    columnSpacing: Kirigami.Units.smallSpacing
                     rowSpacing: Kirigami.Units.largeSpacing
                     columns: 4
                     rows: 3
-                    uniformCellWidths: true
 
                     Controls.Label {
                         Layout.columnSpan: 2
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
+                        topPadding: Kirigami.Units.smallSpacing
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("Attack")
                     }
 
                     Controls.Label {
                         Layout.columnSpan: 2
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         Layout.leftMargin: Kirigami.Units.gridUnit
+                        topPadding: Kirigami.Units.smallSpacing
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("Release")
                     }
@@ -872,36 +852,32 @@ Kirigami.ScrollablePage {
                     }
 
                     Controls.Label {
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("Start")
                     }
 
                     Controls.Label {
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("Threshold")
                     }
 
                     Controls.Label {
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         Layout.leftMargin: Kirigami.Units.gridUnit
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("Start")
                     }
 
                     Controls.Label {
-                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
                         text: i18n("Threshold")
                     }
-
                 }
-
             }
-
         }
-
     }
 
     header: EeInputOutputGain {
@@ -948,7 +924,6 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (pluginDB.sidechainListen != checked)
                             pluginDB.sidechainListen = checked;
-
                     }
                 },
                 Kirigami.Action {
@@ -959,7 +934,6 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (pluginDB.stereoSplit != checked)
                             pluginDB.stereoSplit = checked;
-
                     }
                 },
                 Kirigami.Action {
@@ -971,7 +945,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }

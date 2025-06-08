@@ -66,7 +66,6 @@ Kirigami.Page {
                 const comboRow = comboFindRow(PW.ModelSourceDevices, deviceName);
                 if (comboRow !== -1)
                     comboInputDevice.currentIndex = comboRow;
-
             }
 
             function updateOutputDevComboSelection() {
@@ -74,7 +73,6 @@ Kirigami.Page {
                 const comboRow = comboFindRow(PW.ModelSinkDevices, deviceName);
                 if (comboRow !== -1)
                     comboOutputDevice.currentIndex = comboRow;
-
             }
 
             Connections {
@@ -113,7 +111,6 @@ Kirigami.Page {
 
                         if (isChecked !== DB.Manager.streamInputs.useDefaultInputDevice)
                             DB.Manager.streamInputs.useDefaultInputDevice = isChecked;
-
                     }
                 }
 
@@ -126,18 +123,16 @@ Kirigami.Page {
                     model: PW.ModelSourceDevices
                     textRole: "description"
                     enabled: !DB.Manager.streamInputs.useDefaultInputDevice
-                    onActivated: (idx) => {
+                    onActivated: idx => {
                         const proxyIndex = PW.ModelSourceDevices.index(idx, 0);
                         const sourceIndex = PW.ModelSourceDevices.mapToSource(proxyIndex);
                         const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
                         if (DB.Manager.streamInputs.inputDevice !== nodeName) {
                             if (!Common.isEmpty(nodeName))
                                 DB.Manager.streamInputs.inputDevice = nodeName;
-
                         }
                     }
                 }
-
             }
 
             FormCard.FormCard {
@@ -154,7 +149,6 @@ Kirigami.Page {
 
                         if (isChecked !== DB.Manager.streamOutputs.useDefaultOutputDevice)
                             DB.Manager.streamOutputs.useDefaultOutputDevice = isChecked;
-
                     }
                 }
 
@@ -167,18 +161,16 @@ Kirigami.Page {
                     model: PW.ModelSinkDevices
                     textRole: "description"
                     enabled: !DB.Manager.streamOutputs.useDefaultOutputDevice
-                    onActivated: (idx) => {
+                    onActivated: idx => {
                         const proxyIndex = PW.ModelSinkDevices.index(idx, 0);
                         const sourceIndex = PW.ModelSinkDevices.mapToSource(proxyIndex);
                         const nodeName = PW.ModelNodes.getNodeName(sourceIndex.row);
                         if (DB.Manager.streamOutputs.outputDevice !== nodeName) {
                             if (!Common.isEmpty(nodeName))
                                 DB.Manager.streamOutputs.outputDevice = nodeName;
-
                         }
                     }
                 }
-
             }
 
             FormCard.FormHeader {
@@ -220,11 +212,8 @@ Kirigami.Page {
                     text: i18n("Default Quantum")
                     description: PW.Manager.defaultQuantum
                 }
-
             }
-
         }
-
     }
 
     Component {
@@ -245,13 +234,9 @@ Kirigami.Page {
                     text: i18n("No Modules")
                 }
 
-                delegate: DelegateModulesList {
-                }
-
+                delegate: DelegateModulesList {}
             }
-
         }
-
     }
 
     Component {
@@ -272,13 +257,9 @@ Kirigami.Page {
                     text: i18n("No Clients")
                 }
 
-                delegate: DelegateClientsList {
-                }
-
+                delegate: DelegateClientsList {}
             }
-
         }
-
     }
 
     Component {
@@ -298,10 +279,8 @@ Kirigami.Page {
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.testSignals.enable)
                             DB.Manager.testSignals.enable = isChecked;
-
                     }
                 }
-
             }
 
             FormCard.FormHeader {
@@ -319,7 +298,6 @@ Kirigami.Page {
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.channels)
                             DB.Manager.testSignals.channels = 0;
-
                     }
                 }
 
@@ -331,7 +309,6 @@ Kirigami.Page {
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.channels)
                             DB.Manager.testSignals.channels = 1;
-
                     }
                 }
 
@@ -343,10 +320,8 @@ Kirigami.Page {
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.channels)
                             DB.Manager.testSignals.channels = 2;
-
                     }
                 }
-
             }
 
             FormCard.FormHeader {
@@ -364,7 +339,6 @@ Kirigami.Page {
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.signalType)
                             DB.Manager.testSignals.signalType = 0;
-
                     }
                 }
 
@@ -376,7 +350,6 @@ Kirigami.Page {
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.signalType)
                             DB.Manager.testSignals.signalType = 1;
-
                     }
                 }
 
@@ -391,17 +364,13 @@ Kirigami.Page {
                     stepSize: 1
                     unit: "Hz"
                     enabled: sineWave.checked
-                    onValueModified: (v) => {
+                    onValueModified: v => {
                         if (v !== DB.Manager.testSignals.frequency)
                             DB.Manager.testSignals.frequency = v;
-
                     }
                 }
-
             }
-
         }
-
     }
 
     GridLayout {
@@ -470,11 +439,8 @@ Kirigami.Page {
                         color: Kirigami.Theme.textColor
                         wrapMode: Text.WordWrap
                     }
-
                 }
-
             }
-
         }
 
         Kirigami.Separator {
@@ -488,7 +454,5 @@ Kirigami.Page {
             Layout.fillHeight: true
             Layout.fillWidth: true
         }
-
     }
-
 }

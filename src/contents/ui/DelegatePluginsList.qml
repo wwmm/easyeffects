@@ -60,10 +60,13 @@ Item {
                         checkable: true
                         checked: !bypass
                         onTriggered: {
-                            showPassiveNotification("Enabled:" + name);
-                            if (checked !== !bypass)
-                                bypass = !checked;
+                            if (checked === !bypass) {
+                                return;
+                            }
 
+                            bypass = !checked;
+                            const prefix = bypass ? i18n("Effect Disabled") : i18n("Effect Enabled");
+                            showPassiveNotification(prefix + ": " + name);
                         }
                     },
                     Kirigami.Action {
@@ -90,9 +93,6 @@ Item {
                     listModel.dataChanged(indexStart, indexEnd, []);
                 }
             }
-
         }
-
     }
-
 }

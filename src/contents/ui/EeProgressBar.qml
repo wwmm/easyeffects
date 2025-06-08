@@ -64,9 +64,6 @@ FormCard.AbstractFormDelegate {
                 wrapMode: control.wrapMode
                 maximumLineCount: 1
             }
-
         }
-
     }
-
 }

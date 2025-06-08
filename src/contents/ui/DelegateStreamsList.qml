@@ -77,9 +77,7 @@ Kirigami.AbstractCard {
                         text: state + " · " + format + " · " + rate + " · " + nVolumeChannels + i18n(" channels") + " · " + latency
                         color: Kirigami.Theme.disabledTextColor
                     }
-
                 }
-
             }
 
             ColumnLayout {
@@ -104,10 +102,8 @@ Kirigami.AbstractCard {
                     onCheckedChanged: {
                         if (model.isBlocklisted !== checked)
                             model.isBlocklisted = checked;
-
                     }
                 }
-
             }
 
             RowLayout {
@@ -122,7 +118,6 @@ Kirigami.AbstractCard {
                     onCheckedChanged: {
                         if (checked !== mute)
                             PW.Manager.setNodeMute(serial, checked);
-
                     }
                 }
 
@@ -154,11 +149,7 @@ Kirigami.AbstractCard {
                     Layout.alignment: Qt.AlignHCenter
                     text: Math.round(volumeSlider.value) + "%"
                 }
-
             }
-
         }
-
     }
-
 }

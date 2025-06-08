@@ -102,7 +102,6 @@ ColumnLayout {
         validator: RegularExpressionValidator {
             regularExpression: /^[^\\/]{1,100}$/ //strings without `/` or `\` (max 100 chars)
         }
-
     }
 
     Kirigami.SearchField {
@@ -148,7 +147,6 @@ ColumnLayout {
                 onClicked: {
                     if (Presets.Manager.loadLocalPresetFile(pipeline, name) === false)
                         showPresetsMenuStatus(i18n("The Preset %1 failed to load", name));
-
                 }
 
                 contentItem: RowLayout {
@@ -183,11 +181,8 @@ ColumnLayout {
                             }
                         ]
                     }
-
                 }
-
             }
-
         }
 
         Controls.ScrollBar {
@@ -196,7 +191,6 @@ ColumnLayout {
             parent: listviewRow
             Layout.fillHeight: true
         }
-
     }
 
     Kirigami.InlineMessage {
@@ -207,5 +201,4 @@ ColumnLayout {
         visible: false
         showCloseButton: true
     }
-
 }

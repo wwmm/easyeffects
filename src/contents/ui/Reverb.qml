@@ -17,7 +17,7 @@ Kirigami.ScrollablePage {
 
     function updateMeters() {
         if (!pluginBackend)
-            return ;
+            return;
 
         inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
@@ -53,7 +53,7 @@ Kirigami.ScrollablePage {
                         currentIndex: pluginDB.roomSize
                         editable: false
                         model: [i18n("Small"), i18n("Medium"), i18n("Large"), i18n("Tunnel-like"), i18n("Large/smooth"), i18n("Experimental")]
-                        onActivated: (idx) => {
+                        onActivated: idx => {
                             pluginDB.roomSize = idx;
                         }
                     }
@@ -68,7 +68,7 @@ Kirigami.ScrollablePage {
                         decimals: 2
                         stepSize: 0.01
                         unit: "s"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.decayTime = v;
                         }
                     }
@@ -83,7 +83,7 @@ Kirigami.ScrollablePage {
                         decimals: 0
                         stepSize: 1
                         unit: "ms"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.predelay = v;
                         }
                     }
@@ -98,13 +98,11 @@ Kirigami.ScrollablePage {
                         decimals: 2
                         stepSize: 0.01
                         unit: "%"
-                        onValueModified: (v) => {
+                        onValueModified: v => {
                             pluginDB.diffusion = v;
                         }
                     }
-
                 }
-
             }
 
             Kirigami.Card {
@@ -133,7 +131,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "Hz"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.hfDamp = v;
                             }
                         }
@@ -150,7 +148,7 @@ Kirigami.ScrollablePage {
                             decimals: 0
                             stepSize: 1
                             unit: "Hz"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.bassCut = v;
                             }
                         }
@@ -167,7 +165,7 @@ Kirigami.ScrollablePage {
                             decimals: 0
                             stepSize: 1
                             unit: "Hz"
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.trebleCut = v;
                             }
                         }
@@ -185,7 +183,7 @@ Kirigami.ScrollablePage {
                             stepSize: 0.1
                             unit: "dB"
                             minusInfinityMode: true
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.dry = v;
                             }
                         }
@@ -203,19 +201,14 @@ Kirigami.ScrollablePage {
                             stepSize: 0.1
                             unit: "dB"
                             minusInfinityMode: true
-                            onValueModified: (v) => {
+                            onValueModified: v => {
                                 pluginDB.amount = v;
                             }
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
 
     Kirigami.MenuDialog {
@@ -354,7 +347,5 @@ Kirigami.ScrollablePage {
                 }
             ]
         }
-
     }
-
 }

@@ -214,81 +214,81 @@ const import_apo_preset = (text_file) => {
 };
 
 const import_graphiceq_preset = (text_file) => {
-  // INTERNAL PROPERTIES
-  // GraphicEq filter class.
-  class GraphicEQ_Band {
-    freq = 1000;
-    gain = 0;
-  }
-
-  // INTERNAL METHODS
-  const parse_graphiceq_config = (srt, bands) => {
-    // The first parsing stage is to ensure the given string contains a
-    // substring corresponding to the GraphicEQ format reported in the documentation:
-    // https://sourceforge.net/p/equalizerapo/wiki/Configuration%20reference/#graphiceq-since-version-10
-
-    // In order to do it, the following regular expression is used:
-    const re_geq = /graphiceq\s*:((?:\s*\d+(?:,\d+)?(?:\.\d+)?\s+[+-]?\d+(?:\.\d+)?[ \t]*(?:;|$))+)/i;
-
-    // That regex is quite permissive since:
-    // - It's case insensitive;
-    // - Gain values can be signed (with leading +/-);
-    // - Frequency values can use a comma as thousand separator.
-
-    // Note that the last class does not include the newline as whitespaces to allow
-    // matching the `$` as the end of line (not needed in this case, but it will also
-    // work if the input string will be multiline in the future).
-    // This ensures the last band is captured with or without the final `;`.
-    // The regex has been tested at https://regex101.com/r/JRwf4G/1
-
-    const geq_format = srt.match(re_geq);
-
-    // If the format of the string is correct, we capture the full match and a
-    // group related to the sequential bands.
-    if (geq_format === null && geq_format.length !== 2) {
-      return false;
+    // INTERNAL PROPERTIES
+    // GraphicEq filter class.
+    class GraphicEQ_Band {
+        freq = 1000;
+        gain = 0;
     }
 
-    // Save the substring with all the bands and use it to extract the values.
-    const bands_substr = geq_format[1];
+    // INTERNAL METHODS
+    const parse_graphiceq_config = (srt, bands) => {
+        // The first parsing stage is to ensure the given string contains a
+        // substring corresponding to the GraphicEQ format reported in the documentation:
+        // https://sourceforge.net/p/equalizerapo/wiki/Configuration%20reference/#graphiceq-since-version-10
 
-    // Couldn't we extract the values in one only regex checking also the GraphicEQ format?
-    // No, there's no way. Even with Perl Compatible Regex (PCRE) checking the whole format
-    // and capturing the values will return only the last repeated group (the last band),
-    // but we need all of them.
+        // In order to do it, the following regular expression is used:
+        const re_geq = /graphiceq\s*:((?:\s*\d+(?:,\d+)?(?:\.\d+)?\s+[+-]?\d+(?:\.\d+)?[ \t]*(?:;|$))+)/i;
 
-    // So we use the following regex to extract the values from each band.
-    const re_geq_band = /(\d+(?:,\d+)?(?:\.\d+)?)\s+([+-]?\d+(?:\.\d+)?)/g;
+        // That regex is quite permissive since:
+        // - It's case insensitive;
+        // - Gain values can be signed (with leading +/-);
+        // - Frequency values can use a comma as thousand separator.
 
-    // And matchAll with global flag to get all the capturing groups
-    const geq_bands_str = bands_substr.matchAll(re_geq_band);
+        // Note that the last class does not include the newline as whitespaces to allow
+        // matching the `$` as the end of line (not needed in this case, but it will also
+        // work if the input string will be multiline in the future).
+        // This ensures the last band is captured with or without the final `;`.
+        // The regex has been tested at https://regex101.com/r/JRwf4G/1
 
-    // Save values on new objects and push them to bands array.
-    for (const geq_band of geq_bands_str) {
-      let geq_band_obj = new GraphicEQ_Band();
+        const geq_format = srt.match(re_geq);
 
-      geq_band_obj.freq = geq_band[1];
-      geq_band_obj.gain = geq_band[2];
+        // If the format of the string is correct, we capture the full match and a
+        // group related to the sequential bands.
+        if (geq_format === null && geq_format.length !== 2) {
+            return false;
+        }
 
-      bands.push(geq_band_obj);
+        // Save the substring with all the bands and use it to extract the values.
+        const bands_substr = geq_format[1];
+
+        // Couldn't we extract the values in one only regex checking also the GraphicEQ format?
+        // No, there's no way. Even with Perl Compatible Regex (PCRE) checking the whole format
+        // and capturing the values will return only the last repeated group (the last band),
+        // but we need all of them.
+
+        // So we use the following regex to extract the values from each band.
+        const re_geq_band = /(\d+(?:,\d+)?(?:\.\d+)?)\s+([+-]?\d+(?:\.\d+)?)/g;
+
+        // And matchAll with global flag to get all the capturing groups
+        const geq_bands_str = bands_substr.matchAll(re_geq_band);
+
+        // Save values on new objects and push them to bands array.
+        for (const geq_band of geq_bands_str) {
+            let geq_band_obj = new GraphicEQ_Band();
+
+            geq_band_obj.freq = geq_band[1];
+            geq_band_obj.gain = geq_band[2];
+
+            bands.push(geq_band_obj);
+        }
+
+        return bands.length > 0;
+    };
+
+    // FUNCTION BODY
+    let bands = [];
+
+    const lines = text_file.match(/[^\n]+/g);
+
+    for (const line of lines) {
+        // Avoid commented lines.
+        if (line.match(/^[ \t]*#/) !== null) {
+            continue;
+        }
+
+        if (parse_graphiceq_config(line, bands)) {
+            break;
+        }
     }
-
-    return bands.length > 0;
-  };
-
-  // FUNCTION BODY
-  let bands = [];
-
-  const lines = text_file.match(/[^\n]+/g);
-
-  for (const line of lines) {
-    // Avoid commented lines.
-    if (line.match(/^[ \t]*#/) !== null) {
-      continue;
-    }
-
-    if (parse_graphiceq_config(line, bands)) {
-      break;
-    }
-  }
 }

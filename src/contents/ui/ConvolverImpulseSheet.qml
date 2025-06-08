@@ -106,13 +106,9 @@ Kirigami.OverlaySheet {
                             }
                         ]
                     }
-
                 }
-
             }
-
         }
-
     }
 
     footer: ColumnLayout {
@@ -124,7 +120,6 @@ Kirigami.OverlaySheet {
             visible: false
             showCloseButton: true
         }
-
     }
 
     header: Kirigami.ActionToolBar {
@@ -141,5 +136,4 @@ Kirigami.OverlaySheet {
             }
         ]
     }
-
 }
