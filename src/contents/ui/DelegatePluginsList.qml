@@ -65,8 +65,6 @@ Item {
                             }
 
                             pluginDB.bypass = !checked;
-                            const prefix = pluginDB.bypass ? i18n("Effect Disabled") : i18n("Effect Enabled");
-                            showPassiveNotification(prefix + ": " + name);
                         }
                     },
                     Kirigami.Action {
