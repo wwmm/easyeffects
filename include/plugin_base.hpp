@@ -93,7 +93,6 @@ class PluginBase {
   bool package_installed = true;
 
   std::atomic<bool> bypass = {false};
-  static_assert(std::atomic<bool>::is_always_lock_free);
 
   bool connected_to_pw = false;
 
