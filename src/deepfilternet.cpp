@@ -28,6 +28,7 @@
 #include <vector>
 #include "db_manager.hpp"
 #include "easyeffects_db_deepfilternet.h"
+#include "ladspa_macros.hpp"
 #include "ladspa_wrapper.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
@@ -59,8 +60,6 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
 
   init_common_controls<db::DeepFilterNet>(settings);
 
-  // ladspa_wrapper->bind_key_double_db_exponential<"Attenuation Limit (dB)", "attenuation-limit", false>(settings);
-
   // ladspa_wrapper->bind_key_double_db_exponential<"Min processing threshold (dB)", "min-processing-threshold", false>(
   //     settings);
 
@@ -74,7 +73,9 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
 
   // ladspa_wrapper->bind_key_int<"Min Processing Buffer (frames)", "min-processing-buffer">(settings);
 
-  // ladspa_wrapper->bind_key_double<"Post Filter Beta", "post-filter-beta">(settings);
+  BIND_LADSPA_PORT("Post Filter Beta", postFilterBeta, setPostFilterBeta, db::DeepFilterNet::postFilterBetaChanged);
+  BIND_LADSPA_PORT_DB("Attenuation Limit (dB)", attenuationLimit, setAttenuationLimit,
+                      db::DeepFilterNet::attenuationLimitChanged, false);
 }
 
 DeepFilterNet::~DeepFilterNet() {
