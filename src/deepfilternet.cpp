@@ -60,22 +60,20 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
 
   init_common_controls<db::DeepFilterNet>(settings);
 
-  // ladspa_wrapper->bind_key_double_db_exponential<"Min processing threshold (dB)", "min-processing-threshold", false>(
-  //     settings);
-
-  // ladspa_wrapper
-  //     ->bind_key_double_db_exponential<"Max ERB processing threshold (dB)", "max-erb-processing-threshold", false>(
-  //         settings);
-
-  // ladspa_wrapper
-  //     ->bind_key_double_db_exponential<"Max DF processing threshold (dB)", "max-df-processing-threshold", false>(
-  //         settings);
-
-  // ladspa_wrapper->bind_key_int<"Min Processing Buffer (frames)", "min-processing-buffer">(settings);
-
   BIND_LADSPA_PORT("Post Filter Beta", postFilterBeta, setPostFilterBeta, db::DeepFilterNet::postFilterBetaChanged);
-  BIND_LADSPA_PORT_DB("Attenuation Limit (dB)", attenuationLimit, setAttenuationLimit,
-                      db::DeepFilterNet::attenuationLimitChanged, false);
+  BIND_LADSPA_PORT("Min Processing Buffer (frames)", minProcessingBuffer, setMinProcessingBuffer,
+                   db::DeepFilterNet::minProcessingBufferChanged);
+
+  BIND_LADSPA_PORT_DB_EXPONENTIAL("Attenuation Limit (dB)", attenuationLimit, setAttenuationLimit,
+                                  db::DeepFilterNet::attenuationLimitChanged, false);
+  BIND_LADSPA_PORT_DB_EXPONENTIAL("Min processing threshold (dB)", minProcessingThreshold, setMinProcessingThreshold,
+                                  db::DeepFilterNet::minProcessingThresholdChanged, false);
+  BIND_LADSPA_PORT_DB_EXPONENTIAL("Max ERB processing threshold (dB)", maxErbProcessingThreshold,
+                                  setMaxErbProcessingThreshold, db::DeepFilterNet::maxErbProcessingThresholdChanged,
+                                  false);
+  BIND_LADSPA_PORT_DB_EXPONENTIAL("Max DF processing threshold (dB)", maxDfProcessingThreshold,
+                                  setMaxDfProcessingThreshold, db::DeepFilterNet::maxDfProcessingThresholdChanged,
+                                  false);
 }
 
 DeepFilterNet::~DeepFilterNet() {

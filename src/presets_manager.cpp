@@ -50,6 +50,7 @@
 #include "convolver_preset.hpp"
 #include "crossfeed_preset.hpp"
 #include "crystalizer_preset.hpp"
+#include "deepfilternet_preset.hpp"
 #include "deesser_preset.hpp"
 #include "delay_preset.hpp"
 #include "easyeffects_db.h"
@@ -1441,7 +1442,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
-    // return std::make_unique<DeepFilterNetPreset>(pipeline_type, filter_name.toStdString());
+    return std::make_unique<DeepFilterNetPreset>(pipeline_type, filter_name.toStdString());
   }
 
   if (filter_name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {

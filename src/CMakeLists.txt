@@ -37,6 +37,7 @@ target_sources(easyeffects PRIVATE
     delay.cpp
     delay_preset.cpp
     deepfilternet.cpp
+    deepfilternet_preset.cpp
     deesser.cpp
     deesser_preset.cpp
     echo_canceller.cpp
