@@ -12,6 +12,7 @@
         <file alias="CrystalizerBand.qml">contents/ui/CrystalizerBand.qml</file>
         <file alias="Deesser.qml">contents/ui/Deesser.qml</file>
         <file alias="Delay.qml">contents/ui/Delay.qml</file>
+        <file alias="DeepFilterNet.qml">contents/ui/DeepFilterNet.qml</file>
         <file alias="DelegateClientsList.qml">contents/ui/DelegateClientsList.qml</file>
         <file alias="DelegateModulesList.qml">contents/ui/DelegateModulesList.qml</file>
         <file alias="DelegatePluginsList.qml">contents/ui/DelegatePluginsList.qml</file>

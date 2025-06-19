@@ -224,3 +224,7 @@ void DeepFilterNet::process([[maybe_unused]] std::span<float>& left_in,
 auto DeepFilterNet::get_latency_seconds() -> float {
   return 0.02F + (1.0F / rate);
 }
+
+void DeepFilterNet::resetHistory() {
+  setup();
+}

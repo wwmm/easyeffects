@@ -61,6 +61,8 @@ class DeepFilterNet : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
+  Q_INVOKABLE void resetHistory();
+
  private:
   db::DeepFilterNet* settings = nullptr;
 
