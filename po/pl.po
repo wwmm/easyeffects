@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 14:42+0000\n"
-"PO-Revision-Date: 2024-12-01 01:00+0000\n"
-"Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
+"PO-Revision-Date: 2025-06-19 01:04+0000\n"
+"Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.9-dev\n"
+"X-Generator: Weblate 5.12.1\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -128,7 +128,7 @@ msgstr "Brak aplikacji audio"
 
 #: data/ui/autogain.ui:29 data/ui/filter.ui:38
 msgid "Controls"
-msgstr ""
+msgstr "Sterowanie"
 
 #: data/ui/autogain.ui:33
 msgid "Target"
@@ -234,9 +234,8 @@ msgstr "Wejście"
 #: data/ui/maximizer.ui:106 data/ui/multiband_compressor.ui:512
 #: data/ui/multiband_gate.ui:512 data/ui/pitch.ui:282 data/ui/reverb.ui:377
 #: data/ui/rnnoise.ui:292 data/ui/speex.ui:206 data/ui/stereo_tools.ui:636
-#, fuzzy
 msgid "Plugin Input Gain"
-msgstr "Wzmocnienie wej."
+msgstr "Wzmocnienie wejścia (dodatek)"
 
 #: data/ui/autogain.ui:514 data/ui/bass_enhancer.ui:342
 #: data/ui/bass_loudness.ui:48 data/ui/bass_loudness.ui:191
@@ -263,9 +262,8 @@ msgstr "Wyjście"
 #: data/ui/maximizer.ui:190 data/ui/multiband_compressor.ui:596
 #: data/ui/multiband_gate.ui:596 data/ui/pitch.ui:366 data/ui/reverb.ui:461
 #: data/ui/rnnoise.ui:376 data/ui/speex.ui:290 data/ui/stereo_tools.ui:720
-#, fuzzy
 msgid "Plugin Output Gain"
-msgstr "Wzmocnienie wej."
+msgstr "Wzmocnienie wyjścia (dodatek)"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:673 data/ui/expander.ui:594
 #: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:246
@@ -559,15 +557,13 @@ msgstr "Prawy/Lewy"
 
 #: data/ui/compressor.ui:569 data/ui/expander.ui:490 data/ui/gate.ui:703
 #: data/ui/multiband_compressor_band.ui:515 data/ui/multiband_gate_band.ui:573
-#, fuzzy
 msgid "Mid/Side"
-msgstr "Strona"
+msgstr "Środek/Strona"
 
 #: data/ui/compressor.ui:570 data/ui/expander.ui:491 data/ui/gate.ui:704
 #: data/ui/multiband_compressor_band.ui:516 data/ui/multiband_gate_band.ui:574
-#, fuzzy
 msgid "Side/Mid"
-msgstr "Strona"
+msgstr "Strona/Środek"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:502 data/ui/gate.ui:715
 #: data/ui/multiband_compressor_band.ui:527 data/ui/multiband_gate_band.ui:585
@@ -1030,9 +1026,8 @@ msgid "Width"
 msgstr "Szerokość"
 
 #: data/ui/exciter.ui:208
-#, fuzzy
 msgid "Ceil"
-msgstr "Sufit"
+msgstr "Limit"
 
 #: data/ui/exciter.ui:236
 msgid "Ceil Value"
