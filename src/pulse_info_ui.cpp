@@ -19,7 +19,7 @@
 
 #include "pulse_info_ui.hpp"
 #include <boost/algorithm/string.hpp>
-#include <boost/process.hpp>
+#include "boost_process_compat.hpp"
 #include "util.hpp"
 
 PulseInfoUi::PulseInfoUi(BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builder>& builder, PulseManager* pm_ptr)
