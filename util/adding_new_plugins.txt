@@ -1,0 +1,3 @@
+Steps:
+
+- Creat the database file at: src/contents/kcfg/
