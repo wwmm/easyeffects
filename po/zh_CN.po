@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 14:42+0000\n"
-"PO-Revision-Date: 2024-09-30 07:15+0000\n"
-"Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
+"PO-Revision-Date: 2025-06-21 06:05+0000\n"
+"Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -1051,14 +1051,12 @@ msgid "Resonance"
 msgstr "共鸣"
 
 #: data/ui/filter.ui:58
-#, fuzzy
 msgid "Ladder-Pass"
-msgstr "梯通滤波"
+msgstr "梯形带通滤波"
 
 #: data/ui/filter.ui:59
-#, fuzzy
 msgid "Ladder-Rejection"
-msgstr "梯阻滤波"
+msgstr "梯形带阻滤波"
 
 #: data/ui/filter.ui:60
 msgid "All-Pass"
@@ -1855,7 +1853,7 @@ msgstr "圆角"
 
 #: data/ui/preferences_spectrum.ui:172
 msgid "Dynamic Scale"
-msgstr "动态比例"
+msgstr "动态刻度"
 
 #: data/ui/preferences_spectrum.ui:186
 msgid "Color"
@@ -2246,12 +2244,10 @@ msgid "channels"
 msgstr "声道"
 
 #: src/application.cpp:301
-#, fuzzy
 msgid "Output Preset"
 msgstr "输出预设"
 
 #: src/application.cpp:302
-#, fuzzy
 msgid "Input Preset"
 msgstr "输入预设"
 
@@ -2288,15 +2284,15 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "加载预设。 示例：easyeffects -l music"
 
 #: src/application.cpp:627
-#, fuzzy
 msgid "Show the active presets."
-msgstr "显示可用预设。"
+msgstr "显示在用预设。"
 
 #: src/application.cpp:630
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
-msgstr ""
+msgstr "显示特定类别的已加载预设。可用参数为“input”（输入预设）或者“output”（输出预设"
+"）。例子：easyeffects -s input"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
@@ -2587,7 +2583,7 @@ msgid "{} Not Available"
 msgstr "{} 不可用"
 
 #: src/ui_helpers.cpp:97
-#, fuzzy, c++-format
+#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2595,8 +2591,9 @@ msgid ""
 "using the 'Quit' option inside the menu in order to make the effect availble "
 "to use."
 msgstr ""
-"没有找到使用 {} 效果所需的 {} 软件。请使用Flatpak版Easy Effects，或自行安装缺"
-"失的软件包。"
+"未安装 {} 效果所需的 {} 软件。请使用Flatpak版Easy "
+"Effects，或自行安装缺失的软件包。如果您已安装缺失的软件包，请使用菜单上的退出"
+"按钮，完整地退出并重启本程序。"
 
 #: src/ui_helpers.cpp:104
 #, c++-format
