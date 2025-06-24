@@ -1,3 +1,4 @@
 Steps:
 
 - Creat the database file at: src/contents/kcfg/
+- Make the call "settings->disconnect();" in the plugin class destructor
