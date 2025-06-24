@@ -1,0 +1,1247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/equalizerrc">
+        <parameter name="masterGroup" />
+        <parameter name="instanceIndex" />
+        <parameter name="channel" />
+    </kcfgfile>
+    <group parentGroupName="$(masterGroup)" name="Equalizer#$(instanceIndex)#$(channel)">
+        <entry name="bandModeLabels" type="StringList">
+            <default>RLC (BT),RLC (MT),BWC (BT),BWC (MT),LRX (BT),LRX (MT),APO (DR)</default>
+        </entry>
+        <entry name="bandTypeLabels" type="StringList">
+            <default>Off,Bell,Hi-pass,Hi-shelf,Lo-pass,Lo-shelf,Notch,Resonance,Allpass,Bandpass,Ladder-pass,Ladder-rej</default>
+        </entry>
+        <entry name="bandSlopeLabels" type="StringList">
+            <default>x1,x2,x3,x4</default>
+        </entry>
+
+        <entry name="band0Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band1Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band2Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band3Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band4Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band5Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band6Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band7Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band8Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band9Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band10Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band11Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band12Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band13Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band14Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band15Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band16Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band17Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band18Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band19Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band20Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band21Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band22Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band23Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band24Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band25Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band26Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band27Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band28Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band29Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band30Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="band31Gain" type="Double">
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+
+        <entry name="band0Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>22.40</default>
+        </entry>
+        <entry name="band1Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>27.80</default>
+        </entry>
+        <entry name="band2Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>34.51</default>
+        </entry>
+        <entry name="band3Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>42.82</default>
+        </entry>
+        <entry name="band4Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>53.14</default>
+        </entry>
+        <entry name="band5Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>65.95</default>
+        </entry>
+        <entry name="band6Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>81.83</default>
+        </entry>
+        <entry name="band7Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>101.55</default>
+        </entry>
+        <entry name="band8Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>126</default>
+        </entry>
+        <entry name="band9Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>156.38</default>
+        </entry>
+        <entry name="band10Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>194.06</default>
+        </entry>
+        <entry name="band11Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>240.81</default>
+        </entry>
+        <entry name="band12Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>298.834</default>
+        </entry>
+        <entry name="band13Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>370.834</default>
+        </entry>
+        <entry name="band14Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>460.182</default>
+        </entry>
+        <entry name="band15Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>571.057</default>
+        </entry>
+        <entry name="band16Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>708.647</default>
+        </entry>
+        <entry name="band17Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>879.387</default>
+        </entry>
+        <entry name="band18Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>1091.26</default>
+        </entry>
+        <entry name="band19Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>1354.19</default>
+        </entry>
+        <entry name="band20Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>1680.47</default>
+        </entry>
+        <entry name="band21Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>2085.35</default>
+        </entry>
+        <entry name="band22Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>2587.79</default>
+        </entry>
+        <entry name="band23Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>3211.29</default>
+        </entry>
+        <entry name="band24Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>3985.01</default>
+        </entry>
+        <entry name="band25Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>4945.15</default>
+        </entry>
+        <entry name="band26Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>6136.63</default>
+        </entry>
+        <entry name="band27Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>7615.17</default>
+        </entry>
+        <entry name="band28Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>9449.96</default>
+        </entry>
+        <entry name="band29Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>11726.8</default>
+        </entry>
+        <entry name="band30Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>14552.2</default>
+        </entry>
+        <entry name="band31Frequency" type="Double">
+            <min>10</min>
+            <max>24000</max>
+            <default>18058.4</default>
+        </entry>
+
+        <entry name="band0Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band1Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band2Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band3Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band4Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band5Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band6Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band7Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band8Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band9Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band10Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band11Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band12Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band13Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band14Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band15Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band16Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band17Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band18Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band19Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band20Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band21Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band22Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band23Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band24Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band25Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band26Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band27Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band28Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band29Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band30Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+        <entry name="band31Q" type="Double">
+            <min>0</min>
+            <max>100</max>
+            <default>4.36</default>
+        </entry>
+
+        <entry name="band0Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band1Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band2Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band3Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band4Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band5Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band6Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band7Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band8Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band9Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band10Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band11Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band12Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band13Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band14Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band15Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band16Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band17Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band18Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band19Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band20Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band21Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band22Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band23Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band24Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band25Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band26Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band27Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band28Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band29Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band30Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+        <entry name="band31Width" type="Double">
+            <min>0</min>
+            <max>12</max>
+            <default>4</default>
+        </entry>
+
+        <entry name="band0Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band1Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band2Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band3Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band4Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band5Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band6Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band7Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band8Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band9Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band10Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band11Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band12Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band13Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band14Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band15Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band16Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band17Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band18Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band19Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band20Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band21Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band22Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band23Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band24Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band25Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band26Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band27Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band28Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band29Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band30Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+        <entry name="band31Type" type="Int">
+            <label></label>
+            <default>1</default>
+        </entry>
+
+        <entry name="band0Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band1Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band2Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band3Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band4Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band5Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band6Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band7Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band8Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band9Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band10Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band11Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band12Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band13Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band14Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band15Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band16Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band17Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band18Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band19Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band20Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band21Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band22Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band23Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band24Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band25Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band26Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band27Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band28Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band29Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band30Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band31Mode" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+
+        <entry name="band0Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band1Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band2Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band3Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band4Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band5Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band6Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band7Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band8Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band9Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band10Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band11Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band12Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band13Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band14Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band15Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band16Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band17Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band18Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band19Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band20Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band21Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band22Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band23Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band24Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band25Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band26Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band27Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band28Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band29Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band30Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+        <entry name="band31Slope" type="Int">
+            <label></label>
+            <default>0</default>
+        </entry>
+
+        <entry name="band0Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band1Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band2Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band3Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band4Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band5Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band6Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band7Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band8Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band9Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band10Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band11Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band12Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band13Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band14Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band15Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band16Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band17Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band18Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band19Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band20Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band21Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band22Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band23Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band24Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band25Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band26Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band27Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band28Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band29Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band30Solo" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band31Solo" type="Bool">
+            <default>false</default>
+        </entry>
+
+        <entry name="band0Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band1Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band2Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band3Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band4Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band5Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band6Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band7Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band8Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band9Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band10Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band11Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band12Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band13Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band14Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band15Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band16Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band17Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band18Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band19Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band20Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band21Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band22Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band23Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band24Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band25Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band26Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band27Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band28Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band29Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band30Mute" type="Bool">
+            <default>false</default>
+        </entry>
+        <entry name="band31Mute" type="Bool">
+            <default>false</default>
+        </entry>
+
+    </group>
+</kcfg>

@@ -39,6 +39,8 @@
 #include "easyeffects_db_deesser.h"
 #include "easyeffects_db_delay.h"
 #include "easyeffects_db_echo_canceller.h"
+#include "easyeffects_db_equalizer.h"
+#include "easyeffects_db_equalizer_channel.h"
 #include "easyeffects_db_exciter.h"
 #include "easyeffects_db_expander.h"
 #include "easyeffects_db_filter.h"
@@ -192,6 +194,16 @@ void Manager::create_plugin_db(const QString& parentGroup,
       } else if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
         plugins_map[tags::plugin_name::BaseName::echoCanceller + "#" + id] =
             QVariant::fromValue(new db::EchoCanceller(parentGroup, id));
+        //
+      } else if (name.startsWith(tags::plugin_name::BaseName::equalizer)) {
+        plugins_map[tags::plugin_name::BaseName::equalizer + "#" + id] =
+            QVariant::fromValue(new db::Equalizer(parentGroup, id));
+
+        plugins_map[tags::plugin_name::BaseName::equalizer + "#" + id + "#left"] =
+            QVariant::fromValue(new db::EqualizerChannel(parentGroup, id, "left"));
+
+        plugins_map[tags::plugin_name::BaseName::equalizer + "#" + id + "#right"] =
+            QVariant::fromValue(new db::EqualizerChannel(parentGroup, id, "right"));
         //
       } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
         plugins_map[tags::plugin_name::BaseName::exciter + "#" + id] =
