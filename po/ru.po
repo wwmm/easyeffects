@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 14:42+0000\n"
-"PO-Revision-Date: 2024-12-31 13:00+0000\n"
+"PO-Revision-Date: 2025-06-25 19:04+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -472,7 +472,7 @@ msgstr "Колено"
 #: data/ui/gate.ui:430 data/ui/multiband_compressor_band.ui:382
 #: data/ui/multiband_gate_band.ui:411
 msgid "Makeup"
-msgstr "Усиление вверх"
+msgstr "Компенсация"
 
 #: data/ui/compressor.ui:412 data/ui/delay.ui:62 data/ui/delay.ui:149
 #: data/ui/expander.ui:333 data/ui/gate.ui:346
