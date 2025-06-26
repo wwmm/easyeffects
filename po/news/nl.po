@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-04-21 14:42+0000\n"
-"PO-Revision-Date: 2024-11-04 03:00+0000\n"
-"Last-Translator: Damiön la Bagh <kat.amsterdam@gmail.com>\n"
+"PO-Revision-Date: 2025-06-26 00:04+0000\n"
+"Last-Translator: Sijmen <me@vijf.life>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/nl/>\n"
 "Language: nl\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8.2\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -139,6 +139,8 @@ msgid ""
 "Improved compatibility with future PipeWire releases. This version will "
 "avoid compilation errors like issue 3620"
 msgstr ""
+"Verbeterde compatibiliteit met toekomstige PipeWire-releases. Deze versie "
+"voorkomt compilatiefouten, zoals probleem 3620"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
@@ -232,18 +234,25 @@ msgid ""
 "Added a workaround for a glibc(or maybe libstdc++) bug that affects locale "
 "management. What in turns breaks our spinbuttons on some locales."
 msgstr ""
+"Workaround toegevoegd voor een glibc- (of misschien libstdc++)-bug die "
+"locale-beheer beïnvloedt. Dit veroorzaakt op zijn beurt problemen met onze "
+"draaiknoppen (spinbuttons) in sommige locales."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
 msgid ""
 "Fixed a bug that makes the application crash when the option Linux Studio "
 "Plugins package is not installed."
 msgstr ""
+"Bug opgelost die de applicatie laat crashen als het optionele Linux Studio "
+"Plugins-pakket niet geïnstalleerd is."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
 msgid ""
 "Fixed a bug in the crystalizer plugin where the scale values were not being "
 "properly applied."
 msgstr ""
+"Bug in de kristalliseerder-plugin opgelost, waarbij de schaalwaarden niet "
+"juist werden toegepast."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 msgid ""
@@ -480,50 +489,65 @@ msgstr "Compatibiliteit met Linux Studio Plugins 1.2.3 verbeterd."
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
 msgstr ""
+"Onjuiste weergave van de karakteristieken van het impulsresponsbestand "
+"opgelost"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
 msgid ""
 "Fixed a small bug the prevented the noise reduction voice activity threshold "
 "from being properly initialized."
 msgstr ""
+"Kleine bug opgelost die verhinderde dat de drempelwaarde voor "
+"spraakactiviteit bij ruisonderdrukking correct werd geïnitialiseerd."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:225
 msgid ""
 "Added a new control to the noise reduction plugin that allows the voice "
 "detection to be disabled."
 msgstr ""
+"Nieuwe instelling toegevoegd aan de ruisonderdrukkingsplugin waarmee "
+"spraakdetectie kan worden uitgeschakeld."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:235
 msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
 msgstr ""
+"Het filter-effect is verbeterd met nieuwe parameters aangezien het is "
+"overgezet van Calf Studio naar Linux Studio Plugins."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:236
 msgid ""
 "Noise reduction by RNNoise has been improved with the addition of Release "
 "and VAD Threshold controls."
 msgstr ""
+"Ruisonderdrukking met RNNoise is verbeterd door de toevoeging van Release- "
+"en VAD-drempelinstellingen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
 msgid ""
 "Noise reduction by RNNoise can now mix the original and denoised signals to "
 "avoid the output to sound too \"dry\"."
 msgstr ""
+"Ruisonderdrukking door RNNoise kan nu de originele en ruisvrije signalen "
+"mixen om te voorkomen dat het geluid te \"droog\" klinkt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:240
 msgid ""
 "This release is intended to work with versions of Linux Studio Plugins equal "
 "or greater than \"1.2.10\"."
 msgstr ""
+"Deze uitgave is bedoeld voor gebruik met versies van Linux Studio Plugins "
+"die gelijk zijn aan of hoger zijn dan \"1.2.10\"."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:241
 msgid "EasyEffects is now buildable also with libc++."
-msgstr ""
+msgstr "EasyEffects kan nu ook worden gebouwd met libc++."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:249
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
 msgstr ""
+"De Uitbreider van Linux Studio Plugins kan worden gebruikt in Easy Effects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:250
 msgid ""
@@ -531,16 +555,22 @@ msgid ""
 "efficient input of values that are hard to set in the scale. More details at "
 "issue 1383."
 msgstr ""
+"De Equalizer-banden hebben nu een extra versterkingsregeling waarmee "
+"waarden, die moeilijk in te stellen zijn via de schaal, efficiënter kunnen "
+"worden ingevuld. Meer details in probleem 1383."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
 msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
 msgstr ""
+"Mogelijkheid toegevoegd om meerdere bestanden te selecteren en te laden in "
+"de dialoogvensters voor het openen van presets, Convolutie-impulsresponsen "
+"en RNNoise-modellen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:253
 msgid "Fixed the Solo button in the Equalizer band settings."
-msgstr ""
+msgstr "Solo-knop gefixt in de Equalizer-bandinstellingen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:255
 msgid ""
@@ -550,21 +580,33 @@ msgid ""
 "future we will implement a new system to install, manage and import "
 "Community Presets."
 msgstr ""
+"Easy Effects-mappen onder /etc zijn verouderd en presets die daar staan, "
+"worden niet langer geladen. Op het moment worden alleen lokale presets onder "
+"~/.config/easyeffects automatisch geladen in het voorinstellingen-menu. In "
+"de toekomst zullen we een nieuw systeem implementeren om community-"
+"voorinstellingen te installeren, beheren en importeren."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:263
 msgid ""
 "An \"Experimental Features\" section was added to our preferences window."
 msgstr ""
+"Een \"Experimentele functies\"-sectie is toegevoegd aan ons "
+"instellingenvenster."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:264
 msgid ""
 "The native window of the LSP plugins can be used. This is an experimental "
 "feature intended only for advanced users. So expect some bugs."
 msgstr ""
+"Het native venster van LSP-plugins kan worden gebruikt. Dit is een "
+"experimentele functie die alleen voor geavanceerde gebruikers bedoeld is. "
+"Verwacht dus wat bugs."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:265
 msgid "Fractional semitone values can now be used in the Pitch Shift effect."
 msgstr ""
+"Fractionele halftoonwaarden kunnen nu worden gebruikt bij het Toonhoogte-"
+"effect."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:267
 msgid ""
@@ -572,10 +614,13 @@ msgid ""
 "system default device changes and Use Default is enabled. This fixes issue "
 "issue 1989."
 msgstr ""
+"De keuzelijst voor invoer-/uitvoerapparaten in ons PipeWire-tabblad wordt "
+"bijgewerkt wanneer het standaardapparaat van het systeem verandert en "
+"'Standaarduitvoer gebruiken' ingeschakeld is. Dit lost probleem 1989 op."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:276
 msgid "A new Level Meter plugin based on libebur128 has been added."
-msgstr ""
+msgstr "Een nieuwe Niveaumeter-plugin gebaseerd op libebur128 is toegevoegd."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:277
 msgid ""
@@ -583,23 +628,31 @@ msgid ""
 "Hopefully some of the mysterious crashes that were happening with Rubbernand "
 "are not going to happen anymore."
 msgstr ""
+"De Toonhoogte-plugin gebruikt nu de SoundTouch-bibliotheek in plaats van "
+"Rubberband. Hopelijk gebeuren een aantal mysterieuze crashes, die gebeurden "
+"met Rubberband, niet meer."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:278
 msgid ""
 "Improved compatibility with recent PipeWire versions. More information at"
 msgstr ""
+"Verbeterde compatibility met recente PipeWire-versies. Meer informatie op"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
 msgid ""
 "Active Equalizer filters are not set to Bell type anymore when the number of "
 "bands changes."
 msgstr ""
+"Het type van actieve Equalizer-filters wordt niet meer op Bell ingesteld als "
+"het aantal banden wijzigt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
 msgid ""
 "Rabberband is not a dependency anymore since it has been replaced by "
 "SoundTouch."
 msgstr ""
+"Rubberband is geen afhankelijkheid meer omdat het is vervangen door "
+"SoundTouch."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:290
 msgid ""
@@ -999,12 +1052,17 @@ msgid ""
 "the spectrum was changed while our pipeline was active and the spectrum "
 "widget was visible"
 msgstr ""
+"Bug opgelost waarbij EasyEffects crashte als het aantal punten weergegeven "
+"in het spectrum wijzigde terwijl onze pijplijn actief was en het spectrum-"
+"widget zichtbaar was"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:427
 msgid ""
 "The pipeline latency value displayed in our window could be wrong in some "
 "situations. This was fixed."
 msgstr ""
+"De pijplijnlatentie weergegeven in ons venster kon in sommige situaties fout "
+"zijn. Dit is opgelost."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:435
 msgid ""
@@ -1013,12 +1071,20 @@ msgid ""
 "filters will be unlinked after the timeout is reached. This is done to make "
 "sure we do not waste CPU power processing silence."
 msgstr ""
+"Er is een nieuwe instelling die de gebruiker een inactiviteits-time-out laat "
+"instellen voor de pijplijn. Als er geen cliënt speelt naar, of opneemt "
+"vanaf, onze apparaten zullen de filters worden losgekoppeld nadat de time-"
+"out is bereikt, zodat we niet CPU-tijd verspillen met het verwerken van "
+"stilte."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:436
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric mean."
 msgstr ""
+"De Automatisch versterken-plugin staat de gebruiker nu toe om te selecteren "
+"welke van de drie luidheidswaarden worden gebruikt om het meetkundige "
+"gemiddelde te berekenn."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:437
 msgid ""
@@ -1026,18 +1092,25 @@ msgid ""
 "use libebur128 histogram mode anymore. This should avoid the cases where the "
 "Integrated loudness gets stuck forever in the same value."
 msgstr ""
+"De Automatisch versterken-plugin staat nu toe om de maximale geschiedenis in "
+"te stellen, en gebruikt de libebur128-histogrammodus niet meer. Dit zou "
+"gevallen moeten voorkomen waarin de geïntegreerde luidheid voor altijd op "
+"dezelfde waarde blijft hangen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:438
 msgid ""
 "EasyEffects icon has been updated in a way that should make it visible in QT "
 "desktops."
 msgstr ""
+"Het EasyEffects-icoon is bijgewerkt op een manier dat deze zichtbaar zou "
+"moeten zijn voor Qt-desktops."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:440
 msgid ""
 "The command line option that returns the global bypass state is working "
 "again."
 msgstr ""
+"De opdrachtregeloptie die de globale bypass-status teruggeeft, werkt weer."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:448
 msgid ""
