@@ -75,10 +75,6 @@ class Equalizer : public PluginBase {
 
   //   // left channel
 
-  //   lv2_wrapper->bind_key_enum<ftl[n], band_type[n]>(settings_left);
-  //   lv2_wrapper->bind_key_enum<fml[n], band_mode[n]>(settings_left);
-  //   lv2_wrapper->bind_key_enum<sl[n], band_slope[n]>(settings_left);
-
   //   lv2_wrapper->bind_key_bool<xsl[n], band_solo[n]>(settings_left);
   //   lv2_wrapper->bind_key_bool<xml[n], band_mute[n]>(settings_left);
 
@@ -90,10 +86,6 @@ class Equalizer : public PluginBase {
 
   //   // right channel
 
-  //   lv2_wrapper->bind_key_enum<ftr[n], band_type[n]>(settings_right);
-  //   lv2_wrapper->bind_key_enum<fmr[n], band_mode[n]>(settings_right);
-  //   lv2_wrapper->bind_key_enum<sr[n], band_slope[n]>(settings_right);
-
   //   lv2_wrapper->bind_key_bool<xsr[n], band_solo[n]>(settings_right);
   //   lv2_wrapper->bind_key_bool<xmr[n], band_mute[n]>(settings_right);
 
@@ -104,10 +96,7 @@ class Equalizer : public PluginBase {
   //   lv2_wrapper->bind_key_double_db<gr[n], band_gain[n]>(settings_right);
   // }
 
-  // template <size_t... Ns>
-  // constexpr void bind_bands(std::index_sequence<Ns...> /*unused*/) {
-  //   (bind_band<Ns>(), ...);
-  // }
+  void bind_bands();
 
   void on_split_channels();
 };

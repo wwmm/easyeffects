@@ -30,15 +30,14 @@ constexpr auto band_id = std::to_array(
      "band11", "band12", "band13", "band14", "band15", "band16", "band17", "band18", "band19", "band20", "band21",
      "band22", "band23", "band24", "band25", "band26", "band27", "band28", "band29", "band30", "band31"});
 
-constexpr auto band_type =
-    std::to_array({{"band0-type"},  {"band1-type"},  {"band2-type"},  {"band3-type"},
-                   {"band4-type"},  {"band5-type"},  {"band6-type"},  {"band7-type"},
-                   {"band8-type"},  {"band9-type"},  {"band10-type"}, {"band11-type"},
-                   {"band12-type"}, {"band13-type"}, {"band14-type"}, {"band15-type"},
-                   {"band16-type"}, {"band17-type"}, {"band18-type"}, {"band19-type"},
-                   {"band20-type"}, {"band21-type"}, {"band22-type"}, {"band23-type"},
-                   {"band24-type"}, {"band25-type"}, {"band26-type"}, {"band27-type"},
-                   {"band28-type"}, {"band29-type"}, {"band30-type"}, std::to_array("band31-type")});
+constexpr auto band_type = std::to_array({{"band0Type"},  {"band1Type"},  {"band2Type"},  {"band3Type"},
+                                          {"band4Type"},  {"band5Type"},  {"band6Type"},  {"band7Type"},
+                                          {"band8Type"},  {"band9Type"},  {"band10Type"}, {"band11Type"},
+                                          {"band12Type"}, {"band13Type"}, {"band14Type"}, {"band15Type"},
+                                          {"band16Type"}, {"band17Type"}, {"band18Type"}, {"band19Type"},
+                                          {"band20Type"}, {"band21Type"}, {"band22Type"}, {"band23Type"},
+                                          {"band24Type"}, {"band25Type"}, {"band26Type"}, {"band27Type"},
+                                          {"band28Type"}, {"band29Type"}, {"band30Type"}, std::to_array("band31Type")});
 
 constexpr auto band_mode =
     std::to_array({{"band0-mode"},  {"band1-mode"},  {"band2-mode"},  {"band3-mode"},

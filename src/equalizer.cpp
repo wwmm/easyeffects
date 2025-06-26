@@ -27,6 +27,7 @@
 #include "db_manager.hpp"
 #include "easyeffects_db_equalizer.h"
 #include "easyeffects_db_equalizer_channel.h"
+#include "equalizer_macros.hpp"
 #include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
 #include "pipeline_type.hpp"
@@ -69,37 +70,27 @@ Equalizer::Equalizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   BIND_LV2_PORT("frqs_l", pitchLeft, setPitchLeft, db::Equalizer::pitchLeftChanged);
   BIND_LV2_PORT("frqs_r", pitchRight, setPitchRight, db::Equalizer::pitchRightChanged);
 
-  // bind_bands(std::make_index_sequence<max_bands>());
+  bind_bands();
 
   on_split_channels();
 
-  // gconnections.push_back(g_signal_connect(settings, "changed::num-bands",
-  //                                         G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
-  //                                           auto* self = static_cast<Equalizer*>(user_data);
+  /*
+    Using setProperty does not have the same performance as calling the proper setter directly:
+    https://doc.qt.io/qt-6/properties.html
+    . But it is the easiest thing to do in the case below.
+  */
 
-  //                                           const uint nbands = g_settings_get_int(settings, key);
+  connect(settings, &db::Equalizer::numBandsChanged, [&]() {
+    for (int n = 0U; n < settings->numBands(); n++) {
+      settings_left->setProperty(tags::equalizer::band_type[n].data(), 0);
 
-  //                                           const bool split = g_settings_get_boolean(settings, "split-channels") !=
-  //                                           0;
+      if (settings->splitChannels()) {
+        settings_right->setProperty(tags::equalizer::band_type[n].data(), 0);
+      }
+    }
+  });
 
-  //                                           using namespace tags::equalizer;
-
-  //                                           for (uint n = 0U; n < self->max_bands; n++) {
-  //                                             if (n >= nbands) {
-  //                                               // turn off unused bands
-  //                                               g_settings_set_enum(self->settings_left, band_type[n].data(), 0);
-
-  //                                               if (split) {
-  //                                                 g_settings_set_enum(self->settings_right, band_type[n].data(), 0);
-  //                                               }
-  //                                             }
-  //                                           }
-  //                                         }),
-  //                                         this));
-
-  // gconnections.push_back(g_signal_connect(
-  //     settings, "changed::split-channels",
-  //     G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) { self->on_split_channels(); }), this));
+  connect(settings, &db::Equalizer::splitChannelsChanged, [&]() { on_split_channels(); });
 }
 
 Equalizer::~Equalizer() {
@@ -114,6 +105,17 @@ Equalizer::~Equalizer() {
 
 void Equalizer::reset() {
   settings->setDefaults();
+}
+
+// NOLINTNEXTLINE(readability-function-size,hicpp-function-size)
+void Equalizer::bind_bands() {
+  BIND_BANDS_TYPE(settings_left);
+  BIND_BANDS_MODE(settings_left);
+  BIND_BANDS_SLOPE(settings_left);
+
+  BIND_BANDS_TYPE(settings_right);
+  BIND_BANDS_MODE(settings_right);
+  BIND_BANDS_SLOPE(settings_right);
 }
 
 void Equalizer::on_split_channels() {
