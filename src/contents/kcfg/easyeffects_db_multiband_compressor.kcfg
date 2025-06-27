@@ -7,25 +7,6 @@
         <parameter name="instanceIndex" />
     </kcfgfile>
     <group parentGroupName="$(masterGroup)" name="MultibandCompressor#$(instanceIndex)">
-        <entry name="Labels" type="StringList">
-            <default>Classic,Modern,Linear Phase</default>
-        </entry>
-        <entry name="Labels" type="StringList">
-            <default>None,Pink BT,Pink MT,Brown BT,Brown MT</default>
-        </entry>
-        <entry name="Labels" type="StringList">
-            <default>Downward,Upward,Boosting</default>
-        </entry>
-        <entry name="Labels" type="StringList">
-            <default>Peak,RMS,Low-Pass,SMA</default>
-        </entry>
-        <entry name="Labels" type="StringList">
-            <default>Middle,Side,Left,Right,Min,Max</default>
-        </entry>
-        <entry name="Labels" type="StringList">
-            <default>Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max</default>
-        </entry>
-
         <entry name="bypass" type="Bool">
             <label></label>
             <default>false</default>
@@ -59,9 +40,15 @@
             <label></label>
             <default>false</default>
         </entry>
+        <entry name="compressorModeLabels" type="StringList">
+            <default>Classic,Modern,Linear Phase</default>
+        </entry>
         <entry name="compressorMode" type="Int">
             <label></label>
             <default>"Modern"</default>
+        </entry>
+        <entry name="envelopeBoostLabels" type="StringList">
+            <default>None,Pink BT,Pink MT,Brown BT,Brown MT</default>
         </entry>
         <entry name="envelopeBoost" type="Int">
             <label></label>
@@ -178,6 +165,9 @@
             <default>false</default>
         </entry>
 
+        <entry name="sidechainModeLabels" type="StringList">
+            <default>Peak,RMS,Low-Pass,SMA</default>
+        </entry>
         <entry name="sidechainMode0" type="Int">
             <label></label>
             <default>"RMS"</default>
@@ -211,6 +201,9 @@
             <default>"RMS"</default>
         </entry>
 
+        <entry name="sidechainSourceLabels" type="StringList">
+            <default>Middle,Side,Left,Right,Min,Max</default>
+        </entry>
         <entry name="sidechainSource0" type="Int">
             <label></label>
             <default>"Middle"</default>
@@ -244,6 +237,9 @@
             <default>"Middle"</default>
         </entry>
 
+        <entry name="stereoSplitSourceLabels" type="StringList">
+            <default>Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max</default>
+        </entry>
         <entry name="stereoSplit-source0" type="Int">
             <label></label>
             <default>"Left/Right"</default>
@@ -588,6 +584,9 @@
             <default>20000</default>
         </entry>
 
+        <entry name="compressionModeLabels" type="StringList">
+            <default>Downward,Upward,Boosting</default>
+        </entry>
         <entry name="compressionMode0" type="Int">
             <label></label>
             <default>"Downward"</default>
