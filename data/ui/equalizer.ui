@@ -390,11 +390,9 @@
                             <object class="GtkBox">
                                 <property name="hexpand">1</property>
                                 <property name="vexpand">0</property>
-                                <property name="homogeneous">1</property>
-                                <property name="spacing">6</property>
+                                <property name="spacing">12</property>
                                 <child>
                                     <object class="GtkBox">
-                                        <property name="hexpand">1</property>
                                         <property name="vexpand">0</property>
                                         <property name="spacing">6</property>
                                         <child>
@@ -406,8 +404,8 @@
                                         </child>
                                         <child>
                                             <object class="GtkSpinButton" id="input_gain">
-                                                <property name="hexpand">1</property>
                                                 <property name="valign">center</property>
+                                                <property name="width-chars">11</property>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
                                                         <property name="lower">-36</property>
@@ -427,6 +425,7 @@
                                 <child>
                                     <object class="GtkBox">
                                         <property name="orientation">vertical</property>
+                                        <property name="hexpand">1</property>
                                         <child>
                                             <object class="GtkBox">
                                                 <property name="spacing">6</property>
@@ -472,11 +471,9 @@
                             <object class="GtkBox">
                                 <property name="hexpand">1</property>
                                 <property name="vexpand">0</property>
-                                <property name="homogeneous">1</property>
-                                <property name="spacing">6</property>
+                                <property name="spacing">12</property>
                                 <child>
                                     <object class="GtkBox">
-                                        <property name="hexpand">1</property>
                                         <property name="vexpand">0</property>
                                         <property name="spacing">6</property>
                                         <child>
@@ -488,8 +485,8 @@
                                         </child>
                                         <child>
                                             <object class="GtkSpinButton" id="output_gain">
-                                                <property name="hexpand">1</property>
                                                 <property name="valign">center</property>
+                                                <property name="width-chars">11</property>
                                                 <property name="adjustment">
                                                     <object class="GtkAdjustment">
                                                         <property name="lower">-36</property>
@@ -509,6 +506,7 @@
                                 <child>
                                     <object class="GtkBox">
                                         <property name="orientation">vertical</property>
+                                        <property name="hexpand">1</property>
                                         <child>
                                             <object class="GtkBox">
                                                 <property name="spacing">6</property>
