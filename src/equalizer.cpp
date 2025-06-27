@@ -109,13 +109,27 @@ void Equalizer::reset() {
 
 // NOLINTNEXTLINE(readability-function-size,hicpp-function-size)
 void Equalizer::bind_bands() {
-  BIND_BANDS_TYPE(settings_left);
-  BIND_BANDS_MODE(settings_left);
-  BIND_BANDS_SLOPE(settings_left);
+  using namespace tags::equalizer;
 
-  BIND_BANDS_TYPE(settings_right);
-  BIND_BANDS_MODE(settings_right);
-  BIND_BANDS_SLOPE(settings_right);
+  BIND_BANDS_PROPERTY(settings_left, ftl, Type);
+  BIND_BANDS_PROPERTY(settings_left, fml, Mode);
+  BIND_BANDS_PROPERTY(settings_left, sl, Slope);
+  BIND_BANDS_PROPERTY(settings_left, xsl, Solo);
+  BIND_BANDS_PROPERTY(settings_left, xml, Mute);
+  BIND_BANDS_PROPERTY(settings_left, fl, Frequency);
+  BIND_BANDS_PROPERTY(settings_left, ql, Q);
+  BIND_BANDS_PROPERTY(settings_left, wl, Width);
+  BIND_BANDS_PROPERTY(settings_left, gl, Gain);
+
+  BIND_BANDS_PROPERTY(settings_right, ftr, Type);
+  BIND_BANDS_PROPERTY(settings_right, fmr, Mode);
+  BIND_BANDS_PROPERTY(settings_right, sr, Slope);
+  BIND_BANDS_PROPERTY(settings_right, xsr, Solo);
+  BIND_BANDS_PROPERTY(settings_right, xmr, Mute);
+  BIND_BANDS_PROPERTY(settings_right, fr, Frequency);
+  BIND_BANDS_PROPERTY(settings_right, qr, Q);
+  BIND_BANDS_PROPERTY(settings_right, wr, Width);
+  BIND_BANDS_PROPERTY(settings_right, gr, Gain);
 }
 
 void Equalizer::on_split_channels() {

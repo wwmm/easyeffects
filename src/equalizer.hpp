@@ -75,23 +75,9 @@ class Equalizer : public PluginBase {
 
   //   // left channel
 
-  //   lv2_wrapper->bind_key_bool<xsl[n], band_solo[n]>(settings_left);
-  //   lv2_wrapper->bind_key_bool<xml[n], band_mute[n]>(settings_left);
-
-  //   lv2_wrapper->bind_key_double<fl[n], band_frequency[n]>(settings_left);
-  //   lv2_wrapper->bind_key_double<ql[n], band_q[n]>(settings_left);
-  //   lv2_wrapper->bind_key_double<wl[n], band_width[n]>(settings_left);
-
   //   lv2_wrapper->bind_key_double_db<gl[n], band_gain[n]>(settings_left);
 
   //   // right channel
-
-  //   lv2_wrapper->bind_key_bool<xsr[n], band_solo[n]>(settings_right);
-  //   lv2_wrapper->bind_key_bool<xmr[n], band_mute[n]>(settings_right);
-
-  //   lv2_wrapper->bind_key_double<fr[n], band_frequency[n]>(settings_right);
-  //   lv2_wrapper->bind_key_double<qr[n], band_q[n]>(settings_right);
-  //   lv2_wrapper->bind_key_double<wr[n], band_width[n]>(settings_right);
 
   //   lv2_wrapper->bind_key_double_db<gr[n], band_gain[n]>(settings_right);
   // }
