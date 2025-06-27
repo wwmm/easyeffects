@@ -25,6 +25,7 @@ namespace tags::equalizer {
 
 // bands
 
+// Todo: This one may not be needed anymore...
 constexpr auto band_id = std::to_array(
     {"band0",  "band1",  "band2",  "band3",  "band4",  "band5",  "band6",  "band7",  "band8",  "band9",  "band10",
      "band11", "band12", "band13", "band14", "band15", "band16", "band17", "band18", "band19", "band20", "band21",
@@ -39,84 +40,80 @@ constexpr auto band_type = std::to_array({{"band0Type"},  {"band1Type"},  {"band
                                           {"band24Type"}, {"band25Type"}, {"band26Type"}, {"band27Type"},
                                           {"band28Type"}, {"band29Type"}, {"band30Type"}, std::to_array("band31Type")});
 
-constexpr auto band_mode =
-    std::to_array({{"band0-mode"},  {"band1-mode"},  {"band2-mode"},  {"band3-mode"},
-                   {"band4-mode"},  {"band5-mode"},  {"band6-mode"},  {"band7-mode"},
-                   {"band8-mode"},  {"band9-mode"},  {"band10-mode"}, {"band11-mode"},
-                   {"band12-mode"}, {"band13-mode"}, {"band14-mode"}, {"band15-mode"},
-                   {"band16-mode"}, {"band17-mode"}, {"band18-mode"}, {"band19-mode"},
-                   {"band20-mode"}, {"band21-mode"}, {"band22-mode"}, {"band23-mode"},
-                   {"band24-mode"}, {"band25-mode"}, {"band26-mode"}, {"band27-mode"},
-                   {"band28-mode"}, {"band29-mode"}, {"band30-mode"}, std::to_array("band31-mode")});
+constexpr auto band_mode = std::to_array({{"band0Mode"},  {"band1Mode"},  {"band2Mode"},  {"band3Mode"},
+                                          {"band4Mode"},  {"band5Mode"},  {"band6Mode"},  {"band7Mode"},
+                                          {"band8Mode"},  {"band9Mode"},  {"band10Mode"}, {"band11Mode"},
+                                          {"band12Mode"}, {"band13Mode"}, {"band14Mode"}, {"band15Mode"},
+                                          {"band16Mode"}, {"band17Mode"}, {"band18Mode"}, {"band19Mode"},
+                                          {"band20Mode"}, {"band21Mode"}, {"band22Mode"}, {"band23Mode"},
+                                          {"band24Mode"}, {"band25Mode"}, {"band26Mode"}, {"band27Mode"},
+                                          {"band28Mode"}, {"band29Mode"}, {"band30Mode"}, std::to_array("band31Mode")});
 
 constexpr auto band_slope =
-    std::to_array({{"band0-slope"},  {"band1-slope"},  {"band2-slope"},  {"band3-slope"},
-                   {"band4-slope"},  {"band5-slope"},  {"band6-slope"},  {"band7-slope"},
-                   {"band8-slope"},  {"band9-slope"},  {"band10-slope"}, {"band11-slope"},
-                   {"band12-slope"}, {"band13-slope"}, {"band14-slope"}, {"band15-slope"},
-                   {"band16-slope"}, {"band17-slope"}, {"band18-slope"}, {"band19-slope"},
-                   {"band20-slope"}, {"band21-slope"}, {"band22-slope"}, {"band23-slope"},
-                   {"band24-slope"}, {"band25-slope"}, {"band26-slope"}, {"band27-slope"},
-                   {"band28-slope"}, {"band29-slope"}, {"band30-slope"}, std::to_array("band31-slope")});
+    std::to_array({{"band0Slope"},  {"band1Slope"},  {"band2Slope"},  {"band3Slope"},
+                   {"band4Slope"},  {"band5Slope"},  {"band6Slope"},  {"band7Slope"},
+                   {"band8Slope"},  {"band9Slope"},  {"band10Slope"}, {"band11Slope"},
+                   {"band12Slope"}, {"band13Slope"}, {"band14Slope"}, {"band15Slope"},
+                   {"band16Slope"}, {"band17Slope"}, {"band18Slope"}, {"band19Slope"},
+                   {"band20Slope"}, {"band21Slope"}, {"band22Slope"}, {"band23Slope"},
+                   {"band24Slope"}, {"band25Slope"}, {"band26Slope"}, {"band27Slope"},
+                   {"band28Slope"}, {"band29Slope"}, {"band30Slope"}, std::to_array("band31Slope")});
 
-constexpr auto band_solo =
-    std::to_array({{"band0-solo"},  {"band1-solo"},  {"band2-solo"},  {"band3-solo"},
-                   {"band4-solo"},  {"band5-solo"},  {"band6-solo"},  {"band7-solo"},
-                   {"band8-solo"},  {"band9-solo"},  {"band10-solo"}, {"band11-solo"},
-                   {"band12-solo"}, {"band13-solo"}, {"band14-solo"}, {"band15-solo"},
-                   {"band16-solo"}, {"band17-solo"}, {"band18-solo"}, {"band19-solo"},
-                   {"band20-solo"}, {"band21-solo"}, {"band22-solo"}, {"band23-solo"},
-                   {"band24-solo"}, {"band25-solo"}, {"band26-solo"}, {"band27-solo"},
-                   {"band28-solo"}, {"band29-solo"}, {"band30-solo"}, std::to_array("band31-solo")});
+constexpr auto band_solo = std::to_array({{"band0Solo"},  {"band1Solo"},  {"band2Solo"},  {"band3Solo"},
+                                          {"band4Solo"},  {"band5Solo"},  {"band6Solo"},  {"band7Solo"},
+                                          {"band8Solo"},  {"band9Solo"},  {"band10Solo"}, {"band11Solo"},
+                                          {"band12Solo"}, {"band13Solo"}, {"band14Solo"}, {"band15Solo"},
+                                          {"band16Solo"}, {"band17Solo"}, {"band18Solo"}, {"band19Solo"},
+                                          {"band20Solo"}, {"band21Solo"}, {"band22Solo"}, {"band23Solo"},
+                                          {"band24Solo"}, {"band25Solo"}, {"band26Solo"}, {"band27Solo"},
+                                          {"band28Solo"}, {"band29Solo"}, {"band30Solo"}, std::to_array("band31Solo")});
 
-constexpr auto band_mute =
-    std::to_array({{"band0-mute"},  {"band1-mute"},  {"band2-mute"},  {"band3-mute"},
-                   {"band4-mute"},  {"band5-mute"},  {"band6-mute"},  {"band7-mute"},
-                   {"band8-mute"},  {"band9-mute"},  {"band10-mute"}, {"band11-mute"},
-                   {"band12-mute"}, {"band13-mute"}, {"band14-mute"}, {"band15-mute"},
-                   {"band16-mute"}, {"band17-mute"}, {"band18-mute"}, {"band19-mute"},
-                   {"band20-mute"}, {"band21-mute"}, {"band22-mute"}, {"band23-mute"},
-                   {"band24-mute"}, {"band25-mute"}, {"band26-mute"}, {"band27-mute"},
-                   {"band28-mute"}, {"band29-mute"}, {"band30-mute"}, std::to_array("band31-mute")});
+constexpr auto band_mute = std::to_array({{"band0Mute"},  {"band1Mute"},  {"band2Mute"},  {"band3Mute"},
+                                          {"band4Mute"},  {"band5Mute"},  {"band6Mute"},  {"band7Mute"},
+                                          {"band8Mute"},  {"band9Mute"},  {"band10Mute"}, {"band11Mute"},
+                                          {"band12Mute"}, {"band13Mute"}, {"band14Mute"}, {"band15Mute"},
+                                          {"band16Mute"}, {"band17Mute"}, {"band18Mute"}, {"band19Mute"},
+                                          {"band20Mute"}, {"band21Mute"}, {"band22Mute"}, {"band23Mute"},
+                                          {"band24Mute"}, {"band25Mute"}, {"band26Mute"}, {"band27Mute"},
+                                          {"band28Mute"}, {"band29Mute"}, {"band30Mute"}, std::to_array("band31Mute")});
 
-constexpr auto band_frequency = std::to_array(
-    {{"band0-frequency"},  {"band1-frequency"},  {"band2-frequency"},  {"band3-frequency"},
-     {"band4-frequency"},  {"band5-frequency"},  {"band6-frequency"},  {"band7-frequency"},
-     {"band8-frequency"},  {"band9-frequency"},  {"band10-frequency"}, {"band11-frequency"},
-     {"band12-frequency"}, {"band13-frequency"}, {"band14-frequency"}, {"band15-frequency"},
-     {"band16-frequency"}, {"band17-frequency"}, {"band18-frequency"}, {"band19-frequency"},
-     {"band20-frequency"}, {"band21-frequency"}, {"band22-frequency"}, {"band23-frequency"},
-     {"band24-frequency"}, {"band25-frequency"}, {"band26-frequency"}, {"band27-frequency"},
-     {"band28-frequency"}, {"band29-frequency"}, {"band30-frequency"}, std::to_array("band31-frequency")});
+constexpr auto band_frequency =
+    std::to_array({{"band0Frequency"},  {"band1Frequency"},  {"band2Frequency"},  {"band3Frequency"},
+                   {"band4Frequency"},  {"band5Frequency"},  {"band6Frequency"},  {"band7Frequency"},
+                   {"band8Frequency"},  {"band9Frequency"},  {"band10Frequency"}, {"band11Frequency"},
+                   {"band12Frequency"}, {"band13Frequency"}, {"band14Frequency"}, {"band15Frequency"},
+                   {"band16Frequency"}, {"band17Frequency"}, {"band18Frequency"}, {"band19Frequency"},
+                   {"band20Frequency"}, {"band21Frequency"}, {"band22Frequency"}, {"band23Frequency"},
+                   {"band24Frequency"}, {"band25Frequency"}, {"band26Frequency"}, {"band27Frequency"},
+                   {"band28Frequency"}, {"band29Frequency"}, {"band30Frequency"}, std::to_array("band31Frequency")});
 
-constexpr auto band_q = std::to_array({{"band0-q"},  {"band1-q"},  {"band2-q"},  {"band3-q"},
-                                       {"band4-q"},  {"band5-q"},  {"band6-q"},  {"band7-q"},
-                                       {"band8-q"},  {"band9-q"},  {"band10-q"}, {"band11-q"},
-                                       {"band12-q"}, {"band13-q"}, {"band14-q"}, {"band15-q"},
-                                       {"band16-q"}, {"band17-q"}, {"band18-q"}, {"band19-q"},
-                                       {"band20-q"}, {"band21-q"}, {"band22-q"}, {"band23-q"},
-                                       {"band24-q"}, {"band25-q"}, {"band26-q"}, {"band27-q"},
-                                       {"band28-q"}, {"band29-q"}, {"band30-q"}, std::to_array("band31-q")});
+constexpr auto band_q = std::to_array({{"band0Q"},  {"band1Q"},  {"band2Q"},  {"band3Q"},
+                                       {"band4Q"},  {"band5Q"},  {"band6Q"},  {"band7Q"},
+                                       {"band8Q"},  {"band9Q"},  {"band10Q"}, {"band11Q"},
+                                       {"band12Q"}, {"band13Q"}, {"band14Q"}, {"band15Q"},
+                                       {"band16Q"}, {"band17Q"}, {"band18Q"}, {"band19Q"},
+                                       {"band20Q"}, {"band21Q"}, {"band22Q"}, {"band23Q"},
+                                       {"band24Q"}, {"band25Q"}, {"band26Q"}, {"band27Q"},
+                                       {"band28Q"}, {"band29Q"}, {"band30Q"}, std::to_array("band31Q")});
 
 constexpr auto band_width =
-    std::to_array({{"band0-width"},  {"band1-width"},  {"band2-width"},  {"band3-width"},
-                   {"band4-width"},  {"band5-width"},  {"band6-width"},  {"band7-width"},
-                   {"band8-width"},  {"band9-width"},  {"band10-width"}, {"band11-width"},
-                   {"band12-width"}, {"band13-width"}, {"band14-width"}, {"band15-width"},
-                   {"band16-width"}, {"band17-width"}, {"band18-width"}, {"band19-width"},
-                   {"band20-width"}, {"band21-width"}, {"band22-width"}, {"band23-width"},
-                   {"band24-width"}, {"band25-width"}, {"band26-width"}, {"band27-width"},
-                   {"band28-width"}, {"band29-width"}, {"band30-width"}, std::to_array("band31-width")});
+    std::to_array({{"band0Width"},  {"band1Width"},  {"band2Width"},  {"band3Width"},
+                   {"band4Width"},  {"band5Width"},  {"band6Width"},  {"band7Width"},
+                   {"band8Width"},  {"band9Width"},  {"band10Width"}, {"band11Width"},
+                   {"band12Width"}, {"band13Width"}, {"band14Width"}, {"band15Width"},
+                   {"band16Width"}, {"band17Width"}, {"band18Width"}, {"band19Width"},
+                   {"band20Width"}, {"band21Width"}, {"band22Width"}, {"band23Width"},
+                   {"band24Width"}, {"band25Width"}, {"band26Width"}, {"band27Width"},
+                   {"band28Width"}, {"band29Width"}, {"band30Width"}, std::to_array("band31Width")});
 
-constexpr auto band_gain =
-    std::to_array({{"band0-gain"},  {"band1-gain"},  {"band2-gain"},  {"band3-gain"},
-                   {"band4-gain"},  {"band5-gain"},  {"band6-gain"},  {"band7-gain"},
-                   {"band8-gain"},  {"band9-gain"},  {"band10-gain"}, {"band11-gain"},
-                   {"band12-gain"}, {"band13-gain"}, {"band14-gain"}, {"band15-gain"},
-                   {"band16-gain"}, {"band17-gain"}, {"band18-gain"}, {"band19-gain"},
-                   {"band20-gain"}, {"band21-gain"}, {"band22-gain"}, {"band23-gain"},
-                   {"band24-gain"}, {"band25-gain"}, {"band26-gain"}, {"band27-gain"},
-                   {"band28-gain"}, {"band29-gain"}, {"band30-gain"}, std::to_array("band31-gain")});
+constexpr auto band_gain = std::to_array({{"band0Gain"},  {"band1Gain"},  {"band2Gain"},  {"band3Gain"},
+                                          {"band4Gain"},  {"band5Gain"},  {"band6Gain"},  {"band7Gain"},
+                                          {"band8Gain"},  {"band9Gain"},  {"band10Gain"}, {"band11Gain"},
+                                          {"band12Gain"}, {"band13Gain"}, {"band14Gain"}, {"band15Gain"},
+                                          {"band16Gain"}, {"band17Gain"}, {"band18Gain"}, {"band19Gain"},
+                                          {"band20Gain"}, {"band21Gain"}, {"band22Gain"}, {"band23Gain"},
+                                          {"band24Gain"}, {"band25Gain"}, {"band26Gain"}, {"band27Gain"},
+                                          {"band28Gain"}, {"band29Gain"}, {"band30Gain"}, std::to_array("band31Gain")});
 
 // left channel
 

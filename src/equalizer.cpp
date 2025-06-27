@@ -133,6 +133,38 @@ void Equalizer::bind_bands() {
 }
 
 void Equalizer::on_split_channels() {
+  if (settings->splitChannels()) {
+    return;
+  }
+
+  using namespace tags::equalizer;
+
+  /*
+    Using setProperty() and property() does not have the same performance as calling the proper setter directly:
+    https://doc.qt.io/qt-6/properties.html
+    . But it is the easiest thing to do in the case below.
+  */
+
+  for (uint n = 0U; n < max_bands; n++) {
+    settings_right->setProperty(band_type[n].data(), settings_left->property(band_type[n].data()));
+
+    settings_right->setProperty(band_mode[n].data(), settings_left->property(band_mode[n].data()));
+
+    settings_right->setProperty(band_slope[n].data(), settings_left->property(band_slope[n].data()));
+
+    settings_right->setProperty(band_solo[n].data(), settings_left->property(band_solo[n].data()));
+
+    settings_right->setProperty(band_mute[n].data(), settings_left->property(band_mute[n].data()));
+
+    settings_right->setProperty(band_frequency[n].data(), settings_left->property(band_frequency[n].data()));
+
+    settings_right->setProperty(band_gain[n].data(), settings_left->property(band_gain[n].data()));
+
+    settings_right->setProperty(band_q[n].data(), settings_left->property(band_q[n].data()));
+
+    settings_right->setProperty(band_width[n].data(), settings_left->property(band_width[n].data()));
+  }
+
   /*
   if (g_settings_get_boolean(settings, "split-channels") != 0) {
     for (auto& handler_id : gconnections_unified) {
@@ -146,29 +178,7 @@ void Equalizer::on_split_channels() {
 
   using namespace tags::equalizer;
 
-  for (uint n = 0U; n < max_bands; n++) {
-    g_settings_set_enum(settings_right, band_type[n].data(), g_settings_get_enum(settings_left, band_type[n].data()));
 
-    g_settings_set_enum(settings_right, band_mode[n].data(), g_settings_get_enum(settings_left, band_mode[n].data()));
-
-    g_settings_set_enum(settings_right, band_slope[n].data(), g_settings_get_enum(settings_left, band_slope[n].data()));
-
-    g_settings_set_boolean(settings_right, band_solo[n].data(),
-                           g_settings_get_boolean(settings_left, band_solo[n].data()));
-
-    g_settings_set_boolean(settings_right, band_mute[n].data(),
-                           g_settings_get_boolean(settings_left, band_mute[n].data()));
-
-    g_settings_set_double(settings_right, band_frequency[n].data(),
-                          g_settings_get_double(settings_left, band_frequency[n].data()));
-
-    g_settings_set_double(settings_right, band_gain[n].data(),
-                          g_settings_get_double(settings_left, band_gain[n].data()));
-
-    g_settings_set_double(settings_right, band_q[n].data(), g_settings_get_double(settings_left, band_q[n].data()));
-
-    g_settings_set_double(settings_right, band_width[n].data(),
-                          g_settings_get_double(settings_left, band_width[n].data()));
   */
 
   /*
