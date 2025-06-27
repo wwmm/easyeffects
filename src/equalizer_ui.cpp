@@ -100,7 +100,7 @@ struct _EqualizerBox {
 
   AdwToastOverlay* toast_overlay;
 
-  GtkScale *input_gain, *output_gain;
+  GtkSpinButton *input_gain, *output_gain;
 
   GtkLevelBar *input_level_left, *input_level_right, *output_level_left, *output_level_right;
 
@@ -1183,7 +1183,7 @@ void equalizer_box_init(EqualizerBox* self) {
 
   prepare_spinbuttons<"st">(self->pitch_left, self->pitch_right);
 
-  prepare_scales<"dB">(self->input_gain, self->output_gain);
+  prepare_spinbuttons<"dB">(self->input_gain, self->output_gain);
 }
 
 auto create() -> EqualizerBox* {

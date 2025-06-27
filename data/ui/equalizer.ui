@@ -405,7 +405,7 @@
                                             </object>
                                         </child>
                                         <child>
-                                            <object class="GtkScale" id="input_gain">
+                                            <object class="GtkSpinButton" id="input_gain">
                                                 <property name="hexpand">1</property>
                                                 <property name="valign">center</property>
                                                 <property name="adjustment">
@@ -416,9 +416,7 @@
                                                         <property name="page-increment">1</property>
                                                     </object>
                                                 </property>
-                                                <property name="draw-value">1</property>
                                                 <property name="digits">1</property>
-                                                <property name="value-pos">right</property>
                                                 <accessibility>
                                                     <property name="label" translatable="yes">Plugin Input Gain</property>
                                                 </accessibility>
@@ -489,7 +487,7 @@
                                             </object>
                                         </child>
                                         <child>
-                                            <object class="GtkScale" id="output_gain">
+                                            <object class="GtkSpinButton" id="output_gain">
                                                 <property name="hexpand">1</property>
                                                 <property name="valign">center</property>
                                                 <property name="adjustment">
@@ -500,9 +498,7 @@
                                                         <property name="page-increment">1</property>
                                                     </object>
                                                 </property>
-                                                <property name="draw-value">1</property>
                                                 <property name="digits">1</property>
-                                                <property name="value-pos">right</property>
                                                 <accessibility>
                                                     <property name="label" translatable="yes">Plugin Output Gain</property>
                                                 </accessibility>
