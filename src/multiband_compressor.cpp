@@ -19,7 +19,6 @@
 
 #include "multiband_compressor.hpp"
 #include <qtypes.h>
-#include <algorithm>
 #include <memory>
 #include <span>
 #include <string>
@@ -30,9 +29,6 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
-#include "pw_objects.hpp"
-#include "spa/utils/defs.h"
-#include "tags_multiband_compressor.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -41,7 +37,7 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
                                          PipelineType pipe_type,
                                          QString instance_id)
     : PluginBase(tag,
-                 tags::plugin_name::BaseName::multiband_compressor,
+                 tags::plugin_name::BaseName::multibandCompressor,
                  tags::plugin_package::Package::lsp,
                  instance_id,
                  pipe_manager,
@@ -49,7 +45,7 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
                  true),
       settings(db::Manager::self().get_plugin_db<db::MultibandCompressor>(
           pipe_type,
-          tags::plugin_name::BaseName::multiband_compressor + "#" + instance_id)) {
+          tags::plugin_name::BaseName::multibandCompressor + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/sc_mb_compressor_stereo";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -72,8 +68,8 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::MultibandCompressor::stereoSplitChanged);
 
   // dB controls with -inf mode.
-  BIND_LV2_PORT_DB("cdr", g_dry, setDry, db::MultibandCompressor::dryChanged, true);
-  BIND_LV2_PORT_DB("cwt", g_wet, setWet, db::MultibandCompressor::wetChanged, true);
+  BIND_LV2_PORT_DB("cdr", dry, setDry, db::MultibandCompressor::dryChanged, true);
+  BIND_LV2_PORT_DB("cwt", wet, setWet, db::MultibandCompressor::wetChanged, true);
 
   // TODO: set band parameters
   // ...

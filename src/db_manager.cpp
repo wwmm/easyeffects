@@ -49,6 +49,8 @@
 #include "easyeffects_db_limiter.h"
 #include "easyeffects_db_loudness.h"
 #include "easyeffects_db_maximizer.h"
+#include "easyeffects_db_multiband_compressor.h"
+#include "easyeffects_db_multiband_gate.h"
 #include "easyeffects_db_pitch.h"
 #include "easyeffects_db_reverb.h"
 #include "easyeffects_db_rnnoise.h"

@@ -19,7 +19,6 @@
 
 #include "multiband_gate.hpp"
 #include <qtypes.h>
-#include <algorithm>
 #include <memory>
 #include <span>
 #include <string>
@@ -30,9 +29,6 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
-#include "pw_objects.hpp"
-#include "spa/utils/defs.h"
-#include "tags_multiband_gate.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -41,7 +37,7 @@ MultibandGate::MultibandGate(const std::string& tag,
                              PipelineType pipe_type,
                              QString instance_id)
     : PluginBase(tag,
-                 tags::plugin_name::BaseName::multiband_gate,
+                 tags::plugin_name::BaseName::multibandGate,
                  tags::plugin_package::Package::lsp,
                  instance_id,
                  pipe_manager,
@@ -49,7 +45,7 @@ MultibandGate::MultibandGate(const std::string& tag,
                  true),
       settings(db::Manager::self().get_plugin_db<db::MultibandGate>(
           pipe_type,
-          tags::plugin_name::BaseName::multiband_gate + "#" + instance_id)) {
+          tags::plugin_name::BaseName::multibandGate + "#" + instance_id)) {
   const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/sc_mb_gate_stereo";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -72,8 +68,8 @@ MultibandGate::MultibandGate(const std::string& tag,
   BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::MultibandGate::stereoSplitChanged);
 
   // dB controls with -inf mode.
-  BIND_LV2_PORT_DB("cdr", g_dry, setDry, db::MultibandGate::dryChanged, true);
-  BIND_LV2_PORT_DB("cwt", g_wet, setWet, db::MultibandGate::wetChanged, true);
+  BIND_LV2_PORT_DB("cdr", dry, setDry, db::MultibandGate::dryChanged, true);
+  BIND_LV2_PORT_DB("cwt", wet, setWet, db::MultibandGate::wetChanged, true);
 
   // TODO: set band parameters
   // ...

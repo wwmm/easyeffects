@@ -58,9 +58,9 @@ class MultibandGate : public PluginBase {
                std::span<float>& probe_left,
                std::span<float>& probe_right) override;
 
-  auto get_latency_seconds() -> float override;
+  // auto get_latency_seconds() -> float override;
 
-  void update_probe_links() override;
+  // void update_probe_links() override;
 
   // TODO: add QT signals here
   // ...
