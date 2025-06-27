@@ -236,6 +236,14 @@ void Manager::create_plugin_db(const QString& parentGroup,
         plugins_map[tags::plugin_name::BaseName::maximizer + "#" + id] =
             QVariant::fromValue(new db::Maximizer(parentGroup, id));
         //
+      } else if (name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
+        plugins_map[tags::plugin_name::BaseName::multibandCompressor + "#" + id] =
+            QVariant::fromValue(new db::MultibandCompressor(parentGroup, id));
+        //
+      } else if (name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
+        plugins_map[tags::plugin_name::BaseName::multibandGate + "#" + id] =
+            QVariant::fromValue(new db::MultibandGate(parentGroup, id));
+        //
       } else if (name.startsWith(tags::plugin_name::BaseName::pitch)) {
         plugins_map[tags::plugin_name::BaseName::pitch + "#" + id] =
             QVariant::fromValue(new db::Pitch(parentGroup, id));

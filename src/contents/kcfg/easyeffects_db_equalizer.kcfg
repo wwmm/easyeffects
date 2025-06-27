@@ -24,6 +24,7 @@
             <default>0</default>
         </entry>
         <entry name="numBands" type="Int">
+            <label></label>
             <min>1</min>
             <max>32</max>
             <default>32</default>
@@ -39,16 +40,19 @@
             <default>false</default>
         </entry>
         <entry name="balance" type="Double">
+            <label></label>
             <min>-100</min>
             <max>100</max>
             <default>0</default>
         </entry>
         <entry name="pitchLeft" type="Double">
+            <label></label>
             <min>-120</min>
             <max>120</max>
             <default>0</default>
         </entry>
         <entry name="pitchRight" type="Double">
+            <label></label>
             <min>-120</min>
             <max>120</max>
             <default>0</default>

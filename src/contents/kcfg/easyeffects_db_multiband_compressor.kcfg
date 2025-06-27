@@ -1,0 +1,1163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+    <kcfgfile name="easyeffects/db/multibandcompressorrc">
+        <parameter name="masterGroup" />
+        <parameter name="instanceIndex" />
+    </kcfgfile>
+    <group parentGroupName="$(masterGroup)" name="MultibandCompressor#$(instanceIndex)">
+        <entry name="bypass" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="inputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="outputGain" type="Double">
+            <label></label>
+            <min>-36</min>
+            <max>36</max>
+            <default>0</default>
+        </entry>
+        <entry name="dry" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>20</max>
+            <default>-100</default>
+        </entry>
+        <entry name="wet" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+
+        <entry name="stereoSplit" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="compressorModeLabels" type="StringList">
+            <default>Classic,Modern,Linear Phase</default>
+        </entry>
+        <entry name="compressorMode" type="Int">
+            <label></label>
+            <default>"Modern"</default>
+        </entry>
+        <entry name="envelopeBoostLabels" type="StringList">
+            <default>None,Pink BT,Pink MT,Brown BT,Brown MT</default>
+        </entry>
+        <entry name="envelopeBoost" type="Int">
+            <label></label>
+            <default>"None"</default>
+        </entry>
+
+        <entry name="enableBand1" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="enableBand2" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="enableBand3" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="enableBand4" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="enableBand5" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="enableBand6" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="enableBand7" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+
+        <entry name="splitFrequency1" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>500</default>
+        </entry>
+        <entry name="splitFrequency2" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>1000</default>
+        </entry>
+        <entry name="splitFrequency3" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>2000</default>
+        </entry>
+        <entry name="splitFrequency4" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>4000</default>
+        </entry>
+        <entry name="splitFrequency5" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>8000</default>
+        </entry>
+        <entry name="splitFrequency6" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>12000</default>
+        </entry>
+        <entry name="splitFrequency7" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>16000</default>
+        </entry>
+
+        <entry name="sidechainInput-device" type="String">
+            <label></label>
+            <default>""</default>
+        </entry>
+
+        <entry name="externalSidechain0" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="externalSidechain1" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="externalSidechain2" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="externalSidechain3" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="externalSidechain4" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="externalSidechain5" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="externalSidechain6" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="externalSidechain7" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+
+        <entry name="sidechainModeLabels" type="StringList">
+            <default>Peak,RMS,Low-Pass,SMA</default>
+        </entry>
+        <entry name="sidechainMode0" type="Int">
+            <label></label>
+            <default>"RMS"</default>
+        </entry>
+        <entry name="sidechainMode1" type="Int">
+            <label></label>
+            <default>"RMS"</default>
+        </entry>
+        <entry name="sidechainMode2" type="Int">
+            <label></label>
+            <default>"RMS"</default>
+        </entry>
+        <entry name="sidechainMode3" type="Int">
+            <label></label>
+            <default>"RMS"</default>
+        </entry>
+        <entry name="sidechainMode4" type="Int">
+            <label></label>
+            <default>"RMS"</default>
+        </entry>
+        <entry name="sidechainMode5" type="Int">
+            <label></label>
+            <default>"RMS"</default>
+        </entry>
+        <entry name="sidechainMode6" type="Int">
+            <label></label>
+            <default>"RMS"</default>
+        </entry>
+        <entry name="sidechainMode7" type="Int">
+            <label></label>
+            <default>"RMS"</default>
+        </entry>
+
+        <entry name="sidechainSourceLabels" type="StringList">
+            <default>Middle,Side,Left,Right,Min,Max</default>
+        </entry>
+        <entry name="sidechainSource0" type="Int">
+            <label></label>
+            <default>"Middle"</default>
+        </entry>
+        <entry name="sidechainSource1" type="Int">
+            <label></label>
+            <default>"Middle"</default>
+        </entry>
+        <entry name="sidechainSource2" type="Int">
+            <label></label>
+            <default>"Middle"</default>
+        </entry>
+        <entry name="sidechainSource3" type="Int">
+            <label></label>
+            <default>"Middle"</default>
+        </entry>
+        <entry name="sidechainSource4" type="Int">
+            <label></label>
+            <default>"Middle"</default>
+        </entry>
+        <entry name="sidechainSource5" type="Int">
+            <label></label>
+            <default>"Middle"</default>
+        </entry>
+        <entry name="sidechainSource6" type="Int">
+            <label></label>
+            <default>"Middle"</default>
+        </entry>
+        <entry name="sidechainSource7" type="Int">
+            <label></label>
+            <default>"Middle"</default>
+        </entry>
+
+        <entry name="stereoSplitSourceLabels" type="StringList">
+            <default>Left/Right,Right/Left,Mid/Side,Side/Mid,Min,Max</default>
+        </entry>
+        <entry name="stereoSplit-source0" type="Int">
+            <label></label>
+            <default>"Left/Right"</default>
+        </entry>
+        <entry name="stereoSplit-source1" type="Int">
+            <label></label>
+            <default>"Left/Right"</default>
+        </entry>
+        <entry name="stereoSplit-source2" type="Int">
+            <label></label>
+            <default>"Left/Right"</default>
+        </entry>
+        <entry name="stereoSplit-source3" type="Int">
+            <label></label>
+            <default>"Left/Right"</default>
+        </entry>
+        <entry name="stereoSplit-source4" type="Int">
+            <label></label>
+            <default>"Left/Right"</default>
+        </entry>
+        <entry name="stereoSplit-source5" type="Int">
+            <label></label>
+            <default>"Left/Right"</default>
+        </entry>
+        <entry name="stereoSplit-source6" type="Int">
+            <label></label>
+            <default>"Left/Right"</default>
+        </entry>
+        <entry name="stereoSplit-source7" type="Int">
+            <label></label>
+            <default>"Left/Right"</default>
+        </entry>
+
+        <entry name="sidechainLookahead0" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainLookahead1" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainLookahead2" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainLookahead3" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainLookahead4" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainLookahead5" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainLookahead6" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainLookahead7" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
+
+        <entry name="sidechainReactivity0" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>250</max>
+            <default>10</default>
+        </entry>
+        <entry name="sidechainReactivity1" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>250</max>
+            <default>10</default>
+        </entry>
+        <entry name="sidechainReactivity2" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>250</max>
+            <default>10</default>
+        </entry>
+        <entry name="sidechainReactivity3" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>250</max>
+            <default>10</default>
+        </entry>
+        <entry name="sidechainReactivity4" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>250</max>
+            <default>10</default>
+        </entry>
+        <entry name="sidechainReactivity5" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>250</max>
+            <default>10</default>
+        </entry>
+        <entry name="sidechainReactivity6" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>250</max>
+            <default>10</default>
+        </entry>
+        <entry name="sidechainReactivity7" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>250</max>
+            <default>10</default>
+        </entry>
+
+        <entry name="sidechainPreamp0" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainPreamp1" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainPreamp2" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainPreamp3" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainPreamp4" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainPreamp5" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainPreamp6" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainPreamp7" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+
+        <entry name="sidechainCustom-lowcut-filter0" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-lowcut-filter1" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-lowcut-filter2" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-lowcut-filter3" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-lowcut-filter4" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-lowcut-filter5" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-lowcut-filter6" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-lowcut-filter7" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+
+        <entry name="sidechainCustom-highcut-filter0" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-highcut-filter1" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-highcut-filter2" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-highcut-filter3" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-highcut-filter4" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-highcut-filter5" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-highcut-filter6" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="sidechainCustom-highcut-filter7" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+
+        <entry name="sidechainLowcut-frequency0" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>10</default>
+        </entry>
+        <entry name="sidechainLowcut-frequency1" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>500</default>
+        </entry>
+        <entry name="sidechainLowcut-frequency2" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>1000</default>
+        </entry>
+        <entry name="sidechainLowcut-frequency3" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>2000</default>
+        </entry>
+        <entry name="sidechainLowcut-frequency4" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>4000</default>
+        </entry>
+        <entry name="sidechainLowcut-frequency5" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>8000</default>
+        </entry>
+        <entry name="sidechainLowcut-frequency6" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>12000</default>
+        </entry>
+        <entry name="sidechainLowcut-frequency7" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>16000</default>
+        </entry>
+
+        <entry name="sidechainHighcut-frequency0" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>500</default>
+        </entry>
+        <entry name="sidechainHighcut-frequency1" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>1000</default>
+        </entry>
+        <entry name="sidechainHighcut-frequency2" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>2000</default>
+        </entry>
+        <entry name="sidechainHighcut-frequency3" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>4000</default>
+        </entry>
+        <entry name="sidechainHighcut-frequency4" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>8000</default>
+        </entry>
+        <entry name="sidechainHighcut-frequency5" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>12000</default>
+        </entry>
+        <entry name="sidechainHighcut-frequency6" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>16000</default>
+        </entry>
+        <entry name="sidechainHighcut-frequency7" type="Double">
+            <label></label>
+            <min>10</min>
+            <max>20000</max>
+            <default>20000</default>
+        </entry>
+
+        <entry name="compressionModeLabels" type="StringList">
+            <default>Downward,Upward,Boosting</default>
+        </entry>
+        <entry name="compressionMode0" type="Int">
+            <label></label>
+            <default>"Downward"</default>
+        </entry>
+        <entry name="compressionMode1" type="Int">
+            <label></label>
+            <default>"Downward"</default>
+        </entry>
+        <entry name="compressionMode2" type="Int">
+            <label></label>
+            <default>"Downward"</default>
+        </entry>
+        <entry name="compressionMode3" type="Int">
+            <label></label>
+            <default>"Downward"</default>
+        </entry>
+        <entry name="compressionMode4" type="Int">
+            <label></label>
+            <default>"Downward"</default>
+        </entry>
+        <entry name="compressionMode5" type="Int">
+            <label></label>
+            <default>"Downward"</default>
+        </entry>
+        <entry name="compressionMode6" type="Int">
+            <label></label>
+            <default>"Downward"</default>
+        </entry>
+        <entry name="compressionMode7" type="Int">
+            <label></label>
+            <default>"Downward"</default>
+        </entry>
+
+        <entry name="compressorEnable0" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="compressorEnable1" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="compressorEnable2" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="compressorEnable3" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="compressorEnable4" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="compressorEnable5" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="compressorEnable6" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+        <entry name="compressorEnable7" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
+
+        <entry name="solo0" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="solo1" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="solo2" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="solo3" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="solo4" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="solo5" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="solo6" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="solo7" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+
+        <entry name="mute0" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="mute1" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="mute2" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="mute3" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="mute4" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="mute5" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="mute6" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="mute7" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+
+        <entry name="attackThreshold0" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>0</max>
+            <default>-12</default>
+        </entry>
+        <entry name="attackThreshold1" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>0</max>
+            <default>-12</default>
+        </entry>
+        <entry name="attackThreshold2" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>0</max>
+            <default>-12</default>
+        </entry>
+        <entry name="attackThreshold3" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>0</max>
+            <default>-12</default>
+        </entry>
+        <entry name="attackThreshold4" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>0</max>
+            <default>-12</default>
+        </entry>
+        <entry name="attackThreshold5" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>0</max>
+            <default>-12</default>
+        </entry>
+        <entry name="attackThreshold6" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>0</max>
+            <default>-12</default>
+        </entry>
+        <entry name="attackThreshold7" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>0</max>
+            <default>-12</default>
+        </entry>
+
+        <entry name="attackTime0" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>2000</max>
+            <default>20</default>
+        </entry>
+        <entry name="attackTime1" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>2000</max>
+            <default>20</default>
+        </entry>
+        <entry name="attackTime2" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>2000</max>
+            <default>20</default>
+        </entry>
+        <entry name="attackTime3" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>2000</max>
+            <default>20</default>
+        </entry>
+        <entry name="attackTime4" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>2000</max>
+            <default>20</default>
+        </entry>
+        <entry name="attackTime5" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>2000</max>
+            <default>20</default>
+        </entry>
+        <entry name="attackTime6" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>2000</max>
+            <default>20</default>
+        </entry>
+        <entry name="attackTime7" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>2000</max>
+            <default>20</default>
+        </entry>
+
+        <entry name="releaseThreshold0" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>36</max>
+            <default>-100</default>
+        </entry>
+        <entry name="releaseThreshold1" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>36</max>
+            <default>-100</default>
+        </entry>
+        <entry name="releaseThreshold2" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>36</max>
+            <default>-100</default>
+        </entry>
+        <entry name="releaseThreshold3" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>36</max>
+            <default>-100</default>
+        </entry>
+        <entry name="releaseThreshold4" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>36</max>
+            <default>-100</default>
+        </entry>
+        <entry name="releaseThreshold5" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>36</max>
+            <default>-100</default>
+        </entry>
+        <entry name="releaseThreshold6" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>36</max>
+            <default>-100</default>
+        </entry>
+        <entry name="releaseThreshold7" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>36</max>
+            <default>-100</default>
+        </entry>
+
+        <entry name="releaseTime0" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>5000</max>
+            <default>100</default>
+        </entry>
+        <entry name="releaseTime1" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>5000</max>
+            <default>100</default>
+        </entry>
+        <entry name="releaseTime2" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>5000</max>
+            <default>100</default>
+        </entry>
+        <entry name="releaseTime3" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>5000</max>
+            <default>100</default>
+        </entry>
+        <entry name="releaseTime4" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>5000</max>
+            <default>100</default>
+        </entry>
+        <entry name="releaseTime5" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>5000</max>
+            <default>100</default>
+        </entry>
+        <entry name="releaseTime6" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>5000</max>
+            <default>100</default>
+        </entry>
+        <entry name="releaseTime7" type="Double">
+            <label></label>
+            <min>0</min>
+            <max>5000</max>
+            <default>100</default>
+        </entry>
+
+        <entry name="ratio0" type="Double">
+            <label></label>
+            <min>1</min>
+            <max>100</max>
+            <default>1</default>
+        </entry>
+        <entry name="ratio1" type="Double">
+            <label></label>
+            <min>1</min>
+            <max>100</max>
+            <default>1</default>
+        </entry>
+        <entry name="ratio2" type="Double">
+            <label></label>
+            <min>1</min>
+            <max>100</max>
+            <default>1</default>
+        </entry>
+        <entry name="ratio3" type="Double">
+            <label></label>
+            <min>1</min>
+            <max>100</max>
+            <default>1</default>
+        </entry>
+        <entry name="ratio4" type="Double">
+            <label></label>
+            <min>1</min>
+            <max>100</max>
+            <default>1</default>
+        </entry>
+        <entry name="ratio5" type="Double">
+            <label></label>
+            <min>1</min>
+            <max>100</max>
+            <default>1</default>
+        </entry>
+        <entry name="ratio6" type="Double">
+            <label></label>
+            <min>1</min>
+            <max>100</max>
+            <default>1</default>
+        </entry>
+        <entry name="ratio7" type="Double">
+            <label></label>
+            <min>1</min>
+            <max>100</max>
+            <default>1</default>
+        </entry>
+
+        <entry name="knee0" type="Double">
+            <label></label>
+            <min>-24</min>
+            <max>0</max>
+            <default>-6</default>
+        </entry>
+        <entry name="knee1" type="Double">
+            <label></label>
+            <min>-24</min>
+            <max>0</max>
+            <default>-6</default>
+        </entry>
+        <entry name="knee2" type="Double">
+            <label></label>
+            <min>-24</min>
+            <max>0</max>
+            <default>-6</default>
+        </entry>
+        <entry name="knee3" type="Double">
+            <label></label>
+            <min>-24</min>
+            <max>0</max>
+            <default>-6</default>
+        </entry>
+        <entry name="knee4" type="Double">
+            <label></label>
+            <min>-24</min>
+            <max>0</max>
+            <default>-6</default>
+        </entry>
+        <entry name="knee5" type="Double">
+            <label></label>
+            <min>-24</min>
+            <max>0</max>
+            <default>-6</default>
+        </entry>
+        <entry name="knee6" type="Double">
+            <label></label>
+            <min>-24</min>
+            <max>0</max>
+            <default>-6</default>
+        </entry>
+        <entry name="knee7" type="Double">
+            <label></label>
+            <min>-24</min>
+            <max>0</max>
+            <default>-6</default>
+        </entry>
+
+        <entry name="boostThreshold0" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>-60</max>
+            <default>-72</default>
+        </entry>
+        <entry name="boostThreshold1" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>-60</max>
+            <default>-72</default>
+        </entry>
+        <entry name="boostThreshold2" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>-60</max>
+            <default>-72</default>
+        </entry>
+        <entry name="boostThreshold3" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>-60</max>
+            <default>-72</default>
+        </entry>
+        <entry name="boostThreshold4" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>-60</max>
+            <default>-72</default>
+        </entry>
+        <entry name="boostThreshold5" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>-60</max>
+            <default>-72</default>
+        </entry>
+        <entry name="boostThreshold6" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>-60</max>
+            <default>-72</default>
+        </entry>
+        <entry name="boostThreshold7" type="Double">
+            <label></label>
+            <min>-120</min>
+            <max>-60</max>
+            <default>-72</default>
+        </entry>
+
+        <entry name="boostAmount0" type="Double">
+            <label></label>
+            <min>-72</min>
+            <max>72</max>
+            <default>6</default>
+        </entry>
+        <entry name="boostAmount1" type="Double">
+            <label></label>
+            <min>-72</min>
+            <max>72</max>
+            <default>6</default>
+        </entry>
+        <entry name="boostAmount2" type="Double">
+            <label></label>
+            <min>-72</min>
+            <max>72</max>
+            <default>6</default>
+        </entry>
+        <entry name="boostAmount3" type="Double">
+            <label></label>
+            <min>-72</min>
+            <max>72</max>
+            <default>6</default>
+        </entry>
+        <entry name="boostAmount4" type="Double">
+            <label></label>
+            <min>-72</min>
+            <max>72</max>
+            <default>6</default>
+        </entry>
+        <entry name="boostAmount5" type="Double">
+            <label></label>
+            <min>-72</min>
+            <max>72</max>
+            <default>6</default>
+        </entry>
+        <entry name="boostAmount6" type="Double">
+            <label></label>
+            <min>-72</min>
+            <max>72</max>
+            <default>6</default>
+        </entry>
+        <entry name="boostAmount7" type="Double">
+            <label></label>
+            <min>-72</min>
+            <max>72</max>
+            <default>6</default>
+        </entry>
+
+        <entry name="makeup0" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>60</max>
+            <default>0</default>
+        </entry>
+        <entry name="makeup1" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>60</max>
+            <default>0</default>
+        </entry>
+        <entry name="makeup2" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>60</max>
+            <default>0</default>
+        </entry>
+        <entry name="makeup3" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>60</max>
+            <default>0</default>
+        </entry>
+        <entry name="makeup4" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>60</max>
+            <default>0</default>
+        </entry>
+        <entry name="makeup5" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>60</max>
+            <default>0</default>
+        </entry>
+        <entry name="makeup6" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>60</max>
+            <default>0</default>
+        </entry>
+        <entry name="makeup7" type="Double">
+            <label></label>
+            <min>-60</min>
+            <max>60</max>
+            <default>0</default>
+        </entry>
+    </group>
+</kcfg>
