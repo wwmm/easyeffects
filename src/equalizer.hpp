@@ -24,6 +24,7 @@
 #include <sys/types.h>
 #include <span>
 #include <string>
+#include <vector>
 #include "easyeffects_db_equalizer.h"
 #include "easyeffects_db_equalizer_channel.h"
 #include "pipeline_type.hpp"
@@ -69,18 +70,7 @@ class Equalizer : public PluginBase {
 
   uint latency_n_frames = 0U;
 
-  // template <size_t n>
-  // constexpr void bind_band() {
-  //   using namespace tags::equalizer;
-
-  //   // left channel
-
-  //   lv2_wrapper->bind_key_double_db<gl[n], band_gain[n]>(settings_left);
-
-  //   // right channel
-
-  //   lv2_wrapper->bind_key_double_db<gr[n], band_gain[n]>(settings_right);
-  // }
+  std::vector<QMetaObject::Connection> unified_mode_connections;
 
   void bind_bands();
 

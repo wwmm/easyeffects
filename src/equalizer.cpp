@@ -132,125 +132,34 @@ void Equalizer::bind_bands() {
   BIND_BANDS_PROPERTY(settings_right, gr, Gain);
 }
 
+// NOLINTNEXTLINE(readability-function-size,hicpp-function-size)
 void Equalizer::on_split_channels() {
   if (settings->splitChannels()) {
-    return;
-  }
-
-  using namespace tags::equalizer;
-
-  /*
-    Using setProperty() and property() does not have the same performance as calling the proper setter directly:
-    https://doc.qt.io/qt-6/properties.html
-    . But it is the easiest thing to do in the case below.
-  */
-
-  for (uint n = 0U; n < max_bands; n++) {
-    settings_right->setProperty(band_type[n].data(), settings_left->property(band_type[n].data()));
-
-    settings_right->setProperty(band_mode[n].data(), settings_left->property(band_mode[n].data()));
-
-    settings_right->setProperty(band_slope[n].data(), settings_left->property(band_slope[n].data()));
-
-    settings_right->setProperty(band_solo[n].data(), settings_left->property(band_solo[n].data()));
-
-    settings_right->setProperty(band_mute[n].data(), settings_left->property(band_mute[n].data()));
-
-    settings_right->setProperty(band_frequency[n].data(), settings_left->property(band_frequency[n].data()));
-
-    settings_right->setProperty(band_gain[n].data(), settings_left->property(band_gain[n].data()));
-
-    settings_right->setProperty(band_q[n].data(), settings_left->property(band_q[n].data()));
-
-    settings_right->setProperty(band_width[n].data(), settings_left->property(band_width[n].data()));
-  }
-
-  /*
-  if (g_settings_get_boolean(settings, "split-channels") != 0) {
-    for (auto& handler_id : gconnections_unified) {
-      g_signal_handler_disconnect(settings_left, handler_id);
+    for (const auto& conn : unified_mode_connections) {
+      QObject::disconnect(conn);
     }
 
-    gconnections_unified.clear();
+    unified_mode_connections.clear();
 
     return;
   }
 
   using namespace tags::equalizer;
-
-
-  */
 
   /*
     When in unified mode we want settings applied to the left channel to be propagated to the right channel
     database
   */
 
-  /*
-  gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_gain[n].data()).c_str(),
-                                                  G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
-                                                    g_settings_set_double(self->settings_right, key,
-                                                                          g_settings_get_double(settings, key));
-                                                  }),
-                                                  this));
-
-  gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_frequency[n].data()).c_str(),
-                                                  G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
-                                                    g_settings_set_double(self->settings_right, key,
-                                                                          g_settings_get_double(settings, key));
-                                                  }),
-                                                  this));
-
-  gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_q[n].data()).c_str(),
-                                                  G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
-                                                    g_settings_set_double(self->settings_right, key,
-                                                                          g_settings_get_double(settings, key));
-                                                  }),
-                                                  this));
-
-  gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_width[n].data()).c_str(),
-                                                  G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
-                                                    g_settings_set_double(self->settings_right, key,
-                                                                          g_settings_get_double(settings, key));
-                                                  }),
-                                                  this));
-
-  gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_type[n].data()).c_str(),
-                                                  G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
-                                                    g_settings_set_enum(self->settings_right, key,
-                                                                        g_settings_get_enum(settings, key));
-                                                  }),
-                                                  this));
-
-  gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_mode[n].data()).c_str(),
-                                                  G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
-                                                    g_settings_set_enum(self->settings_right, key,
-                                                                        g_settings_get_enum(settings, key));
-                                                  }),
-                                                  this));
-
-  gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_slope[n].data()).c_str(),
-                                                  G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
-                                                    g_settings_set_enum(self->settings_right, key,
-                                                                        g_settings_get_enum(settings, key));
-                                                  }),
-                                                  this));
-
-  gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_mute[n].data()).c_str(),
-                                                  G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
-                                                    g_settings_set_boolean(self->settings_right, key,
-                                                                           g_settings_get_boolean(settings, key));
-                                                  }),
-                                                  this));
-
-  gconnections_unified.push_back(g_signal_connect(settings_left, ("changed::"s + band_solo[n].data()).c_str(),
-                                                  G_CALLBACK(+[](GSettings* settings, char* key, Equalizer* self) {
-                                                    g_settings_set_boolean(self->settings_right, key,
-                                                                           g_settings_get_boolean(settings, key));
-                                                  }),
-                                                  this));
-
-                                                  */
+  UNIFIED_BANDS_PROPERTY_BIND(settings_right, settings_left, Type);
+  UNIFIED_BANDS_PROPERTY_BIND(settings_right, settings_left, Mode);
+  UNIFIED_BANDS_PROPERTY_BIND(settings_right, settings_left, Slope);
+  UNIFIED_BANDS_PROPERTY_BIND(settings_right, settings_left, Solo);
+  UNIFIED_BANDS_PROPERTY_BIND(settings_right, settings_left, Mute);
+  UNIFIED_BANDS_PROPERTY_BIND(settings_right, settings_left, Frequency);
+  UNIFIED_BANDS_PROPERTY_BIND(settings_right, settings_left, Q);
+  UNIFIED_BANDS_PROPERTY_BIND(settings_right, settings_left, Width);
+  UNIFIED_BANDS_PROPERTY_BIND(settings_right, settings_left, Gain);
 }
 
 void Equalizer::setup() {

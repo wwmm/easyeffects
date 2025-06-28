@@ -100,3 +100,84 @@
     BIND_BAND_PORT(settings_obj, lsp_key[31].data(), band31##property, setBand31##property, \
                    db::EqualizerChannel::band31##property##Changed);                        \
   }
+
+// NOLINTBEGIN(bugprone-macro-parentheses,cppcoreguidelines-macro-usage)
+#define UNIFIED_BAND_PORT_BIND(settings_right, settings_left, getter, setter, onChangedSignal) \
+  {                                                                                            \
+    settings_right->setter(settings_left->getter());                                           \
+    unified_mode_connections.push_back(connect(settings_left, &onChangedSignal, [this]() {     \
+      if (this == nullptr || settings_right == nullptr || settings_left == nullptr) {          \
+        return;                                                                                \
+      }                                                                                        \
+      settings_right->setter(settings_left->getter());                                         \
+    }));                                                                                       \
+  }
+
+// NOLINTBEGIN(bugprone-macro-parentheses,cppcoreguidelines-macro-usage)
+#define UNIFIED_BANDS_PROPERTY_BIND(settings_right, settings_left, property)                     \
+  {                                                                                              \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band0##property, setBand0##property,   \
+                           db::EqualizerChannel::band0##property##Changed);                      \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band1##property, setBand1##property,   \
+                           db::EqualizerChannel::band1##property##Changed);                      \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band2##property, setBand2##property,   \
+                           db::EqualizerChannel::band2##property##Changed);                      \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band3##property, setBand3##property,   \
+                           db::EqualizerChannel::band3##property##Changed);                      \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band4##property, setBand4##property,   \
+                           db::EqualizerChannel::band4##property##Changed);                      \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band5##property, setBand5##property,   \
+                           db::EqualizerChannel::band5##property##Changed);                      \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band6##property, setBand6##property,   \
+                           db::EqualizerChannel::band6##property##Changed);                      \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band7##property, setBand7##property,   \
+                           db::EqualizerChannel::band7##property##Changed);                      \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band8##property, setBand8##property,   \
+                           db::EqualizerChannel::band8##property##Changed);                      \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band9##property, setBand9##property,   \
+                           db::EqualizerChannel::band9##property##Changed);                      \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band10##property, setBand10##property, \
+                           db::EqualizerChannel::band10##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band11##property, setBand11##property, \
+                           db::EqualizerChannel::band11##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band12##property, setBand12##property, \
+                           db::EqualizerChannel::band12##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band13##property, setBand13##property, \
+                           db::EqualizerChannel::band13##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band14##property, setBand14##property, \
+                           db::EqualizerChannel::band14##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band15##property, setBand15##property, \
+                           db::EqualizerChannel::band15##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band16##property, setBand16##property, \
+                           db::EqualizerChannel::band16##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band17##property, setBand17##property, \
+                           db::EqualizerChannel::band17##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band18##property, setBand18##property, \
+                           db::EqualizerChannel::band18##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band19##property, setBand19##property, \
+                           db::EqualizerChannel::band19##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band20##property, setBand20##property, \
+                           db::EqualizerChannel::band20##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band21##property, setBand21##property, \
+                           db::EqualizerChannel::band21##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band22##property, setBand22##property, \
+                           db::EqualizerChannel::band22##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band23##property, setBand23##property, \
+                           db::EqualizerChannel::band23##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band24##property, setBand24##property, \
+                           db::EqualizerChannel::band24##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band25##property, setBand25##property, \
+                           db::EqualizerChannel::band25##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band26##property, setBand26##property, \
+                           db::EqualizerChannel::band26##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band27##property, setBand27##property, \
+                           db::EqualizerChannel::band27##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band28##property, setBand28##property, \
+                           db::EqualizerChannel::band28##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band29##property, setBand29##property, \
+                           db::EqualizerChannel::band29##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band30##property, setBand30##property, \
+                           db::EqualizerChannel::band30##property##Changed);                     \
+    UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band31##property, setBand31##property, \
+                           db::EqualizerChannel::band31##property##Changed);                     \
+  }
