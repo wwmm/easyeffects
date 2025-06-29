@@ -119,7 +119,7 @@ void Equalizer::bind_bands() {
   BIND_BANDS_PROPERTY(settings_left, fl, Frequency);
   BIND_BANDS_PROPERTY(settings_left, ql, Q);
   BIND_BANDS_PROPERTY(settings_left, wl, Width);
-  BIND_BANDS_PROPERTY(settings_left, gl, Gain);
+  BIND_BANDS_PROPERTY_DB(settings_left, gl, Gain, false);
 
   BIND_BANDS_PROPERTY(settings_right, ftr, Type);
   BIND_BANDS_PROPERTY(settings_right, fmr, Mode);
@@ -129,7 +129,7 @@ void Equalizer::bind_bands() {
   BIND_BANDS_PROPERTY(settings_right, fr, Frequency);
   BIND_BANDS_PROPERTY(settings_right, qr, Q);
   BIND_BANDS_PROPERTY(settings_right, wr, Width);
-  BIND_BANDS_PROPERTY(settings_right, gr, Gain);
+  BIND_BANDS_PROPERTY_DB(settings_right, gr, Gain, false);
 }
 
 // NOLINTNEXTLINE(readability-function-size,hicpp-function-size)

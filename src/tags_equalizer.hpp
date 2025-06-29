@@ -25,12 +25,6 @@ namespace tags::equalizer {
 
 // bands
 
-// Todo: This one may not be needed anymore...
-constexpr auto band_id = std::to_array(
-    {"band0",  "band1",  "band2",  "band3",  "band4",  "band5",  "band6",  "band7",  "band8",  "band9",  "band10",
-     "band11", "band12", "band13", "band14", "band15", "band16", "band17", "band18", "band19", "band20", "band21",
-     "band22", "band23", "band24", "band25", "band26", "band27", "band28", "band29", "band30", "band31"});
-
 constexpr auto band_type = std::to_array({{"band0Type"},  {"band1Type"},  {"band2Type"},  {"band3Type"},
                                           {"band4Type"},  {"band5Type"},  {"band6Type"},  {"band7Type"},
                                           {"band8Type"},  {"band9Type"},  {"band10Type"}, {"band11Type"},

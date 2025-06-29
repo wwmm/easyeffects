@@ -188,6 +188,15 @@ Kirigami.Page {
                         "pipelineInstance": pipelineInstance
                     });
                     break;
+                case TagsPluginName.BaseName.equalizer:
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
+                    pluginsStack.push("qrc:ui/Equalizer.qml", {
+                        "name": name,
+                        "pluginDB": pluginDB,
+                        "pipelineInstance": pipelineInstance
+                    });
+                    break;
                 case TagsPluginName.BaseName.exciter:
                     while (pluginsStack.depth > 1)
                         pluginsStack.pop();

@@ -48,6 +48,7 @@
 #include "deesser.hpp"
 #include "delay.hpp"
 #include "echo_canceller.hpp"
+#include "equalizer.hpp"
 #include "exciter.hpp"
 #include "expander.hpp"
 #include "filter.hpp"
@@ -70,7 +71,6 @@
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
-// #include "equalizer.hpp"
 // #include "multiband_compressor.hpp"
 // #include "multiband_gate.hpp"
 
@@ -157,10 +157,7 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::expander)) {
       filter = std::make_shared<Expander>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::equalizer)) {
-      //   filter = std::make_shared<Equalizer>(
-      //       log_tag, tags::schema::equalizer::id, path, tags::schema::equalizer::channel_id,
-      //       schema_base_path + "equalizer/" + instance_id + "/leftchannel/",
-      //       schema_base_path + "equalizer/" + instance_id + "/rightchannel/", pm, pipeline_type);
+      filter = std::make_shared<Equalizer>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::filter)) {
       filter = std::make_shared<Filter>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
@@ -263,97 +260,53 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
 
   if (pluginName.startsWith(tags::plugin_name::BaseName::autogain)) {
     return QVariant::fromValue(dynamic_cast<Autogain*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
     return QVariant::fromValue(dynamic_cast<BassEnhancer*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
     return QVariant::fromValue(dynamic_cast<BassLoudness*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::compressor)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::compressor)) {
     return QVariant::fromValue(dynamic_cast<Compressor*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::convolver)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::convolver)) {
     return QVariant::fromValue(dynamic_cast<Convolver*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::crossfeed)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::crossfeed)) {
     return QVariant::fromValue(dynamic_cast<Crossfeed*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::crystalizer)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::crystalizer)) {
     return QVariant::fromValue(dynamic_cast<Crystalizer*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::delay)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::delay)) {
     return QVariant::fromValue(dynamic_cast<Delay*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
     return QVariant::fromValue(dynamic_cast<DeepFilterNet*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::deesser)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::deesser)) {
     return QVariant::fromValue(dynamic_cast<Deesser*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
     return QVariant::fromValue(dynamic_cast<EchoCanceller*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::exciter)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::equalizer)) {
+    return QVariant::fromValue(dynamic_cast<Equalizer*>(p.get()));
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::exciter)) {
     return QVariant::fromValue(dynamic_cast<Exciter*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::expander)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::expander)) {
     return QVariant::fromValue(dynamic_cast<Expander*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::filter)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::filter)) {
     return QVariant::fromValue(dynamic_cast<Filter*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::gate)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::gate)) {
     return QVariant::fromValue(dynamic_cast<Gate*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::levelMeter)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::levelMeter)) {
     return QVariant::fromValue(dynamic_cast<LevelMeter*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::limiter)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::limiter)) {
     return QVariant::fromValue(dynamic_cast<Limiter*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::loudness)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::loudness)) {
     return QVariant::fromValue(dynamic_cast<Loudness*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::maximizer)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::maximizer)) {
     return QVariant::fromValue(dynamic_cast<Maximizer*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::pitch)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::pitch)) {
     return QVariant::fromValue(dynamic_cast<Pitch*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::reverb)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::reverb)) {
     return QVariant::fromValue(dynamic_cast<Reverb*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::rnnoise)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::rnnoise)) {
     return QVariant::fromValue(dynamic_cast<RNNoise*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::speex)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::speex)) {
     return QVariant::fromValue(dynamic_cast<Speex*>(p.get()));
-  }
-
-  if (pluginName.startsWith(tags::plugin_name::BaseName::stereoTools)) {
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::stereoTools)) {
     return QVariant::fromValue(dynamic_cast<StereoTools*>(p.get()));
   }
 
