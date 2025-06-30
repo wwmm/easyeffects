@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-27 14:54+0000\n"
-"PO-Revision-Date: 2023-02-22 18:30+0000\n"
+"PO-Revision-Date: 2025-06-30 00:01+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ka/>\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "@APP_NAME@"
-msgstr ""
+msgstr "@APP_NAME@"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -35,6 +35,8 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr ""
+"limiter;compressor;reverberation;equalizer;autovolume;ხმა;ავტოხმა;ეკვალაიზერი;"
+""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
@@ -78,7 +80,7 @@ msgstr "_მორგება"
 
 #: data/ui/application_window.ui:22
 msgid "_Shortcuts"
-msgstr ""
+msgstr "მალ_სახმობები"
 
 #: data/ui/application_window.ui:26
 msgid "_About Easy Effects"
@@ -147,15 +149,15 @@ msgstr "მითითება"
 
 #: data/ui/autogain.ui:109 data/ui/autogain.ui:158 data/ui/level_meter.ui:72
 msgid "Momentary"
-msgstr ""
+msgstr "მომენტალური გაზომვა"
 
 #: data/ui/autogain.ui:110 data/ui/autogain.ui:196 data/ui/level_meter.ui:109
 msgid "Short-Term"
-msgstr ""
+msgstr "მოკლევადიანი გაზომვა"
 
 #: data/ui/autogain.ui:111 data/ui/autogain.ui:233 data/ui/level_meter.ui:145
 msgid "Integrated"
-msgstr ""
+msgstr "კომპლექსური გაზომვა"
 
 #: data/ui/autogain.ui:112
 msgid "Geometric Mean (MSI)"
@@ -193,7 +195,7 @@ msgstr "დაბრუნება"
 #: data/ui/autogain.ui:144 data/ui/autogain.ui:346 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:58 src/tags_plugin_name.cpp:56
 msgid "Loudness"
-msgstr ""
+msgstr "ხმის დონე"
 
 #: data/ui/autogain.ui:270 data/ui/level_meter.ui:181
 msgid "Relative"
@@ -453,7 +455,7 @@ msgstr "მუხლი"
 #: data/ui/gate.ui:430 data/ui/multiband_compressor_band.ui:382
 #: data/ui/multiband_gate_band.ui:411
 msgid "Makeup"
-msgstr ""
+msgstr "კომპენსაცია"
 
 #: data/ui/compressor.ui:412 data/ui/delay.ui:62 data/ui/delay.ui:149
 #: data/ui/expander.ui:333 data/ui/gate.ui:346
@@ -475,15 +477,14 @@ msgstr ""
 #: data/ui/gate.ui:1208 data/ui/multiband_compressor_band.ui:466
 #: data/ui/multiband_gate_band.ui:524
 msgid "Sidechain"
-msgstr ""
+msgstr "გვერდითი ჯაჭვი"
 
 #: data/ui/compressor.ui:519 data/ui/compressor.ui:525 data/ui/expander.ui:440
 #: data/ui/expander.ui:446 data/ui/gate.ui:653 data/ui/gate.ui:659
 #: data/ui/multiband_compressor.ui:121 data/ui/multiband_compressor.ui:128
 #: data/ui/multiband_gate.ui:121 data/ui/multiband_gate.ui:128
-#, fuzzy
 msgid "Stereo Split Mode"
-msgstr "სტერეო რეჟიმი"
+msgstr "ყოფილი სტერეორეჟიმი"
 
 #: data/ui/compressor.ui:532 data/ui/expander.ui:453 data/ui/gate.ui:666
 #: data/ui/multiband_compressor_band.ui:455 data/ui/multiband_gate_band.ui:513
@@ -538,33 +539,28 @@ msgstr ""
 
 #: data/ui/compressor.ui:567 data/ui/expander.ui:488 data/ui/gate.ui:701
 #: data/ui/multiband_compressor_band.ui:513 data/ui/multiband_gate_band.ui:571
-#, fuzzy
 msgid "Left/Right"
-msgstr "მარჯვენა"
+msgstr "მარცხენა/მარჯვენა"
 
 #: data/ui/compressor.ui:568 data/ui/expander.ui:489 data/ui/gate.ui:702
 #: data/ui/multiband_compressor_band.ui:514 data/ui/multiband_gate_band.ui:572
-#, fuzzy
 msgid "Right/Left"
-msgstr "მარჯვენა"
+msgstr "მარჯვენა/მარცხენა"
 
 #: data/ui/compressor.ui:569 data/ui/expander.ui:490 data/ui/gate.ui:703
 #: data/ui/multiband_compressor_band.ui:515 data/ui/multiband_gate_band.ui:573
-#, fuzzy
 msgid "Mid/Side"
-msgstr "გვერდითი"
+msgstr "შუა/გვერდითი"
 
 #: data/ui/compressor.ui:570 data/ui/expander.ui:491 data/ui/gate.ui:704
 #: data/ui/multiband_compressor_band.ui:516 data/ui/multiband_gate_band.ui:574
-#, fuzzy
 msgid "Side/Mid"
-msgstr "გვერდითი"
+msgstr "გვერდითი/შუა"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:502 data/ui/gate.ui:715
 #: data/ui/multiband_compressor_band.ui:527 data/ui/multiband_gate_band.ui:585
-#, fuzzy
 msgid "Stereo Split Source"
-msgstr "სტერეო რეჟიმი"
+msgstr "სტერეოს გაყოფის წყარო"
 
 #: data/ui/compressor.ui:607 data/ui/deesser.ui:50 data/ui/expander.ui:528
 #: data/ui/gate.ui:741 data/ui/multiband_compressor_band.ui:551
@@ -685,7 +681,7 @@ msgstr ""
 #: data/ui/compressor.ui:943 data/ui/expander.ui:863 data/ui/filter.ui:50
 #: data/ui/gate.ui:1076
 msgid "Low-Pass"
-msgstr ""
+msgstr "დაბალსიხშირული ფილტრი"
 
 #: data/ui/compressor.ui:970 data/ui/expander.ui:890 data/ui/gate.ui:1103
 msgid "Low-Pass Filter Mode"
@@ -973,9 +969,8 @@ msgid "Import Preset"
 msgstr "პრესეტის შემოტანა"
 
 #: data/ui/equalizer.ui:359
-#, fuzzy
 msgid "Export Preset"
-msgstr "პრესეტის შემოტანა"
+msgstr "პრესეტის გატანა"
 
 #: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
 msgid "Slope"
@@ -1043,9 +1038,8 @@ msgid "Bell"
 msgstr "ზარი"
 
 #: data/ui/filter.ui:55
-#, fuzzy
 msgid "Band-Pass"
-msgstr "გუნდები"
+msgstr "გუნდი-პასი"
 
 #: data/ui/filter.ui:56
 msgid "Notch"
@@ -1068,9 +1062,8 @@ msgid "All-Pass"
 msgstr ""
 
 #: data/ui/filter.ui:102
-#, fuzzy
 msgid "Equalizer Mode"
-msgstr "ეკვალაიზერი"
+msgstr "ეკვალაიზერის რეჟიმი"
 
 #: data/ui/filter.ui:162 data/ui/multiband_compressor_band.ui:570
 #: data/ui/multiband_gate_band.ui:628 src/tags_plugin_name.cpp:52
@@ -1103,9 +1096,8 @@ msgid "Release Zone Start"
 msgstr ""
 
 #: data/ui/level_meter.ui:28
-#, fuzzy
 msgid "True Peak"
-msgstr "პიკი"
+msgstr "ნამდვილი პიკი"
 
 #: data/ui/level_meter.ui:328
 msgid "Reset History"
@@ -1428,9 +1420,8 @@ msgid "Band Sidechain Options"
 msgstr ""
 
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:558
-#, fuzzy
 msgid "Stereo Split"
-msgstr "სტერეო რეჟიმი"
+msgstr "სტერეოს გაყოფა"
 
 #: data/ui/multiband_compressor_band.ui:582 data/ui/multiband_gate_band.ui:640
 msgid "Low-Cut"
@@ -1441,9 +1432,8 @@ msgid "Low-Cut Filter Frequency"
 msgstr ""
 
 #: data/ui/multiband_compressor_band.ui:619 data/ui/multiband_gate_band.ui:677
-#, fuzzy
 msgid "High-Cut"
-msgstr "მაღალი ხარისხი"
+msgstr "მაღლების წაჭრა"
 
 #: data/ui/multiband_compressor_band.ui:647 data/ui/multiband_gate_band.ui:705
 msgid "High-Cut Filter Frequency"
@@ -1659,9 +1649,8 @@ msgid "Pitch"
 msgstr "Pitch"
 
 #: data/ui/pitch.ui:134
-#, fuzzy
 msgid "Cents"
-msgstr "კლიენტი"
+msgstr "ცენტი"
 
 #: data/ui/pitch.ui:156
 msgid "Semitones"
@@ -1672,14 +1661,12 @@ msgid "Octaves"
 msgstr "ოქტავები"
 
 #: data/ui/pitch.ui:200
-#, fuzzy
 msgid "Tempo Difference"
-msgstr "მითითება"
+msgstr "ტემპის სხვაობა"
 
 #: data/ui/pitch.ui:222
-#, fuzzy
 msgid "Rate Difference"
-msgstr "მითითება"
+msgstr "სიხშირის სხვაობა"
 
 #: data/ui/plugin_row.ui:50
 msgid "Remove this effect"
@@ -1770,23 +1757,20 @@ msgid "Inactivity Timeout"
 msgstr ""
 
 #: data/ui/preferences_general.ui:91
-#, fuzzy
 msgid "Input Pipeline"
-msgstr "შეყვანის მოწყობილობა"
+msgstr "შეყვანის დამუშავების ხაზი"
 
 #: data/ui/preferences_general.ui:120
-#, fuzzy
 msgid "Update Interval"
-msgstr "შიდა"
+msgstr "განახლების შუალედი"
 
 #: data/ui/preferences_general.ui:121
 msgid "Related to Level Meters and Spectrum"
 msgstr ""
 
 #: data/ui/preferences_general.ui:143
-#, fuzzy
 msgid "Update Frequency"
-msgstr "სიხშირე"
+msgstr "განახლების სიხშირე"
 
 #: data/ui/preferences_general.ui:144
 msgid "Related to LV2 Plugins"
@@ -1805,9 +1789,8 @@ msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
 #: data/ui/preferences_general.ui:197
-#, fuzzy
 msgid "Experimental Features"
-msgstr "ექსპერიმენტალური"
+msgstr "ექსპერიმენტალური ფუნქციები"
 
 #: data/ui/preferences_general.ui:200
 msgid "Native Plugin Window"
@@ -1914,14 +1897,12 @@ msgid "Try"
 msgstr ""
 
 #: data/ui/preset_community_row.ui:56
-#, fuzzy
 msgid "Try this community preset"
-msgstr "შაბლონი"
+msgstr "ამ საზოგადო პრესეტის ცდა"
 
 #: data/ui/preset_community_row.ui:65
-#, fuzzy
 msgid "Import"
-msgstr "პრესეტის შემოტანა"
+msgstr "შემოტანა"
 
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
@@ -1944,28 +1925,24 @@ msgid "Import a preset from the local storage"
 msgstr ""
 
 #: data/ui/presets_menu.ui:86
-#, fuzzy
 msgid "Search Local Preset"
-msgstr "შაბლონი"
+msgstr "ლოკალური პრესეტების ძებნა"
 
 #: data/ui/presets_menu.ui:147
-#, fuzzy
 msgid "Local Presets List"
-msgstr "პრესეტები"
+msgstr "ლოკალური პრესეტების სია"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
 msgstr ""
 
 #: data/ui/presets_menu.ui:208
-#, fuzzy
 msgid "Search Community Preset"
-msgstr "შაბლონი"
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: data/ui/presets_menu.ui:271
-#, fuzzy
 msgid "Community Presets List"
-msgstr "პრესეტები"
+msgstr "საზოგადო პრესეტების სია"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
@@ -2264,14 +2241,12 @@ msgid "channels"
 msgstr "არხები"
 
 #: src/application.cpp:301
-#, fuzzy
 msgid "Output Preset"
-msgstr "პრესეტის შემოტანა"
+msgstr "გამოტანის პრესეტი"
 
 #: src/application.cpp:302
-#, fuzzy
 msgid "Input Preset"
-msgstr "პრესეტის შემოტანა"
+msgstr "შეყვანის პრესეტი"
 
 #: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
@@ -2411,9 +2386,8 @@ msgid "Save"
 msgstr ""
 
 #: src/equalizer_ui.cpp:632
-#, fuzzy
 msgid "EqualizerAPO Presets"
-msgstr "ეკვალაიზერი"
+msgstr "ეკვალაიზერიAPI-ის პრესეტები"
 
 #: src/equalizer_ui.cpp:853
 msgid "Import GraphicEQ Preset File"
@@ -2451,9 +2425,8 @@ msgstr "დამატება"
 
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
-#, fuzzy
 msgid "Community Preset"
-msgstr "პრესეტის შემოტანა"
+msgstr "საზოგადო პრესეტი"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
@@ -2502,14 +2475,12 @@ msgid "No Preset Loaded"
 msgstr ""
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Local Preset Loaded"
-msgstr "პრესეტები"
+msgstr "ჩატვირთულია ბოლო ლოკალური პრესეტი"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Community Preset Loaded"
-msgstr "პრესეტის შემოტანა"
+msgstr "ჩაიტვირთა ბოლო საზოგადო პრესეტი"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
@@ -2566,9 +2537,8 @@ msgid "Exciter"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:54
-#, fuzzy
 msgid "Level Meter"
-msgstr "დონე"
+msgstr "დონის მზომი"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Limiter"
@@ -2633,9 +2603,9 @@ msgstr ""
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
-#, fuzzy, c++-format
+#, c++-format
 msgid "Using {}"
-msgstr "გამოყენება"
+msgstr "ვიყენებ {}"
 
 #~ msgid "Uniform"
 #~ msgstr "ერთგვაროვანი"
