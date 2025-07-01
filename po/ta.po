@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-06-27 14:54+0000\n"
-"PO-Revision-Date: 2024-12-22 04:00+0000\n"
+"PO-Revision-Date: 2025-07-01 20:01+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
 "ta/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -86,7 +86,7 @@ msgstr "_ எளிதான விளைவுகள்"
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr "_Quit"
+msgstr "வெளியேறு"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:159
@@ -881,7 +881,7 @@ msgstr "அதிர்வெண் 2 நிலை"
 
 #: data/ui/deesser.ui:233
 msgid "F2 Peak Q"
-msgstr "F2 உச்ச Q."
+msgstr "F2 உச்ச Q"
 
 #: data/ui/deesser.ui:260
 msgid "Frequency 2 Peak Q"
@@ -1327,7 +1327,7 @@ msgstr "சைட்செயின் பூச்ட்"
 
 #: data/ui/multiband_compressor.ui:57 data/ui/multiband_gate.ui:57
 msgid "Pink BT"
-msgstr "இளஞ்சிவப்பு பி.டி."
+msgstr "இளஞ்சிவப்பு பி.டி"
 
 #: data/ui/multiband_compressor.ui:58 data/ui/multiband_gate.ui:58
 msgid "Pink MT"
@@ -1335,7 +1335,7 @@ msgstr "பிங்க் எம்டி"
 
 #: data/ui/multiband_compressor.ui:59 data/ui/multiband_gate.ui:59
 msgid "Brown BT"
-msgstr "பிரவுன் பி.டி."
+msgstr "பிரவுன் பி.டி"
 
 #: data/ui/multiband_compressor.ui:60 data/ui/multiband_gate.ui:60
 msgid "Brown MT"
@@ -1651,9 +1651,8 @@ msgid "Pitch"
 msgstr "குனிவு"
 
 #: data/ui/pitch.ui:134
-#, fuzzy
 msgid "Cents"
-msgstr "வாடிக்கையாளர்கள்"
+msgstr "சென்ட்கள்"
 
 #: data/ui/pitch.ui:156
 msgid "Semitones"
@@ -1661,7 +1660,7 @@ msgstr "செமிடெச்"
 
 #: data/ui/pitch.ui:178
 msgid "Octaves"
-msgstr ""
+msgstr "ஆக்டேவ்ச்"
 
 #: data/ui/pitch.ui:200
 msgid "Tempo Difference"
@@ -2107,7 +2106,7 @@ msgstr "தானியங்கு மிகைப்பு கட்டுப�
 
 #: data/ui/speex.ui:72
 msgid "Dereverberation"
-msgstr "Dereverberation"
+msgstr "எதிரொலிக்காத"
 
 #: data/ui/speex.ui:91
 msgid "Voice Activity Probability"
