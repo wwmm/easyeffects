@@ -29,20 +29,91 @@ Kirigami.ScrollablePage {
     }
 
     ColumnLayout {
+
         Kirigami.CardsLayout {
-            id: cardLayout
+            maximumColumns: 5
+            readonly property real columnSize: pitchLeft.implicitWidth
+            minimumColumnWidth: columnSize
+            maximumColumnWidth: columnSize
 
-            Layout.fillWidth: true
+            FormCard.FormComboBoxDelegate {
+                id: mode
 
-            Kirigami.Card {
-                id: cardControls
-
-                header: Kirigami.Heading {
-                    text: i18n("Controls")
-                    level: 2
+                text: i18n("Mode")
+                displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                currentIndex: pluginDB.mode
+                editable: false
+                model: [i18n("IIR"), i18n("FIR"), i18n("FFT"), i18n("SPM")]
+                onActivated: idx => {
+                    pluginDB.mode = idx;
                 }
+            }
 
-                contentItem: ColumnLayout {}
+            EeSpinBox {
+                id: numBands
+
+                label: i18n("Bands")
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: pluginDB.getMinValue("numBands")
+                to: pluginDB.getMaxValue("numBands")
+                value: pluginDB.numBands
+                decimals: 0
+                stepSize: 1
+                onValueModified: v => {
+                    pluginDB.numBands = v;
+                }
+            }
+
+            EeSpinBox {
+                id: balance
+
+                label: i18n("Balance")
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: pluginDB.getMinValue("balance")
+                to: pluginDB.getMaxValue("balance")
+                value: pluginDB.balance
+                decimals: 1
+                stepSize: 0.1
+                unit: "%"
+                onValueModified: v => {
+                    pluginDB.balance = v;
+                }
+            }
+
+            EeSpinBox {
+                id: pitchLeft
+
+                label: i18n("Pitch Left")
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: pluginDB.getMinValue("pitchLeft")
+                to: pluginDB.getMaxValue("pitchLeft")
+                value: pluginDB.pitchLeft
+                decimals: 2
+                stepSize: 0.01
+                unit: "st"
+                onValueModified: v => {
+                    pluginDB.pitchLeft = v;
+                }
+            }
+
+            EeSpinBox {
+                id: pitchRight
+
+                label: i18n("Pitch Right")
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: pluginDB.getMinValue("pitchRight")
+                to: pluginDB.getMaxValue("pitchRight")
+                value: pluginDB.pitchRight
+                decimals: 2
+                stepSize: 0.01
+                unit: "st"
+                onValueModified: v => {
+                    pluginDB.pitchRight = v;
+                }
             }
         }
     }
@@ -81,6 +152,28 @@ Kirigami.ScrollablePage {
                             pluginBackend.showNativeUi();
                         else
                             pluginBackend.closeNativeUi();
+                    }
+                },
+                Kirigami.Action {
+                    text: i18n("Split Channels")
+                    icon.name: "split-symbolic"
+                    checkable: true
+                    checked: pluginDB.splitChannels
+                    onTriggered: {
+                        if (pluginDB.splitChannels != checked)
+                            pluginDB.splitChannels = checked;
+                    }
+                },
+                Kirigami.Action {
+                    text: i18n("Flat Response")
+                    icon.name: "map-flat-symbolic"
+                    onTriggered: {}
+                },
+                Kirigami.Action {
+                    text: i18n("Calculate Frequencies")
+                    icon.name: "folder-calculate-symbolic"
+                    onTriggered: {
+                        pluginBackend.reset();
                     }
                 },
                 Kirigami.Action {

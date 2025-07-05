@@ -62,7 +62,7 @@ class Equalizer : public PluginBase {
 
   void sort_bands();
 
-  static constexpr uint max_bands = 32U;
+  static constexpr int max_bands = 32U;
 
  private:
   db::Equalizer* settings = nullptr;

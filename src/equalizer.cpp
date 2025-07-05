@@ -81,11 +81,13 @@ Equalizer::Equalizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   */
 
   connect(settings, &db::Equalizer::numBandsChanged, [&]() {
-    for (int n = 0U; n < settings->numBands(); n++) {
-      settings_left->setProperty(tags::equalizer::band_type[n].data(), 0);
+    for (int n = 0U; n < max_bands; n++) {
+      if (n >= settings->numBands()) {  // turn off unused bands
+        settings_left->setProperty(tags::equalizer::band_type[n].data(), 0);
 
-      if (settings->splitChannels()) {
-        settings_right->setProperty(tags::equalizer::band_type[n].data(), 0);
+        if (settings->splitChannels()) {
+          settings_right->setProperty(tags::equalizer::band_type[n].data(), 0);
+        }
       }
     }
   });
@@ -105,6 +107,8 @@ Equalizer::~Equalizer() {
 
 void Equalizer::reset() {
   settings->setDefaults();
+  settings_left->setDefaults();
+  settings_right->setDefaults();
 }
 
 // NOLINTNEXTLINE(readability-function-size,hicpp-function-size)
