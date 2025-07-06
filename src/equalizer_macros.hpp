@@ -271,4 +271,46 @@
     UNIFIED_BAND_PORT_BIND(settings_right, settings_left, band31##property, setBand31##property, \
                            db::EqualizerChannel::band31##property##Changed);                     \
   }
+
+#define RESET_BAND_PROPERTY(settings_obj, idx, property)                                     \
+  {                                                                                          \
+    settings_obj->setBand##idx##property(settings_obj->defaultBand##idx##property##Value()); \
+  }
+
+#define RESET_BANDS_PROPERTY(settings_obj, property) \
+  {                                                  \
+    RESET_BAND_PROPERTY(settings_obj, 0, property);  \
+    RESET_BAND_PROPERTY(settings_obj, 1, property);  \
+    RESET_BAND_PROPERTY(settings_obj, 2, property);  \
+    RESET_BAND_PROPERTY(settings_obj, 3, property);  \
+    RESET_BAND_PROPERTY(settings_obj, 4, property);  \
+    RESET_BAND_PROPERTY(settings_obj, 5, property);  \
+    RESET_BAND_PROPERTY(settings_obj, 6, property);  \
+    RESET_BAND_PROPERTY(settings_obj, 7, property);  \
+    RESET_BAND_PROPERTY(settings_obj, 8, property);  \
+    RESET_BAND_PROPERTY(settings_obj, 9, property);  \
+    RESET_BAND_PROPERTY(settings_obj, 10, property); \
+    RESET_BAND_PROPERTY(settings_obj, 11, property); \
+    RESET_BAND_PROPERTY(settings_obj, 12, property); \
+    RESET_BAND_PROPERTY(settings_obj, 13, property); \
+    RESET_BAND_PROPERTY(settings_obj, 14, property); \
+    RESET_BAND_PROPERTY(settings_obj, 15, property); \
+    RESET_BAND_PROPERTY(settings_obj, 16, property); \
+    RESET_BAND_PROPERTY(settings_obj, 17, property); \
+    RESET_BAND_PROPERTY(settings_obj, 18, property); \
+    RESET_BAND_PROPERTY(settings_obj, 19, property); \
+    RESET_BAND_PROPERTY(settings_obj, 20, property); \
+    RESET_BAND_PROPERTY(settings_obj, 21, property); \
+    RESET_BAND_PROPERTY(settings_obj, 22, property); \
+    RESET_BAND_PROPERTY(settings_obj, 23, property); \
+    RESET_BAND_PROPERTY(settings_obj, 24, property); \
+    RESET_BAND_PROPERTY(settings_obj, 25, property); \
+    RESET_BAND_PROPERTY(settings_obj, 26, property); \
+    RESET_BAND_PROPERTY(settings_obj, 27, property); \
+    RESET_BAND_PROPERTY(settings_obj, 28, property); \
+    RESET_BAND_PROPERTY(settings_obj, 29, property); \
+    RESET_BAND_PROPERTY(settings_obj, 30, property); \
+    RESET_BAND_PROPERTY(settings_obj, 31, property); \
+  }
+
 // NOLINTEND(bugprone-macro-parentheses,cppcoreguidelines-macro-usage)

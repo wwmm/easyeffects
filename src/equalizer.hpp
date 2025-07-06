@@ -62,6 +62,10 @@ class Equalizer : public PluginBase {
 
   void sort_bands();
 
+  Q_INVOKABLE void flatResponse();
+
+  Q_INVOKABLE void calculateFrequencies();
+
   static constexpr int max_bands = 32U;
 
  private:

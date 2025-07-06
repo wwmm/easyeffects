@@ -167,13 +167,15 @@ Kirigami.ScrollablePage {
                 Kirigami.Action {
                     text: i18n("Flat Response")
                     icon.name: "map-flat-symbolic"
-                    onTriggered: {}
+                    onTriggered: {
+                        pluginBackend.flatResponse();
+                    }
                 },
                 Kirigami.Action {
                     text: i18n("Calculate Frequencies")
                     icon.name: "folder-calculate-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        pluginBackend.calculateFrequencies();
                     }
                 },
                 Kirigami.Action {

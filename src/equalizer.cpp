@@ -21,6 +21,7 @@
 #include <qobject.h>
 #include <sys/types.h>
 #include <algorithm>
+#include <cmath>
 #include <memory>
 #include <span>
 #include <string>
@@ -287,4 +288,49 @@ void Equalizer::sort_bands() {
 
 auto Equalizer::get_latency_seconds() -> float {
   return latency_value;
+}
+
+void Equalizer::flatResponse() {
+  RESET_BANDS_PROPERTY(settings_left, Gain);
+  RESET_BANDS_PROPERTY(settings_right, Gain);
+}
+
+void Equalizer::calculateFrequencies() {
+  constexpr double min_freq = 20.0;
+  constexpr double max_freq = 20000.0;
+
+  double freq0 = min_freq;
+  double freq1 = 0.0;
+
+  // code taken from gstreamer equalizer sources: gstiirequalizer.c
+  // function: gst_iir_equalizer_compute_frequencies
+
+  const double step = std::pow(max_freq / min_freq, 1.0 / static_cast<double>(settings->numBands()));
+
+  for (int n = 0; n < settings->numBands(); n++) {
+    freq1 = freq0 * step;
+
+    const double freq = freq0 + (0.5 * (freq1 - freq0));
+    const double width = freq1 - freq0;
+    const double q = freq / width;
+
+    // std::cout << n << "\t" << freq << "\t" << width << std::endl;
+
+    /*
+      Using setProperty does not have the same performance as calling the proper setter directly:
+      https://doc.qt.io/qt-6/properties.html
+      . But it is the easiest thing to do in the case below.
+    */
+
+    settings_left->setProperty(tags::equalizer::band_frequency[n].data(), freq);
+    settings_left->setProperty(tags::equalizer::band_q[n].data(), q);
+
+    settings_right->setProperty(tags::equalizer::band_frequency[n].data(), freq);
+    settings_right->setProperty(tags::equalizer::band_q[n].data(), q);
+
+    freq0 = freq1;
+  }
+
+  RESET_BANDS_PROPERTY(settings_left, Width);
+  RESET_BANDS_PROPERTY(settings_right, Width);
 }
