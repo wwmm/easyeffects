@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-27 14:54+0000\n"
+"POT-Creation-Date: 2025-07-07 22:02+0000\n"
 "PO-Revision-Date: 2025-07-01 20:01+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2331,7 +2331,7 @@ msgid "Import Impulse File"
 msgstr "உந்துவிசை கோப்பை இறக்குமதி செய்யுங்கள்"
 
 #: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:522
-#: src/equalizer_ui.cpp:854 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
+#: src/equalizer_ui.cpp:861 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "திற"
 
@@ -2383,32 +2383,32 @@ msgstr ""
 "அப்போ முன்னமைவு ஏற்றப்படவில்லை. கோப்பு வடிவம் ஆதரிக்கப்படாமல் இருக்கலாம். அதன் உள்ளடக்கத்தை "
 "சரிபார்க்கவும்."
 
-#: src/equalizer_ui.cpp:616
+#: src/equalizer_ui.cpp:623
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 "அப்போ முன்னமைவுகளை ஏற்றுமதி செய்யும் போது பிளவு சேனல்கள் இன்னும் ஆதரிக்கப்படவில்லை."
 
-#: src/equalizer_ui.cpp:624
+#: src/equalizer_ui.cpp:631
 msgid "Export EqualizerAPO Preset File"
 msgstr "சமநிலைப்படுத்தி முன்னமைக்கப்பட்ட கோப்பை ஏற்றுமதி செய்யுங்கள்"
 
-#: src/equalizer_ui.cpp:625
+#: src/equalizer_ui.cpp:632
 msgid "Save"
 msgstr "சேமி"
 
-#: src/equalizer_ui.cpp:632
+#: src/equalizer_ui.cpp:639
 msgid "EqualizerAPO Presets"
 msgstr "சமநிலைப்படுத்தி முன்னமைவுகள்"
 
-#: src/equalizer_ui.cpp:853
+#: src/equalizer_ui.cpp:860
 msgid "Import GraphicEQ Preset File"
 msgstr "கிராஃபிசெக் முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
 
-#: src/equalizer_ui.cpp:861
+#: src/equalizer_ui.cpp:868
 msgid "GraphicEQ Presets"
 msgstr "கிராஃபிசெக் முன்னமைவுகள்"
 
-#: src/equalizer_ui.cpp:886
+#: src/equalizer_ui.cpp:893
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."

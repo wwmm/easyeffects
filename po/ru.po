@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-27 14:54+0000\n"
+"POT-Creation-Date: 2025-07-07 22:02+0000\n"
 "PO-Revision-Date: 2025-06-25 19:04+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2391,7 +2391,7 @@ msgid "Import Impulse File"
 msgstr "Импортировать файл импульса"
 
 #: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:522
-#: src/equalizer_ui.cpp:854 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
+#: src/equalizer_ui.cpp:861 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
 msgid "Open"
 msgstr "Открыть"
 
@@ -2443,32 +2443,32 @@ msgstr ""
 "Предустановка APO не загружена. Возможно, формат файла не поддерживается. "
 "Пожалуйста, проверьте его содержимое."
 
-#: src/equalizer_ui.cpp:616
+#: src/equalizer_ui.cpp:623
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
 "Разделение каналов при экспорте предустановок APO пока не поддерживается."
 
-#: src/equalizer_ui.cpp:624
+#: src/equalizer_ui.cpp:631
 msgid "Export EqualizerAPO Preset File"
 msgstr "Экспортировать файл предустановки APO"
 
-#: src/equalizer_ui.cpp:625
+#: src/equalizer_ui.cpp:632
 msgid "Save"
 msgstr "Сохранить"
 
-#: src/equalizer_ui.cpp:632
+#: src/equalizer_ui.cpp:639
 msgid "EqualizerAPO Presets"
 msgstr "Предустановки EqualizerAPO"
 
-#: src/equalizer_ui.cpp:853
+#: src/equalizer_ui.cpp:860
 msgid "Import GraphicEQ Preset File"
 msgstr "Импортировать файл предустановки GraphicEQ"
 
-#: src/equalizer_ui.cpp:861
+#: src/equalizer_ui.cpp:868
 msgid "GraphicEQ Presets"
 msgstr "Предустановки GraphicEQ"
 
-#: src/equalizer_ui.cpp:886
+#: src/equalizer_ui.cpp:893
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
