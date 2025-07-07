@@ -66,7 +66,7 @@ class Equalizer : public PluginBase {
 
   Q_INVOKABLE void calculateFrequencies();
 
-  static constexpr int max_bands = 32U;
+  static constexpr int max_bands = 32;
 
  private:
   db::Equalizer* settings = nullptr;
