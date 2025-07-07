@@ -1,16 +1,41 @@
-const import_apo_preset = (text_file) => {
-    // INTERNAL PROPERTIES
-    // Apo filter class.
-    class APO_Band {
-        type = "";
-        freq = 1000;
-        gain = 0;
-        quality = 1 / Math.sqrt(2);  // default in LSP APO import
-    }
+/**
+ * Properties that defines an APO band.
+ * @class
+ * @property {string} type
+ * @property {number} freq
+ * @property {number} gain
+ * @property {number} quality
+ */
+class APO_Band {
+    type = "";
+    freq = 1000;
+    gain = 0;
+    quality = 1 / Math.sqrt(2);  // default in LSP APO import
+}
 
+/**
+ * @typedef {Object} APO_Preset
+ * @property {Array<APO_Band>} bands List of APO_Band instances.
+ * @property {number} preamp Preamp value (defaults to 0 dB).
+ */
+
+/**
+ * Imports an APO preset from the content of a text file following the APO config syntax.
+ * Each text line is parsed to retrieve an APO Band. At the end of the parsing stage, all APO bands are returned 
+ * alongside the preamp value.
+ * @param {string} text_file The content of a text file.
+ * @returns {APO_Preset} The array of parsed APO bands, plus the preamp value. 
+ *   If the parsing fails, an empty array is returned alongside the default preamp.
+ */
+const import_apo_preset = (text_file) => {
     // INTERNAL METHODS
-    // Parse APO preamp.
-    const parse_apo_preamp = (line, preamp) => {
+
+    /**
+     * Parse a line to retrive the APO preamp.
+     * @param {string} line A single line of the file.
+     * @returns {number|null} The preamp value or null if it's not present.
+     */
+    const parse_apo_preamp = (line) => {
         const apo_preamp = line.match(/preamp\s*:\s*([+-]?\d+(?:\.\d+)?)\s*db/i);
 
         if (apo_preamp === null || apo_preamp.length !== 2) {
@@ -22,7 +47,12 @@ const import_apo_preset = (text_file) => {
         return (isNaN(preamp_num)) ? null : preamp_num;
     }
 
-    // Parse filter type.
+    /**
+     * Parse a line to retrive an APO filter type.
+     * @param {string} line A single line of the file.
+     * @param {APO_Band} filter APO band instance where to save the parsed filter type.
+     * @returns {boolean} True if the filter type has been retrieved correctly.
+     */
     const parse_apo_filter_type = (line, filter) => {
         // Look for disabled filter.
         if (line.match(/filter\s*\d*\s*:\s*off\s/i) !== null) {
@@ -44,7 +74,12 @@ const import_apo_preset = (text_file) => {
         return filter.type !== "";
     }
 
-    // Parse filter frequency.
+    /**
+     * Parse a line to retrive an APO band frequency.
+     * @param {string} line A single line of the file.
+     * @param {APO_Band} filter APO band instance where to save the parsed frequency value.
+     * @returns {boolean} True if the band frequency has been retrieved correctly.
+     */
     const parse_apo_frequency = (line, filter) => {
         const filter_freq = line.match(/fc\s+(\d+(?:,\d+)?(?:\.\d+)?)\s*hz/i);
 
@@ -65,7 +100,12 @@ const import_apo_preset = (text_file) => {
         return true;
     }
 
-    // Parse filter gain.
+    /**
+     * Parse a line to retrive an APO band gain.
+     * @param {string} line A single line of the file.
+     * @param {APO_Band} filter APO band instance where to save the parsed gain value.
+     * @returns {boolean} True if the band gain has been retrieved correctly.
+     */
     const parse_apo_gain = (line, filter) => {
         const filter_gain = line.match(/gain\s+([+-]?\d+(?:\.\d+)?)\s*db/i);
 
@@ -84,7 +124,12 @@ const import_apo_preset = (text_file) => {
         return true;
     }
 
-    // Parse filter quality.
+    /**
+     * Parse a line to retrive an APO band quality.
+     * @param {string} line A single line of the file.
+     * @param {APO_Band} filter APO band instance where to save the parsed quality value.
+     * @returns {boolean} True if the band quality has been retrieved correctly.
+     */
     const parse_apo_quality = (line, filter) => {
         const filter_q = line.match(/q\s+(\d+(?:\.\d+)?)/i);
 
@@ -103,7 +148,12 @@ const import_apo_preset = (text_file) => {
         return true;
     }
 
-    // Parse test file single line.
+    /**
+     * Parse a single line of the file to retrive APO band internal properties.
+     * @param {string} line A single line of the file. 
+     * @param {APO_Band} filter The instance of the APO band class where the values should be saved.
+     * @returns {boolean} True if the line follows the APO config syntax and the text has been parsed correctly.
+     */
     const parse_apo_config_line = (line, filter) => {
         // Retrieve filter type.
         if (!parse_apo_filter_type(line, filter)) {
@@ -191,8 +241,10 @@ const import_apo_preset = (text_file) => {
     };
 
     // FUNCTION BODY
-    let bands = [];
     let preamp = 0;
+
+    /** @type {Array<APO_Band>} */
+    let bands = [];
 
     const lines = text_file.match(/[^\n]+/g);
     for (const line of lines) {
@@ -206,23 +258,42 @@ const import_apo_preset = (text_file) => {
         if (parse_apo_config_line(line, filter)) {
             bands.push(filter);
         } else {
-            const new_preamp = parse_apo_preamp(line, preamp);
+            const new_preamp = parse_apo_preamp(line);
 
             preamp = new_preamp ?? preamp;
         }
     }
+
+    return { bands: bands, preamp: preamp };
 };
 
-const import_graphiceq_preset = (text_file) => {
-    // INTERNAL PROPERTIES
-    // GraphicEq filter class.
-    class GraphicEQ_Band {
-        freq = 1000;
-        gain = 0;
-    }
+/**
+ * Properties that defines a GraphicEQ band.
+ * @class
+ * @property {number} freq
+ * @property {number} gain
+ */
+class GraphicEQ_Band {
+    freq = 1000;
+    gain = 0;
+}
 
+/**
+ * Imports a GraphicEQ preset from the content of a text file following the GraphicEQ config syntax.
+ * @param {string} text_file The content of a text file.
+ * @returns {Array<GraphicEQ_Band>} The array of parsed GraphicEQ bands. 
+ *   If the parsing fails, an empty array is returned.
+ */
+const import_graphiceq_preset = (text_file) => {
     // INTERNAL METHODS
-    const parse_graphiceq_config = (srt, bands) => {
+
+    /**
+     * Parse a single line of the file to retrive the GraphicEQ bands and their internal properties.
+     * @param {string} str A single line of the file. 
+     * @param {Array<GraphicEQ_Band>} bands The array where all parsed GraphicEQ bands are saved.
+     * @returns {boolean} True if the line follows the GraphicEQ config syntax and the text has been parsed correctly.
+     */
+    const parse_graphiceq_config = (str, bands) => {
         // The first parsing stage is to ensure the given string contains a
         // substring corresponding to the GraphicEQ format reported in the documentation:
         // https://sourceforge.net/p/equalizerapo/wiki/Configuration%20reference/#graphiceq-since-version-10
@@ -241,7 +312,7 @@ const import_graphiceq_preset = (text_file) => {
         // This ensures the last band is captured with or without the final `;`.
         // The regex has been tested at https://regex101.com/r/JRwf4G/1
 
-        const geq_format = srt.match(re_geq);
+        const geq_format = str.match(re_geq);
 
         // If the format of the string is correct, we capture the full match and a
         // group related to the sequential bands.
@@ -277,6 +348,7 @@ const import_graphiceq_preset = (text_file) => {
     };
 
     // FUNCTION BODY
+    /** @type {Array<GraphicEQ_Band>} */
     let bands = [];
 
     const lines = text_file.match(/[^\n]+/g);
@@ -291,4 +363,6 @@ const import_graphiceq_preset = (text_file) => {
             break;
         }
     }
+
+    return bands;
 }
