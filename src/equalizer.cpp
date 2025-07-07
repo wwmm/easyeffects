@@ -82,7 +82,7 @@ Equalizer::Equalizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   */
 
   connect(settings, &db::Equalizer::numBandsChanged, [&]() {
-    for (int n = 0U; n < max_bands; n++) {
+    for (int n = 0; n < max_bands; n++) {
       if (n >= settings->numBands()) {  // turn off unused bands
         settings_left->setProperty(tags::equalizer::band_type[n].data(), 0);
 
@@ -240,8 +240,8 @@ void Equalizer::sort_bands() {
     bool mute;
   };
 
-  const auto used_bands = static_cast<uint>(settings->numBands());
-  if (used_bands < 1U || used_bands > max_bands) {
+  const auto used_bands = settings->numBands();
+  if (used_bands < 1 || used_bands > max_bands) {
     return;
   }
 
@@ -256,7 +256,7 @@ void Equalizer::sort_bands() {
   // for (auto* channel : settings_channels) {
   //   std::multimap<double, struct EQ_Band> sorted_bands;
 
-  //   for (uint n = 0U; n < used_bands; n++) {
+  //   for (int n = 0; n < used_bands; n++) {
   //     const auto f = g_settings_get_double(channel, band_frequency[n].data());
 
   //     sorted_bands.emplace(
@@ -271,7 +271,7 @@ void Equalizer::sort_bands() {
   //                                               .mute = g_settings_get_boolean(channel, band_mute[n].data())}));
   //   }
 
-  //   for (uint n = 0U; const auto& p : sorted_bands) {
+  //   for (int n = 0; const auto& p : sorted_bands) {
   //     g_settings_set_double(channel, band_frequency[n].data(), p.second.freq);
   //     g_settings_set_enum(channel, band_type[n].data(), p.second.type);
   //     g_settings_set_enum(channel, band_mode[n].data(), p.second.mode);
