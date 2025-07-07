@@ -586,7 +586,14 @@ auto export_apo_preset(EqualizerBox* self, GFile* file) {
     }
 
     APO_Band apo_band;
-    apo_band.type = EasyEffectsToApoFilter.at(curr_band_type);
+
+    try {
+      apo_band.type = EasyEffectsToApoFilter.at(curr_band_type);
+    } catch (std::out_of_range const&) {
+      // LSP filters not supported in APO defaults to Peak/Bell (see ticket #3882)
+      apo_band.type = "PK";
+    }
+
     apo_band.freq = g_settings_get_double(self->settings_left, band_frequency[i].data());
     apo_band.gain = g_settings_get_double(self->settings_left, band_gain[i].data());
     apo_band.quality = g_settings_get_double(self->settings_left, band_q[i].data());
