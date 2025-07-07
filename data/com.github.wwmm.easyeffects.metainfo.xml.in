@@ -52,6 +52,19 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.2.4" date="2025-07-07T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>The Pitch plugin has new cents and octaves parameters.</li>
+          <li>The client-rt.conf is ignored on 1.4.0 or newer PipeWire versions.</li>
+          <li>Bug fixes:</li>
+          <li>APO export does not crash anymore when an unsupported LSP Equalizer filter is set.</li>
+          <li>Fixed a bug in LADSPA wrapper.</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.2.3" date="2025-01-06T00:00:00Z">
       <description>
         <ul>
