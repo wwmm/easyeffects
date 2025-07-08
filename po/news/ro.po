@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2025-02-24 09:09+0000\n"
+"PO-Revision-Date: 2025-07-09 01:02+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.10.1-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -141,11 +141,13 @@ msgstr "Caracteristici:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "The Pitch plugin has new cents and octaves parameters."
-msgstr ""
+msgstr "Modulul Pitch are noi parametri „centisunete” și „octave”."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid "The client-rt.conf is ignored on 1.4.0 or newer PipeWire versions."
 msgstr ""
+"Fișierul client-rt.conf este ignorat de versiunile PipeWire 1.4.0 sau mai "
+"noi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -198,10 +200,12 @@ msgid ""
 "APO export does not crash anymore when an unsupported LSP Equalizer filter "
 "is set."
 msgstr ""
+"Exportul APO nu se mai blochează atunci când este definit un filtru de "
+"egalizator LSP neacceptat."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Fixed a bug in LADSPA wrapper."
-msgstr ""
+msgstr "S-a remediat o eroare în scriptul-ajutător LADSPA."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
