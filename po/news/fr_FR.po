@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2025-06-28 15:17+0000\n"
+"PO-Revision-Date: 2025-07-09 01:02+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -140,11 +140,13 @@ msgstr "Fonctionnalités :"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "The Pitch plugin has new cents and octaves parameters."
-msgstr ""
+msgstr "Le greffon Pitch intègre de nouveaux paramètres cents et octaves."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid "The client-rt.conf is ignored on 1.4.0 or newer PipeWire versions."
 msgstr ""
+"Le fichier client-rt.conf est ignoré sur les versions 1.4.0 ou supérieures "
+"de PipeWire."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -197,10 +199,12 @@ msgid ""
 "APO export does not crash anymore when an unsupported LSP Equalizer filter "
 "is set."
 msgstr ""
+"L'exportation APO ne plante plus lorsqu'un filtre LSP non supporté de "
+"l'Égaliseur est défini."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Fixed a bug in LADSPA wrapper."
-msgstr ""
+msgstr "Correction d'un bogue dans le module LADSPA."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
