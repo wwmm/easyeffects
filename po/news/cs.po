@@ -141,7 +141,7 @@ msgstr "Modul Pitch má nyní nové parametry centů a oktáv."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid "The client-rt.conf is ignored on 1.4.0 or newer PipeWire versions."
-msgstr "Soubor client-rt.conf je ignorován u PipeWire verze 1.4.0 a novějších"
+msgstr "Soubor client-rt.conf je ignorován u PipeWire verze 1.4.0 a novějších."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -193,11 +193,11 @@ msgstr "Opravy chyb:"
 msgid ""
 "APO export does not crash anymore when an unsupported LSP Equalizer filter "
 "is set."
-msgstr ""
+msgstr "Export APO již nezpůsobí pád při nastaveném filtru Ekvalizér LSP."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Fixed a bug in LADSPA wrapper."
-msgstr ""
+msgstr "Opravena chyba ve wrapperu LADSPA."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
