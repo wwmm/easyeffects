@@ -306,7 +306,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "Performance optmizations to the spectrum plugin and the LADSPA wrapper"
-msgstr "Leistungsoptimierung für das Spektrum-Plugin und den LADSPA-Wrapper."
+msgstr "Leistungsoptimierung für das Spektrum-Plugin und den LADSPA-Wrapper"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:130
 msgid ""
@@ -374,11 +374,15 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:157
+#, fuzzy
 msgid ""
 "Improved the pipeline management system. Non-limiter effects are placed "
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
 msgstr ""
+"Das Pipeline-Management System verbessert. Nicht-begrenzende Effekte stehen "
+"nun vor dem Begrenzer, selbst wenn die letzten zwei Plugins in der Pipeline "
+"Begrenzer gefolgt von einem ? sind."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:159
 msgid ""
@@ -392,12 +396,14 @@ msgid ""
 "allow latency offset to be properly applied by video players when PipeWire > "
 "1.0.3 is released."
 msgstr ""
+"Wir setzen nun monitor.passthrough = true in unseren virtuellen Geräten. "
+"Dies erlaubt es Latenz-Versatz korrekt auf Video-Player anzuwenden, wenn "
+"PipeWire > 1.0.3 veröffentlicht wird."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:169
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:316
-#, fuzzy
 msgid "Updated translations."
-msgstr "Übersetzungen wurden aktualisiert"
+msgstr "Übersetzungen wurden aktualisiert."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:179
 msgid ""
@@ -409,19 +415,23 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:181
 msgid "The equalizer can export basic APO preset files"
-msgstr ""
+msgstr "Der Equalizer kann Standard-APO-Voreinstellungsdateien exportieren"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:182
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
 msgstr ""
+"Unser Spieler/Aufnahme Tab zeigt den Binär-Namen des Audio-Clients in dem "
+"Fall, wenn kein Anwendungsname definiert wurde."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
 msgstr ""
+"Die Easy Effects-Version kann in der Kommandozeile mit der Option --version "
+"angezeigt werden"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
 msgid ""
@@ -435,25 +445,28 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:207
-#, fuzzy
 msgid "The DeepFilterNet plugin can now be added to the preset file"
 msgstr ""
-"Der Grenz-Parameter des Deesser Plugins wird jetzt in der Voreinstellungs-"
-"Datei gespeichert."
+"Das DeepFilterNet-Plugin kann nun zur Voreinstellungs-Datei hinzugefügt "
+"werden"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
 msgid ""
 "The spectrum has a new option that allows the dynamic vertical scale to be "
 "disabled."
 msgstr ""
+"Das Spektrum hat eine neue Option, welche die Deaktivierung der dynamischen "
+"Vertikalen Skala erlaubt."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
 msgid "Improved compatibility with the latest LSP releases."
-msgstr ""
+msgstr "Kompatibilität mit den neuesten LSP-Versionen verbessert."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:219
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
 msgstr ""
+"Eine falsche Zeichnung der Datei-Charakteristiken der Impuls-Reaktion "
+"korrigiert."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
 msgid ""
