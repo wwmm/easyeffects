@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2024-12-06 07:00+0000\n"
-"Last-Translator: T1z3n <info@njbraun.de>\n"
+"PO-Revision-Date: 2025-07-15 03:01+0000\n"
+"Last-Translator: catcher6738 <weblate.series639@simplelogin.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/de/>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.9-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -47,36 +47,33 @@ msgstr ""
 "PulseEffects verwenden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
-#, fuzzy
 msgid ""
 "Because Easy Effects uses the default PipeWire sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"Da EasyEffects den Standard PulseAudio Sound Server benutzt, funktioniert es "
+"Da Easy Effects den Standard PipeWire Sound-Server benutzt, funktioniert es "
 "mit so ziemlich allen Anwendungen. Alle unterstützten Anwendungen werden im "
 "Hauptfenster angezeigt, wo diese individuell ein-/ausgeschaltet werden "
 "können."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Neben der Audiomanipulation des Ausgangs kann EasyEffects auch Effekte auf "
+"Neben der Audiomanipulation des Ausgangs kann Easy Effects auch Effekte auf "
 "Eingabegeräte, z.B. Mikrofone, anwenden. Dies ist sinnvoll für z.B. "
-"Audioaufnahmen oder VOIP Anwendungen."
+"Audioaufnahmen, funktioniert aber auch gut während Gesprächen."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
-#, fuzzy
 msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
-"Wenn EasyEffects startet, stellt es die Konfiguration der letzten Sitzung "
+"Wenn Easy Effects startet, stellt es die Konfiguration der letzten Sitzung "
 "wieder her. Es ist auch möglich, die aktuellen Einstellungen als Profile zu "
 "speichern."
 
@@ -145,7 +142,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid "The client-rt.conf is ignored on 1.4.0 or newer PipeWire versions."
-msgstr ""
+msgstr "Die Datei client-rt.conf wird ab PipeWire-Version 1.4.0 ignoriert."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -190,7 +187,6 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:602
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:618
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:631
-#, fuzzy
 msgid "Bug fixes:"
 msgstr "Fehlerbehebungen:"
 
@@ -199,10 +195,12 @@ msgid ""
 "APO export does not crash anymore when an unsupported LSP Equalizer filter "
 "is set."
 msgstr ""
+"Der APO-Export stürzt nicht mehr ab, wenn ein nicht unterstützter LSP-"
+"Equalizer eingestellt ist."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Fixed a bug in LADSPA wrapper."
-msgstr ""
+msgstr "Einen Fehler im LADSPA-Wrapper behoben."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -240,6 +238,8 @@ msgid ""
 "Improved compatibility with future PipeWire releases. This version will "
 "avoid compilation errors like issue 3620"
 msgstr ""
+"Kompatibilität mit zukünftigen PipeWire-Versionen verbessert. Diese Version "
+"verhindert Kompilierfehler wie Fehler 3620."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
