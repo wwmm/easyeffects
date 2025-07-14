@@ -239,7 +239,7 @@ msgid ""
 "avoid compilation errors like issue 3620"
 msgstr ""
 "Kompatibilität mit zukünftigen PipeWire-Versionen verbessert. Diese Version "
-"verhindert Kompilierfehler wie Fehler 3620."
+"verhindert Kompilierfehler wie Fehler 3620"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
@@ -260,16 +260,21 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:94
+#, fuzzy
 msgid ""
 "Fixed a bug that makes the application crash when the option Linux Studio "
 "Plugins package is not installed."
 msgstr ""
+"Fehler behoben, welcher die Anwendung abstürzen lässt, wenn die Option Linux "
+"Studio Plugins Package nicht installiert ist."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:105
 msgid ""
 "Fixed a bug in the crystalizer plugin where the scale values were not being "
 "properly applied."
 msgstr ""
+"Fehler im Crystalizer-Plugin behoben, bei dem die Skalierungswerte nicht "
+"richtig angewendet werden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
 msgid ""
@@ -277,15 +282,17 @@ msgid ""
 "drawing so it matches the latency offset applied by the user on programs "
 "like Pavucontrol."
 msgstr ""
+"Latenzkompensation kann auf das Spektrum-Plugin angewendet werden. Es "
+"verzögert seine Zeichnung, so dass es den vom Nutzer eingestellten "
+"Latenzversatz (auf Programmen wie Pavucontrol) gleich steht."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
-#, fuzzy
 msgid ""
 "The command line option that shows EasyEffects version should work properly "
 "now."
 msgstr ""
-"Die Kommandozeilen-Option, welche den globalen `bypass`-Status "
-"zurückliefert, funktioniert wieder."
+"Der Kommandozeilen-Befehl, welche die Easy Effects anzeigt, funktioniert "
+"wieder."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid "Fixed a regression in the autoload preset code."
@@ -299,7 +306,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "Performance optmizations to the spectrum plugin and the LADSPA wrapper"
-msgstr ""
+msgstr "Leistungsoptimierung für das Spektrum-Plugin und den LADSPA-Wrapper."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:130
 msgid ""
