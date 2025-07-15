@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2024-01-01 21:04+0000\n"
-"Last-Translator: nova madeline <493ov2lof@mozmail.com>\n"
+"PO-Revision-Date: 2025-07-15 05:01+0000\n"
+"Last-Translator: catcher6738 <weblate.series639@simplelogin.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/main/"
 "de/>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -174,9 +174,8 @@ msgid "Geometric Mean (SI)"
 msgstr "Geometrisches Mittel (SI)"
 
 #: data/ui/autogain.ui:124
-#, fuzzy
 msgid "History"
-msgstr "Verlauf löschen"
+msgstr "Verlauf"
 
 #: data/ui/autogain.ui:129 data/ui/autogain.ui:598 data/ui/bass_enhancer.ui:458
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1307
@@ -2664,9 +2663,9 @@ msgstr ""
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
-#, fuzzy, c++-format
+#, c++-format
 msgid "Using {}"
-msgstr "Nutze"
+msgstr "Nutzt {}"
 
 #~ msgid "Ceiling"
 #~ msgstr "Grenze"
