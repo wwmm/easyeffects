@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2025-04-22 01:49+0000\n"
-"Last-Translator: Максим Горпиніч <maksimgorpinic2005a@gmail.com>\n"
+"PO-Revision-Date: 2025-07-15 14:12+0000\n"
+"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.11.1-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -92,11 +92,11 @@ msgstr "_Вихід"
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:159
 msgid "Presets"
-msgstr "Профілі"
+msgstr "Пресети"
 
 #: data/ui/application_window.ui:61
 msgid "Presets Menu"
-msgstr "Меню профілів"
+msgstr "Меню пресетів"
 
 #: data/ui/application_window.ui:68
 msgid "Enable/disable the global bypass"
@@ -235,7 +235,7 @@ msgstr "Вхід"
 #: data/ui/multiband_gate.ui:512 data/ui/pitch.ui:282 data/ui/reverb.ui:377
 #: data/ui/rnnoise.ui:292 data/ui/speex.ui:206 data/ui/stereo_tools.ui:636
 msgid "Plugin Input Gain"
-msgstr "Коефіцієнт вхідного підсилення плагіна"
+msgstr "Плагін коефіцієнта вхідного підсилення"
 
 #: data/ui/autogain.ui:514 data/ui/bass_enhancer.ui:342
 #: data/ui/bass_loudness.ui:48 data/ui/bass_loudness.ui:191
@@ -250,7 +250,7 @@ msgstr "Коефіцієнт вхідного підсилення плагін�
 #: data/ui/rnnoise.ui:357 data/ui/speex.ui:271 data/ui/stereo_tools.ui:379
 #: data/ui/stereo_tools.ui:701
 msgid "Output"
-msgstr "Вихід"
+msgstr "Виведення"
 
 #: data/ui/autogain.ui:533 data/ui/bass_enhancer.ui:361
 #: data/ui/bass_loudness.ui:210 data/ui/compressor.ui:1242
@@ -263,7 +263,7 @@ msgstr "Вихід"
 #: data/ui/multiband_gate.ui:596 data/ui/pitch.ui:366 data/ui/reverb.ui:461
 #: data/ui/rnnoise.ui:376 data/ui/speex.ui:290 data/ui/stereo_tools.ui:720
 msgid "Plugin Output Gain"
-msgstr "Коефіцієнт вихідного підсилення плагіна"
+msgstr "Плагін коефіцієнта вихідного підсилення"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:673 data/ui/expander.ui:594
 #: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:246
@@ -288,7 +288,7 @@ msgstr "Пресет"
 
 #: data/ui/autoload_row.ui:114
 msgid "Remove this autoload preset"
-msgstr "Видаліти цей пресет з автозавантаження"
+msgstr "Видалити цей пресет з автозастосування"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:627 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/expander.ui:548 data/ui/gate.ui:761
@@ -767,7 +767,7 @@ msgstr "Друге ядро"
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
-msgstr "Ім'я вихідного файлу"
+msgstr "Назва вихідного файлу"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
@@ -916,7 +916,7 @@ msgstr "Довжина фільтра"
 
 #: data/ui/echo_canceller.ui:49
 msgid "Residual Echo Suppression"
-msgstr "Придушення залишкової луни"
+msgstr "Придушення залишкового відлуння"
 
 #: data/ui/echo_canceller.ui:70
 msgid "Near End Echo Suppression"
@@ -932,7 +932,7 @@ msgstr "Увімкнути/вимкнути моніторинг входу"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
-msgstr "Гурти"
+msgstr "Кількість полос"
 
 #: data/ui/equalizer.ui:93 data/ui/filter.ui:270 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:391
@@ -941,11 +941,11 @@ msgstr "Баланс"
 
 #: data/ui/equalizer.ui:125
 msgid "Pitch Left"
-msgstr "Крок ліворуч"
+msgstr "Висота звуку лівого каналу"
 
 #: data/ui/equalizer.ui:157
 msgid "Pitch Right"
-msgstr "Крок праворуч"
+msgstr "Висота звуку правого каналу"
 
 #: data/ui/equalizer.ui:288
 msgid "Split Channels"
@@ -1316,7 +1316,7 @@ msgstr "Розмір FFT"
 
 #: data/ui/loudness.ui:83
 msgid "Output Volume"
-msgstr "Вихідний обсяг"
+msgstr "Вихідна гучність"
 
 #: data/ui/loudness.ui:104
 msgid "Clipping"
@@ -1541,7 +1541,7 @@ msgstr "Пристрої виведення"
 
 #: data/ui/pipe_manager_box.ui:294 src/application.cpp:284
 msgid "Output Presets"
-msgstr "Вихідні пресети"
+msgstr "Пресети для виходу"
 
 #: data/ui/pipe_manager_box.ui:301 data/ui/pipe_manager_box.ui:426
 msgid "Create Association"
@@ -1650,7 +1650,7 @@ msgstr "Довжина перекриття"
 
 #: data/ui/pitch.ui:130 src/tags_plugin_name.cpp:60
 msgid "Pitch"
-msgstr "Крок"
+msgstr "Висота звуку"
 
 #: data/ui/pitch.ui:134
 msgid "Cents"
@@ -1742,7 +1742,7 @@ msgstr "Аудіо"
 
 #: data/ui/preferences_general.ui:42
 msgid "Process All Output Streams"
-msgstr "Обробити всі вихідні потоки"
+msgstr "Обробляти всі вихідні потоки"
 
 #: data/ui/preferences_general.ui:54
 msgid "Process All Input Streams"
@@ -1882,7 +1882,7 @@ msgstr "Максимум"
 
 #: data/ui/preset_row.ui:38 src/convolver_menu_impulses.cpp:225
 msgid "Load"
-msgstr "Навантаження"
+msgstr "Застосувати"
 
 #: data/ui/preset_row.ui:39
 msgid "Discard the current settings and load this preset"
@@ -1890,7 +1890,7 @@ msgstr "Скасуйте поточні налаштування та заван
 
 #: data/ui/preset_row.ui:48
 msgid "Save current settings to this preset file"
-msgstr "Збережіть поточні параметри в цьому попередньому файлі"
+msgstr "Зберегти поточні параметри в цьому пресеті"
 
 #: data/ui/preset_row.ui:58
 msgid "Remove this preset file"
@@ -1914,7 +1914,7 @@ msgstr "Імпортуйте цей стиль спільноти до лока�
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
-msgstr "Місцевий"
+msgstr "Локальні"
 
 #: data/ui/presets_menu.ui:48
 msgid "New Preset Name"
@@ -2196,7 +2196,7 @@ msgstr "Середня панорама"
 
 #: data/ui/stereo_tools.ui:417
 msgid "Output Balance"
-msgstr "Вихідний баланс"
+msgstr "Баланс виведення"
 
 #: data/ui/stereo_tools.ui:426
 msgid "Delay L/R"
@@ -2297,8 +2297,8 @@ msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
 msgstr ""
-"Показати завантажений стиль певної категорії. Приймає «вхід» або «вихід» як "
-"значення. Приклад: easyeffects -s input"
+"Показати застосований пресет певної категорії. Приймає «input» або «output» "
+"як значення. Приклад: easyeffects -s input"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
@@ -2431,7 +2431,7 @@ msgstr "Видалити"
 
 #: src/plugins_box.cpp:828
 msgid "Output Device"
-msgstr "Вихідний пристрій"
+msgstr "Пристрій виведення"
 
 #: src/plugins_menu.cpp:238
 msgid "Add"
@@ -2490,11 +2490,11 @@ msgstr "Попереднє налаштування не завантажено"
 
 #: src/presets_menu.cpp:573
 msgid "Last Local Preset Loaded"
-msgstr "Останній завантажений локальний стиль"
+msgstr "Останній застосований локальний пресет"
 
 #: src/presets_menu.cpp:573
 msgid "Last Community Preset Loaded"
-msgstr "Останній завантажений стиль спільноти"
+msgstr "Останній застосований пресет зі спільноти"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
@@ -2526,7 +2526,7 @@ msgstr "Конвольвер"
 
 #: src/tags_plugin_name.cpp:43
 msgid "Crossfeed"
-msgstr "Перехресна подача"
+msgstr "Кросфід"
 
 #: src/tags_plugin_name.cpp:44
 msgid "Crystalizer"
@@ -2542,7 +2542,7 @@ msgstr "Deesser"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Echo Canceller"
-msgstr "Ехо Канцлер"
+msgstr "Придушення відлуння"
 
 #: src/tags_plugin_name.cpp:49
 msgid "Equalizer"
