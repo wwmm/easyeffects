@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-17 21:09+0000\n"
-"PO-Revision-Date: 2025-01-26 14:51+0000\n"
-"Last-Translator: Максим Горпиніч <maksimgorpinic2005a@gmail.com>\n"
+"PO-Revision-Date: 2025-07-16 01:01+0000\n"
+"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/uk/>\n"
 "Language: uk\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -64,9 +64,9 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"Окрім управління звуком, Easy Effects може застосовувати ефекти до пристрою "
-"введення, наприклад мікрофона. Це, наприклад, корисно під час аудіозапису, "
-"але також добре працює під час голосових розмов."
+"Окрім управління виведенням звуку, Easy Effects може застосовувати ефекти до "
+"пристрою введення, наприклад мікрофона. Це, наприклад, корисно під час "
+"аудіозапису, але також добре працює під час голосових розмов."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
@@ -257,7 +257,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:84
 msgid "Fixed a regression in the autoload preset code."
-msgstr "Виправлено регресію в попередньо встановленому коді автозавантаження."
+msgstr "Виправлено регресію в коді автозастосування пресетів."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:93
 msgid ""
@@ -289,11 +289,11 @@ msgid ""
 "volunteers. You can search them on the repositories of your favorite "
 "distribution."
 msgstr ""
-"Реалізовано попередні налаштування спільноти. Користувачі можуть інсталювати "
-"пакети, що містять кілька стилів Easy Effects, які можна імпортувати та "
-"застосовувати всередині програми. Ці пакунки обслуговуватимуть і "
-"відправлятимуть волонтери. Ви можете шукати їх у сховищах вашого улюбленого "
-"дистрибутива."
+"Реалізовано можливість використовувати пресети від спільноти. Користувачі "
+"можуть інсталювати пакети, що містять кілька пресетів Easy Effects, які "
+"можна імпортувати та застосовувати всередині програми. Ці пакунки "
+"обслуговуватимуть і відправлятимуть волонтери. Ви можете шукати їх у "
+"сховищах вашого улюбленого дистрибутива."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:107
 msgid ""
@@ -330,9 +330,10 @@ msgid ""
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
 msgstr ""
-"Останні випуски плагінів Maximizer більше не мають контролю стелі. Тож ми "
-"видалили його з нашого інтерфейсу користувача (ви можете використати "
-"посилення введення плагіна, щоб отримати ті самі функції)."
+"Останні версії плагіну Максимізатор більше не мають контролю стелі. Тож ми "
+"видалили його з нашого інтерфейсу користувача (ви можете використовувати "
+"плагін коефіцієнту вихідного підсилення, щоб отримати ту саму "
+"функціональність)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:113
 msgid ""
@@ -358,10 +359,10 @@ msgid ""
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
 msgstr ""
-"Попередні налаштування з ефектами Convolver та/або шумозаглушення (RNNoise), "
-"створені до версії 7.2.0, вважаються застарілими. Будь ласка, перезавантажте "
-"файл irs/model в інтерфейс користувача Convolver/RNNoise і повторно "
-"збережіть попередні налаштування."
+"Пресети з ефектами Конвольвер та/або Зменшення шуму (RNNoise), створені до "
+"версії 7.2.0, вважаються застарілими. Будь ласка, перезавантажте файл irs/"
+"model в інтерфейс користувача Конвольвер/RNNoise і повторно збережіть "
+"попередні налаштування."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:124
 msgid ""
@@ -443,7 +444,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:174
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr "Плагін DeepFilterNet тепер можна додати до попереднього файлу"
+msgstr "Плагін DeepFilterNet тепер можна додати до файлу пресету"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid ""
@@ -526,15 +527,16 @@ msgid ""
 msgstr ""
 "Смуги еквалайзера тепер мають додатковий регулятор посилення, що дозволяє "
 "ефективніше вводити значення, які важко встановити в шкалі. Детальніше у "
-"випуску 1383."
+"помилці 1383."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:231
 msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
 msgstr ""
-"Додано можливість вибору та завантаження кількох файлів у діалогових вікнах "
-"відкриття для пресетів, імпульсних характеристик Convolver і моделей RNNoise."
+"Додано можливість вибору та застосування кількох файлів у діалогових вікнах "
+"відкриття для пресетів, імпульсних відгуків для Конвольвера і моделей "
+"RNNoise."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:233
 msgid "Fixed the Solo button in the Equalizer band settings."
@@ -549,10 +551,10 @@ msgid ""
 "Community Presets."
 msgstr ""
 "Папки Easy Effects у розділі /etc визнано застарілими, і попередньо "
-"встановлені налаштування більше не завантажуватимуться. На даний момент лише "
-"локальні стилі в ~/.config/easyeffects автоматично завантажуються в меню "
+"встановлені налаштування більше не застосовуватимуться. На даний момент лише "
+"локальні пресети в ~/.config/easyeffects автоматично застосовуються в меню "
 "налаштувань. У майбутньому ми запровадимо нову систему для встановлення, "
-"керування й імпорту пресетів спільноти."
+"керування й імпорту пресетів від спільноти."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:243
 msgid ""
@@ -621,8 +623,8 @@ msgid ""
 "The presets menu now asks for confirmation before saving/deleting a preset "
 "file."
 msgstr ""
-"Меню попередніх налаштувань тепер запитує підтвердження перед збереженням/"
-"видаленням попереднього файлу."
+"Меню пресетів тепер запитує підтвердження перед збереженням/видаленням "
+"пресету."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:272
 msgid "The plugin reset should not make its controls innefective anymore."
@@ -661,8 +663,7 @@ msgid ""
 "the result can be saved into presets."
 msgstr ""
 "Функція «сортування смуг» еквалайзера тепер упорядковує смуги в "
-"налаштуваннях GSettings, тому результат можна зберегти в попередніх "
-"налаштуваннях."
+"налаштуваннях GSettings, тому результат можна зберегти в пресетах."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:294
 msgid "Improved performance when resetting keys."
@@ -711,9 +712,9 @@ msgid ""
 "The equalizer band gain slider value can be updated in larger steps. Fine "
 "grain control is still possible through the keyboard up/down keys."
 msgstr ""
-"Значення повзунка посилення смуги еквалайзера можна оновлювати більшими "
-"кроками. Контроль дрібної зернистості все ще можливий за допомогою клавіш "
-"вгору/вниз на клавіатурі."
+"Значення повзунка підсилення смуги еквалайзера можна оновлювати більшими "
+"кроками. Дуже точний контроль все ще можливий за допомогою клавіш вгору/вниз "
+"на клавіатурі."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:310
 msgid "Small improvements to the echo canceller."
@@ -750,7 +751,7 @@ msgstr "Покращена сумісність із плагінами Linux St
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:323
 msgid "GraphicEQ presets can be imported into the Equalizer effect."
-msgstr "Попередні налаштування GraphicEQ можна імпортувати в ефект еквалайзера."
+msgstr "Пресети GraphicEQ можна імпортувати в ефект еквалайзера."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:324
 msgid ""
@@ -766,7 +767,7 @@ msgstr "Документацію оновлено."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:326
 msgid "Improved presets autoloading."
-msgstr "Покращене автозавантаження пресетів."
+msgstr "Покращене автозастосування пресетів."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:327
 msgid "The Autogain silence threshold can now be configured by the user."
@@ -800,10 +801,9 @@ msgid ""
 "consideration that saving the current preset will always write it in the new "
 "format."
 msgstr ""
-"Через нову функцію кількох екземплярів попередньо встановлений формат "
-"змінився, але старий все ще сумісний для завантаження. У будь-якому випадку "
-"візьміть до уваги, що збереження поточного стилю завжди записуватиме його в "
-"новому форматі."
+"Через нову функцію кількох екземплярів формат пресетів змінився, але старий "
+"все ще підходить для застосування. У будь-якому випадку візьміть до уваги, "
+"що збереження поточного пресету завжди записуватиме його в новому форматі."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:341
 msgid ""
@@ -816,8 +816,7 @@ msgid ""
 "The preset autoloading code compatibility with bluez5 devices has been "
 "improved."
 msgstr ""
-"Покращено сумісність попередньо встановленого коду автозавантаження з "
-"пристроями bluez5."
+"Покращено сумісність коду автозавантаження пресетів з пристроями bluez5."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:343
 msgid "Wet/dry controls were added for some plugins"
@@ -857,15 +856,13 @@ msgid ""
 "The bypass state can be saved to the preset file. The reasons why this was "
 "done can be seen at issue 1039"
 msgstr ""
-"Стан обходу можна зберегти у файлі попереднього налаштування. Причини, чому "
-"це було зроблено, можна побачити у питанні 1039"
+"Стан обходу можна зберегти у файлі пресету. Причини, чому це було зроблено, "
+"можна побачити у помилці 1039"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:369
 msgid ""
 "The preset autoloading code compatibility with usb devices has been improved."
-msgstr ""
-"Покращено сумісність попередньо встановленого коду автозавантаження з "
-"USB-пристроями."
+msgstr "Покращено сумісність коду автозавантаження пресетів з USB-пристроями."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:370
 msgid ""
@@ -1071,7 +1068,7 @@ msgid ""
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
 msgstr ""
-"Перехресний фільтр має краще справлятися з динамічними перемикачами затримки "
+"Фільтр кросфіду має краще справлятися з динамічними перемикачами затримки "
 "PipeWire. У таких ситуаціях більше не повинно відбуватися стрибків рівня "
 "гучності."
 
@@ -1345,9 +1342,9 @@ msgid ""
 "stack, new plugins are added at the second to last position in order to "
 "prevent hardware damage on eventually high output level."
 msgstr ""
-"Якщо Limiter або Maximizer встановлено в останню позицію стека плагінів, "
+"Якщо Лімітер або Максимізатор встановлено в останню позицію стека плагінів, "
 "нові плагіни додаються в передостанню позицію, щоб запобігти пошкодженню "
-"апаратного забезпечення на високому вихідному рівні."
+"апаратного забезпечення на високому рівні виведення."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:530
 msgid ""
