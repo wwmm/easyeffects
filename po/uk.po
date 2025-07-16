@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2025-07-15 14:12+0000\n"
+"PO-Revision-Date: 2025-07-16 04:01+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -2363,7 +2363,7 @@ msgstr "Рекордери"
 
 #: src/effects_box.cpp:379 src/plugins_box.cpp:827
 msgid "Players"
-msgstr "Гравці"
+msgstr "Програвачі"
 
 #: src/effects_box.cpp:402
 msgid "Effects"
