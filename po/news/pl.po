@@ -241,7 +241,7 @@ msgid ""
 "avoid compilation errors like issue 3620"
 msgstr ""
 "Poprawiono kompatybilność z przyszłymi wersjami PipeWire. Ta wersja będzie "
-"pomijać błędy kompilacji, takie jak w problemie 3620."
+"pomijać błędy kompilacji, takie jak w problemie 3620"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
@@ -260,18 +260,25 @@ msgid ""
 "Added a workaround for a glibc(or maybe libstdc++) bug that affects locale "
 "management. What in turns breaks our spinbuttons on some locales."
 msgstr ""
+"Dodano obejście dla błędu glibc(albo libstdc++), który wpływa na zarządzanie "
+"ustawieniami regionalnymi. Co w konsekwencji psuje nasze spinbuttony w "
+"poszczególnych ustawieniach regionalnych."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:94
 msgid ""
 "Fixed a bug that makes the application crash when the option Linux Studio "
 "Plugins package is not installed."
 msgstr ""
+"Naprawiono błąd powodujący crash aplikacji, gdy opcja paczki Linux Studio "
+"Plugins nie jest zainstalowana."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:105
 msgid ""
 "Fixed a bug in the crystalizer plugin where the scale values were not being "
 "properly applied."
 msgstr ""
+"Naprawiono błąd we wtyczce krystalizatora, gdzie wartości nie były poprawnie "
+"zastosowywane."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
 msgid ""
@@ -279,19 +286,21 @@ msgid ""
 "drawing so it matches the latency offset applied by the user on programs "
 "like Pavucontrol."
 msgstr ""
+"Kompensacja opóźnienia może zostać zastosowana we wtyczce widma. Pominie to "
+"jej obrazowanie na tyle, że zrówna się ono z wartością offset opóźnienia, "
+"zastosowaną przez użytkownika w programach takich jak Pavucontrol."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
-#, fuzzy
 msgid ""
 "The command line option that shows EasyEffects version should work properly "
 "now."
 msgstr ""
-"Opcja wiersza poleceń, która zwraca stan globalnego obejścia, działa "
-"ponownie."
+"Opcja wiersza poleceń, która zwraca wersję EasyEffects, powinna teraz "
+"działać poprawnie."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid "Fixed a regression in the autoload preset code."
-msgstr ""
+msgstr "Naprawiono regresje w kodzie załadowującym automatycznie szablon."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:126
 msgid ""
@@ -301,7 +310,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "Performance optmizations to the spectrum plugin and the LADSPA wrapper"
-msgstr ""
+msgstr "Poprawki wydajności we wtyczce widma i w wrapperze LADSPA."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:130
 msgid ""
