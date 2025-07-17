@@ -694,7 +694,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:359
 msgid "Improved presets autoloading."
-msgstr "Poprawiono autoładowanie szablonów"
+msgstr "Poprawiono autoładowanie szablonów."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:360
 msgid "The Autogain silence threshold can now be configured by the user."
@@ -755,9 +755,8 @@ msgid "Improved debug messages"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:390
-#, fuzzy
 msgid "Improved translations"
-msgstr "Uaktualnione tłumaczenia"
+msgstr "Poprawiono tłumaczenia"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:392
 msgid ""
@@ -874,9 +873,8 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:437
-#, fuzzy
 msgid "Many translation updates"
-msgstr "Uaktualnione tłumaczenia"
+msgstr "Wiele poprawek tłumaczeń"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:439
 msgid ""
@@ -900,13 +898,12 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:449
-#, fuzzy
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric mean."
 msgstr ""
 "Wtyczka automatycznej regulacji wzmocnienia umożliwia teraz użytkownikowi "
-"wybór, która z trzech głośności jest używana do obliczania średniej"
+"wybór, która z trzech głośności jest używana do obliczania średniej."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:450
 #, fuzzy
