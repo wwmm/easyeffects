@@ -300,7 +300,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid "Fixed a regression in the autoload preset code."
-msgstr "Naprawiono regresje w kodzie załadowującym automatycznie szablon."
+msgstr "Naprawiono regresje w kodzie autoładującym profile."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:126
 msgid ""
@@ -320,7 +320,7 @@ msgid ""
 msgstr ""
 "Nie zamykaliśmy głównej pętli w wątku PipeWire przed ustawieniem głośności "
 "źródła i kontrolą wyciszenia. To mogło spowodować przerwanie tych operacji w "
-"niektórych sytuacjach."
+"niektórych sytuacjach"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:139
 msgid ""
@@ -402,9 +402,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:169
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:316
-#, fuzzy
 msgid "Updated translations."
-msgstr "Uaktualnione tłumaczenia"
+msgstr "Uaktualniono tłumaczenia."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:179
 msgid ""
@@ -694,9 +693,8 @@ msgid "The documentation has been updated."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:359
-#, fuzzy
 msgid "Improved presets autoloading."
-msgstr "Uaktualnione tłumaczenia"
+msgstr "Poprawiono autoładowanie szablonów"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:360
 msgid "The Autogain silence threshold can now be configured by the user."
