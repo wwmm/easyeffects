@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2023-11-04 20:34+0000\n"
-"Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
+"PO-Revision-Date: 2025-07-18 01:04+0000\n"
+"Last-Translator: drdrwal <drdrwal@yahoo.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -29,7 +29,6 @@ msgid "Audio Effects for PipeWire Applications"
 msgstr "Efekty dźwiękowe dla aplikacji PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
-#, fuzzy
 msgid ""
 "Easy Effects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
@@ -40,7 +39,6 @@ msgstr ""
 "pogłosu. Uzupełnieniem tego jest wbudowany analizator widma."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
@@ -50,7 +48,6 @@ msgstr ""
 "PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
-#, fuzzy
 msgid ""
 "Because Easy Effects uses the default PipeWire sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
@@ -62,7 +59,6 @@ msgstr ""
 "może być aktywowany indywidualnie."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
@@ -74,7 +70,6 @@ msgstr ""
 "głosowych."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
-#, fuzzy
 msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
@@ -145,11 +140,11 @@ msgstr "Funkcje:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "The Pitch plugin has new cents and octaves parameters."
-msgstr ""
+msgstr "Wtyczkę zmiany tonacji wzbogacono o parametry centów i oktaw."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid "The client-rt.conf is ignored on 1.4.0 or newer PipeWire versions."
-msgstr ""
+msgstr "Client-rt.conf jest ignorowany w wersji PipeWire 1.4.0 lub nowszej."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -202,10 +197,12 @@ msgid ""
 "APO export does not crash anymore when an unsupported LSP Equalizer filter "
 "is set."
 msgstr ""
+"Eksport APO już nie powoduje crashu, gdy niewspierany filtr LSP Equalizer "
+"jest wybrany."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Fixed a bug in LADSPA wrapper."
-msgstr ""
+msgstr "Naprawiono błąd w wrapperze LADSPA."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -243,6 +240,8 @@ msgid ""
 "Improved compatibility with future PipeWire releases. This version will "
 "avoid compilation errors like issue 3620"
 msgstr ""
+"Poprawiono kompatybilność z przyszłymi wersjami PipeWire. Ta wersja będzie "
+"pomijać błędy kompilacji, takie jak w problemie 3620."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
