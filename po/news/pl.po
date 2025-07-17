@@ -310,7 +310,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "Performance optmizations to the spectrum plugin and the LADSPA wrapper"
-msgstr "Poprawki wydajności we wtyczce widma i w wrapperze LADSPA."
+msgstr "Poprawki wydajności we wtyczce widma i w wrapperze LADSPA"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:130
 msgid ""
@@ -318,6 +318,9 @@ msgid ""
 "volume and mute controls. THis could cause these operations to fail in some "
 "situations"
 msgstr ""
+"Nie zamykaliśmy głównej pętli w wątku PipeWire przed ustawieniem głośności "
+"źródła i kontrolą wyciszenia. To mogło spowodować przerwanie tych operacji w "
+"niektórych sytuacjach."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:139
 msgid ""
