@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2025-07-16 04:01+0000\n"
+"PO-Revision-Date: 2025-07-16 22:01+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -1818,7 +1818,7 @@ msgstr "Форма"
 
 #: data/ui/preferences_spectrum.ui:58
 msgid "Bars"
-msgstr "Бари"
+msgstr "Стовпці"
 
 #: data/ui/preferences_spectrum.ui:59
 msgid "Lines"
@@ -1830,7 +1830,7 @@ msgstr "Крапки"
 
 #: data/ui/preferences_spectrum.ui:71
 msgid "Points"
-msgstr "Очки"
+msgstr "Роздільна здатність"
 
 #: data/ui/preferences_spectrum.ui:92
 msgid "Height"
