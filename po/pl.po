@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2025-06-19 01:04+0000\n"
-"Last-Translator: Eryk Michalak <gnu.ewm@protonmail.com>\n"
+"PO-Revision-Date: 2025-07-18 02:02+0000\n"
+"Last-Translator: drdrwal <drdrwal@yahoo.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.12.1\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -287,9 +287,8 @@ msgid "Preset"
 msgstr "Szablon"
 
 #: data/ui/autoload_row.ui:114
-#, fuzzy
 msgid "Remove this autoload preset"
-msgstr "Usuń ten plik szablonu"
+msgstr "Usuń ten profil autoładowania"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:627 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/expander.ui:548 data/ui/gate.ui:761
@@ -327,9 +326,8 @@ msgid "Floor"
 msgstr "Podłoga"
 
 #: data/ui/bass_enhancer.ui:236
-#, fuzzy
 msgid "Floor Value"
-msgstr "Podłoga"
+msgstr "Wartość podłoża"
 
 #: data/ui/bass_loudness.ui:69
 msgid "Link"
@@ -423,9 +421,8 @@ msgstr "Czas ataku"
 
 #: data/ui/compressor.ui:246 data/ui/expander.ui:167 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:248
-#, fuzzy
 msgid "Attack Threshold"
-msgstr "Próg"
+msgstr "Próg Attack"
 
 #: data/ui/compressor.ui:253 data/ui/expander.ui:174 data/ui/gate.ui:76
 #: data/ui/limiter.ui:323 data/ui/limiter.ui:537 data/ui/maximizer.ui:27
@@ -466,17 +463,15 @@ msgstr "Wzmocnienie"
 #: data/ui/expander.ui:333 data/ui/gate.ui:346
 #: data/ui/multiband_compressor.ui:174 data/ui/multiband_gate.ui:174
 #: data/ui/reverb.ui:208 data/ui/stereo_tools.ui:528
-#, fuzzy
 msgid "Dry Level"
-msgstr "Poziom"
+msgstr "Poziom sygnału suchego (Dry)"
 
 #: data/ui/compressor.ui:446 data/ui/delay.ui:85 data/ui/delay.ui:172
 #: data/ui/expander.ui:367 data/ui/gate.ui:351
 #: data/ui/multiband_compressor.ui:207 data/ui/multiband_gate.ui:207
 #: data/ui/reverb.ui:241 data/ui/rnnoise.ui:90 data/ui/stereo_tools.ui:563
-#, fuzzy
 msgid "Wet Level"
-msgstr "Poziom docelowy"
+msgstr "Poziom sygnału mokrego (Wet)"
 
 #: data/ui/compressor.ui:487 data/ui/compressor.ui:508
 #: data/ui/compressor.ui:1075 data/ui/expander.ui:408 data/ui/expander.ui:429
@@ -541,9 +536,8 @@ msgstr "Maks"
 #: data/ui/compressor.ui:558 data/ui/expander.ui:479 data/ui/gate.ui:692
 #: data/ui/multiband_compressor.ui:77 data/ui/multiband_compressor_band.ui:492
 #: data/ui/multiband_gate.ui:77 data/ui/multiband_gate_band.ui:550
-#, fuzzy
 msgid "Sidechain Source"
-msgstr "Łańcuch boczny"
+msgstr "Źródło Sidechain"
 
 #: data/ui/compressor.ui:567 data/ui/expander.ui:488 data/ui/gate.ui:701
 #: data/ui/multiband_compressor_band.ui:513 data/ui/multiband_gate_band.ui:571
@@ -567,9 +561,8 @@ msgstr "Strona/Środek"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:502 data/ui/gate.ui:715
 #: data/ui/multiband_compressor_band.ui:527 data/ui/multiband_gate_band.ui:585
-#, fuzzy
 msgid "Stereo Split Source"
-msgstr "Domyślne"
+msgstr "Źródło rozdzielenia stereo"
 
 #: data/ui/compressor.ui:607 data/ui/deesser.ui:50 data/ui/expander.ui:528
 #: data/ui/gate.ui:741 data/ui/multiband_compressor_band.ui:551
@@ -591,7 +584,7 @@ msgstr "Filtr dolnoprzepustowy"
 #: data/ui/compressor.ui:610 data/ui/expander.ui:531 data/ui/gate.ui:744
 #: data/ui/multiband_compressor_band.ui:554 data/ui/multiband_gate_band.ui:612
 msgid "Simple Moving Average"
-msgstr ""
+msgstr "Prosta średnia ruchoma"
 
 #: data/ui/compressor.ui:619 data/ui/expander.ui:540 data/ui/gate.ui:753
 #: data/ui/multiband_compressor_band.ui:563 data/ui/multiband_gate_band.ui:621
@@ -599,9 +592,8 @@ msgid "Sidechain Mode"
 msgstr "Tryb łańcucha bocznego"
 
 #: data/ui/compressor.ui:633 data/ui/expander.ui:554 data/ui/gate.ui:767
-#, fuzzy
 msgid "Listen Sidechain"
-msgstr "Łańcuch boczny"
+msgstr "Podsłuch Sidechain"
 
 #: data/ui/compressor.ui:662 data/ui/equalizer_band.ui:108
 #: data/ui/expander.ui:583 data/ui/filter.ui:42 data/ui/gate.ui:796
@@ -644,12 +636,11 @@ msgstr "Reaktywność"
 #: data/ui/limiter.ui:241 data/ui/multiband_compressor_band.ui:732
 #: data/ui/multiband_gate_band.ui:788
 msgid "Lookahead"
-msgstr "Lookahead"
+msgstr "Zapas"
 
 #: data/ui/compressor.ui:848 data/ui/expander.ui:768 data/ui/gate.ui:981
-#, fuzzy
 msgid "Sidechain Filters"
-msgstr "Łańcuch boczny"
+msgstr "Filtry Sidechain"
 
 #: data/ui/compressor.ui:858 data/ui/expander.ui:778 data/ui/filter.ui:51
 #: data/ui/gate.ui:991
@@ -769,9 +760,8 @@ msgid "Duration"
 msgstr "Czas trwania"
 
 #: data/ui/convolver_menu_combine.ui:15
-#, fuzzy
 msgid "Combine Impulse Responses"
-msgstr "Płaska odpowiedź"
+msgstr "Złączenie charakterystyki impulsów"
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
@@ -799,14 +789,12 @@ msgid "Search"
 msgstr "Wyszukaj"
 
 #: data/ui/convolver_menu_impulses.ui:27
-#, fuzzy
 msgid "Search Impulse File"
-msgstr "Płaska odpowiedź"
+msgstr "Szukaj plik impulsu"
 
 #: data/ui/convolver_menu_impulses.ui:47
-#, fuzzy
 msgid "Impulse Files List"
-msgstr "Płaska odpowiedź"
+msgstr "Lista impulsów"
 
 #: data/ui/crossfeed.ui:39
 msgid "Default"
@@ -819,7 +807,7 @@ msgstr "Odcięcie"
 # Wejście?
 #: data/ui/crossfeed.ui:78
 msgid "Feed"
-msgstr "Feed"
+msgstr "Kanał"
 
 #: data/ui/crystalizer_band.ui:11
 msgid "Bypass"
@@ -833,30 +821,28 @@ msgstr "Wycisz"
 
 # Tłumienie?
 #: data/ui/deepfilternet.ui:31
-#, fuzzy
 msgid "Attenuation Limit"
-msgstr "Tłumienie"
+msgstr "Limit atenuacji"
 
 #: data/ui/deepfilternet.ui:60
 msgid "Minimum Processing Threshold"
-msgstr ""
+msgstr "Minimalny próg obróbki"
 
 #: data/ui/deepfilternet.ui:86
 msgid "Maximum ERB Processing threshold"
-msgstr ""
+msgstr "Maksymalny próg obróbki ERB"
 
 #: data/ui/deepfilternet.ui:112
 msgid "Maximum DF Processing Threshold"
-msgstr ""
+msgstr "Maksymalny próg obróbki DF"
 
 #: data/ui/deepfilternet.ui:138
 msgid "Minimum Processing Buffer"
-msgstr ""
+msgstr "Minimalny bufor obróbki"
 
 #: data/ui/deepfilternet.ui:163
-#, fuzzy
 msgid "Post Filter Beta"
-msgstr "Długość filtra"
+msgstr "Filtr Post Beta"
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
@@ -871,54 +857,44 @@ msgid "Split"
 msgstr "Podzielony"
 
 #: data/ui/deesser.ui:96
-#, fuzzy
 msgid "F1 Split"
-msgstr "Podzielony"
+msgstr "Podział F1"
 
 #: data/ui/deesser.ui:115
-#, fuzzy
 msgid "Frequency 1 Split"
-msgstr "Częstotliwość"
+msgstr "Podział częstotliwości 1"
 
 #: data/ui/deesser.ui:128
-#, fuzzy
 msgid "F2 Peak"
-msgstr "Szczyt"
+msgstr "Szczyt F2"
 
 #: data/ui/deesser.ui:147
-#, fuzzy
 msgid "Frequency 2 Peak"
-msgstr "Częstotliwość"
+msgstr "Szczyt częstotliwości 2"
 
 #: data/ui/deesser.ui:165
-#, fuzzy
 msgid "F1 Gain"
-msgstr "Wzmocnienie"
+msgstr "Wzmocnienie F1"
 
 #: data/ui/deesser.ui:192
-#, fuzzy
 msgid "Frequency 1 Gain"
-msgstr "Częstotliwość"
+msgstr "Wzmocnienie częstotliwości 1"
 
 #: data/ui/deesser.ui:199
-#, fuzzy
 msgid "F2 Level"
-msgstr "Poziom"
+msgstr "Poziom F2"
 
 #: data/ui/deesser.ui:226
-#, fuzzy
 msgid "Frequency 2 Level"
-msgstr "Częstotliwość"
+msgstr "Poziom częstotliwości 2"
 
 #: data/ui/deesser.ui:233
-#, fuzzy
 msgid "F2 Peak Q"
-msgstr "Szczyt Q"
+msgstr "F2 Szczyt Q"
 
 #: data/ui/deesser.ui:260
-#, fuzzy
 msgid "Frequency 2 Peak Q"
-msgstr "Częstotliwość"
+msgstr "Szczyt częstotliwości 2 Q"
 
 #: data/ui/deesser.ui:267
 msgid "Laxity"
@@ -947,14 +923,12 @@ msgid "Filter Length"
 msgstr "Długość filtra"
 
 #: data/ui/echo_canceller.ui:49
-#, fuzzy
 msgid "Residual Echo Suppression"
-msgstr "Tłumienie szumu"
+msgstr "Tłumienie pozostałości echa"
 
 #: data/ui/echo_canceller.ui:70
-#, fuzzy
 msgid "Near End Echo Suppression"
-msgstr "Tłumienie szumu"
+msgstr "Tłumienie końcowego echa"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
@@ -974,14 +948,12 @@ msgid "Balance"
 msgstr "Balans"
 
 #: data/ui/equalizer.ui:125
-#, fuzzy
 msgid "Pitch Left"
-msgstr "Łańcuch boczny"
+msgstr "Lewy ton"
 
 #: data/ui/equalizer.ui:157
-#, fuzzy
 msgid "Pitch Right"
-msgstr "Łańcuch boczny"
+msgstr "Prawy ton"
 
 #: data/ui/equalizer.ui:288
 msgid "Split Channels"
@@ -996,9 +968,8 @@ msgid "Calculate Frequencies"
 msgstr "Przelicz częstotliwości"
 
 #: data/ui/equalizer.ui:310
-#, fuzzy
 msgid "Sort Bands"
-msgstr "Pasma"
+msgstr "Sortuj pasma"
 
 #: data/ui/equalizer.ui:325 src/presets_menu.cpp:144
 msgid "Import Preset"
@@ -1010,7 +981,7 @@ msgstr "Eksportuj profil"
 
 #: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
 msgid "Slope"
-msgstr ""
+msgstr "Pochyła"
 
 #: data/ui/equalizer_band.ui:173 data/ui/multiband_compressor_band.ui:149
 #: data/ui/multiband_gate_band.ui:118
@@ -1035,12 +1006,11 @@ msgstr "Wartość sufitu"
 
 #: data/ui/expander.ui:51 src/tags_plugin_name.cpp:51
 msgid "Expander"
-msgstr ""
+msgstr "Rozszerzacz"
 
 #: data/ui/expander.ui:86
-#, fuzzy
 msgid "Expander Mode"
-msgstr "Tryb pasma"
+msgstr "Tryb rozszerzacza"
 
 #: data/ui/expander.ui:609 data/ui/gate.ui:822
 msgid "Internal"
@@ -1060,49 +1030,43 @@ msgstr "Opis"
 
 #: data/ui/factory_rnnoise_listview.ui:24
 msgid "Remove this model file"
-msgstr "Usuń ten plik modela"
+msgstr "Usuń ten plik modelu"
 
 #: data/ui/filter.ui:52
-#, fuzzy
 msgid "Low-Shelf"
-msgstr "Dolna Wartość"
+msgstr "Dolne wgłębienie (Low-Shelf)"
 
 #: data/ui/filter.ui:53
-#, fuzzy
 msgid "High-Shelf"
-msgstr "Górna wartość"
+msgstr "Górne wgłębienie (High-Shelf)"
 
 #: data/ui/filter.ui:54
 msgid "Bell"
-msgstr ""
+msgstr "Dzwon"
 
 #: data/ui/filter.ui:55
-#, fuzzy
 msgid "Band-Pass"
-msgstr "Pominięcie pasma"
+msgstr "Przepust pasma (Band-Pass)"
 
 #: data/ui/filter.ui:56
 msgid "Notch"
-msgstr ""
+msgstr "Wycinek (Notch)"
 
 #: data/ui/filter.ui:57
 msgid "Resonance"
 msgstr "Rezonans"
 
 #: data/ui/filter.ui:58
-#, fuzzy
 msgid "Ladder-Pass"
-msgstr "Dolnoprzepustowy"
+msgstr "Drabinkowy (Ladder-Pass)"
 
 #: data/ui/filter.ui:59
-#, fuzzy
 msgid "Ladder-Rejection"
-msgstr "Redukcja pasma"
+msgstr "Drabinkowy-odrzucający (Ladder-Rejection)"
 
 #: data/ui/filter.ui:60
-#, fuzzy
 msgid "All-Pass"
-msgstr "Dolnoprzepustowy"
+msgstr "Wszechprzepustowy"
 
 #: data/ui/filter.ui:102
 msgid "Equalizer Mode"
@@ -1132,17 +1096,15 @@ msgstr "Miks"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
-msgstr ""
+msgstr "Strefa startu Attack"
 
 #: data/ui/gate.ui:564
-#, fuzzy
 msgid "Release Zone Start"
-msgstr "Wyzwolenie"
+msgstr "Strefa startu Release"
 
 #: data/ui/level_meter.ui:28
-#, fuzzy
 msgid "True Peak"
-msgstr "Częstotliwość"
+msgstr "Pomiar szczytowy"
 
 #: data/ui/level_meter.ui:328
 msgid "Reset History"
@@ -1154,60 +1116,55 @@ msgstr "Nadpróbkowanie"
 
 #: data/ui/limiter.ui:80
 msgid "Dither"
-msgstr ""
+msgstr "Szum (Dither)"
 
 #: data/ui/limiter.ui:94
 msgid "Herm Thin"
-msgstr ""
+msgstr "Herm Cienki"
 
 #: data/ui/limiter.ui:95
-#, fuzzy
 msgid "Herm Wide"
-msgstr "Szeroki"
+msgstr "Herm Szeroki"
 
 #: data/ui/limiter.ui:96
 msgid "Herm Tail"
-msgstr ""
+msgstr "Herm Ogon (Tail)"
 
 #: data/ui/limiter.ui:97
 msgid "Herm Duck"
-msgstr ""
+msgstr "Herm Wyciszenie (Duck)"
 
 #: data/ui/limiter.ui:98
 msgid "Exp Thin"
-msgstr ""
+msgstr "Exp Cienki"
 
 #: data/ui/limiter.ui:99
-#, fuzzy
 msgid "Exp Wide"
-msgstr "Szeroki"
+msgstr "Exp Szeroki"
 
 #: data/ui/limiter.ui:100
 msgid "Exp Tail"
-msgstr ""
+msgstr "Exp Ogon (Tail)"
 
 #: data/ui/limiter.ui:101
 msgid "Exp Duck"
-msgstr ""
+msgstr "Exp Wyciszenie (Duck)"
 
 #: data/ui/limiter.ui:102
-#, fuzzy
 msgid "Line Thin"
-msgstr "Szerokość"
+msgstr "Line Cienki"
 
 #: data/ui/limiter.ui:103
-#, fuzzy
 msgid "Line Wide"
-msgstr "Szerokość"
+msgstr "Line Szeroki"
 
 #: data/ui/limiter.ui:104
-#, fuzzy
 msgid "Line Tail"
-msgstr "Szerokość"
+msgstr "Line Ogon (Tail)"
 
 #: data/ui/limiter.ui:105
 msgid "Line Duck"
-msgstr ""
+msgstr "Line Wyciszenie (Duck)"
 
 #: data/ui/limiter.ui:125 data/ui/multiband_compressor.ui:56
 #: data/ui/multiband_gate.ui:56
@@ -1300,9 +1257,8 @@ msgstr "Przedwzmacniacz SC"
 
 #: data/ui/limiter.ui:229 data/ui/multiband_compressor_band.ui:692
 #: data/ui/multiband_gate_band.ui:749
-#, fuzzy
 msgid "Sidechain PreAmplification"
-msgstr "Programy"
+msgstr "Przedwzmacniacz Sidechain"
 
 #: data/ui/limiter.ui:400
 msgid "Boost"
@@ -1314,52 +1270,45 @@ msgstr "Powiązanie stereo"
 
 #: data/ui/limiter.ui:459 data/ui/multiband_compressor_band.ui:119
 #: data/ui/multiband_gate_band.ui:88
-#, fuzzy
 msgid "External Sidechain"
-msgstr "Łańcuch boczny"
+msgstr "Zewnętrzny Sidechain"
 
 #: data/ui/limiter.ui:472 data/ui/multiband_compressor.ui:97
 #: data/ui/multiband_gate.ui:97
 msgid "External Sidechain Source"
-msgstr ""
+msgstr "Źródło zewnętrznego Sidechain"
 
 #: data/ui/limiter.ui:491
 msgid "Auto Leveling"
 msgstr "Automatyczne poziomowanie"
 
 #: data/ui/limiter.ui:530
-#, fuzzy
 msgid "Auto Leveling Attack"
-msgstr "Wzmocnienie wej."
+msgstr "Attack automatycznego poziomowania"
 
 #: data/ui/limiter.ui:565
-#, fuzzy
 msgid "Auto Leveling Release"
-msgstr "Wzmocnienie wej."
+msgstr "Release automatycznego poziomowania"
 
 #: data/ui/limiter.ui:599
-#, fuzzy
 msgid "Auto Leveling Knee"
-msgstr "Wzmocnienie wej."
+msgstr "Knee automatycznego poziomowania"
 
 #: data/ui/limiter.ui:624
-#, fuzzy
 msgid "Gain Left"
-msgstr "Lewy"
+msgstr "Wzmocnienie Lewy"
 
 #: data/ui/limiter.ui:651
-#, fuzzy
 msgid "Gain Right"
-msgstr "Prawy"
+msgstr "Wzmocnienie Prawy"
 
 #: data/ui/limiter.ui:678
 msgid "Sidechain Left"
-msgstr "Lewy łańcuch boczny"
+msgstr "Lewy Sidechain"
 
 #: data/ui/limiter.ui:705
-#, fuzzy
 msgid "Sidechain Right"
-msgstr "Łańcuch boczny"
+msgstr "Prawy Sidechain"
 
 #: data/ui/loudness.ui:37
 msgid "Standard"
@@ -1378,38 +1327,36 @@ msgid "Output Volume"
 msgstr "Głośność wyjścia"
 
 #: data/ui/loudness.ui:104
-#, fuzzy
 msgid "Clipping"
-msgstr "Kanały"
+msgstr "Przesterowanie (Clipping)"
 
 #: data/ui/multiband_compressor.ui:43 data/ui/multiband_gate.ui:42
 msgid "Sidechain Boost"
-msgstr "Łańcuch boczny wzmocnienia"
+msgstr "Boost Sidechain"
 
 #: data/ui/multiband_compressor.ui:57 data/ui/multiband_gate.ui:57
 msgid "Pink BT"
-msgstr ""
+msgstr "Różowy BT"
 
 #: data/ui/multiband_compressor.ui:58 data/ui/multiband_gate.ui:58
 msgid "Pink MT"
-msgstr ""
+msgstr "Różowy MT"
 
 #: data/ui/multiband_compressor.ui:59 data/ui/multiband_gate.ui:59
 msgid "Brown BT"
-msgstr ""
+msgstr "Brązowy BT"
 
 #: data/ui/multiband_compressor.ui:60 data/ui/multiband_gate.ui:60
 msgid "Brown MT"
-msgstr ""
+msgstr "Brązowy MT"
 
 #: data/ui/multiband_compressor.ui:114 data/ui/multiband_gate.ui:114
 msgid "Show Native User Interface"
-msgstr "Pokazuj natywny interfejs użytkownika"
+msgstr "Pokaż natywny interfejs użytkownika"
 
 #: data/ui/multiband_compressor.ui:143 data/ui/multiband_gate.ui:143
-#, fuzzy
 msgid "Operating Mode"
-msgstr "Importuj profile"
+msgstr "Tryb Operacji"
 
 #: data/ui/multiband_compressor.ui:156 data/ui/multiband_gate.ui:156
 msgid "Classic"
@@ -1420,9 +1367,8 @@ msgid "Modern"
 msgstr "Nowoczesne"
 
 #: data/ui/multiband_compressor.ui:158 data/ui/multiband_gate.ui:158
-#, fuzzy
 msgid "Linear Phase"
-msgstr "Odwróć fazę"
+msgstr "Faza linearna"
 
 #: data/ui/multiband_compressor.ui:266 data/ui/multiband_gate.ui:266
 msgid "Bands List"
@@ -1462,59 +1408,51 @@ msgstr "Pasmo 8"
 
 #: data/ui/multiband_compressor_band.ui:18 data/ui/multiband_gate_band.ui:18
 msgid "Band Start"
-msgstr ""
+msgstr "Start pasma"
 
 #: data/ui/multiband_compressor_band.ui:56 data/ui/multiband_gate_band.ui:56
 msgid "Band End"
 msgstr "Koniec pasma"
 
 #: data/ui/multiband_compressor_band.ui:111
-#, fuzzy
 msgid "Band Compression Mode"
-msgstr "Kompresor"
+msgstr "Tryb kompresji pasmowej"
 
 #: data/ui/multiband_compressor_band.ui:129 data/ui/multiband_gate_band.ui:98
 msgid "Band Bypass"
 msgstr "Pominięcie pasma"
 
 #: data/ui/multiband_compressor_band.ui:427 data/ui/multiband_gate_band.ui:485
-#, fuzzy
 msgid "Band Sidechain Options"
-msgstr "Łańcuch boczny"
+msgstr "Opcje Sidechain pasma"
 
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:558
-#, fuzzy
 msgid "Stereo Split"
-msgstr "Tryb sterep"
+msgstr "Podział stereo"
 
 #: data/ui/multiband_compressor_band.ui:582 data/ui/multiband_gate_band.ui:640
-#, fuzzy
 msgid "Low-Cut"
-msgstr "Filtr"
+msgstr "Górnoprzepustowy (Low-Cut)"
 
 #: data/ui/multiband_compressor_band.ui:609 data/ui/multiband_gate_band.ui:667
-#, fuzzy
 msgid "Low-Cut Filter Frequency"
-msgstr "Filtr"
+msgstr "Częstotliwość filtra Low-Cut"
 
 #: data/ui/multiband_compressor_band.ui:619 data/ui/multiband_gate_band.ui:677
-#, fuzzy
 msgid "High-Cut"
-msgstr "Filtr górnoprzepustowy"
+msgstr "Filtr dolnoprzepustowy (High-Cut)"
 
 #: data/ui/multiband_compressor_band.ui:647 data/ui/multiband_gate_band.ui:705
-#, fuzzy
 msgid "High-Cut Filter Frequency"
-msgstr "Filtr górnoprzepustowy"
+msgstr "Częstotliwość filtra High-Cut"
 
 #: data/ui/multiband_compressor_band.ui:666 data/ui/multiband_gate_band.ui:724
 msgid "PreAmp"
 msgstr "Przedwzmacniacz"
 
 #: data/ui/multiband_compressor_band.ui:867
-#, fuzzy
 msgid "Band Gain"
-msgstr "Wzmocnienie wej."
+msgstr "Wzmocnienie pasma"
 
 #: data/ui/multiband_compressor_band.ui:892 data/ui/multiband_gate_band.ui:861
 msgid "Band Envelope"
@@ -1522,7 +1460,7 @@ msgstr "Obwiednia pasma"
 
 #: data/ui/multiband_compressor_band.ui:917 data/ui/multiband_gate_band.ui:886
 msgid "Band Curve"
-msgstr ""
+msgstr "Krzywa pasma"
 
 #: data/ui/multiband_gate_band.ui:836
 msgid "Band Reduction"
@@ -1550,9 +1488,8 @@ msgid "Use Default Input"
 msgstr "Użyj domyślnego wejścia"
 
 #: data/ui/pipe_manager_box.ui:65
-#, fuzzy
 msgid "Custom Input Device"
-msgstr "Urządzenie wejściowe"
+msgstr "Własne urządzenie wejściowe"
 
 #: data/ui/pipe_manager_box.ui:74 data/ui/pipe_manager_box.ui:80
 msgid "Use Default Output"
@@ -1575,28 +1512,24 @@ msgid "Library Version"
 msgstr "Wersja biblioteki"
 
 #: data/ui/pipe_manager_box.ui:138
-#, fuzzy
 msgid "Core Version"
-msgstr "Wersja nagłówka"
+msgstr "Wersja podstawowa"
 
 #: data/ui/pipe_manager_box.ui:149
 msgid "Sampling Rate"
 msgstr "Próbkowanie"
 
 #: data/ui/pipe_manager_box.ui:160
-#, fuzzy
 msgid "Minimum Quantum"
-msgstr "Częstotliwość"
+msgstr "Minimalne Quantum"
 
 #: data/ui/pipe_manager_box.ui:171
-#, fuzzy
 msgid "Maximum Quantum"
-msgstr "Maksymalne wzmocnienie"
+msgstr "Maksymalne Quantum"
 
 #: data/ui/pipe_manager_box.ui:182
-#, fuzzy
 msgid "Default Quantum"
-msgstr "Domyślne"
+msgstr "Domyślne Quantum"
 
 #: data/ui/pipe_manager_box.ui:202
 msgid "Presets Autoloading"
@@ -1607,6 +1540,9 @@ msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
 msgstr ""
+"Tylko lokalne szablony mogą być autozaładowane. Szablon społeczności "
+"powinien zostać zaimportowany lokalnie aby został wybrany i przypisany do "
+"poszczególnego urządzenia."
 
 #: data/ui/pipe_manager_box.ui:277
 msgid "Output Devices"
@@ -1622,12 +1558,11 @@ msgstr "Utwórz powiązanie"
 
 #: data/ui/pipe_manager_box.ui:314
 msgid "Add Autoloading Output Preset"
-msgstr ""
+msgstr "Dodaj szablon autoładujący wyjścia"
 
 #: data/ui/pipe_manager_box.ui:334
-#, fuzzy
 msgid "Output Autoloading Presets List"
-msgstr "Profile: "
+msgstr "Lista szablonów autoładujących wyjścia"
 
 #: data/ui/pipe_manager_box.ui:407
 msgid "Input Devices"
@@ -1639,12 +1574,11 @@ msgstr "Profile wejścia"
 
 #: data/ui/pipe_manager_box.ui:439
 msgid "Add Autoloading Input Preset"
-msgstr ""
+msgstr "Dodaj szablon autoładujący wejścia"
 
 #: data/ui/pipe_manager_box.ui:458
-#, fuzzy
 msgid "Input Autoloading Presets List"
-msgstr "Importuj profile"
+msgstr "Lista szablonów autoładujących wejścia"
 
 #: data/ui/pipe_manager_box.ui:488
 msgid "Modules"
@@ -1697,7 +1631,7 @@ msgstr "Przebieg fali"
 
 #: data/ui/pipe_manager_box.ui:620
 msgid "Sine Wave"
-msgstr ""
+msgstr "Sinusoida"
 
 #: data/ui/pipe_manager_box.ui:629
 msgid "White Noise"
@@ -1712,19 +1646,16 @@ msgid "Anti-aliasing"
 msgstr "Wygładzanie"
 
 #: data/ui/pitch.ui:58
-#, fuzzy
 msgid "Sequence Length"
-msgstr "Częstotliwość"
+msgstr "Długość sekwencji"
 
 #: data/ui/pitch.ui:80
-#, fuzzy
 msgid "Seek Window"
-msgstr "Okno"
+msgstr "Okno podglądu"
 
 #: data/ui/pitch.ui:102
-#, fuzzy
 msgid "Overlap Length"
-msgstr "Długość filtra"
+msgstr "Długość nachodzenia (Overlap)"
 
 #: data/ui/pitch.ui:130 src/tags_plugin_name.cpp:60
 msgid "Pitch"
@@ -1743,14 +1674,12 @@ msgid "Octaves"
 msgstr "Oktawy"
 
 #: data/ui/pitch.ui:200
-#, fuzzy
 msgid "Tempo Difference"
-msgstr "Odnośnik"
+msgstr "Różnica tempa"
 
 #: data/ui/pitch.ui:222
-#, fuzzy
 msgid "Rate Difference"
-msgstr "Odnośnik"
+msgstr "Różnica częstotliwości"
 
 #: data/ui/plugin_row.ui:50
 msgid "Remove this effect"
@@ -1766,20 +1695,19 @@ msgstr "Zmień pozycję tego efektu"
 
 #: data/ui/plugins_box.ui:28
 msgid "Show/hide effects list"
-msgstr ""
+msgstr "Pokaż/Ukryj listę efektów"
 
 #: data/ui/plugins_box.ui:42
 msgid "Add Effect"
 msgstr "Dodaj efekt"
 
 #: data/ui/plugins_box.ui:65
-#, fuzzy
 msgid "Go to the previous effect"
-msgstr "Usuń ten efekt"
+msgstr "Powróć do poprzedniego efektu"
 
 #: data/ui/plugins_box.ui:80
 msgid "Go to the next effect"
-msgstr ""
+msgstr "Idź do następnego efektu"
 
 #: data/ui/plugins_box.ui:131
 msgid "Used Plugins List"
@@ -1791,7 +1719,7 @@ msgstr "Brak efektów"
 
 #: data/ui/plugins_box.ui:193
 msgid "Audio Stream Not Modified"
-msgstr ""
+msgstr "Źródło audio niezmodyfikowane"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
@@ -1803,7 +1731,7 @@ msgstr "Lista wtyczek"
 
 #: data/ui/preferences_general.ui:5
 msgid "_General"
-msgstr "O_gólne"
+msgstr "_Ogólne"
 
 #: data/ui/preferences_general.ui:10
 msgid "Service"
@@ -1831,11 +1759,11 @@ msgstr "Przetwarzaj wszystkie strumienie wejściowe"
 
 #: data/ui/preferences_general.ui:66
 msgid "Ignore Streams from Monitor of Devices"
-msgstr ""
+msgstr "Ignoruj źródła z monitora urządzeń"
 
 #: data/ui/preferences_general.ui:78
 msgid "Use Cubic Volume"
-msgstr ""
+msgstr "Używaj głośności Cubic"
 
 #: data/ui/preferences_general.ui:90
 msgid "Inactivity Timeout"
@@ -2127,7 +2055,7 @@ msgstr "Duża pusta sala"
 
 #: data/ui/reverb.ui:608
 msgid "Disco"
-msgstr "Disco"
+msgstr "Disko"
 
 #: data/ui/reverb.ui:615
 msgid "Large Occupied Hall"
@@ -2413,20 +2341,19 @@ msgstr ""
 
 #: src/convolver_menu_impulses.cpp:130
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "Plik impulsu może być zepsuty lub niewspierany"
 
 #: src/convolver_menu_impulses.cpp:135
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "Tylko impulsy stereo są wspierane"
 
 #: src/convolver_menu_impulses.cpp:145
-#, fuzzy
 msgid "Impulse File Not Imported"
-msgstr "Płaska odpowiedź"
+msgstr "Plik impulsu nie został zaimportowany"
 
 #: src/convolver_menu_impulses.cpp:153
 msgid "Import Impulse File"
-msgstr "Importuj plik Impulse"
+msgstr "Importuj plik impulsu"
 
 #: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:522
 #: src/equalizer_ui.cpp:861 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
@@ -2434,9 +2361,8 @@ msgid "Open"
 msgstr "Otwórz"
 
 #: src/convolver_menu_impulses.cpp:166
-#, fuzzy
 msgid "Impulse Response"
-msgstr "Płaska odpowiedź"
+msgstr "Charakterystyka impulsu"
 
 #: src/convolver_menu_impulses.cpp:293
 msgid "Load Impulse"
@@ -2447,13 +2373,12 @@ msgid "Remove Impulse"
 msgstr "Usuń Impuls"
 
 #: src/convolver_ui.cpp:382
-#, fuzzy
 msgid "No Impulse File Loaded"
-msgstr "Płaska odpowiedź"
+msgstr "Nie załadowano pliku impulsu"
 
 #: src/convolver_ui.cpp:408
 msgid "Failed To Load The Impulse File"
-msgstr "Nie udało się załadować pliku impulsu"
+msgstr "Nie udało się załadować pliku impuslu"
 
 #: src/effects_box.cpp:356 src/plugins_box.cpp:807
 msgid "Recorders"
@@ -2495,9 +2420,8 @@ msgid "Save"
 msgstr "Zapisz"
 
 #: src/equalizer_ui.cpp:639
-#, fuzzy
 msgid "EqualizerAPO Presets"
-msgstr "Profile APO"
+msgstr "Szablony EqualizerAPO"
 
 #: src/equalizer_ui.cpp:860
 msgid "Import GraphicEQ Preset File"
@@ -2518,9 +2442,8 @@ msgid "Remove Autoloading Preset"
 msgstr "Usuń automatyczne wczytywanie szablonu"
 
 #: src/plugin_base.cpp:233
-#, fuzzy
 msgid "Output Level Meter"
-msgstr "Wzmocnienie wej."
+msgstr "Licznik poziomu wyjścia"
 
 #: src/plugins_box.cpp:759
 msgid "Remove"
@@ -2536,44 +2459,42 @@ msgstr "Dodaj"
 
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
-#, fuzzy
 msgid "Community Preset"
-msgstr "Importuj szablony"
+msgstr "Szablon społeczności"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
-msgstr ""
+msgstr "Paczka"
 
 #: src/presets_manager.cpp:1155 src/presets_manager.cpp:1162
 #: src/presets_manager.cpp:1171 src/presets_manager.cpp:1178
 #: src/presets_manager.cpp:1187 src/presets_manager.cpp:1195
 msgid "Preset Not Loaded Correctly"
-msgstr ""
+msgstr "Szablon załadowany niepoprawnie"
 
 #: src/presets_manager.cpp:1155
-#, fuzzy
 msgid "Wrong Format in Excluded Apps List"
-msgstr "Lista wykluczonych programów"
+msgstr "Zły format w liście wykluczonych aplikacji"
 
 #: src/presets_manager.cpp:1162
 msgid "Generic Error While Loading Excluded Apps List"
-msgstr ""
+msgstr "Błąd ogólny w trakcie ładowania listy wykluczonych aplikacji"
 
 #: src/presets_manager.cpp:1171
 msgid "Wrong Format in Effects List"
-msgstr ""
+msgstr "Zły format w liscie efektów"
 
 #: src/presets_manager.cpp:1178
 msgid "Generic Error While Loading Effects List"
-msgstr ""
+msgstr "Błąd ogólny w trakcie ładowania listy efektów"
 
 #: src/presets_manager.cpp:1188
 msgid "One or More Parameters Have a Wrong Format"
-msgstr ""
+msgstr "Jeden lub więcej parametrów ma zły format"
 
 #: src/presets_manager.cpp:1196
 msgid "Generic Error While Loading The Effect"
-msgstr ""
+msgstr "Błąd ogólny w trakcie ładowania efektu"
 
 #: src/presets_menu.cpp:398
 msgid "Save?"
@@ -2584,25 +2505,24 @@ msgid "Delete?"
 msgstr "Usunąć?"
 
 #: src/presets_menu.cpp:558
-#, fuzzy
 msgid "No Preset Loaded"
-msgstr "Nazwa nowego profilu"
+msgstr "Nie załadowano szablonu"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Local Preset Loaded"
-msgstr "Lista profili"
+msgstr "Ostatni załadowany lokalny szablon"
 
 #: src/presets_menu.cpp:573
-#, fuzzy
 msgid "Last Community Preset Loaded"
-msgstr "Importuj szablony"
+msgstr "Ostatni załadowany szablon społeczności"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
+"Wybrany model nie jest załadowany. Jego format może być niewspierany. Powrót "
+"do modelu standardowego."
 
 #: src/rnnoise_ui.cpp:159
 msgid "Import Model File"
@@ -2622,7 +2542,7 @@ msgstr "Głośność basu"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Convolver"
-msgstr ""
+msgstr "Convolver"
 
 #: src/tags_plugin_name.cpp:43
 msgid "Crossfeed"
@@ -2634,15 +2554,15 @@ msgstr "Krystalizator"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Deep Noise Remover"
-msgstr ""
+msgstr "Usuwacz szumu głębokiego"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Deesser"
-msgstr "De-Esser"
+msgstr "Usuwacz szelestu (De-esser)"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Echo Canceller"
-msgstr "Usuwanie echa"
+msgstr "Usuwacz echa"
 
 #: src/tags_plugin_name.cpp:49
 msgid "Equalizer"
@@ -2650,7 +2570,7 @@ msgstr "Korektor"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Exciter"
-msgstr "Exciter"
+msgstr "Wzbudnik"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Level Meter"
@@ -2662,17 +2582,15 @@ msgstr "Limiter"
 
 #: src/tags_plugin_name.cpp:57
 msgid "Maximizer"
-msgstr "Maximizer"
+msgstr "Maksymizer"
 
 #: src/tags_plugin_name.cpp:58
-#, fuzzy
 msgid "Multiband Compressor"
-msgstr "Kompresor"
+msgstr "Kompresor wielopasmowy"
 
 #: src/tags_plugin_name.cpp:59
-#, fuzzy
 msgid "Multiband Gate"
-msgstr "Kompresor"
+msgstr "Bramka wielopasmowa"
 
 #: src/tags_plugin_name.cpp:61
 msgid "Reverberation"
@@ -2697,7 +2615,7 @@ msgid "{} Not Available"
 msgstr "{} jest niedostępne"
 
 #: src/ui_helpers.cpp:97
-#, fuzzy, c++-format
+#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2707,7 +2625,9 @@ msgid ""
 msgstr ""
 "Do korzystania z efektu {} wymagane jest oprogramowanie „{}”, które nie jest "
 "zainstalowane. Skorzystaj z pakietu Flatpak Easy Effects lub zainstaluj "
-"wymagane oprogramowanie samodzielnie."
+"wymagane oprogramowanie samodzielnie. Jeśli zainstalowałeś brakujące "
+"oprogramowanie, musisz zrestarować Easy Effects używając opcji \"Wyjdź\" w "
+"menu, aby móc korzystać z efektu."
 
 #: src/ui_helpers.cpp:104
 #, c++-format
@@ -2717,6 +2637,10 @@ msgid ""
 "Consider using the Easy Effects Flatpak package or building your own Easy "
 "Effects package."
 msgstr ""
+"Efekt {} został wyłączony gdy Easy Effects zostało zkompilowane. To "
+"prawdopodobnie wynika z tego, że wymagane dla tego efektu oprogramowanie "
+"\"{}\" nie było dostępne. Spróbuj użyć paczki Easy Effects z Flatpak, lub "
+"zbuduj własną paczkę Easy Effects."
 
 #: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
