@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2025-07-18 02:02+0000\n"
+"PO-Revision-Date: 2025-07-18 22:03+0000\n"
 "Last-Translator: drdrwal <drdrwal@yahoo.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
 "pl/>\n"
@@ -298,7 +298,7 @@ msgstr "Słuchaj"
 # Wpleć/wmieszaj/dodaj
 #: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
-msgstr "Wprowadź harmoniczne"
+msgstr "Zmieszaj harmoniczne"
 
 #: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
@@ -339,7 +339,7 @@ msgstr "Nazwa Aplikacji"
 
 #: data/ui/blocklist_menu.ui:42
 msgid "Add to Excluded Applications"
-msgstr "Dodaj do Wykluczonych Aplikacji"
+msgstr "Dodaj do wykluczonych programów"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Excluded Applications List"
@@ -354,7 +354,7 @@ msgstr "Pokazuj wykluczone programy"
 #: data/ui/limiter.ui:25 data/ui/loudness.ui:25
 #: data/ui/multiband_compressor.ui:105 data/ui/multiband_gate.ui:105
 msgid "Show Native Window"
-msgstr "Pokazuj natytwne okno"
+msgstr "Pokaż okno natywne"
 
 #: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:41
 msgid "Compressor"
@@ -422,24 +422,24 @@ msgstr "Czas ataku"
 #: data/ui/compressor.ui:246 data/ui/expander.ui:167 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:248
 msgid "Attack Threshold"
-msgstr "Próg Attack"
+msgstr "Próg ataku"
 
 #: data/ui/compressor.ui:253 data/ui/expander.ui:174 data/ui/gate.ui:76
 #: data/ui/limiter.ui:323 data/ui/limiter.ui:537 data/ui/maximizer.ui:27
 #: data/ui/multiband_compressor_band.ui:198 data/ui/multiband_gate_band.ui:149
 #: data/ui/rnnoise.ui:116
 msgid "Release"
-msgstr "Wyzwolenie"
+msgstr "Wybrzmiewanie (Release)"
 
 #: data/ui/compressor.ui:278 data/ui/expander.ui:199
 #: data/ui/multiband_compressor_band.ui:274
 msgid "Release Time"
-msgstr "Czas wybrzmiewania"
+msgstr "Czas wybrzmiewania (Release)"
 
 #: data/ui/compressor.ui:301 data/ui/expander.ui:222 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:301
 msgid "Release Threshold"
-msgstr "Próg wybrzmiewania"
+msgstr "Próg wybrzmiewania (Release)"
 
 #: data/ui/compressor.ui:308 data/ui/deesser.ui:334 data/ui/expander.ui:229
 #: data/ui/multiband_compressor_band.ui:308
@@ -589,7 +589,7 @@ msgstr "Prosta średnia ruchoma"
 #: data/ui/compressor.ui:619 data/ui/expander.ui:540 data/ui/gate.ui:753
 #: data/ui/multiband_compressor_band.ui:563 data/ui/multiband_gate_band.ui:621
 msgid "Sidechain Mode"
-msgstr "Tryb łańcucha bocznego"
+msgstr "Tryb Sidechain"
 
 #: data/ui/compressor.ui:633 data/ui/expander.ui:554 data/ui/gate.ui:767
 msgid "Listen Sidechain"
@@ -615,7 +615,7 @@ msgstr "Zewnętrzne"
 
 #: data/ui/compressor.ui:699 data/ui/expander.ui:619 data/ui/gate.ui:832
 msgid "Sidechain Type"
-msgstr "Typ łańcucha bocznego"
+msgstr "Typ Sidechain"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
 #: src/plugins_box.cpp:806
@@ -902,7 +902,7 @@ msgstr "Swoboda"
 
 #: data/ui/deesser.ui:577
 msgid "Detected"
-msgstr "Wykryto"
+msgstr "Wykryte"
 
 #: data/ui/deesser.ui:607 data/ui/gate.ui:425 data/ui/gate.ui:1154
 #: data/ui/maximizer.ui:249 data/ui/multiband_gate_band.ui:406
@@ -1096,11 +1096,11 @@ msgstr "Miks"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
-msgstr "Strefa startu Attack"
+msgstr "Strefa startu ataku"
 
 #: data/ui/gate.ui:564
 msgid "Release Zone Start"
-msgstr "Strefa startu Release"
+msgstr "Strefa startu wybrzmiewania (Release)"
 
 #: data/ui/level_meter.ui:28
 msgid "True Peak"
@@ -1284,15 +1284,15 @@ msgstr "Automatyczne poziomowanie"
 
 #: data/ui/limiter.ui:530
 msgid "Auto Leveling Attack"
-msgstr "Attack automatycznego poziomowania"
+msgstr "Atak automatycznego poziomowania"
 
 #: data/ui/limiter.ui:565
 msgid "Auto Leveling Release"
-msgstr "Release automatycznego poziomowania"
+msgstr "Wybrzmiewanie automatycznego poziomowania (Release)"
 
 #: data/ui/limiter.ui:599
 msgid "Auto Leveling Knee"
-msgstr "Knee automatycznego poziomowania"
+msgstr "Kolano automatycznego poziomowania (Knee)"
 
 #: data/ui/limiter.ui:624
 msgid "Gain Left"
@@ -1770,23 +1770,20 @@ msgid "Inactivity Timeout"
 msgstr "Limit czasu braku aktywności"
 
 #: data/ui/preferences_general.ui:91
-#, fuzzy
 msgid "Input Pipeline"
-msgstr "Urządzenie wejściowe"
+msgstr "Pipeline wejścia"
 
 #: data/ui/preferences_general.ui:120
-#, fuzzy
 msgid "Update Interval"
-msgstr "Uaktualnione tłumaczenia"
+msgstr "Interwał aktualizacji"
 
 #: data/ui/preferences_general.ui:121
 msgid "Related to Level Meters and Spectrum"
-msgstr ""
+msgstr "Powiązane z poziomem głośności i widmem"
 
 #: data/ui/preferences_general.ui:143
-#, fuzzy
 msgid "Update Frequency"
-msgstr "Częstotliwość"
+msgstr "Częstotliwość aktualizacji"
 
 #: data/ui/preferences_general.ui:144
 msgid "Related to LV2 Plugins"
@@ -1802,7 +1799,7 @@ msgstr "Używaj ciemnego motywu"
 
 #: data/ui/preferences_general.ui:183
 msgid "Hide Menus on Outside Clicks"
-msgstr ""
+msgstr "Ukryj menu klikając poza obszarem"
 
 #: data/ui/preferences_general.ui:197
 msgid "Experimental Features"
@@ -1822,7 +1819,7 @@ msgstr "Widmo (_S)"
 
 #: data/ui/preferences_spectrum.ui:24
 msgid "Compensating Delay (ms)"
-msgstr ""
+msgstr "Kompensacja opóźnienia (milisekundy)"
 
 #: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
@@ -1830,7 +1827,7 @@ msgstr "Kształt"
 
 #: data/ui/preferences_spectrum.ui:58
 msgid "Bars"
-msgstr ""
+msgstr "Bary"
 
 #: data/ui/preferences_spectrum.ui:59
 msgid "Lines"
@@ -1909,27 +1906,24 @@ msgid "Remove this preset file"
 msgstr "Usuń ten plik szablonu"
 
 #: data/ui/preset_community_row.ui:55
-#, fuzzy
 msgid "Try"
-msgstr "Suchy"
+msgstr "Spróbuj"
 
 #: data/ui/preset_community_row.ui:56
-#, fuzzy
 msgid "Try this community preset"
-msgstr "Profile: "
+msgstr "Wypróbuj ten szablon społeczności"
 
 #: data/ui/preset_community_row.ui:65
-#, fuzzy
 msgid "Import"
-msgstr "Importuj modele"
+msgstr "Importuj"
 
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
-msgstr ""
+msgstr "Importuj ten szablon społeczności do listy szablonów lokalnych"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
-msgstr ""
+msgstr "Lokalny"
 
 #: data/ui/presets_menu.ui:48
 msgid "New Preset Name"
@@ -1941,49 +1935,47 @@ msgstr "Utwórz profil"
 
 #: data/ui/presets_menu.ui:70
 msgid "Import a preset from the local storage"
-msgstr ""
+msgstr "Importuj szablon z pamięci lokalnej"
 
 #: data/ui/presets_menu.ui:86
-#, fuzzy
 msgid "Search Local Preset"
-msgstr "Szukaj profilu"
+msgstr "Szukaj szablonu lokalnego"
 
 #: data/ui/presets_menu.ui:147
-#, fuzzy
 msgid "Local Presets List"
-msgstr "Lista profili"
+msgstr "Lista szablonów lokalnych"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
-msgstr ""
+msgstr "Społeczność"
 
 #: data/ui/presets_menu.ui:208
-#, fuzzy
 msgid "Search Community Preset"
-msgstr "Profile: "
+msgstr "Szukaj szablonów społeczności"
 
 #: data/ui/presets_menu.ui:271
-#, fuzzy
 msgid "Community Presets List"
-msgstr "Profile: "
+msgstr "Lista szablonów społeczności"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr ""
+msgstr "Brak zainstalowanych szablonów społeczności"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
+"Paczki szablonów społeczności mogą zostać zainstalowane z repozytorium "
+"twojej ulubionej dystrybucji."
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
-msgstr ""
+msgstr "Odśwież"
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
-msgstr ""
+msgstr "Odśwież by zobaczyć nowe zainstalowane szablony społeczności"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2120,9 +2112,8 @@ msgid "Denoise"
 msgstr "Odszumianie"
 
 #: data/ui/speex.ui:46
-#, fuzzy
 msgid "Automatic Gain Control"
-msgstr "Kontroler wzmocnienia"
+msgstr "Automatyczna kontrola wzmocnienia"
 
 #: data/ui/speex.ui:72
 msgid "Dereverberation"
@@ -2130,7 +2121,7 @@ msgstr "Usuwanie pogłosu"
 
 #: data/ui/speex.ui:91
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "Prawdopodobieństwo aktywacji głosowej"
 
 #: data/ui/speex.ui:95
 msgid "Start"
@@ -2154,17 +2145,15 @@ msgstr "Balans wejścia"
 
 #: data/ui/stereo_tools.ui:87
 msgid "Softclip"
-msgstr ""
+msgstr "Wygładzanie szczytów (Softclip)"
 
 #: data/ui/stereo_tools.ui:114
-#, fuzzy
 msgid "Softclip Level"
-msgstr "Poziom"
+msgstr "Poziom wygładzania szczytów (Softclip)"
 
 #: data/ui/stereo_tools.ui:126
-#, fuzzy
 msgid "Stereo Matrix"
-msgstr "Powiązanie stereo"
+msgstr "Matryca stereo"
 
 #: data/ui/stereo_tools.ui:138
 msgid "LR > LR (Stereo Default)"
@@ -2172,63 +2161,59 @@ msgstr "LR > LR (domyślne stereo)"
 
 #: data/ui/stereo_tools.ui:139
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr ""
+msgstr "LR > MS (Stereo do Mid-Side)"
 
 #: data/ui/stereo_tools.ui:140
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr ""
+msgstr "MS > LR (Mid-Side do Stereo)"
 
 #: data/ui/stereo_tools.ui:141
 msgid "LR > LL (Mono Left Channel)"
-msgstr ""
+msgstr "LR > LL (Mono Lewy Kanał)"
 
 #: data/ui/stereo_tools.ui:142
 msgid "LR > RR (Mono Right Channel)"
-msgstr ""
+msgstr "LR > RR (Mono Prawy Kanał)"
 
 #: data/ui/stereo_tools.ui:143
 msgid "LR > L+R (Mono Sum L+R)"
-msgstr ""
+msgstr "LR > L+R (Mono Suma L+R)"
 
 #: data/ui/stereo_tools.ui:144
 msgid "LR > RL (Stereo Flip Channels)"
-msgstr ""
+msgstr "LR > RL (Stereo Obrót Kanałów)"
 
 #: data/ui/stereo_tools.ui:149
 msgid "Stereo Mode"
-msgstr "Tryb sterep"
+msgstr "Tryb stereo"
 
 #: data/ui/stereo_tools.ui:234
-#, fuzzy
 msgid "Side Level"
-msgstr "Poziom"
+msgstr "Poziom Side"
 
 #: data/ui/stereo_tools.ui:269
 msgid "Side Balance"
-msgstr "Balans boczny"
+msgstr "Balans Side"
 
 #: data/ui/stereo_tools.ui:304
 msgid "Middle Level"
-msgstr "Środkowy poziom"
+msgstr "Poziom środka (Middle)"
 
 #: data/ui/stereo_tools.ui:339
-#, fuzzy
 msgid "Middle Panorama"
-msgstr "Panorama"
+msgstr "Panorama środka (Middle)"
 
 #: data/ui/stereo_tools.ui:417
-#, fuzzy
 msgid "Output Balance"
-msgstr "Wzmocnienie wej."
+msgstr "Balans wyjścia"
 
 #: data/ui/stereo_tools.ui:426
 msgid "Delay L/R"
 msgstr "Opóźnienie L/R"
 
 #: data/ui/stereo_tools.ui:452
-#, fuzzy
 msgid "Delay Left Right"
-msgstr "Opóźnienie"
+msgstr "Opóźnienie Lewo Prawo"
 
 #: data/ui/stereo_tools.ui:461
 msgid "Stereo Base"
@@ -2264,21 +2249,19 @@ msgstr "Nieznane"
 
 #: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
-msgstr ""
+msgstr "Niezdefiniowana nazwa - ID procesu "
 
 #: src/app_info.cpp:292
 msgid "channels"
 msgstr "kanały"
 
 #: src/application.cpp:301
-#, fuzzy
 msgid "Output Preset"
-msgstr "Szablony wyjściowe"
+msgstr "Szablony wyjścia"
 
 #: src/application.cpp:302
-#, fuzzy
 msgid "Input Preset"
-msgstr "Profile wejścia"
+msgstr "Szablony wejścia"
 
 #: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
@@ -2290,11 +2273,11 @@ msgstr "Wyjdź z EasyEffects. Przydatne przy pracy w trybie usługi."
 
 #: src/application.cpp:609
 msgid "Print the easyeffects version"
-msgstr ""
+msgstr "Zwróć wersję easyeffects"
 
 #: src/application.cpp:612
 msgid "Reset Easy Effects."
-msgstr "Resetuj EasyEffects."
+msgstr "Zresetuj EasyEffects."
 
 #: src/application.cpp:615
 msgid "Hide the Window."
@@ -2302,7 +2285,7 @@ msgstr "Schowaj okno."
 
 #: src/application.cpp:618
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-msgstr ""
+msgstr "Globalny bypass. 1 by włączyć, 2 by wyłączyć oraz 3 by otrzymać status"
 
 #: src/application.cpp:621
 msgid "Show available presets."
@@ -2313,23 +2296,24 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Załaduj profil. Przykład: easyeffects -l music"
 
 #: src/application.cpp:627
-#, fuzzy
 msgid "Show the active presets."
-msgstr "Pokaż dostępne profile."
+msgstr "Pokaż aktywne szablony."
 
 #: src/application.cpp:630
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
 msgstr ""
+"Pokaż załadowane szablony danej kategorii. Bierze 'wejście' lub 'wyjście' "
+"jako wartość. Przykład: easyeffects -s input"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
-msgstr "Wyjście (_O)"
+msgstr "_Wyjście (_Output)"
 
 #: src/application_ui.cpp:345
 msgid "_Input"
-msgstr "Wejście (_I)"
+msgstr "_Wejście (_Input)"
 
 #: src/application_ui.cpp:346
 msgid "_PipeWire"
@@ -2337,7 +2321,7 @@ msgstr "_PipeWire"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "Ten plik nie jest typu zwykłego"
 
 #: src/convolver_menu_impulses.cpp:130
 msgid "The Impulse File May Be Corrupted or Unsupported"
@@ -2405,15 +2389,18 @@ msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
+"Szablon APO nie został załadowany. Format pliku może być niewspierany. "
+"Sprawdź jego zawartość."
 
 #: src/equalizer_ui.cpp:623
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
+"Podzielne kanały nie są jeszcze wspierane w trakcie eksportowania szablonów "
+"APO."
 
 #: src/equalizer_ui.cpp:631
-#, fuzzy
 msgid "Export EqualizerAPO Preset File"
-msgstr "Importuj plik profilu APO"
+msgstr "Importuj plik szablonu EqualizerAPO"
 
 #: src/equalizer_ui.cpp:632
 msgid "Save"
@@ -2436,10 +2423,12 @@ msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
 msgstr ""
+"Szablon GraphicEQ nie został załadowany. Plik może być niewspierany. Sprawdź "
+"jego zawartość."
 
 #: src/pipe_manager_box.cpp:355
 msgid "Remove Autoloading Preset"
-msgstr "Usuń automatyczne wczytywanie szablonu"
+msgstr "Usuń szablon automatycznego wczytywania"
 
 #: src/plugin_base.cpp:233
 msgid "Output Level Meter"
@@ -2542,11 +2531,11 @@ msgstr "Głośność basu"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Convolver"
-msgstr "Convolver"
+msgstr "Konwolwer"
 
 #: src/tags_plugin_name.cpp:43
 msgid "Crossfeed"
-msgstr "Crossfeed"
+msgstr "Mieszanie kanałów"
 
 #: src/tags_plugin_name.cpp:44
 msgid "Crystalizer"
@@ -2578,7 +2567,7 @@ msgstr "Miernik poziomu"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Limiter"
-msgstr "Limiter"
+msgstr "Ogranicznik"
 
 #: src/tags_plugin_name.cpp:57
 msgid "Maximizer"
@@ -2644,7 +2633,7 @@ msgstr ""
 
 #: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
-msgstr "-inf"
+msgstr "- ∞"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
