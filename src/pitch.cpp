@@ -55,7 +55,9 @@ Pitch::Pitch(const std::string& tag,
   tempo_difference = g_settings_get_double(settings, "tempo-difference");
   rate_difference = g_settings_get_double(settings, "rate-difference");
 
+  cents = g_settings_get_double(settings, "cents");
   semitones = g_settings_get_double(settings, "semitones");
+  octaves = g_settings_get_double(settings, "octaves");
 
   // resetting soundtouch when bypass is pressed so its internal data is discarded
 
@@ -447,4 +449,3 @@ void Pitch::update_pitch() {
   std::scoped_lock<std::mutex> lock(data_mutex);
   snd_touch->setPitchSemiTones(total_semitones);
 }
-

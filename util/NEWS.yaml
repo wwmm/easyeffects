@@ -7,7 +7,7 @@ Description:
 - 
 
 - Bug fixes∶
-- 
+- Fixed a bug in the pitch plugin that made the cents and the octaves control to not be reapplied when EasyEffects was restarted
 
 - Other notes∶
 - 
