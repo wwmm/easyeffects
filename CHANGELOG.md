@@ -1,5 +1,17 @@
 # Changelog
  
+## 7.2.5
+### 2025-07-18
+
+ 
+### Features:
+
+### Bug fixes:
+- Fixed a bug in the pitch plugin that made the cents and the octaves control to not be reapplied when EasyEffects was restarted
+
+### Other notes: 
+
+ 
 ## 7.2.4
 ### 2025-07-07
 

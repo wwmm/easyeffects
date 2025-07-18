@@ -7,10 +7,22 @@ Description:
 - 
 
 - Bug fixes∶
-- Fixed a bug in the pitch plugin that made the cents and the octaves control to not be reapplied when EasyEffects was restarted
+- 
 
 - Other notes∶
 - 
+
+---
+Version: 7.2.5
+Date: 2025-07-18
+
+Description: 
+- Features∶
+
+- Bug fixes∶
+- Fixed a bug in the pitch plugin that made the cents and the octaves control to not be reapplied when EasyEffects was restarted
+
+- Other notes∶ 
 
 ---
 Version: 7.2.4

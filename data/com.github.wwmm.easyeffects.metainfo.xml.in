@@ -52,6 +52,16 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release type="stable" version="7.2.5" date="2025-07-18T00:00:00Z">
+      <description>
+        <ul>
+          <li>Features:</li>
+          <li>Bug fixes:</li>
+          <li>Fixed a bug in the pitch plugin that made the cents and the octaves control to not be reapplied when EasyEffects was restarted</li>
+          <li>Other notes:</li>
+        </ul>
+      </description>
+    </release>
     <release type="stable" version="7.2.4" date="2025-07-07T00:00:00Z">
       <description>
         <ul>
