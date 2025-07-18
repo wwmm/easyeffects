@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2025-07-16 22:01+0000\n"
+"PO-Revision-Date: 2025-07-18 02:02+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -743,7 +743,7 @@ msgstr "Автопідсилення"
 
 #: data/ui/convolver.ui:147
 msgid "Rate"
-msgstr "Оцінка"
+msgstr "Частота"
 
 #: data/ui/convolver.ui:168
 msgid "Samples"
@@ -1670,7 +1670,7 @@ msgstr "Різниця темпів"
 
 #: data/ui/pitch.ui:222
 msgid "Rate Difference"
-msgstr "Курсова різниця"
+msgstr "Відмінність в частоті"
 
 #: data/ui/plugin_row.ui:50
 msgid "Remove this effect"
