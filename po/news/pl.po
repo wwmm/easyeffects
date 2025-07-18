@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2023-11-04 20:34+0000\n"
-"Last-Translator: marcin mikołajczak <me@mkljczk.pl>\n"
+"PO-Revision-Date: 2025-07-18 01:04+0000\n"
+"Last-Translator: drdrwal <drdrwal@yahoo.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -29,7 +29,6 @@ msgid "Audio Effects for PipeWire Applications"
 msgstr "Efekty dźwiękowe dla aplikacji PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
-#, fuzzy
 msgid ""
 "Easy Effects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
@@ -40,7 +39,6 @@ msgstr ""
 "pogłosu. Uzupełnieniem tego jest wbudowany analizator widma."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
-#, fuzzy
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
@@ -50,7 +48,6 @@ msgstr ""
 "PulseEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
-#, fuzzy
 msgid ""
 "Because Easy Effects uses the default PipeWire sound server it will work "
 "with most, if not all, applications you use. All supported applications are "
@@ -62,7 +59,6 @@ msgstr ""
 "może być aktywowany indywidualnie."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
-#, fuzzy
 msgid ""
 "Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
@@ -74,7 +70,6 @@ msgstr ""
 "głosowych."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
-#, fuzzy
 msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
@@ -145,11 +140,11 @@ msgstr "Funkcje:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 msgid "The Pitch plugin has new cents and octaves parameters."
-msgstr ""
+msgstr "Wtyczkę zmiany tonacji wzbogacono o parametry centów i oktaw."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid "The client-rt.conf is ignored on 1.4.0 or newer PipeWire versions."
-msgstr ""
+msgstr "Client-rt.conf jest ignorowany w wersji PipeWire 1.4.0 lub nowszej."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
@@ -202,10 +197,12 @@ msgid ""
 "APO export does not crash anymore when an unsupported LSP Equalizer filter "
 "is set."
 msgstr ""
+"Eksport APO już nie powoduje crashu, gdy niewspierany filtr LSP Equalizer "
+"jest wybrany."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Fixed a bug in LADSPA wrapper."
-msgstr ""
+msgstr "Naprawiono błąd w wrapperze LADSPA."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -243,6 +240,8 @@ msgid ""
 "Improved compatibility with future PipeWire releases. This version will "
 "avoid compilation errors like issue 3620"
 msgstr ""
+"Poprawiono kompatybilność z przyszłymi wersjami PipeWire. Ta wersja będzie "
+"pomijać błędy kompilacji, takie jak w problemie 3620"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
@@ -261,18 +260,25 @@ msgid ""
 "Added a workaround for a glibc(or maybe libstdc++) bug that affects locale "
 "management. What in turns breaks our spinbuttons on some locales."
 msgstr ""
+"Dodano obejście dla błędu glibc(albo libstdc++), który wpływa na zarządzanie "
+"ustawieniami regionalnymi. Co w konsekwencji psuje nasze spinbuttony w "
+"poszczególnych ustawieniach regionalnych."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:94
 msgid ""
 "Fixed a bug that makes the application crash when the option Linux Studio "
 "Plugins package is not installed."
 msgstr ""
+"Naprawiono błąd powodujący crash aplikacji, gdy opcja paczki Linux Studio "
+"Plugins nie jest zainstalowana."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:105
 msgid ""
 "Fixed a bug in the crystalizer plugin where the scale values were not being "
 "properly applied."
 msgstr ""
+"Naprawiono błąd we wtyczce krystalizatora, gdzie wartości nie były poprawnie "
+"zastosowywane."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
 msgid ""
@@ -280,19 +286,21 @@ msgid ""
 "drawing so it matches the latency offset applied by the user on programs "
 "like Pavucontrol."
 msgstr ""
+"Kompensacja opóźnienia może zostać zastosowana we wtyczce widma. Pominie to "
+"jej obrazowanie na tyle, że zrówna się ono z wartością offset opóźnienia, "
+"zastosowaną przez użytkownika w programach takich jak Pavucontrol."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
-#, fuzzy
 msgid ""
 "The command line option that shows EasyEffects version should work properly "
 "now."
 msgstr ""
-"Opcja wiersza poleceń, która zwraca stan globalnego obejścia, działa "
-"ponownie."
+"Opcja wiersza poleceń, która zwraca wersję EasyEffects, powinna teraz "
+"działać poprawnie."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid "Fixed a regression in the autoload preset code."
-msgstr ""
+msgstr "Naprawiono regresje w kodzie autoładującym profile."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:126
 msgid ""
@@ -302,7 +310,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "Performance optmizations to the spectrum plugin and the LADSPA wrapper"
-msgstr ""
+msgstr "Poprawki wydajności we wtyczce widma i w wrapperze LADSPA"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:130
 msgid ""
@@ -310,6 +318,9 @@ msgid ""
 "volume and mute controls. THis could cause these operations to fail in some "
 "situations"
 msgstr ""
+"Nie zamykaliśmy głównej pętli w wątku PipeWire przed ustawieniem głośności "
+"źródła i kontrolą wyciszenia. To mogło spowodować przerwanie tych operacji w "
+"niektórych sytuacjach"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:139
 msgid ""
@@ -391,9 +402,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:169
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:316
-#, fuzzy
 msgid "Updated translations."
-msgstr "Uaktualnione tłumaczenia"
+msgstr "Uaktualniono tłumaczenia."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:179
 msgid ""
@@ -683,9 +693,8 @@ msgid "The documentation has been updated."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:359
-#, fuzzy
 msgid "Improved presets autoloading."
-msgstr "Uaktualnione tłumaczenia"
+msgstr "Poprawiono autoładowanie szablonów."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:360
 msgid "The Autogain silence threshold can now be configured by the user."
@@ -746,9 +755,8 @@ msgid "Improved debug messages"
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:390
-#, fuzzy
 msgid "Improved translations"
-msgstr "Uaktualnione tłumaczenia"
+msgstr "Poprawiono tłumaczenia"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:392
 msgid ""
@@ -865,9 +873,8 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:437
-#, fuzzy
 msgid "Many translation updates"
-msgstr "Uaktualnione tłumaczenia"
+msgstr "Wiele poprawek tłumaczeń"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:439
 msgid ""
@@ -891,13 +898,12 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:449
-#, fuzzy
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric mean."
 msgstr ""
 "Wtyczka automatycznej regulacji wzmocnienia umożliwia teraz użytkownikowi "
-"wybór, która z trzech głośności jest używana do obliczania średniej"
+"wybór, która z trzech głośności jest używana do obliczania średniej."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:450
 #, fuzzy
