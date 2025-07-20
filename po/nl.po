@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-20 18:37+0000\n"
-"PO-Revision-Date: 2025-06-25 19:04+0000\n"
-"Last-Translator: Sijmen <me@vijf.life>\n"
+"POT-Creation-Date: 2025-07-20 14:42+0000\n"
+"PO-Revision-Date: 2025-07-20 18:38+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
 "nl/>\n"
 "Language: nl\n"
@@ -2594,12 +2594,10 @@ msgstr "Stereobediening"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} is niet beschikbaar"
 
 #: src/ui_helpers.cpp:97
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2614,7 +2612,6 @@ msgstr ""
 "om het beschikbaar te maken voor gebruik."
 
 #: src/ui_helpers.cpp:104
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2632,7 +2629,6 @@ msgstr "- ∞"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
-#, c++-format
 msgid "Using {}"
 msgstr "{} wordt gebruikt"
 

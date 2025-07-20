@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-20 18:37+0000\n"
-"PO-Revision-Date: 2025-06-30 00:01+0000\n"
+"POT-Creation-Date: 2025-07-20 14:42+0000\n"
+"PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ka/>\n"
@@ -34,7 +34,9 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "limiter;compressor;reverberation;equalizer;autovolume;ხმა;ავტოხმა;ეკვალაიზერი;"
+msgstr ""
+"limiter;compressor;reverberation;equalizer;autovolume;ხმა;ავტოხმა;"
+"ეკვალაიზერი;"
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
@@ -2572,12 +2574,10 @@ msgstr ""
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
 msgid "{} Not Available"
 msgstr ""
 
 #: src/ui_helpers.cpp:97
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2587,7 +2587,6 @@ msgid ""
 msgstr ""
 
 #: src/ui_helpers.cpp:104
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2601,7 +2600,6 @@ msgstr ""
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
-#, c++-format
 msgid "Using {}"
 msgstr "ვიყენებ {}"
 
