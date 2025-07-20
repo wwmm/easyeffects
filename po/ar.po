@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2025-01-03 00:01+0000\n"
+"PO-Revision-Date: 2025-07-20 18:34+0000\n"
 "Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -2243,14 +2243,12 @@ msgid "channels"
 msgstr ""
 
 #: src/application.cpp:301
-#, fuzzy
 msgid "Output Preset"
-msgstr "إعدادات الخرج المسبقة"
+msgstr "إعداد الخرج المسبق"
 
 #: src/application.cpp:302
-#, fuzzy
 msgid "Input Preset"
-msgstr "الإعدادات المسبقة للدخل"
+msgstr "إعداد الدخل المسبق"
 
 #: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
