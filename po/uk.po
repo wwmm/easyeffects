@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
-"PO-Revision-Date: 2025-07-18 02:02+0000\n"
+"PO-Revision-Date: 2025-07-20 08:46+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -965,11 +965,11 @@ msgstr "Сортування груп"
 
 #: data/ui/equalizer.ui:325 src/presets_menu.cpp:144
 msgid "Import Preset"
-msgstr "Імпорт попереднього налаштування"
+msgstr "Імпорт пресету"
 
 #: data/ui/equalizer.ui:359
 msgid "Export Preset"
-msgstr "Експорт попереднього налаштування"
+msgstr "Експорт пресету"
 
 #: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
 msgid "Slope"
@@ -1910,7 +1910,7 @@ msgstr "Імпорт"
 
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
-msgstr "Імпортуйте цей стиль спільноти до локального списку стилів"
+msgstr "Імпортувати цей пресет від спільноти до локального списку пресетів"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
@@ -1926,7 +1926,7 @@ msgstr "Створіть новий стиль"
 
 #: data/ui/presets_menu.ui:70
 msgid "Import a preset from the local storage"
-msgstr "Імпортуйте стиль із локального сховища"
+msgstr "Імпортувати пресет з локального сховища"
 
 #: data/ui/presets_menu.ui:86
 msgid "Search Local Preset"
@@ -2046,7 +2046,7 @@ msgstr "Велика зайнята зала"
 
 #: data/ui/rnnoise.ui:31
 msgid "Import Model"
-msgstr "Модель імпорту"
+msgstr "Імпортувати модель"
 
 #: data/ui/rnnoise.ui:47 data/ui/speex.ui:59
 msgid "Voice Detection"
@@ -2326,11 +2326,11 @@ msgstr "Підтримуються лише файли Stereo Impulse"
 
 #: src/convolver_menu_impulses.cpp:145
 msgid "Impulse File Not Imported"
-msgstr "Імпульсний файл не імпортовано"
+msgstr "Файл імпульсу не імпортовано"
 
 #: src/convolver_menu_impulses.cpp:153
 msgid "Import Impulse File"
-msgstr "Імпортувати імпульсний файл"
+msgstr "Імпортувати файл імпульсу"
 
 #: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:522
 #: src/equalizer_ui.cpp:861 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
@@ -2339,23 +2339,23 @@ msgstr "Відчинено"
 
 #: src/convolver_menu_impulses.cpp:166
 msgid "Impulse Response"
-msgstr "Імпульсна відповідь"
+msgstr "Імпульсний відгук"
 
 #: src/convolver_menu_impulses.cpp:293
 msgid "Load Impulse"
-msgstr "Імпульс навантаження"
+msgstr "Застосувати імпульс"
 
 #: src/convolver_menu_impulses.cpp:296
 msgid "Remove Impulse"
-msgstr "Видаліть Імпульс"
+msgstr "Видалити імпульс"
 
 #: src/convolver_ui.cpp:382
 msgid "No Impulse File Loaded"
-msgstr "Імпульсний файл не завантажено"
+msgstr "Імпульсний файл не застосовано"
 
 #: src/convolver_ui.cpp:408
 msgid "Failed To Load The Impulse File"
-msgstr "Не вдалося завантажити імпульсний файл"
+msgstr "Не вдалося застосувати імпульсний файл"
 
 #: src/effects_box.cpp:356 src/plugins_box.cpp:807
 msgid "Recorders"
@@ -2371,7 +2371,7 @@ msgstr "Ефекти"
 
 #: src/equalizer_ui.cpp:521
 msgid "Import APO Preset File"
-msgstr "Імпорт файлу попереднього налаштування APO"
+msgstr "Імпортувати файл пресету APO"
 
 #: src/equalizer_ui.cpp:529
 msgid "APO Presets"
@@ -2391,7 +2391,7 @@ msgstr "Розділення каналів ще не підтримується
 
 #: src/equalizer_ui.cpp:631
 msgid "Export EqualizerAPO Preset File"
-msgstr "Експорт файлу попереднього налаштування EqualizerAPO"
+msgstr "Експортувати файл пресету EqualizerAPO"
 
 #: src/equalizer_ui.cpp:632
 msgid "Save"
@@ -2403,7 +2403,7 @@ msgstr "Попередні налаштування еквалайзера APO"
 
 #: src/equalizer_ui.cpp:860
 msgid "Import GraphicEQ Preset File"
-msgstr "Імпортувати файл попереднього налаштування GraphicEQ"
+msgstr "Імпортувати файл пресету GraphicEQ"
 
 #: src/equalizer_ui.cpp:868
 msgid "GraphicEQ Presets"
