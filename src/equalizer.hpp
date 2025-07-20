@@ -60,7 +60,7 @@ class Equalizer : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
-  void sort_bands();
+  Q_INVOKABLE void sortBands();
 
   Q_INVOKABLE void flatResponse();
 

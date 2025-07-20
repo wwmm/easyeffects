@@ -179,6 +179,13 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
+                    text: i18n("Sort Bands")
+                    icon.name: "sort_incr-symbolic"
+                    onTriggered: {
+                        pluginBackend.sortBands();
+                    }
+                },
+                Kirigami.Action {
                     text: i18n("Reset")
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {

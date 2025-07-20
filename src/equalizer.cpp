@@ -22,9 +22,12 @@
 #include <sys/types.h>
 #include <algorithm>
 #include <cmath>
+#include <map>
 #include <memory>
 #include <span>
 #include <string>
+#include <utility>
+#include <vector>
 #include "db_manager.hpp"
 #include "easyeffects_db_equalizer.h"
 #include "easyeffects_db_equalizer_channel.h"
@@ -227,7 +230,7 @@ void Equalizer::process([[maybe_unused]] std::span<float>& left_in,
                         [[maybe_unused]] std::span<float>& probe_left,
                         [[maybe_unused]] std::span<float>& probe_right) {}
 
-void Equalizer::sort_bands() {
+void Equalizer::sortBands() {
   struct EQ_Band {
     double freq;
     int type;
@@ -245,45 +248,46 @@ void Equalizer::sort_bands() {
     return;
   }
 
-  // std::vector<GSettings*> settings_channels{settings_left};
+  std::vector<db::EqualizerChannel*> settings_channels{settings_left};
 
-  // if (settings->splitChannels()) {
-  //   settings_channels.push_back(settings_right);
-  // }
+  if (settings->splitChannels()) {
+    settings_channels.push_back(settings_right);
+  }
 
-  // using namespace tags::equalizer;
+  using namespace tags::equalizer;
 
-  // for (auto* channel : settings_channels) {
-  //   std::multimap<double, struct EQ_Band> sorted_bands;
+  for (auto* channel : settings_channels) {
+    std::multimap<double, struct EQ_Band> sorted_bands;
 
-  //   for (int n = 0; n < used_bands; n++) {
-  //     const auto f = g_settings_get_double(channel, band_frequency[n].data());
+    for (int n = 0; n < used_bands; n++) {
+      const auto f = channel->property(band_frequency[n].data()).value<double>();
 
-  //     sorted_bands.emplace(
-  //         std::pair<double, struct EQ_Band>(f, {.freq = f,
-  //                                               .type = g_settings_get_enum(channel, band_type[n].data()),
-  //                                               .mode = g_settings_get_enum(channel, band_mode[n].data()),
-  //                                               .slope = g_settings_get_enum(channel, band_slope[n].data()),
-  //                                               .gain = g_settings_get_double(channel, band_gain[n].data()),
-  //                                               .q = g_settings_get_double(channel, band_q[n].data()),
-  //                                               .width = g_settings_get_double(channel, band_width[n].data()),
-  //                                               .solo = g_settings_get_boolean(channel, band_solo[n].data()),
-  //                                               .mute = g_settings_get_boolean(channel, band_mute[n].data())}));
-  //   }
+      sorted_bands.emplace(
+          std::pair<double, struct EQ_Band>(f, {.freq = f,
+                                                .type = channel->property(band_type[n].data()).value<int>(),
+                                                .mode = channel->property(band_mode[n].data()).value<int>(),
+                                                .slope = channel->property(band_slope[n].data()).value<int>(),
+                                                .gain = channel->property(band_gain[n].data()).value<double>(),
+                                                .q = channel->property(band_q[n].data()).value<double>(),
+                                                .width = channel->property(band_width[n].data()).value<double>(),
+                                                .solo = channel->property(band_solo[n].data()).value<bool>(),
+                                                .mute = channel->property(band_mute[n].data()).value<bool>()}));
+    }
 
-  //   for (int n = 0; const auto& p : sorted_bands) {
-  //     g_settings_set_double(channel, band_frequency[n].data(), p.second.freq);
-  //     g_settings_set_enum(channel, band_type[n].data(), p.second.type);
-  //     g_settings_set_enum(channel, band_mode[n].data(), p.second.mode);
-  //     g_settings_set_enum(channel, band_slope[n].data(), p.second.slope);
-  //     g_settings_set_double(channel, band_gain[n].data(), p.second.gain);
-  //     g_settings_set_double(channel, band_q[n].data(), p.second.q);
-  //     g_settings_set_double(channel, band_width[n].data(), p.second.width);
-  //     g_settings_set_boolean(channel, band_solo[n].data(), p.second.solo);
-  //     g_settings_set_boolean(channel, band_mute[n].data(), p.second.mute);
-  //     n++;
-  //   }
-  // }
+    for (int n = 0; const auto& p : sorted_bands) {
+      channel->setProperty(band_frequency[n].data(), p.second.freq);
+      channel->setProperty(band_type[n].data(), p.second.type);
+      channel->setProperty(band_mode[n].data(), p.second.mode);
+      channel->setProperty(band_slope[n].data(), p.second.slope);
+      channel->setProperty(band_gain[n].data(), p.second.gain);
+      channel->setProperty(band_q[n].data(), p.second.q);
+      channel->setProperty(band_width[n].data(), p.second.width);
+      channel->setProperty(band_solo[n].data(), p.second.solo);
+      channel->setProperty(band_mute[n].data(), p.second.mute);
+
+      n++;
+    }
+  }
 }
 
 auto Equalizer::get_latency_seconds() -> float {
