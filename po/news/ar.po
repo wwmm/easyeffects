@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-17 22:27+0000\n"
-"PO-Revision-Date: 2025-03-10 08:48+0000\n"
-"Last-Translator: أسيد عيسى <osaid.eissa100@gmail.com>\n"
+"PO-Revision-Date: 2025-07-20 18:34+0000\n"
+"Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ar/>\n"
 "Language: ar\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.10.3-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -26,7 +26,7 @@ msgstr "ايزي ايفيكت"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr "تأثيرات صوتية لتطبيقات بايب واير"
+msgstr "تأثيرات صوتية لتطبيقات PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid ""
@@ -43,8 +43,8 @@ msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
-"بايب واير ايزي ايفيكت هو خليفة لبرنامج بولس ايفيكت ولكن ايزي ايفيكت فقط يدعم "
-"بايب واير ولكل من يستعمل بولس اوديو يعود يستخدم بولس ايفيكتس"
+"Easy Effects هو خليفة PulseEffects. وEasy Effects يدعم فقط سيرفر الصوت "
+"PipeWire. فعلى مستخدمي PulseAudio استخدام PulseEffect بدلا من ذلك."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
@@ -62,9 +62,9 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"بجانب التلاعب بمخرجات الصوت إيزي إيفيكت لديه القابلية لإجراء تعديلات لأجهزة "
-"الإدخال مثل المايكروفون هذا على سبيل المثال مفيد عند تسجيل مقطع صوتي ولكن "
-"أيضا يعمل جيدا أثناء المحادثات الصوتية"
+"بجانب التحكم بمخرجات الصوت، Easy Effects لديه القابلية لإجراء تعديلات لأجهزة "
+"الإدخال مثل المايكروفون. يفيد على سبيل المثال عند تسجيل مقطع صوتي، ولكن أيضا "
+"يعمل جيدا أثناء المحادثات الصوتية."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
@@ -79,7 +79,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "The main page showing two audio output apps"
-msgstr "الصفحة الرئيسية تظهر تطبيقان من مخرجات الصوت"
+msgstr "الصفحة الرئيسية تُظهر تطبيقين لإخراج الصوت"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid "The bass enhancer page showing audio controls"
@@ -212,7 +212,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:218
 msgid "Updated translations."
-msgstr ""
+msgstr "الترجمات محدثة."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
 msgid ""
