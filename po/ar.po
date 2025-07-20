@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-07 22:02+0000\n"
 "PO-Revision-Date: 2025-07-20 18:34+0000\n"
-"Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
+"Last-Translator: \".ahhhh...secret\" <kil123414@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
 "Language: ar\n"
@@ -433,7 +433,7 @@ msgstr "الإصدار"
 #: data/ui/compressor.ui:278 data/ui/expander.ui:199
 #: data/ui/multiband_compressor_band.ui:274
 msgid "Release Time"
-msgstr ""
+msgstr "وقت الإصدار"
 
 #: data/ui/compressor.ui:301 data/ui/expander.ui:222 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:301
@@ -493,7 +493,7 @@ msgstr "مصدر"
 #: data/ui/compressor.ui:544 data/ui/expander.ui:465 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:536
 msgid "Middle"
-msgstr "المنتصف"
+msgstr "منتصف"
 
 #: data/ui/compressor.ui:545 data/ui/expander.ui:466 data/ui/gate.ui:679
 #: data/ui/multiband_compressor_band.ui:479 data/ui/multiband_gate_band.ui:537
