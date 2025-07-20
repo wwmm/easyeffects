@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-20 14:42+0000\n"
-"PO-Revision-Date: 2025-02-22 05:12+0000\n"
+"PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: \"R.Suga\" <21r.suga@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
 "main/ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10.1-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -1529,8 +1529,7 @@ msgstr "プリセット自動読み込み"
 msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
-msgstr ""
-"ローカルプリセットのみ自動で読み込めます。コミュニティプリセットはローカルに"
+msgstr "ローカルプリセットのみ自動で読み込めます。コミュニティプリセットはローカルに"
 "インポートし特定のデバイスに割り当てる必要があります。"
 
 #: data/ui/pipe_manager_box.ui:277
@@ -1954,8 +1953,7 @@ msgstr "コミュニティプリセットはインストールされていませ
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
-msgstr ""
-"コミュニティプリセットパッケージはディストリビューションのリポジトリからイン"
+msgstr "コミュニティプリセットパッケージはディストリビューションのリポジトリからイン"
 "ストールできます。"
 
 #: data/ui/presets_menu.ui:298
@@ -2258,8 +2256,7 @@ msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
 #: src/application.cpp:606
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr ""
-"Easy Effects を終了します。サービスモードで動作しているときに便利です。"
+msgstr "Easy Effects を終了します。サービスモードで動作しているときに便利です。"
 
 #: src/application.cpp:609
 msgid "Print the easyeffects version"
@@ -2378,9 +2375,9 @@ msgstr "APO プリセット"
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
-msgstr ""
-"APO プリセットが読み込まれていません。ファイル形式がサポートされていない可能"
-"性があります。内容を確認してください。"
+msgstr "APO "
+"プリセットが読み込まれていません。ファイル形式がサポートされていない可能性が"
+"あります。内容を確認してください。"
 
 #: src/equalizer_ui.cpp:623
 msgid "Split channels not yet supported when exporting APO presets."
@@ -2410,9 +2407,9 @@ msgstr "GraphicEQ プリセット"
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
-msgstr ""
-"GraphicEQ プリセットが読み込まれていません。ファイル形式がサポートされていな"
-"い可能性があります。内容を確認してください。"
+msgstr "GraphicEQ "
+"プリセットが読み込まれていません。ファイル形式がサポートされていない可能性が"
+"あります。内容を確認してください。"
 
 #: src/pipe_manager_box.cpp:355
 msgid "Remove Autoloading Preset"
@@ -2497,8 +2494,7 @@ msgstr "最後に読み込まれたコミュニティプリセット"
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
-msgstr ""
-"選択されたモデルが読み込まれていません。サポートされていないフォーマットの可"
+msgstr "選択されたモデルが読み込まれていません。サポートされていないフォーマットの可"
 "能性があります。標準モデルに戻しました。"
 
 #: src/rnnoise_ui.cpp:159
@@ -2601,9 +2597,9 @@ msgid ""
 "to use."
 msgstr ""
 "{} エフェクトに必要なソフトウェア「{}」がインストールされていません。Easy "
-"Effects の Flatpak 版を利用するかソフトウェアをインストールしてください。ソフ"
-"トウェアをインストールした後は Easy Effects メニュー内の「Quit」から再起動し"
-"て有効化してください。"
+"Effects の Flatpak 版を利用するかソフトウェアをインストールしてください。"
+"ソフトウェアをインストールした後は Easy Effects "
+"メニュー内の「Quit」から再起動して有効化してください。"
 
 #: src/ui_helpers.cpp:104
 #, c++-format
@@ -2613,9 +2609,10 @@ msgid ""
 "Consider using the Easy Effects Flatpak package or building your own Easy "
 "Effects package."
 msgstr ""
-"{} エフェクトは Easy Effects のコンパイル時に無効化されました。そのため、この"
-"エフェクトに必要なソフトウェア「{}」は利用できません。Easy Effects の "
-"Flatpak 版を利用するか自分で Easy Effects をビルドしてください。"
+"{} エフェクトは Easy Effects "
+"のコンパイル時に無効化されました。そのため、このエフェクトに必要なソフトウェ"
+"ア「{}」は利用できません。Easy Effects の Flatpak 版を利用するか自分で Easy "
+"Effects をビルドしてください。"
 
 #: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
