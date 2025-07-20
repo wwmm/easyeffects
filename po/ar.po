@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-20 14:42+0000\n"
-"PO-Revision-Date: 2025-01-03 00:01+0000\n"
-"Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
+"POT-Creation-Date: 2025-07-07 22:02+0000\n"
+"PO-Revision-Date: 2025-07-20 18:34+0000\n"
+"Last-Translator: \".ahhhh...secret\" <kil123414@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
 "Language: ar\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -433,7 +433,7 @@ msgstr "الإصدار"
 #: data/ui/compressor.ui:278 data/ui/expander.ui:199
 #: data/ui/multiband_compressor_band.ui:274
 msgid "Release Time"
-msgstr ""
+msgstr "وقت الإصدار"
 
 #: data/ui/compressor.ui:301 data/ui/expander.ui:222 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:301
@@ -493,7 +493,7 @@ msgstr "مصدر"
 #: data/ui/compressor.ui:544 data/ui/expander.ui:465 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:536
 msgid "Middle"
-msgstr "المنتصف"
+msgstr "منتصف"
 
 #: data/ui/compressor.ui:545 data/ui/expander.ui:466 data/ui/gate.ui:679
 #: data/ui/multiband_compressor_band.ui:479 data/ui/multiband_gate_band.ui:537
@@ -2243,14 +2243,12 @@ msgid "channels"
 msgstr ""
 
 #: src/application.cpp:301
-#, fuzzy
 msgid "Output Preset"
-msgstr "إعدادات الخرج المسبقة"
+msgstr "إعداد الخرج المسبق"
 
 #: src/application.cpp:302
-#, fuzzy
 msgid "Input Preset"
-msgstr "الإعدادات المسبقة للدخل"
+msgstr "إعداد الدخل المسبق"
 
 #: src/application.cpp:518
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
@@ -2578,12 +2576,10 @@ msgstr ""
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
 msgid "{} Not Available"
 msgstr ""
 
 #: src/ui_helpers.cpp:97
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2593,7 +2589,6 @@ msgid ""
 msgstr ""
 
 #: src/ui_helpers.cpp:104
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2607,7 +2602,6 @@ msgstr ""
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
-#, c++-format
 msgid "Using {}"
 msgstr ""
 
