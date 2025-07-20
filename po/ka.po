@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-20 14:42+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ka/>\n"
 "Language: ka\n"
@@ -34,7 +34,9 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "limiter;compressor;reverberation;equalizer;autovolume;ხმა;ავტოხმა;ეკვალაიზერი;"
+msgstr ""
+"limiter;compressor;reverberation;equalizer;autovolume;ხმა;ავტოხმა;ეკვალაიზერი;"
+""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
