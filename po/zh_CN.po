@@ -1473,7 +1473,8 @@ msgstr "设备管理"
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
-msgstr "不建议把 EasyEffects Sink/Source 设置为外部应用程序（例如 Gnome 设置或 "
+msgstr ""
+"不建议把 EasyEffects Sink/Source 设置为外部应用程序（例如 Gnome 设置或 "
 "Plasma 系统设置）的默认设备。"
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
@@ -2291,8 +2292,9 @@ msgstr "显示在用预设。"
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
-msgstr "显示特定类别的已加载预设。可用参数为“input”（输入预设）或者“output”（输出预设"
-"）。例子：easyeffects -s input"
+msgstr ""
+"显示特定类别的已加载预设。可用参数为“input”（输入预设）或者“output”（输出预"
+"设）。例子：easyeffects -s input"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
@@ -2578,12 +2580,10 @@ msgstr "立体声工具"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} 不可用"
 
 #: src/ui_helpers.cpp:97
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2591,20 +2591,19 @@ msgid ""
 "using the 'Quit' option inside the menu in order to make the effect availble "
 "to use."
 msgstr ""
-"未安装 {} 效果所需的 {} 软件。请使用Flatpak版Easy "
-"Effects，或自行安装缺失的软件包。如果您已安装缺失的软件包，请使用菜单上的退出"
-"按钮，完整地退出并重启本程序。"
+"未安装 {} 效果所需的 {} 软件。请使用Flatpak版Easy Effects，或自行安装缺失的软"
+"件包。如果您已安装缺失的软件包，请使用菜单上的退出按钮，完整地退出并重启本程"
+"序。"
 
 #: src/ui_helpers.cpp:104
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
 "Consider using the Easy Effects Flatpak package or building your own Easy "
 "Effects package."
 msgstr ""
-"{} 效果在编译Easy Effects的时候被禁用了。这可能是这个效果所需的软件\"{}"
-"\"在编译时并不存在。请下载Flatpak版Easy Effects，或者重新编译Easy Effects。"
+"{} 效果在编译Easy Effects的时候被禁用了。这可能是这个效果所需的软件\"{}\"在编"
+"译时并不存在。请下载Flatpak版Easy Effects，或者重新编译Easy Effects。"
 
 #: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
@@ -2612,7 +2611,6 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
-#, c++-format
 msgid "Using {}"
 msgstr "正在使用 {}"
 

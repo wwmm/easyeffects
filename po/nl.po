@@ -1912,8 +1912,8 @@ msgstr "Importeren"
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
 msgstr ""
-"Importeer deze gemeenschaps­voorinstelling in de lĳst met lokale "
-"voor­instellingen"
+"Importeer deze gemeenschaps­voorinstelling in de lĳst met lokale voor­"
+"instellingen"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
@@ -2594,12 +2594,10 @@ msgstr "Stereobediening"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
 msgid "{} Not Available"
 msgstr "{} is niet beschikbaar"
 
 #: src/ui_helpers.cpp:97
-#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2614,7 +2612,6 @@ msgstr ""
 "om het beschikbaar te maken voor gebruik."
 
 #: src/ui_helpers.cpp:104
-#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2632,7 +2629,6 @@ msgstr "- ∞"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
-#, c++-format
 msgid "Using {}"
 msgstr "{} wordt gebruikt"
 
