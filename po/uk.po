@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-20 19:57+0000\n"
-"PO-Revision-Date: 2025-07-20 18:39+0000\n"
-"Last-Translator: Max Digital <mmaks.step@gmail.com>\n"
+"PO-Revision-Date: 2025-07-22 05:02+0000\n"
+"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -35,7 +35,9 @@ msgstr "Аудіоефекти для додатків PipeWire"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-msgstr "limiter;compressor;reverberation;equalizer;autovolume;обмежувач;компресор;реверберація;еквалайзер;автогучність;ефекти;звук;пайп;запис;"
+msgstr ""
+"limiter;compressor;reverberation;equalizer;autovolume;обмежувач;компресор;реверберація;еквалайзер;автогучність;ефекти;звук;пайп;запис;"
+""
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
@@ -250,7 +252,7 @@ msgstr "Плагін вхідного підсилення"
 #: data/ui/rnnoise.ui:357 data/ui/speex.ui:271 data/ui/stereo_tools.ui:379
 #: data/ui/stereo_tools.ui:701
 msgid "Output"
-msgstr "Виведення"
+msgstr "Вихід"
 
 #: data/ui/autogain.ui:533 data/ui/bass_enhancer.ui:361
 #: data/ui/bass_loudness.ui:210 data/ui/compressor.ui:1242
@@ -735,7 +737,7 @@ msgstr "Спектр"
 
 #: data/ui/convolver.ui:121
 msgid "Log Scale"
-msgstr "Масштабування журналу"
+msgstr "Логірифмічна шкала"
 
 #: data/ui/convolver.ui:131 src/tags_plugin_name.cpp:38
 msgid "Autogain"
@@ -800,7 +802,7 @@ msgstr "Відсікання"
 
 #: data/ui/crossfeed.ui:78
 msgid "Feed"
-msgstr "Фід"
+msgstr "Рівень ослабення перед підмішуванням"
 
 #: data/ui/crystalizer_band.ui:11
 msgid "Bypass"
@@ -893,396 +895,492 @@ msgid "Laxity"
 msgstr "В’ялість"
 
 #: data/ui/deesser.ui:577
+#, fuzzy
 msgid "Detected"
 msgstr "Виявленно"
 
 #: data/ui/deesser.ui:607 data/ui/gate.ui:425 data/ui/gate.ui:1154
 #: data/ui/maximizer.ui:249 data/ui/multiband_gate_band.ui:406
+#, fuzzy
 msgid "Reduction"
 msgstr "Зменшення"
 
 #: data/ui/delay.ui:41 data/ui/delay.ui:128 src/tags_plugin_name.cpp:47
+#, fuzzy
 msgid "Delay"
 msgstr "Затримка"
 
 #: data/ui/delay.ui:107 data/ui/delay.ui:194 data/ui/stereo_tools.ui:182
 #: data/ui/stereo_tools.ui:207
+#, fuzzy
 msgid "Invert Phase"
 msgstr "Інвертувати фазу"
 
 #: data/ui/echo_canceller.ui:27
+#, fuzzy
 msgid "Filter Length"
 msgstr "Довжина фільтра"
 
 #: data/ui/echo_canceller.ui:49
+#, fuzzy
 msgid "Residual Echo Suppression"
 msgstr "Придушення залишкового відлуння"
 
 #: data/ui/echo_canceller.ui:70
+#, fuzzy
 msgid "Near End Echo Suppression"
 msgstr "Придушення відлуння на ближньому кінці"
 
 #: data/ui/effects_box.ui:114
+#, fuzzy
 msgid "Excluded Apps"
 msgstr "Виключені програми"
 
 #: data/ui/effects_box.ui:120
+#, fuzzy
 msgid "Enable/disable input monitoring"
 msgstr "Увімкнути/вимкнути моніторинг входу"
 
 #: data/ui/equalizer.ui:29
+#, fuzzy
 msgid "Bands"
-msgstr "Кількість полос"
+msgstr "Кількість смуг"
 
 #: data/ui/equalizer.ui:93 data/ui/filter.ui:270 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:391
+#, fuzzy
 msgid "Balance"
 msgstr "Баланс"
 
 #: data/ui/equalizer.ui:125
+#, fuzzy
 msgid "Pitch Left"
 msgstr "Висота звуку лівого каналу"
 
 #: data/ui/equalizer.ui:157
+#, fuzzy
 msgid "Pitch Right"
 msgstr "Висота звуку правого каналу"
 
 #: data/ui/equalizer.ui:288
+#, fuzzy
 msgid "Split Channels"
-msgstr "Розділення каналів"
+msgstr "Розділити канали"
 
 #: data/ui/equalizer.ui:294
+#, fuzzy
 msgid "Flat Response"
-msgstr "Рівна відповідь"
+msgstr "Скинути підсилення"
 
 #: data/ui/equalizer.ui:302
+#, fuzzy
 msgid "Calculate Frequencies"
 msgstr "Розрахувати частоти"
 
 #: data/ui/equalizer.ui:310
+#, fuzzy
 msgid "Sort Bands"
-msgstr "Сортування груп"
+msgstr "Сортувати смуги"
 
 #: data/ui/equalizer.ui:325 src/presets_menu.cpp:144
+#, fuzzy
 msgid "Import Preset"
 msgstr "Імпорт пресету"
 
 #: data/ui/equalizer.ui:359
+#, fuzzy
 msgid "Export Preset"
 msgstr "Експорт пресету"
 
 #: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
+#, fuzzy
 msgid "Slope"
-msgstr "Схил"
+msgstr "Нахил"
 
 #: data/ui/equalizer_band.ui:173 data/ui/multiband_compressor_band.ui:149
 #: data/ui/multiband_gate_band.ui:118
+#, fuzzy
 msgid "Solo"
 msgstr "На самоті"
 
 #: data/ui/equalizer_band.ui:270 data/ui/filter.ui:244 data/ui/pitch.ui:28
+#, fuzzy
 msgid "Quality"
-msgstr "Якість"
+msgstr "Добротність"
 
 #: data/ui/equalizer_band.ui:300 data/ui/filter.ui:192
+#, fuzzy
 msgid "Width"
 msgstr "Ширина"
 
 #: data/ui/exciter.ui:208
+#, fuzzy
 msgid "Ceil"
 msgstr "Сеіl"
 
 #: data/ui/exciter.ui:236
+#, fuzzy
 msgid "Ceil Value"
 msgstr "Максимальне значення"
 
 #: data/ui/expander.ui:51 src/tags_plugin_name.cpp:51
+#, fuzzy
 msgid "Expander"
 msgstr "Еспандер"
 
 #: data/ui/expander.ui:86
+#, fuzzy
 msgid "Expander Mode"
 msgstr "Режим розширення"
 
 #: data/ui/expander.ui:609 data/ui/gate.ui:822
+#, fuzzy
 msgid "Internal"
 msgstr "Внутрішній"
 
 #: data/ui/factory_clients_listview.ui:72
+#, fuzzy
 msgid "API"
 msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:100
+#, fuzzy
 msgid "Access"
 msgstr "Доступ"
 
 #: data/ui/factory_modules_listview.ui:72
+#, fuzzy
 msgid "Description"
 msgstr "Опис"
 
 #: data/ui/factory_rnnoise_listview.ui:24
+#, fuzzy
 msgid "Remove this model file"
 msgstr "Видаліть цей файл моделі"
 
 #: data/ui/filter.ui:52
+#, fuzzy
 msgid "Low-Shelf"
-msgstr "Низька полиця"
+msgstr "Low-Shelf"
 
 #: data/ui/filter.ui:53
+#, fuzzy
 msgid "High-Shelf"
-msgstr "Висока полиця"
+msgstr "High-Shelf"
 
 #: data/ui/filter.ui:54
+#, fuzzy
 msgid "Bell"
-msgstr "Дзвоник"
+msgstr "Bell"
 
 #: data/ui/filter.ui:55
+#, fuzzy
 msgid "Band-Pass"
-msgstr "Група-Пас"
+msgstr "Band-Pass"
 
 #: data/ui/filter.ui:56
+#, fuzzy
 msgid "Notch"
-msgstr "Виїмка"
+msgstr "Notch"
 
 #: data/ui/filter.ui:57
+#, fuzzy
 msgid "Resonance"
-msgstr "Резонанс"
+msgstr "Resonance"
 
 #: data/ui/filter.ui:58
+#, fuzzy
 msgid "Ladder-Pass"
-msgstr "Драбина-перевал"
+msgstr "Ladder-Pass"
 
 #: data/ui/filter.ui:59
+#, fuzzy
 msgid "Ladder-Rejection"
-msgstr "Сходи-Відмова"
+msgstr "Ladder-Rejection"
 
 #: data/ui/filter.ui:60
+#, fuzzy
 msgid "All-Pass"
 msgstr "All-Pass"
 
 #: data/ui/filter.ui:102
+#, fuzzy
 msgid "Equalizer Mode"
 msgstr "Режим еквалайзера"
 
 #: data/ui/filter.ui:162 data/ui/multiband_compressor_band.ui:570
 #: data/ui/multiband_gate_band.ui:628 src/tags_plugin_name.cpp:52
+#, fuzzy
 msgid "Filter"
 msgstr "Фільтр"
 
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:53
+#, fuzzy
 msgid "Gate"
 msgstr "Ворота"
 
 #: data/ui/gate.ui:167 data/ui/gate.ui:258 data/ui/multiband_gate_band.ui:240
 #: data/ui/multiband_gate_band.ui:331
+#, fuzzy
 msgid "Zone"
 msgstr "Зона"
 
 #: data/ui/gate.ui:237 data/ui/multiband_gate_band.ui:310
+#, fuzzy
 msgid "Hysteresis"
 msgstr "Гістерезис"
 
 #: data/ui/gate.ui:330
+#, fuzzy
 msgid "Mix"
 msgstr "Змішати"
 
 #: data/ui/gate.ui:510
+#, fuzzy
 msgid "Attack Zone Start"
 msgstr "Початок зони атаки"
 
 #: data/ui/gate.ui:564
+#, fuzzy
 msgid "Release Zone Start"
 msgstr "Початок зони випуску"
 
 #: data/ui/level_meter.ui:28
+#, fuzzy
 msgid "True Peak"
 msgstr "Справжній пік"
 
 #: data/ui/level_meter.ui:328
+#, fuzzy
 msgid "Reset History"
 msgstr "Скинути історію"
 
 #: data/ui/limiter.ui:68
+#, fuzzy
 msgid "Oversampling"
 msgstr "Передискретизація"
 
 #: data/ui/limiter.ui:80
+#, fuzzy
 msgid "Dither"
 msgstr "Дизер"
 
 #: data/ui/limiter.ui:94
+#, fuzzy
 msgid "Herm Thin"
 msgstr "Герм Тонкий"
 
 #: data/ui/limiter.ui:95
+#, fuzzy
 msgid "Herm Wide"
 msgstr "Герм Широкий"
 
 #: data/ui/limiter.ui:96
+#, fuzzy
 msgid "Herm Tail"
 msgstr "Хвіст Герма"
 
 #: data/ui/limiter.ui:97
+#, fuzzy
 msgid "Herm Duck"
 msgstr "Герм Дак"
 
 #: data/ui/limiter.ui:98
+#, fuzzy
 msgid "Exp Thin"
 msgstr "Exp Thin"
 
 #: data/ui/limiter.ui:99
+#, fuzzy
 msgid "Exp Wide"
 msgstr "Exp Wide"
 
 #: data/ui/limiter.ui:100
+#, fuzzy
 msgid "Exp Tail"
 msgstr "Exp Tail"
 
 #: data/ui/limiter.ui:101
+#, fuzzy
 msgid "Exp Duck"
 msgstr "Exp Duck"
 
 #: data/ui/limiter.ui:102
+#, fuzzy
 msgid "Line Thin"
 msgstr "Тонка лінія"
 
 #: data/ui/limiter.ui:103
+#, fuzzy
 msgid "Line Wide"
 msgstr "Широка лінія"
 
 #: data/ui/limiter.ui:104
+#, fuzzy
 msgid "Line Tail"
 msgstr "Лінія Хвіст"
 
 #: data/ui/limiter.ui:105
+#, fuzzy
 msgid "Line Duck"
 msgstr "Лінія Качка"
 
 #: data/ui/limiter.ui:125 data/ui/multiband_compressor.ui:56
 #: data/ui/multiband_gate.ui:56
+#, fuzzy
 msgid "None"
 msgstr "Жодного"
 
 #: data/ui/limiter.ui:126
+#, fuzzy
 msgid "Half x2(2L)"
 msgstr "Половина x2 (2л)"
 
 #: data/ui/limiter.ui:127
+#, fuzzy
 msgid "Half x2(3L)"
 msgstr "Половина x2 (3л)"
 
 #: data/ui/limiter.ui:128
+#, fuzzy
 msgid "Half x3(2L)"
 msgstr "Половина x3 (2л)"
 
 #: data/ui/limiter.ui:129
+#, fuzzy
 msgid "Half x3(3L)"
 msgstr "Половина x3 (3л)"
 
 #: data/ui/limiter.ui:130
+#, fuzzy
 msgid "Half x4(2L)"
 msgstr "Половина x4 (2л)"
 
 #: data/ui/limiter.ui:131
+#, fuzzy
 msgid "Half x4(3L)"
 msgstr "Половина x4 (3л)"
 
 #: data/ui/limiter.ui:132
+#, fuzzy
 msgid "Half x6(2L)"
 msgstr "Половина x6 (2л)"
 
 #: data/ui/limiter.ui:133
+#, fuzzy
 msgid "Half x6(3L)"
 msgstr "Половина x6 (3л)"
 
 #: data/ui/limiter.ui:134
+#, fuzzy
 msgid "Half x8(2L)"
 msgstr "Половина x8 (2л)"
 
 #: data/ui/limiter.ui:135
+#, fuzzy
 msgid "Half x8(3L)"
 msgstr "Половина x8 (3L)"
 
 #: data/ui/limiter.ui:136
+#, fuzzy
 msgid "Full x2(2L)"
 msgstr "Повний x2 (2 л)"
 
 #: data/ui/limiter.ui:137
+#, fuzzy
 msgid "Full x2(3L)"
 msgstr "Повний x2 (3L)"
 
 #: data/ui/limiter.ui:138
+#, fuzzy
 msgid "Full x3(2L)"
 msgstr "Повний x3 (2л)"
 
 #: data/ui/limiter.ui:139
+#, fuzzy
 msgid "Full x3(3L)"
 msgstr "Повний x3 (3L)"
 
 #: data/ui/limiter.ui:140
+#, fuzzy
 msgid "Full x4(2L)"
 msgstr "Повний x4 (2 л)"
 
 #: data/ui/limiter.ui:141
+#, fuzzy
 msgid "Full x4(3L)"
 msgstr "Повний x4 (3L)"
 
 #: data/ui/limiter.ui:142
+#, fuzzy
 msgid "Full x6(2L)"
 msgstr "Повний x6 (2L)"
 
 #: data/ui/limiter.ui:143
+#, fuzzy
 msgid "Full x6(3L)"
 msgstr "Повний x6 (3L)"
 
 #: data/ui/limiter.ui:144
+#, fuzzy
 msgid "Full x8(2L)"
 msgstr "Повний x8 (2L)"
 
 #: data/ui/limiter.ui:145
+#, fuzzy
 msgid "Full x8(3L)"
 msgstr "Повний x8 (3L)"
 
 #: data/ui/limiter.ui:201
+#, fuzzy
 msgid "SC PreAmp"
 msgstr "SC PreAmp"
 
 #: data/ui/limiter.ui:229 data/ui/multiband_compressor_band.ui:692
 #: data/ui/multiband_gate_band.ui:749
+#, fuzzy
 msgid "Sidechain PreAmplification"
 msgstr "Сайдчейн PreAmplification"
 
 #: data/ui/limiter.ui:400
+#, fuzzy
 msgid "Boost"
 msgstr "Підвищення"
 
 #: data/ui/limiter.ui:415
+#, fuzzy
 msgid "Stereo Link"
 msgstr "Стереозв'язок"
 
 #: data/ui/limiter.ui:459 data/ui/multiband_compressor_band.ui:119
 #: data/ui/multiband_gate_band.ui:88
+#, fuzzy
 msgid "External Sidechain"
 msgstr "Зовнішній сайдчейн"
 
 #: data/ui/limiter.ui:472 data/ui/multiband_compressor.ui:97
 #: data/ui/multiband_gate.ui:97
+#, fuzzy
 msgid "External Sidechain Source"
 msgstr "Зовнішнє джерело Sidechain"
 
 #: data/ui/limiter.ui:491
+#, fuzzy
 msgid "Auto Leveling"
 msgstr "Автоматичне вирівнювання"
 
 #: data/ui/limiter.ui:530
+#, fuzzy
 msgid "Auto Leveling Attack"
 msgstr "Атака автоматичного вирівнювання"
 
 #: data/ui/limiter.ui:565
+#, fuzzy
 msgid "Auto Leveling Release"
 msgstr "Автоматичне вирівнювання"
 
 #: data/ui/limiter.ui:599
+#, fuzzy
 msgid "Auto Leveling Knee"
 msgstr "Коліна з автоматичним вирівнюванням"
 
@@ -1303,170 +1401,212 @@ msgid "Sidechain Right"
 msgstr "Сайдчейн праворуч"
 
 #: data/ui/loudness.ui:37
+#, fuzzy
 msgid "Standard"
 msgstr "Стандартний"
 
 #: data/ui/loudness.ui:44
+#, fuzzy
 msgid "Flat"
 msgstr "Плоский"
 
 #: data/ui/loudness.ui:59
+#, fuzzy
 msgid "FFT Size"
 msgstr "Розмір FFT"
 
 #: data/ui/loudness.ui:83
+#, fuzzy
 msgid "Output Volume"
 msgstr "Вихідна гучність"
 
 #: data/ui/loudness.ui:104
+#, fuzzy
 msgid "Clipping"
-msgstr "Вирізка"
+msgstr "Кліппінг"
 
 #: data/ui/multiband_compressor.ui:43 data/ui/multiband_gate.ui:42
+#, fuzzy
 msgid "Sidechain Boost"
-msgstr "Sidechain Підвищення"
+msgstr "Підсилення Sidechain"
 
 #: data/ui/multiband_compressor.ui:57 data/ui/multiband_gate.ui:57
+#, fuzzy
 msgid "Pink BT"
-msgstr "Рожевий БТ"
+msgstr "Рожеве БП"
 
 #: data/ui/multiband_compressor.ui:58 data/ui/multiband_gate.ui:58
+#, fuzzy
 msgid "Pink MT"
-msgstr "Рожевий МТ"
+msgstr "Рожеве УП"
 
 #: data/ui/multiband_compressor.ui:59 data/ui/multiband_gate.ui:59
+#, fuzzy
 msgid "Brown BT"
-msgstr "Браун БТ"
+msgstr "Коричневе БП"
 
 #: data/ui/multiband_compressor.ui:60 data/ui/multiband_gate.ui:60
+#, fuzzy
 msgid "Brown MT"
-msgstr "Браун МТ"
+msgstr "Коричневе УП"
 
 #: data/ui/multiband_compressor.ui:114 data/ui/multiband_gate.ui:114
+#, fuzzy
 msgid "Show Native User Interface"
 msgstr "Показати рідний інтерфейс користувача"
 
 #: data/ui/multiband_compressor.ui:143 data/ui/multiband_gate.ui:143
+#, fuzzy
 msgid "Operating Mode"
 msgstr "Режим роботи"
 
 #: data/ui/multiband_compressor.ui:156 data/ui/multiband_gate.ui:156
+#, fuzzy
 msgid "Classic"
 msgstr "Класичний"
 
 #: data/ui/multiband_compressor.ui:157 data/ui/multiband_gate.ui:157
+#, fuzzy
 msgid "Modern"
 msgstr "Сучасний"
 
 #: data/ui/multiband_compressor.ui:158 data/ui/multiband_gate.ui:158
+#, fuzzy
 msgid "Linear Phase"
 msgstr "Лінійна фаза"
 
 #: data/ui/multiband_compressor.ui:266 data/ui/multiband_gate.ui:266
+#, fuzzy
 msgid "Bands List"
-msgstr "Список гуртів"
+msgstr "Список смуг"
 
 #: data/ui/multiband_compressor.ui:275 data/ui/multiband_gate.ui:275
+#, fuzzy
 msgid "Band 1"
-msgstr "Група 1"
+msgstr "Смуга 1"
 
 #: data/ui/multiband_compressor.ui:292 data/ui/multiband_gate.ui:292
+#, fuzzy
 msgid "Band 2"
-msgstr "Група 2"
+msgstr "Смуга 2"
 
 #: data/ui/multiband_compressor.ui:318 data/ui/multiband_gate.ui:318
+#, fuzzy
 msgid "Band 3"
-msgstr "Група 3"
+msgstr "Смуга 3"
 
 #: data/ui/multiband_compressor.ui:344 data/ui/multiband_gate.ui:344
+#, fuzzy
 msgid "Band 4"
-msgstr "Група 4"
+msgstr "Смуга 4"
 
 #: data/ui/multiband_compressor.ui:370 data/ui/multiband_gate.ui:370
+#, fuzzy
 msgid "Band 5"
-msgstr "Група 5"
+msgstr "Смуга 5"
 
 #: data/ui/multiband_compressor.ui:396 data/ui/multiband_gate.ui:396
+#, fuzzy
 msgid "Band 6"
-msgstr "Група 6"
+msgstr "Смуга 6"
 
 #: data/ui/multiband_compressor.ui:422 data/ui/multiband_gate.ui:422
+#, fuzzy
 msgid "Band 7"
-msgstr "Група 7"
+msgstr "Смуга 7"
 
 #: data/ui/multiband_compressor.ui:448 data/ui/multiband_gate.ui:448
+#, fuzzy
 msgid "Band 8"
-msgstr "Група 8"
+msgstr "Смуга 8"
 
 #: data/ui/multiband_compressor_band.ui:18 data/ui/multiband_gate_band.ui:18
+#, fuzzy
 msgid "Band Start"
-msgstr "Початок групи"
+msgstr "Початок смуги"
 
 #: data/ui/multiband_compressor_band.ui:56 data/ui/multiband_gate_band.ui:56
+#, fuzzy
 msgid "Band End"
-msgstr "Кінець Група"
+msgstr "Кінець смуги"
 
 #: data/ui/multiband_compressor_band.ui:111
+#, fuzzy
 msgid "Band Compression Mode"
-msgstr "Режим стиснення діапазонів"
+msgstr "Режим стиснення смуг"
 
 #: data/ui/multiband_compressor_band.ui:129 data/ui/multiband_gate_band.ui:98
+#, fuzzy
 msgid "Band Bypass"
-msgstr "Обхідний Група"
+msgstr "Обхід смуги"
 
 #: data/ui/multiband_compressor_band.ui:427 data/ui/multiband_gate_band.ui:485
+#, fuzzy
 msgid "Band Sidechain Options"
-msgstr "Параметри бічного ланцюга каналів"
+msgstr "Налаштування Sidechain для смуги"
 
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:558
+#, fuzzy
 msgid "Stereo Split"
-msgstr "Стерео спліт"
+msgstr "Розділення стерео"
 
 #: data/ui/multiband_compressor_band.ui:582 data/ui/multiband_gate_band.ui:640
+#, fuzzy
 msgid "Low-Cut"
-msgstr "Низький виріз"
+msgstr "Low-Cut"
 
 #: data/ui/multiband_compressor_band.ui:609 data/ui/multiband_gate_band.ui:667
+#, fuzzy
 msgid "Low-Cut Filter Frequency"
-msgstr "Частота фільтра низьких частот"
+msgstr "Частота фільтра Low-Cut"
 
 #: data/ui/multiband_compressor_band.ui:619 data/ui/multiband_gate_band.ui:677
+#, fuzzy
 msgid "High-Cut"
 msgstr "Високий виріз"
 
 #: data/ui/multiband_compressor_band.ui:647 data/ui/multiband_gate_band.ui:705
+#, fuzzy
 msgid "High-Cut Filter Frequency"
 msgstr "Частота фільтра високих частот"
 
 #: data/ui/multiband_compressor_band.ui:666 data/ui/multiband_gate_band.ui:724
+#, fuzzy
 msgid "PreAmp"
 msgstr "Попередній підсилювач"
 
 #: data/ui/multiband_compressor_band.ui:867
+#, fuzzy
 msgid "Band Gain"
 msgstr "Діапазон посилення"
 
 #: data/ui/multiband_compressor_band.ui:892 data/ui/multiband_gate_band.ui:861
+#, fuzzy
 msgid "Band Envelope"
-msgstr "Конверт групи"
+msgstr "Конверт смуги"
 
 #: data/ui/multiband_compressor_band.ui:917 data/ui/multiband_gate_band.ui:886
+#, fuzzy
 msgid "Band Curve"
-msgstr "Крива Група"
+msgstr "Крива смуги"
 
 #: data/ui/multiband_gate_band.ui:836
+#, fuzzy
 msgid "Band Reduction"
 msgstr "Зменшення діапазону"
 
 #: data/ui/pipe_manager_box.ui:27
+#, fuzzy
 msgid "General"
 msgstr "Загальний"
 
 #: data/ui/pipe_manager_box.ui:34
+#, fuzzy
 msgid "Device Management"
 msgstr "Управління пристроєм"
 
 #: data/ui/pipe_manager_box.ui:35
+#, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
@@ -1476,58 +1616,72 @@ msgstr ""
 "налаштування системи Plasma)."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
+#, fuzzy
 msgid "Use Default Input"
 msgstr "Використовувати вхід за замовчуванням"
 
 #: data/ui/pipe_manager_box.ui:65
+#, fuzzy
 msgid "Custom Input Device"
 msgstr "Спеціальний пристрій введення"
 
 #: data/ui/pipe_manager_box.ui:74 data/ui/pipe_manager_box.ui:80
+#, fuzzy
 msgid "Use Default Output"
 msgstr "Використовувати вихід за замовчуванням"
 
 #: data/ui/pipe_manager_box.ui:101
+#, fuzzy
 msgid "Custom Output Device"
 msgstr "Спеціальний пристрій виводу"
 
 #: data/ui/pipe_manager_box.ui:112
+#, fuzzy
 msgid "Server Information"
 msgstr "Інформація про сервер"
 
 #: data/ui/pipe_manager_box.ui:116
+#, fuzzy
 msgid "Header Version"
 msgstr "Версія заголовка"
 
 #: data/ui/pipe_manager_box.ui:127
+#, fuzzy
 msgid "Library Version"
 msgstr "Бібліотечна версія"
 
 #: data/ui/pipe_manager_box.ui:138
+#, fuzzy
 msgid "Core Version"
 msgstr "Основна версія"
 
 #: data/ui/pipe_manager_box.ui:149
+#, fuzzy
 msgid "Sampling Rate"
 msgstr "Частота дискретизації"
 
 #: data/ui/pipe_manager_box.ui:160
+#, fuzzy
 msgid "Minimum Quantum"
 msgstr "Мінімальна сума"
 
 #: data/ui/pipe_manager_box.ui:171
+#, fuzzy
 msgid "Maximum Quantum"
 msgstr "Максимальна сума"
 
 #: data/ui/pipe_manager_box.ui:182
+#, fuzzy
 msgid "Default Quantum"
 msgstr "Квант за замовчуванням"
 
 #: data/ui/pipe_manager_box.ui:202
+#, fuzzy
 msgid "Presets Autoloading"
 msgstr "Автозавантаження пресетів"
 
 #: data/ui/pipe_manager_box.ui:228 data/ui/pipe_manager_box.ui:358
+#, fuzzy
 msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
@@ -1536,669 +1690,834 @@ msgstr ""
 "імпортувати локально, щоб вибрати їх і зв’язати з певним пристроєм."
 
 #: data/ui/pipe_manager_box.ui:277
+#, fuzzy
 msgid "Output Devices"
 msgstr "Пристрої виведення"
 
 #: data/ui/pipe_manager_box.ui:294 src/application.cpp:284
+#, fuzzy
 msgid "Output Presets"
 msgstr "Пресети для виходу"
 
 #: data/ui/pipe_manager_box.ui:301 data/ui/pipe_manager_box.ui:426
+#, fuzzy
 msgid "Create Association"
 msgstr "Створити асоціацію"
 
 #: data/ui/pipe_manager_box.ui:314
+#, fuzzy
 msgid "Add Autoloading Output Preset"
 msgstr "Додати попередні налаштування виводу автозавантаження"
 
 #: data/ui/pipe_manager_box.ui:334
+#, fuzzy
 msgid "Output Autoloading Presets List"
 msgstr "Вивести список налаштувань автозавантаження"
 
 #: data/ui/pipe_manager_box.ui:407
+#, fuzzy
 msgid "Input Devices"
 msgstr "Пристрої введення"
 
 #: data/ui/pipe_manager_box.ui:419 src/application.cpp:292
+#, fuzzy
 msgid "Input Presets"
 msgstr "Попередні налаштування вводу"
 
 #: data/ui/pipe_manager_box.ui:439
+#, fuzzy
 msgid "Add Autoloading Input Preset"
 msgstr "Додати попередні налаштування введення автозавантаження"
 
 #: data/ui/pipe_manager_box.ui:458
+#, fuzzy
 msgid "Input Autoloading Presets List"
 msgstr "Введіть список налаштувань автозавантаження"
 
 #: data/ui/pipe_manager_box.ui:488
+#, fuzzy
 msgid "Modules"
 msgstr "Модулі"
 
 #: data/ui/pipe_manager_box.ui:506
+#, fuzzy
 msgid "Modules List"
 msgstr "Список модулів"
 
 #: data/ui/pipe_manager_box.ui:520
+#, fuzzy
 msgid "Clients"
 msgstr "Клієнти"
 
 #: data/ui/pipe_manager_box.ui:538
+#, fuzzy
 msgid "Clients List"
 msgstr "Список клієнтів"
 
 #: data/ui/pipe_manager_box.ui:552
+#, fuzzy
 msgid "Test Signal"
 msgstr "Тестовий сигнал"
 
 #: data/ui/pipe_manager_box.ui:557 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
+#, fuzzy
 msgid "State"
 msgstr "Держава"
 
 #: data/ui/pipe_manager_box.ui:560 data/ui/preferences_spectrum.ui:12
+#, fuzzy
 msgid "Enabled"
 msgstr "Увімкнено"
 
 #: data/ui/pipe_manager_box.ui:575
+#, fuzzy
 msgid "Properties"
 msgstr "Властивості"
 
 #: data/ui/pipe_manager_box.ui:578
+#, fuzzy
 msgid "Channels"
 msgstr "Канали"
 
 #: data/ui/pipe_manager_box.ui:603
+#, fuzzy
 msgid "Both"
 msgstr "Обидва"
 
 #: data/ui/pipe_manager_box.ui:607
+#, fuzzy
 msgid "Both Channels"
 msgstr "Обидва канали"
 
 #: data/ui/pipe_manager_box.ui:616
+#, fuzzy
 msgid "Waveform"
 msgstr "Форма хвилі"
 
 #: data/ui/pipe_manager_box.ui:620
+#, fuzzy
 msgid "Sine Wave"
 msgstr "Синусоїда"
 
 #: data/ui/pipe_manager_box.ui:629
+#, fuzzy
 msgid "White Noise"
 msgstr "Білий шум"
 
 #: data/ui/pitch.ui:32
+#, fuzzy
 msgid "Quick Seek"
 msgstr "Швидкий пошук"
 
 #: data/ui/pitch.ui:45
+#, fuzzy
 msgid "Anti-aliasing"
 msgstr "Згладжування"
 
 #: data/ui/pitch.ui:58
+#, fuzzy
 msgid "Sequence Length"
 msgstr "Довжина послідовності"
 
 #: data/ui/pitch.ui:80
+#, fuzzy
 msgid "Seek Window"
 msgstr "Вікно пошуку"
 
 #: data/ui/pitch.ui:102
+#, fuzzy
 msgid "Overlap Length"
 msgstr "Довжина перекриття"
 
 #: data/ui/pitch.ui:130 src/tags_plugin_name.cpp:60
+#, fuzzy
 msgid "Pitch"
 msgstr "Висота звуку"
 
 #: data/ui/pitch.ui:134
+#, fuzzy
 msgid "Cents"
 msgstr "Центів"
 
 #: data/ui/pitch.ui:156
+#, fuzzy
 msgid "Semitones"
 msgstr "Півтони"
 
 #: data/ui/pitch.ui:178
+#, fuzzy
 msgid "Octaves"
 msgstr "Октави"
 
 #: data/ui/pitch.ui:200
+#, fuzzy
 msgid "Tempo Difference"
 msgstr "Різниця темпів"
 
 #: data/ui/pitch.ui:222
+#, fuzzy
 msgid "Rate Difference"
 msgstr "Відмінність в частоті"
 
 #: data/ui/plugin_row.ui:50
+#, fuzzy
 msgid "Remove this effect"
 msgstr "Видаліть цей ефект"
 
 #: data/ui/plugin_row.ui:62
+#, fuzzy
 msgid "Enable/disable this effect"
 msgstr "Увімкнути/вимкнути цей ефект"
 
 #: data/ui/plugin_row.ui:74
+#, fuzzy
 msgid "Change the position of this effect"
 msgstr "Змініть положення цього ефекту"
 
 #: data/ui/plugins_box.ui:28
+#, fuzzy
 msgid "Show/hide effects list"
 msgstr "Показати/сховати список ефектів"
 
 #: data/ui/plugins_box.ui:42
+#, fuzzy
 msgid "Add Effect"
 msgstr "Додати ефект"
 
 #: data/ui/plugins_box.ui:65
+#, fuzzy
 msgid "Go to the previous effect"
 msgstr "Перейти до попереднього ефекту"
 
 #: data/ui/plugins_box.ui:80
+#, fuzzy
 msgid "Go to the next effect"
 msgstr "Перейти до наступного ефекту"
 
 #: data/ui/plugins_box.ui:131
+#, fuzzy
 msgid "Used Plugins List"
 msgstr "Список використовуваних плагінів"
 
 #: data/ui/plugins_box.ui:192
+#, fuzzy
 msgid "No Effects"
 msgstr "Без ефектів"
 
 #: data/ui/plugins_box.ui:193
+#, fuzzy
 msgid "Audio Stream Not Modified"
 msgstr "Аудіопотік не змінено"
 
 #: data/ui/plugins_menu.ui:19
+#, fuzzy
 msgid "Search Plugin"
 msgstr "Плагін пошуку"
 
 #: data/ui/plugins_menu.ui:74
+#, fuzzy
 msgid "Plugins List"
 msgstr "Список плагінів"
 
 #: data/ui/preferences_general.ui:5
+#, fuzzy
 msgid "_General"
 msgstr "_Загальні"
 
 #: data/ui/preferences_general.ui:10
+#, fuzzy
 msgid "Service"
 msgstr "Сервіс"
 
 #: data/ui/preferences_general.ui:13
+#, fuzzy
 msgid "Launch Service at System Startup"
 msgstr "Запуск служби під час запуску системи"
 
 #: data/ui/preferences_general.ui:25
+#, fuzzy
 msgid "Shutdown on Window Closing"
 msgstr "Вимкнення після закриття вікна"
 
 #: data/ui/preferences_general.ui:39
+#, fuzzy
 msgid "Audio"
 msgstr "Аудіо"
 
 #: data/ui/preferences_general.ui:42
+#, fuzzy
 msgid "Process All Output Streams"
 msgstr "Обробляти всі вихідні потоки"
 
 #: data/ui/preferences_general.ui:54
+#, fuzzy
 msgid "Process All Input Streams"
 msgstr "Обробити всі вхідні потоки"
 
 #: data/ui/preferences_general.ui:66
+#, fuzzy
 msgid "Ignore Streams from Monitor of Devices"
 msgstr "Ігнорувати потоки з монітора пристроїв"
 
 #: data/ui/preferences_general.ui:78
+#, fuzzy
 msgid "Use Cubic Volume"
 msgstr "Використовуйте кубічний об'єм"
 
 #: data/ui/preferences_general.ui:90
+#, fuzzy
 msgid "Inactivity Timeout"
 msgstr "Тайм-аут бездіяльності"
 
 #: data/ui/preferences_general.ui:91
+#, fuzzy
 msgid "Input Pipeline"
 msgstr "Вхідний конвеєр"
 
 #: data/ui/preferences_general.ui:120
+#, fuzzy
 msgid "Update Interval"
 msgstr "Інтервал оновлення"
 
 #: data/ui/preferences_general.ui:121
+#, fuzzy
 msgid "Related to Level Meters and Spectrum"
 msgstr "Пов’язані з вимірювачами рівня та спектром"
 
 #: data/ui/preferences_general.ui:143
+#, fuzzy
 msgid "Update Frequency"
 msgstr "Частота оновлення"
 
 #: data/ui/preferences_general.ui:144
+#, fuzzy
 msgid "Related to LV2 Plugins"
 msgstr "Пов’язані з плагінами LV2"
 
 #: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
+#, fuzzy
 msgid "Style"
 msgstr "Стиль"
 
 #: data/ui/preferences_general.ui:171
+#, fuzzy
 msgid "Use Dark Theme"
 msgstr "Використовуйте темну тему"
 
 #: data/ui/preferences_general.ui:183
+#, fuzzy
 msgid "Hide Menus on Outside Clicks"
 msgstr "Приховати меню під час зовнішнього натискання"
 
 #: data/ui/preferences_general.ui:197
+#, fuzzy
 msgid "Experimental Features"
 msgstr "Експериментальні особливості"
 
 #: data/ui/preferences_general.ui:200
+#, fuzzy
 msgid "Native Plugin Window"
 msgstr "Нативне вікно плагіна"
 
 #: data/ui/preferences_general.ui:201
+#, fuzzy
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "Дозволяє показувати/приховувати вікно рідного плагіна"
 
 #: data/ui/preferences_spectrum.ui:5
+#, fuzzy
 msgid "_Spectrum"
 msgstr "_Спектр"
 
 #: data/ui/preferences_spectrum.ui:24
+#, fuzzy
 msgid "Compensating Delay (ms)"
 msgstr "Компенсаційна затримка (мс)"
 
 #: data/ui/preferences_spectrum.ui:50
+#, fuzzy
 msgid "Shape"
 msgstr "Форма"
 
 #: data/ui/preferences_spectrum.ui:58
+#, fuzzy
 msgid "Bars"
 msgstr "Стовпці"
 
 #: data/ui/preferences_spectrum.ui:59
+#, fuzzy
 msgid "Lines"
 msgstr "Лінії"
 
 #: data/ui/preferences_spectrum.ui:60
+#, fuzzy
 msgid "Dots"
 msgstr "Крапки"
 
 #: data/ui/preferences_spectrum.ui:71
+#, fuzzy
 msgid "Points"
 msgstr "Роздільна здатність"
 
 #: data/ui/preferences_spectrum.ui:92
+#, fuzzy
 msgid "Height"
 msgstr "Висота"
 
 #: data/ui/preferences_spectrum.ui:114
+#, fuzzy
 msgid "Line Width"
 msgstr "Ширина лінії"
 
 #: data/ui/preferences_spectrum.ui:136
+#, fuzzy
 msgid "Fill"
 msgstr "Заповнити"
 
 #: data/ui/preferences_spectrum.ui:148
+#, fuzzy
 msgid "Show Bars Border"
 msgstr "Показати рамку смуг"
 
 #: data/ui/preferences_spectrum.ui:160
+#, fuzzy
 msgid "Rounded Corners"
 msgstr "Заокруглені кути"
 
 #: data/ui/preferences_spectrum.ui:172
+#, fuzzy
 msgid "Dynamic Scale"
 msgstr "Динамічний масштаб"
 
 #: data/ui/preferences_spectrum.ui:186
+#, fuzzy
 msgid "Color"
 msgstr "Колір"
 
 #: data/ui/preferences_spectrum.ui:189
+#, fuzzy
 msgid "Lines and Bars"
 msgstr "Лінії та смуги"
 
 #: data/ui/preferences_spectrum.ui:207
+#, fuzzy
 msgid "Axis Labels"
 msgstr "Мітки осей"
 
 #: data/ui/preferences_spectrum.ui:227
+#, fuzzy
 msgid "Frequency Range"
 msgstr "Діапазон частот"
 
 #: data/ui/preferences_spectrum.ui:230
+#, fuzzy
 msgid "Minimum"
 msgstr "Мінімум"
 
 #: data/ui/preferences_spectrum.ui:252
+#, fuzzy
 msgid "Maximum"
 msgstr "Максимум"
 
 #: data/ui/preset_row.ui:38 src/convolver_menu_impulses.cpp:225
+#, fuzzy
 msgid "Load"
 msgstr "Застосувати"
 
 #: data/ui/preset_row.ui:39
+#, fuzzy
 msgid "Discard the current settings and load this preset"
 msgstr "Скасуйте поточні налаштування та завантажте цей пресет"
 
 #: data/ui/preset_row.ui:48
+#, fuzzy
 msgid "Save current settings to this preset file"
 msgstr "Зберегти поточні параметри в цьому пресеті"
 
 #: data/ui/preset_row.ui:58
+#, fuzzy
 msgid "Remove this preset file"
 msgstr "Видаліть цей попередньо встановлений файл"
 
 #: data/ui/preset_community_row.ui:55
+#, fuzzy
 msgid "Try"
 msgstr "Спробуй"
 
 #: data/ui/preset_community_row.ui:56
+#, fuzzy
 msgid "Try this community preset"
 msgstr "Спробуйте цей стиль спільноти"
 
 #: data/ui/preset_community_row.ui:65
+#, fuzzy
 msgid "Import"
 msgstr "Імпорт"
 
 #: data/ui/preset_community_row.ui:66
+#, fuzzy
 msgid "Import this community preset into the local presets list"
 msgstr "Імпортувати цей пресет від спільноти до локального списку пресетів"
 
 #: data/ui/presets_menu.ui:26
+#, fuzzy
 msgid "Local"
 msgstr "Локальні"
 
 #: data/ui/presets_menu.ui:48
+#, fuzzy
 msgid "New Preset Name"
 msgstr "Нова назва попереднього налаштування"
 
 #: data/ui/presets_menu.ui:56
+#, fuzzy
 msgid "Create a new preset"
 msgstr "Створіть новий стиль"
 
 #: data/ui/presets_menu.ui:70
+#, fuzzy
 msgid "Import a preset from the local storage"
 msgstr "Імпортувати пресет з локального сховища"
 
 #: data/ui/presets_menu.ui:86
+#, fuzzy
 msgid "Search Local Preset"
 msgstr "Пошук локальних налаштувань"
 
 #: data/ui/presets_menu.ui:147
+#, fuzzy
 msgid "Local Presets List"
 msgstr "Список локальних налаштувань"
 
 #: data/ui/presets_menu.ui:191
+#, fuzzy
 msgid "Community"
 msgstr "Спільнота"
 
 #: data/ui/presets_menu.ui:208
+#, fuzzy
 msgid "Search Community Preset"
-msgstr "Пошук спільноти"
+msgstr "Шукати пресети від спільноти"
 
 #: data/ui/presets_menu.ui:271
+#, fuzzy
 msgid "Community Presets List"
-msgstr "Список налаштувань спільноти"
+msgstr "Список пресетів від спільноти"
 
 #: data/ui/presets_menu.ui:286
+#, fuzzy
 msgid "No Community Presets Installed"
-msgstr "Немає попередніх налаштувань спільноти"
+msgstr "Немає пресетів від спільноти"
 
 #: data/ui/presets_menu.ui:287
+#, fuzzy
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
-"Пакунки спільноти Presets можна встановити зі сховища вашого улюбленого "
+"Пакунки пресетів від спільноти можна встановити зі сховища вашого улюбленого "
 "дистрибутива."
 
 #: data/ui/presets_menu.ui:298
+#, fuzzy
 msgid "Refresh"
 msgstr "Оновити"
 
 #: data/ui/presets_menu.ui:299
+#, fuzzy
 msgid "Refresh to show new installed community presets"
-msgstr "Оновіть, щоб показати нові встановлені налаштування спільноти"
+msgstr "Оновіть, щоб показати нові встановлені пресети від спільноти"
 
 #: data/ui/reverb.ui:41
+#, fuzzy
 msgid "High Frequency Damping"
 msgstr "Демпфування високої частоти"
 
 #: data/ui/reverb.ui:72
+#, fuzzy
 msgid "Room Size"
 msgstr "Розмір кімнати"
 
 #: data/ui/reverb.ui:82
+#, fuzzy
 msgid "Small"
 msgstr "Маленький"
 
 #: data/ui/reverb.ui:83
+#, fuzzy
 msgid "Medium"
 msgstr "Середній"
 
 #: data/ui/reverb.ui:84
+#, fuzzy
 msgid "Large"
 msgstr "Великий"
 
 #: data/ui/reverb.ui:85
+#, fuzzy
 msgid "Tunnel"
 msgstr "Тунель"
 
 #: data/ui/reverb.ui:86
+#, fuzzy
 msgid "Large/smooth"
 msgstr "Великий/гладкий"
 
 #: data/ui/reverb.ui:87
+#, fuzzy
 msgid "Experimental"
 msgstr "Експериментальний"
 
 #: data/ui/reverb.ui:106
+#, fuzzy
 msgid "Diffusion"
 msgstr "Дифузія"
 
 #: data/ui/reverb.ui:142
+#, fuzzy
 msgid "Pre Delay"
 msgstr "Попередня затримка"
 
 #: data/ui/reverb.ui:174
+#, fuzzy
 msgid "Decay Time"
 msgstr "Час розпаду"
 
 #: data/ui/reverb.ui:275
+#, fuzzy
 msgid "Bass Cut"
 msgstr "Вирізати Бас"
 
 #: data/ui/reverb.ui:309
+#, fuzzy
 msgid "Treble Cut"
 msgstr "Вирізати Високі частоти"
 
 #: data/ui/reverb.ui:568
+#, fuzzy
 msgid "Ambience"
 msgstr "Атмосфера"
 
 #: data/ui/reverb.ui:575
+#, fuzzy
 msgid "Empty Walls"
 msgstr "Порожні стіни"
 
 #: data/ui/reverb.ui:588
+#, fuzzy
 msgid "Room"
 msgstr "Кімната"
 
 #: data/ui/reverb.ui:595
+#, fuzzy
 msgid "Large Empty Hall"
 msgstr "Великий порожній зал"
 
 #: data/ui/reverb.ui:608
+#, fuzzy
 msgid "Disco"
 msgstr "Диско"
 
 #: data/ui/reverb.ui:615
+#, fuzzy
 msgid "Large Occupied Hall"
 msgstr "Велика зайнята зала"
 
 #: data/ui/rnnoise.ui:31
+#, fuzzy
 msgid "Import Model"
 msgstr "Імпортувати модель"
 
 #: data/ui/rnnoise.ui:47 data/ui/speex.ui:59
+#, fuzzy
 msgid "Voice Detection"
 msgstr "Розпізнавання голосу"
 
 #: data/ui/rnnoise.ui:151
+#, fuzzy
 msgid "Models"
 msgstr "Моделі"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
 #: data/ui/rnnoise.ui:177 src/rnnoise_ui.cpp:121 src/rnnoise_ui.cpp:298
 #: src/rnnoise_ui.cpp:375
+#, fuzzy
 msgid "Standard Model"
 msgstr "Стандартна модель"
 
 #: data/ui/rnnoise.ui:204
+#, fuzzy
 msgid "RNNoise Models List"
 msgstr "Список моделей RNNoise"
 
 #: data/ui/rnnoise.ui:228
+#, fuzzy
 msgid "Model Not Loaded"
 msgstr "Модель не завантажено"
 
 #: data/ui/rnnoise.ui:234
+#, fuzzy
 msgid "Active Model"
 msgstr "Активна модель"
 
 #: data/ui/rnnoise.ui:242
+#, fuzzy
 msgid "Standard RNNoise Model"
 msgstr "Стандартна модель RNNoise"
 
 #: data/ui/shortcuts.ui:11
+#, fuzzy
 msgid "Overview"
 msgstr "Огляд"
 
 #: data/ui/shortcuts.ui:16
+#, fuzzy
 msgid "Show help"
 msgstr "Показати допомогу"
 
 #: data/ui/shortcuts.ui:23
+#, fuzzy
 msgid "Fullscreen/Restore from fullscreen"
 msgstr "Повний екран/Відновлення з повноекранного режиму"
 
 #: data/ui/shortcuts.ui:30
+#, fuzzy
 msgid "Close the Window"
 msgstr "Закрийте вікно"
 
 #: data/ui/shortcuts.ui:37
+#, fuzzy
 msgid "Quit Easy Effects"
 msgstr "Закрийте Easy Effects"
 
 #: data/ui/speex.ui:33
+#, fuzzy
 msgid "Denoise"
 msgstr "Усунення шуму"
 
 #: data/ui/speex.ui:46
+#, fuzzy
 msgid "Automatic Gain Control"
 msgstr "Автоматичне регулювання посилення"
 
 #: data/ui/speex.ui:72
+#, fuzzy
 msgid "Dereverberation"
 msgstr "Дереверберація"
 
 #: data/ui/speex.ui:91
+#, fuzzy
 msgid "Voice Activity Probability"
 msgstr "Імовірність голосової активності"
 
 #: data/ui/speex.ui:95
+#, fuzzy
 msgid "Start"
 msgstr "Старт"
 
 #: data/ui/speex.ui:117
+#, fuzzy
 msgid "Continue"
 msgstr "Продовжити"
 
 #: data/ui/speex.ui:141
+#, fuzzy
 msgid "Noise Suppression"
 msgstr "Придушення шуму"
 
 #: data/ui/speex.ui:145
+#, fuzzy
 msgid "Level"
 msgstr "Рівень"
 
 #: data/ui/stereo_tools.ui:78
+#, fuzzy
 msgid "Input Balance"
 msgstr "Вхідний баланс"
 
 #: data/ui/stereo_tools.ui:87
+#, fuzzy
 msgid "Softclip"
 msgstr "Softclip"
 
 #: data/ui/stereo_tools.ui:114
+#, fuzzy
 msgid "Softclip Level"
 msgstr "Рівень Softclip"
 
 #: data/ui/stereo_tools.ui:126
+#, fuzzy
 msgid "Stereo Matrix"
 msgstr "Стерео матриця"
 
 #: data/ui/stereo_tools.ui:138
+#, fuzzy
 msgid "LR > LR (Stereo Default)"
 msgstr "LR > LR (стерео за замовчуванням)"
 
 #: data/ui/stereo_tools.ui:139
+#, fuzzy
 msgid "LR > MS (Stereo to Mid-Side)"
 msgstr "LR > MS (Стерео на середню сторону)"
 
 #: data/ui/stereo_tools.ui:140
+#, fuzzy
 msgid "MS > LR (Mid-Side to Stereo)"
 msgstr "MS > LR (мід-сайд до стерео)"
 
 #: data/ui/stereo_tools.ui:141
+#, fuzzy
 msgid "LR > LL (Mono Left Channel)"
 msgstr "LR > LL (монофонічний лівий канал)"
 
 #: data/ui/stereo_tools.ui:142
+#, fuzzy
 msgid "LR > RR (Mono Right Channel)"
 msgstr "LR > RR (моно правий канал)"
 
 #: data/ui/stereo_tools.ui:143
+#, fuzzy
 msgid "LR > L+R (Mono Sum L+R)"
 msgstr "LR > L+R (моносума L+R)"
 
 #: data/ui/stereo_tools.ui:144
+#, fuzzy
 msgid "LR > RL (Stereo Flip Channels)"
 msgstr "LR > RL (стереоперемикання каналів)"
 
 #: data/ui/stereo_tools.ui:149
+#, fuzzy
 msgid "Stereo Mode"
 msgstr "Стерео режим"
 
 #: data/ui/stereo_tools.ui:234
+#, fuzzy
 msgid "Side Level"
 msgstr "Бічний рівень"
 
 #: data/ui/stereo_tools.ui:269
+#, fuzzy
 msgid "Side Balance"
 msgstr "Бічний баланс"
 
 #: data/ui/stereo_tools.ui:304
+#, fuzzy
 msgid "Middle Level"
 msgstr "Середній рівень"
 
 #: data/ui/stereo_tools.ui:339
+#, fuzzy
 msgid "Middle Panorama"
 msgstr "Середня панорама"
 
 #: data/ui/stereo_tools.ui:417
+#, fuzzy
 msgid "Output Balance"
 msgstr "Баланс виведення"
 
 #: data/ui/stereo_tools.ui:426
+#, fuzzy
 msgid "Delay L/R"
 msgstr "Затримка L/R"
 
@@ -2207,92 +2526,114 @@ msgid "Delay Left Right"
 msgstr "Затримка вліво вправо"
 
 #: data/ui/stereo_tools.ui:461
+#, fuzzy
 msgid "Stereo Base"
 msgstr "Стерео база"
 
 #: data/ui/stereo_tools.ui:496
+#, fuzzy
 msgid "Stereo Phase"
 msgstr "Стереофаза"
 
 #: src/app_info.cpp:100
+#, fuzzy
 msgid "Running"
 msgstr "Запуск"
 
 #: src/app_info.cpp:102
+#, fuzzy
 msgid "Suspended"
 msgstr "Підвішено"
 
 #: src/app_info.cpp:104
+#, fuzzy
 msgid "Idle"
 msgstr "Бездіяльність"
 
 #: src/app_info.cpp:106
+#, fuzzy
 msgid "Creating"
 msgstr "Створення"
 
 #: src/app_info.cpp:108
+#, fuzzy
 msgid "Error"
 msgstr "Помилка"
 
 #: src/app_info.cpp:110
+#, fuzzy
 msgid "Unknown"
 msgstr "Невідомий"
 
 #: src/app_info.cpp:282
+#, fuzzy
 msgid "Undefined Name - Process ID "
 msgstr "Невизначене ім'я - ID процесу "
 
 #: src/app_info.cpp:292
+#, fuzzy
 msgid "channels"
 msgstr "канали"
 
 #: src/application.cpp:301
+#, fuzzy
 msgid "Output Preset"
 msgstr "Попереднє налаштування виводу"
 
 #: src/application.cpp:302
+#, fuzzy
 msgid "Input Preset"
 msgstr "Вхідні налаштування"
 
 #: src/application.cpp:518
+#, fuzzy
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
 #: src/application.cpp:606
+#, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Закрийте Easy Effects. Корисно під час роботи в сервісному режимі."
 
 #: src/application.cpp:609
+#, fuzzy
 msgid "Print the easyeffects version"
 msgstr "Роздрукуйте версію easyeffects"
 
 #: src/application.cpp:612
+#, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Скидання легких ефектів."
 
 #: src/application.cpp:615
+#, fuzzy
 msgid "Hide the Window."
 msgstr "Сховати вікно."
 
 #: src/application.cpp:618
+#, fuzzy
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Глобальний обхід. 1 для ввімкнення, 2 для вимкнення та 3 для отримання "
 "статусу"
 
 #: src/application.cpp:621
+#, fuzzy
 msgid "Show available presets."
 msgstr "Показати доступні стилі."
 
 #: src/application.cpp:624
+#, fuzzy
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Завантажте пресет. Приклад: easyeffects -l music"
 
 #: src/application.cpp:627
+#, fuzzy
 msgid "Show the active presets."
 msgstr "Показати активні пресети."
 
 #: src/application.cpp:630
+#, fuzzy
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
@@ -2301,83 +2642,103 @@ msgstr ""
 "як значення. Приклад: easyeffects -s input"
 
 #: src/application_ui.cpp:344
+#, fuzzy
 msgid "_Output"
 msgstr "_Вихід"
 
 #: src/application_ui.cpp:345
+#, fuzzy
 msgid "_Input"
 msgstr "_Введення"
 
 #: src/application_ui.cpp:346
+#, fuzzy
 msgid "_PipeWire"
 msgstr "_PipeWire"
 
 #: src/convolver_menu_impulses.cpp:125
+#, fuzzy
 msgid "The File Is Not Regular"
 msgstr "Файл не звичайний"
 
 #: src/convolver_menu_impulses.cpp:130
+#, fuzzy
 msgid "The Impulse File May Be Corrupted or Unsupported"
 msgstr "Файл Impulse може бути пошкоджений або не підтримується"
 
 #: src/convolver_menu_impulses.cpp:135
+#, fuzzy
 msgid "Only Stereo Impulse Files Are Supported"
 msgstr "Підтримуються лише файли Stereo Impulse"
 
 #: src/convolver_menu_impulses.cpp:145
+#, fuzzy
 msgid "Impulse File Not Imported"
 msgstr "Файл імпульсу не імпортовано"
 
 #: src/convolver_menu_impulses.cpp:153
+#, fuzzy
 msgid "Import Impulse File"
 msgstr "Імпортувати файл імпульсу"
 
 #: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:522
 #: src/equalizer_ui.cpp:861 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
+#, fuzzy
 msgid "Open"
 msgstr "Відчинено"
 
 #: src/convolver_menu_impulses.cpp:166
+#, fuzzy
 msgid "Impulse Response"
 msgstr "Імпульсний відгук"
 
 #: src/convolver_menu_impulses.cpp:293
+#, fuzzy
 msgid "Load Impulse"
 msgstr "Застосувати імпульс"
 
 #: src/convolver_menu_impulses.cpp:296
+#, fuzzy
 msgid "Remove Impulse"
 msgstr "Видалити імпульс"
 
 #: src/convolver_ui.cpp:382
+#, fuzzy
 msgid "No Impulse File Loaded"
 msgstr "Імпульсний файл не застосовано"
 
 #: src/convolver_ui.cpp:408
+#, fuzzy
 msgid "Failed To Load The Impulse File"
 msgstr "Не вдалося застосувати імпульсний файл"
 
 #: src/effects_box.cpp:356 src/plugins_box.cpp:807
+#, fuzzy
 msgid "Recorders"
 msgstr "Рекордери"
 
 #: src/effects_box.cpp:379 src/plugins_box.cpp:827
+#, fuzzy
 msgid "Players"
 msgstr "Програвачі"
 
 #: src/effects_box.cpp:402
+#, fuzzy
 msgid "Effects"
 msgstr "Ефекти"
 
 #: src/equalizer_ui.cpp:521
+#, fuzzy
 msgid "Import APO Preset File"
 msgstr "Імпортувати файл пресету APO"
 
 #: src/equalizer_ui.cpp:529
+#, fuzzy
 msgid "APO Presets"
 msgstr "Попередні налаштування APO"
 
 #: src/equalizer_ui.cpp:554
+#, fuzzy
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
@@ -2386,30 +2747,37 @@ msgstr ""
 "підтримуватися. Будь ласка, перевірте його вміст."
 
 #: src/equalizer_ui.cpp:623
+#, fuzzy
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr "Розділення каналів ще не підтримується під час експорту пресетів APO."
 
 #: src/equalizer_ui.cpp:631
+#, fuzzy
 msgid "Export EqualizerAPO Preset File"
 msgstr "Експортувати файл пресету EqualizerAPO"
 
 #: src/equalizer_ui.cpp:632
+#, fuzzy
 msgid "Save"
 msgstr "Зберегти"
 
 #: src/equalizer_ui.cpp:639
+#, fuzzy
 msgid "EqualizerAPO Presets"
 msgstr "Попередні налаштування еквалайзера APO"
 
 #: src/equalizer_ui.cpp:860
+#, fuzzy
 msgid "Import GraphicEQ Preset File"
 msgstr "Імпортувати файл пресету GraphicEQ"
 
 #: src/equalizer_ui.cpp:868
+#, fuzzy
 msgid "GraphicEQ Presets"
 msgstr "Попередні налаштування GraphicEQ"
 
 #: src/equalizer_ui.cpp:893
+#, fuzzy
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
@@ -2418,85 +2786,105 @@ msgstr ""
 "підтримуватися. Будь ласка, перевірте його вміст."
 
 #: src/pipe_manager_box.cpp:355
+#, fuzzy
 msgid "Remove Autoloading Preset"
 msgstr "Видаліть налаштування автозавантаження"
 
 #: src/plugin_base.cpp:233
+#, fuzzy
 msgid "Output Level Meter"
 msgstr "Вимірювач рівня вихідного сигналу"
 
 #: src/plugins_box.cpp:759
+#, fuzzy
 msgid "Remove"
 msgstr "Видалити"
 
 #: src/plugins_box.cpp:828
+#, fuzzy
 msgid "Output Device"
 msgstr "Пристрій виведення"
 
 #: src/plugins_menu.cpp:238
+#, fuzzy
 msgid "Add"
 msgstr "Додати"
 
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
+#, fuzzy
 msgid "Community Preset"
 msgstr "Попереднє налаштування спільноти"
 
 #: src/presets_manager.cpp:439
+#, fuzzy
 msgid "Package"
 msgstr "Пакет"
 
 #: src/presets_manager.cpp:1155 src/presets_manager.cpp:1162
 #: src/presets_manager.cpp:1171 src/presets_manager.cpp:1178
 #: src/presets_manager.cpp:1187 src/presets_manager.cpp:1195
+#, fuzzy
 msgid "Preset Not Loaded Correctly"
 msgstr "Попереднє налаштування не завантажено належним чином"
 
 #: src/presets_manager.cpp:1155
+#, fuzzy
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Неправильний формат у списку виключених програм"
 
 #: src/presets_manager.cpp:1162
+#, fuzzy
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Загальна помилка під час завантаження списку виключених програм"
 
 #: src/presets_manager.cpp:1171
+#, fuzzy
 msgid "Wrong Format in Effects List"
 msgstr "Неправильний формат у списку ефектів"
 
 #: src/presets_manager.cpp:1178
+#, fuzzy
 msgid "Generic Error While Loading Effects List"
 msgstr "Загальна помилка під час завантаження списку ефектів"
 
 #: src/presets_manager.cpp:1188
+#, fuzzy
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Один або кілька параметрів мають неправильний формат"
 
 #: src/presets_manager.cpp:1196
+#, fuzzy
 msgid "Generic Error While Loading The Effect"
 msgstr "Загальна помилка під час завантаження ефекту"
 
 #: src/presets_menu.cpp:398
+#, fuzzy
 msgid "Save?"
 msgstr "Зберегти?"
 
 #: src/presets_menu.cpp:417
+#, fuzzy
 msgid "Delete?"
 msgstr "Видалити?"
 
 #: src/presets_menu.cpp:558
+#, fuzzy
 msgid "No Preset Loaded"
 msgstr "Попереднє налаштування не завантажено"
 
 #: src/presets_menu.cpp:573
+#, fuzzy
 msgid "Last Local Preset Loaded"
 msgstr "Останній застосований локальний пресет"
 
 #: src/presets_menu.cpp:573
+#, fuzzy
 msgid "Last Community Preset Loaded"
 msgstr "Останній застосований пресет зі спільноти"
 
 #: src/rnnoise_ui.cpp:116
+#, fuzzy
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
@@ -2505,97 +2893,118 @@ msgstr ""
 "Повернувся до стандартної моделі."
 
 #: src/rnnoise_ui.cpp:159
+#, fuzzy
 msgid "Import Model File"
 msgstr "Імпорт файлу моделі"
 
 #: src/rnnoise_ui.cpp:172
+#, fuzzy
 msgid "RNNoise Models"
 msgstr "Моделі RNNise"
 
 #: src/tags_plugin_name.cpp:39
+#, fuzzy
 msgid "Bass Enhancer"
 msgstr "Підсилювач басів"
 
 #: src/tags_plugin_name.cpp:40
+#, fuzzy
 msgid "Bass Loudness"
 msgstr "Гучність басів"
 
 #: src/tags_plugin_name.cpp:42
+#, fuzzy
 msgid "Convolver"
 msgstr "Конвольвер"
 
 #: src/tags_plugin_name.cpp:43
+#, fuzzy
 msgid "Crossfeed"
 msgstr "Кросфід"
 
 #: src/tags_plugin_name.cpp:44
+#, fuzzy
 msgid "Crystalizer"
 msgstr "Кристалізатор"
 
 #: src/tags_plugin_name.cpp:45
+#, fuzzy
 msgid "Deep Noise Remover"
 msgstr "Deep Шум Ремувер"
 
 #: src/tags_plugin_name.cpp:46
+#, fuzzy
 msgid "Deesser"
 msgstr "Deesser"
 
 #: src/tags_plugin_name.cpp:48
+#, fuzzy
 msgid "Echo Canceller"
 msgstr "Придушення відлуння"
 
 #: src/tags_plugin_name.cpp:49
+#, fuzzy
 msgid "Equalizer"
 msgstr "Еквалайзер"
 
 #: src/tags_plugin_name.cpp:50
+#, fuzzy
 msgid "Exciter"
 msgstr "Збудник"
 
 #: src/tags_plugin_name.cpp:54
+#, fuzzy
 msgid "Level Meter"
 msgstr "Вимірювач рівня"
 
 #: src/tags_plugin_name.cpp:55
+#, fuzzy
 msgid "Limiter"
 msgstr "Обмежувач"
 
 #: src/tags_plugin_name.cpp:57
+#, fuzzy
 msgid "Maximizer"
 msgstr "Максимайзер"
 
 #: src/tags_plugin_name.cpp:58
+#, fuzzy
 msgid "Multiband Compressor"
-msgstr "Багатодіапазонний компресор"
+msgstr "Багатосмуговий компресор"
 
 #: src/tags_plugin_name.cpp:59
+#, fuzzy
 msgid "Multiband Gate"
 msgstr "Багатосмуговий гейт"
 
 #: src/tags_plugin_name.cpp:61
+#, fuzzy
 msgid "Reverberation"
 msgstr "Реверберація"
 
 #: src/tags_plugin_name.cpp:62
+#, fuzzy
 msgid "Noise Reduction"
 msgstr "Зменшення шуму"
 
 #: src/tags_plugin_name.cpp:63
+#, fuzzy
 msgid "Speech Processor"
 msgstr "Мовний процесор"
 
 #: src/tags_plugin_name.cpp:64
+#, fuzzy
 msgid "Stereo Tools"
 msgstr "Стерео інструменти"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
-#, c++-format
+#, c++-format, fuzzy
 msgid "{} Not Available"
 msgstr "{} Недоступно"
 
 #: src/ui_helpers.cpp:97
-#, c++-format
+#, c++-format, fuzzy
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2610,7 +3019,7 @@ msgstr ""
 "«Вийти» в меню, щоб зробити ефект доступним для використання."
 
 #: src/ui_helpers.cpp:104
-#, c++-format
+#, c++-format, fuzzy
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
@@ -2623,14 +3032,15 @@ msgstr ""
 "власного пакета Easy Effects."
 
 #: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
+#, fuzzy
 msgid "-inf"
 msgstr "-інф"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
-#, c++-format
+#, c++-format, fuzzy
 msgid "Using {}"
-msgstr "Використання {}"
+msgstr "З використанням {}"
 
 #~ msgid "\"Presets\""
 #~ msgstr "\"Профілі\""
