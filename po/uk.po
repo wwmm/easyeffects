@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-20 19:57+0000\n"
 "PO-Revision-Date: 2025-07-22 05:02+0000\n"
-"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
+"Last-Translator: Максим Горпиніч <gorpinicmaksim5@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -290,7 +290,7 @@ msgstr "Пресет"
 
 #: data/ui/autoload_row.ui:114
 msgid "Remove this autoload preset"
-msgstr "Видалити цей пресет з автозастосування"
+msgstr "Вилучити цей пресет з автозастосування"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:627 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/expander.ui:548 data/ui/gate.ui:761
