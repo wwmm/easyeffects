@@ -57,5 +57,9 @@
             <max>120</max>
             <default>0</default>
         </entry>
+        <entry name="viewLeftChannel" type="Bool">
+            <label></label>
+            <default>true</default>
+        </entry>
     </group>
 </kcfg>

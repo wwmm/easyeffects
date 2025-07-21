@@ -116,6 +116,59 @@ Kirigami.ScrollablePage {
                 }
             }
         }
+
+        Kirigami.CardsLayout {
+            maximumColumns: 1
+            readonly property real columnSize: bandsCard.implicitWidth
+            minimumColumnWidth: columnSize
+            maximumColumnWidth: columnSize
+            Kirigami.Card {
+                id: bandsCard
+                actions: [
+                    Kirigami.Action {
+                        id: viewLeft
+                        visible: pluginDB.splitChannels
+                        checkable: true
+                        checked: pluginDB.viewLeftChannel
+                        icon.name: "arrow-left-symbolic"
+                        onTriggered: {
+                            pluginDB.viewLeftChannel = true;
+                        }
+                    },
+                    Kirigami.Action {
+                        id: viewRight
+                        visible: pluginDB.splitChannels
+                        checkable: true
+                        checked: !pluginDB.viewLeftChannel
+                        icon.name: "arrow-right-symbolic"
+                        onTriggered: {
+                            pluginDB.viewLeftChannel = false;
+                        }
+                    }
+                ]
+
+                header: Kirigami.Heading {
+                    visible: pluginDB.splitChannels
+                    text: pluginDB.splitChannels ? (pluginDB.viewLeftChannel ? i18n("Left") : i18n("Right")) : ""
+                    level: 2
+                }
+
+                contentItem: Controls.ScrollView {
+                    Row {
+                        Repeater {
+                            model: pluginDB.numBands
+                            Rectangle {
+                                // this rectangle is here just for tests
+                                width: 50
+                                height: 200
+                                border.width: 1
+                                color: "yellow"
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     header: EeInputOutputGain {
