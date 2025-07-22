@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-20 19:57+0000\n"
-"PO-Revision-Date: 2025-07-20 18:40+0000\n"
-"Last-Translator: \".ahhhh...secret\" <kil123414@gmail.com>\n"
+"PO-Revision-Date: 2025-07-22 18:06+0000\n"
+"Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
 "Language: ar\n"
@@ -309,7 +309,7 @@ msgstr "الثاني"
 
 #: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
 msgid "Amount"
-msgstr "كمية"
+msgstr "مقدار"
 
 #: data/ui/bass_enhancer.ui:141 data/ui/bass_enhancer.ui:420
 #: data/ui/exciter.ui:141 data/ui/exciter.ui:420
@@ -392,7 +392,7 @@ msgstr ""
 
 #: data/ui/compressor.ui:133 data/ui/multiband_compressor_band.ui:764
 msgid "Boost Amount"
-msgstr ""
+msgstr "مقدار التعزيز"
 
 #: data/ui/compressor.ui:179 data/ui/expander.ui:100 data/ui/gate.ui:70
 #: data/ui/limiter.ui:282 data/ui/limiter.ui:501
@@ -718,7 +718,7 @@ msgstr "القناة اليمنى"
 
 #: data/ui/convolver.ui:71
 msgid "Impulses"
-msgstr "النبضات"
+msgstr "استجابات نبضية"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
@@ -755,7 +755,7 @@ msgstr ""
 
 #: data/ui/convolver_menu_combine.ui:15
 msgid "Combine Impulse Responses"
-msgstr ""
+msgstr "دمج الاستجابات النبضية"
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
@@ -775,7 +775,7 @@ msgstr "نواة باسماء مندمجة"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
-msgstr ""
+msgstr "استيراد استجابة نبضية"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:84 data/ui/presets_menu.ui:206
@@ -784,11 +784,11 @@ msgstr "بحث"
 
 #: data/ui/convolver_menu_impulses.ui:27
 msgid "Search Impulse File"
-msgstr ""
+msgstr "ابحث عن ملف استجابة نبضية"
 
 #: data/ui/convolver_menu_impulses.ui:47
 msgid "Impulse Files List"
-msgstr ""
+msgstr "قائمة ملفات الاستجابة النبضية"
 
 #: data/ui/crossfeed.ui:39
 msgid "Default"
@@ -2268,7 +2268,7 @@ msgstr "إعادة ضبط Easy Effects."
 
 #: src/application.cpp:615
 msgid "Hide the Window."
-msgstr "اخفي النافذة"
+msgstr "اخفِ النافذة."
 
 #: src/application.cpp:618
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
@@ -2302,7 +2302,7 @@ msgstr "ال_دخل"
 
 #: src/application_ui.cpp:346
 msgid "_PipeWire"
-msgstr "_بايب واير"
+msgstr "_Pipewire"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "The File Is Not Regular"
@@ -2310,11 +2310,11 @@ msgstr ""
 
 #: src/convolver_menu_impulses.cpp:130
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "ربما ملف الاستجابة النبضية تالف أو غير مدعوم"
 
 #: src/convolver_menu_impulses.cpp:135
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "ملفات الاستجابة النبضية الاستريو هي المدعومة فقط"
 
 #: src/convolver_menu_impulses.cpp:145
 msgid "Impulse File Not Imported"
