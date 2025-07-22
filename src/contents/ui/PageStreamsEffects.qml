@@ -194,6 +194,8 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Equalizer.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
+                        "leftDB": pageStreamsEffects.pluginsDB[name + "#left"],
+                        "rightDB": pageStreamsEffects.pluginsDB[name + "#right"],
                         "pipelineInstance": pipelineInstance
                     });
                     break;

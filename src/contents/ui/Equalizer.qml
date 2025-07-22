@@ -11,6 +11,8 @@ Kirigami.ScrollablePage {
 
     required property var name
     required property var pluginDB
+    required property var leftDB
+    required property var rightDB
     required property var pipelineInstance
     property var pluginBackend
 
@@ -29,12 +31,13 @@ Kirigami.ScrollablePage {
     }
 
     ColumnLayout {
-
+        height: equalizerPage.height - equalizerPage.header.height - equalizerPage.footer.height - Kirigami.Units.gridUnit
         Kirigami.CardsLayout {
             maximumColumns: 5
             readonly property real columnSize: pitchLeft.implicitWidth
             minimumColumnWidth: columnSize
             maximumColumnWidth: columnSize
+            Layout.fillHeight: false
 
             FormCard.FormComboBoxDelegate {
                 id: mode
@@ -122,8 +125,10 @@ Kirigami.ScrollablePage {
             readonly property real columnSize: bandsCard.implicitWidth
             minimumColumnWidth: columnSize
             maximumColumnWidth: columnSize
+
             Kirigami.Card {
                 id: bandsCard
+                Layout.fillHeight: true
                 actions: [
                     Kirigami.Action {
                         id: viewLeft
@@ -153,19 +158,22 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Controls.ScrollView {
-                    Row {
-                        Repeater {
-                            model: pluginDB.numBands
-                            Rectangle {
-                                // this rectangle is here just for tests
-                                width: 50
-                                height: 200
-                                border.width: 1
-                                color: "yellow"
-                            }
+                contentItem: ListView {
+                    id: listview
+
+                    implicitWidth: contentItem.childrenRect.width < equalizerPage.width ? contentItem.childrenRect.width : equalizerPage.width - 4 * (bandsCard.leftPadding + bandsCard.rightPadding)
+                    clip: true
+                    reuseItems: true
+                    orientation: ListView.Horizontal
+                    model: pluginDB.numBands
+
+                    delegate: EqualizerBand {
+                        bandDB: {
+                            pluginDB.splitChannels ? (pluginDB.viewLeftChannel ? equalizerPage.leftDB : equalizerPage.rightDB) : equalizerPage.leftDB;
                         }
                     }
+
+                    Controls.ScrollBar.horizontal: Controls.ScrollBar {}
                 }
             }
         }

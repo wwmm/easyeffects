@@ -1,15 +1,12 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import org.kde.kirigami as Kirigami
 
 Controls.ItemDelegate {
     id: listItemDelegate
 
     required property int index
     required property var pluginDB
-    property bool mute
-    property bool bypass
 
     function toLocaleLabel(num, decimal, unit) {
         return Number(num).toLocaleString(Qt.locale(), 'f', decimal) + ` ${unit}`;
