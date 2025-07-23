@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as Controls
+import org.kde.kirigami as Kirigami
 
 Controls.ItemDelegate {
     id: delegate
@@ -67,6 +68,7 @@ Controls.ItemDelegate {
 
             Layout.alignment: Qt.AlignHCenter
             Layout.fillHeight: true
+            Layout.minimumHeight: Kirigami.Units.largeSpacing * 10
             orientation: Qt.Vertical
             from: delegate.bandDB.getMinValue(bandName)
             to: delegate.bandDB.getMaxValue(bandName)
