@@ -26,6 +26,7 @@
         <file alias="EeSwitch.qml">contents/ui/EeSwitch.qml</file>
         <file alias="Equalizer.qml">contents/ui/Equalizer.qml</file>
         <file alias="EqualizerBand.qml">contents/ui/EqualizerBand.qml</file>
+        <file alias="EqualizerBandMenu.qml">contents/ui/EqualizerBandMenu.qml</file>
         <file alias="Exciter.qml">contents/ui/Exciter.qml</file>
         <file alias="Expander.qml">contents/ui/Expander.qml</file>
         <file alias="Filter.qml">contents/ui/Filter.qml</file>
