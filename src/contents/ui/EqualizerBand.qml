@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as Controls
+import org.kde.kirigami as Kirigami
 
 Controls.ItemDelegate {
     id: delegate
@@ -48,7 +49,7 @@ Controls.ItemDelegate {
                 if (f < 1000) {
                     return toLocaleLabel(f, 0, "Hz");
                 } else {
-                    toLocaleLabel(f * 0.001, 1, "kHz");
+                    return toLocaleLabel(f * 0.001, 1, "kHz");
                 }
             }
             enabled: false
@@ -67,11 +68,12 @@ Controls.ItemDelegate {
 
             Layout.alignment: Qt.AlignHCenter
             Layout.fillHeight: true
+            Layout.minimumHeight: Kirigami.Units.largeSpacing * 10
             orientation: Qt.Vertical
             from: delegate.bandDB.getMinValue(bandName)
             to: delegate.bandDB.getMaxValue(bandName)
             value: delegate.bandDB[bandName]
-            stepSize: 1
+            stepSize: 0.01
             enabled: true
             onMoved: {
                 if (value != delegate.bandDB[bandName])
@@ -81,7 +83,7 @@ Controls.ItemDelegate {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: Number(gainSlider.value).toLocaleString(Qt.locale(), 'f', 0)
+            text: Number(gainSlider.value).toLocaleString(Qt.locale(), 'f', 2)
             enabled: false
         }
     }
