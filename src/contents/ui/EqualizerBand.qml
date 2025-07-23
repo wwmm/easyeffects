@@ -68,7 +68,7 @@ Controls.ItemDelegate {
 
             Layout.alignment: Qt.AlignHCenter
             Layout.fillHeight: true
-            Layout.minimumHeight: Kirigami.Units.largeSpacing * 10
+
             orientation: Qt.Vertical
             from: delegate.bandDB.getMinValue(bandName)
             to: delegate.bandDB.getMaxValue(bandName)

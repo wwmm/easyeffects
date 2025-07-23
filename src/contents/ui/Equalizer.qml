@@ -232,6 +232,7 @@ Kirigami.ScrollablePage {
             readonly property real columnSize: bandsCard.implicitWidth
             minimumColumnWidth: columnSize
             maximumColumnWidth: columnSize
+            Layout.minimumHeight: Kirigami.Units.gridUnit * 20
 
             Kirigami.Card {
                 id: bandsCard
