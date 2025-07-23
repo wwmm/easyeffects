@@ -1,3 +1,5 @@
+//pragma explanation: https://doc.qt.io/qt-6/qtqml-documents-structure.html
+pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -37,6 +39,12 @@ Kirigami.ScrollablePage {
             Layout.fillWidth: false
             Layout.fillHeight: true
 
+            footer: Controls.ScrollBar {
+                id: listViewScrollBar
+
+                Layout.fillWidth: true
+            }
+
             contentItem: ListView {
                 id: listview
 
@@ -45,14 +53,13 @@ Kirigami.ScrollablePage {
                 reuseItems: true
                 orientation: ListView.Horizontal
                 model: 13
+                Controls.ScrollBar.horizontal: listViewScrollBar
 
                 delegate: CrystalizerBand {
                     pluginDB: {
                         crystalizerPage.pluginDB;
                     }
                 }
-
-                Controls.ScrollBar.horizontal: Controls.ScrollBar {}
             }
         }
     }
