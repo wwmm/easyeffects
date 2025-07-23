@@ -15,7 +15,7 @@ Kirigami.OverlaySheet {
     focus: true
     y: appWindow.header.height + Kirigami.Units.gridUnit
     implicitWidth: Math.min(columnLayout.implicitWidth, appWindow.width * 0.8) + 4 * Kirigami.Units.iconSizes.large
-    implicitHeight: Math.min(bandMenu.header.height + bandMenu.footer.height + 1.5 * columnLayout.implicitHeight, bandMenu.parent.height - (bandMenu.header.height + bandMenu.footer.height) - bandMenu.y)
+    implicitHeight: Math.min(bandMenu.header.height + bandMenu.footer.height + 1.2 * columnLayout.implicitHeight, bandMenu.parent.height - (bandMenu.header.height + bandMenu.footer.height) - bandMenu.y)
 
     onClosed: {
         menuButton.checked = false;
@@ -27,6 +27,8 @@ Kirigami.OverlaySheet {
 
     footer: RowLayout {
         FormCard.FormComboBoxDelegate {
+            id: bandType
+
             readonly property string bandName: "band" + bandMenu.index + "Type"
             text: i18n("Type")
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
@@ -66,17 +68,87 @@ Kirigami.OverlaySheet {
     ColumnLayout {
         id: columnLayout
 
-        EeSpinBox {
-            readonly property string bandName: "band" + bandMenu.index + "Frequency"
-            label: i18n("Frequency")
-            from: bandMenu.bandDB.getMinValue(bandName)
-            to: bandMenu.bandDB.getMaxValue(bandName)
-            value: bandMenu.bandDB[bandName]
-            decimals: 0
-            stepSize: 1
-            unit: "Hz"
-            onValueModified: v => {
-                bandMenu.bandDB[bandName] = v;
+        RowLayout {
+            EeSpinBox {
+                readonly property string bandName: "band" + bandMenu.index + "Frequency"
+                label: i18n("Frequency")
+                from: bandMenu.bandDB.getMinValue(bandName)
+                to: bandMenu.bandDB.getMaxValue(bandName)
+                value: bandMenu.bandDB[bandName]
+                decimals: 0
+                stepSize: 1
+                unit: "Hz"
+                onValueModified: v => {
+                    bandMenu.bandDB[bandName] = v;
+                }
+            }
+
+            Controls.Button {
+                icon.name: "edit-reset-symbolic"
+                onClicked: bandMenu.bandDB.resetProperty("band" + bandMenu.index + "Frequency")
+            }
+        }
+
+        RowLayout {
+            EeSpinBox {
+                readonly property string bandName: "band" + bandMenu.index + "Gain"
+                label: i18n("Gain")
+                from: bandMenu.bandDB.getMinValue(bandName)
+                to: bandMenu.bandDB.getMaxValue(bandName)
+                value: bandMenu.bandDB[bandName]
+                decimals: 2
+                stepSize: 0.01
+                unit: "dB"
+                onValueModified: v => {
+                    bandMenu.bandDB[bandName] = v;
+                }
+            }
+
+            Controls.Button {
+                icon.name: "edit-reset-symbolic"
+                onClicked: bandMenu.bandDB.resetProperty("band" + bandMenu.index + "Gain")
+            }
+        }
+
+        RowLayout {
+            EeSpinBox {
+                readonly property string bandName: "band" + bandMenu.index + "Q"
+                label: i18n("Quality")
+                from: bandMenu.bandDB.getMinValue(bandName)
+                to: bandMenu.bandDB.getMaxValue(bandName)
+                value: bandMenu.bandDB[bandName]
+                decimals: 2
+                stepSize: 0.01
+                onValueModified: v => {
+                    bandMenu.bandDB[bandName] = v;
+                }
+            }
+
+            Controls.Button {
+                icon.name: "edit-reset-symbolic"
+                onClicked: bandMenu.bandDB.resetProperty("band" + bandMenu.index + "Q")
+            }
+        }
+
+        RowLayout {
+            EeSpinBox {
+                readonly property string bandName: "band" + bandMenu.index + "Width"
+                enabled: (bandType.currentIndex === 9 || bandType.currentIndex === 10 || bandType.currentIndex === 11) ? true : false
+                label: i18n("Width")
+                from: bandMenu.bandDB.getMinValue(bandName)
+                to: bandMenu.bandDB.getMaxValue(bandName)
+                value: bandMenu.bandDB[bandName]
+                decimals: 2
+                stepSize: 0.01
+                unit: "oct"
+                onValueModified: v => {
+                    bandMenu.bandDB[bandName] = v;
+                }
+            }
+
+            Controls.Button {
+                icon.name: "edit-reset-symbolic"
+                onClicked: bandMenu.bandDB.resetProperty("band" + bandMenu.index + "Width")
             }
         }
 

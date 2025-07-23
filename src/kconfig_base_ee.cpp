@@ -51,3 +51,13 @@ QVariant KConfigBaseEE::getMaxValue(const QString& itemName) {
 
   return {};
 }
+
+void KConfigBaseEE::resetProperty(const QString& itemName) {
+  if (itemName.isEmpty()) {
+    return;
+  }
+
+  if (auto item = findItem(itemName); item != nullptr) {
+    item->setDefault();
+  }
+}

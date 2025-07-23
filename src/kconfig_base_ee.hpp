@@ -34,4 +34,6 @@ class KConfigBaseEE : public KConfigSkeleton {
 
   Q_INVOKABLE QVariant getMinValue(const QString& itemName);
   Q_INVOKABLE QVariant getMaxValue(const QString& itemName);
+
+  Q_INVOKABLE void resetProperty(const QString& itemName);
 };
