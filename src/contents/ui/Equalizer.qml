@@ -30,6 +30,113 @@ Kirigami.ScrollablePage {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
+    Controls.Popup {
+        id: bandMenu
+
+        property int index: 0
+        property var menuButton: null
+        readonly property var bandDB: {
+            equalizerPage.pluginDB.splitChannels ? (equalizerPage.pluginDB.viewLeftChannel ? equalizerPage.leftDB : equalizerPage.rightDB) : equalizerPage.leftDB;
+        }
+
+        parent: menuButton
+        focus: true
+        x: parent !== null ? Math.round((parent.width - width) / 2) : x
+        y: parent !== null ? parent.height : y
+        closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+        onClosed: {
+            menuButton.checked = false;
+        }
+
+        contentItem: ColumnLayout {
+            Kirigami.CardsLayout {
+                Kirigami.Card {
+                    actions: [
+                        Kirigami.Action {
+                            readonly property string bandName: "band" + bandMenu.index + "Mute"
+                            text: i18n("Mute")
+                            icon.name: checked ? "audio-volume-muted-symbolic" : "audio-volume-low-symbolic"
+                            checkable: true
+                            checked: bandMenu.bandDB[bandName]
+                            onTriggered: {
+                                if (checked != bandMenu.bandDB[bandName])
+                                    bandMenu.bandDB[bandName] = checked;
+                            }
+                        },
+                        Kirigami.Action {
+                            readonly property string bandName: "band" + bandMenu.index + "Solo"
+                            text: i18n("Solo")
+                            checkable: true
+                            icon.name: "starred-symbolic"
+                            checked: bandMenu.bandDB[bandName]
+                            onTriggered: {
+                                if (checked != bandMenu.bandDB[bandName])
+                                    bandMenu.bandDB[bandName] = checked;
+                            }
+                        }
+                    ]
+                    contentItem: GridLayout {
+                        uniformCellWidths: true
+                        rowSpacing: Kirigami.Units.largeSpacing
+                        columnSpacing: Kirigami.Units.largeSpacing
+                        columns: 2
+                        FormCard.FormComboBoxDelegate {
+                            readonly property string bandName: "band" + bandMenu.index + "Type"
+                            text: i18n("Type")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: bandMenu.bandDB[bandName]
+                            editable: false
+                            model: [i18n("Off"), i18n("Bell"), i18n("Hi-pass"), i18n("Hi-shelf"), i18n("Lo-pass"), i18n("Lo-shelf"), i18n("Notch"), i18n("Resonance"), i18n("Allpass"), i18n("Bandpass"), i18n("Ladder-pass"), i18n("Ladder-rej")]
+                            onActivated: idx => {
+                                bandMenu.bandDB[bandName] = idx;
+                            }
+                        }
+
+                        FormCard.FormComboBoxDelegate {
+                            readonly property string bandName: "band" + bandMenu.index + "Mode"
+                            text: i18n("Mode")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: bandMenu.bandDB[bandName]
+                            editable: false
+                            model: [i18n("RLC (BT)"), i18n("RLC (MT)"), i18n("BWC (BT)"), i18n("BWC (MT)"), i18n("LRX (BT)"), i18n("LRX (MT)"), i18n("APO (DR)")]
+                            onActivated: idx => {
+                                bandMenu.bandDB[bandName] = idx;
+                            }
+                        }
+
+                        FormCard.FormComboBoxDelegate {
+                            readonly property string bandName: "band" + bandMenu.index + "Slope"
+                            text: i18n("Slope")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: bandMenu.bandDB[bandName]
+                            editable: false
+                            model: [i18n("x1"), i18n("x2"), i18n("x3"), i18n("x4")]
+                            onActivated: idx => {
+                                bandMenu.bandDB[bandName] = idx;
+                            }
+                        }
+
+                        EeSpinBox {
+                            readonly property string bandName: "band" + bandMenu.index + "Frequency"
+                            label: i18n("Frequency")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: bandMenu.bandDB.getMinValue(bandName)
+                            to: bandMenu.bandDB.getMaxValue(bandName)
+                            value: bandMenu.bandDB[bandName]
+                            decimals: 0
+                            stepSize: 1
+                            unit: "Hz"
+                            onValueModified: v => {
+                                bandMenu.bandDB[bandName] = v;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     ColumnLayout {
         height: equalizerPage.height - equalizerPage.header.height - equalizerPage.footer.height - Kirigami.Units.gridUnit
         Kirigami.CardsLayout {
@@ -132,29 +239,29 @@ Kirigami.ScrollablePage {
                 actions: [
                     Kirigami.Action {
                         id: viewLeft
-                        visible: pluginDB.splitChannels
+                        visible: equalizerPage.pluginDB.splitChannels
                         checkable: true
-                        checked: pluginDB.viewLeftChannel
+                        checked: equalizerPage.pluginDB.viewLeftChannel
                         icon.name: "arrow-left-symbolic"
                         onTriggered: {
-                            pluginDB.viewLeftChannel = true;
+                            equalizerPage.pluginDB.viewLeftChannel = true;
                         }
                     },
                     Kirigami.Action {
                         id: viewRight
-                        visible: pluginDB.splitChannels
+                        visible: equalizerPage.pluginDB.splitChannels
                         checkable: true
-                        checked: !pluginDB.viewLeftChannel
+                        checked: !equalizerPage.pluginDB.viewLeftChannel
                         icon.name: "arrow-right-symbolic"
                         onTriggered: {
-                            pluginDB.viewLeftChannel = false;
+                            equalizerPage.pluginDB.viewLeftChannel = false;
                         }
                     }
                 ]
 
                 header: Kirigami.Heading {
-                    visible: pluginDB.splitChannels
-                    text: pluginDB.splitChannels ? (pluginDB.viewLeftChannel ? i18n("Left") : i18n("Right")) : ""
+                    visible: equalizerPage.pluginDB.splitChannels
+                    text: equalizerPage.pluginDB.splitChannels ? (equalizerPage.pluginDB.viewLeftChannel ? i18n("Left") : i18n("Right")) : ""
                     level: 2
                 }
 
@@ -171,6 +278,7 @@ Kirigami.ScrollablePage {
                         bandDB: {
                             pluginDB.splitChannels ? (pluginDB.viewLeftChannel ? equalizerPage.leftDB : equalizerPage.rightDB) : equalizerPage.leftDB;
                         }
+                        menu: bandMenu
                     }
 
                     Controls.ScrollBar.horizontal: Controls.ScrollBar {}
