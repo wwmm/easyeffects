@@ -73,7 +73,7 @@ Controls.ItemDelegate {
             from: delegate.bandDB.getMinValue(bandName)
             to: delegate.bandDB.getMaxValue(bandName)
             value: delegate.bandDB[bandName]
-            stepSize: 1
+            stepSize: 0.01
             enabled: true
             onMoved: {
                 if (value != delegate.bandDB[bandName])
@@ -83,7 +83,7 @@ Controls.ItemDelegate {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: Number(gainSlider.value).toLocaleString(Qt.locale(), 'f', 0)
+            text: Number(gainSlider.value).toLocaleString(Qt.locale(), 'f', 2)
             enabled: false
         }
     }
