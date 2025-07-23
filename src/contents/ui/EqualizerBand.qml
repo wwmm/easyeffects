@@ -48,7 +48,7 @@ Controls.ItemDelegate {
                 if (f < 1000) {
                     return toLocaleLabel(f, 0, "Hz");
                 } else {
-                    toLocaleLabel(f * 0.001, 1, "kHz");
+                    return toLocaleLabel(f * 0.001, 1, "kHz");
                 }
             }
             enabled: false
