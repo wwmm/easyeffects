@@ -44,6 +44,7 @@ target_sources(easyeffects PRIVATE
     echo_canceller_preset.cpp
     effects_base.cpp
     equalizer.cpp
+    equalizer_apo.cpp
     exciter.cpp
     exciter_preset.cpp
     expander.cpp

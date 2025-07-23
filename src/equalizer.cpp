@@ -18,10 +18,12 @@
  */
 
 #include "equalizer.hpp"
+#include <qlist.h>
 #include <qobject.h>
 #include <sys/types.h>
 #include <algorithm>
 #include <cmath>
+#include <filesystem>
 #include <map>
 #include <memory>
 #include <span>
@@ -31,6 +33,7 @@
 #include "db_manager.hpp"
 #include "easyeffects_db_equalizer.h"
 #include "easyeffects_db_equalizer_channel.h"
+#include "equalizer_apo.hpp"
 #include "equalizer_macros.hpp"
 #include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
@@ -337,4 +340,22 @@ void Equalizer::calculateFrequencies() {
 
   RESET_BANDS_PROPERTY(settings_left, Width);
   RESET_BANDS_PROPERTY(settings_right, Width);
+}
+
+bool Equalizer::importApoPreset(const QList<QString>& url_list) {
+  std::ranges::any_of(url_list, [&](const auto& u) {
+    auto url = QUrl(u);
+
+    if (url.isLocalFile()) {
+      auto path = std::filesystem::path{url.toLocalFile().toStdString()};
+
+      if (apo::import_apo_preset(settings, settings_left, settings_right, path.string())) {
+        return true;
+      }
+    }
+
+    return false;
+  });
+
+  return false;
 }

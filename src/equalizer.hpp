@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include <qlist.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
 #include <sys/types.h>
@@ -65,6 +66,8 @@ class Equalizer : public PluginBase {
   Q_INVOKABLE void flatResponse();
 
   Q_INVOKABLE void calculateFrequencies();
+
+  Q_INVOKABLE bool importApoPreset(const QList<QString>& url_list);
 
   static constexpr int max_bands = 32;
 

@@ -1,8 +1,10 @@
 //pragma explanation: https://doc.qt.io/qt-6/qtqml-documents-structure.html
 pragma ComponentBehavior: Bound
+import QtCore
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import QtQuick.Dialogs
 import ee.database as DB
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
@@ -37,6 +39,20 @@ Kirigami.ScrollablePage {
 
         bandDB: {
             equalizerPage.pluginDB.splitChannels ? (equalizerPage.pluginDB.viewLeftChannel ? equalizerPage.leftDB : equalizerPage.rightDB) : equalizerPage.leftDB;
+        }
+    }
+
+    FileDialog {
+        id: apoFileDialog
+
+        fileMode: FileDialog.OpenFiles
+        currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
+        nameFilters: ["APO Presets (*.txt)"]
+        onAccepted: {
+            if (pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true)
+                showPassiveNotification(i18n("Preset files imported!"));
+            else
+                showPassiveNotification(i18n("Failed to import the impulse file!"));
         }
     }
 
@@ -270,6 +286,13 @@ Kirigami.ScrollablePage {
                     icon.name: "sort_incr-symbolic"
                     onTriggered: {
                         pluginBackend.sortBands();
+                    }
+                },
+                Kirigami.Action {
+                    text: i18n("Import APO")
+                    icon.name: "document-import-symbolic"
+                    onTriggered: {
+                        apoFileDialog.open();
                     }
                 },
                 Kirigami.Action {
