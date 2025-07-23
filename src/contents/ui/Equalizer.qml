@@ -239,33 +239,42 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
                 id: bandsCard
                 Layout.fillHeight: true
-                actions: [
-                    Kirigami.Action {
-                        id: viewLeft
-                        visible: equalizerPage.pluginDB.splitChannels
-                        checkable: true
-                        checked: equalizerPage.pluginDB.viewLeftChannel
-                        icon.name: "arrow-left-symbolic"
-                        onTriggered: {
-                            equalizerPage.pluginDB.viewLeftChannel = true;
-                        }
-                    },
-                    Kirigami.Action {
-                        id: viewRight
-                        visible: equalizerPage.pluginDB.splitChannels
-                        checkable: true
-                        checked: !equalizerPage.pluginDB.viewLeftChannel
-                        icon.name: "arrow-right-symbolic"
-                        onTriggered: {
-                            equalizerPage.pluginDB.viewLeftChannel = false;
-                        }
-                    }
-                ]
 
-                header: Kirigami.Heading {
-                    visible: equalizerPage.pluginDB.splitChannels
-                    text: equalizerPage.pluginDB.splitChannels ? (equalizerPage.pluginDB.viewLeftChannel ? i18n("Left") : i18n("Right")) : ""
-                    level: 2
+                header: RowLayout {
+                    Kirigami.Heading {
+                        visible: equalizerPage.pluginDB.splitChannels
+                        text: equalizerPage.pluginDB.splitChannels ? (equalizerPage.pluginDB.viewLeftChannel ? i18n("Left") : i18n("Right")) : ""
+                        level: 2
+                    }
+
+                    Kirigami.ActionToolBar {
+                        Layout.margins: Kirigami.Units.smallSpacing
+                        alignment: Qt.AlignRight
+                        position: Controls.ToolBar.Footer
+                        flat: true
+                        actions: [
+                            Kirigami.Action {
+                                id: viewLeft
+                                visible: equalizerPage.pluginDB.splitChannels
+                                checkable: true
+                                checked: equalizerPage.pluginDB.viewLeftChannel
+                                icon.name: "arrow-left-symbolic"
+                                onTriggered: {
+                                    equalizerPage.pluginDB.viewLeftChannel = true;
+                                }
+                            },
+                            Kirigami.Action {
+                                id: viewRight
+                                visible: equalizerPage.pluginDB.splitChannels
+                                checkable: true
+                                checked: !equalizerPage.pluginDB.viewLeftChannel
+                                icon.name: "arrow-right-symbolic"
+                                onTriggered: {
+                                    equalizerPage.pluginDB.viewLeftChannel = false;
+                                }
+                            }
+                        ]
+                    }
                 }
 
                 footer: Controls.ScrollBar {
