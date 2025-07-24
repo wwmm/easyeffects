@@ -219,10 +219,10 @@ static auto parse_apo_config_line(const std::string& line, struct APO_Band& filt
   return true;
 }
 
-auto import_apo_preset(db::Equalizer* settings,
-                       db::EqualizerChannel* settings_left,
-                       db::EqualizerChannel* settings_right,
-                       const std::string& file_path) -> bool {
+auto import_preset(db::Equalizer* settings,
+                   db::EqualizerChannel* settings_left,
+                   db::EqualizerChannel* settings_right,
+                   const std::string& file_path) -> bool {
   std::filesystem::path p{file_path};
 
   if (!std::filesystem::is_regular_file(p)) {
@@ -414,6 +414,106 @@ auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ
   }
 
   return !bands.empty();
+}
+
+auto import_graphiceq_preset(db::Equalizer* settings,
+                             db::EqualizerChannel* settings_left,
+                             db::EqualizerChannel* settings_right,
+                             const std::string& file_path) -> bool {
+  std::filesystem::path p{file_path};
+
+  if (!std::filesystem::is_regular_file(p)) {
+    return false;
+  }
+
+  std::ifstream eq_file;
+  eq_file.open(p.c_str());
+
+  std::vector<struct GraphicEQ_Band> bands;
+
+  if (const auto re = std::regex(R"(^[ \t]*#)"); eq_file.is_open()) {
+    for (std::string line; std::getline(eq_file, line);) {
+      if (std::regex_search(line, re)) {  // Avoid commented lines
+        continue;
+      }
+      if (parse_graphiceq_config(line, bands)) {
+        break;
+      }
+    }
+  }
+
+  eq_file.close();
+
+  if (bands.empty()) {
+    return false;
+  }
+
+  /* Sort bands by freq is made by user through Equalizer::sort_bands()
+  std::ranges::stable_sort(bands, {}, &GraphicEQ_Band::freq); */
+
+  const auto& max_bands = settings->defaultNumBandsValue();
+
+  // Reset preamp
+  settings->resetProperty("input-gain");
+
+  // Apply GraphicEQ parameters obtained
+
+  settings->setNumBands(std::min(static_cast<int>(bands.size()), max_bands));
+
+  std::vector<db::EqualizerChannel*> settings_channels;
+
+  // Whether to apply the parameters to both channels or the selected one only
+  if (!settings->splitChannels()) {
+    settings_channels.push_back(settings_left);
+    settings_channels.push_back(settings_right);
+  } else if (settings->viewLeftChannel()) {
+    settings_channels.push_back(settings_left);
+  } else {
+    settings_channels.push_back(settings_right);
+  }
+
+  // Apply GraphicEQ parameters obtained for each band
+  for (int n = 0U, geq_bands = bands.size(); n < max_bands; n++) {
+    for (auto* channel : settings_channels) {
+      if (n < geq_bands) {
+        // Band frequency and type
+
+        if (bands[n].freq >= channel->getMinValue(band_frequency[n].data()).value<float>() &&
+            bands[n].freq <= channel->getMaxValue(band_frequency[n].data()).value<float>()) {
+          channel->setProperty(band_frequency[n].data(), bands[n].freq);
+          channel->setProperty(band_type[n].data(), "Bell");
+        } else {
+          // If the frequency is not in the valid range, we assume the filter is
+          // unsupported or disabled, so reset to default frequency and set type Off.
+          channel->resetProperty(band_frequency[n].data());
+          channel->setProperty(band_type[n].data(), "Off");
+        }
+
+        // Band gain
+
+        if (bands[n].gain >= channel->getMinValue(band_gain[n].data()).value<float>() &&
+            bands[n].gain <= channel->getMaxValue(band_gain[n].data()).value<float>()) {
+          channel->setProperty(band_gain[n].data(), bands[n].gain);
+
+        } else {
+          channel->resetProperty(band_gain[n].data());
+        }
+      } else {
+        channel->setProperty(band_type[n].data(), "Off");
+        channel->resetProperty(band_frequency[n].data());
+        channel->resetProperty(band_gain[n].data());
+      }
+
+      channel->resetProperty(band_q[n].data());
+      channel->resetProperty(band_mode[n].data());
+      channel->resetProperty(band_width[n].data());
+      channel->resetProperty(band_slope[n].data());
+      channel->resetProperty(band_solo[n].data());
+      channel->resetProperty(band_mute[n].data());
+    }
+  }
+
+  return true;
 }
 
 }  // namespace apo

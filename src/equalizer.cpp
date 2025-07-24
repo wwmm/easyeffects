@@ -349,7 +349,7 @@ bool Equalizer::importApoPreset(const QList<QString>& url_list) {
     if (url.isLocalFile()) {
       auto path = std::filesystem::path{url.toLocalFile().toStdString()};
 
-      if (apo::import_apo_preset(settings, settings_left, settings_right, path.string())) {
+      if (apo::import_preset(settings, settings_left, settings_right, path.string())) {
         return true;
       }
     }
