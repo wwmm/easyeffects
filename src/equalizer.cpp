@@ -344,10 +344,10 @@ void Equalizer::calculateFrequencies() {
 
 bool Equalizer::importApoPreset(const QList<QString>& url_list) {
   std::ranges::any_of(url_list, [&](const auto& u) {
-    auto url = QUrl(u);
+    const auto url = QUrl(u);
 
     if (url.isLocalFile()) {
-      auto path = std::filesystem::path{url.toLocalFile().toStdString()};
+      const auto path = std::filesystem::path{url.toLocalFile().toStdString()};
 
       if (apo::import_apo_preset(settings, settings_left, settings_right, path.string())) {
         return true;
