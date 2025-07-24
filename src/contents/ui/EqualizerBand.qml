@@ -1,3 +1,4 @@
+import "Common.js" as Common
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as Controls
@@ -64,6 +65,7 @@ Controls.ItemDelegate {
             id: gainSlider
 
             readonly property string bandName: "band" + delegate.index + "Gain"
+            property real pageSteps: 10
 
             Layout.alignment: Qt.AlignHCenter
             Layout.fillHeight: true
@@ -77,6 +79,21 @@ Controls.ItemDelegate {
             onMoved: {
                 if (value != delegate.bandDB[bandName])
                     delegate.bandDB[bandName] = value;
+            }
+            Keys.onPressed: event => {
+                if (event.key === Qt.Key_PageUp) {
+                    const v = value + pageSteps * stepSize;
+
+                    delegate.bandDB[bandName] = Common.clamp(v, from, to);
+
+                    event.accepted = true;
+                } else if (event.key === Qt.Key_PageDown) {
+                    const v = value - pageSteps * stepSize;
+
+                    delegate.bandDB[bandName] = Common.clamp(v, from, to);
+
+                    event.accepted = true;
+                }
             }
         }
 

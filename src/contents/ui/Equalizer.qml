@@ -52,9 +52,23 @@ Kirigami.ScrollablePage {
 
         fileMode: FileDialog.OpenFiles
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        nameFilters: ["APO Presets (*.txt)"]
+        nameFilters: [i18n("APO Presets") + " (*.txt)"]
         onAccepted: {
             if (pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true)
+                showStatus(i18n("Preset file imported!"));
+            else
+                showStatus(i18n("Failed to import the APO preset file!"));
+        }
+    }
+
+    FileDialog {
+        id: apoGraphicEqFileDialog
+
+        fileMode: FileDialog.OpenFiles
+        currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
+        nameFilters: [i18n("GraphicEQ Presets") + " (*.txt)"]
+        onAccepted: {
+            if (pluginBackend.importApoGraphicEqPreset(apoFileDialog.selectedFiles) === true)
                 showStatus(i18n("Preset file imported!"));
             else
                 showStatus(i18n("Failed to import the APO preset file!"));
@@ -308,6 +322,13 @@ Kirigami.ScrollablePage {
                         icon.name: "document-import-symbolic"
                         onTriggered: {
                             apoFileDialog.open();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Import APO (GraphicEQ)")
+                        icon.name: "document-import-symbolic"
+                        onTriggered: {
+                            apoGraphicEqFileDialog.open();
                         }
                     },
                     Kirigami.Action {
