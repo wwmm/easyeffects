@@ -51,6 +51,5 @@
         <file alias="Speex.qml">contents/ui/Speex.qml</file>
         <file alias="StereoTools.qml">contents/ui/StereoTools.qml</file>
         <file alias="Common.js">contents/ui/Common.js</file>
-        <file alias="EqualizerUi.js">contents/ui/EqualizerUi.js</file>
     </qresource>
 </RCC>

@@ -294,13 +294,13 @@ auto import_preset(db::Equalizer* settings,
             curr_band_type = "Off";
           }
 
-          channel->setProperty(band_type[n].data(), QString::fromStdString(curr_band_type));
+          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf(curr_band_type));
 
         } else {
           // If the frequency is not in the valid range, we assume the filter is
           // unsupported or disabled, so reset to default frequency and set type Off.
           channel->resetProperty(band_frequency[n].data());
-          channel->setProperty(band_type[n].data(), "Off");
+          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Off"));
         }
 
         // Band gain
@@ -324,9 +324,9 @@ auto import_preset(db::Equalizer* settings,
         }
 
         // Band mode
-        channel->setProperty(band_mode[n].data(), "APO (DR)");
+        channel->setProperty(band_mode[n].data(), channel->bandModeLabels().indexOf("APO (DR)"));
       } else {
-        channel->setProperty(band_type[n].data(), "Off");
+        channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Off"));
         channel->resetProperty(band_frequency[n].data());
         channel->resetProperty(band_gain[n].data());
         channel->resetProperty(band_q[n].data());
@@ -345,7 +345,7 @@ auto import_preset(db::Equalizer* settings,
 
 // ### GraphicEQ Section ###
 
-auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ_Band>& bands) -> bool {
+static auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ_Band>& bands) -> bool {
   std::smatch full_match;
 
   // The first parsing stage is to ensure the given string contains a
@@ -481,12 +481,12 @@ auto import_graphiceq_preset(db::Equalizer* settings,
         if (bands[n].freq >= channel->getMinValue(band_frequency[n].data()).value<float>() &&
             bands[n].freq <= channel->getMaxValue(band_frequency[n].data()).value<float>()) {
           channel->setProperty(band_frequency[n].data(), bands[n].freq);
-          channel->setProperty(band_type[n].data(), "Bell");
+          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Bell"));
         } else {
           // If the frequency is not in the valid range, we assume the filter is
           // unsupported or disabled, so reset to default frequency and set type Off.
           channel->resetProperty(band_frequency[n].data());
-          channel->setProperty(band_type[n].data(), "Off");
+          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Off"));
         }
 
         // Band gain
@@ -499,7 +499,7 @@ auto import_graphiceq_preset(db::Equalizer* settings,
           channel->resetProperty(band_gain[n].data());
         }
       } else {
-        channel->setProperty(band_type[n].data(), "Off");
+        channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Off"));
         channel->resetProperty(band_frequency[n].data());
         channel->resetProperty(band_gain[n].data());
       }
