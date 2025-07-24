@@ -343,7 +343,7 @@ void Equalizer::calculateFrequencies() {
 }
 
 bool Equalizer::importApoPreset(const QList<QString>& url_list) {
-  std::ranges::any_of(url_list, [&](const auto& u) {
+  return std::ranges::any_of(url_list, [&](const auto& u) {
     auto url = QUrl(u);
 
     if (url.isLocalFile()) {
@@ -356,6 +356,4 @@ bool Equalizer::importApoPreset(const QList<QString>& url_list) {
 
     return false;
   });
-
-  return false;
 }

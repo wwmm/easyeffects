@@ -343,4 +343,77 @@ auto import_apo_preset(db::Equalizer* settings,
   return true;
 }
 
+// ### GraphicEQ Section ###
+
+auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ_Band>& bands) -> bool {
+  std::smatch full_match;
+
+  // The first parsing stage is to ensure the given string contains a
+  // substring corresponding to the GraphicEQ format reported in the documentation:
+  // https://sourceforge.net/p/equalizerapo/wiki/Configuration%20reference/#graphiceq-since-version-10
+
+  // In order to do it, the following regular expression is used:
+  static const auto re_geq = std::regex(
+      R"(graphiceq\s*:((?:\s*\d+(?:,\d+)?(?:\.\d+)?\s+[+-]?\d+(?:\.\d+)?[ \t]*(?:;|$))+))", std::regex::icase);
+
+  // That regex is quite permissive since:
+  // - It's case insensitive;
+  // - Gain values can be signed (with leading +/-);
+  // - Frequency values can use a comma as thousand separator.
+
+  // Note that the last class does not include the newline as whitespaces to allow
+  // matching the `$` as the end of line (not needed in this case, but it will also
+  // work if the input string will be multiline in the future).
+  // This ensures the last band is captured with or without the final `;`.
+  // The regex has been tested at https://regex101.com/r/JRwf4G/1
+
+  std::regex_search(str, full_match, re_geq);
+
+  // The regex captures the full match and a group related to the sequential bands.
+  if (full_match.size() != 2U) {
+    return false;
+  }
+
+  // Save the substring with all the bands and use it to extract the values.
+  // It can't be const because it's used to store the sub-sequential strings
+  // from the match_result class with suffix(). See the following while loop.
+  auto bands_substr = full_match.str(1);
+
+  // Couldn't we extract the values in one only regex checking also the GraphicEQ format?
+  // No, there's no way. Even with Perl Compatible Regex (PCRE) checking the whole format
+  // and capturing the values will return only the last repeated group (the last band),
+  // but we need all of them.
+  std::smatch band_match;
+  static const auto re_geq_band = std::regex(R"((\d+(?:,\d+)?(?:\.\d+)?)\s+([+-]?\d+(?:\.\d+)?))");
+
+  // C++ regex does not support the global PCRE flag, so we need to repeat the search in a loop.
+  while (std::regex_search(bands_substr, band_match, re_geq_band)) {
+    // The size of the match should be 3:
+    // The full match with two additional groups (frequency and gain value).
+    if (band_match.size() != 3U) {
+      break;
+    }
+
+    struct GraphicEQ_Band band;
+
+    // Extract frequency. It could have a comma as thousands separator
+    // to be removed for the correct float conversion.
+    const auto freq_str = std::regex_replace(band_match.str(1), std::regex(","), "");
+    util::str_to_num(freq_str, band.freq);
+
+    // Extract gain.
+    const auto gain_str = band_match.str(2);
+    util::str_to_num(gain_str, band.gain);
+
+    // Push the band into the vector.
+    bands.push_back(band);
+
+    // Save the sub-sequential string, so the regex can return the match
+    // for the following band (if existing).
+    bands_substr = band_match.suffix().str();
+  }
+
+  return !bands.empty();
+}
+
 }  // namespace apo
