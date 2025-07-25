@@ -47,9 +47,9 @@ Controls.ItemDelegate {
             text: {
                 const f = delegate.bandDB["band" + delegate.index + "Frequency"];
                 if (f < 1000) {
-                    return toLocaleLabel(f, 0, "Hz");
+                    return delegate.toLocaleLabel(f, 0, "Hz");
                 } else {
-                    return toLocaleLabel(f * 0.001, 1, "kHz");
+                    return delegate.toLocaleLabel(f * 0.001, 1, "kHz");
                 }
             }
             enabled: false
@@ -57,7 +57,7 @@ Controls.ItemDelegate {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: i18n("Q") + " " + toLocaleLabel(delegate.bandDB["band" + delegate.index + "Q"], 2, "")
+            text: i18n("Q") + " " + delegate.toLocaleLabel(delegate.bandDB["band" + delegate.index + "Q"], 2, "")
             enabled: false
         }
 
