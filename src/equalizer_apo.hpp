@@ -61,4 +61,6 @@ auto import_graphiceq_preset(db::Equalizer* settings,
                              db::EqualizerChannel* settings_right,
                              const std::string& file_path) -> bool;
 
+auto export_preset(db::Equalizer* settings, db::EqualizerChannel* settings_left, const std::string& file_path) -> bool;
+
 }  // namespace apo

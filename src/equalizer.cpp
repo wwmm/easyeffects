@@ -373,3 +373,8 @@ bool Equalizer::importApoGraphicEqPreset(const QList<QString>& url_list) {
     return false;
   });
 }
+
+bool Equalizer::exportApoPreset(const QString& url) {
+  auto u = QUrl(url);
+  return apo::export_preset(settings, settings_left, u.toLocalFile().toStdString());
+}

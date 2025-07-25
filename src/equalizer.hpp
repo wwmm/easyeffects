@@ -71,6 +71,8 @@ class Equalizer : public PluginBase {
 
   Q_INVOKABLE bool importApoGraphicEqPreset(const QList<QString>& url_list);
 
+  Q_INVOKABLE bool exportApoPreset(const QString& url);
+
   static constexpr int max_bands = 32;
 
  private:

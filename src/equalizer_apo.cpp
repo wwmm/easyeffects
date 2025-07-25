@@ -516,4 +516,49 @@ auto import_graphiceq_preset(db::Equalizer* settings,
   return true;
 }
 
+auto export_preset(db::Equalizer* settings, db::EqualizerChannel* settings_left, const std::string& file_path) -> bool {
+  std::ofstream write_buffer(file_path);
+
+  const double preamp = settings->inputGain();
+
+  write_buffer << "Preamp: " << util::to_string(preamp) << " db"
+               << "\n";
+
+  for (int i = 0, k = 1; i < settings->numBands(); ++i) {
+    const auto curr_band_type =
+        settings_left->bandTypeLabels()[settings_left->property(band_type[i].data()).value<int>()];
+
+    if (curr_band_type == "Off") {
+      // Skip disabled filters, we only export active ones.
+      continue;
+    }
+
+    APO_Band apo_band;
+
+    try {
+      apo_band.type = EasyEffectsToApoFilter.at(curr_band_type.toStdString());
+    } catch (std::out_of_range const&) {
+      // LSP filters not supported in APO defaults to Peak/Bell (see ticket #3882)
+      apo_band.type = "PK";
+    }
+
+    apo_band.freq = settings_left->property(band_frequency[i].data()).value<float>();
+    apo_band.gain = settings_left->property(band_gain[i].data()).value<float>();
+    apo_band.quality = settings_left->property(band_q[i].data()).value<float>();
+
+    write_buffer << "Filter " << util::to_string(k++) << ": ON " << apo_band.type << " Fc "
+                 << util::to_string(apo_band.freq) << " Hz";
+
+    if (curr_band_type == "Bell" || curr_band_type == "Lo-shelf" || curr_band_type == "Hi-shelf") {
+      // According to APO config documentation, gain value should only be defined
+      // for Peak, Low-shelf and High-shelf filters.
+      write_buffer << " Gain " << util::to_string(apo_band.gain) << " dB";
+    }
+
+    write_buffer << " Q " << util::to_string(apo_band.quality) << "\n";
+  }
+
+  return !write_buffer.fail();
+}
+
 }  // namespace apo

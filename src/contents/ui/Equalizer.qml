@@ -75,6 +75,20 @@ Kirigami.ScrollablePage {
         }
     }
 
+    FileDialog {
+        id: apoExportFileDialog
+
+        fileMode: FileDialog.SaveFile
+        currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
+        nameFilters: [i18n("APO Preset") + " (*.txt)"]
+        onAccepted: {
+            if (pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true)
+                showStatus(i18n("Preset file exported!"));
+            else
+                showStatus(i18n("Failed to export the APO preset file!"));
+        }
+    }
+
     ColumnLayout {
         height: equalizerPage.height - equalizerPage.header.height - equalizerPage.footer.height - Kirigami.Units.gridUnit
         Kirigami.CardsLayout {
@@ -329,6 +343,13 @@ Kirigami.ScrollablePage {
                         icon.name: "document-import-symbolic"
                         onTriggered: {
                             apoGraphicEqFileDialog.open();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Export APO")
+                        icon.name: "document-export-symbolic"
+                        onTriggered: {
+                            apoExportFileDialog.open();
                         }
                     },
                     Kirigami.Action {
