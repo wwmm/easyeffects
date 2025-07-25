@@ -68,7 +68,7 @@ Kirigami.ScrollablePage {
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         nameFilters: [i18n("GraphicEQ Presets") + " (*.txt)"]
         onAccepted: {
-            if (pluginBackend.importApoGraphicEqPreset(apoFileDialog.selectedFiles) === true)
+            if (pluginBackend.importApoGraphicEqPreset(apoGraphicEqFileDialog.selectedFiles) === true)
                 showStatus(i18n("Preset file imported!"));
             else
                 showStatus(i18n("Failed to import the APO preset file!"));
