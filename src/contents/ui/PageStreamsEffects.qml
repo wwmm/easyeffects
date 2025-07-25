@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
@@ -58,7 +59,7 @@ Kirigami.Page {
 
                 clip: true
                 reuseItems: true
-                model: pageType === 0 ? PW.ModelOutputStreams : PW.ModelInputStreams
+                model: pageStreamsEffects.pageType === 0 ? PW.ModelOutputStreams : PW.ModelInputStreams
 
                 Kirigami.PlaceholderMessage {
                     anchors.centerIn: parent
@@ -88,7 +89,7 @@ Kirigami.Page {
                                 "name": plugins[n],
                                 "baseName": baseNames[k],
                                 "translatedName": TagsPluginName.PluginsNameModel.translate(baseNames[k]),
-                                "pluginDB": pluginsDB[plugins[n]]
+                                "pluginDB": pageStreamsEffects.pluginsDB[plugins[n]]
                             });
                             break;
                         }
@@ -104,7 +105,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Autogain.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.bassEnhancer:
@@ -113,7 +114,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/BassEnhancer.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.bassLoudness:
@@ -122,7 +123,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/BassLoudness.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.compressor:
@@ -131,7 +132,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Compressor.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.convolver:
@@ -140,7 +141,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Convolver.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.crossfeed:
@@ -149,7 +150,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Crossfeed.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.crystalizer:
@@ -158,7 +159,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Crystalizer.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.delay:
@@ -167,7 +168,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Delay.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.deepfilternet:
@@ -176,7 +177,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/DeepFilterNet.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.deesser:
@@ -185,7 +186,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Deesser.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.equalizer:
@@ -196,7 +197,7 @@ Kirigami.Page {
                         "pluginDB": pluginDB,
                         "leftDB": pageStreamsEffects.pluginsDB[name + "#left"],
                         "rightDB": pageStreamsEffects.pluginsDB[name + "#right"],
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.exciter:
@@ -205,7 +206,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Exciter.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.echoCanceller:
@@ -214,7 +215,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/EchoCanceller.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.expander:
@@ -223,7 +224,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Expander.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.filter:
@@ -232,7 +233,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Filter.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.gate:
@@ -241,7 +242,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Gate.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.levelMeter:
@@ -250,7 +251,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/LevelMeter.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.limiter:
@@ -259,7 +260,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Limiter.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.loudness:
@@ -268,7 +269,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Loudness.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.maximizer:
@@ -277,7 +278,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Maximizer.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.pitch:
@@ -286,7 +287,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Pitch.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.reverb:
@@ -295,7 +296,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Reverb.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.rnnoise:
@@ -304,7 +305,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/RNNoise.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.speex:
@@ -313,7 +314,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/Speex.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 case TagsPluginName.BaseName.stereoTools:
@@ -322,7 +323,7 @@ Kirigami.Page {
                     pluginsStack.push("qrc:ui/StereoTools.qml", {
                         "name": name,
                         "pluginDB": pluginDB,
-                        "pipelineInstance": pipelineInstance
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
                 default:
@@ -334,18 +335,18 @@ Kirigami.Page {
 
             Component.onCompleted: {
                 pluginsListView.currentIndex = -1;
-                populatePluginsListModel(streamDB.plugins);
-                if (streamDB.plugins.length > 0) {
-                    if (!streamDB.plugins.includes(streamDB.visiblePlugin))
-                        streamDB.visiblePlugin = streamDB.plugins[0];
+                populatePluginsListModel(pageStreamsEffects.streamDB.plugins);
+                if (pageStreamsEffects.streamDB.plugins.length > 0) {
+                    if (!pageStreamsEffects.streamDB.plugins.includes(pageStreamsEffects.streamDB.visiblePlugin))
+                        pageStreamsEffects.streamDB.visiblePlugin = pageStreamsEffects.streamDB.plugins[0];
 
-                    pluginsListView.currentIndex = streamDB.plugins.findIndex(v => {
+                    pluginsListView.currentIndex = pageStreamsEffects.streamDB.plugins.findIndex(v => {
                         return v == streamDB.visiblePlugin;
                     });
                     let baseNames = TagsPluginName.PluginsNameModel.getBaseNames();
                     for (let k = 0; k < baseNames.length; k++) {
-                        if (streamDB.visiblePlugin.startsWith(baseNames[k])) {
-                            createPluginStack(streamDB.visiblePlugin, baseNames[k], pluginsDB[streamDB.visiblePlugin]);
+                        if (pageStreamsEffects.streamDB.visiblePlugin.startsWith(baseNames[k])) {
+                            createPluginStack(pageStreamsEffects.streamDB.visiblePlugin, baseNames[k], pageStreamsEffects.pluginsDB[pageStreamsEffects.streamDB.visiblePlugin]);
                             break;
                         }
                     }
@@ -372,7 +373,7 @@ Kirigami.Page {
 
             Connections {
                 function onPipelineChanged() {
-                    const newList = streamDB.plugins;
+                    const newList = pageStreamsEffects.streamDB.plugins;
                     let currentList = [];
                     for (let n = 0; n < pluginsListModel.count; n++) {
                         currentList.push(pluginsListModel.get(n).name);
@@ -394,11 +395,11 @@ Kirigami.Page {
                     for (let n = 0; n < pluginsListModel.count; n++) {
                         newList.push(pluginsListModel.get(n).name);
                     }
-                    if (!Common.equalArrays(streamDB.plugins, newList))
-                        streamDB.plugins = newList;
+                    if (!Common.equalArrays(pageStreamsEffects.streamDB.plugins, newList))
+                        pageStreamsEffects.streamDB.plugins = newList;
 
                     if (newList.length === 0) {
-                        streamDB.visiblePlugin = "";
+                        pageStreamsEffects.streamDB.visiblePlugin = "";
                         while (pluginsStack.depth > 1)
                             pluginsStack.pop();
                     }
@@ -431,10 +432,10 @@ Kirigami.Page {
                     onCurrentItemChanged: {
                         if (pluginsListView.currentItem) {
                             let name = pluginsListView.currentItem.name;
-                            if (streamDB.visiblePlugin !== name) {
-                                streamDB.visiblePlugin = name;
+                            if (pageStreamsEffects.streamDB.visiblePlugin !== name) {
+                                pageStreamsEffects.streamDB.visiblePlugin = name;
                                 let baseName = pluginsListModel.get(pluginsListView.currentIndex).baseName;
-                                createPluginStack(name, baseName, pluginsDB[name]);
+                                createPluginStack(name, baseName, pageStreamsEffects.pluginsDB[name]);
                             }
                         }
                     }
@@ -455,7 +456,7 @@ Kirigami.Page {
                         visible: pluginsListView.count !== 0
 
                         Kirigami.Icon {
-                            source: pageType === 0 ? "source-playlist-symbolic" : "audio-input-microphone-symbolic"
+                            source: pageStreamsEffects.pageType === 0 ? "source-playlist-symbolic" : "audio-input-microphone-symbolic"
                             Layout.preferredWidth: Kirigami.Units.iconSizes.sizeForLabels
                             Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels
                             Layout.leftMargin: Kirigami.Units.mediumSpacing
@@ -463,7 +464,7 @@ Kirigami.Page {
                         }
 
                         Controls.Label {
-                            text: pageType === 0 ? i18n("Players") : i18n("Input Device")
+                            text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Input Device")
                             enabled: false
                         }
                     }
@@ -472,7 +473,7 @@ Kirigami.Page {
                         visible: pluginsListView.count !== 0
 
                         Kirigami.Icon {
-                            source: pageType === 0 ? "audio-speakers-symbolic" : "source-playlist-symbolic"
+                            source: pageStreamsEffects.pageType === 0 ? "audio-speakers-symbolic" : "source-playlist-symbolic"
                             Layout.preferredWidth: Kirigami.Units.iconSizes.sizeForLabels
                             Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels
                             Layout.leftMargin: Kirigami.Units.mediumSpacing
@@ -480,7 +481,7 @@ Kirigami.Page {
                         }
 
                         Controls.Label {
-                            text: pageType === 0 ? "Output Device" : i18n("Recorders")
+                            text: pageStreamsEffects.pageType === 0 ? "Output Device" : i18n("Recorders")
                             enabled: false
                         }
                     }
@@ -517,42 +518,52 @@ Kirigami.Page {
         anchors.fill: parent
     }
 
-    header: EeChart {
-        id: spectrumChart
+    header: ColumnLayout {
+        spacing: 0
 
-        implicitHeight: DB.Manager.spectrum.height
-        seriesType: DB.Manager.spectrum.spectrumShape
-        colorScheme: DB.Manager.spectrum.spectrumColorScheme
-        colorTheme: DB.Manager.spectrum.spectrumColorTheme
-        xMin: DB.Manager.spectrum.minimumFrequency
-        xMax: DB.Manager.spectrum.maximumFrequency
-        yMin: -100
-        yMax: 0
-        logarithimicHorizontalAxis: DB.Manager.spectrum.logarithimicHorizontalAxis
-        dynamicYScale: DB.Manager.spectrum.dynamicYScale
-        xUnit: "Hz"
-        visible: DB.Manager.spectrum.state
-        Component.onCompleted: {
-            headerFrameAnimation.start();
-        }
-        Component.onDestruction: {
-            headerFrameAnimation.stop();
-        }
+        EeChart {
+            id: spectrumChart
 
-        FrameAnimation {
-            id: headerFrameAnimation
+            Layout.fillWidth: true
+            implicitHeight: DB.Manager.spectrum.height
+            seriesType: DB.Manager.spectrum.spectrumShape
+            colorScheme: DB.Manager.spectrum.spectrumColorScheme
+            colorTheme: DB.Manager.spectrum.spectrumColorTheme
+            xMin: DB.Manager.spectrum.minimumFrequency
+            xMax: DB.Manager.spectrum.maximumFrequency
+            yMin: -100
+            yMax: 0
+            logarithimicHorizontalAxis: DB.Manager.spectrum.logarithimicHorizontalAxis
+            dynamicYScale: DB.Manager.spectrum.dynamicYScale
+            xUnit: "Hz"
+            visible: DB.Manager.spectrum.state
+            Component.onCompleted: {
+                headerFrameAnimation.start();
+            }
+            Component.onDestruction: {
+                headerFrameAnimation.stop();
+            }
 
-            onTriggered: {
-                pipelineInstance.requestSpectrumData();
+            FrameAnimation {
+                id: headerFrameAnimation
+
+                onTriggered: {
+                    pipelineInstance.requestSpectrumData();
+                }
+            }
+
+            Connections {
+                function onNewSpectrumData(newData) {
+                    spectrumChart.updateData(newData);
+                }
+
+                target: pipelineInstance
             }
         }
 
-        Connections {
-            function onNewSpectrumData(newData) {
-                spectrumChart.updateData(newData);
-            }
-
-            target: pipelineInstance
+        Kirigami.Separator {
+            Layout.fillWidth: true
+            visible: true
         }
     }
 
@@ -616,11 +627,11 @@ Kirigami.Page {
                     onTriggered: {
                         let left = Number(pipelineInstance.getOutputLevelLeft());
                         let right = Number(pipelineInstance.getOutputLevelRight());
-                        if (isNaN(left) || left < minLeftLevel)
-                            left = minLeftLevel;
+                        if (isNaN(left) || left < pageStreamsEffects.minLeftLevel)
+                            left = pageStreamsEffects.minLeftLevel;
 
-                        if (isNaN(right) || right < minRightLevel)
-                            right = minRightLevel;
+                        if (isNaN(right) || right < pageStreamsEffects.minRightLevel)
+                            right = pageStreamsEffects.minRightLevel;
 
                         if ((left > 0 || right > 0) && actionLevelSaturation.visible !== true)
                             actionLevelSaturation.visible = true;
@@ -642,23 +653,23 @@ Kirigami.Page {
                 position: Controls.ToolBar.Footer
                 actions: [
                     Kirigami.Action {
-                        icon.name: pageType === 0 ? "multimedia-player-symbolic" : "media-record-symbolic"
-                        text: pageType === 0 ? i18n("Players") : i18n("Recorders")
+                        icon.name: pageStreamsEffects.pageType === 0 ? "multimedia-player-symbolic" : "media-record-symbolic"
+                        text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Recorders")
                         checkable: true
-                        checked: streamDB.visiblePage === 0
+                        checked: pageStreamsEffects.streamDB.visiblePage === 0
                         onTriggered: {
                             stackPages.replace(pageStreams);
-                            streamDB.visiblePage = 0;
+                            pageStreamsEffects.streamDB.visiblePage = 0;
                         }
                     },
                     Kirigami.Action {
                         icon.name: "folder-music-symbolic"
                         text: i18n("Effects")
                         checkable: true
-                        checked: streamDB.visiblePage === 1
+                        checked: pageStreamsEffects.streamDB.visiblePage === 1
                         onTriggered: {
                             stackPages.replace(pagePlugins);
-                            streamDB.visiblePage = 1;
+                            pageStreamsEffects.streamDB.visiblePage = 1;
                         }
                     }
                 ]

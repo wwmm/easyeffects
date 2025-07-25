@@ -30,6 +30,11 @@ Kirigami.ScrollablePage {
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
     }
 
+    function showStatus(label) {
+        status.text = label;
+        status.visible = true;
+    }
+
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
@@ -47,12 +52,40 @@ Kirigami.ScrollablePage {
 
         fileMode: FileDialog.OpenFiles
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        nameFilters: ["APO Presets (*.txt)"]
+        nameFilters: [i18n("APO Presets") + " (*.txt)"]
         onAccepted: {
             if (pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true)
-                showPassiveNotification(i18n("Preset files imported!"));
+                showStatus(i18n("Preset file imported!"));
             else
-                showPassiveNotification(i18n("Failed to import the impulse file!"));
+                showStatus(i18n("Failed to import the APO preset file!"));
+        }
+    }
+
+    FileDialog {
+        id: apoGraphicEqFileDialog
+
+        fileMode: FileDialog.OpenFiles
+        currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
+        nameFilters: [i18n("GraphicEQ Presets") + " (*.txt)"]
+        onAccepted: {
+            if (pluginBackend.importApoGraphicEqPreset(apoFileDialog.selectedFiles) === true)
+                showStatus(i18n("Preset file imported!"));
+            else
+                showStatus(i18n("Failed to import the APO preset file!"));
+        }
+    }
+
+    FileDialog {
+        id: apoExportFileDialog
+
+        fileMode: FileDialog.SaveFile
+        currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
+        nameFilters: [i18n("APO Preset") + " (*.txt)"]
+        onAccepted: {
+            if (pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true)
+                showStatus(i18n("Preset file exported!"));
+            else
+                showStatus(i18n("Failed to export the APO preset file!"));
         }
     }
 
@@ -227,82 +260,107 @@ Kirigami.ScrollablePage {
         pluginDB: equalizerPage.pluginDB
     }
 
-    footer: RowLayout {
-        Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`)
-            textFormat: Text.RichText
-            horizontalAlignment: Qt.AlignLeft
-            verticalAlignment: Qt.AlignVCenter
-            Layout.fillWidth: false
-            Layout.leftMargin: Kirigami.Units.smallSpacing
-            color: Kirigami.Theme.disabledTextColor
+    footer: ColumnLayout {
+        Kirigami.InlineMessage {
+            id: status
+
+            Layout.fillWidth: true
+            Layout.maximumWidth: parent.width
+            visible: false
+            showCloseButton: true
         }
 
-        Kirigami.ActionToolBar {
-            Layout.margins: Kirigami.Units.smallSpacing
-            alignment: Qt.AlignRight
-            position: Controls.ToolBar.Footer
-            flat: true
-            actions: [
-                Kirigami.Action {
-                    text: i18n("Show Native Window")
-                    icon.name: "window-duplicate-symbolic"
-                    enabled: DB.Manager.main.showNativePluginUi
-                    checkable: true
-                    checked: pluginBackend.hasNativeUi()
-                    onTriggered: {
-                        if (checked)
-                            pluginBackend.showNativeUi();
-                        else
-                            pluginBackend.closeNativeUi();
+        RowLayout {
+            Controls.Label {
+                text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`)
+                textFormat: Text.RichText
+                horizontalAlignment: Qt.AlignLeft
+                verticalAlignment: Qt.AlignVCenter
+                Layout.fillWidth: false
+                Layout.leftMargin: Kirigami.Units.smallSpacing
+                color: Kirigami.Theme.disabledTextColor
+            }
+
+            Kirigami.ActionToolBar {
+                Layout.margins: Kirigami.Units.smallSpacing
+                alignment: Qt.AlignRight
+                position: Controls.ToolBar.Footer
+                flat: true
+                actions: [
+                    Kirigami.Action {
+                        text: i18n("Show Native Window")
+                        icon.name: "window-duplicate-symbolic"
+                        enabled: DB.Manager.main.showNativePluginUi
+                        checkable: true
+                        checked: pluginBackend.hasNativeUi()
+                        onTriggered: {
+                            if (checked)
+                                pluginBackend.showNativeUi();
+                            else
+                                pluginBackend.closeNativeUi();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Split Channels")
+                        icon.name: "split-symbolic"
+                        checkable: true
+                        checked: pluginDB.splitChannels
+                        onTriggered: {
+                            if (pluginDB.splitChannels != checked)
+                                pluginDB.splitChannels = checked;
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Flat Response")
+                        icon.name: "map-flat-symbolic"
+                        onTriggered: {
+                            pluginBackend.flatResponse();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Calculate Frequencies")
+                        icon.name: "folder-calculate-symbolic"
+                        onTriggered: {
+                            pluginBackend.calculateFrequencies();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Sort Bands")
+                        icon.name: "sort_incr-symbolic"
+                        onTriggered: {
+                            pluginBackend.sortBands();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Import APO")
+                        icon.name: "document-import-symbolic"
+                        onTriggered: {
+                            apoFileDialog.open();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Import APO (GraphicEQ)")
+                        icon.name: "document-import-symbolic"
+                        onTriggered: {
+                            apoGraphicEqFileDialog.open();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Export APO")
+                        icon.name: "document-export-symbolic"
+                        onTriggered: {
+                            apoExportFileDialog.open();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Reset")
+                        icon.name: "edit-reset-symbolic"
+                        onTriggered: {
+                            pluginBackend.reset();
+                        }
                     }
-                },
-                Kirigami.Action {
-                    text: i18n("Split Channels")
-                    icon.name: "split-symbolic"
-                    checkable: true
-                    checked: pluginDB.splitChannels
-                    onTriggered: {
-                        if (pluginDB.splitChannels != checked)
-                            pluginDB.splitChannels = checked;
-                    }
-                },
-                Kirigami.Action {
-                    text: i18n("Flat Response")
-                    icon.name: "map-flat-symbolic"
-                    onTriggered: {
-                        pluginBackend.flatResponse();
-                    }
-                },
-                Kirigami.Action {
-                    text: i18n("Calculate Frequencies")
-                    icon.name: "folder-calculate-symbolic"
-                    onTriggered: {
-                        pluginBackend.calculateFrequencies();
-                    }
-                },
-                Kirigami.Action {
-                    text: i18n("Sort Bands")
-                    icon.name: "sort_incr-symbolic"
-                    onTriggered: {
-                        pluginBackend.sortBands();
-                    }
-                },
-                Kirigami.Action {
-                    text: i18n("Import APO")
-                    icon.name: "document-import-symbolic"
-                    onTriggered: {
-                        apoFileDialog.open();
-                    }
-                },
-                Kirigami.Action {
-                    text: i18n("Reset")
-                    icon.name: "edit-reset-symbolic"
-                    onTriggered: {
-                        pluginBackend.reset();
-                    }
-                }
-            ]
+                ]
+            }
         }
     }
 }

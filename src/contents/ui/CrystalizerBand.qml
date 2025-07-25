@@ -1,9 +1,10 @@
+import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 
 Controls.ItemDelegate {
-    id: listItemDelegate
+    id: delegate
 
     required property int index
     required property var pluginDB
@@ -33,10 +34,10 @@ Controls.ItemDelegate {
                 Layout.alignment: Qt.AlignCenter
                 text: i18n("Mute")
                 checkable: true
-                checked: pluginDB["muteBand" + index]
+                checked: delegate.pluginDB["muteBand" + delegate.index]
                 onCheckedChanged: {
-                    if (checked != pluginDB["muteBand" + index])
-                        pluginDB["muteBand" + index] = checked;
+                    if (checked != delegate.pluginDB["muteBand" + delegate.index])
+                        delegate.pluginDB["muteBand" + delegate.index] = checked;
                 }
             }
 
@@ -44,10 +45,10 @@ Controls.ItemDelegate {
                 Layout.alignment: Qt.AlignCenter
                 text: i18n("Bypass")
                 checkable: true
-                checked: pluginDB["bypassBand" + index]
+                checked: delegate.pluginDB["bypassBand" + delegate.index]
                 onCheckedChanged: {
-                    if (checked != pluginDB["bypassBand" + index])
-                        pluginDB["bypassBand" + index] = checked;
+                    if (checked != delegate.pluginDB["bypassBand" + delegate.index])
+                        delegate.pluginDB["bypassBand" + delegate.index] = checked;
                 }
             }
         }
@@ -72,7 +73,7 @@ Controls.ItemDelegate {
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
             text: {
-                switch (index) {
+                switch (delegate.index) {
                 case 0:
                     return toLocaleLabel(250, 0, "Hz");
                 case 1:
@@ -109,17 +110,34 @@ Controls.ItemDelegate {
         Controls.Slider {
             id: intensitySlider
 
+            property real pageSteps: 10
+
             Layout.alignment: Qt.AlignHCenter
             Layout.fillHeight: true
             orientation: Qt.Vertical
-            from: pluginDB.getMinValue("intensityBand" + index)
-            to: pluginDB.getMaxValue("intensityBand" + index)
-            value: pluginDB["intensityBand" + index]
+            from: delegate.pluginDB.getMinValue("intensityBand" + delegate.index)
+            to: delegate.pluginDB.getMaxValue("intensityBand" + delegate.index)
+            value: delegate.pluginDB["intensityBand" + delegate.index]
             stepSize: 1
-            enabled: !pluginDB["muteBand" + index] && !pluginDB["bypassBand" + index]
+            enabled: !delegate.pluginDB["muteBand" + delegate.index] && !delegate.pluginDB["bypassBand" + delegate.index]
             onMoved: {
-                if (value != pluginDB["intensityBand" + index])
-                    pluginDB["intensityBand" + index] = value;
+                if (value != delegate.pluginDB["intensityBand" + delegate.index])
+                    delegate.pluginDB["intensityBand" + delegate.index] = value;
+            }
+            Keys.onPressed: event => {
+                if (event.key === Qt.Key_PageUp) {
+                    const v = value + pageSteps * stepSize;
+
+                    delegate.pluginDB["intensityBand" + delegate.index] = Common.clamp(v, from, to);
+
+                    event.accepted = true;
+                } else if (event.key === Qt.Key_PageDown) {
+                    const v = value - pageSteps * stepSize;
+
+                    delegate.pluginDB["intensityBand" + delegate.index] = Common.clamp(v, from, to);
+
+                    event.accepted = true;
+                }
             }
         }
 

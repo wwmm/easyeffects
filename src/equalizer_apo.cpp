@@ -219,10 +219,10 @@ static auto parse_apo_config_line(const std::string& line, struct APO_Band& filt
   return true;
 }
 
-auto import_apo_preset(db::Equalizer* settings,
-                       db::EqualizerChannel* settings_left,
-                       db::EqualizerChannel* settings_right,
-                       const std::string& file_path) -> bool {
+auto import_preset(db::Equalizer* settings,
+                   db::EqualizerChannel* settings_left,
+                   db::EqualizerChannel* settings_right,
+                   const std::string& file_path) -> bool {
   std::filesystem::path p{file_path};
 
   if (!std::filesystem::is_regular_file(p)) {
@@ -294,13 +294,13 @@ auto import_apo_preset(db::Equalizer* settings,
             curr_band_type = "Off";
           }
 
-          channel->setProperty(band_type[n].data(), QString::fromStdString(curr_band_type));
+          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf(curr_band_type));
 
         } else {
           // If the frequency is not in the valid range, we assume the filter is
           // unsupported or disabled, so reset to default frequency and set type Off.
           channel->resetProperty(band_frequency[n].data());
-          channel->setProperty(band_type[n].data(), "Off");
+          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Off"));
         }
 
         // Band gain
@@ -324,9 +324,9 @@ auto import_apo_preset(db::Equalizer* settings,
         }
 
         // Band mode
-        channel->setProperty(band_mode[n].data(), "APO (DR)");
+        channel->setProperty(band_mode[n].data(), channel->bandModeLabels().indexOf("APO (DR)"));
       } else {
-        channel->setProperty(band_type[n].data(), "Off");
+        channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Off"));
         channel->resetProperty(band_frequency[n].data());
         channel->resetProperty(band_gain[n].data());
         channel->resetProperty(band_q[n].data());
@@ -341,6 +341,224 @@ auto import_apo_preset(db::Equalizer* settings,
   }
 
   return true;
+}
+
+// ### GraphicEQ Section ###
+
+static auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ_Band>& bands) -> bool {
+  std::smatch full_match;
+
+  // The first parsing stage is to ensure the given string contains a
+  // substring corresponding to the GraphicEQ format reported in the documentation:
+  // https://sourceforge.net/p/equalizerapo/wiki/Configuration%20reference/#graphiceq-since-version-10
+
+  // In order to do it, the following regular expression is used:
+  static const auto re_geq = std::regex(
+      R"(graphiceq\s*:((?:\s*\d+(?:,\d+)?(?:\.\d+)?\s+[+-]?\d+(?:\.\d+)?[ \t]*(?:;|$))+))", std::regex::icase);
+
+  // That regex is quite permissive since:
+  // - It's case insensitive;
+  // - Gain values can be signed (with leading +/-);
+  // - Frequency values can use a comma as thousand separator.
+
+  // Note that the last class does not include the newline as whitespaces to allow
+  // matching the `$` as the end of line (not needed in this case, but it will also
+  // work if the input string will be multiline in the future).
+  // This ensures the last band is captured with or without the final `;`.
+  // The regex has been tested at https://regex101.com/r/JRwf4G/1
+
+  std::regex_search(str, full_match, re_geq);
+
+  // The regex captures the full match and a group related to the sequential bands.
+  if (full_match.size() != 2U) {
+    return false;
+  }
+
+  // Save the substring with all the bands and use it to extract the values.
+  // It can't be const because it's used to store the sub-sequential strings
+  // from the match_result class with suffix(). See the following while loop.
+  auto bands_substr = full_match.str(1);
+
+  // Couldn't we extract the values in one only regex checking also the GraphicEQ format?
+  // No, there's no way. Even with Perl Compatible Regex (PCRE) checking the whole format
+  // and capturing the values will return only the last repeated group (the last band),
+  // but we need all of them.
+  std::smatch band_match;
+  static const auto re_geq_band = std::regex(R"((\d+(?:,\d+)?(?:\.\d+)?)\s+([+-]?\d+(?:\.\d+)?))");
+
+  // C++ regex does not support the global PCRE flag, so we need to repeat the search in a loop.
+  while (std::regex_search(bands_substr, band_match, re_geq_band)) {
+    // The size of the match should be 3:
+    // The full match with two additional groups (frequency and gain value).
+    if (band_match.size() != 3U) {
+      break;
+    }
+
+    struct GraphicEQ_Band band;
+
+    // Extract frequency. It could have a comma as thousands separator
+    // to be removed for the correct float conversion.
+    const auto freq_str = std::regex_replace(band_match.str(1), std::regex(","), "");
+    util::str_to_num(freq_str, band.freq);
+
+    // Extract gain.
+    const auto gain_str = band_match.str(2);
+    util::str_to_num(gain_str, band.gain);
+
+    // Push the band into the vector.
+    bands.push_back(band);
+
+    // Save the sub-sequential string, so the regex can return the match
+    // for the following band (if existing).
+    bands_substr = band_match.suffix().str();
+  }
+
+  return !bands.empty();
+}
+
+auto import_graphiceq_preset(db::Equalizer* settings,
+                             db::EqualizerChannel* settings_left,
+                             db::EqualizerChannel* settings_right,
+                             const std::string& file_path) -> bool {
+  std::filesystem::path p{file_path};
+
+  if (!std::filesystem::is_regular_file(p)) {
+    return false;
+  }
+
+  std::ifstream eq_file;
+  eq_file.open(p.c_str());
+
+  std::vector<struct GraphicEQ_Band> bands;
+
+  if (const auto re = std::regex(R"(^[ \t]*#)"); eq_file.is_open()) {
+    for (std::string line; std::getline(eq_file, line);) {
+      if (std::regex_search(line, re)) {  // Avoid commented lines
+        continue;
+      }
+      if (parse_graphiceq_config(line, bands)) {
+        break;
+      }
+    }
+  }
+
+  eq_file.close();
+
+  if (bands.empty()) {
+    return false;
+  }
+
+  /* Sort bands by freq is made by user through Equalizer::sort_bands()
+  std::ranges::stable_sort(bands, {}, &GraphicEQ_Band::freq); */
+
+  const auto& max_bands = settings->defaultNumBandsValue();
+
+  // Reset preamp
+  settings->resetProperty("input-gain");
+
+  // Apply GraphicEQ parameters obtained
+
+  settings->setNumBands(std::min(static_cast<int>(bands.size()), max_bands));
+
+  std::vector<db::EqualizerChannel*> settings_channels;
+
+  // Whether to apply the parameters to both channels or the selected one only
+  if (!settings->splitChannels()) {
+    settings_channels.push_back(settings_left);
+    settings_channels.push_back(settings_right);
+  } else if (settings->viewLeftChannel()) {
+    settings_channels.push_back(settings_left);
+  } else {
+    settings_channels.push_back(settings_right);
+  }
+
+  // Apply GraphicEQ parameters obtained for each band
+  for (int n = 0U, geq_bands = bands.size(); n < max_bands; n++) {
+    for (auto* channel : settings_channels) {
+      if (n < geq_bands) {
+        // Band frequency and type
+
+        if (bands[n].freq >= channel->getMinValue(band_frequency[n].data()).value<float>() &&
+            bands[n].freq <= channel->getMaxValue(band_frequency[n].data()).value<float>()) {
+          channel->setProperty(band_frequency[n].data(), bands[n].freq);
+          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Bell"));
+        } else {
+          // If the frequency is not in the valid range, we assume the filter is
+          // unsupported or disabled, so reset to default frequency and set type Off.
+          channel->resetProperty(band_frequency[n].data());
+          channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Off"));
+        }
+
+        // Band gain
+
+        if (bands[n].gain >= channel->getMinValue(band_gain[n].data()).value<float>() &&
+            bands[n].gain <= channel->getMaxValue(band_gain[n].data()).value<float>()) {
+          channel->setProperty(band_gain[n].data(), bands[n].gain);
+
+        } else {
+          channel->resetProperty(band_gain[n].data());
+        }
+      } else {
+        channel->setProperty(band_type[n].data(), channel->bandTypeLabels().indexOf("Off"));
+        channel->resetProperty(band_frequency[n].data());
+        channel->resetProperty(band_gain[n].data());
+      }
+
+      channel->resetProperty(band_q[n].data());
+      channel->resetProperty(band_mode[n].data());
+      channel->resetProperty(band_width[n].data());
+      channel->resetProperty(band_slope[n].data());
+      channel->resetProperty(band_solo[n].data());
+      channel->resetProperty(band_mute[n].data());
+    }
+  }
+
+  return true;
+}
+
+auto export_preset(db::Equalizer* settings, db::EqualizerChannel* settings_left, const std::string& file_path) -> bool {
+  std::ofstream write_buffer(file_path);
+
+  const double preamp = settings->inputGain();
+
+  write_buffer << "Preamp: " << util::to_string(preamp) << " db"
+               << "\n";
+
+  for (int i = 0, k = 1; i < settings->numBands(); ++i) {
+    const auto curr_band_type =
+        settings_left->bandTypeLabels()[settings_left->property(band_type[i].data()).value<int>()];
+
+    if (curr_band_type == "Off") {
+      // Skip disabled filters, we only export active ones.
+      continue;
+    }
+
+    APO_Band apo_band;
+
+    try {
+      apo_band.type = EasyEffectsToApoFilter.at(curr_band_type.toStdString());
+    } catch (std::out_of_range const&) {
+      // LSP filters not supported in APO defaults to Peak/Bell (see ticket #3882)
+      apo_band.type = "PK";
+    }
+
+    apo_band.freq = settings_left->property(band_frequency[i].data()).value<float>();
+    apo_band.gain = settings_left->property(band_gain[i].data()).value<float>();
+    apo_band.quality = settings_left->property(band_q[i].data()).value<float>();
+
+    write_buffer << "Filter " << util::to_string(k++) << ": ON " << apo_band.type << " Fc "
+                 << util::to_string(apo_band.freq) << " Hz";
+
+    if (curr_band_type == "Bell" || curr_band_type == "Lo-shelf" || curr_band_type == "Hi-shelf") {
+      // According to APO config documentation, gain value should only be defined
+      // for Peak, Low-shelf and High-shelf filters.
+      write_buffer << " Gain " << util::to_string(apo_band.gain) << " dB";
+    }
+
+    write_buffer << " Q " << util::to_string(apo_band.quality) << "\n";
+  }
+
+  return !write_buffer.fail();
 }
 
 }  // namespace apo

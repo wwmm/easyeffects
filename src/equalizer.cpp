@@ -343,19 +343,38 @@ void Equalizer::calculateFrequencies() {
 }
 
 bool Equalizer::importApoPreset(const QList<QString>& url_list) {
-  std::ranges::any_of(url_list, [&](const auto& u) {
-    const auto url = QUrl(u);
+  return std::ranges::any_of(url_list, [&](const auto& u) {
+    auto url = QUrl(u);
 
     if (url.isLocalFile()) {
       const auto path = std::filesystem::path{url.toLocalFile().toStdString()};
 
-      if (apo::import_apo_preset(settings, settings_left, settings_right, path.string())) {
+      if (apo::import_preset(settings, settings_left, settings_right, path.string())) {
         return true;
       }
     }
 
     return false;
   });
+}
 
-  return false;
+bool Equalizer::importApoGraphicEqPreset(const QList<QString>& url_list) {
+  return std::ranges::any_of(url_list, [&](const auto& u) {
+    auto url = QUrl(u);
+
+    if (url.isLocalFile()) {
+      auto path = std::filesystem::path{url.toLocalFile().toStdString()};
+
+      if (apo::import_graphiceq_preset(settings, settings_left, settings_right, path.string())) {
+        return true;
+      }
+    }
+
+    return false;
+  });
+}
+
+bool Equalizer::exportApoPreset(const QString& url) {
+  auto u = QUrl(url);
+  return apo::export_preset(settings, settings_left, u.toLocalFile().toStdString());
 }
