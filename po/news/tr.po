@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-22 19:23+0000\n"
+"POT-Creation-Date: 2025-07-25 14:44+0000\n"
 "PO-Revision-Date: 2024-04-28 15:36+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/"
@@ -76,6 +76,10 @@ msgstr ""
 "Easy Effects başlatıldığında, son oturumda kullanılan ayarlamaları "
 "rahatlıkla hatırlayacaktır. Tüm geçerli ayarları profil olarak kaydetmek de "
 "mümkündür."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
+msgid "Wellington Wallace"
+msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "The main page showing two audio output apps"
@@ -1418,9 +1422,6 @@ msgid ""
 msgstr ""
 "Yeni kütüphaneler kullanılıyor ve daha önce isteğe bağlı olan "
 "kütüphanelerden bazıları artık gerekli"
-
-#~ msgid "Wellington Wallace"
-#~ msgstr "Wellington Wallace"
 
 #~ msgid "This release adds the following features:"
 #~ msgstr "Bu sürüm aşağıdaki özellikleri ekler:"
