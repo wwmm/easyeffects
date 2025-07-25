@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-22 19:23+0000\n"
-"PO-Revision-Date: 2025-07-09 01:02+0000\n"
+"PO-Revision-Date: 2025-07-25 08:03+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ru/>\n"
@@ -190,6 +190,8 @@ msgid ""
 "Fixed a bug in the pitch plugin that made the cents and the octaves control "
 "to not be reapplied when EasyEffects was restarted"
 msgstr ""
+"Исправлена ошибка в плагине тона, из-за которой при перезапуске EasyEffects "
+"не применялись настройки центов и октав"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
