@@ -107,23 +107,16 @@ void EqualizerPreset::save_channel(nlohmann::json& json, db::EqualizerChannel* s
 }
 
 void EqualizerPreset::load(const nlohmann::json& json) {
-  // update_key<bool>(json.at(section).at(instance_name), settings, "bypass", "bypass");
+  UPDATE_PROPERTY("bypass", Bypass);
+  UPDATE_PROPERTY("input-gain", InputGain);
+  UPDATE_PROPERTY("output-gain", OutputGain);
+  UPDATE_PROPERTY("num-bands", NumBands);
+  UPDATE_PROPERTY("split-channels", SplitChannels);
+  UPDATE_PROPERTY("balance", Balance);
+  UPDATE_PROPERTY("pitch-left", PitchLeft);
+  UPDATE_PROPERTY("pitch-right", PitchRight);
 
-  // update_key<double>(json.at(section).at(instance_name), settings, "input-gain", "input-gain");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "output-gain", "output-gain");
-
-  // update_key<gchar*>(json.at(section).at(instance_name), settings, "mode", "mode");
-
-  // update_key<int>(json.at(section).at(instance_name), settings, "num-bands", "num-bands");
-
-  // update_key<bool>(json.at(section).at(instance_name), settings, "split-channels", "split-channels");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "balance", "balance");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "pitch-left", "pitch-left");
-
-  // update_key<double>(json.at(section).at(instance_name), settings, "pitch-right", "pitch-right");
+  UPDATE_ENUM_LIKE_PROPERTY("mode", Mode);
 
   const auto nbands = settings->numBands();
 
