@@ -50,21 +50,21 @@ EqualizerPreset::EqualizerPreset(PipelineType pipeline_type, const std::string& 
 }
 
 void EqualizerPreset::save(nlohmann::json& json) {
-  // json[section][instance_name]["bypass"] = g_settings_get_boolean(settings, "bypass") != 0;
+  json[section][instance_name]["bypass"] = settings->bypass();
 
-  // json[section][instance_name]["input-gain"] = g_settings_get_double(settings, "input-gain");
+  json[section][instance_name]["input-gain"] = settings->inputGain();
 
-  // json[section][instance_name]["output-gain"] = g_settings_get_double(settings, "output-gain");
+  json[section][instance_name]["output-gain"] = settings->outputGain();
 
-  // json[section][instance_name]["mode"] = util::gsettings_get_string(settings, "mode");
+  json[section][instance_name]["mode"] = settings->defaultModeLabelsValue()[settings->mode()].toStdString();
 
-  // json[section][instance_name]["split-channels"] = g_settings_get_boolean(settings, "split-channels") != 0;
+  json[section][instance_name]["split-channels"] = settings->splitChannels();
 
-  // json[section][instance_name]["balance"] = g_settings_get_double(settings, "balance");
+  json[section][instance_name]["balance"] = settings->balance();
 
-  // json[section][instance_name]["pitch-left"] = g_settings_get_double(settings, "pitch-left");
+  json[section][instance_name]["pitch-left"] = settings->pitchLeft();
 
-  // json[section][instance_name]["pitch-right"] = g_settings_get_double(settings, "pitch-right");
+  json[section][instance_name]["pitch-right"] = settings->pitchRight();
 
   const auto nbands = settings->numBands();
 
@@ -80,27 +80,30 @@ void EqualizerPreset::save(nlohmann::json& json) {
 }
 
 void EqualizerPreset::save_channel(nlohmann::json& json, db::EqualizerChannel* settings, const int& nbands) {
-  // for (int n = 0; n < nbands; n++) {
-  //   const auto* const bandn = band_id[n];
+  for (int n = 0; n < nbands; n++) {
+    const auto* const bandn = band_id[n];
 
-  //   json[bandn]["type"] = util::gsettings_get_string(settings, band_type[n].data());
+    json[bandn]["type"] =
+        settings->bandTypeLabels()[settings->property(band_type[n].data()).value<int>()].toStdString();
 
-  //   json[bandn]["mode"] = util::gsettings_get_string(settings, band_mode[n].data());
+    json[bandn]["mode"] =
+        settings->bandModeLabels()[settings->property(band_mode[n].data()).value<int>()].toStdString();
 
-  //   json[bandn]["slope"] = util::gsettings_get_string(settings, band_slope[n].data());
+    json[bandn]["slope"] =
+        settings->bandSlopeLabels()[settings->property(band_slope[n].data()).value<int>()].toStdString();
 
-  //   json[bandn]["solo"] = g_settings_get_boolean(settings, band_solo[n].data()) != 0;
+    json[bandn]["solo"] = settings->property(band_solo[n].data()).value<bool>();
 
-  //   json[bandn]["mute"] = g_settings_get_boolean(settings, band_mute[n].data()) != 0;
+    json[bandn]["mute"] = settings->property(band_mute[n].data()).value<bool>();
 
-  //   json[bandn]["gain"] = g_settings_get_double(settings, band_gain[n].data());
+    json[bandn]["gain"] = settings->property(band_gain[n].data()).value<double>();
 
-  //   json[bandn]["frequency"] = g_settings_get_double(settings, band_frequency[n].data());
+    json[bandn]["frequency"] = settings->property(band_frequency[n].data()).value<double>();
 
-  //   json[bandn]["q"] = g_settings_get_double(settings, band_q[n].data());
+    json[bandn]["q"] = settings->property(band_q[n].data()).value<double>();
 
-  //   json[bandn]["width"] = g_settings_get_double(settings, band_width[n].data());
-  // }
+    json[bandn]["width"] = settings->property(band_width[n].data()).value<double>();
+  }
 }
 
 void EqualizerPreset::load(const nlohmann::json& json) {
