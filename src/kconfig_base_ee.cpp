@@ -61,3 +61,15 @@ void KConfigBaseEE::resetProperty(const QString& itemName) {
     item->setDefault();
   }
 }
+
+QVariant KConfigBaseEE::getDefaultValue(const QString& itemName) {
+  if (itemName.isEmpty()) {
+    return {};
+  }
+
+  if (auto item = findItem(itemName); item != nullptr) {
+    return item->getDefault();
+  }
+
+  return {};
+}

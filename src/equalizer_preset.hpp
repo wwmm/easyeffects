@@ -41,7 +41,7 @@ class EqualizerPreset : public PluginPresetBase {
 
   static void save_channel(nlohmann::json& json, db::EqualizerChannel* settings, const int& nbands);
 
-  void load_channel(const nlohmann::json& json, db::EqualizerChannel* settings, const int& nbands);
+  static void load_channel(const nlohmann::json& json, db::EqualizerChannel* settings, const int& nbands);
 
   void load_legacy_preset();
 };

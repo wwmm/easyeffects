@@ -29,6 +29,7 @@
 #include "plugin_preset_base.hpp"
 #include "presets_macros.hpp"
 #include "tags_equalizer.hpp"
+#include "util.hpp"
 
 using namespace tags::equalizer;
 
@@ -130,25 +131,45 @@ void EqualizerPreset::load(const nlohmann::json& json) {
 }
 
 void EqualizerPreset::load_channel(const nlohmann::json& json, db::EqualizerChannel* settings, const int& nbands) {
-  // for (int n = 0; n < nbands; n++) {
-  //   const auto bandn = "band" + util::to_string(n);
+  for (int n = 0; n < nbands; n++) {
+    const auto bandn = "band" + util::to_string(n);
 
-  //   update_key<gchar*>(json.at(bandn), settings, band_type[n].data(), "type");
+    settings->setProperty(
+        band_type[n].data(),
+        settings->bandTypeLabels().indexOf(json.at(bandn).value(
+            "type",
+            settings->bandTypeLabels()[settings->getDefaultValue(band_type[n].data()).value<int>()].toStdString())));
 
-  //   update_key<gchar*>(json.at(bandn), settings, band_mode[n].data(), "mode");
+    settings->setProperty(
+        band_mode[n].data(),
+        settings->bandModeLabels().indexOf(json.at(bandn).value(
+            "mode",
+            settings->bandModeLabels()[settings->getDefaultValue(band_mode[n].data()).value<int>()].toStdString())));
 
-  //   update_key<gchar*>(json.at(bandn), settings, band_slope[n].data(), "slope");
+    settings->setProperty(
+        band_slope[n].data(),
+        settings->bandSlopeLabels().indexOf(json.at(bandn).value(
+            "slope",
+            settings->bandSlopeLabels()[settings->getDefaultValue(band_slope[n].data()).value<int>()].toStdString())));
 
-  //   update_key<bool>(json.at(bandn), settings, band_solo[n].data(), "solo");
+    settings->setProperty(band_solo[n].data(),
+                          json.at(bandn).value("solo", settings->getDefaultValue(band_solo[n].data()).value<bool>()));
 
-  //   update_key<bool>(json.at(bandn), settings, band_mute[n].data(), "mute");
+    settings->setProperty(band_mute[n].data(),
+                          json.at(bandn).value("mute", settings->getDefaultValue(band_mute[n].data()).value<bool>()));
 
-  //   update_key<double>(json.at(bandn), settings, band_gain[n].data(), "gain");
+    settings->setProperty(band_gain[n].data(),
+                          json.at(bandn).value("gain", settings->getDefaultValue(band_gain[n].data()).value<double>()));
 
-  //   update_key<double>(json.at(bandn), settings, band_frequency[n].data(), "frequency");
+    settings->setProperty(
+        band_frequency[n].data(),
+        json.at(bandn).value("frequency", settings->getDefaultValue(band_frequency[n].data()).value<double>()));
 
-  //   update_key<double>(json.at(bandn), settings, band_q[n].data(), "q");
+    settings->setProperty(band_q[n].data(),
+                          json.at(bandn).value("q", settings->getDefaultValue(band_q[n].data()).value<double>()));
 
-  //   update_key<double>(json.at(bandn), settings, band_width[n].data(), "width");
-  // }
+    settings->setProperty(
+        band_width[n].data(),
+        json.at(bandn).value("width", settings->getDefaultValue(band_width[n].data()).value<double>()));
+  }
 }
