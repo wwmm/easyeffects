@@ -9,3 +9,4 @@ Steps:
 - Create the plugin qml file inside src/contents/ui/
 - Add the qml file to "src/resources.qrc"
 - Create the plugin qml window instance inside the function "createPluginStack" defined in the file "src/contents/ui/PageStreamsEffects.qml"
+- Create the plugin preset wrapper inside "Manager::create_wrapper"
