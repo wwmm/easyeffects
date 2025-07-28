@@ -55,9 +55,9 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("APO Presets") + " (*.txt)"]
         onAccepted: {
             if (pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true)
-                showStatus(i18n("Preset file imported!"));
+                showStatus(i18n("Preset File Imported."));
             else
-                showStatus(i18n("Failed to import the APO preset file!"));
+                showStatus(i18n("Failed to Import the APO Preset File."));
         }
     }
 
@@ -69,9 +69,9 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("GraphicEQ Presets") + " (*.txt)"]
         onAccepted: {
             if (pluginBackend.importApoGraphicEqPreset(apoGraphicEqFileDialog.selectedFiles) === true)
-                showStatus(i18n("Preset file imported!"));
+                showStatus(i18n("Preset File Imported."));
             else
-                showStatus(i18n("Failed to import the APO preset file!"));
+                showStatus(i18n("Failed to Import the APO Preset File."));
         }
     }
 
@@ -83,9 +83,9 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("APO Preset") + " (*.txt)"]
         onAccepted: {
             if (pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true)
-                showStatus(i18n("Preset file exported!"));
+                showStatus(i18n("Preset File Exported."));
             else
-                showStatus(i18n("Failed to export the APO preset file!"));
+                showStatus(i18n("Failed to Export the APO Preset File."));
         }
     }
 

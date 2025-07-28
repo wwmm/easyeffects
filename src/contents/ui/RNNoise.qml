@@ -44,9 +44,9 @@ Kirigami.ScrollablePage {
         nameFilters: ["RNNoise (*.rnnn)"]
         onAccepted: {
             if (Presets.Manager.importRNNoiseModel(fileDialog.selectedFiles) === 0)
-                showStatus(i18n("Model files imported!"));
+                showStatus(i18n("Model Files Imported."));
             else
-                showStatus(i18n("Failed to import the model file!"));
+                showStatus(i18n("Failed to Import the Model File."));
         }
     }
 
