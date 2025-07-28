@@ -30,8 +30,16 @@ Kirigami.ScrollablePage {
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
     }
 
-    function showStatus(label) {
+    function showStatus(label, positive = true) {
         status.text = label;
+
+        if (positive) {
+            status.type = Kirigami.MessageType.Positive;
+            autoHideStatusTimer.start();
+        } else {
+            status.type = Kirigami.MessageType.Error;
+        }
+
         status.visible = true;
     }
 
@@ -55,9 +63,9 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("APO Presets") + " (*.txt)"]
         onAccepted: {
             if (pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true)
-                showStatus(i18n("Preset file imported!"));
+                showStatus(i18n("APO Preset File Imported."));
             else
-                showStatus(i18n("Failed to import the APO preset file!"));
+                showStatus(i18n("Failed to Import the APO Preset File."), false);
         }
     }
 
@@ -69,9 +77,9 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("GraphicEQ Presets") + " (*.txt)"]
         onAccepted: {
             if (pluginBackend.importApoGraphicEqPreset(apoGraphicEqFileDialog.selectedFiles) === true)
-                showStatus(i18n("Preset file imported!"));
+                showStatus(i18n("GraphicEQ Preset File Imported."));
             else
-                showStatus(i18n("Failed to import the APO preset file!"));
+                showStatus(i18n("Failed to Import the GraphicEQ Preset File."), false);
         }
     }
 
@@ -83,9 +91,9 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("APO Preset") + " (*.txt)"]
         onAccepted: {
             if (pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true)
-                showStatus(i18n("Preset file exported!"));
+                showStatus(i18n("APO Preset File Exported."));
             else
-                showStatus(i18n("Failed to export the APO preset file!"));
+                showStatus(i18n("Failed to Export the APO Preset File."), false);
         }
     }
 
@@ -268,6 +276,15 @@ Kirigami.ScrollablePage {
             Layout.maximumWidth: parent.width
             visible: false
             showCloseButton: true
+        }
+
+        Timer {
+            id: autoHideStatusTimer
+            interval: 5000
+            onTriggered: {
+                status.visible = false;
+                autoHideStatusTimer.stop();
+            }
         }
 
         RowLayout {
