@@ -30,10 +30,17 @@ Kirigami.ScrollablePage {
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
     }
 
-    function showStatus(label) {
+    function showStatus(label, positive = true) {
         status.text = label;
+
+        if (positive) {
+            status.type = Kirigami.MessageType.Positive;
+            autoHideStatusTimer.start();
+        } else {
+            status.type = Kirigami.MessageType.Error;
+        }
+
         status.visible = true;
-        autoHideStatusTimer.start();
     }
 
     Component.onCompleted: {
@@ -56,9 +63,9 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("APO Presets") + " (*.txt)"]
         onAccepted: {
             if (pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true)
-                showStatus(i18n("Preset File Imported."));
+                showStatus(i18n("APO Preset File Imported."));
             else
-                showStatus(i18n("Failed to Import the APO Preset File."));
+                showStatus(i18n("Failed to Import the APO Preset File."), false);
         }
     }
 
@@ -70,9 +77,9 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("GraphicEQ Presets") + " (*.txt)"]
         onAccepted: {
             if (pluginBackend.importApoGraphicEqPreset(apoGraphicEqFileDialog.selectedFiles) === true)
-                showStatus(i18n("Preset File Imported."));
+                showStatus(i18n("GraphicEQ Preset File Imported."));
             else
-                showStatus(i18n("Failed to Import the APO Preset File."));
+                showStatus(i18n("Failed to Import the GraphicEQ Preset File."), false);
         }
     }
 
@@ -84,9 +91,9 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("APO Preset") + " (*.txt)"]
         onAccepted: {
             if (pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true)
-                showStatus(i18n("Preset File Exported."));
+                showStatus(i18n("APO Preset File Exported."));
             else
-                showStatus(i18n("Failed to Export the APO Preset File."));
+                showStatus(i18n("Failed to Export the APO Preset File."), false);
         }
     }
 
