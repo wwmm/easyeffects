@@ -33,6 +33,7 @@ Kirigami.ScrollablePage {
     function showStatus(label) {
         status.text = label;
         status.visible = true;
+        autoHideStatusTimer.start();
     }
 
     Component.onCompleted: {
@@ -268,6 +269,15 @@ Kirigami.ScrollablePage {
             Layout.maximumWidth: parent.width
             visible: false
             showCloseButton: true
+        }
+
+        Timer {
+            id: autoHideStatusTimer
+            interval: 5000
+            onTriggered: {
+                status.visible = false;
+                autoHideStatusTimer.stop();
+            }
         }
 
         RowLayout {
