@@ -1,0 +1,19 @@
+# You may symlink this file in $HOME/.config/systemd/user/easyeffects.service
+#ln -s /path/to/easyeffects/debian/easyeffects/easyeffects.service ~/.config/systemd/user/easyeffects.service
+# Start it thereafter with
+#systemctl --user daemon-reload
+#systemctl --user enable --now easyeffects.service
+[Unit]
+Description=EasyEffects Service
+After=pipewire-pulse.service
+BindsTo=pipewire-pulse.service
+PartOf=pipewire-pulse.service
+
+[Service]
+ExecStart=easyeffects --gapplication-service
+Restart=no
+StartLimitInterval=3
+GuessMainPID=yes
+
+[Install]
+WantedBy=graphical-session.target
