@@ -30,6 +30,7 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+#include "tags_multiband_gate.hpp"
 
 class MultibandGate : public PluginBase {
   Q_OBJECT
@@ -58,9 +59,9 @@ class MultibandGate : public PluginBase {
                std::span<float>& probe_left,
                std::span<float>& probe_right) override;
 
-  // auto get_latency_seconds() -> float override;
+  auto get_latency_seconds() -> float override;
 
-  // void update_probe_links() override;
+  void update_probe_links() override;
 
   // TODO: add QT signals here
   // ...
@@ -68,8 +69,7 @@ class MultibandGate : public PluginBase {
  private:
   uint latency_n_frames = 0U;
 
-  // TODO: add private parameters here
-  // ...
+  static constexpr uint n_bands = tags::multiband_gate::n_bands;
 
   db::MultibandGate* settings = nullptr;
 

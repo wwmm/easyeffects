@@ -132,37 +132,40 @@
             <default>""</default>
         </entry>
 
-        <entry name="externalSidechain0" type="Bool">
-            <label></label>
-            <default>false</default>
+        <entry name="sidechainTypeLabels" type="StringList">
+            <default>Internal,External,Link</default>
         </entry>
-        <entry name="externalSidechain1" type="Bool">
-            <label></label>
-            <default>false</default>
+        <entry name="sidechainType0" type="Int">
+            <label>Sidechain Type</label>
+            <default>0</default>
         </entry>
-        <entry name="externalSidechain2" type="Bool">
-            <label></label>
-            <default>false</default>
+        <entry name="sidechainType1" type="Int">
+            <label>Sidechain Type</label>
+            <default>0</default>
         </entry>
-        <entry name="externalSidechain3" type="Bool">
-            <label></label>
-            <default>false</default>
+        <entry name="sidechainType2" type="Int">
+            <label>Sidechain Type</label>
+            <default>0</default>
         </entry>
-        <entry name="externalSidechain4" type="Bool">
-            <label></label>
-            <default>false</default>
+        <entry name="sidechainType3" type="Int">
+            <label>Sidechain Type</label>
+            <default>0</default>
         </entry>
-        <entry name="externalSidechain5" type="Bool">
-            <label></label>
-            <default>false</default>
+        <entry name="sidechainType4" type="Int">
+            <label>Sidechain Type</label>
+            <default>0</default>
         </entry>
-        <entry name="externalSidechain6" type="Bool">
-            <label></label>
-            <default>false</default>
+        <entry name="sidechainType5" type="Int">
+            <label>Sidechain Type</label>
+            <default>0</default>
         </entry>
-        <entry name="externalSidechain7" type="Bool">
-            <label></label>
-            <default>false</default>
+        <entry name="sidechainType6" type="Int">
+            <label>Sidechain Type</label>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainType7" type="Int">
+            <label>Sidechain Type</label>
+            <default>0</default>
         </entry>
 
         <entry name="sidechainModeLabels" type="StringList">

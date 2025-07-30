@@ -29,6 +29,7 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+#include "spa/utils/defs.h"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -60,8 +61,16 @@ MultibandGate::MultibandGate(const std::string& tag,
 
   // specific plugin controls
 
-  // TODO: set sidechain controls
-  // ...
+  connect(settings, &db::MultibandGate::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
+
+  connect(settings, &db::MultibandGate::sidechainType0Changed, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::sidechainType1Changed, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::sidechainType2Changed, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::sidechainType3Changed, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::sidechainType4Changed, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::sidechainType5Changed, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::sidechainType6Changed, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::sidechainType7Changed, [&]() { update_sidechain_links(); });
 
   BIND_LV2_PORT("mode", gateMode, setGateMode, db::MultibandGate::gateModeChanged);
   BIND_LV2_PORT("envb", envelopeBoost, setEnvelopeBoost, db::MultibandGate::envelopeBoostChanged);
@@ -112,3 +121,44 @@ void MultibandGate::process(std::span<float>& left_in,
                             std::span<float>& right_out,
                             std::span<float>& probe_left,
                             std::span<float>& probe_right) {}
+
+void MultibandGate::update_sidechain_links() {
+  auto external_sidechain_enabled = false;
+
+  for (uint n = 0U; !external_sidechain_enabled && n < n_bands; n++) {
+    const auto band_name = "sidechainType" + util::to_string(n);
+
+    external_sidechain_enabled =
+        settings->defaultSidechainTypeLabelsValue()[settings->property(band_name.c_str()).value<int>()] == "External";
+  }
+
+  if (!external_sidechain_enabled) {
+    pm->destroy_links(list_proxies);
+
+    list_proxies.clear();
+
+    return;
+  }
+
+  const auto device_name = settings->sidechainInputDevice();
+
+  auto input_device = pm->model_nodes.get_node_by_name(device_name);
+
+  input_device = input_device.serial == SPA_ID_INVALID ? pm->ee_source_node : input_device;
+
+  pm->destroy_links(list_proxies);
+
+  list_proxies.clear();
+
+  for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
+    list_proxies.push_back(link);
+  }
+}
+
+void MultibandGate::update_probe_links() {
+  update_sidechain_links();
+}
+
+auto MultibandGate::get_latency_seconds() -> float {
+  return this->latency_value;
+}
