@@ -642,7 +642,8 @@ void Convolver::direct_conv(const std::vector<float>& a, const std::vector<float
       }
     }
   };
-#if defined(ENABLE_LIBCPP_WORKAROUNDS) || (_LIBCPP_VERSION < 170000 || defined(_LIBCPP_HAS_NO_INCOMPLETE_PSTL))
+#if defined(ENABLE_LIBCPP_WORKAROUNDS) || defined(_LIBCPP_HAS_NO_INCOMPLETE_PSTL) || \
+    (defined(_LIBCPP_VERSION) && _LIBCPP_VERSION < 170000)
   std::for_each(indices.begin(), indices.end(), each);
 #else
   std::for_each(std::execution::par_unseq, indices.begin(), indices.end(), each);

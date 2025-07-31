@@ -758,35 +758,35 @@
             <default>-6</default>
         </key>
 
-        <key name="reduction0" type="d">
+        <key name="band0Reduction" type="d">
             <range min="-72" max="72" />
             <default>-24</default>
         </key>
-        <key name="reduction1" type="d">
+        <key name="band1Reduction" type="d">
             <range min="-72" max="72" />
             <default>-24</default>
         </key>
-        <key name="reduction2" type="d">
+        <key name="band2Reduction" type="d">
             <range min="-72" max="72" />
             <default>-24</default>
         </key>
-        <key name="reduction3" type="d">
+        <key name="band3Reduction" type="d">
             <range min="-72" max="72" />
             <default>-24</default>
         </key>
-        <key name="reduction4" type="d">
+        <key name="band4Reduction" type="d">
             <range min="-72" max="72" />
             <default>-24</default>
         </key>
-        <key name="reduction5" type="d">
+        <key name="band5Reduction" type="d">
             <range min="-72" max="72" />
             <default>-24</default>
         </key>
-        <key name="reduction6" type="d">
+        <key name="band6Reduction" type="d">
             <range min="-72" max="72" />
             <default>-24</default>
         </key>
-        <key name="reduction7" type="d">
+        <key name="band7Reduction" type="d">
             <range min="-72" max="72" />
             <default>-24</default>
         </key>

@@ -76,4 +76,6 @@ class MultibandGate : public PluginBase {
   std::vector<pw_proxy*> list_proxies;
 
   void update_sidechain_links();
+
+  void bind_bands();
 };

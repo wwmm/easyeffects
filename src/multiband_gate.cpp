@@ -30,6 +30,7 @@
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 #include "spa/utils/defs.h"
+#include "tags_multiband_gate.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -63,14 +64,14 @@ MultibandGate::MultibandGate(const std::string& tag,
 
   connect(settings, &db::MultibandGate::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
 
-  connect(settings, &db::MultibandGate::sidechainType0Changed, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::sidechainType1Changed, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::sidechainType2Changed, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::sidechainType3Changed, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::sidechainType4Changed, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::sidechainType5Changed, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::sidechainType6Changed, [&]() { update_sidechain_links(); });
-  connect(settings, &db::MultibandGate::sidechainType7Changed, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::band0SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::band1SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::band2SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::band3SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::band4SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::band5SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::band6SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandGate::band7SidechainTypeChanged, [&]() { update_sidechain_links(); });
 
   BIND_LV2_PORT("mode", gateMode, setGateMode, db::MultibandGate::gateModeChanged);
   BIND_LV2_PORT("envb", envelopeBoost, setEnvelopeBoost, db::MultibandGate::envelopeBoostChanged);
@@ -96,6 +97,12 @@ MultibandGate::~MultibandGate() {
 
 void MultibandGate::reset() {
   settings->setDefaults();
+}
+
+void MultibandGate::bind_bands() {
+  using namespace tags::multiband_gate;
+
+  BIND_LV2_PORT(cbe[1].data(), band1Enable, setBand1Enable, db::MultibandGate::band1EnableChanged);
 }
 
 void MultibandGate::setup() {
