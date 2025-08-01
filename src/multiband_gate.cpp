@@ -26,6 +26,7 @@
 #include "easyeffects_db_multiband_gate.h"
 #include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
+#include "multi_band_macros.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
@@ -81,8 +82,7 @@ MultibandGate::MultibandGate(const std::string& tag,
   BIND_LV2_PORT_DB("cdr", dry, setDry, db::MultibandGate::dryChanged, true);
   BIND_LV2_PORT_DB("cwt", wet, setWet, db::MultibandGate::wetChanged, true);
 
-  // TODO: set band parameters
-  // ...
+  bind_bands();
 }
 
 MultibandGate::~MultibandGate() {
@@ -103,6 +103,29 @@ void MultibandGate::bind_bands() {
   using namespace tags::multiband_gate;
 
   BIND_LV2_PORT(cbe[1].data(), band1Enable, setBand1Enable, db::MultibandGate::band1EnableChanged);
+  BIND_LV2_PORT(cbe[2].data(), band2Enable, setBand2Enable, db::MultibandGate::band2EnableChanged);
+  BIND_LV2_PORT(cbe[3].data(), band3Enable, setBand3Enable, db::MultibandGate::band3EnableChanged);
+  BIND_LV2_PORT(cbe[4].data(), band4Enable, setBand4Enable, db::MultibandGate::band4EnableChanged);
+  BIND_LV2_PORT(cbe[5].data(), band5Enable, setBand5Enable, db::MultibandGate::band5EnableChanged);
+  BIND_LV2_PORT(cbe[6].data(), band6Enable, setBand6Enable, db::MultibandGate::band6EnableChanged);
+  BIND_LV2_PORT(cbe[7].data(), band7Enable, setBand7Enable, db::MultibandGate::band7EnableChanged);
+
+  BIND_LV2_PORT(sf[1].data(), band1SplitFrequency, setBand1SplitFrequency,
+                db::MultibandGate::band1SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[2].data(), band2SplitFrequency, setBand2SplitFrequency,
+                db::MultibandGate::band2SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[3].data(), band3SplitFrequency, setBand3SplitFrequency,
+                db::MultibandGate::band3SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[4].data(), band4SplitFrequency, setBand4SplitFrequency,
+                db::MultibandGate::band4SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[5].data(), band5SplitFrequency, setBand5SplitFrequency,
+                db::MultibandGate::band5SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[6].data(), band6SplitFrequency, setBand6SplitFrequency,
+                db::MultibandGate::band6SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[7].data(), band7SplitFrequency, setBand7SplitFrequency,
+                db::MultibandGate::band7SplitFrequencyChanged);
+
+  BIND_BANDS_PROPERTY(ce, GateEnable, db::MultibandGate);
 }
 
 void MultibandGate::setup() {
