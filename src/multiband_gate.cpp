@@ -99,6 +99,7 @@ void MultibandGate::reset() {
   settings->setDefaults();
 }
 
+// NOLINTNEXTLINE(readability-function-size,hicpp-function-size)
 void MultibandGate::bind_bands() {
   using namespace tags::multiband_gate;
 
@@ -126,6 +127,28 @@ void MultibandGate::bind_bands() {
                 db::MultibandGate::band7SplitFrequencyChanged);
 
   BIND_BANDS_PROPERTY(ce, GateEnable, db::MultibandGate);
+  BIND_BANDS_PROPERTY(bs, Solo, db::MultibandGate);
+  BIND_BANDS_PROPERTY(bm, Mute, db::MultibandGate);
+  BIND_BANDS_PROPERTY(gh, Hysteresis, db::MultibandGate);
+  BIND_BANDS_PROPERTY(sce, SidechainType, db::MultibandGate);
+  BIND_BANDS_PROPERTY(sclc, SidechainCustomLowcutFilter, db::MultibandGate);
+  BIND_BANDS_PROPERTY(schc, SidechainCustomHighcutFilter, db::MultibandGate);
+  BIND_BANDS_PROPERTY(sscs, StereoSplitSource, db::MultibandGate);
+  BIND_BANDS_PROPERTY(scs, SidechainSource, db::MultibandGate);
+  BIND_BANDS_PROPERTY(scm, SidechainMode, db::MultibandGate);
+  BIND_BANDS_PROPERTY(at, AttackTime, db::MultibandGate);
+  BIND_BANDS_PROPERTY(rt, ReleaseTime, db::MultibandGate);
+  BIND_BANDS_PROPERTY(sclf, SidechainLowcutFrequency, db::MultibandGate);
+  BIND_BANDS_PROPERTY(schf, SidechainHighcutFrequency, db::MultibandGate);
+  BIND_BANDS_PROPERTY(sla, SidechainLookahead, db::MultibandGate);
+  BIND_BANDS_PROPERTY(scr, SidechainReactivity, db::MultibandGate);
+  BIND_BANDS_PROPERTY(ht, HysteresisThreshold, db::MultibandGate);
+  BIND_BANDS_PROPERTY(hz, HysteresisZone, db::MultibandGate);
+  BIND_BANDS_PROPERTY(gt, CurveThreshold, db::MultibandGate);
+  BIND_BANDS_PROPERTY(gz, CurveZone, db::MultibandGate);
+  BIND_BANDS_PROPERTY(gr, Reduction, db::MultibandGate);
+  BIND_BANDS_PROPERTY(mk, Makeup, db::MultibandGate);
+  BIND_BANDS_PROPERTY(scp, SidechainPreamp, db::MultibandGate);
 }
 
 void MultibandGate::setup() {
