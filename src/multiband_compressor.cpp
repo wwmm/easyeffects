@@ -19,6 +19,7 @@
 
 #include "multiband_compressor.hpp"
 #include <qtypes.h>
+#include <algorithm>
 #include <memory>
 #include <span>
 #include <string>
@@ -26,9 +27,12 @@
 #include "easyeffects_db_multiband_compressor.h"
 #include "lv2_macros.hpp"
 #include "lv2_wrapper.hpp"
+#include "multi_band_macros.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+#include "spa/utils/defs.h"
+#include "tags_multiband_compressor.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
@@ -60,8 +64,16 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
 
   // specific plugin controls
 
-  // TODO: set sidechain controls
-  // ...
+  connect(settings, &db::MultibandCompressor::sidechainInputDeviceChanged, [&]() { update_sidechain_links(); });
+
+  connect(settings, &db::MultibandCompressor::band0SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandCompressor::band1SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandCompressor::band2SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandCompressor::band3SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandCompressor::band4SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandCompressor::band5SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandCompressor::band6SidechainTypeChanged, [&]() { update_sidechain_links(); });
+  connect(settings, &db::MultibandCompressor::band7SidechainTypeChanged, [&]() { update_sidechain_links(); });
 
   BIND_LV2_PORT("mode", compressorMode, setCompressorMode, db::MultibandCompressor::compressorModeChanged);
   BIND_LV2_PORT("envb", envelopeBoost, setEnvelopeBoost, db::MultibandCompressor::envelopeBoostChanged);
@@ -71,8 +83,7 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   BIND_LV2_PORT_DB("cdr", dry, setDry, db::MultibandCompressor::dryChanged, true);
   BIND_LV2_PORT_DB("cwt", wet, setWet, db::MultibandCompressor::wetChanged, true);
 
-  // TODO: set band parameters
-  // ...
+  bind_bands();
 }
 
 MultibandCompressor::~MultibandCompressor() {
@@ -87,6 +98,58 @@ MultibandCompressor::~MultibandCompressor() {
 
 void MultibandCompressor::reset() {
   settings->setDefaults();
+}
+
+// NOLINTNEXTLINE(readability-function-size,hicpp-function-size)
+void MultibandCompressor::bind_bands() {
+  using namespace tags::multiband_compressor;
+
+  BIND_LV2_PORT(cbe[1].data(), band1Enable, setBand1Enable, db::MultibandCompressor::band1EnableChanged);
+  BIND_LV2_PORT(cbe[2].data(), band2Enable, setBand2Enable, db::MultibandCompressor::band2EnableChanged);
+  BIND_LV2_PORT(cbe[3].data(), band3Enable, setBand3Enable, db::MultibandCompressor::band3EnableChanged);
+  BIND_LV2_PORT(cbe[4].data(), band4Enable, setBand4Enable, db::MultibandCompressor::band4EnableChanged);
+  BIND_LV2_PORT(cbe[5].data(), band5Enable, setBand5Enable, db::MultibandCompressor::band5EnableChanged);
+  BIND_LV2_PORT(cbe[6].data(), band6Enable, setBand6Enable, db::MultibandCompressor::band6EnableChanged);
+  BIND_LV2_PORT(cbe[7].data(), band7Enable, setBand7Enable, db::MultibandCompressor::band7EnableChanged);
+
+  BIND_LV2_PORT(sf[1].data(), band1SplitFrequency, setBand1SplitFrequency,
+                db::MultibandCompressor::band1SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[2].data(), band2SplitFrequency, setBand2SplitFrequency,
+                db::MultibandCompressor::band2SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[3].data(), band3SplitFrequency, setBand3SplitFrequency,
+                db::MultibandCompressor::band3SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[4].data(), band4SplitFrequency, setBand4SplitFrequency,
+                db::MultibandCompressor::band4SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[5].data(), band5SplitFrequency, setBand5SplitFrequency,
+                db::MultibandCompressor::band5SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[6].data(), band6SplitFrequency, setBand6SplitFrequency,
+                db::MultibandCompressor::band6SplitFrequencyChanged);
+  BIND_LV2_PORT(sf[7].data(), band7SplitFrequency, setBand7SplitFrequency,
+                db::MultibandCompressor::band7SplitFrequencyChanged);
+
+  BIND_BANDS_PROPERTY(sce, SidechainType, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(sclc, SidechainCustomLowcutFilter, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(schc, SidechainCustomHighcutFilter, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(ce, CompressorEnable, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(bs, Solo, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(bm, Mute, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(sscs, StereoSplitSource, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(scs, SidechainSource, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(scm, SidechainMode, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(cm, CompressionMode, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(sla, SidechainLookahead, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(scr, SidechainReactivity, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(sclf, SidechainLowcutFrequency, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(schf, SidechainHighcutFrequency, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(at, AttackTime, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(rt, ReleaseTime, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(cr, Ratio, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(scp, SidechainPreamp, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(al, AttackThreshold, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(kn, Knee, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(bth, BoostThreshold, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(bsa, BoostAmount, db::MultibandCompressor);
+  BIND_BANDS_PROPERTY(mk, Makeup, db::MultibandCompressor);
 }
 
 void MultibandCompressor::setup() {
@@ -111,4 +174,96 @@ void MultibandCompressor::process(std::span<float>& left_in,
                                   std::span<float>& left_out,
                                   std::span<float>& right_out,
                                   std::span<float>& probe_left,
-                                  std::span<float>& probe_right) {}
+                                  std::span<float>& probe_right) {
+  if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance() || bypass) {
+    std::ranges::copy(left_in, left_out.begin());
+    std::ranges::copy(right_in, right_out.begin());
+
+    return;
+  }
+
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
+
+  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out, probe_left, probe_right);
+  lv2_wrapper->run();
+
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
+
+  /*
+   This plugin gives the latency in number of samples
+ */
+
+  const auto lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
+
+  if (latency_n_frames != lv) {
+    latency_n_frames = lv;
+
+    latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+
+    util::debug(log_tag + name.toStdString() + " latency: " + util::to_string(latency_value, "") + " s");
+
+    update_filter_params();
+  }
+
+  get_peaks(left_in, right_in, left_out, right_out);
+
+  for (uint n = 0U; n < n_bands; n++) {
+    // const auto nstr = util::to_string(n);
+
+    // frequency_range_end_port_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);
+
+    // envelope_port_array.at(n) = 0.5F * (lv2_wrapper->get_control_port_value("elm_" + nstr + "l") +
+    //                                     lv2_wrapper->get_control_port_value("elm_" + nstr + "r"));
+
+    // curve_port_array.at(n) = 0.5F * (lv2_wrapper->get_control_port_value("clm_" + nstr + "l") +
+    //                                  lv2_wrapper->get_control_port_value("clm_" + nstr + "r"));
+
+    // reduction_port_array.at(n) = 0.5F * (lv2_wrapper->get_control_port_value("rlm_" + nstr + "l") +
+    //                                      lv2_wrapper->get_control_port_value("rlm_" + nstr + "r"));
+  }
+}
+
+void MultibandCompressor::update_sidechain_links() {
+  auto external_sidechain_enabled = false;
+
+  for (uint n = 0U; !external_sidechain_enabled && n < n_bands; n++) {
+    const auto band_name = "sidechainType" + util::to_string(n);
+
+    external_sidechain_enabled =
+        settings->defaultSidechainTypeLabelsValue()[settings->property(band_name.c_str()).value<int>()] == "External";
+  }
+
+  if (!external_sidechain_enabled) {
+    pm->destroy_links(list_proxies);
+
+    list_proxies.clear();
+
+    return;
+  }
+
+  const auto device_name = settings->sidechainInputDevice();
+
+  auto input_device = pm->model_nodes.get_node_by_name(device_name);
+
+  input_device = input_device.serial == SPA_ID_INVALID ? pm->ee_source_node : input_device;
+
+  pm->destroy_links(list_proxies);
+
+  list_proxies.clear();
+
+  for (const auto& link : pm->link_nodes(input_device.id, get_node_id(), true)) {
+    list_proxies.push_back(link);
+  }
+}
+
+void MultibandCompressor::update_probe_links() {
+  update_sidechain_links();
+}
+
+auto MultibandCompressor::get_latency_seconds() -> float {
+  return this->latency_value;
+}

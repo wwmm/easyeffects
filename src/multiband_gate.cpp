@@ -19,6 +19,7 @@
 
 #include "multiband_gate.hpp"
 #include <qtypes.h>
+#include <algorithm>
 #include <memory>
 #include <span>
 #include <string>
@@ -173,7 +174,58 @@ void MultibandGate::process(std::span<float>& left_in,
                             std::span<float>& left_out,
                             std::span<float>& right_out,
                             std::span<float>& probe_left,
-                            std::span<float>& probe_right) {}
+                            std::span<float>& probe_right) {
+  if (!lv2_wrapper->found_plugin || !lv2_wrapper->has_instance() || bypass) {
+    std::ranges::copy(left_in, left_out.begin());
+    std::ranges::copy(right_in, right_out.begin());
+
+    return;
+  }
+
+  if (input_gain != 1.0F) {
+    apply_gain(left_in, right_in, input_gain);
+  }
+
+  lv2_wrapper->connect_data_ports(left_in, right_in, left_out, right_out, probe_left, probe_right);
+  lv2_wrapper->run();
+
+  if (output_gain != 1.0F) {
+    apply_gain(left_out, right_out, output_gain);
+  }
+
+  /*
+   This plugin gives the latency in number of samples
+ */
+
+  const auto lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
+
+  if (latency_n_frames != lv) {
+    latency_n_frames = lv;
+
+    latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
+
+    util::debug(log_tag + name.toStdString() + " latency: " + util::to_string(latency_value, "") + " s");
+
+    update_filter_params();
+  }
+
+  get_peaks(left_in, right_in, left_out, right_out);
+
+  for (uint n = 0U; n < n_bands; n++) {
+    // const auto nstr = util::to_string(n);
+
+    // frequency_range_end_port_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);
+
+    // envelope_port_array.at(n) = 0.5F * (lv2_wrapper->get_control_port_value("elm_" + nstr + "l") +
+    //                                     lv2_wrapper->get_control_port_value("elm_" + nstr + "r"));
+
+    // curve_port_array.at(n) = 0.5F * (lv2_wrapper->get_control_port_value("clm_" + nstr + "l") +
+    //                                  lv2_wrapper->get_control_port_value("clm_" + nstr + "r"));
+
+    // reduction_port_array.at(n) = 0.5F * (lv2_wrapper->get_control_port_value("rlm_" + nstr + "l") +
+    //                                      lv2_wrapper->get_control_port_value("rlm_" + nstr + "r"));
+  }
+}
 
 void MultibandGate::update_sidechain_links() {
   auto external_sidechain_enabled = false;

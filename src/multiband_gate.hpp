@@ -63,9 +63,6 @@ class MultibandGate : public PluginBase {
 
   void update_probe_links() override;
 
-  // TODO: add QT signals here
-  // ...
-
  private:
   uint latency_n_frames = 0U;
 

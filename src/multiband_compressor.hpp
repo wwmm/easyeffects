@@ -30,6 +30,7 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+#include "tags_multiband_compressor.hpp"
 
 class MultibandCompressor : public PluginBase {
   Q_OBJECT
@@ -58,22 +59,20 @@ class MultibandCompressor : public PluginBase {
                std::span<float>& probe_left,
                std::span<float>& probe_right) override;
 
-  // auto get_latency_seconds() -> float override;
+  auto get_latency_seconds() -> float override;
 
-  // void update_probe_links() override;
-
-  // TODO: add QT signals here
-  // ...
+  void update_probe_links() override;
 
  private:
   uint latency_n_frames = 0U;
 
-  // TODO: add private parameters here
-  // ...
+  static constexpr uint n_bands = tags::multiband_compressor::n_bands;
 
   db::MultibandCompressor* settings = nullptr;
 
   std::vector<pw_proxy*> list_proxies;
 
   void update_sidechain_links();
+
+  void bind_bands();
 };
