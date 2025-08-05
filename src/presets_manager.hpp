@@ -91,9 +91,9 @@ class Manager : public QObject {
 
   Q_INVOKABLE int importRNNoiseModel(const QList<QString>& url_list);
 
-  Q_INVOKABLE static void removeImpulseFile(const QString& filePath);
+  Q_INVOKABLE static bool removeImpulseFile(const QString& filePath);
 
-  Q_INVOKABLE static void removeRNNoiseModel(const QString& filePath);
+  Q_INVOKABLE static bool removeRNNoiseModel(const QString& filePath);
 
   Q_INVOKABLE void refreshCommunityPresets(const PipelineType& pipeline_type);
 

@@ -27,8 +27,16 @@ Kirigami.ScrollablePage {
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
     }
 
-    function showStatus(label) {
+    function showStatus(label, positive = true) {
         status.text = label;
+
+        if (positive) {
+            status.type = Kirigami.MessageType.Positive;
+            autoHideStatusTimer.start();
+        } else {
+            status.type = Kirigami.MessageType.Error;
+        }
+
         status.visible = true;
     }
 
@@ -44,7 +52,7 @@ Kirigami.ScrollablePage {
         nameFilters: ["RNNoise (*.rnnn)"]
         onAccepted: {
             if (Presets.Manager.importRNNoiseModel(fileDialog.selectedFiles) === 0)
-                showStatus(i18n("Model Files Imported."));
+                showStatus(i18n("Model File Imported."));
             else
                 showStatus(i18n("Failed to Import the Model File."));
         }
@@ -211,7 +219,7 @@ Kirigami.ScrollablePage {
                                                 if (Presets.Manager.removeRNNoiseModel(path) === true)
                                                     showStatus(i18n("Removed Model: %1", name));
                                                 else
-                                                    showStatus(i18n("Failed to Remove: %1", name));
+                                                    showStatus(i18n("Failed to Remove the Model: %1", name), false);
                                             }
                                         }
                                     ]
@@ -245,6 +253,15 @@ Kirigami.ScrollablePage {
             Layout.maximumWidth: parent.width
             visible: false
             showCloseButton: true
+        }
+
+        Timer {
+            id: autoHideStatusTimer
+            interval: DB.Manager.main.autoHideInlineMessageTimeout
+            onTriggered: {
+                status.visible = false;
+                autoHideStatusTimer.stop();
+            }
         }
 
         RowLayout {

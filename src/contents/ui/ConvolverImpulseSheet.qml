@@ -13,8 +13,16 @@ Kirigami.OverlaySheet {
 
     required property var pluginDB
 
-    function showImpulseMenuStatus(label) {
+    function showImpulseMenuStatus(label, positive = true) {
         status.text = label;
+
+        if (positive) {
+            status.type = Kirigami.MessageType.Positive;
+            autoHideStatusTimer.start();
+        } else {
+            status.type = Kirigami.MessageType.Error;
+        }
+
         status.visible = true;
     }
 
@@ -36,9 +44,9 @@ Kirigami.OverlaySheet {
         nameFilters: ["IRS (*.irs)", "WAVE (*.wav)"]
         onAccepted: {
             if (Presets.Manager.importImpulses(fileDialog.selectedFiles) === 0)
-                showImpulseMenuStatus(i18n("Preset files imported!"));
+                showImpulseMenuStatus(i18n("Impluse File Imported."));
             else
-                showImpulseMenuStatus(i18n("Failed to import the impulse file!"));
+                showImpulseMenuStatus(i18n("Failed to Import the Impulse File."), false);
         }
     }
 
@@ -101,7 +109,7 @@ Kirigami.OverlaySheet {
                                     if (Presets.Manager.removeImpulseFile(path) === true)
                                         showImpulseMenuStatus(i18n("Removed Impulse: %1", name));
                                     else
-                                        showImpulseMenuStatus(i18n("Failed to Remove: %1", name));
+                                        showImpulseMenuStatus(i18n("Failed to Remove the Impulse: %1", name), false);
                                 }
                             }
                         ]
@@ -119,6 +127,15 @@ Kirigami.OverlaySheet {
             Layout.maximumWidth: parent.width
             visible: false
             showCloseButton: true
+        }
+
+        Timer {
+            id: autoHideStatusTimer
+            interval: DB.Manager.main.autoHideInlineMessageTimeout
+            onTriggered: {
+                status.visible = false;
+                autoHideStatusTimer.stop();
+            }
         }
     }
 
