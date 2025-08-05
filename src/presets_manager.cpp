@@ -897,12 +897,20 @@ int Manager::importRNNoiseModel(const QList<QString>& url_list) {
   return static_cast<int>(RNNoiseImportState::success);
 }
 
-void Manager::removeImpulseFile(const QString& filePath) {
-  if (std::filesystem::exists(filePath.toStdString())) {
-    std::filesystem::remove(filePath.toStdString());
+bool Manager::removeImpulseFile(const QString& filePath) {
+  bool result = false;
 
-    util::debug("removed irs file: " + filePath.toStdString());
+  if (std::filesystem::exists(filePath.toStdString())) {
+    result = std::filesystem::remove(filePath.toStdString());
   }
+
+  if (result) {
+    util::debug("removed irs file: " + filePath.toStdString());
+  } else {
+    util::warning("failed to removed the irs file: " + filePath.toStdString());
+  }
+
+  return result;
 }
 
 bool Manager::removeRNNoiseModel(const QString& filePath) {
