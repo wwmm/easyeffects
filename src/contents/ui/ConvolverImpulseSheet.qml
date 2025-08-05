@@ -31,7 +31,7 @@ Kirigami.OverlaySheet {
     focus: true
     y: appWindow.header.height + Kirigami.Units.gridUnit
     implicitWidth: Math.max(Kirigami.Units.gridUnit * 40, appWindow.width * 0.5)
-    implicitHeight: control.parent.height - 2 * (control.header.height + control.footer.height) - control.y
+    implicitHeight: (control.parent.height * 0.8) - control.y
     onClosed: {
         status.visible = false;
     }
