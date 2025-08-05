@@ -54,6 +54,10 @@
             <max>60</max>
             <default>30</default>
         </entry>
+        <entry name="autoHideInlineMessageTimeout" type="Int">
+            <label>The amount of time in milliseconds an inline message is visible when the autohiding mode is enabled.</label>
+            <default>5000</default>
+        </entry>
         <entry name="inputAutoloadingUsesFallback" type="Bool">
             <label>When enabled presets autoloading will use a fallback when no profile is available for the target device.</label>
             <default>false</default>

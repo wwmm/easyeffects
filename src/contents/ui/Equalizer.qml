@@ -280,7 +280,7 @@ Kirigami.ScrollablePage {
 
         Timer {
             id: autoHideStatusTimer
-            interval: 5000
+            interval: DB.Manager.main.autoHideInlineMessageTimeout
             onTriggered: {
                 status.visible = false;
                 autoHideStatusTimer.stop();
