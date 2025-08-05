@@ -905,12 +905,20 @@ void Manager::removeImpulseFile(const QString& filePath) {
   }
 }
 
-void Manager::removeRNNoiseModel(const QString& filePath) {
-  if (std::filesystem::exists(filePath.toStdString())) {
-    std::filesystem::remove(filePath.toStdString());
+bool Manager::removeRNNoiseModel(const QString& filePath) {
+  bool result = false;
 
-    util::debug("removed the rnnoise model: " + filePath.toStdString());
+  if (std::filesystem::exists(filePath.toStdString())) {
+    result = std::filesystem::remove(filePath.toStdString());
   }
+
+  if (result) {
+    util::debug("removed the rnnoise model: " + filePath.toStdString());
+  } else {
+    util::warning("failed to remove the rnnoise model: " + filePath.toStdString());
+  }
+
+  return result;
 }
 
 auto Manager::import_addons_from_community_package(const PipelineType& pipeline_type,
