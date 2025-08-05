@@ -125,7 +125,7 @@ Kirigami.OverlaySheet {
 
             Layout.fillWidth: true
             Layout.maximumWidth: parent.width
-            visible: true
+            visible: false
             showCloseButton: true
         }
 
