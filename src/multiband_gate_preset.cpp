@@ -107,6 +107,27 @@ void MultibandGatePreset::save(nlohmann::json& json) {
     json[section][instance_name][bandn]["stereo-split-source"] =
         settings->stereoSplitSourceLabels()[settings->property(band_stereo_split_source[n].data()).value<int>()]
             .toStdString();
+
+    json[section][instance_name][bandn]["sidechain-lookahead"] =
+        settings->property(band_sidechain_lookahead[n].data()).value<double>();
+
+    json[section][instance_name][bandn]["sidechain-reactivity"] =
+        settings->property(band_sidechain_reactivity[n].data()).value<double>();
+
+    json[section][instance_name][bandn]["sidechain-preamp"] =
+        settings->property(band_sidechain_preamp[n].data()).value<double>();
+
+    json[section][instance_name][bandn]["sidechain-custom-lowcut-filter"] =
+        settings->property(band_lowcut_filter[n].data()).value<bool>();
+
+    json[section][instance_name][bandn]["sidechain-custom-highcut-filter"] =
+        settings->property(band_highcut_filter[n].data()).value<bool>();
+
+    json[section][instance_name][bandn]["sidechain-lowcut-frequency"] =
+        settings->property(band_lowcut_filter_frequency[n].data()).value<double>();
+
+    json[section][instance_name][bandn]["sidechain-highcut-frequency"] =
+        settings->property(band_highcut_filter_frequency[n].data()).value<double>();
   }
 }
 
