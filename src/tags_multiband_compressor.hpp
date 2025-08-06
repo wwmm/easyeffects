@@ -29,47 +29,59 @@ constexpr unsigned n_bands = 8U;
 
 // band tags
 
-constexpr auto band_enable = std::to_array({{"enable-band0"},
-                                            {"enable-band1"},
-                                            {"enable-band2"},
-                                            {"enable-band3"},
-                                            {"enable-band4"},
-                                            {"enable-band5"},
-                                            {"enable-band6"},
-                                            std::to_array("enable-band7")});
+constexpr auto band_enable = std::to_array({{"band0Enable"},
+                                            {"band1Enable"},
+                                            {"band2Enable"},
+                                            {"band3Enable"},
+                                            {"band4Enable"},
+                                            {"band5Enable"},
+                                            {"band6Enable"},
+                                            std::to_array("band7Enable")});
 
-constexpr auto band_compression_mode = std::to_array({{"compression-mode0"},
-                                                      {"compression-mode1"},
-                                                      {"compression-mode2"},
-                                                      {"compression-mode3"},
-                                                      {"compression-mode4"},
-                                                      {"compression-mode5"},
-                                                      {"compression-mode6"},
-                                                      std::to_array("compression-mode7")});
+constexpr auto band_compression_mode = std::to_array({{"band0CompressionMode"},
+                                                      {"band1CompressionMode"},
+                                                      {"band2CompressionMode"},
+                                                      {"band3CompressionMode"},
+                                                      {"band4CompressionMode"},
+                                                      {"band5CompressionMode"},
+                                                      {"band6CompressionMode"},
+                                                      std::to_array("band7CompressionMode")});
 
-constexpr auto band_compressor_enable = std::to_array({{"compressor-enable0"},
-                                                       {"compressor-enable1"},
-                                                       {"compressor-enable2"},
-                                                       {"compressor-enable3"},
-                                                       {"compressor-enable4"},
-                                                       {"compressor-enable5"},
-                                                       {"compressor-enable6"},
-                                                       std::to_array("compressor-enable7")});
+constexpr auto band_compressor_enable = std::to_array({{"band0CompressorEnable"},
+                                                       {"band1CompressorEnable"},
+                                                       {"band2CompressorEnable"},
+                                                       {"band3CompressorEnable"},
+                                                       {"band4CompressorEnable"},
+                                                       {"band5CompressorEnable"},
+                                                       {"band6CompressorEnable"},
+                                                       std::to_array("band7CompressorEnable")});
 
-constexpr auto band_split_frequency = std::to_array({{"split-frequency0"},
-                                                     {"split-frequency1"},
-                                                     {"split-frequency2"},
-                                                     {"split-frequency3"},
-                                                     {"split-frequency4"},
-                                                     {"split-frequency5"},
-                                                     {"split-frequency6"},
-                                                     std::to_array("split-frequency7")});
+constexpr auto band_split_frequency = std::to_array({{"band0SplitFrequency"},
+                                                     {"band1SplitFrequency"},
+                                                     {"band2SplitFrequency"},
+                                                     {"band3SplitFrequency"},
+                                                     {"band4SplitFrequency"},
+                                                     {"band5SplitFrequency"},
+                                                     {"band6SplitFrequency"},
+                                                     std::to_array("band7SplitFrequency")});
 
-constexpr auto band_mute = std::to_array(
-    {{"mute0"}, {"mute1"}, {"mute2"}, {"mute3"}, {"mute4"}, {"mute5"}, {"mute6"}, std::to_array("mute7")});
+constexpr auto band_mute = std::to_array({{"band0Mute"},
+                                          {"band1Mute"},
+                                          {"band2Mute"},
+                                          {"band3Mute"},
+                                          {"band4Mute"},
+                                          {"band5Mute"},
+                                          {"band6Mute"},
+                                          std::to_array("band7Mute")});
 
-constexpr auto band_solo = std::to_array(
-    {{"solo0"}, {"solo1"}, {"solo2"}, {"solo3"}, {"solo4"}, {"solo5"}, {"solo6"}, std::to_array("solo7")});
+constexpr auto band_solo = std::to_array({{"band0Solo"},
+                                          {"band1Solo"},
+                                          {"band2Solo"},
+                                          {"band3Solo"},
+                                          {"band4Solo"},
+                                          {"band5Solo"},
+                                          {"band6Solo"},
+                                          std::to_array("band7Solo")});
 
 constexpr auto band_lowcut_filter = std::to_array({{"sidechain-custom-lowcut-filter0"},
                                                    {"sidechain-custom-lowcut-filter1"},
@@ -89,41 +101,41 @@ constexpr auto band_highcut_filter = std::to_array({{"sidechain-custom-highcut-f
                                                     {"sidechain-custom-highcut-filter6"},
                                                     std::to_array("sidechain-custom-highcut-filter7")});
 
-constexpr auto band_external_sidechain = std::to_array({{"external-sidechain0"},
-                                                        {"external-sidechain1"},
-                                                        {"external-sidechain2"},
-                                                        {"external-sidechain3"},
-                                                        {"external-sidechain4"},
-                                                        {"external-sidechain5"},
-                                                        {"external-sidechain6"},
-                                                        std::to_array("external-sidechain7")});
+constexpr auto band_sidechain_type = std::to_array({{"band0SidechainType"},
+                                                    {"band1SidechainType"},
+                                                    {"band2SidechainType"},
+                                                    {"band3SidechainType"},
+                                                    {"band4SidechainType"},
+                                                    {"band5SidechainType"},
+                                                    {"band6SidechainType"},
+                                                    std::to_array("band7SidechainType")});
 
-constexpr auto band_sidechain_mode = std::to_array({{"sidechain-mode0"},
-                                                    {"sidechain-mode1"},
-                                                    {"sidechain-mode2"},
-                                                    {"sidechain-mode3"},
-                                                    {"sidechain-mode4"},
-                                                    {"sidechain-mode5"},
-                                                    {"sidechain-mode6"},
-                                                    std::to_array("sidechain-mode7")});
+constexpr auto band_sidechain_mode = std::to_array({{"band0SidechainMode"},
+                                                    {"band1SidechainMode"},
+                                                    {"band2SidechainMode"},
+                                                    {"band3SidechainMode"},
+                                                    {"band4SidechainMode"},
+                                                    {"band5SidechainMode"},
+                                                    {"band6SidechainMode"},
+                                                    std::to_array("band7SidechainMode")});
 
-constexpr auto band_sidechain_source = std::to_array({{"sidechain-source0"},
-                                                      {"sidechain-source1"},
-                                                      {"sidechain-source2"},
-                                                      {"sidechain-source3"},
-                                                      {"sidechain-source4"},
-                                                      {"sidechain-source5"},
-                                                      {"sidechain-source6"},
-                                                      std::to_array("sidechain-source7")});
+constexpr auto band_sidechain_source = std::to_array({{"band0SidechainSource"},
+                                                      {"band1SidechainSource"},
+                                                      {"band2SidechainSource"},
+                                                      {"band3SidechainSource"},
+                                                      {"band4SidechainSource"},
+                                                      {"band5SidechainSource"},
+                                                      {"band6SidechainSource"},
+                                                      std::to_array("band7SidechainSource")});
 
-constexpr auto band_stereo_split_source = std::to_array({{"stereo-split-source0"},
-                                                         {"stereo-split-source1"},
-                                                         {"stereo-split-source2"},
-                                                         {"stereo-split-source3"},
-                                                         {"stereo-split-source4"},
-                                                         {"stereo-split-source5"},
-                                                         {"stereo-split-source6"},
-                                                         std::to_array("stereo-split-source7")});
+constexpr auto band_stereo_split_source = std::to_array({{"band0StereoSplitSource"},
+                                                         {"band1StereoSplitSource"},
+                                                         {"band2StereoSplitSource"},
+                                                         {"band3StereoSplitSource"},
+                                                         {"band4StereoSplitSource"},
+                                                         {"band5StereoSplitSource"},
+                                                         {"band6StereoSplitSource"},
+                                                         std::to_array("band7StereoSplitSource")});
 
 constexpr auto band_lowcut_filter_frequency = std::to_array({{"sidechain-lowcut-frequency0"},
                                                              {"sidechain-lowcut-frequency1"},
@@ -143,14 +155,14 @@ constexpr auto band_highcut_filter_frequency = std::to_array({{"sidechain-highcu
                                                               {"sidechain-highcut-frequency6"},
                                                               std::to_array("sidechain-highcut-frequency7")});
 
-constexpr auto band_attack_time = std::to_array({{"attack-time0"},
-                                                 {"attack-time1"},
-                                                 {"attack-time2"},
-                                                 {"attack-time3"},
-                                                 {"attack-time4"},
-                                                 {"attack-time5"},
-                                                 {"attack-time6"},
-                                                 std::to_array("attack-time7")});
+constexpr auto band_attack_time = std::to_array({{"band0AttackTime"},
+                                                 {"band1AttackTime"},
+                                                 {"band2AttackTime"},
+                                                 {"band3AttackTime"},
+                                                 {"band4AttackTime"},
+                                                 {"band5AttackTime"},
+                                                 {"band6AttackTime"},
+                                                 std::to_array("band7AttackTime")});
 
 inline constexpr auto band_attack_threshold = std::to_array({{"attack-threshold0"},
                                                              {"attack-threshold1"},
@@ -161,14 +173,14 @@ inline constexpr auto band_attack_threshold = std::to_array({{"attack-threshold0
                                                              {"attack-threshold6"},
                                                              std::to_array("attack-threshold7")});
 
-inline constexpr auto band_release_time = std::to_array({{"release-time0"},
-                                                         {"release-time1"},
-                                                         {"release-time2"},
-                                                         {"release-time3"},
-                                                         {"release-time4"},
-                                                         {"release-time5"},
-                                                         {"release-time6"},
-                                                         std::to_array("release-time7")});
+inline constexpr auto band_release_time = std::to_array({{"band0ReleaseTime"},
+                                                         {"band1ReleaseTime"},
+                                                         {"band2ReleaseTime"},
+                                                         {"band3ReleaseTime"},
+                                                         {"band4ReleaseTime"},
+                                                         {"band5ReleaseTime"},
+                                                         {"band6ReleaseTime"},
+                                                         std::to_array("band7ReleaseTime")});
 
 inline constexpr auto band_release_threshold = std::to_array({{"release-threshold0"},
                                                               {"release-threshold1"},
@@ -185,14 +197,14 @@ constexpr auto band_ratio = std::to_array(
 constexpr auto band_knee = std::to_array(
     {{"knee0"}, {"knee1"}, {"knee2"}, {"knee3"}, {"knee4"}, {"knee5"}, {"knee6"}, std::to_array("knee7")});
 
-constexpr auto band_makeup = std::to_array({{"makeup0"},
-                                            {"makeup1"},
-                                            {"makeup2"},
-                                            {"makeup3"},
-                                            {"makeup4"},
-                                            {"makeup5"},
-                                            {"makeup6"},
-                                            std::to_array("makeup7")});
+constexpr auto band_makeup = std::to_array({{"band0Makeup"},
+                                            {"band1Makeup"},
+                                            {"band2Makeup"},
+                                            {"band3Makeup"},
+                                            {"band4Makeup"},
+                                            {"band5Makeup"},
+                                            {"band6Makeup"},
+                                            std::to_array("band7Makeup")});
 
 constexpr auto band_sidechain_preamp = std::to_array({{"sidechain-preamp0"},
                                                       {"sidechain-preamp1"},

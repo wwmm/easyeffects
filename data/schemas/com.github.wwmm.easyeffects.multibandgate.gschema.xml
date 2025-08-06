@@ -460,28 +460,28 @@
             <default>20000</default>
         </key>
 
-        <key name="gate-enable0" type="b">
+        <key name="band0GateEnable" type="b">
             <default>true</default>
         </key>
-        <key name="gate-enable1" type="b">
+        <key name="band1GateEnable" type="b">
             <default>true</default>
         </key>
-        <key name="gate-enable2" type="b">
+        <key name="band2GateEnable" type="b">
             <default>true</default>
         </key>
-        <key name="gate-enable3" type="b">
+        <key name="band3GateEnable" type="b">
             <default>true</default>
         </key>
-        <key name="gate-enable4" type="b">
+        <key name="band4GateEnable" type="b">
             <default>true</default>
         </key>
-        <key name="gate-enable5" type="b">
+        <key name="band5GateEnable" type="b">
             <default>true</default>
         </key>
-        <key name="gate-enable6" type="b">
+        <key name="band6GateEnable" type="b">
             <default>true</default>
         </key>
-        <key name="gate-enable7" type="b">
+        <key name="band7GateEnable" type="b">
             <default>true</default>
         </key>
 
@@ -601,28 +601,28 @@
             <default>100</default>
         </key>
 
-        <key name="hysteresis0" type="b">
+        <key name="band0Hysteresis" type="b">
             <default>false</default>
         </key>
-        <key name="hysteresis1" type="b">
+        <key name="band1Hysteresis" type="b">
             <default>false</default>
         </key>
-        <key name="hysteresis2" type="b">
+        <key name="band2Hysteresis" type="b">
             <default>false</default>
         </key>
-        <key name="hysteresis3" type="b">
+        <key name="band3Hysteresis" type="b">
             <default>false</default>
         </key>
-        <key name="hysteresis4" type="b">
+        <key name="band4Hysteresis" type="b">
             <default>false</default>
         </key>
-        <key name="hysteresis5" type="b">
+        <key name="band5Hysteresis" type="b">
             <default>false</default>
         </key>
-        <key name="hysteresis6" type="b">
+        <key name="band6Hysteresis" type="b">
             <default>false</default>
         </key>
-        <key name="hysteresis7" type="b">
+        <key name="band7Hysteresis" type="b">
             <default>false</default>
         </key>
 
