@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-25 14:44+0000\n"
-"PO-Revision-Date: 2025-07-09 01:02+0000\n"
+"PO-Revision-Date: 2025-08-07 09:02+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -195,6 +195,9 @@ msgid ""
 "Fixed a bug in the pitch plugin that made the cents and the octaves control "
 "to not be reapplied when EasyEffects was restarted"
 msgstr ""
+"Correction d'un bogue dans le greffon Hauteur qui faisait que le contrôle "
+"des cents et des octaves n'était pas réappliqué lorsque EasyEffects était "
+"redémarré"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
