@@ -35,7 +35,6 @@ MultibandGatePreset::MultibandGatePreset(PipelineType pipeline_type, const std::
 
 void MultibandGatePreset::save(nlohmann::json& json) {
   using namespace tags::multiband_gate;
-  ;
 
   json[section][instance_name]["bypass"] = settings->bypass();
 
@@ -132,6 +131,8 @@ void MultibandGatePreset::save(nlohmann::json& json) {
 }
 
 void MultibandGatePreset::load(const nlohmann::json& json) {
+  using namespace tags::multiband_gate;
+
   UPDATE_PROPERTY("bypass", Bypass);
   UPDATE_PROPERTY("input-gain", InputGain);
   UPDATE_PROPERTY("output-gain", OutputGain);
@@ -142,6 +143,84 @@ void MultibandGatePreset::load(const nlohmann::json& json) {
   UPDATE_ENUM_LIKE_PROPERTY("gate-mode", GateMode);
   UPDATE_ENUM_LIKE_PROPERTY("envelope-boost", EnvelopeBoost);
 
-  // TODO: Add band presets
-  // ...
+  for (uint n = 0U; n < tags::multiband_gate::n_bands; n++) {
+    const auto nstr = util::to_string(n);
+    auto jbandn = json.at(section).at(instance_name).at("band" + nstr);
+
+    if (n > 0U) {
+      settings->setProperty(
+          band_enable[n].data(),
+          jbandn.value("enable-band", settings->getDefaultValue(band_enable[n].data()).value<bool>()));
+
+      settings->setProperty(
+          band_split_frequency[n].data(),
+          jbandn.value("split-frequency", settings->getDefaultValue(band_split_frequency[n].data()).value<double>()));
+    }
+
+    settings->setProperty(
+        band_gate_enable[n].data(),
+        jbandn.value("gate-enable", settings->getDefaultValue(band_gate_enable[n].data()).value<bool>()));
+
+    settings->setProperty(band_solo[n].data(),
+                          jbandn.value("solo", settings->getDefaultValue(band_solo[n].data()).value<bool>()));
+
+    settings->setProperty(band_mute[n].data(),
+                          jbandn.value("mute", settings->getDefaultValue(band_mute[n].data()).value<bool>()));
+
+    settings->setProperty(
+        band_attack_time[n].data(),
+        jbandn.value("attack-time", settings->getDefaultValue(band_attack_time[n].data()).value<double>()));
+
+    settings->setProperty(
+        band_release_time[n].data(),
+        jbandn.value("release-time", settings->getDefaultValue(band_release_time[n].data()).value<double>()));
+
+    settings->setProperty(
+        band_hysteresis[n].data(),
+        jbandn.value("hysteresis", settings->getDefaultValue(band_hysteresis[n].data()).value<bool>()));
+
+    settings->setProperty(band_hysteresis_threshold[n].data(),
+                          jbandn.value("hysteresis-threshold",
+                                       settings->getDefaultValue(band_hysteresis_threshold[n].data()).value<double>()));
+
+    settings->setProperty(
+        band_hysteresis_zone[n].data(),
+        jbandn.value("hysteresis-zone", settings->getDefaultValue(band_hysteresis_zone[n].data()).value<double>()));
+
+    settings->setProperty(
+        band_curve_threshold[n].data(),
+        jbandn.value("curve-threshold", settings->getDefaultValue(band_curve_threshold[n].data()).value<double>()));
+
+    settings->setProperty(
+        band_curve_zone[n].data(),
+        jbandn.value("curve-zone", settings->getDefaultValue(band_curve_zone[n].data()).value<double>()));
+
+    settings->setProperty(
+        band_reduction[n].data(),
+        jbandn.value("reduction", settings->getDefaultValue(band_reduction[n].data()).value<double>()));
+
+    settings->setProperty(band_makeup[n].data(),
+                          jbandn.value("makeup", settings->getDefaultValue(band_makeup[n].data()).value<double>()));
+
+    settings->setProperty(
+        band_sidechain_type[n].data(),
+        settings->sidechainTypeLabels().indexOf(jbandn.value(
+            "sidechain-type",
+            settings->sidechainTypeLabels()[settings->getDefaultValue(band_sidechain_type[n].data()).value<int>()]
+                .toStdString())));
+
+    settings->setProperty(
+        band_sidechain_mode[n].data(),
+        settings->sidechainModeLabels().indexOf(jbandn.value(
+            "sidechain-mode",
+            settings->sidechainModeLabels()[settings->getDefaultValue(band_sidechain_mode[n].data()).value<int>()]
+                .toStdString())));
+
+    settings->setProperty(
+        band_sidechain_source[n].data(),
+        settings->sidechainSourceLabels().indexOf(jbandn.value(
+            "sidechain-source",
+            settings->sidechainSourceLabels()[settings->getDefaultValue(band_sidechain_source[n].data()).value<int>()]
+                .toStdString())));
+  }
 }

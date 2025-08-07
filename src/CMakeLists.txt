@@ -74,7 +74,9 @@ target_sources(easyeffects PRIVATE
     maximizer.cpp
     maximizer_preset.cpp
     multiband_compressor.cpp
+    multiband_compressor_preset.cpp
     multiband_gate.cpp
+    multiband_gate_preset.cpp
     output_level.cpp
     pitch.cpp
     pitch_preset.cpp
