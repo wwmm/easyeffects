@@ -222,5 +222,43 @@ void MultibandGatePreset::load(const nlohmann::json& json) {
             "sidechain-source",
             settings->sidechainSourceLabels()[settings->getDefaultValue(band_sidechain_source[n].data()).value<int>()]
                 .toStdString())));
+
+    settings->setProperty(
+        band_stereo_split_source[n].data(),
+        settings->stereoSplitSourceLabels().indexOf(jbandn.value(
+            "stereo-split-source",
+            settings
+                ->stereoSplitSourceLabels()[settings->getDefaultValue(band_stereo_split_source[n].data()).value<int>()]
+                .toStdString())));
+
+    settings->setProperty(band_sidechain_lookahead[n].data(),
+                          jbandn.value("sidechain-lookahead",
+                                       settings->getDefaultValue(band_sidechain_lookahead[n].data()).value<double>()));
+
+    settings->setProperty(band_sidechain_reactivity[n].data(),
+                          jbandn.value("sidechain-reactivity",
+                                       settings->getDefaultValue(band_sidechain_reactivity[n].data()).value<double>()));
+
+    settings->setProperty(
+        band_sidechain_preamp[n].data(),
+        jbandn.value("sidechain-preamp", settings->getDefaultValue(band_sidechain_preamp[n].data()).value<double>()));
+
+    settings->setProperty(band_lowcut_filter[n].data(),
+                          jbandn.value("sidechain-custom-lowcut-filter",
+                                       settings->getDefaultValue(band_lowcut_filter[n].data()).value<bool>()));
+
+    settings->setProperty(band_highcut_filter[n].data(),
+                          jbandn.value("sidechain-custom-highcut-filter",
+                                       settings->getDefaultValue(band_highcut_filter[n].data()).value<bool>()));
+
+    settings->setProperty(
+        band_lowcut_filter_frequency[n].data(),
+        jbandn.value("sidechain-lowcut-frequency",
+                     settings->getDefaultValue(band_lowcut_filter_frequency[n].data()).value<double>()));
+
+    settings->setProperty(
+        band_highcut_filter_frequency[n].data(),
+        jbandn.value("sidechain-highcut-frequency",
+                     settings->getDefaultValue(band_highcut_filter_frequency[n].data()).value<double>()));
   }
 }

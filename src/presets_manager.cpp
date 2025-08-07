@@ -66,6 +66,8 @@
 #include "limiter_preset.hpp"
 #include "loudness_preset.hpp"
 #include "maximizer_preset.hpp"
+#include "multiband_compressor_preset.hpp"
+#include "multiband_gate_preset.hpp"
 #include "pipeline_type.hpp"
 #include "pitch_preset.hpp"
 #include "plugin_preset_base.hpp"
@@ -1424,109 +1426,57 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
     -> std::optional<std::unique_ptr<PluginPresetBase>> {
   if (filter_name.startsWith(tags::plugin_name::BaseName::autogain)) {
     return std::make_unique<AutoGainPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
     return std::make_unique<BassEnhancerPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
     return std::make_unique<BassLoudnessPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::compressor)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::compressor)) {
     return std::make_unique<CompressorPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::convolver)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::convolver)) {
     return std::make_unique<ConvolverPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
     return std::make_unique<CrossfeedPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
     return std::make_unique<CrystalizerPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::deesser)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::deesser)) {
     return std::make_unique<DeesserPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::delay)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::delay)) {
     return std::make_unique<DelayPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
     return std::make_unique<DeepFilterNetPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
     return std::make_unique<EchoCancellerPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::equalizer)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::equalizer)) {
     return std::make_unique<EqualizerPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::exciter)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::exciter)) {
     return std::make_unique<ExciterPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::expander)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::expander)) {
     return std::make_unique<ExpanderPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::filter)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::filter)) {
     return std::make_unique<FilterPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::gate)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::gate)) {
     return std::make_unique<GatePreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
     return std::make_unique<LevelMeterPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::limiter)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::limiter)) {
     return std::make_unique<LimiterPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::loudness)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::loudness)) {
     return std::make_unique<LoudnessPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::maximizer)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::maximizer)) {
     return std::make_unique<MaximizerPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
-    // return std::make_unique<MultibandCompressorPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
-    // return std::make_unique<MultibandGatePreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::pitch)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
+    return std::make_unique<MultibandCompressorPreset>(pipeline_type, filter_name.toStdString());
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
+    return std::make_unique<MultibandGatePreset>(pipeline_type, filter_name.toStdString());
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::pitch)) {
     return std::make_unique<PitchPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::reverb)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::reverb)) {
     return std::make_unique<ReverbPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
     return std::make_unique<RNNoisePreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::speex)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::speex)) {
     return std::make_unique<SpeexPreset>(pipeline_type, filter_name.toStdString());
-  }
-
-  if (filter_name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
+  } else if (filter_name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
     return std::make_unique<StereoToolsPreset>(pipeline_type, filter_name.toStdString());
   }
 
