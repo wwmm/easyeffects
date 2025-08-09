@@ -18,7 +18,9 @@
  */
 
 #include "multiband_compressor.hpp"
+#include <qlist.h>
 #include <qtypes.h>
+#include <QString>
 #include <algorithm>
 #include <memory>
 #include <span>
@@ -49,7 +51,14 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
                  true),
       settings(db::Manager::self().get_plugin_db<db::MultibandCompressor>(
           pipe_type,
-          tags::plugin_name::BaseName::multibandCompressor + "#" + instance_id)) {
+          tags::plugin_name::BaseName::multibandCompressor + "#" + instance_id)),
+      frequency_range_end(n_bands),
+      envelope_left(n_bands),
+      envelope_right(n_bands),
+      curve_left(n_bands),
+      curve_right(n_bands),
+      reduction_left(n_bands),
+      reduction_right(n_bands) {
   const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/sc_mb_compressor_stereo";
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
@@ -212,18 +221,18 @@ void MultibandCompressor::process(std::span<float>& left_in,
   get_peaks(left_in, right_in, left_out, right_out);
 
   for (uint n = 0U; n < n_bands; n++) {
-    // const auto nstr = util::to_string(n);
+    const auto nstr = util::to_string(n);
 
-    // frequency_range_end_port_array.at(n) = lv2_wrapper->get_control_port_value("fre_" + nstr);
+    frequency_range_end[n] = lv2_wrapper->get_control_port_value("fre_" + nstr);
 
-    // envelope_port_array.at(n) = 0.5F * (lv2_wrapper->get_control_port_value("elm_" + nstr + "l") +
-    //                                     lv2_wrapper->get_control_port_value("elm_" + nstr + "r"));
+    envelope_left[n] = lv2_wrapper->get_control_port_value("elm_" + nstr + "l");
+    envelope_right[n] = lv2_wrapper->get_control_port_value("elm_" + nstr + "r");
 
-    // curve_port_array.at(n) = 0.5F * (lv2_wrapper->get_control_port_value("clm_" + nstr + "l") +
-    //                                  lv2_wrapper->get_control_port_value("clm_" + nstr + "r"));
+    curve_left[n] = lv2_wrapper->get_control_port_value("clm_" + nstr + "l");
+    curve_right[n] = lv2_wrapper->get_control_port_value("clm_" + nstr + "r");
 
-    // reduction_port_array.at(n) = 0.5F * (lv2_wrapper->get_control_port_value("rlm_" + nstr + "l") +
-    //                                      lv2_wrapper->get_control_port_value("rlm_" + nstr + "r"));
+    reduction_left[n] = lv2_wrapper->get_control_port_value("rlm_" + nstr + "l");
+    reduction_right[n] = lv2_wrapper->get_control_port_value("rlm_" + nstr + "r");
   }
 }
 
@@ -266,4 +275,32 @@ void MultibandCompressor::update_probe_links() {
 
 auto MultibandCompressor::get_latency_seconds() -> float {
   return this->latency_value;
+}
+
+QList<float> MultibandCompressor::getFrequencyRangeEnd() const {
+  return frequency_range_end;
+}
+
+QList<float> MultibandCompressor::getEnvelopeLevelLeft() const {
+  return envelope_left;
+}
+
+QList<float> MultibandCompressor::getEnvelopeLevelRight() const {
+  return envelope_right;
+}
+
+QList<float> MultibandCompressor::getCurveLevelLeft() const {
+  return curve_left;
+}
+
+QList<float> MultibandCompressor::getCurveLevelRight() const {
+  return curve_right;
+}
+
+QList<float> MultibandCompressor::getReductionLevelLeft() const {
+  return reduction_left;
+}
+
+QList<float> MultibandCompressor::getReductionLevelRight() const {
+  return reduction_right;
 }

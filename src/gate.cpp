@@ -247,12 +247,15 @@ float Gate::getEnvelopeLevelRight() const {
 float Gate::getAttackZoneStart() const {
   return attack_zone_start;
 }
+
 float Gate::getAttackThreshold() const {
   return attack_threshold;
 }
+
 float Gate::getReleaseZoneStart() const {
   return release_zone_start;
 }
+
 float Gate::getReleaseThreshold() const {
   return release_threshold;
 }

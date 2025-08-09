@@ -20,6 +20,7 @@
 #pragma once
 
 #include <pipewire/proxy.h>
+#include <qlist.h>
 #include <qtmetamacros.h>
 #include <sys/types.h>
 #include <QString>
@@ -63,12 +64,26 @@ class MultibandGate : public PluginBase {
 
   void update_probe_links() override;
 
+  Q_INVOKABLE [[nodiscard]] QList<float> getFrequencyRangeEnd() const;
+
+  Q_INVOKABLE [[nodiscard]] QList<float> getEnvelopeLevelLeft() const;
+  Q_INVOKABLE [[nodiscard]] QList<float> getEnvelopeLevelRight() const;
+
+  Q_INVOKABLE [[nodiscard]] QList<float> getCurveLevelLeft() const;
+  Q_INVOKABLE [[nodiscard]] QList<float> getCurveLevelRight() const;
+
+  Q_INVOKABLE [[nodiscard]] QList<float> getReductionLevelLeft() const;
+  Q_INVOKABLE [[nodiscard]] QList<float> getReductionLevelRight() const;
+
  private:
   uint latency_n_frames = 0U;
 
   static constexpr uint n_bands = tags::multiband_gate::n_bands;
 
   db::MultibandGate* settings = nullptr;
+
+  QList<float> frequency_range_end, envelope_left, envelope_right, curve_left, curve_right, reduction_left,
+      reduction_right;
 
   std::vector<pw_proxy*> list_proxies;
 
