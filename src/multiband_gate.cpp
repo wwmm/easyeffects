@@ -89,8 +89,8 @@ MultibandGate::MultibandGate(const std::string& tag,
   BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::MultibandGate::stereoSplitChanged);
 
   // dB controls with -inf mode.
-  BIND_LV2_PORT_DB("cdr", dry, setDry, db::MultibandGate::dryChanged, true);
-  BIND_LV2_PORT_DB("cwt", wet, setWet, db::MultibandGate::wetChanged, true);
+  BIND_LV2_PORT_DB("g_dry", dry, setDry, db::MultibandGate::dryChanged, true);
+  BIND_LV2_PORT_DB("g_wet", wet, setWet, db::MultibandGate::wetChanged, true);
 
   bind_bands();
 }
@@ -152,13 +152,14 @@ void MultibandGate::bind_bands() {
   BIND_BANDS_PROPERTY(schf, SidechainHighcutFrequency, db::MultibandGate);
   BIND_BANDS_PROPERTY(sla, SidechainLookahead, db::MultibandGate);
   BIND_BANDS_PROPERTY(scr, SidechainReactivity, db::MultibandGate);
-  BIND_BANDS_PROPERTY(ht, HysteresisThreshold, db::MultibandGate);
-  BIND_BANDS_PROPERTY(hz, HysteresisZone, db::MultibandGate);
-  BIND_BANDS_PROPERTY(gt, CurveThreshold, db::MultibandGate);
-  BIND_BANDS_PROPERTY(gz, CurveZone, db::MultibandGate);
-  BIND_BANDS_PROPERTY(gr, Reduction, db::MultibandGate);
-  BIND_BANDS_PROPERTY(mk, Makeup, db::MultibandGate);
-  BIND_BANDS_PROPERTY(scp, SidechainPreamp, db::MultibandGate);
+
+  BIND_BANDS_PROPERTY_DB(ht, HysteresisThreshold, db::MultibandGate, false);
+  BIND_BANDS_PROPERTY_DB(hz, HysteresisZone, db::MultibandGate, false);
+  BIND_BANDS_PROPERTY_DB(gt, CurveThreshold, db::MultibandGate, false);
+  BIND_BANDS_PROPERTY_DB(gz, CurveZone, db::MultibandGate, false);
+  BIND_BANDS_PROPERTY_DB(gr, Reduction, db::MultibandGate, false);
+  BIND_BANDS_PROPERTY_DB(mk, Makeup, db::MultibandGate, false);
+  BIND_BANDS_PROPERTY_DB(scp, SidechainPreamp, db::MultibandGate, false);
 }
 
 void MultibandGate::setup() {

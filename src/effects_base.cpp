@@ -57,6 +57,8 @@
 #include "limiter.hpp"
 #include "loudness.hpp"
 #include "maximizer.hpp"
+#include "multiband_compressor.hpp"
+#include "multiband_gate.hpp"
 #include "output_level.hpp"
 #include "pipeline_type.hpp"
 #include "pitch.hpp"
@@ -70,9 +72,6 @@
 #include "stereo_tools.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
-
-// #include "multiband_compressor.hpp"
-// #include "multiband_gate.hpp"
 
 EffectsBase::EffectsBase(pw::Manager* pipe_manager, PipelineType pipe_type)
     : log_tag(pipe_type == PipelineType::output ? "soe: " : "sie: "), pm(pipe_manager), pipeline_type(pipe_type) {
@@ -171,10 +170,9 @@ void EffectsBase::create_filters_if_necessary() {
     } else if (name.startsWith(tags::plugin_name::BaseName::maximizer)) {
       filter = std::make_shared<Maximizer>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
-      //   filter = std::make_shared<MultibandCompressor>(log_tag, tags::schema::multiband_compressor::id, path, pm,
-      //                                                  pipeline_type);
+      filter = std::make_shared<MultibandCompressor>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
-      //   filter = std::make_shared<MultibandGate>(log_tag, tags::schema::multiband_gate::id, path, pm, pipeline_type);
+      filter = std::make_shared<MultibandGate>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::pitch)) {
       filter = std::make_shared<Pitch>(log_tag, pm, pipeline_type, instance_id);
     } else if (name.startsWith(tags::plugin_name::BaseName::reverb)) {
@@ -298,6 +296,10 @@ QVariant EffectsBase::getPluginInstance(const QString& pluginName) {
     return QVariant::fromValue(dynamic_cast<Loudness*>(p.get()));
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::maximizer)) {
     return QVariant::fromValue(dynamic_cast<Maximizer*>(p.get()));
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
+    return QVariant::fromValue(dynamic_cast<MultibandCompressor*>(p.get()));
+  } else if (pluginName.startsWith(tags::plugin_name::BaseName::multibandGate)) {
+    return QVariant::fromValue(dynamic_cast<MultibandGate*>(p.get()));
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::pitch)) {
     return QVariant::fromValue(dynamic_cast<Pitch*>(p.get()));
   } else if (pluginName.startsWith(tags::plugin_name::BaseName::reverb)) {

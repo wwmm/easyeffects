@@ -281,6 +281,24 @@ Kirigami.Page {
                         "pipelineInstance": pageStreamsEffects.pipelineInstance
                     });
                     break;
+                case TagsPluginName.BaseName.multibandCompressor:
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
+                    pluginsStack.push("qrc:ui/MultibandCompressor.qml", {
+                        "name": name,
+                        "pluginDB": pluginDB,
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
+                    });
+                    break;
+                case TagsPluginName.BaseName.multibandGate:
+                    while (pluginsStack.depth > 1)
+                        pluginsStack.pop();
+                    pluginsStack.push("qrc:ui/MultibandGate.qml", {
+                        "name": name,
+                        "pluginDB": pluginDB,
+                        "pipelineInstance": pageStreamsEffects.pipelineInstance
+                    });
+                    break;
                 case TagsPluginName.BaseName.pitch:
                     while (pluginsStack.depth > 1)
                         pluginsStack.pop();

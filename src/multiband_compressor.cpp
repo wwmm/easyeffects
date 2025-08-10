@@ -153,12 +153,13 @@ void MultibandCompressor::bind_bands() {
   BIND_BANDS_PROPERTY(at, AttackTime, db::MultibandCompressor);
   BIND_BANDS_PROPERTY(rt, ReleaseTime, db::MultibandCompressor);
   BIND_BANDS_PROPERTY(cr, Ratio, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(scp, SidechainPreamp, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(al, AttackThreshold, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(kn, Knee, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(bth, BoostThreshold, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(bsa, BoostAmount, db::MultibandCompressor);
-  BIND_BANDS_PROPERTY(mk, Makeup, db::MultibandCompressor);
+
+  BIND_BANDS_PROPERTY_DB(scp, SidechainPreamp, db::MultibandCompressor, false);
+  BIND_BANDS_PROPERTY_DB(al, AttackThreshold, db::MultibandCompressor, false);
+  BIND_BANDS_PROPERTY_DB(kn, Knee, db::MultibandCompressor, false);
+  BIND_BANDS_PROPERTY_DB(bth, BoostThreshold, db::MultibandCompressor, false);
+  BIND_BANDS_PROPERTY_DB(bsa, BoostAmount, db::MultibandCompressor, false);
+  BIND_BANDS_PROPERTY_DB(mk, Makeup, db::MultibandCompressor, false);
 }
 
 void MultibandCompressor::setup() {
