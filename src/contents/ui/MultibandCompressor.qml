@@ -84,6 +84,16 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
+                    text: i18n("Stereo Split")
+                    icon.name: "view-split-left-right-symbolic"
+                    checkable: true
+                    checked: pluginDB.stereoSplit
+                    onTriggered: {
+                        if (pluginDB.stereoSplit != checked)
+                            pluginDB.stereoSplit = checked;
+                    }
+                },
+                Kirigami.Action {
                     text: i18n("Reset")
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {

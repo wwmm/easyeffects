@@ -28,21 +28,44 @@ Kirigami.ScrollablePage {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
-    ColumnLayout {
-        Kirigami.CardsLayout {
-            id: cardLayout
+    RowLayout {
+        Kirigami.Card {
+            id: cardControls
 
             Layout.fillWidth: true
+            header: Kirigami.Heading {
+                text: i18n("Controls")
+                level: 2
+            }
 
-            Kirigami.Card {
-                id: cardControls
+            contentItem: ColumnLayout {}
+        }
 
-                header: Kirigami.Heading {
-                    text: i18n("Controls")
-                    level: 2
+        ListView {
+            id: bandsListview
+            Layout.fillHeight: true
+            Layout.fillWidth: false
+
+            model: 8
+            implicitWidth: contentItem.childrenRect.width
+            clip: true
+            delegate: Controls.ItemDelegate {
+                id: listItemDelegate
+
+                required property int index
+
+                hoverEnabled: true
+                highlighted: ListView.isCurrentItem
+                onClicked: {
+                    ListView.view.currentIndex = index;
                 }
 
-                contentItem: ColumnLayout {}
+                contentItem: RowLayout {
+                    Controls.Label {
+                        Layout.fillWidth: true
+                        text: i18n("Band") + " " + (listItemDelegate.index + 1)
+                    }
+                }
             }
         }
     }
@@ -81,6 +104,16 @@ Kirigami.ScrollablePage {
                             pluginBackend.showNativeUi();
                         else
                             pluginBackend.closeNativeUi();
+                    }
+                },
+                Kirigami.Action {
+                    text: i18n("Stereo Split")
+                    icon.name: "view-split-left-right-symbolic"
+                    checkable: true
+                    checked: pluginDB.stereoSplit
+                    onTriggered: {
+                        if (pluginDB.stereoSplit != checked)
+                            pluginDB.stereoSplit = checked;
                     }
                 },
                 Kirigami.Action {
