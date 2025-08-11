@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-25 14:44+0000\n"
+"POT-Creation-Date: 2025-08-11 22:46+0000\n"
 "PO-Revision-Date: 2025-07-09 20:12+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -79,10 +79,6 @@ msgstr ""
 "Quando o Easy Effects for iniciado, ele lembrará convenientemente a "
 "configuração usada na última sessão. Também é possível salvar todas as "
 "configurações atuais como perfis."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
-msgid "Wellington Wallace"
-msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "The main page showing two audio output apps"
@@ -1781,6 +1777,9 @@ msgid ""
 msgstr ""
 "Novas bibliotecas estão sendo utilizadas e algumas das bibliotecas que antes "
 "eram opcionais agora são obrigatórias"
+
+#~ msgid "Wellington Wallace"
+#~ msgstr "Wellington Wallace"
 
 #~ msgid "This release adds the following features:"
 #~ msgstr "Esta versão adiciona os seguintes recursos:"
