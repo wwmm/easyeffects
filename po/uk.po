@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-25 14:44+0000\n"
 "PO-Revision-Date: 2025-08-11 04:01+0000\n"
-"Last-Translator: Damglador <vse.stopchanskyi@gmail.com>\n"
+"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -2534,7 +2534,7 @@ msgstr "Кристалізатор"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Deep Noise Remover"
-msgstr ""
+msgstr "Глибоке видалення шуму"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Deesser"
