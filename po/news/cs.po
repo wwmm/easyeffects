@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-25 14:44+0000\n"
+"POT-Creation-Date: 2025-08-12 20:34+0000\n"
 "PO-Revision-Date: 2025-07-21 10:12+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/"
@@ -75,10 +75,6 @@ msgstr ""
 "Když je aplikace Easy Effects spuštěna, zapamatuje si nastavení používané "
 "při poslední relaci. Je možné i uložit všechna aktuální nastavení jako "
 "profil."
-
-#: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
-msgid "Wellington Wallace"
-msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "The main page showing two audio output apps"
@@ -1694,6 +1690,9 @@ msgid ""
 msgstr ""
 "Používají se nové knihovny a některé knihovny, které byly dříve nepovinné, "
 "jsou nyní povinné"
+
+#~ msgid "Wellington Wallace"
+#~ msgstr "Wellington Wallace"
 
 #, fuzzy
 #~ msgid "and #1427"
