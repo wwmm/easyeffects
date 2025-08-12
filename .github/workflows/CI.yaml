@@ -15,7 +15,7 @@ jobs:
       github_commit_desc: ${{ steps.get_commit_desc.outputs.github_commit_desc }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.3.0
+        uses: actions/checkout@v5.0.0
         with:
           fetch-depth: 0
 
@@ -50,7 +50,7 @@ jobs:
       options: --privileged
     steps:
     - name: Checkout
-      uses: actions/checkout@v4.3.0
+      uses: actions/checkout@v5.0.0
 
     - name: Enable errors on warnings
       run: |
@@ -94,7 +94,7 @@ jobs:
     needs: prepare
     steps:
     - name: Checkout
-      uses: actions/checkout@v4.3.0
+      uses: actions/checkout@v5.0.0
       with:
         # needed for getting git describe info for pkgver() in pkgbuild
         fetch-depth: 0
@@ -131,7 +131,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4.3.0
+      uses: actions/checkout@v5.0.0
 
     - name: Install deps
       run: |
@@ -191,7 +191,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4.3.0
+      uses: actions/checkout@v5.0.0
 
     - name: Install deps
       run: |
@@ -219,7 +219,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4.3.0
+      uses: actions/checkout@v5.0.0
 
     - name: Install deps
       run: |
@@ -285,7 +285,7 @@ jobs:
       image: archlinux
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.3.0
+        uses: actions/checkout@v5.0.0
       
       - name: Install deps
         run: pacman -Syu --noconfirm appstream appstream-glib libxslt which
