@@ -33,6 +33,7 @@ Kirigami.ScrollablePage {
             id: cardControls
 
             Layout.fillWidth: true
+            Layout.alignment: Qt.AlignTop
             header: Kirigami.Heading {
                 text: i18n("Controls")
                 level: 2
@@ -41,29 +42,48 @@ Kirigami.ScrollablePage {
             contentItem: ColumnLayout {}
         }
 
-        ListView {
-            id: bandsListview
+        Kirigami.Card {
             Layout.fillHeight: true
             Layout.fillWidth: false
+            Layout.preferredHeight: contentItem.childrenRect.height + 2 * padding
+            contentItem: ListView {
+                id: bandsListview
+                Layout.fillHeight: true
+                Layout.fillWidth: false
+                Layout.preferredHeight: contentItem.childrenRect.height
+                implicitHeight: contentItem.childrenRect.height
 
-            model: 8
-            implicitWidth: contentItem.childrenRect.width
-            clip: true
-            delegate: Controls.ItemDelegate {
-                id: listItemDelegate
+                model: 8
+                implicitWidth: contentItem.childrenRect.width
+                clip: true
+                delegate: Controls.ItemDelegate {
+                    id: listItemDelegate
 
-                required property int index
+                    required property int index
 
-                hoverEnabled: true
-                highlighted: ListView.isCurrentItem
-                onClicked: {
-                    ListView.view.currentIndex = index;
-                }
+                    hoverEnabled: true
+                    highlighted: ListView.isCurrentItem
+                    onClicked: {
+                        ListView.view.currentIndex = index;
+                    }
 
-                contentItem: RowLayout {
-                    Controls.Label {
-                        Layout.fillWidth: true
-                        text: i18n("Band") + " " + (listItemDelegate.index + 1)
+                    contentItem: RowLayout {
+                        Controls.Label {
+                            Layout.fillWidth: true
+                            text: i18n("Band") + " " + (listItemDelegate.index + 1)
+                        }
+
+                        Controls.CheckBox {
+                            readonly property string bandName: "band" + listItemDelegate.index + "Enable"
+                            Layout.alignment: Qt.AlignHCenter
+                            visible: listItemDelegate.index > 0
+                            checked: listItemDelegate.index > 0 ? pluginDB[bandName] : false
+                            onCheckedChanged: {
+                                if (checked != pluginDB[bandName]) {
+                                    pluginDB[bandName] = checked;
+                                }
+                            }
+                        }
                     }
                 }
             }
