@@ -4,6 +4,7 @@ import QtQuick.Layouts
 import ee.database as DB
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
     id: multibandGatePage
@@ -28,59 +29,156 @@ Kirigami.ScrollablePage {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
-    RowLayout {
-        Kirigami.Card {
-            id: cardControls
+    ColumnLayout {
+        Kirigami.CardsLayout {
+            maximumColumns: 3
+            FormCard.FormComboBoxDelegate {
+                id: gateMode
 
-            Layout.fillWidth: true
-            Layout.alignment: Qt.AlignTop
-            header: Kirigami.Heading {
-                text: i18n("Controls")
-                level: 2
+                text: i18n("Operating Mode")
+                displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                currentIndex: pluginDB.gateMode
+                editable: false
+                model: [i18n("Classic"), i18n("Modern"), i18n("Linear Phase")]
+                onActivated: idx => {
+                    pluginDB.gateMode = idx;
+                }
             }
 
-            contentItem: ColumnLayout {}
+            EeSpinBox {
+                id: dry
+
+                label: i18n("Dry")
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: pluginDB.getMinValue("dry")
+                to: pluginDB.getMaxValue("dry")
+                value: pluginDB.dry
+                decimals: 2
+                stepSize: 0.01
+                unit: "dB"
+                minusInfinityMode: true
+                onValueModified: v => {
+                    pluginDB.dry = v;
+                }
+            }
+
+            EeSpinBox {
+                id: wet
+
+                label: i18n("Wet")
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: pluginDB.getMinValue("wet")
+                to: pluginDB.getMaxValue("wet")
+                value: pluginDB.wet
+                decimals: 2
+                stepSize: 0.01
+                unit: "dB"
+                minusInfinityMode: true
+                onValueModified: v => {
+                    pluginDB.wet = v;
+                }
+            }
         }
+        RowLayout {
+            ColumnLayout {
+                Kirigami.CardsLayout {
+                    Kirigami.Card {
+                        id: bandCard
 
-        Kirigami.Card {
-            Layout.fillHeight: true
-            Layout.fillWidth: false
-            Layout.preferredHeight: contentItem.childrenRect.height + 2 * padding
-            contentItem: ListView {
-                id: bandsListview
-                Layout.fillHeight: true
-                Layout.fillWidth: false
-                Layout.preferredHeight: contentItem.childrenRect.height
-                implicitHeight: contentItem.childrenRect.height
+                        readonly property string bandId: "band" + bandsListview.currentIndex
 
-                model: 8
-                implicitWidth: contentItem.childrenRect.width
-                clip: true
-                delegate: Controls.ItemDelegate {
-                    id: listItemDelegate
+                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignTop
 
-                    required property int index
-
-                    hoverEnabled: true
-                    highlighted: ListView.isCurrentItem
-                    onClicked: {
-                        ListView.view.currentIndex = index;
-                    }
-
-                    contentItem: RowLayout {
-                        Controls.Label {
-                            Layout.fillWidth: true
-                            text: i18n("Band") + " " + (listItemDelegate.index + 1)
+                        header: Kirigami.Heading {
+                            text: i18n("Band") + " " + (bandsListview.currentIndex + 1)
+                            level: 2
                         }
 
-                        Controls.CheckBox {
-                            readonly property string bandName: "band" + listItemDelegate.index + "Enable"
-                            Layout.alignment: Qt.AlignHCenter
-                            visible: listItemDelegate.index > 0
-                            checked: listItemDelegate.index > 0 ? pluginDB[bandName] : false
-                            onCheckedChanged: {
-                                if (checked != pluginDB[bandName]) {
-                                    pluginDB[bandName] = checked;
+                        contentItem: ColumnLayout {
+
+                            Kirigami.ActionToolBar {
+                                Layout.margins: Kirigami.Units.smallSpacing
+                                alignment: Qt.AlignHCenter
+                                position: Controls.ToolBar.Header
+                                flat: true
+                                actions: [
+                                    Kirigami.Action {
+                                        text: i18n("Mute")
+                                        checkable: true
+                                        checked: pluginDB[bandCard.bandId + "Mute"]
+                                        onTriggered: {
+                                            if (pluginDB[bandCard.bandId + "Mute"] != checked)
+                                                pluginDB[bandCard.bandId + "Mute"] = checked;
+                                        }
+                                    },
+                                    Kirigami.Action {
+                                        text: i18n("Solo")
+                                        checkable: true
+                                        checked: pluginDB[bandCard.bandId + "Solo"]
+                                        onTriggered: {
+                                            if (pluginDB[bandCard.bandId + "Solo"] != checked)
+                                                pluginDB[bandCard.bandId + "Solo"] = checked;
+                                        }
+                                    },
+                                    Kirigami.Action {
+                                        text: i18n("Bypass")
+                                        checkable: true
+                                        checked: !pluginDB[bandCard.bandId + "GateEnable"]
+                                        onTriggered: {
+                                            pluginDB[bandCard.bandId + "GateEnable"] = !checked;
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+
+            Kirigami.Card {
+                Layout.fillHeight: true
+                Layout.fillWidth: false
+                Layout.preferredHeight: contentItem.childrenRect.height + 2 * padding
+                contentItem: ListView {
+                    id: bandsListview
+
+                    Layout.fillHeight: true
+                    Layout.fillWidth: false
+                    Layout.preferredHeight: contentItem.childrenRect.height
+                    implicitHeight: contentItem.childrenRect.height
+
+                    model: 8
+                    implicitWidth: contentItem.childrenRect.width
+                    clip: true
+                    delegate: Controls.ItemDelegate {
+                        id: listItemDelegate
+
+                        required property int index
+
+                        hoverEnabled: true
+                        highlighted: ListView.isCurrentItem
+                        onClicked: {
+                            ListView.view.currentIndex = index;
+                        }
+
+                        contentItem: RowLayout {
+                            Controls.Label {
+                                Layout.fillWidth: true
+                                text: i18n("Band") + " " + (listItemDelegate.index + 1)
+                            }
+
+                            Controls.CheckBox {
+                                readonly property string bandName: "band" + listItemDelegate.index + "Enable"
+                                Layout.alignment: Qt.AlignHCenter
+                                visible: listItemDelegate.index > 0
+                                checked: listItemDelegate.index > 0 ? pluginDB[bandName] : false
+                                onCheckedChanged: {
+                                    if (checked != pluginDB[bandName]) {
+                                        pluginDB[bandName] = checked;
+                                    }
                                 }
                             }
                         }

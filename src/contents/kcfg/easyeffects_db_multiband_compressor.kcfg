@@ -25,13 +25,13 @@
         </entry>
         <entry name="dry" type="Double">
             <label></label>
-            <min>-100</min>
+            <min>-80.01</min>
             <max>20</max>
             <default>-100</default>
         </entry>
         <entry name="wet" type="Double">
             <label></label>
-            <min>-100</min>
+            <min>-80.01</min>
             <max>20</max>
             <default>0</default>
         </entry>
