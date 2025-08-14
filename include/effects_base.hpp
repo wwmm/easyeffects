@@ -124,7 +124,7 @@ class EffectsBase {
 
   std::map<std::string, std::shared_ptr<PluginBase>> plugins;
 
-  std::vector<pw_proxy*> list_proxies, list_proxies_listen_mic;
+  std::vector<pw_proxy*> list_proxies, list_proxies_listen_to_mic;
 
   std::vector<sigc::connection> connections;
 

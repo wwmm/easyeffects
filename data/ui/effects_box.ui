@@ -116,10 +116,10 @@
                         </child>
 
                         <child>
-                            <object class="GtkToggleButton" id="toggle_listen_mic">
+                            <object class="GtkToggleButton" id="toggle_listen_to_mic">
                                 <property name="tooltip-text" translatable="yes">Enable/disable input monitoring</property>
                                 <property name="visible">0</property>
-                                <signal name="toggled" handler="on_listen_mic_toggled" object="EffectsBox" />
+                                <signal name="toggled" handler="on_listen_to_mic_toggled" object="EffectsBox" />
                                 <child>
                                     <object class="GtkBox">
                                         <property name="halign">center</property>
