@@ -226,6 +226,18 @@ void on_startup(GApplication* gapp) {
 
   update_bypass_state(self);
 
+  bool listen_to_mic = g_settings_get_boolean(self->settings, "listen-to-mic");
+  self->sie->set_listen_to_mic(listen_to_mic);
+
+  self->data->gconnections.push_back(
+      g_signal_connect(self->settings, "changed::listen-to-mic",
+                      G_CALLBACK(+[](GSettings* settings, char* key, gpointer user_data) {
+                        auto* self = static_cast<Application*>(user_data);
+                        self->sie->set_listen_to_mic(g_settings_get_boolean(settings, key));
+                      }),
+                      self));
+  
+
   if ((g_application_get_flags(gapp) & G_APPLICATION_IS_SERVICE) != 0) {
     g_application_hold(gapp);
   }

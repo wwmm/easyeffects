@@ -291,7 +291,11 @@ void stack_visible_child_changed(EffectsBox* self, GParamSpec* pspec, GtkWidget*
 }
 
 void on_listen_mic_toggled(EffectsBox* self, GtkToggleButton* button) {
-  self->data->application->sie->set_listen_to_mic(gtk_toggle_button_get_active(button) != 0);
+    if (gtk_toggle_button_get_active(button) != 0) {
+        g_settings_set_boolean(self->app_settings, "listen-to-mic", 1);
+    } else {
+        g_settings_set_boolean(self->app_settings, "listen-to-mic", 0);
+    }
 }
 
 static gboolean spectrum_data_update(GtkWidget* widget, GdkFrameClock* frame_clock, EffectsBox* self) {
@@ -571,6 +575,10 @@ void effects_box_init(EffectsBox* self) {
   self->appsBox = ui::apps_box::create();
   self->pluginsBox = ui::plugins_box::create();
   self->blocklist_menu = ui::blocklist_menu::create();
+
+  g_settings_bind(self->app_settings, "listen-to-mic",
+                  self->toggle_listen_mic, "active",
+                  G_SETTINGS_BIND_DEFAULT);
 
   gtk_menu_button_set_popover(self->menubutton_blocklist, GTK_WIDGET(self->blocklist_menu));
 
