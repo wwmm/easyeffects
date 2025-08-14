@@ -13,6 +13,7 @@ Kirigami.ScrollablePage {
     required property var pluginDB
     required property var pipelineInstance
     property var pluginBackend
+    readonly property string bandId: "band" + bandsListview.currentIndex
 
     function updateMeters() {
         if (!pluginBackend)
@@ -82,56 +83,245 @@ Kirigami.ScrollablePage {
             }
         }
         RowLayout {
-            ColumnLayout {
-                Kirigami.CardsLayout {
-                    Kirigami.Card {
-                        id: bandCard
 
-                        readonly property string bandId: "band" + bandsListview.currentIndex
+            Kirigami.Card {
+                id: bandCard
 
-                        Layout.fillWidth: true
-                        Layout.alignment: Qt.AlignTop
+                Layout.fillWidth: true
+                Layout.alignment: Qt.AlignTop
 
-                        header: Kirigami.Heading {
-                            text: i18n("Band") + " " + (bandsListview.currentIndex + 1)
-                            level: 2
+                header: RowLayout {
+                    Kirigami.Heading {
+                        text: i18n("Band") + " " + (bandsListview.currentIndex + 1)
+                        level: 2
+                    }
+
+                    Kirigami.ActionToolBar {
+                        Layout.margins: Kirigami.Units.smallSpacing
+                        alignment: Qt.AlignRight
+                        position: Controls.ToolBar.Header
+                        flat: true
+                        actions: [
+                            Kirigami.Action {
+                                id: viewLeft
+                                checkable: true
+                                checked: multibandGatePage.pluginDB.viewSidechain
+                                icon.name: "arrow-left-symbolic"
+                                onTriggered: {
+                                    multibandGatePage.pluginDB.viewSidechain = true;
+                                }
+                            },
+                            Kirigami.Action {
+                                id: viewRight
+                                checkable: true
+                                checked: !multibandGatePage.pluginDB.viewSidechain
+                                icon.name: "arrow-right-symbolic"
+                                onTriggered: {
+                                    multibandGatePage.pluginDB.viewSidechain = false;
+                                }
+                            }
+                        ]
+                    }
+                }
+                contentItem: ColumnLayout {
+
+                    Kirigami.ActionToolBar {
+                        Layout.margins: Kirigami.Units.smallSpacing
+                        alignment: Qt.AlignHCenter
+                        position: Controls.ToolBar.Header
+                        flat: false
+                        actions: [
+                            Kirigami.Action {
+                                text: i18n("Mute")
+                                checkable: true
+                                checked: pluginDB[multibandGatePage.bandId + "Mute"]
+                                onTriggered: {
+                                    if (pluginDB[multibandGatePage.bandId + "Mute"] != checked)
+                                        pluginDB[multibandGatePage.bandId + "Mute"] = checked;
+                                }
+                            },
+                            Kirigami.Action {
+                                text: i18n("Solo")
+                                checkable: true
+                                checked: pluginDB[multibandGatePage.bandId + "Solo"]
+                                onTriggered: {
+                                    if (pluginDB[multibandGatePage.bandId + "Solo"] != checked)
+                                        pluginDB[multibandGatePage.bandId + "Solo"] = checked;
+                                }
+                            },
+                            Kirigami.Action {
+                                text: i18n("Bypass")
+                                checkable: true
+                                checked: !pluginDB[multibandGatePage.bandId + "GateEnable"]
+                                onTriggered: {
+                                    pluginDB[multibandGatePage.bandId + "GateEnable"] = !checked;
+                                }
+                            }
+                        ]
+                    }
+
+                    Kirigami.CardsLayout {
+                        maximumColumns: 4
+
+                        EeSpinBox {
+                            label: i18n("Attack")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue(multibandGatePage.bandId + "AttackTime")
+                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "AttackTime")
+                            value: pluginDB[multibandGatePage.bandId + "AttackTime"]
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "ms"
+                            onValueModified: v => {
+                                pluginDB[multibandGatePage.bandId + "AttackTime"] = v;
+                            }
                         }
 
-                        contentItem: ColumnLayout {
+                        EeSpinBox {
+                            label: i18n("Release")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue(multibandGatePage.bandId + "ReleaseTime")
+                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "ReleaseTime")
+                            value: pluginDB[multibandGatePage.bandId + "ReleaseTime"]
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "ms"
+                            onValueModified: v => {
+                                pluginDB[multibandGatePage.bandId + "ReleaseTime"] = v;
+                            }
+                        }
 
-                            Kirigami.ActionToolBar {
-                                Layout.margins: Kirigami.Units.smallSpacing
-                                alignment: Qt.AlignHCenter
-                                position: Controls.ToolBar.Header
-                                flat: true
-                                actions: [
-                                    Kirigami.Action {
-                                        text: i18n("Mute")
-                                        checkable: true
-                                        checked: pluginDB[bandCard.bandId + "Mute"]
-                                        onTriggered: {
-                                            if (pluginDB[bandCard.bandId + "Mute"] != checked)
-                                                pluginDB[bandCard.bandId + "Mute"] = checked;
-                                        }
-                                    },
-                                    Kirigami.Action {
-                                        text: i18n("Solo")
-                                        checkable: true
-                                        checked: pluginDB[bandCard.bandId + "Solo"]
-                                        onTriggered: {
-                                            if (pluginDB[bandCard.bandId + "Solo"] != checked)
-                                                pluginDB[bandCard.bandId + "Solo"] = checked;
-                                        }
-                                    },
-                                    Kirigami.Action {
-                                        text: i18n("Bypass")
-                                        checkable: true
-                                        checked: !pluginDB[bandCard.bandId + "GateEnable"]
-                                        onTriggered: {
-                                            pluginDB[bandCard.bandId + "GateEnable"] = !checked;
+                        EeSpinBox {
+                            label: i18n("Reduction")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue(multibandGatePage.bandId + "Reduction")
+                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "Reduction")
+                            value: pluginDB[multibandGatePage.bandId + "Reduction"]
+                            decimals: 1
+                            stepSize: 0.1
+                            unit: "dB"
+                            onValueModified: v => {
+                                pluginDB[multibandGatePage.bandId + "Reduction"] = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Makeup")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue(multibandGatePage.bandId + "Makeup")
+                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "Makeup")
+                            value: pluginDB[multibandGatePage.bandId + "Makeup"]
+                            decimals: 1
+                            stepSize: 0.1
+                            unit: "dB"
+                            onValueModified: v => {
+                                pluginDB[multibandGatePage.bandId + "Makeup"] = v;
+                            }
+                        }
+                    }
+
+                    Kirigami.CardsLayout {
+                        maximumColumns: 2
+
+                        Controls.Frame {
+                            GridLayout {
+                                columns: 2
+                                uniformCellWidths: true
+                                Layout.fillWidth: false
+
+                                Controls.Label {
+                                    Layout.columnSpan: 2
+                                    Layout.alignment: Qt.AlignHCenter
+                                    Layout.fillWidth: false
+                                    text: i18n("Curve")
+                                }
+
+                                EeSpinBox {
+                                    label: i18n("Threshold")
+                                    labelAbove: true
+                                    spinboxLayoutFillWidth: true
+                                    from: pluginDB.getMinValue(multibandGatePage.bandId + "CurveThreshold")
+                                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "CurveThreshold")
+                                    value: pluginDB[multibandGatePage.bandId + "CurveThreshold"]
+                                    decimals: 1
+                                    stepSize: 0.1
+                                    unit: "dB"
+                                    onValueModified: v => {
+                                        pluginDB[multibandGatePage.bandId + "CurveThreshold"] = v;
+                                    }
+                                }
+
+                                EeSpinBox {
+                                    label: i18n("Zone")
+                                    labelAbove: true
+                                    spinboxLayoutFillWidth: true
+                                    from: pluginDB.getMinValue(multibandGatePage.bandId + "CurveZone")
+                                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "CurveZone")
+                                    value: pluginDB[multibandGatePage.bandId + "CurveZone"]
+                                    decimals: 1
+                                    stepSize: 0.1
+                                    unit: "dB"
+                                    onValueModified: v => {
+                                        pluginDB[multibandGatePage.bandId + "CurveZone"] = v;
+                                    }
+                                }
+                            }
+                        }
+
+                        Controls.Frame {
+                            GridLayout {
+                                columns: 2
+                                uniformCellWidths: true
+                                Layout.fillWidth: false
+
+                                Controls.Button {
+                                    Layout.columnSpan: 2
+                                    Layout.alignment: Qt.AlignCenter
+                                    text: i18n("Hysteresis")
+                                    checkable: true
+                                    checked: pluginDB[multibandGatePage.bandId + "Hysteresis"]
+                                    onCheckedChanged: {
+                                        if (pluginDB[multibandGatePage.bandId + "Hysteresis"] !== checked) {
+                                            pluginDB[multibandGatePage.bandId + "Hysteresis"] = checked;
                                         }
                                     }
-                                ]
+                                }
+
+                                EeSpinBox {
+                                    label: i18n("Threshold")
+                                    labelAbove: true
+                                    spinboxLayoutFillWidth: true
+                                    from: pluginDB.getMinValue(multibandGatePage.bandId + "HysteresisThreshold")
+                                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "HysteresisThreshold")
+                                    value: pluginDB[multibandGatePage.bandId + "HysteresisThreshold"]
+                                    decimals: 1
+                                    stepSize: 0.1
+                                    unit: "dB"
+                                    enabled: pluginDB[multibandGatePage.bandId + "Hysteresis"]
+                                    onValueModified: v => {
+                                        pluginDB[multibandGatePage.bandId + "HysteresisThreshold"] = v;
+                                    }
+                                }
+
+                                EeSpinBox {
+                                    label: i18n("Zone")
+                                    labelAbove: true
+                                    spinboxLayoutFillWidth: true
+                                    from: pluginDB.getMinValue(multibandGatePage.bandId + "HysteresisZone")
+                                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "HysteresisZone")
+                                    value: pluginDB[multibandGatePage.bandId + "HysteresisZone"]
+                                    decimals: 1
+                                    stepSize: 0.1
+                                    unit: "dB"
+                                    enabled: pluginDB[multibandGatePage.bandId + "Hysteresis"]
+                                    onValueModified: v => {
+                                        pluginDB[multibandGatePage.bandId + "HysteresisZone"] = v;
+                                    }
+                                }
                             }
                         }
                     }

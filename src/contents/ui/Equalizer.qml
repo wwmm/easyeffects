@@ -208,7 +208,7 @@ Kirigami.ScrollablePage {
                     Kirigami.ActionToolBar {
                         Layout.margins: Kirigami.Units.smallSpacing
                         alignment: Qt.AlignRight
-                        position: Controls.ToolBar.Footer
+                        position: Controls.ToolBar.Header
                         flat: true
                         actions: [
                             Kirigami.Action {
