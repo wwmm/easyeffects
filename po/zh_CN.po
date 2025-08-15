@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-25 14:44+0000\n"
+"POT-Creation-Date: 2025-08-15 00:24+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: \"https://medium.com/@porkifiableoinking\" "
 "<erbaotao@outlook.com>\n"
@@ -1539,7 +1539,7 @@ msgstr "仅本地预设可被自动加载。若需要自动加载社区预设，
 msgid "Output Devices"
 msgstr "输出设备"
 
-#: data/ui/pipe_manager_box.ui:294 src/application.cpp:284
+#: data/ui/pipe_manager_box.ui:294 src/application.cpp:296
 msgid "Output Presets"
 msgstr "输出预设"
 
@@ -1559,7 +1559,7 @@ msgstr "输出自动加载预设列表"
 msgid "Input Devices"
 msgstr "输入设备"
 
-#: data/ui/pipe_manager_box.ui:419 src/application.cpp:292
+#: data/ui/pipe_manager_box.ui:419 src/application.cpp:304
 msgid "Input Presets"
 msgstr "输入预设"
 
@@ -1753,54 +1753,59 @@ msgid "Ignore Streams from Monitor of Devices"
 msgstr "忽略来自设备 Monitor 的音频流"
 
 #: data/ui/preferences_general.ui:78
+#, fuzzy
+msgid "Enable Input Monitoring"
+msgstr "启用/禁用此应用程序"
+
+#: data/ui/preferences_general.ui:90
 msgid "Use Cubic Volume"
 msgstr "使用非线性（立方）音量调节"
 
-#: data/ui/preferences_general.ui:90
+#: data/ui/preferences_general.ui:102
 msgid "Inactivity Timeout"
 msgstr "空闲超时"
 
-#: data/ui/preferences_general.ui:91
+#: data/ui/preferences_general.ui:103
 msgid "Input Pipeline"
 msgstr "输入流水线"
 
-#: data/ui/preferences_general.ui:120
+#: data/ui/preferences_general.ui:132
 msgid "Update Interval"
 msgstr "更新间隔"
 
-#: data/ui/preferences_general.ui:121
+#: data/ui/preferences_general.ui:133
 msgid "Related to Level Meters and Spectrum"
 msgstr "涉及电平表与频谱"
 
-#: data/ui/preferences_general.ui:143
+#: data/ui/preferences_general.ui:155
 msgid "Update Frequency"
 msgstr "更新频率"
 
-#: data/ui/preferences_general.ui:144
+#: data/ui/preferences_general.ui:156
 msgid "Related to LV2 Plugins"
 msgstr "涉及 LV2 插件"
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
+#: data/ui/preferences_general.ui:180 data/ui/preferences_spectrum.ui:47
 msgid "Style"
 msgstr "界面风格"
 
-#: data/ui/preferences_general.ui:171
+#: data/ui/preferences_general.ui:183
 msgid "Use Dark Theme"
 msgstr "使用暗色主题"
 
-#: data/ui/preferences_general.ui:183
+#: data/ui/preferences_general.ui:195
 msgid "Hide Menus on Outside Clicks"
 msgstr "点击外部时隐藏菜单"
 
-#: data/ui/preferences_general.ui:197
+#: data/ui/preferences_general.ui:209
 msgid "Experimental Features"
 msgstr "实验性功能"
 
-#: data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:212
 msgid "Native Plugin Window"
 msgstr "原生插件窗口"
 
-#: data/ui/preferences_general.ui:201
+#: data/ui/preferences_general.ui:213
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "允许显示或隐藏原生插件窗口"
 
@@ -2244,51 +2249,51 @@ msgstr "未定义名称 - 进程 ID "
 msgid "channels"
 msgstr "声道"
 
-#: src/application.cpp:301
+#: src/application.cpp:313
 msgid "Output Preset"
 msgstr "输出预设"
 
-#: src/application.cpp:302
+#: src/application.cpp:314
 msgid "Input Preset"
 msgstr "输入预设"
 
-#: src/application.cpp:518
+#: src/application.cpp:530
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:606
+#: src/application.cpp:618
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "退出 Easy Effects。 在服务模式下运行时有用。"
 
-#: src/application.cpp:609
+#: src/application.cpp:621
 msgid "Print the easyeffects version"
 msgstr "打印 EasyEffects 版本号"
 
-#: src/application.cpp:612
+#: src/application.cpp:624
 msgid "Reset Easy Effects."
 msgstr "重置 Easy Effects。"
 
-#: src/application.cpp:615
+#: src/application.cpp:627
 msgid "Hide the Window."
 msgstr "隐藏隐藏窗口。"
 
-#: src/application.cpp:618
+#: src/application.cpp:630
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "全局旁路。 1 启用，2 禁用，3 获取状态"
 
-#: src/application.cpp:621
+#: src/application.cpp:633
 msgid "Show available presets."
 msgstr "显示可用预设。"
 
-#: src/application.cpp:624
+#: src/application.cpp:636
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "加载预设。 示例：easyeffects -l music"
 
-#: src/application.cpp:627
+#: src/application.cpp:639
 msgid "Show the active presets."
 msgstr "显示在用预设。"
 
-#: src/application.cpp:630
+#: src/application.cpp:642
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
@@ -2353,15 +2358,15 @@ msgstr "未加载脉冲文件"
 msgid "Failed To Load The Impulse File"
 msgstr "加载脉冲文件失败"
 
-#: src/effects_box.cpp:356 src/plugins_box.cpp:807
+#: src/effects_box.cpp:360 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/effects_box.cpp:379 src/plugins_box.cpp:827
+#: src/effects_box.cpp:383 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "播放器"
 
-#: src/effects_box.cpp:402
+#: src/effects_box.cpp:406
 msgid "Effects"
 msgstr "音效"
 

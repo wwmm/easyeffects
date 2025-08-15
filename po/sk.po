@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-25 14:44+0000\n"
+"POT-Creation-Date: 2025-08-15 00:24+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Meti Cease <sockargrande@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1690,7 +1690,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Výstupné efekty"
 
-#: data/ui/pipe_manager_box.ui:294 src/application.cpp:284
+#: data/ui/pipe_manager_box.ui:294 src/application.cpp:296
 msgid "Output Presets"
 msgstr "Výstupné predvoľby:"
 
@@ -1711,7 +1711,7 @@ msgstr "Výstupné predvoľby:"
 msgid "Input Devices"
 msgstr "Obmedzovač na vstupe"
 
-#: data/ui/pipe_manager_box.ui:419 src/application.cpp:292
+#: data/ui/pipe_manager_box.ui:419 src/application.cpp:304
 #, fuzzy
 msgid "Input Presets"
 msgstr "Vstupné predvoľby: "
@@ -1926,60 +1926,64 @@ msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
 #: data/ui/preferences_general.ui:78
-msgid "Use Cubic Volume"
+msgid "Enable Input Monitoring"
 msgstr ""
 
 #: data/ui/preferences_general.ui:90
+msgid "Use Cubic Volume"
+msgstr ""
+
+#: data/ui/preferences_general.ui:102
 #, fuzzy
 msgid "Inactivity Timeout"
 msgstr "Čas. limit aktivity"
 
-#: data/ui/preferences_general.ui:91
+#: data/ui/preferences_general.ui:103
 #, fuzzy
 msgid "Input Pipeline"
 msgstr "Obmedzovač na vstupe"
 
-#: data/ui/preferences_general.ui:120
+#: data/ui/preferences_general.ui:132
 #, fuzzy
 msgid "Update Interval"
 msgstr "Aktualizované preklady"
 
-#: data/ui/preferences_general.ui:121
+#: data/ui/preferences_general.ui:133
 msgid "Related to Level Meters and Spectrum"
 msgstr ""
 
-#: data/ui/preferences_general.ui:143
+#: data/ui/preferences_general.ui:155
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Frekvencia"
 
-#: data/ui/preferences_general.ui:144
+#: data/ui/preferences_general.ui:156
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
+#: data/ui/preferences_general.ui:180 data/ui/preferences_spectrum.ui:47
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:171
+#: data/ui/preferences_general.ui:183
 msgid "Use Dark Theme"
 msgstr "Použiť tmavý motív"
 
-#: data/ui/preferences_general.ui:183
+#: data/ui/preferences_general.ui:195
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
-#: data/ui/preferences_general.ui:197
+#: data/ui/preferences_general.ui:209
 #, fuzzy
 msgid "Experimental Features"
 msgstr "Experimentálna"
 
-#: data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:212
 #, fuzzy
 msgid "Native Plugin Window"
 msgstr "Skryť okno"
 
-#: data/ui/preferences_general.ui:201
+#: data/ui/preferences_general.ui:213
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
@@ -2457,57 +2461,57 @@ msgstr ""
 msgid "channels"
 msgstr "Kanály"
 
-#: src/application.cpp:301
+#: src/application.cpp:313
 #, fuzzy
 msgid "Output Preset"
 msgstr "Výstupné predvoľby:"
 
-#: src/application.cpp:302
+#: src/application.cpp:314
 #, fuzzy
 msgid "Input Preset"
 msgstr "Vstupné predvoľby: "
 
-#: src/application.cpp:518
+#: src/application.cpp:530
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:606
+#: src/application.cpp:618
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Ukončiť PulseEffect. Užitočné pre beh v režime služby."
 
-#: src/application.cpp:609
+#: src/application.cpp:621
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:612
+#: src/application.cpp:624
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Obnoviť EasyEffects."
 
-#: src/application.cpp:615
+#: src/application.cpp:627
 msgid "Hide the Window."
 msgstr "Skryť okno."
 
-#: src/application.cpp:618
+#: src/application.cpp:630
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Globálne premostenie. 1 pre zapnutie, 2 pre vypnutie, 3 pre získanie stavu"
 
-#: src/application.cpp:621
+#: src/application.cpp:633
 msgid "Show available presets."
 msgstr "Zobraziť dostupné predvoľby."
 
-#: src/application.cpp:624
+#: src/application.cpp:636
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Načítať predvoľby. Napr.: easyffects -l music"
 
-#: src/application.cpp:627
+#: src/application.cpp:639
 #, fuzzy
 msgid "Show the active presets."
 msgstr "Zobraziť dostupné predvoľby."
 
-#: src/application.cpp:630
+#: src/application.cpp:642
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
@@ -2577,16 +2581,16 @@ msgstr "Načítať súbor impulzu"
 msgid "Failed To Load The Impulse File"
 msgstr "Nedá sa načítať súbor s impulzom"
 
-#: src/effects_box.cpp:356 src/plugins_box.cpp:807
+#: src/effects_box.cpp:360 src/plugins_box.cpp:807
 #, fuzzy
 msgid "Recorders"
 msgstr "Okraj"
 
-#: src/effects_box.cpp:379 src/plugins_box.cpp:827
+#: src/effects_box.cpp:383 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "Prehrávače"
 
-#: src/effects_box.cpp:402
+#: src/effects_box.cpp:406
 #, fuzzy
 msgid "Effects"
 msgstr "EasyEffects"

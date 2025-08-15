@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-25 14:44+0000\n"
+"POT-Creation-Date: 2025-08-15 00:24+0000\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1537,7 +1537,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "வெளியீட்டு சாதனங்கள்"
 
-#: data/ui/pipe_manager_box.ui:294 src/application.cpp:284
+#: data/ui/pipe_manager_box.ui:294 src/application.cpp:296
 msgid "Output Presets"
 msgstr "வெளியீட்டு முன்னமைவுகள்"
 
@@ -1557,7 +1557,7 @@ msgstr "வெளியீட்டு ஆட்டோலோடிங் மு�
 msgid "Input Devices"
 msgstr "உள்ளீட்டு சாதனங்கள்"
 
-#: data/ui/pipe_manager_box.ui:419 src/application.cpp:292
+#: data/ui/pipe_manager_box.ui:419 src/application.cpp:304
 msgid "Input Presets"
 msgstr "உள்ளீட்டு முன்னமைவுகள்"
 
@@ -1751,54 +1751,59 @@ msgid "Ignore Streams from Monitor of Devices"
 msgstr "சாதனங்களின் மானிட்டரிலிருந்து நீரோடைகளை புறக்கணிக்கவும்"
 
 #: data/ui/preferences_general.ui:78
+#, fuzzy
+msgid "Enable Input Monitoring"
+msgstr "உள்ளீட்டு கண்காணிப்பை இயக்கவும்/முடக்கவும்"
+
+#: data/ui/preferences_general.ui:90
 msgid "Use Cubic Volume"
 msgstr "கன அளவைப் பயன்படுத்தவும்"
 
-#: data/ui/preferences_general.ui:90
+#: data/ui/preferences_general.ui:102
 msgid "Inactivity Timeout"
 msgstr "செயலற்ற நேரம் முடிந்தது"
 
-#: data/ui/preferences_general.ui:91
+#: data/ui/preferences_general.ui:103
 msgid "Input Pipeline"
 msgstr "உள்ளீட்டு குழாய்"
 
-#: data/ui/preferences_general.ui:120
+#: data/ui/preferences_general.ui:132
 msgid "Update Interval"
 msgstr "புதுப்பிப்பு இடைவெளி"
 
-#: data/ui/preferences_general.ui:121
+#: data/ui/preferences_general.ui:133
 msgid "Related to Level Meters and Spectrum"
 msgstr "நிலை மீட்டர் மற்றும் ச்பெக்ட்ரம் தொடர்பானது"
 
-#: data/ui/preferences_general.ui:143
+#: data/ui/preferences_general.ui:155
 msgid "Update Frequency"
 msgstr "புதுப்பிப்பு அதிர்வெண்"
 
-#: data/ui/preferences_general.ui:144
+#: data/ui/preferences_general.ui:156
 msgid "Related to LV2 Plugins"
 msgstr "எல்வி 2 செருகுநிரல்கள் தொடர்பானது"
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
+#: data/ui/preferences_general.ui:180 data/ui/preferences_spectrum.ui:47
 msgid "Style"
 msgstr "சூல் தண்டு"
 
-#: data/ui/preferences_general.ui:171
+#: data/ui/preferences_general.ui:183
 msgid "Use Dark Theme"
 msgstr "இருண்ட கருப்பொருளைப் பயன்படுத்தவும்"
 
-#: data/ui/preferences_general.ui:183
+#: data/ui/preferences_general.ui:195
 msgid "Hide Menus on Outside Clicks"
 msgstr "வெளிப்புற கிளிக்குகளில் மெனுக்களை மறைக்கவும்"
 
-#: data/ui/preferences_general.ui:197
+#: data/ui/preferences_general.ui:209
 msgid "Experimental Features"
 msgstr "சோதனை நற்பொருத்தங்கள்"
 
-#: data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:212
 msgid "Native Plugin Window"
 msgstr "சொந்த சொருகி சாளரம்"
 
-#: data/ui/preferences_general.ui:201
+#: data/ui/preferences_general.ui:213
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "சொந்த சொருகி சாளரத்தை காட்ட/மறைக்க அனுமதிக்கிறது"
 
@@ -2244,53 +2249,53 @@ msgstr "வரையறுக்கப்படாத பெயர் - செ�
 msgid "channels"
 msgstr "சேனல்கள்"
 
-#: src/application.cpp:301
+#: src/application.cpp:313
 msgid "Output Preset"
 msgstr "வெளியீட்டு முன்னமைவு"
 
-#: src/application.cpp:302
+#: src/application.cpp:314
 msgid "Input Preset"
 msgstr "உள்ளீட்டு முன்னமைவு"
 
-#: src/application.cpp:518
+#: src/application.cpp:530
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "வலைபெயர்ப்பு https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:606
+#: src/application.cpp:618
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "எளிதான விளைவுகளை விட்டு வெளியேறவும். பணி பயன்முறையில் இயங்கும்போது பயனுள்ளதாக "
 "இருக்கும்."
 
-#: src/application.cpp:609
+#: src/application.cpp:621
 msgid "Print the easyeffects version"
 msgstr "ஈசி எஃபெக்ட்ச் பதிப்பை அச்சிடுக"
 
-#: src/application.cpp:612
+#: src/application.cpp:624
 msgid "Reset Easy Effects."
 msgstr "எளிதான விளைவுகளை மீட்டமைக்கவும்."
 
-#: src/application.cpp:615
+#: src/application.cpp:627
 msgid "Hide the Window."
 msgstr "சாளரத்தை மறைக்கவும்."
 
-#: src/application.cpp:618
+#: src/application.cpp:630
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "உலகளாவிய பைபாச். 1 இயக்க, 2 முடக்க மற்றும் 3 நிலையைப் பெற 3"
 
-#: src/application.cpp:621
+#: src/application.cpp:633
 msgid "Show available presets."
 msgstr "கிடைக்கக்கூடிய முன்னமைவுகளைக் காட்டு."
 
-#: src/application.cpp:624
+#: src/application.cpp:636
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "முன்னமைவை ஏற்றவும். எடுத்துக்காட்டு: ஈசி எஃபெக்ட்ச் -எல் இசை"
 
-#: src/application.cpp:627
+#: src/application.cpp:639
 msgid "Show the active presets."
 msgstr "செயலில் உள்ள முன்னமைவுகளைக் காட்டு."
 
-#: src/application.cpp:630
+#: src/application.cpp:642
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
@@ -2355,15 +2360,15 @@ msgstr "உந்துவிசை கோப்பு ஏற்றப்பட�
 msgid "Failed To Load The Impulse File"
 msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
 
-#: src/effects_box.cpp:356 src/plugins_box.cpp:807
+#: src/effects_box.cpp:360 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr "ரெக்கார்டர்கள்"
 
-#: src/effects_box.cpp:379 src/plugins_box.cpp:827
+#: src/effects_box.cpp:383 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "வீரர்கள்"
 
-#: src/effects_box.cpp:402
+#: src/effects_box.cpp:406
 msgid "Effects"
 msgstr "விளைவுகள்"
 
