@@ -381,11 +381,11 @@ void StreamInputEffects::set_bypass(const bool& state) {
 void StreamInputEffects::set_listen_to_mic(const bool& state) {
   if (state) {
     for (const auto& link : pm->link_nodes(pm->ee_source_node.id, pm->output_device.id, false, false)) {
-      list_proxies_listen_mic.push_back(link);
+      list_proxies_listen_to_mic.push_back(link);
     }
   } else {
-    pm->destroy_links(list_proxies_listen_mic);
+    pm->destroy_links(list_proxies_listen_to_mic);
 
-    list_proxies_listen_mic.clear();
+    list_proxies_listen_to_mic.clear();
   }
 }

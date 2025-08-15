@@ -75,6 +75,18 @@
 
                 <child>
                     <object class="AdwActionRow">
+                        <property name="title" translatable="yes">Enable Input Monitoring</property>
+                        <property name="activatable-widget">listen_to_mic</property>
+                        <child>
+                            <object class="GtkSwitch" id="listen_to_mic">
+                                <property name="valign">center</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="AdwActionRow">
                         <property name="title" translatable="yes">Use Cubic Volume</property>
                         <property name="activatable-widget">use_cubic_volumes</property>
                         <child>

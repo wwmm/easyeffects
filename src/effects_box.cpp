@@ -86,7 +86,7 @@ struct _EffectsBox {
 
   GtkLabel *device_state, *latency_status, *label_global_output_level_left, *label_global_output_level_right;
 
-  GtkToggleButton* toggle_listen_mic;
+  GtkToggleButton* toggle_listen_to_mic;
 
   GtkMenuButton* menubutton_blocklist;
 
@@ -286,12 +286,16 @@ void stack_visible_child_changed(EffectsBox* self, GParamSpec* pspec, GtkWidget*
   gtk_widget_set_visible(GTK_WIDGET(self->menubutton_blocklist), (g_strcmp0(name, "apps") == 0) ? 1 : 0);
 
   if (self->data->pipeline_type == PipelineType::input) {
-    gtk_widget_set_visible(GTK_WIDGET(self->toggle_listen_mic), (g_strcmp0(name, "plugins") == 0) ? 1 : 0);
+    gtk_widget_set_visible(GTK_WIDGET(self->toggle_listen_to_mic), (g_strcmp0(name, "plugins") == 0) ? 1 : 0);
   }
 }
 
-void on_listen_mic_toggled(EffectsBox* self, GtkToggleButton* button) {
-  self->data->application->sie->set_listen_to_mic(gtk_toggle_button_get_active(button) != 0);
+void on_listen_to_mic_toggled(EffectsBox* self, GtkToggleButton* button) {
+    if (gtk_toggle_button_get_active(button) != 0) {
+        g_settings_set_boolean(self->app_settings, "listen-to-mic", 1);
+    } else {
+        g_settings_set_boolean(self->app_settings, "listen-to-mic", 0);
+    }
 }
 
 static gboolean spectrum_data_update(GtkWidget* widget, GdkFrameClock* frame_clock, EffectsBox* self) {
@@ -548,12 +552,12 @@ void effects_box_class_init(EffectsBoxClass* klass) {
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, latency_status);
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, label_global_output_level_left);
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, label_global_output_level_right);
-  gtk_widget_class_bind_template_child(widget_class, EffectsBox, toggle_listen_mic);
+  gtk_widget_class_bind_template_child(widget_class, EffectsBox, toggle_listen_to_mic);
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, menubutton_blocklist);
   gtk_widget_class_bind_template_child(widget_class, EffectsBox, saturation_icon);
 
   gtk_widget_class_bind_template_callback(widget_class, stack_visible_child_changed);
-  gtk_widget_class_bind_template_callback(widget_class, on_listen_mic_toggled);
+  gtk_widget_class_bind_template_callback(widget_class, on_listen_to_mic_toggled);
 }
 
 void effects_box_init(EffectsBox* self) {
@@ -571,6 +575,10 @@ void effects_box_init(EffectsBox* self) {
   self->appsBox = ui::apps_box::create();
   self->pluginsBox = ui::plugins_box::create();
   self->blocklist_menu = ui::blocklist_menu::create();
+
+  g_settings_bind(self->app_settings, "listen-to-mic",
+                  self->toggle_listen_to_mic, "active",
+                  G_SETTINGS_BIND_DEFAULT);
 
   gtk_menu_button_set_popover(self->menubutton_blocklist, GTK_WIDGET(self->blocklist_menu));
 
