@@ -244,7 +244,7 @@ Kirigami.ScrollablePage {
 
         ColumnLayout {
             Kirigami.CardsLayout {
-                maximumColumns: 3
+                maximumColumns: 4
 
                 FormCard.FormComboBoxDelegate {
                     text: i18n("Type")
@@ -265,6 +265,30 @@ Kirigami.ScrollablePage {
                     model: [i18n("Peak"), i18n("RMS"), i18n("LPF"), i18n("SMA")]
                     onActivated: idx => {
                         pluginDB[multibandGatePage.bandId + "SidechainMode"] = idx;
+                    }
+                }
+
+                FormCard.FormComboBoxDelegate {
+                    text: i18n("Source")
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: pluginDB[multibandGatePage.bandId + "SidechainSource"]
+                    editable: false
+                    model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]
+                    visible: !pluginDB.stereoSplit
+                    onActivated: idx => {
+                        pluginDB[multibandGatePage.bandId + "SidechainSource"] = idx;
+                    }
+                }
+
+                FormCard.FormComboBoxDelegate {
+                    text: i18n("Source")
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: pluginDB[multibandGatePage.bandId + "StereoSplitSource"]
+                    editable: false
+                    model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]
+                    visible: pluginDB.stereoSplit
+                    onActivated: idx => {
+                        pluginDB[multibandGatePage.bandId + "StereoSplitSource"] = idx;
                     }
                 }
             }
