@@ -34,13 +34,19 @@ Kirigami.ScrollablePage {
     Component {
         id: bandGateControls
 
-        ColumnLayout {
+        Column {
 
             Kirigami.ActionToolBar {
                 Layout.margins: Kirigami.Units.smallSpacing
                 alignment: Qt.AlignHCenter
                 position: Controls.ToolBar.Header
                 flat: false
+
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+
                 actions: [
                     Kirigami.Action {
                         text: i18n("Mute")
@@ -73,6 +79,11 @@ Kirigami.ScrollablePage {
 
             Kirigami.CardsLayout {
                 maximumColumns: 4
+
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
 
                 EeSpinBox {
                     label: i18n("Attack")
@@ -120,6 +131,7 @@ Kirigami.ScrollablePage {
                 }
 
                 EeSpinBox {
+                    id: bandMakeup
                     label: i18n("Makeup")
                     labelAbove: true
                     spinboxLayoutFillWidth: true
@@ -138,11 +150,19 @@ Kirigami.ScrollablePage {
             Kirigami.CardsLayout {
                 maximumColumns: 2
 
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
+
                 Controls.Frame {
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.fillWidth: parent.columns == 2 ? false : true
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-                        Layout.fillWidth: false
+                        anchors.fill: parent
 
                         Controls.Label {
                             Layout.columnSpan: 2
@@ -184,10 +204,13 @@ Kirigami.ScrollablePage {
                 }
 
                 Controls.Frame {
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.fillWidth: parent.columns == 2 ? false : true
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-                        Layout.fillWidth: false
+                        anchors.fill: parent
 
                         Controls.Button {
                             Layout.columnSpan: 2
@@ -242,9 +265,14 @@ Kirigami.ScrollablePage {
     Component {
         id: bandSidechainControls
 
-        ColumnLayout {
+        Column {
             Kirigami.CardsLayout {
-                maximumColumns: 4
+                maximumColumns: 3
+
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                }
 
                 FormCard.FormComboBoxDelegate {
                     text: i18n("Type")
@@ -391,6 +419,7 @@ Kirigami.ScrollablePage {
                 id: bandCard
 
                 Layout.fillWidth: true
+                Layout.fillHeight: true
                 Layout.alignment: Qt.AlignTop
 
                 header: RowLayout {
