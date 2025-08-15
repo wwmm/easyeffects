@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-25 14:44+0000\n"
+"POT-Creation-Date: 2025-08-15 00:24+0000\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1588,7 +1588,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Udgangsenheder"
 
-#: data/ui/pipe_manager_box.ui:294 src/application.cpp:284
+#: data/ui/pipe_manager_box.ui:294 src/application.cpp:296
 msgid "Output Presets"
 msgstr "Udgangsforindstillinger"
 
@@ -1608,7 +1608,7 @@ msgstr "Udgangsautolæsingsforindstillinger Liste"
 msgid "Input Devices"
 msgstr "Indgangsenheder"
 
-#: data/ui/pipe_manager_box.ui:419 src/application.cpp:292
+#: data/ui/pipe_manager_box.ui:419 src/application.cpp:304
 msgid "Input Presets"
 msgstr "Indgangsforindstillinger"
 
@@ -1813,59 +1813,63 @@ msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
 #: data/ui/preferences_general.ui:78
+msgid "Enable Input Monitoring"
+msgstr ""
+
+#: data/ui/preferences_general.ui:90
 msgid "Use Cubic Volume"
 msgstr "Brug Kubisk Volumen"
 
-#: data/ui/preferences_general.ui:90
+#: data/ui/preferences_general.ui:102
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: data/ui/preferences_general.ui:91
+#: data/ui/preferences_general.ui:103
 #, fuzzy
 msgid "Input Pipeline"
 msgstr "Input-enhed"
 
-#: data/ui/preferences_general.ui:120
+#: data/ui/preferences_general.ui:132
 #, fuzzy
 msgid "Update Interval"
 msgstr "Ekstern"
 
-#: data/ui/preferences_general.ui:121
+#: data/ui/preferences_general.ui:133
 msgid "Related to Level Meters and Spectrum"
 msgstr ""
 
-#: data/ui/preferences_general.ui:143
+#: data/ui/preferences_general.ui:155
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Opdelt Frekvens 1"
 
-#: data/ui/preferences_general.ui:144
+#: data/ui/preferences_general.ui:156
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
+#: data/ui/preferences_general.ui:180 data/ui/preferences_spectrum.ui:47
 msgid "Style"
 msgstr "Stil"
 
-#: data/ui/preferences_general.ui:171
+#: data/ui/preferences_general.ui:183
 msgid "Use Dark Theme"
 msgstr "Brug Mørk-tilstand"
 
-#: data/ui/preferences_general.ui:183
+#: data/ui/preferences_general.ui:195
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
-#: data/ui/preferences_general.ui:197
+#: data/ui/preferences_general.ui:209
 #, fuzzy
 msgid "Experimental Features"
 msgstr "Eksperimentelt"
 
-#: data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:212
 #, fuzzy
 msgid "Native Plugin Window"
 msgstr "Skjul Vinduet."
 
-#: data/ui/preferences_general.ui:201
+#: data/ui/preferences_general.ui:213
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
@@ -2328,57 +2332,57 @@ msgstr ""
 msgid "channels"
 msgstr "Kanaler"
 
-#: src/application.cpp:301
+#: src/application.cpp:313
 #, fuzzy
 msgid "Output Preset"
 msgstr "Udgangsforindstillinger"
 
-#: src/application.cpp:302
+#: src/application.cpp:314
 #, fuzzy
 msgid "Input Preset"
 msgstr "Indgangsforindstillinger"
 
-#: src/application.cpp:518
+#: src/application.cpp:530
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:606
+#: src/application.cpp:618
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Afslut EasyEffects. Nyttigt når man kører i servicetilstand."
 
-#: src/application.cpp:609
+#: src/application.cpp:621
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:612
+#: src/application.cpp:624
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Nustli EasyEffects."
 
-#: src/application.cpp:615
+#: src/application.cpp:627
 msgid "Hide the Window."
 msgstr "Skjul Vinduet."
 
-#: src/application.cpp:618
+#: src/application.cpp:630
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Global Omgåelse. 1 for at aktivere, 2 for at deaktivere og 3 for at få status"
 
-#: src/application.cpp:621
+#: src/application.cpp:633
 msgid "Show available presets."
 msgstr "Vis tilgængelige forindstillinger."
 
-#: src/application.cpp:624
+#: src/application.cpp:636
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Indlæs en forindstilling. Eksempelvis: easyeffects -l music"
 
-#: src/application.cpp:627
+#: src/application.cpp:639
 #, fuzzy
 msgid "Show the active presets."
 msgstr "Vis tilgængelige forindstillinger."
 
-#: src/application.cpp:630
+#: src/application.cpp:642
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
@@ -2447,15 +2451,15 @@ msgstr "Impulsfiler liste"
 msgid "Failed To Load The Impulse File"
 msgstr "Kunne Ikke Indlæse Impulsfilen"
 
-#: src/effects_box.cpp:356 src/plugins_box.cpp:807
+#: src/effects_box.cpp:360 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr "Optagere"
 
-#: src/effects_box.cpp:379 src/plugins_box.cpp:827
+#: src/effects_box.cpp:383 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "Spillere"
 
-#: src/effects_box.cpp:402
+#: src/effects_box.cpp:406
 #, fuzzy
 msgid "Effects"
 msgstr "Easyeffects"

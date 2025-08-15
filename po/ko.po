@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-25 14:44+0000\n"
+"POT-Creation-Date: 2025-08-15 00:24+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1539,7 +1539,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "출력 장치"
 
-#: data/ui/pipe_manager_box.ui:294 src/application.cpp:284
+#: data/ui/pipe_manager_box.ui:294 src/application.cpp:296
 msgid "Output Presets"
 msgstr "출력 프리셋"
 
@@ -1559,7 +1559,7 @@ msgstr "출력 자동 로딩 프리셋 목록"
 msgid "Input Devices"
 msgstr "입력 장치"
 
-#: data/ui/pipe_manager_box.ui:419 src/application.cpp:292
+#: data/ui/pipe_manager_box.ui:419 src/application.cpp:304
 msgid "Input Presets"
 msgstr "입력 프리셋"
 
@@ -1755,58 +1755,63 @@ msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
 #: data/ui/preferences_general.ui:78
+#, fuzzy
+msgid "Enable Input Monitoring"
+msgstr "이 응용프로그램 활성화/비활성화"
+
+#: data/ui/preferences_general.ui:90
 msgid "Use Cubic Volume"
 msgstr ""
 
-#: data/ui/preferences_general.ui:90
+#: data/ui/preferences_general.ui:102
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: data/ui/preferences_general.ui:91
+#: data/ui/preferences_general.ui:103
 #, fuzzy
 msgid "Input Pipeline"
 msgstr "입력 장치"
 
-#: data/ui/preferences_general.ui:120
+#: data/ui/preferences_general.ui:132
 #, fuzzy
 msgid "Update Interval"
 msgstr "내부"
 
-#: data/ui/preferences_general.ui:121
+#: data/ui/preferences_general.ui:133
 msgid "Related to Level Meters and Spectrum"
 msgstr ""
 
-#: data/ui/preferences_general.ui:143
+#: data/ui/preferences_general.ui:155
 #, fuzzy
 msgid "Update Frequency"
 msgstr "주파수"
 
-#: data/ui/preferences_general.ui:144
+#: data/ui/preferences_general.ui:156
 #, fuzzy
 msgid "Related to LV2 Plugins"
 msgstr "업데이트 빈도 (LV2 플러그인)"
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
+#: data/ui/preferences_general.ui:180 data/ui/preferences_spectrum.ui:47
 msgid "Style"
 msgstr ""
 
-#: data/ui/preferences_general.ui:171
+#: data/ui/preferences_general.ui:183
 msgid "Use Dark Theme"
 msgstr ""
 
-#: data/ui/preferences_general.ui:183
+#: data/ui/preferences_general.ui:195
 msgid "Hide Menus on Outside Clicks"
 msgstr ""
 
-#: data/ui/preferences_general.ui:197
+#: data/ui/preferences_general.ui:209
 msgid "Experimental Features"
 msgstr ""
 
-#: data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:212
 msgid "Native Plugin Window"
 msgstr ""
 
-#: data/ui/preferences_general.ui:201
+#: data/ui/preferences_general.ui:213
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
@@ -2256,54 +2261,54 @@ msgstr ""
 msgid "channels"
 msgstr "채널"
 
-#: src/application.cpp:301
+#: src/application.cpp:313
 #, fuzzy
 msgid "Output Preset"
 msgstr "출력 프리셋"
 
-#: src/application.cpp:302
+#: src/application.cpp:314
 #, fuzzy
 msgid "Input Preset"
 msgstr "입력 프리셋"
 
-#: src/application.cpp:518
+#: src/application.cpp:530
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr ""
 
-#: src/application.cpp:606
+#: src/application.cpp:618
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
-#: src/application.cpp:609
+#: src/application.cpp:621
 msgid "Print the easyeffects version"
 msgstr ""
 
-#: src/application.cpp:612
+#: src/application.cpp:624
 msgid "Reset Easy Effects."
 msgstr "EasyEffects를 재설정합니다."
 
-#: src/application.cpp:615
+#: src/application.cpp:627
 msgid "Hide the Window."
 msgstr ""
 
-#: src/application.cpp:618
+#: src/application.cpp:630
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/application.cpp:621
+#: src/application.cpp:633
 msgid "Show available presets."
 msgstr "사용 가능한 프리셋을 표시합니다."
 
-#: src/application.cpp:624
+#: src/application.cpp:636
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "프리셋을 불러옵니다. 예시: easyeffects -l music"
 
-#: src/application.cpp:627
+#: src/application.cpp:639
 #, fuzzy
 msgid "Show the active presets."
 msgstr "사용 가능한 프리셋을 표시합니다."
 
-#: src/application.cpp:630
+#: src/application.cpp:642
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
@@ -2366,15 +2371,15 @@ msgstr "불러온 Impulse 파일 없음"
 msgid "Failed To Load The Impulse File"
 msgstr "Impulse 파일을 불러오지 못했습니다"
 
-#: src/effects_box.cpp:356 src/plugins_box.cpp:807
+#: src/effects_box.cpp:360 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr ""
 
-#: src/effects_box.cpp:379 src/plugins_box.cpp:827
+#: src/effects_box.cpp:383 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "재생기"
 
-#: src/effects_box.cpp:402
+#: src/effects_box.cpp:406
 msgid "Effects"
 msgstr "효과음"
 

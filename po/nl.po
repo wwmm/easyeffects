@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-25 14:44+0000\n"
+"POT-Creation-Date: 2025-08-15 00:24+0000\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1539,7 +1539,7 @@ msgstr ""
 msgid "Output Devices"
 msgstr "Uitvoerapparaten"
 
-#: data/ui/pipe_manager_box.ui:294 src/application.cpp:284
+#: data/ui/pipe_manager_box.ui:294 src/application.cpp:296
 msgid "Output Presets"
 msgstr "Uitvoervoorinstellingen"
 
@@ -1559,7 +1559,7 @@ msgstr "Lijst van automatisch geladen uitvoervoorinstellingen"
 msgid "Input Devices"
 msgstr "Invoerapparaten"
 
-#: data/ui/pipe_manager_box.ui:419 src/application.cpp:292
+#: data/ui/pipe_manager_box.ui:419 src/application.cpp:304
 msgid "Input Presets"
 msgstr "Invoervoorinstellingen"
 
@@ -1753,54 +1753,59 @@ msgid "Ignore Streams from Monitor of Devices"
 msgstr "Streams van apparaatmonitor negeren"
 
 #: data/ui/preferences_general.ui:78
+#, fuzzy
+msgid "Enable Input Monitoring"
+msgstr "Invoer­monitoring in-/uit­schakelen"
+
+#: data/ui/preferences_general.ui:90
 msgid "Use Cubic Volume"
 msgstr "Kubisch volume gebruiken"
 
-#: data/ui/preferences_general.ui:90
+#: data/ui/preferences_general.ui:102
 msgid "Inactivity Timeout"
 msgstr "Inactiviteits-time-out"
 
-#: data/ui/preferences_general.ui:91
+#: data/ui/preferences_general.ui:103
 msgid "Input Pipeline"
 msgstr "Invoer­pĳplĳn"
 
-#: data/ui/preferences_general.ui:120
+#: data/ui/preferences_general.ui:132
 msgid "Update Interval"
 msgstr "Bĳwerkings­interval"
 
-#: data/ui/preferences_general.ui:121
+#: data/ui/preferences_general.ui:133
 msgid "Related to Level Meters and Spectrum"
 msgstr "Gerelateerd aan niveau­meters en spectrum"
 
-#: data/ui/preferences_general.ui:143
+#: data/ui/preferences_general.ui:155
 msgid "Update Frequency"
 msgstr "Vernieuwings­frequentie"
 
-#: data/ui/preferences_general.ui:144
+#: data/ui/preferences_general.ui:156
 msgid "Related to LV2 Plugins"
 msgstr "Gerelateerd aan LV2-plug-ins"
 
-#: data/ui/preferences_general.ui:168 data/ui/preferences_spectrum.ui:47
+#: data/ui/preferences_general.ui:180 data/ui/preferences_spectrum.ui:47
 msgid "Style"
 msgstr "Stijl"
 
-#: data/ui/preferences_general.ui:171
+#: data/ui/preferences_general.ui:183
 msgid "Use Dark Theme"
 msgstr "Donker thema"
 
-#: data/ui/preferences_general.ui:183
+#: data/ui/preferences_general.ui:195
 msgid "Hide Menus on Outside Clicks"
 msgstr "Menu's verbergen bij klikken achtergrond"
 
-#: data/ui/preferences_general.ui:197
+#: data/ui/preferences_general.ui:209
 msgid "Experimental Features"
 msgstr "Experimentele functies"
 
-#: data/ui/preferences_general.ui:200
+#: data/ui/preferences_general.ui:212
 msgid "Native Plugin Window"
 msgstr "Native plug-invenster"
 
-#: data/ui/preferences_general.ui:201
+#: data/ui/preferences_general.ui:213
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 "Staat toe dat het venster voor native plug-ins wordt weergegeven/verborgen"
@@ -2249,52 +2254,52 @@ msgstr "Ongedefinieerde naam - Proces-id "
 msgid "channels"
 msgstr "kanalen"
 
-#: src/application.cpp:301
+#: src/application.cpp:313
 msgid "Output Preset"
 msgstr "Uitvoer­voorinstelling"
 
-#: src/application.cpp:302
+#: src/application.cpp:314
 msgid "Input Preset"
 msgstr "Invoer­voorinstelling"
 
-#: src/application.cpp:518
+#: src/application.cpp:530
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
 msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
-#: src/application.cpp:606
+#: src/application.cpp:618
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Sluit Easy Effects af. Nuttig in dienstmodus."
 
-#: src/application.cpp:609
+#: src/application.cpp:621
 msgid "Print the easyeffects version"
 msgstr "Print de versie van Easy Effects"
 
-#: src/application.cpp:612
+#: src/application.cpp:624
 msgid "Reset Easy Effects."
 msgstr "Reset Easy Effects."
 
-#: src/application.cpp:615
+#: src/application.cpp:627
 msgid "Hide the Window."
 msgstr "Verberg het venster."
 
-#: src/application.cpp:618
+#: src/application.cpp:630
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Globale omzeiling: 1 = inschakelen, 2 = uitschakelen, 3 = status opvragen"
 
-#: src/application.cpp:621
+#: src/application.cpp:633
 msgid "Show available presets."
 msgstr "Toon de beschikbare voorinstellingen."
 
-#: src/application.cpp:624
+#: src/application.cpp:636
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Laad een voorinstelling. Voorbeeld: easyeffects -l music"
 
-#: src/application.cpp:627
+#: src/application.cpp:639
 msgid "Show the active presets."
 msgstr "Toon de actieve voor­instellingen."
 
-#: src/application.cpp:630
+#: src/application.cpp:642
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
@@ -2359,15 +2364,15 @@ msgstr "Geen impulsbestand geladen"
 msgid "Failed To Load The Impulse File"
 msgstr "Impulsbestand laden mislukt"
 
-#: src/effects_box.cpp:356 src/plugins_box.cpp:807
+#: src/effects_box.cpp:360 src/plugins_box.cpp:807
 msgid "Recorders"
 msgstr "Opname-apparaten"
 
-#: src/effects_box.cpp:379 src/plugins_box.cpp:827
+#: src/effects_box.cpp:383 src/plugins_box.cpp:827
 msgid "Players"
 msgstr "Spelers"
 
-#: src/effects_box.cpp:402
+#: src/effects_box.cpp:406
 msgid "Effects"
 msgstr "Effecten"
 
