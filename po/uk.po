@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-15 00:24+0000\n"
-"PO-Revision-Date: 2025-08-11 04:01+0000\n"
+"PO-Revision-Date: 2025-08-15 13:02+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.13\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -1753,9 +1753,8 @@ msgid "Ignore Streams from Monitor of Devices"
 msgstr "Ігнорувати потоки з монітора пристроїв"
 
 #: data/ui/preferences_general.ui:78
-#, fuzzy
 msgid "Enable Input Monitoring"
-msgstr "Увімкнути/вимкнути моніторинг входу"
+msgstr "Увімкнути моніторинг вхідних даних"
 
 #: data/ui/preferences_general.ui:90
 msgid "Use Cubic Volume"
