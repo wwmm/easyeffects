@@ -40,6 +40,10 @@
             <label></label>
             <default>false</default>
         </entry>
+        <entry name="externalSidechainEnabled" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
 
         <entry name="stereoSplit" type="Bool">
             <label></label>
