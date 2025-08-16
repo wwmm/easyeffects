@@ -9,10 +9,6 @@ Controls.ItemDelegate {
     required property int index
     required property var pluginDB
 
-    function toLocaleLabel(num, decimal, unit) {
-        return Number(num).toLocaleString(Qt.locale(), 'f', decimal) + ` ${unit}`;
-    }
-
     down: false
     hoverEnabled: false
     height: ListView.view.height
@@ -75,31 +71,31 @@ Controls.ItemDelegate {
             text: {
                 switch (delegate.index) {
                 case 0:
-                    return toLocaleLabel(250, 0, "Hz");
+                    return Common.toLocaleLabel(250, 0, "Hz");
                 case 1:
-                    return toLocaleLabel(750, 0, "Hz");
+                    return Common.toLocaleLabel(750, 0, "Hz");
                 case 2:
-                    return toLocaleLabel(1.5, 1, "kHz");
+                    return Common.toLocaleLabel(1.5, 1, "kHz");
                 case 3:
-                    return toLocaleLabel(2.5, 1, "kHz");
+                    return Common.toLocaleLabel(2.5, 1, "kHz");
                 case 4:
-                    return toLocaleLabel(3.5, 1, "kHz");
+                    return Common.toLocaleLabel(3.5, 1, "kHz");
                 case 5:
-                    return toLocaleLabel(4.5, 1, "kHz");
+                    return Common.toLocaleLabel(4.5, 1, "kHz");
                 case 6:
-                    return toLocaleLabel(5.5, 1, "kHz");
+                    return Common.toLocaleLabel(5.5, 1, "kHz");
                 case 7:
-                    return toLocaleLabel(6.5, 1, "kHz");
+                    return Common.toLocaleLabel(6.5, 1, "kHz");
                 case 8:
-                    return toLocaleLabel(7.5, 1, "kHz");
+                    return Common.toLocaleLabel(7.5, 1, "kHz");
                 case 9:
-                    return toLocaleLabel(8.5, 1, "kHz");
+                    return Common.toLocaleLabel(8.5, 1, "kHz");
                 case 10:
-                    return toLocaleLabel(9.5, 1, "kHz");
+                    return Common.toLocaleLabel(9.5, 1, "kHz");
                 case 11:
-                    return toLocaleLabel(12.5, 1, "kHz");
+                    return Common.toLocaleLabel(12.5, 1, "kHz");
                 case 12:
-                    return toLocaleLabel(17.5, 1, "kHz");
+                    return Common.toLocaleLabel(17.5, 1, "kHz");
                 default:
                     return "Hz";
                 }

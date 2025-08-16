@@ -10,10 +10,6 @@ Controls.ItemDelegate {
     required property var bandDB
     required property var menu
 
-    function toLocaleLabel(num, decimal, unit) {
-        return Number(num).toLocaleString(Qt.locale(), 'f', decimal) + ` ${unit}`;
-    }
-
     down: false
     hoverEnabled: false
     height: ListView.view.height
@@ -47,9 +43,9 @@ Controls.ItemDelegate {
             text: {
                 const f = delegate.bandDB["band" + delegate.index + "Frequency"];
                 if (f < 1000) {
-                    return delegate.toLocaleLabel(f, 0, "Hz");
+                    return Common.toLocaleLabel(f, 0, "Hz");
                 } else {
-                    return delegate.toLocaleLabel(f * 0.001, 1, "kHz");
+                    return Common.toLocaleLabel(f * 0.001, 1, "kHz");
                 }
             }
             enabled: false
@@ -57,7 +53,7 @@ Controls.ItemDelegate {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: i18n("Q") + " " + delegate.toLocaleLabel(delegate.bandDB["band" + delegate.index + "Q"], 2, "")
+            text: i18n("Q") + " " + Common.toLocaleLabel(delegate.bandDB["band" + delegate.index + "Q"], 2, "")
             enabled: false
         }
 

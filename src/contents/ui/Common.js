@@ -92,3 +92,12 @@ function printObjectProperties(obj) {
         print(prop += " (" + typeof (obj[prop]) + ") = " + obj[prop]);
     }
 }
+
+/**
+ * Returns the number converted to the current user loale.
+ * @param {*} value The input value.
+ * @returns {number} The converted value.
+ */
+function toLocaleLabel(num, decimal, unit) {
+    return Number(num).toLocaleString(Qt.locale(), 'f', decimal) + ` ${unit}`;
+}

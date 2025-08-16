@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
@@ -15,6 +17,7 @@ Kirigami.ScrollablePage {
     required property var pipelineInstance
     property var pluginBackend
     readonly property string bandId: "band" + bandsListview.currentIndex
+    property list<real> bandFrequencyEnd
 
     function updateMeters() {
         if (!pluginBackend)
@@ -24,7 +27,7 @@ Kirigami.ScrollablePage {
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
         inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
-    // reductionLevel.value = pluginBackend.getReductionLevel();
+        bandFrequencyEnd = pluginBackend.getFrequencyRangeEnd();
     }
 
     Component.onCompleted: {
@@ -35,6 +38,7 @@ Kirigami.ScrollablePage {
         id: bandGateControls
 
         Column {
+            spacing: Kirigami.Units.gridUnit
 
             Kirigami.ActionToolBar {
                 Layout.margins: Kirigami.Units.smallSpacing
@@ -78,81 +82,158 @@ Kirigami.ScrollablePage {
             }
 
             Kirigami.CardsLayout {
-                maximumColumns: 4
+                maximumColumns: 5
+                uniformCellWidths: true
 
                 anchors {
                     left: parent.left
                     right: parent.right
                 }
 
-                EeSpinBox {
-                    label: i18n("Attack")
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: pluginDB.getMinValue(multibandGatePage.bandId + "AttackTime")
-                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "AttackTime")
-                    value: pluginDB[multibandGatePage.bandId + "AttackTime"]
-                    decimals: 2
-                    stepSize: 0.01
-                    unit: "ms"
-                    onValueModified: v => {
-                        pluginDB[multibandGatePage.bandId + "AttackTime"] = v;
+                Controls.Frame {
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.fillWidth: parent.columns == 2 ? false : true
+
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+                        anchors.fill: parent
+
+                        Controls.Label {
+                            Layout.columnSpan: 2
+                            Layout.alignment: Qt.AlignHCenter
+                            Layout.fillWidth: false
+                            text: i18n("Frequency")
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Start")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: bandsListview.currentIndex > 0 ? pluginDB.getMinValue(multibandGatePage.bandId + "SplitFrequency") : from
+                            to: bandsListview.currentIndex > 0 ? pluginDB.getMaxValue(multibandGatePage.bandId + "SplitFrequency") : to
+                            value: bandsListview.currentIndex > 0 ? pluginDB[multibandGatePage.bandId + "SplitFrequency"] : 0
+                            decimals: 0
+                            stepSize: 1
+                            unit: "Hz"
+                            enabled: bandsListview.currentIndex > 0
+                            onValueModified: v => {
+                                pluginDB[multibandGatePage.bandId + "SplitFrequency"] = v;
+                            }
+                        }
+
+                        ColumnLayout {
+                            Controls.Label {
+                                Layout.fillWidth: true
+                                horizontalAlignment: Text.AlignHCenter
+                                text: i18n("End")
+                            }
+
+                            Controls.Label {
+                                id: bandEndFrequency
+                                Layout.fillWidth: true
+                                horizontalAlignment: Text.AlignHCenter
+                                text: Common.toLocaleLabel(multibandGatePage.bandFrequencyEnd[bandsListview.currentIndex], 0, "Hz")
+                            }
+                        }
                     }
                 }
 
-                EeSpinBox {
-                    label: i18n("Release")
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: pluginDB.getMinValue(multibandGatePage.bandId + "ReleaseTime")
-                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "ReleaseTime")
-                    value: pluginDB[multibandGatePage.bandId + "ReleaseTime"]
-                    decimals: 2
-                    stepSize: 0.01
-                    unit: "ms"
-                    onValueModified: v => {
-                        pluginDB[multibandGatePage.bandId + "ReleaseTime"] = v;
+                Controls.Frame {
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.fillWidth: parent.columns == 2 ? false : true
+
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+                        anchors.fill: parent
+
+                        Controls.Label {
+                            Layout.columnSpan: 2
+                            Layout.alignment: Qt.AlignHCenter
+                            Layout.fillWidth: false
+                            text: i18n("Reaction")
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Attack")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue(multibandGatePage.bandId + "AttackTime")
+                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "AttackTime")
+                            value: pluginDB[multibandGatePage.bandId + "AttackTime"]
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "ms"
+                            onValueModified: v => {
+                                pluginDB[multibandGatePage.bandId + "AttackTime"] = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Release")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue(multibandGatePage.bandId + "ReleaseTime")
+                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "ReleaseTime")
+                            value: pluginDB[multibandGatePage.bandId + "ReleaseTime"]
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "ms"
+                            onValueModified: v => {
+                                pluginDB[multibandGatePage.bandId + "ReleaseTime"] = v;
+                            }
+                        }
                     }
                 }
 
-                EeSpinBox {
-                    label: i18n("Reduction")
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: pluginDB.getMinValue(multibandGatePage.bandId + "Reduction")
-                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "Reduction")
-                    value: pluginDB[multibandGatePage.bandId + "Reduction"]
-                    decimals: 1
-                    stepSize: 0.1
-                    unit: "dB"
-                    onValueModified: v => {
-                        pluginDB[multibandGatePage.bandId + "Reduction"] = v;
+                Controls.Frame {
+                    Layout.alignment: Qt.AlignHCenter
+                    Layout.fillWidth: parent.columns == 2 ? false : true
+
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+                        anchors.fill: parent
+
+                        Controls.Label {
+                            Layout.columnSpan: 2
+                            Layout.alignment: Qt.AlignHCenter
+                            Layout.fillWidth: false
+                            text: i18n("Gain")
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Reduction")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue(multibandGatePage.bandId + "Reduction")
+                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "Reduction")
+                            value: pluginDB[multibandGatePage.bandId + "Reduction"]
+                            decimals: 1
+                            stepSize: 0.1
+                            unit: "dB"
+                            onValueModified: v => {
+                                pluginDB[multibandGatePage.bandId + "Reduction"] = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: bandMakeup
+                            label: i18n("Makeup")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue(multibandGatePage.bandId + "Makeup")
+                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "Makeup")
+                            value: pluginDB[multibandGatePage.bandId + "Makeup"]
+                            decimals: 1
+                            stepSize: 0.1
+                            unit: "dB"
+                            onValueModified: v => {
+                                pluginDB[multibandGatePage.bandId + "Makeup"] = v;
+                            }
+                        }
                     }
-                }
-
-                EeSpinBox {
-                    id: bandMakeup
-                    label: i18n("Makeup")
-                    labelAbove: true
-                    spinboxLayoutFillWidth: true
-                    from: pluginDB.getMinValue(multibandGatePage.bandId + "Makeup")
-                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "Makeup")
-                    value: pluginDB[multibandGatePage.bandId + "Makeup"]
-                    decimals: 1
-                    stepSize: 0.1
-                    unit: "dB"
-                    onValueModified: v => {
-                        pluginDB[multibandGatePage.bandId + "Makeup"] = v;
-                    }
-                }
-            }
-
-            Kirigami.CardsLayout {
-                maximumColumns: 2
-
-                anchors {
-                    left: parent.left
-                    right: parent.right
                 }
 
                 Controls.Frame {
@@ -267,7 +348,7 @@ Kirigami.ScrollablePage {
 
         Column {
             Kirigami.CardsLayout {
-                maximumColumns: 3
+                maximumColumns: 6
 
                 anchors {
                     left: parent.left
@@ -317,6 +398,51 @@ Kirigami.ScrollablePage {
                     visible: pluginDB.stereoSplit
                     onActivated: idx => {
                         pluginDB[multibandGatePage.bandId + "StereoSplitSource"] = idx;
+                    }
+                }
+
+                EeSpinBox {
+                    label: i18n("Preamp")
+                    labelAbove: true
+                    spinboxLayoutFillWidth: true
+                    from: pluginDB.getMinValue(multibandGatePage.bandId + "SidechainPreamp")
+                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainPreamp")
+                    value: pluginDB[multibandGatePage.bandId + "SidechainPreamp"]
+                    decimals: 1
+                    stepSize: 0.1
+                    unit: "dB"
+                    onValueModified: v => {
+                        pluginDB[multibandGatePage.bandId + "SidechainPreamp"] = v;
+                    }
+                }
+
+                EeSpinBox {
+                    label: i18n("Reactivity")
+                    labelAbove: true
+                    spinboxLayoutFillWidth: true
+                    from: pluginDB.getMinValue(multibandGatePage.bandId + "SidechainReactivity")
+                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainReactivity")
+                    value: pluginDB[multibandGatePage.bandId + "SidechainReactivity"]
+                    decimals: 1
+                    stepSize: 0.1
+                    unit: "ms"
+                    onValueModified: v => {
+                        pluginDB[multibandGatePage.bandId + "SidechainReactivity"] = v;
+                    }
+                }
+
+                EeSpinBox {
+                    label: i18n("Lookahead")
+                    labelAbove: true
+                    spinboxLayoutFillWidth: true
+                    from: pluginDB.getMinValue(multibandGatePage.bandId + "SidechainLookahead")
+                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainLookahead")
+                    value: pluginDB[multibandGatePage.bandId + "SidechainLookahead"]
+                    decimals: 1
+                    stepSize: 0.1
+                    unit: "ms"
+                    onValueModified: v => {
+                        pluginDB[multibandGatePage.bandId + "SidechainLookahead"] = v;
                     }
                 }
             }
