@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-15 00:24+0000\n"
-"PO-Revision-Date: 2025-07-20 18:39+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"PO-Revision-Date: 2025-08-16 19:01+0000\n"
+"Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
 "Language: ro\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.13\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -1754,9 +1754,8 @@ msgid "Ignore Streams from Monitor of Devices"
 msgstr "Ignoră fluxurile de la monitorul de dispozitive"
 
 #: data/ui/preferences_general.ui:78
-#, fuzzy
 msgid "Enable Input Monitoring"
-msgstr "Activează/dezactivează monitorizarea intrării"
+msgstr "Activează monitorizarea intrării"
 
 #: data/ui/preferences_general.ui:90
 msgid "Use Cubic Volume"
