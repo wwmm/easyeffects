@@ -348,7 +348,7 @@ Kirigami.ScrollablePage {
 
         Column {
             Kirigami.CardsLayout {
-                maximumColumns: 6
+                maximumColumns: 8
 
                 anchors {
                     left: parent.left
@@ -443,6 +443,56 @@ Kirigami.ScrollablePage {
                     unit: "ms"
                     onValueModified: v => {
                         pluginDB[multibandGatePage.bandId + "SidechainLookahead"] = v;
+                    }
+                }
+
+                ColumnLayout {
+                    Controls.CheckBox {
+                        Layout.alignment: Qt.AlignHCenter
+                        text: i18n("Low-Cut")
+                        checked: pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"]
+                        onCheckedChanged: {
+                            pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"] = checked;
+                        }
+                    }
+
+                    EeSpinBox {
+                        spinboxLayoutFillWidth: true
+                        from: pluginDB.getMinValue(multibandGatePage.bandId + "SidechainLowcutFrequency")
+                        to: pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainLowcutFrequency")
+                        value: pluginDB[multibandGatePage.bandId + "SidechainLowcutFrequency"]
+                        decimals: 0
+                        stepSize: 1
+                        unit: "Hz"
+                        enabled: pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"]
+                        onValueModified: v => {
+                            pluginDB[multibandGatePage.bandId + "SidechainLowcutFrequency"] = v;
+                        }
+                    }
+                }
+
+                ColumnLayout {
+                    Controls.CheckBox {
+                        Layout.alignment: Qt.AlignHCenter
+                        text: i18n("High-Cut")
+                        checked: pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"]
+                        onCheckedChanged: {
+                            pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"] = checked;
+                        }
+                    }
+
+                    EeSpinBox {
+                        spinboxLayoutFillWidth: true
+                        from: pluginDB.getMinValue(multibandGatePage.bandId + "SidechainHighcutFrequency")
+                        to: pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainHighcutFrequency")
+                        value: pluginDB[multibandGatePage.bandId + "SidechainHighcutFrequency"]
+                        decimals: 0
+                        stepSize: 1
+                        unit: "Hz"
+                        enabled: pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"]
+                        onValueModified: v => {
+                            pluginDB[multibandGatePage.bandId + "SidechainHighcutFrequency"] = v;
+                        }
                     }
                 }
             }
