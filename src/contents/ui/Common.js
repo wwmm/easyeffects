@@ -13,7 +13,7 @@ function isEmpty(v) {
         case "string":
             return v.length === 0;
         case "number":
-            return isNaN(v);
+            return Number.isNaN(v);
         case "undefined":
             return true;
         case "object":
@@ -94,10 +94,28 @@ function printObjectProperties(obj) {
 }
 
 /**
- * Returns the number converted to the current user loale.
- * @param {*} value The input value.
- * @returns {number} The converted value.
+ * Converts a value to a numeric string using the current system user locale.
+ * Optional decimal and unit parameters can be provided.
+ * If the value cannot be converted, an empty string is returned
+ * @param {number|string} num The value to convert.
+ * @param {number} [decimal=0] A positive integer representing the decimal precision.
+ * @param {?string} [unit=null] An optional unit string to concatenate to the converted value.
+ * @returns {number} The string in locale format.
  */
-function toLocaleLabel(num, decimal, unit) {
-    return Number(num).toLocaleString(Qt.locale(), 'f', decimal) + ` ${unit}`;
+function toLocaleLabel(num, decimal = 0, unit = null) {
+    // Convert to number if necessary.
+    const n = (typeof num === "number") ? num : Number(num);
+
+    /**
+     * Since we already have a number type, we can use `Number.isNaN()` static method
+     * avoiding the type coercion which is done by `isNaN()` global function.
+     * See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN 
+     */
+    if (Number.isNaN(n)) {
+        console.error("Cannot convert " + num + " in locale format.")
+        return "";
+    }
+
+    // Sum has precedence over ternary operator, so we need parentheses. 
+    return n.toLocaleString(Qt.locale(), 'f', decimal) + ((unit === null) ? "" : ` ${unit}`);
 }

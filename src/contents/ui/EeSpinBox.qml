@@ -135,9 +135,9 @@ FormCard.AbstractFormDelegate {
                 const regex_result = re.exec(text) ?? [];
                 try {
                     const n = Number.fromLocaleString(locale, regex_result[0]);
-                    return (!isNaN(n)) ? Math.round(n * spinbox.decimalFactor) : spinbox.value;
+                    return (!Number.isNaN(n)) ? Math.round(n * spinbox.decimalFactor) : spinbox.value;
                 } catch (error) {
-                    console.log(error);
+                    console.error(error);
                     return spinbox.value;
                 }
             }
