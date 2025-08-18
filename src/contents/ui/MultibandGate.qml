@@ -17,13 +17,13 @@ Kirigami.ScrollablePage {
     required property var pipelineInstance
     property var pluginBackend
     readonly property string bandId: "band" + bandsListview.currentIndex
-    property list<real> bandFrequencyEnd
-    property list<real> bandReductionLevelLeft
-    property list<real> bandReductionLevelRight
-    property list<real> bandEnvelopeLevelLeft
-    property list<real> bandEnvelopeLevelRight
-    property list<real> bandCurveLevelLeft
-    property list<real> bandCurveLevelRight
+    property list<real> bandFrequencyEnd: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    property list<real> bandReductionLevelLeft: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    property list<real> bandReductionLevelRight: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    property list<real> bandEnvelopeLevelLeft: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    property list<real> bandEnvelopeLevelRight: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    property list<real> bandCurveLevelLeft: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    property list<real> bandCurveLevelRight: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
     readonly property real radius: 2.5 * Kirigami.Units.gridUnit
 
     function updateMeters() {
