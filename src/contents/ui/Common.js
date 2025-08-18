@@ -100,7 +100,7 @@ function printObjectProperties(obj) {
  * @param {number|string} num The value to convert.
  * @param {number} [decimal=0] A positive integer representing the decimal precision.
  * @param {?string} [unit=null] An optional unit string to concatenate to the converted value.
- * @returns {number} The string in locale format.
+ * @returns {string} The string in locale format.
  */
 function toLocaleLabel(num, decimal = 0, unit = null) {
     // Convert to number if necessary.
