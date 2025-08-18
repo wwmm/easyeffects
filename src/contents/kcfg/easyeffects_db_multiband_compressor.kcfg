@@ -36,6 +36,15 @@
             <default>0</default>
         </entry>
 
+        <entry name="viewSidechain" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+        <entry name="externalSidechainEnabled" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
+
         <entry name="stereoSplit" type="Bool">
             <label></label>
             <default>false</default>

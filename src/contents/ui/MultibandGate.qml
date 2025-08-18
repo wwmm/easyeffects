@@ -105,7 +105,7 @@ Kirigami.ScrollablePage {
 
                 Controls.Frame {
                     Layout.alignment: Qt.AlignHCenter
-                    Layout.fillWidth: parent.columns == 2 ? false : true
+                    Layout.fillWidth: true
 
                     GridLayout {
                         columns: 2
@@ -154,7 +154,7 @@ Kirigami.ScrollablePage {
 
                 Controls.Frame {
                     Layout.alignment: Qt.AlignHCenter
-                    Layout.fillWidth: parent.columns == 2 ? false : true
+                    Layout.fillWidth: true
 
                     GridLayout {
                         columns: 2
@@ -202,7 +202,7 @@ Kirigami.ScrollablePage {
 
                 Controls.Frame {
                     Layout.alignment: Qt.AlignHCenter
-                    Layout.fillWidth: parent.columns == 2 ? false : true
+                    Layout.fillWidth: true
 
                     GridLayout {
                         columns: 2
@@ -251,7 +251,7 @@ Kirigami.ScrollablePage {
 
                 Controls.Frame {
                     Layout.alignment: Qt.AlignHCenter
-                    Layout.fillWidth: parent.columns == 2 ? false : true
+                    Layout.fillWidth: true
 
                     GridLayout {
                         columns: 2
@@ -299,7 +299,7 @@ Kirigami.ScrollablePage {
 
                 Controls.Frame {
                     Layout.alignment: Qt.AlignHCenter
-                    Layout.fillWidth: parent.columns == 2 ? false : true
+                    Layout.fillWidth: true
 
                     GridLayout {
                         columns: 2

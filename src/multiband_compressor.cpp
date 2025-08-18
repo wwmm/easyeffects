@@ -89,8 +89,8 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   BIND_LV2_PORT("ssplit", stereoSplit, setStereoSplit, db::MultibandCompressor::stereoSplitChanged);
 
   // dB controls with -inf mode.
-  BIND_LV2_PORT_DB("cdr", dry, setDry, db::MultibandCompressor::dryChanged, true);
-  BIND_LV2_PORT_DB("cwt", wet, setWet, db::MultibandCompressor::wetChanged, true);
+  BIND_LV2_PORT_DB("g_dry", dry, setDry, db::MultibandCompressor::dryChanged, true);
+  BIND_LV2_PORT_DB("g_wet", wet, setWet, db::MultibandCompressor::wetChanged, true);
 
   bind_bands();
 }
@@ -246,6 +246,8 @@ void MultibandCompressor::update_sidechain_links() {
     external_sidechain_enabled =
         settings->defaultSidechainTypeLabelsValue()[settings->property(band_name.c_str()).value<int>()] == "External";
   }
+
+  settings->setExternalSidechainEnabled(external_sidechain_enabled);
 
   if (!external_sidechain_enabled) {
     pm->destroy_links(list_proxies);
