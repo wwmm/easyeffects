@@ -645,10 +645,10 @@ Kirigami.Page {
                     onTriggered: {
                         let left = Number(pipelineInstance.getOutputLevelLeft());
                         let right = Number(pipelineInstance.getOutputLevelRight());
-                        if (isNaN(left) || left < pageStreamsEffects.minLeftLevel)
+                        if (Number.isNaN(left) || left < pageStreamsEffects.minLeftLevel)
                             left = pageStreamsEffects.minLeftLevel;
 
-                        if (isNaN(right) || right < pageStreamsEffects.minRightLevel)
+                        if (Number.isNaN(right) || right < pageStreamsEffects.minRightLevel)
                             right = pageStreamsEffects.minRightLevel;
 
                         if ((left > 0 || right > 0) && actionLevelSaturation.visible !== true)
