@@ -47,7 +47,9 @@ CommandLineParser::CommandLineParser(QObject* parent)
                       {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music"), i18n("preset-name")},
                       {{"p", "presets"}, i18n("Show available presets.")},
                       {{"a", "active-preset"}, i18n("Get the active input/output preset."), i18n("preset-type")},
-                      {{"s", "active-presets"}, i18n("Get the active input and output presets.")}});
+                      {{"s", "active-presets"}, i18n("Get the active input and output presets.")},
+                      {"gapplication-service", i18n("Deprecated. Use --service-mode instead.")},
+                      {"service-mode", i18n("Start the application with service mode turned on.")}});
 }
 
 void CommandLineParser::process(QApplication* app) {
@@ -65,6 +67,10 @@ void CommandLineParser::process(QApplication* app) {
 
   if (parser->isSet("hide-window")) {
     Q_EMIT onHideWindow();
+  }
+
+  if (parser->isSet("service-mode") || parser->isSet("gapplication-service")) {
+    db::Main::setEnableServiceMode(true);
   }
 
   if (parser->isSet("active-preset")) {
