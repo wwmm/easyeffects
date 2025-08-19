@@ -23,6 +23,7 @@
 #include <qlogging.h>
 #include <qstandardpaths.h>
 #include <sys/types.h>
+#include <QLoggingCategory>
 #include <array>
 #include <cmath>
 #include <cstddef>
@@ -38,6 +39,8 @@
 
 namespace util {
 
+static Q_LOGGING_CATEGORY(ee_logs, "easyeffects");
+
 static auto prepare_debug_message(const std::string& message, source_location location) -> std::string {
   auto file_path = std::filesystem::path{location.file_name()};
 
@@ -47,23 +50,23 @@ static auto prepare_debug_message(const std::string& message, source_location lo
 }
 
 void debug(const std::string& s, source_location location) {
-  qDebug().noquote() << prepare_debug_message(s, location);
+  qCDebug(ee_logs).noquote() << prepare_debug_message(s, location);
 }
 
 void fatal(const std::string& s, source_location location) {
-  qFatal().noquote() << prepare_debug_message(s, location);
+  qCFatal(ee_logs).noquote() << prepare_debug_message(s, location);
 }
 
 void critical(const std::string& s, source_location location) {
-  qCritical().noquote() << prepare_debug_message(s, location);
+  qCCritical(ee_logs).noquote() << prepare_debug_message(s, location);
 }
 
 void warning(const std::string& s, source_location location) {
-  qWarning().noquote() << prepare_debug_message(s, location);
+  qCWarning(ee_logs).noquote() << prepare_debug_message(s, location);
 }
 
 void info(const std::string& s, source_location location) {
-  qInfo().noquote() << prepare_debug_message(s, location);
+  qCInfo(ee_logs).noquote() << prepare_debug_message(s, location);
 }
 
 void print_thread_id() {

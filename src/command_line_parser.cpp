@@ -23,6 +23,7 @@
 #include <qtmetamacros.h>
 #include <KLocalizedString>
 #include <QApplication>
+#include <QLoggingCategory>
 #include <QString>
 #include <cstdlib>
 #include <iostream>
@@ -49,7 +50,8 @@ CommandLineParser::CommandLineParser(QObject* parent)
                       {{"a", "active-preset"}, i18n("Get the active input/output preset."), i18n("preset-type")},
                       {{"s", "active-presets"}, i18n("Get the active input and output presets.")},
                       {"gapplication-service", i18n("Deprecated. Use --service-mode instead.")},
-                      {"service-mode", i18n("Start the application with service mode turned on.")}});
+                      {"service-mode", i18n("Start the application with service mode turned on.")},
+                      {"debug", i18n("Enable debug messages.")}});
 }
 
 void CommandLineParser::process(QApplication* app) {
@@ -71,6 +73,10 @@ void CommandLineParser::process(QApplication* app) {
 
   if (parser->isSet("service-mode") || parser->isSet("gapplication-service")) {
     db::Main::setEnableServiceMode(true);
+  }
+
+  if (parser->isSet("debug")) {
+    QLoggingCategory::setFilterRules("easyeffects.debug=true");
   }
 
   if (parser->isSet("active-preset")) {

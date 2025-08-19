@@ -33,6 +33,7 @@
 #include <KLocalizedString>
 #include <QApplication>
 #include <QLocalServer>
+#include <QLoggingCategory>
 #include <QSystemTrayIcon>
 #include <QWindow>
 #include <csignal>
@@ -58,6 +59,8 @@ static void csignalHandler(int s) {
 }
 
 int main(int argc, char* argv[]) {
+  QLoggingCategory::setFilterRules("easyeffects.debug=false");
+
   KIconTheme::initTheme();
 
   QApplication app(argc, argv);
