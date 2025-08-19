@@ -69,7 +69,7 @@ void LocalServer::onReadyRead() {
 
         std::smatch matches;
 
-        static const auto re_gain = std::regex("^load_preset:([0-9]+):([a-zA-Z]+)\n$");
+        static const auto re_gain = std::regex("^load_preset:([0-9]+):([^\n]{1,100})\n$");
 
         std::regex_search(msg, matches, re_gain);
 
