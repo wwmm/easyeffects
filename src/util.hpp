@@ -62,13 +62,7 @@ auto remove_filename_extension(const std::string& basename) -> std::string;
 
 void print_thread_id();
 
-auto str_contains(const std::string& haystack, const std::string& needle) -> bool;
-
 auto compare_versions(const std::string& v0, const std::string& v1) -> int;
-
-void str_trim_start(std::string& str);
-void str_trim_end(std::string& str);
-void str_trim(std::string& str);
 
 auto random_string(const size_t& length) -> std::string;
 

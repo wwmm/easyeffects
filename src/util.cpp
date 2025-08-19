@@ -122,40 +122,6 @@ auto remove_filename_extension(const std::string& basename) -> std::string {
   return basename.substr(0U, basename.find_last_of('.'));
 }
 
-auto str_contains(const std::string& haystack, const std::string& needle) -> bool {
-  // This helper indicates if the needle is contained in the haystack string,
-  // but the empty needle will NOT return true.
-
-  // Instead .find method of C++ string class returns a size_type different
-  // than std::string::npos when the needle is empty indicating that an empty
-  // string IS CONTAINED in the haystack. That's pointless, so here is this helper.
-
-  if (needle.empty()) {
-    return false;
-  }
-
-  return (haystack.find(needle) != std::string::npos);
-}
-
-void str_trim_start(std::string& str) {
-  // This util removes whitespaces such as simple space " ", new line "\n",
-  // carriage return "\r", tab "\t", vertical tab "\v" and form feed "\f"
-  // at the start of the given string.
-  // No copy involved, the input string is just modified if needed.
-
-  str.erase(0U, str.find_first_not_of(" \n\r\t\v\f"));
-}
-
-void str_trim_end(std::string& str) {
-  // Same as above, but at the end of the given string.
-  str.erase(str.find_last_not_of(" \n\r\t\v\f") + 1U);
-}
-void str_trim(std::string& str) {
-  // Trim both sides of the given string. See above.
-  str_trim_end(str);
-  str_trim_start(str);
-}
-
 auto random_string(const size_t& length) -> std::string {
   static const std::string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 

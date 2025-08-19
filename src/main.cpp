@@ -38,6 +38,7 @@
 #include <QWindow>
 #include <csignal>
 #include <memory>
+#include "autostart.hpp"
 #include "command_line_parser.hpp"
 #include "config.h"
 #include "db_manager.hpp"
@@ -202,6 +203,10 @@ int main(int argc, char* argv[]) {
       db::Main::setXdgGlobalShortcutsBound(false);
     }
   });
+
+  // autostart
+
+  auto autostart = std::make_unique<Autostart>();
 
   // Initializing QML
 

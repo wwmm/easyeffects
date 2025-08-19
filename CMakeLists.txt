@@ -78,6 +78,8 @@ pkg_check_modules(LIBSAMPLERATE samplerate)
 pkg_check_modules(LIBSNDFILE sndfile)
 pkg_check_modules(LIBRNNOISE rnnoise)
 pkg_check_modules(LIBSOUNDTOUCH soundtouch)
+pkg_check_modules(LIBPORTAL libportal)
+pkg_check_modules(LIBPORTALQT libportal-qt6)
 
 file(GLOB KCFG_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfg)
 file(GLOB KCFGC_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfgc)

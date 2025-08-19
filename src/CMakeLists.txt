@@ -20,6 +20,7 @@ qt_add_qml_module(easyeffects
 target_sources(easyeffects PRIVATE
     autogain.cpp
     autogain_preset.cpp
+    autostart.cpp
     bass_enhancer.cpp
     bass_enhancer_preset.cpp
     bass_loudness.cpp
@@ -121,6 +122,8 @@ target_include_directories(easyeffects PRIVATE
     ${LIBSNDFILE_INCLUDE_DIRS}
     ${LIBRNNOISE_INCLUDE_DIRS}
     ${LIBSOUNDTOUCH_INCLUDE_DIRS}
+    ${LIBPORTAL_INCLUDE_DIRS}
+    ${LIBPORTALQT_INCLUDE_DIRS}
 )
 
 target_link_libraries(easyeffects PRIVATE
@@ -155,6 +158,8 @@ target_link_libraries(easyeffects PRIVATE
     ${LIBSNDFILE_LIBRARIES}
     ${LIBRNNOISE_LIBRARIES}
     ${LIBSOUNDTOUCH_LIBRARIES}
+    ${LIBPORTAL_LIBRARIES}
+    ${LIBPORTALQT_LIBRARIES}
     ${LIBZITACONVOLVER}
 )
 
