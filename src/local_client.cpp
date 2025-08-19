@@ -21,6 +21,8 @@
 #include <qlocalsocket.h>
 #include <qobject.h>
 #include <memory>
+#include <string>
+#include "pipeline_type.hpp"
 #include "tags_local_server.hpp"
 #include "util.hpp"
 
@@ -57,5 +59,13 @@ void LocalClient::hide_window() {
 
 void LocalClient::quit_app() {
   client->write(tags::local_server::quit_app);
+  client->flush();
+}
+
+void LocalClient::load_preset(PipelineType pipeline_type, std::string preset_name) {
+  std::string msg = std::string(tags::local_server::load_preset) + ":" +
+                    util::to_string(static_cast<int>(pipeline_type)) + ":" + preset_name + "\n";
+
+  client->write(msg.c_str());
   client->flush();
 }

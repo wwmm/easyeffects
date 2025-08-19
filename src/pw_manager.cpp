@@ -60,7 +60,6 @@
 #include <QString>
 #include <algorithm>
 #include <array>
-#include <cerrno>
 #include <chrono>
 #include <cstdint>
 #include <cstring>

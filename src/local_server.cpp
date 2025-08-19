@@ -23,7 +23,10 @@
 #include <QLocalServer>
 #include <cstring>
 #include <memory>
+#include <regex>
 #include <string>
+#include "pipeline_type.hpp"
+#include "presets_manager.hpp"
 #include "tags_local_server.hpp"
 #include "util.hpp"
 
@@ -61,6 +64,25 @@ void LocalServer::onReadyRead() {
         Q_EMIT onShowWindow();
       } else if (std::strcmp(buf, tags::local_server::hide_window) == 0) {
         Q_EMIT onHideWindow();
+      } else if (std::strncmp(buf, tags::local_server::load_preset, strlen(tags::local_server::load_preset)) == 0) {
+        std::string msg = buf;
+
+        std::smatch matches;
+
+        static const auto re_gain = std::regex("^load_preset:([0-9]+):([a-zA-Z]+)\n$");
+
+        std::regex_search(msg, matches, re_gain);
+
+        if (matches.size() == 3U) {
+          int pipeline_type = 0;
+
+          util::str_to_num(std::string(matches[1]), pipeline_type);
+
+          std::string preset_name = matches[2];
+
+          presets::Manager::self().loadLocalPresetFile(static_cast<PipelineType>(pipeline_type),
+                                                       QString::fromStdString(preset_name));
+        }
       }
     }
   }

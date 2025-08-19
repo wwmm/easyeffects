@@ -24,9 +24,13 @@
 #include <KLocalizedString>
 #include <QApplication>
 #include <QString>
+#include <cstdlib>
 #include <iostream>
 #include <memory>
+#include <string>
 #include "easyeffects_db.h"
+#include "pipeline_type.hpp"
+#include "presets_manager.hpp"
 #include "util.hpp"
 
 CommandLineParser::CommandLineParser(QObject* parent)
@@ -40,13 +44,15 @@ CommandLineParser::CommandLineParser(QObject* parent)
                       {{"r", "reset"}, i18n("Reset Easy Effects.")},
                       {{"w", "hide-window"}, i18n("Hide the Window.")},
                       {{"b", "bypass"}, i18n("Global bypass. 1 to enable, 2 to disable and 3 to get status")},
-                      {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music")},
+                      {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music"), i18n("preset-name")},
                       {{"p", "presets"}, i18n("Show available presets.")},
                       {{"a", "active-preset"}, i18n("Get the active input/output preset."), i18n("preset-type")},
                       {{"s", "active-presets"}, i18n("Get the active input and output presets.")}});
 }
 
 void CommandLineParser::process(QApplication* app) {
+  auto* pm = &presets::Manager::self();
+
   parser->process(*app);
 
   if (parser->isSet("quit")) {
@@ -84,7 +90,7 @@ void CommandLineParser::process(QApplication* app) {
       util::fatal("Must specify preset type: input/output.");
     }
 
-    QApplication::quit();
+    std::exit(EXIT_SUCCESS);
   }
 
   if (parser->isSet("active-presets")) {
@@ -98,9 +104,47 @@ void CommandLineParser::process(QApplication* app) {
       output = QString("None");
     }
 
-    std::cout << "Input: " << input.toStdString() << std::endl;
-    std::cout << "Output: " << output.toStdString() << std::endl;
+    std::cout << "Input: " << input.toStdString() << '\n';
+    std::cout << "Output: " << output.toStdString() << '\n';
 
-    QApplication::quit();
+    std::exit(EXIT_SUCCESS);
+  }
+
+  if (parser->isSet("presets")) {
+    std::string list;
+
+    for (const auto& p : pm->get_local_presets_paths(PipelineType::output)) {
+      list += p.stem().string() + ",";
+    }
+
+    std::cout << i18n("Output Presets").toStdString() + ": " + list << '\n';
+
+    list = "";
+
+    for (const auto& p : pm->get_local_presets_paths(PipelineType::input)) {
+      list += p.stem().string() + ",";
+    }
+
+    std::cout << i18n("Input Presets").toStdString() + ": " + list << '\n';
+
+    std::exit(EXIT_SUCCESS);
+  }
+
+  if (parser->isSet("load-preset")) {
+    auto name = parser->value("load-preset");
+
+    if (pm->preset_file_exists(PipelineType::input, name.toStdString())) {
+      Q_EMIT onLoadPreset(PipelineType::input, name);
+
+      std::exit(EXIT_SUCCESS);
+    }
+
+    if (pm->preset_file_exists(PipelineType::output, name.toStdString())) {
+      Q_EMIT onLoadPreset(PipelineType::output, name);
+
+      std::exit(EXIT_SUCCESS);
+    }
+
+    std::exit(EXIT_FAILURE);
   }
 }

@@ -29,4 +29,6 @@ inline constexpr auto show_window = "show_window\n";
 
 inline constexpr auto hide_window = "hide_window\n";
 
+inline constexpr auto load_preset = "load_preset";
+
 }  // namespace tags::local_server

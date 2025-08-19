@@ -23,6 +23,8 @@
 #include <QLocalSocket>
 #include <QObject>
 #include <memory>
+#include <string>
+#include "pipeline_type.hpp"
 
 class LocalClient : public QObject {
   Q_OBJECT
@@ -33,6 +35,7 @@ class LocalClient : public QObject {
   void show_window();
   void hide_window();
   void quit_app();
+  void load_preset(PipelineType pipeline_type, std::string preset_name);
 
  private:
   std::unique_ptr<QLocalSocket> client;

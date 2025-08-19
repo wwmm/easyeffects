@@ -43,6 +43,7 @@
 #include "global_shortcuts.hpp"
 #include "local_client.hpp"
 #include "local_server.hpp"
+#include "pipeline_type.hpp"
 #include "presets_manager.hpp"
 #include "pw_manager.hpp"
 #include "stream_input_effects.hpp"
@@ -91,6 +92,8 @@ int main(int argc, char* argv[]) {
   auto lockFile = util::get_lock_file();
 
   if (!lockFile->isLocked()) {
+    // If we do not have the lock we are probably a secondary instance that will try to communicate with the service
+
     auto local_client = std::make_unique<LocalClient>();
 
     QObject::connect(cmd_parser.get(), &CommandLineParser::onQuit, [&]() {
@@ -102,6 +105,11 @@ int main(int argc, char* argv[]) {
       local_client->hide_window();
       show_window = false;
     });
+
+    QObject::connect(cmd_parser.get(), &CommandLineParser::onLoadPreset,
+                     [&](PipelineType pipeline_type, QString preset_name) {
+                       local_client->load_preset(pipeline_type, preset_name.toStdString());
+                     });
 
     cmd_parser->process(&app);
 

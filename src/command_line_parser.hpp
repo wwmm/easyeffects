@@ -24,6 +24,7 @@
 #include <QCommandLineParser>
 #include <QObject>
 #include <memory>
+#include "pipeline_type.hpp"
 
 class CommandLineParser : public QObject {
   Q_OBJECT
@@ -37,6 +38,7 @@ class CommandLineParser : public QObject {
   void onReset();
   void onQuit();
   void onHideWindow();
+  void onLoadPreset(PipelineType pipeline_type, QString preset_name);
 
  private:
   std::unique_ptr<QCommandLineParser> parser;

@@ -77,6 +77,8 @@ class Manager : public QObject {
 
   void autoload(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile);
 
+  auto get_local_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
+
   Q_INVOKABLE bool add(const PipelineType& pipeline_type, const QString& name);
 
   Q_INVOKABLE bool savePresetFile(const PipelineType& pipeline_type, const QString& name);
@@ -135,8 +137,6 @@ class Manager : public QObject {
       *autoloadingOutputListmodel, *autoloadingInputListmodel, *irsListModel, *rnnoiseListModel;
 
   static void create_user_directory(const std::filesystem::path& path);
-
-  auto get_local_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
 
   auto get_local_irs_paths() -> QList<std::filesystem::path>;
 
