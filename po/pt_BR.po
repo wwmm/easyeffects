@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-15 00:24+0000\n"
-"PO-Revision-Date: 2025-07-20 18:39+0000\n"
-"Last-Translator: Vitor Henrique <vitorhcl00@gmail.com>\n"
+"PO-Revision-Date: 2025-08-20 00:02+0000\n"
+"Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -18,13 +18,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.13\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "@APP_NAME@"
-msgstr "@NOME_DO_APLICATIVO@"
+msgstr "@APP_NAME@"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -32,13 +32,18 @@ msgstr "Equalizador, Compressor e Outros Efeitos de Áudio"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Efeitos de áudio para aplicações PipeWire"
+msgstr ""
+"O ‘Easy Effects’ é um aplicativo desenvolvido em GTK gratuito e de código "
+"aberto que fornece uma grande variedade de efeitos sonoros e filtros para "
+"serem aplicados nos fluxos de áudio de entrada e saída que utiliza o "
+"servidor de áudio PipeWire, possui as funções de equalizador, compressor e "
+"efeitos de áudio"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:6
 msgid "limiter;compressor;reverberation;equalizer;autovolume;"
 msgstr ""
 "limitador;compressor;reverberação;equalizador;volume "
-"automático;efeitos;sonoros;som;áudio;"
+"automático;efeitos;sonoros;som;áudio;filtros;"
 
 #: data/ui/app_info.ui:212
 msgid "Enable/disable this application"
@@ -123,7 +128,7 @@ msgstr "Lista de Aplicativos"
 
 #: data/ui/apps_box.ui:27
 msgid "Empty List"
-msgstr "Lista vazia"
+msgstr "Lista Vazia"
 
 #: data/ui/apps_box.ui:28
 msgid "No Audio Application Available"
@@ -179,7 +184,7 @@ msgstr "Média Geométrica (SI)"
 
 #: data/ui/autogain.ui:124
 msgid "History"
-msgstr "História"
+msgstr "Histórico"
 
 #: data/ui/autogain.ui:129 data/ui/autogain.ui:598 data/ui/bass_enhancer.ui:458
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1307
@@ -266,7 +271,7 @@ msgstr "Saída"
 #: data/ui/multiband_gate.ui:596 data/ui/pitch.ui:366 data/ui/reverb.ui:461
 #: data/ui/rnnoise.ui:376 data/ui/speex.ui:290 data/ui/stereo_tools.ui:720
 msgid "Plugin Output Gain"
-msgstr "Ganho de saída do plugin"
+msgstr "Ganho de Saída do Módulo de Extensão"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:673 data/ui/expander.ui:594
 #: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:246
@@ -312,7 +317,7 @@ msgstr "2º"
 
 #: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
 msgid "Amount"
-msgstr "Quantia"
+msgstr "Quantidade"
 
 #: data/ui/bass_enhancer.ui:141 data/ui/bass_enhancer.ui:420
 #: data/ui/exciter.ui:141 data/ui/exciter.ui:420
@@ -1779,7 +1784,7 @@ msgstr "Intervalo de atualização"
 
 #: data/ui/preferences_general.ui:133
 msgid "Related to Level Meters and Spectrum"
-msgstr "Relacionado a medidores de nível e espectro"
+msgstr "Relacionado aos medidores do nível e do espectro"
 
 #: data/ui/preferences_general.ui:155
 msgid "Update Frequency"
