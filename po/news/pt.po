@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-18 19:51-0300\n"
+"POT-Creation-Date: 2025-08-20 20:34-0300\n"
 "PO-Revision-Date: 2024-04-12 23:01+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/easyeffects/"
@@ -19,41 +19,66 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.5-dev\n"
 
-#: src/command_line_parser.cpp:39
+#: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
-#: src/command_line_parser.cpp:40
+#: src/command_line_parser.cpp:45
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Easy Effects"
 
-#: src/command_line_parser.cpp:41
+#: src/command_line_parser.cpp:46
 msgid "Hide the Window."
 msgstr ""
 
-#: src/command_line_parser.cpp:42
+#: src/command_line_parser.cpp:47
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/command_line_parser.cpp:43
+#: src/command_line_parser.cpp:48
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
-#: src/command_line_parser.cpp:44
+#: src/command_line_parser.cpp:48
+msgid "preset-name"
+msgstr ""
+
+#: src/command_line_parser.cpp:49
 msgid "Show available presets."
 msgstr ""
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:50
 msgid "Get the active input/output preset."
 msgstr ""
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:50
 msgid "preset-type"
 msgstr ""
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:51
 msgid "Get the active input and output presets."
+msgstr ""
+
+#: src/command_line_parser.cpp:52
+msgid "Deprecated. Use --service-mode instead."
+msgstr ""
+
+#: src/command_line_parser.cpp:53
+msgid "Start the application with service mode turned on."
+msgstr ""
+
+#: src/command_line_parser.cpp:54
+#, fuzzy
+msgid "Enable debug messages."
+msgstr "As mensagens de depuração foram aprimoradas"
+
+#: src/command_line_parser.cpp:132
+msgid "Output Presets"
+msgstr ""
+
+#: src/command_line_parser.cpp:140
+msgid "Input Presets"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:88
@@ -1476,8 +1501,8 @@ msgstr ""
 
 #: src/contents/ui/main.qml:286 src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:438
-#: src/contents/ui/PreferencesSheet.qml:451
+#: src/contents/ui/PreferencesSheet.qml:442
+#: src/contents/ui/PreferencesSheet.qml:455
 msgid "Preferences"
 msgstr ""
 
@@ -1694,12 +1719,12 @@ msgid "No Clients"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:270
-#: src/contents/ui/PreferencesSheet.qml:149
+#: src/contents/ui/PreferencesSheet.qml:153
 msgid "State"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:277
-#: src/contents/ui/PreferencesSheet.qml:156
+#: src/contents/ui/PreferencesSheet.qml:160
 msgid "Enabled"
 msgstr ""
 
@@ -1775,179 +1800,179 @@ msgstr ""
 msgid "Autostart on Login"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:53
+#: src/contents/ui/PreferencesSheet.qml:57
 msgid "Show the Tray Icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:73
+#: src/contents/ui/PreferencesSheet.qml:77
 msgid "Process All Output Streams"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:84
+#: src/contents/ui/PreferencesSheet.qml:88
 msgid "Process All Input Streams"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:95
+#: src/contents/ui/PreferencesSheet.qml:99
 msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:106
+#: src/contents/ui/PreferencesSheet.qml:110
 msgid "Use Cubic Volume"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:117
+#: src/contents/ui/PreferencesSheet.qml:121
 msgid "Enable the Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:128
+#: src/contents/ui/PreferencesSheet.qml:132
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:167
+#: src/contents/ui/PreferencesSheet.qml:171
 msgid "Audio Delay Compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:181
+#: src/contents/ui/PreferencesSheet.qml:185
 msgid "Style"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:188
+#: src/contents/ui/PreferencesSheet.qml:192
 msgid "Color Scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:196
 msgid "Automatic"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:196
 msgid "Light"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:196
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:202
+#: src/contents/ui/PreferencesSheet.qml:206
 msgid "Color Theme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Green Neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Mix"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Orange"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:216
+#: src/contents/ui/PreferencesSheet.qml:220
 msgid "Shape"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:224
 msgid "Bars"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:224
 msgid "Lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:224
 msgid "Dots"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:224
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:230
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:241
+#: src/contents/ui/PreferencesSheet.qml:245
 msgid "Logarithmic Frequency Axis"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:252
+#: src/contents/ui/PreferencesSheet.qml:256
 msgid "Points"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:270
 msgid "Height"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:284
 msgid "Frequency Range"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:287
+#: src/contents/ui/PreferencesSheet.qml:291
 msgid "Minimum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:302
+#: src/contents/ui/PreferencesSheet.qml:306
 msgid "Maximum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:325
+#: src/contents/ui/PreferencesSheet.qml:329
 msgid "Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:326
+#: src/contents/ui/PreferencesSheet.qml:330
 msgid "Enables support for XDG Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:337
+#: src/contents/ui/PreferencesSheet.qml:341
 msgid "Native Plugin Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:338
+#: src/contents/ui/PreferencesSheet.qml:342
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:349
+#: src/contents/ui/PreferencesSheet.qml:353
 msgid "Update Frequency"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:350
+#: src/contents/ui/PreferencesSheet.qml:354
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:378
+#: src/contents/ui/PreferencesSheet.qml:382
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:391
+#: src/contents/ui/PreferencesSheet.qml:395
 msgid "Audio"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:404
+#: src/contents/ui/PreferencesSheet.qml:408
 msgid "Spectrum Analyzer"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:417
+#: src/contents/ui/PreferencesSheet.qml:421
 msgid "Experimental Features"
 msgstr ""
 
@@ -2558,9 +2583,6 @@ msgstr "Audio Effects para aplicações PipeWire"
 
 #~ msgid "The documentation has been updated"
 #~ msgstr "A documentação foi atualizada"
-
-#~ msgid "Improved debug messages"
-#~ msgstr "As mensagens de depuração foram aprimoradas"
 
 #~ msgid "Bug fixes:"
 #~ msgstr "Correções de falhas ou problemas:"

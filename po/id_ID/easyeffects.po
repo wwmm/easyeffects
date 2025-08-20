@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-18 19:51-0300\n"
+"POT-Creation-Date: 2025-08-20 20:34-0300\n"
 "PO-Revision-Date: 2022-11-04 05:01+0000\n"
 "Last-Translator: Reno Sifana Paksi <renosifana.paksi@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -19,46 +19,72 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.14.2-dev\n"
 
-#: src/command_line_parser.cpp:39
+#: src/command_line_parser.cpp:44
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Tutup EasyEffects. Berguna Ketika Berjalan dalam Modus Layanan."
 
-#: src/command_line_parser.cpp:40
+#: src/command_line_parser.cpp:45
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Atur Ulang EasyEffects."
 
-#: src/command_line_parser.cpp:41
+#: src/command_line_parser.cpp:46
 #, fuzzy
 msgid "Hide the Window."
 msgstr "Tutup jendela"
 
-#: src/command_line_parser.cpp:42
+#: src/command_line_parser.cpp:47
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Bypass global. 1 untuk mengaktifkan, 2 untuk menonaktifkan dan 3 untuk "
 "mendapatkan status"
 
-#: src/command_line_parser.cpp:43
+#: src/command_line_parser.cpp:48
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Muat Preset. Misalkan: easyeffects -l music"
 
-#: src/command_line_parser.cpp:44
+#: src/command_line_parser.cpp:48
+#, fuzzy
+msgid "preset-name"
+msgstr "Nama Preset Input Baru"
+
+#: src/command_line_parser.cpp:49
 msgid "Show available presets."
 msgstr "Tampilkan Preset Tersedia."
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:50
 msgid "Get the active input/output preset."
 msgstr ""
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:50
 msgid "preset-type"
 msgstr ""
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:51
 msgid "Get the active input and output presets."
 msgstr ""
+
+#: src/command_line_parser.cpp:52
+msgid "Deprecated. Use --service-mode instead."
+msgstr ""
+
+#: src/command_line_parser.cpp:53
+msgid "Start the application with service mode turned on."
+msgstr ""
+
+#: src/command_line_parser.cpp:54
+msgid "Enable debug messages."
+msgstr ""
+
+#: src/command_line_parser.cpp:132
+msgid "Output Presets"
+msgstr "Preset Output"
+
+#: src/command_line_parser.cpp:140
+#, fuzzy
+msgid "Input Presets"
+msgstr "Preset Input"
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:88
 #: src/contents/ui/BassLoudness.qml:40 src/contents/ui/Crossfeed.qml:56
@@ -1612,8 +1638,8 @@ msgstr "PipeWire"
 
 #: src/contents/ui/main.qml:286 src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:438
-#: src/contents/ui/PreferencesSheet.qml:451
+#: src/contents/ui/PreferencesSheet.qml:442
+#: src/contents/ui/PreferencesSheet.qml:455
 #, fuzzy
 msgid "Preferences"
 msgstr "_Preferensi"
@@ -1856,12 +1882,12 @@ msgid "No Clients"
 msgstr "Sen"
 
 #: src/contents/ui/PipeWirePage.qml:270
-#: src/contents/ui/PreferencesSheet.qml:149
+#: src/contents/ui/PreferencesSheet.qml:153
 msgid "State"
 msgstr "Status"
 
 #: src/contents/ui/PipeWirePage.qml:277
-#: src/contents/ui/PreferencesSheet.qml:156
+#: src/contents/ui/PreferencesSheet.qml:160
 #, fuzzy
 msgid "Enabled"
 msgstr "Hidupkan"
@@ -1945,191 +1971,191 @@ msgstr "Ekualiser"
 msgid "Autostart on Login"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:53
+#: src/contents/ui/PreferencesSheet.qml:57
 msgid "Show the Tray Icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:73
+#: src/contents/ui/PreferencesSheet.qml:77
 #, fuzzy
 msgid "Process All Output Streams"
 msgstr "Proses Semua Output"
 
-#: src/contents/ui/PreferencesSheet.qml:84
+#: src/contents/ui/PreferencesSheet.qml:88
 #, fuzzy
 msgid "Process All Input Streams"
 msgstr "Proses Semua Input"
 
-#: src/contents/ui/PreferencesSheet.qml:95
+#: src/contents/ui/PreferencesSheet.qml:99
 msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:106
+#: src/contents/ui/PreferencesSheet.qml:110
 msgid "Use Cubic Volume"
 msgstr "Gunakan Volume Kubik"
 
-#: src/contents/ui/PreferencesSheet.qml:117
+#: src/contents/ui/PreferencesSheet.qml:121
 msgid "Enable the Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:128
+#: src/contents/ui/PreferencesSheet.qml:132
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:167
+#: src/contents/ui/PreferencesSheet.qml:171
 msgid "Audio Delay Compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:181
+#: src/contents/ui/PreferencesSheet.qml:185
 msgid "Style"
 msgstr "Gaya"
 
-#: src/contents/ui/PreferencesSheet.qml:188
+#: src/contents/ui/PreferencesSheet.qml:192
 msgid "Color Scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:196
 #, fuzzy
 msgid "Automatic"
 msgstr "Gain Otomatis"
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:196
 #, fuzzy
 msgid "Light"
 msgstr "Kanan"
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:196
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:202
+#: src/contents/ui/PreferencesSheet.qml:206
 #, fuzzy
 msgid "Color Theme"
 msgstr "Warna"
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Green Neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 #, fuzzy
 msgid "Mix"
 msgstr "Minimum"
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 #, fuzzy
 msgid "Orange"
 msgstr "Rentang"
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:210
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:216
+#: src/contents/ui/PreferencesSheet.qml:220
 msgid "Shape"
 msgstr "Rupa"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:224
 msgid "Bars"
 msgstr "Batang"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:224
 msgid "Lines"
 msgstr "Garis"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:224
 msgid "Dots"
 msgstr "Titik"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:224
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:230
+#: src/contents/ui/PreferencesSheet.qml:234
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:241
+#: src/contents/ui/PreferencesSheet.qml:245
 #, fuzzy
 msgid "Logarithmic Frequency Axis"
 msgstr "Frekuensi"
 
-#: src/contents/ui/PreferencesSheet.qml:252
+#: src/contents/ui/PreferencesSheet.qml:256
 msgid "Points"
 msgstr "Titik"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:270
 msgid "Height"
 msgstr "Tinggi"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:284
 msgid "Frequency Range"
 msgstr "Rentang Frekuensi"
 
-#: src/contents/ui/PreferencesSheet.qml:287
+#: src/contents/ui/PreferencesSheet.qml:291
 msgid "Minimum"
 msgstr "Minimum"
 
-#: src/contents/ui/PreferencesSheet.qml:302
+#: src/contents/ui/PreferencesSheet.qml:306
 msgid "Maximum"
 msgstr "Maksimal"
 
-#: src/contents/ui/PreferencesSheet.qml:325
+#: src/contents/ui/PreferencesSheet.qml:329
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "Waktu Singkat"
 
-#: src/contents/ui/PreferencesSheet.qml:326
+#: src/contents/ui/PreferencesSheet.qml:330
 msgid "Enables support for XDG Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:337
+#: src/contents/ui/PreferencesSheet.qml:341
 #, fuzzy
 msgid "Native Plugin Window"
 msgstr "Tutup jendela"
 
-#: src/contents/ui/PreferencesSheet.qml:338
+#: src/contents/ui/PreferencesSheet.qml:342
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:349
+#: src/contents/ui/PreferencesSheet.qml:353
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Frekuensi"
 
-#: src/contents/ui/PreferencesSheet.qml:350
+#: src/contents/ui/PreferencesSheet.qml:354
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:378
+#: src/contents/ui/PreferencesSheet.qml:382
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:391
+#: src/contents/ui/PreferencesSheet.qml:395
 msgid "Audio"
 msgstr "Audio"
 
-#: src/contents/ui/PreferencesSheet.qml:404
+#: src/contents/ui/PreferencesSheet.qml:408
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Spektrum"
 
-#: src/contents/ui/PreferencesSheet.qml:417
+#: src/contents/ui/PreferencesSheet.qml:421
 #, fuzzy
 msgid "Experimental Features"
 msgstr "Eksperimental"
@@ -3093,19 +3119,12 @@ msgstr "Efek Audio untuk Aplikasi PipeWire"
 #~ msgid "Output Devices"
 #~ msgstr "Gain Input"
 
-#~ msgid "Output Presets"
-#~ msgstr "Preset Output"
-
 #~ msgid "Output Autoloading Presets List"
 #~ msgstr "Daftar Keluaran Preset Otomatis"
 
 #, fuzzy
 #~ msgid "Input Devices"
 #~ msgstr "Pembatas Masukan"
-
-#, fuzzy
-#~ msgid "Input Presets"
-#~ msgstr "Preset Input"
 
 #, fuzzy
 #~ msgid "Input Autoloading Presets List"
