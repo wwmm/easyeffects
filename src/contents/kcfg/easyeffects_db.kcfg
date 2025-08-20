@@ -20,6 +20,10 @@
             <label>Show the Tray Icon</label>
             <default>true</default>
         </entry>
+        <entry name="autostartOnLogin" type="Bool">
+            <label>Automatically start on desktop login</label>
+            <default>false</default>
+        </entry>
         <entry name="lastLoadedInputPreset" type="String">
             <label>Last used input preset.</label>
             <default code="true">""</default>

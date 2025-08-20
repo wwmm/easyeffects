@@ -225,6 +225,8 @@ int main(int argc, char* argv[]) {
       window->show();
       window->raise();
       window->requestActivate();
+
+      autostart->set_window(window);
     }
   });
 

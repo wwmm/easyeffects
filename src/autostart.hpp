@@ -30,7 +30,7 @@ class Autostart : public QObject {
   explicit Autostart(QObject* parent = nullptr);
 
   void set_window(QWindow* window);
-  void enable();
+  void update_background_portal();
 
  private:
   QWindow* window = nullptr;

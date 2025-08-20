@@ -24,6 +24,7 @@
 #include <qobject.h>
 #include <QWindow>
 #include <string>
+#include "db_manager.hpp"
 #include "gio/gio.h"
 #include "glib-object.h"
 #include "glib.h"
@@ -41,11 +42,8 @@ void on_request_background_called([[maybe_unused]] GObject* source,
   // libportal check if portal request worked
 
   if (xdp_portal_request_background_finish(XdpQt::globalPortalObject(), result, &error) == 0) {
-    // NOLINTNEXTLINE(cppcoreguidelines-init-variables)
     std::string reason;
-    // NOLINTNEXTLINE(cppcoreguidelines-init-variables)
     std::string explanation;
-    // NOLINTNEXTLINE(cppcoreguidelines-init-variables)
     std::string error_message;
 
     if (error != nullptr) {
@@ -72,38 +70,9 @@ void on_request_background_called([[maybe_unused]] GObject* source,
     util::warning(reason);
     util::warning(explanation);
 
-    // TODO find a bettery way of getting the preferences window
-    // it shouldn't be possible to open the preferences window without the top level window open,
-    // so the index 1 should correspond with the preferences window
-    // ui::show_simple_message_dialog(GTK_WIDGET(g_list_model_get_item(gtk_window_get_toplevels(), 1)),
-    //                                "Unable to get background access: " + reason, explanation);
+    util::warning("due to error, setting autostart state and switch to false");
 
-    // if autostart is wrongly enabled (we got an error when talking to the portal), we must reset it
-    // if (static_cast<bool>(gtk_switch_get_active(enable_autostart)) ||
-    //     static_cast<bool>(gtk_switch_get_state(enable_autostart))) {
-    //   resetting_autostart = true;
-
-    //   util::warning("due to error, setting autostart state and switch to false");
-
-    //   gtk_switch_set_state(enable_autostart, 0);
-    //   gtk_switch_set_active(enable_autostart, 0);
-    // }
-
-    // if running in the background (which happens if we don't shutdown on window close) is wrongly enabled (we got an
-    // error when talking to the portal), we must reset it
-
-    // if (!static_cast<bool>(gtk_switch_get_active(shutdown_on_window_close)) ||
-    //     !static_cast<bool>(gtk_switch_get_state(shutdown_on_window_close))) {
-    //   resetting_shutdown = true;
-
-    //   util::warning("due to error, setting shutdown on window close state and switch to true");
-
-    //   gtk_switch_set_state(shutdown_on_window_close, 1);
-    //   gtk_switch_set_active(shutdown_on_window_close, 1);
-    // }
-
-    // resetting_autostart = false;
-    // resetting_shutdown = false;
+    db::Main::setAutostartOnLogin(false);
 
     return;
   }
@@ -111,16 +80,31 @@ void on_request_background_called([[maybe_unused]] GObject* source,
 
 }  // namespace
 
-Autostart::Autostart(QObject* parent) : QObject(parent) {}
+Autostart::Autostart(QObject* parent) : QObject(parent) {
+  connect(db::Main::self(), &db::Main::autostartOnLoginChanged, [&]() { update_background_portal(); });
+}
+
 void Autostart::set_window(QWindow* window) {
   this->window = window;
 }
 
-void Autostart::enable() {
+void Autostart::update_background_portal() {
   auto xdp_parent = xdp_parent_new_qt(window);
 
+  g_autoptr(GPtrArray) cmd = nullptr;
+  XdpBackgroundFlags flags = XDP_BACKGROUND_FLAG_NONE;
+
+  if (db::Main::autostartOnLogin()) {
+    cmd = g_ptr_array_new_with_free_func(g_free);
+
+    g_ptr_array_add(cmd, g_strdup("easyeffects"));
+    g_ptr_array_add(cmd, g_strdup("--service-mode"));
+
+    flags = XDP_BACKGROUND_FLAG_AUTOSTART;
+  }
+
   xdp_portal_request_background(XdpQt::globalPortalObject(), xdp_parent, const_cast<char*>("EasyEffects-Autostart"),
-                                nullptr, XDP_BACKGROUND_FLAG_AUTOSTART, nullptr, on_request_background_called, nullptr);
+                                cmd, flags, nullptr, on_request_background_called, this);
 
   xdp_parent_free(xdp_parent);
 }

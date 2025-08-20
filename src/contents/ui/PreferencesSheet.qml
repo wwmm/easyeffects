@@ -43,8 +43,12 @@ Kirigami.OverlaySheet {
                     id: autostartOnLogin
 
                     label: i18n("Autostart on Login")
-                    // isChecked: DB.Manager.main.autostartOnLogin
-                    onCheckedChanged: {}
+                    isChecked: DB.Manager.main.autostartOnLogin
+                    onCheckedChanged: {
+                        if (isChecked !== DB.Manager.main.autostartOnLogin) {
+                            DB.Manager.main.autostartOnLogin = isChecked;
+                        }
+                    }
                 }
 
                 EeSwitch {

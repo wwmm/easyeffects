@@ -1,0 +1,13 @@
+#Useful inside when testing libportal autostart on login functionality
+[Desktop Entry]
+Name=EasyEffects(dev)
+GenericName=Equalizer, Compressor and Other Audio Effects
+Comment=Audio Effects for PipeWire Applications
+Keywords=limiter;compressor;reverberation;equalizer;autovolume;
+Categories=AudioVideo;Audio;
+Exec=build/src/easyeffects
+Icon=easyeffects
+StartupNotify=true
+Terminal=false
+Type=Application
+
