@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-15 00:24+0000\n"
-"PO-Revision-Date: 2025-08-20 00:02+0000\n"
+"PO-Revision-Date: 2025-08-21 00:02+0000\n"
 "Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
@@ -456,7 +456,7 @@ msgstr "Proporção"
 #: data/ui/compressor.ui:344 data/ui/expander.ui:265 data/ui/limiter.ui:572
 #: data/ui/multiband_compressor_band.ui:345
 msgid "Knee"
-msgstr "Joelho"
+msgstr "Compressão"
 
 #: data/ui/compressor.ui:378 data/ui/deesser.ui:368 data/ui/expander.ui:299
 #: data/ui/gate.ui:430 data/ui/multiband_compressor_band.ui:382
@@ -1292,7 +1292,7 @@ msgstr "Liberação do Ganho Automático"
 
 #: data/ui/limiter.ui:599
 msgid "Auto Leveling Knee"
-msgstr "Joelho do Ganho Automático"
+msgstr "Compressão do Ganho Automático"
 
 #: data/ui/limiter.ui:624
 msgid "Gain Left"
@@ -1479,7 +1479,7 @@ msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
-"É recomendado NÃO definir a Coletor/Fonte (Sink/Source) do Easy Effects como "
+"É recomendado NÃO definir o Coletor/Fonte (Sink/Source) do Easy Effects como "
 "dispositivo padrão para os aplicativos externos, por exemplo, para as "
 "Definições do Gnome ou para as Definições de Sistema do Plasma."
 
@@ -1513,7 +1513,7 @@ msgstr "Versão da Biblioteca"
 
 #: data/ui/pipe_manager_box.ui:138
 msgid "Core Version"
-msgstr "Versão principal"
+msgstr "Versão do Núcleo"
 
 #: data/ui/pipe_manager_box.ui:149
 msgid "Sampling Rate"
@@ -1540,9 +1540,9 @@ msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
 msgstr ""
-"Somente predefinições locais podem ser carregadas automaticamente. Um "
-"Community Preset deve ser importado localmente para ser selecionado e "
-"associado a um dispositivo específico."
+"Somente as predefinições locais podem ser carregadas automaticamente. Uma "
+"predefinição da comunidade deve ser importada localmente para ser "
+"selecionada e associada a um dispositivo específico."
 
 #: data/ui/pipe_manager_box.ui:277
 msgid "Output Devices"
@@ -1695,7 +1695,7 @@ msgstr "Alterar a posição deste efeito"
 
 #: data/ui/plugins_box.ui:28
 msgid "Show/hide effects list"
-msgstr "Mostrar/ocultar lista de efeitos"
+msgstr "Exibir ou ocultar a lista de efeitos"
 
 #: data/ui/plugins_box.ui:42
 msgid "Add Effect"
@@ -1707,7 +1707,7 @@ msgstr "Ir para o efeito anterior"
 
 #: data/ui/plugins_box.ui:80
 msgid "Go to the next effect"
-msgstr "Vá para o próximo efeito"
+msgstr "Ir para o próximo efeito"
 
 #: data/ui/plugins_box.ui:131
 msgid "Used Plugins List"
@@ -1719,7 +1719,7 @@ msgstr "Sem Efeitos"
 
 #: data/ui/plugins_box.ui:193
 msgid "Audio Stream Not Modified"
-msgstr "Fluxo de Áudio Não Alterado"
+msgstr "O Fluxo de Áudio Não Foi Alterado"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
@@ -1762,9 +1762,8 @@ msgid "Ignore Streams from Monitor of Devices"
 msgstr "Ignorar os Fluxos do Monitor de Dispositivos"
 
 #: data/ui/preferences_general.ui:78
-#, fuzzy
 msgid "Enable Input Monitoring"
-msgstr "Ativar e desativar monitoramento de entrada"
+msgstr "Ativar o Monitoramento de Entrada"
 
 #: data/ui/preferences_general.ui:90
 msgid "Use Cubic Volume"
@@ -1776,23 +1775,23 @@ msgstr "Tempo Limite de Inatividade"
 
 #: data/ui/preferences_general.ui:103
 msgid "Input Pipeline"
-msgstr "Pipeline de entrada"
+msgstr "Pipeline de Entrada"
 
 #: data/ui/preferences_general.ui:132
 msgid "Update Interval"
-msgstr "Intervalo de atualização"
+msgstr "Intervalo de Atualização"
 
 #: data/ui/preferences_general.ui:133
 msgid "Related to Level Meters and Spectrum"
-msgstr "Relacionado aos medidores do nível e do espectro"
+msgstr "Relacionado aos Medidores do Nível e do Espectro"
 
 #: data/ui/preferences_general.ui:155
 msgid "Update Frequency"
-msgstr "Frequência de atualização"
+msgstr "Frequência das Atualizações"
 
 #: data/ui/preferences_general.ui:156
 msgid "Related to LV2 Plugins"
-msgstr "Relacionado a plug-ins LV2"
+msgstr "Relacionado ao Módulo de Extensão LV2"
 
 #: data/ui/preferences_general.ui:180 data/ui/preferences_spectrum.ui:47
 msgid "Style"
@@ -1816,7 +1815,7 @@ msgstr "Exibir a Janela Nativa do Módulo de Extensão"
 
 #: data/ui/preferences_general.ui:213
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
-msgstr "Permite exibir ou oculta a janela nativa do módulo de extensão"
+msgstr "Permite Exibir ou Ocultar a Janela Nativa do Módulo de Extensão"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
@@ -1824,7 +1823,7 @@ msgstr "_Espectro"
 
 #: data/ui/preferences_spectrum.ui:24
 msgid "Compensating Delay (ms)"
-msgstr "Atraso de compensação (ms)"
+msgstr "Atraso da Compensação (ms)"
 
 #: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
@@ -1900,7 +1899,7 @@ msgstr "Carregar"
 
 #: data/ui/preset_row.ui:39
 msgid "Discard the current settings and load this preset"
-msgstr "Descarte as definições atuais e carregue esta predefinição"
+msgstr "Descartar as definições atuais e carregar esta predefinição"
 
 #: data/ui/preset_row.ui:48
 msgid "Save current settings to this preset file"
@@ -1916,7 +1915,7 @@ msgstr "Tentar"
 
 #: data/ui/preset_community_row.ui:56
 msgid "Try this community preset"
-msgstr "Experimente esta predefinição da comunidade"
+msgstr "Experimentar esta predefinição da comunidade"
 
 #: data/ui/preset_community_row.ui:65
 msgid "Import"
@@ -1925,7 +1924,7 @@ msgstr "Importar"
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
 msgstr ""
-"Importe esta predefinição de comunidade para a lista de predefinições locais"
+"Importar esta predefinição da comunidade para a lista de predefinições locais"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
@@ -1933,7 +1932,7 @@ msgstr "Local"
 
 #: data/ui/presets_menu.ui:48
 msgid "New Preset Name"
-msgstr "Novo Nome de Entrada da Predefinição"
+msgstr "Novo Nome da Predefinição"
 
 #: data/ui/presets_menu.ui:56
 msgid "Create a new preset"
@@ -1941,15 +1940,15 @@ msgstr "Criar uma nova predefinição"
 
 #: data/ui/presets_menu.ui:70
 msgid "Import a preset from the local storage"
-msgstr "Importe uma predefinição do armazenamento local"
+msgstr "Importar uma predefinição do armazenamento local"
 
 #: data/ui/presets_menu.ui:86
 msgid "Search Local Preset"
-msgstr "Pesquisar predefinição local"
+msgstr "Pesquisar a Predefinição Local"
 
 #: data/ui/presets_menu.ui:147
 msgid "Local Presets List"
-msgstr "Lista de predefinições locais"
+msgstr "Lista de Predefinições Locais"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
@@ -1961,19 +1960,19 @@ msgstr "Predefinição da comunidade de pesquisa"
 
 #: data/ui/presets_menu.ui:271
 msgid "Community Presets List"
-msgstr "Lista de predefinições da comunidade"
+msgstr "Lista de Predefinições da Comunidade"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr "Nenhuma predefinição da comunidade instalada"
+msgstr "Nenhuma Predefinição da Comunidade Foi Instalada"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
-"Os pacotes Predefinições da comunidade podem ser instalados a partir do "
-"repositório de sua distribuição favorita."
+"Os pacotes das predefinições da comunidade podem ser instalados a partir do "
+"repositório da sua distribuição GNU/Linux."
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
@@ -1981,7 +1980,9 @@ msgstr "Atualizar"
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
-msgstr "Atualize para mostrar as novas predefinições de comunidade instaladas"
+msgstr ""
+"Recarregar para exibir as novas predefinições da comunidade que estão "
+"instaladas"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
@@ -2103,7 +2104,7 @@ msgstr "Exibir a Ajuda"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr "Tela Cheia/Restaurar a Tela Cheia"
+msgstr "Tela Cheia ou Restaurar a Tela Cheia"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
@@ -2119,7 +2120,7 @@ msgstr "Diminuir o Ruído"
 
 #: data/ui/speex.ui:46
 msgid "Automatic Gain Control"
-msgstr "Controle de Ganho Automático"
+msgstr "Controle Automático do Ganho"
 
 #: data/ui/speex.ui:72
 msgid "Dereverberation"
@@ -2247,7 +2248,7 @@ msgstr "Criando"
 
 #: src/app_info.cpp:108
 msgid "Error"
-msgstr "Erro"
+msgstr "Ocorreu um Erro"
 
 #: src/app_info.cpp:110
 msgid "Unknown"
@@ -2255,7 +2256,7 @@ msgstr "Desconhecido"
 
 #: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
-msgstr "Nome Não Definido para o ID do Processo "
+msgstr "O Nome Não Foi Definido para o ID do Processo "
 
 #: src/app_info.cpp:292
 msgid "channels"
@@ -2263,11 +2264,11 @@ msgstr "canais"
 
 #: src/application.cpp:313
 msgid "Output Preset"
-msgstr "Predefinição de saída"
+msgstr "Predefinição de Saída"
 
 #: src/application.cpp:314
 msgid "Input Preset"
-msgstr "Predefinição de entrada"
+msgstr "Predefinição de Entrada"
 
 #: src/application.cpp:530
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
@@ -2295,8 +2296,8 @@ msgstr "Ocultar a Janela."
 #: src/application.cpp:630
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
-"Ignorar Globalmente. Onde serve 1 para ativar, 2 para desativar e 3 para "
-"verificar o estado"
+"Ignorar Globalmente. Onde o 1 serve para ativar, o 2 serve para desativar e "
+"o 3 serve para verificar o estado"
 
 #: src/application.cpp:633
 msgid "Show available presets."
@@ -2308,15 +2309,15 @@ msgstr "Carregar uma predefinição. Por exemplo: easyeffects -l music"
 
 #: src/application.cpp:639
 msgid "Show the active presets."
-msgstr "Mostrar as predefinições ativas."
+msgstr "Exibir as predefinições que estão ativas."
 
 #: src/application.cpp:642
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
 msgstr ""
-"Mostra a predefinição carregada de uma categoria específica. Aceita 'input' "
-"ou 'output' como um valor. Exemplo: easyeffects -s input"
+"Exibir a predefinição carregada de uma categoria específica. Aceita 'input' "
+"ou 'output' como um valor. Por exemplo: 'easyeffects -s input' (sem as aspas)"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
@@ -2340,7 +2341,7 @@ msgstr "O Arquivo de Impulso Pode Estar Corrompido ou Não É Compatível"
 
 #: src/convolver_menu_impulses.cpp:135
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr "Apenas Arquivos de Impulso Estéreo são Compatíveis"
+msgstr "Apenas os Arquivos de Impulso Estéreo são Compatíveis"
 
 #: src/convolver_menu_impulses.cpp:145
 msgid "Impulse File Not Imported"
@@ -2357,7 +2358,7 @@ msgstr "Abrir"
 
 #: src/convolver_menu_impulses.cpp:166
 msgid "Impulse Response"
-msgstr "Resposta de Impulso"
+msgstr "Resposta do Impulso"
 
 #: src/convolver_menu_impulses.cpp:293
 msgid "Load Impulse"
@@ -2389,7 +2390,7 @@ msgstr "Efeitos"
 
 #: src/equalizer_ui.cpp:521
 msgid "Import APO Preset File"
-msgstr "Importar arquivo predefinido APO"
+msgstr "Importar o Arquivo com as Predefinições do APO"
 
 #: src/equalizer_ui.cpp:529
 msgid "APO Presets"
@@ -2406,12 +2407,12 @@ msgstr ""
 #: src/equalizer_ui.cpp:623
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
-"O canais divididos ainda não são suportados ao exportar as predefinições do "
+"Os canais divididos ainda não são suportados ao exportar as predefinições do "
 "APO."
 
 #: src/equalizer_ui.cpp:631
 msgid "Export EqualizerAPO Preset File"
-msgstr "Exportar arquivo predefinido do Equalizepopo"
+msgstr "Exportar o Arquivo com as Predefinições do Equalizador APO"
 
 #: src/equalizer_ui.cpp:632
 msgid "Save"
@@ -2460,7 +2461,7 @@ msgstr "Adicionar"
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
 msgid "Community Preset"
-msgstr "Predefinição da comunidade"
+msgstr "Predefinição da Comunidade"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
@@ -2470,27 +2471,27 @@ msgstr "Pacote"
 #: src/presets_manager.cpp:1171 src/presets_manager.cpp:1178
 #: src/presets_manager.cpp:1187 src/presets_manager.cpp:1195
 msgid "Preset Not Loaded Correctly"
-msgstr "Predefinição não carregada corretamente"
+msgstr "A Predefinição Não Foi Carregada Corretamente"
 
 #: src/presets_manager.cpp:1155
 msgid "Wrong Format in Excluded Apps List"
-msgstr "Formato errado na lista de aplicativos excluídos"
+msgstr "O Formato Está Errado na Lista dos Aplicativos Excluídos"
 
 #: src/presets_manager.cpp:1162
 msgid "Generic Error While Loading Excluded Apps List"
-msgstr "Erro genérico ao carregar a lista de aplicativos excluídos"
+msgstr "Ocorreu um Erro Genérico ao Carregar a Lista dos Aplicativos Excluídos"
 
 #: src/presets_manager.cpp:1171
 msgid "Wrong Format in Effects List"
-msgstr "Formato errado na lista de efeitos"
+msgstr "O Formato Está Errado na Lista dos Efeitos"
 
 #: src/presets_manager.cpp:1178
 msgid "Generic Error While Loading Effects List"
-msgstr "Erro genérico ao carregar a lista de efeitos"
+msgstr "Ocorreu um Erro Genérico ao Carregar a Lista dos Efeitos"
 
 #: src/presets_manager.cpp:1188
 msgid "One or More Parameters Have a Wrong Format"
-msgstr "Um ou mais parâmetros estão com formato errado"
+msgstr "Um ou Mais Parâmetros Estão com o Formato Errado"
 
 #: src/presets_manager.cpp:1196
 msgid "Generic Error While Loading The Effect"
