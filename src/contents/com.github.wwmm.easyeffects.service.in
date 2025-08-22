@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=@APP_ID@
-Exec=@BIN_DIR@/easyeffects --gapplication-service
