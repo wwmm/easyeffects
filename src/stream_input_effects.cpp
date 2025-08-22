@@ -131,6 +131,10 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
       },
       Qt::QueuedConnection);
 
+  connect(
+      db::StreamInputs::self(), &db::StreamInputs::listenToMicChanged, this,
+      [&]() { set_listen_to_mic(db::StreamInputs::listenToMic()); }, Qt::QueuedConnection);
+
   auto* PULSE_SOURCE = std::getenv("PULSE_SOURCE");
 
   if (PULSE_SOURCE != nullptr && PULSE_SOURCE != tags::pipewire::ee_source_name) {
@@ -148,6 +152,8 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   if (auto node = pm->model_nodes.get_node_by_name(db::StreamInputs::inputDevice()); node.serial != SPA_ID_INVALID) {
     presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_name);
   }
+
+  set_listen_to_mic(db::StreamInputs::listenToMic());
 }
 
 auto StreamInputEffects::apps_want_to_play() -> bool {

@@ -116,6 +116,17 @@ Kirigami.OverlaySheet {
                 }
 
                 EeSwitch {
+                    id: listenToMic
+
+                    label: i18n("Enable/disable input monitoring")
+                    isChecked: DB.Manager.streamInputs.listenToMic
+                    onCheckedChanged: {
+                        if (isChecked !== DB.Manager.streamInputs.listenToMic)
+                            DB.Manager.streamInputs.listenToMic = isChecked;
+                    }
+                }
+
+                EeSwitch {
                     id: inactivityTimerEnable
 
                     label: i18n("Enable the Inactivity Timeout")

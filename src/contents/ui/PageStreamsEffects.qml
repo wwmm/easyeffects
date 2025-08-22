@@ -699,9 +699,23 @@ Kirigami.Page {
                 overflowIconName: "im-ban-kick-user-symbolic"
                 actions: [
                     Kirigami.Action {
+                        tooltip: i18n("Input Monitoring")
+                        icon.name: "audio-input-microphone-symbolic"
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        visible: pageStreamsEffects.pageType === 1 && pageStreamsEffects.streamDB.visiblePage === 1
+                        checkable: true
+                        checked: DB.Manager.streamInputs.listenToMic
+                        onTriggered: {
+                            if (checked !== DB.Manager.streamInputs.listenToMic) {
+                                DB.Manager.streamInputs.listenToMic = checked;
+                            }
+                        }
+                    },
+                    Kirigami.Action {
                         text: i18n("Excluded Apps")
                         icon.name: "im-ban-kick-user-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
+                        visible: pageStreamsEffects.streamDB.visiblePage === 0
                         onTriggered: {
                             blocklistSheet.open();
                         }

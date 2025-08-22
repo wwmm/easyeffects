@@ -44,5 +44,9 @@
             <label>Visible Plugin</label>
             <default code="true">""</default>
         </entry>
+        <entry name="listenToMic" type="Bool">
+            <label>Link our virtual source signal to the soundcard for testing purposes</label>
+            <default>false</default>
+        </entry>
     </group>
 </kcfg>
