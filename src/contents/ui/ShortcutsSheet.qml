@@ -11,101 +11,129 @@ Kirigami.OverlaySheet {
     focus: true
     y: appWindow.header.height + Kirigami.Units.gridUnit
     implicitWidth: Math.min(gridLayout.implicitWidth, appWindow.width * 0.8) + 4 * Kirigami.Units.iconSizes.large
-    implicitHeight: Math.min(2 * control.header.height + gridLayout.implicitHeight, control.parent.height - 2 * control.header.height - control.y)
 
-    GridLayout {
-        id: gridLayout
+    ColumnLayout {
+        spacing: Kirigami.Units.gridUnit
 
-        columns: 2
-        columnSpacing: Kirigami.Units.gridUnit
+        GridLayout {
+            id: gridLayout
 
-        Kirigami.Chip {
-            text: "F1"
-            closable: false
-            checkable: false
-            down: false
-            hoverEnabled: false
-            Layout.alignment: Qt.AlignRight
-        }
-
-        Controls.Label {
-            text: i18n("Show Help")
-        }
-
-        Kirigami.Chip {
-            text: "F11"
-            closable: false
-            checkable: false
-            down: false
-            hoverEnabled: false
-            Layout.alignment: Qt.AlignRight
-        }
-
-        Controls.Label {
-            text: i18n("Fullscreen / Restore from fullscreen")
-        }
-
-        RowLayout {
-            Layout.alignment: Qt.AlignRight
+            columns: 2
+            columnSpacing: Kirigami.Units.gridUnit
 
             Kirigami.Chip {
-                text: "Ctrl"
+                text: "F1"
+                closable: false
                 checkable: false
                 down: false
                 hoverEnabled: false
-                closable: false
+                Layout.alignment: Qt.AlignRight
             }
 
             Controls.Label {
-                text: i18n("+")
+                text: i18n("Show Help")
             }
 
             Kirigami.Chip {
-                text: "B"
+                text: "F11"
                 closable: false
                 checkable: false
                 down: false
                 hoverEnabled: false
-            }
-        }
-
-        Controls.Label {
-            text: i18n("Toggle Global Bypass")
-        }
-
-        RowLayout {
-            Layout.alignment: Qt.AlignRight
-
-            Kirigami.Chip {
-                text: "Ctrl"
-                checkable: false
-                down: false
-                hoverEnabled: false
-                closable: false
+                Layout.alignment: Qt.AlignRight
             }
 
             Controls.Label {
-                text: i18n("+")
+                text: i18n("Fullscreen / Restore from fullscreen")
+            }
+
+            RowLayout {
+                Layout.alignment: Qt.AlignRight
+
+                Kirigami.Chip {
+                    text: "Ctrl"
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                    closable: false
+                }
+
+                Controls.Label {
+                    text: i18n("+")
+                }
+
+                Kirigami.Chip {
+                    text: "B"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+            }
+
+            Controls.Label {
+                text: i18n("Toggle Global Bypass")
+            }
+
+            RowLayout {
+                Layout.alignment: Qt.AlignRight
+
+                Kirigami.Chip {
+                    text: "Ctrl"
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                    closable: false
+                }
+
+                Controls.Label {
+                    text: i18n("+")
+                }
+
+                Kirigami.Chip {
+                    text: "W"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+            }
+
+            Controls.Label {
+                text: i18n("Close the Window")
+            }
+
+            RowLayout {
+                Layout.alignment: Qt.AlignRight
+
+                Kirigami.Chip {
+                    text: "Ctrl"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+
+                Controls.Label {
+                    text: i18n("+")
+                }
+
+                Kirigami.Chip {
+                    text: "Q"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+            }
+
+            Controls.Label {
+                text: i18n("Quit EasyEffects")
             }
 
             Kirigami.Chip {
-                text: "W"
-                closable: false
-                checkable: false
-                down: false
-                hoverEnabled: false
-            }
-        }
-
-        Controls.Label {
-            text: i18n("Close the Window")
-        }
-
-        RowLayout {
-            Layout.alignment: Qt.AlignRight
-
-            Kirigami.Chip {
-                text: "Ctrl"
+                Layout.alignment: Qt.AlignRight
+                text: "PgUp"
                 closable: false
                 checkable: false
                 down: false
@@ -113,46 +141,78 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("+")
+                text: i18n("Can Be Used on Numeric Controls")
             }
 
             Kirigami.Chip {
-                text: "Q"
+                Layout.alignment: Qt.AlignRight
+                text: "PgDn"
                 closable: false
                 checkable: false
                 down: false
                 hoverEnabled: false
             }
+
+            Controls.Label {
+                text: i18n("Can Be Used on Numeric Controls")
+            }
         }
 
-        Controls.Label {
-            text: i18n("Quit EasyEffects")
+        RowLayout {
+            Kirigami.Icon {
+                source: "configure-shortcuts-symbolic"
+            }
+
+            Kirigami.Heading {
+                Layout.alignment: Qt.AlignLeft
+                text: i18n("Global Shortcuts")
+            }
         }
 
-        Kirigami.Chip {
-            Layout.alignment: Qt.AlignRight
-            text: "PgUp"
-            closable: false
-            checkable: false
-            down: false
-            hoverEnabled: false
-        }
+        GridLayout {
+            columns: 2
+            columnSpacing: Kirigami.Units.gridUnit
+            enabled: DB.Manager.main.xdgGlobalShortcuts
 
-        Controls.Label {
-            text: i18n("Can Be Used on Numeric Controls")
-        }
+            RowLayout {
+                Layout.alignment: Qt.AlignRight
 
-        Kirigami.Chip {
-            Layout.alignment: Qt.AlignRight
-            text: "PgDn"
-            closable: false
-            checkable: false
-            down: false
-            hoverEnabled: false
-        }
+                Kirigami.Chip {
+                    text: "Ctrl"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
 
-        Controls.Label {
-            text: i18n("Can Be Used on Numeric Controls")
+                Controls.Label {
+                    text: i18n("+")
+                }
+
+                Kirigami.Chip {
+                    text: "Alt"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+
+                Controls.Label {
+                    text: i18n("+")
+                }
+
+                Kirigami.Chip {
+                    text: "E"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+            }
+
+            Controls.Label {
+                text: i18n("Enable/Disable Effects")
+            }
         }
     }
 

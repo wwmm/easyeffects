@@ -94,12 +94,16 @@ void GlobalShortcuts::onSessionCreatedResponse(uint responseCode, const QVariant
       "Activated", this, SLOT(process_activated_signal(QDBusObjectPath, QString, qulonglong, QVariantMap)));
 }
 
-void GlobalShortcuts::process_activated_signal(const QDBusObjectPath& session_handle,
+void GlobalShortcuts::process_activated_signal([[maybe_unused]] const QDBusObjectPath& session_handle,
                                                const QString& shortcut_id,
-                                               qulonglong timestamp,
-                                               const QVariantMap& options) {
-  // TODO: Add below the operations for bound global shortcuts.
-  qDebug() << "Got GlobalShortcuts Activated Signal ->" << session_handle.path() << shortcut_id << timestamp << options;
+                                               [[maybe_unused]] qulonglong timestamp,
+                                               [[maybe_unused]] const QVariantMap& options) {
+  // qDebug() << "Got GlobalShortcuts Activated Signal ->" << session_handle.path() << shortcut_id << timestamp <<
+  // options;
+
+  if (shortcut_id == "toggle_global_bypass") {
+    db::Main::setBypass(!db::Main::bypass());
+  }
 }
 
 void GlobalShortcuts::bind_shortcuts() {

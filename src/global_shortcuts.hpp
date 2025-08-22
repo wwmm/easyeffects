@@ -53,10 +53,10 @@ class GlobalShortcuts : public QObject {
  public Q_SLOTS:
   void onSessionCreatedResponse(uint responseCode, const QVariantMap& results);
 
-  void process_activated_signal(const QDBusObjectPath& session_handle,
-                                const QString& shortcut_id,
-                                qulonglong timestamp,
-                                const QVariantMap& options);
+  static void process_activated_signal(const QDBusObjectPath& session_handle,
+                                       const QString& shortcut_id,
+                                       qulonglong timestamp,
+                                       const QVariantMap& options);
 
  private:
   const QString session_handle_token = QString("easyeffects%1").arg(util::random_string(32));

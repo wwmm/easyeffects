@@ -182,6 +182,17 @@ Kirigami.ApplicationWindow {
             MenuSeparator {}
 
             MenuItem {
+                text: i18n("Shortcuts")
+                icon.name: "configure-shortcuts-symbolic"
+                onTriggered: {
+                    appWindow.show();
+                    shortcutsSheet.open();
+                }
+            }
+
+            MenuSeparator {}
+
+            MenuItem {
                 text: i18n("Quit")
                 onTriggered: Qt.quit()
             }
