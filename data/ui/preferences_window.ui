@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<interface domain="easyeffects">
-    <template class="PreferencesWindow" parent="AdwPreferencesWindow">
-        <property name="modal">1</property>
-    </template>
-</interface>

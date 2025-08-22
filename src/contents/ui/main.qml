@@ -171,8 +171,12 @@ Kirigami.ApplicationWindow {
             visible: false
 
             MenuItem {
-                // text: i18n("Preset") + ": " + DB.Manager.main.lastUsedPreset
-                enabled: false
+                text: i18n("Active")
+                checkable: true
+                checked: !DB.Manager.main.bypass
+                onTriggered: {
+                    DB.Manager.main.bypass = !checked;
+                }
             }
 
             MenuSeparator {}
@@ -207,7 +211,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Global Bypass: Turn Effects On/Off")
+                        text: i18n("Turn Effects On/Off")
                         icon.name: "system-shutdown-symbolic"
                         icon.color: checked === true ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
                         displayHint: Kirigami.DisplayHint.IconOnly

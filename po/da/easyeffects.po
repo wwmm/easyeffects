@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-21 22:13-0300\n"
+"POT-Creation-Date: 2025-08-22 14:59-0300\n"
 "PO-Revision-Date: 2022-08-17 04:16+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@libero.it>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -76,11 +76,11 @@ msgstr ""
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:132
+#: src/command_line_parser.cpp:138
 msgid "Output Presets"
 msgstr "Udgangsforindstillinger"
 
-#: src/command_line_parser.cpp:140
+#: src/command_line_parser.cpp:146
 msgid "Input Presets"
 msgstr "Indgangsforindstillinger"
 
@@ -254,7 +254,7 @@ msgstr "Lyt"
 #: src/contents/ui/Expander.qml:807 src/contents/ui/Filter.qml:222
 #: src/contents/ui/Gate.qml:940 src/contents/ui/LevelMeter.qml:255
 #: src/contents/ui/Limiter.qml:537 src/contents/ui/Loudness.qml:164
-#: src/contents/ui/main.qml:306 src/contents/ui/Maximizer.qml:129
+#: src/contents/ui/main.qml:310 src/contents/ui/Maximizer.qml:129
 #: src/contents/ui/MultibandCompressor.qml:968
 #: src/contents/ui/MultibandGate.qml:945 src/contents/ui/Reverb.qml:342
 #: src/contents/ui/RNNoise.qml:292 src/contents/ui/Speex.qml:182
@@ -264,7 +264,7 @@ msgstr "Nustil"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:487
 #: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:448
-#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:232
+#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:236
 #: src/contents/ui/StereoTools.qml:303
 msgid "Output"
 msgstr "Udgang"
@@ -779,7 +779,7 @@ msgstr "Cmoy"
 msgid "Jmeier"
 msgstr "Jmeier"
 
-#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:202
+#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:206
 #: src/contents/ui/Reverb.qml:321
 msgid "Presets"
 msgstr "Forindstillinger"
@@ -984,7 +984,7 @@ msgstr "Reduktion"
 msgid "Near End Suppression"
 msgstr "Reduktion"
 
-#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:251
+#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:255
 #: src/contents/ui/StereoTools.qml:42
 msgid "Input"
 msgstr "Indgang"
@@ -1594,20 +1594,25 @@ msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Konvolut"
 
-#: src/contents/ui/main.qml:181 src/contents/ui/main.qml:326
+#: src/contents/ui/main.qml:174
+#, fuzzy
+msgid "Active"
+msgstr "Aktive Modeller"
+
+#: src/contents/ui/main.qml:185 src/contents/ui/main.qml:330
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:210
-msgid "Global Bypass: Turn Effects On/Off"
+#: src/contents/ui/main.qml:214
+msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:270
+#: src/contents/ui/main.qml:274
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:286 src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/main.qml:290 src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:442
 #: src/contents/ui/PreferencesSheet.qml:455
@@ -1615,11 +1620,11 @@ msgstr "PipeWire"
 msgid "Preferences"
 msgstr "_Præferencer"
 
-#: src/contents/ui/main.qml:294 src/contents/ui/ShortcutsSheet.qml:168
+#: src/contents/ui/main.qml:298 src/contents/ui/ShortcutsSheet.qml:168
 msgid "Shortcuts"
 msgstr ""
 
-#: src/contents/ui/main.qml:318
+#: src/contents/ui/main.qml:322
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "_Om EasyEffects"

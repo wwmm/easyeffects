@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<interface domain="easyeffects">
-    <template class="Chart" parent="GtkWidget">
-        <property name="hexpand">1</property>
-        <property name="height-request">100</property>
-    </template>
-</interface>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-21 22:13-0300\n"
+"POT-Creation-Date: 2025-08-22 14:59-0300\n"
 "PO-Revision-Date: 2022-07-24 14:24+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -74,11 +74,11 @@ msgstr ""
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:132
+#: src/command_line_parser.cpp:138
 msgid "Output Presets"
 msgstr "Utgangsforhåndsinnstillinger"
 
-#: src/command_line_parser.cpp:140
+#: src/command_line_parser.cpp:146
 #, fuzzy
 msgid "Input Presets"
 msgstr "Inngangforhåndsinnstillingsliste"
@@ -250,7 +250,7 @@ msgstr "Lytt"
 #: src/contents/ui/Expander.qml:807 src/contents/ui/Filter.qml:222
 #: src/contents/ui/Gate.qml:940 src/contents/ui/LevelMeter.qml:255
 #: src/contents/ui/Limiter.qml:537 src/contents/ui/Loudness.qml:164
-#: src/contents/ui/main.qml:306 src/contents/ui/Maximizer.qml:129
+#: src/contents/ui/main.qml:310 src/contents/ui/Maximizer.qml:129
 #: src/contents/ui/MultibandCompressor.qml:968
 #: src/contents/ui/MultibandGate.qml:945 src/contents/ui/Reverb.qml:342
 #: src/contents/ui/RNNoise.qml:292 src/contents/ui/Speex.qml:182
@@ -260,7 +260,7 @@ msgstr "Tilbakestill"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:487
 #: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:448
-#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:232
+#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:236
 #: src/contents/ui/StereoTools.qml:303
 msgid "Output"
 msgstr "Utgang"
@@ -770,7 +770,7 @@ msgstr ""
 msgid "Jmeier"
 msgstr ""
 
-#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:202
+#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:206
 #: src/contents/ui/Reverb.qml:321
 #, fuzzy
 msgid "Presets"
@@ -978,7 +978,7 @@ msgstr ""
 msgid "Near End Suppression"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:251
+#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:255
 #: src/contents/ui/StereoTools.qml:42
 msgid "Input"
 msgstr "Inngang"
@@ -1574,19 +1574,24 @@ msgctxt "@info:credit"
 msgid "Developer"
 msgstr ""
 
-#: src/contents/ui/main.qml:181 src/contents/ui/main.qml:326
+#: src/contents/ui/main.qml:174
+#, fuzzy
+msgid "Active"
+msgstr "Aktiv modell"
+
+#: src/contents/ui/main.qml:185 src/contents/ui/main.qml:330
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:210
-msgid "Global Bypass: Turn Effects On/Off"
+#: src/contents/ui/main.qml:214
+msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:270
+#: src/contents/ui/main.qml:274
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:286 src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/main.qml:290 src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:442
 #: src/contents/ui/PreferencesSheet.qml:455
@@ -1594,12 +1599,12 @@ msgstr "PipeWire"
 msgid "Preferences"
 msgstr "_Innstillinger"
 
-#: src/contents/ui/main.qml:294 src/contents/ui/ShortcutsSheet.qml:168
+#: src/contents/ui/main.qml:298 src/contents/ui/ShortcutsSheet.qml:168
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_Snarveier"
 
-#: src/contents/ui/main.qml:318
+#: src/contents/ui/main.qml:322
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "_Om EasyEffects"
