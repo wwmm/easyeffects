@@ -8,22 +8,24 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-15 00:24+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-08-23 07:05+0000\n"
+"Last-Translator: Ab <vultazhh@gmail.com>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/"
+"changelog/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.13\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
-msgstr ""
+msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr ""
+msgstr "جلوه‌های صوتی برای برنامه‌های PipeWire"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid ""
@@ -31,12 +33,18 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
+"Easy Effects یک ابزار پیشرفته برای دستکاری صدا است. این برنامه شامل اکولایزر،"
+" لیمیتر، کمپرسور و ابزار طنین صدا می‌شود که تنها چند نمونه از آنها هستند. "
+"برای تکمیل این موارد، یک تحلیلگر طیف صدا نیز در آن تعبیه شده است."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
+"Easy Effects جانشین PulseEffects است. Easy Effects فقط از سرور صوتی PipeWire "
+"پشتیبانی می‌کند. کاربران PulseAudio باید به جای آن از PulseEffects استفاده "
+"کنند."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
@@ -44,6 +52,10 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
+"از آنجا که Easy Effects از سرور صدای پیش‌فرض PipeWire استفاده می‌کند، با اکثر "
+"برنامه‌هایی که استفاده می‌کنید، اگر نگوییم همه، کار خواهد کرد. همه برنامه‌های "
+"پشتیبانی‌شده در پنجره اصلی نمایش داده می‌شوند، جایی که هر کدام را می‌توان به‌"
+"صورت جداگانه فعال کرد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
@@ -51,6 +63,9 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
+"علاوه بر دستکاری خروجی صدا، Easy Effects قادر است افکت‌ها را به یک دستگاه "
+"ورودی مانند میکروفون اعمال کند. این قابلیت، به عنوان مثال، در ضبط صدا مفید "
+"است، اما در مکالمات صوتی نیز به خوبی کار می‌کند."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 msgid ""
@@ -58,18 +73,21 @@ msgid ""
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
+"وقتی Easy Effects اجرا می‌شود، به راحتی پیکربندی استفاده شده در آخرین جلسه را "
+"به خاطر می‌سپارد. همچنین می‌توان تمام تنظیمات فعلی را به عنوان پروفایل ذخیره "
+"کرد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:42
 msgid "The main page showing two audio output apps"
-msgstr ""
+msgstr "صفحه اصلی که دو برنامه خروجی صدا را نشان می‌دهد"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:46
 msgid "The bass enhancer page showing audio controls"
-msgstr ""
+msgstr "صفحه تقویت‌کننده باس که کنترل‌های صوتی را نشان می‌دهد"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:50
 msgid "The convolver page showing audio controls"
-msgstr ""
+msgstr "صفحه کانوالور که کنترل‌های صوتی را نشان می‌دهد"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:58
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
@@ -117,7 +135,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:636
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:649
 msgid "Features:"
-msgstr ""
+msgstr "ویژگی ها:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:71
@@ -164,13 +182,15 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:628
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:641
 msgid "Bug fixes:"
-msgstr ""
+msgstr "رفع اشکال:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid ""
 "Fixed a bug in the pitch plugin that made the cents and the octaves control "
 "to not be reapplied when EasyEffects was restarted"
 msgstr ""
+"اشکالی در افزونه pitch که باعث می‌شد کنترل سنت‌ها و اکتاوها هنگام راه‌اندازی "
+"مجدد EasyEffects دوباره اعمال نشوند، برطرف شد"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:74
@@ -202,31 +222,36 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:510
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:526
 msgid "Other notes:"
-msgstr ""
+msgstr "سایر نکات:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
 msgid "The Pitch plugin has new cents and octaves parameters."
-msgstr ""
+msgstr "افزونه‌ی Pitch پارامترهای جدید سنت و اکتاو دارد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid "The client-rt.conf is ignored on 1.4.0 or newer PipeWire versions."
 msgstr ""
+"فایل client-rt.conf در نسخه‌های ۱.۴.۰ یا جدیدتر PipeWire نادیده گرفته می‌شود."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:72
 msgid ""
 "APO export does not crash anymore when an unsupported LSP Equalizer filter "
 "is set."
 msgstr ""
+"وقتی یک فیلتر LSP Equalizer پشتیبانی نشده تنظیم شود، خروجی APO دیگر از کار "
+"نمی‌افتد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:73
 msgid "Fixed a bug in LADSPA wrapper."
-msgstr ""
+msgstr "اشکالی در بسته‌بندی LADSPA برطرف شد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:82
 msgid ""
 "Improved compatibility with future PipeWire releases. This version will "
 "avoid compilation errors like issue 3620"
 msgstr ""
+"سازگاری بهبود یافته با نسخه‌های آینده PipeWire. این نسخه از خطاهای کامپایل "
+"مانند مشکل ۳۶۲۰ جلوگیری می‌کند"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:113
@@ -238,25 +263,32 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:485
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:611
 msgid "Updated translations"
-msgstr ""
+msgstr "ترجمه های به روز شده"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:94
 msgid ""
 "Added a workaround for a glibc(or maybe libstdc++) bug that affects locale "
 "management. What in turns breaks our spinbuttons on some locales."
 msgstr ""
+"یک راه حل برای رفع اشکال glibc (یا شاید libstdc++) که بر مدیریت زبان تأثیر "
+"می‌گذارد، اضافه شد. این مشکل در برخی از زبان‌ها باعث از کار افتادن دکمه‌های "
+"چرخشی ما می‌شود."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
 msgid ""
 "Fixed a bug that makes the application crash when the option Linux Studio "
 "Plugins package is not installed."
 msgstr ""
+"اشکالی که باعث می‌شد برنامه در صورت عدم نصب بسته افزونه‌های لینوکس استودیو، از "
+"کار بیفتد، برطرف شد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
 msgid ""
 "Fixed a bug in the crystalizer plugin where the scale values were not being "
 "properly applied."
 msgstr ""
+"اشکالی در افزونه کریستالایزر که در آن مقادیر مقیاس به درستی اعمال نمی‌شد، "
+"برطرف شد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:124
 msgid ""
@@ -264,26 +296,33 @@ msgid ""
 "drawing so it matches the latency offset applied by the user on programs "
 "like Pavucontrol."
 msgstr ""
+"جبران تأخیر را می‌توان روی افزونه طیف اعمال کرد. این افزونه ترسیم خود را به "
+"تأخیر می‌اندازد تا با جبران تأخیر اعمال شده توسط کاربر در برنامه‌هایی مانند "
+"Pavucontrol مطابقت داشته باشد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:126
 msgid ""
 "The command line option that shows EasyEffects version should work properly "
 "now."
 msgstr ""
+"گزینه خط فرمان که نسخه EasyEffects را نشان می‌دهد، اکنون باید به درستی کار "
+"کند."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:127
 msgid "Fixed a regression in the autoload preset code."
-msgstr ""
+msgstr "مشکل رگرسیون در کد از پیش تعیین‌شده‌ی بارگذاری خودکار برطرف شد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
 msgid ""
 "The loudness plugin exposes the ISO 226:2023 standard that is now available "
 "in the LSP plugin."
 msgstr ""
+"افزونه loudness استاندارد ISO 226:2023 را که اکنون در افزونه LSP موجود است، "
+"در معرض نمایش قرار می‌دهد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
 msgid "Performance optmizations to the spectrum plugin and the LADSPA wrapper"
-msgstr ""
+msgstr "بهینه‌سازی عملکرد افزونه طیف و بسته‌بندی LADSPA"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
 msgid ""
@@ -291,6 +330,8 @@ msgid ""
 "volume and mute controls. THis could cause these operations to fail in some "
 "situations"
 msgstr ""
+"ما قبل از تنظیم کنترل‌های حجم صدا و بی‌صدا کردن جریان، حلقه اصلی نخ PipeWire "
+"را قفل نمی‌کردیم. این امر می‌تواند در برخی شرایط باعث عدم موفقیت این عملیات شود"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:149
 msgid ""
@@ -300,28 +341,40 @@ msgid ""
 "volunteers. You can search them on the repositories of your favorite "
 "distribution."
 msgstr ""
+"پیش‌تنظیمات انجمن پیاده‌سازی شده‌اند. کاربران می‌توانند بسته‌هایی حاوی چندین پیش‌"
+"تنظیم Easy Effects را نصب کنند تا آنها را وارد کرده و در داخل برنامه اعمال "
+"کنند. این بسته‌ها توسط داوطلبان نگهداری و ارسال می‌شوند. می‌توانید آنها را در "
+"مخازن توزیع مورد علاقه خود جستجو کنید."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
 msgid ""
 "Added the ability of collapsing the sidebar to hide the effects list and "
 "expand the area of the effects user interface."
 msgstr ""
+"قابلیت جمع کردن نوار کناری برای مخفی کردن لیست افکت‌ها و گسترش ناحیه رابط "
+"کاربری افکت‌ها اضافه شد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:151
 msgid ""
 "EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an "
 "output device that is different from the one EasyEffects is using."
 msgstr ""
+"EasyEffects به جریان‌هایی که PW_KEY_TARGET_OBJECT را برای دستگاه خروجی‌ای "
+"متفاوت از دستگاهی که EasyEffects از آن استفاده می‌کند، تعریف می‌کنند، کاری "
+"نخواهد داشت."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:152
 msgid "Equalizer APO import feature can now apply Band-Pass filters."
 msgstr ""
+"قابلیت وارد کردن اکولایزر APO اکنون می‌تواند فیلترهای Band-Pass را اعمال کند."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:154
 msgid ""
 "A change in GTK 4.14.1 prevented to apply the values inserted into the text "
 "field of our SpinButton widgets. This issue is now resolved."
 msgstr ""
+"تغییری در GTK 4.14.1 مانع از اعمال مقادیر وارد شده در فیلد متنی ویجت‌های "
+"SpinButton ما می‌شد. این مشکل اکنون برطرف شده است."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:155
 msgid ""
@@ -329,12 +382,17 @@ msgid ""
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
 msgstr ""
+"آخرین نسخه‌های افزونه Maximizer دیگر کنترل سقف را ندارند. بنابراین ما آن را "
+"از رابط کاربری خود حذف کردیم (می‌توانید از افزایش ورودی افزونه برای بازیابی "
+"همان عملکرد استفاده کنید)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:156
 msgid ""
 "Equalizer APO import feature does not crash anymore on Flatpak when invalid "
 "values are provided."
 msgstr ""
+"ویژگی واردات اکولایزر APO دیگر در Flatpak هنگام ارائه مقادیر نامعتبر خراب "
+"نمی‌شود."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:158
 msgid ""
@@ -342,6 +400,9 @@ msgid ""
 "invited to read and follow the guidelines linked inside the README of "
 "EasyEffects master branch."
 msgstr ""
+"برای اینکه پیش‌تنظیم‌های انجمن به درستی ارسال شوند، از بسته‌بندان دعوت می‌شود "
+"دستورالعمل‌های پیوند داده شده در README شاخه اصلی EasyEffects را مطالعه و "
+"دنبال کنند."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:159
 msgid ""
@@ -349,6 +410,9 @@ msgid ""
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
 msgstr ""
+"پیش‌تنظیم‌هایی که قبل از نسخه ۷.۲.۰ با افکت‌های Convolver و/یا Noise Reduction "
+"(RNNoise) ایجاد شده‌اند، منسوخ شده‌اند. لطفاً فایل irs/model را در رابط کاربری "
+"Convolver/RNNoise مجدداً بارگذاری کرده و پیش‌تنظیم را دوباره ذخیره کنید."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:167
 msgid ""
@@ -356,12 +420,16 @@ msgid ""
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
 msgstr ""
+"سیستم مدیریت خط لوله بهبود یافته است. افکت‌های غیر محدودکننده قبل از "
+"محدودکننده قرار می‌گیرند، حتی اگر دو پلاگین آخر در خط لوله یک محدودکننده و پس "
+"از آن یک سطح‌سنج باشند."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:169
 msgid ""
 "Fixed a regression that prevented the level meters to be updated under "
 "certain conditions."
 msgstr ""
+"مشکل رگرسیونی که مانع از به‌روزرسانی سطح‌سنج‌ها در شرایط خاص می‌شد، برطرف شد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:178
 msgid ""
@@ -369,11 +437,14 @@ msgid ""
 "allow latency offset to be properly applied by video players when PipeWire > "
 "1.0.3 is released."
 msgstr ""
+"اکنون در دستگاه‌های مجازی خود monitor.passthrough = true را تنظیم می‌کنیم. این "
+"کار باعث می‌شود که پخش‌کننده‌های ویدیو بتوانند هنگام انتشار PipeWire > 1.0.3، "
+"جبران تأخیر را به درستی اعمال کنند."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:179
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:326
 msgid "Updated translations."
-msgstr ""
+msgstr "ترجمه‌های به‌روز شده."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
 msgid ""
@@ -382,43 +453,56 @@ msgid ""
 "EE is recording from. THe stream has to be started when EE is already "
 "running for this logic to take effect."
 msgstr ""
+"EasyEffects سعی می‌کند از انتقال به جریان‌های منابع مجازی خود که کاربر برای "
+"آنها یک target.object سفارشی تنظیم کرده است که با میکروفونی که EE از آن ضبط "
+"می‌کند متفاوت است، جلوگیری کند. برای اینکه این منطق اعمال شود، جریان باید "
+"زمانی شروع شود که EE در حال اجرا است."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:191
 msgid "The equalizer can export basic APO preset files"
-msgstr ""
+msgstr "اکولایزر می‌تواند فایل‌های از پیش تعیین‌شده‌ی APO پایه را خروجی بگیرد"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:192
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
 msgstr ""
+"تب پخش‌کننده‌ها/ضبط‌کننده‌های ما، در مواردی که نام برنامه تعریف نشده باشد، نام "
+"جفتی کلاینت صوتی را نشان می‌دهد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:193
 msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
 msgstr ""
+"نسخه EasyEffects را می‌توان در خط فرمان از طریق گزینه --version نشان داد"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:195
 msgid ""
 "A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
 "in place until gtk developers fiz things on their side"
 msgstr ""
+"یک راه حل موقت برای رفع اشکال در gtk4 GtkLevelBar پیاده‌سازی شده است و تا "
+"زمانی که توسعه‌دهندگان gtk مشکلات را از سمت خود برطرف کنند، به قوت خود باقی "
+"خواهد ماند"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:206
 msgid ""
 "Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
 msgstr ""
+"رگرسیون معرفی شده در نسخه ۷.۱.۲ که می‌توانست باعث از کار افتادن EasyEffects "
+"شود، برطرف شد"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:217
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr ""
+msgstr "افزونه DeepFilterNet اکنون می‌تواند به فایل از پیش تعیین‌شده اضافه شود"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
 msgid ""
 "The spectrum has a new option that allows the dynamic vertical scale to be "
 "disabled."
 msgstr ""
+"طیف گزینه جدیدی دارد که امکان غیرفعال کردن مقیاس عمودی پویا را فراهم می‌کند."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:227
 msgid "Improved compatibility with the latest LSP releases."
