@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-15 00:24+0000\n"
-"PO-Revision-Date: 2025-08-21 00:02+0000\n"
+"PO-Revision-Date: 2025-08-21 15:30+0000\n"
 "Last-Translator: marcelocripe <marcelocripe@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
@@ -1116,7 +1116,7 @@ msgstr "Sobreamostragem"
 
 #: data/ui/limiter.ui:80
 msgid "Dither"
-msgstr "Distorsão"
+msgstr "Distorção"
 
 #: data/ui/limiter.ui:94
 msgid "Herm Thin"
@@ -1352,7 +1352,7 @@ msgstr "Marrom MT"
 
 #: data/ui/multiband_compressor.ui:114 data/ui/multiband_gate.ui:114
 msgid "Show Native User Interface"
-msgstr "Exibir a Interface do Usuário Nativa"
+msgstr "Exibir a Interface Nativa do Usuário"
 
 #: data/ui/multiband_compressor.ui:143 data/ui/multiband_gate.ui:143
 msgid "Operating Mode"
@@ -1481,7 +1481,7 @@ msgid ""
 msgstr ""
 "É recomendado NÃO definir o Coletor/Fonte (Sink/Source) do Easy Effects como "
 "dispositivo padrão para os aplicativos externos, por exemplo, para as "
-"Definições do Gnome ou para as Definições de Sistema do Plasma."
+"Definições do Gnome ou para as Definições de Sistema com o Plasma."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
@@ -1586,7 +1586,7 @@ msgstr "Módulos"
 
 #: data/ui/pipe_manager_box.ui:506
 msgid "Modules List"
-msgstr "Lista de Módulos"
+msgstr "Lista dos Módulos"
 
 #: data/ui/pipe_manager_box.ui:520
 msgid "Clients"
@@ -1699,7 +1699,7 @@ msgstr "Exibir ou ocultar a lista de efeitos"
 
 #: data/ui/plugins_box.ui:42
 msgid "Add Effect"
-msgstr "Adicionar Efeito"
+msgstr "Adicionar um Efeito"
 
 #: data/ui/plugins_box.ui:65
 msgid "Go to the previous effect"
@@ -1751,11 +1751,11 @@ msgstr "Áudio"
 
 #: data/ui/preferences_general.ui:42
 msgid "Process All Output Streams"
-msgstr "Processar Todas as Saídas"
+msgstr "Processar Todos os Fluxos de Saídas"
 
 #: data/ui/preferences_general.ui:54
 msgid "Process All Input Streams"
-msgstr "Processar Todas as Entradas"
+msgstr "Processar Todos os Fluxos de Entradas"
 
 #: data/ui/preferences_general.ui:66
 msgid "Ignore Streams from Monitor of Devices"
@@ -1883,7 +1883,7 @@ msgstr "Rótulos dos Eixos"
 
 #: data/ui/preferences_spectrum.ui:227
 msgid "Frequency Range"
-msgstr "Faixa de frequência"
+msgstr "Faixa da Frequência"
 
 #: data/ui/preferences_spectrum.ui:230
 msgid "Minimum"
@@ -1956,7 +1956,7 @@ msgstr "Comunidade"
 
 #: data/ui/presets_menu.ui:208
 msgid "Search Community Preset"
-msgstr "Predefinição da comunidade de pesquisa"
+msgstr "Pesquisar uma Predefinição da Comunidade"
 
 #: data/ui/presets_menu.ui:271
 msgid "Community Presets List"
@@ -2080,7 +2080,7 @@ msgstr "Modelo Padrão"
 
 #: data/ui/rnnoise.ui:204
 msgid "RNNoise Models List"
-msgstr "Lista de Modelos de Ruídos do RNNoise"
+msgstr "Lista dos Modelos de Ruídos do RNNoise"
 
 #: data/ui/rnnoise.ui:228
 msgid "Model Not Loaded"
@@ -2216,7 +2216,7 @@ msgstr "Ganho de Saída"
 
 #: data/ui/stereo_tools.ui:426
 msgid "Delay L/R"
-msgstr "Atraso E/D"
+msgstr "Atraso na E/D"
 
 #: data/ui/stereo_tools.ui:452
 msgid "Delay Left Right"
@@ -2316,8 +2316,9 @@ msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
 msgstr ""
-"Exibir a predefinição carregada de uma categoria específica. Aceita 'input' "
-"ou 'output' como um valor. Por exemplo: 'easyeffects -s input' (sem as aspas)"
+"Exibir a predefinição carregada de uma categoria específica. Aceita \"input\""
+" ou \"output\" como um valor. Por exemplo: \"easyeffects -s input\" (sem as "
+"aspas)"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
@@ -2345,7 +2346,7 @@ msgstr "Apenas os Arquivos de Impulso Estéreo são Compatíveis"
 
 #: src/convolver_menu_impulses.cpp:145
 msgid "Impulse File Not Imported"
-msgstr "O Arquivo de Impulso Não foi Importado"
+msgstr "O Arquivo de Impulso Não Foi Importado"
 
 #: src/convolver_menu_impulses.cpp:153
 msgid "Import Impulse File"
@@ -2440,7 +2441,7 @@ msgstr ""
 
 #: src/pipe_manager_box.cpp:355
 msgid "Remove Autoloading Preset"
-msgstr "Remover as Predefinições Carregadas Automaticamente"
+msgstr "Remover as Predefinições que Foram Carregadas Automaticamente"
 
 #: src/plugin_base.cpp:233
 msgid "Output Level Meter"
@@ -2495,7 +2496,7 @@ msgstr "Um ou Mais Parâmetros Estão com o Formato Errado"
 
 #: src/presets_manager.cpp:1196
 msgid "Generic Error While Loading The Effect"
-msgstr "Erro genérico ao carregar o efeito"
+msgstr "Ocorreu um Erro Genérico ao Carregar o Efeito"
 
 #: src/presets_menu.cpp:398
 msgid "Save?"
@@ -2507,15 +2508,15 @@ msgstr "Você quer excluir?"
 
 #: src/presets_menu.cpp:558
 msgid "No Preset Loaded"
-msgstr "Nenhuma predefinição carregada"
+msgstr "Nenhuma Predefinição Foi Carregada"
 
 #: src/presets_menu.cpp:573
 msgid "Last Local Preset Loaded"
-msgstr "Última predefinição local carregada"
+msgstr "A Última Predefinição Local Foi Carregada"
 
 #: src/presets_menu.cpp:573
 msgid "Last Community Preset Loaded"
-msgstr "Última predefinição da comunidade carregada"
+msgstr "A Última Predefinição da Comunidade Foi Carregada"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
@@ -2555,11 +2556,11 @@ msgstr "Cristalizador"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Deep Noise Remover"
-msgstr "Removedor de Ruídos Áudio"
+msgstr "Removedor de Ruídos do Áudio"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Deesser"
-msgstr "Sons Sibilantes Desessor (DeEsser)"
+msgstr "Sons Sibilantes do Desessor (DeEsser)"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Echo Canceller"
@@ -2591,7 +2592,7 @@ msgstr "Compressor de Multibanda"
 
 #: src/tags_plugin_name.cpp:59
 msgid "Multiband Gate"
-msgstr "Porta para Multibandas"
+msgstr "Porta para as Multibandas"
 
 #: src/tags_plugin_name.cpp:61
 msgid "Reverberation"
@@ -2624,11 +2625,11 @@ msgid ""
 "using the 'Quit' option inside the menu in order to make the effect availble "
 "to use."
 msgstr ""
-"O software necessário para o efeito {}, \"{}\", não está instalado. "
-"Considere usar o pacote Flatpak do Easy Effects ou instalar o software você "
-"mesmo. Se você já instalou o software ausente, você deve reiniciar o Easy "
-"Effects usando a opção 'Sair' dentro do menu para que o efeito esteja "
-"disponível para uso."
+"O programa necessário para o efeito \"{}\" de \"{}\" não está instalado. "
+"Considere utilizar o pacote no formato Flatpak do Easy Effects ou instalar o "
+"programa manualmente. Se você já instalou o programa que faltava, então "
+"reinicie o Easy Effects utilizando a opção \"Sair\" do menu para que o "
+"efeito esteja disponível para a utilização."
 
 #: src/ui_helpers.cpp:104
 #, c++-format
@@ -2639,10 +2640,11 @@ msgid ""
 "Effects package."
 msgstr ""
 "O efeito {} foi desativado quando o Easy Effects foi compilado. Talvez isso "
-"se deva ao fato de que o programa \"{}\", que é necessário para obter este "
-"efeito não esteja disponível. Considere utilizar o pacote Flatpak do Easy "
-"Effects ou construir o seu próprio pacote do Easy Effects.\n"
-"Observação: algumas distribuições GNU/Linux não são compatíveis com os "
+"se deva ao fato de que o programa \"{}\" que é necessário para obter este "
+"efeito não esteja disponível. Considere utilizar o pacote no formato Flatpak "
+"do Easy Effects ou construir um pacote do Easy Effects compatível com o seu "
+"GNU/Linux.\n"
+"Observação: Algumas distribuições GNU/Linux não são compatíveis com os "
 "pacotes no formato Flatpak."
 
 #: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
