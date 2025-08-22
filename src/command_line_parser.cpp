@@ -71,8 +71,14 @@ void CommandLineParser::process(QApplication* app) {
     Q_EMIT onHideWindow();
   }
 
-  if (parser->isSet("service-mode") || parser->isSet("gapplication-service")) {
+  if (parser->isSet("service-mode")) {
     db::Main::setEnableServiceMode(true);
+  }
+
+  if (parser->isSet("gapplication-service")) {
+    db::Main::setEnableServiceMode(true);
+
+    Q_EMIT onHideWindow();
   }
 
   if (parser->isSet("debug")) {
