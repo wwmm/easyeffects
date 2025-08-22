@@ -126,7 +126,7 @@ Kirigami.ApplicationWindow {
                 "homepage": "https://github.com/wwmm/easyeffects",
                 "bugAddress": "https://github.com/wwmm/easyeffects/issues",
                 "version": projectVersion,
-                "programIconName": "com.github.wwmm.easyeffects",
+                "programLogo": "com.github.wwmm.easyeffects",
                 "otherText": "",
                 "authors": [
                     {
