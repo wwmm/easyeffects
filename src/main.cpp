@@ -222,9 +222,13 @@ int main(int argc, char* argv[]) {
     if (url.toString() == "qrc:/ui/main.qml") {
       window = qobject_cast<QWindow*>(object);
 
-      window->show();
-      window->raise();
-      window->requestActivate();
+      if (show_window) {
+        window->show();
+        window->raise();
+        window->requestActivate();
+      } else {
+        window->hide();
+      }
 
       autostart->set_window(window);
     }
@@ -244,9 +248,7 @@ int main(int argc, char* argv[]) {
     }
   });
 
-  if (show_window) {
-    engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
-  }
+  engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
 
   if (engine.rootObjects().isEmpty()) {
     return -1;

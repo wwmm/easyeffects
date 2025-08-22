@@ -99,6 +99,7 @@ void Autostart::update_background_portal() {
 
     g_ptr_array_add(cmd, g_strdup("easyeffects"));
     g_ptr_array_add(cmd, g_strdup("--service-mode"));
+    g_ptr_array_add(cmd, g_strdup("--hide-window"));
 
     flags = XDP_BACKGROUND_FLAG_AUTOSTART;
   }
