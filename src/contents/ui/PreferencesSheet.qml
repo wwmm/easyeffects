@@ -344,6 +344,27 @@ Kirigami.OverlaySheet {
     }
 
     Component {
+        id: databasePage
+
+        ColumnLayout {
+            FormCard.FormCard {
+                EeSpinBox {
+                    label: i18n("Database Autosave Interval")
+                    from: DB.Manager.main.getMinValue("databaseAutosaveInterval")
+                    to: DB.Manager.main.getMaxValue("databaseAutosaveInterval")
+                    value: DB.Manager.main.databaseAutosaveInterval
+                    decimals: 0
+                    stepSize: 1
+                    unit: "ms"
+                    onValueModified: v => {
+                        DB.Manager.main.databaseAutosaveInterval = v;
+                    }
+                }
+            }
+        }
+    }
+
+    Component {
         id: experimentalPage
 
         ColumnLayout {
@@ -435,6 +456,19 @@ Kirigami.OverlaySheet {
                         while (stack.depth > 1)
                             stack.pop();
                         stack.push(spectrumPage);
+                        headerTitle.text = text;
+                    }
+                }
+
+                FormCard.FormButtonDelegate {
+                    id: databaseButton
+
+                    icon.name: "server-database-symbolic"
+                    text: i18n("Database")
+                    onClicked: {
+                        while (stack.depth > 1)
+                            stack.pop();
+                        stack.push(databasePage);
                         headerTitle.text = text;
                     }
                 }

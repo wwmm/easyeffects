@@ -21,6 +21,8 @@ Kirigami.ApplicationWindow {
     }
     onVisibleChanged: {
         if (appWindow.visible) {
+            DB.Manager.enableAutosave(true);
+
             switch (DB.Manager.main.visiblePage) {
             case 0:
                 pageStack.push("qrc:ui/PageStreamsEffects.qml", {
@@ -52,11 +54,15 @@ Kirigami.ApplicationWindow {
             }
         } else {
             DB.Manager.saveAll();
+
             pageStack.pop();
         }
     }
     onClosing: {
         console.log("main window is closing");
+
+        DB.Manager.enableAutosave(false);
+
         gc();
     }
     Component.onDestruction: {

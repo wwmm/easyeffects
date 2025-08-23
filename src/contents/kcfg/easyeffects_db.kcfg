@@ -58,6 +58,12 @@
             <max>60</max>
             <default>30</default>
         </entry>
+        <entry name="databaseAutosaveInterval" type="Int">
+            <label>Autosave interval. This timer is active only when our window is opened.</label>
+            <min>1000</min>
+            <max>60000</max>
+            <default>30000</default>
+        </entry>
         <entry name="levelMetersLabelTimer" type="Int">
             <label>Time it takes for the level meters label to be updated. This is only used while the current level is below the last highest level.</label>
             <min>1</min>

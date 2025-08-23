@@ -22,6 +22,7 @@
 #include <qmap.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
+#include <QTimer>
 #include "easyeffects_db.h"                // IWYU pragma: export
 #include "easyeffects_db_spectrum.h"       // IWYU pragma: export
 #include "easyeffects_db_streaminputs.h"   // IWYU pragma: export
@@ -60,6 +61,8 @@ class Manager : public QObject {
 
   Q_INVOKABLE void resetAll() const;
 
+  Q_INVOKABLE void enableAutosave(const bool& state);
+
   db::Main* main;
   db::Spectrum* spectrum;
   db::StreamInputs* streamInputs;
@@ -91,6 +94,8 @@ class Manager : public QObject {
   void testSignalsChanged();
 
  private:
+  QTimer* timer = nullptr;
+
   void create_plugin_db(const QString& parentGroup, const auto& plugins_list, QMap<QString, QVariant>& plugins_map);
 };
 

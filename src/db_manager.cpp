@@ -26,6 +26,7 @@
 #include <qvariant.h>
 #include <QMap>
 #include <QString>
+#include <QTimer>
 #include "config.h"
 #include "easyeffects_db.h"
 #include "easyeffects_db_autogain.h"
@@ -69,7 +70,8 @@ Manager::Manager()
       spectrum(db::Spectrum::self()),
       streamInputs(db::StreamInputs::self()),
       streamOutputs(db::StreamOutputs::self()),
-      testSignals(db::TestSignals::self()) {
+      testSignals(db::TestSignals::self()),
+      timer(new QTimer(this)) {
   // creating our database directory if it does not exist
 
   auto db_dir_path = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation).append("/easyeffects/db");
@@ -80,6 +82,10 @@ Manager::Manager()
   qmlRegisterSingletonInstance<db::Manager>("ee.database", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
   QApplication::setQuitOnLastWindowClosed(!db::Main::enableServiceMode());
+
+  // autosave timer
+
+  timer->setInterval(db::Main::databaseAutosaveInterval());
 
   // creating plugins database
 
@@ -96,6 +102,11 @@ Manager::Manager()
 
   connect(streamOutputs, &db::StreamOutputs::pluginsChanged,
           [&]() { create_plugin_db("soe", db::StreamOutputs::plugins(), soePluginsDB); });
+
+  connect(main, &db::Main::databaseAutosaveIntervalChanged,
+          [&]() { timer->setInterval(db::Main::databaseAutosaveInterval()); });
+
+  connect(timer, &QTimer::timeout, [&]() { saveAll(); });
 }
 
 Manager::~Manager() {
@@ -274,6 +285,14 @@ void Manager::create_plugin_db(const QString& parentGroup,
     Q_EMIT siePluginsDBChanged();
   } else {
     Q_EMIT soePluginsDBChanged();
+  }
+}
+
+void Manager::enableAutosave(const bool& state) {
+  if (state) {
+    timer->start();
+  } else {
+    timer->stop();
   }
 }
 
