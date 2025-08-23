@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-15 00:24+0000\n"
-"PO-Revision-Date: 2025-08-23 07:05+0000\n"
+"PO-Revision-Date: 2025-08-23 18:06+0000\n"
 "Last-Translator: Ab <vultazhh@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fa/>\n"
@@ -506,35 +506,43 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:227
 msgid "Improved compatibility with the latest LSP releases."
-msgstr ""
+msgstr "سازگاری بهبود یافته با آخرین نسخه‌های LSP."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
-msgstr ""
+msgstr "ترسیم نادرست ویژگی‌های فایل پاسخ ضربه‌ای برطرف شد"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
 msgid ""
 "Fixed a small bug the prevented the noise reduction voice activity threshold "
 "from being properly initialized."
 msgstr ""
+"اشکال کوچکی که مانع از مقداردهی اولیه صحیح آستانه فعالیت صوتی کاهش نویز می‌شد،"
+" برطرف شد."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:248
 msgid ""
 "Added a new control to the noise reduction plugin that allows the voice "
 "detection to be disabled."
 msgstr ""
+"یک کنترل جدید به افزونه کاهش نویز اضافه شد که امکان غیرفعال کردن تشخیص صدا "
+"را فراهم می‌کند."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:258
 msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
 msgstr ""
+"افکت فیلتر از زمانی که از Calf Studio به Linux Studio Plugins منتقل شده، با "
+"پارامترهای جدید بهبود یافته است."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:259
 msgid ""
 "Noise reduction by RNNoise has been improved with the addition of Release "
 "and VAD Threshold controls."
 msgstr ""
+"کاهش نویز توسط RNNoise با اضافه شدن کنترل‌های Release و VAD Threshold بهبود "
+"یافته است."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:260
 msgid ""
