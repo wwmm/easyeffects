@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-15 00:24+0000\n"
-"PO-Revision-Date: 2025-08-22 20:39+0000\n"
+"PO-Revision-Date: 2025-08-23 14:27+0000\n"
 "Last-Translator: Ab <vultazhh@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
 "fa/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
 msgid "@APP_NAME@"
-msgstr ""
+msgstr "@APP_NAME@"
 
 #: data/com.github.wwmm.easyeffects.desktop.in:4
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -74,108 +74,108 @@ msgstr "_بازنشانی تنظیمات"
 
 #: data/ui/application_window.ui:18
 msgid "_Preferences"
-msgstr ""
+msgstr "_ترجیحات"
 
 #: data/ui/application_window.ui:22
 msgid "_Shortcuts"
-msgstr ""
+msgstr "_میانبرها"
 
 #: data/ui/application_window.ui:26
 msgid "_About Easy Effects"
-msgstr ""
+msgstr "_درباره Easy Effects"
 
 #: data/ui/application_window.ui:32
 msgid "_Quit"
-msgstr ""
+msgstr "_خروج"
 
 #: data/ui/application_window.ui:59 data/ui/crossfeed.ui:27
 #: data/ui/reverb.ui:25 src/presets_menu.cpp:159
 msgid "Presets"
-msgstr ""
+msgstr "تنظیمات از پیش تعیین شده"
 
 #: data/ui/application_window.ui:61
 msgid "Presets Menu"
-msgstr ""
+msgstr "منوی تنظیمات از پیش تعیین شده"
 
 #: data/ui/application_window.ui:68
 msgid "Enable/disable the global bypass"
-msgstr ""
+msgstr "فعال/غیرفعال کردن بای‌پس سراسری"
 
 #: data/ui/application_window.ui:73
 msgid "Global Bypass"
-msgstr ""
+msgstr "بای‌پس سراسری"
 
 #: data/ui/application_window.ui:83
 msgid "Primary Menu"
-msgstr ""
+msgstr "منوی اصلی"
 
 #: data/ui/application_window.ui:99
 msgid "Easy Effects Window"
-msgstr ""
+msgstr "پنجره Easy Effects"
 
 #: data/ui/apps_box.ui:17
 msgid "Applications List"
-msgstr ""
+msgstr "لیست برنامه ها"
 
 #: data/ui/apps_box.ui:27
 msgid "Empty List"
-msgstr ""
+msgstr "لیست خالی"
 
 #: data/ui/apps_box.ui:28
 msgid "No Audio Application Available"
-msgstr ""
+msgstr "هیچ برنامه صوتی موجود نیست"
 
 #: data/ui/autogain.ui:29 data/ui/filter.ui:38
 msgid "Controls"
-msgstr ""
+msgstr "کنترل ها"
 
 #: data/ui/autogain.ui:33
 msgid "Target"
-msgstr ""
+msgstr "هدف"
 
 #: data/ui/autogain.ui:56
 msgid "Silence"
-msgstr ""
+msgstr "سکوت"
 
 #: data/ui/autogain.ui:80
 msgid "Maximum History"
-msgstr ""
+msgstr "حداکثر سابقه"
 
 #: data/ui/autogain.ui:103
 msgid "Reference"
-msgstr ""
+msgstr "مرجع"
 
 #: data/ui/autogain.ui:109 data/ui/autogain.ui:158 data/ui/level_meter.ui:72
 msgid "Momentary"
-msgstr ""
+msgstr "لحظه ای"
 
 #: data/ui/autogain.ui:110 data/ui/autogain.ui:196 data/ui/level_meter.ui:109
 msgid "Short-Term"
-msgstr ""
+msgstr "کوتاه- مدت"
 
 #: data/ui/autogain.ui:111 data/ui/autogain.ui:233 data/ui/level_meter.ui:145
 msgid "Integrated"
-msgstr ""
+msgstr "یکپارچه شده"
 
 #: data/ui/autogain.ui:112
 msgid "Geometric Mean (MSI)"
-msgstr ""
+msgstr "میانگین هندسی (MSI)"
 
 #: data/ui/autogain.ui:113
 msgid "Geometric Mean (MS)"
-msgstr ""
+msgstr "میانگین هندسی (MS)"
 
 #: data/ui/autogain.ui:114
 msgid "Geometric Mean (MI)"
-msgstr ""
+msgstr "میانگین هندسی (MI)"
 
 #: data/ui/autogain.ui:115
 msgid "Geometric Mean (SI)"
-msgstr ""
+msgstr "میانگین هندسی (SI)"
 
 #: data/ui/autogain.ui:124
 msgid "History"
-msgstr ""
+msgstr "تاریخچه"
 
 #: data/ui/autogain.ui:129 data/ui/autogain.ui:598 data/ui/bass_enhancer.ui:458
 #: data/ui/bass_loudness.ui:276 data/ui/compressor.ui:1307
@@ -188,24 +188,24 @@ msgstr ""
 #: data/ui/multiband_gate.ui:661 data/ui/pitch.ui:431 data/ui/reverb.ui:527
 #: data/ui/rnnoise.ui:441 data/ui/speex.ui:356 data/ui/stereo_tools.ui:786
 msgid "Reset"
-msgstr ""
+msgstr "بازنشانی"
 
 #: data/ui/autogain.ui:144 data/ui/autogain.ui:346 data/ui/bass_loudness.ui:27
 #: data/ui/level_meter.ui:58 src/tags_plugin_name.cpp:56
 msgid "Loudness"
-msgstr ""
+msgstr "بلندی صدا"
 
 #: data/ui/autogain.ui:270 data/ui/level_meter.ui:181
 msgid "Relative"
-msgstr ""
+msgstr "نسبی"
 
 #: data/ui/autogain.ui:307 data/ui/level_meter.ui:217
 msgid "Range"
-msgstr ""
+msgstr "محدوده"
 
 #: data/ui/autogain.ui:383
 msgid "Output Gain"
-msgstr ""
+msgstr "افزایش خروجی"
 
 #: data/ui/autogain.ui:430 data/ui/bass_enhancer.ui:258
 #: data/ui/bass_loudness.ui:107 data/ui/compressor.ui:650
@@ -221,7 +221,7 @@ msgstr ""
 #: data/ui/rnnoise.ui:273 data/ui/speex.ui:187 data/ui/stereo_tools.ui:40
 #: data/ui/stereo_tools.ui:617
 msgid "Input"
-msgstr ""
+msgstr "ورودی"
 
 #: data/ui/autogain.ui:449 data/ui/bass_enhancer.ui:277
 #: data/ui/bass_loudness.ui:126 data/ui/compressor.ui:1158
@@ -234,7 +234,7 @@ msgstr ""
 #: data/ui/multiband_gate.ui:512 data/ui/pitch.ui:282 data/ui/reverb.ui:377
 #: data/ui/rnnoise.ui:292 data/ui/speex.ui:206 data/ui/stereo_tools.ui:636
 msgid "Plugin Input Gain"
-msgstr ""
+msgstr "افزایش ورودی پلاگین"
 
 #: data/ui/autogain.ui:514 data/ui/bass_enhancer.ui:342
 #: data/ui/bass_loudness.ui:48 data/ui/bass_loudness.ui:191
@@ -249,7 +249,7 @@ msgstr ""
 #: data/ui/rnnoise.ui:357 data/ui/speex.ui:271 data/ui/stereo_tools.ui:379
 #: data/ui/stereo_tools.ui:701
 msgid "Output"
-msgstr ""
+msgstr "خروجی"
 
 #: data/ui/autogain.ui:533 data/ui/bass_enhancer.ui:361
 #: data/ui/bass_loudness.ui:210 data/ui/compressor.ui:1242
@@ -262,101 +262,101 @@ msgstr ""
 #: data/ui/multiband_gate.ui:596 data/ui/pitch.ui:366 data/ui/reverb.ui:461
 #: data/ui/rnnoise.ui:376 data/ui/speex.ui:290 data/ui/stereo_tools.ui:720
 msgid "Plugin Output Gain"
-msgstr ""
+msgstr "افزایش خروجی پلاگین"
 
 #: data/ui/autoload_row.ui:16 data/ui/compressor.ui:673 data/ui/expander.ui:594
 #: data/ui/gate.ui:807 data/ui/pipe_manager_box.ui:246
 #: data/ui/pipe_manager_box.ui:376
 msgid "Device"
-msgstr ""
+msgstr "دستگاه"
 
 #: data/ui/autoload_row.ui:40 data/ui/factory_clients_listview.ui:44
 #: data/ui/factory_modules_listview.ui:44 data/ui/pipe_manager_box.ui:53
 #: data/ui/pipe_manager_box.ui:89 data/ui/presets_menu.ui:43
 msgid "Name"
-msgstr ""
+msgstr "نام"
 
 #: data/ui/autoload_row.ui:64
 msgid "Profile"
-msgstr ""
+msgstr "نمایه"
 
 #: data/ui/autoload_row.ui:89 data/ui/pipe_manager_box.ui:257
 #: data/ui/pipe_manager_box.ui:387
 msgid "Preset"
-msgstr ""
+msgstr "از پیش تعیین شده"
 
 #: data/ui/autoload_row.ui:114
 msgid "Remove this autoload preset"
-msgstr ""
+msgstr "این تنظیمات پیش‌فرض بارگذاری خودکار را حذف کن"
 
 #: data/ui/bass_enhancer.ui:23 data/ui/compressor.ui:627 data/ui/deesser.ui:24
 #: data/ui/exciter.ui:23 data/ui/expander.ui:548 data/ui/gate.ui:761
 msgid "Listen"
-msgstr ""
+msgstr "گوش کن"
 
 #: data/ui/bass_enhancer.ui:34 data/ui/exciter.ui:34
 msgid "Blend Harmonics"
-msgstr ""
+msgstr "ترکیب هارمونیک ها"
 
 #: data/ui/bass_enhancer.ui:46 data/ui/exciter.ui:46
 msgid "3rd"
-msgstr ""
+msgstr "3rd"
 
 #: data/ui/bass_enhancer.ui:89 data/ui/exciter.ui:89
 msgid "2nd"
-msgstr ""
+msgstr "2nd"
 
 #: data/ui/bass_enhancer.ui:108 data/ui/exciter.ui:108
 msgid "Amount"
-msgstr ""
+msgstr "مقدار"
 
 #: data/ui/bass_enhancer.ui:141 data/ui/bass_enhancer.ui:420
 #: data/ui/exciter.ui:141 data/ui/exciter.ui:420
 msgid "Harmonics"
-msgstr ""
+msgstr "هارمونیک ها"
 
 #: data/ui/bass_enhancer.ui:175 data/ui/exciter.ui:175
 msgid "Scope"
-msgstr ""
+msgstr "دامنه"
 
 #: data/ui/bass_enhancer.ui:208
 msgid "Floor"
-msgstr ""
+msgstr "طبقه"
 
 #: data/ui/bass_enhancer.ui:236
 msgid "Floor Value"
-msgstr ""
+msgstr "ارزش طبقه"
 
 #: data/ui/bass_loudness.ui:69
 msgid "Link"
-msgstr ""
+msgstr "پیوند"
 
 #: data/ui/blocklist_menu.ui:23 data/ui/blocklist_menu.ui:26
 msgid "Application Name"
-msgstr ""
+msgstr "نام برنامه"
 
 #: data/ui/blocklist_menu.ui:42
 msgid "Add to Excluded Applications"
-msgstr ""
+msgstr "به برنامه‌های حذف‌شده اضافه کنید"
 
 #: data/ui/blocklist_menu.ui:86
 msgid "Excluded Applications List"
-msgstr ""
+msgstr "فهرست برنامه‌های مستثنی‌شده"
 
 #: data/ui/blocklist_menu.ui:99
 msgid "Show Excluded Applications"
-msgstr ""
+msgstr "نمایش برنامه‌های مستثنی‌شده"
 
 #: data/ui/compressor.ui:25 data/ui/delay.ui:25 data/ui/equalizer.ui:279
 #: data/ui/expander.ui:25 data/ui/filter.ui:25 data/ui/gate.ui:25
 #: data/ui/limiter.ui:25 data/ui/loudness.ui:25
 #: data/ui/multiband_compressor.ui:105 data/ui/multiband_gate.ui:105
 msgid "Show Native Window"
-msgstr ""
+msgstr "نمایش پنجره بومی"
 
 #: data/ui/compressor.ui:51 src/tags_plugin_name.cpp:41
 msgid "Compressor"
-msgstr ""
+msgstr "کمپرسور"
 
 #: data/ui/compressor.ui:63 data/ui/compressor.ui:595 data/ui/compressor.ui:871
 #: data/ui/deesser.ui:68 data/ui/equalizer.ui:61 data/ui/equalizer_band.ui:134
@@ -365,44 +365,44 @@ msgstr ""
 #: data/ui/limiter.ui:56 data/ui/multiband_compressor_band.ui:536
 #: data/ui/multiband_gate_band.ui:594
 msgid "Mode"
-msgstr ""
+msgstr "حالت"
 
 #: data/ui/compressor.ui:76 data/ui/expander.ui:76
 #: data/ui/multiband_compressor_band.ui:100
 msgid "Downward"
-msgstr ""
+msgstr "رو به پایین"
 
 #: data/ui/compressor.ui:77 data/ui/expander.ui:77
 #: data/ui/multiband_compressor_band.ui:101
 msgid "Upward"
-msgstr ""
+msgstr "رو به بالا"
 
 #: data/ui/compressor.ui:78 data/ui/multiband_compressor_band.ui:102
 msgid "Boosting"
-msgstr ""
+msgstr "تقویت"
 
 #: data/ui/compressor.ui:87 data/ui/multiband_compressor_band.ui:87
 msgid "Compression Mode"
-msgstr ""
+msgstr "حالت فشرده سازی"
 
 #: data/ui/compressor.ui:94 data/ui/multiband_compressor_band.ui:807
 msgid "Boost Threshold"
-msgstr ""
+msgstr "آستانه تقویت"
 
 #: data/ui/compressor.ui:133 data/ui/multiband_compressor_band.ui:764
 msgid "Boost Amount"
-msgstr ""
+msgstr "مقدار تقویت"
 
 #: data/ui/compressor.ui:179 data/ui/expander.ui:100 data/ui/gate.ui:70
 #: data/ui/limiter.ui:282 data/ui/limiter.ui:501
 #: data/ui/multiband_compressor_band.ui:189 data/ui/multiband_gate_band.ui:143
 msgid "Attack"
-msgstr ""
+msgstr "حمله"
 
 #: data/ui/compressor.ui:190 data/ui/expander.ui:111
 #: data/ui/multiband_compressor_band.ui:169
 msgid "Time"
-msgstr ""
+msgstr "زمان"
 
 #: data/ui/compressor.ui:200 data/ui/deesser.ui:301 data/ui/expander.ui:121
 #: data/ui/gate.ui:161 data/ui/gate.ui:253 data/ui/limiter.ui:364
@@ -410,64 +410,64 @@ msgstr ""
 #: data/ui/multiband_gate_band.ui:234 data/ui/multiband_gate_band.ui:326
 #: data/ui/rnnoise.ui:64
 msgid "Threshold"
-msgstr ""
+msgstr "آستانه"
 
 #: data/ui/compressor.ui:225 data/ui/expander.ui:146
 #: data/ui/multiband_compressor_band.ui:224
 msgid "Attack Time"
-msgstr ""
+msgstr "زمان حمله"
 
 #: data/ui/compressor.ui:246 data/ui/expander.ui:167 data/ui/gate.ui:537
 #: data/ui/multiband_compressor_band.ui:248
 msgid "Attack Threshold"
-msgstr ""
+msgstr "آستانه حمله"
 
 #: data/ui/compressor.ui:253 data/ui/expander.ui:174 data/ui/gate.ui:76
 #: data/ui/limiter.ui:323 data/ui/limiter.ui:537 data/ui/maximizer.ui:27
 #: data/ui/multiband_compressor_band.ui:198 data/ui/multiband_gate_band.ui:149
 #: data/ui/rnnoise.ui:116
 msgid "Release"
-msgstr ""
+msgstr "رها"
 
 #: data/ui/compressor.ui:278 data/ui/expander.ui:199
 #: data/ui/multiband_compressor_band.ui:274
 msgid "Release Time"
-msgstr ""
+msgstr "زمان رها"
 
 #: data/ui/compressor.ui:301 data/ui/expander.ui:222 data/ui/gate.ui:591
 #: data/ui/multiband_compressor_band.ui:301
 msgid "Release Threshold"
-msgstr ""
+msgstr "آستانه رها"
 
 #: data/ui/compressor.ui:308 data/ui/deesser.ui:334 data/ui/expander.ui:229
 #: data/ui/multiband_compressor_band.ui:308
 msgid "Ratio"
-msgstr ""
+msgstr "نسبت"
 
 #: data/ui/compressor.ui:344 data/ui/expander.ui:265 data/ui/limiter.ui:572
 #: data/ui/multiband_compressor_band.ui:345
 msgid "Knee"
-msgstr ""
+msgstr "زانو"
 
 #: data/ui/compressor.ui:378 data/ui/deesser.ui:368 data/ui/expander.ui:299
 #: data/ui/gate.ui:430 data/ui/multiband_compressor_band.ui:382
 #: data/ui/multiband_gate_band.ui:411
 msgid "Makeup"
-msgstr ""
+msgstr "آرایش"
 
 #: data/ui/compressor.ui:412 data/ui/delay.ui:62 data/ui/delay.ui:149
 #: data/ui/expander.ui:333 data/ui/gate.ui:346
 #: data/ui/multiband_compressor.ui:174 data/ui/multiband_gate.ui:174
 #: data/ui/reverb.ui:208 data/ui/stereo_tools.ui:528
 msgid "Dry Level"
-msgstr ""
+msgstr "سطح خشک"
 
 #: data/ui/compressor.ui:446 data/ui/delay.ui:85 data/ui/delay.ui:172
 #: data/ui/expander.ui:367 data/ui/gate.ui:351
 #: data/ui/multiband_compressor.ui:207 data/ui/multiband_gate.ui:207
 #: data/ui/reverb.ui:241 data/ui/rnnoise.ui:90 data/ui/stereo_tools.ui:563
 msgid "Wet Level"
-msgstr ""
+msgstr "سطح خیس"
 
 #: data/ui/compressor.ui:487 data/ui/compressor.ui:508
 #: data/ui/compressor.ui:1075 data/ui/expander.ui:408 data/ui/expander.ui:429
@@ -475,43 +475,43 @@ msgstr ""
 #: data/ui/gate.ui:1208 data/ui/multiband_compressor_band.ui:466
 #: data/ui/multiband_gate_band.ui:524
 msgid "Sidechain"
-msgstr ""
+msgstr "زنجیره جانبی"
 
 #: data/ui/compressor.ui:519 data/ui/compressor.ui:525 data/ui/expander.ui:440
 #: data/ui/expander.ui:446 data/ui/gate.ui:653 data/ui/gate.ui:659
 #: data/ui/multiband_compressor.ui:121 data/ui/multiband_compressor.ui:128
 #: data/ui/multiband_gate.ui:121 data/ui/multiband_gate.ui:128
 msgid "Stereo Split Mode"
-msgstr ""
+msgstr "حالت تقسیم استریو"
 
 #: data/ui/compressor.ui:532 data/ui/expander.ui:453 data/ui/gate.ui:666
 #: data/ui/multiband_compressor_band.ui:455 data/ui/multiband_gate_band.ui:513
 msgid "Source"
-msgstr ""
+msgstr "منبع"
 
 #: data/ui/compressor.ui:544 data/ui/expander.ui:465 data/ui/gate.ui:678
 #: data/ui/multiband_compressor_band.ui:478 data/ui/multiband_gate_band.ui:536
 msgid "Middle"
-msgstr ""
+msgstr "وسط"
 
 #: data/ui/compressor.ui:545 data/ui/expander.ui:466 data/ui/gate.ui:679
 #: data/ui/multiband_compressor_band.ui:479 data/ui/multiband_gate_band.ui:537
 msgid "Side"
-msgstr ""
+msgstr "جانب"
 
 #: data/ui/compressor.ui:546 data/ui/delay.ui:38 data/ui/equalizer.ui:215
 #: data/ui/expander.ui:467 data/ui/gate.ui:680 data/ui/level_meter.ui:32
 #: data/ui/multiband_compressor_band.ui:480 data/ui/multiband_gate_band.ui:538
 #: data/ui/pipe_manager_box.ui:581 data/ui/stereo_tools.ui:163
 msgid "Left"
-msgstr ""
+msgstr "چپ"
 
 #: data/ui/compressor.ui:547 data/ui/delay.ui:125 data/ui/equalizer.ui:242
 #: data/ui/expander.ui:468 data/ui/gate.ui:681 data/ui/level_meter.ui:42
 #: data/ui/multiband_compressor_band.ui:481 data/ui/multiband_gate_band.ui:539
 #: data/ui/pipe_manager_box.ui:592 data/ui/stereo_tools.ui:218
 msgid "Right"
-msgstr ""
+msgstr "راست"
 
 #: data/ui/compressor.ui:548 data/ui/compressor.ui:571 data/ui/expander.ui:469
 #: data/ui/expander.ui:492 data/ui/gate.ui:682 data/ui/gate.ui:705
@@ -519,7 +519,7 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:517 data/ui/multiband_gate_band.ui:540
 #: data/ui/multiband_gate_band.ui:575
 msgid "Min"
-msgstr ""
+msgstr "دقیقه"
 
 #: data/ui/compressor.ui:549 data/ui/compressor.ui:572 data/ui/expander.ui:470
 #: data/ui/expander.ui:493 data/ui/gate.ui:683 data/ui/gate.ui:706
@@ -527,2057 +527,2073 @@ msgstr ""
 #: data/ui/multiband_compressor_band.ui:518 data/ui/multiband_gate_band.ui:541
 #: data/ui/multiband_gate_band.ui:576
 msgid "Max"
-msgstr ""
+msgstr "حداکثر"
 
 #: data/ui/compressor.ui:558 data/ui/expander.ui:479 data/ui/gate.ui:692
 #: data/ui/multiband_compressor.ui:77 data/ui/multiband_compressor_band.ui:492
 #: data/ui/multiband_gate.ui:77 data/ui/multiband_gate_band.ui:550
 msgid "Sidechain Source"
-msgstr ""
+msgstr "منبع زنجیره جانبی"
 
 #: data/ui/compressor.ui:567 data/ui/expander.ui:488 data/ui/gate.ui:701
 #: data/ui/multiband_compressor_band.ui:513 data/ui/multiband_gate_band.ui:571
 msgid "Left/Right"
-msgstr ""
+msgstr "چپ/راست"
 
 #: data/ui/compressor.ui:568 data/ui/expander.ui:489 data/ui/gate.ui:702
 #: data/ui/multiband_compressor_band.ui:514 data/ui/multiband_gate_band.ui:572
 msgid "Right/Left"
-msgstr ""
+msgstr "راست/چپ"
 
 #: data/ui/compressor.ui:569 data/ui/expander.ui:490 data/ui/gate.ui:703
 #: data/ui/multiband_compressor_band.ui:515 data/ui/multiband_gate_band.ui:573
 msgid "Mid/Side"
-msgstr ""
+msgstr "وسط/جانب"
 
 #: data/ui/compressor.ui:570 data/ui/expander.ui:491 data/ui/gate.ui:704
 #: data/ui/multiband_compressor_band.ui:516 data/ui/multiband_gate_band.ui:574
 msgid "Side/Mid"
-msgstr ""
+msgstr "جانب/وسط"
 
 #: data/ui/compressor.ui:581 data/ui/expander.ui:502 data/ui/gate.ui:715
 #: data/ui/multiband_compressor_band.ui:527 data/ui/multiband_gate_band.ui:585
 msgid "Stereo Split Source"
-msgstr ""
+msgstr "منبع تقسیم استریو"
 
 #: data/ui/compressor.ui:607 data/ui/deesser.ui:50 data/ui/expander.ui:528
 #: data/ui/gate.ui:741 data/ui/multiband_compressor_band.ui:551
 #: data/ui/multiband_gate_band.ui:609
 msgid "Peak"
-msgstr ""
+msgstr "اوج"
 
 #: data/ui/compressor.ui:608 data/ui/deesser.ui:49 data/ui/expander.ui:529
 #: data/ui/gate.ui:742 data/ui/multiband_compressor_band.ui:552
 #: data/ui/multiband_gate_band.ui:610
 msgid "RMS"
-msgstr ""
+msgstr "RMS"
 
 #: data/ui/compressor.ui:609 data/ui/expander.ui:530 data/ui/gate.ui:743
 #: data/ui/multiband_compressor_band.ui:553 data/ui/multiband_gate_band.ui:611
 msgid "Low-Pass Filter"
-msgstr ""
+msgstr "فیلتر پایین-گذر"
 
 #: data/ui/compressor.ui:610 data/ui/expander.ui:531 data/ui/gate.ui:744
 #: data/ui/multiband_compressor_band.ui:554 data/ui/multiband_gate_band.ui:612
 msgid "Simple Moving Average"
-msgstr ""
+msgstr "میانگین متحرک ساده"
 
 #: data/ui/compressor.ui:619 data/ui/expander.ui:540 data/ui/gate.ui:753
 #: data/ui/multiband_compressor_band.ui:563 data/ui/multiband_gate_band.ui:621
 msgid "Sidechain Mode"
-msgstr ""
+msgstr "حالت زنجیره جانبی"
 
 #: data/ui/compressor.ui:633 data/ui/expander.ui:554 data/ui/gate.ui:767
 msgid "Listen Sidechain"
-msgstr ""
+msgstr "به زنجیره جانبی گوش دهید"
 
 #: data/ui/compressor.ui:662 data/ui/equalizer_band.ui:108
 #: data/ui/expander.ui:583 data/ui/filter.ui:42 data/ui/gate.ui:796
 msgid "Type"
-msgstr ""
+msgstr "نوع"
 
 #: data/ui/compressor.ui:688
 msgid "Feed-forward"
-msgstr ""
+msgstr "فید-جلو"
 
 #: data/ui/compressor.ui:689
 msgid "Feed-back"
-msgstr ""
+msgstr "فید-عقب"
 
 #: data/ui/compressor.ui:690 data/ui/expander.ui:610 data/ui/gate.ui:823
 msgid "External"
-msgstr ""
+msgstr "خارجی"
 
 #: data/ui/compressor.ui:699 data/ui/expander.ui:619 data/ui/gate.ui:832
 msgid "Sidechain Type"
-msgstr ""
+msgstr "نوع زنجیره جانبی"
 
 #: data/ui/compressor.ui:727 data/ui/expander.ui:647 data/ui/gate.ui:860
 #: src/plugins_box.cpp:806
 msgid "Input Device"
-msgstr ""
+msgstr "دستگاه ورودی"
 
 #: data/ui/compressor.ui:734 data/ui/expander.ui:654 data/ui/gate.ui:867
 msgid "PreAmplification"
-msgstr ""
+msgstr "تقویت اولیه"
 
 #: data/ui/compressor.ui:770 data/ui/expander.ui:690 data/ui/gate.ui:903
 #: data/ui/multiband_compressor_band.ui:699 data/ui/multiband_gate_band.ui:756
 msgid "Reactivity"
-msgstr ""
+msgstr "واکنش پذیری"
 
 #: data/ui/compressor.ui:806 data/ui/expander.ui:726 data/ui/gate.ui:939
 #: data/ui/limiter.ui:241 data/ui/multiband_compressor_band.ui:732
 #: data/ui/multiband_gate_band.ui:788
 msgid "Lookahead"
-msgstr ""
+msgstr "پیش بینی"
 
 #: data/ui/compressor.ui:848 data/ui/expander.ui:768 data/ui/gate.ui:981
 msgid "Sidechain Filters"
-msgstr ""
+msgstr "فیلترهای زنجیره جانبی"
 
 #: data/ui/compressor.ui:858 data/ui/expander.ui:778 data/ui/filter.ui:51
 #: data/ui/gate.ui:991
 msgid "High-Pass"
-msgstr ""
+msgstr "بالا-گذر"
 
 #: data/ui/compressor.ui:884 data/ui/equalizer_band.ui:204
 #: data/ui/expander.ui:804 data/ui/filter.ui:166 data/ui/gate.ui:1017
 #: data/ui/pipe_manager_box.ui:638
 msgid "Frequency"
-msgstr ""
+msgstr "فرکانس"
 
 #: data/ui/compressor.ui:899 data/ui/compressor.ui:958 data/ui/expander.ui:819
 #: data/ui/expander.ui:878 data/ui/gate.ui:1032 data/ui/gate.ui:1091
 msgid "Off"
-msgstr ""
+msgstr "خاموش"
 
 #: data/ui/compressor.ui:900 data/ui/compressor.ui:959 data/ui/expander.ui:820
 #: data/ui/expander.ui:879 data/ui/gate.ui:1033 data/ui/gate.ui:1092
 msgid "12 dB/oct"
-msgstr ""
+msgstr "12 دسی‌بل/اکتاو"
 
 #: data/ui/compressor.ui:901 data/ui/compressor.ui:960 data/ui/expander.ui:821
 #: data/ui/expander.ui:880 data/ui/gate.ui:1034 data/ui/gate.ui:1093
 msgid "24 dB/oct"
-msgstr ""
+msgstr "24 دسی‌بل/اکتاو"
 
 #: data/ui/compressor.ui:902 data/ui/compressor.ui:961 data/ui/expander.ui:822
 #: data/ui/expander.ui:881 data/ui/gate.ui:1035 data/ui/gate.ui:1094
 msgid "36 dB/oct"
-msgstr ""
+msgstr "36 دسی‌بل/اکتاو"
 
 #: data/ui/compressor.ui:911 data/ui/expander.ui:831 data/ui/gate.ui:1044
 msgid "High-Pass Filter Mode"
-msgstr ""
+msgstr "حالت فیلتر بالا-گذر"
 
 #: data/ui/compressor.ui:936 data/ui/compressor.ui:995 data/ui/expander.ui:856
 #: data/ui/expander.ui:915 data/ui/gate.ui:1069 data/ui/gate.ui:1128
 msgid "High-Pass Filter Frequency"
-msgstr ""
+msgstr "فرکانس فیلتر بالا-گذر"
 
 #: data/ui/compressor.ui:943 data/ui/expander.ui:863 data/ui/filter.ui:50
 #: data/ui/gate.ui:1076
 msgid "Low-Pass"
-msgstr ""
+msgstr "پایین-گذر"
 
 #: data/ui/compressor.ui:970 data/ui/expander.ui:890 data/ui/gate.ui:1103
 msgid "Low-Pass Filter Mode"
-msgstr ""
+msgstr "حالت فیلتر پایین-گذر"
 
 #: data/ui/compressor.ui:1021 data/ui/equalizer_band.ui:235
 #: data/ui/expander.ui:941 data/ui/filter.ui:218
 msgid "Gain"
-msgstr ""
+msgstr "افزایش"
 
 #: data/ui/compressor.ui:1048 data/ui/expander.ui:968 data/ui/gate.ui:1181
 msgid "Envelope"
-msgstr ""
+msgstr "پاکت"
 
 #: data/ui/compressor.ui:1102 data/ui/expander.ui:1022 data/ui/gate.ui:145
 #: data/ui/gate.ui:1235 data/ui/multiband_gate_band.ui:218
 msgid "Curve"
-msgstr ""
+msgstr "منحنی"
 
 #: data/ui/convolver.ui:40
 msgid "L"
-msgstr ""
+msgstr "L"
 
 #: data/ui/convolver.ui:43 data/ui/pipe_manager_box.ui:584
 msgid "Left Channel"
-msgstr ""
+msgstr "کانال چپ"
 
 #: data/ui/convolver.ui:53
 msgid "R"
-msgstr ""
+msgstr "R"
 
 #: data/ui/convolver.ui:56 data/ui/pipe_manager_box.ui:595
 msgid "Right Channel"
-msgstr ""
+msgstr "کانال راست"
 
 #: data/ui/convolver.ui:71
 msgid "Impulses"
-msgstr ""
+msgstr "ایمپالس ها"
 
 #: data/ui/convolver.ui:79 data/ui/convolver_menu_combine.ui:113
 #: data/ui/convolver_menu_combine.ui:116
 msgid "Combine"
-msgstr ""
+msgstr "ترکیب"
 
 #: data/ui/convolver.ui:86
 msgid "Stereo Width"
-msgstr ""
+msgstr "عرض استریو"
 
 #: data/ui/convolver.ui:113 src/plugin_base.cpp:235
 msgid "Spectrum"
-msgstr ""
+msgstr "طیف"
 
 #: data/ui/convolver.ui:121
 msgid "Log Scale"
-msgstr ""
+msgstr "مقیاس ثبت"
 
 #: data/ui/convolver.ui:131 src/tags_plugin_name.cpp:38
 msgid "Autogain"
-msgstr ""
+msgstr "افزایش خودکار"
 
 #: data/ui/convolver.ui:147
 msgid "Rate"
-msgstr ""
+msgstr "نرخ"
 
 #: data/ui/convolver.ui:168
 msgid "Samples"
-msgstr ""
+msgstr "نمونه ها"
 
 #: data/ui/convolver.ui:189
 msgid "Duration"
-msgstr ""
+msgstr "مدت زمان"
 
 #: data/ui/convolver_menu_combine.ui:15
 msgid "Combine Impulse Responses"
-msgstr ""
+msgstr "ترکیب پاسخ‌های ضربه‌ای"
 
 #: data/ui/convolver_menu_combine.ui:48
 msgid "First Kernel"
-msgstr ""
+msgstr "هسته اول"
 
 #: data/ui/convolver_menu_combine.ui:82
 msgid "Second Kernel"
-msgstr ""
+msgstr "هسته دوم"
 
 #: data/ui/convolver_menu_combine.ui:91
 msgid "Output File Name"
-msgstr ""
+msgstr "نام فایل خروجی"
 
 #: data/ui/convolver_menu_combine.ui:95
 msgid "Combined Kernel Name"
-msgstr ""
+msgstr "نام هسته ترکیبی"
 
 #: data/ui/convolver_menu_impulses.ui:16
 msgid "Import Impulse"
-msgstr ""
+msgstr "وارد کردن ایمپالس"
 
 #: data/ui/convolver_menu_impulses.ui:25 data/ui/plugins_menu.ui:17
 #: data/ui/presets_menu.ui:84 data/ui/presets_menu.ui:206
 msgid "Search"
-msgstr ""
+msgstr "جستجو"
 
 #: data/ui/convolver_menu_impulses.ui:27
 msgid "Search Impulse File"
-msgstr ""
+msgstr "جستجوی فایل ایمپالس"
 
 #: data/ui/convolver_menu_impulses.ui:47
 msgid "Impulse Files List"
-msgstr ""
+msgstr "فهرست فایل‌های ایمپالس"
 
 #: data/ui/crossfeed.ui:39
 msgid "Default"
-msgstr ""
+msgstr "پیش فرض"
 
 #: data/ui/crossfeed.ui:56
 msgid "Cutoff"
-msgstr ""
+msgstr "قطع"
 
 #: data/ui/crossfeed.ui:78
 msgid "Feed"
-msgstr ""
+msgstr "فید"
 
 #: data/ui/crystalizer_band.ui:11
 msgid "Bypass"
-msgstr ""
+msgstr "دور زدن"
 
 #: data/ui/crystalizer_band.ui:17 data/ui/equalizer_band.ui:186
 #: data/ui/multiband_compressor_band.ui:139 data/ui/multiband_gate_band.ui:108
 #: data/ui/stereo_tools.ui:173 data/ui/stereo_tools.ui:198
 msgid "Mute"
-msgstr ""
+msgstr "بی صدا"
 
 #: data/ui/deepfilternet.ui:31
 msgid "Attenuation Limit"
-msgstr ""
+msgstr "حد تضعیف"
 
 #: data/ui/deepfilternet.ui:60
 msgid "Minimum Processing Threshold"
-msgstr ""
+msgstr "حداقل آستانه پردازش"
 
 #: data/ui/deepfilternet.ui:86
 msgid "Maximum ERB Processing threshold"
-msgstr ""
+msgstr "حداکثر آستانه پردازش ERB"
 
 #: data/ui/deepfilternet.ui:112
 msgid "Maximum DF Processing Threshold"
-msgstr ""
+msgstr "حداکثر آستانه پردازش DF"
 
 #: data/ui/deepfilternet.ui:138
 msgid "Minimum Processing Buffer"
-msgstr ""
+msgstr "حداقل بافر پردازش"
 
 #: data/ui/deepfilternet.ui:163
 msgid "Post Filter Beta"
-msgstr ""
+msgstr "پست فیلتر بتا"
 
 #: data/ui/deesser.ui:40
 msgid "Detection"
-msgstr ""
+msgstr "تشخیص"
 
 #: data/ui/deesser.ui:77
 msgid "Wide"
-msgstr ""
+msgstr "عریض"
 
 #: data/ui/deesser.ui:78
 msgid "Split"
-msgstr ""
+msgstr "تقسیم"
 
 #: data/ui/deesser.ui:96
 msgid "F1 Split"
-msgstr ""
+msgstr "تقسیم F1"
 
 #: data/ui/deesser.ui:115
 msgid "Frequency 1 Split"
-msgstr ""
+msgstr "فرکانس 1 تقسیم"
 
 #: data/ui/deesser.ui:128
 msgid "F2 Peak"
-msgstr ""
+msgstr "اوج F2"
 
 #: data/ui/deesser.ui:147
 msgid "Frequency 2 Peak"
-msgstr ""
+msgstr "فرکانس 2 اوج"
 
 #: data/ui/deesser.ui:165
 msgid "F1 Gain"
-msgstr ""
+msgstr "افزایش F1"
 
 #: data/ui/deesser.ui:192
 msgid "Frequency 1 Gain"
-msgstr ""
+msgstr "فرکانس 1 افزایش"
 
 #: data/ui/deesser.ui:199
 msgid "F2 Level"
-msgstr ""
+msgstr "سطح F2"
 
 #: data/ui/deesser.ui:226
 msgid "Frequency 2 Level"
-msgstr ""
+msgstr "فرکانس 2 سطح"
 
 #: data/ui/deesser.ui:233
 msgid "F2 Peak Q"
-msgstr ""
+msgstr "اوج F2 Q"
 
 #: data/ui/deesser.ui:260
 msgid "Frequency 2 Peak Q"
-msgstr ""
+msgstr "فرکانس 2 اوج Q"
 
 #: data/ui/deesser.ui:267
 msgid "Laxity"
-msgstr ""
+msgstr "سستی"
 
 #: data/ui/deesser.ui:577
 msgid "Detected"
-msgstr ""
+msgstr "شناسایی شد"
 
 #: data/ui/deesser.ui:607 data/ui/gate.ui:425 data/ui/gate.ui:1154
 #: data/ui/maximizer.ui:249 data/ui/multiband_gate_band.ui:406
 msgid "Reduction"
-msgstr ""
+msgstr "کاهش"
 
 #: data/ui/delay.ui:41 data/ui/delay.ui:128 src/tags_plugin_name.cpp:47
 msgid "Delay"
-msgstr ""
+msgstr "تاخیر"
 
 #: data/ui/delay.ui:107 data/ui/delay.ui:194 data/ui/stereo_tools.ui:182
 #: data/ui/stereo_tools.ui:207
 msgid "Invert Phase"
-msgstr ""
+msgstr "فاز معکوس"
 
 #: data/ui/echo_canceller.ui:27
 msgid "Filter Length"
-msgstr ""
+msgstr "طول فیلتر"
 
 #: data/ui/echo_canceller.ui:49
 msgid "Residual Echo Suppression"
-msgstr ""
+msgstr "سرکوب اکوی باقیمانده"
 
 #: data/ui/echo_canceller.ui:70
 msgid "Near End Echo Suppression"
-msgstr ""
+msgstr "سرکوب اکوی نزدیک به انتها"
 
 #: data/ui/effects_box.ui:114
 msgid "Excluded Apps"
-msgstr ""
+msgstr "برنامه های مستثنی شده"
 
 #: data/ui/effects_box.ui:120
 msgid "Enable/disable input monitoring"
-msgstr ""
+msgstr "فعال/غیرفعال کردن نظارت بر ورودی"
 
 #: data/ui/equalizer.ui:29
 msgid "Bands"
-msgstr ""
+msgstr "باندها"
 
 #: data/ui/equalizer.ui:93 data/ui/filter.ui:270 data/ui/stereo_tools.ui:52
 #: data/ui/stereo_tools.ui:391
 msgid "Balance"
-msgstr ""
+msgstr "تعادل"
 
 #: data/ui/equalizer.ui:125
 msgid "Pitch Left"
-msgstr ""
+msgstr "گام چپ"
 
 #: data/ui/equalizer.ui:157
 msgid "Pitch Right"
-msgstr ""
+msgstr "گام راست"
 
 #: data/ui/equalizer.ui:288
 msgid "Split Channels"
-msgstr ""
+msgstr "تقسیم کانال ها"
 
 #: data/ui/equalizer.ui:294
 msgid "Flat Response"
-msgstr ""
+msgstr "پاسخ مسطح"
 
 #: data/ui/equalizer.ui:302
 msgid "Calculate Frequencies"
-msgstr ""
+msgstr "محاسبه فرکانس‌ها"
 
 #: data/ui/equalizer.ui:310
 msgid "Sort Bands"
-msgstr ""
+msgstr "دسته بندی باندها"
 
 #: data/ui/equalizer.ui:325 src/presets_menu.cpp:144
 msgid "Import Preset"
-msgstr ""
+msgstr "وارد کردن از پیش تعیین شده"
 
 #: data/ui/equalizer.ui:359
 msgid "Export Preset"
-msgstr ""
+msgstr "صادرات از پیش تعیین شده"
 
 #: data/ui/equalizer_band.ui:155 data/ui/filter.ui:127
 msgid "Slope"
-msgstr ""
+msgstr "شیب"
 
 #: data/ui/equalizer_band.ui:173 data/ui/multiband_compressor_band.ui:149
 #: data/ui/multiband_gate_band.ui:118
 msgid "Solo"
-msgstr ""
+msgstr "انفرادی"
 
 #: data/ui/equalizer_band.ui:270 data/ui/filter.ui:244 data/ui/pitch.ui:28
 msgid "Quality"
-msgstr ""
+msgstr "کیفیت"
 
 #: data/ui/equalizer_band.ui:300 data/ui/filter.ui:192
 msgid "Width"
-msgstr ""
+msgstr "عرض"
 
 #: data/ui/exciter.ui:208
 msgid "Ceil"
-msgstr ""
+msgstr "سقف"
 
 #: data/ui/exciter.ui:236
 msgid "Ceil Value"
-msgstr ""
+msgstr "مقدار سقف"
 
 #: data/ui/expander.ui:51 src/tags_plugin_name.cpp:51
 msgid "Expander"
-msgstr ""
+msgstr "گسترش دهنده"
 
 #: data/ui/expander.ui:86
 msgid "Expander Mode"
-msgstr ""
+msgstr "حالت گسترش دهنده"
 
 #: data/ui/expander.ui:609 data/ui/gate.ui:822
 msgid "Internal"
-msgstr ""
+msgstr "داخلی"
 
 #: data/ui/factory_clients_listview.ui:72
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: data/ui/factory_clients_listview.ui:100
 msgid "Access"
-msgstr ""
+msgstr "دسترسی"
 
 #: data/ui/factory_modules_listview.ui:72
 msgid "Description"
-msgstr ""
+msgstr "توضیحات"
 
 #: data/ui/factory_rnnoise_listview.ui:24
 msgid "Remove this model file"
-msgstr ""
+msgstr "این فایل مدل را حذف کنید"
 
 #: data/ui/filter.ui:52
 msgid "Low-Shelf"
-msgstr ""
+msgstr "پایین-قفسه"
 
 #: data/ui/filter.ui:53
 msgid "High-Shelf"
-msgstr ""
+msgstr "بالا-قفسه"
 
 #: data/ui/filter.ui:54
 msgid "Bell"
-msgstr ""
+msgstr "زنگ"
 
 #: data/ui/filter.ui:55
 msgid "Band-Pass"
-msgstr ""
+msgstr "گذر-باند"
 
 #: data/ui/filter.ui:56
 msgid "Notch"
-msgstr ""
+msgstr "شکاف"
 
 #: data/ui/filter.ui:57
 msgid "Resonance"
-msgstr ""
+msgstr "پیچش صدا"
 
 #: data/ui/filter.ui:58
 msgid "Ladder-Pass"
-msgstr ""
+msgstr "گذر-نردبان"
 
 #: data/ui/filter.ui:59
 msgid "Ladder-Rejection"
-msgstr ""
+msgstr "رد-نردبان"
 
 #: data/ui/filter.ui:60
 msgid "All-Pass"
-msgstr ""
+msgstr "گذر-همه"
 
 #: data/ui/filter.ui:102
 msgid "Equalizer Mode"
-msgstr ""
+msgstr "حالت اکولایزر"
 
 #: data/ui/filter.ui:162 data/ui/multiband_compressor_band.ui:570
 #: data/ui/multiband_gate_band.ui:628 src/tags_plugin_name.cpp:52
 msgid "Filter"
-msgstr ""
+msgstr "فیلتر"
 
 #: data/ui/gate.ui:51 src/tags_plugin_name.cpp:53
 msgid "Gate"
-msgstr ""
+msgstr "دروازه"
 
 #: data/ui/gate.ui:167 data/ui/gate.ui:258 data/ui/multiband_gate_band.ui:240
 #: data/ui/multiband_gate_band.ui:331
 msgid "Zone"
-msgstr ""
+msgstr "منطقه"
 
 #: data/ui/gate.ui:237 data/ui/multiband_gate_band.ui:310
 msgid "Hysteresis"
-msgstr ""
+msgstr "هیسترزیس"
 
 #: data/ui/gate.ui:330
 msgid "Mix"
-msgstr ""
+msgstr "مخلوط"
 
 #: data/ui/gate.ui:510
 msgid "Attack Zone Start"
-msgstr ""
+msgstr "شروع منطقه حمله"
 
 #: data/ui/gate.ui:564
 msgid "Release Zone Start"
-msgstr ""
+msgstr "شروع منطقه رها"
 
 #: data/ui/level_meter.ui:28
 msgid "True Peak"
-msgstr ""
+msgstr "اوج واقعی"
 
 #: data/ui/level_meter.ui:328
 msgid "Reset History"
-msgstr ""
+msgstr "بازنشانی تاریخچه"
 
 #: data/ui/limiter.ui:68
 msgid "Oversampling"
-msgstr ""
+msgstr "نمونه برداری بیش از حد"
 
 #: data/ui/limiter.ui:80
 msgid "Dither"
-msgstr ""
+msgstr "پریشان"
 
 #: data/ui/limiter.ui:94
 msgid "Herm Thin"
-msgstr ""
+msgstr "هرم باریک"
 
 #: data/ui/limiter.ui:95
 msgid "Herm Wide"
-msgstr ""
+msgstr "هرم عریض"
 
 #: data/ui/limiter.ui:96
 msgid "Herm Tail"
-msgstr ""
+msgstr "دنباله هرم"
 
 #: data/ui/limiter.ui:97
 msgid "Herm Duck"
-msgstr ""
+msgstr "غوص هرم"
 
 #: data/ui/limiter.ui:98
 msgid "Exp Thin"
-msgstr ""
+msgstr "بسط باریک"
 
 #: data/ui/limiter.ui:99
 msgid "Exp Wide"
-msgstr ""
+msgstr "بسط عریض"
 
 #: data/ui/limiter.ui:100
 msgid "Exp Tail"
-msgstr ""
+msgstr "دنباله بسط"
 
 #: data/ui/limiter.ui:101
 msgid "Exp Duck"
-msgstr ""
+msgstr "غوص بسط"
 
 #: data/ui/limiter.ui:102
 msgid "Line Thin"
-msgstr ""
+msgstr "خط باریک"
 
 #: data/ui/limiter.ui:103
 msgid "Line Wide"
-msgstr ""
+msgstr "خط عریض"
 
 #: data/ui/limiter.ui:104
 msgid "Line Tail"
-msgstr ""
+msgstr "دنباله خط"
 
 #: data/ui/limiter.ui:105
 msgid "Line Duck"
-msgstr ""
+msgstr "غوص خط"
 
 #: data/ui/limiter.ui:125 data/ui/multiband_compressor.ui:56
 #: data/ui/multiband_gate.ui:56
 msgid "None"
-msgstr ""
+msgstr "هیچکدام"
 
 #: data/ui/limiter.ui:126
 msgid "Half x2(2L)"
-msgstr ""
+msgstr "نصف x2 (2L)"
 
 #: data/ui/limiter.ui:127
 msgid "Half x2(3L)"
-msgstr ""
+msgstr "نصف x2 (3L)"
 
 #: data/ui/limiter.ui:128
 msgid "Half x3(2L)"
-msgstr ""
+msgstr "نصف x3 (2L)"
 
 #: data/ui/limiter.ui:129
 msgid "Half x3(3L)"
-msgstr ""
+msgstr "نصف x3 (3L)"
 
 #: data/ui/limiter.ui:130
 msgid "Half x4(2L)"
-msgstr ""
+msgstr "نصف x4 (2L)"
 
 #: data/ui/limiter.ui:131
 msgid "Half x4(3L)"
-msgstr ""
+msgstr "نصف x4 (3L)"
 
 #: data/ui/limiter.ui:132
 msgid "Half x6(2L)"
-msgstr ""
+msgstr "نیمه x6 (2L)"
 
 #: data/ui/limiter.ui:133
 msgid "Half x6(3L)"
-msgstr ""
+msgstr "نیمه x6 (3L)"
 
 #: data/ui/limiter.ui:134
 msgid "Half x8(2L)"
-msgstr ""
+msgstr "نیمه x8 (2L)"
 
 #: data/ui/limiter.ui:135
 msgid "Half x8(3L)"
-msgstr ""
+msgstr "نیمه x8 (3L)"
 
 #: data/ui/limiter.ui:136
 msgid "Full x2(2L)"
-msgstr ""
+msgstr "کامل x2(2L)"
 
 #: data/ui/limiter.ui:137
 msgid "Full x2(3L)"
-msgstr ""
+msgstr "کامل x2(3L)"
 
 #: data/ui/limiter.ui:138
 msgid "Full x3(2L)"
-msgstr ""
+msgstr "کامل x3(2L)"
 
 #: data/ui/limiter.ui:139
 msgid "Full x3(3L)"
-msgstr ""
+msgstr "کامل x3(3L)"
 
 #: data/ui/limiter.ui:140
 msgid "Full x4(2L)"
-msgstr ""
+msgstr "کامل x4(2L)"
 
 #: data/ui/limiter.ui:141
 msgid "Full x4(3L)"
-msgstr ""
+msgstr "کامل x4(3L)"
 
 #: data/ui/limiter.ui:142
 msgid "Full x6(2L)"
-msgstr ""
+msgstr "کامل x6(2L)"
 
 #: data/ui/limiter.ui:143
 msgid "Full x6(3L)"
-msgstr ""
+msgstr "کامل x6(3L)"
 
 #: data/ui/limiter.ui:144
 msgid "Full x8(2L)"
-msgstr ""
+msgstr "کامل x8(2L)"
 
 #: data/ui/limiter.ui:145
 msgid "Full x8(3L)"
-msgstr ""
+msgstr "کامل x8(3L)"
 
 #: data/ui/limiter.ui:201
 msgid "SC PreAmp"
-msgstr ""
+msgstr "SC پیش‌تقویت‌کننده‌"
 
 #: data/ui/limiter.ui:229 data/ui/multiband_compressor_band.ui:692
 #: data/ui/multiband_gate_band.ui:749
 msgid "Sidechain PreAmplification"
-msgstr ""
+msgstr "پیش‌تقویت‌کننده‌ی سایدچین"
 
 #: data/ui/limiter.ui:400
 msgid "Boost"
-msgstr ""
+msgstr "تقویت"
 
 #: data/ui/limiter.ui:415
 msgid "Stereo Link"
-msgstr ""
+msgstr "پیوند استریو"
 
 #: data/ui/limiter.ui:459 data/ui/multiband_compressor_band.ui:119
 #: data/ui/multiband_gate_band.ui:88
 msgid "External Sidechain"
-msgstr ""
+msgstr "زنجیره جانبی خارجی"
 
 #: data/ui/limiter.ui:472 data/ui/multiband_compressor.ui:97
 #: data/ui/multiband_gate.ui:97
 msgid "External Sidechain Source"
-msgstr ""
+msgstr "منبع زنجیره جانبی خارجی"
 
 #: data/ui/limiter.ui:491
 msgid "Auto Leveling"
-msgstr ""
+msgstr "تراز خودکار"
 
 #: data/ui/limiter.ui:530
 msgid "Auto Leveling Attack"
-msgstr ""
+msgstr "حمله تسطیح خودکار"
 
 #: data/ui/limiter.ui:565
 msgid "Auto Leveling Release"
-msgstr ""
+msgstr "رهاکردن خودکار تراز"
 
 #: data/ui/limiter.ui:599
 msgid "Auto Leveling Knee"
-msgstr ""
+msgstr "زانویی تراز خودکار"
 
 #: data/ui/limiter.ui:624
 msgid "Gain Left"
-msgstr ""
+msgstr "افزایش چپ"
 
 #: data/ui/limiter.ui:651
 msgid "Gain Right"
-msgstr ""
+msgstr "افزایش راست"
 
 #: data/ui/limiter.ui:678
 msgid "Sidechain Left"
-msgstr ""
+msgstr "زنجیره جانبی سمت چپ"
 
 #: data/ui/limiter.ui:705
 msgid "Sidechain Right"
-msgstr ""
+msgstr "زنجیره جانبی سمت راست"
 
 #: data/ui/loudness.ui:37
 msgid "Standard"
-msgstr ""
+msgstr "استاندارد"
 
 #: data/ui/loudness.ui:44
 msgid "Flat"
-msgstr ""
+msgstr "تخت"
 
 #: data/ui/loudness.ui:59
 msgid "FFT Size"
-msgstr ""
+msgstr "اندازه FFT"
 
 #: data/ui/loudness.ui:83
 msgid "Output Volume"
-msgstr ""
+msgstr "حجم خروجی"
 
 #: data/ui/loudness.ui:104
 msgid "Clipping"
-msgstr ""
+msgstr "بریدن"
 
 #: data/ui/multiband_compressor.ui:43 data/ui/multiband_gate.ui:42
 msgid "Sidechain Boost"
-msgstr ""
+msgstr "تقویت زنجیره جانبی"
 
 #: data/ui/multiband_compressor.ui:57 data/ui/multiband_gate.ui:57
 msgid "Pink BT"
-msgstr ""
+msgstr "صورتی BT"
 
 #: data/ui/multiband_compressor.ui:58 data/ui/multiband_gate.ui:58
 msgid "Pink MT"
-msgstr ""
+msgstr "صورتی MT"
 
 #: data/ui/multiband_compressor.ui:59 data/ui/multiband_gate.ui:59
 msgid "Brown BT"
-msgstr ""
+msgstr "قهوه ای BT"
 
 #: data/ui/multiband_compressor.ui:60 data/ui/multiband_gate.ui:60
 msgid "Brown MT"
-msgstr ""
+msgstr "قهوه ای MT"
 
 #: data/ui/multiband_compressor.ui:114 data/ui/multiband_gate.ui:114
 msgid "Show Native User Interface"
-msgstr ""
+msgstr "نمایش رابط کاربری بومی"
 
 #: data/ui/multiband_compressor.ui:143 data/ui/multiband_gate.ui:143
 msgid "Operating Mode"
-msgstr ""
+msgstr "حالت عملیاتی"
 
 #: data/ui/multiband_compressor.ui:156 data/ui/multiband_gate.ui:156
 msgid "Classic"
-msgstr ""
+msgstr "کلاسیک"
 
 #: data/ui/multiband_compressor.ui:157 data/ui/multiband_gate.ui:157
 msgid "Modern"
-msgstr ""
+msgstr "مدرن"
 
 #: data/ui/multiband_compressor.ui:158 data/ui/multiband_gate.ui:158
 msgid "Linear Phase"
-msgstr ""
+msgstr "فاز خطی"
 
 #: data/ui/multiband_compressor.ui:266 data/ui/multiband_gate.ui:266
 msgid "Bands List"
-msgstr ""
+msgstr "لیست باندها"
 
 #: data/ui/multiband_compressor.ui:275 data/ui/multiband_gate.ui:275
 msgid "Band 1"
-msgstr ""
+msgstr "باند 1"
 
 #: data/ui/multiband_compressor.ui:292 data/ui/multiband_gate.ui:292
 msgid "Band 2"
-msgstr ""
+msgstr "باند 2"
 
 #: data/ui/multiband_compressor.ui:318 data/ui/multiband_gate.ui:318
 msgid "Band 3"
-msgstr ""
+msgstr "باند 3"
 
 #: data/ui/multiband_compressor.ui:344 data/ui/multiband_gate.ui:344
 msgid "Band 4"
-msgstr ""
+msgstr "باند 4"
 
 #: data/ui/multiband_compressor.ui:370 data/ui/multiband_gate.ui:370
 msgid "Band 5"
-msgstr ""
+msgstr "باند 5"
 
 #: data/ui/multiband_compressor.ui:396 data/ui/multiband_gate.ui:396
 msgid "Band 6"
-msgstr ""
+msgstr "باند 6"
 
 #: data/ui/multiband_compressor.ui:422 data/ui/multiband_gate.ui:422
 msgid "Band 7"
-msgstr ""
+msgstr "باند 7"
 
 #: data/ui/multiband_compressor.ui:448 data/ui/multiband_gate.ui:448
 msgid "Band 8"
-msgstr ""
+msgstr "باند 8"
 
 #: data/ui/multiband_compressor_band.ui:18 data/ui/multiband_gate_band.ui:18
 msgid "Band Start"
-msgstr ""
+msgstr "شروع باند"
 
 #: data/ui/multiband_compressor_band.ui:56 data/ui/multiband_gate_band.ui:56
 msgid "Band End"
-msgstr ""
+msgstr "پایان باند"
 
 #: data/ui/multiband_compressor_band.ui:111
 msgid "Band Compression Mode"
-msgstr ""
+msgstr "حالت فشرده سازی باند"
 
 #: data/ui/multiband_compressor_band.ui:129 data/ui/multiband_gate_band.ui:98
 msgid "Band Bypass"
-msgstr ""
+msgstr "باند دور زدن"
 
 #: data/ui/multiband_compressor_band.ui:427 data/ui/multiband_gate_band.ui:485
 msgid "Band Sidechain Options"
-msgstr ""
+msgstr "گزینه های زنجیره جانبی باند"
 
 #: data/ui/multiband_compressor_band.ui:500 data/ui/multiband_gate_band.ui:558
 msgid "Stereo Split"
-msgstr ""
+msgstr "تقسیم استریو"
 
 #: data/ui/multiband_compressor_band.ui:582 data/ui/multiband_gate_band.ui:640
 msgid "Low-Cut"
-msgstr ""
+msgstr "برش-کم"
 
 #: data/ui/multiband_compressor_band.ui:609 data/ui/multiband_gate_band.ui:667
 msgid "Low-Cut Filter Frequency"
-msgstr ""
+msgstr "فیلتر فرکانس برش-کم"
 
 #: data/ui/multiband_compressor_band.ui:619 data/ui/multiband_gate_band.ui:677
 msgid "High-Cut"
-msgstr ""
+msgstr "برش-زیاد"
 
 #: data/ui/multiband_compressor_band.ui:647 data/ui/multiband_gate_band.ui:705
 msgid "High-Cut Filter Frequency"
-msgstr ""
+msgstr "فیلتر فرکانس برش-بالا"
 
 #: data/ui/multiband_compressor_band.ui:666 data/ui/multiband_gate_band.ui:724
 msgid "PreAmp"
-msgstr ""
+msgstr "پیش تقویت"
 
 #: data/ui/multiband_compressor_band.ui:867
 msgid "Band Gain"
-msgstr ""
+msgstr "افزایش باند"
 
 #: data/ui/multiband_compressor_band.ui:892 data/ui/multiband_gate_band.ui:861
 msgid "Band Envelope"
-msgstr ""
+msgstr "پاکت باند"
 
 #: data/ui/multiband_compressor_band.ui:917 data/ui/multiband_gate_band.ui:886
 msgid "Band Curve"
-msgstr ""
+msgstr "منحنی باند"
 
 #: data/ui/multiband_gate_band.ui:836
 msgid "Band Reduction"
-msgstr ""
+msgstr "کاهش باند"
 
 #: data/ui/pipe_manager_box.ui:27
 msgid "General"
-msgstr ""
+msgstr "عمومی"
 
 #: data/ui/pipe_manager_box.ui:34
 msgid "Device Management"
-msgstr ""
+msgstr "مدیریت دستگاه"
 
 #: data/ui/pipe_manager_box.ui:35
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)."
 msgstr ""
+"توصیه می‌شود در برنامه‌های خارجی (مثلاً تنظیمات گنوم و تنظیمات سیستم پلاسما) "
+"Easy Effects Sink/Source را به عنوان دستگاه پیش‌فرض تنظیم نکنید."
 
 #: data/ui/pipe_manager_box.ui:38 data/ui/pipe_manager_box.ui:44
 msgid "Use Default Input"
-msgstr ""
+msgstr "از ورودی پیش فرض استفاده کنید"
 
 #: data/ui/pipe_manager_box.ui:65
 msgid "Custom Input Device"
-msgstr ""
+msgstr "دستگاه ورودی سفارشی"
 
 #: data/ui/pipe_manager_box.ui:74 data/ui/pipe_manager_box.ui:80
 msgid "Use Default Output"
-msgstr ""
+msgstr "از خروجی پیش فرض استفاده کنید"
 
 #: data/ui/pipe_manager_box.ui:101
 msgid "Custom Output Device"
-msgstr ""
+msgstr "دستگاه خروجی سفارشی"
 
 #: data/ui/pipe_manager_box.ui:112
 msgid "Server Information"
-msgstr ""
+msgstr "اطلاعات سرور"
 
 #: data/ui/pipe_manager_box.ui:116
 msgid "Header Version"
-msgstr ""
+msgstr "نسخه هدر"
 
 #: data/ui/pipe_manager_box.ui:127
 msgid "Library Version"
-msgstr ""
+msgstr "نسخه کتابخانه"
 
 #: data/ui/pipe_manager_box.ui:138
 msgid "Core Version"
-msgstr ""
+msgstr "نسخه اصلی"
 
 #: data/ui/pipe_manager_box.ui:149
 msgid "Sampling Rate"
-msgstr ""
+msgstr "نرخ نمونه برداری"
 
 #: data/ui/pipe_manager_box.ui:160
 msgid "Minimum Quantum"
-msgstr ""
+msgstr "حداقل کوانتومی"
 
 #: data/ui/pipe_manager_box.ui:171
 msgid "Maximum Quantum"
-msgstr ""
+msgstr "حداکثر کوانتومی"
 
 #: data/ui/pipe_manager_box.ui:182
 msgid "Default Quantum"
-msgstr ""
+msgstr "کوانتومی پیش فرض"
 
 #: data/ui/pipe_manager_box.ui:202
 msgid "Presets Autoloading"
-msgstr ""
+msgstr "بارگذاری خودکار پیش‌تنظیم‌ها"
 
 #: data/ui/pipe_manager_box.ui:228 data/ui/pipe_manager_box.ui:358
 msgid ""
 "Only Local Presets can be autoloaded. A Community Preset should be imported "
 "locally in order to be selected and associated to a specific device."
 msgstr ""
+"فقط تنظیمات از پیش تعیین‌شده محلی می‌توانند به صورت خودکار بارگذاری شوند. یک "
+"تنظیمات از پیش تعیین‌شده محلی باید به صورت محلی وارد شود تا بتواند انتخاب شود "
+"و به یک دستگاه خاص مرتبط شود."
 
 #: data/ui/pipe_manager_box.ui:277
 msgid "Output Devices"
-msgstr ""
+msgstr "دستگاه های خروجی"
 
 #: data/ui/pipe_manager_box.ui:294 src/application.cpp:296
 msgid "Output Presets"
-msgstr ""
+msgstr "خروجی از پیش تعیین شده"
 
 #: data/ui/pipe_manager_box.ui:301 data/ui/pipe_manager_box.ui:426
 msgid "Create Association"
-msgstr ""
+msgstr "انجمن ایجاد کنید"
 
 #: data/ui/pipe_manager_box.ui:314
 msgid "Add Autoloading Output Preset"
-msgstr ""
+msgstr "افزودن پیش‌تنظیم خروجی خودکار"
 
 #: data/ui/pipe_manager_box.ui:334
 msgid "Output Autoloading Presets List"
-msgstr ""
+msgstr "فهرست پیش‌تنظیم‌های بارگذاری خودکار خروجی"
 
 #: data/ui/pipe_manager_box.ui:407
 msgid "Input Devices"
-msgstr ""
+msgstr "دستگاه های ورودی"
 
 #: data/ui/pipe_manager_box.ui:419 src/application.cpp:304
 msgid "Input Presets"
-msgstr ""
+msgstr "پیش‌تنظیم‌های ورودی"
 
 #: data/ui/pipe_manager_box.ui:439
 msgid "Add Autoloading Input Preset"
-msgstr ""
+msgstr "افزودن پیش‌تنظیم ورودی با بارگذاری خودکار"
 
 #: data/ui/pipe_manager_box.ui:458
 msgid "Input Autoloading Presets List"
-msgstr ""
+msgstr "فهرست پیش‌تنظیم‌های ورودی با بارگذاری خودکار"
 
 #: data/ui/pipe_manager_box.ui:488
 msgid "Modules"
-msgstr ""
+msgstr "ماژول‌ها"
 
 #: data/ui/pipe_manager_box.ui:506
 msgid "Modules List"
-msgstr ""
+msgstr "لیست ماژول ها"
 
 #: data/ui/pipe_manager_box.ui:520
 msgid "Clients"
-msgstr ""
+msgstr "مشتریان"
 
 #: data/ui/pipe_manager_box.ui:538
 msgid "Clients List"
-msgstr ""
+msgstr "لیست مشتریان"
 
 #: data/ui/pipe_manager_box.ui:552
 msgid "Test Signal"
-msgstr ""
+msgstr "سیگنال تست"
 
 #: data/ui/pipe_manager_box.ui:557 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
 msgid "State"
-msgstr ""
+msgstr "ایالت"
 
 #: data/ui/pipe_manager_box.ui:560 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
-msgstr ""
+msgstr "فعال شد"
 
 #: data/ui/pipe_manager_box.ui:575
 msgid "Properties"
-msgstr ""
+msgstr "مشخصات"
 
 #: data/ui/pipe_manager_box.ui:578
 msgid "Channels"
-msgstr ""
+msgstr "کانال ها"
 
 #: data/ui/pipe_manager_box.ui:603
 msgid "Both"
-msgstr ""
+msgstr "هر دو"
 
 #: data/ui/pipe_manager_box.ui:607
 msgid "Both Channels"
-msgstr ""
+msgstr "هر دو کانال"
 
 #: data/ui/pipe_manager_box.ui:616
 msgid "Waveform"
-msgstr ""
+msgstr "شکل موج"
 
 #: data/ui/pipe_manager_box.ui:620
 msgid "Sine Wave"
-msgstr ""
+msgstr "موج سینوسی"
 
 #: data/ui/pipe_manager_box.ui:629
 msgid "White Noise"
-msgstr ""
+msgstr "نویز سفید"
 
 #: data/ui/pitch.ui:32
 msgid "Quick Seek"
-msgstr ""
+msgstr "جستجوی سریع"
 
 #: data/ui/pitch.ui:45
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "ضد-لغزش"
 
 #: data/ui/pitch.ui:58
 msgid "Sequence Length"
-msgstr ""
+msgstr "طول دنباله"
 
 #: data/ui/pitch.ui:80
 msgid "Seek Window"
-msgstr ""
+msgstr "پنجره جستجو"
 
 #: data/ui/pitch.ui:102
 msgid "Overlap Length"
-msgstr ""
+msgstr "طول هم‌پوشانی"
 
 #: data/ui/pitch.ui:130 src/tags_plugin_name.cpp:60
 msgid "Pitch"
-msgstr ""
+msgstr "گام"
 
 #: data/ui/pitch.ui:134
 msgid "Cents"
-msgstr ""
+msgstr "سِنت"
 
 #: data/ui/pitch.ui:156
 msgid "Semitones"
-msgstr ""
+msgstr "نیم‌پرده‌ها"
 
 #: data/ui/pitch.ui:178
 msgid "Octaves"
-msgstr ""
+msgstr "اکتاوها"
 
 #: data/ui/pitch.ui:200
 msgid "Tempo Difference"
-msgstr ""
+msgstr "اختلاف تمپو"
 
 #: data/ui/pitch.ui:222
 msgid "Rate Difference"
-msgstr ""
+msgstr "اختلاف نرخ"
 
 #: data/ui/plugin_row.ui:50
 msgid "Remove this effect"
-msgstr ""
+msgstr "حذف این افکت"
 
 #: data/ui/plugin_row.ui:62
 msgid "Enable/disable this effect"
-msgstr ""
+msgstr "فعال/غیرفعال کردن این افکت"
 
 #: data/ui/plugin_row.ui:74
 msgid "Change the position of this effect"
-msgstr ""
+msgstr "تغییر موقعیت این افکت"
 
 #: data/ui/plugins_box.ui:28
 msgid "Show/hide effects list"
-msgstr ""
+msgstr "نمایش/پنهان کردن فهرست افکت‌ها"
 
 #: data/ui/plugins_box.ui:42
 msgid "Add Effect"
-msgstr ""
+msgstr "افزودن افکت"
 
 #: data/ui/plugins_box.ui:65
 msgid "Go to the previous effect"
-msgstr ""
+msgstr "رفتن به افکت قبلی"
 
 #: data/ui/plugins_box.ui:80
 msgid "Go to the next effect"
-msgstr ""
+msgstr "رفتن به افکت بعدی"
 
 #: data/ui/plugins_box.ui:131
 msgid "Used Plugins List"
-msgstr ""
+msgstr "فهرست افزونه‌های استفاده‌شده"
 
 #: data/ui/plugins_box.ui:192
 msgid "No Effects"
-msgstr ""
+msgstr "بدون افکت"
 
 #: data/ui/plugins_box.ui:193
 msgid "Audio Stream Not Modified"
-msgstr ""
+msgstr "جریان صوتی تغییر نکرده است"
 
 #: data/ui/plugins_menu.ui:19
 msgid "Search Plugin"
-msgstr ""
+msgstr "افزونه جستجو"
 
 #: data/ui/plugins_menu.ui:74
 msgid "Plugins List"
-msgstr ""
+msgstr "فهرست افزونه‌ها"
 
 #: data/ui/preferences_general.ui:5
 msgid "_General"
-msgstr ""
+msgstr "_عمومی"
 
 #: data/ui/preferences_general.ui:10
 msgid "Service"
-msgstr ""
+msgstr "سرویس"
 
 #: data/ui/preferences_general.ui:13
 msgid "Launch Service at System Startup"
-msgstr ""
+msgstr "راه‌اندازی سرویس هنگام شروع سیستم"
 
 #: data/ui/preferences_general.ui:25
 msgid "Shutdown on Window Closing"
-msgstr ""
+msgstr "خاموش شدن هنگام بستن پنجره"
 
 #: data/ui/preferences_general.ui:39
 msgid "Audio"
-msgstr ""
+msgstr "صدا"
 
 #: data/ui/preferences_general.ui:42
 msgid "Process All Output Streams"
-msgstr ""
+msgstr "پردازش تمام جریان‌های خروجی"
 
 #: data/ui/preferences_general.ui:54
 msgid "Process All Input Streams"
-msgstr ""
+msgstr "پردازش تمام جریان‌های ورودی"
 
 #: data/ui/preferences_general.ui:66
 msgid "Ignore Streams from Monitor of Devices"
-msgstr ""
+msgstr "نادیده‌گرفتن جریان‌ها از مانیتور دستگاه‌ها"
 
 #: data/ui/preferences_general.ui:78
 msgid "Enable Input Monitoring"
-msgstr ""
+msgstr "فعال‌سازی پایش ورودی"
 
 #: data/ui/preferences_general.ui:90
 msgid "Use Cubic Volume"
-msgstr ""
+msgstr "استفاده از حجم مکعبی"
 
 #: data/ui/preferences_general.ui:102
 msgid "Inactivity Timeout"
-msgstr ""
+msgstr "زمان‌سنج بی‌فعالیتی"
 
 #: data/ui/preferences_general.ui:103
 msgid "Input Pipeline"
-msgstr ""
+msgstr "خط‌لوله ورودی"
 
 #: data/ui/preferences_general.ui:132
 msgid "Update Interval"
-msgstr ""
+msgstr "بازه‌ زمانی‌ به‌روزرسانی"
 
 #: data/ui/preferences_general.ui:133
 msgid "Related to Level Meters and Spectrum"
-msgstr ""
+msgstr "مرتبط با سطح‌سنج‌ها و طیف‌سنج"
 
 #: data/ui/preferences_general.ui:155
 msgid "Update Frequency"
-msgstr ""
+msgstr "فرکانس به‌روزرسانی"
 
 #: data/ui/preferences_general.ui:156
 msgid "Related to LV2 Plugins"
-msgstr ""
+msgstr "مرتبط با افزونه‌های LV2"
 
 #: data/ui/preferences_general.ui:180 data/ui/preferences_spectrum.ui:47
 msgid "Style"
-msgstr ""
+msgstr "سبک"
 
 #: data/ui/preferences_general.ui:183
 msgid "Use Dark Theme"
-msgstr ""
+msgstr "استفاده از تم تاریک"
 
 #: data/ui/preferences_general.ui:195
 msgid "Hide Menus on Outside Clicks"
-msgstr ""
+msgstr "پنهان‌سازی منوها با کلیک بیرونی"
 
 #: data/ui/preferences_general.ui:209
 msgid "Experimental Features"
-msgstr ""
+msgstr "ویژگی‌های آزمایشی"
 
 #: data/ui/preferences_general.ui:212
 msgid "Native Plugin Window"
-msgstr ""
+msgstr "پنجره افزونه بومی"
 
 #: data/ui/preferences_general.ui:213
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
-msgstr ""
+msgstr "امکان نمایش/پنهان‌سازی پنجره افزونه بومی"
 
 #: data/ui/preferences_spectrum.ui:5
 msgid "_Spectrum"
-msgstr ""
+msgstr "_طیف"
 
 #: data/ui/preferences_spectrum.ui:24
 msgid "Compensating Delay (ms)"
-msgstr ""
+msgstr "تأخیر جبرانی (میلی‌ثانیه)"
 
 #: data/ui/preferences_spectrum.ui:50
 msgid "Shape"
-msgstr ""
+msgstr "شکل"
 
 #: data/ui/preferences_spectrum.ui:58
 msgid "Bars"
-msgstr ""
+msgstr "میله‌ها"
 
 #: data/ui/preferences_spectrum.ui:59
 msgid "Lines"
-msgstr ""
+msgstr "خطوط"
 
 #: data/ui/preferences_spectrum.ui:60
 msgid "Dots"
-msgstr ""
+msgstr "نقطه‌ها"
 
 #: data/ui/preferences_spectrum.ui:71
 msgid "Points"
-msgstr ""
+msgstr "امتیازها"
 
 #: data/ui/preferences_spectrum.ui:92
 msgid "Height"
-msgstr ""
+msgstr "ارتفاع"
 
 #: data/ui/preferences_spectrum.ui:114
 msgid "Line Width"
-msgstr ""
+msgstr "پهنای خط"
 
 #: data/ui/preferences_spectrum.ui:136
 msgid "Fill"
-msgstr ""
+msgstr "پر"
 
 #: data/ui/preferences_spectrum.ui:148
 msgid "Show Bars Border"
-msgstr ""
+msgstr "نمایش حاشیه میله‌ها"
 
 #: data/ui/preferences_spectrum.ui:160
 msgid "Rounded Corners"
-msgstr ""
+msgstr "گوشه‌های گرد"
 
 #: data/ui/preferences_spectrum.ui:172
 msgid "Dynamic Scale"
-msgstr ""
+msgstr "مقیاس پویا"
 
 #: data/ui/preferences_spectrum.ui:186
 msgid "Color"
-msgstr ""
+msgstr "رنگ"
 
 #: data/ui/preferences_spectrum.ui:189
 msgid "Lines and Bars"
-msgstr ""
+msgstr "خطوط و میله‌ها"
 
 #: data/ui/preferences_spectrum.ui:207
 msgid "Axis Labels"
-msgstr ""
+msgstr "برچسب‌های محور"
 
 #: data/ui/preferences_spectrum.ui:227
 msgid "Frequency Range"
-msgstr ""
+msgstr "محدوده فرکانس"
 
 #: data/ui/preferences_spectrum.ui:230
 msgid "Minimum"
-msgstr ""
+msgstr "حداقل"
 
 #: data/ui/preferences_spectrum.ui:252
 msgid "Maximum"
-msgstr ""
+msgstr "حداکثر"
 
 #: data/ui/preset_row.ui:38 src/convolver_menu_impulses.cpp:225
 msgid "Load"
-msgstr ""
+msgstr "بارگذاری"
 
 #: data/ui/preset_row.ui:39
 msgid "Discard the current settings and load this preset"
-msgstr ""
+msgstr "تنظیمات فعلی را کنار بگذارید و این پیش‌تنظیم را بارگذاری کنید"
 
 #: data/ui/preset_row.ui:48
 msgid "Save current settings to this preset file"
-msgstr ""
+msgstr "تنظیمات فعلی را در این فایل از پیش تعیین شده ذخیره کنید"
 
 #: data/ui/preset_row.ui:58
 msgid "Remove this preset file"
-msgstr ""
+msgstr "این فایل از پیش تعیین شده را حذف کنید"
 
 #: data/ui/preset_community_row.ui:55
 msgid "Try"
-msgstr ""
+msgstr "امتحان کنید"
 
 #: data/ui/preset_community_row.ui:56
 msgid "Try this community preset"
-msgstr ""
+msgstr "این پیش‌تنظیم انجمن را امتحان کنید"
 
 #: data/ui/preset_community_row.ui:65
 msgid "Import"
-msgstr ""
+msgstr "واردات"
 
 #: data/ui/preset_community_row.ui:66
 msgid "Import this community preset into the local presets list"
-msgstr ""
+msgstr "این پیش‌تنظیمات انجمن را به فهرست پیش‌تنظیمات محلی وارد کنید"
 
 #: data/ui/presets_menu.ui:26
 msgid "Local"
-msgstr ""
+msgstr "محلی"
 
 #: data/ui/presets_menu.ui:48
 msgid "New Preset Name"
-msgstr ""
+msgstr "نام از پیش تعیین شده جدید"
 
 #: data/ui/presets_menu.ui:56
 msgid "Create a new preset"
-msgstr ""
+msgstr "ایجاد یک پیش‌تنظیم جدید"
 
 #: data/ui/presets_menu.ui:70
 msgid "Import a preset from the local storage"
-msgstr ""
+msgstr "یک پیش‌تنظیم را از حافظه محلی وارد کنید"
 
 #: data/ui/presets_menu.ui:86
 msgid "Search Local Preset"
-msgstr ""
+msgstr "جستجوی پیش‌تنظیم محلی"
 
 #: data/ui/presets_menu.ui:147
 msgid "Local Presets List"
-msgstr ""
+msgstr "فهرست پیش‌تنظیم‌های محلی"
 
 #: data/ui/presets_menu.ui:191
 msgid "Community"
-msgstr ""
+msgstr "انجمن"
 
 #: data/ui/presets_menu.ui:208
 msgid "Search Community Preset"
-msgstr ""
+msgstr "جستجوی پیش‌تنظیم انجمن"
 
 #: data/ui/presets_menu.ui:271
 msgid "Community Presets List"
-msgstr ""
+msgstr "فهرست پیش‌تنظیم‌های انجمن"
 
 #: data/ui/presets_menu.ui:286
 msgid "No Community Presets Installed"
-msgstr ""
+msgstr "هیچ تنظیمات پیش‌فرض انجمنی نصب نشده است"
 
 #: data/ui/presets_menu.ui:287
 msgid ""
 "Community Presets packages can be installed from the repository of your "
 "favorite distribution."
 msgstr ""
+"بسته‌های تنظیمات انجمن محور را می‌توان از مخزن توزیع مورد علاقه‌تان نصب کرد."
 
 #: data/ui/presets_menu.ui:298
 msgid "Refresh"
-msgstr ""
+msgstr "تازه‌سازی"
 
 #: data/ui/presets_menu.ui:299
 msgid "Refresh to show new installed community presets"
-msgstr ""
+msgstr "برای نمایش پیش‌تنظیم‌های جامعه‌محور تازه نصب‌شده، تازه‌سازی کنید"
 
 #: data/ui/reverb.ui:41
 msgid "High Frequency Damping"
-msgstr ""
+msgstr "میرایی فرکانس بالا"
 
 #: data/ui/reverb.ui:72
 msgid "Room Size"
-msgstr ""
+msgstr "اندازه اتاق"
 
 #: data/ui/reverb.ui:82
 msgid "Small"
-msgstr ""
+msgstr "کوچک"
 
 #: data/ui/reverb.ui:83
 msgid "Medium"
-msgstr ""
+msgstr "متوسط"
 
 #: data/ui/reverb.ui:84
 msgid "Large"
-msgstr ""
+msgstr "بزرگ"
 
 #: data/ui/reverb.ui:85
 msgid "Tunnel"
-msgstr ""
+msgstr "تونل"
 
 #: data/ui/reverb.ui:86
 msgid "Large/smooth"
-msgstr ""
+msgstr "بزرگ/صاف"
 
 #: data/ui/reverb.ui:87
 msgid "Experimental"
-msgstr ""
+msgstr "ازمایشی"
 
 #: data/ui/reverb.ui:106
 msgid "Diffusion"
-msgstr ""
+msgstr "انتشار"
 
 #: data/ui/reverb.ui:142
 msgid "Pre Delay"
-msgstr ""
+msgstr "پیش تاخیر"
 
 #: data/ui/reverb.ui:174
 msgid "Decay Time"
-msgstr ""
+msgstr "زمان پوسیدگی"
 
 #: data/ui/reverb.ui:275
 msgid "Bass Cut"
-msgstr ""
+msgstr "کاهش باس"
 
 #: data/ui/reverb.ui:309
 msgid "Treble Cut"
-msgstr ""
+msgstr "کاهش فرکانس‌های زیر"
 
 #: data/ui/reverb.ui:568
 msgid "Ambience"
-msgstr ""
+msgstr "فضا"
 
 #: data/ui/reverb.ui:575
 msgid "Empty Walls"
-msgstr ""
+msgstr "دیوارهای خالی"
 
 #: data/ui/reverb.ui:588
 msgid "Room"
-msgstr ""
+msgstr "اتاق"
 
 #: data/ui/reverb.ui:595
 msgid "Large Empty Hall"
-msgstr ""
+msgstr "سالن بزرگ خالی"
 
 #: data/ui/reverb.ui:608
 msgid "Disco"
-msgstr ""
+msgstr "دیسکو"
 
 #: data/ui/reverb.ui:615
 msgid "Large Occupied Hall"
-msgstr ""
+msgstr "سالن بزرگ و اشغال شده"
 
 #: data/ui/rnnoise.ui:31
 msgid "Import Model"
-msgstr ""
+msgstr "وارد کردن مدل"
 
 #: data/ui/rnnoise.ui:47 data/ui/speex.ui:59
 msgid "Voice Detection"
-msgstr ""
+msgstr "تشخیص صدا"
 
 #: data/ui/rnnoise.ui:151
 msgid "Models"
-msgstr ""
+msgstr "مدل ها"
 
 #. If this changes, it has to be updated in src/rnnoise_ui.cpp as default_model_name
 #: data/ui/rnnoise.ui:177 src/rnnoise_ui.cpp:121 src/rnnoise_ui.cpp:298
 #: src/rnnoise_ui.cpp:375
 msgid "Standard Model"
-msgstr ""
+msgstr "مدل استاندارد"
 
 #: data/ui/rnnoise.ui:204
 msgid "RNNoise Models List"
-msgstr ""
+msgstr "فهرست مدل‌های RNNoise"
 
 #: data/ui/rnnoise.ui:228
 msgid "Model Not Loaded"
-msgstr ""
+msgstr "مدل بارگذاری نشده است"
 
 #: data/ui/rnnoise.ui:234
 msgid "Active Model"
-msgstr ""
+msgstr "مدل فعال"
 
 #: data/ui/rnnoise.ui:242
 msgid "Standard RNNoise Model"
-msgstr ""
+msgstr "مدل استاندارد RNNoise"
 
 #: data/ui/shortcuts.ui:11
 msgid "Overview"
-msgstr ""
+msgstr "نمای کلی"
 
 #: data/ui/shortcuts.ui:16
 msgid "Show help"
-msgstr ""
+msgstr "نشان دادن کمک"
 
 #: data/ui/shortcuts.ui:23
 msgid "Fullscreen/Restore from fullscreen"
-msgstr ""
+msgstr "تمام صفحه/بازیابی از حالت تمام صفحه"
 
 #: data/ui/shortcuts.ui:30
 msgid "Close the Window"
-msgstr ""
+msgstr "پنجره را ببندید"
 
 #: data/ui/shortcuts.ui:37
 msgid "Quit Easy Effects"
-msgstr ""
+msgstr "بستن Easy Effects"
 
 #: data/ui/speex.ui:33
 msgid "Denoise"
-msgstr ""
+msgstr "کاهش نویز"
 
 #: data/ui/speex.ui:46
 msgid "Automatic Gain Control"
-msgstr ""
+msgstr "کنترل خودکار سطح صدا"
 
 #: data/ui/speex.ui:72
 msgid "Dereverberation"
-msgstr ""
+msgstr "حذف بازتاب صوت"
 
 #: data/ui/speex.ui:91
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "احتمال فعالیت صوتی"
 
 #: data/ui/speex.ui:95
 msgid "Start"
-msgstr ""
+msgstr "شروع"
 
 #: data/ui/speex.ui:117
 msgid "Continue"
-msgstr ""
+msgstr "ادامه دهید"
 
 #: data/ui/speex.ui:141
 msgid "Noise Suppression"
-msgstr ""
+msgstr "سرکوب نویز"
 
 #: data/ui/speex.ui:145
 msgid "Level"
-msgstr ""
+msgstr "سطح"
 
 #: data/ui/stereo_tools.ui:78
 msgid "Input Balance"
-msgstr ""
+msgstr "تعادل ورودی"
 
 #: data/ui/stereo_tools.ui:87
 msgid "Softclip"
-msgstr ""
+msgstr "کلیپ نرم"
 
 #: data/ui/stereo_tools.ui:114
 msgid "Softclip Level"
-msgstr ""
+msgstr "سطح کلیپ نرم"
 
 #: data/ui/stereo_tools.ui:126
 msgid "Stereo Matrix"
-msgstr ""
+msgstr "ماتریس استریو"
 
 #: data/ui/stereo_tools.ui:138
 msgid "LR > LR (Stereo Default)"
-msgstr ""
+msgstr "LR > LR (پیش‌فرض استریو)"
 
 #: data/ui/stereo_tools.ui:139
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr ""
+msgstr "LR > MS (استریو به سمت میانی)"
 
 #: data/ui/stereo_tools.ui:140
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr ""
+msgstr "MS > LR (از وسط به کنار به استریو)"
 
 #: data/ui/stereo_tools.ui:141
 msgid "LR > LL (Mono Left Channel)"
-msgstr ""
+msgstr "LR > LL (کانال چپ مونو)"
 
 #: data/ui/stereo_tools.ui:142
 msgid "LR > RR (Mono Right Channel)"
-msgstr ""
+msgstr "LR > RR (کانال مونو راست)"
 
 #: data/ui/stereo_tools.ui:143
 msgid "LR > L+R (Mono Sum L+R)"
-msgstr ""
+msgstr "LR > L+R (مجموع تکی L+R)"
 
 #: data/ui/stereo_tools.ui:144
 msgid "LR > RL (Stereo Flip Channels)"
-msgstr ""
+msgstr "LR > RL (کانال‌های استریو معکوس)"
 
 #: data/ui/stereo_tools.ui:149
 msgid "Stereo Mode"
-msgstr ""
+msgstr "حالت استریو"
 
 #: data/ui/stereo_tools.ui:234
 msgid "Side Level"
-msgstr ""
+msgstr "سطح جانبی"
 
 #: data/ui/stereo_tools.ui:269
 msgid "Side Balance"
-msgstr ""
+msgstr "تعادل جانبی"
 
 #: data/ui/stereo_tools.ui:304
 msgid "Middle Level"
-msgstr ""
+msgstr "سطح میانی"
 
 #: data/ui/stereo_tools.ui:339
 msgid "Middle Panorama"
-msgstr ""
+msgstr "پانورامای میانی"
 
 #: data/ui/stereo_tools.ui:417
 msgid "Output Balance"
-msgstr ""
+msgstr "تراز خروجی"
 
 #: data/ui/stereo_tools.ui:426
 msgid "Delay L/R"
-msgstr ""
+msgstr "تأخیر چپ/راست"
 
 #: data/ui/stereo_tools.ui:452
 msgid "Delay Left Right"
-msgstr ""
+msgstr "تأخیر چپ راست"
 
 #: data/ui/stereo_tools.ui:461
 msgid "Stereo Base"
-msgstr ""
+msgstr "پایه استریو"
 
 #: data/ui/stereo_tools.ui:496
 msgid "Stereo Phase"
-msgstr ""
+msgstr "فاز استریو"
 
 #: src/app_info.cpp:100
 msgid "Running"
-msgstr ""
+msgstr "در حال اجرا"
 
 #: src/app_info.cpp:102
 msgid "Suspended"
-msgstr ""
+msgstr "معلق"
 
 #: src/app_info.cpp:104
 msgid "Idle"
-msgstr ""
+msgstr "بیکار"
 
 #: src/app_info.cpp:106
 msgid "Creating"
-msgstr ""
+msgstr "در حال ایجاد"
 
 #: src/app_info.cpp:108
 msgid "Error"
-msgstr ""
+msgstr "خطا"
 
 #: src/app_info.cpp:110
 msgid "Unknown"
-msgstr ""
+msgstr "ناشناس"
 
 #: src/app_info.cpp:282
 msgid "Undefined Name - Process ID "
-msgstr ""
+msgstr "نام تعریف نشده - شناسه فرآیند "
 
 #: src/app_info.cpp:292
 msgid "channels"
-msgstr ""
+msgstr "کانال ها"
 
 #: src/application.cpp:313
 msgid "Output Preset"
-msgstr ""
+msgstr "پیش‌تنظیم خروجی"
 
 #: src/application.cpp:314
 msgid "Input Preset"
-msgstr ""
+msgstr "پیش‌تنظیم ورودی"
 
 #: src/application.cpp:530
 msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
-msgstr ""
+msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
 
 #: src/application.cpp:618
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr ""
+msgstr "خروج از Easy Effects. مفید هنگام اجرا در حالت سرویس."
 
 #: src/application.cpp:621
 msgid "Print the easyeffects version"
-msgstr ""
+msgstr "نسخه easyeffects را چاپ کنید"
 
 #: src/application.cpp:624
 msgid "Reset Easy Effects."
-msgstr ""
+msgstr "تنظیم مجدد Easy Effects."
 
 #: src/application.cpp:627
 msgid "Hide the Window."
-msgstr ""
+msgstr "پنجره را مخفی کنید."
 
 #: src/application.cpp:630
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
+"دور زدن کلی. 1 برای فعال‌سازی، 2 برای غیرفعال‌سازی و 3 برای دریافت وضعیت"
 
 #: src/application.cpp:633
 msgid "Show available presets."
-msgstr ""
+msgstr "نمایش پیش‌تنظیم‌های موجود."
 
 #: src/application.cpp:636
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr ""
+msgstr "بارگذاری یک پیش‌تنظیم. مثال: easyeffects -l music"
 
 #: src/application.cpp:639
 msgid "Show the active presets."
-msgstr ""
+msgstr "نمایش پیش‌تنظیم‌های فعال."
 
 #: src/application.cpp:642
 msgid ""
 "Show the loaded preset of a specific category. Takes 'input' or 'output' as "
 "a value. Example: easyeffects -s input"
 msgstr ""
+"پیش‌تنظیم بارگذاری‌شده‌ی یک دسته‌بندی خاص را نمایش می‌دهد. 'input' یا 'output' را "
+"به عنوان مقدار می‌گیرد. مثال: easyeffects -s input"
 
 #: src/application_ui.cpp:344
 msgid "_Output"
-msgstr ""
+msgstr "_خروجی"
 
 #: src/application_ui.cpp:345
 msgid "_Input"
-msgstr ""
+msgstr "_ورودی"
 
 #: src/application_ui.cpp:346
 msgid "_PipeWire"
-msgstr ""
+msgstr "_پایپ وایر"
 
 #: src/convolver_menu_impulses.cpp:125
 msgid "The File Is Not Regular"
-msgstr ""
+msgstr "فایل معمولی نیست"
 
 #: src/convolver_menu_impulses.cpp:130
 msgid "The Impulse File May Be Corrupted or Unsupported"
-msgstr ""
+msgstr "ممکن است فایل Impulse خراب یا پشتیبانی نشده باشد"
 
 #: src/convolver_menu_impulses.cpp:135
 msgid "Only Stereo Impulse Files Are Supported"
-msgstr ""
+msgstr "فقط فایل‌های Stereo Impulse پشتیبانی می‌شوند"
 
 #: src/convolver_menu_impulses.cpp:145
 msgid "Impulse File Not Imported"
-msgstr ""
+msgstr "فایل ایمپالس وارد نشده است"
 
 #: src/convolver_menu_impulses.cpp:153
 msgid "Import Impulse File"
-msgstr ""
+msgstr "وارد کردن فایل ایمپالس"
 
 #: src/convolver_menu_impulses.cpp:154 src/equalizer_ui.cpp:522
 #: src/equalizer_ui.cpp:861 src/presets_menu.cpp:145 src/rnnoise_ui.cpp:160
 msgid "Open"
-msgstr ""
+msgstr "باز کنید"
 
 #: src/convolver_menu_impulses.cpp:166
 msgid "Impulse Response"
-msgstr ""
+msgstr "پاسخ ایمپالس"
 
 #: src/convolver_menu_impulses.cpp:293
 msgid "Load Impulse"
-msgstr ""
+msgstr "بارگذاری ایمپالس"
 
 #: src/convolver_menu_impulses.cpp:296
 msgid "Remove Impulse"
-msgstr ""
+msgstr "حذف ایمپالس"
 
 #: src/convolver_ui.cpp:382
 msgid "No Impulse File Loaded"
-msgstr ""
+msgstr "هیچ فایل ایمپالسی بارگذاری نشده است"
 
 #: src/convolver_ui.cpp:408
 msgid "Failed To Load The Impulse File"
-msgstr ""
+msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 
 #: src/effects_box.cpp:360 src/plugins_box.cpp:807
 msgid "Recorders"
-msgstr ""
+msgstr "ضبط کننده ها"
 
 #: src/effects_box.cpp:383 src/plugins_box.cpp:827
 msgid "Players"
-msgstr ""
+msgstr "پلیرها"
 
 #: src/effects_box.cpp:406
 msgid "Effects"
-msgstr ""
+msgstr "جلوه ها"
 
 #: src/equalizer_ui.cpp:521
 msgid "Import APO Preset File"
-msgstr ""
+msgstr "وارد کردن فایل از پیش تنظیم شده APO"
 
 #: src/equalizer_ui.cpp:529
 msgid "APO Presets"
-msgstr ""
+msgstr "پیش‌تنظیم‌های APO"
 
 #: src/equalizer_ui.cpp:554
 msgid ""
 "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
 "Content."
 msgstr ""
+"پیش‌تنظیم APO بارگذاری نشد. ممکن است فرمت فایل پشتیبانی نشود. لطفاً محتوای آن "
+"را بررسی کنید."
 
 #: src/equalizer_ui.cpp:623
 msgid "Split channels not yet supported when exporting APO presets."
 msgstr ""
+"کانال‌های جداگانه هنگام صادر کردن پیش‌تنظیم‌های APO هنوز پشتیبانی نمی‌شوند."
 
 #: src/equalizer_ui.cpp:631
 msgid "Export EqualizerAPO Preset File"
-msgstr ""
+msgstr "صدور فایل پیش‌تنظیم EqualizerAPO"
 
 #: src/equalizer_ui.cpp:632
 msgid "Save"
-msgstr ""
+msgstr "ذخیره"
 
 #: src/equalizer_ui.cpp:639
 msgid "EqualizerAPO Presets"
-msgstr ""
+msgstr "پیش‌تنظیم‌های EqualizerAPO"
 
 #: src/equalizer_ui.cpp:860
 msgid "Import GraphicEQ Preset File"
-msgstr ""
+msgstr "وارد کردن فایل پیش‌تنظیم GraphicEQ"
 
 #: src/equalizer_ui.cpp:868
 msgid "GraphicEQ Presets"
-msgstr ""
+msgstr "پیش‌تنظیم‌های GraphicEQ"
 
 #: src/equalizer_ui.cpp:893
 msgid ""
 "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please Check "
 "Its Content."
 msgstr ""
+"پیش‌تنظیم GraphicEQ بارگذاری نشد. ممکن است فرمت فایل پشتیبانی نشود. لطفاً "
+"محتوای آن را بررسی کنید."
 
 #: src/pipe_manager_box.cpp:355
 msgid "Remove Autoloading Preset"
-msgstr ""
+msgstr "حذف پیش‌تنظیم بارگذاری خودکار"
 
 #: src/plugin_base.cpp:233
 msgid "Output Level Meter"
-msgstr ""
+msgstr "سطح سنج خروجی"
 
 #: src/plugins_box.cpp:759
 msgid "Remove"
-msgstr ""
+msgstr "حذف"
 
 #: src/plugins_box.cpp:828
 msgid "Output Device"
-msgstr ""
+msgstr "دستگاه خروجی"
 
 #: src/plugins_menu.cpp:238
 msgid "Add"
-msgstr ""
+msgstr "اضافه کنید"
 
 #. Placeholders in case of issues
 #: src/presets_manager.cpp:439
 msgid "Community Preset"
-msgstr ""
+msgstr "پیش‌تنظیم جامعه‌محور"
 
 #: src/presets_manager.cpp:439
 msgid "Package"
-msgstr ""
+msgstr "بسته"
 
 #: src/presets_manager.cpp:1155 src/presets_manager.cpp:1162
 #: src/presets_manager.cpp:1171 src/presets_manager.cpp:1178
 #: src/presets_manager.cpp:1187 src/presets_manager.cpp:1195
 msgid "Preset Not Loaded Correctly"
-msgstr ""
+msgstr "پیش‌تنظیم به‌درستی بارگذاری نشد"
 
 #: src/presets_manager.cpp:1155
 msgid "Wrong Format in Excluded Apps List"
-msgstr ""
+msgstr "فرمت نادرست در فهرست برنامه‌های مستثنی‌شده"
 
 #: src/presets_manager.cpp:1162
 msgid "Generic Error While Loading Excluded Apps List"
-msgstr ""
+msgstr "خطای عمومی هنگام بارگذاری فهرست برنامه‌های مستثنی‌شده"
 
 #: src/presets_manager.cpp:1171
 msgid "Wrong Format in Effects List"
-msgstr ""
+msgstr "فرمت نادرست در فهرست جلوه ها"
 
 #: src/presets_manager.cpp:1178
 msgid "Generic Error While Loading Effects List"
-msgstr ""
+msgstr "خطای عمومی هنگام بارگذاری فهرست جلوه ها"
 
 #: src/presets_manager.cpp:1188
 msgid "One or More Parameters Have a Wrong Format"
-msgstr ""
+msgstr "یک یا چند پارامتر فرمت نادرستی دارند"
 
 #: src/presets_manager.cpp:1196
 msgid "Generic Error While Loading The Effect"
-msgstr ""
+msgstr "خطای عمومی هنگام بارگذاری جلوه"
 
 #: src/presets_menu.cpp:398
 msgid "Save?"
-msgstr ""
+msgstr "ذخیره؟"
 
 #: src/presets_menu.cpp:417
 msgid "Delete?"
-msgstr ""
+msgstr "حذف؟"
 
 #: src/presets_menu.cpp:558
 msgid "No Preset Loaded"
-msgstr ""
+msgstr "هیچ پیش‌تنظیمی بارگذاری نشده است"
 
 #: src/presets_menu.cpp:573
 msgid "Last Local Preset Loaded"
-msgstr ""
+msgstr "آخرین پیش‌تنظیم محلی بارگذاری شد"
 
 #: src/presets_menu.cpp:573
 msgid "Last Community Preset Loaded"
-msgstr ""
+msgstr "آخرین پیش‌تنظیم جامعه‌محور بارگذاری شد"
 
 #: src/rnnoise_ui.cpp:116
 msgid ""
 "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To The "
 "Standard Model."
 msgstr ""
+"مدل انتخاب شده بارگذاری نشده است. ممکن است فرمت آن پشتیبانی نشود. به مدل "
+"استاندارد برگشتم."
 
 #: src/rnnoise_ui.cpp:159
 msgid "Import Model File"
-msgstr ""
+msgstr "وارد کردن فایل مدل"
 
 #: src/rnnoise_ui.cpp:172
 msgid "RNNoise Models"
-msgstr ""
+msgstr "مدل‌های RNoise"
 
 #: src/tags_plugin_name.cpp:39
 msgid "Bass Enhancer"
-msgstr ""
+msgstr "تقویت کننده باس"
 
 #: src/tags_plugin_name.cpp:40
 msgid "Bass Loudness"
-msgstr ""
+msgstr "بلندی صدای باس"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Convolver"
-msgstr ""
+msgstr "کانولور"
 
 #: src/tags_plugin_name.cpp:43
 msgid "Crossfeed"
-msgstr ""
+msgstr "کراس‌فید"
 
 #: src/tags_plugin_name.cpp:44
 msgid "Crystalizer"
-msgstr ""
+msgstr "کریستالایزر"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Deep Noise Remover"
-msgstr ""
+msgstr "حذف نویز عمیق"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Deesser"
-msgstr ""
+msgstr "دیسر"
 
 #: src/tags_plugin_name.cpp:48
 msgid "Echo Canceller"
-msgstr ""
+msgstr "حذف اکو"
 
 #: src/tags_plugin_name.cpp:49
 msgid "Equalizer"
-msgstr ""
+msgstr "اکولایزر"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Exciter"
-msgstr ""
+msgstr "محرک"
 
 #: src/tags_plugin_name.cpp:54
 msgid "Level Meter"
-msgstr ""
+msgstr "سطح سنج"
 
 #: src/tags_plugin_name.cpp:55
 msgid "Limiter"
-msgstr ""
+msgstr "محدود کننده"
 
 #: src/tags_plugin_name.cpp:57
 msgid "Maximizer"
-msgstr ""
+msgstr "ماکسیمایزر"
 
 #: src/tags_plugin_name.cpp:58
 msgid "Multiband Compressor"
-msgstr ""
+msgstr "کمپرسور چند بانده"
 
 #: src/tags_plugin_name.cpp:59
 msgid "Multiband Gate"
-msgstr ""
+msgstr "دروازه چند بانده"
 
 #: src/tags_plugin_name.cpp:61
 msgid "Reverberation"
-msgstr ""
+msgstr "طنین"
 
 #: src/tags_plugin_name.cpp:62
 msgid "Noise Reduction"
-msgstr ""
+msgstr "کاهش نویز"
 
 #: src/tags_plugin_name.cpp:63
 msgid "Speech Processor"
-msgstr ""
+msgstr "پردازشگر گفتار"
 
 #: src/tags_plugin_name.cpp:64
 msgid "Stereo Tools"
-msgstr ""
+msgstr "ابزارهای استریو"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
 msgid "{} Not Available"
-msgstr ""
+msgstr "{} در دسترس نیست"
 
 #: src/ui_helpers.cpp:97
 msgid ""
@@ -2587,6 +2603,10 @@ msgid ""
 "using the 'Quit' option inside the menu in order to make the effect availble "
 "to use."
 msgstr ""
+"نرم‌افزار مورد نیاز برای افکت {}، \"{}\"، نصب نشده است. استفاده از بسته Easy "
+"Effects Flatpak یا نصب نرم‌افزار توسط خودتان را در نظر بگیرید. اگر نرم‌افزار "
+"مورد نظر را نصب کرده‌اید، باید Easy Effects را با استفاده از گزینه 'Quit' در "
+"داخل منو بسته و مجدداً راه‌اندازی کنید تا افکت برای استفاده در دسترس قرار گیرد."
 
 #: src/ui_helpers.cpp:104
 msgid ""
@@ -2595,12 +2615,15 @@ msgid ""
 "Consider using the Easy Effects Flatpak package or building your own Easy "
 "Effects package."
 msgstr ""
+"افکت {} هنگام کامپایل Easy Effects غیرفعال شد. شاید به این دلیل باشد که نرم‌"
+"افزار مورد نیاز برای این افکت، \"{}\"، در دسترس نبود. استفاده از بسته Easy "
+"Effects Flatpak یا ساخت بسته Easy Effects خودتان را در نظر بگیرید."
 
 #: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
-msgstr ""
+msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
 msgid "Using {}"
-msgstr ""
+msgstr "با استفاده از {}"
