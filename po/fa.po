@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-15 00:24+0000\n"
+"POT-Creation-Date: 2025-08-23 14:30+0000\n"
 "PO-Revision-Date: 2025-08-23 14:27+0000\n"
 "Last-Translator: Ab <vultazhh@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2278,8 +2278,7 @@ msgstr "پنجره را مخفی کنید."
 
 #: src/application.cpp:630
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-msgstr ""
-"دور زدن کلی. 1 برای فعال‌سازی، 2 برای غیرفعال‌سازی و 3 برای دریافت وضعیت"
+msgstr "دور زدن کلی. 1 برای فعال‌سازی، 2 برای غیرفعال‌سازی و 3 برای دریافت وضعیت"
 
 #: src/application.cpp:633
 msgid "Show available presets."
@@ -2592,10 +2591,12 @@ msgstr "ابزارهای استریو"
 
 #. For translators: {} is replaced by the effect name.
 #: src/ui_helpers.cpp:93
+#, c++-format
 msgid "{} Not Available"
 msgstr "{} در دسترس نیست"
 
 #: src/ui_helpers.cpp:97
+#, c++-format
 msgid ""
 "The software required for the {} effect, \"{}\", is not installed. Consider "
 "using the Easy Effects Flatpak package or installing the software yourself. "
@@ -2609,15 +2610,16 @@ msgstr ""
 "داخل منو بسته و مجدداً راه‌اندازی کنید تا افکت برای استفاده در دسترس قرار گیرد."
 
 #: src/ui_helpers.cpp:104
+#, c++-format
 msgid ""
 "The {} effect was disabled when Easy Effects was compiled. This is perhaps "
 "since the software required for this effect, \"{}\", was not available. "
 "Consider using the Easy Effects Flatpak package or building your own Easy "
 "Effects package."
 msgstr ""
-"افکت {} هنگام کامپایل Easy Effects غیرفعال شد. شاید به این دلیل باشد که نرم‌"
-"افزار مورد نیاز برای این افکت، \"{}\"، در دسترس نبود. استفاده از بسته Easy "
-"Effects Flatpak یا ساخت بسته Easy Effects خودتان را در نظر بگیرید."
+"افکت {} هنگام کامپایل Easy Effects غیرفعال شد. شاید به این دلیل باشد که "
+"نرم‌افزار مورد نیاز برای این افکت، \"{}\"، در دسترس نبود. استفاده از بسته "
+"Easy Effects Flatpak یا ساخت بسته Easy Effects خودتان را در نظر بگیرید."
 
 #: src/ui_helpers.cpp:149 src/ui_helpers.cpp:169
 msgid "-inf"
@@ -2625,5 +2627,6 @@ msgstr "-inf"
 
 #. For translators: {} is replaced by the library used by the plugin. I.e. "Using Calf Studio".
 #: src/ui_helpers.cpp:254
+#, c++-format
 msgid "Using {}"
 msgstr "با استفاده از {}"
