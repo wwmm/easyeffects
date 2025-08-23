@@ -152,6 +152,20 @@ Kirigami.OverlaySheet {
                         DB.Manager.main.inactivityTimeout = v;
                     }
                 }
+
+                EeSpinBox {
+                    label: i18n("Level Meters Label")
+                    from: DB.Manager.main.getMinValue("levelMetersLabelTimer")
+                    to: DB.Manager.main.getMaxValue("levelMetersLabelTimer")
+                    value: DB.Manager.main.levelMetersLabelTimer
+                    decimals: 0
+                    stepSize: 1
+                    unit: "ms"
+                    enabled: DB.Manager.main.levelMetersLabelTimer
+                    onValueModified: v => {
+                        DB.Manager.main.levelMetersLabelTimer = v;
+                    }
+                }
             }
         }
     }
