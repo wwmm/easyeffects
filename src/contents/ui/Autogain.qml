@@ -58,11 +58,11 @@ Kirigami.ScrollablePage {
 
                         text: i18n("Reference")
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.reference
+                        currentIndex: autogainPage.pluginDB.reference
                         editable: false
                         model: [i18n("Momentary"), i18n("Short-Term"), i18n("Integrated"), i18n("Geometric Mean (MSI)"), i18n("Geometric Mean (MS)"), i18n("Geometric Mean (MI)"), i18n("Geometric Mean (SI)")]
                         onActivated: idx => {
-                            pluginDB.reference = idx;
+                            autogainPage.pluginDB.reference = idx;
                         }
 
                         anchors {
@@ -75,14 +75,14 @@ Kirigami.ScrollablePage {
                         id: target
 
                         label: i18n("Target")
-                        from: pluginDB.getMinValue("target")
-                        to: pluginDB.getMaxValue("target")
-                        value: pluginDB.target
+                        from: autogainPage.pluginDB.getMinValue("target")
+                        to: autogainPage.pluginDB.getMaxValue("target")
+                        value: autogainPage.pluginDB.target
                         decimals: 2
                         stepSize: 0.1
                         unit: "dB"
                         onValueModified: v => {
-                            pluginDB.target = v;
+                            autogainPage.pluginDB.target = v;
                         }
 
                         anchors {
@@ -95,14 +95,14 @@ Kirigami.ScrollablePage {
                         id: silenceThreshold
 
                         label: i18n("Silence")
-                        from: pluginDB.getMinValue("silenceThreshold")
-                        to: pluginDB.getMaxValue("silenceThreshold")
-                        value: pluginDB.silenceThreshold
+                        from: autogainPage.pluginDB.getMinValue("silenceThreshold")
+                        to: autogainPage.pluginDB.getMaxValue("silenceThreshold")
+                        value: autogainPage.pluginDB.silenceThreshold
                         decimals: 2
                         stepSize: 0.1
                         unit: "dB"
                         onValueModified: v => {
-                            pluginDB.silenceThreshold = v;
+                            autogainPage.pluginDB.silenceThreshold = v;
                         }
 
                         anchors {
@@ -115,14 +115,14 @@ Kirigami.ScrollablePage {
                         id: maximumHistory
 
                         label: i18n("Maximum History")
-                        from: pluginDB.getMinValue("maximumHistory")
-                        to: pluginDB.getMaxValue("maximumHistory")
-                        value: pluginDB.maximumHistory
+                        from: autogainPage.pluginDB.getMinValue("maximumHistory")
+                        to: autogainPage.pluginDB.getMaxValue("maximumHistory")
+                        value: autogainPage.pluginDB.maximumHistory
                         decimals: 0
                         stepSize: 1
                         unit: "s"
                         onValueModified: v => {
-                            pluginDB.maximumHistory = v;
+                            autogainPage.pluginDB.maximumHistory = v;
                         }
 
                         anchors {
@@ -289,14 +289,26 @@ Kirigami.ScrollablePage {
                     text: i18n("Reset History")
                     icon.name: "edit-clear-history-symbolic"
                     onTriggered: {
-                        pluginBackend.resetHistory();
+                        autogainPage.pluginBackend.resetHistory();
+                    }
+                },
+                Kirigami.Action {
+                    text: i18n("Force Silence")
+                    tooltip: i18n("Force Silence When the Level is Below the Silence Threshold")
+                    icon.name: "audio-volume-muted-symbolic"
+                    checkable: true
+                    checked: autogainPage.pluginDB.forceSilence
+                    onTriggered: {
+                        if (checked !== autogainPage.pluginDB.forceSilence) {
+                            autogainPage.pluginDB.forceSilence = checked;
+                        }
                     }
                 },
                 Kirigami.Action {
                     text: i18n("Reset Settings")
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        autogainPage.pluginBackend.reset();
                     }
                 }
             ]

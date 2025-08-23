@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-22 14:59-0300\n"
+"POT-Creation-Date: 2025-08-23 12:31-0300\n"
 "PO-Revision-Date: 2023-08-09 14:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Spanish (Venezuela) <https://hosted.weblate.org/projects/"
@@ -191,7 +191,16 @@ msgstr ""
 msgid "Reset History"
 msgstr "Restablecer Historial"
 
-#: src/contents/ui/Autogain.qml:296 src/contents/ui/Pitch.qml:243
+#: src/contents/ui/Autogain.qml:296
+#, fuzzy
+msgid "Force Silence"
+msgstr "Silencio"
+
+#: src/contents/ui/Autogain.qml:297
+msgid "Force Silence When the Level is Below the Silence Threshold"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:308 src/contents/ui/Pitch.qml:243
 #, fuzzy
 msgid "Reset Settings"
 msgstr "Ajustes"
@@ -258,7 +267,7 @@ msgstr "Escuchar"
 #: src/contents/ui/Expander.qml:807 src/contents/ui/Filter.qml:222
 #: src/contents/ui/Gate.qml:940 src/contents/ui/LevelMeter.qml:255
 #: src/contents/ui/Limiter.qml:537 src/contents/ui/Loudness.qml:164
-#: src/contents/ui/main.qml:310 src/contents/ui/Maximizer.qml:129
+#: src/contents/ui/main.qml:321 src/contents/ui/Maximizer.qml:129
 #: src/contents/ui/MultibandCompressor.qml:968
 #: src/contents/ui/MultibandGate.qml:945 src/contents/ui/Reverb.qml:342
 #: src/contents/ui/RNNoise.qml:292 src/contents/ui/Speex.qml:182
@@ -268,7 +277,7 @@ msgstr "Restablecer"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:487
 #: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:448
-#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:236
+#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:247
 #: src/contents/ui/StereoTools.qml:303
 msgid "Output"
 msgstr "Salida"
@@ -789,7 +798,7 @@ msgstr "Cmoy"
 msgid "Jmeier"
 msgstr "Jmeier"
 
-#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:206
+#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:217
 #: src/contents/ui/Reverb.qml:321
 msgid "Presets"
 msgstr "Perfiles"
@@ -1001,7 +1010,7 @@ msgstr "Supresor de Ruido"
 msgid "Near End Suppression"
 msgstr "Supresor de Ruido"
 
-#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:255
+#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:266
 #: src/contents/ui/StereoTools.qml:42
 msgid "Input"
 msgstr "Entrada"
@@ -1617,30 +1626,31 @@ msgstr "Pendiente"
 msgid "Active"
 msgstr "Modo Agresivo"
 
-#: src/contents/ui/main.qml:185 src/contents/ui/main.qml:330
-msgid "Quit"
-msgstr ""
-
-#: src/contents/ui/main.qml:214
-msgid "Turn Effects On/Off"
-msgstr ""
-
-#: src/contents/ui/main.qml:274
-msgid "PipeWire"
-msgstr ""
-
-#: src/contents/ui/main.qml:290 src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:442
-#: src/contents/ui/PreferencesSheet.qml:455
-msgid "Preferences"
-msgstr ""
-
-#: src/contents/ui/main.qml:298 src/contents/ui/ShortcutsSheet.qml:168
+#: src/contents/ui/main.qml:185 src/contents/ui/main.qml:309
+#: src/contents/ui/ShortcutsSheet.qml:228
 msgid "Shortcuts"
 msgstr ""
 
-#: src/contents/ui/main.qml:322
+#: src/contents/ui/main.qml:196 src/contents/ui/main.qml:341
+msgid "Quit"
+msgstr ""
+
+#: src/contents/ui/main.qml:225
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:285
+msgid "PipeWire"
+msgstr ""
+
+#: src/contents/ui/main.qml:301 src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:453
+#: src/contents/ui/PreferencesSheet.qml:466
+msgid "Preferences"
+msgstr ""
+
+#: src/contents/ui/main.qml:333
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "EasyEffects"
@@ -1786,6 +1796,11 @@ msgstr "EasyEffects"
 
 #: src/contents/ui/PageStreamsEffects.qml:702
 #, fuzzy
+msgid "Input Monitoring"
+msgstr "Limitador de Entrada"
+
+#: src/contents/ui/PageStreamsEffects.qml:715
+#, fuzzy
 msgid "Excluded Apps"
 msgstr "Aplicaciones"
 
@@ -1877,12 +1892,12 @@ msgid "No Clients"
 msgstr "Clientes"
 
 #: src/contents/ui/PipeWirePage.qml:270
-#: src/contents/ui/PreferencesSheet.qml:153
+#: src/contents/ui/PreferencesSheet.qml:164
 msgid "State"
 msgstr "Estado"
 
 #: src/contents/ui/PipeWirePage.qml:277
-#: src/contents/ui/PreferencesSheet.qml:160
+#: src/contents/ui/PreferencesSheet.qml:171
 #, fuzzy
 msgid "Enabled"
 msgstr "Habilitar"
@@ -1987,168 +2002,173 @@ msgid "Use Cubic Volume"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:121
-msgid "Enable the Inactivity Timeout"
+msgid "Enable/disable input monitoring"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:132
+msgid "Enable the Inactivity Timeout"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:143
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:171
+#: src/contents/ui/PreferencesSheet.qml:182
 msgid "Audio Delay Compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:185
+#: src/contents/ui/PreferencesSheet.qml:196
 msgid "Style"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:203
 msgid "Color Scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:207
 #, fuzzy
 msgid "Automatic"
 msgstr "Ganancia Automática"
 
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:207
 #, fuzzy
 msgid "Light"
 msgstr "Derecha"
 
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:207
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Color Theme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Green Neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 #, fuzzy
 msgid "Mix"
 msgstr "Máximo"
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 #, fuzzy
 msgid "Orange"
 msgstr "Rango"
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:231
 msgid "Shape"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Bars"
 msgstr "Barras"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Lines"
 msgstr "Lineas"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Dots"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:245
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:245
+#: src/contents/ui/PreferencesSheet.qml:256
 #, fuzzy
 msgid "Logarithmic Frequency Axis"
 msgstr "Frecuencia"
 
-#: src/contents/ui/PreferencesSheet.qml:256
+#: src/contents/ui/PreferencesSheet.qml:267
 msgid "Points"
 msgstr "Puntos"
 
-#: src/contents/ui/PreferencesSheet.qml:270
+#: src/contents/ui/PreferencesSheet.qml:281
 msgid "Height"
 msgstr "Altura"
 
-#: src/contents/ui/PreferencesSheet.qml:284
+#: src/contents/ui/PreferencesSheet.qml:295
 #, fuzzy
 msgid "Frequency Range"
 msgstr "Frecuencia"
 
-#: src/contents/ui/PreferencesSheet.qml:291
+#: src/contents/ui/PreferencesSheet.qml:302
 #, fuzzy
 msgid "Minimum"
 msgstr "Máximo"
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:317
 msgid "Maximum"
 msgstr "Máximo"
 
-#: src/contents/ui/PreferencesSheet.qml:329
+#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/ShortcutsSheet.qml:168
 msgid "Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:330
+#: src/contents/ui/PreferencesSheet.qml:341
 msgid "Enables support for XDG Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:352
 #, fuzzy
 msgid "Native Plugin Window"
 msgstr "Ventana"
 
-#: src/contents/ui/PreferencesSheet.qml:342
+#: src/contents/ui/PreferencesSheet.qml:353
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:364
 #, fuzzy
 msgid "Update Frequency"
 msgstr "Frecuencia"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:365
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:382
+#: src/contents/ui/PreferencesSheet.qml:393
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:395
+#: src/contents/ui/PreferencesSheet.qml:406
 msgid "Audio"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:408
+#: src/contents/ui/PreferencesSheet.qml:419
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Tipo de Espectro"
 
-#: src/contents/ui/PreferencesSheet.qml:421
+#: src/contents/ui/PreferencesSheet.qml:432
 #, fuzzy
 msgid "Experimental Features"
 msgstr "Experimental"
@@ -2422,38 +2442,45 @@ msgstr "No se pudo encontrar el archivo Impulse"
 msgid "Import Model"
 msgstr "Importar Archivo Impulse"
 
-#: src/contents/ui/ShortcutsSheet.qml:32
+#: src/contents/ui/ShortcutsSheet.qml:34
 msgid "Show Help"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:45
+#: src/contents/ui/ShortcutsSheet.qml:47
 msgid "Fullscreen / Restore from fullscreen"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:60 src/contents/ui/ShortcutsSheet.qml:88
-#: src/contents/ui/ShortcutsSheet.qml:116
+#: src/contents/ui/ShortcutsSheet.qml:62 src/contents/ui/ShortcutsSheet.qml:90
+#: src/contents/ui/ShortcutsSheet.qml:118
+#: src/contents/ui/ShortcutsSheet.qml:189
+#: src/contents/ui/ShortcutsSheet.qml:201
 msgid "+"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:73
+#: src/contents/ui/ShortcutsSheet.qml:75
 #, fuzzy
 msgid "Toggle Global Bypass"
 msgstr "Bypass Global"
 
-#: src/contents/ui/ShortcutsSheet.qml:101
+#: src/contents/ui/ShortcutsSheet.qml:103
 #, fuzzy
 msgid "Close the Window"
 msgstr "Ventana"
 
-#: src/contents/ui/ShortcutsSheet.qml:129
+#: src/contents/ui/ShortcutsSheet.qml:131
 #, fuzzy
 msgid "Quit EasyEffects"
 msgstr "EasyEffects"
 
-#: src/contents/ui/ShortcutsSheet.qml:142
-#: src/contents/ui/ShortcutsSheet.qml:155
+#: src/contents/ui/ShortcutsSheet.qml:144
+#: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:214
+#, fuzzy
+msgid "Enable/Disable Effects"
+msgstr "Borrar este perfil"
 
 #: src/contents/ui/Speex.qml:48
 #, fuzzy
@@ -3766,9 +3793,6 @@ msgstr "Efectos de Sonido para las Aplicaciones de PulseAudio"
 
 #~ msgid "Includes an equalizer with built-in presets"
 #~ msgstr "Incluye un ecualizador con perfiles incluidos"
-
-#~ msgid "Input Limiter"
-#~ msgstr "Limitador de Entrada"
 
 #~ msgid "Calibration"
 #~ msgstr "Calibración"

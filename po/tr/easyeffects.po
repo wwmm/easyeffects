@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-22 14:59-0300\n"
+"POT-Creation-Date: 2025-08-23 12:31-0300\n"
 "PO-Revision-Date: 2024-05-13 08:00+0000\n"
 "Last-Translator: Oğuz Ersen <oguz@ersen.moe>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -179,7 +179,16 @@ msgstr "{} Kullanıyor"
 msgid "Reset History"
 msgstr "Geçmişi Sıfırla"
 
-#: src/contents/ui/Autogain.qml:296 src/contents/ui/Pitch.qml:243
+#: src/contents/ui/Autogain.qml:296
+#, fuzzy
+msgid "Force Silence"
+msgstr "Sessizlik"
+
+#: src/contents/ui/Autogain.qml:297
+msgid "Force Silence When the Level is Below the Silence Threshold"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:308 src/contents/ui/Pitch.qml:243
 #, fuzzy
 msgid "Reset Settings"
 msgstr "Ayarları _Sıfırla"
@@ -246,7 +255,7 @@ msgstr "Liste"
 #: src/contents/ui/Expander.qml:807 src/contents/ui/Filter.qml:222
 #: src/contents/ui/Gate.qml:940 src/contents/ui/LevelMeter.qml:255
 #: src/contents/ui/Limiter.qml:537 src/contents/ui/Loudness.qml:164
-#: src/contents/ui/main.qml:310 src/contents/ui/Maximizer.qml:129
+#: src/contents/ui/main.qml:321 src/contents/ui/Maximizer.qml:129
 #: src/contents/ui/MultibandCompressor.qml:968
 #: src/contents/ui/MultibandGate.qml:945 src/contents/ui/Reverb.qml:342
 #: src/contents/ui/RNNoise.qml:292 src/contents/ui/Speex.qml:182
@@ -256,7 +265,7 @@ msgstr "Sıfırla"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:487
 #: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:448
-#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:236
+#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:247
 #: src/contents/ui/StereoTools.qml:303
 msgid "Output"
 msgstr "Çıktı"
@@ -763,7 +772,7 @@ msgstr "Cmoy"
 msgid "Jmeier"
 msgstr "Jmeier"
 
-#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:206
+#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:217
 #: src/contents/ui/Reverb.qml:321
 msgid "Presets"
 msgstr "Ön Ayarlar"
@@ -963,7 +972,7 @@ msgstr "Artık Yankı Bastırma"
 msgid "Near End Suppression"
 msgstr "Yakın Uç Yankı Bastırma"
 
-#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:255
+#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:266
 #: src/contents/ui/StereoTools.qml:42
 msgid "Input"
 msgstr "Girdi"
@@ -1571,34 +1580,35 @@ msgstr "Eğim"
 msgid "Active"
 msgstr "Etkin Model"
 
-#: src/contents/ui/main.qml:185 src/contents/ui/main.qml:330
-#, fuzzy
-msgid "Quit"
-msgstr "_Çık"
-
-#: src/contents/ui/main.qml:214
-msgid "Turn Effects On/Off"
-msgstr ""
-
-#: src/contents/ui/main.qml:274
-#, fuzzy
-msgid "PipeWire"
-msgstr "_PipeWire"
-
-#: src/contents/ui/main.qml:290 src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:442
-#: src/contents/ui/PreferencesSheet.qml:455
-#, fuzzy
-msgid "Preferences"
-msgstr "_Tercihler"
-
-#: src/contents/ui/main.qml:298 src/contents/ui/ShortcutsSheet.qml:168
+#: src/contents/ui/main.qml:185 src/contents/ui/main.qml:309
+#: src/contents/ui/ShortcutsSheet.qml:228
 #, fuzzy
 msgid "Shortcuts"
 msgstr "Kısa_yollar"
 
-#: src/contents/ui/main.qml:322
+#: src/contents/ui/main.qml:196 src/contents/ui/main.qml:341
+#, fuzzy
+msgid "Quit"
+msgstr "_Çık"
+
+#: src/contents/ui/main.qml:225
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:285
+#, fuzzy
+msgid "PipeWire"
+msgstr "_PipeWire"
+
+#: src/contents/ui/main.qml:301 src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:453
+#: src/contents/ui/PreferencesSheet.qml:466
+#, fuzzy
+msgid "Preferences"
+msgstr "_Tercihler"
+
+#: src/contents/ui/main.qml:333
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "Easy Effects _Hakkında"
@@ -1734,6 +1744,11 @@ msgid "Effects"
 msgstr "Efektler"
 
 #: src/contents/ui/PageStreamsEffects.qml:702
+#, fuzzy
+msgid "Input Monitoring"
+msgstr "Giriş Sınırlayıcı"
+
+#: src/contents/ui/PageStreamsEffects.qml:715
 msgid "Excluded Apps"
 msgstr "Hariç Tutulan Uygulamalar"
 
@@ -1821,12 +1836,12 @@ msgid "No Clients"
 msgstr "İstemciler"
 
 #: src/contents/ui/PipeWirePage.qml:270
-#: src/contents/ui/PreferencesSheet.qml:153
+#: src/contents/ui/PreferencesSheet.qml:164
 msgid "State"
 msgstr "Durum"
 
 #: src/contents/ui/PipeWirePage.qml:277
-#: src/contents/ui/PreferencesSheet.qml:160
+#: src/contents/ui/PreferencesSheet.qml:171
 msgid "Enabled"
 msgstr "Etkin"
 
@@ -1924,166 +1939,171 @@ msgid "Use Cubic Volume"
 msgstr "Kübik Ses Kullan"
 
 #: src/contents/ui/PreferencesSheet.qml:121
+msgid "Enable/disable input monitoring"
+msgstr "Giriş izlemeyi etkinleştir/devre dışı bırak"
+
+#: src/contents/ui/PreferencesSheet.qml:132
 #, fuzzy
 msgid "Enable the Inactivity Timeout"
 msgstr "Tepkisizlik Zaman Aşımı"
 
-#: src/contents/ui/PreferencesSheet.qml:132
+#: src/contents/ui/PreferencesSheet.qml:143
 msgid "Inactivity Timeout"
 msgstr "Tepkisizlik Zaman Aşımı"
 
-#: src/contents/ui/PreferencesSheet.qml:171
+#: src/contents/ui/PreferencesSheet.qml:182
 msgid "Audio Delay Compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:185
+#: src/contents/ui/PreferencesSheet.qml:196
 msgid "Style"
 msgstr "Görünüm"
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:203
 msgid "Color Scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:207
 #, fuzzy
 msgid "Automatic"
 msgstr "Otomatik Dengeleme"
 
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:207
 #, fuzzy
 msgid "Light"
 msgstr "Sağ"
 
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:207
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:217
 #, fuzzy
 msgid "Color Theme"
 msgstr "Renk"
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Green Neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Mix"
 msgstr "Karıştır"
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 #, fuzzy
 msgid "Orange"
 msgstr "Sınır"
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:231
 msgid "Shape"
 msgstr "Şekil"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Bars"
 msgstr "Çubuklar"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Lines"
 msgstr "Çizgiler"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Dots"
 msgstr "Noktalar"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:245
 msgid "Dynamic Scale"
 msgstr "Dinamik Ölçek"
 
-#: src/contents/ui/PreferencesSheet.qml:245
+#: src/contents/ui/PreferencesSheet.qml:256
 #, fuzzy
 msgid "Logarithmic Frequency Axis"
 msgstr "Sıklık"
 
-#: src/contents/ui/PreferencesSheet.qml:256
+#: src/contents/ui/PreferencesSheet.qml:267
 msgid "Points"
 msgstr "Noktalar"
 
-#: src/contents/ui/PreferencesSheet.qml:270
+#: src/contents/ui/PreferencesSheet.qml:281
 msgid "Height"
 msgstr "Yükseklik"
 
-#: src/contents/ui/PreferencesSheet.qml:284
+#: src/contents/ui/PreferencesSheet.qml:295
 msgid "Frequency Range"
 msgstr "Frekans Aralığı"
 
-#: src/contents/ui/PreferencesSheet.qml:291
+#: src/contents/ui/PreferencesSheet.qml:302
 msgid "Minimum"
 msgstr "Asgari"
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:317
 msgid "Maximum"
 msgstr "Azami"
 
-#: src/contents/ui/PreferencesSheet.qml:329
+#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/ShortcutsSheet.qml:168
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "Kısa_yollar"
 
-#: src/contents/ui/PreferencesSheet.qml:330
+#: src/contents/ui/PreferencesSheet.qml:341
 msgid "Enables support for XDG Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:352
 msgid "Native Plugin Window"
 msgstr "Yerel Eklenti Penceresi"
 
-#: src/contents/ui/PreferencesSheet.qml:342
+#: src/contents/ui/PreferencesSheet.qml:353
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "Yerel Eklenti Penceresinin Gösterilmesini/Gizlenmesini Sağlar"
 
-#: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:364
 msgid "Update Frequency"
 msgstr "Güncelleme Sıklığı"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:365
 msgid "Related to LV2 Plugins"
 msgstr "LV2 Eklentileri ile ilgili"
 
-#: src/contents/ui/PreferencesSheet.qml:382
+#: src/contents/ui/PreferencesSheet.qml:393
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:395
+#: src/contents/ui/PreferencesSheet.qml:406
 msgid "Audio"
 msgstr "Ses"
 
-#: src/contents/ui/PreferencesSheet.qml:408
+#: src/contents/ui/PreferencesSheet.qml:419
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Spektrum Türü"
 
-#: src/contents/ui/PreferencesSheet.qml:421
+#: src/contents/ui/PreferencesSheet.qml:432
 msgid "Experimental Features"
 msgstr "Deneysel özellikler"
 
@@ -2352,40 +2372,47 @@ msgstr "Dürtü Dosyası Yüklenemedi"
 msgid "Import Model"
 msgstr "Modeli İçe Aktar"
 
-#: src/contents/ui/ShortcutsSheet.qml:32
+#: src/contents/ui/ShortcutsSheet.qml:34
 #, fuzzy
 msgid "Show Help"
 msgstr "Yardımı göster"
 
-#: src/contents/ui/ShortcutsSheet.qml:45
+#: src/contents/ui/ShortcutsSheet.qml:47
 #, fuzzy
 msgid "Fullscreen / Restore from fullscreen"
 msgstr "Tam ekran/Tam ekrandan çık"
 
-#: src/contents/ui/ShortcutsSheet.qml:60 src/contents/ui/ShortcutsSheet.qml:88
-#: src/contents/ui/ShortcutsSheet.qml:116
+#: src/contents/ui/ShortcutsSheet.qml:62 src/contents/ui/ShortcutsSheet.qml:90
+#: src/contents/ui/ShortcutsSheet.qml:118
+#: src/contents/ui/ShortcutsSheet.qml:189
+#: src/contents/ui/ShortcutsSheet.qml:201
 msgid "+"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:73
+#: src/contents/ui/ShortcutsSheet.qml:75
 #, fuzzy
 msgid "Toggle Global Bypass"
 msgstr "Genel Atlama"
 
-#: src/contents/ui/ShortcutsSheet.qml:101
+#: src/contents/ui/ShortcutsSheet.qml:103
 #, fuzzy
 msgid "Close the Window"
 msgstr "Pencereyi Kapat"
 
-#: src/contents/ui/ShortcutsSheet.qml:129
+#: src/contents/ui/ShortcutsSheet.qml:131
 #, fuzzy
 msgid "Quit EasyEffects"
 msgstr "Easy Effects'ten Çık"
 
-#: src/contents/ui/ShortcutsSheet.qml:142
-#: src/contents/ui/ShortcutsSheet.qml:155
+#: src/contents/ui/ShortcutsSheet.qml:144
+#: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:214
+#, fuzzy
+msgid "Enable/Disable Effects"
+msgstr "Bu efekti etkinleştir/devre dışı bırak"
 
 #: src/contents/ui/Speex.qml:48
 msgid "Denoise"
@@ -2875,9 +2902,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Detected"
 #~ msgstr "Saptanan"
-
-#~ msgid "Enable/disable input monitoring"
-#~ msgstr "Giriş izlemeyi etkinleştir/devre dışı bırak"
 
 #~ msgid "Expander Mode"
 #~ msgstr "Genişletici Kipi"
@@ -4038,9 +4062,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Includes an equalizer with built-in presets"
 #~ msgstr "Yerleşik ön ayarlara sahip bir ekolayzır içerir"
-
-#~ msgid "Input Limiter"
-#~ msgstr "Giriş Sınırlayıcı"
 
 #~ msgid "Calibration"
 #~ msgstr "Kalibrasyon"

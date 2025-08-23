@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-22 14:59-0300\n"
+"POT-Creation-Date: 2025-08-23 12:31-0300\n"
 "PO-Revision-Date: 2024-03-24 04:01+0000\n"
 "Last-Translator: StarOnTheSky <i@sots.eu.org>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -179,7 +179,16 @@ msgstr "正在使用 {}"
 msgid "Reset History"
 msgstr "清除记录"
 
-#: src/contents/ui/Autogain.qml:296 src/contents/ui/Pitch.qml:243
+#: src/contents/ui/Autogain.qml:296
+#, fuzzy
+msgid "Force Silence"
+msgstr "静音"
+
+#: src/contents/ui/Autogain.qml:297
+msgid "Force Silence When the Level is Below the Silence Threshold"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:308 src/contents/ui/Pitch.qml:243
 #, fuzzy
 msgid "Reset Settings"
 msgstr "重置设置(_R)"
@@ -246,7 +255,7 @@ msgstr "聆听"
 #: src/contents/ui/Expander.qml:807 src/contents/ui/Filter.qml:222
 #: src/contents/ui/Gate.qml:940 src/contents/ui/LevelMeter.qml:255
 #: src/contents/ui/Limiter.qml:537 src/contents/ui/Loudness.qml:164
-#: src/contents/ui/main.qml:310 src/contents/ui/Maximizer.qml:129
+#: src/contents/ui/main.qml:321 src/contents/ui/Maximizer.qml:129
 #: src/contents/ui/MultibandCompressor.qml:968
 #: src/contents/ui/MultibandGate.qml:945 src/contents/ui/Reverb.qml:342
 #: src/contents/ui/RNNoise.qml:292 src/contents/ui/Speex.qml:182
@@ -256,7 +265,7 @@ msgstr "重置"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:487
 #: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:448
-#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:236
+#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:247
 #: src/contents/ui/StereoTools.qml:303
 msgid "Output"
 msgstr "输出"
@@ -764,7 +773,7 @@ msgstr "Cmoy"
 msgid "Jmeier"
 msgstr "Jmeier"
 
-#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:206
+#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:217
 #: src/contents/ui/Reverb.qml:321
 msgid "Presets"
 msgstr "预设"
@@ -964,7 +973,7 @@ msgstr "残余回声抑制"
 msgid "Near End Suppression"
 msgstr "近端回声抑制"
 
-#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:255
+#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:266
 #: src/contents/ui/StereoTools.qml:42
 msgid "Input"
 msgstr "输入"
@@ -1571,34 +1580,35 @@ msgstr "波封"
 msgid "Active"
 msgstr "激活"
 
-#: src/contents/ui/main.qml:185 src/contents/ui/main.qml:330
-#, fuzzy
-msgid "Quit"
-msgstr "退出(_Q)"
-
-#: src/contents/ui/main.qml:214
-msgid "Turn Effects On/Off"
-msgstr ""
-
-#: src/contents/ui/main.qml:274
-#, fuzzy
-msgid "PipeWire"
-msgstr "PipeWire(_P)"
-
-#: src/contents/ui/main.qml:290 src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:442
-#: src/contents/ui/PreferencesSheet.qml:455
-#, fuzzy
-msgid "Preferences"
-msgstr "首选项(_P)"
-
-#: src/contents/ui/main.qml:298 src/contents/ui/ShortcutsSheet.qml:168
+#: src/contents/ui/main.qml:185 src/contents/ui/main.qml:309
+#: src/contents/ui/ShortcutsSheet.qml:228
 #, fuzzy
 msgid "Shortcuts"
 msgstr "快捷键(_S)"
 
-#: src/contents/ui/main.qml:322
+#: src/contents/ui/main.qml:196 src/contents/ui/main.qml:341
+#, fuzzy
+msgid "Quit"
+msgstr "退出(_Q)"
+
+#: src/contents/ui/main.qml:225
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:285
+#, fuzzy
+msgid "PipeWire"
+msgstr "PipeWire(_P)"
+
+#: src/contents/ui/main.qml:301 src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:453
+#: src/contents/ui/PreferencesSheet.qml:466
+#, fuzzy
+msgid "Preferences"
+msgstr "首选项(_P)"
+
+#: src/contents/ui/main.qml:333
 #, fuzzy
 msgid "About EasyEffects"
 msgstr "关于 EasyEffects (_A)"
@@ -1737,6 +1747,11 @@ msgid "Effects"
 msgstr "音效"
 
 #: src/contents/ui/PageStreamsEffects.qml:702
+#, fuzzy
+msgid "Input Monitoring"
+msgstr "输入限幅器"
+
+#: src/contents/ui/PageStreamsEffects.qml:715
 msgid "Excluded Apps"
 msgstr "排除的应用"
 
@@ -1823,12 +1838,12 @@ msgid "No Clients"
 msgstr "客户端"
 
 #: src/contents/ui/PipeWirePage.qml:270
-#: src/contents/ui/PreferencesSheet.qml:153
+#: src/contents/ui/PreferencesSheet.qml:164
 msgid "State"
 msgstr "状态"
 
 #: src/contents/ui/PipeWirePage.qml:277
-#: src/contents/ui/PreferencesSheet.qml:160
+#: src/contents/ui/PreferencesSheet.qml:171
 msgid "Enabled"
 msgstr "已启用"
 
@@ -1927,168 +1942,173 @@ msgid "Use Cubic Volume"
 msgstr "使用非线性（立方）音量调节"
 
 #: src/contents/ui/PreferencesSheet.qml:121
+msgid "Enable/disable input monitoring"
+msgstr "启用/禁用此应用程序"
+
+#: src/contents/ui/PreferencesSheet.qml:132
 #, fuzzy
 msgid "Enable the Inactivity Timeout"
 msgstr "空闲超时"
 
-#: src/contents/ui/PreferencesSheet.qml:132
+#: src/contents/ui/PreferencesSheet.qml:143
 msgid "Inactivity Timeout"
 msgstr "空闲超时"
 
-#: src/contents/ui/PreferencesSheet.qml:171
+#: src/contents/ui/PreferencesSheet.qml:182
 msgid "Audio Delay Compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:185
+#: src/contents/ui/PreferencesSheet.qml:196
 msgid "Style"
 msgstr "界面风格"
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:203
 msgid "Color Scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:207
 #, fuzzy
 msgid "Automatic"
 msgstr "自动调平"
 
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:207
 #, fuzzy
 msgid "Light"
 msgstr "右"
 
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:207
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:217
 #, fuzzy
 msgid "Color Theme"
 msgstr "颜色"
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Green Neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Mix"
 msgstr "干湿声混合"
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 #, fuzzy
 msgid "Orange"
 msgstr "范围"
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:231
 msgid "Shape"
 msgstr "形状"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Bars"
 msgstr "柱状"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Lines"
 msgstr "线型"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Dots"
 msgstr "点阵"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:245
 msgid "Dynamic Scale"
 msgstr "动态比例"
 
-#: src/contents/ui/PreferencesSheet.qml:245
+#: src/contents/ui/PreferencesSheet.qml:256
 #, fuzzy
 msgid "Logarithmic Frequency Axis"
 msgstr "分割频率 2"
 
-#: src/contents/ui/PreferencesSheet.qml:256
+#: src/contents/ui/PreferencesSheet.qml:267
 msgid "Points"
 msgstr "数量"
 
-#: src/contents/ui/PreferencesSheet.qml:270
+#: src/contents/ui/PreferencesSheet.qml:281
 msgid "Height"
 msgstr "高度"
 
-#: src/contents/ui/PreferencesSheet.qml:284
+#: src/contents/ui/PreferencesSheet.qml:295
 msgid "Frequency Range"
 msgstr "频率范围"
 
-#: src/contents/ui/PreferencesSheet.qml:291
+#: src/contents/ui/PreferencesSheet.qml:302
 msgid "Minimum"
 msgstr "最低"
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:317
 msgid "Maximum"
 msgstr "最高"
 
-#: src/contents/ui/PreferencesSheet.qml:329
+#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/ShortcutsSheet.qml:168
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "快捷键(_S)"
 
-#: src/contents/ui/PreferencesSheet.qml:330
+#: src/contents/ui/PreferencesSheet.qml:341
 msgid "Enables support for XDG Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:352
 msgid "Native Plugin Window"
 msgstr "原生插件窗口"
 
-#: src/contents/ui/PreferencesSheet.qml:342
+#: src/contents/ui/PreferencesSheet.qml:353
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr "允许显示或隐藏原生插件窗口"
 
-#: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:364
 #, fuzzy
 msgid "Update Frequency"
 msgstr "分割频率 1"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:365
 #, fuzzy
 msgid "Related to LV2 Plugins"
 msgstr "更新频率（LV2插件）"
 
-#: src/contents/ui/PreferencesSheet.qml:382
+#: src/contents/ui/PreferencesSheet.qml:393
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:395
+#: src/contents/ui/PreferencesSheet.qml:406
 msgid "Audio"
 msgstr "音频"
 
-#: src/contents/ui/PreferencesSheet.qml:408
+#: src/contents/ui/PreferencesSheet.qml:419
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "频谱类型"
 
-#: src/contents/ui/PreferencesSheet.qml:421
+#: src/contents/ui/PreferencesSheet.qml:432
 msgid "Experimental Features"
 msgstr "实验性功能"
 
@@ -2359,40 +2379,47 @@ msgstr "加载脉冲文件失败"
 msgid "Import Model"
 msgstr "导入模型"
 
-#: src/contents/ui/ShortcutsSheet.qml:32
+#: src/contents/ui/ShortcutsSheet.qml:34
 #, fuzzy
 msgid "Show Help"
 msgstr "显示帮助"
 
-#: src/contents/ui/ShortcutsSheet.qml:45
+#: src/contents/ui/ShortcutsSheet.qml:47
 #, fuzzy
 msgid "Fullscreen / Restore from fullscreen"
 msgstr "全屏/从全屏还原"
 
-#: src/contents/ui/ShortcutsSheet.qml:60 src/contents/ui/ShortcutsSheet.qml:88
-#: src/contents/ui/ShortcutsSheet.qml:116
+#: src/contents/ui/ShortcutsSheet.qml:62 src/contents/ui/ShortcutsSheet.qml:90
+#: src/contents/ui/ShortcutsSheet.qml:118
+#: src/contents/ui/ShortcutsSheet.qml:189
+#: src/contents/ui/ShortcutsSheet.qml:201
 msgid "+"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:73
+#: src/contents/ui/ShortcutsSheet.qml:75
 #, fuzzy
 msgid "Toggle Global Bypass"
 msgstr "全局旁路"
 
-#: src/contents/ui/ShortcutsSheet.qml:101
+#: src/contents/ui/ShortcutsSheet.qml:103
 #, fuzzy
 msgid "Close the Window"
 msgstr "关闭窗口"
 
-#: src/contents/ui/ShortcutsSheet.qml:129
+#: src/contents/ui/ShortcutsSheet.qml:131
 #, fuzzy
 msgid "Quit EasyEffects"
 msgstr "退出 Easy Effects"
 
-#: src/contents/ui/ShortcutsSheet.qml:142
-#: src/contents/ui/ShortcutsSheet.qml:155
+#: src/contents/ui/ShortcutsSheet.qml:144
+#: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:214
+#, fuzzy
+msgid "Enable/Disable Effects"
+msgstr "启用/禁用此音效"
 
 #: src/contents/ui/Speex.qml:48
 msgid "Denoise"
@@ -2883,9 +2910,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Detected"
 #~ msgstr "已侦测到"
-
-#~ msgid "Enable/disable input monitoring"
-#~ msgstr "启用/禁用此应用程序"
 
 #, fuzzy
 #~ msgid "Expander Mode"
@@ -3771,9 +3795,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Includes an equalizer with built-in presets"
 #~ msgstr "包含预设的均衡器"
-
-#~ msgid "Input Limiter"
-#~ msgstr "输入限幅器"
 
 #~ msgid "Calibration"
 #~ msgstr "校准"

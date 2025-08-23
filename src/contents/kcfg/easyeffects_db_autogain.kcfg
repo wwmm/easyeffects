@@ -48,5 +48,9 @@
             <max>0</max>
             <default>-70</default>
         </entry>
+        <entry name="forceSilence" type="Bool">
+            <label></label>
+            <default>false</default>
+        </entry>
     </group>
 </kcfg>

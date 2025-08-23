@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-22 14:59-0300\n"
+"POT-Creation-Date: 2025-08-23 12:31-0300\n"
 "PO-Revision-Date: 2023-02-22 18:30+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -182,7 +182,16 @@ msgstr "გამოყენება"
 msgid "Reset History"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:296 src/contents/ui/Pitch.qml:243
+#: src/contents/ui/Autogain.qml:296
+#, fuzzy
+msgid "Force Silence"
+msgstr "სიჩუმე"
+
+#: src/contents/ui/Autogain.qml:297
+msgid "Force Silence When the Level is Below the Silence Threshold"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:308 src/contents/ui/Pitch.qml:243
 msgid "Reset Settings"
 msgstr ""
 
@@ -247,7 +256,7 @@ msgstr "მოსმენა"
 #: src/contents/ui/Expander.qml:807 src/contents/ui/Filter.qml:222
 #: src/contents/ui/Gate.qml:940 src/contents/ui/LevelMeter.qml:255
 #: src/contents/ui/Limiter.qml:537 src/contents/ui/Loudness.qml:164
-#: src/contents/ui/main.qml:310 src/contents/ui/Maximizer.qml:129
+#: src/contents/ui/main.qml:321 src/contents/ui/Maximizer.qml:129
 #: src/contents/ui/MultibandCompressor.qml:968
 #: src/contents/ui/MultibandGate.qml:945 src/contents/ui/Reverb.qml:342
 #: src/contents/ui/RNNoise.qml:292 src/contents/ui/Speex.qml:182
@@ -257,7 +266,7 @@ msgstr "დაბრუნება"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:487
 #: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:448
-#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:236
+#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:247
 #: src/contents/ui/StereoTools.qml:303
 msgid "Output"
 msgstr "გამოტანა"
@@ -770,7 +779,7 @@ msgstr ""
 msgid "Jmeier"
 msgstr ""
 
-#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:206
+#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:217
 #: src/contents/ui/Reverb.qml:321
 msgid "Presets"
 msgstr "პრესეტები"
@@ -975,7 +984,7 @@ msgstr ""
 msgid "Near End Suppression"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:255
+#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:266
 #: src/contents/ui/StereoTools.qml:42
 msgid "Input"
 msgstr "შეყვანა"
@@ -1579,32 +1588,33 @@ msgstr "კონვერტი"
 msgid "Active"
 msgstr "ფარდობითი"
 
-#: src/contents/ui/main.qml:185 src/contents/ui/main.qml:330
+#: src/contents/ui/main.qml:185 src/contents/ui/main.qml:309
+#: src/contents/ui/ShortcutsSheet.qml:228
+msgid "Shortcuts"
+msgstr ""
+
+#: src/contents/ui/main.qml:196 src/contents/ui/main.qml:341
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:214
+#: src/contents/ui/main.qml:225
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:274
+#: src/contents/ui/main.qml:285
 #, fuzzy
 msgid "PipeWire"
 msgstr "_PipeWire"
 
-#: src/contents/ui/main.qml:290 src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/main.qml:301 src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:442
-#: src/contents/ui/PreferencesSheet.qml:455
+#: src/contents/ui/PreferencesSheet.qml:453
+#: src/contents/ui/PreferencesSheet.qml:466
 #, fuzzy
 msgid "Preferences"
 msgstr "_მორგება"
 
-#: src/contents/ui/main.qml:298 src/contents/ui/ShortcutsSheet.qml:168
-msgid "Shortcuts"
-msgstr ""
-
-#: src/contents/ui/main.qml:322
+#: src/contents/ui/main.qml:333
 msgid "About EasyEffects"
 msgstr ""
 
@@ -1745,6 +1755,11 @@ msgstr "ეფექტის დამატება"
 
 #: src/contents/ui/PageStreamsEffects.qml:702
 #, fuzzy
+msgid "Input Monitoring"
+msgstr "შეყვანის მოწყობილობა"
+
+#: src/contents/ui/PageStreamsEffects.qml:715
+#, fuzzy
 msgid "Excluded Apps"
 msgstr "გამორიცხვა"
 
@@ -1829,12 +1844,12 @@ msgid "No Clients"
 msgstr "კლიენტი"
 
 #: src/contents/ui/PipeWirePage.qml:270
-#: src/contents/ui/PreferencesSheet.qml:153
+#: src/contents/ui/PreferencesSheet.qml:164
 msgid "State"
 msgstr "მდგომარეობა"
 
 #: src/contents/ui/PipeWirePage.qml:277
-#: src/contents/ui/PreferencesSheet.qml:160
+#: src/contents/ui/PreferencesSheet.qml:171
 msgid "Enabled"
 msgstr "ჩართულია"
 
@@ -1937,165 +1952,170 @@ msgid "Use Cubic Volume"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:121
-msgid "Enable the Inactivity Timeout"
+msgid "Enable/disable input monitoring"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:132
+msgid "Enable the Inactivity Timeout"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:143
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:171
+#: src/contents/ui/PreferencesSheet.qml:182
 msgid "Audio Delay Compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:185
+#: src/contents/ui/PreferencesSheet.qml:196
 msgid "Style"
 msgstr "სტილი"
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:203
 msgid "Color Scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:207
 #, fuzzy
 msgid "Automatic"
 msgstr "გამოტანის მოწყობილობები"
 
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:207
 #, fuzzy
 msgid "Light"
 msgstr "მარჯვენა"
 
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:207
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:217
 msgid "Color Theme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Green Neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Mix"
 msgstr "მიქსი"
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 #, fuzzy
 msgid "Orange"
 msgstr "დიაპაზონი"
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:210
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:231
 msgid "Shape"
 msgstr "ფორმა"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Bars"
 msgstr "მართკუთხედები"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Lines"
 msgstr "ხაზები"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Dots"
 msgstr "წერტილები"
 
-#: src/contents/ui/PreferencesSheet.qml:224
+#: src/contents/ui/PreferencesSheet.qml:235
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:234
+#: src/contents/ui/PreferencesSheet.qml:245
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:245
+#: src/contents/ui/PreferencesSheet.qml:256
 msgid "Logarithmic Frequency Axis"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:256
+#: src/contents/ui/PreferencesSheet.qml:267
 msgid "Points"
 msgstr "წერტილები"
 
-#: src/contents/ui/PreferencesSheet.qml:270
+#: src/contents/ui/PreferencesSheet.qml:281
 #, fuzzy
 msgid "Height"
 msgstr "მარჯვენა"
 
-#: src/contents/ui/PreferencesSheet.qml:284
+#: src/contents/ui/PreferencesSheet.qml:295
 #, fuzzy
 msgid "Frequency Range"
 msgstr "სიხშირე"
 
-#: src/contents/ui/PreferencesSheet.qml:291
+#: src/contents/ui/PreferencesSheet.qml:302
 msgid "Minimum"
 msgstr "მინიმუმი"
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:317
 msgid "Maximum"
 msgstr "მაქსიმუმი"
 
-#: src/contents/ui/PreferencesSheet.qml:329
+#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/ShortcutsSheet.qml:168
 msgid "Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:330
+#: src/contents/ui/PreferencesSheet.qml:341
 msgid "Enables support for XDG Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:352
 msgid "Native Plugin Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:342
+#: src/contents/ui/PreferencesSheet.qml:353
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:364
 #, fuzzy
 msgid "Update Frequency"
 msgstr "სიხშირე"
 
-#: src/contents/ui/PreferencesSheet.qml:354
+#: src/contents/ui/PreferencesSheet.qml:365
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:382
+#: src/contents/ui/PreferencesSheet.qml:393
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:395
+#: src/contents/ui/PreferencesSheet.qml:406
 msgid "Audio"
 msgstr "აუდიო"
 
-#: src/contents/ui/PreferencesSheet.qml:408
+#: src/contents/ui/PreferencesSheet.qml:419
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "სპექტრი"
 
-#: src/contents/ui/PreferencesSheet.qml:421
+#: src/contents/ui/PreferencesSheet.qml:432
 #, fuzzy
 msgid "Experimental Features"
 msgstr "ექსპერიმენტალური"
@@ -2365,36 +2385,43 @@ msgstr ""
 msgid "Import Model"
 msgstr "პრესეტის შემოტანა"
 
-#: src/contents/ui/ShortcutsSheet.qml:32
+#: src/contents/ui/ShortcutsSheet.qml:34
 msgid "Show Help"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:45
+#: src/contents/ui/ShortcutsSheet.qml:47
 msgid "Fullscreen / Restore from fullscreen"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:60 src/contents/ui/ShortcutsSheet.qml:88
-#: src/contents/ui/ShortcutsSheet.qml:116
+#: src/contents/ui/ShortcutsSheet.qml:62 src/contents/ui/ShortcutsSheet.qml:90
+#: src/contents/ui/ShortcutsSheet.qml:118
+#: src/contents/ui/ShortcutsSheet.qml:189
+#: src/contents/ui/ShortcutsSheet.qml:201
 msgid "+"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:73
+#: src/contents/ui/ShortcutsSheet.qml:75
 msgid "Toggle Global Bypass"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:101
+#: src/contents/ui/ShortcutsSheet.qml:103
 msgid "Close the Window"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:129
+#: src/contents/ui/ShortcutsSheet.qml:131
 #, fuzzy
 msgid "Quit EasyEffects"
 msgstr "ეფექტები"
 
-#: src/contents/ui/ShortcutsSheet.qml:142
-#: src/contents/ui/ShortcutsSheet.qml:155
+#: src/contents/ui/ShortcutsSheet.qml:144
+#: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:214
+#, fuzzy
+msgid "Enable/Disable Effects"
+msgstr "ეფექტები"
 
 #: src/contents/ui/Speex.qml:48
 msgid "Denoise"
@@ -2674,10 +2701,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Sectrum"
 #~ msgstr "სპექტრი"
-
-#, fuzzy
-#~ msgid "Input Pipeline"
-#~ msgstr "შეყვანის მოწყობილობა"
 
 #, fuzzy
 #~ msgid "Update Interval"
