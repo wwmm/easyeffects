@@ -20,6 +20,7 @@
 #include <kicontheme.h>
 #include <klocalizedcontext.h>
 #include <qcontainerfwd.h>
+#include <qnamespace.h>
 #include <qobject.h>
 #include <qqml.h>
 #include <qqmlapplicationengine.h>
@@ -43,6 +44,7 @@
 #include "config.h"
 #include "db_manager.hpp"
 #include "global_shortcuts.hpp"
+#include "help_manager.hpp"
 #include "local_client.hpp"
 #include "local_server.hpp"
 #include "pipeline_type.hpp"
@@ -60,6 +62,8 @@ static void csignalHandler(int s) {
 }
 
 int main(int argc, char* argv[]) {
+  QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
+
   QLoggingCategory::setFilterRules("easyeffects.debug=false");
 
   KIconTheme::initTheme();
@@ -207,6 +211,10 @@ int main(int argc, char* argv[]) {
   // autostart
 
   auto autostart = std::make_unique<Autostart>();
+
+  // help
+
+  auto manual = std::make_unique<HelpManager>();
 
   // Initializing QML
 

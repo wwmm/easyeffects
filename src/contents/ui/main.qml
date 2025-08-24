@@ -3,6 +3,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
+import ee.help as Help
 import ee.pipeline as Pipeline
 import org.kde.kirigami as Kirigami
 
@@ -76,6 +77,13 @@ Kirigami.ApplicationWindow {
                 appWindow.showFullScreen();
             else
                 appWindow.showNormal();
+        }
+    }
+
+    Shortcut {
+        sequences: ["F1"]
+        onActivated: {
+            Help.Manager.openManual();
         }
     }
 
@@ -196,6 +204,14 @@ Kirigami.ApplicationWindow {
                 }
             }
 
+            MenuItem {
+                text: i18n("Manual")
+                icon.name: "help-contents-symbolic"
+                onTriggered: {
+                    Help.Manager.openManual();
+                }
+            }
+
             MenuSeparator {}
 
             MenuItem {
@@ -273,7 +289,7 @@ Kirigami.ApplicationWindow {
                         checkable: true
                         checked: DB.Manager.main.visiblePage === 1
                         onTriggered: {
-                            pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
+                            appWindow.pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
                                 "pageType": 1,
                                 "streamDB": DB.Manager.streamInputs,
                                 "pluginsDB": Qt.binding(function () {
@@ -292,7 +308,7 @@ Kirigami.ApplicationWindow {
                         checkable: true
                         checked: DB.Manager.main.visiblePage === 2
                         onTriggered: {
-                            pageStack.replace("qrc:ui/PipeWirePage.qml");
+                            appWindow.pageStack.replace("qrc:ui/PipeWirePage.qml");
                             DB.Manager.main.visiblePage = 2;
                         }
                     }
@@ -317,6 +333,14 @@ Kirigami.ApplicationWindow {
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
                             shortcutsSheet.open();
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Manual")
+                        icon.name: "help-contents-symbolic"
+                        displayHint: Kirigami.DisplayHint.AlwaysHide
+                        onTriggered: {
+                            Help.Manager.openManual();
                         }
                     },
                     Kirigami.Action {

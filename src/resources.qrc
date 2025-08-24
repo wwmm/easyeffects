@@ -54,4 +54,48 @@
         <file alias="StereoTools.qml">contents/ui/StereoTools.qml</file>
         <file alias="Common.js">contents/ui/Common.js</file>
     </qresource>
+
+    <qresource prefix="/help">
+        <file alias="advancedinfo.html">contents/help/advancedinfo.html</file>
+        <file alias="autogain.html">contents/help/autogain.html</file>
+        <file alias="bassenhancer.html">contents/help/bassenhancer.html</file>
+        <file alias="bassloudness.html">contents/help/bassloudness.html</file>
+        <file alias="blocklist.html">contents/help/blocklist.html</file>
+        <file alias="C.css">contents/help/C.css</file>
+        <file alias="compressor.html">contents/help/compressor.html</file>
+        <file alias="convolver.html">contents/help/convolver.html</file>
+        <file alias="crossfeed.html">contents/help/crossfeed.html</file>
+        <file alias="crystalizer.html">contents/help/crystalizer.html</file>
+        <file alias="deepfilternet.html">contents/help/deepfilternet.html</file>
+        <file alias="deesser.html">contents/help/deesser.html</file>
+        <file alias="delay.html">contents/help/delay.html</file>
+        <file alias="echocanceller.html">contents/help/echocanceller.html</file>
+        <file alias="effectsorder.html">contents/help/effectsorder.html</file>
+        <file alias="enableapp.html">contents/help/enableapp.html</file>
+        <file alias="equalizer.html">contents/help/equalizer.html</file>
+        <file alias="exciter.html">contents/help/exciter.html</file>
+        <file alias="filter.html">contents/help/filter.html</file>
+        <file alias="gate.html">contents/help/gate.html</file>
+        <file alias="general.html">contents/help/general.html</file>
+        <file alias="guide_1.html">contents/help/guide_1.html</file>
+        <file alias="highlight.pack.js">contents/help/highlight.pack.js</file>
+        <file alias="index.html">contents/help/index.html</file>
+        <file alias="limiter.html">contents/help/limiter.html</file>
+        <file alias="loudness.html">contents/help/loudness.html</file>
+        <file alias="maximizer.html">contents/help/maximizer.html</file>
+        <file alias="multibandcompressor.html">contents/help/multibandcompressor.html</file>
+        <file alias="multibandgate.html">contents/help/multibandgate.html</file>
+        <file alias="pipewire.html">contents/help/pipewire.html</file>
+        <file alias="pitch.html">contents/help/pitch.html</file>
+        <file alias="reverb.html">contents/help/reverb.html</file>
+        <file alias="rnnoise.html">contents/help/rnnoise.html</file>
+        <file alias="saturated.html">contents/help/saturated.html</file>
+        <file alias="settingsmenu.html">contents/help/settingsmenu.html</file>
+        <file alias="speex.html">contents/help/speex.html</file>
+        <file alias="spectrum.html">contents/help/spectrum.html</file>
+        <file alias="stereotools.html">contents/help/stereotools.html</file>
+        <file alias="testsignals.html">contents/help/testsignals.html</file>
+        <file alias="userpresets.html">contents/help/userpresets.html</file>
+        <file alias="yelp.js">contents/help/yelp.js</file>
+    </qresource>
 </RCC>

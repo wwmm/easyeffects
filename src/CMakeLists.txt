@@ -4,8 +4,6 @@ add_subdirectory(contents)
 
 add_executable(easyeffects)
 
-add_dependencies(easyeffects helpfile)
-
 kde_target_enable_exceptions(easyeffects PRIVATE)
 
 kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})
@@ -62,6 +60,7 @@ target_sources(easyeffects PRIVATE
     gate.cpp
     gate_preset.cpp
     global_shortcuts.cpp
+    help_manager.cpp
     kconfig_base_ee.cpp
     ladspa_wrapper.cpp
     level_meter.cpp

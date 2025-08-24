@@ -5,12 +5,6 @@
     }
   ],
   "settings": {
-    "mesonbuild.buildFolder": "_build",
-    "mesonbuild.configureOnOpen": true,
-    "mesonbuild.configureOptions": [
-      "--buildtype=debugoptimized",
-      "--cpp_std=c++17"
-    ],
     "editor.formatOnSave": true,
     "editor.rulers": [
       120
@@ -95,6 +89,5 @@
     "xml.format.preservedNewlines": 1,
     "xml.format.enabled": true,
     "xml.format.maxLineWidth": 0,
-    "mesonbuild.selectRootDir": false
   }
 }

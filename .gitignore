@@ -13,10 +13,6 @@ compile_commands.json
 .cache
 .qmlls.ini
 
-# Qt help project binary files
-*.qch
-*.qhc
-
 # Compiled python modules.
 *.pyc
 
