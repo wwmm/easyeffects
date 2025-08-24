@@ -1,0 +1,26 @@
+find_program(QHELPGENERATOR_EXECUTABLE
+    NAMES qhelpgenerator
+    HINTS ${QT_DIR}/bin
+    REQUIRED
+)
+
+set(QHCP_FILE ${CMAKE_CURRENT_BINARY_DIR}/manual.qhcp)
+set(QHC_FILE ${CMAKE_CURRENT_BINARY_DIR}/manual.qhc)
+
+file(COPY_FILE ${CMAKE_CURRENT_SOURCE_DIR}/manual.qhcp ${QHCP_FILE})
+file(COPY_FILE ${CMAKE_CURRENT_SOURCE_DIR}/manual.qhp ${CMAKE_CURRENT_BINARY_DIR}/manual.qhp)
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/html DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+file(GLOB HTML_FILES "${CMAKE_CURRENT_SOURCE_DIR}/html/*.html")
+
+add_custom_command(
+    OUTPUT ${QHC_FILE}
+    COMMAND ${QHELPGENERATOR_EXECUTABLE} ${QHCP_FILE} -o ${QHC_FILE}
+    DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/manual.qhcp ${HTML_FILES}
+    COMMENT "Generating ${QHC_FILE} from ${QHCP_FILE}"
+)
+
+set_source_files_properties(${QHC_FILE} PROPERTIES GENERATED TRUE)
+
+add_custom_target(helpfile DEPENDS ${QHC_FILE})

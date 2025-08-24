@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<QtHelpProject version="1.0">
+    <namespace>com.github.wwmm.easyeffects.docs</namespace>
+    <virtualFolder>doc</virtualFolder>
+    <customFilter name="EasyEffects">
+        <filterAttribute>easyeffects</filterAttribute>
+    </customFilter>
+    <filterSection>
+        <filterAttribute>easyeffects</filterAttribute>
+        <toc>
+            <section title="EasyEffects Manual" ref="html/index.html" />
+        </toc>
+        <files>
+            <file>html/*.html</file>
+        </files>
+    </filterSection>
+</QtHelpProject>

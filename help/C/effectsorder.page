@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<page xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="effectsorder" style="2column">
-    <info>
-        <link type="guide" xref="index#ui"/>
-    </info>
-    <title>Changing Effects Order</title>
-    <p>The user can change the effects order in the plugins stack. The effects can be dragged with the cursor and dropped at the new position. The first plugin from top to bottom is the first to receive the audio signal.</p>
-</page>

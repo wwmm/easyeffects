@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Gate</title>
+    <link rel="stylesheet" type="text/css" href="C.css">
+    <script type="text/javascript" src="highlight.pack.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var matches = document.querySelectorAll('code.syntax')
+            for (var i = 0; i < matches.length; i++) {
+                hljs.highlightBlock(matches[i]);
+            }
+        }, false);</script>
+    <script type="text/javascript" src="yelp.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="page">
+            <header>
+                <div class="inner pagewide">
+                    <div class="trails" role="navigation">
+                        <div class="trail">
+                            <a class="trail" href="index.html" title="Easy Effects">Easy Effects</a> › <a class="trail"
+                                href="index.html#plugins" title="Plugins">Plugins</a> »
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <article>
+                <div class="hgroup pagewide">
+                    <h1 class="title"><span class="title">Gate</span></h1>
+                </div>
+                <div class="region">
+                    <div class="contents pagewide">
+                        <p class="p">The Gate attenuates signals that register below a Threshold. This kind of signal
+                            processing is used to reduce disturbing noise between useful signals. Easy Effects uses the
+                            Stereo Sidechain Gate from Linux Studio Plugins.</p>
+                    </div>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">Gate Workflow</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <p class="p">The Gate begins to open when the Sidechain level becomes above the
+                                        Attack Zone Start level.</p>
+                                    <p class="p">The Gate fully opens when the Sidechain level becomes above the Attack
+                                        Threshold level.</p>
+                                    <p class="p">The Gate begins to close when the Sidechain level becomes below the
+                                        Release Zone Start level.</p>
+                                    <p class="p">The Gate fully closes when the Sidechain level becomes below the
+                                        Release Threshold level.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">Gate Options</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <div class="terms">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <dl class="terms">
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Attack Time</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The length of time it takes to restore roughly
+                                                            two-thirds of the gain reduction.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Release Time</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The length of time it takes to apply roughly
+                                                            two-thirds of the gain reduction.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Curve Threshold</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The Gate fully opens upon the Sidechain level
+                                                            becoming above Curve Threshold (displayed as Attack
+                                                            Threshold level).</p>
+                                                        <p class="p">If Hysteresis is not enabled, the Gate begins to
+                                                            close upon the Sidechain level becoming below Curve
+                                                            Threshold (displayed as Release Zone Start level).</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Curve Zone Size</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The Gate begins to open upon the Sidechain level
+                                                            becoming above the Curve Threshold + Curve Zone (displayed
+                                                            as Attack Zone Start level).</p>
+                                                        <p class="p">If Hysteresis is not enabled, the Gate fully closes
+                                                            upon the Sidechain level becoming below the Curve Threshold
+                                                            + Curve Zone (displayed as Release Threshold level).</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Hysteresis</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">When enabled, Curve Threshold and Curve Zone apply
+                                                            only to the opening Gate, and separate parameters can be
+                                                            configured for closing Gate.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Hysteresis Threshold</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">If Hysteresis is enabled, the Gate begins to close
+                                                            upon the Sidechain level becoming below Curve Threshold +
+                                                            Hysteresis Threshold (displayed as Release Zone Start
+                                                            level).</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Hysteresis Zone Size</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">If Hysteresis is enabled, the Gate fully closes
+                                                            upon the Sidechain level becoming below the Curve Threshold
+                                                            + Hysteresis Threshold + Hysteresis Zone (displayed as
+                                                            Release Threshold level).</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Dry Level</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Amount of unprocessed signal mixed in the output.
+                                                        </p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Wet Level</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Amount of processed signal mixed in the output.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Reduction</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">If the value is negative, it acts as the amount of
+                                                            gain reduction to apply to the input signal when the Gate is
+                                                            fully closed. If the value is positive, the Gate operates in
+                                                            "Reverse Mode": It reduces the amplitude when the signal is
+                                                            above the threshold.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Makeup</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The gain to apply after the gating stage.</p>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">Sidechain</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <div class="terms">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <dl class="terms">
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Listen</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Allows to listen the processed Sidechain signal.
+                                                        </p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Input Type</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Determines which signal is the Sidechain or, in
+                                                            other words, the signal that controls the gating stage.</p>
+                                                        <div class="list">
+                                                            <div class="inner">
+                                                                <div class="region">
+                                                                    <ul class="list">
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Internal</span>
+                                                                                - The Sidechain is the Gate input signal
+                                                                                (taken after applying the plugin input
+                                                                                gain).
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">External</span>
+                                                                                - The Sidechain is an external source
+                                                                                took by a specific input device
+                                                                                (typically a microphone).
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Input Device</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Select the device for the External Sidechain.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Mode</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Determines how the Sidechain is evaluated for the
+                                                            gating stage.</p>
+                                                        <div class="list">
+                                                            <div class="inner">
+                                                                <div class="region">
+                                                                    <ul class="list">
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Peak</span> -
+                                                                                The Gate reacts according to the peaks.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">RMS</span> -
+                                                                                The Gate reacts according to the average
+                                                                                loudness measured by the root mean
+                                                                                square.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Low-Pass
+                                                                                    Filter</span> - The Gate reacts
+                                                                                according to the signal processed by a
+                                                                                recursive 1-pole Low-Pass filter.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Simple Moving
+                                                                                    Average</span> - The Gate reacts
+                                                                                according to the signal processed by the
+                                                                                Simple Moving Average filter.
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Source</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Determines which part of the Sidechain is taken
+                                                            into account for the gating stage.</p>
+                                                        <div class="list">
+                                                            <div class="inner">
+                                                                <div class="region">
+                                                                    <ul class="list">
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Middle</span> -
+                                                                                The sum of left and right channels.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Side</span> -
+                                                                                The difference between left and right
+                                                                                channels.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Left</span> -
+                                                                                Only left channel is used.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Right</span> -
+                                                                                Only right channel is used.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Min</span> -
+                                                                                The absolute minimum value is taken from
+                                                                                stereo input.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Max</span> -
+                                                                                The absolute maximum value is taken from
+                                                                                stereo input.
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">PreAmplification</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Gain applied to the Sidechain signal.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Reactivity</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The time that defines the number of samples used to
+                                                            process the Sidechain in RMS, Uniform and Low-Pass modes.
+                                                            Higher the value, more smooth the gating.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Lookahead</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The signal to gate is delayed by this amount of
+                                                            time, so that the gating will be applied earlier than it
+                                                            would be otherwise. The corresponding delay is reproduced on
+                                                            the output signal.</p>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">Sidechain Filters</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <div class="terms">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <dl class="terms">
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">High-Pass Filter Mode</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Sets the type of the High-Pass filter applied to
+                                                            Sidechain signal.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">High-Pass Frequency</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Sets the cut-off frequency of the High-Pass filter.
+                                                        </p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Low-Pass Filter Mode</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Sets the type of the Low-Pass filter applied to
+                                                            Sidechain signal.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Low-Pass Frequency</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Sets the cut-off frequency of the Low-Pass filter.
+                                                        </p>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">References</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <div class="list">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <ul class="list">
+                                                    <li class="list">
+                                                        <p class="p">
+                                                            <span class="link"><a
+                                                                    href="https://en.wikipedia.org/wiki/Dynamic_range_compression"
+                                                                    title="https://en.wikipedia.org/wiki/Dynamic_range_compression">Wikipedia
+                                                                    Dynamic Range Compression</a></span>
+                                                        </p>
+                                                    </li>
+                                                    <li class="list">
+                                                        <p class="p">
+                                                            <span class="link"><a
+                                                                    href="https://lsp-plug.in/?page=manuals&amp;section=sc_gate_stereo"
+                                                                    title="https://lsp-plug.in/?page=manuals&amp;section=sc_gate_stereo">LSP
+                                                                    Sidechain Gate Stereo</a></span>
+                                                        </p>
+                                                    </li>
+                                                    <li class="list">
+                                                        <p class="p">
+                                                            <span class="link"><a
+                                                                    href="https://en.wikipedia.org/wiki/Noise_gate"
+                                                                    title="https://en.wikipedia.org/wiki/Noise_gate">Wikipedia
+                                                                    Noise Gate</a></span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="links" role="navigation">
+                        <div class="inner">
+                            <div class="hgroup pagewide"></div>
+                            <div class="contents pagewide">
+                                <div class="links guidelinks">
+                                    <div class="inner">
+                                        <div class="title">
+                                            <h2><span class="title">More Information</span></h2>
+                                        </div>
+                                        <div class="region">
+                                            <ul>
+                                                <li class="links "><a href="index.html#plugins"
+                                                        title="Plugins">Plugins</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="clear"></div>
+            </article>
+            <footer>
+                <div class="inner pagewide"></div>
+            </footer>
+        </div>
+    </main>
+</body>
+
+</html>

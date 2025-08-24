@@ -1,0 +1,3 @@
+qhelpgenerator manual.qhcp -o manual.qhc
+
+assistant -collectionFile manual.qhc

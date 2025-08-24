@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Multiband Gate</title>
+    <link rel="stylesheet" type="text/css" href="C.css">
+    <script type="text/javascript" src="highlight.pack.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var matches = document.querySelectorAll('code.syntax')
+            for (var i = 0; i < matches.length; i++) {
+                hljs.highlightBlock(matches[i]);
+            }
+        }, false);</script>
+    <script type="text/javascript" src="yelp.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="page">
+            <header>
+                <div class="inner pagewide">
+                    <div class="trails" role="navigation">
+                        <div class="trail">
+                            <a class="trail" href="index.html" title="Easy Effects">Easy Effects</a> › <a class="trail"
+                                href="index.html#plugins" title="Plugins">Plugins</a> »
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <article>
+                <div class="hgroup pagewide">
+                    <h1 class="title"><span class="title">Multiband Gate</span></h1>
+                </div>
+                <div class="region">
+                    <div class="contents pagewide">
+                        <p class="p">Easy Effects uses the Multiband Gate Stereo developed by Calf Studio Gear. Please
+                            refer to the <span class="link"><a href="gate.html" title="Gate">Gate</a></span>
+                            documentation to comprehend the basic functionality of the gating process.</p>
+                    </div>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">Global Options</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <div class="terms">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <dl class="terms">
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Band Management</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">This Gate allows to split the input signal up to 8
+                                                            bands. Each band is not attached to its strict frequency and
+                                                            can be controlled by completely different frequency range
+                                                            that can be obtained by applying Low-Cut and Hi-Cut filters
+                                                            to the Sidechain signal.</p>
+                                                        <p class="p">The first band is always enabled while the others
+                                                            can be activated if needed. When only the first band is
+                                                            enabled, the functionality is similar to the Singleband
+                                                            Sidechain Gate. Otherwise the signal is split in more bands
+                                                            and each band is processed individually. After the gating
+                                                            stage, the bands are mixed together to form the output
+                                                            result.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Operating Mode</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Determines how the input signal is split to obtain
+                                                            the different bands.</p>
+                                                        <div class="list">
+                                                            <div class="inner">
+                                                                <div class="region">
+                                                                    <ul class="list">
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Classic</span>
+                                                                                - The original signal is split using
+                                                                                crossover filters. After the gating
+                                                                                stage, all bands become
+                                                                                phase-compensated using All-Pass
+                                                                                filters.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Modern</span> -
+                                                                                Each band is processed by a pair of
+                                                                                dynamic shelving filters. This mode
+                                                                                allows a better control over the gain of
+                                                                                each band.
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Sidechain Boost</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">If enabled, it introduces a special mode for
+                                                            assigning the same weight for higher frequencies opposite to
+                                                            lower frequencies.</p>
+                                                        <p class="p">When disabled, the frequency band is processed 'as
+                                                            is', but the usual audio signal has 3 dB/octave falloff in
+                                                            the frequency domain and could be compared with the pink
+                                                            noise. So lower frequencies take more effect on the Gate
+                                                            rather than higher frequencies.</p>
+                                                        <p class="p">On the other hand the Sidechain Boost mode allows
+                                                            to compensate the -3 dB/octave falloff of the signal
+                                                            spectrum and, even more, makes the signal spectrum growing
+                                                            +3 dB/octave in the almost fully audible frequency range.
+                                                        </p>
+                                                        <p class="p">
+                                                            <span class="em-bold em">Pink</span> applies +3 dB/octave
+                                                            while <span class="em-bold em">Brown</span> applies +6
+                                                            dB/octave Sidechain Boost. Each of them can use
+                                                            bilinear-transformed (BT) or matched-transformed (MT)
+                                                            shelving filter.
+                                                        </p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Sidechain Source</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">If the External Sidechain is enabled inside at
+                                                            least one band, this combobox allows to select the input
+                                                            device as source.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Dry Level</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Amount of unprocessed signal mixed in the output.
+                                                        </p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Wet Level</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Amount of processed signal mixed in the output.</p>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">Band Options</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <div class="terms">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <dl class="terms">
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Band Start</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Allows to change the lower end split frequency of
+                                                            the selected band. This value is assigned to the Band End of
+                                                            the previous enabled band. It can be modified for all bands
+                                                            except the first one, which is always enabled and its value
+                                                            is 0 Hz.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Band End</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Specify the upper end split frequency of the
+                                                            selected band. It cannot be directly modified and assumes
+                                                            the same value of the Band Start of the next enabled band.
+                                                            For the last enabled band it is always 24.000 Hz.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">External Sidechain</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The Sidechain is an external source took by a
+                                                            specific input device (typically a microphone).</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Band Bypass</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">If enabled, the selected band is not affected by
+                                                            the gating stage.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Solo</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Turns on the Solo mode to the selected band by
+                                                            applying -36 dB gain to the other non-soloing bands.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Mute</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Turns on the Mute mode applying -36 dB gain to to
+                                                            the selected band.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Attack Time</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The length of time it takes to apply roughly
+                                                            two-thirds of the gain reduction.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Release Time</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The length of time it takes to restore roughly
+                                                            two-thirds of the gain reduction.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Curve Threshold</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The Gate fully opens upon the Sidechain level
+                                                            becoming above Curve Threshold.</p>
+                                                        <p class="p">If Hysteresis is not enabled, the Gate begins to
+                                                            close upon the Sidechain level becoming below Curve
+                                                            Threshold.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Curve Zone Size</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The Gate begins to open upon the Sidechain level
+                                                            becoming above the Curve Threshold + Curve Zone.</p>
+                                                        <p class="p">If Hysteresis is not enabled, the Gate fully closes
+                                                            upon the Sidechain level becoming below the Curve Threshold
+                                                            + Curve Zone.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Hysteresis</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">When enabled, Curve Threshold and Curve Zone apply
+                                                            only to the opening Gate, and separate parameters can be
+                                                            configured for closing Gate.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Hysteresis Threshold</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">If Hysteresis is enabled, the Gate begins to close
+                                                            upon the Sidechain level becoming below Curve Threshold +
+                                                            Hysteresis Threshold.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Hysteresis Zone Size</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">If Hysteresis is enabled, the Gate fully closes
+                                                            upon the Sidechain level becoming below the Curve Threshold
+                                                            + Hysteresis Threshold + Hysteresis Zone.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Reduction</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">If the value is negative, it acts as the amount of
+                                                            gain reduction to apply to the input signal when the Gate is
+                                                            fully closed. If the value is positive, the Gate operates in
+                                                            "Reverse Mode": It reduces the amplitude when the signal is
+                                                            above the threshold.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Makeup</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The gain to apply after the gating stage.</p>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">Band Sidechain Options</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <div class="terms">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <dl class="terms">
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Mode</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Determines how the Sidechain is evaluated for the
+                                                            gating stage.</p>
+                                                        <div class="list">
+                                                            <div class="inner">
+                                                                <div class="region">
+                                                                    <ul class="list">
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Peak</span> -
+                                                                                The Gate reacts according to the peaks.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">RMS</span> -
+                                                                                The Gate reacts according to the average
+                                                                                loudness measured by the root mean
+                                                                                square.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Low-Pass
+                                                                                    Filter</span> - The Gate reacts
+                                                                                according to the signal processed by a
+                                                                                recursive 1-pole Low-Pass filter.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Simple Moving
+                                                                                    Average</span> - The Gate reacts
+                                                                                according to the signal processed by the
+                                                                                Simple Moving Average filter.
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Source</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Determines which part of the Sidechain is taken
+                                                            into account for the gating stage.</p>
+                                                        <div class="list">
+                                                            <div class="inner">
+                                                                <div class="region">
+                                                                    <ul class="list">
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Middle</span> -
+                                                                                The sum of left and right channels.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Side</span> -
+                                                                                The difference between left and right
+                                                                                channels.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Left</span> -
+                                                                                Only left channel is used.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Right</span> -
+                                                                                Only right channel is used.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Min</span> -
+                                                                                The absolute minimum value is taken from
+                                                                                stereo input.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Max</span> -
+                                                                                The absolute maximum value is taken from
+                                                                                stereo input.
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Low-Cut Filter</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Enables a custom Low-Cut Filter for the selected
+                                                            band.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Low-Cut Frequency</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Sets the cut-off frequency of the custom Low-Cut
+                                                            filter. If it is disabled, the default Low-Cut filter
+                                                            assumes internally the Band Start frequency as the cut-off
+                                                            frequency.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Hight-Cut Filter</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Enables a custom High-Cut Filter for the selected
+                                                            band.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Hight-Cut Frequency</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Sets the cut-off frequency of the custom High-Cut
+                                                            filter. If it is disabled, the default High-Cut filter
+                                                            assumes internally the Band End frequency as the cut-off
+                                                            frequency.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">PreAmp</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Gain applied to the Sidechain signal of the
+                                                            selected band.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Reactivity</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The time that defines the number of samples used to
+                                                            process the Sidechain in RMS, Uniform and Low-Pass modes.
+                                                            Higher the value, more smooth the gating.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Lookahead</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The band signal to gate is delayed by this amount
+                                                            of time, so that the gating will be applied earlier than it
+                                                            would be otherwise.</p>
+                                                        <p class="p">Each band can have different Lookahead values. To
+                                                            avoid phase distortions in the mixing stage, all the bands
+                                                            are automatically delayed for an individually calculated
+                                                            period of time.</p>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">References</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <div class="list">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <ul class="list">
+                                                    <li class="list">
+                                                        <p class="p">
+                                                            <span class="link"><a
+                                                                    href="https://lsp-plug.in/?page=manuals&amp;section=sc_mb_gate_stereo"
+                                                                    title="https://lsp-plug.in/?page=manuals&amp;section=sc_mb_gate_stereo">LSP
+                                                                    Sidechain Multiband Gate Stereo</a></span>
+                                                        </p>
+                                                    </li>
+                                                    <li class="list">
+                                                        <p class="p">
+                                                            <span class="link"><a
+                                                                    href="https://en.wikipedia.org/wiki/Noise_gate"
+                                                                    title="https://en.wikipedia.org/wiki/Noise_gate">Wikipedia
+                                                                    Noise Gate</a></span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="links" role="navigation">
+                        <div class="inner">
+                            <div class="hgroup pagewide"></div>
+                            <div class="contents pagewide">
+                                <div class="links guidelinks">
+                                    <div class="inner">
+                                        <div class="title">
+                                            <h2><span class="title">More Information</span></h2>
+                                        </div>
+                                        <div class="region">
+                                            <ul>
+                                                <li class="links "><a href="index.html#plugins"
+                                                        title="Plugins">Plugins</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="clear"></div>
+            </article>
+            <footer>
+                <div class="inner pagewide"></div>
+            </footer>
+        </div>
+    </main>
+</body>
+
+</html>

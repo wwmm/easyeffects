@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<page xmlns="http://projectmallard.org/1.0/"
-    xmlns:its="http://www.w3.org/2005/11/its" type="guide" id="saturated" style="2column">
-    <info>
-        <link type="guide" xref="index#ui"/>
-    </info>
-    <title>Saturation Warning</title>
-    <p>If the audio signal coming out from the pipeline is too high, very unpleasant noises can be produced. In case this happens a warning icon is shown near the output level meter in the bottom bar so that the user can reduce the audio level using the <link xref="limiter" its:withinText="yes">Limiter</link> or the <link xref="maximizer" its:withinText="yes">Maximizer</link> plugin.</p>
-</page>

@@ -34,7 +34,7 @@ depends=(
   'gsl'
   'libportal-qt6'
 )
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'intltool' 'appstream-glib' 'mold' 'ladspa')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'intltool' 'appstream-glib' 'mold' 'ladspa' 'qt6-tools')
 optdepends=('calf: limiter, exciter, bass enhancer and others'
             'lsp-plugins: equalizer, compressor, delay, loudness'
             'zam-plugins: maximizer'

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Limiter</title>
+    <link rel="stylesheet" type="text/css" href="C.css">
+    <script type="text/javascript" src="highlight.pack.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var matches = document.querySelectorAll('code.syntax')
+            for (var i = 0; i < matches.length; i++) {
+                hljs.highlightBlock(matches[i]);
+            }
+        }, false);</script>
+    <script type="text/javascript" src="yelp.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="page">
+            <header>
+                <div class="inner pagewide">
+                    <div class="trails" role="navigation">
+                        <div class="trail">
+                            <a class="trail" href="index.html" title="Easy Effects">Easy Effects</a> › <a class="trail"
+                                href="index.html#plugins" title="Plugins">Plugins</a> »
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <article>
+                <div class="hgroup pagewide">
+                    <h1 class="title"><span class="title">Limiter</span></h1>
+                </div>
+                <div class="region">
+                    <div class="contents pagewide">
+                        <p class="p">A Limiter is a special type of downward <span class="link"><a
+                                    href="compressor.html" title="Compressor">Compressor</a></span> which does not allow
+                            the signal to overtake a predetermined Threshold. Ideally it has a very high compression
+                            ratio that takes the amplitude below a ceiling which stands as the maximum output level. For
+                            this reason it is usually named "brick-wall limiter".</p>
+                        <p class="p">Easy Effects uses the Sidechain Stereo Limiter from Linux Studio Plugins. In most
+                            cases it works as a brick-wall limiter, but it offers also an additional feature that acts
+                            like a Compressor with extreme settings, so the output signal may exceed the specified
+                            Threshold.</p>
+                        <div class="terms">
+                            <div class="inner">
+                                <div class="region">
+                                    <dl class="terms">
+                                        <dt class="terms">
+                                            <span class="em-bold em">Mode</span>
+                                        </dt>
+                                        <dd class="terms">
+                                            <p class="p">Select the operative mode of the peak cutting algorithm which
+                                                searches the peaks above the Threshold and applies short gain reduction
+                                                patches to the signal.</p>
+                                            <p class="p">These patches can be selected in 3 forms:
+                                                <span class="em-bold em">Hermite</span>,
+                                                <span class="em-bold em">Exponential</span> and
+                                                <span class="em-bold em">Linear</span>.
+                                                Each one has 4 different variants related to gain reduction of the
+                                                samples around the peak:
+                                                <span class="em-bold em">Thin</span>,
+                                                <span class="em-bold em">Tail</span>,
+                                                <span class="em-bold em">Duck</span> and
+                                                <span class="em-bold em">Wide</span>.
+                                            </p>
+                                            <p class="p">The shape of each form and variant can be referred into the
+                                                Linux Studio Plugin manual. See References section at the bottom of the
+                                                present document.</p>
+                                        </dd>
+                                        <dt class="terms">
+                                            <span class="em-bold em">Oversampling</span>
+                                        </dt>
+                                        <dd class="terms">
+                                            <p class="p">When enabled, the sample rate is internally increased in order
+                                                to improve peak detection and reduce aliasing (that causes distortion).
+                                            </p>
+                                            <p class="p">The modes have 2 main types: <span
+                                                    class="em-bold em">Full</span>, which increases both the Sidechain
+                                                and the Input signals, and <span class="em-bold em">Half</span> which
+                                                increases only the Sidechain. Each one of them specifies different <span
+                                                    class="em-bold em">multipliers</span> and, between parentheses, the
+                                                number of "<span class="em-bold em">lobes</span> in the kernel".</p>
+                                            <p class="p">The oversampled Input signal is downsampled to the original
+                                                sample rate after processing.</p>
+                                        </dd>
+                                        <dt class="terms">
+                                            <span class="em-bold em">Dither</span>
+                                        </dt>
+                                        <dd class="terms">
+                                            <p class="p">If specified, it enables Dithering for the selected bit depth.
+                                                The process of Dithering adds a low-level noise to output signal in
+                                                order to mask "quantization distortion", a form of artifact present in
+                                                digital audio rendered at lower bit depth.</p>
+                                        </dd>
+                                        <dt class="terms">
+                                            <span class="em-bold em">SC PreAmp</span>
+                                        </dt>
+                                        <dd class="terms">
+                                            <p class="p">The gain applied to the Sidechain before it is processed.</p>
+                                        </dd>
+                                        <dt class="terms">
+                                            <span class="em-bold em">Lookahead</span>
+                                        </dt>
+                                        <dd class="terms">
+                                            <p class="p">The size of the buffer used to detect the peaks in advance. It
+                                                adds the corresponding latency to the output signal.</p>
+                                        </dd>
+                                        <dt class="terms">
+                                            <span class="em-bold em">Attack</span>
+                                        </dt>
+                                        <dd class="terms">
+                                            <p class="p">The length of time it takes to apply the needed gain reduction
+                                                to keep the peak below the Threshold.</p>
+                                            <p class="p">It affects the length of the gain reduction patch. It cannot be
+                                                larger than the Lookahead (if specified larger, it's set internally as
+                                                the max possible value).</p>
+                                        </dd>
+                                        <dt class="terms">
+                                            <span class="em-bold em">Release</span>
+                                        </dt>
+                                        <dd class="terms">
+                                            <p class="p">The length of time it takes to restore the reduced gain around
+                                                the limited peak.</p>
+                                            <p class="p">It affects the length of the gain reduction patch. It cannot be
+                                                twice larger than the Lookahead (if specified larger, it's set
+                                                internally as the max possible value).</p>
+                                        </dd>
+                                        <dt class="terms">
+                                            <span class="em-bold em">Threshold</span>
+                                        </dt>
+                                        <dd class="terms">
+                                            <p class="p">The target level above which the Limiter should reduce the peak
+                                                of the signal. In some modes it represents the maximum output level.</p>
+                                        </dd>
+                                        <dt class="terms">
+                                            <span class="em-bold em">Threshold Boost</span>
+                                        </dt>
+                                        <dd class="terms">
+                                            <p class="p">If enabled it applies an amount of gain to the limited signal
+                                                equal to the absolute value of the Threshold. This causes the peak
+                                                limited at the Threshold level to output at 0 dB (it has only effect
+                                                when the Threshold is set below 0 dB).</p>
+                                        </dd>
+                                        <dt class="terms">
+                                            <span class="em-bold em">Stereo Link</span>
+                                        </dt>
+                                        <dd class="terms">
+                                            <p class="p">The degree of the channel linking. At 0% both channels are
+                                                limited independently while at 100% the loudest one triggers the same
+                                                gain reduction on both.</p>
+                                        </dd>
+                                        <dt class="terms">
+                                            <span class="em-bold em">External Sidechain</span>
+                                        </dt>
+                                        <dd class="terms">
+                                            <p class="p">Switch the Sidechain to an external source took by a specific
+                                                input device (typically a microphone).</p>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">Auto Leveling</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <p class="p">The Auto Leveling checkbutton introduces an additional feature named
+                                        "Automated Level Regulation" (ALR) which acts like a Compressor with infinite
+                                        ratio for the purpose of applying a smoothed gain reduction rather than a
+                                        stronger peak cutter like in brick-wall mode. This configuration could get the
+                                        output level to exceed the Threshold even if the signal is highly compressed.
+                                    </p>
+                                    <div class="terms">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <dl class="terms">
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Attack</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Manage how the raise of the input signal affects
+                                                            the smoothness of the ALR curve that controls the gain
+                                                            reduction level. Higher the value, more quickly the curve
+                                                            goes to it's maximum.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Release</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Manage how the fall of the input signal affects the
+                                                            smoothness of the curve that controls the gain reduction
+                                                            level. Higher the value, more quickly the curve goes to it's
+                                                            minimum.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Knee</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Manage the Threshold of the ALR gain curve and, in
+                                                            fact, adjust the balance between two gain reduction stages.
+                                                            Raising the value delegates more work to the peak-cutting
+                                                            algorithm. Lowering the value delegates more work to the ALR
+                                                            gain reduction algorithm.</p>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">References</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <div class="list">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <ul class="list">
+                                                    <li class="list">
+                                                        <p class="p">
+                                                            <span class="link"><a
+                                                                    href="https://en.wikipedia.org/wiki/Limiter"
+                                                                    title="https://en.wikipedia.org/wiki/Limiter">Wikipedia
+                                                                    Limiter</a></span>
+                                                        </p>
+                                                    </li>
+                                                    <li class="list">
+                                                        <p class="p">
+                                                            <span class="link"><a
+                                                                    href="https://lsp-plug.in/?page=manuals&amp;section=sc_limiter_stereo"
+                                                                    title="https://lsp-plug.in/?page=manuals&amp;section=sc_limiter_stereo">LSP
+                                                                    Sidechain Limiter Stereo</a></span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="links" role="navigation">
+                        <div class="inner">
+                            <div class="hgroup pagewide"></div>
+                            <div class="contents pagewide">
+                                <div class="links guidelinks">
+                                    <div class="inner">
+                                        <div class="title">
+                                            <h2><span class="title">More Information</span></h2>
+                                        </div>
+                                        <div class="region">
+                                            <ul>
+                                                <li class="links "><a href="index.html#plugins"
+                                                        title="Plugins">Plugins</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="clear"></div>
+            </article>
+            <footer>
+                <div class="inner pagewide"></div>
+            </footer>
+        </div>
+    </main>
+</body>
+
+</html>

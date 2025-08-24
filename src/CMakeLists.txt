@@ -4,6 +4,8 @@ add_subdirectory(contents)
 
 add_executable(easyeffects)
 
+add_dependencies(easyeffects helpfile)
+
 kde_target_enable_exceptions(easyeffects PRIVATE)
 
 kconfig_add_kcfg_files(easyeffects GENERATE_MOC ${KCFGC_FILES})

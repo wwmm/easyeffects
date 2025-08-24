@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Multiband Compressor</title>
+    <link rel="stylesheet" type="text/css" href="C.css">
+    <script type="text/javascript" src="highlight.pack.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var matches = document.querySelectorAll('code.syntax')
+            for (var i = 0; i < matches.length; i++) {
+                hljs.highlightBlock(matches[i]);
+            }
+        }, false);</script>
+    <script type="text/javascript" src="yelp.js"></script>
+</head>
+
+<body>
+    <main>
+        <div class="page">
+            <header>
+                <div class="inner pagewide">
+                    <div class="trails" role="navigation">
+                        <div class="trail">
+                            <a class="trail" href="index.html" title="Easy Effects">Easy Effects</a> › <a class="trail"
+                                href="index.html#plugins" title="Plugins">Plugins</a> »
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <article>
+                <div class="hgroup pagewide">
+                    <h1 class="title"><span class="title">Multiband Compressor</span></h1>
+                </div>
+                <div class="region">
+                    <div class="contents pagewide">
+                        <p class="p">Easy Effects uses the Sidechain Multiband Compressor Stereo developed by Linux
+                            Studio Plugins. Please refer to the <span class="link"><a href="compressor.html"
+                                    title="Compressor">Compressor</a></span> documentation to comprehend the basic
+                            functionality of the dynamic range compression.</p>
+                    </div>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">Global Options</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <div class="terms">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <dl class="terms">
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Band Management</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">This Compressor allows to split the input signal up
+                                                            to 8 bands. Each band is not attached to its strict
+                                                            frequency and can be controlled by completely different
+                                                            frequency range that can be obtained by applying Low-Cut and
+                                                            Hi-Cut filters to the Sidechain signal.</p>
+                                                        <p class="p">The first band is always enabled while the others
+                                                            can be activated if needed. When only the first band is
+                                                            enabled, the functionality is similar to the Singleband
+                                                            Sidechain Compressor. Otherwise the signal is split in more
+                                                            bands and each band is compressed individually. After the
+                                                            compression stage, the bands are mixed together to form the
+                                                            output result.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Operating Mode</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Determines how the input signal is split to obtain
+                                                            the different bands.</p>
+                                                        <div class="list">
+                                                            <div class="inner">
+                                                                <div class="region">
+                                                                    <ul class="list">
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Classic</span>
+                                                                                - The original signal is split using
+                                                                                crossover filters. After the compression
+                                                                                stage, all bands become
+                                                                                phase-compensated using All-Pass
+                                                                                filters.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Modern</span> -
+                                                                                Each band is processed by a pair of
+                                                                                dynamic shelving filters. This mode
+                                                                                allows a better control over the gain of
+                                                                                each band.
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Sidechain Boost</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">If enabled, it introduces a special mode for
+                                                            assigning the same weight for higher frequencies opposite to
+                                                            lower frequencies.</p>
+                                                        <p class="p">When disabled, the frequency band is processed 'as
+                                                            is', but the usual audio signal has 3 dB/octave falloff in
+                                                            the frequency domain and could be compared with the pink
+                                                            noise. So lower frequencies take more effect on the
+                                                            Compressor rather than higher frequencies.</p>
+                                                        <p class="p">On the other hand the Sidechain Boost mode allows
+                                                            to compensate the -3 dB/octave falloff of the signal
+                                                            spectrum and, even more, makes the signal spectrum growing
+                                                            +3 dB/octave in the almost fully audible frequency range.
+                                                        </p>
+                                                        <p class="p">
+                                                            <span class="em-bold em">Pink</span> applies +3 dB/octave
+                                                            while <span class="em-bold em">Brown</span> applies +6
+                                                            dB/octave Sidechain Boost. Each of them can use
+                                                            bilinear-transformed (BT) or matched-transformed (MT)
+                                                            shelving filter.
+                                                        </p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Sidechain Source</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">If the External Sidechain is enabled inside at
+                                                            least one band, this combobox allows to select the input
+                                                            device as source.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Dry Level</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Amount of unprocessed signal mixed in the output.
+                                                        </p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Wet Level</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Amount of processed signal mixed in the output.</p>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">Band Options</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <div class="terms">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <dl class="terms">
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Band Start</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Allows to change the lower end split frequency of
+                                                            the selected band. This value is assigned to the Band End of
+                                                            the previous enabled band. It can be modified for all bands
+                                                            except the first one, which is always enabled and its value
+                                                            is 0 Hz.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Band End</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Specify the upper end split frequency of the
+                                                            selected band. It cannot be directly modified and assumes
+                                                            the same value of the Band Start of the next enabled band.
+                                                            For the last enabled band it is always 24.000 Hz.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Compression Mode</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <div class="list">
+                                                            <div class="inner">
+                                                                <div class="region">
+                                                                    <ul class="list">
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Downward</span>
+                                                                                - It's aimed to decrease the gain of the
+                                                                                signal above the Threshold.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Upward</span> -
+                                                                                It's aimed to increase the gain of the
+                                                                                signal below the Threshold.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Boosting</span>
+                                                                                - It's aimed to increase the gain of the
+                                                                                signal below the Threshold by a specific
+                                                                                amount.
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">External Sidechain</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The Sidechain is an external source took by a
+                                                            specific input device (typically a microphone).</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Band Bypass</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">If enabled, the selected band is not affected by
+                                                            the compression stage.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Solo</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Turns on the Solo mode to the selected band by
+                                                            applying -36 dB gain to the other non-soloing bands.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Mute</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Turns on the Mute mode applying -36 dB gain to to
+                                                            the selected band.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Attack Time</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The length of time it takes to apply roughly
+                                                            two-thirds of the targeted amount of compression ratio to
+                                                            the uncompressed band signal.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Release Time</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The length of time it takes to restore roughly
+                                                            two-thirds of the reduced gain (in Downward mode) or
+                                                            increased gain (in Upward/Boosting mode) to the compressed
+                                                            band signal.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Attack Threshold</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The target level around which the compression is
+                                                            applied (the range depends by the Knee).</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Release Threshold</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Sets up the Threshold of the Release Time,
+                                                            calculated by summing the Release Threshold to the Attack
+                                                            Threshold.</p>
+                                                        <p class="p">If the Sidechain level is above that Threshold, the
+                                                            compressor uses the Release Time for the releasing stage.
+                                                            Otherwise the Attack Time is used in place of Release Time.
+                                                        </p>
+                                                        <p class="p">For example, with -10 dB Attack Threshold and -60
+                                                            dB Release Threshold, if the Sidechain is above <span
+                                                                class="code">-10 + (-60) = -70 dB</span>, the Release
+                                                            Time is used for the gain restoration. If the Sidechain is
+                                                            below -70 dB, the Attack Time is used for the gain
+                                                            restoration.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Ratio</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The amount of attenuation (in Downward mode) or
+                                                            amplification (in Upward/Boosting mode) that will be applied
+                                                            to the signal.</p>
+                                                        <p class="p">For example, when the Ratio is 2 in Downward mode
+                                                            and the Sidechain rises above the Threshold by 10 dB, the
+                                                            signal would be ideally reduced by 5 dB (10/2 dB). In
+                                                            practice this behavior mostly depends on how the Multiband
+                                                            Compressor is designed and configured.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Knee</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The range over which the Compressor switches from
+                                                            no compression to almost the full ratio compression (the
+                                                            Threshold usually sits at the center of this transition
+                                                            zone).</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Makeup</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The gain to apply after the compression stage.</p>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">Band Sidechain Options</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <div class="terms">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <dl class="terms">
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Mode</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Determines how the Sidechain of the selected band
+                                                            is evaluated for the compression stage.</p>
+                                                        <div class="list">
+                                                            <div class="inner">
+                                                                <div class="region">
+                                                                    <ul class="list">
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Peak</span> -
+                                                                                The Compressor reacts according to the
+                                                                                peaks.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">RMS</span> -
+                                                                                The Compressor reacts according to the
+                                                                                average loudness measured by the root
+                                                                                mean square.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Low-Pass</span>
+                                                                                - The Compressor reacts according to the
+                                                                                signal processed by a Low-Pass filter.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Uniform</span>
+                                                                                - The Compressor reacts according to the
+                                                                                loudness measured by the average of the
+                                                                                absolute amplitude.
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Source</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Determines which part of the Sidechain is taken
+                                                            into account for the compression stage.</p>
+                                                        <div class="list">
+                                                            <div class="inner">
+                                                                <div class="region">
+                                                                    <ul class="list">
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Middle</span> -
+                                                                                The sum of left and right channels.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Side</span> -
+                                                                                The difference between left and right
+                                                                                channels.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Left</span> -
+                                                                                Only left channel is used.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Right</span> -
+                                                                                Only right channel is used.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Min</span> -
+                                                                                The absolute minimum value is taken from
+                                                                                stereo input.
+                                                                            </p>
+                                                                        </li>
+                                                                        <li class="list">
+                                                                            <p class="p">
+                                                                                <span class="em-bold em">Max</span> -
+                                                                                The absolute maximum value is taken from
+                                                                                stereo input.
+                                                                            </p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Low-Cut Filter</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Enables a custom Low-Cut Filter for the selected
+                                                            band.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Low-Cut Frequency</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Sets the cut-off frequency of the custom Low-Cut
+                                                            filter. If it is disabled, the default Low-Cut filter
+                                                            assumes internally the Band Start frequency as the cut-off
+                                                            frequency.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Hight-Cut Filter</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Enables a custom High-Cut Filter for the selected
+                                                            band.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Hight-Cut Frequency</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Sets the cut-off frequency of the custom High-Cut
+                                                            filter. If it is disabled, the default High-Cut filter
+                                                            assumes internally the Band End frequency as the cut-off
+                                                            frequency.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">PreAmp</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Gain applied to the Sidechain signal of the
+                                                            selected band.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Reactivity</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The time that defines the number of samples used to
+                                                            process the Sidechain in RMS, Uniform and Low-Pass modes.
+                                                            Higher the value, more smooth the compression.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Lookahead</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The band signal to compress is delayed by this
+                                                            amount of time, so that the compression will be applied
+                                                            earlier than it would be otherwise.</p>
+                                                        <p class="p">Each band can have different Lookahead values. To
+                                                            avoid phase distortions in the mixing stage, all the bands
+                                                            are automatically delayed for an individually calculated
+                                                            period of time.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Boost Amount</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">Maximum gain amplification to apply in Boosting
+                                                            Mode.</p>
+                                                    </dd>
+                                                    <dt class="terms">
+                                                        <span class="em-bold em">Boost Threshold</span>
+                                                    </dt>
+                                                    <dd class="terms">
+                                                        <p class="p">The Threshold below which a constant amplification
+                                                            will be applied to the band signal in Upward Mode (it
+                                                            prevents from applying infinite amplification to very quiet
+                                                            signals).</p>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="">
+                        <div class="inner">
+                            <div class="hgroup pagewide">
+                                <h2 class="title"><span class="title">References</span></h2>
+                            </div>
+                            <div class="region">
+                                <div class="contents pagewide">
+                                    <div class="list">
+                                        <div class="inner">
+                                            <div class="region">
+                                                <ul class="list">
+                                                    <li class="list">
+                                                        <p class="p">
+                                                            <span class="link"><a
+                                                                    href="https://en.wikipedia.org/wiki/Dynamic_range_compression"
+                                                                    title="https://en.wikipedia.org/wiki/Dynamic_range_compression">Wikipedia
+                                                                    Dynamic Range Compression</a></span>
+                                                        </p>
+                                                    </li>
+                                                    <li class="list">
+                                                        <p class="p">
+                                                            <span class="link"><a
+                                                                    href="https://lsp-plug.in/?page=manuals&amp;section=sc_mb_compressor_stereo"
+                                                                    title="https://lsp-plug.in/?page=manuals&amp;section=sc_mb_compressor_stereo">LSP
+                                                                    Sidechain Multiband Compressor Stereo</a></span>
+                                                        </p>
+                                                    </li>
+                                                    <li class="list">
+                                                        <p class="p">
+                                                            <span class="link"><a
+                                                                    href="https://www.blackghostaudio.com/blog/the-ultimate-guide-to-compression"
+                                                                    title="https://www.blackghostaudio.com/blog/the-ultimate-guide-to-compression">Black
+                                                                    Ghost Audio - The Ultimate Guide to
+                                                                    Compression</a></span>
+                                                        </p>
+                                                    </li>
+                                                    <li class="list">
+                                                        <p class="p">
+                                                            <span class="link"><a
+                                                                    href="https://www.attackmagazine.com/features/columns/gregory-scott-demolishing-the-myths-of-compression/"
+                                                                    title="https://www.attackmagazine.com/features/columns/gregory-scott-demolishing-the-myths-of-compression/">Attack
+                                                                    Magazine - Demolishing The Myths of
+                                                                    Compression</a></span>
+                                                        </p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="links" role="navigation">
+                        <div class="inner">
+                            <div class="hgroup pagewide"></div>
+                            <div class="contents pagewide">
+                                <div class="links guidelinks">
+                                    <div class="inner">
+                                        <div class="title">
+                                            <h2><span class="title">More Information</span></h2>
+                                        </div>
+                                        <div class="region">
+                                            <ul>
+                                                <li class="links "><a href="index.html#plugins"
+                                                        title="Plugins">Plugins</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="clear"></div>
+            </article>
+            <footer>
+                <div class="inner pagewide"></div>
+            </footer>
+        </div>
+    </main>
+</body>
+
+</html>
