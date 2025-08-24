@@ -1,8 +1,17 @@
 find_program(QHELPGENERATOR_EXECUTABLE
     NAMES qhelpgenerator
-    HINTS ${QT_DIR}/bin
-    REQUIRED
+    HINTS
+        "${QT${QT_DEFAULT_MAJOR_VERSION}_INSTALL_PREFIX}/lib/qt${QT_DEFAULT_MAJOR_VERSION}"
+        "${QT${QT_DEFAULT_MAJOR_VERSION}_INSTALL_PREFIX}/lib/qt${QT_DEFAULT_MAJOR_VERSION}/bin"
 )
+
+if(QHELPGENERATOR_EXECUTABLE)
+    message(STATUS "qhelpgenerator found: ${QHELPGENERATOR_EXECUTABLE}")
+endif()
+
+if(NOT QHELPGENERATOR_EXECUTABLE)
+    message(FATAL_ERROR "Could not find qhelpgenerator (Qt6)")
+endif()
 
 set(QHCP_FILE ${CMAKE_CURRENT_BINARY_DIR}/manual.qhcp)
 set(QHC_FILE ${CMAKE_CURRENT_BINARY_DIR}/manual.qhc)
