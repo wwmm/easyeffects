@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 18:01+0000\n"
-"PO-Revision-Date: 2025-07-22 18:06+0000\n"
-"Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
+"PO-Revision-Date: 2025-08-25 06:03+0000\n"
+"Last-Translator: jonnysemon <jonnysemon@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
 "Language: ar\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.13\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -1161,7 +1161,7 @@ msgstr ""
 #: data/ui/limiter.ui:125 data/ui/multiband_compressor.ui:56
 #: data/ui/multiband_gate.ui:56
 msgid "None"
-msgstr ""
+msgstr "لا شيء"
 
 #: data/ui/limiter.ui:126
 msgid "Half x2(2L)"
@@ -1578,20 +1578,20 @@ msgstr ""
 
 #: data/ui/pipe_manager_box.ui:520
 msgid "Clients"
-msgstr ""
+msgstr "عملاء"
 
 #: data/ui/pipe_manager_box.ui:538
 msgid "Clients List"
-msgstr ""
+msgstr "قائمة العملاء"
 
 #: data/ui/pipe_manager_box.ui:552
 msgid "Test Signal"
-msgstr ""
+msgstr "اختبر الإشارة"
 
 #: data/ui/pipe_manager_box.ui:557 data/ui/preferences_spectrum.ui:9
 #: data/ui/speex.ui:29
 msgid "State"
-msgstr ""
+msgstr "الحالة"
 
 #: data/ui/pipe_manager_box.ui:560 data/ui/preferences_spectrum.ui:12
 msgid "Enabled"
@@ -1599,7 +1599,7 @@ msgstr "ممكن"
 
 #: data/ui/pipe_manager_box.ui:575
 msgid "Properties"
-msgstr ""
+msgstr "الخصائص"
 
 #: data/ui/pipe_manager_box.ui:578
 msgid "Channels"
@@ -1607,11 +1607,11 @@ msgstr "قنوات"
 
 #: data/ui/pipe_manager_box.ui:603
 msgid "Both"
-msgstr ""
+msgstr "كلاهما"
 
 #: data/ui/pipe_manager_box.ui:607
 msgid "Both Channels"
-msgstr ""
+msgstr "كِلا القنوات"
 
 #: data/ui/pipe_manager_box.ui:616
 msgid "Waveform"
