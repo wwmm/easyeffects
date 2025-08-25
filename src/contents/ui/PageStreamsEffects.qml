@@ -435,7 +435,7 @@ Kirigami.Page {
                     Layout.leftMargin: Kirigami.Units.smallSpacing
                     Layout.rightMargin: Kirigami.Units.smallSpacing
                     Layout.alignment: Qt.AlignHCenter
-                    text: i18n("Add Effect")
+                    text: DB.Manager.main.collapsePluginsList === true ? "" : i18n("Add Effect")
                     icon.name: "list-add"
                     onClicked: menuAddPlugins.open()
                 }
@@ -475,15 +475,15 @@ Kirigami.Page {
 
                         Kirigami.Icon {
                             source: pageStreamsEffects.pageType === 0 ? "source-playlist-symbolic" : "audio-input-microphone-symbolic"
-                            Layout.preferredWidth: Kirigami.Units.iconSizes.sizeForLabels
-                            Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels
+                            Layout.preferredWidth: Kirigami.Units.iconSizes.smallMedium
+                            Layout.preferredHeight: Kirigami.Units.iconSizes.smallMedium
                             Layout.leftMargin: Kirigami.Units.mediumSpacing
-                            enabled: false
                         }
 
                         Controls.Label {
                             text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Input Device")
                             enabled: false
+                            visible: !DB.Manager.main.collapsePluginsList
                         }
                     }
 
@@ -492,16 +492,29 @@ Kirigami.Page {
 
                         Kirigami.Icon {
                             source: pageStreamsEffects.pageType === 0 ? "audio-speakers-symbolic" : "source-playlist-symbolic"
-                            Layout.preferredWidth: Kirigami.Units.iconSizes.sizeForLabels
-                            Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels
+                            Layout.preferredWidth: Kirigami.Units.iconSizes.smallMedium
+                            Layout.preferredHeight: Kirigami.Units.iconSizes.smallMedium
                             Layout.leftMargin: Kirigami.Units.mediumSpacing
-                            enabled: false
                         }
 
                         Controls.Label {
                             text: pageStreamsEffects.pageType === 0 ? "Output Device" : i18n("Recorders")
                             enabled: false
+                            visible: !DB.Manager.main.collapsePluginsList
                         }
+                    }
+                }
+
+                Controls.Button {
+                    Layout.topMargin: Kirigami.Units.largeSpacing
+                    Layout.bottomMargin: Kirigami.Units.smallSpacing
+                    Layout.leftMargin: Kirigami.Units.smallSpacing
+                    Layout.rightMargin: Kirigami.Units.smallSpacing
+                    Layout.alignment: Qt.AlignHCenter
+                    text: DB.Manager.main.collapsePluginsList === true ? "" : i18n("Close")
+                    icon.name: DB.Manager.main.collapsePluginsList === true ? "sidebar-collapse-right-symbolic" : "sidebar-collapse-symbolic"
+                    onClicked: {
+                        DB.Manager.main.collapsePluginsList = !DB.Manager.main.collapsePluginsList;
                     }
                 }
             }

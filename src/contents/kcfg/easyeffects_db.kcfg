@@ -150,6 +150,10 @@
             </choices>
             <default>0</default>
         </entry>
+        <entry name="collapsePluginsList" type="Bool">
+            <label>Horizontally collapse plugins list sidebar</label>
+            <default>false</default>
+        </entry>
     </group>
     <group name="EffectsPipelines">
         <entry name="bypass" type="Bool">
