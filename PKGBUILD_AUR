@@ -4,24 +4,46 @@
 # Contributor: Wellington <wellingtonwallace@gmail.com>
 
 pkgname=easyeffects-git
-pkgver=7.0.4.r136.gce892ece
+pkgver=7.1.7.r698.g6cbfaffd8
 pkgrel=1
 pkgdesc='Audio Effects for Pipewire applications'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
-depends=('fftw' 'fmt' 'gsl' 'gtk4' 'libadwaita' 'libbs2b' 'libebur128' 'libsamplerate' 'libsndfile'
-  'lilv' 'lv2' 'nlohmann-json' 'pipewire' 'rnnoise' 'soundtouch' 'speexdsp' 'tbb' 'zita-convolver')
-makedepends=('appstream-glib' 'git' 'itstool' 'meson' 'ladspa')
+depends=(
+  'kirigami' 
+  'kirigami-addons'
+  'kiconthemes'
+  'kconfigwidgets'
+  'qqc2-desktop-style' 
+  'breeze-icons' 
+  'qt6-base'
+  'qt6-graphs' 
+  'pipewire-pulse' 
+  'lilv'
+  'libsamplerate'
+  'libsndfile' 
+  'zita-convolver' 
+  'libebur128' 
+  'rnnoise' 
+  'soundtouch' 
+  'libbs2b' 
+  'nlohmann-json' 
+  'tbb' 
+  'speexdsp'
+  'gsl'
+  'libportal-qt6'
+)
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'intltool' 'appstream-glib' 'ladspa')
 optdepends=('calf: limiter, exciter, bass enhancer and others'
-  'lsp-plugins: equalizer, compressor, delay, loudness'
-  'zam-plugins: maximizer'
-  'mda.lv2: bass loudness'
-  'yelp: in-app help'
-  'libdeep_filter_ladspa: noise remover')
+            'lsp-plugins: equalizer, compressor, delay, loudness'
+            'zam-plugins: maximizer'
+            'mda.lv2: bass loudness'
+            'libdeep_filter_ladspa: noise remover')
 conflicts=("${pkgname%%-git}")
 provides=("${pkgname%%-git}")
-source=("${pkgname%%-git}::git+${url}")
+#source=("${pkgname%%-git}::git+${url}")
+source=("$pkgname-$pkgver::git+${url}#branch=eeqt")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -30,10 +52,18 @@ pkgver() {
 }
 
 build() {
-  arch-meson "${pkgname%%-git}" build
-  meson compile -C build
+  local cmake_options=(
+    -B build
+    -S $pkgname-$pkgver
+    -W no-dev
+    -D CMAKE_BUILD_TYPE=None
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -G Ninja
+  )
+  cmake "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" meson install -C build
+  DESTDIR="$pkgdir" cmake --install build
 }

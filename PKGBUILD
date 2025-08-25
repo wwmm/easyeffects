@@ -39,7 +39,6 @@ optdepends=('calf: limiter, exciter, bass enhancer and others'
             'lsp-plugins: equalizer, compressor, delay, loudness'
             'zam-plugins: maximizer'
             'mda.lv2: bass loudness'
-            'yelp: in-app help'
             'libdeep_filter_ladspa: noise remover')
 conflicts=(easyeffects)
 provides=(easyeffects)
@@ -62,12 +61,6 @@ pkgver() {
 
 build() {
   cd ..
-
-  # set werror to true if the CI file exists, otherwise false
-  # arch-meson sets --buildtype plain by default, so don't set -Dbuildtype=debug 
-  # arch-meson . build -Ddevel=true -Dwerror="$( test -f "./GITHUB_COMMIT_DESC" && echo "true" || echo "false")"
-
-  # ninja -C build
 
   cmake \
     -B build  \
