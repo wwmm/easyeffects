@@ -251,6 +251,7 @@ Kirigami.ScrollablePage {
                         to: 20
                         value: 0
                         decimals: 1
+                        convertDecibelToLinear: true
 
                         anchors {
                             left: parent.left

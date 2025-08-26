@@ -83,6 +83,20 @@ function linearTodb(value) {
 }
 
 /**
+ * Returns the linear level of a decibel value. If the value is lesser then minimumDecibelLevel, 
+ * the minimumLinearLevel is returned.
+ * @param {*} value The decibel value.
+ * @returns {number} The linear level.
+ */
+function dbToLinear(dbValue) {
+    if (dbValue >= minimumDecibelLevel) {
+        return Math.exp(dbValue / 20.0) * Math.LN10;
+    }
+
+    return minimumLinearLevel;
+}
+
+/**
  * A debugging function which prints the properties of a given object or any other collection type such as Array.
  * Since it uses the "in" operator, an exception can be raised if a primitive type is given as a parameter.
  * @param {*} obj 

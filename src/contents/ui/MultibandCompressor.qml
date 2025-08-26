@@ -314,6 +314,8 @@ Kirigami.ScrollablePage {
                 }
 
                 Controls.Frame {
+                    id: gainFrame
+
                     Layout.alignment: Qt.AlignHCenter
                     Layout.fillWidth: true
 
@@ -573,6 +575,7 @@ Kirigami.ScrollablePage {
                             value: Common.toLocaleLabel(multibandCompressorPage.bandReductionLevelLeft[bandsListview.currentIndex], 0, "")
                             decimals: 0
                             convertDecibelToLinear: true
+                            topToBottom: true
                         }
 
                         EeAudioLevel {
@@ -586,6 +589,7 @@ Kirigami.ScrollablePage {
                             value: Common.toLocaleLabel(multibandCompressorPage.bandReductionLevelRight[bandsListview.currentIndex], 0, "")
                             decimals: 0
                             convertDecibelToLinear: true
+                            topToBottom: true
                         }
 
                         Controls.Label {

@@ -11,14 +11,11 @@ Rectangle {
     property real to: 1
     property int decimals: 2
     property bool convertDecibelToLinear: false
-    readonly property real dbFrom: dbToLinear(from)
-    readonly property real dbTo: dbToLinear(to)
+    property bool topToBottom: false
+    readonly property real dbFrom: Common.dbToLinear(from)
+    readonly property real dbTo: Common.dbToLinear(to)
     readonly property real clampedValue: Common.clamp(value, from, to)
-    readonly property real displayValue: root.clampedValue > sampleTimer.value ? root.clampedValue : sampleTimer.value
-
-    function dbToLinear(dbValue) {
-        return Math.exp(dbValue / 20) * Math.LN10;
-    }
+    readonly property real displayValue: root.topToBottom === false ? (root.clampedValue > sampleTimer.value ? root.clampedValue : sampleTimer.value) : (root.clampedValue < sampleTimer.value ? root.clampedValue : sampleTimer.value)
 
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
     implicitHeight: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
@@ -42,12 +39,12 @@ Rectangle {
         transform: Scale {
             yScale: {
                 if (root.convertDecibelToLinear)
-                    (root.dbToLinear(root.clampedValue) - root.dbFrom) / (root.dbTo - root.dbFrom);
+                    root.topToBottom === false ? (Common.dbToLinear(root.clampedValue) - root.dbFrom) / (root.dbTo - root.dbFrom) : (Common.dbToLinear(root.clampedValue) - root.dbTo) / (root.dbFrom - root.dbTo);
                 else
-                    (root.clampedValue - root.from) / (root.to - root.from);
+                    root.topToBottom === false ? (root.clampedValue - root.from) / (root.to - root.from) : (root.clampedValue - root.to) / (root.from - root.to);
             }
 
-            origin.y: levelRect.height
+            origin.y: root.topToBottom === false ? levelRect.height : 0
         }
 
         anchors {
@@ -67,7 +64,7 @@ Rectangle {
         transform: Translate {
             y: {
                 if (root.convertDecibelToLinear)
-                    root.height * (1.0 - (root.dbToLinear(root.displayValue) - root.dbFrom) / (root.dbTo - root.dbFrom));
+                    root.height * (1.0 - (Common.dbToLinear(root.displayValue) - root.dbFrom) / (root.dbTo - root.dbFrom));
                 else
                     root.height * (1.0 - (root.displayValue - root.from) / (root.to - root.from));
             }

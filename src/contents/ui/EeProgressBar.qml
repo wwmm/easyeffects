@@ -18,6 +18,9 @@ FormCard.AbstractFormDelegate {
     property int elide: Text.ElideRight
     property int wrapMode: Text.Wrap
     property bool rightToLeft: false
+    property bool convertDecibelToLinear: false
+    readonly property real dbFrom: Common.dbToLinear(from)
+    readonly property real dbTo: Common.dbToLinear(to)
     readonly property real clampedValue: Common.clamp(value, from, to)
     readonly property real displayValue: control.rightToLeft === false ? (control.clampedValue > sampleTimer.value ? control.clampedValue : sampleTimer.value) : (control.clampedValue < sampleTimer.value ? control.clampedValue : sampleTimer.value)
 
@@ -43,7 +46,11 @@ FormCard.AbstractFormDelegate {
             color: Kirigami.Theme.alternateBackgroundColor
 
             transform: Scale {
-                xScale: control.rightToLeft === false ? (control.clampedValue - control.from) / (control.to - control.from) : (control.clampedValue - control.to) / (control.from - control.to)
+                xScale: if (control.convertDecibelToLinear) {
+                    control.rightToLeft === false ? (Common.dbToLinear(control.clampedValue) - control.dbFrom) / (control.dbTo - control.dbFrom) : (Common.dbToLinear(control.clampedValue) - control.dbTo) / (control.dbFrom - control.dbTo);
+                } else {
+                    control.rightToLeft === false ? (control.clampedValue - control.from) / (control.to - control.from) : (control.clampedValue - control.to) / (control.from - control.to);
+                }
                 origin.x: control.rightToLeft === false ? 0 : levelRect.width
             }
         }
@@ -56,7 +63,11 @@ FormCard.AbstractFormDelegate {
             color: Kirigami.Theme.positiveTextColor
 
             transform: Translate {
-                x: control.rightToLeft === false ? (control.displayValue - control.from) / (control.to - control.from) * item.width : item.width - (control.displayValue - control.to) / (control.from - control.to) * item.width
+                x: if (control.convertDecibelToLinear) {
+                    control.rightToLeft === false ? (Common.dbToLinear(control.displayValue) - control.dbFrom) / (control.dbTo - control.dbFrom) * item.width : item.width - (Common.dbToLinear(control.displayValue) - control.dbTo) / (control.dbFrom - control.dbTo) * item.width;
+                } else {
+                    control.rightToLeft === false ? (control.displayValue - control.from) / (control.to - control.from) * item.width : item.width - (control.displayValue - control.to) / (control.from - control.to) * item.width;
+                }
             }
         }
 
