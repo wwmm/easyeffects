@@ -216,6 +216,7 @@ Kirigami.ApplicationWindow {
 
             MenuItem {
                 text: i18n("Quit")
+                icon.name: "gtk-quit"
                 onTriggered: Qt.quit()
             }
         }
