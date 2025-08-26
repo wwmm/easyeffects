@@ -47,14 +47,14 @@ Kirigami.ScrollablePage {
                         id: sequenceLength
 
                         label: i18n("Sequence Length")
-                        from: pluginDB.getMinValue("sequenceLength")
-                        to: pluginDB.getMaxValue("sequenceLength")
-                        value: pluginDB.sequenceLength
+                        from: pitchPage.pluginDB.getMinValue("sequenceLength")
+                        to: pitchPage.pluginDB.getMaxValue("sequenceLength")
+                        value: pitchPage.pluginDB.sequenceLength
                         decimals: 0
                         stepSize: 1
                         unit: "ms"
                         onValueModified: v => {
-                            pluginDB.sequenceLength = v;
+                            pitchPage.pluginDB.sequenceLength = v;
                         }
                     }
 
@@ -62,14 +62,14 @@ Kirigami.ScrollablePage {
                         id: seekWindow
 
                         label: i18n("Seek Window")
-                        from: pluginDB.getMinValue("seekWindow")
-                        to: pluginDB.getMaxValue("seekWindow")
-                        value: pluginDB.seekWindow
+                        from: pitchPage.pluginDB.getMinValue("seekWindow")
+                        to: pitchPage.pluginDB.getMaxValue("seekWindow")
+                        value: pitchPage.pluginDB.seekWindow
                         decimals: 0
                         stepSize: 1
                         unit: "ms"
                         onValueModified: v => {
-                            pluginDB.seekWindow = v;
+                            pitchPage.pluginDB.seekWindow = v;
                         }
                     }
 
@@ -77,14 +77,14 @@ Kirigami.ScrollablePage {
                         id: overlapLength
 
                         label: i18n("Overlap Length")
-                        from: pluginDB.getMinValue("overlapLength")
-                        to: pluginDB.getMaxValue("overlapLength")
-                        value: pluginDB.overlapLength
+                        from: pitchPage.pluginDB.getMinValue("overlapLength")
+                        to: pitchPage.pluginDB.getMaxValue("overlapLength")
+                        value: pitchPage.pluginDB.overlapLength
                         decimals: 0
                         stepSize: 1
                         unit: "ms"
                         onValueModified: v => {
-                            pluginDB.overlapLength = v;
+                            pitchPage.pluginDB.overlapLength = v;
                         }
                     }
                 }
@@ -115,13 +115,13 @@ Kirigami.ScrollablePage {
                             label: i18n("Octaves")
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("octaves")
-                            to: pluginDB.getMaxValue("octaves")
-                            value: pluginDB.octaves
+                            from: pitchPage.pluginDB.getMinValue("octaves")
+                            to: pitchPage.pluginDB.getMaxValue("octaves")
+                            value: pitchPage.pluginDB.octaves
                             decimals: 0
                             stepSize: 1
                             onValueModified: v => {
-                                pluginDB.octaves = v;
+                                pitchPage.pluginDB.octaves = v;
                             }
                         }
 
@@ -131,13 +131,13 @@ Kirigami.ScrollablePage {
                             label: i18n("Cents")
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("cents")
-                            to: pluginDB.getMaxValue("cents")
-                            value: pluginDB.cents
+                            from: pitchPage.pluginDB.getMinValue("cents")
+                            to: pitchPage.pluginDB.getMaxValue("cents")
+                            value: pitchPage.pluginDB.cents
                             decimals: 0
                             stepSize: 1
                             onValueModified: v => {
-                                pluginDB.cents = v;
+                                pitchPage.pluginDB.cents = v;
                             }
                         }
 
@@ -147,13 +147,13 @@ Kirigami.ScrollablePage {
                             label: i18n("Semitones")
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("semitones")
-                            to: pluginDB.getMaxValue("semitones")
-                            value: pluginDB.semitones
+                            from: pitchPage.pluginDB.getMinValue("semitones")
+                            to: pitchPage.pluginDB.getMaxValue("semitones")
+                            value: pitchPage.pluginDB.semitones
                             decimals: 0
                             stepSize: 1
                             onValueModified: v => {
-                                pluginDB.semitones = v;
+                                pitchPage.pluginDB.semitones = v;
                             }
                         }
 
@@ -163,14 +163,14 @@ Kirigami.ScrollablePage {
                             label: i18n("Tempo Difference")
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("tempoDifference")
-                            to: pluginDB.getMaxValue("tempoDifference")
-                            value: pluginDB.tempoDifference
+                            from: pitchPage.pluginDB.getMinValue("tempoDifference")
+                            to: pitchPage.pluginDB.getMaxValue("tempoDifference")
+                            value: pitchPage.pluginDB.tempoDifference
                             decimals: 0
                             stepSize: 1
                             unit: "%"
                             onValueModified: v => {
-                                pluginDB.tempoDifference = v;
+                                pitchPage.pluginDB.tempoDifference = v;
                             }
                         }
 
@@ -180,14 +180,14 @@ Kirigami.ScrollablePage {
                             label: i18n("Rate Difference")
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("rateDifference")
-                            to: pluginDB.getMaxValue("rateDifference")
-                            value: pluginDB.rateDifference
+                            from: pitchPage.pluginDB.getMinValue("rateDifference")
+                            to: pitchPage.pluginDB.getMaxValue("rateDifference")
+                            value: pitchPage.pluginDB.rateDifference
                             decimals: 0
                             stepSize: 1
                             unit: "%"
                             onValueModified: v => {
-                                pluginDB.rateDifference = v;
+                                pitchPage.pluginDB.rateDifference = v;
                             }
                         }
                     }
@@ -220,30 +220,37 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
+                    text: i18n("Reset History")
+                    icon.name: "edit-clear-history-symbolic"
+                    onTriggered: {
+                        pitchPage.pluginBackend.resetHistory();
+                    }
+                },
+                Kirigami.Action {
                     text: i18n("Quick Seek")
                     icon.name: "media-seek-forward-symbolic"
                     checkable: true
-                    checked: pluginDB.quickSeek
+                    checked: pitchPage.pluginDB.quickSeek
                     onTriggered: {
-                        if (pluginDB.quickSeek !== checked)
-                            pluginDB.quickSeek = checked;
+                        if (pitchPage.pluginDB.quickSeek !== checked)
+                            pitchPage.pluginDB.quickSeek = checked;
                     }
                 },
                 Kirigami.Action {
                     text: i18n("Anti-aliasing")
                     icon.name: "filter-symbolic"
                     checkable: true
-                    checked: pluginDB.antiAlias
+                    checked: pitchPage.pluginDB.antiAlias
                     onTriggered: {
-                        if (pluginDB.antiAlias !== checked)
-                            pluginDB.antiAlias = checked;
+                        if (pitchPage.pluginDB.antiAlias !== checked)
+                            pitchPage.pluginDB.antiAlias = checked;
                     }
                 },
                 Kirigami.Action {
                     text: i18n("Reset Settings")
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        pitchPage.pluginBackend.reset();
                     }
                 }
             ]

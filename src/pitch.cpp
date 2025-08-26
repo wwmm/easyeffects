@@ -48,26 +48,7 @@ Pitch::Pitch(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
 
   // resetting soundtouch when bypass is pressed so its internal data is discarded
 
-  connect(settings, &db::Pitch::bypassChanged, [&]() {
-    QMetaObject::invokeMethod(
-        this,
-        [this] {
-          data_mutex.lock();
-
-          soundtouch_ready = false;
-
-          data_mutex.unlock();
-
-          init_soundtouch();
-
-          data_mutex.lock();
-
-          soundtouch_ready = true;
-
-          data_mutex.unlock();
-        },
-        Qt::QueuedConnection);
-  });
+  connect(settings, &db::Pitch::bypassChanged, [&]() { resetHistory(); });
 
   connect(settings, &db::Pitch::quickSeekChanged, [&]() { set_quick_seek(); });
 
@@ -327,4 +308,25 @@ void Pitch::init_soundtouch() {
 
 auto Pitch::get_latency_seconds() -> float {
   return latency_value;
+}
+
+void Pitch::resetHistory() {
+  QMetaObject::invokeMethod(
+      this,
+      [this] {
+        data_mutex.lock();
+
+        soundtouch_ready = false;
+
+        data_mutex.unlock();
+
+        init_soundtouch();
+
+        data_mutex.lock();
+
+        soundtouch_ready = true;
+
+        data_mutex.unlock();
+      },
+      Qt::QueuedConnection);
 }
