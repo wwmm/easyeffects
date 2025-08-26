@@ -166,7 +166,7 @@
         </entry>
         <entry name="processAllInputs" type="Bool">
             <label>Automatically moves Audio Streams to EasyEffects Virtual Source.</label>
-            <default>false</default>
+            <default>true</default>
         </entry>
         <entry name="excludeMonitorStreams" type="Bool">
             <label>Ignore Streams from Monitor of Devices.</label>

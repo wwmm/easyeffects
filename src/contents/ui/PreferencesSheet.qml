@@ -127,6 +127,17 @@ Kirigami.OverlaySheet {
                 }
 
                 EeSwitch {
+                    id: listenToMicIncludesOutputEffects
+
+                    label: i18n("Mic Monitor Plays to Output Effects Pipeline")
+                    isChecked: DB.Manager.streamInputs.listenToMicIncludesOutputEffects
+                    onCheckedChanged: {
+                        if (isChecked !== DB.Manager.streamInputs.listenToMicIncludesOutputEffects)
+                            DB.Manager.streamInputs.listenToMicIncludesOutputEffects = isChecked;
+                    }
+                }
+
+                EeSwitch {
                     id: inactivityTimerEnable
 
                     label: i18n("Enable the Inactivity Timeout")

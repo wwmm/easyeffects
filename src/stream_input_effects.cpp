@@ -380,7 +380,9 @@ void StreamInputEffects::set_bypass(const bool& state) {
 
 void StreamInputEffects::set_listen_to_mic(const bool& state) {
   if (state) {
-    auto output_device = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice());
+    auto output_device = !db::StreamInputs::listenToMicIncludesOutputEffects()
+                             ? pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice())
+                             : pm->ee_sink_node;
 
     for (const auto& link : pm->link_nodes(pm->ee_source_node.id, output_device.id, false, false)) {
       list_proxies_listen_mic.push_back(link);

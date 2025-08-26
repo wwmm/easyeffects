@@ -48,5 +48,9 @@
             <label>Link our virtual source signal to the soundcard for testing purposes</label>
             <default>false</default>
         </entry>
+        <entry name="listenToMicIncludesOutputEffects" type="Bool">
+            <label>Link our virtual source signal to our virtual sink so mic monitoring includes output effects</label>
+            <default>false</default>
+        </entry>
     </group>
 </kcfg>
