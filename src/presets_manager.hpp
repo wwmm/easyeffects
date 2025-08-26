@@ -197,6 +197,8 @@ class Manager : public QObject {
   auto import_irs_file(const std::string& file_path) -> ImpulseImportState;
 
   auto import_rnnoise_file(const std::string& file_path) -> RNNoiseImportState;
+
+  static void update_used_presets_list(const PipelineType& pipeline_type, const QString& name);
 };
 
 }  // namespace presets

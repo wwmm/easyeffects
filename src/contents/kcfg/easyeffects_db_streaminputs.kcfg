@@ -52,5 +52,13 @@
             <label>Link our virtual source signal to our virtual sink so mic monitoring includes output effects</label>
             <default>false</default>
         </entry>
+        <entry name="usedPresets" type="StringList">
+            <label>List of presets that have been used and their usage count</label>
+            <default></default>
+        </entry>
+        <entry name="mostUsedPresets" type="StringList">
+            <label>Ordered list of most used Presets.</label>
+            <default></default>
+        </entry>
     </group>
 </kcfg>

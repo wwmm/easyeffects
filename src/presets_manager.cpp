@@ -34,10 +34,12 @@
 #include <fstream>
 #include <functional>
 #include <iomanip>
+#include <map>
 #include <memory>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <optional>
+#include <ranges>
 #include <sndfile.hh>
 #include <stdexcept>
 #include <string>
@@ -750,6 +752,8 @@ bool Manager::loadLocalPresetFile(const PipelineType& pipeline_type, const QStri
 
   if (!loaded) {
     set_last_preset_keys(pipeline_type);
+  } else {
+    update_used_presets_list(pipeline_type, name);
   }
 
   return loaded;
@@ -1483,6 +1487,74 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
   util::warning("The filter name " + filter_name.toStdString() + " base name could not be recognized");
 
   return std::nullopt;
+}
+
+void Manager::update_used_presets_list(const PipelineType& pipeline_type, const QString& name) {
+  QList<QString> names;
+  QList<int> count_list;
+
+  names = (pipeline_type == PipelineType::input) ? db::StreamInputs::usedPresets() : db::StreamOutputs::usedPresets();
+
+  bool contains_name = false;
+  int idx = -1;
+
+  for (auto& p : names) {
+    idx++;
+
+    if (p.startsWith(name)) {
+      contains_name = true;
+
+      break;
+    }
+  }
+
+  if (!contains_name) {
+    names.append(name + ":0");
+
+    if (pipeline_type == PipelineType::input) {
+      db::StreamInputs::setUsedPresets(names);
+    } else {
+      db::StreamOutputs::setUsedPresets(names);
+    }
+
+    return;
+  }
+
+  auto name_and_count = names[idx].split(":");
+
+  auto updated_count = name_and_count[1].toInt() + 1;
+
+  names[idx] = QString("%1:%2").arg(name).arg(updated_count);
+
+  if (pipeline_type == PipelineType::input) {
+    db::StreamInputs::setUsedPresets(names);
+  } else {
+    db::StreamOutputs::setUsedPresets(names);
+  }
+
+  std::multimap<int, QString> usageMap;
+
+  for (const QString& entry : names) {
+    QStringList parts = entry.split(':');
+
+    if (parts.size() == 2) {
+      int count = parts[1].toInt();
+
+      usageMap.insert({count, parts[0]});
+    }
+  }
+
+  QStringList sortedList;
+
+  for (auto& it : std::ranges::reverse_view(usageMap)) {
+    sortedList << it.second;
+  }
+
+  if (pipeline_type == PipelineType::input) {
+    db::StreamInputs::setMostUsedPresets(sortedList);
+  } else {
+    db::StreamOutputs::setMostUsedPresets(sortedList);
+  }
 }
 
 }  // namespace presets
