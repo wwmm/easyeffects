@@ -171,6 +171,7 @@ Kirigami.ApplicationWindow {
 
         visible: DB.Manager.main.showTrayIcon && canUseSysTray
         icon.name: "com.github.wwmm.easyeffects"
+        tooltip: i18n("Easy Effects")
         onActivated: {
             if (!appWindow.visible) {
                 appWindow.show();
