@@ -77,7 +77,8 @@ Equalizer::Equalizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   BIND_LV2_PORT("frqs_l", pitchLeft, setPitchLeft, db::Equalizer::pitchLeftChanged);
   BIND_LV2_PORT("frqs_r", pitchRight, setPitchRight, db::Equalizer::pitchRightChanged);
 
-  bind_bands();
+  bind_left_bands();
+  bind_right_bands();
 
   on_split_channels();
 
@@ -119,7 +120,7 @@ void Equalizer::reset() {
 }
 
 // NOLINTNEXTLINE(readability-function-size,hicpp-function-size)
-void Equalizer::bind_bands() {
+void Equalizer::bind_left_bands() {
   using namespace tags::equalizer;
 
   BIND_BANDS_PROPERTY(settings_left, ftl, Type);
@@ -131,6 +132,11 @@ void Equalizer::bind_bands() {
   BIND_BANDS_PROPERTY(settings_left, ql, Q);
   BIND_BANDS_PROPERTY(settings_left, wl, Width);
   BIND_BANDS_PROPERTY_DB(settings_left, gl, Gain, false);
+}
+
+// NOLINTNEXTLINE(readability-function-size,hicpp-function-size)
+void Equalizer::bind_right_bands() {
+  using namespace tags::equalizer;
 
   BIND_BANDS_PROPERTY(settings_right, ftr, Type);
   BIND_BANDS_PROPERTY(settings_right, fmr, Mode);

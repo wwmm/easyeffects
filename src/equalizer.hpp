@@ -83,7 +83,9 @@ class Equalizer : public PluginBase {
 
   std::vector<QMetaObject::Connection> unified_mode_connections;
 
-  void bind_bands();
+  void bind_left_bands();
+
+  void bind_right_bands();
 
   void on_split_channels();
 };
