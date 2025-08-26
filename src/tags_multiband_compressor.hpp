@@ -191,11 +191,23 @@ inline constexpr auto band_release_threshold = std::to_array({{"band0ReleaseThre
                                                               {"band6ReleaseThreshold"},
                                                               std::to_array("band7ReleaseThreshold")});
 
-constexpr auto band_ratio = std::to_array(
-    {{"ratio0"}, {"ratio1"}, {"ratio2"}, {"ratio3"}, {"ratio4"}, {"ratio5"}, {"ratio6"}, std::to_array("ratio7")});
+constexpr auto band_ratio = std::to_array({{"band0Ratio"},
+                                           {"band1Ratio"},
+                                           {"band2Ratio"},
+                                           {"band3Ratio"},
+                                           {"band4Ratio"},
+                                           {"band5Ratio"},
+                                           {"band6Ratio"},
+                                           std::to_array("band7Ratio")});
 
-constexpr auto band_knee = std::to_array(
-    {{"knee0"}, {"knee1"}, {"knee2"}, {"knee3"}, {"knee4"}, {"knee5"}, {"knee6"}, std::to_array("knee7")});
+constexpr auto band_knee = std::to_array({{"band0Knee"},
+                                          {"band1Knee"},
+                                          {"band2Knee"},
+                                          {"band3Knee"},
+                                          {"band4Knee"},
+                                          {"band5Knee"},
+                                          {"band6Knee"},
+                                          std::to_array("band7Knee")});
 
 constexpr auto band_makeup = std::to_array({{"band0Makeup"},
                                             {"band1Makeup"},
