@@ -42,6 +42,7 @@ ColumnLayout {
             textRole: "description"
             editable: false
             model: DB.Manager.main.visiblePage === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
+            description: i18n("Hardware Profile:") + " " + deviceProfileName
         }
 
         Kirigami.Icon {
