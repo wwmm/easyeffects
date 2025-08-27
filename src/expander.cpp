@@ -79,8 +79,7 @@ Expander::Expander(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
   BIND_LV2_PORT("shpf", hpfFrequency, setHpfFrequency, db::Expander::hpfFrequencyChanged);
   BIND_LV2_PORT("slpf", lpfFrequency, setLpfFrequency, db::Expander::lpfFrequencyChanged);
 
-  // The following controls can assume -inf
-
+  // dB controls with -inf mode.
   BIND_LV2_PORT_DB("rrl", releaseThreshold, setReleaseThreshold, db::Expander::releaseThresholdChanged, true);
   BIND_LV2_PORT_DB("cdr", dry, setDry, db::Expander::dryChanged, true);
   BIND_LV2_PORT_DB("cwt", wet, setWet, db::Expander::wetChanged, true);

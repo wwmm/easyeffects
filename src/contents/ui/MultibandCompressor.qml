@@ -303,9 +303,10 @@ Kirigami.ScrollablePage {
                             from: pluginDB.getMinValue(multibandCompressorPage.bandId + "ReleaseThreshold")
                             to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "ReleaseThreshold")
                             value: pluginDB[multibandCompressorPage.bandId + "ReleaseThreshold"]
-                            decimals: 2
+                            decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
+                            minusInfinityMode: true
                             onValueModified: v => {
                                 pluginDB[multibandCompressorPage.bandId + "ReleaseThreshold"] = v;
                             }
@@ -446,9 +447,10 @@ Kirigami.ScrollablePage {
                     from: pluginDB.getMinValue(multibandCompressorPage.bandId + "SidechainPreamp")
                     to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "SidechainPreamp")
                     value: pluginDB[multibandCompressorPage.bandId + "SidechainPreamp"]
-                    decimals: 1
-                    stepSize: 0.1
+                    decimals: 2 // Required to show "-inf"
+                    stepSize: 0.01
                     unit: "dB"
+                    minusInfinityMode: true
                     onValueModified: v => {
                         pluginDB[multibandCompressorPage.bandId + "SidechainPreamp"] = v;
                     }
@@ -790,7 +792,7 @@ Kirigami.ScrollablePage {
                 from: pluginDB.getMinValue("dry")
                 to: pluginDB.getMaxValue("dry")
                 value: pluginDB.dry
-                decimals: 2
+                decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
                 unit: "dB"
                 minusInfinityMode: true
@@ -808,7 +810,7 @@ Kirigami.ScrollablePage {
                 from: pluginDB.getMinValue("wet")
                 to: pluginDB.getMaxValue("wet")
                 value: pluginDB.wet
-                decimals: 2
+                decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
                 unit: "dB"
                 minusInfinityMode: true

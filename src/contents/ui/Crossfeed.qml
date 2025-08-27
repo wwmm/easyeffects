@@ -106,14 +106,14 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
-                text: i18n("Cmoy")
+                text: "Cmoy"
                 onTriggered: {
                     applyPreset("cmoy");
                 }
             },
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
-                text: i18n("Jmeier")
+                text: "Jmeier"
                 onTriggered: {
                     applyPreset("jmeier");
                 }

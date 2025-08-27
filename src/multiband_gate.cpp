@@ -159,7 +159,9 @@ void MultibandGate::bind_bands() {
   BIND_BANDS_PROPERTY_DB(gz, CurveZone, db::MultibandGate, false);
   BIND_BANDS_PROPERTY_DB(gr, Reduction, db::MultibandGate, false);
   BIND_BANDS_PROPERTY_DB(mk, Makeup, db::MultibandGate, false);
-  BIND_BANDS_PROPERTY_DB(scp, SidechainPreamp, db::MultibandGate, false);
+
+  // dB controls with -inf mode.
+  BIND_BANDS_PROPERTY_DB(scp, SidechainPreamp, db::MultibandGate, true);
 }
 
 void MultibandGate::setup() {

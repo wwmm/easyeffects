@@ -348,7 +348,7 @@ Kirigami.ScrollablePage {
                             from: pluginDB.getMinValue("sidechainPreamp")
                             to: pluginDB.getMaxValue("sidechainPreamp")
                             value: pluginDB.sidechainPreamp
-                            decimals: 2
+                            decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
@@ -483,7 +483,7 @@ Kirigami.ScrollablePage {
                         from: pluginDB.getMinValue("dry")
                         to: pluginDB.getMaxValue("dry")
                         value: pluginDB.dry
-                        decimals: 2
+                        decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
                         unit: "dB"
                         minusInfinityMode: true
@@ -506,7 +506,7 @@ Kirigami.ScrollablePage {
                         from: pluginDB.getMinValue("wet")
                         to: pluginDB.getMaxValue("wet")
                         value: pluginDB.wet
-                        decimals: 2
+                        decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
                         unit: "dB"
                         minusInfinityMode: true

@@ -53,7 +53,7 @@ Controls.ItemDelegate {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: i18n("Q") + " " + Common.toLocaleLabel(delegate.bandDB["band" + delegate.index + "Q"], 2, "")
+            text: "Q " + Common.toLocaleLabel(delegate.bandDB["band" + delegate.index + "Q"], 2, "")
             enabled: false
         }
 

@@ -71,12 +71,15 @@ function regExpEscape(str) {
 /**
  * Returns the decibel level of a linear value. If the value is lesser then minimumLinearLevel, 
  * the minimumDecibelLevel is returned.
- * @param {*} value The linear value.
+ * @param {number|string} value The linear value.
  * @returns {number} The decibel level.
  */
 function linearTodb(value) {
-    if (value >= minimumLinearLevel) {
-        return 20.0 * Math.log10(value);
+    // Convert to number if necessary.
+    const n = (typeof value === "number") ? value : Number(value);
+
+    if (!Number.isNaN(n) && n >= minimumLinearLevel) {
+        return 20.0 * Math.log10(n);
     }
 
     return minimumDecibelLevel;
@@ -85,12 +88,15 @@ function linearTodb(value) {
 /**
  * Returns the linear level of a decibel value. If the value is lesser then minimumDecibelLevel, 
  * the minimumLinearLevel is returned.
- * @param {*} value The decibel value.
+ * @param {number|string} value The decibel value.
  * @returns {number} The linear level.
  */
 function dbToLinear(dbValue) {
-    if (dbValue >= minimumDecibelLevel) {
-        return Math.exp(dbValue / 20.0) * Math.LN10;
+    // Convert to number if necessary.
+    const n = (typeof dbValue === "number") ? dbValue : Number(dbValue);
+
+    if (!Number.isNaN(n) && n >= minimumDecibelLevel) {
+        return Math.exp((n / 20.0) * Math.LN10);
     }
 
     return minimumLinearLevel;

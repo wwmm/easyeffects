@@ -59,7 +59,7 @@ Kirigami.OverlaySheet {
                 }
 
                 Controls.Label {
-                    text: i18n("+")
+                    text: "+"
                 }
 
                 Kirigami.Chip {
@@ -87,7 +87,7 @@ Kirigami.OverlaySheet {
                 }
 
                 Controls.Label {
-                    text: i18n("+")
+                    text: "+"
                 }
 
                 Kirigami.Chip {
@@ -115,7 +115,7 @@ Kirigami.OverlaySheet {
                 }
 
                 Controls.Label {
-                    text: i18n("+")
+                    text: "+"
                 }
 
                 Kirigami.Chip {
@@ -186,7 +186,7 @@ Kirigami.OverlaySheet {
                 }
 
                 Controls.Label {
-                    text: i18n("+")
+                    text: "+"
                 }
 
                 Kirigami.Chip {
@@ -198,7 +198,7 @@ Kirigami.OverlaySheet {
                 }
 
                 Controls.Label {
-                    text: i18n("+")
+                    text: "+"
                 }
 
                 Kirigami.Chip {

@@ -46,7 +46,7 @@ Kirigami.OverlaySheet {
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: bandMenu.bandDB[bandName]
             editable: false
-            model: [i18n("RLC (BT)"), i18n("RLC (MT)"), i18n("BWC (BT)"), i18n("BWC (MT)"), i18n("LRX (BT)"), i18n("LRX (MT)"), i18n("APO (DR)")]
+            model: ["RLC (BT)", "RLC (MT)", "BWC (BT)", "BWC (MT)", "LRX (BT)", "LRX (MT)", "APO (DR)"]
             onActivated: idx => {
                 bandMenu.bandDB[bandName] = idx;
             }
@@ -58,7 +58,7 @@ Kirigami.OverlaySheet {
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: bandMenu.bandDB[bandName]
             editable: false
-            model: [i18n("x1"), i18n("x2"), i18n("x3"), i18n("x4")]
+            model: ["x1", "x2", "x3", "x4"]
             onActivated: idx => {
                 bandMenu.bandDB[bandName] = idx;
             }
