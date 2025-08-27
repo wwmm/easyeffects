@@ -214,6 +214,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
+                            minusInfinityMode: true
                             onValueModified: v => {
                                 pluginDB.releaseThreshold = v;
                             }

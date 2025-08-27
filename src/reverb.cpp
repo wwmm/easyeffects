@@ -60,7 +60,7 @@ Reverb::Reverb(const std::string& tag, pw::Manager* pipe_manager, PipelineType p
   BIND_LV2_PORT("treble_cut", trebleCut, setTrebleCut, db::Reverb::trebleCutChanged);
   BIND_LV2_PORT("room_size", roomSize, setRoomSize, db::Reverb::roomSizeChanged);
 
-  // // The following controls can assume -inf
+  // dB controls with -inf mode.
 
   BIND_LV2_PORT_DB("amount", amount, setAmount, db::Reverb::amountChanged, true);
   BIND_LV2_PORT_DB("dry", dry, setDry, db::Reverb::dryChanged, true);

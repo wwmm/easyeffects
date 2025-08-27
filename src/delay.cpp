@@ -74,7 +74,8 @@ Delay::Delay(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
   BIND_LV2_PORT("phase_l", invertPhaseL, setInvertPhaseL, db::Delay::invertPhaseLChanged);
   BIND_LV2_PORT("phase_r", invertPhaseR, setInvertPhaseR, db::Delay::invertPhaseRChanged);
 
-  // The following controls can assume -inf
+  // dB controls with -inf mode.
+
   BIND_LV2_PORT_DB("dry_l", dryL, setDryL, db::Delay::dryLChanged, true);
   BIND_LV2_PORT_DB("dry_r", dryR, setDryR, db::Delay::dryRChanged, true);
 
