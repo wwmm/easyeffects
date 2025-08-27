@@ -400,6 +400,13 @@ Kirigami.Page {
                         return;
 
                     populatePluginsListModel(newList);
+
+                    if (newList.length === 0) {
+                        pageStreamsEffects.streamDB.visiblePlugin = "";
+                        while (pluginsStack.depth > 1)
+                            pluginsStack.pop();
+                    }
+
                     if (newList.length === 1 && pluginsListView.currentIndex === -1)
                         pluginsListView.currentIndex = 0;
                 }
