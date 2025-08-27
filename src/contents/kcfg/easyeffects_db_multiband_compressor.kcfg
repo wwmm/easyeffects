@@ -27,7 +27,7 @@
             <label></label>
             <min>-80.01</min>
             <max>20</max>
-            <default>-100</default>
+            <default>-80.01</default>
         </entry>
         <entry name="wet" type="Double">
             <label></label>
@@ -385,49 +385,49 @@
 
         <entry name="band0SidechainPreamp" type="Double">
             <label></label>
-            <min>-120</min>
+            <min>-80.01</min>
             <max>40</max>
             <default>0</default>
         </entry>
         <entry name="band1SidechainPreamp" type="Double">
             <label></label>
-            <min>-120</min>
+            <min>-80.01</min>
             <max>40</max>
             <default>0</default>
         </entry>
         <entry name="band2SidechainPreamp" type="Double">
             <label></label>
-            <min>-120</min>
+            <min>-80.01</min>
             <max>40</max>
             <default>0</default>
         </entry>
         <entry name="band3SidechainPreamp" type="Double">
             <label></label>
-            <min>-120</min>
+            <min>-80.01</min>
             <max>40</max>
             <default>0</default>
         </entry>
         <entry name="band4SidechainPreamp" type="Double">
             <label></label>
-            <min>-120</min>
+            <min>-80.01</min>
             <max>40</max>
             <default>0</default>
         </entry>
         <entry name="band5SidechainPreamp" type="Double">
             <label></label>
-            <min>-120</min>
+            <min>-80.01</min>
             <max>40</max>
             <default>0</default>
         </entry>
         <entry name="band6SidechainPreamp" type="Double">
             <label></label>
-            <min>-120</min>
+            <min>-80.01</min>
             <max>40</max>
             <default>0</default>
         </entry>
         <entry name="band7SidechainPreamp" type="Double">
             <label></label>
-            <min>-120</min>
+            <min>-80.01</min>
             <max>40</max>
             <default>0</default>
         </entry>
@@ -831,51 +831,51 @@
 
         <entry name="band0ReleaseThreshold" type="Double">
             <label></label>
-            <min>-100</min>
+            <min>-80.01</min>
             <max>36</max>
-            <default>-100</default>
+            <default>-80.01</default>
         </entry>
         <entry name="band1ReleaseThreshold" type="Double">
             <label></label>
-            <min>-100</min>
+            <min>-80.01</min>
             <max>36</max>
-            <default>-100</default>
+            <default>-80.01</default>
         </entry>
         <entry name="band2ReleaseThreshold" type="Double">
             <label></label>
-            <min>-100</min>
+            <min>-80.01</min>
             <max>36</max>
-            <default>-100</default>
+            <default>-80.01</default>
         </entry>
         <entry name="band3ReleaseThreshold" type="Double">
             <label></label>
-            <min>-100</min>
+            <min>-80.01</min>
             <max>36</max>
-            <default>-100</default>
+            <default>-80.01</default>
         </entry>
         <entry name="band4ReleaseThreshold" type="Double">
             <label></label>
-            <min>-100</min>
+            <min>-80.01</min>
             <max>36</max>
-            <default>-100</default>
+            <default>-80.01</default>
         </entry>
         <entry name="band5ReleaseThreshold" type="Double">
             <label></label>
-            <min>-100</min>
+            <min>-80.01</min>
             <max>36</max>
-            <default>-100</default>
+            <default>-80.01</default>
         </entry>
         <entry name="band6ReleaseThreshold" type="Double">
             <label></label>
-            <min>-100</min>
+            <min>-80.01</min>
             <max>36</max>
-            <default>-100</default>
+            <default>-80.01</default>
         </entry>
         <entry name="band7ReleaseThreshold" type="Double">
             <label></label>
-            <min>-100</min>
+            <min>-80.01</min>
             <max>36</max>
-            <default>-100</default>
+            <default>-80.01</default>
         </entry>
 
         <entry name="band0ReleaseTime" type="Double">

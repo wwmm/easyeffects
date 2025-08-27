@@ -259,7 +259,7 @@ Kirigami.ScrollablePage {
                             from: pluginDB.getMinValue("sidechainPreamp")
                             to: pluginDB.getMaxValue("sidechainPreamp")
                             value: pluginDB.sidechainPreamp
-                            decimals: 2
+                            decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true

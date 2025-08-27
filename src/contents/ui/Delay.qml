@@ -163,7 +163,7 @@ Kirigami.ScrollablePage {
                             from: pluginDB.getMinValue("dryL")
                             to: pluginDB.getMaxValue("dryL")
                             value: pluginDB.dryL
-                            decimals: 2
+                            decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
@@ -181,7 +181,7 @@ Kirigami.ScrollablePage {
                             from: pluginDB.getMinValue("wetL")
                             to: pluginDB.getMaxValue("wetL")
                             value: pluginDB.wetL
-                            decimals: 2
+                            decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
@@ -321,7 +321,7 @@ Kirigami.ScrollablePage {
                             from: pluginDB.getMinValue("dryR")
                             to: pluginDB.getMaxValue("dryR")
                             value: pluginDB.dryR
-                            decimals: 2
+                            decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
@@ -339,7 +339,7 @@ Kirigami.ScrollablePage {
                             from: pluginDB.getMinValue("wetR")
                             to: pluginDB.getMaxValue("wetR")
                             value: pluginDB.wetR
-                            decimals: 2
+                            decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true

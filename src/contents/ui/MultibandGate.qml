@@ -421,9 +421,10 @@ Kirigami.ScrollablePage {
                     from: pluginDB.getMinValue(multibandGatePage.bandId + "SidechainPreamp")
                     to: pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainPreamp")
                     value: pluginDB[multibandGatePage.bandId + "SidechainPreamp"]
-                    decimals: 1
-                    stepSize: 0.1
+                    decimals: 2 // Required to show "-inf"
+                    stepSize: 0.01
                     unit: "dB"
+                    minusInfinityMode: true
                     onValueModified: v => {
                         pluginDB[multibandGatePage.bandId + "SidechainPreamp"] = v;
                     }
@@ -763,7 +764,7 @@ Kirigami.ScrollablePage {
                 from: pluginDB.getMinValue("dry")
                 to: pluginDB.getMaxValue("dry")
                 value: pluginDB.dry
-                decimals: 2
+                decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
                 unit: "dB"
                 minusInfinityMode: true
@@ -781,7 +782,7 @@ Kirigami.ScrollablePage {
                 from: pluginDB.getMinValue("wet")
                 to: pluginDB.getMaxValue("wet")
                 value: pluginDB.wet
-                decimals: 2
+                decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
                 unit: "dB"
                 minusInfinityMode: true
