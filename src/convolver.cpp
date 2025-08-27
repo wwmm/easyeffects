@@ -776,6 +776,8 @@ auto Convolver::interpolate(const std::vector<double>& x_source,
 void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
                                  const std::vector<float>& kernel_R,
                                  const float& kernel_rate) {
+  std::scoped_lock<std::mutex> lock(data_mutex);
+
   if (kernel_L.empty() || kernel_R.empty() || kernel_L.size() != kernel_R.size()) {
     util::debug(" aborting the impulse fft calculation...");
 
