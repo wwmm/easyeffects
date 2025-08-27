@@ -407,6 +407,7 @@ Kirigami.ScrollablePage {
                     value: 0
                     decimals: 0
                     convertDecibelToLinear: true
+                    topToBottom: true
                 }
 
                 EeAudioLevel {
@@ -420,6 +421,7 @@ Kirigami.ScrollablePage {
                     value: 0
                     decimals: 0
                     convertDecibelToLinear: true
+                    topToBottom: true
                 }
 
                 EeAudioLevel {

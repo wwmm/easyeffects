@@ -551,6 +551,7 @@ Kirigami.ScrollablePage {
                             value: Common.toLocaleLabel(multibandGatePage.bandReductionLevelLeft[bandsListview.currentIndex], 0, "")
                             decimals: 0
                             convertDecibelToLinear: true
+                            topToBottom: true
                         }
 
                         EeAudioLevel {
@@ -564,6 +565,7 @@ Kirigami.ScrollablePage {
                             value: Common.toLocaleLabel(multibandGatePage.bandReductionLevelRight[bandsListview.currentIndex], 0, "")
                             decimals: 0
                             convertDecibelToLinear: true
+                            topToBottom: true
                         }
 
                         Controls.Label {
