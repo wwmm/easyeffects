@@ -204,7 +204,7 @@ Kirigami.ScrollablePage {
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
-                    checked: pluginBackend.hasNativeUi()
+                    checked: pluginBackend ? pluginBackend.hasNativeUi() : false
                     onTriggered: {
                         if (checked)
                             pluginBackend.showNativeUi();
