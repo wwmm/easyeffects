@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import ee.database as DB
 import ee.help as Help
 import ee.pipeline as Pipeline
+import ee.presets as Presets
 import org.kde.kirigami as Kirigami
 
 Kirigami.ApplicationWindow {
@@ -183,7 +184,58 @@ Kirigami.ApplicationWindow {
         }
 
         menu: Menu {
+            id: trayMenu
             visible: false
+
+            Instantiator {
+                id: instantiatorInputPresets
+
+                model: DB.Manager.streamInputs.mostUsedPresets
+                delegate: MenuItem {
+                    text: modelData
+                    onTriggered: {
+                        Presets.Manager.loadLocalPresetFile(0, modelData);
+                    }
+                }
+
+                onObjectAdded: (index, object) => trayMenu.insertItem(trayMenu.items.indexOf(sectionInputPresets), object)
+                onObjectRemoved: (index, object) => trayMenu.removeItem(object)
+            }
+
+            Instantiator {
+                id: instantiatorOutputPresets
+
+                model: DB.Manager.streamOutputs.mostUsedPresets
+                delegate: MenuItem {
+                    text: modelData
+                    onTriggered: {
+                        Presets.Manager.loadLocalPresetFile(1, modelData);
+                    }
+                }
+
+                onObjectAdded: (index, object) => trayMenu.insertItem(trayMenu.items.indexOf(sectionOutputPresets), object)
+                onObjectRemoved: (index, object) => trayMenu.removeItem(object)
+            }
+
+            MenuItem {
+                text: i18n("Input Presets")
+                icon.name: "bookmarks-symbolic"
+                enabled: false
+            }
+
+            MenuSeparator {
+                id: sectionInputPresets
+            }
+
+            MenuItem {
+                text: i18n("Output Presets")
+                icon.name: "bookmarks-symbolic"
+                enabled: false
+            }
+
+            MenuSeparator {
+                id: sectionOutputPresets
+            }
 
             MenuItem {
                 text: i18n("Active")

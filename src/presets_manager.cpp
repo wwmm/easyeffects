@@ -1495,6 +1495,13 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
 
   names = (pipeline_type == PipelineType::input) ? db::StreamInputs::usedPresets() : db::StreamOutputs::usedPresets();
 
+  // removing from the list presets that are installed anymore
+
+  names.removeIf([&](const QString& s) {
+    return std::ranges::none_of(get_local_presets_paths(pipeline_type),
+                                [&](const auto p) { return s.startsWith(QString::fromStdString(p.stem().string())); });
+  });
+
   bool contains_name = false;
   int idx = -1;
 
@@ -1548,6 +1555,10 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
 
   for (auto& it : std::ranges::reverse_view(usageMap)) {
     sortedList << it.second;
+  }
+
+  if (sortedList.size() > 4) {  // We can't have many entries in the tray menu. There is no space for that.
+    sortedList.resize(4);
   }
 
   if (pipeline_type == PipelineType::input) {
