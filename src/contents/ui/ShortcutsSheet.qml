@@ -44,7 +44,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Fullscreen / Restore from fullscreen")
+                text: i18n("Toggle Fullscreen")
             }
 
             RowLayout {
@@ -128,7 +128,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Quit EasyEffects")
+                text: i18n("Quit Easy Effects Service")
             }
 
             Kirigami.Chip {
@@ -211,7 +211,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Enable/Disable Effects")
+                text: i18n("Toggle Global Bypass")
             }
         }
     }

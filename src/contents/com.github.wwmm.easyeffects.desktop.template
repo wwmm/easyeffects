@@ -1,6 +1,6 @@
 [Desktop Entry]
 # Translators: This is a variable for the application name, don't translate!
-_Name=EasyEffects
+_Name=Easy Effects
 _GenericName=Equalizer, Compressor and Other Audio Effects
 _Comment=Audio Effects for PipeWire Applications
 Keywords=limiter;compressor;reverberation;equalizer;autovolume;
