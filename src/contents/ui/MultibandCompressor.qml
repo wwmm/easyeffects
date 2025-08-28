@@ -161,6 +161,10 @@ Kirigami.ScrollablePage {
                 id: bandControlsLayout
 
                 maximumColumns: 4
+                // The following is the minimumColumnWidth that contains
+                // all the spinboxes in the gainFrame without overflowing
+                // on the right border.
+                minimumColumnWidth: Kirigami.Units.gridUnit * 20
                 uniformCellWidths: true
 
                 anchors {
@@ -336,6 +340,7 @@ Kirigami.ScrollablePage {
                             label: i18n("Ratio")
                             labelAbove: true
                             spinboxLayoutFillWidth: true
+                            Layout.minimumWidth: Kirigami.Units.gridUnit * 6
                             from: pluginDB.getMinValue(multibandCompressorPage.bandId + "Ratio")
                             to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "Ratio")
                             value: pluginDB[multibandCompressorPage.bandId + "Ratio"]
@@ -350,6 +355,7 @@ Kirigami.ScrollablePage {
                             label: i18n("Knee")
                             labelAbove: true
                             spinboxLayoutFillWidth: true
+                            Layout.minimumWidth: Kirigami.Units.gridUnit * 6
                             from: pluginDB.getMinValue(multibandCompressorPage.bandId + "Knee")
                             to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "Knee")
                             value: pluginDB[multibandCompressorPage.bandId + "Knee"]
@@ -366,6 +372,7 @@ Kirigami.ScrollablePage {
                             label: i18n("Makeup")
                             labelAbove: true
                             spinboxLayoutFillWidth: true
+                            Layout.minimumWidth: Kirigami.Units.gridUnit * 6
                             from: pluginDB.getMinValue(multibandCompressorPage.bandId + "Makeup")
                             to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "Makeup")
                             value: pluginDB[multibandCompressorPage.bandId + "Makeup"]
