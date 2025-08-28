@@ -100,6 +100,12 @@ Kirigami.ApplicationWindow {
         onActivated: appWindow.close()
     }
 
+    Shortcut {
+        // This one replaces CTRL+Q that might not work outside KDE.
+        sequences: ["Ctrl+T"]
+        onActivated: Qt.quit()
+    }
+
     PreferencesSheet {
         id: preferencesSheet
     }

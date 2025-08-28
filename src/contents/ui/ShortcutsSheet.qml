@@ -119,7 +119,7 @@ Kirigami.OverlaySheet {
                 }
 
                 Kirigami.Chip {
-                    text: "Q"
+                    text: "T"
                     closable: false
                     checkable: false
                     down: false
@@ -128,7 +128,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Quit Easy Effects Service")
+                text: i18n("Terminate Easy Effects Service")
             }
 
             Kirigami.Chip {
