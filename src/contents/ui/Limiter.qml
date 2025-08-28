@@ -39,6 +39,7 @@ Kirigami.ScrollablePage {
             id: cardLayout
 
             maximumColumns: 4
+            minimumColumnWidth: Kirigami.Units.gridUnit * 15
             uniformCellWidths: true
 
             Kirigami.Card {
@@ -114,6 +115,7 @@ Kirigami.ScrollablePage {
                         id: threshold
 
                         label: i18n("Threshold")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pluginDB.getMinValue("threshold")
                         to: pluginDB.getMaxValue("threshold")
                         value: pluginDB.threshold
@@ -134,6 +136,7 @@ Kirigami.ScrollablePage {
                         id: attack
 
                         label: i18n("Attack")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pluginDB.getMinValue("attack")
                         to: pluginDB.getMaxValue("attack")
                         value: pluginDB.attack
@@ -154,6 +157,7 @@ Kirigami.ScrollablePage {
                         id: release
 
                         label: i18n("Release")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pluginDB.getMinValue("release")
                         to: pluginDB.getMaxValue("release")
                         value: pluginDB.release
@@ -174,6 +178,7 @@ Kirigami.ScrollablePage {
                         id: stereoLink
 
                         label: i18n("Stereo Link")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pluginDB.getMinValue("stereoLink")
                         to: pluginDB.getMaxValue("stereoLink")
                         value: pluginDB.stereoLink
@@ -303,6 +308,7 @@ Kirigami.ScrollablePage {
                         id: alrAttack
 
                         label: i18n("Attack")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pluginDB.getMinValue("alrAttack")
                         to: pluginDB.getMaxValue("alrAttack")
                         value: pluginDB.alrAttack
@@ -323,6 +329,7 @@ Kirigami.ScrollablePage {
                         id: alrRelease
 
                         label: i18n("Release")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pluginDB.getMinValue("alrRelease")
                         to: pluginDB.getMaxValue("alrRelease")
                         value: pluginDB.alrRelease
@@ -343,6 +350,7 @@ Kirigami.ScrollablePage {
                         id: alrKnee
 
                         label: i18n("Knee")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pluginDB.getMinValue("alrKnee")
                         to: pluginDB.getMaxValue("alrKnee")
                         value: pluginDB.alrKnee
