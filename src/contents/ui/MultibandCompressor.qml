@@ -847,6 +847,10 @@ Kirigami.ScrollablePage {
                                 checked: !multibandCompressorPage.pluginDB.viewSidechain
                                 icon.name: "arrow-left-symbolic"
                                 onTriggered: {
+                                    if (multibandCompressorPage.pluginDB.viewSidechain === false) {
+                                        return;
+                                    }
+
                                     multibandCompressorPage.pluginDB.viewSidechain = false;
                                     bandStackview.replace(bandCompressorControls);
                                 }
@@ -857,6 +861,10 @@ Kirigami.ScrollablePage {
                                 checked: multibandCompressorPage.pluginDB.viewSidechain
                                 icon.name: "arrow-right-symbolic"
                                 onTriggered: {
+                                    if (multibandCompressorPage.pluginDB.viewSidechain === true) {
+                                        return;
+                                    }
+
                                     multibandCompressorPage.pluginDB.viewSidechain = true;
                                     bandStackview.replace(bandSidechainControls);
                                 }

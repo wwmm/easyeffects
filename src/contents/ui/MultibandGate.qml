@@ -821,6 +821,10 @@ Kirigami.ScrollablePage {
                                 checked: !multibandGatePage.pluginDB.viewSidechain
                                 icon.name: "arrow-left-symbolic"
                                 onTriggered: {
+                                    if (multibandGatePage.pluginDB.viewSidechain === false) {
+                                        return;
+                                    }
+
                                     multibandGatePage.pluginDB.viewSidechain = false;
                                     bandStackview.replace(bandGateControls);
                                 }
@@ -831,6 +835,10 @@ Kirigami.ScrollablePage {
                                 checked: multibandGatePage.pluginDB.viewSidechain
                                 icon.name: "arrow-right-symbolic"
                                 onTriggered: {
+                                    if (multibandGatePage.pluginDB.viewSidechain === true) {
+                                        return;
+                                    }
+
                                     multibandGatePage.pluginDB.viewSidechain = true;
                                     bandStackview.replace(bandSidechainControls);
                                 }
