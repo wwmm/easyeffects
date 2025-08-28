@@ -15,6 +15,8 @@ Item {
     required property string translatedName
     required property var pluginDB
 
+    signal selectedChanged(string name)
+
     width: {
         if (parent && !DB.Manager.main.collapsePluginsList)
             parent.width > listItemDelegate.implicitWidth ? parent.width : listItemDelegate.implicitWidth;
@@ -31,6 +33,8 @@ Item {
         highlighted: delegateItem.ListView.isCurrentItem
         onClicked: {
             delegateItem.ListView.view.currentIndex = delegateItem.index;
+
+            delegateItem.selectedChanged(delegateItem.name);
         }
 
         contentItem: GridLayout {
