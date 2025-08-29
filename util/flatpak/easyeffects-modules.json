@@ -221,14 +221,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/libportal.git",
-                    "commit": "a1530a98db296a8f3c501932d68a7d008da2ac2e",
-                    "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/flatpak/libportal/releases/latest",
-                        "tag-query": ".tag_name",
-                        "version-query": "$tag | sub(\"^jq-\"; \"\")",
-                        "timestamp-query": ".published_at"
-                    }
+                    "//": "use commit from master as we need these unreleased changes to build on qt 6.9",
+                    "commit": "796053d2eebe4532aad6bd3fd80cdf3b197806ec"
                 }
             ]
         },
