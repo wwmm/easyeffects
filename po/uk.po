@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-23 18:01+0000\n"
-"PO-Revision-Date: 2025-08-15 13:02+0000\n"
-"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
+"PO-Revision-Date: 2025-08-28 23:24+0000\n"
+"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.13.1-dev\n"
 
 #. Translators: This is a variable for the application name, don't translate!
 #: data/com.github.wwmm.easyeffects.desktop.in:3
@@ -1890,7 +1890,7 @@ msgstr "Застосувати"
 
 #: data/ui/preset_row.ui:39
 msgid "Discard the current settings and load this preset"
-msgstr "Скасуйте поточні налаштування та завантажте цей пресет"
+msgstr "Скасувати поточні налаштування та застосувати цей пресет"
 
 #: data/ui/preset_row.ui:48
 msgid "Save current settings to this preset file"
@@ -1926,7 +1926,7 @@ msgstr "Нова назва попереднього налаштування"
 
 #: data/ui/presets_menu.ui:56
 msgid "Create a new preset"
-msgstr "Створіть новий стиль"
+msgstr "Створити новий пресет"
 
 #: data/ui/presets_menu.ui:70
 msgid "Import a preset from the local storage"
