@@ -28,9 +28,9 @@ jobs:
       - name: Change git permissions
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      - name: Run meson targets
+      - name: Run cmake targets
         run: |
-          meson build
+          cmake -B build -S . -G Ninja -Wno-dev
           cd build
           ../util/update_translation_templates.sh
           cd ..
