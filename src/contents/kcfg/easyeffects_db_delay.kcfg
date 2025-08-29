@@ -23,12 +23,12 @@
         <entry name="dryL" type="Double">
             <min>-80.01</min>
             <max>20</max>
-            <default>-100</default>
+            <default>-80.01</default>
         </entry>
         <entry name="dryR" type="Double">
             <min>-80.01</min>
             <max>20</max>
-            <default>-100</default>
+            <default>-80.01</default>
         </entry>
         <entry name="wetL" type="Double">
             <min>-80.01</min>

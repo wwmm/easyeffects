@@ -27,7 +27,7 @@
             <label></label>
             <min>-80.01</min>
             <max>20</max>
-            <default>-100</default>
+            <default>-80.01</default>
         </entry>
         <entry name="wet" type="Double">
             <label></label>
