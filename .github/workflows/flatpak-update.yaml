@@ -6,10 +6,10 @@ on:
 
 jobs:
   flatpak-external-data-checker:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v5.0.0
         with:
           # we can't push changes to a fork via a shallow update, we need to clone the full repo
           fetch-depth: 0

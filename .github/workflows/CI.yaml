@@ -10,12 +10,12 @@ name: CI
 jobs:
   prepare:
     name: Prepare
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     outputs:
       github_commit_desc: ${{ steps.get_commit_desc.outputs.github_commit_desc }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v5.0.0
         with:
           fetch-depth: 0
 
@@ -39,22 +39,29 @@ jobs:
             echo "github_commit_desc=${{ env.GITHUB_HEAD_SHA }}" >> $GITHUB_OUTPUT
           fi
 
-  flatpak:
-    name: Flatpak
-    runs-on: ubuntu-24.04
+  flatpak-build:
+    name: Flatpak build (${{ matrix.variant.arch }})
     env:
       FLATPAK_BUILD_PATH: flatpak_app/files/share
     needs: prepare
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-46
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.9
       options: --privileged
+    strategy:
+      matrix:
+        variant:
+          - arch: x86_64
+            runner: ubuntu-24.04
+          - arch: aarch64
+            runner: ubuntu-24.04-arm
+      fail-fast: false
+    runs-on: ${{ matrix.variant.runner }}
     steps:
     - name: Checkout
-      uses: actions/checkout@v4.1.7
+      uses: actions/checkout@v5.0.0
 
     - name: Enable errors on warnings
       run: |
-        dnf install -y jq
         # jq does not have an option to save edits in place so we should make a temporary file to edit this safely
         updated_manifest=$(mktemp)
         jq '.modules[0]."config-opts" += ["-Dwerror=true"]' util/flatpak/com.github.wwmm.easyeffects.Devel.json > "$updated_manifest"
@@ -65,36 +72,38 @@ jobs:
         bundle: easyeffects-flatpak-${{ needs.prepare.outputs.github_commit_desc }}.flatpak
         manifest-path: util/flatpak/com.github.wwmm.easyeffects.Devel.json
         cache-key: flatpak-builder-${{ github.sha }}
+        arch: ${{ matrix.variant.arch }}
         run-tests: true
-    
-    # we also validate appstream in the appstream-news-validate job, 
-    # but we still should specifically ensure the flatpak outputs it properly
-    #- name: Validate AppStream
-    #  shell: bash
-    #  working-directory: ${{ env.FLATPAK_BUILD_PATH }}
-      #run: |
-      #  appstream-util validate-relax appdata/com.github.wwmm.easyeffects.Devel.appdata.xml
-    
-    # - name: Verify icon and metadata in app-info
-    #   shell: bash
-    #   working-directory: ${{ env.FLATPAK_BUILD_PATH }}
-    #   run: |
-    #     test -f app-info/icons/flatpak/128x128/com.github.wwmm.easyeffects.Devel.png || { echo "Missing 128x128 icon in app-info" ; exit 1; }
-    #     test -f app-info/xmls/com.github.wwmm.easyeffects.Devel.xml.gz || { echo "Missing com.github.wwmm.easyeffects.Devel.xml.gz in app-info" ; exit 1; }
 
+  flatpak-lint:
+    name: Flatpak lint
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5.0.0
+  
     # this just validates, actual update PRs are done in flatpak-update.yaml
     - name: Verify flatpak external data checker metadata
       uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
       with:
         args: util/flatpak/com.github.wwmm.easyeffects.Devel.json
 
+    - name: Write exceptions file
+      run: |
+        echo '{"com.github.wwmm.easyeffects.Devel": ["appid-uses-code-hosting-domain"]}' > exceptions.json
+
+    - name: Verify flatpak builder lint
+      uses: docker://ghcr.io/flathub/flatpak-builder-lint:latest
+      with:
+        args: --exceptions --user-exceptions exceptions.json manifest util/flatpak/com.github.wwmm.easyeffects.Devel.json
+
   arch-linux:
     name: Arch Linux
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: prepare
     steps:
     - name: Checkout
-      uses: actions/checkout@v4.1.7
+      uses: actions/checkout@v5.0.0
       with:
         # needed for getting git describe info for pkgver() in pkgbuild
         fetch-depth: 0
@@ -105,157 +114,95 @@ jobs:
 
     - name: Makepkg Build and Check
       id: makepkg
-      uses: edlanglois/pkgbuild-action@v1.1.8
+      uses: edlanglois/pkgbuild-action@v1.1.9
       with:
         # namcap doesn't actually exclude this rule, resulting in unnecessary warnings, so just disable namcap since it's not critical
         # namcapExcludeRules: unusedsodepends
         namcapDisable: true
 
     - name: Upload Package Archive
-      uses: actions/upload-artifact@v4.3.3
+      uses: actions/upload-artifact@v4.6.2
       with:
         name: easyeffects-archlinux-${{ needs.prepare.outputs.github_commit_desc }}-x86_64
         path: ${{ steps.makepkg.outputs.pkgfile0 }}
         if-no-files-found: error
 
+  fedora-linux:
+    name: Fedora Linux
+    runs-on: ubuntu-24.04
+    strategy:
+      # test with latest versions of gcc and clang in their default configurations with libstdc++
+      matrix:
+        compiler: [gcc, clang]
+      fail-fast: false
+    container:
+      image: fedora:rawhide
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v5.0.0
 
-  # alpine-linux:
-  #   name: Alpine Linux (stdc++)
-  #   runs-on: ubuntu-22.04
-  #   container:
-  #     image: alpine
+    - name: Install deps
+      run: |
+        dnf update -y
 
-  #   steps:
-  #   - name: Checkout repository
-  #     uses: actions/checkout@v4.1.7
+        # install general build deps
+        dnf install -y gcc gcc-c++ clang cmake extra-cmake-modules ninja bash
 
-  #   - name: Install deps
-  #     run: |
-  #       apk update
-  #       apk upgrade
+        # inspired by https://src.fedoraproject.org/rpms/easyeffects/raw/rawhide/f/easyeffects.spec
+        depends="
+        lv2
+        libappstream-glib
+        qt6-qtbase-devel
+        qt6-qtgraphs-devel
+        kf6-kiconthemes-devel
+        kf6-kirigami-devel
+        kf6-ki18n-devel
+        kf6-kconfigwidgets-devel
+        kf6-kconfig-devel
+        kf6-kcoreaddons-devel
+        kf6-kirigami-addons-devel
+        kf6-qqc2-desktop-style
+        desktop-file-utils
+        itstool
+        libxml2-devel
+        fftw3-devel
+        libbs2b-devel
+        libebur128-devel
+        pipewire-devel
+        lilv-devel
+        libsamplerate-devel
+        libsndfile-devel
+        zita-convolver-devel 
+        rnnoise-devel
+        rubberband-devel
+        speexdsp-devel
+        nlohmann_json-devel
+        tbb-devel
+        gsl-devel
+        speex-devel
+        soundtouch-devel
+        ladspa-devel
+        libportal-qt6-devel
+        "
 
-  #       # install general build deps
-  #       apk add cmake extra-cmake-modules samurai clang clang-extra-tools build-base bash libc++-dev
+        # install easyeffects deps
+        dnf install -y $depends
 
-  #       # inspired by https://git.alpinelinux.org/aports/plain/community/easyeffects/APKBUILD
-  #       depends="lv2"
-  #       makedepends="
-  #       qt6-qtbase-dev
-  #       qt6-qtgraphs-dev
-  #       kiconthemes-dev
-  #       kirigami-dev
-  #       ki18n-dev
-  #       kconfigwidgets-dev
-  #       kconfig-dev
-  #       kcoreaddons-dev
-  #       qqc2-desktop-style-dev
-  #       appstream-glib-dev
-  #       desktop-file-utils
-  #       fftw-dev
-  #       gsl-dev
-  #       itstool
-  #       libbs2b-dev
-  #       libebur128-dev
-  #       libsamplerate-dev
-  #       libsigc++3-dev
-  #       libsndfile-dev
-  #       libtbb-dev
-  #       lilv-dev
-  #       lv2-dev
-  #       nlohmann-json
-  #       pipewire-dev
-  #       pkgconf
-  #       rnnoise-dev
-  #       soundtouch-dev
-  #       speexdsp-dev
-  #       zita-convolver-dev
-  #       ladspa-dev
-  #       "
+    - name: Build with gcc
+      if: matrix.compiler == 'gcc'
+      run: |
+        CC=gcc CXX=g++ cmake -B build -S . -G Ninja -Wno-dev
+        cmake --build build
 
-  #       # install easyeffects deps
-  #       apk add $makedepends $depends
-
-  #       # install libportal since we technically need it for a full check
-  #       apk add libportal-dev
-
-  #   - name: Build with Clang (libstdc++)
-  #     run: |
-  #       CC=clang CXX=clang++ CXXFLAGS=-stdlib=libstdc++ cmake -B build -S . -G Ninja -Wno-dev -DENABLE_LIBCPP_WORKAROUNDS=ON
-  #       cmake --build build
-
-  # For some reason a program compiled with libc++ does not link to a Qt built with libstdc++. The linking fails
-  # because of undefined functions. So I moved the libc++ CI a a distribution that uses libc++ by default.
-  # 
-  # For some reason "actions/checkout@v4.1.7" did not work in the Chimera image. Failed with an error about the nodejs
-  # binary not being found
-
-  # chimera-linux:
-  #   name: Chimera Linux (libc++)
-  #   runs-on: ubuntu-22.04
-  #   container:
-  #     image: chimeralinux/chimera
-
-  #   steps:
-  #   - name: Install deps
-  #     run: |
-  #       apk add chimera-repo-contrib
-  #       apk update
-  #       apk upgrade
-
-  #       # install general build deps
-  #       apk add git cmake extra-cmake-modules ninja clang clang-tools-extra base-devel bash libcxx-devel nodejs
-
-  #       depends="lv2"
-  #       makedepends="
-  #       appstream
-  #       appstream-glib-devel
-  #       desktop-file-utils
-  #       fftw-devel
-  #       gettext
-  #       itstool
-  #       kiconthemes
-  #       kirigami-devel
-  #       ki18n-devel
-  #       kconfigwidgets-devel
-  #       kconfig-devel
-  #       kcoreaddons-devel
-  #       qqc2-desktop-style-devel
-  #       libbs2b-devel
-  #       libebur128-devel
-  #       libsamplerate-devel
-  #       libsigc++-devel
-  #       libsndfile-devel
-  #       lilv-devel
-  #       lv2
-  #       nlohmann-json
-  #       onetbb-devel
-  #       pipewire-devel
-  #       pkgconf
-  #       qt6-qtbase-devel
-  #       qt6-qtgraphs-devel
-  #       rnnoise-devel
-  #       soundtouch-devel
-  #       speexdsp-devel
-  #       zita-convolver-devel
-  #       ladspa-sdk
-  #       "
-
-  #       # install easyeffects deps
-  #       apk add $makedepends $depends
-
-  #       # install libportal since we technically need it for a full check
-  #       apk add libportal-devel
-
-  #   - name: Build with Clang (libc++)
-  #     run: |
-  #       git clone https://github.com/wwmm/easyeffects.git --depth=1 -b eeqt
-  #       cd easyeffects
-  #       CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev -DENABLE_LIBCPP_WORKAROUNDS=ON
-  #       cmake --build build
+    - name: Build with clang
+      if: matrix.compiler == 'clang'
+      run: |
+        CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev
+        cmake --build build
 
   codeql-analyze:
     name: CodeQL Analyze
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       security-events: write
     container:
@@ -263,7 +210,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4.1.7
+      uses: actions/checkout@v5.0.0
 
     - name: Install deps
       run: |
@@ -288,7 +235,7 @@ jobs:
 
   clang-tidy:
     name: Clang Tidy
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     container:
       image: archlinux
 
@@ -304,8 +251,6 @@ jobs:
         source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
         # install clang
         pacman -S --noconfirm --needed --asdeps clang openmp
-        # install libportal since we technically need it for a full check
-        pacman -S --noconfirm --needed --asdeps libportal libportal-gtk4
 
     - name: Build with Clang
       # build with clang not because we strictly need to (we do need to do some kind of build so config.h shows up)
@@ -322,7 +267,7 @@ jobs:
         ./install-user-client
 
     - name: Restore Clang Tidy cache
-      uses: actions/cache/restore@v4.2.2
+      uses: actions/cache/restore@v4.2.4
       with:
         # since the ctcache is just a list of checksums that were checked, we want to write to it every ci run to keep it up to date
         # otherwise github actions just restores some old cache if the key didn't change
@@ -345,7 +290,7 @@ jobs:
         PATH=~/.local/bin:"$PATH" CTCACHE_DIR=/tmp/ci-ctcache ../util/clang-tidy.sh
 
     - name: Save Clang Tidy cache
-      uses: actions/cache/save@v4.2.2
+      uses: actions/cache/save@v4.2.4
       # always run, except if the workflow was cancelled
       # this means clang tidy will get cached even if some checks are failing
       if: success() || failure()
@@ -355,15 +300,25 @@ jobs:
 
   appstream-news-validate:
     name: AppStream and News validate
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     container:
       image: archlinux
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v5.0.0
       
       - name: Install deps
         run: pacman -Syu --noconfirm appstream appstream-glib libxslt which
         
       - name: Validate existing files
         run: ./util/update-release-files.sh --no-new-release
+
+  check-kcfg:
+    name: Check KCFG
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5.0.0
+
+      - name: Run KCFG numeric-defaults checker
+        run: ./util/check-kcfg-numeric-defaults.sh
