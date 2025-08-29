@@ -320,16 +320,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5.0.0
 
-      - name: Run KCFG numeric-defaults checker and capture log
-        run: |
-          set -o pipefail
-          ./util/check-kcfg-numeric-defaults.sh 2>&1 | tee kcfg-check.log
-
-      - name: Upload report
-        # always run, except if the workflow was cancelled
-        if: success() || failure()
-        uses: actions/upload-artifact@v4.6.2
-        with:
-          name: kcfg-check-log
-          path: kcfg-check.log
-          if-no-files-found: error
+      - name: Run KCFG numeric-defaults checker
+        run: ./util/check-kcfg-numeric-defaults.sh
