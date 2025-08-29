@@ -125,20 +125,15 @@
             "name": "rnnoise",
             "sources": [
                 {
+                    "//": "get latest fixes from upstream to fix aarch64 build",
                     "type": "archive",
-                    "url": "https://github.com/xiph/rnnoise/releases/download/v0.2/rnnoise-0.2.tar.gz",
-                    "sha256": "90fce4b00b9ff24c08dbfe31b82ffd43bae383d85c5535676d28b0a2b11c0d37",
-                    "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/xiph/rnnoise/releases/latest",
-                        "version-query": ".tag_name | sub(\"^v\"; \"\")",
-                        "url-query": ".assets[] | select(.name==\"rnnoise-\" + $version + \".tar.gz\") | .browser_download_url"
-                    }
+                    "url": "https://github.com/xiph/rnnoise/archive/2e3c812c62c32b3ac486c3cd4f4894e6f57d45fd.zip",
+                    "sha256": "5bb718f676214097c5cd0b8defbed1cef50f26c4cea981df5bc7a3abd4b4ea15"
                 },
                 {
-                    "//": "downloads the file as found by this script https://github.com/xiph/rnnoise/blob/904a876dce1f9ab8860c0a5000ed151f9f6eef58/download_model.sh",
-                    "type": "archive",
-                    "url": "https://media.xiph.org/rnnoise/models/rnnoise_data-0b50c45.tar.gz",
+                    "//": "downloads the file as found by this script https://github.com/xiph/rnnoise/blob/2e3c812c62c32b3ac486c3cd4f4894e6f57d45fd/download_model.sh",
+                    "type": "file",
+                    "url": "https://media.xiph.org/rnnoise/models/rnnoise_data-4ac81c5c0884ec4bd5907026aaae16209b7b76cd9d7f71af582094a2f98f4b43.tar.gz",
                     "sha256": "4ac81c5c0884ec4bd5907026aaae16209b7b76cd9d7f71af582094a2f98f4b43"
                 }
             ],
@@ -153,8 +148,8 @@
                 {
                     "type": "git",
                     "url": "https://codeberg.org/soundtouch/soundtouch.git",
-                    "tag": "2.3.3",
-                    "commit": "e83424d5928ab8513d2d082779c275765dee31b9",
+                    "tag": "2.4.0",
+                    "commit": "d994965fbbcf0f6ceeed0e72516968130c2912f0",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$",
@@ -181,8 +176,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/nlohmann/json",
-                    "tag": "v3.11.3",
-                    "commit": "9cca280a4d0ccf0c08f47a99aa71d1b0e52f8d03",
+                    "tag": "v3.12.0",
+                    "commit": "55f93686c01528224f448c19128836e7df245f72",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/nlohmann/json/releases/latest",
@@ -203,8 +198,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.13.0.tar.gz",
-                    "sha256": "3ad5dd08954b39d113dc5b3f8a8dc6dc1fd5250032b7c491eb07aed5c94133e1",
+                    "url": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.2.0.tar.gz",
+                    "sha256": "f0f78001c8c8edb4bddc3d4c5ee7428d56ae313254158ad1eec49eced57f6a5b",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 227581,
@@ -246,8 +241,8 @@
                     "only-arches": [
                         "x86_64"
                     ],
-                    "url": "https://github.com/rui314/mold/releases/download/v2.32.1/mold-2.32.1-x86_64-linux.tar.gz",
-                    "sha256": "d9caf252d58b5f6a0fa5aa30fbe05d17b1c84f498106dc634cbce73866abdfeb",
+                    "url": "https://github.com/rui314/mold/releases/download/v2.40.4/mold-2.40.4-x86_64-linux.tar.gz",
+                    "sha256": "4c999e19ffa31afa5aa429c679b665d5e2ca5a6b6832ad4b79668e8dcf3d8ec1",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 241732,
@@ -261,8 +256,8 @@
                     "only-arches": [
                         "aarch64"
                     ],
-                    "url": "https://github.com/rui314/mold/releases/download/v2.32.1/mold-2.32.1-aarch64-linux.tar.gz",
-                    "sha256": "18ffc28b392fef90f3a73b4c40445925a661298f255c3031753c351ae7c7600a",
+                    "url": "https://github.com/rui314/mold/releases/download/v2.40.4/mold-2.40.4-aarch64-linux.tar.gz",
+                    "sha256": "c799b9ccae8728793da2186718fbe53b76400a9da396184fac0c64aa3298ec37",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 241732,
