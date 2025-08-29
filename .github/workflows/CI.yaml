@@ -304,8 +304,6 @@ jobs:
         source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
         # install clang
         pacman -S --noconfirm --needed --asdeps clang openmp
-        # install libportal since we technically need it for a full check
-        pacman -S --noconfirm --needed --asdeps libportal libportal-gtk4
 
     - name: Build with Clang
       # build with clang not because we strictly need to (we do need to do some kind of build so config.h shows up)
