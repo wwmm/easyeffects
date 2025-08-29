@@ -2,6 +2,22 @@
     "name": "easyeffects-modules",
     "modules": [
         {
+            "name": "qt6-graphs",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/qt/qtgraphs.git",
+                    "tag": "v6.9.0",
+                    "commit": "ba29aa033b1878429dd1f12d783c57e516f6f32a",
+                    "//": "We cannot use x-checker-data here as this version has to match the qt/kde runtime"
+                }
+            ],
+            "post-install": [
+                "install $FLATPAK_DEST/lib/*-linux-gnu/*.so $FLATPAK_DEST/lib/*-linux-gnu/*.so.* $FLATPAK_DEST/lib"
+            ]
+        },
+        {
             "name": "libsigc++",
             "buildsystem": "meson",
             "config-opts": [
