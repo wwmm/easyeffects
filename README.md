@@ -1,5 +1,5 @@
 <h2 align="center">
-  <img src="data/com.github.wwmm.easyeffects.svg" alt="Easy Effects icon" width="150" height="150"/>
+  <img src="src/contents/icons/com.github.wwmm.easyeffects.svg" alt="Easy Effects icon" width="150" height="150"/>
   <br>
   Easy Effects
 </h2>

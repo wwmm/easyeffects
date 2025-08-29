@@ -32,7 +32,6 @@
 #include <qvariant.h>
 #include <KLocalizedString>
 #include <algorithm>
-#include <cctype>
 #include <format>
 #include <iterator>
 #include "config.h"
@@ -428,7 +427,7 @@ void Nodes::remove_by_serial(const uint& serial) {
 }
 
 auto Nodes::has_serial(const uint& serial) -> bool {
-  return std::find_if(list.begin(), list.end(), [=](const NodeInfo& ni) { return ni.serial == serial; }) != list.end();
+  return std::ranges::find_if(list, [=](const NodeInfo& ni) { return ni.serial == serial; }) != list.end();
 }
 
 void Nodes::update_info(const NodeInfo& new_info) {

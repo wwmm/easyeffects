@@ -6,6 +6,8 @@ import ee.pipewire as PW
 import org.kde.kirigami as Kirigami
 
 Kirigami.AbstractCard {
+    id: root
+
     required property var model
     required property bool connected
     required property bool isBlocklisted
@@ -53,7 +55,7 @@ Kirigami.AbstractCard {
 
             Kirigami.Icon {
                 Layout.fillHeight: true
-                source: appIconName
+                source: root.appIconName
                 fallback: "folder-sound-symbolic"
             }
 
@@ -61,20 +63,20 @@ Kirigami.AbstractCard {
                 Kirigami.Heading {
                     Layout.fillWidth: true
                     level: 2
-                    text: name
+                    text: root.name
                 }
 
                 Controls.Label {
                     Layout.fillWidth: true
                     wrapMode: Text.WordWrap
-                    text: mediaName
+                    text: root.mediaName
                     color: Kirigami.Theme.disabledTextColor
                 }
 
                 RowLayout {
                     Controls.Label {
                         wrapMode: Text.WordWrap
-                        text: (state === "" ? "" : `${state} · `) + `${format} · ${rate} · ${nVolumeChannels} ` + i18n("channels") + ` · ${latency}`
+                        text: `${root.state} · ` + `${root.format} · ${root.rate} · ${root.nVolumeChannels} ` + i18n("channels") + ` · ${root.latency}`
                         color: Kirigami.Theme.disabledTextColor
                     }
                 }
@@ -83,25 +85,25 @@ Kirigami.AbstractCard {
             ColumnLayout {
                 Controls.CheckBox {
                     text: i18n("Enable")
-                    checked: connected
+                    checked: root.connected
                     onCheckedChanged: {
-                        if (checked == true && !isBlocklisted) {
-                            if (mediaClass === "Stream/Output/Audio")
-                                PW.Manager.connectStreamOutput(id);
-                            else if (mediaClass === "Stream/Input/Audio")
-                                PW.Manager.connectStreamInput(id);
-                        } else if (checked == false || isBlocklisted) {
-                            PW.Manager.disconnectStream(id);
+                        if (checked == true && !root.isBlocklisted) {
+                            if (root.mediaClass === "Stream/Output/Audio")
+                                PW.Manager.connectStreamOutput(root.id);
+                            else if (root.mediaClass === "Stream/Input/Audio")
+                                PW.Manager.connectStreamInput(root.id);
+                        } else if (checked == false || root.isBlocklisted) {
+                            PW.Manager.disconnectStream(root.id);
                         }
                     }
                 }
 
                 Controls.CheckBox {
                     text: i18n("Exclude")
-                    checked: isBlocklisted
+                    checked: root.isBlocklisted
                     onCheckedChanged: {
-                        if (model.isBlocklisted !== checked)
-                            model.isBlocklisted = checked;
+                        if (root.model.isBlocklisted !== checked)
+                            root.model.isBlocklisted = checked;
                     }
                 }
             }
@@ -114,10 +116,10 @@ Kirigami.AbstractCard {
 
                     icon.name: checked ? "audio-volume-muted-symbolic" : "audio-volume-high-symbolic"
                     checkable: true
-                    checked: mute
+                    checked: root.mute
                     onCheckedChanged: {
-                        if (checked !== mute)
-                            PW.Manager.setNodeMute(serial, checked);
+                        if (checked !== root.mute)
+                            PW.Manager.setNodeMute(root.serial, checked);
                     }
                 }
 
@@ -131,16 +133,16 @@ Kirigami.AbstractCard {
 
                     Layout.fillWidth: true
                     orientation: Qt.Horizontal
-                    value: prepareVolumeValue(volume)
+                    value: prepareVolumeValue(root.volume)
                     to: 100
                     stepSize: 1
                     enabled: !muteButton.checked
                     wheelEnabled: false
                     onMoved: {
-                        if (value !== prepareVolumeValue(volume)) {
+                        if (value !== prepareVolumeValue(root.volume)) {
                             let v = value / 100;
                             v = DB.Manager.main.useCubicVolumes === false ? v : v * v * v;
-                            PW.Manager.setNodeVolume(serial, nVolumeChannels, v);
+                            PW.Manager.setNodeVolume(root.serial, root.nVolumeChannels, v);
                         }
                     }
                 }
