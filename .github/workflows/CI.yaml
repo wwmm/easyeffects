@@ -40,14 +40,22 @@ jobs:
           fi
 
   flatpak:
-    name: Flatpak
-    runs-on: ubuntu-24.04
+    name: Flatpak (${{ matrix.variant.arch }})
     env:
       FLATPAK_BUILD_PATH: flatpak_app/files/share
     needs: prepare
     container:
       image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.9
       options: --privileged
+    strategy:
+      matrix:
+        variant:
+          - arch: x86_64
+            runner: ubuntu-24.04
+          - arch: aarch64
+            runner: ubuntu-24.04-arm
+      fail-fast: false
+    runs-on: ${{ matrix.variant.runner }}
     steps:
     - name: Checkout
       uses: actions/checkout@v4.1.7
@@ -64,6 +72,7 @@ jobs:
         bundle: easyeffects-flatpak-${{ needs.prepare.outputs.github_commit_desc }}.flatpak
         manifest-path: util/flatpak/com.github.wwmm.easyeffects.Devel.json
         cache-key: flatpak-builder-${{ github.sha }}
+        arch: ${{ matrix.variant.arch }}
         run-tests: true
 
     # this just validates, actual update PRs are done in flatpak-update.yaml
