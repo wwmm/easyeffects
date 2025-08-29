@@ -1,0 +1,3222 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects\n"
+"Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
+"POT-Creation-Date: 2025-08-29 12:10-0300\n"
+"PO-Revision-Date: 2025-08-23 14:27+0000\n"
+"Last-Translator: Ab <vultazhh@gmail.com>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
+"fa/>\n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.13\n"
+
+#: src/command_line_parser.cpp:44
+msgid "Quit Easy Effects. Useful when running in service mode."
+msgstr "خروج از Easy Effects. مفید هنگام اجرا در حالت سرویس."
+
+#: src/command_line_parser.cpp:45
+msgid "Reset Easy Effects."
+msgstr "تنظیم مجدد Easy Effects."
+
+#: src/command_line_parser.cpp:46
+msgid "Hide the Window."
+msgstr "پنجره را مخفی کنید."
+
+#: src/command_line_parser.cpp:47
+msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
+msgstr "دور زدن کلی. 1 برای فعال‌سازی، 2 برای غیرفعال‌سازی و 3 برای دریافت وضعیت"
+
+#: src/command_line_parser.cpp:48
+msgid "Load a preset. Example: easyeffects -l music"
+msgstr "بارگذاری یک پیش‌تنظیم. مثال: easyeffects -l music"
+
+#: src/command_line_parser.cpp:48
+#, fuzzy
+msgid "preset-name"
+msgstr "نام از پیش تعیین شده جدید"
+
+#: src/command_line_parser.cpp:49
+msgid "Show available presets."
+msgstr "نمایش پیش‌تنظیم‌های موجود."
+
+#: src/command_line_parser.cpp:50
+#, fuzzy
+msgid "Get the active input/output preset."
+msgstr "نمایش پیش‌تنظیم‌های فعال."
+
+#: src/command_line_parser.cpp:50
+msgid "preset-type"
+msgstr ""
+
+#: src/command_line_parser.cpp:51
+#, fuzzy
+msgid "Get the active input and output presets."
+msgstr "نمایش پیش‌تنظیم‌های فعال."
+
+#: src/command_line_parser.cpp:52
+msgid "Deprecated. Use --service-mode instead."
+msgstr ""
+
+#: src/command_line_parser.cpp:53
+msgid "Start the application with service mode turned on."
+msgstr ""
+
+#: src/command_line_parser.cpp:54
+msgid "Enable debug messages."
+msgstr ""
+
+#: src/command_line_parser.cpp:138 src/contents/ui/main.qml:237
+msgid "Output Presets"
+msgstr "خروجی از پیش تعیین شده"
+
+#: src/command_line_parser.cpp:146 src/contents/ui/main.qml:227
+msgid "Input Presets"
+msgstr "پیش‌تنظیم‌های ورودی"
+
+#: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:88
+#: src/contents/ui/BassLoudness.qml:40 src/contents/ui/Crossfeed.qml:56
+#: src/contents/ui/DeepFilterNet.qml:72 src/contents/ui/EchoCanceller.qml:40
+#: src/contents/ui/Exciter.qml:88 src/contents/ui/Filter.qml:41
+#: src/contents/ui/Loudness.qml:41 src/contents/ui/Maximizer.qml:41
+#: src/contents/ui/Reverb.qml:42 src/contents/ui/Speex.qml:40
+msgid "Controls"
+msgstr "کنترل ها"
+
+#: src/contents/ui/Autogain.qml:59
+msgid "Reference"
+msgstr "مرجع"
+
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:152
+#: src/contents/ui/LevelMeter.qml:149
+msgid "Momentary"
+msgstr "لحظه ای"
+
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:168
+#: src/contents/ui/LevelMeter.qml:165
+msgid "Short-Term"
+msgstr "کوتاه- مدت"
+
+#: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:184
+#: src/contents/ui/LevelMeter.qml:181
+msgid "Integrated"
+msgstr "یکپارچه شده"
+
+#: src/contents/ui/Autogain.qml:63
+msgid "Geometric Mean (MSI)"
+msgstr "میانگین هندسی (MSI)"
+
+#: src/contents/ui/Autogain.qml:63
+msgid "Geometric Mean (MS)"
+msgstr "میانگین هندسی (MS)"
+
+#: src/contents/ui/Autogain.qml:63
+msgid "Geometric Mean (MI)"
+msgstr "میانگین هندسی (MI)"
+
+#: src/contents/ui/Autogain.qml:63
+msgid "Geometric Mean (SI)"
+msgstr "میانگین هندسی (SI)"
+
+#: src/contents/ui/Autogain.qml:77
+msgid "Target"
+msgstr "هدف"
+
+#: src/contents/ui/Autogain.qml:97
+msgid "Silence"
+msgstr "سکوت"
+
+#: src/contents/ui/Autogain.qml:117
+msgid "Maximum History"
+msgstr "حداکثر سابقه"
+
+#: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:232
+#: src/contents/ui/BassLoudness.qml:48 src/contents/ui/LevelMeter.qml:139
+#: src/tags_plugin_name.cpp:43
+msgid "Loudness"
+msgstr "بلندی صدا"
+
+#: src/contents/ui/Autogain.qml:200 src/contents/ui/LevelMeter.qml:197
+msgid "Relative"
+msgstr "نسبی"
+
+#: src/contents/ui/Autogain.qml:216 src/contents/ui/LevelMeter.qml:213
+msgid "Range"
+msgstr "محدوده"
+
+#: src/contents/ui/Autogain.qml:248
+msgid "Output Gain"
+msgstr "افزایش خروجی"
+
+#: src/contents/ui/Autogain.qml:274 src/contents/ui/BassEnhancer.qml:187
+#: src/contents/ui/BassLoudness.qml:102 src/contents/ui/Compressor.qml:800
+#: src/contents/ui/Convolver.qml:404 src/contents/ui/Crossfeed.qml:132
+#: src/contents/ui/Crystalizer.qml:75 src/contents/ui/DeepFilterNet.qml:164
+#: src/contents/ui/Deesser.qml:308 src/contents/ui/Delay.qml:364
+#: src/contents/ui/EchoCanceller.qml:102 src/contents/ui/Equalizer.qml:292
+#: src/contents/ui/Exciter.qml:187 src/contents/ui/Expander.qml:758
+#: src/contents/ui/Filter.qml:193 src/contents/ui/Gate.qml:893
+#: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Limiter.qml:498
+#: src/contents/ui/Loudness.qml:125 src/contents/ui/Maximizer.qml:100
+#: src/contents/ui/MultibandCompressor.qml:950
+#: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:207
+#: src/contents/ui/Reverb.qml:305 src/contents/ui/RNNoise.qml:269
+#: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
+#, fuzzy
+msgid "Using %1"
+msgstr "با استفاده از {}"
+
+#: src/contents/ui/Autogain.qml:290 src/contents/ui/DeepFilterNet.qml:180
+#: src/contents/ui/LevelMeter.qml:248 src/contents/ui/Pitch.qml:223
+msgid "Reset History"
+msgstr "بازنشانی تاریخچه"
+
+#: src/contents/ui/Autogain.qml:297
+#, fuzzy
+msgid "Force Silence"
+msgstr "سکوت"
+
+#: src/contents/ui/Autogain.qml:298
+msgid "Force Silence When the Level is Below the Silence Threshold"
+msgstr ""
+
+#: src/contents/ui/Autogain.qml:309 src/contents/ui/Pitch.qml:250
+#, fuzzy
+msgid "Reset Settings"
+msgstr "_بازنشانی تنظیمات"
+
+#: src/contents/ui/BassEnhancer.qml:38 src/contents/ui/Exciter.qml:38
+msgid "Blend Harmonics"
+msgstr "ترکیب هارمونیک ها"
+
+#: src/contents/ui/BassEnhancer.qml:47 src/contents/ui/Exciter.qml:47
+msgid "3rd"
+msgstr "3rd"
+
+#: src/contents/ui/BassEnhancer.qml:69 src/contents/ui/Exciter.qml:69
+msgid "2nd"
+msgstr "2nd"
+
+#: src/contents/ui/BassEnhancer.qml:96 src/contents/ui/Exciter.qml:96
+msgid "Amount"
+msgstr "مقدار"
+
+#: src/contents/ui/BassEnhancer.qml:111 src/contents/ui/BassEnhancer.qml:168
+#: src/contents/ui/Exciter.qml:111 src/contents/ui/Exciter.qml:168
+msgid "Harmonics"
+msgstr "هارمونیک ها"
+
+#: src/contents/ui/BassEnhancer.qml:125 src/contents/ui/Exciter.qml:125
+msgid "Scope"
+msgstr "دامنه"
+
+#: src/contents/ui/BassEnhancer.qml:140
+#, fuzzy
+msgid "Floor Active"
+msgstr "ارزش طبقه"
+
+#: src/contents/ui/BassEnhancer.qml:151
+msgid "Floor"
+msgstr "طبقه"
+
+#: src/contents/ui/BassEnhancer.qml:203 src/contents/ui/Compressor.qml:816
+#: src/contents/ui/Deesser.qml:324 src/contents/ui/Delay.qml:400
+#: src/contents/ui/Equalizer.qml:308 src/contents/ui/Exciter.qml:203
+#: src/contents/ui/Expander.qml:774 src/contents/ui/Filter.qml:209
+#: src/contents/ui/Gate.qml:909 src/contents/ui/Limiter.qml:514
+#: src/contents/ui/Loudness.qml:141 src/contents/ui/Maximizer.qml:116
+#: src/contents/ui/MultibandCompressor.qml:966
+#: src/contents/ui/MultibandGate.qml:934 src/contents/ui/Reverb.qml:329
+#: src/contents/ui/StereoTools.qml:448
+msgid "Show Native Window"
+msgstr "نمایش پنجره بومی"
+
+#: src/contents/ui/BassEnhancer.qml:216 src/contents/ui/Compressor.qml:829
+#: src/contents/ui/Deesser.qml:337 src/contents/ui/Exciter.qml:216
+#: src/contents/ui/Expander.qml:787 src/contents/ui/Gate.qml:922
+msgid "Listen"
+msgstr "گوش کن"
+
+#: src/contents/ui/BassEnhancer.qml:226 src/contents/ui/BassLoudness.qml:118
+#: src/contents/ui/Compressor.qml:849 src/contents/ui/Convolver.qml:430
+#: src/contents/ui/Crossfeed.qml:156 src/contents/ui/Crystalizer.qml:91
+#: src/contents/ui/DeepFilterNet.qml:187 src/contents/ui/Deesser.qml:347
+#: src/contents/ui/Delay.qml:413 src/contents/ui/EchoCanceller.qml:118
+#: src/contents/ui/Equalizer.qml:373 src/contents/ui/Exciter.qml:226
+#: src/contents/ui/Expander.qml:807 src/contents/ui/Filter.qml:222
+#: src/contents/ui/Gate.qml:942 src/contents/ui/LevelMeter.qml:255
+#: src/contents/ui/Limiter.qml:547 src/contents/ui/Loudness.qml:164
+#: src/contents/ui/main.qml:411 src/contents/ui/Maximizer.qml:129
+#: src/contents/ui/MultibandCompressor.qml:989
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/Reverb.qml:342
+#: src/contents/ui/RNNoise.qml:292 src/contents/ui/Speex.qml:182
+#: src/contents/ui/StereoTools.qml:461
+msgid "Reset"
+msgstr "بازنشانی"
+
+#: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:488
+#: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:448
+#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:329
+#: src/contents/ui/StereoTools.qml:303
+msgid "Output"
+msgstr "خروجی"
+
+#: src/contents/ui/BassLoudness.qml:78 src/contents/ui/Compressor.qml:267
+#: src/contents/ui/Expander.qml:227 src/contents/ui/Gate.qml:251
+#: src/contents/ui/Limiter.qml:228 src/contents/ui/MultibandCompressor.qml:409
+#: src/contents/ui/MultibandGate.qml:377
+msgid "Link"
+msgstr "پیوند"
+
+#: src/contents/ui/BlocklistSheet.qml:18
+msgid "Effects Blocklist"
+msgstr ""
+
+#: src/contents/ui/BlocklistSheet.qml:29
+#, fuzzy
+msgid "Application Node Name"
+msgstr "نام برنامه"
+
+#: src/contents/ui/BlocklistSheet.qml:45
+msgid "Add to Excluded Applications"
+msgstr "به برنامه‌های حذف‌شده اضافه کنید"
+
+#: src/contents/ui/BlocklistSheet.qml:97
+#: src/contents/ui/ConvolverImpulseSheet.qml:80
+#: src/contents/ui/MenuAddPlugins.qml:41
+#: src/contents/ui/PresetsCommunityPage.qml:72
+#: src/contents/ui/PresetsLocalPage.qml:137 src/contents/ui/RNNoise.qml:187
+#, fuzzy
+msgid "Empty"
+msgstr "لیست خالی"
+
+#: src/contents/ui/BlocklistSheet.qml:135
+msgid "Delete this App"
+msgstr ""
+
+#: src/contents/ui/BlocklistSheet.qml:164
+#, fuzzy
+msgid "Show Excluded Applications in the Streams Section"
+msgstr "نمایش برنامه‌های مستثنی‌شده"
+
+#: src/contents/ui/Compressor.qml:51 src/tags_plugin_name.cpp:28
+msgid "Compressor"
+msgstr "کمپرسور"
+
+#: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:300
+#: src/contents/ui/Deesser.qml:70 src/contents/ui/Delay.qml:55
+#: src/contents/ui/Delay.qml:213 src/contents/ui/EqualizerBandMenu.qml:45
+#: src/contents/ui/Equalizer.qml:112 src/contents/ui/Expander.qml:69
+#: src/contents/ui/Expander.qml:260 src/contents/ui/Gate.qml:284
+#: src/contents/ui/Limiter.qml:52 src/contents/ui/MultibandCompressor.qml:416
+#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/StereoTools.qml:129
+msgid "Mode"
+msgstr "حالت"
+
+#: src/contents/ui/Compressor.qml:73 src/contents/ui/Expander.qml:73
+#: src/contents/ui/MultibandCompressor.qml:115
+msgid "Downward"
+msgstr "رو به پایین"
+
+#: src/contents/ui/Compressor.qml:73 src/contents/ui/Expander.qml:73
+#: src/contents/ui/MultibandCompressor.qml:115
+msgid "Upward"
+msgstr "رو به بالا"
+
+#: src/contents/ui/Compressor.qml:73
+#: src/contents/ui/MultibandCompressor.qml:115
+msgid "Boosting"
+msgstr "تقویت"
+
+#: src/contents/ui/Compressor.qml:83
+#: src/contents/ui/MultibandCompressor.qml:124
+msgid "Boost Threshold"
+msgstr "آستانه تقویت"
+
+#: src/contents/ui/Compressor.qml:103
+#: src/contents/ui/MultibandCompressor.qml:143
+msgid "Boost Amount"
+msgstr "مقدار تقویت"
+
+#: src/contents/ui/Compressor.qml:122 src/contents/ui/Deesser.qml:100
+#: src/contents/ui/Expander.qml:82 src/contents/ui/MultibandCompressor.qml:340
+msgid "Ratio"
+msgstr "نسبت"
+
+#: src/contents/ui/Compressor.qml:138 src/contents/ui/Expander.qml:98
+#: src/contents/ui/Limiter.qml:352 src/contents/ui/MultibandCompressor.qml:355
+msgid "Knee"
+msgstr "زانو"
+
+#: src/contents/ui/Compressor.qml:158 src/contents/ui/Expander.qml:118
+#, fuzzy
+msgid "Threshold and Time"
+msgstr "آستانه"
+
+#: src/contents/ui/Compressor.qml:175 src/contents/ui/Expander.qml:135
+#: src/contents/ui/Gate.qml:72 src/contents/ui/Gate.qml:791
+#: src/contents/ui/Limiter.qml:138 src/contents/ui/Limiter.qml:310
+#: src/contents/ui/MultibandCompressor.qml:237
+#: src/contents/ui/MultibandGate.qml:173
+msgid "Attack"
+msgstr "حمله"
+
+#: src/contents/ui/Compressor.qml:208 src/contents/ui/Expander.qml:168
+#: src/contents/ui/Gate.qml:89 src/contents/ui/Gate.qml:800
+#: src/contents/ui/Limiter.qml:159 src/contents/ui/Limiter.qml:331
+#: src/contents/ui/Maximizer.qml:49 src/contents/ui/MultibandCompressor.qml:285
+#: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:121
+msgid "Release"
+msgstr "رها"
+
+#: src/contents/ui/Compressor.qml:245 src/contents/ui/Compressor.qml:344
+#: src/contents/ui/Compressor.qml:596 src/contents/ui/Expander.qml:205
+#: src/contents/ui/Expander.qml:304 src/contents/ui/Expander.qml:556
+#: src/contents/ui/Gate.qml:229 src/contents/ui/Gate.qml:328
+#: src/contents/ui/Gate.qml:580 src/contents/ui/Limiter.qml:204
+#: src/contents/ui/Limiter.qml:404 src/contents/ui/MultibandCompressor.qml:650
+#: src/contents/ui/MultibandGate.qml:618
+msgid "Sidechain"
+msgstr "زنجیره جانبی"
+
+#: src/contents/ui/Compressor.qml:263 src/contents/ui/EqualizerBandMenu.qml:33
+#: src/contents/ui/Expander.qml:223 src/contents/ui/Filter.qml:49
+#: src/contents/ui/Gate.qml:247 src/contents/ui/Limiter.qml:224
+#: src/contents/ui/MultibandCompressor.qml:405
+#: src/contents/ui/MultibandGate.qml:373
+msgid "Type"
+msgstr "نوع"
+
+#: src/contents/ui/Compressor.qml:267
+msgid "Feed-forward"
+msgstr "فید-جلو"
+
+#: src/contents/ui/Compressor.qml:267
+msgid "Feed-back"
+msgstr "فید-عقب"
+
+#: src/contents/ui/Compressor.qml:267 src/contents/ui/Expander.qml:227
+#: src/contents/ui/Gate.qml:251 src/contents/ui/Limiter.qml:228
+#: src/contents/ui/MultibandCompressor.qml:409
+#: src/contents/ui/MultibandGate.qml:377
+msgid "External"
+msgstr "خارجی"
+
+#: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
+#: src/contents/ui/Gate.qml:261 src/contents/ui/Limiter.qml:238
+#: src/contents/ui/PageStreamsEffects.qml:451
+msgid "Input Device"
+msgstr "دستگاه ورودی"
+
+#: src/contents/ui/Compressor.qml:304 src/contents/ui/Deesser.qml:61
+#: src/contents/ui/Expander.qml:264 src/contents/ui/Gate.qml:288
+#: src/contents/ui/MultibandCompressor.qml:420
+#: src/contents/ui/MultibandGate.qml:388
+msgid "Peak"
+msgstr "اوج"
+
+#: src/contents/ui/Compressor.qml:304 src/contents/ui/Deesser.qml:61
+#: src/contents/ui/Expander.qml:264 src/contents/ui/Gate.qml:288
+#: src/contents/ui/MultibandCompressor.qml:420
+#: src/contents/ui/MultibandGate.qml:388
+msgid "RMS"
+msgstr "RMS"
+
+#: src/contents/ui/Compressor.qml:304 src/contents/ui/Compressor.qml:431
+#: src/contents/ui/Expander.qml:264 src/contents/ui/Expander.qml:391
+#: src/contents/ui/Gate.qml:288 src/contents/ui/Gate.qml:415
+msgid "Low-Pass"
+msgstr "پایین-گذر"
+
+#: src/contents/ui/Compressor.qml:304 src/contents/ui/Expander.qml:264
+#: src/contents/ui/Gate.qml:288 src/contents/ui/MultibandCompressor.qml:420
+#: src/contents/ui/MultibandGate.qml:388
+msgid "SMA"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:313 src/contents/ui/Compressor.qml:327
+#: src/contents/ui/Expander.qml:273 src/contents/ui/Expander.qml:287
+#: src/contents/ui/Gate.qml:297 src/contents/ui/Gate.qml:311
+#: src/contents/ui/MultibandCompressor.qml:427
+#: src/contents/ui/MultibandCompressor.qml:439
+#: src/contents/ui/MultibandGate.qml:395 src/contents/ui/MultibandGate.qml:407
+msgid "Source"
+msgstr "منبع"
+
+#: src/contents/ui/Compressor.qml:317 src/contents/ui/Expander.qml:277
+#: src/contents/ui/Gate.qml:301 src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/MultibandGate.qml:399
+msgid "Middle"
+msgstr "وسط"
+
+#: src/contents/ui/Compressor.qml:317 src/contents/ui/Expander.qml:277
+#: src/contents/ui/Gate.qml:301 src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/MultibandGate.qml:399
+msgid "Side"
+msgstr "جانب"
+
+#: src/contents/ui/Compressor.qml:317 src/contents/ui/Convolver.qml:244
+#: src/contents/ui/Delay.qml:41 src/contents/ui/Equalizer.qml:204
+#: src/contents/ui/Expander.qml:277 src/contents/ui/Gate.qml:301
+#: src/contents/ui/LevelMeter.qml:58 src/contents/ui/LevelMeter.qml:103
+#: src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/MultibandGate.qml:399 src/contents/ui/PipeWirePage.qml:296
+#: src/contents/ui/StereoTools.qml:214
+msgid "Left"
+msgstr "چپ"
+
+#: src/contents/ui/Compressor.qml:317 src/contents/ui/Convolver.qml:262
+#: src/contents/ui/Delay.qml:199 src/contents/ui/Equalizer.qml:204
+#: src/contents/ui/Expander.qml:277 src/contents/ui/Gate.qml:301
+#: src/contents/ui/LevelMeter.qml:74 src/contents/ui/LevelMeter.qml:119
+#: src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/MultibandGate.qml:399 src/contents/ui/PipeWirePage.qml:307
+#: src/contents/ui/StereoTools.qml:256
+msgid "Right"
+msgstr "راست"
+
+#: src/contents/ui/Compressor.qml:317 src/contents/ui/Compressor.qml:331
+#: src/contents/ui/Expander.qml:277 src/contents/ui/Expander.qml:291
+#: src/contents/ui/Gate.qml:301 src/contents/ui/Gate.qml:315
+#: src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:399 src/contents/ui/MultibandGate.qml:411
+msgid "Min"
+msgstr "دقیقه"
+
+#: src/contents/ui/Compressor.qml:317 src/contents/ui/Compressor.qml:331
+#: src/contents/ui/Expander.qml:277 src/contents/ui/Expander.qml:291
+#: src/contents/ui/Gate.qml:301 src/contents/ui/Gate.qml:315
+#: src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:399 src/contents/ui/MultibandGate.qml:411
+msgid "Max"
+msgstr "حداکثر"
+
+#: src/contents/ui/Compressor.qml:331 src/contents/ui/Expander.qml:291
+#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:411
+msgid "Left/Right"
+msgstr "چپ/راست"
+
+#: src/contents/ui/Compressor.qml:331 src/contents/ui/Expander.qml:291
+#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:411
+msgid "Right/Left"
+msgstr "راست/چپ"
+
+#: src/contents/ui/Compressor.qml:331 src/contents/ui/Expander.qml:291
+#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:411
+msgid "Mid/Side"
+msgstr "وسط/جانب"
+
+#: src/contents/ui/Compressor.qml:331 src/contents/ui/Expander.qml:291
+#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:411
+msgid "Side/Mid"
+msgstr "جانب/وسط"
+
+#: src/contents/ui/Compressor.qml:361 src/contents/ui/Expander.qml:321
+#: src/contents/ui/Gate.qml:345 src/contents/ui/Limiter.qml:261
+#: src/contents/ui/MultibandCompressor.qml:451
+#: src/contents/ui/MultibandGate.qml:419
+msgid "Preamp"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:379 src/contents/ui/Expander.qml:339
+#: src/contents/ui/Gate.qml:363 src/contents/ui/MultibandCompressor.qml:467
+#: src/contents/ui/MultibandGate.qml:435
+msgid "Reactivity"
+msgstr "واکنش پذیری"
+
+#: src/contents/ui/Compressor.qml:397 src/contents/ui/Expander.qml:357
+#: src/contents/ui/Gate.qml:381 src/contents/ui/Limiter.qml:279
+#: src/contents/ui/MultibandCompressor.qml:482
+#: src/contents/ui/MultibandGate.qml:450
+msgid "Lookahead"
+msgstr "پیش بینی"
+
+#: src/contents/ui/Compressor.qml:416 src/contents/ui/Expander.qml:376
+#: src/contents/ui/Gate.qml:400
+msgid "High-Pass"
+msgstr "بالا-گذر"
+
+#: src/contents/ui/Compressor.qml:420 src/contents/ui/Compressor.qml:435
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:380
+#: src/contents/ui/Expander.qml:395 src/contents/ui/Gate.qml:404
+#: src/contents/ui/Gate.qml:419
+msgid "Off"
+msgstr "خاموش"
+
+#: src/contents/ui/Compressor.qml:420 src/contents/ui/Compressor.qml:435
+#: src/contents/ui/Expander.qml:380 src/contents/ui/Expander.qml:395
+#: src/contents/ui/Gate.qml:404 src/contents/ui/Gate.qml:419
+msgid "12 dB/oct"
+msgstr "12 دسی‌بل/اکتاو"
+
+#: src/contents/ui/Compressor.qml:420 src/contents/ui/Compressor.qml:435
+#: src/contents/ui/Expander.qml:380 src/contents/ui/Expander.qml:395
+#: src/contents/ui/Gate.qml:404 src/contents/ui/Gate.qml:419
+msgid "24 dB/oct"
+msgstr "24 دسی‌بل/اکتاو"
+
+#: src/contents/ui/Compressor.qml:420 src/contents/ui/Compressor.qml:435
+#: src/contents/ui/Expander.qml:380 src/contents/ui/Expander.qml:395
+#: src/contents/ui/Gate.qml:404 src/contents/ui/Gate.qml:419
+msgid "36 dB/oct"
+msgstr "36 دسی‌بل/اکتاو"
+
+#: src/contents/ui/Compressor.qml:496 src/contents/ui/Delay.qml:160
+#: src/contents/ui/Delay.qml:318 src/contents/ui/Expander.qml:456
+#: src/contents/ui/Gate.qml:480 src/contents/ui/MultibandCompressor.qml:606
+#: src/contents/ui/MultibandGate.qml:574 src/contents/ui/Reverb.qml:176
+#: src/contents/ui/StereoTools.qml:386
+#, fuzzy
+msgid "Dry"
+msgstr "امتحان کنید"
+
+#: src/contents/ui/Compressor.qml:519 src/contents/ui/Delay.qml:178
+#: src/contents/ui/Delay.qml:336 src/contents/ui/Expander.qml:479
+#: src/contents/ui/Gate.qml:503 src/contents/ui/MultibandCompressor.qml:624
+#: src/contents/ui/MultibandGate.qml:592 src/contents/ui/Reverb.qml:194
+#: src/contents/ui/StereoTools.qml:404
+msgid "Wet"
+msgstr ""
+
+#: src/contents/ui/Compressor.qml:543 src/contents/ui/Deesser.qml:116
+#: src/contents/ui/Expander.qml:503 src/contents/ui/Gate.qml:527
+#: src/contents/ui/MultibandCompressor.qml:372
+#: src/contents/ui/MultibandGate.qml:237
+msgid "Makeup"
+msgstr "آرایش"
+
+#: src/contents/ui/Compressor.qml:587 src/contents/ui/Expander.qml:547
+#: src/contents/ui/Gate.qml:107 src/contents/ui/Gate.qml:571
+#: src/contents/ui/Maximizer.qml:80 src/contents/ui/MultibandCompressor.qml:727
+#: src/contents/ui/MultibandGate.qml:221 src/contents/ui/MultibandGate.qml:695
+msgid "Reduction"
+msgstr "کاهش"
+
+#: src/contents/ui/Compressor.qml:657 src/contents/ui/Compressor.qml:670
+#: src/contents/ui/Compressor.qml:766 src/contents/ui/Compressor.qml:779
+#: src/contents/ui/Expander.qml:615 src/contents/ui/Expander.qml:628
+#: src/contents/ui/Expander.qml:724 src/contents/ui/Expander.qml:737
+#: src/contents/ui/Gate.qml:641 src/contents/ui/Gate.qml:654
+#: src/contents/ui/Gate.qml:750 src/contents/ui/Gate.qml:763
+#: src/contents/ui/Limiter.qml:465 src/contents/ui/Limiter.qml:478
+#: src/contents/ui/MultibandCompressor.qml:761
+#: src/contents/ui/MultibandCompressor.qml:820
+#: src/contents/ui/MultibandCompressor.qml:879
+#: src/contents/ui/MultibandGate.qml:729 src/contents/ui/MultibandGate.qml:788
+#: src/contents/ui/MultibandGate.qml:847
+msgid "L"
+msgstr "L"
+
+#: src/contents/ui/Compressor.qml:663 src/contents/ui/Compressor.qml:676
+#: src/contents/ui/Compressor.qml:772 src/contents/ui/Compressor.qml:785
+#: src/contents/ui/Expander.qml:621 src/contents/ui/Expander.qml:634
+#: src/contents/ui/Expander.qml:730 src/contents/ui/Expander.qml:743
+#: src/contents/ui/Gate.qml:647 src/contents/ui/Gate.qml:660
+#: src/contents/ui/Gate.qml:756 src/contents/ui/Gate.qml:769
+#: src/contents/ui/Limiter.qml:471 src/contents/ui/Limiter.qml:484
+#: src/contents/ui/MultibandCompressor.qml:767
+#: src/contents/ui/MultibandCompressor.qml:826
+#: src/contents/ui/MultibandCompressor.qml:885
+#: src/contents/ui/MultibandGate.qml:735 src/contents/ui/MultibandGate.qml:794
+#: src/contents/ui/MultibandGate.qml:853
+msgid "R"
+msgstr "R"
+
+#: src/contents/ui/Compressor.qml:698 src/contents/ui/Expander.qml:656
+#: src/contents/ui/Gate.qml:682 src/contents/ui/MultibandCompressor.qml:847
+#: src/contents/ui/MultibandGate.qml:266 src/contents/ui/MultibandGate.qml:815
+msgid "Curve"
+msgstr "منحنی"
+
+#: src/contents/ui/Compressor.qml:707 src/contents/ui/Expander.qml:665
+#: src/contents/ui/Gate.qml:691 src/contents/ui/MultibandCompressor.qml:788
+#: src/contents/ui/MultibandGate.qml:756
+msgid "Envelope"
+msgstr "پاکت"
+
+#: src/contents/ui/Compressor.qml:839 src/contents/ui/Expander.qml:797
+#: src/contents/ui/Gate.qml:932 src/contents/ui/MultibandCompressor.qml:979
+#: src/contents/ui/MultibandGate.qml:947
+msgid "Stereo Split"
+msgstr "تقسیم استریو"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:47
+#, fuzzy
+msgid "Impluse File Imported."
+msgstr "فایل ایمپالس وارد نشده است"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:49
+#, fuzzy
+msgid "Failed to Import the Impulse File."
+msgstr "بارگذاری فایل ایمپالس ناموفق بود"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:60
+#: src/contents/ui/MenuAddPlugins.qml:140
+#: src/contents/ui/PresetsCommunityPage.qml:48
+#: src/contents/ui/PresetsLocalPage.qml:113
+msgid "Search"
+msgstr "جستجو"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:93
+#, fuzzy
+msgid "Loaded Impulse: %1"
+msgstr "بارگذاری ایمپالس"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:105
+#, fuzzy
+msgid "Delete this Impulse"
+msgstr "حذف ایمپالس"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:110
+#, fuzzy
+msgid "Removed Impulse: %1"
+msgstr "حذف ایمپالس"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:112
+#, fuzzy
+msgid "Failed to Remove the Impulse: %1"
+msgstr "بارگذاری فایل ایمپالس ناموفق بود"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:148
+msgid "Import Impulse"
+msgstr "وارد کردن ایمپالس"
+
+#: src/contents/ui/Convolver.qml:100
+msgid "First"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:112
+#, fuzzy
+msgid "Second"
+msgstr "هسته دوم"
+
+#: src/contents/ui/Convolver.qml:144
+msgid "Combine"
+msgstr "ترکیب"
+
+#: src/contents/ui/Convolver.qml:183 src/plugin_base.cpp:239
+msgid "Spectrum"
+msgstr "طیف"
+
+#: src/contents/ui/Convolver.qml:285
+#, fuzzy
+msgid "Convolver Impulse Is Not Set"
+msgstr "ترکیب پاسخ‌های ضربه‌ای"
+
+#: src/contents/ui/Convolver.qml:322
+msgid "Rate"
+msgstr "نرخ"
+
+#: src/contents/ui/Convolver.qml:327 src/contents/ui/Delay.qml:59
+#: src/contents/ui/Delay.qml:70 src/contents/ui/Delay.qml:217
+#: src/contents/ui/Delay.qml:228
+msgid "Samples"
+msgstr "نمونه ها"
+
+#: src/contents/ui/Convolver.qml:332
+msgid "Duration"
+msgstr "مدت زمان"
+
+#: src/contents/ui/Convolver.qml:369
+msgid "Stereo Width"
+msgstr "عرض استریو"
+
+#: src/contents/ui/Convolver.qml:420 src/tags_plugin_name.cpp:25
+msgid "Autogain"
+msgstr "افزایش خودکار"
+
+#: src/contents/ui/Crossfeed.qml:64
+msgid "Cutoff"
+msgstr "قطع"
+
+#: src/contents/ui/Crossfeed.qml:79
+msgid "Feed"
+msgstr "فید"
+
+#: src/contents/ui/Crossfeed.qml:98
+#, fuzzy
+msgid "Crossfeed Presets"
+msgstr "کراس‌فید"
+
+#: src/contents/ui/Crossfeed.qml:102
+msgid "Default"
+msgstr "پیش فرض"
+
+#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:299
+#: src/contents/ui/Reverb.qml:321
+msgid "Presets"
+msgstr "تنظیمات از پیش تعیین شده"
+
+#: src/contents/ui/CrystalizerBand.qml:31
+#: src/contents/ui/EqualizerBandMenu.qml:157
+#: src/contents/ui/MultibandCompressor.qml:69
+#: src/contents/ui/MultibandGate.qml:69 src/contents/ui/StereoTools.qml:226
+#: src/contents/ui/StereoTools.qml:269
+msgid "Mute"
+msgstr "بی صدا"
+
+#: src/contents/ui/CrystalizerBand.qml:42
+#: src/contents/ui/MultibandCompressor.qml:87
+#: src/contents/ui/MultibandGate.qml:87
+msgid "Bypass"
+msgstr "دور زدن"
+
+#: src/contents/ui/DeepFilterNet.qml:33
+msgid "Attenuation Limit"
+msgstr "حد تضعیف"
+
+#: src/contents/ui/DeepFilterNet.qml:80
+msgid "Minimum Processing Threshold"
+msgstr "حداقل آستانه پردازش"
+
+#: src/contents/ui/DeepFilterNet.qml:95 src/contents/ui/DeepFilterNet.qml:110
+#: src/contents/ui/DeepFilterNet.qml:125
+msgid "Maximum ERB Processing threshold"
+msgstr "حداکثر آستانه پردازش ERB"
+
+#: src/contents/ui/DeepFilterNet.qml:131
+msgid "frames"
+msgstr ""
+
+#: src/contents/ui/DeepFilterNet.qml:140
+msgid "Post Filter Beta"
+msgstr "پست فیلتر بتا"
+
+#: src/contents/ui/Deesser.qml:44 src/tags_plugin_name.cpp:33
+msgid "Deesser"
+msgstr "دیسر"
+
+#: src/contents/ui/Deesser.qml:57 src/contents/ui/Deesser.qml:266
+msgid "Detection"
+msgstr "تشخیص"
+
+#: src/contents/ui/Deesser.qml:74
+msgid "Wide"
+msgstr "عریض"
+
+#: src/contents/ui/Deesser.qml:74
+msgid "Split"
+msgstr "تقسیم"
+
+#: src/contents/ui/Deesser.qml:83 src/contents/ui/Gate.qml:124
+#: src/contents/ui/Gate.qml:190 src/contents/ui/Gate.qml:865
+#: src/contents/ui/Gate.qml:878 src/contents/ui/Limiter.qml:117
+#: src/contents/ui/Maximizer.qml:64 src/contents/ui/MultibandCompressor.qml:256
+#: src/contents/ui/MultibandCompressor.qml:304
+#: src/contents/ui/MultibandGate.qml:270 src/contents/ui/MultibandGate.qml:324
+#: src/contents/ui/RNNoise.qml:91
+msgid "Threshold"
+msgstr "آستانه"
+
+#: src/contents/ui/Deesser.qml:133
+msgid "Laxity"
+msgstr "سستی"
+
+#: src/contents/ui/Deesser.qml:152 src/contents/ui/Filter.qml:103
+#: src/contents/ui/Reverb.qml:111 src/tags_plugin_name.cpp:39
+msgid "Filter"
+msgstr "فیلتر"
+
+#: src/contents/ui/Deesser.qml:165
+msgid "F1 Split"
+msgstr "تقسیم F1"
+
+#: src/contents/ui/Deesser.qml:182
+msgid "F2 Peak"
+msgstr "اوج F2"
+
+#: src/contents/ui/Deesser.qml:199
+msgid "F1 Gain"
+msgstr "افزایش F1"
+
+#: src/contents/ui/Deesser.qml:216
+msgid "F2 Level"
+msgstr "سطح F2"
+
+#: src/contents/ui/Deesser.qml:234
+msgid "F2 Peak Q"
+msgstr "اوج F2 Q"
+
+#: src/contents/ui/Deesser.qml:256
+msgid "Level"
+msgstr "سطح"
+
+#: src/contents/ui/Deesser.qml:282
+#, fuzzy
+msgid "Gain Reduction"
+msgstr "کاهش باند"
+
+#: src/contents/ui/Delay.qml:59 src/contents/ui/Delay.qml:217
+msgid "Distance"
+msgstr ""
+
+#: src/contents/ui/Delay.qml:59 src/contents/ui/Delay.qml:88
+#: src/contents/ui/Delay.qml:217 src/contents/ui/Delay.qml:246
+#: src/contents/ui/MultibandCompressor.qml:241
+#: src/contents/ui/MultibandCompressor.qml:289
+msgid "Time"
+msgstr "زمان"
+
+#: src/contents/ui/Delay.qml:106 src/contents/ui/Delay.qml:264
+msgid "Meters"
+msgstr ""
+
+#: src/contents/ui/Delay.qml:124 src/contents/ui/Delay.qml:282
+#, fuzzy
+msgid "Centimeters"
+msgstr "سِنت"
+
+#: src/contents/ui/Delay.qml:143 src/contents/ui/Delay.qml:301
+msgid "Temperature"
+msgstr ""
+
+#: src/contents/ui/Delay.qml:380
+#, fuzzy
+msgid "Invert Left"
+msgstr "فاز معکوس"
+
+#: src/contents/ui/Delay.qml:390
+#, fuzzy
+msgid "Invert Right"
+msgstr "فاز معکوس"
+
+#: src/contents/ui/DelegateClientsList.qml:34
+#: src/contents/ui/DelegateModulesList.qml:34
+#, fuzzy
+msgid "Id"
+msgstr "بیکار"
+
+#: src/contents/ui/DelegateClientsList.qml:48
+#: src/contents/ui/DelegateModulesList.qml:48
+#: src/contents/ui/PipeWirePage.qml:120 src/contents/ui/PipeWirePage.qml:158
+msgid "Name"
+msgstr "نام"
+
+#: src/contents/ui/DelegateClientsList.qml:62
+msgid "Api"
+msgstr ""
+
+#: src/contents/ui/DelegateClientsList.qml:76
+msgid "Access"
+msgstr "دسترسی"
+
+#: src/contents/ui/DelegateModulesList.qml:62
+#: src/contents/ui/PresetsAutoloadingPage.qml:156
+msgid "Description"
+msgstr "توضیحات"
+
+#: src/contents/ui/DelegatePluginsList.qml:63
+#, fuzzy
+msgid "Enable this Effect"
+msgstr "فعال/غیرفعال کردن این افکت"
+
+#: src/contents/ui/DelegatePluginsList.qml:77
+msgid "Remove this effect"
+msgstr "حذف این افکت"
+
+#: src/contents/ui/DelegateStreamsList.qml:77
+#, fuzzy
+msgid " channels"
+msgstr "کانال ها"
+
+#: src/contents/ui/DelegateStreamsList.qml:85 src/contents/ui/Gate.qml:179
+#: src/contents/ui/RNNoise.qml:80
+msgid "Enable"
+msgstr "فعال"
+
+#: src/contents/ui/DelegateStreamsList.qml:100
+msgid "Exclude"
+msgstr "مستثنی"
+
+#: src/contents/ui/EchoCanceller.qml:48
+msgid "Filter Length"
+msgstr "طول فیلتر"
+
+#: src/contents/ui/EchoCanceller.qml:63
+msgid "Residual Echo Suppression"
+msgstr "سرکوب اکوی باقیمانده"
+
+#: src/contents/ui/EchoCanceller.qml:78
+#, fuzzy
+msgid "Near End Suppression"
+msgstr "سرکوب اکوی نزدیک به انتها"
+
+#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:348
+#: src/contents/ui/StereoTools.qml:42
+msgid "Input"
+msgstr "ورودی"
+
+#: src/contents/ui/EqualizerBandMenu.qml:25
+#, fuzzy
+msgid "Band "
+msgstr "باند 1"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:53
+msgid "Bell"
+msgstr "زنگ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Hi-pass"
+msgstr "دور زدن"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Hi-shelf"
+msgstr "بالا-قفسه"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Lo-pass"
+msgstr "دور زدن"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Lo-shelf"
+msgstr "پایین-قفسه"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:53
+msgid "Notch"
+msgstr "شکاف"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:53
+msgid "Resonance"
+msgstr "پیچش صدا"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Allpass"
+msgstr "دور زدن"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Bandpass"
+msgstr "باند دور زدن"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:53
+#, fuzzy
+msgid "Ladder-pass"
+msgstr "گذر-نردبان"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Ladder-rej"
+msgstr "رد-نردبان"
+
+#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:88
+msgid "Slope"
+msgstr "شیب"
+
+#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:111
+#: src/contents/ui/MultibandCompressor.qml:188
+#: src/contents/ui/MultibandGate.qml:120 src/contents/ui/PipeWirePage.qml:359
+msgid "Frequency"
+msgstr "فرکانس"
+
+#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:140
+#: src/contents/ui/Limiter.qml:395 src/contents/ui/MultibandCompressor.qml:336
+#: src/contents/ui/MultibandGate.qml:217
+msgid "Gain"
+msgstr "افزایش"
+
+#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:155
+#: src/contents/ui/Pitch.qml:41
+msgid "Quality"
+msgstr "کیفیت"
+
+#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:126
+msgid "Width"
+msgstr "عرض"
+
+#: src/contents/ui/EqualizerBandMenu.qml:167
+#: src/contents/ui/MultibandCompressor.qml:78
+#: src/contents/ui/MultibandGate.qml:78
+msgid "Solo"
+msgstr "انفرادی"
+
+#: src/contents/ui/Equalizer.qml:63
+msgid "APO Presets"
+msgstr "پیش‌تنظیم‌های APO"
+
+#: src/contents/ui/Equalizer.qml:66
+#, fuzzy
+msgid "APO Preset File Imported."
+msgstr "فایل ایمپالس وارد نشده است"
+
+#: src/contents/ui/Equalizer.qml:68
+#, fuzzy
+msgid "Failed to Import the APO Preset File."
+msgstr "وارد کردن فایل از پیش تنظیم شده APO"
+
+#: src/contents/ui/Equalizer.qml:77
+msgid "GraphicEQ Presets"
+msgstr "پیش‌تنظیم‌های GraphicEQ"
+
+#: src/contents/ui/Equalizer.qml:80
+#, fuzzy
+msgid "GraphicEQ Preset File Imported."
+msgstr "وارد کردن فایل پیش‌تنظیم GraphicEQ"
+
+#: src/contents/ui/Equalizer.qml:82
+#, fuzzy
+msgid "Failed to Import the GraphicEQ Preset File."
+msgstr "وارد کردن فایل پیش‌تنظیم GraphicEQ"
+
+#: src/contents/ui/Equalizer.qml:91
+#, fuzzy
+msgid "APO Preset"
+msgstr "پیش‌تنظیم‌های APO"
+
+#: src/contents/ui/Equalizer.qml:94
+#, fuzzy
+msgid "APO Preset File Exported."
+msgstr "وارد کردن فایل از پیش تنظیم شده APO"
+
+#: src/contents/ui/Equalizer.qml:96
+#, fuzzy
+msgid "Failed to Export the APO Preset File."
+msgstr "وارد کردن فایل از پیش تنظیم شده APO"
+
+#: src/contents/ui/Equalizer.qml:125
+msgid "Bands"
+msgstr "باندها"
+
+#: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:169
+#: src/contents/ui/StereoTools.qml:66 src/contents/ui/StereoTools.qml:320
+msgid "Balance"
+msgstr "تعادل"
+
+#: src/contents/ui/Equalizer.qml:158
+msgid "Pitch Left"
+msgstr "گام چپ"
+
+#: src/contents/ui/Equalizer.qml:175
+msgid "Pitch Right"
+msgstr "گام راست"
+
+#: src/contents/ui/Equalizer.qml:321
+msgid "Split Channels"
+msgstr "تقسیم کانال ها"
+
+#: src/contents/ui/Equalizer.qml:331
+msgid "Flat Response"
+msgstr "پاسخ مسطح"
+
+#: src/contents/ui/Equalizer.qml:338
+msgid "Calculate Frequencies"
+msgstr "محاسبه فرکانس‌ها"
+
+#: src/contents/ui/Equalizer.qml:345
+msgid "Sort Bands"
+msgstr "دسته بندی باندها"
+
+#: src/contents/ui/Equalizer.qml:352
+#, fuzzy
+msgid "Import APO"
+msgstr "واردات"
+
+#: src/contents/ui/Equalizer.qml:359
+#, fuzzy
+msgid "Import APO (GraphicEQ)"
+msgstr "وارد کردن فایل پیش‌تنظیم GraphicEQ"
+
+#: src/contents/ui/Equalizer.qml:366
+#, fuzzy
+msgid "Export APO"
+msgstr "صادرات از پیش تعیین شده"
+
+#: src/contents/ui/Exciter.qml:140
+#, fuzzy
+msgid "Ceil Active"
+msgstr "نسبی"
+
+#: src/contents/ui/Exciter.qml:151
+msgid "Ceil"
+msgstr "سقف"
+
+#: src/contents/ui/Expander.qml:51 src/tags_plugin_name.cpp:38
+msgid "Expander"
+msgstr "گسترش دهنده"
+
+#: src/contents/ui/Expander.qml:227 src/contents/ui/Gate.qml:251
+#: src/contents/ui/Limiter.qml:228 src/contents/ui/MultibandCompressor.qml:409
+#: src/contents/ui/MultibandGate.qml:377
+msgid "Internal"
+msgstr "داخلی"
+
+#: src/contents/ui/Filter.qml:53
+#, fuzzy
+msgid "Low-pass"
+msgstr "پایین-گذر"
+
+#: src/contents/ui/Filter.qml:53
+#, fuzzy
+msgid "High-pass"
+msgstr "بالا-گذر"
+
+#: src/contents/ui/Filter.qml:53
+#, fuzzy
+msgid "Low-shelf"
+msgstr "پایین-قفسه"
+
+#: src/contents/ui/Filter.qml:53
+#, fuzzy
+msgid "High-shelf"
+msgstr "بالا-قفسه"
+
+#: src/contents/ui/Filter.qml:53
+#, fuzzy
+msgid "Band-pass"
+msgstr "گذر-باند"
+
+#: src/contents/ui/Filter.qml:53
+#, fuzzy
+msgid "Ladder-rejection"
+msgstr "رد-نردبان"
+
+#: src/contents/ui/Filter.qml:53
+#, fuzzy
+msgid "All-pass"
+msgstr "گذر-همه"
+
+#: src/contents/ui/Filter.qml:62
+#, fuzzy
+msgid "Filter Mode"
+msgstr "حالت استریو"
+
+#: src/contents/ui/Filter.qml:75
+msgid "Equalizer Mode"
+msgstr "حالت اکولایزر"
+
+#: src/contents/ui/Gate.qml:55 src/tags_plugin_name.cpp:40
+msgid "Gate"
+msgstr "دروازه"
+
+#: src/contents/ui/Gate.qml:141 src/contents/ui/Gate.qml:208
+#: src/contents/ui/MultibandGate.qml:285 src/contents/ui/MultibandGate.qml:340
+msgid "Zone"
+msgstr "منطقه"
+
+#: src/contents/ui/Gate.qml:161 src/contents/ui/MultibandGate.qml:313
+msgid "Hysteresis"
+msgstr "هیسترزیس"
+
+#: src/contents/ui/Gate.qml:859 src/contents/ui/Gate.qml:872
+#: src/contents/ui/MultibandCompressor.qml:192
+#: src/contents/ui/MultibandGate.qml:124 src/contents/ui/Speex.qml:120
+msgid "Start"
+msgstr "شروع"
+
+#: src/contents/ui/LevelMeter.qml:48
+#, fuzzy
+msgid "Input Level"
+msgstr "دستگاه ورودی"
+
+#: src/contents/ui/LevelMeter.qml:93
+msgid "True Peak"
+msgstr "اوج واقعی"
+
+#: src/contents/ui/Limiter.qml:56
+msgid "Herm Thin"
+msgstr "هرم باریک"
+
+#: src/contents/ui/Limiter.qml:56
+msgid "Herm Wide"
+msgstr "هرم عریض"
+
+#: src/contents/ui/Limiter.qml:56
+msgid "Herm Tail"
+msgstr "دنباله هرم"
+
+#: src/contents/ui/Limiter.qml:56
+msgid "Herm Duck"
+msgstr "غوص هرم"
+
+#: src/contents/ui/Limiter.qml:56
+msgid "Exp Thin"
+msgstr "بسط باریک"
+
+#: src/contents/ui/Limiter.qml:56
+msgid "Exp Wide"
+msgstr "بسط عریض"
+
+#: src/contents/ui/Limiter.qml:56
+msgid "Exp Tail"
+msgstr "دنباله بسط"
+
+#: src/contents/ui/Limiter.qml:56
+msgid "Exp Duck"
+msgstr "غوص بسط"
+
+#: src/contents/ui/Limiter.qml:56
+msgid "Line Thin"
+msgstr "خط باریک"
+
+#: src/contents/ui/Limiter.qml:56
+msgid "Line Wide"
+msgstr "خط عریض"
+
+#: src/contents/ui/Limiter.qml:56
+msgid "Line Tail"
+msgstr "دنباله خط"
+
+#: src/contents/ui/Limiter.qml:56
+msgid "Line Duck"
+msgstr "غوص خط"
+
+#: src/contents/ui/Limiter.qml:70
+msgid "Oversampling"
+msgstr "نمونه برداری بیش از حد"
+
+#: src/contents/ui/Limiter.qml:74 src/contents/ui/Limiter.qml:92
+#: src/contents/ui/MultibandCompressor.qml:573
+#: src/contents/ui/MultibandGate.qml:541
+msgid "None"
+msgstr "هیچکدام"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x2/24 bit"
+msgstr "نصف x2 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x3/24 bit"
+msgstr "نصف x3 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x4/24 bit"
+msgstr "نصف x4 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x6/24 bit"
+msgstr "نیمه x6 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Half x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Half x8/24 bit"
+msgstr "نیمه x8 (2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x2/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x2/24 bit"
+msgstr "کامل x2(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x3/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x3/24 bit"
+msgstr "کامل x3(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x4/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x4/24 bit"
+msgstr "کامل x4(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x6/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x6/24 bit"
+msgstr "کامل x6(2L)"
+
+#: src/contents/ui/Limiter.qml:74
+msgid "Full x8/16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
+msgid "Full x8/24 bit"
+msgstr "کامل x8(2L)"
+
+#: src/contents/ui/Limiter.qml:88
+#, fuzzy
+msgid "Dithering"
+msgstr "پریشان"
+
+#: src/contents/ui/Limiter.qml:92
+msgid "7 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:92
+msgid "8 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:92
+msgid "11 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:92
+msgid "12 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:92
+msgid "15 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:92
+msgid "16 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:92
+msgid "23 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:92
+msgid "24 bit"
+msgstr ""
+
+#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:42
+msgid "Limiter"
+msgstr "محدود کننده"
+
+#: src/contents/ui/Limiter.qml:180
+msgid "Stereo Link"
+msgstr "پیوند استریو"
+
+#: src/contents/ui/Limiter.qml:302 src/contents/ui/Limiter.qml:537
+#, fuzzy
+msgid "Automatic Level"
+msgstr "تراز خودکار"
+
+#: src/contents/ui/Limiter.qml:527
+#, fuzzy
+msgid "Gain Boost"
+msgstr "تقویت زنجیره جانبی"
+
+#: src/contents/ui/Loudness.qml:54
+#, fuzzy
+msgid "Contour"
+msgstr "کنترل ها"
+
+#: src/contents/ui/Loudness.qml:67
+msgid "FFT Size"
+msgstr "اندازه FFT"
+
+#: src/contents/ui/Loudness.qml:80
+#, fuzzy
+msgid "Volume"
+msgstr "حجم خروجی"
+
+#: src/contents/ui/Loudness.qml:97
+#, fuzzy
+msgid "Clipping Range"
+msgstr "بریدن"
+
+#: src/contents/ui/Loudness.qml:154
+msgid "Clipping"
+msgstr "بریدن"
+
+#: src/contents/ui/main.qml:16
+#, fuzzy
+msgctxt "@title:window"
+msgid "Easy Effects"
+msgstr "بستن Easy Effects"
+
+#: src/contents/ui/main.qml:124
+#, fuzzy
+msgid "Reset Settings?"
+msgstr "_بازنشانی تنظیمات"
+
+#: src/contents/ui/main.qml:125
+msgid "Are you sure you want to reset all Easy Effects settings?"
+msgstr ""
+
+#: src/contents/ui/main.qml:143
+#, fuzzy
+msgctxt "@title"
+msgid "Easy Effects"
+msgstr "بستن Easy Effects"
+
+#: src/contents/ui/main.qml:146
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "جلوه‌های صوتی برای برنامه‌های PipeWire"
+
+#: src/contents/ui/main.qml:154
+msgctxt "@info:credit"
+msgid "Wellington Wallace"
+msgstr ""
+
+#: src/contents/ui/main.qml:155
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "پاکت"
+
+#: src/contents/ui/main.qml:247
+#, fuzzy
+msgid "Active"
+msgstr "مدل فعال"
+
+#: src/contents/ui/main.qml:258 src/contents/ui/main.qml:391
+#: src/contents/ui/ShortcutsSheet.qml:228
+#, fuzzy
+msgid "Shortcuts"
+msgstr "_میانبرها"
+
+#: src/contents/ui/main.qml:267 src/contents/ui/main.qml:399
+msgid "Manual"
+msgstr ""
+
+#: src/contents/ui/main.qml:277 src/contents/ui/main.qml:431
+#, fuzzy
+msgid "Quit"
+msgstr "_خروج"
+
+#: src/contents/ui/main.qml:307
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:367
+#, fuzzy
+msgid "PipeWire"
+msgstr "_پایپ وایر"
+
+#: src/contents/ui/main.qml:383 src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:512
+#: src/contents/ui/PreferencesSheet.qml:525
+#, fuzzy
+msgid "Preferences"
+msgstr "_ترجیحات"
+
+#: src/contents/ui/main.qml:423
+#, fuzzy
+msgid "About Easy Effects"
+msgstr "_درباره Easy Effects"
+
+#: src/contents/ui/MenuAddPlugins.qml:128
+#, fuzzy
+msgid "Added Plugin"
+msgstr "افزونه جستجو"
+
+#: src/contents/ui/MultibandCompressor.qml:111
+msgid "Compression Mode"
+msgstr "حالت فشرده سازی"
+
+#: src/contents/ui/MultibandCompressor.qml:211
+#: src/contents/ui/MultibandGate.qml:143
+#, fuzzy
+msgid "End"
+msgstr "2nd"
+
+#: src/contents/ui/MultibandCompressor.qml:420
+#: src/contents/ui/MultibandGate.qml:388
+msgid "LPF"
+msgstr ""
+
+#: src/contents/ui/MultibandCompressor.qml:499
+#: src/contents/ui/MultibandGate.qml:467
+msgid "Low-Cut"
+msgstr "برش-کم"
+
+#: src/contents/ui/MultibandCompressor.qml:524
+#: src/contents/ui/MultibandGate.qml:492
+msgid "High-Cut"
+msgstr "برش-زیاد"
+
+#: src/contents/ui/MultibandCompressor.qml:556
+#: src/contents/ui/MultibandGate.qml:524
+msgid "Operating Mode"
+msgstr "حالت عملیاتی"
+
+#: src/contents/ui/MultibandCompressor.qml:560
+#: src/contents/ui/MultibandGate.qml:528
+msgid "Classic"
+msgstr "کلاسیک"
+
+#: src/contents/ui/MultibandCompressor.qml:560
+#: src/contents/ui/MultibandGate.qml:528
+msgid "Modern"
+msgstr "مدرن"
+
+#: src/contents/ui/MultibandCompressor.qml:560
+#: src/contents/ui/MultibandGate.qml:528
+msgid "Linear Phase"
+msgstr "فاز خطی"
+
+#: src/contents/ui/MultibandCompressor.qml:569
+#: src/contents/ui/MultibandGate.qml:537
+msgid "Sidechain Boost"
+msgstr "تقویت زنجیره جانبی"
+
+#: src/contents/ui/MultibandCompressor.qml:573
+#: src/contents/ui/MultibandGate.qml:541
+msgid "Pink BT"
+msgstr "صورتی BT"
+
+#: src/contents/ui/MultibandCompressor.qml:573
+#: src/contents/ui/MultibandGate.qml:541
+msgid "Pink MT"
+msgstr "صورتی MT"
+
+#: src/contents/ui/MultibandCompressor.qml:573
+#: src/contents/ui/MultibandGate.qml:541
+msgid "Brown BT"
+msgstr "قهوه ای BT"
+
+#: src/contents/ui/MultibandCompressor.qml:573
+#: src/contents/ui/MultibandGate.qml:541
+msgid "Brown MT"
+msgstr "قهوه ای MT"
+
+#: src/contents/ui/MultibandCompressor.qml:583
+#: src/contents/ui/MultibandGate.qml:551
+#, fuzzy
+msgid "Sidechain Input Device"
+msgstr "دستگاه ورودی"
+
+#: src/contents/ui/MultibandCompressor.qml:651
+#: src/contents/ui/MultibandCompressor.qml:921
+#: src/contents/ui/MultibandGate.qml:619 src/contents/ui/MultibandGate.qml:889
+#, fuzzy
+msgid "Band"
+msgstr "باندها"
+
+#: src/contents/ui/MultibandGate.qml:169
+#, fuzzy
+msgid "Reaction"
+msgstr "کاهش"
+
+#: src/contents/ui/PageStreamsEffects.qml:68
+#: src/contents/ui/PresetsAutoloadingPage.qml:100
+msgid "Empty List"
+msgstr "لیست خالی"
+
+#: src/contents/ui/PageStreamsEffects.qml:69
+msgid "No Audio Application Available"
+msgstr "هیچ برنامه صوتی موجود نیست"
+
+#: src/contents/ui/PageStreamsEffects.qml:403
+msgid "Add Effect"
+msgstr "افزودن افکت"
+
+#: src/contents/ui/PageStreamsEffects.qml:451
+#: src/contents/ui/PageStreamsEffects.qml:655
+msgid "Players"
+msgstr "پلیرها"
+
+#: src/contents/ui/PageStreamsEffects.qml:468
+#: src/contents/ui/PageStreamsEffects.qml:655
+msgid "Recorders"
+msgstr "ضبط کننده ها"
+
+#: src/contents/ui/PageStreamsEffects.qml:481
+msgid "Close"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:504
+msgid "No Effects"
+msgstr "بدون افکت"
+
+#: src/contents/ui/PageStreamsEffects.qml:505
+msgid "Audio Stream Not Modified"
+msgstr "جریان صوتی تغییر نکرده است"
+
+#: src/contents/ui/PageStreamsEffects.qml:665
+msgid "Effects"
+msgstr "جلوه ها"
+
+#: src/contents/ui/PageStreamsEffects.qml:682
+#, fuzzy
+msgid "Input Monitoring"
+msgstr "فعال‌سازی پایش ورودی"
+
+#: src/contents/ui/PageStreamsEffects.qml:695
+msgid "Excluded Apps"
+msgstr "برنامه های مستثنی شده"
+
+#: src/contents/ui/PipeWirePage.qml:16
+msgid "General"
+msgstr "عمومی"
+
+#: src/contents/ui/PipeWirePage.qml:20
+msgid "Modules"
+msgstr "ماژول‌ها"
+
+#: src/contents/ui/PipeWirePage.qml:24
+msgid "Clients"
+msgstr "مشتریان"
+
+#: src/contents/ui/PipeWirePage.qml:28
+msgid "Test Signal"
+msgstr "سیگنال تست"
+
+#: src/contents/ui/PipeWirePage.qml:95
+msgid "Device Management"
+msgstr "مدیریت دستگاه"
+
+#: src/contents/ui/PipeWirePage.qml:99
+#, fuzzy
+msgid ""
+"It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
+"external applications (e.g. Gnome Settings and Plasma System Settings)"
+msgstr ""
+"توصیه می‌شود در برنامه‌های خارجی (مثلاً تنظیمات گنوم و تنظیمات سیستم پلاسما) "
+"Easy Effects Sink/Source را به عنوان دستگاه پیش‌فرض تنظیم نکنید."
+
+#: src/contents/ui/PipeWirePage.qml:106
+msgid "Use Default Input"
+msgstr "از ورودی پیش فرض استفاده کنید"
+
+#: src/contents/ui/PipeWirePage.qml:144
+msgid "Use Default Output"
+msgstr "از خروجی پیش فرض استفاده کنید"
+
+#: src/contents/ui/PipeWirePage.qml:177
+msgid "Server Information"
+msgstr "اطلاعات سرور"
+
+#: src/contents/ui/PipeWirePage.qml:182
+msgid "Header Version"
+msgstr "نسخه هدر"
+
+#: src/contents/ui/PipeWirePage.qml:187
+msgid "Library Version"
+msgstr "نسخه کتابخانه"
+
+#: src/contents/ui/PipeWirePage.qml:192
+#, fuzzy
+msgid "Runtime Version"
+msgstr "نسخه اصلی"
+
+#: src/contents/ui/PipeWirePage.qml:197
+#, fuzzy
+msgid "Default Sampling Rate"
+msgstr "نرخ نمونه برداری"
+
+#: src/contents/ui/PipeWirePage.qml:202
+msgid "Minimum Quantum"
+msgstr "حداقل کوانتومی"
+
+#: src/contents/ui/PipeWirePage.qml:207
+msgid "Maximum Quantum"
+msgstr "حداکثر کوانتومی"
+
+#: src/contents/ui/PipeWirePage.qml:212
+msgid "Default Quantum"
+msgstr "کوانتومی پیش فرض"
+
+#: src/contents/ui/PipeWirePage.qml:234
+#, fuzzy
+msgid "No Modules"
+msgstr "ماژول‌ها"
+
+#: src/contents/ui/PipeWirePage.qml:257
+#, fuzzy
+msgid "No Clients"
+msgstr "مشتریان"
+
+#: src/contents/ui/PipeWirePage.qml:270
+#: src/contents/ui/PreferencesSheet.qml:189
+msgid "State"
+msgstr "ایالت"
+
+#: src/contents/ui/PipeWirePage.qml:277
+#: src/contents/ui/PreferencesSheet.qml:196
+msgid "Enabled"
+msgstr "فعال شد"
+
+#: src/contents/ui/PipeWirePage.qml:287
+msgid "Channels"
+msgstr "کانال ها"
+
+#: src/contents/ui/PipeWirePage.qml:318
+msgid "Both"
+msgstr "هر دو"
+
+#: src/contents/ui/PipeWirePage.qml:328
+msgid "Waveform"
+msgstr "شکل موج"
+
+#: src/contents/ui/PipeWirePage.qml:337
+msgid "Sine Wave"
+msgstr "موج سینوسی"
+
+#: src/contents/ui/PipeWirePage.qml:348
+msgid "White Noise"
+msgstr "نویز سفید"
+
+#: src/contents/ui/Pitch.qml:49
+msgid "Sequence Length"
+msgstr "طول دنباله"
+
+#: src/contents/ui/Pitch.qml:64
+msgid "Seek Window"
+msgstr "پنجره جستجو"
+
+#: src/contents/ui/Pitch.qml:79
+msgid "Overlap Length"
+msgstr "طول هم‌پوشانی"
+
+#: src/contents/ui/Pitch.qml:99 src/tags_plugin_name.cpp:47
+msgid "Pitch"
+msgstr "گام"
+
+#: src/contents/ui/Pitch.qml:115
+msgid "Octaves"
+msgstr "اکتاوها"
+
+#: src/contents/ui/Pitch.qml:131
+msgid "Cents"
+msgstr "سِنت"
+
+#: src/contents/ui/Pitch.qml:147
+msgid "Semitones"
+msgstr "نیم‌پرده‌ها"
+
+#: src/contents/ui/Pitch.qml:163
+msgid "Tempo Difference"
+msgstr "اختلاف تمپو"
+
+#: src/contents/ui/Pitch.qml:180
+msgid "Rate Difference"
+msgstr "اختلاف نرخ"
+
+#: src/contents/ui/Pitch.qml:230
+msgid "Quick Seek"
+msgstr "جستجوی سریع"
+
+#: src/contents/ui/Pitch.qml:240
+msgid "Anti-aliasing"
+msgstr "ضد-لغزش"
+
+#: src/contents/ui/PreferencesSheet.qml:34
+#, fuzzy
+msgid "Enable Service Mode"
+msgstr "حالت اکولایزر"
+
+#: src/contents/ui/PreferencesSheet.qml:45
+msgid "Autostart on Login"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:57
+msgid "Show the Tray Icon"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:77
+msgid "Process All Output Streams"
+msgstr "پردازش تمام جریان‌های خروجی"
+
+#: src/contents/ui/PreferencesSheet.qml:88
+msgid "Process All Input Streams"
+msgstr "پردازش تمام جریان‌های ورودی"
+
+#: src/contents/ui/PreferencesSheet.qml:99
+msgid "Ignore Streams from Monitor of Devices"
+msgstr "نادیده‌گرفتن جریان‌ها از مانیتور دستگاه‌ها"
+
+#: src/contents/ui/PreferencesSheet.qml:110
+msgid "Use Cubic Volume"
+msgstr "استفاده از حجم مکعبی"
+
+#: src/contents/ui/PreferencesSheet.qml:121
+msgid "Enable/disable input monitoring"
+msgstr "فعال/غیرفعال کردن نظارت بر ورودی"
+
+#: src/contents/ui/PreferencesSheet.qml:132
+msgid "Mic Monitor Plays to Output Effects Pipeline"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:143
+#, fuzzy
+msgid "Enable the Inactivity Timeout"
+msgstr "زمان‌سنج بی‌فعالیتی"
+
+#: src/contents/ui/PreferencesSheet.qml:154
+msgid "Inactivity Timeout"
+msgstr "زمان‌سنج بی‌فعالیتی"
+
+#: src/contents/ui/PreferencesSheet.qml:168
+#, fuzzy
+msgid "Level Meters Label"
+msgstr "سطح سنج"
+
+#: src/contents/ui/PreferencesSheet.qml:207
+msgid "Audio Delay Compensation"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:221
+msgid "Style"
+msgstr "سبک"
+
+#: src/contents/ui/PreferencesSheet.qml:228
+msgid "Color Scheme"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:232
+#, fuzzy
+msgid "Automatic"
+msgstr "افزایش خودکار"
+
+#: src/contents/ui/PreferencesSheet.qml:232
+#, fuzzy
+msgid "Light"
+msgstr "راست"
+
+#: src/contents/ui/PreferencesSheet.qml:232
+msgid "Dark"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:242
+#, fuzzy
+msgid "Color Theme"
+msgstr "رنگ"
+
+#: src/contents/ui/PreferencesSheet.qml:246
+msgid "Green"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:246
+msgid "Green Neon"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:246
+msgid "Mix"
+msgstr "مخلوط"
+
+#: src/contents/ui/PreferencesSheet.qml:246
+#, fuzzy
+msgid "Orange"
+msgstr "محدوده"
+
+#: src/contents/ui/PreferencesSheet.qml:246
+msgid "Yellow"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:246
+msgid "Blue"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:246
+msgid "Purple"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:246
+msgid "Grey"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:256
+msgid "Shape"
+msgstr "شکل"
+
+#: src/contents/ui/PreferencesSheet.qml:260
+msgid "Bars"
+msgstr "میله‌ها"
+
+#: src/contents/ui/PreferencesSheet.qml:260
+msgid "Lines"
+msgstr "خطوط"
+
+#: src/contents/ui/PreferencesSheet.qml:260
+msgid "Dots"
+msgstr "نقطه‌ها"
+
+#: src/contents/ui/PreferencesSheet.qml:260
+msgid "Area"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:270
+msgid "Dynamic Scale"
+msgstr "مقیاس پویا"
+
+#: src/contents/ui/PreferencesSheet.qml:281
+msgid "Logarithmic Frequency Axis"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:292
+msgid "Points"
+msgstr "امتیازها"
+
+#: src/contents/ui/PreferencesSheet.qml:306
+msgid "Height"
+msgstr "ارتفاع"
+
+#: src/contents/ui/PreferencesSheet.qml:320
+msgid "Frequency Range"
+msgstr "محدوده فرکانس"
+
+#: src/contents/ui/PreferencesSheet.qml:327
+msgid "Minimum"
+msgstr "حداقل"
+
+#: src/contents/ui/PreferencesSheet.qml:342
+msgid "Maximum"
+msgstr "حداکثر"
+
+#: src/contents/ui/PreferencesSheet.qml:363
+msgid "Database Autosave Interval"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:386
+#: src/contents/ui/ShortcutsSheet.qml:168
+#, fuzzy
+msgid "Global Shortcuts"
+msgstr "_میانبرها"
+
+#: src/contents/ui/PreferencesSheet.qml:387
+msgid "Enables support for XDG Global Shortcuts"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:398
+msgid "Native Plugin Window"
+msgstr "پنجره افزونه بومی"
+
+#: src/contents/ui/PreferencesSheet.qml:399
+msgid "Allows The Native Plugin Window to be Shown/Hidden"
+msgstr "امکان نمایش/پنهان‌سازی پنجره افزونه بومی"
+
+#: src/contents/ui/PreferencesSheet.qml:410
+msgid "Update Frequency"
+msgstr "فرکانس به‌روزرسانی"
+
+#: src/contents/ui/PreferencesSheet.qml:411
+msgid "Related to LV2 Plugins"
+msgstr "مرتبط با افزونه‌های LV2"
+
+#: src/contents/ui/PreferencesSheet.qml:439
+msgid "Background Service"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:452
+msgid "Audio"
+msgstr "صدا"
+
+#: src/contents/ui/PreferencesSheet.qml:465
+#, fuzzy
+msgid "Spectrum Analyzer"
+msgstr "طیف"
+
+#: src/contents/ui/PreferencesSheet.qml:478
+msgid "Database"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:491
+msgid "Experimental Features"
+msgstr "ویژگی‌های آزمایشی"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:39
+#: src/contents/ui/PresetsAutoloadingPage.qml:130
+msgid "Device"
+msgstr "دستگاه"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:45
+msgid "Hardware Profile:"
+msgstr ""
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:59
+#: src/contents/ui/PresetsAutoloadingPage.qml:183
+#, fuzzy
+msgid "Local Preset"
+msgstr "فهرست پیش‌تنظیم‌های محلی"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:69
+#, fuzzy
+msgid "Create"
+msgstr "در حال ایجاد"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:170
+#, fuzzy
+msgid "Hardware Profile"
+msgstr "نمایه"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:204
+msgid "Fallback Preset"
+msgstr ""
+
+#: src/contents/ui/PresetsCommunityPage.qml:86
+#: src/contents/ui/PresetsLocalPage.qml:149
+msgid "The Preset %1 failed to load"
+msgstr ""
+
+#: src/contents/ui/PresetsCommunityPage.qml:104
+msgid "Copy to the Local List"
+msgstr ""
+
+#: src/contents/ui/PresetsCommunityPage.qml:109
+#, fuzzy
+msgid "Imported the Community Preset"
+msgstr "جستجوی پیش‌تنظیم انجمن"
+
+#: src/contents/ui/PresetsCommunityPage.qml:111
+#, fuzzy
+msgid "Failed to Import the Community Preset"
+msgstr "جستجوی پیش‌تنظیم انجمن"
+
+#: src/contents/ui/PresetsCommunityPage.qml:130
+msgid "Refresh"
+msgstr "تازه‌سازی"
+
+#: src/contents/ui/PresetsLocalPage.qml:34
+msgid "Preset files imported!"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:36
+msgid "Failed to import the presets!"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:44
+msgid "New Preset Name"
+msgstr "نام از پیش تعیین شده جدید"
+
+#: src/contents/ui/PresetsLocalPage.qml:60
+#, fuzzy
+msgid "Import Preset File"
+msgstr "وارد کردن فایل از پیش تنظیم شده APO"
+
+#: src/contents/ui/PresetsLocalPage.qml:69
+#, fuzzy
+msgid "Create Preset"
+msgstr "ایجاد یک پیش‌تنظیم جدید"
+
+#: src/contents/ui/PresetsLocalPage.qml:78
+#, fuzzy
+msgid "New Preset Created"
+msgstr "نام از پیش تعیین شده جدید"
+
+#: src/contents/ui/PresetsLocalPage.qml:81
+msgid "Failed to Create Preset"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:161
+#, fuzzy
+msgid "Save Settings to this Preset"
+msgstr "تنظیمات فعلی را در این فایل از پیش تعیین شده ذخیره کنید"
+
+#: src/contents/ui/PresetsLocalPage.qml:166
+msgid "Settings Saved to: %1"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:168
+msgid "Failed to Save Settings to: %1"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:172
+#, fuzzy
+msgid "Delete this Preset"
+msgstr "این فایل از پیش تعیین شده را حذف کنید"
+
+#: src/contents/ui/PresetsLocalPage.qml:177
+msgid "The Preset %1 Has Been Removed"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:179
+msgid "The Preset %1 Could Not Be Removed"
+msgstr ""
+
+#: src/contents/ui/PresetsSheet.qml:64
+msgid "Local"
+msgstr "محلی"
+
+#: src/contents/ui/PresetsSheet.qml:75
+msgid "Community"
+msgstr "انجمن"
+
+#: src/contents/ui/PresetsSheet.qml:86
+#, fuzzy
+msgid "Autoloading"
+msgstr "افزایش خودکار"
+
+#: src/contents/ui/PresetsSheet.qml:105
+msgid "No Preset Loaded"
+msgstr "هیچ پیش‌تنظیمی بارگذاری نشده است"
+
+#: src/contents/ui/PresetsSheet.qml:107
+msgid "<strong>Local: </strong>"
+msgstr ""
+
+#: src/contents/ui/PresetsSheet.qml:107
+msgid "<strong>Community: </strong>"
+msgstr ""
+
+#: src/contents/ui/Reverb.qml:51
+msgid "Room Size"
+msgstr "اندازه اتاق"
+
+#: src/contents/ui/Reverb.qml:55
+msgid "Small"
+msgstr "کوچک"
+
+#: src/contents/ui/Reverb.qml:55
+msgid "Medium"
+msgstr "متوسط"
+
+#: src/contents/ui/Reverb.qml:55
+msgid "Large"
+msgstr "بزرگ"
+
+#: src/contents/ui/Reverb.qml:55
+#, fuzzy
+msgid "Tunnel-like"
+msgstr "تونل"
+
+#: src/contents/ui/Reverb.qml:55
+msgid "Large/smooth"
+msgstr "بزرگ/صاف"
+
+#: src/contents/ui/Reverb.qml:55
+msgid "Experimental"
+msgstr "ازمایشی"
+
+#: src/contents/ui/Reverb.qml:64
+msgid "Decay Time"
+msgstr "زمان پوسیدگی"
+
+#: src/contents/ui/Reverb.qml:79
+msgid "Pre Delay"
+msgstr "پیش تاخیر"
+
+#: src/contents/ui/Reverb.qml:94
+msgid "Diffusion"
+msgstr "انتشار"
+
+#: src/contents/ui/Reverb.qml:125
+msgid "High Frequency Damping"
+msgstr "میرایی فرکانس بالا"
+
+#: src/contents/ui/Reverb.qml:142
+msgid "Bass Cut"
+msgstr "کاهش باس"
+
+#: src/contents/ui/Reverb.qml:159
+msgid "Treble Cut"
+msgstr "کاهش فرکانس‌های زیر"
+
+#: src/contents/ui/Reverb.qml:217
+#, fuzzy
+msgid "Reverberation Presets"
+msgstr "طنین"
+
+#: src/contents/ui/Reverb.qml:221
+msgid "Ambience"
+msgstr "فضا"
+
+#: src/contents/ui/Reverb.qml:236
+msgid "Empty Walls"
+msgstr "دیوارهای خالی"
+
+#: src/contents/ui/Reverb.qml:251
+msgid "Room"
+msgstr "اتاق"
+
+#: src/contents/ui/Reverb.qml:266
+msgid "Large Empty Hall"
+msgstr "سالن بزرگ خالی"
+
+#: src/contents/ui/Reverb.qml:276
+msgid "Disco"
+msgstr "دیسکو"
+
+#: src/contents/ui/Reverb.qml:286
+msgid "Large Occupied Hall"
+msgstr "سالن بزرگ و اشغال شده"
+
+#: src/contents/ui/RNNoise.qml:55
+#, fuzzy
+msgid "Model File Imported."
+msgstr "فایل ایمپالس وارد نشده است"
+
+#: src/contents/ui/RNNoise.qml:57
+#, fuzzy
+msgid "Failed to Import the Model File."
+msgstr "وارد کردن فایل مدل"
+
+#: src/contents/ui/RNNoise.qml:72 src/contents/ui/Speex.qml:108
+msgid "Voice Detection"
+msgstr "تشخیص صدا"
+
+#: src/contents/ui/RNNoise.qml:106
+msgid "Wet Level"
+msgstr "سطح خیس"
+
+#: src/contents/ui/RNNoise.qml:143
+#, fuzzy
+msgid "Use the Standard Model"
+msgstr "مدل استاندارد"
+
+#: src/contents/ui/RNNoise.qml:154
+#, fuzzy
+msgid "User Models"
+msgstr "مدل‌های RNoise"
+
+#: src/contents/ui/RNNoise.qml:203
+#, fuzzy
+msgid "Loaded Model: %1"
+msgstr "مدل استاندارد"
+
+#: src/contents/ui/RNNoise.qml:215
+#, fuzzy
+msgid "Delete this Model"
+msgstr "این فایل مدل را حذف کنید"
+
+#: src/contents/ui/RNNoise.qml:220
+#, fuzzy
+msgid "Removed Model: %1"
+msgstr "این فایل مدل را حذف کنید"
+
+#: src/contents/ui/RNNoise.qml:222
+msgid "Failed to Remove the Model: %1"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:285
+msgid "Import Model"
+msgstr "وارد کردن مدل"
+
+#: src/contents/ui/ShortcutsSheet.qml:34
+#, fuzzy
+msgid "Show Help"
+msgstr "نشان دادن کمک"
+
+#: src/contents/ui/ShortcutsSheet.qml:47
+msgid "Toggle Fullscreen"
+msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:214
+#, fuzzy
+msgid "Toggle Global Bypass"
+msgstr "بای‌پس سراسری"
+
+#: src/contents/ui/ShortcutsSheet.qml:103
+msgid "Close the Window"
+msgstr "پنجره را ببندید"
+
+#: src/contents/ui/ShortcutsSheet.qml:131
+#, fuzzy
+msgid "Terminate Easy Effects Service"
+msgstr "نسخه easyeffects را چاپ کنید"
+
+#: src/contents/ui/ShortcutsSheet.qml:144
+#: src/contents/ui/ShortcutsSheet.qml:157
+msgid "Can Be Used on Numeric Controls"
+msgstr ""
+
+#: src/contents/ui/Speex.qml:48
+msgid "Denoise"
+msgstr "کاهش نویز"
+
+#: src/contents/ui/Speex.qml:59
+msgid "Automatic Gain Control"
+msgstr "کنترل خودکار سطح صدا"
+
+#: src/contents/ui/Speex.qml:70
+msgid "Dereverberation"
+msgstr "حذف بازتاب صوت"
+
+#: src/contents/ui/Speex.qml:81
+msgid "Noise Suppression"
+msgstr "سرکوب نویز"
+
+#: src/contents/ui/Speex.qml:100
+msgid "Voice Activity Probability"
+msgstr "احتمال فعالیت صوتی"
+
+#: src/contents/ui/Speex.qml:139
+msgid "Continue"
+msgstr "ادامه دهید"
+
+#: src/contents/ui/StereoTools.qml:50
+msgid "Softclip"
+msgstr "کلیپ نرم"
+
+#: src/contents/ui/StereoTools.qml:87
+#, fuzzy
+msgid "S/C Level"
+msgstr "سطح جانبی"
+
+#: src/contents/ui/StereoTools.qml:111
+msgid "Stereo Matrix"
+msgstr "ماتریس استریو"
+
+#: src/contents/ui/StereoTools.qml:133
+msgid "LR > LR (Stereo Default)"
+msgstr "LR > LR (پیش‌فرض استریو)"
+
+#: src/contents/ui/StereoTools.qml:133
+msgid "LR > MS (Stereo to Mid-Side)"
+msgstr "LR > MS (استریو به سمت میانی)"
+
+#: src/contents/ui/StereoTools.qml:133
+msgid "MS > LR (Mid-Side to Stereo)"
+msgstr "MS > LR (از وسط به کنار به استریو)"
+
+#: src/contents/ui/StereoTools.qml:133
+msgid "LR > LL (Mono Left Channel)"
+msgstr "LR > LL (کانال چپ مونو)"
+
+#: src/contents/ui/StereoTools.qml:133
+msgid "LR > RR (Mono Right Channel)"
+msgstr "LR > RR (کانال مونو راست)"
+
+#: src/contents/ui/StereoTools.qml:133
+msgid "LR > L+R (Mono Sum L+R)"
+msgstr "LR > L+R (مجموع تکی L+R)"
+
+#: src/contents/ui/StereoTools.qml:133
+msgid "LR > RL (Stereo Flip Channels)"
+msgstr "LR > RL (کانال‌های استریو معکوس)"
+
+#: src/contents/ui/StereoTools.qml:142
+msgid "Side Level"
+msgstr "سطح جانبی"
+
+#: src/contents/ui/StereoTools.qml:160
+msgid "Side Balance"
+msgstr "تعادل جانبی"
+
+#: src/contents/ui/StereoTools.qml:176
+msgid "Middle Level"
+msgstr "سطح میانی"
+
+#: src/contents/ui/StereoTools.qml:194
+msgid "Middle Panorama"
+msgstr "پانورامای میانی"
+
+#: src/contents/ui/StereoTools.qml:242 src/contents/ui/StereoTools.qml:285
+msgid "Invert Phase"
+msgstr "فاز معکوس"
+
+#: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:34
+msgid "Delay"
+msgstr "تاخیر"
+
+#: src/contents/ui/StereoTools.qml:353
+msgid "Stereo Base"
+msgstr "پایه استریو"
+
+#: src/contents/ui/StereoTools.qml:369
+msgid "Stereo Phase"
+msgstr "فاز استریو"
+
+#: src/plugin_base.cpp:227
+msgid "(Mic)"
+msgstr ""
+
+#: src/plugin_base.cpp:230
+msgid "(Speakers)"
+msgstr ""
+
+#: src/plugin_base.cpp:237
+msgid "Output Level Meter"
+msgstr "سطح سنج خروجی"
+
+#: src/presets_manager.cpp:1378 src/presets_manager.cpp:1385
+#: src/presets_manager.cpp:1395 src/presets_manager.cpp:1402
+#: src/presets_manager.cpp:1411 src/presets_manager.cpp:1419
+msgid "Preset Not Loaded Correctly"
+msgstr "پیش‌تنظیم به‌درستی بارگذاری نشد"
+
+#: src/presets_manager.cpp:1378
+msgid "Wrong Format in Excluded Apps List"
+msgstr "فرمت نادرست در فهرست برنامه‌های مستثنی‌شده"
+
+#: src/presets_manager.cpp:1386
+msgid "Generic Error While Loading Excluded Apps List"
+msgstr "خطای عمومی هنگام بارگذاری فهرست برنامه‌های مستثنی‌شده"
+
+#: src/presets_manager.cpp:1395
+msgid "Wrong Format in Effects List"
+msgstr "فرمت نادرست در فهرست جلوه ها"
+
+#: src/presets_manager.cpp:1402
+msgid "Generic Error While Loading Effects List"
+msgstr "خطای عمومی هنگام بارگذاری فهرست جلوه ها"
+
+#: src/presets_manager.cpp:1412
+msgid "One or More Parameters Have a Wrong Format"
+msgstr "یک یا چند پارامتر فرمت نادرستی دارند"
+
+#: src/presets_manager.cpp:1420
+msgid "Generic Error While Loading The Effect"
+msgstr "خطای عمومی هنگام بارگذاری جلوه"
+
+#: src/pw_model_nodes.cpp:487
+msgid "Running"
+msgstr "در حال اجرا"
+
+#: src/pw_model_nodes.cpp:489
+msgid "Suspended"
+msgstr "معلق"
+
+#: src/pw_model_nodes.cpp:491
+msgid "Idle"
+msgstr "بیکار"
+
+#: src/pw_model_nodes.cpp:493
+msgid "Creating"
+msgstr "در حال ایجاد"
+
+#: src/pw_model_nodes.cpp:495
+msgid "Error"
+msgstr "خطا"
+
+#: src/pw_model_nodes.cpp:497
+msgid "Unknown"
+msgstr "ناشناس"
+
+#: src/tags_plugin_name.cpp:26
+msgid "Bass Enhancer"
+msgstr "تقویت کننده باس"
+
+#: src/tags_plugin_name.cpp:27
+msgid "Bass Loudness"
+msgstr "بلندی صدای باس"
+
+#: src/tags_plugin_name.cpp:29
+msgid "Convolver"
+msgstr "کانولور"
+
+#: src/tags_plugin_name.cpp:30
+msgid "Crossfeed"
+msgstr "کراس‌فید"
+
+#: src/tags_plugin_name.cpp:31
+msgid "Crystalizer"
+msgstr "کریستالایزر"
+
+#: src/tags_plugin_name.cpp:32
+msgid "Deep Noise Remover"
+msgstr "حذف نویز عمیق"
+
+#: src/tags_plugin_name.cpp:35
+msgid "Echo Canceller"
+msgstr "حذف اکو"
+
+#: src/tags_plugin_name.cpp:36
+msgid "Equalizer"
+msgstr "اکولایزر"
+
+#: src/tags_plugin_name.cpp:37
+msgid "Exciter"
+msgstr "محرک"
+
+#: src/tags_plugin_name.cpp:41
+msgid "Level Meter"
+msgstr "سطح سنج"
+
+#: src/tags_plugin_name.cpp:44
+msgid "Maximizer"
+msgstr "ماکسیمایزر"
+
+#: src/tags_plugin_name.cpp:45
+msgid "Multiband Compressor"
+msgstr "کمپرسور چند بانده"
+
+#: src/tags_plugin_name.cpp:46
+msgid "Multiband Gate"
+msgstr "دروازه چند بانده"
+
+#: src/tags_plugin_name.cpp:48
+msgid "Reverberation"
+msgstr "طنین"
+
+#: src/tags_plugin_name.cpp:49
+msgid "Noise Reduction"
+msgstr "کاهش نویز"
+
+#: src/tags_plugin_name.cpp:50
+msgid "Speech Processor"
+msgstr "پردازشگر گفتار"
+
+#: src/tags_plugin_name.cpp:51
+msgid "Stereo Tools"
+msgstr "ابزارهای استریو"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:2
+#, fuzzy
+msgid "Easy Effects"
+msgstr "بستن Easy Effects"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:3
+msgid "Equalizer, Compressor and Other Audio Effects"
+msgstr "اکولایزر، کمپرسور و سایر جلوه‌های صوتی"
+
+#: com.github.wwmm.easyeffects.desktop.template.h:4
+msgid "Audio Effects for PipeWire Applications"
+msgstr "جلوه‌های صوتی برای برنامه‌های PipeWire"
+
+#~ msgid "@APP_NAME@"
+#~ msgstr "@APP_NAME@"
+
+#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "محدودکننده؛ فشرده‌ساز؛ طنین؛ اکولایزر؛ حجم صدای خودکار;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "فعال/غیرفعال کردن این برنامه"
+
+#~ msgid "Excluded App List: Add/remove this application"
+#~ msgstr "فهرست برنامه‌های حذف‌شده: این برنامه را اضافه/حذف کنید"
+
+#~ msgid "Mute Application"
+#~ msgstr "بی صدا کردن برنامه"
+
+#~ msgid "Change the volume of this application"
+#~ msgstr "تغییر حجم صدای این برنامه"
+
+#~ msgid "Application Volume"
+#~ msgstr "حجم صدای برنامه"
+
+#~ msgid "_Help"
+#~ msgstr "_کمک"
+
+#~ msgid "Presets Menu"
+#~ msgstr "منوی تنظیمات از پیش تعیین شده"
+
+#~ msgid "Enable/disable the global bypass"
+#~ msgstr "فعال/غیرفعال کردن بای‌پس سراسری"
+
+#~ msgid "Primary Menu"
+#~ msgstr "منوی اصلی"
+
+#~ msgid "Easy Effects Window"
+#~ msgstr "پنجره Easy Effects"
+
+#~ msgid "Applications List"
+#~ msgstr "لیست برنامه ها"
+
+#~ msgid "History"
+#~ msgstr "تاریخچه"
+
+#~ msgid "Plugin Input Gain"
+#~ msgstr "افزایش ورودی پلاگین"
+
+#~ msgid "Plugin Output Gain"
+#~ msgstr "افزایش خروجی پلاگین"
+
+#~ msgid "Preset"
+#~ msgstr "از پیش تعیین شده"
+
+#~ msgid "Remove this autoload preset"
+#~ msgstr "این تنظیمات پیش‌فرض بارگذاری خودکار را حذف کن"
+
+#~ msgid "Excluded Applications List"
+#~ msgstr "فهرست برنامه‌های مستثنی‌شده"
+
+#~ msgid "Attack Time"
+#~ msgstr "زمان حمله"
+
+#~ msgid "Attack Threshold"
+#~ msgstr "آستانه حمله"
+
+#~ msgid "Release Time"
+#~ msgstr "زمان رها"
+
+#~ msgid "Release Threshold"
+#~ msgstr "آستانه رها"
+
+#~ msgid "Dry Level"
+#~ msgstr "سطح خشک"
+
+#~ msgid "Stereo Split Mode"
+#~ msgstr "حالت تقسیم استریو"
+
+#~ msgid "Sidechain Source"
+#~ msgstr "منبع زنجیره جانبی"
+
+#~ msgid "Stereo Split Source"
+#~ msgstr "منبع تقسیم استریو"
+
+#~ msgid "Low-Pass Filter"
+#~ msgstr "فیلتر پایین-گذر"
+
+#~ msgid "Simple Moving Average"
+#~ msgstr "میانگین متحرک ساده"
+
+#~ msgid "Sidechain Mode"
+#~ msgstr "حالت زنجیره جانبی"
+
+#~ msgid "Listen Sidechain"
+#~ msgstr "به زنجیره جانبی گوش دهید"
+
+#~ msgid "Sidechain Type"
+#~ msgstr "نوع زنجیره جانبی"
+
+#~ msgid "PreAmplification"
+#~ msgstr "تقویت اولیه"
+
+#~ msgid "Sidechain Filters"
+#~ msgstr "فیلترهای زنجیره جانبی"
+
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "حالت فیلتر بالا-گذر"
+
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "فرکانس فیلتر بالا-گذر"
+
+#~ msgid "Low-Pass Filter Mode"
+#~ msgstr "حالت فیلتر پایین-گذر"
+
+#~ msgid "Left Channel"
+#~ msgstr "کانال چپ"
+
+#~ msgid "Right Channel"
+#~ msgstr "کانال راست"
+
+#~ msgid "Impulses"
+#~ msgstr "ایمپالس ها"
+
+#~ msgid "Log Scale"
+#~ msgstr "مقیاس ثبت"
+
+#~ msgid "First Kernel"
+#~ msgstr "هسته اول"
+
+#~ msgid "Output File Name"
+#~ msgstr "نام فایل خروجی"
+
+#~ msgid "Combined Kernel Name"
+#~ msgstr "نام هسته ترکیبی"
+
+#~ msgid "Search Impulse File"
+#~ msgstr "جستجوی فایل ایمپالس"
+
+#~ msgid "Impulse Files List"
+#~ msgstr "فهرست فایل‌های ایمپالس"
+
+#~ msgid "Maximum DF Processing Threshold"
+#~ msgstr "حداکثر آستانه پردازش DF"
+
+#~ msgid "Minimum Processing Buffer"
+#~ msgstr "حداقل بافر پردازش"
+
+#~ msgid "Frequency 1 Split"
+#~ msgstr "فرکانس 1 تقسیم"
+
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "فرکانس 2 اوج"
+
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "فرکانس 1 افزایش"
+
+#~ msgid "Frequency 2 Level"
+#~ msgstr "فرکانس 2 سطح"
+
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "فرکانس 2 اوج Q"
+
+#~ msgid "Detected"
+#~ msgstr "شناسایی شد"
+
+#~ msgid "Import Preset"
+#~ msgstr "وارد کردن از پیش تعیین شده"
+
+#~ msgid "Ceil Value"
+#~ msgstr "مقدار سقف"
+
+#~ msgid "Expander Mode"
+#~ msgstr "حالت گسترش دهنده"
+
+#~ msgid "API"
+#~ msgstr "API"
+
+#~ msgid "Attack Zone Start"
+#~ msgstr "شروع منطقه حمله"
+
+#~ msgid "Release Zone Start"
+#~ msgstr "شروع منطقه رها"
+
+#~ msgid "Half x2(3L)"
+#~ msgstr "نصف x2 (3L)"
+
+#~ msgid "Half x3(3L)"
+#~ msgstr "نصف x3 (3L)"
+
+#~ msgid "Half x4(3L)"
+#~ msgstr "نصف x4 (3L)"
+
+#~ msgid "Half x6(3L)"
+#~ msgstr "نیمه x6 (3L)"
+
+#~ msgid "Half x8(3L)"
+#~ msgstr "نیمه x8 (3L)"
+
+#~ msgid "Full x2(3L)"
+#~ msgstr "کامل x2(3L)"
+
+#~ msgid "Full x3(3L)"
+#~ msgstr "کامل x3(3L)"
+
+#~ msgid "Full x4(3L)"
+#~ msgstr "کامل x4(3L)"
+
+#~ msgid "Full x6(3L)"
+#~ msgstr "کامل x6(3L)"
+
+#~ msgid "Full x8(3L)"
+#~ msgstr "کامل x8(3L)"
+
+#~ msgid "SC PreAmp"
+#~ msgstr "SC پیش‌تقویت‌کننده‌"
+
+#~ msgid "Sidechain PreAmplification"
+#~ msgstr "پیش‌تقویت‌کننده‌ی سایدچین"
+
+#~ msgid "Boost"
+#~ msgstr "تقویت"
+
+#~ msgid "External Sidechain"
+#~ msgstr "زنجیره جانبی خارجی"
+
+#~ msgid "External Sidechain Source"
+#~ msgstr "منبع زنجیره جانبی خارجی"
+
+#~ msgid "Auto Leveling Attack"
+#~ msgstr "حمله تسطیح خودکار"
+
+#~ msgid "Auto Leveling Release"
+#~ msgstr "رهاکردن خودکار تراز"
+
+#~ msgid "Auto Leveling Knee"
+#~ msgstr "زانویی تراز خودکار"
+
+#~ msgid "Gain Left"
+#~ msgstr "افزایش چپ"
+
+#~ msgid "Gain Right"
+#~ msgstr "افزایش راست"
+
+#~ msgid "Sidechain Left"
+#~ msgstr "زنجیره جانبی سمت چپ"
+
+#~ msgid "Sidechain Right"
+#~ msgstr "زنجیره جانبی سمت راست"
+
+#~ msgid "Standard"
+#~ msgstr "استاندارد"
+
+#~ msgid "Flat"
+#~ msgstr "تخت"
+
+#~ msgid "Show Native User Interface"
+#~ msgstr "نمایش رابط کاربری بومی"
+
+#~ msgid "Bands List"
+#~ msgstr "لیست باندها"
+
+#~ msgid "Band 2"
+#~ msgstr "باند 2"
+
+#~ msgid "Band 3"
+#~ msgstr "باند 3"
+
+#~ msgid "Band 4"
+#~ msgstr "باند 4"
+
+#~ msgid "Band 5"
+#~ msgstr "باند 5"
+
+#~ msgid "Band 6"
+#~ msgstr "باند 6"
+
+#~ msgid "Band 7"
+#~ msgstr "باند 7"
+
+#~ msgid "Band 8"
+#~ msgstr "باند 8"
+
+#~ msgid "Band Start"
+#~ msgstr "شروع باند"
+
+#~ msgid "Band End"
+#~ msgstr "پایان باند"
+
+#~ msgid "Band Compression Mode"
+#~ msgstr "حالت فشرده سازی باند"
+
+#~ msgid "Band Sidechain Options"
+#~ msgstr "گزینه های زنجیره جانبی باند"
+
+#~ msgid "Low-Cut Filter Frequency"
+#~ msgstr "فیلتر فرکانس برش-کم"
+
+#~ msgid "High-Cut Filter Frequency"
+#~ msgstr "فیلتر فرکانس برش-بالا"
+
+#~ msgid "PreAmp"
+#~ msgstr "پیش تقویت"
+
+#~ msgid "Band Gain"
+#~ msgstr "افزایش باند"
+
+#~ msgid "Band Envelope"
+#~ msgstr "پاکت باند"
+
+#~ msgid "Band Curve"
+#~ msgstr "منحنی باند"
+
+#~ msgid "Custom Input Device"
+#~ msgstr "دستگاه ورودی سفارشی"
+
+#~ msgid "Custom Output Device"
+#~ msgstr "دستگاه خروجی سفارشی"
+
+#~ msgid "Presets Autoloading"
+#~ msgstr "بارگذاری خودکار پیش‌تنظیم‌ها"
+
+#~ msgid ""
+#~ "Only Local Presets can be autoloaded. A Community Preset should be "
+#~ "imported locally in order to be selected and associated to a specific "
+#~ "device."
+#~ msgstr ""
+#~ "فقط تنظیمات از پیش تعیین‌شده محلی می‌توانند به صورت خودکار بارگذاری شوند. "
+#~ "یک تنظیمات از پیش تعیین‌شده محلی باید به صورت محلی وارد شود تا بتواند "
+#~ "انتخاب شود و به یک دستگاه خاص مرتبط شود."
+
+#~ msgid "Output Devices"
+#~ msgstr "دستگاه های خروجی"
+
+#~ msgid "Create Association"
+#~ msgstr "انجمن ایجاد کنید"
+
+#~ msgid "Add Autoloading Output Preset"
+#~ msgstr "افزودن پیش‌تنظیم خروجی خودکار"
+
+#~ msgid "Output Autoloading Presets List"
+#~ msgstr "فهرست پیش‌تنظیم‌های بارگذاری خودکار خروجی"
+
+#~ msgid "Input Devices"
+#~ msgstr "دستگاه های ورودی"
+
+#~ msgid "Add Autoloading Input Preset"
+#~ msgstr "افزودن پیش‌تنظیم ورودی با بارگذاری خودکار"
+
+#~ msgid "Input Autoloading Presets List"
+#~ msgstr "فهرست پیش‌تنظیم‌های ورودی با بارگذاری خودکار"
+
+#~ msgid "Modules List"
+#~ msgstr "لیست ماژول ها"
+
+#~ msgid "Clients List"
+#~ msgstr "لیست مشتریان"
+
+#~ msgid "Properties"
+#~ msgstr "مشخصات"
+
+#~ msgid "Both Channels"
+#~ msgstr "هر دو کانال"
+
+#~ msgid "Change the position of this effect"
+#~ msgstr "تغییر موقعیت این افکت"
+
+#~ msgid "Show/hide effects list"
+#~ msgstr "نمایش/پنهان کردن فهرست افکت‌ها"
+
+#~ msgid "Go to the previous effect"
+#~ msgstr "رفتن به افکت قبلی"
+
+#~ msgid "Go to the next effect"
+#~ msgstr "رفتن به افکت بعدی"
+
+#~ msgid "Used Plugins List"
+#~ msgstr "فهرست افزونه‌های استفاده‌شده"
+
+#~ msgid "Plugins List"
+#~ msgstr "فهرست افزونه‌ها"
+
+#~ msgid "_General"
+#~ msgstr "_عمومی"
+
+#~ msgid "Service"
+#~ msgstr "سرویس"
+
+#~ msgid "Launch Service at System Startup"
+#~ msgstr "راه‌اندازی سرویس هنگام شروع سیستم"
+
+#~ msgid "Shutdown on Window Closing"
+#~ msgstr "خاموش شدن هنگام بستن پنجره"
+
+#~ msgid "Input Pipeline"
+#~ msgstr "خط‌لوله ورودی"
+
+#~ msgid "Update Interval"
+#~ msgstr "بازه‌ زمانی‌ به‌روزرسانی"
+
+#~ msgid "Related to Level Meters and Spectrum"
+#~ msgstr "مرتبط با سطح‌سنج‌ها و طیف‌سنج"
+
+#~ msgid "Use Dark Theme"
+#~ msgstr "استفاده از تم تاریک"
+
+#~ msgid "Hide Menus on Outside Clicks"
+#~ msgstr "پنهان‌سازی منوها با کلیک بیرونی"
+
+#~ msgid "_Spectrum"
+#~ msgstr "_طیف"
+
+#~ msgid "Compensating Delay (ms)"
+#~ msgstr "تأخیر جبرانی (میلی‌ثانیه)"
+
+#~ msgid "Line Width"
+#~ msgstr "پهنای خط"
+
+#~ msgid "Fill"
+#~ msgstr "پر"
+
+#~ msgid "Show Bars Border"
+#~ msgstr "نمایش حاشیه میله‌ها"
+
+#~ msgid "Rounded Corners"
+#~ msgstr "گوشه‌های گرد"
+
+#~ msgid "Lines and Bars"
+#~ msgstr "خطوط و میله‌ها"
+
+#~ msgid "Axis Labels"
+#~ msgstr "برچسب‌های محور"
+
+#~ msgid "Load"
+#~ msgstr "بارگذاری"
+
+#~ msgid "Discard the current settings and load this preset"
+#~ msgstr "تنظیمات فعلی را کنار بگذارید و این پیش‌تنظیم را بارگذاری کنید"
+
+#~ msgid "Try this community preset"
+#~ msgstr "این پیش‌تنظیم انجمن را امتحان کنید"
+
+#~ msgid "Import this community preset into the local presets list"
+#~ msgstr "این پیش‌تنظیمات انجمن را به فهرست پیش‌تنظیمات محلی وارد کنید"
+
+#~ msgid "Import a preset from the local storage"
+#~ msgstr "یک پیش‌تنظیم را از حافظه محلی وارد کنید"
+
+#~ msgid "Search Local Preset"
+#~ msgstr "جستجوی پیش‌تنظیم محلی"
+
+#~ msgid "Community Presets List"
+#~ msgstr "فهرست پیش‌تنظیم‌های انجمن"
+
+#~ msgid "No Community Presets Installed"
+#~ msgstr "هیچ تنظیمات پیش‌فرض انجمنی نصب نشده است"
+
+#~ msgid ""
+#~ "Community Presets packages can be installed from the repository of your "
+#~ "favorite distribution."
+#~ msgstr ""
+#~ "بسته‌های تنظیمات انجمن محور را می‌توان از مخزن توزیع مورد علاقه‌تان نصب کرد."
+
+#~ msgid "Refresh to show new installed community presets"
+#~ msgstr "برای نمایش پیش‌تنظیم‌های جامعه‌محور تازه نصب‌شده، تازه‌سازی کنید"
+
+#~ msgid "Models"
+#~ msgstr "مدل ها"
+
+#~ msgid "RNNoise Models List"
+#~ msgstr "فهرست مدل‌های RNNoise"
+
+#~ msgid "Model Not Loaded"
+#~ msgstr "مدل بارگذاری نشده است"
+
+#~ msgid "Standard RNNoise Model"
+#~ msgstr "مدل استاندارد RNNoise"
+
+#~ msgid "Overview"
+#~ msgstr "نمای کلی"
+
+#~ msgid "Fullscreen/Restore from fullscreen"
+#~ msgstr "تمام صفحه/بازیابی از حالت تمام صفحه"
+
+#~ msgid "Input Balance"
+#~ msgstr "تعادل ورودی"
+
+#~ msgid "Softclip Level"
+#~ msgstr "سطح کلیپ نرم"
+
+#~ msgid "Output Balance"
+#~ msgstr "تراز خروجی"
+
+#~ msgid "Delay L/R"
+#~ msgstr "تأخیر چپ/راست"
+
+#~ msgid "Delay Left Right"
+#~ msgstr "تأخیر چپ راست"
+
+#~ msgid "Undefined Name - Process ID "
+#~ msgstr "نام تعریف نشده - شناسه فرآیند "
+
+#~ msgid "Output Preset"
+#~ msgstr "پیش‌تنظیم خروجی"
+
+#~ msgid "Input Preset"
+#~ msgstr "پیش‌تنظیم ورودی"
+
+#~ msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
+#~ msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
+
+#~ msgid ""
+#~ "Show the loaded preset of a specific category. Takes 'input' or 'output' "
+#~ "as a value. Example: easyeffects -s input"
+#~ msgstr ""
+#~ "پیش‌تنظیم بارگذاری‌شده‌ی یک دسته‌بندی خاص را نمایش می‌دهد. 'input' یا 'output' "
+#~ "را به عنوان مقدار می‌گیرد. مثال: easyeffects -s input"
+
+#~ msgid "_Output"
+#~ msgstr "_خروجی"
+
+#~ msgid "_Input"
+#~ msgstr "_ورودی"
+
+#~ msgid "The File Is Not Regular"
+#~ msgstr "فایل معمولی نیست"
+
+#~ msgid "The Impulse File May Be Corrupted or Unsupported"
+#~ msgstr "ممکن است فایل Impulse خراب یا پشتیبانی نشده باشد"
+
+#~ msgid "Only Stereo Impulse Files Are Supported"
+#~ msgstr "فقط فایل‌های Stereo Impulse پشتیبانی می‌شوند"
+
+#~ msgid "Import Impulse File"
+#~ msgstr "وارد کردن فایل ایمپالس"
+
+#~ msgid "Open"
+#~ msgstr "باز کنید"
+
+#~ msgid "Impulse Response"
+#~ msgstr "پاسخ ایمپالس"
+
+#~ msgid "No Impulse File Loaded"
+#~ msgstr "هیچ فایل ایمپالسی بارگذاری نشده است"
+
+#~ msgid ""
+#~ "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
+#~ "Content."
+#~ msgstr ""
+#~ "پیش‌تنظیم APO بارگذاری نشد. ممکن است فرمت فایل پشتیبانی نشود. لطفاً محتوای "
+#~ "آن را بررسی کنید."
+
+#~ msgid "Split channels not yet supported when exporting APO presets."
+#~ msgstr ""
+#~ "کانال‌های جداگانه هنگام صادر کردن پیش‌تنظیم‌های APO هنوز پشتیبانی نمی‌شوند."
+
+#~ msgid "Export EqualizerAPO Preset File"
+#~ msgstr "صدور فایل پیش‌تنظیم EqualizerAPO"
+
+#~ msgid "Save"
+#~ msgstr "ذخیره"
+
+#~ msgid "EqualizerAPO Presets"
+#~ msgstr "پیش‌تنظیم‌های EqualizerAPO"
+
+#~ msgid ""
+#~ "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please "
+#~ "Check Its Content."
+#~ msgstr ""
+#~ "پیش‌تنظیم GraphicEQ بارگذاری نشد. ممکن است فرمت فایل پشتیبانی نشود. لطفاً "
+#~ "محتوای آن را بررسی کنید."
+
+#~ msgid "Remove Autoloading Preset"
+#~ msgstr "حذف پیش‌تنظیم بارگذاری خودکار"
+
+#~ msgid "Remove"
+#~ msgstr "حذف"
+
+#~ msgid "Output Device"
+#~ msgstr "دستگاه خروجی"
+
+#~ msgid "Add"
+#~ msgstr "اضافه کنید"
+
+#~ msgid "Community Preset"
+#~ msgstr "پیش‌تنظیم جامعه‌محور"
+
+#~ msgid "Package"
+#~ msgstr "بسته"
+
+#~ msgid "Save?"
+#~ msgstr "ذخیره؟"
+
+#~ msgid "Delete?"
+#~ msgstr "حذف؟"
+
+#~ msgid "Last Local Preset Loaded"
+#~ msgstr "آخرین پیش‌تنظیم محلی بارگذاری شد"
+
+#~ msgid "Last Community Preset Loaded"
+#~ msgstr "آخرین پیش‌تنظیم جامعه‌محور بارگذاری شد"
+
+#~ msgid ""
+#~ "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To "
+#~ "The Standard Model."
+#~ msgstr ""
+#~ "مدل انتخاب شده بارگذاری نشده است. ممکن است فرمت آن پشتیبانی نشود. به مدل "
+#~ "استاندارد برگشتم."
+
+#, c++-format
+#~ msgid "{} Not Available"
+#~ msgstr "{} در دسترس نیست"
+
+#, c++-format
+#~ msgid ""
+#~ "The software required for the {} effect, \"{}\", is not installed. "
+#~ "Consider using the Easy Effects Flatpak package or installing the "
+#~ "software yourself. If you've installed the missing software, you must "
+#~ "restart Easy Effects using the 'Quit' option inside the menu in order to "
+#~ "make the effect availble to use."
+#~ msgstr ""
+#~ "نرم‌افزار مورد نیاز برای افکت {}، \"{}\"، نصب نشده است. استفاده از بسته "
+#~ "Easy Effects Flatpak یا نصب نرم‌افزار توسط خودتان را در نظر بگیرید. اگر "
+#~ "نرم‌افزار مورد نظر را نصب کرده‌اید، باید Easy Effects را با استفاده از "
+#~ "گزینه 'Quit' در داخل منو بسته و مجدداً راه‌اندازی کنید تا افکت برای استفاده "
+#~ "در دسترس قرار گیرد."
+
+#, c++-format
+#~ msgid ""
+#~ "The {} effect was disabled when Easy Effects was compiled. This is "
+#~ "perhaps since the software required for this effect, \"{}\", was not "
+#~ "available. Consider using the Easy Effects Flatpak package or building "
+#~ "your own Easy Effects package."
+#~ msgstr ""
+#~ "افکت {} هنگام کامپایل Easy Effects غیرفعال شد. شاید به این دلیل باشد که "
+#~ "نرم‌افزار مورد نیاز برای این افکت، \"{}\"، در دسترس نبود. استفاده از بسته "
+#~ "Easy Effects Flatpak یا ساخت بسته Easy Effects خودتان را در نظر بگیرید."
+
+#~ msgid "-inf"
+#~ msgstr "-inf"

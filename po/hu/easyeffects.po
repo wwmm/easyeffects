@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-23 12:31-0300\n"
-"PO-Revision-Date: 2024-04-03 16:48+0000\n"
+"POT-Creation-Date: 2025-08-29 12:10-0300\n"
+"PO-Revision-Date: 2025-05-26 11:48+0200\n"
 "Last-Translator: Noel <chatenium@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/easyeffects/"
 "main/hu/>\n"
@@ -17,16 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Poedit 3.6\n"
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
 #: src/command_line_parser.cpp:45
-#, fuzzy
 msgid "Reset Easy Effects."
-msgstr "_Easy Effects Névjegye"
+msgstr ""
 
 #: src/command_line_parser.cpp:46
 msgid "Hide the Window."
@@ -41,9 +40,8 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid "preset-name"
-msgstr "Profilok"
+msgstr ""
 
 #: src/command_line_parser.cpp:49
 msgid "Show available presets."
@@ -73,15 +71,13 @@ msgstr ""
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:138
-#, fuzzy
+#: src/command_line_parser.cpp:138 src/contents/ui/main.qml:237
 msgid "Output Presets"
-msgstr "Profilok"
+msgstr ""
 
-#: src/command_line_parser.cpp:146
-#, fuzzy
+#: src/command_line_parser.cpp:146 src/contents/ui/main.qml:227
 msgid "Input Presets"
-msgstr "Profilok"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:88
 #: src/contents/ui/BassLoudness.qml:40 src/contents/ui/Crossfeed.qml:56
@@ -90,16 +86,16 @@ msgstr "Profilok"
 #: src/contents/ui/Loudness.qml:41 src/contents/ui/Maximizer.qml:41
 #: src/contents/ui/Reverb.qml:42 src/contents/ui/Speex.qml:40
 msgid "Controls"
-msgstr ""
+msgstr "Vezérlők"
 
 #: src/contents/ui/Autogain.qml:59
 msgid "Reference"
-msgstr "Célzás"
+msgstr "Utalás"
 
 #: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:152
 #: src/contents/ui/LevelMeter.qml:149
 msgid "Momentary"
-msgstr ""
+msgstr "Pillanatnyi"
 
 #: src/contents/ui/Autogain.qml:63 src/contents/ui/Autogain.qml:168
 #: src/contents/ui/LevelMeter.qml:165
@@ -113,19 +109,19 @@ msgstr "Integrált"
 
 #: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MSI)"
-msgstr ""
+msgstr "Geometriai Átlag (MSI)"
 
 #: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MS)"
-msgstr ""
+msgstr "Geometriai Átlag (MS)"
 
 #: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (MI)"
-msgstr ""
+msgstr "Geometriai Átlag (MI)"
 
 #: src/contents/ui/Autogain.qml:63
 msgid "Geometric Mean (SI)"
-msgstr ""
+msgstr "Geometriai Átlag (SI)"
 
 #: src/contents/ui/Autogain.qml:77
 msgid "Target"
@@ -136,9 +132,8 @@ msgid "Silence"
 msgstr "Csend"
 
 #: src/contents/ui/Autogain.qml:117
-#, fuzzy
 msgid "Maximum History"
-msgstr "Teljes Előzmény"
+msgstr "Maximális Előzmény"
 
 #: src/contents/ui/Autogain.qml:142 src/contents/ui/Autogain.qml:232
 #: src/contents/ui/BassLoudness.qml:48 src/contents/ui/LevelMeter.qml:139
@@ -148,58 +143,55 @@ msgstr "Hangerő"
 
 #: src/contents/ui/Autogain.qml:200 src/contents/ui/LevelMeter.qml:197
 msgid "Relative"
-msgstr ""
+msgstr "Relatív"
 
 #: src/contents/ui/Autogain.qml:216 src/contents/ui/LevelMeter.qml:213
 msgid "Range"
-msgstr ""
+msgstr "Tartomány"
 
 #: src/contents/ui/Autogain.qml:248
-#, fuzzy
 msgid "Output Gain"
-msgstr "Kimenet"
+msgstr "Kimeneti Erősítés"
 
-#: src/contents/ui/Autogain.qml:273 src/contents/ui/BassEnhancer.qml:187
-#: src/contents/ui/BassLoudness.qml:102 src/contents/ui/Compressor.qml:797
+#: src/contents/ui/Autogain.qml:274 src/contents/ui/BassEnhancer.qml:187
+#: src/contents/ui/BassLoudness.qml:102 src/contents/ui/Compressor.qml:800
 #: src/contents/ui/Convolver.qml:404 src/contents/ui/Crossfeed.qml:132
 #: src/contents/ui/Crystalizer.qml:75 src/contents/ui/DeepFilterNet.qml:164
 #: src/contents/ui/Deesser.qml:308 src/contents/ui/Delay.qml:364
 #: src/contents/ui/EchoCanceller.qml:102 src/contents/ui/Equalizer.qml:292
 #: src/contents/ui/Exciter.qml:187 src/contents/ui/Expander.qml:758
-#: src/contents/ui/Filter.qml:193 src/contents/ui/Gate.qml:891
-#: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Limiter.qml:488
+#: src/contents/ui/Filter.qml:193 src/contents/ui/Gate.qml:893
+#: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Limiter.qml:498
 #: src/contents/ui/Loudness.qml:125 src/contents/ui/Maximizer.qml:100
-#: src/contents/ui/MultibandCompressor.qml:929
-#: src/contents/ui/MultibandGate.qml:906 src/contents/ui/Pitch.qml:207
+#: src/contents/ui/MultibandCompressor.qml:950
+#: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:207
 #: src/contents/ui/Reverb.qml:305 src/contents/ui/RNNoise.qml:269
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
 msgid "Using %1"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:289 src/contents/ui/DeepFilterNet.qml:180
-#: src/contents/ui/LevelMeter.qml:248
-#, fuzzy
+#: src/contents/ui/Autogain.qml:290 src/contents/ui/DeepFilterNet.qml:180
+#: src/contents/ui/LevelMeter.qml:248 src/contents/ui/Pitch.qml:223
 msgid "Reset History"
-msgstr "Előzmény"
+msgstr "Előzmények Visszaállítása"
 
-#: src/contents/ui/Autogain.qml:296
+#: src/contents/ui/Autogain.qml:297
 #, fuzzy
 msgid "Force Silence"
 msgstr "Csend"
 
-#: src/contents/ui/Autogain.qml:297
+#: src/contents/ui/Autogain.qml:298
 msgid "Force Silence When the Level is Below the Silence Threshold"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:308 src/contents/ui/Pitch.qml:243
+#: src/contents/ui/Autogain.qml:309 src/contents/ui/Pitch.qml:250
 #, fuzzy
 msgid "Reset Settings"
-msgstr "_Beállítások visszaállítása"
+msgstr "_Beállítások Visszaállítása"
 
 #: src/contents/ui/BassEnhancer.qml:38 src/contents/ui/Exciter.qml:38
-#, fuzzy
 msgid "Blend Harmonics"
-msgstr "Harmónika"
+msgstr "Harmonikusok Keverése"
 
 #: src/contents/ui/BassEnhancer.qml:47 src/contents/ui/Exciter.qml:47
 msgid "3rd"
@@ -211,72 +203,72 @@ msgstr "2."
 
 #: src/contents/ui/BassEnhancer.qml:96 src/contents/ui/Exciter.qml:96
 msgid "Amount"
-msgstr "Mennyiség"
+msgstr "Mérték"
 
 #: src/contents/ui/BassEnhancer.qml:111 src/contents/ui/BassEnhancer.qml:168
 #: src/contents/ui/Exciter.qml:111 src/contents/ui/Exciter.qml:168
 msgid "Harmonics"
-msgstr "Harmónika"
+msgstr "Harmonikusok"
 
 #: src/contents/ui/BassEnhancer.qml:125 src/contents/ui/Exciter.qml:125
 msgid "Scope"
-msgstr "Szkóp"
+msgstr "Hatókör"
 
 #: src/contents/ui/BassEnhancer.qml:140
+#, fuzzy
 msgid "Floor Active"
-msgstr ""
+msgstr "Padlóérték"
 
 #: src/contents/ui/BassEnhancer.qml:151
 msgid "Floor"
 msgstr "Padló"
 
-#: src/contents/ui/BassEnhancer.qml:203 src/contents/ui/Compressor.qml:813
+#: src/contents/ui/BassEnhancer.qml:203 src/contents/ui/Compressor.qml:816
 #: src/contents/ui/Deesser.qml:324 src/contents/ui/Delay.qml:400
 #: src/contents/ui/Equalizer.qml:308 src/contents/ui/Exciter.qml:203
 #: src/contents/ui/Expander.qml:774 src/contents/ui/Filter.qml:209
-#: src/contents/ui/Gate.qml:907 src/contents/ui/Limiter.qml:504
+#: src/contents/ui/Gate.qml:909 src/contents/ui/Limiter.qml:514
 #: src/contents/ui/Loudness.qml:141 src/contents/ui/Maximizer.qml:116
-#: src/contents/ui/MultibandCompressor.qml:945
-#: src/contents/ui/MultibandGate.qml:922 src/contents/ui/Reverb.qml:329
+#: src/contents/ui/MultibandCompressor.qml:966
+#: src/contents/ui/MultibandGate.qml:934 src/contents/ui/Reverb.qml:329
 #: src/contents/ui/StereoTools.qml:448
 msgid "Show Native Window"
-msgstr ""
+msgstr "Natív Ablak Megjelenítése"
 
-#: src/contents/ui/BassEnhancer.qml:216 src/contents/ui/Compressor.qml:826
+#: src/contents/ui/BassEnhancer.qml:216 src/contents/ui/Compressor.qml:829
 #: src/contents/ui/Deesser.qml:337 src/contents/ui/Exciter.qml:216
-#: src/contents/ui/Expander.qml:787 src/contents/ui/Gate.qml:920
+#: src/contents/ui/Expander.qml:787 src/contents/ui/Gate.qml:922
 msgid "Listen"
-msgstr "Hallgatás"
+msgstr "Meghallgat"
 
 #: src/contents/ui/BassEnhancer.qml:226 src/contents/ui/BassLoudness.qml:118
-#: src/contents/ui/Compressor.qml:846 src/contents/ui/Convolver.qml:430
+#: src/contents/ui/Compressor.qml:849 src/contents/ui/Convolver.qml:430
 #: src/contents/ui/Crossfeed.qml:156 src/contents/ui/Crystalizer.qml:91
 #: src/contents/ui/DeepFilterNet.qml:187 src/contents/ui/Deesser.qml:347
 #: src/contents/ui/Delay.qml:413 src/contents/ui/EchoCanceller.qml:118
 #: src/contents/ui/Equalizer.qml:373 src/contents/ui/Exciter.qml:226
 #: src/contents/ui/Expander.qml:807 src/contents/ui/Filter.qml:222
-#: src/contents/ui/Gate.qml:940 src/contents/ui/LevelMeter.qml:255
-#: src/contents/ui/Limiter.qml:537 src/contents/ui/Loudness.qml:164
-#: src/contents/ui/main.qml:321 src/contents/ui/Maximizer.qml:129
-#: src/contents/ui/MultibandCompressor.qml:968
-#: src/contents/ui/MultibandGate.qml:945 src/contents/ui/Reverb.qml:342
+#: src/contents/ui/Gate.qml:942 src/contents/ui/LevelMeter.qml:255
+#: src/contents/ui/Limiter.qml:547 src/contents/ui/Loudness.qml:164
+#: src/contents/ui/main.qml:411 src/contents/ui/Maximizer.qml:129
+#: src/contents/ui/MultibandCompressor.qml:989
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/Reverb.qml:342
 #: src/contents/ui/RNNoise.qml:292 src/contents/ui/Speex.qml:182
 #: src/contents/ui/StereoTools.qml:461
 msgid "Reset"
-msgstr "Visszaállítás"
+msgstr "Alaphelyzet"
 
-#: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:487
+#: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:488
 #: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:448
-#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:247
+#: src/contents/ui/Gate.qml:472 src/contents/ui/main.qml:329
 #: src/contents/ui/StereoTools.qml:303
-#, fuzzy
 msgid "Output"
 msgstr "Kimenet"
 
-#: src/contents/ui/BassLoudness.qml:78 src/contents/ui/Compressor.qml:266
+#: src/contents/ui/BassLoudness.qml:78 src/contents/ui/Compressor.qml:267
 #: src/contents/ui/Expander.qml:227 src/contents/ui/Gate.qml:251
-#: src/contents/ui/Limiter.qml:223 src/contents/ui/MultibandCompressor.qml:399
-#: src/contents/ui/MultibandGate.qml:376
+#: src/contents/ui/Limiter.qml:228 src/contents/ui/MultibandCompressor.qml:409
+#: src/contents/ui/MultibandGate.qml:377
 msgid "Link"
 msgstr "Hivatkozás"
 
@@ -287,11 +279,11 @@ msgstr ""
 #: src/contents/ui/BlocklistSheet.qml:29
 #, fuzzy
 msgid "Application Node Name"
-msgstr "Alkalmazás neve"
+msgstr "Alkalmazás Neve"
 
 #: src/contents/ui/BlocklistSheet.qml:45
 msgid "Add to Excluded Applications"
-msgstr ""
+msgstr "Hozzáadás a Kizárt Alkalmazásokhoz"
 
 #: src/contents/ui/BlocklistSheet.qml:97
 #: src/contents/ui/ConvolverImpulseSheet.qml:80
@@ -300,378 +292,379 @@ msgstr ""
 #: src/contents/ui/PresetsLocalPage.qml:137 src/contents/ui/RNNoise.qml:187
 #, fuzzy
 msgid "Empty"
-msgstr "Üres lista"
+msgstr "Üres Lista"
 
 #: src/contents/ui/BlocklistSheet.qml:135
 msgid "Delete this App"
 msgstr ""
 
 #: src/contents/ui/BlocklistSheet.qml:164
+#, fuzzy
 msgid "Show Excluded Applications in the Streams Section"
-msgstr ""
+msgstr "Kizárt Alkalmazások Megjelenítése"
 
 #: src/contents/ui/Compressor.qml:51 src/tags_plugin_name.cpp:28
 msgid "Compressor"
 msgstr "Kompreszzor"
 
-#: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:299
+#: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:300
 #: src/contents/ui/Deesser.qml:70 src/contents/ui/Delay.qml:55
 #: src/contents/ui/Delay.qml:213 src/contents/ui/EqualizerBandMenu.qml:45
 #: src/contents/ui/Equalizer.qml:112 src/contents/ui/Expander.qml:69
 #: src/contents/ui/Expander.qml:260 src/contents/ui/Gate.qml:284
-#: src/contents/ui/Limiter.qml:51 src/contents/ui/MultibandCompressor.qml:406
-#: src/contents/ui/MultibandGate.qml:383 src/contents/ui/StereoTools.qml:129
+#: src/contents/ui/Limiter.qml:52 src/contents/ui/MultibandCompressor.qml:416
+#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/StereoTools.qml:129
 msgid "Mode"
 msgstr "Mód"
 
 #: src/contents/ui/Compressor.qml:73 src/contents/ui/Expander.qml:73
 #: src/contents/ui/MultibandCompressor.qml:115
 msgid "Downward"
-msgstr ""
+msgstr "Lefelé"
 
 #: src/contents/ui/Compressor.qml:73 src/contents/ui/Expander.qml:73
 #: src/contents/ui/MultibandCompressor.qml:115
 msgid "Upward"
-msgstr ""
+msgstr "Felfelé"
 
 #: src/contents/ui/Compressor.qml:73
 #: src/contents/ui/MultibandCompressor.qml:115
 msgid "Boosting"
-msgstr ""
+msgstr "Felerősítés"
 
 #: src/contents/ui/Compressor.qml:83
 #: src/contents/ui/MultibandCompressor.qml:124
 msgid "Boost Threshold"
-msgstr ""
+msgstr "Erősítési Határérték"
 
 #: src/contents/ui/Compressor.qml:103
 #: src/contents/ui/MultibandCompressor.qml:143
-#, fuzzy
 msgid "Boost Amount"
-msgstr "Mennyiség"
+msgstr "Erősítési Mérték"
 
 #: src/contents/ui/Compressor.qml:122 src/contents/ui/Deesser.qml:100
-#: src/contents/ui/Expander.qml:82 src/contents/ui/MultibandCompressor.qml:333
+#: src/contents/ui/Expander.qml:82 src/contents/ui/MultibandCompressor.qml:340
 msgid "Ratio"
-msgstr ""
+msgstr "Arány"
 
 #: src/contents/ui/Compressor.qml:138 src/contents/ui/Expander.qml:98
-#: src/contents/ui/Limiter.qml:345 src/contents/ui/MultibandCompressor.qml:347
+#: src/contents/ui/Limiter.qml:352 src/contents/ui/MultibandCompressor.qml:355
 msgid "Knee"
-msgstr ""
+msgstr "Térd"
 
 #: src/contents/ui/Compressor.qml:158 src/contents/ui/Expander.qml:118
+#, fuzzy
 msgid "Threshold and Time"
-msgstr ""
+msgstr "Határérték"
 
 #: src/contents/ui/Compressor.qml:175 src/contents/ui/Expander.qml:135
-#: src/contents/ui/Gate.qml:72 src/contents/ui/Gate.qml:789
-#: src/contents/ui/Limiter.qml:136 src/contents/ui/Limiter.qml:305
-#: src/contents/ui/MultibandCompressor.qml:233
-#: src/contents/ui/MultibandGate.qml:172
+#: src/contents/ui/Gate.qml:72 src/contents/ui/Gate.qml:791
+#: src/contents/ui/Limiter.qml:138 src/contents/ui/Limiter.qml:310
+#: src/contents/ui/MultibandCompressor.qml:237
+#: src/contents/ui/MultibandGate.qml:173
 msgid "Attack"
-msgstr ""
+msgstr "Támadás"
 
 #: src/contents/ui/Compressor.qml:208 src/contents/ui/Expander.qml:168
-#: src/contents/ui/Gate.qml:89 src/contents/ui/Gate.qml:798
-#: src/contents/ui/Limiter.qml:156 src/contents/ui/Limiter.qml:325
-#: src/contents/ui/Maximizer.qml:49 src/contents/ui/MultibandCompressor.qml:281
-#: src/contents/ui/MultibandGate.qml:187 src/contents/ui/RNNoise.qml:121
+#: src/contents/ui/Gate.qml:89 src/contents/ui/Gate.qml:800
+#: src/contents/ui/Limiter.qml:159 src/contents/ui/Limiter.qml:331
+#: src/contents/ui/Maximizer.qml:49 src/contents/ui/MultibandCompressor.qml:285
+#: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:121
 msgid "Release"
-msgstr ""
+msgstr "Kiadás"
 
-#: src/contents/ui/Compressor.qml:244 src/contents/ui/Compressor.qml:343
-#: src/contents/ui/Compressor.qml:595 src/contents/ui/Expander.qml:205
+#: src/contents/ui/Compressor.qml:245 src/contents/ui/Compressor.qml:344
+#: src/contents/ui/Compressor.qml:596 src/contents/ui/Expander.qml:205
 #: src/contents/ui/Expander.qml:304 src/contents/ui/Expander.qml:556
 #: src/contents/ui/Gate.qml:229 src/contents/ui/Gate.qml:328
-#: src/contents/ui/Gate.qml:580 src/contents/ui/Limiter.qml:199
-#: src/contents/ui/Limiter.qml:396 src/contents/ui/MultibandCompressor.qml:827
-#: src/contents/ui/MultibandGate.qml:804
+#: src/contents/ui/Gate.qml:580 src/contents/ui/Limiter.qml:204
+#: src/contents/ui/Limiter.qml:404 src/contents/ui/MultibandCompressor.qml:650
+#: src/contents/ui/MultibandGate.qml:618
 msgid "Sidechain"
-msgstr ""
+msgstr "Oldallánc"
 
-#: src/contents/ui/Compressor.qml:262 src/contents/ui/EqualizerBandMenu.qml:33
+#: src/contents/ui/Compressor.qml:263 src/contents/ui/EqualizerBandMenu.qml:33
 #: src/contents/ui/Expander.qml:223 src/contents/ui/Filter.qml:49
-#: src/contents/ui/Gate.qml:247 src/contents/ui/Limiter.qml:219
-#: src/contents/ui/MultibandCompressor.qml:395
-#: src/contents/ui/MultibandGate.qml:372
+#: src/contents/ui/Gate.qml:247 src/contents/ui/Limiter.qml:224
+#: src/contents/ui/MultibandCompressor.qml:405
+#: src/contents/ui/MultibandGate.qml:373
 msgid "Type"
-msgstr ""
+msgstr "Típus"
 
-#: src/contents/ui/Compressor.qml:266
+#: src/contents/ui/Compressor.qml:267
 msgid "Feed-forward"
-msgstr ""
+msgstr "Előre-Csatolás"
 
-#: src/contents/ui/Compressor.qml:266
+#: src/contents/ui/Compressor.qml:267
 msgid "Feed-back"
-msgstr ""
+msgstr "Vissza-Csatolás"
 
-#: src/contents/ui/Compressor.qml:266 src/contents/ui/Expander.qml:227
-#: src/contents/ui/Gate.qml:251 src/contents/ui/Limiter.qml:223
-#: src/contents/ui/MultibandCompressor.qml:399
-#: src/contents/ui/MultibandGate.qml:376
+#: src/contents/ui/Compressor.qml:267 src/contents/ui/Expander.qml:227
+#: src/contents/ui/Gate.qml:251 src/contents/ui/Limiter.qml:228
+#: src/contents/ui/MultibandCompressor.qml:409
+#: src/contents/ui/MultibandGate.qml:377
 msgid "External"
-msgstr ""
+msgstr "Külső"
 
-#: src/contents/ui/Compressor.qml:276 src/contents/ui/Expander.qml:237
-#: src/contents/ui/Gate.qml:261 src/contents/ui/Limiter.qml:233
-#: src/contents/ui/PageStreamsEffects.qml:485
-#, fuzzy
+#: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
+#: src/contents/ui/Gate.qml:261 src/contents/ui/Limiter.qml:238
+#: src/contents/ui/PageStreamsEffects.qml:451
 msgid "Input Device"
-msgstr "Eszköz"
+msgstr "Bemeneti Eszköz"
 
-#: src/contents/ui/Compressor.qml:303 src/contents/ui/Deesser.qml:61
+#: src/contents/ui/Compressor.qml:304 src/contents/ui/Deesser.qml:61
 #: src/contents/ui/Expander.qml:264 src/contents/ui/Gate.qml:288
-#: src/contents/ui/MultibandCompressor.qml:410
-#: src/contents/ui/MultibandGate.qml:387
+#: src/contents/ui/MultibandCompressor.qml:420
+#: src/contents/ui/MultibandGate.qml:388
 msgid "Peak"
-msgstr ""
+msgstr "Csúcs"
 
-#: src/contents/ui/Compressor.qml:303 src/contents/ui/Deesser.qml:61
+#: src/contents/ui/Compressor.qml:304 src/contents/ui/Deesser.qml:61
 #: src/contents/ui/Expander.qml:264 src/contents/ui/Gate.qml:288
-#: src/contents/ui/MultibandCompressor.qml:410
-#: src/contents/ui/MultibandGate.qml:387
+#: src/contents/ui/MultibandCompressor.qml:420
+#: src/contents/ui/MultibandGate.qml:388
 msgid "RMS"
-msgstr ""
+msgstr "RMS"
 
-#: src/contents/ui/Compressor.qml:303 src/contents/ui/Compressor.qml:430
+#: src/contents/ui/Compressor.qml:304 src/contents/ui/Compressor.qml:431
 #: src/contents/ui/Expander.qml:264 src/contents/ui/Expander.qml:391
 #: src/contents/ui/Gate.qml:288 src/contents/ui/Gate.qml:415
 msgid "Low-Pass"
-msgstr ""
+msgstr "Alul-Áteresztő"
 
-#: src/contents/ui/Compressor.qml:303 src/contents/ui/Expander.qml:264
-#: src/contents/ui/Gate.qml:288 src/contents/ui/MultibandCompressor.qml:410
-#: src/contents/ui/MultibandGate.qml:387
+#: src/contents/ui/Compressor.qml:304 src/contents/ui/Expander.qml:264
+#: src/contents/ui/Gate.qml:288 src/contents/ui/MultibandCompressor.qml:420
+#: src/contents/ui/MultibandGate.qml:388
 msgid "SMA"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:312 src/contents/ui/Compressor.qml:326
+#: src/contents/ui/Compressor.qml:313 src/contents/ui/Compressor.qml:327
 #: src/contents/ui/Expander.qml:273 src/contents/ui/Expander.qml:287
 #: src/contents/ui/Gate.qml:297 src/contents/ui/Gate.qml:311
-#: src/contents/ui/MultibandCompressor.qml:417
-#: src/contents/ui/MultibandCompressor.qml:429
-#: src/contents/ui/MultibandGate.qml:394 src/contents/ui/MultibandGate.qml:406
+#: src/contents/ui/MultibandCompressor.qml:427
+#: src/contents/ui/MultibandCompressor.qml:439
+#: src/contents/ui/MultibandGate.qml:395 src/contents/ui/MultibandGate.qml:407
 msgid "Source"
-msgstr ""
+msgstr "Forrás"
 
-#: src/contents/ui/Compressor.qml:316 src/contents/ui/Expander.qml:277
-#: src/contents/ui/Gate.qml:301 src/contents/ui/MultibandCompressor.qml:421
-#: src/contents/ui/MultibandGate.qml:398
+#: src/contents/ui/Compressor.qml:317 src/contents/ui/Expander.qml:277
+#: src/contents/ui/Gate.qml:301 src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/MultibandGate.qml:399
 msgid "Middle"
-msgstr ""
+msgstr "Közép"
 
-#: src/contents/ui/Compressor.qml:316 src/contents/ui/Expander.qml:277
-#: src/contents/ui/Gate.qml:301 src/contents/ui/MultibandCompressor.qml:421
-#: src/contents/ui/MultibandGate.qml:398
+#: src/contents/ui/Compressor.qml:317 src/contents/ui/Expander.qml:277
+#: src/contents/ui/Gate.qml:301 src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/MultibandGate.qml:399
 msgid "Side"
-msgstr ""
+msgstr "Oldal"
 
-#: src/contents/ui/Compressor.qml:316 src/contents/ui/Convolver.qml:244
+#: src/contents/ui/Compressor.qml:317 src/contents/ui/Convolver.qml:244
 #: src/contents/ui/Delay.qml:41 src/contents/ui/Equalizer.qml:204
 #: src/contents/ui/Expander.qml:277 src/contents/ui/Gate.qml:301
 #: src/contents/ui/LevelMeter.qml:58 src/contents/ui/LevelMeter.qml:103
-#: src/contents/ui/MultibandCompressor.qml:421
-#: src/contents/ui/MultibandGate.qml:398 src/contents/ui/PipeWirePage.qml:296
+#: src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/MultibandGate.qml:399 src/contents/ui/PipeWirePage.qml:296
 #: src/contents/ui/StereoTools.qml:214
 msgid "Left"
-msgstr ""
+msgstr "Bal"
 
-#: src/contents/ui/Compressor.qml:316 src/contents/ui/Convolver.qml:262
+#: src/contents/ui/Compressor.qml:317 src/contents/ui/Convolver.qml:262
 #: src/contents/ui/Delay.qml:199 src/contents/ui/Equalizer.qml:204
 #: src/contents/ui/Expander.qml:277 src/contents/ui/Gate.qml:301
 #: src/contents/ui/LevelMeter.qml:74 src/contents/ui/LevelMeter.qml:119
-#: src/contents/ui/MultibandCompressor.qml:421
-#: src/contents/ui/MultibandGate.qml:398 src/contents/ui/PipeWirePage.qml:307
+#: src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/MultibandGate.qml:399 src/contents/ui/PipeWirePage.qml:307
 #: src/contents/ui/StereoTools.qml:256
 msgid "Right"
-msgstr ""
+msgstr "Jobb"
 
-#: src/contents/ui/Compressor.qml:316 src/contents/ui/Compressor.qml:330
+#: src/contents/ui/Compressor.qml:317 src/contents/ui/Compressor.qml:331
 #: src/contents/ui/Expander.qml:277 src/contents/ui/Expander.qml:291
 #: src/contents/ui/Gate.qml:301 src/contents/ui/Gate.qml:315
-#: src/contents/ui/MultibandCompressor.qml:421
-#: src/contents/ui/MultibandCompressor.qml:433
-#: src/contents/ui/MultibandGate.qml:398 src/contents/ui/MultibandGate.qml:410
+#: src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:399 src/contents/ui/MultibandGate.qml:411
 msgid "Min"
-msgstr ""
+msgstr "Min"
 
-#: src/contents/ui/Compressor.qml:316 src/contents/ui/Compressor.qml:330
+#: src/contents/ui/Compressor.qml:317 src/contents/ui/Compressor.qml:331
 #: src/contents/ui/Expander.qml:277 src/contents/ui/Expander.qml:291
 #: src/contents/ui/Gate.qml:301 src/contents/ui/Gate.qml:315
-#: src/contents/ui/MultibandCompressor.qml:421
-#: src/contents/ui/MultibandCompressor.qml:433
-#: src/contents/ui/MultibandGate.qml:398 src/contents/ui/MultibandGate.qml:410
-#, fuzzy
+#: src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:399 src/contents/ui/MultibandGate.qml:411
 msgid "Max"
-msgstr "Teljes Előzmény"
+msgstr "Max"
 
-#: src/contents/ui/Compressor.qml:330 src/contents/ui/Expander.qml:291
-#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:433
-#: src/contents/ui/MultibandGate.qml:410
+#: src/contents/ui/Compressor.qml:331 src/contents/ui/Expander.qml:291
+#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:411
 msgid "Left/Right"
-msgstr ""
+msgstr "Bal/Jobb"
 
-#: src/contents/ui/Compressor.qml:330 src/contents/ui/Expander.qml:291
-#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:433
-#: src/contents/ui/MultibandGate.qml:410
+#: src/contents/ui/Compressor.qml:331 src/contents/ui/Expander.qml:291
+#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:411
 msgid "Right/Left"
-msgstr ""
+msgstr "Jobb/Bal"
 
-#: src/contents/ui/Compressor.qml:330 src/contents/ui/Expander.qml:291
-#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:433
-#: src/contents/ui/MultibandGate.qml:410
+#: src/contents/ui/Compressor.qml:331 src/contents/ui/Expander.qml:291
+#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:411
 msgid "Mid/Side"
-msgstr ""
+msgstr "Közép/Oldal"
 
-#: src/contents/ui/Compressor.qml:330 src/contents/ui/Expander.qml:291
-#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:433
-#: src/contents/ui/MultibandGate.qml:410
+#: src/contents/ui/Compressor.qml:331 src/contents/ui/Expander.qml:291
+#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/MultibandGate.qml:411
 msgid "Side/Mid"
-msgstr ""
+msgstr "Oldal/Közép"
 
-#: src/contents/ui/Compressor.qml:360 src/contents/ui/Expander.qml:321
-#: src/contents/ui/Gate.qml:345 src/contents/ui/Limiter.qml:256
-#: src/contents/ui/MultibandCompressor.qml:441
-#: src/contents/ui/MultibandGate.qml:418
+#: src/contents/ui/Compressor.qml:361 src/contents/ui/Expander.qml:321
+#: src/contents/ui/Gate.qml:345 src/contents/ui/Limiter.qml:261
+#: src/contents/ui/MultibandCompressor.qml:451
+#: src/contents/ui/MultibandGate.qml:419
 msgid "Preamp"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:378 src/contents/ui/Expander.qml:339
-#: src/contents/ui/Gate.qml:363 src/contents/ui/MultibandCompressor.qml:456
-#: src/contents/ui/MultibandGate.qml:433
+#: src/contents/ui/Compressor.qml:379 src/contents/ui/Expander.qml:339
+#: src/contents/ui/Gate.qml:363 src/contents/ui/MultibandCompressor.qml:467
+#: src/contents/ui/MultibandGate.qml:435
 msgid "Reactivity"
-msgstr ""
+msgstr "Reaktivitás"
 
-#: src/contents/ui/Compressor.qml:396 src/contents/ui/Expander.qml:357
-#: src/contents/ui/Gate.qml:381 src/contents/ui/Limiter.qml:274
-#: src/contents/ui/MultibandCompressor.qml:471
-#: src/contents/ui/MultibandGate.qml:448
+#: src/contents/ui/Compressor.qml:397 src/contents/ui/Expander.qml:357
+#: src/contents/ui/Gate.qml:381 src/contents/ui/Limiter.qml:279
+#: src/contents/ui/MultibandCompressor.qml:482
+#: src/contents/ui/MultibandGate.qml:450
 msgid "Lookahead"
-msgstr ""
+msgstr "Előrenéz"
 
-#: src/contents/ui/Compressor.qml:415 src/contents/ui/Expander.qml:376
+#: src/contents/ui/Compressor.qml:416 src/contents/ui/Expander.qml:376
 #: src/contents/ui/Gate.qml:400
 msgid "High-Pass"
-msgstr ""
+msgstr "Felül-Áteresztő"
 
-#: src/contents/ui/Compressor.qml:419 src/contents/ui/Compressor.qml:434
+#: src/contents/ui/Compressor.qml:420 src/contents/ui/Compressor.qml:435
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:380
 #: src/contents/ui/Expander.qml:395 src/contents/ui/Gate.qml:404
 #: src/contents/ui/Gate.qml:419
 msgid "Off"
-msgstr ""
+msgstr "Ki"
 
-#: src/contents/ui/Compressor.qml:419 src/contents/ui/Compressor.qml:434
+#: src/contents/ui/Compressor.qml:420 src/contents/ui/Compressor.qml:435
 #: src/contents/ui/Expander.qml:380 src/contents/ui/Expander.qml:395
 #: src/contents/ui/Gate.qml:404 src/contents/ui/Gate.qml:419
 msgid "12 dB/oct"
-msgstr ""
+msgstr "12 dB/oct"
 
-#: src/contents/ui/Compressor.qml:419 src/contents/ui/Compressor.qml:434
+#: src/contents/ui/Compressor.qml:420 src/contents/ui/Compressor.qml:435
 #: src/contents/ui/Expander.qml:380 src/contents/ui/Expander.qml:395
 #: src/contents/ui/Gate.qml:404 src/contents/ui/Gate.qml:419
 msgid "24 dB/oct"
-msgstr ""
+msgstr "24 dB/oct"
 
-#: src/contents/ui/Compressor.qml:419 src/contents/ui/Compressor.qml:434
+#: src/contents/ui/Compressor.qml:420 src/contents/ui/Compressor.qml:435
 #: src/contents/ui/Expander.qml:380 src/contents/ui/Expander.qml:395
 #: src/contents/ui/Gate.qml:404 src/contents/ui/Gate.qml:419
 msgid "36 dB/oct"
-msgstr ""
+msgstr "36 dB/oct"
 
-#: src/contents/ui/Compressor.qml:495 src/contents/ui/Delay.qml:160
+#: src/contents/ui/Compressor.qml:496 src/contents/ui/Delay.qml:160
 #: src/contents/ui/Delay.qml:318 src/contents/ui/Expander.qml:456
-#: src/contents/ui/Gate.qml:480 src/contents/ui/MultibandCompressor.qml:783
-#: src/contents/ui/MultibandGate.qml:760 src/contents/ui/Reverb.qml:176
+#: src/contents/ui/Gate.qml:480 src/contents/ui/MultibandCompressor.qml:606
+#: src/contents/ui/MultibandGate.qml:574 src/contents/ui/Reverb.qml:176
 #: src/contents/ui/StereoTools.qml:386
 msgid "Dry"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:518 src/contents/ui/Delay.qml:178
+#: src/contents/ui/Compressor.qml:519 src/contents/ui/Delay.qml:178
 #: src/contents/ui/Delay.qml:336 src/contents/ui/Expander.qml:479
-#: src/contents/ui/Gate.qml:503 src/contents/ui/MultibandCompressor.qml:801
-#: src/contents/ui/MultibandGate.qml:778 src/contents/ui/Reverb.qml:194
+#: src/contents/ui/Gate.qml:503 src/contents/ui/MultibandCompressor.qml:624
+#: src/contents/ui/MultibandGate.qml:592 src/contents/ui/Reverb.qml:194
 #: src/contents/ui/StereoTools.qml:404
 msgid "Wet"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:542 src/contents/ui/Deesser.qml:116
+#: src/contents/ui/Compressor.qml:543 src/contents/ui/Deesser.qml:116
 #: src/contents/ui/Expander.qml:503 src/contents/ui/Gate.qml:527
-#: src/contents/ui/MultibandCompressor.qml:363
-#: src/contents/ui/MultibandGate.qml:236
+#: src/contents/ui/MultibandCompressor.qml:372
+#: src/contents/ui/MultibandGate.qml:237
 msgid "Makeup"
-msgstr ""
+msgstr "Smink"
 
-#: src/contents/ui/Compressor.qml:586 src/contents/ui/Expander.qml:547
+#: src/contents/ui/Compressor.qml:587 src/contents/ui/Expander.qml:547
 #: src/contents/ui/Gate.qml:107 src/contents/ui/Gate.qml:571
-#: src/contents/ui/Maximizer.qml:80 src/contents/ui/MultibandCompressor.qml:562
-#: src/contents/ui/MultibandGate.qml:220 src/contents/ui/MultibandGate.qml:539
+#: src/contents/ui/Maximizer.qml:80 src/contents/ui/MultibandCompressor.qml:727
+#: src/contents/ui/MultibandGate.qml:221 src/contents/ui/MultibandGate.qml:695
 msgid "Reduction"
-msgstr ""
+msgstr "Csökkentés"
 
-#: src/contents/ui/Compressor.qml:654 src/contents/ui/Compressor.qml:667
-#: src/contents/ui/Compressor.qml:763 src/contents/ui/Compressor.qml:776
+#: src/contents/ui/Compressor.qml:657 src/contents/ui/Compressor.qml:670
+#: src/contents/ui/Compressor.qml:766 src/contents/ui/Compressor.qml:779
 #: src/contents/ui/Expander.qml:615 src/contents/ui/Expander.qml:628
 #: src/contents/ui/Expander.qml:724 src/contents/ui/Expander.qml:737
-#: src/contents/ui/Gate.qml:639 src/contents/ui/Gate.qml:652
-#: src/contents/ui/Gate.qml:748 src/contents/ui/Gate.qml:761
-#: src/contents/ui/Limiter.qml:455 src/contents/ui/Limiter.qml:468
-#: src/contents/ui/MultibandCompressor.qml:594
-#: src/contents/ui/MultibandCompressor.qml:653
-#: src/contents/ui/MultibandCompressor.qml:712
-#: src/contents/ui/MultibandGate.qml:571 src/contents/ui/MultibandGate.qml:630
-#: src/contents/ui/MultibandGate.qml:689
+#: src/contents/ui/Gate.qml:641 src/contents/ui/Gate.qml:654
+#: src/contents/ui/Gate.qml:750 src/contents/ui/Gate.qml:763
+#: src/contents/ui/Limiter.qml:465 src/contents/ui/Limiter.qml:478
+#: src/contents/ui/MultibandCompressor.qml:761
+#: src/contents/ui/MultibandCompressor.qml:820
+#: src/contents/ui/MultibandCompressor.qml:879
+#: src/contents/ui/MultibandGate.qml:729 src/contents/ui/MultibandGate.qml:788
+#: src/contents/ui/MultibandGate.qml:847
 msgid "L"
-msgstr ""
+msgstr "L"
 
-#: src/contents/ui/Compressor.qml:660 src/contents/ui/Compressor.qml:673
-#: src/contents/ui/Compressor.qml:769 src/contents/ui/Compressor.qml:782
+#: src/contents/ui/Compressor.qml:663 src/contents/ui/Compressor.qml:676
+#: src/contents/ui/Compressor.qml:772 src/contents/ui/Compressor.qml:785
 #: src/contents/ui/Expander.qml:621 src/contents/ui/Expander.qml:634
 #: src/contents/ui/Expander.qml:730 src/contents/ui/Expander.qml:743
-#: src/contents/ui/Gate.qml:645 src/contents/ui/Gate.qml:658
-#: src/contents/ui/Gate.qml:754 src/contents/ui/Gate.qml:767
-#: src/contents/ui/Limiter.qml:461 src/contents/ui/Limiter.qml:474
-#: src/contents/ui/MultibandCompressor.qml:600
-#: src/contents/ui/MultibandCompressor.qml:659
-#: src/contents/ui/MultibandCompressor.qml:718
-#: src/contents/ui/MultibandGate.qml:577 src/contents/ui/MultibandGate.qml:636
-#: src/contents/ui/MultibandGate.qml:695
+#: src/contents/ui/Gate.qml:647 src/contents/ui/Gate.qml:660
+#: src/contents/ui/Gate.qml:756 src/contents/ui/Gate.qml:769
+#: src/contents/ui/Limiter.qml:471 src/contents/ui/Limiter.qml:484
+#: src/contents/ui/MultibandCompressor.qml:767
+#: src/contents/ui/MultibandCompressor.qml:826
+#: src/contents/ui/MultibandCompressor.qml:885
+#: src/contents/ui/MultibandGate.qml:735 src/contents/ui/MultibandGate.qml:794
+#: src/contents/ui/MultibandGate.qml:853
 msgid "R"
-msgstr ""
+msgstr "R"
 
-#: src/contents/ui/Compressor.qml:695 src/contents/ui/Expander.qml:656
-#: src/contents/ui/Gate.qml:680 src/contents/ui/MultibandCompressor.qml:680
-#: src/contents/ui/MultibandGate.qml:265 src/contents/ui/MultibandGate.qml:657
+#: src/contents/ui/Compressor.qml:698 src/contents/ui/Expander.qml:656
+#: src/contents/ui/Gate.qml:682 src/contents/ui/MultibandCompressor.qml:847
+#: src/contents/ui/MultibandGate.qml:266 src/contents/ui/MultibandGate.qml:815
 msgid "Curve"
-msgstr ""
+msgstr "Görbe"
 
-#: src/contents/ui/Compressor.qml:704 src/contents/ui/Expander.qml:665
-#: src/contents/ui/Gate.qml:689 src/contents/ui/MultibandCompressor.qml:621
-#: src/contents/ui/MultibandGate.qml:598
+#: src/contents/ui/Compressor.qml:707 src/contents/ui/Expander.qml:665
+#: src/contents/ui/Gate.qml:691 src/contents/ui/MultibandCompressor.qml:788
+#: src/contents/ui/MultibandGate.qml:756
 msgid "Envelope"
-msgstr ""
+msgstr "Burkológörbe"
 
-#: src/contents/ui/Compressor.qml:836 src/contents/ui/Expander.qml:797
-#: src/contents/ui/Gate.qml:930 src/contents/ui/MultibandCompressor.qml:958
-#: src/contents/ui/MultibandGate.qml:935
+#: src/contents/ui/Compressor.qml:839 src/contents/ui/Expander.qml:797
+#: src/contents/ui/Gate.qml:932 src/contents/ui/MultibandCompressor.qml:979
+#: src/contents/ui/MultibandGate.qml:947
 msgid "Stereo Split"
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:47
+#, fuzzy
 msgid "Impluse File Imported."
-msgstr ""
+msgstr "Impulzus Fájlok Listája"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:49
+#, fuzzy
 msgid "Failed to Import the Impulse File."
-msgstr ""
+msgstr "Impulzus Fájl Keresése"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:60
 #: src/contents/ui/MenuAddPlugins.qml:140
 #: src/contents/ui/PresetsCommunityPage.qml:48
 #: src/contents/ui/PresetsLocalPage.qml:113
 msgid "Search"
-msgstr ""
+msgstr "Keresés"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:93
 msgid "Loaded Impulse: %1"
@@ -682,8 +675,9 @@ msgid "Delete this Impulse"
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:110
+#, fuzzy
 msgid "Removed Impulse: %1"
-msgstr ""
+msgstr "Impulzus Importálása"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:112
 msgid "Failed to Remove the Impulse: %1"
@@ -691,76 +685,69 @@ msgstr ""
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:148
 msgid "Import Impulse"
-msgstr ""
+msgstr "Impulzus Importálása"
 
 #: src/contents/ui/Convolver.qml:100
 msgid "First"
 msgstr ""
 
 #: src/contents/ui/Convolver.qml:112
+#, fuzzy
 msgid "Second"
-msgstr ""
+msgstr "Második Kernel"
 
 #: src/contents/ui/Convolver.qml:144
 msgid "Combine"
-msgstr ""
+msgstr "Egyesít"
 
 #: src/contents/ui/Convolver.qml:183 src/plugin_base.cpp:239
 msgid "Spectrum"
-msgstr ""
+msgstr "Spectrum"
 
 #: src/contents/ui/Convolver.qml:285
+#, fuzzy
 msgid "Convolver Impulse Is Not Set"
-msgstr ""
+msgstr "Impulzus Válaszok Kombinálása"
 
 #: src/contents/ui/Convolver.qml:322
 msgid "Rate"
-msgstr ""
+msgstr "Arány"
 
 #: src/contents/ui/Convolver.qml:327 src/contents/ui/Delay.qml:59
 #: src/contents/ui/Delay.qml:70 src/contents/ui/Delay.qml:217
 #: src/contents/ui/Delay.qml:228
 msgid "Samples"
-msgstr ""
+msgstr "Minták"
 
 #: src/contents/ui/Convolver.qml:332
 msgid "Duration"
-msgstr ""
+msgstr "Időtartam"
 
 #: src/contents/ui/Convolver.qml:369
 msgid "Stereo Width"
-msgstr ""
+msgstr "Sztereó Szélesség"
 
 #: src/contents/ui/Convolver.qml:420 src/tags_plugin_name.cpp:25
 msgid "Autogain"
-msgstr ""
+msgstr "Autóerősítés"
 
 #: src/contents/ui/Crossfeed.qml:64
 msgid "Cutoff"
-msgstr ""
+msgstr "Levág"
 
 #: src/contents/ui/Crossfeed.qml:79
 msgid "Feed"
-msgstr ""
+msgstr "Csatorna"
 
 #: src/contents/ui/Crossfeed.qml:98
-#, fuzzy
 msgid "Crossfeed Presets"
-msgstr "Profilok"
+msgstr ""
 
 #: src/contents/ui/Crossfeed.qml:102
 msgid "Default"
-msgstr ""
+msgstr "Alapértelmezett"
 
-#: src/contents/ui/Crossfeed.qml:109
-msgid "Cmoy"
-msgstr ""
-
-#: src/contents/ui/Crossfeed.qml:116
-msgid "Jmeier"
-msgstr ""
-
-#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:217
+#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:299
 #: src/contents/ui/Reverb.qml:321
 msgid "Presets"
 msgstr "Profilok"
@@ -771,27 +758,26 @@ msgstr "Profilok"
 #: src/contents/ui/MultibandGate.qml:69 src/contents/ui/StereoTools.qml:226
 #: src/contents/ui/StereoTools.qml:269
 msgid "Mute"
-msgstr ""
+msgstr "Némít"
 
 #: src/contents/ui/CrystalizerBand.qml:42
 #: src/contents/ui/MultibandCompressor.qml:87
 #: src/contents/ui/MultibandGate.qml:87
-#, fuzzy
 msgid "Bypass"
-msgstr "Globális letiltás"
+msgstr "Kiiktat"
 
 #: src/contents/ui/DeepFilterNet.qml:33
 msgid "Attenuation Limit"
-msgstr ""
+msgstr "Csillapítási Határérték"
 
 #: src/contents/ui/DeepFilterNet.qml:80
 msgid "Minimum Processing Threshold"
-msgstr ""
+msgstr "Minimális Feldolgozási Küszöb"
 
 #: src/contents/ui/DeepFilterNet.qml:95 src/contents/ui/DeepFilterNet.qml:110
 #: src/contents/ui/DeepFilterNet.qml:125
 msgid "Maximum ERB Processing threshold"
-msgstr ""
+msgstr "Maximális ERB Feldolgozási Küszöb"
 
 #: src/contents/ui/DeepFilterNet.qml:131
 msgid "frames"
@@ -799,7 +785,7 @@ msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:140
 msgid "Post Filter Beta"
-msgstr ""
+msgstr "Utólagos Szűrő Béta"
 
 #: src/contents/ui/Deesser.qml:44 src/tags_plugin_name.cpp:33
 msgid "Deesser"
@@ -807,63 +793,63 @@ msgstr ""
 
 #: src/contents/ui/Deesser.qml:57 src/contents/ui/Deesser.qml:266
 msgid "Detection"
-msgstr ""
+msgstr "Észlelés"
 
 #: src/contents/ui/Deesser.qml:74
 msgid "Wide"
-msgstr ""
+msgstr "Széles"
 
 #: src/contents/ui/Deesser.qml:74
 msgid "Split"
-msgstr ""
+msgstr "Felosztás"
 
 #: src/contents/ui/Deesser.qml:83 src/contents/ui/Gate.qml:124
-#: src/contents/ui/Gate.qml:190 src/contents/ui/Gate.qml:863
-#: src/contents/ui/Gate.qml:876 src/contents/ui/Limiter.qml:116
-#: src/contents/ui/Maximizer.qml:64 src/contents/ui/MultibandCompressor.qml:252
-#: src/contents/ui/MultibandCompressor.qml:300
-#: src/contents/ui/MultibandGate.qml:269 src/contents/ui/MultibandGate.qml:323
+#: src/contents/ui/Gate.qml:190 src/contents/ui/Gate.qml:865
+#: src/contents/ui/Gate.qml:878 src/contents/ui/Limiter.qml:117
+#: src/contents/ui/Maximizer.qml:64 src/contents/ui/MultibandCompressor.qml:256
+#: src/contents/ui/MultibandCompressor.qml:304
+#: src/contents/ui/MultibandGate.qml:270 src/contents/ui/MultibandGate.qml:324
 #: src/contents/ui/RNNoise.qml:91
 msgid "Threshold"
-msgstr ""
+msgstr "Határérték"
 
 #: src/contents/ui/Deesser.qml:133
 msgid "Laxity"
-msgstr ""
+msgstr "Lazaság"
 
 #: src/contents/ui/Deesser.qml:152 src/contents/ui/Filter.qml:103
 #: src/contents/ui/Reverb.qml:111 src/tags_plugin_name.cpp:39
 msgid "Filter"
-msgstr ""
+msgstr "Szűrő"
 
 #: src/contents/ui/Deesser.qml:165
 msgid "F1 Split"
-msgstr ""
+msgstr "F1 Felosztás"
 
 #: src/contents/ui/Deesser.qml:182
 msgid "F2 Peak"
-msgstr ""
+msgstr "F2 Csúcs"
 
 #: src/contents/ui/Deesser.qml:199
 msgid "F1 Gain"
-msgstr ""
+msgstr "F1 Erősítés"
 
 #: src/contents/ui/Deesser.qml:216
-#, fuzzy
 msgid "F2 Level"
-msgstr "Kimenet"
+msgstr "F2 Szint"
 
 #: src/contents/ui/Deesser.qml:234
 msgid "F2 Peak Q"
-msgstr ""
+msgstr "F2 Csúcs Q "
 
 #: src/contents/ui/Deesser.qml:256
 msgid "Level"
 msgstr ""
 
 #: src/contents/ui/Deesser.qml:282
+#, fuzzy
 msgid "Gain Reduction"
-msgstr ""
+msgstr "Csökkentés"
 
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Delay.qml:217
 msgid "Distance"
@@ -871,10 +857,10 @@ msgstr ""
 
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Delay.qml:88
 #: src/contents/ui/Delay.qml:217 src/contents/ui/Delay.qml:246
-#: src/contents/ui/MultibandCompressor.qml:237
-#: src/contents/ui/MultibandCompressor.qml:285
+#: src/contents/ui/MultibandCompressor.qml:241
+#: src/contents/ui/MultibandCompressor.qml:289
 msgid "Time"
-msgstr ""
+msgstr "Idő"
 
 #: src/contents/ui/Delay.qml:106 src/contents/ui/Delay.qml:264
 msgid "Meters"
@@ -889,12 +875,14 @@ msgid "Temperature"
 msgstr ""
 
 #: src/contents/ui/Delay.qml:380
+#, fuzzy
 msgid "Invert Left"
-msgstr ""
+msgstr "Invertált Fázis"
 
 #: src/contents/ui/Delay.qml:390
+#, fuzzy
 msgid "Invert Right"
-msgstr ""
+msgstr "Invertált Fázis"
 
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
@@ -913,25 +901,25 @@ msgstr ""
 
 #: src/contents/ui/DelegateClientsList.qml:76
 msgid "Access"
-msgstr ""
+msgstr "Hozzáférés"
 
 #: src/contents/ui/DelegateModulesList.qml:62
-#: src/contents/ui/PresetsAutoloadingPage.qml:155
+#: src/contents/ui/PresetsAutoloadingPage.qml:156
 msgid "Description"
+msgstr "Leírás"
+
+#: src/contents/ui/DelegatePluginsList.qml:63
+msgid "Enable this Effect"
 msgstr ""
 
-#: src/contents/ui/DelegatePluginsList.qml:57
-#, fuzzy
-msgid "Enable this Effect"
-msgstr "_Easy Effects Névjegye"
-
-#: src/contents/ui/DelegatePluginsList.qml:71
+#: src/contents/ui/DelegatePluginsList.qml:77
 msgid "Remove this effect"
 msgstr ""
 
 #: src/contents/ui/DelegateStreamsList.qml:77
+#, fuzzy
 msgid " channels"
-msgstr ""
+msgstr "Osztott Csatornák"
 
 #: src/contents/ui/DelegateStreamsList.qml:85 src/contents/ui/Gate.qml:179
 #: src/contents/ui/RNNoise.qml:80
@@ -940,160 +928,117 @@ msgstr "Engedélyezés"
 
 #: src/contents/ui/DelegateStreamsList.qml:100
 msgid "Exclude"
-msgstr ""
+msgstr "Kizár"
 
 #: src/contents/ui/EchoCanceller.qml:48
 msgid "Filter Length"
-msgstr ""
+msgstr "Szűrő Hossz"
 
 #: src/contents/ui/EchoCanceller.qml:63
 msgid "Residual Echo Suppression"
-msgstr ""
+msgstr "Visszamaradó Visszhang Elnyomása"
 
 #: src/contents/ui/EchoCanceller.qml:78
+#, fuzzy
 msgid "Near End Suppression"
-msgstr ""
+msgstr "Vég Közel Visszhang Elnyomása"
 
-#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:266
+#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:348
 #: src/contents/ui/StereoTools.qml:42
 msgid "Input"
-msgstr ""
+msgstr "Bemenet"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
+#, fuzzy
 msgid "Band "
-msgstr ""
+msgstr "Sáv"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:53
 msgid "Bell"
-msgstr ""
+msgstr "Harang"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
 #, fuzzy
 msgid "Hi-pass"
-msgstr "Globális letiltás"
+msgstr "Kiiktat"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
 msgid "Hi-shelf"
-msgstr ""
+msgstr "Magas-Perem"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
 #, fuzzy
 msgid "Lo-pass"
-msgstr "Globális letiltás"
+msgstr "Kiiktat"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
 msgid "Lo-shelf"
-msgstr ""
+msgstr "Alacsony-Perem"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:53
 msgid "Notch"
-msgstr ""
+msgstr "Fok"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:53
 msgid "Resonance"
-msgstr ""
+msgstr "Rezonancia"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
 #, fuzzy
 msgid "Allpass"
-msgstr "Globális letiltás"
+msgstr "Kiiktat"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
 #, fuzzy
 msgid "Bandpass"
-msgstr "Globális letiltás"
+msgstr "Sáv-Átadás"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:53
+#, fuzzy
 msgid "Ladder-pass"
-msgstr ""
+msgstr "Lefutás-Átadás"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
 msgid "Ladder-rej"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:49
-msgid "RLC (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:49
-msgid "RLC (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:49
-msgid "BWC (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:49
-msgid "BWC (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:49
-msgid "LRX (BT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:49
-msgid "LRX (MT)"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:49
-msgid "APO (DR)"
-msgstr ""
+msgstr "Lefutás-Elutasítás"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:88
 msgid "Slope"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:61
-msgid "x1"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:61
-msgid "x2"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:61
-msgid "x3"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:61
-msgid "x4"
-msgstr ""
+msgstr "Lejtés"
 
 #: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:111
-#: src/contents/ui/MultibandCompressor.qml:184
-#: src/contents/ui/MultibandGate.qml:119 src/contents/ui/PipeWirePage.qml:359
+#: src/contents/ui/MultibandCompressor.qml:188
+#: src/contents/ui/MultibandGate.qml:120 src/contents/ui/PipeWirePage.qml:359
 msgid "Frequency"
-msgstr ""
+msgstr "Frekvencia"
 
 #: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:140
-#: src/contents/ui/Limiter.qml:387 src/contents/ui/MultibandCompressor.qml:329
-#: src/contents/ui/MultibandGate.qml:216
+#: src/contents/ui/Limiter.qml:395 src/contents/ui/MultibandCompressor.qml:336
+#: src/contents/ui/MultibandGate.qml:217
 msgid "Gain"
-msgstr ""
+msgstr "Nyereség"
 
 #: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:155
 #: src/contents/ui/Pitch.qml:41
 msgid "Quality"
-msgstr ""
+msgstr "Minőség"
 
 #: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:126
 msgid "Width"
-msgstr ""
+msgstr "Széles"
 
 #: src/contents/ui/EqualizerBandMenu.qml:167
 #: src/contents/ui/MultibandCompressor.qml:78
 #: src/contents/ui/MultibandGate.qml:78
 msgid "Solo"
-msgstr ""
-
-#: src/contents/ui/EqualizerBand.qml:56
-msgid "Q"
-msgstr ""
+msgstr "Egyedül"
 
 #: src/contents/ui/Equalizer.qml:63
-#, fuzzy
 msgid "APO Presets"
-msgstr "Profilok"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:66
 msgid "APO Preset File Imported."
@@ -1104,9 +1049,8 @@ msgid "Failed to Import the APO Preset File."
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:77
-#, fuzzy
 msgid "GraphicEQ Presets"
-msgstr "Profilok"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:80
 msgid "GraphicEQ Preset File Imported."
@@ -1119,7 +1063,7 @@ msgstr ""
 #: src/contents/ui/Equalizer.qml:91
 #, fuzzy
 msgid "APO Preset"
-msgstr "Profilok"
+msgstr "Előre Beállított"
 
 #: src/contents/ui/Equalizer.qml:94
 msgid "APO Preset File Exported."
@@ -1129,346 +1073,351 @@ msgstr ""
 msgid "Failed to Export the APO Preset File."
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:116
-msgid "IIR"
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:116
-msgid "FIR"
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:116
-msgid "FFT"
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:116
-msgid "SPM"
-msgstr ""
-
 #: src/contents/ui/Equalizer.qml:125
-#, fuzzy
 msgid "Bands"
-msgstr "Globális letiltás"
+msgstr "Sáv"
 
 #: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:169
 #: src/contents/ui/StereoTools.qml:66 src/contents/ui/StereoTools.qml:320
 msgid "Balance"
-msgstr ""
+msgstr "Egyensúly"
 
 #: src/contents/ui/Equalizer.qml:158
 msgid "Pitch Left"
-msgstr ""
+msgstr "Bal Hangmagasság"
 
 #: src/contents/ui/Equalizer.qml:175
 msgid "Pitch Right"
-msgstr ""
+msgstr "Jobb Hangmagasság"
 
 #: src/contents/ui/Equalizer.qml:321
 msgid "Split Channels"
-msgstr ""
+msgstr "Osztott Csatornák"
 
 #: src/contents/ui/Equalizer.qml:331
 msgid "Flat Response"
-msgstr ""
+msgstr "Simítás Válasz"
 
 #: src/contents/ui/Equalizer.qml:338
 msgid "Calculate Frequencies"
-msgstr ""
+msgstr "Frekvenciák Kiszámítása"
 
 #: src/contents/ui/Equalizer.qml:345
 msgid "Sort Bands"
-msgstr ""
+msgstr "Sávok Rendezése"
 
 #: src/contents/ui/Equalizer.qml:352
+#, fuzzy
 msgid "Import APO"
-msgstr ""
+msgstr "Beállítás Importálás"
 
 #: src/contents/ui/Equalizer.qml:359
 msgid "Import APO (GraphicEQ)"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:366
+#, fuzzy
 msgid "Export APO"
-msgstr ""
+msgstr "Beállítás Exportálása"
 
 #: src/contents/ui/Exciter.qml:140
+#, fuzzy
 msgid "Ceil Active"
-msgstr ""
+msgstr "Relatív"
 
 #: src/contents/ui/Exciter.qml:151
 msgid "Ceil"
-msgstr ""
+msgstr "Felső Határ"
 
 #: src/contents/ui/Expander.qml:51 src/tags_plugin_name.cpp:38
 msgid "Expander"
-msgstr ""
+msgstr "Feszítő"
 
 #: src/contents/ui/Expander.qml:227 src/contents/ui/Gate.qml:251
-#: src/contents/ui/Limiter.qml:223 src/contents/ui/MultibandCompressor.qml:399
-#: src/contents/ui/MultibandGate.qml:376
-#, fuzzy
+#: src/contents/ui/Limiter.qml:228 src/contents/ui/MultibandCompressor.qml:409
+#: src/contents/ui/MultibandGate.qml:377
 msgid "Internal"
-msgstr "Integrált"
+msgstr "Belső"
 
 #: src/contents/ui/Filter.qml:53
+#, fuzzy
 msgid "Low-pass"
-msgstr ""
+msgstr "Alul-Áteresztő"
 
 #: src/contents/ui/Filter.qml:53
+#, fuzzy
 msgid "High-pass"
-msgstr ""
+msgstr "Felül-Áteresztő"
 
 #: src/contents/ui/Filter.qml:53
+#, fuzzy
 msgid "Low-shelf"
-msgstr ""
+msgstr "Alacsony-Perem"
 
 #: src/contents/ui/Filter.qml:53
+#, fuzzy
 msgid "High-shelf"
-msgstr ""
+msgstr "Magas-Perem"
 
 #: src/contents/ui/Filter.qml:53
 #, fuzzy
 msgid "Band-pass"
-msgstr "Globális letiltás"
+msgstr "Sáv-Átadás"
 
 #: src/contents/ui/Filter.qml:53
+#, fuzzy
 msgid "Ladder-rejection"
-msgstr ""
+msgstr "Lefutás-Elutasítás"
 
 #: src/contents/ui/Filter.qml:53
+#, fuzzy
 msgid "All-pass"
-msgstr ""
+msgstr "Mind-Átadás"
 
 #: src/contents/ui/Filter.qml:62
+#, fuzzy
 msgid "Filter Mode"
-msgstr ""
+msgstr "Alul-Áteresztő Szűrő Mód"
 
 #: src/contents/ui/Filter.qml:75
 msgid "Equalizer Mode"
-msgstr ""
+msgstr "Equalizer Mód"
 
 #: src/contents/ui/Gate.qml:55 src/tags_plugin_name.cpp:40
 msgid "Gate"
-msgstr ""
+msgstr "Kapu"
 
 #: src/contents/ui/Gate.qml:141 src/contents/ui/Gate.qml:208
-#: src/contents/ui/MultibandGate.qml:284 src/contents/ui/MultibandGate.qml:339
+#: src/contents/ui/MultibandGate.qml:285 src/contents/ui/MultibandGate.qml:340
 msgid "Zone"
-msgstr ""
+msgstr "Zóna"
 
-#: src/contents/ui/Gate.qml:161 src/contents/ui/MultibandGate.qml:312
+#: src/contents/ui/Gate.qml:161 src/contents/ui/MultibandGate.qml:313
 msgid "Hysteresis"
-msgstr ""
+msgstr "Hysteresis"
 
-#: src/contents/ui/Gate.qml:857 src/contents/ui/Gate.qml:870
-#: src/contents/ui/MultibandCompressor.qml:188
-#: src/contents/ui/MultibandGate.qml:123 src/contents/ui/Speex.qml:120
+#: src/contents/ui/Gate.qml:859 src/contents/ui/Gate.qml:872
+#: src/contents/ui/MultibandCompressor.qml:192
+#: src/contents/ui/MultibandGate.qml:124 src/contents/ui/Speex.qml:120
 msgid "Start"
 msgstr ""
 
 #: src/contents/ui/LevelMeter.qml:48
 #, fuzzy
 msgid "Input Level"
-msgstr "Kimenet"
+msgstr "Bemeneti Eszköz"
 
 #: src/contents/ui/LevelMeter.qml:93
 msgid "True Peak"
-msgstr ""
+msgstr "Valós Csúcs"
 
-#: src/contents/ui/Limiter.qml:55
+#: src/contents/ui/Limiter.qml:56
 msgid "Herm Thin"
-msgstr ""
+msgstr "Herm Vékony"
 
-#: src/contents/ui/Limiter.qml:55
+#: src/contents/ui/Limiter.qml:56
 msgid "Herm Wide"
-msgstr ""
+msgstr "Herm Széles"
 
-#: src/contents/ui/Limiter.qml:55
+#: src/contents/ui/Limiter.qml:56
 msgid "Herm Tail"
-msgstr ""
+msgstr "Herm Hátsó"
 
-#: src/contents/ui/Limiter.qml:55
+#: src/contents/ui/Limiter.qml:56
 msgid "Herm Duck"
-msgstr ""
+msgstr "Herm Alábukás"
 
-#: src/contents/ui/Limiter.qml:55
+#: src/contents/ui/Limiter.qml:56
 msgid "Exp Thin"
-msgstr ""
+msgstr "Exp Vékony"
 
-#: src/contents/ui/Limiter.qml:55
+#: src/contents/ui/Limiter.qml:56
 msgid "Exp Wide"
-msgstr ""
+msgstr "Exp Széles"
 
-#: src/contents/ui/Limiter.qml:55
+#: src/contents/ui/Limiter.qml:56
 msgid "Exp Tail"
-msgstr ""
+msgstr "Exp Hátsó"
 
-#: src/contents/ui/Limiter.qml:55
+#: src/contents/ui/Limiter.qml:56
 msgid "Exp Duck"
-msgstr ""
+msgstr "Exp Alábukás"
 
-#: src/contents/ui/Limiter.qml:55
+#: src/contents/ui/Limiter.qml:56
 msgid "Line Thin"
-msgstr ""
+msgstr "Sor Vékony"
 
-#: src/contents/ui/Limiter.qml:55
+#: src/contents/ui/Limiter.qml:56
 msgid "Line Wide"
-msgstr ""
+msgstr "Sor Széles"
 
-#: src/contents/ui/Limiter.qml:55
+#: src/contents/ui/Limiter.qml:56
 msgid "Line Tail"
-msgstr ""
+msgstr "Sor Hátsó"
 
-#: src/contents/ui/Limiter.qml:55
+#: src/contents/ui/Limiter.qml:56
 msgid "Line Duck"
-msgstr ""
+msgstr "Sor Alábukás"
 
-#: src/contents/ui/Limiter.qml:69
+#: src/contents/ui/Limiter.qml:70
 msgid "Oversampling"
-msgstr ""
+msgstr "Túlmintavételezés"
 
-#: src/contents/ui/Limiter.qml:73 src/contents/ui/Limiter.qml:91
-#: src/contents/ui/MultibandCompressor.qml:750
-#: src/contents/ui/MultibandGate.qml:727
+#: src/contents/ui/Limiter.qml:74 src/contents/ui/Limiter.qml:92
+#: src/contents/ui/MultibandCompressor.qml:573
+#: src/contents/ui/MultibandGate.qml:541
 msgid "None"
-msgstr ""
+msgstr "Nincs"
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
 msgid "Half x2/16 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
 msgid "Half x2/24 bit"
-msgstr ""
+msgstr "Fél x2(2L)"
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
 msgid "Half x3/16 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
 msgid "Half x3/24 bit"
-msgstr ""
+msgstr "Fél x3(2L)"
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
 msgid "Half x4/16 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
 msgid "Half x4/24 bit"
-msgstr ""
+msgstr "Fél x4(2L)"
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
 msgid "Half x6/16 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
 msgid "Half x6/24 bit"
-msgstr ""
+msgstr "Fél x6(2L)"
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
 msgid "Half x8/16 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
 msgid "Half x8/24 bit"
-msgstr ""
+msgstr "Fél x8(2L)"
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
 msgid "Full x2/16 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
 msgid "Full x2/24 bit"
-msgstr ""
+msgstr "Teljes x2(2L)"
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
 msgid "Full x3/16 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
 msgid "Full x3/24 bit"
-msgstr ""
+msgstr "Teljes x3(2L)"
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
 msgid "Full x4/16 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
 msgid "Full x4/24 bit"
-msgstr ""
+msgstr "Teljes x4(2L)"
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
 msgid "Full x6/16 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
 msgid "Full x6/24 bit"
-msgstr ""
+msgstr "Teljes x6(2L)"
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
 msgid "Full x8/16 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:73
+#: src/contents/ui/Limiter.qml:74
+#, fuzzy
 msgid "Full x8/24 bit"
-msgstr ""
+msgstr "Teljes x8(2L)"
 
-#: src/contents/ui/Limiter.qml:87
+#: src/contents/ui/Limiter.qml:88
+#, fuzzy
 msgid "Dithering"
-msgstr ""
+msgstr "Remeg"
 
-#: src/contents/ui/Limiter.qml:91
+#: src/contents/ui/Limiter.qml:92
 msgid "7 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:91
+#: src/contents/ui/Limiter.qml:92
 msgid "8 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:91
+#: src/contents/ui/Limiter.qml:92
 msgid "11 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:91
+#: src/contents/ui/Limiter.qml:92
 msgid "12 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:91
+#: src/contents/ui/Limiter.qml:92
 msgid "15 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:91
+#: src/contents/ui/Limiter.qml:92
 msgid "16 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:91
+#: src/contents/ui/Limiter.qml:92
 msgid "23 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:91
+#: src/contents/ui/Limiter.qml:92
 msgid "24 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:108 src/tags_plugin_name.cpp:42
+#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:42
 msgid "Limiter"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:176
+#: src/contents/ui/Limiter.qml:180
 msgid "Stereo Link"
-msgstr ""
+msgstr "Stereo Link"
 
-#: src/contents/ui/Limiter.qml:297 src/contents/ui/Limiter.qml:527
+#: src/contents/ui/Limiter.qml:302 src/contents/ui/Limiter.qml:537
 #, fuzzy
 msgid "Automatic Level"
-msgstr "Kimenet"
+msgstr "Automatikus Kiegyenlítő"
 
-#: src/contents/ui/Limiter.qml:517
+#: src/contents/ui/Limiter.qml:527
+#, fuzzy
 msgid "Gain Boost"
-msgstr ""
+msgstr "Erősítés"
 
 #: src/contents/ui/Loudness.qml:54
+#, fuzzy
 msgid "Contour"
-msgstr ""
+msgstr "Vezérlők"
 
 #: src/contents/ui/Loudness.qml:67
 msgid "FFT Size"
@@ -1486,76 +1435,81 @@ msgstr ""
 msgid "Clipping"
 msgstr ""
 
-#: src/contents/ui/main.qml:14
+#: src/contents/ui/main.qml:16
 #, fuzzy
 msgctxt "@title:window"
 msgid "Easy Effects"
 msgstr "_Easy Effects Névjegye"
 
-#: src/contents/ui/main.qml:103
+#: src/contents/ui/main.qml:124
 #, fuzzy
 msgid "Reset Settings?"
-msgstr "_Beállítások visszaállítása"
+msgstr "_Beállítások Visszaállítása"
 
-#: src/contents/ui/main.qml:104
-msgid "Are you sure you want to reset all EasyEffects settings?"
+#: src/contents/ui/main.qml:125
+msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:122
+#: src/contents/ui/main.qml:143
 #, fuzzy
 msgctxt "@title"
 msgid "Easy Effects"
 msgstr "_Easy Effects Névjegye"
 
-#: src/contents/ui/main.qml:125
+#: src/contents/ui/main.qml:146
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
-msgstr "Hangeffektek PipeWire alkalmazásokhoz"
+msgstr "Hanghatások PipeWire Alkalmazásokhoz"
 
-#: src/contents/ui/main.qml:133
+#: src/contents/ui/main.qml:154
 msgctxt "@info:credit"
 msgid "Wellington Wallace"
 msgstr ""
 
-#: src/contents/ui/main.qml:134
+#: src/contents/ui/main.qml:155
+#, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
-msgstr ""
+msgstr "Burkológörbe"
 
-#: src/contents/ui/main.qml:174
+#: src/contents/ui/main.qml:247
 msgid "Active"
 msgstr ""
 
-#: src/contents/ui/main.qml:185 src/contents/ui/main.qml:309
+#: src/contents/ui/main.qml:258 src/contents/ui/main.qml:391
 #: src/contents/ui/ShortcutsSheet.qml:228
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_Gyorsbillentyűk"
 
-#: src/contents/ui/main.qml:196 src/contents/ui/main.qml:341
+#: src/contents/ui/main.qml:267 src/contents/ui/main.qml:399
+msgid "Manual"
+msgstr ""
+
+#: src/contents/ui/main.qml:277 src/contents/ui/main.qml:431
 #, fuzzy
 msgid "Quit"
 msgstr "_Kilépés"
 
-#: src/contents/ui/main.qml:225
+#: src/contents/ui/main.qml:307
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:285
+#: src/contents/ui/main.qml:367
 msgid "PipeWire"
 msgstr ""
 
-#: src/contents/ui/main.qml:301 src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/main.qml:383 src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:453
-#: src/contents/ui/PreferencesSheet.qml:466
+#: src/contents/ui/PreferencesSheet.qml:512
+#: src/contents/ui/PreferencesSheet.qml:525
 #, fuzzy
 msgid "Preferences"
 msgstr "_Beállítások"
 
-#: src/contents/ui/main.qml:333
+#: src/contents/ui/main.qml:423
 #, fuzzy
-msgid "About EasyEffects"
+msgid "About Easy Effects"
 msgstr "_Easy Effects Névjegye"
 
 #: src/contents/ui/MenuAddPlugins.qml:128
@@ -1563,139 +1517,140 @@ msgid "Added Plugin"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:111
-#, fuzzy
 msgid "Compression Mode"
-msgstr "Kompreszzor"
+msgstr "Tömörítési Mód"
 
-#: src/contents/ui/MultibandCompressor.qml:207
-#: src/contents/ui/MultibandGate.qml:142
+#: src/contents/ui/MultibandCompressor.qml:211
+#: src/contents/ui/MultibandGate.qml:143
 #, fuzzy
 msgid "End"
 msgstr "2."
 
-#: src/contents/ui/MultibandCompressor.qml:410
-#: src/contents/ui/MultibandGate.qml:387
+#: src/contents/ui/MultibandCompressor.qml:420
+#: src/contents/ui/MultibandGate.qml:388
 msgid "LPF"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:488
-#: src/contents/ui/MultibandGate.qml:465
+#: src/contents/ui/MultibandCompressor.qml:499
+#: src/contents/ui/MultibandGate.qml:467
 msgid "Low-Cut"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:513
-#: src/contents/ui/MultibandGate.qml:490
+#: src/contents/ui/MultibandCompressor.qml:524
+#: src/contents/ui/MultibandGate.qml:492
 msgid "High-Cut"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:733
-#: src/contents/ui/MultibandGate.qml:710
+#: src/contents/ui/MultibandCompressor.qml:556
+#: src/contents/ui/MultibandGate.qml:524
 msgid "Operating Mode"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:737
-#: src/contents/ui/MultibandGate.qml:714
+#: src/contents/ui/MultibandCompressor.qml:560
+#: src/contents/ui/MultibandGate.qml:528
 msgid "Classic"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:737
-#: src/contents/ui/MultibandGate.qml:714
-#, fuzzy
+#: src/contents/ui/MultibandCompressor.qml:560
+#: src/contents/ui/MultibandGate.qml:528
 msgid "Modern"
-msgstr "Mód"
+msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:737
-#: src/contents/ui/MultibandGate.qml:714
+#: src/contents/ui/MultibandCompressor.qml:560
+#: src/contents/ui/MultibandGate.qml:528
 msgid "Linear Phase"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:746
-#: src/contents/ui/MultibandGate.qml:723
+#: src/contents/ui/MultibandCompressor.qml:569
+#: src/contents/ui/MultibandGate.qml:537
 msgid "Sidechain Boost"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:750
-#: src/contents/ui/MultibandGate.qml:727
+#: src/contents/ui/MultibandCompressor.qml:573
+#: src/contents/ui/MultibandGate.qml:541
 msgid "Pink BT"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:750
-#: src/contents/ui/MultibandGate.qml:727
+#: src/contents/ui/MultibandCompressor.qml:573
+#: src/contents/ui/MultibandGate.qml:541
 msgid "Pink MT"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:750
-#: src/contents/ui/MultibandGate.qml:727
+#: src/contents/ui/MultibandCompressor.qml:573
+#: src/contents/ui/MultibandGate.qml:541
 msgid "Brown BT"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:750
-#: src/contents/ui/MultibandGate.qml:727
+#: src/contents/ui/MultibandCompressor.qml:573
+#: src/contents/ui/MultibandGate.qml:541
 msgid "Brown MT"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:760
-#: src/contents/ui/MultibandGate.qml:737
+#: src/contents/ui/MultibandCompressor.qml:583
+#: src/contents/ui/MultibandGate.qml:551
 #, fuzzy
 msgid "Sidechain Input Device"
-msgstr "Eszköz"
+msgstr "Bemeneti Eszköz"
 
-#: src/contents/ui/MultibandCompressor.qml:828
-#: src/contents/ui/MultibandCompressor.qml:900
-#: src/contents/ui/MultibandGate.qml:805 src/contents/ui/MultibandGate.qml:877
+#: src/contents/ui/MultibandCompressor.qml:651
+#: src/contents/ui/MultibandCompressor.qml:921
+#: src/contents/ui/MultibandGate.qml:619 src/contents/ui/MultibandGate.qml:889
 #, fuzzy
 msgid "Band"
-msgstr "Globális letiltás"
+msgstr "Sáv"
 
-#: src/contents/ui/MultibandGate.qml:168
+#: src/contents/ui/MultibandGate.qml:169
+#, fuzzy
 msgid "Reaction"
-msgstr ""
+msgstr "Csökkentés"
 
 #: src/contents/ui/PageStreamsEffects.qml:68
-#: src/contents/ui/PresetsAutoloadingPage.qml:99
-#, fuzzy
+#: src/contents/ui/PresetsAutoloadingPage.qml:100
 msgid "Empty List"
-msgstr "Üres lista"
+msgstr "Üres Lista"
 
 #: src/contents/ui/PageStreamsEffects.qml:69
 msgid "No Audio Application Available"
-msgstr "Nincs elérhető hangot kiadó alkalmazás"
+msgstr "Nincs Elérhető Hangot Lejátszó Alkalmazás"
 
-#: src/contents/ui/PageStreamsEffects.qml:438
+#: src/contents/ui/PageStreamsEffects.qml:403
 msgid "Add Effect"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:485
-#: src/contents/ui/PageStreamsEffects.qml:675
+#: src/contents/ui/PageStreamsEffects.qml:451
+#: src/contents/ui/PageStreamsEffects.qml:655
 msgid "Players"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:502
-#: src/contents/ui/PageStreamsEffects.qml:675
+#: src/contents/ui/PageStreamsEffects.qml:468
+#: src/contents/ui/PageStreamsEffects.qml:655
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:524
-#, fuzzy
-msgid "No Effects"
-msgstr "_Easy Effects Névjegye"
+#: src/contents/ui/PageStreamsEffects.qml:481
+msgid "Close"
+msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:525
+#: src/contents/ui/PageStreamsEffects.qml:504
+msgid "No Effects"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:505
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:685
-#, fuzzy
+#: src/contents/ui/PageStreamsEffects.qml:665
 msgid "Effects"
-msgstr "_Easy Effects Névjegye"
+msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:702
+#: src/contents/ui/PageStreamsEffects.qml:682
+#, fuzzy
 msgid "Input Monitoring"
-msgstr ""
+msgstr "Bemenet figyelés engedélyezése/letiltása"
 
-#: src/contents/ui/PageStreamsEffects.qml:715
+#: src/contents/ui/PageStreamsEffects.qml:695
 msgid "Excluded Apps"
-msgstr ""
+msgstr "Kizárt Alkalmazások"
 
 #: src/contents/ui/PipeWirePage.qml:16
 msgid "General"
@@ -1756,9 +1711,8 @@ msgid "Minimum Quantum"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:207
-#, fuzzy
 msgid "Maximum Quantum"
-msgstr "Teljes Előzmény"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:212
 msgid "Default Quantum"
@@ -1773,15 +1727,14 @@ msgid "No Clients"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:270
-#: src/contents/ui/PreferencesSheet.qml:164
+#: src/contents/ui/PreferencesSheet.qml:189
 msgid "State"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:277
-#: src/contents/ui/PreferencesSheet.qml:171
-#, fuzzy
+#: src/contents/ui/PreferencesSheet.qml:196
 msgid "Enabled"
-msgstr "Engedélyezés"
+msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:287
 msgid "Channels"
@@ -1832,26 +1785,25 @@ msgid "Semitones"
 msgstr ""
 
 #: src/contents/ui/Pitch.qml:163
-#, fuzzy
 msgid "Tempo Difference"
-msgstr "Célzás"
+msgstr ""
 
 #: src/contents/ui/Pitch.qml:180
-#, fuzzy
 msgid "Rate Difference"
-msgstr "Célzás"
+msgstr ""
 
-#: src/contents/ui/Pitch.qml:223
+#: src/contents/ui/Pitch.qml:230
 msgid "Quick Seek"
 msgstr ""
 
-#: src/contents/ui/Pitch.qml:233
+#: src/contents/ui/Pitch.qml:240
 msgid "Anti-aliasing"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:34
+#, fuzzy
 msgid "Enable Service Mode"
-msgstr ""
+msgstr "Equalizer Mód"
 
 #: src/contents/ui/PreferencesSheet.qml:45
 msgid "Autostart on Login"
@@ -1878,193 +1830,212 @@ msgid "Use Cubic Volume"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:121
-#, fuzzy
 msgid "Enable/disable input monitoring"
-msgstr "Alkalmazás engedélyezése/letiltása"
+msgstr "Bemenet figyelés engedélyezése/letiltása"
 
 #: src/contents/ui/PreferencesSheet.qml:132
-msgid "Enable the Inactivity Timeout"
+msgid "Mic Monitor Plays to Output Effects Pipeline"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:143
+msgid "Enable the Inactivity Timeout"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:154
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:182
+#: src/contents/ui/PreferencesSheet.qml:168
+msgid "Level Meters Label"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:207
 msgid "Audio Delay Compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:221
 msgid "Style"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:203
+#: src/contents/ui/PreferencesSheet.qml:228
 msgid "Color Scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:207
+#: src/contents/ui/PreferencesSheet.qml:232
 #, fuzzy
 msgid "Automatic"
-msgstr "Kimenet"
+msgstr "Autóerősítés"
 
-#: src/contents/ui/PreferencesSheet.qml:207
+#: src/contents/ui/PreferencesSheet.qml:232
+#, fuzzy
 msgid "Light"
-msgstr ""
+msgstr "Jobb"
 
-#: src/contents/ui/PreferencesSheet.qml:207
+#: src/contents/ui/PreferencesSheet.qml:232
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:217
+#: src/contents/ui/PreferencesSheet.qml:242
 msgid "Color Theme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:221
+#: src/contents/ui/PreferencesSheet.qml:246
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:221
+#: src/contents/ui/PreferencesSheet.qml:246
 msgid "Green Neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:221
-#, fuzzy
+#: src/contents/ui/PreferencesSheet.qml:246
 msgid "Mix"
-msgstr "Teljes Előzmény"
+msgstr "Mix"
 
-#: src/contents/ui/PreferencesSheet.qml:221
+#: src/contents/ui/PreferencesSheet.qml:246
+#, fuzzy
 msgid "Orange"
-msgstr ""
+msgstr "Tartomány"
 
-#: src/contents/ui/PreferencesSheet.qml:221
+#: src/contents/ui/PreferencesSheet.qml:246
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:221
+#: src/contents/ui/PreferencesSheet.qml:246
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:221
+#: src/contents/ui/PreferencesSheet.qml:246
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:221
+#: src/contents/ui/PreferencesSheet.qml:246
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:231
+#: src/contents/ui/PreferencesSheet.qml:256
 msgid "Shape"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:235
+#: src/contents/ui/PreferencesSheet.qml:260
 msgid "Bars"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:235
+#: src/contents/ui/PreferencesSheet.qml:260
 msgid "Lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:235
+#: src/contents/ui/PreferencesSheet.qml:260
 msgid "Dots"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:235
+#: src/contents/ui/PreferencesSheet.qml:260
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:245
+#: src/contents/ui/PreferencesSheet.qml:270
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:256
+#: src/contents/ui/PreferencesSheet.qml:281
 msgid "Logarithmic Frequency Axis"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:267
+#: src/contents/ui/PreferencesSheet.qml:292
 msgid "Points"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:281
+#: src/contents/ui/PreferencesSheet.qml:306
 msgid "Height"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:295
+#: src/contents/ui/PreferencesSheet.qml:320
 msgid "Frequency Range"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:302
+#: src/contents/ui/PreferencesSheet.qml:327
 msgid "Minimum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:317
-#, fuzzy
+#: src/contents/ui/PreferencesSheet.qml:342
 msgid "Maximum"
-msgstr "Teljes Előzmény"
+msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/PreferencesSheet.qml:363
+msgid "Database Autosave Interval"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:386
 #: src/contents/ui/ShortcutsSheet.qml:168
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "_Gyorsbillentyűk"
 
-#: src/contents/ui/PreferencesSheet.qml:341
+#: src/contents/ui/PreferencesSheet.qml:387
 msgid "Enables support for XDG Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:352
+#: src/contents/ui/PreferencesSheet.qml:398
 msgid "Native Plugin Window"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:353
+#: src/contents/ui/PreferencesSheet.qml:399
 msgid "Allows The Native Plugin Window to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:364
+#: src/contents/ui/PreferencesSheet.qml:410
 msgid "Update Frequency"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:365
+#: src/contents/ui/PreferencesSheet.qml:411
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:393
+#: src/contents/ui/PreferencesSheet.qml:439
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:406
+#: src/contents/ui/PreferencesSheet.qml:452
 msgid "Audio"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:465
+#, fuzzy
 msgid "Spectrum Analyzer"
+msgstr "Spectrum"
+
+#: src/contents/ui/PreferencesSheet.qml:478
+msgid "Database"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:432
+#: src/contents/ui/PreferencesSheet.qml:491
 msgid "Experimental Features"
 msgstr ""
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
-#: src/contents/ui/PresetsAutoloadingPage.qml:129
-#, fuzzy
+#: src/contents/ui/PresetsAutoloadingPage.qml:130
 msgid "Device"
 msgstr "Eszköz"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:58
-#: src/contents/ui/PresetsAutoloadingPage.qml:182
+#: src/contents/ui/PresetsAutoloadingPage.qml:45
+msgid "Hardware Profile:"
+msgstr ""
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:59
+#: src/contents/ui/PresetsAutoloadingPage.qml:183
 #, fuzzy
 msgid "Local Preset"
-msgstr "Profilok"
+msgstr "Előre Beállított"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:68
+#: src/contents/ui/PresetsAutoloadingPage.qml:69
 msgid "Create"
 msgstr ""
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:169
+#: src/contents/ui/PresetsAutoloadingPage.qml:170
 #, fuzzy
 msgid "Hardware Profile"
 msgstr "Profil"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:203
+#: src/contents/ui/PresetsAutoloadingPage.qml:204
 msgid "Fallback Preset"
 msgstr ""
 
@@ -2078,8 +2049,9 @@ msgid "Copy to the Local List"
 msgstr ""
 
 #: src/contents/ui/PresetsCommunityPage.qml:109
+#, fuzzy
 msgid "Imported the Community Preset"
-msgstr ""
+msgstr "Beállítás Importálás"
 
 #: src/contents/ui/PresetsCommunityPage.qml:111
 msgid "Failed to Import the Community Preset"
@@ -2098,18 +2070,18 @@ msgid "Failed to import the presets!"
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:44
-#, fuzzy
 msgid "New Preset Name"
-msgstr "Profilok"
+msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:60
+#, fuzzy
 msgid "Import Preset File"
-msgstr ""
+msgstr "Beállítás Importálás"
 
 #: src/contents/ui/PresetsLocalPage.qml:69
 #, fuzzy
 msgid "Create Preset"
-msgstr "Profilok"
+msgstr "Beállítás Importálás"
 
 #: src/contents/ui/PresetsLocalPage.qml:78
 msgid "New Preset Created"
@@ -2152,13 +2124,13 @@ msgid "Community"
 msgstr ""
 
 #: src/contents/ui/PresetsSheet.qml:86
+#, fuzzy
 msgid "Autoloading"
-msgstr ""
+msgstr "Autóerősítés"
 
 #: src/contents/ui/PresetsSheet.qml:105
-#, fuzzy
 msgid "No Preset Loaded"
-msgstr "Profilok"
+msgstr ""
 
 #: src/contents/ui/PresetsSheet.qml:107
 msgid "<strong>Local: </strong>"
@@ -2181,9 +2153,8 @@ msgid "Medium"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:55
-#, fuzzy
 msgid "Large"
-msgstr "Cél"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:55
 msgid "Tunnel-like"
@@ -2226,14 +2197,12 @@ msgid "Reverberation Presets"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:221
-#, fuzzy
 msgid "Ambience"
-msgstr "Csend"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:236
-#, fuzzy
 msgid "Empty Walls"
-msgstr "Üres lista"
+msgstr ""
 
 #: src/contents/ui/Reverb.qml:251
 msgid "Room"
@@ -2264,9 +2233,8 @@ msgid "Voice Detection"
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:106
-#, fuzzy
 msgid "Wet Level"
-msgstr "Kimenet"
+msgstr "Nedves Szint"
 
 #: src/contents/ui/RNNoise.qml:143
 msgid "Use the Standard Model"
@@ -2281,12 +2249,14 @@ msgid "Loaded Model: %1"
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:215
+#, fuzzy
 msgid "Delete this Model"
-msgstr ""
+msgstr "Ennek a modell fájlnak az eltávolítása"
 
 #: src/contents/ui/RNNoise.qml:220
+#, fuzzy
 msgid "Removed Model: %1"
-msgstr ""
+msgstr "Ennek a modell fájlnak az eltávolítása"
 
 #: src/contents/ui/RNNoise.qml:222
 msgid "Failed to Remove the Model: %1"
@@ -2301,38 +2271,26 @@ msgid "Show Help"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:47
-msgid "Fullscreen / Restore from fullscreen"
+msgid "Toggle Fullscreen"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:62 src/contents/ui/ShortcutsSheet.qml:90
-#: src/contents/ui/ShortcutsSheet.qml:118
-#: src/contents/ui/ShortcutsSheet.qml:189
-#: src/contents/ui/ShortcutsSheet.qml:201
-msgid "+"
-msgstr ""
-
-#: src/contents/ui/ShortcutsSheet.qml:75
+#: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:214
+#, fuzzy
 msgid "Toggle Global Bypass"
-msgstr ""
+msgstr "Globális Megkerülés"
 
 #: src/contents/ui/ShortcutsSheet.qml:103
 msgid "Close the Window"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:131
-#, fuzzy
-msgid "Quit EasyEffects"
-msgstr "_Easy Effects Névjegye"
+msgid "Terminate Easy Effects Service"
+msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:144
 #: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
-
-#: src/contents/ui/ShortcutsSheet.qml:214
-#, fuzzy
-msgid "Enable/Disable Effects"
-msgstr "_Easy Effects Névjegye"
 
 #: src/contents/ui/Speex.qml:48
 msgid "Denoise"
@@ -2363,8 +2321,9 @@ msgid "Softclip"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:87
+#, fuzzy
 msgid "S/C Level"
-msgstr ""
+msgstr "F2 Szint"
 
 #: src/contents/ui/StereoTools.qml:111
 msgid "Stereo Matrix"
@@ -2416,11 +2375,11 @@ msgstr ""
 
 #: src/contents/ui/StereoTools.qml:242 src/contents/ui/StereoTools.qml:285
 msgid "Invert Phase"
-msgstr ""
+msgstr "Invertált Fázis"
 
 #: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:34
 msgid "Delay"
-msgstr ""
+msgstr "Késleltetés"
 
 #: src/contents/ui/StereoTools.qml:353
 msgid "Stereo Base"
@@ -2439,37 +2398,36 @@ msgid "(Speakers)"
 msgstr ""
 
 #: src/plugin_base.cpp:237
-#, fuzzy
 msgid "Output Level Meter"
-msgstr "Kimenet"
+msgstr ""
 
-#: src/presets_manager.cpp:1374 src/presets_manager.cpp:1381
-#: src/presets_manager.cpp:1391 src/presets_manager.cpp:1398
-#: src/presets_manager.cpp:1407 src/presets_manager.cpp:1415
+#: src/presets_manager.cpp:1378 src/presets_manager.cpp:1385
+#: src/presets_manager.cpp:1395 src/presets_manager.cpp:1402
+#: src/presets_manager.cpp:1411 src/presets_manager.cpp:1419
 msgid "Preset Not Loaded Correctly"
 msgstr ""
 
-#: src/presets_manager.cpp:1374
+#: src/presets_manager.cpp:1378
 msgid "Wrong Format in Excluded Apps List"
 msgstr ""
 
-#: src/presets_manager.cpp:1382
+#: src/presets_manager.cpp:1386
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 
-#: src/presets_manager.cpp:1391
+#: src/presets_manager.cpp:1395
 msgid "Wrong Format in Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:1398
+#: src/presets_manager.cpp:1402
 msgid "Generic Error While Loading Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:1408
+#: src/presets_manager.cpp:1412
 msgid "One or More Parameters Have a Wrong Format"
 msgstr ""
 
-#: src/presets_manager.cpp:1416
+#: src/presets_manager.cpp:1420
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 
@@ -2502,9 +2460,8 @@ msgid "Bass Enhancer"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:27
-#, fuzzy
 msgid "Bass Loudness"
-msgstr "Hangerő"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:29
 msgid "Convolver"
@@ -2543,9 +2500,8 @@ msgid "Maximizer"
 msgstr ""
 
 #: src/tags_plugin_name.cpp:45
-#, fuzzy
 msgid "Multiband Compressor"
-msgstr "Kompreszzor"
+msgstr ""
 
 #: src/tags_plugin_name.cpp:46
 msgid "Multiband Gate"
@@ -2569,54 +2525,240 @@ msgstr ""
 
 #: com.github.wwmm.easyeffects.desktop.template.h:2
 #, fuzzy
-msgid "EasyEffects"
+msgid "Easy Effects"
 msgstr "_Easy Effects Névjegye"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:3
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr "Quealizer, Kompreszzor és Más Hang Effektek"
+msgstr "Equalizer, Kompreszzor és Egyéb Hanghatások"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Hangeffektek PipeWire alkalmazásokhoz"
-
-#, fuzzy
-#~ msgid "2rd"
-#~ msgstr "3."
-
-#, fuzzy
-#~ msgid "Preset: "
-#~ msgstr "Előre beállított"
+msgstr "Hanghatások PipeWire Alkalmazásokhoz"
 
 #~ msgid "@APP_NAME@"
 #~ msgstr "@APP_NAME@"
 
 #~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-#~ msgstr "limiter;compressor;reverberation;equalizer;autovolume;"
+#~ msgstr "limiter;compressor;visszhang;equalizer;autohangerő;"
+
+#~ msgid "Enable/disable this application"
+#~ msgstr "Alkalmazás engedélyezése/letiltása"
+
+#~ msgid "Excluded App List: Add/remove this application"
+#~ msgstr "Kizárt Alkalmazások Listája: Alkalmazás hozzáadása/eltávolítása"
+
+#~ msgid "Mute Application"
+#~ msgstr "Alkalmazás Némítása"
 
 #~ msgid "Change the volume of this application"
 #~ msgstr "Alkalmazás hangerejének módosítása"
 
 #~ msgid "Application Volume"
-#~ msgstr "Alkalmazás hangereje"
+#~ msgstr "Alkalmazás Hangereje"
 
 #~ msgid "_Help"
 #~ msgstr "_Segítség"
 
 #~ msgid "Presets Menu"
-#~ msgstr "Profil menü"
+#~ msgstr "Profil Menü"
 
 #~ msgid "Enable/disable the global bypass"
-#~ msgstr "Effektek globális letiltása/engedélyezése"
+#~ msgstr "Globális megkerülés engedélyezése/letiltása"
 
 #~ msgid "Primary Menu"
-#~ msgstr "Elsődleges menü"
+#~ msgstr "Elsődleges Menü"
 
 #~ msgid "Easy Effects Window"
 #~ msgstr "Easy Effects Ablak"
 
 #~ msgid "Applications List"
-#~ msgstr "Alkalmazás lista"
+#~ msgstr "Alkalmazások Listája"
+
+#~ msgid "History"
+#~ msgstr "Előzmény"
+
+#~ msgid "Plugin Input Gain"
+#~ msgstr "Plugin Bemeneti Erősítés"
+
+#~ msgid "Plugin Output Gain"
+#~ msgstr "Plugin Kimeneti Erősítés"
+
+#~ msgid "Remove this autoload preset"
+#~ msgstr "Automatikus elő-beállítás eltávolítása"
+
+#~ msgid "Excluded Applications List"
+#~ msgstr "Kizárt Alkalmazások Listája"
+
+#~ msgid "Attack Time"
+#~ msgstr "Támadás Idő"
+
+#~ msgid "Attack Threshold"
+#~ msgstr "Támadási Határérték"
+
+#~ msgid "Release Time"
+#~ msgstr "Közzétéve"
+
+#~ msgid "Release Threshold"
+#~ msgstr "Kiadási Küszöb"
+
+#~ msgid "Dry Level"
+#~ msgstr "Száraz Szint"
+
+#~ msgid "Stereo Split Mode"
+#~ msgstr "Sztereó Osztott Mód"
+
+#~ msgid "Sidechain Source"
+#~ msgstr "Oldallánc Forrás"
+
+#~ msgid "Stereo Split Source"
+#~ msgstr "Sztereó Osztott Forrás"
+
+#~ msgid "Low-Pass Filter"
+#~ msgstr "Alul-Áteresztő Szűrő"
+
+#~ msgid "Simple Moving Average"
+#~ msgstr "Egyszerű Mozgó Átlag"
+
+#~ msgid "Sidechain Mode"
+#~ msgstr "Oldallánc Mód"
+
+#~ msgid "Listen Sidechain"
+#~ msgstr "Oldallánc Hallgatása"
+
+#~ msgid "Sidechain Type"
+#~ msgstr "Oldallánc Típusa"
+
+#~ msgid "PreAmplification"
+#~ msgstr "Előerősítés"
+
+#~ msgid "Sidechain Filters"
+#~ msgstr "Oldallánc Szűrők"
+
+#~ msgid "High-Pass Filter Mode"
+#~ msgstr "Felül-Áteresztő Szűrő Mód"
+
+#~ msgid "High-Pass Filter Frequency"
+#~ msgstr "Felül-Áteresztő Szűrő Frekvencia"
+
+#~ msgid "Left Channel"
+#~ msgstr "Bal Csatorna"
+
+#~ msgid "Right Channel"
+#~ msgstr "Jobb Csatorna"
+
+#~ msgid "Impulses"
+#~ msgstr "Impulzusok"
+
+#~ msgid "Log Scale"
+#~ msgstr "Napló Skála"
+
+#~ msgid "First Kernel"
+#~ msgstr "Első Kernel"
+
+#~ msgid "Output File Name"
+#~ msgstr "Kimeneti Fájl Neve"
+
+#~ msgid "Combined Kernel Name"
+#~ msgstr "Kombinált Kernel Neve"
+
+#~ msgid "Maximum DF Processing Threshold"
+#~ msgstr "Maximális DF Feldolgozási Küszöb"
+
+#~ msgid "Minimum Processing Buffer"
+#~ msgstr "Minimális Feldolgozási Puffer"
+
+#~ msgid "Frequency 1 Split"
+#~ msgstr "Gyakoriság 1 Felosztás"
+
+#~ msgid "Frequency 2 Peak"
+#~ msgstr "Frekvencia 2 Csúcs"
+
+#~ msgid "Frequency 1 Gain"
+#~ msgstr "Frekvencia 1 Erősítés"
+
+#~ msgid "Frequency 2 Level"
+#~ msgstr "Frekvencia 2 Szint"
+
+#~ msgid "Frequency 2 Peak Q"
+#~ msgstr "Frekvencia 2 Csúcs Q"
+
+#~ msgid "Detected"
+#~ msgstr "Érzékelt"
+
+#~ msgid "Ceil Value"
+#~ msgstr "Felső Határ Értéke"
+
+#~ msgid "Expander Mode"
+#~ msgstr "Feszítő Mód"
+
+#~ msgid "API"
+#~ msgstr "API"
+
+#~ msgid "Attack Zone Start"
+#~ msgstr "Támadási Zóna Indítása"
+
+#~ msgid "Release Zone Start"
+#~ msgstr "Kiadási Zóna Indítása"
+
+#~ msgid "Half x2(3L)"
+#~ msgstr "Fél x2(3L)"
+
+#~ msgid "Half x3(3L)"
+#~ msgstr "Fél x3(3L)"
+
+#~ msgid "Half x4(3L)"
+#~ msgstr "Fél x4(3L)"
+
+#~ msgid "Half x6(3L)"
+#~ msgstr "Fél x6(3L)"
+
+#~ msgid "Half x8(3L)"
+#~ msgstr "Fél x8(3L)"
+
+#~ msgid "Full x2(3L)"
+#~ msgstr "Teljes x2(3L)"
+
+#~ msgid "Full x3(3L)"
+#~ msgstr "Teljes x3(3L)"
+
+#~ msgid "Full x4(3L)"
+#~ msgstr "Teljes x4(3L)"
+
+#~ msgid "Full x6(3L)"
+#~ msgstr "Teljes x6(3L)"
+
+#~ msgid "Full x8(3L)"
+#~ msgstr "Teljes x8(3L)"
+
+#~ msgid "SC PreAmp"
+#~ msgstr "SC Előerősítő"
+
+#~ msgid "Sidechain PreAmplification"
+#~ msgstr "Sidechain Előerősítés"
+
+#~ msgid "External Sidechain"
+#~ msgstr "Külső Oldallánc"
+
+#~ msgid "External Sidechain Source"
+#~ msgstr "Külső Oldallánc Forrás"
+
+#~ msgid "Auto Leveling Attack"
+#~ msgstr "Automatikus Kiegyenlítő Támadás"
+
+#~ msgid "Auto Leveling Release"
+#~ msgstr "Automatikus Kiegyenlítő Kioldás"
+
+#~ msgid "Auto Leveling Knee"
+#~ msgstr "Automatikus Kiegyenlítő térd"
+
+#, fuzzy
+#~ msgid "Output Preset"
+#~ msgstr "Kimenet"
+
+#, fuzzy
+#~ msgid "Input Preset"
+#~ msgstr "Előre beállított"
 
 #~ msgid "\"Presets\""
 #~ msgstr "\"Profilok\""
