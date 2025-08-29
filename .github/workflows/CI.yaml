@@ -46,7 +46,7 @@ jobs:
       FLATPAK_BUILD_PATH: flatpak_app/files/share
     needs: prepare
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-46
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.9
       options: --privileged
     steps:
     - name: Checkout
@@ -54,7 +54,6 @@ jobs:
 
     - name: Enable errors on warnings
       run: |
-        dnf install -y jq
         # jq does not have an option to save edits in place so we should make a temporary file to edit this safely
         updated_manifest=$(mktemp)
         jq '.modules[0]."config-opts" += ["-Dwerror=true"]' util/flatpak/com.github.wwmm.easyeffects.Devel.json > "$updated_manifest"
