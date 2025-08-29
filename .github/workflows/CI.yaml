@@ -66,21 +66,6 @@ jobs:
         manifest-path: util/flatpak/com.github.wwmm.easyeffects.Devel.json
         cache-key: flatpak-builder-${{ github.sha }}
         run-tests: true
-    
-    # we also validate appstream in the appstream-news-validate job, 
-    # but we still should specifically ensure the flatpak outputs it properly
-    #- name: Validate AppStream
-    #  shell: bash
-    #  working-directory: ${{ env.FLATPAK_BUILD_PATH }}
-      #run: |
-      #  appstream-util validate-relax appdata/com.github.wwmm.easyeffects.Devel.appdata.xml
-    
-    # - name: Verify icon and metadata in app-info
-    #   shell: bash
-    #   working-directory: ${{ env.FLATPAK_BUILD_PATH }}
-    #   run: |
-    #     test -f app-info/icons/flatpak/128x128/com.github.wwmm.easyeffects.Devel.png || { echo "Missing 128x128 icon in app-info" ; exit 1; }
-    #     test -f app-info/xmls/com.github.wwmm.easyeffects.Devel.xml.gz || { echo "Missing com.github.wwmm.easyeffects.Devel.xml.gz in app-info" ; exit 1; }
 
     # this just validates, actual update PRs are done in flatpak-update.yaml
     - name: Verify flatpak external data checker metadata
