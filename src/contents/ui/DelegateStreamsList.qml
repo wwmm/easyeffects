@@ -74,7 +74,7 @@ Kirigami.AbstractCard {
                 RowLayout {
                     Controls.Label {
                         wrapMode: Text.WordWrap
-                        text: state + " · " + format + " · " + rate + " · " + nVolumeChannels + i18n(" channels") + " · " + latency
+                        text: (state === "" ? "" : `${state} · `) + `${format} · ${rate} · ${nVolumeChannels} ` + i18n("channels") + ` · ${latency}`
                         color: Kirigami.Theme.disabledTextColor
                     }
                 }
