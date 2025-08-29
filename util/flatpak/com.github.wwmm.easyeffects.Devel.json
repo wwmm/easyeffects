@@ -88,7 +88,7 @@
             "run-tests": true,
             "sources": [
                 {
-                    "//": "Should be type: git for downstream sources, e.g. when using flatpak-builder with easyeffects as a submodule. This ensures the commit can be found for the build debug info. Type dir works everywhere else I have tested.",
+                    "//": "Should be type: git for downstream sources, e.g. for the flathub package. This ensures the commit can be found for the build debug info. Type dir works everywhere else I have tested.",
                     "type": "dir",
                     "path": "../../"
                 }
