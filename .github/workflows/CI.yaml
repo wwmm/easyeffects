@@ -39,8 +39,8 @@ jobs:
             echo "github_commit_desc=${{ env.GITHUB_HEAD_SHA }}" >> $GITHUB_OUTPUT
           fi
 
-  flatpak:
-    name: Flatpak (${{ matrix.variant.arch }})
+  flatpak-build:
+    name: Flatpak build (${{ matrix.variant.arch }})
     env:
       FLATPAK_BUILD_PATH: flatpak_app/files/share
     needs: prepare
@@ -75,6 +75,13 @@ jobs:
         arch: ${{ matrix.variant.arch }}
         run-tests: true
 
+  flatpak-lint:
+    name: Flatpak lint
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4.1.7
+  
     # this just validates, actual update PRs are done in flatpak-update.yaml
     - name: Verify flatpak external data checker metadata
       uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
