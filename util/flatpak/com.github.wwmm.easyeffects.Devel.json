@@ -36,7 +36,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins": {
             "directory": "extensions/Plugins",
-            "version": "23.08",
+            "version": "24.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "subdirectories": true,
@@ -44,7 +44,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins.Calf": {
             "directory": "extensions/Plugins/Calf",
-            "version": "23.08",
+            "version": "24.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "autodelete": false,
@@ -52,7 +52,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins.LSP": {
             "directory": "extensions/Plugins/LSP",
-            "version": "23.08",
+            "version": "24.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "autodelete": false,
@@ -60,7 +60,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins.ZamPlugins": {
             "directory": "extensions/Plugins/ZamPlugins",
-            "version": "23.08",
+            "version": "24.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "autodelete": false,
@@ -68,7 +68,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins.MDA": {
             "directory": "extensions/Plugins/MDA",
-            "version": "23.08",
+            "version": "24.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "autodelete": false,
