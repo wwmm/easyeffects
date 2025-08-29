@@ -227,6 +227,22 @@
             ]
         },
         {
+            "name": "gsl",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ftp.gnu.org/gnu/gsl/gsl-2.8.tar.gz",
+                    "sha256": "6a99eeed15632c6354895b1dd542ed5a855c0f15d9ad1326c6fe2b2c9e423190",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 1267,
+                        "stable-only": true,
+                        "url-template": "https://ftp.gnu.org/gnu/gsl/gsl-$version.tar.gz"
+                    }
+                }
+            ]
+        },
+        {
             "name": "mold",
             "sources": [
                 {
