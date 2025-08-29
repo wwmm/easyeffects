@@ -12,13 +12,11 @@ on:
 
 jobs:
   check-kcfg:
-    runs-on: ubuntu-latest
+    name: Check KCFG
+    runs-on: ubuntu-24.04
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Ensure checker is executable
-        run: chmod +x ./util/check-kcfg-numeric-defaults.sh
+      - name: Checkout code
+        uses: actions/checkout@v4.1.7
 
       - name: Run KCFG numeric-defaults checker and capture log
         run: |
@@ -26,8 +24,10 @@ jobs:
           ./util/check-kcfg-numeric-defaults.sh 2>&1 | tee kcfg-check.log
 
       - name: Upload report
-        if: always()
-        uses: actions/upload-artifact@v4
+        # always run, except if the workflow was cancelled
+        if: success() || failure()
+        uses: actions/upload-artifact@v4.3.3
         with:
           name: kcfg-check-log
           path: kcfg-check.log
+          if-no-files-found: error
