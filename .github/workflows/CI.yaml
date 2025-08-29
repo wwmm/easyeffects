@@ -180,7 +180,7 @@ jobs:
 
   #   - name: Build with Clang (libstdc++)
   #     run: |
-  #       CC=clang CXX=clang++ CXXFLAGS=-stdlib=libstdc++ cmake -B build -S . -G Ninja -Wno-dev -DENABLE_LIBCPP_WORKAROUNDS=ON -DENABLE_LIBPORTAL=ON
+  #       CC=clang CXX=clang++ CXXFLAGS=-stdlib=libstdc++ cmake -B build -S . -G Ninja -Wno-dev -DENABLE_LIBCPP_WORKAROUNDS=ON
   #       cmake --build build
 
   # For some reason a program compiled with libc++ does not link to a Qt built with libstdc++. The linking fails
@@ -250,7 +250,7 @@ jobs:
   #     run: |
   #       git clone https://github.com/wwmm/easyeffects.git --depth=1 -b eeqt
   #       cd easyeffects
-  #       CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev -DENABLE_LIBCPP_WORKAROUNDS=ON -DENABLE_LIBPORTAL=ON
+  #       CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev -DENABLE_LIBCPP_WORKAROUNDS=ON
   #       cmake --build build
 
   codeql-analyze:
@@ -311,7 +311,7 @@ jobs:
       # build with clang not because we strictly need to (we do need to do some kind of build so config.h shows up)
       # but because any clang compiler failures will cause clang-tidy to fail later on, so we might as well fail fast
       run: |
-        CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev -DENABLE_LIBPORTAL=ON
+        CC=clang CXX=clang++ cmake -B build -S . -G Ninja -Wno-dev
         cmake --build build
 
     - name: Install ctcache

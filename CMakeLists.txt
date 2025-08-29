@@ -18,8 +18,6 @@ set(QT_MAJOR_VERSION ${QT_DEFAULT_MAJOR_VERSION})
 set(QT_QML_GENERATE_QMLLS_INI ON)
 
 option(ENABLE_RNNOISE "Whether to use RRNNoise for noise cancellation" ON)
-option(ENABLE_LIBPORTAL "Whether to use libportal to handle autostart files." OFF)
-option(ENABLE_DEVEL "Whether to use development build mode, with .Devel appended to the application ID. For Flatpak builds, user data for development builds is stored separately from stable builds" OFF)
 option(ENABLE_MOLD "Use the mold linker for speed, so mold must be installed. Option exists to allow easily enabling mold for Flatpak builds in GNOME Builder since CC_LD and CXX_LD cannot be reasonably used due to: https://gitlab.gnome.org/GNOME/gnome-builder/-/issues/1168" OFF)
 option(ENABLE_LIBCPP_WORKAROUNDS "Enabled Workarounds for systems that use libc++ instead of stdc++" OFF)
 
@@ -52,6 +50,7 @@ find_package(KF${QT_MAJOR_VERSION} REQUIRED COMPONENTS
     I18n
     IconThemes
     Kirigami
+    KirigamiAddons
     QQC2DesktopStyle
 )
 
