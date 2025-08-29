@@ -543,196 +543,6 @@ Kirigami.ScrollablePage {
                     }
                 }
             }
-
-            Kirigami.CardsLayout {
-                maximumColumns: 3
-                uniformCellWidths: true
-
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
-
-                Controls.Frame {
-                    Layout.alignment: Qt.AlignHCenter
-                    Layout.fillWidth: parent.columns === 3 ? false : true
-
-                    GridLayout {
-
-                        columnSpacing: Kirigami.Units.largeSpacing
-                        rowSpacing: Kirigami.Units.largeSpacing
-                        columns: 2
-                        rows: 3
-                        anchors.centerIn: parent
-
-                        Controls.Label {
-                            Layout.columnSpan: 2
-                            Layout.alignment: Qt.AlignHCenter
-                            topPadding: Kirigami.Units.smallSpacing
-                            horizontalAlignment: Text.AlignHCenter
-                            text: i18n("Reduction")
-                        }
-
-                        EeAudioLevel {
-                            id: reductionLevelLeft
-
-                            Layout.alignment: Qt.AlignBottom
-                            implicitWidth: multibandCompressorPage.radius
-                            implicitHeight: multibandCompressorPage.radius
-                            from: Common.minimumDecibelLevel
-                            to: 0
-                            value: Common.toLocaleLabel(multibandCompressorPage.bandReductionLevelLeft[bandsListview.currentIndex], 0, "")
-                            decimals: 0
-                            convertDecibelToLinear: true
-                            topToBottom: true
-                        }
-
-                        EeAudioLevel {
-                            id: reductionLevelRight
-
-                            Layout.alignment: Qt.AlignBottom
-                            implicitWidth: multibandCompressorPage.radius
-                            implicitHeight: multibandCompressorPage.radius
-                            from: Common.minimumDecibelLevel
-                            to: 0
-                            value: Common.toLocaleLabel(multibandCompressorPage.bandReductionLevelRight[bandsListview.currentIndex], 0, "")
-                            decimals: 0
-                            convertDecibelToLinear: true
-                            topToBottom: true
-                        }
-
-                        Controls.Label {
-                            Layout.alignment: Qt.AlignHCenter
-                            horizontalAlignment: Text.AlignHCenter
-                            text: i18n("L")
-                        }
-
-                        Controls.Label {
-                            Layout.alignment: Qt.AlignHCenter
-                            horizontalAlignment: Text.AlignHCenter
-                            text: i18n("R")
-                        }
-                    }
-                }
-
-                Controls.Frame {
-                    Layout.alignment: Qt.AlignHCenter
-                    Layout.fillWidth: parent.columns === 3 ? false : true
-
-                    GridLayout {
-                        columnSpacing: Kirigami.Units.largeSpacing
-                        rowSpacing: Kirigami.Units.largeSpacing
-                        columns: 2
-                        rows: 3
-                        anchors.centerIn: parent
-
-                        Controls.Label {
-                            Layout.columnSpan: 2
-                            Layout.alignment: Qt.AlignHCenter
-                            topPadding: Kirigami.Units.smallSpacing
-                            horizontalAlignment: Text.AlignHCenter
-                            text: i18n("Envelope")
-                        }
-
-                        EeAudioLevel {
-                            id: envelopeLevelLeft
-
-                            Layout.alignment: Qt.AlignBottom
-                            implicitWidth: multibandCompressorPage.radius
-                            implicitHeight: multibandCompressorPage.radius
-                            from: Common.minimumDecibelLevel
-                            to: 0
-                            value: Common.toLocaleLabel(multibandCompressorPage.bandEnvelopeLevelLeft[bandsListview.currentIndex], 0, "")
-                            decimals: 0
-                            convertDecibelToLinear: true
-                        }
-
-                        EeAudioLevel {
-                            id: envelopeLevelRight
-
-                            Layout.alignment: Qt.AlignBottom
-                            implicitWidth: multibandCompressorPage.radius
-                            implicitHeight: multibandCompressorPage.radius
-                            from: Common.minimumDecibelLevel
-                            to: 0
-                            value: Common.toLocaleLabel(multibandCompressorPage.bandEnvelopeLevelRight[bandsListview.currentIndex], 0, "")
-                            decimals: 0
-                            convertDecibelToLinear: true
-                        }
-
-                        Controls.Label {
-                            Layout.alignment: Qt.AlignHCenter
-                            horizontalAlignment: Text.AlignHCenter
-                            text: i18n("L")
-                        }
-
-                        Controls.Label {
-                            Layout.alignment: Qt.AlignHCenter
-                            horizontalAlignment: Text.AlignHCenter
-                            text: i18n("R")
-                        }
-                    }
-                }
-
-                Controls.Frame {
-                    Layout.alignment: Qt.AlignHCenter
-                    Layout.fillWidth: parent.columns === 3 ? false : true
-
-                    GridLayout {
-                        columnSpacing: Kirigami.Units.largeSpacing
-                        rowSpacing: Kirigami.Units.largeSpacing
-                        columns: 2
-                        rows: 3
-                        anchors.centerIn: parent
-
-                        Controls.Label {
-                            Layout.columnSpan: 2
-                            Layout.alignment: Qt.AlignHCenter
-                            topPadding: Kirigami.Units.smallSpacing
-                            horizontalAlignment: Text.AlignHCenter
-                            text: i18n("Curve")
-                        }
-
-                        EeAudioLevel {
-                            id: curveLevelLeft
-
-                            Layout.alignment: Qt.AlignBottom
-                            implicitWidth: multibandCompressorPage.radius
-                            implicitHeight: multibandCompressorPage.radius
-                            from: Common.minimumDecibelLevel
-                            to: 0
-                            value: Common.toLocaleLabel(multibandCompressorPage.bandCurveLevelLeft[bandsListview.currentIndex], 0, "")
-                            decimals: 0
-                            convertDecibelToLinear: true
-                        }
-
-                        EeAudioLevel {
-                            id: curveLevelRight
-
-                            Layout.alignment: Qt.AlignBottom
-                            implicitWidth: multibandCompressorPage.radius
-                            implicitHeight: multibandCompressorPage.radius
-                            from: Common.minimumDecibelLevel
-                            to: 0
-                            value: Common.toLocaleLabel(multibandCompressorPage.bandCurveLevelRight[bandsListview.currentIndex], 0, "")
-                            decimals: 0
-                            convertDecibelToLinear: true
-                        }
-
-                        Controls.Label {
-                            Layout.alignment: Qt.AlignHCenter
-                            horizontalAlignment: Text.AlignHCenter
-                            text: i18n("L")
-                        }
-
-                        Controls.Label {
-                            Layout.alignment: Qt.AlignHCenter
-                            horizontalAlignment: Text.AlignHCenter
-                            text: i18n("R")
-                        }
-                    }
-                }
-            }
         }
     }
 
@@ -886,6 +696,196 @@ Kirigami.ScrollablePage {
                     implicitWidth: currentItem.implicitWidth
                     implicitHeight: currentItem.implicitHeight
                     initialItem: multibandCompressorPage.pluginDB.viewSidechain === false ? bandCompressorControls : bandSidechainControls
+                }
+
+                footer: Kirigami.CardsLayout {
+                    maximumColumns: 3
+                    uniformCellWidths: true
+
+                    anchors {
+                        left: parent.left
+                        right: parent.right
+                    }
+
+                    Controls.Frame {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.fillWidth: parent.columns === 3 ? false : true
+
+                        GridLayout {
+
+                            columnSpacing: Kirigami.Units.largeSpacing
+                            rowSpacing: Kirigami.Units.largeSpacing
+                            columns: 2
+                            rows: 3
+                            anchors.centerIn: parent
+
+                            Controls.Label {
+                                Layout.columnSpan: 2
+                                Layout.alignment: Qt.AlignHCenter
+                                topPadding: Kirigami.Units.smallSpacing
+                                horizontalAlignment: Text.AlignHCenter
+                                text: i18n("Reduction")
+                            }
+
+                            EeAudioLevel {
+                                id: reductionLevelLeft
+
+                                Layout.alignment: Qt.AlignBottom
+                                implicitWidth: multibandCompressorPage.radius
+                                implicitHeight: multibandCompressorPage.radius
+                                from: Common.minimumDecibelLevel
+                                to: 0
+                                value: Common.toLocaleLabel(multibandCompressorPage.bandReductionLevelLeft[bandsListview.currentIndex] ?? 0, 0, "")
+                                decimals: 0
+                                convertDecibelToLinear: true
+                                topToBottom: true
+                            }
+
+                            EeAudioLevel {
+                                id: reductionLevelRight
+
+                                Layout.alignment: Qt.AlignBottom
+                                implicitWidth: multibandCompressorPage.radius
+                                implicitHeight: multibandCompressorPage.radius
+                                from: Common.minimumDecibelLevel
+                                to: 0
+                                value: Common.toLocaleLabel(multibandCompressorPage.bandReductionLevelRight[bandsListview.currentIndex] ?? 0, 0, "")
+                                decimals: 0
+                                convertDecibelToLinear: true
+                                topToBottom: true
+                            }
+
+                            Controls.Label {
+                                Layout.alignment: Qt.AlignHCenter
+                                horizontalAlignment: Text.AlignHCenter
+                                text: i18n("L")
+                            }
+
+                            Controls.Label {
+                                Layout.alignment: Qt.AlignHCenter
+                                horizontalAlignment: Text.AlignHCenter
+                                text: i18n("R")
+                            }
+                        }
+                    }
+
+                    Controls.Frame {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.fillWidth: parent.columns === 3 ? false : true
+
+                        GridLayout {
+                            columnSpacing: Kirigami.Units.largeSpacing
+                            rowSpacing: Kirigami.Units.largeSpacing
+                            columns: 2
+                            rows: 3
+                            anchors.centerIn: parent
+
+                            Controls.Label {
+                                Layout.columnSpan: 2
+                                Layout.alignment: Qt.AlignHCenter
+                                topPadding: Kirigami.Units.smallSpacing
+                                horizontalAlignment: Text.AlignHCenter
+                                text: i18n("Envelope")
+                            }
+
+                            EeAudioLevel {
+                                id: envelopeLevelLeft
+
+                                Layout.alignment: Qt.AlignBottom
+                                implicitWidth: multibandCompressorPage.radius
+                                implicitHeight: multibandCompressorPage.radius
+                                from: Common.minimumDecibelLevel
+                                to: 0
+                                value: Common.toLocaleLabel(multibandCompressorPage.bandEnvelopeLevelLeft[bandsListview.currentIndex] ?? 0, 0, "")
+                                decimals: 0
+                                convertDecibelToLinear: true
+                            }
+
+                            EeAudioLevel {
+                                id: envelopeLevelRight
+
+                                Layout.alignment: Qt.AlignBottom
+                                implicitWidth: multibandCompressorPage.radius
+                                implicitHeight: multibandCompressorPage.radius
+                                from: Common.minimumDecibelLevel
+                                to: 0
+                                value: Common.toLocaleLabel(multibandCompressorPage.bandEnvelopeLevelRight[bandsListview.currentIndex] ?? 0, 0, "")
+                                decimals: 0
+                                convertDecibelToLinear: true
+                            }
+
+                            Controls.Label {
+                                Layout.alignment: Qt.AlignHCenter
+                                horizontalAlignment: Text.AlignHCenter
+                                text: i18n("L")
+                            }
+
+                            Controls.Label {
+                                Layout.alignment: Qt.AlignHCenter
+                                horizontalAlignment: Text.AlignHCenter
+                                text: i18n("R")
+                            }
+                        }
+                    }
+
+                    Controls.Frame {
+                        Layout.alignment: Qt.AlignHCenter
+                        Layout.fillWidth: parent.columns === 3 ? false : true
+
+                        GridLayout {
+                            columnSpacing: Kirigami.Units.largeSpacing
+                            rowSpacing: Kirigami.Units.largeSpacing
+                            columns: 2
+                            rows: 3
+                            anchors.centerIn: parent
+
+                            Controls.Label {
+                                Layout.columnSpan: 2
+                                Layout.alignment: Qt.AlignHCenter
+                                topPadding: Kirigami.Units.smallSpacing
+                                horizontalAlignment: Text.AlignHCenter
+                                text: i18n("Curve")
+                            }
+
+                            EeAudioLevel {
+                                id: curveLevelLeft
+
+                                Layout.alignment: Qt.AlignBottom
+                                implicitWidth: multibandCompressorPage.radius
+                                implicitHeight: multibandCompressorPage.radius
+                                from: Common.minimumDecibelLevel
+                                to: 0
+                                value: Common.toLocaleLabel(multibandCompressorPage.bandCurveLevelLeft[bandsListview.currentIndex] ?? 0, 0, "")
+                                decimals: 0
+                                convertDecibelToLinear: true
+                            }
+
+                            EeAudioLevel {
+                                id: curveLevelRight
+
+                                Layout.alignment: Qt.AlignBottom
+                                implicitWidth: multibandCompressorPage.radius
+                                implicitHeight: multibandCompressorPage.radius
+                                from: Common.minimumDecibelLevel
+                                to: 0
+                                value: Common.toLocaleLabel(multibandCompressorPage.bandCurveLevelRight[bandsListview.currentIndex] ?? 0, 0, "")
+                                decimals: 0
+                                convertDecibelToLinear: true
+                            }
+
+                            Controls.Label {
+                                Layout.alignment: Qt.AlignHCenter
+                                horizontalAlignment: Text.AlignHCenter
+                                text: i18n("L")
+                            }
+
+                            Controls.Label {
+                                Layout.alignment: Qt.AlignHCenter
+                                horizontalAlignment: Text.AlignHCenter
+                                text: i18n("R")
+                            }
+                        }
+                    }
                 }
             }
 
