@@ -88,6 +88,15 @@ jobs:
       with:
         args: util/flatpak/com.github.wwmm.easyeffects.Devel.json
 
+    - name: Write exceptions file
+      run: |
+        echo '{"com.github.wwmm.easyeffects.Devel": ["appid-uses-code-hosting-domain"]}' > exceptions.json
+
+    - name: Verify flatpak builder lint
+      uses: docker://ghcr.io/flathub/flatpak-builder-lint:latest
+      with:
+        args: --exceptions --user-exceptions exceptions.json manifest util/flatpak/com.github.wwmm.easyeffects.Devel.json
+
   arch-linux:
     name: Arch Linux
     runs-on: ubuntu-24.04
