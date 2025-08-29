@@ -10,7 +10,7 @@ name: CI
 jobs:
   prepare:
     name: Prepare
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     outputs:
       github_commit_desc: ${{ steps.get_commit_desc.outputs.github_commit_desc }}
     steps:
@@ -75,7 +75,7 @@ jobs:
 
   arch-linux:
     name: Arch Linux
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: prepare
     steps:
     - name: Checkout
@@ -178,7 +178,7 @@ jobs:
 
   codeql-analyze:
     name: CodeQL Analyze
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       security-events: write
     container:
@@ -211,7 +211,7 @@ jobs:
 
   clang-tidy:
     name: Clang Tidy
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     container:
       image: archlinux
 
@@ -276,7 +276,7 @@ jobs:
 
   appstream-news-validate:
     name: AppStream and News validate
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     container:
       image: archlinux
     steps:
