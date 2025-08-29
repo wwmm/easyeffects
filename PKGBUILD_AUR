@@ -42,7 +42,8 @@ optdepends=('calf: limiter, exciter, bass enhancer and others'
             'libdeep_filter_ladspa: noise remover')
 conflicts=("${pkgname%%-git}")
 provides=("${pkgname%%-git}")
-source=("${pkgname%%-git}::git+${url}")
+source=("$pkgname::git+${url}")
+# source=("$pkgname::git+${url}#branch=eeqt")
 sha512sums=('SKIP')
 
 pkgver() {
