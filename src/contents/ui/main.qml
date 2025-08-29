@@ -100,6 +100,12 @@ Kirigami.ApplicationWindow {
         onActivated: appWindow.close()
     }
 
+    Shortcut {
+        // This one replaces CTRL+Q that might not work outside KDE.
+        sequences: ["Ctrl+T"]
+        onActivated: Qt.quit()
+    }
+
     PreferencesSheet {
         id: preferencesSheet
     }
@@ -116,7 +122,7 @@ Kirigami.ApplicationWindow {
         id: resetPromptDialog
 
         title: i18n("Reset Settings?")
-        subtitle: i18n("Are you sure you want to reset all EasyEffects settings?")
+        subtitle: i18n("Are you sure you want to reset all Easy Effects settings?")
         standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
         onAccepted: DB.Manager.resetAll()
     }
@@ -414,7 +420,7 @@ Kirigami.ApplicationWindow {
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                     },
                     Kirigami.Action {
-                        text: i18n("About EasyEffects")
+                        text: i18n("About Easy Effects")
                         icon.name: "com.github.wwmm.easyeffects"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {

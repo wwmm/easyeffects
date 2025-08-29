@@ -35,6 +35,8 @@ FormCard.AbstractFormDelegate {
     property bool labelAbove: false
     property bool labelFillWidth: true
     property bool spinboxLayoutFillWidth: false
+    property real spinboxMaximumWidth: -1
+    property real spinboxMinimumWidth: -1
     property int elide: Text.ElideRight
     property int wrapMode: Text.Wrap
     property int spinboxAlignment: Qt.AlignRight
@@ -101,6 +103,8 @@ FormCard.AbstractFormDelegate {
             }
 
             Layout.fillWidth: control.spinboxLayoutFillWidth
+            Layout.maximumWidth: control.spinboxMaximumWidth
+            Layout.minimumWidth: control.spinboxMinimumWidth
             Layout.alignment: spinboxAlignment
             implicitWidth: control.boxWidth
             focusPolicy: control.focusPolicy

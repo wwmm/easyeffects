@@ -161,11 +161,11 @@
             <default>false</default>
         </entry>
         <entry name="processAllOutputs" type="Bool">
-            <label>Automatically moves Audio Streams to EasyEffects Virtual Sink.</label>
+            <label>Automatically moves Audio Streams to Easy Effects Virtual Sink.</label>
             <default>true</default>
         </entry>
         <entry name="processAllInputs" type="Bool">
-            <label>Automatically moves Audio Streams to EasyEffects Virtual Source.</label>
+            <label>Automatically moves Audio Streams to Easy Effects Virtual Source.</label>
             <default>true</default>
         </entry>
         <entry name="excludeMonitorStreams" type="Bool">
