@@ -34,6 +34,11 @@ ColumnLayout {
         status.text = label;
         status.visible = true;
     }
+    function showPresetsMenuError(label) {
+        status.text = label;
+        status.visible = true;
+        status.type = Kirigami.MessageType.Error;
+    }
 
     ListModel {
         id: listModel
@@ -83,7 +88,7 @@ ColumnLayout {
                 width: listView.width
                 onClicked: {
                     if (Presets.Manager.loadCommunityPresetFile(pipeline, path, presetPackage) === false)
-                        showPresetsMenuStatus(i18n("The Preset %1 failed to load", name));
+                        showPresetsMenuError(i18n("The Preset %1 Failed to Load", `<strong>${name}</strong>`));
                 }
 
                 contentItem: RowLayout {
@@ -106,9 +111,9 @@ ColumnLayout {
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
                                     if (Presets.Manager.importFromCommunityPackage(pipeline, path, presetPackage) === true)
-                                        showPresetsMenuStatus(i18n("Imported the Community Preset") + ": " + name);
+                                        showPresetsMenuStatus(i18n("Imported the Community Preset") + ": " + `<strong>${name}</strong>`);
                                     else
-                                        showPresetsMenuStatus(i18n("Failed to Import the Community Preset") + ": " + name);
+                                        showPresetsMenuError(i18n("Failed to Import the Community Preset") + ": " + `<strong>${name}</strong>`);
                                 }
                             }
                         ]
