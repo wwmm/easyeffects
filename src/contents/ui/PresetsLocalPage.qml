@@ -22,6 +22,11 @@ ColumnLayout {
         status.text = label;
         status.visible = true;
     }
+    function showPresetsMenuError(label) {
+        status.text = label;
+        status.visible = true;
+        status.type = Kirigami.MessageType.Error;
+    }
 
     FileDialog {
         id: fileDialog
@@ -31,9 +36,9 @@ ColumnLayout {
         nameFilters: ["JSON files (*.json)"]
         onAccepted: {
             if (Presets.Manager.importPresets(pipeline, fileDialog.selectedFiles) === true)
-                showPresetsMenuStatus(i18n("Preset files imported!"));
+                showPresetsMenuStatus(i18n("Preset File Imported."));
             else
-                showPresetsMenuStatus(i18n("Failed to import the presets!"));
+                showPresetsMenuError(i18n("Failed to Import the Preset."));
         }
     }
 
@@ -75,10 +80,10 @@ ColumnLayout {
                     if (!Common.isEmpty(newName.trim())) {
                         if (Presets.Manager.add(pipeline, newName) === true) {
                             newPresetName.accepted();
-                            showPresetsMenuStatus(i18n("New Preset Created") + ": " + newName);
+                            showPresetsMenuStatus(i18n("New Preset Created") + `: <strong>${newName}</strong>`);
                             newPresetName.text = "";
                         } else {
-                            showPresetsMenuStatus(i18n("Failed to Create Preset") + ": " + newName);
+                            showPresetsMenuError(i18n("Failed to Create Preset") + `: <strong>${newName}</strong>`);
                         }
                     }
                 }
@@ -146,7 +151,7 @@ ColumnLayout {
                 width: listView.width
                 onClicked: {
                     if (Presets.Manager.loadLocalPresetFile(pipeline, name) === false)
-                        showPresetsMenuStatus(i18n("The Preset %1 failed to load", name));
+                        showPresetsMenuError(i18n("The Preset %1 Failed to Load", `<strong>${name}</strong>`));
                 }
 
                 contentItem: RowLayout {
@@ -163,9 +168,9 @@ ColumnLayout {
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
                                     if (Presets.Manager.savePresetFile(pipeline, name) === true)
-                                        showPresetsMenuStatus(i18n("Settings Saved to: %1", name));
+                                        showPresetsMenuStatus(i18n("Settings Saved to: %1", `<strong>${name}</strong>`));
                                     else
-                                        showPresetsMenuStatus(i18n("Failed to Save Settings to: %1", name));
+                                        showPresetsMenuError(i18n("Failed to Save Settings to: %1", `<strong>${name}</strong>`));
                                 }
                             },
                             Kirigami.Action {
@@ -174,9 +179,9 @@ ColumnLayout {
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
                                     if (Presets.Manager.remove(pipeline, name) === true)
-                                        showPresetsMenuStatus(i18n("The Preset %1 Has Been Removed", name));
+                                        showPresetsMenuStatus(i18n("The Preset %1 Has Been Removed", `<strong>${name}</strong>`));
                                     else
-                                        showPresetsMenuStatus(i18n("The Preset %1 Could Not Be Removed", name));
+                                        showPresetsMenuError(i18n("The Preset %1 Could Not Be Removed", `<strong>${name}</strong>`));
                                 }
                             }
                         ]

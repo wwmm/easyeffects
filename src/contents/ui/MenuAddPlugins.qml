@@ -125,7 +125,7 @@ Kirigami.OverlaySheet {
                             plugins.push(new_name);
                         }
                         streamDB.plugins = plugins;
-                        showMenuStatus(i18n("Added Plugin") + ": " + translatedName);
+                        showMenuStatus(i18n("Added Effect") + `: <strong>${translatedName}</strong>`);
                     }
                 }
             }

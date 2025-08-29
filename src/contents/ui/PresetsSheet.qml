@@ -104,8 +104,9 @@ Kirigami.OverlaySheet {
             if (Common.isEmpty(lastLoadedPresetName))
                 return i18n("No Preset Loaded");
 
-            const tag = Common.isEmpty(lastLoadedCommunityPackage) ? i18n("<strong>Local: </strong>") : i18n("<strong>Community: </strong>");
-            return tag + lastLoadedPresetName;
+            const presetType = Common.isEmpty(lastLoadedCommunityPackage) ? i18n("Local") : i18n("Community");
+
+            return `${presetType}: <strong>${lastLoadedPresetName}<strong>`;
         }
     }
 }

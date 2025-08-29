@@ -395,8 +395,8 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: showNativePluginUi
 
-                    label: i18n("Native Plugin Window")
-                    subtitle: i18n("Allows The Native Plugin Window to be Shown/Hidden")
+                    label: i18n("Native Window of Effects")
+                    subtitle: i18n("Allows the Native User Interface of Effects to be Shown/Hidden")
                     isChecked: DB.Manager.main.showNativePluginUi
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.showNativePluginUi)
