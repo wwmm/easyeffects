@@ -1,7 +1,7 @@
 {
     "id": "com.github.wwmm.easyeffects.Devel",
     "runtime": "org.kde.Platform",
-    "runtime-version": "6.7",
+    "runtime-version": "6.9",
     "sdk": "org.kde.Sdk",
     "branch": "stable",
     "command": "easyeffects",
@@ -36,7 +36,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins": {
             "directory": "extensions/Plugins",
-            "version": "23.08",
+            "version": "24.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "subdirectories": true,
@@ -44,7 +44,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins.Calf": {
             "directory": "extensions/Plugins/Calf",
-            "version": "23.08",
+            "version": "24.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "autodelete": false,
@@ -52,7 +52,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins.LSP": {
             "directory": "extensions/Plugins/LSP",
-            "version": "23.08",
+            "version": "24.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "autodelete": false,
@@ -60,7 +60,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins.ZamPlugins": {
             "directory": "extensions/Plugins/ZamPlugins",
-            "version": "23.08",
+            "version": "24.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "autodelete": false,
@@ -68,7 +68,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins.MDA": {
             "directory": "extensions/Plugins/MDA",
-            "version": "23.08",
+            "version": "24.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "autodelete": false,
@@ -88,7 +88,7 @@
             "run-tests": true,
             "sources": [
                 {
-                    "//": "Should be type: git for downstream sources, e.g. when using flatpak-builder with easyeffects as a submodule. This ensures the commit can be found for the build debug info. Type dir works everywhere else I have tested.",
+                    "//": "Should be type: git for downstream sources, e.g. for the flathub package. This ensures the commit can be found for the build debug info. Type dir works everywhere else I have tested.",
                     "type": "dir",
                     "path": "../../"
                 }

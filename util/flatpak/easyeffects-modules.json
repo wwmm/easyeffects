@@ -2,6 +2,22 @@
     "name": "easyeffects-modules",
     "modules": [
         {
+            "name": "qt6-graphs",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/qt/qtgraphs.git",
+                    "tag": "v6.9.0",
+                    "commit": "ba29aa033b1878429dd1f12d783c57e516f6f32a",
+                    "//": "We cannot use x-checker-data here as this version has to match the qt/kde runtime"
+                }
+            ],
+            "post-install": [
+                "install $FLATPAK_DEST/lib/*-linux-gnu/*.so $FLATPAK_DEST/lib/*-linux-gnu/*.so.* $FLATPAK_DEST/lib"
+            ]
+        },
+        {
             "name": "libsigc++",
             "buildsystem": "meson",
             "config-opts": [
@@ -125,20 +141,15 @@
             "name": "rnnoise",
             "sources": [
                 {
+                    "//": "get latest fixes from upstream to fix aarch64 build",
                     "type": "archive",
-                    "url": "https://github.com/xiph/rnnoise/releases/download/v0.2/rnnoise-0.2.tar.gz",
-                    "sha256": "90fce4b00b9ff24c08dbfe31b82ffd43bae383d85c5535676d28b0a2b11c0d37",
-                    "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/xiph/rnnoise/releases/latest",
-                        "version-query": ".tag_name | sub(\"^v\"; \"\")",
-                        "url-query": ".assets[] | select(.name==\"rnnoise-\" + $version + \".tar.gz\") | .browser_download_url"
-                    }
+                    "url": "https://github.com/xiph/rnnoise/archive/2e3c812c62c32b3ac486c3cd4f4894e6f57d45fd.zip",
+                    "sha256": "5bb718f676214097c5cd0b8defbed1cef50f26c4cea981df5bc7a3abd4b4ea15"
                 },
                 {
-                    "//": "downloads the file as found by this script https://github.com/xiph/rnnoise/blob/904a876dce1f9ab8860c0a5000ed151f9f6eef58/download_model.sh",
-                    "type": "archive",
-                    "url": "https://media.xiph.org/rnnoise/models/rnnoise_data-0b50c45.tar.gz",
+                    "//": "downloads the file as found by this script https://github.com/xiph/rnnoise/blob/2e3c812c62c32b3ac486c3cd4f4894e6f57d45fd/download_model.sh",
+                    "type": "file",
+                    "url": "https://media.xiph.org/rnnoise/models/rnnoise_data-4ac81c5c0884ec4bd5907026aaae16209b7b76cd9d7f71af582094a2f98f4b43.tar.gz",
                     "sha256": "4ac81c5c0884ec4bd5907026aaae16209b7b76cd9d7f71af582094a2f98f4b43"
                 }
             ],
@@ -153,8 +164,8 @@
                 {
                     "type": "git",
                     "url": "https://codeberg.org/soundtouch/soundtouch.git",
-                    "tag": "2.3.3",
-                    "commit": "e83424d5928ab8513d2d082779c275765dee31b9",
+                    "tag": "2.4.0",
+                    "commit": "d994965fbbcf0f6ceeed0e72516968130c2912f0",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$",
@@ -181,8 +192,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/nlohmann/json",
-                    "tag": "v3.11.3",
-                    "commit": "9cca280a4d0ccf0c08f47a99aa71d1b0e52f8d03",
+                    "tag": "v3.12.0",
+                    "commit": "55f93686c01528224f448c19128836e7df245f72",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/nlohmann/json/releases/latest",
@@ -203,8 +214,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.13.0.tar.gz",
-                    "sha256": "3ad5dd08954b39d113dc5b3f8a8dc6dc1fd5250032b7c491eb07aed5c94133e1",
+                    "url": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2022.2.0.tar.gz",
+                    "sha256": "f0f78001c8c8edb4bddc3d4c5ee7428d56ae313254158ad1eec49eced57f6a5b",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 227581,
@@ -226,13 +237,23 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/libportal.git",
-                    "commit": "a1530a98db296a8f3c501932d68a7d008da2ac2e",
+                    "//": "use commit from master as we need these unreleased changes to build on qt 6.9",
+                    "commit": "796053d2eebe4532aad6bd3fd80cdf3b197806ec"
+                }
+            ]
+        },
+        {
+            "name": "gsl",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ftp.gnu.org/gnu/gsl/gsl-2.8.tar.gz",
+                    "sha256": "6a99eeed15632c6354895b1dd542ed5a855c0f15d9ad1326c6fe2b2c9e423190",
                     "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/flatpak/libportal/releases/latest",
-                        "tag-query": ".tag_name",
-                        "version-query": "$tag | sub(\"^jq-\"; \"\")",
-                        "timestamp-query": ".published_at"
+                        "type": "anitya",
+                        "project-id": 1267,
+                        "stable-only": true,
+                        "url-template": "https://ftp.gnu.org/gnu/gsl/gsl-$version.tar.gz"
                     }
                 }
             ]
@@ -246,8 +267,8 @@
                     "only-arches": [
                         "x86_64"
                     ],
-                    "url": "https://github.com/rui314/mold/releases/download/v2.32.1/mold-2.32.1-x86_64-linux.tar.gz",
-                    "sha256": "d9caf252d58b5f6a0fa5aa30fbe05d17b1c84f498106dc634cbce73866abdfeb",
+                    "url": "https://github.com/rui314/mold/releases/download/v2.40.4/mold-2.40.4-x86_64-linux.tar.gz",
+                    "sha256": "4c999e19ffa31afa5aa429c679b665d5e2ca5a6b6832ad4b79668e8dcf3d8ec1",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 241732,
@@ -261,8 +282,8 @@
                     "only-arches": [
                         "aarch64"
                     ],
-                    "url": "https://github.com/rui314/mold/releases/download/v2.32.1/mold-2.32.1-aarch64-linux.tar.gz",
-                    "sha256": "18ffc28b392fef90f3a73b4c40445925a661298f255c3031753c351ae7c7600a",
+                    "url": "https://github.com/rui314/mold/releases/download/v2.40.4/mold-2.40.4-aarch64-linux.tar.gz",
+                    "sha256": "c799b9ccae8728793da2186718fbe53b76400a9da396184fac0c64aa3298ec37",
                     "x-checker-data": {
                         "type": "anitya",
                         "project-id": 241732,
@@ -317,6 +338,24 @@
             "buildsystem": "simple",
             "build-commands": [
                 "install -m 644 libdeep_filter_ladspa.so $FLATPAK_DEST/lib/ladspa/"
+            ]
+        },
+        {
+            "name": "kirigami-addons",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/kirigami-addons/kirigami-addons-1.9.0.tar.xz",
+                    "sha256": "21314a91f26b1c962def3fd7ff2e762d3358b075f63f4d7e0144fb2c63b7ebc7",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 242933,
+                        "stable-only": true,
+                        "url-template": "https://download.kde.org/stable/kirigami-addons/kirigami-addons-$version.tar.xz"
+                    }
+                }
             ]
         }
     ]
