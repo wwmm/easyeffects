@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-08-30 00:58+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-08-30 15:01+0000\n"
+"Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
 "Language: fr_FR\n"
@@ -81,7 +81,6 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
-#, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
@@ -134,9 +133,8 @@ msgstr "La page du filtre Convolueur affichant les commandes audio"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:537
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:547
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:560
-#, fuzzy
 msgid "Features:"
-msgstr "Fonctionnalités :"
+msgstr "Caractéristiques :"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid ""
@@ -306,7 +304,6 @@ msgstr ""
 "niveau dans certaines conditions."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
-#, fuzzy
 msgid ""
 "We now set monitor.passthrough = true in our virtual devices. This will "
 "allow latency offset to be properly applied by video players when PipeWire "
@@ -314,7 +311,7 @@ msgid ""
 msgstr ""
 "Nous avons maintenant défini monitor.passthrough = true dans nos "
 "périphériques virtuels. Cela permettra de compenser correctement la latence "
-"appliquée par les lecteurs vidéo lorsque PipeWire > 1.0.3 sera disponible."
+"appliquée par les lecteurs vidéo lorsque PipeWire &gt; 1.0.3 sera disponible."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
@@ -803,9 +800,8 @@ msgid "The documentation has been updated"
 msgstr "La documentation a été mise à jour"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:300
-#, fuzzy
 msgid "Improved debug messages"
-msgstr "Amélioration des messages de débogage"
+msgstr "Messages de débogage améliorés"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:311
 msgid "Improved translations"
