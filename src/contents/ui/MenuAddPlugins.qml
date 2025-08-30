@@ -21,7 +21,7 @@ Kirigami.OverlaySheet {
     y: appWindow.header.height + Kirigami.Units.gridUnit
     showCloseButton: false
     implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)
-    implicitHeight: control.parent.height - 2 * (control.header.height + control.footer.height) - control.y
+    implicitHeight: control.parent.height - 2 * control.header.height - control.y
     onClosed: {
         status.visible = false;
     }
