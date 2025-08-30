@@ -348,12 +348,6 @@ Kirigami.Page {
             Connections {
                 function onPipelineChanged() {
                     const newList = pageStreamsEffects.streamDB.plugins;
-                    let currentList = [];
-                    for (let n = 0; n < pluginsListModel.count; n++) {
-                        currentList.push(pluginsListModel.get(n).name);
-                    }
-                    if (Common.equalArrays(newList, currentList))
-                        return;
 
                     populatePluginsListModel(newList);
 
@@ -412,9 +406,6 @@ Kirigami.Page {
                     implicitWidth: contentItem.childrenRect.width
                     clip: true
                     reuseItems: true
-                    onCurrentItemChanged: {
-                        if (pluginsListView.currentItem) {}
-                    }
                     model: pluginsListModel
 
                     delegate: DelegatePluginsList {
