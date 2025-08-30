@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-08-29 21:24-0300\n"
-"PO-Revision-Date: 2025-08-15 13:02+0000\n"
+"PO-Revision-Date: 2025-08-30 15:01+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
 "cs/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.13.1-dev\n"
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -39,9 +39,8 @@ msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Nahrát předvolbu. Příklad: easyeffects -l music"
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid "preset-name"
-msgstr "Název nové předvolby"
+msgstr "název-předvolby"
 
 #: src/command_line_parser.cpp:49
 msgid "Show available presets."
