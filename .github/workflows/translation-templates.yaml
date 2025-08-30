@@ -23,16 +23,17 @@ jobs:
           pacman -Syu --noconfirm ninja gcc pkgconf python3 python-pip which
           # install easyeffects deps
           source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
+          # install deps for translation templates
+          pacman -Syu --noconfirm kde-dev-scripts
           
       # workaround upstream permissions issue github.com/peter-evans/create-pull-request/issues/1170
       - name: Change git permissions
         run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
-      - name: Run cmake targets
+      - name: Run extract translation messages script
         run: |
-          cmake -B build -S . -G Ninja -Wno-dev
-          cd build
-          ../util/update_translation_templates.sh
+          cd util
+          ./extract-translation-messages.sh
           cd ..
 
       - name: Check for non-timestamp diff
