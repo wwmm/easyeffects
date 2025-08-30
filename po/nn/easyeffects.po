@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-29 12:10-0300\n"
+"POT-Creation-Date: 2025-08-29 21:24-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Norwegian Nynorsk <https://hosted.weblate.org/projects/"
@@ -288,8 +288,8 @@ msgstr "Legg til i utelatne applikasjonar"
 #: src/contents/ui/BlocklistSheet.qml:97
 #: src/contents/ui/ConvolverImpulseSheet.qml:80
 #: src/contents/ui/MenuAddPlugins.qml:41
-#: src/contents/ui/PresetsCommunityPage.qml:72
-#: src/contents/ui/PresetsLocalPage.qml:137 src/contents/ui/RNNoise.qml:187
+#: src/contents/ui/PresetsCommunityPage.qml:77
+#: src/contents/ui/PresetsLocalPage.qml:142 src/contents/ui/RNNoise.qml:187
 #, fuzzy
 msgid "Empty"
 msgstr "Tom liste"
@@ -667,8 +667,8 @@ msgstr "Søk impulsfiler"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:60
 #: src/contents/ui/MenuAddPlugins.qml:140
-#: src/contents/ui/PresetsCommunityPage.qml:48
-#: src/contents/ui/PresetsLocalPage.qml:113
+#: src/contents/ui/PresetsCommunityPage.qml:53
+#: src/contents/ui/PresetsLocalPage.qml:118
 msgid "Search"
 msgstr "Søk"
 
@@ -922,17 +922,17 @@ msgstr ""
 msgid "Remove this effect"
 msgstr ""
 
-#: src/contents/ui/DelegateStreamsList.qml:77
+#: src/contents/ui/DelegateStreamsList.qml:79
 #, fuzzy
-msgid " channels"
+msgid "channels"
 msgstr "Delte kanalar"
 
-#: src/contents/ui/DelegateStreamsList.qml:85 src/contents/ui/Gate.qml:179
+#: src/contents/ui/DelegateStreamsList.qml:87 src/contents/ui/Gate.qml:179
 #: src/contents/ui/RNNoise.qml:80
 msgid "Enable"
 msgstr "Slå på"
 
-#: src/contents/ui/DelegateStreamsList.qml:100
+#: src/contents/ui/DelegateStreamsList.qml:102
 msgid "Exclude"
 msgstr "Ekskluder"
 
@@ -1513,7 +1513,7 @@ msgid "About Easy Effects"
 msgstr "_Om Easy Effects"
 
 #: src/contents/ui/MenuAddPlugins.qml:128
-msgid "Added Plugin"
+msgid "Added Effect"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:111
@@ -1976,11 +1976,11 @@ msgid "Enables support for XDG Global Shortcuts"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:398
-msgid "Native Plugin Window"
+msgid "Native Window of Effects"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:399
-msgid "Allows The Native Plugin Window to be Shown/Hidden"
+msgid "Allows the Native User Interface of Effects to be Shown/Hidden"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:410
@@ -2041,88 +2041,90 @@ msgstr "Profil"
 msgid "Fallback Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsCommunityPage.qml:86
-#: src/contents/ui/PresetsLocalPage.qml:149
-msgid "The Preset %1 failed to load"
-msgstr ""
-
-#: src/contents/ui/PresetsCommunityPage.qml:104
-msgid "Copy to the Local List"
+#: src/contents/ui/PresetsCommunityPage.qml:91
+#: src/contents/ui/PresetsLocalPage.qml:154
+msgid "The Preset %1 Failed to Load"
 msgstr ""
 
 #: src/contents/ui/PresetsCommunityPage.qml:109
+msgid "Copy to the Local List"
+msgstr ""
+
+#: src/contents/ui/PresetsCommunityPage.qml:114
 #, fuzzy
 msgid "Imported the Community Preset"
 msgstr "Førehandsinnstilling"
 
-#: src/contents/ui/PresetsCommunityPage.qml:111
+#: src/contents/ui/PresetsCommunityPage.qml:116
 #, fuzzy
 msgid "Failed to Import the Community Preset"
 msgstr "Førehandsinnstilling"
 
-#: src/contents/ui/PresetsCommunityPage.qml:130
+#: src/contents/ui/PresetsCommunityPage.qml:135
 msgid "Refresh"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:34
-msgid "Preset files imported!"
-msgstr ""
+#: src/contents/ui/PresetsLocalPage.qml:39
+#, fuzzy
+msgid "Preset File Imported."
+msgstr "Impulsfil-liste"
 
-#: src/contents/ui/PresetsLocalPage.qml:36
-msgid "Failed to import the presets!"
-msgstr ""
+#: src/contents/ui/PresetsLocalPage.qml:41
+#, fuzzy
+msgid "Failed to Import the Preset."
+msgstr "Førehandsinnstilling"
 
-#: src/contents/ui/PresetsLocalPage.qml:44
+#: src/contents/ui/PresetsLocalPage.qml:49
 msgid "New Preset Name"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:60
+#: src/contents/ui/PresetsLocalPage.qml:65
 #, fuzzy
 msgid "Import Preset File"
 msgstr "Importer førehandsinnstillingar"
 
-#: src/contents/ui/PresetsLocalPage.qml:69
+#: src/contents/ui/PresetsLocalPage.qml:74
 #, fuzzy
 msgid "Create Preset"
 msgstr "Importer førehandsinnstillingar"
 
-#: src/contents/ui/PresetsLocalPage.qml:78
+#: src/contents/ui/PresetsLocalPage.qml:83
 msgid "New Preset Created"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:81
+#: src/contents/ui/PresetsLocalPage.qml:86
 msgid "Failed to Create Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:161
+#: src/contents/ui/PresetsLocalPage.qml:166
 msgid "Save Settings to this Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:166
+#: src/contents/ui/PresetsLocalPage.qml:171
 msgid "Settings Saved to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:168
+#: src/contents/ui/PresetsLocalPage.qml:173
 msgid "Failed to Save Settings to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:172
+#: src/contents/ui/PresetsLocalPage.qml:177
 msgid "Delete this Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:177
+#: src/contents/ui/PresetsLocalPage.qml:182
 msgid "The Preset %1 Has Been Removed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:179
+#: src/contents/ui/PresetsLocalPage.qml:184
 msgid "The Preset %1 Could Not Be Removed"
 msgstr ""
 
-#: src/contents/ui/PresetsSheet.qml:64
+#: src/contents/ui/PresetsSheet.qml:64 src/contents/ui/PresetsSheet.qml:107
 msgid "Local"
 msgstr ""
 
-#: src/contents/ui/PresetsSheet.qml:75
+#: src/contents/ui/PresetsSheet.qml:75 src/contents/ui/PresetsSheet.qml:107
 msgid "Community"
 msgstr ""
 
@@ -2133,14 +2135,6 @@ msgstr "Autostyrke"
 
 #: src/contents/ui/PresetsSheet.qml:105
 msgid "No Preset Loaded"
-msgstr ""
-
-#: src/contents/ui/PresetsSheet.qml:107
-msgid "<strong>Local: </strong>"
-msgstr ""
-
-#: src/contents/ui/PresetsSheet.qml:107
-msgid "<strong>Community: </strong>"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:51
@@ -2435,27 +2429,27 @@ msgstr ""
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:487
+#: src/pw_model_nodes.cpp:486
 msgid "Running"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:489
+#: src/pw_model_nodes.cpp:488
 msgid "Suspended"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:491
+#: src/pw_model_nodes.cpp:490
 msgid "Idle"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:493
+#: src/pw_model_nodes.cpp:492
 msgid "Creating"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:495
+#: src/pw_model_nodes.cpp:494
 msgid "Error"
 msgstr ""
 
-#: src/pw_model_nodes.cpp:497
+#: src/pw_model_nodes.cpp:496
 msgid "Unknown"
 msgstr ""
 

@@ -1,0 +1,1641 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the easyeffects-news package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: easyeffects-news\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-28 14:40+0000\n"
+"PO-Revision-Date: 2025-07-01 20:01+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/"
+"changelog/ta/>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.13-dev\n"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
+msgid "Easy Effects"
+msgstr "எளிதான விளைவுகள்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
+msgid "Audio Effects for PipeWire Applications"
+msgstr "பைப்வேர் பயன்பாடுகளுக்கான ஆடியோ விளைவுகள்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
+msgid ""
+"Easy Effects is an advanced audio manipulation tool. It includes an "
+"equalizer, limiter, compressor and a reverberation tool, just to mention a "
+"few. To complement this there is also a built in spectrum analyzer."
+msgstr ""
+"எளிதான விளைவுகள் ஒரு மேம்பட்ட ஆடியோ கையாளுதல் கருவியாகும். இதில் ஒரு "
+"சமநிலைப்படுத்தி, வரம்பு, அமுக்கி மற்றும் எதிரொலிக்கும் கருவி ஆகியவை அடங்கும். இதை "
+"நிறைவு செய்ய ச்பெக்ட்ரம் பகுப்பாய்வியில் கட்டமைக்கப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
+msgid ""
+"Easy Effects is the successor to PulseEffects. Easy Effects only supports "
+"PipeWire's audio server. PulseAudio users should instead use PulseEffects."
+msgstr ""
+"துடிப்பு விளைவுகளுக்கு எளிதான விளைவுகள் வாரிசு. எளிதான விளைவுகள் பைப்வேரின் ஆடியோ "
+"சேவையகத்தை மட்டுமே ஆதரிக்கின்றன. பல்சியுடியோ பயனர்கள் அதற்கு பதிலாக துடிப்புகளைப் "
+"பயன்படுத்த வேண்டும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
+msgid ""
+"Because Easy Effects uses the default PipeWire sound server it will work "
+"with most, if not all, applications you use. All supported applications are "
+"presented in the main window, where each can be enabled individually."
+msgstr ""
+"ஈசி எஃபெக்ட்ச் இயல்புநிலை பைப்வைர் சவுண்ட் சேவையகத்தைப் பயன்படுத்துவதால், நீங்கள் பயன்படுத்தும் "
+"பயன்பாடுகளுடன் இது பெரும்பாலானவற்றுடன் வேலை செய்யும். அனைத்து ஆதரிக்கப்பட்ட பயன்பாடுகளும் "
+"முதன்மையான சாளரத்தில் வழங்கப்படுகின்றன, அங்கு ஒவ்வொன்றும் தனித்தனியாக இயக்கப்படலாம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
+msgid ""
+"Besides manipulating sound output, Easy Effects is able to apply effects to "
+"an input device, such as a microphone. This is, for example, useful in audio "
+"recording, but it also works well during voice conversations."
+msgstr ""
+"ஒலி வெளியீட்டை கையாளுவதைத் தவிர, எளிதான விளைவுகள் மைக்ரோஃபோன் போன்ற உள்ளீட்டு "
+"சாதனத்திற்கு விளைவுகளைப் பயன்படுத்த முடியும். எடுத்துக்காட்டாக, இது ஆடியோ பதிவில் "
+"பயனுள்ளதாக இருக்கும், ஆனால் குரல் உரையாடல்களின் போது இது நன்றாக வேலை செய்கிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
+msgid ""
+"When Easy Effects is launched it will conveniently remember the "
+"configuration used in the last session. It is also possible to save all the "
+"current settings as profiles."
+msgstr ""
+"எளிதான விளைவுகள் தொடங்கப்படும்போது, கடைசி அமர்வில் பயன்படுத்தப்படும் உள்ளமைவை அது "
+"வசதியாக நினைவில் கொள்ளும். தற்போதைய அனைத்து அமைப்புகளையும் சுயவிவரங்களாக சேமிக்க "
+"முடியும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
+#, fuzzy
+msgid "Wellington Wallace"
+msgstr "வெலிங்டன் வாலச்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
+msgid "The main page showing two audio output apps"
+msgstr "இரண்டு ஆடியோ வெளியீட்டு பயன்பாடுகளைக் காட்டும் முதன்மையான பக்கம்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
+msgid "The bass enhancer page showing audio controls"
+msgstr "ஆடியோ கட்டுப்பாடுகளைக் காட்டும் பாச் மேம்படுத்தும் பக்கம்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
+msgid "The convolver page showing audio controls"
+msgstr "ஆடியோ கட்டுப்பாடுகளைக் காட்டும் கான்வால்வர் பக்கம்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:88
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:99
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:114
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:125
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:136
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:148
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:158
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:168
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:182
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:196
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:209
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:223
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:236
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:246
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:260
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:273
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:294
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:310
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:321
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:336
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:352
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:368
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:381
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:391
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:413
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:430
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:445
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:460
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:472
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:480
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:498
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:520
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:537
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:547
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:560
+#, fuzzy
+msgid "Features:"
+msgstr "அம்சங்கள்:"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
+msgid ""
+"Community Presets have been implemented. Users can install packages "
+"containing multiple Easy Effects presets to be imported and applied inside "
+"the application. These packages will be maintained and shipped by "
+"volunteers. You can search them on the repositories of your favorite "
+"distribution."
+msgstr ""
+"சமூக முன்னமைவுகள் செயல்படுத்தப்பட்டுள்ளன. பயனர்கள் இறக்குமதி செய்யப்பட வேண்டிய மற்றும் "
+"பயன்பாட்டிற்குள் பயன்படுத்தப்பட வேண்டிய பல எளிதான விளைவுகள் முன்னமைவுகளைக் கொண்ட "
+"தொகுப்புகளை நிறுவலாம். இந்த தொகுப்புகள் தன்னார்வலர்களால் பராமரிக்கப்பட்டு அனுப்பப்படும். "
+"உங்களுக்கு பிடித்த விநியோகத்தின் களஞ்சியங்களில் அவற்றைத் தேடலாம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
+msgid ""
+"Added the ability of collapsing the sidebar to hide the effects list and "
+"expand the area of the effects user interface."
+msgstr ""
+"விளைவுகள் பட்டியலை மறைக்கவும், விளைவுகள் பயனர் இடைமுகத்தின் பகுதியை விரிவுபடுத்தவும் "
+"பக்கப்பட்டியை இடிந்து விழும் திறனைச் சேர்த்தது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
+msgid ""
+"EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an "
+"output device that is different from the one EasyEffects is using."
+msgstr ""
+"ஈசிஃபெக்ட்ச் PW_KEY_TARGET_OBJECT ஐ வெளியீட்டு சாதனத்திற்கு வரையறுக்கும் ச்ட்ரீம்களைத் "
+"தொடாது, இது ஒரு எளிதான விளைவுகளைப் பயன்படுத்தும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
+msgid "Equalizer APO import feature can now apply Band-Pass filters."
+msgstr ""
+"சமநிலைப்படுத்தி APO இறக்குமதி நற்பொருத்தம் இப்போது பேண்ட்-பாச் வடிப்பான்களைப் பயன்படுத்தலாம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:91
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:105
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:116
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:127
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:139
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:149
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:160
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:172
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:186
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:200
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:213
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:225
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:238
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:249
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:265
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:284
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:302
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:312
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:326
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:342
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:359
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:373
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:383
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:397
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:405
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:419
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:434
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:450
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:462
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:485
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:505
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:523
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:539
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:552
+msgid "Bug fixes:"
+msgstr "பிழை திருத்தங்கள்:"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
+msgid ""
+"A change in GTK 4.14.1 prevented to apply the values inserted into the text "
+"field of our SpinButton widgets. This issue is now resolved."
+msgstr ""
+"சி.டி.கே 4.14.1 இன் மாற்றம் எங்கள் ச்பின்பட்டன் விட்செட்களின் உரை புலத்தில் செருகப்பட்ட "
+"மதிப்புகளைப் பயன்படுத்துவதைத் தடுத்தது. இந்த சிக்கல் இப்போது தீர்க்கப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
+msgid ""
+"The latest Maximizer plugin releases do not have the ceiling control "
+"anymore. So we removed it from our user interface (you can use the plugin "
+"input gain to retrieve the same functionality)."
+msgstr ""
+"அண்மைக் கால மாக்சிமைசர் சொருகி வெளியீடுகளுக்கு இனி உச்சவரம்பு கட்டுப்பாடு இல்லை. எனவே "
+"எங்கள் பயனர் இடைமுகத்திலிருந்து அதை அகற்றினோம் (அதே செயல்பாட்டை மீட்டெடுக்க நீங்கள் சொருகி "
+"உள்ளீட்டு ஆதாயத்தைப் பயன்படுத்தலாம்)."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
+msgid ""
+"Equalizer APO import feature does not crash anymore on Flatpak when invalid "
+"values are provided."
+msgstr ""
+"தவறான மதிப்புகள் வழங்கப்படும்போது சமநிலை APO இறக்குமதி நற்பொருத்தம் பிளாட்பேக்கில் இனி "
+"செயலிழக்காது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:92
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:107
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:118
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:129
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:141
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:151
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:161
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:173
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:188
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:202
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:215
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:227
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:252
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:286
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:303
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:314
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:329
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:421
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:437
+msgid "Other notes:"
+msgstr "மற்ற குறிப்புகள்:"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
+msgid ""
+"In order for Community Presets to be correctly shipped, packagers are "
+"invited to read and follow the guidelines linked inside the README of "
+"EasyEffects master branch."
+msgstr ""
+"சமூக முன்னமைவுகள் சரியாக அனுப்பப்படுவதற்கு, பேக்கேசர்கள் ஈசி எஃபெக்ட்ச் மாச்டர் கிளையின் "
+"README க்குள் இணைக்கப்பட்ட வழிகாட்டுதல்களைப் படிக்கவும் பின்பற்றவும் அழைக்கப்படுகின்றன."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
+msgid ""
+"Presets with Convolver and/or Noise Reduction (RNNoise) effects created "
+"before 7.2.0 version are deprecated. Please reload the irs/model file inside "
+"the Convolver/RNNoise UI and resave the preset."
+msgstr ""
+"7.2.0 பதிப்பிற்கு முன் உருவாக்கப்பட்ட கான்வால்வர் மற்றும்/அல்லது ஒலி குறைப்பு (RNNOISE) "
+"விளைவுகளுடன் முன்னமைவுகள் நீக்கப்படுகின்றன. தயவுசெய்து ஐஆர்எச்/மாடல் கோப்பை கான்வால்வர்/"
+"ஆர்என்னோயிச் யுஐக்குள் மீண்டும் ஏற்றவும், முன்னமைவை மீட்டெடுக்கவும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
+msgid ""
+"Improved the pipeline management system. Non-limiter effects are placed "
+"before the limiter even if the last two plugins in the pipeline are a "
+"limiter followed by a level meter."
+msgstr ""
+"குழாய் மேலாண்மை அமைப்பை மேம்படுத்தியது. குழாய்த்திட்டத்தில் கடைசி இரண்டு செருகுநிரல்கள் "
+"ஒரு வரம்பாக இருந்தாலும், ஒரு நிலை மீட்டரைத் தொடர்ந்து வரம்பு அல்லாத விளைவுகள் வரம்புக்கு "
+"முன் வைக்கப்படுகின்றன."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
+msgid ""
+"Fixed a regression that prevented the level meters to be updated under "
+"certain conditions."
+msgstr ""
+"சில நிபந்தனைகளின் கீழ் புதுப்பிக்கப்பட வேண்டிய அளவிலான மீட்டர்களைத் தடுத்த ஒரு பின்னடைவு "
+"சரி செய்யப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
+msgid ""
+"We now set monitor.passthrough = true in our virtual devices. This will "
+"allow latency offset to be properly applied by video players when PipeWire "
+"&gt; 1.0.3 is released."
+msgstr ""
+"நாங்கள் இப்போது எங்கள் மெய்நிகர் சாதனங்களில் மானிட்டர்.பச்அ்ரூம் = உண்மை என்று அமைத்துள்ளோம். "
+"இது பைப்வைர் & சிடி; 1.0.3 வெளியிடப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
+msgid "Updated translations."
+msgstr "புதுப்பிக்கப்பட்ட மொழிபெயர்ப்புகள்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
+msgid ""
+"EasyEffects will try to avoid moving to its virtual sources streams for "
+"which the user has set a custom target.object that is different from the mic "
+"EE is recording from. THe stream has to be started when EE is already "
+"running for this logic to take effect."
+msgstr ""
+"பயனர் தனிப்பயன் இலக்கை நிர்ணயித்த அதன் மெய்நிகர் மூல நீரோடைகளுக்கு நகர்வதைத் தவிர்க்க "
+"எளிதான செயல்திறன் முயற்சிக்கும். மைக் EE இலிருந்து வேறுபட்டது. இந்த வழக்கு நடைமுறைக்கு "
+"வர EE ஏற்கனவே இயங்கும்போது ச்ட்ரீம் தொடங்கப்பட வேண்டும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:126
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:301
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:396
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:522
+msgid "Updated translations"
+msgstr "புதுப்பிக்கப்பட்ட மொழிபெயர்ப்புகள்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
+msgid "The equalizer can export basic APO preset files"
+msgstr "சமநிலைப்படுத்தி அடிப்படை அப்போ முன்னமைக்கப்பட்ட கோப்புகளை ஏற்றுமதி செய்யலாம்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
+msgid ""
+"Our players/recorders tab will show the audio client binary name in the "
+"cases were no app name is defined."
+msgstr ""
+"எங்கள் பிளேயர்கள்/ரெக்கார்டர்கள் தாவல் ஆடியோ கிளையன்ட் பைனரி பெயரை சந்தர்ப்பங்களில் "
+"காண்பிக்கும், பயன்பாட்டு பெயர் வரையறுக்கப்படவில்லை."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
+msgid ""
+"EasyEffects version can be shown in the command line through the option --"
+"version"
+msgstr "எளிதான எஃபெக்ட்ச் பதிப்பை கட்டளை வரியில் விருப்பத்தின் மூலம் காட்டலாம் -பதிப்பு"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
+msgid ""
+"A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
+"in place until gtk developers fiz things on their side"
+msgstr ""
+"சி.டி.கே 4 சி.டி.கேநிலைப்பட்டி பிழைக்குச் செயல்படுத்தப்பட்டது மற்றும் ஜி.டி.கே "
+"டெவலப்பர்கள் தங்கள் பக்கத்தில் விஷயங்களை உருவாக்கும் வரை வைக்கப்படும்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
+msgid ""
+"Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
+msgstr ""
+"7.1.2 இல் அறிமுகப்படுத்தப்பட்ட பின்னடைவு சரி செய்யப்பட்டது, இது எளிதான விளைவுகளை "
+"செயலிழக்கச் செய்யலாம்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
+msgid "The DeepFilterNet plugin can now be added to the preset file"
+msgstr "டீப்ஃபில்டெர்னெட் சொருகி இப்போது முன்னமைக்கப்பட்ட கோப்பில் சேர்க்கப்படலாம்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
+msgid ""
+"The spectrum has a new option that allows the dynamic vertical scale to be "
+"disabled."
+msgstr ""
+"ச்பெக்ட்ரம் ஒரு புதிய விருப்பத்தைக் கொண்டுள்ளது, இது மாறும் செங்குத்து அளவை முடக்க "
+"அனுமதிக்கிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
+msgid "Improved compatibility with the latest LSP releases."
+msgstr "அண்மைக் கால எல்எச்பி வெளியீடுகளுடன் மேம்படுத்தப்பட்ட பொருந்தக்கூடிய தன்மை."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
+msgid "Fixed an incorrect drawing of the impulse response file characteristics"
+msgstr "உந்துவிசை மறுமொழி கோப்பு பண்புகளின் தவறான வரைபடம் சரி செய்யப்பட்டது"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
+msgid ""
+"Fixed a small bug the prevented the noise reduction voice activity threshold "
+"from being properly initialized."
+msgstr ""
+"ஒரு சிறிய பிழை சரி செய்யப்பட்டது ஒலி குறைப்பு குரல் செயல்பாட்டு வாசல் சரியாக "
+"துவக்கப்படுவதைத் தடுத்தது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:159
+msgid ""
+"Added a new control to the noise reduction plugin that allows the voice "
+"detection to be disabled."
+msgstr ""
+"குரல் கண்டறிதலை முடக்க அனுமதிக்கும் ஒலி குறைப்பு சொருகி ஒரு புதிய கட்டுப்பாட்டைச் "
+"சேர்த்தது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:169
+msgid ""
+"The Filter effect has been improved with new parameters since it has been "
+"ported from Calf Studio to Linux Studio Plugins."
+msgstr ""
+"கன்று ச்டுடியோவிலிருந்து லினக்ச் ச்டுடியோ செருகுநிரல்களுக்கு அனுப்பப்பட்டதிலிருந்து "
+"புதிய அளவுருக்கள் மூலம் வடிகட்டி விளைவு மேம்படுத்தப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
+msgid ""
+"Noise reduction by RNNoise has been improved with the addition of Release "
+"and VAD Threshold controls."
+msgstr ""
+"வெளியீடு மற்றும் VAD வாசல் கட்டுப்பாடுகளைச் சேர்ப்பதன் மூலம் RNNOISE ஆல் ஒலி குறைப்பு "
+"மேம்படுத்தப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:171
+msgid ""
+"Noise reduction by RNNoise can now mix the original and denoised signals to "
+"avoid the output to sound too \"dry\"."
+msgstr ""
+"Rnnoise இன் ஒலி குறைப்பு இப்போது அசல் மற்றும் டினோய்ட் சிக்னல்களை கலக்கலாம், வெளியீட்டை "
+"மிகவும் \"உலர்ந்த\" ஒலிக்கத் தவிர்க்கலாம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:174
+msgid ""
+"This release is intended to work with versions of Linux Studio Plugins equal "
+"or greater than \"1.2.10\"."
+msgstr ""
+"இந்த வெளியீடு லினக்ச் ச்டுடியோ செருகுநிரல்களின் பதிப்புகளுடன் \"1.2.10\" ஐ விட "
+"சமமாகவோ அல்லது அதிகமாகவோ செயல்பட வேண்டும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:175
+msgid "EasyEffects is now buildable also with libc++."
+msgstr "எளிதான விளைவுகள் இப்போது LIBC ++ உடன் கட்டமைக்கப்படுகின்றன."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
+msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
+msgstr ""
+"லினக்ச் ச்டுடியோ செருகுநிரல்களிலிருந்து விரிவாக்கத்தை எளிதான விளைவுகளில் பயன்படுத்தலாம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
+msgid ""
+"The Equalizer bands now have an additional gain control that allows for more "
+"efficient input of values that are hard to set in the scale. More details at "
+"issue 1383."
+msgstr ""
+"சமநிலை பட்டைகள் இப்போது கூடுதல் ஆதாயக் கட்டுப்பாட்டைக் கொண்டுள்ளன, இது அளவில் அமைக்க "
+"கடினமாக இருக்கும் மதிப்புகளின் திறமையான உள்ளீட்டை அனுமதிக்கிறது. வெளியீடு 1383 இல் "
+"மேலும் விவரங்கள்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
+msgid ""
+"Added the ability to select and load multiple files in the opening dialogs "
+"for presets, Convolver impulse responses and RNNoise models."
+msgstr ""
+"முன்னமைவுகளுக்கான தொடக்க உரையாடல்களில் பல கோப்புகளைத் தேர்ந்தெடுத்து ஏற்றும் திறனைச் "
+"சேர்த்தது, கான்வால்வர் உந்துவிசை பதில்கள் மற்றும் RNNOISE மாதிரிகள்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
+msgid "Fixed the Solo button in the Equalizer band settings."
+msgstr "சமநிலை இசைக்குழு அமைப்புகளில் தனி பொத்தானை சரி செய்தது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
+msgid ""
+"Easy Effects folders under /etc have been deprecated and presets located "
+"there won't be loaded anymore. At the moment only local presets under "
+"~/.config/easyeffects are automatically loaded in the Presets Menu. In the "
+"future we will implement a new system to install, manage and import "
+"Community Presets."
+msgstr ""
+"எளிதான விளைவுகள் கோப்புறைகள் /போன்றவை நீக்கப்பட்டன, அங்கு அமைந்துள்ள முன்னமைவுகள் இனி "
+"ஏற்றப்படாது. இந்த நேரத்தில் ~/.config/Easefects இன் கீழ் உள்ள உள்ளக முன்னமைவுகள் மட்டுமே "
+"முன்னமைவு பட்டியலில் தானாக ஏற்றப்படும். எதிர்காலத்தில் சமூக முன்னமைவுகளை நிறுவ, "
+"நிர்வகிக்க மற்றும் இறக்குமதி செய்ய ஒரு புதிய அமைப்பை செயல்படுத்துவோம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
+msgid ""
+"An \"Experimental Features\" section was added to our preferences window."
+msgstr ""
+"எங்கள் விருப்பத்தேர்வுகள் சாளரத்தில் ஒரு \"சோதனை நற்பொருத்தங்கள்\" பிரிவு சேர்க்கப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
+msgid ""
+"The native window of the LSP plugins can be used. This is an experimental "
+"feature intended only for advanced users. So expect some bugs."
+msgstr ""
+"எல்.எச்.பி செருகுநிரல்களின் சொந்த சாளரத்தைப் பயன்படுத்தலாம். இது மேம்பட்ட பயனர்களுக்கு "
+"மட்டுமே நோக்கம் கொண்ட ஒரு சோதனை அம்சமாகும். எனவே சில பிழைகள் எதிர்பார்க்கலாம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:199
+msgid "Fractional semitone values can now be used in the Pitch Shift effect."
+msgstr "பகுதியளவு செமிடோன் மதிப்புகள் இப்போது சுருதி மாற்ற விளைவில் பயன்படுத்தப்படலாம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:201
+msgid ""
+"The input/output device dropdown in our PipeWire tab is updated when the "
+"system default device changes and Use Default is enabled. This fixes issue "
+"issue 1989."
+msgstr ""
+"கணினி இயல்புநிலை சாதனம் மாறும்போது மற்றும் பயன்பாட்டு இயல்புநிலை இயக்கப்பட்டால் எங்கள் "
+"பைப்வைர் தாவலில் உள்ளீடு/வெளியீட்டு சாதன கீழ்தோன்றல் புதுப்பிக்கப்படும். இது வெளியீட்டு "
+"வெளியீடு 1989 ஐ சரிசெய்கிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
+msgid "A new Level Meter plugin based on libebur128 has been added."
+msgstr "லிபர் 128 ஐ அடிப்படையாகக் கொண்ட புதிய நிலை மீட்டர் சொருகி சேர்க்கப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
+msgid ""
+"The Pitch plugin now uses the library SoundTouch instead of Rubberband. "
+"Hopefully some of the mysterious crashes that were happening with Rubbernand "
+"are not going to happen anymore."
+msgstr ""
+"பிட்ச் சொருகி இப்போது ரப்பர் பேண்டிற்கு பதிலாக நூலக சவுண்ட்டூச்சைப் பயன்படுத்துகிறது. "
+"ரப்பர் பேண்டுடன் நடக்கும் சில மர்மமான விபத்துக்கள் இனி நடக்கப்போவதில்லை என்று நம்புகிறோம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:212
+msgid ""
+"Improved compatibility with recent PipeWire versions. More information at"
+msgstr ""
+"அண்மைக் கால பைப்வேர் பதிப்புகளுடன் மேம்படுத்தப்பட்ட பொருந்தக்கூடிய தன்மை. மேலும் செய்தி"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
+msgid ""
+"Active Equalizer filters are not set to Bell type anymore when the number of "
+"bands changes."
+msgstr ""
+"பேண்டுகளின் எண்ணிக்கை மாறும்போது செயலில் சமநிலைப்படுத்தி வடிப்பான்கள் பெல் வகைக்கு "
+"அமைக்கப்படாது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:216
+msgid ""
+"Rabberband is not a dependency anymore since it has been replaced by "
+"SoundTouch."
+msgstr "சவுண்ட்டூச் மாற்றப்பட்டதால் ரப்பேண்ட் இனி சார்பு இல்லை."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:224
+msgid ""
+"The presets menu now asks for confirmation before saving/deleting a preset "
+"file."
+msgstr ""
+"முன்னமைக்கப்பட்ட கோப்பைச் சேமிப்பது/நீக்குவதற்கு முன் முன்னமைவு பட்டியல் இப்போது "
+"உறுதிப்படுத்தல் கேட்கிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:226
+msgid "The plugin reset should not make its controls innefective anymore."
+msgstr "சொருகி மீட்டமைப்பு அதன் கட்டுப்பாடுகளை இனி செய்யக்கூடாது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:228
+msgid ""
+"Speex is no longer incorrectly listed as a build dependency (speexdsp is "
+"still a build dependency)"
+msgstr ""
+"ச்பீக்ச் இனி ஒரு கட்டமைப்பை சார்பு என தவறாக பட்டியலிடப்படவில்லை (SpeexDSP இன்னும் ஒரு "
+"உருவாக்க சார்புநிலையாகும்)"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
+msgid ""
+"RNNoise is no longer an autodependency. It is now required by default, if "
+"not available it must be explicitly disabled with -Denable-rnnoise=false"
+msgstr ""
+"Rnnoise இனி ஒரு தன்னியக்க சார்பு இல்லை. இது இப்போது இயல்பாகவே தேவைப்படுகிறது, "
+"கிடைக்கவில்லை என்றால் அது -denable -rnnoise = பொய்யுடன் வெளிப்படையாக முடக்கப்பட வேண்டும்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
+msgid ""
+"A small mistake was done in the last release. Making a new one to make sure "
+"people have the right branch in the package"
+msgstr ""
+"கடைசி வெளியீட்டில் ஒரு சிறிய தவறு செய்யப்பட்டது. தொகுப்பில் மக்கள் சரியான கிளையை "
+"வைத்திருப்பதை உறுதிசெய்ய புதியதை உருவாக்குதல்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:247
+msgid ""
+"The Equalizer \"sort bands\" feature is now ordering bands on GSettings, so "
+"the result can be saved into presets."
+msgstr ""
+"சமநிலைப்படுத்தி \"வரிசைப்படுத்தப்பட்ட இசைக்குழுக்கள்\" நற்பொருத்தம் இப்போது GSETTINGS இல் "
+"பட்டைகள் ஆர்டர் செய்கிறது, எனவே இதன் விளைவாக முன்னமைவுகளாக சேமிக்க முடியும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:248
+msgid "Improved performance when resetting keys."
+msgstr "விசைகளை மீட்டமைக்கும்போது மேம்பட்ட செயல்திறன்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:250
+msgid ""
+"Fixed the \"Large Empty Hall\" preset selection in the Reverberation effect."
+msgstr ""
+"எதிரொலிக்கும் விளைவில் \"பெரிய வெற்று மண்டபம்\" முன்னமைக்கப்பட்ட தேர்வு சரி செய்யப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:251
+msgid ""
+"Fixed some misuses of PipeWire's API that can potentially fix some random "
+"bugs some users are facing."
+msgstr ""
+"சில பயனர்கள் எதிர்கொள்ளும் சில சீரற்ற பிழைகளை சரிசெய்யக்கூடிய பைப்வேரின் பநிஇ இன் சில "
+"தவறான பயன்பாடுகள் சரி செய்யப்பட்டன."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:253
+msgid ""
+"As we are removing code deprecated by GTK 4.10 the minimum GTK version has "
+"been increased."
+msgstr ""
+"சி.டி.கே 4.10 ஆல் நீக்கப்பட்ட குறியீட்டை நாங்கள் அகற்றுவதால் குறைந்தபட்ச சி.டி.கே பதிப்பு "
+"அதிகரிக்கப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:261
+msgid ""
+"The spectrum plugin update rate was improved. Different sampling rates "
+"should lead to similar update frequencies visually."
+msgstr ""
+"ச்பெக்ட்ரம் சொருகி புதுப்பிப்பு வீதம் மேம்படுத்தப்பட்டது. வெவ்வேறு மாதிரி விகிதங்கள் "
+"பார்வைக்கு ஒத்த புதுப்பிப்பு அதிர்வெண்களுக்கு வழிவகுக்கும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:262
+msgid ""
+"The update interval used by level meters and the spectrum can be customized "
+"by the user."
+msgstr ""
+"நிலை மீட்டர் மற்றும் ச்பெக்ட்ரம் பயன்படுத்தும் புதுப்பிப்பு இடைவெளி பயனரால் "
+"தனிப்பயனாக்கப்படலாம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:263
+msgid ""
+"The equalizer band gain slider value can be updated in larger steps. Fine "
+"grain control is still possible through the keyboard up/down keys."
+msgstr ""
+"சமநிலைப்படுத்தி இசைக்குழு ஆதாய ச்லைடர் மதிப்பை பெரிய படிகளில் புதுப்பிக்க முடியும். "
+"விசைப்பலகை மேல்/கீழ் விசைகள் மூலம் சிறந்த தானியக் கட்டுப்பாடு இன்னும் சாத்தியமாகும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:264
+msgid "Small improvements to the echo canceller."
+msgstr "எக்கோ ரத்துசெய்யும் சிறிய மேம்பாடுகள்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:266
+msgid ""
+"The echo canceller probes were not being linked to the soundcard after the "
+"move to multiple filters intances. This should be fixed now."
+msgstr ""
+"பல வடிப்பான்கள் நிகழ்வுகளுக்குச் சென்றபின் எக்கோ ரத்துசெய்யும் ஆய்வுகள் சவுண்ட்கார்டுடன் "
+"இணைக்கப்படவில்லை. இது இப்போது சரி செய்யப்பட வேண்டும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:274
+msgid ""
+"It is now possible to add more than one filter instance to the effects "
+"pipeline."
+msgstr ""
+"எஃபெக்ட்ச் பைப்லைனில் ஒன்றுக்கு மேற்பட்ட வடிகட்டி நிகழ்வுகளை இப்போது சேர்க்க முடியும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:275
+msgid ""
+"A new Speech Processor plugin based on the Speex library was added. Besides "
+"providing noise suppression it also can detect voice activity. It is a "
+"decent alternative to the cases whre the rnnoise library does not work well."
+msgstr ""
+"ச்பீக்ச் நூலகத்தை அடிப்படையாகக் கொண்ட புதிய பேச்சு செயலி சொருகி சேர்க்கப்பட்டது. ஒலி "
+"அடக்கப்படுவதைத் தவிர, குரல் செயல்பாட்டையும் கண்டறிய முடியும். Rnnoise நூலகம் சரியாக "
+"வேலை செய்யாத வழக்குகளுக்கு இது ஒரு நல்ல மாற்றாகும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:276
+msgid "Improved compatibility with Linux Studio Plugins 1.2.3."
+msgstr "லினக்ச் ச்டுடியோ செருகுநிரல்களுடன் மேம்படுத்தப்பட்ட பொருந்தக்கூடிய தன்மை 1.2.3."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:277
+msgid "GraphicEQ presets can be imported into the Equalizer effect."
+msgstr "கிராஃபிசெக் முன்னமைவுகளை சமநிலை விளைவுக்கு இறக்குமதி செய்யலாம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:278
+msgid ""
+"The application name has been changed to Easy Effects to adhere to the "
+"naming conventions of GNOME Human Interface Guidelines."
+msgstr ""
+"க்னோம் மனித இடைமுக வழிகாட்டுதல்களின் பெயரிடும் மரபுகளை கடைபிடிக்க எளிதான விளைவுகளாக "
+"பயன்பாட்டு பெயர் மாற்றப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:279
+msgid "The documentation has been updated."
+msgstr "ஆவணங்கள் புதுப்பிக்கப்பட்டுள்ளன."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:280
+msgid "Improved presets autoloading."
+msgstr "மேம்படுத்தப்பட்ட முன்னமைவுகள் ஆட்டோலோடிங்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:281
+msgid "The Autogain silence threshold can now be configured by the user."
+msgstr "ஆட்டோகெயின் ம silence னம் வாசலை இப்போது பயனரால் கட்டமைக்க முடியும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
+msgid "Dry and wet controls added to the Stereo Tools effect."
+msgstr "உலர் மற்றும் ஈரமான கட்டுப்பாடுகள் ச்டீரியோ கருவிகள் விளைவில் சேர்க்கப்படுகின்றன."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
+msgid ""
+"The echo canceller now has a residual noise suppression control also based "
+"on the Speex library."
+msgstr ""
+"எக்கோ ரத்துசெய்தல் இப்போது ச்பீக்ச் நூலகத்தின் அடிப்படையில் எஞ்சியிருக்கும் இரைச்சல் அடக்க "
+"கட்டுப்பாட்டைக் கொண்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:285
+msgid ""
+"When the mouse was hovering over a chart the wrong value for the x axis "
+"coordinate was being shown. This regression is fixed."
+msgstr ""
+"சுட்டி ஒரு விளக்கப்படத்தில் சுற்றிக் கொண்டிருந்தபோது, எக்ச் அச்சு ஒருங்கிணைப்புக்கான தவறான "
+"மதிப்பு காட்டப்பட்டது. இந்த பின்னடைவு சரி செய்யப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:287
+msgid ""
+"Because of the new multiple instances feature, the preset format has "
+"changed, but the old one is still compatible to be loaded. Anyway take in "
+"consideration that saving the current preset will always write it in the new "
+"format."
+msgstr ""
+"புதிய பல நிகழ்வுகள் அம்சத்தின் காரணமாக, முன்னமைக்கப்பட்ட வடிவம் மாறிவிட்டது, ஆனால் "
+"பழையது இன்னும் ஏற்றப்படுவதற்கு இணக்கமானது. தற்போதைய முன்னமைவைக் காப்பாற்றுவது எப்போதும் "
+"புதிய வடிவத்தில் அதை எழுதும் என்பதைக் கருத்தில் கொள்ளுங்கள்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:295
+msgid ""
+"Multiband Gate implementation has been migrated from CALF to Linux Studio "
+"Plugins."
+msgstr ""
+"மல்டிபாண்ட் கேட் செயல்படுத்தல் கன்றிலிருந்து லினக்ச் ச்டுடியோ செருகுநிரல்களுக்கு "
+"இடம்பெயர்ந்துள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:296
+msgid ""
+"The preset autoloading code compatibility with bluez5 devices has been "
+"improved."
+msgstr ""
+"PLUEZ5 சாதனங்களுடன் முன்னமைக்கப்பட்ட ஆட்டோலோடிங் குறியீடு பொருந்தக்கூடிய தன்மை "
+"மேம்படுத்தப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:297
+msgid "Wet/dry controls were added for some plugins"
+msgstr "சில செருகுநிரல்களுக்கு ஈரமான/உலர் கட்டுப்பாடுகள் சேர்க்கப்பட்டன"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:298
+msgid ""
+"Effect interface is no longer loaded when the related lv2 plugin is not "
+"installed on the system. In its place a status message to the user is shown."
+msgstr ""
+"தொடர்புடைய எல்வி 2 சொருகி கணினியில் நிறுவப்படாதபோது விளைவு இடைமுகம் இனி "
+"ஏற்றப்படாது. அதன் இடத்தில் பயனருக்கு ஒரு நிலை செய்தி காட்டப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:299
+msgid "The documentation has been updated"
+msgstr "ஆவணங்கள் புதுப்பிக்கப்பட்டுள்ளன"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:300
+#, fuzzy
+msgid "Improved debug messages"
+msgstr "மேம்படுத்தப்பட்ட பிழைத்திருத்த செய்திகள்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:311
+msgid "Improved translations"
+msgstr "மேம்படுத்தப்பட்ட மொழிபெயர்ப்புகள்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:313
+msgid ""
+"Fixed a bug where EasyEffects could crash when closing its window while "
+"effects were being applied."
+msgstr ""
+"விளைவுகள் பயன்படுத்தப்படும் போது அதன் சாளரத்தை மூடும்போது எளிதான விளைவுகள் "
+"செயலிழக்கக்கூடிய ஒரு பிழை சரி செய்யப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:322
+msgid ""
+"The bypass state can be saved to the preset file. The reasons why this was "
+"done can be seen at issue 1039"
+msgstr ""
+"பைபாச் நிலையை முன்னமைக்கப்பட்ட கோப்பில் சேமிக்க முடியும். இது செய்யப்பட்டதற்கான காரணங்களை "
+"வெளியீடு 1039 இல் காணலாம்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:323
+msgid ""
+"The preset autoloading code compatibility with usb devices has been improved."
+msgstr ""
+"யூ.எச்.பி சாதனங்களுடன் முன்னமைக்கப்பட்ட ஆட்டோலோடிங் குறியீடு பொருந்தக்கூடிய தன்மை "
+"மேம்படுத்தப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:324
+msgid ""
+"A dialog is shown to the user when a preset fails to load or a preset/"
+"impulse file fails to be imported."
+msgstr ""
+"ஒரு முன்னமைக்கப்பட்டவை ஏற்றத் தவறும் போது அல்லது முன்னமைக்கப்பட்ட/உந்துவிசை கோப்பு "
+"இறக்குமதி செய்யத் தவறும் போது பயனருக்கு ஒரு உரையாடல் காண்பிக்கப்படுகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:325
+msgid ""
+"The SideChain Gate plugin from Linux Studio Plugins is now used instead of "
+"the one from Calf Studio."
+msgstr ""
+"கன்று ச்டுடியோவிலிருந்து ஒன்றுக்கு பதிலாக லினக்ச் ச்டுடியோ செருகுநிரல்களிலிருந்து "
+"சைட்செயின் கேட் செருகுநிரல் இப்போது பயன்படுத்தப்படுகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:327
+msgid ""
+"EasyEffects should not crash anymore when the user locale is not properly "
+"configured."
+msgstr ""
+"பயனர் இருப்பிடம் சரியாக கட்டமைக்கப்படாதபோது எளிதான விளைவுகள் இனி செயலிழக்கக்கூடாது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:328
+msgid ""
+"A workaround was implemented in our icon to deal with the lack of proper SVG "
+"support in QT."
+msgstr ""
+"கியுடி இல் சரியான எச்.வி.சி உதவி இல்லாததைக் கையாள எங்கள் ஐகானில் ஒரு பணித்தொகுப்பு "
+"செயல்படுத்தப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:337
+msgid ""
+"When effects are disable to an application we now set its target metadata to "
+"null. This will allow the media session manager (wireplumber) to properly "
+"move the stream to a new device."
+msgstr ""
+"ஒரு பயன்பாட்டிற்கு விளைவுகள் முடக்கப்படும்போது, இப்போது அதன் இலக்கு மெட்டாடேட்டாவை "
+"பூச்யமாக அமைத்துள்ளோம். இது மீடியா அமர்வு மேலாளர் (வயர் பிளம்பர்) ச்ட்ரீமை புதிய "
+"சாதனத்திற்கு சரியாக நகர்த்த அனுமதிக்கும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:338
+msgid ""
+"A new configuration option was added. It allows EasyEffects to ignore "
+"streams whose purpose is to monitor sink devices. This will help to fix some "
+"of problems our users were having when using OBS."
+msgstr ""
+"புதிய உள்ளமைவு விருப்பம் சேர்க்கப்பட்டது. மடு சாதனங்களை கண்காணிப்பதே இதன் நோக்கம் "
+"நீரோடைகளை புறக்கணிக்க எளிதான விளைவுகளை இது அனுமதிக்கிறது. OBS ஐப் பயன்படுத்தும் போது "
+"எங்கள் பயனர்கள் கொண்டிருந்த சில சிக்கல்களை சரிசெய்ய இது உதவும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:339
+msgid "The code that shows the stream sample format has been improved"
+msgstr "ச்ட்ரீம் மாதிரி வடிவமைப்பைக் காட்டும் குறியீடு மேம்படுத்தப்பட்டுள்ளது"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:340
+msgid ""
+"The rnnoise library is now optional. This should help package maintainers to "
+"build a Debian package. See issue 1000 for more information."
+msgstr ""
+"Rnnoise நூலகம் இப்போது விருப்பமானது. இது ஒரு டெபியன் தொகுப்பை உருவாக்க தொகுப்பு "
+"பராமரிப்பாளர்களுக்கு உதவ வேண்டும். மேலும் தகவலுக்கு வெளியீடு 1000 ஐப் பார்க்கவும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:341
+msgid ""
+"Our logs now show the source code line where the messages are being printed"
+msgstr "எங்கள் பதிவுகள் இப்போது செய்திகள் அச்சிடப்படும் மூலக் குறியீட்டைக் காட்டுகின்றன"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:343
+msgid ""
+"The \"enable effects\" checkbox in our window was not being updated when "
+"third party programs like pavucontrol moved the stream away from our virtual "
+"devices. This should be fixed now."
+msgstr ""
+"எங்கள் சாளரத்தில் உள்ள \"விளைவுகளை இயக்கு\" தேர்வுப்பெட்டி புதுப்பிக்கப்படவில்லை, "
+"பெவுகண்ட்ரோல் போன்ற மூன்றாம் தரப்பு திட்டங்கள் எங்கள் மெய்நிகர் சாதனங்களிலிருந்து ச்ட்ரீமை "
+"நகர்த்தின. இது இப்போது சரி செய்யப்பட வேண்டும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:344
+msgid ""
+"Fixed a crash that could happen when the maximum autogain history was "
+"changed."
+msgstr ""
+"அதிகபட்ச ஆட்டோகெயின் வரலாறு மாற்றப்பட்டபோது ஏற்படக்கூடிய ஒரு விபத்து சரி செய்யப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:345
+msgid "Avoid crashes when pw-mididump is running"
+msgstr "PW-MIDIDUMP இயங்கும்போது செயலிழப்புகளைத் தவிர்க்கவும்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:353
+msgid "The interface of the pitch plugin was improved"
+msgstr "சுருதி சொருகி இடைமுகம் மேம்படுத்தப்பட்டது"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:354
+msgid "Our application icon is now compatible with desktops that uses QT"
+msgstr ""
+"எங்கள் பயன்பாட்டு படவுரு இப்போது கியுடி ஐப் பயன்படுத்தும் டெச்க்டாப்புகளுடன் இணக்கமானது"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:355
+msgid ""
+"Our blocklist code will use the application.id tag if the stream sets it"
+msgstr ""
+"ச்ட்ரீம் அதை அமைத்தால் எங்கள் பிளாக்லிச்ட் குறியீடு application.id குறிச்சொல்லைப் பயன்படுத்தும்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:356
+msgid ""
+"In order to avoid problems with the mouse scroll the entries in the "
+"applications list shown in our Players/Recorders tab do not show a volume "
+"scale anymore. More details about the problem and the solution for it can be "
+"found on issue 1211 and issue 1427"
+msgstr ""
+"சுட்டி உருட்டலில் உள்ள சிக்கல்களைத் தவிர்ப்பதற்காக, எங்கள் பிளேயர்கள்/ரெக்கார்டர்கள் தாவலில் "
+"காட்டப்பட்டுள்ள பயன்பாடுகள் பட்டியலில் உள்ளீடுகளை இனி ஒரு தொகுதி அளவைக் காட்டாது. சிக்கல் "
+"மற்றும் அதற்கான தீர்வைப் பற்றிய கூடுதல் விவரங்கள் வெளியீடு 1211 மற்றும் வெளியீடு 1427 இல் "
+"காணலாம்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:357
+msgid ""
+"When no application is available for display in the Players/Recorders a "
+"message will be shown to the user"
+msgstr ""
+"பிளேயர்கள்/ரெக்கார்டர்களில் காட்சிக்கு எந்த பயன்பாடும் கிடைக்காதபோது பயனருக்கு ஒரு செய்தி "
+"காண்பிக்கப்படும்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:358
+msgid "Many translation updates"
+msgstr "பல மொழிபெயர்ப்பு புதுப்பிப்புகள்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:360
+msgid ""
+"Fixed a bug where EasyEffects crashed when the number of points displayed in "
+"the spectrum was changed while our pipeline was active and the spectrum "
+"widget was visible"
+msgstr ""
+"எங்கள் குழாய் செயலில் இருந்தபோது ச்பெக்ட்ரமில் காட்டப்படும் புள்ளிகளின் எண்ணிக்கை "
+"மாற்றப்பட்டபோது எளிதான விளைவுகள் செயலிழந்த ஒரு பிழை சரி செய்யப்பட்டது மற்றும் ச்பெக்ட்ரம் "
+"விட்செட் தெரியும்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:361
+msgid ""
+"The pipeline latency value displayed in our window could be wrong in some "
+"situations. This was fixed."
+msgstr ""
+"எங்கள் சாளரத்தில் காட்டப்படும் குழாய் தாமத மதிப்பு சில சூழ்நிலைகளில் தவறாக இருக்கலாம். "
+"இது சரி செய்யப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:369
+msgid ""
+"There is a new setting allowing the user to select an inactivity timeout for "
+"the pipeline. When no client is playing to or recording from our devices the "
+"filters will be unlinked after the timeout is reached. This is done to make "
+"sure we do not waste CPU power processing silence."
+msgstr ""
+"பைப்லைனுக்கான செயலற்ற காலக்கெடு தேர்ந்தெடுக்க பயனரை அனுமதிக்கும் புதிய அமைப்பு உள்ளது. "
+"எந்தவொரு வாடிக்கையாளரும் எங்கள் சாதனங்களிலிருந்து விளையாடவோ அல்லது பதிவு செய்யவோ "
+"இல்லாதபோது, நேரம் முடிந்ததும் வடிப்பான்கள் இணைக்கப்படும். சிபியு மின் பதப்படுத்தும் "
+"ம .னத்தை நாங்கள் வீணாக்கவில்லை என்பதை உறுதிப்படுத்த இது செய்யப்படுகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:370
+msgid ""
+"The autogain plugin now allows the user to select which of the three "
+"loudness are used to calculate the geometric mean."
+msgstr ""
+"ஆட்டோகெயின் சொருகி இப்போது வடிவியல் சராசரியைக் கணக்கிட மூன்று சத்தங்களில் எது "
+"பயன்படுத்தப்படுகிறது என்பதைத் தேர்ந்தெடுக்க பயனரை அனுமதிக்கிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:371
+msgid ""
+"The autogain plugin now allows the maximum history to be set and does not "
+"use libebur128 histogram mode anymore. This should avoid the cases where the "
+"Integrated loudness gets stuck forever in the same value."
+msgstr ""
+"ஆட்டோகெயின் சொருகி இப்போது அதிகபட்ச வரலாற்றை அமைக்க அனுமதிக்கிறது மற்றும் இனி லிபர் "
+"128 இச்டோகிராம் பயன்முறையைப் பயன்படுத்தாது. ஒருங்கிணைந்த ஒலி ஒரே மதிப்பில் எப்போதும் "
+"சிக்கிக்கொண்ட நிகழ்வுகளை இது தவிர்க்க வேண்டும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:372
+msgid ""
+"EasyEffects icon has been updated in a way that should make it visible in QT "
+"desktops."
+msgstr ""
+"கியுடி டெச்க்டாப்புகளில் காணக்கூடிய வகையில் எளிதான செயல்திறன் படவுரு "
+"புதுப்பிக்கப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:374
+msgid ""
+"The command line option that returns the global bypass state is working "
+"again."
+msgstr ""
+"உலகளாவிய பைபாச் நிலையை திருப்பித் தரும் கட்டளை வரி விருப்பம் மீண்டும் செயல்படுகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:382
+msgid ""
+"The crossfeed filter should deal better with PipeWire's dynamic latency "
+"switches. Jumps in volume level should not happen anymore in these "
+"situations."
+msgstr ""
+"கிராச்ஃபீட் வடிகட்டி பைப்வேரின் மாறும் தாமத சுவிட்சுகளை சிறப்பாகக் கையாள வேண்டும். இந்த "
+"சூழ்நிலைகளில் தொகுதி மட்டத்தில் தாவல்கள் இனி நடக்கக்கூடாது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:384
+msgid ""
+"Fixed a bug that prevented mono microphones from properly working with "
+"EasyEffects"
+msgstr ""
+"மோனோ மைக்ரோஃபோன்கள் எளிதான விளைவுகளுடன் சரியாக வேலை செய்வதைத் தடுக்கும் பிழை சரி "
+"செய்யப்பட்டது"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:392
+msgid "Support for the next PipeWire release 0.3.44"
+msgstr "அடுத்த பைபவயர் வெளியீட்டிற்கான உதவி 0.3.44"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:393
+msgid ""
+"The autogain filter should deal better with PipeWire's dynamic latency "
+"switches. Jumps in volume level should not happen anymore in these "
+"situations."
+msgstr ""
+"ஆட்டோகெயின் வடிகட்டி பைப்வேரின் மாறும் தாமத சுவிட்சுகளை சிறப்பாகக் கையாள வேண்டும். இந்த "
+"சூழ்நிலைகளில் தொகுதி மட்டத்தில் தாவல்கள் இனி நடக்கக்கூடாது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:394
+msgid ""
+"We added an option that allows the volume and mute state of our virtual "
+"devices to be reset when EasyEffects starts. It should help with the cases "
+"were our devices are muted by the audio server for unknown reasons."
+msgstr ""
+"எளிதான செயல்திறன் தொடங்கும் போது எங்கள் மெய்நிகர் சாதனங்களின் அளவு மற்றும் முடக்கு நிலையை "
+"மீட்டமைக்க அனுமதிக்கும் ஒரு விருப்பத்தை நாங்கள் சேர்த்துள்ளோம். அறியப்படாத காரணங்களுக்காக "
+"எங்கள் சாதனங்கள் ஆடியோ சேவையகத்தால் முடக்கப்பட்டிருக்கின்றன."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:395
+msgid "Better support for computer suspending."
+msgstr "கணினி இடைநீக்கம் செய்வதற்கு சிறந்த உதவி."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:398
+msgid ""
+"Fixed a bug where trying to create an autoloading profile without having "
+"presets caused the application to crash."
+msgstr ""
+"முன்னமைவுகள் இல்லாமல் ஆட்டோலோடிங் சுயவிவரத்தை உருவாக்க முயற்சிக்கும் ஒரு பிழை சரி "
+"செய்யப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:406
+msgid ""
+"Fixed a bug where setting a equalizer band quality to zero would lead to an "
+"application crash."
+msgstr ""
+"சமநிலைப்படுத்தும் இசைக்குழு தரத்தை பூச்சியமாக அமைப்பது பயன்பாட்டு செயலிழப்புக்கு "
+"வழிவகுக்கும் ஒரு பிழை சரி செய்யப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:414
+msgid ""
+"LibAdwaita is used to create some parts of our window and for handling the "
+"switching between dark and light themes."
+msgstr ""
+"எங்கள் சாளரத்தின் சில பகுதிகளை உருவாக்கவும், இருண்ட மற்றும் ஒளி கருப்பொருள்களுக்கு "
+"இடையில் மாறுவதைக் கையாளவும் லிபாட்வைதா பயன்படுத்தப்படுகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:415
+msgid "The settings menu has been redesigned using LibAdwaita widgets."
+msgstr ""
+"அமைப்புகள் பட்டியல் லிபாட்வைட்டா விட்செட்டுகளைப் பயன்படுத்தி மறுவடிவமைப்பு செய்யப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:416
+msgid ""
+"Equalizer APO preset import feature has been improved to apply not only the "
+"Bell filter, but also other supported ones (at the moment only the Bandpass "
+"filter is not available in LSP plugin)."
+msgstr ""
+"சமநிலைப்படுத்தி APO முன்னமைக்கப்பட்ட இறக்குமதி நற்பொருத்தம் பெல் வடிகட்டியை மட்டுமல்ல, பிற "
+"ஆதரிக்கப்பட்டவற்றையும் பயன்படுத்த மேம்படுத்தப்பட்டுள்ளது (இந்த நேரத்தில் எல்எச்பி சொருகி "
+"மட்டுமே பேண்ட்பாச் வடிகட்டி கிடைக்கவில்லை)."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:417
+msgid "The Reset All Settings function in our menu should work in Flatpak now."
+msgstr ""
+"எங்கள் பட்டியலில் உள்ள அனைத்து அமைப்புகளும் செயல்பாடுகளை மீட்டமை இப்போது பிளாட்பேக்கில் "
+"வேலை செய்ய வேண்டும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:418
+msgid ""
+"We have a new option that allows the user to disable our menus autohide. "
+"This may help to workaround some bugs Popover menus currently have on gtk4."
+msgstr ""
+"எங்கள் மெனுக்கள் ஆட்டோஐடை முடக்க பயனரை அனுமதிக்கும் புதிய விருப்பம் எங்களிடம் உள்ளது. இது "
+"சி.டி.கே 4 இல் தற்போது வைத்திருக்கும் சில பிழைகள் போபோவர் மெனுக்கள் செயல்பட உதவக்கூடும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:420
+msgid ""
+"More robust parsing to import APO presets saved with comma as thousands "
+"separator in central frequency band."
+msgstr ""
+"நடு அதிர்வெண் இசைக்குழுவில் ஆயிரக்கணக்கான பிரிப்பானாக கமாவுடன் சேமிக்கப்பட்ட அப்போ "
+"முன்னமைவுகளை இறக்குமதி செய்ய மிகவும் வலுவான பாகுபடுத்தல்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:422
+msgid ""
+"The fmt library is a new dependency At least while the c++ compilers do not "
+"implement its features. This is expected to happen in the next years."
+msgstr ""
+"எஃப்எம்டி நூலகம் குறைந்தபட்சம் ஒரு புதிய சார்புநிலையாகும், அதே நேரத்தில் சி ++ "
+"கம்பைலர்கள் அதன் அம்சங்களை செயல்படுத்தவில்லை. இது அடுத்த ஆண்டுகளில் நடக்கும் என்று "
+"எதிர்பார்க்கப்படுகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:423
+msgid ""
+"GTKMM and GLIBMM are not a dependency anymore. We now use gtk4 directly."
+msgstr ""
+"Gtkmm மற்றும் glibmm இனி சார்பு இல்லை. நாங்கள் இப்போது GTK4 ஐ நேரடியாகப் "
+"பயன்படுத்துகிறோம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:431
+msgid ""
+"It is now possible to combine impulse responses in the Convolver interface. "
+"A new impulse file is generated and it should be visible in the impulse list."
+msgstr ""
+"இப்போது கான்வால்வர் இடைமுகத்தில் உந்துவிசை பதில்களை இணைக்க முடியும். ஒரு புதிய "
+"உந்துவிசை கோப்பு உருவாக்கப்படுகிறது, மேலும் இது உந்துவிசை பட்டியலில் காணப்பட வேண்டும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:432
+msgid ""
+"Improved x axis drawings in our plots. Now the number of labels is adjusted "
+"dynamically depending on our window width."
+msgstr ""
+"எங்கள் அடுக்குகளில் மேம்படுத்தப்பட்ட ஃச் அச்சு வரைபடங்கள். இப்போது எங்கள் சாளர அகலத்தைப் "
+"பொறுத்து லேபிள்களின் எண்ணிக்கை மாறும் வகையில் சரிசெய்யப்படுகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:433
+msgid ""
+"The documentation has been updated reflecting the new EasyEffects features. "
+"Old references about PulseEffects have been removed. The documentation "
+"button has been added in the menu section."
+msgstr ""
+"புதிய ஈசி எஃபெக்ட்ச் அம்சங்களை பிரதிபலிக்கும் வகையில் ஆவணங்கள் புதுப்பிக்கப்பட்டுள்ளன. "
+"துடிப்புகள் பற்றிய பழைய குறிப்புகள் அகற்றப்பட்டுள்ளன. ஆவணப்படுத்தல் பொத்தானை பட்டியல் "
+"பிரிவில் சேர்க்கப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:435
+msgid ""
+"When a spinbutton is filled with an out of range value, now it is updated "
+"with the lowest/highest value rather than resetting to the previous one."
+msgstr ""
+"ஒரு ச்பின்பட்டன் வரம்பு மதிப்புக்கு வெளியே நிரப்பப்படும்போது, இப்போது முந்தையதை "
+"மீட்டமைப்பதை விட மிகக் குறைந்த/மிக உயர்ந்த மதிப்புடன் புதுப்பிக்கப்படுகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:436
+msgid ""
+"The application window now remembers the maximized state and restores it on "
+"the next opening event."
+msgstr ""
+"பயன்பாட்டு சாளரம் இப்போது அதிகபட்ச நிலையை நினைவில் வைத்து அடுத்த தொடக்க நிகழ்வில் அதை "
+"மீட்டெடுக்கிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:438
+msgid "The tbb library is a new dependency"
+msgstr "TBB நூலகம் ஒரு புதிய சார்பு"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:446
+msgid ""
+"The Limiter and the Multiband Compressor plugins can now use an optional "
+"external sidechain."
+msgstr ""
+"லிமிட்டர் மற்றும் மல்டிபாண்ட் அமுக்கி செருகுநிரல்கள் இப்போது விருப்பமான வெளிப்புற "
+"பக்கவாட்டைப் பயன்படுத்தலாம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:447
+msgid ""
+"The Autogain plugin now allows the user to select which Loudness is used as "
+"reference for the volume correction."
+msgstr ""
+"ஆட்டோகெயின் சொருகி இப்போது பயனருக்கு தொகுதி திருத்தத்திற்கான எந்த ஒலி "
+"பயன்படுத்தப்படுகிறது என்பதைத் தேர்ந்தெடுக்க அனுமதிக்கிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:448
+msgid ""
+"The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
+"Amplification\" parameter."
+msgstr ""
+"சமநிலைப்படுத்தி சொருகி APO சுயவிவர இறக்குமதி நற்பொருத்தம் இப்போது \"முன் பெருக்கம்\" "
+"அளவுருவை பாகுபடுத்துகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:449
+msgid "Optional Cubic Volume can be enabled in General Settings."
+msgstr "விருப்ப கன அளவை பொது அமைப்புகளில் இயக்க முடியும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:451
+msgid ""
+"The Spectrum plugin was supposed to enter passthrough whenever it was not "
+"visible, but this was happening only when our window was closed."
+msgstr ""
+"ச்பெக்ட்ரம் சொருகி அது தெரியாத போதெல்லாம் பாச்ட்ரூவுக்குள் நுழைய வேண்டும், ஆனால் எங்கள் "
+"சாளரம் மூடப்பட்டபோதுதான் இது நடக்கிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:452
+msgid "Improved support for Assistive Technology."
+msgstr "உதவி தொழில்நுட்பத்திற்கான மேம்பட்ட உதவி."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:453
+msgid ""
+"The probes used in some filters like the Compressor and the Limiter were not "
+"being relinked after changing the order of the plugins in the pipeline. It "
+"should be working now."
+msgstr ""
+"அமுக்கி மற்றும் லிமிட்டர் போன்ற சில வடிப்பான்களில் பயன்படுத்தப்படும் ஆய்வுகள் "
+"குழாய்த்திட்டத்தில் உள்ள செருகுநிரல்களின் வரிசையை மாற்றிய பின்னர் மறுபரிசீலனை "
+"செய்யப்படவில்லை. அது இப்போது வேலை செய்ய வேண்டும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:461
+msgid ""
+"PipeWire monitor streams are now excluded and removed from the applications "
+"list."
+msgstr ""
+"பைப்வேர் மானிட்டர் ச்ட்ரீம்கள் இப்போது விலக்கப்பட்டு பயன்பாடுகள் பட்டியலிலிருந்து "
+"அகற்றப்படுகின்றன."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:463
+msgid "Hopefully crashes like the one reported at issue 1172 are fixed."
+msgstr "வெளியீடு 1172 இல் அறிவிக்கப்பட்டதைப் போல விபத்துக்கள் சரி செய்யப்பட்டுள்ளன."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:464
+msgid "Prevented a case in which Spectrum was crashing."
+msgstr "ச்பெக்ட்ரம் செயலிழந்த ஒரு வழக்கைத் தடுத்தது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:465
+msgid ""
+"Pavucontrol is not added anymore to input applications list on systems with "
+"localization different than English."
+msgstr ""
+"ஆங்கிலத்தை விட வேறுபட்ட உள்ளூர்மயமாக்கல் கொண்ட கணினிகளில் உள்ளீட்டு பயன்பாடுகள் பட்டியலில் "
+"Pavucontrol இனி சேர்க்கப்படவில்லை."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:473
+msgid ""
+"Improved compatibility with WirePlumber. This is needed to run on systems "
+"that decided to use it instead of the built-in PipeWire session manager. "
+"More information at issue 1144."
+msgstr ""
+"வயர் பிளம்பர் உடன் மேம்படுத்தப்பட்ட பொருந்தக்கூடிய தன்மை. உள்ளமைக்கப்பட்ட பைப்வேர் அமர்வு "
+"மேலாளருக்கு பதிலாக இதைப் பயன்படுத்த முடிவு செய்த அமைப்புகளில் இயங்க இது தேவை. "
+"வெளியீடு 1144 இல் மேலும் தகவல்கள்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:481
+msgid ""
+"When trying to add an autoloading profile for a device already in the list "
+"its target preset will be updated. This way we can change the profile preset "
+"without having to remove and recreating it."
+msgstr ""
+"ஏற்கனவே பட்டியலில் உள்ள சாதனத்திற்கான ஆட்டோலோடிங் சுயவிவரத்தைச் சேர்க்க முயற்சிக்கும்போது "
+"அதன் இலக்கு முன்னமைவு புதுப்பிக்கப்படும். இந்த வழியில் சுயவிவர முன்னமைவை அகற்றி மீண்டும் "
+"உருவாக்காமல் மாற்றலாம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:482
+msgid ""
+"The preset autoloading support implementation was redesigned again. It "
+"should work on more hardware now. For more information see issue 1051."
+msgstr ""
+"முன்னமைக்கப்பட்ட ஆட்டோலோடிங் உதவி செயல்படுத்தல் மீண்டும் மறுவடிவமைப்பு செய்யப்பட்டது. இது "
+"இப்போது அதிக வன்பொருளில் வேலை செய்ய வேண்டும். மேலும் தகவலுக்கு வெளியீடு 1051 ஐப் "
+"பார்க்கவும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:483
+msgid ""
+"If the Limiter or the Maximizer are set in the last position of the plugin "
+"stack, new plugins are added at the second to last position in order to "
+"prevent hardware damage on eventually high output level."
+msgstr ""
+"சொருகி அடுக்கின் கடைசி நிலையில் லிமிட்டர் அல்லது மாக்சிமைசர் அமைக்கப்பட்டால், இறுதியில் "
+"அதிக வெளியீட்டு மட்டத்தில் வன்பொருள் சேதத்தைத் தடுக்கும் பொருட்டு புதிய செருகுநிரல்கள் "
+"இரண்டாவது முதல் கடைசி நிலையில் சேர்க்கப்படுகின்றன."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:484
+msgid ""
+"Removing an application from the blocklist, its previous enabled state is "
+"restored."
+msgstr ""
+"பிளாக்லிச்ட்டில் இருந்து ஒரு விண்ணப்பத்தை அகற்றி, அதன் முந்தைய இயக்கப்பட்ட நிலை "
+"மீட்டெடுக்கப்படுகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:486
+msgid ""
+"Sometimes when removing imported models from the noise reduction plugin the "
+"current used model was not properly updated. This should be fixed now."
+msgstr ""
+"சில நேரங்களில் ஒலி குறைப்பு சொருகி இறக்குமதி செய்யப்பட்ட மாதிரிகளை அகற்றும்போது "
+"தற்போதைய பயன்படுத்தப்பட்ட மாதிரி சரியாக புதுப்பிக்கப்படவில்லை. இது இப்போது சரி செய்யப்பட "
+"வேண்டும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:487
+msgid ""
+"When editing presets files in an external editor, duplicated entries won't "
+"be shown in our presets menu."
+msgstr ""
+"முன்னமைவு கோப்புகளை வெளிப்புற எடிட்டரில் திருத்தும்போது, நகல் உள்ளீடுகள் எங்கள் முன்னமைவு "
+"பட்டியலில் காட்டப்படாது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:488
+msgid "Now the blocklist is correctly set when switching presets."
+msgstr "முன்னமைவுகளை மாற்றும்போது இப்போது பிளாக்லிச்ட் சரியாக அமைக்கப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:489
+msgid ""
+"Now the status of the global bypass button is correctly updated when "
+"changing plugin stack."
+msgstr ""
+"சொருகி அடுக்கை மாற்றும்போது இப்போது உலகளாவிய பைபாச் பொத்தானின் நிலை சரியாக "
+"புதுப்பிக்கப்படுகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:490
+msgid ""
+"Missing icons on the system should not be shown inside the application info "
+"UI (if an application icon could not be shown even if you're sure it's "
+"correctly installed, please open an issue)."
+msgstr ""
+"கணினியில் காணாமல் போன ஐகான்கள் பயன்பாட்டு செய்தி இடைமுகம் க்குள் காட்டப்படக்கூடாது (ஒரு "
+"பயன்பாட்டு ஐகானைக் காட்ட முடியாவிட்டால் அது சரியாக நிறுவப்பட்டிருந்தாலும், தயவுசெய்து "
+"ஒரு சிக்கலைத் திறக்கவும்)."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:491
+msgid ""
+"Some icons not showing in Plasma DE with Breeze icon theme should appear now."
+msgstr ""
+"ப்ரீச் படவுரு கருப்பொருளுடன் பிளாச்மா டி இல் காட்டப்படாத சில ஐகான்கள் இப்போது தோன்ற "
+"வேண்டும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:499
+msgid "Updated Chinese translation."
+msgstr "சீன மொழிபெயர்ப்பு புதுப்பிக்கப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:500
+msgid "Updated Italian translation."
+msgstr "இத்தாலிய மொழிபெயர்ப்பு புதுப்பிக்கப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:501
+msgid "Added support for the compressor parameter Boost Amount"
+msgstr "அமுக்கி அளவுரு பூச்ட் தொகைக்கு உதவி சேர்க்கப்பட்டது"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:502
+msgid ""
+"The multiband compressor plugin now uses the stereo multiband compressor "
+"plugin from Linux Studio Plugins instead of the one from Calf Studio."
+msgstr ""
+"மல்டிபாண்ட் கம்ப்ரசர் சொருகி இப்போது கன்று ச்டுடியோவிலிருந்து ஒன்றுக்கு பதிலாக லினக்ச் "
+"ச்டுடியோ செருகுநிரல்களிலிருந்து ச்டீரியோ மல்டிபாண்ட் அமுக்கி சொருகி பயன்படுத்துகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:503
+msgid ""
+"The limiter plugin now uses the stereo limiter plugin from Linux Studio "
+"Plugins instead of the one from Calf Studio."
+msgstr ""
+"லிமிட்டர் சொருகி இப்போது கன்று ச்டுடியோவுக்கு பதிலாக லினக்ச் ச்டுடியோ "
+"செருகுநிரல்களிலிருந்து ச்டீரியோ லிமிட்டர் சொருகி பயன்படுத்துகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:504
+msgid ""
+"LV2 filters now are spawned in PipeWire graph only when loaded the first "
+"time. Once loaded, they remain connected until EasyEffects shutdown."
+msgstr ""
+"எல்வி 2 வடிப்பான்கள் இப்போது முதல் முறையாக ஏற்றப்படும்போது மட்டுமே பைப்வேர் வரைபடத்தில் "
+"உருவாகின்றன. ஏற்றப்பட்டதும், எளிதான விளைவுகள் பணிநிறுத்தம் வரும் வரை அவை "
+"இணைக்கப்பட்டுள்ளன."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:506
+msgid "The echo canceller sampling rate is now properly set."
+msgstr "எக்கோ ரத்துசெய்யும் மாதிரி விகிதம் இப்போது சரியாக அமைக்கப்பட்டுள்ளது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:507
+msgid ""
+"The threshold parameter from the deesser plugin is now saved to the preset "
+"file."
+msgstr "டீசர் சொருகி வாசல் அளவுரு இப்போது முன்னமைக்கப்பட்ட கோப்பில் சேமிக்கப்படுகிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:508
+msgid ""
+"Improved band splitting for crystalizer with new default intensity values."
+msgstr ""
+"புதிய இயல்புநிலை தீவிரத்தன்மை மதிப்புகளுடன் கிரிச்டலைசருக்கான மேம்பட்ட பேண்ட் பிளவு."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:509
+msgid ""
+"Depending on the input gain or output gain values the corresponding level "
+"bars could not be aligned."
+msgstr ""
+"உள்ளீட்டு ஆதாயம் அல்லது வெளியீட்டு ஆதாய மதிப்புகளைப் பொறுத்து தொடர்புடைய நிலை பட்டிகளை "
+"சீரமைக்க முடியாது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:510
+msgid "When adding more equalizer bands they are set to Bell instead of Off."
+msgstr ""
+"அதிக சமநிலை பட்டைகளைச் சேர்க்கும்போது அவை விடுமுறைக்கு பதிலாக பெல்லுக்கு "
+"அமைக்கப்படுகின்றன."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:511
+msgid ""
+"Equalizer APO presets loading is now working properly on locales different "
+"than C."
+msgstr ""
+"சமநிலைப்படுத்தி APO முன்னமைவுகள் ஏற்றுவது C ஐ விட வேறுபட்ட இடங்களில் சரியாக வேலை "
+"செய்யாது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:512
+msgid "Improved linking management between port filter nodes in PipeWire."
+msgstr "பைப்வேரில் துறைமுகம் வடிகட்டி முனைகளுக்கு இடையில் மேம்பட்ட இணைக்கும் நிர்வாகம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:513
+msgid ""
+"The crystalizer plugin signal amplification was too high before. It should "
+"be within more reasonable levels now."
+msgstr ""
+"கிரிச்டலைசர் சொருகி சமிக்ஞை பெருக்கம் இதற்கு முன் அதிகமாக இருந்தது. இது இப்போது "
+"மிகவும் நியாயமான நிலைகளுக்குள் இருக்க வேண்டும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:521
+msgid ""
+"Improved the resampler used in the plugins that require one(like the rnnoise "
+"plugin)"
+msgstr ""
+"ஒன்று தேவைப்படும் செருகுநிரல்களில் பயன்படுத்தப்படும் ரெசாம்ப்ளரை மேம்படுத்தியது (Rnnoise "
+"சொருகி போன்றவை)"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:524
+msgid "Setting multiple autoloading presets should be fine now"
+msgstr "பல ஆட்டோலோடிங் முன்னமைவுகளை அமைப்பது இப்போது நன்றாக இருக்க வேண்டும்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:525
+msgid "Transient windows are now properly set for some plugins dialogs"
+msgstr ""
+"நிலையற்ற சாளரங்கள் இப்போது சில செருகுநிரல்கள் உரையாடல்களுக்கு சரியாக அமைக்கப்பட்டுள்ளன"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:526
+msgid ""
+"The convolver impulse response menu was improved to workaround an issue "
+"where the impulse files was not loaded when only one was available in the "
+"menu, see issue 1011"
+msgstr ""
+"பட்டியலில் ஒன்று மட்டுமே கிடைக்கும்போது உந்துவிசை கோப்புகள் ஏற்றப்படாத ஒரு சிக்கலுக்கு "
+"கான்வால்வர் உந்துவிசை மறுமொழி பட்டியல் மேம்படுத்தப்பட்டது, வெளியீடு 1011 ஐப் பார்க்கவும்"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:527
+msgid ""
+"Fixed a bug that could make the pitch plugin to not be properly initialized"
+msgstr "சுருதி சொருகி சரியாக துவக்கப்படக்கூடாது என்று ஒரு பிழை சரி செய்யப்பட்டது"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:528
+msgid "The saturation warning should not displace its neighbor widgets anymore"
+msgstr "செறிவு எச்சரிக்கை இனி அதன் அண்டை விட்செட்களை இடம்பெயரக்கூடாது"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:529
+msgid "Fixed the locale in a few widgets"
+msgstr "ஒரு சில விட்செட்களில் இருப்பிடத்தை சரி செய்தது"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:530
+msgid "Fixed wrong alignment in a few widgets"
+msgstr "ஒரு சில விட்செட்களில் நிலையான தவறான சீரமைப்பு"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:538
+msgid ""
+"The Loudness plugin is being used again for the reasons described at issue "
+"820. This means that is an optional dependency again."
+msgstr ""
+"வெளியீடு 820 இல் விவரிக்கப்பட்டுள்ள காரணங்களுக்காக உரத்த சொருகி மீண்டும் "
+"பயன்படுத்தப்படுகிறது. இதன் பொருள் இது மீண்டும் விருப்பமான சார்பு."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:540
+msgid ""
+"Fixed a segmentation fault that happened when optional dependencies were not "
+"installed"
+msgstr "விருப்ப சார்புநிலைகள் நிறுவப்படாதபோது நடந்த ஒரு பிரிவு தவறு சரி செய்யப்பட்டது"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:548
+msgid "Improved equalizer interface."
+msgstr "மேம்படுத்தப்பட்ட சமநிலை இடைமுகம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:549
+msgid ""
+"Now we use a sidechain LSP compressor that allows the user to select and "
+"external source as the sidechain input."
+msgstr ""
+"இப்போது நாங்கள் ஒரு சைட்செயின் எல்எச்பி அமுக்கியைப் பயன்படுத்துகிறோம், இது பயனரைத் "
+"தேர்ந்தெடுக்கவும் வெளிப்புற மூலமாகவும் சைட்செயின் உள்ளீடாக அனுமதிக்கிறது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:550
+msgid "We now support the LSP compressor Boosting mode."
+msgstr "நாங்கள் இப்போது எல்எச்பி அமுக்கி பூச்டிங் பயன்முறையை ஆதரிக்கிறோம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:551
+msgid ""
+"When split-channels is enabled in the equalizer the imported APO preset will "
+"be applied only to the channel being visualized in the window. This will "
+"allow to import different presets for each channel instead of just settings "
+"the same values to both."
+msgstr ""
+"சமநிலையில் பிளவு-சேனல்கள் இயக்கப்பட்டால், இறக்குமதி செய்யப்பட்ட APO முன்னமைவு சாளரத்தில் "
+"காட்சிப்படுத்தப்படும் சேனலுக்கு மட்டுமே பயன்படுத்தப்படும். ஒரே மதிப்புகளை இரண்டிற்கும் "
+"அமைப்பதற்கு பதிலாக ஒவ்வொரு சேனலுக்கும் வெவ்வேறு முன்னமைவுகளை இறக்குமதி செய்ய இது "
+"அனுமதிக்கும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:553
+msgid ""
+"Fixed some segmentation faults that could happen when creating a preset "
+"autoloading profile or removing presets"
+msgstr ""
+"முன்னமைக்கப்பட்ட ஆட்டோலோடிங் சுயவிவரத்தை உருவாக்கும்போது அல்லது முன்னமைவுகளை அகற்றும்போது "
+"ஏற்படக்கூடிய சில பிரிவு தவறுகள் சரி செய்யப்பட்டன"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:561
+msgid ""
+"This is one of the biggest releases that I have ever made. The amount of "
+"changes is so big that it is hard to talk about everything here."
+msgstr ""
+"இது நான் செய்த மிகப்பெரிய வெளியீடுகளில் ஒன்றாகும். மாற்றங்களின் அளவு மிகப் பெரியது, "
+"இங்கே எல்லாவற்றையும் பற்றி பேசுவது கடினம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:562
+msgid ""
+"The following are just the most import ones. People interested on the "
+"journey that got us here can take a look at issue 904 and issue 874."
+msgstr ""
+"பின்வருபவை மிகவும் இறக்குமதி செய்யப்படுகின்றன. இங்கு எங்களுக்கு கிடைத்த பயணத்தில் "
+"ஆர்வமுள்ளவர்கள் வெளியீடு 904 மற்றும் வெளியீடு 874 ஐப் பார்க்கலாம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:563
+msgid ""
+"The application and its repository have been renamed from PulseEffects to "
+"EasyEffects"
+msgstr ""
+"பயன்பாடு மற்றும் அதன் களஞ்சியம் துடிப்பு விளைவுகளிலிருந்து எளிதான செயல்திறன் என "
+"மறுபெயரிடப்பட்டுள்ளன"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:564
+msgid "gtkmm3 was replaced by gtkmm4"
+msgstr "GTKMM3 க்கு பதிலாக GTKMM4 ஆல் மாற்றப்பட்டது"
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:565
+msgid "Gstreamer was replaced by native PipeWire filters."
+msgstr "சிச்ட்ரீமர் சொந்த பைப்வேர் வடிப்பான்களால் மாற்றப்பட்டது."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:566
+msgid ""
+"Many features were reimplemented from scratch. The preset autoloading is one "
+"example. Another remarkable change will be seen in the plugins selection "
+"menu. Now the user can show in the window only the plugins that he/she wants "
+"to use."
+msgstr ""
+"புதிதாக பல நற்பொருத்தங்கள் மறுசீரமைக்கப்பட்டன. முன்னமைக்கப்பட்ட ஆட்டோலோடிங் ஒரு "
+"எடுத்துக்காட்டு. செருகுநிரல்கள் தேர்வு பட்டியலில் மற்றொரு குறிப்பிடத்தக்க மாற்றம் "
+"காணப்படும். இப்போது பயனர் சாளரத்தில் அவர்/அவள் பயன்படுத்த விரும்பும் செருகுநிரல்களை "
+"மட்டுமே காட்ட முடியும்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:567
+msgid ""
+"Boost is no longer a dependency. The price paid for that was a little change "
+"in our presets structures. With some patience it is possible to edit "
+"PulseEffects presets in a text editor and make them work in EasyEffects. "
+"Hopefully someone will come up with a script for this in the feature."
+msgstr ""
+"பூச்ட் இனி ஒரு சார்பு இல்லை. அதற்கான விலை எங்கள் முன்னமைவு கட்டமைப்புகளில் ஒரு சிறிய "
+"மாற்றமாகும். சில பொறுமையுடன் ஒரு உரை எடிட்டரில் துடிப்புத் தூண்டுதல்களைத் திருத்தவும், "
+"அவற்றை எளிதான விளைவுகளைச் செய்யவும் முடியும். இதற்கான ச்கிரிப்டை யாராவது அம்சத்தில் "
+"கொண்டு வருவார்கள் என்று நம்புகிறோம்."
+
+#: data/com.github.wwmm.easyeffects.metainfo.xml.in:568
+msgid ""
+"New libraries are being used and some of the librarires that were optional "
+"before are now required"
+msgstr ""
+"புதிய நூலகங்கள் பயன்படுத்தப்படுகின்றன, முன்பு விருப்பமான சில நூலகங்கள் இப்போது தேவை"
+
+#, fuzzy
+#~ msgid "Reset Easy Effects."
+#~ msgstr "எளிதான விளைவுகள்"
+
+#, fuzzy
+#~ msgid "Enable this Effect"
+#~ msgstr "எளிதான விளைவுகள்"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Easy Effects"
+#~ msgstr "எளிதான விளைவுகள்"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Easy Effects"
+#~ msgstr "எளிதான விளைவுகள்"
+
+#, fuzzy
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "பைப்வேர் பயன்பாடுகளுக்கான ஆடியோ விளைவுகள்"
+
+#, fuzzy
+#~ msgid "About Easy Effects"
+#~ msgstr "எளிதான விளைவுகள்"
+
+#, fuzzy
+#~ msgid "Add Effect"
+#~ msgstr "எளிதான விளைவுகள்"
+
+#, fuzzy
+#~ msgid "No Effects"
+#~ msgstr "எளிதான விளைவுகள்"
+
+#, fuzzy
+#~ msgid "Effects"
+#~ msgstr "எளிதான விளைவுகள்"
+
+#~ msgid ""
+#~ "Fixed a bug that makes the application crash when the option Linux Studio "
+#~ "Plugins package is not installed."
+#~ msgstr ""
+#~ "லினக்ச் ச்டுடியோ செருகுநிரல்கள் தொகுப்பு நிறுவப்படாதபோது பயன்பாட்டு செயலிழக்கச் "
+#~ "செய்யும் பிழை சரி செய்யப்பட்டது."
+
+#~ msgid ""
+#~ "Fixed a bug in the crystalizer plugin where the scale values were not "
+#~ "being properly applied."
+#~ msgstr ""
+#~ "அளவிலான மதிப்புகள் சரியாகப் பயன்படுத்தப்படாத படிகக்கரைசர் சொருகியில் ஒரு பிழை சரி "
+#~ "செய்யப்பட்டது."
+
+#~ msgid ""
+#~ "Latency compensation can be applied to the spectrum plugin.It will delay "
+#~ "its drawing so it matches the latency offset applied by the user on "
+#~ "programs like Pavucontrol."
+#~ msgstr ""
+#~ "ச்பெக்ட்ரம் செருகுநிரலுக்கு தாமத இழப்பீடு பயன்படுத்தப்படலாம். இது அதன் வரைபடத்தை "
+#~ "தாமதப்படுத்தும், எனவே இது பாவுகண்ட்ரோல் போன்ற நிரல்களில் பயனரால் பயன்படுத்தப்படும் தாமத "
+#~ "ஆஃப்செட்டுடன் பொருந்துகிறது."
+
+#~ msgid ""
+#~ "The command line option that shows EasyEffects version should work "
+#~ "properly now."
+#~ msgstr ""
+#~ "ஈசி எஃபெக்ட்ச் பதிப்பைக் காட்டும் கட்டளை வரி விருப்பம் இப்போது சரியாக வேலை செய்ய "
+#~ "வேண்டும்."
+
+#~ msgid "Fixed a regression in the autoload preset code."
+#~ msgstr "ஆட்டோலோட் முன்னமைக்கப்பட்ட குறியீட்டில் பின்னடைவு சரி செய்யப்பட்டது."
+
+#~ msgid ""
+#~ "The loudness plugin exposes the ISO 226:2023 standard that is now "
+#~ "available in the LSP plugin."
+#~ msgstr ""
+#~ "உரத்த சொருகி ஐஎச்ஓ 226: 2023 தரத்தை அம்பலப்படுத்துகிறது, இது இப்போது எல்எச்பி "
+#~ "சொருகி கிடைக்கிறது."
+
+#~ msgid ""
+#~ "Performance optmizations to the spectrum plugin and the LADSPA wrapper"
+#~ msgstr "ச்பெக்ட்ரம் சொருகி மற்றும் லாட்ச்பா ரேப்பருக்கு செயல்திறன் தேர்வு"
+
+#~ msgid ""
+#~ "We were not locking PipeWire's thread main loop before setting a stream "
+#~ "volume and mute controls. THis could cause these operations to fail in "
+#~ "some situations"
+#~ msgstr ""
+#~ "ச்ட்ரீம் அளவு மற்றும் முடக்கு கட்டுப்பாடுகளை அமைப்பதற்கு முன்பு நாங்கள் பைப்வேரின் நூல் "
+#~ "முதன்மையான வளையத்தை பூட்டவில்லை. இது சில சூழ்நிலைகளில் இந்த செயல்பாடுகள் "
+#~ "தோல்வியடையக்கூடும்"

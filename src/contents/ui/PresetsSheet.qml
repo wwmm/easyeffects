@@ -27,7 +27,7 @@ Kirigami.OverlaySheet {
     focus: true
     y: appWindow.header.height + Kirigami.Units.gridUnit
     implicitWidth: Math.min(stackView.implicitWidth, appWindow.width * 0.8)
-    implicitHeight: control.parent.height - (control.header.height + control.footer.height) - control.y
+    implicitHeight: control.parent.height - 2 * control.header.height - control.y
     onVisibleChanged: {
         if (control.visible) {
             switch (DB.Manager.main.visiblePresetSheetPage) {
@@ -50,7 +50,7 @@ Kirigami.OverlaySheet {
         id: stackView
 
         implicitWidth: Math.max(appWindow.width * 0.5, Kirigami.Units.gridUnit * 40)
-        implicitHeight: control.height - (control.header.height + control.footer.height) - control.y
+        implicitHeight: control.implicitHeight
     }
 
     header: Kirigami.ActionToolBar {

@@ -42,11 +42,22 @@ xgettext --from-code=UTF-8 -C -kde -ci18n -ki18n:1 -ki18nc:1c,2 -ki18np:1,2 -ki1
 echo "Done extracting messages"
 
 echo "Merging translations"
+
 cd ${BASEDIR}/po
 catalogs=`find . -name '*.po'`
 for catalog in $catalogs; do
   echo $catalog
   msgmerge -o $catalog.new $catalog ${PROJECT}.pot
+  mv $catalog.new $catalog
+done
+
+echo "Merging news translations"
+
+cd ${BASEDIR}/po_news
+catalogs=`find . -name '*.po'`
+for catalog in $catalogs; do
+  echo $catalog
+  msgmerge -o $catalog.new $catalog ${PROJECT}-news.pot
   mv $catalog.new $catalog
 done
 
