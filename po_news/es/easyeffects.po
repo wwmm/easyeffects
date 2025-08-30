@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-03-14 16:57+0000\n"
-"Last-Translator: Deleted User <noreply+48943@weblate.org>\n"
+"PO-Revision-Date: 2025-08-30 00:58+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11-dev\n"
+"X-Generator: Weblate 5.13.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -379,8 +379,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr ""
-"El complemento DeepFilterNet ahora se puede añadir al archivo de perfil"
+msgstr "El complemento DeepFilterNet ahora se puede añadir al archivo de perfil"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
 msgid ""
@@ -582,8 +581,8 @@ msgid ""
 "Speex is no longer incorrectly listed as a build dependency (speexdsp is "
 "still a build dependency)"
 msgstr ""
-"Speex ya no aparece incorrectamente como una dependencia de la compilación "
-"(speexdsp sigue siendo una dependencia de compilación)"
+"Speex ya no aparece incorrectamente como una dependencia de la compilación ("
+"speexdsp sigue siendo una dependencia de compilación)"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
 msgid ""
@@ -1100,8 +1099,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:415
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
-msgstr ""
-"El menú de ajustes ha sido rediseñado utilizando widgets de LibAdwaita."
+msgstr "El menú de ajustes ha sido rediseñado utilizando widgets de LibAdwaita."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:416
 msgid ""
