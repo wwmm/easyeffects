@@ -406,6 +406,7 @@ msgstr "Esterna"
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:261 src/contents/ui/Limiter.qml:238
 #: src/contents/ui/PageStreamsEffects.qml:451
+#: src/contents/ui/PageStreamsEffects.qml:442
 msgid "Input Device"
 msgstr "Dispositivo Ingresso"
 
@@ -1521,6 +1522,7 @@ msgstr "Dispositivo di Ingresso Sidechain"
 #: src/contents/ui/MultibandCompressor.qml:651
 #: src/contents/ui/MultibandCompressor.qml:921
 #: src/contents/ui/MultibandGate.qml:619 src/contents/ui/MultibandGate.qml:889
+#: src/contents/ui/EqualizerBandMenu.qml:25
 msgid "Band"
 msgstr "Banda"
 
@@ -1538,40 +1540,51 @@ msgid "No Audio Application Available"
 msgstr "Nessuna Applicazione Audio Disponibile"
 
 #: src/contents/ui/PageStreamsEffects.qml:403
+#: src/contents/ui/PageStreamsEffects.qml:397
 msgid "Add Effect"
 msgstr "Aggiungi Effetto"
 
 #: src/contents/ui/PageStreamsEffects.qml:451
 #: src/contents/ui/PageStreamsEffects.qml:655
+#: src/contents/ui/PageStreamsEffects.qml:442
+#: src/contents/ui/PageStreamsEffects.qml:646
 msgid "Players"
 msgstr "Riproduttori"
 
 #: src/contents/ui/PageStreamsEffects.qml:468
 #: src/contents/ui/PageStreamsEffects.qml:655
+#: src/contents/ui/PageStreamsEffects.qml:459
+#: src/contents/ui/PageStreamsEffects.qml:646
 msgid "Recorders"
 msgstr "Registratori"
 
 #: src/contents/ui/PageStreamsEffects.qml:481
+#: src/contents/ui/PageStreamsEffects.qml:472
 msgid "Close"
 msgstr "Chiudi"
 
 #: src/contents/ui/PageStreamsEffects.qml:504
+#: src/contents/ui/PageStreamsEffects.qml:495
 msgid "No Effects"
 msgstr "Nessun Effetto"
 
 #: src/contents/ui/PageStreamsEffects.qml:505
+#: src/contents/ui/PageStreamsEffects.qml:496
 msgid "Audio Stream Not Modified"
 msgstr "Flusso Audio Non Alterato"
 
 #: src/contents/ui/PageStreamsEffects.qml:665
+#: src/contents/ui/PageStreamsEffects.qml:656
 msgid "Effects"
 msgstr "Effetti"
 
 #: src/contents/ui/PageStreamsEffects.qml:682
+#: src/contents/ui/PageStreamsEffects.qml:673
 msgid "Input Monitoring"
 msgstr "Monitoraggio Input"
 
 #: src/contents/ui/PageStreamsEffects.qml:695
+#: src/contents/ui/PageStreamsEffects.qml:686
 msgid "Excluded Apps"
 msgstr "App Escluse"
 
@@ -3096,11 +3109,9 @@ msgstr "Effetti Audio per Applicazioni Pipewire"
 #~ "Il Modello Selezionato Non È Stato Caricato. Il Formato Potrebbe Essere "
 #~ "Non Supportato. Il Modello Standard È Stato Ripristinato."
 
-#, c++-format
 #~ msgid "{} Not Available"
 #~ msgstr "{} Non Disponibile"
 
-#, c++-format
 #~ msgid ""
 #~ "The software required for the {} effect, \"{}\", is not installed. "
 #~ "Consider using the Easy Effects Flatpak package or installing the "
@@ -3114,7 +3125,6 @@ msgstr "Effetti Audio per Applicazioni Pipewire"
 #~ "mancante, devi riavviare Easy Effects cliccando sulla voce 'Esci' "
 #~ "all'interno del menu per rendere l'effetto disponibile all'uso."
 
-#, c++-format
 #~ msgid ""
 #~ "The {} effect was disabled when Easy Effects was compiled. This is "
 #~ "perhaps since the software required for this effect, \"{}\", was not "

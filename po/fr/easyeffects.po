@@ -404,6 +404,7 @@ msgstr "Externe"
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:261 src/contents/ui/Limiter.qml:238
 #: src/contents/ui/PageStreamsEffects.qml:451
+#: src/contents/ui/PageStreamsEffects.qml:442
 msgid "Input Device"
 msgstr "Périphérique d’Entrée"
 
@@ -1520,6 +1521,7 @@ msgstr "Périphérique d’Entrée de la Chaîne Latérale"
 #: src/contents/ui/MultibandCompressor.qml:651
 #: src/contents/ui/MultibandCompressor.qml:921
 #: src/contents/ui/MultibandGate.qml:619 src/contents/ui/MultibandGate.qml:889
+#: src/contents/ui/EqualizerBandMenu.qml:25
 msgid "Band"
 msgstr "Bande"
 
@@ -1537,40 +1539,51 @@ msgid "No Audio Application Available"
 msgstr "Aucune Application Audio Disponible"
 
 #: src/contents/ui/PageStreamsEffects.qml:403
+#: src/contents/ui/PageStreamsEffects.qml:397
 msgid "Add Effect"
 msgstr "Ajouter un Effet"
 
 #: src/contents/ui/PageStreamsEffects.qml:451
 #: src/contents/ui/PageStreamsEffects.qml:655
+#: src/contents/ui/PageStreamsEffects.qml:442
+#: src/contents/ui/PageStreamsEffects.qml:646
 msgid "Players"
 msgstr "Lecteurs"
 
 #: src/contents/ui/PageStreamsEffects.qml:468
 #: src/contents/ui/PageStreamsEffects.qml:655
+#: src/contents/ui/PageStreamsEffects.qml:459
+#: src/contents/ui/PageStreamsEffects.qml:646
 msgid "Recorders"
 msgstr "Enregistreurs"
 
 #: src/contents/ui/PageStreamsEffects.qml:481
+#: src/contents/ui/PageStreamsEffects.qml:472
 msgid "Close"
 msgstr "Fermer"
 
 #: src/contents/ui/PageStreamsEffects.qml:504
+#: src/contents/ui/PageStreamsEffects.qml:495
 msgid "No Effects"
 msgstr "Aucun Effet"
 
 #: src/contents/ui/PageStreamsEffects.qml:505
+#: src/contents/ui/PageStreamsEffects.qml:496
 msgid "Audio Stream Not Modified"
 msgstr "Flux Audio Non Modifié"
 
 #: src/contents/ui/PageStreamsEffects.qml:665
+#: src/contents/ui/PageStreamsEffects.qml:656
 msgid "Effects"
 msgstr "Effets"
 
 #: src/contents/ui/PageStreamsEffects.qml:682
+#: src/contents/ui/PageStreamsEffects.qml:673
 msgid "Input Monitoring"
 msgstr "Surveillance de l'Entrée"
 
 #: src/contents/ui/PageStreamsEffects.qml:695
+#: src/contents/ui/PageStreamsEffects.qml:686
 msgid "Excluded Apps"
 msgstr "Applications Exclues"
 
@@ -3105,11 +3118,9 @@ msgstr "Effets Audio pour les Applications PipeWire"
 #~ "Le modèle sélectionné n’a pas été chargé. Son format n’est peut-être pas "
 #~ "supporté. Retour au modèle standard."
 
-#, c++-format
 #~ msgid "{} Not Available"
 #~ msgstr "{} Indisponible"
 
-#, c++-format
 #~ msgid ""
 #~ "The software required for the {} effect, \"{}\", is not installed. "
 #~ "Consider using the Easy Effects Flatpak package or installing the "
@@ -3123,7 +3134,6 @@ msgstr "Effets Audio pour les Applications PipeWire"
 #~ "Easy Effects en utilisant l'option 'Quitter' dans le menu pour que "
 #~ "l'effet puisse être utilisé."
 
-#, c++-format
 #~ msgid ""
 #~ "The {} effect was disabled when Easy Effects was compiled. This is "
 #~ "perhaps since the software required for this effect, \"{}\", was not "
