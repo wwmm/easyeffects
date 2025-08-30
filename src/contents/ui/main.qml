@@ -13,7 +13,7 @@ Kirigami.ApplicationWindow {
 
     width: DB.Manager.main.width
     height: DB.Manager.main.height
-    title: i18nc("@title:window", "Easy Effects")
+    title: "Easy Effects"
     pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.None
     onWidthChanged: {
         DB.Manager.main.width = applicationWindow().width;
@@ -140,7 +140,7 @@ Kirigami.ApplicationWindow {
 
             implicitWidth: Kirigami.Units.gridUnit * 30
             aboutData: {
-                "displayName": i18nc("@title", "Easy Effects"),
+                "displayName": "Easy Effects",
                 "productName": "kirigami/app",
                 "componentName": "easyeffects",
                 "shortDescription": i18n("Audio effects for PipeWire applications"),
@@ -151,7 +151,7 @@ Kirigami.ApplicationWindow {
                 "otherText": "",
                 "authors": [
                     {
-                        "name": i18nc("@info:credit", "Wellington Wallace"),
+                        "name": "Wellington Wallace",
                         "task": i18nc("@info:credit", "Developer"),
                         "emailAddress": "wellingtonwallace@gmail.com",
                         "webAddress": "",

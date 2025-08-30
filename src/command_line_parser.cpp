@@ -36,7 +36,7 @@
 
 CommandLineParser::CommandLineParser(QObject* parent)
     : QObject(parent), parser(std::make_unique<QCommandLineParser>()) {
-  parser->setApplicationDescription("EasyEffects");
+  parser->setApplicationDescription("Easy Effects");
 
   parser->addHelpOption();
   parser->addVersionOption();
