@@ -22,7 +22,7 @@ Kirigami.OverlaySheet {
     }
 
     header: Controls.Label {
-        text: i18n("Band ") + (bandMenu.index + 1)
+        text: i18n("Band") + ` ${bandMenu.index + 1}`
     }
 
     footer: RowLayout {
