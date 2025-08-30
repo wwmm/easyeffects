@@ -1,9 +1,11 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # https://techbase.kde.org/Development/Tutorials/Localization/i18n_Build_Systems/Outside_KDE_repositories
 # the command extractrc is provided by the pacakge kde-dev-scripts
 
 # https://api.kde.org/frameworks/ki18n/html/prg_guide.html
+
+set -euo pipefail
 
 BASEDIR="../"	# root of translatable sources
 PROJECT="easyeffects"	# project name
