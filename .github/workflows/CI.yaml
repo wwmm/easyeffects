@@ -71,7 +71,8 @@ jobs:
       with:
         bundle: easyeffects-flatpak-${{ needs.prepare.outputs.github_commit_desc }}.flatpak
         manifest-path: util/flatpak/com.github.wwmm.easyeffects.Devel.json
-        cache-key: flatpak-builder-${{ github.sha }}
+        # put the arch earlier in this string, to help avoid using caches from the wrong architecture
+        cache-key: flatpak-builder-${{ matrix.variant.arch }}-${{ github.sha }}
         arch: ${{ matrix.variant.arch }}
         run-tests: true
 
