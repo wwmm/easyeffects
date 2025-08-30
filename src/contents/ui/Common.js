@@ -5,28 +5,28 @@ var minimumDecibelLevel = -100.0;
 
 /**
  * Check if a variable of any type is empty.
- * @param {*} v 
+ * @param {*} v
  * @returns {boolean}
  */
 function isEmpty(v) {
     switch (typeof v) {
-        case "string":
-            return v.length === 0;
-        case "number":
-            return Number.isNaN(v);
-        case "undefined":
-            return true;
-        case "object":
-            return v === null;
-        default:
-            return false;
+    case "string":
+        return v.length === 0;
+    case "number":
+        return Number.isNaN(v);
+    case "undefined":
+        return true;
+    case "object":
+        return v === null;
+    default:
+        return false;
     }
 }
 
 /**
  * Check if two given arrays are equal.
- * @param {Array} a 
- * @param {Array} b 
+ * @param {Array} a
+ * @param {Array} b
  * @returns {boolean}
  */
 function equalArrays(a, b) {
@@ -48,17 +48,19 @@ function equalArrays(a, b) {
 
 /**
  * Clamps a number within the range of min and max parameters.
- * @param {number} num The number to clamp. 
+ * @param {number} num The number to clamp.
  * @param {number} min Minimum bound.
  * @param {number} max Maximum bound.
  * @returns {number} Clamped value.
  */
-function clamp(num, min, max) { return Math.min(Math.max(num, min), max); }
+function clamp(num, min, max) {
+    return Math.min(Math.max(num, min), max);
+}
 
 /**
- * A simple polyfill implementation of RegExp.escape() static method which is currently not available in QML 
+ * A simple polyfill implementation of RegExp.escape() static method which is currently not available in QML
  * Javascript engine.
- * Given a regex string as parameter, it escapes any potential regex syntax characters and returns a new string 
+ * Given a regex string as parameter, it escapes any potential regex syntax characters and returns a new string
  * that can be safely used as a literal pattern for the RegExp() constructor.
  * Mostly used for QML SearchField widgets.
  * @param {string} str Original regex.
@@ -69,7 +71,7 @@ function regExpEscape(str) {
 }
 
 /**
- * Returns the decibel level of a linear value. If the value is lesser then minimumLinearLevel, 
+ * Returns the decibel level of a linear value. If the value is lesser then minimumLinearLevel,
  * the minimumDecibelLevel is returned.
  * @param {number|string} value The linear value.
  * @returns {number} The decibel level.
@@ -86,7 +88,7 @@ function linearTodb(value) {
 }
 
 /**
- * Returns the linear level of a decibel value. If the value is lesser then minimumDecibelLevel, 
+ * Returns the linear level of a decibel value. If the value is lesser then minimumDecibelLevel,
  * the minimumLinearLevel is returned.
  * @param {number|string} value The decibel value.
  * @returns {number} The linear level.
@@ -105,7 +107,7 @@ function dbToLinear(dbValue) {
 /**
  * A debugging function which prints the properties of a given object or any other collection type such as Array.
  * Since it uses the "in" operator, an exception can be raised if a primitive type is given as a parameter.
- * @param {*} obj 
+ * @param {*} obj
  */
 function printObjectProperties(obj) {
     for (let prop in obj) {
@@ -129,13 +131,13 @@ function toLocaleLabel(num, decimal = 0, unit = null) {
     /**
      * Since we already have a number type, we can use `Number.isNaN()` static method
      * avoiding the type coercion which is done by `isNaN()` global function.
-     * See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN 
+     * See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN
      */
     if (Number.isNaN(n)) {
-        console.error("Cannot convert " + num + " in locale format.")
+        console.error("Cannot convert " + num + " in locale format.");
         return "";
     }
 
-    // Sum has precedence over ternary operator, so we need parentheses. 
+    // Sum has precedence over ternary operator, so we need parentheses.
     return n.toLocaleString(Qt.locale(), 'f', decimal) + ((unit === null) ? "" : ` ${unit}`);
 }
