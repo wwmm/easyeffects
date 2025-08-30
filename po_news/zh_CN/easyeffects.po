@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-06-21 05:01+0000\n"
-"Last-Translator: hch12907 <haochengho12907@gmail.com>\n"
+"PO-Revision-Date: 2025-08-30 00:58+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/changelog/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.13.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -33,17 +33,17 @@ msgid ""
 "Easy Effects is an advanced audio manipulation tool. It includes an "
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
-msgstr ""
-"Easy Effects 是一款先进的音频处理工具。 它包括均衡器、限制器、压缩器和混响工"
-"具，仅举几例。 作为补充，它还有内置频谱分析仪。"
+msgstr "Easy Effects 是一款先进的音频处理工具。 "
+"它包括均衡器、限制器、压缩器和混响工具，仅举几例。 "
+"作为补充，它还有内置频谱分析仪。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
-"Easy Effects 是 PulseEffects 的后续版本。 Easy Effects 仅支持 PipeWire 音频服"
-"务器。 PulseAudio 用户应使用 PulseEffects。"
+"Easy Effects 是 PulseEffects 的后续版本。 Easy Effects 仅支持 PipeWire "
+"音频服务器。 PulseAudio 用户应使用 PulseEffects。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 msgid ""
@@ -51,16 +51,16 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"因为 Easy Effects 使用默认的 PipeWire 声音服务器，所以它适用于你使用的大多数"
-"（如果不是全部）应用程序。 所有支持的应用程序都显示在主窗口中，可以单独启用。"
+"因为 Easy Effects 使用默认的 PipeWire "
+"声音服务器，所以它适用于你使用的大多数（如果不是全部）应用程序。 "
+"所有支持的应用程序都显示在主窗口中，可以单独启用。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 msgid ""
 "Besides manipulating sound output, Easy Effects is able to apply effects to "
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
-msgstr ""
-"除了处理声音输出之外，Easy Effects 还能够将效果应用于输入设备，例如麦克风。 "
+msgstr "除了处理声音输出之外，Easy Effects 还能够将效果应用于输入设备，例如麦克风。 "
 "这在录音中很有用，在语音对话中也很有效。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
@@ -68,9 +68,8 @@ msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
-msgstr ""
-"Easy Effects 启动时，它会方便地记住上次会话中使用的配置。 也可以将所有当前设"
-"置保存为配置文件。"
+msgstr "Easy Effects 启动时，它会方便地记住上次会话中使用的配置。 "
+"也可以将所有当前设置保存为配置文件。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
@@ -147,16 +146,15 @@ msgstr ""
 msgid ""
 "Added the ability of collapsing the sidebar to hide the effects list and "
 "expand the area of the effects user interface."
-msgstr ""
-"新增将侧边栏收起的功能，以此隐藏效果列表以扩大当前选中效果的用户界面面积。"
+msgstr "新增将侧边栏收起的功能，以此隐藏效果列表以扩大当前选中效果的用户界面面积。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an "
 "output device that is different from the one EasyEffects is using."
 msgstr ""
-"对于那些为非EasyEffects所使用的输出设备定义PW_KEY_TARGET_OBJECT的媒体流，"
-"EasyEffects不会对其作出更动。"
+"对于那些为非EasyEffects所使用的输出设备定义PW_KEY_TARGET_OBJECT的媒体流，Easy"
+"Effects不会对其作出更动。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Equalizer APO import feature can now apply Band-Pass filters."
@@ -205,9 +203,9 @@ msgstr "漏洞修复："
 msgid ""
 "A change in GTK 4.14.1 prevented to apply the values inserted into the text "
 "field of our SpinButton widgets. This issue is now resolved."
-msgstr ""
-"GTK 4.14.1中的某个变动导致了程序的SpinButton控件无法应用输入到控件文字栏中的"
-"数值。该问题现已修复。"
+msgstr "GTK "
+"4.14.1中的某个变动导致了程序的SpinButton控件无法应用输入到控件文字栏中的数值"
+"。该问题现已修复。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid ""
@@ -251,8 +249,7 @@ msgid ""
 "In order for Community Presets to be correctly shipped, packagers are "
 "invited to read and follow the guidelines linked inside the README of "
 "EasyEffects master branch."
-msgstr ""
-"为了确保能够正确发布社区预设，我们邀请打包者阅读并遵循 EasyEffects 主分支 "
+msgstr "为了确保能够正确发布社区预设，我们邀请打包者阅读并遵循 EasyEffects 主分支 "
 "README 中链接的指南。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
@@ -327,8 +324,7 @@ msgstr "可以在命令行通过使用 --version 选项显示 EasyEffects 的版
 msgid ""
 "A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
 "in place until gtk developers fiz things on their side"
-msgstr ""
-"绕过了GTK4 GtkLevelBar控件的漏洞，该代码将会被保留直至GTK开发者将该漏洞修复"
+msgstr "绕过了GTK4 GtkLevelBar控件的漏洞，该代码将会被保留直至GTK开发者将该漏洞修复"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid ""
@@ -387,8 +383,7 @@ msgstr "RNNoise降噪现在可以混合原声与降噪声，使得输出不会�
 msgid ""
 "This release is intended to work with versions of Linux Studio Plugins equal "
 "or greater than \"1.2.10\"."
-msgstr ""
-"此版本旨在与版本号为 \"1.2.10\" 或更高的 Linux Studio Plugins 插件兼容。"
+msgstr "此版本旨在与版本号为 \"1.2.10\" 或更高的 Linux Studio Plugins 插件兼容。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:175
 msgid "EasyEffects is now buildable also with libc++."
@@ -423,9 +418,11 @@ msgid ""
 "future we will implement a new system to install, manage and import "
 "Community Presets."
 msgstr ""
-"/etc 目录下的EasyEffects文件夹已被标记为过时，并且位于该处地预设文件不再被加"
-"载。目前只有位于 ~/.config/easyeffects 目录下的本地预设会被自动加载。未来我们"
-"会实现一个新的系统，允许用户安装、管理、导入社区预设。"
+"/etc "
+"目录下的EasyEffects文件夹已被标记为过时，并且位于该处地预设文件不再被加载。"
+"目前只有位于 ~/.config/easyeffects "
+"目录下的本地预设会被自动加载。未来我们会实现一个新的系统，允许用户安装、管理"
+"、导入社区预设。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
 msgid ""
@@ -436,8 +433,7 @@ msgstr "设置窗口新增“实验性功能”一栏。"
 msgid ""
 "The native window of the LSP plugins can be used. This is an experimental "
 "feature intended only for advanced users. So expect some bugs."
-msgstr ""
-"增加显示LSP插件原生窗口的功能。这是一个面向高级用户的实验性功能。大概率会出现"
+msgstr "增加显示LSP插件原生窗口的功能。这是一个面向高级用户的实验性功能。大概率会出现"
 "漏洞。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:199
@@ -460,9 +456,8 @@ msgid ""
 "The Pitch plugin now uses the library SoundTouch instead of Rubberband. "
 "Hopefully some of the mysterious crashes that were happening with Rubbernand "
 "are not going to happen anymore."
-msgstr ""
-"音高插件改用SoundTouch库，抛弃之前所用的Rubberband库。希望如此一来能解决"
-"Rubberband导致的部分未解崩溃。"
+msgstr "音高插件改用SoundTouch库，抛弃之前所用的Rubberband库。希望如此一来能解决Rubbe"
+"rband导致的部分未解崩溃。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:212
 msgid ""
@@ -501,16 +496,14 @@ msgstr "Speex不再被错误地列为构建依赖项（但speexdsp库仍是）"
 msgid ""
 "RNNoise is no longer an autodependency. It is now required by default, if "
 "not available it must be explicitly disabled with -Denable-rnnoise=false"
-msgstr ""
-"RNNoise不再是自动依赖项。从今起该库默认为必选依赖，若无法提供该库，必须使用 "
+msgstr "RNNoise不再是自动依赖项。从今起该库默认为必选依赖，若无法提供该库，必须使用 "
 "-Denable-rnnoise=false 强行禁用之"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:239
 msgid ""
 "A small mistake was done in the last release. Making a new one to make sure "
 "people have the right branch in the package"
-msgstr ""
-"上个版本发生了一个小错误。为了确保人们使用的分支是正确的，发布一个新版本"
+msgstr "上个版本发生了一个小错误。为了确保人们使用的分支是正确的，发布一个新版本"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:247
 msgid ""
@@ -531,23 +524,20 @@ msgstr ""
 msgid ""
 "Fixed some misuses of PipeWire's API that can potentially fix some random "
 "bugs some users are facing."
-msgstr ""
-"修复了一些对PipeWire API的错误使用，其或许能修复部分用户遭遇的随机漏洞。"
+msgstr "修复了一些对PipeWire API的错误使用，其或许能修复部分用户遭遇的随机漏洞。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:253
 msgid ""
 "As we are removing code deprecated by GTK 4.10 the minimum GTK version has "
 "been increased."
-msgstr ""
-"由于我们正在移除被GTK 4.10标记为过时的代码，我们提高了本程序所需的最低GTK版"
-"本。"
+msgstr "由于我们正在移除被GTK "
+"4.10标记为过时的代码，我们提高了本程序所需的最低GTK版本。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:261
 msgid ""
 "The spectrum plugin update rate was improved. Different sampling rates "
 "should lead to similar update frequencies visually."
-msgstr ""
-"改进了频谱插件的更新频率，现在更新频率不会因为音频的采样率不同而发生改变了。"
+msgstr "改进了频谱插件的更新频率，现在更新频率不会因为音频的采样率不同而发生改变了。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:262
 msgid ""
@@ -559,8 +549,7 @@ msgstr "允许用户自定义电平表和频谱的更新间隔。"
 msgid ""
 "The equalizer band gain slider value can be updated in larger steps. Fine "
 "grain control is still possible through the keyboard up/down keys."
-msgstr ""
-"对于均衡器的频带增益滑块，用户现今可使用更大的步幅修改其数值了，但更细腻的控"
+msgstr "对于均衡器的频带增益滑块，用户现今可使用更大的步幅修改其数值了，但更细腻的控"
 "制仍然可以通过键盘的上下键实现。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:264
@@ -571,8 +560,7 @@ msgstr "稍微改进了回声消除器。"
 msgid ""
 "The echo canceller probes were not being linked to the soundcard after the "
 "move to multiple filters intances. This should be fixed now."
-msgstr ""
-"自本程序支持多个过滤器实例起，回声消除器探头便未能正常链接到声卡。此问题现已"
+msgstr "自本程序支持多个过滤器实例起，回声消除器探头便未能正常链接到声卡。此问题现已"
 "得到解决。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:274
@@ -587,8 +575,9 @@ msgid ""
 "providing noise suppression it also can detect voice activity. It is a "
 "decent alternative to the cases whre the rnnoise library does not work well."
 msgstr ""
-"新增一个基于 Speex 库的语音处理器插件，除了提供噪声抑制外，亦可以检测语音活"
-"动。 在 rnnoise 库无法正常工作的场景下，其或许是一个不错的替代方案。"
+"新增一个基于 Speex "
+"库的语音处理器插件，除了提供噪声抑制外，亦可以检测语音活动。 在 rnnoise "
+"库无法正常工作的场景下，其或许是一个不错的替代方案。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:276
 msgid "Improved compatibility with Linux Studio Plugins 1.2.3."
@@ -602,8 +591,7 @@ msgstr "新增将 GraphicEQ 预设导入均衡器的支持。"
 msgid ""
 "The application name has been changed to Easy Effects to adhere to the "
 "naming conventions of GNOME Human Interface Guidelines."
-msgstr ""
-"为了遵守 GNOME 人机界面指南的建议，本应用程序名称已更改为 Easy Effects。"
+msgstr "为了遵守 GNOME 人机界面指南的建议，本应用程序名称已更改为 Easy Effects。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:279
 msgid "The documentation has been updated."
@@ -641,8 +629,9 @@ msgid ""
 "format."
 msgstr ""
 "由于新增了多实例插件的功能，本程序的预设格式发生了变化，但旧版本的预设文件依"
-"旧是受兼容的。 请用户务必要意识到，当用户再度储存当前预设文件时，本程序将会使"
-"用最新格式写入该文件。"
+"旧是受兼容的。 "
+"请用户务必要意识到，当用户再度储存当前预设文件时，本程序将会使用最新格式写入"
+"该文件。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:295
 msgid ""
@@ -664,8 +653,7 @@ msgstr "为某些插件增加了湿/干控制"
 msgid ""
 "Effect interface is no longer loaded when the related lv2 plugin is not "
 "installed on the system. In its place a status message to the user is shown."
-msgstr ""
-"当系统中没有安装相关的lv2插件时，效果界面不再被加载。而是是显示给用户的状态信"
+msgstr "当系统中没有安装相关的lv2插件时，效果界面不再被加载。而是是显示给用户的状态信"
 "息。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:299
@@ -722,8 +710,7 @@ msgstr "当用户地区设置不正确时，EasyEffects 不应该再崩溃。"
 msgid ""
 "A workaround was implemented in our icon to deal with the lack of proper SVG "
 "support in QT."
-msgstr ""
-"在我们的图标中实施了一种曲线救国的方法，以解决 QT 中缺乏适当的 SVG 支持。"
+msgstr "在我们的图标中实施了一种曲线救国的方法，以解决 QT 中缺乏适当的 SVG 支持。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:337
 msgid ""
@@ -731,8 +718,9 @@ msgid ""
 "null. This will allow the media session manager (wireplumber) to properly "
 "move the stream to a new device."
 msgstr ""
-"当对某应用程序禁用效果时，本程序现在起会将其目标元数据设置为null，以允许系统"
-"的Media Session Manager (即WirePlumber) 将音流正确地移动到新设备上。"
+"当对某应用程序禁用效果时，本程序现在起会将其目标元数据设置为null，"
+"以允许系统的Media Session Manager (即WirePlumber) "
+"将音流正确地移动到新设备上。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:338
 msgid ""
@@ -740,8 +728,8 @@ msgid ""
 "streams whose purpose is to monitor sink devices. This will help to fix some "
 "of problems our users were having when using OBS."
 msgstr ""
-"新增了一个配置选项。 它允许 EasyEffects 忽略来自 Monitor 接收设备的音流。 这"
-"将有助于解决用户在使用 OBS 时遇到的一些问题。"
+"新增了一个配置选项。 它允许 EasyEffects 忽略来自 Monitor 接收设备的音流。 "
+"这将有助于解决用户在使用 OBS 时遇到的一些问题。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:339
 msgid "The code that shows the stream sample format has been improved"
@@ -752,8 +740,8 @@ msgid ""
 "The rnnoise library is now optional. This should help package maintainers to "
 "build a Debian package. See issue 1000 for more information."
 msgstr ""
-"rnnoise 库现在是可选的。 这应该有助于软件包维护者构建 Debian 软件包。 有关详"
-"细信息，请参阅 Github 仓库中编号为 1000 的 issue。"
+"rnnoise 库现在是可选的。 这应该有助于软件包维护者构建 Debian 软件包。 "
+"有关详细信息，请参阅 Github 仓库中编号为 1000 的 issue。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:341
 msgid ""
@@ -765,9 +753,9 @@ msgid ""
 "The \"enable effects\" checkbox in our window was not being updated when "
 "third party programs like pavucontrol moved the stream away from our virtual "
 "devices. This should be fixed now."
-msgstr ""
-"此前，当 pavucontrol 等第三方程序将音流从本程序的虚拟设备移开时，程序窗口中的"
-"“启用效果”复选框不会被及时更新。问题现在应已解决。"
+msgstr "此前，当 pavucontrol "
+"等第三方程序将音流从本程序的虚拟设备移开时，程序窗口中的“启用效果”复选框不会"
+"被及时更新。问题现在应已解决。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:344
 msgid ""
@@ -790,9 +778,8 @@ msgstr "我们的应用图标现已兼容基于QT的桌面环境"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:355
 msgid ""
 "Our blocklist code will use the application.id tag if the stream sets it"
-msgstr ""
-"从现在起，如果某个音流设置了 application.id 标签，本程序的黑名单代码将会使用"
-"它"
+msgstr "从现在起，如果某个音流设置了 application.id "
+"标签，本程序的黑名单代码将会使用它"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:356
 msgid ""
@@ -801,16 +788,15 @@ msgid ""
 "scale anymore. More details about the problem and the solution for it can be "
 "found on issue 1211 and issue 1427"
 msgstr ""
-"为了避免鼠标滚动时出现问题，在 播放器/录音程序 选项卡中，应用程序列表中的条目"
-"不再显示音量比例。 有关此问题及其解决方案的更多详细信息，请参阅 issue #1211 "
-"和 #1427"
+"为了避免鼠标滚动时出现问题，在 播放器/录音程序 "
+"选项卡中，应用程序列表中的条目不再显示音量比例。 "
+"有关此问题及其解决方案的更多详细信息，请参阅 issue #1211 和 #1427"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:357
 msgid ""
 "When no application is available for display in the Players/Recorders a "
 "message will be shown to the user"
-msgstr ""
-"当 播放器/录音程序 选项卡中没有可显示的应用程序时，将向用户显示一条简短的信息"
+msgstr "当 播放器/录音程序 选项卡中没有可显示的应用程序时，将向用户显示一条简短的信息"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:358
 msgid "Many translation updates"
@@ -821,8 +807,7 @@ msgid ""
 "Fixed a bug where EasyEffects crashed when the number of points displayed in "
 "the spectrum was changed while our pipeline was active and the spectrum "
 "widget was visible"
-msgstr ""
-"修复了当音效管道处于活动状态并且频谱部件可见时，更改频谱中的点阵数量会导致 "
+msgstr "修复了当音效管道处于活动状态并且频谱部件可见时，更改频谱中的点阵数量会导致 "
 "EasyEffects 崩溃的错误"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:361
@@ -838,24 +823,23 @@ msgid ""
 "filters will be unlinked after the timeout is reached. This is done to make "
 "sure we do not waste CPU power processing silence."
 msgstr ""
-"新增一个配置选项，允许用户为音效管道设置不活动超时。 当没有客户端在设备上播放"
-"或录制音响时，过滤器将在超时后取消链接，以此确保不会过多消耗CPU资源。"
+"新增一个配置选项，允许用户为音效管道设置不活动超时。 "
+"当没有客户端在设备上播放或录制音响时，过滤器将在超时后取消链接，以此确保不会"
+"过多消耗CPU资源。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:370
 msgid ""
 "The autogain plugin now allows the user to select which of the three "
 "loudness are used to calculate the geometric mean."
-msgstr ""
-"自动增益插件新增选项，允许用户选择使用三个响度中的其中一个来计算几何平均值。"
+msgstr "自动增益插件新增选项，允许用户选择使用三个响度中的其中一个来计算几何平均值。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:371
 msgid ""
 "The autogain plugin now allows the maximum history to be set and does not "
 "use libebur128 histogram mode anymore. This should avoid the cases where the "
 "Integrated loudness gets stuck forever in the same value."
-msgstr ""
-"自动增益插件现在允许设置最大历史记录，并且不再使用 libebur128 直方图模式，以"
-"避免综合响度永远停留在同一值的情况。"
+msgstr "自动增益插件现在允许设置最大历史记录，并且不再使用 libebur128 "
+"直方图模式，以避免综合响度永远停留在同一值的情况。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:372
 msgid ""
@@ -874,9 +858,8 @@ msgid ""
 "The crossfeed filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
-msgstr ""
-"改进了交叉反馈插件对 PipeWire 动态延迟转换的处理，以防止在这种情况下发生音量"
-"跃升或骤降的问题。"
+msgstr "改进了交叉反馈插件对 PipeWire "
+"动态延迟转换的处理，以防止在这种情况下发生音量跃升或骤降的问题。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:384
 msgid ""
@@ -893,9 +876,8 @@ msgid ""
 "The autogain filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
-msgstr ""
-"改进了自动增益插件对 PipeWire 动态延迟转换的处理，以防止在这种情况下发生音量"
-"跃升或骤降的问题。"
+msgstr "改进了自动增益插件对 PipeWire "
+"动态延迟转换的处理，以防止在这种情况下发生音量跃升或骤降的问题。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:394
 msgid ""
@@ -914,8 +896,7 @@ msgstr "改善了对计算机休眠的支持。"
 msgid ""
 "Fixed a bug where trying to create an autoloading profile without having "
 "presets caused the application to crash."
-msgstr ""
-"修复了在没有预设的情况下，尝试创建自动加载配置文件会导致程序崩溃的错误。"
+msgstr "修复了在没有预设的情况下，尝试创建自动加载配置文件会导致程序崩溃的错误。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:406
 msgid ""
@@ -927,9 +908,8 @@ msgstr "修复了将均衡器频段质量设置为零时，会导致应用程序
 msgid ""
 "LibAdwaita is used to create some parts of our window and for handling the "
 "switching between dark and light themes."
-msgstr ""
-"现起本程序使用 LibAdwaita 库创建窗口的某些部分，以及处理深色和浅色主题之间的"
-"切换。"
+msgstr "现起本程序使用 LibAdwaita "
+"库创建窗口的某些部分，以及处理深色和浅色主题之间的切换。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:415
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
@@ -940,9 +920,9 @@ msgid ""
 "Equalizer APO preset import feature has been improved to apply not only the "
 "Bell filter, but also other supported ones (at the moment only the Bandpass "
 "filter is not available in LSP plugin)."
-msgstr ""
-"均衡器 APO 预设导入功能已得到改进，现在可以应用钟形滤波器，以及其它受支持的滤"
-"波器（目前 LSP 插件中只有带通滤波器不可用）。"
+msgstr "均衡器 APO "
+"预设导入功能已得到改进，现在可以应用钟形滤波器，以及其它受支持的滤波器（目前 "
+"LSP 插件中只有带通滤波器不可用）。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:417
 msgid "The Reset All Settings function in our menu should work in Flatpak now."
@@ -952,8 +932,7 @@ msgstr "重置所有设置这项功能，从现在起在Flatpak环境下应该�
 msgid ""
 "We have a new option that allows the user to disable our menus autohide. "
 "This may help to workaround some bugs Popover menus currently have on gtk4."
-msgstr ""
-"新增一个新选项，允许用户禁用本程序的菜单自动隐藏功能。这或许可以解决 Popover "
+msgstr "新增一个新选项，允许用户禁用本程序的菜单自动隐藏功能。这或许可以解决 Popover "
 "菜单当前在 gtk4 上存在的一些漏洞。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:420
@@ -966,8 +945,7 @@ msgstr "增强解析器的稳健性，以正常导入那些使用逗号作为千
 msgid ""
 "The fmt library is a new dependency At least while the c++ compilers do not "
 "implement its features. This is expected to happen in the next years."
-msgstr ""
-"在各大C++编译器实现 std::format 的完整功能以前，本程序预期在这几年内都会使用 "
+msgstr "在各大C++编译器实现 std::format 的完整功能以前，本程序预期在这几年内都会使用 "
 "fmt 库作为依赖。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:423
@@ -979,40 +957,35 @@ msgstr "不再使用 GTKMM 和 GLIBMM 作为依赖。我们现在直接使用 gt
 msgid ""
 "It is now possible to combine impulse responses in the Convolver interface. "
 "A new impulse file is generated and it should be visible in the impulse list."
-msgstr ""
-"卷积混响器插件的界面中新增“组合脉冲响应”功能。 组合后会生成一个新的脉冲文件，"
-"应可见于脉冲列表中。"
+msgstr "卷积混响器插件的界面中新增“组合脉冲响应”功能。 "
+"组合后会生成一个新的脉冲文件，应可见于脉冲列表中。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:432
 msgid ""
 "Improved x axis drawings in our plots. Now the number of labels is adjusted "
 "dynamically depending on our window width."
-msgstr ""
-"改进了我们绘图中的 x 轴显示。 现在起标签的数量将根据程序窗口的宽度动态调整。"
+msgstr "改进了我们绘图中的 x 轴显示。 现在起标签的数量将根据程序窗口的宽度动态调整。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:433
 msgid ""
 "The documentation has been updated reflecting the new EasyEffects features. "
 "Old references about PulseEffects have been removed. The documentation "
 "button has been added in the menu section."
-msgstr ""
-"文档已更新，以反映 EasyEffects 的新功能。 有关 PulseEffects 的旧文档均已被删"
-"除。 此外，菜单部分新添文档按钮。"
+msgstr "文档已更新，以反映 EasyEffects 的新功能。 有关 PulseEffects "
+"的旧文档均已被删除。 此外，菜单部分新添文档按钮。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:435
 msgid ""
 "When a spinbutton is filled with an out of range value, now it is updated "
 "with the lowest/highest value rather than resetting to the previous one."
-msgstr ""
-"当spinbutton被输入超出范围的值时，现在起它将会被更新为最低/最高值，而不是重置"
+msgstr "当spinbutton被输入超出范围的值时，现在起它将会被更新为最低/最高值，而不是重置"
 "为前值。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:436
 msgid ""
 "The application window now remembers the maximized state and restores it on "
 "the next opening event."
-msgstr ""
-"应用程序窗口现在起会记住当前最大化状态，并在下一次打开程序时恢复该状态。"
+msgstr "应用程序窗口现在起会记住当前最大化状态，并在下一次打开程序时恢复该状态。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:438
 msgid "The tbb library is a new dependency"
@@ -1055,8 +1028,7 @@ msgid ""
 "The probes used in some filters like the Compressor and the Limiter were not "
 "being relinked after changing the order of the plugins in the pipeline. It "
 "should be working now."
-msgstr ""
-"修复了在更改音效管道中插件的顺序后，压缩器以及限幅器等插件的探针并未重新链接"
+msgstr "修复了在更改音效管道中插件的顺序后，压缩器以及限幅器等插件的探针并未重新链接"
 "的问题。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:461
@@ -1085,33 +1057,30 @@ msgid ""
 "that decided to use it instead of the built-in PipeWire session manager. "
 "More information at issue 1144."
 msgstr ""
-"改进了与 WirePlumber 的兼容性。 对于使用不是 PipeWire 内置的会话管理器的系"
-"统，这项改动是必要的。 更多信息请参见 issue #1144。"
+"改进了与 WirePlumber 的兼容性。 对于使用不是 PipeWire "
+"内置的会话管理器的系统，这项改动是必要的。 更多信息请参见 issue #1144。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:481
 msgid ""
 "When trying to add an autoloading profile for a device already in the list "
 "its target preset will be updated. This way we can change the profile preset "
 "without having to remove and recreating it."
-msgstr ""
-"从现在起，当用户尝试为列表中已有的设备添加自动加载配置文件时，其目标预设将被"
+msgstr "从现在起，当用户尝试为列表中已有的设备添加自动加载配置文件时，其目标预设将被"
 "更新。 这样用户更改配置文件预设时，就无需删除并重新创建它了。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:482
 msgid ""
 "The preset autoloading support implementation was redesigned again. It "
 "should work on more hardware now. For more information see issue 1051."
-msgstr ""
-"再次重新设计了自动加载预设的实现。它现在应该可以在更多机器上正常运行了。 有关"
-"详细信息，请参阅issue #1051。"
+msgstr "再次重新设计了自动加载预设的实现。它现在应该可以在更多机器上正常运行了。 "
+"有关详细信息，请参阅issue #1051。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:483
 msgid ""
 "If the Limiter or the Maximizer are set in the last position of the plugin "
 "stack, new plugins are added at the second to last position in order to "
 "prevent hardware damage on eventually high output level."
-msgstr ""
-"如果用户将限幅器或放大器设置在插件堆栈的最后一个位置，则新插件将会被添加到倒"
+msgstr "如果用户将限幅器或放大器设置在插件堆栈的最后一个位置，则新插件将会被添加到倒"
 "数第二个位置，以防止硬件因输出音量过大而导致损坏。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:484
@@ -1124,9 +1093,8 @@ msgstr "若用户从黑名单中删除某个应用程序，程序将恢复其先
 msgid ""
 "Sometimes when removing imported models from the noise reduction plugin the "
 "current used model was not properly updated. This should be fixed now."
-msgstr ""
-"解决当用户从降噪插件中删除导入的模型时，当前使用的模型偶尔不会正常更新的问"
-"题。"
+msgstr "解决当用户从降噪插件中删除导入的模型时，当前使用的模型偶尔不会正常更新的问题"
+"。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:487
 msgid ""
@@ -1150,14 +1118,14 @@ msgid ""
 "UI (if an application icon could not be shown even if you're sure it's "
 "correctly installed, please open an issue)."
 msgstr ""
-"系统缺失的图标不应显示在应用程序信息 UI 中（如果确定图标已正确安装，但本程序"
-"依旧无法正常显示应用程序的图标，请在本程序代码仓库提交 issue）。"
+"系统缺失的图标不应显示在应用程序信息 UI "
+"中（如果确定图标已正确安装，但本程序依旧无法正常显示应用程序的图标，"
+"请在本程序代码仓库提交 issue）。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:491
 msgid ""
 "Some icons not showing in Plasma DE with Breeze icon theme should appear now."
-msgstr ""
-"修复了在使用 Breeze 图标主题的 Plasma 桌面中，本程序未显示一些图标的问题。"
+msgstr "修复了在使用 Breeze 图标主题的 Plasma 桌面中，本程序未显示一些图标的问题。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:499
 msgid "Updated Chinese translation."
@@ -1175,16 +1143,14 @@ msgstr "新增了压缩器参数 提升量 的支持"
 msgid ""
 "The multiband compressor plugin now uses the stereo multiband compressor "
 "plugin from Linux Studio Plugins instead of the one from Calf Studio."
-msgstr ""
-"多频段压缩器插件从现在起基于 Linux Studio Plugins 中的立体声多频段压缩器插"
-"件，而非 Calf Studio 中的插件。"
+msgstr "多频段压缩器插件从现在起基于 Linux Studio Plugins "
+"中的立体声多频段压缩器插件，而非 Calf Studio 中的插件。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:503
 msgid ""
 "The limiter plugin now uses the stereo limiter plugin from Linux Studio "
 "Plugins instead of the one from Calf Studio."
-msgstr ""
-"限幅器插件从现在起基于 Linux Studio 插件中的立体声限制器插件，而非 Calf "
+msgstr "限幅器插件从现在起基于 Linux Studio 插件中的立体声限制器插件，而非 Calf "
 "Studio 中的。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:504
@@ -1255,8 +1221,7 @@ msgid ""
 "The convolver impulse response menu was improved to workaround an issue "
 "where the impulse files was not loaded when only one was available in the "
 "menu, see issue 1011"
-msgstr ""
-"改进了卷积器脉冲响应插件的菜单，以防止菜单中只有一个脉冲文件时会出现脉冲文件"
+msgstr "改进了卷积器脉冲响应插件的菜单，以防止菜单中只有一个脉冲文件时会出现脉冲文件"
 "未加载的问题，请参阅 issue #1011"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:527
@@ -1280,9 +1245,8 @@ msgstr "修复了程序界面一些部件中的对齐问题"
 msgid ""
 "The Loudness plugin is being used again for the reasons described at issue "
 "820. This means that is an optional dependency again."
-msgstr ""
-"由于 issue #820 中描述的原因，本程序再度使用响度插件。这意味着它再次成为一个"
-"可选的依赖。"
+msgstr "由于 issue #820 "
+"中描述的原因，本程序再度使用响度插件。这意味着它再次成为一个可选的依赖。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:540
 msgid ""
@@ -1311,8 +1275,9 @@ msgid ""
 "allow to import different presets for each channel instead of just settings "
 "the same values to both."
 msgstr ""
-"当在均衡器中启用分离声道时，导入的 APO 预设将仅应用于正在显示于程序窗口中的声"
-"道。 这将允许为每个声道导入不同的预设，两个声道不再强制共用一个预设。"
+"当在均衡器中启用分离声道时，导入的 APO "
+"预设将仅应用于正在显示于程序窗口中的声道。 "
+"这将允许为每个声道导入不同的预设，两个声道不再强制共用一个预设。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:553
 msgid ""
@@ -1330,8 +1295,7 @@ msgstr "这是我有史以来完成的最大版本之一。 改动量之大，�
 msgid ""
 "The following are just the most import ones. People interested on the "
 "journey that got us here can take a look at issue 904 and issue 874."
-msgstr ""
-"以下只是最重要的事项， 对我们这一路的开发旅程感兴趣的人可以参阅 issue #904 "
+msgstr "以下只是最重要的事项， 对我们这一路的开发旅程感兴趣的人可以参阅 issue #904 "
 "和 issue #874。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:563
@@ -1355,8 +1319,9 @@ msgid ""
 "menu. Now the user can show in the window only the plugins that he/she wants "
 "to use."
 msgstr ""
-"从头开始重新实现了许多功能，相关例子有预设自动加载等等。 另一个显着变化出现在"
-"插件选择菜单中，现在用户可以在程序窗口中选择只显示他们想要使用的插件。"
+"从头开始重新实现了许多功能，相关例子有预设自动加载等等。 "
+"另一个显着变化出现在插件选择菜单中，现在用户可以在程序窗口中选择只显示他们想"
+"要使用的插件。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:567
 msgid ""
@@ -1365,8 +1330,8 @@ msgid ""
 "PulseEffects presets in a text editor and make them work in EasyEffects. "
 "Hopefully someone will come up with a script for this in the feature."
 msgstr ""
-"Boost 不再是本程序依赖，伴随这项改动的是预设文件的结构发生了一点变化。 只要有"
-"足够的耐心，用户可以在文本编辑器中编辑 PulseEffects 预设并使它们在 "
+"Boost 不再是本程序依赖，伴随这项改动的是预设文件的结构发生了一点变化。 "
+"只要有足够的耐心，用户可以在文本编辑器中编辑 PulseEffects 预设并使它们在 "
 "EasyEffects 中工作。 希望未来会有人为此编写一个脚本。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:568

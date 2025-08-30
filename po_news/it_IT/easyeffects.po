@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2024-04-17 06:03+0000\n"
-"Last-Translator: Nathan Hadley <nathanhadley.pigeon@gmail.com>\n"
+"PO-Revision-Date: 2025-08-30 00:58+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/it/>\n"
 "Language: it_IT\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.13.1-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
@@ -89,8 +89,7 @@ msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "The main page showing two audio output apps"
-msgstr ""
-"La scheda principale che mostra il flusso in uscita di due applicazioni"
+msgstr "La scheda principale che mostra il flusso in uscita di due applicazioni"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 msgid "The bass enhancer page showing audio controls"
@@ -413,8 +412,8 @@ msgid ""
 "avoid the output to sound too \"dry\"."
 msgstr ""
 "La riduzione del rumore tramite RNNoise ora può mescolare i segnali "
-"originali e quelli denoizzati per evitare che l'uscita suoni troppo "
-"\"secca\"."
+"originali e quelli denoizzati per evitare che l'uscita suoni troppo \"secca\""
+"."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:174
 msgid ""
@@ -560,8 +559,8 @@ msgid ""
 "Speex is no longer incorrectly listed as a build dependency (speexdsp is "
 "still a build dependency)"
 msgstr ""
-"Speex non è più erroneamente elencato come una dipendenza di compilazione "
-"(speexdsp invece è ancora una dipendenza di compilazione)"
+"Speex non è più erroneamente elencato come una dipendenza di compilazione ("
+"speexdsp invece è ancora una dipendenza di compilazione)"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
 msgid ""
@@ -704,8 +703,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:282
 msgid "Dry and wet controls added to the Stereo Tools effect."
-msgstr ""
-"I controlli Dry e Wet sono stati aggiunti all'effetto Strumenti Stereo."
+msgstr "I controlli Dry e Wet sono stati aggiunti all'effetto Strumenti Stereo."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:283
 msgid ""

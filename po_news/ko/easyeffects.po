@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2023-08-09 08:17+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"PO-Revision-Date: 2025-08-30 00:58+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ko/>\n"
 "Language: ko\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.13.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 #, fuzzy
@@ -35,9 +35,9 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"EasyEffects는 고급 오디오 처리 도구 입니다. 이퀄라이저, 리미터, 컴프레서, 리"
-"버브 툴 등이 포함되며, 이외에도 여러가지 플러그인이 있습니다. 예를 들자면 스"
-"펙트럼 분석기도 내장되어 있습니다."
+"EasyEffects는 고급 오디오 처리 도구 입니다. 이퀄라이저, 리미터, 컴프레서, "
+"리버브 툴 등이 포함되며, 이외에도 여러가지 플러그인이 있습니다. 예를 들자면 "
+"스펙트럼 분석기도 내장되어 있습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 #, fuzzy
@@ -45,8 +45,8 @@ msgid ""
 "Easy Effects is the successor to PulseEffects. Easy Effects only supports "
 "PipeWire's audio server. PulseAudio users should instead use PulseEffects."
 msgstr ""
-"EasyEffects는 PulseEffects의 후속 프로젝트 입니다. EasyEffects는 PipeWire 만"
-"을 지원 합니다. PulseAudio를 사용하는 경우 PulseEffects를 사용하십시오."
+"EasyEffects는 PulseEffects의 후속 프로젝트 입니다. EasyEffects는 PipeWire "
+"만을 지원 합니다. PulseAudio를 사용하는 경우 PulseEffects를 사용하십시오."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:11
 #, fuzzy
@@ -55,9 +55,9 @@ msgid ""
 "with most, if not all, applications you use. All supported applications are "
 "presented in the main window, where each can be enabled individually."
 msgstr ""
-"EasyEffects는 기본 PipeWire 사운드 서버를 사용하므로 대부분의 응용 프로그램에"
-"서 작동합니다. 지원되는 모든 응용 프로그램은 메인 화면에 표시되며 각각 개별적"
-"으로 활성화할 수 있습니다."
+"EasyEffects는 기본 PipeWire 사운드 서버를 사용하므로 대부분의 응용 "
+"프로그램에서 작동합니다. 지원되는 모든 응용 프로그램은 메인 화면에 표시되며 "
+"각각 개별적으로 활성화할 수 있습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:12
 #, fuzzy
@@ -66,9 +66,9 @@ msgid ""
 "an input device, such as a microphone. This is, for example, useful in audio "
 "recording, but it also works well during voice conversations."
 msgstr ""
-"EasyEffects는 음향 출력을 처리할 뿐만 아니라 마이크 등의 입력 장치에도 음향효"
-"과를 걸 수 있습니다. 예를 들어 오디오 녹음 할 때 유용하며 음성 대화 시에도 효"
-"과를 발휘합니다."
+"EasyEffects는 음향 출력을 처리할 뿐만 아니라 마이크 등의 입력 장치에도 "
+"음향효과를 걸 수 있습니다. 예를 들어 오디오 녹음 할 때 유용하며 음성 대화 "
+"시에도 효과를 발휘합니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:13
 #, fuzzy
@@ -76,8 +76,7 @@ msgid ""
 "When Easy Effects is launched it will conveniently remember the "
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
-msgstr ""
-"EasyEffects를 시작하면 마지막 세션에서 사용된 설정이 적용됩니다. 현재 설정을 "
+msgstr "EasyEffects를 시작하면 마지막 세션에서 사용된 설정이 적용됩니다. 현재 설정을 "
 "모두 프로파일로 저장할 수도 있습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
@@ -619,9 +618,8 @@ msgstr ""
 msgid ""
 "Multiband Gate implementation has been migrated from CALF to Linux Studio "
 "Plugins."
-msgstr ""
-"멀티밴드 게이트 구현이 CALF에서 Linux Studio 플러그인으로 마이그레이션되었습"
-"니다."
+msgstr "멀티밴드 게이트 구현이 CALF에서 Linux Studio 플러그인으로 "
+"마이그레이션되었습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:296
 msgid ""
@@ -751,8 +749,7 @@ msgstr "이제 응용프로그램 아이콘이 QT를 사용하는 데스크톱�
 #, fuzzy
 msgid ""
 "Our blocklist code will use the application.id tag if the stream sets it"
-msgstr ""
-"스트림이 설정하는 경우 차단 목록 코드는 `application.id` 태그를 사용합니다"
+msgstr "스트림이 설정하는 경우 차단 목록 코드는 `application.id` 태그를 사용합니다"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:356
 #, fuzzy
@@ -762,9 +759,9 @@ msgid ""
 "scale anymore. More details about the problem and the solution for it can be "
 "found on issue 1211 and issue 1427"
 msgstr ""
-"마우스 스크롤 문제를 피하기 위해 '재생기/녹음기' 탭에 표시된 응용프로그램 목"
-"록의 항목에 더 이상 음량 크기조정이 표시되지 않습니다. 문제 및 해결 방법에 대"
-"한 자세한 내용은 문제 1211 및 문제 1427에서 찾을 수 있습니다"
+"마우스 스크롤 문제를 피하기 위해 '재생기/녹음기' 탭에 표시된 응용프로그램 "
+"목록의 항목에 더 이상 음량 크기조정이 표시되지 않습니다. 문제 및 해결 방법에 "
+"대한 자세한 내용은 문제 1211 및 문제 1427에서 찾을 수 있습니다"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:357
 msgid ""
@@ -827,9 +824,8 @@ msgid ""
 "The crossfeed filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
-msgstr ""
-"크로스 피드 필터는 PipeWire의 동적 레이턴시 스위치에 잘 대응합니다. 이제 볼"
-"륨 레벨 점프가 발생하지 않습니다."
+msgstr "크로스 피드 필터는 PipeWire의 동적 레이턴시 스위치에 잘 대응합니다. 이제 "
+"볼륨 레벨 점프가 발생하지 않습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:384
 msgid ""
@@ -848,9 +844,8 @@ msgid ""
 "The autogain filter should deal better with PipeWire's dynamic latency "
 "switches. Jumps in volume level should not happen anymore in these "
 "situations."
-msgstr ""
-"크로스 피드 필터는 PipeWire의 동적 레이턴시 스위치에 잘 대응합니다. 이제 볼"
-"륨 레벨 점프가 발생하지 않습니다."
+msgstr "크로스 피드 필터는 PipeWire의 동적 레이턴시 스위치에 잘 대응합니다. 이제 "
+"볼륨 레벨 점프가 발생하지 않습니다."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:394
 msgid ""

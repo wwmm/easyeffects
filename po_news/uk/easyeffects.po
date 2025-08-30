@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-07-16 01:01+0000\n"
-"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
+"PO-Revision-Date: 2025-08-30 00:58+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.13.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -444,8 +444,7 @@ msgstr "EasyEffects тепер можна створювати також за �
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
-msgstr ""
-"Expander із плагінів Linux Studio можна використовувати в Easy Effects."
+msgstr "Expander із плагінів Linux Studio можна використовувати в Easy Effects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
 msgid ""
@@ -1182,8 +1181,8 @@ msgid ""
 "The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
 "Amplification\" parameter."
 msgstr ""
-"Функція імпорту профілю APO плагіна еквалайзера тепер аналізує параметр "
-"«Попереднє посилення»."
+"Функція імпорту профілю APO плагіна еквалайзера тепер аналізує параметр «"
+"Попереднє посилення»."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:449
 msgid "Optional Cubic Volume can be enabled in General Settings."
@@ -1215,8 +1214,7 @@ msgstr ""
 msgid ""
 "PipeWire monitor streams are now excluded and removed from the applications "
 "list."
-msgstr ""
-"Потоки монітора PipeWire тепер виключено та видалено зі списку програм."
+msgstr "Потоки монітора PipeWire тепер виключено та видалено зі списку програм."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:463
 msgid "Hopefully crashes like the one reported at issue 1172 are fixed."
@@ -1371,8 +1369,7 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:506
 msgid "The echo canceller sampling rate is now properly set."
-msgstr ""
-"Тепер частоту дискретизації ехокомпенсатора встановлено належним чином."
+msgstr "Тепер частоту дискретизації ехокомпенсатора встановлено належним чином."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:507
 msgid ""
