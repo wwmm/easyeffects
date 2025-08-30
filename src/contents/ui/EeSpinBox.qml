@@ -61,33 +61,33 @@ FormCard.AbstractFormDelegate {
     }
 
     contentItem: GridLayout {
-        columns: labelAbove === false ? 2 : 1
-        rows: labelAbove === false ? 1 : 2
+        columns: control.labelAbove === false ? 2 : 1
+        rows: control.labelAbove === false ? 1 : 2
         rowSpacing: Kirigami.Units.smallSpacing
 
         ColumnLayout {
             Label {
                 id: label
 
-                Layout.fillWidth: labelFillWidth
+                Layout.fillWidth: control.labelFillWidth
                 text: control.label
                 elide: control.elide
                 color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
                 wrapMode: control.wrapMode
                 maximumLineCount: control.maximumLineCount
-                horizontalAlignment: labelAlignment
+                horizontalAlignment: control.labelAlignment
             }
 
             Label {
                 id: subtitle
 
-                Layout.fillWidth: labelFillWidth
+                Layout.fillWidth: control.labelFillWidth
                 text: control.subtitle
                 elide: control.elide
                 color: Kirigami.Theme.disabledTextColor
                 wrapMode: control.wrapMode
                 maximumLineCount: control.maximumLineCount
-                horizontalAlignment: labelAlignment
+                horizontalAlignment: control.labelAlignment
                 visible: !Common.isEmpty(control.subtitle)
             }
         }
@@ -105,7 +105,7 @@ FormCard.AbstractFormDelegate {
             Layout.fillWidth: control.spinboxLayoutFillWidth
             Layout.maximumWidth: control.spinboxMaximumWidth
             Layout.minimumWidth: control.spinboxMinimumWidth
-            Layout.alignment: spinboxAlignment
+            Layout.alignment: control.spinboxAlignment
             implicitWidth: control.boxWidth
             focusPolicy: control.focusPolicy
             wheelEnabled: true
