@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-08-30 12:33-0300\n"
-"PO-Revision-Date: 2025-08-30 15:01+0000\n"
+"PO-Revision-Date: 2025-08-30 22:33+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -1731,7 +1731,7 @@ msgstr "Activer le Mode Service"
 
 #: src/contents/ui/PreferencesSheet.qml:35
 msgid "Easy Effects is Active in Background When the Window is Closed"
-msgstr ""
+msgstr "Easy Effects Reste Actif en Arrière-plan Lorsque la Fenêtre est Fermée"
 
 #: src/contents/ui/PreferencesSheet.qml:47
 msgid "Autostart on Login"
@@ -1739,7 +1739,7 @@ msgstr "Démarrage Automatique à la Connexion"
 
 #: src/contents/ui/PreferencesSheet.qml:48
 msgid "Easy Effects is Launched at User Session Startup"
-msgstr ""
+msgstr "Easy Effects est Lancé au Démarrage de la Session Utilisateur"
 
 #: src/contents/ui/PreferencesSheet.qml:61
 msgid "Show the Tray Icon"
@@ -1762,9 +1762,8 @@ msgid "Use Cubic Volume"
 msgstr "Utiliser le Volume Cubique"
 
 #: src/contents/ui/PreferencesSheet.qml:125
-#, fuzzy
 msgid "Enable/Disable Input Monitoring"
-msgstr "Activer/désactiver la surveillance des entrées"
+msgstr "Activer/Désactiver la Surveillance des Entrées"
 
 #: src/contents/ui/PreferencesSheet.qml:136
 msgid "Mic Monitor Plays to Output Effects Pipeline"
@@ -1779,6 +1778,8 @@ msgid ""
 "When all Streams are Inactive, Easy Effects Pipeline Remains Loaded for an "
 "Extra Amount of Time"
 msgstr ""
+"Lorsque tous les Flux sont Inactifs, le Pipeline d'Easy Effects Reste Chargé "
+"Pendant un Certain Temps Supplémentaire"
 
 #: src/contents/ui/PreferencesSheet.qml:160
 msgid "Inactivity Timeout"
@@ -1793,6 +1794,9 @@ msgid ""
 "The Time it Takes for the Level Meter Labels to be Updated When the Current "
 "Level is Below the Last Highest One"
 msgstr ""
+"Temps Nécessaire pour que les Étiquettes de l'Indicateur de Niveau Soient "
+"Mises à Jour Lorsque le Niveau Actuel est Inférieur au Précédent Niveau le "
+"Plus Élevé"
 
 #: src/contents/ui/PreferencesSheet.qml:215
 msgid "Audio Delay Compensation"
@@ -1912,9 +1916,8 @@ msgid "Global Shortcuts"
 msgstr "Raccourcis Globaux"
 
 #: src/contents/ui/PreferencesSheet.qml:395
-#, fuzzy
 msgid "Enables Support for XDG Global Shortcuts"
-msgstr "Active le Support des Raccourcis Globaux XDG"
+msgstr "Active le Support pour les Raccourcis Globaux XDG"
 
 #: src/contents/ui/PreferencesSheet.qml:407
 msgid "Native Window of Effects"
