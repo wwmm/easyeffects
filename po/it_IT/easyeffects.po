@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-29 21:24-0300\n"
+"POT-Creation-Date: 2025-08-30 12:33-0300\n"
 "PO-Revision-Date: 2025-08-30 15:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1423,11 +1423,6 @@ msgstr "Livello Clipping"
 msgid "Clipping"
 msgstr "Clipping"
 
-#: src/contents/ui/main.qml:16
-msgctxt "@title:window"
-msgid "Easy Effects"
-msgstr "Easy Effects"
-
 #: src/contents/ui/main.qml:124
 msgid "Reset Settings?"
 msgstr "Reset delle Impostazioni?"
@@ -1436,19 +1431,9 @@ msgstr "Reset delle Impostazioni?"
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Davvero vuoi reimpostare tutte le opzioni di Easy Effects?"
 
-#: src/contents/ui/main.qml:143
-msgctxt "@title"
-msgid "Easy Effects"
-msgstr "Easy Effects"
-
 #: src/contents/ui/main.qml:146
 msgid "Audio effects for PipeWire applications"
 msgstr "Effetti Audio per Applicazioni PipeWire"
-
-#: src/contents/ui/main.qml:154
-msgctxt "@info:credit"
-msgid "Wellington Wallace"
-msgstr "Wellington Wallace"
 
 #: src/contents/ui/main.qml:155
 msgctxt "@info:credit"
@@ -1482,8 +1467,8 @@ msgstr "PipeWire"
 
 #: src/contents/ui/main.qml:383 src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:512
-#: src/contents/ui/PreferencesSheet.qml:525
+#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:536
 msgid "Preferences"
 msgstr "Preferenze"
 
@@ -1705,12 +1690,12 @@ msgid "No Clients"
 msgstr "Nessun Client"
 
 #: src/contents/ui/PipeWirePage.qml:270
-#: src/contents/ui/PreferencesSheet.qml:189
+#: src/contents/ui/PreferencesSheet.qml:197
 msgid "State"
 msgstr "Stato"
 
 #: src/contents/ui/PipeWirePage.qml:277
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:204
 msgid "Enabled"
 msgstr "Abilitato"
 
@@ -1782,204 +1767,226 @@ msgstr "Anti-aliasing"
 msgid "Enable Service Mode"
 msgstr "Abilita Modalità di Servizio"
 
-#: src/contents/ui/PreferencesSheet.qml:45
+#: src/contents/ui/PreferencesSheet.qml:35
+msgid "Easy Effects is Active in Background When the Window is Closed"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:47
 msgid "Autostart on Login"
 msgstr "Avvio Automatico al Login"
 
-#: src/contents/ui/PreferencesSheet.qml:57
+#: src/contents/ui/PreferencesSheet.qml:48
+msgid "Easy Effects is Launched at User Session Startup"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:61
 msgid "Show the Tray Icon"
 msgstr "Mostra l'Icona nella Tray"
 
-#: src/contents/ui/PreferencesSheet.qml:77
+#: src/contents/ui/PreferencesSheet.qml:81
 msgid "Process All Output Streams"
 msgstr "Processa Tutto i Flussi in Uscita"
 
-#: src/contents/ui/PreferencesSheet.qml:88
+#: src/contents/ui/PreferencesSheet.qml:92
 msgid "Process All Input Streams"
 msgstr "Processa Tutti i Flussi in Ingresso"
 
-#: src/contents/ui/PreferencesSheet.qml:99
+#: src/contents/ui/PreferencesSheet.qml:103
 msgid "Ignore Streams from Monitor of Devices"
 msgstr "Ignora i Flussi dai Monitor dei Dispositivi"
 
-#: src/contents/ui/PreferencesSheet.qml:110
+#: src/contents/ui/PreferencesSheet.qml:114
 msgid "Use Cubic Volume"
 msgstr "Usa Volume Cubico"
 
-#: src/contents/ui/PreferencesSheet.qml:121
-msgid "Enable/disable input monitoring"
+#: src/contents/ui/PreferencesSheet.qml:125
+#, fuzzy
+msgid "Enable/Disable Input Monitoring"
 msgstr "Abilita/disabilita il monitoraggio degli input"
 
-#: src/contents/ui/PreferencesSheet.qml:132
+#: src/contents/ui/PreferencesSheet.qml:136
 msgid "Mic Monitor Plays to Output Effects Pipeline"
 msgstr "Monitoraggio Mic Riproduce sulla Pipeline di Output"
 
-#: src/contents/ui/PreferencesSheet.qml:143
+#: src/contents/ui/PreferencesSheet.qml:147
 msgid "Enable the Inactivity Timeout"
 msgstr "Abilita il Timeout di Inattività"
 
-#: src/contents/ui/PreferencesSheet.qml:154
+#: src/contents/ui/PreferencesSheet.qml:148
+msgid ""
+"When all Streams are Inactive, Easy Effects Pipeline Remains Loaded for an "
+"Extra Amount of Time"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:160
 msgid "Inactivity Timeout"
 msgstr "Tempo Inattività"
 
-#: src/contents/ui/PreferencesSheet.qml:168
+#: src/contents/ui/PreferencesSheet.qml:174
 msgid "Level Meters Label"
 msgstr "Etichetta dei Monitor di Livello"
 
-#: src/contents/ui/PreferencesSheet.qml:207
+#: src/contents/ui/PreferencesSheet.qml:175
+msgid ""
+"The Time it Takes for the Level Meter Labels to be Updated When the Current "
+"Level is Below the Last Highest One"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:215
 msgid "Audio Delay Compensation"
 msgstr "Compensazione Audio Delay"
 
-#: src/contents/ui/PreferencesSheet.qml:221
+#: src/contents/ui/PreferencesSheet.qml:229
 msgid "Style"
 msgstr "Stile"
 
-#: src/contents/ui/PreferencesSheet.qml:228
+#: src/contents/ui/PreferencesSheet.qml:236
 msgid "Color Scheme"
 msgstr "Schema Colori"
 
-#: src/contents/ui/PreferencesSheet.qml:232
+#: src/contents/ui/PreferencesSheet.qml:240
 msgid "Automatic"
 msgstr "Automatico"
 
-#: src/contents/ui/PreferencesSheet.qml:232
+#: src/contents/ui/PreferencesSheet.qml:240
 msgid "Light"
 msgstr "Chiaro"
 
-#: src/contents/ui/PreferencesSheet.qml:232
+#: src/contents/ui/PreferencesSheet.qml:240
 msgid "Dark"
 msgstr "Scuro"
 
-#: src/contents/ui/PreferencesSheet.qml:242
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Color Theme"
 msgstr "Tema Colori"
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Green"
 msgstr "Verde"
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Green Neon"
 msgstr "Verde Neon"
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Mix"
 msgstr "Mix"
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Orange"
 msgstr "Arancione"
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Yellow"
 msgstr "Giallo"
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Blue"
 msgstr "Blu"
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Purple"
 msgstr "Viola"
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Grey"
 msgstr "Grigio"
 
-#: src/contents/ui/PreferencesSheet.qml:256
+#: src/contents/ui/PreferencesSheet.qml:264
 msgid "Shape"
 msgstr "Forma"
 
-#: src/contents/ui/PreferencesSheet.qml:260
+#: src/contents/ui/PreferencesSheet.qml:268
 msgid "Bars"
 msgstr "Barre"
 
-#: src/contents/ui/PreferencesSheet.qml:260
+#: src/contents/ui/PreferencesSheet.qml:268
 msgid "Lines"
 msgstr "Linee"
 
-#: src/contents/ui/PreferencesSheet.qml:260
+#: src/contents/ui/PreferencesSheet.qml:268
 msgid "Dots"
 msgstr "Punti"
 
-#: src/contents/ui/PreferencesSheet.qml:260
+#: src/contents/ui/PreferencesSheet.qml:268
 msgid "Area"
 msgstr "Area"
 
-#: src/contents/ui/PreferencesSheet.qml:270
+#: src/contents/ui/PreferencesSheet.qml:278
 msgid "Dynamic Scale"
 msgstr "Scala Dinamica"
 
-#: src/contents/ui/PreferencesSheet.qml:281
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Logarithmic Frequency Axis"
 msgstr "Asse Frequenza Logaritmica"
 
-#: src/contents/ui/PreferencesSheet.qml:292
+#: src/contents/ui/PreferencesSheet.qml:300
 msgid "Points"
 msgstr "Punti"
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:314
 msgid "Height"
 msgstr "Altezza"
 
-#: src/contents/ui/PreferencesSheet.qml:320
+#: src/contents/ui/PreferencesSheet.qml:328
 msgid "Frequency Range"
 msgstr "Gamma Frequenze"
 
-#: src/contents/ui/PreferencesSheet.qml:327
+#: src/contents/ui/PreferencesSheet.qml:335
 msgid "Minimum"
 msgstr "Minima"
 
-#: src/contents/ui/PreferencesSheet.qml:342
+#: src/contents/ui/PreferencesSheet.qml:350
 msgid "Maximum"
 msgstr "Massima"
 
-#: src/contents/ui/PreferencesSheet.qml:363
+#: src/contents/ui/PreferencesSheet.qml:371
 msgid "Database Autosave Interval"
 msgstr "Intervallo Auto Salvataggio Database"
 
-#: src/contents/ui/PreferencesSheet.qml:386
+#: src/contents/ui/PreferencesSheet.qml:394
 #: src/contents/ui/ShortcutsSheet.qml:168
 msgid "Global Shortcuts"
 msgstr "Scorciatoie Globali"
 
-#: src/contents/ui/PreferencesSheet.qml:387
-msgid "Enables support for XDG Global Shortcuts"
+#: src/contents/ui/PreferencesSheet.qml:395
+#, fuzzy
+msgid "Enables Support for XDG Global Shortcuts"
 msgstr "Abilita il Supporto alle Scorciatoie Globali XDG"
 
-#: src/contents/ui/PreferencesSheet.qml:398
+#: src/contents/ui/PreferencesSheet.qml:407
 msgid "Native Window of Effects"
 msgstr "Mostra Interfaccia Nativa degli Effetti"
 
-#: src/contents/ui/PreferencesSheet.qml:399
+#: src/contents/ui/PreferencesSheet.qml:408
 msgid "Allows the Native User Interface of Effects to be Shown/Hidden"
 msgstr "Permette di Visualizzare o Nascondere le Finestre Native degli Effetti"
 
-#: src/contents/ui/PreferencesSheet.qml:410
+#: src/contents/ui/PreferencesSheet.qml:420
 msgid "Update Frequency"
 msgstr "Frequenza di Aggiornamento"
 
-#: src/contents/ui/PreferencesSheet.qml:411
+#: src/contents/ui/PreferencesSheet.qml:421
 msgid "Related to LV2 Plugins"
 msgstr "Correlato ai Plugin LV2"
 
-#: src/contents/ui/PreferencesSheet.qml:439
+#: src/contents/ui/PreferencesSheet.qml:450
 msgid "Background Service"
 msgstr "Servizi in Background"
 
-#: src/contents/ui/PreferencesSheet.qml:452
+#: src/contents/ui/PreferencesSheet.qml:463
 msgid "Audio"
 msgstr "Audio"
 
-#: src/contents/ui/PreferencesSheet.qml:465
+#: src/contents/ui/PreferencesSheet.qml:476
 msgid "Spectrum Analyzer"
 msgstr "Analizzatore dello Spettro"
 
-#: src/contents/ui/PreferencesSheet.qml:478
+#: src/contents/ui/PreferencesSheet.qml:489
 msgid "Database"
 msgstr "Database"
 
-#: src/contents/ui/PreferencesSheet.qml:491
+#: src/contents/ui/PreferencesSheet.qml:502
 msgid "Experimental Features"
 msgstr "Funzionalità Sperimentali"
 
@@ -1989,8 +1996,9 @@ msgid "Device"
 msgstr "Dispositivo Audio"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:45
-msgid "Hardware Profile:"
-msgstr ""
+#: src/contents/ui/PresetsAutoloadingPage.qml:170
+msgid "Hardware Profile"
+msgstr "Profilo Dispositivo"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:59
 #: src/contents/ui/PresetsAutoloadingPage.qml:183
@@ -2000,10 +2008,6 @@ msgstr "Profilo Locale"
 #: src/contents/ui/PresetsAutoloadingPage.qml:69
 msgid "Create"
 msgstr "Crea"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:170
-msgid "Hardware Profile"
-msgstr "Profilo Dispositivo"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:204
 msgid "Fallback Preset"
@@ -2488,6 +2492,18 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Effetti Audio per Applicazioni Pipewire"
+
+#~ msgctxt "@title:window"
+#~ msgid "Easy Effects"
+#~ msgstr "Easy Effects"
+
+#~ msgctxt "@title"
+#~ msgid "Easy Effects"
+#~ msgstr "Easy Effects"
+
+#~ msgctxt "@info:credit"
+#~ msgid "Wellington Wallace"
+#~ msgstr "Wellington Wallace"
 
 #, fuzzy
 #~ msgid "Added Plugin"

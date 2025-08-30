@@ -356,8 +356,8 @@ msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
 msgstr ""
-"Версию EasyEffects можно показать в командной строке с помощью параметра "
-"--version"
+"Версию EasyEffects можно показать в командной строке с помощью параметра --"
+"version"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""
@@ -512,8 +512,8 @@ msgid ""
 "issue 1989."
 msgstr ""
 "Выпадающий список устройств входа/выхода на вкладке PipeWire обновляется при "
-"изменении системного устройства по умолчанию и включении параметра «"
-"Использовать стандартный». Это исправляет проблему 1989."
+"изменении системного устройства по умолчанию и включении параметра "
+"«Использовать стандартный». Это исправляет проблему 1989."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
 msgid "A new Level Meter plugin based on libebur128 has been added."
@@ -933,8 +933,8 @@ msgid ""
 "When no application is available for display in the Players/Recorders a "
 "message will be shown to the user"
 msgstr ""
-"Когда ни одно приложение не доступно для отображения в "
-"«Проигрывателях/рекордерах», пользователю будет показано сообщение"
+"Когда ни одно приложение не доступно для отображения в «Проигрывателях/"
+"рекордерах», пользователю будет показано сообщение"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:358
 msgid "Many translation updates"
@@ -1088,8 +1088,8 @@ msgid ""
 "filter is not available in LSP plugin)."
 msgstr ""
 "Функция импорта предустановок для Equalizer APO была улучшена: теперь "
-"возможно применить не только \"Bell\", но и другие поддерживаемые фильтры ("
-"На текущий момент, из плагинов LSP не доступен только фильтр Bandpass)."
+"возможно применить не только \"Bell\", но и другие поддерживаемые фильтры "
+"(На текущий момент, из плагинов LSP не доступен только фильтр Bandpass)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:417
 msgid "The Reset All Settings function in our menu should work in Flatpak now."
@@ -1232,7 +1232,8 @@ msgstr ""
 msgid ""
 "PipeWire monitor streams are now excluded and removed from the applications "
 "list."
-msgstr "Монитор источников PipeWire был исключён и удалён из списка приложений."
+msgstr ""
+"Монитор источников PipeWire был исключён и удалён из списка приложений."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:463
 msgid "Hopefully crashes like the one reported at issue 1172 are fixed."
@@ -1318,7 +1319,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:488
 msgid "Now the blocklist is correctly set when switching presets."
-msgstr "Теперь чёрный список правильно устанавливается при смене предустановок."
+msgstr ""
+"Теперь чёрный список правильно устанавливается при смене предустановок."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:489
 msgid ""

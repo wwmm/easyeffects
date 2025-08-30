@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-29 21:24-0300\n"
+"POT-Creation-Date: 2025-08-30 12:33-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1437,12 +1437,6 @@ msgstr ""
 msgid "Clipping"
 msgstr ""
 
-#: src/contents/ui/main.qml:16
-#, fuzzy
-msgctxt "@title:window"
-msgid "Easy Effects"
-msgstr "EasyEffects"
-
 #: src/contents/ui/main.qml:124
 #, fuzzy
 msgid "Reset Settings?"
@@ -1452,22 +1446,10 @@ msgstr "설정 재지정(_R)"
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:143
-#, fuzzy
-msgctxt "@title"
-msgid "Easy Effects"
-msgstr "EasyEffects"
-
 #: src/contents/ui/main.qml:146
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire 음향 효과 애플리케이션"
-
-#: src/contents/ui/main.qml:154
-#, fuzzy
-msgctxt "@info:credit"
-msgid "Wellington Wallace"
-msgstr "Wellington Wallace"
 
 #: src/contents/ui/main.qml:155
 #, fuzzy
@@ -1506,8 +1488,8 @@ msgstr "PipeWire(_P)"
 
 #: src/contents/ui/main.qml:383 src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:512
-#: src/contents/ui/PreferencesSheet.qml:525
+#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:536
 #, fuzzy
 msgid "Preferences"
 msgstr "환경설정(_P)"
@@ -1735,12 +1717,12 @@ msgid "No Clients"
 msgstr "클라이언트"
 
 #: src/contents/ui/PipeWirePage.qml:270
-#: src/contents/ui/PreferencesSheet.qml:189
+#: src/contents/ui/PreferencesSheet.qml:197
 msgid "State"
 msgstr "상태"
 
 #: src/contents/ui/PipeWirePage.qml:277
-#: src/contents/ui/PreferencesSheet.qml:196
+#: src/contents/ui/PreferencesSheet.qml:204
 msgid "Enabled"
 msgstr "활성화됨"
 
@@ -1814,213 +1796,233 @@ msgstr "앤티 앨리어싱"
 msgid "Enable Service Mode"
 msgstr "스테레오 모드"
 
-#: src/contents/ui/PreferencesSheet.qml:45
+#: src/contents/ui/PreferencesSheet.qml:35
+msgid "Easy Effects is Active in Background When the Window is Closed"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:47
 msgid "Autostart on Login"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:57
+#: src/contents/ui/PreferencesSheet.qml:48
+msgid "Easy Effects is Launched at User Session Startup"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:61
 msgid "Show the Tray Icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:77
+#: src/contents/ui/PreferencesSheet.qml:81
 msgid "Process All Output Streams"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:88
+#: src/contents/ui/PreferencesSheet.qml:92
 msgid "Process All Input Streams"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:99
+#: src/contents/ui/PreferencesSheet.qml:103
 msgid "Ignore Streams from Monitor of Devices"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:110
+#: src/contents/ui/PreferencesSheet.qml:114
 msgid "Use Cubic Volume"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:121
+#: src/contents/ui/PreferencesSheet.qml:125
 #, fuzzy
-msgid "Enable/disable input monitoring"
+msgid "Enable/Disable Input Monitoring"
 msgstr "이 응용프로그램 활성화/비활성화"
 
-#: src/contents/ui/PreferencesSheet.qml:132
+#: src/contents/ui/PreferencesSheet.qml:136
 msgid "Mic Monitor Plays to Output Effects Pipeline"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:143
+#: src/contents/ui/PreferencesSheet.qml:147
 msgid "Enable the Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:154
+#: src/contents/ui/PreferencesSheet.qml:148
+msgid ""
+"When all Streams are Inactive, Easy Effects Pipeline Remains Loaded for an "
+"Extra Amount of Time"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:160
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:168
+#: src/contents/ui/PreferencesSheet.qml:174
 #, fuzzy
 msgid "Level Meters Label"
 msgstr "레벨 미터"
 
-#: src/contents/ui/PreferencesSheet.qml:207
+#: src/contents/ui/PreferencesSheet.qml:175
+msgid ""
+"The Time it Takes for the Level Meter Labels to be Updated When the Current "
+"Level is Below the Last Highest One"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:215
 msgid "Audio Delay Compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:221
+#: src/contents/ui/PreferencesSheet.qml:229
 msgid "Style"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:228
+#: src/contents/ui/PreferencesSheet.qml:236
 msgid "Color Scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:232
+#: src/contents/ui/PreferencesSheet.qml:240
 #, fuzzy
 msgid "Automatic"
 msgstr "오토게인"
 
-#: src/contents/ui/PreferencesSheet.qml:232
+#: src/contents/ui/PreferencesSheet.qml:240
 #, fuzzy
 msgid "Light"
 msgstr "우측"
 
-#: src/contents/ui/PreferencesSheet.qml:232
+#: src/contents/ui/PreferencesSheet.qml:240
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:242
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Color Theme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Green Neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Mix"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 #, fuzzy
 msgid "Orange"
 msgstr "범위"
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:246
+#: src/contents/ui/PreferencesSheet.qml:254
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:256
+#: src/contents/ui/PreferencesSheet.qml:264
 msgid "Shape"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:260
+#: src/contents/ui/PreferencesSheet.qml:268
 msgid "Bars"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:260
+#: src/contents/ui/PreferencesSheet.qml:268
 msgid "Lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:260
+#: src/contents/ui/PreferencesSheet.qml:268
 msgid "Dots"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:260
+#: src/contents/ui/PreferencesSheet.qml:268
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:270
+#: src/contents/ui/PreferencesSheet.qml:278
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:281
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Logarithmic Frequency Axis"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:292
+#: src/contents/ui/PreferencesSheet.qml:300
 msgid "Points"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:306
+#: src/contents/ui/PreferencesSheet.qml:314
 msgid "Height"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:320
+#: src/contents/ui/PreferencesSheet.qml:328
 msgid "Frequency Range"
 msgstr "주파수 범위"
 
-#: src/contents/ui/PreferencesSheet.qml:327
+#: src/contents/ui/PreferencesSheet.qml:335
 msgid "Minimum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:342
+#: src/contents/ui/PreferencesSheet.qml:350
 msgid "Maximum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:363
+#: src/contents/ui/PreferencesSheet.qml:371
 msgid "Database Autosave Interval"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:386
+#: src/contents/ui/PreferencesSheet.qml:394
 #: src/contents/ui/ShortcutsSheet.qml:168
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "단축키(_S)"
 
-#: src/contents/ui/PreferencesSheet.qml:387
-msgid "Enables support for XDG Global Shortcuts"
+#: src/contents/ui/PreferencesSheet.qml:395
+msgid "Enables Support for XDG Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:398
+#: src/contents/ui/PreferencesSheet.qml:407
 msgid "Native Window of Effects"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:399
+#: src/contents/ui/PreferencesSheet.qml:408
 msgid "Allows the Native User Interface of Effects to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:410
+#: src/contents/ui/PreferencesSheet.qml:420
 #, fuzzy
 msgid "Update Frequency"
 msgstr "주파수"
 
-#: src/contents/ui/PreferencesSheet.qml:411
+#: src/contents/ui/PreferencesSheet.qml:421
 #, fuzzy
 msgid "Related to LV2 Plugins"
 msgstr "업데이트 빈도 (LV2 플러그인)"
 
-#: src/contents/ui/PreferencesSheet.qml:439
+#: src/contents/ui/PreferencesSheet.qml:450
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:452
+#: src/contents/ui/PreferencesSheet.qml:463
 msgid "Audio"
 msgstr "오디오"
 
-#: src/contents/ui/PreferencesSheet.qml:465
+#: src/contents/ui/PreferencesSheet.qml:476
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "스펙트럼"
 
-#: src/contents/ui/PreferencesSheet.qml:478
+#: src/contents/ui/PreferencesSheet.qml:489
 msgid "Database"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:491
+#: src/contents/ui/PreferencesSheet.qml:502
 msgid "Experimental Features"
 msgstr ""
 
@@ -2030,8 +2032,10 @@ msgid "Device"
 msgstr "장치"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:45
-msgid "Hardware Profile:"
-msgstr ""
+#: src/contents/ui/PresetsAutoloadingPage.qml:170
+#, fuzzy
+msgid "Hardware Profile"
+msgstr "프로필"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:59
 #: src/contents/ui/PresetsAutoloadingPage.qml:183
@@ -2043,11 +2047,6 @@ msgstr "프리셋 목록"
 #, fuzzy
 msgid "Create"
 msgstr "만드는 중"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:170
-#, fuzzy
-msgid "Hardware Profile"
-msgstr "프로필"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:204
 msgid "Fallback Preset"
@@ -2552,6 +2551,21 @@ msgstr "이퀄라이저, 컴프레서 및 기타 오디오 효과"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
+
+#, fuzzy
+#~ msgctxt "@title:window"
+#~ msgid "Easy Effects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgctxt "@title"
+#~ msgid "Easy Effects"
+#~ msgstr "EasyEffects"
+
+#, fuzzy
+#~ msgctxt "@info:credit"
+#~ msgid "Wellington Wallace"
+#~ msgstr "Wellington Wallace"
 
 #, fuzzy
 #~ msgid "Added Plugin"

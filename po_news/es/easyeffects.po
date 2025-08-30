@@ -379,7 +379,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr "El complemento DeepFilterNet ahora se puede añadir al archivo de perfil"
+msgstr ""
+"El complemento DeepFilterNet ahora se puede añadir al archivo de perfil"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
 msgid ""
@@ -581,8 +582,8 @@ msgid ""
 "Speex is no longer incorrectly listed as a build dependency (speexdsp is "
 "still a build dependency)"
 msgstr ""
-"Speex ya no aparece incorrectamente como una dependencia de la compilación ("
-"speexdsp sigue siendo una dependencia de compilación)"
+"Speex ya no aparece incorrectamente como una dependencia de la compilación "
+"(speexdsp sigue siendo una dependencia de compilación)"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
 msgid ""
@@ -1099,7 +1100,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:415
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
-msgstr "El menú de ajustes ha sido rediseñado utilizando widgets de LibAdwaita."
+msgstr ""
+"El menú de ajustes ha sido rediseñado utilizando widgets de LibAdwaita."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:416
 msgid ""

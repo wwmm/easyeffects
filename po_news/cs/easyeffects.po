@@ -1408,8 +1408,8 @@ msgid ""
 "Improved the resampler used in the plugins that require one(like the rnnoise "
 "plugin)"
 msgstr ""
-"Vylepšení resampleru používaného v zásuvných modulech, které jej vyžadují ("
-"např. zásuvný modul rnnoise)"
+"Vylepšení resampleru používaného v zásuvných modulech, které jej vyžadují "
+"(např. zásuvný modul rnnoise)"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:524
 msgid "Setting multiple autoloading presets should be fine now"

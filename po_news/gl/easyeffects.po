@@ -835,8 +835,8 @@ msgid ""
 "When no application is available for display in the Players/Recorders a "
 "message will be shown to the user"
 msgstr ""
-"Cando non estea dispoñible ningunha aplicación para a súa ollada nos `"
-"Reproductores/Grabadores`, mostrarase unha mensaxe ao usuario"
+"Cando non estea dispoñible ningunha aplicación para a súa ollada nos "
+"`Reproductores/Grabadores`, mostrarase unha mensaxe ao usuario"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:358
 msgid "Many translation updates"

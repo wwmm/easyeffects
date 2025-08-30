@@ -789,7 +789,8 @@ msgstr "A interface do plugin de tom foi melhorada"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:354
 msgid "Our application icon is now compatible with desktops that uses QT"
-msgstr "O ícone da nossa aplicação é agora compatível com ambientes que usam QT"
+msgstr ""
+"O ícone da nossa aplicação é agora compatível com ambientes que usam QT"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:355
 #, fuzzy

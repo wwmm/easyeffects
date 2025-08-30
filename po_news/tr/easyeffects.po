@@ -922,7 +922,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:415
 msgid "The settings menu has been redesigned using LibAdwaita widgets."
-msgstr "Ayarlar menüsü, LibAdwaita widget'ları kullanılarak yeniden tasarlandı."
+msgstr ""
+"Ayarlar menüsü, LibAdwaita widget'ları kullanılarak yeniden tasarlandı."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:416
 msgid ""

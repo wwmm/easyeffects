@@ -34,9 +34,9 @@ msgid ""
 "equalizer, limiter, compressor and a reverberation tool, just to mention a "
 "few. To complement this there is also a built in spectrum analyzer."
 msgstr ""
-"ايزي ايفيكت هي أداة متقدمة لمعالجة الصوت. فهو يشتمل على معادل الصوت، والمحدد،"
-" والضاغط، وأداة الصدى، على سبيل المثال لا الحصر. ولتكملة هذا، يوجد أيضًا محلل "
-"طيف مدمج."
+"ايزي ايفيكت هي أداة متقدمة لمعالجة الصوت. فهو يشتمل على معادل الصوت، "
+"والمحدد، والضاغط، وأداة الصدى، على سبيل المثال لا الحصر. ولتكملة هذا، يوجد "
+"أيضًا محلل طيف مدمج."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:10
 msgid ""

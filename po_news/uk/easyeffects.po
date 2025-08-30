@@ -446,7 +446,8 @@ msgstr "EasyEffects тепер можна створювати також за �
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
-msgstr "Expander із плагінів Linux Studio можна використовувати в Easy Effects."
+msgstr ""
+"Expander із плагінів Linux Studio можна використовувати в Easy Effects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
 msgid ""
@@ -1182,8 +1183,8 @@ msgid ""
 "The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
 "Amplification\" parameter."
 msgstr ""
-"Функція імпорту профілю APO плагіна еквалайзера тепер аналізує параметр «"
-"Попереднє посилення»."
+"Функція імпорту профілю APO плагіна еквалайзера тепер аналізує параметр "
+"«Попереднє посилення»."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:449
 msgid "Optional Cubic Volume can be enabled in General Settings."
@@ -1215,7 +1216,8 @@ msgstr ""
 msgid ""
 "PipeWire monitor streams are now excluded and removed from the applications "
 "list."
-msgstr "Потоки монітора PipeWire тепер виключено та видалено зі списку програм."
+msgstr ""
+"Потоки монітора PipeWire тепер виключено та видалено зі списку програм."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:463
 msgid "Hopefully crashes like the one reported at issue 1172 are fixed."
@@ -1370,7 +1372,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:506
 msgid "The echo canceller sampling rate is now properly set."
-msgstr "Тепер частоту дискретизації ехокомпенсатора встановлено належним чином."
+msgstr ""
+"Тепер частоту дискретизації ехокомпенсатора встановлено належним чином."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:507
 msgid ""
