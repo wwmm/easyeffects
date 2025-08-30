@@ -32,6 +32,8 @@ Kirigami.OverlaySheet {
                     id: enableServiceMode
 
                     label: i18n("Enable Service Mode")
+                    subtitle: i18n("Easy Effects is Active in Background When the Window is Closed")
+                    maximumLineCount: -1
                     isChecked: DB.Manager.main.enableServiceMode
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.enableServiceMode)
@@ -43,6 +45,8 @@ Kirigami.OverlaySheet {
                     id: autostartOnLogin
 
                     label: i18n("Autostart on Login")
+                    subtitle: i18n("Easy Effects is Launched at User Session Startup")
+                    maximumLineCount: -1
                     isChecked: DB.Manager.main.autostartOnLogin
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.autostartOnLogin) {
@@ -118,7 +122,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: listenToMic
 
-                    label: i18n("Enable/disable input monitoring")
+                    label: i18n("Enable/Disable Input Monitoring")
                     isChecked: DB.Manager.streamInputs.listenToMic
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.streamInputs.listenToMic)
@@ -141,6 +145,8 @@ Kirigami.OverlaySheet {
                     id: inactivityTimerEnable
 
                     label: i18n("Enable the Inactivity Timeout")
+                    subtitle: i18n("When all Streams are Inactive, Easy Effects Pipeline Remains Loaded for an Extra Amount of Time")
+                    maximumLineCount: -1
                     isChecked: DB.Manager.main.inactivityTimerEnable
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.inactivityTimerEnable)
@@ -166,6 +172,8 @@ Kirigami.OverlaySheet {
 
                 EeSpinBox {
                     label: i18n("Level Meters Label")
+                    subtitle: i18n("The Time it Takes for the Level Meter Labels to be Updated When the Current Level is Below the Last Highest One")
+                    maximumLineCount: -1
                     from: DB.Manager.main.getMinValue("levelMetersLabelTimer")
                     to: DB.Manager.main.getMaxValue("levelMetersLabelTimer")
                     value: DB.Manager.main.levelMetersLabelTimer
@@ -384,7 +392,8 @@ Kirigami.OverlaySheet {
                     id: xdgGlobalShortcuts
 
                     label: i18n("Global Shortcuts")
-                    subtitle: i18n("Enables support for XDG Global Shortcuts")
+                    subtitle: i18n("Enables Support for XDG Global Shortcuts")
+                    maximumLineCount: -1
                     isChecked: DB.Manager.main.xdgGlobalShortcuts
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.xdgGlobalShortcuts)
@@ -397,6 +406,7 @@ Kirigami.OverlaySheet {
 
                     label: i18n("Native Window of Effects")
                     subtitle: i18n("Allows the Native User Interface of Effects to be Shown/Hidden")
+                    maximumLineCount: -1
                     isChecked: DB.Manager.main.showNativePluginUi
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.showNativePluginUi)
@@ -409,6 +419,7 @@ Kirigami.OverlaySheet {
 
                     label: i18n("Update Frequency")
                     subtitle: i18n("Related to LV2 Plugins")
+                    maximumLineCount: -1
                     from: 1
                     to: 60
                     value: DB.Manager.main.lv2uiUpdateFrequency
