@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-08-30 22:24+0000\n"
-"PO-Revision-Date: 2025-08-16 19:01+0000\n"
+"PO-Revision-Date: 2025-08-31 13:02+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.13.1-dev\n"
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -2572,9 +2572,8 @@ msgid "Stereo Tools"
 msgstr "Unelte stereo"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:2
-#, fuzzy
 msgid "Easy Effects"
-msgstr "EasyEffects"
+msgstr "Easy Effects"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:3
 msgid "Equalizer, Compressor and Other Audio Effects"
