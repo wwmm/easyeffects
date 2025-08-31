@@ -26,10 +26,10 @@ Kirigami.OverlaySheet {
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
     y: appWindow.header.height + Kirigami.Units.gridUnit
-    implicitWidth: Math.min(stackView.implicitWidth, appWindow.width * 0.8)
-    implicitHeight: control.parent.height - 2 * control.header.height - control.y
+    implicitWidth: Math.max(appWindow.width * 0.5, Kirigami.Units.gridUnit * 40)
+    implicitHeight: control.parent.height - 2 * appWindow.header.height - control.y
     onVisibleChanged: {
-        if (control.visible) {
+        if (control.visible)
             switch (DB.Manager.main.visiblePresetSheetPage) {
             case 0:
                 stackView.replace("qrc:ui/PresetsLocalPage.qml");
@@ -43,14 +43,14 @@ Kirigami.OverlaySheet {
             default:
                 null;
             }
-        }
+        {}
     }
 
     Controls.StackView {
         id: stackView
 
         implicitWidth: Math.max(appWindow.width * 0.5, Kirigami.Units.gridUnit * 40)
-        implicitHeight: control.implicitHeight
+        implicitHeight: control.implicitHeight - 2 * control.header.height
     }
 
     header: Kirigami.ActionToolBar {

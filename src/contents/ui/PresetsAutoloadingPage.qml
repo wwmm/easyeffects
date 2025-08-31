@@ -8,15 +8,15 @@ import ee.type.presets as TypePresets
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-ColumnLayout {
-    id: columnLayout
+Kirigami.Page {
+    id: root
 
     function showPresetsMenuStatus(label) {
         status.text = label;
         status.visible = true;
     }
 
-    GridLayout {
+    header: GridLayout {
         columns: 2
 
         FormCard.FormComboBoxDelegate {
@@ -82,172 +82,189 @@ ColumnLayout {
         }
     }
 
-    Kirigami.ScrollablePage {
-        Layout.fillHeight: true
+    ColumnLayout {
+        id: columnLayout
 
-        Kirigami.CardsListView {
-            id: streamsListView
+        anchors.fill: parent
 
-            Layout.fillHeight: true
-            clip: true
-            reuseItems: true
-            model: DB.Manager.main.visiblePage === 0 ? Presets.SortedAutoloadingOutputListModel : Presets.SortedAutoloadingInputListModel
+        RowLayout {
+            id: listviewRow
 
-            Kirigami.PlaceholderMessage {
-                anchors.centerIn: parent
-                width: parent.width - (Kirigami.Units.largeSpacing * 4)
-                visible: streamsListView.count === 0
-                text: i18n("Empty List")
-                icon.name: "notification-empty"
-            }
+            Kirigami.CardsListView {
+                id: streamsListView
 
-            delegate: Kirigami.AbstractCard {
-                required property string deviceName
-                required property string deviceDescription
-                required property string deviceProfile
-                required property string devicePreset
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                clip: true
+                reuseItems: true
+                model: DB.Manager.main.visiblePage === 0 ? Presets.SortedAutoloadingOutputListModel : Presets.SortedAutoloadingInputListModel
+                Controls.ScrollBar.vertical: listViewScrollBar
 
-                contentItem: Item {
-                    implicitWidth: delegateLayout.implicitWidth
-                    implicitHeight: delegateLayout.implicitHeight
+                Kirigami.PlaceholderMessage {
+                    anchors.centerIn: parent
+                    width: parent.width - (Kirigami.Units.largeSpacing * 4)
+                    visible: streamsListView.count === 0
+                    text: i18n("Empty List")
+                    icon.name: "notification-empty"
+                }
 
-                    GridLayout {
-                        id: delegateLayout
+                delegate: Kirigami.AbstractCard {
+                    required property string deviceName
+                    required property string deviceDescription
+                    required property string deviceProfile
+                    required property string devicePreset
 
-                        columns: 3
-                        rows: 4
+                    contentItem: Item {
+                        implicitWidth: delegateLayout.implicitWidth
+                        implicitHeight: delegateLayout.implicitHeight
 
-                        anchors {
-                            left: parent.left
-                            top: parent.top
-                            right: parent.right
-                        }
+                        GridLayout {
+                            id: delegateLayout
 
-                        Controls.Label {
-                            Layout.alignment: Qt.AlignRight
-                            wrapMode: Text.WordWrap
-                            horizontalAlignment: Qt.AlignRight
-                            text: i18n("Device")
-                        }
+                            columns: 3
+                            rows: 4
 
-                        Controls.Label {
-                            Layout.fillWidth: true
-                            wrapMode: Text.WrapAnywhere
-                            text: deviceName
-                            color: Kirigami.Theme.disabledTextColor
-                        }
-
-                        Controls.Button {
-                            Layout.alignment: Qt.AlignCenter | Qt.AlignRight
-                            Layout.rowSpan: 4
-                            icon.name: "delete"
-                            onClicked: {
-                                if (DB.Manager.main.visiblePage === 0)
-                                    Presets.Manager.removeAutoload(1, devicePreset, deviceName, deviceProfile);
-                                else if (DB.Manager.main.visiblePage === 1)
-                                    Presets.Manager.removeAutoload(0, devicePreset, deviceName, deviceProfile);
+                            anchors {
+                                left: parent.left
+                                top: parent.top
+                                right: parent.right
                             }
-                        }
 
-                        Controls.Label {
-                            Layout.alignment: Qt.AlignRight
-                            wrapMode: Text.WordWrap
-                            horizontalAlignment: Qt.AlignRight
-                            text: i18n("Description")
-                        }
+                            Controls.Label {
+                                Layout.alignment: Qt.AlignRight
+                                wrapMode: Text.WordWrap
+                                horizontalAlignment: Qt.AlignRight
+                                text: i18n("Device")
+                            }
 
-                        Controls.Label {
-                            Layout.fillWidth: true
-                            wrapMode: Text.WrapAnywhere
-                            text: deviceDescription
-                            color: Kirigami.Theme.disabledTextColor
-                        }
+                            Controls.Label {
+                                Layout.fillWidth: true
+                                wrapMode: Text.WrapAnywhere
+                                text: deviceName
+                                color: Kirigami.Theme.disabledTextColor
+                            }
 
-                        Controls.Label {
-                            Layout.alignment: Qt.AlignRight
-                            wrapMode: Text.WordWrap
-                            horizontalAlignment: Qt.AlignRight
-                            text: i18n("Hardware Profile")
-                        }
+                            Controls.Button {
+                                Layout.alignment: Qt.AlignCenter | Qt.AlignRight
+                                Layout.rowSpan: 4
+                                icon.name: "delete"
+                                onClicked: {
+                                    if (DB.Manager.main.visiblePage === 0)
+                                        Presets.Manager.removeAutoload(1, devicePreset, deviceName, deviceProfile);
+                                    else if (DB.Manager.main.visiblePage === 1)
+                                        Presets.Manager.removeAutoload(0, devicePreset, deviceName, deviceProfile);
+                                }
+                            }
 
-                        Controls.Label {
-                            Layout.fillWidth: true
-                            wrapMode: Text.WrapAnywhere
-                            text: deviceProfile
-                            color: Kirigami.Theme.disabledTextColor
-                        }
+                            Controls.Label {
+                                Layout.alignment: Qt.AlignRight
+                                wrapMode: Text.WordWrap
+                                horizontalAlignment: Qt.AlignRight
+                                text: i18n("Description")
+                            }
 
-                        Controls.Label {
-                            Layout.alignment: Qt.AlignRight
-                            wrapMode: Text.WordWrap
-                            text: i18n("Local Preset")
-                        }
+                            Controls.Label {
+                                Layout.fillWidth: true
+                                wrapMode: Text.WrapAnywhere
+                                text: deviceDescription
+                                color: Kirigami.Theme.disabledTextColor
+                            }
 
-                        Controls.Label {
-                            Layout.fillWidth: true
-                            wrapMode: Text.WrapAnywhere
-                            text: devicePreset
-                            color: Kirigami.Theme.disabledTextColor
+                            Controls.Label {
+                                Layout.alignment: Qt.AlignRight
+                                wrapMode: Text.WordWrap
+                                horizontalAlignment: Qt.AlignRight
+                                text: i18n("Hardware Profile")
+                            }
+
+                            Controls.Label {
+                                Layout.fillWidth: true
+                                wrapMode: Text.WrapAnywhere
+                                text: deviceProfile
+                                color: Kirigami.Theme.disabledTextColor
+                            }
+
+                            Controls.Label {
+                                Layout.alignment: Qt.AlignRight
+                                wrapMode: Text.WordWrap
+                                text: i18n("Local Preset")
+                            }
+
+                            Controls.Label {
+                                Layout.fillWidth: true
+                                wrapMode: Text.WrapAnywhere
+                                text: devicePreset
+                                color: Kirigami.Theme.disabledTextColor
+                            }
                         }
                     }
                 }
             }
+
+            Controls.ScrollBar {
+                id: listViewScrollBar
+
+                parent: listviewRow
+                Layout.fillHeight: true
+            }
         }
     }
 
-    RowLayout {
-        FormCard.FormComboBoxDelegate {
-            id: fallbackPreset
+    footer: ColumnLayout {
+        Kirigami.InlineMessage {
+            id: status
 
             Layout.fillWidth: true
-            verticalPadding: 0
-            text: i18n("Fallback Preset")
-            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-            currentIndex: {
-                const fallbackPreset = DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingFallbackPreset : DB.Manager.main.inputAutoloadingFallbackPreset;
-                for (let n = 0; n < model.rowCount(); n++) {
-                    const proxyIndex = model.index(n, 0);
-                    const name = model.data(proxyIndex, TypePresets.ListModel.Name);
-                    if (name === fallbackPreset)
-                        return n;
-                }
-                return 0;
-            }
-            textRole: "name"
-            editable: false
-            enabled: DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingUsesFallback : DB.Manager.main.inputAutoloadingUsesFallback
-            model: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
-            onActivated: idx => {
-                if (DB.Manager.main.visiblePage === 0)
-                    DB.Manager.main.outputAutoloadingFallbackPreset = currentText;
-                else if (DB.Manager.main.visiblePage === 1)
-                    DB.Manager.main.inputAutoloadingFallbackPreset = currentText;
-            }
+            Layout.maximumWidth: parent.width
+            visible: false
+            showCloseButton: true
         }
 
-        EeSwitch {
-            Layout.fillWidth: false
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-            isChecked: DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingUsesFallback : DB.Manager.main.inputAutoloadingUsesFallback
-            verticalPadding: 0
-            onCheckedChanged: {
-                if (DB.Manager.main.visiblePage === 0) {
-                    if (isChecked !== DB.Manager.main.outputAutoloadingUsesFallback)
-                        DB.Manager.main.outputAutoloadingUsesFallback = isChecked;
-                } else if (DB.Manager.main.visiblePage === 1) {
-                    if (isChecked !== DB.Manager.main.inputAutoloadingUsesFallback)
-                        DB.Manager.main.inputAutoloadingUsesFallback = isChecked;
+        RowLayout {
+            FormCard.FormComboBoxDelegate {
+                id: fallbackPreset
+
+                Layout.fillWidth: true
+                verticalPadding: 0
+                text: i18n("Fallback Preset")
+                displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                currentIndex: {
+                    const fallbackPreset = DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingFallbackPreset : DB.Manager.main.inputAutoloadingFallbackPreset;
+                    for (let n = 0; n < model.rowCount(); n++) {
+                        const proxyIndex = model.index(n, 0);
+                        const name = model.data(proxyIndex, TypePresets.ListModel.Name);
+                        if (name === fallbackPreset)
+                            return n;
+                    }
+                    return 0;
+                }
+                textRole: "name"
+                editable: false
+                enabled: DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingUsesFallback : DB.Manager.main.inputAutoloadingUsesFallback
+                model: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
+                onActivated: idx => {
+                    if (DB.Manager.main.visiblePage === 0)
+                        DB.Manager.main.outputAutoloadingFallbackPreset = currentText;
+                    else if (DB.Manager.main.visiblePage === 1)
+                        DB.Manager.main.inputAutoloadingFallbackPreset = currentText;
+                }
+            }
+
+            EeSwitch {
+                Layout.fillWidth: false
+                Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+                isChecked: DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingUsesFallback : DB.Manager.main.inputAutoloadingUsesFallback
+                verticalPadding: 0
+                onCheckedChanged: {
+                    if (DB.Manager.main.visiblePage === 0) {
+                        if (isChecked !== DB.Manager.main.outputAutoloadingUsesFallback)
+                            DB.Manager.main.outputAutoloadingUsesFallback = isChecked;
+                    } else if (DB.Manager.main.visiblePage === 1) {
+                        if (isChecked !== DB.Manager.main.inputAutoloadingUsesFallback)
+                            DB.Manager.main.inputAutoloadingUsesFallback = isChecked;
+                    }
                 }
             }
         }
-    }
-
-    Kirigami.InlineMessage {
-        id: status
-
-        Layout.fillWidth: true
-        Layout.maximumWidth: parent.width
-        visible: false
-        showCloseButton: true
     }
 }
