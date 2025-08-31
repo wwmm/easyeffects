@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-30 22:24+0000\n"
+"POT-Creation-Date: 2025-08-31 14:34+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Norwegian Nynorsk <https://hosted.weblate.org/projects/"
@@ -910,7 +910,7 @@ msgid "Access"
 msgstr "Tilgjenge"
 
 #: src/contents/ui/DelegateModulesList.qml:62
-#: src/contents/ui/PresetsAutoloadingPage.qml:156
+#: src/contents/ui/PresetsAutoloadingPage.qml:163
 msgid "Description"
 msgstr "Skildring"
 
@@ -1526,7 +1526,7 @@ msgid "Reaction"
 msgstr "Reduksjon"
 
 #: src/contents/ui/PageStreamsEffects.qml:68
-#: src/contents/ui/PresetsAutoloadingPage.qml:100
+#: src/contents/ui/PresetsAutoloadingPage.qml:107
 msgid "Empty List"
 msgstr "Tom liste"
 
@@ -1963,18 +1963,18 @@ msgid "Experimental Features"
 msgstr ""
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
-#: src/contents/ui/PresetsAutoloadingPage.qml:130
+#: src/contents/ui/PresetsAutoloadingPage.qml:137
 msgid "Device"
 msgstr "Eining"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:45
-#: src/contents/ui/PresetsAutoloadingPage.qml:170
+#: src/contents/ui/PresetsAutoloadingPage.qml:177
 #, fuzzy
 msgid "Hardware Profile"
 msgstr "Profil"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:59
-#: src/contents/ui/PresetsAutoloadingPage.qml:183
+#: src/contents/ui/PresetsAutoloadingPage.qml:190
 #, fuzzy
 msgid "Local Preset"
 msgstr "Førehandsinnstillingar"
@@ -1983,7 +1983,7 @@ msgstr "Førehandsinnstillingar"
 msgid "Create"
 msgstr ""
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:204
+#: src/contents/ui/PresetsAutoloadingPage.qml:229
 msgid "Fallback Preset"
 msgstr ""
 

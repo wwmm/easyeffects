@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-30 22:24+0000\n"
+"POT-Creation-Date: 2025-08-31 14:34+0000\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -917,7 +917,7 @@ msgid "Access"
 msgstr "அணுகல்"
 
 #: src/contents/ui/DelegateModulesList.qml:62
-#: src/contents/ui/PresetsAutoloadingPage.qml:156
+#: src/contents/ui/PresetsAutoloadingPage.qml:163
 msgid "Description"
 msgstr "விவரம்"
 
@@ -1548,7 +1548,7 @@ msgid "Reaction"
 msgstr "குறைப்பு"
 
 #: src/contents/ui/PageStreamsEffects.qml:68
-#: src/contents/ui/PresetsAutoloadingPage.qml:100
+#: src/contents/ui/PresetsAutoloadingPage.qml:107
 msgid "Empty List"
 msgstr "வெற்று பட்டியல்"
 
@@ -1996,18 +1996,18 @@ msgid "Experimental Features"
 msgstr "சோதனை நற்பொருத்தங்கள்"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
-#: src/contents/ui/PresetsAutoloadingPage.qml:130
+#: src/contents/ui/PresetsAutoloadingPage.qml:137
 msgid "Device"
 msgstr "சாதனம்"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:45
-#: src/contents/ui/PresetsAutoloadingPage.qml:170
+#: src/contents/ui/PresetsAutoloadingPage.qml:177
 #, fuzzy
 msgid "Hardware Profile"
 msgstr "சுயவிவரம்"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:59
-#: src/contents/ui/PresetsAutoloadingPage.qml:183
+#: src/contents/ui/PresetsAutoloadingPage.qml:190
 #, fuzzy
 msgid "Local Preset"
 msgstr "உள்ளக முன்னமைவுகள் பட்டியல்"
@@ -2017,7 +2017,7 @@ msgstr "உள்ளக முன்னமைவுகள் பட்டிய�
 msgid "Create"
 msgstr "உருவாக்குதல்"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:204
+#: src/contents/ui/PresetsAutoloadingPage.qml:229
 msgid "Fallback Preset"
 msgstr ""
 
