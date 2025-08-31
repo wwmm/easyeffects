@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-31 14:34+0000\n"
+"POT-Creation-Date: 2025-08-31 16:46+0000\n"
 "PO-Revision-Date: 2025-08-30 22:33+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2001,19 +2001,19 @@ msgstr "Le Préréglage %1 a Été Supprimé"
 msgid "The Preset %1 Could Not Be Removed"
 msgstr "Le Préréglage %1 N'a Pas Pu Être Supprimé"
 
-#: src/contents/ui/PresetsSheet.qml:64 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:63 src/contents/ui/PresetsSheet.qml:106
 msgid "Local"
 msgstr "Local"
 
-#: src/contents/ui/PresetsSheet.qml:75 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:74 src/contents/ui/PresetsSheet.qml:106
 msgid "Community"
 msgstr "Communité"
 
-#: src/contents/ui/PresetsSheet.qml:86
+#: src/contents/ui/PresetsSheet.qml:85
 msgid "Autoloading"
 msgstr "Chargement Automatique"
 
-#: src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:104
 msgid "No Preset Loaded"
 msgstr "Pas de Préréglage Chargé"
 
