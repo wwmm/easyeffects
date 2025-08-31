@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-08-30 12:33-0300\n"
-"PO-Revision-Date: 2025-08-30 22:33+0000\n"
+"PO-Revision-Date: 2025-08-31 13:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -653,7 +653,7 @@ msgstr "File di Risposta Impulsiva Importato."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:49
 msgid "Failed to Import the Impulse File."
-msgstr "Importazione del File di Risposta Impulsiva non Riuscita."
+msgstr "Importazione del File di Risposta Impulsiva Non Riuscita."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:60
 #: src/contents/ui/MenuAddPlugins.qml:140
@@ -2018,7 +2018,7 @@ msgstr "File di Profilo Importato."
 
 #: src/contents/ui/PresetsLocalPage.qml:41
 msgid "Failed to Import the Preset."
-msgstr "Importazione del Profilo Non Riuscita"
+msgstr "Importazione del Profilo Non Riuscita."
 
 #: src/contents/ui/PresetsLocalPage.qml:49
 msgid "New Preset Name"
@@ -2166,7 +2166,7 @@ msgstr "File di Modello Importato."
 
 #: src/contents/ui/RNNoise.qml:57
 msgid "Failed to Import the Model File."
-msgstr "Importazione del File di Modello Non Riuscita"
+msgstr "Importazione del File di Modello Non Riuscita."
 
 #: src/contents/ui/RNNoise.qml:72 src/contents/ui/Speex.qml:108
 msgid "Voice Detection"
