@@ -1,4 +1,5 @@
 import "Common.js" as Common
+import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
@@ -26,10 +27,8 @@ Kirigami.OverlaySheet {
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
     y: appWindow.header.height + Kirigami.Units.gridUnit
-    implicitWidth: Math.max(appWindow.width * 0.5, Kirigami.Units.gridUnit * 40)
-    implicitHeight: control.parent.height - 2 * appWindow.header.height - control.y
     onVisibleChanged: {
-        if (control.visible)
+        if (control.visible) {
             switch (DB.Manager.main.visiblePresetSheetPage) {
             case 0:
                 stackView.replace("qrc:ui/PresetsLocalPage.qml");
@@ -43,14 +42,14 @@ Kirigami.OverlaySheet {
             default:
                 null;
             }
-        {}
+        }
     }
 
     Controls.StackView {
         id: stackView
 
         implicitWidth: Math.max(appWindow.width * 0.5, Kirigami.Units.gridUnit * 40)
-        implicitHeight: control.implicitHeight - 2 * control.header.height
+        implicitHeight: 1 * control.parent.height - 2 * appWindow.header.height - control.y - control.header.implicitHeight - control.footer.implicitHeight
     }
 
     header: Kirigami.ActionToolBar {
