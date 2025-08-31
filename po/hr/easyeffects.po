@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-30 22:24+0000\n"
+"POT-Creation-Date: 2025-08-31 00:54+0000\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -941,7 +941,7 @@ msgid "Access"
 msgstr "Pristup"
 
 #: src/contents/ui/DelegateModulesList.qml:62
-#: src/contents/ui/PresetsAutoloadingPage.qml:156
+#: src/contents/ui/PresetsAutoloadingPage.qml:163
 msgid "Description"
 msgstr "Opis"
 
@@ -1577,7 +1577,7 @@ msgid "Reaction"
 msgstr "Smanjivanje"
 
 #: src/contents/ui/PageStreamsEffects.qml:68
-#: src/contents/ui/PresetsAutoloadingPage.qml:100
+#: src/contents/ui/PresetsAutoloadingPage.qml:107
 msgid "Empty List"
 msgstr "Prazan popis"
 
@@ -2030,18 +2030,18 @@ msgid "Experimental Features"
 msgstr "Eksperimentalne funkcije"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
-#: src/contents/ui/PresetsAutoloadingPage.qml:130
+#: src/contents/ui/PresetsAutoloadingPage.qml:137
 msgid "Device"
 msgstr "Uređaj"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:45
-#: src/contents/ui/PresetsAutoloadingPage.qml:170
+#: src/contents/ui/PresetsAutoloadingPage.qml:177
 #, fuzzy
 msgid "Hardware Profile"
 msgstr "Profil"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:59
-#: src/contents/ui/PresetsAutoloadingPage.qml:183
+#: src/contents/ui/PresetsAutoloadingPage.qml:190
 #, fuzzy
 msgid "Local Preset"
 msgstr "Popis lokalnih predložaka"
@@ -2051,7 +2051,7 @@ msgstr "Popis lokalnih predložaka"
 msgid "Create"
 msgstr "Stvaranje"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:204
+#: src/contents/ui/PresetsAutoloadingPage.qml:229
 msgid "Fallback Preset"
 msgstr ""
 

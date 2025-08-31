@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-30 22:24+0000\n"
+"POT-Creation-Date: 2025-08-31 00:54+0000\n"
 "PO-Revision-Date: 2025-08-20 00:02+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -932,7 +932,7 @@ msgid "Access"
 msgstr "Доступ"
 
 #: src/contents/ui/DelegateModulesList.qml:62
-#: src/contents/ui/PresetsAutoloadingPage.qml:156
+#: src/contents/ui/PresetsAutoloadingPage.qml:163
 msgid "Description"
 msgstr "Описание"
 
@@ -1579,7 +1579,7 @@ msgid "Reaction"
 msgstr "Ослабление"
 
 #: src/contents/ui/PageStreamsEffects.qml:68
-#: src/contents/ui/PresetsAutoloadingPage.qml:100
+#: src/contents/ui/PresetsAutoloadingPage.qml:107
 msgid "Empty List"
 msgstr "Список пуст"
 
@@ -2031,18 +2031,18 @@ msgstr "Экспериментальные возможности"
 
 # #, fuzzy
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
-#: src/contents/ui/PresetsAutoloadingPage.qml:130
+#: src/contents/ui/PresetsAutoloadingPage.qml:137
 msgid "Device"
 msgstr "Устройство"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:45
-#: src/contents/ui/PresetsAutoloadingPage.qml:170
+#: src/contents/ui/PresetsAutoloadingPage.qml:177
 #, fuzzy
 msgid "Hardware Profile"
 msgstr "Профиль"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:59
-#: src/contents/ui/PresetsAutoloadingPage.qml:183
+#: src/contents/ui/PresetsAutoloadingPage.qml:190
 #, fuzzy
 msgid "Local Preset"
 msgstr "Список локальных предустановок"
@@ -2052,7 +2052,7 @@ msgstr "Список локальных предустановок"
 msgid "Create"
 msgstr "Создание"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:204
+#: src/contents/ui/PresetsAutoloadingPage.qml:229
 msgid "Fallback Preset"
 msgstr ""
 
