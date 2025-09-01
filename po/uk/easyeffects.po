@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-08-31 14:34+0000\n"
-"PO-Revision-Date: 2025-08-28 23:24+0000\n"
+"PO-Revision-Date: 2025-09-01 07:01+0000\n"
 "Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -2295,7 +2295,7 @@ msgstr "Усунення шуму"
 
 #: src/contents/ui/Speex.qml:59
 msgid "Automatic Gain Control"
-msgstr "Автоматичне регулювання посилення"
+msgstr "Автоматичне регулювання підсилення"
 
 #: src/contents/ui/Speex.qml:70
 msgid "Dereverberation"
@@ -2332,15 +2332,15 @@ msgstr "LR > LR (стерео за замовчуванням)"
 
 #: src/contents/ui/StereoTools.qml:133
 msgid "LR > MS (Stereo to Mid-Side)"
-msgstr "LR > MS (Стерео на середню сторону)"
+msgstr "LR > MS (Стерео на мідсайд)"
 
 #: src/contents/ui/StereoTools.qml:133
 msgid "MS > LR (Mid-Side to Stereo)"
-msgstr "MS > LR (мід-сайд до стерео)"
+msgstr "MS > LR (мідсайд на стерео)"
 
 #: src/contents/ui/StereoTools.qml:133
 msgid "LR > LL (Mono Left Channel)"
-msgstr "LR > LL (монофонічний лівий канал)"
+msgstr "LR > LL (моно лівий канал)"
 
 #: src/contents/ui/StereoTools.qml:133
 msgid "LR > RR (Mono Right Channel)"
@@ -2437,11 +2437,11 @@ msgstr "_Про Easy Effects"
 
 #: src/plugin_base.cpp:227
 msgid "(Mic)"
-msgstr ""
+msgstr "(Мікрофон)"
 
 #: src/plugin_base.cpp:230
 msgid "(Speakers)"
-msgstr ""
+msgstr "(Колонки)"
 
 #: src/plugin_base.cpp:237
 msgid "Output Level Meter"
@@ -2451,7 +2451,7 @@ msgstr "Вимірювач рівня вихідного сигналу"
 #: src/presets_manager.cpp:1395 src/presets_manager.cpp:1402
 #: src/presets_manager.cpp:1411 src/presets_manager.cpp:1419
 msgid "Preset Not Loaded Correctly"
-msgstr "Попереднє налаштування не завантажено належним чином"
+msgstr "Пресет не застосовано належним чином"
 
 #: src/presets_manager.cpp:1378
 msgid "Wrong Format in Excluded Apps List"
