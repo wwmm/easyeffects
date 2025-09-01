@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-31 14:34+0000\n"
+"POT-Creation-Date: 2025-09-01 22:17+0000\n"
 "PO-Revision-Date: 2025-08-20 00:02+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2138,20 +2138,20 @@ msgstr ""
 msgid "The Preset %1 Could Not Be Removed"
 msgstr ""
 
-#: src/contents/ui/PresetsSheet.qml:64 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:63 src/contents/ui/PresetsSheet.qml:106
 msgid "Local"
 msgstr "Локально"
 
-#: src/contents/ui/PresetsSheet.qml:75 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:74 src/contents/ui/PresetsSheet.qml:106
 msgid "Community"
 msgstr "Сообщество"
 
-#: src/contents/ui/PresetsSheet.qml:86
+#: src/contents/ui/PresetsSheet.qml:85
 #, fuzzy
 msgid "Autoloading"
 msgstr "Авторегулятор"
 
-#: src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:104
 msgid "No Preset Loaded"
 msgstr "Предустановка не загружена"
 
