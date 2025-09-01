@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-31 14:34+0000\n"
+"POT-Creation-Date: 2025-09-01 22:12+0000\n"
 "PO-Revision-Date: 2025-09-01 07:01+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2000,19 +2000,19 @@ msgstr "Пресет %1 вже вилучено"
 msgid "The Preset %1 Could Not Be Removed"
 msgstr "Не вдалося вилучити пресет %1"
 
-#: src/contents/ui/PresetsSheet.qml:64 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:63 src/contents/ui/PresetsSheet.qml:106
 msgid "Local"
 msgstr "Локальні"
 
-#: src/contents/ui/PresetsSheet.qml:75 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:74 src/contents/ui/PresetsSheet.qml:106
 msgid "Community"
 msgstr "Спільнота"
 
-#: src/contents/ui/PresetsSheet.qml:86
+#: src/contents/ui/PresetsSheet.qml:85
 msgid "Autoloading"
 msgstr "Автозавантаження"
 
-#: src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:104
 msgid "No Preset Loaded"
 msgstr "Попереднє налаштування не завантажено"
 
