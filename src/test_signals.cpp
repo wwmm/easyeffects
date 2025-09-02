@@ -25,8 +25,10 @@
 #include <spa/node/io.h>
 #include <spa/utils/hook.h>
 #include <sys/types.h>
+#include <algorithm>
 #include <chrono>
 #include <cmath>
+#include <format>
 #include <numbers>
 #include <span>
 #include <thread>
@@ -192,11 +194,9 @@ TestSignals::TestSignals(pw::Manager* pipe_manager) : pm(pipe_manager), random_g
       filter, PW_DIRECTION_OUTPUT, PW_FILTER_PORT_FLAG_MAP_BUFFERS, sizeof(port), props_out_right, nullptr, 0));
 
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) != 0) {
-    using namespace std::string_literals;
-
     pm->unlock();
 
-    util::warning(filter_name + " cannot connect the filter to PipeWire!"s);
+    util::warning(std::format("{} cannot connect the filter to PipeWire!", filter_name));
 
     return;
   }
@@ -209,9 +209,7 @@ TestSignals::TestSignals(pw::Manager* pipe_manager) : pm(pipe_manager), random_g
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
     if (state == PW_FILTER_STATE_ERROR) {
-      using namespace std::string_literals;
-
-      util::warning(filter_name + " is in an error"s);
+      util::warning(std::format("{} is in an error", filter_name));
 
       return;
     }
@@ -282,7 +280,7 @@ void TestSignals::set_frequency(const float& value) {
 auto TestSignals::white_noise() -> float {
   const auto v = normal_distribution(random_generator);
 
-  return (v > 1.0F) ? 1.0F : ((v < -1.0F) ? -1.0F : v);
+  return std::clamp(v, -1.0F, 1.0F);
 }
 
 void TestSignals::set_channel(const int& value) {

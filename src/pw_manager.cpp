@@ -64,6 +64,7 @@
 #include <cstdint>
 #include <cstring>
 #include <ctime>
+#include <format>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
 #include <span>
@@ -220,8 +221,8 @@ void on_destroy_node_proxy(void* data) {
 
   pm->model_nodes.remove_by_serial(nd->nd_info->serial);
 
-  util::debug(nd->nd_info->media_class.toStdString() + " " + util::to_string(nd->nd_info->id) + " " +
-              nd->nd_info->name.toStdString() + " has been removed");
+  util::debug(std::format("{} {} {} has been removed", nd->nd_info->media_class.toStdString(), nd->nd_info->id,
+                          nd->nd_info->name.toStdString()));
 
   delete nd->nd_info;
 }
@@ -1092,9 +1093,7 @@ void on_registry_global(void* data,
 
   if (std::strcmp(type, PW_TYPE_INTERFACE_Metadata) == 0) {
     if (const auto* name = spa_dict_lookup(props, PW_KEY_METADATA_NAME)) {
-      using namespace std::string_literals;
-
-      util::debug("found metadata: "s + name);  // NOLINT(missing-includes, misc-include-cleaner)
+      util::debug(std::format("found metadata: {}", name));
 
       if (std::strcmp(name, "default") == 0) {
         if (pm->metadata != nullptr) {
@@ -1120,19 +1119,15 @@ void on_registry_global(void* data,
 void on_core_error(void* data, uint32_t id, [[maybe_unused]] int seq, int res, const char* message) {
   auto* const pm = static_cast<pw::Manager*>(data);
 
-  using namespace std::string_literals;
-
   if (id == PW_ID_CORE) {
-    util::warning("Remote error res: "s + spa_strerror(res));
-    util::warning("Remote error message: "s + message);
+    util::warning(std::format("Remote error res: {}", spa_strerror(res)));
+    util::warning(std::format("Remote error message: {}", message));
 
     pw_thread_loop_signal(pm->thread_loop, false);
   }
 }
 
 void on_core_info(void* data, const struct pw_core_info* info) {
-  using namespace std::string_literals;
-
   auto* const pm = static_cast<pw::Manager*>(data);
 
   pm->runtimeVersion = info->version;
@@ -1145,8 +1140,8 @@ void on_core_info(void* data, const struct pw_core_info* info) {
 
   spa_dict_get_string(info->props, "default.clock.quantum", pm->defaultQuantum);
 
-  util::debug("core version: "s + info->version);
-  util::debug("core name: "s + info->name);
+  util::warning(std::format("core version: {}", info->version));
+  util::warning(std::format("core name: {}", info->name));
 }
 
 void on_core_done(void* data, uint32_t id, [[maybe_unused]] int seq) {
@@ -1242,8 +1237,6 @@ Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_
 
   sync_wait_unlock();
 
-  using namespace std::string_literals;
-
   do {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
@@ -1252,13 +1245,13 @@ Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_
   } while (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID);
 
   if (ee_sink_node.id != SPA_ID_INVALID) {
-    util::debug(tags::pipewire::ee_sink_name + " node successfully retrieved with id "s +
-                util::to_string(ee_sink_node.id) + " and serial " + util::to_string(ee_sink_node.serial));
+    util::warning(std::format("{} node successfully retrieved with id {} and serial {}", tags::pipewire::ee_sink_name,
+                              ee_sink_node.id, ee_sink_node.serial));
   }
 
-  if (ee_source_node.id == SPA_ID_INVALID) {
-    util::debug(tags::pipewire::ee_source_name + " node successfully retrieved with id "s +
-                util::to_string(ee_source_node.id) + " and serial " + util::to_string(ee_source_node.serial));
+  if (ee_source_node.id != SPA_ID_INVALID) {
+    util::warning(std::format("{} node successfully retrieved with id {} and serial {}", tags::pipewire::ee_source_name,
+                              ee_source_node.id, ee_source_node.serial));
   }
 
   /*
@@ -1516,13 +1509,13 @@ auto Manager::link_nodes(const uint& output_node_id,
   }
 
   if (list_input_ports.empty()) {
-    util::debug("node " + util::to_string(input_node_id) + " has no input ports yet. Aborting the link");
+    util::debug(std::format("node {} has no input ports yet. Aborting the link", input_node_id));
 
     return list;
   }
 
   if (list_output_ports.empty()) {
-    util::debug("node " + util::to_string(output_node_id) + " has no output ports yet. Aborting the link");
+    util::debug(std::format("node {} has no output ports yet. Aborting the link", output_node_id));
 
     return list;
   }
@@ -1565,8 +1558,7 @@ auto Manager::link_nodes(const uint& output_node_id,
         pw_properties_free(props);
 
         if (proxy == nullptr) {
-          util::warning("failed to link the node " + util::to_string(output_node_id) + " to " +
-                        util::to_string(input_node_id));
+          util::warning(std::format("failed to link the node {} to {}", output_node_id, input_node_id));
 
           unlock();
 
