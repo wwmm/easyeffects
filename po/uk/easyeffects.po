@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-08-31 14:34+0000\n"
-"PO-Revision-Date: 2025-09-01 07:01+0000\n"
-"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
+"PO-Revision-Date: 2025-09-02 22:01+0000\n"
+"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -1597,7 +1597,7 @@ msgstr "Немає клієнтів"
 #: src/contents/ui/PipeWirePage.qml:270
 #: src/contents/ui/PreferencesSheet.qml:197
 msgid "State"
-msgstr "Держава"
+msgstr "Стан"
 
 #: src/contents/ui/PipeWirePage.qml:277
 #: src/contents/ui/PreferencesSheet.qml:204
@@ -1886,7 +1886,7 @@ msgstr "Пов’язані з плагінами LV2"
 
 #: src/contents/ui/PreferencesSheet.qml:450
 msgid "Background Service"
-msgstr "Фонове обслуговування"
+msgstr "Фоновий сервіс"
 
 #: src/contents/ui/PreferencesSheet.qml:463
 msgid "Audio"
@@ -1930,7 +1930,7 @@ msgstr "Резервний пресет"
 #: src/contents/ui/PresetsCommunityPage.qml:91
 #: src/contents/ui/PresetsLocalPage.qml:154
 msgid "The Preset %1 Failed to Load"
-msgstr "Не вдалося завантажити пресет %1"
+msgstr "Не вдалося застосувати пресет %1"
 
 #: src/contents/ui/PresetsCommunityPage.qml:109
 msgid "Copy to the Local List"
@@ -1938,11 +1938,11 @@ msgstr "Копіювати до локального списку"
 
 #: src/contents/ui/PresetsCommunityPage.qml:114
 msgid "Imported the Community Preset"
-msgstr "Імпортовано пресет спільноти"
+msgstr "Імпортовано пресет від спільноти"
 
 #: src/contents/ui/PresetsCommunityPage.qml:116
 msgid "Failed to Import the Community Preset"
-msgstr "Не вдалося імпортувати пресет спільноти"
+msgstr "Не вдалося імпортувати пресет від спільноти"
 
 #: src/contents/ui/PresetsCommunityPage.qml:135
 msgid "Refresh"
@@ -1950,7 +1950,7 @@ msgstr "Оновити"
 
 #: src/contents/ui/PresetsLocalPage.qml:39
 msgid "Preset File Imported."
-msgstr "Файл попереднього налаштування імпортовано."
+msgstr "Файл пресету імпортовано."
 
 #: src/contents/ui/PresetsLocalPage.qml:41
 msgid "Failed to Import the Preset."
@@ -1958,11 +1958,11 @@ msgstr "Не вдалося імпортувати пресет."
 
 #: src/contents/ui/PresetsLocalPage.qml:49
 msgid "New Preset Name"
-msgstr "Нова назва попереднього налаштування"
+msgstr "Нова назва пресету"
 
 #: src/contents/ui/PresetsLocalPage.qml:65
 msgid "Import Preset File"
-msgstr "Імпортувати файл пресетів"
+msgstr "Імпортувати файл пресету"
 
 #: src/contents/ui/PresetsLocalPage.qml:74
 msgid "Create Preset"
@@ -2010,11 +2010,11 @@ msgstr "Спільнота"
 
 #: src/contents/ui/PresetsSheet.qml:86
 msgid "Autoloading"
-msgstr "Автозавантаження"
+msgstr "Автозастосування"
 
 #: src/contents/ui/PresetsSheet.qml:105
 msgid "No Preset Loaded"
-msgstr "Попереднє налаштування не завантажено"
+msgstr "Пресет не застосовано"
 
 #: src/contents/ui/RNNoise.qml:55
 msgid "Model File Imported."
@@ -2030,11 +2030,11 @@ msgstr "Розпізнавання голосу"
 
 #: src/contents/ui/RNNoise.qml:106
 msgid "Wet Level"
-msgstr "Рівень вологості"
+msgstr "Рівень обробки"
 
 #: src/contents/ui/RNNoise.qml:143
 msgid "Use the Standard Model"
-msgstr "Використовуйте Стандартну модель"
+msgstr "Використовувати стандартну модель"
 
 #: src/contents/ui/RNNoise.qml:154
 msgid "User Models"
@@ -2078,7 +2078,7 @@ msgstr "Великий"
 
 #: src/contents/ui/Reverb.qml:55
 msgid "Tunnel-like"
-msgstr "Тунель-подібний"
+msgstr "Тунелеподібний"
 
 #: src/contents/ui/Reverb.qml:55
 msgid "Large/smooth"
@@ -2102,15 +2102,15 @@ msgstr "Дифузія"
 
 #: src/contents/ui/Reverb.qml:125
 msgid "High Frequency Damping"
-msgstr "Демпфування високої частоти"
+msgstr "Демпфування високих частот"
 
 #: src/contents/ui/Reverb.qml:142
 msgid "Bass Cut"
-msgstr "Вирізати Бас"
+msgstr "Зрізати бас"
 
 #: src/contents/ui/Reverb.qml:159
 msgid "Treble Cut"
-msgstr "Вирізати Високі частоти"
+msgstr "Зрізати високі частоти"
 
 #: src/contents/ui/Reverb.qml:217
 msgid "Reverberation Presets"
@@ -2146,7 +2146,7 @@ msgstr "Показати довідку"
 
 #: src/contents/ui/ShortcutsSheet.qml:47
 msgid "Toggle Fullscreen"
-msgstr "Перемикання повноекранного режиму"
+msgstr "Перемкнути повноекранний режим"
 
 #: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:214
 msgid "Toggle Global Bypass"
@@ -2154,7 +2154,7 @@ msgstr "Увімкнути/вимкнути глобальний обхід"
 
 #: src/contents/ui/ShortcutsSheet.qml:103
 msgid "Close the Window"
-msgstr "Закрийте вікно"
+msgstr "Закрити вікно"
 
 #: src/contents/ui/ShortcutsSheet.qml:131
 msgid "Terminate Easy Effects Service"
@@ -2196,7 +2196,7 @@ msgstr "Продовжити"
 
 #: src/contents/ui/StereoTools.qml:50
 msgid "Softclip"
-msgstr "М'яка кліпса"
+msgstr "М'яке відсікання"
 
 #: src/contents/ui/StereoTools.qml:87
 msgid "S/C Level"
@@ -2260,11 +2260,11 @@ msgstr "Затримка"
 
 #: src/contents/ui/StereoTools.qml:353
 msgid "Stereo Base"
-msgstr "Стерео база"
+msgstr "База стерео"
 
 #: src/contents/ui/StereoTools.qml:369
 msgid "Stereo Phase"
-msgstr "Стереофаза"
+msgstr "Фаза стерео"
 
 #: src/contents/ui/main.qml:124
 msgid "Reset Settings?"
@@ -2276,7 +2276,7 @@ msgstr "Ви впевнені, що хочете скинути всі нала�
 
 #: src/contents/ui/main.qml:146
 msgid "Audio effects for PipeWire applications"
-msgstr "Аудіоефекти для застосувань PipeWire"
+msgstr "Аудіоефекти для застосунків PipeWire"
 
 #: src/contents/ui/main.qml:155
 msgctxt "@info:credit"
@@ -2327,11 +2327,11 @@ msgstr "Пресет не застосовано належним чином"
 
 #: src/presets_manager.cpp:1378
 msgid "Wrong Format in Excluded Apps List"
-msgstr "Неправильний формат у списку виключених програм"
+msgstr "Неправильний формат у списку виключених застосунків"
 
 #: src/presets_manager.cpp:1386
 msgid "Generic Error While Loading Excluded Apps List"
-msgstr "Загальна помилка під час завантаження списку виключених програм"
+msgstr "Загальна помилка під час завантаження списку виключених застосунків"
 
 #: src/presets_manager.cpp:1395
 msgid "Wrong Format in Effects List"
@@ -2347,15 +2347,15 @@ msgstr "Один або кілька параметрів мають непра�
 
 #: src/presets_manager.cpp:1420
 msgid "Generic Error While Loading The Effect"
-msgstr "Загальна помилка під час завантаження ефекту"
+msgstr "Загальна помилка під час застосування ефекту"
 
 #: src/pw_model_nodes.cpp:486
 msgid "Running"
-msgstr "Запуск"
+msgstr "Процює"
 
 #: src/pw_model_nodes.cpp:488
 msgid "Suspended"
-msgstr "Підвішено"
+msgstr "Призупинено"
 
 #: src/pw_model_nodes.cpp:490
 msgid "Idle"
