@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-31 14:34+0000\n"
+"POT-Creation-Date: 2025-09-03 23:17+0000\n"
 "PO-Revision-Date: 2025-08-20 00:02+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -307,11 +307,20 @@ msgstr "Добавить в исключённые приложения"
 msgid "Empty"
 msgstr "Список пуст"
 
-#: src/contents/ui/BlocklistSheet.qml:135
+#: src/contents/ui/BlocklistSheet.qml:117
+#, fuzzy
+msgid "Remove Application"
+msgstr "Заглушить приложение"
+
+#: src/contents/ui/BlocklistSheet.qml:118
+msgid "Are you sure you want to remove this application from the list?"
+msgstr ""
+
+#: src/contents/ui/BlocklistSheet.qml:148
 msgid "Delete this App"
 msgstr ""
 
-#: src/contents/ui/BlocklistSheet.qml:164
+#: src/contents/ui/BlocklistSheet.qml:175
 #, fuzzy
 msgid "Show Excluded Applications in the Streams Section"
 msgstr "Показать исключённые приложения"
@@ -2112,46 +2121,55 @@ msgstr "Имя новой предустановки"
 msgid "Failed to Create Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:166
+#: src/contents/ui/PresetsLocalPage.qml:160
+#, fuzzy
+msgid "Remove Preset"
+msgstr "Создать новую предустановку"
+
+#: src/contents/ui/PresetsLocalPage.qml:161
+msgid "Are you sure you want to remove this preset from the list?"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:165
+msgid "The Preset %1 Has Been Removed"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:167
+msgid "The Preset %1 Could Not Be Removed"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:180
 #, fuzzy
 msgid "Save Settings to this Preset"
 msgstr "Сохранить текущие настройки в этот файл предустановки"
 
-#: src/contents/ui/PresetsLocalPage.qml:171
+#: src/contents/ui/PresetsLocalPage.qml:185
 msgid "Settings Saved to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:173
+#: src/contents/ui/PresetsLocalPage.qml:187
 msgid "Failed to Save Settings to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:177
+#: src/contents/ui/PresetsLocalPage.qml:191
 #, fuzzy
 msgid "Delete this Preset"
 msgstr "Удалить этот файл предустановки"
 
-#: src/contents/ui/PresetsLocalPage.qml:182
-msgid "The Preset %1 Has Been Removed"
-msgstr ""
-
-#: src/contents/ui/PresetsLocalPage.qml:184
-msgid "The Preset %1 Could Not Be Removed"
-msgstr ""
-
-#: src/contents/ui/PresetsSheet.qml:64 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:62 src/contents/ui/PresetsSheet.qml:105
 msgid "Local"
 msgstr "Локально"
 
-#: src/contents/ui/PresetsSheet.qml:75 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:73 src/contents/ui/PresetsSheet.qml:105
 msgid "Community"
 msgstr "Сообщество"
 
-#: src/contents/ui/PresetsSheet.qml:86
+#: src/contents/ui/PresetsSheet.qml:84
 #, fuzzy
 msgid "Autoloading"
 msgstr "Авторегулятор"
 
-#: src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:103
 msgid "No Preset Loaded"
 msgstr "Предустановка не загружена"
 
@@ -2655,9 +2673,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 
 #~ msgid "Excluded App List: Add/remove this application"
 #~ msgstr "Исключённые приложения: Добавить/убрать это приложение"
-
-#~ msgid "Mute Application"
-#~ msgstr "Заглушить приложение"
 
 #~ msgid "Change the volume of this application"
 #~ msgstr "Изменить громкость этого приложения"

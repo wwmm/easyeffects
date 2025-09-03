@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-31 14:34+0000\n"
+"POT-Creation-Date: 2025-09-03 23:17+0000\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -300,11 +300,20 @@ msgstr "விலக்கப்பட்ட பயன்பாடுகளி�
 msgid "Empty"
 msgstr "வெற்று பட்டியல்"
 
-#: src/contents/ui/BlocklistSheet.qml:135
+#: src/contents/ui/BlocklistSheet.qml:117
+#, fuzzy
+msgid "Remove Application"
+msgstr "முடக்கு பயன்பாடு"
+
+#: src/contents/ui/BlocklistSheet.qml:118
+msgid "Are you sure you want to remove this application from the list?"
+msgstr ""
+
+#: src/contents/ui/BlocklistSheet.qml:148
 msgid "Delete this App"
 msgstr ""
 
-#: src/contents/ui/BlocklistSheet.qml:164
+#: src/contents/ui/BlocklistSheet.qml:175
 #, fuzzy
 msgid "Show Excluded Applications in the Streams Section"
 msgstr "விலக்கப்பட்ட பயன்பாடுகளைக் காட்டு"
@@ -2077,46 +2086,55 @@ msgstr "புதிய முன்னமைக்கப்பட்ட பெ�
 msgid "Failed to Create Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:166
+#: src/contents/ui/PresetsLocalPage.qml:160
+#, fuzzy
+msgid "Remove Preset"
+msgstr "புதிய முன்னமைவை உருவாக்கவும்"
+
+#: src/contents/ui/PresetsLocalPage.qml:161
+msgid "Are you sure you want to remove this preset from the list?"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:165
+msgid "The Preset %1 Has Been Removed"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:167
+msgid "The Preset %1 Could Not Be Removed"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:180
 #, fuzzy
 msgid "Save Settings to this Preset"
 msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பில் தற்போதைய அமைப்புகளை சேமிக்கவும்"
 
-#: src/contents/ui/PresetsLocalPage.qml:171
+#: src/contents/ui/PresetsLocalPage.qml:185
 msgid "Settings Saved to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:173
+#: src/contents/ui/PresetsLocalPage.qml:187
 msgid "Failed to Save Settings to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:177
+#: src/contents/ui/PresetsLocalPage.qml:191
 #, fuzzy
 msgid "Delete this Preset"
 msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பை அகற்று"
 
-#: src/contents/ui/PresetsLocalPage.qml:182
-msgid "The Preset %1 Has Been Removed"
-msgstr ""
-
-#: src/contents/ui/PresetsLocalPage.qml:184
-msgid "The Preset %1 Could Not Be Removed"
-msgstr ""
-
-#: src/contents/ui/PresetsSheet.qml:64 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:62 src/contents/ui/PresetsSheet.qml:105
 msgid "Local"
 msgstr "உள்ளக"
 
-#: src/contents/ui/PresetsSheet.qml:75 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:73 src/contents/ui/PresetsSheet.qml:105
 msgid "Community"
 msgstr "சமூகம்"
 
-#: src/contents/ui/PresetsSheet.qml:86
+#: src/contents/ui/PresetsSheet.qml:84
 #, fuzzy
 msgid "Autoloading"
 msgstr "ஆட்டோகெயின்"
 
-#: src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:103
 msgid "No Preset Loaded"
 msgstr "முன்னமைவு ஏற்றப்படவில்லை"
 
@@ -2611,9 +2629,6 @@ msgstr "பைப்வேர் பயன்பாடுகளுக்கா�
 
 #~ msgid "Excluded App List: Add/remove this application"
 #~ msgstr "விலக்கப்பட்ட பயன்பாட்டு பட்டியல்: இந்த பயன்பாட்டைச் சேர்க்கவும்/அகற்று"
-
-#~ msgid "Mute Application"
-#~ msgstr "முடக்கு பயன்பாடு"
 
 #~ msgid "Change the volume of this application"
 #~ msgstr "இந்த பயன்பாட்டின் அளவை மாற்றவும்"

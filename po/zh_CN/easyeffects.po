@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-31 14:34+0000\n"
+"POT-Creation-Date: 2025-09-03 23:17+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: \"https://medium.com/@porkifiableoinking\" "
 "<erbaotao@outlook.com>\n"
@@ -301,11 +301,20 @@ msgstr "添加到排除的程序"
 msgid "Empty"
 msgstr "空列表"
 
-#: src/contents/ui/BlocklistSheet.qml:135
+#: src/contents/ui/BlocklistSheet.qml:117
+#, fuzzy
+msgid "Remove Application"
+msgstr "将程序静音"
+
+#: src/contents/ui/BlocklistSheet.qml:118
+msgid "Are you sure you want to remove this application from the list?"
+msgstr ""
+
+#: src/contents/ui/BlocklistSheet.qml:148
 msgid "Delete this App"
 msgstr ""
 
-#: src/contents/ui/BlocklistSheet.qml:164
+#: src/contents/ui/BlocklistSheet.qml:175
 #, fuzzy
 msgid "Show Excluded Applications in the Streams Section"
 msgstr "显示已排除的程序"
@@ -2078,46 +2087,55 @@ msgstr "新预设名称"
 msgid "Failed to Create Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:166
+#: src/contents/ui/PresetsLocalPage.qml:160
+#, fuzzy
+msgid "Remove Preset"
+msgstr "创建新预设"
+
+#: src/contents/ui/PresetsLocalPage.qml:161
+msgid "Are you sure you want to remove this preset from the list?"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:165
+msgid "The Preset %1 Has Been Removed"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:167
+msgid "The Preset %1 Could Not Be Removed"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:180
 #, fuzzy
 msgid "Save Settings to this Preset"
 msgstr "将当前设置保存到这个预设文件"
 
-#: src/contents/ui/PresetsLocalPage.qml:171
+#: src/contents/ui/PresetsLocalPage.qml:185
 msgid "Settings Saved to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:173
+#: src/contents/ui/PresetsLocalPage.qml:187
 msgid "Failed to Save Settings to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:177
+#: src/contents/ui/PresetsLocalPage.qml:191
 #, fuzzy
 msgid "Delete this Preset"
 msgstr "删除这个预设文件"
 
-#: src/contents/ui/PresetsLocalPage.qml:182
-msgid "The Preset %1 Has Been Removed"
-msgstr ""
-
-#: src/contents/ui/PresetsLocalPage.qml:184
-msgid "The Preset %1 Could Not Be Removed"
-msgstr ""
-
-#: src/contents/ui/PresetsSheet.qml:64 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:62 src/contents/ui/PresetsSheet.qml:105
 msgid "Local"
 msgstr "本地"
 
-#: src/contents/ui/PresetsSheet.qml:75 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:73 src/contents/ui/PresetsSheet.qml:105
 msgid "Community"
 msgstr "社区"
 
-#: src/contents/ui/PresetsSheet.qml:86
+#: src/contents/ui/PresetsSheet.qml:84
 #, fuzzy
 msgid "Autoloading"
 msgstr "自动增益"
 
-#: src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:103
 msgid "No Preset Loaded"
 msgstr "未加载预设"
 
@@ -2617,9 +2635,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Excluded App List: Add/remove this application"
 #~ msgstr "排除的应用程序列表：添加/删除此应用程序"
-
-#~ msgid "Mute Application"
-#~ msgstr "将程序静音"
 
 #~ msgid "Change the volume of this application"
 #~ msgstr "改变该应用的音量"
