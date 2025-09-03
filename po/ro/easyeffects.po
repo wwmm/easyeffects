@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-31 14:34+0000\n"
+"POT-Creation-Date: 2025-09-03 23:17+0000\n"
 "PO-Revision-Date: 2025-09-03 12:02+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -293,11 +293,22 @@ msgstr "Adăugați la aplicațiile excluse"
 msgid "Empty"
 msgstr "Goală"
 
-#: src/contents/ui/BlocklistSheet.qml:135
+#: src/contents/ui/BlocklistSheet.qml:117
+#, fuzzy
+msgid "Remove Application"
+msgstr "Dezactivează sunetul aplicației"
+
+#: src/contents/ui/BlocklistSheet.qml:118
+#, fuzzy
+msgid "Are you sure you want to remove this application from the list?"
+msgstr ""
+"Sunteți sigur că doriți să reinițializați toți parametrii Easy Effects?"
+
+#: src/contents/ui/BlocklistSheet.qml:148
 msgid "Delete this App"
 msgstr "Ștergeți această aplicație"
 
-#: src/contents/ui/BlocklistSheet.qml:164
+#: src/contents/ui/BlocklistSheet.qml:175
 msgid "Show Excluded Applications in the Streams Section"
 msgstr "Afișează aplicațiile excluse în secțiunea fluxuri"
 
@@ -1977,43 +1988,54 @@ msgstr "Nouă preconfigurare creată"
 msgid "Failed to Create Preset"
 msgstr "Crearea preconfigurării a eșuat"
 
-#: src/contents/ui/PresetsLocalPage.qml:166
-msgid "Save Settings to this Preset"
-msgstr "Salvează parametrii în această preconfigurare"
+#: src/contents/ui/PresetsLocalPage.qml:160
+#, fuzzy
+msgid "Remove Preset"
+msgstr "Creează preconfigurare"
 
-#: src/contents/ui/PresetsLocalPage.qml:171
-msgid "Settings Saved to: %1"
-msgstr "Parametrii salvați în: %1"
+#: src/contents/ui/PresetsLocalPage.qml:161
+#, fuzzy
+msgid "Are you sure you want to remove this preset from the list?"
+msgstr ""
+"Sunteți sigur că doriți să reinițializați toți parametrii Easy Effects?"
 
-#: src/contents/ui/PresetsLocalPage.qml:173
-msgid "Failed to Save Settings to: %1"
-msgstr "Salvarea parametrilor în: %1 a eșuat"
-
-#: src/contents/ui/PresetsLocalPage.qml:177
-msgid "Delete this Preset"
-msgstr "Șterge această preconfigurare"
-
-#: src/contents/ui/PresetsLocalPage.qml:182
+#: src/contents/ui/PresetsLocalPage.qml:165
 msgid "The Preset %1 Has Been Removed"
 msgstr "Preconfigurarea %1 a fost eliminată"
 
-#: src/contents/ui/PresetsLocalPage.qml:184
+#: src/contents/ui/PresetsLocalPage.qml:167
 msgid "The Preset %1 Could Not Be Removed"
 msgstr "Preconfigurarea %1 nu a putut fi eliminată"
 
-#: src/contents/ui/PresetsSheet.qml:64 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsLocalPage.qml:180
+msgid "Save Settings to this Preset"
+msgstr "Salvează parametrii în această preconfigurare"
+
+#: src/contents/ui/PresetsLocalPage.qml:185
+msgid "Settings Saved to: %1"
+msgstr "Parametrii salvați în: %1"
+
+#: src/contents/ui/PresetsLocalPage.qml:187
+msgid "Failed to Save Settings to: %1"
+msgstr "Salvarea parametrilor în: %1 a eșuat"
+
+#: src/contents/ui/PresetsLocalPage.qml:191
+msgid "Delete this Preset"
+msgstr "Șterge această preconfigurare"
+
+#: src/contents/ui/PresetsSheet.qml:62 src/contents/ui/PresetsSheet.qml:105
 msgid "Local"
 msgstr "Local"
 
-#: src/contents/ui/PresetsSheet.qml:75 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:73 src/contents/ui/PresetsSheet.qml:105
 msgid "Community"
 msgstr "Comunitate"
 
-#: src/contents/ui/PresetsSheet.qml:86
+#: src/contents/ui/PresetsSheet.qml:84
 msgid "Autoloading"
 msgstr "Încărcare automată"
 
-#: src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:103
 msgid "No Preset Loaded"
 msgstr "Nicio preconfigurare încărcată"
 
@@ -2273,7 +2295,8 @@ msgstr "Reinițializați parametrii?"
 
 #: src/contents/ui/main.qml:125
 msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr "Sunteți sigur că doriți să reinițializați toți parametrii Easy Effects?"
+msgstr ""
+"Sunteți sigur că doriți să reinițializați toți parametrii Easy Effects?"
 
 #: src/contents/ui/main.qml:146
 msgid "Audio effects for PipeWire applications"
@@ -2491,9 +2514,6 @@ msgstr "Efecte audio pentru aplicații PipeWire"
 
 #~ msgid "Excluded App List: Add/remove this application"
 #~ msgstr "Lista de aplicații excluse: Adăugați/eliminați această aplicație"
-
-#~ msgid "Mute Application"
-#~ msgstr "Dezactivează sunetul aplicației"
 
 #~ msgid "Change the volume of this application"
 #~ msgstr "Modifică volumul acestei aplicații"

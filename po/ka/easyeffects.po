@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-08-31 14:34+0000\n"
+"POT-Creation-Date: 2025-09-03 23:17+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -293,11 +293,19 @@ msgstr ""
 msgid "Empty"
 msgstr ""
 
-#: src/contents/ui/BlocklistSheet.qml:135
+#: src/contents/ui/BlocklistSheet.qml:117
+msgid "Remove Application"
+msgstr ""
+
+#: src/contents/ui/BlocklistSheet.qml:118
+msgid "Are you sure you want to remove this application from the list?"
+msgstr ""
+
+#: src/contents/ui/BlocklistSheet.qml:148
 msgid "Delete this App"
 msgstr ""
 
-#: src/contents/ui/BlocklistSheet.qml:164
+#: src/contents/ui/BlocklistSheet.qml:175
 msgid "Show Excluded Applications in the Streams Section"
 msgstr ""
 
@@ -2022,43 +2030,52 @@ msgstr ""
 msgid "Failed to Create Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:166
-msgid "Save Settings to this Preset"
+#: src/contents/ui/PresetsLocalPage.qml:160
+#, fuzzy
+msgid "Remove Preset"
+msgstr "პრესეტის შემოტანა"
+
+#: src/contents/ui/PresetsLocalPage.qml:161
+msgid "Are you sure you want to remove this preset from the list?"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:171
-msgid "Settings Saved to: %1"
-msgstr ""
-
-#: src/contents/ui/PresetsLocalPage.qml:173
-msgid "Failed to Save Settings to: %1"
-msgstr ""
-
-#: src/contents/ui/PresetsLocalPage.qml:177
-msgid "Delete this Preset"
-msgstr ""
-
-#: src/contents/ui/PresetsLocalPage.qml:182
+#: src/contents/ui/PresetsLocalPage.qml:165
 msgid "The Preset %1 Has Been Removed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:184
+#: src/contents/ui/PresetsLocalPage.qml:167
 msgid "The Preset %1 Could Not Be Removed"
 msgstr ""
 
-#: src/contents/ui/PresetsSheet.qml:64 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsLocalPage.qml:180
+msgid "Save Settings to this Preset"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:185
+msgid "Settings Saved to: %1"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:187
+msgid "Failed to Save Settings to: %1"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:191
+msgid "Delete this Preset"
+msgstr ""
+
+#: src/contents/ui/PresetsSheet.qml:62 src/contents/ui/PresetsSheet.qml:105
 msgid "Local"
 msgstr ""
 
-#: src/contents/ui/PresetsSheet.qml:75 src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:73 src/contents/ui/PresetsSheet.qml:105
 msgid "Community"
 msgstr ""
 
-#: src/contents/ui/PresetsSheet.qml:86
+#: src/contents/ui/PresetsSheet.qml:84
 msgid "Autoloading"
 msgstr ""
 
-#: src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:103
 msgid "No Preset Loaded"
 msgstr ""
 
