@@ -111,6 +111,19 @@ Kirigami.OverlaySheet {
                     down: false
                     width: listView.width
 
+                    Kirigami.PromptDialog {
+                        id: deleteDialog
+
+                        title: i18n("Remove Application")
+                        subtitle: i18n("Are you sure you want to remove this application from the list?")
+                        standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+                        onAccepted: {
+                            const targetIndex = streamDB.blocklist.indexOf(name);
+                            if (targetIndex > -1)
+                                streamDB.blocklist.splice(targetIndex, 1);
+                        }
+                    }
+
                     contentItem: RowLayout {
                         Layout.maximumWidth: listView.width
 
@@ -136,9 +149,7 @@ Kirigami.OverlaySheet {
                                     icon.name: "delete"
                                     displayHint: Kirigami.DisplayHint.AlwaysHide
                                     onTriggered: {
-                                        const targetIndex = streamDB.blocklist.indexOf(name);
-                                        if (targetIndex > -1)
-                                            streamDB.blocklist.splice(targetIndex, 1);
+                                        deleteDialog.open();
                                     }
                                 }
                             ]

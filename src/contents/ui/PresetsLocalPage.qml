@@ -154,6 +154,20 @@ ColumnLayout {
                         showPresetsMenuError(i18n("The Preset %1 Failed to Load", `<strong>${name}</strong>`));
                 }
 
+                Kirigami.PromptDialog {
+                    id: deleteDialog
+
+                    title: i18n("Remove Preset")
+                    subtitle: i18n("Are you sure you want to remove this preset from the list?")
+                    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+                    onAccepted: {
+                        if (Presets.Manager.remove(pipeline, name) === true)
+                            showPresetsMenuStatus(i18n("The Preset %1 Has Been Removed", `<strong>${name}</strong>`));
+                        else
+                            showPresetsMenuError(i18n("The Preset %1 Could Not Be Removed", `<strong>${name}</strong>`));
+                    }
+                }
+
                 contentItem: RowLayout {
                     Controls.Label {
                         text: name
@@ -178,10 +192,7 @@ ColumnLayout {
                                 icon.name: "delete"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
-                                    if (Presets.Manager.remove(pipeline, name) === true)
-                                        showPresetsMenuStatus(i18n("The Preset %1 Has Been Removed", `<strong>${name}</strong>`));
-                                    else
-                                        showPresetsMenuError(i18n("The Preset %1 Could Not Be Removed", `<strong>${name}</strong>`));
+                                    deleteDialog.open();
                                 }
                             }
                         ]
