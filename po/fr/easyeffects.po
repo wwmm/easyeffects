@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-03 23:17+0000\n"
-"PO-Revision-Date: 2025-08-30 22:33+0000\n"
+"PO-Revision-Date: 2025-09-04 17:03+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 5.13.1-rc\n"
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -292,15 +292,12 @@ msgid "Empty"
 msgstr "Vide"
 
 #: src/contents/ui/BlocklistSheet.qml:117
-#, fuzzy
 msgid "Remove Application"
-msgstr "Couper le son de l’application"
+msgstr "Supprimer l'Application"
 
 #: src/contents/ui/BlocklistSheet.qml:118
-#, fuzzy
 msgid "Are you sure you want to remove this application from the list?"
-msgstr ""
-"Êtes-vous sûr de vouloir réinitialiser tous les paramètres Easy Effects ?"
+msgstr "Êtes-vous sûr de vouloir supprimer cette application de la liste ?"
 
 #: src/contents/ui/BlocklistSheet.qml:148
 msgid "Delete this App"
@@ -1989,15 +1986,12 @@ msgid "Failed to Create Preset"
 msgstr "Échec de la Création du Préréglage"
 
 #: src/contents/ui/PresetsLocalPage.qml:160
-#, fuzzy
 msgid "Remove Preset"
-msgstr "Créer un Préréglage"
+msgstr "Supprimer le Préréglage"
 
 #: src/contents/ui/PresetsLocalPage.qml:161
-#, fuzzy
 msgid "Are you sure you want to remove this preset from the list?"
-msgstr ""
-"Êtes-vous sûr de vouloir réinitialiser tous les paramètres Easy Effects ?"
+msgstr "Êtes-vous sûr de vouloir supprimer ce préréglage de la liste ?"
 
 #: src/contents/ui/PresetsLocalPage.qml:165
 msgid "The Preset %1 Has Been Removed"
