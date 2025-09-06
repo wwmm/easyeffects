@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-03 23:17+0000\n"
+"POT-Creation-Date: 2025-09-06 14:51+0000\n"
 "PO-Revision-Date: 2025-08-31 13:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -717,19 +717,29 @@ msgstr "Cerca"
 msgid "Loaded Impulse: %1"
 msgstr "Impulso Caricato: %1"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:105
-msgid "Delete this Impulse"
-msgstr "Rimuovi questo Impulso"
+#: src/contents/ui/ConvolverImpulseSheet.qml:99
+#, fuzzy
+msgid "Remove Impulse Response"
+msgstr "Risposta Impulso"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:110
+#: src/contents/ui/ConvolverImpulseSheet.qml:100
+#, fuzzy
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr "Davvero vuoi reimpostare tutte le opzioni di Easy Effects?"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
 msgid "Removed Impulse: %1"
 msgstr "Impulso Rimosso: %1"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:112
+#: src/contents/ui/ConvolverImpulseSheet.qml:106
 msgid "Failed to Remove the Impulse: %1"
 msgstr "Rimozione dell'Impulso Non Riuscita: %1"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:148
+#: src/contents/ui/ConvolverImpulseSheet.qml:119
+msgid "Delete this Impulse"
+msgstr "Rimuovi questo Impulso"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:159
 msgid "Import Impulse"
 msgstr "Importa Impulso"
 
@@ -3041,9 +3051,6 @@ msgstr "Effetti Audio per Applicazioni Pipewire"
 
 #~ msgid "Open"
 #~ msgstr "Apri"
-
-#~ msgid "Impulse Response"
-#~ msgstr "Risposta Impulso"
 
 #~ msgid "No Impulse File Loaded"
 #~ msgstr "Nessun File di Risposta Impulsiva Caricato"

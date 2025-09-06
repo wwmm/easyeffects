@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-03 23:17+0000\n"
+"POT-Creation-Date: 2025-09-06 14:51+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Meti Cease <sockargrande@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -758,22 +758,31 @@ msgstr ""
 msgid "Loaded Impulse: %1"
 msgstr "Načítať impulz"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:105
+#: src/contents/ui/ConvolverImpulseSheet.qml:99
 #, fuzzy
-msgid "Delete this Impulse"
-msgstr "Importovať impulz"
+msgid "Remove Impulse Response"
+msgstr "Odpoveď impulzu"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:110
+#: src/contents/ui/ConvolverImpulseSheet.qml:100
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr ""
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
 #, fuzzy
 msgid "Removed Impulse: %1"
 msgstr "Importovať impulz"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:112
+#: src/contents/ui/ConvolverImpulseSheet.qml:106
 #, fuzzy
 msgid "Failed to Remove the Impulse: %1"
 msgstr "Nedá sa načítať súbor s impulzom"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:148
+#: src/contents/ui/ConvolverImpulseSheet.qml:119
+#, fuzzy
+msgid "Delete this Impulse"
+msgstr "Importovať impulz"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:159
 msgid "Import Impulse"
 msgstr "Importovať impulz"
 
@@ -3134,9 +3143,6 @@ msgstr "Zvukové efekty pre aplikácie využívajúce PipeWire"
 
 #~ msgid "Open"
 #~ msgstr "Otvoriť"
-
-#~ msgid "Impulse Response"
-#~ msgstr "Odpoveď impulzu"
 
 #, fuzzy
 #~ msgid "No Impulse File Loaded"

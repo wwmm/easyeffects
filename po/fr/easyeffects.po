@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-03 23:17+0000\n"
+"POT-Creation-Date: 2025-09-06 14:51+0000\n"
 "PO-Revision-Date: 2025-09-04 17:03+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -713,19 +713,29 @@ msgstr "Rechercher"
 msgid "Loaded Impulse: %1"
 msgstr "Charger l'Impulsion : %1"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:105
-msgid "Delete this Impulse"
-msgstr "Supprimer cette Impulsion"
+#: src/contents/ui/ConvolverImpulseSheet.qml:99
+#, fuzzy
+msgid "Remove Impulse Response"
+msgstr "Réponse Impulsionnelle"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:110
+#: src/contents/ui/ConvolverImpulseSheet.qml:100
+#, fuzzy
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr "Êtes-vous sûr de vouloir supprimer ce préréglage de la liste ?"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
 msgid "Removed Impulse: %1"
 msgstr "Supprimer l’Impulsion : %1"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:112
+#: src/contents/ui/ConvolverImpulseSheet.qml:106
 msgid "Failed to Remove the Impulse: %1"
 msgstr "Impossible de Supprimer l’Impulsion : %1"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:148
+#: src/contents/ui/ConvolverImpulseSheet.qml:119
+msgid "Delete this Impulse"
+msgstr "Supprimer cette Impulsion"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:159
 msgid "Import Impulse"
 msgstr "Importer une Réponse Impulsionnelle"
 
@@ -3046,9 +3056,6 @@ msgstr "Effets Audio pour les Applications PipeWire"
 
 #~ msgid "Open"
 #~ msgstr "Ouvrir"
-
-#~ msgid "Impulse Response"
-#~ msgstr "Réponse Impulsionnelle"
 
 #~ msgid "No Impulse File Loaded"
 #~ msgstr "Aucun Fichier d’Impulsion Chargé"

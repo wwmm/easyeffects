@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-03 23:17+0000\n"
+"POT-Creation-Date: 2025-09-06 14:51+0000\n"
 "PO-Revision-Date: 2025-09-01 07:01+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -730,22 +730,31 @@ msgstr "Cuardaigh"
 msgid "Loaded Impulse: %1"
 msgstr "Luchtaigh Impulse"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:105
+#: src/contents/ui/ConvolverImpulseSheet.qml:99
 #, fuzzy
-msgid "Delete this Impulse"
-msgstr "Bain Impulse"
+msgid "Remove Impulse Response"
+msgstr "Freagra Impulse"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:110
+#: src/contents/ui/ConvolverImpulseSheet.qml:100
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr ""
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
 #, fuzzy
 msgid "Removed Impulse: %1"
 msgstr "Bain Impulse"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:112
+#: src/contents/ui/ConvolverImpulseSheet.qml:106
 #, fuzzy
 msgid "Failed to Remove the Impulse: %1"
 msgstr "Theip ar luchtú an chomhaid impulse"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:148
+#: src/contents/ui/ConvolverImpulseSheet.qml:119
+#, fuzzy
+msgid "Delete this Impulse"
+msgstr "Bain Impulse"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:159
 msgid "Import Impulse"
 msgstr "Iompórtáil Impulse"
 
@@ -3153,9 +3162,6 @@ msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
 
 #~ msgid "Open"
 #~ msgstr "Oscail"
-
-#~ msgid "Impulse Response"
-#~ msgstr "Freagra Impulse"
 
 #~ msgid "No Impulse File Loaded"
 #~ msgstr "Níor luchtaíodh comhad impulse"
