@@ -93,6 +93,20 @@ Kirigami.OverlaySheet {
                     showImpulseMenuStatus(i18n("Loaded Impulse: %1", name));
                 }
 
+                Kirigami.PromptDialog {
+                    id: deleteDialog
+
+                    title: i18n("Remove Impulse Response")
+                    subtitle: i18n("Are you sure you want to remove this impulse response from the list?")
+                    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+                    onAccepted: {
+                        if (Presets.Manager.removeImpulseFile(path) === true)
+                            showImpulseMenuStatus(i18n("Removed Impulse: %1", name));
+                        else
+                            showImpulseMenuStatus(i18n("Failed to Remove the Impulse: %1", name), false);
+                    }
+                }
+
                 contentItem: RowLayout {
                     Controls.Label {
                         text: name
@@ -106,10 +120,7 @@ Kirigami.OverlaySheet {
                                 icon.name: "delete"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
-                                    if (Presets.Manager.removeImpulseFile(path) === true)
-                                        showImpulseMenuStatus(i18n("Removed Impulse: %1", name));
-                                    else
-                                        showImpulseMenuStatus(i18n("Failed to Remove the Impulse: %1", name), false);
+                                    deleteDialog.open();
                                 }
                             }
                         ]
