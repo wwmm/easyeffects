@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-03 23:17+0000\n"
+"POT-Creation-Date: 2025-09-06 14:51+0000\n"
 "PO-Revision-Date: 2025-09-06 10:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -715,19 +715,29 @@ msgstr "Caută"
 msgid "Loaded Impulse: %1"
 msgstr "Impuls încărcat: %1"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:105
-msgid "Delete this Impulse"
-msgstr "Elimină acest impuls"
+#: src/contents/ui/ConvolverImpulseSheet.qml:99
+#, fuzzy
+msgid "Remove Impulse Response"
+msgstr "Răspuns impuls"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:110
+#: src/contents/ui/ConvolverImpulseSheet.qml:100
+#, fuzzy
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr "Sunteți sigur că doriți să eliminați această preconfigurare din listă?"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
 msgid "Removed Impulse: %1"
 msgstr "Impuls eliminat: %1"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:112
+#: src/contents/ui/ConvolverImpulseSheet.qml:106
 msgid "Failed to Remove the Impulse: %1"
 msgstr "Eliminarea impulsului a eșuat"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:148
+#: src/contents/ui/ConvolverImpulseSheet.qml:119
+msgid "Delete this Impulse"
+msgstr "Elimină acest impuls"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:159
 msgid "Import Impulse"
 msgstr "Importă impuls"
 
@@ -3043,9 +3053,6 @@ msgstr "Efecte audio pentru aplicații PipeWire"
 
 #~ msgid "Open"
 #~ msgstr "Deschide"
-
-#~ msgid "Impulse Response"
-#~ msgstr "Răspuns impuls"
 
 #~ msgid "No Impulse File Loaded"
 #~ msgstr "Niciun fișier de impuls încărcat"

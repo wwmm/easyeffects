@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-03 23:17+0000\n"
+"POT-Creation-Date: 2025-09-06 14:51+0000\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -731,22 +731,31 @@ msgstr "தேடல்"
 msgid "Loaded Impulse: %1"
 msgstr "உந்துவிசை சுமை"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:105
+#: src/contents/ui/ConvolverImpulseSheet.qml:99
 #, fuzzy
-msgid "Delete this Impulse"
-msgstr "தூண்டுதலை அகற்று"
+msgid "Remove Impulse Response"
+msgstr "கணத்தாக்க மறுமொழி"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:110
+#: src/contents/ui/ConvolverImpulseSheet.qml:100
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr ""
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
 #, fuzzy
 msgid "Removed Impulse: %1"
 msgstr "தூண்டுதலை அகற்று"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:112
+#: src/contents/ui/ConvolverImpulseSheet.qml:106
 #, fuzzy
 msgid "Failed to Remove the Impulse: %1"
 msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:148
+#: src/contents/ui/ConvolverImpulseSheet.qml:119
+#, fuzzy
+msgid "Delete this Impulse"
+msgstr "தூண்டுதலை அகற்று"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:159
 msgid "Import Impulse"
 msgstr "உந்துவிசை இறக்குமதி செய்யுங்கள்"
 
@@ -3150,9 +3159,6 @@ msgstr "பைப்வேர் பயன்பாடுகளுக்கா�
 
 #~ msgid "Open"
 #~ msgstr "திற"
-
-#~ msgid "Impulse Response"
-#~ msgstr "கணத்தாக்க மறுமொழி"
 
 #~ msgid "No Impulse File Loaded"
 #~ msgstr "உந்துவிசை கோப்பு ஏற்றப்படவில்லை"

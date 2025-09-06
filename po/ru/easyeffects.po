@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-03 23:17+0000\n"
+"POT-Creation-Date: 2025-09-06 14:51+0000\n"
 "PO-Revision-Date: 2025-08-20 00:02+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -746,22 +746,31 @@ msgstr "Поиск"
 msgid "Loaded Impulse: %1"
 msgstr "Загрузить импульс"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:105
+#: src/contents/ui/ConvolverImpulseSheet.qml:99
 #, fuzzy
-msgid "Delete this Impulse"
-msgstr "Удалить Импульс"
+msgid "Remove Impulse Response"
+msgstr "Импульсная реакция"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:110
+#: src/contents/ui/ConvolverImpulseSheet.qml:100
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr ""
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
 #, fuzzy
 msgid "Removed Impulse: %1"
 msgstr "Удалить Импульс"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:112
+#: src/contents/ui/ConvolverImpulseSheet.qml:106
 #, fuzzy
 msgid "Failed to Remove the Impulse: %1"
 msgstr "Не удалось загрузить файл импульса"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:148
+#: src/contents/ui/ConvolverImpulseSheet.qml:119
+#, fuzzy
+msgid "Delete this Impulse"
+msgstr "Удалить Импульс"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:159
 msgid "Import Impulse"
 msgstr "Импортировать импульс"
 
@@ -3233,9 +3242,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 
 #~ msgid "Open"
 #~ msgstr "Открыть"
-
-#~ msgid "Impulse Response"
-#~ msgstr "Импульсная реакция"
 
 #~ msgid "No Impulse File Loaded"
 #~ msgstr "Нет загруженного файла импульса"

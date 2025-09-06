@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-03 23:17+0000\n"
+"POT-Creation-Date: 2025-09-06 14:51+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/easyeffects/main/th/"
@@ -711,19 +711,27 @@ msgstr ""
 msgid "Loaded Impulse: %1"
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:105
-msgid "Delete this Impulse"
+#: src/contents/ui/ConvolverImpulseSheet.qml:99
+msgid "Remove Impulse Response"
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:110
+#: src/contents/ui/ConvolverImpulseSheet.qml:100
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr ""
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
 msgid "Removed Impulse: %1"
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:112
+#: src/contents/ui/ConvolverImpulseSheet.qml:106
 msgid "Failed to Remove the Impulse: %1"
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:148
+#: src/contents/ui/ConvolverImpulseSheet.qml:119
+msgid "Delete this Impulse"
+msgstr ""
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:159
 msgid "Import Impulse"
 msgstr ""
 
