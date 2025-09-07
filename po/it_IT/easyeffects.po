@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-06 14:51+0000\n"
-"PO-Revision-Date: 2025-08-31 13:01+0000\n"
+"PO-Revision-Date: 2025-09-07 19:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: src/command_line_parser.cpp:44
@@ -294,14 +294,12 @@ msgid "Empty"
 msgstr "Vuoto"
 
 #: src/contents/ui/BlocklistSheet.qml:117
-#, fuzzy
 msgid "Remove Application"
-msgstr "Silenzia Applicazione"
+msgstr "Rimuovi Applicazione"
 
 #: src/contents/ui/BlocklistSheet.qml:118
-#, fuzzy
 msgid "Are you sure you want to remove this application from the list?"
-msgstr "Davvero vuoi reimpostare tutte le opzioni di Easy Effects?"
+msgstr "Vuoi davvero rimuovere questa applicazione dalla lista?"
 
 #: src/contents/ui/BlocklistSheet.qml:148
 msgid "Delete this App"
@@ -718,14 +716,12 @@ msgid "Loaded Impulse: %1"
 msgstr "Impulso Caricato: %1"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:99
-#, fuzzy
 msgid "Remove Impulse Response"
-msgstr "Risposta Impulso"
+msgstr "Rimuovi Risposta Impulso"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:100
-#, fuzzy
 msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr "Davvero vuoi reimpostare tutte le opzioni di Easy Effects?"
+msgstr "Vuoi davvero rimuovere questa risposta di impulso dalla lista?"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
 msgid "Removed Impulse: %1"
@@ -1998,14 +1994,12 @@ msgid "Failed to Create Preset"
 msgstr "Creazione Profilo Non Riuscita"
 
 #: src/contents/ui/PresetsLocalPage.qml:160
-#, fuzzy
 msgid "Remove Preset"
-msgstr "Crea Profilo"
+msgstr "Rimuovi Profilo"
 
 #: src/contents/ui/PresetsLocalPage.qml:161
-#, fuzzy
 msgid "Are you sure you want to remove this preset from the list?"
-msgstr "Davvero vuoi reimpostare tutte le opzioni di Easy Effects?"
+msgstr "Vuoi davvero rimuovere questo profilo dalla lista?"
 
 #: src/contents/ui/PresetsLocalPage.qml:165
 msgid "The Preset %1 Has Been Removed"
@@ -2303,7 +2297,7 @@ msgstr "Reset delle Impostazioni?"
 
 #: src/contents/ui/main.qml:125
 msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr "Davvero vuoi reimpostare tutte le opzioni di Easy Effects?"
+msgstr "Vuoi davvero reimpostare tutte le opzioni di Easy Effects?"
 
 #: src/contents/ui/main.qml:146
 msgid "Audio effects for PipeWire applications"
