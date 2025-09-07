@@ -313,6 +313,7 @@ auto Pitch::get_latency_seconds() -> float {
 
 void Pitch::resetHistory() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
+
   QMetaObject::invokeMethod(
       this,
       [this] {
@@ -331,5 +332,6 @@ void Pitch::resetHistory() {
         data_mutex.unlock();
       },
       Qt::QueuedConnection);
+
   // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }
