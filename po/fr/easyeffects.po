@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-06 14:51+0000\n"
-"PO-Revision-Date: 2025-09-04 17:03+0000\n"
+"PO-Revision-Date: 2025-09-07 05:01+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.13.1-rc\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -714,14 +714,13 @@ msgid "Loaded Impulse: %1"
 msgstr "Charger l'Impulsion : %1"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:99
-#, fuzzy
 msgid "Remove Impulse Response"
-msgstr "Réponse Impulsionnelle"
+msgstr "Supprimer la Réponse Impulsionnelle"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:100
-#, fuzzy
 msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr "Êtes-vous sûr de vouloir supprimer ce préréglage de la liste ?"
+msgstr ""
+"Êtes-vous sûr de vouloir supprimer cette réponse impulsionnelle de la liste ?"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
 msgid "Removed Impulse: %1"
