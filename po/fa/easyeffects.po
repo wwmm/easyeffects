@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-06 14:51+0000\n"
-"PO-Revision-Date: 2025-08-23 14:27+0000\n"
-"Last-Translator: Ab <vultazhh@gmail.com>\n"
+"PO-Revision-Date: 2025-09-07 19:01+0000\n"
+"Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
 "fa/>\n"
 "Language: fa\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -2448,9 +2448,8 @@ msgid "Turn Effects On/Off"
 msgstr ""
 
 #: src/contents/ui/main.qml:367
-#, fuzzy
 msgid "PipeWire"
-msgstr "_پایپ وایر"
+msgstr "پایپ‌وایر"
 
 #: src/contents/ui/main.qml:423
 #, fuzzy
