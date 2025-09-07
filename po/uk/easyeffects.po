@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-06 14:51+0000\n"
-"PO-Revision-Date: 2025-09-04 17:03+0000\n"
+"PO-Revision-Date: 2025-09-07 05:01+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.13.1-rc\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -715,14 +715,12 @@ msgid "Loaded Impulse: %1"
 msgstr "Завантажений імпульс: %1"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:99
-#, fuzzy
 msgid "Remove Impulse Response"
-msgstr "Імпульсний відгук"
+msgstr "Вилучити імпульсну реакцію"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:100
-#, fuzzy
 msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr "Ви впевнені, що хочете вилучити цей пресет зі списку?"
+msgstr "Ви впевнені, що хочете вилучити цю імпульсну характеристику зі списку?"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
 msgid "Removed Impulse: %1"
