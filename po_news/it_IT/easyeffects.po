@@ -230,8 +230,8 @@ msgid ""
 "input gain to retrieve the same functionality)."
 msgstr ""
 "L'ultima versione del Maximizer non possiede più il parametro di ceiling. "
-"Per questo motivo tale parametro è stato rimosso dalla nostra interfaccia ("
-"si può usare il parametro di guadagno in ingresso per avere la stessa "
+"Per questo motivo tale parametro è stato rimosso dalla nostra interfaccia "
+"(si può usare il parametro di guadagno in ingresso per avere la stessa "
 "funzionalità)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
