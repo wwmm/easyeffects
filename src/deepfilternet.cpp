@@ -100,6 +100,8 @@ void DeepFilterNet::setup() {
   resample = rate != 48000;
   resampler_ready = !resample;
 
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
+
   QMetaObject::invokeMethod(
       this,
       [this] {
@@ -139,6 +141,8 @@ void DeepFilterNet::setup() {
         }
       },
       Qt::QueuedConnection);
+
+  // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }
 
 void DeepFilterNet::process(std::span<float>& left_in,

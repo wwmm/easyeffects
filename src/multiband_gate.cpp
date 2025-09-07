@@ -22,6 +22,7 @@
 #include <qtypes.h>
 #include <QString>
 #include <algorithm>
+#include <format>
 #include <memory>
 #include <span>
 #include <string>

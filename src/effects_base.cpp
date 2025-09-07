@@ -363,6 +363,9 @@ void EffectsBase::requestSpectrumData() {
     this case we have some heavy operations that need to be done. It is probably better to do them in the main thread
     and deliver the spectrum list to QML through a signal.
   */
+
+  // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
+
   QMetaObject::invokeMethod(
       this,
       [this] {
@@ -428,4 +431,6 @@ void EffectsBase::requestSpectrumData() {
         Q_EMIT newSpectrumData(output_data);
       },
       Qt::QueuedConnection);
+
+  // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }
