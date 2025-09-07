@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-08-31 05:01+0000\n"
+"PO-Revision-Date: 2025-09-07 19:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
@@ -147,22 +147,34 @@ msgid ""
 "volunteers. You can search them on the repositories of your favorite "
 "distribution."
 msgstr ""
+"I Profili della Comunità sono stati implementati. Gli utenti possono "
+"installare i pacchetti contenenti molteplici profili di Easy Effects per "
+"essere importati e applicati all'interno del programma. Questi pacchetti "
+"sono gestiti e distribuiti da volontari. Puoi cercarli nei repository delle "
+"tue distribuzioni preferite."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
 "Added the ability of collapsing the sidebar to hide the effects list and "
 "expand the area of the effects user interface."
 msgstr ""
+"Aggiunta la possibilità di ridurre la sidebar per nascondere la lista degli "
+"effetti ed espandere l'area dell'interfaccia utente degli effetti."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an "
 "output device that is different from the one EasyEffects is using."
 msgstr ""
+"EasyEffects non gestirà più gli streams che applicano il "
+"PW_KEY_TARGET_OBJECT a un dispositivo di output diverso da quella che "
+"EasyEffects sta usando."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Equalizer APO import feature can now apply Band-Pass filters."
 msgstr ""
+"La funzionalità di importazione Equalizer APO adesso può applicare il filtro "
+"Passa-Banda."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
@@ -208,6 +220,8 @@ msgid ""
 "A change in GTK 4.14.1 prevented to apply the values inserted into the text "
 "field of our SpinButton widgets. This issue is now resolved."
 msgstr ""
+"Una modifica in GTK 4.14.1 non consentiva di applicare i valori inseriti nel "
+"campo di testo dei nostri SpinButton. Questo problema adesso è stato risolto."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid ""
@@ -215,12 +229,18 @@ msgid ""
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
 msgstr ""
+"L'ultima versione del Maximizer non possiede più il parametro di ceiling. "
+"Per questo motivo tale parametro è stato rimosso dalla nostra interfaccia ("
+"si può usare il parametro di guadagno in ingresso per avere la stessa "
+"funzionalità)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
 "Equalizer APO import feature does not crash anymore on Flatpak when invalid "
 "values are provided."
 msgstr ""
+"L'importazione dell'Equalizer APO non manda più l'applicazione in crash su "
+"Flatpak quando sono presenti valori non validi."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
@@ -252,6 +272,9 @@ msgid ""
 "invited to read and follow the guidelines linked inside the README of "
 "EasyEffects master branch."
 msgstr ""
+"Affinché i Profili della Comunità siano pubblicati correttamente, i "
+"distributori sono invitati a leggere e seguire le linee guida presenti nel "
+"README del master branch di EasyEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid ""
@@ -259,6 +282,9 @@ msgid ""
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
 msgstr ""
+"I profili con il Convolver e la Riduzione Rumore (RNNoise) creati "
+"precedentemente alla versione 7.2.0 sono deprecati. Si prega di ricaricare "
+"gli irs/modelli nel Convolver/RNNoise e salvare nuovamente i profili."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid ""
@@ -279,7 +305,6 @@ msgstr ""
 "livello in determinate condizioni."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
-#, fuzzy
 msgid ""
 "We now set monitor.passthrough = true in our virtual devices. This will "
 "allow latency offset to be properly applied by video players when PipeWire "
@@ -934,7 +959,6 @@ msgid "Many translation updates"
 msgstr "Molti aggiornamenti di traduzione"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:360
-#, fuzzy
 msgid ""
 "Fixed a bug where EasyEffects crashed when the number of points displayed in "
 "the spectrum was changed while our pipeline was active and the spectrum "
