@@ -21,6 +21,7 @@
 #include <qstandardpaths.h>
 #include <algorithm>
 #include <filesystem>
+#include <format>
 #include "easyeffects_db_rnnoise.h"
 #include "pipeline_type.hpp"
 #include "tags_app.hpp"
@@ -255,7 +256,7 @@ void RNNoise::process(std::span<float>& left_in,
   if (notify_latency) {
     latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name.toStdString() + " latency: " + util::to_string(latency_value, "") + " s");
+    util::debug(std::format("{} latency: {} s", log_tag + name.toStdString(), latency_value));
 
     update_filter_params();
 

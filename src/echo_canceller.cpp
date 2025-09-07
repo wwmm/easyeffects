@@ -26,6 +26,7 @@
 #include <algorithm>
 #include <climits>
 #include <cstddef>
+#include <format>
 #include <mutex>
 #include <span>
 #include <string>
@@ -185,7 +186,7 @@ void EchoCanceller::process(std::span<float>& left_in,
   if (notify_latency) {
     const float latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name.toStdString() + " latency: " + util::to_string(latency_value, "") + " s");
+    util::debug(std::format("{}{} latency: {} s", log_tag, name.toStdString(), latency_value));
 
     update_filter_params();
 
@@ -211,7 +212,7 @@ void EchoCanceller::init_speex() {
 
   const uint filter_length = static_cast<uint>(0.001F * static_cast<float>(settings->filterLength() * rate));
 
-  util::debug(log_tag + name.toStdString() + " filter length: " + util::to_string(filter_length));
+  util::debug(std::format("{}{} filter length: {}", log_tag, name.toStdString(), filter_length));
 
   if (echo_state_L != nullptr) {
     speex_echo_state_destroy(echo_state_L);

@@ -24,6 +24,7 @@
 #include <algorithm>
 #include <cmath>
 #include <filesystem>
+#include <format>
 #include <map>
 #include <memory>
 #include <span>
@@ -224,7 +225,7 @@ void Equalizer::process(std::span<float>& left_in,
 
     latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name.toStdString() + " latency: " + util::to_string(latency_value, "") + " s");
+    util::debug(std::format("{}{} latency: {} s", log_tag, name.toStdString(), latency_value));
 
     update_filter_params();
   }

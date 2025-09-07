@@ -226,7 +226,7 @@ QVariant Nodes::data(const QModelIndex& index, int role) const {
   const auto it = std::next(list.begin(), index.row());
 
   if (it == list.end()) {
-    util::warning("invalid model index.row(): " + util::to_string(index.row()));
+    util::warning(std::format("invalid model index.row(): {}", index.row()));
 
     return {};
   }

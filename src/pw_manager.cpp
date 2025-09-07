@@ -723,10 +723,9 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
   auto* const pm = static_cast<pw::Manager*>(data);
 
   const std::string str_key = (key != nullptr) ? key : "";
-  const std::string str_type = (type != nullptr) ? type : "";
   const std::string str_value = (value != nullptr) ? value : "";
 
-  util::debug("new metadata property: " + util::to_string(id) + ", " + str_key + ", " + str_type + ", " + str_value);
+  util::debug(std::format("new metadata property: {}, {}, {}, {}", id, str_key, type ? type : "", str_value));
 
   if (str_value.empty()) {
     return 0;
@@ -948,8 +947,8 @@ void on_registry_global(void* data,
     // We will have debug info about our filters later
 
     if (!is_ee_filter) {
-      util::debug(nd->nd_info->media_class.toStdString() + " " + util::to_string(id) + " " +
-                  nd->nd_info->name.toStdString() + " with serial " + util::to_string(serial) + " has been added");
+      util::debug(std::format("{} {} {} with serial {} has been added", nd->nd_info->media_class.toStdString(), id,
+                              nd->nd_info->name.toStdString(), serial));
     }
 
     return;
@@ -988,9 +987,8 @@ void on_registry_global(void* data,
 
       const auto output_node = pm->model_nodes.get_node_by_id(link_info.output_node_id);
 
-      util::debug(output_node.name.toStdString() + " port " + util::to_string(link_info.output_port_id) +
-                  " is connected to " + input_node.name.toStdString() + " port " +
-                  util::to_string(link_info.input_port_id));
+      util::debug(std::format("{} port {} is connected to {} port {}", output_node.name.toStdString(),
+                              link_info.output_port_id, input_node.name.toStdString(), link_info.input_port_id));
     } catch (std::out_of_range& e) {
       util::debug(e.what());
     }

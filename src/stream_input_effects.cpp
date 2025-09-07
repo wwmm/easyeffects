@@ -29,6 +29,7 @@
 #include <algorithm>
 #include <chrono>
 #include <cstdlib>
+#include <format>
 #include <ranges>
 #include <set>
 #include <string>
@@ -236,7 +237,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
   int timeout = 0;
 
-  util::warning("before: " + util::to_string(input_device.id) + " -> " + input_device.name.toStdString());
+  util::warning(std::format("before: {} -> {}", input_device.id, input_device.name.toStdString()));
 
   while (pm->count_node_ports(input_device.id) < 1) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -244,8 +245,10 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
     timeout++;
 
     if (timeout > 5000) {
-      util::warning("Information about the ports of the input device " + input_device.name.toStdString() + " with id " +
-                    util::to_string(input_device.id) + " are taking to long to be available. Aborting the link");
+      util::warning(
+          std::format("Information about the ports of the input device {} with id {} are taking too long to be "
+                      "available. Aborting the link",
+                      input_device.name.toStdString(), input_device.id));
 
       return;
     }
@@ -277,8 +280,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
           prev_node_id = next_node_id;
           mic_linked = true;
         } else {
-          util::warning(" link from node " + util::to_string(prev_node_id) + " to node " +
-                        util::to_string(next_node_id) + " failed");
+          util::warning(std::format("link from node {} to node {} failed", prev_node_id, next_node_id));
         }
       }
     }
@@ -321,8 +323,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
       prev_node_id = next_node_id;
       mic_linked = true;
     } else {
-      util::warning(" link from node " + util::to_string(prev_node_id) + " to node " + util::to_string(next_node_id) +
-                    " failed");
+      util::warning(std::format("link from node {} to node {} failed", prev_node_id, next_node_id));
     }
   }
 }

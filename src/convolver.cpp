@@ -37,6 +37,7 @@
 #include <cstddef>
 #include <execution>
 #include <filesystem>
+#include <format>
 #include <memory>
 #include <mutex>
 #include <numbers>
@@ -283,7 +284,7 @@ void Convolver::process(std::span<float>& left_in,
   if (notify_latency) {
     latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name.toStdString() + " latency: " + util::to_string(latency_value, "") + " s");
+    util::debug(std::format("{}{} latency: {} s", log_tag, name.toStdString(), latency_value));
 
     update_filter_params();
 
@@ -359,10 +360,10 @@ auto Convolver::read_kernel_file(const std::string& kernel_path)
     return std::make_tuple(rate, kernel_L, kernel_R);
   }
 
-  util::debug(log_tag + name.toStdString() + ": irs file: " + kernel_path);
-  util::debug(log_tag + name.toStdString() + ": irs rate: " + util::to_string(sndfile.samplerate()) + " Hz");
-  util::debug(log_tag + name.toStdString() + ": irs channels: " + util::to_string(sndfile.channels()));
-  util::debug(log_tag + name.toStdString() + ": irs frames: " + util::to_string(sndfile.frames()));
+  util::debug(std::format("{}{}: irs file: {}", log_tag, name.toStdString(), kernel_path));
+  util::debug(std::format("{}{}: irs rate: {} Hz", log_tag, name.toStdString(), sndfile.samplerate()));
+  util::debug(std::format("{}{}: irs channels: {}", log_tag, name.toStdString(), sndfile.channels()));
+  util::debug(std::format("{}{}: irs frames: {}", log_tag, name.toStdString(), sndfile.frames()));
 
   buffer.resize(sndfile.frames() * sndfile.channels());
   kernel_L.resize(sndfile.frames());
@@ -403,7 +404,7 @@ void Convolver::load_kernel_file() {
   }
 
   if (kernel_rate != static_cast<int>(rate)) {
-    util::debug(log_tag + name.toStdString() + " resampling the kernel to " + util::to_string(rate));
+    util::debug(std::format("{}{} resampling the kernel to {}", log_tag, name.toStdString(), rate));
 
     auto resampler = std::make_unique<Resampler>(kernel_rate, rate);
 
@@ -499,7 +500,7 @@ void Convolver::apply_kernel_autogain() {
 
   const float autogain = std::min(1.0F, 1.0F / std::sqrt(power));
 
-  util::debug(log_tag + "autogain factor: " + util::to_string(autogain));
+  util::debug(std::format("{} autogain factor: {}", log_tag, autogain));
 
   std::ranges::for_each(kernel_L, [&](auto& v) { v *= autogain; });
   std::ranges::for_each(kernel_R, [&](auto& v) { v *= autogain; });
@@ -547,8 +548,7 @@ void Convolver::setup_zita() {
   int ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, 0.0F /*density*/);
 
   if (ret != 0) {
-    util::warning(log_tag + name.toStdString() +
-                  " can't initialise zita-convolver engine: " + util::to_string(ret, ""));
+    util::warning(std::format("{}can't initialise zita-convolver engine: {}", log_tag, ret));
 
     return;
   }
@@ -556,7 +556,7 @@ void Convolver::setup_zita() {
   ret = conv->impdata_create(0, 0, 1, kernel_L.data(), 0, static_cast<int>(kernel_L.size()));
 
   if (ret != 0) {
-    util::warning(log_tag + name.toStdString() + " left impdata_create failed: " + util::to_string(ret));
+    util::warning(std::format("{}left impdata_create failed: {}", log_tag, ret));
 
     return;
   }
@@ -564,7 +564,7 @@ void Convolver::setup_zita() {
   ret = conv->impdata_create(1, 1, 1, kernel_R.data(), 0, static_cast<int>(kernel_R.size()));
 
   if (ret != 0) {
-    util::warning(log_tag + name.toStdString() + " right impdata_create failed: " + util::to_string(ret, ""));
+    util::warning(std::format("{}right impdata_create failed: {}", log_tag, ret));
 
     return;
   }
@@ -572,7 +572,7 @@ void Convolver::setup_zita() {
   ret = conv->start_process(CONVPROC_SCHEDULER_PRIORITY, CONVPROC_SCHEDULER_CLASS);
 
   if (ret != 0) {
-    util::warning(log_tag + name.toStdString() + " start_process failed: " + util::to_string(ret, ""));
+    util::warning(std::format("{}right impdata_create failed: {}", log_tag, ret));
 
     conv->stop_process();
     conv->cleanup();
@@ -689,7 +689,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
   }
 
   if (rate1 > rate2) {
-    util::debug("resampling the kernel " + kernel_2_name + " to " + util::to_string(rate1) + " Hz");
+    util::debug(std::format("resampling the kernel {} to {} Hz", kernel_2_name, rate1));
 
     auto resampler = std::make_unique<Resampler>(rate2, rate1);
 
@@ -699,7 +699,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
 
     kernel_2_R = resampler->process(kernel_2_R, true);
   } else if (rate2 > rate1) {
-    util::debug("resampling the kernel " + kernel_1_name + " to " + util::to_string(rate2) + " Hz");
+    util::debug(std::format("resampling the kernel {} to {} Hz", kernel_1_name, rate2));
 
     auto resampler = std::make_unique<Resampler>(rate1, rate2);
 
@@ -877,8 +877,8 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
   auto max_freq = std::ranges::max(freq_axis);
   auto min_freq = std::ranges::min(freq_axis);
 
-  util::debug("min fft frequency: " + util::to_string(min_freq, ""));
-  util::debug("max fft frequency: " + util::to_string(max_freq, ""));
+  util::debug(std::format("min fft frequency: {}", min_freq));
+  util::debug(std::format("max fft frequency: {}", max_freq));
 
   auto log_freq_axis = util::logspace(min_freq, max_freq, interpPoints);
 

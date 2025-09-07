@@ -30,6 +30,7 @@
 #include <algorithm>
 #include <chrono>
 #include <cstdlib>
+#include <format>
 #include <ranges>
 #include <set>
 #include <string>
@@ -246,8 +247,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
         if (links.size() == 2U) {
           prev_node_id = next_node_id;
         } else {
-          util::warning(" link from node " + util::to_string(prev_node_id) + " to node " +
-                        util::to_string(next_node_id) + " failed");
+          util::warning(std::format("link from node {} to node {} failed", prev_node_id, next_node_id));
         }
       }
     }
@@ -285,8 +285,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
     if (links.size() == 2U) {
       prev_node_id = next_node_id;
     } else {
-      util::warning(" link from node " + util::to_string(prev_node_id) + " to node " + util::to_string(next_node_id) +
-                    " failed");
+      util::warning(std::format("link from node {} to node {} failed", prev_node_id, next_node_id));
     }
   }
 
@@ -319,8 +318,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   }
 
   if (links.size() < 2U) {
-    util::warning(" link from node " + util::to_string(prev_node_id) + " to output device " +
-                  util::to_string(next_node_id) + " failed");
+    util::warning(std::format("link from node {} to output device {} failed", prev_node_id, next_node_id));
   }
 }
 

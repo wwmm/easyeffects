@@ -22,6 +22,7 @@
 #include <sys/types.h>
 #include <zita-convolver.h>
 #include <algorithm>
+#include <format>
 #include <span>
 #include <string>
 #include <vector>
@@ -65,7 +66,7 @@ class FirFilterBase {
       const int& ret = conv->process(true);  // thread sync mode set to true
 
       if (ret != 0) {
-        util::debug(log_tag + "IR: process failed: " + util::to_string(ret, ""));
+        util::debug(std::format("{}IR: process failed: {}", log_tag, ret));
 
         zita_ready = false;
       } else {

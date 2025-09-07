@@ -19,6 +19,7 @@
 
 #include "output_level.hpp"
 #include <algorithm>
+#include <format>
 #include <span>
 #include <string>
 #include "pipeline_type.hpp"
@@ -41,16 +42,16 @@ OutputLevel::~OutputLevel() {
 void OutputLevel::reset() {}
 
 void OutputLevel::setup() {
-  util::debug(log_tag + name.toStdString() + ": PipeWire blocksize: " + util::to_string(n_samples, ""));
-  util::debug(log_tag + name.toStdString() + ": PipeWire sampling rate: " + util::to_string(rate, ""));
+  util::debug(std::format("{}{}: PipeWire blocksize: {}", log_tag, name.toStdString(), n_samples));
+  util::debug(std::format("{}{}: PipeWire sampling rate: {}", log_tag, name.toStdString(), rate));
 }
 
 void OutputLevel::process(std::span<float>& left_in,
                           std::span<float>& right_in,
                           std::span<float>& left_out,
                           std::span<float>& right_out) {
-  std::copy(left_in.begin(), left_in.end(), left_out.begin());
-  std::copy(right_in.begin(), right_in.end(), right_out.begin());
+  std::ranges::copy(left_in, left_out.begin());
+  std::ranges::copy(right_in, right_out.begin());
 
   get_peaks(left_in, right_in, left_out, right_out);
 }

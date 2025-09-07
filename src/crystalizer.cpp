@@ -23,6 +23,7 @@
 #include <qtypes.h>
 #include <algorithm>
 #include <cstddef>
+#include <format>
 #include <memory>
 #include <mutex>
 #include <span>
@@ -154,7 +155,7 @@ void Crystalizer::setup() {
           }
         }
 
-        util::debug(log_tag + name.toStdString() + " blocksize: " + util::to_string(blocksize));
+        util::debug(std::format("{}{} blocksize: {}", log_tag, name.toStdString(), blocksize));
 
         notify_latency = true;
         do_first_rotation = true;
@@ -284,7 +285,7 @@ void Crystalizer::process(std::span<float>& left_in,
   if (notify_latency) {
     latency_value = static_cast<float>(latency_n_frames) / static_cast<float>(rate);
 
-    util::debug(log_tag + name.toStdString() + " latency: " + util::to_string(latency_value, "") + " s");
+    util::debug(std::format("{}{} latency: {} s", log_tag, name.toStdString(), latency_value));
 
     update_filter_params();
 

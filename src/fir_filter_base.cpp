@@ -24,6 +24,7 @@
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
+#include <format>
 #include <numbers>
 #include <string>
 #include <utility>
@@ -125,9 +126,9 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
       Blackman window https://www.dspguide.com/ch16/1.htm
     */
 
-    const float w = 0.42F -
-                    0.5F * std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M)) +
-                    0.08F * std::cos(4.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M));
+    const float w =
+        0.42F - (0.5F * std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M))) +
+        (0.08F * std::cos(4.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M)));
 
     output[n] *= w;
 
@@ -165,7 +166,7 @@ void FirFilterBase::setup_zita() {
   int ret = conv->configure(2, 2, kernel.size(), n_samples, n_samples, n_samples, 0.0F /*density*/);
 
   if (ret != 0) {
-    util::warning(log_tag + "can't initialise zita-convolver engine: " + util::to_string(ret, ""));
+    util::warning(std::format("{}can't initialise zita-convolver engine: {}", log_tag, ret));
 
     return;
   }
@@ -173,7 +174,7 @@ void FirFilterBase::setup_zita() {
   ret = conv->impdata_create(0, 0, 1, kernel.data(), 0, static_cast<int>(kernel.size()));
 
   if (ret != 0) {
-    util::warning(log_tag + "left impdata_create failed: " + util::to_string(ret, ""));
+    util::warning(std::format("{}left impdata_create failed: {}", log_tag, ret));
 
     return;
   }
@@ -181,7 +182,7 @@ void FirFilterBase::setup_zita() {
   ret = conv->impdata_create(1, 1, 1, kernel.data(), 0, static_cast<int>(kernel.size()));
 
   if (ret != 0) {
-    util::warning(log_tag + "right impdata_create failed: " + util::to_string(ret, ""));
+    util::warning(std::format("{}right impdata_create failed: {}", log_tag, ret));
 
     return;
   }
@@ -189,7 +190,7 @@ void FirFilterBase::setup_zita() {
   ret = conv->start_process(CONVPROC_SCHEDULER_PRIORITY, CONVPROC_SCHEDULER_CLASS);
 
   if (ret != 0) {
-    util::warning(log_tag + "start_process failed: " + util::to_string(ret, ""));
+    util::warning(std::format("{}start_process failed: {}", log_tag, ret));
 
     conv->stop_process();
     conv->cleanup();
