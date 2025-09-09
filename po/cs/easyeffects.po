@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-06 14:51+0000\n"
+"POT-Creation-Date: 2025-09-09 16:05+0000\n"
 "PO-Revision-Date: 2025-08-30 15:01+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -420,7 +420,7 @@ msgstr "Externí"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:261 src/contents/ui/Limiter.qml:238
-#: src/contents/ui/PageStreamsEffects.qml:442
+#: src/contents/ui/PageStreamsEffects.qml:443
 msgid "Input Device"
 msgstr "Vstupní zařízení"
 
@@ -938,12 +938,12 @@ msgstr "Přístup"
 msgid "Description"
 msgstr "Popis"
 
-#: src/contents/ui/DelegatePluginsList.qml:63
+#: src/contents/ui/DelegatePluginsList.qml:64
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "Povolit/zakázat tento efekt"
 
-#: src/contents/ui/DelegatePluginsList.qml:77
+#: src/contents/ui/DelegatePluginsList.qml:78
 msgid "Remove this effect"
 msgstr "Odstranit tento efekt"
 
@@ -1576,38 +1576,38 @@ msgstr "Není dostupná žádná zvuková aplikace"
 msgid "Add Effect"
 msgstr "Přidat efekt"
 
-#: src/contents/ui/PageStreamsEffects.qml:442
-#: src/contents/ui/PageStreamsEffects.qml:646
+#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:647
 msgid "Players"
 msgstr "Přehrávače"
 
-#: src/contents/ui/PageStreamsEffects.qml:459
-#: src/contents/ui/PageStreamsEffects.qml:646
+#: src/contents/ui/PageStreamsEffects.qml:460
+#: src/contents/ui/PageStreamsEffects.qml:647
 msgid "Recorders"
 msgstr "Záznamníky"
 
-#: src/contents/ui/PageStreamsEffects.qml:472
+#: src/contents/ui/PageStreamsEffects.qml:473
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:495
+#: src/contents/ui/PageStreamsEffects.qml:496
 msgid "No Effects"
 msgstr "Žádné efekty"
 
-#: src/contents/ui/PageStreamsEffects.qml:496
+#: src/contents/ui/PageStreamsEffects.qml:497
 msgid "Audio Stream Not Modified"
 msgstr "Audio Stream není modifikovaný"
 
-#: src/contents/ui/PageStreamsEffects.qml:656
+#: src/contents/ui/PageStreamsEffects.qml:657
 msgid "Effects"
 msgstr "Efekty"
 
-#: src/contents/ui/PageStreamsEffects.qml:673
+#: src/contents/ui/PageStreamsEffects.qml:674
 #, fuzzy
 msgid "Input Monitoring"
 msgstr "Povolit monitorování vstupu"
 
-#: src/contents/ui/PageStreamsEffects.qml:686
+#: src/contents/ui/PageStreamsEffects.qml:687
 msgid "Excluded Apps"
 msgstr "Vynechané aplikace"
 
