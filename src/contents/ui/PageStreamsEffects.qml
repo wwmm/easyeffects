@@ -410,6 +410,7 @@ Kirigami.Page {
 
                     delegate: DelegatePluginsList {
                         listModel: pluginsListModel
+                        listView: pluginsListView
                         onSelectedChanged: name => {
                             if (pageStreamsEffects.streamDB.visiblePlugin !== name) {
                                 pageStreamsEffects.streamDB.visiblePlugin = name;

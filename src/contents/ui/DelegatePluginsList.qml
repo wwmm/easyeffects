@@ -10,6 +10,7 @@ Item {
     id: delegateItem
 
     required property var listModel
+    required property var listView
     required property int index
     required property string name
     required property string translatedName
@@ -89,13 +90,21 @@ Item {
 
             Kirigami.ListItemDragHandle {
                 listItem: listItemDelegate
-                listView: pluginsListView
+                listView: delegateItem.listView
                 visible: !DB.Manager.main.collapsePluginsList
                 onMoveRequested: (oldIndex, newIndex) => {
-                    const indexStart = delegateItem.listModel.index(0, 0);
-                    const indexEnd = delegateItem.listModel.index(delegateItem.listModel.count - 1, 0);
+                    if (oldIndex === newIndex)
+                        return;
+
                     delegateItem.listModel.move(oldIndex, newIndex, 1);
-                    delegateItem.listModel.dataChanged(indexStart, indexEnd, []);
+                }
+                onDragActiveChanged: {
+                    if (dragActive === false) {
+                        const indexStart = delegateItem.listModel.index(0, 0);
+                        const indexEnd = delegateItem.listModel.index(delegateItem.listModel.count - 1, 0);
+
+                        delegateItem.listModel.dataChanged(indexStart, indexEnd, []);
+                    }
                 }
             }
         }
