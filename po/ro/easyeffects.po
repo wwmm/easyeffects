@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-06 14:51+0000\n"
+"POT-Creation-Date: 2025-09-09 16:05+0000\n"
 "PO-Revision-Date: 2025-09-07 19:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -413,7 +413,7 @@ msgstr "Extern"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:261 src/contents/ui/Limiter.qml:238
-#: src/contents/ui/PageStreamsEffects.qml:442
+#: src/contents/ui/PageStreamsEffects.qml:443
 msgid "Input Device"
 msgstr "Dispozitiv de intrare"
 
@@ -721,7 +721,8 @@ msgstr "Elimină răspunsul la impuls"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:100
 msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr "Sunteți sigur că doriți să eliminați acest răspuns la impuls din listă?"
+msgstr ""
+"Sunteți sigur că doriți să eliminați acest răspuns la impuls din listă?"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
 msgid "Removed Impulse: %1"
@@ -913,11 +914,11 @@ msgstr "Acces"
 msgid "Description"
 msgstr "Descriere"
 
-#: src/contents/ui/DelegatePluginsList.qml:63
+#: src/contents/ui/DelegatePluginsList.qml:64
 msgid "Enable this Effect"
 msgstr "Activează acest efect"
 
-#: src/contents/ui/DelegatePluginsList.qml:77
+#: src/contents/ui/DelegatePluginsList.qml:78
 msgid "Remove this effect"
 msgstr "Elimină acest efect"
 
@@ -1500,37 +1501,37 @@ msgstr "Nicio aplicație audio disponibilă"
 msgid "Add Effect"
 msgstr "Adaugă efect"
 
-#: src/contents/ui/PageStreamsEffects.qml:442
-#: src/contents/ui/PageStreamsEffects.qml:646
+#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:647
 msgid "Players"
 msgstr "Reproducătoare"
 
-#: src/contents/ui/PageStreamsEffects.qml:459
-#: src/contents/ui/PageStreamsEffects.qml:646
+#: src/contents/ui/PageStreamsEffects.qml:460
+#: src/contents/ui/PageStreamsEffects.qml:647
 msgid "Recorders"
 msgstr "Înregistrătoare"
 
-#: src/contents/ui/PageStreamsEffects.qml:472
+#: src/contents/ui/PageStreamsEffects.qml:473
 msgid "Close"
 msgstr "Închide"
 
-#: src/contents/ui/PageStreamsEffects.qml:495
+#: src/contents/ui/PageStreamsEffects.qml:496
 msgid "No Effects"
 msgstr "Niciun efect"
 
-#: src/contents/ui/PageStreamsEffects.qml:496
+#: src/contents/ui/PageStreamsEffects.qml:497
 msgid "Audio Stream Not Modified"
 msgstr "Flux audio nemodificat"
 
-#: src/contents/ui/PageStreamsEffects.qml:656
+#: src/contents/ui/PageStreamsEffects.qml:657
 msgid "Effects"
 msgstr "Efecte"
 
-#: src/contents/ui/PageStreamsEffects.qml:673
+#: src/contents/ui/PageStreamsEffects.qml:674
 msgid "Input Monitoring"
 msgstr "Monitorizarea intrării"
 
-#: src/contents/ui/PageStreamsEffects.qml:686
+#: src/contents/ui/PageStreamsEffects.qml:687
 msgid "Excluded Apps"
 msgstr "Aplicații excluse"
 
