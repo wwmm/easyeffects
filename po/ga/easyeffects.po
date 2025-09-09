@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-06 14:51+0000\n"
-"PO-Revision-Date: 2025-09-01 07:01+0000\n"
+"PO-Revision-Date: 2025-09-09 03:01+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -16,9 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
-"(n>6 && n<11) ? 3 : 4;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :("
+"n>6 && n<11) ? 3 : 4;\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -50,30 +50,28 @@ msgid "Show available presets."
 msgstr "Taispeáin réamhshocruithe atá ar fáil."
 
 #: src/command_line_parser.cpp:50
-#, fuzzy
 msgid "Get the active input/output preset."
-msgstr "Taispeáin na réamhshocruithe gníomhacha."
+msgstr "Faigh an réamhshocrú ionchuir/aschuir gníomhach."
 
 #: src/command_line_parser.cpp:50
 msgid "preset-type"
-msgstr ""
+msgstr "cineál réamhshocraithe"
 
 #: src/command_line_parser.cpp:51
-#, fuzzy
 msgid "Get the active input and output presets."
-msgstr "Taispeáin na réamhshocruithe gníomhacha."
+msgstr "Faigh na réamhshocruithe ionchuir agus aschuir ghníomhacha."
 
 #: src/command_line_parser.cpp:52
 msgid "Deprecated. Use --service-mode instead."
-msgstr ""
+msgstr "As feidhm. Bain úsáid as --service-mode ina ionad."
 
 #: src/command_line_parser.cpp:53
 msgid "Start the application with service mode turned on."
-msgstr ""
+msgstr "Tosaigh an feidhmchlár agus mód seirbhíse casta air."
 
 #: src/command_line_parser.cpp:54
 msgid "Enable debug messages."
-msgstr ""
+msgstr "Cumasaigh teachtaireachtaí dífhabhtaithe."
 
 #: src/command_line_parser.cpp:138 src/contents/ui/main.qml:237
 msgid "Output Presets"
@@ -171,9 +169,8 @@ msgstr "Gnóthachan Aschuir"
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:207
 #: src/contents/ui/RNNoise.qml:269 src/contents/ui/Reverb.qml:305
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
-#, fuzzy
 msgid "Using %1"
-msgstr "Ag baint úsáide as {}"
+msgstr "Ag baint úsáide as %1"
 
 #: src/contents/ui/Autogain.qml:290 src/contents/ui/DeepFilterNet.qml:180
 #: src/contents/ui/LevelMeter.qml:248 src/contents/ui/Pitch.qml:223
@@ -181,18 +178,17 @@ msgid "Reset History"
 msgstr "Athshocraigh an Stair"
 
 #: src/contents/ui/Autogain.qml:297
-#, fuzzy
 msgid "Force Silence"
-msgstr "Ciúnas"
+msgstr "Fórsáil Ciúnas"
 
 #: src/contents/ui/Autogain.qml:298
 msgid "Force Silence When the Level is Below the Silence Threshold"
 msgstr ""
+"Cuir Tost i bhFeidhm nuair a bhíonn an Leibhéal faoi bhun Thairseach na Tost"
 
 #: src/contents/ui/Autogain.qml:309 src/contents/ui/Pitch.qml:250
-#, fuzzy
 msgid "Reset Settings"
-msgstr "_Reset Socruithe"
+msgstr "Athshocraigh Socruithe"
 
 #: src/contents/ui/BassEnhancer.qml:38 src/contents/ui/Exciter.qml:38
 msgid "Blend Harmonics"
@@ -220,9 +216,8 @@ msgid "Scope"
 msgstr "Scóip"
 
 #: src/contents/ui/BassEnhancer.qml:140
-#, fuzzy
 msgid "Floor Active"
-msgstr "Luach Urláir"
+msgstr "Urlár Gníomhach"
 
 #: src/contents/ui/BassEnhancer.qml:151
 msgid "Floor"
