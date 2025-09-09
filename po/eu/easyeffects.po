@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-09 16:05+0000\n"
+"POT-Creation-Date: 2025-09-09 16:55+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Asier Saratsua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -160,7 +160,7 @@ msgstr "Irteerako irabazia"
 #: src/contents/ui/Deesser.qml:308 src/contents/ui/Delay.qml:364
 #: src/contents/ui/EchoCanceller.qml:102 src/contents/ui/Equalizer.qml:292
 #: src/contents/ui/Exciter.qml:187 src/contents/ui/Expander.qml:758
-#: src/contents/ui/Filter.qml:193 src/contents/ui/Gate.qml:893
+#: src/contents/ui/Filter.qml:193 src/contents/ui/Gate.qml:903
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Limiter.qml:498
 #: src/contents/ui/Loudness.qml:125 src/contents/ui/Maximizer.qml:100
 #: src/contents/ui/MultibandCompressor.qml:950
@@ -227,7 +227,7 @@ msgstr "Zorua"
 #: src/contents/ui/Deesser.qml:324 src/contents/ui/Delay.qml:400
 #: src/contents/ui/Equalizer.qml:308 src/contents/ui/Exciter.qml:203
 #: src/contents/ui/Expander.qml:774 src/contents/ui/Filter.qml:209
-#: src/contents/ui/Gate.qml:909 src/contents/ui/Limiter.qml:514
+#: src/contents/ui/Gate.qml:919 src/contents/ui/Limiter.qml:514
 #: src/contents/ui/Loudness.qml:141 src/contents/ui/Maximizer.qml:116
 #: src/contents/ui/MultibandCompressor.qml:966
 #: src/contents/ui/MultibandGate.qml:934 src/contents/ui/Reverb.qml:329
@@ -237,7 +237,7 @@ msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:216 src/contents/ui/Compressor.qml:829
 #: src/contents/ui/Deesser.qml:337 src/contents/ui/Exciter.qml:216
-#: src/contents/ui/Expander.qml:787 src/contents/ui/Gate.qml:922
+#: src/contents/ui/Expander.qml:787 src/contents/ui/Gate.qml:932
 msgid "Listen"
 msgstr "Entzun"
 
@@ -248,7 +248,7 @@ msgstr "Entzun"
 #: src/contents/ui/Delay.qml:413 src/contents/ui/EchoCanceller.qml:118
 #: src/contents/ui/Equalizer.qml:373 src/contents/ui/Exciter.qml:226
 #: src/contents/ui/Expander.qml:807 src/contents/ui/Filter.qml:222
-#: src/contents/ui/Gate.qml:942 src/contents/ui/LevelMeter.qml:255
+#: src/contents/ui/Gate.qml:952 src/contents/ui/LevelMeter.qml:255
 #: src/contents/ui/Limiter.qml:547 src/contents/ui/Loudness.qml:164
 #: src/contents/ui/Maximizer.qml:129
 #: src/contents/ui/MultibandCompressor.qml:989
@@ -260,13 +260,13 @@ msgstr "Berrezarri"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:488
 #: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:448
-#: src/contents/ui/Gate.qml:472 src/contents/ui/StereoTools.qml:303
+#: src/contents/ui/Gate.qml:477 src/contents/ui/StereoTools.qml:303
 #: src/contents/ui/main.qml:329
 msgid "Output"
 msgstr "Irteera"
 
 #: src/contents/ui/BassLoudness.qml:78 src/contents/ui/Compressor.qml:267
-#: src/contents/ui/Expander.qml:227 src/contents/ui/Gate.qml:251
+#: src/contents/ui/Expander.qml:227 src/contents/ui/Gate.qml:256
 #: src/contents/ui/Limiter.qml:228 src/contents/ui/MultibandCompressor.qml:409
 #: src/contents/ui/MultibandGate.qml:377
 msgid "Link"
@@ -320,7 +320,7 @@ msgstr "Konpresorea"
 #: src/contents/ui/Deesser.qml:70 src/contents/ui/Delay.qml:55
 #: src/contents/ui/Delay.qml:213 src/contents/ui/Equalizer.qml:112
 #: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:69
-#: src/contents/ui/Expander.qml:260 src/contents/ui/Gate.qml:284
+#: src/contents/ui/Expander.qml:260 src/contents/ui/Gate.qml:289
 #: src/contents/ui/Limiter.qml:52 src/contents/ui/MultibandCompressor.qml:416
 #: src/contents/ui/MultibandGate.qml:384 src/contents/ui/StereoTools.qml:129
 msgid "Mode"
@@ -367,7 +367,7 @@ msgid "Threshold and Time"
 msgstr "Atalasea"
 
 #: src/contents/ui/Compressor.qml:175 src/contents/ui/Expander.qml:135
-#: src/contents/ui/Gate.qml:72 src/contents/ui/Gate.qml:791
+#: src/contents/ui/Gate.qml:77 src/contents/ui/Gate.qml:801
 #: src/contents/ui/Limiter.qml:138 src/contents/ui/Limiter.qml:310
 #: src/contents/ui/MultibandCompressor.qml:237
 #: src/contents/ui/MultibandGate.qml:173
@@ -375,7 +375,7 @@ msgid "Attack"
 msgstr "Erasoa"
 
 #: src/contents/ui/Compressor.qml:208 src/contents/ui/Expander.qml:168
-#: src/contents/ui/Gate.qml:89 src/contents/ui/Gate.qml:800
+#: src/contents/ui/Gate.qml:94 src/contents/ui/Gate.qml:810
 #: src/contents/ui/Limiter.qml:159 src/contents/ui/Limiter.qml:331
 #: src/contents/ui/Maximizer.qml:49 src/contents/ui/MultibandCompressor.qml:285
 #: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:121
@@ -385,8 +385,8 @@ msgstr "Askatzea"
 #: src/contents/ui/Compressor.qml:245 src/contents/ui/Compressor.qml:344
 #: src/contents/ui/Compressor.qml:596 src/contents/ui/Expander.qml:205
 #: src/contents/ui/Expander.qml:304 src/contents/ui/Expander.qml:556
-#: src/contents/ui/Gate.qml:229 src/contents/ui/Gate.qml:328
-#: src/contents/ui/Gate.qml:580 src/contents/ui/Limiter.qml:204
+#: src/contents/ui/Gate.qml:234 src/contents/ui/Gate.qml:333
+#: src/contents/ui/Gate.qml:590 src/contents/ui/Limiter.qml:204
 #: src/contents/ui/Limiter.qml:404 src/contents/ui/MultibandCompressor.qml:650
 #: src/contents/ui/MultibandGate.qml:618
 msgid "Sidechain"
@@ -394,7 +394,7 @@ msgstr "Alboko katea"
 
 #: src/contents/ui/Compressor.qml:263 src/contents/ui/EqualizerBandMenu.qml:33
 #: src/contents/ui/Expander.qml:223 src/contents/ui/Filter.qml:49
-#: src/contents/ui/Gate.qml:247 src/contents/ui/Limiter.qml:224
+#: src/contents/ui/Gate.qml:252 src/contents/ui/Limiter.qml:224
 #: src/contents/ui/MultibandCompressor.qml:405
 #: src/contents/ui/MultibandGate.qml:373
 msgid "Type"
@@ -409,27 +409,27 @@ msgid "Feed-back"
 msgstr "Atzeraelikatzea"
 
 #: src/contents/ui/Compressor.qml:267 src/contents/ui/Expander.qml:227
-#: src/contents/ui/Gate.qml:251 src/contents/ui/Limiter.qml:228
+#: src/contents/ui/Gate.qml:256 src/contents/ui/Limiter.qml:228
 #: src/contents/ui/MultibandCompressor.qml:409
 #: src/contents/ui/MultibandGate.qml:377
 msgid "External"
 msgstr "Kanpokoa"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
-#: src/contents/ui/Gate.qml:261 src/contents/ui/Limiter.qml:238
+#: src/contents/ui/Gate.qml:266 src/contents/ui/Limiter.qml:238
 #: src/contents/ui/PageStreamsEffects.qml:443
 msgid "Input Device"
 msgstr "Sarrerako gailua"
 
 #: src/contents/ui/Compressor.qml:304 src/contents/ui/Deesser.qml:61
-#: src/contents/ui/Expander.qml:264 src/contents/ui/Gate.qml:288
+#: src/contents/ui/Expander.qml:264 src/contents/ui/Gate.qml:293
 #: src/contents/ui/MultibandCompressor.qml:420
 #: src/contents/ui/MultibandGate.qml:388
 msgid "Peak"
 msgstr "Gailurra"
 
 #: src/contents/ui/Compressor.qml:304 src/contents/ui/Deesser.qml:61
-#: src/contents/ui/Expander.qml:264 src/contents/ui/Gate.qml:288
+#: src/contents/ui/Expander.qml:264 src/contents/ui/Gate.qml:293
 #: src/contents/ui/MultibandCompressor.qml:420
 #: src/contents/ui/MultibandGate.qml:388
 msgid "RMS"
@@ -437,12 +437,12 @@ msgstr "RMSa"
 
 #: src/contents/ui/Compressor.qml:304 src/contents/ui/Compressor.qml:431
 #: src/contents/ui/Expander.qml:264 src/contents/ui/Expander.qml:391
-#: src/contents/ui/Gate.qml:288 src/contents/ui/Gate.qml:415
+#: src/contents/ui/Gate.qml:293 src/contents/ui/Gate.qml:420
 msgid "Low-Pass"
 msgstr "Pasaera baxua"
 
 #: src/contents/ui/Compressor.qml:304 src/contents/ui/Expander.qml:264
-#: src/contents/ui/Gate.qml:288 src/contents/ui/MultibandCompressor.qml:420
+#: src/contents/ui/Gate.qml:293 src/contents/ui/MultibandCompressor.qml:420
 #: src/contents/ui/MultibandGate.qml:388
 #, fuzzy
 msgid "SMA"
@@ -450,7 +450,7 @@ msgstr "SPMa"
 
 #: src/contents/ui/Compressor.qml:313 src/contents/ui/Compressor.qml:327
 #: src/contents/ui/Expander.qml:273 src/contents/ui/Expander.qml:287
-#: src/contents/ui/Gate.qml:297 src/contents/ui/Gate.qml:311
+#: src/contents/ui/Gate.qml:302 src/contents/ui/Gate.qml:316
 #: src/contents/ui/MultibandCompressor.qml:427
 #: src/contents/ui/MultibandCompressor.qml:439
 #: src/contents/ui/MultibandGate.qml:395 src/contents/ui/MultibandGate.qml:407
@@ -458,20 +458,20 @@ msgid "Source"
 msgstr "Iturburua"
 
 #: src/contents/ui/Compressor.qml:317 src/contents/ui/Expander.qml:277
-#: src/contents/ui/Gate.qml:301 src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/Gate.qml:306 src/contents/ui/MultibandCompressor.qml:431
 #: src/contents/ui/MultibandGate.qml:399
 msgid "Middle"
 msgstr "Erdia"
 
 #: src/contents/ui/Compressor.qml:317 src/contents/ui/Expander.qml:277
-#: src/contents/ui/Gate.qml:301 src/contents/ui/MultibandCompressor.qml:431
+#: src/contents/ui/Gate.qml:306 src/contents/ui/MultibandCompressor.qml:431
 #: src/contents/ui/MultibandGate.qml:399
 msgid "Side"
 msgstr "Alboa"
 
 #: src/contents/ui/Compressor.qml:317 src/contents/ui/Convolver.qml:244
 #: src/contents/ui/Delay.qml:41 src/contents/ui/Equalizer.qml:204
-#: src/contents/ui/Expander.qml:277 src/contents/ui/Gate.qml:301
+#: src/contents/ui/Expander.qml:277 src/contents/ui/Gate.qml:306
 #: src/contents/ui/LevelMeter.qml:58 src/contents/ui/LevelMeter.qml:103
 #: src/contents/ui/MultibandCompressor.qml:431
 #: src/contents/ui/MultibandGate.qml:399 src/contents/ui/PipeWirePage.qml:296
@@ -481,7 +481,7 @@ msgstr "Ezkerra"
 
 #: src/contents/ui/Compressor.qml:317 src/contents/ui/Convolver.qml:262
 #: src/contents/ui/Delay.qml:199 src/contents/ui/Equalizer.qml:204
-#: src/contents/ui/Expander.qml:277 src/contents/ui/Gate.qml:301
+#: src/contents/ui/Expander.qml:277 src/contents/ui/Gate.qml:306
 #: src/contents/ui/LevelMeter.qml:74 src/contents/ui/LevelMeter.qml:119
 #: src/contents/ui/MultibandCompressor.qml:431
 #: src/contents/ui/MultibandGate.qml:399 src/contents/ui/PipeWirePage.qml:307
@@ -491,7 +491,7 @@ msgstr "Eskuina"
 
 #: src/contents/ui/Compressor.qml:317 src/contents/ui/Compressor.qml:331
 #: src/contents/ui/Expander.qml:277 src/contents/ui/Expander.qml:291
-#: src/contents/ui/Gate.qml:301 src/contents/ui/Gate.qml:315
+#: src/contents/ui/Gate.qml:306 src/contents/ui/Gate.qml:320
 #: src/contents/ui/MultibandCompressor.qml:431
 #: src/contents/ui/MultibandCompressor.qml:443
 #: src/contents/ui/MultibandGate.qml:399 src/contents/ui/MultibandGate.qml:411
@@ -500,7 +500,7 @@ msgstr "Min"
 
 #: src/contents/ui/Compressor.qml:317 src/contents/ui/Compressor.qml:331
 #: src/contents/ui/Expander.qml:277 src/contents/ui/Expander.qml:291
-#: src/contents/ui/Gate.qml:301 src/contents/ui/Gate.qml:315
+#: src/contents/ui/Gate.qml:306 src/contents/ui/Gate.qml:320
 #: src/contents/ui/MultibandCompressor.qml:431
 #: src/contents/ui/MultibandCompressor.qml:443
 #: src/contents/ui/MultibandGate.qml:399 src/contents/ui/MultibandGate.qml:411
@@ -508,86 +508,86 @@ msgid "Max"
 msgstr "Max"
 
 #: src/contents/ui/Compressor.qml:331 src/contents/ui/Expander.qml:291
-#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/Gate.qml:320 src/contents/ui/MultibandCompressor.qml:443
 #: src/contents/ui/MultibandGate.qml:411
 #, fuzzy
 msgid "Left/Right"
 msgstr "Eskuina"
 
 #: src/contents/ui/Compressor.qml:331 src/contents/ui/Expander.qml:291
-#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/Gate.qml:320 src/contents/ui/MultibandCompressor.qml:443
 #: src/contents/ui/MultibandGate.qml:411
 #, fuzzy
 msgid "Right/Left"
 msgstr "Eskuina"
 
 #: src/contents/ui/Compressor.qml:331 src/contents/ui/Expander.qml:291
-#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/Gate.qml:320 src/contents/ui/MultibandCompressor.qml:443
 #: src/contents/ui/MultibandGate.qml:411
 #, fuzzy
 msgid "Mid/Side"
 msgstr "Alboa"
 
 #: src/contents/ui/Compressor.qml:331 src/contents/ui/Expander.qml:291
-#: src/contents/ui/Gate.qml:315 src/contents/ui/MultibandCompressor.qml:443
+#: src/contents/ui/Gate.qml:320 src/contents/ui/MultibandCompressor.qml:443
 #: src/contents/ui/MultibandGate.qml:411
 #, fuzzy
 msgid "Side/Mid"
 msgstr "Alboa"
 
 #: src/contents/ui/Compressor.qml:361 src/contents/ui/Expander.qml:321
-#: src/contents/ui/Gate.qml:345 src/contents/ui/Limiter.qml:261
+#: src/contents/ui/Gate.qml:350 src/contents/ui/Limiter.qml:261
 #: src/contents/ui/MultibandCompressor.qml:451
 #: src/contents/ui/MultibandGate.qml:419
 msgid "Preamp"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:379 src/contents/ui/Expander.qml:339
-#: src/contents/ui/Gate.qml:363 src/contents/ui/MultibandCompressor.qml:467
+#: src/contents/ui/Gate.qml:368 src/contents/ui/MultibandCompressor.qml:467
 #: src/contents/ui/MultibandGate.qml:435
 msgid "Reactivity"
 msgstr "Erreaktibotasuna"
 
 #: src/contents/ui/Compressor.qml:397 src/contents/ui/Expander.qml:357
-#: src/contents/ui/Gate.qml:381 src/contents/ui/Limiter.qml:279
+#: src/contents/ui/Gate.qml:386 src/contents/ui/Limiter.qml:279
 #: src/contents/ui/MultibandCompressor.qml:482
 #: src/contents/ui/MultibandGate.qml:450
 msgid "Lookahead"
 msgstr "Aurrea hartzea"
 
 #: src/contents/ui/Compressor.qml:416 src/contents/ui/Expander.qml:376
-#: src/contents/ui/Gate.qml:400
+#: src/contents/ui/Gate.qml:405
 msgid "High-Pass"
 msgstr "Pasaera altua"
 
 #: src/contents/ui/Compressor.qml:420 src/contents/ui/Compressor.qml:435
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:380
-#: src/contents/ui/Expander.qml:395 src/contents/ui/Gate.qml:404
-#: src/contents/ui/Gate.qml:419
+#: src/contents/ui/Expander.qml:395 src/contents/ui/Gate.qml:409
+#: src/contents/ui/Gate.qml:424
 msgid "Off"
 msgstr "Desaktibatuta"
 
 #: src/contents/ui/Compressor.qml:420 src/contents/ui/Compressor.qml:435
 #: src/contents/ui/Expander.qml:380 src/contents/ui/Expander.qml:395
-#: src/contents/ui/Gate.qml:404 src/contents/ui/Gate.qml:419
+#: src/contents/ui/Gate.qml:409 src/contents/ui/Gate.qml:424
 msgid "12 dB/oct"
 msgstr "12 dB/zortzidun"
 
 #: src/contents/ui/Compressor.qml:420 src/contents/ui/Compressor.qml:435
 #: src/contents/ui/Expander.qml:380 src/contents/ui/Expander.qml:395
-#: src/contents/ui/Gate.qml:404 src/contents/ui/Gate.qml:419
+#: src/contents/ui/Gate.qml:409 src/contents/ui/Gate.qml:424
 msgid "24 dB/oct"
 msgstr "24 dB/zortzidun"
 
 #: src/contents/ui/Compressor.qml:420 src/contents/ui/Compressor.qml:435
 #: src/contents/ui/Expander.qml:380 src/contents/ui/Expander.qml:395
-#: src/contents/ui/Gate.qml:404 src/contents/ui/Gate.qml:419
+#: src/contents/ui/Gate.qml:409 src/contents/ui/Gate.qml:424
 msgid "36 dB/oct"
 msgstr "36 dB/zortzidun"
 
 #: src/contents/ui/Compressor.qml:496 src/contents/ui/Delay.qml:160
 #: src/contents/ui/Delay.qml:318 src/contents/ui/Expander.qml:456
-#: src/contents/ui/Gate.qml:480 src/contents/ui/MultibandCompressor.qml:606
+#: src/contents/ui/Gate.qml:485 src/contents/ui/MultibandCompressor.qml:606
 #: src/contents/ui/MultibandGate.qml:574 src/contents/ui/Reverb.qml:176
 #: src/contents/ui/StereoTools.qml:386
 msgid "Dry"
@@ -595,21 +595,21 @@ msgstr ""
 
 #: src/contents/ui/Compressor.qml:519 src/contents/ui/Delay.qml:178
 #: src/contents/ui/Delay.qml:336 src/contents/ui/Expander.qml:479
-#: src/contents/ui/Gate.qml:503 src/contents/ui/MultibandCompressor.qml:624
+#: src/contents/ui/Gate.qml:508 src/contents/ui/MultibandCompressor.qml:624
 #: src/contents/ui/MultibandGate.qml:592 src/contents/ui/Reverb.qml:194
 #: src/contents/ui/StereoTools.qml:404
 msgid "Wet"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:543 src/contents/ui/Deesser.qml:116
-#: src/contents/ui/Expander.qml:503 src/contents/ui/Gate.qml:527
+#: src/contents/ui/Expander.qml:503 src/contents/ui/Gate.qml:532
 #: src/contents/ui/MultibandCompressor.qml:372
 #: src/contents/ui/MultibandGate.qml:237
 msgid "Makeup"
 msgstr "Goratzea"
 
 #: src/contents/ui/Compressor.qml:587 src/contents/ui/Expander.qml:547
-#: src/contents/ui/Gate.qml:107 src/contents/ui/Gate.qml:571
+#: src/contents/ui/Gate.qml:112 src/contents/ui/Gate.qml:581
 #: src/contents/ui/Maximizer.qml:80 src/contents/ui/MultibandCompressor.qml:727
 #: src/contents/ui/MultibandGate.qml:221 src/contents/ui/MultibandGate.qml:695
 msgid "Reduction"
@@ -619,8 +619,8 @@ msgstr "Murrizketa"
 #: src/contents/ui/Compressor.qml:766 src/contents/ui/Compressor.qml:779
 #: src/contents/ui/Expander.qml:615 src/contents/ui/Expander.qml:628
 #: src/contents/ui/Expander.qml:724 src/contents/ui/Expander.qml:737
-#: src/contents/ui/Gate.qml:641 src/contents/ui/Gate.qml:654
-#: src/contents/ui/Gate.qml:750 src/contents/ui/Gate.qml:763
+#: src/contents/ui/Gate.qml:651 src/contents/ui/Gate.qml:664
+#: src/contents/ui/Gate.qml:760 src/contents/ui/Gate.qml:773
 #: src/contents/ui/Limiter.qml:465 src/contents/ui/Limiter.qml:478
 #: src/contents/ui/MultibandCompressor.qml:761
 #: src/contents/ui/MultibandCompressor.qml:820
@@ -634,8 +634,8 @@ msgstr "L"
 #: src/contents/ui/Compressor.qml:772 src/contents/ui/Compressor.qml:785
 #: src/contents/ui/Expander.qml:621 src/contents/ui/Expander.qml:634
 #: src/contents/ui/Expander.qml:730 src/contents/ui/Expander.qml:743
-#: src/contents/ui/Gate.qml:647 src/contents/ui/Gate.qml:660
-#: src/contents/ui/Gate.qml:756 src/contents/ui/Gate.qml:769
+#: src/contents/ui/Gate.qml:657 src/contents/ui/Gate.qml:670
+#: src/contents/ui/Gate.qml:766 src/contents/ui/Gate.qml:779
 #: src/contents/ui/Limiter.qml:471 src/contents/ui/Limiter.qml:484
 #: src/contents/ui/MultibandCompressor.qml:767
 #: src/contents/ui/MultibandCompressor.qml:826
@@ -646,19 +646,19 @@ msgid "R"
 msgstr "R"
 
 #: src/contents/ui/Compressor.qml:698 src/contents/ui/Expander.qml:656
-#: src/contents/ui/Gate.qml:682 src/contents/ui/MultibandCompressor.qml:847
+#: src/contents/ui/Gate.qml:692 src/contents/ui/MultibandCompressor.qml:847
 #: src/contents/ui/MultibandGate.qml:266 src/contents/ui/MultibandGate.qml:815
 msgid "Curve"
 msgstr "Kurba"
 
 #: src/contents/ui/Compressor.qml:707 src/contents/ui/Expander.qml:665
-#: src/contents/ui/Gate.qml:691 src/contents/ui/MultibandCompressor.qml:788
+#: src/contents/ui/Gate.qml:701 src/contents/ui/MultibandCompressor.qml:788
 #: src/contents/ui/MultibandGate.qml:756
 msgid "Envelope"
 msgstr "Inguratzailea"
 
 #: src/contents/ui/Compressor.qml:839 src/contents/ui/Expander.qml:797
-#: src/contents/ui/Gate.qml:932 src/contents/ui/MultibandCompressor.qml:979
+#: src/contents/ui/Gate.qml:942 src/contents/ui/MultibandCompressor.qml:979
 #: src/contents/ui/MultibandGate.qml:947
 #, fuzzy
 msgid "Stereo Split"
@@ -828,9 +828,9 @@ msgstr "Zabala"
 msgid "Split"
 msgstr "Zatitzea"
 
-#: src/contents/ui/Deesser.qml:83 src/contents/ui/Gate.qml:124
-#: src/contents/ui/Gate.qml:190 src/contents/ui/Gate.qml:865
-#: src/contents/ui/Gate.qml:878 src/contents/ui/Limiter.qml:117
+#: src/contents/ui/Deesser.qml:83 src/contents/ui/Gate.qml:129
+#: src/contents/ui/Gate.qml:195 src/contents/ui/Gate.qml:875
+#: src/contents/ui/Gate.qml:888 src/contents/ui/Limiter.qml:117
 #: src/contents/ui/Maximizer.qml:64 src/contents/ui/MultibandCompressor.qml:256
 #: src/contents/ui/MultibandCompressor.qml:304
 #: src/contents/ui/MultibandGate.qml:270 src/contents/ui/MultibandGate.qml:324
@@ -945,7 +945,7 @@ msgstr ""
 msgid "channels"
 msgstr "Zatitu kanalak"
 
-#: src/contents/ui/DelegateStreamsList.qml:87 src/contents/ui/Gate.qml:179
+#: src/contents/ui/DelegateStreamsList.qml:87 src/contents/ui/Gate.qml:184
 #: src/contents/ui/RNNoise.qml:80
 msgid "Enable"
 msgstr "Gaitu"
@@ -1159,7 +1159,7 @@ msgstr ""
 msgid "Expander"
 msgstr ""
 
-#: src/contents/ui/Expander.qml:227 src/contents/ui/Gate.qml:251
+#: src/contents/ui/Expander.qml:227 src/contents/ui/Gate.qml:256
 #: src/contents/ui/Limiter.qml:228 src/contents/ui/MultibandCompressor.qml:409
 #: src/contents/ui/MultibandGate.qml:377
 msgid "Internal"
@@ -1208,20 +1208,20 @@ msgstr "Pasaera baxuko iragazki-modua"
 msgid "Equalizer Mode"
 msgstr "Banda modua"
 
-#: src/contents/ui/Gate.qml:55 src/tags_plugin_name.cpp:40
+#: src/contents/ui/Gate.qml:60 src/tags_plugin_name.cpp:40
 msgid "Gate"
 msgstr "Atea"
 
-#: src/contents/ui/Gate.qml:141 src/contents/ui/Gate.qml:208
+#: src/contents/ui/Gate.qml:146 src/contents/ui/Gate.qml:213
 #: src/contents/ui/MultibandGate.qml:285 src/contents/ui/MultibandGate.qml:340
 msgid "Zone"
 msgstr "Zona"
 
-#: src/contents/ui/Gate.qml:161 src/contents/ui/MultibandGate.qml:313
+#: src/contents/ui/Gate.qml:166 src/contents/ui/MultibandGate.qml:313
 msgid "Hysteresis"
 msgstr "Histeresia"
 
-#: src/contents/ui/Gate.qml:859 src/contents/ui/Gate.qml:872
+#: src/contents/ui/Gate.qml:869 src/contents/ui/Gate.qml:882
 #: src/contents/ui/MultibandCompressor.qml:192
 #: src/contents/ui/MultibandGate.qml:124 src/contents/ui/Speex.qml:120
 msgid "Start"
