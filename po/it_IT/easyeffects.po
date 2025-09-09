@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-06 14:51+0000\n"
+"POT-Creation-Date: 2025-09-09 16:05+0000\n"
 "PO-Revision-Date: 2025-09-07 19:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -413,7 +413,7 @@ msgstr "Esterna"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:261 src/contents/ui/Limiter.qml:238
-#: src/contents/ui/PageStreamsEffects.qml:442
+#: src/contents/ui/PageStreamsEffects.qml:443
 msgid "Input Device"
 msgstr "Dispositivo Ingresso"
 
@@ -913,11 +913,11 @@ msgstr "Accesso"
 msgid "Description"
 msgstr "Descrizione"
 
-#: src/contents/ui/DelegatePluginsList.qml:63
+#: src/contents/ui/DelegatePluginsList.qml:64
 msgid "Enable this Effect"
 msgstr "Abilita questo Effetto"
 
-#: src/contents/ui/DelegatePluginsList.qml:77
+#: src/contents/ui/DelegatePluginsList.qml:78
 msgid "Remove this effect"
 msgstr "Rimuovi questo effetto"
 
@@ -1500,37 +1500,37 @@ msgstr "Nessuna Applicazione Audio Disponibile"
 msgid "Add Effect"
 msgstr "Aggiungi Effetto"
 
-#: src/contents/ui/PageStreamsEffects.qml:442
-#: src/contents/ui/PageStreamsEffects.qml:646
+#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:647
 msgid "Players"
 msgstr "Riproduttori"
 
-#: src/contents/ui/PageStreamsEffects.qml:459
-#: src/contents/ui/PageStreamsEffects.qml:646
+#: src/contents/ui/PageStreamsEffects.qml:460
+#: src/contents/ui/PageStreamsEffects.qml:647
 msgid "Recorders"
 msgstr "Registratori"
 
-#: src/contents/ui/PageStreamsEffects.qml:472
+#: src/contents/ui/PageStreamsEffects.qml:473
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/contents/ui/PageStreamsEffects.qml:495
+#: src/contents/ui/PageStreamsEffects.qml:496
 msgid "No Effects"
 msgstr "Nessun Effetto"
 
-#: src/contents/ui/PageStreamsEffects.qml:496
+#: src/contents/ui/PageStreamsEffects.qml:497
 msgid "Audio Stream Not Modified"
 msgstr "Flusso Audio Non Alterato"
 
-#: src/contents/ui/PageStreamsEffects.qml:656
+#: src/contents/ui/PageStreamsEffects.qml:657
 msgid "Effects"
 msgstr "Effetti"
 
-#: src/contents/ui/PageStreamsEffects.qml:673
+#: src/contents/ui/PageStreamsEffects.qml:674
 msgid "Input Monitoring"
 msgstr "Monitoraggio Input"
 
-#: src/contents/ui/PageStreamsEffects.qml:686
+#: src/contents/ui/PageStreamsEffects.qml:687
 msgid "Excluded Apps"
 msgstr "App Escluse"
 
