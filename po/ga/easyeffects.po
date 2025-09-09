@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :("
-"n>6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
+"(n>6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:44
@@ -414,6 +414,7 @@ msgstr "Seachtrach"
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:261 src/contents/ui/Limiter.qml:238
 #: src/contents/ui/PageStreamsEffects.qml:442
+#: src/contents/ui/PageStreamsEffects.qml:443
 msgid "Input Device"
 msgstr "Gléas Ionchurtha"
 
@@ -920,6 +921,7 @@ msgid "Enable this Effect"
 msgstr "Cumasaigh an Éifeacht seo"
 
 #: src/contents/ui/DelegatePluginsList.qml:77
+#: src/contents/ui/DelegatePluginsList.qml:78
 msgid "Remove this effect"
 msgstr "Bain an éifeacht seo"
 
@@ -1504,11 +1506,15 @@ msgstr "Cuir Maisíocht Leis"
 
 #: src/contents/ui/PageStreamsEffects.qml:442
 #: src/contents/ui/PageStreamsEffects.qml:646
+#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:647
 msgid "Players"
 msgstr "Imreoirí"
 
 #: src/contents/ui/PageStreamsEffects.qml:459
 #: src/contents/ui/PageStreamsEffects.qml:646
+#: src/contents/ui/PageStreamsEffects.qml:460
+#: src/contents/ui/PageStreamsEffects.qml:647
 msgid "Recorders"
 msgstr "Taifeadáin"
 
@@ -1517,14 +1523,17 @@ msgid "Close"
 msgstr "Dún"
 
 #: src/contents/ui/PageStreamsEffects.qml:495
+#: src/contents/ui/PageStreamsEffects.qml:496
 msgid "No Effects"
 msgstr "Gan Éifeachtaí"
 
 #: src/contents/ui/PageStreamsEffects.qml:496
+#: src/contents/ui/PageStreamsEffects.qml:497
 msgid "Audio Stream Not Modified"
 msgstr "Sruth fuaime gan athrú"
 
 #: src/contents/ui/PageStreamsEffects.qml:656
+#: src/contents/ui/PageStreamsEffects.qml:657
 msgid "Effects"
 msgstr "Éifeachtaí"
 
@@ -1533,6 +1542,7 @@ msgid "Input Monitoring"
 msgstr "Monatóireacht Ionchuir"
 
 #: src/contents/ui/PageStreamsEffects.qml:686
+#: src/contents/ui/PageStreamsEffects.qml:687
 msgid "Excluded Apps"
 msgstr "Feidhmchláir Eisiata"
 
@@ -3107,11 +3117,9 @@ msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
 #~ "Níor luchtaíodh an tsamhail roghnaithe. D'fhéadfadh sé nach dtacófaí lena "
 #~ "fhormáid. Thit sé ar ais go dtí an tsamhail chaighdeánach."
 
-#, c++-format
 #~ msgid "{} Not Available"
 #~ msgstr "{} Níl sé ar fáil"
 
-#, c++-format
 #~ msgid ""
 #~ "The software required for the {} effect, \"{}\", is not installed. "
 #~ "Consider using the Easy Effects Flatpak package or installing the "
@@ -3125,7 +3133,6 @@ msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
 #~ "mór duit Easy Effects a atosú ag baint úsáide as an rogha 'Scoir' taobh "
 #~ "istigh den roghchlár chun an éifeacht a úsáid."
 
-#, c++-format
 #~ msgid ""
 #~ "The {} effect was disabled when Easy Effects was compiled. This is "
 #~ "perhaps since the software required for this effect, \"{}\", was not "
