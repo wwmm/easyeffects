@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-09 16:05+0000\n"
-"PO-Revision-Date: 2025-09-09 03:01+0000\n"
+"POT-Creation-Date: 2025-09-06 14:51+0000\n"
+"PO-Revision-Date: 2025-09-09 16:15+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -274,12 +274,11 @@ msgstr "Nasc"
 
 #: src/contents/ui/BlocklistSheet.qml:18
 msgid "Effects Blocklist"
-msgstr ""
+msgstr "Liosta Blocála Éifeachtaí"
 
 #: src/contents/ui/BlocklistSheet.qml:29
-#, fuzzy
 msgid "Application Node Name"
-msgstr "Ainm an Fheidhmchláir"
+msgstr "Ainm Nód Feidhmchláir"
 
 #: src/contents/ui/BlocklistSheet.qml:45
 msgid "Add to Excluded Applications"
@@ -290,27 +289,25 @@ msgstr "Cuir le hIarratais Eisiata"
 #: src/contents/ui/MenuAddPlugins.qml:41
 #: src/contents/ui/PresetsCommunityPage.qml:77
 #: src/contents/ui/PresetsLocalPage.qml:142 src/contents/ui/RNNoise.qml:187
-#, fuzzy
 msgid "Empty"
-msgstr "Liosta Folamh"
+msgstr "Folamh"
 
 #: src/contents/ui/BlocklistSheet.qml:117
-#, fuzzy
 msgid "Remove Application"
-msgstr "Feidhmchlár Mute"
+msgstr "Bain an Feidhmchlár"
 
 #: src/contents/ui/BlocklistSheet.qml:118
 msgid "Are you sure you want to remove this application from the list?"
 msgstr ""
+"An bhfuil tú cinnte gur mian leat an feidhmchlár seo a bhaint den liosta?"
 
 #: src/contents/ui/BlocklistSheet.qml:148
 msgid "Delete this App"
-msgstr ""
+msgstr "Scrios an Aip seo"
 
 #: src/contents/ui/BlocklistSheet.qml:175
-#, fuzzy
 msgid "Show Excluded Applications in the Streams Section"
-msgstr "Taispeáin Feidhmchláir Eisiata"
+msgstr "Taispeáin Feidhmchláir Eisiata sa Rannán Sruthanna"
 
 #: src/contents/ui/Compressor.qml:51 src/tags_plugin_name.cpp:28
 msgid "Compressor"
@@ -362,9 +359,8 @@ msgid "Knee"
 msgstr "Glúine"
 
 #: src/contents/ui/Compressor.qml:158 src/contents/ui/Expander.qml:118
-#, fuzzy
 msgid "Threshold and Time"
-msgstr "Tairseach"
+msgstr "Tairseach agus Am"
 
 #: src/contents/ui/Compressor.qml:175 src/contents/ui/Expander.qml:135
 #: src/contents/ui/Gate.qml:72 src/contents/ui/Gate.qml:791
@@ -417,6 +413,7 @@ msgstr "Seachtrach"
 
 #: src/contents/ui/Compressor.qml:277 src/contents/ui/Expander.qml:237
 #: src/contents/ui/Gate.qml:261 src/contents/ui/Limiter.qml:238
+#: src/contents/ui/PageStreamsEffects.qml:442
 #: src/contents/ui/PageStreamsEffects.qml:443
 msgid "Input Device"
 msgstr "Gléas Ionchurtha"
@@ -445,7 +442,7 @@ msgstr "Pas Íseal"
 #: src/contents/ui/Gate.qml:288 src/contents/ui/MultibandCompressor.qml:420
 #: src/contents/ui/MultibandGate.qml:388
 msgid "SMA"
-msgstr ""
+msgstr "SMA"
 
 #: src/contents/ui/Compressor.qml:313 src/contents/ui/Compressor.qml:327
 #: src/contents/ui/Expander.qml:273 src/contents/ui/Expander.qml:287
@@ -535,7 +532,7 @@ msgstr "Taobh/Lár"
 #: src/contents/ui/MultibandCompressor.qml:451
 #: src/contents/ui/MultibandGate.qml:419
 msgid "Preamp"
-msgstr ""
+msgstr "Réamh-aimplitheoir"
 
 #: src/contents/ui/Compressor.qml:379 src/contents/ui/Expander.qml:339
 #: src/contents/ui/Gate.qml:363 src/contents/ui/MultibandCompressor.qml:467
@@ -585,9 +582,8 @@ msgstr "36 dB / Deireadh Fómhair"
 #: src/contents/ui/Gate.qml:480 src/contents/ui/MultibandCompressor.qml:606
 #: src/contents/ui/MultibandGate.qml:574 src/contents/ui/Reverb.qml:176
 #: src/contents/ui/StereoTools.qml:386
-#, fuzzy
 msgid "Dry"
-msgstr "Bain triail as"
+msgstr "Tirim"
 
 #: src/contents/ui/Compressor.qml:519 src/contents/ui/Delay.qml:178
 #: src/contents/ui/Delay.qml:336 src/contents/ui/Expander.qml:479
@@ -595,7 +591,7 @@ msgstr "Bain triail as"
 #: src/contents/ui/MultibandGate.qml:592 src/contents/ui/Reverb.qml:194
 #: src/contents/ui/StereoTools.qml:404
 msgid "Wet"
-msgstr ""
+msgstr "Fliuch"
 
 #: src/contents/ui/Compressor.qml:543 src/contents/ui/Deesser.qml:116
 #: src/contents/ui/Expander.qml:503 src/contents/ui/Gate.qml:527
@@ -661,12 +657,11 @@ msgstr "Scoilt Steirió"
 
 #: src/contents/ui/Convolver.qml:100
 msgid "First"
-msgstr ""
+msgstr "Ar dtús"
 
 #: src/contents/ui/Convolver.qml:112
-#, fuzzy
 msgid "Second"
-msgstr "An Dara hEithne"
+msgstr "Dara"
 
 #: src/contents/ui/Convolver.qml:144
 msgid "Combine"
@@ -677,9 +672,8 @@ msgid "Spectrum"
 msgstr "Speictream"
 
 #: src/contents/ui/Convolver.qml:285
-#, fuzzy
 msgid "Convolver Impulse Is Not Set"
-msgstr "Comhcheangail Freagraí Impulse"
+msgstr "Níl Impulse Convolver Socraithe"
 
 #: src/contents/ui/Convolver.qml:322
 msgid "Rate"
@@ -704,14 +698,12 @@ msgid "Autogain"
 msgstr "Uathghnóthachan"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:47
-#, fuzzy
 msgid "Impluse File Imported."
-msgstr "Níor iompórtáladh comhad impulse"
+msgstr "Comhad Impulse Iompórtáilte."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:49
-#, fuzzy
 msgid "Failed to Import the Impulse File."
-msgstr "Theip ar luchtú an chomhaid impulse"
+msgstr "Theip ar an gcomhad impulse a iompórtáil."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:60
 #: src/contents/ui/MenuAddPlugins.qml:140
@@ -721,33 +713,30 @@ msgid "Search"
 msgstr "Cuardaigh"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:93
-#, fuzzy
 msgid "Loaded Impulse: %1"
-msgstr "Luchtaigh Impulse"
+msgstr "Impuls Luchtaithe: %1"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:99
-#, fuzzy
 msgid "Remove Impulse Response"
-msgstr "Freagra Impulse"
+msgstr "Bain Freagairt Impulse"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:100
 msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
+"An bhfuil tú cinnte gur mian leat an freagairt impulse seo a bhaint den "
+"liosta?"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
-#, fuzzy
 msgid "Removed Impulse: %1"
-msgstr "Bain Impulse"
+msgstr "Impuls Bainte: %1"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:106
-#, fuzzy
 msgid "Failed to Remove the Impulse: %1"
-msgstr "Theip ar luchtú an chomhaid impulse"
+msgstr "Theip ar an Impulse a Bhaint: %1"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:119
-#, fuzzy
 msgid "Delete this Impulse"
-msgstr "Bain Impulse"
+msgstr "Scrios an Impulse seo"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:159
 msgid "Import Impulse"
@@ -762,9 +751,8 @@ msgid "Feed"
 msgstr "Fotha"
 
 #: src/contents/ui/Crossfeed.qml:98
-#, fuzzy
 msgid "Crossfeed Presets"
-msgstr "Crosaire"
+msgstr "Réamhshocruithe Trasbheathú"
 
 #: src/contents/ui/Crossfeed.qml:102
 msgid "Default"
@@ -804,7 +792,7 @@ msgstr "Tairseach uasta próiseála ERB"
 
 #: src/contents/ui/DeepFilterNet.qml:131
 msgid "frames"
-msgstr ""
+msgstr "frámaí"
 
 #: src/contents/ui/DeepFilterNet.qml:140
 msgid "Post Filter Beta"
@@ -870,13 +858,12 @@ msgid "Level"
 msgstr "Leibhéal"
 
 #: src/contents/ui/Deesser.qml:282
-#, fuzzy
 msgid "Gain Reduction"
-msgstr "Laghdú Bandaí"
+msgstr "Laghdú Gnóthachain"
 
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Delay.qml:217
 msgid "Distance"
-msgstr ""
+msgstr "Fad"
 
 #: src/contents/ui/Delay.qml:59 src/contents/ui/Delay.qml:88
 #: src/contents/ui/Delay.qml:217 src/contents/ui/Delay.qml:246
@@ -887,32 +874,28 @@ msgstr "Am"
 
 #: src/contents/ui/Delay.qml:106 src/contents/ui/Delay.qml:264
 msgid "Meters"
-msgstr ""
+msgstr "Méadair"
 
 #: src/contents/ui/Delay.qml:124 src/contents/ui/Delay.qml:282
-#, fuzzy
 msgid "Centimeters"
-msgstr "Cent"
+msgstr "Ceintiméadair"
 
 #: src/contents/ui/Delay.qml:143 src/contents/ui/Delay.qml:301
 msgid "Temperature"
-msgstr ""
+msgstr "Teocht"
 
 #: src/contents/ui/Delay.qml:380
-#, fuzzy
 msgid "Invert Left"
-msgstr "Céim Inbhéartaithe"
+msgstr "Inbhéartaigh ar Chlé"
 
 #: src/contents/ui/Delay.qml:390
-#, fuzzy
 msgid "Invert Right"
-msgstr "Céim Inbhéartaithe"
+msgstr "Inbhéartaigh ar Dheis"
 
 #: src/contents/ui/DelegateClientsList.qml:34
 #: src/contents/ui/DelegateModulesList.qml:34
-#, fuzzy
 msgid "Id"
-msgstr "Díomhaoin"
+msgstr "Aitheantas"
 
 #: src/contents/ui/DelegateClientsList.qml:48
 #: src/contents/ui/DelegateModulesList.qml:48
@@ -922,7 +905,7 @@ msgstr "Ainm"
 
 #: src/contents/ui/DelegateClientsList.qml:62
 msgid "Api"
-msgstr ""
+msgstr "Api"
 
 #: src/contents/ui/DelegateClientsList.qml:76
 msgid "Access"
@@ -933,17 +916,16 @@ msgstr "Rochtain"
 msgid "Description"
 msgstr "Cur síos"
 
-#: src/contents/ui/DelegatePluginsList.qml:64
-#, fuzzy
+#: src/contents/ui/DelegatePluginsList.qml:63
 msgid "Enable this Effect"
-msgstr "Cumasaigh/díchumasaigh an éifeacht seo"
+msgstr "Cumasaigh an Éifeacht seo"
 
+#: src/contents/ui/DelegatePluginsList.qml:77
 #: src/contents/ui/DelegatePluginsList.qml:78
 msgid "Remove this effect"
 msgstr "Bain an éifeacht seo"
 
 #: src/contents/ui/DelegateStreamsList.qml:79
-#, fuzzy
 msgid "channels"
 msgstr "cainéil"
 
@@ -965,9 +947,8 @@ msgid "Residual Echo Suppression"
 msgstr "Cosc Macalla Iarmharach"
 
 #: src/contents/ui/EchoCanceller.qml:78
-#, fuzzy
 msgid "Near End Suppression"
-msgstr "In aice le deireadh macalla faoi chois"
+msgstr "Cosc In aice leis an Deireadh"
 
 #: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/StereoTools.qml:42
 #: src/contents/ui/main.qml:348
@@ -979,43 +960,36 @@ msgid "APO Presets"
 msgstr "Réamhshocruithe APO"
 
 #: src/contents/ui/Equalizer.qml:66
-#, fuzzy
 msgid "APO Preset File Imported."
-msgstr "Níor iompórtáladh comhad impulse"
+msgstr "Comhad Réamhshocraithe APO Iompórtáilte."
 
 #: src/contents/ui/Equalizer.qml:68
-#, fuzzy
 msgid "Failed to Import the APO Preset File."
-msgstr "Iompórtáil Comhad Réamhshocraithe APO"
+msgstr "Theip ar an gcomhad réamhshocraithe APO a iompórtáil."
 
 #: src/contents/ui/Equalizer.qml:77
 msgid "GraphicEQ Presets"
 msgstr "Réamhshocruithe GrafachEQ"
 
 #: src/contents/ui/Equalizer.qml:80
-#, fuzzy
 msgid "GraphicEQ Preset File Imported."
-msgstr "Iompórtáil Comhad réamhshocraithe GraphicEQ"
+msgstr "Comhad Réamhshocraithe GraphicEQ Iompórtáilte."
 
 #: src/contents/ui/Equalizer.qml:82
-#, fuzzy
 msgid "Failed to Import the GraphicEQ Preset File."
-msgstr "Iompórtáil Comhad réamhshocraithe GraphicEQ"
+msgstr "Theip ar an gcomhad réamhshocraithe GraphicEQ a iompórtáil."
 
 #: src/contents/ui/Equalizer.qml:91
-#, fuzzy
 msgid "APO Preset"
-msgstr "Réamhshocruithe APO"
+msgstr "Réamhshocrú APO"
 
 #: src/contents/ui/Equalizer.qml:94
-#, fuzzy
 msgid "APO Preset File Exported."
-msgstr "Iompórtáil Comhad Réamhshocraithe APO"
+msgstr "Comhad Réamhshocraithe APO Easpórtáilte."
 
 #: src/contents/ui/Equalizer.qml:96
-#, fuzzy
 msgid "Failed to Export the APO Preset File."
-msgstr "Iompórtáil Comhad Réamhshocraithe APO"
+msgstr "Theip ar easpórtáil an chomhaid réamhshocraithe APO."
 
 #: src/contents/ui/Equalizer.qml:125
 msgid "Bands"
@@ -1051,51 +1025,43 @@ msgid "Sort Bands"
 msgstr "Bandaí Sórtála"
 
 #: src/contents/ui/Equalizer.qml:352
-#, fuzzy
 msgid "Import APO"
-msgstr "Iompórtáil"
+msgstr "Iompórtáil APO"
 
 #: src/contents/ui/Equalizer.qml:359
-#, fuzzy
 msgid "Import APO (GraphicEQ)"
-msgstr "Iompórtáil Comhad réamhshocraithe GraphicEQ"
+msgstr "Iompórtáil APO (GraphicEQ)"
 
 #: src/contents/ui/Equalizer.qml:366
-#, fuzzy
 msgid "Export APO"
-msgstr "Easpórtáil Réamhshocraithe"
+msgstr "Easpórtáil APO"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:651
 #: src/contents/ui/MultibandCompressor.qml:921
 #: src/contents/ui/MultibandGate.qml:619 src/contents/ui/MultibandGate.qml:889
-#, fuzzy
 msgid "Band"
-msgstr "Bannaí Ceoil"
+msgstr "Banna"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:53
 msgid "Bell"
 msgstr "Cloigín"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
 msgid "Hi-pass"
-msgstr "Seachbhóthar"
+msgstr "Ard-phas"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
 msgid "Hi-shelf"
-msgstr "An tSeilf Ard"
+msgstr "Ard-sheilf"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
 msgid "Lo-pass"
-msgstr "Seachbhóthar"
+msgstr "Íseal-phas"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
 msgid "Lo-shelf"
-msgstr "Scairbh Íseal"
+msgstr "Íseal-seilf"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:53
 msgid "Notch"
@@ -1106,24 +1072,20 @@ msgid "Resonance"
 msgstr "Athshondas"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
 msgid "Allpass"
-msgstr "Seachbhóthar"
+msgstr "Allpass"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
 msgid "Bandpass"
-msgstr "Seachbhóthar an Bhanna"
+msgstr "Bandpass"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:53
-#, fuzzy
 msgid "Ladder-pass"
-msgstr "Pas Dréimire"
+msgstr "Pas-dréimire"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
 msgid "Ladder-rej"
-msgstr "Dréimire-Diúltú"
+msgstr "Dréimire-rej"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:88
 msgid "Slope"
@@ -1157,13 +1119,12 @@ msgid "Solo"
 msgstr "Níl ann ach"
 
 #: src/contents/ui/Exciter.qml:140
-#, fuzzy
 msgid "Ceil Active"
-msgstr "Gaol"
+msgstr "Uasteorainn Ghníomhach"
 
 #: src/contents/ui/Exciter.qml:151
 msgid "Ceil"
-msgstr "Ceil"
+msgstr "Síleáil"
 
 #: src/contents/ui/Expander.qml:51 src/tags_plugin_name.cpp:38
 msgid "Expander"
@@ -1176,44 +1137,36 @@ msgid "Internal"
 msgstr "Inmheánach"
 
 #: src/contents/ui/Filter.qml:53
-#, fuzzy
 msgid "Low-pass"
-msgstr "Pas Íseal"
+msgstr "Íseal-phas"
 
 #: src/contents/ui/Filter.qml:53
-#, fuzzy
 msgid "High-pass"
-msgstr "Ard-Phas"
+msgstr "Ard-phas"
 
 #: src/contents/ui/Filter.qml:53
-#, fuzzy
 msgid "Low-shelf"
-msgstr "Scairbh Íseal"
+msgstr "Seilf íseal"
 
 #: src/contents/ui/Filter.qml:53
-#, fuzzy
 msgid "High-shelf"
-msgstr "An tSeilf Ard"
+msgstr "Ard-seilf"
 
 #: src/contents/ui/Filter.qml:53
-#, fuzzy
 msgid "Band-pass"
-msgstr "Banda-Pas"
+msgstr "Banda-pas"
 
 #: src/contents/ui/Filter.qml:53
-#, fuzzy
 msgid "Ladder-rejection"
-msgstr "Dréimire-Diúltú"
+msgstr "Diúltú-dréimire"
 
 #: src/contents/ui/Filter.qml:53
-#, fuzzy
 msgid "All-pass"
-msgstr "Uile-Phas"
+msgstr "Uile-phas"
 
 #: src/contents/ui/Filter.qml:62
-#, fuzzy
 msgid "Filter Mode"
-msgstr "Mód Steirió"
+msgstr "Mód Scagaire"
 
 #: src/contents/ui/Filter.qml:75
 msgid "Equalizer Mode"
@@ -1230,7 +1183,7 @@ msgstr "Crios"
 
 #: src/contents/ui/Gate.qml:161 src/contents/ui/MultibandGate.qml:313
 msgid "Hysteresis"
-msgstr "Hysteresis"
+msgstr "Histéiréis"
 
 #: src/contents/ui/Gate.qml:859 src/contents/ui/Gate.qml:872
 #: src/contents/ui/MultibandCompressor.qml:192
@@ -1239,9 +1192,8 @@ msgid "Start"
 msgstr "Tosaigh"
 
 #: src/contents/ui/LevelMeter.qml:48
-#, fuzzy
 msgid "Input Level"
-msgstr "Gléas Ionchurtha"
+msgstr "Leibhéal Ionchuir"
 
 #: src/contents/ui/LevelMeter.qml:93
 msgid "True Peak"
@@ -1307,130 +1259,119 @@ msgstr "Ceann ar bith"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x2/16 bit"
-msgstr ""
+msgstr "Leath x2/16 giotán"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "Half x2/24 bit"
-msgstr "Leath x2(2L)"
+msgstr "Leath x2/24 giotán"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x3/16 bit"
-msgstr ""
+msgstr "Leath x3/16 giotán"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "Half x3/24 bit"
-msgstr "Leath x3(2L)"
+msgstr "Leath x3/24 giotán"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x4/16 bit"
-msgstr ""
+msgstr "Leath x4/16 giotán"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "Half x4/24 bit"
-msgstr "Leath x4(2L)"
+msgstr "Leath x4/24 giotán"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x6/16 bit"
-msgstr ""
+msgstr "Leath x6/16 giotán"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "Half x6/24 bit"
-msgstr "Leath x6(2L)"
+msgstr "Leath x6/24 giotán"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x8/16 bit"
-msgstr ""
+msgstr "Leath x8/16 giotán"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "Half x8/24 bit"
-msgstr "Leath x8(2L)"
+msgstr "Leath x8/24 giotán"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x2/16 bit"
-msgstr ""
+msgstr "Iomlán x2/16 giotán"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "Full x2/24 bit"
-msgstr "Iomlán x2 (2L)"
+msgstr "Iomlán x2/24 giotán"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x3/16 bit"
-msgstr ""
+msgstr "Iomlán x3/16 giotán"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "Full x3/24 bit"
-msgstr "Iomlán x3 (2L)"
+msgstr "Iomlán x3/24 giotán"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x4/16 bit"
-msgstr ""
+msgstr "Iomlán x4/16 giotán"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "Full x4/24 bit"
-msgstr "Iomlán x4 (2L)"
+msgstr "Iomlán x4/24 giotán"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x6/16 bit"
-msgstr ""
+msgstr "Iomlán x6/16 giotán"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "Full x6/24 bit"
-msgstr "Iomlán x6 (2L)"
+msgstr "Iomlán x6/24 giotán"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x8/16 bit"
-msgstr ""
+msgstr "Iomlán x8/16 giotán"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "Full x8/24 bit"
-msgstr "Iomlán x8 (2L)"
+msgstr "Iomlán x8/24 giotán"
 
 #: src/contents/ui/Limiter.qml:88
-#, fuzzy
 msgid "Dithering"
-msgstr "DitherName"
+msgstr "Díthráil"
 
 #: src/contents/ui/Limiter.qml:92
 msgid "7 bit"
-msgstr ""
+msgstr "7 giotán"
 
 #: src/contents/ui/Limiter.qml:92
 msgid "8 bit"
-msgstr ""
+msgstr "8 giotán"
 
 #: src/contents/ui/Limiter.qml:92
 msgid "11 bit"
-msgstr ""
+msgstr "11 giotán"
 
 #: src/contents/ui/Limiter.qml:92
 msgid "12 bit"
-msgstr ""
+msgstr "12 giotán"
 
 #: src/contents/ui/Limiter.qml:92
 msgid "15 bit"
-msgstr ""
+msgstr "15 giotán"
 
 #: src/contents/ui/Limiter.qml:92
 msgid "16 bit"
-msgstr ""
+msgstr "16 giotán"
 
 #: src/contents/ui/Limiter.qml:92
 msgid "23 bit"
-msgstr ""
+msgstr "23 giotán"
 
 #: src/contents/ui/Limiter.qml:92
 msgid "24 bit"
-msgstr ""
+msgstr "24 giotán"
 
 #: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:42
 msgid "Limiter"
@@ -1441,42 +1382,36 @@ msgid "Stereo Link"
 msgstr "Nasc Steirió"
 
 #: src/contents/ui/Limiter.qml:302 src/contents/ui/Limiter.qml:537
-#, fuzzy
 msgid "Automatic Level"
-msgstr "Leibhéalú Uathoibríoch"
+msgstr "Leibhéal Uathoibríoch"
 
 #: src/contents/ui/Limiter.qml:527
-#, fuzzy
 msgid "Gain Boost"
-msgstr "Treisiú Sidechain"
+msgstr "Gnóthachan Borradh"
 
 #: src/contents/ui/Loudness.qml:54
-#, fuzzy
 msgid "Contour"
-msgstr "Rialuithe"
+msgstr "Imlíne"
 
 #: src/contents/ui/Loudness.qml:67
 msgid "FFT Size"
 msgstr "Méid FFT"
 
 #: src/contents/ui/Loudness.qml:80
-#, fuzzy
 msgid "Volume"
-msgstr "Airde Aschurtha"
+msgstr "Toirt"
 
 #: src/contents/ui/Loudness.qml:97
-#, fuzzy
 msgid "Clipping Range"
-msgstr "Bearradh"
+msgstr "Raon Gearrtha"
 
 #: src/contents/ui/Loudness.qml:154
 msgid "Clipping"
 msgstr "Bearradh"
 
 #: src/contents/ui/MenuAddPlugins.qml:128
-#, fuzzy
 msgid "Added Effect"
-msgstr "Cuir Maisíocht Leis"
+msgstr "Éifeacht Bhreise"
 
 #: src/contents/ui/MultibandCompressor.qml:111
 msgid "Compression Mode"
@@ -1484,14 +1419,13 @@ msgstr "Mód Comhbhrúite"
 
 #: src/contents/ui/MultibandCompressor.qml:211
 #: src/contents/ui/MultibandGate.qml:143
-#, fuzzy
 msgid "End"
-msgstr "2ú"
+msgstr "Deireadh"
 
 #: src/contents/ui/MultibandCompressor.qml:420
 #: src/contents/ui/MultibandGate.qml:388
 msgid "LPF"
-msgstr ""
+msgstr "LPF"
 
 #: src/contents/ui/MultibandCompressor.qml:499
 #: src/contents/ui/MultibandGate.qml:467
@@ -1550,14 +1484,12 @@ msgstr "Mt Donn"
 
 #: src/contents/ui/MultibandCompressor.qml:583
 #: src/contents/ui/MultibandGate.qml:551
-#, fuzzy
 msgid "Sidechain Input Device"
-msgstr "Gléas Ionchurtha"
+msgstr "Gléas Ionchuir Taobhshlabhra"
 
 #: src/contents/ui/MultibandGate.qml:169
-#, fuzzy
 msgid "Reaction"
-msgstr "Laghdú"
+msgstr "Imoibriú"
 
 #: src/contents/ui/PageStreamsEffects.qml:68
 #: src/contents/ui/PresetsAutoloadingPage.qml:107
@@ -1572,37 +1504,44 @@ msgstr "Níl feidhmchlár fuaime ar fáil"
 msgid "Add Effect"
 msgstr "Cuir Maisíocht Leis"
 
+#: src/contents/ui/PageStreamsEffects.qml:442
+#: src/contents/ui/PageStreamsEffects.qml:646
 #: src/contents/ui/PageStreamsEffects.qml:443
 #: src/contents/ui/PageStreamsEffects.qml:647
 msgid "Players"
 msgstr "Imreoirí"
 
+#: src/contents/ui/PageStreamsEffects.qml:459
+#: src/contents/ui/PageStreamsEffects.qml:646
 #: src/contents/ui/PageStreamsEffects.qml:460
 #: src/contents/ui/PageStreamsEffects.qml:647
 msgid "Recorders"
 msgstr "Taifeadáin"
 
-#: src/contents/ui/PageStreamsEffects.qml:473
+#: src/contents/ui/PageStreamsEffects.qml:472
 msgid "Close"
-msgstr ""
+msgstr "Dún"
 
+#: src/contents/ui/PageStreamsEffects.qml:495
 #: src/contents/ui/PageStreamsEffects.qml:496
 msgid "No Effects"
 msgstr "Gan Éifeachtaí"
 
+#: src/contents/ui/PageStreamsEffects.qml:496
 #: src/contents/ui/PageStreamsEffects.qml:497
 msgid "Audio Stream Not Modified"
 msgstr "Sruth fuaime gan athrú"
 
+#: src/contents/ui/PageStreamsEffects.qml:656
 #: src/contents/ui/PageStreamsEffects.qml:657
 msgid "Effects"
 msgstr "Éifeachtaí"
 
-#: src/contents/ui/PageStreamsEffects.qml:674
-#, fuzzy
+#: src/contents/ui/PageStreamsEffects.qml:673
 msgid "Input Monitoring"
-msgstr "Cumasaigh Monatóireacht Ionchuir"
+msgstr "Monatóireacht Ionchuir"
 
+#: src/contents/ui/PageStreamsEffects.qml:686
 #: src/contents/ui/PageStreamsEffects.qml:687
 msgid "Excluded Apps"
 msgstr "Feidhmchláir Eisiata"
@@ -1628,14 +1567,12 @@ msgid "Device Management"
 msgstr "Bainistíocht Gléasanna"
 
 #: src/contents/ui/PipeWirePage.qml:99
-#, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
-"Tá sé molta NACH leagtar Éifeachtaí Éasca Doirteal / Foinse mar Gléas "
-"Réamhshocraithe i bhfeidhmchláir sheachtracha (m.sh. Socruithe Gnome agus "
-"Socruithe Córas Plasma)."
+"Moltar GAN Easy Effects Sink/Source a shocrú mar Ghléas Réamhshocraithe in "
+"iarratais sheachtracha (e.g. Socruithe Gnome agus Socruithe Córais Plasma)"
 
 #: src/contents/ui/PipeWirePage.qml:106
 msgid "Use Default Input"
@@ -1658,14 +1595,12 @@ msgid "Library Version"
 msgstr "Leagan Leabharlainne"
 
 #: src/contents/ui/PipeWirePage.qml:192
-#, fuzzy
 msgid "Runtime Version"
-msgstr "Croílár Leagan"
+msgstr "Leagan Ama Rith"
 
 #: src/contents/ui/PipeWirePage.qml:197
-#, fuzzy
 msgid "Default Sampling Rate"
-msgstr "Ráta Samplála"
+msgstr "Ráta Samplála Réamhshocraithe"
 
 #: src/contents/ui/PipeWirePage.qml:202
 msgid "Minimum Quantum"
@@ -1680,14 +1615,12 @@ msgid "Default Quantum"
 msgstr "Candam Réamhshocraithe"
 
 #: src/contents/ui/PipeWirePage.qml:234
-#, fuzzy
 msgid "No Modules"
-msgstr "Modúil"
+msgstr "Gan Modúil"
 
 #: src/contents/ui/PipeWirePage.qml:257
-#, fuzzy
 msgid "No Clients"
-msgstr "Cliaint"
+msgstr "Gan Cliant"
 
 #: src/contents/ui/PipeWirePage.qml:270
 #: src/contents/ui/PreferencesSheet.qml:197
@@ -1767,30 +1700,29 @@ msgstr "Frithailiasáil"
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:523
 #: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:383
-#, fuzzy
 msgid "Preferences"
-msgstr "_Roghanna"
+msgstr "Roghanna"
 
 #: src/contents/ui/PreferencesSheet.qml:34
-#, fuzzy
 msgid "Enable Service Mode"
-msgstr "Mód Cothromóra"
+msgstr "Cumasaigh Mód Seirbhíse"
 
 #: src/contents/ui/PreferencesSheet.qml:35
 msgid "Easy Effects is Active in Background When the Window is Closed"
 msgstr ""
+"Bíonn Easy Effects Gníomhach sa Chúlra Nuair a bhíonn an Fhuinneog Dúnta"
 
 #: src/contents/ui/PreferencesSheet.qml:47
 msgid "Autostart on Login"
-msgstr ""
+msgstr "Tosaigh go huathoibríoch ar logáil isteach"
 
 #: src/contents/ui/PreferencesSheet.qml:48
 msgid "Easy Effects is Launched at User Session Startup"
-msgstr ""
+msgstr "Seoltar Éifeachtaí Éasca ag Tosaithe Seisiúin Úsáideora"
 
 #: src/contents/ui/PreferencesSheet.qml:61
 msgid "Show the Tray Icon"
-msgstr ""
+msgstr "Taispeáin Deilbhín an Tráidire"
 
 #: src/contents/ui/PreferencesSheet.qml:81
 msgid "Process All Output Streams"
@@ -1809,43 +1741,44 @@ msgid "Use Cubic Volume"
 msgstr "Úsáid Imleabhar Ciúbach"
 
 #: src/contents/ui/PreferencesSheet.qml:125
-#, fuzzy
 msgid "Enable/Disable Input Monitoring"
-msgstr "Cumasaigh / díchumasaigh monatóireacht ionchuir"
+msgstr "Cumasaigh/Díchumasaigh Monatóireacht Ionchuir"
 
 #: src/contents/ui/PreferencesSheet.qml:136
 msgid "Mic Monitor Plays to Output Effects Pipeline"
-msgstr ""
+msgstr "Seinneann Monatóir Micreafóin chuig Píblíne Éifeachtaí Aschuir"
 
 #: src/contents/ui/PreferencesSheet.qml:147
-#, fuzzy
 msgid "Enable the Inactivity Timeout"
-msgstr "Teorainn Ama Neamhghníomhaíochta"
+msgstr "Cumasaigh an t-Am Scoir Neamhghníomhaíochta"
 
 #: src/contents/ui/PreferencesSheet.qml:148
 msgid ""
 "When all Streams are Inactive, Easy Effects Pipeline Remains Loaded for an "
 "Extra Amount of Time"
 msgstr ""
+"Nuair a bhíonn na sruthanna uile neamhghníomhach, fanann an Easy Effects "
+"Pipeline luchtaithe ar feadh tamaill bhreise"
 
 #: src/contents/ui/PreferencesSheet.qml:160
 msgid "Inactivity Timeout"
 msgstr "Teorainn Ama Neamhghníomhaíochta"
 
 #: src/contents/ui/PreferencesSheet.qml:174
-#, fuzzy
 msgid "Level Meters Label"
-msgstr "Méadar Leibhéal"
+msgstr "Lipéad Méadair Leibhéil"
 
 #: src/contents/ui/PreferencesSheet.qml:175
 msgid ""
 "The Time it Takes for the Level Meter Labels to be Updated When the Current "
 "Level is Below the Last Highest One"
 msgstr ""
+"An t-am a thógann sé chun lipéid an Mhéadair Leibhéil a nuashonrú nuair a "
+"bhíonn an Leibhéal Reatha faoi bhun an Leibhéil is Airde Deiridh"
 
 #: src/contents/ui/PreferencesSheet.qml:215
 msgid "Audio Delay Compensation"
-msgstr ""
+msgstr "Cúiteamh ar Mhoill Fuaime"
 
 #: src/contents/ui/PreferencesSheet.qml:229
 msgid "Style"
@@ -1853,59 +1786,55 @@ msgstr "Stíl"
 
 #: src/contents/ui/PreferencesSheet.qml:236
 msgid "Color Scheme"
-msgstr ""
+msgstr "Scéim Dathanna"
 
 #: src/contents/ui/PreferencesSheet.qml:240
-#, fuzzy
 msgid "Automatic"
-msgstr "Uathghnóthachan"
+msgstr "Uathoibríoch"
 
 #: src/contents/ui/PreferencesSheet.qml:240
-#, fuzzy
 msgid "Light"
-msgstr "Ceart"
+msgstr "Solas"
 
 #: src/contents/ui/PreferencesSheet.qml:240
 msgid "Dark"
-msgstr ""
+msgstr "Dorcha"
 
 #: src/contents/ui/PreferencesSheet.qml:250
-#, fuzzy
 msgid "Color Theme"
-msgstr "Dath"
+msgstr "Téama Dathanna"
 
 #: src/contents/ui/PreferencesSheet.qml:254
 msgid "Green"
-msgstr ""
+msgstr "Glas"
 
 #: src/contents/ui/PreferencesSheet.qml:254
 msgid "Green Neon"
-msgstr ""
+msgstr "Neon Glas"
 
 #: src/contents/ui/PreferencesSheet.qml:254
 msgid "Mix"
 msgstr "Measc"
 
 #: src/contents/ui/PreferencesSheet.qml:254
-#, fuzzy
 msgid "Orange"
-msgstr "Raon"
+msgstr "Oráiste"
 
 #: src/contents/ui/PreferencesSheet.qml:254
 msgid "Yellow"
-msgstr ""
+msgstr "Buí"
 
 #: src/contents/ui/PreferencesSheet.qml:254
 msgid "Blue"
-msgstr ""
+msgstr "Gorm"
 
 #: src/contents/ui/PreferencesSheet.qml:254
 msgid "Purple"
-msgstr ""
+msgstr "Corcra"
 
 #: src/contents/ui/PreferencesSheet.qml:254
 msgid "Grey"
-msgstr ""
+msgstr "Liath"
 
 #: src/contents/ui/PreferencesSheet.qml:264
 msgid "Shape"
@@ -1925,7 +1854,7 @@ msgstr "Poncanna"
 
 #: src/contents/ui/PreferencesSheet.qml:268
 msgid "Area"
-msgstr ""
+msgstr "Limistéar"
 
 #: src/contents/ui/PreferencesSheet.qml:278
 msgid "Dynamic Scale"
@@ -1933,7 +1862,7 @@ msgstr "Scála Dinimiciúil"
 
 #: src/contents/ui/PreferencesSheet.qml:289
 msgid "Logarithmic Frequency Axis"
-msgstr ""
+msgstr "Ais Minicíochta Logartamach"
 
 #: src/contents/ui/PreferencesSheet.qml:300
 msgid "Points"
@@ -1957,29 +1886,26 @@ msgstr "Uasmhéid"
 
 #: src/contents/ui/PreferencesSheet.qml:371
 msgid "Database Autosave Interval"
-msgstr ""
+msgstr "Eatramh Uathshábháilte Bunachar Sonraí"
 
 #: src/contents/ui/PreferencesSheet.qml:394
 #: src/contents/ui/ShortcutsSheet.qml:168
-#, fuzzy
 msgid "Global Shortcuts"
-msgstr "_Aicearraí"
+msgstr "Aicearraí Domhanda"
 
 #: src/contents/ui/PreferencesSheet.qml:395
 msgid "Enables Support for XDG Global Shortcuts"
-msgstr ""
+msgstr "Cumasaíonn sé tacaíocht do Aicearraí Domhanda XDG"
 
 #: src/contents/ui/PreferencesSheet.qml:407
-#, fuzzy
 msgid "Native Window of Effects"
-msgstr "Taispeáin Fuinneog Dhúchasach"
+msgstr "Fuinneog Dúchasach Éifeachtaí"
 
 #: src/contents/ui/PreferencesSheet.qml:408
-#, fuzzy
 msgid "Allows the Native User Interface of Effects to be Shown/Hidden"
 msgstr ""
-"Ceadaíonn sé seo fuinneog an bhreiseáin dhúchais a thaispeáint / a chur i "
-"bhfolach"
+"Ceadaíonn sé seo Comhéadan Úsáideora Dúchasach na nÉifeachtaí a Thaispeáint/"
+"a Fholach"
 
 #: src/contents/ui/PreferencesSheet.qml:420
 msgid "Update Frequency"
@@ -1991,20 +1917,19 @@ msgstr "A bhaineann le Breiseáin LV2"
 
 #: src/contents/ui/PreferencesSheet.qml:450
 msgid "Background Service"
-msgstr ""
+msgstr "Seirbhís Cúlra"
 
 #: src/contents/ui/PreferencesSheet.qml:463
 msgid "Audio"
 msgstr "Fuaim"
 
 #: src/contents/ui/PreferencesSheet.qml:476
-#, fuzzy
 msgid "Spectrum Analyzer"
-msgstr "Speictream"
+msgstr "Anailíseoir Speictrim"
 
 #: src/contents/ui/PreferencesSheet.qml:489
 msgid "Database"
-msgstr ""
+msgstr "Bunachar Sonraí"
 
 #: src/contents/ui/PreferencesSheet.qml:502
 msgid "Experimental Features"
@@ -2017,115 +1942,103 @@ msgstr "Gléas"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:45
 #: src/contents/ui/PresetsAutoloadingPage.qml:177
-#, fuzzy
 msgid "Hardware Profile"
-msgstr "Próifíl"
+msgstr "Próifíl Crua-earraí"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:59
 #: src/contents/ui/PresetsAutoloadingPage.qml:190
-#, fuzzy
 msgid "Local Preset"
-msgstr "Liosta Réamhshocruithe Logánta"
+msgstr "Réamhshocrú Áitiúil"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:69
-#, fuzzy
 msgid "Create"
-msgstr "Cruthú"
+msgstr "Cruthaigh"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:229
 msgid "Fallback Preset"
-msgstr ""
+msgstr "Réamhshocrú Cúltaca"
 
 #: src/contents/ui/PresetsCommunityPage.qml:91
 #: src/contents/ui/PresetsLocalPage.qml:154
 msgid "The Preset %1 Failed to Load"
-msgstr ""
+msgstr "Theip ar an réamhshocrú %1 a luchtú"
 
 #: src/contents/ui/PresetsCommunityPage.qml:109
 msgid "Copy to the Local List"
-msgstr ""
+msgstr "Cóipeáil chuig an Liosta Áitiúil"
 
 #: src/contents/ui/PresetsCommunityPage.qml:114
-#, fuzzy
 msgid "Imported the Community Preset"
-msgstr "Cuardaigh Réamhshocrú Pobail"
+msgstr "Iompórtáladh an Réamhshocrú Pobail"
 
 #: src/contents/ui/PresetsCommunityPage.qml:116
-#, fuzzy
 msgid "Failed to Import the Community Preset"
-msgstr "Cuardaigh Réamhshocrú Pobail"
+msgstr "Theip ar réamhshocrú an phobail a iompórtáil"
 
 #: src/contents/ui/PresetsCommunityPage.qml:135
 msgid "Refresh"
 msgstr "Athnuaigh"
 
 #: src/contents/ui/PresetsLocalPage.qml:39
-#, fuzzy
 msgid "Preset File Imported."
-msgstr "Níor iompórtáladh comhad impulse"
+msgstr "Comhad Réamhshocraithe Iompórtáilte."
 
 #: src/contents/ui/PresetsLocalPage.qml:41
-#, fuzzy
 msgid "Failed to Import the Preset."
-msgstr "Iompórtáil Comhad Réamhshocraithe APO"
+msgstr "Theip ar an réamhshocrú a iompórtáil."
 
 #: src/contents/ui/PresetsLocalPage.qml:49
 msgid "New Preset Name"
 msgstr "Ainm réamhshocraithe nua"
 
 #: src/contents/ui/PresetsLocalPage.qml:65
-#, fuzzy
 msgid "Import Preset File"
-msgstr "Iompórtáil Comhad Réamhshocraithe APO"
+msgstr "Iompórtáil Comhad Réamhshocraithe"
 
 #: src/contents/ui/PresetsLocalPage.qml:74
-#, fuzzy
 msgid "Create Preset"
-msgstr "Cruthaigh réamhshocrú nua"
+msgstr "Cruthaigh Réamhshocrú"
 
 #: src/contents/ui/PresetsLocalPage.qml:83
-#, fuzzy
 msgid "New Preset Created"
-msgstr "Ainm réamhshocraithe nua"
+msgstr "Réamhshocrú Nua Cruthaithe"
 
 #: src/contents/ui/PresetsLocalPage.qml:86
 msgid "Failed to Create Preset"
-msgstr ""
+msgstr "Theip ar Chruthú Réamhshocraithe"
 
 #: src/contents/ui/PresetsLocalPage.qml:160
-#, fuzzy
 msgid "Remove Preset"
-msgstr "Cruthaigh réamhshocrú nua"
+msgstr "Bain Réamhshocrú"
 
 #: src/contents/ui/PresetsLocalPage.qml:161
 msgid "Are you sure you want to remove this preset from the list?"
 msgstr ""
+"An bhfuil tú cinnte gur mian leat an réamhshocrú seo a bhaint den liosta?"
 
 #: src/contents/ui/PresetsLocalPage.qml:165
 msgid "The Preset %1 Has Been Removed"
-msgstr ""
+msgstr "Baineadh an réamhshocrú %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:167
 msgid "The Preset %1 Could Not Be Removed"
-msgstr ""
+msgstr "Níorbh fhéidir an réamhshocrú %1 a bhaint"
 
 #: src/contents/ui/PresetsLocalPage.qml:180
-#, fuzzy
 msgid "Save Settings to this Preset"
-msgstr "Sábháil na socruithe reatha sa chomhad réamhshocraithe seo"
+msgstr "Sábháil Socruithe chuig an Réamhshocrú seo"
 
 #: src/contents/ui/PresetsLocalPage.qml:185
 msgid "Settings Saved to: %1"
-msgstr ""
+msgstr "Socruithe Sábháilte chuig: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:187
 msgid "Failed to Save Settings to: %1"
-msgstr ""
+msgstr "Theip ar Shocruithe a Shábháil chuig: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:191
-#, fuzzy
 msgid "Delete this Preset"
-msgstr "Bain an comhad réamhshocraithe seo"
+msgstr "Scrios an Réamhshocrú seo"
 
 #: src/contents/ui/PresetsSheet.qml:62 src/contents/ui/PresetsSheet.qml:105
 msgid "Local"
@@ -2136,23 +2049,20 @@ msgid "Community"
 msgstr "Pobal"
 
 #: src/contents/ui/PresetsSheet.qml:84
-#, fuzzy
 msgid "Autoloading"
-msgstr "Uathghnóthachan"
+msgstr "Uathlódáil"
 
 #: src/contents/ui/PresetsSheet.qml:103
 msgid "No Preset Loaded"
 msgstr "Níor luchtaíodh aon réamhshocrú"
 
 #: src/contents/ui/RNNoise.qml:55
-#, fuzzy
 msgid "Model File Imported."
-msgstr "Níor iompórtáladh comhad impulse"
+msgstr "Comhad Múnla Iompórtáilte."
 
 #: src/contents/ui/RNNoise.qml:57
-#, fuzzy
 msgid "Failed to Import the Model File."
-msgstr "Iompórtáil Samhailchomhad"
+msgstr "Theip ar an gcomhad múnla a iompórtáil."
 
 #: src/contents/ui/RNNoise.qml:72 src/contents/ui/Speex.qml:108
 msgid "Voice Detection"
@@ -2163,33 +2073,28 @@ msgid "Wet Level"
 msgstr "Leibhéal Fliuch"
 
 #: src/contents/ui/RNNoise.qml:143
-#, fuzzy
 msgid "Use the Standard Model"
-msgstr "Múnla Caighdeánach"
+msgstr "Úsáid an tSamhail Chaighdeánach"
 
 #: src/contents/ui/RNNoise.qml:154
-#, fuzzy
 msgid "User Models"
-msgstr "Múnlaí RNNoise"
+msgstr "Samhlacha Úsáideora"
 
 #: src/contents/ui/RNNoise.qml:203
-#, fuzzy
 msgid "Loaded Model: %1"
-msgstr "Múnla Caighdeánach"
+msgstr "Múnla Luchtaithe: %1"
 
 #: src/contents/ui/RNNoise.qml:215
-#, fuzzy
 msgid "Delete this Model"
-msgstr "Bain an comhad samhail seo"
+msgstr "Scrios an tSamhail seo"
 
 #: src/contents/ui/RNNoise.qml:220
-#, fuzzy
 msgid "Removed Model: %1"
-msgstr "Bain an comhad samhail seo"
+msgstr "Múnla Bainte: %1"
 
 #: src/contents/ui/RNNoise.qml:222
 msgid "Failed to Remove the Model: %1"
-msgstr ""
+msgstr "Theip ar an tSamhail a Bhaint: %1"
 
 #: src/contents/ui/RNNoise.qml:285
 msgid "Import Model"
@@ -2212,9 +2117,8 @@ msgid "Large"
 msgstr "Mór"
 
 #: src/contents/ui/Reverb.qml:55
-#, fuzzy
 msgid "Tunnel-like"
-msgstr "Tollán"
+msgstr "Cosúil le tollán"
 
 #: src/contents/ui/Reverb.qml:55
 msgid "Large/smooth"
@@ -2249,9 +2153,8 @@ msgid "Treble Cut"
 msgstr "Gearr trí oiread"
 
 #: src/contents/ui/Reverb.qml:217
-#, fuzzy
 msgid "Reverberation Presets"
-msgstr "Aisfhuaimniú"
+msgstr "Réamhshocruithe Athshondais"
 
 #: src/contents/ui/Reverb.qml:221
 msgid "Ambience"
@@ -2278,38 +2181,34 @@ msgid "Large Occupied Hall"
 msgstr "Halla Mór faoi Fhorghabháil"
 
 #: src/contents/ui/ShortcutsSheet.qml:34
-#, fuzzy
 msgid "Show Help"
-msgstr "Taispeáin cabhair"
+msgstr "Taispeáin Cabhair"
 
 #: src/contents/ui/ShortcutsSheet.qml:47
 msgid "Toggle Fullscreen"
-msgstr ""
+msgstr "Lánscáileán a Athsholáthar"
 
 #: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:214
-#, fuzzy
 msgid "Toggle Global Bypass"
-msgstr "Seachbhóthar Domhanda"
+msgstr "Seachbhóthar Domhanda a Athrú"
 
 #: src/contents/ui/ShortcutsSheet.qml:103
 msgid "Close the Window"
 msgstr "Dún an Fhuinneog"
 
 #: src/contents/ui/ShortcutsSheet.qml:131
-#, fuzzy
 msgid "Terminate Easy Effects Service"
-msgstr "Priontáil an leagan easyeffects"
+msgstr "Deireadh a chur le Seirbhís Éifeachtaí Éasca"
 
 #: src/contents/ui/ShortcutsSheet.qml:144
 #: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
-msgstr ""
+msgstr "Is féidir é a úsáid ar rialuithe uimhriúla"
 
 #: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:258
 #: src/contents/ui/main.qml:391
-#, fuzzy
 msgid "Shortcuts"
-msgstr "_Aicearraí"
+msgstr "Aicearraí"
 
 #: src/contents/ui/Speex.qml:48
 msgid "Denoise"
@@ -2340,9 +2239,8 @@ msgid "Softclip"
 msgstr "SoftclipName"
 
 #: src/contents/ui/StereoTools.qml:87
-#, fuzzy
 msgid "S/C Level"
-msgstr "Leibhéal Taoibh"
+msgstr "Leibhéal S/C"
 
 #: src/contents/ui/StereoTools.qml:111
 msgid "Stereo Matrix"
@@ -2409,60 +2307,53 @@ msgid "Stereo Phase"
 msgstr "Céim Steirió"
 
 #: src/contents/ui/main.qml:124
-#, fuzzy
 msgid "Reset Settings?"
-msgstr "_Reset Socruithe"
+msgstr "Athshocraigh Socruithe?"
 
 #: src/contents/ui/main.qml:125
 msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
+msgstr "An bhfuil tú cinnte gur mian leat gach socrú Easy Effects a athshocrú?"
 
 #: src/contents/ui/main.qml:146
-#, fuzzy
 msgid "Audio effects for PipeWire applications"
-msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
+msgstr "Éifeachtaí fuaime d'fheidhmchláir PipeWire"
 
 #: src/contents/ui/main.qml:155
-#, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
-msgstr "Clúdach litreach"
+msgstr "Forbróir"
 
 #: src/contents/ui/main.qml:247
-#, fuzzy
 msgid "Active"
-msgstr "Samhail Ghníomhach"
+msgstr "Gníomhach"
 
 #: src/contents/ui/main.qml:267 src/contents/ui/main.qml:399
 msgid "Manual"
-msgstr ""
+msgstr "Lámhleabhar"
 
 #: src/contents/ui/main.qml:277 src/contents/ui/main.qml:431
-#, fuzzy
 msgid "Quit"
-msgstr "_Scoir"
+msgstr "Scoir"
 
 #: src/contents/ui/main.qml:307
 msgid "Turn Effects On/Off"
-msgstr ""
+msgstr "Cas Éifeachtaí Air/Múch"
 
 #: src/contents/ui/main.qml:367
-#, fuzzy
 msgid "PipeWire"
-msgstr "_PipeWire"
+msgstr "PipeWire"
 
 #: src/contents/ui/main.qml:423
-#, fuzzy
 msgid "About Easy Effects"
-msgstr "_About Éifeachtaí Éasca"
+msgstr "Maidir le hÉifeachtaí Éasca"
 
 #: src/plugin_base.cpp:227
 msgid "(Mic)"
-msgstr ""
+msgstr "(Micreafón)"
 
 #: src/plugin_base.cpp:230
 msgid "(Speakers)"
-msgstr ""
+msgstr "(Cainteoirí)"
 
 #: src/plugin_base.cpp:237
 msgid "Output Level Meter"
@@ -2532,7 +2423,7 @@ msgstr "Treise Dord"
 
 #: src/tags_plugin_name.cpp:29
 msgid "Convolver"
-msgstr "Convolver"
+msgstr "Convolver (freagairtí iomadúla impulse)"
 
 #: src/tags_plugin_name.cpp:30
 msgid "Crossfeed"
@@ -2592,7 +2483,7 @@ msgstr "Uirlisí Steirió"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:2
 msgid "Easy Effects"
-msgstr "Easy Effects"
+msgstr "EasyEffects"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:3
 msgid "Equalizer, Compressor and Other Audio Effects"
@@ -3226,11 +3117,9 @@ msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
 #~ "Níor luchtaíodh an tsamhail roghnaithe. D'fhéadfadh sé nach dtacófaí lena "
 #~ "fhormáid. Thit sé ar ais go dtí an tsamhail chaighdeánach."
 
-#, c++-format
 #~ msgid "{} Not Available"
 #~ msgstr "{} Níl sé ar fáil"
 
-#, c++-format
 #~ msgid ""
 #~ "The software required for the {} effect, \"{}\", is not installed. "
 #~ "Consider using the Easy Effects Flatpak package or installing the "
@@ -3244,7 +3133,6 @@ msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
 #~ "mór duit Easy Effects a atosú ag baint úsáide as an rogha 'Scoir' taobh "
 #~ "istigh den roghchlár chun an éifeacht a úsáid."
 
-#, c++-format
 #~ msgid ""
 #~ "The {} effect was disabled when Easy Effects was compiled. This is "
 #~ "perhaps since the software required for this effect, \"{}\", was not "
