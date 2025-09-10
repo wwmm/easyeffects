@@ -104,9 +104,9 @@ FormCard.AbstractFormDelegate {
 
             Layout.fillWidth: control.spinboxLayoutFillWidth
             Layout.maximumWidth: control.spinboxMaximumWidth
-            Layout.minimumWidth: control.spinboxMinimumWidth
+            Layout.minimumWidth: control.spinboxMinimumWidth > 0 ? control.spinboxMinimumWidth : textInputSpinBox.contentWidth + 2.0 * up.indicator.width
             Layout.alignment: control.spinboxAlignment
-            implicitWidth: control.boxWidth
+            implicitWidth: Math.max(control.boxWidth, textInputSpinBox.contentWidth + 2.0 * up.indicator.width)
             focusPolicy: control.focusPolicy
             wheelEnabled: true
             onValueModified: {
@@ -160,6 +160,7 @@ FormCard.AbstractFormDelegate {
                 readOnly: !spinbox.editable
                 validator: spinbox.validator
                 inputMethodHints: Qt.ImhFormattedNumbersOnly
+                clip: true
             }
         }
     }
