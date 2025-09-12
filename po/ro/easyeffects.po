@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-09 16:55+0000\n"
+"POT-Creation-Date: 2025-09-12 19:33-0300\n"
 "PO-Revision-Date: 2025-09-07 19:01+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -166,10 +166,10 @@ msgstr "Câștig de ieșire"
 #: src/contents/ui/Exciter.qml:187 src/contents/ui/Expander.qml:758
 #: src/contents/ui/Filter.qml:193 src/contents/ui/Gate.qml:903
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Limiter.qml:498
-#: src/contents/ui/Loudness.qml:125 src/contents/ui/Maximizer.qml:100
+#: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:100
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:207
-#: src/contents/ui/RNNoise.qml:269 src/contents/ui/Reverb.qml:305
+#: src/contents/ui/Reverb.qml:305 src/contents/ui/RNNoise.qml:269
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
 msgid "Using %1"
 msgstr "Utilizând %1"
@@ -229,7 +229,7 @@ msgstr "Limita inferioară"
 #: src/contents/ui/Equalizer.qml:308 src/contents/ui/Exciter.qml:203
 #: src/contents/ui/Expander.qml:774 src/contents/ui/Filter.qml:209
 #: src/contents/ui/Gate.qml:919 src/contents/ui/Limiter.qml:514
-#: src/contents/ui/Loudness.qml:141 src/contents/ui/Maximizer.qml:116
+#: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:116
 #: src/contents/ui/MultibandCompressor.qml:966
 #: src/contents/ui/MultibandGate.qml:934 src/contents/ui/Reverb.qml:329
 #: src/contents/ui/StereoTools.qml:448
@@ -250,19 +250,19 @@ msgstr "Ascultă"
 #: src/contents/ui/Equalizer.qml:373 src/contents/ui/Exciter.qml:226
 #: src/contents/ui/Expander.qml:807 src/contents/ui/Filter.qml:222
 #: src/contents/ui/Gate.qml:952 src/contents/ui/LevelMeter.qml:255
-#: src/contents/ui/Limiter.qml:547 src/contents/ui/Loudness.qml:164
-#: src/contents/ui/Maximizer.qml:129
+#: src/contents/ui/Limiter.qml:547 src/contents/ui/Loudness.qml:194
+#: src/contents/ui/main.qml:411 src/contents/ui/Maximizer.qml:129
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:292
-#: src/contents/ui/Reverb.qml:342 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:411
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/Reverb.qml:342
+#: src/contents/ui/RNNoise.qml:292 src/contents/ui/Speex.qml:182
+#: src/contents/ui/StereoTools.qml:461
 msgid "Reset"
 msgstr "Restabilește"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:488
 #: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:448
-#: src/contents/ui/Gate.qml:477 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:329
+#: src/contents/ui/Gate.qml:477 src/contents/ui/main.qml:329
+#: src/contents/ui/StereoTools.qml:303
 msgid "Output"
 msgstr "Ieșire"
 
@@ -315,10 +315,11 @@ msgstr "Compresor"
 
 #: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:300
 #: src/contents/ui/Deesser.qml:70 src/contents/ui/Delay.qml:55
-#: src/contents/ui/Delay.qml:213 src/contents/ui/Equalizer.qml:112
-#: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:69
+#: src/contents/ui/Delay.qml:213 src/contents/ui/EqualizerBandMenu.qml:45
+#: src/contents/ui/Equalizer.qml:112 src/contents/ui/Expander.qml:69
 #: src/contents/ui/Expander.qml:260 src/contents/ui/Gate.qml:289
-#: src/contents/ui/Limiter.qml:52 src/contents/ui/MultibandCompressor.qml:416
+#: src/contents/ui/Limiter.qml:52 src/contents/ui/Loudness.qml:54
+#: src/contents/ui/MultibandCompressor.qml:416
 #: src/contents/ui/MultibandGate.qml:384 src/contents/ui/StereoTools.qml:129
 msgid "Mode"
 msgstr "Mod"
@@ -654,48 +655,6 @@ msgstr "Anvelopă"
 msgid "Stereo Split"
 msgstr "Separare stereo"
 
-#: src/contents/ui/Convolver.qml:100
-msgid "First"
-msgstr "Primul"
-
-#: src/contents/ui/Convolver.qml:112
-msgid "Second"
-msgstr "Al doilea"
-
-#: src/contents/ui/Convolver.qml:144
-msgid "Combine"
-msgstr "Combinare"
-
-#: src/contents/ui/Convolver.qml:183 src/plugin_base.cpp:239
-msgid "Spectrum"
-msgstr "Spectru"
-
-#: src/contents/ui/Convolver.qml:285
-msgid "Convolver Impulse Is Not Set"
-msgstr "Impulsul algoritmului de convoluție nu este definit"
-
-#: src/contents/ui/Convolver.qml:322
-msgid "Rate"
-msgstr "Rată"
-
-#: src/contents/ui/Convolver.qml:327 src/contents/ui/Delay.qml:59
-#: src/contents/ui/Delay.qml:70 src/contents/ui/Delay.qml:217
-#: src/contents/ui/Delay.qml:228
-msgid "Samples"
-msgstr "Eșantioane"
-
-#: src/contents/ui/Convolver.qml:332
-msgid "Duration"
-msgstr "Durată"
-
-#: src/contents/ui/Convolver.qml:369
-msgid "Stereo Width"
-msgstr "Amplitudine stereo"
-
-#: src/contents/ui/Convolver.qml:420 src/tags_plugin_name.cpp:25
-msgid "Autogain"
-msgstr "Câștig automat"
-
 #: src/contents/ui/ConvolverImpulseSheet.qml:47
 msgid "Impluse File Imported."
 msgstr "Fișierul de impuls a fost importat."
@@ -740,6 +699,48 @@ msgstr "Elimină acest impuls"
 msgid "Import Impulse"
 msgstr "Importă impuls"
 
+#: src/contents/ui/Convolver.qml:100
+msgid "First"
+msgstr "Primul"
+
+#: src/contents/ui/Convolver.qml:112
+msgid "Second"
+msgstr "Al doilea"
+
+#: src/contents/ui/Convolver.qml:144
+msgid "Combine"
+msgstr "Combinare"
+
+#: src/contents/ui/Convolver.qml:183 src/plugin_base.cpp:239
+msgid "Spectrum"
+msgstr "Spectru"
+
+#: src/contents/ui/Convolver.qml:285
+msgid "Convolver Impulse Is Not Set"
+msgstr "Impulsul algoritmului de convoluție nu este definit"
+
+#: src/contents/ui/Convolver.qml:322
+msgid "Rate"
+msgstr "Rată"
+
+#: src/contents/ui/Convolver.qml:327 src/contents/ui/Delay.qml:59
+#: src/contents/ui/Delay.qml:70 src/contents/ui/Delay.qml:217
+#: src/contents/ui/Delay.qml:228
+msgid "Samples"
+msgstr "Eșantioane"
+
+#: src/contents/ui/Convolver.qml:332
+msgid "Duration"
+msgstr "Durată"
+
+#: src/contents/ui/Convolver.qml:369
+msgid "Stereo Width"
+msgstr "Amplitudine stereo"
+
+#: src/contents/ui/Convolver.qml:420 src/tags_plugin_name.cpp:25
+msgid "Autogain"
+msgstr "Câștig automat"
+
 #: src/contents/ui/Crossfeed.qml:64
 msgid "Cutoff"
 msgstr "Tăiere"
@@ -756,8 +757,8 @@ msgstr "Preconfigurări pentru flux încrucișat"
 msgid "Default"
 msgstr "Implicit"
 
-#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/Reverb.qml:321
-#: src/contents/ui/main.qml:299
+#: src/contents/ui/Crossfeed.qml:148 src/contents/ui/main.qml:299
+#: src/contents/ui/Reverb.qml:321
 msgid "Presets"
 msgstr "Preconfigurări"
 
@@ -947,91 +948,10 @@ msgstr "Suprimarea ecoului rezidual"
 msgid "Near End Suppression"
 msgstr "Suprimare aproape de sfârșit"
 
-#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:348
+#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:348
+#: src/contents/ui/StereoTools.qml:42
 msgid "Input"
 msgstr "Intrare"
-
-#: src/contents/ui/Equalizer.qml:63
-msgid "APO Presets"
-msgstr "Preconfigurări APO"
-
-#: src/contents/ui/Equalizer.qml:66
-msgid "APO Preset File Imported."
-msgstr "Fișierul de preconfigurare APO a fost importat."
-
-#: src/contents/ui/Equalizer.qml:68
-msgid "Failed to Import the APO Preset File."
-msgstr "Importarea fișierului de preconfigurare APO a eșuat."
-
-#: src/contents/ui/Equalizer.qml:77
-msgid "GraphicEQ Presets"
-msgstr "Preconfigurări GraphicEQ"
-
-#: src/contents/ui/Equalizer.qml:80
-msgid "GraphicEQ Preset File Imported."
-msgstr "Fișierul de preconfigurare GraphicEQ a fost importat."
-
-#: src/contents/ui/Equalizer.qml:82
-msgid "Failed to Import the GraphicEQ Preset File."
-msgstr "Importarea fișierului de preconfigurare GraphicEQ a eșuat."
-
-#: src/contents/ui/Equalizer.qml:91
-msgid "APO Preset"
-msgstr "Preconfigurare APO"
-
-#: src/contents/ui/Equalizer.qml:94
-msgid "APO Preset File Exported."
-msgstr "Fișierul de preconfigurare APO a fost exportat."
-
-#: src/contents/ui/Equalizer.qml:96
-msgid "Failed to Export the APO Preset File."
-msgstr "Exportarea fișierului de preconfigurare APO a eșuat."
-
-#: src/contents/ui/Equalizer.qml:125
-msgid "Bands"
-msgstr "Benzi"
-
-#: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:169
-#: src/contents/ui/StereoTools.qml:66 src/contents/ui/StereoTools.qml:320
-msgid "Balance"
-msgstr "Balans"
-
-#: src/contents/ui/Equalizer.qml:158
-msgid "Pitch Left"
-msgstr "Tonalitate stânga"
-
-#: src/contents/ui/Equalizer.qml:175
-msgid "Pitch Right"
-msgstr "Tonalitate dreapta"
-
-#: src/contents/ui/Equalizer.qml:321
-msgid "Split Channels"
-msgstr "Separă canalele"
-
-#: src/contents/ui/Equalizer.qml:331
-msgid "Flat Response"
-msgstr "Răspuns plat"
-
-#: src/contents/ui/Equalizer.qml:338
-msgid "Calculate Frequencies"
-msgstr "Calculează frecvențele"
-
-#: src/contents/ui/Equalizer.qml:345
-msgid "Sort Bands"
-msgstr "Sortează benzile"
-
-#: src/contents/ui/Equalizer.qml:352
-msgid "Import APO"
-msgstr "Importare APO"
-
-#: src/contents/ui/Equalizer.qml:359
-msgid "Import APO (GraphicEQ)"
-msgstr "Importare APO (GraphicEQ)"
-
-#: src/contents/ui/Equalizer.qml:366
-msgid "Export APO"
-msgstr "Exportare APO"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:651
@@ -1114,6 +1034,87 @@ msgstr "Lățime"
 #: src/contents/ui/MultibandGate.qml:78
 msgid "Solo"
 msgstr "Solo"
+
+#: src/contents/ui/Equalizer.qml:63
+msgid "APO Presets"
+msgstr "Preconfigurări APO"
+
+#: src/contents/ui/Equalizer.qml:66
+msgid "APO Preset File Imported."
+msgstr "Fișierul de preconfigurare APO a fost importat."
+
+#: src/contents/ui/Equalizer.qml:68
+msgid "Failed to Import the APO Preset File."
+msgstr "Importarea fișierului de preconfigurare APO a eșuat."
+
+#: src/contents/ui/Equalizer.qml:77
+msgid "GraphicEQ Presets"
+msgstr "Preconfigurări GraphicEQ"
+
+#: src/contents/ui/Equalizer.qml:80
+msgid "GraphicEQ Preset File Imported."
+msgstr "Fișierul de preconfigurare GraphicEQ a fost importat."
+
+#: src/contents/ui/Equalizer.qml:82
+msgid "Failed to Import the GraphicEQ Preset File."
+msgstr "Importarea fișierului de preconfigurare GraphicEQ a eșuat."
+
+#: src/contents/ui/Equalizer.qml:91
+msgid "APO Preset"
+msgstr "Preconfigurare APO"
+
+#: src/contents/ui/Equalizer.qml:94
+msgid "APO Preset File Exported."
+msgstr "Fișierul de preconfigurare APO a fost exportat."
+
+#: src/contents/ui/Equalizer.qml:96
+msgid "Failed to Export the APO Preset File."
+msgstr "Exportarea fișierului de preconfigurare APO a eșuat."
+
+#: src/contents/ui/Equalizer.qml:125
+msgid "Bands"
+msgstr "Benzi"
+
+#: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:169
+#: src/contents/ui/StereoTools.qml:66 src/contents/ui/StereoTools.qml:320
+msgid "Balance"
+msgstr "Balans"
+
+#: src/contents/ui/Equalizer.qml:158
+msgid "Pitch Left"
+msgstr "Tonalitate stânga"
+
+#: src/contents/ui/Equalizer.qml:175
+msgid "Pitch Right"
+msgstr "Tonalitate dreapta"
+
+#: src/contents/ui/Equalizer.qml:321
+msgid "Split Channels"
+msgstr "Separă canalele"
+
+#: src/contents/ui/Equalizer.qml:331
+msgid "Flat Response"
+msgstr "Răspuns plat"
+
+#: src/contents/ui/Equalizer.qml:338
+msgid "Calculate Frequencies"
+msgstr "Calculează frecvențele"
+
+#: src/contents/ui/Equalizer.qml:345
+msgid "Sort Bands"
+msgstr "Sortează benzile"
+
+#: src/contents/ui/Equalizer.qml:352
+msgid "Import APO"
+msgstr "Importare APO"
+
+#: src/contents/ui/Equalizer.qml:359
+msgid "Import APO (GraphicEQ)"
+msgstr "Importare APO (GraphicEQ)"
+
+#: src/contents/ui/Equalizer.qml:366
+msgid "Export APO"
+msgstr "Exportare APO"
 
 #: src/contents/ui/Exciter.qml:140
 msgid "Ceil Active"
@@ -1386,25 +1387,106 @@ msgstr "Nivel automat"
 msgid "Gain Boost"
 msgstr "Intensificare câștig"
 
-#: src/contents/ui/Loudness.qml:54
+#: src/contents/ui/Loudness.qml:69
 msgid "Contour"
 msgstr "Contur"
 
-#: src/contents/ui/Loudness.qml:67
+#: src/contents/ui/Loudness.qml:82
 msgid "FFT Size"
 msgstr "Dimensiune FFT"
 
-#: src/contents/ui/Loudness.qml:80
+#: src/contents/ui/Loudness.qml:96
+#, fuzzy
+msgid "IIR Approximation"
+msgstr "Elimină aplicația"
+
+#: src/contents/ui/Loudness.qml:100
+#, fuzzy
+msgid "Fastest"
+msgstr "Mai Repede "
+
+#: src/contents/ui/Loudness.qml:100
+msgid "Low"
+msgstr "Jos"
+
+#: src/contents/ui/Loudness.qml:100
+#, fuzzy
+msgid "Normal"
+msgstr "Format"
+
+#: src/contents/ui/Loudness.qml:100
+msgid "High"
+msgstr "Înalt"
+
+#: src/contents/ui/Loudness.qml:100
+msgid "Best"
+msgstr ""
+
+#: src/contents/ui/Loudness.qml:110
 msgid "Volume"
 msgstr "Volum"
 
-#: src/contents/ui/Loudness.qml:97
+#: src/contents/ui/Loudness.qml:127
 msgid "Clipping Range"
 msgstr "Interval de decupare"
 
-#: src/contents/ui/Loudness.qml:154
+#: src/contents/ui/Loudness.qml:184
 msgid "Clipping"
 msgstr "Decupare"
+
+#: src/contents/ui/main.qml:124
+msgid "Reset Settings?"
+msgstr "Reinițializați parametrii?"
+
+#: src/contents/ui/main.qml:125
+msgid "Are you sure you want to reset all Easy Effects settings?"
+msgstr ""
+"Sunteți sigur că doriți să reinițializați toți parametrii Easy Effects?"
+
+#: src/contents/ui/main.qml:146
+msgid "Audio effects for PipeWire applications"
+msgstr "Efecte audio pentru aplicațiile PipeWire"
+
+#: src/contents/ui/main.qml:155
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Dezvoltator"
+
+#: src/contents/ui/main.qml:247
+msgid "Active"
+msgstr "Activ"
+
+#: src/contents/ui/main.qml:258 src/contents/ui/main.qml:391
+#: src/contents/ui/ShortcutsSheet.qml:228
+msgid "Shortcuts"
+msgstr "Taste de comenzi rapide"
+
+#: src/contents/ui/main.qml:267 src/contents/ui/main.qml:399
+msgid "Manual"
+msgstr "Manual"
+
+#: src/contents/ui/main.qml:277 src/contents/ui/main.qml:431
+msgid "Quit"
+msgstr "Ieșire"
+
+#: src/contents/ui/main.qml:307
+msgid "Turn Effects On/Off"
+msgstr "Activează/dezactivează efectele"
+
+#: src/contents/ui/main.qml:367
+msgid "PipeWire"
+msgstr "PipeWire"
+
+#: src/contents/ui/main.qml:383 src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:536
+msgid "Preferences"
+msgstr "Preferințe"
+
+#: src/contents/ui/main.qml:423
+msgid "About Easy Effects"
+msgstr "Despre Easy Effects"
 
 #: src/contents/ui/MenuAddPlugins.qml:128
 msgid "Added Effect"
@@ -1685,13 +1767,6 @@ msgstr "Căutare rapidă"
 #: src/contents/ui/Pitch.qml:240
 msgid "Anti-aliasing"
 msgstr "Netezire"
-
-#: src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:523
-#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:383
-msgid "Preferences"
-msgstr "Preferințe"
 
 #: src/contents/ui/PreferencesSheet.qml:34
 msgid "Enable Service Mode"
@@ -2042,50 +2117,6 @@ msgstr "Încărcare automată"
 msgid "No Preset Loaded"
 msgstr "Nicio preconfigurare încărcată"
 
-#: src/contents/ui/RNNoise.qml:55
-msgid "Model File Imported."
-msgstr "Fișier de model importat."
-
-#: src/contents/ui/RNNoise.qml:57
-msgid "Failed to Import the Model File."
-msgstr "Importarea fișierului de model a eșuat."
-
-#: src/contents/ui/RNNoise.qml:72 src/contents/ui/Speex.qml:108
-msgid "Voice Detection"
-msgstr "Detectare voce"
-
-#: src/contents/ui/RNNoise.qml:106
-msgid "Wet Level"
-msgstr "Nivelul umed"
-
-#: src/contents/ui/RNNoise.qml:143
-msgid "Use the Standard Model"
-msgstr "Utilizează modelul standard"
-
-#: src/contents/ui/RNNoise.qml:154
-msgid "User Models"
-msgstr "Modele utilizator"
-
-#: src/contents/ui/RNNoise.qml:203
-msgid "Loaded Model: %1"
-msgstr "Model încărcat: %1"
-
-#: src/contents/ui/RNNoise.qml:215
-msgid "Delete this Model"
-msgstr "Șterge acest model"
-
-#: src/contents/ui/RNNoise.qml:220
-msgid "Removed Model: %1"
-msgstr "Model eliminat: %1"
-
-#: src/contents/ui/RNNoise.qml:222
-msgid "Failed to Remove the Model: %1"
-msgstr "Eliminarea modelului: %1 a eșuat"
-
-#: src/contents/ui/RNNoise.qml:285
-msgid "Import Model"
-msgstr "Importare model"
-
 #: src/contents/ui/Reverb.qml:51
 msgid "Room Size"
 msgstr "Dimensiunea camerei"
@@ -2166,6 +2197,50 @@ msgstr "Discotecă"
 msgid "Large Occupied Hall"
 msgstr "Sală mare ocupată"
 
+#: src/contents/ui/RNNoise.qml:55
+msgid "Model File Imported."
+msgstr "Fișier de model importat."
+
+#: src/contents/ui/RNNoise.qml:57
+msgid "Failed to Import the Model File."
+msgstr "Importarea fișierului de model a eșuat."
+
+#: src/contents/ui/RNNoise.qml:72 src/contents/ui/Speex.qml:108
+msgid "Voice Detection"
+msgstr "Detectare voce"
+
+#: src/contents/ui/RNNoise.qml:106
+msgid "Wet Level"
+msgstr "Nivelul umed"
+
+#: src/contents/ui/RNNoise.qml:143
+msgid "Use the Standard Model"
+msgstr "Utilizează modelul standard"
+
+#: src/contents/ui/RNNoise.qml:154
+msgid "User Models"
+msgstr "Modele utilizator"
+
+#: src/contents/ui/RNNoise.qml:203
+msgid "Loaded Model: %1"
+msgstr "Model încărcat: %1"
+
+#: src/contents/ui/RNNoise.qml:215
+msgid "Delete this Model"
+msgstr "Șterge acest model"
+
+#: src/contents/ui/RNNoise.qml:220
+msgid "Removed Model: %1"
+msgstr "Model eliminat: %1"
+
+#: src/contents/ui/RNNoise.qml:222
+msgid "Failed to Remove the Model: %1"
+msgstr "Eliminarea modelului: %1 a eșuat"
+
+#: src/contents/ui/RNNoise.qml:285
+msgid "Import Model"
+msgstr "Importare model"
+
 #: src/contents/ui/ShortcutsSheet.qml:34
 msgid "Show Help"
 msgstr "Afișează ajutorul"
@@ -2190,11 +2265,6 @@ msgstr "Termină serviciul Easy Effects"
 #: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr "Poate fi utilizat pe controale numerice"
-
-#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:258
-#: src/contents/ui/main.qml:391
-msgid "Shortcuts"
-msgstr "Taste de comenzi rapide"
 
 #: src/contents/ui/Speex.qml:48
 msgid "Denoise"
@@ -2291,48 +2361,6 @@ msgstr "Bază Stereo"
 #: src/contents/ui/StereoTools.qml:369
 msgid "Stereo Phase"
 msgstr "Fază Stereo"
-
-#: src/contents/ui/main.qml:124
-msgid "Reset Settings?"
-msgstr "Reinițializați parametrii?"
-
-#: src/contents/ui/main.qml:125
-msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
-"Sunteți sigur că doriți să reinițializați toți parametrii Easy Effects?"
-
-#: src/contents/ui/main.qml:146
-msgid "Audio effects for PipeWire applications"
-msgstr "Efecte audio pentru aplicațiile PipeWire"
-
-#: src/contents/ui/main.qml:155
-msgctxt "@info:credit"
-msgid "Developer"
-msgstr "Dezvoltator"
-
-#: src/contents/ui/main.qml:247
-msgid "Active"
-msgstr "Activ"
-
-#: src/contents/ui/main.qml:267 src/contents/ui/main.qml:399
-msgid "Manual"
-msgstr "Manual"
-
-#: src/contents/ui/main.qml:277 src/contents/ui/main.qml:431
-msgid "Quit"
-msgstr "Ieșire"
-
-#: src/contents/ui/main.qml:307
-msgid "Turn Effects On/Off"
-msgstr "Activează/dezactivează efectele"
-
-#: src/contents/ui/main.qml:367
-msgid "PipeWire"
-msgstr "PipeWire"
-
-#: src/contents/ui/main.qml:423
-msgid "About Easy Effects"
-msgstr "Despre Easy Effects"
 
 #: src/plugin_base.cpp:227
 msgid "(Mic)"
@@ -3591,17 +3619,11 @@ msgstr "Efecte audio pentru aplicații PipeWire"
 #~ msgid "disabled"
 #~ msgstr "Activează"
 
-#~ msgid "Format"
-#~ msgstr "Format"
-
 #~ msgid "Latency"
 #~ msgstr "Latență"
 
 #~ msgid "idle"
 #~ msgstr "inactiv"
-
-#~ msgid "Faster"
-#~ msgstr "Mai Repede "
 
 #~ msgid "Preserve Formant"
 #~ msgstr "Păstrează Formant"
@@ -3819,14 +3841,8 @@ msgstr "Efecte audio pentru aplicații PipeWire"
 #~ msgid "Extended Filter"
 #~ msgstr "Filtru Extins"
 
-#~ msgid "Low"
-#~ msgstr "Jos"
-
 #~ msgid "Moderate"
 #~ msgstr "Moderat"
-
-#~ msgid "High"
-#~ msgstr "Înalt"
 
 #~ msgid "Delay Agnostic"
 #~ msgstr "Întârziere Agnostică"

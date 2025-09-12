@@ -38,7 +38,12 @@ void LoudnessPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["output-gain"] = settings->outputGain();
 
+  json[section][instance_name]["mode"] = settings->defaultModeLabelsValue()[settings->mode()].toStdString();
+
   json[section][instance_name]["fft"] = settings->defaultFftLabelsValue()[settings->fft()].toStdString();
+
+  json[section][instance_name]["iir-approximation"] =
+      settings->defaultIirApproximationLabelsValue()[settings->iirApproximation()].toStdString();
 
   json[section][instance_name]["std"] = settings->defaultStdLabelsValue()[settings->std()].toStdString();
 
@@ -57,6 +62,8 @@ void LoudnessPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("clipping", Clipping);
   UPDATE_PROPERTY("clipping-range", ClippingRange);
 
+  UPDATE_ENUM_LIKE_PROPERTY("mode", Mode);
   UPDATE_ENUM_LIKE_PROPERTY("fft", Fft);
+  UPDATE_ENUM_LIKE_PROPERTY("iir-approximation", IirApproximation);
   UPDATE_ENUM_LIKE_PROPERTY("std", Std);
 }

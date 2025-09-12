@@ -49,13 +49,28 @@ Kirigami.ScrollablePage {
                         Layout.alignment: Qt.AlignTop
 
                         FormCard.FormComboBoxDelegate {
+                            id: mode
+
+                            text: i18n("Mode")
+                            Layout.columnSpan: 2
+                            Layout.alignment: Qt.AlignHCenter
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: pluginDB.mode
+                            editable: false
+                            model: ["FFT", "IIR"]
+                            onActivated: idx => {
+                                pluginDB.mode = idx;
+                            }
+                        }
+
+                        FormCard.FormComboBoxDelegate {
                             id: std
 
                             text: i18n("Contour")
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: pluginDB.std
                             editable: false
-                            model: ["Flat", "ISO226-2003", "Fletcher-Munson", "Robinson-Dadson"]
+                            model: ["Flat", "ISO226-2003", "Fletcher-Munson", "Robinson-Dadson", "ISO226-2023"]
                             onActivated: idx => {
                                 pluginDB.std = idx;
                             }
@@ -69,6 +84,21 @@ Kirigami.ScrollablePage {
                             currentIndex: pluginDB.fft
                             editable: false
                             model: [256, 512, 1024, 2048, 4096, 8192, 16384]
+                            visible: pluginDB.mode == 0 ? true : false
+                            onActivated: idx => {
+                                pluginDB.fft = idx;
+                            }
+                        }
+
+                        FormCard.FormComboBoxDelegate {
+                            id: iirApproximation
+
+                            text: i18n("IIR Approximation")
+                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                            currentIndex: pluginDB.fft
+                            editable: false
+                            model: [i18n("Fastest"), i18n("Low"), i18n("Normal"), i18n("High"), i18n("Best")]
+                            visible: pluginDB.mode == 1 ? true : false
                             onActivated: idx => {
                                 pluginDB.fft = idx;
                             }

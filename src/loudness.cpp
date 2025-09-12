@@ -55,8 +55,10 @@ Loudness::Loudness(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
 
   init_common_controls<db::Loudness>(settings);
 
+  BIND_LV2_PORT("mode", mode, setMode, db::Loudness::modeChanged);
   BIND_LV2_PORT("std", std, setStd, db::Loudness::stdChanged);
   BIND_LV2_PORT("fft", fft, setFft, db::Loudness::fftChanged);
+  BIND_LV2_PORT("approx", iirApproximation, setIirApproximation, db::Loudness::iirApproximationChanged);
   BIND_LV2_PORT("volume", volume, setVolume, db::Loudness::volumeChanged);
   BIND_LV2_PORT("hclip", clipping, setClipping, db::Loudness::clippingChanged);
   BIND_LV2_PORT("hcrange", clippingRange, setClippingRange, db::Loudness::clippingRangeChanged);
