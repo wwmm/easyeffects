@@ -80,6 +80,12 @@ Limiter::Limiter(const std::string& tag, pw::Manager* pipe_manager, PipelineType
 
   // dB controls with -inf mode.
   BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Limiter::sidechainPreampChanged, true);
+  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, db::Limiter::inputToLinkChanged, true);
+  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, db::Limiter::inputToSidechainChanged, true);
+  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, db::Limiter::sidechainToInputChanged, true);
+  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, db::Limiter::sidechainToLinkChanged, true);
+  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, db::Limiter::linkToSidechainChanged, true);
+  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, db::Limiter::linkToInputChanged, true);
 }
 
 Limiter::~Limiter() {
