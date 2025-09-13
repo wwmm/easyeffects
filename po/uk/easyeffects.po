@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-12 22:35+0000\n"
-"PO-Revision-Date: 2025-09-07 05:01+0000\n"
+"PO-Revision-Date: 2025-09-13 20:02+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -1394,31 +1394,28 @@ msgid "FFT Size"
 msgstr "Розмір FFT"
 
 #: src/contents/ui/Loudness.qml:96
-#, fuzzy
 msgid "IIR Approximation"
-msgstr "Вилучити програму"
+msgstr "БІХ-апроксимація"
 
 #: src/contents/ui/Loudness.qml:100
 msgid "Fastest"
-msgstr ""
+msgstr "Найшвидший"
 
 #: src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "Low"
-msgstr "Низький виріз"
+msgstr "Низький"
 
 #: src/contents/ui/Loudness.qml:100
 msgid "Normal"
-msgstr ""
+msgstr "Нормальний"
 
 #: src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "High"
-msgstr "Високий виріз"
+msgstr "Високий"
 
 #: src/contents/ui/Loudness.qml:100
 msgid "Best"
-msgstr ""
+msgstr "Найкращий"
 
 #: src/contents/ui/Loudness.qml:110
 msgid "Volume"
