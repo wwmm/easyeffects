@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-12 22:35+0000\n"
-"PO-Revision-Date: 2025-09-07 19:01+0000\n"
+"PO-Revision-Date: 2025-09-13 20:02+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -1396,23 +1396,20 @@ msgid "FFT Size"
 msgstr "Dimensiune FFT"
 
 #: src/contents/ui/Loudness.qml:96
-#, fuzzy
 msgid "IIR Approximation"
-msgstr "Elimină aplicația"
+msgstr "Aproximarea IIR"
 
 #: src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "Fastest"
-msgstr "Mai Repede "
+msgstr "Cel mai rapid"
 
 #: src/contents/ui/Loudness.qml:100
 msgid "Low"
 msgstr "Jos"
 
 #: src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "Normal"
-msgstr "Format"
+msgstr "Normal"
 
 #: src/contents/ui/Loudness.qml:100
 msgid "High"
@@ -1420,7 +1417,7 @@ msgstr "Înalt"
 
 #: src/contents/ui/Loudness.qml:100
 msgid "Best"
-msgstr ""
+msgstr "Optim"
 
 #: src/contents/ui/Loudness.qml:110
 msgid "Volume"
