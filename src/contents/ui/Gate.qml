@@ -42,17 +42,13 @@ Kirigami.ScrollablePage {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
 
-    Column {
+    ColumnLayout {
         Kirigami.CardsLayout {
             id: cardLayout
 
             maximumColumns: 5
+            minimumColumnWidth: Kirigami.Units.gridUnit * 16
             uniformCellWidths: true
-
-            anchors {
-                left: parent.left
-                right: parent.right
-            }
 
             Kirigami.Card {
 
@@ -553,13 +549,9 @@ Kirigami.ScrollablePage {
 
         Kirigami.CardsLayout {
             maximumColumns: 3
+            minimumColumnWidth: Kirigami.Units.gridUnit * 17
             uniformCellWidths: true
             Layout.topMargin: Kirigami.Units.largeSpacing
-
-            anchors {
-                left: parent.left
-                right: parent.right
-            }
 
             Kirigami.Card {
                 Layout.fillWidth: false

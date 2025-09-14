@@ -62,6 +62,7 @@ Kirigami.ScrollablePage {
                         id: fcut
 
                         label: i18n("Cutoff")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("fcut")
                         to: pluginDB.getMaxValue("fcut")
                         value: pluginDB.fcut
@@ -77,6 +78,7 @@ Kirigami.ScrollablePage {
                         id: feed
 
                         label: i18n("Feed")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("feed")
                         to: pluginDB.getMaxValue("feed")
                         value: pluginDB.feed

@@ -46,6 +46,7 @@ Kirigami.ScrollablePage {
                         id: loudness
 
                         label: i18n("Loudness")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("loudness")
                         to: pluginDB.getMaxValue("loudness")
                         value: pluginDB.loudness
@@ -61,6 +62,7 @@ Kirigami.ScrollablePage {
                         id: output
 
                         label: i18n("Output")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("output")
                         to: pluginDB.getMaxValue("output")
                         value: pluginDB.output
@@ -76,6 +78,7 @@ Kirigami.ScrollablePage {
                         id: link
 
                         label: i18n("Link")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("link")
                         to: pluginDB.getMaxValue("link")
                         value: pluginDB.link

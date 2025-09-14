@@ -62,6 +62,7 @@ Kirigami.ScrollablePage {
         Kirigami.CardsLayout {
             id: cardLayout
 
+            minimumColumnWidth: Kirigami.Units.gridUnit * 17
             Layout.fillWidth: true
             uniformCellWidths: true
 
@@ -89,6 +90,7 @@ Kirigami.ScrollablePage {
                         id: vadThres
 
                         label: i18n("Threshold")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: pluginDB.getMinValue("vadThres")
                         to: pluginDB.getMaxValue("vadThres")
                         value: pluginDB.vadThres
@@ -104,6 +106,7 @@ Kirigami.ScrollablePage {
                         id: wet
 
                         label: i18n("Wet Level")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: pluginDB.getMinValue("wet")
                         to: pluginDB.getMaxValue("wet")
                         value: pluginDB.wet
@@ -119,6 +122,7 @@ Kirigami.ScrollablePage {
                         id: release
 
                         label: i18n("Release")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: pluginDB.getMinValue("release")
                         to: pluginDB.getMaxValue("release")
                         value: pluginDB.release

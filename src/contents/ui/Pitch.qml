@@ -32,6 +32,7 @@ Kirigami.ScrollablePage {
             id: cardLayout
 
             Layout.fillWidth: true
+            minimumColumnWidth: Kirigami.Units.gridUnit * 17
             uniformCellWidths: true
 
             Kirigami.Card {
@@ -47,6 +48,7 @@ Kirigami.ScrollablePage {
                         id: sequenceLength
 
                         label: i18n("Sequence Length")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pitchPage.pluginDB.getMinValue("sequenceLength")
                         to: pitchPage.pluginDB.getMaxValue("sequenceLength")
                         value: pitchPage.pluginDB.sequenceLength
@@ -62,6 +64,7 @@ Kirigami.ScrollablePage {
                         id: seekWindow
 
                         label: i18n("Seek Window")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pitchPage.pluginDB.getMinValue("seekWindow")
                         to: pitchPage.pluginDB.getMaxValue("seekWindow")
                         value: pitchPage.pluginDB.seekWindow
@@ -77,6 +80,7 @@ Kirigami.ScrollablePage {
                         id: overlapLength
 
                         label: i18n("Overlap Length")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pitchPage.pluginDB.getMinValue("overlapLength")
                         to: pitchPage.pluginDB.getMaxValue("overlapLength")
                         value: pitchPage.pluginDB.overlapLength

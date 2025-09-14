@@ -47,6 +47,7 @@ Kirigami.ScrollablePage {
                         id: release
 
                         label: i18n("Release")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("release")
                         to: pluginDB.getMaxValue("release")
                         value: pluginDB.release
@@ -62,6 +63,7 @@ Kirigami.ScrollablePage {
                         id: threshold
 
                         label: i18n("Threshold")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("threshold")
                         to: pluginDB.getMaxValue("threshold")
                         value: pluginDB.threshold

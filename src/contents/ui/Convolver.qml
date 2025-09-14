@@ -161,7 +161,9 @@ Kirigami.ScrollablePage {
         }
 
         Kirigami.Card {
+            Layout.minimumWidth: Kirigami.Units.gridUnit * 16
             Layout.fillHeight: true
+
             actions: [
                 Kirigami.Action {
                     text: qsTr("Impulses")

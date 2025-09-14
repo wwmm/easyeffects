@@ -46,6 +46,7 @@ Kirigami.ScrollablePage {
                         id: filterLength
 
                         label: i18n("Filter Length")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("filterLength")
                         to: pluginDB.getMaxValue("filterLength")
                         value: pluginDB.filterLength
@@ -61,6 +62,7 @@ Kirigami.ScrollablePage {
                         id: residualEchoSuppression
 
                         label: i18n("Residual Echo Suppression")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("residualEchoSuppression")
                         to: pluginDB.getMaxValue("residualEchoSuppression")
                         value: pluginDB.residualEchoSuppression
@@ -76,6 +78,7 @@ Kirigami.ScrollablePage {
                         id: nearEndSuppression
 
                         label: i18n("Near End Suppression")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("nearEndSuppression")
                         to: pluginDB.getMaxValue("nearEndSuppression")
                         value: pluginDB.nearEndSuppression

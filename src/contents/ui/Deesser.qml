@@ -35,6 +35,7 @@ Kirigami.ScrollablePage {
         Kirigami.CardsLayout {
             id: cardLayout
 
+            minimumColumnWidth: Kirigami.Units.gridUnit * 17
             implicitWidth: cardLayout.maximumColumnWidth
             uniformCellWidths: true
 
@@ -246,12 +247,13 @@ Kirigami.ScrollablePage {
                     }
                 }
             }
+        }
 
+        RowLayout {
             Kirigami.Card {
                 id: cardDetectionLevels
 
-                Layout.columnSpan: 2
-
+                Layout.topMargin: Kirigami.Units.smallSpacing
                 header: Kirigami.Heading {
                     text: i18n("Level")
                     level: 2
