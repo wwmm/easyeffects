@@ -62,6 +62,7 @@ Kirigami.ScrollablePage {
                         id: decayTime
 
                         label: i18n("Decay Time")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pluginDB.getMinValue("decayTime")
                         to: pluginDB.getMaxValue("decayTime")
                         value: pluginDB.decayTime
@@ -77,6 +78,7 @@ Kirigami.ScrollablePage {
                         id: predelay
 
                         label: i18n("Pre Delay")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pluginDB.getMinValue("predelay")
                         to: pluginDB.getMaxValue("predelay")
                         value: pluginDB.predelay
@@ -92,6 +94,7 @@ Kirigami.ScrollablePage {
                         id: diffusion
 
                         label: i18n("Diffusion")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pluginDB.getMinValue("diffusion")
                         to: pluginDB.getMaxValue("diffusion")
                         value: pluginDB.diffusion
