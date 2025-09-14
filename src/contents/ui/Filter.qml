@@ -109,6 +109,7 @@ Kirigami.ScrollablePage {
                         id: frequency
 
                         label: i18n("Frequency")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("frequency")
                         to: pluginDB.getMaxValue("frequency")
                         value: pluginDB.frequency
@@ -124,6 +125,7 @@ Kirigami.ScrollablePage {
                         id: width
 
                         label: i18n("Width")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("width")
                         to: pluginDB.getMaxValue("width")
                         value: pluginDB.width
@@ -138,6 +140,7 @@ Kirigami.ScrollablePage {
                         id: gain
 
                         label: i18n("Gain")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("gain")
                         to: pluginDB.getMaxValue("gain")
                         value: pluginDB.gain
@@ -153,6 +156,7 @@ Kirigami.ScrollablePage {
                         id: quality
 
                         label: i18n("Quality")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("quality")
                         to: pluginDB.getMaxValue("quality")
                         value: pluginDB.quality
@@ -167,6 +171,7 @@ Kirigami.ScrollablePage {
                         id: balance
 
                         label: i18n("Balance")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("balance")
                         to: pluginDB.getMaxValue("balance")
                         value: pluginDB.balance
