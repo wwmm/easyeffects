@@ -78,6 +78,7 @@ Kirigami.ScrollablePage {
                         id: minProcessingThreshold
 
                         label: i18n("Minimum Processing Threshold")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: pluginDB.getMinValue("minProcessingThreshold")
                         to: pluginDB.getMaxValue("minProcessingThreshold")
                         value: pluginDB.minProcessingThreshold
@@ -93,6 +94,7 @@ Kirigami.ScrollablePage {
                         id: maxErbProcessingThreshold
 
                         label: i18n("Maximum ERB Processing threshold")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: pluginDB.getMinValue("maxErbProcessingThreshold")
                         to: pluginDB.getMaxValue("maxErbProcessingThreshold")
                         value: pluginDB.maxErbProcessingThreshold
@@ -108,6 +110,7 @@ Kirigami.ScrollablePage {
                         id: maxDfProcessingThreshold
 
                         label: i18n("Maximum ERB Processing threshold")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: pluginDB.getMinValue("maxDfProcessingThreshold")
                         to: pluginDB.getMaxValue("maxDfProcessingThreshold")
                         value: pluginDB.maxDfProcessingThreshold
@@ -123,6 +126,7 @@ Kirigami.ScrollablePage {
                         id: minProcessingBuffer
 
                         label: i18n("Maximum ERB Processing threshold")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: pluginDB.getMinValue("minProcessingBuffer")
                         to: pluginDB.getMaxValue("minProcessingBuffer")
                         value: pluginDB.minProcessingBuffer
@@ -138,6 +142,7 @@ Kirigami.ScrollablePage {
                         id: postFilterBeta
 
                         label: i18n("Post Filter Beta")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: pluginDB.getMinValue("postFilterBeta")
                         to: pluginDB.getMaxValue("postFilterBeta")
                         value: pluginDB.postFilterBeta
