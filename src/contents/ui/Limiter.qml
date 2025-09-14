@@ -39,7 +39,7 @@ Kirigami.ScrollablePage {
             id: cardLayout
 
             maximumColumns: 4
-            minimumColumnWidth: Kirigami.Units.gridUnit * 15
+            minimumColumnWidth: Kirigami.Units.gridUnit * 16
             uniformCellWidths: true
 
             Kirigami.Card {
