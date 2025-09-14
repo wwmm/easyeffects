@@ -75,6 +75,7 @@ Kirigami.ScrollablePage {
                         id: target
 
                         label: i18n("Target")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: autogainPage.pluginDB.getMinValue("target")
                         to: autogainPage.pluginDB.getMaxValue("target")
                         value: autogainPage.pluginDB.target
@@ -95,6 +96,7 @@ Kirigami.ScrollablePage {
                         id: silenceThreshold
 
                         label: i18n("Silence")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: autogainPage.pluginDB.getMinValue("silenceThreshold")
                         to: autogainPage.pluginDB.getMaxValue("silenceThreshold")
                         value: autogainPage.pluginDB.silenceThreshold
@@ -115,6 +117,7 @@ Kirigami.ScrollablePage {
                         id: maximumHistory
 
                         label: i18n("Maximum History")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: autogainPage.pluginDB.getMinValue("maximumHistory")
                         to: autogainPage.pluginDB.getMaxValue("maximumHistory")
                         value: autogainPage.pluginDB.maximumHistory
