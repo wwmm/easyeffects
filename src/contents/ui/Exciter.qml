@@ -94,6 +94,7 @@ Kirigami.ScrollablePage {
                         id: amount
 
                         label: i18n("Amount")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("amount")
                         to: pluginDB.getMaxValue("amount")
                         value: pluginDB.amount
@@ -109,6 +110,7 @@ Kirigami.ScrollablePage {
                         id: harmonics
 
                         label: i18n("Harmonics")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("harmonics")
                         to: pluginDB.getMaxValue("harmonics")
                         value: pluginDB.harmonics
@@ -123,6 +125,7 @@ Kirigami.ScrollablePage {
                         id: scope
 
                         label: i18n("Scope")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("scope")
                         to: pluginDB.getMaxValue("scope")
                         value: pluginDB.scope
@@ -149,6 +152,7 @@ Kirigami.ScrollablePage {
                         id: ceil
 
                         label: i18n("Ceil")
+                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
                         from: pluginDB.getMinValue("ceil")
                         to: pluginDB.getMaxValue("ceil")
                         value: pluginDB.ceil
