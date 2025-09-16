@@ -68,8 +68,8 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   std::ranges::fill(band_mute, false);
   std::ranges::fill(band_bypass, false);
   std::ranges::fill(band_intensity, 1.0F);
-  std::ranges::fill(band_last_L, 0.0F);
-  std::ranges::fill(band_last_R, 0.0F);
+  std::ranges::fill(band_previous_L, 0.0F);
+  std::ranges::fill(band_previous_R, 0.0F);
 
   frequencies[0] = 20.0F;
   frequencies[1] = 520.0F;
@@ -158,7 +158,7 @@ void Crystalizer::setup() {
         util::debug(std::format("{}{} blocksize: {}", log_tag, name.toStdString(), blocksize));
 
         notify_latency = true;
-        do_first_rotation = true;
+        is_first_buffer = true;
 
         latency_n_frames = 1U;  // the second derivative forces us to delay at least one sample
 

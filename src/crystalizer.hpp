@@ -24,6 +24,7 @@
 #include <QString>
 #include <algorithm>
 #include <array>
+#include <cmath>
 #include <deque>
 #include <memory>
 #include <span>
@@ -69,7 +70,7 @@ class Crystalizer : public PluginBase {
   bool n_samples_is_power_of_2 = true;
   bool filters_are_ready = false;
   bool notify_latency = false;
-  bool do_first_rotation = true;
+  bool is_first_buffer = true;
 
   uint blocksize = 512U;
   uint latency_n_frames = 0U;
@@ -86,8 +87,8 @@ class Crystalizer : public PluginBase {
 
   std::array<float, nbands + 1U> frequencies;
   std::array<float, nbands> band_intensity;
-  std::array<float, nbands> band_last_L;
-  std::array<float, nbands> band_last_R;
+  std::array<float, nbands> band_previous_L;
+  std::array<float, nbands> band_previous_R;
   std::array<float, nbands> band_next_L;
   std::array<float, nbands> band_next_R;
 
@@ -113,45 +114,18 @@ class Crystalizer : public PluginBase {
         Later we will need to calculate the second derivative of each band. This
         is done through the central difference method. In order to calculate
         the derivative at the last elements of the array we have to know the first
-        element of the next buffer. As we do not have this information the only
-        way to do this calculation is delaying the signal by 1 sample.
+        element of the next buffer. As we do not have this information we will assume for simplicity that the last
+        value of the current buffer is a good enough approximation for the first element of the next buffer
       */
 
-      // last (R,L) becomes the first
+      band_next_L.at(n) = band_data_L.at(n)[blocksize - 1U];
+      band_next_R.at(n) = band_data_R.at(n)[blocksize - 1U];
 
-      std::rotate(band_data_L.at(n).rbegin(), band_data_L.at(n).rbegin() + 1, band_data_L.at(n).rend());
-      std::rotate(band_data_R.at(n).rbegin(), band_data_R.at(n).rbegin() + 1, band_data_R.at(n).rend());
+      if (is_first_buffer) {
+        band_previous_L.at(n) = band_data_L.at(n)[0];
+        band_previous_R.at(n) = band_data_R.at(n)[0];
 
-      if (do_first_rotation) {
-        /*
-          band_data was rotated. Its first values are the last ones from the original array. we have to save them for
-          the next round.
-        */
-
-        band_next_L.at(n) = band_data_L.at(n)[0];
-        band_next_R.at(n) = band_data_R.at(n)[0];
-
-        band_last_L.at(n) = 0.0F;
-        band_last_R.at(n) = 0.0F;
-
-        band_data_L.at(n)[0] = 0.0F;
-        band_data_R.at(n)[0] = 0.0F;
-
-        do_first_rotation = false;
-      } else {
-        /*
-          band_data was rotated. Its first values are the last ones from the original array. we have to save them for
-          the next round.
-        */
-
-        const float L = band_data_L.at(n)[0];
-        const float R = band_data_R.at(n)[0];
-
-        band_data_L.at(n)[0] = band_next_L.at(n);
-        band_data_R.at(n)[0] = band_next_R.at(n);
-
-        band_next_L.at(n) = L;
-        band_next_R.at(n) = R;
+        is_first_buffer = false;
       }
     }
 
@@ -172,8 +146,8 @@ class Crystalizer : public PluginBase {
             band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
             band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
           } else if (m == 0U) {
-            const float& L_lower = band_last_L.at(n);
-            const float& R_lower = band_last_R.at(n);
+            const float& L_lower = band_previous_L.at(n);
+            const float& R_lower = band_previous_R.at(n);
             const float& L_upper = band_data_L.at(n)[m + 1U];
             const float& R_upper = band_data_R.at(n)[m + 1U];
 
@@ -198,17 +172,22 @@ class Crystalizer : public PluginBase {
           const float& d2L = band_second_derivative_L.at(n)[m];
           const float& d2R = band_second_derivative_R.at(n)[m];
 
-          band_data_L.at(n)[m] = L - band_intensity.at(n) * d2L;
-          band_data_R.at(n)[m] = R - band_intensity.at(n) * d2R;
+          /*
+            The correct approach would be to avoid the second derivative getting too big... But using tanh to smoothly
+            staying between [-1, 1] seems to be enough
+          */
+
+          band_data_L.at(n)[m] = L - std::tanh(band_intensity.at(n) * d2L);
+          band_data_R.at(n)[m] = R - std::tanh(band_intensity.at(n) * d2R);
 
           if (m == blocksize - 1U) {
-            band_last_L.at(n) = L;
-            band_last_R.at(n) = R;
+            band_previous_L.at(n) = L;
+            band_previous_R.at(n) = R;
           }
         }
       } else {
-        band_last_L.at(n) = band_data_L.at(n)[blocksize - 1U];
-        band_last_R.at(n) = band_data_R.at(n)[blocksize - 1U];
+        band_previous_L.at(n) = band_data_L.at(n)[blocksize - 1U];
+        band_previous_R.at(n) = band_data_R.at(n)[blocksize - 1U];
       }
     }
 
