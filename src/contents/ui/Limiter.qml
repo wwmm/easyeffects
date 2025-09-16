@@ -38,7 +38,7 @@ Kirigami.ScrollablePage {
         Kirigami.CardsLayout {
             id: cardLayout
 
-            maximumColumns: 4
+            maximumColumns: 5
             minimumColumnWidth: Kirigami.Units.gridUnit * 16
             uniformCellWidths: true
 
@@ -287,6 +287,117 @@ Kirigami.ScrollablePage {
                             unit: "ms"
                             onValueModified: v => {
                                 pluginDB.lookahead = v;
+                            }
+                        }
+                    }
+                }
+            }
+
+            Kirigami.Card {
+                id: cardPreMix
+
+                header: Kirigami.Heading {
+                    text: i18n("Pre-Mix")
+                    level: 2
+                }
+
+                contentItem: Column {
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Input to Sidechain")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("inputToSidechain")
+                            to: pluginDB.getMaxValue("inputToSidechain")
+                            value: pluginDB.threshold
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            onValueModified: v => {
+                                pluginDB.inputToSidechain = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Input to Link")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("inputToLink")
+                            to: pluginDB.getMaxValue("inputToLink")
+                            value: pluginDB.inputToLink
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            onValueModified: v => {
+                                pluginDB.inputToLink = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Sidechain to Input")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("sidechainToInput")
+                            to: pluginDB.getMaxValue("sidechainToInput")
+                            value: pluginDB.sidechainToInput
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            onValueModified: v => {
+                                pluginDB.sidechainToInput = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Sidechain to Link")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("sidechainToLink")
+                            to: pluginDB.getMaxValue("sidechainToLink")
+                            value: pluginDB.sidechainToLink
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            onValueModified: v => {
+                                pluginDB.sidechainToLink = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Link to Sidechain")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("linkToSidechain")
+                            to: pluginDB.getMaxValue("linkToSidechain")
+                            value: pluginDB.linkToSidechain
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            onValueModified: v => {
+                                pluginDB.linkToSidechain = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Link to Input")
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pluginDB.getMinValue("linkToInput")
+                            to: pluginDB.getMaxValue("linkToInput")
+                            value: pluginDB.linkToInput
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            onValueModified: v => {
+                                pluginDB.linkToInput = v;
                             }
                         }
                     }
