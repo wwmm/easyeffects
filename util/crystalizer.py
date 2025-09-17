@@ -28,7 +28,7 @@ for n in range(original.size):
         deriv2[n] = original[n] - 2 * original[n] + original[n - 1]
 
 for n in range(standard.size):
-    standard[n] -= intensity * deriv2[n]
+    standard[n] -= np.tanh(intensity * deriv2[n])
 
 aggressive = np.copy(standard)
 
