@@ -414,6 +414,32 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
   }
 
+  auto connect_to_ee_sink = [&]() {
+    if (db::Main::processAllOutputs() && !nd->nd_info->connected && !nd->nd_info->is_blocklisted) {
+      // target.node for backward compatibility with old PW session managers
+      // NOLINTNEXTLINE
+      pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
+                               util::to_string(pm->ee_sink_node.id).c_str());
+
+      // NOLINTNEXTLINE
+      pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
+                               util::to_string(pm->ee_sink_node.serial).c_str());
+    }
+  };
+
+  auto connect_to_ee_source = [&]() {
+    if (db::Main::processAllInputs() && !nd->nd_info->connected && !nd->nd_info->is_blocklisted) {
+      // target.node for backward compatibility with old PW session managers
+      // NOLINTNEXTLINE
+      pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
+                               util::to_string(pm->ee_source_node.id).c_str());
+
+      // NOLINTNEXTLINE
+      pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
+                               util::to_string(pm->ee_source_node.serial).c_str());
+    }
+  };
+
   // update NodeInfo or add it if it is not in the model yet
 
   if (!pm->model_nodes.has_serial(nd->nd_info->serial)) {
@@ -428,33 +454,21 @@ void on_node_info(void* object, const struct pw_node_info* info) {
                nd_info_copy.name != tags::pipewire::ee_sink_name) {
       Q_EMIT pm->sinkAdded(nd_info_copy);
     } else if (nd_info_copy.media_class == tags::pipewire::media_class::output_stream) {
-      if (db::Main::processAllOutputs() && !nd->nd_info->connected && !nd->nd_info->is_blocklisted) {
-        // target.node for backward compatibility with old PW session managers
-        // NOLINTNEXTLINE
-        pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
-                                 util::to_string(pm->ee_sink_node.id).c_str());
-
-        // NOLINTNEXTLINE
-        pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
-                                 util::to_string(pm->ee_sink_node.serial).c_str());
-      }
+      connect_to_ee_sink();
     } else if (nd_info_copy.media_class == tags::pipewire::media_class::input_stream) {
-      if (db::Main::processAllInputs() && !nd->nd_info->connected && !nd->nd_info->is_blocklisted) {
-        // target.node for backward compatibility with old PW session managers
-        // NOLINTNEXTLINE
-        pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
-                                 util::to_string(pm->ee_source_node.id).c_str());
-
-        // NOLINTNEXTLINE
-        pw_metadata_set_property(pm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
-                                 util::to_string(pm->ee_source_node.serial).c_str());
-      }
+      connect_to_ee_source();
     }
 
   } else {
     nd->nd_info->is_blocklisted = pm->model_nodes.get_node_by_id(nd->nd_info->id).is_blocklisted;
 
     pm->model_nodes.update_info(*nd->nd_info);
+
+    if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
+      connect_to_ee_sink();
+    } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
+      connect_to_ee_source();
+    }
   }
 
   if (deviceProfileChanged) {
