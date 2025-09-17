@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-16 18:05+0000\n"
-"PO-Revision-Date: 2025-09-13 20:02+0000\n"
+"PO-Revision-Date: 2025-09-17 20:02+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -1381,36 +1381,31 @@ msgstr "Legătură stereo"
 
 #: src/contents/ui/Limiter.qml:300
 msgid "Pre-Mix"
-msgstr ""
+msgstr "Pre-mixare"
 
 #: src/contents/ui/Limiter.qml:315
-#, fuzzy
 msgid "Input to Sidechain"
-msgstr "Lanț lateral"
+msgstr "Intrare pentru lanțul lateral"
 
 #: src/contents/ui/Limiter.qml:330
-#, fuzzy
 msgid "Input to Link"
-msgstr "Monitorizarea intrării"
+msgstr "Intrare pentru legătură"
 
 #: src/contents/ui/Limiter.qml:345
-#, fuzzy
 msgid "Sidechain to Input"
-msgstr "Dispozitiv de intrare lanț lateral"
+msgstr "Lanț lateral către intrare"
 
 #: src/contents/ui/Limiter.qml:360
-#, fuzzy
 msgid "Sidechain to Link"
-msgstr "Modul de lanț lateral"
+msgstr "Lanț lateral către legătură"
 
 #: src/contents/ui/Limiter.qml:375
-#, fuzzy
 msgid "Link to Sidechain"
-msgstr "Ascultare lanț lateral"
+msgstr "Legătură către lanț lateral"
 
 #: src/contents/ui/Limiter.qml:390
 msgid "Link to Input"
-msgstr ""
+msgstr "Legătură către intrare"
 
 #: src/contents/ui/Limiter.qml:413 src/contents/ui/Limiter.qml:648
 msgid "Automatic Level"
@@ -2018,7 +2013,7 @@ msgstr "Preconfigurare de la comunitate importată"
 
 #: src/contents/ui/PresetsCommunityPage.qml:116
 msgid "Failed to Import the Community Preset"
-msgstr "Importarea reconfigurării de la comunitate a eșuat."
+msgstr "Importarea preconfigurării de la comunitate a eșuat."
 
 #: src/contents/ui/PresetsCommunityPage.qml:135
 msgid "Refresh"
