@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-16 18:05+0000\n"
-"PO-Revision-Date: 2025-09-13 20:01+0000\n"
+"PO-Revision-Date: 2025-09-17 07:02+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -1379,36 +1379,31 @@ msgstr "Lien Stéréo"
 
 #: src/contents/ui/Limiter.qml:300
 msgid "Pre-Mix"
-msgstr ""
+msgstr "Pré-Mix"
 
 #: src/contents/ui/Limiter.qml:315
-#, fuzzy
 msgid "Input to Sidechain"
-msgstr "Chaîne Latérale"
+msgstr "Entrée vers la Chaîne Latérale"
 
 #: src/contents/ui/Limiter.qml:330
-#, fuzzy
 msgid "Input to Link"
-msgstr "Surveillance de l'Entrée"
+msgstr "Entrée vers Lien"
 
 #: src/contents/ui/Limiter.qml:345
-#, fuzzy
 msgid "Sidechain to Input"
-msgstr "Périphérique d’Entrée de la Chaîne Latérale"
+msgstr "Chaîne Latérale vers l'Entrée"
 
 #: src/contents/ui/Limiter.qml:360
-#, fuzzy
 msgid "Sidechain to Link"
-msgstr "Mode Chaîne Latérale"
+msgstr "Chaîne Latérale vers Lien"
 
 #: src/contents/ui/Limiter.qml:375
-#, fuzzy
 msgid "Link to Sidechain"
-msgstr "Écouter la Chaîne Latérale"
+msgstr "Lien vers la Chaîne Latérale"
 
 #: src/contents/ui/Limiter.qml:390
 msgid "Link to Input"
-msgstr ""
+msgstr "Lien vers l'Entrée"
 
 #: src/contents/ui/Limiter.qml:413 src/contents/ui/Limiter.qml:648
 msgid "Automatic Level"
