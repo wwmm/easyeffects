@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-16 18:05+0000\n"
-"PO-Revision-Date: 2025-09-07 19:01+0000\n"
+"PO-Revision-Date: 2025-09-17 07:01+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
 "fa/>\n"
@@ -1476,12 +1476,11 @@ msgstr "به زنجیره جانبی گوش دهید"
 
 #: src/contents/ui/Limiter.qml:390
 msgid "Link to Input"
-msgstr ""
+msgstr "پیوند به ورودی"
 
 #: src/contents/ui/Limiter.qml:413 src/contents/ui/Limiter.qml:648
-#, fuzzy
 msgid "Automatic Level"
-msgstr "تراز خودکار"
+msgstr "سطح خودکار"
 
 #: src/contents/ui/Limiter.qml:638
 #, fuzzy
