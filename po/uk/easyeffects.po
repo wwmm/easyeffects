@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-16 18:05+0000\n"
-"PO-Revision-Date: 2025-09-13 20:02+0000\n"
+"PO-Revision-Date: 2025-09-17 07:02+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -1379,36 +1379,31 @@ msgstr "Стереозв'язок"
 
 #: src/contents/ui/Limiter.qml:300
 msgid "Pre-Mix"
-msgstr ""
+msgstr "Попереднє змішування"
 
 #: src/contents/ui/Limiter.qml:315
-#, fuzzy
 msgid "Input to Sidechain"
-msgstr "Побічний ланцюг"
+msgstr "Вхід до сайдчейна"
 
 #: src/contents/ui/Limiter.qml:330
-#, fuzzy
 msgid "Input to Link"
-msgstr "Моніторинг вхідних даних"
+msgstr "Вхід для посилання"
 
 #: src/contents/ui/Limiter.qml:345
-#, fuzzy
 msgid "Sidechain to Input"
-msgstr "Вхідний пристрій сайдчейна"
+msgstr "Сайдчейн до входу"
 
 #: src/contents/ui/Limiter.qml:360
-#, fuzzy
 msgid "Sidechain to Link"
-msgstr "Режим побічного ланцюга"
+msgstr "Сайдчейн для посилання"
 
 #: src/contents/ui/Limiter.qml:375
-#, fuzzy
 msgid "Link to Sidechain"
-msgstr "Слухати побічний ланцюг"
+msgstr "Посилання на сайдчейн"
 
 #: src/contents/ui/Limiter.qml:390
 msgid "Link to Input"
-msgstr ""
+msgstr "Посилання на вхідні дані"
 
 #: src/contents/ui/Limiter.qml:413 src/contents/ui/Limiter.qml:648
 msgid "Automatic Level"
