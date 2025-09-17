@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-16 18:05+0000\n"
-"PO-Revision-Date: 2025-09-14 18:07+0000\n"
+"PO-Revision-Date: 2025-09-17 20:01+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
-"(n>6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :("
+"n>6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:44
@@ -1382,36 +1382,31 @@ msgstr "Nasc Steirió"
 
 #: src/contents/ui/Limiter.qml:300
 msgid "Pre-Mix"
-msgstr ""
+msgstr "Réamh-mheascán"
 
 #: src/contents/ui/Limiter.qml:315
-#, fuzzy
 msgid "Input to Sidechain"
-msgstr "SidechainName"
+msgstr "Ionchur chuig an Taobhshlabhra"
 
 #: src/contents/ui/Limiter.qml:330
-#, fuzzy
 msgid "Input to Link"
-msgstr "Monatóireacht Ionchuir"
+msgstr "Ionchur chuig Nasc"
 
 #: src/contents/ui/Limiter.qml:345
-#, fuzzy
 msgid "Sidechain to Input"
-msgstr "Gléas Ionchuir Taobhshlabhra"
+msgstr "Taobhshlabhra chuig Ionchur"
 
 #: src/contents/ui/Limiter.qml:360
-#, fuzzy
 msgid "Sidechain to Link"
-msgstr "Mód Sidechain"
+msgstr "Taobhshlabhra go Nasc"
 
 #: src/contents/ui/Limiter.qml:375
-#, fuzzy
 msgid "Link to Sidechain"
-msgstr "Éist Sidechain"
+msgstr "Nasc chuig an Taobhshlabhra"
 
 #: src/contents/ui/Limiter.qml:390
 msgid "Link to Input"
-msgstr ""
+msgstr "Nasc chuig Ionchur"
 
 #: src/contents/ui/Limiter.qml:413 src/contents/ui/Limiter.qml:648
 msgid "Automatic Level"
