@@ -16,42 +16,68 @@ jobs:
     
       - name: Checkout
         uses: actions/checkout@v5.0.0
+        with:
+          path: master-head
+
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+        with:
+          path: master-latest-po-change
+          # grab all commits and all repo data
+          fetch-depth: 0
+
+      - name: Checkout commit of latest po file change
+        run: |
+          cd master-latest-po-change
+          last_commit=$(git rev-list -1 HEAD -- *.po *.pot)
+          git checkout "$last_commit"
 
       - name: Install deps
         run: |
-          # install general build deps
-          pacman -Syu --noconfirm ninja gcc pkgconf python3 python-pip which
-          # install easyeffects deps
-          source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
-          # install deps for translation templates
-          pacman -Syu --noconfirm kde-dev-scripts
-          
+          # only install deps for translation templates
+          pacman -Syu --noconfirm kde-dev-scripts intltool
+
       # workaround upstream permissions issue github.com/peter-evans/create-pull-request/issues/1170
       - name: Change git permissions
-        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+        run: |
+          git config --global --add safe.directory "$PWD/master-head"
+          git config --global --add safe.directory "$PWD/master-latest-po-change"
 
+      # it is necessary to normalize the po files as much as possible
+      # as otherwise we will have translations moving around everywhere as the translation scripts and weblate tend to pointlessly reorder the contents of these files 
+      # so compare master with the last commit we have where either weblate, this script, or someone else modified the translation files
+      # so if there have been changes to source code strings since the last translation commit, we know we ought to update everything
       - name: Run extract translation messages script
         run: |
-          cd util
+          cd master-head/util
           ./extract-translation-messages.sh
-          cd ..
 
-      - name: Check for non-timestamp diff
+          cd ../..
+
+          cd master-latest-po-change/util
+          ./extract-translation-messages.sh
+
+      # we only want changes that will be genuinely useful to translators
+      # the lines starting with msgid and msgstr are the ones containing the original string and translated versions, respectively (and there is also occasionally e.g. msgctxt)
+      # we don't really care about line number changes or even source file changes as those do not affect the translator workflow, the translators mostly only care about the strings themselves
+      # also any other changes like modifications to POT-Creation-Date are also not useful
+      # keep in mind this only modifies translations in the po directory, and not the po_news directory
+      - name: Check for meaningful line changes
         run: |
-          # see https://stackoverflow.com/a/26622262
-          DIFF_LINES=$(git diff --unified=0 | grep '^[+-]' | grep -Ev '^(--- a/|\+\+\+ b/)')
+          DIFF_LINES=$(diff --unified=0 --recursive master-latest-po-change/po master-head/po | grep '^[+-]msg')
 
-          if [[ $(echo "$DIFF_LINES" | grep "POT-Creation-Date:") != "$DIFF_LINES" ]]; then
-            echo "The calculated diff includes modifications besides just timestamp changes (POT-Creation-Date)."
-            echo "Letting the PR continue as this is a valid reason to open a PR."
-          else
-            echo "The calculated diff just has timestamp changes (POT-Creation-Date)."
+          if [[ "$DIFF_LINES" == "" ]]; then
+            echo "The calculated diff does not include modifications to lines starting with msg, such as msgstr or msgid."
             echo "Restoring original files since this is not a valid reason to open a PR."
+            cd master-head
             git restore .
+            cd ..
+          else
+            echo "The calculated diff includes modifications to lines starting with msg, such as msgstr or msgid."
+            echo "Letting the PR continue as this is a valid reason to open a PR."
           fi
 
-          echo "All diff lines count: $(echo "$DIFF_LINES" | wc -l)"
-          echo "Diff lines count where POT-Creation-Date was changed: $(echo "$DIFF_LINES" | grep "POT-Creation-Date:" | wc -l)"
+          echo "All meaningful diff lines count: $(echo "$DIFF_LINES" | wc -l)"
 
       # TODO it would be ideal to refresh metainfo fully by copying release notes from the upcoming release in NEWS.yaml to metainfo, and then running the above update template script,
       # however this is not possible without putting a dummy release in the metainfo with said upcoming release notes which would later have to be adjusted to the real release.
@@ -69,3 +95,4 @@ jobs:
           # note the machine user (easyeffects-bot) must have already forked the repository  where the action is running for this to work
           push-to-fork: easyeffects-bot/easyeffects
           token: ${{ secrets.EASYEFFECTS_BOT }}
+          path: master-head
