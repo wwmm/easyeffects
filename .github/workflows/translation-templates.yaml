@@ -35,7 +35,7 @@ jobs:
       - name: Install deps
         run: |
           # only install deps for translation templates
-          pacman -Syu --noconfirm kde-dev-scripts intltool
+          pacman -Syu --noconfirm kde-dev-scripts intltool diffutils
 
       # workaround upstream permissions issue github.com/peter-evans/create-pull-request/issues/1170
       - name: Change git permissions
