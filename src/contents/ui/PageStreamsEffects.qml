@@ -582,25 +582,21 @@ Kirigami.Page {
                         id: actionRateValue
 
                         text: "kHz"
-                        enabled: false
                     },
                     Kirigami.Action {
                         id: actionLatencyValue
 
                         text: "0,0 ms"
-                        enabled: false
                     },
                     Kirigami.Action {
                         id: actionLevelValue
 
                         text: "0 0 dB"
-                        enabled: false
 
                         displayComponent: Controls.Label {
                             text: actionLevelValue.text
                             textFormat: Text.RichText
                             wrapMode: Text.Wrap
-                            enabled: false
                         }
                     },
                     Kirigami.Action {
