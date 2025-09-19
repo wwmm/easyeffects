@@ -64,9 +64,31 @@ jobs:
       # keep in mind this only modifies translations in the po directory, and not the po_news directory
       - name: Check for meaningful line changes
         run: |
-          DIFF_LINES=$(diff --unified=0 --recursive master-latest-po-change/po master-head/po | grep '^[+-]msg')
+          # do some special error handling for diff, since it exits with exit code 1 if changes happen, instead 2 or above indicates an actual error
+          # first check we actually have diff installed
+          diff --version 1>/dev/null
+          set +e
+          DIFF_LINES=$(diff --unified=0 --recursive master-latest-po-change/po master-head/po)
+          # only these codes indicates an actual diff error
+          if [[ "$?" -ge "2" ]]; then
+            echo "Could not create diff for translation changes"
+            exit 1
+          fi
+          set -e
 
-          if [[ "$DIFF_LINES" == "" ]]; then
+          # do similar special error handling for grep, since it exits with exit code 1 if nothing is matched, instead 2 or above indicates an actual error
+          # first check we actually have grep installed
+          grep --version 1>/dev/null
+          set +e
+          DIFF_LINES_MSG=$(echo "$DIFF_LINES" | grep '^[+-]msg')
+          # only these codes indicates an actual diff error
+          if [[ "$?" -ge "2" ]]; then
+            echo "Could not match diff with grep for translation changes"
+            exit 1
+          fi
+          set -e
+
+          if [[ "$DIFF_LINES_MSG" == "" ]]; then
             echo "The calculated diff does not include modifications to lines starting with msg, such as msgstr or msgid."
             echo "Restoring original files since this is not a valid reason to open a PR."
             cd master-head
@@ -77,7 +99,8 @@ jobs:
             echo "Letting the PR continue as this is a valid reason to open a PR."
           fi
 
-          echo "All meaningful diff lines count: $(echo "$DIFF_LINES" | wc -l)"
+          echo "All diff lines count: $(echo "$DIFF_LINES" | wc -l)"
+          echo "All filtered diff lines count: $(echo "$DIFF_LINES_MSG" | wc -l)"
 
       # TODO it would be ideal to refresh metainfo fully by copying release notes from the upcoming release in NEWS.yaml to metainfo, and then running the above update template script,
       # however this is not possible without putting a dummy release in the metainfo with said upcoming release notes which would later have to be adjusted to the real release.
