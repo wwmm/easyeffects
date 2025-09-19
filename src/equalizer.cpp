@@ -110,6 +110,8 @@ Equalizer::~Equalizer() {
   }
 
   settings->disconnect();
+  settings_left->disconnect();
+  settings_right->disconnect();
 
   util::debug(log_tag + name.toStdString() + " destroyed");
 }

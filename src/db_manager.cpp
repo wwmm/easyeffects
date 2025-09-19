@@ -160,124 +160,120 @@ void Manager::resetAll() const {
 void Manager::create_plugin_db(const QString& parentGroup,
                                const auto& plugins_list,
                                QMap<QString, QVariant>& plugins_map) {
+  auto makeKey = [&](const QString& base, const QString& id, const QString& suffix = QString()) {
+    return suffix.isEmpty() ? base + "#" + id : base + "#" + id + "#" + suffix;
+  };
+
+  auto ensureExists = [&](const QString& key, auto factory) {
+    if (!plugins_map.contains(key)) {
+      plugins_map[key] = QVariant::fromValue(factory());
+    }
+  };
+
   for (const auto& name : plugins_list) {
-    if (!plugins_map.contains(name)) {
-      auto id = tags::plugin_name::get_id(name);
+    auto id = tags::plugin_name::get_id(name);
 
-      if (name.startsWith(tags::plugin_name::BaseName::autogain)) {
-        plugins_map[tags::plugin_name::BaseName::autogain + "#" + id] =
-            QVariant::fromValue(new db::Autogain(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
-        plugins_map[tags::plugin_name::BaseName::bassEnhancer + "#" + id] =
-            QVariant::fromValue(new db::BassEnhancer(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
-        plugins_map[tags::plugin_name::BaseName::bassLoudness + "#" + id] =
-            QVariant::fromValue(new db::BassLoudness(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::compressor)) {
-        plugins_map[tags::plugin_name::BaseName::compressor + "#" + id] =
-            QVariant::fromValue(new db::Compressor(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::convolver)) {
-        plugins_map[tags::plugin_name::BaseName::convolver + "#" + id] =
-            QVariant::fromValue(new db::Convolver(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
-        plugins_map[tags::plugin_name::BaseName::crossfeed + "#" + id] =
-            QVariant::fromValue(new db::Crossfeed(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
-        plugins_map[tags::plugin_name::BaseName::crystalizer + "#" + id] =
-            QVariant::fromValue(new db::Crystalizer(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::delay)) {
-        plugins_map[tags::plugin_name::BaseName::delay + "#" + id] =
-            QVariant::fromValue(new db::Delay(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
-        plugins_map[tags::plugin_name::BaseName::deepfilternet + "#" + id] =
-            QVariant::fromValue(new db::DeepFilterNet(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::deesser)) {
-        plugins_map[tags::plugin_name::BaseName::deesser + "#" + id] =
-            QVariant::fromValue(new db::Deesser(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
-        plugins_map[tags::plugin_name::BaseName::echoCanceller + "#" + id] =
-            QVariant::fromValue(new db::EchoCanceller(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::equalizer)) {
-        plugins_map[tags::plugin_name::BaseName::equalizer + "#" + id] =
-            QVariant::fromValue(new db::Equalizer(parentGroup, id));
+    if (name.startsWith(tags::plugin_name::BaseName::autogain)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::autogain, id),
+                   [&] { return new db::Autogain(parentGroup, id); });
 
-        plugins_map[tags::plugin_name::BaseName::equalizer + "#" + id + "#left"] =
-            QVariant::fromValue(new db::EqualizerChannel(parentGroup, id, "left"));
+    } else if (name.startsWith(tags::plugin_name::BaseName::bassEnhancer)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::bassEnhancer, id),
+                   [&] { return new db::BassEnhancer(parentGroup, id); });
 
-        plugins_map[tags::plugin_name::BaseName::equalizer + "#" + id + "#right"] =
-            QVariant::fromValue(new db::EqualizerChannel(parentGroup, id, "right"));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
-        plugins_map[tags::plugin_name::BaseName::exciter + "#" + id] =
-            QVariant::fromValue(new db::Exciter(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::expander)) {
-        plugins_map[tags::plugin_name::BaseName::expander + "#" + id] =
-            QVariant::fromValue(new db::Expander(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::filter)) {
-        plugins_map[tags::plugin_name::BaseName::filter + "#" + id] =
-            QVariant::fromValue(new db::Filter(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
-        plugins_map[tags::plugin_name::BaseName::gate + "#" + id] = QVariant::fromValue(new db::Gate(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
-        plugins_map[tags::plugin_name::BaseName::levelMeter + "#" + id] =
-            QVariant::fromValue(new db::LevelMeter(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::limiter)) {
-        plugins_map[tags::plugin_name::BaseName::limiter + "#" + id] =
-            QVariant::fromValue(new db::Limiter(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::loudness)) {
-        plugins_map[tags::plugin_name::BaseName::loudness + "#" + id] =
-            QVariant::fromValue(new db::Loudness(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::maximizer)) {
-        plugins_map[tags::plugin_name::BaseName::maximizer + "#" + id] =
-            QVariant::fromValue(new db::Maximizer(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
-        plugins_map[tags::plugin_name::BaseName::multibandCompressor + "#" + id] =
-            QVariant::fromValue(new db::MultibandCompressor(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
-        plugins_map[tags::plugin_name::BaseName::multibandGate + "#" + id] =
-            QVariant::fromValue(new db::MultibandGate(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::pitch)) {
-        plugins_map[tags::plugin_name::BaseName::pitch + "#" + id] =
-            QVariant::fromValue(new db::Pitch(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::reverb)) {
-        plugins_map[tags::plugin_name::BaseName::reverb + "#" + id] =
-            QVariant::fromValue(new db::Reverb(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
-        plugins_map[tags::plugin_name::BaseName::rnnoise + "#" + id] =
-            QVariant::fromValue(new db::RNNoise(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::speex)) {
-        plugins_map[tags::plugin_name::BaseName::speex + "#" + id] =
-            QVariant::fromValue(new db::Speex(parentGroup, id));
-        //
-      } else if (name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
-        plugins_map[tags::plugin_name::BaseName::stereoTools + "#" + id] =
-            QVariant::fromValue(new db::StereoTools(parentGroup, id));
-        //
-      }
+    } else if (name.startsWith(tags::plugin_name::BaseName::bassLoudness)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::bassLoudness, id),
+                   [&] { return new db::BassLoudness(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::compressor)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::compressor, id),
+                   [&] { return new db::Compressor(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::convolver)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::convolver, id),
+                   [&] { return new db::Convolver(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::crossfeed)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::crossfeed, id),
+                   [&] { return new db::Crossfeed(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::crystalizer)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::crystalizer, id),
+                   [&] { return new db::Crystalizer(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::delay)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::delay, id), [&] { return new db::Delay(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::deepfilternet)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::deepfilternet, id),
+                   [&] { return new db::DeepFilterNet(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::deesser)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::deesser, id), [&] { return new db::Deesser(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::echoCanceller)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::echoCanceller, id),
+                   [&] { return new db::EchoCanceller(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::equalizer)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::equalizer, id),
+                   [&] { return new db::Equalizer(parentGroup, id); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::equalizer, id, "left"),
+                   [&] { return new db::EqualizerChannel(parentGroup, id, "left"); });
+      ensureExists(makeKey(tags::plugin_name::BaseName::equalizer, id, "right"),
+                   [&] { return new db::EqualizerChannel(parentGroup, id, "right"); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::exciter)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::exciter, id), [&] { return new db::Exciter(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::expander)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::expander, id),
+                   [&] { return new db::Expander(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::filter)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::filter, id), [&] { return new db::Filter(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::gate)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::gate, id), [&] { return new db::Gate(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::levelMeter)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::levelMeter, id),
+                   [&] { return new db::LevelMeter(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::limiter)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::limiter, id), [&] { return new db::Limiter(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::loudness)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::loudness, id),
+                   [&] { return new db::Loudness(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::maximizer)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::maximizer, id),
+                   [&] { return new db::Maximizer(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::multibandCompressor)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::multibandCompressor, id),
+                   [&] { return new db::MultibandCompressor(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::multibandGate)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::multibandGate, id),
+                   [&] { return new db::MultibandGate(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::pitch)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::pitch, id), [&] { return new db::Pitch(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::reverb)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::reverb, id), [&] { return new db::Reverb(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::rnnoise)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::rnnoise, id), [&] { return new db::RNNoise(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::speex)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::speex, id), [&] { return new db::Speex(parentGroup, id); });
+
+    } else if (name.startsWith(tags::plugin_name::BaseName::stereoTools)) {
+      ensureExists(makeKey(tags::plugin_name::BaseName::stereoTools, id),
+                   [&] { return new db::StereoTools(parentGroup, id); });
     }
   }
 
