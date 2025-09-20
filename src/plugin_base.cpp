@@ -69,8 +69,6 @@ void on_process(void* userdata, spa_io_position* position) {
 
   // We had to add the following checks for vector sizes. See #4085
   if (d->pb->dummy_left.size() != n_samples) {
-    util::warning("processing: left channel does not have the correct size.");
-
     d->pb->dummy_left.resize(n_samples);
 
     std::ranges::fill(d->pb->dummy_left, 0.0F);
@@ -107,24 +105,32 @@ void on_process(void* userdata, spa_io_position* position) {
   if (in_left != nullptr) {
     left_in = std::span(in_left, n_samples);
   } else {
+    util::warning("We received a null left_in pointer. Using the dummy array instead.");
+
     left_in = d->pb->dummy_left;
   }
 
   if (in_right != nullptr) {
     right_in = std::span(in_right, n_samples);
   } else {
+    util::warning("We received a null right_in pointer. Using the dummy array instead.");
+
     right_in = d->pb->dummy_right;
   }
 
   if (out_left != nullptr) {
     left_out = std::span(out_left, n_samples);
   } else {
+    util::warning("We received a null left_out pointer. Using the dummy array instead.");
+
     left_out = d->pb->dummy_left;
   }
 
   if (out_right != nullptr) {
     right_out = std::span(out_right, n_samples);
   } else {
+    util::warning("We received a null right_out pointer. Using the dummy array instead.");
+
     right_out = d->pb->dummy_right;
   }
 
