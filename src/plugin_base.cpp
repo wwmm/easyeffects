@@ -67,13 +67,18 @@ void on_process(void* userdata, spa_io_position* position) {
     return;
   }
 
+  // We had to add the following checks for vector sizes. See #4085
   if (d->pb->dummy_left.size() != n_samples) {
+    util::warning("processing: left channel does not have the correct size.");
+
     d->pb->dummy_left.resize(n_samples);
 
     std::ranges::fill(d->pb->dummy_left, 0.0F);
   }
 
   if (d->pb->dummy_right.size() != n_samples) {
+    util::warning("processing: right channel does not have the correct size.");
+
     d->pb->dummy_right.resize(n_samples);
 
     std::ranges::fill(d->pb->dummy_right, 0.0F);
