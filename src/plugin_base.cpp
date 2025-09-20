@@ -67,15 +67,21 @@ void on_process(void* userdata, spa_io_position* position) {
     return;
   }
 
+  if (d->pb->dummy_left.size() != n_samples) {
+    d->pb->dummy_left.resize(n_samples);
+
+    std::ranges::fill(d->pb->dummy_left, 0.0F);
+  }
+
+  if (d->pb->dummy_right.size() != n_samples) {
+    d->pb->dummy_right.resize(n_samples);
+
+    std::ranges::fill(d->pb->dummy_right, 0.0F);
+  }
+
   if (rate != d->pb->rate || n_samples != d->pb->n_samples) {
     d->pb->rate = rate;
     d->pb->n_samples = n_samples;
-
-    d->pb->dummy_left.resize(n_samples);
-    d->pb->dummy_right.resize(n_samples);
-
-    std::ranges::fill(d->pb->dummy_left, 0.0F);
-    std::ranges::fill(d->pb->dummy_right, 0.0F);
 
     d->pb->setup();
   }
