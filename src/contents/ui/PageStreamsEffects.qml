@@ -581,17 +581,27 @@ Kirigami.Page {
                     Kirigami.Action {
                         id: actionRateValue
 
-                        text: "kHz"
+                        // Sample rate
+
+                        displayComponent: Controls.Label {
+                            text: actionRateValue.text
+                            textFormat: Text.RichText
+                        }
                     },
                     Kirigami.Action {
                         id: actionLatencyValue
 
-                        text: "0,0 ms"
+                        // Latency
+
+                        displayComponent: Controls.Label {
+                            text: actionLatencyValue.text
+                            textFormat: Text.RichText
+                        }
                     },
                     Kirigami.Action {
                         id: actionLevelValue
 
-                        text: "0 0 dB"
+                        // Global Level Meter
 
                         displayComponent: Controls.Label {
                             text: actionLevelValue.text
@@ -627,9 +637,10 @@ Kirigami.Page {
                         const localeRight = right.toLocaleString(Qt.locale(), 'f', 0).padStart(4, ' ');
                         const latency = Number(pipelineInstance.getPipeLineLatency()).toLocaleString(Qt.locale(), 'f', 1);
                         const rate = Number(pipelineInstance.getPipeLineRate()).toLocaleString(Qt.locale(), 'f', 1);
+
+                        actionRateValue.text = `<pre> ${rate} kHz </pre>`;
+                        actionLatencyValue.text = `<pre> ${latency} ms </pre>`;
                         actionLevelValue.text = `<pre>${localeLeft} ${localeRight} dB</pre>`;
-                        actionLatencyValue.text = `${latency} ms`;
-                        actionRateValue.text = `${rate} kHz`;
                     }
                 }
             }
