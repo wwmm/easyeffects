@@ -141,11 +141,13 @@ Kirigami.ApplicationWindow {
             implicitWidth: Kirigami.Units.gridUnit * 30
             aboutData: {
                 "displayName": "Easy Effects",
-                "productName": "kirigami/app",
+                "productName": "easyeffects",
                 "componentName": "easyeffects",
                 "shortDescription": i18n("Audio effects for PipeWire applications"),
                 "homepage": "https://github.com/wwmm/easyeffects",
                 "bugAddress": "https://github.com/wwmm/easyeffects/issues",
+                "donateUrl": "https://github.com/wwmm/easyeffects",
+                "getInvolvedUrl": "https://github.com/wwmm/easyeffects",
                 "version": projectVersion,
                 "programLogo": "com.github.wwmm.easyeffects",
                 "otherText": "",
