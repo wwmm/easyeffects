@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.28)
 project(easyeffects VERSION 8.0.0 LANGUAGES CXX C)
 
 set(APPLICATION_DOMAIN "easyeffects")
-set(APPLICATION_NAME "EasyEffects")
+set(APPLICATION_NAME "Easy Effects")
 set(COMPONENT_NAME "easyeffects")
 set(ORGANIZATION_NAME "WWMM")
 set(ORGANIZATION_DOMAIN "com.github.wwmm")

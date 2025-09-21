@@ -80,7 +80,16 @@ int main(int argc, char* argv[]) {
   QCoreApplication::setApplicationName(QStringLiteral(APPLICATION_DOMAIN));
   QCoreApplication::setApplicationVersion(QStringLiteral(PROJECT_VERSION));
 
-  QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("com.github.wwmm.easyeffects")));
+  /**
+   * QApplication specializes QGuiApplication and we need to use it to set
+   * the application name and the desktop entry name in order to show the
+   * correct icon in the title bar and desktop application menus.
+   */
+  QApplication::setApplicationName(APPLICATION_DOMAIN);
+  QApplication::setApplicationDisplayName(APPLICATION_NAME);
+  QApplication::setApplicationVersion(QStringLiteral(PROJECT_VERSION));
+  QApplication::setDesktopFileName("com.github.wwmm.easyeffects");
+  // QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("com.github.wwmm.easyeffects")));
 
   QApplication::setStyle(QStringLiteral("breeze"));
   if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
