@@ -633,14 +633,22 @@ Kirigami.Page {
                             actionLevelSaturation.visible = true;
                         else if (actionLevelSaturation.visible !== false)
                             actionLevelSaturation.visible = false;
-                        const localeLeft = left.toLocaleString(Qt.locale(), 'f', 0).padStart(4, ' ');
-                        const localeRight = right.toLocaleString(Qt.locale(), 'f', 0).padStart(4, ' ');
-                        const latency = Number(pipelineInstance.getPipeLineLatency()).toLocaleString(Qt.locale(), 'f', 1);
+
+                        const localeLeft = left.toLocaleString(Qt.locale(), 'f', 0).padStart(3, ' ');
+                        const localeRight = right.toLocaleString(Qt.locale(), 'f', 0).padStart(3, ' ');
+
+                        const styledLocaleLeft = left > -10 ? `<b>${localeLeft}</b>` : localeLeft;
+                        const styledLocaleRight = right > -10 ? `<b>${localeRight}</b>` : localeRight;
+
+                        const pipelineLatency = Number(pipelineInstance.getPipeLineLatency());
+                        const latency = pipelineLatency.toLocaleString(Qt.locale(), 'f', 1);
+                        const styledLatency = pipelineLatency > 0 ? `<b>${latency}</b>` : latency;
+
                         const rate = Number(pipelineInstance.getPipeLineRate()).toLocaleString(Qt.locale(), 'f', 1);
 
-                        actionRateValue.text = `<pre> ${rate} kHz </pre>`;
-                        actionLatencyValue.text = `<pre> ${latency} ms </pre>`;
-                        actionLevelValue.text = `<pre>${localeLeft} ${localeRight} dB</pre>`;
+                        actionRateValue.text = `<pre> <b>${rate}</b> kHz </pre>`;
+                        actionLatencyValue.text = `<pre> ${styledLatency} ms </pre>`;
+                        actionLevelValue.text = `<pre> ${styledLocaleLeft} ${styledLocaleRight} dB</pre>`;
                     }
                 }
             }

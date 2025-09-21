@@ -277,11 +277,11 @@ QVariant Nodes::data(const QModelIndex& index, int role) const {
     case Roles::NoutputPorts:
       return it->n_output_ports;
     case Roles::Rate:
-      return QString::fromStdString(std::format("{0:.1Lf} kHz", static_cast<float>(it->rate) / 1000.0F));
+      return static_cast<float>(it->rate) / 1000.0F;
     case Roles::NvolumeChannels:
       return it->n_volume_channels;
     case Roles::Latency:
-      return QString::fromStdString(std::format("{0:.0f} ms", 1000.0F * it->latency));
+      return it->latency * 1000.0F;
     case Roles::Volume:
       return it->volume;
     case Roles::IsBlocklisted:
