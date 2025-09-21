@@ -69,6 +69,18 @@ void LimiterPreset::save(nlohmann::json& json) {
   json[section][instance_name]["alr"] = settings->alr();
 
   json[section][instance_name]["gain-boost"] = settings->gainBoost();
+
+  json[section][instance_name]["input-to-sidechain"] = settings->inputToSidechain();
+
+  json[section][instance_name]["input-to-link"] = settings->inputToLink();
+
+  json[section][instance_name]["sidechain-to-input"] = settings->sidechainToInput();
+
+  json[section][instance_name]["sidechain-to-link"] = settings->sidechainToLink();
+
+  json[section][instance_name]["link-to-input"] = settings->linkToInput();
+
+  json[section][instance_name]["link-to-sidechain"] = settings->linkToSidechain();
 }
 
 void LimiterPreset::load(const nlohmann::json& json) {
@@ -86,6 +98,12 @@ void LimiterPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("alr-knee", AlrKnee);
   UPDATE_PROPERTY("alr", Alr);
   UPDATE_PROPERTY("gain-boost", GainBoost);
+  UPDATE_PROPERTY("input-to-sidechain", InputToSidechain);
+  UPDATE_PROPERTY("input-to-link", InputToLink);
+  UPDATE_PROPERTY("sidechain-to-input", SidechainToInput);
+  UPDATE_PROPERTY("sidechain-to-link", SidechainToLink);
+  UPDATE_PROPERTY("link-to-input", LinkToInput);
+  UPDATE_PROPERTY("link-to-sidechain", LinkToSidechain);
 
   UPDATE_ENUM_LIKE_PROPERTY("mode", Mode);
   UPDATE_ENUM_LIKE_PROPERTY("oversampling", Oversampling);

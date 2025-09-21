@@ -317,10 +317,11 @@ Kirigami.ScrollablePage {
                             spinboxLayoutFillWidth: true
                             from: pluginDB.getMinValue("inputToSidechain")
                             to: pluginDB.getMaxValue("inputToSidechain")
-                            value: pluginDB.threshold
+                            value: pluginDB.inputToSidechain
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
+                            minusInfinityMode: true
                             onValueModified: v => {
                                 pluginDB.inputToSidechain = v;
                             }
@@ -336,6 +337,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
+                            minusInfinityMode: true
                             onValueModified: v => {
                                 pluginDB.inputToLink = v;
                             }
@@ -351,6 +353,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
+                            minusInfinityMode: true
                             onValueModified: v => {
                                 pluginDB.sidechainToInput = v;
                             }
@@ -366,6 +369,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
+                            minusInfinityMode: true
                             onValueModified: v => {
                                 pluginDB.sidechainToLink = v;
                             }
@@ -381,6 +385,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
+                            minusInfinityMode: true
                             onValueModified: v => {
                                 pluginDB.linkToSidechain = v;
                             }
@@ -396,6 +401,7 @@ Kirigami.ScrollablePage {
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
+                            minusInfinityMode: true
                             onValueModified: v => {
                                 pluginDB.linkToInput = v;
                             }
