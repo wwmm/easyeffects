@@ -168,6 +168,7 @@ msgstr "خرج التضخيم"
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:211
 #: src/contents/ui/RNNoise.qml:273 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:433
+#: src/contents/ui/Limiter.qml:615
 msgid "Using %1"
 msgstr ""
 
@@ -231,7 +232,7 @@ msgstr "الأرضية"
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:118
 #: src/contents/ui/MultibandCompressor.qml:966
 #: src/contents/ui/MultibandGate.qml:934 src/contents/ui/Reverb.qml:333
-#: src/contents/ui/StereoTools.qml:449
+#: src/contents/ui/StereoTools.qml:449 src/contents/ui/Limiter.qml:631
 msgid "Show Native Window"
 msgstr "اظهر النافذة المدعومة"
 
@@ -255,6 +256,7 @@ msgstr "استمع"
 #: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:296
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:183
 #: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:411
+#: src/contents/ui/Limiter.qml:664
 msgid "Reset"
 msgstr "إعادة تعيين"
 
@@ -359,6 +361,7 @@ msgstr "نسبة"
 
 #: src/contents/ui/Compressor.qml:139 src/contents/ui/Expander.qml:99
 #: src/contents/ui/Limiter.qml:463 src/contents/ui/MultibandCompressor.qml:355
+#: src/contents/ui/Limiter.qml:469
 msgid "Knee"
 msgstr ""
 
@@ -370,7 +373,7 @@ msgstr ""
 #: src/contents/ui/Gate.qml:73 src/contents/ui/Gate.qml:793
 #: src/contents/ui/Limiter.qml:138 src/contents/ui/Limiter.qml:421
 #: src/contents/ui/MultibandCompressor.qml:237
-#: src/contents/ui/MultibandGate.qml:173
+#: src/contents/ui/MultibandGate.qml:173 src/contents/ui/Limiter.qml:427
 msgid "Attack"
 msgstr "هجوم"
 
@@ -379,6 +382,7 @@ msgstr "هجوم"
 #: src/contents/ui/Limiter.qml:159 src/contents/ui/Limiter.qml:442
 #: src/contents/ui/Maximizer.qml:49 src/contents/ui/MultibandCompressor.qml:285
 #: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:124
+#: src/contents/ui/Limiter.qml:448
 msgid "Release"
 msgstr "الإصدار"
 
@@ -388,7 +392,7 @@ msgstr "الإصدار"
 #: src/contents/ui/Gate.qml:230 src/contents/ui/Gate.qml:329
 #: src/contents/ui/Gate.qml:582 src/contents/ui/Limiter.qml:204
 #: src/contents/ui/Limiter.qml:515 src/contents/ui/MultibandCompressor.qml:650
-#: src/contents/ui/MultibandGate.qml:618
+#: src/contents/ui/MultibandGate.qml:618 src/contents/ui/Limiter.qml:521
 msgid "Sidechain"
 msgstr ""
 
@@ -621,7 +625,8 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:820
 #: src/contents/ui/MultibandCompressor.qml:879
 #: src/contents/ui/MultibandGate.qml:729 src/contents/ui/MultibandGate.qml:788
-#: src/contents/ui/MultibandGate.qml:847
+#: src/contents/ui/MultibandGate.qml:847 src/contents/ui/Limiter.qml:582
+#: src/contents/ui/Limiter.qml:595
 msgid "L"
 msgstr "س"
 
@@ -636,7 +641,8 @@ msgstr "س"
 #: src/contents/ui/MultibandCompressor.qml:826
 #: src/contents/ui/MultibandCompressor.qml:885
 #: src/contents/ui/MultibandGate.qml:735 src/contents/ui/MultibandGate.qml:794
-#: src/contents/ui/MultibandGate.qml:853
+#: src/contents/ui/MultibandGate.qml:853 src/contents/ui/Limiter.qml:588
+#: src/contents/ui/Limiter.qml:601
 msgid "R"
 msgstr "م"
 
@@ -672,6 +678,7 @@ msgid "Combine"
 msgstr ""
 
 #: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:239
+#: src/plugin_base.cpp:254
 msgid "Spectrum"
 msgstr ""
 
@@ -935,16 +942,18 @@ msgid "Remove this effect"
 msgstr ""
 
 #: src/contents/ui/DelegateStreamsList.qml:79
+#: src/contents/ui/DelegateStreamsList.qml:83
 #, fuzzy
 msgid "channels"
 msgstr "قنوات"
 
 #: src/contents/ui/DelegateStreamsList.qml:87 src/contents/ui/Gate.qml:180
-#: src/contents/ui/RNNoise.qml:81
+#: src/contents/ui/RNNoise.qml:81 src/contents/ui/DelegateStreamsList.qml:92
 msgid "Enable"
 msgstr "مكن"
 
 #: src/contents/ui/DelegateStreamsList.qml:102
+#: src/contents/ui/DelegateStreamsList.qml:107
 msgid "Exclude"
 msgstr "استثني"
 
@@ -1116,7 +1125,7 @@ msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:143
 #: src/contents/ui/Limiter.qml:506 src/contents/ui/MultibandCompressor.qml:336
-#: src/contents/ui/MultibandGate.qml:217
+#: src/contents/ui/MultibandGate.qml:217 src/contents/ui/Limiter.qml:512
 msgid "Gain"
 msgstr "التضخيم"
 
@@ -1411,34 +1420,35 @@ msgstr ""
 msgid "Input to Sidechain"
 msgstr "مجرى الدخل"
 
-#: src/contents/ui/Limiter.qml:330
+#: src/contents/ui/Limiter.qml:330 src/contents/ui/Limiter.qml:331
 #, fuzzy
 msgid "Input to Link"
 msgstr "مكن/عطل مراقب الدخل"
 
-#: src/contents/ui/Limiter.qml:345
+#: src/contents/ui/Limiter.qml:345 src/contents/ui/Limiter.qml:347
 #, fuzzy
 msgid "Sidechain to Input"
 msgstr "جهاز الدخل"
 
-#: src/contents/ui/Limiter.qml:360
+#: src/contents/ui/Limiter.qml:360 src/contents/ui/Limiter.qml:363
 #, fuzzy
 msgid "Sidechain to Link"
 msgstr "جهاز الدخل"
 
-#: src/contents/ui/Limiter.qml:375
+#: src/contents/ui/Limiter.qml:375 src/contents/ui/Limiter.qml:379
 msgid "Link to Sidechain"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:390
+#: src/contents/ui/Limiter.qml:390 src/contents/ui/Limiter.qml:395
 msgid "Link to Input"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:413 src/contents/ui/Limiter.qml:648
+#: src/contents/ui/Limiter.qml:419 src/contents/ui/Limiter.qml:654
 msgid "Automatic Level"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:638
+#: src/contents/ui/Limiter.qml:638 src/contents/ui/Limiter.qml:644
 #, fuzzy
 msgid "Gain Boost"
 msgstr "التضخيم الأيسر"
@@ -1591,11 +1601,13 @@ msgstr "أضف مؤثر"
 
 #: src/contents/ui/PageStreamsEffects.qml:443
 #: src/contents/ui/PageStreamsEffects.qml:647
+#: src/contents/ui/PageStreamsEffects.qml:666
 msgid "Players"
 msgstr "المشغلات"
 
 #: src/contents/ui/PageStreamsEffects.qml:460
 #: src/contents/ui/PageStreamsEffects.qml:647
+#: src/contents/ui/PageStreamsEffects.qml:666
 msgid "Recorders"
 msgstr "التسجيلات"
 
@@ -1612,15 +1624,18 @@ msgid "Audio Stream Not Modified"
 msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:657
+#: src/contents/ui/PageStreamsEffects.qml:676
 msgid "Effects"
 msgstr "المؤثرات"
 
 #: src/contents/ui/PageStreamsEffects.qml:674
+#: src/contents/ui/PageStreamsEffects.qml:693
 #, fuzzy
 msgid "Input Monitoring"
 msgstr "مكن/عطل مراقب الدخل"
 
 #: src/contents/ui/PageStreamsEffects.qml:687
+#: src/contents/ui/PageStreamsEffects.qml:706
 msgid "Excluded Apps"
 msgstr "التطبيقات المستثناة"
 
@@ -2448,15 +2463,15 @@ msgstr "_Pipewire"
 msgid "About Easy Effects"
 msgstr "حول Easy Effects"
 
-#: src/plugin_base.cpp:227
+#: src/plugin_base.cpp:227 src/plugin_base.cpp:242
 msgid "(Mic)"
 msgstr ""
 
-#: src/plugin_base.cpp:230
+#: src/plugin_base.cpp:230 src/plugin_base.cpp:245
 msgid "(Speakers)"
 msgstr ""
 
-#: src/plugin_base.cpp:237
+#: src/plugin_base.cpp:237 src/plugin_base.cpp:252
 msgid "Output Level Meter"
 msgstr ""
 
