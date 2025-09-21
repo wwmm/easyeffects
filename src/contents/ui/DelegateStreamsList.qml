@@ -22,8 +22,8 @@ Kirigami.AbstractCard {
     required property string mediaClass
     required property string state
     required property string format
-    required property string rate
-    required property string latency
+    required property real rate
+    required property real latency
 
     visible: {
         if (!isBlocklisted)
@@ -76,7 +76,12 @@ Kirigami.AbstractCard {
                 RowLayout {
                     Controls.Label {
                         wrapMode: Text.WordWrap
-                        text: `${root.state} · ` + `${root.format} · ${root.rate} · ${root.nVolumeChannels} ` + i18n("channels") + ` · ${root.latency}`
+                        text: {
+                            const rate = root.rate.toLocaleString(Qt.locale(), 'f', 1);
+                            const latency = root.latency.toLocaleString(Qt.locale(), 'f', 1);
+
+                            return `${root.state} · ` + `${root.format} · ${rate} kHz · ${root.nVolumeChannels} ` + i18n("channels") + ` · ${latency} ms`;
+                        }
                         color: Kirigami.Theme.disabledTextColor
                     }
                 }
