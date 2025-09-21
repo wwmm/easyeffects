@@ -160,7 +160,7 @@ void Crystalizer::setup() {
         notify_latency = true;
         is_first_buffer = true;
 
-        latency_n_frames = 1U;  // the second derivative forces us to delay at least one sample
+        latency_n_frames = 0;
 
         deque_out_L.resize(0U);
         deque_out_R.resize(0U);
@@ -258,7 +258,7 @@ void Crystalizer::process(std::span<float>& left_in,
       uint offset = 2U * (left_out.size() - deque_out_L.size());
 
       if (offset != latency_n_frames) {
-        latency_n_frames = offset + 1U;  // the second derivative forces us to delay at least one sample
+        latency_n_frames = offset;
 
         notify_latency = true;
       }
