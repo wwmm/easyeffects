@@ -637,18 +637,22 @@ Kirigami.Page {
                         const localeLeft = left.toLocaleString(Qt.locale(), 'f', 0).padStart(3, ' ');
                         const localeRight = right.toLocaleString(Qt.locale(), 'f', 0).padStart(3, ' ');
 
-                        const styledLocaleLeft = left > -10 ? `<b>${localeLeft}</b>` : localeLeft;
-                        const styledLocaleRight = right > -10 ? `<b>${localeRight}</b>` : localeRight;
+                        const cssFontWeight = `style="font-weight:600"`;
+
+                        const styledLocaleLeft = left > -10 ? `<span ${cssFontWeight}>${localeLeft}</span>` : localeLeft;
+                        const styledLocaleRight = right > -10 ? `<span ${cssFontWeight}>${localeRight}</span>` : localeRight;
 
                         const pipelineLatency = Number(pipelineInstance.getPipeLineLatency());
                         const latency = pipelineLatency.toLocaleString(Qt.locale(), 'f', 1);
-                        const styledLatency = pipelineLatency > 0 ? `<b>${latency}</b>` : latency;
+                        const styledLatency = pipelineLatency > 0 ? `<span ${cssFontWeight}>${latency}</span>` : latency;
 
                         const rate = Number(pipelineInstance.getPipeLineRate()).toLocaleString(Qt.locale(), 'f', 1);
 
-                        actionRateValue.text = `<pre> <b>${rate}</b> kHz </pre>`;
-                        actionLatencyValue.text = `<pre> ${styledLatency} ms </pre>`;
-                        actionLevelValue.text = `<pre> ${styledLocaleLeft} ${styledLocaleRight} dB</pre>`;
+                        const cssFontColor = `style="color:${Kirigami.Theme.textColor}"`;
+
+                        actionRateValue.text = `<pre ${cssFontColor}> <span ${cssFontWeight}>${rate}</span> kHz </pre>`;
+                        actionLatencyValue.text = `<pre ${cssFontColor}> ${styledLatency} ms </pre>`;
+                        actionLevelValue.text = `<pre ${cssFontColor}> ${styledLocaleLeft} ${styledLocaleRight} dB</pre>`;
                     }
                 }
             }
