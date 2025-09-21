@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-16 18:05+0000\n"
-"PO-Revision-Date: 2025-08-25 06:03+0000\n"
-"Last-Translator: jonnysemon <jonnysemon@users.noreply.hosted.weblate.org>\n"
+"PO-Revision-Date: 2025-09-21 18:49+0000\n"
+"Last-Translator: Abdelrahman Ehab Elsaied Hassan <s3409663@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
 "Language: ar\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.13\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr ""
+msgstr "الخروج من Easy Effects. مفيد عند التشغيل في وضع الخدمة."
 
 #: src/command_line_parser.cpp:45
 msgid "Reset Easy Effects."
@@ -34,20 +34,19 @@ msgstr "اخفِ النافذة."
 
 #: src/command_line_parser.cpp:47
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-msgstr ""
+msgstr "التجاوز العام. 1 للتفعيل، 2 للتعطيل، 3لعرض الحالة"
 
 #: src/command_line_parser.cpp:48
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr ""
+msgstr "تحميل إعداد مسبق. مثال: easyeffects -l music"
 
 #: src/command_line_parser.cpp:48
-#, fuzzy
 msgid "preset-name"
-msgstr "اسم الإعداد المسبق الجديد"
+msgstr "اسم الإعداد المسبق"
 
 #: src/command_line_parser.cpp:49
 msgid "Show available presets."
-msgstr ""
+msgstr "عرض الإعدادات المسبقة."
 
 #: src/command_line_parser.cpp:50
 msgid "Get the active input/output preset."
