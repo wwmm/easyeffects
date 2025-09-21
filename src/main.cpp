@@ -80,6 +80,8 @@ int main(int argc, char* argv[]) {
   QCoreApplication::setApplicationName(QStringLiteral(APPLICATION_DOMAIN));
   QCoreApplication::setApplicationVersion(QStringLiteral(PROJECT_VERSION));
 
+  QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("com.github.wwmm.easyeffects")));
+
   QApplication::setStyle(QStringLiteral("breeze"));
   if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
     QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
