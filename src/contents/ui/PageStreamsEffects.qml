@@ -637,6 +637,8 @@ Kirigami.Page {
                         const localeLeft = left.toLocaleString(Qt.locale(), 'f', 0).padStart(3, ' ');
                         const localeRight = right.toLocaleString(Qt.locale(), 'f', 0).padStart(3, ' ');
 
+                        // Since we found the standard bold too heavy for the
+                        // bottom bar, we used the font-weight style.
                         const cssFontWeight = `style="font-weight:600"`;
 
                         const styledLocaleLeft = left > -10 ? `<span ${cssFontWeight}>${localeLeft}</span>` : localeLeft;
