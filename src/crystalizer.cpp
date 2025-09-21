@@ -160,7 +160,7 @@ void Crystalizer::setup() {
         notify_latency = true;
         is_first_buffer = true;
 
-        latency_n_frames = 0;
+        latency_n_frames = 0U;
 
         deque_out_L.resize(0U);
         deque_out_R.resize(0U);
