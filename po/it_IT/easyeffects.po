@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-16 18:05+0000\n"
-"PO-Revision-Date: 2025-09-14 18:07+0000\n"
+"PO-Revision-Date: 2025-09-21 09:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -1380,36 +1380,31 @@ msgstr "Relazione Canali"
 
 #: src/contents/ui/Limiter.qml:300
 msgid "Pre-Mix"
-msgstr ""
+msgstr "Pre-Mix"
 
 #: src/contents/ui/Limiter.qml:315
-#, fuzzy
 msgid "Input to Sidechain"
-msgstr "Sidechain"
+msgstr "Input a Sidechain"
 
 #: src/contents/ui/Limiter.qml:330
-#, fuzzy
 msgid "Input to Link"
-msgstr "Monitoraggio Input"
+msgstr "Input a Link"
 
 #: src/contents/ui/Limiter.qml:345
-#, fuzzy
 msgid "Sidechain to Input"
-msgstr "Dispositivo di Ingresso Sidechain"
+msgstr "Sidechain a Input"
 
 #: src/contents/ui/Limiter.qml:360
-#, fuzzy
 msgid "Sidechain to Link"
-msgstr "Modalità Sidechain"
+msgstr "Sidechain a Link"
 
 #: src/contents/ui/Limiter.qml:375
-#, fuzzy
 msgid "Link to Sidechain"
-msgstr "Ascolta Sidechain"
+msgstr "Link a Sidechain"
 
 #: src/contents/ui/Limiter.qml:390
 msgid "Link to Input"
-msgstr ""
+msgstr "Link a Input"
 
 #: src/contents/ui/Limiter.qml:413 src/contents/ui/Limiter.qml:648
 msgid "Automatic Level"
