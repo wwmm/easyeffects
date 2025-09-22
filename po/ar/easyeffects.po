@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-16 18:05+0000\n"
+"POT-Creation-Date: 2025-09-22 21:34+0000\n"
 "PO-Revision-Date: 2025-09-22 07:01+0000\n"
 "Last-Translator: Abdelrahman Ehab Elsaied Hassan <s3409663@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -73,11 +73,11 @@ msgstr "قم بتشغيل التطبيق مع تفعيل وضع الخدمة."
 msgid "Enable debug messages."
 msgstr "تفعيل رسائل تصحيح الأخطاء."
 
-#: src/command_line_parser.cpp:138 src/contents/ui/main.qml:237
+#: src/command_line_parser.cpp:138 src/contents/ui/main.qml:239
 msgid "Output Presets"
 msgstr "إعدادات الخرج المسبقة"
 
-#: src/command_line_parser.cpp:146 src/contents/ui/main.qml:227
+#: src/command_line_parser.cpp:146 src/contents/ui/main.qml:229
 msgid "Input Presets"
 msgstr "الإعدادات المسبقة للدخل"
 
@@ -163,13 +163,12 @@ msgstr "خرج التضخيم"
 #: src/contents/ui/EchoCanceller.qml:105 src/contents/ui/Equalizer.qml:292
 #: src/contents/ui/Exciter.qml:191 src/contents/ui/Expander.qml:759
 #: src/contents/ui/Filter.qml:199 src/contents/ui/Gate.qml:895
-#: src/contents/ui/LevelMeter.qml:233 src/contents/ui/Limiter.qml:609
+#: src/contents/ui/LevelMeter.qml:233 src/contents/ui/Limiter.qml:615
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:211
 #: src/contents/ui/RNNoise.qml:273 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:433
-#: src/contents/ui/Limiter.qml:615
 msgid "Using %1"
 msgstr "الاستخدام 1%"
 
@@ -227,11 +226,11 @@ msgstr "الحد الأدنى"
 #: src/contents/ui/Deesser.qml:326 src/contents/ui/Delay.qml:401
 #: src/contents/ui/Equalizer.qml:308 src/contents/ui/Exciter.qml:207
 #: src/contents/ui/Expander.qml:775 src/contents/ui/Filter.qml:215
-#: src/contents/ui/Gate.qml:911 src/contents/ui/Limiter.qml:625
+#: src/contents/ui/Gate.qml:911 src/contents/ui/Limiter.qml:631
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:118
 #: src/contents/ui/MultibandCompressor.qml:966
 #: src/contents/ui/MultibandGate.qml:934 src/contents/ui/Reverb.qml:333
-#: src/contents/ui/StereoTools.qml:449 src/contents/ui/Limiter.qml:631
+#: src/contents/ui/StereoTools.qml:449
 msgid "Show Native Window"
 msgstr "اظهر النافذة المدعومة"
 
@@ -249,20 +248,19 @@ msgstr "استمع"
 #: src/contents/ui/Equalizer.qml:373 src/contents/ui/Exciter.qml:230
 #: src/contents/ui/Expander.qml:808 src/contents/ui/Filter.qml:228
 #: src/contents/ui/Gate.qml:944 src/contents/ui/LevelMeter.qml:256
-#: src/contents/ui/Limiter.qml:658 src/contents/ui/Loudness.qml:194
+#: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
 #: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
 #: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:296
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:183
-#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:411
-#: src/contents/ui/Limiter.qml:664
+#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:413
 msgid "Reset"
 msgstr "إعادة تعيين"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:304
-#: src/contents/ui/main.qml:329
+#: src/contents/ui/main.qml:331
 msgid "Output"
 msgstr "الخرج"
 
@@ -356,8 +354,7 @@ msgid "Ratio"
 msgstr "نسبة"
 
 #: src/contents/ui/Compressor.qml:139 src/contents/ui/Expander.qml:99
-#: src/contents/ui/Limiter.qml:463 src/contents/ui/MultibandCompressor.qml:355
-#: src/contents/ui/Limiter.qml:469
+#: src/contents/ui/Limiter.qml:469 src/contents/ui/MultibandCompressor.qml:355
 msgid "Knee"
 msgstr ""
 
@@ -367,18 +364,17 @@ msgstr ""
 
 #: src/contents/ui/Compressor.qml:176 src/contents/ui/Expander.qml:136
 #: src/contents/ui/Gate.qml:73 src/contents/ui/Gate.qml:793
-#: src/contents/ui/Limiter.qml:138 src/contents/ui/Limiter.qml:421
+#: src/contents/ui/Limiter.qml:138 src/contents/ui/Limiter.qml:427
 #: src/contents/ui/MultibandCompressor.qml:237
-#: src/contents/ui/MultibandGate.qml:173 src/contents/ui/Limiter.qml:427
+#: src/contents/ui/MultibandGate.qml:173
 msgid "Attack"
 msgstr "هجوم"
 
 #: src/contents/ui/Compressor.qml:209 src/contents/ui/Expander.qml:169
 #: src/contents/ui/Gate.qml:90 src/contents/ui/Gate.qml:802
-#: src/contents/ui/Limiter.qml:159 src/contents/ui/Limiter.qml:442
+#: src/contents/ui/Limiter.qml:159 src/contents/ui/Limiter.qml:448
 #: src/contents/ui/Maximizer.qml:49 src/contents/ui/MultibandCompressor.qml:285
 #: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:124
-#: src/contents/ui/Limiter.qml:448
 msgid "Release"
 msgstr "الإصدار"
 
@@ -387,8 +383,8 @@ msgstr "الإصدار"
 #: src/contents/ui/Expander.qml:305 src/contents/ui/Expander.qml:557
 #: src/contents/ui/Gate.qml:230 src/contents/ui/Gate.qml:329
 #: src/contents/ui/Gate.qml:582 src/contents/ui/Limiter.qml:204
-#: src/contents/ui/Limiter.qml:515 src/contents/ui/MultibandCompressor.qml:650
-#: src/contents/ui/MultibandGate.qml:618 src/contents/ui/Limiter.qml:521
+#: src/contents/ui/Limiter.qml:521 src/contents/ui/MultibandCompressor.qml:650
+#: src/contents/ui/MultibandGate.qml:618
 msgid "Sidechain"
 msgstr ""
 
@@ -616,13 +612,12 @@ msgstr ""
 #: src/contents/ui/Expander.qml:725 src/contents/ui/Expander.qml:738
 #: src/contents/ui/Gate.qml:643 src/contents/ui/Gate.qml:656
 #: src/contents/ui/Gate.qml:752 src/contents/ui/Gate.qml:765
-#: src/contents/ui/Limiter.qml:576 src/contents/ui/Limiter.qml:589
+#: src/contents/ui/Limiter.qml:582 src/contents/ui/Limiter.qml:595
 #: src/contents/ui/MultibandCompressor.qml:761
 #: src/contents/ui/MultibandCompressor.qml:820
 #: src/contents/ui/MultibandCompressor.qml:879
 #: src/contents/ui/MultibandGate.qml:729 src/contents/ui/MultibandGate.qml:788
-#: src/contents/ui/MultibandGate.qml:847 src/contents/ui/Limiter.qml:582
-#: src/contents/ui/Limiter.qml:595
+#: src/contents/ui/MultibandGate.qml:847
 msgid "L"
 msgstr "س"
 
@@ -632,13 +627,12 @@ msgstr "س"
 #: src/contents/ui/Expander.qml:731 src/contents/ui/Expander.qml:744
 #: src/contents/ui/Gate.qml:649 src/contents/ui/Gate.qml:662
 #: src/contents/ui/Gate.qml:758 src/contents/ui/Gate.qml:771
-#: src/contents/ui/Limiter.qml:582 src/contents/ui/Limiter.qml:595
+#: src/contents/ui/Limiter.qml:588 src/contents/ui/Limiter.qml:601
 #: src/contents/ui/MultibandCompressor.qml:767
 #: src/contents/ui/MultibandCompressor.qml:826
 #: src/contents/ui/MultibandCompressor.qml:885
 #: src/contents/ui/MultibandGate.qml:735 src/contents/ui/MultibandGate.qml:794
-#: src/contents/ui/MultibandGate.qml:853 src/contents/ui/Limiter.qml:588
-#: src/contents/ui/Limiter.qml:601
+#: src/contents/ui/MultibandGate.qml:853
 msgid "R"
 msgstr "م"
 
@@ -673,8 +667,7 @@ msgstr "النواة الثانية"
 msgid "Combine"
 msgstr ""
 
-#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:239
-#: src/plugin_base.cpp:254
+#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:254
 msgid "Spectrum"
 msgstr ""
 
@@ -769,7 +762,7 @@ msgid "Default"
 msgstr "الافتراضي"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:299
+#: src/contents/ui/main.qml:301
 msgid "Presets"
 msgstr "الإعدادات المسبقة"
 
@@ -937,18 +930,16 @@ msgstr ""
 msgid "Remove this effect"
 msgstr ""
 
-#: src/contents/ui/DelegateStreamsList.qml:79
 #: src/contents/ui/DelegateStreamsList.qml:83
 #, fuzzy
 msgid "channels"
 msgstr "قنوات"
 
-#: src/contents/ui/DelegateStreamsList.qml:87 src/contents/ui/Gate.qml:180
-#: src/contents/ui/RNNoise.qml:81 src/contents/ui/DelegateStreamsList.qml:92
+#: src/contents/ui/DelegateStreamsList.qml:92 src/contents/ui/Gate.qml:180
+#: src/contents/ui/RNNoise.qml:81
 msgid "Enable"
 msgstr "مكن"
 
-#: src/contents/ui/DelegateStreamsList.qml:102
 #: src/contents/ui/DelegateStreamsList.qml:107
 msgid "Exclude"
 msgstr "استثني"
@@ -966,7 +957,7 @@ msgid "Near End Suppression"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:348
+#: src/contents/ui/main.qml:350
 msgid "Input"
 msgstr "الدخل"
 
@@ -1115,13 +1106,13 @@ msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:112
 #: src/contents/ui/MultibandCompressor.qml:188
-#: src/contents/ui/MultibandGate.qml:120 src/contents/ui/PipeWirePage.qml:359
+#: src/contents/ui/MultibandGate.qml:120 src/contents/ui/PipeWirePage.qml:370
 msgid "Frequency"
 msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:143
-#: src/contents/ui/Limiter.qml:506 src/contents/ui/MultibandCompressor.qml:336
-#: src/contents/ui/MultibandGate.qml:217 src/contents/ui/Limiter.qml:512
+#: src/contents/ui/Limiter.qml:512 src/contents/ui/MultibandCompressor.qml:336
+#: src/contents/ui/MultibandGate.qml:217
 msgid "Gain"
 msgstr "التضخيم"
 
@@ -1416,35 +1407,34 @@ msgstr ""
 msgid "Input to Sidechain"
 msgstr "مجرى الدخل"
 
-#: src/contents/ui/Limiter.qml:330 src/contents/ui/Limiter.qml:331
+#: src/contents/ui/Limiter.qml:331
 #, fuzzy
 msgid "Input to Link"
 msgstr "مكن/عطل مراقب الدخل"
 
-#: src/contents/ui/Limiter.qml:345 src/contents/ui/Limiter.qml:347
+#: src/contents/ui/Limiter.qml:347
 #, fuzzy
 msgid "Sidechain to Input"
 msgstr "جهاز الدخل"
 
-#: src/contents/ui/Limiter.qml:360 src/contents/ui/Limiter.qml:363
+#: src/contents/ui/Limiter.qml:363
 #, fuzzy
 msgid "Sidechain to Link"
 msgstr "جهاز الدخل"
 
-#: src/contents/ui/Limiter.qml:375 src/contents/ui/Limiter.qml:379
+#: src/contents/ui/Limiter.qml:379
 msgid "Link to Sidechain"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:390 src/contents/ui/Limiter.qml:395
+#: src/contents/ui/Limiter.qml:395
 msgid "Link to Input"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:413 src/contents/ui/Limiter.qml:648
 #: src/contents/ui/Limiter.qml:419 src/contents/ui/Limiter.qml:654
 msgid "Automatic Level"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:638 src/contents/ui/Limiter.qml:644
+#: src/contents/ui/Limiter.qml:644
 #, fuzzy
 msgid "Gain Boost"
 msgstr "التضخيم الأيسر"
@@ -1596,14 +1586,12 @@ msgid "Add Effect"
 msgstr "أضف مؤثر"
 
 #: src/contents/ui/PageStreamsEffects.qml:443
-#: src/contents/ui/PageStreamsEffects.qml:647
-#: src/contents/ui/PageStreamsEffects.qml:666
+#: src/contents/ui/PageStreamsEffects.qml:668
 msgid "Players"
 msgstr "المشغلات"
 
 #: src/contents/ui/PageStreamsEffects.qml:460
-#: src/contents/ui/PageStreamsEffects.qml:647
-#: src/contents/ui/PageStreamsEffects.qml:666
+#: src/contents/ui/PageStreamsEffects.qml:668
 msgid "Recorders"
 msgstr "التسجيلات"
 
@@ -1619,19 +1607,16 @@ msgstr "بدون مؤثرات"
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:657
-#: src/contents/ui/PageStreamsEffects.qml:676
+#: src/contents/ui/PageStreamsEffects.qml:678
 msgid "Effects"
 msgstr "المؤثرات"
 
-#: src/contents/ui/PageStreamsEffects.qml:674
-#: src/contents/ui/PageStreamsEffects.qml:693
+#: src/contents/ui/PageStreamsEffects.qml:695
 #, fuzzy
 msgid "Input Monitoring"
 msgstr "مكن/عطل مراقب الدخل"
 
-#: src/contents/ui/PageStreamsEffects.qml:687
-#: src/contents/ui/PageStreamsEffects.qml:706
+#: src/contents/ui/PageStreamsEffects.qml:708
 msgid "Excluded Apps"
 msgstr "التطبيقات المستثناة"
 
@@ -1741,6 +1726,10 @@ msgstr ""
 msgid "White Noise"
 msgstr ""
 
+#: src/contents/ui/PipeWirePage.qml:359
+msgid "Pink Noise"
+msgstr ""
+
 #: src/contents/ui/Pitch.qml:50
 msgid "Sequence Length"
 msgstr ""
@@ -1788,7 +1777,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:523
-#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:383
+#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:385
 #, fuzzy
 msgid "Preferences"
 msgstr "التفضيلات"
@@ -2311,8 +2300,8 @@ msgstr "اطبع إصدار easyeffects"
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:258
-#: src/contents/ui/main.qml:391
+#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:260
+#: src/contents/ui/main.qml:393
 #, fuzzy
 msgid "Shortcuts"
 msgstr "الاختصارات"
@@ -2427,47 +2416,47 @@ msgstr ""
 msgid "Audio effects for PipeWire applications"
 msgstr "تأثيرات صوتية لتطبيقات PipeWire"
 
-#: src/contents/ui/main.qml:155
+#: src/contents/ui/main.qml:157
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr ""
 
-#: src/contents/ui/main.qml:247
+#: src/contents/ui/main.qml:249
 msgid "Active"
 msgstr ""
 
-#: src/contents/ui/main.qml:267 src/contents/ui/main.qml:399
+#: src/contents/ui/main.qml:269 src/contents/ui/main.qml:401
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:277 src/contents/ui/main.qml:431
+#: src/contents/ui/main.qml:279 src/contents/ui/main.qml:433
 #, fuzzy
 msgid "Quit"
 msgstr "أخرج"
 
-#: src/contents/ui/main.qml:307
+#: src/contents/ui/main.qml:309
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:367
+#: src/contents/ui/main.qml:369
 #, fuzzy
 msgid "PipeWire"
 msgstr "_Pipewire"
 
-#: src/contents/ui/main.qml:423
+#: src/contents/ui/main.qml:425
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "حول Easy Effects"
 
-#: src/plugin_base.cpp:227 src/plugin_base.cpp:242
+#: src/plugin_base.cpp:242
 msgid "(Mic)"
 msgstr ""
 
-#: src/plugin_base.cpp:230 src/plugin_base.cpp:245
+#: src/plugin_base.cpp:245
 msgid "(Speakers)"
 msgstr ""
 
-#: src/plugin_base.cpp:237 src/plugin_base.cpp:252
+#: src/plugin_base.cpp:252
 msgid "Output Level Meter"
 msgstr ""
 
