@@ -286,8 +286,8 @@ msgid ""
 "limiter followed by a level meter."
 msgstr ""
 "تم تحسين نظام إدارة سلسلة المعالجة. يتم الآن وضع المؤثرات الأخرى (غير "
-"المحدِّدات) قبل 'المحدِّد' (limiter)، حتى لو كانت آخر إضافتين في السلسلة هما 'محدِّ"
-"د' يتبعه 'مقياس للمستوى' (level meter)."
+"المحدِّدات) قبل 'المحدِّد' (limiter)، حتى لو كانت آخر إضافتين في السلسلة هما "
+"'محدِّد' يتبعه 'مقياس للمستوى' (level meter)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
 msgid ""
@@ -426,8 +426,8 @@ msgid ""
 "Noise reduction by RNNoise can now mix the original and denoised signals to "
 "avoid the output to sound too \"dry\"."
 msgstr ""
-"أصبح بإمكان تقنية تقليل الضوضاء (RNNoise) الآن مزج الإشارتين الأصلية والمُنقّ"
-"اة من الضوضاء، وذلك لتجنب أن يبدو الصوت النهائي \"جافًا\" للغاية."
+"أصبح بإمكان تقنية تقليل الضوضاء (RNNoise) الآن مزج الإشارتين الأصلية "
+"والمُنقّاة من الضوضاء، وذلك لتجنب أن يبدو الصوت النهائي \"جافًا\" للغاية."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:174
 msgid ""

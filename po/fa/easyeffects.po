@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-21 15:46-0300\n"
+"POT-Creation-Date: 2025-09-22 21:34+0000\n"
 "PO-Revision-Date: 2025-09-17 07:01+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -74,11 +74,11 @@ msgstr ""
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:138 src/contents/ui/main.qml:237
+#: src/command_line_parser.cpp:138 src/contents/ui/main.qml:239
 msgid "Output Presets"
 msgstr "خروجی از پیش تعیین شده"
 
-#: src/command_line_parser.cpp:146 src/contents/ui/main.qml:227
+#: src/command_line_parser.cpp:146 src/contents/ui/main.qml:229
 msgid "Input Presets"
 msgstr "پیش‌تنظیم‌های ورودی"
 
@@ -168,7 +168,7 @@ msgstr "افزایش خروجی"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:211
-#: src/contents/ui/Reverb.qml:309 src/contents/ui/RNNoise.qml:273
+#: src/contents/ui/RNNoise.qml:273 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:433
 #, fuzzy
 msgid "Using %1"
@@ -254,18 +254,18 @@ msgstr "گوش کن"
 #: src/contents/ui/Expander.qml:808 src/contents/ui/Filter.qml:228
 #: src/contents/ui/Gate.qml:944 src/contents/ui/LevelMeter.qml:256
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
-#: src/contents/ui/main.qml:411 src/contents/ui/Maximizer.qml:131
+#: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/Reverb.qml:346
-#: src/contents/ui/RNNoise.qml:296 src/contents/ui/Speex.qml:183
-#: src/contents/ui/StereoTools.qml:462
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:296
+#: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:183
+#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:413
 msgid "Reset"
 msgstr "بازنشانی"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:449
-#: src/contents/ui/Gate.qml:473 src/contents/ui/main.qml:329
-#: src/contents/ui/StereoTools.qml:304
+#: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:304
+#: src/contents/ui/main.qml:331
 msgid "Output"
 msgstr "خروجی"
 
@@ -322,8 +322,8 @@ msgstr "کمپرسور"
 
 #: src/contents/ui/Compressor.qml:70 src/contents/ui/Compressor.qml:301
 #: src/contents/ui/Deesser.qml:71 src/contents/ui/Delay.qml:56
-#: src/contents/ui/Delay.qml:214 src/contents/ui/EqualizerBandMenu.qml:45
-#: src/contents/ui/Equalizer.qml:112 src/contents/ui/Expander.qml:70
+#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:112
+#: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:70
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:285
 #: src/contents/ui/Limiter.qml:52 src/contents/ui/Loudness.qml:54
 #: src/contents/ui/MultibandCompressor.qml:416
@@ -664,6 +664,50 @@ msgstr "پاکت"
 msgid "Stereo Split"
 msgstr "تقسیم استریو"
 
+#: src/contents/ui/Convolver.qml:100
+msgid "First"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:112
+#, fuzzy
+msgid "Second"
+msgstr "هسته دوم"
+
+#: src/contents/ui/Convolver.qml:144
+msgid "Combine"
+msgstr "ترکیب"
+
+#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:254
+msgid "Spectrum"
+msgstr "طیف"
+
+#: src/contents/ui/Convolver.qml:287
+#, fuzzy
+msgid "Convolver Impulse Is Not Set"
+msgstr "ترکیب پاسخ‌های ضربه‌ای"
+
+#: src/contents/ui/Convolver.qml:324
+msgid "Rate"
+msgstr "نرخ"
+
+#: src/contents/ui/Convolver.qml:329 src/contents/ui/Delay.qml:60
+#: src/contents/ui/Delay.qml:71 src/contents/ui/Delay.qml:218
+#: src/contents/ui/Delay.qml:229
+msgid "Samples"
+msgstr "نمونه ها"
+
+#: src/contents/ui/Convolver.qml:334
+msgid "Duration"
+msgstr "مدت زمان"
+
+#: src/contents/ui/Convolver.qml:371
+msgid "Stereo Width"
+msgstr "عرض استریو"
+
+#: src/contents/ui/Convolver.qml:422 src/tags_plugin_name.cpp:25
+msgid "Autogain"
+msgstr "افزایش خودکار"
+
 #: src/contents/ui/ConvolverImpulseSheet.qml:47
 #, fuzzy
 msgid "Impluse File Imported."
@@ -714,50 +758,6 @@ msgstr "حذف ایمپالس"
 msgid "Import Impulse"
 msgstr "وارد کردن ایمپالس"
 
-#: src/contents/ui/Convolver.qml:100
-msgid "First"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:112
-#, fuzzy
-msgid "Second"
-msgstr "هسته دوم"
-
-#: src/contents/ui/Convolver.qml:144
-msgid "Combine"
-msgstr "ترکیب"
-
-#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:254
-msgid "Spectrum"
-msgstr "طیف"
-
-#: src/contents/ui/Convolver.qml:287
-#, fuzzy
-msgid "Convolver Impulse Is Not Set"
-msgstr "ترکیب پاسخ‌های ضربه‌ای"
-
-#: src/contents/ui/Convolver.qml:324
-msgid "Rate"
-msgstr "نرخ"
-
-#: src/contents/ui/Convolver.qml:329 src/contents/ui/Delay.qml:60
-#: src/contents/ui/Delay.qml:71 src/contents/ui/Delay.qml:218
-#: src/contents/ui/Delay.qml:229
-msgid "Samples"
-msgstr "نمونه ها"
-
-#: src/contents/ui/Convolver.qml:334
-msgid "Duration"
-msgstr "مدت زمان"
-
-#: src/contents/ui/Convolver.qml:371
-msgid "Stereo Width"
-msgstr "عرض استریو"
-
-#: src/contents/ui/Convolver.qml:422 src/tags_plugin_name.cpp:25
-msgid "Autogain"
-msgstr "افزایش خودکار"
-
 #: src/contents/ui/Crossfeed.qml:64
 msgid "Cutoff"
 msgstr "قطع"
@@ -775,8 +775,8 @@ msgstr "کراس‌فید"
 msgid "Default"
 msgstr "پیش فرض"
 
-#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/main.qml:299
-#: src/contents/ui/Reverb.qml:325
+#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
+#: src/contents/ui/main.qml:301
 msgid "Presets"
 msgstr "تنظیمات از پیش تعیین شده"
 
@@ -974,101 +974,10 @@ msgstr "سرکوب اکوی باقیمانده"
 msgid "Near End Suppression"
 msgstr "سرکوب اکوی نزدیک به انتها"
 
-#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:348
-#: src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/main.qml:350
 msgid "Input"
 msgstr "ورودی"
-
-#: src/contents/ui/EqualizerBandMenu.qml:25
-#: src/contents/ui/MultibandCompressor.qml:651
-#: src/contents/ui/MultibandCompressor.qml:921
-#: src/contents/ui/MultibandGate.qml:619 src/contents/ui/MultibandGate.qml:889
-#, fuzzy
-msgid "Band"
-msgstr "باندها"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
-msgid "Bell"
-msgstr "زنگ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Hi-pass"
-msgstr "دور زدن"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Hi-shelf"
-msgstr "بالا-قفسه"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Lo-pass"
-msgstr "دور زدن"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Lo-shelf"
-msgstr "پایین-قفسه"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
-msgid "Notch"
-msgstr "شکاف"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
-msgid "Resonance"
-msgstr "پیچش صدا"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Allpass"
-msgstr "دور زدن"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Bandpass"
-msgstr "باند دور زدن"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
-#, fuzzy
-msgid "Ladder-pass"
-msgstr "گذر-نردبان"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Ladder-rej"
-msgstr "رد-نردبان"
-
-#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:89
-msgid "Slope"
-msgstr "شیب"
-
-#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:112
-#: src/contents/ui/MultibandCompressor.qml:188
-#: src/contents/ui/MultibandGate.qml:120 src/contents/ui/PipeWirePage.qml:359
-msgid "Frequency"
-msgstr "فرکانس"
-
-#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:143
-#: src/contents/ui/Limiter.qml:512 src/contents/ui/MultibandCompressor.qml:336
-#: src/contents/ui/MultibandGate.qml:217
-msgid "Gain"
-msgstr "افزایش"
-
-#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:159
-#: src/contents/ui/Pitch.qml:42
-msgid "Quality"
-msgstr "کیفیت"
-
-#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:128
-msgid "Width"
-msgstr "عرض"
-
-#: src/contents/ui/EqualizerBandMenu.qml:167
-#: src/contents/ui/MultibandCompressor.qml:78
-#: src/contents/ui/MultibandGate.qml:78
-msgid "Solo"
-msgstr "انفرادی"
 
 #: src/contents/ui/Equalizer.qml:63
 msgid "APO Presets"
@@ -1160,6 +1069,97 @@ msgstr "وارد کردن فایل پیش‌تنظیم GraphicEQ"
 #, fuzzy
 msgid "Export APO"
 msgstr "صادرات از پیش تعیین شده"
+
+#: src/contents/ui/EqualizerBandMenu.qml:25
+#: src/contents/ui/MultibandCompressor.qml:651
+#: src/contents/ui/MultibandCompressor.qml:921
+#: src/contents/ui/MultibandGate.qml:619 src/contents/ui/MultibandGate.qml:889
+#, fuzzy
+msgid "Band"
+msgstr "باندها"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
+msgid "Bell"
+msgstr "زنگ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Hi-pass"
+msgstr "دور زدن"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Hi-shelf"
+msgstr "بالا-قفسه"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Lo-pass"
+msgstr "دور زدن"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Lo-shelf"
+msgstr "پایین-قفسه"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
+msgid "Notch"
+msgstr "شکاف"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
+msgid "Resonance"
+msgstr "پیچش صدا"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Allpass"
+msgstr "دور زدن"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Bandpass"
+msgstr "باند دور زدن"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
+#, fuzzy
+msgid "Ladder-pass"
+msgstr "گذر-نردبان"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Ladder-rej"
+msgstr "رد-نردبان"
+
+#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:89
+msgid "Slope"
+msgstr "شیب"
+
+#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:112
+#: src/contents/ui/MultibandCompressor.qml:188
+#: src/contents/ui/MultibandGate.qml:120 src/contents/ui/PipeWirePage.qml:370
+msgid "Frequency"
+msgstr "فرکانس"
+
+#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:143
+#: src/contents/ui/Limiter.qml:512 src/contents/ui/MultibandCompressor.qml:336
+#: src/contents/ui/MultibandGate.qml:217
+msgid "Gain"
+msgstr "افزایش"
+
+#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:159
+#: src/contents/ui/Pitch.qml:42
+msgid "Quality"
+msgstr "کیفیت"
+
+#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:128
+msgid "Width"
+msgstr "عرض"
+
+#: src/contents/ui/EqualizerBandMenu.qml:167
+#: src/contents/ui/MultibandCompressor.qml:78
+#: src/contents/ui/MultibandGate.qml:78
+msgid "Solo"
+msgstr "انفرادی"
 
 #: src/contents/ui/Exciter.qml:143
 #, fuzzy
@@ -1537,67 +1537,6 @@ msgstr "بریدن"
 msgid "Clipping"
 msgstr "بریدن"
 
-#: src/contents/ui/main.qml:124
-#, fuzzy
-msgid "Reset Settings?"
-msgstr "_بازنشانی تنظیمات"
-
-#: src/contents/ui/main.qml:125
-msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
-
-#: src/contents/ui/main.qml:146
-#, fuzzy
-msgid "Audio effects for PipeWire applications"
-msgstr "جلوه‌های صوتی برای برنامه‌های PipeWire"
-
-#: src/contents/ui/main.qml:155
-#, fuzzy
-msgctxt "@info:credit"
-msgid "Developer"
-msgstr "پاکت"
-
-#: src/contents/ui/main.qml:247
-#, fuzzy
-msgid "Active"
-msgstr "مدل فعال"
-
-#: src/contents/ui/main.qml:258 src/contents/ui/main.qml:391
-#: src/contents/ui/ShortcutsSheet.qml:228
-#, fuzzy
-msgid "Shortcuts"
-msgstr "_میانبرها"
-
-#: src/contents/ui/main.qml:267 src/contents/ui/main.qml:399
-msgid "Manual"
-msgstr ""
-
-#: src/contents/ui/main.qml:277 src/contents/ui/main.qml:431
-#, fuzzy
-msgid "Quit"
-msgstr "_خروج"
-
-#: src/contents/ui/main.qml:307
-msgid "Turn Effects On/Off"
-msgstr ""
-
-#: src/contents/ui/main.qml:367
-msgid "PipeWire"
-msgstr "پایپ‌وایر"
-
-#: src/contents/ui/main.qml:383 src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:523
-#: src/contents/ui/PreferencesSheet.qml:536
-#, fuzzy
-msgid "Preferences"
-msgstr "_ترجیحات"
-
-#: src/contents/ui/main.qml:423
-#, fuzzy
-msgid "About Easy Effects"
-msgstr "_درباره Easy Effects"
-
 #: src/contents/ui/MenuAddPlugins.qml:128
 #, fuzzy
 msgid "Added Effect"
@@ -1698,12 +1637,12 @@ msgid "Add Effect"
 msgstr "افزودن افکت"
 
 #: src/contents/ui/PageStreamsEffects.qml:443
-#: src/contents/ui/PageStreamsEffects.qml:666
+#: src/contents/ui/PageStreamsEffects.qml:668
 msgid "Players"
 msgstr "پلیرها"
 
 #: src/contents/ui/PageStreamsEffects.qml:460
-#: src/contents/ui/PageStreamsEffects.qml:666
+#: src/contents/ui/PageStreamsEffects.qml:668
 msgid "Recorders"
 msgstr "ضبط کننده ها"
 
@@ -1719,16 +1658,16 @@ msgstr "بدون افکت"
 msgid "Audio Stream Not Modified"
 msgstr "جریان صوتی تغییر نکرده است"
 
-#: src/contents/ui/PageStreamsEffects.qml:676
+#: src/contents/ui/PageStreamsEffects.qml:678
 msgid "Effects"
 msgstr "جلوه ها"
 
-#: src/contents/ui/PageStreamsEffects.qml:693
+#: src/contents/ui/PageStreamsEffects.qml:695
 #, fuzzy
 msgid "Input Monitoring"
 msgstr "فعال‌سازی پایش ورودی"
 
-#: src/contents/ui/PageStreamsEffects.qml:706
+#: src/contents/ui/PageStreamsEffects.qml:708
 msgid "Excluded Apps"
 msgstr "برنامه های مستثنی شده"
 
@@ -1843,6 +1782,11 @@ msgstr "موج سینوسی"
 msgid "White Noise"
 msgstr "نویز سفید"
 
+#: src/contents/ui/PipeWirePage.qml:359
+#, fuzzy
+msgid "Pink Noise"
+msgstr "نویز سفید"
+
 #: src/contents/ui/Pitch.qml:50
 msgid "Sequence Length"
 msgstr "طول دنباله"
@@ -1886,6 +1830,14 @@ msgstr "جستجوی سریع"
 #: src/contents/ui/Pitch.qml:244
 msgid "Anti-aliasing"
 msgstr "ضد-لغزش"
+
+#: src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:385
+#, fuzzy
+msgid "Preferences"
+msgstr "_ترجیحات"
 
 #: src/contents/ui/PreferencesSheet.qml:34
 #, fuzzy
@@ -2258,6 +2210,57 @@ msgstr "افزایش خودکار"
 msgid "No Preset Loaded"
 msgstr "هیچ پیش‌تنظیمی بارگذاری نشده است"
 
+#: src/contents/ui/RNNoise.qml:55
+#, fuzzy
+msgid "Model File Imported."
+msgstr "فایل ایمپالس وارد نشده است"
+
+#: src/contents/ui/RNNoise.qml:57
+#, fuzzy
+msgid "Failed to Import the Model File."
+msgstr "وارد کردن فایل مدل"
+
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
+msgid "Voice Detection"
+msgstr "تشخیص صدا"
+
+#: src/contents/ui/RNNoise.qml:108
+msgid "Wet Level"
+msgstr "سطح خیس"
+
+#: src/contents/ui/RNNoise.qml:147
+#, fuzzy
+msgid "Use the Standard Model"
+msgstr "مدل استاندارد"
+
+#: src/contents/ui/RNNoise.qml:158
+#, fuzzy
+msgid "User Models"
+msgstr "مدل‌های RNoise"
+
+#: src/contents/ui/RNNoise.qml:207
+#, fuzzy
+msgid "Loaded Model: %1"
+msgstr "مدل استاندارد"
+
+#: src/contents/ui/RNNoise.qml:219
+#, fuzzy
+msgid "Delete this Model"
+msgstr "این فایل مدل را حذف کنید"
+
+#: src/contents/ui/RNNoise.qml:224
+#, fuzzy
+msgid "Removed Model: %1"
+msgstr "این فایل مدل را حذف کنید"
+
+#: src/contents/ui/RNNoise.qml:226
+msgid "Failed to Remove the Model: %1"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:289
+msgid "Import Model"
+msgstr "وارد کردن مدل"
+
 #: src/contents/ui/Reverb.qml:52
 msgid "Room Size"
 msgstr "اندازه اتاق"
@@ -2340,57 +2343,6 @@ msgstr "دیسکو"
 msgid "Large Occupied Hall"
 msgstr "سالن بزرگ و اشغال شده"
 
-#: src/contents/ui/RNNoise.qml:55
-#, fuzzy
-msgid "Model File Imported."
-msgstr "فایل ایمپالس وارد نشده است"
-
-#: src/contents/ui/RNNoise.qml:57
-#, fuzzy
-msgid "Failed to Import the Model File."
-msgstr "وارد کردن فایل مدل"
-
-#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
-msgid "Voice Detection"
-msgstr "تشخیص صدا"
-
-#: src/contents/ui/RNNoise.qml:108
-msgid "Wet Level"
-msgstr "سطح خیس"
-
-#: src/contents/ui/RNNoise.qml:147
-#, fuzzy
-msgid "Use the Standard Model"
-msgstr "مدل استاندارد"
-
-#: src/contents/ui/RNNoise.qml:158
-#, fuzzy
-msgid "User Models"
-msgstr "مدل‌های RNoise"
-
-#: src/contents/ui/RNNoise.qml:207
-#, fuzzy
-msgid "Loaded Model: %1"
-msgstr "مدل استاندارد"
-
-#: src/contents/ui/RNNoise.qml:219
-#, fuzzy
-msgid "Delete this Model"
-msgstr "این فایل مدل را حذف کنید"
-
-#: src/contents/ui/RNNoise.qml:224
-#, fuzzy
-msgid "Removed Model: %1"
-msgstr "این فایل مدل را حذف کنید"
-
-#: src/contents/ui/RNNoise.qml:226
-msgid "Failed to Remove the Model: %1"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:289
-msgid "Import Model"
-msgstr "وارد کردن مدل"
-
 #: src/contents/ui/ShortcutsSheet.qml:34
 #, fuzzy
 msgid "Show Help"
@@ -2418,6 +2370,12 @@ msgstr "نسخه easyeffects را چاپ کنید"
 #: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:260
+#: src/contents/ui/main.qml:393
+#, fuzzy
+msgid "Shortcuts"
+msgstr "_میانبرها"
 
 #: src/contents/ui/Speex.qml:49
 msgid "Denoise"
@@ -2515,6 +2473,53 @@ msgstr "پایه استریو"
 #: src/contents/ui/StereoTools.qml:370
 msgid "Stereo Phase"
 msgstr "فاز استریو"
+
+#: src/contents/ui/main.qml:124
+#, fuzzy
+msgid "Reset Settings?"
+msgstr "_بازنشانی تنظیمات"
+
+#: src/contents/ui/main.qml:125
+msgid "Are you sure you want to reset all Easy Effects settings?"
+msgstr ""
+
+#: src/contents/ui/main.qml:146
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "جلوه‌های صوتی برای برنامه‌های PipeWire"
+
+#: src/contents/ui/main.qml:157
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "پاکت"
+
+#: src/contents/ui/main.qml:249
+#, fuzzy
+msgid "Active"
+msgstr "مدل فعال"
+
+#: src/contents/ui/main.qml:269 src/contents/ui/main.qml:401
+msgid "Manual"
+msgstr ""
+
+#: src/contents/ui/main.qml:279 src/contents/ui/main.qml:433
+#, fuzzy
+msgid "Quit"
+msgstr "_خروج"
+
+#: src/contents/ui/main.qml:309
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:369
+msgid "PipeWire"
+msgstr "پایپ‌وایر"
+
+#: src/contents/ui/main.qml:425
+#, fuzzy
+msgid "About Easy Effects"
+msgstr "_درباره Easy Effects"
 
 #: src/plugin_base.cpp:242
 msgid "(Mic)"

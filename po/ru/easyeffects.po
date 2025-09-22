@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-21 15:46-0300\n"
+"POT-Creation-Date: 2025-09-22 21:34+0000\n"
 "PO-Revision-Date: 2025-09-10 06:03+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -72,11 +72,11 @@ msgstr "Запустить приложение с включённым режи
 msgid "Enable debug messages."
 msgstr "Включить отладочные сообщения."
 
-#: src/command_line_parser.cpp:138 src/contents/ui/main.qml:237
+#: src/command_line_parser.cpp:138 src/contents/ui/main.qml:239
 msgid "Output Presets"
 msgstr "Предустановки выхода"
 
-#: src/command_line_parser.cpp:146 src/contents/ui/main.qml:227
+#: src/command_line_parser.cpp:146 src/contents/ui/main.qml:229
 msgid "Input Presets"
 msgstr "Предустановки входа"
 
@@ -172,7 +172,7 @@ msgstr "Усиление выхода"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:211
-#: src/contents/ui/Reverb.qml:309 src/contents/ui/RNNoise.qml:273
+#: src/contents/ui/RNNoise.qml:273 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:433
 msgid "Using %1"
 msgstr "Используется %1"
@@ -258,18 +258,18 @@ msgstr "Прослушать"
 #: src/contents/ui/Expander.qml:808 src/contents/ui/Filter.qml:228
 #: src/contents/ui/Gate.qml:944 src/contents/ui/LevelMeter.qml:256
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
-#: src/contents/ui/main.qml:411 src/contents/ui/Maximizer.qml:131
+#: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/Reverb.qml:346
-#: src/contents/ui/RNNoise.qml:296 src/contents/ui/Speex.qml:183
-#: src/contents/ui/StereoTools.qml:462
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:296
+#: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:183
+#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:413
 msgid "Reset"
 msgstr "Сброс"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:449
-#: src/contents/ui/Gate.qml:473 src/contents/ui/main.qml:329
-#: src/contents/ui/StereoTools.qml:304
+#: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:304
+#: src/contents/ui/main.qml:331
 msgid "Output"
 msgstr "Выход"
 
@@ -327,8 +327,8 @@ msgstr "Компрессор"
 
 #: src/contents/ui/Compressor.qml:70 src/contents/ui/Compressor.qml:301
 #: src/contents/ui/Deesser.qml:71 src/contents/ui/Delay.qml:56
-#: src/contents/ui/Delay.qml:214 src/contents/ui/EqualizerBandMenu.qml:45
-#: src/contents/ui/Equalizer.qml:112 src/contents/ui/Expander.qml:70
+#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:112
+#: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:70
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:285
 #: src/contents/ui/Limiter.qml:52 src/contents/ui/Loudness.qml:54
 #: src/contents/ui/MultibandCompressor.qml:416
@@ -677,6 +677,50 @@ msgstr "Огибающая"
 msgid "Stereo Split"
 msgstr "Разделение стерео"
 
+#: src/contents/ui/Convolver.qml:100
+msgid "First"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:112
+#, fuzzy
+msgid "Second"
+msgstr "Второе ядро"
+
+#: src/contents/ui/Convolver.qml:144
+msgid "Combine"
+msgstr "Объединить"
+
+#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:254
+msgid "Spectrum"
+msgstr "Спектр"
+
+#: src/contents/ui/Convolver.qml:287
+#, fuzzy
+msgid "Convolver Impulse Is Not Set"
+msgstr "Объединить импульсные характеристики"
+
+#: src/contents/ui/Convolver.qml:324
+msgid "Rate"
+msgstr "Частота"
+
+#: src/contents/ui/Convolver.qml:329 src/contents/ui/Delay.qml:60
+#: src/contents/ui/Delay.qml:71 src/contents/ui/Delay.qml:218
+#: src/contents/ui/Delay.qml:229
+msgid "Samples"
+msgstr "Образцы"
+
+#: src/contents/ui/Convolver.qml:334
+msgid "Duration"
+msgstr "Длительность"
+
+#: src/contents/ui/Convolver.qml:371
+msgid "Stereo Width"
+msgstr "Ширина стерео"
+
+#: src/contents/ui/Convolver.qml:422 src/tags_plugin_name.cpp:25
+msgid "Autogain"
+msgstr "Авторегулятор"
+
 #: src/contents/ui/ConvolverImpulseSheet.qml:47
 #, fuzzy
 msgid "Impluse File Imported."
@@ -727,50 +771,6 @@ msgstr "Удалить Импульс"
 msgid "Import Impulse"
 msgstr "Импортировать импульс"
 
-#: src/contents/ui/Convolver.qml:100
-msgid "First"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:112
-#, fuzzy
-msgid "Second"
-msgstr "Второе ядро"
-
-#: src/contents/ui/Convolver.qml:144
-msgid "Combine"
-msgstr "Объединить"
-
-#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:254
-msgid "Spectrum"
-msgstr "Спектр"
-
-#: src/contents/ui/Convolver.qml:287
-#, fuzzy
-msgid "Convolver Impulse Is Not Set"
-msgstr "Объединить импульсные характеристики"
-
-#: src/contents/ui/Convolver.qml:324
-msgid "Rate"
-msgstr "Частота"
-
-#: src/contents/ui/Convolver.qml:329 src/contents/ui/Delay.qml:60
-#: src/contents/ui/Delay.qml:71 src/contents/ui/Delay.qml:218
-#: src/contents/ui/Delay.qml:229
-msgid "Samples"
-msgstr "Образцы"
-
-#: src/contents/ui/Convolver.qml:334
-msgid "Duration"
-msgstr "Длительность"
-
-#: src/contents/ui/Convolver.qml:371
-msgid "Stereo Width"
-msgstr "Ширина стерео"
-
-#: src/contents/ui/Convolver.qml:422 src/tags_plugin_name.cpp:25
-msgid "Autogain"
-msgstr "Авторегулятор"
-
 #: src/contents/ui/Crossfeed.qml:64
 msgid "Cutoff"
 msgstr "Усечение"
@@ -788,8 +788,8 @@ msgstr "Перекрёстная подача"
 msgid "Default"
 msgstr "По умолчанию"
 
-#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/main.qml:299
-#: src/contents/ui/Reverb.qml:325
+#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
+#: src/contents/ui/main.qml:301
 msgid "Presets"
 msgstr "Предустановки"
 
@@ -997,101 +997,10 @@ msgstr "Подавление эха ближнего конца"
 # msgid "Influence of integrated measurements"
 # msgstr "Влияние комплексных измерений"
 # ###############################################
-#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/main.qml:348
-#: src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/main.qml:350
 msgid "Input"
 msgstr "Вход"
-
-#: src/contents/ui/EqualizerBandMenu.qml:25
-#: src/contents/ui/MultibandCompressor.qml:651
-#: src/contents/ui/MultibandCompressor.qml:921
-#: src/contents/ui/MultibandGate.qml:619 src/contents/ui/MultibandGate.qml:889
-#, fuzzy
-msgid "Band"
-msgstr "Число полос"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
-msgid "Bell"
-msgstr "Колокол"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Hi-pass"
-msgstr "Фильтр ВЧ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Hi-shelf"
-msgstr "Высокочастотный полочный фильтр"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Lo-pass"
-msgstr "Низкочастотный фильтр"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Lo-shelf"
-msgstr "Низкочастотный полочный фильтр"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
-msgid "Notch"
-msgstr "Вырез"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
-msgid "Resonance"
-msgstr "Резонансы"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Allpass"
-msgstr "Обход"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Bandpass"
-msgstr "Обход полосы"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
-#, fuzzy
-msgid "Ladder-pass"
-msgstr "Лестничный фильтр"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Ladder-rej"
-msgstr "Лестнично-заграждающий фильтр"
-
-#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:89
-msgid "Slope"
-msgstr "Наклон"
-
-#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:112
-#: src/contents/ui/MultibandCompressor.qml:188
-#: src/contents/ui/MultibandGate.qml:120 src/contents/ui/PipeWirePage.qml:359
-msgid "Frequency"
-msgstr "Частота"
-
-#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:143
-#: src/contents/ui/Limiter.qml:512 src/contents/ui/MultibandCompressor.qml:336
-#: src/contents/ui/MultibandGate.qml:217
-msgid "Gain"
-msgstr "Усиление"
-
-#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:159
-#: src/contents/ui/Pitch.qml:42
-msgid "Quality"
-msgstr "Качество"
-
-#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:128
-msgid "Width"
-msgstr "Ширина"
-
-#: src/contents/ui/EqualizerBandMenu.qml:167
-#: src/contents/ui/MultibandCompressor.qml:78
-#: src/contents/ui/MultibandGate.qml:78
-msgid "Solo"
-msgstr "Соло"
 
 #: src/contents/ui/Equalizer.qml:63
 msgid "APO Presets"
@@ -1185,6 +1094,97 @@ msgstr "Импортировать файл предустановки GraphicEQ
 #, fuzzy
 msgid "Export APO"
 msgstr "Экспорт предустановки"
+
+#: src/contents/ui/EqualizerBandMenu.qml:25
+#: src/contents/ui/MultibandCompressor.qml:651
+#: src/contents/ui/MultibandCompressor.qml:921
+#: src/contents/ui/MultibandGate.qml:619 src/contents/ui/MultibandGate.qml:889
+#, fuzzy
+msgid "Band"
+msgstr "Число полос"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
+msgid "Bell"
+msgstr "Колокол"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Hi-pass"
+msgstr "Фильтр ВЧ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Hi-shelf"
+msgstr "Высокочастотный полочный фильтр"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Lo-pass"
+msgstr "Низкочастотный фильтр"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Lo-shelf"
+msgstr "Низкочастотный полочный фильтр"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
+msgid "Notch"
+msgstr "Вырез"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
+msgid "Resonance"
+msgstr "Резонансы"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Allpass"
+msgstr "Обход"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Bandpass"
+msgstr "Обход полосы"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
+#, fuzzy
+msgid "Ladder-pass"
+msgstr "Лестничный фильтр"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Ladder-rej"
+msgstr "Лестнично-заграждающий фильтр"
+
+#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:89
+msgid "Slope"
+msgstr "Наклон"
+
+#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:112
+#: src/contents/ui/MultibandCompressor.qml:188
+#: src/contents/ui/MultibandGate.qml:120 src/contents/ui/PipeWirePage.qml:370
+msgid "Frequency"
+msgstr "Частота"
+
+#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:143
+#: src/contents/ui/Limiter.qml:512 src/contents/ui/MultibandCompressor.qml:336
+#: src/contents/ui/MultibandGate.qml:217
+msgid "Gain"
+msgstr "Усиление"
+
+#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:159
+#: src/contents/ui/Pitch.qml:42
+msgid "Quality"
+msgstr "Качество"
+
+#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:128
+msgid "Width"
+msgstr "Ширина"
+
+#: src/contents/ui/EqualizerBandMenu.qml:167
+#: src/contents/ui/MultibandCompressor.qml:78
+#: src/contents/ui/MultibandGate.qml:78
+msgid "Solo"
+msgstr "Соло"
 
 #: src/contents/ui/Exciter.qml:143
 #, fuzzy
@@ -1569,68 +1569,6 @@ msgstr "Диапазон клиппинга"
 msgid "Clipping"
 msgstr "Клиппинг"
 
-#: src/contents/ui/main.qml:124
-#, fuzzy
-msgid "Reset Settings?"
-msgstr "Сбросить настрой_ки"
-
-#: src/contents/ui/main.qml:125
-msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
-
-#: src/contents/ui/main.qml:146
-msgid "Audio effects for PipeWire applications"
-msgstr "Звуковые эффекты для приложений PipeWire"
-
-#: src/contents/ui/main.qml:155
-#, fuzzy
-msgctxt "@info:credit"
-msgid "Developer"
-msgstr "Огибающая"
-
-#: src/contents/ui/main.qml:247
-#, fuzzy
-msgid "Active"
-msgstr "Активировать"
-
-#: src/contents/ui/main.qml:258 src/contents/ui/main.qml:391
-#: src/contents/ui/ShortcutsSheet.qml:228
-#, fuzzy
-msgid "Shortcuts"
-msgstr "_Горячие клавиши"
-
-#: src/contents/ui/main.qml:267 src/contents/ui/main.qml:399
-#, fuzzy
-msgid "Manual"
-msgstr "_Руководство"
-
-#: src/contents/ui/main.qml:277 src/contents/ui/main.qml:431
-#, fuzzy
-msgid "Quit"
-msgstr "_Выйти"
-
-#: src/contents/ui/main.qml:307
-msgid "Turn Effects On/Off"
-msgstr ""
-
-#: src/contents/ui/main.qml:367
-#, fuzzy
-msgid "PipeWire"
-msgstr "_PipeWire"
-
-#: src/contents/ui/main.qml:383 src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:523
-#: src/contents/ui/PreferencesSheet.qml:536
-#, fuzzy
-msgid "Preferences"
-msgstr "_Настройки"
-
-#: src/contents/ui/main.qml:423
-#, fuzzy
-msgid "About Easy Effects"
-msgstr "_О программе Easy Effects"
-
 #: src/contents/ui/MenuAddPlugins.qml:128
 #, fuzzy
 msgid "Added Effect"
@@ -1733,12 +1671,12 @@ msgid "Add Effect"
 msgstr "Добавить эффект"
 
 #: src/contents/ui/PageStreamsEffects.qml:443
-#: src/contents/ui/PageStreamsEffects.qml:666
+#: src/contents/ui/PageStreamsEffects.qml:668
 msgid "Players"
 msgstr "Проигрыватели"
 
 #: src/contents/ui/PageStreamsEffects.qml:460
-#: src/contents/ui/PageStreamsEffects.qml:666
+#: src/contents/ui/PageStreamsEffects.qml:668
 msgid "Recorders"
 msgstr "Рекордеры"
 
@@ -1754,16 +1692,16 @@ msgstr "Без эффектов"
 msgid "Audio Stream Not Modified"
 msgstr "Аудиопоток не изменён"
 
-#: src/contents/ui/PageStreamsEffects.qml:676
+#: src/contents/ui/PageStreamsEffects.qml:678
 msgid "Effects"
 msgstr "Эффекты"
 
-#: src/contents/ui/PageStreamsEffects.qml:693
+#: src/contents/ui/PageStreamsEffects.qml:695
 #, fuzzy
 msgid "Input Monitoring"
 msgstr "Включить/отключить мониторинг"
 
-#: src/contents/ui/PageStreamsEffects.qml:706
+#: src/contents/ui/PageStreamsEffects.qml:708
 msgid "Excluded Apps"
 msgstr "Исключённые приложения"
 
@@ -1879,6 +1817,10 @@ msgstr "Синусоида"
 msgid "White Noise"
 msgstr "Белый шум"
 
+#: src/contents/ui/PipeWirePage.qml:359
+msgid "Pink Noise"
+msgstr "Розовый шум"
+
 #: src/contents/ui/Pitch.qml:50
 msgid "Sequence Length"
 msgstr "Длина последовательности"
@@ -1922,6 +1864,14 @@ msgstr "Быстрая перемотка"
 #: src/contents/ui/Pitch.qml:244
 msgid "Anti-aliasing"
 msgstr "Сглаживание"
+
+#: src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:385
+#, fuzzy
+msgid "Preferences"
+msgstr "_Настройки"
 
 #: src/contents/ui/PreferencesSheet.qml:34
 #, fuzzy
@@ -2297,6 +2247,57 @@ msgstr "Авторегулятор"
 msgid "No Preset Loaded"
 msgstr "Предустановка не загружена"
 
+#: src/contents/ui/RNNoise.qml:55
+#, fuzzy
+msgid "Model File Imported."
+msgstr "Файл импульса не импортирован"
+
+#: src/contents/ui/RNNoise.qml:57
+#, fuzzy
+msgid "Failed to Import the Model File."
+msgstr "Импорт файла модели"
+
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
+msgid "Voice Detection"
+msgstr "Распознаватель голоса"
+
+#: src/contents/ui/RNNoise.qml:108
+msgid "Wet Level"
+msgstr "Ур. обработки"
+
+#: src/contents/ui/RNNoise.qml:147
+#, fuzzy
+msgid "Use the Standard Model"
+msgstr "Стандартная модель"
+
+#: src/contents/ui/RNNoise.qml:158
+#, fuzzy
+msgid "User Models"
+msgstr "Модели RNNoise"
+
+#: src/contents/ui/RNNoise.qml:207
+#, fuzzy
+msgid "Loaded Model: %1"
+msgstr "Стандартная модель"
+
+#: src/contents/ui/RNNoise.qml:219
+#, fuzzy
+msgid "Delete this Model"
+msgstr "Удалить этот файл модели"
+
+#: src/contents/ui/RNNoise.qml:224
+#, fuzzy
+msgid "Removed Model: %1"
+msgstr "Активная модель"
+
+#: src/contents/ui/RNNoise.qml:226
+msgid "Failed to Remove the Model: %1"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:289
+msgid "Import Model"
+msgstr "Импортировать модель"
+
 # Taking lingual shortcuts to squeeze it in the text box
 #: src/contents/ui/Reverb.qml:52
 msgid "Room Size"
@@ -2381,57 +2382,6 @@ msgstr "Танцзал"
 msgid "Large Occupied Hall"
 msgstr "Большой занятый зал"
 
-#: src/contents/ui/RNNoise.qml:55
-#, fuzzy
-msgid "Model File Imported."
-msgstr "Файл импульса не импортирован"
-
-#: src/contents/ui/RNNoise.qml:57
-#, fuzzy
-msgid "Failed to Import the Model File."
-msgstr "Импорт файла модели"
-
-#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
-msgid "Voice Detection"
-msgstr "Распознаватель голоса"
-
-#: src/contents/ui/RNNoise.qml:108
-msgid "Wet Level"
-msgstr "Ур. обработки"
-
-#: src/contents/ui/RNNoise.qml:147
-#, fuzzy
-msgid "Use the Standard Model"
-msgstr "Стандартная модель"
-
-#: src/contents/ui/RNNoise.qml:158
-#, fuzzy
-msgid "User Models"
-msgstr "Модели RNNoise"
-
-#: src/contents/ui/RNNoise.qml:207
-#, fuzzy
-msgid "Loaded Model: %1"
-msgstr "Стандартная модель"
-
-#: src/contents/ui/RNNoise.qml:219
-#, fuzzy
-msgid "Delete this Model"
-msgstr "Удалить этот файл модели"
-
-#: src/contents/ui/RNNoise.qml:224
-#, fuzzy
-msgid "Removed Model: %1"
-msgstr "Активная модель"
-
-#: src/contents/ui/RNNoise.qml:226
-msgid "Failed to Remove the Model: %1"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:289
-msgid "Import Model"
-msgstr "Импортировать модель"
-
 #: src/contents/ui/ShortcutsSheet.qml:34
 #, fuzzy
 msgid "Show Help"
@@ -2459,6 +2409,12 @@ msgstr "Вывод версии easyeffects"
 #: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:260
+#: src/contents/ui/main.qml:393
+#, fuzzy
+msgid "Shortcuts"
+msgstr "_Горячие клавиши"
 
 #: src/contents/ui/Speex.qml:49
 msgid "Denoise"
@@ -2555,6 +2511,54 @@ msgstr "База стерео"
 #: src/contents/ui/StereoTools.qml:370
 msgid "Stereo Phase"
 msgstr "Фаза стерео"
+
+#: src/contents/ui/main.qml:124
+#, fuzzy
+msgid "Reset Settings?"
+msgstr "Сбросить настрой_ки"
+
+#: src/contents/ui/main.qml:125
+msgid "Are you sure you want to reset all Easy Effects settings?"
+msgstr ""
+
+#: src/contents/ui/main.qml:146
+msgid "Audio effects for PipeWire applications"
+msgstr "Звуковые эффекты для приложений PipeWire"
+
+#: src/contents/ui/main.qml:157
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Огибающая"
+
+#: src/contents/ui/main.qml:249
+#, fuzzy
+msgid "Active"
+msgstr "Активировать"
+
+#: src/contents/ui/main.qml:269 src/contents/ui/main.qml:401
+#, fuzzy
+msgid "Manual"
+msgstr "_Руководство"
+
+#: src/contents/ui/main.qml:279 src/contents/ui/main.qml:433
+#, fuzzy
+msgid "Quit"
+msgstr "_Выйти"
+
+#: src/contents/ui/main.qml:309
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:369
+#, fuzzy
+msgid "PipeWire"
+msgstr "_PipeWire"
+
+#: src/contents/ui/main.qml:425
+#, fuzzy
+msgid "About Easy Effects"
+msgstr "_О программе Easy Effects"
 
 #: src/plugin_base.cpp:242
 msgid "(Mic)"
@@ -4634,9 +4638,6 @@ msgstr "Звуковые эффекты для приложений PipeWire"
 
 #~ msgid "Triangle"
 #~ msgstr "Треугольный"
-
-#~ msgid "Pink Noise"
-#~ msgstr "Розовый шум"
 
 #~ msgid "Ticks"
 #~ msgstr "Тики"
