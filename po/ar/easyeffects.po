@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-16 18:05+0000\n"
-"PO-Revision-Date: 2025-09-21 18:49+0000\n"
+"PO-Revision-Date: 2025-09-22 07:01+0000\n"
 "Last-Translator: Abdelrahman Ehab Elsaied Hassan <s3409663@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
@@ -49,28 +49,29 @@ msgid "Show available presets."
 msgstr "عرض الإعدادات المسبقة."
 
 #: src/command_line_parser.cpp:50
+#, fuzzy
 msgid "Get the active input/output preset."
-msgstr ""
+msgstr "عرض الإعداد المسبق النشط للإدخال/الإخراج."
 
 #: src/command_line_parser.cpp:50
 msgid "preset-type"
-msgstr ""
+msgstr "نوع الإعدادا المسبق"
 
 #: src/command_line_parser.cpp:51
 msgid "Get the active input and output presets."
-msgstr ""
+msgstr "عرض الإعدادات المسبقة النشطة للإدخال والإخراج."
 
 #: src/command_line_parser.cpp:52
 msgid "Deprecated. Use --service-mode instead."
-msgstr ""
+msgstr "مهمل. استخدم --service-mode بدلًا منه."
 
 #: src/command_line_parser.cpp:53
 msgid "Start the application with service mode turned on."
-msgstr ""
+msgstr "قم بتشغيل التطبيق مع تفعيل وضع الخدمة."
 
 #: src/command_line_parser.cpp:54
 msgid "Enable debug messages."
-msgstr ""
+msgstr "تفعيل رسائل تصحيح الأخطاء."
 
 #: src/command_line_parser.cpp:138 src/contents/ui/main.qml:237
 msgid "Output Presets"
@@ -170,26 +171,24 @@ msgstr "خرج التضخيم"
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:433
 #: src/contents/ui/Limiter.qml:615
 msgid "Using %1"
-msgstr ""
+msgstr "الاستخدام 1%"
 
 #: src/contents/ui/Autogain.qml:294 src/contents/ui/DeepFilterNet.qml:185
 #: src/contents/ui/LevelMeter.qml:249 src/contents/ui/Pitch.qml:227
 msgid "Reset History"
-msgstr ""
+msgstr "إعادة تعيين السجل"
 
 #: src/contents/ui/Autogain.qml:301
-#, fuzzy
 msgid "Force Silence"
-msgstr "الصمت"
+msgstr "كتم إجباري"
 
 #: src/contents/ui/Autogain.qml:302
 msgid "Force Silence When the Level is Below the Silence Threshold"
-msgstr ""
+msgstr "فرض الصمت عندما يكون مستوى الصوت أقل من عتبة الصمت."
 
 #: src/contents/ui/Autogain.qml:313 src/contents/ui/Pitch.qml:254
-#, fuzzy
 msgid "Reset Settings"
-msgstr "أعد ضبط الإعدادات"
+msgstr "إعادة تعيين الإعدادات"
 
 #: src/contents/ui/BassEnhancer.qml:38 src/contents/ui/Exciter.qml:38
 msgid "Blend Harmonics"
@@ -218,11 +217,11 @@ msgstr "التركيز"
 
 #: src/contents/ui/BassEnhancer.qml:143
 msgid "Floor Active"
-msgstr ""
+msgstr "الحد الأدنى فعّال"
 
 #: src/contents/ui/BassEnhancer.qml:154
 msgid "Floor"
-msgstr "الأرضية"
+msgstr "الحد الأدنى"
 
 #: src/contents/ui/BassEnhancer.qml:207 src/contents/ui/Compressor.qml:817
 #: src/contents/ui/Deesser.qml:326 src/contents/ui/Delay.qml:401
@@ -276,12 +275,11 @@ msgstr "ربط"
 
 #: src/contents/ui/BlocklistSheet.qml:18
 msgid "Effects Blocklist"
-msgstr ""
+msgstr "قائمة المؤثرات المحظورة"
 
 #: src/contents/ui/BlocklistSheet.qml:29
-#, fuzzy
 msgid "Application Node Name"
-msgstr "اسم التطبيق"
+msgstr "اسم عقدة التطبيق"
 
 #: src/contents/ui/BlocklistSheet.qml:45
 msgid "Add to Excluded Applications"
@@ -292,14 +290,12 @@ msgstr "أضف إلى التطبيقات المستثناة"
 #: src/contents/ui/MenuAddPlugins.qml:41
 #: src/contents/ui/PresetsCommunityPage.qml:77
 #: src/contents/ui/PresetsLocalPage.qml:142 src/contents/ui/RNNoise.qml:191
-#, fuzzy
 msgid "Empty"
-msgstr "القائمة فارغة"
+msgstr "ﻻ يوجد شيء"
 
 #: src/contents/ui/BlocklistSheet.qml:117
-#, fuzzy
 msgid "Remove Application"
-msgstr "اكتم صوت التطبيق"
+msgstr "حذف التطبيق"
 
 #: src/contents/ui/BlocklistSheet.qml:118
 msgid "Are you sure you want to remove this application from the list?"
