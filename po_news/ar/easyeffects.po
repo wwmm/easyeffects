@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-08-30 00:58+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-09-22 07:01+0000\n"
+"Last-Translator: Abdelrahman Ehab Elsaied Hassan <s3409663@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/ar/>\n"
 "Language: ar\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -72,11 +72,13 @@ msgid ""
 "configuration used in the last session. It is also possible to save all the "
 "current settings as profiles."
 msgstr ""
+"عند تشغيل برنامج Easy Effects، فإنه يتذكر تلقائيًا الإعدادات المستخدمة في "
+"الجلسة الأخيرة. يمكنك أيضًا حفظ جميع الإعدادات الحالية كملفات تعريف."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
 msgid "Wellington Wallace"
-msgstr ""
+msgstr "Wellington Wallace"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:43
 msgid "The main page showing two audio output apps"
@@ -85,12 +87,12 @@ msgstr "الصفحة الرئيسية تُظهر تطبيقين لإخراج ا�
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:47
 #, fuzzy
 msgid "The bass enhancer page showing audio controls"
-msgstr "الصفحة الرئيسية تُظهر تطبيقين لإخراج الصوت"
+msgstr "صفحة معزِّز الـ bass وعناصر التحكم الصوتي"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 #, fuzzy
 msgid "The convolver page showing audio controls"
-msgstr "الصفحة الرئيسية تُظهر تطبيقين لإخراج الصوت"
+msgstr "صفحة معالج الالتفاف وعناصر التحكم الصوتي."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
@@ -129,9 +131,8 @@ msgstr "الصفحة الرئيسية تُظهر تطبيقين لإخراج ا�
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:537
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:547
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:560
-#, fuzzy
 msgid "Features:"
-msgstr "السمات:"
+msgstr "المزايا:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid ""
@@ -141,22 +142,32 @@ msgid ""
 "volunteers. You can search them on the repositories of your favorite "
 "distribution."
 msgstr ""
+"تمت إضافة ميزة 'الإعدادات المسبقة المجتمعية'. يمكن للمستخدمين تثبيت حزم "
+"تحتوي على عدة إعدادات مسبقة لبرنامج Easy Effects، ومن ثم استيرادها وتطبيقها "
+"داخل التطبيق. سيقوم متطوعون بصيانة هذه الحزم وتوفيرها. يمكنك البحث عنها في "
+"مستودعات توزيعة لينكس المفضلة لديك."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
 "Added the ability of collapsing the sidebar to hide the effects list and "
 "expand the area of the effects user interface."
 msgstr ""
+"تمت إضافة ميزة طيّ الشريط الجانبي، مما يسمح بإخفاء قائمة المؤثرات وتوسيع "
+"مساحة واجهة التحكم الخاصة بها."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an "
 "output device that is different from the one EasyEffects is using."
 msgstr ""
+"لن يقوم برنامج EasyEffects بمعالجة تدفقات الصوت التي تُوجَّه عبر المُعرِّف "
+"PW_KEY_TARGET_OBJECT إلى جهاز إخراج مختلف عن الذي يستخدمه البرنامج."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Equalizer APO import feature can now apply Band-Pass filters."
 msgstr ""
+"ميزة الاستيراد من برنامج Equalizer APO تدعم الآن تطبيق مرشحات تمرير النطاق "
+"(Band-Pass filters)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
@@ -202,6 +213,8 @@ msgid ""
 "A change in GTK 4.14.1 prevented to apply the values inserted into the text "
 "field of our SpinButton widgets. This issue is now resolved."
 msgstr ""
+"أدّى تغيير في إصدار GTK 4.14.1 إلى منع تطبيق القيم التي يتم إدخالها في الحقل "
+"النصي الخاص بأدوات SpinButton. تم حل هذه المشكلة الآن."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid ""
@@ -209,12 +222,17 @@ msgid ""
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
 msgstr ""
+"لم تعد الإصدارات الأخيرة من إضافة Maximizer تحتوي على عنصر التحكم 'السقف' "
+"(Ceiling). لذلك، قمنا بإزالته من واجهة المستخدم الخاصة بنا (يمكنك استخدام "
+"'كسب الإدخال' (Input Gain) الخاص بالإضافة للحصول على نفس الوظيفة)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 msgid ""
 "Equalizer APO import feature does not crash anymore on Flatpak when invalid "
 "values are provided."
 msgstr ""
+"لم تعد ميزة الاستيراد من برنامج Equalizer APO تنهار في نسخة Flatpak عند "
+"إدخال قيم غير صالحة."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
@@ -238,7 +256,7 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:421
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:437
 msgid "Other notes:"
-msgstr ""
+msgstr "ملاحظات أخرى:"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
 msgid ""
@@ -246,6 +264,9 @@ msgid ""
 "invited to read and follow the guidelines linked inside the README of "
 "EasyEffects master branch."
 msgstr ""
+"لضمان توفير 'الإعدادات المسبقة المجتمعية' بشكل صحيح، يُرجى من مُعدّي الحزم "
+"قراءة واتباع الإرشادات المُرتبطة داخل ملف README الخاص بالفرع الرئيسي (master "
+"branch) لمشروع EasyEffects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
 msgid ""
@@ -253,6 +274,10 @@ msgid ""
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
 msgstr ""
+"الإعدادات المسبقة التي أُنشئت قبل الإصدار 7.2.0 وتحتوي على مؤثر 'معالج "
+"الالتفاف' (Convolver) أو 'تقليل الضوضاء' (RNNoise) أصبحت الآن مهملة. يُرجى "
+"إعادة تحميل ملف الاستجابة النبضية (IRs) أو النموذج (model) من داخل واجهة "
+"المؤثر المعني، ومن ثم إعادة حفظ الإعداد المسبق."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid ""
@@ -260,12 +285,17 @@ msgid ""
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
 msgstr ""
+"تم تحسين نظام إدارة سلسلة المعالجة. يتم الآن وضع المؤثرات الأخرى (غير "
+"المحدِّدات) قبل 'المحدِّد' (limiter)، حتى لو كانت آخر إضافتين في السلسلة هما 'محدِّ"
+"د' يتبعه 'مقياس للمستوى' (level meter)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
 msgid ""
 "Fixed a regression that prevented the level meters to be updated under "
 "certain conditions."
 msgstr ""
+"تم إصلاح خطأ تراجعي (regression) كان يمنع تحديث 'مقاييس المستوى' (level "
+"meters) في ظروف معينة."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
 msgid ""
@@ -273,6 +303,9 @@ msgid ""
 "allow latency offset to be properly applied by video players when PipeWire "
 "&gt; 1.0.3 is released."
 msgstr ""
+"يتم الآن تعيين القيمة monitor.passthrough = true في أجهزتنا الافتراضية. "
+"سيسمح هذا الأمر بتطبيق 'إزاحة زمن الوصول' (latency offset) بشكل صحيح من قِبَل "
+"مشغلات الفيديو عند إصدار نسخة PipeWire الأعلى من 1.0.3."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
@@ -286,6 +319,10 @@ msgid ""
 "EE is recording from. THe stream has to be started when EE is already "
 "running for this logic to take effect."
 msgstr ""
+"سيحاول EasyEffects تجنب نقل تدفقات الصوت إلى مصادره الافتراضية إذا قام "
+"المستخدم بتعيين مُعرِّف وجهة مخصص لها (target.object) يختلف عن الميكروفون الذي "
+"يسجل منه البرنامج حاليًا. ولكي يتم تطبيق هذه الآلية، يجب أن يبدأ تشغيل تدفق "
+"الصوت بينما يكون البرنامج يعمل مسبقًا."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
@@ -299,91 +336,117 @@ msgstr "الترجمات المحدثة"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
 msgid "The equalizer can export basic APO preset files"
 msgstr ""
+"يمكن لمُعادل الصوت (Equalizer) تصدير ملفات الإعدادات المسبقة الأساسية الخاصة "
+"ببرنامج APO"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
 msgstr ""
+"ستعرض علامة التبويب 'المشغلات/المسجلات' الآن اسم الملف التنفيذي لمشغل الصوت، "
+"وذلك في الحالات التي لا يكون فيها اسم التطبيق مُعرَّفًا."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
 msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
 msgstr ""
+"يمكن عرض إصدار برنامج EasyEffects في سطر الأوامر عبر استخدام الخيار --version"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 msgid ""
 "A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
 "in place until gtk developers fiz things on their side"
 msgstr ""
+"تم تطبيق حل بديل لمشكلة في أداة GtkLevelBar الخاصة بمكتبة gtk4، وسيتم "
+"الإبقاء عليه حتى يقوم مطورو gtk بإصلاح الخلل من جانبهم"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 msgid ""
 "Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
 msgstr ""
+"تم إصلاح خطأ تراجعي ظهر في الإصدار 7.1.2، وكان قد يتسبب في انهيار برنامج "
+"EasyEffects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "The DeepFilterNet plugin can now be added to the preset file"
-msgstr ""
+msgstr "يمكن الآن إضافة 'إضافة DeepFilterNet' إلى ملف الإعداد المسبق"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:137
 msgid ""
 "The spectrum has a new option that allows the dynamic vertical scale to be "
 "disabled."
 msgstr ""
+"يحتوي 'محلل الطيف' (spectrum) الآن على خيار جديد يسمح بتعطيل المقياس الرأسي "
+"الديناميكي."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:138
 msgid "Improved compatibility with the latest LSP releases."
-msgstr ""
+msgstr "تم تحسين التوافقية مع أحدث إصدارات LSP."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:140
 msgid "Fixed an incorrect drawing of the impulse response file characteristics"
-msgstr ""
+msgstr "تم إصلاح خطأ في رسم خصائص ملف الاستجابة النبضية"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:150
 msgid ""
 "Fixed a small bug the prevented the noise reduction voice activity threshold "
 "from being properly initialized."
 msgstr ""
+"تم إصلاح خلل بسيط كان يمنع التهيئة السليمة لعتبة النشاط الصوتي الخاصة بتقنية "
+"تقليل الضوضاء."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:159
 msgid ""
 "Added a new control to the noise reduction plugin that allows the voice "
 "detection to be disabled."
 msgstr ""
+"تمت إضافة عنصر تحكم جديد إلى 'إضافة تقليل الضوضاء'، يتيح تعطيل ميزة الكشف عن "
+"الصوت."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:169
 msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
 msgstr ""
+"تم تطوير مؤثر 'المرشح' (Filter) عبر إضافة معلمات جديدة، وذلك بعد أن تم نقله "
+"من Calf Studio إلى Linux Studio Plugins."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
 msgid ""
 "Noise reduction by RNNoise has been improved with the addition of Release "
 "and VAD Threshold controls."
 msgstr ""
+"تم تحسين تقنية تقليل الضوضاء (RNNoise) عبر إضافة عنصري التحكم 'Release' "
+"و'عتبة النشاط الصوتي (VAD Threshold)'."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:171
 msgid ""
 "Noise reduction by RNNoise can now mix the original and denoised signals to "
 "avoid the output to sound too \"dry\"."
 msgstr ""
+"أصبح بإمكان تقنية تقليل الضوضاء (RNNoise) الآن مزج الإشارتين الأصلية والمُنقّ"
+"اة من الضوضاء، وذلك لتجنب أن يبدو الصوت النهائي \"جافًا\" للغاية."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:174
 msgid ""
 "This release is intended to work with versions of Linux Studio Plugins equal "
 "or greater than \"1.2.10\"."
 msgstr ""
+"صُمّم هذا الإصدار ليتوافق مع إصدارات حزمة 'Linux Studio Plugins' بدءًا من "
+"1.2.10 فما أحدث."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:175
 msgid "EasyEffects is now buildable also with libc++."
 msgstr ""
+"أصبح من الممكن الآن بناء برنامج EasyEffects باستخدام مكتبة libc++ أيضًا."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
 msgstr ""
+"أصبح مؤثر 'الموسِّع' (Expander) من حزمة Linux Studio Plugins متاحًا للاستخدام "
+"في برنامج Easy Effects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
 msgid ""
@@ -391,16 +454,22 @@ msgid ""
 "efficient input of values that are hard to set in the scale. More details at "
 "issue 1383."
 msgstr ""
+"أصبحت نطاقات 'مُعادل الصوت' (Equalizer) تحتوي الآن على عنصر تحكم إضافي للكسب "
+"(gain)، مما يتيح إدخال القيم التي يصعب ضبطها عبر المقياس الرسومي بكفاءة "
+"أكبر. لمزيد من التفاصيل، يرجى مراجعة المشكلة رقم 1383."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
 msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
 msgstr ""
+"تمت إضافة إمكانية تحديد وتحميل ملفات متعددة في وقت واحد، وذلك في مربعات "
+"الحوار الخاصة بفتح ملفات الإعدادات المسبقة، وملفات الاستجابة النبضية لمعالج "
+"الالتفاف (Convolver)، ونماذج RNNoise."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Fixed the Solo button in the Equalizer band settings."
-msgstr ""
+msgstr "تم إصلاح زر 'Solo' في إعدادات نطاقات 'مُعادل الصوت' (Equalizer)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:189
 msgid ""
@@ -410,21 +479,33 @@ msgid ""
 "future we will implement a new system to install, manage and import "
 "Community Presets."
 msgstr ""
+"تم إهمال مجلدات EasyEffects الموجودة في المسار /etc، وبالتالي لم يعد يتم "
+"تحميل الإعدادات المسبقة الموجودة بداخلها. حاليًا، يتم فقط تحميل الإعدادات "
+"المسبقة المحلية الموجودة في المسار ~/.config/easyeffects تلقائيًا ضمن 'قائمة "
+"الإعدادات المسبقة'. مستقبلًا، سيتم تطبيق نظام جديد لتثبيت وإدارة واستيراد "
+"'الإعدادات المسبقة المجتمعية'."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:197
 msgid ""
 "An \"Experimental Features\" section was added to our preferences window."
 msgstr ""
+"تمت إضافة قسم 'الميزات التجريبية' (Experimental Features) إلى نافذة "
+"التفضيلات."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:198
 msgid ""
 "The native window of the LSP plugins can be used. This is an experimental "
 "feature intended only for advanced users. So expect some bugs."
 msgstr ""
+"أصبح بالإمكان الآن استخدام النافذة الأصلية لإضافات LSP. تُعتبر هذه ميزة "
+"تجريبية موجهة حصرًا للمستخدمين المتقدمين؛ لذلك، يُرجى توقع وجود بعض الأخطاء "
+"البرمجية."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:199
 msgid "Fractional semitone values can now be used in the Pitch Shift effect."
 msgstr ""
+"أصبح بالإمكان الآن استخدام القيم الكسرية لأنصاف الدرجات الصوتية في مؤثر "
+"'إزاحة طبقة الصوت' (Pitch Shift)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:201
 msgid ""
@@ -432,10 +513,15 @@ msgid ""
 "system default device changes and Use Default is enabled. This fixes issue "
 "issue 1989."
 msgstr ""
+"تم إصلاح مشكلة عدم تحديث القائمة المنسدلة لأجهزة الإدخال/الإخراج في علامة "
+"تبويب 'PipeWire' عند تغير جهاز النظام الافتراضي، وذلك في حال كان خيار "
+"'استخدام الافتراضي' (Use Default) مُفعّلاً. (يعالج المشكلة رقم 1989)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:210
 msgid "A new Level Meter plugin based on libebur128 has been added."
 msgstr ""
+"تمت إضافة 'إضافة مقياس مستوى' (Level Meter) جديدة، وهي تعتمد على مكتبة "
+"libebur128."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:211
 msgid ""
