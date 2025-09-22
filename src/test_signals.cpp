@@ -95,6 +95,8 @@ void on_process(void* userdata, spa_io_position* position) {
         break;
       }
       case TestSignalType::pink: {
+        signal = d->ts->pink_noise();
+
         break;
       }
     }
@@ -259,6 +261,7 @@ TestSignals::~TestSignals() {
 
 void TestSignals::set_state(const bool& state) {
   sine_phase = 0.0F;
+  pink_b0 = pink_b1 = pink_b2 = 0.0F;
 
   if (state) {
     for (const auto& link : pm->link_nodes(node_id, pm->ee_sink_node.id, false, false)) {
@@ -303,4 +306,18 @@ void TestSignals::set_channel(const int& value) {
     default:
       break;
   }
+}
+
+auto TestSignals::pink_noise() -> float {
+  // reference: https://www.firstpr.com.au/dsp/pink-noise/
+
+  float white = white_noise();
+
+  pink_b0 = 0.99765F * pink_b0 + white * 0.0990460F;
+  pink_b1 = 0.96300F * pink_b1 + white * 0.2965164F;
+  pink_b2 = 0.57000F * pink_b2 + white * 1.0526913F;
+
+  float pink = pink_b0 + pink_b1 + pink_b2 + (white * 0.1848F);
+
+  return std::clamp(pink * 0.05F, -1.0F, 1.0F);
 }

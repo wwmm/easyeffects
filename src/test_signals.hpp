@@ -79,6 +79,10 @@ class TestSignals : public QObject {
 
   float sine_frequency = 1000.0F;
 
+  float pink_b0 = 0.0F;
+  float pink_b1 = 0.0F;
+  float pink_b2 = 0.0F;
+
   TestSignalType signal_type = TestSignalType::sine_wave;
 
   void set_state(const bool& state);
@@ -90,6 +94,8 @@ class TestSignals : public QObject {
   void set_active(const bool& state) const;
 
   auto white_noise() -> float;
+
+  auto pink_noise() -> float;
 
  private:
   pw::Manager* pm = nullptr;

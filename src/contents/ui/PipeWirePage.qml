@@ -353,6 +353,17 @@ Kirigami.Page {
                     }
                 }
 
+                FormCard.FormRadioDelegate {
+                    id: pinkNoise
+
+                    text: i18n("Pink Noise")
+                    checked: DB.Manager.testSignals.signalType === 2
+                    onCheckedChanged: {
+                        if (checked !== DB.Manager.testSignals.signalType)
+                            DB.Manager.testSignals.signalType = 2;
+                    }
+                }
+
                 EeSpinBox {
                     id: frequency
 

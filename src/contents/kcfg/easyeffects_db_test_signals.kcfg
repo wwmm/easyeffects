@@ -38,6 +38,9 @@
                 <choice name="whiteNoise">
                     <label>White Noise</label>
                 </choice>
+                <choice name="pinkNoise">
+                    <label>Pink Noise</label>
+                </choice>
             </choices>
             <default>0</default>
         </entry>
