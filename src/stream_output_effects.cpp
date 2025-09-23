@@ -205,7 +205,7 @@ void StreamOutputEffects::on_link_changed(const pw::LinkInfo link_info) {
 }
 
 void StreamOutputEffects::connect_filters(const bool& bypass) {
-  // checking if the output device exists
+  // Checking if the output device exists.
 
   if (db::StreamOutputs::outputDevice().isEmpty()) {
     util::debug("No output device set. Aborting the link");
@@ -222,37 +222,88 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
     return;
   }
 
+  // Waiting for the output device ports information to be available.
+
+  int timeout = 0;
+
+  while (pm->count_node_ports(output_device.id) < 2) {
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
+    timeout++;
+
+    if (timeout > 5000) {  // 5 seconds
+      util::warning("Information about the ports of the output device " + output_device.name.toStdString() +
+                    " with id " + util::to_string(output_device.id) +
+                    " are taking to long to be available. Aborting the link");
+
+      return;
+    }
+  }
+
+  // Link global level meter to output device.
+
+  uint next_node_id = output_device.id;
+  uint prev_node_id = output_level->get_node_id();
+
+  auto links = pm->link_nodes(prev_node_id, next_node_id);
+
+  for (auto* link : links) {
+    list_proxies.push_back(link);
+  }
+
+  if (links.size() < 2U) {
+    util::warning(
+        std::format("link from global level meter {} to output device {} failed", prev_node_id, next_node_id));
+  }
+
+  // Link spectrum to global level meter.
+
+  next_node_id = prev_node_id;
+  prev_node_id = spectrum->get_node_id();
+
+  links = pm->link_nodes(prev_node_id, next_node_id);
+
+  for (auto* link : links) {
+    list_proxies.push_back(link);
+  }
+
+  if (links.size() < 2U) {
+    util::warning(std::format("link from spectrum {} to global level meter {} failed", prev_node_id, next_node_id));
+  }
+
+  // Link plugins in reverse order.
+
+  next_node_id = prev_node_id;
+
   const auto list = (bypass) ? QStringList() : db::StreamOutputs::plugins();
 
-  uint prev_node_id = pm->ee_sink_node.id;
-  uint next_node_id = 0U;
-
-  // link plugins
-
   if (!list.empty()) {
-    for (const auto& name : list) {
+    for (auto it = list.rbegin(); it != list.rend(); ++it) {
+      const auto name = *it;
+
       if (!plugins.contains(name) || plugins[name] == nullptr) {
         continue;
       }
 
       if (!plugins[name]->connected_to_pw ? plugins[name]->connect_to_pw() : true) {
-        next_node_id = plugins[name]->get_node_id();
+        prev_node_id = plugins[name]->get_node_id();
 
-        const auto links = pm->link_nodes(prev_node_id, next_node_id);
+        links = pm->link_nodes(prev_node_id, next_node_id);
 
         for (auto* link : links) {
           list_proxies.push_back(link);
         }
 
         if (links.size() == 2U) {
-          prev_node_id = next_node_id;
+          next_node_id = prev_node_id;
         } else {
           util::warning(std::format("link from node {} to node {} failed", prev_node_id, next_node_id));
         }
       }
     }
 
-    // checking if we have to link the echo_canceller probe to the output device
+    // Checking if we have to link the Echo Canceller probe to the output device.
+    // Here we can loop the plugins in normal order,
 
     for (const auto& name : list) {
       if (!plugins.contains(name) || plugins[name] == nullptr) {
@@ -271,54 +322,19 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
     }
   }
 
-  // link spectrum and output level meter
+  // Link the EasyEffects sink to the first plugin
+  // (or the spectrum in case no plugins are used).
 
-  for (const auto& node_id : {spectrum->get_node_id(), output_level->get_node_id()}) {
-    next_node_id = node_id;
+  prev_node_id = pm->ee_sink_node.id;
 
-    const auto links = pm->link_nodes(prev_node_id, next_node_id);
-
-    for (auto* link : links) {
-      list_proxies.push_back(link);
-    }
-
-    if (links.size() == 2U) {
-      prev_node_id = next_node_id;
-    } else {
-      util::warning(std::format("link from node {} to node {} failed", prev_node_id, next_node_id));
-    }
-  }
-
-  // waiting for the output device ports information to be available.
-
-  int timeout = 0;
-
-  while (pm->count_node_ports(output_device.id) < 2) {
-    std::this_thread::sleep_for(std::chrono::milliseconds(1));
-
-    timeout++;
-
-    if (timeout > 5000) {  // 5 seconds
-      util::warning("Information about the ports of the output device " + output_device.name.toStdString() +
-                    " with id " + util::to_string(output_device.id) +
-                    " are taking to long to be available. Aborting the link");
-
-      return;
-    }
-  }
-
-  // link output device
-
-  next_node_id = output_device.id;
-
-  const auto links = pm->link_nodes(prev_node_id, next_node_id);
+  links = pm->link_nodes(prev_node_id, next_node_id);
 
   for (auto* link : links) {
     list_proxies.push_back(link);
   }
 
   if (links.size() < 2U) {
-    util::warning(std::format("link from node {} to output device {} failed", prev_node_id, next_node_id));
+    util::warning(std::format("link from easyeffecst sink {} to node {} failed", prev_node_id, next_node_id));
   }
 }
 
