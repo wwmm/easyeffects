@@ -104,6 +104,12 @@ class PluginBase : public QObject {
   float input_peak_left = 0.0F, input_peak_right = 0.0F;
   float output_peak_left = 0.0F, output_peak_right = 0.0F;
 
+  bool got_null_left_in = false;
+  bool got_null_left_out = false;
+  bool got_null_right_in = false;
+  bool got_null_right_out = false;
+  bool got_null_probe = false;
+
   std::vector<float> dummy_left, dummy_right;
 
   [[nodiscard]] auto get_node_id() const -> uint;
