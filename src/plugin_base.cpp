@@ -89,11 +89,39 @@ void on_process(void* userdata, spa_io_position* position) {
 
   // util::warning("processing: " + util::to_string(n_samples));
 
-  auto* in_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_left, n_samples));
-  auto* in_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_right, n_samples));
+  float* in_left = nullptr;
+  float* in_right = nullptr;
+  float* out_left = nullptr;
+  float* out_right = nullptr;
 
-  auto* out_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_left, n_samples));
-  auto* out_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_right, n_samples));
+  auto actual_time = std::chrono::steady_clock::now();
+
+  std::chrono::milliseconds timeout(100);
+
+  // do-while loop to wait for Pipewire to provide all valid pointers.
+  do {
+    if (in_left == nullptr) {
+      in_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_left, n_samples));
+    }
+    if (in_right == nullptr) {
+      in_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->in_right, n_samples));
+    }
+
+    if (out_left == nullptr) {
+      out_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_left, n_samples));
+    }
+    if (out_right == nullptr) {
+      out_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_right, n_samples));
+    }
+
+    if (in_left != nullptr && in_right != nullptr && out_left != nullptr && out_right != nullptr) {
+      break;
+    }
+
+    // A little sleep to avoid an excessive busy-wait (by ChatGPT)
+    std::this_thread::sleep_for(std::chrono::milliseconds(10));
+
+  } while (std::chrono::steady_clock::now() < actual_time + timeout);
 
   std::span<float> left_in;
   std::span<float> right_in;
