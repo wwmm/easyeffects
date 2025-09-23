@@ -278,9 +278,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   const auto list = (bypass) ? QStringList() : db::StreamOutputs::plugins();
 
   if (!list.empty()) {
-    for (auto it = list.rbegin(); it != list.rend(); ++it) {
-      const auto name = *it;
-
+    for (const auto& name : std::ranges::reverse_view(list)) {
       if (!plugins.contains(name) || plugins[name] == nullptr) {
         continue;
       }

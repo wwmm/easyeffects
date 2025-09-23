@@ -91,8 +91,8 @@ class Autogain : public PluginBase {
   double internal_output_gain = 1.0;
   double prev_gain = 1.0;
   double block_time = 0.0;
-  double attack_time = 0.4;   // seconds
-  double release_time = 3.0;  // seconds
+  double attack_time = 0.1;   // seconds
+  double release_time = 1.0;  // seconds
 
   std::vector<float> data;
 
