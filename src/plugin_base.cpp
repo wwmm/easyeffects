@@ -67,7 +67,7 @@ void on_process(void* userdata, spa_io_position* position) {
     return;
   }
 
-  // We had to add the following checks for vector sizes. See #4085
+  // We had to add the following checks for dummy array sizes. See #4085
   if (d->pb->dummy_left.size() != n_samples) {
     d->pb->dummy_left.resize(n_samples);
 
@@ -103,7 +103,7 @@ void on_process(void* userdata, spa_io_position* position) {
   if (in_left != nullptr) {
     left_in = std::span(in_left, n_samples);
   } else {
-    util::warning("We received a null left_in pointer. Using the dummy array instead.");
+    util::warning("processing: we received a null left_in pointer. Using the dummy array instead.");
 
     left_in = d->pb->dummy_left;
   }
@@ -111,7 +111,7 @@ void on_process(void* userdata, spa_io_position* position) {
   if (in_right != nullptr) {
     right_in = std::span(in_right, n_samples);
   } else {
-    util::warning("We received a null right_in pointer. Using the dummy array instead.");
+    util::warning("processing: we received a null right_in pointer. Using the dummy array instead.");
 
     right_in = d->pb->dummy_right;
   }
@@ -119,7 +119,7 @@ void on_process(void* userdata, spa_io_position* position) {
   if (out_left != nullptr) {
     left_out = std::span(out_left, n_samples);
   } else {
-    util::warning("We received a null left_out pointer. Using the dummy array instead.");
+    util::warning("processing: we received a null left_out pointer. Using the dummy array instead.");
 
     left_out = d->pb->dummy_left;
   }
@@ -127,7 +127,7 @@ void on_process(void* userdata, spa_io_position* position) {
   if (out_right != nullptr) {
     right_out = std::span(out_right, n_samples);
   } else {
-    util::warning("We received a null right_out pointer. Using the dummy array instead.");
+    util::warning("processing: we received a null right_out pointer. Using the dummy array instead.");
 
     right_out = d->pb->dummy_right;
   }
@@ -139,6 +139,8 @@ void on_process(void* userdata, spa_io_position* position) {
     auto* probe_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->probe_right, n_samples));
 
     if (probe_left == nullptr || probe_right == nullptr) {
+      util::warning("processing: we received a null pointer for probe left/right. Using the dummy array instead.");
+
       std::span l(d->pb->dummy_left.data(), n_samples);
       std::span r(d->pb->dummy_right.data(), n_samples);
 
