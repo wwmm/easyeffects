@@ -57,6 +57,12 @@
 
 namespace {
 
+bool got_null_left_in = false;
+bool got_null_left_out = false;
+bool got_null_right_in = false;
+bool got_null_right_out = false;
+bool got_null_probe = false;
+
 void on_process(void* userdata, spa_io_position* position) {
   auto* d = static_cast<PluginBase::data*>(userdata);
 
@@ -84,6 +90,12 @@ void on_process(void* userdata, spa_io_position* position) {
     d->pb->rate = rate;
     d->pb->n_samples = n_samples;
 
+    got_null_left_in = false;
+    got_null_left_out = false;
+    got_null_right_in = false;
+    got_null_right_out = false;
+    got_null_probe = false;
+
     d->pb->setup();
   }
 
@@ -103,7 +115,11 @@ void on_process(void* userdata, spa_io_position* position) {
   if (in_left != nullptr) {
     left_in = std::span(in_left, n_samples);
   } else {
-    util::warning("processing: we received a null left_in pointer. Using the dummy array instead.");
+    if (!got_null_left_in) {
+      util::warning("processing: we received a null left_in pointer. Using the dummy array instead.");
+
+      got_null_left_in = true;
+    }
 
     left_in = d->pb->dummy_left;
   }
@@ -111,7 +127,11 @@ void on_process(void* userdata, spa_io_position* position) {
   if (in_right != nullptr) {
     right_in = std::span(in_right, n_samples);
   } else {
-    util::warning("processing: we received a null right_in pointer. Using the dummy array instead.");
+    if (!got_null_right_in) {
+      util::warning("processing: we received a null right_in pointer. Using the dummy array instead.");
+
+      got_null_right_in = true;
+    }
 
     right_in = d->pb->dummy_right;
   }
@@ -119,7 +139,11 @@ void on_process(void* userdata, spa_io_position* position) {
   if (out_left != nullptr) {
     left_out = std::span(out_left, n_samples);
   } else {
-    util::warning("processing: we received a null left_out pointer. Using the dummy array instead.");
+    if (!got_null_left_out) {
+      util::warning("processing: we received a null left_out pointer. Using the dummy array instead.");
+
+      got_null_left_out = true;
+    }
 
     left_out = d->pb->dummy_left;
   }
@@ -127,7 +151,11 @@ void on_process(void* userdata, spa_io_position* position) {
   if (out_right != nullptr) {
     right_out = std::span(out_right, n_samples);
   } else {
-    util::warning("processing: we received a null right_out pointer. Using the dummy array instead.");
+    if (!got_null_right_out) {
+      util::warning("processing: we received a null right_out pointer. Using the dummy array instead.");
+
+      got_null_right_out = true;
+    }
 
     right_out = d->pb->dummy_right;
   }
@@ -139,7 +167,11 @@ void on_process(void* userdata, spa_io_position* position) {
     auto* probe_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->probe_right, n_samples));
 
     if (probe_left == nullptr || probe_right == nullptr) {
-      util::warning("processing: we received a null pointer for probe left/right. Using the dummy array instead.");
+      if (!got_null_probe) {
+        util::warning("processing: we received a null pointer for probe left/right. Using the dummy array instead.");
+
+        got_null_probe = true;
+      }
 
       std::span l(d->pb->dummy_left.data(), n_samples);
       std::span r(d->pb->dummy_right.data(), n_samples);
