@@ -77,8 +77,6 @@ Autogain::~Autogain() {
     ebur128_destroy(&ebur_state);
   }
 
-  settings->disconnect();
-
   util::debug(log_tag + name.toStdString() + " destroyed");
 }
 
@@ -125,6 +123,8 @@ void Autogain::setup() {
   }
 
   if (rate != old_rate) {
+    block_time = static_cast<double>(n_samples) / static_cast<double>(rate);
+
     data_mutex.lock();
 
     ebur128_ready = false;
@@ -278,7 +278,18 @@ void Autogain::process(std::span<float>& left_in,
 
       if (db_peak > util::minimum_db_level) {
         if (gain * peak < 1.0) {
-          internal_output_gain = gain;
+          /*
+            Smoothing the gain correction through a leaky integrator: g[n]=α⋅g[n−1]+(1−α)⋅gtarget​[n]
+          */
+
+          // choose tau based on whether gain is rising or falling
+          double tau = (gain < prev_gain) ? attack_time : release_time;
+
+          double alpha = std::exp(-block_time / tau);
+
+          internal_output_gain = alpha * prev_gain + (1.0 - alpha) * gain;
+
+          prev_gain = internal_output_gain;
         }
       }
     }
