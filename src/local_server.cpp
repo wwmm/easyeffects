@@ -41,6 +41,10 @@ LocalServer::LocalServer(QObject* parent) : QObject(parent), server(std::make_un
   });
 }
 
+LocalServer::~LocalServer() {
+  server->close();
+}
+
 void LocalServer::startServer() {
   QLocalServer::removeServer(tags::local_server::server_name);
 

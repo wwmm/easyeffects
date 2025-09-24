@@ -30,6 +30,7 @@ class LocalServer : public QObject {
 
  public:
   explicit LocalServer(QObject* parent = nullptr);
+  ~LocalServer() override;
 
   void startServer();
   void onNewConnection();
