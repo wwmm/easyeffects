@@ -1135,6 +1135,10 @@ void on_core_error(void* data, uint32_t id, [[maybe_unused]] int seq, int res, c
     util::warning(std::format("Remote error res: {}", spa_strerror(res)));
     util::warning(std::format("Remote error message: {}", message));
 
+    if (std::string(message) == "connection error") {
+      util::fatal("No connection to PipeWire. Aborting!");
+    }
+
     pw_thread_loop_signal(pm->thread_loop, false);
   }
 }
