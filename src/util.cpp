@@ -283,21 +283,21 @@ auto get_lock_file() -> std::unique_ptr<QLockFile> {
   bool status = lockFile->tryLock(100);
 
   if (!status) {
-    util::critical("Could not lock the file: " + lockFile->fileName().toStdString());
+    util::debug("Could not lock the file: " + lockFile->fileName().toStdString());
 
     switch (lockFile->error()) {
       case QLockFile::NoError:
         break;
       case QLockFile::LockFailedError: {
-        util::critical("Another instance already has the lock");
+        util::debug("Another instance already has the lock");
         break;
       }
       case QLockFile::PermissionError: {
-        util::critical("No permission to reate the lock file");
+        util::debug("No permission to reate the lock file");
         break;
       }
       case QLockFile::UnknownError: {
-        util::critical("Unknown error");
+        util::debug("Unknown error");
         break;
       }
     }

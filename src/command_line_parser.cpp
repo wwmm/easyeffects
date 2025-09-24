@@ -108,7 +108,9 @@ void CommandLineParser::process(QApplication* app) {
       util::fatal("Must specify preset type: input/output.");
     }
 
-    std::exit(EXIT_SUCCESS);
+    Q_EMIT onHideWindow();
+
+    QCoreApplication::exit(EXIT_SUCCESS);
   }
 
   if (parser->isSet("active-presets")) {
@@ -125,7 +127,9 @@ void CommandLineParser::process(QApplication* app) {
     std::cout << "Input: " << input.toStdString() << '\n';
     std::cout << "Output: " << output.toStdString() << '\n';
 
-    std::exit(EXIT_SUCCESS);
+    Q_EMIT onHideWindow();
+
+    QCoreApplication::exit(EXIT_SUCCESS);
   }
 
   if (parser->isSet("presets")) {
@@ -145,7 +149,9 @@ void CommandLineParser::process(QApplication* app) {
 
     std::cout << i18n("Input Presets").toStdString() + ": " + list << '\n';
 
-    std::exit(EXIT_SUCCESS);
+    Q_EMIT onHideWindow();
+
+    QCoreApplication::exit(EXIT_SUCCESS);
   }
 
   if (parser->isSet("load-preset")) {
@@ -154,15 +160,15 @@ void CommandLineParser::process(QApplication* app) {
     if (pm->preset_file_exists(PipelineType::input, name.toStdString())) {
       Q_EMIT onLoadPreset(PipelineType::input, name);
 
-      std::exit(EXIT_SUCCESS);
+      QCoreApplication::exit(EXIT_SUCCESS);
     }
 
     if (pm->preset_file_exists(PipelineType::output, name.toStdString())) {
       Q_EMIT onLoadPreset(PipelineType::output, name);
 
-      std::exit(EXIT_SUCCESS);
+      QCoreApplication::exit(EXIT_SUCCESS);
     }
 
-    std::exit(EXIT_FAILURE);
+    QCoreApplication::exit(EXIT_FAILURE);
   }
 }

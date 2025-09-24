@@ -39,6 +39,7 @@
 #include <QWindow>
 #include <csignal>
 #include <memory>
+#include <stdexcept>
 #include "autostart.hpp"
 #include "command_line_parser.hpp"
 #include "config.h"
@@ -56,24 +57,171 @@
 #include "test_signals.hpp"
 #include "util.hpp"
 
-static void csignalHandler(int s) {
-  std::signal(s, SIG_DFL);
-  qApp->quit();
+class SignalHandler {
+ public:
+  SignalHandler() {
+    std::signal(SIGINT, handle);
+    std::signal(SIGTERM, handle);
+  }
+
+ private:
+  static void handle(int s) {
+    std::signal(s, SIG_DFL);
+
+    QCoreApplication::quit();
+  }
+};
+
+struct CoreServices {
+  db::Manager* dbm = nullptr;
+  pw::Manager* pwm = nullptr;
+
+  std::unique_ptr<StreamInputEffects> sie;
+  std::unique_ptr<StreamOutputEffects> soe;
+
+  CoreServices(bool is_primary) {
+    if (is_primary) {
+      dbm = &db::Manager::self();
+      pwm = &pw::Manager::self();
+
+      sie = std::make_unique<StreamInputEffects>(pwm);
+      soe = std::make_unique<StreamOutputEffects>(pwm);
+
+      TestSignals::self(pwm);
+      tags::plugin_name::Model::self();
+      presets::Manager::self();
+    }
+  }
+};
+
+struct UiState {
+  QWindow* window = nullptr;
+};
+
+static void initGlobalBypass(StreamInputEffects& sie, StreamOutputEffects& soe) {
+  auto update_bypass_state = [&]() {
+    soe.set_bypass(db::Main::bypass());
+    sie.set_bypass(db::Main::bypass());
+
+    util::info((db::Main::bypass() ? "enabling global bypass" : "disabling global bypass"));
+  };
+
+  update_bypass_state();
+
+  QObject::connect(db::Main::self(), &db::Main::bypassChanged, update_bypass_state);
+}
+
+static void initGlobalShortcuts(GlobalShortcuts& shortcuts) {
+  auto bind = [&]() {
+    util::info("XDG Global Shortcuts experimental feature is enabled for this session.");
+
+    const auto session = qEnvironmentVariable("XDG_SESSION_DESKTOP");
+    const auto desktop = qEnvironmentVariable("XDG_CURRENT_DESKTOP");
+
+    if (session == "KDE" || desktop == "KDE") {
+      if (!db::Main::xdgGlobalShortcutsBound()) {
+        shortcuts.bind_shortcuts();
+      }
+    } else {
+      // Some desktops (gnome, hyprland) need binding always
+      shortcuts.bind_shortcuts();
+    }
+  };
+
+  QObject::connect(&shortcuts, &GlobalShortcuts::onBindShortcuts, [&]() {
+    if (db::Main::xdgGlobalShortcuts()) {
+      bind();
+    }
+  });
+
+  QObject::connect(db::Main::self(), &db::Main::xdgGlobalShortcutsChanged, [&]() {
+    if (db::Main::xdgGlobalShortcuts()) {
+      bind();
+    } else {
+      db::Main::setXdgGlobalShortcutsBound(false);
+    }
+  });
+}
+
+static void initQml(QQmlApplicationEngine& engine,
+                    Autostart& autostart,
+                    LocalServer& server,
+                    UiState& ui,
+                    bool show_window) {
+  engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
+  engine.rootContext()->setContextProperty("canUseSysTray", QSystemTrayIcon::isSystemTrayAvailable());
+  engine.rootContext()->setContextProperty("projectVersion", PROJECT_VERSION);
+
+  QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, [&](QObject* object, const QUrl& url) {
+    if (url.toString() == "qrc:/ui/main.qml") {
+      ui.window = qobject_cast<QWindow*>(object);
+
+      if (ui.window) {
+        if (show_window) {
+          ui.window->show();
+          ui.window->raise();
+          ui.window->requestActivate();
+        } else {
+          ui.window->hide();
+        }
+        autostart.set_window(ui.window);
+      }
+    }
+  });
+
+  QObject::connect(&server, &LocalServer::onShowWindow, [&]() {
+    if (ui.window) {
+      ui.window->show();
+      ui.window->raise();
+      ui.window->requestActivate();
+    }
+  });
+
+  QObject::connect(&server, &LocalServer::onHideWindow, [&]() {
+    if (ui.window) {
+      ui.window->hide();
+    }
+  });
+
+  engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
+  if (engine.rootObjects().isEmpty()) {
+    throw std::runtime_error("Failed to load QML UI");
+  }
+}
+
+static int runSecondaryInstance(QApplication& app, CommandLineParser& parser, bool& show_window) {
+  auto local_client = std::make_unique<LocalClient>();
+
+  QObject::connect(&parser, &CommandLineParser::onQuit, [&]() {
+    local_client->quit_app();
+    show_window = false;
+  });
+
+  QObject::connect(&parser, &CommandLineParser::onHideWindow, [&]() {
+    local_client->hide_window();
+    show_window = false;
+  });
+
+  QObject::connect(&parser, &CommandLineParser::onLoadPreset,
+                   [&](PipelineType type, QString preset) { local_client->load_preset(type, preset.toStdString()); });
+
+  parser.process(&app);
+
+  if (show_window) {
+    local_client->show_window();
+  }
+
+  return 0;
 }
 
 int main(int argc, char* argv[]) {
   QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
-
   QLoggingCategory::setFilterRules("easyeffects.debug=false");
-
   KIconTheme::initTheme();
 
   QApplication app(argc, argv);
 
-  std::signal(SIGINT, csignalHandler);
-  std::signal(SIGTERM, csignalHandler);
-
-  bool show_window = true;
+  SignalHandler signalHandler;
 
   KLocalizedString::setApplicationDomain(APPLICATION_DOMAIN);
   QCoreApplication::setOrganizationDomain(QStringLiteral(ORGANIZATION_DOMAIN));
@@ -89,55 +237,43 @@ int main(int argc, char* argv[]) {
   QApplication::setApplicationDisplayName(APPLICATION_NAME);
   QApplication::setApplicationVersion(QStringLiteral(PROJECT_VERSION));
   QApplication::setDesktopFileName("com.github.wwmm.easyeffects");
-  // QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("com.github.wwmm.easyeffects")));
 
   QApplication::setStyle(QStringLiteral("breeze"));
   if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
     QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
   }
 
-  // loading our database
-
-  auto* dbm = &db::Manager::self();
-
   // Parsing command line options
 
   auto cmd_parser = std::make_unique<CommandLineParser>();
 
-  QObject::connect(cmd_parser.get(), &CommandLineParser::onReset, [&]() { dbm->resetAll(); });
+  QObject::connect(cmd_parser.get(), &CommandLineParser::onReset, [&]() { db::Manager::self().resetAll(); });
 
   // Checking if there is already an instance running
 
   auto lockFile = util::get_lock_file();
 
+  bool show_window = true;
+
   if (!lockFile->isLocked()) {
-    // If we do not have the lock we are probably a secondary instance that will try to communicate with the service
+    // Used only by an instance started when one is already running
+    CoreServices core(false);
 
-    auto local_client = std::make_unique<LocalClient>();
-
-    QObject::connect(cmd_parser.get(), &CommandLineParser::onQuit, [&]() {
-      local_client->quit_app();
-      show_window = false;
-    });
-
-    QObject::connect(cmd_parser.get(), &CommandLineParser::onHideWindow, [&]() {
-      local_client->hide_window();
-      show_window = false;
-    });
-
-    QObject::connect(cmd_parser.get(), &CommandLineParser::onLoadPreset,
-                     [&](PipelineType pipeline_type, QString preset_name) {
-                       local_client->load_preset(pipeline_type, preset_name.toStdString());
-                     });
-
-    cmd_parser->process(&app);
-
-    if (show_window) {
-      local_client->show_window();
-    }
-
-    return 0;
+    return runSecondaryInstance(app, *cmd_parser, show_window);
   }
+
+  // Core managers
+  CoreServices core(true);
+
+  // Main instance services
+  auto local_server = std::make_unique<LocalServer>();
+  auto global_shortcuts = std::make_unique<GlobalShortcuts>();
+  auto autostart = std::make_unique<Autostart>();
+  auto manual = std::make_unique<HelpManager>();
+
+  UiState ui;
+
+  QQmlApplicationEngine engine;
 
   QObject::connect(cmd_parser.get(), &CommandLineParser::onHideWindow, [&]() { show_window = false; });
 
@@ -145,135 +281,15 @@ int main(int argc, char* argv[]) {
 
   // Starting the local socket server
 
-  auto local_server = std::make_unique<LocalServer>();
-
   local_server->startServer();  // it has to be done after "QApplication app(argc, argv)"
 
   QObject::connect(local_server.get(), &LocalServer::onQuitApp, [&]() { QApplication::quit(); });
 
-  // Making sure these singleton classes are initialized before qml
+  initGlobalBypass(*core.sie, *core.soe);
+  initGlobalShortcuts(*global_shortcuts);
+  initQml(engine, *autostart, *local_server, ui, show_window);
 
-  tags::plugin_name::Model::self();
-
-  presets::Manager::self();
-
-  auto* pm = &pw::Manager::self();
-
-  auto sie = std::make_unique<StreamInputEffects>(pm);
-  auto soe = std::make_unique<StreamOutputEffects>(pm);
-
-  TestSignals::self(pm);
-
-  {
-    pw::Manager::exclude_monitor_stream = db::Main::excludeMonitorStreams();
-
-    QObject::connect(db::Main::self(), &db::Main::excludeMonitorStreamsChanged,
-                     []() { pw::Manager::exclude_monitor_stream = db::Main::excludeMonitorStreams(); });
-  }
-
-  // initializing the global bypass
-  {
-    auto update_bypass_state = [&]() {
-      soe->set_bypass(db::Main::bypass());
-      sie->set_bypass(db::Main::bypass());
-
-      util::info((db::Main::bypass() ? "enabling global bypass" : "disabling global bypass"));
-    };
-
-    update_bypass_state();
-
-    QObject::connect(db::Main::self(), &db::Main::bypassChanged, update_bypass_state);
-  }
-
-  // Global shortcuts
-
-  std::unique_ptr<GlobalShortcuts> global_shortcuts = std::make_unique<GlobalShortcuts>();
-
-  auto bind_global_shortcuts = [&]() {
-    util::info("XDG Global Shortcuts experimental feature is enabled for this session.");
-
-    if (qEnvironmentVariable("XDG_SESSION_DESKTOP") == "KDE" || qEnvironmentVariable("XDG_CURRENT_DESKTOP") == "KDE") {
-      // Do the binding call only if really necessary
-      if (!db::Main::xdgGlobalShortcutsBound()) {
-        global_shortcuts->bind_shortcuts();
-      }
-    } else {
-      // Some desktops like gnome and hyprland seem to need the call to always be made
-      // https://github.com/wwmm/easyeffects/issues/3834#issuecomment-2940756992
-      // https://github.com/wwmm/easyeffects/issues/3834#issuecomment-2941713432
-      global_shortcuts->bind_shortcuts();
-    }
-  };
-
-  QObject::connect(global_shortcuts.get(), &GlobalShortcuts::onBindShortcuts, [&]() {
-    if (db::Main::xdgGlobalShortcuts()) {
-      bind_global_shortcuts();
-    }
-  });
-
-  QObject::connect(db::Main::self(), &db::Main::xdgGlobalShortcutsChanged, [&]() {
-    if (db::Main::xdgGlobalShortcuts()) {
-      bind_global_shortcuts();
-    } else {
-      db::Main::setXdgGlobalShortcutsBound(false);
-    }
-  });
-
-  // autostart
-
-  auto autostart = std::make_unique<Autostart>();
-
-  // help
-
-  auto manual = std::make_unique<HelpManager>();
-
-  // Initializing QML
-
-  QQmlApplicationEngine engine;
-
-  engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
-  engine.rootContext()->setContextProperty("canUseSysTray", QSystemTrayIcon::isSystemTrayAvailable());
-  engine.rootContext()->setContextProperty("projectVersion", PROJECT_VERSION);
-
-  QWindow* window = nullptr;
-
-  QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, [&](QObject* object, const QUrl& url) {
-    if (url.toString() == "qrc:/ui/main.qml") {
-      window = qobject_cast<QWindow*>(object);
-
-      if (show_window) {
-        window->show();
-        window->raise();
-        window->requestActivate();
-      } else {
-        window->hide();
-      }
-
-      autostart->set_window(window);
-    }
-  });
-
-  QObject::connect(local_server.get(), &LocalServer::onShowWindow, [&]() {
-    if (window != nullptr) {
-      window->show();
-      window->raise();
-      window->requestActivate();
-    }
-  });
-
-  QObject::connect(local_server.get(), &LocalServer::onHideWindow, [&]() {
-    if (window != nullptr) {
-      window->hide();
-    }
-  });
-
-  engine.load(QUrl(QStringLiteral("qrc:/ui/main.qml")));
-
-  if (engine.rootObjects().isEmpty()) {
-    return -1;
-  }
-
-  QObject::connect(&app, &QApplication::aboutToQuit, [&]() { dbm->saveAll(); });
+  QObject::connect(&app, &QApplication::aboutToQuit, [&]() { db::Manager::self().saveAll(); });
 
   return QApplication::exec();
 }
