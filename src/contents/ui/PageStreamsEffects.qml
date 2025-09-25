@@ -101,200 +101,58 @@ Kirigami.Page {
                 while (pluginsStack.depth > 1)
                     pluginsStack.pop();
 
-                switch (baseName) {
-                case TagsPluginName.BaseName.autogain:
-                    pluginsStack.push("qrc:ui/Autogain.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.bassEnhancer:
-                    pluginsStack.push("qrc:ui/BassEnhancer.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.bassLoudness:
-                    pluginsStack.push("qrc:ui/BassLoudness.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.compressor:
-                    pluginsStack.push("qrc:ui/Compressor.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.convolver:
-                    pluginsStack.push("qrc:ui/Convolver.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.crossfeed:
-                    pluginsStack.push("qrc:ui/Crossfeed.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.crystalizer:
-                    pluginsStack.push("qrc:ui/Crystalizer.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.delay:
-                    pluginsStack.push("qrc:ui/Delay.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.deepfilternet:
-                    pluginsStack.push("qrc:ui/DeepFilterNet.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.deesser:
-                    pluginsStack.push("qrc:ui/Deesser.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.equalizer:
-                    pluginsStack.push("qrc:ui/Equalizer.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "leftDB": pageStreamsEffects.pluginsDB[name + "#left"],
-                        "rightDB": pageStreamsEffects.pluginsDB[name + "#right"],
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.exciter:
-                    pluginsStack.push("qrc:ui/Exciter.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.echoCanceller:
-                    pluginsStack.push("qrc:ui/EchoCanceller.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.expander:
-                    pluginsStack.push("qrc:ui/Expander.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.filter:
-                    pluginsStack.push("qrc:ui/Filter.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.gate:
-                    pluginsStack.push("qrc:ui/Gate.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.levelMeter:
-                    pluginsStack.push("qrc:ui/LevelMeter.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.limiter:
-                    pluginsStack.push("qrc:ui/Limiter.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.loudness:
-                    pluginsStack.push("qrc:ui/Loudness.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.maximizer:
-                    pluginsStack.push("qrc:ui/Maximizer.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.multibandCompressor:
-                    pluginsStack.push("qrc:ui/MultibandCompressor.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.multibandGate:
-                    pluginsStack.push("qrc:ui/MultibandGate.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.pitch:
-                    pluginsStack.push("qrc:ui/Pitch.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.reverb:
-                    pluginsStack.push("qrc:ui/Reverb.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.rnnoise:
-                    pluginsStack.push("qrc:ui/RNNoise.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.speex:
-                    pluginsStack.push("qrc:ui/Speex.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                case TagsPluginName.BaseName.stereoTools:
-                    pluginsStack.push("qrc:ui/StereoTools.qml", {
-                        "name": name,
-                        "pluginDB": pluginDB,
-                        "pipelineInstance": pageStreamsEffects.pipelineInstance
-                    });
-                    break;
-                default:
+                const pluginMap = {
+                    [TagsPluginName.BaseName.autogain]: "qrc:ui/Autogain.qml",
+                    [TagsPluginName.BaseName.bassEnhancer]: "qrc:ui/BassEnhancer.qml",
+                    [TagsPluginName.BaseName.bassLoudness]: "qrc:ui/BassLoudness.qml",
+                    [TagsPluginName.BaseName.compressor]: "qrc:ui/Compressor.qml",
+                    [TagsPluginName.BaseName.convolver]: "qrc:ui/Convolver.qml",
+                    [TagsPluginName.BaseName.crossfeed]: "qrc:ui/Crossfeed.qml",
+                    [TagsPluginName.BaseName.crystalizer]: "qrc:ui/Crystalizer.qml",
+                    [TagsPluginName.BaseName.delay]: "qrc:ui/Delay.qml",
+                    [TagsPluginName.BaseName.deepfilternet]: "qrc:ui/DeepFilterNet.qml",
+                    [TagsPluginName.BaseName.deesser]: "qrc:ui/Deesser.qml",
+                    [TagsPluginName.BaseName.equalizer]: "qrc:ui/Equalizer.qml",
+                    [TagsPluginName.BaseName.exciter]: "qrc:ui/Exciter.qml",
+                    [TagsPluginName.BaseName.echoCanceller]: "qrc:ui/EchoCanceller.qml",
+                    [TagsPluginName.BaseName.expander]: "qrc:ui/Expander.qml",
+                    [TagsPluginName.BaseName.filter]: "qrc:ui/Filter.qml",
+                    [TagsPluginName.BaseName.gate]: "qrc:ui/Gate.qml",
+                    [TagsPluginName.BaseName.levelMeter]: "qrc:ui/LevelMeter.qml",
+                    [TagsPluginName.BaseName.limiter]: "qrc:ui/Limiter.qml",
+                    [TagsPluginName.BaseName.loudness]: "qrc:ui/Loudness.qml",
+                    [TagsPluginName.BaseName.maximizer]: "qrc:ui/Maximizer.qml",
+                    [TagsPluginName.BaseName.multibandCompressor]: "qrc:ui/MultibandCompressor.qml",
+                    [TagsPluginName.BaseName.multibandGate]: "qrc:ui/MultibandGate.qml",
+                    [TagsPluginName.BaseName.pitch]: "qrc:ui/Pitch.qml",
+                    [TagsPluginName.BaseName.reverb]: "qrc:ui/Reverb.qml",
+                    [TagsPluginName.BaseName.rnnoise]: "qrc:ui/RNNoise.qml",
+                    [TagsPluginName.BaseName.speex]: "qrc:ui/Speex.qml",
+                    [TagsPluginName.BaseName.stereoTools]: "qrc:ui/StereoTools.qml"
+                };
+
+                const componentUrl = pluginMap[baseName];
+
+                if (!componentUrl) {
                     console.log(logTag + " invalid plugin name: " + baseName);
+
+                    return;
+                }
+
+                if (baseName !== TagsPluginName.BaseName.equalizer) {
+                    pluginsStack.push(componentUrl, {
+                        name: name,
+                        pluginDB: pluginDB,
+                        pipelineInstance: pageStreamsEffects.pipelineInstance
+                    });
+                } else {
+                    pluginsStack.push(componentUrl, {
+                        name: name,
+                        pluginDB: pluginDB,
+                        pipelineInstance: pageStreamsEffects.pipelineInstance,
+                        leftDB: pluginsDB[name + "#left"],
+                        rightDB: pluginsDB[name + "#right"]
+                    });
                 }
             }
 
