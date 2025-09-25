@@ -15,51 +15,68 @@ Kirigami.ApplicationWindow {
     height: DB.Manager.main.height
     title: "Easy Effects"
     pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.None
-    onWidthChanged: {
-        DB.Manager.main.width = applicationWindow().width;
+
+    property var pagesMap: {
+        0: {
+            page: "qrc:/ui/PageStreamsEffects.qml",
+            pageType: 0,
+            streamDB: DB.Manager.streamOutputs,
+            pipelineInstance: Pipeline.Output
+        },
+        1: {
+            page: "qrc:/ui/PageStreamsEffects.qml",
+            pageType: 1,
+            streamDB: DB.Manager.streamInputs,
+            pipelineInstance: Pipeline.Input
+        },
+        2: {
+            page: "qrc:/ui/PipeWirePage.qml",
+            pageType: 2,
+            streamDB: null,
+            pluginsDB: null,
+            pipelineInstance: null
+        }
     }
-    onHeightChanged: {
-        DB.Manager.main.height = applicationWindow().height;
+
+    function openMappedPage(index) {
+        const info = pagesMap[index];
+
+        if (!info)
+            return;
+
+        let args = {};
+
+        if (info.pageType !== 2) {
+            args.pageType = info.pageType;
+            args.streamDB = info.streamDB;
+
+            args.pluginsDB = index === 0 ? Qt.binding(function () {
+                // QMap used as property is viewed as a JS object and not a QObject. So binding needs Qt.binding
+                return DB.Manager.soePluginsDB;
+            }) : Qt.binding(function () {
+                return DB.Manager.siePluginsDB;
+            });
+
+            args.pipelineInstance = info.pipelineInstance;
+            args.visible = true;
+        }
+
+        if (pageStack.depth === 0)
+            pageStack.push(info.page, args);
+        else
+            pageStack.replace(info.page, args);
+
+        DB.Manager.main.visiblePage = index;
     }
+
     onVisibleChanged: {
         if (appWindow.visible) {
             DB.Manager.enableAutosave(true);
-
-            switch (DB.Manager.main.visiblePage) {
-            case 0:
-                pageStack.push("qrc:ui/PageStreamsEffects.qml", {
-                    "pageType": 0,
-                    "streamDB": DB.Manager.streamOutputs,
-                    "pluginsDB": Qt.binding(function () {
-                        return DB.Manager.soePluginsDB;
-                    }),
-                    "pipelineInstance": Pipeline.Output,
-                    "visible": true
-                });
-                break;
-            case 1:
-                pageStack.push("qrc:ui/PageStreamsEffects.qml", {
-                    "pageType": 1,
-                    "streamDB": DB.Manager.streamInputs,
-                    "pluginsDB": Qt.binding(function () {
-                        return DB.Manager.siePluginsDB;
-                    }),
-                    "pipelineInstance": Pipeline.Input,
-                    "visible": true
-                });
-                break;
-            case 2:
-                pageStack.push("qrc:ui/PipeWirePage.qml");
-                break;
-            default:
-                null;
-            }
         } else {
             DB.Manager.saveAll();
-
-            pageStack.pop();
         }
     }
+
     onClosing: {
         console.log("main window is closing");
 
@@ -67,8 +84,29 @@ Kirigami.ApplicationWindow {
 
         gc();
     }
-    Component.onDestruction: {
-        console.log("main window destroyed");
+
+    Component.onCompleted: {
+        openMappedPage(DB.Manager.main.visiblePage);
+    }
+
+    Binding {
+        target: DB.Manager.main
+        property: "width"
+        value: appWindow.width
+    }
+
+    Binding {
+        target: DB.Manager.main
+        property: "height"
+        value: appWindow.height
+    }
+
+    Connections {
+        target: DB.Manager.main
+
+        function onVisiblePageChanged() {
+            openMappedPage(DB.Manager.main.visiblePage);
+        }
     }
 
     Shortcut {
@@ -332,15 +370,6 @@ Kirigami.ApplicationWindow {
                         checkable: true
                         checked: DB.Manager.main.visiblePage === 0
                         onTriggered: {
-                            pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
-                                "pageType": 0,
-                                "streamDB": DB.Manager.streamOutputs,
-                                "pluginsDB": Qt.binding(function () {
-                                    return DB.Manager.soePluginsDB;
-                                }),
-                                "pipelineInstance": Pipeline.Output,
-                                "visible": true
-                            });
                             DB.Manager.main.visiblePage = 0;
                         }
                     },
@@ -351,15 +380,6 @@ Kirigami.ApplicationWindow {
                         checkable: true
                         checked: DB.Manager.main.visiblePage === 1
                         onTriggered: {
-                            appWindow.pageStack.replace("qrc:ui/PageStreamsEffects.qml", {
-                                "pageType": 1,
-                                "streamDB": DB.Manager.streamInputs,
-                                "pluginsDB": Qt.binding(function () {
-                                    return DB.Manager.siePluginsDB;
-                                }),
-                                "pipelineInstance": Pipeline.Input,
-                                "visible": true
-                            });
                             DB.Manager.main.visiblePage = 1;
                         }
                     },
@@ -370,7 +390,6 @@ Kirigami.ApplicationWindow {
                         checkable: true
                         checked: DB.Manager.main.visiblePage === 2
                         onTriggered: {
-                            appWindow.pageStack.replace("qrc:ui/PipeWirePage.qml");
                             DB.Manager.main.visiblePage = 2;
                         }
                     }
