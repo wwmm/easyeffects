@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-22 21:34+0000\n"
+"POT-Creation-Date: 2025-09-26 02:27+0000\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -76,11 +76,11 @@ msgstr ""
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:138 src/contents/ui/main.qml:239
+#: src/command_line_parser.cpp:142 src/contents/ui/main.qml:277
 msgid "Output Presets"
 msgstr "வெளியீட்டு முன்னமைவுகள்"
 
-#: src/command_line_parser.cpp:146 src/contents/ui/main.qml:229
+#: src/command_line_parser.cpp:150 src/contents/ui/main.qml:267
 msgid "Input Presets"
 msgstr "உள்ளீட்டு முன்னமைவுகள்"
 
@@ -260,14 +260,14 @@ msgstr "கேளுங்கள்"
 #: src/contents/ui/MultibandCompressor.qml:989
 #: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:296
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:183
-#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:413
+#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:432
 msgid "Reset"
 msgstr "மீட்டமை"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:489
-#: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:449
+#: src/contents/ui/EeInputOutputGain.qml:107 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:304
-#: src/contents/ui/main.qml:331
+#: src/contents/ui/main.qml:369
 msgid "Output"
 msgstr "வெளியீடு"
 
@@ -424,7 +424,7 @@ msgstr "வெளிப்புறம்"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:262 src/contents/ui/Limiter.qml:238
-#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:301
 msgid "Input Device"
 msgstr "உள்ளீட்டு சாதனம்"
 
@@ -679,7 +679,7 @@ msgstr "இரண்டாவது கர்னல்"
 msgid "Combine"
 msgstr "இணைக்கவும்"
 
-#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:254
+#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:282
 msgid "Spectrum"
 msgstr "நிறமாலை"
 
@@ -778,7 +778,7 @@ msgid "Default"
 msgstr "இயல்புநிலை"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:301
+#: src/contents/ui/main.qml:339
 msgid "Presets"
 msgstr "முன்னமைவுகள்"
 
@@ -976,8 +976,16 @@ msgstr "மீதமுள்ள எதிரொலி அடக்குமு�
 msgid "Near End Suppression"
 msgstr "முடிவுக்கு அருகில் எதிரொலி அடக்குமுறை"
 
-#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:350
+#: src/contents/ui/EeInputOutputGain.qml:20
+msgid "Audio levels control"
+msgstr ""
+
+#: src/contents/ui/EeInputOutputGain.qml:21
+msgid "Input and output gain controls with level meters"
+msgstr ""
+
+#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/main.qml:379
 msgid "Input"
 msgstr "உள்ளீடு"
 
@@ -1635,42 +1643,42 @@ msgstr "வெற்று பட்டியல்"
 msgid "No Audio Application Available"
 msgstr "ஆடியோ பயன்பாடு எதுவும் கிடைக்கவில்லை"
 
-#: src/contents/ui/PageStreamsEffects.qml:397
+#: src/contents/ui/PageStreamsEffects.qml:255
 msgid "Add Effect"
 msgstr "விளைவைச் சேர்க்கவும்"
 
-#: src/contents/ui/PageStreamsEffects.qml:443
-#: src/contents/ui/PageStreamsEffects.qml:668
+#: src/contents/ui/PageStreamsEffects.qml:301
+#: src/contents/ui/PageStreamsEffects.qml:526
 msgid "Players"
 msgstr "வீரர்கள்"
 
-#: src/contents/ui/PageStreamsEffects.qml:460
-#: src/contents/ui/PageStreamsEffects.qml:668
+#: src/contents/ui/PageStreamsEffects.qml:318
+#: src/contents/ui/PageStreamsEffects.qml:526
 msgid "Recorders"
 msgstr "ரெக்கார்டர்கள்"
 
-#: src/contents/ui/PageStreamsEffects.qml:473
+#: src/contents/ui/PageStreamsEffects.qml:331
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:496
+#: src/contents/ui/PageStreamsEffects.qml:354
 msgid "No Effects"
 msgstr "விளைவுகள் இல்லை"
 
-#: src/contents/ui/PageStreamsEffects.qml:497
+#: src/contents/ui/PageStreamsEffects.qml:355
 msgid "Audio Stream Not Modified"
 msgstr "ஆடியோ ச்ட்ரீம் மாற்றப்படவில்லை"
 
-#: src/contents/ui/PageStreamsEffects.qml:678
+#: src/contents/ui/PageStreamsEffects.qml:536
 msgid "Effects"
 msgstr "விளைவுகள்"
 
-#: src/contents/ui/PageStreamsEffects.qml:695
+#: src/contents/ui/PageStreamsEffects.qml:553
 #, fuzzy
 msgid "Input Monitoring"
 msgstr "உள்ளீட்டு கண்காணிப்பை இயக்கவும்/முடக்கவும்"
 
-#: src/contents/ui/PageStreamsEffects.qml:708
+#: src/contents/ui/PageStreamsEffects.qml:566
 msgid "Excluded Apps"
 msgstr "விலக்கப்பட்ட பயன்பாடுகள்"
 
@@ -1837,7 +1845,7 @@ msgstr "எதிர்ப்பு மாற்று"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:523
-#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:385
+#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:404
 #, fuzzy
 msgid "Preferences"
 msgstr "_ முனைகள்"
@@ -2374,8 +2382,8 @@ msgstr "ஈசி எஃபெக்ட்ச் பதிப்பை அச்
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:260
-#: src/contents/ui/main.qml:393
+#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:298
+#: src/contents/ui/main.qml:412
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_SHORTCUTS"
@@ -2477,63 +2485,63 @@ msgstr "ச்டீரியோ அடிப்படை"
 msgid "Stereo Phase"
 msgstr "ச்டீரியோ கட்டம்"
 
-#: src/contents/ui/main.qml:124
+#: src/contents/ui/main.qml:162
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_ ரெசெட் அமைப்புகள்"
 
-#: src/contents/ui/main.qml:125
+#: src/contents/ui/main.qml:163
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:146
+#: src/contents/ui/main.qml:184
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "பைப்வேர் பயன்பாடுகளுக்கான ஆடியோ விளைவுகள்"
 
-#: src/contents/ui/main.qml:157
+#: src/contents/ui/main.qml:195
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "உறை"
 
-#: src/contents/ui/main.qml:249
+#: src/contents/ui/main.qml:287
 #, fuzzy
 msgid "Active"
 msgstr "செயலில் மாதிரி"
 
-#: src/contents/ui/main.qml:269 src/contents/ui/main.qml:401
+#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:279 src/contents/ui/main.qml:433
+#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
 #, fuzzy
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: src/contents/ui/main.qml:309
+#: src/contents/ui/main.qml:347
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:369
+#: src/contents/ui/main.qml:389
 #, fuzzy
 msgid "PipeWire"
 msgstr "_ பிபிபீயர்"
 
-#: src/contents/ui/main.qml:425
+#: src/contents/ui/main.qml:444
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_ எளிதான விளைவுகள்"
 
-#: src/plugin_base.cpp:242
+#: src/plugin_base.cpp:270
 msgid "(Mic)"
 msgstr ""
 
-#: src/plugin_base.cpp:245
+#: src/plugin_base.cpp:273
 msgid "(Speakers)"
 msgstr ""
 
-#: src/plugin_base.cpp:252
+#: src/plugin_base.cpp:280
 msgid "Output Level Meter"
 msgstr "வெளியீட்டு நிலை மீட்டர்"
 
