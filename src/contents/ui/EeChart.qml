@@ -26,6 +26,12 @@ Item {
     readonly property real yMaxLog: Math.log10(yMax)
     readonly property color backgroundRectColor: Kirigami.Theme.backgroundColor
     readonly property int targetTicks: Math.max(2, Math.floor(width / (Kirigami.Units.gridUnit * 6)))
+    readonly property int coordLabelOffset: Kirigami.Units.smallSpacing
+
+    implicitHeight: columnLayout.implicitHeight
+    implicitWidth: columnLayout.implicitWidth
+    Kirigami.Theme.inherit: false
+    Kirigami.Theme.colorSet: Kirigami.Theme.View
 
     readonly property var linearTicks: {
         const step = (xMax - xMin) / targetTicks;
@@ -115,10 +121,25 @@ Item {
         }
     }
 
-    implicitHeight: columnLayout.implicitHeight
-    implicitWidth: columnLayout.implicitWidth
-    Kirigami.Theme.inherit: false
-    Kirigami.Theme.colorSet: Kirigami.Theme.View
+    function mapToValueX(mouseX) {
+        const normalizedX = (mouseX - chart.plotArea.x) / chart.plotArea.width;
+
+        if (logarithimicHorizontalAxis) {
+            return Math.pow(10, horizontalAxis.min + normalizedX * (horizontalAxis.max - horizontalAxis.min));
+        } else {
+            return horizontalAxis.min + normalizedX * (horizontalAxis.max - horizontalAxis.min);
+        }
+    }
+
+    function mapToValueY(mouseY) {
+        const normalizedY = 1 - (mouseY - chart.plotArea.y) / chart.plotArea.height;
+
+        if (logarithimicVerticalAxis) {
+            return Math.pow(10, verticalAxis.min + normalizedY * (verticalAxis.max - verticalAxis.min));
+        } else {
+            return verticalAxis.min + normalizedY * (verticalAxis.max - verticalAxis.min);
+        }
+    }
 
     ColumnLayout {
         id: columnLayout
@@ -247,6 +268,58 @@ Item {
                 color: chart.theme.labelTextColor
                 horizontalAlignment: Qt.AlignRight
                 anchors.right: parent.right
+            }
+        }
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        hoverEnabled: true
+        onPositionChanged: function (mouse) {
+            const dataX = widgetRoot.mapToValueX(mouse.x);
+            // const dataY = widgetRoot.mapToValueY(mouse.y);
+
+            coordinateLabel.x = mouse.x + coordLabelOffset;
+            coordinateLabel.y = mouse.y - coordinateLabel.height - coordLabelOffset;
+            coordinateLabel.text = `${Number(dataX).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)} ${widgetRoot.xUnit}`;
+            // coordinateLabel.text = `x: ${Number(dataX).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)} Hz, y: ${Number(dataY).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)}`;
+            coordinateLabel.visible = true;
+        }
+        onExited: {
+            coordinateLabel.visible = false;
+        }
+    }
+
+    // Coordinate display label
+    Controls.Label {
+        id: coordinateLabel
+        visible: false
+        padding: Kirigami.Units.smallSpacing
+        background: Rectangle {
+            color: Kirigami.Theme.backgroundColor
+            border.color: Kirigami.Theme.textColor
+            border.width: 1
+            radius: Kirigami.Units.smallSpacing
+            opacity: 0.9
+        }
+        color: Kirigami.Theme.textColor
+        font.pointSize: Kirigami.Theme.smallFont.pointSize
+
+        // Ensure the label stays within chart bounds
+        onXChanged: {
+            if (x + width > parent.width) {
+                x = parent.width - width - coordLabelOffset;
+            }
+            if (x < 0) {
+                x = coordLabelOffset;
+            }
+        }
+        onYChanged: {
+            if (y < 0) {
+                y = coordLabelOffset;
+            }
+            if (y + height > parent.height) {
+                y = parent.height - height - coordLabelOffset;
             }
         }
     }
