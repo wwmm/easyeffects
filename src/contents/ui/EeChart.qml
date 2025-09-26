@@ -27,55 +27,64 @@ Item {
     readonly property color backgroundRectColor: Kirigami.Theme.backgroundColor
 
     function updateData(inputData) {
-        //We do not want the object received as argument to be modified here
-        let newData = [];
-        for (let n = 0; n < inputData.length; n++) {
-            newData.push(inputData[n]);
+        if (!inputData || inputData.length === 0) {
+            return;
         }
+
         let minX = Number.POSITIVE_INFINITY;
         let maxX = Number.NEGATIVE_INFINITY;
         let minY = Number.POSITIVE_INFINITY;
         let maxY = Number.NEGATIVE_INFINITY;
-        for (let n = 0; n < newData.length; n++) {
-            minX = newData[n].x < minX ? newData[n].x : minX;
-            maxX = newData[n].x > maxX ? newData[n].x : maxX;
-            minY = newData[n].y < minY ? newData[n].y : minY;
-            maxY = newData[n].y > maxY ? newData[n].y : maxY;
+
+        for (let n = 0; n < inputData.length; n++) {
+            const point = inputData[n];
+
+            minX = Math.min(minX, point.x);
+            maxX = Math.max(maxX, point.x);
+            minY = Math.min(minY, point.y);
+            maxY = Math.max(maxY, point.y);
         }
-        if (dynamicXScale === true) {
+
+        if (dynamicXScale) {
             xMin = minX;
             xMax = maxX;
         } else {
-            xMin = minX < xMin ? minX : xMin;
-            xMax = maxX > xMax ? maxX : xMax;
+            xMin = Math.min(minX, xMin);
+            xMax = Math.max(maxX, xMax);
         }
-        if (dynamicYScale === true) {
+
+        if (dynamicYScale) {
             yMin = minY;
             yMax = maxY;
         } else {
-            yMin = minY < yMin ? minY : yMin;
-            yMax = maxY > yMax ? maxY : yMax;
+            yMin = Math.min(minY, yMin);
+            yMax = Math.max(maxY, yMax);
         }
-        for (let n = 0; n < newData.length; n++) {
-            if (logarithimicHorizontalAxis === true)
-                newData[n].x = Math.log10(newData[n].x);
 
-            if (logarithimicVerticalAxis === true)
-                newData[n].y = Math.log10(newData[n].y);
+        //We do not want the object received as argument to be modified here
+        let processedData = Array.from(inputData);
+
+        for (let n = 0; n < processedData.length; n++) {
+            const point = inputData[n];
+
+            processedData[n].x = logarithimicHorizontalAxis ? Math.log10(point.x) : point.x;
+
+            processedData[n].y = logarithimicVerticalAxis ? Math.log10(point.y) : point.y;
         }
+
         if (splineSeries.visible === true)
-            splineSeries.replace(newData);
+            splineSeries.replace(processedData);
 
         if (scatterSeries.visible === true)
-            scatterSeries.replace(newData);
+            scatterSeries.replace(processedData);
 
         if (areaSeries.visible === true)
-            areaLineSeries.replace(newData);
+            areaLineSeries.replace(processedData);
 
         if (barSeries.visible === true) {
             barSeriesSet.clear();
-            for (let n = 0; n < newData.length; n++) {
-                barSeriesSet.append(newData[n].y);
+            for (let n = 0; n < processedData.length; n++) {
+                barSeriesSet.append(processedData[n].y);
             }
         }
     }
@@ -208,7 +217,8 @@ Item {
                 Repeater {
                     id: axisRepeater
 
-                    readonly property real nTicks: 11
+                    readonly property int minLabelWidth: Kirigami.Units.gridUnit * 4
+                    readonly property int nTicks: Math.max(2, Math.floor(widgetRoot.width / minLabelWidth))
                     readonly property real step: {
                         if (logarithimicHorizontalAxis !== true)
                             return (xMax - xMin) / (nTicks - 1);
