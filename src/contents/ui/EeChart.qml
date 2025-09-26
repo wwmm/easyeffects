@@ -25,6 +25,33 @@ Item {
     readonly property real yMinLog: Math.log10(yMin)
     readonly property real yMaxLog: Math.log10(yMax)
     readonly property color backgroundRectColor: Kirigami.Theme.backgroundColor
+    readonly property int targetTicks: Math.max(2, Math.floor(width / (Kirigami.Units.gridUnit * 6)))
+
+    readonly property var linearTicks: {
+        const step = (xMax - xMin) / targetTicks;
+
+        const start = xMin;
+
+        const ticks = [];
+
+        for (let v = start; v <= xMax; v += step) {
+            ticks.push(v);
+        }
+
+        return ticks;
+    }
+
+    readonly property var logTicks: {
+        const step = (xMaxLog - xMinLog) / targetTicks;
+
+        const ticks = [];
+
+        for (let p = xMinLog; p <= xMaxLog; p += step) {
+            ticks.push(Math.pow(10, p));
+        }
+
+        return ticks;
+    }
 
     function updateData(inputData) {
         if (!inputData || inputData.length === 0) {
@@ -68,7 +95,6 @@ Item {
             const point = inputData[n];
 
             processedData[n].x = logarithimicHorizontalAxis ? Math.log10(point.x) : point.x;
-
             processedData[n].y = logarithimicVerticalAxis ? Math.log10(point.y) : point.y;
         }
 
@@ -104,24 +130,17 @@ Item {
             id: chart
 
             antialiasing: true
-            marginBottom: 0 // https://github.com/qt/qtgraphs/blob/dev/src/graphs2d/qgraphsview_p.h
+            marginBottom: 0
             marginTop: 0
             marginLeft: 0
             marginRight: 0
             Layout.fillWidth: true
             Layout.fillHeight: true
-            axisX: {
-                if (barSeries.visible === false)
-                    return horizontalAxis;
-                else
-                    return barAxis;
-            }
+            axisX: barSeries.visible ? barAxis : horizontalAxis
 
             BarSeries {
                 id: barSeries
-
                 visible: seriesType === 0
-
                 BarSet {
                     id: barSeriesSet
                 }
@@ -129,21 +148,16 @@ Item {
 
             SplineSeries {
                 id: splineSeries
-
                 visible: seriesType === 1
             }
-
             ScatterSeries {
                 id: scatterSeries
-
                 visible: seriesType === 2
             }
 
             AreaSeries {
                 id: areaSeries
-
                 visible: seriesType === 3
-
                 upperSeries: LineSeries {
                     id: areaLineSeries
                 }
@@ -151,7 +165,6 @@ Item {
 
             ValueAxis {
                 id: horizontalAxis
-
                 labelFormat: "%.1f"
                 min: logarithimicHorizontalAxis !== true ? xMin : xMinLog
                 max: logarithimicHorizontalAxis !== true ? xMax : xMaxLog
@@ -164,7 +177,6 @@ Item {
 
             BarCategoryAxis {
                 id: barAxis
-
                 categories: [2024, 2025, 2026]
                 gridVisible: false
                 subGridVisible: false
@@ -174,7 +186,6 @@ Item {
 
             axisY: ValueAxis {
                 id: verticalAxis
-
                 labelFormat: "%.1e"
                 gridVisible: false
                 subGridVisible: false
@@ -203,7 +214,6 @@ Item {
 
         Rectangle {
             id: axisRectangle
-
             Layout.fillWidth: true
             Layout.fillHeight: false
             color: chart.theme.backgroundColor
@@ -211,55 +221,32 @@ Item {
 
             Row {
                 id: axisRow
-
                 padding: 0
 
                 Repeater {
                     id: axisRepeater
 
-                    readonly property int minLabelWidth: Kirigami.Units.gridUnit * 4
-                    readonly property int nTicks: Math.max(2, Math.floor(widgetRoot.width / minLabelWidth))
-                    readonly property real step: {
-                        if (logarithimicHorizontalAxis !== true)
-                            return (xMax - xMin) / (nTicks - 1);
-                        else
-                            return (xMaxLog - xMinLog) / (nTicks - 1);
-                    }
-                    readonly property real labelWidth: widgetRoot.width / (nTicks - 1)
+                    readonly property var tickValues: logarithimicHorizontalAxis ? widgetRoot.logTicks : widgetRoot.linearTicks
 
-                    model: nTicks
+                    model: tickValues.length
 
                     Controls.Label {
-                        readonly property real value: {
-                            if (logarithimicHorizontalAxis !== true)
-                                return xMin + index * axisRepeater.step;
-                            else
-                                return Math.pow(10, xMinLog + index * axisRepeater.step);
-                        }
-
+                        readonly property real value: axisRepeater.tickValues[index]
+                        width: widgetRoot.width / widgetRoot.targetTicks
                         padding: 0
                         color: chart.theme.labelTextColor
-                        leftPadding: {
-                            if (index !== (axisRepeater.count - 1))
-                                return 0;
-                            else
-                                return -axisRepeater.labelWidth - 6 * Kirigami.Units.smallSpacing;
-                        }
-                        width: axisRepeater.labelWidth
-                        text: {
-                            if (index !== (axisRepeater.count - 1))
-                                return Number(value).toLocaleString(Qt.locale(), 'f', xAxisDecimals);
-                            else
-                                return xUnit;
-                        }
-                        horizontalAlignment: {
-                            if (index === (axisRepeater.count - 1))
-                                return Qt.AlignHCenter;
-                            else
-                                return Qt.AlignLeft;
-                        }
+                        text: Number(value).toLocaleString(Qt.locale(), 'f', xAxisDecimals)
+                        horizontalAlignment: Qt.AlignLeft
                     }
                 }
+            }
+
+            Controls.Label {
+                text: xUnit
+                padding: 0
+                color: chart.theme.labelTextColor
+                horizontalAlignment: Qt.AlignRight
+                anchors.right: parent.right
             }
         }
     }
