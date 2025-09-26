@@ -17,6 +17,12 @@ FormCard.AbstractFormDelegate {
     hoverEnabled: true
     focusPolicy: Qt.StrongFocus
 
+    Accessible.role: Accessible.CheckBox
+    Accessible.name: control.label
+    Accessible.description: control.subtitle
+    Accessible.checked: control.checked
+    Accessible.onToggleAction: if (control.enabled) control.clicked()
+
     contentItem: RowLayout {
         Layout.fillWidth: true
         spacing: Kirigami.Units.smallSpacing
