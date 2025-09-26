@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-22 21:34+0000\n"
+"POT-Creation-Date: 2025-09-26 02:27+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: \"https://medium.com/@porkifiableoinking\" "
 "<erbaotao@outlook.com>\n"
@@ -76,11 +76,11 @@ msgstr ""
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:138 src/contents/ui/main.qml:239
+#: src/command_line_parser.cpp:142 src/contents/ui/main.qml:277
 msgid "Output Presets"
 msgstr "输出预设"
 
-#: src/command_line_parser.cpp:146 src/contents/ui/main.qml:229
+#: src/command_line_parser.cpp:150 src/contents/ui/main.qml:267
 msgid "Input Presets"
 msgstr "输入预设"
 
@@ -260,14 +260,14 @@ msgstr "聆听"
 #: src/contents/ui/MultibandCompressor.qml:989
 #: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:296
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:183
-#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:413
+#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:432
 msgid "Reset"
 msgstr "重置"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:489
-#: src/contents/ui/EeInputOutputGain.qml:87 src/contents/ui/Expander.qml:449
+#: src/contents/ui/EeInputOutputGain.qml:107 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:304
-#: src/contents/ui/main.qml:331
+#: src/contents/ui/main.qml:369
 msgid "Output"
 msgstr "输出"
 
@@ -425,7 +425,7 @@ msgstr "外部"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:262 src/contents/ui/Limiter.qml:238
-#: src/contents/ui/PageStreamsEffects.qml:443
+#: src/contents/ui/PageStreamsEffects.qml:301
 msgid "Input Device"
 msgstr "输入设备"
 
@@ -682,7 +682,7 @@ msgstr "次Kernel"
 msgid "Combine"
 msgstr "混合"
 
-#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:254
+#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:282
 msgid "Spectrum"
 msgstr "频谱"
 
@@ -781,7 +781,7 @@ msgid "Default"
 msgstr "默认"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:301
+#: src/contents/ui/main.qml:339
 msgid "Presets"
 msgstr "预设"
 
@@ -978,8 +978,16 @@ msgstr "残余回声抑制"
 msgid "Near End Suppression"
 msgstr "近端回声抑制"
 
-#: src/contents/ui/EeInputOutputGain.qml:38 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:350
+#: src/contents/ui/EeInputOutputGain.qml:20
+msgid "Audio levels control"
+msgstr ""
+
+#: src/contents/ui/EeInputOutputGain.qml:21
+msgid "Input and output gain controls with level meters"
+msgstr ""
+
+#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/main.qml:379
 msgid "Input"
 msgstr "输入"
 
@@ -1637,42 +1645,42 @@ msgstr "空列表"
 msgid "No Audio Application Available"
 msgstr "没有可用的音频应用程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:397
+#: src/contents/ui/PageStreamsEffects.qml:255
 msgid "Add Effect"
 msgstr "添加音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:443
-#: src/contents/ui/PageStreamsEffects.qml:668
+#: src/contents/ui/PageStreamsEffects.qml:301
+#: src/contents/ui/PageStreamsEffects.qml:526
 msgid "Players"
 msgstr "播放器"
 
-#: src/contents/ui/PageStreamsEffects.qml:460
-#: src/contents/ui/PageStreamsEffects.qml:668
+#: src/contents/ui/PageStreamsEffects.qml:318
+#: src/contents/ui/PageStreamsEffects.qml:526
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:473
+#: src/contents/ui/PageStreamsEffects.qml:331
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:496
+#: src/contents/ui/PageStreamsEffects.qml:354
 msgid "No Effects"
 msgstr "无音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:497
+#: src/contents/ui/PageStreamsEffects.qml:355
 msgid "Audio Stream Not Modified"
 msgstr "音频流未作修改"
 
-#: src/contents/ui/PageStreamsEffects.qml:678
+#: src/contents/ui/PageStreamsEffects.qml:536
 msgid "Effects"
 msgstr "音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:695
+#: src/contents/ui/PageStreamsEffects.qml:553
 #, fuzzy
 msgid "Input Monitoring"
 msgstr "启用/禁用此应用程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:708
+#: src/contents/ui/PageStreamsEffects.qml:566
 msgid "Excluded Apps"
 msgstr "排除的应用"
 
@@ -1839,7 +1847,7 @@ msgstr "抗混叠"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:523
-#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:385
+#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:404
 #, fuzzy
 msgid "Preferences"
 msgstr "首选项(_P)"
@@ -2377,8 +2385,8 @@ msgstr "打印 EasyEffects 版本号"
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:260
-#: src/contents/ui/main.qml:393
+#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:298
+#: src/contents/ui/main.qml:412
 #, fuzzy
 msgid "Shortcuts"
 msgstr "快捷键(_S)"
@@ -2479,64 +2487,64 @@ msgstr "立体声基线"
 msgid "Stereo Phase"
 msgstr "立体声相位"
 
-#: src/contents/ui/main.qml:124
+#: src/contents/ui/main.qml:162
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "重置设置(_R)"
 
-#: src/contents/ui/main.qml:125
+#: src/contents/ui/main.qml:163
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:146
+#: src/contents/ui/main.qml:184
 msgid "Audio effects for PipeWire applications"
 msgstr "为使用 PipeWire 的程序提供音效"
 
-#: src/contents/ui/main.qml:157
+#: src/contents/ui/main.qml:195
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "波封"
 
-#: src/contents/ui/main.qml:249
+#: src/contents/ui/main.qml:287
 #, fuzzy
 msgid "Active"
 msgstr "激活"
 
-#: src/contents/ui/main.qml:269 src/contents/ui/main.qml:401
+#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
 #, fuzzy
 msgid "Manual"
 msgstr "使用手册(_M)"
 
-#: src/contents/ui/main.qml:279 src/contents/ui/main.qml:433
+#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
 #, fuzzy
 msgid "Quit"
 msgstr "退出(_Q)"
 
-#: src/contents/ui/main.qml:309
+#: src/contents/ui/main.qml:347
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:369
+#: src/contents/ui/main.qml:389
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire(_P)"
 
-#: src/contents/ui/main.qml:425
+#: src/contents/ui/main.qml:444
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "关于 EasyEffects (_A)"
 
-#: src/plugin_base.cpp:242
+#: src/plugin_base.cpp:270
 msgid "(Mic)"
 msgstr ""
 
-#: src/plugin_base.cpp:245
+#: src/plugin_base.cpp:273
 #, fuzzy
 msgid "(Speakers)"
 msgstr "扬声器"
 
-#: src/plugin_base.cpp:252
+#: src/plugin_base.cpp:280
 msgid "Output Level Meter"
 msgstr "输出电平表"
 
