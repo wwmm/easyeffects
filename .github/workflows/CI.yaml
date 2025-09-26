@@ -268,7 +268,7 @@ jobs:
         ./install-user-client
 
     - name: Restore Clang Tidy cache
-      uses: actions/cache/restore@v4.2.4
+      uses: actions/cache/restore@v4.3.0
       with:
         # since the ctcache is just a list of checksums that were checked, we want to write to it every ci run to keep it up to date
         # otherwise github actions just restores some old cache if the key didn't change
@@ -291,7 +291,7 @@ jobs:
         PATH=~/.local/bin:"$PATH" CTCACHE_DIR=/tmp/ci-ctcache ../util/clang-tidy.sh
 
     - name: Save Clang Tidy cache
-      uses: actions/cache/save@v4.2.4
+      uses: actions/cache/save@v4.3.0
       # always run, except if the workflow was cancelled
       # this means clang tidy will get cached even if some checks are failing
       if: success() || failure()
