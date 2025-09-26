@@ -137,7 +137,7 @@ jobs:
         compiler: [gcc, clang]
       fail-fast: false
     container:
-      image: fedora:rawhide
+      image: fedora:latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v5.0.0
