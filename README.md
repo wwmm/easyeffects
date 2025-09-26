@@ -32,9 +32,6 @@
   <a href="https://github.com/wwmm/easyeffects/actions/workflows/CI.yaml">
     <img alt="CI status" src="https://github.com/wwmm/easyeffects/actions/workflows/CI.yaml/badge.svg"/>
   </a>
-  <a href="https://circleci.com/gh/wwmm/easyeffects">
-    <img alt="CircleCI status" src="https://circleci.com/gh/wwmm/easyeffects.svg?style=shield"/>
-  </a>
 </p>
 
 This application was formerly known as PulseEffects, but it was renamed to Easy Effects after it started to use GTK4 and
