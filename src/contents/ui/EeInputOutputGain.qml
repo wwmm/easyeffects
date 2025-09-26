@@ -30,8 +30,6 @@ Item {
         property alias leftLevel: left.value
         property alias rightLevel: right.value
 
-        readonly property real radius: 2.5 * Kirigami.Units.gridUnit
-
         signal gainChanged(real v)
 
         EeSpinBox {
@@ -54,8 +52,8 @@ Item {
             id: left
 
             Layout.alignment: Qt.AlignRight | Qt.AlignBottom
-            implicitWidth: parent.radius
-            implicitHeight: parent.radius
+            implicitWidth: control.radius
+            implicitHeight: control.radius
             from: Common.minimumDecibelLevel
             to: 0
             value: 0
@@ -67,8 +65,8 @@ Item {
             id: right
 
             Layout.alignment: Qt.AlignRight | Qt.AlignBottom
-            implicitWidth: parent.radius
-            implicitHeight: parent.radius
+            implicitWidth: control.radius
+            implicitHeight: control.radius
             from: Common.minimumDecibelLevel
             to: 0
             value: 0
