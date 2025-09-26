@@ -85,9 +85,17 @@ Kirigami.AbstractCard {
             }
 
             ColumnLayout {
+                Layout.alignment: Qt.AlignTop
+
                 Controls.CheckBox {
                     text: i18n("Enable")
                     checked: root.connected
+                    visible: {
+                        if (mediaClass === "Stream/Output/Audio")
+                            return !DB.Manager.main.processAllOutputs;
+                        else if (mediaClass === "Stream/Input/Audio")
+                            return !DB.Manager.main.processAllInputs;
+                    }
                     onCheckedChanged: {
                         if (checked == true && !root.isBlocklisted) {
                             if (root.mediaClass === "Stream/Output/Audio")
