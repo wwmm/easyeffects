@@ -35,21 +35,15 @@ Kirigami.AbstractCard {
             return DB.Manager.streamInputs.showBlocklistedApps;
     }
 
-    contentItem: Item {
-        implicitWidth: delegateLayout.implicitWidth
-        implicitHeight: delegateLayout.implicitHeight
+    contentItem: Column {
 
-        GridLayout {
+        Kirigami.CardsLayout {
             id: delegateLayout
 
-            rowSpacing: Kirigami.Units.largeSpacing
-            columnSpacing: Kirigami.Units.largeSpacing
-            columns: appWindow.wideScreen ? 3 : 1
-            rows: appWindow.wideScreen ? 2 : 3
+            maximumColumns: 3
 
             anchors {
                 left: parent.left
-                top: parent.top
                 right: parent.right
             }
 
@@ -60,6 +54,8 @@ Kirigami.AbstractCard {
             }
 
             ColumnLayout {
+                Layout.columnSpan: delegateLayout.columns === 3 ? 1 : delegateLayout.columns
+
                 Kirigami.Heading {
                     Layout.fillWidth: true
                     level: 2
@@ -75,6 +71,7 @@ Kirigami.AbstractCard {
 
                 RowLayout {
                     Controls.Label {
+                        Layout.fillWidth: true
                         wrapMode: Text.WordWrap
                         text: {
                             const rate = root.rate.toLocaleString(Qt.locale(), 'f', 1);
@@ -114,7 +111,7 @@ Kirigami.AbstractCard {
             }
 
             RowLayout {
-                Layout.columnSpan: appWindow.wideScreen ? 3 : 1
+                Layout.columnSpan: delegateLayout.columns
 
                 Controls.Button {
                     id: muteButton
