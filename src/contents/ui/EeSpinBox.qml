@@ -46,6 +46,10 @@ FormCard.AbstractFormDelegate {
 
     signal valueModified(real value)
 
+    Accessible.name: control.label
+    Accessible.description: `Value: ${control.value} ${control.unit ? ' ' + control.unit : ''}`
+    Accessible.role: Accessible.SpinBox
+
     focusPolicy: Kirigami.Settings.isMobile ? Qt.StrongFocus : Qt.NoFocus
     onClicked: spinbox.forceActiveFocus()
     Keys.onPressed: event => {
@@ -98,8 +102,7 @@ FormCard.AbstractFormDelegate {
             readonly property real decimalFactor: Math.pow(10, control.decimals)
 
             function decimalToInt(decimal) {
-                // Return the toFixed string in order to avoid rounding issues
-                return (decimal * decimalFactor).toFixed(0);
+                return Math.round(decimal * decimalFactor);
             }
 
             Layout.fillWidth: control.spinboxLayoutFillWidth
@@ -110,8 +113,9 @@ FormCard.AbstractFormDelegate {
             focusPolicy: control.focusPolicy
             wheelEnabled: true
             onValueModified: {
-                // Signal the toFixed string in order to avoid rounding issues
-                control.valueModified((spinbox.value / spinbox.decimalFactor).toFixed(control.decimals));
+                const newValue = Math.round((spinbox.value / spinbox.decimalFactor) * decimalFactor) / decimalFactor;
+
+                control.valueModified(Common.clamp(newValue, control.from, control.to));
             }
             stepSize: spinbox.decimalToInt(control.stepSize)
             value: spinbox.decimalToInt(control.value)
@@ -132,22 +136,22 @@ FormCard.AbstractFormDelegate {
                 return t;
             }
             valueFromText: (text, locale) => {
-                if (text === "-inf")
+                if (text.toLowerCase() === "-inf" || text === "∞")
                     return Math.floor(control.from * spinbox.decimalFactor);
 
-                const re = /^[-+]?\d+(?:[.,]\d+)*/;
-                const regex_result = re.exec(text) ?? [];
+                //Handling scientific notation
+                const cleanedText = text.replace(/[^\d.,eE+-]/g, '');
                 try {
-                    const n = Number.fromLocaleString(locale, regex_result[0]);
-                    return (!Number.isNaN(n)) ? Math.round(n * spinbox.decimalFactor) : spinbox.value;
+                    const n = Number.fromLocaleString(locale, cleanedText);
+                    return !Number.isNaN(n) ? Math.round(n * spinbox.decimalFactor) : spinbox.value;
                 } catch (error) {
-                    console.error(error);
+                    console.warn("Invalid number format:", text);
                     return spinbox.value;
                 }
             }
 
             validator: RegularExpressionValidator {
-                regularExpression: /^[-+]?(?:inf|\d+(?:[.,]\d+)*)/
+                regularExpression: /^[-+]?(?:inf|∞|\d+(?:[.,]\d*)?(?:[eE][-+]?\d+)?)$/
             }
 
             contentItem: TextInput {
