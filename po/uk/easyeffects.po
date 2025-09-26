@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-26 02:27+0000\n"
-"PO-Revision-Date: 2025-09-23 14:02+0000\n"
+"PO-Revision-Date: 2025-09-26 16:02+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -948,11 +948,11 @@ msgstr "Придушення ближнього кінця"
 
 #: src/contents/ui/EeInputOutputGain.qml:20
 msgid "Audio levels control"
-msgstr ""
+msgstr "Контроль рівня звуку"
 
 #: src/contents/ui/EeInputOutputGain.qml:21
 msgid "Input and output gain controls with level meters"
-msgstr ""
+msgstr "Регулятори посилення на вході та виході з індикаторами рівня"
 
 #: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/StereoTools.qml:43
 #: src/contents/ui/main.qml:379
