@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-26 02:27+0000\n"
-"PO-Revision-Date: 2025-09-17 20:02+0000\n"
+"PO-Revision-Date: 2025-09-26 16:02+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -950,11 +950,13 @@ msgstr "Suprimare aproape de sfârșit"
 
 #: src/contents/ui/EeInputOutputGain.qml:20
 msgid "Audio levels control"
-msgstr ""
+msgstr "Controlul nivelurilor audio"
 
 #: src/contents/ui/EeInputOutputGain.qml:21
 msgid "Input and output gain controls with level meters"
 msgstr ""
+"Controale de amplificare de intrare și ieșire cu indicatoare de nivel "
+"(vumetre)"
 
 #: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/StereoTools.qml:43
 #: src/contents/ui/main.qml:379
@@ -1827,8 +1829,8 @@ msgid ""
 "The Time it Takes for the Level Meter Labels to be Updated When the Current "
 "Level is Below the Last Highest One"
 msgstr ""
-"Timpul necesar pentru actualizarea etichetelor indicatorului de nivel "
-"(vumetrului) atunci când nivelul actual este sub ultimul nivel maxim atins"
+"Timpul necesar pentru actualizarea etichetelor indicatoarelor de nivel "
+"(vumetrelor) atunci când nivelul actual este sub ultimul nivel maxim atins"
 
 #: src/contents/ui/PreferencesSheet.qml:215
 msgid "Audio Delay Compensation"
