@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-26 02:27+0000\n"
-"PO-Revision-Date: 2025-09-21 09:01+0000\n"
+"PO-Revision-Date: 2025-09-27 06:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -949,11 +949,11 @@ msgstr "Soppressione Vicino Alla Fine"
 
 #: src/contents/ui/EeInputOutputGain.qml:20
 msgid "Audio levels control"
-msgstr ""
+msgstr "Regolatore livelli audio"
 
 #: src/contents/ui/EeInputOutputGain.qml:21
 msgid "Input and output gain controls with level meters"
-msgstr ""
+msgstr "Regolatori del guadagno di input e output con i misuratori di livello"
 
 #: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/StereoTools.qml:43
 #: src/contents/ui/main.qml:379
@@ -1703,9 +1703,8 @@ msgid "White Noise"
 msgstr "Rumore Bianco"
 
 #: src/contents/ui/PipeWirePage.qml:359
-#, fuzzy
 msgid "Pink Noise"
-msgstr "Rumore Bianco"
+msgstr "Rumore Rosa"
 
 #: src/contents/ui/Pitch.qml:50
 msgid "Sequence Length"
