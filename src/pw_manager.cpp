@@ -953,6 +953,9 @@ void on_registry_global(void* data,
         std::ranges::find(user_blocklist, nd->nd_info->application_id) != user_blocklist.end();
 
     nd->nd_info->is_blocklisted =
+        std::ranges::find(user_blocklist, nd->nd_info->app_process_binary) != user_blocklist.end();
+
+    nd->nd_info->is_blocklisted =
         nd->nd_info->is_blocklisted || std::ranges::find(user_blocklist, nd->nd_info->name) != user_blocklist.end();
 
     pw_proxy_add_object_listener(proxy, &nd->object_listener, &node_events, nd);  // NOLINT

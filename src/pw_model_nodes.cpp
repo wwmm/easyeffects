@@ -141,7 +141,8 @@ Nodes::Nodes(QObject* parent)
             continue;
           }
 
-          if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id)) {
+          if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id) ||
+              blocklist.contains(list[n].app_process_binary)) {
             update_field(n, Roles::IsBlocklisted, true);
 
             pw::Manager::self().disconnectStream(list[n].id);
@@ -166,7 +167,8 @@ Nodes::Nodes(QObject* parent)
             continue;
           }
 
-          if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id)) {
+          if (blocklist.contains(list[n].name) || blocklist.contains(list[n].application_id) ||
+              blocklist.contains(list[n].app_process_binary)) {
             update_field(n, Roles::IsBlocklisted, true);
 
             pw::Manager::self().disconnectStream(list[n].id);
