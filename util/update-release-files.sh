@@ -240,22 +240,35 @@ check_appstream_cli() {
 check_appstream_util() {
 
   log_info "Checking appstream-util validate-relax"
+  log_info "This script will hide errors relating to glycin sandboxing as those are considered false positives."
+  log_info "However, errors that are not relating to glycin sandboxing are considered important to fix." 
 
-  if [ "$(appstream-util validate-relax "${TEMP_METAINFO_FILE}" 2>&1 > /dev/null)" ];
-  then
+  TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT=$(mktemp)
+  set +o noclobber
+  appstream-util validate-relax "${TEMP_METAINFO_FILE}" > "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT}" 2>&1
+  set -o noclobber
+
+  sed "/WARNING: Glycin running without sandbox./d" -i "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT}"
+  sed "/OK/d" -i "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT}"
+
+  if [ -s "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT}" ]; then
+    log_err "appstream-util validate-relax gave non glycin sandboxing related errors \n"
     log_err "appstream-util validate-relax failed \n"
-    log_err "appstream-util: $(appstream-util validate-relax "${TEMP_METAINFO_FILE}") \n"
-    rm "${TEMP_NEWS:?}"
+    cat "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT}"
+    rm "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT:?}"
     rm "${TEMP_METAINFO_FILE:?}"
+    rm "${TEMP_NEWS:?}"
     exit 1
   fi
+
   log_info "Passed appstream-util validate-relax"
 
+  rm "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT:?}"
 
 
   log_info "Checking appstream-util validate"
-  log_info "This script will hide errors relating to screenshots or style-invalid, as those are considered false positives."
-  log_info "However, errors that are not relating to screenshots or style-invalid are considered important to fix." 
+  log_info "This script will hide errors relating to screenshots, style-invalid, or glycin sandboxing as those are considered false positives."
+  log_info "However, errors that are not relating to screenshots, style-invalid, or glycin sandboxing are considered important to fix." 
 
   TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT=$(mktemp)
   set +o noclobber
@@ -267,9 +280,11 @@ check_appstream_util() {
   sed "/failed/d" -i "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT}"
   sed "/FAILED/d" -i "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT}"
   sed "/com.github.wwmm.easyeffects.metainfo.xml.in/d" -i "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT}"
+  sed "/WARNING: Glycin running without sandbox./d" -i "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT}"
+  sed "/OK/d" -i "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT}"
 
   if [ -s "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT}" ]; then
-    log_err "appstream-util validate gave non-screenshot related errors \n"
+    log_err "appstream-util validate gave non screenshots, style-invalid, or glycin sandboxing related errors \n"
     log_err "appstream-util validate failed \n"
     cat "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT}"
     rm "${TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT:?}"

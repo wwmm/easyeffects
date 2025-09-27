@@ -21,7 +21,8 @@ FormCard.AbstractFormDelegate {
     Accessible.name: control.label
     Accessible.description: control.subtitle
     Accessible.checked: control.checked
-    Accessible.onToggleAction: if (control.enabled) control.clicked()
+    Accessible.onToggleAction: if (control.enabled)
+        control.clicked()
 
     contentItem: RowLayout {
         Layout.fillWidth: true

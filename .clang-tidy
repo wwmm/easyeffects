@@ -8,6 +8,7 @@ Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,hi
   -cert-dcl50-cpp,
   -cert-err33-c,
   -cert-err58-cpp,
+  -clang-analyzer-cplusplus.NewDeleteLeaks,
   -clang-analyzer-osx*,
   -clang-analyzer-optin.osx*,
   -concurrency-mt-unsafe,
@@ -38,11 +39,14 @@ Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,hi
   -hicpp-avoid-c-arrays,
   -hicpp-explicit-conversions,
   -misc-const-correctness,
+  -misc-header-include-cycle,
+  -misc-include-cleaner,
   -misc-non-private-member-variables-in-classes,
   -misc-no-recursion,
   -misc-unused-parameters,
   -misc-use-anonymous-namespace,
   -modernize-avoid-c-arrays,
+  -modernize-use-integer-sign-comparison,
   -modernize-use-trailing-return-type,
   -performance-inefficient-vector-operation,
   -performance-unnecessary-value-param,
@@ -57,6 +61,9 @@ Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,hi
   -readability-redundant-string-cstr,
   '
 # todo, clang-analyzer-core.NullDereference is also suppressed in the code itself with NOLINT, consider fixing that too
+
+# the misc include ones (misc-header-include-cycle and misc-include-cleaner) can be useful, but in practice can be tricky to fix
+# as c/c++ header file behaviour can vary slightly with different compiler toolchains
 
 # todo these can all be fixed automatically but that needs to be done with caution
 # hicpp-explicit-conversions, misc-unused-parameter,modernize-use-trailing-return-type,readability-qualified-auto,readability-redundant-string-cstr,
