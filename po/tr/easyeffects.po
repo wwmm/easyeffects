@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-26 02:27+0000\n"
+"POT-Creation-Date: 2025-09-28 20:08-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -169,7 +169,7 @@ msgstr "Çıktı Kazancı"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:211
-#: src/contents/ui/RNNoise.qml:273 src/contents/ui/Reverb.qml:309
+#: src/contents/ui/Reverb.qml:309 src/contents/ui/RNNoise.qml:273
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:433
 #, fuzzy
 msgid "Using %1"
@@ -255,18 +255,18 @@ msgstr "Liste"
 #: src/contents/ui/Expander.qml:808 src/contents/ui/Filter.qml:228
 #: src/contents/ui/Gate.qml:944 src/contents/ui/LevelMeter.qml:256
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
-#: src/contents/ui/Maximizer.qml:131
+#: src/contents/ui/main.qml:432 src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:296
-#: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:183
-#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:432
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/Reverb.qml:346
+#: src/contents/ui/RNNoise.qml:296 src/contents/ui/Speex.qml:183
+#: src/contents/ui/StereoTools.qml:462
 msgid "Reset"
 msgstr "Sıfırla"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:107 src/contents/ui/Expander.qml:449
-#: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:304
-#: src/contents/ui/main.qml:369
+#: src/contents/ui/Gate.qml:473 src/contents/ui/main.qml:369
+#: src/contents/ui/StereoTools.qml:304
 msgid "Output"
 msgstr "Çıktı"
 
@@ -295,7 +295,7 @@ msgstr "Hariç Tutulan Uygulamalara Ekle"
 #: src/contents/ui/ConvolverImpulseSheet.qml:80
 #: src/contents/ui/MenuAddPlugins.qml:41
 #: src/contents/ui/PresetsCommunityPage.qml:77
-#: src/contents/ui/PresetsLocalPage.qml:142 src/contents/ui/RNNoise.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:145 src/contents/ui/RNNoise.qml:191
 #, fuzzy
 msgid "Empty"
 msgstr "Boş Liste"
@@ -324,8 +324,8 @@ msgstr "Sıkıştırıcı"
 
 #: src/contents/ui/Compressor.qml:70 src/contents/ui/Compressor.qml:301
 #: src/contents/ui/Deesser.qml:71 src/contents/ui/Delay.qml:56
-#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:112
-#: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:70
+#: src/contents/ui/Delay.qml:214 src/contents/ui/EqualizerBandMenu.qml:45
+#: src/contents/ui/Equalizer.qml:112 src/contents/ui/Expander.qml:70
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:285
 #: src/contents/ui/Limiter.qml:52 src/contents/ui/Loudness.qml:54
 #: src/contents/ui/MultibandCompressor.qml:416
@@ -668,6 +668,56 @@ msgstr "Eğim"
 msgid "Stereo Split"
 msgstr "Stereo Bölme"
 
+#: src/contents/ui/ConvolverImpulseSheet.qml:47
+#, fuzzy
+msgid "Impluse File Imported."
+msgstr "Dürtü Dosyası İçe Aktarılmadı"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:49
+#, fuzzy
+msgid "Failed to Import the Impulse File."
+msgstr "Dürtü Dosyası Yüklenemedi"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:60
+#: src/contents/ui/MenuAddPlugins.qml:144
+#: src/contents/ui/PresetsCommunityPage.qml:53
+#: src/contents/ui/PresetsLocalPage.qml:121
+msgid "Search"
+msgstr "Ara"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:93
+#, fuzzy
+msgid "Loaded Impulse: %1"
+msgstr "Dürtüyü Yükle"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:99
+#, fuzzy
+msgid "Remove Impulse Response"
+msgstr "Dürtü Yanıtı"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:100
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr ""
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
+#, fuzzy
+msgid "Removed Impulse: %1"
+msgstr "Dürtüyü Kaldır"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:106
+#, fuzzy
+msgid "Failed to Remove the Impulse: %1"
+msgstr "Dürtü Dosyası Yüklenemedi"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:119
+#, fuzzy
+msgid "Delete this Impulse"
+msgstr "Dürtüyü Kaldır"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:159
+msgid "Import Impulse"
+msgstr "Dürtü Dosyasını İçeri Al"
+
 #: src/contents/ui/Convolver.qml:100
 msgid "First"
 msgstr ""
@@ -712,56 +762,6 @@ msgstr "Stereo Genişliği"
 msgid "Autogain"
 msgstr "Otomatik Kazanç"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:47
-#, fuzzy
-msgid "Impluse File Imported."
-msgstr "Dürtü Dosyası İçe Aktarılmadı"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:49
-#, fuzzy
-msgid "Failed to Import the Impulse File."
-msgstr "Dürtü Dosyası Yüklenemedi"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:60
-#: src/contents/ui/MenuAddPlugins.qml:140
-#: src/contents/ui/PresetsCommunityPage.qml:53
-#: src/contents/ui/PresetsLocalPage.qml:118
-msgid "Search"
-msgstr "Ara"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:93
-#, fuzzy
-msgid "Loaded Impulse: %1"
-msgstr "Dürtüyü Yükle"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:99
-#, fuzzy
-msgid "Remove Impulse Response"
-msgstr "Dürtü Yanıtı"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:100
-msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr ""
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:104
-#, fuzzy
-msgid "Removed Impulse: %1"
-msgstr "Dürtüyü Kaldır"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:106
-#, fuzzy
-msgid "Failed to Remove the Impulse: %1"
-msgstr "Dürtü Dosyası Yüklenemedi"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:119
-#, fuzzy
-msgid "Delete this Impulse"
-msgstr "Dürtüyü Kaldır"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:159
-msgid "Import Impulse"
-msgstr "Dürtü Dosyasını İçeri Al"
-
 #: src/contents/ui/Crossfeed.qml:64
 msgid "Cutoff"
 msgstr "Kesici"
@@ -779,8 +779,8 @@ msgstr "Çapraz Besleme"
 msgid "Default"
 msgstr "Öntanımlı"
 
-#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:339
+#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/main.qml:339
+#: src/contents/ui/Reverb.qml:325
 msgid "Presets"
 msgstr "Ön Ayarlar"
 
@@ -951,17 +951,17 @@ msgstr "Bu efekti etkinleştir/devre dışı bırak"
 msgid "Remove this effect"
 msgstr "Bu efekti kaldır"
 
-#: src/contents/ui/DelegateStreamsList.qml:83
+#: src/contents/ui/DelegateStreamsList.qml:80
 #, fuzzy
 msgid "channels"
 msgstr "kanallar"
 
-#: src/contents/ui/DelegateStreamsList.qml:92 src/contents/ui/Gate.qml:180
+#: src/contents/ui/DelegateStreamsList.qml:91 src/contents/ui/Gate.qml:180
 #: src/contents/ui/RNNoise.qml:81
 msgid "Enable"
 msgstr "Etkinleştir"
 
-#: src/contents/ui/DelegateStreamsList.qml:107
+#: src/contents/ui/DelegateStreamsList.qml:112
 msgid "Exclude"
 msgstr "Hariç tut"
 
@@ -986,101 +986,10 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:379
+#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/main.qml:379
+#: src/contents/ui/StereoTools.qml:43
 msgid "Input"
 msgstr "Girdi"
-
-#: src/contents/ui/Equalizer.qml:63
-msgid "APO Presets"
-msgstr "APO Ön Ayarları"
-
-#: src/contents/ui/Equalizer.qml:66
-#, fuzzy
-msgid "APO Preset File Imported."
-msgstr "Dürtü Dosyası İçe Aktarılmadı"
-
-#: src/contents/ui/Equalizer.qml:68
-#, fuzzy
-msgid "Failed to Import the APO Preset File."
-msgstr "APO Ön Ayar Dosyasını İçe Aktar"
-
-#: src/contents/ui/Equalizer.qml:77
-msgid "GraphicEQ Presets"
-msgstr "GraphicEQ Ön Ayarları"
-
-#: src/contents/ui/Equalizer.qml:80
-#, fuzzy
-msgid "GraphicEQ Preset File Imported."
-msgstr "GraphicEQ Ön Ayar Dosyasını İçe Aktar"
-
-#: src/contents/ui/Equalizer.qml:82
-#, fuzzy
-msgid "Failed to Import the GraphicEQ Preset File."
-msgstr "GraphicEQ Ön Ayar Dosyasını İçe Aktar"
-
-#: src/contents/ui/Equalizer.qml:91
-#, fuzzy
-msgid "APO Preset"
-msgstr "APO Ön Ayarları"
-
-#: src/contents/ui/Equalizer.qml:94
-#, fuzzy
-msgid "APO Preset File Exported."
-msgstr "APO Ön Ayar Dosyasını İçe Aktar"
-
-#: src/contents/ui/Equalizer.qml:96
-#, fuzzy
-msgid "Failed to Export the APO Preset File."
-msgstr "APO Ön Ayar Dosyasını İçe Aktar"
-
-#: src/contents/ui/Equalizer.qml:125
-msgid "Bands"
-msgstr "Bantlar"
-
-#: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:174
-#: src/contents/ui/StereoTools.qml:67 src/contents/ui/StereoTools.qml:321
-msgid "Balance"
-msgstr "Denge"
-
-#: src/contents/ui/Equalizer.qml:158
-msgid "Pitch Left"
-msgstr "Sol Perde"
-
-#: src/contents/ui/Equalizer.qml:175
-msgid "Pitch Right"
-msgstr "Sağ Perde"
-
-#: src/contents/ui/Equalizer.qml:321
-msgid "Split Channels"
-msgstr "Kanalları Böl"
-
-#: src/contents/ui/Equalizer.qml:331
-msgid "Flat Response"
-msgstr "Düz Yanıt"
-
-#: src/contents/ui/Equalizer.qml:338
-msgid "Calculate Frequencies"
-msgstr "Frekansları Hesapla"
-
-#: src/contents/ui/Equalizer.qml:345
-msgid "Sort Bands"
-msgstr "Bantları Sırala"
-
-#: src/contents/ui/Equalizer.qml:352
-#, fuzzy
-msgid "Import APO"
-msgstr "İçe aktar"
-
-#: src/contents/ui/Equalizer.qml:359
-#, fuzzy
-msgid "Import APO (GraphicEQ)"
-msgstr "GraphicEQ Ön Ayar Dosyasını İçe Aktar"
-
-#: src/contents/ui/Equalizer.qml:366
-#, fuzzy
-msgid "Export APO"
-msgstr "Ön Ayarı İçe Aktar"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:651
@@ -1172,6 +1081,97 @@ msgstr "Genişlik"
 #: src/contents/ui/MultibandGate.qml:78
 msgid "Solo"
 msgstr "Tekli"
+
+#: src/contents/ui/Equalizer.qml:63
+msgid "APO Presets"
+msgstr "APO Ön Ayarları"
+
+#: src/contents/ui/Equalizer.qml:66
+#, fuzzy
+msgid "APO Preset File Imported."
+msgstr "Dürtü Dosyası İçe Aktarılmadı"
+
+#: src/contents/ui/Equalizer.qml:68
+#, fuzzy
+msgid "Failed to Import the APO Preset File."
+msgstr "APO Ön Ayar Dosyasını İçe Aktar"
+
+#: src/contents/ui/Equalizer.qml:77
+msgid "GraphicEQ Presets"
+msgstr "GraphicEQ Ön Ayarları"
+
+#: src/contents/ui/Equalizer.qml:80
+#, fuzzy
+msgid "GraphicEQ Preset File Imported."
+msgstr "GraphicEQ Ön Ayar Dosyasını İçe Aktar"
+
+#: src/contents/ui/Equalizer.qml:82
+#, fuzzy
+msgid "Failed to Import the GraphicEQ Preset File."
+msgstr "GraphicEQ Ön Ayar Dosyasını İçe Aktar"
+
+#: src/contents/ui/Equalizer.qml:91
+#, fuzzy
+msgid "APO Preset"
+msgstr "APO Ön Ayarları"
+
+#: src/contents/ui/Equalizer.qml:94
+#, fuzzy
+msgid "APO Preset File Exported."
+msgstr "APO Ön Ayar Dosyasını İçe Aktar"
+
+#: src/contents/ui/Equalizer.qml:96
+#, fuzzy
+msgid "Failed to Export the APO Preset File."
+msgstr "APO Ön Ayar Dosyasını İçe Aktar"
+
+#: src/contents/ui/Equalizer.qml:125
+msgid "Bands"
+msgstr "Bantlar"
+
+#: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:174
+#: src/contents/ui/StereoTools.qml:67 src/contents/ui/StereoTools.qml:321
+msgid "Balance"
+msgstr "Denge"
+
+#: src/contents/ui/Equalizer.qml:158
+msgid "Pitch Left"
+msgstr "Sol Perde"
+
+#: src/contents/ui/Equalizer.qml:175
+msgid "Pitch Right"
+msgstr "Sağ Perde"
+
+#: src/contents/ui/Equalizer.qml:321
+msgid "Split Channels"
+msgstr "Kanalları Böl"
+
+#: src/contents/ui/Equalizer.qml:331
+msgid "Flat Response"
+msgstr "Düz Yanıt"
+
+#: src/contents/ui/Equalizer.qml:338
+msgid "Calculate Frequencies"
+msgstr "Frekansları Hesapla"
+
+#: src/contents/ui/Equalizer.qml:345
+msgid "Sort Bands"
+msgstr "Bantları Sırala"
+
+#: src/contents/ui/Equalizer.qml:352
+#, fuzzy
+msgid "Import APO"
+msgstr "İçe aktar"
+
+#: src/contents/ui/Equalizer.qml:359
+#, fuzzy
+msgid "Import APO (GraphicEQ)"
+msgstr "GraphicEQ Ön Ayar Dosyasını İçe Aktar"
+
+#: src/contents/ui/Equalizer.qml:366
+#, fuzzy
+msgid "Export APO"
+msgstr "Ön Ayarı İçe Aktar"
 
 #: src/contents/ui/Exciter.qml:143
 #, fuzzy
@@ -1549,7 +1549,69 @@ msgstr "Kırpma"
 msgid "Clipping"
 msgstr "Kırpma"
 
-#: src/contents/ui/MenuAddPlugins.qml:128
+#: src/contents/ui/main.qml:162
+#, fuzzy
+msgid "Reset Settings?"
+msgstr "Ayarları _Sıfırla"
+
+#: src/contents/ui/main.qml:163
+msgid "Are you sure you want to reset all Easy Effects settings?"
+msgstr ""
+
+#: src/contents/ui/main.qml:184
+msgid "Audio effects for PipeWire applications"
+msgstr "PipeWire uygulamaları için ses efektleri"
+
+#: src/contents/ui/main.qml:195
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Eğim"
+
+#: src/contents/ui/main.qml:287
+#, fuzzy
+msgid "Active"
+msgstr "Etkin Model"
+
+#: src/contents/ui/main.qml:298 src/contents/ui/main.qml:412
+#: src/contents/ui/ShortcutsSheet.qml:228
+#, fuzzy
+msgid "Shortcuts"
+msgstr "Kısa_yollar"
+
+#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
+#, fuzzy
+msgid "Manual"
+msgstr "_Kılavuz"
+
+#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
+#, fuzzy
+msgid "Quit"
+msgstr "_Çık"
+
+#: src/contents/ui/main.qml:347
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:389
+#, fuzzy
+msgid "PipeWire"
+msgstr "_PipeWire"
+
+#: src/contents/ui/main.qml:404 src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:536
+#, fuzzy
+msgid "Preferences"
+msgstr "_Tercihler"
+
+#: src/contents/ui/main.qml:444
+#, fuzzy
+msgid "About Easy Effects"
+msgstr "Easy Effects _Hakkında"
+
+#: src/contents/ui/MenuAddPlugins.qml:132
 #, fuzzy
 msgid "Added Effect"
 msgstr "Efekt Ekle"
@@ -1843,14 +1905,6 @@ msgstr "Hızlı Arama"
 msgid "Anti-aliasing"
 msgstr "Kenar yumuşatma"
 
-#: src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:523
-#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:404
-#, fuzzy
-msgid "Preferences"
-msgstr "_Tercihler"
-
 #: src/contents/ui/PreferencesSheet.qml:34
 #, fuzzy
 msgid "Enable Service Mode"
@@ -2116,7 +2170,7 @@ msgid "Fallback Preset"
 msgstr ""
 
 #: src/contents/ui/PresetsCommunityPage.qml:91
-#: src/contents/ui/PresetsLocalPage.qml:154
+#: src/contents/ui/PresetsLocalPage.qml:157
 msgid "The Preset %1 Failed to Load"
 msgstr ""
 
@@ -2138,70 +2192,96 @@ msgstr "Topluluk Ön Ayarı Ara"
 msgid "Refresh"
 msgstr "Yenile"
 
-#: src/contents/ui/PresetsLocalPage.qml:39
+#: src/contents/ui/PresetsLocalPage.qml:42
 #, fuzzy
 msgid "Preset File Imported."
 msgstr "Dürtü Dosyası İçe Aktarılmadı"
 
-#: src/contents/ui/PresetsLocalPage.qml:41
+#: src/contents/ui/PresetsLocalPage.qml:44
 #, fuzzy
 msgid "Failed to Import the Preset."
 msgstr "APO Ön Ayar Dosyasını İçe Aktar"
 
-#: src/contents/ui/PresetsLocalPage.qml:49
+#: src/contents/ui/PresetsLocalPage.qml:52
 msgid "New Preset Name"
 msgstr "Yeni Ön Ayar Adı"
 
-#: src/contents/ui/PresetsLocalPage.qml:65
+#: src/contents/ui/PresetsLocalPage.qml:68
 #, fuzzy
 msgid "Import Preset File"
 msgstr "APO Ön Ayar Dosyasını İçe Aktar"
 
-#: src/contents/ui/PresetsLocalPage.qml:74
+#: src/contents/ui/PresetsLocalPage.qml:77
 #, fuzzy
 msgid "Create Preset"
 msgstr "Yeni bir ön ayar oluştur"
 
-#: src/contents/ui/PresetsLocalPage.qml:83
+#: src/contents/ui/PresetsLocalPage.qml:86
 #, fuzzy
 msgid "New Preset Created"
 msgstr "Yeni Ön Ayar Adı"
 
-#: src/contents/ui/PresetsLocalPage.qml:86
+#: src/contents/ui/PresetsLocalPage.qml:89
 msgid "Failed to Create Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:160
+#: src/contents/ui/PresetsLocalPage.qml:163
 #, fuzzy
 msgid "Remove Preset"
 msgstr "Yeni bir ön ayar oluştur"
 
-#: src/contents/ui/PresetsLocalPage.qml:161
+#: src/contents/ui/PresetsLocalPage.qml:164
 msgid "Are you sure you want to remove this preset from the list?"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:165
+#: src/contents/ui/PresetsLocalPage.qml:168
 msgid "The Preset %1 Has Been Removed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:167
+#: src/contents/ui/PresetsLocalPage.qml:170
 msgid "The Preset %1 Could Not Be Removed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:180
+#: src/contents/ui/PresetsLocalPage.qml:177
+#, fuzzy
+msgid "Rename Preset"
+msgstr "Yeni bir ön ayar oluştur"
+
+#: src/contents/ui/PresetsLocalPage.qml:182
+msgid "Rename"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:191
+msgid "The Preset %1 Has Been Renamed"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:193
+msgid "The Preset %1 Could Not Be Renamed"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:200
+msgid "Cancel"
+msgstr "İptal"
+
+#: src/contents/ui/PresetsLocalPage.qml:231
 #, fuzzy
 msgid "Save Settings to this Preset"
 msgstr "Geçerli ayarları bu ön ayar dosyasına kaydet"
 
-#: src/contents/ui/PresetsLocalPage.qml:185
+#: src/contents/ui/PresetsLocalPage.qml:236
 msgid "Settings Saved to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:187
+#: src/contents/ui/PresetsLocalPage.qml:238
 msgid "Failed to Save Settings to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:242
+#, fuzzy
+msgid "Rename this Preset"
+msgstr "Hazır ayar dosyasını kaldır"
+
+#: src/contents/ui/PresetsLocalPage.qml:250
 #, fuzzy
 msgid "Delete this Preset"
 msgstr "Hazır ayar dosyasını kaldır"
@@ -2222,57 +2302,6 @@ msgstr "Otomatik Kazanç"
 #: src/contents/ui/PresetsSheet.qml:103
 msgid "No Preset Loaded"
 msgstr "Ön Ayar Yüklü Değil"
-
-#: src/contents/ui/RNNoise.qml:55
-#, fuzzy
-msgid "Model File Imported."
-msgstr "Dürtü Dosyası İçe Aktarılmadı"
-
-#: src/contents/ui/RNNoise.qml:57
-#, fuzzy
-msgid "Failed to Import the Model File."
-msgstr "Model Dosyasını İçe Aktar"
-
-#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
-msgid "Voice Detection"
-msgstr "Ses Algılama"
-
-#: src/contents/ui/RNNoise.qml:108
-msgid "Wet Level"
-msgstr "Islak Düzey"
-
-#: src/contents/ui/RNNoise.qml:147
-#, fuzzy
-msgid "Use the Standard Model"
-msgstr "Standart Model"
-
-#: src/contents/ui/RNNoise.qml:158
-#, fuzzy
-msgid "User Models"
-msgstr "RNNoise Modelleri"
-
-#: src/contents/ui/RNNoise.qml:207
-#, fuzzy
-msgid "Loaded Model: %1"
-msgstr "Standart Model"
-
-#: src/contents/ui/RNNoise.qml:219
-#, fuzzy
-msgid "Delete this Model"
-msgstr "Bu model dosyasını kaldır"
-
-#: src/contents/ui/RNNoise.qml:224
-#, fuzzy
-msgid "Removed Model: %1"
-msgstr "Bu model dosyasını kaldır"
-
-#: src/contents/ui/RNNoise.qml:226
-msgid "Failed to Remove the Model: %1"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:289
-msgid "Import Model"
-msgstr "Modeli İçe Aktar"
 
 #: src/contents/ui/Reverb.qml:52
 msgid "Room Size"
@@ -2356,6 +2385,57 @@ msgstr "Disko"
 msgid "Large Occupied Hall"
 msgstr "Büyük Dolu Salon"
 
+#: src/contents/ui/RNNoise.qml:55
+#, fuzzy
+msgid "Model File Imported."
+msgstr "Dürtü Dosyası İçe Aktarılmadı"
+
+#: src/contents/ui/RNNoise.qml:57
+#, fuzzy
+msgid "Failed to Import the Model File."
+msgstr "Model Dosyasını İçe Aktar"
+
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
+msgid "Voice Detection"
+msgstr "Ses Algılama"
+
+#: src/contents/ui/RNNoise.qml:108
+msgid "Wet Level"
+msgstr "Islak Düzey"
+
+#: src/contents/ui/RNNoise.qml:147
+#, fuzzy
+msgid "Use the Standard Model"
+msgstr "Standart Model"
+
+#: src/contents/ui/RNNoise.qml:158
+#, fuzzy
+msgid "User Models"
+msgstr "RNNoise Modelleri"
+
+#: src/contents/ui/RNNoise.qml:207
+#, fuzzy
+msgid "Loaded Model: %1"
+msgstr "Standart Model"
+
+#: src/contents/ui/RNNoise.qml:219
+#, fuzzy
+msgid "Delete this Model"
+msgstr "Bu model dosyasını kaldır"
+
+#: src/contents/ui/RNNoise.qml:224
+#, fuzzy
+msgid "Removed Model: %1"
+msgstr "Bu model dosyasını kaldır"
+
+#: src/contents/ui/RNNoise.qml:226
+msgid "Failed to Remove the Model: %1"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:289
+msgid "Import Model"
+msgstr "Modeli İçe Aktar"
+
 #: src/contents/ui/ShortcutsSheet.qml:34
 #, fuzzy
 msgid "Show Help"
@@ -2383,12 +2463,6 @@ msgstr "Easyeffects sürümünü yazdır"
 #: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
-
-#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:298
-#: src/contents/ui/main.qml:412
-#, fuzzy
-msgid "Shortcuts"
-msgstr "Kısa_yollar"
 
 #: src/contents/ui/Speex.qml:49
 msgid "Denoise"
@@ -2486,54 +2560,6 @@ msgstr "Stereo Taban"
 msgid "Stereo Phase"
 msgstr "Stereo Faz"
 
-#: src/contents/ui/main.qml:162
-#, fuzzy
-msgid "Reset Settings?"
-msgstr "Ayarları _Sıfırla"
-
-#: src/contents/ui/main.qml:163
-msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
-
-#: src/contents/ui/main.qml:184
-msgid "Audio effects for PipeWire applications"
-msgstr "PipeWire uygulamaları için ses efektleri"
-
-#: src/contents/ui/main.qml:195
-#, fuzzy
-msgctxt "@info:credit"
-msgid "Developer"
-msgstr "Eğim"
-
-#: src/contents/ui/main.qml:287
-#, fuzzy
-msgid "Active"
-msgstr "Etkin Model"
-
-#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
-#, fuzzy
-msgid "Manual"
-msgstr "_Kılavuz"
-
-#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
-#, fuzzy
-msgid "Quit"
-msgstr "_Çık"
-
-#: src/contents/ui/main.qml:347
-msgid "Turn Effects On/Off"
-msgstr ""
-
-#: src/contents/ui/main.qml:389
-#, fuzzy
-msgid "PipeWire"
-msgstr "_PipeWire"
-
-#: src/contents/ui/main.qml:444
-#, fuzzy
-msgid "About Easy Effects"
-msgstr "Easy Effects _Hakkında"
-
 #: src/plugin_base.cpp:270
 msgid "(Mic)"
 msgstr ""
@@ -2547,57 +2573,57 @@ msgstr "Hoparlörler"
 msgid "Output Level Meter"
 msgstr "Çıktı Düzey Ölçer"
 
-#: src/presets_manager.cpp:1378 src/presets_manager.cpp:1385
-#: src/presets_manager.cpp:1395 src/presets_manager.cpp:1402
-#: src/presets_manager.cpp:1411 src/presets_manager.cpp:1419
+#: src/presets_manager.cpp:1407 src/presets_manager.cpp:1414
+#: src/presets_manager.cpp:1424 src/presets_manager.cpp:1431
+#: src/presets_manager.cpp:1440 src/presets_manager.cpp:1448
 msgid "Preset Not Loaded Correctly"
 msgstr "Ön Ayar Doğru Yüklenmedi"
 
-#: src/presets_manager.cpp:1378
+#: src/presets_manager.cpp:1407
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Hariç Tutulan Uygulamalar Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:1386
+#: src/presets_manager.cpp:1415
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Hariç Tutulan Uygulamalar Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:1395
+#: src/presets_manager.cpp:1424
 msgid "Wrong Format in Effects List"
 msgstr "Efektler Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:1402
+#: src/presets_manager.cpp:1431
 msgid "Generic Error While Loading Effects List"
 msgstr "Efekt Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:1412
+#: src/presets_manager.cpp:1441
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Bir veya Daha Fazla Parametre Yanlış Biçime Sahip"
 
-#: src/presets_manager.cpp:1420
+#: src/presets_manager.cpp:1449
 msgid "Generic Error While Loading The Effect"
 msgstr "Efekt Yüklenirken Genel Hata"
 
-#: src/pw_model_nodes.cpp:486
+#: src/pw_model_nodes.cpp:488
 msgid "Running"
 msgstr "Çalışıyor"
 
-#: src/pw_model_nodes.cpp:488
+#: src/pw_model_nodes.cpp:490
 msgid "Suspended"
 msgstr "Askıya alındı"
 
-#: src/pw_model_nodes.cpp:490
+#: src/pw_model_nodes.cpp:492
 msgid "Idle"
 msgstr "Boşta"
 
-#: src/pw_model_nodes.cpp:492
+#: src/pw_model_nodes.cpp:494
 msgid "Creating"
 msgstr "Oluşturuluyor"
 
-#: src/pw_model_nodes.cpp:494
+#: src/pw_model_nodes.cpp:496
 msgid "Error"
 msgstr "Hata"
 
-#: src/pw_model_nodes.cpp:496
+#: src/pw_model_nodes.cpp:498
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
@@ -3498,9 +3524,6 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 
 #~ msgid "Low Pass"
 #~ msgstr "Düşük Geçiş"
-
-#~ msgid "Cancel"
-#~ msgstr "İptal"
 
 #~ msgid " PreAmplification"
 #~ msgstr " Ön Yükseltme"

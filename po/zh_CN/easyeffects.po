@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-26 02:27+0000\n"
+"POT-Creation-Date: 2025-09-28 20:08-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: \"https://medium.com/@porkifiableoinking\" "
 "<erbaotao@outlook.com>\n"
@@ -170,7 +170,7 @@ msgstr "输出增益"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:211
-#: src/contents/ui/RNNoise.qml:273 src/contents/ui/Reverb.qml:309
+#: src/contents/ui/Reverb.qml:309 src/contents/ui/RNNoise.qml:273
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:433
 #, fuzzy
 msgid "Using %1"
@@ -256,18 +256,18 @@ msgstr "聆听"
 #: src/contents/ui/Expander.qml:808 src/contents/ui/Filter.qml:228
 #: src/contents/ui/Gate.qml:944 src/contents/ui/LevelMeter.qml:256
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
-#: src/contents/ui/Maximizer.qml:131
+#: src/contents/ui/main.qml:432 src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:296
-#: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:183
-#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:432
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/Reverb.qml:346
+#: src/contents/ui/RNNoise.qml:296 src/contents/ui/Speex.qml:183
+#: src/contents/ui/StereoTools.qml:462
 msgid "Reset"
 msgstr "重置"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:107 src/contents/ui/Expander.qml:449
-#: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:304
-#: src/contents/ui/main.qml:369
+#: src/contents/ui/Gate.qml:473 src/contents/ui/main.qml:369
+#: src/contents/ui/StereoTools.qml:304
 msgid "Output"
 msgstr "输出"
 
@@ -296,7 +296,7 @@ msgstr "添加到排除的程序"
 #: src/contents/ui/ConvolverImpulseSheet.qml:80
 #: src/contents/ui/MenuAddPlugins.qml:41
 #: src/contents/ui/PresetsCommunityPage.qml:77
-#: src/contents/ui/PresetsLocalPage.qml:142 src/contents/ui/RNNoise.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:145 src/contents/ui/RNNoise.qml:191
 #, fuzzy
 msgid "Empty"
 msgstr "空列表"
@@ -325,8 +325,8 @@ msgstr "压缩器"
 
 #: src/contents/ui/Compressor.qml:70 src/contents/ui/Compressor.qml:301
 #: src/contents/ui/Deesser.qml:71 src/contents/ui/Delay.qml:56
-#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:112
-#: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:70
+#: src/contents/ui/Delay.qml:214 src/contents/ui/EqualizerBandMenu.qml:45
+#: src/contents/ui/Equalizer.qml:112 src/contents/ui/Expander.qml:70
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:285
 #: src/contents/ui/Limiter.qml:52 src/contents/ui/Loudness.qml:54
 #: src/contents/ui/MultibandCompressor.qml:416
@@ -669,6 +669,56 @@ msgstr "波封"
 msgid "Stereo Split"
 msgstr "立体声分离"
 
+#: src/contents/ui/ConvolverImpulseSheet.qml:47
+#, fuzzy
+msgid "Impluse File Imported."
+msgstr "脉冲文件未导入"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:49
+#, fuzzy
+msgid "Failed to Import the Impulse File."
+msgstr "加载脉冲文件失败"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:60
+#: src/contents/ui/MenuAddPlugins.qml:144
+#: src/contents/ui/PresetsCommunityPage.qml:53
+#: src/contents/ui/PresetsLocalPage.qml:121
+msgid "Search"
+msgstr "搜索"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:93
+#, fuzzy
+msgid "Loaded Impulse: %1"
+msgstr "加载脉冲"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:99
+#, fuzzy
+msgid "Remove Impulse Response"
+msgstr "脉冲响应"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:100
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr ""
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
+#, fuzzy
+msgid "Removed Impulse: %1"
+msgstr "删除脉冲"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:106
+#, fuzzy
+msgid "Failed to Remove the Impulse: %1"
+msgstr "加载脉冲文件失败"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:119
+#, fuzzy
+msgid "Delete this Impulse"
+msgstr "删除脉冲"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:159
+msgid "Import Impulse"
+msgstr "导入 Impulse 文件"
+
 #: src/contents/ui/Convolver.qml:100
 msgid "First"
 msgstr ""
@@ -713,56 +763,6 @@ msgstr "立体声宽度"
 msgid "Autogain"
 msgstr "自动增益"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:47
-#, fuzzy
-msgid "Impluse File Imported."
-msgstr "脉冲文件未导入"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:49
-#, fuzzy
-msgid "Failed to Import the Impulse File."
-msgstr "加载脉冲文件失败"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:60
-#: src/contents/ui/MenuAddPlugins.qml:140
-#: src/contents/ui/PresetsCommunityPage.qml:53
-#: src/contents/ui/PresetsLocalPage.qml:118
-msgid "Search"
-msgstr "搜索"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:93
-#, fuzzy
-msgid "Loaded Impulse: %1"
-msgstr "加载脉冲"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:99
-#, fuzzy
-msgid "Remove Impulse Response"
-msgstr "脉冲响应"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:100
-msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr ""
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:104
-#, fuzzy
-msgid "Removed Impulse: %1"
-msgstr "删除脉冲"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:106
-#, fuzzy
-msgid "Failed to Remove the Impulse: %1"
-msgstr "加载脉冲文件失败"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:119
-#, fuzzy
-msgid "Delete this Impulse"
-msgstr "删除脉冲"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:159
-msgid "Import Impulse"
-msgstr "导入 Impulse 文件"
-
 #: src/contents/ui/Crossfeed.qml:64
 msgid "Cutoff"
 msgstr "截止"
@@ -780,8 +780,8 @@ msgstr "交叉反馈"
 msgid "Default"
 msgstr "默认"
 
-#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:339
+#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/main.qml:339
+#: src/contents/ui/Reverb.qml:325
 msgid "Presets"
 msgstr "预设"
 
@@ -951,17 +951,17 @@ msgstr "启用/禁用此音效"
 msgid "Remove this effect"
 msgstr "删除此音效"
 
-#: src/contents/ui/DelegateStreamsList.qml:83
+#: src/contents/ui/DelegateStreamsList.qml:80
 #, fuzzy
 msgid "channels"
 msgstr "声道"
 
-#: src/contents/ui/DelegateStreamsList.qml:92 src/contents/ui/Gate.qml:180
+#: src/contents/ui/DelegateStreamsList.qml:91 src/contents/ui/Gate.qml:180
 #: src/contents/ui/RNNoise.qml:81
 msgid "Enable"
 msgstr "启用"
 
-#: src/contents/ui/DelegateStreamsList.qml:107
+#: src/contents/ui/DelegateStreamsList.qml:112
 msgid "Exclude"
 msgstr "排除"
 
@@ -986,101 +986,10 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:379
+#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/main.qml:379
+#: src/contents/ui/StereoTools.qml:43
 msgid "Input"
 msgstr "输入"
-
-#: src/contents/ui/Equalizer.qml:63
-msgid "APO Presets"
-msgstr "APO 预设"
-
-#: src/contents/ui/Equalizer.qml:66
-#, fuzzy
-msgid "APO Preset File Imported."
-msgstr "脉冲文件未导入"
-
-#: src/contents/ui/Equalizer.qml:68
-#, fuzzy
-msgid "Failed to Import the APO Preset File."
-msgstr "加载 APO 预设文件"
-
-#: src/contents/ui/Equalizer.qml:77
-msgid "GraphicEQ Presets"
-msgstr "GraphicEQ 预设"
-
-#: src/contents/ui/Equalizer.qml:80
-#, fuzzy
-msgid "GraphicEQ Preset File Imported."
-msgstr "导入 GraphicEQ 预设文件"
-
-#: src/contents/ui/Equalizer.qml:82
-#, fuzzy
-msgid "Failed to Import the GraphicEQ Preset File."
-msgstr "导入 GraphicEQ 预设文件"
-
-#: src/contents/ui/Equalizer.qml:91
-#, fuzzy
-msgid "APO Preset"
-msgstr "APO 预设"
-
-#: src/contents/ui/Equalizer.qml:94
-#, fuzzy
-msgid "APO Preset File Exported."
-msgstr "加载 APO 预设文件"
-
-#: src/contents/ui/Equalizer.qml:96
-#, fuzzy
-msgid "Failed to Export the APO Preset File."
-msgstr "加载 APO 预设文件"
-
-#: src/contents/ui/Equalizer.qml:125
-msgid "Bands"
-msgstr "频段"
-
-#: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:174
-#: src/contents/ui/StereoTools.qml:67 src/contents/ui/StereoTools.qml:321
-msgid "Balance"
-msgstr "平衡"
-
-#: src/contents/ui/Equalizer.qml:158
-msgid "Pitch Left"
-msgstr "左音高"
-
-#: src/contents/ui/Equalizer.qml:175
-msgid "Pitch Right"
-msgstr "右音高"
-
-#: src/contents/ui/Equalizer.qml:321
-msgid "Split Channels"
-msgstr "分离声道"
-
-#: src/contents/ui/Equalizer.qml:331
-msgid "Flat Response"
-msgstr "平滑响应"
-
-#: src/contents/ui/Equalizer.qml:338
-msgid "Calculate Frequencies"
-msgstr "频率响应"
-
-#: src/contents/ui/Equalizer.qml:345
-msgid "Sort Bands"
-msgstr "将频段排序"
-
-#: src/contents/ui/Equalizer.qml:352
-#, fuzzy
-msgid "Import APO"
-msgstr "导入"
-
-#: src/contents/ui/Equalizer.qml:359
-#, fuzzy
-msgid "Import APO (GraphicEQ)"
-msgstr "导入 GraphicEQ 预设文件"
-
-#: src/contents/ui/Equalizer.qml:366
-#, fuzzy
-msgid "Export APO"
-msgstr "导出预设"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:651
@@ -1172,6 +1081,97 @@ msgstr "宽度"
 #: src/contents/ui/MultibandGate.qml:78
 msgid "Solo"
 msgstr "独奏"
+
+#: src/contents/ui/Equalizer.qml:63
+msgid "APO Presets"
+msgstr "APO 预设"
+
+#: src/contents/ui/Equalizer.qml:66
+#, fuzzy
+msgid "APO Preset File Imported."
+msgstr "脉冲文件未导入"
+
+#: src/contents/ui/Equalizer.qml:68
+#, fuzzy
+msgid "Failed to Import the APO Preset File."
+msgstr "加载 APO 预设文件"
+
+#: src/contents/ui/Equalizer.qml:77
+msgid "GraphicEQ Presets"
+msgstr "GraphicEQ 预设"
+
+#: src/contents/ui/Equalizer.qml:80
+#, fuzzy
+msgid "GraphicEQ Preset File Imported."
+msgstr "导入 GraphicEQ 预设文件"
+
+#: src/contents/ui/Equalizer.qml:82
+#, fuzzy
+msgid "Failed to Import the GraphicEQ Preset File."
+msgstr "导入 GraphicEQ 预设文件"
+
+#: src/contents/ui/Equalizer.qml:91
+#, fuzzy
+msgid "APO Preset"
+msgstr "APO 预设"
+
+#: src/contents/ui/Equalizer.qml:94
+#, fuzzy
+msgid "APO Preset File Exported."
+msgstr "加载 APO 预设文件"
+
+#: src/contents/ui/Equalizer.qml:96
+#, fuzzy
+msgid "Failed to Export the APO Preset File."
+msgstr "加载 APO 预设文件"
+
+#: src/contents/ui/Equalizer.qml:125
+msgid "Bands"
+msgstr "频段"
+
+#: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:174
+#: src/contents/ui/StereoTools.qml:67 src/contents/ui/StereoTools.qml:321
+msgid "Balance"
+msgstr "平衡"
+
+#: src/contents/ui/Equalizer.qml:158
+msgid "Pitch Left"
+msgstr "左音高"
+
+#: src/contents/ui/Equalizer.qml:175
+msgid "Pitch Right"
+msgstr "右音高"
+
+#: src/contents/ui/Equalizer.qml:321
+msgid "Split Channels"
+msgstr "分离声道"
+
+#: src/contents/ui/Equalizer.qml:331
+msgid "Flat Response"
+msgstr "平滑响应"
+
+#: src/contents/ui/Equalizer.qml:338
+msgid "Calculate Frequencies"
+msgstr "频率响应"
+
+#: src/contents/ui/Equalizer.qml:345
+msgid "Sort Bands"
+msgstr "将频段排序"
+
+#: src/contents/ui/Equalizer.qml:352
+#, fuzzy
+msgid "Import APO"
+msgstr "导入"
+
+#: src/contents/ui/Equalizer.qml:359
+#, fuzzy
+msgid "Import APO (GraphicEQ)"
+msgstr "导入 GraphicEQ 预设文件"
+
+#: src/contents/ui/Equalizer.qml:366
+#, fuzzy
+msgid "Export APO"
+msgstr "导出预设"
 
 #: src/contents/ui/Exciter.qml:143
 #, fuzzy
@@ -1550,7 +1550,69 @@ msgstr "削波范围"
 msgid "Clipping"
 msgstr "削波"
 
-#: src/contents/ui/MenuAddPlugins.qml:128
+#: src/contents/ui/main.qml:162
+#, fuzzy
+msgid "Reset Settings?"
+msgstr "重置设置(_R)"
+
+#: src/contents/ui/main.qml:163
+msgid "Are you sure you want to reset all Easy Effects settings?"
+msgstr ""
+
+#: src/contents/ui/main.qml:184
+msgid "Audio effects for PipeWire applications"
+msgstr "为使用 PipeWire 的程序提供音效"
+
+#: src/contents/ui/main.qml:195
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "波封"
+
+#: src/contents/ui/main.qml:287
+#, fuzzy
+msgid "Active"
+msgstr "激活"
+
+#: src/contents/ui/main.qml:298 src/contents/ui/main.qml:412
+#: src/contents/ui/ShortcutsSheet.qml:228
+#, fuzzy
+msgid "Shortcuts"
+msgstr "快捷键(_S)"
+
+#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
+#, fuzzy
+msgid "Manual"
+msgstr "使用手册(_M)"
+
+#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
+#, fuzzy
+msgid "Quit"
+msgstr "退出(_Q)"
+
+#: src/contents/ui/main.qml:347
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:389
+#, fuzzy
+msgid "PipeWire"
+msgstr "PipeWire(_P)"
+
+#: src/contents/ui/main.qml:404 src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:536
+#, fuzzy
+msgid "Preferences"
+msgstr "首选项(_P)"
+
+#: src/contents/ui/main.qml:444
+#, fuzzy
+msgid "About Easy Effects"
+msgstr "关于 EasyEffects (_A)"
+
+#: src/contents/ui/MenuAddPlugins.qml:132
 #, fuzzy
 msgid "Added Effect"
 msgstr "添加音效"
@@ -1844,14 +1906,6 @@ msgstr "快速查找"
 msgid "Anti-aliasing"
 msgstr "抗混叠"
 
-#: src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:523
-#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:404
-#, fuzzy
-msgid "Preferences"
-msgstr "首选项(_P)"
-
 #: src/contents/ui/PreferencesSheet.qml:34
 #, fuzzy
 msgid "Enable Service Mode"
@@ -2117,7 +2171,7 @@ msgid "Fallback Preset"
 msgstr ""
 
 #: src/contents/ui/PresetsCommunityPage.qml:91
-#: src/contents/ui/PresetsLocalPage.qml:154
+#: src/contents/ui/PresetsLocalPage.qml:157
 msgid "The Preset %1 Failed to Load"
 msgstr ""
 
@@ -2139,70 +2193,96 @@ msgstr "搜索社区预设"
 msgid "Refresh"
 msgstr "刷新"
 
-#: src/contents/ui/PresetsLocalPage.qml:39
+#: src/contents/ui/PresetsLocalPage.qml:42
 #, fuzzy
 msgid "Preset File Imported."
 msgstr "脉冲文件未导入"
 
-#: src/contents/ui/PresetsLocalPage.qml:41
+#: src/contents/ui/PresetsLocalPage.qml:44
 #, fuzzy
 msgid "Failed to Import the Preset."
 msgstr "加载 APO 预设文件"
 
-#: src/contents/ui/PresetsLocalPage.qml:49
+#: src/contents/ui/PresetsLocalPage.qml:52
 msgid "New Preset Name"
 msgstr "新预设名称"
 
-#: src/contents/ui/PresetsLocalPage.qml:65
+#: src/contents/ui/PresetsLocalPage.qml:68
 #, fuzzy
 msgid "Import Preset File"
 msgstr "加载 APO 预设文件"
 
-#: src/contents/ui/PresetsLocalPage.qml:74
+#: src/contents/ui/PresetsLocalPage.qml:77
 #, fuzzy
 msgid "Create Preset"
 msgstr "创建新预设"
 
-#: src/contents/ui/PresetsLocalPage.qml:83
+#: src/contents/ui/PresetsLocalPage.qml:86
 #, fuzzy
 msgid "New Preset Created"
 msgstr "新预设名称"
 
-#: src/contents/ui/PresetsLocalPage.qml:86
+#: src/contents/ui/PresetsLocalPage.qml:89
 msgid "Failed to Create Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:160
+#: src/contents/ui/PresetsLocalPage.qml:163
 #, fuzzy
 msgid "Remove Preset"
 msgstr "创建新预设"
 
-#: src/contents/ui/PresetsLocalPage.qml:161
+#: src/contents/ui/PresetsLocalPage.qml:164
 msgid "Are you sure you want to remove this preset from the list?"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:165
+#: src/contents/ui/PresetsLocalPage.qml:168
 msgid "The Preset %1 Has Been Removed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:167
+#: src/contents/ui/PresetsLocalPage.qml:170
 msgid "The Preset %1 Could Not Be Removed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:180
+#: src/contents/ui/PresetsLocalPage.qml:177
+#, fuzzy
+msgid "Rename Preset"
+msgstr "创建新预设"
+
+#: src/contents/ui/PresetsLocalPage.qml:182
+msgid "Rename"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:191
+msgid "The Preset %1 Has Been Renamed"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:193
+msgid "The Preset %1 Could Not Be Renamed"
+msgstr ""
+
+#: src/contents/ui/PresetsLocalPage.qml:200
+msgid "Cancel"
+msgstr "取消"
+
+#: src/contents/ui/PresetsLocalPage.qml:231
 #, fuzzy
 msgid "Save Settings to this Preset"
 msgstr "将当前设置保存到这个预设文件"
 
-#: src/contents/ui/PresetsLocalPage.qml:185
+#: src/contents/ui/PresetsLocalPage.qml:236
 msgid "Settings Saved to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:187
+#: src/contents/ui/PresetsLocalPage.qml:238
 msgid "Failed to Save Settings to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:242
+#, fuzzy
+msgid "Rename this Preset"
+msgstr "删除这个预设文件"
+
+#: src/contents/ui/PresetsLocalPage.qml:250
 #, fuzzy
 msgid "Delete this Preset"
 msgstr "删除这个预设文件"
@@ -2223,57 +2303,6 @@ msgstr "自动增益"
 #: src/contents/ui/PresetsSheet.qml:103
 msgid "No Preset Loaded"
 msgstr "未加载预设"
-
-#: src/contents/ui/RNNoise.qml:55
-#, fuzzy
-msgid "Model File Imported."
-msgstr "脉冲文件未导入"
-
-#: src/contents/ui/RNNoise.qml:57
-#, fuzzy
-msgid "Failed to Import the Model File."
-msgstr "导入模型文件"
-
-#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
-msgid "Voice Detection"
-msgstr "语音侦测"
-
-#: src/contents/ui/RNNoise.qml:108
-msgid "Wet Level"
-msgstr "湿声级别"
-
-#: src/contents/ui/RNNoise.qml:147
-#, fuzzy
-msgid "Use the Standard Model"
-msgstr "标准模型"
-
-#: src/contents/ui/RNNoise.qml:158
-#, fuzzy
-msgid "User Models"
-msgstr "RNNoise 模型"
-
-#: src/contents/ui/RNNoise.qml:207
-#, fuzzy
-msgid "Loaded Model: %1"
-msgstr "标准模型"
-
-#: src/contents/ui/RNNoise.qml:219
-#, fuzzy
-msgid "Delete this Model"
-msgstr "删除这个模型文件"
-
-#: src/contents/ui/RNNoise.qml:224
-#, fuzzy
-msgid "Removed Model: %1"
-msgstr "删除这个模型文件"
-
-#: src/contents/ui/RNNoise.qml:226
-msgid "Failed to Remove the Model: %1"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:289
-msgid "Import Model"
-msgstr "导入模型"
 
 #: src/contents/ui/Reverb.qml:52
 msgid "Room Size"
@@ -2357,6 +2386,57 @@ msgstr "舞厅"
 msgid "Large Occupied Hall"
 msgstr "拥挤的大厅"
 
+#: src/contents/ui/RNNoise.qml:55
+#, fuzzy
+msgid "Model File Imported."
+msgstr "脉冲文件未导入"
+
+#: src/contents/ui/RNNoise.qml:57
+#, fuzzy
+msgid "Failed to Import the Model File."
+msgstr "导入模型文件"
+
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
+msgid "Voice Detection"
+msgstr "语音侦测"
+
+#: src/contents/ui/RNNoise.qml:108
+msgid "Wet Level"
+msgstr "湿声级别"
+
+#: src/contents/ui/RNNoise.qml:147
+#, fuzzy
+msgid "Use the Standard Model"
+msgstr "标准模型"
+
+#: src/contents/ui/RNNoise.qml:158
+#, fuzzy
+msgid "User Models"
+msgstr "RNNoise 模型"
+
+#: src/contents/ui/RNNoise.qml:207
+#, fuzzy
+msgid "Loaded Model: %1"
+msgstr "标准模型"
+
+#: src/contents/ui/RNNoise.qml:219
+#, fuzzy
+msgid "Delete this Model"
+msgstr "删除这个模型文件"
+
+#: src/contents/ui/RNNoise.qml:224
+#, fuzzy
+msgid "Removed Model: %1"
+msgstr "删除这个模型文件"
+
+#: src/contents/ui/RNNoise.qml:226
+msgid "Failed to Remove the Model: %1"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:289
+msgid "Import Model"
+msgstr "导入模型"
+
 #: src/contents/ui/ShortcutsSheet.qml:34
 #, fuzzy
 msgid "Show Help"
@@ -2384,12 +2464,6 @@ msgstr "打印 EasyEffects 版本号"
 #: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
-
-#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:298
-#: src/contents/ui/main.qml:412
-#, fuzzy
-msgid "Shortcuts"
-msgstr "快捷键(_S)"
 
 #: src/contents/ui/Speex.qml:49
 msgid "Denoise"
@@ -2487,54 +2561,6 @@ msgstr "立体声基线"
 msgid "Stereo Phase"
 msgstr "立体声相位"
 
-#: src/contents/ui/main.qml:162
-#, fuzzy
-msgid "Reset Settings?"
-msgstr "重置设置(_R)"
-
-#: src/contents/ui/main.qml:163
-msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
-
-#: src/contents/ui/main.qml:184
-msgid "Audio effects for PipeWire applications"
-msgstr "为使用 PipeWire 的程序提供音效"
-
-#: src/contents/ui/main.qml:195
-#, fuzzy
-msgctxt "@info:credit"
-msgid "Developer"
-msgstr "波封"
-
-#: src/contents/ui/main.qml:287
-#, fuzzy
-msgid "Active"
-msgstr "激活"
-
-#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
-#, fuzzy
-msgid "Manual"
-msgstr "使用手册(_M)"
-
-#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
-#, fuzzy
-msgid "Quit"
-msgstr "退出(_Q)"
-
-#: src/contents/ui/main.qml:347
-msgid "Turn Effects On/Off"
-msgstr ""
-
-#: src/contents/ui/main.qml:389
-#, fuzzy
-msgid "PipeWire"
-msgstr "PipeWire(_P)"
-
-#: src/contents/ui/main.qml:444
-#, fuzzy
-msgid "About Easy Effects"
-msgstr "关于 EasyEffects (_A)"
-
 #: src/plugin_base.cpp:270
 msgid "(Mic)"
 msgstr ""
@@ -2548,57 +2574,57 @@ msgstr "扬声器"
 msgid "Output Level Meter"
 msgstr "输出电平表"
 
-#: src/presets_manager.cpp:1378 src/presets_manager.cpp:1385
-#: src/presets_manager.cpp:1395 src/presets_manager.cpp:1402
-#: src/presets_manager.cpp:1411 src/presets_manager.cpp:1419
+#: src/presets_manager.cpp:1407 src/presets_manager.cpp:1414
+#: src/presets_manager.cpp:1424 src/presets_manager.cpp:1431
+#: src/presets_manager.cpp:1440 src/presets_manager.cpp:1448
 msgid "Preset Not Loaded Correctly"
 msgstr "预设未成功加载"
 
-#: src/presets_manager.cpp:1378
+#: src/presets_manager.cpp:1407
 msgid "Wrong Format in Excluded Apps List"
 msgstr "已排除程序列表的格式错误"
 
-#: src/presets_manager.cpp:1386
+#: src/presets_manager.cpp:1415
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "加载已排除程序列表时出错"
 
-#: src/presets_manager.cpp:1395
+#: src/presets_manager.cpp:1424
 msgid "Wrong Format in Effects List"
 msgstr "效果列表的格式错误"
 
-#: src/presets_manager.cpp:1402
+#: src/presets_manager.cpp:1431
 msgid "Generic Error While Loading Effects List"
 msgstr "加载效果列表时出错"
 
-#: src/presets_manager.cpp:1412
+#: src/presets_manager.cpp:1441
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "一个或多个参数格式错误"
 
-#: src/presets_manager.cpp:1420
+#: src/presets_manager.cpp:1449
 msgid "Generic Error While Loading The Effect"
 msgstr "加载效果时出错"
 
-#: src/pw_model_nodes.cpp:486
+#: src/pw_model_nodes.cpp:488
 msgid "Running"
 msgstr "正在运行"
 
-#: src/pw_model_nodes.cpp:488
+#: src/pw_model_nodes.cpp:490
 msgid "Suspended"
 msgstr "已暂停"
 
-#: src/pw_model_nodes.cpp:490
+#: src/pw_model_nodes.cpp:492
 msgid "Idle"
 msgstr "空闲"
 
-#: src/pw_model_nodes.cpp:492
+#: src/pw_model_nodes.cpp:494
 msgid "Creating"
 msgstr "创建中"
 
-#: src/pw_model_nodes.cpp:494
+#: src/pw_model_nodes.cpp:496
 msgid "Error"
 msgstr "错误"
 
-#: src/pw_model_nodes.cpp:496
+#: src/pw_model_nodes.cpp:498
 msgid "Unknown"
 msgstr "未知"
 
@@ -3489,9 +3515,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 
 #~ msgid "Low Pass"
 #~ msgstr "低通"
-
-#~ msgid "Cancel"
-#~ msgstr "取消"
 
 #~ msgid " PreAmplification"
 #~ msgstr " 前置放大"

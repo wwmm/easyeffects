@@ -85,6 +85,10 @@ class Manager : public QObject {
 
   Q_INVOKABLE bool remove(const PipelineType& pipeline_type, const QString& name);
 
+  Q_INVOKABLE bool renameLocalPresetFile(const PipelineType& pipeline_type,
+                                         const QString& name,
+                                         const QString& newName);
+
   Q_INVOKABLE bool loadLocalPresetFile(const PipelineType& pipeline_type, const QString& name);
 
   Q_INVOKABLE bool importPresets(const PipelineType& pipeline_type, const QList<QString>& url_list);

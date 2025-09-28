@@ -31,6 +31,7 @@
 #include <algorithm>
 #include <exception>
 #include <filesystem>
+#include <format>
 #include <fstream>
 #include <functional>
 #include <iomanip>
@@ -614,6 +615,29 @@ bool Manager::remove(const PipelineType& pipeline_type, const QString& name) {
     std::filesystem::remove(preset_file);
 
     util::debug("removed preset: " + preset_file.string());
+
+    return true;
+  }
+
+  return false;
+}
+
+bool Manager::renameLocalPresetFile(const PipelineType& pipeline_type, const QString& name, const QString& newName) {
+  // This method assumes the filename is valid.
+
+  std::filesystem::path preset_file;
+  std::filesystem::path new_file;
+
+  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
+
+  preset_file = conf_dir / std::filesystem::path{name.toStdString() + json_ext};
+
+  new_file = conf_dir / std::filesystem::path{newName.toStdString() + json_ext};
+
+  if (std::filesystem::exists(preset_file)) {
+    std::filesystem::rename(preset_file, new_file);
+
+    util::debug(std::format("renamed preset: {} to {}", preset_file.string(), new_file.string()));
 
     return true;
   }

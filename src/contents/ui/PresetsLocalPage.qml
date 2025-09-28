@@ -18,6 +18,9 @@ ColumnLayout {
             return 0;
     }
 
+    readonly property var validFileNameRegex: /^[^\\/]{1,100}$/ //strings without `/` or `\` (max 100 chars)
+    readonly property var removeExtRegex: /(?:\.json)+$/
+
     function showPresetsMenuStatus(label) {
         status.text = label;
         status.visible = true;
@@ -75,7 +78,7 @@ ColumnLayout {
                 icon.name: "list-add-symbolic"
                 onTriggered: {
                     // remove the final preset extension if specified
-                    const newName = newPresetName.text.replace(/(?:\.json)+$/, "");
+                    const newName = newPresetName.text.replace(removeExtRegex, "");
                     // trim to exclude names containing only multiple spaces
                     if (!Common.isEmpty(newName.trim())) {
                         if (Presets.Manager.add(pipeline, newName) === true) {
@@ -105,7 +108,7 @@ ColumnLayout {
         }
 
         validator: RegularExpressionValidator {
-            regularExpression: /^[^\\/]{1,100}$/ //strings without `/` or `\` (max 100 chars)
+            regularExpression: validFileNameRegex
         }
     }
 
@@ -168,6 +171,54 @@ ColumnLayout {
                     }
                 }
 
+                Kirigami.PromptDialog {
+                    id: renameDialog
+
+                    title: i18n("Rename Preset")
+
+                    standardButtons: Kirigami.Dialog.NoButton
+                    customFooterActions: [
+                        Kirigami.Action {
+                            text: i18n("Rename")
+                            icon.name: "dialog-ok"
+                            onTriggered: {
+                                // remove the final preset extension if specified
+                                const newName = newNameTextField.text.replace(removeExtRegex, "");
+
+                                // trim to exclude names containing only multiple spaces
+                                if (!Common.isEmpty(newName.trim())) {
+                                    if (Presets.Manager.renameLocalPresetFile(pipeline, name, newName) === true)
+                                        showPresetsMenuStatus(i18n("The Preset %1 Has Been Renamed", `<strong>${name}</strong>`));
+                                    else
+                                        showPresetsMenuError(i18n("The Preset %1 Could Not Be Renamed", `<strong>${name}</strong>`));
+                                }
+
+                                renameDialog.close();
+                            }
+                        },
+                        Kirigami.Action {
+                            text: i18n("Cancel")
+                            icon.name: "dialog-cancel"
+                            onTriggered: {
+                                renameDialog.close();
+                            }
+                        }
+                    ]
+
+                    ColumnLayout {
+                        Controls.TextField {
+                            id: newNameTextField
+
+                            Layout.fillWidth: true
+                            placeholderText: name
+
+                            validator: RegularExpressionValidator {
+                                regularExpression: validFileNameRegex
+                            }
+                        }
+                    }
+                }
+
                 contentItem: RowLayout {
                     Controls.Label {
                         text: name
@@ -185,6 +236,14 @@ ColumnLayout {
                                         showPresetsMenuStatus(i18n("Settings Saved to: %1", `<strong>${name}</strong>`));
                                     else
                                         showPresetsMenuError(i18n("Failed to Save Settings to: %1", `<strong>${name}</strong>`));
+                                }
+                            },
+                            Kirigami.Action {
+                                text: i18n("Rename this Preset")
+                                icon.name: "edit-entry-symbolic"
+                                displayHint: Kirigami.DisplayHint.AlwaysHide
+                                onTriggered: {
+                                    renameDialog.open();
                                 }
                             },
                             Kirigami.Action {
