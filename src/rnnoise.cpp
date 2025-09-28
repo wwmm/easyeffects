@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "rnnoise.hpp"
@@ -64,7 +64,8 @@ RNNoise::RNNoise(const std::string& tag, pw::Manager* pipe_manager, PipelineType
   // Initialize directories for local and community models
   local_dir_rnnoise = app_config_dir + "/rnnoise";
 
-  // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox)
+  // Flatpak specific path (.flatpak-info always present for apps
+  // running in the flatpak sandbox)
   if (std::filesystem::is_regular_file(tags::app::flatpak_info_file)) {
     system_data_dir_rnnoise.emplace_back("/app/extensions/Presets/rnnoise");
   }

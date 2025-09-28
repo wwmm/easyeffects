@@ -1,8 +1,8 @@
-/*
-  Highlight.js 10.6.0 (eb742fd6)
-  License: BSD-3-Clause
-  Copyright (c) 2006-2020, Ivan Sagalaev
-*/
+/**
+ * Highlight.js 10.6.0 (eb742fd6)
+ * License: BSD-3-Clause
+ * Copyright (c) 2006-2020, Ivan Sagalaev
+ */
 var hljs=function(){"use strict";function e(t){
 return t instanceof Map?t.clear=t.delete=t.set=()=>{
 throw Error("map is read-only")}:t instanceof Set&&(t.add=t.clear=t.delete=()=>{

@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #pragma once
@@ -110,13 +110,15 @@ class Crystalizer : public PluginBase {
 
       filters.at(n)->process(band_data_L.at(n), band_data_R.at(n));
 
-      /*
-        Later we will need to calculate the second derivative of each band. This
-        is done through the central difference method. In order to calculate
-        the derivative at the last elements of the array we have to know the first
-        element of the next buffer. As we do not have this information we will assume for simplicity that the last
-        value of the current buffer is a good enough approximation for the first element of the next buffer
-      */
+      /**
+       * Later we will need to calculate the second derivative of each band.
+       * This is done through the central difference method. In order to
+       * calculate the derivative at the last elements of the array we have to
+       * know the first element of the next buffer.
+       * As we do not have this information we will assume for simplicity that
+       * the last value of the current buffer is a good enough approximation
+       * for the first element of the next buffer
+       */
 
       band_next_L.at(n) = band_data_L.at(n)[blocksize - 1U];
       band_next_R.at(n) = band_data_R.at(n)[blocksize - 1U];
@@ -172,10 +174,11 @@ class Crystalizer : public PluginBase {
           const float& d2L = band_second_derivative_L.at(n)[m];
           const float& d2R = band_second_derivative_R.at(n)[m];
 
-          /*
-            The correct approach would be to avoid the second derivative getting too big... But using tanh to smoothly
-            staying between [-1, 1] seems to be enough
-          */
+          /**
+           * The correct approach would be to avoid the second derivative
+           * getting too big... But using tanh to smoothly staying between
+           * [-1, 1] seems to be enough
+           */
 
           band_data_L.at(n)[m] = L - std::tanh(band_intensity.at(n) * d2L);
           band_data_R.at(n)[m] = R - std::tanh(band_intensity.at(n) * d2R);

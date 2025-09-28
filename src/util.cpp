@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "util.hpp"
@@ -141,9 +141,11 @@ auto search_filename(const std::filesystem::path& path,
                      const std::string& filename,
                      std::string& full_path_result,
                      const uint& top_scan_level) -> bool {
-  // Recursive util to search a filename from an origin full path directory.
-  // The search is performed in subdirectories and it's stopped at a specified
-  // sublevel (top_scan_level = 1 searches only in the path).
+  /**
+   * Recursive util to search a filename from an origin full path directory.
+   * The search is performed in subdirectories and it's stopped at a specified
+   * sublevel (top_scan_level = 1 searches only in the path).
+   */
 
   if (!std::filesystem::exists(path) || !std::filesystem::is_directory(path)) {
     return false;
@@ -193,19 +195,20 @@ auto search_filename(const std::filesystem::path& path,
 }
 
 auto compare_versions(const std::string& v0, const std::string& v1) -> int {
-  /* This is an util to compare two strings as semver, mainly used to compare
-     two Pipewire versions.
-     The format should adhere to what is defined at `https://semver.org/`.
-     The additional extension label, if present, is ignored and fortunately
-     we don't need to look at it since Pipewire does not use it.
-
-     Given two version strings v0 and v1, this util returns an integer:
-     - 0 if the versions are equal;
-     - 1 if v0 is higher than v1;
-     - -1 if v0 is lower than v1;
-     - Whichever other number if the comparison fails (i.e. giving one or
-       both strings not respecting the semver format).
-  */
+  /**
+   * This is an util to compare two strings as semver, mainly used to compare
+   * two Pipewire versions.
+   * The format should adhere to what is defined at `https://semver.org/`.
+   * The additional extension label, if present, is ignored and fortunately
+   * we don't need to look at it since Pipewire does not use it.
+   *
+   * Given two version strings v0 and v1, this util returns an integer:
+   * - 0 if the versions are equal;
+   * - 1 if v0 is higher than v1;
+   * - -1 if v0 is lower than v1;
+   * - Whichever other number if the comparison fails (i.e. giving one or
+   *   both strings not respecting the semver format).
+   */
 
   struct SemVer {
     int major = -1;

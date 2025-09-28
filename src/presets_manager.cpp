@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "presets_manager.hpp"
@@ -131,8 +131,11 @@ Manager::Manager()
                                                       "SortedRNNoiseListModel", rnnoiseListModel->getProxy());
   // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 
-  // Initialize input and output directories for community presets.
-  // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox).
+  /**
+   * Initialize input and output directories for community presets.
+   * Flatpak specific path (.flatpak-info always present for apps running
+   * in the flatpak sandbox).
+   */
   if (std::filesystem::is_regular_file(tags::app::flatpak_info_file)) {
     system_data_dir_input.emplace_back("/app/extensions/Presets/input");
     system_data_dir_output.emplace_back("/app/extensions/Presets/output");
@@ -348,7 +351,8 @@ auto Manager::get_all_community_presets_paths(const PipelineType& pipeline_type)
       continue;
     }
 
-    // Scan community package directories for 2 levels (the folder itself and only its subfolders).
+    // Scan community package directories for 2 levels
+    // (the folder itself and only its subfolders).
     auto it = std::filesystem::directory_iterator{cp_fs_path};
 
     try {
@@ -522,9 +526,10 @@ auto Manager::load_blocklist(const PipelineType& pipeline_type, const nlohmann::
 }
 
 bool Manager::savePresetFile(const PipelineType& pipeline_type, const QString& name) {
-  /*
-    Todo: we have to test if the file was really save instead of assuming we always succeed
-  */
+  /**
+   * TODO: we have to test if the file was really save instead of assuming we
+   * always succeed
+   */
 
   nlohmann::json json;
 
@@ -630,10 +635,8 @@ auto Manager::read_effects_pipeline_from_preset(const PipelineType& pipeline_typ
     for (const auto& p : json.at(pipeline_type_str).at("plugins_order").get<std::vector<std::string>>()) {
       for (const auto& v : tags::plugin_name::Model::self().getBaseNames()) {
         if (p.starts_with(v.toStdString())) {
-          /*
-            Old format presets do not have the instance id number in the filter names. They are equal to the
-            base name.
-          */
+          // Old format presets do not have the instance id number in the
+          //  filter names. They are equal to the base name.
 
           if (p != v.toStdString()) {
             plugins.push_back(p);
@@ -938,7 +941,9 @@ bool Manager::removeRNNoiseModel(const QString& filePath) {
 auto Manager::import_addons_from_community_package(const PipelineType& pipeline_type,
                                                    const std::filesystem::path& path,
                                                    const std::string& package) -> bool {
-  /* Here we parse the json community preset in order to import the list of addons:
+  /**
+   * Here we parse the json community preset in order to import the list of
+   * addons:
    * 1. Convolver Impulse Response Files
    * 2. RNNoise Models
    */

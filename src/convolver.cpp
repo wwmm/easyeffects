@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "convolver.hpp"
@@ -76,10 +76,11 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
           db::Manager::self().get_plugin_db<db::Convolver>(pipe_type,
                                                            tags::plugin_name::BaseName::convolver + "#" + instance_id)),
       app_config_dir(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation).toStdString()) {
-  /*
-    Setting valid rate and n_sampls values instead of zero allows the concolver ui to properly show the impulse
-    response file parameters even if nothing is playing audio.
-  */
+  /**
+   * Setting valid rate and n_sampls values instead of zero allows the
+   * convolver ui to properly show the impulse response file parameters
+   * even if nothing is playing audio.
+   */
   util::str_to_num(pw::Manager::self().defaultClockRate.toStdString(), rate);
   util::str_to_num(pw::Manager::self().defaultQuantum.toStdString(), n_samples);
 
@@ -88,7 +89,10 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   // Initialize directories for local and community irs
   local_dir_irs = app_config_dir + "/irs";
 
-  // Flatpak specific path (.flatpak-info always present for apps running in the flatpak sandbox)
+  /**
+   * Flatpak specific path (.flatpak-info always present for apps running in
+   * the flatpak sandbox)
+   */
   if (std::filesystem::is_regular_file(tags::app::flatpak_info_file)) {
     system_data_dir_irs.emplace_back("/app/extensions/Presets/irs");
   }
@@ -154,11 +158,13 @@ void Convolver::reset() {
 void Convolver::setup() {
   ready = false;
 
-  /*
-    As zita uses fftw we have to be careful when reinitializing it. The thread that creates the fftw plan has to be the
-    same that destroys it. Otherwise segmentation faults can happen. As we do not want to do this initializing in the
-    plugin realtime thread we send it to the main thread through g_idle_add().connect_once
-  */
+  /**
+   * As zita uses fftw we have to be careful when reinitializing it.
+   * The thread that creates the fftw plan has to be the same that destroys it.
+   * Otherwise segmentation faults can happen. As we do not want to do this
+   * initializing in the plugin realtime thread we send it to the main thread
+   * through g_idle_add().connect_once
+   */
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
 
@@ -506,10 +512,10 @@ void Convolver::apply_kernel_autogain() {
   std::ranges::for_each(kernel_R, [&](auto& v) { v *= autogain; });
 }
 
-/*
-   Mid-Side based Stereo width effect
-   taken from https://github.com/tomszilagyi/ir.lv2/blob/automatable/ir.cc
-*/
+/**
+ * Mid-Side based Stereo width effect
+ * taken from https://github.com/tomszilagyi/ir.lv2/blob/automatable/ir.cc
+ */
 void Convolver::set_kernel_stereo_width() {
   const float w = static_cast<float>(settings->irWidth()) * 0.01F;
   const float x = (1.0F - w) / (1.0F + w);  // M-S coeff.; L_out = L + x*R; R_out = R + x*L
@@ -545,7 +551,7 @@ void Convolver::setup_zita() {
 
   conv->set_options(0);
 
-  int ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, 0.0F /*density*/);
+  int ret = conv->configure(2, 2, max_convolution_size, buffer_size, buffer_size, buffer_size, 0.0F /* density */);
 
   if (ret != 0) {
     util::warning(std::format("{}can't initialise zita-convolver engine: {}", log_tag, ret));

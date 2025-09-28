@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-26 02:27+0000\n"
-"PO-Revision-Date: 2025-09-26 16:02+0000\n"
-"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
+"PO-Revision-Date: 2025-09-28 04:02+0000\n"
+"Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "Закрийте Easy Effects. Корисно під час роботи в сервісному режимі."
+msgstr "Вийти з Easy Effects. Корисно при роботі в режимі служби."
 
 #: src/command_line_parser.cpp:45
 msgid "Reset Easy Effects."
@@ -40,47 +40,47 @@ msgstr ""
 
 #: src/command_line_parser.cpp:48
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr "Завантажте пресет. Приклад: easyeffects -l music"
+msgstr "Завантажити попереднє налаштування. Приклад: easyeffects -l music"
 
 #: src/command_line_parser.cpp:48
 msgid "preset-name"
-msgstr "ім'я-пресета"
+msgstr "назва-попереднього-налаштування"
 
 #: src/command_line_parser.cpp:49
 msgid "Show available presets."
-msgstr "Показати доступні стилі."
+msgstr "Показати доступні попередні налаштування."
 
 #: src/command_line_parser.cpp:50
 msgid "Get the active input/output preset."
-msgstr "Отримати активний пресет вводу/виводу."
+msgstr "Отримати активні попередні налаштування вводу/виводу."
 
 #: src/command_line_parser.cpp:50
 msgid "preset-type"
-msgstr "пресет-тип"
+msgstr "тип-попереднього-налаштування"
 
 #: src/command_line_parser.cpp:51
 msgid "Get the active input and output presets."
-msgstr "Отримати активні пресети входу та виходу."
+msgstr "Отримати активні попередні налаштування входу та виходу."
 
 #: src/command_line_parser.cpp:52
 msgid "Deprecated. Use --service-mode instead."
-msgstr "Застаріло. Використовуйте замість цього --service-mode."
+msgstr "Застаріле. Використовуйте замість цього --service-mode."
 
 #: src/command_line_parser.cpp:53
 msgid "Start the application with service mode turned on."
-msgstr "Запустіть програму з увімкненим сервісним режимом."
+msgstr "Запустити застосунок із увімкненим режимом служби."
 
 #: src/command_line_parser.cpp:54
 msgid "Enable debug messages."
-msgstr "Увімкнути повідомлення налагодження."
+msgstr "Увімкнути налагоджувальні повідомлення."
 
 #: src/command_line_parser.cpp:142 src/contents/ui/main.qml:277
 msgid "Output Presets"
-msgstr "Пресети для виходу"
+msgstr "Попередні налаштування для виходу"
 
 #: src/command_line_parser.cpp:150 src/contents/ui/main.qml:267
 msgid "Input Presets"
-msgstr "Попередні налаштування введення"
+msgstr "Попередні налаштування для входу"
 
 #: src/contents/ui/Autogain.qml:52 src/contents/ui/BassEnhancer.qml:88
 #: src/contents/ui/BassLoudness.qml:40 src/contents/ui/Crossfeed.qml:56
@@ -89,26 +89,26 @@ msgstr "Попередні налаштування введення"
 #: src/contents/ui/Loudness.qml:41 src/contents/ui/Maximizer.qml:41
 #: src/contents/ui/Reverb.qml:43 src/contents/ui/Speex.qml:41
 msgid "Controls"
-msgstr "Керування"
+msgstr "Елементи керування"
 
 #: src/contents/ui/Autogain.qml:60
 msgid "Reference"
-msgstr "Референс"
+msgstr "Джерело"
 
 #: src/contents/ui/Autogain.qml:64 src/contents/ui/Autogain.qml:156
 #: src/contents/ui/LevelMeter.qml:150
 msgid "Momentary"
-msgstr "Миттєвий"
+msgstr "Миттєва"
 
 #: src/contents/ui/Autogain.qml:64 src/contents/ui/Autogain.qml:172
 #: src/contents/ui/LevelMeter.qml:166
 msgid "Short-Term"
-msgstr "Короткостроковий"
+msgstr "Короткочасна"
 
 #: src/contents/ui/Autogain.qml:64 src/contents/ui/Autogain.qml:188
 #: src/contents/ui/LevelMeter.qml:182
 msgid "Integrated"
-msgstr "Інтегрований"
+msgstr "Інтегрована"
 
 #: src/contents/ui/Autogain.qml:64
 msgid "Geometric Mean (MSI)"
@@ -2378,7 +2378,7 @@ msgstr "Активний"
 
 #: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
 msgid "Manual"
-msgstr "Ручний"
+msgstr "Довідка"
 
 #: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
 msgid "Quit"
@@ -2540,7 +2540,7 @@ msgstr "Еквалайзер, компресор та інші звукові е
 
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
-msgstr "Аудіоефекти для додатків PipeWire"
+msgstr "Звукові ефекти для застосунків PipeWire"
 
 #, fuzzy
 #~ msgid "Band "

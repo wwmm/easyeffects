@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "pw_manager.hpp"
@@ -249,9 +249,11 @@ void on_node_info(void* object, const struct pw_node_info* info) {
     }
   }
 
-  // Exclude capture streams.
-  // Even PW_KEY_STREAM_CAPTURE_SINK is not set in on_registry_global.
-  // Useful to exclude OBS recording streams.
+  /**
+   * Exclude capture streams.
+   * Even PW_KEY_STREAM_CAPTURE_SINK is not set in on_registry_global.
+   * Useful to exclude OBS recording streams.
+   */
 
   if (const auto* is_capture_sink = spa_dict_lookup(info->props, PW_KEY_STREAM_CAPTURE_SINK)) {
     if (std::strcmp(is_capture_sink, "true") == 0 && pw::Manager::exclude_monitor_stream) {
@@ -261,10 +263,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
     if (const auto* target_object = spa_dict_lookup(info->props, PW_KEY_TARGET_OBJECT)) {
-      /*
-        target.object can a name or serial number:
-        https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/src/pipewire/keys.h#L334
-      */
+      // target.object can a name or serial number:
+      // https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/src/pipewire/keys.h#L334
 
       uint64_t serial = SPA_ID_INVALID;
 
@@ -288,10 +288,8 @@ void on_node_info(void* object, const struct pw_node_info* info) {
 
   if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {
     if (const auto* target_object = spa_dict_lookup(info->props, PW_KEY_TARGET_OBJECT)) {
-      /*
-        target.object can a name or serial number:
-        https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/src/pipewire/keys.h#L334
-      */
+      // target.object can a name or serial number:
+      // https://gitlab.freedesktop.org/pipewire/pipewire/-/blob/master/src/pipewire/keys.h#L334
 
       uint64_t serial = SPA_ID_INVALID;
 
@@ -895,7 +893,8 @@ void on_registry_global(void* data,
 
     spa_dict_get_string(props, PW_KEY_NODE_NAME, node_name);
 
-    // At least for now I do not think there is a point in showing the spectrum adn the output level filters in menus
+    // At least for now I do not think there is a point in showing
+    // the spectrum adn the output level filters in menus
 
     if (node_name.contains("output_level") || node_name.contains("spectrum")) {
       return;
@@ -1273,10 +1272,11 @@ Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_
                               ee_source_node.id, ee_source_node.serial));
   }
 
-  /*
-    By the time our virtual devices are loaded we may have already received some streams. So
-    we connected them here now that our virtual devices are available.
-  */
+  /**
+   * By the time our virtual devices are loaded we may have already received
+   * some streams. So we connected them here now that our virtual devices are
+   * available.
+   */
 
   for (const auto& node : model_nodes.get_list()) {
     if (node.media_class == tags::pipewire::media_class::output_stream) {

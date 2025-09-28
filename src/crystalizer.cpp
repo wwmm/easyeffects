@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "crystalizer.hpp"
@@ -130,11 +130,12 @@ void Crystalizer::setup() {
 
   data_mutex.unlock();
 
-  /*
-    As zita uses fftw we have to be careful when reinitializing it. The thread that creates the fftw plan has to be the
-    same that destroys it. Otherwise segmentation faults can happen. As we do not want to do this initializing in the
-    plugin realtime thread we send it to the main thread.
-  */
+  /**
+   * As zita uses fftw we have to be careful when reinitializing it.
+   * The thread that creates the fftw plan has to be the same that destroys it.
+   * Otherwise segmentation faults can happen. As we do not want to do this
+   * initializing in the plugin realtime thread we send it to the main thread.
+   */
 
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDeleteLeaks)
 

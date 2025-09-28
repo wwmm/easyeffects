@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects
+ * This file is part of Easy Effects
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "equalizer_apo.hpp"
@@ -135,8 +135,8 @@ static auto parse_apo_quality(const std::string& line, struct APO_Band& filter) 
 static auto parse_apo_config_line(const std::string& line, struct APO_Band& filter) -> bool {
   // Retrieve filter type.
   if (!parse_apo_filter_type(line, filter)) {
-    // If we can't parse the filter type, there's something wrong in the text line,
-    // so exit with false.
+    // If we can't parse the filter type, there's something wrong in the text
+    // line, so exit with false.
     return false;
   }
 
@@ -144,16 +144,18 @@ static auto parse_apo_config_line(const std::string& line, struct APO_Band& filt
   // To make it more permissive, we do not exit on false here (assume default).
   parse_apo_frequency(line, filter);
 
-  // The following has been inspired by the function
-  // "para_equalizer_ui::import_rew_file(const LSPString*)"
-  // inside 'lsp-plugins/src/ui/plugins/para_equalizer_ui.cpp' at
-  // https://github.com/sadko4u/lsp-plugins
-
-  // Retrieve gain and/or quality parameters based on a specific filter type.
-  // Calculate frequency/quality if needed.
-  // If the APO filter type is different than the ones specified below,
-  // it's set as "Off" and default values are assumed since
-  // it may not be supported by LSP Equalizer.
+  /**
+   * The following has been inspired by the function
+   * "para_equalizer_ui::import_rew_file(const LSPString*)"
+   * inside 'lsp-plugins/src/ui/plugins/para_equalizer_ui.cpp' at
+   * https://github.com/sadko4u/lsp-plugins
+   *
+   * Retrieve gain and/or quality parameters based on a specific filter type.
+   * Calculate frequency/quality if needed.
+   * If the APO filter type is different than the ones specified below,
+   * it's set as "Off" and default values are assumed since
+   * it may not be supported by LSP Equalizer.
+   */
   if (filter.type == "OFF") {
     // On disabled filter state, we still try to retrieve gain and quality,
     // even if the band won't be processed by LSP equalizer.
@@ -204,15 +206,19 @@ static auto parse_apo_config_line(const std::string& line, struct APO_Band& filt
     // LSP import function sets custom freq for this filter.
     filter.freq = filter.freq * (1.0F / std::numbers::sqrt2_v<float>);
   } else if (filter.type == "NO") {
-    // Notch filter
-    // Q value is optional for this filter according to APO config documentation,
-    // but LSP import function always sets it to 100/3.
+    /**
+     * Notch filter
+     * Q value is optional for this filter according to APO config
+     * documentation, but LSP import function always sets it to 100/3.
+     */
     filter.quality = 100.0F / 3.0F;
   } else if (filter.type == "AP") {
-    // All-pass filter
-    // Q value is mandatory for this filter according to APO config documentation,
-    // but LSP import function always sets it to 0,
-    // no matter which quality value the APO config has.
+    /**
+     * All-pass filter
+     * Q value is mandatory for this filter according to APO config
+     * documentation, but LSP import function always sets it to 0,
+     * no matter which quality value the APO config has.
+     */
     filter.quality = 0.0F;
   }
 
@@ -255,8 +261,8 @@ auto import_preset(db::Equalizer* settings,
     return false;
   }
 
-  /* Sort bands by freq is made by user through Equalizer::sort_bands()
-  std::ranges::stable_sort(bands, {}, &APO_Band::freq); */
+  // Sort bands by freq is made by user through Equalizer::sort_bands()
+  // std::ranges::stable_sort(bands, {}, &APO_Band::freq);
 
   const auto& max_bands = settings->defaultNumBandsValue();
 
@@ -348,24 +354,29 @@ auto import_preset(db::Equalizer* settings,
 static auto parse_graphiceq_config(const std::string& str, std::vector<struct GraphicEQ_Band>& bands) -> bool {
   std::smatch full_match;
 
-  // The first parsing stage is to ensure the given string contains a
-  // substring corresponding to the GraphicEQ format reported in the documentation:
-  // https://sourceforge.net/p/equalizerapo/wiki/Configuration%20reference/#graphiceq-since-version-10
-
-  // In order to do it, the following regular expression is used:
+  /**
+   * The first parsing stage is to ensure the given string contains a
+   * substring corresponding to the GraphicEQ format reported in the
+   * documentation:
+   * https://sourceforge.net/p/equalizerapo/wiki/Configuration%20reference/#graphiceq-since-version-10
+   *
+   * In order to do it, the following regular expression is used:
+   */
   static const auto re_geq = std::regex(
       R"(graphiceq\s*:((?:\s*\d+(?:,\d+)?(?:\.\d+)?\s+[+-]?\d+(?:\.\d+)?[ \t]*(?:;|$))+))", std::regex::icase);
 
-  // That regex is quite permissive since:
-  // - It's case insensitive;
-  // - Gain values can be signed (with leading +/-);
-  // - Frequency values can use a comma as thousand separator.
-
-  // Note that the last class does not include the newline as whitespaces to allow
-  // matching the `$` as the end of line (not needed in this case, but it will also
-  // work if the input string will be multiline in the future).
-  // This ensures the last band is captured with or without the final `;`.
-  // The regex has been tested at https://regex101.com/r/JRwf4G/1
+  /**
+   * That regex is quite permissive since:
+   * - It's case insensitive;
+   * - Gain values can be signed (with leading +/-);
+   * - Frequency values can use a comma as thousand separator.
+   *
+   * Note that the last class does not include the newline as whitespaces to
+   * allow matching the `$` as the end of line (not needed in this case, but it
+   * will also work if the input string will be multiline in the future).
+   * This ensures the last band is captured with or without the final `;`.
+   * The regex has been tested at https://regex101.com/r/JRwf4G/1
+   */
 
   std::regex_search(str, full_match, re_geq);
 
@@ -374,19 +385,25 @@ static auto parse_graphiceq_config(const std::string& str, std::vector<struct Gr
     return false;
   }
 
-  // Save the substring with all the bands and use it to extract the values.
-  // It can't be const because it's used to store the sub-sequential strings
-  // from the match_result class with suffix(). See the following while loop.
+  /**
+   * Save the substring with all the bands and use it to extract the values.
+   * It can't be const because it's used to store the sub-sequential strings
+   * from the match_result class with suffix(). See the following while loop.
+   */
   auto bands_substr = full_match.str(1);
 
-  // Couldn't we extract the values in one only regex checking also the GraphicEQ format?
-  // No, there's no way. Even with Perl Compatible Regex (PCRE) checking the whole format
-  // and capturing the values will return only the last repeated group (the last band),
-  // but we need all of them.
+  /**
+   * Couldn't we extract the values in one only regex checking also the
+   * GraphicEQ format?
+   * No, there's no way. Even with Perl Compatible Regex (PCRE) checking the
+   * whole format and capturing the values will return only the last repeated
+   * group (the last band), but we need all of them.
+   */
   std::smatch band_match;
   static const auto re_geq_band = std::regex(R"((\d+(?:,\d+)?(?:\.\d+)?)\s+([+-]?\d+(?:\.\d+)?))");
 
-  // C++ regex does not support the global PCRE flag, so we need to repeat the search in a loop.
+  // C++ regex does not support the global PCRE flag, so we need to repeat
+  // the search in a loop.
   while (std::regex_search(bands_substr, band_match, re_geq_band)) {
     // The size of the match should be 3:
     // The full match with two additional groups (frequency and gain value).
@@ -448,8 +465,8 @@ auto import_graphiceq_preset(db::Equalizer* settings,
     return false;
   }
 
-  /* Sort bands by freq is made by user through Equalizer::sort_bands()
-  std::ranges::stable_sort(bands, {}, &GraphicEQ_Band::freq); */
+  // Sort bands by freq is made by user through Equalizer::sort_bands()
+  // std::ranges::stable_sort(bands, {}, &GraphicEQ_Band::freq);
 
   const auto& max_bands = settings->defaultNumBandsValue();
 
@@ -550,8 +567,8 @@ auto export_preset(db::Equalizer* settings, db::EqualizerChannel* settings_left,
                  << util::to_string(apo_band.freq) << " Hz";
 
     if (curr_band_type == "Bell" || curr_band_type == "Lo-shelf" || curr_band_type == "Hi-shelf") {
-      // According to APO config documentation, gain value should only be defined
-      // for Peak, Low-shelf and High-shelf filters.
+      // According to APO config documentation, gain value should only be
+      // defined for Peak, Low-shelf and High-shelf filters.
       write_buffer << " Gain " << util::to_string(apo_band.gain) << " dB";
     }
 
