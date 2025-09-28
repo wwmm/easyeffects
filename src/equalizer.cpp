@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "equalizer.hpp"
@@ -83,11 +83,12 @@ Equalizer::Equalizer(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   on_split_channels();
 
-  /*
-    Using setProperty does not have the same performance as calling the proper setter directly:
-    https://doc.qt.io/qt-6/properties.html
-    . But it is the easiest thing to do in the case below.
-  */
+  /**
+   * Using setProperty does not have the same performance as calling the proper
+   * setter directly:
+   * https://doc.qt.io/qt-6/properties.html
+   * But it is the easiest thing to do in the case below.
+   */
 
   connect(settings, &db::Equalizer::numBandsChanged, [&]() {
     for (int n = 0; n < max_bands; n++) {
@@ -166,10 +167,8 @@ void Equalizer::on_split_channels() {
 
   using namespace tags::equalizer;
 
-  /*
-    When in unified mode we want settings applied to the left channel to be propagated to the right channel
-    database
-  */
+  // When in unified mode we want settings applied to the left channel to
+  // be propagated to the right channel database
 
   UNIFIED_BANDS_PROPERTY_BIND(settings_right, settings_left, Type);
   UNIFIED_BANDS_PROPERTY_BIND(settings_right, settings_left, Mode);
@@ -216,9 +215,7 @@ void Equalizer::process(std::span<float>& left_in,
     apply_gain(left_out, right_out, output_gain);
   }
 
-  /*
-    This plugin gives the latency in number of samples
-  */
+  // This plugin gives the latency in number of samples
 
   const auto lv = static_cast<uint>(lv2_wrapper->get_control_port_value("out_latency"));
 
@@ -332,11 +329,12 @@ void Equalizer::calculateFrequencies() {
 
     // std::cout << n << "\t" << freq << "\t" << width << std::endl;
 
-    /*
-      Using setProperty does not have the same performance as calling the proper setter directly:
-      https://doc.qt.io/qt-6/properties.html
-      . But it is the easiest thing to do in the case below.
-    */
+    /**
+     * Using setProperty does not have the same performance as calling the
+     * proper setter directly:
+     * https://doc.qt.io/qt-6/properties.html
+     * But it is the easiest thing to do in the case below.
+     */
 
     settings_left->setProperty(tags::equalizer::band_frequency[n].data(), freq);
     settings_left->setProperty(tags::equalizer::band_q[n].data(), q);

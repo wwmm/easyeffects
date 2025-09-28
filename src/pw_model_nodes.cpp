@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "pw_model_nodes.hpp"
@@ -184,7 +184,7 @@ Nodes::Nodes(QObject* parent)
       Qt::QueuedConnection);
 }
 
-int Nodes::rowCount(const QModelIndex& /*parent*/) const {
+int Nodes::rowCount(const QModelIndex& /* parent */) const {
   return list.size();
 }
 
@@ -500,7 +500,8 @@ auto Nodes::node_state_to_qstring(const pw_node_state& state) -> QString {
 }
 
 auto Nodes::get_app_icon_name(const NodeInfo* node_info) -> QString {
-  // map to handle cases where PipeWire does not set icon name string or app name equal to icon name.
+  // map to handle cases where PipeWire does not set icon name string
+  // or app name equal to icon name.
 
   QString icon_name;
 
@@ -517,7 +518,8 @@ auto Nodes::get_app_icon_name(const NodeInfo* node_info) -> QString {
       icon_name = node_info->name;
     }
 
-    // get lowercase name so if it changes in the future, we have a chance to pick the same index
+    // get lowercase name so if it changes in the future, we have a
+    // chance to pick the same index
 
     icon_name = icon_name.toLower();
   }

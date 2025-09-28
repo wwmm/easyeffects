@@ -1,13 +1,13 @@
-/*
-  It is really bizarre that qml does not have a dedicated double spinbox... It is necessary to do a hack
-  solution based on the int spinbox... Our custom spinbox code was inspired by:
-
-https://doc.qt.io/Qt-6/qml-qtquick-controls-spinbox.html
-https://github.com/LeonnardoVerol/example-double-spinbox-component-qt-qml/blob/main/src/ui/DoubleSpinBox.qml
-https://github.com/Zren/plasma-applet-lib/blob/master/package/contents/ui/libconfig/SpinBox.qml
-https://github.com/KDE/kirigami-addons/blob/master/src/formcard/FormSpinBoxDelegate.qml
-https://bugreports.qt.io/browse/QTBUG-67349
-
+/**
+ * It is really bizarre that QML does not have a dedicated double spinbox...
+ * It is necessary to do a hack solution based on the int spinbox...
+ * Our custom spinbox code was inspired by:
+ *
+ * https://doc.qt.io/Qt-6/qml-qtquick-controls-spinbox.html
+ * https://github.com/LeonnardoVerol/example-double-spinbox-component-qt-qml/blob/main/src/ui/DoubleSpinBox.qml
+ * https://github.com/Zren/plasma-applet-lib/blob/master/package/contents/ui/libconfig/SpinBox.qml
+ * https://github.com/KDE/kirigami-addons/blob/master/src/formcard/FormSpinBoxDelegate.qml
+ * https://bugreports.qt.io/browse/QTBUG-67349
  */
 
 import "Common.js" as Common

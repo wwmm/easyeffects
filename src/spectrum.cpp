@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "spectrum.hpp"
@@ -136,9 +136,11 @@ void Spectrum::process(std::span<float>& left_in,
     return;
   }
 
-  // delay the visualization of the spectrum by the reported latency
-  // of the output device, so that the spectrum is visually in sync
-  // with the audio as experienced by the user. (A/V sync)
+  /**
+   * delay the visualization of the spectrum by the reported latency of the
+   * output device, so that the spectrum is visually in sync with the audio
+   * as experienced by the user. (A/V sync)
+   */
   if (lv2_wrapper->found_plugin && lv2_wrapper->has_instance()) {
     lv2_wrapper->connect_data_ports(left_in, right_in, left_delayed, right_delayed);
     lv2_wrapper->run();
@@ -177,11 +179,12 @@ void Spectrum::process(std::span<float>& left_in,
     }
   }
 
-  /*
+  /**
    * OK, we have the latest_samples_mono array that contains n_bands samples. We
    * want to export it to the GUI thread. We don't wakeup the GUI thread from
    * realtime, we only want to update the buffer and let the GUI thread follow
-   * its scheduling and have access to our new buffer. We accept losing old data.
+   * its scheduling and have access to our new buffer. We accept losing old
+   * data.
    *
    * For that, we want to synchronise both threads. Realtime shouldn't have to
    * wait (ie loop or syscall). It is fine if GUI waits a little.

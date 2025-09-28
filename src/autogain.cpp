@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "autogain.hpp"
@@ -190,30 +190,35 @@ void Autogain::process(std::span<float>& left_in,
   }
 
   if (std::isinf(momentary) || std::isnan(momentary)) {
-    /*
-      Assuming zero so that the output gain is negative. This should avoid undesirably high amplification in case
-      a bad resutla comes from libebur128
-    */
+    /**
+     * Assuming zero so that the output gain is negative.
+     * This should avoid undesirably high amplification in case
+     * a bad resutla comes from libebur128
+     */
 
     momentary = 0.0;
   }
 
   if (shortterm > 10.0 || std::isinf(shortterm) || std::isnan(shortterm)) {
-    /*
-      Sometimes when a stream is started right after Easy Effects has been initialized a very large shorterm value is
-      calculated. Probably because of some weird high intensity transient. So it is better to ignore unresonable large
-       values. When they happen we just set the shorterm value to the momentary loudness.
-    */
+    /**
+     * Sometimes when a stream is started right after Easy Effects has been
+     * initialized a very large shorterm value is calculated.
+     * Probably because of some weird high intensity transient. So it is better
+     * to ignore unresonable large values. When they happen we just set the
+     * shorterm value to the momentary loudness.
+     */
 
     shortterm = momentary;
   }
 
   if (global > 10.0 || std::isinf(global) || std::isnan(global)) {
-    /*
-      Sometimes when a stream is started right after Easy Effects has been initialized a very large integrated value
-      is calculated. Probably because of some weird high intensity transient. So it is better to ignore unresonable
-      large values. When they happen we just set the global value to the momentary loudness.
-    */
+    /**
+     * Sometimes when a stream is started right after Easy Effects has been
+     * initialized a very large integrated value is calculated.
+     * Probably because of some weird high intensity transient. So it is better
+     * to ignore unresonable large values. When they happen we just set the
+     * global value to the momentary loudness.
+     */
 
     global = momentary;
   }
@@ -278,9 +283,8 @@ void Autogain::process(std::span<float>& left_in,
 
       if (db_peak > util::minimum_db_level) {
         if (gain * peak < 1.0) {
-          /*
-            Smoothing the gain correction through a leaky integrator: g[n]=α⋅g[n−1]+(1−α)⋅gtarget​[n]
-          */
+          // Smoothing the gain correction through a leaky integrator:
+          // g[n]=α⋅g[n−1]+(1−α)⋅gtarget​[n]
 
           // choose tau based on whether gain is rising or falling
           double tau = (gain < prev_gain) ? attack_time : release_time;

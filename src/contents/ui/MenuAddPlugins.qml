@@ -79,25 +79,29 @@ Kirigami.OverlaySheet {
                         }
                         const new_id = (index_list.length === 0) ? 0 : Math.max.apply(null, index_list) + 1;
                         const new_name = name + "#" + new_id;
-                        /*
-                            If the list is not empty and the user is careful protecting
-                            their device with a plugin of type limiter at the last position
-                            of the filter chain, we follow this behaviour trying to insert
-                            the new plugin at the second to last position.
-
-                            To do so, we first check if the new plugin is a limiter or the
-                            level meter and place it directly at the last position (those
-                            plugins do not need to be placed elsewhere and in most of the
-                            cases the user wants them at the bottom of the pipeline).
-
-                            If the last plugin is a limiter, we place the new plugin at
-                            the second to last position.
-
-                            If the last plugin is not a limiter, but a level meter, we still
-                            try to place the new plugin before a limiter, if this limiter is in
-                            the second to last position. The reason is that we still want to preserve the
-                            "limiter protection" in case the last plugins are a limiter followed by a meter.
-                        */
+                        /**
+                         * If the list is not empty and the user is careful
+                         * protecting their device with a plugin of type
+                         * limiter at the last position of the filter chain, we
+                         * follow this behaviour trying to insert the new
+                         * plugin at the second to last position.
+                         *
+                         * To do so, we first check if the new plugin is a
+                         * limiter or the level meter and place it directly at
+                         * the last position (those plugins do not need to be
+                         * placed elsewhere and in most of the cases the user
+                         * wants them at the bottom of the pipeline).
+                         *
+                         * If the last plugin is a limiter, we place the new
+                         * plugin at the second to last position.
+                         *
+                         * If the last plugin is not a limiter, but a level
+                         * meter, we still try to place the new plugin before a
+                         * limiter, if this limiter is in the second to last
+                         * position. The reason is that we still want to
+                         * preserve the "limiter protection" in case the last
+                         * plugins are a limiter followed by a meter.
+                         */
                         const limiters_and_meters = [TagsPluginName.BaseName.limiter, TagsPluginName.BaseName.maximizer, TagsPluginName.BaseName.level_meter];
                         const limiters = [TagsPluginName.BaseName.limiter, TagsPluginName.BaseName.maximizer];
                         if (plugins.length === 0) {

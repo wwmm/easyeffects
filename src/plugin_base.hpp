@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #pragma once
@@ -98,9 +98,12 @@ class PluginBase : public QObject {
 
   float latency_value = 0.0F;  // seconds
 
-  // Even if it would be reasonable to initialize the peaks to `util::minimum_db_level`,
-  // we want the plugins UI and the output level to report 0 db in the initial stage
-  // (when nothing is playing), so 0.0F is more suitable for this purpose.
+  /**
+   * Even if it would be reasonable to initialize the peaks to
+   * `util::minimum_db_level`, we want the plugins UI and the output level to
+   * report 0 db in the initial stage (when nothing is playing), so 0.0F is
+   * more suitable for this purpose.
+   */
   float input_peak_left = 0.0F, input_peak_right = 0.0F;
   float output_peak_left = 0.0F, output_peak_right = 0.0F;
 
