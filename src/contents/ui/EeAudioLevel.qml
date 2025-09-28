@@ -37,6 +37,8 @@ Rectangle {
         border.width: 0
 
         transform: Scale {
+            id: levelScale
+
             yScale: {
                 if (root.convertDecibelToLinear)
                     root.topToBottom === false ? (Common.dbToLinear(root.clampedValue) - root.dbFrom) / (root.dbTo - root.dbFrom) : (Common.dbToLinear(root.clampedValue) - root.dbTo) / (root.dbFrom - root.dbTo);
@@ -59,7 +61,7 @@ Rectangle {
 
         height: Kirigami.Units.smallSpacing * 0.5
         width: parent.height
-        color: Kirigami.Theme.positiveTextColor
+        color: levelScale.yScale < 0.85 ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
 
         transform: Translate {
             y: {
@@ -67,6 +69,13 @@ Rectangle {
                     root.height * (1.0 - (Common.dbToLinear(root.displayValue) - root.dbFrom) / (root.dbTo - root.dbFrom));
                 else
                     root.height * (1.0 - (root.displayValue - root.from) / (root.to - root.from));
+            }
+
+            Behavior on y {
+                NumberAnimation {
+                    duration: 400
+                    easing.type: Easing.OutCubic
+                }
             }
         }
     }
