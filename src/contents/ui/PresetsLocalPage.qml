@@ -204,6 +204,11 @@ ColumnLayout {
                             }
                         }
                     ]
+                    onVisibleChanged: {
+                        if (visible) {
+                            newNameTextField.forceActiveFocus();
+                        }
+                    }
 
                     ColumnLayout {
                         Controls.TextField {
