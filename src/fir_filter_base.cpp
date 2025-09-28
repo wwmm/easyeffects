@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "fir_filter_base.hpp"
@@ -83,18 +83,17 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
     return output;
   }
 
-  /*
-    transition band frequency as a fraction of the sample rate
-  */
+  // transition band frequency as a fraction of the sample rate
 
   const float b = transition_band / static_cast<float>(rate);
 
-  /*
-      The kernel size must be odd: M + 1 where M is even. This is done so it can be symmetric around the main lobe
-      https://www.dspguide.com/ch16/1.htm
-
-      The kernel size is related to the transition bandwidth M = 4/BW
-  */
+  /**
+   * The kernel size must be odd: M + 1 where M is even. This is done so it can
+   * be symmetric around the main lobe
+   * https://www.dspguide.com/ch16/1.htm
+   *
+   * The kernel size is related to the transition bandwidth M = 4/BW
+   */
 
   auto M = static_cast<uint>(std::ceil(4.0F / b));
 
@@ -102,18 +101,14 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
 
   output.resize(M + 1U);
 
-  /*
-    cutoff frequency as a fraction of the sample rate
-  */
+  // cutoff frequency as a fraction of the sample rate
 
   const float fc = cutoff / static_cast<float>(rate);
 
   float sum = 0.0F;
 
   for (size_t n = 0U; n < output.size(); n++) {
-    /*
-      windowed-sinc kernel https://www.dspguide.com/ch16/1.htm
-    */
+    // windowed-sinc kernel https://www.dspguide.com/ch16/1.htm
 
     if (n == M / 2U) {
       output[n] = 2.0F * std::numbers::pi_v<float> * fc;
@@ -122,9 +117,7 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
                   static_cast<float>(n - static_cast<uint>(M / 2U));
     }
 
-    /*
-      Blackman window https://www.dspguide.com/ch16/1.htm
-    */
+    // Blackman window https://www.dspguide.com/ch16/1.htm
 
     const float w =
         0.42F - (0.5F * std::cos(2.0F * std::numbers::pi_v<float> * static_cast<float>(n) / static_cast<float>(M))) +
@@ -135,9 +128,7 @@ auto FirFilterBase::create_lowpass_kernel(const float& cutoff, const float& tran
     sum += output[n];
   }
 
-  /*
-    Normalizing so that we have unit gain at zero frequency
-  */
+  // Normalizing so that we have unit gain at zero frequency
 
   std::ranges::for_each(output, [&](auto& v) { v /= sum; });
 
@@ -163,7 +154,7 @@ void FirFilterBase::setup_zita() {
 
   conv->set_options(0);
 
-  int ret = conv->configure(2, 2, kernel.size(), n_samples, n_samples, n_samples, 0.0F /*density*/);
+  int ret = conv->configure(2, 2, kernel.size(), n_samples, n_samples, n_samples, 0.0F /* density */);
 
   if (ret != 0) {
     util::warning(std::format("{}can't initialise zita-convolver engine: {}", log_tag, ret));

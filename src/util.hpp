@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #pragma once
@@ -101,7 +101,7 @@ auto str_to_num(const std::string& str, T& num) -> bool {
   if constexpr (std::is_floating_point_v<T>) {
     char* endp = nullptr;
 
-    /* we're asking for C locale which is preallocated, so no alloc here */
+    // We're asking for C locale which is preallocated, so no alloc here.
 
     auto loc = newlocale(LC_ALL_MASK, "C", nullptr);
 
@@ -111,7 +111,7 @@ auto str_to_num(const std::string& str, T& num) -> bool {
       num = strtod_l(str.data() + first_char, &endp, loc);
     }
 
-    /* we gotta "free" it anyway */
+    // We gotta "free" it anyway.
 
     freelocale(loc);
 
@@ -127,16 +127,18 @@ auto str_to_num(const std::string& str, T& num) -> bool {
 
 template <typename T>
 auto to_string(const T& num, const std::string def = "0") -> std::string {
-  // This is used to replace `std::to_string` as a locale independent
-  // number conversion using `std::to_chars`.
-  // An additional string parameter could be eventually provided with a
-  // default value to return in case the conversion fails.
-
-  // Max buffer length:
-  // number of base-10 digits that can be represented by the type T without change +
-  // number of base-10 digits that are necessary to uniquely represent all distinct
-  // values of the type T (meaningful only for real numbers) +
-  // room for other characters such as "+-e,."
+  /**
+   * This is used to replace `std::to_string` as a locale independent
+   * number conversion using `std::to_chars`.
+   * An additional string parameter could be eventually provided with a
+   * default value to return in case the conversion fails.
+   *
+   * Max buffer length:
+   * number of base-10 digits that can be represented by the type T without
+   * change + number of base-10 digits that are necessary to uniquely represent
+   * all distinct values of the type T (meaningful only for real numbers) +
+   * room for other characters such as "+-e,."
+   */
   const size_t max = std::numeric_limits<T>::digits10 + std::numeric_limits<T>::max_digits10 + 10U;
 
   std::array<char, max> buffer;

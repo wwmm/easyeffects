@@ -71,7 +71,7 @@ Model::Model(QObject* parent) : QAbstractListModel(parent) {
   // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 }
 
-int Model::rowCount(const QModelIndex& /*parent*/) const {
+int Model::rowCount(const QModelIndex& /* parent */) const {
   return modelMap.size();
 }
 

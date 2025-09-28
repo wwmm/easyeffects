@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #pragma once
@@ -111,9 +111,8 @@ class Manager : public QObject {
 
   auto count_node_ports(const uint& node_id) -> uint;
 
-  /*
-    Links the output ports of the node output_node_id to the input ports of the node input_node_id
-  */
+  // Links the output ports of the node output_node_id to the input ports of
+  // the node input_node_id
 
   auto link_nodes(const uint& output_node_id,
                   const uint& input_node_id,
@@ -122,9 +121,7 @@ class Manager : public QObject {
 
   void destroy_object(const int& id) const;
 
-  /*
-    Destroy all the filters links
-  */
+  // Destroy all the filters links
 
   void destroy_links(const std::vector<pw_proxy*>& list) const;
 
@@ -155,9 +152,11 @@ class Manager : public QObject {
   void defaultInputDeviceNameChanged();
   void defaultOutputDeviceNameChanged();
 
-  /*
-    Do not pass NodeInfo by reference. Sometimes it dies before we use it and a segmentation fault happens.
-  */
+  /**
+   * IMPORTANT
+   * Do not pass NodeInfo by reference. Sometimes it dies before we use it
+   * and a segmentation fault happens.
+   */
 
   void sourceAdded(NodeInfo node);
   void sinkAdded(NodeInfo node);

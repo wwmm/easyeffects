@@ -1,20 +1,20 @@
-/*
- *  Copyright © 2017-2025 Wellington Wallace
+/**
+ * Copyright © 2017-2025 Wellington Wallace
  *
- *  This file is part of Easy Effects.
+ * This file is part of Easy Effects.
  *
- *  Easy Effects is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Easy Effects is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *  Easy Effects is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- *  GNU General Public License for more details.
+ * Easy Effects is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU General Public License
+ * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
 #include "echo_canceller.hpp"
@@ -159,10 +159,11 @@ void EchoCanceller::process(std::span<float>& left_in,
     data_L[j] = static_cast<spx_int16_t>(left_in[j] * (SHRT_MAX + 1));
     data_R[j] = static_cast<spx_int16_t>(right_in[j] * (SHRT_MAX + 1));
 
-    /*
-      This is a very naive and not correct attempt to mitigate the shortcomes discussed at
-      https://github.com/wwmm/easyeffects/issues/1566.
-    */
+    /**
+     * This is a very naive and not correct attempt to mitigate the shortcomes
+     * discussed at
+     * https://github.com/wwmm/easyeffects/issues/1566.
+     */
 
     probe_mono[j] = static_cast<spx_int16_t>(0.5F * (probe_left[j] + probe_right[j]) * (SHRT_MAX + 1));
   }
