@@ -22,6 +22,7 @@
 #include <lilv/lilv.h>
 #include <lv2/buf-size/buf-size.h>
 #include <lv2/core/lv2.h>
+#include <lv2/lv2plug.in/ns/ext/log/log.h>
 #include <lv2/ui/ui.h>
 #include <lv2/urid/urid.h>
 #include <sys/types.h>
@@ -35,6 +36,7 @@
 #include <unordered_map>
 #include <utility>
 #include <vector>
+#include "lv2_ui.hpp"
 
 namespace lv2 {
 
@@ -76,6 +78,15 @@ class Lv2Wrapper {
   virtual ~Lv2Wrapper();
 
   bool found_plugin = false;
+
+  static constexpr auto min_quantum = 32;
+  static constexpr auto max_quantum = 8192;
+
+  const std::array<const LV2_Feature, 1U> static_features{{{.URI = LV2_BUF_SIZE__boundedBlockLength, .data = nullptr}}};
+
+  std::unordered_map<LV2_URID, std::string> map_urid_to_uri;
+
+  std::vector<Port> ports;
 
   std::vector<std::function<void()>> sync_funcs;
 
@@ -125,6 +136,19 @@ class Lv2Wrapper {
 
   void native_ui_to_database();
 
+  auto get_plugin_uri() -> std::string;
+
+  auto get_lilv_plugin() -> const LilvPlugin*;
+
+  auto get_instance() -> LilvInstance*;
+
+  static auto lv2_printf([[maybe_unused]] LV2_Log_Handle handle,
+                         [[maybe_unused]] LV2_URID type,
+                         const char* format,
+                         ...) -> int;
+
+  auto map_urid(const std::string& uri) -> LV2_URID;
+
  private:
   std::string plugin_uri;
 
@@ -144,6 +168,8 @@ class Lv2Wrapper {
 
   void* libhandle = nullptr;
 
+  NativeUi native_ui;
+
   uint n_ports = 0U;
   uint n_audio_in = 0U;
   uint n_audio_out = 0U;
@@ -151,8 +177,6 @@ class Lv2Wrapper {
   uint n_samples = 0U;
 
   uint rate = 0U;
-
-  std::vector<Port> ports;
 
   // Multiband compressor/gate use 1+8*7=57 control ports. Round up to 64.
   std::array<std::pair<size_t, uint>, 64> control_ports_cache;
@@ -170,9 +194,6 @@ class Lv2Wrapper {
   } data_ports;
 
   std::unordered_map<std::string, LV2_URID> map_uri_to_urid;
-  std::unordered_map<LV2_URID, std::string> map_urid_to_uri;
-
-  const std::array<const LV2_Feature, 1U> static_features{{{.URI = LV2_BUF_SIZE__boundedBlockLength, .data = nullptr}}};
 
   std::mutex ui_mutex;
 
@@ -181,8 +202,6 @@ class Lv2Wrapper {
   void create_ports();
 
   void connect_control_ports();
-
-  auto map_urid(const std::string& uri) -> LV2_URID;
 };
 
 }  // namespace lv2
