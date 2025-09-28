@@ -19,7 +19,7 @@ Rectangle {
 
     implicitWidth: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
     implicitHeight: valueLabel.implicitWidth + Kirigami.Units.largeSpacing
-    radius: Kirigami.Units.largeSpacing
+    radius: Kirigami.Units.smallSpacing
     color: Kirigami.Theme.neutralBackgroundColor
     border.color: Kirigami.Theme.activeBackgroundColor
     border.width: 2
@@ -32,7 +32,7 @@ Rectangle {
 
         width: parent.width
         height: parent.height
-        radius: Kirigami.Units.largeSpacing
+        radius: Kirigami.Units.smallSpacing
         color: Kirigami.Theme.alternateBackgroundColor
         border.width: 0
 
@@ -61,6 +61,7 @@ Rectangle {
 
         height: Kirigami.Units.smallSpacing * 0.5
         width: parent.height
+        radius: Kirigami.Units.smallSpacing
         color: levelScale.yScale < 0.85 ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
 
         transform: Translate {

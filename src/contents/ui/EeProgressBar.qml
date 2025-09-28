@@ -38,7 +38,7 @@ FormCard.AbstractFormDelegate {
     background: Rectangle {
         anchors.fill: parent
         color: Kirigami.Theme.neutralBackgroundColor
-        radius: 2
+        radius: 1
     }
 
     contentItem: Item {
@@ -77,6 +77,7 @@ FormCard.AbstractFormDelegate {
 
             width: Kirigami.Units.smallSpacing
             height: parent.height
+            radius: Kirigami.Units.smallSpacing
             color: levelScale.xScale < 0.85 ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
 
             transform: Translate {
