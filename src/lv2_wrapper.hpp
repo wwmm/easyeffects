@@ -158,16 +158,6 @@ class Lv2Wrapper {
 
   LilvInstance* instance = nullptr;
 
-  LV2UI_Handle ui_handle = nullptr;
-
-  const LV2UI_Descriptor* ui_descriptor = nullptr;
-
-  const LV2UI_Idle_Interface* idle_iface = nullptr;
-
-  const LV2UI_Show_Interface* show_iface = nullptr;
-
-  void* libhandle = nullptr;
-
   NativeUi native_ui;
 
   uint n_ports = 0U;
