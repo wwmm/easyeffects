@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-29 00:23-0300\n"
-"PO-Revision-Date: 2025-09-27 06:01+0000\n"
+"PO-Revision-Date: 2025-09-29 18:02+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2086,19 +2086,16 @@ msgstr "Importazione del Profilo Non Riuscita."
 
 #: src/contents/ui/PresetsLocalPage.qml:52
 #: src/contents/ui/PresetsLocalPage.qml:134
-#, fuzzy
 msgid "Export Presets"
-msgstr "Importa Profili"
+msgstr "Esporta Profili"
 
 #: src/contents/ui/PresetsLocalPage.qml:55
-#, fuzzy
 msgid "Preset Files Exported."
-msgstr "Profilo APO Esportato."
+msgstr "Profili Esportati."
 
 #: src/contents/ui/PresetsLocalPage.qml:57
-#, fuzzy
 msgid "Failed to Export the Presets."
-msgstr "Importazione del Profilo Non Riuscita."
+msgstr "Esportazione dei Profili Non Riuscita."
 
 #: src/contents/ui/PresetsLocalPage.qml:68
 msgid "New Preset Name"
@@ -2137,23 +2134,20 @@ msgid "The Preset %1 Could Not Be Removed"
 msgstr "Rimozione del Profilo %1 Non Riuscita"
 
 #: src/contents/ui/PresetsLocalPage.qml:204
-#, fuzzy
 msgid "Rename Preset"
-msgstr "Rimuovi Profilo"
+msgstr "Rinomina Profilo"
 
 #: src/contents/ui/PresetsLocalPage.qml:209
 msgid "Rename"
-msgstr ""
+msgstr "Rinomina"
 
 #: src/contents/ui/PresetsLocalPage.qml:218
-#, fuzzy
 msgid "The Preset %1 Has Been Renamed"
-msgstr "Profilo %1 Rimosso"
+msgstr "Il Profilo %1 è Stato Rinominato"
 
 #: src/contents/ui/PresetsLocalPage.qml:220
-#, fuzzy
 msgid "The Preset %1 Could Not Be Renamed"
-msgstr "Rimozione del Profilo %1 Non Riuscita"
+msgstr "Il Profilo %1 Non Può Essere Rinominato"
 
 #: src/contents/ui/PresetsLocalPage.qml:227
 msgid "Cancel"
@@ -2172,9 +2166,8 @@ msgid "Failed to Save Settings to: %1"
 msgstr "Non Riuscito il Salvataggio delle Impostazioni in: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:274
-#, fuzzy
 msgid "Rename this Preset"
-msgstr "Rimuovi questo Profilo"
+msgstr "Rinomina questo Profilo"
 
 #: src/contents/ui/PresetsLocalPage.qml:282
 msgid "Delete this Preset"
