@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-28 20:08-0300\n"
+"POT-Creation-Date: 2025-09-29 00:23-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -295,7 +295,7 @@ msgstr "除外アプリケーションに追加"
 #: src/contents/ui/ConvolverImpulseSheet.qml:80
 #: src/contents/ui/MenuAddPlugins.qml:41
 #: src/contents/ui/PresetsCommunityPage.qml:77
-#: src/contents/ui/PresetsLocalPage.qml:145 src/contents/ui/RNNoise.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:172 src/contents/ui/RNNoise.qml:191
 #, fuzzy
 msgid "Empty"
 msgstr "リストは空です"
@@ -680,7 +680,7 @@ msgstr "インパルスファイルを読み込めません"
 #: src/contents/ui/ConvolverImpulseSheet.qml:60
 #: src/contents/ui/MenuAddPlugins.qml:144
 #: src/contents/ui/PresetsCommunityPage.qml:53
-#: src/contents/ui/PresetsLocalPage.qml:121
+#: src/contents/ui/PresetsLocalPage.qml:147
 msgid "Search"
 msgstr "検索"
 
@@ -2171,7 +2171,7 @@ msgid "Fallback Preset"
 msgstr ""
 
 #: src/contents/ui/PresetsCommunityPage.qml:91
-#: src/contents/ui/PresetsLocalPage.qml:157
+#: src/contents/ui/PresetsLocalPage.qml:184
 msgid "The Preset %1 Failed to Load"
 msgstr ""
 
@@ -2204,85 +2204,101 @@ msgid "Failed to Import the Preset."
 msgstr "APO プリセットファイルをインポート"
 
 #: src/contents/ui/PresetsLocalPage.qml:52
+#: src/contents/ui/PresetsLocalPage.qml:134
+#, fuzzy
+msgid "Export Presets"
+msgstr "プリセットをインポート"
+
+#: src/contents/ui/PresetsLocalPage.qml:55
+#, fuzzy
+msgid "Preset Files Exported."
+msgstr "APO プリセットファイルをインポート"
+
+#: src/contents/ui/PresetsLocalPage.qml:57
+#, fuzzy
+msgid "Failed to Export the Presets."
+msgstr "APO プリセットファイルをインポート"
+
+#: src/contents/ui/PresetsLocalPage.qml:68
 msgid "New Preset Name"
 msgstr "新規プリセット名"
 
-#: src/contents/ui/PresetsLocalPage.qml:68
+#: src/contents/ui/PresetsLocalPage.qml:84
 #, fuzzy
 msgid "Import Preset File"
 msgstr "APO プリセットファイルをインポート"
 
-#: src/contents/ui/PresetsLocalPage.qml:77
+#: src/contents/ui/PresetsLocalPage.qml:93
 #, fuzzy
 msgid "Create Preset"
 msgstr "プリセットを作成"
 
-#: src/contents/ui/PresetsLocalPage.qml:86
+#: src/contents/ui/PresetsLocalPage.qml:102
 #, fuzzy
 msgid "New Preset Created"
 msgstr "新規プリセット名"
 
-#: src/contents/ui/PresetsLocalPage.qml:89
+#: src/contents/ui/PresetsLocalPage.qml:105
 msgid "Failed to Create Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:163
+#: src/contents/ui/PresetsLocalPage.qml:190
 #, fuzzy
 msgid "Remove Preset"
 msgstr "プリセットを作成"
 
-#: src/contents/ui/PresetsLocalPage.qml:164
+#: src/contents/ui/PresetsLocalPage.qml:191
 msgid "Are you sure you want to remove this preset from the list?"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:168
+#: src/contents/ui/PresetsLocalPage.qml:195
 msgid "The Preset %1 Has Been Removed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:170
+#: src/contents/ui/PresetsLocalPage.qml:197
 msgid "The Preset %1 Could Not Be Removed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:177
+#: src/contents/ui/PresetsLocalPage.qml:204
 #, fuzzy
 msgid "Rename Preset"
 msgstr "プリセットを作成"
 
-#: src/contents/ui/PresetsLocalPage.qml:182
+#: src/contents/ui/PresetsLocalPage.qml:209
 msgid "Rename"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:218
 msgid "The Preset %1 Has Been Renamed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:193
+#: src/contents/ui/PresetsLocalPage.qml:220
 msgid "The Preset %1 Could Not Be Renamed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:200
+#: src/contents/ui/PresetsLocalPage.qml:227
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:263
 #, fuzzy
 msgid "Save Settings to this Preset"
 msgstr "現在の設定をこのプリセットファイルに保存"
 
-#: src/contents/ui/PresetsLocalPage.qml:236
+#: src/contents/ui/PresetsLocalPage.qml:268
 msgid "Settings Saved to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:238
+#: src/contents/ui/PresetsLocalPage.qml:270
 msgid "Failed to Save Settings to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:242
+#: src/contents/ui/PresetsLocalPage.qml:274
 #, fuzzy
 msgid "Rename this Preset"
 msgstr "このプリセットファイルを削除"
 
-#: src/contents/ui/PresetsLocalPage.qml:250
+#: src/contents/ui/PresetsLocalPage.qml:282
 #, fuzzy
 msgid "Delete this Preset"
 msgstr "このプリセットファイルを削除"
@@ -2575,33 +2591,33 @@ msgstr "スピーカー"
 msgid "Output Level Meter"
 msgstr "出力レベルメーター"
 
-#: src/presets_manager.cpp:1407 src/presets_manager.cpp:1414
-#: src/presets_manager.cpp:1424 src/presets_manager.cpp:1431
-#: src/presets_manager.cpp:1440 src/presets_manager.cpp:1448
+#: src/presets_manager.cpp:1439 src/presets_manager.cpp:1446
+#: src/presets_manager.cpp:1456 src/presets_manager.cpp:1463
+#: src/presets_manager.cpp:1472 src/presets_manager.cpp:1480
 msgid "Preset Not Loaded Correctly"
 msgstr "プリセットが正しく読み込まれていません"
 
-#: src/presets_manager.cpp:1407
+#: src/presets_manager.cpp:1439
 msgid "Wrong Format in Excluded Apps List"
 msgstr "間違った形式の除外されたアプリ一覧"
 
-#: src/presets_manager.cpp:1415
+#: src/presets_manager.cpp:1447
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "除外されたアプリ一覧の読み込み中に発生した一般的なエラー"
 
-#: src/presets_manager.cpp:1424
+#: src/presets_manager.cpp:1456
 msgid "Wrong Format in Effects List"
 msgstr "エフェクト一覧の間違った形式"
 
-#: src/presets_manager.cpp:1431
+#: src/presets_manager.cpp:1463
 msgid "Generic Error While Loading Effects List"
 msgstr "エフェクト一覧の読み込み中に発生した一般的なエラー"
 
-#: src/presets_manager.cpp:1441
+#: src/presets_manager.cpp:1473
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "1つ以上のパラメータに間違った形式が設定されています"
 
-#: src/presets_manager.cpp:1449
+#: src/presets_manager.cpp:1481
 msgid "Generic Error While Loading The Effect"
 msgstr "エフェクトの読み込み中に発生した一般的なエラー"
 
@@ -4494,9 +4510,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
 #~ msgid "Remove this plugin"
 #~ msgstr "このプラグインを削除"
-
-#~ msgid "Import Presets"
-#~ msgstr "プリセットをインポート"
 
 #~ msgid "Start Service at Login"
 #~ msgstr "ログイン時にサービスを開始"
