@@ -93,6 +93,8 @@ class Manager : public QObject {
 
   Q_INVOKABLE bool importPresets(const PipelineType& pipeline_type, const QList<QString>& url_list);
 
+  Q_INVOKABLE bool exportPresets(const PipelineType& pipeline_type, const QString& dirUrl);
+
   Q_INVOKABLE int importImpulses(const QList<QString>& url_list);
 
   Q_INVOKABLE int importRNNoiseModel(const QList<QString>& url_list);
