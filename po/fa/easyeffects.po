@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-28 20:08-0300\n"
+"POT-Creation-Date: 2025-09-29 00:23-0300\n"
 "PO-Revision-Date: 2025-09-23 14:01+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -293,7 +293,7 @@ msgstr "به برنامه‌های حذف‌شده اضافه کنید"
 #: src/contents/ui/ConvolverImpulseSheet.qml:80
 #: src/contents/ui/MenuAddPlugins.qml:41
 #: src/contents/ui/PresetsCommunityPage.qml:77
-#: src/contents/ui/PresetsLocalPage.qml:145 src/contents/ui/RNNoise.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:172 src/contents/ui/RNNoise.qml:191
 #, fuzzy
 msgid "Empty"
 msgstr "لیست خالی"
@@ -677,7 +677,7 @@ msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 #: src/contents/ui/ConvolverImpulseSheet.qml:60
 #: src/contents/ui/MenuAddPlugins.qml:144
 #: src/contents/ui/PresetsCommunityPage.qml:53
-#: src/contents/ui/PresetsLocalPage.qml:121
+#: src/contents/ui/PresetsLocalPage.qml:147
 msgid "Search"
 msgstr "جستجو"
 
@@ -2163,7 +2163,7 @@ msgid "Fallback Preset"
 msgstr ""
 
 #: src/contents/ui/PresetsCommunityPage.qml:91
-#: src/contents/ui/PresetsLocalPage.qml:157
+#: src/contents/ui/PresetsLocalPage.qml:184
 msgid "The Preset %1 Failed to Load"
 msgstr ""
 
@@ -2196,86 +2196,102 @@ msgid "Failed to Import the Preset."
 msgstr "وارد کردن فایل از پیش تنظیم شده APO"
 
 #: src/contents/ui/PresetsLocalPage.qml:52
+#: src/contents/ui/PresetsLocalPage.qml:134
+#, fuzzy
+msgid "Export Presets"
+msgstr "وارد کردن از پیش تعیین شده"
+
+#: src/contents/ui/PresetsLocalPage.qml:55
+#, fuzzy
+msgid "Preset Files Exported."
+msgstr "وارد کردن فایل از پیش تنظیم شده APO"
+
+#: src/contents/ui/PresetsLocalPage.qml:57
+#, fuzzy
+msgid "Failed to Export the Presets."
+msgstr "وارد کردن فایل از پیش تنظیم شده APO"
+
+#: src/contents/ui/PresetsLocalPage.qml:68
 msgid "New Preset Name"
 msgstr "نام از پیش تعیین شده جدید"
 
-#: src/contents/ui/PresetsLocalPage.qml:68
+#: src/contents/ui/PresetsLocalPage.qml:84
 #, fuzzy
 msgid "Import Preset File"
 msgstr "وارد کردن فایل از پیش تنظیم شده APO"
 
-#: src/contents/ui/PresetsLocalPage.qml:77
+#: src/contents/ui/PresetsLocalPage.qml:93
 #, fuzzy
 msgid "Create Preset"
 msgstr "ایجاد یک پیش‌تنظیم جدید"
 
-#: src/contents/ui/PresetsLocalPage.qml:86
+#: src/contents/ui/PresetsLocalPage.qml:102
 #, fuzzy
 msgid "New Preset Created"
 msgstr "نام از پیش تعیین شده جدید"
 
-#: src/contents/ui/PresetsLocalPage.qml:89
+#: src/contents/ui/PresetsLocalPage.qml:105
 msgid "Failed to Create Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:163
+#: src/contents/ui/PresetsLocalPage.qml:190
 #, fuzzy
 msgid "Remove Preset"
 msgstr "ایجاد یک پیش‌تنظیم جدید"
 
-#: src/contents/ui/PresetsLocalPage.qml:164
+#: src/contents/ui/PresetsLocalPage.qml:191
 msgid "Are you sure you want to remove this preset from the list?"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:168
+#: src/contents/ui/PresetsLocalPage.qml:195
 msgid "The Preset %1 Has Been Removed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:170
+#: src/contents/ui/PresetsLocalPage.qml:197
 msgid "The Preset %1 Could Not Be Removed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:177
+#: src/contents/ui/PresetsLocalPage.qml:204
 #, fuzzy
 msgid "Rename Preset"
 msgstr "ایجاد یک پیش‌تنظیم جدید"
 
-#: src/contents/ui/PresetsLocalPage.qml:182
+#: src/contents/ui/PresetsLocalPage.qml:209
 msgid "Rename"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:218
 msgid "The Preset %1 Has Been Renamed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:193
+#: src/contents/ui/PresetsLocalPage.qml:220
 msgid "The Preset %1 Could Not Be Renamed"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:200
+#: src/contents/ui/PresetsLocalPage.qml:227
 #, fuzzy
 msgid "Cancel"
 msgstr "تعادل"
 
-#: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:263
 #, fuzzy
 msgid "Save Settings to this Preset"
 msgstr "تنظیمات فعلی را در این فایل از پیش تعیین شده ذخیره کنید"
 
-#: src/contents/ui/PresetsLocalPage.qml:236
+#: src/contents/ui/PresetsLocalPage.qml:268
 msgid "Settings Saved to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:238
+#: src/contents/ui/PresetsLocalPage.qml:270
 msgid "Failed to Save Settings to: %1"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:242
+#: src/contents/ui/PresetsLocalPage.qml:274
 #, fuzzy
 msgid "Rename this Preset"
 msgstr "این فایل از پیش تعیین شده را حذف کنید"
 
-#: src/contents/ui/PresetsLocalPage.qml:250
+#: src/contents/ui/PresetsLocalPage.qml:282
 #, fuzzy
 msgid "Delete this Preset"
 msgstr "این فایل از پیش تعیین شده را حذف کنید"
@@ -2567,33 +2583,33 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr "سطح سنج خروجی"
 
-#: src/presets_manager.cpp:1407 src/presets_manager.cpp:1414
-#: src/presets_manager.cpp:1424 src/presets_manager.cpp:1431
-#: src/presets_manager.cpp:1440 src/presets_manager.cpp:1448
+#: src/presets_manager.cpp:1439 src/presets_manager.cpp:1446
+#: src/presets_manager.cpp:1456 src/presets_manager.cpp:1463
+#: src/presets_manager.cpp:1472 src/presets_manager.cpp:1480
 msgid "Preset Not Loaded Correctly"
 msgstr "پیش‌تنظیم به‌درستی بارگذاری نشد"
 
-#: src/presets_manager.cpp:1407
+#: src/presets_manager.cpp:1439
 msgid "Wrong Format in Excluded Apps List"
 msgstr "فرمت نادرست در فهرست برنامه‌های مستثنی‌شده"
 
-#: src/presets_manager.cpp:1415
+#: src/presets_manager.cpp:1447
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "خطای عمومی هنگام بارگذاری فهرست برنامه‌های مستثنی‌شده"
 
-#: src/presets_manager.cpp:1424
+#: src/presets_manager.cpp:1456
 msgid "Wrong Format in Effects List"
 msgstr "فرمت نادرست در فهرست جلوه ها"
 
-#: src/presets_manager.cpp:1431
+#: src/presets_manager.cpp:1463
 msgid "Generic Error While Loading Effects List"
 msgstr "خطای عمومی هنگام بارگذاری فهرست جلوه ها"
 
-#: src/presets_manager.cpp:1441
+#: src/presets_manager.cpp:1473
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "یک یا چند پارامتر فرمت نادرستی دارند"
 
-#: src/presets_manager.cpp:1449
+#: src/presets_manager.cpp:1481
 msgid "Generic Error While Loading The Effect"
 msgstr "خطای عمومی هنگام بارگذاری جلوه"
 
@@ -2875,9 +2891,6 @@ msgstr "جلوه‌های صوتی برای برنامه‌های PipeWire"
 
 #~ msgid "Detected"
 #~ msgstr "شناسایی شد"
-
-#~ msgid "Import Preset"
-#~ msgstr "وارد کردن از پیش تعیین شده"
 
 #~ msgid "Ceil Value"
 #~ msgstr "مقدار سقف"

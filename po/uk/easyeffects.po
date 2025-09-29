@@ -289,6 +289,7 @@ msgstr "Додати до виключених додатків"
 #: src/contents/ui/MenuAddPlugins.qml:41
 #: src/contents/ui/PresetsCommunityPage.qml:77
 #: src/contents/ui/PresetsLocalPage.qml:145 src/contents/ui/RNNoise.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:172
 msgid "Empty"
 msgstr "Порожній"
 
@@ -666,6 +667,7 @@ msgstr "Не вдалося імпортувати файл імпульсу."
 #: src/contents/ui/MenuAddPlugins.qml:144
 #: src/contents/ui/PresetsCommunityPage.qml:53
 #: src/contents/ui/PresetsLocalPage.qml:121
+#: src/contents/ui/PresetsLocalPage.qml:147
 msgid "Search"
 msgstr "Пошук"
 
@@ -2056,6 +2058,7 @@ msgstr "Резервний пресет"
 
 #: src/contents/ui/PresetsCommunityPage.qml:91
 #: src/contents/ui/PresetsLocalPage.qml:157
+#: src/contents/ui/PresetsLocalPage.qml:184
 msgid "The Preset %1 Failed to Load"
 msgstr "Не вдалося застосувати пресет %1"
 
@@ -2084,38 +2087,47 @@ msgid "Failed to Import the Preset."
 msgstr "Не вдалося імпортувати пресет."
 
 #: src/contents/ui/PresetsLocalPage.qml:52
+#: src/contents/ui/PresetsLocalPage.qml:68
 msgid "New Preset Name"
 msgstr "Нова назва пресету"
 
 #: src/contents/ui/PresetsLocalPage.qml:68
+#: src/contents/ui/PresetsLocalPage.qml:84
 msgid "Import Preset File"
 msgstr "Імпортувати файл пресету"
 
 #: src/contents/ui/PresetsLocalPage.qml:77
+#: src/contents/ui/PresetsLocalPage.qml:93
 msgid "Create Preset"
 msgstr "Створити пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:86
+#: src/contents/ui/PresetsLocalPage.qml:102
 msgid "New Preset Created"
 msgstr "Новий пресет створено"
 
 #: src/contents/ui/PresetsLocalPage.qml:89
+#: src/contents/ui/PresetsLocalPage.qml:105
 msgid "Failed to Create Preset"
 msgstr "Не вдалося створити пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:163
+#: src/contents/ui/PresetsLocalPage.qml:190
 msgid "Remove Preset"
 msgstr "Вилучити пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:164
+#: src/contents/ui/PresetsLocalPage.qml:191
 msgid "Are you sure you want to remove this preset from the list?"
 msgstr "Ви впевнені, що хочете вилучити цей пресет зі списку?"
 
 #: src/contents/ui/PresetsLocalPage.qml:168
+#: src/contents/ui/PresetsLocalPage.qml:195
 msgid "The Preset %1 Has Been Removed"
 msgstr "Пресет %1 вже вилучено"
 
 #: src/contents/ui/PresetsLocalPage.qml:170
+#: src/contents/ui/PresetsLocalPage.qml:197
 msgid "The Preset %1 Could Not Be Removed"
 msgstr "Не вдалося вилучити пресет %1"
 
@@ -2140,14 +2152,17 @@ msgid "Cancel"
 msgstr "Скасувати"
 
 #: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:263
 msgid "Save Settings to this Preset"
 msgstr "Зберегти налаштування до цього пресету"
 
 #: src/contents/ui/PresetsLocalPage.qml:236
+#: src/contents/ui/PresetsLocalPage.qml:268
 msgid "Settings Saved to: %1"
 msgstr "Налаштування збережено в: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:238
+#: src/contents/ui/PresetsLocalPage.qml:270
 msgid "Failed to Save Settings to: %1"
 msgstr "Не вдалося зберегти налаштування до: %1"
 
@@ -2156,6 +2171,7 @@ msgid "Rename this Preset"
 msgstr "Перейменувати цей пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:250
+#: src/contents/ui/PresetsLocalPage.qml:282
 msgid "Delete this Preset"
 msgstr "Видалити цей пресет"
 
@@ -2435,30 +2451,33 @@ msgstr "Вимірювач рівня вихідного сигналу"
 #: src/presets_manager.cpp:1407 src/presets_manager.cpp:1414
 #: src/presets_manager.cpp:1424 src/presets_manager.cpp:1431
 #: src/presets_manager.cpp:1440 src/presets_manager.cpp:1448
+#: src/presets_manager.cpp:1439 src/presets_manager.cpp:1446
+#: src/presets_manager.cpp:1456 src/presets_manager.cpp:1463
+#: src/presets_manager.cpp:1472 src/presets_manager.cpp:1480
 msgid "Preset Not Loaded Correctly"
 msgstr "Пресет не застосовано належним чином"
 
-#: src/presets_manager.cpp:1407
+#: src/presets_manager.cpp:1407 src/presets_manager.cpp:1439
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Неправильний формат у списку виключених застосунків"
 
-#: src/presets_manager.cpp:1415
+#: src/presets_manager.cpp:1415 src/presets_manager.cpp:1447
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Загальна помилка під час завантаження списку виключених застосунків"
 
-#: src/presets_manager.cpp:1424
+#: src/presets_manager.cpp:1424 src/presets_manager.cpp:1456
 msgid "Wrong Format in Effects List"
 msgstr "Неправильний формат у списку ефектів"
 
-#: src/presets_manager.cpp:1431
+#: src/presets_manager.cpp:1431 src/presets_manager.cpp:1463
 msgid "Generic Error While Loading Effects List"
 msgstr "Загальна помилка під час завантаження списку ефектів"
 
-#: src/presets_manager.cpp:1441
+#: src/presets_manager.cpp:1441 src/presets_manager.cpp:1473
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Один або кілька параметрів мають неправильний формат"
 
-#: src/presets_manager.cpp:1449
+#: src/presets_manager.cpp:1449 src/presets_manager.cpp:1481
 msgid "Generic Error While Loading The Effect"
 msgstr "Загальна помилка під час застосування ефекту"
 
@@ -2566,6 +2585,22 @@ msgstr "Еквалайзер, компресор та інші звукові е
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Звукові ефекти для застосунків PipeWire"
 
+#: src/contents/ui/PresetsLocalPage.qml:52
+#: src/contents/ui/PresetsLocalPage.qml:134
+#, fuzzy
+msgid "Export Presets"
+msgstr "Імпорт пресету"
+
+#: src/contents/ui/PresetsLocalPage.qml:55
+#, fuzzy
+msgid "Preset Files Exported."
+msgstr "Файл попередньо налаштованого APO експортовано."
+
+#: src/contents/ui/PresetsLocalPage.qml:57
+#, fuzzy
+msgid "Failed to Export the Presets."
+msgstr "Не вдалося імпортувати пресет."
+
 #, fuzzy
 #~ msgid "Band "
 #~ msgstr "Смуга 1"
@@ -2591,7 +2626,9 @@ msgstr "Звукові ефекти для застосунків PipeWire"
 #~ msgstr "@APP_NAME@"
 
 #~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-#~ msgstr "limiter;compressor;reverberation;equalizer;autovolume;обмежувач;компресор;реверберація;еквалайзер;автогучність;ефекти;звук;пайп;запис;"
+#~ msgstr ""
+#~ "limiter;compressor;reverberation;equalizer;autovolume;обмежувач;компресор;"
+#~ "реверберація;еквалайзер;автогучність;ефекти;звук;пайп;запис;"
 
 #~ msgid "Enable/disable this application"
 #~ msgstr "Увімкнути / вимкнути цей додаток"
@@ -3180,11 +3217,9 @@ msgstr "Звукові ефекти для застосунків PipeWire"
 #~ "Вибрана модель не завантажена. Його формат може не підтримуватися. "
 #~ "Повернувся до стандартної моделі."
 
-#, c++-format
 #~ msgid "{} Not Available"
 #~ msgstr "{} Недоступно"
 
-#, c++-format
 #~ msgid ""
 #~ "The software required for the {} effect, \"{}\", is not installed. "
 #~ "Consider using the Easy Effects Flatpak package or installing the "
@@ -3198,7 +3233,6 @@ msgstr "Звукові ефекти для застосунків PipeWire"
 #~ "забезпечення, вам потрібно перезапустити Easy Effects, використовуючи "
 #~ "опцію «Вийти» в меню, щоб зробити ефект доступним для використання."
 
-#, c++-format
 #~ msgid ""
 #~ "The {} effect was disabled when Easy Effects was compiled. This is "
 #~ "perhaps since the software required for this effect, \"{}\", was not "

@@ -823,23 +823,55 @@ bool Manager::importPresets(const PipelineType& pipeline_type, const QList<QStri
       try {
         std::filesystem::copy_file(input_path, out_path, std::filesystem::copy_options::overwrite_existing);
 
-        util::debug("imported preset to: " + out_path.string());
+        util::debug(std::format("imported preset to: {}", out_path.string()));
 
         return true;
       } catch (const std::exception& e) {
-        util::warning("can't import preset to: " + out_path.string());
+        util::warning(std::format("can't import preset to: {}", out_path.string()));
         util::warning(e.what());
 
         return false;
       }
     } else {
-      util::warning(url.toString().toStdString() + " is not a local file!");
+      util::warning(std::format("{} is not a local file!", url.toString().toStdString()));
 
       return false;
     }
 
     return false;
   });
+}
+
+bool Manager::exportPresets(const PipelineType& pipeline_type, const QString& dirUrl) {
+  auto url = QUrl(dirUrl);
+
+  if (url.isLocalFile()) {
+    auto output_path = std::filesystem::path{url.toLocalFile().toStdString()};
+
+    if (!std::filesystem::exists(output_path) || !std::filesystem::is_directory(output_path)) {
+      util::warning(std::format("The directory {} does not exist!", output_path.string()));
+
+      return false;
+    }
+
+    const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
+
+    for (const auto& entry : std::filesystem::directory_iterator(conf_dir)) {
+      if (entry.is_regular_file()) {
+        const auto& preset_file = entry.path();
+
+        const std::filesystem::path destination_file = output_path / preset_file.filename();
+
+        std::filesystem::copy(preset_file, destination_file, std::filesystem::copy_options::overwrite_existing);
+      }
+    }
+
+    util::debug(std::format("exported presets to: {}", output_path.string()));
+
+    return true;
+  }
+
+  return false;
 }
 
 auto Manager::import_irs_file(const std::string& file_path) -> ImpulseImportState {
