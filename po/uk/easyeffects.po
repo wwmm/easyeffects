@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-28 20:08-0300\n"
-"PO-Revision-Date: 2025-09-29 05:59+0000\n"
+"PO-Revision-Date: 2025-09-29 18:02+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -2587,19 +2587,16 @@ msgstr "Звукові ефекти для застосунків PipeWire"
 
 #: src/contents/ui/PresetsLocalPage.qml:52
 #: src/contents/ui/PresetsLocalPage.qml:134
-#, fuzzy
 msgid "Export Presets"
-msgstr "Імпорт пресету"
+msgstr "Імпорт Пресету"
 
 #: src/contents/ui/PresetsLocalPage.qml:55
-#, fuzzy
 msgid "Preset Files Exported."
-msgstr "Файл попередньо налаштованого APO експортовано."
+msgstr "Експортовано попередньо налаштовані файли."
 
 #: src/contents/ui/PresetsLocalPage.qml:57
-#, fuzzy
 msgid "Failed to Export the Presets."
-msgstr "Не вдалося імпортувати пресет."
+msgstr "Не вдалося експортувати пресетів."
 
 #, fuzzy
 #~ msgid "Band "
