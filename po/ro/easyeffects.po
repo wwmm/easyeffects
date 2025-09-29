@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-29 00:23-0300\n"
-"PO-Revision-Date: 2025-09-26 16:02+0000\n"
+"PO-Revision-Date: 2025-09-29 18:02+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -2090,19 +2090,16 @@ msgstr "Importarea fișierului de preconfigurare a eșuat."
 
 #: src/contents/ui/PresetsLocalPage.qml:52
 #: src/contents/ui/PresetsLocalPage.qml:134
-#, fuzzy
 msgid "Export Presets"
-msgstr "Importă Presetări"
+msgstr "Exportă preconfigurări"
 
 #: src/contents/ui/PresetsLocalPage.qml:55
-#, fuzzy
 msgid "Preset Files Exported."
-msgstr "Fișierul de preconfigurare APO a fost exportat."
+msgstr "Fișierele de preconfigurare au fost exportate."
 
 #: src/contents/ui/PresetsLocalPage.qml:57
-#, fuzzy
 msgid "Failed to Export the Presets."
-msgstr "Importarea fișierului de preconfigurare a eșuat."
+msgstr "Exportarea fișierelor de preconfigurare a eșuat."
 
 #: src/contents/ui/PresetsLocalPage.qml:68
 msgid "New Preset Name"
@@ -2141,23 +2138,20 @@ msgid "The Preset %1 Could Not Be Removed"
 msgstr "Preconfigurarea %1 nu a putut fi eliminată"
 
 #: src/contents/ui/PresetsLocalPage.qml:204
-#, fuzzy
 msgid "Rename Preset"
-msgstr "Elimină preconfigurarea"
+msgstr "Redenumește preconfigurarea"
 
 #: src/contents/ui/PresetsLocalPage.qml:209
 msgid "Rename"
-msgstr ""
+msgstr "Redenumește"
 
 #: src/contents/ui/PresetsLocalPage.qml:218
-#, fuzzy
 msgid "The Preset %1 Has Been Renamed"
-msgstr "Preconfigurarea %1 a fost eliminată"
+msgstr "Preconfigurarea %1 a fost redenumită"
 
 #: src/contents/ui/PresetsLocalPage.qml:220
-#, fuzzy
 msgid "The Preset %1 Could Not Be Renamed"
-msgstr "Preconfigurarea %1 nu a putut fi eliminată"
+msgstr "Preconfigurarea %1 nu a putut fi redenumită"
 
 #: src/contents/ui/PresetsLocalPage.qml:227
 msgid "Cancel"
@@ -2176,9 +2170,8 @@ msgid "Failed to Save Settings to: %1"
 msgstr "Salvarea parametrilor în: %1 a eșuat"
 
 #: src/contents/ui/PresetsLocalPage.qml:274
-#, fuzzy
 msgid "Rename this Preset"
-msgstr "Șterge această preconfigurare"
+msgstr "Redenumește această preconfigurare"
 
 #: src/contents/ui/PresetsLocalPage.qml:282
 msgid "Delete this Preset"

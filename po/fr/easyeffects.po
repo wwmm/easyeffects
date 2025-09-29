@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-29 00:23-0300\n"
-"PO-Revision-Date: 2025-09-28 04:01+0000\n"
+"PO-Revision-Date: 2025-09-29 18:02+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -2088,19 +2088,16 @@ msgstr "Échec de l'Importation du Préréglage."
 
 #: src/contents/ui/PresetsLocalPage.qml:52
 #: src/contents/ui/PresetsLocalPage.qml:134
-#, fuzzy
 msgid "Export Presets"
-msgstr "Ouvrir préréglage"
+msgstr "Exporter les Préréglages"
 
 #: src/contents/ui/PresetsLocalPage.qml:55
-#, fuzzy
 msgid "Preset Files Exported."
-msgstr "Fichier de Préréglage APO Exporté."
+msgstr "Fichiers de Préréglages Exportés."
 
 #: src/contents/ui/PresetsLocalPage.qml:57
-#, fuzzy
 msgid "Failed to Export the Presets."
-msgstr "Échec de l'Importation du Préréglage."
+msgstr "Échec de l'Exportation des Préréglages."
 
 #: src/contents/ui/PresetsLocalPage.qml:68
 msgid "New Preset Name"
@@ -2139,23 +2136,20 @@ msgid "The Preset %1 Could Not Be Removed"
 msgstr "Le Préréglage %1 N'a Pas Pu Être Supprimé"
 
 #: src/contents/ui/PresetsLocalPage.qml:204
-#, fuzzy
 msgid "Rename Preset"
-msgstr "Supprimer le Préréglage"
+msgstr "Renommer le Préréglage"
 
 #: src/contents/ui/PresetsLocalPage.qml:209
 msgid "Rename"
-msgstr ""
+msgstr "Renommer"
 
 #: src/contents/ui/PresetsLocalPage.qml:218
-#, fuzzy
 msgid "The Preset %1 Has Been Renamed"
-msgstr "Le Préréglage %1 a Été Supprimé"
+msgstr "Le Préréglage %1 a Été Renommé"
 
 #: src/contents/ui/PresetsLocalPage.qml:220
-#, fuzzy
 msgid "The Preset %1 Could Not Be Renamed"
-msgstr "Le Préréglage %1 N'a Pas Pu Être Supprimé"
+msgstr "Le Préréglage %1 N'a Pas Pu Être Renommé"
 
 #: src/contents/ui/PresetsLocalPage.qml:227
 msgid "Cancel"
@@ -2174,9 +2168,8 @@ msgid "Failed to Save Settings to: %1"
 msgstr "Échec de l'Enregistrement des Paramètres dans : %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:274
-#, fuzzy
 msgid "Rename this Preset"
-msgstr "Supprimer ce Préréglage"
+msgstr "Renommer ce Préréglage"
 
 #: src/contents/ui/PresetsLocalPage.qml:282
 msgid "Delete this Preset"
