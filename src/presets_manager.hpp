@@ -25,7 +25,6 @@
 #include <qtmetamacros.h>
 #include <qtypes.h>
 #include <filesystem>
-#include <functional>
 #include <memory>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
@@ -34,6 +33,7 @@
 #include <vector>
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
+#include "presets_autoload_manager.hpp"
 #include "presets_directory_manager.hpp"
 #include "presets_list_model.hpp"
 
@@ -126,15 +126,14 @@ class Manager : public QObject {
  private:
   DirectoryManager dir_manager;
 
-  QFileSystemWatcher user_output_watcher, user_input_watcher, autoload_output_watcher, autoload_input_watcher,
-      irs_watcher, rnnoise_watcher;
+  AutoloadManager autoload_manager{dir_manager};
 
-  ListModel *outputListModel, *inputListModel, *communityOutputListModel, *communityInputListModel,
-      *autoloadingOutputListmodel, *autoloadingInputListmodel, *irsListModel, *rnnoiseListModel;
+  QFileSystemWatcher user_output_watcher, user_input_watcher, irs_watcher, rnnoise_watcher;
+
+  ListModel *outputListModel, *inputListModel, *communityOutputListModel, *communityInputListModel, *irsListModel,
+      *rnnoiseListModel;
 
   void initialize_qml_types();
-
-  static void refresh_list_model(ListModel* model, std::function<QList<std::filesystem::path>()> get_paths);
 
   void refresh_list_models();
 
@@ -150,11 +149,6 @@ class Manager : public QObject {
   auto read_plugins_preset(const PipelineType& pipeline_type,
                            const std::vector<std::string>& plugins,
                            const nlohmann::json& json) -> bool;
-
-  auto find_autoload(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile)
-      -> std::string;
-
-  auto get_autoload_profiles(const PipelineType& pipeline_type) -> std::vector<nlohmann::json>;
 
   void prepare_last_used_preset_key(const PipelineType& pipeline_type);
 

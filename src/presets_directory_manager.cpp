@@ -40,6 +40,8 @@ DirectoryManager::DirectoryManager()
       user_rnnoise_dir(app_config_dir / "rnnoise"),
       autoload_input_dir(app_config_dir / "autoload/input"),
       autoload_output_dir(app_config_dir / "autoload/output") {
+  createUserDirectories();
+
   /**
    * Initialize input and output directories for community presets.
    * Flatpak specific path (.flatpak-info always present for apps running

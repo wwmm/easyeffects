@@ -262,6 +262,10 @@ int main(int argc, char* argv[]) {
     return runSecondaryInstance(app, *cmd_parser, show_window);
   }
 
+  QObject::connect(cmd_parser.get(), &CommandLineParser::onHideWindow, [&]() { show_window = false; });
+
+  cmd_parser->process(&app);
+
   // Core managers
   CoreServices core(true);
 
@@ -274,10 +278,6 @@ int main(int argc, char* argv[]) {
   UiState ui;
 
   QQmlApplicationEngine engine;
-
-  QObject::connect(cmd_parser.get(), &CommandLineParser::onHideWindow, [&]() { show_window = false; });
-
-  cmd_parser->process(&app);
 
   // Starting the local socket server
 

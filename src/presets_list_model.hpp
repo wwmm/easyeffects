@@ -28,6 +28,7 @@
 #include <qsortfilterproxymodel.h>
 #include <qtmetamacros.h>
 #include <filesystem>
+#include <functional>
 
 class ListModel : public QAbstractListModel {
   Q_OBJECT
@@ -62,6 +63,8 @@ class ListModel : public QAbstractListModel {
   void remove(const int& rowIndex);
 
   void remove(const std::filesystem::path& path);
+
+  void update(const QList<std::filesystem::path>& paths);
 
   void emit_data_changed(const std::filesystem::path& path);
 

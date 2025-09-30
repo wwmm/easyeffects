@@ -85,6 +85,7 @@ target_sources(easyeffects PRIVATE
     pitch_preset.cpp
     plugin_base.cpp
     plugin_preset_base.cpp
+    presets_autoload_manager.cpp
     presets_directory_manager.cpp
     presets_manager.cpp
     presets_list_model.cpp

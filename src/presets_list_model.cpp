@@ -212,3 +212,23 @@ void ListModel::emit_data_changed(const std::filesystem::path& path) {
 
   Q_EMIT dataChanged(index(rowIndex), index(rowIndex));
 }
+
+void ListModel::update(const QList<std::filesystem::path>& paths) {
+  auto current_list = listPaths;
+
+  beginResetModel();
+
+  for (const auto& v : paths) {
+    if (!current_list.contains(v)) {
+      append(v);
+    }
+  }
+
+  for (const auto& v : current_list) {
+    if (!paths.contains(v)) {
+      remove(v);
+    }
+  }
+
+  endResetModel();
+}

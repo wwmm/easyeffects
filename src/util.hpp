@@ -26,7 +26,6 @@
 #include <cmath>
 #include <cstdlib>
 #include <filesystem>
-#include <functional>
 #include <limits>
 #include <source_location>
 #include <string>

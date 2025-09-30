@@ -33,7 +33,6 @@
 #include <filesystem>
 #include <format>
 #include <fstream>
-#include <functional>
 #include <iomanip>
 #include <map>
 #include <memory>
@@ -74,6 +73,7 @@
 #include "pipeline_type.hpp"
 #include "pitch_preset.hpp"
 #include "plugin_preset_base.hpp"
+#include "presets_autoload_manager.hpp"
 #include "presets_directory_manager.hpp"
 #include "presets_list_model.hpp"
 #include "reverb_preset.hpp"
@@ -90,13 +90,9 @@ Manager::Manager()
       inputListModel(new ListModel(this)),
       communityOutputListModel(new ListModel(this, ListModel::ModelType::Community)),
       communityInputListModel(new ListModel(this, ListModel::ModelType::Community)),
-      autoloadingOutputListmodel(new ListModel(this, ListModel::ModelType::Autoloading)),
-      autoloadingInputListmodel(new ListModel(this, ListModel::ModelType::Autoloading)),
       irsListModel(new ListModel(this, ListModel::ModelType::IRS)),
       rnnoiseListModel(new ListModel(this, ListModel::ModelType::RNNOISE)) {
   initialize_qml_types();
-
-  dir_manager.createUserDirectories();
 
   refresh_list_models();
 
@@ -104,6 +100,9 @@ Manager::Manager()
 
   prepare_last_used_preset_key(PipelineType::input);
   prepare_last_used_preset_key(PipelineType::output);
+
+  connect(&autoload_manager, &AutoloadManager::loadPresetRequested, this, &Manager::loadLocalPresetFile);
+  connect(&autoload_manager, &AutoloadManager::loadFallbackPresetRequested, this, &Manager::loadLocalPresetFile);
 }
 
 void Manager::initialize_qml_types() {
@@ -125,11 +124,11 @@ void Manager::initialize_qml_types() {
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedAutoloadingInputListModel",
-                                                      autoloadingInputListmodel->getProxy());
+                                                      autoload_manager.get_input_model()->getProxy());
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedAutoloadingOutputListModel",
-                                                      autoloadingOutputListmodel->getProxy());
+                                                      autoload_manager.get_output_model()->getProxy());
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedImpulseListModel", irsListModel->getProxy());
@@ -139,76 +138,35 @@ void Manager::initialize_qml_types() {
   // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 }
 
-void Manager::refresh_list_model(ListModel* model, std::function<QList<std::filesystem::path>()> get_paths) {
-  auto model_list = model->getList();
-  auto local_list = get_paths();
-
-  model->begin_reset();
-
-  for (const auto& v : local_list) {
-    if (!model_list.contains(v)) {
-      model->append(v);
-    }
-  }
-
-  for (const auto& v : model_list) {
-    if (!local_list.contains(v)) {
-      model->remove(v);
-    }
-  }
-
-  model->end_reset();
-}
-
 void Manager::refresh_list_models() {
-  refresh_list_model(inputListModel, [&]() { return dir_manager.getLocalPresetsPaths(PipelineType::input); });
-  refresh_list_model(outputListModel, [this]() { return dir_manager.getLocalPresetsPaths(PipelineType::output); });
+  inputListModel->update(dir_manager.getLocalPresetsPaths(PipelineType::input));
+  outputListModel->update(dir_manager.getLocalPresetsPaths(PipelineType::output));
 
-  refresh_list_model(autoloadingInputListmodel,
-                     [this]() { return dir_manager.getAutoloadingProfilesPaths(PipelineType::input); });
-  refresh_list_model(autoloadingOutputListmodel,
-                     [this]() { return dir_manager.getAutoloadingProfilesPaths(PipelineType::output); });
+  irsListModel->update(dir_manager.getLocalIrsPaths());
 
-  refresh_list_model(irsListModel, [this]() { return dir_manager.getLocalIrsPaths(); });
-  refresh_list_model(rnnoiseListModel, [this]() { return dir_manager.getLocalRnnoisePaths(); });
+  rnnoiseListModel->update(dir_manager.getLocalRnnoisePaths());
 
-  refresh_list_model(communityInputListModel,
-                     [this]() { return dir_manager.getAllCommunityPresetsPaths(PipelineType::input); });
-  refresh_list_model(communityOutputListModel,
-                     [this]() { return dir_manager.getAllCommunityPresetsPaths(PipelineType::output); });
+  communityInputListModel->update(dir_manager.getAllCommunityPresetsPaths(PipelineType::input));
+  communityOutputListModel->update(dir_manager.getAllCommunityPresetsPaths(PipelineType::output));
 }
 
 void Manager::prepare_filesystem_watchers() {
   user_input_watcher.addPath(QString::fromStdString(dir_manager.userInputDir().string()));
   user_output_watcher.addPath(QString::fromStdString(dir_manager.userOutputDir().string()));
-  autoload_input_watcher.addPath(QString::fromStdString(dir_manager.autoloadInputDir().string()));
-  autoload_output_watcher.addPath(QString::fromStdString(dir_manager.autoloadOutputDir().string()));
   irs_watcher.addPath(QString::fromStdString(dir_manager.userIrsDir().string()));
   rnnoise_watcher.addPath(QString::fromStdString(dir_manager.userRnnoiseDir().string()));
 
-  connect(&user_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-    refresh_list_model(inputListModel, [this]() { return get_local_presets_paths(PipelineType::input); });
-  });
+  connect(&user_input_watcher, &QFileSystemWatcher::directoryChanged,
+          [&]() { inputListModel->update(dir_manager.getLocalPresetsPaths(PipelineType::input)); });
 
-  connect(&user_output_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-    refresh_list_model(outputListModel, [this]() { return get_local_presets_paths(PipelineType::output); });
-  });
-
-  connect(&autoload_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-    refresh_list_model(autoloadingInputListmodel,
-                       [this]() { return dir_manager.getAutoloadingProfilesPaths(PipelineType::input); });
-  });
-
-  connect(&autoload_output_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-    refresh_list_model(autoloadingOutputListmodel,
-                       [this]() { return dir_manager.getAutoloadingProfilesPaths(PipelineType::output); });
-  });
+  connect(&user_output_watcher, &QFileSystemWatcher::directoryChanged,
+          [&]() { outputListModel->update(dir_manager.getLocalPresetsPaths(PipelineType::output)); });
 
   connect(&irs_watcher, &QFileSystemWatcher::directoryChanged,
-          [&]() { refresh_list_model(irsListModel, [this]() { return dir_manager.getLocalIrsPaths(); }); });
+          [&]() { irsListModel->update(dir_manager.getLocalIrsPaths()); });
 
   connect(&rnnoise_watcher, &QFileSystemWatcher::directoryChanged,
-          [&]() { refresh_list_model(rnnoiseListModel, [this]() { return dir_manager.getLocalRnnoisePaths(); }); });
+          [&]() { rnnoiseListModel->update(dir_manager.getLocalRnnoisePaths()); });
 }
 
 void Manager::prepare_last_used_preset_key(const PipelineType& pipeline_type) {
@@ -218,7 +176,7 @@ void Manager::prepare_last_used_preset_key(const PipelineType& pipeline_type) {
   bool reset_key = true;
 
   if (!preset_name.isEmpty()) {
-    for (const auto& p : get_local_presets_paths(pipeline_type)) {
+    for (const auto& p : dir_manager.getLocalPresetsPaths(pipeline_type)) {
       if (p.stem().string() == preset_name.toStdString()) {
         reset_key = false;
 
@@ -300,15 +258,11 @@ auto Manager::scan_community_package_recursive(std::filesystem::directory_iterat
 void Manager::refreshCommunityPresets(const PipelineType& pipeline_type) {
   switch (pipeline_type) {
     case PipelineType::input: {
-      refresh_list_model(communityInputListModel,
-                         [this]() { return dir_manager.getAllCommunityPresetsPaths(PipelineType::input); });
-
+      communityInputListModel->update(dir_manager.getAllCommunityPresetsPaths(PipelineType::input));
       break;
     }
     case PipelineType::output: {
-      refresh_list_model(communityOutputListModel,
-                         [this]() { return dir_manager.getAllCommunityPresetsPaths(PipelineType::output); });
-
+      communityOutputListModel->update(dir_manager.getAllCommunityPresetsPaths(PipelineType::output));
       break;
     }
   }
@@ -470,7 +424,7 @@ bool Manager::savePresetFile(const PipelineType& pipeline_type, const QString& n
 
   // std::cout << std::setw(4) << json << std::endl;
 
-  util::debug("saved preset: " + output_file.string());
+  util::debug(std::format("saved preset: {}", output_file.string()));
 
   return true;
 }
@@ -478,7 +432,7 @@ bool Manager::savePresetFile(const PipelineType& pipeline_type, const QString& n
 bool Manager::add(const PipelineType& pipeline_type, const QString& name) {
   // This method assumes the filename is valid.
 
-  for (const auto& p : get_local_presets_paths(pipeline_type)) {
+  for (const auto& p : dir_manager.getLocalPresetsPaths(pipeline_type)) {
     if (p.stem().string() == name.toStdString()) {
       return false;
     }
@@ -500,7 +454,7 @@ bool Manager::remove(const PipelineType& pipeline_type, const QString& name) {
   if (std::filesystem::exists(preset_file)) {
     std::filesystem::remove(preset_file);
 
-    util::debug("removed preset: " + preset_file.string());
+    util::debug(std::format("removed preset: {}", preset_file.string()));
 
     return true;
   }
@@ -640,7 +594,7 @@ auto Manager::load_preset_file(const PipelineType& pipeline_type, const std::fil
   // After the plugin order list, load the blocklist and then
   // apply the parameters of the loaded plugins.
   if (load_blocklist(pipeline_type, json) && read_plugins_preset(pipeline_type, plugins, json)) {
-    util::debug("successfully loaded the preset: " + input_file.string());
+    util::debug(std::format("successfully loaded the preset: {}", input_file.string()));
 
     return true;
   }
@@ -656,7 +610,7 @@ bool Manager::loadLocalPresetFile(const PipelineType& pipeline_type, const QStri
 
   // Check preset existence
   if (!std::filesystem::exists(input_file)) {
-    util::debug("can't find the local preset \"" + name.toStdString() + "\" on the filesystem");
+    util::debug(std::format("can't find the local preset \"{}\" on the filesystem", name.toStdString()));
 
     return false;
   }
@@ -681,7 +635,7 @@ bool Manager::loadCommunityPresetFile(const PipelineType& pipeline_type,
 
   // Check preset existence
   if (!std::filesystem::exists(input_file)) {
-    util::warning("the community preset \"" + input_file.string() + "\" does not exist on the filesystem");
+    util::warning(std::format("the community preset \"{}\" does not exist on the filesystem", input_file.string()));
 
     return false;
   }
@@ -768,7 +722,7 @@ auto Manager::import_irs_file(const std::string& file_path) -> ImpulseImportStat
   std::filesystem::path p{file_path};
 
   if (!std::filesystem::is_regular_file(p)) {
-    util::warning(p.string() + " is not a file!");
+    util::warning(std::format("{} is not a file!", p.string()));
 
     return ImpulseImportState::no_regular_file;
   }
@@ -777,14 +731,14 @@ auto Manager::import_irs_file(const std::string& file_path) -> ImpulseImportStat
 
   if (file.frames() == 0) {
     util::warning("Cannot import the impulse response! The format may be corrupted or unsupported.");
-    util::warning(file_path + " loading failed");
+    util::warning(std::format("{} loading failed", file_path));
 
     return ImpulseImportState::no_frame;
   }
 
   if (file.channels() != 2) {
     util::warning("Only stereo impulse files are supported!");
-    util::warning(file_path + " loading failed");
+    util::warning(std::format("{} loading failed", file_path));
 
     return ImpulseImportState::no_stereo;
   }
@@ -795,7 +749,7 @@ auto Manager::import_irs_file(const std::string& file_path) -> ImpulseImportStat
 
   std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
 
-  util::debug("Irs file successfully imported to: " + out_path.string());
+  util::debug(std::format("Irs file successfully imported to: {}", out_path.string()));
 
   return ImpulseImportState::success;
 }
@@ -820,7 +774,7 @@ auto Manager::import_rnnoise_file(const std::string& file_path) -> RNNoiseImport
   std::filesystem::path p{file_path};
 
   if (!std::filesystem::is_regular_file(p)) {
-    util::warning(p.string() + " is not a file!");
+    util::warning(std::format("{} is not a file!", p.string()));
 
     return RNNoiseImportState::no_regular_file;
   }
@@ -831,7 +785,7 @@ auto Manager::import_rnnoise_file(const std::string& file_path) -> RNNoiseImport
 
   std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
 
-  util::debug("Irs file successfully imported to: " + out_path.string());
+  util::debug(std::format("Irs file successfully imported to: {}", out_path.string()));
 
   return RNNoiseImportState::success;
 }
@@ -860,9 +814,9 @@ bool Manager::removeImpulseFile(const QString& filePath) {
   }
 
   if (result) {
-    util::debug("removed irs file: " + filePath.toStdString());
+    util::debug(std::format("removed irs file: {}", filePath.toStdString()));
   } else {
-    util::warning("failed to removed the irs file: " + filePath.toStdString());
+    util::warning(std::format("failed to removed the irs file: {}", filePath.toStdString()));
   }
 
   return result;
@@ -876,9 +830,9 @@ bool Manager::removeRNNoiseModel(const QString& filePath) {
   }
 
   if (result) {
-    util::debug("removed the rnnoise model: " + filePath.toStdString());
+    util::debug(std::format("removed the rnnoise model: {}", filePath.toStdString()));
   } else {
-    util::warning("failed to remove the rnnoise model: " + filePath.toStdString());
+    util::warning(std::format("failed to remove the rnnoise model: {}", filePath.toStdString()));
   }
 
   return result;
@@ -938,7 +892,7 @@ auto Manager::import_addons_from_community_package(const PipelineType& pipeline_
 
           std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
 
-          util::debug("successfully imported community preset addon " + irs_name + " locally");
+          util::debug(std::format("successfully imported community preset addon {} locally", irs_name));
 
           found = true;
 
@@ -947,7 +901,7 @@ auto Manager::import_addons_from_community_package(const PipelineType& pipeline_
       }
 
       if (!found) {
-        util::warning("community preset addon " + irs_name + " not found!");
+        util::warning(std::format("community preset addon {} not found!", irs_name));
 
         return false;
       }
@@ -967,7 +921,7 @@ auto Manager::import_addons_from_community_package(const PipelineType& pipeline_
 
           std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
 
-          util::debug("successfully imported community preset addon " + model_name + " locally");
+          util::debug(std::format("successfully imported community preset addon {} locally", model_name));
 
           found = true;
 
@@ -976,7 +930,7 @@ auto Manager::import_addons_from_community_package(const PipelineType& pipeline_
       }
 
       if (!found) {
-        util::warning("community preset addon " + model_name + " not found!");
+        util::warning(std::format("community preset addon {} not found!", model_name));
 
         return false;
       }
@@ -999,13 +953,13 @@ bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
   std::filesystem::path p{file_path.toStdString()};
 
   if (!std::filesystem::exists(p) || package.isEmpty()) {
-    util::warning(p.string() + " does not exist! Please reload the community preset list");
+    util::warning(std::format("{} does not exist! Please reload the community preset list", p.string()));
 
     return false;
   }
 
   if (!std::filesystem::is_regular_file(p)) {
-    util::warning(p.string() + " is not a file! Please reload the community preset list");
+    util::warning(std::format("{} is not a file! Please reload the community preset list", p.string()));
 
     return false;
   }
@@ -1042,7 +996,7 @@ bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
       }
     } while (++i < max_copy_attempts);
   } catch (const std::exception& e) {
-    util::warning("can't import the community preset: " + p.string());
+    util::warning(std::format("can't import the community preset: {}", p.string()));
 
     util::warning(e.what());
 
@@ -1050,7 +1004,7 @@ bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
   }
 
   if (!preset_can_be_copied) {
-    util::warning("can't import the community preset: " + p.string());
+    util::warning(std::format("can't import the community preset: {}", p.string()));
 
     util::warning("exceeded the maximum copy attempts; please delete or rename your local preset");
 
@@ -1059,8 +1013,10 @@ bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
 
   // Now we know that the preset is OK to be copied, but we first check for addons.
   if (!import_addons_from_community_package(pipeline_type, p, package.toStdString())) {
-    util::warning("can't import addons for the community preset: " + p.string() +
-                  "; import stage aborted, please reload the community preset list");
+    util::warning(
+        std::format("can't import addons for the community preset: {}; Import stage aborted, please reload the "
+                    "community preset list",
+                    p.string()));
 
     util::warning("if the issue goes on, contact the maintainer of the community package");
 
@@ -1069,7 +1025,7 @@ bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
 
   std::filesystem::copy_file(p, out_path);
 
-  util::debug("successfully imported the community preset to: " + out_path.string());
+  util::debug(std::format("successfully imported the community preset to: {}", out_path.string()));
 
   return true;
 }
@@ -1079,188 +1035,18 @@ void Manager::addAutoload(const PipelineType& pipelineType,
                           const QString& deviceName,
                           const QString& deviceDescription,
                           const QString& deviceProfile) {
-  nlohmann::json json;
-
-  std::filesystem::path output_file;
-
-  switch (pipelineType) {
-    case PipelineType::output:
-      output_file = dir_manager.autoloadOutputDir() /
-                    std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() +
-                                          DirectoryManager::json_ext};
-      break;
-    case PipelineType::input:
-      output_file = dir_manager.autoloadInputDir() /
-                    std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() +
-                                          DirectoryManager::json_ext};
-      break;
-  }
-
-  bool already_exists = std::filesystem::exists(output_file);
-
-  std::ofstream o(output_file);
-
-  json["device"] = deviceName.toStdString();
-  json["device-description"] = deviceDescription.toStdString();
-  json["device-profile"] = deviceProfile.toStdString();
-  json["preset-name"] = presetName.toStdString();
-
-  o << std::setw(4) << json << '\n';
-
-  util::debug("added autoload preset file: " + output_file.string());
-
-  o.close();
-
-  if (already_exists) {
-    switch (pipelineType) {
-      case PipelineType::output:
-        autoloadingOutputListmodel->emit_data_changed(output_file);
-        break;
-      case PipelineType::input:
-        autoloadingInputListmodel->emit_data_changed(output_file);
-        break;
-    }
-  }
+  autoload_manager.add(pipelineType, presetName, deviceName, deviceDescription, deviceProfile);
 }
 
 void Manager::removeAutoload(const PipelineType& pipelineType,
                              const QString& presetName,
                              const QString& deviceName,
                              const QString& deviceProfile) {
-  std::filesystem::path input_file;
-
-  switch (pipelineType) {
-    case PipelineType::output:
-      input_file = dir_manager.autoloadOutputDir() /
-                   std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() +
-                                         DirectoryManager::json_ext};
-      break;
-    case PipelineType::input:
-      input_file = dir_manager.autoloadInputDir() /
-                   std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() +
-                                         DirectoryManager::json_ext};
-      break;
-  }
-
-  if (!std::filesystem::is_regular_file(input_file)) {
-    return;
-  }
-
-  nlohmann::json json;
-
-  std::ifstream is(input_file);
-
-  is >> json;
-
-  if (presetName.toStdString() == json.value("preset-name", "") &&
-      deviceProfile.toStdString() == json.value("device-profile", "")) {
-    std::filesystem::remove(input_file);
-
-    util::debug("removed autoload: " + input_file.string());
-  }
-}
-
-auto Manager::find_autoload(const PipelineType& pipeline_type,
-                            const QString& device_name,
-                            const QString& device_profile) -> std::string {
-  std::filesystem::path input_file;
-
-  switch (pipeline_type) {
-    case PipelineType::output:
-      input_file = dir_manager.autoloadOutputDir() /
-                   std::filesystem::path{device_name.toStdString() + ":" + device_profile.toStdString() +
-                                         DirectoryManager::json_ext};
-      break;
-    case PipelineType::input:
-      input_file = dir_manager.autoloadInputDir() /
-                   std::filesystem::path{device_name.toStdString() + ":" + device_profile.toStdString() +
-                                         DirectoryManager::json_ext};
-      break;
-  }
-
-  if (!std::filesystem::is_regular_file(input_file)) {
-    return "";
-  }
-
-  nlohmann::json json;
-
-  std::ifstream is(input_file);
-
-  is >> json;
-
-  return json.value("preset-name", "");
+  autoload_manager.remove(pipelineType, presetName, deviceName, deviceProfile);
 }
 
 void Manager::autoload(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile) {
-  const auto name = find_autoload(pipeline_type, device_name, device_profile);
-
-  if (name.empty()) {
-    switch (pipeline_type) {
-      case PipelineType::input: {
-        if (db::Main::inputAutoloadingUsesFallback()) {
-          util::debug("autoloading fallback preset " + name + " for device " + device_name.toStdString());
-
-          loadLocalPresetFile(pipeline_type, db::Main::inputAutoloadingFallbackPreset());
-        }
-        break;
-      }
-      case PipelineType::output: {
-        if (db::Main::outputAutoloadingUsesFallback()) {
-          util::debug("autoloading fallback preset " + name + " for device " + device_name.toStdString());
-
-          loadLocalPresetFile(pipeline_type, db::Main::outputAutoloadingFallbackPreset());
-        }
-        break;
-      }
-    }
-
-    return;
-  }
-
-  util::debug("autoloading local preset " + name + " for device " + device_name.toStdString());
-
-  loadLocalPresetFile(pipeline_type, QString::fromStdString(name));
-}
-
-auto Manager::get_autoload_profiles(const PipelineType& pipeline_type) -> std::vector<nlohmann::json> {
-  std::filesystem::path autoload_dir;
-  std::vector<nlohmann::json> list;
-
-  switch (pipeline_type) {
-    case PipelineType::output:
-      autoload_dir = dir_manager.autoloadOutputDir();
-
-      break;
-    case PipelineType::input:
-      autoload_dir = dir_manager.autoloadInputDir();
-      break;
-  }
-
-  auto it = std::filesystem::directory_iterator{autoload_dir};
-
-  try {
-    while (it != std::filesystem::directory_iterator{}) {
-      if (std::filesystem::is_regular_file(it->status())) {
-        if (it->path().extension().string() == DirectoryManager::json_ext) {
-          nlohmann::json json;
-
-          std::ifstream is(autoload_dir / it->path());
-
-          is >> json;
-
-          list.push_back(json);
-        }
-      }
-
-      ++it;
-    }
-
-    return list;
-  } catch (const std::exception& e) {
-    util::warning(e.what());
-
-    return list;
-  }
+  autoload_manager.load(pipeline_type, device_name, device_profile);
 }
 
 void Manager::set_last_preset_keys(const PipelineType& pipeline_type,
@@ -1443,7 +1229,7 @@ auto Manager::create_wrapper(const PipelineType& pipeline_type, const QString& f
     return std::make_unique<StereoToolsPreset>(pipeline_type, filter_name.toStdString());
   }
 
-  util::warning("The filter name " + filter_name.toStdString() + " base name could not be recognized");
+  util::warning(std::format("The filter name {} base name could not be recognized", filter_name.toStdString()));
 
   return std::nullopt;
 }
@@ -1457,7 +1243,7 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
   // removing from the list presets that are installed anymore
 
   names.removeIf([&](const QString& s) {
-    return std::ranges::none_of(get_local_presets_paths(pipeline_type),
+    return std::ranges::none_of(dir_manager.getLocalPresetsPaths(pipeline_type),
                                 [&](const auto p) { return s.startsWith(QString::fromStdString(p.stem().string())); });
   });
 
