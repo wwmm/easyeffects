@@ -148,45 +148,6 @@ auto DirectoryManager::getLocalRnnoisePaths() const -> QList<std::filesystem::pa
   return searchPresetsPath(it, rnnoise_ext);
 }
 
-auto DirectoryManager::getAllCommunityPresetsPaths(PipelineType type) const -> QList<std::filesystem::path> {
-  QList<std::filesystem::path> cp_paths;
-
-  const auto scan_level = 2U;
-  const auto& cp_dir_vect = (type == PipelineType::output) ? system_data_dir_output : system_data_dir_input;
-
-  for (const auto& cp_dir : cp_dir_vect) {
-    auto cp_fs_path = std::filesystem::path{cp_dir};
-
-    if (!std::filesystem::exists(cp_fs_path)) {
-      continue;
-    }
-
-    // Scan community package directories for 2 levels
-    // (the folder itself and only its subfolders).
-    auto it = std::filesystem::directory_iterator{cp_fs_path};
-
-    try {
-      while (it != std::filesystem::directory_iterator{}) {
-        if (auto package_path = it->path(); std::filesystem::is_directory(it->status())) {
-          const auto package_path_name = package_path.string();
-          util::debug("scan directory for community presets: " + package_path_name);
-
-          auto package_it = std::filesystem::directory_iterator{package_path};
-          const auto sub_cp_vect =
-              scanCommunityPackageRecursive(package_it, scan_level, QString::fromStdString(package_path_name));
-
-          cp_paths.append(sub_cp_vect);
-        }
-        ++it;
-      }
-    } catch (const std::exception& e) {
-      util::warning(e.what());
-    }
-  }
-
-  return cp_paths;
-}
-
 auto DirectoryManager::searchPresetsPath(std::filesystem::directory_iterator& it, const std::string& file_extension)
     -> QList<std::filesystem::path> {
   QList<std::filesystem::path> paths;
@@ -205,22 +166,23 @@ auto DirectoryManager::searchPresetsPath(std::filesystem::directory_iterator& it
   return paths;
 }
 
-auto DirectoryManager::scanCommunityPackageRecursive(std::filesystem::directory_iterator& it,
-                                                     const uint& top_scan_level,
-                                                     const QString& origin) const -> QList<std::filesystem::path> {
+auto DirectoryManager::scanDirectoryRecursive(std::filesystem::directory_iterator& it,
+                                              const uint& top_scan_level,
+                                              const QString& origin,
+                                              const std::string& file_extension) const -> QList<std::filesystem::path> {
   const auto scan_level = top_scan_level - 1U;
   QList<std::filesystem::path> cp_paths;
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
-      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().string() == json_ext) {
+      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().string() == file_extension) {
         cp_paths.append(it->path());
       } else if (scan_level > 0U && std::filesystem::is_directory(it->status())) {
         if (auto path = it->path(); !path.empty()) {
           auto subdir_it = std::filesystem::directory_iterator{path};
 
-          const auto sub_cp_vect = scanCommunityPackageRecursive(
-              subdir_it, scan_level, origin + "/" + QString::fromStdString(path.filename().string()));
+          const auto sub_cp_vect = scanDirectoryRecursive(
+              subdir_it, scan_level, origin + "/" + QString::fromStdString(path.filename().string()), file_extension);
 
           cp_paths.append(sub_cp_vect);
         }

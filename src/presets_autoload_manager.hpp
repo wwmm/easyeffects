@@ -46,9 +46,6 @@ class AutoloadManager : public QObject {
   auto operator=(const AutoloadManager&&) -> AutoloadManager& = delete;
   ~AutoloadManager() override = default;
 
-  void prepareFilesystemWatchers();
-  void refreshListModels();
-
   void add(const PipelineType& pipeline_type,
            const QString& preset_name,
            const QString& device_name,
@@ -59,9 +56,6 @@ class AutoloadManager : public QObject {
               const QString& preset_name,
               const QString& device_name,
               const QString& device_profile);
-
-  auto find(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile)
-      -> std::string;
 
   void load(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile);
 
@@ -94,6 +88,13 @@ class AutoloadManager : public QObject {
 
   QFileSystemWatcher input_watcher;
   QFileSystemWatcher output_watcher;
+
+  void prepareFilesystemWatchers();
+
+  void refreshListModels();
+
+  auto find(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile)
+      -> std::string;
 
   auto getFilePath(const PipelineType& pipeline_type, const QString& device_name, const QString& device_profile)
       -> std::filesystem::path;

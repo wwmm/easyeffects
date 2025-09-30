@@ -88,8 +88,6 @@ namespace presets {
 Manager::Manager()
     : outputListModel(new ListModel(this)),
       inputListModel(new ListModel(this)),
-      communityOutputListModel(new ListModel(this, ListModel::ModelType::Community)),
-      communityInputListModel(new ListModel(this, ListModel::ModelType::Community)),
       irsListModel(new ListModel(this, ListModel::ModelType::IRS)),
       rnnoiseListModel(new ListModel(this, ListModel::ModelType::RNNOISE)) {
   initialize_qml_types();
@@ -116,11 +114,12 @@ void Manager::initialize_qml_types() {
                                                       "SortedOutputListModel", outputListModel->getProxy());
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedCommunityOutputListModel",
-                                                      communityOutputListModel->getProxy());
+                                                      "SortedCommunityInputListModel",
+                                                      community_manager.get_input_model()->getProxy());
 
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>(
-      "ee.presets", VERSION_MAJOR, VERSION_MINOR, "SortedCommunityInputListModel", communityInputListModel->getProxy());
+  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
+                                                      "SortedCommunityOutputListModel",
+                                                      community_manager.get_output_model()->getProxy());
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedAutoloadingInputListModel",
@@ -145,9 +144,6 @@ void Manager::refresh_list_models() {
   irsListModel->update(dir_manager.getLocalIrsPaths());
 
   rnnoiseListModel->update(dir_manager.getLocalRnnoisePaths());
-
-  communityInputListModel->update(dir_manager.getAllCommunityPresetsPaths(PipelineType::input));
-  communityOutputListModel->update(dir_manager.getAllCommunityPresetsPaths(PipelineType::output));
 }
 
 void Manager::prepare_filesystem_watchers() {
@@ -222,50 +218,8 @@ auto Manager::get_local_presets_paths(const PipelineType& pipeline_type) -> QLis
   return dir_manager.getLocalPresetsPaths(pipeline_type);
 }
 
-auto Manager::scan_community_package_recursive(std::filesystem::directory_iterator& it,
-                                               const uint& top_scan_level,
-                                               const QString& origin) -> QList<std::filesystem::path> {
-  const auto scan_level = top_scan_level - 1U;
-
-  QList<std::filesystem::path> cp_paths;
-
-  try {
-    while (it != std::filesystem::directory_iterator{}) {
-      if (std::filesystem::is_regular_file(it->status()) &&
-          it->path().extension().string() == DirectoryManager::json_ext) {
-        // cp_paths.append(origin + "/" + QString::fromStdString(it->path().stem().string()));
-        cp_paths.append(it->path());
-      } else if (scan_level > 0U && std::filesystem::is_directory(it->status())) {
-        if (auto path = it->path(); !path.empty()) {
-          auto subdir_it = std::filesystem::directory_iterator{path};
-
-          const auto sub_cp_vect = scan_community_package_recursive(
-              subdir_it, scan_level, origin + "/" + QString::fromStdString(path.filename().string()));
-
-          cp_paths.append(sub_cp_vect);
-        }
-      }
-
-      ++it;
-    }
-  } catch (const std::exception& e) {
-    util::warning(e.what());
-  }
-
-  return cp_paths;
-}
-
 void Manager::refreshCommunityPresets(const PipelineType& pipeline_type) {
-  switch (pipeline_type) {
-    case PipelineType::input: {
-      communityInputListModel->update(dir_manager.getAllCommunityPresetsPaths(PipelineType::input));
-      break;
-    }
-    case PipelineType::output: {
-      communityOutputListModel->update(dir_manager.getAllCommunityPresetsPaths(PipelineType::output));
-      break;
-    }
-  }
+  community_manager.refresh_list_model(pipeline_type);
 }
 
 void Manager::save_blocklist(const PipelineType& pipeline_type, nlohmann::json& json) {
@@ -838,196 +792,10 @@ bool Manager::removeRNNoiseModel(const QString& filePath) {
   return result;
 }
 
-auto Manager::import_addons_from_community_package(const PipelineType& pipeline_type,
-                                                   const std::filesystem::path& path,
-                                                   const std::string& package) -> bool {
-  /**
-   * Here we parse the json community preset in order to import the list of
-   * addons:
-   * 1. Convolver Impulse Response Files
-   * 2. RNNoise Models
-   */
-
-  // This method assumes that the path is valid and package string is not empty,
-  // their check has already been made in import_from_community_package();
-  std::ifstream is(path);
-
-  nlohmann::json json;
-
-  const auto irs_ext = ".irs";
-  const auto rnnn_ext = ".rnnn";
-
-  try {
-    is >> json;
-
-    std::vector<std::string> conv_irs;
-    std::vector<std::string> rn_models;
-
-    const auto* pt_key = (pipeline_type == PipelineType::output) ? "output" : "input";
-
-    // Fill conv_irs and rn_models vectors extracting the addon names from
-    // the json preset and append the respective file extension.
-    for (const auto& plugin : json.at(pt_key).at("plugins_order").get<std::vector<std::string>>()) {
-      if (plugin.starts_with(tags::plugin_name::BaseName::convolver.toStdString())) {
-        conv_irs.push_back(json.at(pt_key).at(plugin).at("kernel-name").get<std::string>() + irs_ext);
-      }
-
-      if (plugin.starts_with(tags::plugin_name::BaseName::rnnoise.toStdString())) {
-        rn_models.push_back(json.at(pt_key).at(plugin).at("model-name").get<std::string>() + rnnn_ext);
-      }
-    }
-
-    // For every filename of both vectors, search the full path and copy the file locally.
-    for (const auto& irs_name : conv_irs) {
-      std::string path;
-
-      bool found = false;
-
-      for (auto xdg_dir : dir_manager.systemDataDirIrs()) {
-        xdg_dir.append("/");
-        xdg_dir.append(package);
-
-        if (util::search_filename(std::filesystem::path{xdg_dir}, irs_name, path, 3U)) {
-          const auto out_path = std::filesystem::path{dir_manager.userIrsDir()} / irs_name;
-
-          std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
-
-          util::debug(std::format("successfully imported community preset addon {} locally", irs_name));
-
-          found = true;
-
-          break;
-        }
-      }
-
-      if (!found) {
-        util::warning(std::format("community preset addon {} not found!", irs_name));
-
-        return false;
-      }
-    }
-
-    for (const auto& model_name : rn_models) {
-      std::string path;
-
-      bool found = false;
-
-      for (auto xdg_dir : dir_manager.systemDataDirRnnoise()) {
-        xdg_dir.append("/");
-        xdg_dir.append(package);
-
-        if (util::search_filename(std::filesystem::path{xdg_dir}, model_name, path, 3U)) {
-          const auto out_path = std::filesystem::path{dir_manager.userRnnoiseDir()} / model_name;
-
-          std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
-
-          util::debug(std::format("successfully imported community preset addon {} locally", model_name));
-
-          found = true;
-
-          break;
-        }
-      }
-
-      if (!found) {
-        util::warning(std::format("community preset addon {} not found!", model_name));
-
-        return false;
-      }
-    }
-
-    return true;
-  } catch (const std::exception& e) {
-    util::warning(e.what());
-
-    return false;
-  }
-}
-
 bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
                                          const QString& file_path,
                                          const QString& package) {
-  // When importing presets from a community package, we do NOT overwrite
-  // the local preset if it has the same name.
-
-  std::filesystem::path p{file_path.toStdString()};
-
-  if (!std::filesystem::exists(p) || package.isEmpty()) {
-    util::warning(std::format("{} does not exist! Please reload the community preset list", p.string()));
-
-    return false;
-  }
-
-  if (!std::filesystem::is_regular_file(p)) {
-    util::warning(std::format("{} is not a file! Please reload the community preset list", p.string()));
-
-    return false;
-  }
-
-  if (p.extension().string() != DirectoryManager::json_ext) {
-    return false;
-  }
-
-  bool preset_can_be_copied = false;
-
-  // We limit the max copy attempts in order to not flood the local directory
-  // if the user keeps clicking the import button.
-  uint i = 0U;
-
-  static const auto max_copy_attempts = 10;
-
-  const auto conf_dir =
-      (pipeline_type == PipelineType::output) ? dir_manager.userOutputDir() : dir_manager.userInputDir();
-
-  std::filesystem::path out_path;
-
-  try {
-    do {
-      // In case of destination file already existing, we try to append
-      // an incremental numeric suffix.
-      const auto suffix = (i == 0U) ? "" : "-" + util::to_string(i);
-
-      out_path = conf_dir.string() + "/" + p.stem().string() + suffix + DirectoryManager::json_ext;
-
-      if (!std::filesystem::exists(out_path)) {
-        preset_can_be_copied = true;
-
-        break;
-      }
-    } while (++i < max_copy_attempts);
-  } catch (const std::exception& e) {
-    util::warning(std::format("can't import the community preset: {}", p.string()));
-
-    util::warning(e.what());
-
-    return false;
-  }
-
-  if (!preset_can_be_copied) {
-    util::warning(std::format("can't import the community preset: {}", p.string()));
-
-    util::warning("exceeded the maximum copy attempts; please delete or rename your local preset");
-
-    return false;
-  }
-
-  // Now we know that the preset is OK to be copied, but we first check for addons.
-  if (!import_addons_from_community_package(pipeline_type, p, package.toStdString())) {
-    util::warning(
-        std::format("can't import addons for the community preset: {}; Import stage aborted, please reload the "
-                    "community preset list",
-                    p.string()));
-
-    util::warning("if the issue goes on, contact the maintainer of the community package");
-
-    return false;
-  }
-
-  std::filesystem::copy_file(p, out_path);
-
-  util::debug(std::format("successfully imported the community preset to: {}", out_path.string()));
-
-  return true;
+  return community_manager.import_from_community_package(pipeline_type, file_path, package);
 }
 
 void Manager::addAutoload(const PipelineType& pipelineType,
@@ -1240,7 +1008,7 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
 
   names = (pipeline_type == PipelineType::input) ? db::StreamInputs::usedPresets() : db::StreamOutputs::usedPresets();
 
-  // removing from the list presets that are installed anymore
+  // removing from the list presets that are not installed anymore
 
   names.removeIf([&](const QString& s) {
     return std::ranges::none_of(dir_manager.getLocalPresetsPaths(pipeline_type),

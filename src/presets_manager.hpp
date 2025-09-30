@@ -34,6 +34,7 @@
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
 #include "presets_autoload_manager.hpp"
+#include "presets_community_manager.hpp"
 #include "presets_directory_manager.hpp"
 #include "presets_list_model.hpp"
 
@@ -128,10 +129,11 @@ class Manager : public QObject {
 
   AutoloadManager autoload_manager{dir_manager};
 
+  CommunityManager community_manager{dir_manager};
+
   QFileSystemWatcher user_output_watcher, user_input_watcher, irs_watcher, rnnoise_watcher;
 
-  ListModel *outputListModel, *inputListModel, *communityOutputListModel, *communityInputListModel, *irsListModel,
-      *rnnoiseListModel;
+  ListModel *outputListModel, *inputListModel, *irsListModel, *rnnoiseListModel;
 
   void initialize_qml_types();
 
@@ -156,17 +158,9 @@ class Manager : public QObject {
                                   const std::string& file_extension = DirectoryManager::json_ext)
       -> QList<std::filesystem::path>;
 
-  auto scan_community_package_recursive(std::filesystem::directory_iterator& it,
-                                        const uint& top_scan_level,
-                                        const QString& origin = "") -> QList<std::filesystem::path>;
-
   static void save_blocklist(const PipelineType& pipeline_type, nlohmann::json& json);
 
   auto load_blocklist(const PipelineType& pipeline_type, const nlohmann::json& json) -> bool;
-
-  auto import_addons_from_community_package(const PipelineType& pipeline_type,
-                                            const std::filesystem::path& path,
-                                            const std::string& package) -> bool;
 
   static void set_last_preset_keys(const PipelineType& pipeline_type,
                                    const QString& preset_name = "",

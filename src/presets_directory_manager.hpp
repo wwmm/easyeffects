@@ -32,7 +32,12 @@ namespace presets {
 
 class DirectoryManager {
  public:
-  DirectoryManager();
+  explicit DirectoryManager();
+  DirectoryManager(const DirectoryManager&) = delete;
+  auto operator=(const DirectoryManager&) -> DirectoryManager& = delete;
+  DirectoryManager(const DirectoryManager&&) = delete;
+  auto operator=(const DirectoryManager&&) -> DirectoryManager& = delete;
+  ~DirectoryManager() = default;
 
   [[nodiscard]] auto appConfigDir() const -> const std::filesystem::path&;
   [[nodiscard]] auto userInputDir() const -> const std::filesystem::path&;
@@ -47,13 +52,15 @@ class DirectoryManager {
   [[nodiscard]] auto systemDataDirIrs() const -> const std::vector<std::filesystem::path>&;
   [[nodiscard]] auto systemDataDirRnnoise() const -> const std::vector<std::filesystem::path>&;
 
-  void createUserDirectories();
-
   [[nodiscard]] auto getLocalPresetsPaths(PipelineType type) const -> QList<std::filesystem::path>;
   [[nodiscard]] auto getAutoloadingProfilesPaths(PipelineType type) const -> QList<std::filesystem::path>;
   [[nodiscard]] auto getLocalIrsPaths() const -> QList<std::filesystem::path>;
   [[nodiscard]] auto getLocalRnnoisePaths() const -> QList<std::filesystem::path>;
-  [[nodiscard]] auto getAllCommunityPresetsPaths(PipelineType type) const -> QList<std::filesystem::path>;
+
+  auto scanDirectoryRecursive(std::filesystem::directory_iterator& it,
+                              const uint& top_scan_level,
+                              const QString& origin,
+                              const std::string& file_extension = json_ext) const -> QList<std::filesystem::path>;
 
   static constexpr auto json_ext = ".json";
   static constexpr auto* irs_ext = ".irs";
@@ -75,12 +82,10 @@ class DirectoryManager {
   std::vector<std::filesystem::path> system_data_dir_irs;
   std::vector<std::filesystem::path> system_data_dir_rnnoise;
 
+  void createUserDirectories();
+
   static auto searchPresetsPath(std::filesystem::directory_iterator& it, const std::string& file_extension = json_ext)
       -> QList<std::filesystem::path>;
-
-  auto scanCommunityPackageRecursive(std::filesystem::directory_iterator& it,
-                                     const uint& top_scan_level,
-                                     const QString& origin) const -> QList<std::filesystem::path>;
 };
 
 }  // namespace presets
