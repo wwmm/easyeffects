@@ -74,26 +74,19 @@
 #include "pipeline_type.hpp"
 #include "pitch_preset.hpp"
 #include "plugin_preset_base.hpp"
+#include "presets_directory_manager.hpp"
 #include "presets_list_model.hpp"
 #include "reverb_preset.hpp"
 #include "rnnoise_preset.hpp"
 #include "speex_preset.hpp"
 #include "stereo_tools_preset.hpp"
-#include "tags_app.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 namespace presets {
 
 Manager::Manager()
-    : app_config_dir(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation).toStdString()),
-      user_input_dir(app_config_dir + "/input"),
-      user_output_dir(app_config_dir + "/output"),
-      user_irs_dir(app_config_dir + "/irs"),
-      user_rnnoise_dir(app_config_dir + "/rnnoise"),
-      autoload_input_dir(app_config_dir + "/autoload/input"),
-      autoload_output_dir(app_config_dir + "/autoload/output"),
-      outputListModel(new ListModel(this)),
+    : outputListModel(new ListModel(this)),
       inputListModel(new ListModel(this)),
       communityOutputListModel(new ListModel(this, ListModel::ModelType::Community)),
       communityInputListModel(new ListModel(this, ListModel::ModelType::Community)),
@@ -101,6 +94,19 @@ Manager::Manager()
       autoloadingInputListmodel(new ListModel(this, ListModel::ModelType::Autoloading)),
       irsListModel(new ListModel(this, ListModel::ModelType::IRS)),
       rnnoiseListModel(new ListModel(this, ListModel::ModelType::RNNOISE)) {
+  initialize_qml_types();
+
+  dir_manager.createUserDirectories();
+
+  refresh_list_models();
+
+  prepare_filesystem_watchers();
+
+  prepare_last_used_preset_key(PipelineType::input);
+  prepare_last_used_preset_key(PipelineType::output);
+}
+
+void Manager::initialize_qml_types() {
   // NOLINTBEGIN(clang-analyzer-cplusplus.NewDelete)
   qmlRegisterSingletonInstance<presets::Manager>("ee.presets", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 
@@ -131,75 +137,9 @@ Manager::Manager()
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
                                                       "SortedRNNoiseListModel", rnnoiseListModel->getProxy());
   // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
-
-  /**
-   * Initialize input and output directories for community presets.
-   * Flatpak specific path (.flatpak-info always present for apps running
-   * in the flatpak sandbox).
-   */
-  if (std::filesystem::is_regular_file(tags::app::flatpak_info_file)) {
-    system_data_dir_input.emplace_back("/app/extensions/Presets/input");
-    system_data_dir_output.emplace_back("/app/extensions/Presets/output");
-    system_data_dir_irs.emplace_back("/app/extensions/Presets/irs");
-    system_data_dir_rnnoise.emplace_back("/app/extensions/Presets/rnnoise");
-  }
-
-  // Regular paths.
-  for (auto& dir : QStandardPaths::standardLocations(QStandardPaths::AppDataLocation)) {
-    dir += dir.endsWith("/") ? "" : "/";
-
-    system_data_dir_input.push_back(dir.toStdString() + "input");
-    system_data_dir_output.push_back(dir.toStdString() + "output");
-    system_data_dir_irs.push_back(dir.toStdString() + "irs");
-    system_data_dir_rnnoise.push_back(dir.toStdString() + "rnnoise");
-  }
-
-  // create user presets directories
-
-  create_user_directory(user_input_dir);
-  create_user_directory(user_output_dir);
-  create_user_directory(user_irs_dir);
-  create_user_directory(user_rnnoise_dir);
-  create_user_directory(autoload_input_dir);
-  create_user_directory(autoload_output_dir);
-
-  refresh_list_models(inputListModel, [this]() { return get_local_presets_paths(PipelineType::input); });
-  refresh_list_models(outputListModel, [this]() { return get_local_presets_paths(PipelineType::output); });
-
-  refresh_list_models(autoloadingInputListmodel,
-                      [this]() { return get_autoloading_profiles_paths(PipelineType::input); });
-  refresh_list_models(autoloadingOutputListmodel,
-                      [this]() { return get_autoloading_profiles_paths(PipelineType::output); });
-
-  refresh_list_models(irsListModel, [this]() { return get_local_irs_paths(); });
-
-  refresh_list_models(rnnoiseListModel, [this]() { return get_local_rnnoise_paths(); });
-
-  refreshCommunityPresets(PipelineType::input);
-  refreshCommunityPresets(PipelineType::output);
-
-  prepare_filesystem_watchers();
-  prepare_last_used_preset_key(PipelineType::input);
-  prepare_last_used_preset_key(PipelineType::output);
 }
 
-void Manager::create_user_directory(const std::filesystem::path& path) {
-  if (std::filesystem::is_directory(path)) {
-    util::debug("user presets directory already exists: " + path.string());
-
-    return;
-  }
-
-  if (std::filesystem::create_directories(path)) {
-    util::debug("user presets directory created: " + path.string());
-
-    return;
-  }
-
-  util::warning("failed to create user presets directory: " + path.string());
-}
-
-void Manager::refresh_list_models(ListModel* model, std::function<QList<std::filesystem::path>()> get_paths) {
+void Manager::refresh_list_model(ListModel* model, std::function<QList<std::filesystem::path>()> get_paths) {
   auto model_list = model->getList();
   auto local_list = get_paths();
 
@@ -220,37 +160,55 @@ void Manager::refresh_list_models(ListModel* model, std::function<QList<std::fil
   model->end_reset();
 }
 
+void Manager::refresh_list_models() {
+  refresh_list_model(inputListModel, [&]() { return dir_manager.getLocalPresetsPaths(PipelineType::input); });
+  refresh_list_model(outputListModel, [this]() { return dir_manager.getLocalPresetsPaths(PipelineType::output); });
+
+  refresh_list_model(autoloadingInputListmodel,
+                     [this]() { return dir_manager.getAutoloadingProfilesPaths(PipelineType::input); });
+  refresh_list_model(autoloadingOutputListmodel,
+                     [this]() { return dir_manager.getAutoloadingProfilesPaths(PipelineType::output); });
+
+  refresh_list_model(irsListModel, [this]() { return dir_manager.getLocalIrsPaths(); });
+  refresh_list_model(rnnoiseListModel, [this]() { return dir_manager.getLocalRnnoisePaths(); });
+
+  refresh_list_model(communityInputListModel,
+                     [this]() { return dir_manager.getAllCommunityPresetsPaths(PipelineType::input); });
+  refresh_list_model(communityOutputListModel,
+                     [this]() { return dir_manager.getAllCommunityPresetsPaths(PipelineType::output); });
+}
+
 void Manager::prepare_filesystem_watchers() {
-  user_input_watcher.addPath(QString::fromStdString(user_input_dir.string()));
-  user_output_watcher.addPath(QString::fromStdString(user_output_dir.string()));
-  autoload_input_watcher.addPath(QString::fromStdString(autoload_input_dir.string()));
-  autoload_output_watcher.addPath(QString::fromStdString(autoload_output_dir.string()));
-  irs_watcher.addPath(QString::fromStdString(user_irs_dir.string()));
-  rnnoise_watcher.addPath(QString::fromStdString(user_rnnoise_dir.string()));
+  user_input_watcher.addPath(QString::fromStdString(dir_manager.userInputDir().string()));
+  user_output_watcher.addPath(QString::fromStdString(dir_manager.userOutputDir().string()));
+  autoload_input_watcher.addPath(QString::fromStdString(dir_manager.autoloadInputDir().string()));
+  autoload_output_watcher.addPath(QString::fromStdString(dir_manager.autoloadOutputDir().string()));
+  irs_watcher.addPath(QString::fromStdString(dir_manager.userIrsDir().string()));
+  rnnoise_watcher.addPath(QString::fromStdString(dir_manager.userRnnoiseDir().string()));
 
   connect(&user_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-    refresh_list_models(inputListModel, [this]() { return get_local_presets_paths(PipelineType::input); });
+    refresh_list_model(inputListModel, [this]() { return get_local_presets_paths(PipelineType::input); });
   });
 
   connect(&user_output_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-    refresh_list_models(outputListModel, [this]() { return get_local_presets_paths(PipelineType::output); });
+    refresh_list_model(outputListModel, [this]() { return get_local_presets_paths(PipelineType::output); });
   });
 
   connect(&autoload_input_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-    refresh_list_models(autoloadingInputListmodel,
-                        [this]() { return get_autoloading_profiles_paths(PipelineType::input); });
+    refresh_list_model(autoloadingInputListmodel,
+                       [this]() { return dir_manager.getAutoloadingProfilesPaths(PipelineType::input); });
   });
 
   connect(&autoload_output_watcher, &QFileSystemWatcher::directoryChanged, [&]() {
-    refresh_list_models(autoloadingOutputListmodel,
-                        [this]() { return get_autoloading_profiles_paths(PipelineType::output); });
+    refresh_list_model(autoloadingOutputListmodel,
+                       [this]() { return dir_manager.getAutoloadingProfilesPaths(PipelineType::output); });
   });
 
   connect(&irs_watcher, &QFileSystemWatcher::directoryChanged,
-          [&]() { refresh_list_models(irsListModel, [this]() { return get_local_irs_paths(); }); });
+          [&]() { refresh_list_model(irsListModel, [this]() { return dir_manager.getLocalIrsPaths(); }); });
 
   connect(&rnnoise_watcher, &QFileSystemWatcher::directoryChanged,
-          [&]() { refresh_list_models(rnnoiseListModel, [this]() { return get_local_rnnoise_paths(); }); });
+          [&]() { refresh_list_model(rnnoiseListModel, [this]() { return dir_manager.getLocalRnnoisePaths(); }); });
 }
 
 void Manager::prepare_last_used_preset_key(const PipelineType& pipeline_type) {
@@ -303,82 +261,7 @@ auto Manager::search_presets_path(std::filesystem::directory_iterator& it, const
 }
 
 auto Manager::get_local_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path> {
-  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
-
-  auto it = std::filesystem::directory_iterator{conf_dir};
-
-  auto paths = search_presets_path(it);
-
-  return paths;
-}
-
-auto Manager::get_local_irs_paths() -> QList<std::filesystem::path> {
-  auto it = std::filesystem::directory_iterator{user_irs_dir};
-
-  auto paths = search_presets_path(it, irs_ext);
-
-  return paths;
-}
-
-auto Manager::get_local_rnnoise_paths() -> QList<std::filesystem::path> {
-  auto it = std::filesystem::directory_iterator{user_rnnoise_dir};
-
-  auto paths = search_presets_path(it, rnnoise_ext);
-
-  return paths;
-}
-
-auto Manager::get_autoloading_profiles_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path> {
-  const auto conf_dir = (pipeline_type == PipelineType::output) ? autoload_output_dir : autoload_input_dir;
-
-  auto it = std::filesystem::directory_iterator{conf_dir};
-
-  auto paths = search_presets_path(it);
-
-  return paths;
-}
-
-auto Manager::get_all_community_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path> {
-  QList<std::filesystem::path> cp_paths;
-
-  const auto scan_level = 2U;
-
-  const auto cp_dir_vect = (pipeline_type == PipelineType::output) ? system_data_dir_output : system_data_dir_input;
-
-  for (const auto& cp_dir : cp_dir_vect) {
-    auto cp_fs_path = std::filesystem::path{cp_dir};
-
-    if (!std::filesystem::exists(cp_fs_path)) {
-      continue;
-    }
-
-    // Scan community package directories for 2 levels
-    // (the folder itself and only its subfolders).
-    auto it = std::filesystem::directory_iterator{cp_fs_path};
-
-    try {
-      while (it != std::filesystem::directory_iterator{}) {
-        if (auto package_path = it->path(); std::filesystem::is_directory(it->status())) {
-          const auto package_path_name = package_path.string();
-
-          util::debug("scan directory for community presets: " + package_path_name);
-
-          auto package_it = std::filesystem::directory_iterator{package_path};
-
-          const auto sub_cp_vect =
-              scan_community_package_recursive(package_it, scan_level, QString::fromStdString(package_path_name));
-
-          cp_paths.append(sub_cp_vect);
-        }
-
-        ++it;
-      }
-    } catch (const std::exception& e) {
-      util::warning(e.what());
-    }
-  }
-
-  return cp_paths;
+  return dir_manager.getLocalPresetsPaths(pipeline_type);
 }
 
 auto Manager::scan_community_package_recursive(std::filesystem::directory_iterator& it,
@@ -390,7 +273,8 @@ auto Manager::scan_community_package_recursive(std::filesystem::directory_iterat
 
   try {
     while (it != std::filesystem::directory_iterator{}) {
-      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().string() == json_ext) {
+      if (std::filesystem::is_regular_file(it->status()) &&
+          it->path().extension().string() == DirectoryManager::json_ext) {
         // cp_paths.append(origin + "/" + QString::fromStdString(it->path().stem().string()));
         cp_paths.append(it->path());
       } else if (scan_level > 0U && std::filesystem::is_directory(it->status())) {
@@ -416,14 +300,14 @@ auto Manager::scan_community_package_recursive(std::filesystem::directory_iterat
 void Manager::refreshCommunityPresets(const PipelineType& pipeline_type) {
   switch (pipeline_type) {
     case PipelineType::input: {
-      refresh_list_models(communityInputListModel,
-                          [this]() { return get_all_community_presets_paths(PipelineType::input); });
+      refresh_list_model(communityInputListModel,
+                         [this]() { return dir_manager.getAllCommunityPresetsPaths(PipelineType::input); });
 
       break;
     }
     case PipelineType::output: {
-      refresh_list_models(communityOutputListModel,
-                          [this]() { return get_all_community_presets_paths(PipelineType::output); });
+      refresh_list_model(communityOutputListModel,
+                         [this]() { return dir_manager.getAllCommunityPresetsPaths(PipelineType::output); });
 
       break;
     }
@@ -554,7 +438,8 @@ bool Manager::savePresetFile(const PipelineType& pipeline_type, const QString& n
 
       write_plugins_preset(pipeline_type, plugins, json);
 
-      output_file = user_output_dir / std::filesystem::path{name.toStdString() + json_ext};
+      output_file =
+          dir_manager.userOutputDir() / std::filesystem::path{name.toStdString() + DirectoryManager::json_ext};
 
       break;
     }
@@ -573,7 +458,7 @@ bool Manager::savePresetFile(const PipelineType& pipeline_type, const QString& n
 
       write_plugins_preset(pipeline_type, plugins, json);
 
-      output_file = user_input_dir / std::filesystem::path{name.toStdString() + json_ext};
+      output_file = dir_manager.userInputDir() / std::filesystem::path{name.toStdString() + DirectoryManager::json_ext};
 
       break;
     }
@@ -607,9 +492,10 @@ bool Manager::add(const PipelineType& pipeline_type, const QString& name) {
 bool Manager::remove(const PipelineType& pipeline_type, const QString& name) {
   std::filesystem::path preset_file;
 
-  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
+  const auto conf_dir =
+      (pipeline_type == PipelineType::output) ? dir_manager.userOutputDir() : dir_manager.userInputDir();
 
-  preset_file = conf_dir / std::filesystem::path{name.toStdString() + json_ext};
+  preset_file = conf_dir / std::filesystem::path{name.toStdString() + DirectoryManager::json_ext};
 
   if (std::filesystem::exists(preset_file)) {
     std::filesystem::remove(preset_file);
@@ -628,11 +514,12 @@ bool Manager::renameLocalPresetFile(const PipelineType& pipeline_type, const QSt
   std::filesystem::path preset_file;
   std::filesystem::path new_file;
 
-  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
+  const auto conf_dir =
+      (pipeline_type == PipelineType::output) ? dir_manager.userOutputDir() : dir_manager.userInputDir();
 
-  preset_file = conf_dir / std::filesystem::path{name.toStdString() + json_ext};
+  preset_file = conf_dir / std::filesystem::path{name.toStdString() + DirectoryManager::json_ext};
 
-  new_file = conf_dir / std::filesystem::path{newName.toStdString() + json_ext};
+  new_file = conf_dir / std::filesystem::path{newName.toStdString() + DirectoryManager::json_ext};
 
   if (std::filesystem::exists(preset_file)) {
     std::filesystem::rename(preset_file, new_file);
@@ -762,9 +649,10 @@ auto Manager::load_preset_file(const PipelineType& pipeline_type, const std::fil
 }
 
 bool Manager::loadLocalPresetFile(const PipelineType& pipeline_type, const QString& name) {
-  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
+  const auto conf_dir =
+      (pipeline_type == PipelineType::output) ? dir_manager.userOutputDir() : dir_manager.userInputDir();
 
-  const auto input_file = conf_dir / std::filesystem::path{name.toStdString() + json_ext};
+  const auto input_file = conf_dir / std::filesystem::path{name.toStdString() + DirectoryManager::json_ext};
 
   // Check preset existence
   if (!std::filesystem::exists(input_file)) {
@@ -816,7 +704,8 @@ bool Manager::importPresets(const PipelineType& pipeline_type, const QList<QStri
     if (url.isLocalFile()) {
       auto input_path = std::filesystem::path{url.toLocalFile().toStdString()};
 
-      const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
+      const auto conf_dir =
+          (pipeline_type == PipelineType::output) ? dir_manager.userOutputDir() : dir_manager.userInputDir();
 
       const std::filesystem::path out_path = conf_dir / input_path.filename();
 
@@ -854,7 +743,8 @@ bool Manager::exportPresets(const PipelineType& pipeline_type, const QString& di
       return false;
     }
 
-    const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
+    const auto conf_dir =
+        (pipeline_type == PipelineType::output) ? dir_manager.userOutputDir() : dir_manager.userInputDir();
 
     for (const auto& entry : std::filesystem::directory_iterator(conf_dir)) {
       if (entry.is_regular_file()) {
@@ -899,9 +789,9 @@ auto Manager::import_irs_file(const std::string& file_path) -> ImpulseImportStat
     return ImpulseImportState::no_stereo;
   }
 
-  auto out_path = user_irs_dir / p.filename();
+  auto out_path = dir_manager.userIrsDir() / p.filename();
 
-  out_path.replace_extension(irs_ext);
+  out_path.replace_extension(DirectoryManager::irs_ext);
 
   std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
 
@@ -935,9 +825,9 @@ auto Manager::import_rnnoise_file(const std::string& file_path) -> RNNoiseImport
     return RNNoiseImportState::no_regular_file;
   }
 
-  auto out_path = user_rnnoise_dir / p.filename();
+  auto out_path = dir_manager.userRnnoiseDir() / p.filename();
 
-  out_path.replace_extension(rnnoise_ext);
+  out_path.replace_extension(DirectoryManager::rnnoise_ext);
 
   std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
 
@@ -1039,12 +929,12 @@ auto Manager::import_addons_from_community_package(const PipelineType& pipeline_
 
       bool found = false;
 
-      for (auto xdg_dir : system_data_dir_irs) {
+      for (auto xdg_dir : dir_manager.systemDataDirIrs()) {
         xdg_dir.append("/");
         xdg_dir.append(package);
 
         if (util::search_filename(std::filesystem::path{xdg_dir}, irs_name, path, 3U)) {
-          const auto out_path = std::filesystem::path{user_irs_dir} / irs_name;
+          const auto out_path = std::filesystem::path{dir_manager.userIrsDir()} / irs_name;
 
           std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
 
@@ -1068,12 +958,12 @@ auto Manager::import_addons_from_community_package(const PipelineType& pipeline_
 
       bool found = false;
 
-      for (auto xdg_dir : system_data_dir_rnnoise) {
+      for (auto xdg_dir : dir_manager.systemDataDirRnnoise()) {
         xdg_dir.append("/");
         xdg_dir.append(package);
 
         if (util::search_filename(std::filesystem::path{xdg_dir}, model_name, path, 3U)) {
-          const auto out_path = std::filesystem::path{user_rnnoise_dir} / model_name;
+          const auto out_path = std::filesystem::path{dir_manager.userRnnoiseDir()} / model_name;
 
           std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
 
@@ -1120,7 +1010,7 @@ bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
     return false;
   }
 
-  if (p.extension().string() != json_ext) {
+  if (p.extension().string() != DirectoryManager::json_ext) {
     return false;
   }
 
@@ -1132,7 +1022,8 @@ bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
 
   static const auto max_copy_attempts = 10;
 
-  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir.string() : user_input_dir.string();
+  const auto conf_dir =
+      (pipeline_type == PipelineType::output) ? dir_manager.userOutputDir() : dir_manager.userInputDir();
 
   std::filesystem::path out_path;
 
@@ -1142,7 +1033,7 @@ bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
       // an incremental numeric suffix.
       const auto suffix = (i == 0U) ? "" : "-" + util::to_string(i);
 
-      out_path = conf_dir + "/" + p.stem().string() + suffix + json_ext;
+      out_path = conf_dir.string() + "/" + p.stem().string() + suffix + DirectoryManager::json_ext;
 
       if (!std::filesystem::exists(out_path)) {
         preset_can_be_copied = true;
@@ -1194,12 +1085,14 @@ void Manager::addAutoload(const PipelineType& pipelineType,
 
   switch (pipelineType) {
     case PipelineType::output:
-      output_file = autoload_output_dir /
-                    std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() + json_ext};
+      output_file = dir_manager.autoloadOutputDir() /
+                    std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() +
+                                          DirectoryManager::json_ext};
       break;
     case PipelineType::input:
-      output_file = autoload_input_dir /
-                    std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() + json_ext};
+      output_file = dir_manager.autoloadInputDir() /
+                    std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() +
+                                          DirectoryManager::json_ext};
       break;
   }
 
@@ -1238,12 +1131,14 @@ void Manager::removeAutoload(const PipelineType& pipelineType,
 
   switch (pipelineType) {
     case PipelineType::output:
-      input_file = autoload_output_dir /
-                   std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() + json_ext};
+      input_file = dir_manager.autoloadOutputDir() /
+                   std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() +
+                                         DirectoryManager::json_ext};
       break;
     case PipelineType::input:
-      input_file = autoload_input_dir /
-                   std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() + json_ext};
+      input_file = dir_manager.autoloadInputDir() /
+                   std::filesystem::path{deviceName.toStdString() + ":" + deviceProfile.toStdString() +
+                                         DirectoryManager::json_ext};
       break;
   }
 
@@ -1272,12 +1167,14 @@ auto Manager::find_autoload(const PipelineType& pipeline_type,
 
   switch (pipeline_type) {
     case PipelineType::output:
-      input_file = autoload_output_dir /
-                   std::filesystem::path{device_name.toStdString() + ":" + device_profile.toStdString() + json_ext};
+      input_file = dir_manager.autoloadOutputDir() /
+                   std::filesystem::path{device_name.toStdString() + ":" + device_profile.toStdString() +
+                                         DirectoryManager::json_ext};
       break;
     case PipelineType::input:
-      input_file = autoload_input_dir /
-                   std::filesystem::path{device_name.toStdString() + ":" + device_profile.toStdString() + json_ext};
+      input_file = dir_manager.autoloadInputDir() /
+                   std::filesystem::path{device_name.toStdString() + ":" + device_profile.toStdString() +
+                                         DirectoryManager::json_ext};
       break;
   }
 
@@ -1331,11 +1228,11 @@ auto Manager::get_autoload_profiles(const PipelineType& pipeline_type) -> std::v
 
   switch (pipeline_type) {
     case PipelineType::output:
-      autoload_dir = autoload_output_dir;
+      autoload_dir = dir_manager.autoloadOutputDir();
 
       break;
     case PipelineType::input:
-      autoload_dir = autoload_input_dir;
+      autoload_dir = dir_manager.autoloadInputDir();
       break;
   }
 
@@ -1344,7 +1241,7 @@ auto Manager::get_autoload_profiles(const PipelineType& pipeline_type) -> std::v
   try {
     while (it != std::filesystem::directory_iterator{}) {
       if (std::filesystem::is_regular_file(it->status())) {
-        if (it->path().extension().string() == json_ext) {
+        if (it->path().extension().string() == DirectoryManager::json_ext) {
           nlohmann::json json;
 
           std::ifstream is(autoload_dir / it->path());
@@ -1413,9 +1310,10 @@ void Manager::set_last_preset_keys(const PipelineType& pipeline_type,
 }
 
 auto Manager::preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool {
-  const auto conf_dir = (pipeline_type == PipelineType::output) ? user_output_dir : user_input_dir;
+  const auto conf_dir =
+      (pipeline_type == PipelineType::output) ? dir_manager.userOutputDir() : dir_manager.userInputDir();
 
-  const auto input_file = conf_dir / std::filesystem::path{name + json_ext};
+  const auto input_file = conf_dir / std::filesystem::path{name + DirectoryManager::json_ext};
 
   return std::filesystem::exists(input_file);
 }

@@ -29,6 +29,7 @@
 #include <cstddef>
 #include <exception>
 #include <filesystem>
+#include <format>
 #include <iostream>
 #include <memory>
 #include <numbers>
@@ -75,18 +76,14 @@ void print_thread_id() {
 
 void create_user_directory(const std::filesystem::path& path) {
   if (std::filesystem::is_directory(path)) {
-    util::debug("directory already exists: " + path.string());
-
     return;
   }
 
   if (std::filesystem::create_directories(path)) {
-    util::debug("directory created: " + path.string());
-
     return;
   }
 
-  util::warning("failed to create directory: " + path.string());
+  util::warning(std::format("failed to create directory: {}", path.string()));
 }
 
 auto normalize(const double& x, const double& max, const double& min) -> double {

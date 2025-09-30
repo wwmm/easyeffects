@@ -34,6 +34,7 @@
 #include <vector>
 #include "pipeline_type.hpp"
 #include "plugin_preset_base.hpp"
+#include "presets_directory_manager.hpp"
 #include "presets_list_model.hpp"
 
 namespace presets {
@@ -66,12 +67,6 @@ class Manager : public QObject {
   enum class ImpulseImportState { success, no_regular_file, no_frame, no_stereo };
 
   enum class RNNoiseImportState { success, no_regular_file };
-
-  constexpr static std::string json_ext = ".json";
-
-  constexpr static std::string irs_ext = ".irs";
-
-  constexpr static std::string rnnoise_ext = ".rnnn";
 
   auto preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool;
 
@@ -129,12 +124,7 @@ class Manager : public QObject {
   void presetLoadError(const QString& msg1, const QString& msg2);
 
  private:
-  std::string app_config_dir;
-
-  std::filesystem::path user_input_dir, user_output_dir, user_irs_dir, user_rnnoise_dir, autoload_input_dir,
-      autoload_output_dir;
-
-  std::vector<std::string> system_data_dir_input, system_data_dir_output, system_data_dir_irs, system_data_dir_rnnoise;
+  DirectoryManager dir_manager;
 
   QFileSystemWatcher user_output_watcher, user_input_watcher, autoload_output_watcher, autoload_input_watcher,
       irs_watcher, rnnoise_watcher;
@@ -142,17 +132,11 @@ class Manager : public QObject {
   ListModel *outputListModel, *inputListModel, *communityOutputListModel, *communityInputListModel,
       *autoloadingOutputListmodel, *autoloadingInputListmodel, *irsListModel, *rnnoiseListModel;
 
-  static void create_user_directory(const std::filesystem::path& path);
+  void initialize_qml_types();
 
-  auto get_local_irs_paths() -> QList<std::filesystem::path>;
+  static void refresh_list_model(ListModel* model, std::function<QList<std::filesystem::path>()> get_paths);
 
-  auto get_local_rnnoise_paths() -> QList<std::filesystem::path>;
-
-  auto get_autoloading_profiles_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
-
-  auto get_all_community_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path>;
-
-  static void refresh_list_models(ListModel* model, std::function<QList<std::filesystem::path>()> get_paths);
+  void refresh_list_models();
 
   void prepare_filesystem_watchers();
 
@@ -174,7 +158,8 @@ class Manager : public QObject {
 
   void prepare_last_used_preset_key(const PipelineType& pipeline_type);
 
-  static auto search_presets_path(std::filesystem::directory_iterator& it, const std::string& file_extension = json_ext)
+  static auto search_presets_path(std::filesystem::directory_iterator& it,
+                                  const std::string& file_extension = DirectoryManager::json_ext)
       -> QList<std::filesystem::path>;
 
   auto scan_community_package_recursive(std::filesystem::directory_iterator& it,
