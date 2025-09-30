@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-28 20:08-0300\n"
-"PO-Revision-Date: 2025-09-29 18:02+0000\n"
-"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
+"PO-Revision-Date: 2025-09-30 10:01+0000\n"
+"Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -52,7 +52,7 @@ msgstr "Показати доступні попередні налаштува�
 
 #: src/command_line_parser.cpp:50
 msgid "Get the active input/output preset."
-msgstr "Отримати активні попередні налаштування вводу/виводу."
+msgstr "Отримати активне попереднє налаштування захоплення/відтворення."
 
 #: src/command_line_parser.cpp:50
 msgid "preset-type"
@@ -60,7 +60,7 @@ msgstr "тип-попереднього-налаштування"
 
 #: src/command_line_parser.cpp:51
 msgid "Get the active input and output presets."
-msgstr "Отримати активні попередні налаштування входу та виходу."
+msgstr "Отримати активні попередні налаштування захоплення та відтворення."
 
 #: src/command_line_parser.cpp:52
 msgid "Deprecated. Use --service-mode instead."
@@ -76,11 +76,11 @@ msgstr "Увімкнути налагоджувальні повідомленн
 
 #: src/command_line_parser.cpp:142 src/contents/ui/main.qml:277
 msgid "Output Presets"
-msgstr "Попередні налаштування для виходу"
+msgstr "Попередні налаштування відтворення"
 
 #: src/command_line_parser.cpp:150 src/contents/ui/main.qml:267
 msgid "Input Presets"
-msgstr "Попередні налаштування для входу"
+msgstr "Попередні налаштування захоплення"
 
 #: src/contents/ui/Autogain.qml:52 src/contents/ui/BassEnhancer.qml:88
 #: src/contents/ui/BassLoudness.qml:40 src/contents/ui/Crossfeed.qml:56
@@ -93,7 +93,7 @@ msgstr "Елементи керування"
 
 #: src/contents/ui/Autogain.qml:60
 msgid "Reference"
-msgstr "Джерело"
+msgstr "Джерело вимірювання"
 
 #: src/contents/ui/Autogain.qml:64 src/contents/ui/Autogain.qml:156
 #: src/contents/ui/LevelMeter.qml:150
@@ -112,23 +112,23 @@ msgstr "Інтегрована"
 
 #: src/contents/ui/Autogain.qml:64
 msgid "Geometric Mean (MSI)"
-msgstr "MSI (Середнє геометричне)"
+msgstr "Середнє геометричне (МКІ)"
 
 #: src/contents/ui/Autogain.qml:64
 msgid "Geometric Mean (MS)"
-msgstr "MS (Середнє геометричне)"
+msgstr "Середнє геометричне (МК)"
 
 #: src/contents/ui/Autogain.qml:64
 msgid "Geometric Mean (MI)"
-msgstr "MI (Середнє геометричне)"
+msgstr "Середнє геометричне (МІ)"
 
 #: src/contents/ui/Autogain.qml:64
 msgid "Geometric Mean (SI)"
-msgstr "SІ (Середнє геометричне)"
+msgstr "Середнє геометричне (КІ)"
 
 #: src/contents/ui/Autogain.qml:78
 msgid "Target"
-msgstr "Ціль"
+msgstr "Цільовий рівень"
 
 #: src/contents/ui/Autogain.qml:99
 msgid "Silence"
