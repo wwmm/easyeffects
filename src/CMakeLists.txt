@@ -88,6 +88,8 @@ target_sources(easyeffects PRIVATE
     presets_autoload_manager.cpp
     presets_community_manager.cpp
     presets_directory_manager.cpp
+    presets_irs_manager.cpp
+    presets_rnnoise_manager.cpp
     presets_manager.cpp
     presets_list_model.cpp
     pw_manager.cpp

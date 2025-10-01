@@ -36,7 +36,9 @@
 #include "presets_autoload_manager.hpp"
 #include "presets_community_manager.hpp"
 #include "presets_directory_manager.hpp"
+#include "presets_irs_manager.hpp"
 #include "presets_list_model.hpp"
+#include "presets_rnnoise_manager.hpp"
 
 namespace presets {
 
@@ -64,10 +66,6 @@ class Manager : public QObject {
     plugin_format,
     plugin_generic
   };
-
-  enum class ImpulseImportState { success, no_regular_file, no_frame, no_stereo };
-
-  enum class RNNoiseImportState { success, no_regular_file };
 
   auto preset_file_exists(const PipelineType& pipeline_type, const std::string& name) -> bool;
 
@@ -131,9 +129,13 @@ class Manager : public QObject {
 
   CommunityManager community_manager{dir_manager};
 
-  QFileSystemWatcher user_output_watcher, user_input_watcher, irs_watcher, rnnoise_watcher;
+  IrsManager irs_manager{dir_manager};
 
-  ListModel *outputListModel, *inputListModel, *irsListModel, *rnnoiseListModel;
+  RnnoiseManager rnnoise_manager{dir_manager};
+
+  QFileSystemWatcher user_output_watcher, user_input_watcher;
+
+  ListModel *outputListModel, *inputListModel;
 
   void initialize_qml_types();
 
@@ -172,10 +174,6 @@ class Manager : public QObject {
 
   static auto create_wrapper(const PipelineType& pipeline_type, const QString& filter_name)
       -> std::optional<std::unique_ptr<PluginPresetBase>>;
-
-  auto import_irs_file(const std::string& file_path) -> ImpulseImportState;
-
-  auto import_rnnoise_file(const std::string& file_path) -> RNNoiseImportState;
 
   void update_used_presets_list(const PipelineType& pipeline_type, const QString& name);
 };

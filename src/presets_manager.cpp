@@ -75,7 +75,9 @@
 #include "plugin_preset_base.hpp"
 #include "presets_autoload_manager.hpp"
 #include "presets_directory_manager.hpp"
+#include "presets_irs_manager.hpp"
 #include "presets_list_model.hpp"
+#include "presets_rnnoise_manager.hpp"
 #include "reverb_preset.hpp"
 #include "rnnoise_preset.hpp"
 #include "speex_preset.hpp"
@@ -85,11 +87,7 @@
 
 namespace presets {
 
-Manager::Manager()
-    : outputListModel(new ListModel(this)),
-      inputListModel(new ListModel(this)),
-      irsListModel(new ListModel(this, ListModel::ModelType::IRS)),
-      rnnoiseListModel(new ListModel(this, ListModel::ModelType::RNNOISE)) {
+Manager::Manager() : outputListModel(new ListModel(this)), inputListModel(new ListModel(this)) {
   initialize_qml_types();
 
   refresh_list_models();
@@ -130,39 +128,27 @@ void Manager::initialize_qml_types() {
                                                       autoload_manager.get_output_model()->getProxy());
 
   qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedImpulseListModel", irsListModel->getProxy());
+                                                      "SortedImpulseListModel", irs_manager.get_model()->getProxy());
 
-  qmlRegisterSingletonInstance<QSortFilterProxyModel>("ee.presets", VERSION_MAJOR, VERSION_MINOR,
-                                                      "SortedRNNoiseListModel", rnnoiseListModel->getProxy());
+  qmlRegisterSingletonInstance<QSortFilterProxyModel>(
+      "ee.presets", VERSION_MAJOR, VERSION_MINOR, "SortedRNNoiseListModel", rnnoise_manager.get_model()->getProxy());
   // NOLINTEND(clang-analyzer-cplusplus.NewDelete)
 }
 
 void Manager::refresh_list_models() {
   inputListModel->update(dir_manager.getLocalPresetsPaths(PipelineType::input));
   outputListModel->update(dir_manager.getLocalPresetsPaths(PipelineType::output));
-
-  irsListModel->update(dir_manager.getLocalIrsPaths());
-
-  rnnoiseListModel->update(dir_manager.getLocalRnnoisePaths());
 }
 
 void Manager::prepare_filesystem_watchers() {
   user_input_watcher.addPath(QString::fromStdString(dir_manager.userInputDir().string()));
   user_output_watcher.addPath(QString::fromStdString(dir_manager.userOutputDir().string()));
-  irs_watcher.addPath(QString::fromStdString(dir_manager.userIrsDir().string()));
-  rnnoise_watcher.addPath(QString::fromStdString(dir_manager.userRnnoiseDir().string()));
 
   connect(&user_input_watcher, &QFileSystemWatcher::directoryChanged,
           [&]() { inputListModel->update(dir_manager.getLocalPresetsPaths(PipelineType::input)); });
 
   connect(&user_output_watcher, &QFileSystemWatcher::directoryChanged,
           [&]() { outputListModel->update(dir_manager.getLocalPresetsPaths(PipelineType::output)); });
-
-  connect(&irs_watcher, &QFileSystemWatcher::directoryChanged,
-          [&]() { irsListModel->update(dir_manager.getLocalIrsPaths()); });
-
-  connect(&rnnoise_watcher, &QFileSystemWatcher::directoryChanged,
-          [&]() { rnnoiseListModel->update(dir_manager.getLocalRnnoisePaths()); });
 }
 
 void Manager::prepare_last_used_preset_key(const PipelineType& pipeline_type) {
@@ -672,124 +658,20 @@ bool Manager::exportPresets(const PipelineType& pipeline_type, const QString& di
   return false;
 }
 
-auto Manager::import_irs_file(const std::string& file_path) -> ImpulseImportState {
-  std::filesystem::path p{file_path};
-
-  if (!std::filesystem::is_regular_file(p)) {
-    util::warning(std::format("{} is not a file!", p.string()));
-
-    return ImpulseImportState::no_regular_file;
-  }
-
-  auto file = SndfileHandle(file_path);
-
-  if (file.frames() == 0) {
-    util::warning("Cannot import the impulse response! The format may be corrupted or unsupported.");
-    util::warning(std::format("{} loading failed", file_path));
-
-    return ImpulseImportState::no_frame;
-  }
-
-  if (file.channels() != 2) {
-    util::warning("Only stereo impulse files are supported!");
-    util::warning(std::format("{} loading failed", file_path));
-
-    return ImpulseImportState::no_stereo;
-  }
-
-  auto out_path = dir_manager.userIrsDir() / p.filename();
-
-  out_path.replace_extension(DirectoryManager::irs_ext);
-
-  std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
-
-  util::debug(std::format("Irs file successfully imported to: {}", out_path.string()));
-
-  return ImpulseImportState::success;
-}
-
 int Manager::importImpulses(const QList<QString>& url_list) {
-  for (const auto& u : url_list) {
-    auto url = QUrl(u);
-
-    if (url.isLocalFile()) {
-      auto path = std::filesystem::path{url.toLocalFile().toStdString()};
-
-      if (auto import_state = import_irs_file(path); import_state != ImpulseImportState::success) {
-        return static_cast<int>(import_state);
-      }
-    }
-  }
-
-  return static_cast<int>(ImpulseImportState::success);
-}
-
-auto Manager::import_rnnoise_file(const std::string& file_path) -> RNNoiseImportState {
-  std::filesystem::path p{file_path};
-
-  if (!std::filesystem::is_regular_file(p)) {
-    util::warning(std::format("{} is not a file!", p.string()));
-
-    return RNNoiseImportState::no_regular_file;
-  }
-
-  auto out_path = dir_manager.userRnnoiseDir() / p.filename();
-
-  out_path.replace_extension(DirectoryManager::rnnoise_ext);
-
-  std::filesystem::copy_file(p, out_path, std::filesystem::copy_options::overwrite_existing);
-
-  util::debug(std::format("Irs file successfully imported to: {}", out_path.string()));
-
-  return RNNoiseImportState::success;
+  return irs_manager.import_impulses(url_list);
 }
 
 int Manager::importRNNoiseModel(const QList<QString>& url_list) {
-  for (const auto& u : url_list) {
-    auto url = QUrl(u);
-
-    if (url.isLocalFile()) {
-      auto path = std::filesystem::path{url.toLocalFile().toStdString()};
-
-      if (auto import_state = import_rnnoise_file(path); import_state != RNNoiseImportState::success) {
-        return static_cast<int>(import_state);
-      }
-    }
-  }
-
-  return static_cast<int>(RNNoiseImportState::success);
+  return rnnoise_manager.import_model(url_list);
 }
 
 bool Manager::removeImpulseFile(const QString& filePath) {
-  bool result = false;
-
-  if (std::filesystem::exists(filePath.toStdString())) {
-    result = std::filesystem::remove(filePath.toStdString());
-  }
-
-  if (result) {
-    util::debug(std::format("removed irs file: {}", filePath.toStdString()));
-  } else {
-    util::warning(std::format("failed to removed the irs file: {}", filePath.toStdString()));
-  }
-
-  return result;
+  return IrsManager::remove_impulse_file(filePath);
 }
 
 bool Manager::removeRNNoiseModel(const QString& filePath) {
-  bool result = false;
-
-  if (std::filesystem::exists(filePath.toStdString())) {
-    result = std::filesystem::remove(filePath.toStdString());
-  }
-
-  if (result) {
-    util::debug(std::format("removed the rnnoise model: {}", filePath.toStdString()));
-  } else {
-    util::warning(std::format("failed to remove the rnnoise model: {}", filePath.toStdString()));
-  }
-
-  return result;
+  return RnnoiseManager::remove_model(filePath);
 }
 
 bool Manager::importFromCommunityPackage(const PipelineType& pipeline_type,
