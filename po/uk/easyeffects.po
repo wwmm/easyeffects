@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-09-28 20:08-0300\n"
-"PO-Revision-Date: 2025-09-30 10:01+0000\n"
+"PO-Revision-Date: 2025-10-01 05:50+0300\n"
 "Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -35,8 +35,7 @@ msgstr "Сховати вікно."
 #: src/command_line_parser.cpp:47
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
-"Глобальний обхід. 1 для ввімкнення, 2 для вимкнення та 3 для отримання "
-"статусу"
+"Глобальний обхід. 1 - увімкнути, 2 - вимкнути, 3 - отримати статус"
 
 #: src/command_line_parser.cpp:48
 msgid "Load a preset. Example: easyeffects -l music"
@@ -52,7 +51,7 @@ msgstr "Показати доступні попередні налаштува�
 
 #: src/command_line_parser.cpp:50
 msgid "Get the active input/output preset."
-msgstr "Отримати активне попереднє налаштування захоплення/відтворення."
+msgstr "Отримати активне попереднє налаштування входу/виходу."
 
 #: src/command_line_parser.cpp:50
 msgid "preset-type"
@@ -60,7 +59,7 @@ msgstr "тип-попереднього-налаштування"
 
 #: src/command_line_parser.cpp:51
 msgid "Get the active input and output presets."
-msgstr "Отримати активні попередні налаштування захоплення та відтворення."
+msgstr "Отримати активні попередні налаштування входу та виходу."
 
 #: src/command_line_parser.cpp:52
 msgid "Deprecated. Use --service-mode instead."
@@ -76,11 +75,11 @@ msgstr "Увімкнути налагоджувальні повідомленн
 
 #: src/command_line_parser.cpp:142 src/contents/ui/main.qml:277
 msgid "Output Presets"
-msgstr "Попередні налаштування відтворення"
+msgstr "Попередні налаштування для виходу"
 
 #: src/command_line_parser.cpp:150 src/contents/ui/main.qml:267
 msgid "Input Presets"
-msgstr "Попередні налаштування захоплення"
+msgstr "Попередні налаштування для входу"
 
 #: src/contents/ui/Autogain.qml:52 src/contents/ui/BassEnhancer.qml:88
 #: src/contents/ui/BassLoudness.qml:40 src/contents/ui/Crossfeed.qml:56
@@ -132,11 +131,11 @@ msgstr "Цільовий рівень"
 
 #: src/contents/ui/Autogain.qml:99
 msgid "Silence"
-msgstr "Тиша"
+msgstr "Рівень тиши"
 
 #: src/contents/ui/Autogain.qml:120
 msgid "Maximum History"
-msgstr "Максимальний розмір історії"
+msgstr "Тривалість історії (максимальна)"
 
 #: src/contents/ui/Autogain.qml:146 src/contents/ui/Autogain.qml:236
 #: src/contents/ui/BassLoudness.qml:48 src/contents/ui/LevelMeter.qml:140
@@ -146,7 +145,7 @@ msgstr "Гучність"
 
 #: src/contents/ui/Autogain.qml:204 src/contents/ui/LevelMeter.qml:198
 msgid "Relative"
-msgstr "Відносне"
+msgstr "Відносна"
 
 #: src/contents/ui/Autogain.qml:220 src/contents/ui/LevelMeter.qml:214
 msgid "Range"
@@ -171,7 +170,7 @@ msgstr "Вихідне підсилення"
 #: src/contents/ui/Reverb.qml:309 src/contents/ui/RNNoise.qml:273
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:433
 msgid "Using %1"
-msgstr "Використання %1"
+msgstr "Використовується %1"
 
 #: src/contents/ui/Autogain.qml:294 src/contents/ui/DeepFilterNet.qml:185
 #: src/contents/ui/LevelMeter.qml:249 src/contents/ui/Pitch.qml:227
@@ -180,11 +179,11 @@ msgstr "Скинути історію"
 
 #: src/contents/ui/Autogain.qml:301
 msgid "Force Silence"
-msgstr "Примусова тиша"
+msgstr "Примусове придушення"
 
 #: src/contents/ui/Autogain.qml:302
 msgid "Force Silence When the Level is Below the Silence Threshold"
-msgstr "Примусово вмикати тишу, коли рівень нижче порогу тиші"
+msgstr "Примусово вимкнути звук якщо рівень нижче порогу тиші"
 
 #: src/contents/ui/Autogain.qml:313 src/contents/ui/Pitch.qml:254
 msgid "Reset Settings"
@@ -192,15 +191,15 @@ msgstr "Скинути налаштування"
 
 #: src/contents/ui/BassEnhancer.qml:38 src/contents/ui/Exciter.qml:38
 msgid "Blend Harmonics"
-msgstr "Змішані гармоніки"
+msgstr "Змішування гармонік"
 
 #: src/contents/ui/BassEnhancer.qml:47 src/contents/ui/Exciter.qml:47
 msgid "3rd"
-msgstr "3-й"
+msgstr "3-я"
 
 #: src/contents/ui/BassEnhancer.qml:69 src/contents/ui/Exciter.qml:69
 msgid "2nd"
-msgstr "2-й"
+msgstr "2-а"
 
 #: src/contents/ui/BassEnhancer.qml:96 src/contents/ui/Exciter.qml:96
 msgid "Amount"
@@ -213,15 +212,15 @@ msgstr "Гармоніки"
 
 #: src/contents/ui/BassEnhancer.qml:127 src/contents/ui/Exciter.qml:127
 msgid "Scope"
-msgstr "Область застосування"
+msgstr "Діапазон"
 
 #: src/contents/ui/BassEnhancer.qml:143
 msgid "Floor Active"
-msgstr "Активна підлога"
+msgstr "Обмеження"
 
 #: src/contents/ui/BassEnhancer.qml:154
 msgid "Floor"
-msgstr "Підлога"
+msgstr "Частота обмеження"
 
 #: src/contents/ui/BassEnhancer.qml:207 src/contents/ui/Compressor.qml:817
 #: src/contents/ui/Deesser.qml:326 src/contents/ui/Delay.qml:401
@@ -233,13 +232,13 @@ msgstr "Підлога"
 #: src/contents/ui/MultibandGate.qml:934 src/contents/ui/Reverb.qml:333
 #: src/contents/ui/StereoTools.qml:449
 msgid "Show Native Window"
-msgstr "Показати нативне вікно"
+msgstr "Показати рідне вікно"
 
 #: src/contents/ui/BassEnhancer.qml:220 src/contents/ui/Compressor.qml:830
 #: src/contents/ui/Deesser.qml:339 src/contents/ui/Exciter.qml:220
 #: src/contents/ui/Expander.qml:788 src/contents/ui/Gate.qml:924
 msgid "Listen"
-msgstr "Прослухати"
+msgstr "Слухати"
 
 #: src/contents/ui/BassEnhancer.qml:230 src/contents/ui/BassLoudness.qml:121
 #: src/contents/ui/Compressor.qml:850 src/contents/ui/Convolver.qml:432
@@ -270,11 +269,11 @@ msgstr "Вихід"
 #: src/contents/ui/Limiter.qml:228 src/contents/ui/MultibandCompressor.qml:409
 #: src/contents/ui/MultibandGate.qml:377
 msgid "Link"
-msgstr "Посилання"
+msgstr "Зв'язок"
 
 #: src/contents/ui/BlocklistSheet.qml:18
 msgid "Effects Blocklist"
-msgstr "Список блокованих ефектів"
+msgstr "Список заблокованих ефектів"
 
 #: src/contents/ui/BlocklistSheet.qml:29
 msgid "Application Node Name"
@@ -282,7 +281,7 @@ msgstr "Назва вузла застосунку"
 
 #: src/contents/ui/BlocklistSheet.qml:45
 msgid "Add to Excluded Applications"
-msgstr "Додати до виключених додатків"
+msgstr "Додати до виключених застосунків"
 
 #: src/contents/ui/BlocklistSheet.qml:97
 #: src/contents/ui/ConvolverImpulseSheet.qml:80
@@ -291,23 +290,23 @@ msgstr "Додати до виключених додатків"
 #: src/contents/ui/PresetsLocalPage.qml:145 src/contents/ui/RNNoise.qml:191
 #: src/contents/ui/PresetsLocalPage.qml:172
 msgid "Empty"
-msgstr "Порожній"
+msgstr "Порожньо"
 
 #: src/contents/ui/BlocklistSheet.qml:117
 msgid "Remove Application"
-msgstr "Вилучити програму"
+msgstr "Вилучити застосунок"
 
 #: src/contents/ui/BlocklistSheet.qml:118
 msgid "Are you sure you want to remove this application from the list?"
-msgstr "Ви впевнені, що хочете вилучити цю програму зі списку?"
+msgstr "Ви впевнені, що хочете вилучити цей застосунок зі списку?"
 
 #: src/contents/ui/BlocklistSheet.qml:148
 msgid "Delete this App"
-msgstr "Видалити цей додаток"
+msgstr "Видалити цей застосунок"
 
 #: src/contents/ui/BlocklistSheet.qml:175
 msgid "Show Excluded Applications in the Streams Section"
-msgstr "Показати виключені програми в розділі «Потоки»"
+msgstr "Показувати виключені застосунки в розділі потоків"
 
 #: src/contents/ui/Compressor.qml:52 src/tags_plugin_name.cpp:28
 msgid "Compressor"
@@ -327,12 +326,12 @@ msgstr "Режим"
 #: src/contents/ui/Compressor.qml:74 src/contents/ui/Expander.qml:74
 #: src/contents/ui/MultibandCompressor.qml:115
 msgid "Downward"
-msgstr "Вниз"
+msgstr "Пониження"
 
 #: src/contents/ui/Compressor.qml:74 src/contents/ui/Expander.qml:74
 #: src/contents/ui/MultibandCompressor.qml:115
 msgid "Upward"
-msgstr "Вгору"
+msgstr "Підвищення"
 
 #: src/contents/ui/Compressor.qml:74
 #: src/contents/ui/MultibandCompressor.qml:115
@@ -347,7 +346,7 @@ msgstr "Поріг підвищення"
 #: src/contents/ui/Compressor.qml:104
 #: src/contents/ui/MultibandCompressor.qml:143
 msgid "Boost Amount"
-msgstr "Інтенсивність підвищення"
+msgstr "Величина підсилення"
 
 #: src/contents/ui/Compressor.qml:123 src/contents/ui/Deesser.qml:101
 #: src/contents/ui/Expander.qml:83 src/contents/ui/MultibandCompressor.qml:340
@@ -377,7 +376,7 @@ msgstr "Атака"
 #: src/contents/ui/Maximizer.qml:49 src/contents/ui/MultibandCompressor.qml:285
 #: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:124
 msgid "Release"
-msgstr "Випуск"
+msgstr "Відновлення"
 
 #: src/contents/ui/Compressor.qml:246 src/contents/ui/Compressor.qml:345
 #: src/contents/ui/Compressor.qml:597 src/contents/ui/Expander.qml:206
@@ -387,7 +386,7 @@ msgstr "Випуск"
 #: src/contents/ui/Limiter.qml:521 src/contents/ui/MultibandCompressor.qml:650
 #: src/contents/ui/MultibandGate.qml:618
 msgid "Sidechain"
-msgstr "Побічний ланцюг"
+msgstr "Бічний ланцюг"
 
 #: src/contents/ui/Compressor.qml:264 src/contents/ui/EqualizerBandMenu.qml:33
 #: src/contents/ui/Expander.qml:224 src/contents/ui/Filter.qml:50
@@ -399,11 +398,11 @@ msgstr "Тип"
 
 #: src/contents/ui/Compressor.qml:268
 msgid "Feed-forward"
-msgstr "Подача вперед"
+msgstr "Випереджувальний"
 
 #: src/contents/ui/Compressor.qml:268
 msgid "Feed-back"
-msgstr "Подача назад"
+msgstr "Зворотний зв'язок"
 
 #: src/contents/ui/Compressor.qml:268 src/contents/ui/Expander.qml:228
 #: src/contents/ui/Gate.qml:252 src/contents/ui/Limiter.qml:228
@@ -416,7 +415,7 @@ msgstr "Зовнішній"
 #: src/contents/ui/Gate.qml:262 src/contents/ui/Limiter.qml:238
 #: src/contents/ui/PageStreamsEffects.qml:301
 msgid "Input Device"
-msgstr "Пристрій введення"
+msgstr "Пристрій"
 
 #: src/contents/ui/Compressor.qml:305 src/contents/ui/Deesser.qml:62
 #: src/contents/ui/Expander.qml:265 src/contents/ui/Gate.qml:289
@@ -436,13 +435,13 @@ msgstr "RMS"
 #: src/contents/ui/Expander.qml:265 src/contents/ui/Expander.qml:392
 #: src/contents/ui/Gate.qml:289 src/contents/ui/Gate.qml:416
 msgid "Low-Pass"
-msgstr "Низькі частоти"
+msgstr "Низькочастотний фільтр"
 
 #: src/contents/ui/Compressor.qml:305 src/contents/ui/Expander.qml:265
 #: src/contents/ui/Gate.qml:289 src/contents/ui/MultibandCompressor.qml:420
 #: src/contents/ui/MultibandGate.qml:388
 msgid "SMA"
-msgstr "SMA"
+msgstr "Фільтр простої ковзної середньої"
 
 #: src/contents/ui/Compressor.qml:314 src/contents/ui/Compressor.qml:328
 #: src/contents/ui/Expander.qml:274 src/contents/ui/Expander.qml:288
@@ -457,13 +456,13 @@ msgstr "Джерело"
 #: src/contents/ui/Gate.qml:302 src/contents/ui/MultibandCompressor.qml:431
 #: src/contents/ui/MultibandGate.qml:399
 msgid "Middle"
-msgstr "Середина"
+msgstr "Сума"
 
 #: src/contents/ui/Compressor.qml:318 src/contents/ui/Expander.qml:278
 #: src/contents/ui/Gate.qml:302 src/contents/ui/MultibandCompressor.qml:431
 #: src/contents/ui/MultibandGate.qml:399
 msgid "Side"
-msgstr "Сторона"
+msgstr "Різність"
 
 #: src/contents/ui/Compressor.qml:318 src/contents/ui/Convolver.qml:246
 #: src/contents/ui/Delay.qml:42 src/contents/ui/Equalizer.qml:204
@@ -492,7 +491,7 @@ msgstr "Правий"
 #: src/contents/ui/MultibandCompressor.qml:443
 #: src/contents/ui/MultibandGate.qml:399 src/contents/ui/MultibandGate.qml:411
 msgid "Min"
-msgstr "Мін"
+msgstr "Мінімум"
 
 #: src/contents/ui/Compressor.qml:318 src/contents/ui/Compressor.qml:332
 #: src/contents/ui/Expander.qml:278 src/contents/ui/Expander.qml:292
@@ -501,7 +500,7 @@ msgstr "Мін"
 #: src/contents/ui/MultibandCompressor.qml:443
 #: src/contents/ui/MultibandGate.qml:399 src/contents/ui/MultibandGate.qml:411
 msgid "Max"
-msgstr "Макс"
+msgstr "Максимум"
 
 #: src/contents/ui/Compressor.qml:332 src/contents/ui/Expander.qml:292
 #: src/contents/ui/Gate.qml:316 src/contents/ui/MultibandCompressor.qml:443
@@ -519,20 +518,20 @@ msgstr "Правий/лівий"
 #: src/contents/ui/Gate.qml:316 src/contents/ui/MultibandCompressor.qml:443
 #: src/contents/ui/MultibandGate.qml:411
 msgid "Mid/Side"
-msgstr "Середина/сторона"
+msgstr "Сума/різність"
 
 #: src/contents/ui/Compressor.qml:332 src/contents/ui/Expander.qml:292
 #: src/contents/ui/Gate.qml:316 src/contents/ui/MultibandCompressor.qml:443
 #: src/contents/ui/MultibandGate.qml:411
 msgid "Side/Mid"
-msgstr "Сторона/середина"
+msgstr "Різність/сума"
 
 #: src/contents/ui/Compressor.qml:362 src/contents/ui/Expander.qml:322
 #: src/contents/ui/Gate.qml:346 src/contents/ui/Limiter.qml:261
 #: src/contents/ui/MultibandCompressor.qml:451
 #: src/contents/ui/MultibandGate.qml:419
 msgid "Preamp"
-msgstr "Передпідсилювач"
+msgstr "Підсилення"
 
 #: src/contents/ui/Compressor.qml:380 src/contents/ui/Expander.qml:340
 #: src/contents/ui/Gate.qml:364 src/contents/ui/MultibandCompressor.qml:467
@@ -545,12 +544,12 @@ msgstr "Реактивність"
 #: src/contents/ui/MultibandCompressor.qml:482
 #: src/contents/ui/MultibandGate.qml:450
 msgid "Lookahead"
-msgstr "Дивитися вперед"
+msgstr "Випередження (затримка)"
 
 #: src/contents/ui/Compressor.qml:417 src/contents/ui/Expander.qml:377
 #: src/contents/ui/Gate.qml:401
 msgid "High-Pass"
-msgstr "Високі частоти"
+msgstr "ФВЧ"
 
 #: src/contents/ui/Compressor.qml:421 src/contents/ui/Compressor.qml:436
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:381
@@ -563,19 +562,19 @@ msgstr "Вимкнено"
 #: src/contents/ui/Expander.qml:381 src/contents/ui/Expander.qml:396
 #: src/contents/ui/Gate.qml:405 src/contents/ui/Gate.qml:420
 msgid "12 dB/oct"
-msgstr "12 dB/окт"
+msgstr "12 дБ/окт"
 
 #: src/contents/ui/Compressor.qml:421 src/contents/ui/Compressor.qml:436
 #: src/contents/ui/Expander.qml:381 src/contents/ui/Expander.qml:396
 #: src/contents/ui/Gate.qml:405 src/contents/ui/Gate.qml:420
 msgid "24 dB/oct"
-msgstr "24 dB/окт"
+msgstr "24 дБ/окт"
 
 #: src/contents/ui/Compressor.qml:421 src/contents/ui/Compressor.qml:436
 #: src/contents/ui/Expander.qml:381 src/contents/ui/Expander.qml:396
 #: src/contents/ui/Gate.qml:405 src/contents/ui/Gate.qml:420
 msgid "36 dB/oct"
-msgstr "36 dB/окт"
+msgstr "36 дБ/окт"
 
 #: src/contents/ui/Compressor.qml:497 src/contents/ui/Delay.qml:161
 #: src/contents/ui/Delay.qml:319 src/contents/ui/Expander.qml:457
@@ -583,7 +582,7 @@ msgstr "36 dB/окт"
 #: src/contents/ui/MultibandGate.qml:574 src/contents/ui/Reverb.qml:180
 #: src/contents/ui/StereoTools.qml:387
 msgid "Dry"
-msgstr "Спробуй"
+msgstr "Необроблений"
 
 #: src/contents/ui/Compressor.qml:520 src/contents/ui/Delay.qml:179
 #: src/contents/ui/Delay.qml:337 src/contents/ui/Expander.qml:480
@@ -591,14 +590,14 @@ msgstr "Спробуй"
 #: src/contents/ui/MultibandGate.qml:592 src/contents/ui/Reverb.qml:198
 #: src/contents/ui/StereoTools.qml:405
 msgid "Wet"
-msgstr "Мокрий"
+msgstr "Стиснений"
 
 #: src/contents/ui/Compressor.qml:544 src/contents/ui/Deesser.qml:117
 #: src/contents/ui/Expander.qml:504 src/contents/ui/Gate.qml:528
 #: src/contents/ui/MultibandCompressor.qml:372
 #: src/contents/ui/MultibandGate.qml:237
 msgid "Makeup"
-msgstr "Макіяж"
+msgstr "Компенсація"
 
 #: src/contents/ui/Compressor.qml:588 src/contents/ui/Expander.qml:548
 #: src/contents/ui/Gate.qml:108 src/contents/ui/Gate.qml:573
@@ -647,17 +646,17 @@ msgstr "Крива"
 #: src/contents/ui/Gate.qml:693 src/contents/ui/MultibandCompressor.qml:788
 #: src/contents/ui/MultibandGate.qml:756
 msgid "Envelope"
-msgstr "Конверт"
+msgstr "Огинаюча"
 
 #: src/contents/ui/Compressor.qml:840 src/contents/ui/Expander.qml:798
 #: src/contents/ui/Gate.qml:934 src/contents/ui/MultibandCompressor.qml:979
 #: src/contents/ui/MultibandGate.qml:947
 msgid "Stereo Split"
-msgstr "Розділення стерео"
+msgstr "Розділити стерео"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:47
 msgid "Impluse File Imported."
-msgstr "Імпортовано файл Impluse."
+msgstr "Файл імпульсу імпортовано."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:49
 msgid "Failed to Import the Impulse File."
@@ -677,11 +676,11 @@ msgstr "Завантажений імпульс: %1"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:99
 msgid "Remove Impulse Response"
-msgstr "Вилучити імпульсну реакцію"
+msgstr "Вилучити імпульсний відгук"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:100
 msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr "Ви впевнені, що хочете вилучити цю імпульсну характеристику зі списку?"
+msgstr "Ви впевнені, що хочете вилучити цей імпульсний відгук зі списку?"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
 msgid "Removed Impulse: %1"
@@ -739,19 +738,19 @@ msgstr "Ширина стерео"
 
 #: src/contents/ui/Convolver.qml:422 src/tags_plugin_name.cpp:25
 msgid "Autogain"
-msgstr "Автопідсилення"
+msgstr "Автоматичне підсилення"
 
 #: src/contents/ui/Crossfeed.qml:64
 msgid "Cutoff"
-msgstr "Відсікання"
+msgstr "Частота зрізу"
 
 #: src/contents/ui/Crossfeed.qml:80
 msgid "Feed"
-msgstr "Рівень ослабення перед підмішуванням"
+msgstr "Рівень змішування"
 
 #: src/contents/ui/Crossfeed.qml:100
 msgid "Crossfeed Presets"
-msgstr "Пресетні налаштування перехресної подачі"
+msgstr "Попередні налаштування"
 
 #: src/contents/ui/Crossfeed.qml:104
 msgid "Default"
@@ -760,7 +759,7 @@ msgstr "За замовчуванням"
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/main.qml:339
 #: src/contents/ui/Reverb.qml:325
 msgid "Presets"
-msgstr "Пресети"
+msgstr "Попередні налаштування"
 
 #: src/contents/ui/CrystalizerBand.qml:31
 #: src/contents/ui/EqualizerBandMenu.qml:157
@@ -774,28 +773,35 @@ msgstr "Приглушити"
 #: src/contents/ui/MultibandCompressor.qml:87
 #: src/contents/ui/MultibandGate.qml:87
 msgid "Bypass"
-msgstr "Обхід"
+msgstr "Обійти"
 
 #: src/contents/ui/DeepFilterNet.qml:33
 msgid "Attenuation Limit"
-msgstr "Межа згасання"
+msgstr "Межа ослаблення"
 
 #: src/contents/ui/DeepFilterNet.qml:80
 msgid "Minimum Processing Threshold"
 msgstr "Мінімальний поріг обробки"
 
-#: src/contents/ui/DeepFilterNet.qml:96 src/contents/ui/DeepFilterNet.qml:112
-#: src/contents/ui/DeepFilterNet.qml:128
+#: src/contents/ui/DeepFilterNet.qml:96
 msgid "Maximum ERB Processing threshold"
-msgstr "Максимальний поріг обробки ERB"
+msgstr "Максимальний поріг обробки (ERB)"
+
+#: src/contents/ui/DeepFilterNet.qml:112
+msgid "Maximum DF Processing Threshold"
+msgstr "Максимальний поріг обробки (DF)"
+
+#: src/contents/ui/DeepFilterNet.qml:128
+msgid "Minimum Processing Buffer"
+msgstr "Мінімальний буфер обробки"
 
 #: src/contents/ui/DeepFilterNet.qml:135
 msgid "frames"
-msgstr "рамки"
+msgstr "кадр(-а,-ів)"
 
 #: src/contents/ui/DeepFilterNet.qml:144
 msgid "Post Filter Beta"
-msgstr "Бета-версія фільтра публікацій"
+msgstr "Інтенсивність фільтра постобробки"
 
 #: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:33
 msgid "Deesser"
@@ -2597,664 +2603,3 @@ msgstr "Експортовано попередньо налаштовані ф�
 #: src/contents/ui/PresetsLocalPage.qml:57
 msgid "Failed to Export the Presets."
 msgstr "Не вдалося експортувати пресетів."
-
-#, fuzzy
-#~ msgid "Band "
-#~ msgstr "Смуга 1"
-
-#, fuzzy
-#~ msgctxt "@title:window"
-#~ msgid "Easy Effects"
-#~ msgstr "Закрийте Easy Effects"
-
-#, fuzzy
-#~ msgctxt "@title"
-#~ msgid "Easy Effects"
-#~ msgstr "Закрийте Easy Effects"
-
-#, fuzzy
-#~ msgid "Added Plugin"
-#~ msgstr "Плагін пошуку"
-
-#~ msgid "Native Plugin Window"
-#~ msgstr "Нативне вікно плагіна"
-
-#~ msgid "@APP_NAME@"
-#~ msgstr "@APP_NAME@"
-
-#~ msgid "limiter;compressor;reverberation;equalizer;autovolume;"
-#~ msgstr ""
-#~ "limiter;compressor;reverberation;equalizer;autovolume;обмежувач;компресор;"
-#~ "реверберація;еквалайзер;автогучність;ефекти;звук;пайп;запис;"
-
-#~ msgid "Enable/disable this application"
-#~ msgstr "Увімкнути / вимкнути цей додаток"
-
-#~ msgid "Excluded App List: Add/remove this application"
-#~ msgstr "Список виключених додатків: додати / видалити цей додаток"
-
-#~ msgid "Change the volume of this application"
-#~ msgstr "Змініть гучність цього додатка"
-
-#~ msgid "Application Volume"
-#~ msgstr "Гучність додатка"
-
-#~ msgid "_Help"
-#~ msgstr "_Допомога"
-
-#~ msgid "Presets Menu"
-#~ msgstr "Меню пресетів"
-
-#~ msgid "Enable/disable the global bypass"
-#~ msgstr "Увімкнути/вимкнути глобальний обхід"
-
-#~ msgid "Primary Menu"
-#~ msgstr "Основне меню"
-
-#~ msgid "Easy Effects Window"
-#~ msgstr "Вікно Easy Effects"
-
-#~ msgid "Applications List"
-#~ msgstr "Список додатків"
-
-#~ msgid "History"
-#~ msgstr "Історія"
-
-#~ msgid "Plugin Input Gain"
-#~ msgstr "Плагін вхідного підсилення"
-
-#~ msgid "Plugin Output Gain"
-#~ msgstr "Плагін вихідного підсилення"
-
-#~ msgid "Preset"
-#~ msgstr "Пресет"
-
-#~ msgid "Remove this autoload preset"
-#~ msgstr "Вилучити цей пресет з автозастосування"
-
-#~ msgid "Excluded Applications List"
-#~ msgstr "Список виключених додатків"
-
-#~ msgid "Attack Time"
-#~ msgstr "Час атаки"
-
-#~ msgid "Attack Threshold"
-#~ msgstr "Поріг атаки"
-
-#~ msgid "Release Time"
-#~ msgstr "Час випуску"
-
-#~ msgid "Release Threshold"
-#~ msgstr "Поріг випуску"
-
-#~ msgid "Dry Level"
-#~ msgstr "Рівень сухості"
-
-#~ msgid "Stereo Split Mode"
-#~ msgstr "Режим розділення стерео"
-
-#~ msgid "Sidechain Source"
-#~ msgstr "Джерело побічного ланцюга"
-
-#~ msgid "Stereo Split Source"
-#~ msgstr "Джерело розділення стерео"
-
-#~ msgid "Low-Pass Filter"
-#~ msgstr "Фільтр низьких частот"
-
-#~ msgid "Simple Moving Average"
-#~ msgstr "Проста ковзна середня"
-
-#~ msgid "Sidechain Type"
-#~ msgstr "Тип побічного ланцюга"
-
-#~ msgid "PreAmplification"
-#~ msgstr "Передпосилення"
-
-#~ msgid "Sidechain Filters"
-#~ msgstr "Фільтри побічного ланцюга"
-
-#~ msgid "High-Pass Filter Mode"
-#~ msgstr "Режим фільтру високих частот"
-
-#~ msgid "High-Pass Filter Frequency"
-#~ msgstr "Частота фільтру високих частот"
-
-#~ msgid "Low-Pass Filter Mode"
-#~ msgstr "Режим фільтру низьких частот"
-
-#~ msgid "Left Channel"
-#~ msgstr "Лівий канал"
-
-#~ msgid "Right Channel"
-#~ msgstr "Правий канал"
-
-#~ msgid "Impulses"
-#~ msgstr "Імпульси"
-
-#~ msgid "Log Scale"
-#~ msgstr "Логірифмічна шкала"
-
-#~ msgid "First Kernel"
-#~ msgstr "Перше ядро"
-
-#~ msgid "Output File Name"
-#~ msgstr "Назва вихідного файлу"
-
-#~ msgid "Combined Kernel Name"
-#~ msgstr "Ім'я комбінованого ядра"
-
-#~ msgid "Search Impulse File"
-#~ msgstr "Шукати файл імпульсу"
-
-#~ msgid "Impulse Files List"
-#~ msgstr "Перелік файлів імпульсів"
-
-#~ msgid "Maximum DF Processing Threshold"
-#~ msgstr "Максимальний поріг обробки DF"
-
-#~ msgid "Minimum Processing Buffer"
-#~ msgstr "Мінімальний буфер обробки"
-
-#~ msgid "Frequency 1 Split"
-#~ msgstr "Частота 1 Спліт"
-
-#~ msgid "Frequency 2 Peak"
-#~ msgstr "Частота 2 пік"
-
-#~ msgid "Frequency 1 Gain"
-#~ msgstr "Підсилення частоти 1"
-
-#~ msgid "Frequency 2 Level"
-#~ msgstr "Частота 2 Рівень"
-
-#~ msgid "Frequency 2 Peak Q"
-#~ msgstr "Частота 2 Пік Q"
-
-#~ msgid "Detected"
-#~ msgstr "Виявленно"
-
-#~ msgid "Import Preset"
-#~ msgstr "Імпорт пресету"
-
-#~ msgid "Ceil Value"
-#~ msgstr "Максимальне значення"
-
-#~ msgid "Expander Mode"
-#~ msgstr "Режим розширення"
-
-#~ msgid "API"
-#~ msgstr "API"
-
-#~ msgid "Attack Zone Start"
-#~ msgstr "Початок зони атаки"
-
-#~ msgid "Release Zone Start"
-#~ msgstr "Початок зони випуску"
-
-#~ msgid "Half x2(3L)"
-#~ msgstr "Половина x2 (3л)"
-
-#~ msgid "Half x3(3L)"
-#~ msgstr "Половина x3 (3л)"
-
-#~ msgid "Half x4(3L)"
-#~ msgstr "Половина x4 (3л)"
-
-#~ msgid "Half x6(3L)"
-#~ msgstr "Половина x6 (3л)"
-
-#~ msgid "Half x8(3L)"
-#~ msgstr "Половина x8 (3L)"
-
-#~ msgid "Full x2(3L)"
-#~ msgstr "Повний x2 (3L)"
-
-#~ msgid "Full x3(3L)"
-#~ msgstr "Повний x3 (3L)"
-
-#~ msgid "Full x4(3L)"
-#~ msgstr "Повний x4 (3L)"
-
-#~ msgid "Full x6(3L)"
-#~ msgstr "Повний x6 (3L)"
-
-#~ msgid "Full x8(3L)"
-#~ msgstr "Повний x8 (3L)"
-
-#~ msgid "SC PreAmp"
-#~ msgstr "Передпідсилювач SC"
-
-#~ msgid "Sidechain PreAmplification"
-#~ msgstr "Попереднє посилення бічного ланцюга"
-
-#~ msgid "Boost"
-#~ msgstr "Підвищення"
-
-#~ msgid "External Sidechain"
-#~ msgstr "Зовнішній сайдчейн"
-
-#~ msgid "External Sidechain Source"
-#~ msgstr "Зовнішнє джерело Sidechain"
-
-#~ msgid "Auto Leveling Attack"
-#~ msgstr "Атака автоматичного вирівнювання"
-
-#~ msgid "Auto Leveling Release"
-#~ msgstr "Автоматичне вирівнюванням"
-
-#~ msgid "Auto Leveling Knee"
-#~ msgstr "Коліна з автоматичним вирівнюванням"
-
-#~ msgid "Gain Left"
-#~ msgstr "Посилення лівого"
-
-#~ msgid "Gain Right"
-#~ msgstr "Підсилення правого"
-
-#~ msgid "Sidechain Left"
-#~ msgstr "Sidechain лівого"
-
-#~ msgid "Sidechain Right"
-#~ msgstr "Sidechain правого"
-
-#~ msgid "Standard"
-#~ msgstr "Стандартний"
-
-#~ msgid "Flat"
-#~ msgstr "Плоский"
-
-#~ msgid "Show Native User Interface"
-#~ msgstr "Показати рідний інтерфейс користувача"
-
-#~ msgid "Bands List"
-#~ msgstr "Список смуг"
-
-#~ msgid "Band 2"
-#~ msgstr "Смуга 2"
-
-#~ msgid "Band 3"
-#~ msgstr "Смуга 3"
-
-#~ msgid "Band 4"
-#~ msgstr "Смуга 4"
-
-#~ msgid "Band 5"
-#~ msgstr "Смуга 5"
-
-#~ msgid "Band 6"
-#~ msgstr "Смуга 6"
-
-#~ msgid "Band 7"
-#~ msgstr "Смуга 7"
-
-#~ msgid "Band 8"
-#~ msgstr "Смуга 8"
-
-#~ msgid "Band Start"
-#~ msgstr "Початок смуги"
-
-#~ msgid "Band End"
-#~ msgstr "Кінець смуги"
-
-#~ msgid "Band Compression Mode"
-#~ msgstr "Режим стиснення смуг"
-
-#~ msgid "Band Sidechain Options"
-#~ msgstr "Варіанти сайдчейна гурту"
-
-#~ msgid "Low-Cut Filter Frequency"
-#~ msgstr "Частота фільтра Низького вирізу"
-
-#~ msgid "High-Cut Filter Frequency"
-#~ msgstr "Частота фільтра високих вирізу"
-
-#~ msgid "PreAmp"
-#~ msgstr "Попередній підсилювач"
-
-#~ msgid "Band Gain"
-#~ msgstr "Діапазон посилення"
-
-#~ msgid "Band Envelope"
-#~ msgstr "Конверт смуги"
-
-#~ msgid "Band Curve"
-#~ msgstr "Крива смуги"
-
-#~ msgid "Custom Input Device"
-#~ msgstr "Спеціальний пристрій введення"
-
-#~ msgid "Custom Output Device"
-#~ msgstr "Спеціальний пристрій виводу"
-
-#~ msgid "Presets Autoloading"
-#~ msgstr "Автозавантаження пресетів"
-
-#~ msgid ""
-#~ "Only Local Presets can be autoloaded. A Community Preset should be "
-#~ "imported locally in order to be selected and associated to a specific "
-#~ "device."
-#~ msgstr ""
-#~ "Автоматично завантажувати можна лише локальні пресети. Стилі спільноти "
-#~ "слід імпортувати локально, щоб вибрати їх і зв’язати з певним пристроєм."
-
-#~ msgid "Output Devices"
-#~ msgstr "Пристрої виведення"
-
-#~ msgid "Create Association"
-#~ msgstr "Створити асоціацію"
-
-#~ msgid "Add Autoloading Output Preset"
-#~ msgstr "Додати попередні налаштування виводу автозавантаження"
-
-#~ msgid "Output Autoloading Presets List"
-#~ msgstr "Вивести список налаштувань автозавантаження"
-
-#~ msgid "Input Devices"
-#~ msgstr "Пристрої введення"
-
-#~ msgid "Add Autoloading Input Preset"
-#~ msgstr "Додати попередні налаштування введення автозавантаження"
-
-#~ msgid "Input Autoloading Presets List"
-#~ msgstr "Введіть список налаштувань автозавантаження"
-
-#~ msgid "Modules List"
-#~ msgstr "Список модулів"
-
-#~ msgid "Clients List"
-#~ msgstr "Список клієнтів"
-
-#~ msgid "Properties"
-#~ msgstr "Властивості"
-
-#~ msgid "Both Channels"
-#~ msgstr "Обидва канали"
-
-#~ msgid "Change the position of this effect"
-#~ msgstr "Змініть положення цього ефекту"
-
-#~ msgid "Show/hide effects list"
-#~ msgstr "Показати/сховати список ефектів"
-
-#~ msgid "Go to the previous effect"
-#~ msgstr "Перейти до попереднього ефекту"
-
-#~ msgid "Go to the next effect"
-#~ msgstr "Перейти до наступного ефекту"
-
-#~ msgid "Used Plugins List"
-#~ msgstr "Список використовуваних плагінів"
-
-#~ msgid "Plugins List"
-#~ msgstr "Список плагінів"
-
-#~ msgid "_General"
-#~ msgstr "_Загальні"
-
-#~ msgid "Service"
-#~ msgstr "Сервіс"
-
-#~ msgid "Launch Service at System Startup"
-#~ msgstr "Запуск служби під час запуску системи"
-
-#~ msgid "Shutdown on Window Closing"
-#~ msgstr "Вимкнення після закриття вікна"
-
-#~ msgid "Input Pipeline"
-#~ msgstr "Вхідний конвеєр"
-
-#~ msgid "Update Interval"
-#~ msgstr "Інтервал оновлення"
-
-#~ msgid "Related to Level Meters and Spectrum"
-#~ msgstr "Пов’язані з вимірювачами рівня та спектром"
-
-#~ msgid "Use Dark Theme"
-#~ msgstr "Використовуйте темну тему"
-
-#~ msgid "Hide Menus on Outside Clicks"
-#~ msgstr "Приховати меню під час зовнішнього натискання"
-
-#~ msgid "_Spectrum"
-#~ msgstr "_Спектр"
-
-#~ msgid "Compensating Delay (ms)"
-#~ msgstr "Компенсаційна затримка (мс)"
-
-#~ msgid "Line Width"
-#~ msgstr "Ширина лінії"
-
-#~ msgid "Fill"
-#~ msgstr "Заповнити"
-
-#~ msgid "Show Bars Border"
-#~ msgstr "Показати рамку смуг"
-
-#~ msgid "Rounded Corners"
-#~ msgstr "Заокруглені кути"
-
-#~ msgid "Lines and Bars"
-#~ msgstr "Лінії та смуги"
-
-#~ msgid "Axis Labels"
-#~ msgstr "Мітки осей"
-
-#~ msgid "Load"
-#~ msgstr "Застосувати"
-
-#~ msgid "Discard the current settings and load this preset"
-#~ msgstr "Скасувати поточні налаштування та застосувати цей пресет"
-
-#~ msgid "Try this community preset"
-#~ msgstr "Спробуйте цей стиль спільноти"
-
-#~ msgid "Import this community preset into the local presets list"
-#~ msgstr "Імпортувати цей пресет від спільноти до локального списку пресетів"
-
-#~ msgid "Import a preset from the local storage"
-#~ msgstr "Імпортувати пресет з локального сховища"
-
-#~ msgid "Search Local Preset"
-#~ msgstr "Пошук локальних налаштувань"
-
-#~ msgid "Community Presets List"
-#~ msgstr "Список пресетів від спільноти"
-
-#~ msgid "No Community Presets Installed"
-#~ msgstr "Немає пресетів від спільноти"
-
-#~ msgid ""
-#~ "Community Presets packages can be installed from the repository of your "
-#~ "favorite distribution."
-#~ msgstr ""
-#~ "Пакунки пресетів від спільноти можна встановити зі сховища вашого "
-#~ "улюбленого дистрибутива."
-
-#~ msgid "Refresh to show new installed community presets"
-#~ msgstr "Оновіть, щоб показати нові встановлені пресети від спільноти"
-
-#~ msgid "Models"
-#~ msgstr "Моделі"
-
-#~ msgid "RNNoise Models List"
-#~ msgstr "Список моделей RNNoise"
-
-#~ msgid "Model Not Loaded"
-#~ msgstr "Модель не завантажено"
-
-#~ msgid "Standard RNNoise Model"
-#~ msgstr "Стандартна модель RNNoise"
-
-#~ msgid "Overview"
-#~ msgstr "Огляд"
-
-#~ msgid "Fullscreen/Restore from fullscreen"
-#~ msgstr "Повний екран/Відновлення з повноекранного режиму"
-
-#~ msgid "Input Balance"
-#~ msgstr "Вхідний баланс"
-
-#~ msgid "Softclip Level"
-#~ msgstr "Рівень М'якого кліпса"
-
-#~ msgid "Output Balance"
-#~ msgstr "Баланс виведення"
-
-#~ msgid "Delay L/R"
-#~ msgstr "Затримка L/R"
-
-#~ msgid "Delay Left Right"
-#~ msgstr "Затримка лівий правий"
-
-#~ msgid "Undefined Name - Process ID "
-#~ msgstr "Невизначене ім'я - ID процесу "
-
-#~ msgid "Output Preset"
-#~ msgstr "Попереднє налаштування виводу"
-
-#~ msgid "Input Preset"
-#~ msgstr "Вхідні налаштування"
-
-#~ msgid "Weblate https://hosted.weblate.org/projects/easyeffects/"
-#~ msgstr "Weblate https://hosted.weblate.org/projects/easyeffects/"
-
-#~ msgid ""
-#~ "Show the loaded preset of a specific category. Takes 'input' or 'output' "
-#~ "as a value. Example: easyeffects -s input"
-#~ msgstr ""
-#~ "Показати застосований пресет певної категорії. Приймає «input» або "
-#~ "«output» як значення. Приклад: easyeffects -s input"
-
-#~ msgid "_Output"
-#~ msgstr "_'Вихід"
-
-#~ msgid "_Input"
-#~ msgstr "_Введення"
-
-#~ msgid "The File Is Not Regular"
-#~ msgstr "Файл не звичайний"
-
-#~ msgid "The Impulse File May Be Corrupted or Unsupported"
-#~ msgstr "Файл Impulse може бути пошкоджений або не підтримується"
-
-#~ msgid "Only Stereo Impulse Files Are Supported"
-#~ msgstr "Підтримуються лише файли Stereo Impulse"
-
-#~ msgid "Import Impulse File"
-#~ msgstr "Імпортувати файл імпульсу"
-
-#~ msgid "Open"
-#~ msgstr "Відчинено"
-
-#~ msgid "No Impulse File Loaded"
-#~ msgstr "Імпульсний файл не застосовано"
-
-#~ msgid ""
-#~ "APO Preset Not Loaded. File Format May Be Not Supported. Please Check Its "
-#~ "Content."
-#~ msgstr ""
-#~ "Попереднє налаштування APO не завантажено. Формат файлу може не "
-#~ "підтримуватися. Будь ласка, перевірте його вміст."
-
-#~ msgid "Split channels not yet supported when exporting APO presets."
-#~ msgstr ""
-#~ "Розділення каналів ще не підтримується під час експорту пресетів APO."
-
-#~ msgid "Export EqualizerAPO Preset File"
-#~ msgstr "Експортувати файл пресету EqualizerAPO"
-
-#~ msgid "Save"
-#~ msgstr "Зберегти"
-
-#~ msgid "EqualizerAPO Presets"
-#~ msgstr "Попередні налаштування еквалайзера APO"
-
-#~ msgid ""
-#~ "GraphicEQ Preset Not Loaded. File Format May Be Not Supported. Please "
-#~ "Check Its Content."
-#~ msgstr ""
-#~ "Попереднє налаштування GraphicEQ не завантажено. Формат файлу може не "
-#~ "підтримуватися. Будь ласка, перевірте його вміст."
-
-#~ msgid "Remove Autoloading Preset"
-#~ msgstr "Видаліть налаштування автозавантаження"
-
-#~ msgid "Remove"
-#~ msgstr "Видалити"
-
-#~ msgid "Output Device"
-#~ msgstr "Пристрій виведення"
-
-#~ msgid "Add"
-#~ msgstr "Додати"
-
-#~ msgid "Community Preset"
-#~ msgstr "Попереднє налаштування спільноти"
-
-#~ msgid "Package"
-#~ msgstr "Пакет"
-
-#~ msgid "Save?"
-#~ msgstr "Зберегти?"
-
-#~ msgid "Delete?"
-#~ msgstr "Видалити?"
-
-#~ msgid "Last Local Preset Loaded"
-#~ msgstr "Останній застосований локальний пресет"
-
-#~ msgid "Last Community Preset Loaded"
-#~ msgstr "Останній застосований пресет зі спільноти"
-
-#~ msgid ""
-#~ "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To "
-#~ "The Standard Model."
-#~ msgstr ""
-#~ "Вибрана модель не завантажена. Його формат може не підтримуватися. "
-#~ "Повернувся до стандартної моделі."
-
-#~ msgid "{} Not Available"
-#~ msgstr "{} Недоступно"
-
-#~ msgid ""
-#~ "The software required for the {} effect, \"{}\", is not installed. "
-#~ "Consider using the Easy Effects Flatpak package or installing the "
-#~ "software yourself. If you've installed the missing software, you must "
-#~ "restart Easy Effects using the 'Quit' option inside the menu in order to "
-#~ "make the effect availble to use."
-#~ msgstr ""
-#~ "Програмне забезпечення, необхідне для ефекту {}, \"{}\", не інстальовано. "
-#~ "Спробуйте скористатися пакетом Easy Effects Flatpak або самостійно "
-#~ "встановити програмне забезпечення. Якщо ви встановили відсутнє програмне "
-#~ "забезпечення, вам потрібно перезапустити Easy Effects, використовуючи "
-#~ "опцію «Вийти» в меню, щоб зробити ефект доступним для використання."
-
-#~ msgid ""
-#~ "The {} effect was disabled when Easy Effects was compiled. This is "
-#~ "perhaps since the software required for this effect, \"{}\", was not "
-#~ "available. Consider using the Easy Effects Flatpak package or building "
-#~ "your own Easy Effects package."
-#~ msgstr ""
-#~ "Ефект {} було вимкнено під час компіляції Easy Effects. Можливо, це тому, "
-#~ "що програмне забезпечення, необхідне для цього ефекту, \"{}\", було "
-#~ "недоступне. Розгляньте можливість використання пакета Easy Effects "
-#~ "Flatpak або створення власного пакета Easy Effects."
-
-#~ msgid "-inf"
-#~ msgstr "-інф"
-
-#~ msgid "\"Presets\""
-#~ msgstr "\"Профілі\""
-
-#, fuzzy
-#~ msgid "Wet Ratio"
-#~ msgstr "Співвідношення"
-
-#, fuzzy
-#~ msgid "VAD Threshold"
-#~ msgstr "Поріг"
-
-#, fuzzy
-#~ msgid "Loudness List"
-#~ msgstr "Гучність"
