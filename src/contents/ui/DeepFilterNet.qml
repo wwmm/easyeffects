@@ -109,7 +109,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: maxDfProcessingThreshold
 
-                        label: i18n("Maximum ERB Processing threshold")
+                        label: i18n("Maximum DF Processing Threshold")
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: pluginDB.getMinValue("maxDfProcessingThreshold")
                         to: pluginDB.getMaxValue("maxDfProcessingThreshold")
@@ -125,7 +125,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: minProcessingBuffer
 
-                        label: i18n("Maximum ERB Processing threshold")
+                        label: i18n("Minimum Processing Buffer")
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: pluginDB.getMinValue("minProcessingBuffer")
                         to: pluginDB.getMaxValue("minProcessingBuffer")
