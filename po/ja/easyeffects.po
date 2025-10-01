@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-29 00:23-0300\n"
+"POT-Creation-Date: 2025-10-01 03:13+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -169,7 +169,7 @@ msgstr "出力ゲイン"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:211
-#: src/contents/ui/Reverb.qml:309 src/contents/ui/RNNoise.qml:273
+#: src/contents/ui/RNNoise.qml:273 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:433
 #, fuzzy
 msgid "Using %1"
@@ -255,18 +255,18 @@ msgstr "聞く"
 #: src/contents/ui/Expander.qml:808 src/contents/ui/Filter.qml:228
 #: src/contents/ui/Gate.qml:944 src/contents/ui/LevelMeter.qml:256
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
-#: src/contents/ui/main.qml:432 src/contents/ui/Maximizer.qml:131
+#: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/Reverb.qml:346
-#: src/contents/ui/RNNoise.qml:296 src/contents/ui/Speex.qml:183
-#: src/contents/ui/StereoTools.qml:462
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:296
+#: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:183
+#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:432
 msgid "Reset"
 msgstr "リセット"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:107 src/contents/ui/Expander.qml:449
-#: src/contents/ui/Gate.qml:473 src/contents/ui/main.qml:369
-#: src/contents/ui/StereoTools.qml:304
+#: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:304
+#: src/contents/ui/main.qml:369
 msgid "Output"
 msgstr "出力"
 
@@ -324,8 +324,8 @@ msgstr "コンプレッサー"
 
 #: src/contents/ui/Compressor.qml:70 src/contents/ui/Compressor.qml:301
 #: src/contents/ui/Deesser.qml:71 src/contents/ui/Delay.qml:56
-#: src/contents/ui/Delay.qml:214 src/contents/ui/EqualizerBandMenu.qml:45
-#: src/contents/ui/Equalizer.qml:112 src/contents/ui/Expander.qml:70
+#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:112
+#: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:70
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:285
 #: src/contents/ui/Limiter.qml:52 src/contents/ui/Loudness.qml:54
 #: src/contents/ui/MultibandCompressor.qml:416
@@ -667,6 +667,50 @@ msgstr "エンベロープ"
 msgid "Stereo Split"
 msgstr "ステレオ分割"
 
+#: src/contents/ui/Convolver.qml:100
+msgid "First"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:112
+#, fuzzy
+msgid "Second"
+msgstr "セカンドカーネル"
+
+#: src/contents/ui/Convolver.qml:144
+msgid "Combine"
+msgstr "結合"
+
+#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:282
+msgid "Spectrum"
+msgstr "スペクトラム"
+
+#: src/contents/ui/Convolver.qml:287
+#, fuzzy
+msgid "Convolver Impulse Is Not Set"
+msgstr "インパルスレスポンスを結合"
+
+#: src/contents/ui/Convolver.qml:324
+msgid "Rate"
+msgstr "レート"
+
+#: src/contents/ui/Convolver.qml:329 src/contents/ui/Delay.qml:60
+#: src/contents/ui/Delay.qml:71 src/contents/ui/Delay.qml:218
+#: src/contents/ui/Delay.qml:229
+msgid "Samples"
+msgstr "サンプル"
+
+#: src/contents/ui/Convolver.qml:334
+msgid "Duration"
+msgstr "長さ"
+
+#: src/contents/ui/Convolver.qml:371
+msgid "Stereo Width"
+msgstr "ステレオ幅"
+
+#: src/contents/ui/Convolver.qml:422 src/tags_plugin_name.cpp:25
+msgid "Autogain"
+msgstr "オートゲイン"
+
 #: src/contents/ui/ConvolverImpulseSheet.qml:47
 #, fuzzy
 msgid "Impluse File Imported."
@@ -717,50 +761,6 @@ msgstr "インパルス削除"
 msgid "Import Impulse"
 msgstr "インパルスをインポート"
 
-#: src/contents/ui/Convolver.qml:100
-msgid "First"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:112
-#, fuzzy
-msgid "Second"
-msgstr "セカンドカーネル"
-
-#: src/contents/ui/Convolver.qml:144
-msgid "Combine"
-msgstr "結合"
-
-#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:282
-msgid "Spectrum"
-msgstr "スペクトラム"
-
-#: src/contents/ui/Convolver.qml:287
-#, fuzzy
-msgid "Convolver Impulse Is Not Set"
-msgstr "インパルスレスポンスを結合"
-
-#: src/contents/ui/Convolver.qml:324
-msgid "Rate"
-msgstr "レート"
-
-#: src/contents/ui/Convolver.qml:329 src/contents/ui/Delay.qml:60
-#: src/contents/ui/Delay.qml:71 src/contents/ui/Delay.qml:218
-#: src/contents/ui/Delay.qml:229
-msgid "Samples"
-msgstr "サンプル"
-
-#: src/contents/ui/Convolver.qml:334
-msgid "Duration"
-msgstr "長さ"
-
-#: src/contents/ui/Convolver.qml:371
-msgid "Stereo Width"
-msgstr "ステレオ幅"
-
-#: src/contents/ui/Convolver.qml:422 src/tags_plugin_name.cpp:25
-msgid "Autogain"
-msgstr "オートゲイン"
-
 #: src/contents/ui/Crossfeed.qml:64
 msgid "Cutoff"
 msgstr "カットオフ"
@@ -778,8 +778,8 @@ msgstr "クロスフィード"
 msgid "Default"
 msgstr "デフォルト"
 
-#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/main.qml:339
-#: src/contents/ui/Reverb.qml:325
+#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
+#: src/contents/ui/main.qml:339
 msgid "Presets"
 msgstr "プリセット"
 
@@ -805,10 +805,17 @@ msgstr "減衰制限"
 msgid "Minimum Processing Threshold"
 msgstr "最小処理しきい値"
 
-#: src/contents/ui/DeepFilterNet.qml:96 src/contents/ui/DeepFilterNet.qml:112
-#: src/contents/ui/DeepFilterNet.qml:128
+#: src/contents/ui/DeepFilterNet.qml:96
 msgid "Maximum ERB Processing threshold"
 msgstr "最大 ERB 処理しきい値"
+
+#: src/contents/ui/DeepFilterNet.qml:112
+msgid "Maximum DF Processing Threshold"
+msgstr "最大 DF 処理しきい値"
+
+#: src/contents/ui/DeepFilterNet.qml:128
+msgid "Minimum Processing Buffer"
+msgstr "最小処理バッファ"
 
 #: src/contents/ui/DeepFilterNet.qml:135
 msgid "frames"
@@ -985,101 +992,10 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/main.qml:379
-#: src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/main.qml:379
 msgid "Input"
 msgstr "入力"
-
-#: src/contents/ui/EqualizerBandMenu.qml:25
-#: src/contents/ui/MultibandCompressor.qml:651
-#: src/contents/ui/MultibandCompressor.qml:921
-#: src/contents/ui/MultibandGate.qml:619 src/contents/ui/MultibandGate.qml:889
-#, fuzzy
-msgid "Band"
-msgstr "バンド"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
-msgid "Bell"
-msgstr "ベル"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Hi-pass"
-msgstr "ハイパス"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Hi-shelf"
-msgstr "ハイシェルフ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Lo-pass"
-msgstr "ローパス"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Lo-shelf"
-msgstr "ローシェルフ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
-msgid "Notch"
-msgstr "ノッチ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
-msgid "Resonance"
-msgstr "反響"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Allpass"
-msgstr "バイパス"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Bandpass"
-msgstr "バイパス"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
-#, fuzzy
-msgid "Ladder-pass"
-msgstr "ラダーパス"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Ladder-rej"
-msgstr "ラダーリジェクション"
-
-#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:89
-msgid "Slope"
-msgstr "スロープ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:112
-#: src/contents/ui/MultibandCompressor.qml:188
-#: src/contents/ui/MultibandGate.qml:120 src/contents/ui/PipeWirePage.qml:370
-msgid "Frequency"
-msgstr "周波数"
-
-#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:143
-#: src/contents/ui/Limiter.qml:512 src/contents/ui/MultibandCompressor.qml:336
-#: src/contents/ui/MultibandGate.qml:217
-msgid "Gain"
-msgstr "ゲイン"
-
-#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:159
-#: src/contents/ui/Pitch.qml:42
-msgid "Quality"
-msgstr "Q値"
-
-#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:128
-msgid "Width"
-msgstr "帯域幅"
-
-#: src/contents/ui/EqualizerBandMenu.qml:167
-#: src/contents/ui/MultibandCompressor.qml:78
-#: src/contents/ui/MultibandGate.qml:78
-msgid "Solo"
-msgstr "ソロ"
 
 #: src/contents/ui/Equalizer.qml:63
 msgid "APO Presets"
@@ -1171,6 +1087,97 @@ msgstr "GraphicEQ プリセットファイルのインポート"
 #, fuzzy
 msgid "Export APO"
 msgstr "プリセットをエクスポート"
+
+#: src/contents/ui/EqualizerBandMenu.qml:25
+#: src/contents/ui/MultibandCompressor.qml:651
+#: src/contents/ui/MultibandCompressor.qml:921
+#: src/contents/ui/MultibandGate.qml:619 src/contents/ui/MultibandGate.qml:889
+#, fuzzy
+msgid "Band"
+msgstr "バンド"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
+msgid "Bell"
+msgstr "ベル"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Hi-pass"
+msgstr "ハイパス"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Hi-shelf"
+msgstr "ハイシェルフ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Lo-pass"
+msgstr "ローパス"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Lo-shelf"
+msgstr "ローシェルフ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
+msgid "Notch"
+msgstr "ノッチ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
+msgid "Resonance"
+msgstr "反響"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Allpass"
+msgstr "バイパス"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Bandpass"
+msgstr "バイパス"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:54
+#, fuzzy
+msgid "Ladder-pass"
+msgstr "ラダーパス"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Ladder-rej"
+msgstr "ラダーリジェクション"
+
+#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:89
+msgid "Slope"
+msgstr "スロープ"
+
+#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:112
+#: src/contents/ui/MultibandCompressor.qml:188
+#: src/contents/ui/MultibandGate.qml:120 src/contents/ui/PipeWirePage.qml:370
+msgid "Frequency"
+msgstr "周波数"
+
+#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:143
+#: src/contents/ui/Limiter.qml:512 src/contents/ui/MultibandCompressor.qml:336
+#: src/contents/ui/MultibandGate.qml:217
+msgid "Gain"
+msgstr "ゲイン"
+
+#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:159
+#: src/contents/ui/Pitch.qml:42
+msgid "Quality"
+msgstr "Q値"
+
+#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:128
+msgid "Width"
+msgstr "帯域幅"
+
+#: src/contents/ui/EqualizerBandMenu.qml:167
+#: src/contents/ui/MultibandCompressor.qml:78
+#: src/contents/ui/MultibandGate.qml:78
+msgid "Solo"
+msgstr "ソロ"
 
 #: src/contents/ui/Exciter.qml:143
 #, fuzzy
@@ -1550,68 +1557,6 @@ msgstr "クリッピング範囲"
 msgid "Clipping"
 msgstr "クリッピング"
 
-#: src/contents/ui/main.qml:162
-#, fuzzy
-msgid "Reset Settings?"
-msgstr "_設定をリセット"
-
-#: src/contents/ui/main.qml:163
-msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
-
-#: src/contents/ui/main.qml:184
-msgid "Audio effects for PipeWire applications"
-msgstr "PipeWire アプリケーション用オーディオエフェクト"
-
-#: src/contents/ui/main.qml:195
-#, fuzzy
-msgctxt "@info:credit"
-msgid "Developer"
-msgstr "エンベロープ"
-
-#: src/contents/ui/main.qml:287
-#, fuzzy
-msgid "Active"
-msgstr "アクティブモデル"
-
-#: src/contents/ui/main.qml:298 src/contents/ui/main.qml:412
-#: src/contents/ui/ShortcutsSheet.qml:228
-#, fuzzy
-msgid "Shortcuts"
-msgstr "_ショートカット"
-
-#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
-#, fuzzy
-msgid "Manual"
-msgstr "_マニュアル"
-
-#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
-#, fuzzy
-msgid "Quit"
-msgstr "_終了"
-
-#: src/contents/ui/main.qml:347
-msgid "Turn Effects On/Off"
-msgstr ""
-
-#: src/contents/ui/main.qml:389
-#, fuzzy
-msgid "PipeWire"
-msgstr "_PipeWire"
-
-#: src/contents/ui/main.qml:404 src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:523
-#: src/contents/ui/PreferencesSheet.qml:536
-#, fuzzy
-msgid "Preferences"
-msgstr "_環境設定"
-
-#: src/contents/ui/main.qml:444
-#, fuzzy
-msgid "About Easy Effects"
-msgstr "_Easy Effects について"
-
 #: src/contents/ui/MenuAddPlugins.qml:132
 #, fuzzy
 msgid "Added Effect"
@@ -1905,6 +1850,14 @@ msgstr "クイックシーク"
 #: src/contents/ui/Pitch.qml:244
 msgid "Anti-aliasing"
 msgstr "アンチエイリアス"
+
+#: src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:404
+#, fuzzy
+msgid "Preferences"
+msgstr "_環境設定"
 
 #: src/contents/ui/PreferencesSheet.qml:34
 #, fuzzy
@@ -2320,6 +2273,57 @@ msgstr "オートゲイン"
 msgid "No Preset Loaded"
 msgstr "プリセットが読み込まれていません"
 
+#: src/contents/ui/RNNoise.qml:55
+#, fuzzy
+msgid "Model File Imported."
+msgstr "インパルスファイルがインポートされていません"
+
+#: src/contents/ui/RNNoise.qml:57
+#, fuzzy
+msgid "Failed to Import the Model File."
+msgstr "モデルファイルをインポート"
+
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
+msgid "Voice Detection"
+msgstr "音声検出"
+
+#: src/contents/ui/RNNoise.qml:108
+msgid "Wet Level"
+msgstr "Wet レベル"
+
+#: src/contents/ui/RNNoise.qml:147
+#, fuzzy
+msgid "Use the Standard Model"
+msgstr "標準モデル"
+
+#: src/contents/ui/RNNoise.qml:158
+#, fuzzy
+msgid "User Models"
+msgstr "RNNoise モデル"
+
+#: src/contents/ui/RNNoise.qml:207
+#, fuzzy
+msgid "Loaded Model: %1"
+msgstr "標準モデル"
+
+#: src/contents/ui/RNNoise.qml:219
+#, fuzzy
+msgid "Delete this Model"
+msgstr "このモデルファイルを削除"
+
+#: src/contents/ui/RNNoise.qml:224
+#, fuzzy
+msgid "Removed Model: %1"
+msgstr "このモデルファイルを削除"
+
+#: src/contents/ui/RNNoise.qml:226
+msgid "Failed to Remove the Model: %1"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:289
+msgid "Import Model"
+msgstr "モデルインポート"
+
 #: src/contents/ui/Reverb.qml:52
 msgid "Room Size"
 msgstr "部屋のサイズ"
@@ -2402,57 +2406,6 @@ msgstr "ディスコ"
 msgid "Large Occupied Hall"
 msgstr "占有面積の大きいホール"
 
-#: src/contents/ui/RNNoise.qml:55
-#, fuzzy
-msgid "Model File Imported."
-msgstr "インパルスファイルがインポートされていません"
-
-#: src/contents/ui/RNNoise.qml:57
-#, fuzzy
-msgid "Failed to Import the Model File."
-msgstr "モデルファイルをインポート"
-
-#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
-msgid "Voice Detection"
-msgstr "音声検出"
-
-#: src/contents/ui/RNNoise.qml:108
-msgid "Wet Level"
-msgstr "Wet レベル"
-
-#: src/contents/ui/RNNoise.qml:147
-#, fuzzy
-msgid "Use the Standard Model"
-msgstr "標準モデル"
-
-#: src/contents/ui/RNNoise.qml:158
-#, fuzzy
-msgid "User Models"
-msgstr "RNNoise モデル"
-
-#: src/contents/ui/RNNoise.qml:207
-#, fuzzy
-msgid "Loaded Model: %1"
-msgstr "標準モデル"
-
-#: src/contents/ui/RNNoise.qml:219
-#, fuzzy
-msgid "Delete this Model"
-msgstr "このモデルファイルを削除"
-
-#: src/contents/ui/RNNoise.qml:224
-#, fuzzy
-msgid "Removed Model: %1"
-msgstr "このモデルファイルを削除"
-
-#: src/contents/ui/RNNoise.qml:226
-msgid "Failed to Remove the Model: %1"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:289
-msgid "Import Model"
-msgstr "モデルインポート"
-
 #: src/contents/ui/ShortcutsSheet.qml:34
 #, fuzzy
 msgid "Show Help"
@@ -2480,6 +2433,12 @@ msgstr "Easy Effectsのバージョンを表示"
 #: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:298
+#: src/contents/ui/main.qml:412
+#, fuzzy
+msgid "Shortcuts"
+msgstr "_ショートカット"
 
 #: src/contents/ui/Speex.qml:49
 msgid "Denoise"
@@ -2578,6 +2537,54 @@ msgstr "ステレオベース"
 msgid "Stereo Phase"
 msgstr "ステレオ位相"
 
+#: src/contents/ui/main.qml:162
+#, fuzzy
+msgid "Reset Settings?"
+msgstr "_設定をリセット"
+
+#: src/contents/ui/main.qml:163
+msgid "Are you sure you want to reset all Easy Effects settings?"
+msgstr ""
+
+#: src/contents/ui/main.qml:184
+msgid "Audio effects for PipeWire applications"
+msgstr "PipeWire アプリケーション用オーディオエフェクト"
+
+#: src/contents/ui/main.qml:195
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "エンベロープ"
+
+#: src/contents/ui/main.qml:287
+#, fuzzy
+msgid "Active"
+msgstr "アクティブモデル"
+
+#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
+#, fuzzy
+msgid "Manual"
+msgstr "_マニュアル"
+
+#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
+#, fuzzy
+msgid "Quit"
+msgstr "_終了"
+
+#: src/contents/ui/main.qml:347
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:389
+#, fuzzy
+msgid "PipeWire"
+msgstr "_PipeWire"
+
+#: src/contents/ui/main.qml:444
+#, fuzzy
+msgid "About Easy Effects"
+msgstr "_Easy Effects について"
+
 #: src/plugin_base.cpp:270
 msgid "(Mic)"
 msgstr ""
@@ -2591,33 +2598,33 @@ msgstr "スピーカー"
 msgid "Output Level Meter"
 msgstr "出力レベルメーター"
 
-#: src/presets_manager.cpp:1439 src/presets_manager.cpp:1446
-#: src/presets_manager.cpp:1456 src/presets_manager.cpp:1463
-#: src/presets_manager.cpp:1472 src/presets_manager.cpp:1480
+#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
+#: src/presets_manager.cpp:790 src/presets_manager.cpp:797
+#: src/presets_manager.cpp:806 src/presets_manager.cpp:814
 msgid "Preset Not Loaded Correctly"
 msgstr "プリセットが正しく読み込まれていません"
 
-#: src/presets_manager.cpp:1439
+#: src/presets_manager.cpp:773
 msgid "Wrong Format in Excluded Apps List"
 msgstr "間違った形式の除外されたアプリ一覧"
 
-#: src/presets_manager.cpp:1447
+#: src/presets_manager.cpp:781
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "除外されたアプリ一覧の読み込み中に発生した一般的なエラー"
 
-#: src/presets_manager.cpp:1456
+#: src/presets_manager.cpp:790
 msgid "Wrong Format in Effects List"
 msgstr "エフェクト一覧の間違った形式"
 
-#: src/presets_manager.cpp:1463
+#: src/presets_manager.cpp:797
 msgid "Generic Error While Loading Effects List"
 msgstr "エフェクト一覧の読み込み中に発生した一般的なエラー"
 
-#: src/presets_manager.cpp:1473
+#: src/presets_manager.cpp:807
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "1つ以上のパラメータに間違った形式が設定されています"
 
-#: src/presets_manager.cpp:1481
+#: src/presets_manager.cpp:815
 msgid "Generic Error While Loading The Effect"
 msgstr "エフェクトの読み込み中に発生した一般的なエラー"
 
@@ -2880,12 +2887,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
 #~ msgid "Impulse Files List"
 #~ msgstr "インパルスファイル一覧"
-
-#~ msgid "Maximum DF Processing Threshold"
-#~ msgstr "最大 DF 処理しきい値"
-
-#~ msgid "Minimum Processing Buffer"
-#~ msgstr "最小処理バッファ"
 
 #~ msgid "Frequency 1 Split"
 #~ msgstr "周波数 1 スプリット"

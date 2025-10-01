@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-29 00:23-0300\n"
+"POT-Creation-Date: 2025-10-01 03:13+0000\n"
 "PO-Revision-Date: 2025-09-29 18:02+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :("
-"n>6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
+"(n>6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:44
@@ -167,7 +167,7 @@ msgstr "Gnóthachan Aschuir"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:211
-#: src/contents/ui/Reverb.qml:309 src/contents/ui/RNNoise.qml:273
+#: src/contents/ui/RNNoise.qml:273 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:433
 msgid "Using %1"
 msgstr "Ag baint úsáide as %1"
@@ -250,18 +250,18 @@ msgstr "Éist"
 #: src/contents/ui/Expander.qml:808 src/contents/ui/Filter.qml:228
 #: src/contents/ui/Gate.qml:944 src/contents/ui/LevelMeter.qml:256
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
-#: src/contents/ui/main.qml:432 src/contents/ui/Maximizer.qml:131
+#: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/Reverb.qml:346
-#: src/contents/ui/RNNoise.qml:296 src/contents/ui/Speex.qml:183
-#: src/contents/ui/StereoTools.qml:462
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:296
+#: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:183
+#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:432
 msgid "Reset"
 msgstr "Athshocraigh"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:107 src/contents/ui/Expander.qml:449
-#: src/contents/ui/Gate.qml:473 src/contents/ui/main.qml:369
-#: src/contents/ui/StereoTools.qml:304
+#: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:304
+#: src/contents/ui/main.qml:369
 msgid "Output"
 msgstr "Aschur"
 
@@ -315,8 +315,8 @@ msgstr "Comhbhrúiteoir"
 
 #: src/contents/ui/Compressor.qml:70 src/contents/ui/Compressor.qml:301
 #: src/contents/ui/Deesser.qml:71 src/contents/ui/Delay.qml:56
-#: src/contents/ui/Delay.qml:214 src/contents/ui/EqualizerBandMenu.qml:45
-#: src/contents/ui/Equalizer.qml:112 src/contents/ui/Expander.qml:70
+#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:112
+#: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:70
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:285
 #: src/contents/ui/Limiter.qml:52 src/contents/ui/Loudness.qml:54
 #: src/contents/ui/MultibandCompressor.qml:416
@@ -655,6 +655,48 @@ msgstr "Clúdach litreach"
 msgid "Stereo Split"
 msgstr "Scoilt Steirió"
 
+#: src/contents/ui/Convolver.qml:100
+msgid "First"
+msgstr "Ar dtús"
+
+#: src/contents/ui/Convolver.qml:112
+msgid "Second"
+msgstr "Dara"
+
+#: src/contents/ui/Convolver.qml:144
+msgid "Combine"
+msgstr "Comhcheangail"
+
+#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:282
+msgid "Spectrum"
+msgstr "Speictream"
+
+#: src/contents/ui/Convolver.qml:287
+msgid "Convolver Impulse Is Not Set"
+msgstr "Níl Impulse Convolver Socraithe"
+
+#: src/contents/ui/Convolver.qml:324
+msgid "Rate"
+msgstr "Ráta"
+
+#: src/contents/ui/Convolver.qml:329 src/contents/ui/Delay.qml:60
+#: src/contents/ui/Delay.qml:71 src/contents/ui/Delay.qml:218
+#: src/contents/ui/Delay.qml:229
+msgid "Samples"
+msgstr "Samplaí"
+
+#: src/contents/ui/Convolver.qml:334
+msgid "Duration"
+msgstr "Fad ama"
+
+#: src/contents/ui/Convolver.qml:371
+msgid "Stereo Width"
+msgstr "Leithead Steirió"
+
+#: src/contents/ui/Convolver.qml:422 src/tags_plugin_name.cpp:25
+msgid "Autogain"
+msgstr "Uathghnóthachan"
+
 #: src/contents/ui/ConvolverImpulseSheet.qml:47
 msgid "Impluse File Imported."
 msgstr "Comhad Impulse Iompórtáilte."
@@ -700,48 +742,6 @@ msgstr "Scrios an Impulse seo"
 msgid "Import Impulse"
 msgstr "Iompórtáil Impulse"
 
-#: src/contents/ui/Convolver.qml:100
-msgid "First"
-msgstr "Ar dtús"
-
-#: src/contents/ui/Convolver.qml:112
-msgid "Second"
-msgstr "Dara"
-
-#: src/contents/ui/Convolver.qml:144
-msgid "Combine"
-msgstr "Comhcheangail"
-
-#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:282
-msgid "Spectrum"
-msgstr "Speictream"
-
-#: src/contents/ui/Convolver.qml:287
-msgid "Convolver Impulse Is Not Set"
-msgstr "Níl Impulse Convolver Socraithe"
-
-#: src/contents/ui/Convolver.qml:324
-msgid "Rate"
-msgstr "Ráta"
-
-#: src/contents/ui/Convolver.qml:329 src/contents/ui/Delay.qml:60
-#: src/contents/ui/Delay.qml:71 src/contents/ui/Delay.qml:218
-#: src/contents/ui/Delay.qml:229
-msgid "Samples"
-msgstr "Samplaí"
-
-#: src/contents/ui/Convolver.qml:334
-msgid "Duration"
-msgstr "Fad ama"
-
-#: src/contents/ui/Convolver.qml:371
-msgid "Stereo Width"
-msgstr "Leithead Steirió"
-
-#: src/contents/ui/Convolver.qml:422 src/tags_plugin_name.cpp:25
-msgid "Autogain"
-msgstr "Uathghnóthachan"
-
 #: src/contents/ui/Crossfeed.qml:64
 msgid "Cutoff"
 msgstr "Gearradh"
@@ -758,8 +758,8 @@ msgstr "Réamhshocruithe Trasbheathú"
 msgid "Default"
 msgstr "Réamhshocrú"
 
-#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/main.qml:339
-#: src/contents/ui/Reverb.qml:325
+#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
+#: src/contents/ui/main.qml:339
 msgid "Presets"
 msgstr "Réamhshocruithe"
 
@@ -785,10 +785,17 @@ msgstr "Teorainn Maolaithe"
 msgid "Minimum Processing Threshold"
 msgstr "Tairseach Íosta Próiseála"
 
-#: src/contents/ui/DeepFilterNet.qml:96 src/contents/ui/DeepFilterNet.qml:112
-#: src/contents/ui/DeepFilterNet.qml:128
+#: src/contents/ui/DeepFilterNet.qml:96
 msgid "Maximum ERB Processing threshold"
 msgstr "Tairseach uasta próiseála ERB"
+
+#: src/contents/ui/DeepFilterNet.qml:112
+msgid "Maximum DF Processing Threshold"
+msgstr "Tairseach Uasta Próiseála Óglaigh na hÉireann"
+
+#: src/contents/ui/DeepFilterNet.qml:128
+msgid "Minimum Processing Buffer"
+msgstr "Maolán Próiseála Íosta"
 
 #: src/contents/ui/DeepFilterNet.qml:135
 msgid "frames"
@@ -957,10 +964,91 @@ msgstr "Rialú leibhéil fuaime"
 msgid "Input and output gain controls with level meters"
 msgstr "Rialuithe gnóthachain ionchuir agus aschuir le méadair leibhéal"
 
-#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/main.qml:379
-#: src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/main.qml:379
 msgid "Input"
 msgstr "Ionchur"
+
+#: src/contents/ui/Equalizer.qml:63
+msgid "APO Presets"
+msgstr "Réamhshocruithe APO"
+
+#: src/contents/ui/Equalizer.qml:66
+msgid "APO Preset File Imported."
+msgstr "Comhad Réamhshocraithe APO Iompórtáilte."
+
+#: src/contents/ui/Equalizer.qml:68
+msgid "Failed to Import the APO Preset File."
+msgstr "Theip ar an gcomhad réamhshocraithe APO a iompórtáil."
+
+#: src/contents/ui/Equalizer.qml:77
+msgid "GraphicEQ Presets"
+msgstr "Réamhshocruithe GrafachEQ"
+
+#: src/contents/ui/Equalizer.qml:80
+msgid "GraphicEQ Preset File Imported."
+msgstr "Comhad Réamhshocraithe GraphicEQ Iompórtáilte."
+
+#: src/contents/ui/Equalizer.qml:82
+msgid "Failed to Import the GraphicEQ Preset File."
+msgstr "Theip ar an gcomhad réamhshocraithe GraphicEQ a iompórtáil."
+
+#: src/contents/ui/Equalizer.qml:91
+msgid "APO Preset"
+msgstr "Réamhshocrú APO"
+
+#: src/contents/ui/Equalizer.qml:94
+msgid "APO Preset File Exported."
+msgstr "Comhad Réamhshocraithe APO Easpórtáilte."
+
+#: src/contents/ui/Equalizer.qml:96
+msgid "Failed to Export the APO Preset File."
+msgstr "Theip ar easpórtáil an chomhaid réamhshocraithe APO."
+
+#: src/contents/ui/Equalizer.qml:125
+msgid "Bands"
+msgstr "Bannaí Ceoil"
+
+#: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:174
+#: src/contents/ui/StereoTools.qml:67 src/contents/ui/StereoTools.qml:321
+msgid "Balance"
+msgstr "Iarmhéid"
+
+#: src/contents/ui/Equalizer.qml:158
+msgid "Pitch Left"
+msgstr "Páirc Ar Chlé"
+
+#: src/contents/ui/Equalizer.qml:175
+msgid "Pitch Right"
+msgstr "Páirc Ar Dheis"
+
+#: src/contents/ui/Equalizer.qml:321
+msgid "Split Channels"
+msgstr "Cainéil Scoilte"
+
+#: src/contents/ui/Equalizer.qml:331
+msgid "Flat Response"
+msgstr "Freagra Maol"
+
+#: src/contents/ui/Equalizer.qml:338
+msgid "Calculate Frequencies"
+msgstr "Ríomh minicíochtaí"
+
+#: src/contents/ui/Equalizer.qml:345
+msgid "Sort Bands"
+msgstr "Bandaí Sórtála"
+
+#: src/contents/ui/Equalizer.qml:352
+msgid "Import APO"
+msgstr "Iompórtáil APO"
+
+#: src/contents/ui/Equalizer.qml:359
+msgid "Import APO (GraphicEQ)"
+msgstr "Iompórtáil APO (GraphicEQ)"
+
+#: src/contents/ui/Equalizer.qml:366
+msgid "Export APO"
+msgstr "Easpórtáil APO"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:651
@@ -1043,87 +1131,6 @@ msgstr "Leithead"
 #: src/contents/ui/MultibandGate.qml:78
 msgid "Solo"
 msgstr "Níl ann ach"
-
-#: src/contents/ui/Equalizer.qml:63
-msgid "APO Presets"
-msgstr "Réamhshocruithe APO"
-
-#: src/contents/ui/Equalizer.qml:66
-msgid "APO Preset File Imported."
-msgstr "Comhad Réamhshocraithe APO Iompórtáilte."
-
-#: src/contents/ui/Equalizer.qml:68
-msgid "Failed to Import the APO Preset File."
-msgstr "Theip ar an gcomhad réamhshocraithe APO a iompórtáil."
-
-#: src/contents/ui/Equalizer.qml:77
-msgid "GraphicEQ Presets"
-msgstr "Réamhshocruithe GrafachEQ"
-
-#: src/contents/ui/Equalizer.qml:80
-msgid "GraphicEQ Preset File Imported."
-msgstr "Comhad Réamhshocraithe GraphicEQ Iompórtáilte."
-
-#: src/contents/ui/Equalizer.qml:82
-msgid "Failed to Import the GraphicEQ Preset File."
-msgstr "Theip ar an gcomhad réamhshocraithe GraphicEQ a iompórtáil."
-
-#: src/contents/ui/Equalizer.qml:91
-msgid "APO Preset"
-msgstr "Réamhshocrú APO"
-
-#: src/contents/ui/Equalizer.qml:94
-msgid "APO Preset File Exported."
-msgstr "Comhad Réamhshocraithe APO Easpórtáilte."
-
-#: src/contents/ui/Equalizer.qml:96
-msgid "Failed to Export the APO Preset File."
-msgstr "Theip ar easpórtáil an chomhaid réamhshocraithe APO."
-
-#: src/contents/ui/Equalizer.qml:125
-msgid "Bands"
-msgstr "Bannaí Ceoil"
-
-#: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:174
-#: src/contents/ui/StereoTools.qml:67 src/contents/ui/StereoTools.qml:321
-msgid "Balance"
-msgstr "Iarmhéid"
-
-#: src/contents/ui/Equalizer.qml:158
-msgid "Pitch Left"
-msgstr "Páirc Ar Chlé"
-
-#: src/contents/ui/Equalizer.qml:175
-msgid "Pitch Right"
-msgstr "Páirc Ar Dheis"
-
-#: src/contents/ui/Equalizer.qml:321
-msgid "Split Channels"
-msgstr "Cainéil Scoilte"
-
-#: src/contents/ui/Equalizer.qml:331
-msgid "Flat Response"
-msgstr "Freagra Maol"
-
-#: src/contents/ui/Equalizer.qml:338
-msgid "Calculate Frequencies"
-msgstr "Ríomh minicíochtaí"
-
-#: src/contents/ui/Equalizer.qml:345
-msgid "Sort Bands"
-msgstr "Bandaí Sórtála"
-
-#: src/contents/ui/Equalizer.qml:352
-msgid "Import APO"
-msgstr "Iompórtáil APO"
-
-#: src/contents/ui/Equalizer.qml:359
-msgid "Import APO (GraphicEQ)"
-msgstr "Iompórtáil APO (GraphicEQ)"
-
-#: src/contents/ui/Equalizer.qml:366
-msgid "Export APO"
-msgstr "Easpórtáil APO"
 
 #: src/contents/ui/Exciter.qml:143
 msgid "Ceil Active"
@@ -1468,59 +1475,6 @@ msgstr "Raon Gearrtha"
 msgid "Clipping"
 msgstr "Bearradh"
 
-#: src/contents/ui/main.qml:162
-msgid "Reset Settings?"
-msgstr "Athshocraigh Socruithe?"
-
-#: src/contents/ui/main.qml:163
-msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr "An bhfuil tú cinnte gur mian leat gach socrú Easy Effects a athshocrú?"
-
-#: src/contents/ui/main.qml:184
-msgid "Audio effects for PipeWire applications"
-msgstr "Éifeachtaí fuaime d'fheidhmchláir PipeWire"
-
-#: src/contents/ui/main.qml:195
-msgctxt "@info:credit"
-msgid "Developer"
-msgstr "Forbróir"
-
-#: src/contents/ui/main.qml:287
-msgid "Active"
-msgstr "Gníomhach"
-
-#: src/contents/ui/main.qml:298 src/contents/ui/main.qml:412
-#: src/contents/ui/ShortcutsSheet.qml:228
-msgid "Shortcuts"
-msgstr "Aicearraí"
-
-#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
-msgid "Manual"
-msgstr "Lámhleabhar"
-
-#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
-msgid "Quit"
-msgstr "Scoir"
-
-#: src/contents/ui/main.qml:347
-msgid "Turn Effects On/Off"
-msgstr "Cas Éifeachtaí Air/Múch"
-
-#: src/contents/ui/main.qml:389
-msgid "PipeWire"
-msgstr "PipeWire"
-
-#: src/contents/ui/main.qml:404 src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:523
-#: src/contents/ui/PreferencesSheet.qml:536
-msgid "Preferences"
-msgstr "Roghanna"
-
-#: src/contents/ui/main.qml:444
-msgid "About Easy Effects"
-msgstr "Maidir le hÉifeachtaí Éasca"
-
 #: src/contents/ui/MenuAddPlugins.qml:132
 msgid "Added Effect"
 msgstr "Éifeacht Bhreise"
@@ -1803,6 +1757,13 @@ msgstr "Lorg Tapa"
 #: src/contents/ui/Pitch.qml:244
 msgid "Anti-aliasing"
 msgstr "Frithailiasáil"
+
+#: src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:404
+msgid "Preferences"
+msgstr "Roghanna"
 
 #: src/contents/ui/PreferencesSheet.qml:34
 msgid "Enable Service Mode"
@@ -2194,6 +2155,50 @@ msgstr "Uathlódáil"
 msgid "No Preset Loaded"
 msgstr "Níor luchtaíodh aon réamhshocrú"
 
+#: src/contents/ui/RNNoise.qml:55
+msgid "Model File Imported."
+msgstr "Comhad Múnla Iompórtáilte."
+
+#: src/contents/ui/RNNoise.qml:57
+msgid "Failed to Import the Model File."
+msgstr "Theip ar an gcomhad múnla a iompórtáil."
+
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
+msgid "Voice Detection"
+msgstr "Brath Gutha"
+
+#: src/contents/ui/RNNoise.qml:108
+msgid "Wet Level"
+msgstr "Leibhéal Fliuch"
+
+#: src/contents/ui/RNNoise.qml:147
+msgid "Use the Standard Model"
+msgstr "Úsáid an tSamhail Chaighdeánach"
+
+#: src/contents/ui/RNNoise.qml:158
+msgid "User Models"
+msgstr "Samhlacha Úsáideora"
+
+#: src/contents/ui/RNNoise.qml:207
+msgid "Loaded Model: %1"
+msgstr "Múnla Luchtaithe: %1"
+
+#: src/contents/ui/RNNoise.qml:219
+msgid "Delete this Model"
+msgstr "Scrios an tSamhail seo"
+
+#: src/contents/ui/RNNoise.qml:224
+msgid "Removed Model: %1"
+msgstr "Múnla Bainte: %1"
+
+#: src/contents/ui/RNNoise.qml:226
+msgid "Failed to Remove the Model: %1"
+msgstr "Theip ar an tSamhail a Bhaint: %1"
+
+#: src/contents/ui/RNNoise.qml:289
+msgid "Import Model"
+msgstr "Iompórtáil Samhail"
+
 #: src/contents/ui/Reverb.qml:52
 msgid "Room Size"
 msgstr "Méid an tseomra"
@@ -2274,50 +2279,6 @@ msgstr "Diosca"
 msgid "Large Occupied Hall"
 msgstr "Halla Mór faoi Fhorghabháil"
 
-#: src/contents/ui/RNNoise.qml:55
-msgid "Model File Imported."
-msgstr "Comhad Múnla Iompórtáilte."
-
-#: src/contents/ui/RNNoise.qml:57
-msgid "Failed to Import the Model File."
-msgstr "Theip ar an gcomhad múnla a iompórtáil."
-
-#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
-msgid "Voice Detection"
-msgstr "Brath Gutha"
-
-#: src/contents/ui/RNNoise.qml:108
-msgid "Wet Level"
-msgstr "Leibhéal Fliuch"
-
-#: src/contents/ui/RNNoise.qml:147
-msgid "Use the Standard Model"
-msgstr "Úsáid an tSamhail Chaighdeánach"
-
-#: src/contents/ui/RNNoise.qml:158
-msgid "User Models"
-msgstr "Samhlacha Úsáideora"
-
-#: src/contents/ui/RNNoise.qml:207
-msgid "Loaded Model: %1"
-msgstr "Múnla Luchtaithe: %1"
-
-#: src/contents/ui/RNNoise.qml:219
-msgid "Delete this Model"
-msgstr "Scrios an tSamhail seo"
-
-#: src/contents/ui/RNNoise.qml:224
-msgid "Removed Model: %1"
-msgstr "Múnla Bainte: %1"
-
-#: src/contents/ui/RNNoise.qml:226
-msgid "Failed to Remove the Model: %1"
-msgstr "Theip ar an tSamhail a Bhaint: %1"
-
-#: src/contents/ui/RNNoise.qml:289
-msgid "Import Model"
-msgstr "Iompórtáil Samhail"
-
 #: src/contents/ui/ShortcutsSheet.qml:34
 msgid "Show Help"
 msgstr "Taispeáin Cabhair"
@@ -2342,6 +2303,11 @@ msgstr "Deireadh a chur le Seirbhís Éifeachtaí Éasca"
 #: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr "Is féidir é a úsáid ar rialuithe uimhriúla"
+
+#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:298
+#: src/contents/ui/main.qml:412
+msgid "Shortcuts"
+msgstr "Aicearraí"
 
 #: src/contents/ui/Speex.qml:49
 msgid "Denoise"
@@ -2439,6 +2405,47 @@ msgstr "Bonn Steirió"
 msgid "Stereo Phase"
 msgstr "Céim Steirió"
 
+#: src/contents/ui/main.qml:162
+msgid "Reset Settings?"
+msgstr "Athshocraigh Socruithe?"
+
+#: src/contents/ui/main.qml:163
+msgid "Are you sure you want to reset all Easy Effects settings?"
+msgstr "An bhfuil tú cinnte gur mian leat gach socrú Easy Effects a athshocrú?"
+
+#: src/contents/ui/main.qml:184
+msgid "Audio effects for PipeWire applications"
+msgstr "Éifeachtaí fuaime d'fheidhmchláir PipeWire"
+
+#: src/contents/ui/main.qml:195
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Forbróir"
+
+#: src/contents/ui/main.qml:287
+msgid "Active"
+msgstr "Gníomhach"
+
+#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
+msgid "Manual"
+msgstr "Lámhleabhar"
+
+#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
+msgid "Quit"
+msgstr "Scoir"
+
+#: src/contents/ui/main.qml:347
+msgid "Turn Effects On/Off"
+msgstr "Cas Éifeachtaí Air/Múch"
+
+#: src/contents/ui/main.qml:389
+msgid "PipeWire"
+msgstr "PipeWire"
+
+#: src/contents/ui/main.qml:444
+msgid "About Easy Effects"
+msgstr "Maidir le hÉifeachtaí Éasca"
+
 #: src/plugin_base.cpp:270
 msgid "(Mic)"
 msgstr "(Micreafón)"
@@ -2451,33 +2458,33 @@ msgstr "(Cainteoirí)"
 msgid "Output Level Meter"
 msgstr "Méadar Leibhéal Aschurtha"
 
-#: src/presets_manager.cpp:1439 src/presets_manager.cpp:1446
-#: src/presets_manager.cpp:1456 src/presets_manager.cpp:1463
-#: src/presets_manager.cpp:1472 src/presets_manager.cpp:1480
+#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
+#: src/presets_manager.cpp:790 src/presets_manager.cpp:797
+#: src/presets_manager.cpp:806 src/presets_manager.cpp:814
 msgid "Preset Not Loaded Correctly"
 msgstr "Réamhshocrú Gan luchtú i gceart"
 
-#: src/presets_manager.cpp:1439
+#: src/presets_manager.cpp:773
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Formáid mhícheart sa liosta feidhmchlár eisiata"
 
-#: src/presets_manager.cpp:1447
+#: src/presets_manager.cpp:781
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Earráid chineálach agus liosta feidhmchlár eisiata á luchtú"
 
-#: src/presets_manager.cpp:1456
+#: src/presets_manager.cpp:790
 msgid "Wrong Format in Effects List"
 msgstr "Formáid Mhícheart sa Liosta Éifeachtaí"
 
-#: src/presets_manager.cpp:1463
+#: src/presets_manager.cpp:797
 msgid "Generic Error While Loading Effects List"
 msgstr "Earráid chineálach agus liosta na n-éifeachtaí á luchtú"
 
-#: src/presets_manager.cpp:1473
+#: src/presets_manager.cpp:807
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Tá formáid mhícheart ag paraiméadar amháin nó níos mó"
 
-#: src/presets_manager.cpp:1481
+#: src/presets_manager.cpp:815
 msgid "Generic Error While Loading The Effect"
 msgstr "Earráid chineálach agus an éifeacht á luchtú"
 
@@ -2734,12 +2741,6 @@ msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
 
 #~ msgid "Impulse Files List"
 #~ msgstr "Liosta Comhad Impulse"
-
-#~ msgid "Maximum DF Processing Threshold"
-#~ msgstr "Tairseach Uasta Próiseála Óglaigh na hÉireann"
-
-#~ msgid "Minimum Processing Buffer"
-#~ msgstr "Maolán Próiseála Íosta"
 
 #~ msgid "Frequency 1 Split"
 #~ msgstr "Minicíocht 1 Scoilt"

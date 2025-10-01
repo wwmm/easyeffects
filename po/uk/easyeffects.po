@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-09-28 20:08-0300\n"
+"POT-Creation-Date: 2025-10-01 03:13+0000\n"
 "PO-Revision-Date: 2025-10-01 05:50+0300\n"
 "Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -34,8 +34,7 @@ msgstr "Сховати вікно."
 
 #: src/command_line_parser.cpp:47
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-msgstr ""
-"Глобальний обхід. 1 - увімкнути, 2 - вимкнути, 3 - отримати статус"
+msgstr "Глобальний обхід. 1 - увімкнути, 2 - вимкнути, 3 - отримати статус"
 
 #: src/command_line_parser.cpp:48
 msgid "Load a preset. Example: easyeffects -l music"
@@ -167,7 +166,7 @@ msgstr "Вихідне підсилення"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:211
-#: src/contents/ui/Reverb.qml:309 src/contents/ui/RNNoise.qml:273
+#: src/contents/ui/RNNoise.qml:273 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:433
 msgid "Using %1"
 msgstr "Використовується %1"
@@ -249,18 +248,18 @@ msgstr "Слухати"
 #: src/contents/ui/Expander.qml:808 src/contents/ui/Filter.qml:228
 #: src/contents/ui/Gate.qml:944 src/contents/ui/LevelMeter.qml:256
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
-#: src/contents/ui/main.qml:432 src/contents/ui/Maximizer.qml:131
+#: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/Reverb.qml:346
-#: src/contents/ui/RNNoise.qml:296 src/contents/ui/Speex.qml:183
-#: src/contents/ui/StereoTools.qml:462
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:296
+#: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:183
+#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:432
 msgid "Reset"
 msgstr "Скинути"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:107 src/contents/ui/Expander.qml:449
-#: src/contents/ui/Gate.qml:473 src/contents/ui/main.qml:369
-#: src/contents/ui/StereoTools.qml:304
+#: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:304
+#: src/contents/ui/main.qml:369
 msgid "Output"
 msgstr "Вихід"
 
@@ -287,8 +286,7 @@ msgstr "Додати до виключених застосунків"
 #: src/contents/ui/ConvolverImpulseSheet.qml:80
 #: src/contents/ui/MenuAddPlugins.qml:41
 #: src/contents/ui/PresetsCommunityPage.qml:77
-#: src/contents/ui/PresetsLocalPage.qml:145 src/contents/ui/RNNoise.qml:191
-#: src/contents/ui/PresetsLocalPage.qml:172
+#: src/contents/ui/PresetsLocalPage.qml:172 src/contents/ui/RNNoise.qml:191
 msgid "Empty"
 msgstr "Порожньо"
 
@@ -314,8 +312,8 @@ msgstr "Компресор"
 
 #: src/contents/ui/Compressor.qml:70 src/contents/ui/Compressor.qml:301
 #: src/contents/ui/Deesser.qml:71 src/contents/ui/Delay.qml:56
-#: src/contents/ui/Delay.qml:214 src/contents/ui/EqualizerBandMenu.qml:45
-#: src/contents/ui/Equalizer.qml:112 src/contents/ui/Expander.qml:70
+#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:112
+#: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:70
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:285
 #: src/contents/ui/Limiter.qml:52 src/contents/ui/Loudness.qml:54
 #: src/contents/ui/MultibandCompressor.qml:416
@@ -654,50 +652,6 @@ msgstr "Огинаюча"
 msgid "Stereo Split"
 msgstr "Розділити стерео"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:47
-msgid "Impluse File Imported."
-msgstr "Файл імпульсу імпортовано."
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:49
-msgid "Failed to Import the Impulse File."
-msgstr "Не вдалося імпортувати файл імпульсу."
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:60
-#: src/contents/ui/MenuAddPlugins.qml:144
-#: src/contents/ui/PresetsCommunityPage.qml:53
-#: src/contents/ui/PresetsLocalPage.qml:121
-#: src/contents/ui/PresetsLocalPage.qml:147
-msgid "Search"
-msgstr "Пошук"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:93
-msgid "Loaded Impulse: %1"
-msgstr "Завантажений імпульс: %1"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:99
-msgid "Remove Impulse Response"
-msgstr "Вилучити імпульсний відгук"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:100
-msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr "Ви впевнені, що хочете вилучити цей імпульсний відгук зі списку?"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:104
-msgid "Removed Impulse: %1"
-msgstr "Вилучено імпульс: %1"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:106
-msgid "Failed to Remove the Impulse: %1"
-msgstr "Не вдалося вилучити імпульс: %1"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:119
-msgid "Delete this Impulse"
-msgstr "Видалити цей імпульс"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:159
-msgid "Import Impulse"
-msgstr "Імпортувати імпульс"
-
 #: src/contents/ui/Convolver.qml:100
 msgid "First"
 msgstr "Перший"
@@ -740,6 +694,49 @@ msgstr "Ширина стерео"
 msgid "Autogain"
 msgstr "Автоматичне підсилення"
 
+#: src/contents/ui/ConvolverImpulseSheet.qml:47
+msgid "Impluse File Imported."
+msgstr "Файл імпульсу імпортовано."
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:49
+msgid "Failed to Import the Impulse File."
+msgstr "Не вдалося імпортувати файл імпульсу."
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:60
+#: src/contents/ui/MenuAddPlugins.qml:144
+#: src/contents/ui/PresetsCommunityPage.qml:53
+#: src/contents/ui/PresetsLocalPage.qml:147
+msgid "Search"
+msgstr "Пошук"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:93
+msgid "Loaded Impulse: %1"
+msgstr "Завантажений імпульс: %1"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:99
+msgid "Remove Impulse Response"
+msgstr "Вилучити імпульсний відгук"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:100
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr "Ви впевнені, що хочете вилучити цей імпульсний відгук зі списку?"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
+msgid "Removed Impulse: %1"
+msgstr "Вилучено імпульс: %1"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:106
+msgid "Failed to Remove the Impulse: %1"
+msgstr "Не вдалося вилучити імпульс: %1"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:119
+msgid "Delete this Impulse"
+msgstr "Видалити цей імпульс"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:159
+msgid "Import Impulse"
+msgstr "Імпортувати імпульс"
+
 #: src/contents/ui/Crossfeed.qml:64
 msgid "Cutoff"
 msgstr "Частота зрізу"
@@ -756,8 +753,8 @@ msgstr "Попередні налаштування"
 msgid "Default"
 msgstr "За замовчуванням"
 
-#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/main.qml:339
-#: src/contents/ui/Reverb.qml:325
+#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
+#: src/contents/ui/main.qml:339
 msgid "Presets"
 msgstr "Попередні налаштування"
 
@@ -962,10 +959,91 @@ msgstr "Контроль рівня звуку"
 msgid "Input and output gain controls with level meters"
 msgstr "Регулятори підсилення на вході та виході з індикаторами рівня"
 
-#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/main.qml:379
-#: src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/main.qml:379
 msgid "Input"
 msgstr "Вхід"
+
+#: src/contents/ui/Equalizer.qml:63
+msgid "APO Presets"
+msgstr "Попередні налаштування APO"
+
+#: src/contents/ui/Equalizer.qml:66
+msgid "APO Preset File Imported."
+msgstr "Імпортовано файл пресетів APO."
+
+#: src/contents/ui/Equalizer.qml:68
+msgid "Failed to Import the APO Preset File."
+msgstr "Не вдалося імпортувати файл пресетів APO."
+
+#: src/contents/ui/Equalizer.qml:77
+msgid "GraphicEQ Presets"
+msgstr "Попередні налаштування GraphicEQ"
+
+#: src/contents/ui/Equalizer.qml:80
+msgid "GraphicEQ Preset File Imported."
+msgstr "Імпортовано файл пресетів GraphicEQ."
+
+#: src/contents/ui/Equalizer.qml:82
+msgid "Failed to Import the GraphicEQ Preset File."
+msgstr "Не вдалося імпортувати файл пресетів GraphicEQ."
+
+#: src/contents/ui/Equalizer.qml:91
+msgid "APO Preset"
+msgstr "Попередньо налаштований APO"
+
+#: src/contents/ui/Equalizer.qml:94
+msgid "APO Preset File Exported."
+msgstr "Файл попередньо налаштованого APO експортовано."
+
+#: src/contents/ui/Equalizer.qml:96
+msgid "Failed to Export the APO Preset File."
+msgstr "Не вдалося експортувати файл пресетів APO."
+
+#: src/contents/ui/Equalizer.qml:125
+msgid "Bands"
+msgstr "Кількість смуг"
+
+#: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:174
+#: src/contents/ui/StereoTools.qml:67 src/contents/ui/StereoTools.qml:321
+msgid "Balance"
+msgstr "Баланс"
+
+#: src/contents/ui/Equalizer.qml:158
+msgid "Pitch Left"
+msgstr "Висота звуку лівого каналу"
+
+#: src/contents/ui/Equalizer.qml:175
+msgid "Pitch Right"
+msgstr "Висота звуку правого каналу"
+
+#: src/contents/ui/Equalizer.qml:321
+msgid "Split Channels"
+msgstr "Розділити канали"
+
+#: src/contents/ui/Equalizer.qml:331
+msgid "Flat Response"
+msgstr "Скинути підсилення"
+
+#: src/contents/ui/Equalizer.qml:338
+msgid "Calculate Frequencies"
+msgstr "Розрахувати частоти"
+
+#: src/contents/ui/Equalizer.qml:345
+msgid "Sort Bands"
+msgstr "Сортувати смуги"
+
+#: src/contents/ui/Equalizer.qml:352
+msgid "Import APO"
+msgstr "Імпорт APO"
+
+#: src/contents/ui/Equalizer.qml:359
+msgid "Import APO (GraphicEQ)"
+msgstr "Імпорт APO (GraphicEQ)"
+
+#: src/contents/ui/Equalizer.qml:366
+msgid "Export APO"
+msgstr "Експорт APO"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:651
@@ -1048,87 +1126,6 @@ msgstr "Ширина"
 #: src/contents/ui/MultibandGate.qml:78
 msgid "Solo"
 msgstr "На самоті"
-
-#: src/contents/ui/Equalizer.qml:63
-msgid "APO Presets"
-msgstr "Попередні налаштування APO"
-
-#: src/contents/ui/Equalizer.qml:66
-msgid "APO Preset File Imported."
-msgstr "Імпортовано файл пресетів APO."
-
-#: src/contents/ui/Equalizer.qml:68
-msgid "Failed to Import the APO Preset File."
-msgstr "Не вдалося імпортувати файл пресетів APO."
-
-#: src/contents/ui/Equalizer.qml:77
-msgid "GraphicEQ Presets"
-msgstr "Попередні налаштування GraphicEQ"
-
-#: src/contents/ui/Equalizer.qml:80
-msgid "GraphicEQ Preset File Imported."
-msgstr "Імпортовано файл пресетів GraphicEQ."
-
-#: src/contents/ui/Equalizer.qml:82
-msgid "Failed to Import the GraphicEQ Preset File."
-msgstr "Не вдалося імпортувати файл пресетів GraphicEQ."
-
-#: src/contents/ui/Equalizer.qml:91
-msgid "APO Preset"
-msgstr "Попередньо налаштований APO"
-
-#: src/contents/ui/Equalizer.qml:94
-msgid "APO Preset File Exported."
-msgstr "Файл попередньо налаштованого APO експортовано."
-
-#: src/contents/ui/Equalizer.qml:96
-msgid "Failed to Export the APO Preset File."
-msgstr "Не вдалося експортувати файл пресетів APO."
-
-#: src/contents/ui/Equalizer.qml:125
-msgid "Bands"
-msgstr "Кількість смуг"
-
-#: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:174
-#: src/contents/ui/StereoTools.qml:67 src/contents/ui/StereoTools.qml:321
-msgid "Balance"
-msgstr "Баланс"
-
-#: src/contents/ui/Equalizer.qml:158
-msgid "Pitch Left"
-msgstr "Висота звуку лівого каналу"
-
-#: src/contents/ui/Equalizer.qml:175
-msgid "Pitch Right"
-msgstr "Висота звуку правого каналу"
-
-#: src/contents/ui/Equalizer.qml:321
-msgid "Split Channels"
-msgstr "Розділити канали"
-
-#: src/contents/ui/Equalizer.qml:331
-msgid "Flat Response"
-msgstr "Скинути підсилення"
-
-#: src/contents/ui/Equalizer.qml:338
-msgid "Calculate Frequencies"
-msgstr "Розрахувати частоти"
-
-#: src/contents/ui/Equalizer.qml:345
-msgid "Sort Bands"
-msgstr "Сортувати смуги"
-
-#: src/contents/ui/Equalizer.qml:352
-msgid "Import APO"
-msgstr "Імпорт APO"
-
-#: src/contents/ui/Equalizer.qml:359
-msgid "Import APO (GraphicEQ)"
-msgstr "Імпорт APO (GraphicEQ)"
-
-#: src/contents/ui/Equalizer.qml:366
-msgid "Export APO"
-msgstr "Експорт APO"
 
 #: src/contents/ui/Exciter.qml:143
 msgid "Ceil Active"
@@ -1473,59 +1470,6 @@ msgstr "Діапазон відсікання"
 msgid "Clipping"
 msgstr "Кліппінг"
 
-#: src/contents/ui/main.qml:162
-msgid "Reset Settings?"
-msgstr "Скинути налаштування?"
-
-#: src/contents/ui/main.qml:163
-msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr "Ви впевнені, що хочете скинути всі налаштування Easy Effects?"
-
-#: src/contents/ui/main.qml:184
-msgid "Audio effects for PipeWire applications"
-msgstr "Аудіоефекти для застосунків PipeWire"
-
-#: src/contents/ui/main.qml:195
-msgctxt "@info:credit"
-msgid "Developer"
-msgstr "Розробник"
-
-#: src/contents/ui/main.qml:287
-msgid "Active"
-msgstr "Активний"
-
-#: src/contents/ui/main.qml:298 src/contents/ui/main.qml:412
-#: src/contents/ui/ShortcutsSheet.qml:228
-msgid "Shortcuts"
-msgstr "Скорочення"
-
-#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
-msgid "Manual"
-msgstr "Довідка"
-
-#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
-msgid "Quit"
-msgstr "Вийти"
-
-#: src/contents/ui/main.qml:347
-msgid "Turn Effects On/Off"
-msgstr "Увімкнення/вимкнення ефектів"
-
-#: src/contents/ui/main.qml:389
-msgid "PipeWire"
-msgstr "PipeWire"
-
-#: src/contents/ui/main.qml:404 src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:523
-#: src/contents/ui/PreferencesSheet.qml:536
-msgid "Preferences"
-msgstr "Параметри"
-
-#: src/contents/ui/main.qml:444
-msgid "About Easy Effects"
-msgstr "Про Easy Effects"
-
 #: src/contents/ui/MenuAddPlugins.qml:132
 msgid "Added Effect"
 msgstr "Додатковий ефект"
@@ -1810,6 +1754,13 @@ msgstr "Швидкий пошук"
 msgid "Anti-aliasing"
 msgstr "Згладжування"
 
+#: src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:523
+#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:404
+msgid "Preferences"
+msgstr "Параметри"
+
 #: src/contents/ui/PreferencesSheet.qml:34
 msgid "Enable Service Mode"
 msgstr "Увімкнути сервісний режим"
@@ -2063,7 +2014,6 @@ msgid "Fallback Preset"
 msgstr "Резервний пресет"
 
 #: src/contents/ui/PresetsCommunityPage.qml:91
-#: src/contents/ui/PresetsLocalPage.qml:157
 #: src/contents/ui/PresetsLocalPage.qml:184
 msgid "The Preset %1 Failed to Load"
 msgstr "Не вдалося застосувати пресет %1"
@@ -2093,90 +2043,90 @@ msgid "Failed to Import the Preset."
 msgstr "Не вдалося імпортувати пресет."
 
 #: src/contents/ui/PresetsLocalPage.qml:52
+#: src/contents/ui/PresetsLocalPage.qml:134
+msgid "Export Presets"
+msgstr "Імпорт Пресету"
+
+#: src/contents/ui/PresetsLocalPage.qml:55
+msgid "Preset Files Exported."
+msgstr "Експортовано попередньо налаштовані файли."
+
+#: src/contents/ui/PresetsLocalPage.qml:57
+msgid "Failed to Export the Presets."
+msgstr "Не вдалося експортувати пресетів."
+
 #: src/contents/ui/PresetsLocalPage.qml:68
 msgid "New Preset Name"
 msgstr "Нова назва пресету"
 
-#: src/contents/ui/PresetsLocalPage.qml:68
 #: src/contents/ui/PresetsLocalPage.qml:84
 msgid "Import Preset File"
 msgstr "Імпортувати файл пресету"
 
-#: src/contents/ui/PresetsLocalPage.qml:77
 #: src/contents/ui/PresetsLocalPage.qml:93
 msgid "Create Preset"
 msgstr "Створити пресет"
 
-#: src/contents/ui/PresetsLocalPage.qml:86
 #: src/contents/ui/PresetsLocalPage.qml:102
 msgid "New Preset Created"
 msgstr "Новий пресет створено"
 
-#: src/contents/ui/PresetsLocalPage.qml:89
 #: src/contents/ui/PresetsLocalPage.qml:105
 msgid "Failed to Create Preset"
 msgstr "Не вдалося створити пресет"
 
-#: src/contents/ui/PresetsLocalPage.qml:163
 #: src/contents/ui/PresetsLocalPage.qml:190
 msgid "Remove Preset"
 msgstr "Вилучити пресет"
 
-#: src/contents/ui/PresetsLocalPage.qml:164
 #: src/contents/ui/PresetsLocalPage.qml:191
 msgid "Are you sure you want to remove this preset from the list?"
 msgstr "Ви впевнені, що хочете вилучити цей пресет зі списку?"
 
-#: src/contents/ui/PresetsLocalPage.qml:168
 #: src/contents/ui/PresetsLocalPage.qml:195
 msgid "The Preset %1 Has Been Removed"
 msgstr "Пресет %1 вже вилучено"
 
-#: src/contents/ui/PresetsLocalPage.qml:170
 #: src/contents/ui/PresetsLocalPage.qml:197
 msgid "The Preset %1 Could Not Be Removed"
 msgstr "Не вдалося вилучити пресет %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:177
+#: src/contents/ui/PresetsLocalPage.qml:204
 msgid "Rename Preset"
 msgstr "Перейменувати пресет"
 
-#: src/contents/ui/PresetsLocalPage.qml:182
+#: src/contents/ui/PresetsLocalPage.qml:209
 msgid "Rename"
 msgstr "Перейменувати"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:218
 msgid "The Preset %1 Has Been Renamed"
 msgstr "Пресет %1 перейменовано"
 
-#: src/contents/ui/PresetsLocalPage.qml:193
+#: src/contents/ui/PresetsLocalPage.qml:220
 msgid "The Preset %1 Could Not Be Renamed"
 msgstr "Не вдалося перейменувати пресет %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:200
+#: src/contents/ui/PresetsLocalPage.qml:227
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/contents/ui/PresetsLocalPage.qml:231
 #: src/contents/ui/PresetsLocalPage.qml:263
 msgid "Save Settings to this Preset"
 msgstr "Зберегти налаштування до цього пресету"
 
-#: src/contents/ui/PresetsLocalPage.qml:236
 #: src/contents/ui/PresetsLocalPage.qml:268
 msgid "Settings Saved to: %1"
 msgstr "Налаштування збережено в: %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:238
 #: src/contents/ui/PresetsLocalPage.qml:270
 msgid "Failed to Save Settings to: %1"
 msgstr "Не вдалося зберегти налаштування до: %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:242
+#: src/contents/ui/PresetsLocalPage.qml:274
 msgid "Rename this Preset"
 msgstr "Перейменувати цей пресет"
 
-#: src/contents/ui/PresetsLocalPage.qml:250
 #: src/contents/ui/PresetsLocalPage.qml:282
 msgid "Delete this Preset"
 msgstr "Видалити цей пресет"
@@ -2196,6 +2146,50 @@ msgstr "Автозастосування"
 #: src/contents/ui/PresetsSheet.qml:103
 msgid "No Preset Loaded"
 msgstr "Пресет не застосовано"
+
+#: src/contents/ui/RNNoise.qml:55
+msgid "Model File Imported."
+msgstr "Файл моделі імпортовано."
+
+#: src/contents/ui/RNNoise.qml:57
+msgid "Failed to Import the Model File."
+msgstr "Не вдалося імпортувати файл моделі."
+
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
+msgid "Voice Detection"
+msgstr "Розпізнавання голосу"
+
+#: src/contents/ui/RNNoise.qml:108
+msgid "Wet Level"
+msgstr "Рівень обробки"
+
+#: src/contents/ui/RNNoise.qml:147
+msgid "Use the Standard Model"
+msgstr "Використовувати стандартну модель"
+
+#: src/contents/ui/RNNoise.qml:158
+msgid "User Models"
+msgstr "Моделі користувачів"
+
+#: src/contents/ui/RNNoise.qml:207
+msgid "Loaded Model: %1"
+msgstr "Завантажена модель: %1"
+
+#: src/contents/ui/RNNoise.qml:219
+msgid "Delete this Model"
+msgstr "Видалити цю модель"
+
+#: src/contents/ui/RNNoise.qml:224
+msgid "Removed Model: %1"
+msgstr "Вилучена модель: %1"
+
+#: src/contents/ui/RNNoise.qml:226
+msgid "Failed to Remove the Model: %1"
+msgstr "Не вдалося вилучити модель: %1"
+
+#: src/contents/ui/RNNoise.qml:289
+msgid "Import Model"
+msgstr "Імпортувати модель"
 
 #: src/contents/ui/Reverb.qml:52
 msgid "Room Size"
@@ -2277,50 +2271,6 @@ msgstr "Диско"
 msgid "Large Occupied Hall"
 msgstr "Велика зайнята зала"
 
-#: src/contents/ui/RNNoise.qml:55
-msgid "Model File Imported."
-msgstr "Файл моделі імпортовано."
-
-#: src/contents/ui/RNNoise.qml:57
-msgid "Failed to Import the Model File."
-msgstr "Не вдалося імпортувати файл моделі."
-
-#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
-msgid "Voice Detection"
-msgstr "Розпізнавання голосу"
-
-#: src/contents/ui/RNNoise.qml:108
-msgid "Wet Level"
-msgstr "Рівень обробки"
-
-#: src/contents/ui/RNNoise.qml:147
-msgid "Use the Standard Model"
-msgstr "Використовувати стандартну модель"
-
-#: src/contents/ui/RNNoise.qml:158
-msgid "User Models"
-msgstr "Моделі користувачів"
-
-#: src/contents/ui/RNNoise.qml:207
-msgid "Loaded Model: %1"
-msgstr "Завантажена модель: %1"
-
-#: src/contents/ui/RNNoise.qml:219
-msgid "Delete this Model"
-msgstr "Видалити цю модель"
-
-#: src/contents/ui/RNNoise.qml:224
-msgid "Removed Model: %1"
-msgstr "Вилучена модель: %1"
-
-#: src/contents/ui/RNNoise.qml:226
-msgid "Failed to Remove the Model: %1"
-msgstr "Не вдалося вилучити модель: %1"
-
-#: src/contents/ui/RNNoise.qml:289
-msgid "Import Model"
-msgstr "Імпортувати модель"
-
 #: src/contents/ui/ShortcutsSheet.qml:34
 msgid "Show Help"
 msgstr "Показати довідку"
@@ -2345,6 +2295,11 @@ msgstr "Припинити роботу служби Easy Effects"
 #: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr "Можна використовувати з числовими елементами керування"
+
+#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:298
+#: src/contents/ui/main.qml:412
+msgid "Shortcuts"
+msgstr "Скорочення"
 
 #: src/contents/ui/Speex.qml:49
 msgid "Denoise"
@@ -2442,6 +2397,47 @@ msgstr "База стерео"
 msgid "Stereo Phase"
 msgstr "Фаза стерео"
 
+#: src/contents/ui/main.qml:162
+msgid "Reset Settings?"
+msgstr "Скинути налаштування?"
+
+#: src/contents/ui/main.qml:163
+msgid "Are you sure you want to reset all Easy Effects settings?"
+msgstr "Ви впевнені, що хочете скинути всі налаштування Easy Effects?"
+
+#: src/contents/ui/main.qml:184
+msgid "Audio effects for PipeWire applications"
+msgstr "Аудіоефекти для застосунків PipeWire"
+
+#: src/contents/ui/main.qml:195
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Розробник"
+
+#: src/contents/ui/main.qml:287
+msgid "Active"
+msgstr "Активний"
+
+#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
+msgid "Manual"
+msgstr "Довідка"
+
+#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
+msgid "Quit"
+msgstr "Вийти"
+
+#: src/contents/ui/main.qml:347
+msgid "Turn Effects On/Off"
+msgstr "Увімкнення/вимкнення ефектів"
+
+#: src/contents/ui/main.qml:389
+msgid "PipeWire"
+msgstr "PipeWire"
+
+#: src/contents/ui/main.qml:444
+msgid "About Easy Effects"
+msgstr "Про Easy Effects"
+
 #: src/plugin_base.cpp:270
 msgid "(Mic)"
 msgstr "(Мікрофон)"
@@ -2454,36 +2450,33 @@ msgstr "(Колонки)"
 msgid "Output Level Meter"
 msgstr "Вимірювач рівня вихідного сигналу"
 
-#: src/presets_manager.cpp:1407 src/presets_manager.cpp:1414
-#: src/presets_manager.cpp:1424 src/presets_manager.cpp:1431
-#: src/presets_manager.cpp:1440 src/presets_manager.cpp:1448
-#: src/presets_manager.cpp:1439 src/presets_manager.cpp:1446
-#: src/presets_manager.cpp:1456 src/presets_manager.cpp:1463
-#: src/presets_manager.cpp:1472 src/presets_manager.cpp:1480
+#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
+#: src/presets_manager.cpp:790 src/presets_manager.cpp:797
+#: src/presets_manager.cpp:806 src/presets_manager.cpp:814
 msgid "Preset Not Loaded Correctly"
 msgstr "Пресет не застосовано належним чином"
 
-#: src/presets_manager.cpp:1407 src/presets_manager.cpp:1439
+#: src/presets_manager.cpp:773
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Неправильний формат у списку виключених застосунків"
 
-#: src/presets_manager.cpp:1415 src/presets_manager.cpp:1447
+#: src/presets_manager.cpp:781
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Загальна помилка під час завантаження списку виключених застосунків"
 
-#: src/presets_manager.cpp:1424 src/presets_manager.cpp:1456
+#: src/presets_manager.cpp:790
 msgid "Wrong Format in Effects List"
 msgstr "Неправильний формат у списку ефектів"
 
-#: src/presets_manager.cpp:1431 src/presets_manager.cpp:1463
+#: src/presets_manager.cpp:797
 msgid "Generic Error While Loading Effects List"
 msgstr "Загальна помилка під час завантаження списку ефектів"
 
-#: src/presets_manager.cpp:1441 src/presets_manager.cpp:1473
+#: src/presets_manager.cpp:807
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Один або кілька параметрів мають неправильний формат"
 
-#: src/presets_manager.cpp:1449 src/presets_manager.cpp:1481
+#: src/presets_manager.cpp:815
 msgid "Generic Error While Loading The Effect"
 msgstr "Загальна помилка під час застосування ефекту"
 
@@ -2590,16 +2583,3 @@ msgstr "Еквалайзер, компресор та інші звукові е
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Звукові ефекти для застосунків PipeWire"
-
-#: src/contents/ui/PresetsLocalPage.qml:52
-#: src/contents/ui/PresetsLocalPage.qml:134
-msgid "Export Presets"
-msgstr "Імпорт Пресету"
-
-#: src/contents/ui/PresetsLocalPage.qml:55
-msgid "Preset Files Exported."
-msgstr "Експортовано попередньо налаштовані файли."
-
-#: src/contents/ui/PresetsLocalPage.qml:57
-msgid "Failed to Export the Presets."
-msgstr "Не вдалося експортувати пресетів."
