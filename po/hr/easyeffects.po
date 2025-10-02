@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-01 03:13+0000\n"
-"PO-Revision-Date: 2025-07-20 18:38+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"PO-Revision-Date: 2025-10-02 05:01+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
 "main/hr/>\n"
 "Language: hr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:44
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -77,9 +77,8 @@ msgid "Enable debug messages."
 msgstr ""
 
 #: src/command_line_parser.cpp:142 src/contents/ui/main.qml:277
-#, fuzzy
 msgid "Output Presets"
-msgstr "Predlošci: "
+msgstr "Unaprijed postavljene postavke ispisa"
 
 #: src/command_line_parser.cpp:150 src/contents/ui/main.qml:267
 #, fuzzy
@@ -278,7 +277,7 @@ msgstr "Izlaz"
 #: src/contents/ui/Limiter.qml:228 src/contents/ui/MultibandCompressor.qml:409
 #: src/contents/ui/MultibandGate.qml:377
 msgid "Link"
-msgstr ""
+msgstr "Poveznica"
 
 #: src/contents/ui/BlocklistSheet.qml:18
 #, fuzzy
@@ -314,7 +313,7 @@ msgstr ""
 
 #: src/contents/ui/BlocklistSheet.qml:148
 msgid "Delete this App"
-msgstr ""
+msgstr "Izbriši ovu aplikaciju"
 
 #: src/contents/ui/BlocklistSheet.qml:175
 #, fuzzy
@@ -426,7 +425,7 @@ msgstr "Dovod zvuka"
 #: src/contents/ui/MultibandCompressor.qml:409
 #: src/contents/ui/MultibandGate.qml:377
 msgid "External"
-msgstr ""
+msgstr "Eksterno"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:262 src/contents/ui/Limiter.qml:238
@@ -460,7 +459,7 @@ msgstr "Nizak prolaz"
 #: src/contents/ui/Gate.qml:289 src/contents/ui/MultibandCompressor.qml:420
 #: src/contents/ui/MultibandGate.qml:388
 msgid "SMA"
-msgstr ""
+msgstr "SMA"
 
 #: src/contents/ui/Compressor.qml:314 src/contents/ui/Compressor.qml:328
 #: src/contents/ui/Expander.qml:274 src/contents/ui/Expander.qml:288
@@ -576,7 +575,7 @@ msgstr "Filter visokog prolaza"
 #: src/contents/ui/Expander.qml:396 src/contents/ui/Gate.qml:405
 #: src/contents/ui/Gate.qml:420
 msgid "Off"
-msgstr ""
+msgstr "Isključeno"
 
 #: src/contents/ui/Compressor.qml:421 src/contents/ui/Compressor.qml:436
 #: src/contents/ui/Expander.qml:381 src/contents/ui/Expander.qml:396
@@ -726,14 +725,12 @@ msgid "Autogain"
 msgstr "Automatsko pojačanje"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:47
-#, fuzzy
 msgid "Impluse File Imported."
-msgstr "Učitaj impuls datoteku"
+msgstr "Impuls datoteka je učitana."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:49
-#, fuzzy
 msgid "Failed to Import the Impulse File."
-msgstr "Nije bilo moguće učitati impuls datoteku"
+msgstr "Neuspjelo učitavanje impuls datoteke."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:60
 #: src/contents/ui/MenuAddPlugins.qml:144
@@ -2305,14 +2302,12 @@ msgid "No Preset Loaded"
 msgstr "Učitaj predloške"
 
 #: src/contents/ui/RNNoise.qml:55
-#, fuzzy
 msgid "Model File Imported."
-msgstr "Učitaj impuls datoteku"
+msgstr "Datoteka modela je uvezena."
 
 #: src/contents/ui/RNNoise.qml:57
-#, fuzzy
 msgid "Failed to Import the Model File."
-msgstr "Učitaj impuls datoteku"
+msgstr "Neuspio uvoz datotek modela."
 
 #: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
 msgid "Voice Detection"
@@ -2577,9 +2572,8 @@ msgid "Stereo Phase"
 msgstr "Stereo faza"
 
 #: src/contents/ui/main.qml:162
-#, fuzzy
 msgid "Reset Settings?"
-msgstr "Postavke"
+msgstr "Resetirati postavke?"
 
 #: src/contents/ui/main.qml:163
 msgid "Are you sure you want to reset all Easy Effects settings?"
@@ -2765,9 +2759,8 @@ msgid "Stereo Tools"
 msgstr "Stereo alati"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:2
-#, fuzzy
 msgid "Easy Effects"
-msgstr "EasyEffects"
+msgstr "Easy Effects"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:3
 msgid "Equalizer, Compressor and Other Audio Effects"
