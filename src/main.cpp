@@ -33,13 +33,17 @@
 #include <KIconTheme>
 #include <KLocalizedString>
 #include <QApplication>
+#include <QDir>
 #include <QLocalServer>
 #include <QLoggingCategory>
+#include <QProcessEnvironment>
 #include <QSystemTrayIcon>
 #include <QWindow>
 #include <csignal>
+#include <format>
 #include <memory>
 #include <stdexcept>
+#include <string>
 #include "autostart.hpp"
 #include "command_line_parser.hpp"
 #include "config.h"
@@ -81,6 +85,8 @@ struct CoreServices {
 
   CoreServices(bool is_primary) {
     if (is_primary) {
+      extra_lv2_paths();
+
       dbm = &db::Manager::self();
       pwm = &pw::Manager::self();
 
@@ -90,6 +96,39 @@ struct CoreServices {
       TestSignals::self(pwm);
       tags::plugin_name::Model::self();
       presets::Manager::self();
+    }
+  }
+
+  static void extra_lv2_paths() {
+    QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+    QString existing_path = env.value("LV2_PATH");
+
+    // Build the extra paths list
+    QStringList extra_paths_list;
+
+    // User-local path
+    QString home_lv2 = QDir::homePath() + "/.local/lib/lv2/";
+
+    extra_paths_list << home_lv2;
+
+    // System paths
+    extra_paths_list << "/usr/local/lib/lv2/"
+                     << "/usr/lib64/lv2/"
+                     << "/usr/lib/x86_64-linux-gnu/lv2/";
+
+    // Add existing path if present
+    if (!existing_path.isEmpty()) {
+      extra_paths_list << existing_path;
+    }
+
+    // Join all paths with colon separator
+    QString extra_paths = extra_paths_list.join(":");
+
+    // Set the environment variable
+    if (qputenv("LV2_PATH", extra_paths.toLocal8Bit())) {
+      util::debug(std::format("Extra LV2 search paths: {}", extra_paths.toStdString()));
+    } else {
+      util::warning("Failed to set extra LV2 search paths.");
     }
   }
 };
