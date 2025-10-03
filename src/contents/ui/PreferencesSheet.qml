@@ -120,6 +120,17 @@ Kirigami.OverlaySheet {
                 }
 
                 EeSwitch {
+                    id: ignoreSystemNotifications
+
+                    label: i18n("Ignore System Notifications")
+                    isChecked: DB.Manager.main.ignoreSystemNotifications
+                    onCheckedChanged: {
+                        if (isChecked !== DB.Manager.main.ignoreSystemNotifications)
+                            DB.Manager.main.ignoreSystemNotifications = isChecked;
+                    }
+                }
+
+                EeSwitch {
                     id: listenToMic
 
                     label: i18n("Enable/Disable Input Monitoring")

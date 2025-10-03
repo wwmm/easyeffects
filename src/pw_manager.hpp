@@ -92,6 +92,11 @@ class Manager : public QObject {
 
   std::array<std::string, 2U> blocklist_app_id = {"org.PulseAudio.pavucontrol"};
 
+  std::array<std::string, 2U> blocklist_media_role = {"event", "Notification"};
+
+  constexpr static auto blocklist_notification_nodes =
+      std::to_array({"libcanberra", "org.gnome.VolumeControl", "GNOME Shell", "Mutter", "gsd-media-keys"});
+
   QString headerVersion;
   QString libraryVersion;
   QString runtimeVersion;

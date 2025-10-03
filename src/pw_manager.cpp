@@ -850,6 +850,11 @@ void on_registry_global(void* data,
     bool is_ee_filter = false;
 
     if (const auto* key_media_role = spa_dict_lookup(props, PW_KEY_MEDIA_ROLE)) {
+      if (db::Main::ignoreSystemNotifications() &&
+          std::ranges::find(pm->blocklist_media_role, std::string(key_media_role)) != pm->blocklist_media_role.end()) {
+        return;
+      }
+
       if (std::strcmp(key_media_role, "DSP") == 0) {
         if (const auto* key_media_category = spa_dict_lookup(props, PW_KEY_MEDIA_CATEGORY)) {
           if (std::strcmp(key_media_category, "Filter") == 0) {
@@ -899,6 +904,14 @@ void on_registry_global(void* data,
     // Exclude blocklisted node names
 
     if (std::ranges::find(pw::Manager::blocklist_node_name, node_name) != pw::Manager::blocklist_node_name.end()) {
+      return;
+    }
+
+    // Exclude blocklisted notification node names
+
+    if (db::Main::ignoreSystemNotifications() &&
+        std::ranges::find(pw::Manager::blocklist_notification_nodes, node_name) !=
+            pw::Manager::blocklist_notification_nodes.end()) {
       return;
     }
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-01 03:13+0000\n"
+"POT-Creation-Date: 2025-10-03 18:58-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Wolf yuan <h1030035@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -165,7 +165,7 @@ msgstr "輸出增益 (Gain)"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:211
-#: src/contents/ui/RNNoise.qml:273 src/contents/ui/Reverb.qml:309
+#: src/contents/ui/Reverb.qml:309 src/contents/ui/RNNoise.qml:273
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:433
 msgid "Using %1"
 msgstr ""
@@ -251,18 +251,18 @@ msgstr "聆聽"
 #: src/contents/ui/Expander.qml:808 src/contents/ui/Filter.qml:228
 #: src/contents/ui/Gate.qml:944 src/contents/ui/LevelMeter.qml:256
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
-#: src/contents/ui/Maximizer.qml:131
+#: src/contents/ui/main.qml:432 src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:296
-#: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:183
-#: src/contents/ui/StereoTools.qml:462 src/contents/ui/main.qml:432
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/Reverb.qml:346
+#: src/contents/ui/RNNoise.qml:296 src/contents/ui/Speex.qml:183
+#: src/contents/ui/StereoTools.qml:462
 msgid "Reset"
 msgstr "重設"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:107 src/contents/ui/Expander.qml:449
-#: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:304
-#: src/contents/ui/main.qml:369
+#: src/contents/ui/Gate.qml:473 src/contents/ui/main.qml:369
+#: src/contents/ui/StereoTools.qml:304
 msgid "Output"
 msgstr "輸出"
 
@@ -319,8 +319,8 @@ msgstr "壓縮機"
 
 #: src/contents/ui/Compressor.qml:70 src/contents/ui/Compressor.qml:301
 #: src/contents/ui/Deesser.qml:71 src/contents/ui/Delay.qml:56
-#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:112
-#: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:70
+#: src/contents/ui/Delay.qml:214 src/contents/ui/EqualizerBandMenu.qml:45
+#: src/contents/ui/Equalizer.qml:112 src/contents/ui/Expander.qml:70
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:285
 #: src/contents/ui/Limiter.qml:52 src/contents/ui/Loudness.qml:54
 #: src/contents/ui/MultibandCompressor.qml:416
@@ -659,48 +659,6 @@ msgstr ""
 msgid "Stereo Split"
 msgstr ""
 
-#: src/contents/ui/Convolver.qml:100
-msgid "First"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:112
-msgid "Second"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:144
-msgid "Combine"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:282
-msgid "Spectrum"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:287
-msgid "Convolver Impulse Is Not Set"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:324
-msgid "Rate"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:329 src/contents/ui/Delay.qml:60
-#: src/contents/ui/Delay.qml:71 src/contents/ui/Delay.qml:218
-#: src/contents/ui/Delay.qml:229
-msgid "Samples"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:334
-msgid "Duration"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:371
-msgid "Stereo Width"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:422 src/tags_plugin_name.cpp:25
-msgid "Autogain"
-msgstr ""
-
 #: src/contents/ui/ConvolverImpulseSheet.qml:47
 msgid "Impluse File Imported."
 msgstr ""
@@ -744,6 +702,48 @@ msgstr ""
 msgid "Import Impulse"
 msgstr ""
 
+#: src/contents/ui/Convolver.qml:100
+msgid "First"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:112
+msgid "Second"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:144
+msgid "Combine"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:185 src/plugin_base.cpp:282
+msgid "Spectrum"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:287
+msgid "Convolver Impulse Is Not Set"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:324
+msgid "Rate"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:329 src/contents/ui/Delay.qml:60
+#: src/contents/ui/Delay.qml:71 src/contents/ui/Delay.qml:218
+#: src/contents/ui/Delay.qml:229
+msgid "Samples"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:334
+msgid "Duration"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:371
+msgid "Stereo Width"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:422 src/tags_plugin_name.cpp:25
+msgid "Autogain"
+msgstr ""
+
 #: src/contents/ui/Crossfeed.qml:64
 msgid "Cutoff"
 msgstr ""
@@ -760,8 +760,8 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:339
+#: src/contents/ui/Crossfeed.qml:150 src/contents/ui/main.qml:339
+#: src/contents/ui/Reverb.qml:325
 msgid "Presets"
 msgstr "預設值"
 
@@ -971,92 +971,10 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:379
+#: src/contents/ui/EeInputOutputGain.qml:94 src/contents/ui/main.qml:379
+#: src/contents/ui/StereoTools.qml:43
 msgid "Input"
 msgstr "輸入"
-
-#: src/contents/ui/Equalizer.qml:63
-msgid "APO Presets"
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:66
-msgid "APO Preset File Imported."
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:68
-msgid "Failed to Import the APO Preset File."
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:77
-msgid "GraphicEQ Presets"
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:80
-msgid "GraphicEQ Preset File Imported."
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:82
-msgid "Failed to Import the GraphicEQ Preset File."
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:91
-#, fuzzy
-msgid "APO Preset"
-msgstr "設定檔"
-
-#: src/contents/ui/Equalizer.qml:94
-msgid "APO Preset File Exported."
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:96
-msgid "Failed to Export the APO Preset File."
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:125
-msgid "Bands"
-msgstr "頻帶"
-
-#: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:174
-#: src/contents/ui/StereoTools.qml:67 src/contents/ui/StereoTools.qml:321
-msgid "Balance"
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:158
-msgid "Pitch Left"
-msgstr "左距離"
-
-#: src/contents/ui/Equalizer.qml:175
-msgid "Pitch Right"
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:321
-msgid "Split Channels"
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:331
-msgid "Flat Response"
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:338
-msgid "Calculate Frequencies"
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:345
-msgid "Sort Bands"
-msgstr "頻帶範圍"
-
-#: src/contents/ui/Equalizer.qml:352
-msgid "Import APO"
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:359
-msgid "Import APO (GraphicEQ)"
-msgstr ""
-
-#: src/contents/ui/Equalizer.qml:366
-msgid "Export APO"
-msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:651
@@ -1141,6 +1059,88 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:78
 #: src/contents/ui/MultibandGate.qml:78
 msgid "Solo"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:63
+msgid "APO Presets"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:66
+msgid "APO Preset File Imported."
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:68
+msgid "Failed to Import the APO Preset File."
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:77
+msgid "GraphicEQ Presets"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:80
+msgid "GraphicEQ Preset File Imported."
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:82
+msgid "Failed to Import the GraphicEQ Preset File."
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:91
+#, fuzzy
+msgid "APO Preset"
+msgstr "設定檔"
+
+#: src/contents/ui/Equalizer.qml:94
+msgid "APO Preset File Exported."
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:96
+msgid "Failed to Export the APO Preset File."
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:125
+msgid "Bands"
+msgstr "頻帶"
+
+#: src/contents/ui/Equalizer.qml:141 src/contents/ui/Filter.qml:174
+#: src/contents/ui/StereoTools.qml:67 src/contents/ui/StereoTools.qml:321
+msgid "Balance"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:158
+msgid "Pitch Left"
+msgstr "左距離"
+
+#: src/contents/ui/Equalizer.qml:175
+msgid "Pitch Right"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:321
+msgid "Split Channels"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:331
+msgid "Flat Response"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:338
+msgid "Calculate Frequencies"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:345
+msgid "Sort Bands"
+msgstr "頻帶範圍"
+
+#: src/contents/ui/Equalizer.qml:352
+msgid "Import APO"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:359
+msgid "Import APO (GraphicEQ)"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:366
+msgid "Export APO"
 msgstr ""
 
 #: src/contents/ui/Exciter.qml:143
@@ -1498,6 +1498,65 @@ msgstr ""
 msgid "Clipping"
 msgstr ""
 
+#: src/contents/ui/main.qml:162
+#, fuzzy
+msgid "Reset Settings?"
+msgstr "重設設定值(R_)"
+
+#: src/contents/ui/main.qml:163
+msgid "Are you sure you want to reset all Easy Effects settings?"
+msgstr ""
+
+#: src/contents/ui/main.qml:184
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "PipeWire 音效程式"
+
+#: src/contents/ui/main.qml:195
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr ""
+
+#: src/contents/ui/main.qml:287
+msgid "Active"
+msgstr ""
+
+#: src/contents/ui/main.qml:298 src/contents/ui/main.qml:412
+#: src/contents/ui/ShortcutsSheet.qml:228
+#, fuzzy
+msgid "Shortcuts"
+msgstr "捷徑(S_)"
+
+#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
+msgid "Manual"
+msgstr ""
+
+#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
+#, fuzzy
+msgid "Quit"
+msgstr "離開(Q_)"
+
+#: src/contents/ui/main.qml:347
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:389
+msgid "PipeWire"
+msgstr ""
+
+#: src/contents/ui/main.qml:404 src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:534
+#: src/contents/ui/PreferencesSheet.qml:547
+#, fuzzy
+msgid "Preferences"
+msgstr "偏好設定(P_)"
+
+#: src/contents/ui/main.qml:444
+#, fuzzy
+msgid "About Easy Effects"
+msgstr "關於Easy Effects(A_)"
+
 #: src/contents/ui/MenuAddPlugins.qml:132
 msgid "Added Effect"
 msgstr ""
@@ -1706,12 +1765,12 @@ msgid "No Clients"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:270
-#: src/contents/ui/PreferencesSheet.qml:197
+#: src/contents/ui/PreferencesSheet.qml:208
 msgid "State"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:277
-#: src/contents/ui/PreferencesSheet.qml:204
+#: src/contents/ui/PreferencesSheet.qml:215
 msgid "Enabled"
 msgstr ""
 
@@ -1783,14 +1842,6 @@ msgstr ""
 msgid "Anti-aliasing"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:523
-#: src/contents/ui/PreferencesSheet.qml:536 src/contents/ui/main.qml:404
-#, fuzzy
-msgid "Preferences"
-msgstr "偏好設定(P_)"
-
 #: src/contents/ui/PreferencesSheet.qml:34
 #, fuzzy
 msgid "Enable Service Mode"
@@ -1829,197 +1880,201 @@ msgid "Use Cubic Volume"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:125
+msgid "Ignore System Notifications"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:136
 #, fuzzy
 msgid "Enable/Disable Input Monitoring"
 msgstr "啟用/停用輸入監控"
 
-#: src/contents/ui/PreferencesSheet.qml:136
+#: src/contents/ui/PreferencesSheet.qml:147
 msgid "Mic Monitor Plays to Output Effects Pipeline"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:147
+#: src/contents/ui/PreferencesSheet.qml:158
 msgid "Enable the Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:148
+#: src/contents/ui/PreferencesSheet.qml:159
 msgid ""
 "When all Streams are Inactive, Easy Effects Pipeline Remains Loaded for an "
 "Extra Amount of Time"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:160
+#: src/contents/ui/PreferencesSheet.qml:171
 msgid "Inactivity Timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:174
+#: src/contents/ui/PreferencesSheet.qml:185
 msgid "Level Meters Label"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:175
+#: src/contents/ui/PreferencesSheet.qml:186
 msgid ""
 "The Time it Takes for the Level Meter Labels to be Updated When the Current "
 "Level is Below the Last Highest One"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:215
+#: src/contents/ui/PreferencesSheet.qml:226
 msgid "Audio Delay Compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:229
+#: src/contents/ui/PreferencesSheet.qml:240
 msgid "Style"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:236
+#: src/contents/ui/PreferencesSheet.qml:247
 msgid "Color Scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:240
+#: src/contents/ui/PreferencesSheet.qml:251
 msgid "Automatic"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:240
+#: src/contents/ui/PreferencesSheet.qml:251
 #, fuzzy
 msgid "Light"
 msgstr "右"
 
-#: src/contents/ui/PreferencesSheet.qml:240
+#: src/contents/ui/PreferencesSheet.qml:251
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:250
+#: src/contents/ui/PreferencesSheet.qml:261
 #, fuzzy
 msgid "Color Theme"
 msgstr "顏色"
 
-#: src/contents/ui/PreferencesSheet.qml:254
+#: src/contents/ui/PreferencesSheet.qml:265
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:254
+#: src/contents/ui/PreferencesSheet.qml:265
 msgid "Green Neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:254
+#: src/contents/ui/PreferencesSheet.qml:265
 msgid "Mix"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:254
+#: src/contents/ui/PreferencesSheet.qml:265
 #, fuzzy
 msgid "Orange"
 msgstr "範圍"
 
-#: src/contents/ui/PreferencesSheet.qml:254
+#: src/contents/ui/PreferencesSheet.qml:265
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:254
+#: src/contents/ui/PreferencesSheet.qml:265
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:254
+#: src/contents/ui/PreferencesSheet.qml:265
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:254
+#: src/contents/ui/PreferencesSheet.qml:265
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:264
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Shape"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:268
+#: src/contents/ui/PreferencesSheet.qml:279
 msgid "Bars"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:268
+#: src/contents/ui/PreferencesSheet.qml:279
 msgid "Lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:268
+#: src/contents/ui/PreferencesSheet.qml:279
 msgid "Dots"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:268
+#: src/contents/ui/PreferencesSheet.qml:279
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:278
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Dynamic Scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:289
+#: src/contents/ui/PreferencesSheet.qml:300
 msgid "Logarithmic Frequency Axis"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:300
+#: src/contents/ui/PreferencesSheet.qml:311
 msgid "Points"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:314
+#: src/contents/ui/PreferencesSheet.qml:325
 msgid "Height"
 msgstr "高度"
 
-#: src/contents/ui/PreferencesSheet.qml:328
+#: src/contents/ui/PreferencesSheet.qml:339
 msgid "Frequency Range"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:335
+#: src/contents/ui/PreferencesSheet.qml:346
 msgid "Minimum"
 msgstr "最小"
 
-#: src/contents/ui/PreferencesSheet.qml:350
+#: src/contents/ui/PreferencesSheet.qml:361
 msgid "Maximum"
 msgstr "最大"
 
-#: src/contents/ui/PreferencesSheet.qml:371
+#: src/contents/ui/PreferencesSheet.qml:382
 msgid "Database Autosave Interval"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:394
+#: src/contents/ui/PreferencesSheet.qml:405
 #: src/contents/ui/ShortcutsSheet.qml:168
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "捷徑(S_)"
 
-#: src/contents/ui/PreferencesSheet.qml:395
+#: src/contents/ui/PreferencesSheet.qml:406
 msgid "Enables Support for XDG Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:407
+#: src/contents/ui/PreferencesSheet.qml:418
 #, fuzzy
 msgid "Native Window of Effects"
 msgstr "顯示原生視窗"
 
-#: src/contents/ui/PreferencesSheet.qml:408
+#: src/contents/ui/PreferencesSheet.qml:419
 msgid "Allows the Native User Interface of Effects to be Shown/Hidden"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:420
+#: src/contents/ui/PreferencesSheet.qml:431
 msgid "Update Frequency"
 msgstr "更新頻率"
 
-#: src/contents/ui/PreferencesSheet.qml:421
+#: src/contents/ui/PreferencesSheet.qml:432
 msgid "Related to LV2 Plugins"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:461
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:463
+#: src/contents/ui/PreferencesSheet.qml:474
 msgid "Audio"
 msgstr "音訊"
 
-#: src/contents/ui/PreferencesSheet.qml:476
+#: src/contents/ui/PreferencesSheet.qml:487
 msgid "Spectrum Analyzer"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:489
+#: src/contents/ui/PreferencesSheet.qml:500
 msgid "Database"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:502
+#: src/contents/ui/PreferencesSheet.qml:513
 msgid "Experimental Features"
 msgstr ""
 
@@ -2188,53 +2243,6 @@ msgstr ""
 msgid "No Preset Loaded"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:55
-msgid "Model File Imported."
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:57
-msgid "Failed to Import the Model File."
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
-msgid "Voice Detection"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:108
-msgid "Wet Level"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:147
-msgid "Use the Standard Model"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:158
-#, fuzzy
-msgid "User Models"
-msgstr "立體聲模式"
-
-#: src/contents/ui/RNNoise.qml:207
-msgid "Loaded Model: %1"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:219
-#, fuzzy
-msgid "Delete this Model"
-msgstr "刪除此模型的檔案"
-
-#: src/contents/ui/RNNoise.qml:224
-#, fuzzy
-msgid "Removed Model: %1"
-msgstr "刪除此模型的檔案"
-
-#: src/contents/ui/RNNoise.qml:226
-msgid "Failed to Remove the Model: %1"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:289
-msgid "Import Model"
-msgstr ""
-
 #: src/contents/ui/Reverb.qml:52
 msgid "Room Size"
 msgstr ""
@@ -2316,6 +2324,53 @@ msgstr ""
 msgid "Large Occupied Hall"
 msgstr ""
 
+#: src/contents/ui/RNNoise.qml:55
+msgid "Model File Imported."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:57
+msgid "Failed to Import the Model File."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:73 src/contents/ui/Speex.qml:109
+msgid "Voice Detection"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:108
+msgid "Wet Level"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:147
+msgid "Use the Standard Model"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:158
+#, fuzzy
+msgid "User Models"
+msgstr "立體聲模式"
+
+#: src/contents/ui/RNNoise.qml:207
+msgid "Loaded Model: %1"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:219
+#, fuzzy
+msgid "Delete this Model"
+msgstr "刪除此模型的檔案"
+
+#: src/contents/ui/RNNoise.qml:224
+#, fuzzy
+msgid "Removed Model: %1"
+msgstr "刪除此模型的檔案"
+
+#: src/contents/ui/RNNoise.qml:226
+msgid "Failed to Remove the Model: %1"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:289
+msgid "Import Model"
+msgstr ""
+
 #: src/contents/ui/ShortcutsSheet.qml:34
 #, fuzzy
 msgid "Show Help"
@@ -2342,12 +2397,6 @@ msgstr ""
 #: src/contents/ui/ShortcutsSheet.qml:157
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
-
-#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:298
-#: src/contents/ui/main.qml:412
-#, fuzzy
-msgid "Shortcuts"
-msgstr "捷徑(S_)"
 
 #: src/contents/ui/Speex.qml:49
 msgid "Denoise"
@@ -2445,51 +2494,6 @@ msgstr ""
 #: src/contents/ui/StereoTools.qml:370
 msgid "Stereo Phase"
 msgstr ""
-
-#: src/contents/ui/main.qml:162
-#, fuzzy
-msgid "Reset Settings?"
-msgstr "重設設定值(R_)"
-
-#: src/contents/ui/main.qml:163
-msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
-
-#: src/contents/ui/main.qml:184
-#, fuzzy
-msgid "Audio effects for PipeWire applications"
-msgstr "PipeWire 音效程式"
-
-#: src/contents/ui/main.qml:195
-msgctxt "@info:credit"
-msgid "Developer"
-msgstr ""
-
-#: src/contents/ui/main.qml:287
-msgid "Active"
-msgstr ""
-
-#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:420
-msgid "Manual"
-msgstr ""
-
-#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:452
-#, fuzzy
-msgid "Quit"
-msgstr "離開(Q_)"
-
-#: src/contents/ui/main.qml:347
-msgid "Turn Effects On/Off"
-msgstr ""
-
-#: src/contents/ui/main.qml:389
-msgid "PipeWire"
-msgstr ""
-
-#: src/contents/ui/main.qml:444
-#, fuzzy
-msgid "About Easy Effects"
-msgstr "關於Easy Effects(A_)"
 
 #: src/plugin_base.cpp:270
 msgid "(Mic)"
