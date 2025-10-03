@@ -850,12 +850,6 @@ void on_registry_global(void* data,
     bool is_ee_filter = false;
 
     if (const auto* key_media_role = spa_dict_lookup(props, PW_KEY_MEDIA_ROLE)) {
-      // Exclude blocklisted media roles
-
-      if (std::ranges::find(pm->blocklist_media_role, std::string(key_media_role)) != pm->blocklist_media_role.end()) {
-        return;
-      }
-
       if (std::strcmp(key_media_role, "DSP") == 0) {
         if (const auto* key_media_category = spa_dict_lookup(props, PW_KEY_MEDIA_CATEGORY)) {
           if (std::strcmp(key_media_category, "Filter") == 0) {
