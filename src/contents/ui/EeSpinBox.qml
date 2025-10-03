@@ -70,6 +70,8 @@ FormCard.AbstractFormDelegate {
         rowSpacing: Kirigami.Units.smallSpacing
 
         ColumnLayout {
+            id: labelColumn
+
             Label {
                 id: label
 
@@ -107,9 +109,9 @@ FormCard.AbstractFormDelegate {
 
             Layout.fillWidth: control.spinboxLayoutFillWidth
             Layout.maximumWidth: control.spinboxMaximumWidth
-            Layout.minimumWidth: control.spinboxMinimumWidth > 0 ? control.spinboxMinimumWidth : textInputSpinBox.contentWidth + 2.0 * up.indicator.width
+            Layout.minimumWidth: control.spinboxMinimumWidth
             Layout.alignment: control.spinboxAlignment
-            implicitWidth: Math.max(control.boxWidth, textInputSpinBox.contentWidth + 2.0 * up.indicator.width)
+            implicitWidth: control.boxWidth
             focusPolicy: control.focusPolicy
             wheelEnabled: true
             onValueModified: {

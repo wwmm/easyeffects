@@ -86,7 +86,7 @@ Item {
             Layout.topMargin: Kirigami.Units.largeSpacing
             Layout.leftMargin: 3 * Kirigami.Units.mediumSpacing
             Layout.rightMargin: 3 * Kirigami.Units.mediumSpacing
-            Layout.fillWidth: true
+            uniformCellWidths: true
 
             GainRow {
                 id: inputRow
