@@ -333,8 +333,8 @@ Kirigami.OverlaySheet {
                     id: minimumFrequency
 
                     label: i18n("Minimum")
-                    from: pluginDB.getMinValue("minimumFrequency")
-                    to: 21900
+                    from: DB.Manager.spectrum.getMinValue("minimumFrequency")
+                    to: DB.Manager.spectrum.getMaxValue("minimumFrequency")
                     value: DB.Manager.spectrum.minimumFrequency
                     decimals: 0
                     stepSize: 10
@@ -348,8 +348,8 @@ Kirigami.OverlaySheet {
                     id: maximumFrequency
 
                     label: i18n("Maximum")
-                    from: 120
-                    to: pluginDB.getMinValue("maximumFrequency")
+                    from: DB.Manager.spectrum.getMinValue("maximumFrequency")
+                    to: DB.Manager.spectrum.getMaxValue("maximumFrequency")
                     value: DB.Manager.spectrum.maximumFrequency
                     decimals: 0
                     stepSize: 10
