@@ -101,30 +101,21 @@ struct CoreServices {
 
   static void extra_lv2_paths() {
     QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
+
     QString existing_path = env.value("LV2_PATH");
 
-    // Build the extra paths list
     QStringList extra_paths_list;
 
-    // User-local path
-    QString home_lv2 = QDir::homePath() + "/.local/lib/lv2/";
-
-    extra_paths_list << home_lv2;
-
-    // System paths
-    extra_paths_list << "/usr/local/lib/lv2/"
-                     << "/usr/lib64/lv2/"
+    extra_paths_list << "/usr/lib64/lv2/"
+                     << "/usr/local/lib64/lv2"
                      << "/usr/lib/x86_64-linux-gnu/lv2/";
 
-    // Add existing path if present
     if (!existing_path.isEmpty()) {
       extra_paths_list << existing_path;
     }
 
-    // Join all paths with colon separator
     QString extra_paths = extra_paths_list.join(":");
 
-    // Set the environment variable
     if (qputenv("LV2_PATH", extra_paths.toLocal8Bit())) {
       util::debug(std::format("Extra LV2 search paths: {}", extra_paths.toStdString()));
     } else {
