@@ -279,9 +279,10 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       }
 
       if (ignore_node) {
-        util::debug("The input stream " + nd->nd_info->name.toStdString() +
-                    " does not have as target the same mic used as EE input: " + input_device.name.toStdString() +
-                    "\n The user wants it to record from device " + target_object + ". We will ignore this stream.");
+        util::debug(
+            std::format("The input stream {} does not have as target the same mic used as EE input: {}\n"
+                        "The user wants it to record from device {}. We will ignore this stream.",
+                        nd->nd_info->name.toStdString(), input_device.name.toStdString(), target_object));
       }
     }
   }
@@ -306,9 +307,10 @@ void on_node_info(void* object, const struct pw_node_info* info) {
       }
 
       if (ignore_node) {
-        util::debug("The output stream " + nd->nd_info->name.toStdString() +
-                    " does not have as target the same output device used as EE: " + output_device.name.toStdString() +
-                    "\n The user wants it to play to device " + target_object + ". We will ignore this stream.");
+        util::debug(
+            std::format("The output stream {} does not have as target the same output device used as EE: {}\n"
+                        "The user wants it to play to device {}. We will ignore this stream.",
+                        nd->nd_info->name.toStdString(), output_device.name.toStdString(), target_object));
       }
     }
   }
@@ -750,7 +752,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
       return 0;
     }
 
-    util::debug("new default output device: " + v);
+    util::debug(std::format("new default output device: {}", v));
 
     pm->defaultOutputDeviceName = QString::fromStdString(v);
 
@@ -764,7 +766,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
       return 0;
     }
 
-    util::debug("new default input device: " + v);
+    util::debug(std::format("new default input device: {}", v));
 
     pm->defaultInputDeviceName = QString::fromStdString(v);
 
@@ -1197,8 +1199,8 @@ Manager::Manager() : headerVersion(pw_get_headers_version()), libraryVersion(pw_
   spa_zero(core_listener);
   spa_zero(registry_listener);
 
-  util::debug("compiled with PipeWire: " + headerVersion.toStdString());
-  util::debug("linked to PipeWire: " + libraryVersion.toStdString());
+  util::debug(std::format("compiled with PipeWire: {}", headerVersion.toStdString()));
+  util::debug(std::format("linked to PipeWire: {}", libraryVersion.toStdString()));
 
   // this needs to occur after pw_init(), so putting it before pw_init() in the initializer breaks this
   // NOLINTNEXTLINE(cppcoreguidelines-prefer-member-initializer)
