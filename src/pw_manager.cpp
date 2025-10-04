@@ -151,7 +151,9 @@ void on_removed_proxy(void* data) {
     spa_hook_remove(&pd->object_listener);
   }
 
-  pw_proxy_destroy(pd->proxy);
+  if (pd->proxy != nullptr) {
+    pw_proxy_destroy(pd->proxy);
+  }
 }
 
 auto link_info_from_props(const spa_dict* props) -> pw::LinkInfo {
@@ -207,7 +209,9 @@ void on_removed_node_proxy(void* data) {
 
   spa_hook_remove(&nd->object_listener);
 
-  pw_proxy_destroy(nd->proxy);
+  if (nd->proxy != nullptr) {
+    pw_proxy_destroy(nd->proxy);
+  }
 }
 
 void on_destroy_node_proxy(void* data) {
@@ -256,7 +260,7 @@ void on_node_info(void* object, const struct pw_node_info* info) {
    */
 
   if (const auto* is_capture_sink = spa_dict_lookup(info->props, PW_KEY_STREAM_CAPTURE_SINK)) {
-    if (std::strcmp(is_capture_sink, "true") == 0 && pw::Manager::exclude_monitor_stream) {
+    if (std::strcmp(is_capture_sink, "true") == 0 && db::Main::excludeMonitorStreams()) {
       ignore_node = true;
     }
   }
@@ -316,6 +320,10 @@ void on_node_info(void* object, const struct pw_node_info* info) {
   }
 
   if (ignore_node) {
+    if (nd->proxy != nullptr) {
+      pw_proxy_destroy(nd->proxy);
+    }
+
     return;
   }
 
@@ -922,8 +930,6 @@ void on_registry_global(void* data,
           "An error occurred while retrieving the object serial. The node cannot be handled by Easy Effects.");
       return;
     }
-
-    // New node can be added into the node map
 
     auto* proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_NODE, sizeof(node_data)));
 

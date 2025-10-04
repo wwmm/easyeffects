@@ -74,8 +74,6 @@ class Manager : public QObject {
 
   inline static bool exiting = false;
 
-  inline static bool exclude_monitor_stream = true;
-
   spa_hook metadata_listener{};
 
   std::vector<LinkInfo> list_links;
