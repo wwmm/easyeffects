@@ -702,7 +702,7 @@ Kirigami.ScrollablePage {
                                 implicitWidth: multibandGatePage.radius
                                 implicitHeight: multibandGatePage.radius
                                 from: Common.minimumDecibelLevel
-                                to: 0
+                                to: 72
                                 value: Common.toLocaleLabel(multibandGatePage.bandReductionLevelLeft[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
                                 convertDecibelToLinear: true
@@ -716,7 +716,7 @@ Kirigami.ScrollablePage {
                                 implicitWidth: multibandGatePage.radius
                                 implicitHeight: multibandGatePage.radius
                                 from: Common.minimumDecibelLevel
-                                to: 0
+                                to: 72
                                 value: Common.toLocaleLabel(multibandGatePage.bandReductionLevelRight[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
                                 convertDecibelToLinear: true
@@ -763,7 +763,7 @@ Kirigami.ScrollablePage {
                                 implicitWidth: multibandGatePage.radius
                                 implicitHeight: multibandGatePage.radius
                                 from: Common.minimumDecibelLevel
-                                to: 0
+                                to: 36
                                 value: Common.toLocaleLabel(multibandGatePage.bandEnvelopeLevelLeft[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
                                 convertDecibelToLinear: true
@@ -776,7 +776,7 @@ Kirigami.ScrollablePage {
                                 implicitWidth: multibandGatePage.radius
                                 implicitHeight: multibandGatePage.radius
                                 from: Common.minimumDecibelLevel
-                                to: 0
+                                to: 36
                                 value: Common.toLocaleLabel(multibandGatePage.bandEnvelopeLevelRight[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
                                 convertDecibelToLinear: true
@@ -822,7 +822,7 @@ Kirigami.ScrollablePage {
                                 implicitWidth: multibandGatePage.radius
                                 implicitHeight: multibandGatePage.radius
                                 from: Common.minimumDecibelLevel
-                                to: 0
+                                to: 36
                                 value: Common.toLocaleLabel(multibandGatePage.bandCurveLevelLeft[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
                                 convertDecibelToLinear: true
@@ -835,7 +835,7 @@ Kirigami.ScrollablePage {
                                 implicitWidth: multibandGatePage.radius
                                 implicitHeight: multibandGatePage.radius
                                 from: Common.minimumDecibelLevel
-                                to: 0
+                                to: 36
                                 value: Common.toLocaleLabel(multibandGatePage.bandCurveLevelRight[bandsListview.currentIndex] ?? 0, 0, "")
                                 decimals: 0
                                 convertDecibelToLinear: true

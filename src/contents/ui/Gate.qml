@@ -618,7 +618,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 24
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true
@@ -631,7 +631,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 24
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true
@@ -700,7 +700,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 24
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true
@@ -713,7 +713,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 24
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true
@@ -727,7 +727,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 24
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true
@@ -740,7 +740,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 24
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true

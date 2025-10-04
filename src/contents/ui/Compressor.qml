@@ -604,7 +604,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 72
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true
@@ -618,7 +618,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 72
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true
@@ -633,7 +633,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 36
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true
@@ -646,7 +646,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 36
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true
@@ -715,7 +715,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 36
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true
@@ -728,7 +728,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 36
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true
@@ -742,7 +742,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 36
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true
@@ -755,7 +755,7 @@ Kirigami.ScrollablePage {
                         implicitWidth: parent.radius
                         implicitHeight: parent.radius
                         from: Common.minimumDecibelLevel
-                        to: 0
+                        to: 36
                         value: 0
                         decimals: 0
                         convertDecibelToLinear: true
