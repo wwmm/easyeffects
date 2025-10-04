@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-03 18:58-0300\n"
-"PO-Revision-Date: 2025-09-29 18:02+0000\n"
+"PO-Revision-Date: 2025-10-04 11:01+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -1848,7 +1848,7 @@ msgstr "Usa Volume Cubico"
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Ignore System Notifications"
-msgstr ""
+msgstr "Ignora le Notifiche di Sistema"
 
 #: src/contents/ui/PreferencesSheet.qml:136
 msgid "Enable/Disable Input Monitoring"
