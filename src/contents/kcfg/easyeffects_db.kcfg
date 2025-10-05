@@ -178,7 +178,7 @@
         </entry>
         <entry name="ignoreSystemNotifications" type="Bool">
             <label>Do not apply effects to system notifications.</label>
-            <default>false</default>
+            <default>true</default>
         </entry>
         <entry name="inactivityTimerEnable" type="Bool">
             <label>Enable the Inactivity Timeout</label>
