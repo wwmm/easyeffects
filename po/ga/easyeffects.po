@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-03 18:58-0300\n"
-"PO-Revision-Date: 2025-09-29 18:02+0000\n"
+"PO-Revision-Date: 2025-10-05 00:02+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -1850,7 +1850,7 @@ msgstr "Úsáid Imleabhar Ciúbach"
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Ignore System Notifications"
-msgstr ""
+msgstr "Déan neamhaird de Fhógraí Córais"
 
 #: src/contents/ui/PreferencesSheet.qml:136
 msgid "Enable/Disable Input Monitoring"
