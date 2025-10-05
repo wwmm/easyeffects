@@ -19,6 +19,7 @@
 
 #include "limiter.hpp"
 #include <qtypes.h>
+#include <spa/utils/defs.h>
 #include <algorithm>
 #include <format>
 #include <memory>
@@ -31,7 +32,6 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
-#include "spa/utils/defs.h"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

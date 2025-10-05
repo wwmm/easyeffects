@@ -22,6 +22,7 @@
 #include <qlockfile.h>
 #include <qlogging.h>
 #include <qstandardpaths.h>
+#include <spa/utils/dict.h>
 #include <sys/types.h>
 #include <QLoggingCategory>
 #include <array>
@@ -38,7 +39,6 @@
 #include <regex>
 #include <string>
 #include <thread>
-#include "spa/utils/dict.h"
 
 namespace util {
 

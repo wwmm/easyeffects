@@ -19,24 +19,23 @@
 
 #pragma once
 
-#include <bits/types/__sigval_t.h>
+#include <pipewire/core.h>
+#include <pipewire/extensions/metadata.h>
 #include <pipewire/node.h>
+#include <pipewire/proxy.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
+#include <spa/pod/pod.h>
+#include <spa/utils/dict.h>
+#include <spa/utils/hook.h>
 #include <array>
 #include <cstdint>
 #include <string>
 #include <utility>
 #include <vector>
-#include "pipewire/core.h"
-#include "pipewire/extensions/metadata.h"
-#include "pipewire/proxy.h"
 #include "pw_model_nodes.hpp"
 #include "pw_objects.hpp"
-#include "spa/pod/pod.h"
-#include "spa/utils/dict.h"
-#include "spa/utils/hook.h"
 
 namespace pw {
 

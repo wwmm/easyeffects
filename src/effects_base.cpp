@@ -26,6 +26,7 @@
 #include <qpoint.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
+#include <spa/utils/defs.h>
 #include <QSharedPointer>
 #include <QString>
 #include <algorithm>
@@ -66,7 +67,6 @@
 #include "pw_manager.hpp"
 #include "reverb.hpp"
 #include "rnnoise.hpp"
-#include "spa/utils/defs.h"
 #include "spectrum.hpp"
 #include "speex.hpp"
 #include "stereo_tools.hpp"

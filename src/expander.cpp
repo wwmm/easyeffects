@@ -19,6 +19,7 @@
 
 #include "expander.hpp"
 #include <qobject.h>
+#include <spa/utils/defs.h>
 #include <sys/types.h>
 #include <algorithm>
 #include <format>
@@ -32,7 +33,6 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
-#include "spa/utils/defs.h"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

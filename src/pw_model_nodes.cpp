@@ -18,6 +18,8 @@
  */
 
 #include "pw_model_nodes.hpp"
+#include <pipewire/node.h>
+#include <pipewire/proxy.h>
 #include <qabstractitemmodel.h>
 #include <qhash.h>
 #include <qhashfunctions.h>
@@ -36,8 +38,6 @@
 #include <iterator>
 #include "config.h"
 #include "db_manager.hpp"
-#include "pipewire/node.h"
-#include "pipewire/proxy.h"
 #include "pw_manager.hpp"
 #include "pw_objects.hpp"
 #include "tags_pipewire.hpp"

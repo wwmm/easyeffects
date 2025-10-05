@@ -17,45 +17,41 @@
  * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
-// Workaround for the flatpak CI that is still using flatpak 1.2
-#include "pipewire/type.h"
-//
-
+#include "pw_node_manager.hpp"
+#include <pipewire/core.h>
+#include <pipewire/extensions/metadata.h>
+#include <pipewire/keys.h>
+#include <pipewire/node.h>
+#include <pipewire/properties.h>
 #include <pipewire/proxy.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
 #include <qtypes.h>
+#include <spa/param/audio/raw-types.h>
+#include <spa/param/audio/raw.h>
+#include <spa/param/format.h>
+#include <spa/param/param.h>
+#include <spa/param/props.h>
 #include <spa/pod/builder.h>
+#include <spa/pod/iter.h>
 #include <spa/pod/pod.h>
+#include <spa/utils/defs.h>
+#include <spa/utils/dict.h>
+#include <spa/utils/hook.h>
 #include <spa/utils/result.h>
+#include <spa/utils/type.h>
 #include <algorithm>
 #include <array>
 #include <cstdint>
 #include <cstring>
 #include <format>
+#include <pw_model_nodes.hpp>
+#include <pw_objects.hpp>
 #include <span>
 #include <string>
 #include <utility>
 #include <vector>
 #include "db_manager.hpp"
-#include "pipewire/core.h"
-#include "pipewire/extensions/metadata.h"
-#include "pipewire/keys.h"
-#include "pipewire/node.h"
-#include "pipewire/properties.h"
-#include "pw_model_nodes.hpp"
-#include "pw_node_manager.hpp"
-#include "pw_objects.hpp"
-#include "spa/param/audio/raw-types.h"
-#include "spa/param/audio/raw.h"
-#include "spa/param/format.h"
-#include "spa/param/param.h"
-#include "spa/param/props.h"
-#include "spa/pod/iter.h"
-#include "spa/utils/defs.h"
-#include "spa/utils/dict.h"
-#include "spa/utils/hook.h"
-#include "spa/utils/type.h"
 #include "tags_app.hpp"
 #include "tags_pipewire.hpp"
 #include "util.hpp"

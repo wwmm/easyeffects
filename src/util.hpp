@@ -20,6 +20,7 @@
 #pragma once
 
 #include <qlockfile.h>
+#include <spa/utils/dict.h>
 #include <sys/types.h>
 #include <array>
 #include <charconv>
@@ -34,7 +35,6 @@
 #include <system_error>
 #include <type_traits>
 #include <vector>
-#include "spa/utils/dict.h"
 
 namespace util {
 constexpr float minimum_db_level = -100.0F;

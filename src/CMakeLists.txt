@@ -115,7 +115,7 @@ target_sources(easyeffects PRIVATE
     resources.qrc
 )
 
-target_include_directories(easyeffects PRIVATE
+target_include_directories(easyeffects SYSTEM PRIVATE
     ${LIBPIPEWIRE_INCLUDE_DIRS}
     ${LIBLILV_INCLUDE_DIRS}
     ${LIBEBUR128_INCLUDE_DIRS}

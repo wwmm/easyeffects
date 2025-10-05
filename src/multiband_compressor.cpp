@@ -20,6 +20,7 @@
 #include "multiband_compressor.hpp"
 #include <qlist.h>
 #include <qtypes.h>
+#include <spa/utils/defs.h>
 #include <QString>
 #include <algorithm>
 #include <format>
@@ -34,7 +35,6 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
-#include "spa/utils/defs.h"
 #include "tags_multiband_compressor.hpp"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"

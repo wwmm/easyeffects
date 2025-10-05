@@ -19,6 +19,8 @@
 
 #pragma once
 
+#include <pipewire/node.h>
+#include <pipewire/proxy.h>
 #include <qabstractitemmodel.h>
 #include <qhash.h>
 #include <qhashfunctions.h>
@@ -34,8 +36,6 @@
 #include <cstdint>
 #include <iterator>
 #include <utility>
-#include "pipewire/node.h"
-#include "pipewire/proxy.h"
 #include "pw_objects.hpp"
 
 namespace pw::models {

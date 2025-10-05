@@ -19,6 +19,7 @@
 
 #include "gate.hpp"
 #include <qtypes.h>
+#include <spa/utils/defs.h>
 #include <algorithm>
 #include <format>
 #include <memory>
@@ -32,7 +33,6 @@
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
 #include "pw_objects.hpp"
-#include "spa/utils/defs.h"
 #include "tags_plugin_name.hpp"
 #include "util.hpp"
 

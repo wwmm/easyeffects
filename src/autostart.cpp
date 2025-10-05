@@ -18,6 +18,10 @@
  */
 
 #include "autostart.hpp"
+#include <gio/gio.h>
+#include <glib-object.h>
+#include <glib.h>
+#include <glibconfig.h>
 #include <libportal-qt6/portal-qt6.h>
 #include <libportal/background.h>
 #include <libportal/parent.h>
@@ -25,10 +29,6 @@
 #include <QWindow>
 #include <string>
 #include "db_manager.hpp"
-#include "gio/gio.h"
-#include "glib-object.h"
-#include "glib.h"
-#include "glibconfig.h"
 #include "tags_app.hpp"
 #include "util.hpp"
 
