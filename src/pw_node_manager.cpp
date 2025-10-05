@@ -32,12 +32,14 @@
 #include <format>
 #include <span>
 #include <string>
+#include <utility>
 #include <vector>
 #include "db_manager.hpp"
 #include "pipewire/core.h"
 #include "pipewire/extensions/metadata.h"
 #include "pipewire/keys.h"
 #include "pipewire/node.h"
+#include "pipewire/properties.h"
 #include "pw_model_nodes.hpp"
 #include "pw_objects.hpp"
 #include "spa/param/audio/raw-types.h"
@@ -50,38 +52,14 @@
 #include "spa/utils/dict.h"
 #include "spa/utils/hook.h"
 #include "spa/utils/type.h"
+#include "tags_app.hpp"
 #include "tags_pipewire.hpp"
 #include "util.hpp"
-
-namespace {
-
-template <typename T>
-auto spa_dict_get_string(const spa_dict* props, const char* key, T& str) -> bool {
-  // If we will use string views in the future, this template could be useful.
-  if (const auto* s = spa_dict_lookup(props, key)) {
-    str = s;
-
-    return true;
-  }
-
-  return false;
-}
-
-template <typename T>
-auto spa_dict_get_num(const spa_dict* props, const char* key, T& num) -> bool {
-  if (const auto* n = spa_dict_lookup(props, key)) {
-    return util::str_to_num(std::string(n), num);
-  }
-
-  return false;
-}
-
-}  // namespace
 
 namespace pw {
 
 NodeManager::NodeManager(models::Nodes& model_nodes,
-                         pw_metadata* metadata,
+                         pw_metadata*& metadata,
                          NodeInfo& ee_sink_node,
                          NodeInfo& ee_source_node,
                          std::vector<LinkInfo>& list_links)
@@ -173,7 +151,7 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
 
   QString node_name;
 
-  spa_dict_get_string(props, PW_KEY_NODE_NAME, node_name);
+  util::spa_dict_get_string(props, PW_KEY_NODE_NAME, node_name);
 
   // At least for now I do not think there is a point in showing
   // the spectrum adn the output level filters in menus
@@ -197,7 +175,7 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
 
   uint64_t serial = 0U;
 
-  if (!spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
+  if (!util::spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
     util::warning("An error occurred while retrieving the object serial. The node cannot be handled by Easy Effects.");
     return false;
   }
@@ -226,11 +204,11 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
     nd->nd_info->media_class = tags::pipewire::media_class::ee_sink;
   }
 
-  spa_dict_get_string(props, PW_KEY_NODE_DESCRIPTION, nd->nd_info->description);
+  util::spa_dict_get_string(props, PW_KEY_NODE_DESCRIPTION, nd->nd_info->description);
 
-  spa_dict_get_num(props, PW_KEY_PRIORITY_SESSION, nd->nd_info->priority);
+  util::spa_dict_get_num(props, PW_KEY_PRIORITY_SESSION, nd->nd_info->priority);
 
-  spa_dict_get_num(props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
+  util::spa_dict_get_num(props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
   const auto user_blocklist = (media_class == tags::pipewire::media_class::output_stream)
                                   ? db::StreamOutputs::blocklist()
@@ -351,6 +329,9 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
       pw_proxy_destroy(nd->proxy);
     }
 
+    // Just in case the previous tests returned false in the first callback iteration
+    nm->model_nodes.remove_by_serial(nd->nd_info->serial);
+
     return;
   }
 
@@ -360,13 +341,13 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
   nd->nd_info->n_input_ports = static_cast<int>(info->n_input_ports);
   nd->nd_info->n_output_ports = static_cast<int>(info->n_output_ports);
 
-  spa_dict_get_num(info->props, PW_KEY_PRIORITY_SESSION, nd->nd_info->priority);
+  util::spa_dict_get_num(info->props, PW_KEY_PRIORITY_SESSION, nd->nd_info->priority);
 
   if (const auto* app_id = spa_dict_lookup(info->props, PW_KEY_APP_ID)) {
     nd->nd_info->application_id = app_id;
   }
 
-  // spa_dict_get_string(props, PW_KEY_APP_PROCESS_BINARY, app_process_binary);
+  // util::spa_dict_get_string(props, PW_KEY_APP_PROCESS_BINARY, app_process_binary);
 
   if (const auto* app_name = spa_dict_lookup(info->props, PW_KEY_APP_NAME)) {
     nd->nd_info->app_name = app_name;
@@ -388,7 +369,7 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
     nd->nd_info->media_icon_name = media_icon_name;
   }
 
-  spa_dict_get_string(info->props, PW_KEY_DEVICE_ICON_NAME, nd->nd_info->device_icon_name);
+  util::spa_dict_get_string(info->props, PW_KEY_DEVICE_ICON_NAME, nd->nd_info->device_icon_name);
 
   if (const auto* media_name = spa_dict_lookup(info->props, PW_KEY_MEDIA_NAME)) {
     nd->nd_info->media_name = media_name;
@@ -412,7 +393,7 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
     }
   }
 
-  spa_dict_get_num(info->props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
+  util::spa_dict_get_num(info->props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
   bool deviceProfileChanged = false;
 
@@ -450,7 +431,7 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
   }
 
   auto connect_to_ee_sink = [&]() {
-    if (db::Main::processAllOutputs() && !nd->nd_info->connected && !nd->nd_info->is_blocklisted) {
+    if (db::Main::processAllOutputs() && !nd->nd_info->is_blocklisted) {
       // target.node for backward compatibility with old PW session managers
       // NOLINTNEXTLINE
       pw_metadata_set_property(nm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
@@ -463,7 +444,7 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
   };
 
   auto connect_to_ee_source = [&]() {
-    if (db::Main::processAllInputs() && !nd->nd_info->connected && !nd->nd_info->is_blocklisted) {
+    if (db::Main::processAllInputs() && !nd->nd_info->is_blocklisted) {
       // target.node for backward compatibility with old PW session managers
       // NOLINTNEXTLINE
       pw_metadata_set_property(nm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
@@ -683,6 +664,50 @@ void NodeManager::onRemovedNodeProxy(void* data) {
   if (nd->proxy != nullptr) {
     pw_proxy_destroy(nd->proxy);
   }
+}
+
+auto NodeManager::load_virtual_devices(pw_core* core) -> std::pair<pw_proxy*, pw_proxy*> {
+  // loading Easy Effects sink
+
+  pw_properties* props_sink = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_sink, PW_KEY_APP_ID, tags::app::id);
+  pw_properties_set(props_sink, PW_KEY_NODE_NAME, tags::pipewire::ee_sink_name);
+  pw_properties_set(props_sink, PW_KEY_NODE_DESCRIPTION, "Easy Effects Sink");
+  pw_properties_set(props_sink, PW_KEY_NODE_VIRTUAL, "true");
+  pw_properties_set(props_sink, "factory.name", "support.null-audio-sink");
+  pw_properties_set(props_sink, PW_KEY_MEDIA_CLASS, tags::pipewire::media_class::sink);
+  pw_properties_set(props_sink, "audio.position", "FL,FR");
+  pw_properties_set(props_sink, "monitor.channel-volumes", "false");
+  pw_properties_set(props_sink, "monitor.passthrough", "true");
+  pw_properties_set(props_sink, "priority.session", "0");
+
+  auto proxy_stream_output_sink = static_cast<pw_proxy*>(
+      pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_sink->dict, 0));
+
+  pw_properties_free(props_sink);
+
+  // loading our source
+
+  pw_properties* props_source = pw_properties_new(nullptr, nullptr);
+
+  pw_properties_set(props_source, PW_KEY_APP_ID, tags::app::id);
+  pw_properties_set(props_source, PW_KEY_NODE_NAME, tags::pipewire::ee_source_name);
+  pw_properties_set(props_source, PW_KEY_NODE_DESCRIPTION, "Easy Effects Source");
+  pw_properties_set(props_source, PW_KEY_NODE_VIRTUAL, "true");
+  pw_properties_set(props_source, "factory.name", "support.null-audio-sink");
+  pw_properties_set(props_source, PW_KEY_MEDIA_CLASS, tags::pipewire::media_class::virtual_source);
+  pw_properties_set(props_source, "audio.position", "FL,FR");
+  pw_properties_set(props_source, "monitor.channel-volumes", "false");
+  pw_properties_set(props_source, "monitor.passthrough", "true");
+  pw_properties_set(props_source, "priority.session", "0");
+
+  auto proxy_stream_input_source = static_cast<pw_proxy*>(
+      pw_core_create_object(core, "adapter", PW_TYPE_INTERFACE_Node, PW_VERSION_NODE, &props_source->dict, 0));
+
+  pw_properties_free(props_source);
+
+  return {proxy_stream_input_source, proxy_stream_output_sink};
 }
 
 auto NodeManager::stream_is_connected(const uint& id, const QString& media_class) -> bool {

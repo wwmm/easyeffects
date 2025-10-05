@@ -29,13 +29,12 @@
 #include <qtmetamacros.h>
 #include <spa/utils/hook.h>
 #include <sys/types.h>
-#include <array>
 #include <cstdint>
-#include <string>
 #include <vector>
 #include "pw_model_clients.hpp"
 #include "pw_model_modules.hpp"
 #include "pw_model_nodes.hpp"
+#include "pw_node_manager.hpp"
 #include "pw_objects.hpp"
 
 namespace pw {
@@ -84,17 +83,6 @@ class Manager : public QObject {
 
   NodeInfo ee_sink_node, ee_source_node;
 
-  constexpr static auto blocklist_node_name =
-      std::to_array({"Easy Effects", "EasyEffects", "easyeffects", "pwvucontrol-peak-detect", "speech-dispatcher",
-                     "speech-dispatcher-dummy", "speech-dispatcher-espeak-ng"});
-
-  std::array<std::string, 2U> blocklist_app_id = {"org.PulseAudio.pavucontrol"};
-
-  std::array<std::string, 2U> blocklist_media_role = {"event", "Notification"};
-
-  constexpr static auto blocklist_notification_nodes =
-      std::to_array({"libcanberra", "org.gnome.VolumeControl", "GNOME Shell", "Mutter", "gsd-media-keys"});
-
   QString headerVersion;
   QString libraryVersion;
   QString runtimeVersion;
@@ -107,7 +95,7 @@ class Manager : public QObject {
   pw::models::Modules model_modules;
   pw::models::Clients model_clients;
 
-  auto stream_is_connected(const uint& id, const QString& media_class) -> bool;
+  NodeManager node_manager;
 
   auto count_node_ports(const uint& node_id) -> uint;
 
@@ -175,7 +163,6 @@ class Manager : public QObject {
   spa_hook core_listener{}, registry_listener{};
 
   void register_models();
-  void load_virtual_devices();
   void set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t& target_serial) const;
 };
 

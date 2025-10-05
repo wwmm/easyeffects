@@ -27,6 +27,7 @@
 #include <array>
 #include <cmath>
 #include <cstddef>
+#include <cstring>
 #include <exception>
 #include <filesystem>
 #include <format>
@@ -37,6 +38,7 @@
 #include <regex>
 #include <string>
 #include <thread>
+#include "spa/utils/dict.h"
 
 namespace util {
 
@@ -304,6 +306,18 @@ auto get_lock_file() -> std::unique_ptr<QLockFile> {
   }
 
   return lockFile;
+}
+
+auto spa_dict_get_bool(const spa_dict* props, const char* key, bool& b) -> bool {
+  // Returning bool is for conversion success state.
+  // The bool value is assigned to reference parameter.
+  if (const auto* v = spa_dict_lookup(props, key)) {
+    b = (std::strcmp(v, "true") == 0);
+
+    return true;
+  }
+
+  return false;
 }
 
 }  // namespace util

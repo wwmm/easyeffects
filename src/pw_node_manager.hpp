@@ -27,6 +27,7 @@
 #include <array>
 #include <cstdint>
 #include <string>
+#include <utility>
 #include <vector>
 #include "pipewire/core.h"
 #include "pipewire/extensions/metadata.h"
@@ -44,7 +45,7 @@ class NodeManager : public QObject {
 
  public:
   explicit NodeManager(models::Nodes& model_nodes,
-                       pw_metadata* metadata,
+                       pw_metadata*& metadata,
                        NodeInfo& ee_sink_node,
                        NodeInfo& ee_source_node,
                        std::vector<LinkInfo>& list_links);
@@ -56,6 +57,8 @@ class NodeManager : public QObject {
   auto operator=(NodeManager&&) -> NodeManager& = delete;
 
   auto registerNode(pw_registry* registry, uint32_t id, const char* type, const spa_dict* props) -> bool;
+
+  static auto load_virtual_devices(pw_core* core) -> std::pair<pw_proxy*, pw_proxy*>;
 
   void setNodeMute(uint64_t serial, bool state);
   void setNodeVolume(uint64_t serial, uint n_vol_ch, float value);
@@ -96,9 +99,9 @@ class NodeManager : public QObject {
 
   models::Nodes& model_nodes;
 
-  pw_metadata* metadata = nullptr;
+  pw_metadata*& metadata;
 
-  NodeInfo ee_sink_node, ee_source_node;
+  NodeInfo &ee_sink_node, &ee_source_node;
 
   std::vector<LinkInfo>& list_links;
 

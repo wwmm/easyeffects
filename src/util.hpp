@@ -25,13 +25,16 @@
 #include <charconv>
 #include <cmath>
 #include <cstdlib>
+#include <cstring>
 #include <filesystem>
 #include <limits>
+#include <memory>
 #include <source_location>
 #include <string>
 #include <system_error>
 #include <type_traits>
 #include <vector>
+#include "spa/utils/dict.h"
 
 namespace util {
 constexpr float minimum_db_level = -100.0F;
@@ -69,6 +72,10 @@ auto search_filename(const std::filesystem::path& path,
                      const std::string& filename,
                      std::string& full_path_result,
                      const uint& top_scan_level = std::numeric_limits<uint>::max()) -> bool;
+
+auto get_lock_file() -> std::unique_ptr<QLockFile>;
+
+auto spa_dict_get_bool(const spa_dict* props, const char* key, bool& b) -> bool;
 
 template <typename T>
 void print_type(T v) {
@@ -209,6 +216,25 @@ auto linspace(const T& start, const T& stop, const uint& npoints) -> std::vector
   return output;
 }
 
-auto get_lock_file() -> std::unique_ptr<QLockFile>;
+template <typename T>
+auto spa_dict_get_string(const spa_dict* props, const char* key, T& str) -> bool {
+  // If we will use string views in the future, this template could be useful.
+  if (const auto* s = spa_dict_lookup(props, key)) {
+    str = s;
+
+    return true;
+  }
+
+  return false;
+}
+
+template <typename T>
+auto spa_dict_get_num(const spa_dict* props, const char* key, T& num) -> bool {
+  if (const auto* n = spa_dict_lookup(props, key)) {
+    return util::str_to_num(std::string(n), num);
+  }
+
+  return false;
+}
 
 }  // namespace util
