@@ -123,6 +123,7 @@ Kirigami.OverlaySheet {
                     id: ignoreSystemNotifications
 
                     label: i18n("Ignore System Notifications")
+                    subtitle: i18n("Processing System Notifications May Cause Crackling Sound, so It Would be Better to Ignore Them, but For Some Presets It May be Recommended Since They Could Sound Too Loud")
                     isChecked: DB.Manager.main.ignoreSystemNotifications
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.ignoreSystemNotifications)
