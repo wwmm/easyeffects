@@ -707,7 +707,7 @@ auto NodeManager::load_virtual_devices(pw_core* core) -> std::pair<pw_proxy*, pw
 
   pw_properties_free(props_source);
 
-  return {proxy_stream_input_source, proxy_stream_output_sink};
+  return std::make_pair(proxy_stream_input_source, proxy_stream_output_sink);
 }
 
 auto NodeManager::stream_is_connected(const uint& id, const QString& media_class) -> bool {
