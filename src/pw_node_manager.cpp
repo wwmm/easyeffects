@@ -17,7 +17,10 @@
  * along with Easy Effects. If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include "pw_node_manager.hpp"
+// Workaround for the flatpak CI that is still using flatpak 1.2
+#include "pipewire/type.h"
+//
+
 #include <pipewire/proxy.h>
 #include <qobject.h>
 #include <qtmetamacros.h>
@@ -41,6 +44,7 @@
 #include "pipewire/node.h"
 #include "pipewire/properties.h"
 #include "pw_model_nodes.hpp"
+#include "pw_node_manager.hpp"
 #include "pw_objects.hpp"
 #include "spa/param/audio/raw-types.h"
 #include "spa/param/audio/raw.h"
