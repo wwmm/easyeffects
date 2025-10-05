@@ -18,6 +18,10 @@
  */
 
 #include "pw_node_manager.hpp"
+
+// For some reason our flatpak CI needs this header before <pipewire/node.h>
+#include <pipewire/type.h>
+
 #include <pipewire/core.h>
 #include <pipewire/extensions/metadata.h>
 #include <pipewire/keys.h>
