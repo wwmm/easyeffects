@@ -72,8 +72,9 @@ void RNNoisePreset::load(const nlohmann::json& json) {
     if (!model_path.empty()) {
       new_model_name = std::filesystem::path{model_path}.stem().string();
 
-      util::warning("using RNNoise model-path is deprecated, please update your preset; fallback to model-name: " +
-                    new_model_name);
+      util::warning(
+          std::format("Using RNNoise model-path is deprecated, please update your preset; fallback to model-name: {}",
+                      new_model_name));
     }
   }
 

@@ -799,9 +799,10 @@ void Manager::notify_error(const PresetError& preset_error, const std::string& p
       break;
     }
     case PresetError::plugin_format: {
-      util::warning("A parsing error occurred while trying to load the " + plugin_name +
-                    " plugin from the preset. The file could be invalid or "
-                    "corrupted. Please check its content.");
+      util::warning(
+          std::format("A parsing error occurred while trying to load the {} plugin from the preset. The file could be "
+                      "invalid or corrupted. Please check its content.",
+                      plugin_name));
 
       Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"),
                              plugin_translated + i18n("One or More Parameters Have a Wrong Format"));
@@ -809,7 +810,8 @@ void Manager::notify_error(const PresetError& preset_error, const std::string& p
       break;
     }
     case PresetError::plugin_generic: {
-      util::warning("A generic error occurred while trying to load the " + plugin_name + " plugin from the preset.");
+      util::warning(
+          std::format("A generic error occurred while trying to load the {} plugin from the preset.", plugin_name));
 
       Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"),
                              plugin_translated + i18n("Generic Error While Loading The Effect"));

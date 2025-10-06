@@ -409,7 +409,7 @@ auto PluginBase::connect_to_pw() -> bool {
   if (pw_filter_connect(filter, PW_FILTER_FLAG_RT_PROCESS, nullptr, 0) != 0) {
     pm->unlock();
 
-    util::warning(log_tag + name.toStdString() + " cannot connect the filter to PipeWire!");
+    util::warning(std::format("{}{} cannot connect the filter to PipeWire!", log_tag, name.toStdString()));
 
     return false;
   }
@@ -422,7 +422,7 @@ auto PluginBase::connect_to_pw() -> bool {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
 
     if (state == PW_FILTER_STATE_ERROR) {
-      util::warning(log_tag + name.toStdString() + " is in an error");
+      util::warning(std::format("{}{} is in an error", log_tag, name.toStdString()));
 
       return false;
     }

@@ -42,7 +42,7 @@ QString HelpManager::copyResourceFolder(const QString& resourcePath, const QStri
       QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QDir::separator() + tempFolderName;
 
   if (!QDir().mkpath(tempPath)) {
-    util::warning("Failed to create temp folder:" + tempPath.toStdString());
+    util::warning(std::format("Failed to create temp folder: {}", tempPath.toStdString()));
   }
 
   QDir resourceDir(resourcePath);
@@ -53,7 +53,7 @@ QString HelpManager::copyResourceFolder(const QString& resourcePath, const QStri
     QFile::remove(dst);  // remove if exists
 
     if (!QFile::copy(src, dst)) {
-      util::warning("Failed to copy" + src.toStdString() + "to" + dst.toStdString());
+      util::warning(std::format("Failed to copy {} to {}", src.toStdString(), dst.toStdString()));
     }
   }
 
@@ -66,7 +66,7 @@ void HelpManager::openManual() {
   QString indexPath = tempPath + "/index.html";
 
   if (!QFile::exists(indexPath)) {
-    util::warning("Index file missing:" + indexPath.toStdString());
+    util::warning(std::format("Index file missing: {}", indexPath.toStdString()));
 
     return;
   }

@@ -314,7 +314,7 @@ auto RNNoise::get_model_from_name() -> RNNModel* {
   if (settings->useStandardModel()) {
     standard_model = true;
 
-    util::warning(log_tag + " using the standard model");
+    util::warning(std::format("{} using the standard model", log_tag));
 
     return m;
   }
@@ -342,7 +342,7 @@ auto RNNoise::get_model_from_name() -> RNNModel* {
   standard_model = (m == nullptr);
 
   if (standard_model) {
-    util::warning(log_tag + name + " failed to load the custom model. Using the standard one.");
+    util::warning(std::format("{}{} failed to load the custom model. Using the standard one.", log_tag, name));
   }
 
   return m;

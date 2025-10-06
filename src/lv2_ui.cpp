@@ -201,7 +201,7 @@ void NativeUi::load() {
       lilv_free(bundle_path);
 
       if (ui_handle && show_iface && show_iface->show(ui_handle) != 0) {
-        util::warning("failed to show ui for " + ui_uri);
+        util::warning(std::format("Failed to show UI for {}", ui_uri));
       }
 
       break;

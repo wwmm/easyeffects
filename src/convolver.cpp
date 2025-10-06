@@ -360,8 +360,8 @@ auto Convolver::read_kernel_file(const std::string& kernel_path)
   auto sndfile = SndfileHandle(file_path.string());
 
   if (sndfile.channels() != 2 || sndfile.frames() == 0) {
-    util::warning(" Only stereo impulse responses are supported.");
-    util::warning(" The impulse file was not loaded!");
+    util::warning(std::format("{}Only stereo impulse responses are supported.", log_tag));
+    util::warning(std::format("{}The impulse file was not loaded!", log_tag));
 
     return std::make_tuple(rate, kernel_L, kernel_R);
   }
@@ -393,7 +393,7 @@ void Convolver::load_kernel_file() {
   const auto name = settings->kernelName();
 
   if (name.isEmpty()) {
-    util::warning(log_tag + name.toStdString() + ": irs filename is null. Entering passthrough mode...");
+    util::warning(std::format("{}{}: irs filename is null. Entering passthrough mode...", log_tag, name.toStdString()));
 
     return;
   }
@@ -404,7 +404,7 @@ void Convolver::load_kernel_file() {
 
   // If the search fails, the path is empty
   if (rate == 0 || kernel_L.empty() || kernel_R.empty()) {
-    util::warning(log_tag + name.toStdString() + " is invalid. Entering passthrough mode...");
+    util::warning(std::format("{}{} is invalid. Entering passthrough mode...", log_tag, name.toStdString()));
 
     return;
   }
@@ -670,7 +670,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
 
   // If the search fails, the path is empty
   if (kernel_1_path.empty()) {
-    util::warning(log_tag + kernel_1_path + ": irs filename does not exist.");
+    util::warning(std::format("{}{}: irs filename does not exist.", log_tag, kernel_1_path));
 
     Q_EMIT kernelCombinationStopped();
 
@@ -678,7 +678,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
   }
 
   if (kernel_2_path.empty()) {
-    util::warning(log_tag + kernel_2_path + ": irs filename does not exist.");
+    util::warning(std::format("{}{}: irs filename does not exist.", log_tag, kernel_2_path));
 
     Q_EMIT kernelCombinationStopped();
 

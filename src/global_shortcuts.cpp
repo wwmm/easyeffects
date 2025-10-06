@@ -67,8 +67,8 @@ GlobalShortcuts::GlobalShortcuts(QObject* parent) : QObject(parent) {
 
 void GlobalShortcuts::onSessionCreatedResponse(uint responseCode, const QVariantMap& results) {
   if (responseCode != 0) {
-    util::warning("D-Bus CreateSession for GlobalShortcuts was denied or failed. Response code: " +
-                  util::to_string(responseCode));
+    util::warning(std::format("D-Bus CreateSession for GlobalShortcuts was denied or failed. Response code: {}",
+                              util::to_string(responseCode)));
 
     return;
   }

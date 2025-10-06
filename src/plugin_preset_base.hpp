@@ -42,7 +42,7 @@ class PluginPresetBase {
     auto instance = db::Manager::self().get_plugin_db<dbType>(pipeline_type, QString::fromStdString(instance_name));
 
     if (instance == nullptr) {
-      util::warning("Failed to get the database instance for: " + instance_name);
+      util::warning(std::format("Failed to get the database instance for: {}", instance_name));
     }
 
     return instance;

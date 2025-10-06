@@ -230,9 +230,10 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
     timeout++;
 
     if (timeout > 5000) {  // 5 seconds
-      util::warning("Information about the ports of the output device " + output_device.name.toStdString() +
-                    " with id " + util::to_string(output_device.id) +
-                    " are taking to long to be available. Aborting the link");
+      util::warning(
+          std::format("Information about the ports of the output device {} with id {} are taking to long to be "
+                      "available. Aborting the link",
+                      output_device.name.toStdString(), util::to_string(output_device.id)));
 
       return;
     }
