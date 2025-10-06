@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-05 21:31+0000\n"
-"PO-Revision-Date: 2025-09-28 04:02+0000\n"
+"PO-Revision-Date: 2025-10-06 12:02+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
@@ -1804,7 +1804,7 @@ msgstr "Utilizar o Volume Cúbico"
 
 #: src/contents/ui/PreferencesSheet.qml:125
 msgid "Ignore System Notifications"
-msgstr ""
+msgstr "Ignorar Notificações do Sistema"
 
 #: src/contents/ui/PreferencesSheet.qml:126
 msgid ""
@@ -1812,6 +1812,9 @@ msgid ""
 "Better to Ignore Them, but For Some Presets It May be Recommended Since They "
 "Could Sound Too Loud"
 msgstr ""
+"O processamento de notificações do sistema pode causar estalos no som, "
+"portanto, é melhor ignorá-las. No entanto, para alguns presets, pode ser "
+"recomendado ativá-las, já que elas poderiam soar muito altas."
 
 #: src/contents/ui/PreferencesSheet.qml:137
 msgid "Enable/Disable Input Monitoring"
@@ -2061,17 +2064,14 @@ msgstr "Falha ao importar a predefinição."
 
 #: src/contents/ui/PresetsLocalPage.qml:52
 #: src/contents/ui/PresetsLocalPage.qml:134
-#, fuzzy
 msgid "Export Presets"
-msgstr "Importar Predefinições"
+msgstr "Exportar Predefinições"
 
 #: src/contents/ui/PresetsLocalPage.qml:55
-#, fuzzy
 msgid "Preset Files Exported."
-msgstr "Arquivo de predefinição APO exportado."
+msgstr "Arquivos de Predefinição Exportados."
 
 #: src/contents/ui/PresetsLocalPage.qml:57
-#, fuzzy
 msgid "Failed to Export the Presets."
 msgstr "Falha ao importar a predefinição."
 
@@ -2112,23 +2112,20 @@ msgid "The Preset %1 Could Not Be Removed"
 msgstr "A predefinição %1 não pôde ser removida"
 
 #: src/contents/ui/PresetsLocalPage.qml:204
-#, fuzzy
 msgid "Rename Preset"
-msgstr "Remover predefinição"
+msgstr "Renomear Predefinição"
 
 #: src/contents/ui/PresetsLocalPage.qml:209
 msgid "Rename"
-msgstr ""
+msgstr "Renomear"
 
 #: src/contents/ui/PresetsLocalPage.qml:218
-#, fuzzy
 msgid "The Preset %1 Has Been Renamed"
-msgstr "A predefinição %1 foi removida"
+msgstr "A Predefinição %1 Foi Renomeada"
 
 #: src/contents/ui/PresetsLocalPage.qml:220
-#, fuzzy
 msgid "The Preset %1 Could Not Be Renamed"
-msgstr "A predefinição %1 não pôde ser removida"
+msgstr "A Predefinição %1 Não Pôde Ser Renomeada"
 
 #: src/contents/ui/PresetsLocalPage.qml:227
 msgid "Cancel"
@@ -2147,9 +2144,8 @@ msgid "Failed to Save Settings to: %1"
 msgstr "Falha ao salvar configurações em: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:274
-#, fuzzy
 msgid "Rename this Preset"
-msgstr "Excluir esta predefinição"
+msgstr "Renomear esta Predefinição"
 
 #: src/contents/ui/PresetsLocalPage.qml:282
 msgid "Delete this Preset"

@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-05 21:31+0000\n"
-"PO-Revision-Date: 2025-10-04 11:02+0000\n"
-"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
+"PO-Revision-Date: 2025-10-06 12:02+0000\n"
+"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
 "X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:44
@@ -1807,6 +1808,9 @@ msgid ""
 "Better to Ignore Them, but For Some Presets It May be Recommended Since They "
 "Could Sound Too Loud"
 msgstr ""
+"Сповіщення системи обробки можуть спричиняти потріскування, тому краще їх "
+"ігнорувати, але для деяких пресетів це може бути рекомендовано, оскільки "
+"вони можуть звучати занадто голосно"
 
 #: src/contents/ui/PreferencesSheet.qml:137
 msgid "Enable/Disable Input Monitoring"
@@ -2056,15 +2060,15 @@ msgstr "Не вдалося імпортувати пресет."
 #: src/contents/ui/PresetsLocalPage.qml:52
 #: src/contents/ui/PresetsLocalPage.qml:134
 msgid "Export Presets"
-msgstr "Імпорт Пресету"
+msgstr "Експортувати пресети"
 
 #: src/contents/ui/PresetsLocalPage.qml:55
 msgid "Preset Files Exported."
-msgstr "Експортовано попередньо налаштовані файли."
+msgstr "Файли пресетів експортовано."
 
 #: src/contents/ui/PresetsLocalPage.qml:57
 msgid "Failed to Export the Presets."
-msgstr "Не вдалося експортувати пресетів."
+msgstr "Не вдалося експортувати пресети."
 
 #: src/contents/ui/PresetsLocalPage.qml:68
 msgid "New Preset Name"
