@@ -133,7 +133,7 @@ static void initGlobalBypass(StreamInputEffects& sie, StreamOutputEffects& soe) 
     soe.set_bypass(db::Main::bypass());
     sie.set_bypass(db::Main::bypass());
 
-    util::info((db::Main::bypass() ? "enabling global bypass" : "disabling global bypass"));
+    util::info((db::Main::bypass() ? "Enabling global bypass" : "Disabling global bypass"));
   };
 
   update_bypass_state();

@@ -625,11 +625,11 @@ Manager::Manager()
 
   // NOLINTNEXTLINE(clang-analyzer-core.NullDereference)
   if (thread_loop == nullptr) {
-    util::fatal("could not create PipeWire loop");
+    util::fatal("Could not create PipeWire loop");
   }
 
   if (pw_thread_loop_start(thread_loop) != 0) {
-    util::fatal("could not start the loop");
+    util::fatal("Could not start the loop");
   }
 
   lock();
@@ -649,19 +649,19 @@ Manager::Manager()
   context = pw_context_new(pw_thread_loop_get_loop(thread_loop), props_context, 0);
 
   if (context == nullptr) {
-    util::fatal("could not create PipeWire context");
+    util::fatal("Could not create PipeWire context");
   }
 
   core = pw_context_connect(context, nullptr, 0);
 
   if (core == nullptr) {
-    util::fatal("context connection failed");
+    util::fatal("Context connection failed");
   }
 
   registry = pw_core_get_registry(core, PW_VERSION_REGISTRY, 0);
 
   if (registry == nullptr) {
-    util::fatal("could not get the registry");
+    util::fatal("Could not get the registry");
   }
 
   pw_core_add_listener(core, &core_listener, &core_events, this);  // NOLINT
