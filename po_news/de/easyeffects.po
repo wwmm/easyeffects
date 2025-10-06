@@ -8,8 +8,9 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-08-30 00:58+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-10-06 01:01+0000\n"
+"Last-Translator: \"adjust.ice\" <adjust.ice@users.noreply.hosted.weblate.org>"
+"\n"
 "Language-Team: German <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/de/>\n"
 "Language: de\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -143,22 +144,34 @@ msgid ""
 "volunteers. You can search them on the repositories of your favorite "
 "distribution."
 msgstr ""
+"Community Voreinstellungen wurden implementiert. Nutzer können Pakete "
+"installieren, die mehrere Easy Effects Voreinstellungen enthalten, um diese "
+"in der Anwendung zu importieren und anzuwenden. Diese Pakete werden von "
+"Freiwilligen betreut und bereitgestellt. Nach diesen Paketen kann in den "
+"Repositories der bevorzugten Distribution gesucht werden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
 "Added the ability of collapsing the sidebar to hide the effects list and "
 "expand the area of the effects user interface."
 msgstr ""
+"Die Seitenleiste kann jetzt minimiert werden, um die Effekt-Liste "
+"auszublenden und damit den Bereich des Effekt-Einstellungsfensters zu "
+"vergrößern."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an "
 "output device that is different from the one EasyEffects is using."
 msgstr ""
+"EasyEffects greift nicht auf Streams zu, deren PW_KEY_TARGET_OBJECT auf ein "
+"anderes Ausgabegerät verweist als das von EasyEffects verwendete."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Equalizer APO import feature can now apply Band-Pass filters."
 msgstr ""
+"Die Equalizer APO Import-Funktion kann jetzt auf Bandpassfilter angewendet "
+"werden."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
@@ -204,6 +217,8 @@ msgid ""
 "A change in GTK 4.14.1 prevented to apply the values inserted into the text "
 "field of our SpinButton widgets. This issue is now resolved."
 msgstr ""
+"Eine Änderung in GTK 4.14.1 verhinderte die Anwendung der in das Textfeld "
+"der SpinButton Widgets eingefügten Werte. Dieses Problem ist jetzt behoben."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
 msgid ""
