@@ -156,7 +156,7 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
 
           std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
 
-          util::debug(std::format("successfully imported community preset addon {} locally", irs_name));
+          util::debug(std::format("Successfully imported community preset addon {} locally", irs_name));
 
           found = true;
 
@@ -165,7 +165,7 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
       }
 
       if (!found) {
-        util::warning(std::format("community preset addon {} not found!", irs_name));
+        util::warning(std::format("Community preset addon {} not found!", irs_name));
 
         return false;
       }
@@ -185,7 +185,7 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
 
           std::filesystem::copy_file(path, out_path, std::filesystem::copy_options::overwrite_existing);
 
-          util::debug(std::format("successfully imported community preset addon {} locally", model_name));
+          util::debug(std::format("Successfully imported community preset addon {} locally", model_name));
 
           found = true;
 
@@ -194,7 +194,7 @@ auto CommunityManager::import_addons_from_community_package(const PipelineType& 
       }
 
       if (!found) {
-        util::warning(std::format("community preset addon {} not found!", model_name));
+        util::warning(std::format("Community preset addon {} not found!", model_name));
 
         return false;
       }
@@ -260,7 +260,7 @@ bool CommunityManager::import_from_community_package(const PipelineType& pipelin
       }
     } while (++i < max_copy_attempts);
   } catch (const std::exception& e) {
-    util::warning(std::format("can't import the community preset: {}", p.string()));
+    util::warning(std::format("Can't import the community preset: {}", p.string()));
 
     util::warning(e.what());
 
