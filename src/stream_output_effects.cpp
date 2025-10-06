@@ -203,6 +203,22 @@ void StreamOutputEffects::on_link_changed(const pw::LinkInfo link_info) {
 }
 
 void StreamOutputEffects::connect_filters(const bool& bypass) {
+  /**
+   * In the past we were connecting the filters from EE sink to the output
+   * device:
+   * - ee_sink -> plugins -> spectrum -> level meter -> speakers
+   *
+   * This went good until we started to see more crackling and null pointers
+   * provided by Pipewire.
+   *
+   * Then we started making the connection in the reverse way (preserving the
+   * direction from ee_sink to output device):
+   * - speakers <- level meter <- spectrum <- plugins <- ee_sink
+   *
+   * And we got less crackling and null pointers from Pipewire. Don't know why,
+   * but we'll keep this process until it works...
+   */
+
   // Checking if the output device exists.
 
   if (db::StreamOutputs::outputDevice().isEmpty()) {
