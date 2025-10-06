@@ -62,8 +62,8 @@ Delay::Delay(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
   BIND_LV2_PORT("time_l", timeL, setTimeL, db::Delay::timeLChanged);
   BIND_LV2_PORT("time_r", timeR, setTimeR, db::Delay::timeRChanged);
 
-  BIND_LV2_PORT("sample_l", sampleL, setSampleL, db::Delay::sampleLChanged);
-  BIND_LV2_PORT("sample_r", sampleR, setSampleR, db::Delay::sampleRChanged);
+  BIND_LV2_PORT("samp_l", sampleL, setSampleL, db::Delay::sampleLChanged);
+  BIND_LV2_PORT("samp_r", sampleR, setSampleR, db::Delay::sampleRChanged);
 
   BIND_LV2_PORT("m_l", metersL, setMetersL, db::Delay::metersLChanged);
   BIND_LV2_PORT("m_r", metersR, setMetersR, db::Delay::metersRChanged);
