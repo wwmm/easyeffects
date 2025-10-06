@@ -130,7 +130,7 @@ RNNoise::~RNNoise() {
   free_rnnoise();
 #endif
 
-  util::debug(log_tag + name.toStdString() + " destroyed");
+  util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
 void RNNoise::reset() {
@@ -325,13 +325,13 @@ auto RNNoise::get_model_from_name() -> RNNModel* {
   if (path.empty()) {
     standard_model = true;
 
-    util::debug(log_tag + name + " model does not exist on the filesystem, using the standard model.");
+    util::debug(std::format("{}{} model does not exist on the filesystem, using the standard model.", log_tag, name));
 
     return m;
   }
 
   // Custom Model
-  util::debug(log_tag + name + " loading custom model from path: " + path);
+  util::debug(std::format("{}{} loading custom model from path: {}", log_tag, name, path));
 
   if (FILE* f = fopen(path.c_str(), "r"); f != nullptr) {
     m = rnnoise_model_from_file(f);

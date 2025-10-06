@@ -53,7 +53,7 @@ BassLoudness::BassLoudness(const std::string& tag,
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {
-    util::debug(log_tag + lv2_plugin_uri + " is not installed");
+    util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
   init_common_controls<db::BassLoudness>(settings);
@@ -70,7 +70,7 @@ BassLoudness::~BassLoudness() {
 
   settings->disconnect();
 
-  util::debug(log_tag + name.toStdString() + " destroyed");
+  util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
 void BassLoudness::reset() {

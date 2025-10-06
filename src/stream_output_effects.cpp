@@ -230,8 +230,8 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   auto output_device = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice());
 
   if (output_device.serial == SPA_ID_INVALID) {
-    util::debug("The output device " + db::StreamOutputs::outputDevice().toStdString() +
-                " is not available. Aborting the link");
+    util::debug(std::format("The output device {} is not available. Aborting the link...",
+                            db::StreamOutputs::outputDevice().toStdString()));
 
     return;
   }
@@ -369,7 +369,7 @@ void StreamOutputEffects::disconnect_filters() {
 
     if (plugin->connected_to_pw) {
       if (std::ranges::find(selected_plugins_list, plugin->name) == selected_plugins_list.end()) {
-        util::debug("Disconnecting the " + plugin->name.toStdString() + " filter from PipeWire");
+        util::debug(std::format("Disconnecting the {} filter from PipeWire", plugin->name.toStdString()));
 
         plugin->disconnect_from_pw();
       }

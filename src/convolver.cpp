@@ -148,7 +148,7 @@ Convolver::~Convolver() {
     delete conv;
   }
 
-  util::debug(log_tag + name.toStdString() + " destroyed");
+  util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
 void Convolver::reset() {
@@ -345,14 +345,14 @@ auto Convolver::read_kernel_file(const std::string& kernel_path)
 
   auto file_path = std::filesystem::path{kernel_path};
 
-  util::debug("Reading the impulse file: " + file_path.string());
+  util::debug(std::format("Reading the impulse file: {}", file_path.string()));
 
   if (file_path.extension() != irs_ext) {
     file_path += irs_ext;
   }
 
   if (!std::filesystem::exists(file_path)) {
-    util::debug("File: " + file_path.string() + " does not exist");
+    util::debug(std::format("File: {} does not exist", file_path.string()));
 
     return std::make_tuple(rate, kernel_L, kernel_R);
   }
@@ -467,7 +467,7 @@ void Convolver::load_kernel_file() {
 
   kernel_is_initialized = true;
 
-  util::debug(log_tag + name.toStdString() + ": kernel correctly loaded");
+  util::debug(std::format("{}{}: kernel correctly loaded", log_tag, name.toStdString()));
 
   mythreads.emplace_back(  // Using emplace_back here makes sense
       [this, kernel_R, kernel_L, kernel_rate]() { chart_kernel_fft(kernel_L, kernel_R, kernel_rate); });
@@ -588,7 +588,7 @@ void Convolver::setup_zita() {
 
   zita_ready = true;
 
-  util::debug(log_tag + name.toStdString() + ": zita is ready");
+  util::debug(std::format("{}{}: zita is ready", log_tag, name.toStdString()));
 }
 
 auto Convolver::get_zita_buffer_size() -> uint {
@@ -747,7 +747,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
 
   sndfile.writef(buffer.data(), static_cast<sf_count_t>(kernel_L.size()));
 
-  util::debug("Combined kernel saved: " + output_file_path.string());
+  util::debug(std::format("Combined kernel saved: {}", output_file_path.string()));
 
   Q_EMIT kernelCombinationStopped();
 }
@@ -785,12 +785,12 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (kernel_L.empty() || kernel_R.empty() || kernel_L.size() != kernel_R.size()) {
-    util::debug(" aborting the impulse fft calculation...");
+    util::debug("Aborting the impulse fft calculation...");
 
     return;
   }
 
-  util::debug(" calculating the impulse fft...");
+  util::debug("Calculating the impulse fft...");
 
   std::vector<double> spectrum_L((kernel_L.size() / 2U) + 1U);
   std::vector<double> spectrum_R((kernel_R.size() / 2U) + 1U);

@@ -285,7 +285,7 @@ auto get_lock_file() -> std::unique_ptr<QLockFile> {
   bool status = lockFile->tryLock(100);
 
   if (!status) {
-    util::debug("Could not lock the file: " + lockFile->fileName().toStdString());
+    util::debug(std::format("Could not lock the file: {}", lockFile->fileName().toStdString()));
 
     switch (lockFile->error()) {
       case QLockFile::NoError:

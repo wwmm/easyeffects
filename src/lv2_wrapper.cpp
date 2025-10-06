@@ -122,7 +122,7 @@ void Lv2Wrapper::check_required_features() {
 
       const char* required_feature_uri = lilv_node_as_uri(required_feature);
 
-      util::debug(plugin_uri + " requires feature: " + required_feature_uri);
+      util::debug(std::format("{} requires feature: {}", plugin_uri, required_feature_uri));
     }
 
     lilv_nodes_free(required_features);

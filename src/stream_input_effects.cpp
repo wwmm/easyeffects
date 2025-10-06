@@ -221,8 +221,8 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
   auto input_device = pm->model_nodes.get_node_by_name(db::StreamInputs::inputDevice());
 
   if (input_device.serial == SPA_ID_INVALID) {
-    util::debug("The input device " + db::StreamInputs::inputDevice().toStdString() +
-                " is not available. Aborting the link");
+    util::debug(std::format("The input device {} is not available. Aborting the link...",
+                            db::StreamInputs::inputDevice().toStdString()));
 
     return;
   }
@@ -344,7 +344,7 @@ void StreamInputEffects::disconnect_filters() {
 
     if (plugin->connected_to_pw) {
       if (std::ranges::find(selected_plugins_list, plugin->name) == selected_plugins_list.end()) {
-        util::debug("Disconnecting the " + plugin->name.toStdString() + " filter from PipeWire");
+        util::debug(std::format("Disconnecting the {} filter from PipeWire", plugin->name.toStdString()));
 
         plugin->disconnect_from_pw();
       }

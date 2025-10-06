@@ -316,7 +316,7 @@ auto CommunityManager::getAllCommunityPresetsPaths(PipelineType type) -> QList<s
       while (it != std::filesystem::directory_iterator{}) {
         if (auto package_path = it->path(); std::filesystem::is_directory(it->status())) {
           const auto package_path_name = package_path.string();
-          util::debug("Scan directory for community presets: " + package_path_name);
+          util::debug(std::format("Scan directory for community presets: {}", package_path_name));
 
           auto package_it = std::filesystem::directory_iterator{package_path};
           const auto sub_cp_vect =

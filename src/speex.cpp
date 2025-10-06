@@ -164,7 +164,7 @@ Speex::~Speex() {
 
   free_speex();
 
-  util::debug(log_tag + name.toStdString() + " destroyed");
+  util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
 void Speex::reset() {

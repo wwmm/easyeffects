@@ -51,7 +51,7 @@ Delay::Delay(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {
-    util::debug(log_tag + lv2_plugin_uri + " is not installed");
+    util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
   init_common_controls<db::Delay>(settings);
@@ -93,7 +93,7 @@ Delay::~Delay() {
 
   settings->disconnect();
 
-  util::debug(log_tag + name.toStdString() + " destroyed");
+  util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
 void Delay::reset() {

@@ -55,7 +55,7 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
   package_installed = ladspa_wrapper->found_plugin();
 
   if (!package_installed) {
-    util::debug(log_tag + "libdeep_filter_ladspa is not installed");
+    util::debug(std::format("{}libdeep_filter_ladspa is not installed", log_tag));
   }
 
   init_common_controls<db::DeepFilterNet>(settings);
@@ -83,7 +83,7 @@ DeepFilterNet::~DeepFilterNet() {
 
   settings->disconnect();
 
-  util::debug(log_tag + name.toStdString() + " destroyed");
+  util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
 void DeepFilterNet::reset() {

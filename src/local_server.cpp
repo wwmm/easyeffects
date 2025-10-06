@@ -49,7 +49,9 @@ void LocalServer::startServer() {
   QLocalServer::removeServer(tags::local_server::server_name);
 
   if (server->listen(tags::local_server::server_name)) {
-    util::debug("Local socket server started. Listening on the name: " + std::string(tags::local_server::server_name));
+    util::debug(std::format("Local socket server started. Listening on the name: {}",
+                            std::string(tags::local_server::server_name)));
+
   } else {
     util::debug("Failed to start the server");
   }

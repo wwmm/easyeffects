@@ -37,7 +37,7 @@ LocalClient::LocalClient(QObject* parent) : QObject(parent), client(std::make_un
   connect(client.get(), &QLocalSocket::readyRead, [&]() {
     QString message = client->readAll();
 
-    util::debug("Server message: " + message.toStdString());
+    util::debug(std::format("Server message: {}", message.toStdString()));
   });
 
   client->connectToServer(tags::local_server::server_name);

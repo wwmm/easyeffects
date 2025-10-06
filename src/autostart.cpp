@@ -66,7 +66,7 @@ void on_request_background_called([[maybe_unused]] GObject* source,
       explanation = "No explanation could be provided, error was null";
     }
 
-    util::debug("A background request failed: " + error_message);
+    util::debug(std::format("A background request failed: {}", error_message));
     util::warning(reason);
     util::warning(explanation);
 

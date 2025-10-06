@@ -446,7 +446,7 @@ auto PluginBase::connect_to_pw() -> bool {
 
   connected_to_pw = true;
 
-  util::debug(log_tag + name.toStdString() + " successfully connected to PipeWire graph");
+  util::debug(std::format("{}{} successfully connected to PipeWire graph", log_tag, name.toStdString()));
 
   return true;
 }
