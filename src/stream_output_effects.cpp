@@ -249,7 +249,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
       util::warning(
           std::format("Information about the ports of the output device {} with id {} are taking to long to be "
                       "available. Aborting the link",
-                      output_device.name.toStdString(), util::to_string(output_device.id)));
+                      output_device.name.toStdString(), output_device.id));
 
       return;
     }
