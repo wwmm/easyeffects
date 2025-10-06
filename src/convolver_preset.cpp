@@ -66,8 +66,9 @@ void ConvolverPreset::load(const nlohmann::json& json) {
     if (!kernel_path.empty()) {
       new_kernel_name = std::filesystem::path{kernel_path}.stem().string();
 
-      util::warning("using Convolver kernel-path is deprecated, please update your preset; fallback to kernel-name: " +
-                    new_kernel_name);
+      util::warning(std::format(
+          "Using Convolver kernel-path is deprecated, please update your preset; fallback to kernel-name: {}",
+          new_kernel_name));
     }
   }
 

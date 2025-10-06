@@ -90,9 +90,9 @@ bool RnnoiseManager::remove_model(const QString& filePath) {
   }
 
   if (result) {
-    util::debug(std::format("removed the rnnoise model: {}", filePath.toStdString()));
+    util::debug(std::format("Removed the rnnoise model: {}", filePath.toStdString()));
   } else {
-    util::warning(std::format("failed to remove the rnnoise model: {}", filePath.toStdString()));
+    util::warning(std::format("Failed to remove the rnnoise model: {}", filePath.toStdString()));
   }
 
   return result;

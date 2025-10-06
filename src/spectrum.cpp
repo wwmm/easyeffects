@@ -65,7 +65,8 @@ Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {
-    util::debug(log_tag + lv2_plugin_uri + " is not installed, spectrum will not have A/V sync compensation");
+    util::debug(
+        std::format("{}{} is not installed, spectrum will not have A/V sync compensation", log_tag, lv2_plugin_uri));
   }
 
   lv2_wrapper->set_control_port_value("mode_l", 2);
@@ -98,7 +99,7 @@ Spectrum::~Spectrum() {
 
   fftwf_destroy_plan(plan);
 
-  util::debug(log_tag + name.toStdString() + " destroyed");
+  util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
 void Spectrum::reset() {}
@@ -120,7 +121,7 @@ void Spectrum::setup() {
   }
 
   if (lv2_wrapper->get_rate() != rate) {
-    util::debug(log_tag + " creating instance of comp delay x2 stereo for spectrum A/V sync");
+    util::debug(std::format("{} creating instance of comp delay x2 stereo for spectrum A/V sync", log_tag));
     lv2_wrapper->create_instance(rate);
   }
 }

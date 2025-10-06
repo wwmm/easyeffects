@@ -762,7 +762,7 @@ auto LadspaWrapper::get_control_port_value(const std::string& symbol) const -> f
   auto iter = map_cp_name_to_idx.find(symbol);
 
   if (iter == map_cp_name_to_idx.end()) {
-    util::warning(plugin_name + " port symbol not found: " + symbol);
+    util::warning(std::format("{} port symbol not found: {}", plugin_name, symbol));
 
     return 0.0F;
   }
@@ -788,7 +788,7 @@ auto LadspaWrapper::set_control_port_value_clamp(const std::string& symbol, floa
   auto iter = map_cp_name_to_idx.find(symbol);
 
   if (iter == map_cp_name_to_idx.end()) {
-    util::warning(plugin_name + " port symbol not found: " + symbol);
+    util::warning(std::format("{} port symbol not found: {}", plugin_name, symbol));
 
     return value;
   }

@@ -364,7 +364,7 @@ bool Manager::savePresetFile(const PipelineType& pipeline_type, const QString& n
 
   // std::cout << std::setw(4) << json << std::endl;
 
-  util::debug(std::format("saved preset: {}", output_file.string()));
+  util::debug(std::format("Saved preset: {}", output_file.string()));
 
   return true;
 }
@@ -394,7 +394,7 @@ bool Manager::remove(const PipelineType& pipeline_type, const QString& name) {
   if (std::filesystem::exists(preset_file)) {
     std::filesystem::remove(preset_file);
 
-    util::debug(std::format("removed preset: {}", preset_file.string()));
+    util::debug(std::format("Removed preset: {}", preset_file.string()));
 
     return true;
   }
@@ -418,7 +418,7 @@ bool Manager::renameLocalPresetFile(const PipelineType& pipeline_type, const QSt
   if (std::filesystem::exists(preset_file)) {
     std::filesystem::rename(preset_file, new_file);
 
-    util::debug(std::format("renamed preset: {} to {}", preset_file.string(), new_file.string()));
+    util::debug(std::format("Renamed preset: {} to {}", preset_file.string(), new_file.string()));
 
     return true;
   }
@@ -534,7 +534,7 @@ auto Manager::load_preset_file(const PipelineType& pipeline_type, const std::fil
   // After the plugin order list, load the blocklist and then
   // apply the parameters of the loaded plugins.
   if (load_blocklist(pipeline_type, json) && read_plugins_preset(pipeline_type, plugins, json)) {
-    util::debug(std::format("successfully loaded the preset: {}", input_file.string()));
+    util::debug(std::format("Successfully loaded the preset: {}", input_file.string()));
 
     return true;
   }
@@ -550,7 +550,7 @@ bool Manager::loadLocalPresetFile(const PipelineType& pipeline_type, const QStri
 
   // Check preset existence
   if (!std::filesystem::exists(input_file)) {
-    util::debug(std::format("can't find the local preset \"{}\" on the filesystem", name.toStdString()));
+    util::debug(std::format("Can't find the local preset \"{}\" on the filesystem", name.toStdString()));
 
     return false;
   }
@@ -575,7 +575,7 @@ bool Manager::loadCommunityPresetFile(const PipelineType& pipeline_type,
 
   // Check preset existence
   if (!std::filesystem::exists(input_file)) {
-    util::warning(std::format("the community preset \"{}\" does not exist on the filesystem", input_file.string()));
+    util::warning(std::format("The community preset \"{}\" does not exist on the filesystem", input_file.string()));
 
     return false;
   }
@@ -606,11 +606,11 @@ bool Manager::importPresets(const PipelineType& pipeline_type, const QList<QStri
       try {
         std::filesystem::copy_file(input_path, out_path, std::filesystem::copy_options::overwrite_existing);
 
-        util::debug(std::format("imported preset to: {}", out_path.string()));
+        util::debug(std::format("Imported preset to: {}", out_path.string()));
 
         return true;
       } catch (const std::exception& e) {
-        util::warning(std::format("can't import preset to: {}", out_path.string()));
+        util::warning(std::format("Can't import preset to: {}", out_path.string()));
         util::warning(e.what());
 
         return false;
@@ -650,7 +650,7 @@ bool Manager::exportPresets(const PipelineType& pipeline_type, const QString& di
       }
     }
 
-    util::debug(std::format("exported presets to: {}", output_path.string()));
+    util::debug(std::format("Exported presets to: {}", output_path.string()));
 
     return true;
   }
@@ -799,9 +799,10 @@ void Manager::notify_error(const PresetError& preset_error, const std::string& p
       break;
     }
     case PresetError::plugin_format: {
-      util::warning("A parsing error occurred while trying to load the " + plugin_name +
-                    " plugin from the preset. The file could be invalid or "
-                    "corrupted. Please check its content.");
+      util::warning(
+          std::format("A parsing error occurred while trying to load the {} plugin from the preset. The file could be "
+                      "invalid or corrupted. Please check its content.",
+                      plugin_name));
 
       Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"),
                              plugin_translated + i18n("One or More Parameters Have a Wrong Format"));
@@ -809,7 +810,8 @@ void Manager::notify_error(const PresetError& preset_error, const std::string& p
       break;
     }
     case PresetError::plugin_generic: {
-      util::warning("A generic error occurred while trying to load the " + plugin_name + " plugin from the preset.");
+      util::warning(
+          std::format("A generic error occurred while trying to load the {} plugin from the preset.", plugin_name));
 
       Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"),
                              plugin_translated + i18n("Generic Error While Loading The Effect"));

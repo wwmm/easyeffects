@@ -44,12 +44,14 @@ Delay::Delay(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
                  pipe_type),
       settings(db::Manager::self().get_plugin_db<db::Delay>(pipe_type,
                                                             tags::plugin_name::BaseName::delay + "#" + instance_id)) {
-  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo");
+  const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo";
+
+  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
 
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {
-    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/comp_delay_x2_stereo is not installed");
+    util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
   init_common_controls<db::Delay>(settings);
@@ -91,7 +93,7 @@ Delay::~Delay() {
 
   settings->disconnect();
 
-  util::debug(log_tag + name.toStdString() + " destroyed");
+  util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
 void Delay::reset() {

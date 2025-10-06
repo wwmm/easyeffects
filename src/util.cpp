@@ -85,7 +85,7 @@ void create_user_directory(const std::filesystem::path& path) {
     return;
   }
 
-  util::warning(std::format("failed to create directory: {}", path.string()));
+  util::warning(std::format("Failed to create directory: {}", path.string()));
 }
 
 auto normalize(const double& x, const double& max, const double& min) -> double {
@@ -285,7 +285,7 @@ auto get_lock_file() -> std::unique_ptr<QLockFile> {
   bool status = lockFile->tryLock(100);
 
   if (!status) {
-    util::debug("Could not lock the file: " + lockFile->fileName().toStdString());
+    util::debug(std::format("Could not lock the file: {}", lockFile->fileName().toStdString()));
 
     switch (lockFile->error()) {
       case QLockFile::NoError:

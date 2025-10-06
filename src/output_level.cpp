@@ -36,7 +36,7 @@ OutputLevel::~OutputLevel() {
     disconnect_from_pw();
   }
 
-  util::debug(log_tag + name.toStdString() + " destroyed");
+  util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
 void OutputLevel::reset() {}

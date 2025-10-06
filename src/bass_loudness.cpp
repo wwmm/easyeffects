@@ -46,12 +46,14 @@ BassLoudness::BassLoudness(const std::string& tag,
       settings(db::Manager::self().get_plugin_db<db::BassLoudness>(
           pipe_type,
           tags::plugin_name::BaseName::bassLoudness + "#" + instance_id)) {
-  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://drobilla.net/plugins/mda/Loudness");
+  const auto lv2_plugin_uri = "http://drobilla.net/plugins/mda/Loudness";
+
+  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
 
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {
-    util::debug(log_tag + "http://drobilla.net/plugins/mda/Loudness is not installed");
+    util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
   init_common_controls<db::BassLoudness>(settings);
@@ -68,7 +70,7 @@ BassLoudness::~BassLoudness() {
 
   settings->disconnect();
 
-  util::debug(log_tag + name.toStdString() + " destroyed");
+  util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
 void BassLoudness::reset() {

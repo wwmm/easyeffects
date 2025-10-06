@@ -112,7 +112,7 @@ EchoCanceller::~EchoCanceller() {
 
   data_mutex.unlock();
 
-  util::debug(log_tag + name.toStdString() + " destroyed");
+  util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
 void EchoCanceller::reset() {
@@ -222,7 +222,7 @@ void EchoCanceller::init_speex() {
   echo_state_L = speex_echo_state_init(static_cast<int>(n_samples), static_cast<int>(filter_length));
 
   if (speex_echo_ctl(echo_state_L, SPEEX_ECHO_SET_SAMPLING_RATE, &rate) != 0) {
-    util::warning(log_tag + name.toStdString() + "SPEEX_ECHO_SET_SAMPLING_RATE: unknown request");
+    util::warning(std::format("{}{}SPEEX_ECHO_SET_SAMPLING_RATE: unknown request", log_tag, name.toStdString()));
   }
 
   if (echo_state_R != nullptr) {
@@ -232,7 +232,7 @@ void EchoCanceller::init_speex() {
   echo_state_R = speex_echo_state_init(static_cast<int>(n_samples), static_cast<int>(filter_length));
 
   if (speex_echo_ctl(echo_state_R, SPEEX_ECHO_SET_SAMPLING_RATE, &rate) != 0) {
-    util::warning(log_tag + name.toStdString() + "SPEEX_ECHO_SET_SAMPLING_RATE: unknown request");
+    util::warning(std::format("{}{}SPEEX_ECHO_SET_SAMPLING_RATE: unknown request", log_tag, name.toStdString()));
   }
 
   if (state_left != nullptr) {

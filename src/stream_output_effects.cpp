@@ -203,6 +203,22 @@ void StreamOutputEffects::on_link_changed(const pw::LinkInfo link_info) {
 }
 
 void StreamOutputEffects::connect_filters(const bool& bypass) {
+  /**
+   * In the past we were connecting the filters from EE sink to the output
+   * device:
+   * - ee_sink -> plugins -> spectrum -> level meter -> speakers
+   *
+   * This went good until we started to see more crackling and null pointers
+   * provided by Pipewire.
+   *
+   * Then we started making the connection in the reverse way (preserving the
+   * direction from ee_sink to output device):
+   * - speakers <- level meter <- spectrum <- plugins <- ee_sink
+   *
+   * And we got less crackling and null pointers from Pipewire. Don't know why,
+   * but we'll keep this process until it works...
+   */
+
   // Checking if the output device exists.
 
   if (db::StreamOutputs::outputDevice().isEmpty()) {
@@ -214,8 +230,8 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   auto output_device = pm->model_nodes.get_node_by_name(db::StreamOutputs::outputDevice());
 
   if (output_device.serial == SPA_ID_INVALID) {
-    util::debug("The output device " + db::StreamOutputs::outputDevice().toStdString() +
-                " is not available. Aborting the link");
+    util::debug(std::format("The output device {} is not available. Aborting the link...",
+                            db::StreamOutputs::outputDevice().toStdString()));
 
     return;
   }
@@ -230,9 +246,10 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
     timeout++;
 
     if (timeout > 5000) {  // 5 seconds
-      util::warning("Information about the ports of the output device " + output_device.name.toStdString() +
-                    " with id " + util::to_string(output_device.id) +
-                    " are taking to long to be available. Aborting the link");
+      util::warning(
+          std::format("Information about the ports of the output device {} with id {} are taking to long to be "
+                      "available. Aborting the link",
+                      output_device.name.toStdString(), output_device.id));
 
       return;
     }
@@ -251,7 +268,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   if (links.size() < 2U) {
     util::warning(
-        std::format("link from global level meter {} to output device {} failed", prev_node_id, next_node_id));
+        std::format("Link from global level meter {} to output device {} failed", prev_node_id, next_node_id));
   }
 
   // Link spectrum to global level meter.
@@ -266,7 +283,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   }
 
   if (links.size() < 2U) {
-    util::warning(std::format("link from spectrum {} to global level meter {} failed", prev_node_id, next_node_id));
+    util::warning(std::format("Link from spectrum {} to global level meter {} failed", prev_node_id, next_node_id));
   }
 
   // Link plugins in reverse order.
@@ -293,7 +310,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
         if (links.size() == 2U) {
           next_node_id = prev_node_id;
         } else {
-          util::warning(std::format("link from node {} to node {} failed", prev_node_id, next_node_id));
+          util::warning(std::format("Link from node {} to node {} failed", prev_node_id, next_node_id));
         }
       }
     }
@@ -330,7 +347,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   }
 
   if (links.size() < 2U) {
-    util::warning(std::format("link from easyeffecst sink {} to node {} failed", prev_node_id, next_node_id));
+    util::warning(std::format("Link from easyeffecst sink {} to node {} failed", prev_node_id, next_node_id));
   }
 }
 
@@ -352,7 +369,7 @@ void StreamOutputEffects::disconnect_filters() {
 
     if (plugin->connected_to_pw) {
       if (std::ranges::find(selected_plugins_list, plugin->name) == selected_plugins_list.end()) {
-        util::debug("disconnecting the " + plugin->name.toStdString() + " filter from PipeWire");
+        util::debug(std::format("Disconnecting the {} filter from PipeWire", plugin->name.toStdString()));
 
         plugin->disconnect_from_pw();
       }

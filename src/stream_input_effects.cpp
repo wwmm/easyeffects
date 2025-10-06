@@ -221,8 +221,8 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
   auto input_device = pm->model_nodes.get_node_by_name(db::StreamInputs::inputDevice());
 
   if (input_device.serial == SPA_ID_INVALID) {
-    util::debug("The input device " + db::StreamInputs::inputDevice().toStdString() +
-                " is not available. Aborting the link");
+    util::debug(std::format("The input device {} is not available. Aborting the link...",
+                            db::StreamInputs::inputDevice().toStdString()));
 
     return;
   }
@@ -235,7 +235,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
 
   int timeout = 0;
 
-  util::warning(std::format("before: {} -> {}", input_device.id, input_device.name.toStdString()));
+  util::warning(std::format("Before: {} -> {}", input_device.id, input_device.name.toStdString()));
 
   while (pm->count_node_ports(input_device.id) < 1) {
     std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -278,7 +278,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
           prev_node_id = next_node_id;
           mic_linked = true;
         } else {
-          util::warning(std::format("link from node {} to node {} failed", prev_node_id, next_node_id));
+          util::warning(std::format("Link from node {} to node {} failed", prev_node_id, next_node_id));
         }
       }
     }
@@ -321,7 +321,7 @@ void StreamInputEffects::connect_filters(const bool& bypass) {
       prev_node_id = next_node_id;
       mic_linked = true;
     } else {
-      util::warning(std::format("link from node {} to node {} failed", prev_node_id, next_node_id));
+      util::warning(std::format("Link from node {} to node {} failed", prev_node_id, next_node_id));
     }
   }
 }
@@ -344,7 +344,7 @@ void StreamInputEffects::disconnect_filters() {
 
     if (plugin->connected_to_pw) {
       if (std::ranges::find(selected_plugins_list, plugin->name) == selected_plugins_list.end()) {
-        util::debug("disconnecting the " + plugin->name.toStdString() + " filter from PipeWire");
+        util::debug(std::format("Disconnecting the {} filter from PipeWire", plugin->name.toStdString()));
 
         plugin->disconnect_from_pw();
       }

@@ -148,7 +148,7 @@ Convolver::~Convolver() {
     delete conv;
   }
 
-  util::debug(log_tag + name.toStdString() + " destroyed");
+  util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
 void Convolver::reset() {
@@ -345,14 +345,14 @@ auto Convolver::read_kernel_file(const std::string& kernel_path)
 
   auto file_path = std::filesystem::path{kernel_path};
 
-  util::debug("reading the impulse file: " + file_path.string());
+  util::debug(std::format("Reading the impulse file: {}", file_path.string()));
 
   if (file_path.extension() != irs_ext) {
     file_path += irs_ext;
   }
 
   if (!std::filesystem::exists(file_path)) {
-    util::debug("file: " + file_path.string() + " does not exist");
+    util::debug(std::format("File: {} does not exist", file_path.string()));
 
     return std::make_tuple(rate, kernel_L, kernel_R);
   }
@@ -360,8 +360,8 @@ auto Convolver::read_kernel_file(const std::string& kernel_path)
   auto sndfile = SndfileHandle(file_path.string());
 
   if (sndfile.channels() != 2 || sndfile.frames() == 0) {
-    util::warning(" Only stereo impulse responses are supported.");
-    util::warning(" The impulse file was not loaded!");
+    util::warning(std::format("{}Only stereo impulse responses are supported.", log_tag));
+    util::warning(std::format("{}The impulse file was not loaded!", log_tag));
 
     return std::make_tuple(rate, kernel_L, kernel_R);
   }
@@ -393,7 +393,7 @@ void Convolver::load_kernel_file() {
   const auto name = settings->kernelName();
 
   if (name.isEmpty()) {
-    util::warning(log_tag + name.toStdString() + ": irs filename is null. Entering passthrough mode...");
+    util::warning(std::format("{}{}: irs filename is null. Entering passthrough mode...", log_tag, name.toStdString()));
 
     return;
   }
@@ -404,7 +404,7 @@ void Convolver::load_kernel_file() {
 
   // If the search fails, the path is empty
   if (rate == 0 || kernel_L.empty() || kernel_R.empty()) {
-    util::warning(log_tag + name.toStdString() + " is invalid. Entering passthrough mode...");
+    util::warning(std::format("{}{} is invalid. Entering passthrough mode...", log_tag, name.toStdString()));
 
     return;
   }
@@ -467,7 +467,7 @@ void Convolver::load_kernel_file() {
 
   kernel_is_initialized = true;
 
-  util::debug(log_tag + name.toStdString() + ": kernel correctly loaded");
+  util::debug(std::format("{}{}: kernel correctly loaded", log_tag, name.toStdString()));
 
   mythreads.emplace_back(  // Using emplace_back here makes sense
       [this, kernel_R, kernel_L, kernel_rate]() { chart_kernel_fft(kernel_L, kernel_R, kernel_rate); });
@@ -588,7 +588,7 @@ void Convolver::setup_zita() {
 
   zita_ready = true;
 
-  util::debug(log_tag + name.toStdString() + ": zita is ready");
+  util::debug(std::format("{}{}: zita is ready", log_tag, name.toStdString()));
 }
 
 auto Convolver::get_zita_buffer_size() -> uint {
@@ -670,7 +670,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
 
   // If the search fails, the path is empty
   if (kernel_1_path.empty()) {
-    util::warning(log_tag + kernel_1_path + ": irs filename does not exist.");
+    util::warning(std::format("{}{}: irs filename does not exist.", log_tag, kernel_1_path));
 
     Q_EMIT kernelCombinationStopped();
 
@@ -678,7 +678,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
   }
 
   if (kernel_2_path.empty()) {
-    util::warning(log_tag + kernel_2_path + ": irs filename does not exist.");
+    util::warning(std::format("{}{}: irs filename does not exist.", log_tag, kernel_2_path));
 
     Q_EMIT kernelCombinationStopped();
 
@@ -695,7 +695,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
   }
 
   if (rate1 > rate2) {
-    util::debug(std::format("resampling the kernel {} to {} Hz", kernel_2_name, rate1));
+    util::debug(std::format("Resampling the kernel {} to {} Hz", kernel_2_name, rate1));
 
     auto resampler = std::make_unique<Resampler>(rate2, rate1);
 
@@ -705,7 +705,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
 
     kernel_2_R = resampler->process(kernel_2_R, true);
   } else if (rate2 > rate1) {
-    util::debug(std::format("resampling the kernel {} to {} Hz", kernel_1_name, rate2));
+    util::debug(std::format("Resampling the kernel {} to {} Hz", kernel_1_name, rate2));
 
     auto resampler = std::make_unique<Resampler>(rate1, rate2);
 
@@ -747,7 +747,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
 
   sndfile.writef(buffer.data(), static_cast<sf_count_t>(kernel_L.size()));
 
-  util::debug("combined kernel saved: " + output_file_path.string());
+  util::debug(std::format("Combined kernel saved: {}", output_file_path.string()));
 
   Q_EMIT kernelCombinationStopped();
 }
@@ -785,12 +785,12 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
   std::scoped_lock<std::mutex> lock(data_mutex);
 
   if (kernel_L.empty() || kernel_R.empty() || kernel_L.size() != kernel_R.size()) {
-    util::debug(" aborting the impulse fft calculation...");
+    util::debug("Aborting the impulse fft calculation...");
 
     return;
   }
 
-  util::debug(" calculating the impulse fft...");
+  util::debug("Calculating the impulse fft...");
 
   std::vector<double> spectrum_L((kernel_L.size() / 2U) + 1U);
   std::vector<double> spectrum_R((kernel_R.size() / 2U) + 1U);
@@ -883,8 +883,8 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
   auto max_freq = std::ranges::max(freq_axis);
   auto min_freq = std::ranges::min(freq_axis);
 
-  util::debug(std::format("min fft frequency: {}", min_freq));
-  util::debug(std::format("max fft frequency: {}", max_freq));
+  util::debug(std::format("Min fft frequency: {}", min_freq));
+  util::debug(std::format("Max fft frequency: {}", max_freq));
 
   auto log_freq_axis = util::logspace(min_freq, max_freq, interpPoints);
 

@@ -58,7 +58,7 @@ void on_process(void* userdata, spa_io_position* position) {
     d->ts->sine_phase = 0.0F;
   }
 
-  // util::warning("processing: " + util::to_string(n_samples));
+  // util::warning("Processing: " + util::to_string(n_samples));
 
   auto* out_left = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_left, n_samples));
   auto* out_right = static_cast<float*>(pw_filter_get_dsp_buffer(d->out_right, n_samples));
@@ -244,7 +244,7 @@ TestSignals::TestSignals(pw::Manager* pipe_manager) : pm(pipe_manager), random_g
 }
 
 TestSignals::~TestSignals() {
-  util::debug("destroyed");
+  util::debug("TestSignals destroyed");
 
   pm->lock();
 

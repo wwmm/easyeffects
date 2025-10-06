@@ -83,7 +83,7 @@ void NativeUi::load() {
 
     std::string ui_uri = lilv_node_as_uri(lilv_ui_get_uri(ui));
 
-    util::debug(wrapper->get_plugin_uri() + " ui uri: " + ui_uri);
+    util::debug(std::format("{} UI uri: {}", wrapper->get_plugin_uri(), ui_uri));
 
     const LilvNode* binary_node = lilv_ui_get_binary_uri(ui);
     const LilvNode* bundle_node = lilv_ui_get_bundle_uri(ui);
@@ -201,7 +201,7 @@ void NativeUi::load() {
       lilv_free(bundle_path);
 
       if (ui_handle && show_iface && show_iface->show(ui_handle) != 0) {
-        util::warning("failed to show ui for " + ui_uri);
+        util::warning(std::format("Failed to show UI for {}", ui_uri));
       }
 
       break;

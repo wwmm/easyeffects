@@ -67,7 +67,7 @@ LevelMeter::~LevelMeter() {
     ebur128_destroy(&ebur_state);
   }
 
-  util::debug(log_tag + name.toStdString() + " destroyed");
+  util::debug(std::format("{}{} destroyed", log_tag, name.toStdString()));
 }
 
 void LevelMeter::reset() {

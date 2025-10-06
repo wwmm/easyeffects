@@ -106,9 +106,9 @@ bool IrsManager::remove_impulse_file(const QString& filePath) {
   }
 
   if (result) {
-    util::debug(std::format("removed irs file: {}", filePath.toStdString()));
+    util::debug(std::format("Removed irs file: {}", filePath.toStdString()));
   } else {
-    util::warning(std::format("failed to removed the irs file: {}", filePath.toStdString()));
+    util::warning(std::format("Failed to removed the irs file: {}", filePath.toStdString()));
   }
 
   return result;

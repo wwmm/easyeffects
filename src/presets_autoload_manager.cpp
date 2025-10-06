@@ -108,7 +108,7 @@ void AutoloadManager::add(const PipelineType& pipeline_type,
 
   o << std::setw(4) << json << '\n';
 
-  util::debug(std::format("added autoload preset file: {}", path.string()));
+  util::debug(std::format("Added autoload preset file: {}", path.string()));
 
   o.close();
 
@@ -139,7 +139,7 @@ void AutoloadManager::remove(const PipelineType& pipeline_type,
       device_profile.toStdString() == json.value("device-profile", "")) {
     std::filesystem::remove(path);
 
-    util::debug(std::format("removed autoload: {}", path.string()));
+    util::debug(std::format("Removed autoload: {}", path.string()));
   }
 }
 
@@ -180,7 +180,7 @@ void AutoloadManager::load(const PipelineType& pipeline_type,
     }
 
     if (!fallback.isEmpty()) {
-      util::debug(std::format("autoloading fallback preset {} for device {}", name, device_name.toStdString()));
+      util::debug(std::format("Autoloading fallback preset {} for device {}", name, device_name.toStdString()));
 
       Q_EMIT loadFallbackPresetRequested(pipeline_type, fallback);
 
@@ -188,7 +188,7 @@ void AutoloadManager::load(const PipelineType& pipeline_type,
     }
   }
 
-  util::debug(std::format("autoloading local preset {} for device {}", name, device_name.toStdString()));
+  util::debug(std::format("Autoloading local preset {} for device {}", name, device_name.toStdString()));
 
   Q_EMIT loadPresetRequested(pipeline_type, QString::fromStdString(name));
 }

@@ -67,8 +67,8 @@ GlobalShortcuts::GlobalShortcuts(QObject* parent) : QObject(parent) {
 
 void GlobalShortcuts::onSessionCreatedResponse(uint responseCode, const QVariantMap& results) {
   if (responseCode != 0) {
-    util::warning("D-Bus CreateSession for GlobalShortcuts was denied or failed. Response code: " +
-                  util::to_string(responseCode));
+    util::warning(
+        std::format("D-Bus CreateSession for GlobalShortcuts was denied or failed. Response code: {}", responseCode));
 
     return;
   }
@@ -109,6 +109,9 @@ void GlobalShortcuts::process_activated_signal([[maybe_unused]] const QDBusObjec
 void GlobalShortcuts::bind_shortcuts() {
   // For security reasons, it's better to show the session handle only in development/debug mode.
   // util::info("Session handle object response:" + session_obj_path.path().toStdString());
+
+  // TODO: temporary fix for a core dump, to be removed...
+  return;
 
   // a(sa{sv})
   QList<QPair<QString, QVariantMap>> shortcuts;
