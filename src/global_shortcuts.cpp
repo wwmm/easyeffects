@@ -110,6 +110,9 @@ void GlobalShortcuts::bind_shortcuts() {
   // For security reasons, it's better to show the session handle only in development/debug mode.
   // util::info("Session handle object response:" + session_obj_path.path().toStdString());
 
+  // TODO: temporary fix for a core dump, to be removed...
+  return;
+
   // a(sa{sv})
   QList<QPair<QString, QVariantMap>> shortcuts;
 
