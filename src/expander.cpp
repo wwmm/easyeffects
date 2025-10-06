@@ -47,12 +47,14 @@ Expander::Expander(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
       settings(
           db::Manager::self().get_plugin_db<db::Expander>(pipe_type,
                                                           tags::plugin_name::BaseName::expander + "#" + instance_id)) {
-  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>("http://lsp-plug.in/plugins/lv2/sc_expander_stereo");
+  const auto lv2_plugin_uri = "http://lsp-plug.in/plugins/lv2/sc_expander_stereo";
+
+  lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
 
   package_installed = lv2_wrapper->found_plugin;
 
   if (!package_installed) {
-    util::debug(log_tag + "http://lsp-plug.in/plugins/lv2/sc_expander_stereo is not installed");
+    util::debug(log_tag + lv2_plugin_uri + " is not installed");
   }
 
   init_common_controls<db::Expander>(settings);
