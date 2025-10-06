@@ -50,7 +50,7 @@ namespace lv2 {
 Lv2Wrapper::Lv2Wrapper(const std::string& plugin_uri)
     : plugin_uri(plugin_uri), world(lilv_world_new()), native_ui(this) {
   if (world == nullptr) {
-    util::warning("failed to initialized the world");
+    util::warning("Failed to initialized the world");
 
     return;
   }
@@ -177,8 +177,8 @@ void Lv2Wrapper::create_ports() {
       port->max = maximum[n];
     }
 
-    // util::warning("port name: " + port->name);
-    // util::warning("port symbol: " + port->symbol);
+    // util::warning("Port name: " + port->name);
+    // util::warning("Port symbol: " + port->symbol);
 
     if (lilv_port_is_a(plugin, lilv_port, lv2_InputPort)) {
       port->is_input = true;
@@ -191,7 +191,7 @@ void Lv2Wrapper::create_ports() {
     } else if (lilv_port_is_a(plugin, lilv_port, lv2_AtomPort)) {
       port->type = TYPE_ATOM;
 
-      // util::warning("port name: " + port->name);
+      // util::warning("Port name: " + port->name);
     } else if (lilv_port_is_a(plugin, lilv_port, lv2_AudioPort)) {
       port->type = TYPE_AUDIO;
 

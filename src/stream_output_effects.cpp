@@ -252,7 +252,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
 
   if (links.size() < 2U) {
     util::warning(
-        std::format("link from global level meter {} to output device {} failed", prev_node_id, next_node_id));
+        std::format("Link from global level meter {} to output device {} failed", prev_node_id, next_node_id));
   }
 
   // Link spectrum to global level meter.
@@ -267,7 +267,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   }
 
   if (links.size() < 2U) {
-    util::warning(std::format("link from spectrum {} to global level meter {} failed", prev_node_id, next_node_id));
+    util::warning(std::format("Link from spectrum {} to global level meter {} failed", prev_node_id, next_node_id));
   }
 
   // Link plugins in reverse order.
@@ -294,7 +294,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
         if (links.size() == 2U) {
           next_node_id = prev_node_id;
         } else {
-          util::warning(std::format("link from node {} to node {} failed", prev_node_id, next_node_id));
+          util::warning(std::format("Link from node {} to node {} failed", prev_node_id, next_node_id));
         }
       }
     }
@@ -331,7 +331,7 @@ void StreamOutputEffects::connect_filters(const bool& bypass) {
   }
 
   if (links.size() < 2U) {
-    util::warning(std::format("link from easyeffecst sink {} to node {} failed", prev_node_id, next_node_id));
+    util::warning(std::format("Link from easyeffecst sink {} to node {} failed", prev_node_id, next_node_id));
   }
 }
 
@@ -353,7 +353,7 @@ void StreamOutputEffects::disconnect_filters() {
 
     if (plugin->connected_to_pw) {
       if (std::ranges::find(selected_plugins_list, plugin->name) == selected_plugins_list.end()) {
-        util::debug("disconnecting the " + plugin->name.toStdString() + " filter from PipeWire");
+        util::debug("Disconnecting the " + plugin->name.toStdString() + " filter from PipeWire");
 
         plugin->disconnect_from_pw();
       }

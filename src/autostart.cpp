@@ -70,7 +70,7 @@ void on_request_background_called([[maybe_unused]] GObject* source,
     util::warning(reason);
     util::warning(explanation);
 
-    util::warning("due to error, setting autostart state and switch to false");
+    util::warning("Due to error, setting autostart state and switch to false");
 
     db::Main::setAutostartOnLogin(false);
 

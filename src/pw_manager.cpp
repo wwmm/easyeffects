@@ -273,7 +273,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
   const std::string str_key = (key != nullptr) ? key : "";
   const std::string str_value = (value != nullptr) ? value : "";
 
-  util::debug(std::format("new metadata property: {}, {}, {}, {}", id, str_key, type ? type : "", str_value));
+  util::debug(std::format("New metadata property: {}, {}, {}, {}", id, str_key, type ? type : "", str_value));
 
   if (str_value.empty()) {
     return 0;
@@ -286,7 +286,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
       return 0;
     }
 
-    util::debug(std::format("new default output device: {}", v));
+    util::debug(std::format("New default output device: {}", v));
 
     pm->defaultOutputDeviceName = QString::fromStdString(v);
 
@@ -300,7 +300,7 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
       return 0;
     }
 
-    util::debug(std::format("new default input device: {}", v));
+    util::debug(std::format("New default input device: {}", v));
 
     pm->defaultInputDeviceName = QString::fromStdString(v);
 
@@ -513,7 +513,7 @@ void on_registry_global(void* data,
 
   if (std::strcmp(type, PW_TYPE_INTERFACE_Metadata) == 0) {
     if (const auto* name = spa_dict_lookup(props, PW_KEY_METADATA_NAME)) {
-      util::debug(std::format("found metadata: {}", name));
+      util::debug(std::format("Found metadata: {}", name));
 
       if (std::strcmp(name, "default") == 0) {
         if (pm->metadata != nullptr) {
@@ -564,8 +564,8 @@ void on_core_info(void* data, const struct pw_core_info* info) {
 
   util::spa_dict_get_string(info->props, "default.clock.quantum", pm->defaultQuantum);
 
-  util::warning(std::format("core version: {}", info->version));
-  util::warning(std::format("core name: {}", info->name));
+  util::warning(std::format("Core version: {}", info->version));
+  util::warning(std::format("Core name: {}", info->name));
 }
 
 void on_core_done(void* data, uint32_t id, [[maybe_unused]] int seq) {
@@ -616,8 +616,8 @@ Manager::Manager()
   spa_zero(core_listener);
   spa_zero(registry_listener);
 
-  util::debug(std::format("compiled with PipeWire: {}", headerVersion.toStdString()));
-  util::debug(std::format("linked to PipeWire: {}", libraryVersion.toStdString()));
+  util::debug(std::format("Compiled with PipeWire: {}", headerVersion.toStdString()));
+  util::debug(std::format("Linked to PipeWire: {}", libraryVersion.toStdString()));
 
   // this needs to occur after pw_init(), so putting it before pw_init() in the initializer breaks this
   // NOLINTNEXTLINE(cppcoreguidelines-prefer-member-initializer)
@@ -866,13 +866,13 @@ auto Manager::link_nodes(const uint& output_node_id,
   }
 
   if (list_input_ports.empty()) {
-    util::debug(std::format("node {} has no input ports yet. Aborting the link", input_node_id));
+    util::debug(std::format("Node {} has no input ports yet. Aborting the link", input_node_id));
 
     return list;
   }
 
   if (list_output_ports.empty()) {
-    util::debug(std::format("node {} has no output ports yet. Aborting the link", output_node_id));
+    util::debug(std::format("Node {} has no output ports yet. Aborting the link", output_node_id));
 
     return list;
   }
@@ -915,7 +915,7 @@ auto Manager::link_nodes(const uint& output_node_id,
         pw_properties_free(props);
 
         if (proxy == nullptr) {
-          util::warning(std::format("failed to link the node {} to {}", output_node_id, input_node_id));
+          util::warning(std::format("Failed to link the node {} to {}", output_node_id, input_node_id));
 
           unlock();
 

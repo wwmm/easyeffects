@@ -85,7 +85,7 @@ void create_user_directory(const std::filesystem::path& path) {
     return;
   }
 
-  util::warning(std::format("failed to create directory: {}", path.string()));
+  util::warning(std::format("Failed to create directory: {}", path.string()));
 }
 
 auto normalize(const double& x, const double& max, const double& min) -> double {

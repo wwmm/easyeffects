@@ -345,14 +345,14 @@ auto Convolver::read_kernel_file(const std::string& kernel_path)
 
   auto file_path = std::filesystem::path{kernel_path};
 
-  util::debug("reading the impulse file: " + file_path.string());
+  util::debug("Reading the impulse file: " + file_path.string());
 
   if (file_path.extension() != irs_ext) {
     file_path += irs_ext;
   }
 
   if (!std::filesystem::exists(file_path)) {
-    util::debug("file: " + file_path.string() + " does not exist");
+    util::debug("File: " + file_path.string() + " does not exist");
 
     return std::make_tuple(rate, kernel_L, kernel_R);
   }
@@ -695,7 +695,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
   }
 
   if (rate1 > rate2) {
-    util::debug(std::format("resampling the kernel {} to {} Hz", kernel_2_name, rate1));
+    util::debug(std::format("Resampling the kernel {} to {} Hz", kernel_2_name, rate1));
 
     auto resampler = std::make_unique<Resampler>(rate2, rate1);
 
@@ -705,7 +705,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
 
     kernel_2_R = resampler->process(kernel_2_R, true);
   } else if (rate2 > rate1) {
-    util::debug(std::format("resampling the kernel {} to {} Hz", kernel_1_name, rate2));
+    util::debug(std::format("Resampling the kernel {} to {} Hz", kernel_1_name, rate2));
 
     auto resampler = std::make_unique<Resampler>(rate1, rate2);
 
@@ -747,7 +747,7 @@ void Convolver::combine_kernels(const std::string& kernel_1_name,
 
   sndfile.writef(buffer.data(), static_cast<sf_count_t>(kernel_L.size()));
 
-  util::debug("combined kernel saved: " + output_file_path.string());
+  util::debug("Combined kernel saved: " + output_file_path.string());
 
   Q_EMIT kernelCombinationStopped();
 }
@@ -883,8 +883,8 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
   auto max_freq = std::ranges::max(freq_axis);
   auto min_freq = std::ranges::min(freq_axis);
 
-  util::debug(std::format("min fft frequency: {}", min_freq));
-  util::debug(std::format("max fft frequency: {}", max_freq));
+  util::debug(std::format("Min fft frequency: {}", min_freq));
+  util::debug(std::format("Max fft frequency: {}", max_freq));
 
   auto log_freq_axis = util::logspace(min_freq, max_freq, interpPoints);
 
