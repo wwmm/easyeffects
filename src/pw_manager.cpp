@@ -58,7 +58,6 @@
 #include <spa/utils/type.h>
 #include <sys/types.h>
 #include <QString>
-#include <algorithm>
 #include <chrono>
 #include <cstdint>
 #include <cstring>
@@ -66,12 +65,12 @@
 #include <format>
 #include <nlohmann/json.hpp>
 #include <nlohmann/json_fwd.hpp>
-#include <stdexcept>
 #include <string>
 #include <thread>
 #include <vector>
 #include "config.h"
 #include "db_manager.hpp"
+#include "pw_link_manager.hpp"
 #include "pw_model_clients.hpp"
 #include "pw_model_modules.hpp"
 #include "pw_model_nodes.hpp"
@@ -107,98 +106,6 @@ void on_removed_proxy(void* data) {
   if (pd->proxy != nullptr) {
     pw_proxy_destroy(pd->proxy);
   }
-}
-
-auto link_info_from_props(const spa_dict* props) -> pw::LinkInfo {
-  pw::LinkInfo info;
-
-  util::spa_dict_get_num(props, PW_KEY_LINK_ID, info.id);
-
-  util::spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, info.serial);
-
-  util::spa_dict_get_string(props, PW_KEY_OBJECT_PATH, info.path);
-
-  util::spa_dict_get_num(props, PW_KEY_LINK_INPUT_NODE, info.input_node_id);
-
-  util::spa_dict_get_num(props, PW_KEY_LINK_INPUT_PORT, info.input_port_id);
-
-  util::spa_dict_get_num(props, PW_KEY_LINK_OUTPUT_NODE, info.output_node_id);
-
-  util::spa_dict_get_num(props, PW_KEY_LINK_OUTPUT_PORT, info.output_port_id);
-
-  util::spa_dict_get_bool(props, PW_KEY_LINK_PASSIVE, info.passive);
-
-  return info;
-}
-
-auto port_info_from_props(const spa_dict* props) -> pw::PortInfo {
-  pw::PortInfo info;
-
-  util::spa_dict_get_num(props, PW_KEY_PORT_ID, info.port_id);
-
-  util::spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, info.serial);
-
-  util::spa_dict_get_string(props, PW_KEY_PORT_NAME, info.name);
-
-  util::spa_dict_get_num(props, PW_KEY_NODE_ID, info.node_id);
-
-  util::spa_dict_get_string(props, PW_KEY_PORT_DIRECTION, info.direction);
-
-  util::spa_dict_get_string(props, PW_KEY_AUDIO_CHANNEL, info.audio_channel);
-
-  util::spa_dict_get_string(props, PW_KEY_AUDIO_FORMAT, info.format_dsp);
-
-  util::spa_dict_get_bool(props, PW_KEY_PORT_PHYSICAL, info.physical);
-
-  util::spa_dict_get_bool(props, PW_KEY_PORT_TERMINAL, info.terminal);
-
-  util::spa_dict_get_bool(props, PW_KEY_PORT_MONITOR, info.monitor);
-
-  return info;
-}
-
-void on_link_info(void* object, const struct pw_link_info* info) {
-  auto* const ld = static_cast<proxy_data*>(object);
-  auto* const pm = ld->pm;
-
-  pw::LinkInfo link_copy;
-
-  for (auto& l : ld->pm->list_links) {
-    if (l.serial == ld->serial) {
-      l.state = info->state;
-
-      link_copy = l;
-
-      Q_EMIT pm->linkChanged(link_copy);
-
-      // util::warning(pw_link_state_as_string(l.state));
-
-      break;
-    }
-  }
-
-  // const struct spa_dict_item* item = nullptr;
-  // spa_dict_for_each(item, info->props) printf("\t\t%s: \"%s\"\n", item->key, item->value);
-}
-
-void on_destroy_link_proxy(void* data) {
-  auto* const ld = static_cast<proxy_data*>(data);
-
-  spa_hook_remove(&ld->proxy_listener);
-
-  auto it = std::ranges::remove_if(ld->pm->list_links, [=](const auto& n) { return n.serial == ld->serial; });
-
-  ld->pm->list_links.erase(it.begin(), it.end());
-}
-
-void on_destroy_port_proxy(void* data) {
-  auto* const pd = static_cast<proxy_data*>(data);
-
-  spa_hook_remove(&pd->proxy_listener);
-
-  auto it = std::ranges::remove_if(pd->pm->list_ports, [=](const auto& n) { return n.serial == pd->serial; });
-
-  pd->pm->list_ports.erase(it.begin(), it.end());
 }
 
 void on_module_info(void* object, const struct pw_module_info* info) {
@@ -313,22 +220,6 @@ auto on_metadata_property(void* data, uint32_t id, const char* key, const char* 
 const struct pw_metadata_events metadata_events = {.version = PW_VERSION_METADATA_EVENTS,
                                                    .property = on_metadata_property};
 
-const struct pw_proxy_events link_proxy_events = {.version = 0,
-                                                  .destroy = on_destroy_link_proxy,
-                                                  .bound = nullptr,
-                                                  .removed = on_removed_proxy,
-                                                  .done = nullptr,
-                                                  .error = nullptr,
-                                                  .bound_props = nullptr};
-
-const struct pw_proxy_events port_proxy_events = {.version = 0,
-                                                  .destroy = on_destroy_port_proxy,
-                                                  .bound = nullptr,
-                                                  .removed = on_removed_proxy,
-                                                  .done = nullptr,
-                                                  .error = nullptr,
-                                                  .bound_props = nullptr};
-
 const struct pw_proxy_events module_proxy_events = {.version = 0,
                                                     .destroy = on_destroy_module_proxy,
                                                     .bound = nullptr,
@@ -344,11 +235,6 @@ const struct pw_proxy_events client_proxy_events = {.version = 0,
                                                     .done = nullptr,
                                                     .error = nullptr,
                                                     .bound_props = nullptr};
-
-const struct pw_link_events link_events = {
-    .version = 0,
-    .info = on_link_info,
-};
 
 const struct pw_module_events module_events = {
     .version = 0,
@@ -377,76 +263,13 @@ void on_registry_global(void* data,
   }
 
   if (std::strcmp(type, PW_TYPE_INTERFACE_Link) == 0) {
-    uint64_t serial = 0U;
-
-    if (!util::spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
-      util::warning(
-          "An error occurred while retrieving the object serial. This link cannot be handled by Easy Effects.");
-      return;
-    }
-
-    auto* proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_LINK, sizeof(proxy_data)));
-
-    auto* const pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
-
-    pd->proxy = proxy;
-    pd->pm = pm;
-    pd->id = id;
-    pd->serial = serial;
-
-    pw_proxy_add_object_listener(proxy, &pd->object_listener, &link_events, pd);  // NOLINT
-    pw_proxy_add_listener(proxy, &pd->proxy_listener, &link_proxy_events, pd);
-
-    auto link_info = link_info_from_props(props);
-
-    link_info.id = id;
-    link_info.serial = serial;
-
-    pm->list_links.push_back(link_info);
-
-    try {
-      const auto input_node = pm->model_nodes.get_node_by_id(link_info.input_node_id);
-
-      const auto output_node = pm->model_nodes.get_node_by_id(link_info.output_node_id);
-
-      util::debug(std::format("{} port {} is connected to {} port {}", output_node.name.toStdString(),
-                              link_info.output_port_id, input_node.name.toStdString(), link_info.input_port_id));
-    } catch (std::out_of_range& e) {
-      util::debug(e.what());
-    }
+    pm->link_manager.register_link(pm->registry, id, type, props);
 
     return;
   }
 
   if (std::strcmp(type, PW_TYPE_INTERFACE_Port) == 0) {
-    uint64_t serial = 0U;
-
-    if (!util::spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
-      util::warning(
-          "An error occurred while retrieving the object serial. This port cannot be handled by Easy Effects.");
-      return;
-    }
-
-    auto* proxy = static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_PORT, sizeof(proxy_data)));
-
-    auto* const pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
-
-    pd->proxy = proxy;
-    pd->pm = pm;
-    pd->id = id;
-    pd->serial = serial;
-
-    pw_proxy_add_listener(proxy, &pd->proxy_listener, &port_proxy_events, pd);
-
-    auto port_info = port_info_from_props(props);
-
-    port_info.id = id;
-    port_info.serial = serial;
-
-    // std::cout << port_info.name << "\t" << port_info.audio_channel << "\t" << port_info.direction << "\t"
-    //           << port_info.format_dsp << "\t" << port_info.port_id << "\t" << port_info.node_id << std::endl;
-
-    pm->list_ports.push_back(port_info);
+    pm->link_manager.register_port(pm->registry, id, type, props);
 
     return;
   }
@@ -598,7 +421,8 @@ namespace pw {
 Manager::Manager()
     : headerVersion(pw_get_headers_version()),
       libraryVersion(pw_get_library_version()),
-      node_manager(NodeManager(model_nodes, metadata, ee_sink_node, ee_source_node, list_links)) {
+      node_manager(NodeManager(model_nodes, metadata, ee_sink_node, ee_source_node, list_links)),
+      link_manager(LinkManager(core, thread_loop, model_nodes, list_links)) {
   register_models();
 
   connect(&node_manager, &NodeManager::sourceAdded, [&](NodeInfo node) { Q_EMIT sourceAdded(node); });
@@ -610,6 +434,8 @@ Manager::Manager()
 
   connect(&node_manager, &NodeManager::sinkProfileNameChanged,
           [&](NodeInfo node) { Q_EMIT sinkProfileNameChanged(node); });
+
+  connect(&link_manager, &LinkManager::linkChanged, [&](LinkInfo link) { Q_EMIT linkChanged(link); });
 
   pw_init(nullptr, nullptr);
 
@@ -818,118 +644,15 @@ void Manager::setNodeMute(const uint& serial, const bool& state) {
   sync_wait_unlock();
 }
 
-auto Manager::count_node_ports(const uint& node_id) -> uint {
-  uint count = 0U;
-
-  for (const auto& port : list_ports) {
-    if (port.node_id == node_id) {
-      count++;
-    }
-  }
-
-  return count;
+auto Manager::count_node_ports(const uint& node_id) const -> uint {
+  return link_manager.count_node_ports(node_id);
 }
 
 auto Manager::link_nodes(const uint& output_node_id,
                          const uint& input_node_id,
                          const bool& probe_link,
                          const bool& link_passive) -> std::vector<pw_proxy*> {
-  std::vector<pw_proxy*> list;
-  std::vector<PortInfo> list_output_ports;
-  std::vector<PortInfo> list_input_ports;
-  auto use_audio_channel = true;
-
-  for (const auto& port : list_ports) {
-    if (port.node_id == output_node_id && port.direction == "out") {
-      list_output_ports.push_back(port);
-
-      if (!probe_link) {
-        if (port.audio_channel != "FL" && port.audio_channel != "FR") {
-          use_audio_channel = false;
-        }
-      }
-    }
-
-    if (port.node_id == input_node_id && port.direction == "in") {
-      if (!probe_link) {
-        list_input_ports.push_back(port);
-
-        if (port.audio_channel != "FL" && port.audio_channel != "FR") {
-          use_audio_channel = false;
-        }
-      } else {
-        if (port.audio_channel == "PROBE_FL" || port.audio_channel == "PROBE_FR") {
-          list_input_ports.push_back(port);
-        }
-      }
-    }
-  }
-
-  if (list_input_ports.empty()) {
-    util::debug(std::format("Node {} has no input ports yet. Aborting the link", input_node_id));
-
-    return list;
-  }
-
-  if (list_output_ports.empty()) {
-    util::debug(std::format("Node {} has no output ports yet. Aborting the link", output_node_id));
-
-    return list;
-  }
-
-  for (const auto& outp : list_output_ports) {
-    for (const auto& inp : list_input_ports) {
-      bool ports_match = false;
-
-      if (!probe_link) {
-        if (use_audio_channel) {
-          ports_match = outp.audio_channel == inp.audio_channel;
-        } else {
-          ports_match = outp.port_id == inp.port_id;
-        }
-      } else {
-        if (outp.audio_channel == "FL" && inp.audio_channel == "PROBE_FL") {
-          ports_match = true;
-        }
-
-        if (outp.audio_channel == "FR" && inp.audio_channel == "PROBE_FR") {
-          ports_match = true;
-        }
-      }
-
-      if (ports_match) {
-        pw_properties* props = pw_properties_new(nullptr, nullptr);
-
-        pw_properties_set(props, PW_KEY_LINK_PASSIVE, (link_passive) ? "true" : "false");
-        pw_properties_set(props, PW_KEY_OBJECT_LINGER, "false");
-        pw_properties_set(props, PW_KEY_LINK_OUTPUT_NODE, util::to_string(output_node_id).c_str());
-        pw_properties_set(props, PW_KEY_LINK_OUTPUT_PORT, util::to_string(outp.id).c_str());
-        pw_properties_set(props, PW_KEY_LINK_INPUT_NODE, util::to_string(input_node_id).c_str());
-        pw_properties_set(props, PW_KEY_LINK_INPUT_PORT, util::to_string(inp.id).c_str());
-
-        lock();
-
-        auto* proxy = static_cast<pw_proxy*>(
-            pw_core_create_object(core, "link-factory", PW_TYPE_INTERFACE_Link, PW_VERSION_LINK, &props->dict, 0));
-
-        pw_properties_free(props);
-
-        if (proxy == nullptr) {
-          util::warning(std::format("Failed to link the node {} to {}", output_node_id, input_node_id));
-
-          unlock();
-
-          return list;
-        }
-
-        sync_wait_unlock();
-
-        list.push_back(proxy);
-      }
-    }
-  }
-
-  return list;
+  return link_manager.link_nodes(output_node_id, input_node_id, probe_link, link_passive);
 }
 
 void Manager::lock() const {
@@ -974,6 +697,10 @@ void Manager::destroy_links(const std::vector<pw_proxy*>& list) const {
       sync_wait_unlock();
     }
   }
+}
+
+auto Manager::get_links() const -> const std::vector<LinkInfo>& {
+  return list_links;
 }
 
 }  // namespace pw

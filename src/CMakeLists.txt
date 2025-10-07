@@ -93,6 +93,7 @@ target_sources(easyeffects PRIVATE
     presets_manager.cpp
     presets_list_model.cpp
     pw_manager.cpp
+    pw_link_manager.cpp
     pw_node_manager.cpp
     pw_model_clients.cpp
     pw_model_modules.cpp

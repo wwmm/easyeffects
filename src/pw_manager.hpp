@@ -31,6 +31,7 @@
 #include <sys/types.h>
 #include <cstdint>
 #include <vector>
+#include "pw_link_manager.hpp"
 #include "pw_model_clients.hpp"
 #include "pw_model_modules.hpp"
 #include "pw_model_nodes.hpp"
@@ -75,10 +76,6 @@ class Manager : public QObject {
 
   spa_hook metadata_listener{};
 
-  std::vector<LinkInfo> list_links;
-
-  std::vector<PortInfo> list_ports;
-
   QString defaultInputDeviceName, defaultOutputDeviceName;
 
   NodeInfo ee_sink_node, ee_source_node;
@@ -96,8 +93,9 @@ class Manager : public QObject {
   pw::models::Clients model_clients;
 
   NodeManager node_manager;
+  LinkManager link_manager;
 
-  auto count_node_ports(const uint& node_id) -> uint;
+  [[nodiscard]] auto count_node_ports(const uint& node_id) const -> uint;
 
   // Links the output ports of the node output_node_id to the input ports of
   // the node input_node_id
@@ -120,6 +118,8 @@ class Manager : public QObject {
   void sync_wait_unlock() const;
 
   [[nodiscard]] auto wait_full() const -> int;
+
+  [[nodiscard]] auto get_links() const -> const std::vector<LinkInfo>&;
 
   Q_INVOKABLE void setNodeMute(const uint& serial, const bool& state);
   Q_INVOKABLE void setNodeVolume(const uint& serial, const uint& n_vol_ch, const float& value);
@@ -161,6 +161,8 @@ class Manager : public QObject {
   pw_proxy *proxy_stream_output_sink = nullptr, *proxy_stream_input_source = nullptr;
 
   spa_hook core_listener{}, registry_listener{};
+
+  std::vector<LinkInfo> list_links;
 
   void register_models();
   void set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t& target_serial) const;

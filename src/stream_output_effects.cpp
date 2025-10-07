@@ -153,7 +153,7 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
 }
 
 auto StreamOutputEffects::apps_want_to_play() -> bool {
-  return std::ranges::any_of(pm->list_links, [&](const auto& link) {
+  return std::ranges::any_of(pm->get_links(), [&](const auto& link) {
     return (link.input_node_id == pm->ee_sink_node.id) && (link.state == PW_LINK_STATE_ACTIVE);
   });
 }
@@ -361,7 +361,7 @@ void StreamOutputEffects::disconnect_filters() {
       continue;
     }
 
-    for (const auto& link : pm->list_links) {
+    for (const auto& link : pm->get_links()) {
       if (link.input_node_id == plugin->get_node_id() || link.output_node_id == plugin->get_node_id()) {
         link_id_list.insert(link.id);
       }
@@ -376,7 +376,7 @@ void StreamOutputEffects::disconnect_filters() {
     }
   }
 
-  for (const auto& link : pm->list_links) {
+  for (const auto& link : pm->get_links()) {
     if (link.input_node_id == spectrum->get_node_id() || link.output_node_id == spectrum->get_node_id() ||
         link.input_node_id == output_level->get_node_id() || link.output_node_id == output_level->get_node_id()) {
       link_id_list.insert(link.id);
