@@ -18,6 +18,10 @@
  */
 
 #include "pw_link_manager.hpp"
+
+// For some reason our flatpak CI needs this header before <pipewire/link.h>
+#include <pipewire/type.h>
+
 #include <pipewire/context.h>
 #include <pipewire/core.h>
 #include <pipewire/keys.h>
