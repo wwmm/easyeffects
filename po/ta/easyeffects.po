@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-05 21:31+0000\n"
+"POT-Creation-Date: 2025-10-07 18:45+0000\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -19,68 +19,77 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.13-dev\n"
 
-#: src/command_line_parser.cpp:44
+#: src/command_line_parser.cpp:45
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "எளிதான விளைவுகளை விட்டு வெளியேறவும். பணி பயன்முறையில் இயங்கும்போது பயனுள்ளதாக "
 "இருக்கும்."
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:46
 msgid "Reset Easy Effects."
 msgstr "எளிதான விளைவுகளை மீட்டமைக்கவும்."
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:47
 msgid "Hide the Window."
 msgstr "சாளரத்தை மறைக்கவும்."
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:48
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "உலகளாவிய பைபாச். 1 இயக்க, 2 முடக்க மற்றும் 3 நிலையைப் பெற 3"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "முன்னமைவை ஏற்றவும். எடுத்துக்காட்டு: ஈசி எஃபெக்ட்ச் -எல் இசை"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 #, fuzzy
 msgid "preset-name"
 msgstr "புதிய முன்னமைக்கப்பட்ட பெயர்"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:50
 msgid "Show available presets."
 msgstr "கிடைக்கக்கூடிய முன்னமைவுகளைக் காட்டு."
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:51
 #, fuzzy
 msgid "Get the active input/output preset."
 msgstr "செயலில் உள்ள முன்னமைவுகளைக் காட்டு."
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:51
 msgid "preset-type"
 msgstr ""
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:52
 #, fuzzy
 msgid "Get the active input and output presets."
 msgstr "செயலில் உள்ள முன்னமைவுகளைக் காட்டு."
 
-#: src/command_line_parser.cpp:52
-msgid "Deprecated. Use --service-mode instead."
-msgstr ""
-
 #: src/command_line_parser.cpp:53
-msgid "Start the application with service mode turned on."
+msgid ""
+"Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
 msgstr ""
 
 #: src/command_line_parser.cpp:54
+msgid "property-string"
+msgstr ""
+
+#: src/command_line_parser.cpp:55
+msgid "Deprecated. Use --service-mode instead."
+msgstr ""
+
+#: src/command_line_parser.cpp:56
+msgid "Start the application with service mode turned on."
+msgstr ""
+
+#: src/command_line_parser.cpp:57
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:142 src/contents/ui/main.qml:277
+#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:277
 msgid "Output Presets"
 msgstr "வெளியீட்டு முன்னமைவுகள்"
 
-#: src/command_line_parser.cpp:150 src/contents/ui/main.qml:267
+#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:267
 msgid "Input Presets"
 msgstr "உள்ளீட்டு முன்னமைவுகள்"
 
@@ -2608,7 +2617,7 @@ msgstr "வெளியீட்டு நிலை மீட்டர்"
 
 #: src/presets_manager.cpp:773 src/presets_manager.cpp:780
 #: src/presets_manager.cpp:790 src/presets_manager.cpp:797
-#: src/presets_manager.cpp:806 src/presets_manager.cpp:814
+#: src/presets_manager.cpp:807 src/presets_manager.cpp:816
 msgid "Preset Not Loaded Correctly"
 msgstr "முன்னமைவு சரியாக ஏற்றப்படவில்லை"
 
@@ -2628,11 +2637,11 @@ msgstr "விளைவுகள் பட்டியலில் தவறா�
 msgid "Generic Error While Loading Effects List"
 msgstr "விளைவுகள் பட்டியலை ஏற்றும்போது பொதுவான பிழை"
 
-#: src/presets_manager.cpp:807
+#: src/presets_manager.cpp:808
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "ஒன்று அல்லது அதற்கு மேற்பட்ட அளவுருக்கள் தவறான வடிவத்தைக் கொண்டுள்ளன"
 
-#: src/presets_manager.cpp:815
+#: src/presets_manager.cpp:817
 msgid "Generic Error While Loading The Effect"
 msgstr "விளைவை ஏற்றும்போது பொதுவான பிழை"
 

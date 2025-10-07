@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-05 21:31+0000\n"
+"POT-Creation-Date: 2025-10-07 18:45+0000\n"
 "PO-Revision-Date: 2025-09-23 14:01+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -19,66 +19,75 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.14-dev\n"
 
-#: src/command_line_parser.cpp:44
+#: src/command_line_parser.cpp:45
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "خروج از Easy Effects. مفید هنگام اجرا در حالت سرویس."
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:46
 msgid "Reset Easy Effects."
 msgstr "تنظیم مجدد Easy Effects."
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:47
 msgid "Hide the Window."
 msgstr "پنجره را مخفی کنید."
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:48
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "دور زدن کلی. 1 برای فعال‌سازی، 2 برای غیرفعال‌سازی و 3 برای دریافت وضعیت"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "بارگذاری یک پیش‌تنظیم. مثال: easyeffects -l music"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 #, fuzzy
 msgid "preset-name"
 msgstr "نام از پیش تعیین شده جدید"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:50
 msgid "Show available presets."
 msgstr "نمایش پیش‌تنظیم‌های موجود."
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:51
 #, fuzzy
 msgid "Get the active input/output preset."
 msgstr "نمایش پیش‌تنظیم‌های فعال."
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:51
 msgid "preset-type"
 msgstr ""
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:52
 #, fuzzy
 msgid "Get the active input and output presets."
 msgstr "نمایش پیش‌تنظیم‌های فعال."
 
-#: src/command_line_parser.cpp:52
-msgid "Deprecated. Use --service-mode instead."
-msgstr ""
-
 #: src/command_line_parser.cpp:53
-msgid "Start the application with service mode turned on."
+msgid ""
+"Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
 msgstr ""
 
 #: src/command_line_parser.cpp:54
+msgid "property-string"
+msgstr ""
+
+#: src/command_line_parser.cpp:55
+msgid "Deprecated. Use --service-mode instead."
+msgstr ""
+
+#: src/command_line_parser.cpp:56
+msgid "Start the application with service mode turned on."
+msgstr ""
+
+#: src/command_line_parser.cpp:57
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:142 src/contents/ui/main.qml:277
+#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:277
 msgid "Output Presets"
 msgstr "خروجی از پیش تعیین شده"
 
-#: src/command_line_parser.cpp:150 src/contents/ui/main.qml:267
+#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:267
 msgid "Input Presets"
 msgstr "پیش‌تنظیم‌های ورودی"
 
@@ -2603,7 +2612,7 @@ msgstr "سطح سنج خروجی"
 
 #: src/presets_manager.cpp:773 src/presets_manager.cpp:780
 #: src/presets_manager.cpp:790 src/presets_manager.cpp:797
-#: src/presets_manager.cpp:806 src/presets_manager.cpp:814
+#: src/presets_manager.cpp:807 src/presets_manager.cpp:816
 msgid "Preset Not Loaded Correctly"
 msgstr "پیش‌تنظیم به‌درستی بارگذاری نشد"
 
@@ -2623,11 +2632,11 @@ msgstr "فرمت نادرست در فهرست جلوه ها"
 msgid "Generic Error While Loading Effects List"
 msgstr "خطای عمومی هنگام بارگذاری فهرست جلوه ها"
 
-#: src/presets_manager.cpp:807
+#: src/presets_manager.cpp:808
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "یک یا چند پارامتر فرمت نادرستی دارند"
 
-#: src/presets_manager.cpp:815
+#: src/presets_manager.cpp:817
 msgid "Generic Error While Loading The Effect"
 msgstr "خطای عمومی هنگام بارگذاری جلوه"
 

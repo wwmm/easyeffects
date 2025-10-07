@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-05 21:31+0000\n"
+"POT-Creation-Date: 2025-10-07 18:45+0000\n"
 "PO-Revision-Date: 2025-10-06 12:02+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -21,64 +21,73 @@ msgstr ""
 "X-Generator: Weblate 5.14-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
-#: src/command_line_parser.cpp:44
+#: src/command_line_parser.cpp:45
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Chiudi Easy Effects. Utile in esecuzione come servizio."
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:46
 msgid "Reset Easy Effects."
 msgstr "Reimposta Easy Effects."
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:47
 msgid "Hide the Window."
 msgstr "Nascondi la Finestra."
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:48
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Bypass globale. 1 per abilitare, 2 per disabilitare e 3 per ottenere lo stato"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Carica un profilo. Esempio: easyeffects -l music"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 msgid "preset-name"
 msgstr "nome-profilo"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:50
 msgid "Show available presets."
 msgstr "Mostra profili disponibili."
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:51
 msgid "Get the active input/output preset."
 msgstr "Restituisce il profilo di input/output attivo."
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:51
 msgid "preset-type"
 msgstr "tipo-profilo"
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:52
 msgid "Get the active input and output presets."
 msgstr "Restituisce i profili di input e output attivi."
 
-#: src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:53
+msgid ""
+"Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
+msgstr ""
+
+#: src/command_line_parser.cpp:54
+msgid "property-string"
+msgstr ""
+
+#: src/command_line_parser.cpp:55
 msgid "Deprecated. Use --service-mode instead."
 msgstr "Deprecato. Usare --service-mode."
 
-#: src/command_line_parser.cpp:53
+#: src/command_line_parser.cpp:56
 msgid "Start the application with service mode turned on."
 msgstr "Avvia l'applicazione con la modalità di servizio abilitata."
 
-#: src/command_line_parser.cpp:54
+#: src/command_line_parser.cpp:57
 msgid "Enable debug messages."
 msgstr "Abilità messaggi di debug."
 
-#: src/command_line_parser.cpp:142 src/contents/ui/main.qml:277
+#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:277
 msgid "Output Presets"
 msgstr "Profili di Uscita"
 
-#: src/command_line_parser.cpp:150 src/contents/ui/main.qml:267
+#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:267
 msgid "Input Presets"
 msgstr "Profili di Ingresso"
 
@@ -2469,7 +2478,7 @@ msgstr "Misuratore Livello Uscita"
 
 #: src/presets_manager.cpp:773 src/presets_manager.cpp:780
 #: src/presets_manager.cpp:790 src/presets_manager.cpp:797
-#: src/presets_manager.cpp:806 src/presets_manager.cpp:814
+#: src/presets_manager.cpp:807 src/presets_manager.cpp:816
 msgid "Preset Not Loaded Correctly"
 msgstr "Profilo Non Caricato Correttamente"
 
@@ -2489,11 +2498,11 @@ msgstr "Formato Errato nella Lista degli Effetti"
 msgid "Generic Error While Loading Effects List"
 msgstr "Errore Generico nel Caricamento della Lista degli Effetti"
 
-#: src/presets_manager.cpp:807
+#: src/presets_manager.cpp:808
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Uno o Più Parametri Hanno un Formato Errato"
 
-#: src/presets_manager.cpp:815
+#: src/presets_manager.cpp:817
 msgid "Generic Error While Loading The Effect"
 msgstr "Errore Generico nel Caricamento dell'Effetto"
 
