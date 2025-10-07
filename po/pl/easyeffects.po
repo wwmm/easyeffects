@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-05 21:31+0000\n"
+"POT-Creation-Date: 2025-10-07 18:45+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Aleksander <olek_filip@wp.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -20,66 +20,75 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.13-dev\n"
 
-#: src/command_line_parser.cpp:44
+#: src/command_line_parser.cpp:45
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Wyjdź z EasyEffects. Przydatne przy pracy w trybie usługi."
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:46
 msgid "Reset Easy Effects."
 msgstr "Zresetuj EasyEffects."
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:47
 msgid "Hide the Window."
 msgstr "Schowaj okno."
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:48
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "Globalny bypass. 1 by włączyć, 2 by wyłączyć oraz 3 by otrzymać status"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Załaduj profil. Przykład: easyeffects -l music"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 #, fuzzy
 msgid "preset-name"
 msgstr "Nazwa nowego profilu"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:50
 msgid "Show available presets."
 msgstr "Pokaż dostępne profile."
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:51
 #, fuzzy
 msgid "Get the active input/output preset."
 msgstr "Pokaż aktywne szablony."
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:51
 msgid "preset-type"
 msgstr ""
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:52
 #, fuzzy
 msgid "Get the active input and output presets."
 msgstr "Pokaż aktywne szablony."
 
-#: src/command_line_parser.cpp:52
-msgid "Deprecated. Use --service-mode instead."
-msgstr ""
-
 #: src/command_line_parser.cpp:53
-msgid "Start the application with service mode turned on."
+msgid ""
+"Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
 msgstr ""
 
 #: src/command_line_parser.cpp:54
+msgid "property-string"
+msgstr ""
+
+#: src/command_line_parser.cpp:55
+msgid "Deprecated. Use --service-mode instead."
+msgstr ""
+
+#: src/command_line_parser.cpp:56
+msgid "Start the application with service mode turned on."
+msgstr ""
+
+#: src/command_line_parser.cpp:57
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:142 src/contents/ui/main.qml:277
+#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:277
 msgid "Output Presets"
 msgstr "Szablony wyjściowe"
 
-#: src/command_line_parser.cpp:150 src/contents/ui/main.qml:267
+#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:267
 msgid "Input Presets"
 msgstr "Profile wejścia"
 
@@ -2616,7 +2625,7 @@ msgstr "Licznik poziomu wyjścia"
 
 #: src/presets_manager.cpp:773 src/presets_manager.cpp:780
 #: src/presets_manager.cpp:790 src/presets_manager.cpp:797
-#: src/presets_manager.cpp:806 src/presets_manager.cpp:814
+#: src/presets_manager.cpp:807 src/presets_manager.cpp:816
 msgid "Preset Not Loaded Correctly"
 msgstr "Szablon załadowany niepoprawnie"
 
@@ -2636,11 +2645,11 @@ msgstr "Zły format w liscie efektów"
 msgid "Generic Error While Loading Effects List"
 msgstr "Błąd ogólny w trakcie ładowania listy efektów"
 
-#: src/presets_manager.cpp:807
+#: src/presets_manager.cpp:808
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Jeden lub więcej parametrów ma zły format"
 
-#: src/presets_manager.cpp:815
+#: src/presets_manager.cpp:817
 msgid "Generic Error While Loading The Effect"
 msgstr "Błąd ogólny w trakcie ładowania efektu"
 

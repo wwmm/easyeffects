@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-05 21:31+0000\n"
+"POT-Creation-Date: 2025-10-07 18:45+0000\n"
 "PO-Revision-Date: 2025-10-06 12:02+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -20,64 +20,73 @@ msgstr ""
 "(n>6 && n<11) ? 3 : 4;\n"
 "X-Generator: Weblate 5.14-dev\n"
 
-#: src/command_line_parser.cpp:44
+#: src/command_line_parser.cpp:45
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Scoir Éifeachtaí Éasca. Úsáideach agus tú ag rith i mód seirbhíse."
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:46
 msgid "Reset Easy Effects."
 msgstr "Athshocraigh Éifeachtaí Éasca."
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:47
 msgid "Hide the Window."
 msgstr "Folaigh an fhuinneog."
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:48
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Seachbhóthar domhanda. 1 a chumasú, 2 a dhíchumasú agus 3 stádas a fháil"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Luchtaigh réamhshocraithe. Sampla: easyeffects -l ceol"
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 msgid "preset-name"
 msgstr "ainm réamhshocraithe"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:50
 msgid "Show available presets."
 msgstr "Taispeáin réamhshocruithe atá ar fáil."
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:51
 msgid "Get the active input/output preset."
 msgstr "Faigh an réamhshocrú ionchuir/aschuir gníomhach."
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:51
 msgid "preset-type"
 msgstr "cineál réamhshocraithe"
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:52
 msgid "Get the active input and output presets."
 msgstr "Faigh na réamhshocruithe ionchuir agus aschuir ghníomhacha."
 
-#: src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:53
+msgid ""
+"Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
+msgstr ""
+
+#: src/command_line_parser.cpp:54
+msgid "property-string"
+msgstr ""
+
+#: src/command_line_parser.cpp:55
 msgid "Deprecated. Use --service-mode instead."
 msgstr "As feidhm. Bain úsáid as --service-mode ina ionad."
 
-#: src/command_line_parser.cpp:53
+#: src/command_line_parser.cpp:56
 msgid "Start the application with service mode turned on."
 msgstr "Tosaigh an feidhmchlár agus mód seirbhíse casta air."
 
-#: src/command_line_parser.cpp:54
+#: src/command_line_parser.cpp:57
 msgid "Enable debug messages."
 msgstr "Cumasaigh teachtaireachtaí dífhabhtaithe."
 
-#: src/command_line_parser.cpp:142 src/contents/ui/main.qml:277
+#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:277
 msgid "Output Presets"
 msgstr "Réamhshocruithe Aschurtha"
 
-#: src/command_line_parser.cpp:150 src/contents/ui/main.qml:267
+#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:267
 msgid "Input Presets"
 msgstr "Réamhshocruithe Ionchurtha"
 
@@ -1814,8 +1823,8 @@ msgid ""
 msgstr ""
 "D’fhéadfadh fógraí córais phróiseála fuaim bhréige a chur faoi deara, mar "
 "sin bheadh sé níos fearr neamhaird a dhéanamh orthu, ach i gcás roinnt "
-"réamhshocruithe, d’fhéadfaí é a mholadh toisc go bhféadfadh siad a bheith "
-"ró-ard"
+"réamhshocruithe, d’fhéadfaí é a mholadh toisc go bhféadfadh siad a bheith ró-"
+"ard"
 
 #: src/contents/ui/PreferencesSheet.qml:137
 msgid "Enable/Disable Input Monitoring"
@@ -2475,7 +2484,7 @@ msgstr "Méadar Leibhéal Aschurtha"
 
 #: src/presets_manager.cpp:773 src/presets_manager.cpp:780
 #: src/presets_manager.cpp:790 src/presets_manager.cpp:797
-#: src/presets_manager.cpp:806 src/presets_manager.cpp:814
+#: src/presets_manager.cpp:807 src/presets_manager.cpp:816
 msgid "Preset Not Loaded Correctly"
 msgstr "Réamhshocrú Gan luchtú i gceart"
 
@@ -2495,11 +2504,11 @@ msgstr "Formáid Mhícheart sa Liosta Éifeachtaí"
 msgid "Generic Error While Loading Effects List"
 msgstr "Earráid chineálach agus liosta na n-éifeachtaí á luchtú"
 
-#: src/presets_manager.cpp:807
+#: src/presets_manager.cpp:808
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Tá formáid mhícheart ag paraiméadar amháin nó níos mó"
 
-#: src/presets_manager.cpp:815
+#: src/presets_manager.cpp:817
 msgid "Generic Error While Loading The Effect"
 msgstr "Earráid chineálach agus an éifeacht á luchtú"
 

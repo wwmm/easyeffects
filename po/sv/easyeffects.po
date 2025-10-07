@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-05 21:31+0000\n"
+"POT-Creation-Date: 2025-10-07 18:45+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -19,64 +19,73 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.13-dev\n"
 
-#: src/command_line_parser.cpp:44
+#: src/command_line_parser.cpp:45
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:46
 msgid "Reset Easy Effects."
 msgstr "Återställ Easy Effects."
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:47
 msgid "Hide the Window."
 msgstr ""
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:48
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr ""
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:49
 #, fuzzy
 msgid "preset-name"
 msgstr "Nytt namn på förinställd ingång"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:50
 msgid "Show available presets."
 msgstr ""
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:51
 msgid "Get the active input/output preset."
 msgstr ""
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:51
 msgid "preset-type"
 msgstr ""
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:52
 msgid "Get the active input and output presets."
 msgstr ""
 
-#: src/command_line_parser.cpp:52
-msgid "Deprecated. Use --service-mode instead."
-msgstr ""
-
 #: src/command_line_parser.cpp:53
-msgid "Start the application with service mode turned on."
+msgid ""
+"Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
 msgstr ""
 
 #: src/command_line_parser.cpp:54
+msgid "property-string"
+msgstr ""
+
+#: src/command_line_parser.cpp:55
+msgid "Deprecated. Use --service-mode instead."
+msgstr ""
+
+#: src/command_line_parser.cpp:56
+msgid "Start the application with service mode turned on."
+msgstr ""
+
+#: src/command_line_parser.cpp:57
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:142 src/contents/ui/main.qml:277
+#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:277
 msgid "Output Presets"
 msgstr "Utgångsförinställningar"
 
-#: src/command_line_parser.cpp:150 src/contents/ui/main.qml:267
+#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:267
 msgid "Input Presets"
 msgstr "Ingångsförinställningar"
 
@@ -2592,7 +2601,7 @@ msgstr "Utmatningsenhet"
 
 #: src/presets_manager.cpp:773 src/presets_manager.cpp:780
 #: src/presets_manager.cpp:790 src/presets_manager.cpp:797
-#: src/presets_manager.cpp:806 src/presets_manager.cpp:814
+#: src/presets_manager.cpp:807 src/presets_manager.cpp:816
 msgid "Preset Not Loaded Correctly"
 msgstr ""
 
@@ -2613,11 +2622,11 @@ msgstr ""
 msgid "Generic Error While Loading Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:807
+#: src/presets_manager.cpp:808
 msgid "One or More Parameters Have a Wrong Format"
 msgstr ""
 
-#: src/presets_manager.cpp:815
+#: src/presets_manager.cpp:817
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 
