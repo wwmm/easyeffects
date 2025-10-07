@@ -38,7 +38,14 @@ class CommandLineParser : public QObject {
   void onReset();
   void onQuit();
   void onHideWindow();
+
   void onLoadPreset(PipelineType pipeline_type, QString preset_name);
+
+  void onSetProperty(const QString& pipeline,
+                     const QString& plugin_name,
+                     const QString& instance_id,
+                     const QString& property_name,
+                     const QString& property_value);
 
  private:
   std::unique_ptr<QCommandLineParser> parser;

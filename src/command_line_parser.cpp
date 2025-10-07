@@ -41,17 +41,20 @@ CommandLineParser::CommandLineParser(QObject* parent)
   parser->addHelpOption();
   parser->addVersionOption();
 
-  parser->addOptions({{{"q", "quit"}, i18n("Quit Easy Effects. Useful when running in service mode.")},
-                      {{"r", "reset"}, i18n("Reset Easy Effects.")},
-                      {{"w", "hide-window"}, i18n("Hide the Window.")},
-                      {{"b", "bypass"}, i18n("Global bypass. 1 to enable, 2 to disable and 3 to get status")},
-                      {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music"), i18n("preset-name")},
-                      {{"p", "presets"}, i18n("Show available presets.")},
-                      {{"a", "active-preset"}, i18n("Get the active input/output preset."), i18n("preset-type")},
-                      {{"s", "active-presets"}, i18n("Get the active input and output presets.")},
-                      {"gapplication-service", i18n("Deprecated. Use --service-mode instead.")},
-                      {"service-mode", i18n("Start the application with service mode turned on.")},
-                      {"debug", i18n("Enable debug messages.")}});
+  parser->addOptions(
+      {{{"q", "quit"}, i18n("Quit Easy Effects. Useful when running in service mode.")},
+       {{"r", "reset"}, i18n("Reset Easy Effects.")},
+       {{"w", "hide-window"}, i18n("Hide the Window.")},
+       {{"b", "bypass"}, i18n("Global bypass. 1 to enable, 2 to disable and 3 to get status")},
+       {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music"), i18n("preset-name")},
+       {{"p", "presets"}, i18n("Show available presets.")},
+       {{"a", "active-preset"}, i18n("Get the active input/output preset."), i18n("preset-type")},
+       {{"s", "active-presets"}, i18n("Get the active input and output presets.")},
+       {"set-property", i18n("Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"),
+        i18n("property-string")},
+       {"gapplication-service", i18n("Deprecated. Use --service-mode instead.")},
+       {"service-mode", i18n("Start the application with service mode turned on.")},
+       {"debug", i18n("Enable debug messages.")}});
 }
 
 void CommandLineParser::process(QApplication* app) {
@@ -169,6 +172,43 @@ void CommandLineParser::process(QApplication* app) {
       QCoreApplication::exit(EXIT_SUCCESS);
     }
 
+    Q_EMIT onHideWindow();
+
     QCoreApplication::exit(EXIT_FAILURE);
+  }
+
+  if (parser->isSet("set-property")) {
+    auto value = parser->value("set-property");
+
+    // Parse the property string: pipeline:plugin_name:instance_id:property:value
+    auto parts = value.split(':');
+
+    if (parts.size() != 5) {
+      util::fatal("Invalid property format. Expected: pipeline:plugin_name:instance_id:property:value");
+    }
+
+    const auto& pipeline = parts[0];
+    const auto& plugin_name = parts[1];
+    const auto& instance_id = parts[2];
+    const auto& property_name = parts[3];
+    const auto& property_value = parts[4];
+
+    if (pipeline != "input" && pipeline != "output") {
+      util::fatal("Invalid pipeline type. Must be 'input' or 'output'");
+    }
+
+    bool ok = true;
+
+    instance_id.toInt(&ok);
+
+    if (!ok) {
+      util::fatal("Invalid instance ID. Must be a non-negative integer");
+    }
+
+    Q_EMIT onSetProperty(pipeline, plugin_name, instance_id, property_name, property_value);
+
+    Q_EMIT onHideWindow();
+
+    QCoreApplication::exit(EXIT_SUCCESS);
   }
 }

@@ -20,6 +20,7 @@
 #include "local_client.hpp"
 #include <qlocalsocket.h>
 #include <qobject.h>
+#include <format>
 #include <memory>
 #include <string>
 #include "pipeline_type.hpp"
@@ -63,8 +64,20 @@ void LocalClient::quit_app() {
 }
 
 void LocalClient::load_preset(PipelineType pipeline_type, std::string preset_name) {
-  std::string msg = std::string(tags::local_server::load_preset) + ":" +
-                    util::to_string(static_cast<int>(pipeline_type)) + ":" + preset_name + "\n";
+  auto msg = std::format("{}:{}:{}\n", tags::local_server::load_preset, static_cast<int>(pipeline_type), preset_name);
+
+  client->write(msg.c_str());
+  client->flush();
+}
+
+void LocalClient::set_property(const QString& pipeline,
+                               const QString& plugin_name,
+                               const QString& instance_id,
+                               const QString& property_name,
+                               const QString& property_value) {
+  auto msg = std::format("{}:{}:{}:{}:{}:{}\n", tags::local_server::set_property, pipeline.toStdString(),
+                         plugin_name.toStdString(), instance_id.toStdString(), property_name.toStdString(),
+                         property_value.toStdString());
 
   client->write(msg.c_str());
   client->flush();

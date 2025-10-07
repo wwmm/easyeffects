@@ -24,6 +24,7 @@
 #include <QLocalSocket>
 #include <QObject>
 #include <memory>
+#include <string>
 
 class LocalServer : public QObject {
   Q_OBJECT
@@ -44,5 +45,12 @@ class LocalServer : public QObject {
 
  private:
   std::unique_ptr<QLocalServer> server;
+
   QLocalSocket* clientSocket = nullptr;
+
+  static void set_property(const std::string& pipeline,
+                           const std::string& plugin_name,
+                           const std::string& instance_id,
+                           const std::string& property,
+                           const std::string& value);
 };

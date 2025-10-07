@@ -235,6 +235,12 @@ static int runSecondaryInstance(QApplication& app, CommandLineParser& parser, bo
   QObject::connect(&parser, &CommandLineParser::onLoadPreset,
                    [&](PipelineType type, QString preset) { local_client->load_preset(type, preset.toStdString()); });
 
+  QObject::connect(&parser, &CommandLineParser::onSetProperty,
+                   [&](const QString& pipeline, const QString& plugin_name, const QString& instance_id,
+                       const QString& property_name, const QString& property_value) {
+                     local_client->set_property(pipeline, plugin_name, instance_id, property_name, property_value);
+                   });
+
   parser.process(&app);
 
   if (show_window) {

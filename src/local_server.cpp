@@ -22,12 +22,16 @@
 #include <qtmetamacros.h>
 #include <QLocalServer>
 #include <cstring>
+#include <format>
 #include <memory>
 #include <regex>
 #include <string>
+#include "db_manager.hpp"
+#include "easyeffects_db_loudness.h"
 #include "pipeline_type.hpp"
 #include "presets_manager.hpp"
 #include "tags_local_server.hpp"
+#include "tags_plugin_name.hpp"
 #include "util.hpp"
 
 LocalServer::LocalServer(QObject* parent) : QObject(parent), server(std::make_unique<QLocalServer>(this)) {
@@ -74,9 +78,9 @@ void LocalServer::onReadyRead() {
 
         std::smatch matches;
 
-        static const auto re_gain = std::regex("^load_preset:([0-9]+):([^\n]{1,100})\n$");
+        static const auto re = std::regex("^load_preset:([0-9]+):([^\n]{1,100})\n$");
 
-        std::regex_search(msg, matches, re_gain);
+        std::regex_search(msg, matches, re);
 
         if (matches.size() == 3U) {
           int pipeline_type = 0;
@@ -87,6 +91,24 @@ void LocalServer::onReadyRead() {
 
           presets::Manager::self().loadLocalPresetFile(static_cast<PipelineType>(pipeline_type),
                                                        QString::fromStdString(preset_name));
+        }
+      } else if (std::strncmp(buf, tags::local_server::set_property, strlen(tags::local_server::set_property)) == 0) {
+        std::string msg = buf;
+
+        std::smatch matches;
+
+        static const auto re = std::regex("^set_property:(input|output):([^:]+):([0-9]+):([^:]+):(.+)\n$");
+
+        std::regex_search(msg, matches, re);
+
+        if (matches.size() == 6U) {
+          const auto& pipeline = matches[1].str();
+          const auto& plugin_name = matches[2].str();
+          const auto& instance_id = matches[3].str();
+          const auto& property = matches[4].str();
+          const auto& value = matches[5].str();
+
+          set_property(pipeline, plugin_name, instance_id, property, value);
         }
       }
     }
@@ -101,4 +123,28 @@ void LocalServer::onDisconnected() {
 
   clientSocket->deleteLater();
   clientSocket = nullptr;
+}
+
+void LocalServer::set_property(const std::string& pipeline,
+                               const std::string& plugin_name,
+                               const std::string& instance_id,
+                               const std::string& property,
+                               const std::string& value) {
+  // util::warning(std::format("pipeline: {}\tplugin_name: {}\tinstance id: {}\tproperty: {}\tvalue: {}", pipeline,
+  //                           plugin_name, instance_id, property, value));
+
+  PipelineType pipeline_type = pipeline == "input" ? PipelineType::input : PipelineType::output;
+
+  if (plugin_name == tags::plugin_name::BaseName::loudness) {
+    auto plugin_db = db::Manager::self().get_plugin_db<db::Loudness>(
+        pipeline_type, tags::plugin_name::BaseName::loudness + "#" + QString::fromStdString(instance_id));
+
+    if (property == "volume") {
+      double volume = 0;
+
+      util::str_to_num(value, volume);
+
+      plugin_db->setVolume(volume);
+    }
+  }
 }
