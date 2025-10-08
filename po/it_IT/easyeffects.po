@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-07 18:45+0000\n"
-"PO-Revision-Date: 2025-10-06 12:02+0000\n"
+"PO-Revision-Date: 2025-10-08 21:07+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -66,10 +66,12 @@ msgstr "Restituisce i profili di input e output attivi."
 msgid ""
 "Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
 msgstr ""
+"Imposta proprietà plugin. Formato: "
+"pipeline:nome_effetto:id_istanza:proprietà:valore"
 
 #: src/command_line_parser.cpp:54
 msgid "property-string"
-msgstr ""
+msgstr "stringa-proprietà"
 
 #: src/command_line_parser.cpp:55
 msgid "Deprecated. Use --service-mode instead."
