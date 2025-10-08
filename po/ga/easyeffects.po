@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-07 18:45+0000\n"
-"PO-Revision-Date: 2025-10-06 12:02+0000\n"
+"PO-Revision-Date: 2025-10-08 21:07+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -65,10 +65,12 @@ msgstr "Faigh na réamhshocruithe ionchuir agus aschuir ghníomhacha."
 msgid ""
 "Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
 msgstr ""
+"Socraigh airí breiseáin. Formáid: "
+"pipeline:plugin_name:instance_id:property:value"
 
 #: src/command_line_parser.cpp:54
 msgid "property-string"
-msgstr ""
+msgstr "teaghrán-airíonna"
 
 #: src/command_line_parser.cpp:55
 msgid "Deprecated. Use --service-mode instead."
