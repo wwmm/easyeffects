@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-07 18:45+0000\n"
-"PO-Revision-Date: 2025-10-07 11:02+0000\n"
+"PO-Revision-Date: 2025-10-08 08:02+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -65,10 +65,12 @@ msgstr "Obtenir les préréglages d'entrée et de sortie actifs."
 msgid ""
 "Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
 msgstr ""
+"Définir la propriété du greffon. Format : "
+"pipeline:nom_du_greffon:id_de_l'instance:propriété:valeur"
 
 #: src/command_line_parser.cpp:54
 msgid "property-string"
-msgstr ""
+msgstr "propriété-textuelle"
 
 #: src/command_line_parser.cpp:55
 msgid "Deprecated. Use --service-mode instead."
