@@ -297,7 +297,9 @@ void Convolver::process(std::span<float>& left_in,
     notify_latency = false;
   }
 
-  get_peaks(left_in, right_in, left_out, right_out);
+  if (updateLevelMeters) {
+    get_peaks(left_in, right_in, left_out, right_out);
+  }
 }
 
 void Convolver::process([[maybe_unused]] std::span<float>& left_in,

@@ -221,21 +221,23 @@ void MultibandCompressor::process(std::span<float>& left_in,
     update_filter_params();
   }
 
-  get_peaks(left_in, right_in, left_out, right_out);
+  if (updateLevelMeters) {
+    get_peaks(left_in, right_in, left_out, right_out);
 
-  for (uint n = 0U; n < n_bands; n++) {
-    const auto nstr = util::to_string(n);
+    for (uint n = 0U; n < n_bands; n++) {
+      const auto nstr = util::to_string(n);
 
-    frequency_range_end[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("fre_" + nstr));
+      frequency_range_end[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("fre_" + nstr));
 
-    envelope_left[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("elm_" + nstr + "l"));
-    envelope_right[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("elm_" + nstr + "r"));
+      envelope_left[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("elm_" + nstr + "l"));
+      envelope_right[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("elm_" + nstr + "r"));
 
-    curve_left[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("clm_" + nstr + "l"));
-    curve_right[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("clm_" + nstr + "r"));
+      curve_left[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("clm_" + nstr + "l"));
+      curve_right[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("clm_" + nstr + "r"));
 
-    reduction_left[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("rlm_" + nstr + "l"));
-    reduction_right[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("rlm_" + nstr + "r"));
+      reduction_left[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("rlm_" + nstr + "l"));
+      reduction_right[n] = util::linear_to_db(lv2_wrapper->get_control_port_value("rlm_" + nstr + "r"));
+    }
   }
 }
 

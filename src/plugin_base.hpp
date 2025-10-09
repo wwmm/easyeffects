@@ -39,6 +39,8 @@
 class PluginBase : public QObject {
   Q_OBJECT
 
+  Q_PROPERTY(bool updateLevelMeters MEMBER updateLevelMeters NOTIFY updateLevelMetersChanged)
+
  public:
   PluginBase(std::string tag,
              QString plugin_name,
@@ -113,6 +115,8 @@ class PluginBase : public QObject {
   bool got_null_right_out = false;
   bool got_null_probe = false;
 
+  bool updateLevelMeters = false;
+
   std::vector<float> dummy_left, dummy_right;
 
   [[nodiscard]] auto get_node_id() const -> uint;
@@ -158,6 +162,10 @@ class PluginBase : public QObject {
   Q_INVOKABLE void closeNativeUi();
 
   Q_INVOKABLE bool hasNativeUi();
+
+ Q_SIGNALS:
+
+  void updateLevelMetersChanged();
 
  protected:
   std::mutex data_mutex;

@@ -157,12 +157,14 @@ void Limiter::process(std::span<float>& left_in,
     update_filter_params();
   }
 
-  get_peaks(left_in, right_in, left_out, right_out);
+  if (updateLevelMeters) {
+    get_peaks(left_in, right_in, left_out, right_out);
 
-  gain_l_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("grlm_l"));
-  gain_r_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("grlm_r"));
-  sidechain_l_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("sclm_l"));
-  sidechain_r_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("sclm_r"));
+    gain_l_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("grlm_l"));
+    gain_r_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("grlm_r"));
+    sidechain_l_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("sclm_l"));
+    sidechain_r_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("sclm_r"));
+  }
 }
 
 void Limiter::update_sidechain_links() {

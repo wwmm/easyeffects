@@ -124,9 +124,11 @@ void Maximizer::process(std::span<float>& left_in,
     update_filter_params();
   }
 
-  get_peaks(left_in, right_in, left_out, right_out);
+  if (updateLevelMeters) {
+    get_peaks(left_in, right_in, left_out, right_out);
 
-  reduction_port_value = lv2_wrapper->get_control_port_value("gr");
+    reduction_port_value = lv2_wrapper->get_control_port_value("gr");
+  }
 }
 
 void Maximizer::process([[maybe_unused]] std::span<float>& left_in,

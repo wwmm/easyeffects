@@ -116,9 +116,11 @@ void BassEnhancer::process(std::span<float>& left_in,
     apply_gain(left_out, right_out, output_gain);
   }
 
-  get_peaks(left_in, right_in, left_out, right_out);
+  if (updateLevelMeters) {
+    get_peaks(left_in, right_in, left_out, right_out);
 
-  harmonics_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("meter_drive"));
+    harmonics_port_value = util::linear_to_db(lv2_wrapper->get_control_port_value("meter_drive"));
+  }
 }
 
 void BassEnhancer::process([[maybe_unused]] std::span<float>& left_in,
