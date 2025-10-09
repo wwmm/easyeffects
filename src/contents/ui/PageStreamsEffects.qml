@@ -385,15 +385,15 @@ Kirigami.Page {
             dynamicYScale: DB.Manager.spectrum.dynamicYScale
             xUnit: "Hz"
             visible: DB.Manager.spectrum.state
-            Component.onCompleted: {
-                headerFrameAnimation.start();
-            }
+
             Component.onDestruction: {
                 headerFrameAnimation.stop();
             }
 
             FrameAnimation {
                 id: headerFrameAnimation
+
+                running: DB.Manager.spectrum.state && appWindow.visible
 
                 onTriggered: {
                     pipelineInstance.requestSpectrumData();
