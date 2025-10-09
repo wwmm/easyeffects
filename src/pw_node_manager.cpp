@@ -56,6 +56,7 @@
 #include <utility>
 #include <vector>
 #include "db_manager.hpp"
+#include "pw_metadata_manager.hpp"
 #include "tags_app.hpp"
 #include "tags_pipewire.hpp"
 #include "util.hpp"
@@ -63,12 +64,12 @@
 namespace pw {
 
 NodeManager::NodeManager(models::Nodes& model_nodes,
-                         pw_metadata*& metadata,
+                         MetadataManager& metadata_manager,
                          NodeInfo& ee_sink_node,
                          NodeInfo& ee_source_node,
                          std::vector<LinkInfo>& list_links)
     : model_nodes(model_nodes),
-      metadata(metadata),
+      metadata_manager(metadata_manager),
       ee_sink_node(ee_sink_node),
       ee_source_node(ee_source_node),
       list_links(list_links) {}
@@ -437,26 +438,22 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
   auto connect_to_ee_sink = [&]() {
     if (db::Main::processAllOutputs() && !nd->nd_info->is_blocklisted) {
       // target.node for backward compatibility with old PW session managers
-      // NOLINTNEXTLINE
-      pw_metadata_set_property(nm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
-                               util::to_string(nm->ee_sink_node.id).c_str());
+      nm->metadata_manager.set_property(nd->nd_info->id, "target.node", "Spa:Id",
+                                        util::to_string(nm->ee_sink_node.id).c_str());
 
-      // NOLINTNEXTLINE
-      pw_metadata_set_property(nm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
-                               util::to_string(nm->ee_sink_node.serial).c_str());
+      nm->metadata_manager.set_property(nd->nd_info->id, "target.object", "Spa:Id",
+                                        util::to_string(nm->ee_sink_node.serial).c_str());
     }
   };
 
   auto connect_to_ee_source = [&]() {
     if (db::Main::processAllInputs() && !nd->nd_info->is_blocklisted) {
       // target.node for backward compatibility with old PW session managers
-      // NOLINTNEXTLINE
-      pw_metadata_set_property(nm->metadata, nd->nd_info->id, "target.node", "Spa:Id",
-                               util::to_string(nm->ee_source_node.id).c_str());
+      nm->metadata_manager.set_property(nd->nd_info->id, "target.node", "Spa:Id",
+                                        util::to_string(nm->ee_source_node.id).c_str());
 
-      // NOLINTNEXTLINE
-      pw_metadata_set_property(nm->metadata, nd->nd_info->id, "target.object", "Spa:Id",
-                               util::to_string(nm->ee_source_node.serial).c_str());
+      nm->metadata_manager.set_property(nd->nd_info->id, "target.object", "Spa:Id",
+                                        util::to_string(nm->ee_source_node.serial).c_str());
     }
   };
 

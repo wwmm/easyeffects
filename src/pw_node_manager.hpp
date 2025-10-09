@@ -34,6 +34,7 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include "pw_metadata_manager.hpp"
 #include "pw_model_nodes.hpp"
 #include "pw_objects.hpp"
 
@@ -44,7 +45,7 @@ class NodeManager : public QObject {
 
  public:
   explicit NodeManager(models::Nodes& model_nodes,
-                       pw_metadata*& metadata,
+                       MetadataManager& metadata_manager,
                        NodeInfo& ee_sink_node,
                        NodeInfo& ee_source_node,
                        std::vector<LinkInfo>& list_links);
@@ -98,7 +99,7 @@ class NodeManager : public QObject {
 
   models::Nodes& model_nodes;
 
-  pw_metadata*& metadata;
+  MetadataManager& metadata_manager;
 
   NodeInfo &ee_sink_node, &ee_source_node;
 

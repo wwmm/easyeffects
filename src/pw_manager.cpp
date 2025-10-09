@@ -70,178 +70,19 @@
 #include <vector>
 #include "config.h"
 #include "db_manager.hpp"
+#include "pw_client_manager.hpp"
 #include "pw_link_manager.hpp"
+#include "pw_metadata_manager.hpp"
 #include "pw_model_clients.hpp"
 #include "pw_model_modules.hpp"
 #include "pw_model_nodes.hpp"
+#include "pw_module_manager.hpp"
 #include "pw_node_manager.hpp"
 #include "pw_objects.hpp"
 #include "tags_pipewire.hpp"
 #include "util.hpp"
 
 namespace {
-
-struct proxy_data {
-  pw_proxy* proxy = nullptr;
-
-  spa_hook proxy_listener{};
-
-  spa_hook object_listener{};
-
-  pw::Manager* pm = nullptr;
-
-  uint id = SPA_ID_INVALID;
-
-  uint64_t serial = SPA_ID_INVALID;
-};
-
-void on_removed_proxy(void* data) {
-  auto* const pd = static_cast<proxy_data*>(data);
-
-  // NOLINTNEXTLINE(clang-analyzer-core.NullDereference)
-  if (pd->object_listener.link.next != nullptr || pd->object_listener.link.prev != nullptr) {
-    spa_hook_remove(&pd->object_listener);
-  }
-
-  if (pd->proxy != nullptr) {
-    pw_proxy_destroy(pd->proxy);
-  }
-}
-
-void on_module_info(void* object, const struct pw_module_info* info) {
-  auto* const md = static_cast<proxy_data*>(object);
-
-  auto list = md->pm->model_modules.get_list();
-
-  for (int n = 0; n < list.size(); n++) {
-    if (list[n].id == info->id) {
-      if (info->props != nullptr) {
-        QString description;
-
-        util::spa_dict_get_string(info->props, PW_KEY_MODULE_DESCRIPTION, description);
-
-        md->pm->model_modules.update_field(n, pw::models::Modules::Roles::Description, description);
-      }
-
-      if (info->filename != nullptr) {
-        md->pm->model_modules.update_field(n, pw::models::Modules::Roles::Filename, info->filename);
-      }
-
-      break;
-    }
-  }
-}
-
-void on_destroy_module_proxy(void* data) {
-  auto* const md = static_cast<proxy_data*>(data);
-
-  spa_hook_remove(&md->proxy_listener);
-
-  md->pm->model_modules.remove_by_id(md->id);
-}
-
-void on_client_info(void* object, const struct pw_client_info* info) {
-  auto* const cd = static_cast<proxy_data*>(object);
-
-  auto list = cd->pm->model_clients.get_list();
-
-  for (int n = 0; n < list.size(); n++) {
-    if (list[n].id == info->id && info->props != nullptr) {
-      QString name;
-      QString access;
-      QString api;
-
-      util::spa_dict_get_string(info->props, PW_KEY_APP_NAME, name);
-
-      util::spa_dict_get_string(info->props, PW_KEY_ACCESS, access);
-
-      util::spa_dict_get_string(info->props, PW_KEY_CLIENT_API, api);
-
-      cd->pm->model_clients.update_field(n, pw::models::Clients::Roles::Name, name);
-      cd->pm->model_clients.update_field(n, pw::models::Clients::Roles::Access, access);
-      cd->pm->model_clients.update_field(n, pw::models::Clients::Roles::Api, api);
-
-      break;
-    }
-  }
-}
-
-void on_destroy_client_proxy(void* data) {
-  auto* const cd = static_cast<proxy_data*>(data);
-
-  spa_hook_remove(&cd->proxy_listener);
-
-  cd->pm->model_clients.remove_by_id(cd->id);
-}
-
-auto on_metadata_property(void* data, uint32_t id, const char* key, const char* type, const char* value) -> int {
-  auto* const pm = static_cast<pw::Manager*>(data);
-
-  const std::string str_key = (key != nullptr) ? key : "";
-  const std::string str_value = (value != nullptr) ? value : "";
-
-  util::debug(std::format("New metadata property: {}, {}, {}, {}", id, str_key, type ? type : "", str_value));
-
-  if (str_value.empty()) {
-    return 0;
-  }
-
-  if (str_key == "default.audio.sink") {
-    auto v = nlohmann::json::parse(str_value).value("name", "");
-
-    if (v == tags::pipewire::ee_sink_name) {
-      return 0;
-    }
-
-    util::debug(std::format("New default output device: {}", v));
-
-    pm->defaultOutputDeviceName = QString::fromStdString(v);
-
-    Q_EMIT pm->newDefaultSinkName(pm->defaultOutputDeviceName);
-  }
-
-  if (str_key == "default.audio.source") {
-    auto v = nlohmann::json::parse(str_value).value("name", "");
-
-    if (v == tags::pipewire::ee_source_name) {
-      return 0;
-    }
-
-    util::debug(std::format("New default input device: {}", v));
-
-    pm->defaultInputDeviceName = QString::fromStdString(v);
-
-    Q_EMIT pm->newDefaultSourceName(pm->defaultInputDeviceName);
-  }
-
-  return 0;
-}
-
-const struct pw_metadata_events metadata_events = {.version = PW_VERSION_METADATA_EVENTS,
-                                                   .property = on_metadata_property};
-
-const struct pw_proxy_events module_proxy_events = {.version = 0,
-                                                    .destroy = on_destroy_module_proxy,
-                                                    .bound = nullptr,
-                                                    .removed = on_removed_proxy,
-                                                    .done = nullptr,
-                                                    .error = nullptr,
-                                                    .bound_props = nullptr};
-
-const struct pw_proxy_events client_proxy_events = {.version = 0,
-                                                    .destroy = on_destroy_client_proxy,
-                                                    .bound = nullptr,
-                                                    .removed = on_removed_proxy,
-                                                    .done = nullptr,
-                                                    .error = nullptr,
-                                                    .bound_props = nullptr};
-
-const struct pw_module_events module_events = {
-    .version = 0,
-    .info = on_module_info,
-};
-
-const struct pw_client_events client_events = {.version = 0, .info = on_client_info, .permissions = nullptr};
 
 void on_registry_global(void* data,
                         uint32_t id,
@@ -275,85 +116,19 @@ void on_registry_global(void* data,
   }
 
   if (std::strcmp(type, PW_TYPE_INTERFACE_Module) == 0) {
-    uint64_t serial = 0U;
-
-    if (!util::spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
-      util::warning(
-          "An error occurred while retrieving the object serial. This module cannot be handled by Easy Effects.");
-      return;
-    }
-
-    auto* proxy =
-        static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_MODULE, sizeof(proxy_data)));
-
-    auto* const pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
-
-    pd->proxy = proxy;
-    pd->pm = pm;
-    pd->id = id;
-    pd->serial = serial;
-
-    pw_proxy_add_object_listener(proxy, &pd->object_listener, &module_events, pd);  // NOLINT
-    pw_proxy_add_listener(proxy, &pd->proxy_listener, &module_proxy_events, pd);
-
-    pw::ModuleInfo m_info{.id = id, .serial = serial, .name = "", .description = "", .filename = ""};
-
-    util::spa_dict_get_string(props, PW_KEY_MODULE_NAME, m_info.name);
-
-    pm->model_modules.append(m_info);
+    pm->module_manager.register_module(pm->registry, id, type, props);
 
     return;
   }
 
   if (std::strcmp(type, PW_TYPE_INTERFACE_Client) == 0) {
-    uint64_t serial = 0U;
-
-    if (!util::spa_dict_get_num(props, PW_KEY_OBJECT_SERIAL, serial)) {
-      util::warning(
-          "An error occurred while retrieving the object serial. This client cannot be handled by Easy Effects.");
-      return;
-    }
-
-    auto* proxy =
-        static_cast<pw_proxy*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_CLIENT, sizeof(proxy_data)));
-
-    auto* const pd = static_cast<proxy_data*>(pw_proxy_get_user_data(proxy));
-
-    pd->proxy = proxy;
-    pd->pm = pm;
-    pd->id = id;
-    pd->serial = serial;
-
-    pw_proxy_add_object_listener(proxy, &pd->object_listener, &client_events, pd);  // NOLINT
-    pw_proxy_add_listener(proxy, &pd->proxy_listener, &client_proxy_events, pd);
-
-    pw::ClientInfo c_info{.id = id, .serial = serial, .name = "", .access = "", .api = ""};
-
-    pm->model_clients.append(c_info);
+    pm->client_manager.register_client(pm->registry, id, type, props);
 
     return;
   }
 
   if (std::strcmp(type, PW_TYPE_INTERFACE_Metadata) == 0) {
-    if (const auto* name = spa_dict_lookup(props, PW_KEY_METADATA_NAME)) {
-      util::debug(std::format("Found metadata: {}", name));
-
-      if (std::strcmp(name, "default") == 0) {
-        if (pm->metadata != nullptr) {
-          util::debug("A new default metadata is available. We will use it");
-
-          spa_hook_remove(&pm->metadata_listener);
-        }
-
-        pm->metadata = static_cast<pw_metadata*>(pw_registry_bind(pm->registry, id, type, PW_VERSION_METADATA, 0));
-
-        if (pm->metadata != nullptr) {
-          pw_metadata_add_listener(pm->metadata, &pm->metadata_listener, &metadata_events, pm);  // NOLINT
-        } else {
-          util::warning("pw_registry_bind returned a null metadata object");
-        }
-      }
-    }
+    pm->metadata_manager.register_metadata(pm->registry, id, type, props);
 
     return;
   }
@@ -421,9 +196,17 @@ namespace pw {
 Manager::Manager()
     : headerVersion(pw_get_headers_version()),
       libraryVersion(pw_get_library_version()),
-      node_manager(NodeManager(model_nodes, metadata, ee_sink_node, ee_source_node, list_links)),
-      link_manager(LinkManager(core, thread_loop, model_nodes, list_links)) {
+      node_manager(NodeManager(model_nodes, metadata_manager, ee_sink_node, ee_source_node, list_links)),
+      link_manager(LinkManager(core, thread_loop, model_nodes, list_links)),
+      module_manager(ModuleManager(core, thread_loop, model_modules)),
+      client_manager(ClientManager(core, thread_loop, model_clients)) {
   register_models();
+
+  connect(&metadata_manager, &MetadataManager::defaultSourceChanged,
+          [&](const QString& name) { Q_EMIT newDefaultSourceName(name); });
+
+  connect(&metadata_manager, &MetadataManager::defaultSinkChanged,
+          [&](const QString& name) { Q_EMIT newDefaultSinkName(name); });
 
   connect(&node_manager, &NodeManager::sourceAdded, [&](NodeInfo node) { Q_EMIT sourceAdded(node); });
 
@@ -548,9 +331,7 @@ Manager::~Manager() {
   spa_hook_remove(&core_listener);
   spa_hook_remove(&metadata_listener);
 
-  if (metadata != nullptr) {
-    pw_proxy_destroy((struct pw_proxy*)metadata);
-  }
+  metadata_manager.destroy_metadata();
 
   pw_proxy_destroy(proxy_stream_output_sink);
   pw_proxy_destroy(proxy_stream_input_source);
@@ -599,31 +380,21 @@ void Manager::connectStreamInput(const uint& id) const {
 void Manager::set_metadata_target_node(const uint& origin_id,
                                        const uint& target_id,
                                        const uint64_t& target_serial) const {
-  if (metadata == nullptr) {
-    return;
-  }
-
   lock();
 
   // target.node for backward compatibility with old PW session managers
-  // NOLINTNEXTLINE
-  pw_metadata_set_property(metadata, origin_id, "target.node", "Spa:Id", util::to_string(target_id).c_str());
-  // NOLINTNEXTLINE
-  pw_metadata_set_property(metadata, origin_id, "target.object", "Spa:Id", util::to_string(target_serial).c_str());
+  metadata_manager.set_property(origin_id, "target.node", "Spa:Id", util::to_string(target_id).c_str());
+  metadata_manager.set_property(origin_id, "target.object", "Spa:Id", util::to_string(target_serial).c_str());
 
   sync_wait_unlock();
 }
 
 void Manager::disconnectStream(const uint& stream_id) const {
-  if (metadata == nullptr) {
-    return;
-  }
-
   lock();
 
   // target.node for backward compatibility with old PW session managers
-  pw_metadata_set_property(metadata, stream_id, "target.node", nullptr, nullptr);    // NOLINT
-  pw_metadata_set_property(metadata, stream_id, "target.object", nullptr, nullptr);  // NOLINT
+  metadata_manager.set_property(stream_id, "target.node", nullptr, nullptr);
+  metadata_manager.set_property(stream_id, "target.object", nullptr, nullptr);
 
   sync_wait_unlock();
 }

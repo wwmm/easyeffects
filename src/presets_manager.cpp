@@ -181,25 +181,6 @@ void Manager::prepare_last_used_preset_key(const PipelineType& pipeline_type) {
   }
 }
 
-auto Manager::search_presets_path(std::filesystem::directory_iterator& it, const std::string& file_extension)
-    -> QList<std::filesystem::path> {
-  QList<std::filesystem::path> paths;
-
-  try {
-    while (it != std::filesystem::directory_iterator{}) {
-      if (std::filesystem::is_regular_file(it->status()) && it->path().extension().string() == file_extension) {
-        paths.append(it->path());
-      }
-
-      ++it;
-    }
-  } catch (const std::exception& e) {
-    util::warning(e.what());
-  }
-
-  return paths;
-}
-
 auto Manager::get_local_presets_paths(const PipelineType& pipeline_type) -> QList<std::filesystem::path> {
   return dir_manager.getLocalPresetsPaths(pipeline_type);
 }

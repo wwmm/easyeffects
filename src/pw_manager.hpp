@@ -31,10 +31,13 @@
 #include <sys/types.h>
 #include <cstdint>
 #include <vector>
+#include "pw_client_manager.hpp"
 #include "pw_link_manager.hpp"
+#include "pw_metadata_manager.hpp"
 #include "pw_model_clients.hpp"
 #include "pw_model_modules.hpp"
 #include "pw_model_nodes.hpp"
+#include "pw_module_manager.hpp"
 #include "pw_node_manager.hpp"
 #include "pw_objects.hpp"
 
@@ -70,7 +73,6 @@ class Manager : public QObject {
   pw_thread_loop* thread_loop = nullptr;
   pw_core* core = nullptr;
   pw_registry* registry = nullptr;
-  pw_metadata* metadata = nullptr;
 
   inline static bool exiting = false;
 
@@ -92,8 +94,11 @@ class Manager : public QObject {
   pw::models::Modules model_modules;
   pw::models::Clients model_clients;
 
+  MetadataManager metadata_manager;
   NodeManager node_manager;
   LinkManager link_manager;
+  ModuleManager module_manager;
+  ClientManager client_manager;
 
   [[nodiscard]] auto count_node_ports(const uint& node_id) const -> uint;
 

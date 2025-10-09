@@ -156,10 +156,6 @@ class Manager : public QObject {
 
   void prepare_last_used_preset_key(const PipelineType& pipeline_type);
 
-  static auto search_presets_path(std::filesystem::directory_iterator& it,
-                                  const std::string& file_extension = DirectoryManager::json_ext)
-      -> QList<std::filesystem::path>;
-
   static void save_blocklist(const PipelineType& pipeline_type, nlohmann::json& json);
 
   auto load_blocklist(const PipelineType& pipeline_type, const nlohmann::json& json) -> bool;
