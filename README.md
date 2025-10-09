@@ -130,7 +130,7 @@ See [the wiki](https://github.com/wwmm/easyeffects/wiki/Package-Repositories) fo
 Alternatively, click here to install via Flatpak:
 
 <a href='https://flathub.org/apps/com.github.wwmm.easyeffects'>
-  <img width='240' alt='Get Easy Effects on Flathub' src='https://flathub.org/api/badge?locale=en'/>
+  <img width='240' alt='Get Easy Effects on Flathub' src='https://flathub.org/api/badge?svg&locale=en'/>
 </a>
 
 Flatpak packages support most Linux distributions and are sandboxed. The Easy Effects Flatpak package also includes all available plugins.
