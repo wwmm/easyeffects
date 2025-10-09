@@ -177,7 +177,9 @@ void LevelMeter::process(std::span<float>& left_in,
   true_peak_L = util::linear_to_db(true_peak_L);
   true_peak_R = util::linear_to_db(true_peak_R);
 
-  get_peaks(left_in, right_in, left_out, right_out);
+  if (updateLevelMeters) {
+    get_peaks(left_in, right_in, left_out, right_out);
+  }
 }
 
 void LevelMeter::process([[maybe_unused]] std::span<float>& left_in,

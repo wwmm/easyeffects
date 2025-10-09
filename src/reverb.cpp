@@ -116,7 +116,9 @@ void Reverb::process(std::span<float>& left_in,
     apply_gain(left_out, right_out, output_gain);
   }
 
-  get_peaks(left_in, right_in, left_out, right_out);
+  if (updateLevelMeters) {
+    get_peaks(left_in, right_in, left_out, right_out);
+  }
 }
 
 void Reverb::process([[maybe_unused]] std::span<float>& left_in,

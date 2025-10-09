@@ -53,7 +53,9 @@ void OutputLevel::process(std::span<float>& left_in,
   std::ranges::copy(left_in, left_out.begin());
   std::ranges::copy(right_in, right_out.begin());
 
-  get_peaks(left_in, right_in, left_out, right_out);
+  if (updateLevelMeters) {
+    get_peaks(left_in, right_in, left_out, right_out);
+  }
 }
 
 void OutputLevel::process([[maybe_unused]] std::span<float>& left_in,

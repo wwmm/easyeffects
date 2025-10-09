@@ -128,7 +128,9 @@ void Loudness::process(std::span<float>& left_in,
     update_filter_params();
   }
 
-  get_peaks(left_in, right_in, left_out, right_out);
+  if (updateLevelMeters) {
+    get_peaks(left_in, right_in, left_out, right_out);
+  }
 }
 
 void Loudness::process([[maybe_unused]] std::span<float>& left_in,

@@ -20,6 +20,7 @@
 #include "crossfeed.hpp"
 #include <algorithm>
 #include <cstddef>
+#include <format>
 #include <mutex>
 #include <span>
 #include <string>
@@ -117,7 +118,9 @@ void Crossfeed::process(std::span<float>& left_in,
     apply_gain(left_out, right_out, output_gain);
   }
 
-  get_peaks(left_in, right_in, left_out, right_out);
+  if (updateLevelMeters) {
+    get_peaks(left_in, right_in, left_out, right_out);
+  }
 }
 
 void Crossfeed::process([[maybe_unused]] std::span<float>& left_in,

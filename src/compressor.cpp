@@ -162,19 +162,21 @@ void Compressor::process(std::span<float>& left_in,
     update_filter_params();
   }
 
-  get_peaks(left_in, right_in, left_out, right_out);
+  if (updateLevelMeters) {
+    get_peaks(left_in, right_in, left_out, right_out);
 
-  reduction_left = util::linear_to_db(lv2_wrapper->get_control_port_value("rlm_l"));
-  reduction_right = util::linear_to_db(lv2_wrapper->get_control_port_value("rlm_r"));
+    reduction_left = util::linear_to_db(lv2_wrapper->get_control_port_value("rlm_l"));
+    reduction_right = util::linear_to_db(lv2_wrapper->get_control_port_value("rlm_r"));
 
-  sidechain_left = util::linear_to_db(lv2_wrapper->get_control_port_value("slm_l"));
-  sidechain_right = util::linear_to_db(lv2_wrapper->get_control_port_value("slm_r"));
+    sidechain_left = util::linear_to_db(lv2_wrapper->get_control_port_value("slm_l"));
+    sidechain_right = util::linear_to_db(lv2_wrapper->get_control_port_value("slm_r"));
 
-  curve_left = util::linear_to_db(lv2_wrapper->get_control_port_value("clm_l"));
-  curve_right = util::linear_to_db(lv2_wrapper->get_control_port_value("clm_r"));
+    curve_left = util::linear_to_db(lv2_wrapper->get_control_port_value("clm_l"));
+    curve_right = util::linear_to_db(lv2_wrapper->get_control_port_value("clm_r"));
 
-  envelope_left = util::linear_to_db(lv2_wrapper->get_control_port_value("elm_l"));
-  envelope_right = util::linear_to_db(lv2_wrapper->get_control_port_value("elm_r"));
+    envelope_left = util::linear_to_db(lv2_wrapper->get_control_port_value("elm_l"));
+    envelope_right = util::linear_to_db(lv2_wrapper->get_control_port_value("elm_r"));
+  }
 }
 
 void Compressor::update_sidechain_links() {
