@@ -34,9 +34,9 @@
   </a>
 </p>
 
-This application was formerly known as PulseEffects, but it was renamed to Easy Effects after it started to use GTK4 and
-GStreamer usage was replaced by native PipeWire filters. And eventually the whole application was ported from gtk4 to
-a combination of Qt, QML and KDe/Kirigami.
+This application was formerly known as **PulseEffects**, but it was renamed to **Easy Effects** after it started to use GTK4 and
+GStreamer usage was replaced by native PipeWire filters. And eventually the whole application was ported from GTK4 to
+a combination of Qt, QML and KDE/Kirigami frameworks.
 
 ![GitHub Light](images/easyeffects-light-screenshot-1.png#gh-light-mode-only)
 ![GitHub Light](images/easyeffects-light-screenshot-2.png#gh-light-mode-only)
@@ -79,7 +79,8 @@ a combination of Qt, QML and KDe/Kirigami.
 The user has full control over the effects order. Just use the up/down arrows
 next to the effect labels on the left side.
 
-Some packages do not provide all plugin packages by default. In case some effects are not available, ensure you have the following installed on your system:
+Some packages do not provide all plugin packages by default. In case some effects are not available,
+ensure you have the following installed on your system:
 
 <details>
 <summary>Dependencies</summary>
@@ -112,22 +113,27 @@ Other dependencies include:
 
 You can help me to keep developing Easy Effects through donations. Any amount will be greatly appreciated :-)
 
-[GitHub Sponsors](https://github.com/sponsors/wwmm)  
-[Liberapay](https://liberapay.com/wwmm)  
-[Patreon](https://www.patreon.com/wellingtonwallace?fan_landing=true)  
-[PayPal](https://www.paypal.com/donate?hosted_button_id=RK723F4EKH2UE)  
+- [GitHub Sponsors](https://github.com/sponsors/wwmm)
+- [Liberapay](https://liberapay.com/wwmm)
+- [Patreon](https://www.patreon.com/wellingtonwallace?fan_landing=true)
+- [PayPal](https://www.paypal.com/donate?hosted_button_id=RK723F4EKH2UE)
 
 ## Installation
 
 ### Distribution-specific packages
 
-Most up-to-date Linux distributions have an `easyeffects` package that can be installed with the distribution package manager. See [the wiki](https://github.com/wwmm/easyeffects/wiki/Package-Repositories) for a full list.
+Most up-to-date Linux distributions have an `easyeffects` package that can be installed with the distribution package manager.
+See [the wiki](https://github.com/wwmm/easyeffects/wiki/Package-Repositories) for a full list.
 
 ### Flatpak
 
 Alternatively, click here to install via Flatpak:
 
-<a href='https://flathub.org/apps/details/com.github.wwmm.easyeffects'><img width='240' alt='Download Easy Effects on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+<p>
+  <a href='https://flathub.org/apps/com.github.wwmm.easyeffects'>
+    <img width='240' alt='Get Easy Effects on Flathub' src='https://flathub.org/api/badge?svg&locale=en'/>
+  </a>
+</p>
 
 Flatpak packages support most Linux distributions and are sandboxed. The Easy Effects Flatpak package also includes all available plugins.
 
@@ -135,14 +141,15 @@ If your distribution does not yet include packages required to build Easy Effect
 
 ## Warning
 
-**Do not set** Easy Effects virtual devices as your default audio input/output.
+**Do NOT set** Easy Effects virtual devices as your default audio input/output.
 Easy Effects is designed assuming that your hardware stays as default device.
 
 ## Help
 
-A comprehensive set of help pages are included in the application itself, accessed via the hamburger menu in the top right. If the help pages are inaccessible ensure the [yelp](https://gitlab.gnome.org/GNOME/yelp) package is installed.
+A comprehensive set of help pages are included in the application itself, accessed via the hamburger menu in the top right.
+If the help pages are inaccessible ensure the [yelp](https://gitlab.gnome.org/GNOME/yelp) package is installed.
 
-The latest version of the help pages can also be [seen here](https://wwmm.github.io/easyeffects).
+The latest version of the help pages can also be read [here](https://wwmm.github.io/easyeffects).
 
 ## Changelog
 
@@ -179,7 +186,8 @@ See the wiki's [Translating Easy Effects](https://github.com/wwmm/easyeffects/wi
 
 ## Installing from source
 
-To install from source, see the wiki's [Installing from Source](https://github.com/wwmm/easyeffects/wiki/Installation-from-Source) article for detailed instructions.
+To install from source, see the wiki's [Installing from Source](https://github.com/wwmm/easyeffects/wiki/Installation-from-Source)
+article for detailed instructions.
 
 ## CI artifacts
 
@@ -188,4 +196,5 @@ See the [installation instructions](https://github.com/wwmm/easyeffects/wiki/Pac
 
 ## License
 
-Easy Effects is licensed under GNU General Public License version 3 or later. See the [LICENSE file](https://github.com/wwmm/easyeffects/blob/master/LICENSE).
+Easy Effects is licensed under GNU General Public License version 3 or later.
+See the [LICENSE](https://github.com/wwmm/easyeffects/blob/master/LICENSE) file.
