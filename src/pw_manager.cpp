@@ -202,11 +202,19 @@ Manager::Manager()
       client_manager(ClientManager(core, thread_loop, model_clients)) {
   register_models();
 
-  connect(&metadata_manager, &MetadataManager::defaultSourceChanged,
-          [&](const QString& name) { Q_EMIT newDefaultSourceName(name); });
+  connect(&metadata_manager, &MetadataManager::defaultSourceChanged, [&](const QString& name) {
+    defaultInputDeviceName = name;
 
-  connect(&metadata_manager, &MetadataManager::defaultSinkChanged,
-          [&](const QString& name) { Q_EMIT newDefaultSinkName(name); });
+    Q_EMIT defaultInputDeviceNameChanged();
+    Q_EMIT newDefaultSourceName(name);
+  });
+
+  connect(&metadata_manager, &MetadataManager::defaultSinkChanged, [&](const QString& name) {
+    defaultOutputDeviceName = name;
+
+    Q_EMIT defaultOutputDeviceNameChanged();
+    Q_EMIT newDefaultSinkName(name);
+  });
 
   connect(&node_manager, &NodeManager::sourceAdded, [&](NodeInfo node) { Q_EMIT sourceAdded(node); });
 
