@@ -104,10 +104,13 @@ class Crystalizer : public PluginBase {
   template <typename T1>
   void enhance_peaks(T1& data_left, T1& data_right) {
     for (uint n = 0U; n < nbands; n++) {
-      std::copy(data_left.begin(), data_left.end(), band_data_L.at(n).begin());
-      std::copy(data_right.begin(), data_right.end(), band_data_R.at(n).begin());
+      auto& bandn_L = band_data_L.at(n);
+      auto& bandn_R = band_data_R.at(n);
 
-      filters.at(n)->process(band_data_L.at(n), band_data_R.at(n));
+      std::copy(data_left.begin(), data_left.end(), bandn_L.begin());
+      std::copy(data_right.begin(), data_right.end(), bandn_R.begin());
+
+      filters.at(n)->process(bandn_L, bandn_R);
 
       /**
        * Later we will need to calculate the second derivative of each band.
@@ -119,12 +122,12 @@ class Crystalizer : public PluginBase {
        * for the first element of the next buffer
        */
 
-      band_next_L.at(n) = band_data_L.at(n)[blocksize - 1U];
-      band_next_R.at(n) = band_data_R.at(n)[blocksize - 1U];
+      band_next_L.at(n) = bandn_L[blocksize - 1U];
+      band_next_R.at(n) = bandn_R[blocksize - 1U];
 
       if (is_first_buffer) {
-        band_previous_L.at(n) = band_data_L.at(n)[0];
-        band_previous_R.at(n) = band_data_R.at(n)[0];
+        band_previous_L.at(n) = bandn_L[0];
+        band_previous_R.at(n) = bandn_R[0];
 
         is_first_buffer = false;
       }
@@ -133,47 +136,33 @@ class Crystalizer : public PluginBase {
     for (uint n = 0U; n < nbands; n++) {
       // Calculating the second derivative
 
+      auto bandn_L = band_data_L.at(n).data();
+      auto bandn_R = band_data_R.at(n).data();
+
       if (!band_bypass.at(n)) {
         const float intensity = band_intensity.at(n);
-        const float& L_lower = band_previous_L.at(n);
-        const float& R_lower = band_previous_R.at(n);
-        const float& L_upper = band_next_L.at(n);
-        const float& R_upper = band_next_R.at(n);
 
-        for (uint m = 0U; m < blocksize; m++) {
-          const float L = band_data_L.at(n)[m];
-          const float R = band_data_R.at(n)[m];
+        auto bandn_second_derivative_L = band_second_derivative_L.at(n).data();
+        auto bandn_second_derivative_R = band_second_derivative_R.at(n).data();
 
-          if (m > 0U && m < blocksize - 1U) {
-            const float& L_lower = band_data_L.at(n)[m - 1U];
-            const float& R_lower = band_data_R.at(n)[m - 1U];
-            const float& L_upper = band_data_L.at(n)[m + 1U];
-            const float& R_upper = band_data_R.at(n)[m + 1U];
+        bandn_second_derivative_L[0] = bandn_L[1U] - 2.0F * bandn_L[0U] + band_previous_L.at(n);
+        bandn_second_derivative_R[0] = bandn_R[1U] - 2.0F * bandn_R[0U] + band_previous_R.at(n);
 
-            band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
-            band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
-          } else if (m == 0U) {
-            const float& L_upper = band_data_L.at(n)[m + 1U];
-            const float& R_upper = band_data_R.at(n)[m + 1U];
-
-            band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
-            band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
-          } else if (m == blocksize - 1U) {
-            const float& L_lower = band_data_L.at(n)[m - 1U];
-            const float& R_lower = band_data_R.at(n)[m - 1U];
-
-            band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
-            band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
-          }
+        for (uint m = 1U; m < blocksize - 1U; m++) {
+          bandn_second_derivative_L[m] = bandn_L[m + 1U] - 2.0F * bandn_L[m] + bandn_L[m - 1U];
+          bandn_second_derivative_R[m] = bandn_R[m + 1U] - 2.0F * bandn_R[m] + bandn_R[m - 1U];
         }
+
+        bandn_second_derivative_L[blocksize - 1] =
+            band_next_L.at(n) - 2.0F * bandn_L[blocksize - 1] + bandn_L[blocksize - 2];
+        bandn_second_derivative_R[blocksize - 1] =
+            band_next_R.at(n) - 2.0F * bandn_R[blocksize - 1] + bandn_R[blocksize - 2];
 
         // peak enhancing using second derivative
 
         for (uint m = 0U; m < blocksize; m++) {
-          const float L = band_data_L.at(n)[m];
-          const float R = band_data_R.at(n)[m];
-          const float& d2L = band_second_derivative_L.at(n)[m];
-          const float& d2R = band_second_derivative_R.at(n)[m];
+          const float& d2L = bandn_second_derivative_L[m];
+          const float& d2R = bandn_second_derivative_R[m];
 
           /**
            * The correct approach would be to avoid the second derivative
@@ -181,30 +170,34 @@ class Crystalizer : public PluginBase {
            * [-1, 1] seems to be enough
            */
 
-          band_data_L.at(n)[m] = L - std::tanh(intensity * d2L);
-          band_data_R.at(n)[m] = R - std::tanh(intensity * d2R);
-
-          if (m == blocksize - 1U) {
-            band_previous_L.at(n) = L;
-            band_previous_R.at(n) = R;
-          }
+          bandn_L[m] = bandn_L[m] - std::tanh(intensity * d2L);
+          bandn_R[m] = bandn_R[m] - std::tanh(intensity * d2R);
         }
+
+        band_previous_L.at(n) = bandn_L[blocksize - 1U];
+        band_previous_R.at(n) = bandn_R[blocksize - 1U];
       } else {
-        band_previous_L.at(n) = band_data_L.at(n)[blocksize - 1U];
-        band_previous_R.at(n) = band_data_R.at(n)[blocksize - 1U];
+        band_previous_L.at(n) = bandn_L[blocksize - 1U];
+        band_previous_R.at(n) = bandn_R[blocksize - 1U];
       }
     }
 
     // add bands
 
-    for (uint m = 0U; m < blocksize; m++) {
-      data_left[m] = 0.0F;
-      data_right[m] = 0.0F;
+    std::ranges::fill(data_left, 0.0F);
+    std::ranges::fill(data_right, 0.0F);
 
-      for (uint n = 0U; n < nbands; n++) {
-        if (!band_mute.at(n)) {
-          data_left[m] += band_data_L.at(n)[m];
-          data_right[m] += band_data_R.at(n)[m];
+    auto data_left_ptr = data_left.data();
+    auto data_right_ptr = data_right.data();
+
+    for (uint n = 0U; n < nbands; n++) {
+      if (!band_mute.at(n)) {
+        auto bandn_L = band_data_L.at(n).data();
+        auto bandn_R = band_data_R.at(n).data();
+
+        for (uint m = 0U; m < blocksize; m++) {
+          data_left_ptr[m] += bandn_L[m];
+          data_right_ptr[m] += bandn_R[m];
         }
       }
     }
