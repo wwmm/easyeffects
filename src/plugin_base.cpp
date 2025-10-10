@@ -557,9 +557,6 @@ void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, con
     return;
   }
 
-  // std::ranges::for_each(left, [&](auto& v) { v *= gain; });
-  // std::ranges::for_each(right, [&](auto& v) { v *= gain; });
-
   const size_t size = std::min(left.size(), right.size());
 
   float* __restrict l_ptr = left.data();
