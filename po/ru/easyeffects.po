@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-09 05:23+0000\n"
-"PO-Revision-Date: 2025-09-10 06:03+0000\n"
+"PO-Revision-Date: 2025-10-10 15:07+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -64,10 +64,12 @@ msgstr "Получить активные предустановки входа 
 msgid ""
 "Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
 msgstr ""
+"Настройка свойства плагина. Формат: "
+"канал_обработки:имя_плагина:ид_экземпляра:свойство:значение"
 
 #: src/command_line_parser.cpp:54
 msgid "property-string"
-msgstr ""
+msgstr "строка-свойства"
 
 #: src/command_line_parser.cpp:55
 msgid "Deprecated. Use --service-mode instead."
@@ -232,9 +234,8 @@ msgid "Scope"
 msgstr "Диапазон частот"
 
 #: src/contents/ui/BassEnhancer.qml:149
-#, fuzzy
 msgid "Floor Active"
-msgstr "Величина нижнего порога"
+msgstr "Нижний порог активен"
 
 #: src/contents/ui/BassEnhancer.qml:160
 msgid "Floor"
@@ -290,14 +291,12 @@ msgid "Link"
 msgstr "Указатель"
 
 #: src/contents/ui/BlocklistSheet.qml:18
-#, fuzzy
 msgid "Effects Blocklist"
-msgstr "Чёрный список"
+msgstr "Чёрный список эффектов"
 
 #: src/contents/ui/BlocklistSheet.qml:29
-#, fuzzy
 msgid "Application Node Name"
-msgstr "Название приложения"
+msgstr "Имя узла приложения"
 
 #: src/contents/ui/BlocklistSheet.qml:45
 msgid "Add to Excluded Applications"
@@ -308,22 +307,20 @@ msgstr "Добавить в исключённые приложения"
 #: src/contents/ui/MenuAddPlugins.qml:41
 #: src/contents/ui/PresetsCommunityPage.qml:77
 #: src/contents/ui/PresetsLocalPage.qml:172 src/contents/ui/RNNoise.qml:197
-#, fuzzy
 msgid "Empty"
-msgstr "Список пуст"
+msgstr "Пусто"
 
 #: src/contents/ui/BlocklistSheet.qml:117
-#, fuzzy
 msgid "Remove Application"
-msgstr "Заглушить приложение"
+msgstr "Убрать приложение"
 
 #: src/contents/ui/BlocklistSheet.qml:118
 msgid "Are you sure you want to remove this application from the list?"
-msgstr ""
+msgstr "Уверены, что хотите убрать это приложение из списка?"
 
 #: src/contents/ui/BlocklistSheet.qml:148
 msgid "Delete this App"
-msgstr ""
+msgstr "Удалить это приложение"
 
 #: src/contents/ui/BlocklistSheet.qml:175
 #, fuzzy
