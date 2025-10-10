@@ -6,7 +6,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import QtQuick.Dialogs
 import ee.database as DB
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -24,10 +24,10 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
+        inputOutputLevels.inputLevelLeft = equalizerPage.pluginBackend.getInputLevelLeft();
+        inputOutputLevels.inputLevelRight = equalizerPage.pluginBackend.getInputLevelRight();
+        inputOutputLevels.outputLevelLeft = equalizerPage.pluginBackend.getOutputLevelLeft();
+        inputOutputLevels.outputLevelRight = equalizerPage.pluginBackend.getOutputLevelRight();
     }
 
     function showStatus(label, positive = true) {
@@ -45,11 +45,11 @@ Kirigami.ScrollablePage {
 
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
-        pluginBackend.updateLevelMeters = true;
+        equalizerPage.pluginBackend.updateLevelMeters = true;
     }
     Component.onDestruction: {
         if (pluginBackend) {
-            pluginBackend.updateLevelMeters = false;
+            equalizerPage.pluginBackend.updateLevelMeters = false;
         }
     }
 
@@ -66,12 +66,14 @@ Kirigami.ScrollablePage {
 
         fileMode: FileDialog.OpenFiles
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        nameFilters: [i18n("APO Presets") + " (*.txt)"]
+        nameFilters: [i18n("APO Presets") + " (*.txt)"]// qmllint disable
         onAccepted: {
-            if (pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true)
-                showStatus(i18n("APO Preset File Imported."));
+            if (equalizerPage.pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true)
+                equalizerPage.showStatus(i18n("APO Preset File Imported.")// qmllint disable
+                );
             else
-                showStatus(i18n("Failed to Import the APO Preset File."), false);
+                equalizerPage.showStatus(i18n("Failed to Import the APO Preset File.")// qmllint disable
+                , false);
         }
     }
 
@@ -80,12 +82,14 @@ Kirigami.ScrollablePage {
 
         fileMode: FileDialog.OpenFiles
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        nameFilters: [i18n("GraphicEQ Presets") + " (*.txt)"]
+        nameFilters: [i18n("GraphicEQ Presets") + " (*.txt)"]// qmllint disable
         onAccepted: {
-            if (pluginBackend.importApoGraphicEqPreset(apoGraphicEqFileDialog.selectedFiles) === true)
-                showStatus(i18n("GraphicEQ Preset File Imported."));
+            if (equalizerPage.pluginBackend.importApoGraphicEqPreset(apoGraphicEqFileDialog.selectedFiles) === true)
+                equalizerPage.showStatus(i18n("GraphicEQ Preset File Imported.")// qmllint disable
+                );
             else
-                showStatus(i18n("Failed to Import the GraphicEQ Preset File."), false);
+                equalizerPage.showStatus(i18n("Failed to Import the GraphicEQ Preset File.")// qmllint disable
+                , false);
         }
     }
 
@@ -94,12 +98,14 @@ Kirigami.ScrollablePage {
 
         fileMode: FileDialog.SaveFile
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        nameFilters: [i18n("APO Preset") + " (*.txt)"]
+        nameFilters: [i18n("APO Preset") + " (*.txt)"]// qmllint disable
         onAccepted: {
-            if (pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true)
-                showStatus(i18n("APO Preset File Exported."));
+            if (equalizerPage.pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true)
+                equalizerPage.showStatus(i18n("APO Preset File Exported.")// qmllint disable
+                );
             else
-                showStatus(i18n("Failed to Export the APO Preset File."), false);
+                equalizerPage.showStatus(i18n("Failed to Export the APO Preset File.")// qmllint disable
+                , false);
         }
     }
 
@@ -115,80 +121,80 @@ Kirigami.ScrollablePage {
             FormCard.FormComboBoxDelegate {
                 id: mode
 
-                text: i18n("Mode")
+                text: i18n("Mode") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                currentIndex: pluginDB.mode
+                currentIndex: equalizerPage.pluginDB.mode
                 editable: false
                 model: ["IIR", "FIR", "FFT", "SPM"]
                 onActivated: idx => {
-                    pluginDB.mode = idx;
+                    equalizerPage.pluginDB.mode = idx;
                 }
             }
 
             EeSpinBox {
                 id: numBands
 
-                label: i18n("Bands")
+                label: i18n("Bands") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
-                from: pluginDB.getMinValue("numBands")
-                to: pluginDB.getMaxValue("numBands")
-                value: pluginDB.numBands
+                from: equalizerPage.pluginDB.getMinValue("numBands")
+                to: equalizerPage.pluginDB.getMaxValue("numBands")
+                value: equalizerPage.pluginDB.numBands
                 decimals: 0
                 stepSize: 1
                 onValueModified: v => {
-                    pluginDB.numBands = v;
+                    equalizerPage.pluginDB.numBands = v;
                 }
             }
 
             EeSpinBox {
                 id: balance
 
-                label: i18n("Balance")
+                label: i18n("Balance") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
-                from: pluginDB.getMinValue("balance")
-                to: pluginDB.getMaxValue("balance")
-                value: pluginDB.balance
+                from: equalizerPage.pluginDB.getMinValue("balance")
+                to: equalizerPage.pluginDB.getMaxValue("balance")
+                value: equalizerPage.pluginDB.balance
                 decimals: 1
                 stepSize: 0.1
                 unit: "%"
                 onValueModified: v => {
-                    pluginDB.balance = v;
+                    equalizerPage.pluginDB.balance = v;
                 }
             }
 
             EeSpinBox {
                 id: pitchLeft
 
-                label: i18n("Pitch Left")
+                label: i18n("Pitch Left") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
-                from: pluginDB.getMinValue("pitchLeft")
-                to: pluginDB.getMaxValue("pitchLeft")
-                value: pluginDB.pitchLeft
+                from: equalizerPage.pluginDB.getMinValue("pitchLeft")
+                to: equalizerPage.pluginDB.getMaxValue("pitchLeft")
+                value: equalizerPage.pluginDB.pitchLeft
                 decimals: 2
                 stepSize: 0.01
                 unit: "st"
                 onValueModified: v => {
-                    pluginDB.pitchLeft = v;
+                    equalizerPage.pluginDB.pitchLeft = v;
                 }
             }
 
             EeSpinBox {
                 id: pitchRight
 
-                label: i18n("Pitch Right")
+                label: i18n("Pitch Right") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
-                from: pluginDB.getMinValue("pitchRight")
-                to: pluginDB.getMaxValue("pitchRight")
-                value: pluginDB.pitchRight
+                from: equalizerPage.pluginDB.getMinValue("pitchRight")
+                to: equalizerPage.pluginDB.getMaxValue("pitchRight")
+                value: equalizerPage.pluginDB.pitchRight
                 decimals: 2
                 stepSize: 0.01
                 unit: "st"
                 onValueModified: v => {
-                    pluginDB.pitchRight = v;
+                    equalizerPage.pluginDB.pitchRight = v;
                 }
             }
         }
@@ -207,7 +213,7 @@ Kirigami.ScrollablePage {
                 header: RowLayout {
                     Kirigami.Heading {
                         visible: equalizerPage.pluginDB.splitChannels
-                        text: equalizerPage.pluginDB.splitChannels ? (equalizerPage.pluginDB.viewLeftChannel ? i18n("Left") : i18n("Right")) : ""
+                        text: equalizerPage.pluginDB.splitChannels ? (equalizerPage.pluginDB.viewLeftChannel ? i18n("Left") : i18n("Right")) : "" // qmllint disable
                         level: 2
                     }
 
@@ -295,7 +301,7 @@ Kirigami.ScrollablePage {
 
         RowLayout {
             Controls.Label {
-                text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`)
+                text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`) // qmllint disable
                 textFormat: Text.RichText
                 horizontalAlignment: Qt.AlignLeft
                 verticalAlignment: Qt.AlignVCenter
@@ -311,75 +317,75 @@ Kirigami.ScrollablePage {
                 flat: true
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Show Native Window")
+                        text: i18n("Show Native Window") // qmllint disable
                         icon.name: "window-duplicate-symbolic"
                         enabled: DB.Manager.main.showNativePluginUi
                         checkable: true
-                        checked: pluginBackend ? pluginBackend.hasNativeUi() : false
+                        checked: equalizerPage.pluginBackend ? equalizerPage.pluginBackend.hasNativeUi() : false
                         onTriggered: {
                             if (checked)
-                                pluginBackend.showNativeUi();
+                                equalizerPage.pluginBackend.showNativeUi();
                             else
-                                pluginBackend.closeNativeUi();
+                                equalizerPage.pluginBackend.closeNativeUi();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Split Channels")
+                        text: i18n("Split Channels") // qmllint disable
                         icon.name: "split-symbolic"
                         checkable: true
-                        checked: pluginDB.splitChannels
+                        checked: equalizerPage.pluginDB.splitChannels
                         onTriggered: {
-                            if (pluginDB.splitChannels != checked)
-                                pluginDB.splitChannels = checked;
+                            if (equalizerPage.pluginDB.splitChannels != checked)
+                                equalizerPage.pluginDB.splitChannels = checked;
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Flat Response")
+                        text: i18n("Flat Response") // qmllint disable
                         icon.name: "map-flat-symbolic"
                         onTriggered: {
-                            pluginBackend.flatResponse();
+                            equalizerPage.pluginBackend.flatResponse();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Calculate Frequencies")
+                        text: i18n("Calculate Frequencies") // qmllint disable
                         icon.name: "folder-calculate-symbolic"
                         onTriggered: {
-                            pluginBackend.calculateFrequencies();
+                            equalizerPage.pluginBackend.calculateFrequencies();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Sort Bands")
+                        text: i18n("Sort Bands") // qmllint disable
                         icon.name: "sort_incr-symbolic"
                         onTriggered: {
-                            pluginBackend.sortBands();
+                            equalizerPage.pluginBackend.sortBands();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Import APO")
+                        text: i18n("Import APO") // qmllint disable
                         icon.name: "document-import-symbolic"
                         onTriggered: {
                             apoFileDialog.open();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Import APO (GraphicEQ)")
+                        text: i18n("Import APO (GraphicEQ)") // qmllint disable
                         icon.name: "document-import-symbolic"
                         onTriggered: {
                             apoGraphicEqFileDialog.open();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Export APO")
+                        text: i18n("Export APO") // qmllint disable
                         icon.name: "document-export-symbolic"
                         onTriggered: {
                             apoExportFileDialog.open();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Reset")
+                        text: i18n("Reset") // qmllint disable
                         icon.name: "edit-reset-symbolic"
                         onTriggered: {
-                            pluginBackend.reset();
+                            equalizerPage.pluginBackend.reset();
                         }
                     }
                 ]

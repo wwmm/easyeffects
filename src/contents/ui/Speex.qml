@@ -1,8 +1,7 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.database as DB
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
@@ -44,7 +43,7 @@ Kirigami.ScrollablePage {
                 id: cardControls
 
                 header: Kirigami.Heading {
-                    text: i18n("Controls")
+                    text: i18n("Controls") // qmllint disable
                     level: 2
                 }
 
@@ -52,50 +51,50 @@ Kirigami.ScrollablePage {
                     EeSwitch {
                         id: enableDenoise
 
-                        label: i18n("Denoise")
-                        isChecked: pluginDB.enableDenoise
+                        label: i18n("Denoise") // qmllint disable
+                        isChecked: speexPage.pluginDB.enableDenoise
                         onCheckedChanged: {
-                            if (isChecked !== pluginDB.enableDenoise)
-                                pluginDB.enableDenoise = isChecked;
+                            if (isChecked !== speexPage.pluginDB.enableDenoise)
+                                speexPage.pluginDB.enableDenoise = isChecked;
                         }
                     }
 
                     EeSwitch {
                         id: enableAgc
 
-                        label: i18n("Automatic Gain Control")
-                        isChecked: pluginDB.enableAgc
+                        label: i18n("Automatic Gain Control") // qmllint disable
+                        isChecked: speexPage.pluginDB.enableAgc
                         onCheckedChanged: {
-                            if (isChecked !== pluginDB.enableAgc)
-                                pluginDB.enableAgc = isChecked;
+                            if (isChecked !== speexPage.pluginDB.enableAgc)
+                                speexPage.pluginDB.enableAgc = isChecked;
                         }
                     }
 
                     EeSwitch {
                         id: enableDereverb
 
-                        label: i18n("Dereverberation")
-                        isChecked: pluginDB.enableDereverb
+                        label: i18n("Dereverberation") // qmllint disable
+                        isChecked: speexPage.pluginDB.enableDereverb
                         onCheckedChanged: {
-                            if (isChecked !== pluginDB.enableDereverb)
-                                pluginDB.enableDereverb = isChecked;
+                            if (isChecked !== speexPage.pluginDB.enableDereverb)
+                                speexPage.pluginDB.enableDereverb = isChecked;
                         }
                     }
 
                     EeSpinBox {
                         id: noiseSuppression
 
-                        label: i18n("Noise Suppression")
+                        label: i18n("Noise Suppression") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("noiseSuppression")
-                        to: pluginDB.getMaxValue("noiseSuppression")
-                        value: pluginDB.noiseSuppression
+                        from: speexPage.pluginDB.getMinValue("noiseSuppression")
+                        to: speexPage.pluginDB.getMaxValue("noiseSuppression")
+                        value: speexPage.pluginDB.noiseSuppression
                         decimals: 2
                         stepSize: 0.1
                         unit: "dB"
                         onValueModified: v => {
-                            pluginDB.noiseSuppression = v;
+                            speexPage.pluginDB.noiseSuppression = v;
                         }
                     }
                 }
@@ -104,7 +103,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Voice Activity Probability")
+                    text: i18n("Voice Activity Probability") // qmllint disable
                     level: 2
                 }
 
@@ -112,11 +111,11 @@ Kirigami.ScrollablePage {
                     EeSwitch {
                         id: enableVad
 
-                        label: i18n("Voice Detection")
-                        isChecked: pluginDB.enableVad
+                        label: i18n("Voice Detection") // qmllint disable
+                        isChecked: speexPage.pluginDB.enableVad
                         onCheckedChanged: {
-                            if (isChecked !== pluginDB.enableVad)
-                                pluginDB.enableVad = isChecked;
+                            if (isChecked !== speexPage.pluginDB.enableVad)
+                                speexPage.pluginDB.enableVad = isChecked;
                         }
                     }
 
@@ -124,18 +123,18 @@ Kirigami.ScrollablePage {
                         id: vadProbabilityStart
 
                         Layout.columnSpan: 2
-                        label: i18n("Start")
+                        label: i18n("Start") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("vadProbabilityStart")
-                        to: pluginDB.getMaxValue("vadProbabilityStart")
-                        value: pluginDB.vadProbabilityStart
+                        from: speexPage.pluginDB.getMinValue("vadProbabilityStart")
+                        to: speexPage.pluginDB.getMaxValue("vadProbabilityStart")
+                        value: speexPage.pluginDB.vadProbabilityStart
                         decimals: 0
                         stepSize: 1
                         unit: "%"
                         enabled: enableVad.isChecked
                         onValueModified: v => {
-                            pluginDB.vadProbabilityStart = v;
+                            speexPage.pluginDB.vadProbabilityStart = v;
                         }
                     }
 
@@ -143,18 +142,18 @@ Kirigami.ScrollablePage {
                         id: vadProbabilityContinue
 
                         Layout.columnSpan: 2
-                        label: i18n("Continue")
+                        label: i18n("Continue") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("vadProbabilityContinue")
-                        to: pluginDB.getMaxValue("vadProbabilityContinue")
-                        value: pluginDB.vadProbabilityContinue
+                        from: speexPage.pluginDB.getMinValue("vadProbabilityContinue")
+                        to: speexPage.pluginDB.getMaxValue("vadProbabilityContinue")
+                        value: speexPage.pluginDB.vadProbabilityContinue
                         decimals: 0
                         stepSize: 1
                         unit: "%"
                         enabled: enableVad.isChecked
                         onValueModified: v => {
-                            pluginDB.vadProbabilityContinue = v;
+                            speexPage.pluginDB.vadProbabilityContinue = v;
                         }
                     }
                 }
@@ -170,7 +169,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.speex}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.speex}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -186,10 +185,10 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        speexPage.pluginBackend.reset();
                     }
                 }
             ]

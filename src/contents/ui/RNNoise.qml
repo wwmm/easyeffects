@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import QtCore
 import QtQuick
 import QtQuick.Controls as Controls
@@ -5,7 +6,7 @@ import QtQuick.Dialogs
 import QtQuick.Layouts
 import ee.database as DB
 import ee.presets as Presets
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import ee.type.presets as TypePresets
 import org.kde.kirigami as Kirigami
 
@@ -58,9 +59,10 @@ Kirigami.ScrollablePage {
         nameFilters: ["RNNoise (*.rnnn)"]
         onAccepted: {
             if (Presets.Manager.importRNNoiseModel(fileDialog.selectedFiles) === 0)
-                showStatus(i18n("Model File Imported."));
+                rnnoisePage.showStatus(i18n("Model File Imported.")// qmllint disable
+                );
             else
-                showStatus(i18n("Failed to Import the Model File."));
+                rnnoisePage.showStatus(i18n("Failed to Import the Model File."));// qmllint disable
         }
     }
 
@@ -76,7 +78,7 @@ Kirigami.ScrollablePage {
                 id: cardControls
 
                 header: Kirigami.Heading {
-                    text: i18n("Voice Detection")
+                    text: i18n("Voice Detection") // qmllint disable
                     level: 2
                 }
 
@@ -84,59 +86,59 @@ Kirigami.ScrollablePage {
                     EeSwitch {
                         id: enableVad
 
-                        label: i18n("Enable")
-                        isChecked: pluginDB.enableVad
+                        label: i18n("Enable") // qmllint disable
+                        isChecked: rnnoisePage.pluginDB.enableVad
                         onCheckedChanged: {
-                            if (isChecked !== pluginDB.enableVad)
-                                pluginDB.enableVad = isChecked;
+                            if (isChecked !== rnnoisePage.pluginDB.enableVad)
+                                rnnoisePage.pluginDB.enableVad = isChecked;
                         }
                     }
 
                     EeSpinBox {
                         id: vadThres
 
-                        label: i18n("Threshold")
+                        label: i18n("Threshold") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
-                        from: pluginDB.getMinValue("vadThres")
-                        to: pluginDB.getMaxValue("vadThres")
-                        value: pluginDB.vadThres
+                        from: rnnoisePage.pluginDB.getMinValue("vadThres")
+                        to: rnnoisePage.pluginDB.getMaxValue("vadThres")
+                        value: rnnoisePage.pluginDB.vadThres
                         decimals: 0
                         stepSize: 1
                         unit: "%"
                         onValueModified: v => {
-                            pluginDB.vadThres = v;
+                            rnnoisePage.pluginDB.vadThres = v;
                         }
                     }
 
                     EeSpinBox {
                         id: wet
 
-                        label: i18n("Wet Level")
+                        label: i18n("Wet Level") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
-                        from: pluginDB.getMinValue("wet")
-                        to: pluginDB.getMaxValue("wet")
-                        value: pluginDB.wet
+                        from: rnnoisePage.pluginDB.getMinValue("wet")
+                        to: rnnoisePage.pluginDB.getMaxValue("wet")
+                        value: rnnoisePage.pluginDB.wet
                         decimals: 2
                         stepSize: 0.01
                         unit: "dB"
                         onValueModified: v => {
-                            pluginDB.wet = v;
+                            rnnoisePage.pluginDB.wet = v;
                         }
                     }
 
                     EeSpinBox {
                         id: release
 
-                        label: i18n("Release")
+                        label: i18n("Release") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
-                        from: pluginDB.getMinValue("release")
-                        to: pluginDB.getMaxValue("release")
-                        value: pluginDB.release
+                        from: rnnoisePage.pluginDB.getMinValue("release")
+                        to: rnnoisePage.pluginDB.getMaxValue("release")
+                        value: rnnoisePage.pluginDB.release
                         decimals: 2
                         stepSize: 0.01
                         unit: "ms"
                         onValueModified: v => {
-                            pluginDB.release = v;
+                            rnnoisePage.pluginDB.release = v;
                         }
                     }
                 }
@@ -150,20 +152,20 @@ Kirigami.ScrollablePage {
                     Kirigami.Action {
 
                         displayComponent: EeSwitch {
-                            label: i18n("Use the Standard Model")
-                            isChecked: pluginDB.useStandardModel
+                            label: i18n("Use the Standard Model") // qmllint disable
+                            isChecked: rnnoisePage.pluginDB.useStandardModel
                             onCheckedChanged: {
-                                if (isChecked !== pluginDB.useStandardModel)
-                                    pluginDB.useStandardModel = isChecked;
+                                if (isChecked !== rnnoisePage.pluginDB.useStandardModel)
+                                    rnnoisePage.pluginDB.useStandardModel = isChecked;
                             }
                         }
                     }
                 ]
 
                 header: Kirigami.Heading {
-                    text: i18n("User Models")
+                    text: i18n("User Models") // qmllint disable
                     level: 2
-                    enabled: !pluginDB.useStandardModel
+                    enabled: !rnnoisePage.pluginDB.useStandardModel
                 }
 
                 contentItem: RowLayout {
@@ -177,13 +179,13 @@ Kirigami.ScrollablePage {
                         model: Presets.SortedRNNoiseListModel
                         Layout.fillWidth: true
                         Layout.fillHeight: true
-                        enabled: !pluginDB.useStandardModel
+                        enabled: !rnnoisePage.pluginDB.useStandardModel
                         Controls.ScrollBar.vertical: listViewScrollBar
                         Component.onCompleted: {
                             for (let n = 0; n < model.rowCount(); n++) {
                                 const proxyIndex = model.index(n, 0);
                                 const name = model.data(proxyIndex, TypePresets.ListModel.Name);
-                                if (name === pluginDB.modelName) {
+                                if (name === rnnoisePage.pluginDB.modelName) {
                                     currentIndex = n;
                                     break;
                                 }
@@ -194,7 +196,7 @@ Kirigami.ScrollablePage {
                             anchors.centerIn: parent
                             width: parent.width - (Kirigami.Units.largeSpacing * 4)
                             visible: listView.count === 0
-                            text: i18n("Empty")
+                            text: i18n("Empty") // qmllint disable
                         }
 
                         delegate: Controls.ItemDelegate {
@@ -208,28 +210,30 @@ Kirigami.ScrollablePage {
                             width: listView.width
                             highlighted: listItemDelegate.ListView.isCurrentItem
                             onClicked: {
-                                pluginDB.modelName = name;
+                                rnnoisePage.pluginDB.modelName = name;
                                 listItemDelegate.ListView.view.currentIndex = index;
-                                showStatus(i18n("Loaded Model: %1", name));
+                                rnnoisePage.showStatus(i18n("Loaded Model: %1", name));// qmllint disable
                             }
 
                             contentItem: RowLayout {
                                 Controls.Label {
-                                    text: name
+                                    text: rnnoisePage.name
                                 }
 
                                 Kirigami.ActionToolBar {
                                     alignment: Qt.AlignRight
                                     actions: [
                                         Kirigami.Action {
-                                            text: i18n("Delete this Model")
+                                            text: i18n("Delete this Model") // qmllint disable
                                             icon.name: "delete"
                                             displayHint: Kirigami.DisplayHint.AlwaysHide
                                             onTriggered: {
-                                                if (Presets.Manager.removeRNNoiseModel(path) === true)
-                                                    showStatus(i18n("Removed Model: %1", name));
+                                                if (Presets.Manager.removeRNNoiseModel(listItemDelegate.path) === true)
+                                                    rnnoisePage.showStatus(i18n("Removed Model: %1", rnnoisePage.name) // qmllint disable
+                                                    );
                                                 else
-                                                    showStatus(i18n("Failed to Remove the Model: %1", name), false);
+                                                    rnnoisePage.showStatus(i18n("Failed to Remove the Model: %1", rnnoisePage.name)// qmllint disable
+                                                    , false);
                                             }
                                         }
                                     ]
@@ -276,7 +280,7 @@ Kirigami.ScrollablePage {
 
         RowLayout {
             Controls.Label {
-                text: i18n("Using %1", `<b>${TagsPluginName.Package.rnnoise}</b>`)
+                text: i18n("Using %1", `<b>${TagsPluginName.Package.rnnoise}</b>`) // qmllint disable
                 textFormat: Text.RichText
                 horizontalAlignment: Qt.AlignLeft
                 verticalAlignment: Qt.AlignVCenter
@@ -292,17 +296,17 @@ Kirigami.ScrollablePage {
                 flat: true
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Import Model")
+                        text: i18n("Import Model") // qmllint disable
                         icon.name: "document-import-symbolic"
                         onTriggered: {
                             fileDialog.open();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Reset")
+                        text: i18n("Reset") // qmllint disable
                         icon.name: "edit-reset-symbolic"
                         onTriggered: {
-                            pluginBackend.reset();
+                            rnnoisePage.pluginBackend.reset();
                         }
                     }
                 ]

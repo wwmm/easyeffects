@@ -126,7 +126,7 @@ FormCard.AbstractFormDelegate {
             editable: control.editable
             inputMethodHints: Qt.ImhFormattedNumbersOnly
             textFromValue: (value, locale) => {
-                const unit_str = (Common.isEmpty(unit)) ? "" : " " + unit;
+                const unit_str = (Common.isEmpty(control.unit)) ? "" : " " + control.unit;
                 locale.numberOptions = Locale.OmitGroupSeparator;
                 const decimalValue = value / spinbox.decimalFactor;
                 if (control.minusInfinityMode === true && decimalValue <= control.from) {

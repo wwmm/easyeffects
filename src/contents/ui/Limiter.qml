@@ -4,7 +4,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
 import ee.pipewire as PW
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -20,23 +20,23 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
-        gainLevelLeft.value = pluginBackend.getGainLevelLeft();
-        gainLevelRight.value = pluginBackend.getGainLevelRight();
-        sideChainLevelLeft.value = pluginBackend.getSideChainLevelLeft();
-        sideChainLevelRight.value = pluginBackend.getSideChainLevelRight();
+        inputOutputLevels.inputLevelLeft = limiterPage.pluginBackend.getInputLevelLeft();
+        inputOutputLevels.inputLevelRight = limiterPage.pluginBackend.getInputLevelRight();
+        inputOutputLevels.outputLevelLeft = limiterPage.pluginBackend.getOutputLevelLeft();
+        inputOutputLevels.outputLevelRight = limiterPage.pluginBackend.getOutputLevelRight();
+        gainLevelLeft.value = limiterPage.pluginBackend.getGainLevelLeft();
+        gainLevelRight.value = limiterPage.pluginBackend.getGainLevelRight();
+        sideChainLevelLeft.value = limiterPage.pluginBackend.getSideChainLevelLeft();
+        sideChainLevelRight.value = limiterPage.pluginBackend.getSideChainLevelRight();
     }
 
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
-        pluginBackend.updateLevelMeters = true;
+        limiterPage.pluginBackend.updateLevelMeters = true;
     }
     Component.onDestruction: {
         if (pluginBackend) {
-            pluginBackend.updateLevelMeters = false;
+            limiterPage.pluginBackend.updateLevelMeters = false;
         }
     }
 
@@ -55,13 +55,13 @@ Kirigami.ScrollablePage {
                     FormCard.FormComboBoxDelegate {
                         id: mode
 
-                        text: i18n("Mode")
+                        text: i18n("Mode") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.mode
+                        currentIndex: limiterPage.pluginDB.mode
                         editable: false
-                        model: [i18n("Herm Thin"), i18n("Herm Wide"), i18n("Herm Tail"), i18n("Herm Duck"), i18n("Exp Thin"), i18n("Exp Wide"), i18n("Exp Tail"), i18n("Exp Duck"), i18n("Line Thin"), i18n("Line Wide"), i18n("Line Tail"), i18n("Line Duck")]
+                        model: [i18n("Herm Thin"), i18n("Herm Wide"), i18n("Herm Tail"), i18n("Herm Duck"), i18n("Exp Thin"), i18n("Exp Wide"), i18n("Exp Tail"), i18n("Exp Duck"), i18n("Line Thin"), i18n("Line Wide"), i18n("Line Tail"), i18n("Line Duck")]// qmllint disable
                         onActivated: idx => {
-                            pluginDB.mode = idx;
+                            limiterPage.pluginDB.mode = idx;
                         }
 
                         anchors {
@@ -73,13 +73,13 @@ Kirigami.ScrollablePage {
                     FormCard.FormComboBoxDelegate {
                         id: oversampling
 
-                        text: i18n("Oversampling")
+                        text: i18n("Oversampling") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.oversampling
+                        currentIndex: limiterPage.pluginDB.oversampling
                         editable: false
-                        model: [i18n("None"), i18n("Half x2/16 bit"), i18n("Half x2/24 bit"), i18n("Half x3/16 bit"), i18n("Half x3/24 bit"), i18n("Half x4/16 bit"), i18n("Half x4/24 bit"), i18n("Half x6/16 bit"), i18n("Half x6/24 bit"), i18n("Half x8/16 bit"), i18n("Half x8/24 bit"), i18n("Full x2/16 bit"), i18n("Full x2/24 bit"), i18n("Full x3/16 bit"), i18n("Full x3/24 bit"), i18n("Full x4/16 bit"), i18n("Full x4/24 bit"), i18n("Full x6/16 bit"), i18n("Full x6/24 bit"), i18n("Full x8/16 bit"), i18n("Full x8/24 bit")]
+                        model: [i18n("None"), i18n("Half x2/16 bit"), i18n("Half x2/24 bit"), i18n("Half x3/16 bit"), i18n("Half x3/24 bit"), i18n("Half x4/16 bit"), i18n("Half x4/24 bit"), i18n("Half x6/16 bit"), i18n("Half x6/24 bit"), i18n("Half x8/16 bit"), i18n("Half x8/24 bit"), i18n("Full x2/16 bit"), i18n("Full x2/24 bit"), i18n("Full x3/16 bit"), i18n("Full x3/24 bit"), i18n("Full x4/16 bit"), i18n("Full x4/24 bit"), i18n("Full x6/16 bit"), i18n("Full x6/24 bit"), i18n("Full x8/16 bit"), i18n("Full x8/24 bit")]// qmllint disable
                         onActivated: idx => {
-                            pluginDB.oversampling = idx;
+                            limiterPage.pluginDB.oversampling = idx;
                         }
 
                         anchors {
@@ -91,13 +91,13 @@ Kirigami.ScrollablePage {
                     FormCard.FormComboBoxDelegate {
                         id: dithering
 
-                        text: i18n("Dithering")
+                        text: i18n("Dithering") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.dithering
+                        currentIndex: limiterPage.pluginDB.dithering
                         editable: false
-                        model: [i18n("None"), i18n("7 bit"), i18n("8 bit"), i18n("11 bit"), i18n("12 bit"), i18n("15 bit"), i18n("16 bit"), i18n("23 bit"), i18n("24 bit")]
+                        model: [i18n("None"), i18n("7 bit"), i18n("8 bit"), i18n("11 bit"), i18n("12 bit"), i18n("15 bit"), i18n("16 bit"), i18n("23 bit"), i18n("24 bit")]// qmllint disable
                         onActivated: idx => {
-                            pluginDB.dithering = idx;
+                            limiterPage.pluginDB.dithering = idx;
                         }
 
                         anchors {
@@ -112,7 +112,7 @@ Kirigami.ScrollablePage {
                 id: cardLimiter
 
                 header: Kirigami.Heading {
-                    text: i18n("Limiter")
+                    text: i18n("Limiter") // qmllint disable
                     level: 2
                 }
 
@@ -120,16 +120,16 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: threshold
 
-                        label: i18n("Threshold")
+                        label: i18n("Threshold") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: pluginDB.getMinValue("threshold")
-                        to: pluginDB.getMaxValue("threshold")
-                        value: pluginDB.threshold
+                        from: limiterPage.pluginDB.getMinValue("threshold")
+                        to: limiterPage.pluginDB.getMaxValue("threshold")
+                        value: limiterPage.pluginDB.threshold
                         decimals: 2
                         stepSize: 0.01
                         unit: "dB"
                         onValueModified: v => {
-                            pluginDB.threshold = v;
+                            limiterPage.pluginDB.threshold = v;
                         }
 
                         anchors {
@@ -141,16 +141,16 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: attack
 
-                        label: i18n("Attack")
+                        label: i18n("Attack") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: pluginDB.getMinValue("attack")
-                        to: pluginDB.getMaxValue("attack")
-                        value: pluginDB.attack
+                        from: limiterPage.pluginDB.getMinValue("attack")
+                        to: limiterPage.pluginDB.getMaxValue("attack")
+                        value: limiterPage.pluginDB.attack
                         decimals: 2
                         stepSize: 0.01
                         unit: "ms"
                         onValueModified: v => {
-                            pluginDB.attack = v;
+                            limiterPage.pluginDB.attack = v;
                         }
 
                         anchors {
@@ -162,16 +162,16 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: release
 
-                        label: i18n("Release")
+                        label: i18n("Release") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: pluginDB.getMinValue("release")
-                        to: pluginDB.getMaxValue("release")
-                        value: pluginDB.release
+                        from: limiterPage.pluginDB.getMinValue("release")
+                        to: limiterPage.pluginDB.getMaxValue("release")
+                        value: limiterPage.pluginDB.release
                         decimals: 2
                         stepSize: 0.01
                         unit: "ms"
                         onValueModified: v => {
-                            pluginDB.release = v;
+                            limiterPage.pluginDB.release = v;
                         }
 
                         anchors {
@@ -183,16 +183,16 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: stereoLink
 
-                        label: i18n("Stereo Link")
+                        label: i18n("Stereo Link") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: pluginDB.getMinValue("stereoLink")
-                        to: pluginDB.getMaxValue("stereoLink")
-                        value: pluginDB.stereoLink
+                        from: limiterPage.pluginDB.getMinValue("stereoLink")
+                        to: limiterPage.pluginDB.getMaxValue("stereoLink")
+                        value: limiterPage.pluginDB.stereoLink
                         decimals: 1
                         stepSize: 0.1
                         unit: "%"
                         onValueModified: v => {
-                            pluginDB.stereoLink = v;
+                            limiterPage.pluginDB.stereoLink = v;
                         }
 
                         anchors {
@@ -207,7 +207,7 @@ Kirigami.ScrollablePage {
                 id: cardSideChain
 
                 header: Kirigami.Heading {
-                    text: i18n("Sidechain")
+                    text: i18n("Sidechain") // qmllint disable
                     level: 2
                 }
 
@@ -227,13 +227,13 @@ Kirigami.ScrollablePage {
                             id: sidechainType
 
                             Layout.columnSpan: 2
-                            text: i18n("Type")
+                            text: i18n("Type") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.sidechainType
+                            currentIndex: limiterPage.pluginDB.sidechainType
                             editable: false
-                            model: [i18n("Internal"), i18n("External"), i18n("Link")]
+                            model: [i18n("Internal"), i18n("External"), i18n("Link")]// qmllint disable
                             onActivated: idx => {
-                                pluginDB.sidechainType = idx;
+                                limiterPage.pluginDB.sidechainType = idx;
                             }
                         }
 
@@ -241,7 +241,7 @@ Kirigami.ScrollablePage {
                             id: comboSideChainInputDevice
 
                             Layout.columnSpan: 2
-                            text: i18n("Input Device")
+                            text: i18n("Input Device") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             editable: false
                             model: PW.ModelNodes
@@ -249,50 +249,50 @@ Kirigami.ScrollablePage {
                             enabled: sidechainType.currentIndex === 1
                             currentIndex: {
                                 for (let n = 0; n < PW.ModelNodes.rowCount(); n++) {
-                                    if (PW.ModelNodes.getNodeName(n) === pluginDB.sidechainInputDevice)
+                                    if (PW.ModelNodes.getNodeName(n) === limiterPage.pluginDB.sidechainInputDevice)
                                         return n;
                                 }
                                 return 0;
                             }
                             onActivated: idx => {
                                 let selectedName = PW.ModelNodes.getNodeName(idx);
-                                if (selectedName !== pluginDB.sidechainInputDevice)
-                                    pluginDB.sidechainInputDevice = selectedName;
+                                if (selectedName !== limiterPage.pluginDB.sidechainInputDevice)
+                                    limiterPage.pluginDB.sidechainInputDevice = selectedName;
                             }
                         }
 
                         EeSpinBox {
                             id: sidechainPreamp
 
-                            label: i18n("Preamp")
+                            label: i18n("Preamp") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("sidechainPreamp")
-                            to: pluginDB.getMaxValue("sidechainPreamp")
-                            value: pluginDB.sidechainPreamp
+                            from: limiterPage.pluginDB.getMinValue("sidechainPreamp")
+                            to: limiterPage.pluginDB.getMaxValue("sidechainPreamp")
+                            value: limiterPage.pluginDB.sidechainPreamp
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.sidechainPreamp = v;
+                                limiterPage.pluginDB.sidechainPreamp = v;
                             }
                         }
 
                         EeSpinBox {
                             id: lookahead
 
-                            label: i18n("Lookahead")
+                            label: i18n("Lookahead") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("lookahead")
-                            to: pluginDB.getMaxValue("lookahead")
-                            value: pluginDB.lookahead
+                            from: limiterPage.pluginDB.getMinValue("lookahead")
+                            to: limiterPage.pluginDB.getMaxValue("lookahead")
+                            value: limiterPage.pluginDB.lookahead
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
                             onValueModified: v => {
-                                pluginDB.lookahead = v;
+                                limiterPage.pluginDB.lookahead = v;
                             }
                         }
                     }
@@ -303,7 +303,7 @@ Kirigami.ScrollablePage {
                 id: cardPreMix
 
                 header: Kirigami.Heading {
-                    text: i18n("Pre-Mix")
+                    text: i18n("Pre-Mix") // qmllint disable
                     level: 2
                 }
 
@@ -318,98 +318,98 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            label: i18n("Input to Sidechain")
+                            label: i18n("Input to Sidechain") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("inputToSidechain")
-                            to: pluginDB.getMaxValue("inputToSidechain")
-                            value: pluginDB.inputToSidechain
+                            from: limiterPage.pluginDB.getMinValue("inputToSidechain")
+                            to: limiterPage.pluginDB.getMaxValue("inputToSidechain")
+                            value: limiterPage.pluginDB.inputToSidechain
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.inputToSidechain = v;
+                                limiterPage.pluginDB.inputToSidechain = v;
                             }
                         }
 
                         EeSpinBox {
-                            label: i18n("Input to Link")
+                            label: i18n("Input to Link") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("inputToLink")
-                            to: pluginDB.getMaxValue("inputToLink")
-                            value: pluginDB.inputToLink
+                            from: limiterPage.pluginDB.getMinValue("inputToLink")
+                            to: limiterPage.pluginDB.getMaxValue("inputToLink")
+                            value: limiterPage.pluginDB.inputToLink
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.inputToLink = v;
+                                limiterPage.pluginDB.inputToLink = v;
                             }
                         }
 
                         EeSpinBox {
-                            label: i18n("Sidechain to Input")
+                            label: i18n("Sidechain to Input") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("sidechainToInput")
-                            to: pluginDB.getMaxValue("sidechainToInput")
-                            value: pluginDB.sidechainToInput
+                            from: limiterPage.pluginDB.getMinValue("sidechainToInput")
+                            to: limiterPage.pluginDB.getMaxValue("sidechainToInput")
+                            value: limiterPage.pluginDB.sidechainToInput
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.sidechainToInput = v;
+                                limiterPage.pluginDB.sidechainToInput = v;
                             }
                         }
 
                         EeSpinBox {
-                            label: i18n("Sidechain to Link")
+                            label: i18n("Sidechain to Link") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("sidechainToLink")
-                            to: pluginDB.getMaxValue("sidechainToLink")
-                            value: pluginDB.sidechainToLink
+                            from: limiterPage.pluginDB.getMinValue("sidechainToLink")
+                            to: limiterPage.pluginDB.getMaxValue("sidechainToLink")
+                            value: limiterPage.pluginDB.sidechainToLink
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.sidechainToLink = v;
+                                limiterPage.pluginDB.sidechainToLink = v;
                             }
                         }
 
                         EeSpinBox {
-                            label: i18n("Link to Sidechain")
+                            label: i18n("Link to Sidechain") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("linkToSidechain")
-                            to: pluginDB.getMaxValue("linkToSidechain")
-                            value: pluginDB.linkToSidechain
+                            from: limiterPage.pluginDB.getMinValue("linkToSidechain")
+                            to: limiterPage.pluginDB.getMaxValue("linkToSidechain")
+                            value: limiterPage.pluginDB.linkToSidechain
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.linkToSidechain = v;
+                                limiterPage.pluginDB.linkToSidechain = v;
                             }
                         }
 
                         EeSpinBox {
-                            label: i18n("Link to Input")
+                            label: i18n("Link to Input") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("linkToInput")
-                            to: pluginDB.getMaxValue("linkToInput")
-                            value: pluginDB.linkToInput
+                            from: limiterPage.pluginDB.getMinValue("linkToInput")
+                            to: limiterPage.pluginDB.getMaxValue("linkToInput")
+                            value: limiterPage.pluginDB.linkToInput
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.linkToInput = v;
+                                limiterPage.pluginDB.linkToInput = v;
                             }
                         }
                     }
@@ -419,10 +419,10 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
                 id: cardALR
 
-                enabled: pluginDB.alr
+                enabled: limiterPage.pluginDB.alr
 
                 header: Kirigami.Heading {
-                    text: i18n("Automatic Level")
+                    text: i18n("Automatic Level") // qmllint disable
                     level: 2
                 }
 
@@ -430,16 +430,16 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: alrAttack
 
-                        label: i18n("Attack")
+                        label: i18n("Attack") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: pluginDB.getMinValue("alrAttack")
-                        to: pluginDB.getMaxValue("alrAttack")
-                        value: pluginDB.alrAttack
+                        from: limiterPage.pluginDB.getMinValue("alrAttack")
+                        to: limiterPage.pluginDB.getMaxValue("alrAttack")
+                        value: limiterPage.pluginDB.alrAttack
                         decimals: 2
                         stepSize: 0.01
                         unit: "ms"
                         onValueModified: v => {
-                            pluginDB.alrAttack = v;
+                            limiterPage.pluginDB.alrAttack = v;
                         }
 
                         anchors {
@@ -451,16 +451,16 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: alrRelease
 
-                        label: i18n("Release")
+                        label: i18n("Release") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: pluginDB.getMinValue("alrRelease")
-                        to: pluginDB.getMaxValue("alrRelease")
-                        value: pluginDB.alrRelease
+                        from: limiterPage.pluginDB.getMinValue("alrRelease")
+                        to: limiterPage.pluginDB.getMaxValue("alrRelease")
+                        value: limiterPage.pluginDB.alrRelease
                         decimals: 1
                         stepSize: 0.1
                         unit: "ms"
                         onValueModified: v => {
-                            pluginDB.alrRelease = v;
+                            limiterPage.pluginDB.alrRelease = v;
                         }
 
                         anchors {
@@ -472,16 +472,16 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: alrKnee
 
-                        label: i18n("Knee")
+                        label: i18n("Knee") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: pluginDB.getMinValue("alrKnee")
-                        to: pluginDB.getMaxValue("alrKnee")
-                        value: pluginDB.alrKnee
+                        from: limiterPage.pluginDB.getMinValue("alrKnee")
+                        to: limiterPage.pluginDB.getMaxValue("alrKnee")
+                        value: limiterPage.pluginDB.alrKnee
                         decimals: 2
                         stepSize: 0.01
                         unit: "dB"
                         onValueModified: v => {
-                            pluginDB.alrKnee = v;
+                            limiterPage.pluginDB.alrKnee = v;
                         }
 
                         anchors {
@@ -515,7 +515,7 @@ Kirigami.ScrollablePage {
                     Layout.alignment: Qt.AlignHCenter
                     topPadding: Kirigami.Units.smallSpacing
                     horizontalAlignment: Text.AlignHCenter
-                    text: i18n("Gain")
+                    text: i18n("Gain") // qmllint disable
                 }
 
                 Controls.Label {
@@ -524,7 +524,7 @@ Kirigami.ScrollablePage {
                     Layout.leftMargin: Kirigami.Units.gridUnit
                     topPadding: Kirigami.Units.smallSpacing
                     horizontalAlignment: Text.AlignHCenter
-                    text: i18n("Sidechain")
+                    text: i18n("Sidechain") // qmllint disable
                 }
 
                 EeAudioLevel {
@@ -585,26 +585,26 @@ Kirigami.ScrollablePage {
                 Controls.Label {
                     Layout.alignment: Qt.AlignHCenter
                     horizontalAlignment: Text.AlignHCenter
-                    text: i18n("L")
+                    text: i18n("L") // qmllint disable
                 }
 
                 Controls.Label {
                     Layout.alignment: Qt.AlignHCenter
                     horizontalAlignment: Text.AlignHCenter
-                    text: i18n("R")
+                    text: i18n("R") // qmllint disable
                 }
 
                 Controls.Label {
                     Layout.alignment: Qt.AlignHCenter
                     Layout.leftMargin: Kirigami.Units.gridUnit
                     horizontalAlignment: Text.AlignHCenter
-                    text: i18n("L")
+                    text: i18n("L") // qmllint disable
                 }
 
                 Controls.Label {
                     Layout.alignment: Qt.AlignHCenter
                     horizontalAlignment: Text.AlignHCenter
-                    text: i18n("R")
+                    text: i18n("R") // qmllint disable
                 }
             }
         }
@@ -618,7 +618,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -634,43 +634,43 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Show Native Window")
+                    text: i18n("Show Native Window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
-                    checked: pluginBackend ? pluginBackend.hasNativeUi() : false
+                    checked: limiterPage.pluginBackend ? limiterPage.pluginBackend.hasNativeUi() : false
                     onTriggered: {
                         if (checked)
-                            pluginBackend.showNativeUi();
+                            limiterPage.pluginBackend.showNativeUi();
                         else
-                            pluginBackend.closeNativeUi();
+                            limiterPage.pluginBackend.closeNativeUi();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Gain Boost")
+                    text: i18n("Gain Boost") // qmllint disable
                     icon.name: "usermenu-up-symbolic"
                     checkable: true
-                    checked: pluginDB.gainBoost
+                    checked: limiterPage.pluginDB.gainBoost
                     onTriggered: {
-                        if (pluginDB.gainBoost != checked)
-                            pluginDB.gainBoost = checked;
+                        if (limiterPage.pluginDB.gainBoost != checked)
+                            limiterPage.pluginDB.gainBoost = checked;
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Automatic Level")
+                    text: i18n("Automatic Level") // qmllint disable
                     icon.name: "usermenu-up-symbolic"
                     checkable: true
-                    checked: pluginDB.alr
+                    checked: limiterPage.pluginDB.alr
                     onTriggered: {
-                        if (pluginDB.alr != checked)
-                            pluginDB.alr = checked;
+                        if (limiterPage.pluginDB.alr != checked)
+                            limiterPage.pluginDB.alr = checked;
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        limiterPage.pluginBackend.reset();
                     }
                 }
             ]

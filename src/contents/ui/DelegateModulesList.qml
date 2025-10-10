@@ -4,6 +4,8 @@ import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
 Kirigami.AbstractCard {
+    id: card
+
     required property int id
     required property int serial
     required property string name
@@ -31,42 +33,42 @@ Kirigami.AbstractCard {
             Kirigami.Heading {
                 Layout.alignment: Qt.AlignRight
                 level: 2
-                text: i18n("Id")
+                text: i18n("Id") // qmllint disable
             }
 
             Controls.Label {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignLeft
                 wrapMode: Text.WordWrap
-                text: id
+                text: card.id
                 color: Kirigami.Theme.disabledTextColor
             }
 
             Kirigami.Heading {
                 Layout.alignment: Qt.AlignRight
                 level: 2
-                text: i18n("Name")
+                text: i18n("Name") // qmllint disable
             }
 
             Controls.Label {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignLeft
                 wrapMode: Text.WordWrap
-                text: name
+                text: card.name
                 color: Kirigami.Theme.disabledTextColor
             }
 
             Kirigami.Heading {
                 Layout.alignment: Qt.AlignRight
                 level: 2
-                text: i18n("Description")
+                text: i18n("Description") // qmllint disable
             }
 
             Controls.Label {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignLeft
                 wrapMode: Text.WordWrap
-                text: description
+                text: card.description
                 color: Kirigami.Theme.disabledTextColor
             }
         }

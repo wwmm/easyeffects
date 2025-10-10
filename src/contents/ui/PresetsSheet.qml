@@ -22,10 +22,10 @@ Kirigami.OverlaySheet {
         return "";
     }
 
-    parent: applicationWindow().overlay
+    parent: applicationWindow().overlay// qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
-    y: appWindow.header.height + Kirigami.Units.gridUnit
+    y: appWindow.header.height + Kirigami.Units.gridUnit// qmllint disable
     onVisibleChanged: {
         if (control.visible) {
             switch (DB.Manager.main.visiblePresetSheetPage) {
@@ -47,8 +47,8 @@ Kirigami.OverlaySheet {
     Controls.StackView {
         id: stackView
 
-        implicitWidth: Math.max(appWindow.width * 0.5, Kirigami.Units.gridUnit * 40)
-        implicitHeight: 1 * control.parent.height - 2 * appWindow.header.height - control.y - control.header.implicitHeight - control.footer.implicitHeight
+        implicitWidth: Math.max(appWindow.width * 0.5, Kirigami.Units.gridUnit * 40)// qmllint disable
+        implicitHeight: 1 * control.parent.height - 2 * appWindow.header.height - control.y - control.header.implicitHeight - control.footer.implicitHeight// qmllint disable
     }
 
     header: Kirigami.ActionToolBar {
@@ -59,7 +59,7 @@ Kirigami.OverlaySheet {
         actions: [
             Kirigami.Action {
                 displayHint: Kirigami.DisplayHint.KeepVisible
-                text: i18n("Local")
+                text: i18n("Local") // qmllint disable
                 icon.name: "system-file-manager-symbolic"
                 checkable: true
                 checked: DB.Manager.main.visiblePresetSheetPage === 0
@@ -70,7 +70,7 @@ Kirigami.OverlaySheet {
             },
             Kirigami.Action {
                 displayHint: Kirigami.DisplayHint.KeepVisible
-                text: i18n("Community")
+                text: i18n("Community") // qmllint disable
                 icon.name: "system-users-symbolic"
                 checkable: true
                 checked: DB.Manager.main.visiblePresetSheetPage === 1
@@ -81,7 +81,7 @@ Kirigami.OverlaySheet {
             },
             Kirigami.Action {
                 displayHint: Kirigami.DisplayHint.KeepVisible
-                text: i18n("Autoloading")
+                text: i18n("Autoloading") // qmllint disable
                 icon.name: "task-recurring-symbolic"
                 checkable: true
                 checked: DB.Manager.main.visiblePresetSheetPage === 2
@@ -99,12 +99,12 @@ Kirigami.OverlaySheet {
         position: Kirigami.InlineMessage.Position.Footer
         visible: DB.Manager.main.visiblePresetSheetPage !== 2
         text: {
-            if (Common.isEmpty(lastLoadedPresetName))
-                return i18n("No Preset Loaded");
+            if (Common.isEmpty(control.lastLoadedPresetName))
+                return i18n("No Preset Loaded");// qmllint disable
 
-            const presetType = Common.isEmpty(lastLoadedCommunityPackage) ? i18n("Local") : i18n("Community");
+            const presetType = Common.isEmpty(lastLoadedCommunityPackage) ? i18n("Local") : i18n("Community"); // qmllint disable
 
-            return `${presetType}: <strong>${lastLoadedPresetName}<strong>`;
+            return `${presetType}: <strong>${control.lastLoadedPresetName}<strong>`;
         }
     }
 }

@@ -1,9 +1,10 @@
+pragma ComponentBehavior: Bound
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
 import ee.presets as Presets
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -52,37 +53,37 @@ Kirigami.ScrollablePage {
         }
 
         function onChartMagLChanged() {
-            if (validChartMag(pluginBackend.chartMagL) && chartChannel.left && !spectrumAction.checked)
-                convolverChart.updateData(pluginBackend.chartMagL);
+            if (convolverPage.validChartMag(convolverPage.pluginBackend.chartMagL) && chartChannel.left && !spectrumAction.checked)
+                convolverChart.updateData(convolverPage.pluginBackend.chartMagL);
         }
 
         function onChartMagRChanged() {
-            if (validChartMag(pluginBackend.chartMagR) && chartChannel.right && !spectrumAction.checked) {
-                convolverChart.updateData(pluginBackend.chartMagR);
+            if (convolverPage.validChartMag(convolverPage.pluginBackend.chartMagR) && chartChannel.right && !spectrumAction.checked) {
+                convolverChart.updateData(convolverPage.pluginBackend.chartMagR);
             }
         }
 
         function onChartMagLfftLinearChanged() {
-            if (validChartMag(pluginBackend.chartMagLfftLinear) && chartChannel.left && spectrumAction.checked && !convolverChart.logarithimicHorizontalAxis)
-                convolverChart.updateData(pluginBackend.chartMagLfftLinear);
+            if (convolverPage.validChartMag(convolverPage.pluginBackend.chartMagLfftLinear) && chartChannel.left && spectrumAction.checked && !convolverChart.logarithimicHorizontalAxis)
+                convolverChart.updateData(convolverPage.pluginBackend.chartMagLfftLinear);
         }
 
         function onChartMagRfftLinearChanged() {
-            if (validChartMag(pluginBackend.chartMagRfftLinear) && chartChannel.right && spectrumAction.checked && !convolverChart.logarithimicHorizontalAxis)
-                convolverChart.updateData(pluginBackend.chartMagRfftLinear);
+            if (convolverPage.validChartMag(convolverPage.pluginBackend.chartMagRfftLinear) && chartChannel.right && spectrumAction.checked && !convolverChart.logarithimicHorizontalAxis)
+                convolverChart.updateData(convolverPage.pluginBackend.chartMagRfftLinear);
         }
 
         function onChartMagLfftLogChanged() {
-            if (validChartMag(pluginBackend.chartMagLfftLog) && chartChannel.left && spectrumAction.checked && convolverChart.logarithimicHorizontalAxis)
-                convolverChart.updateData(pluginBackend.chartMagLfftLog);
+            if (convolverPage.validChartMag(convolverPage.pluginBackend.chartMagLfftLog) && chartChannel.left && spectrumAction.checked && convolverChart.logarithimicHorizontalAxis)
+                convolverChart.updateData(convolverPage.pluginBackend.chartMagLfftLog);
         }
 
         function onChartMagRfftLogChanged() {
-            if (validChartMag(pluginBackend.chartMagRfftLog) && chartChannel.right && spectrumAction.checked && convolverChart.logarithimicHorizontalAxis)
-                convolverChart.updateData(pluginBackend.chartMagRfftLog);
+            if (convolverPage.validChartMag(convolverPage.pluginBackend.chartMagRfftLog) && chartChannel.right && spectrumAction.checked && convolverChart.logarithimicHorizontalAxis)
+                convolverChart.updateData(convolverPage.pluginBackend.chartMagRfftLog);
         }
 
-        target: pluginBackend
+        target: convolverPage.pluginBackend
     }
 
     ConvolverImpulseSheet {
@@ -104,7 +105,7 @@ Kirigami.ScrollablePage {
                 id: firstImpulse
 
                 Layout.columnSpan: 2
-                text: i18n("First")
+                text: i18n("First") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: 0
                 editable: false
@@ -116,7 +117,7 @@ Kirigami.ScrollablePage {
                 id: secondImpulse
 
                 Layout.columnSpan: 2
-                text: i18n("Second")
+                text: i18n("Second") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: 0
                 editable: false
@@ -148,13 +149,14 @@ Kirigami.ScrollablePage {
         }
 
         customFooterActions: Kirigami.Action {
-            text: i18n("Combine")
+            text: i18n("Combine") // qmllint disable
             icon.name: "path-combine-symbolic"
             onTriggered: {
                 progressBar.visible = true;
 
                 const saneCombinedImpulseName = combinedImpulseName.text.trim().replace(/(?:\.irs)+$/, "");
-                pluginBackend.combineKernels(firstImpulse.currentText, secondImpulse.currentText, saneCombinedImpulseName);
+
+                convolverPage.pluginBackend.combineKernels(firstImpulse.currentText, secondImpulse.currentText, saneCombinedImpulseName);
 
                 combinedImpulseName.clear();
             }
@@ -189,28 +191,28 @@ Kirigami.ScrollablePage {
                 Kirigami.Action {
                     id: spectrumAction
 
-                    text: i18n("Spectrum")
+                    text: i18n("Spectrum") // qmllint disable
                     icon.name: "folder-chart-symbolic"
                     checkable: true
                     onTriggered: {
                         if (checked) {
                             convolverChart.xUnit = "Hz";
                             if (!convolverChart.logarithimicHorizontalAxis) {
-                                const chart = chartChannel.left ? pluginBackend.chartMagLfftLinear : pluginBackend.chartMagRfftLinear;
+                                const chart = chartChannel.left ? convolverPage.pluginBackend.chartMagLfftLinear : convolverPage.pluginBackend.chartMagRfftLinear;
 
-                                if (validChartMag(chart))
+                                if (convolverPage.validChartMag(chart))
                                     convolverChart.updateData(chart);
                             } else {
-                                const chart = chartChannel.left ? pluginBackend.chartMagLfftLog : pluginBackend.chartMagRfftLog;
+                                const chart = chartChannel.left ? convolverPage.pluginBackend.chartMagLfftLog : convolverPage.pluginBackend.chartMagRfftLog;
 
-                                if (validChartMag(chart))
+                                if (convolverPage.validChartMag(chart))
                                     convolverChart.updateData(chart);
                             }
                         } else {
                             convolverChart.xUnit = "s";
 
-                            const chart = chartChannel.left ? pluginBackend.chartMagL : pluginBackend.chartMagR;
-                            if (validChartMag(chart))
+                            const chart = chartChannel.left ? convolverPage.pluginBackend.chartMagL : convolverPage.pluginBackend.chartMagR;
+                            if (convolverPage.validChartMag(chart))
                                 convolverChart.updateData(chart);
 
                             spectrumLogScale.checked = false;
@@ -228,14 +230,14 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         convolverChart.logarithimicHorizontalAxis = checked;
                         if (checked) {
-                            const chart = chartChannel.left ? pluginBackend.chartMagLfftLog : pluginBackend.chartMagRfftLog;
+                            const chart = chartChannel.left ? convolverPage.pluginBackend.chartMagLfftLog : convolverPage.pluginBackend.chartMagRfftLog;
 
-                            if (validChartMag(chart))
+                            if (convolverPage.validChartMag(chart))
                                 convolverChart.updateData(chart);
                         } else {
-                            const chart = chartChannel.left ? pluginBackend.chartMagLfftLinear : pluginBackend.chartMagRfftLinear;
+                            const chart = chartChannel.left ? convolverPage.pluginBackend.chartMagLfftLinear : convolverPage.pluginBackend.chartMagRfftLinear;
 
-                            if (validChartMag(chart))
+                            if (convolverPage.validChartMag(chart))
                                 convolverChart.updateData(chart);
                         }
                     }
@@ -250,17 +252,17 @@ Kirigami.ScrollablePage {
                         Controls.RadioButton {
                             id: radioLeft
 
-                            text: i18n("Left")
+                            text: i18n("Left") // qmllint disable
                             checked: chartChannel.left
                             onCheckedChanged: {
                                 if (checked !== chartChannel.left) {
                                     chartChannel.left = checked;
                                     if (!spectrumAction.checked) {
-                                        if (validChartMag(pluginBackend.chartMagL))
-                                            convolverChart.updateData(pluginBackend.chartMagL);
+                                        if (convolverPage.validChartMag(convolverPage.pluginBackend.chartMagL))
+                                            convolverChart.updateData(convolverPage.pluginBackend.chartMagL);
                                     } else {
-                                        const chart = !convolverChart.logarithimicHorizontalAxis ? pluginBackend.chartMagLfftLinear : pluginBackend.chartMagLfftLog;
-                                        if (validChartMag(chart))
+                                        const chart = !convolverChart.logarithimicHorizontalAxis ? convolverPage.pluginBackend.chartMagLfftLinear : convolverPage.pluginBackend.chartMagLfftLog;
+                                        if (convolverPage.validChartMag(chart))
                                             convolverChart.updateData(chart);
                                     }
                                 }
@@ -268,17 +270,17 @@ Kirigami.ScrollablePage {
                         }
 
                         Controls.RadioButton {
-                            text: i18n("Right")
+                            text: i18n("Right") // qmllint disable
                             checked: chartChannel.right
                             onCheckedChanged: {
                                 if (checked !== chartChannel.right) {
                                     chartChannel.right = checked;
                                     if (!spectrumAction.checked) {
-                                        if (validChartMag(pluginBackend.chartMagR))
-                                            convolverChart.updateData(pluginBackend.chartMagR);
+                                        if (convolverPage.validChartMag(convolverPage.pluginBackend.chartMagR))
+                                            convolverChart.updateData(convolverPage.pluginBackend.chartMagR);
                                     } else {
-                                        const chart = !convolverChart.logarithimicHorizontalAxis ? pluginBackend.chartMagRfftLinear : pluginBackend.chartMagRfftLog;
-                                        if (validChartMag(chart))
+                                        const chart = !convolverChart.logarithimicHorizontalAxis ? convolverPage.pluginBackend.chartMagRfftLinear : convolverPage.pluginBackend.chartMagRfftLog;
+                                        if (convolverPage.validChartMag(chart))
                                             convolverChart.updateData(chart);
                                     }
                                 }
@@ -290,8 +292,8 @@ Kirigami.ScrollablePage {
 
             banner {
                 title: {
-                    const name = pluginDB.kernelName;
-                    return (name.length === 0 || name === '""') ? i18n("Convolver Impulse Is Not Set") : name;
+                    const name = convolverPage.pluginDB.kernelName;
+                    return (name.length === 0 || name === '""') ? i18n("Convolver Impulse Is Not Set") : name; // qmllint disable
                 }
                 titleAlignment: Qt.AlignHCenter | Qt.AlignBottom
                 titleLevel: 2
@@ -311,8 +313,8 @@ Kirigami.ScrollablePage {
                     xAxisDecimals: 1
                     logarithimicHorizontalAxis: false
                     onWidthChanged: {
-                        if (pluginBackend)
-                            pluginBackend.interpPoints = convolverChart.width;
+                        if (convolverPage.pluginBackend)
+                            convolverPage.pluginBackend.interpPoints = convolverChart.width;
                     }
                 }
 
@@ -328,24 +330,24 @@ Kirigami.ScrollablePage {
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("Rate")
+                        text: i18n("Rate") // qmllint disable
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("Samples")
+                        text: i18n("Samples") // qmllint disable
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("Duration")
+                        text: i18n("Duration") // qmllint disable
                     }
 
                     Controls.Label {
                         id: irRate
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: (pluginBackend ? pluginBackend.kernelRate : "") + " Hz"
+                        text: (convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelRate : "") + " Hz"
                         enabled: false
                     }
 
@@ -353,7 +355,7 @@ Kirigami.ScrollablePage {
                         id: irSamples
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: pluginBackend ? pluginBackend.kernelSamples : "0"
+                        text: convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelSamples : "0"
                         enabled: false
                     }
 
@@ -361,7 +363,7 @@ Kirigami.ScrollablePage {
                         id: irDuration
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: Number(pluginBackend ? pluginBackend.kernelDuration : 0).toLocaleString(Qt.locale(), 'f', 3) + " s"
+                        text: Number(convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelDuration : 0).toLocaleString(Qt.locale(), 'f', 3) + " s"
                         enabled: false
                     }
                 }
@@ -375,7 +377,7 @@ Kirigami.ScrollablePage {
 
             Controls.Label {
                 Layout.alignment: Qt.AlignHCenter
-                text: i18n("Stereo Width")
+                text: i18n("Stereo Width") // qmllint disable
             }
 
             Controls.Slider {
@@ -385,13 +387,13 @@ Kirigami.ScrollablePage {
                 Layout.fillWidth: true
                 orientation: Qt.Horizontal
                 snapMode: Controls.Slider.SnapAlways
-                value: pluginDB.irWidth
-                from: pluginDB.getMinValue("irWidth")
-                to: pluginDB.getMaxValue("irWidth")
+                value: convolverPage.pluginDB.irWidth
+                from: convolverPage.pluginDB.getMinValue("irWidth")
+                to: convolverPage.pluginDB.getMaxValue("irWidth")
                 stepSize: 1
                 onValueChanged: () => {
-                    if (value !== pluginDB.irWidth)
-                        pluginDB.irWidth = value;
+                    if (value !== convolverPage.pluginDB.irWidth)
+                        convolverPage.pluginDB.irWidth = value;
                 }
             }
 
@@ -410,7 +412,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.zita}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.zita}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -426,20 +428,20 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Autogain")
+                    text: i18n("Autogain") // qmllint disable
                     icon.name: "audio-volume-medium-symbolic"
                     checkable: true
-                    checked: pluginDB.autogain
+                    checked: convolverPage.pluginDB.autogain
                     onTriggered: {
-                        if (checked !== pluginDB.autogain)
-                            pluginDB.autogain = checked;
+                        if (checked !== convolverPage.pluginDB.autogain)
+                            convolverPage.pluginDB.autogain = checked;
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        convolverPage.pluginBackend.reset();
                     }
                 }
             ]

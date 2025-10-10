@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import "Common.js" as Common
 import QtCore
 import QtQuick
@@ -38,10 +39,12 @@ ColumnLayout {
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         nameFilters: ["JSON files (*.json)"]
         onAccepted: {
-            if (Presets.Manager.importPresets(pipeline, fileDialogImport.selectedFiles) === true)
-                showPresetsMenuStatus(i18n("Preset File Imported."));
+            if (Presets.Manager.importPresets(columnLayout.pipeline, fileDialogImport.selectedFiles) === true)
+                columnLayout.showPresetsMenuStatus(i18n("Preset File Imported.")// qmllint disable
+                );
             else
-                showPresetsMenuError(i18n("Failed to Import the Preset."));
+                columnLayout.showPresetsMenuError(i18n("Failed to Import the Preset.")// qmllint disable
+                );
         }
     }
 
@@ -49,12 +52,14 @@ ColumnLayout {
         id: fileDialogExport
 
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        acceptLabel: i18n("Export Presets")
+        acceptLabel: i18n("Export Presets") // qmllint disable
         onAccepted: {
-            if (Presets.Manager.exportPresets(pipeline, fileDialogExport.selectedFolder) === true)
-                showPresetsMenuStatus(i18n("Preset Files Exported."));
+            if (Presets.Manager.exportPresets(columnLayout.pipeline, fileDialogExport.selectedFolder) === true)
+                columnLayout.showPresetsMenuStatus(i18n("Preset Files Exported.")// qmllint disable
+                );
             else
-                showPresetsMenuError(i18n("Failed to Export the Presets."));
+                columnLayout.showPresetsMenuError(i18n("Failed to Export the Presets.")// qmllint disable
+                );
         }
     }
 
@@ -65,7 +70,7 @@ ColumnLayout {
             id: newPresetName
 
             Layout.fillWidth: true
-            placeholderText: i18n("New Preset Name")
+            placeholderText: i18n("New Preset Name") // qmllint disable
             // based on https://github.com/KDE/kirigami/blob/master/src/controls/SearchField.qml
             leftPadding: {
                 if (effectiveHorizontalAlignment === TextInput.AlignRight)
@@ -81,7 +86,7 @@ ColumnLayout {
             }
             rightActions: [
                 Kirigami.Action {
-                    text: i18n("Import Preset File")
+                    text: i18n("Import Preset File") // qmllint disable
                     icon.name: "document-import-symbolic"
                     onTriggered: {
                         newPresetName.text = "";
@@ -90,19 +95,21 @@ ColumnLayout {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Create Preset")
+                    text: i18n("Create Preset") // qmllint disable
                     icon.name: "list-add-symbolic"
                     onTriggered: {
                         // remove the final preset extension if specified
-                        const newName = newPresetName.text.replace(removeExtRegex, "");
+                        const newName = newPresetName.text.replace(columnLayout.removeExtRegex, "");
                         // trim to exclude names containing only multiple spaces
                         if (!Common.isEmpty(newName.trim())) {
-                            if (Presets.Manager.add(pipeline, newName) === true) {
+                            if (Presets.Manager.add(columnLayout.pipeline, newName) === true) {
                                 newPresetName.accepted();
-                                showPresetsMenuStatus(i18n("New Preset Created") + `: <strong>${newName}</strong>`);
+                                columnLayout.showPresetsMenuStatus(i18n("New Preset Created") + `: <strong>${newName}</strong>`// qmllint disable
+                                );
                                 newPresetName.text = "";
                             } else {
-                                showPresetsMenuError(i18n("Failed to Create Preset") + `: <strong>${newName}</strong>`);
+                                columnLayout.showPresetsMenuError(i18n("Failed to Create Preset") + `: <strong>${newName}</strong>`// qmllint disable
+                                );
                             }
                         }
                     }
@@ -124,14 +131,14 @@ ColumnLayout {
             }
 
             validator: RegularExpressionValidator {
-                regularExpression: validFileNameRegex
+                regularExpression: columnLayout.validFileNameRegex
             }
         }
 
         Controls.Button {
             Layout.alignment: Qt.AlignCenter
             Layout.rowSpan: 2
-            Controls.ToolTip.text: i18n("Export Presets")
+            Controls.ToolTip.text: i18n("Export Presets") // qmllint disable
             Controls.ToolTip.visible: hovered
             Controls.ToolTip.delay: 500
             icon.name: "export-symbolic"
@@ -144,7 +151,7 @@ ColumnLayout {
             readonly property var sortedListModel: DB.Manager.main.visiblePage === 0 ? Presets.SortedOutputListModel : Presets.SortedInputListModel
 
             Layout.fillWidth: true
-            placeholderText: i18n("Search")
+            placeholderText: i18n("Search") // qmllint disable
             onAccepted: {
                 const re = Common.regExpEscape(search.text);
                 sortedListModel.filterRegularExpression = RegExp(re, "i");
@@ -169,7 +176,7 @@ ColumnLayout {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 4)
                 visible: listView.count === 0
-                text: i18n("Empty")
+                text: i18n("Empty") // qmllint disable
             }
 
             delegate: Controls.ItemDelegate {
@@ -180,51 +187,56 @@ ColumnLayout {
                 hoverEnabled: true
                 width: listView.width
                 onClicked: {
-                    if (Presets.Manager.loadLocalPresetFile(pipeline, name) === false)
-                        showPresetsMenuError(i18n("The Preset %1 Failed to Load", `<strong>${name}</strong>`));
+                    if (Presets.Manager.loadLocalPresetFile(columnLayout.pipeline, name) === false)
+                        columnLayout.showPresetsMenuError(i18n("The Preset %1 Failed to Load", `<strong>${name}</strong>`)// qmllint disable
+                        );
                 }
 
                 Kirigami.PromptDialog {
                     id: deleteDialog
 
-                    title: i18n("Remove Preset")
-                    subtitle: i18n("Are you sure you want to remove this preset from the list?")
+                    title: i18n("Remove Preset") // qmllint disable
+                    subtitle: i18n("Are you sure you want to remove this preset from the list?") // qmllint disable
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: {
-                        if (Presets.Manager.remove(pipeline, name) === true)
-                            showPresetsMenuStatus(i18n("The Preset %1 Has Been Removed", `<strong>${name}</strong>`));
+                        if (Presets.Manager.remove(columnLayout.pipeline, listItemDelegate.name) === true)
+                            columnLayout.showPresetsMenuStatus(i18n("The Preset %1 Has Been Removed", `<strong>${name}</strong>`)// qmllint disable
+                            );
                         else
-                            showPresetsMenuError(i18n("The Preset %1 Could Not Be Removed", `<strong>${name}</strong>`));
+                            columnLayout.showPresetsMenuError(i18n("The Preset %1 Could Not Be Removed", `<strong>${name}</strong>`)// qmllint disable
+                            );
                     }
                 }
 
                 Kirigami.PromptDialog {
                     id: renameDialog
 
-                    title: i18n("Rename Preset")
+                    title: i18n("Rename Preset") // qmllint disable
 
                     standardButtons: Kirigami.Dialog.NoButton
                     customFooterActions: [
                         Kirigami.Action {
-                            text: i18n("Rename")
+                            text: i18n("Rename") // qmllint disable
                             icon.name: "dialog-ok"
                             onTriggered: {
                                 // remove the final preset extension if specified
-                                const newName = newNameTextField.text.replace(removeExtRegex, "");
+                                const newName = newNameTextField.text.replace(columnLayout.removeExtRegex, "");
 
                                 // trim to exclude names containing only multiple spaces
                                 if (!Common.isEmpty(newName.trim())) {
-                                    if (Presets.Manager.renameLocalPresetFile(pipeline, name, newName) === true)
-                                        showPresetsMenuStatus(i18n("The Preset %1 Has Been Renamed", `<strong>${name}</strong>`));
+                                    if (Presets.Manager.renameLocalPresetFile(columnLayout.pipeline, listItemDelegate.name, newName) === true)
+                                        columnLayout.showPresetsMenuStatus(i18n("The Preset %1 Has Been Renamed", `<strong>${listItemDelegate.name}</strong>`)// qmllint disable
+                                        );
                                     else
-                                        showPresetsMenuError(i18n("The Preset %1 Could Not Be Renamed", `<strong>${name}</strong>`));
+                                        columnLayout.showPresetsMenuError(i18n("The Preset %1 Could Not Be Renamed", `<strong>${listItemDelegate.name}</strong>`)// qmllint disable
+                                        );
                                 }
 
                                 renameDialog.close();
                             }
                         },
                         Kirigami.Action {
-                            text: i18n("Cancel")
+                            text: i18n("Cancel") // qmllint disable
                             icon.name: "dialog-cancel"
                             onTriggered: {
                                 renameDialog.close();
@@ -242,10 +254,10 @@ ColumnLayout {
                             id: newNameTextField
 
                             Layout.fillWidth: true
-                            placeholderText: name
+                            placeholderText: listItemDelegate.name
 
                             validator: RegularExpressionValidator {
-                                regularExpression: validFileNameRegex
+                                regularExpression: columnLayout.validFileNameRegex
                             }
                         }
                     }
@@ -253,25 +265,27 @@ ColumnLayout {
 
                 contentItem: RowLayout {
                     Controls.Label {
-                        text: name
+                        text: listItemDelegate.name
                     }
 
                     Kirigami.ActionToolBar {
                         alignment: Qt.AlignRight
                         actions: [
                             Kirigami.Action {
-                                text: i18n("Save Settings to this Preset")
+                                text: i18n("Save Settings to this Preset") // qmllint disable
                                 icon.name: "document-save-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
-                                    if (Presets.Manager.savePresetFile(pipeline, name) === true)
-                                        showPresetsMenuStatus(i18n("Settings Saved to: %1", `<strong>${name}</strong>`));
+                                    if (Presets.Manager.savePresetFile(columnLayout.pipeline, listItemDelegate.name) === true)
+                                        columnLayout.showPresetsMenuStatus(i18n("Settings Saved to: %1", `<strong>${listItemDelegate.name}</strong>`)// qmllint disable
+                                        );
                                     else
-                                        showPresetsMenuError(i18n("Failed to Save Settings to: %1", `<strong>${name}</strong>`));
+                                        columnLayout.showPresetsMenuError(i18n("Failed to Save Settings to: %1", `<strong>${listItemDelegate.name}</strong>`)// qmllint disable
+                                        );
                                 }
                             },
                             Kirigami.Action {
-                                text: i18n("Rename this Preset")
+                                text: i18n("Rename this Preset") // qmllint disable
                                 icon.name: "edit-entry-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
@@ -279,7 +293,7 @@ ColumnLayout {
                                 }
                             },
                             Kirigami.Action {
-                                text: i18n("Delete this Preset")
+                                text: i18n("Delete this Preset") // qmllint disable
                                 icon.name: "delete"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {

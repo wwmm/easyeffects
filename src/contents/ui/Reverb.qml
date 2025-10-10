@@ -3,7 +3,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -46,7 +46,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Controls")
+                    text: i18n("Controls") // qmllint disable
                     level: 2
                 }
 
@@ -55,61 +55,61 @@ Kirigami.ScrollablePage {
                         id: roomSize
 
                         Layout.alignment: Qt.AlignTop
-                        text: i18n("Room Size")
+                        text: i18n("Room Size") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: pluginDB.roomSize
+                        currentIndex: reverbPage.pluginDB.roomSize
                         editable: false
-                        model: [i18n("Small"), i18n("Medium"), i18n("Large"), i18n("Tunnel-like"), i18n("Large/smooth"), i18n("Experimental")]
+                        model: [i18n("Small"), i18n("Medium"), i18n("Large"), i18n("Tunnel-like"), i18n("Large/smooth"), i18n("Experimental")] // qmllint disable
                         onActivated: idx => {
-                            pluginDB.roomSize = idx;
+                            reverbPage.pluginDB.roomSize = idx;
                         }
                     }
 
                     EeSpinBox {
                         id: decayTime
 
-                        label: i18n("Decay Time")
+                        label: i18n("Decay Time") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: pluginDB.getMinValue("decayTime")
-                        to: pluginDB.getMaxValue("decayTime")
-                        value: pluginDB.decayTime
+                        from: reverbPage.pluginDB.getMinValue("decayTime")
+                        to: reverbPage.pluginDB.getMaxValue("decayTime")
+                        value: reverbPage.pluginDB.decayTime
                         decimals: 2
                         stepSize: 0.01
                         unit: "s"
                         onValueModified: v => {
-                            pluginDB.decayTime = v;
+                            reverbPage.pluginDB.decayTime = v;
                         }
                     }
 
                     EeSpinBox {
                         id: predelay
 
-                        label: i18n("Pre Delay")
+                        label: i18n("Pre Delay") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: pluginDB.getMinValue("predelay")
-                        to: pluginDB.getMaxValue("predelay")
-                        value: pluginDB.predelay
+                        from: reverbPage.pluginDB.getMinValue("predelay")
+                        to: reverbPage.pluginDB.getMaxValue("predelay")
+                        value: reverbPage.pluginDB.predelay
                         decimals: 0
                         stepSize: 1
                         unit: "ms"
                         onValueModified: v => {
-                            pluginDB.predelay = v;
+                            reverbPage.pluginDB.predelay = v;
                         }
                     }
 
                     EeSpinBox {
                         id: diffusion
 
-                        label: i18n("Diffusion")
+                        label: i18n("Diffusion") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: pluginDB.getMinValue("diffusion")
-                        to: pluginDB.getMaxValue("diffusion")
-                        value: pluginDB.diffusion
+                        from: reverbPage.pluginDB.getMinValue("diffusion")
+                        to: reverbPage.pluginDB.getMaxValue("diffusion")
+                        value: reverbPage.pluginDB.diffusion
                         decimals: 2
                         stepSize: 0.01
                         unit: "%"
                         onValueModified: v => {
-                            pluginDB.diffusion = v;
+                            reverbPage.pluginDB.diffusion = v;
                         }
                     }
                 }
@@ -118,7 +118,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Filter")
+                    text: i18n("Filter") // qmllint disable
                     level: 2
                 }
 
@@ -132,87 +132,87 @@ Kirigami.ScrollablePage {
                             id: hfDamp
 
                             Layout.columnSpan: 2
-                            label: i18n("High Frequency Damping")
+                            label: i18n("High Frequency Damping") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("hfDamp")
-                            to: pluginDB.getMaxValue("hfDamp")
-                            value: pluginDB.hfDamp
+                            from: reverbPage.pluginDB.getMinValue("hfDamp")
+                            to: reverbPage.pluginDB.getMaxValue("hfDamp")
+                            value: reverbPage.pluginDB.hfDamp
                             decimals: 2
                             stepSize: 0.01
                             unit: "Hz"
                             onValueModified: v => {
-                                pluginDB.hfDamp = v;
+                                reverbPage.pluginDB.hfDamp = v;
                             }
                         }
 
                         EeSpinBox {
                             id: bassCut
 
-                            label: i18n("Bass Cut")
+                            label: i18n("Bass Cut") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("bassCut")
-                            to: pluginDB.getMaxValue("bassCut")
-                            value: pluginDB.bassCut
+                            from: reverbPage.pluginDB.getMinValue("bassCut")
+                            to: reverbPage.pluginDB.getMaxValue("bassCut")
+                            value: reverbPage.pluginDB.bassCut
                             decimals: 0
                             stepSize: 1
                             unit: "Hz"
                             onValueModified: v => {
-                                pluginDB.bassCut = v;
+                                reverbPage.pluginDB.bassCut = v;
                             }
                         }
 
                         EeSpinBox {
                             id: trebleCut
 
-                            label: i18n("Treble Cut")
+                            label: i18n("Treble Cut") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("trebleCut")
-                            to: pluginDB.getMaxValue("trebleCut")
-                            value: pluginDB.trebleCut
+                            from: reverbPage.pluginDB.getMinValue("trebleCut")
+                            to: reverbPage.pluginDB.getMaxValue("trebleCut")
+                            value: reverbPage.pluginDB.trebleCut
                             decimals: 0
                             stepSize: 1
                             unit: "Hz"
                             onValueModified: v => {
-                                pluginDB.trebleCut = v;
+                                reverbPage.pluginDB.trebleCut = v;
                             }
                         }
 
                         EeSpinBox {
                             id: dry
 
-                            label: i18n("Dry")
+                            label: i18n("Dry") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("dry")
-                            to: pluginDB.getMaxValue("dry")
-                            value: pluginDB.dry
+                            from: reverbPage.pluginDB.getMinValue("dry")
+                            to: reverbPage.pluginDB.getMaxValue("dry")
+                            value: reverbPage.pluginDB.dry
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.dry = v;
+                                reverbPage.pluginDB.dry = v;
                             }
                         }
 
                         EeSpinBox {
                             id: wet
 
-                            label: i18n("Wet")
+                            label: i18n("Wet") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("amount")
-                            to: pluginDB.getMaxValue("amount")
-                            value: pluginDB.amount
+                            from: reverbPage.pluginDB.getMinValue("amount")
+                            to: reverbPage.pluginDB.getMaxValue("amount")
+                            value: reverbPage.pluginDB.amount
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.amount = v;
+                                reverbPage.pluginDB.amount = v;
                             }
                         }
                     }
@@ -224,81 +224,81 @@ Kirigami.ScrollablePage {
     Kirigami.MenuDialog {
         id: presetsDialog
 
-        title: i18n("Reverberation Presets")
+        title: i18n("Reverberation Presets") // qmllint disable
         actions: [
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
-                text: i18n("Ambience")
+                text: i18n("Ambience") // qmllint disable
                 onTriggered: {
-                    pluginDB.decayTime = 1.10354;
-                    pluginDB.hfDamp = 2182.58;
-                    pluginDB.roomSize = 4;
-                    pluginDB.diffusion = 0.69;
-                    pluginDB.amount = Common.linearTodb(0.291183);
-                    pluginDB.dry = Common.linearTodb(1);
-                    pluginDB.predelay = 6.5;
-                    pluginDB.bassCut = 514.079;
-                    pluginDB.trebleCut = 4064.15;
+                    reverbPage.pluginDB.decayTime = 1.10354;
+                    reverbPage.pluginDB.hfDamp = 2182.58;
+                    reverbPage.pluginDB.roomSize = 4;
+                    reverbPage.pluginDB.diffusion = 0.69;
+                    reverbPage.pluginDB.amount = Common.linearTodb(0.291183);
+                    reverbPage.pluginDB.dry = Common.linearTodb(1);
+                    reverbPage.pluginDB.predelay = 6.5;
+                    reverbPage.pluginDB.bassCut = 514.079;
+                    reverbPage.pluginDB.trebleCut = 4064.15;
                 }
             },
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
-                text: i18n("Empty Walls")
+                text: i18n("Empty Walls") // qmllint disable
                 onTriggered: {
-                    pluginDB.decayTime = 0.505687;
-                    pluginDB.hfDamp = 3971.64;
-                    pluginDB.roomSize = 4;
-                    pluginDB.diffusion = 0.17;
-                    pluginDB.amount = Common.linearTodb(0.198884);
-                    pluginDB.dry = Common.linearTodb(1);
-                    pluginDB.predelay = 13;
-                    pluginDB.bassCut = 240.453;
-                    pluginDB.trebleCut = 3303.47;
+                    reverbPage.pluginDB.decayTime = 0.505687;
+                    reverbPage.pluginDB.hfDamp = 3971.64;
+                    reverbPage.pluginDB.roomSize = 4;
+                    reverbPage.pluginDB.diffusion = 0.17;
+                    reverbPage.pluginDB.amount = Common.linearTodb(0.198884);
+                    reverbPage.pluginDB.dry = Common.linearTodb(1);
+                    reverbPage.pluginDB.predelay = 13;
+                    reverbPage.pluginDB.bassCut = 240.453;
+                    reverbPage.pluginDB.trebleCut = 3303.47;
                 }
             },
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
-                text: i18n("Room")
+                text: i18n("Room") // qmllint disable
                 onTriggered: {
-                    pluginDB.decayTime = 0.445945;
-                    pluginDB.hfDamp = 5508.46;
-                    pluginDB.roomSize = 4;
-                    pluginDB.diffusion = 0.54;
-                    pluginDB.amount = Common.linearTodb(0.469761);
-                    pluginDB.dry = Common.linearTodb(1);
-                    pluginDB.predelay = 25;
-                    pluginDB.bassCut = 257.65;
-                    pluginDB.trebleCut = 20000;
+                    reverbPage.pluginDB.decayTime = 0.445945;
+                    reverbPage.pluginDB.hfDamp = 5508.46;
+                    reverbPage.pluginDB.roomSize = 4;
+                    reverbPage.pluginDB.diffusion = 0.54;
+                    reverbPage.pluginDB.amount = Common.linearTodb(0.469761);
+                    reverbPage.pluginDB.dry = Common.linearTodb(1);
+                    reverbPage.pluginDB.predelay = 25;
+                    reverbPage.pluginDB.bassCut = 257.65;
+                    reverbPage.pluginDB.trebleCut = 20000;
                 }
             },
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
-                text: i18n("Large Empty Hall")
+                text: i18n("Large Empty Hall") // qmllint disable
                 onTriggered: {
-                    pluginBackend.reset();
-                    pluginDB.decayTime = 2.00689;
-                    pluginDB.hfDamp = 20000;
-                    pluginDB.amount = Common.linearTodb(0.366022);
+                    reverbPage.pluginBackend.reset();
+                    reverbPage.pluginDB.decayTime = 2.00689;
+                    reverbPage.pluginDB.hfDamp = 20000;
+                    reverbPage.pluginDB.amount = Common.linearTodb(0.366022);
                 }
             },
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
-                text: i18n("Disco")
+                text: i18n("Disco") // qmllint disable
                 onTriggered: {
-                    pluginBackend.reset();
-                    pluginDB.decayTime = 1;
-                    pluginDB.hfDamp = 3396.49;
-                    pluginDB.amount = Common.linearTodb(0.269807);
+                    reverbPage.pluginBackend.reset();
+                    reverbPage.pluginDB.decayTime = 1;
+                    reverbPage.pluginDB.hfDamp = 3396.49;
+                    reverbPage.pluginDB.amount = Common.linearTodb(0.269807);
                 }
             },
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
-                text: i18n("Large Occupied Hall")
+                text: i18n("Large Occupied Hall") // qmllint disable
                 onTriggered: {
-                    pluginBackend.reset();
-                    pluginDB.decayTime = 1;
-                    pluginDB.hfDamp = 3396.49;
-                    pluginDB.amount = Common.linearTodb(0.269807);
+                    reverbPage.pluginBackend.reset();
+                    reverbPage.pluginDB.decayTime = 1;
+                    reverbPage.pluginDB.hfDamp = 3396.49;
+                    reverbPage.pluginDB.amount = Common.linearTodb(0.269807);
                 }
             }
         ]
@@ -312,7 +312,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.calf}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.calf}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -328,7 +328,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Presets")
+                    text: i18n("Presets") // qmllint disable
                     icon.name: "bookmarks-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     onTriggered: {
@@ -336,23 +336,23 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Show Native Window")
+                    text: i18n("Show Native Window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
-                    checked: pluginBackend ? pluginBackend.hasNativeUi() : false
+                    checked: reverbPage.pluginBackend ? reverbPage.pluginBackend.hasNativeUi() : false
                     onTriggered: {
                         if (checked)
-                            pluginBackend.showNativeUi();
+                            reverbPage.pluginBackend.showNativeUi();
                         else
-                            pluginBackend.closeNativeUi();
+                            reverbPage.pluginBackend.closeNativeUi();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        reverbPage.pluginBackend.reset();
                     }
                 }
             ]

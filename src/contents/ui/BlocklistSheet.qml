@@ -1,8 +1,8 @@
+pragma ComponentBehavior: Bound
 import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.database as DB
 import org.kde.kirigami as Kirigami
 
 Kirigami.OverlaySheet {
@@ -10,12 +10,12 @@ Kirigami.OverlaySheet {
 
     required property var streamDB
 
-    parent: applicationWindow().overlay
+    parent: applicationWindow().overlay // qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
     showCloseButton: false
-    y: appWindow.header.height + Kirigami.Units.gridUnit
-    title: i18n("Effects Blocklist")
+    y: appWindow.header.height + Kirigami.Units.gridUnit // qmllint disable
+    title: i18n("Effects Blocklist") // qmllint disable
 
     ColumnLayout {
         id: columnLayout
@@ -26,7 +26,7 @@ Kirigami.OverlaySheet {
             id: newBlockedApp
 
             Layout.fillWidth: true
-            placeholderText: i18n("Application Node Name")
+            placeholderText: i18n("Application Node Name") // qmllint disable
             // based on https://github.com/KDE/kirigami/blob/master/src/controls/SearchField.qml
             leftPadding: {
                 if (effectiveHorizontalAlignment === TextInput.AlignRight)
@@ -42,14 +42,14 @@ Kirigami.OverlaySheet {
             }
             rightActions: [
                 Kirigami.Action {
-                    text: i18n("Add to Excluded Applications")
+                    text: i18n("Add to Excluded Applications") // qmllint disable
                     icon.name: "list-add-symbolic"
                     onTriggered: {
                         const name = newBlockedApp.text;
                         // trim to exclude names containing only multiple spaces
                         if (!Common.isEmpty(name.trim())) {
-                            if (!streamDB.blocklist.includes(name)) {
-                                streamDB.blocklist.push(name);
+                            if (!control.streamDB.blocklist.includes(name)) {
+                                control.streamDB.blocklist.push(name);
                                 newBlockedApp.text = "";
                             }
                         }
@@ -87,22 +87,24 @@ Kirigami.OverlaySheet {
                 Layout.minimumHeight: control.parent.height - 2 * (control.header.height + control.footer.height + newBlockedApp.height) - control.y
                 clip: true
                 reuseItems: true
-                model: streamDB.blocklist
+                model: control.streamDB.blocklist
                 Controls.ScrollBar.vertical: listViewScrollBar
 
                 Kirigami.PlaceholderMessage {
                     anchors.centerIn: parent
                     width: parent.width - (Kirigami.Units.largeSpacing * 4)
                     visible: listView.count === 0
-                    text: i18n("Empty")
+                    text: i18n("Empty") // qmllint disable
                 }
 
                 delegate: Controls.ItemDelegate {
                     id: listItemDelegate
 
+                    required property int index
+
                     readonly property string name: {
-                        if (streamDB.blocklist.length > 0)
-                            return streamDB.blocklist[index];
+                        if (control.streamDB.blocklist.length > 0)
+                            return control.streamDB.blocklist[index];
 
                         return "";
                     }
@@ -114,13 +116,13 @@ Kirigami.OverlaySheet {
                     Kirigami.PromptDialog {
                         id: deleteDialog
 
-                        title: i18n("Remove Application")
-                        subtitle: i18n("Are you sure you want to remove this application from the list?")
+                        title: i18n("Remove Application") // qmllint disable
+                        subtitle: i18n("Are you sure you want to remove this application from the list?") // qmllint disable
                         standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                         onAccepted: {
-                            const targetIndex = streamDB.blocklist.indexOf(name);
+                            const targetIndex = control.streamDB.blocklist.indexOf(listItemDelegate.name);
                             if (targetIndex > -1)
-                                streamDB.blocklist.splice(targetIndex, 1);
+                                control.streamDB.blocklist.splice(targetIndex, 1);
                         }
                     }
 
@@ -131,7 +133,7 @@ Kirigami.OverlaySheet {
                             Layout.alignment: Qt.AlignLeft
                             Layout.fillWidth: true
                             Layout.horizontalStretchFactor: 1
-                            text: name
+                            text: listItemDelegate.name
                             elide: Text.ElideRight
                             wrapMode: Text.WrapAnywhere
                             maximumLineCount: 2
@@ -145,7 +147,7 @@ Kirigami.OverlaySheet {
                             alignment: Qt.AlignRight
                             actions: [
                                 Kirigami.Action {
-                                    text: i18n("Delete this App")
+                                    text: i18n("Delete this App") // qmllint disable
                                     icon.name: "delete"
                                     displayHint: Kirigami.DisplayHint.AlwaysHide
                                     onTriggered: {
@@ -172,14 +174,14 @@ Kirigami.OverlaySheet {
         position: Controls.ToolBar.Footer
         actions: [
             Kirigami.Action {
-                text: i18n("Show Excluded Applications in the Streams Section")
+                text: i18n("Show Excluded Applications in the Streams Section") // qmllint disable
                 icon.name: "applications-all-symbolic"
                 displayHint: Kirigami.DisplayHint.KeepVisible
                 checkable: true
-                checked: streamDB.showBlocklistedApps
+                checked: control.streamDB.showBlocklistedApps
                 onTriggered: {
-                    if (checked !== streamDB.showBlocklistedApps)
-                        streamDB.showBlocklistedApps = checked;
+                    if (checked !== control.streamDB.showBlocklistedApps)
+                        control.streamDB.showBlocklistedApps = checked;
                 }
             }
         ]

@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import "Common.js" as Common
 import QtCore
 import QtQuick
@@ -26,11 +27,11 @@ Kirigami.OverlaySheet {
         status.visible = true;
     }
 
-    parent: applicationWindow().overlay
+    parent: applicationWindow().overlay // qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
-    y: appWindow.header.height + Kirigami.Units.gridUnit
-    implicitWidth: Math.max(Kirigami.Units.gridUnit * 40, appWindow.width * 0.5)
+    y: appWindow.header.height + Kirigami.Units.gridUnit // qmllint disable
+    implicitWidth: Math.max(Kirigami.Units.gridUnit * 40, appWindow.width * 0.5) // qmllint disable
     implicitHeight: (control.parent.height * 0.8) - control.y
     onClosed: {
         status.visible = false;
@@ -44,9 +45,11 @@ Kirigami.OverlaySheet {
         nameFilters: ["IRS (*.irs)", "WAVE (*.wav)"]
         onAccepted: {
             if (Presets.Manager.importImpulses(fileDialog.selectedFiles) === 0)
-                showImpulseMenuStatus(i18n("Impluse File Imported."));
+                control.showImpulseMenuStatus(i18n("Impluse File Imported.")// qmllint disable
+                );
             else
-                showImpulseMenuStatus(i18n("Failed to Import the Impulse File."), false);
+                // qmllint disable
+                control.showImpulseMenuStatus(i18n("Failed to Import the Impulse File."), false); // qmllint disable
         }
     }
 
@@ -57,7 +60,7 @@ Kirigami.OverlaySheet {
             id: search
 
             Layout.fillWidth: true
-            placeholderText: i18n("Search")
+            placeholderText: i18n("Search") // qmllint disable
             onAccepted: {
                 const re = Common.regExpEscape(search.text);
                 Presets.SortedImpulseListModel.filterRegularExpression = RegExp(re, "i");
@@ -77,7 +80,7 @@ Kirigami.OverlaySheet {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 4)
                 visible: listView.count === 0
-                text: i18n("Empty")
+                text: i18n("Empty") // qmllint disable
             }
 
             delegate: Controls.ItemDelegate {
@@ -89,34 +92,36 @@ Kirigami.OverlaySheet {
                 hoverEnabled: true
                 width: listView.width
                 onClicked: {
-                    pluginDB.kernelName = name;
-                    showImpulseMenuStatus(i18n("Loaded Impulse: %1", name));
+                    control.pluginDB.kernelName = name;
+                    control.showImpulseMenuStatus(i18n("Loaded Impulse: %1", name)); // qmllint disable
                 }
 
                 Kirigami.PromptDialog {
                     id: deleteDialog
 
-                    title: i18n("Remove Impulse Response")
-                    subtitle: i18n("Are you sure you want to remove this impulse response from the list?")
+                    title: i18n("Remove Impulse Response") // qmllint disable
+                    subtitle: i18n("Are you sure you want to remove this impulse response from the list?") // qmllint disable
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: {
-                        if (Presets.Manager.removeImpulseFile(path) === true)
-                            showImpulseMenuStatus(i18n("Removed Impulse: %1", name));
+                        if (Presets.Manager.removeImpulseFile(listItemDelegate.path) === true)
+                            control.showImpulseMenuStatus(i18n("Removed Impulse: %1", listItemDelegate.name) // qmllint disable
+                            );
                         else
-                            showImpulseMenuStatus(i18n("Failed to Remove the Impulse: %1", name), false);
+                            control.showImpulseMenuStatus(i18n("Failed to Remove the Impulse: %1", listItemDelegate.name) // qmllint disable
+                            , false);
                     }
                 }
 
                 contentItem: RowLayout {
                     Controls.Label {
-                        text: name
+                        text: listItemDelegate.name
                     }
 
                     Kirigami.ActionToolBar {
                         alignment: Qt.AlignRight
                         actions: [
                             Kirigami.Action {
-                                text: i18n("Delete this Impulse")
+                                text: i18n("Delete this Impulse") // qmllint disable
                                 icon.name: "delete"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
@@ -156,7 +161,7 @@ Kirigami.OverlaySheet {
         actions: [
             Kirigami.Action {
                 displayHint: Kirigami.DisplayHint.KeepVisible
-                text: i18n("Import Impulse")
+                text: i18n("Import Impulse") // qmllint disable
                 icon.name: "document-import-symbolic"
                 onTriggered: {
                     fileDialog.open();

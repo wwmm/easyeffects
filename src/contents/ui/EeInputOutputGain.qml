@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import "Common.js" as Common
 import QtQuick
 import QtQuick.Layouts
@@ -17,8 +18,8 @@ Item {
     implicitWidth: column.implicitWidth
 
     Accessible.role: Accessible.Grouping
-    Accessible.name: i18n("Audio levels control")
-    Accessible.description: i18n("Input and output gain controls with level meters")
+    Accessible.name: i18n("Audio levels control") // qmllint disable
+    Accessible.description: i18n("Input and output gain controls with level meters") // qmllint disable
 
     component GainRow: RowLayout {
 
@@ -91,26 +92,26 @@ Item {
             GainRow {
                 id: inputRow
 
-                label: i18n("Input")
-                from: pluginDB.getMinValue("inputGain")
-                to: pluginDB.getMaxValue("inputGain")
-                value: pluginDB.inputGain
+                label: i18n("Input") // qmllint disable
+                from: control.pluginDB.getMinValue("inputGain")
+                to: control.pluginDB.getMaxValue("inputGain")
+                value: control.pluginDB.inputGain
                 unit: "dB"
                 onGainChanged: v => {
-                    pluginDB.inputGain = v;
+                    control.pluginDB.inputGain = v;
                 }
             }
 
             GainRow {
                 id: outputRow
 
-                label: i18n("Output")
-                from: pluginDB.getMinValue("outputGain")
-                to: pluginDB.getMaxValue("outputGain")
-                value: pluginDB.outputGain
+                label: i18n("Output") // qmllint disable
+                from: control.pluginDB.getMinValue("outputGain")
+                to: control.pluginDB.getMaxValue("outputGain")
+                value: control.pluginDB.outputGain
                 unit: "dB"
                 onGainChanged: v => {
-                    pluginDB.outputGain = v;
+                    control.pluginDB.outputGain = v;
                 }
             }
         }

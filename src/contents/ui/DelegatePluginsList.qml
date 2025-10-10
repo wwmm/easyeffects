@@ -61,7 +61,7 @@ Item {
                 visible: !DB.Manager.main.collapsePluginsList
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Enable this Effect")
+                        text: i18n("Enable this Effect") // qmllint disable
                         icon.name: "system-shutdown-symbolic"
                         displayHint: Kirigami.DisplayHint.IconOnly
                         checkable: true
@@ -75,7 +75,7 @@ Item {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Remove this effect")
+                        text: i18n("Remove this effect") // qmllint disable
                         icon.name: "delete"
                         displayHint: Kirigami.DisplayHint.IconOnly
                         onTriggered: {

@@ -3,7 +3,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
@@ -41,7 +41,7 @@ Kirigami.ScrollablePage {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: i18n("Blend Harmonics")
+            text: i18n("Blend Harmonics")// qmllint disable
         }
 
         RowLayout {
@@ -50,7 +50,7 @@ Kirigami.ScrollablePage {
 
             Controls.Label {
                 Layout.alignment: Qt.AlignLeft
-                text: i18n("3rd")
+                text: i18n("3rd")// qmllint disable
             }
 
             Controls.Slider {
@@ -60,19 +60,19 @@ Kirigami.ScrollablePage {
                 Layout.fillWidth: true
                 orientation: Qt.Horizontal
                 snapMode: Controls.Slider.SnapAlways
-                value: pluginDB.blend
-                from: pluginDB.getMinValue("blend")
-                to: pluginDB.getMaxValue("blend")
+                value: bassEnchancerPage.pluginDB.blend
+                from: bassEnchancerPage.pluginDB.getMinValue("blend")
+                to: bassEnchancerPage.pluginDB.getMaxValue("blend")
                 stepSize: 1
                 onValueChanged: () => {
-                    if (value !== pluginDB.blend)
-                        pluginDB.blend = value;
+                    if (value !== bassEnchancerPage.pluginDB.blend)
+                        bassEnchancerPage.pluginDB.blend = value;
                 }
             }
 
             Controls.Label {
                 Layout.alignment: Qt.AlignRight
-                text: i18n("2nd")
+                text: i18n("2nd")// qmllint disable
             }
         }
 
@@ -91,7 +91,7 @@ Kirigami.ScrollablePage {
                 id: cardControls
 
                 header: Kirigami.Heading {
-                    text: i18n("Controls")
+                    text: i18n("Controls")// qmllint disable
                     level: 2
                 }
 
@@ -99,75 +99,75 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: amount
 
-                        label: i18n("Amount")
+                        label: i18n("Amount")// qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: pluginDB.getMinValue("amount")
-                        to: pluginDB.getMaxValue("amount")
-                        value: pluginDB.amount
+                        from: bassEnchancerPage.pluginDB.getMinValue("amount")
+                        to: bassEnchancerPage.pluginDB.getMaxValue("amount")
+                        value: bassEnchancerPage.pluginDB.amount
                         decimals: 2
                         stepSize: 0.1
                         unit: "dB"
                         onValueModified: v => {
-                            pluginDB.amount = v;
+                            bassEnchancerPage.pluginDB.amount = v;
                         }
                     }
 
                     EeSpinBox {
                         id: harmonics
 
-                        label: i18n("Harmonics")
+                        label: i18n("Harmonics")// qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: pluginDB.getMinValue("harmonics")
-                        to: pluginDB.getMaxValue("harmonics")
-                        value: pluginDB.harmonics
+                        from: bassEnchancerPage.pluginDB.getMinValue("harmonics")
+                        to: bassEnchancerPage.pluginDB.getMaxValue("harmonics")
+                        value: bassEnchancerPage.pluginDB.harmonics
                         decimals: 1
                         stepSize: 0.1
                         onValueModified: v => {
-                            pluginDB.harmonics = v;
+                            bassEnchancerPage.pluginDB.harmonics = v;
                         }
                     }
 
                     EeSpinBox {
                         id: scope
 
-                        label: i18n("Scope")
+                        label: i18n("Scope")// qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: pluginDB.getMinValue("scope")
-                        to: pluginDB.getMaxValue("scope")
-                        value: pluginDB.scope
+                        from: bassEnchancerPage.pluginDB.getMinValue("scope")
+                        to: bassEnchancerPage.pluginDB.getMaxValue("scope")
+                        value: bassEnchancerPage.pluginDB.scope
                         decimals: 0
                         stepSize: 1
                         unit: "Hz"
                         onValueModified: v => {
-                            pluginDB.scope = v;
+                            bassEnchancerPage.pluginDB.scope = v;
                         }
                     }
 
                     EeSwitch {
                         id: floorActive
 
-                        label: i18n("Floor Active")
-                        isChecked: pluginDB.floorActive
+                        label: i18n("Floor Active")// qmllint disable
+                        isChecked: bassEnchancerPage.pluginDB.floorActive
                         onCheckedChanged: {
-                            if (isChecked !== pluginDB.floorActive)
-                                pluginDB.floorActive = isChecked;
+                            if (isChecked !== bassEnchancerPage.pluginDB.floorActive)
+                                bassEnchancerPage.pluginDB.floorActive = isChecked;
                         }
                     }
 
                     EeSpinBox {
                         id: floor
 
-                        label: i18n("Floor")
+                        label: i18n("Floor")// qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: pluginDB.getMinValue("floor")
-                        to: pluginDB.getMaxValue("floor")
-                        value: pluginDB.floor
+                        from: bassEnchancerPage.pluginDB.getMinValue("floor")
+                        to: bassEnchancerPage.pluginDB.getMaxValue("floor")
+                        value: bassEnchancerPage.pluginDB.floor
                         decimals: 0
                         stepSize: 1
                         unit: "Hz"
                         enabled: floorActive.isChecked
                         onValueModified: v => {
-                            pluginDB.floor = v;
+                            bassEnchancerPage.pluginDB.floor = v;
                         }
                     }
 
@@ -175,7 +175,7 @@ Kirigami.ScrollablePage {
                         id: harmonicsLevel
                         Layout.topMargin: Kirigami.Units.largeSpacing
 
-                        label: i18n("Harmonics")
+                        label: i18n("Harmonics")// qmllint disable
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
@@ -194,7 +194,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.calf}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.calf}</b>`)// qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -210,33 +210,33 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Show Native Window")
+                    text: i18n("Show Native Window")// qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
-                    checked: pluginBackend ? pluginBackend.hasNativeUi() : false
+                    checked: bassEnchancerPage.pluginBackend ? bassEnchancerPage.pluginBackend.hasNativeUi() : false
                     onTriggered: {
                         if (checked)
-                            pluginBackend.showNativeUi();
+                            bassEnchancerPage.pluginBackend.showNativeUi();
                         else
-                            pluginBackend.closeNativeUi();
+                            bassEnchancerPage.pluginBackend.closeNativeUi();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Listen")
+                    text: i18n("Listen")// qmllint disable
                     icon.name: "audio-headset-symbolic"
                     checkable: true
-                    checked: pluginDB.listen
+                    checked: bassEnchancerPage.pluginDB.listen
                     onTriggered: {
-                        if (pluginDB.listen != checked)
-                            pluginDB.listen = checked;
+                        if (bassEnchancerPage.pluginDB.listen != checked)
+                            bassEnchancerPage.pluginDB.listen = checked;
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset")// qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        bassEnchancerPage.pluginBackend.reset();
                     }
                 }
             ]

@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
@@ -50,7 +51,7 @@ ColumnLayout {
         readonly property var sortedListModel: DB.Manager.main.visiblePage === 0 ? Presets.SortedCommunityOutputListModel : Presets.SortedCommunityInputListModel
 
         Layout.fillWidth: true
-        placeholderText: i18n("Search")
+        placeholderText: i18n("Search") // qmllint disable
         onAccepted: {
             const re = Common.regExpEscape(search.text);
             sortedListModel.filterRegularExpression = RegExp(re, "i");
@@ -74,7 +75,7 @@ ColumnLayout {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 4)
                 visible: listView.count === 0
-                text: i18n("Empty")
+                text: i18n("Empty") // qmllint disable
             }
 
             delegate: Controls.ItemDelegate {
@@ -87,33 +88,36 @@ ColumnLayout {
                 hoverEnabled: true
                 width: listView.width
                 onClicked: {
-                    if (Presets.Manager.loadCommunityPresetFile(pipeline, path, presetPackage) === false)
-                        showPresetsMenuError(i18n("The Preset %1 Failed to Load", `<strong>${name}</strong>`));
+                    if (Presets.Manager.loadCommunityPresetFile(columnLayout.pipeline, path, presetPackage) === false)
+                        columnLayout.showPresetsMenuError(i18n("The Preset %1 Failed to Load", `<strong>${name}</strong>`)// qmllint disable
+                        );
                 }
 
                 contentItem: RowLayout {
                     Controls.Label {
-                        text: name
+                        text: listItemDelegate.name
                     }
 
                     Kirigami.ActionToolBar {
                         alignment: Qt.AlignRight
                         actions: [
                             Kirigami.Action {
-                                text: presetPackage
+                                text: listItemDelegate.presetPackage
                                 displayHint: Kirigami.DisplayHint.KeepVisible
                                 icon.name: "package-symbolic"
                                 enabled: false
                             },
                             Kirigami.Action {
-                                text: i18n("Copy to the Local List")
+                                text: i18n("Copy to the Local List") // qmllint disable
                                 icon.name: "document-import-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
-                                    if (Presets.Manager.importFromCommunityPackage(pipeline, path, presetPackage) === true)
-                                        showPresetsMenuStatus(i18n("Imported the Community Preset") + ": " + `<strong>${name}</strong>`);
+                                    if (Presets.Manager.importFromCommunityPackage(columnLayout.pipeline, listItemDelegate.path, listItemDelegate.presetPackage) === true)
+                                        columnLayout.showPresetsMenuStatus(i18n("Imported the Community Preset") + ": " + `<strong>${listItemDelegate.name}</strong>`// qmllint disable
+                                        );
                                     else
-                                        showPresetsMenuError(i18n("Failed to Import the Community Preset") + ": " + `<strong>${name}</strong>`);
+                                        columnLayout.showPresetsMenuError(i18n("Failed to Import the Community Preset") + ": " + `<strong>${listItemDelegate.name}</strong>`// qmllint disable
+                                        );
                                 }
                             }
                         ]
@@ -132,9 +136,9 @@ ColumnLayout {
 
     Controls.Button {
         Layout.alignment: Qt.AlignCenter
-        text: i18n("Refresh")
+        text: i18n("Refresh") // qmllint disable
         onClicked: {
-            Presets.Manager.refreshCommunityPresets(pipeline);
+            Presets.Manager.refreshCommunityPresets(columnLayout.pipeline);
         }
     }
 

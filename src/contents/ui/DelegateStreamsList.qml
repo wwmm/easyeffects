@@ -77,7 +77,7 @@ Kirigami.AbstractCard {
                             const rate = root.rate.toLocaleString(Qt.locale(), 'f', 1);
                             const latency = root.latency.toLocaleString(Qt.locale(), 'f', 1);
 
-                            return `${root.state} · ` + `${root.format} · ${rate} kHz · ${root.nVolumeChannels} ` + i18n("channels") + ` · ${latency} ms`;
+                            return `${root.state} · ` + `${root.format} · ${rate} kHz · ${root.nVolumeChannels} ` + i18n("channels") + ` · ${latency} ms`; // qmllint disable
                         }
                         color: Kirigami.Theme.disabledTextColor
                     }
@@ -88,12 +88,12 @@ Kirigami.AbstractCard {
                 Layout.alignment: Qt.AlignTop
 
                 Controls.CheckBox {
-                    text: i18n("Enable")
+                    text: i18n("Enable") // qmllint disable
                     checked: root.connected
                     visible: {
-                        if (mediaClass === "Stream/Output/Audio")
+                        if (root.mediaClass === "Stream/Output/Audio")
                             return !DB.Manager.main.processAllOutputs;
-                        else if (mediaClass === "Stream/Input/Audio")
+                        else if (root.mediaClass === "Stream/Input/Audio")
                             return !DB.Manager.main.processAllInputs;
                     }
                     onCheckedChanged: {
@@ -109,7 +109,7 @@ Kirigami.AbstractCard {
                 }
 
                 Controls.CheckBox {
-                    text: i18n("Exclude")
+                    text: i18n("Exclude") // qmllint disable
                     checked: root.isBlocklisted
                     onCheckedChanged: {
                         if (root.model.isBlocklisted !== checked)

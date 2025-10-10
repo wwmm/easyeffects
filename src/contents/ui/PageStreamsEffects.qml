@@ -9,8 +9,6 @@ import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
 
 Kirigami.Page {
-    //To do: the bypass needs to be set from the corresponding plugin database
-
     id: pageStreamsEffects
 
     required property int pageType // 0 for output and 1 for input
@@ -65,8 +63,8 @@ Kirigami.Page {
                     anchors.centerIn: parent
                     width: parent.width - (Kirigami.Units.largeSpacing * 4)
                     visible: streamsListView.count === 0
-                    text: i18n("Empty List")
-                    explanation: i18n("No Audio Application Available")
+                    text: i18n("Empty List")// qmllint disable
+                    explanation: i18n("No Audio Application Available")// qmllint disable
                     icon.name: "folder-music-symbolic"
                 }
 
@@ -79,9 +77,12 @@ Kirigami.Page {
         id: pagePlugins
 
         GridLayout {
+            id: pagePluginsGrid
+
             function populatePluginsListModel(plugins) {
                 let baseNames = TagsPluginName.PluginsNameModel.getBaseNames();
                 pluginsListModel.clear();
+
                 for (let n = 0; n < plugins.length; n++) {
                     for (let k = 0; k < baseNames.length; k++) {
                         if (plugins[n].startsWith(baseNames[k])) {
@@ -102,39 +103,39 @@ Kirigami.Page {
                     pluginsStack.pop();
 
                 const pluginMap = {
-                    [TagsPluginName.BaseName.autogain]: "qrc:ui/Autogain.qml",
-                    [TagsPluginName.BaseName.bassEnhancer]: "qrc:ui/BassEnhancer.qml",
-                    [TagsPluginName.BaseName.bassLoudness]: "qrc:ui/BassLoudness.qml",
-                    [TagsPluginName.BaseName.compressor]: "qrc:ui/Compressor.qml",
-                    [TagsPluginName.BaseName.convolver]: "qrc:ui/Convolver.qml",
-                    [TagsPluginName.BaseName.crossfeed]: "qrc:ui/Crossfeed.qml",
-                    [TagsPluginName.BaseName.crystalizer]: "qrc:ui/Crystalizer.qml",
-                    [TagsPluginName.BaseName.delay]: "qrc:ui/Delay.qml",
-                    [TagsPluginName.BaseName.deepfilternet]: "qrc:ui/DeepFilterNet.qml",
-                    [TagsPluginName.BaseName.deesser]: "qrc:ui/Deesser.qml",
-                    [TagsPluginName.BaseName.equalizer]: "qrc:ui/Equalizer.qml",
-                    [TagsPluginName.BaseName.exciter]: "qrc:ui/Exciter.qml",
-                    [TagsPluginName.BaseName.echoCanceller]: "qrc:ui/EchoCanceller.qml",
-                    [TagsPluginName.BaseName.expander]: "qrc:ui/Expander.qml",
-                    [TagsPluginName.BaseName.filter]: "qrc:ui/Filter.qml",
-                    [TagsPluginName.BaseName.gate]: "qrc:ui/Gate.qml",
-                    [TagsPluginName.BaseName.levelMeter]: "qrc:ui/LevelMeter.qml",
-                    [TagsPluginName.BaseName.limiter]: "qrc:ui/Limiter.qml",
-                    [TagsPluginName.BaseName.loudness]: "qrc:ui/Loudness.qml",
-                    [TagsPluginName.BaseName.maximizer]: "qrc:ui/Maximizer.qml",
-                    [TagsPluginName.BaseName.multibandCompressor]: "qrc:ui/MultibandCompressor.qml",
-                    [TagsPluginName.BaseName.multibandGate]: "qrc:ui/MultibandGate.qml",
-                    [TagsPluginName.BaseName.pitch]: "qrc:ui/Pitch.qml",
-                    [TagsPluginName.BaseName.reverb]: "qrc:ui/Reverb.qml",
-                    [TagsPluginName.BaseName.rnnoise]: "qrc:ui/RNNoise.qml",
-                    [TagsPluginName.BaseName.speex]: "qrc:ui/Speex.qml",
-                    [TagsPluginName.BaseName.stereoTools]: "qrc:ui/StereoTools.qml"
+                    [TagsPluginName.BaseName.autogain]: "qrc:/ui/Autogain.qml",
+                    [TagsPluginName.BaseName.bassEnhancer]: "qrc:/ui/BassEnhancer.qml",
+                    [TagsPluginName.BaseName.bassLoudness]: "qrc:/ui/BassLoudness.qml",
+                    [TagsPluginName.BaseName.compressor]: "qrc:/ui/Compressor.qml",
+                    [TagsPluginName.BaseName.convolver]: "qrc:/ui/Convolver.qml",
+                    [TagsPluginName.BaseName.crossfeed]: "qrc:/ui/Crossfeed.qml",
+                    [TagsPluginName.BaseName.crystalizer]: "qrc:/ui/Crystalizer.qml",
+                    [TagsPluginName.BaseName.delay]: "qrc:/ui/Delay.qml",
+                    [TagsPluginName.BaseName.deepfilternet]: "qrc:/ui/DeepFilterNet.qml",
+                    [TagsPluginName.BaseName.deesser]: "qrc:/ui/Deesser.qml",
+                    [TagsPluginName.BaseName.equalizer]: "qrc:/ui/Equalizer.qml",
+                    [TagsPluginName.BaseName.exciter]: "qrc:/ui/Exciter.qml",
+                    [TagsPluginName.BaseName.echoCanceller]: "qrc:/ui/EchoCanceller.qml",
+                    [TagsPluginName.BaseName.expander]: "qrc:/ui/Expander.qml",
+                    [TagsPluginName.BaseName.filter]: "qrc:/ui/Filter.qml",
+                    [TagsPluginName.BaseName.gate]: "qrc:/ui/Gate.qml",
+                    [TagsPluginName.BaseName.levelMeter]: "qrc:/ui/LevelMeter.qml",
+                    [TagsPluginName.BaseName.limiter]: "qrc:/ui/Limiter.qml",
+                    [TagsPluginName.BaseName.loudness]: "qrc:/ui/Loudness.qml",
+                    [TagsPluginName.BaseName.maximizer]: "qrc:/ui/Maximizer.qml",
+                    [TagsPluginName.BaseName.multibandCompressor]: "qrc:/ui/MultibandCompressor.qml",
+                    [TagsPluginName.BaseName.multibandGate]: "qrc:/ui/MultibandGate.qml",
+                    [TagsPluginName.BaseName.pitch]: "qrc:/ui/Pitch.qml",
+                    [TagsPluginName.BaseName.reverb]: "qrc:/ui/Reverb.qml",
+                    [TagsPluginName.BaseName.rnnoise]: "qrc:/ui/RNNoise.qml",
+                    [TagsPluginName.BaseName.speex]: "qrc:/ui/Speex.qml",
+                    [TagsPluginName.BaseName.stereoTools]: "qrc:/ui/StereoTools.qml"
                 };
 
                 const componentUrl = pluginMap[baseName];
 
                 if (!componentUrl) {
-                    console.log(logTag + " invalid plugin name: " + baseName);
+                    console.log(pageStreamsEffects.logTag + " invalid plugin name: " + baseName);
 
                     return;
                 }
@@ -150,8 +151,8 @@ Kirigami.Page {
                         name: name,
                         pluginDB: pluginDB,
                         pipelineInstance: pageStreamsEffects.pipelineInstance,
-                        leftDB: pluginsDB[name + "#left"],
-                        rightDB: pluginsDB[name + "#right"]
+                        leftDB: pageStreamsEffects.pluginsDB[name + "#left"],
+                        rightDB: pageStreamsEffects.pluginsDB[name + "#right"]
                     });
                 }
             }
@@ -207,7 +208,7 @@ Kirigami.Page {
                 function onPipelineChanged() {
                     const newList = pageStreamsEffects.streamDB.plugins;
 
-                    populatePluginsListModel(newList);
+                    pagePluginsGrid.populatePluginsListModel(newList);
 
                     if (newList.length === 0) {
                         pageStreamsEffects.streamDB.visiblePlugin = "";
@@ -218,10 +219,10 @@ Kirigami.Page {
                     if (newList.length === 1 && pluginsListView.currentIndex === -1)
                         pluginsListView.currentIndex = 0;
 
-                    populatePluginsStack();
+                    pagePluginsGrid.populatePluginsStack();
                 }
 
-                target: pipelineInstance
+                target: pageStreamsEffects.pipelineInstance
             }
 
             Connections {
@@ -252,7 +253,7 @@ Kirigami.Page {
                     Layout.leftMargin: Kirigami.Units.smallSpacing
                     Layout.rightMargin: Kirigami.Units.smallSpacing
                     Layout.alignment: Qt.AlignHCenter
-                    text: DB.Manager.main.collapsePluginsList === true ? "" : i18n("Add Effect")
+                    text: DB.Manager.main.collapsePluginsList === true ? "" : i18n("Add Effect") // qmllint disable
                     icon.name: "list-add"
                     onClicked: menuAddPlugins.open()
                 }
@@ -275,7 +276,7 @@ Kirigami.Page {
 
                                 let baseName = pluginsListModel.get(pluginsListView.currentIndex).baseName;
 
-                                createPluginStack(name, baseName, pageStreamsEffects.pluginsDB[name]);
+                                pagePluginsGrid.createPluginStack(name, baseName, pageStreamsEffects.pluginsDB[name]);
                             }
                         }
                     }
@@ -298,7 +299,7 @@ Kirigami.Page {
                         }
 
                         Controls.Label {
-                            text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Input Device")
+                            text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Input Device")// qmllint disable
                             enabled: false
                             visible: !DB.Manager.main.collapsePluginsList
                         }
@@ -315,7 +316,7 @@ Kirigami.Page {
                         }
 
                         Controls.Label {
-                            text: pageStreamsEffects.pageType === 0 ? "Output Device" : i18n("Recorders")
+                            text: pageStreamsEffects.pageType === 0 ? "Output Device" : i18n("Recorders")// qmllint disable
                             enabled: false
                             visible: !DB.Manager.main.collapsePluginsList
                         }
@@ -328,7 +329,7 @@ Kirigami.Page {
                     Layout.leftMargin: Kirigami.Units.smallSpacing
                     Layout.rightMargin: Kirigami.Units.smallSpacing
                     Layout.alignment: Qt.AlignHCenter
-                    text: DB.Manager.main.collapsePluginsList === true ? "" : i18n("Close")
+                    text: DB.Manager.main.collapsePluginsList === true ? "" : i18n("Close") // qmllint disable
                     icon.name: DB.Manager.main.collapsePluginsList === true ? "sidebar-collapse-right-symbolic" : "sidebar-collapse-symbolic"
                     onClicked: {
                         DB.Manager.main.collapsePluginsList = !DB.Manager.main.collapsePluginsList;
@@ -351,8 +352,8 @@ Kirigami.Page {
                 initialItem: Kirigami.ScrollablePage {
                     Kirigami.PlaceholderMessage {
                         anchors.centerIn: parent
-                        text: i18n("No Effects")
-                        explanation: i18n("Audio Stream Not Modified")
+                        text: i18n("No Effects")// qmllint disable
+                        explanation: i18n("Audio Stream Not Modified")// qmllint disable
                         icon.name: "folder-music-symbolic"
                     }
                 }
@@ -393,10 +394,10 @@ Kirigami.Page {
             FrameAnimation {
                 id: headerFrameAnimation
 
-                running: DB.Manager.spectrum.state && appWindow.visible
+                running: DB.Manager.spectrum.state && appWindow.visible // qmllint disable
 
                 onTriggered: {
-                    pipelineInstance.requestSpectrumData();
+                    pageStreamsEffects.pipelineInstance.requestSpectrumData();
                 }
             }
 
@@ -405,7 +406,7 @@ Kirigami.Page {
                     spectrumChart.updateData(newData);
                 }
 
-                target: pipelineInstance
+                target: pageStreamsEffects.pipelineInstance
             }
         }
 
@@ -479,8 +480,8 @@ Kirigami.Page {
                     id: footerFrameAnimation
 
                     onTriggered: {
-                        let left = Number(pipelineInstance.getOutputLevelLeft());
-                        let right = Number(pipelineInstance.getOutputLevelRight());
+                        let left = Number(pageStreamsEffects.pipelineInstance.getOutputLevelLeft());
+                        let right = Number(pageStreamsEffects.pipelineInstance.getOutputLevelRight());
                         if (Number.isNaN(left) || left < pageStreamsEffects.minLeftLevel)
                             left = pageStreamsEffects.minLeftLevel;
 
@@ -502,11 +503,11 @@ Kirigami.Page {
                         const styledLocaleLeft = left > -10 ? `<span ${cssFontWeight}>${localeLeft}</span>` : localeLeft;
                         const styledLocaleRight = right > -10 ? `<span ${cssFontWeight}>${localeRight}</span>` : localeRight;
 
-                        const pipelineLatency = Number(pipelineInstance.getPipeLineLatency());
+                        const pipelineLatency = Number(pageStreamsEffects.pipelineInstance.getPipeLineLatency());
                         const latency = pipelineLatency.toLocaleString(Qt.locale(), 'f', 1);
                         const styledLatency = pipelineLatency > 0 ? `<span ${cssFontWeight}>${latency}</span>` : latency;
 
-                        const rate = Number(pipelineInstance.getPipeLineRate()).toLocaleString(Qt.locale(), 'f', 1);
+                        const rate = Number(pageStreamsEffects.pipelineInstance.getPipeLineRate()).toLocaleString(Qt.locale(), 'f', 1);
 
                         const cssFontColor = `style="color:${Kirigami.Theme.textColor}"`;
 
@@ -523,7 +524,7 @@ Kirigami.Page {
                 actions: [
                     Kirigami.Action {
                         icon.name: pageStreamsEffects.pageType === 0 ? "multimedia-player-symbolic" : "media-record-symbolic"
-                        text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Recorders")
+                        text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Recorders")// qmllint disable
                         checkable: true
                         checked: pageStreamsEffects.streamDB.visiblePage === 0
                         onTriggered: {
@@ -533,7 +534,7 @@ Kirigami.Page {
                     },
                     Kirigami.Action {
                         icon.name: "folder-music-symbolic"
-                        text: i18n("Effects")
+                        text: i18n("Effects") // qmllint disable
                         checkable: true
                         checked: pageStreamsEffects.streamDB.visiblePage === 1
                         onTriggered: {
@@ -550,7 +551,7 @@ Kirigami.Page {
                 overflowIconName: "im-ban-kick-user-symbolic"
                 actions: [
                     Kirigami.Action {
-                        tooltip: i18n("Input Monitoring")
+                        tooltip: i18n("Input Monitoring")// qmllint disable
                         icon.name: "audio-input-microphone-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.pageType === 1 && pageStreamsEffects.streamDB.visiblePage === 1
@@ -563,7 +564,7 @@ Kirigami.Page {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Excluded Apps")
+                        text: i18n("Excluded Apps")// qmllint disable
                         icon.name: "im-ban-kick-user-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.streamDB.visiblePage === 0

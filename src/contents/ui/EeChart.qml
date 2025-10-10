@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import QtGraphs
 import QtQuick
 import QtQuick.Controls as Controls
@@ -104,8 +105,9 @@ Item {
             processedData[n].y = logarithimicVerticalAxis ? Math.log10(point.y) : point.y;
         }
 
-        if (splineSeries.visible === true)
+        if (splineSeries.visible === true) {
             splineSeries.replace(processedData);
+        }
 
         if (scatterSeries.visible === true)
             scatterSeries.replace(processedData);
@@ -161,7 +163,7 @@ Item {
 
             BarSeries {
                 id: barSeries
-                visible: seriesType === 0
+                visible: widgetRoot.seriesType === 0
                 BarSet {
                     id: barSeriesSet
                 }
@@ -169,16 +171,16 @@ Item {
 
             SplineSeries {
                 id: splineSeries
-                visible: seriesType === 1
+                visible: widgetRoot.seriesType === 1
             }
             ScatterSeries {
                 id: scatterSeries
-                visible: seriesType === 2
+                visible: widgetRoot.seriesType === 2
             }
 
             AreaSeries {
                 id: areaSeries
-                visible: seriesType === 3
+                visible: widgetRoot.seriesType === 3
                 upperSeries: LineSeries {
                     id: areaLineSeries
                 }
@@ -187,8 +189,8 @@ Item {
             ValueAxis {
                 id: horizontalAxis
                 labelFormat: "%.1f"
-                min: logarithimicHorizontalAxis !== true ? xMin : xMinLog
-                max: logarithimicHorizontalAxis !== true ? xMax : xMaxLog
+                min: widgetRoot.logarithimicHorizontalAxis !== true ? widgetRoot.xMin : widgetRoot.xMinLog
+                max: widgetRoot.logarithimicHorizontalAxis !== true ? widgetRoot.xMax : widgetRoot.xMaxLog
                 gridVisible: false
                 subGridVisible: false
                 lineVisible: false
@@ -214,8 +216,8 @@ Item {
                 visible: false
                 labelsVisible: false
                 titleVisible: false
-                min: logarithimicVerticalAxis !== true ? yMin : yMinLog
-                max: logarithimicVerticalAxis !== true ? yMax : yMaxLog
+                min: widgetRoot.logarithimicVerticalAxis !== true ? widgetRoot.yMin : widgetRoot.yMinLog
+                max: widgetRoot.logarithimicVerticalAxis !== true ? widgetRoot.yMax : widgetRoot.yMaxLog
             }
 
             theme: GraphsTheme {
@@ -247,16 +249,18 @@ Item {
                 Repeater {
                     id: axisRepeater
 
-                    readonly property var tickValues: logarithimicHorizontalAxis ? widgetRoot.logTicks : widgetRoot.linearTicks
+                    readonly property var tickValues: widgetRoot.logarithimicHorizontalAxis ? widgetRoot.logTicks : widgetRoot.linearTicks
 
                     model: tickValues.length
 
                     Controls.Label {
+                        required property int index
                         readonly property real value: axisRepeater.tickValues[index]
+
                         width: widgetRoot.width / widgetRoot.targetTicks
                         padding: 0
                         color: chart.theme.labelTextColor
-                        text: value < 1000 ? Number(value).toLocaleString(Qt.locale(), 'f', xAxisDecimals) : `${Number(value / 1000).toLocaleString(Qt.locale(), 'f', 1)}k`
+                        text: value < 1000 ? Number(value).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals) : `${Number(value / 1000).toLocaleString(Qt.locale(), 'f', 1)}k`
                         horizontalAlignment: Qt.AlignLeft
                         visible: index < (axisRepeater.tickValues.length - 1)
                     }
@@ -264,7 +268,7 @@ Item {
             }
 
             Controls.Label {
-                text: xUnit
+                text: widgetRoot.xUnit
                 padding: 0
                 color: chart.theme.labelTextColor
                 horizontalAlignment: Qt.AlignRight
@@ -280,10 +284,10 @@ Item {
             const dataX = widgetRoot.mapToValueX(mouse.x);
             // const dataY = widgetRoot.mapToValueY(mouse.y);
 
-            coordinateLabel.x = mouse.x + coordLabelOffset;
-            coordinateLabel.y = mouse.y - coordinateLabel.height - coordLabelOffset;
-            coordinateLabel.text = `${Number(dataX).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)} ${widgetRoot.xUnit}`;
-            // coordinateLabel.text = `x: ${Number(dataX).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)} Hz, y: ${Number(dataY).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)}`;
+            coordinateLabel.x = mouse.x + widgetRoot.coordLabelOffset;
+            coordinateLabel.y = mouse.y - coordinateLabel.height - widgetRoot.coordLabelOffset;
+            coordinateLabel.text = `${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} ${widgetRoot.xUnit}`;
+            // coordinateLabel.text = `x: ${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} Hz, y: ${Number(dataY).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)}`;
             coordinateLabel.visible = true;
         }
         onExited: {
@@ -309,18 +313,18 @@ Item {
         // Ensure the label stays within chart bounds
         onXChanged: {
             if (x + width > parent.width) {
-                x = parent.width - width - coordLabelOffset;
+                x = parent.width - width - widgetRoot.coordLabelOffset;
             }
             if (x < 0) {
-                x = coordLabelOffset;
+                x = widgetRoot.coordLabelOffset;
             }
         }
         onYChanged: {
             if (y < 0) {
-                y = coordLabelOffset;
+                y = widgetRoot.coordLabelOffset;
             }
             if (y + height > parent.height) {
-                y = parent.height - height - coordLabelOffset;
+                y = parent.height - height - widgetRoot.coordLabelOffset;
             }
         }
     }

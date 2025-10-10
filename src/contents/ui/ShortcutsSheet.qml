@@ -6,11 +6,11 @@ import org.kde.kirigami as Kirigami
 Kirigami.OverlaySheet {
     id: control
 
-    parent: applicationWindow().overlay
+    parent: applicationWindow().overlay // qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
-    y: appWindow.header.height + Kirigami.Units.gridUnit
-    implicitWidth: Math.min(gridLayout.implicitWidth, appWindow.width * 0.8) + 4 * Kirigami.Units.iconSizes.large
+    y: appWindow.header.height + Kirigami.Units.gridUnit // qmllint disable
+    implicitWidth: Math.min(gridLayout.implicitWidth, appWindow.width * 0.8) + 4 * Kirigami.Units.iconSizes.large // qmllint disable
 
     ColumnLayout {
         spacing: Kirigami.Units.gridUnit
@@ -31,7 +31,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Show Help")
+                text: i18n("Show Help") // qmllint disable
             }
 
             Kirigami.Chip {
@@ -44,7 +44,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Toggle Fullscreen")
+                text: i18n("Toggle Fullscreen") // qmllint disable
             }
 
             RowLayout {
@@ -72,7 +72,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Toggle Global Bypass")
+                text: i18n("Toggle Global Bypass") // qmllint disable
             }
 
             RowLayout {
@@ -100,7 +100,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Close the Window")
+                text: i18n("Close the Window") // qmllint disable
             }
 
             RowLayout {
@@ -128,7 +128,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Terminate Easy Effects Service")
+                text: i18n("Terminate Easy Effects Service") // qmllint disable
             }
 
             Kirigami.Chip {
@@ -141,7 +141,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Can Be Used on Numeric Controls")
+                text: i18n("Can Be Used on Numeric Controls") // qmllint disable
             }
 
             Kirigami.Chip {
@@ -154,7 +154,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Can Be Used on Numeric Controls")
+                text: i18n("Can Be Used on Numeric Controls") // qmllint disable
             }
         }
 
@@ -165,7 +165,7 @@ Kirigami.OverlaySheet {
 
             Kirigami.Heading {
                 Layout.alignment: Qt.AlignLeft
-                text: i18n("Global Shortcuts")
+                text: i18n("Global Shortcuts") // qmllint disable
             }
         }
 
@@ -211,7 +211,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Toggle Global Bypass")
+                text: i18n("Toggle Global Bypass") // qmllint disable
             }
         }
     }
@@ -225,7 +225,7 @@ Kirigami.OverlaySheet {
 
         Kirigami.Heading {
             Layout.fillWidth: true
-            text: i18n("Shortcuts")
+            text: i18n("Shortcuts") // qmllint disable
         }
     }
 }

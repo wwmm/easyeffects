@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
@@ -59,7 +59,7 @@ Kirigami.ScrollablePage {
                 id: cardControls
 
                 header: Kirigami.Heading {
-                    text: i18n("Controls")
+                    text: i18n("Controls") // qmllint disable
                     level: 2
                 }
 
@@ -67,32 +67,32 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: fcut
 
-                        label: i18n("Cutoff")
+                        label: i18n("Cutoff") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: pluginDB.getMinValue("fcut")
-                        to: pluginDB.getMaxValue("fcut")
-                        value: pluginDB.fcut
+                        from: crossfeedPage.pluginDB.getMinValue("fcut")
+                        to: crossfeedPage.pluginDB.getMaxValue("fcut")
+                        value: crossfeedPage.pluginDB.fcut
                         decimals: 0
                         stepSize: 1
                         unit: "Hz"
                         onValueModified: v => {
-                            pluginDB.fcut = v;
+                            crossfeedPage.pluginDB.fcut = v;
                         }
                     }
 
                     EeSpinBox {
                         id: feed
 
-                        label: i18n("Feed")
+                        label: i18n("Feed") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: pluginDB.getMinValue("feed")
-                        to: pluginDB.getMaxValue("feed")
-                        value: pluginDB.feed
+                        from: crossfeedPage.pluginDB.getMinValue("feed")
+                        to: crossfeedPage.pluginDB.getMaxValue("feed")
+                        value: crossfeedPage.pluginDB.feed
                         decimals: 1
                         stepSize: 0.1
                         unit: "dB"
                         onValueModified: v => {
-                            pluginDB.feed = v;
+                            crossfeedPage.pluginDB.feed = v;
                         }
                     }
                 }
@@ -103,27 +103,27 @@ Kirigami.ScrollablePage {
     Kirigami.MenuDialog {
         id: presetsDialog
 
-        title: i18n("Crossfeed Presets")
+        title: i18n("Crossfeed Presets") // qmllint disable
         actions: [
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
-                text: i18n("Default")
+                text: i18n("Default") // qmllint disable
                 onTriggered: {
-                    applyPreset("default");
+                    crossfeedPage.applyPreset("default");
                 }
             },
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
                 text: "Cmoy"
                 onTriggered: {
-                    applyPreset("cmoy");
+                    crossfeedPage.applyPreset("cmoy");
                 }
             },
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
                 text: "Jmeier"
                 onTriggered: {
-                    applyPreset("jmeier");
+                    crossfeedPage.applyPreset("jmeier");
                 }
             }
         ]
@@ -137,7 +137,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.bs2b}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.bs2b}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -153,7 +153,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Presets")
+                    text: i18n("Presets") // qmllint disable
                     icon.name: "bookmarks-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     onTriggered: {
@@ -161,10 +161,10 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        crossfeedPage.pluginBackend.reset();
                     }
                 }
             ]

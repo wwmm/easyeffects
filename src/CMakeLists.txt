@@ -17,6 +17,38 @@ qt_add_qml_module(easyeffects
         presets_list_model.cpp presets_list_model.hpp
 )
 
+# The module definitions below are to help the qml linter
+
+qt_add_qml_module(ee_tags_plugin_name
+    URI ee.tags.plugin.name
+    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+)
+
+qt_add_qml_module(ee_pipewire
+    URI ee.pipewire
+    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+)
+
+qt_add_qml_module(ee_database
+    URI ee.database
+    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+)
+
+qt_add_qml_module(ee_help
+    URI ee.help
+    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+)
+
+qt_add_qml_module(ee_presets
+    URI ee.presets
+    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+)
+
+qt_add_qml_module(ee_pipeline
+    URI ee.pipeline
+    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+)
+
 target_sources(easyeffects PRIVATE
     autogain.cpp
     autogain_preset.cpp

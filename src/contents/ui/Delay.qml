@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -45,7 +45,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Left")
+                    text: i18n("Left") // qmllint disable
                     level: 2
                 }
 
@@ -59,13 +59,13 @@ Kirigami.ScrollablePage {
                             id: modeL
 
                             Layout.columnSpan: 2
-                            text: i18n("Mode")
+                            text: i18n("Mode") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.modeL
+                            currentIndex: delayPage.pluginDB.modeL
                             editable: false
-                            model: [i18n("Samples"), i18n("Distance"), i18n("Time")]
+                            model: [i18n("Samples"), i18n("Distance"), i18n("Time")]// qmllint disable
                             onActivated: idx => {
-                                pluginDB.modeL = idx;
+                                delayPage.pluginDB.modeL = idx;
                             }
                         }
 
@@ -73,17 +73,17 @@ Kirigami.ScrollablePage {
                             id: sampleL
 
                             Layout.columnSpan: 2
-                            visible: pluginDB.modeL === 0 ? true : false
-                            label: i18n("Samples")
+                            visible: delayPage.pluginDB.modeL === 0 ? true : false
+                            label: i18n("Samples") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("sampleL")
-                            to: pluginDB.getMaxValue("sampleL")
-                            value: pluginDB.sampleL
+                            from: delayPage.pluginDB.getMinValue("sampleL")
+                            to: delayPage.pluginDB.getMaxValue("sampleL")
+                            value: delayPage.pluginDB.sampleL
                             decimals: 0
                             stepSize: 1
                             onValueModified: v => {
-                                pluginDB.sampleL = v;
+                                delayPage.pluginDB.sampleL = v;
                             }
                         }
 
@@ -91,54 +91,54 @@ Kirigami.ScrollablePage {
                             id: timeL
 
                             Layout.columnSpan: 2
-                            visible: pluginDB.modeL === 2 ? true : false
-                            label: i18n("Time")
+                            visible: delayPage.pluginDB.modeL === 2 ? true : false
+                            label: i18n("Time") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("timeL")
-                            to: pluginDB.getMaxValue("timeL")
-                            value: pluginDB.timeL
+                            from: delayPage.pluginDB.getMinValue("timeL")
+                            to: delayPage.pluginDB.getMaxValue("timeL")
+                            value: delayPage.pluginDB.timeL
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
                             onValueModified: v => {
-                                pluginDB.timeL = v;
+                                delayPage.pluginDB.timeL = v;
                             }
                         }
 
                         EeSpinBox {
                             id: metersL
 
-                            visible: pluginDB.modeL === 1 ? true : false
-                            label: i18n("Meters")
+                            visible: delayPage.pluginDB.modeL === 1 ? true : false
+                            label: i18n("Meters") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("metersL")
-                            to: pluginDB.getMaxValue("metersL")
-                            value: pluginDB.metersL
+                            from: delayPage.pluginDB.getMinValue("metersL")
+                            to: delayPage.pluginDB.getMaxValue("metersL")
+                            value: delayPage.pluginDB.metersL
                             decimals: 0
                             stepSize: 1
                             unit: "m"
                             onValueModified: v => {
-                                pluginDB.metersL = v;
+                                delayPage.pluginDB.metersL = v;
                             }
                         }
 
                         EeSpinBox {
                             id: centimetersL
 
-                            visible: pluginDB.modeL === 1 ? true : false
-                            label: i18n("Centimeters")
+                            visible: delayPage.pluginDB.modeL === 1 ? true : false
+                            label: i18n("Centimeters") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("centimetersL")
-                            to: pluginDB.getMaxValue("centimetersL")
-                            value: pluginDB.centimetersL
+                            from: delayPage.pluginDB.getMinValue("centimetersL")
+                            to: delayPage.pluginDB.getMaxValue("centimetersL")
+                            value: delayPage.pluginDB.centimetersL
                             decimals: 1
                             stepSize: 0.1
                             unit: "cm"
                             onValueModified: v => {
-                                pluginDB.centimetersL = v;
+                                delayPage.pluginDB.centimetersL = v;
                             }
                         }
 
@@ -146,54 +146,54 @@ Kirigami.ScrollablePage {
                             id: temperatureL
 
                             Layout.columnSpan: 2
-                            visible: pluginDB.modeL === 1 ? true : false
-                            label: i18n("Temperature")
+                            visible: delayPage.pluginDB.modeL === 1 ? true : false
+                            label: i18n("Temperature") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("temperatureL")
-                            to: pluginDB.getMaxValue("temperatureL")
-                            value: pluginDB.temperatureL
+                            from: delayPage.pluginDB.getMinValue("temperatureL")
+                            to: delayPage.pluginDB.getMaxValue("temperatureL")
+                            value: delayPage.pluginDB.temperatureL
                             decimals: 1
                             stepSize: 0.1
                             unit: "°C"
                             onValueModified: v => {
-                                pluginDB.temperatureL = v;
+                                delayPage.pluginDB.temperatureL = v;
                             }
                         }
 
                         EeSpinBox {
                             id: dryL
 
-                            label: i18n("Dry")
+                            label: i18n("Dry") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("dryL")
-                            to: pluginDB.getMaxValue("dryL")
-                            value: pluginDB.dryL
+                            from: delayPage.pluginDB.getMinValue("dryL")
+                            to: delayPage.pluginDB.getMaxValue("dryL")
+                            value: delayPage.pluginDB.dryL
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.dryL = v;
+                                delayPage.pluginDB.dryL = v;
                             }
                         }
 
                         EeSpinBox {
                             id: wetL
 
-                            label: i18n("Wet")
+                            label: i18n("Wet") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("wetL")
-                            to: pluginDB.getMaxValue("wetL")
-                            value: pluginDB.wetL
+                            from: delayPage.pluginDB.getMinValue("wetL")
+                            to: delayPage.pluginDB.getMaxValue("wetL")
+                            value: delayPage.pluginDB.wetL
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.wetL = v;
+                                delayPage.pluginDB.wetL = v;
                             }
                         }
                     }
@@ -203,7 +203,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Right")
+                    text: i18n("Right") // qmllint disable
                     level: 2
                 }
 
@@ -217,13 +217,13 @@ Kirigami.ScrollablePage {
                             id: modeR
 
                             Layout.columnSpan: 2
-                            text: i18n("Mode")
+                            text: i18n("Mode") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.modeR
+                            currentIndex: delayPage.pluginDB.modeR
                             editable: false
-                            model: [i18n("Samples"), i18n("Distance"), i18n("Time")]
+                            model: [i18n("Samples"), i18n("Distance"), i18n("Time")]// qmllint disable
                             onActivated: idx => {
-                                pluginDB.modeR = idx;
+                                delayPage.pluginDB.modeR = idx;
                             }
                         }
 
@@ -231,17 +231,17 @@ Kirigami.ScrollablePage {
                             id: sampleR
 
                             Layout.columnSpan: 2
-                            visible: pluginDB.modeR === 0 ? true : false
-                            label: i18n("Samples")
+                            visible: delayPage.pluginDB.modeR === 0 ? true : false
+                            label: i18n("Samples") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("sampleR")
-                            to: pluginDB.getMaxValue("sampleR")
-                            value: pluginDB.sampleR
+                            from: delayPage.pluginDB.getMinValue("sampleR")
+                            to: delayPage.pluginDB.getMaxValue("sampleR")
+                            value: delayPage.pluginDB.sampleR
                             decimals: 0
                             stepSize: 1
                             onValueModified: v => {
-                                pluginDB.sampleR = v;
+                                delayPage.pluginDB.sampleR = v;
                             }
                         }
 
@@ -249,54 +249,54 @@ Kirigami.ScrollablePage {
                             id: timeR
 
                             Layout.columnSpan: 2
-                            visible: pluginDB.modeR === 2 ? true : false
-                            label: i18n("Time")
+                            visible: delayPage.pluginDB.modeR === 2 ? true : false
+                            label: i18n("Time") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("timeR")
-                            to: pluginDB.getMaxValue("timeR")
-                            value: pluginDB.timeR
+                            from: delayPage.pluginDB.getMinValue("timeR")
+                            to: delayPage.pluginDB.getMaxValue("timeR")
+                            value: delayPage.pluginDB.timeR
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
                             onValueModified: v => {
-                                pluginDB.timeR = v;
+                                delayPage.pluginDB.timeR = v;
                             }
                         }
 
                         EeSpinBox {
                             id: metersR
 
-                            visible: pluginDB.modeR === 1 ? true : false
-                            label: i18n("Meters")
+                            visible: delayPage.pluginDB.modeR === 1 ? true : false
+                            label: i18n("Meters") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("metersR")
-                            to: pluginDB.getMaxValue("metersR")
-                            value: pluginDB.metersR
+                            from: delayPage.pluginDB.getMinValue("metersR")
+                            to: delayPage.pluginDB.getMaxValue("metersR")
+                            value: delayPage.pluginDB.metersR
                             decimals: 0
                             stepSize: 1
                             unit: "m"
                             onValueModified: v => {
-                                pluginDB.metersR = v;
+                                delayPage.pluginDB.metersR = v;
                             }
                         }
 
                         EeSpinBox {
                             id: centimetersR
 
-                            visible: pluginDB.modeR === 1 ? true : false
-                            label: i18n("Centimeters")
+                            visible: delayPage.pluginDB.modeR === 1 ? true : false
+                            label: i18n("Centimeters") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("centimetersR")
-                            to: pluginDB.getMaxValue("centimetersR")
-                            value: pluginDB.centimetersR
+                            from: delayPage.pluginDB.getMinValue("centimetersR")
+                            to: delayPage.pluginDB.getMaxValue("centimetersR")
+                            value: delayPage.pluginDB.centimetersR
                             decimals: 1
                             stepSize: 0.1
                             unit: "cm"
                             onValueModified: v => {
-                                pluginDB.centimetersR = v;
+                                delayPage.pluginDB.centimetersR = v;
                             }
                         }
 
@@ -304,54 +304,54 @@ Kirigami.ScrollablePage {
                             id: temperatureR
 
                             Layout.columnSpan: 2
-                            visible: pluginDB.modeR === 1 ? true : false
-                            label: i18n("Temperature")
+                            visible: delayPage.pluginDB.modeR === 1 ? true : false
+                            label: i18n("Temperature") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("temperatureR")
-                            to: pluginDB.getMaxValue("temperatureR")
-                            value: pluginDB.temperatureR
+                            from: delayPage.pluginDB.getMinValue("temperatureR")
+                            to: delayPage.pluginDB.getMaxValue("temperatureR")
+                            value: delayPage.pluginDB.temperatureR
                             decimals: 1
                             stepSize: 0.1
                             unit: "°C"
                             onValueModified: v => {
-                                pluginDB.temperatureR = v;
+                                delayPage.pluginDB.temperatureR = v;
                             }
                         }
 
                         EeSpinBox {
                             id: dryR
 
-                            label: i18n("Dry")
+                            label: i18n("Dry") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("dryR")
-                            to: pluginDB.getMaxValue("dryR")
-                            value: pluginDB.dryR
+                            from: delayPage.pluginDB.getMinValue("dryR")
+                            to: delayPage.pluginDB.getMaxValue("dryR")
+                            value: delayPage.pluginDB.dryR
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.dryR = v;
+                                delayPage.pluginDB.dryR = v;
                             }
                         }
 
                         EeSpinBox {
                             id: wetR
 
-                            label: i18n("Wet")
+                            label: i18n("Wet") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("wetR")
-                            to: pluginDB.getMaxValue("wetR")
-                            value: pluginDB.wetR
+                            from: delayPage.pluginDB.getMinValue("wetR")
+                            to: delayPage.pluginDB.getMaxValue("wetR")
+                            value: delayPage.pluginDB.wetR
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.wetR = v;
+                                delayPage.pluginDB.wetR = v;
                             }
                         }
                     }
@@ -368,7 +368,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -384,43 +384,43 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Invert Left")
+                    text: i18n("Invert Left") // qmllint disable
                     icon.name: "edit-select-invert-symbolic"
                     checkable: true
-                    checked: pluginDB.invertPhaseL
+                    checked: delayPage.pluginDB.invertPhaseL
                     onTriggered: {
-                        if (checked !== pluginDB.invertPhaseL)
-                            pluginDB.invertPhaseL = checked;
+                        if (checked !== delayPage.pluginDB.invertPhaseL)
+                            delayPage.pluginDB.invertPhaseL = checked;
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Invert Right")
+                    text: i18n("Invert Right") // qmllint disable
                     icon.name: "edit-select-invert-symbolic"
                     checkable: true
-                    checked: pluginDB.invertPhaseR
+                    checked: delayPage.pluginDB.invertPhaseR
                     onTriggered: {
-                        if (checked !== pluginDB.invertPhaseR)
-                            pluginDB.invertPhaseR = checked;
+                        if (checked !== delayPage.pluginDB.invertPhaseR)
+                            delayPage.pluginDB.invertPhaseR = checked;
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Show Native Window")
+                    text: i18n("Show Native Window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
-                    checked: pluginBackend ? pluginBackend.hasNativeUi() : false
+                    checked: delayPage.pluginBackend ? delayPage.pluginBackend.hasNativeUi() : false
                     onTriggered: {
                         if (checked)
-                            pluginBackend.showNativeUi();
+                            delayPage.pluginBackend.showNativeUi();
                         else
-                            pluginBackend.closeNativeUi();
+                            delayPage.pluginBackend.closeNativeUi();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        delayPage.pluginBackend.reset();
                     }
                 }
             ]

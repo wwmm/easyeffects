@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
@@ -15,12 +16,12 @@ Kirigami.OverlaySheet {
         status.visible = true;
     }
 
-    parent: applicationWindow().overlay
+    parent: applicationWindow().overlay// qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
-    y: appWindow.header.height + Kirigami.Units.gridUnit
+    y: appWindow.header.height + Kirigami.Units.gridUnit// qmllint disable
     showCloseButton: false
-    implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)
+    implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
     implicitHeight: control.parent.height - 2 * control.header.height - control.y
     onClosed: {
         status.visible = false;
@@ -38,7 +39,7 @@ Kirigami.OverlaySheet {
             anchors.centerIn: parent
             width: parent.width - (Kirigami.Units.largeSpacing * 4)
             visible: listView.count === 0
-            text: i18n("Empty")
+            text: i18n("Empty") // qmllint disable
         }
     }
 
@@ -61,24 +62,24 @@ Kirigami.OverlaySheet {
             contentItem: RowLayout {
                 Controls.Label {
                     Layout.fillWidth: true
-                    text: translatedName
+                    text: listItemDelegate.translatedName
                 }
 
                 Controls.Button {
                     Layout.alignment: Qt.AlignCenter
                     icon.name: "list-add"
                     onClicked: {
-                        let plugins = streamDB.plugins;
+                        let plugins = control.streamDB.plugins;
                         let index_list = [];
                         for (let n = 0; n < plugins.length; n++) {
-                            if (plugins[n].startsWith(name)) {
+                            if (plugins[n].startsWith(listItemDelegate.name)) {
                                 const m = plugins[n].match(/#(\d+)$/);
                                 if (m.length === 2)
                                     index_list.push(m[1]);
                             }
                         }
                         const new_id = (index_list.length === 0) ? 0 : Math.max.apply(null, index_list) + 1;
-                        const new_name = name + "#" + new_id;
+                        const new_name = listItemDelegate.name + "#" + new_id;
                         /**
                          * If the list is not empty and the user is careful
                          * protecting their device with a plugin of type
@@ -128,8 +129,8 @@ Kirigami.OverlaySheet {
                         } else {
                             plugins.push(new_name);
                         }
-                        streamDB.plugins = plugins;
-                        showMenuStatus(i18n("Added Effect") + `: <strong>${translatedName}</strong>`);
+                        control.streamDB.plugins = plugins;
+                        showMenuStatus(i18n("Added Effect") + `: <strong>${translatedName}</strong>`);// qmllint disable
                     }
                 }
             }
@@ -141,7 +142,7 @@ Kirigami.OverlaySheet {
             id: search
 
             Layout.fillWidth: true
-            placeholderText: i18n("Search")
+            placeholderText: i18n("Search") // qmllint disable
             onAccepted: {
                 const re = Common.regExpEscape(search.text);
                 TagsPluginName.SortedNameModel.filterRegularExpression = RegExp(re, "i");

@@ -65,11 +65,14 @@ Rectangle {
         color: levelScale.yScale < 0.85 ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
 
         transform: Translate {
+            readonly property real dbFrac: (Common.dbToLinear(root.displayValue) - root.dbFrom) / (root.dbTo - root.dbFrom)
+            readonly property real frac: (root.displayValue - root.from) / (root.to - root.from)
+
             y: {
                 if (root.convertDecibelToLinear)
-                    root.height * (1.0 - (Common.dbToLinear(root.displayValue) - root.dbFrom) / (root.dbTo - root.dbFrom));
+                    return root.height * (1.0 - dbFrac);
                 else
-                    root.height * (1.0 - (root.displayValue - root.from) / (root.to - root.from));
+                    return root.height * (1.0 - frac);
             }
 
             Behavior on y {

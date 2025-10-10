@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
@@ -17,20 +17,20 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
-        reductionLevel.value = pluginBackend.getReductionLevel();
+        inputOutputLevels.inputLevelLeft = maximizerPage.pluginBackend.getInputLevelLeft();
+        inputOutputLevels.inputLevelRight = maximizerPage.pluginBackend.getInputLevelRight();
+        inputOutputLevels.outputLevelLeft = maximizerPage.pluginBackend.getOutputLevelLeft();
+        inputOutputLevels.outputLevelRight = maximizerPage.pluginBackend.getOutputLevelRight();
+        reductionLevel.value = maximizerPage.pluginBackend.getReductionLevel();
     }
 
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
-        pluginBackend.updateLevelMeters = true;
+        maximizerPage.pluginBackend.updateLevelMeters = true;
     }
     Component.onDestruction: {
         if (pluginBackend) {
-            pluginBackend.updateLevelMeters = false;
+            maximizerPage.pluginBackend.updateLevelMeters = false;
         }
     }
 
@@ -44,7 +44,7 @@ Kirigami.ScrollablePage {
                 id: cardControls
 
                 header: Kirigami.Heading {
-                    text: i18n("Controls")
+                    text: i18n("Controls") // qmllint disable
                     level: 2
                 }
 
@@ -52,32 +52,32 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: release
 
-                        label: i18n("Release")
+                        label: i18n("Release") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: pluginDB.getMinValue("release")
-                        to: pluginDB.getMaxValue("release")
-                        value: pluginDB.release
+                        from: maximizerPage.pluginDB.getMinValue("release")
+                        to: maximizerPage.pluginDB.getMaxValue("release")
+                        value: maximizerPage.pluginDB.release
                         decimals: 2
                         stepSize: 0.01
                         unit: "ms"
                         onValueModified: v => {
-                            pluginDB.release = v;
+                            maximizerPage.pluginDB.release = v;
                         }
                     }
 
                     EeSpinBox {
                         id: threshold
 
-                        label: i18n("Threshold")
+                        label: i18n("Threshold") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: pluginDB.getMinValue("threshold")
-                        to: pluginDB.getMaxValue("threshold")
-                        value: pluginDB.threshold
+                        from: maximizerPage.pluginDB.getMinValue("threshold")
+                        to: maximizerPage.pluginDB.getMaxValue("threshold")
+                        value: maximizerPage.pluginDB.threshold
                         decimals: 2
                         stepSize: 0.1
                         unit: "dB"
                         onValueModified: v => {
-                            pluginDB.threshold = v;
+                            maximizerPage.pluginDB.threshold = v;
                         }
                     }
 
@@ -85,7 +85,7 @@ Kirigami.ScrollablePage {
                         id: reductionLevel
                         Layout.topMargin: Kirigami.Units.largeSpacing
 
-                        label: i18n("Reduction")
+                        label: i18n("Reduction") // qmllint disable
                         unit: "dB"
                         from: 0
                         to: 40
@@ -105,7 +105,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.zam}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.zam}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -121,23 +121,23 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Show Native Window")
+                    text: i18n("Show Native Window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
-                    checked: pluginBackend ? pluginBackend.hasNativeUi() : false
+                    checked: maximizerPage.pluginBackend ? maximizerPage.pluginBackend.hasNativeUi() : false
                     onTriggered: {
                         if (checked)
-                            pluginBackend.showNativeUi();
+                            maximizerPage.pluginBackend.showNativeUi();
                         else
-                            pluginBackend.closeNativeUi();
+                            maximizerPage.pluginBackend.closeNativeUi();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        maximizerPage.pluginBackend.reset();
                     }
                 }
             ]

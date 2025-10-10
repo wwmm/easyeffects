@@ -4,7 +4,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
 import ee.pipewire as PW
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -55,7 +55,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Compressor")
+                    text: i18n("Compressor") // qmllint disable
                     level: 2
                 }
 
@@ -73,7 +73,7 @@ Kirigami.ScrollablePage {
                             id: mode
 
                             Layout.columnSpan: 2
-                            text: i18n("Mode")
+                            text: i18n("Mode") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: pluginDB.mode
                             editable: false
@@ -87,7 +87,7 @@ Kirigami.ScrollablePage {
                             id: boostThreshold
 
                             Layout.columnSpan: 2
-                            label: i18n("Boost Threshold")
+                            label: i18n("Boost Threshold") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pluginDB.getMinValue("boostThreshold")
@@ -107,7 +107,7 @@ Kirigami.ScrollablePage {
                             id: boostAmount
 
                             Layout.columnSpan: 2
-                            label: i18n("Boost Amount")
+                            label: i18n("Boost Amount") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pluginDB.getMinValue("boostAmount")
@@ -126,7 +126,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: ratio
 
-                            label: i18n("Ratio")
+                            label: i18n("Ratio") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pluginDB.getMinValue("ratio")
@@ -142,7 +142,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: knee
 
-                            label: i18n("Knee")
+                            label: i18n("Knee") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pluginDB.getMinValue("knee")
@@ -162,7 +162,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Threshold and Time")
+                    text: i18n("Threshold and Time") // qmllint disable
                     level: 2
                 }
 
@@ -179,7 +179,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: threshold
 
-                            label: i18n("Attack")
+                            label: i18n("Attack") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pluginDB.getMinValue("threshold")
@@ -212,7 +212,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: releaseThreshold
 
-                            label: i18n("Release")
+                            label: i18n("Release") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pluginDB.getMinValue("releaseThreshold")
@@ -249,7 +249,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Sidechain")
+                    text: i18n("Sidechain") // qmllint disable
                     level: 2
                 }
 
@@ -267,7 +267,7 @@ Kirigami.ScrollablePage {
                             id: sidechainType
 
                             Layout.columnSpan: 2
-                            text: i18n("Type")
+                            text: i18n("Type") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: pluginDB.sidechainType
                             editable: false
@@ -281,7 +281,7 @@ Kirigami.ScrollablePage {
                             id: comboSideChainInputDevice
 
                             Layout.columnSpan: 2
-                            text: i18n("Input Device")
+                            text: i18n("Input Device") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             editable: false
                             model: PW.ModelNodes
@@ -304,7 +304,7 @@ Kirigami.ScrollablePage {
                         FormCard.FormComboBoxDelegate {
                             id: sidechainMode
 
-                            text: i18n("Mode")
+                            text: i18n("Mode") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: pluginDB.sidechainMode
                             editable: false
@@ -317,7 +317,7 @@ Kirigami.ScrollablePage {
                         FormCard.FormComboBoxDelegate {
                             id: sidechainSource
 
-                            text: i18n("Source")
+                            text: i18n("Source") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: pluginDB.sidechainSource
                             editable: false
@@ -331,7 +331,7 @@ Kirigami.ScrollablePage {
                         FormCard.FormComboBoxDelegate {
                             id: stereoSplitSource
 
-                            text: i18n("Source")
+                            text: i18n("Source") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: pluginDB.stereoSplitSource
                             editable: false
@@ -348,7 +348,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Sidechain")
+                    text: i18n("Sidechain") // qmllint disable
                     level: 2
                 }
 
@@ -365,7 +365,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: sidechainPreamp
 
-                            label: i18n("Preamp")
+                            label: i18n("Preamp") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pluginDB.getMinValue("sidechainPreamp")
@@ -383,7 +383,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: sidechainReactivity
 
-                            label: i18n("Reactivity")
+                            label: i18n("Reactivity") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pluginDB.getMinValue("sidechainReactivity")
@@ -401,7 +401,7 @@ Kirigami.ScrollablePage {
                             id: sidechainLookahead
 
                             Layout.columnSpan: 2
-                            label: i18n("Lookahead")
+                            label: i18n("Lookahead") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pluginDB.getMinValue("sidechainLookahead")
@@ -420,7 +420,7 @@ Kirigami.ScrollablePage {
 
                             horizontalPadding: 0
                             verticalPadding: 0
-                            text: i18n("High-Pass")
+                            text: i18n("High-Pass") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: pluginDB.hpfMode
                             editable: false
@@ -435,7 +435,7 @@ Kirigami.ScrollablePage {
 
                             horizontalPadding: 0
                             verticalPadding: 0
-                            text: i18n("Low-Pass")
+                            text: i18n("Low-Pass") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: pluginDB.lpfMode
                             editable: false
@@ -492,7 +492,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Output")
+                    text: i18n("Output") // qmllint disable
                     level: 2
                 }
 
@@ -500,7 +500,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: dry
 
-                        label: i18n("Dry")
+                        label: i18n("Dry") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: pluginDB.getMinValue("dry")
@@ -523,7 +523,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: wet
 
-                        label: i18n("Wet")
+                        label: i18n("Wet") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: pluginDB.getMinValue("wet")
@@ -547,7 +547,7 @@ Kirigami.ScrollablePage {
                         id: makeup
 
                         Layout.columnSpan: 2
-                        label: i18n("Makeup")
+                        label: i18n("Makeup") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: pluginDB.getMinValue("makeup")
@@ -591,7 +591,7 @@ Kirigami.ScrollablePage {
                         Layout.alignment: Qt.AlignHCenter
                         topPadding: Kirigami.Units.smallSpacing
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("Reduction")
+                        text: i18n("Reduction") // qmllint disable
                     }
 
                     Controls.Label {
@@ -600,7 +600,7 @@ Kirigami.ScrollablePage {
                         Layout.leftMargin: Kirigami.Units.gridUnit
                         topPadding: Kirigami.Units.smallSpacing
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("Sidechain")
+                        text: i18n("Sidechain") // qmllint disable
                     }
 
                     EeAudioLevel {
@@ -661,26 +661,26 @@ Kirigami.ScrollablePage {
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("L")
+                        text: i18n("L") // qmllint disable
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("R")
+                        text: i18n("R") // qmllint disable
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         Layout.leftMargin: Kirigami.Units.gridUnit
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("L")
+                        text: i18n("L") // qmllint disable
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("R")
+                        text: i18n("R") // qmllint disable
                     }
                 }
             }
@@ -702,7 +702,7 @@ Kirigami.ScrollablePage {
                         Layout.alignment: Qt.AlignHCenter
                         topPadding: Kirigami.Units.smallSpacing
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("Curve")
+                        text: i18n("Curve") // qmllint disable
                     }
 
                     Controls.Label {
@@ -711,7 +711,7 @@ Kirigami.ScrollablePage {
                         Layout.leftMargin: Kirigami.Units.gridUnit
                         topPadding: Kirigami.Units.smallSpacing
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("Envelope")
+                        text: i18n("Envelope") // qmllint disable
                     }
 
                     EeAudioLevel {
@@ -770,26 +770,26 @@ Kirigami.ScrollablePage {
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("L")
+                        text: i18n("L") // qmllint disable
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("R")
+                        text: i18n("R") // qmllint disable
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         Layout.leftMargin: Kirigami.Units.gridUnit
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("L")
+                        text: i18n("L") // qmllint disable
                     }
 
                     Controls.Label {
                         Layout.alignment: Qt.AlignHCenter
                         horizontalAlignment: Text.AlignHCenter
-                        text: i18n("R")
+                        text: i18n("R") // qmllint disable
                     }
                 }
             }
@@ -804,7 +804,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -820,7 +820,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Show Native Window")
+                    text: i18n("Show Native Window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
@@ -833,7 +833,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Listen")
+                    text: i18n("Listen") // qmllint disable
                     icon.name: "audio-headset-symbolic"
                     checkable: true
                     checked: pluginDB.sidechainListen
@@ -843,7 +843,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Stereo Split")
+                    text: i18n("Stereo Split") // qmllint disable
                     icon.name: "view-split-left-right-symbolic"
                     checkable: true
                     checked: pluginDB.stereoSplit
@@ -853,7 +853,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         pluginBackend.reset();

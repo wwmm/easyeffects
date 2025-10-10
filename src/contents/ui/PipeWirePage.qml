@@ -1,3 +1,4 @@
+pragma ComponentBehavior: Bound
 import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
@@ -13,20 +14,24 @@ Kirigami.Page {
     padding: 0
     Component.onCompleted: {
         panelModel.append({
-            "title": i18n("General"),
-            "icon": "documentinfo-symbolic"
+            "title": i18n("General") // qmllint disable
+            ,
+            "iconName": "documentinfo-symbolic"
         });
         panelModel.append({
-            "title": i18n("Modules"),
-            "icon": "code-block-symbolic"
+            "title": i18n("Modules") // qmllint disable
+            ,
+            "iconName": "code-block-symbolic"
         });
         panelModel.append({
-            "title": i18n("Clients"),
-            "icon": "code-block-symbolic"
+            "title": i18n("Clients") // qmllint disable
+            ,
+            "iconName": "code-block-symbolic"
         });
         panelModel.append({
-            "title": i18n("Test Signal"),
-            "icon": "waveform-symbolic"
+            "title": i18n("Test Signal") // qmllint disable
+            ,
+            "iconName": "waveform-symbolic"
         });
         panelListView.currentIndex = DB.Manager.main.visiblePipeWirePage;
         switch (DB.Manager.main.visiblePipeWirePage) {
@@ -51,6 +56,8 @@ Kirigami.Page {
         id: generalPage
 
         FormCard.FormCardPage {
+            id: generalFormCard
+
             function comboFindRow(model, nodeName) {
                 let row = -1;
                 const nodeIndex = PW.ModelNodes.getModelIndexByName(nodeName);
@@ -77,7 +84,7 @@ Kirigami.Page {
 
             Connections {
                 function onDataChanged() {
-                    updateInputDevComboSelection();
+                    generalFormCard.updateInputDevComboSelection();
                 }
 
                 target: PW.ModelSourceDevices
@@ -85,29 +92,29 @@ Kirigami.Page {
 
             Connections {
                 function onDataChanged() {
-                    updateOutputDevComboSelection();
+                    generalFormCard.updateOutputDevComboSelection();
                 }
 
                 target: PW.ModelSinkDevices
             }
 
             FormCard.FormHeader {
-                title: i18n("Device Management")
+                title: i18n("Device Management") // qmllint disable
             }
 
             FormCard.FormSectionText {
-                text: i18n("It's recommended to NOT set Easy Effects Sink/Source as Default Device in external applications (e.g. Gnome Settings and Plasma System Settings)")
+                text: i18n("It's recommended to NOT set Easy Effects Sink/Source as Default Device in external applications (e.g. Gnome Settings and Plasma System Settings)") // qmllint disable
             }
 
             FormCard.FormCard {
                 EeSwitch {
                     id: useDefaultInputDevice
 
-                    label: i18n("Use Default Input")
+                    label: i18n("Use Default Input") // qmllint disable
                     isChecked: DB.Manager.streamInputs.useDefaultInputDevice
                     onCheckedChanged: {
                         if (isChecked)
-                            updateInputDevComboSelection();
+                            generalFormCard.updateInputDevComboSelection();
 
                         if (isChecked !== DB.Manager.streamInputs.useDefaultInputDevice)
                             DB.Manager.streamInputs.useDefaultInputDevice = isChecked;
@@ -117,7 +124,7 @@ Kirigami.Page {
                 FormCard.FormComboBoxDelegate {
                     id: comboInputDevice
 
-                    text: i18n("Name")
+                    text: i18n("Name") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     editable: false
                     model: PW.ModelSourceDevices
@@ -141,11 +148,11 @@ Kirigami.Page {
                 EeSwitch {
                     id: useDefaultOutputDevice
 
-                    label: i18n("Use Default Output")
+                    label: i18n("Use Default Output") // qmllint disable
                     isChecked: DB.Manager.streamOutputs.useDefaultOutputDevice
                     onCheckedChanged: {
                         if (isChecked)
-                            updateOutputDevComboSelection();
+                            generalFormCard.updateOutputDevComboSelection();
 
                         if (isChecked !== DB.Manager.streamOutputs.useDefaultOutputDevice)
                             DB.Manager.streamOutputs.useDefaultOutputDevice = isChecked;
@@ -155,7 +162,7 @@ Kirigami.Page {
                 FormCard.FormComboBoxDelegate {
                     id: comboOutputDevice
 
-                    text: i18n("Name")
+                    text: i18n("Name") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     editable: false
                     model: PW.ModelSinkDevices
@@ -174,42 +181,42 @@ Kirigami.Page {
             }
 
             FormCard.FormHeader {
-                title: i18n("Server Information")
+                title: i18n("Server Information") // qmllint disable
             }
 
             FormCard.FormCard {
                 FormCard.FormTextDelegate {
-                    text: i18n("Header Version")
+                    text: i18n("Header Version") // qmllint disable
                     description: PW.Manager.headerVersion
                 }
 
                 FormCard.FormTextDelegate {
-                    text: i18n("Library Version")
+                    text: i18n("Library Version") // qmllint disable
                     description: PW.Manager.libraryVersion
                 }
 
                 FormCard.FormTextDelegate {
-                    text: i18n("Runtime Version")
+                    text: i18n("Runtime Version") // qmllint disable
                     description: PW.Manager.runtimeVersion
                 }
 
                 FormCard.FormTextDelegate {
-                    text: i18n("Default Sampling Rate")
+                    text: i18n("Default Sampling Rate") // qmllint disable
                     description: PW.Manager.defaultClockRate + " Hz"
                 }
 
                 FormCard.FormTextDelegate {
-                    text: i18n("Minimum Quantum")
+                    text: i18n("Minimum Quantum") // qmllint disable
                     description: PW.Manager.defaultMinQuantum
                 }
 
                 FormCard.FormTextDelegate {
-                    text: i18n("Maximum Quantum")
+                    text: i18n("Maximum Quantum") // qmllint disable
                     description: PW.Manager.defaultMaxQuantum
                 }
 
                 FormCard.FormTextDelegate {
-                    text: i18n("Default Quantum")
+                    text: i18n("Default Quantum") // qmllint disable
                     description: PW.Manager.defaultQuantum
                 }
             }
@@ -231,7 +238,7 @@ Kirigami.Page {
                     anchors.centerIn: parent
                     width: parent.width - (Kirigami.Units.largeSpacing * 4)
                     visible: modulesListView.count === 0
-                    text: i18n("No Modules")
+                    text: i18n("No Modules") // qmllint disable
                 }
 
                 delegate: DelegateModulesList {}
@@ -254,7 +261,7 @@ Kirigami.Page {
                     anchors.centerIn: parent
                     width: parent.width - (Kirigami.Units.largeSpacing * 4)
                     visible: clientsListView.count === 0
-                    text: i18n("No Clients")
+                    text: i18n("No Clients") // qmllint disable
                 }
 
                 delegate: DelegateClientsList {}
@@ -267,14 +274,14 @@ Kirigami.Page {
 
         FormCard.FormCardPage {
             FormCard.FormHeader {
-                title: i18n("State")
+                title: i18n("State") // qmllint disable
             }
 
             FormCard.FormCard {
                 EeSwitch {
                     id: enableTestSignals
 
-                    label: i18n("Enabled")
+                    label: i18n("Enabled") // qmllint disable
                     isChecked: DB.Manager.testSignals.enable
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.testSignals.enable)
@@ -284,7 +291,7 @@ Kirigami.Page {
             }
 
             FormCard.FormHeader {
-                title: i18n("Channels")
+                title: i18n("Channels") // qmllint disable
             }
 
             FormCard.FormCard {
@@ -293,7 +300,7 @@ Kirigami.Page {
                 FormCard.FormRadioDelegate {
                     id: leftChannel
 
-                    text: i18n("Left")
+                    text: i18n("Left") // qmllint disable
                     checked: DB.Manager.testSignals.channels === 0
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.channels)
@@ -304,7 +311,7 @@ Kirigami.Page {
                 FormCard.FormRadioDelegate {
                     id: rightChannel
 
-                    text: i18n("Right")
+                    text: i18n("Right") // qmllint disable
                     checked: DB.Manager.testSignals.channels === 1
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.channels)
@@ -315,7 +322,7 @@ Kirigami.Page {
                 FormCard.FormRadioDelegate {
                     id: bothChannels
 
-                    text: i18n("Both")
+                    text: i18n("Both") // qmllint disable
                     checked: DB.Manager.testSignals.channels === 2
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.channels)
@@ -325,7 +332,7 @@ Kirigami.Page {
             }
 
             FormCard.FormHeader {
-                title: i18n("Waveform")
+                title: i18n("Waveform") // qmllint disable
             }
 
             FormCard.FormCard {
@@ -334,7 +341,7 @@ Kirigami.Page {
                 FormCard.FormRadioDelegate {
                     id: sineWave
 
-                    text: i18n("Sine Wave")
+                    text: i18n("Sine Wave") // qmllint disable
                     checked: DB.Manager.testSignals.signalType === 0
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.signalType)
@@ -345,7 +352,7 @@ Kirigami.Page {
                 FormCard.FormRadioDelegate {
                     id: whiteNoise
 
-                    text: i18n("White Noise")
+                    text: i18n("White Noise") // qmllint disable
                     checked: DB.Manager.testSignals.signalType === 1
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.signalType)
@@ -356,7 +363,7 @@ Kirigami.Page {
                 FormCard.FormRadioDelegate {
                     id: pinkNoise
 
-                    text: i18n("Pink Noise")
+                    text: i18n("Pink Noise") // qmllint disable
                     checked: DB.Manager.testSignals.signalType === 2
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.signalType)
@@ -367,7 +374,7 @@ Kirigami.Page {
                 EeSpinBox {
                     id: frequency
 
-                    label: i18n("Frequency")
+                    label: i18n("Frequency") // qmllint disable
                     from: 10
                     to: 22000
                     value: DB.Manager.testSignals.frequency
@@ -406,6 +413,9 @@ Kirigami.Page {
                 id: listItemDelegate
 
                 property int elide: Text.ElideRight
+                required property int index
+                required property string title
+                required property string iconName
 
                 width: parent ? parent.width : implicitWidth
                 hoverEnabled: true
@@ -438,7 +448,7 @@ Kirigami.Page {
                     spacing: Kirigami.Units.smallSpacing
 
                     Kirigami.Icon {
-                        source: model.icon
+                        source: listItemDelegate.iconName
                         Layout.preferredWidth: Kirigami.Units.iconSizes.sizeForLabels
                         Layout.preferredHeight: Kirigami.Units.iconSizes.sizeForLabels
                         Layout.alignment: Qt.AlignLeft
@@ -446,7 +456,7 @@ Kirigami.Page {
 
                     Controls.Label {
                         Layout.fillWidth: true
-                        text: model.title
+                        text: listItemDelegate.title
                         color: Kirigami.Theme.textColor
                         wrapMode: Text.WordWrap
                     }

@@ -2,8 +2,7 @@ import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.database as DB
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
@@ -52,7 +51,7 @@ Kirigami.ScrollablePage {
                     id: cardInputLevels
 
                     header: Kirigami.Heading {
-                        text: i18n("Input Level")
+                        text: i18n("Input Level") // qmllint disable
                         level: 2
                     }
 
@@ -62,7 +61,7 @@ Kirigami.ScrollablePage {
                         EeProgressBar {
                             id: inputL
 
-                            label: i18n("Left")
+                            label: i18n("Left") // qmllint disable
                             unit: "dB"
                             from: Common.minimumDecibelLevel
                             to: 10
@@ -78,7 +77,7 @@ Kirigami.ScrollablePage {
                         EeProgressBar {
                             id: inputR
 
-                            label: i18n("Right")
+                            label: i18n("Right") // qmllint disable
                             unit: "dB"
                             from: Common.minimumDecibelLevel
                             to: 10
@@ -97,7 +96,7 @@ Kirigami.ScrollablePage {
                     id: cardPeak
 
                     header: Kirigami.Heading {
-                        text: i18n("True Peak")
+                        text: i18n("True Peak") // qmllint disable
                         level: 2
                     }
 
@@ -107,7 +106,7 @@ Kirigami.ScrollablePage {
                         EeProgressBar {
                             id: truePeakL
 
-                            label: i18n("Left")
+                            label: i18n("Left") // qmllint disable
                             unit: "dB"
                             from: Common.minimumDecibelLevel
                             to: 10
@@ -123,7 +122,7 @@ Kirigami.ScrollablePage {
                         EeProgressBar {
                             id: truePeakR
 
-                            label: i18n("Right")
+                            label: i18n("Right") // qmllint disable
                             unit: "dB"
                             from: Common.minimumDecibelLevel
                             to: 10
@@ -143,7 +142,7 @@ Kirigami.ScrollablePage {
                 id: cardLoudness
 
                 header: Kirigami.Heading {
-                    text: i18n("Loudness")
+                    text: i18n("Loudness") // qmllint disable
                     level: 2
                 }
 
@@ -153,7 +152,7 @@ Kirigami.ScrollablePage {
                     EeProgressBar {
                         id: momentary
 
-                        label: i18n("Momentary")
+                        label: i18n("Momentary") // qmllint disable
                         unit: "LUFS"
                         from: Common.minimumDecibelLevel
                         to: 10
@@ -169,7 +168,7 @@ Kirigami.ScrollablePage {
                     EeProgressBar {
                         id: shortterm
 
-                        label: i18n("Short-Term")
+                        label: i18n("Short-Term") // qmllint disable
                         unit: "LUFS"
                         from: Common.minimumDecibelLevel
                         to: 10
@@ -185,7 +184,7 @@ Kirigami.ScrollablePage {
                     EeProgressBar {
                         id: integrated
 
-                        label: i18n("Integrated")
+                        label: i18n("Integrated") // qmllint disable
                         unit: "LUFS"
                         from: Common.minimumDecibelLevel
                         to: 10
@@ -201,7 +200,7 @@ Kirigami.ScrollablePage {
                     EeProgressBar {
                         id: relative
 
-                        label: i18n("Relative")
+                        label: i18n("Relative") // qmllint disable
                         unit: "LUFS"
                         from: Common.minimumDecibelLevel
                         to: 10
@@ -217,7 +216,7 @@ Kirigami.ScrollablePage {
                     EeProgressBar {
                         id: range
 
-                        label: i18n("Range")
+                        label: i18n("Range") // qmllint disable
                         unit: "LU"
                         from: 0
                         to: 50
@@ -236,7 +235,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.ebur128}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.ebur128}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -252,17 +251,17 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Reset History")
+                    text: i18n("Reset History") // qmllint disable
                     icon.name: "edit-clear-history-symbolic"
                     onTriggered: {
-                        pluginBackend.resetHistory();
+                        levelMeterPage.pluginBackend.resetHistory();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        levelMeterPage.pluginBackend.reset();
                     }
                 }
             ]

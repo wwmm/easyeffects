@@ -1,8 +1,7 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.database as DB
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
@@ -43,7 +42,7 @@ Kirigami.ScrollablePage {
                 id: cardControls
 
                 header: Kirigami.Heading {
-                    text: i18n("Controls")
+                    text: i18n("Controls") // qmllint disable
                     level: 2
                 }
 
@@ -51,48 +50,48 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: filterLength
 
-                        label: i18n("Filter Length")
+                        label: i18n("Filter Length") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: pluginDB.getMinValue("filterLength")
-                        to: pluginDB.getMaxValue("filterLength")
-                        value: pluginDB.filterLength
+                        from: echoCancellerPage.pluginDB.getMinValue("filterLength")
+                        to: echoCancellerPage.pluginDB.getMaxValue("filterLength")
+                        value: echoCancellerPage.pluginDB.filterLength
                         decimals: 0
                         stepSize: 1
                         unit: "ms"
                         onValueModified: v => {
-                            pluginDB.filterLength = v;
+                            echoCancellerPage.pluginDB.filterLength = v;
                         }
                     }
 
                     EeSpinBox {
                         id: residualEchoSuppression
 
-                        label: i18n("Residual Echo Suppression")
+                        label: i18n("Residual Echo Suppression") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: pluginDB.getMinValue("residualEchoSuppression")
-                        to: pluginDB.getMaxValue("residualEchoSuppression")
-                        value: pluginDB.residualEchoSuppression
+                        from: echoCancellerPage.pluginDB.getMinValue("residualEchoSuppression")
+                        to: echoCancellerPage.pluginDB.getMaxValue("residualEchoSuppression")
+                        value: echoCancellerPage.pluginDB.residualEchoSuppression
                         decimals: 0
                         stepSize: 1
                         unit: "dB"
                         onValueModified: v => {
-                            pluginDB.residualEchoSuppression = v;
+                            echoCancellerPage.pluginDB.residualEchoSuppression = v;
                         }
                     }
 
                     EeSpinBox {
                         id: nearEndSuppression
 
-                        label: i18n("Near End Suppression")
+                        label: i18n("Near End Suppression") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: pluginDB.getMinValue("nearEndSuppression")
-                        to: pluginDB.getMaxValue("nearEndSuppression")
-                        value: pluginDB.nearEndSuppression
+                        from: echoCancellerPage.pluginDB.getMinValue("nearEndSuppression")
+                        to: echoCancellerPage.pluginDB.getMaxValue("nearEndSuppression")
+                        value: echoCancellerPage.pluginDB.nearEndSuppression
                         decimals: 0
                         stepSize: 1
                         unit: "dB"
                         onValueModified: v => {
-                            pluginDB.nearEndSuppression = v;
+                            echoCancellerPage.pluginDB.nearEndSuppression = v;
                         }
                     }
                 }
@@ -108,7 +107,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.speex}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.speex}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -124,10 +123,10 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        echoCancellerPage.pluginBackend.reset();
                     }
                 }
             ]

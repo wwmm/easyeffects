@@ -2,8 +2,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
-import ee.pipewire as PW
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -46,7 +45,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Input")
+                    text: i18n("Input") // qmllint disable
                     level: 2
                 }
 
@@ -54,11 +53,11 @@ Kirigami.ScrollablePage {
                     EeSwitch {
                         id: softclip
 
-                        label: i18n("Softclip")
-                        isChecked: pluginDB.softclip
+                        label: i18n("Softclip") // qmllint disable
+                        isChecked: stereoToolsPage.pluginDB.softclip
                         onCheckedChanged: {
-                            if (isChecked !== pluginDB.softclip)
-                                pluginDB.softclip = isChecked;
+                            if (isChecked !== stereoToolsPage.pluginDB.softclip)
+                                stereoToolsPage.pluginDB.softclip = isChecked;
                         }
 
                         anchors {
@@ -70,16 +69,16 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: balanceIn
 
-                        label: i18n("Balance")
+                        label: i18n("Balance") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("balanceIn")
-                        to: pluginDB.getMaxValue("balanceIn")
-                        value: pluginDB.balanceIn
+                        from: stereoToolsPage.pluginDB.getMinValue("balanceIn")
+                        to: stereoToolsPage.pluginDB.getMaxValue("balanceIn")
+                        value: stereoToolsPage.pluginDB.balanceIn
                         decimals: 2
                         stepSize: 0.01
                         onValueModified: v => {
-                            pluginDB.balanceIn = v;
+                            stereoToolsPage.pluginDB.balanceIn = v;
                         }
 
                         anchors {
@@ -91,17 +90,17 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: scLevel
 
-                        label: i18n("S/C Level")
+                        label: i18n("S/C Level") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("scLevel")
-                        to: pluginDB.getMaxValue("scLevel")
-                        value: pluginDB.scLevel
+                        from: stereoToolsPage.pluginDB.getMinValue("scLevel")
+                        to: stereoToolsPage.pluginDB.getMaxValue("scLevel")
+                        value: stereoToolsPage.pluginDB.scLevel
                         decimals: 3
                         stepSize: 0.001
-                        enabled: pluginDB.softclip
+                        enabled: stereoToolsPage.pluginDB.softclip
                         onValueModified: v => {
-                            pluginDB.scLevel = v;
+                            stereoToolsPage.pluginDB.scLevel = v;
                         }
 
                         anchors {
@@ -115,7 +114,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Stereo Matrix")
+                    text: i18n("Stereo Matrix") // qmllint disable
                     level: 2
                 }
 
@@ -133,81 +132,81 @@ Kirigami.ScrollablePage {
                             id: mode
 
                             Layout.columnSpan: 2
-                            text: i18n("Mode")
+                            text: i18n("Mode") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.mode
+                            currentIndex: stereoToolsPage.pluginDB.mode
                             editable: false
-                            model: [i18n("LR > LR (Stereo Default)"), i18n("LR > MS (Stereo to Mid-Side)"), i18n("MS > LR (Mid-Side to Stereo)"), i18n("LR > LL (Mono Left Channel)"), i18n("LR > RR (Mono Right Channel)"), i18n("LR > L+R (Mono Sum L+R)"), i18n("LR > RL (Stereo Flip Channels)")]
+                            model: [i18n("LR > LR (Stereo Default)"), i18n("LR > MS (Stereo to Mid-Side)"), i18n("MS > LR (Mid-Side to Stereo)"), i18n("LR > LL (Mono Left Channel)"), i18n("LR > RR (Mono Right Channel)"), i18n("LR > L+R (Mono Sum L+R)"), i18n("LR > RL (Stereo Flip Channels)")] // qmllint disable
                             onActivated: idx => {
-                                pluginDB.mode = idx;
+                                stereoToolsPage.pluginDB.mode = idx;
                             }
                         }
 
                         EeSpinBox {
                             id: slev
 
-                            label: i18n("Side Level")
+                            label: i18n("Side Level") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("slev")
-                            to: pluginDB.getMaxValue("slev")
-                            value: pluginDB.slev
+                            from: stereoToolsPage.pluginDB.getMinValue("slev")
+                            to: stereoToolsPage.pluginDB.getMaxValue("slev")
+                            value: stereoToolsPage.pluginDB.slev
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.slev = v;
+                                stereoToolsPage.pluginDB.slev = v;
                             }
                         }
 
                         EeSpinBox {
                             id: sbal
 
-                            label: i18n("Side Balance")
+                            label: i18n("Side Balance") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("sbal")
-                            to: pluginDB.getMaxValue("sbal")
-                            value: pluginDB.sbal
+                            from: stereoToolsPage.pluginDB.getMinValue("sbal")
+                            to: stereoToolsPage.pluginDB.getMaxValue("sbal")
+                            value: stereoToolsPage.pluginDB.sbal
                             decimals: 2
                             stepSize: 0.01
                             onValueModified: v => {
-                                pluginDB.sbal = v;
+                                stereoToolsPage.pluginDB.sbal = v;
                             }
                         }
 
                         EeSpinBox {
                             id: mlev
 
-                            label: i18n("Middle Level")
+                            label: i18n("Middle Level") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("mlev")
-                            to: pluginDB.getMaxValue("mlev")
-                            value: pluginDB.mlev
+                            from: stereoToolsPage.pluginDB.getMinValue("mlev")
+                            to: stereoToolsPage.pluginDB.getMaxValue("mlev")
+                            value: stereoToolsPage.pluginDB.mlev
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.mlev = v;
+                                stereoToolsPage.pluginDB.mlev = v;
                             }
                         }
 
                         EeSpinBox {
                             id: mpan
 
-                            label: i18n("Middle Panorama")
+                            label: i18n("Middle Panorama") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("mpan")
-                            to: pluginDB.getMaxValue("mpan")
-                            value: pluginDB.mpan
+                            from: stereoToolsPage.pluginDB.getMinValue("mpan")
+                            to: stereoToolsPage.pluginDB.getMaxValue("mpan")
+                            value: stereoToolsPage.pluginDB.mpan
                             decimals: 2
                             stepSize: 0.01
                             onValueModified: v => {
-                                pluginDB.mpan = v;
+                                stereoToolsPage.pluginDB.mpan = v;
                             }
                         }
                     }
@@ -218,7 +217,7 @@ Kirigami.ScrollablePage {
 
                 contentItem: Column {
                     Kirigami.Heading {
-                        text: i18n("Left")
+                        text: i18n("Left") // qmllint disable
                         level: 2
 
                         anchors {
@@ -230,11 +229,11 @@ Kirigami.ScrollablePage {
                     EeSwitch {
                         id: mutel
 
-                        label: i18n("Mute")
-                        isChecked: pluginDB.mutel
+                        label: i18n("Mute") // qmllint disable
+                        isChecked: stereoToolsPage.pluginDB.mutel
                         onCheckedChanged: {
-                            if (isChecked !== pluginDB.mutel)
-                                pluginDB.mutel = isChecked;
+                            if (isChecked !== stereoToolsPage.pluginDB.mutel)
+                                stereoToolsPage.pluginDB.mutel = isChecked;
                         }
 
                         anchors {
@@ -246,11 +245,11 @@ Kirigami.ScrollablePage {
                     EeSwitch {
                         id: phasel
 
-                        label: i18n("Invert Phase")
-                        isChecked: pluginDB.phasel
+                        label: i18n("Invert Phase") // qmllint disable
+                        isChecked: stereoToolsPage.pluginDB.phasel
                         onCheckedChanged: {
-                            if (isChecked !== pluginDB.phasel)
-                                pluginDB.phasel = isChecked;
+                            if (isChecked !== stereoToolsPage.pluginDB.phasel)
+                                stereoToolsPage.pluginDB.phasel = isChecked;
                         }
 
                         anchors {
@@ -260,7 +259,7 @@ Kirigami.ScrollablePage {
                     }
 
                     Kirigami.Heading {
-                        text: i18n("Right")
+                        text: i18n("Right") // qmllint disable
                         level: 2
                         topPadding: Kirigami.Units.gridUnit * 2
 
@@ -273,11 +272,11 @@ Kirigami.ScrollablePage {
                     EeSwitch {
                         id: muter
 
-                        label: i18n("Mute")
-                        isChecked: pluginDB.muter
+                        label: i18n("Mute") // qmllint disable
+                        isChecked: stereoToolsPage.pluginDB.muter
                         onCheckedChanged: {
-                            if (isChecked !== pluginDB.muter)
-                                pluginDB.muter = isChecked;
+                            if (isChecked !== stereoToolsPage.pluginDB.muter)
+                                stereoToolsPage.pluginDB.muter = isChecked;
                         }
 
                         anchors {
@@ -289,11 +288,11 @@ Kirigami.ScrollablePage {
                     EeSwitch {
                         id: phaser
 
-                        label: i18n("Invert Phase")
-                        isChecked: pluginDB.phaser
+                        label: i18n("Invert Phase") // qmllint disable
+                        isChecked: stereoToolsPage.pluginDB.phaser
                         onCheckedChanged: {
-                            if (isChecked !== pluginDB.phaser)
-                                pluginDB.phaser = isChecked;
+                            if (isChecked !== stereoToolsPage.pluginDB.phaser)
+                                stereoToolsPage.pluginDB.phaser = isChecked;
                         }
 
                         anchors {
@@ -307,7 +306,7 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
 
                 header: Kirigami.Heading {
-                    text: i18n("Output")
+                    text: i18n("Output") // qmllint disable
                     level: 2
                 }
 
@@ -324,102 +323,102 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: balanceOut
 
-                            label: i18n("Balance")
+                            label: i18n("Balance") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("balanceOut")
-                            to: pluginDB.getMaxValue("balanceOut")
-                            value: pluginDB.balanceOut
+                            from: stereoToolsPage.pluginDB.getMinValue("balanceOut")
+                            to: stereoToolsPage.pluginDB.getMaxValue("balanceOut")
+                            value: stereoToolsPage.pluginDB.balanceOut
                             decimals: 2
                             stepSize: 0.01
                             onValueModified: v => {
-                                pluginDB.balanceOut = v;
+                                stereoToolsPage.pluginDB.balanceOut = v;
                             }
                         }
 
                         EeSpinBox {
                             id: delay
 
-                            label: i18n("Delay")
+                            label: i18n("Delay") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("delay")
-                            to: pluginDB.getMaxValue("delay")
-                            value: pluginDB.delay
+                            from: stereoToolsPage.pluginDB.getMinValue("delay")
+                            to: stereoToolsPage.pluginDB.getMaxValue("delay")
+                            value: stereoToolsPage.pluginDB.delay
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
                             onValueModified: v => {
-                                pluginDB.delay = v;
+                                stereoToolsPage.pluginDB.delay = v;
                             }
                         }
 
                         EeSpinBox {
                             id: stereoBase
 
-                            label: i18n("Stereo Base")
+                            label: i18n("Stereo Base") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("stereoBase")
-                            to: pluginDB.getMaxValue("stereoBase")
-                            value: pluginDB.stereoBase
+                            from: stereoToolsPage.pluginDB.getMinValue("stereoBase")
+                            to: stereoToolsPage.pluginDB.getMaxValue("stereoBase")
+                            value: stereoToolsPage.pluginDB.stereoBase
                             decimals: 2
                             stepSize: 0.01
                             onValueModified: v => {
-                                pluginDB.stereoBase = v;
+                                stereoToolsPage.pluginDB.stereoBase = v;
                             }
                         }
 
                         EeSpinBox {
                             id: stereoPhase
 
-                            label: i18n("Stereo Phase")
+                            label: i18n("Stereo Phase") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("stereoPhase")
-                            to: pluginDB.getMaxValue("stereoPhase")
-                            value: pluginDB.stereoPhase
+                            from: stereoToolsPage.pluginDB.getMinValue("stereoPhase")
+                            to: stereoToolsPage.pluginDB.getMaxValue("stereoPhase")
+                            value: stereoToolsPage.pluginDB.stereoPhase
                             decimals: 0
                             stepSize: 1
                             unit: "°"
                             onValueModified: v => {
-                                pluginDB.stereoPhase = v;
+                                stereoToolsPage.pluginDB.stereoPhase = v;
                             }
                         }
 
                         EeSpinBox {
                             id: dry
 
-                            label: i18n("Dry")
+                            label: i18n("Dry") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("dry")
-                            to: pluginDB.getMaxValue("dry")
-                            value: pluginDB.dry
+                            from: stereoToolsPage.pluginDB.getMinValue("dry")
+                            to: stereoToolsPage.pluginDB.getMaxValue("dry")
+                            value: stereoToolsPage.pluginDB.dry
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.dry = v;
+                                stereoToolsPage.pluginDB.dry = v;
                             }
                         }
 
                         EeSpinBox {
                             id: wet
 
-                            label: i18n("Wet")
+                            label: i18n("Wet") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("wet")
-                            to: pluginDB.getMaxValue("wet")
-                            value: pluginDB.wet
+                            from: stereoToolsPage.pluginDB.getMinValue("wet")
+                            to: stereoToolsPage.pluginDB.getMaxValue("wet")
+                            value: stereoToolsPage.pluginDB.wet
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.wet = v;
+                                stereoToolsPage.pluginDB.wet = v;
                             }
                         }
                     }
@@ -436,7 +435,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.calf}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.calf}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -452,23 +451,23 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Show Native Window")
+                    text: i18n("Show Native Window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
-                    checked: pluginBackend ? pluginBackend.hasNativeUi() : false
+                    checked: stereoToolsPage.pluginBackend ? stereoToolsPage.pluginBackend.hasNativeUi() : false
                     onTriggered: {
                         if (checked)
-                            pluginBackend.showNativeUi();
+                            stereoToolsPage.pluginBackend.showNativeUi();
                         else
-                            pluginBackend.closeNativeUi();
+                            stereoToolsPage.pluginBackend.closeNativeUi();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        stereoToolsPage.pluginBackend.reset();
                     }
                 }
             ]

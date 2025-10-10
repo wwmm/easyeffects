@@ -36,13 +36,13 @@ Kirigami.Page {
             }
 
             verticalPadding: 0
-            text: i18n("Device")
+            text: i18n("Device") // qmllint disable
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: 0
             textRole: "description"
             editable: false
             model: DB.Manager.main.visiblePage === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
-            description: i18n("Hardware Profile") + `: ${deviceProfileName}`
+            description: i18n("Hardware Profile") + `: ${deviceProfileName}` // qmllint disable
         }
 
         Kirigami.Icon {
@@ -56,7 +56,7 @@ Kirigami.Page {
             id: preset
 
             verticalPadding: 0
-            text: i18n("Local Preset")
+            text: i18n("Local Preset") // qmllint disable
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: 0
             textRole: "name"
@@ -66,7 +66,7 @@ Kirigami.Page {
 
         Controls.Button {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-            text: i18n("Create")
+            text: i18n("Create") // qmllint disable
             icon.name: "list-add-symbolic"
             onClicked: {
                 const deviceId = device.deviceId;
@@ -104,11 +104,13 @@ Kirigami.Page {
                     anchors.centerIn: parent
                     width: parent.width - (Kirigami.Units.largeSpacing * 4)
                     visible: streamsListView.count === 0
-                    text: i18n("Empty List")
+                    text: i18n("Empty List") // qmllint disable
                     icon.name: "notification-empty"
                 }
 
                 delegate: Kirigami.AbstractCard {
+                    id: abstractCard
+
                     required property string deviceName
                     required property string deviceDescription
                     required property string deviceProfile
@@ -134,13 +136,13 @@ Kirigami.Page {
                                 Layout.alignment: Qt.AlignRight
                                 wrapMode: Text.WordWrap
                                 horizontalAlignment: Qt.AlignRight
-                                text: i18n("Device")
+                                text: i18n("Device") // qmllint disable
                             }
 
                             Controls.Label {
                                 Layout.fillWidth: true
                                 wrapMode: Text.WrapAnywhere
-                                text: deviceName
+                                text: abstractCard.deviceName
                                 color: Kirigami.Theme.disabledTextColor
                             }
 
@@ -150,9 +152,9 @@ Kirigami.Page {
                                 icon.name: "delete"
                                 onClicked: {
                                     if (DB.Manager.main.visiblePage === 0)
-                                        Presets.Manager.removeAutoload(1, devicePreset, deviceName, deviceProfile);
+                                        Presets.Manager.removeAutoload(1, abstractCard.devicePreset, abstractCard.deviceName, abstractCard.deviceProfile);
                                     else if (DB.Manager.main.visiblePage === 1)
-                                        Presets.Manager.removeAutoload(0, devicePreset, deviceName, deviceProfile);
+                                        Presets.Manager.removeAutoload(0, abstractCard.devicePreset, abstractCard.deviceName, abstractCard.deviceProfile);
                                 }
                             }
 
@@ -160,13 +162,13 @@ Kirigami.Page {
                                 Layout.alignment: Qt.AlignRight
                                 wrapMode: Text.WordWrap
                                 horizontalAlignment: Qt.AlignRight
-                                text: i18n("Description")
+                                text: i18n("Description") // qmllint disable
                             }
 
                             Controls.Label {
                                 Layout.fillWidth: true
                                 wrapMode: Text.WrapAnywhere
-                                text: deviceDescription
+                                text: abstractCard.deviceDescription
                                 color: Kirigami.Theme.disabledTextColor
                             }
 
@@ -174,26 +176,26 @@ Kirigami.Page {
                                 Layout.alignment: Qt.AlignRight
                                 wrapMode: Text.WordWrap
                                 horizontalAlignment: Qt.AlignRight
-                                text: i18n("Hardware Profile")
+                                text: i18n("Hardware Profile") // qmllint disable
                             }
 
                             Controls.Label {
                                 Layout.fillWidth: true
                                 wrapMode: Text.WrapAnywhere
-                                text: deviceProfile
+                                text: abstractCard.deviceProfile
                                 color: Kirigami.Theme.disabledTextColor
                             }
 
                             Controls.Label {
                                 Layout.alignment: Qt.AlignRight
                                 wrapMode: Text.WordWrap
-                                text: i18n("Local Preset")
+                                text: i18n("Local Preset") // qmllint disable
                             }
 
                             Controls.Label {
                                 Layout.fillWidth: true
                                 wrapMode: Text.WrapAnywhere
-                                text: devicePreset
+                                text: abstractCard.devicePreset
                                 color: Kirigami.Theme.disabledTextColor
                             }
                         }
@@ -226,7 +228,7 @@ Kirigami.Page {
 
                 Layout.fillWidth: true
                 verticalPadding: 0
-                text: i18n("Fallback Preset")
+                text: i18n("Fallback Preset") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: {
                     const fallbackPreset = DB.Manager.main.visiblePage === 0 ? DB.Manager.main.outputAutoloadingFallbackPreset : DB.Manager.main.inputAutoloadingFallbackPreset;

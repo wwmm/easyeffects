@@ -105,7 +105,7 @@ Kirigami.ApplicationWindow {
         target: DB.Manager.main
 
         function onVisiblePageChanged() {
-            openMappedPage(DB.Manager.main.visiblePage);
+            appWindow.openMappedPage(DB.Manager.main.visiblePage);
         }
     }
 
@@ -159,8 +159,8 @@ Kirigami.ApplicationWindow {
     Kirigami.PromptDialog {
         id: resetPromptDialog
 
-        title: i18n("Reset Settings?")
-        subtitle: i18n("Are you sure you want to reset all Easy Effects settings?")
+        title: i18n("Reset Settings?") // qmllint disable
+        subtitle: i18n("Are you sure you want to reset all Easy Effects settings?") // qmllint disable
         standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
         onAccepted: DB.Manager.resetAll()
     }
@@ -168,7 +168,7 @@ Kirigami.ApplicationWindow {
     Kirigami.OverlaySheet {
         id: aboutSheet
 
-        parent: applicationWindow().overlay
+        parent: applicationWindow().overlay// qmllint disable
         closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
         focus: true
         y: appWindow.header.height + Kirigami.Units.gridUnit
@@ -181,18 +181,21 @@ Kirigami.ApplicationWindow {
                 "displayName": "Easy Effects",
                 "productName": "easyeffects",
                 "componentName": "easyeffects",
-                "shortDescription": i18n("Audio effects for PipeWire applications"),
+                "shortDescription": i18n("Audio effects for PipeWire applications") // qmllint disable
+                ,
                 "homepage": "https://github.com/wwmm/easyeffects",
                 "bugAddress": "https://github.com/wwmm/easyeffects/issues",
                 "donateUrl": "https://github.com/wwmm/easyeffects",
                 "getInvolvedUrl": "https://github.com/wwmm/easyeffects",
-                "version": projectVersion,
+                "version": projectVersion// qmllint disable
+                ,
                 "programLogo": "com.github.wwmm.easyeffects",
                 "otherText": "",
                 "authors": [
                     {
                         "name": "Wellington Wallace",
-                        "task": i18nc("@info:credit", "Developer"),
+                        "task": i18nc("@info:credit", "Developer") // qmllint disable
+                        ,
                         "emailAddress": "wellingtonwallace@gmail.com",
                         "webAddress": "",
                         "ocsUsername": ""
@@ -216,7 +219,7 @@ Kirigami.ApplicationWindow {
     SystemTrayIcon {
         id: tray
 
-        visible: DB.Manager.main.showTrayIcon && canUseSysTray
+        visible: DB.Manager.main.showTrayIcon && canUseSysTray // qmllint disable
         icon.name: "com.github.wwmm.easyeffects"
         tooltip: "Easy Effects"
         onActivated: {
@@ -238,9 +241,9 @@ Kirigami.ApplicationWindow {
 
                 model: DB.Manager.streamInputs.mostUsedPresets
                 delegate: MenuItem {
-                    text: modelData
+                    text: modelData// qmllint disable
                     onTriggered: {
-                        Presets.Manager.loadLocalPresetFile(0, modelData);
+                        Presets.Manager.loadLocalPresetFile(0, modelData);// qmllint disable
                     }
                 }
 
@@ -253,9 +256,9 @@ Kirigami.ApplicationWindow {
 
                 model: DB.Manager.streamOutputs.mostUsedPresets
                 delegate: MenuItem {
-                    text: modelData
+                    text: modelData// qmllint disable
                     onTriggered: {
-                        Presets.Manager.loadLocalPresetFile(1, modelData);
+                        Presets.Manager.loadLocalPresetFile(1, modelData);// qmllint disable
                     }
                 }
 
@@ -264,7 +267,7 @@ Kirigami.ApplicationWindow {
             }
 
             MenuItem {
-                text: i18n("Input Presets")
+                text: i18n("Input Presets") // qmllint disable
                 icon.name: "bookmarks-symbolic"
                 enabled: false
             }
@@ -274,7 +277,7 @@ Kirigami.ApplicationWindow {
             }
 
             MenuItem {
-                text: i18n("Output Presets")
+                text: i18n("Output Presets") // qmllint disable
                 icon.name: "bookmarks-symbolic"
                 enabled: false
             }
@@ -284,7 +287,7 @@ Kirigami.ApplicationWindow {
             }
 
             MenuItem {
-                text: i18n("Active")
+                text: i18n("Active") // qmllint disable
                 checkable: true
                 checked: !DB.Manager.main.bypass
                 onTriggered: {
@@ -295,7 +298,7 @@ Kirigami.ApplicationWindow {
             MenuSeparator {}
 
             MenuItem {
-                text: i18n("Shortcuts")
+                text: i18n("Shortcuts") // qmllint disable
                 icon.name: "configure-shortcuts-symbolic"
                 onTriggered: {
                     appWindow.show();
@@ -304,7 +307,7 @@ Kirigami.ApplicationWindow {
             }
 
             MenuItem {
-                text: i18n("Manual")
+                text: i18n("Manual") // qmllint disable
                 icon.name: "help-contents-symbolic"
                 onTriggered: {
                     Help.Manager.openManual();
@@ -314,7 +317,7 @@ Kirigami.ApplicationWindow {
             MenuSeparator {}
 
             MenuItem {
-                text: i18n("Quit")
+                text: i18n("Quit") // qmllint disable
                 icon.name: "gtk-quit"
                 onTriggered: Qt.quit()
             }
@@ -336,7 +339,7 @@ Kirigami.ApplicationWindow {
                 overflowIconName: "overflow-menu-left"
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Presets")
+                        text: i18n("Presets") // qmllint disable
                         icon.name: "bookmarks-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         onTriggered: {
@@ -344,7 +347,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Turn Effects On/Off")
+                        text: i18n("Turn Effects On/Off") // qmllint disable
                         icon.name: "system-shutdown-symbolic"
                         icon.color: checked === true ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
                         displayHint: Kirigami.DisplayHint.IconOnly
@@ -366,7 +369,7 @@ Kirigami.ApplicationWindow {
                     Kirigami.Action {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         icon.name: "audio-speakers-symbolic"
-                        text: i18n("Output")
+                        text: i18n("Output") // qmllint disable
                         checkable: true
                         checked: DB.Manager.main.visiblePage === 0
                         onTriggered: {
@@ -376,7 +379,7 @@ Kirigami.ApplicationWindow {
                     Kirigami.Action {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         icon.name: "audio-input-microphone-symbolic"
-                        text: i18n("Input")
+                        text: i18n("Input") // qmllint disable
                         checkable: true
                         checked: DB.Manager.main.visiblePage === 1
                         onTriggered: {
@@ -386,7 +389,7 @@ Kirigami.ApplicationWindow {
                     Kirigami.Action {
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         icon.name: "network-server-symbolic"
-                        text: i18n("PipeWire")
+                        text: i18n("PipeWire") // qmllint disable
                         checkable: true
                         checked: DB.Manager.main.visiblePage === 2
                         onTriggered: {
@@ -401,7 +404,7 @@ Kirigami.ApplicationWindow {
                 overflowIconName: "application-menu-symbolic"
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Preferences")
+                        text: i18n("Preferences") // qmllint disable
                         icon.name: "gtk-preferences-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
@@ -409,7 +412,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Shortcuts")
+                        text: i18n("Shortcuts") // qmllint disable
                         icon.name: "configure-shortcuts-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
@@ -417,7 +420,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Manual")
+                        text: i18n("Manual") // qmllint disable
                         icon.name: "help-contents-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
@@ -429,7 +432,7 @@ Kirigami.ApplicationWindow {
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                     },
                     Kirigami.Action {
-                        text: i18n("Reset")
+                        text: i18n("Reset") // qmllint disable
                         icon.name: "edit-reset-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
@@ -441,7 +444,7 @@ Kirigami.ApplicationWindow {
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                     },
                     Kirigami.Action {
-                        text: i18n("About Easy Effects")
+                        text: i18n("About Easy Effects") // qmllint disable
                         icon.name: "com.github.wwmm.easyeffects"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
@@ -449,7 +452,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Quit")
+                        text: i18n("Quit") // qmllint disable
                         icon.name: "gtk-quit"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {

@@ -1,8 +1,7 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import ee.database as DB
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
 
 Kirigami.ScrollablePage {
@@ -45,7 +44,7 @@ Kirigami.ScrollablePage {
                 id: cardControls
 
                 header: Kirigami.Heading {
-                    text: i18n("Quality")
+                    text: i18n("Quality") // qmllint disable
                     level: 2
                 }
 
@@ -53,7 +52,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: sequenceLength
 
-                        label: i18n("Sequence Length")
+                        label: i18n("Sequence Length") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pitchPage.pluginDB.getMinValue("sequenceLength")
                         to: pitchPage.pluginDB.getMaxValue("sequenceLength")
@@ -69,7 +68,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: seekWindow
 
-                        label: i18n("Seek Window")
+                        label: i18n("Seek Window") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pitchPage.pluginDB.getMinValue("seekWindow")
                         to: pitchPage.pluginDB.getMaxValue("seekWindow")
@@ -85,7 +84,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: overlapLength
 
-                        label: i18n("Overlap Length")
+                        label: i18n("Overlap Length") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pitchPage.pluginDB.getMinValue("overlapLength")
                         to: pitchPage.pluginDB.getMaxValue("overlapLength")
@@ -106,7 +105,7 @@ Kirigami.ScrollablePage {
                 implicitWidth: cardLayout.maximumColumnWidth
 
                 header: Kirigami.Heading {
-                    text: i18n("Pitch")
+                    text: i18n("Pitch") // qmllint disable
                     level: 2
                 }
 
@@ -122,7 +121,7 @@ Kirigami.ScrollablePage {
                             id: octaves
 
                             Layout.columnSpan: 2
-                            label: i18n("Octaves")
+                            label: i18n("Octaves") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pitchPage.pluginDB.getMinValue("octaves")
@@ -138,7 +137,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: cents
 
-                            label: i18n("Cents")
+                            label: i18n("Cents") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pitchPage.pluginDB.getMinValue("cents")
@@ -154,7 +153,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: semitones
 
-                            label: i18n("Semitones")
+                            label: i18n("Semitones") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pitchPage.pluginDB.getMinValue("semitones")
@@ -170,7 +169,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: tempoDifference
 
-                            label: i18n("Tempo Difference")
+                            label: i18n("Tempo Difference") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pitchPage.pluginDB.getMinValue("tempoDifference")
@@ -187,7 +186,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: rateDifference
 
-                            label: i18n("Rate Difference")
+                            label: i18n("Rate Difference") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pitchPage.pluginDB.getMinValue("rateDifference")
@@ -214,7 +213,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.soundTouch}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.soundTouch}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -230,14 +229,14 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Reset History")
+                    text: i18n("Reset History") // qmllint disable
                     icon.name: "edit-clear-history-symbolic"
                     onTriggered: {
                         pitchPage.pluginBackend.resetHistory();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Quick Seek")
+                    text: i18n("Quick Seek") // qmllint disable
                     icon.name: "media-seek-forward-symbolic"
                     checkable: true
                     checked: pitchPage.pluginDB.quickSeek
@@ -247,7 +246,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Anti-aliasing")
+                    text: i18n("Anti-aliasing") // qmllint disable
                     icon.name: "filter-symbolic"
                     checkable: true
                     checked: pitchPage.pluginDB.antiAlias
@@ -257,7 +256,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset Settings")
+                    text: i18n("Reset Settings") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         pitchPage.pluginBackend.reset();

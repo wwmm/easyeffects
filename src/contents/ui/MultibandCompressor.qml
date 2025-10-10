@@ -5,7 +5,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
 import ee.pipewire as PW
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -72,29 +72,29 @@ Kirigami.ScrollablePage {
 
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Mute")
+                        text: i18n("Mute") // qmllint disable
                         checkable: true
-                        checked: pluginDB[multibandCompressorPage.bandId + "Mute"]
+                        checked: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Mute"]
                         onTriggered: {
-                            if (pluginDB[multibandCompressorPage.bandId + "Mute"] != checked)
-                                pluginDB[multibandCompressorPage.bandId + "Mute"] = checked;
+                            if (multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Mute"] != checked)
+                                multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Mute"] = checked;
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Solo")
+                        text: i18n("Solo") // qmllint disable
                         checkable: true
-                        checked: pluginDB[multibandCompressorPage.bandId + "Solo"]
+                        checked: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Solo"]
                         onTriggered: {
-                            if (pluginDB[multibandCompressorPage.bandId + "Solo"] != checked)
-                                pluginDB[multibandCompressorPage.bandId + "Solo"] = checked;
+                            if (multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Solo"] != checked)
+                                multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Solo"] = checked;
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Bypass")
+                        text: i18n("Bypass") // qmllint disable
                         checkable: true
-                        checked: !pluginDB[multibandCompressorPage.bandId + "CompressorEnable"]
+                        checked: !multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "CompressorEnable"]
                         onTriggered: {
-                            pluginDB[multibandCompressorPage.bandId + "CompressorEnable"] = !checked;
+                            multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "CompressorEnable"] = !checked;
                         }
                     }
                 ]
@@ -114,20 +114,20 @@ Kirigami.ScrollablePage {
 
                     Layout.alignment: bandMode.currentIndex === 0 ? Qt.AlignHCenter : Qt.AlignRight
                     Layout.fillWidth: bandControlsLayout.columns === 1 ? true : false
-                    text: i18n("Compression Mode")
+                    text: i18n("Compression Mode") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: pluginDB[multibandCompressorPage.bandId + "CompressionMode"]
+                    currentIndex: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "CompressionMode"]
                     editable: false
-                    model: [i18n("Downward"), i18n("Upward"), i18n("Boosting")]
+                    model: [i18n("Downward"), i18n("Upward"), i18n("Boosting")]// qmllint disable
                     onActivated: idx => {
-                        pluginDB[multibandCompressorPage.bandId + "CompressionMode"] = idx;
+                        multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "CompressionMode"] = idx;
                     }
                 }
 
                 EeSpinBox {
                     Layout.alignment: Qt.AlignLeft
                     Layout.fillWidth: bandControlsLayout.columns === 1 ? true : false
-                    label: i18n("Boost Threshold")
+                    label: i18n("Boost Threshold") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
                     from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "BoostThreshold")
@@ -146,7 +146,7 @@ Kirigami.ScrollablePage {
                 EeSpinBox {
                     Layout.alignment: Qt.AlignLeft | Qt.AlignBottom
                     Layout.fillWidth: bandControlsLayout.columns === 1 ? true : false
-                    label: i18n("Boost Amount")
+                    label: i18n("Boost Amount") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
                     from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "BoostAmount")
@@ -191,22 +191,22 @@ Kirigami.ScrollablePage {
                             Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Frequency")
+                            text: i18n("Frequency") // qmllint disable
                         }
 
                         EeSpinBox {
-                            label: i18n("Start")
+                            label: i18n("Start") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: bandsListview.currentIndex > 0 ? pluginDB.getMinValue(multibandCompressorPage.bandId + "SplitFrequency") : from
-                            to: bandsListview.currentIndex > 0 ? pluginDB.getMaxValue(multibandCompressorPage.bandId + "SplitFrequency") : to
-                            value: bandsListview.currentIndex > 0 ? pluginDB[multibandCompressorPage.bandId + "SplitFrequency"] : 0
+                            from: bandsListview.currentIndex > 0 ? multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "SplitFrequency") : from
+                            to: bandsListview.currentIndex > 0 ? multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "SplitFrequency") : to
+                            value: bandsListview.currentIndex > 0 ? multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SplitFrequency"] : 0
                             decimals: 0
                             stepSize: 1
                             unit: "Hz"
                             enabled: bandsListview.currentIndex > 0
                             onValueModified: v => {
-                                pluginDB[multibandCompressorPage.bandId + "SplitFrequency"] = v;
+                                multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SplitFrequency"] = v;
                             }
                         }
 
@@ -214,7 +214,7 @@ Kirigami.ScrollablePage {
                             Controls.Label {
                                 Layout.fillWidth: true
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("End")
+                                text: i18n("End") // qmllint disable
                             }
 
                             Controls.Label {
@@ -240,36 +240,36 @@ Kirigami.ScrollablePage {
                             Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Attack")
+                            text: i18n("Attack") // qmllint disable
                         }
 
                         EeSpinBox {
-                            label: i18n("Time")
+                            label: i18n("Time") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue(multibandCompressorPage.bandId + "AttackTime")
-                            to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "AttackTime")
-                            value: pluginDB[multibandCompressorPage.bandId + "AttackTime"]
+                            from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "AttackTime")
+                            to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "AttackTime")
+                            value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "AttackTime"]
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
                             onValueModified: v => {
-                                pluginDB[multibandCompressorPage.bandId + "AttackTime"] = v;
+                                multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "AttackTime"] = v;
                             }
                         }
 
                         EeSpinBox {
-                            label: i18n("Threshold")
+                            label: i18n("Threshold") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue(multibandCompressorPage.bandId + "AttackThreshold")
-                            to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "AttackThreshold")
-                            value: pluginDB[multibandCompressorPage.bandId + "AttackThreshold"]
+                            from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "AttackThreshold")
+                            to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "AttackThreshold")
+                            value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "AttackThreshold"]
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             onValueModified: v => {
-                                pluginDB[multibandCompressorPage.bandId + "AttackThreshold"] = v;
+                                multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "AttackThreshold"] = v;
                             }
                         }
                     }
@@ -288,37 +288,37 @@ Kirigami.ScrollablePage {
                             Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Release")
+                            text: i18n("Release") // qmllint disable
                         }
 
                         EeSpinBox {
-                            label: i18n("Time")
+                            label: i18n("Time") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue(multibandCompressorPage.bandId + "ReleaseTime")
-                            to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "ReleaseTime")
-                            value: pluginDB[multibandCompressorPage.bandId + "ReleaseTime"]
+                            from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "ReleaseTime")
+                            to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "ReleaseTime")
+                            value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "ReleaseTime"]
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
                             onValueModified: v => {
-                                pluginDB[multibandCompressorPage.bandId + "ReleaseTime"] = v;
+                                multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "ReleaseTime"] = v;
                             }
                         }
 
                         EeSpinBox {
-                            label: i18n("Threshold")
+                            label: i18n("Threshold") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue(multibandCompressorPage.bandId + "ReleaseThreshold")
-                            to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "ReleaseThreshold")
-                            value: pluginDB[multibandCompressorPage.bandId + "ReleaseThreshold"]
+                            from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "ReleaseThreshold")
+                            to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "ReleaseThreshold")
+                            value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "ReleaseThreshold"]
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB[multibandCompressorPage.bandId + "ReleaseThreshold"] = v;
+                                multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "ReleaseThreshold"] = v;
                             }
                         }
                     }
@@ -339,54 +339,54 @@ Kirigami.ScrollablePage {
                             Layout.columnSpan: bandControlsLayout.columns === 1 ? 1 : 3
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Gain")
+                            text: i18n("Gain") // qmllint disable
                         }
 
                         EeSpinBox {
-                            label: i18n("Ratio")
+                            label: i18n("Ratio") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             Layout.minimumWidth: Kirigami.Units.gridUnit * 6
-                            from: pluginDB.getMinValue(multibandCompressorPage.bandId + "Ratio")
-                            to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "Ratio")
-                            value: pluginDB[multibandCompressorPage.bandId + "Ratio"]
+                            from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "Ratio")
+                            to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "Ratio")
+                            value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Ratio"]
                             decimals: 1
                             stepSize: 0.1
                             onValueModified: v => {
-                                pluginDB[multibandCompressorPage.bandId + "Ratio"] = v;
+                                multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Ratio"] = v;
                             }
                         }
 
                         EeSpinBox {
-                            label: i18n("Knee")
+                            label: i18n("Knee") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             Layout.minimumWidth: Kirigami.Units.gridUnit * 6
-                            from: pluginDB.getMinValue(multibandCompressorPage.bandId + "Knee")
-                            to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "Knee")
-                            value: pluginDB[multibandCompressorPage.bandId + "Knee"]
+                            from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "Knee")
+                            to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "Knee")
+                            value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Knee"]
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
                             onValueModified: v => {
-                                pluginDB[multibandCompressorPage.bandId + "Knee"] = v;
+                                multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Knee"] = v;
                             }
                         }
 
                         EeSpinBox {
                             id: bandMakeup
-                            label: i18n("Makeup")
+                            label: i18n("Makeup") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             Layout.minimumWidth: Kirigami.Units.gridUnit * 6
-                            from: pluginDB.getMinValue(multibandCompressorPage.bandId + "Makeup")
-                            to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "Makeup")
-                            value: pluginDB[multibandCompressorPage.bandId + "Makeup"]
+                            from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "Makeup")
+                            to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "Makeup")
+                            value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Makeup"]
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
                             onValueModified: v => {
-                                pluginDB[multibandCompressorPage.bandId + "Makeup"] = v;
+                                multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "Makeup"] = v;
                             }
                         }
                     }
@@ -408,118 +408,118 @@ Kirigami.ScrollablePage {
                 }
 
                 FormCard.FormComboBoxDelegate {
-                    text: i18n("Type")
+                    text: i18n("Type") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: pluginDB[multibandCompressorPage.bandId + "SidechainType"]
+                    currentIndex: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainType"]
                     editable: false
-                    model: [i18n("Internal"), i18n("External"), i18n("Link")]
+                    model: [i18n("Internal"), i18n("External"), i18n("Link")]// qmllint disable
                     onActivated: idx => {
-                        pluginDB[multibandCompressorPage.bandId + "SidechainType"] = idx;
+                        multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainType"] = idx;
                     }
                 }
 
                 FormCard.FormComboBoxDelegate {
-                    text: i18n("Mode")
+                    text: i18n("Mode") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: pluginDB[multibandCompressorPage.bandId + "SidechainMode"]
+                    currentIndex: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainMode"]
                     editable: false
-                    model: [i18n("Peak"), i18n("RMS"), i18n("LPF"), i18n("SMA")]
+                    model: [i18n("Peak"), i18n("RMS"), i18n("LPF"), i18n("SMA")]// qmllint disable
                     onActivated: idx => {
-                        pluginDB[multibandCompressorPage.bandId + "SidechainMode"] = idx;
+                        multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainMode"] = idx;
                     }
                 }
 
                 FormCard.FormComboBoxDelegate {
-                    text: i18n("Source")
+                    text: i18n("Source") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: pluginDB[multibandCompressorPage.bandId + "SidechainSource"]
+                    currentIndex: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainSource"]
                     editable: false
-                    model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]
-                    visible: !pluginDB.stereoSplit
+                    model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]// qmllint disable
+                    visible: !multibandCompressorPage.pluginDB.stereoSplit
                     onActivated: idx => {
-                        pluginDB[multibandCompressorPage.bandId + "SidechainSource"] = idx;
+                        multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainSource"] = idx;
                     }
                 }
 
                 FormCard.FormComboBoxDelegate {
-                    text: i18n("Source")
+                    text: i18n("Source") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: pluginDB[multibandCompressorPage.bandId + "StereoSplitSource"]
+                    currentIndex: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "StereoSplitSource"]
                     editable: false
-                    model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]
-                    visible: pluginDB.stereoSplit
+                    model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]// qmllint disable
+                    visible: multibandCompressorPage.pluginDB.stereoSplit
                     onActivated: idx => {
-                        pluginDB[multibandCompressorPage.bandId + "StereoSplitSource"] = idx;
+                        multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "StereoSplitSource"] = idx;
                     }
                 }
 
                 EeSpinBox {
-                    label: i18n("Preamp")
+                    label: i18n("Preamp") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: pluginDB.getMinValue(multibandCompressorPage.bandId + "SidechainPreamp")
-                    to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "SidechainPreamp")
-                    value: pluginDB[multibandCompressorPage.bandId + "SidechainPreamp"]
+                    from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "SidechainPreamp")
+                    to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "SidechainPreamp")
+                    value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainPreamp"]
                     decimals: 2 // Required to show "-inf"
                     stepSize: 0.01
                     unit: "dB"
                     minusInfinityMode: true
                     onValueModified: v => {
-                        pluginDB[multibandCompressorPage.bandId + "SidechainPreamp"] = v;
+                        multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainPreamp"] = v;
                     }
                 }
 
                 EeSpinBox {
-                    label: i18n("Reactivity")
+                    label: i18n("Reactivity") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: pluginDB.getMinValue(multibandCompressorPage.bandId + "SidechainReactivity")
-                    to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "SidechainReactivity")
-                    value: pluginDB[multibandCompressorPage.bandId + "SidechainReactivity"]
+                    from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "SidechainReactivity")
+                    to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "SidechainReactivity")
+                    value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainReactivity"]
                     decimals: 1
                     stepSize: 0.1
                     unit: "ms"
                     onValueModified: v => {
-                        pluginDB[multibandCompressorPage.bandId + "SidechainReactivity"] = v;
+                        multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainReactivity"] = v;
                     }
                 }
 
                 EeSpinBox {
-                    label: i18n("Lookahead")
+                    label: i18n("Lookahead") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: pluginDB.getMinValue(multibandCompressorPage.bandId + "SidechainLookahead")
-                    to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "SidechainLookahead")
-                    value: pluginDB[multibandCompressorPage.bandId + "SidechainLookahead"]
+                    from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "SidechainLookahead")
+                    to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "SidechainLookahead")
+                    value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainLookahead"]
                     decimals: 1
                     stepSize: 0.1
                     unit: "ms"
                     onValueModified: v => {
-                        pluginDB[multibandCompressorPage.bandId + "SidechainLookahead"] = v;
+                        multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainLookahead"] = v;
                     }
                 }
 
                 ColumnLayout {
                     Controls.CheckBox {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("Low-Cut")
-                        checked: pluginDB[multibandCompressorPage.bandId + "SidechainCustomLowcutFilter"]
+                        text: i18n("Low-Cut") // qmllint disable
+                        checked: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomLowcutFilter"]
                         onCheckedChanged: {
-                            pluginDB[multibandCompressorPage.bandId + "SidechainCustomLowcutFilter"] = checked;
+                            multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomLowcutFilter"] = checked;
                         }
                     }
 
                     EeSpinBox {
                         spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue(multibandCompressorPage.bandId + "SidechainLowcutFrequency")
-                        to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "SidechainLowcutFrequency")
-                        value: pluginDB[multibandCompressorPage.bandId + "SidechainLowcutFrequency"]
+                        from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "SidechainLowcutFrequency")
+                        to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "SidechainLowcutFrequency")
+                        value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainLowcutFrequency"]
                         decimals: 0
                         stepSize: 1
                         unit: "Hz"
-                        enabled: pluginDB[multibandCompressorPage.bandId + "SidechainCustomLowcutFilter"]
+                        enabled: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomLowcutFilter"]
                         onValueModified: v => {
-                            pluginDB[multibandCompressorPage.bandId + "SidechainLowcutFrequency"] = v;
+                            multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainLowcutFrequency"] = v;
                         }
                     }
                 }
@@ -527,24 +527,24 @@ Kirigami.ScrollablePage {
                 ColumnLayout {
                     Controls.CheckBox {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("High-Cut")
-                        checked: pluginDB[multibandCompressorPage.bandId + "SidechainCustomHighcutFilter"]
+                        text: i18n("High-Cut") // qmllint disable
+                        checked: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomHighcutFilter"]
                         onCheckedChanged: {
-                            pluginDB[multibandCompressorPage.bandId + "SidechainCustomHighcutFilter"] = checked;
+                            multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomHighcutFilter"] = checked;
                         }
                     }
 
                     EeSpinBox {
                         spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue(multibandCompressorPage.bandId + "SidechainHighcutFrequency")
-                        to: pluginDB.getMaxValue(multibandCompressorPage.bandId + "SidechainHighcutFrequency")
-                        value: pluginDB[multibandCompressorPage.bandId + "SidechainHighcutFrequency"]
+                        from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "SidechainHighcutFrequency")
+                        to: multibandCompressorPage.pluginDB.getMaxValue(multibandCompressorPage.bandId + "SidechainHighcutFrequency")
+                        value: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainHighcutFrequency"]
                         decimals: 0
                         stepSize: 1
                         unit: "Hz"
-                        enabled: pluginDB[multibandCompressorPage.bandId + "SidechainCustomHighcutFilter"]
+                        enabled: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomHighcutFilter"]
                         onValueModified: v => {
-                            pluginDB[multibandCompressorPage.bandId + "SidechainHighcutFrequency"] = v;
+                            multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainHighcutFrequency"] = v;
                         }
                     }
                 }
@@ -559,26 +559,26 @@ Kirigami.ScrollablePage {
             FormCard.FormComboBoxDelegate {
                 id: compressorMode
 
-                text: i18n("Operating Mode")
+                text: i18n("Operating Mode") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                currentIndex: pluginDB.compressorMode
+                currentIndex: multibandCompressorPage.pluginDB.compressorMode
                 editable: false
-                model: [i18n("Classic"), i18n("Modern"), i18n("Linear Phase")]
+                model: [i18n("Classic"), i18n("Modern"), i18n("Linear Phase")]// qmllint disable
                 onActivated: idx => {
-                    pluginDB.compressorMode = idx;
+                    multibandCompressorPage.pluginDB.compressorMode = idx;
                 }
             }
 
             FormCard.FormComboBoxDelegate {
                 id: envelopeBoost
 
-                text: i18n("Sidechain Boost")
+                text: i18n("Sidechain Boost") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                currentIndex: pluginDB.envelopeBoost
+                currentIndex: multibandCompressorPage.pluginDB.envelopeBoost
                 editable: false
-                model: [i18n("None"), i18n("Pink BT"), i18n("Pink MT"), i18n("Brown BT"), i18n("Brown MT")]
+                model: [i18n("None"), i18n("Pink BT"), i18n("Pink MT"), i18n("Brown BT"), i18n("Brown MT")]// qmllint disable
                 onActivated: idx => {
-                    pluginDB.envelopeBoost = idx;
+                    multibandCompressorPage.pluginDB.envelopeBoost = idx;
                 }
             }
 
@@ -586,59 +586,59 @@ Kirigami.ScrollablePage {
                 id: comboSideChainInputDevice
 
                 Layout.preferredWidth: compressorMode.implicitWidth
-                text: i18n("Sidechain Input Device")
+                text: i18n("Sidechain Input Device") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 editable: false
                 model: PW.ModelNodes
                 textRole: "description"
-                enabled: pluginDB.externalSidechainEnabled
+                enabled: multibandCompressorPage.pluginDB.externalSidechainEnabled
                 currentIndex: {
                     for (let n = 0; n < PW.ModelNodes.rowCount(); n++) {
-                        if (PW.ModelNodes.getNodeName(n) === pluginDB.sidechainInputDevice)
+                        if (PW.ModelNodes.getNodeName(n) === multibandCompressorPage.pluginDB.sidechainInputDevice)
                             return n;
                     }
                     return 0;
                 }
                 onActivated: idx => {
                     let selectedName = PW.ModelNodes.getNodeName(idx);
-                    if (selectedName !== pluginDB.sidechainInputDevice)
-                        pluginDB.sidechainInputDevice = selectedName;
+                    if (selectedName !== multibandCompressorPage.pluginDB.sidechainInputDevice)
+                        multibandCompressorPage.pluginDB.sidechainInputDevice = selectedName;
                 }
             }
 
             EeSpinBox {
                 id: dry
 
-                label: i18n("Dry")
+                label: i18n("Dry") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
-                from: pluginDB.getMinValue("dry")
-                to: pluginDB.getMaxValue("dry")
-                value: pluginDB.dry
+                from: multibandCompressorPage.pluginDB.getMinValue("dry")
+                to: multibandCompressorPage.pluginDB.getMaxValue("dry")
+                value: multibandCompressorPage.pluginDB.dry
                 decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
                 unit: "dB"
                 minusInfinityMode: true
                 onValueModified: v => {
-                    pluginDB.dry = v;
+                    multibandCompressorPage.pluginDB.dry = v;
                 }
             }
 
             EeSpinBox {
                 id: wet
 
-                label: i18n("Wet")
+                label: i18n("Wet") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
-                from: pluginDB.getMinValue("wet")
-                to: pluginDB.getMaxValue("wet")
-                value: pluginDB.wet
+                from: multibandCompressorPage.pluginDB.getMinValue("wet")
+                to: multibandCompressorPage.pluginDB.getMaxValue("wet")
+                value: multibandCompressorPage.pluginDB.wet
                 decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
                 unit: "dB"
                 minusInfinityMode: true
                 onValueModified: v => {
-                    pluginDB.wet = v;
+                    multibandCompressorPage.pluginDB.wet = v;
                 }
             }
         }
@@ -653,8 +653,8 @@ Kirigami.ScrollablePage {
 
                 header: RowLayout {
                     Kirigami.Heading {
-                        readonly property string bandTitleTag: multibandCompressorPage.pluginDB.viewSidechain ? " - " + i18n("Sidechain") : ""
-                        text: i18n("Band") + " " + (bandsListview.currentIndex + 1) + bandTitleTag
+                        readonly property string bandTitleTag: multibandCompressorPage.pluginDB.viewSidechain ? " - " + i18n("Sidechain") : ""// qmllint disable
+                        text: i18n("Band") + " " + (bandsListview.currentIndex + 1) + bandTitleTag // qmllint disable
                         level: 2
                     }
 
@@ -730,7 +730,7 @@ Kirigami.ScrollablePage {
                                 Layout.alignment: Qt.AlignHCenter
                                 topPadding: Kirigami.Units.smallSpacing
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("Reduction")
+                                text: i18n("Reduction") // qmllint disable
                             }
 
                             EeAudioLevel {
@@ -764,13 +764,13 @@ Kirigami.ScrollablePage {
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("L")
+                                text: i18n("L") // qmllint disable
                             }
 
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("R")
+                                text: i18n("R") // qmllint disable
                             }
                         }
                     }
@@ -791,7 +791,7 @@ Kirigami.ScrollablePage {
                                 Layout.alignment: Qt.AlignHCenter
                                 topPadding: Kirigami.Units.smallSpacing
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("Envelope")
+                                text: i18n("Envelope") // qmllint disable
                             }
 
                             EeAudioLevel {
@@ -823,13 +823,13 @@ Kirigami.ScrollablePage {
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("L")
+                                text: i18n("L") // qmllint disable
                             }
 
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("R")
+                                text: i18n("R") // qmllint disable
                             }
                         }
                     }
@@ -850,7 +850,7 @@ Kirigami.ScrollablePage {
                                 Layout.alignment: Qt.AlignHCenter
                                 topPadding: Kirigami.Units.smallSpacing
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("Curve")
+                                text: i18n("Curve") // qmllint disable
                             }
 
                             EeAudioLevel {
@@ -882,13 +882,13 @@ Kirigami.ScrollablePage {
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("L")
+                                text: i18n("L") // qmllint disable
                             }
 
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("R")
+                                text: i18n("R") // qmllint disable
                             }
                         }
                     }
@@ -924,17 +924,17 @@ Kirigami.ScrollablePage {
                         contentItem: RowLayout {
                             Controls.Label {
                                 Layout.fillWidth: true
-                                text: i18n("Band") + " " + (listItemDelegate.index + 1)
+                                text: i18n("Band") + " " + (listItemDelegate.index + 1) // qmllint disable
                             }
 
                             Controls.CheckBox {
                                 readonly property string bandName: "band" + listItemDelegate.index + "Enable"
                                 Layout.alignment: Qt.AlignHCenter
                                 visible: listItemDelegate.index > 0
-                                checked: listItemDelegate.index > 0 ? pluginDB[bandName] : false
+                                checked: listItemDelegate.index > 0 ? multibandCompressorPage.pluginDB[bandName] : false
                                 onCheckedChanged: {
-                                    if (checked != pluginDB[bandName]) {
-                                        pluginDB[bandName] = checked;
+                                    if (checked != multibandCompressorPage.pluginDB[bandName]) {
+                                        multibandCompressorPage.pluginDB[bandName] = checked;
                                     }
                                 }
                             }
@@ -953,7 +953,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -969,33 +969,33 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Show Native Window")
+                    text: i18n("Show Native Window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
-                    checked: pluginBackend ? pluginBackend.hasNativeUi() : false
+                    checked: multibandCompressorPage.pluginBackend ? multibandCompressorPage.pluginBackend.hasNativeUi() : false
                     onTriggered: {
                         if (checked)
-                            pluginBackend.showNativeUi();
+                            multibandCompressorPage.pluginBackend.showNativeUi();
                         else
-                            pluginBackend.closeNativeUi();
+                            multibandCompressorPage.pluginBackend.closeNativeUi();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Stereo Split")
+                    text: i18n("Stereo Split") // qmllint disable
                     icon.name: "view-split-left-right-symbolic"
                     checkable: true
-                    checked: pluginDB.stereoSplit
+                    checked: multibandCompressorPage.pluginDB.stereoSplit
                     onTriggered: {
-                        if (pluginDB.stereoSplit != checked)
-                            pluginDB.stereoSplit = checked;
+                        if (multibandCompressorPage.pluginDB.stereoSplit != checked)
+                            multibandCompressorPage.pluginDB.stereoSplit = checked;
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        multibandCompressorPage.pluginBackend.reset();
                     }
                 }
             ]

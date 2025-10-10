@@ -5,7 +5,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
 import ee.pipewire as PW
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -72,29 +72,29 @@ Kirigami.ScrollablePage {
 
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Mute")
+                        text: i18n("Mute") // qmllint disable
                         checkable: true
-                        checked: pluginDB[multibandGatePage.bandId + "Mute"]
+                        checked: multibandGatePage.pluginDB[multibandGatePage.bandId + "Mute"]
                         onTriggered: {
-                            if (pluginDB[multibandGatePage.bandId + "Mute"] != checked)
-                                pluginDB[multibandGatePage.bandId + "Mute"] = checked;
+                            if (multibandGatePage.pluginDB[multibandGatePage.bandId + "Mute"] != checked)
+                                multibandGatePage.pluginDB[multibandGatePage.bandId + "Mute"] = checked;
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Solo")
+                        text: i18n("Solo") // qmllint disable
                         checkable: true
-                        checked: pluginDB[multibandGatePage.bandId + "Solo"]
+                        checked: multibandGatePage.pluginDB[multibandGatePage.bandId + "Solo"]
                         onTriggered: {
-                            if (pluginDB[multibandGatePage.bandId + "Solo"] != checked)
-                                pluginDB[multibandGatePage.bandId + "Solo"] = checked;
+                            if (multibandGatePage.pluginDB[multibandGatePage.bandId + "Solo"] != checked)
+                                multibandGatePage.pluginDB[multibandGatePage.bandId + "Solo"] = checked;
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Bypass")
+                        text: i18n("Bypass") // qmllint disable
                         checkable: true
-                        checked: !pluginDB[multibandGatePage.bandId + "GateEnable"]
+                        checked: !multibandGatePage.pluginDB[multibandGatePage.bandId + "GateEnable"]
                         onTriggered: {
-                            pluginDB[multibandGatePage.bandId + "GateEnable"] = !checked;
+                            multibandGatePage.pluginDB[multibandGatePage.bandId + "GateEnable"] = !checked;
                         }
                     }
                 ]
@@ -123,22 +123,22 @@ Kirigami.ScrollablePage {
                             Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Frequency")
+                            text: i18n("Frequency") // qmllint disable
                         }
 
                         EeSpinBox {
-                            label: i18n("Start")
+                            label: i18n("Start") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: bandsListview.currentIndex > 0 ? pluginDB.getMinValue(multibandGatePage.bandId + "SplitFrequency") : from
-                            to: bandsListview.currentIndex > 0 ? pluginDB.getMaxValue(multibandGatePage.bandId + "SplitFrequency") : to
-                            value: bandsListview.currentIndex > 0 ? pluginDB[multibandGatePage.bandId + "SplitFrequency"] : 0
+                            from: bandsListview.currentIndex > 0 ? multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "SplitFrequency") : from
+                            to: bandsListview.currentIndex > 0 ? multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "SplitFrequency") : to
+                            value: bandsListview.currentIndex > 0 ? multibandGatePage.pluginDB[multibandGatePage.bandId + "SplitFrequency"] : 0
                             decimals: 0
                             stepSize: 1
                             unit: "Hz"
                             enabled: bandsListview.currentIndex > 0
                             onValueModified: v => {
-                                pluginDB[multibandGatePage.bandId + "SplitFrequency"] = v;
+                                multibandGatePage.pluginDB[multibandGatePage.bandId + "SplitFrequency"] = v;
                             }
                         }
 
@@ -146,7 +146,7 @@ Kirigami.ScrollablePage {
                             Controls.Label {
                                 Layout.fillWidth: true
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("End")
+                                text: i18n("End") // qmllint disable
                             }
 
                             Controls.Label {
@@ -172,36 +172,36 @@ Kirigami.ScrollablePage {
                             Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Reaction")
+                            text: i18n("Reaction") // qmllint disable
                         }
 
                         EeSpinBox {
-                            label: i18n("Attack")
+                            label: i18n("Attack") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue(multibandGatePage.bandId + "AttackTime")
-                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "AttackTime")
-                            value: pluginDB[multibandGatePage.bandId + "AttackTime"]
+                            from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "AttackTime")
+                            to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "AttackTime")
+                            value: multibandGatePage.pluginDB[multibandGatePage.bandId + "AttackTime"]
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
                             onValueModified: v => {
-                                pluginDB[multibandGatePage.bandId + "AttackTime"] = v;
+                                multibandGatePage.pluginDB[multibandGatePage.bandId + "AttackTime"] = v;
                             }
                         }
 
                         EeSpinBox {
-                            label: i18n("Release")
+                            label: i18n("Release") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue(multibandGatePage.bandId + "ReleaseTime")
-                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "ReleaseTime")
-                            value: pluginDB[multibandGatePage.bandId + "ReleaseTime"]
+                            from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "ReleaseTime")
+                            to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "ReleaseTime")
+                            value: multibandGatePage.pluginDB[multibandGatePage.bandId + "ReleaseTime"]
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
                             onValueModified: v => {
-                                pluginDB[multibandGatePage.bandId + "ReleaseTime"] = v;
+                                multibandGatePage.pluginDB[multibandGatePage.bandId + "ReleaseTime"] = v;
                             }
                         }
                     }
@@ -220,37 +220,37 @@ Kirigami.ScrollablePage {
                             Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Gain")
+                            text: i18n("Gain") // qmllint disable
                         }
 
                         EeSpinBox {
-                            label: i18n("Reduction")
+                            label: i18n("Reduction") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue(multibandGatePage.bandId + "Reduction")
-                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "Reduction")
-                            value: pluginDB[multibandGatePage.bandId + "Reduction"]
+                            from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "Reduction")
+                            to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "Reduction")
+                            value: multibandGatePage.pluginDB[multibandGatePage.bandId + "Reduction"]
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
                             onValueModified: v => {
-                                pluginDB[multibandGatePage.bandId + "Reduction"] = v;
+                                multibandGatePage.pluginDB[multibandGatePage.bandId + "Reduction"] = v;
                             }
                         }
 
                         EeSpinBox {
                             id: bandMakeup
-                            label: i18n("Makeup")
+                            label: i18n("Makeup") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue(multibandGatePage.bandId + "Makeup")
-                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "Makeup")
-                            value: pluginDB[multibandGatePage.bandId + "Makeup"]
+                            from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "Makeup")
+                            to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "Makeup")
+                            value: multibandGatePage.pluginDB[multibandGatePage.bandId + "Makeup"]
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
                             onValueModified: v => {
-                                pluginDB[multibandGatePage.bandId + "Makeup"] = v;
+                                multibandGatePage.pluginDB[multibandGatePage.bandId + "Makeup"] = v;
                             }
                         }
                     }
@@ -269,36 +269,36 @@ Kirigami.ScrollablePage {
                             Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             Layout.fillWidth: false
-                            text: i18n("Curve")
+                            text: i18n("Curve") // qmllint disable
                         }
 
                         EeSpinBox {
-                            label: i18n("Threshold")
+                            label: i18n("Threshold") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue(multibandGatePage.bandId + "CurveThreshold")
-                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "CurveThreshold")
-                            value: pluginDB[multibandGatePage.bandId + "CurveThreshold"]
+                            from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "CurveThreshold")
+                            to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "CurveThreshold")
+                            value: multibandGatePage.pluginDB[multibandGatePage.bandId + "CurveThreshold"]
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
                             onValueModified: v => {
-                                pluginDB[multibandGatePage.bandId + "CurveThreshold"] = v;
+                                multibandGatePage.pluginDB[multibandGatePage.bandId + "CurveThreshold"] = v;
                             }
                         }
 
                         EeSpinBox {
-                            label: i18n("Zone")
+                            label: i18n("Zone") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue(multibandGatePage.bandId + "CurveZone")
-                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "CurveZone")
-                            value: pluginDB[multibandGatePage.bandId + "CurveZone"]
+                            from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "CurveZone")
+                            to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "CurveZone")
+                            value: multibandGatePage.pluginDB[multibandGatePage.bandId + "CurveZone"]
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
                             onValueModified: v => {
-                                pluginDB[multibandGatePage.bandId + "CurveZone"] = v;
+                                multibandGatePage.pluginDB[multibandGatePage.bandId + "CurveZone"] = v;
                             }
                         }
                     }
@@ -316,45 +316,45 @@ Kirigami.ScrollablePage {
                         Controls.Button {
                             Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignCenter
-                            text: i18n("Hysteresis")
+                            text: i18n("Hysteresis") // qmllint disable
                             checkable: true
-                            checked: pluginDB[multibandGatePage.bandId + "Hysteresis"]
+                            checked: multibandGatePage.pluginDB[multibandGatePage.bandId + "Hysteresis"]
                             onCheckedChanged: {
-                                if (pluginDB[multibandGatePage.bandId + "Hysteresis"] !== checked) {
-                                    pluginDB[multibandGatePage.bandId + "Hysteresis"] = checked;
+                                if (multibandGatePage.pluginDB[multibandGatePage.bandId + "Hysteresis"] !== checked) {
+                                    multibandGatePage.pluginDB[multibandGatePage.bandId + "Hysteresis"] = checked;
                                 }
                             }
                         }
 
                         EeSpinBox {
-                            label: i18n("Threshold")
+                            label: i18n("Threshold") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue(multibandGatePage.bandId + "HysteresisThreshold")
-                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "HysteresisThreshold")
-                            value: pluginDB[multibandGatePage.bandId + "HysteresisThreshold"]
+                            from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "HysteresisThreshold")
+                            to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "HysteresisThreshold")
+                            value: multibandGatePage.pluginDB[multibandGatePage.bandId + "HysteresisThreshold"]
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
-                            enabled: pluginDB[multibandGatePage.bandId + "Hysteresis"]
+                            enabled: multibandGatePage.pluginDB[multibandGatePage.bandId + "Hysteresis"]
                             onValueModified: v => {
-                                pluginDB[multibandGatePage.bandId + "HysteresisThreshold"] = v;
+                                multibandGatePage.pluginDB[multibandGatePage.bandId + "HysteresisThreshold"] = v;
                             }
                         }
 
                         EeSpinBox {
-                            label: i18n("Zone")
+                            label: i18n("Zone") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue(multibandGatePage.bandId + "HysteresisZone")
-                            to: pluginDB.getMaxValue(multibandGatePage.bandId + "HysteresisZone")
-                            value: pluginDB[multibandGatePage.bandId + "HysteresisZone"]
+                            from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "HysteresisZone")
+                            to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "HysteresisZone")
+                            value: multibandGatePage.pluginDB[multibandGatePage.bandId + "HysteresisZone"]
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
-                            enabled: pluginDB[multibandGatePage.bandId + "Hysteresis"]
+                            enabled: multibandGatePage.pluginDB[multibandGatePage.bandId + "Hysteresis"]
                             onValueModified: v => {
-                                pluginDB[multibandGatePage.bandId + "HysteresisZone"] = v;
+                                multibandGatePage.pluginDB[multibandGatePage.bandId + "HysteresisZone"] = v;
                             }
                         }
                     }
@@ -376,118 +376,118 @@ Kirigami.ScrollablePage {
                 }
 
                 FormCard.FormComboBoxDelegate {
-                    text: i18n("Type")
+                    text: i18n("Type") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: pluginDB[multibandGatePage.bandId + "SidechainType"]
+                    currentIndex: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainType"]
                     editable: false
-                    model: [i18n("Internal"), i18n("External"), i18n("Link")]
+                    model: [i18n("Internal"), i18n("External"), i18n("Link")]// qmllint disable
                     onActivated: idx => {
-                        pluginDB[multibandGatePage.bandId + "SidechainType"] = idx;
+                        multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainType"] = idx;
                     }
                 }
 
                 FormCard.FormComboBoxDelegate {
-                    text: i18n("Mode")
+                    text: i18n("Mode") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: pluginDB[multibandGatePage.bandId + "SidechainMode"]
+                    currentIndex: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainMode"]
                     editable: false
-                    model: [i18n("Peak"), i18n("RMS"), i18n("LPF"), i18n("SMA")]
+                    model: [i18n("Peak"), i18n("RMS"), i18n("LPF"), i18n("SMA")]// qmllint disable
                     onActivated: idx => {
-                        pluginDB[multibandGatePage.bandId + "SidechainMode"] = idx;
+                        multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainMode"] = idx;
                     }
                 }
 
                 FormCard.FormComboBoxDelegate {
-                    text: i18n("Source")
+                    text: i18n("Source") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: pluginDB[multibandGatePage.bandId + "SidechainSource"]
+                    currentIndex: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainSource"]
                     editable: false
-                    model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]
-                    visible: !pluginDB.stereoSplit
+                    model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]// qmllint disable
+                    visible: !multibandGatePage.pluginDB.stereoSplit
                     onActivated: idx => {
-                        pluginDB[multibandGatePage.bandId + "SidechainSource"] = idx;
+                        multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainSource"] = idx;
                     }
                 }
 
                 FormCard.FormComboBoxDelegate {
-                    text: i18n("Source")
+                    text: i18n("Source") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                    currentIndex: pluginDB[multibandGatePage.bandId + "StereoSplitSource"]
+                    currentIndex: multibandGatePage.pluginDB[multibandGatePage.bandId + "StereoSplitSource"]
                     editable: false
-                    model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]
-                    visible: pluginDB.stereoSplit
+                    model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]// qmllint disable
+                    visible: multibandGatePage.pluginDB.stereoSplit
                     onActivated: idx => {
-                        pluginDB[multibandGatePage.bandId + "StereoSplitSource"] = idx;
+                        multibandGatePage.pluginDB[multibandGatePage.bandId + "StereoSplitSource"] = idx;
                     }
                 }
 
                 EeSpinBox {
-                    label: i18n("Preamp")
+                    label: i18n("Preamp") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: pluginDB.getMinValue(multibandGatePage.bandId + "SidechainPreamp")
-                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainPreamp")
-                    value: pluginDB[multibandGatePage.bandId + "SidechainPreamp"]
+                    from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "SidechainPreamp")
+                    to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainPreamp")
+                    value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainPreamp"]
                     decimals: 2 // Required to show "-inf"
                     stepSize: 0.01
                     unit: "dB"
                     minusInfinityMode: true
                     onValueModified: v => {
-                        pluginDB[multibandGatePage.bandId + "SidechainPreamp"] = v;
+                        multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainPreamp"] = v;
                     }
                 }
 
                 EeSpinBox {
-                    label: i18n("Reactivity")
+                    label: i18n("Reactivity") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: pluginDB.getMinValue(multibandGatePage.bandId + "SidechainReactivity")
-                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainReactivity")
-                    value: pluginDB[multibandGatePage.bandId + "SidechainReactivity"]
+                    from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "SidechainReactivity")
+                    to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainReactivity")
+                    value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainReactivity"]
                     decimals: 1
                     stepSize: 0.1
                     unit: "ms"
                     onValueModified: v => {
-                        pluginDB[multibandGatePage.bandId + "SidechainReactivity"] = v;
+                        multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainReactivity"] = v;
                     }
                 }
 
                 EeSpinBox {
-                    label: i18n("Lookahead")
+                    label: i18n("Lookahead") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
-                    from: pluginDB.getMinValue(multibandGatePage.bandId + "SidechainLookahead")
-                    to: pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainLookahead")
-                    value: pluginDB[multibandGatePage.bandId + "SidechainLookahead"]
+                    from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "SidechainLookahead")
+                    to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainLookahead")
+                    value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainLookahead"]
                     decimals: 1
                     stepSize: 0.1
                     unit: "ms"
                     onValueModified: v => {
-                        pluginDB[multibandGatePage.bandId + "SidechainLookahead"] = v;
+                        multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainLookahead"] = v;
                     }
                 }
 
                 ColumnLayout {
                     Controls.CheckBox {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("Low-Cut")
-                        checked: pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"]
+                        text: i18n("Low-Cut") // qmllint disable
+                        checked: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"]
                         onCheckedChanged: {
-                            pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"] = checked;
+                            multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"] = checked;
                         }
                     }
 
                     EeSpinBox {
                         spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue(multibandGatePage.bandId + "SidechainLowcutFrequency")
-                        to: pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainLowcutFrequency")
-                        value: pluginDB[multibandGatePage.bandId + "SidechainLowcutFrequency"]
+                        from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "SidechainLowcutFrequency")
+                        to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainLowcutFrequency")
+                        value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainLowcutFrequency"]
                         decimals: 0
                         stepSize: 1
                         unit: "Hz"
-                        enabled: pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"]
+                        enabled: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"]
                         onValueModified: v => {
-                            pluginDB[multibandGatePage.bandId + "SidechainLowcutFrequency"] = v;
+                            multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainLowcutFrequency"] = v;
                         }
                     }
                 }
@@ -495,24 +495,24 @@ Kirigami.ScrollablePage {
                 ColumnLayout {
                     Controls.CheckBox {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("High-Cut")
-                        checked: pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"]
+                        text: i18n("High-Cut") // qmllint disable
+                        checked: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"]
                         onCheckedChanged: {
-                            pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"] = checked;
+                            multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"] = checked;
                         }
                     }
 
                     EeSpinBox {
                         spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue(multibandGatePage.bandId + "SidechainHighcutFrequency")
-                        to: pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainHighcutFrequency")
-                        value: pluginDB[multibandGatePage.bandId + "SidechainHighcutFrequency"]
+                        from: multibandGatePage.pluginDB.getMinValue(multibandGatePage.bandId + "SidechainHighcutFrequency")
+                        to: multibandGatePage.pluginDB.getMaxValue(multibandGatePage.bandId + "SidechainHighcutFrequency")
+                        value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainHighcutFrequency"]
                         decimals: 0
                         stepSize: 1
                         unit: "Hz"
-                        enabled: pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"]
+                        enabled: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"]
                         onValueModified: v => {
-                            pluginDB[multibandGatePage.bandId + "SidechainHighcutFrequency"] = v;
+                            multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainHighcutFrequency"] = v;
                         }
                     }
                 }
@@ -527,26 +527,26 @@ Kirigami.ScrollablePage {
             FormCard.FormComboBoxDelegate {
                 id: gateMode
 
-                text: i18n("Operating Mode")
+                text: i18n("Operating Mode") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                currentIndex: pluginDB.gateMode
+                currentIndex: multibandGatePage.pluginDB.gateMode
                 editable: false
-                model: [i18n("Classic"), i18n("Modern"), i18n("Linear Phase")]
+                model: [i18n("Classic"), i18n("Modern"), i18n("Linear Phase")]// qmllint disable
                 onActivated: idx => {
-                    pluginDB.gateMode = idx;
+                    multibandGatePage.pluginDB.gateMode = idx;
                 }
             }
 
             FormCard.FormComboBoxDelegate {
                 id: envelopeBoost
 
-                text: i18n("Sidechain Boost")
+                text: i18n("Sidechain Boost") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                currentIndex: pluginDB.envelopeBoost
+                currentIndex: multibandGatePage.pluginDB.envelopeBoost
                 editable: false
-                model: [i18n("None"), i18n("Pink BT"), i18n("Pink MT"), i18n("Brown BT"), i18n("Brown MT")]
+                model: [i18n("None"), i18n("Pink BT"), i18n("Pink MT"), i18n("Brown BT"), i18n("Brown MT")]// qmllint disable
                 onActivated: idx => {
-                    pluginDB.envelopeBoost = idx;
+                    multibandGatePage.pluginDB.envelopeBoost = idx;
                 }
             }
 
@@ -554,59 +554,59 @@ Kirigami.ScrollablePage {
                 id: comboSideChainInputDevice
 
                 Layout.preferredWidth: gateMode.implicitWidth
-                text: i18n("Sidechain Input Device")
+                text: i18n("Sidechain Input Device") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 editable: false
                 model: PW.ModelNodes
                 textRole: "description"
-                enabled: pluginDB.externalSidechainEnabled
+                enabled: multibandGatePage.pluginDB.externalSidechainEnabled
                 currentIndex: {
                     for (let n = 0; n < PW.ModelNodes.rowCount(); n++) {
-                        if (PW.ModelNodes.getNodeName(n) === pluginDB.sidechainInputDevice)
+                        if (PW.ModelNodes.getNodeName(n) === multibandGatePage.pluginDB.sidechainInputDevice)
                             return n;
                     }
                     return 0;
                 }
                 onActivated: idx => {
                     let selectedName = PW.ModelNodes.getNodeName(idx);
-                    if (selectedName !== pluginDB.sidechainInputDevice)
-                        pluginDB.sidechainInputDevice = selectedName;
+                    if (selectedName !== multibandGatePage.pluginDB.sidechainInputDevice)
+                        multibandGatePage.pluginDB.sidechainInputDevice = selectedName;
                 }
             }
 
             EeSpinBox {
                 id: dry
 
-                label: i18n("Dry")
+                label: i18n("Dry") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
-                from: pluginDB.getMinValue("dry")
-                to: pluginDB.getMaxValue("dry")
-                value: pluginDB.dry
+                from: multibandGatePage.pluginDB.getMinValue("dry")
+                to: multibandGatePage.pluginDB.getMaxValue("dry")
+                value: multibandGatePage.pluginDB.dry
                 decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
                 unit: "dB"
                 minusInfinityMode: true
                 onValueModified: v => {
-                    pluginDB.dry = v;
+                    multibandGatePage.pluginDB.dry = v;
                 }
             }
 
             EeSpinBox {
                 id: wet
 
-                label: i18n("Wet")
+                label: i18n("Wet") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
-                from: pluginDB.getMinValue("wet")
-                to: pluginDB.getMaxValue("wet")
-                value: pluginDB.wet
+                from: multibandGatePage.pluginDB.getMinValue("wet")
+                to: multibandGatePage.pluginDB.getMaxValue("wet")
+                value: multibandGatePage.pluginDB.wet
                 decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
                 unit: "dB"
                 minusInfinityMode: true
                 onValueModified: v => {
-                    pluginDB.wet = v;
+                    multibandGatePage.pluginDB.wet = v;
                 }
             }
         }
@@ -621,8 +621,8 @@ Kirigami.ScrollablePage {
 
                 header: RowLayout {
                     Kirigami.Heading {
-                        readonly property string bandTitleTag: multibandGatePage.pluginDB.viewSidechain ? " - " + i18n("Sidechain") : ""
-                        text: i18n("Band") + " " + (bandsListview.currentIndex + 1) + bandTitleTag
+                        readonly property string bandTitleTag: multibandGatePage.pluginDB.viewSidechain ? " - " + i18n("Sidechain") : ""// qmllint disable
+                        text: i18n("Band") + " " + (bandsListview.currentIndex + 1) + bandTitleTag // qmllint disable
                         level: 2
                     }
 
@@ -698,7 +698,7 @@ Kirigami.ScrollablePage {
                                 Layout.alignment: Qt.AlignHCenter
                                 topPadding: Kirigami.Units.smallSpacing
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("Reduction")
+                                text: i18n("Reduction") // qmllint disable
                             }
 
                             EeAudioLevel {
@@ -732,13 +732,13 @@ Kirigami.ScrollablePage {
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("L")
+                                text: i18n("L") // qmllint disable
                             }
 
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("R")
+                                text: i18n("R") // qmllint disable
                             }
                         }
                     }
@@ -759,7 +759,7 @@ Kirigami.ScrollablePage {
                                 Layout.alignment: Qt.AlignHCenter
                                 topPadding: Kirigami.Units.smallSpacing
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("Envelope")
+                                text: i18n("Envelope") // qmllint disable
                             }
 
                             EeAudioLevel {
@@ -791,13 +791,13 @@ Kirigami.ScrollablePage {
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("L")
+                                text: i18n("L") // qmllint disable
                             }
 
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("R")
+                                text: i18n("R") // qmllint disable
                             }
                         }
                     }
@@ -818,7 +818,7 @@ Kirigami.ScrollablePage {
                                 Layout.alignment: Qt.AlignHCenter
                                 topPadding: Kirigami.Units.smallSpacing
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("Curve")
+                                text: i18n("Curve") // qmllint disable
                             }
 
                             EeAudioLevel {
@@ -850,13 +850,13 @@ Kirigami.ScrollablePage {
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("L")
+                                text: i18n("L") // qmllint disable
                             }
 
                             Controls.Label {
                                 Layout.alignment: Qt.AlignHCenter
                                 horizontalAlignment: Text.AlignHCenter
-                                text: i18n("R")
+                                text: i18n("R") // qmllint disable
                             }
                         }
                     }
@@ -892,17 +892,17 @@ Kirigami.ScrollablePage {
                         contentItem: RowLayout {
                             Controls.Label {
                                 Layout.fillWidth: true
-                                text: i18n("Band") + " " + (listItemDelegate.index + 1)
+                                text: i18n("Band") + " " + (listItemDelegate.index + 1) // qmllint disable
                             }
 
                             Controls.CheckBox {
                                 readonly property string bandName: "band" + listItemDelegate.index + "Enable"
                                 Layout.alignment: Qt.AlignHCenter
                                 visible: listItemDelegate.index > 0
-                                checked: listItemDelegate.index > 0 ? pluginDB[bandName] : false
+                                checked: listItemDelegate.index > 0 ? multibandGatePage.pluginDB[bandName] : false
                                 onCheckedChanged: {
-                                    if (checked != pluginDB[bandName]) {
-                                        pluginDB[bandName] = checked;
+                                    if (checked != multibandGatePage.pluginDB[bandName]) {
+                                        multibandGatePage.pluginDB[bandName] = checked;
                                     }
                                 }
                             }
@@ -921,7 +921,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -937,33 +937,33 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Show Native Window")
+                    text: i18n("Show Native Window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
-                    checked: pluginBackend ? pluginBackend.hasNativeUi() : false
+                    checked: multibandGatePage.pluginBackend ? multibandGatePage.pluginBackend.hasNativeUi() : false
                     onTriggered: {
                         if (checked)
-                            pluginBackend.showNativeUi();
+                            multibandGatePage.pluginBackend.showNativeUi();
                         else
-                            pluginBackend.closeNativeUi();
+                            multibandGatePage.pluginBackend.closeNativeUi();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Stereo Split")
+                    text: i18n("Stereo Split") // qmllint disable
                     icon.name: "view-split-left-right-symbolic"
                     checkable: true
-                    checked: pluginDB.stereoSplit
+                    checked: multibandGatePage.pluginDB.stereoSplit
                     onTriggered: {
-                        if (pluginDB.stereoSplit != checked)
-                            pluginDB.stereoSplit = checked;
+                        if (multibandGatePage.pluginDB.stereoSplit != checked)
+                            multibandGatePage.pluginDB.stereoSplit = checked;
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        multibandGatePage.pluginBackend.reset();
                     }
                 }
             ]

@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
-import ee.tags.plugin.name as TagsPluginName
+import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
@@ -18,19 +18,19 @@ Kirigami.ScrollablePage {
         if (!pluginBackend)
             return;
 
-        inputOutputLevels.inputLevelLeft = pluginBackend.getInputLevelLeft();
-        inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
-        inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
-        inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
+        inputOutputLevels.inputLevelLeft = loudnessPage.pluginBackend.getInputLevelLeft();
+        inputOutputLevels.inputLevelRight = loudnessPage.pluginBackend.getInputLevelRight();
+        inputOutputLevels.outputLevelLeft = loudnessPage.pluginBackend.getOutputLevelLeft();
+        inputOutputLevels.outputLevelRight = loudnessPage.pluginBackend.getOutputLevelRight();
     }
 
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
-        pluginBackend.updateLevelMeters = true;
+        loudnessPage.pluginBackend.updateLevelMeters = true;
     }
     Component.onDestruction: {
         if (pluginBackend) {
-            pluginBackend.updateLevelMeters = false;
+            loudnessPage.pluginBackend.updateLevelMeters = false;
         }
     }
 
@@ -44,7 +44,7 @@ Kirigami.ScrollablePage {
                 id: cardControls
 
                 header: Kirigami.Heading {
-                    text: i18n("Controls")
+                    text: i18n("Controls") // qmllint disable
                     level: 2
                 }
 
@@ -57,91 +57,91 @@ Kirigami.ScrollablePage {
                         FormCard.FormComboBoxDelegate {
                             id: mode
 
-                            text: i18n("Mode")
+                            text: i18n("Mode") // qmllint disable
                             Layout.columnSpan: 2
                             Layout.alignment: Qt.AlignHCenter
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.mode
+                            currentIndex: loudnessPage.pluginDB.mode
                             editable: false
                             model: ["FFT", "IIR"]
                             onActivated: idx => {
-                                pluginDB.mode = idx;
+                                loudnessPage.pluginDB.mode = idx;
                             }
                         }
 
                         FormCard.FormComboBoxDelegate {
                             id: std
 
-                            text: i18n("Contour")
+                            text: i18n("Contour") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.std
+                            currentIndex: loudnessPage.pluginDB.std
                             editable: false
                             model: ["Flat", "ISO226-2003", "Fletcher-Munson", "Robinson-Dadson", "ISO226-2023"]
                             onActivated: idx => {
-                                pluginDB.std = idx;
+                                loudnessPage.pluginDB.std = idx;
                             }
                         }
 
                         FormCard.FormComboBoxDelegate {
                             id: fft
 
-                            text: i18n("FFT Size")
+                            text: i18n("FFT Size") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.fft
+                            currentIndex: loudnessPage.pluginDB.fft
                             editable: false
                             model: [256, 512, 1024, 2048, 4096, 8192, 16384]
-                            visible: pluginDB.mode == 0 ? true : false
+                            visible: loudnessPage.pluginDB.mode == 0 ? true : false
                             onActivated: idx => {
-                                pluginDB.fft = idx;
+                                loudnessPage.pluginDB.fft = idx;
                             }
                         }
 
                         FormCard.FormComboBoxDelegate {
                             id: iirApproximation
 
-                            text: i18n("IIR Approximation")
+                            text: i18n("IIR Approximation") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.fft
+                            currentIndex: loudnessPage.pluginDB.fft
                             editable: false
-                            model: [i18n("Fastest"), i18n("Low"), i18n("Normal"), i18n("High"), i18n("Best")]
-                            visible: pluginDB.mode == 1 ? true : false
+                            model: [i18n("Fastest"), i18n("Low"), i18n("Normal"), i18n("High"), i18n("Best")]// qmllint disable
+                            visible: loudnessPage.pluginDB.mode == 1 ? true : false
                             onActivated: idx => {
-                                pluginDB.fft = idx;
+                                loudnessPage.pluginDB.fft = idx;
                             }
                         }
 
                         EeSpinBox {
                             id: volume
 
-                            label: i18n("Volume")
+                            label: i18n("Volume") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("volume")
-                            to: pluginDB.getMaxValue("volume")
-                            value: pluginDB.volume
+                            from: loudnessPage.pluginDB.getMinValue("volume")
+                            to: loudnessPage.pluginDB.getMaxValue("volume")
+                            value: loudnessPage.pluginDB.volume
                             decimals: 1
                             stepSize: 0.1
                             unit: "dB"
                             onValueModified: v => {
-                                pluginDB.volume = v;
+                                loudnessPage.pluginDB.volume = v;
                             }
                         }
 
                         EeSpinBox {
                             id: clippingRange
 
-                            label: i18n("Clipping Range")
+                            label: i18n("Clipping Range") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("clippingRange")
-                            to: pluginDB.getMaxValue("clippingRange")
-                            value: pluginDB.clippingRange
+                            from: loudnessPage.pluginDB.getMinValue("clippingRange")
+                            to: loudnessPage.pluginDB.getMaxValue("clippingRange")
+                            value: loudnessPage.pluginDB.clippingRange
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
-                            enabled: pluginDB.clipping
+                            enabled: loudnessPage.pluginDB.clipping
                             onValueModified: v => {
-                                pluginDB.clippingRange = v;
+                                loudnessPage.pluginDB.clippingRange = v;
                             }
                         }
                     }
@@ -158,7 +158,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`)
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.lsp}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -174,33 +174,33 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Show Native Window")
+                    text: i18n("Show Native Window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
-                    checked: pluginBackend ? pluginBackend.hasNativeUi() : false
+                    checked: loudnessPage.pluginBackend ? loudnessPage.pluginBackend.hasNativeUi() : false
                     onTriggered: {
                         if (checked)
-                            pluginBackend.showNativeUi();
+                            loudnessPage.pluginBackend.showNativeUi();
                         else
-                            pluginBackend.closeNativeUi();
+                            loudnessPage.pluginBackend.closeNativeUi();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Clipping")
+                    text: i18n("Clipping") // qmllint disable
                     icon.name: "path-cut-symbolic"
                     checkable: true
-                    checked: pluginDB.clipping
+                    checked: loudnessPage.pluginDB.clipping
                     onTriggered: {
-                        if (pluginDB.clipping != checked)
-                            pluginDB.clipping = checked;
+                        if (loudnessPage.pluginDB.clipping != checked)
+                            loudnessPage.pluginDB.clipping = checked;
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset")
+                    text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        loudnessPage.pluginBackend.reset();
                     }
                 }
             ]
