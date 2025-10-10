@@ -32,7 +32,7 @@ Kirigami.ScrollablePage {
 
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
-        
+
         pluginBackend.updateLevelMeters = true;
 
         const chart = chartChannel.left ? pluginBackend.chartMagL : pluginBackend.chartMagR;
