@@ -557,8 +557,18 @@ void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, con
     return;
   }
 
-  std::ranges::for_each(left, [&](auto& v) { v *= gain; });
-  std::ranges::for_each(right, [&](auto& v) { v *= gain; });
+  // std::ranges::for_each(left, [&](auto& v) { v *= gain; });
+  // std::ranges::for_each(right, [&](auto& v) { v *= gain; });
+
+  const size_t size = std::min(left.size(), right.size());
+
+  float* __restrict l_ptr = left.data();
+  float* __restrict r_ptr = right.data();
+
+  for (size_t i = 0; i < size; i++) {
+    l_ptr[i] *= gain;
+    r_ptr[i] *= gain;
+  }
 }
 
 void PluginBase::update_probe_links() {}

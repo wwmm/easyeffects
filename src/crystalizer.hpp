@@ -31,7 +31,6 @@
 #include <string>
 #include <vector>
 #include "easyeffects_db_crystalizer.h"
-#include "fir_filter_bandpass.hpp"
 #include "fir_filter_base.hpp"
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
@@ -135,6 +134,12 @@ class Crystalizer : public PluginBase {
       // Calculating the second derivative
 
       if (!band_bypass.at(n)) {
+        const float intensity = band_intensity.at(n);
+        const float& L_lower = band_previous_L.at(n);
+        const float& R_lower = band_previous_R.at(n);
+        const float& L_upper = band_next_L.at(n);
+        const float& R_upper = band_next_R.at(n);
+
         for (uint m = 0U; m < blocksize; m++) {
           const float L = band_data_L.at(n)[m];
           const float R = band_data_R.at(n)[m];
@@ -148,16 +153,12 @@ class Crystalizer : public PluginBase {
             band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
             band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
           } else if (m == 0U) {
-            const float& L_lower = band_previous_L.at(n);
-            const float& R_lower = band_previous_R.at(n);
             const float& L_upper = band_data_L.at(n)[m + 1U];
             const float& R_upper = band_data_R.at(n)[m + 1U];
 
             band_second_derivative_L.at(n)[m] = L_upper - 2.0F * L + L_lower;
             band_second_derivative_R.at(n)[m] = R_upper - 2.0F * R + R_lower;
           } else if (m == blocksize - 1U) {
-            const float& L_upper = band_next_L.at(n);
-            const float& R_upper = band_next_R.at(n);
             const float& L_lower = band_data_L.at(n)[m - 1U];
             const float& R_lower = band_data_R.at(n)[m - 1U];
 
@@ -180,8 +181,8 @@ class Crystalizer : public PluginBase {
            * [-1, 1] seems to be enough
            */
 
-          band_data_L.at(n)[m] = L - std::tanh(band_intensity.at(n) * d2L);
-          band_data_R.at(n)[m] = R - std::tanh(band_intensity.at(n) * d2R);
+          band_data_L.at(n)[m] = L - std::tanh(intensity * d2L);
+          band_data_R.at(n)[m] = R - std::tanh(intensity * d2R);
 
           if (m == blocksize - 1U) {
             band_previous_L.at(n) = L;
