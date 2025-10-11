@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-11 00:39+0000\n"
-"PO-Revision-Date: 2025-10-08 21:07+0000\n"
+"PO-Revision-Date: 2025-10-11 16:07+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -776,7 +776,7 @@ msgstr "Réamhshocruithe"
 
 #: src/contents/ui/Crystalizer.qml:96
 msgid "Adaptive Intensity"
-msgstr ""
+msgstr "Déine Oiriúnaitheach"
 
 #: src/contents/ui/CrystalizerBand.qml:31
 #: src/contents/ui/EqualizerBandMenu.qml:157
