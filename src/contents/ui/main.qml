@@ -245,6 +245,8 @@ Kirigami.ApplicationWindow {
                     text: modelData// qmllint disable
                     onTriggered: {
                         Presets.Manager.loadLocalPresetFile(0, modelData);// qmllint disable
+
+                        tray.showMessage(i18n("Preset Loaded"), modelData, SystemTrayIcon.Information, 3000);
                     }
                 }
 
@@ -260,6 +262,8 @@ Kirigami.ApplicationWindow {
                     text: modelData// qmllint disable
                     onTriggered: {
                         Presets.Manager.loadLocalPresetFile(1, modelData);// qmllint disable
+
+                        tray.showMessage(i18n("Preset Loaded"), modelData, SystemTrayIcon.Information, 3000);
                     }
                 }
 
