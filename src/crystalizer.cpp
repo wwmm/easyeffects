@@ -24,6 +24,7 @@
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
+#include <deque>
 #include <format>
 #include <memory>
 #include <mutex>
@@ -72,10 +73,8 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   std::ranges::fill(band_intensity, 1.0F);
   std::ranges::fill(band_previous_L, 0.0F);
   std::ranges::fill(band_previous_R, 0.0F);
-  std::ranges::fill(env_rms_L, 0.0F);
-  std::ranges::fill(env_rms_R, 0.0F);
-  std::ranges::fill(env_peak_L, 0.0F);
-  std::ranges::fill(env_peak_R, 0.0F);
+  std::ranges::fill(env_kurtosis_L, 3.0F);
+  std::ranges::fill(env_kurtosis_R, 3.0F);
 
   frequencies[0] = 20.0F;
   frequencies[1] = 520.0F;
@@ -317,43 +316,59 @@ auto Crystalizer::get_latency_seconds() -> float {
   return this->latency_value;
 }
 
+float Crystalizer::compute_kurtosis(float* data) const {
+  float mean = 0.0F;
+
+  for (uint i = 0; i < blocksize; ++i) {
+    mean += data[i];
+  }
+
+  mean /= blocksize;
+
+  // Calculate second and fourth moments
+
+  float m2 = 0.0F;
+  float m4 = 0.0F;
+
+  for (uint i = 0; i < blocksize; i++) {
+    float deviation = data[i] - mean;
+    float deviation2 = deviation * deviation;
+
+    m2 += deviation2;
+    m4 += deviation2 * deviation2;
+  }
+
+  m2 /= blocksize;
+  m4 /= blocksize;
+
+  return (m2 > 1e-6F) ? m4 / (m2 * m2) : 3.0F;
+}
+
 float Crystalizer::compute_adaptive_intensity(const uint& band_index,
                                               float base_intensity,
                                               float* band_data,
                                               const bool& isLeft) {
-  auto& rms_env = isLeft ? env_rms_L[band_index] : env_rms_R[band_index];
-  auto& peak_env = isLeft ? env_peak_L[band_index] : env_peak_R[band_index];
+  float kurtosis = compute_kurtosis(band_data);
 
-  float rms = 0.0F;
-  float peak = 0.0F;
+  // Normalize relative to Gaussian distribution (kurtosis = 3)
 
-  for (uint m = 0U; m < blocksize; m++) {
-    rms += band_data[m] * band_data[m];
+  auto& env_kurtosis = isLeft ? env_kurtosis_L[band_index] : env_kurtosis_R[band_index];
 
-    peak = std::max(peak, std::abs(band_data[m]));
-  }
+  auto tau = (kurtosis > env_kurtosis) ? attack_time : release_time;
 
-  rms = std::sqrt(rms / blocksize);
+  float alpha = std::exp(-block_time / tau);
 
-  // leaky integrator
+  env_kurtosis = alpha * env_kurtosis + (1.0F - alpha) * kurtosis;
 
-  auto tau_peak = (peak > peak_env) ? attack_time : release_time;
-  auto tau_rms = (rms > rms_env) ? attack_time : release_time;
+  // kurtosis_ratio ~1.0 (Gaussian) → (normal enhancement)
+  // kurtosis_ratio >1.0 (peaky)    → (more enhancement)
+  // kurtosis_ratio <1.0 (flat)     → (less enhancement)
 
-  float alpha_peak = std::exp(-block_time / tau_peak);
-  float alpha_rms = std::exp(-block_time / tau_rms);
+  float kurtosis_ratio = env_kurtosis / 3.0F;
 
-  rms_env = (alpha_rms * rms_env) + (1.0F - alpha_rms) * rms;
-  peak_env = (alpha_peak * peak_env) + (1.0F - alpha_peak) * peak;
+  // util::warning(
+  //     std::format("n = {}, intensity = {}, kurtosis = {}", band_index, base_intensity * kurtosis_ratio,
+  //     env_kurtosis));
 
-  float crest_factor = (rms > 1e-6F) ? peak_env / rms_env : 1.0F;
-
-  // Reduce enhancement for small crest signals
-  // using a pure sine wave crest for scaling
-  float adaptive_factor = std::clamp(crest_factor / std::numbers::sqrt2_v<float>, 0.0F, 4.0F);
-
-  // util::warning(std::format("f = {}, crest = {}", adaptive_factor, crest_factor));
-  // util::warning(std::format("n = {}, intensity = {}", band_index, base_intensity * adaptive_factor));
-
-  return base_intensity * adaptive_factor;
+  return base_intensity * kurtosis_ratio;
 }

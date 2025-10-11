@@ -38,7 +38,7 @@
             <label></label>
             <min>-40</min>
             <max>32</max>
-            <default>-1</default>
+            <default>0</default>
         </entry>
         <entry name="intensityBand2" type="Double">
             <label></label>
@@ -50,61 +50,61 @@
             <label></label>
             <min>-40</min>
             <max>32</max>
-            <default>-3</default>
+            <default>0</default>
         </entry>
         <entry name="intensityBand4" type="Double">
             <label></label>
             <min>-40</min>
             <max>32</max>
-            <default>-4</default>
+            <default>0</default>
         </entry>
         <entry name="intensityBand5" type="Double">
             <label></label>
             <min>-40</min>
             <max>32</max>
-            <default>-5</default>
+            <default>0</default>
         </entry>
         <entry name="intensityBand6" type="Double">
             <label></label>
             <min>-40</min>
             <max>32</max>
-            <default>-6</default>
+            <default>0</default>
         </entry>
         <entry name="intensityBand7" type="Double">
             <label></label>
             <min>-40</min>
             <max>32</max>
-            <default>-7</default>
+            <default>0</default>
         </entry>
         <entry name="intensityBand8" type="Double">
             <label></label>
             <min>-40</min>
             <max>32</max>
-            <default>-8</default>
+            <default>0</default>
         </entry>
         <entry name="intensityBand9" type="Double">
             <label></label>
             <min>-40</min>
             <max>32</max>
-            <default>-9</default>
+            <default>0</default>
         </entry>
         <entry name="intensityBand10" type="Double">
             <label></label>
             <min>-40</min>
             <max>32</max>
-            <default>-10</default>
+            <default>0</default>
         </entry>
         <entry name="intensityBand11" type="Double">
             <label></label>
             <min>-40</min>
             <max>32</max>
-            <default>-11</default>
+            <default>0</default>
         </entry>
         <entry name="intensityBand12" type="Double">
             <label></label>
             <min>-40</min>
             <max>32</max>
-            <default>-12</default>
+            <default>0</default>
         </entry>
 
         <entry name="muteBand0" type="Bool">

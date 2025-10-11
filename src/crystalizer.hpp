@@ -101,14 +101,15 @@ class Crystalizer : public PluginBase {
   std::array<std::vector<float>, nbands> band_second_derivative_L;
   std::array<std::vector<float>, nbands> band_second_derivative_R;
 
-  std::array<float, nbands> env_rms_L, env_rms_R;
-  std::array<float, nbands> env_peak_L, env_peak_R;
+  std::array<float, nbands> env_kurtosis_L, env_kurtosis_R;
 
   std::array<std::unique_ptr<FirFilterBase>, nbands> filters;
 
   std::deque<float> deque_out_L, deque_out_R;
 
   float compute_adaptive_intensity(const uint& band_index, float base_intensity, float* band_data, const bool& isLeft);
+
+  float compute_kurtosis(float* data) const;
 
   template <typename T1>
   void enhance_peaks(T1& data_left, T1& data_right) {
