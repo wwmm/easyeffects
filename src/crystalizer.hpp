@@ -200,8 +200,8 @@ class Crystalizer : public PluginBase {
           const float& d2L = bandn_second_derivative_L[m];
           const float& d2R = bandn_second_derivative_R[m];
 
-          bandn_L[m] = bandn_L[m] - intensity_L * d2L;
-          bandn_R[m] = bandn_R[m] - intensity_R * d2R;
+          bandn_L[m] = std::clamp(bandn_L[m] - (intensity_L * d2L), -1.0F, 1.0F);
+          bandn_R[m] = std::clamp(bandn_R[m] - (intensity_R * d2R), -1.0F, 1.0F);
         }
 
         band_previous_L.at(n) = bandn_L[blocksize - 1U];
@@ -230,17 +230,6 @@ class Crystalizer : public PluginBase {
           data_right_ptr[m] += bandn_R[m];
         }
       }
-    }
-
-    /**
-     * The correct approach would be to avoid the second derivative
-     * getting too big... But using tanh to smoothly staying between
-     * [-1, 1] seems to be enough
-     */
-
-    for (uint m = 0U; m < blocksize; m++) {
-      data_left_ptr[m] = std::tanh(data_left_ptr[m]);
-      data_right_ptr[m] = std::tanh(data_right_ptr[m]);
     }
   }
 };
