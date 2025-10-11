@@ -436,3 +436,7 @@ void EffectsBase::requestSpectrumData() {
 
   // NOLINTEND(clang-analyzer-cplusplus.NewDeleteLeaks)
 }
+
+void EffectsBase::setUpdateLevelMeters(const bool& state) {
+  output_level->updateLevelMeters = state;
+}

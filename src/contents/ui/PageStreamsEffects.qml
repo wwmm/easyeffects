@@ -183,12 +183,11 @@ Kirigami.Page {
                 populatePluginsListModel(pageStreamsEffects.streamDB.plugins);
 
                 populatePluginsStack();
-
-                frameAnimation.start();
             }
             Component.onDestruction: {
                 frameAnimation.stop();
             }
+
             Layout.fillHeight: true
             Layout.fillWidth: true
             columns: 3
@@ -197,6 +196,8 @@ Kirigami.Page {
 
             FrameAnimation {
                 id: frameAnimation
+
+                running: pageStreamsEffects.pageType !== 2 && appWindow.visible // qmllint disable
 
                 onTriggered: {
                     if (pluginsStack.depth > 1)
@@ -430,10 +431,9 @@ Kirigami.Page {
                 alignment: Qt.AlignLeft
                 position: Controls.ToolBar.Footer
                 overflowIconName: "info-symbolic"
-                Component.onCompleted: {
-                    footerFrameAnimation.start();
-                }
                 Component.onDestruction: {
+                    pageStreamsEffects.pipelineInstance.setUpdateLevelMeters(false);
+
                     footerFrameAnimation.stop();
                 }
                 actions: [
@@ -478,6 +478,12 @@ Kirigami.Page {
 
                 FrameAnimation {
                     id: footerFrameAnimation
+
+                    running: pageStreamsEffects.pageType !== 2 && appWindow.visible // qmllint disable
+
+                    onRunningChanged: {
+                        pageStreamsEffects.pipelineInstance.setUpdateLevelMeters(running);
+                    }
 
                     onTriggered: {
                         let left = Number(pageStreamsEffects.pipelineInstance.getOutputLevelLeft());
