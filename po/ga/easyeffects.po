@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-11 00:39+0000\n"
+"POT-Creation-Date: 2025-10-11 23:54+0000\n"
 "PO-Revision-Date: 2025-10-11 16:07+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -84,11 +84,11 @@ msgstr "Tosaigh an feidhmchlár agus mód seirbhíse casta air."
 msgid "Enable debug messages."
 msgstr "Cumasaigh teachtaireachtaí dífhabhtaithe."
 
-#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:280
+#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:285
 msgid "Output Presets"
 msgstr "Réamhshocruithe Aschurtha"
 
-#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:270
+#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:275
 msgid "Input Presets"
 msgstr "Réamhshocruithe Ionchurtha"
 
@@ -265,14 +265,14 @@ msgstr "Éist"
 #: src/contents/ui/MultibandCompressor.qml:995
 #: src/contents/ui/MultibandGate.qml:963 src/contents/ui/RNNoise.qml:306
 #: src/contents/ui/Reverb.qml:352 src/contents/ui/Speex.qml:188
-#: src/contents/ui/StereoTools.qml:467 src/contents/ui/main.qml:435
+#: src/contents/ui/StereoTools.qml:467 src/contents/ui/main.qml:454
 msgid "Reset"
 msgstr "Athshocraigh"
 
 #: src/contents/ui/BassLoudness.qml:69 src/contents/ui/Compressor.qml:495
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:455
 #: src/contents/ui/Gate.qml:479 src/contents/ui/StereoTools.qml:309
-#: src/contents/ui/main.qml:372
+#: src/contents/ui/main.qml:391
 msgid "Output"
 msgstr "Aschur"
 
@@ -425,7 +425,7 @@ msgstr "Seachtrach"
 
 #: src/contents/ui/Compressor.qml:284 src/contents/ui/Expander.qml:244
 #: src/contents/ui/Gate.qml:268 src/contents/ui/Limiter.qml:244
-#: src/contents/ui/PageStreamsEffects.qml:302
+#: src/contents/ui/PageStreamsEffects.qml:303
 msgid "Input Device"
 msgstr "Gléas Ionchurtha"
 
@@ -770,7 +770,7 @@ msgid "Default"
 msgstr "Réamhshocrú"
 
 #: src/contents/ui/Crossfeed.qml:156 src/contents/ui/Reverb.qml:331
-#: src/contents/ui/main.qml:342
+#: src/contents/ui/main.qml:361
 msgid "Presets"
 msgstr "Réamhshocruithe"
 
@@ -980,7 +980,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Rialuithe gnóthachain ionchuir agus aschuir le méadair leibhéal"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:48
-#: src/contents/ui/main.qml:382
+#: src/contents/ui/main.qml:401
 msgid "Input"
 msgstr "Ionchur"
 
@@ -1581,41 +1581,41 @@ msgstr "Liosta Folamh"
 msgid "No Audio Application Available"
 msgstr "Níl feidhmchlár fuaime ar fáil"
 
-#: src/contents/ui/PageStreamsEffects.qml:256
+#: src/contents/ui/PageStreamsEffects.qml:257
 msgid "Add Effect"
 msgstr "Cuir Maisíocht Leis"
 
-#: src/contents/ui/PageStreamsEffects.qml:302
-#: src/contents/ui/PageStreamsEffects.qml:527
+#: src/contents/ui/PageStreamsEffects.qml:303
+#: src/contents/ui/PageStreamsEffects.qml:538
 msgid "Players"
 msgstr "Imreoirí"
 
-#: src/contents/ui/PageStreamsEffects.qml:319
-#: src/contents/ui/PageStreamsEffects.qml:527
+#: src/contents/ui/PageStreamsEffects.qml:320
+#: src/contents/ui/PageStreamsEffects.qml:538
 msgid "Recorders"
 msgstr "Taifeadáin"
 
-#: src/contents/ui/PageStreamsEffects.qml:332
+#: src/contents/ui/PageStreamsEffects.qml:333
 msgid "Close"
 msgstr "Dún"
 
-#: src/contents/ui/PageStreamsEffects.qml:355
+#: src/contents/ui/PageStreamsEffects.qml:356
 msgid "No Effects"
 msgstr "Gan Éifeachtaí"
 
-#: src/contents/ui/PageStreamsEffects.qml:356
+#: src/contents/ui/PageStreamsEffects.qml:357
 msgid "Audio Stream Not Modified"
 msgstr "Sruth fuaime gan athrú"
 
-#: src/contents/ui/PageStreamsEffects.qml:537
+#: src/contents/ui/PageStreamsEffects.qml:548
 msgid "Effects"
 msgstr "Éifeachtaí"
 
-#: src/contents/ui/PageStreamsEffects.qml:554
+#: src/contents/ui/PageStreamsEffects.qml:565
 msgid "Input Monitoring"
 msgstr "Monatóireacht Ionchuir"
 
-#: src/contents/ui/PageStreamsEffects.qml:567
+#: src/contents/ui/PageStreamsEffects.qml:578
 msgid "Excluded Apps"
 msgstr "Feidhmchláir Eisiata"
 
@@ -1776,7 +1776,7 @@ msgstr "Frithailiasáil"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:407
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:426
 msgid "Preferences"
 msgstr "Roghanna"
 
@@ -2334,8 +2334,8 @@ msgstr "Deireadh a chur le Seirbhís Éifeachtaí Éasca"
 msgid "Can Be Used on Numeric Controls"
 msgstr "Is féidir é a úsáid ar rialuithe uimhriúla"
 
-#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:301
-#: src/contents/ui/main.qml:415
+#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:320
+#: src/contents/ui/main.qml:434
 msgid "Shortcuts"
 msgstr "Aicearraí"
 
@@ -2435,44 +2435,49 @@ msgstr "Bonn Steirió"
 msgid "Stereo Phase"
 msgstr "Céim Steirió"
 
-#: src/contents/ui/main.qml:162
+#: src/contents/ui/main.qml:163
 msgid "Reset Settings?"
 msgstr "Athshocraigh Socruithe?"
 
-#: src/contents/ui/main.qml:163
+#: src/contents/ui/main.qml:164
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "An bhfuil tú cinnte gur mian leat gach socrú Easy Effects a athshocrú?"
 
-#: src/contents/ui/main.qml:184
+#: src/contents/ui/main.qml:185
 msgid "Audio effects for PipeWire applications"
 msgstr "Éifeachtaí fuaime d'fheidhmchláir PipeWire"
 
-#: src/contents/ui/main.qml:197
+#: src/contents/ui/main.qml:198
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Forbróir"
 
-#: src/contents/ui/main.qml:290
+#: src/contents/ui/main.qml:249 src/contents/ui/main.qml:266
+#, fuzzy
+msgid "Preset Loaded"
+msgstr "Níor luchtaíodh aon réamhshocrú"
+
+#: src/contents/ui/main.qml:309
 msgid "Active"
 msgstr "Gníomhach"
 
-#: src/contents/ui/main.qml:310 src/contents/ui/main.qml:423
+#: src/contents/ui/main.qml:329 src/contents/ui/main.qml:442
 msgid "Manual"
 msgstr "Lámhleabhar"
 
-#: src/contents/ui/main.qml:320 src/contents/ui/main.qml:455
+#: src/contents/ui/main.qml:339 src/contents/ui/main.qml:474
 msgid "Quit"
 msgstr "Scoir"
 
-#: src/contents/ui/main.qml:350
+#: src/contents/ui/main.qml:369
 msgid "Turn Effects On/Off"
 msgstr "Cas Éifeachtaí Air/Múch"
 
-#: src/contents/ui/main.qml:392
+#: src/contents/ui/main.qml:411
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:447
+#: src/contents/ui/main.qml:466
 msgid "About Easy Effects"
 msgstr "Maidir le hÉifeachtaí Éasca"
 
