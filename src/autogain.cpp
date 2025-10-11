@@ -305,12 +305,8 @@ void Autogain::process(std::span<float>& left_in,
   std::ranges::copy(left_in, left_out.begin());
   std::ranges::copy(right_in, right_out.begin());
 
-  if (internal_output_gain != 1.0F) {
-    apply_gain(left_out, right_out, static_cast<float>(internal_output_gain));
-  }
-
-  if (output_gain != 1.0F) {
-    apply_gain(left_out, right_out, output_gain);
+  if (internal_output_gain != 1.0F || output_gain != 1.0F) {
+    apply_gain(left_out, right_out, static_cast<float>(internal_output_gain) * output_gain);
   }
 
   if (updateLevelMeters) {

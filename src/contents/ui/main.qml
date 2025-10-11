@@ -5,6 +5,7 @@ import QtQuick.Layouts
 import ee.database as DB
 import ee.help as Help
 import ee.pipeline as Pipeline
+import ee.pipewire as PW
 import ee.presets as Presets
 import org.kde.kirigami as Kirigami
 
@@ -285,6 +286,20 @@ Kirigami.ApplicationWindow {
             MenuSeparator {
                 id: sectionOutputPresets
             }
+
+            MenuItem {
+                text: PW.ModelNodes.getNodeDescription(DB.Manager.streamInputs.inputDevice)
+                icon.name: "audio-input-microphone-symbolic"
+                enabled: false
+            }
+
+            MenuItem {
+                text: PW.ModelNodes.getNodeDescription(DB.Manager.streamOutputs.outputDevice)
+                icon.name: "audio-speakers-symbolic"
+                enabled: false
+            }
+
+            MenuSeparator {}
 
             MenuItem {
                 text: i18n("Active") // qmllint disable

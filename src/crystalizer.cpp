@@ -28,7 +28,6 @@
 #include <format>
 #include <memory>
 #include <mutex>
-#include <numbers>
 #include <span>
 #include <string>
 #include "db_manager.hpp"
