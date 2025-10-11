@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-11 00:39+0000\n"
-"PO-Revision-Date: 2025-10-08 08:02+0000\n"
+"PO-Revision-Date: 2025-10-12 00:21+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -773,7 +773,7 @@ msgstr "Préréglages"
 
 #: src/contents/ui/Crystalizer.qml:96
 msgid "Adaptive Intensity"
-msgstr ""
+msgstr "Intensité Adaptative"
 
 #: src/contents/ui/CrystalizerBand.qml:31
 #: src/contents/ui/EqualizerBandMenu.qml:157
