@@ -440,3 +440,7 @@ void EffectsBase::requestSpectrumData() {
 void EffectsBase::setUpdateLevelMeters(const bool& state) {
   output_level->updateLevelMeters = state;
 }
+
+void EffectsBase::setSpectrumBypass(const bool& state) {
+  spectrum->bypass = state;
+}

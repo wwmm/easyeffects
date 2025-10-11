@@ -397,6 +397,10 @@ Kirigami.Page {
 
                 running: DB.Manager.spectrum.state && appWindow.visible // qmllint disable
 
+                onRunningChanged: {
+                    pageStreamsEffects.pipelineInstance.setSpectrumBypass(!running);
+                }
+
                 onTriggered: {
                     pageStreamsEffects.pipelineInstance.requestSpectrumData();
                 }
@@ -431,11 +435,6 @@ Kirigami.Page {
                 alignment: Qt.AlignLeft
                 position: Controls.ToolBar.Footer
                 overflowIconName: "info-symbolic"
-                Component.onDestruction: {
-                    pageStreamsEffects.pipelineInstance.setUpdateLevelMeters(false);
-
-                    footerFrameAnimation.stop();
-                }
                 actions: [
                     Kirigami.Action {
                         id: actionRateValue
@@ -475,6 +474,12 @@ Kirigami.Page {
                         visible: false
                     }
                 ]
+
+                Component.onDestruction: {
+                    pageStreamsEffects.pipelineInstance.setUpdateLevelMeters(false);
+
+                    footerFrameAnimation.stop();
+                }
 
                 FrameAnimation {
                     id: footerFrameAnimation

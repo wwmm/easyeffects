@@ -73,6 +73,8 @@ class EffectsBase : public QObject {
 
   Q_INVOKABLE void setUpdateLevelMeters(const bool& state);
 
+  Q_INVOKABLE void setSpectrumBypass(const bool& state);
+
  Q_SIGNALS:
   void pipelineChanged();
   void newSpectrumData(QList<QPointF> newData);

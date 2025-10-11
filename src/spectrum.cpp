@@ -27,6 +27,7 @@
 #include <cmath>
 #include <cstddef>
 #include <cstring>
+#include <format>
 #include <memory>
 #include <numbers>
 #include <span>
