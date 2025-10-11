@@ -58,6 +58,8 @@ void CrystalizerPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["output-gain"] = settings->outputGain();
 
+  json[section][instance_name]["adaptive-intensity"] = settings->adaptiveIntensity();
+
   SAVE_BAND(0);
   SAVE_BAND(1);
   SAVE_BAND(2);
@@ -79,6 +81,9 @@ void CrystalizerPreset::load(const nlohmann::json& json) {
   settings->setInputGain(json.at(section).at(instance_name).value("input-gain", settings->defaultInputGainValue()));
 
   settings->setOutputGain(json.at(section).at(instance_name).value("output-gain", settings->defaultOutputGainValue()));
+
+  settings->setAdaptiveIntensity(
+      json.at(section).at(instance_name).value("adaptive-intensity", settings->defaultAdaptiveIntensityValue()));
 
   LOAD_BAND(0);
   LOAD_BAND(1);

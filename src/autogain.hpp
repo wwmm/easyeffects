@@ -92,7 +92,7 @@ class Autogain : public PluginBase {
   double prev_gain = 1.0;
   double block_time = 0.0;
   double attack_time = 0.1;   // seconds
-  double release_time = 1.0;  // seconds
+  double release_time = 0.4;  // seconds
 
   std::vector<float> data;
 

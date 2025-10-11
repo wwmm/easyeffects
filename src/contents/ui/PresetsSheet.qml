@@ -30,13 +30,13 @@ Kirigami.OverlaySheet {
         if (control.visible) {
             switch (DB.Manager.main.visiblePresetSheetPage) {
             case 0:
-                stackView.replace("qrc:ui/PresetsLocalPage.qml");
+                stackView.replace("qrc:/ui/PresetsLocalPage.qml");
                 break;
             case 1:
-                stackView.replace("qrc:ui/PresetsCommunityPage.qml");
+                stackView.replace("qrc:/ui/PresetsCommunityPage.qml");
                 break;
             case 2:
-                stackView.replace("qrc:ui/PresetsAutoloadingPage.qml");
+                stackView.replace("qrc:/ui/PresetsAutoloadingPage.qml");
                 break;
             default:
                 null;
@@ -64,7 +64,7 @@ Kirigami.OverlaySheet {
                 checkable: true
                 checked: DB.Manager.main.visiblePresetSheetPage === 0
                 onTriggered: {
-                    stackView.replace("qrc:ui/PresetsLocalPage.qml");
+                    stackView.replace("qrc:/ui/PresetsLocalPage.qml");
                     DB.Manager.main.visiblePresetSheetPage = 0;
                 }
             },
@@ -75,7 +75,7 @@ Kirigami.OverlaySheet {
                 checkable: true
                 checked: DB.Manager.main.visiblePresetSheetPage === 1
                 onTriggered: {
-                    stackView.replace("qrc:ui/PresetsCommunityPage.qml");
+                    stackView.replace("qrc:/ui/PresetsCommunityPage.qml");
                     DB.Manager.main.visiblePresetSheetPage = 1;
                 }
             },
@@ -86,7 +86,7 @@ Kirigami.OverlaySheet {
                 checkable: true
                 checked: DB.Manager.main.visiblePresetSheetPage === 2
                 onTriggered: {
-                    stackView.replace("qrc:ui/PresetsAutoloadingPage.qml");
+                    stackView.replace("qrc:/ui/PresetsAutoloadingPage.qml");
                     DB.Manager.main.visiblePresetSheetPage = 2;
                 }
             }

@@ -22,10 +22,12 @@
 #include <qobjectdefs.h>
 #include <qtypes.h>
 #include <algorithm>
+#include <cmath>
 #include <cstddef>
 #include <format>
 #include <memory>
 #include <mutex>
+#include <numbers>
 #include <span>
 #include <string>
 #include "db_manager.hpp"
@@ -86,6 +88,22 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   frequencies[12] = 15020.0F;
   frequencies[13] = 20020.0F;
 
+  band_prev_intensity_L[0] = settings->intensityBand0();
+  band_prev_intensity_L[1] = settings->intensityBand1();
+  band_prev_intensity_L[2] = settings->intensityBand2();
+  band_prev_intensity_L[3] = settings->intensityBand3();
+  band_prev_intensity_L[4] = settings->intensityBand4();
+  band_prev_intensity_L[5] = settings->intensityBand5();
+  band_prev_intensity_L[6] = settings->intensityBand6();
+  band_prev_intensity_L[7] = settings->intensityBand7();
+  band_prev_intensity_L[8] = settings->intensityBand8();
+  band_prev_intensity_L[9] = settings->intensityBand9();
+  band_prev_intensity_L[10] = settings->intensityBand10();
+  band_prev_intensity_L[11] = settings->intensityBand11();
+  band_prev_intensity_L[12] = settings->intensityBand12();
+
+  band_prev_intensity_R = band_prev_intensity_L;
+
   init_common_controls<db::Crystalizer>(settings);
 
   BIND_BAND(0);
@@ -129,6 +147,8 @@ void Crystalizer::setup() {
   filters_are_ready = false;
 
   data_mutex.unlock();
+
+  block_time = static_cast<float>(n_samples) / static_cast<float>(rate);
 
   /**
    * As zita uses fftw we have to be careful when reinitializing it.
@@ -307,4 +327,28 @@ void Crystalizer::process([[maybe_unused]] std::span<float>& left_in,
 
 auto Crystalizer::get_latency_seconds() -> float {
   return this->latency_value;
+}
+
+float Crystalizer::compute_adaptive_intensity(float base_intensity, float* band_data) const {
+  float rms = 0.0F;
+  float peak = 0.0F;
+
+  for (uint m = 0U; m < blocksize; m++) {
+    rms += band_data[m] * band_data[m];
+
+    peak = std::max(peak, std::abs(band_data[m]));
+  }
+
+  rms = std::sqrt(rms / blocksize);
+
+  // Reduce enhancement for small crest signals
+
+  float crest_factor = (rms > 1e-6F) ? peak / rms : 1.0F;
+
+  // using a pure sine wave crest for scaling
+  float adaptive_factor = crest_factor / std::numbers::sqrt2_v<float>;
+
+  // util::warning(std::format("f = {}, crest = {}", adaptive_factor, crest_factor));
+
+  return base_intensity * adaptive_factor;
 }

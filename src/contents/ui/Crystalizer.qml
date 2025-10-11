@@ -93,6 +93,16 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
+                    text: i18n("Adaptive Intensity")// qmllint disable
+                    icon.name: "auto-scale-y"
+                    checkable: true
+                    checked: crystalizerPage.pluginDB.adaptiveIntensity
+                    onTriggered: {
+                        if (crystalizerPage.pluginDB.adaptiveIntensity != checked)
+                            crystalizerPage.pluginDB.adaptiveIntensity = checked;
+                    }
+                },
+                Kirigami.Action {
                     text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {

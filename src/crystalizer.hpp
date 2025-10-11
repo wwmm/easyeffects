@@ -27,6 +27,7 @@
 #include <cmath>
 #include <deque>
 #include <memory>
+#include <numbers>
 #include <span>
 #include <string>
 #include <vector>
@@ -76,6 +77,10 @@ class Crystalizer : public PluginBase {
 
   static constexpr uint nbands = 13U;
 
+  float block_time = 0.0;
+  float attack_time = 0.1;   // seconds
+  float release_time = 0.4;  // seconds
+
   db::Crystalizer* settings = nullptr;
 
   std::vector<float> data_L;
@@ -91,6 +96,9 @@ class Crystalizer : public PluginBase {
   std::array<float, nbands> band_next_L;
   std::array<float, nbands> band_next_R;
 
+  std::array<float, nbands> band_prev_intensity_L;
+  std::array<float, nbands> band_prev_intensity_R;
+
   std::array<std::vector<float>, nbands> band_data_L;
   std::array<std::vector<float>, nbands> band_data_R;
   std::array<std::vector<float>, nbands> band_gain;
@@ -100,6 +108,8 @@ class Crystalizer : public PluginBase {
   std::array<std::unique_ptr<FirFilterBase>, nbands> filters;
 
   std::deque<float> deque_out_L, deque_out_R;
+
+  float compute_adaptive_intensity(float base_intensity, float* band_data) const;
 
   template <typename T1>
   void enhance_peaks(T1& data_left, T1& data_right) {
@@ -139,8 +149,34 @@ class Crystalizer : public PluginBase {
       auto bandn_L = band_data_L.at(n).data();
       auto bandn_R = band_data_R.at(n).data();
 
+      auto& prev_intensity_L = band_prev_intensity_L.at(n);
+      auto& prev_intensity_R = band_prev_intensity_R.at(n);
+
       if (!band_bypass.at(n)) {
         const float intensity = band_intensity.at(n);
+        float intensity_L = intensity;
+        float intensity_R = intensity;
+
+        if (settings->adaptiveIntensity()) {
+          intensity_L = compute_adaptive_intensity(intensity, bandn_L);
+          intensity_R = compute_adaptive_intensity(intensity, bandn_R);
+
+          // leaky integrator
+
+          auto tau_L = (prev_intensity_L < intensity_L) ? attack_time : release_time;
+          auto tau_R = (prev_intensity_R < intensity_R) ? attack_time : release_time;
+
+          float alpha_L = std::exp(-block_time / tau_L);
+          float alpha_R = std::exp(-block_time / tau_R);
+
+          intensity_L = (alpha_L * prev_intensity_L) + ((1.0 - alpha_L) * intensity_L);
+          intensity_R = (alpha_R * prev_intensity_R) + ((1.0 - alpha_R) * intensity_R);
+
+          prev_intensity_L = intensity_L;
+          prev_intensity_R = intensity_R;
+
+          // util::warning(std::format("band = {} L = {}, R = {}", n, intensity_L, intensity_R));
+        }
 
         auto bandn_second_derivative_L = band_second_derivative_L.at(n).data();
         auto bandn_second_derivative_R = band_second_derivative_R.at(n).data();
@@ -164,14 +200,8 @@ class Crystalizer : public PluginBase {
           const float& d2L = bandn_second_derivative_L[m];
           const float& d2R = bandn_second_derivative_R[m];
 
-          /**
-           * The correct approach would be to avoid the second derivative
-           * getting too big... But using tanh to smoothly staying between
-           * [-1, 1] seems to be enough
-           */
-
-          bandn_L[m] = bandn_L[m] - std::tanh(intensity * d2L);
-          bandn_R[m] = bandn_R[m] - std::tanh(intensity * d2R);
+          bandn_L[m] = bandn_L[m] - intensity_L * d2L;
+          bandn_R[m] = bandn_R[m] - intensity_R * d2R;
         }
 
         band_previous_L.at(n) = bandn_L[blocksize - 1U];
@@ -200,6 +230,17 @@ class Crystalizer : public PluginBase {
           data_right_ptr[m] += bandn_R[m];
         }
       }
+    }
+
+    /**
+     * The correct approach would be to avoid the second derivative
+     * getting too big... But using tanh to smoothly staying between
+     * [-1, 1] seems to be enough
+     */
+
+    for (uint m = 0U; m < blocksize; m++) {
+      data_left_ptr[m] = std::tanh(data_left_ptr[m]);
+      data_right_ptr[m] = std::tanh(data_right_ptr[m]);
     }
   }
 };
