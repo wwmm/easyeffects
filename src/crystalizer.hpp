@@ -77,8 +77,8 @@ class Crystalizer : public PluginBase {
   static constexpr uint nbands = 13U;
 
   float block_time = 0.0;
-  float attack_time = 0.1;   // seconds
-  float release_time = 0.4;  // seconds
+  float attack_time = 0.4;   // seconds
+  float release_time = 3.0;  // seconds
 
   db::Crystalizer* settings = nullptr;
 
@@ -95,20 +95,20 @@ class Crystalizer : public PluginBase {
   std::array<float, nbands> band_next_L;
   std::array<float, nbands> band_next_R;
 
-  std::array<float, nbands> band_prev_intensity_L;
-  std::array<float, nbands> band_prev_intensity_R;
-
   std::array<std::vector<float>, nbands> band_data_L;
   std::array<std::vector<float>, nbands> band_data_R;
   std::array<std::vector<float>, nbands> band_gain;
   std::array<std::vector<float>, nbands> band_second_derivative_L;
   std::array<std::vector<float>, nbands> band_second_derivative_R;
 
+  std::array<float, nbands> env_rms_L, env_rms_R;
+  std::array<float, nbands> env_peak_L, env_peak_R;
+
   std::array<std::unique_ptr<FirFilterBase>, nbands> filters;
 
   std::deque<float> deque_out_L, deque_out_R;
 
-  float compute_adaptive_intensity(float base_intensity, float* band_data) const;
+  float compute_adaptive_intensity(const uint& band_index, float base_intensity, float* band_data, const bool& isLeft);
 
   template <typename T1>
   void enhance_peaks(T1& data_left, T1& data_right) {
@@ -143,13 +143,8 @@ class Crystalizer : public PluginBase {
     }
 
     for (uint n = 0U; n < nbands; n++) {
-      // Calculating the second derivative
-
       auto bandn_L = band_data_L.at(n).data();
       auto bandn_R = band_data_R.at(n).data();
-
-      auto& prev_intensity_L = band_prev_intensity_L.at(n);
-      auto& prev_intensity_R = band_prev_intensity_R.at(n);
 
       if (!band_bypass.at(n)) {
         const float intensity = band_intensity.at(n);
@@ -157,25 +152,11 @@ class Crystalizer : public PluginBase {
         float intensity_R = intensity;
 
         if (settings->adaptiveIntensity()) {
-          intensity_L = compute_adaptive_intensity(intensity, bandn_L);
-          intensity_R = compute_adaptive_intensity(intensity, bandn_R);
-
-          // leaky integrator
-
-          auto tau_L = (prev_intensity_L < intensity_L) ? attack_time : release_time;
-          auto tau_R = (prev_intensity_R < intensity_R) ? attack_time : release_time;
-
-          float alpha_L = std::exp(-block_time / tau_L);
-          float alpha_R = std::exp(-block_time / tau_R);
-
-          intensity_L = (alpha_L * prev_intensity_L) + ((1.0 - alpha_L) * intensity_L);
-          intensity_R = (alpha_R * prev_intensity_R) + ((1.0 - alpha_R) * intensity_R);
-
-          prev_intensity_L = intensity_L;
-          prev_intensity_R = intensity_R;
-
-          // util::warning(std::format("band = {} L = {}, R = {}", n, intensity_L, intensity_R));
+          intensity_L = compute_adaptive_intensity(n, intensity, bandn_L, true);
+          intensity_R = compute_adaptive_intensity(n, intensity, bandn_R, false);
         }
+
+        // Calculating the second derivative
 
         auto bandn_second_derivative_L = band_second_derivative_L.at(n).data();
         auto bandn_second_derivative_R = band_second_derivative_R.at(n).data();

@@ -72,6 +72,10 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   std::ranges::fill(band_intensity, 1.0F);
   std::ranges::fill(band_previous_L, 0.0F);
   std::ranges::fill(band_previous_R, 0.0F);
+  std::ranges::fill(env_rms_L, 0.0F);
+  std::ranges::fill(env_rms_R, 0.0F);
+  std::ranges::fill(env_peak_L, 0.0F);
+  std::ranges::fill(env_peak_R, 0.0F);
 
   frequencies[0] = 20.0F;
   frequencies[1] = 520.0F;
@@ -87,22 +91,6 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   frequencies[11] = 10020.0F;
   frequencies[12] = 15020.0F;
   frequencies[13] = 20020.0F;
-
-  band_prev_intensity_L[0] = settings->intensityBand0();
-  band_prev_intensity_L[1] = settings->intensityBand1();
-  band_prev_intensity_L[2] = settings->intensityBand2();
-  band_prev_intensity_L[3] = settings->intensityBand3();
-  band_prev_intensity_L[4] = settings->intensityBand4();
-  band_prev_intensity_L[5] = settings->intensityBand5();
-  band_prev_intensity_L[6] = settings->intensityBand6();
-  band_prev_intensity_L[7] = settings->intensityBand7();
-  band_prev_intensity_L[8] = settings->intensityBand8();
-  band_prev_intensity_L[9] = settings->intensityBand9();
-  band_prev_intensity_L[10] = settings->intensityBand10();
-  band_prev_intensity_L[11] = settings->intensityBand11();
-  band_prev_intensity_L[12] = settings->intensityBand12();
-
-  band_prev_intensity_R = band_prev_intensity_L;
 
   init_common_controls<db::Crystalizer>(settings);
 
@@ -329,7 +317,13 @@ auto Crystalizer::get_latency_seconds() -> float {
   return this->latency_value;
 }
 
-float Crystalizer::compute_adaptive_intensity(float base_intensity, float* band_data) const {
+float Crystalizer::compute_adaptive_intensity(const uint& band_index,
+                                              float base_intensity,
+                                              float* band_data,
+                                              const bool& isLeft) {
+  auto& rms_env = isLeft ? env_rms_L[band_index] : env_rms_R[band_index];
+  auto& peak_env = isLeft ? env_peak_L[band_index] : env_peak_R[band_index];
+
   float rms = 0.0F;
   float peak = 0.0F;
 
@@ -341,14 +335,25 @@ float Crystalizer::compute_adaptive_intensity(float base_intensity, float* band_
 
   rms = std::sqrt(rms / blocksize);
 
+  // leaky integrator
+
+  auto tau_peak = (peak > peak_env) ? attack_time : release_time;
+  auto tau_rms = (rms > rms_env) ? attack_time : release_time;
+
+  float alpha_peak = std::exp(-block_time / tau_peak);
+  float alpha_rms = std::exp(-block_time / tau_rms);
+
+  rms_env = (alpha_rms * rms_env) + (1.0F - alpha_rms) * rms;
+  peak_env = (alpha_peak * peak_env) + (1.0F - alpha_peak) * peak;
+
+  float crest_factor = (rms > 1e-6F) ? peak_env / rms_env : 1.0F;
+
   // Reduce enhancement for small crest signals
-
-  float crest_factor = (rms > 1e-6F) ? peak / rms : 1.0F;
-
   // using a pure sine wave crest for scaling
-  float adaptive_factor = crest_factor / std::numbers::sqrt2_v<float>;
+  float adaptive_factor = std::clamp(crest_factor / std::numbers::sqrt2_v<float>, 0.0F, 4.0F);
 
   // util::warning(std::format("f = {}, crest = {}", adaptive_factor, crest_factor));
+  // util::warning(std::format("n = {}, intensity = {}", band_index, base_intensity * adaptive_factor));
 
   return base_intensity * adaptive_factor;
 }
