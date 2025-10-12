@@ -208,6 +208,7 @@ target_link_libraries(easyeffects PRIVATE
 )
 
 target_compile_definitions(easyeffects PRIVATE QT_NO_KEYWORDS=1)
+# target_compile_definitions(easyeffects PRIVATE QT_NO_KEYWORDS=1 QT_QML_DEBUG=1)
 
 if(ENABLE_MOLD)
     MESSAGE(STATUS "Enabling mold")

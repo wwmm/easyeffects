@@ -56,4 +56,17 @@
       lv2_wrapper->set_control_port_value(key, linear_v);                                                       \
     });                                                                                                         \
   }
+
+#define BIND_LV2_PORT_INVERTED_BOOL(key, getter, setter, onChangedSignal)                           \
+  {                                                                                                 \
+    lv2_wrapper->set_control_port_value(key, static_cast<float>(!settings->getter()));              \
+    lv2_wrapper->sync_funcs.emplace_back(                                                           \
+        [&]() { settings->setter(!static_cast<bool>(lv2_wrapper->get_control_port_value(key))); }); \
+    connect(settings, &onChangedSignal, [this]() {                                                  \
+      if (this == nullptr || settings == nullptr || lv2_wrapper == nullptr) {                       \
+        return;                                                                                     \
+      }                                                                                             \
+      lv2_wrapper->set_control_port_value(key, static_cast<float>(!settings->getter()));            \
+    });                                                                                             \
+  }
 // NOLINTEND(bugprone-macro-parentheses,cppcoreguidelines-macro-usage)

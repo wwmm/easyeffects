@@ -3,6 +3,8 @@ QT_LOGGING_RULES="qml.debug=true"
 QML_IMPORT_TRACE=1
 QML_DISABLE_OPTIMIZER=1
 
+-qmljsdebugger=port:<port_number>,block
+
 Creating test files
 
 sox -n -c 2 -r 48000 -b 16 pink_noise.wav synth 10 pinknoise gain -12
