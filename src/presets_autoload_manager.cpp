@@ -186,6 +186,8 @@ void AutoloadManager::load(const PipelineType& pipeline_type,
 
       return;
     }
+
+    return;
   }
 
   util::debug(std::format("Autoloading local preset {} for device {}", name, device_name.toStdString()));
