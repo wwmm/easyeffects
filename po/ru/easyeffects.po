@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-11 00:39+0000\n"
+"POT-Creation-Date: 2025-10-11 23:54+0000\n"
 "PO-Revision-Date: 2025-10-10 15:07+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -83,11 +83,11 @@ msgstr "Запустить приложение с включённым режи
 msgid "Enable debug messages."
 msgstr "Включить отладочные сообщения."
 
-#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:280
+#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:285
 msgid "Output Presets"
 msgstr "Предустановки выхода"
 
-#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:270
+#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:275
 msgid "Input Presets"
 msgstr "Предустановки входа"
 
@@ -272,14 +272,14 @@ msgstr "Прослушать"
 #: src/contents/ui/MultibandCompressor.qml:995
 #: src/contents/ui/MultibandGate.qml:963 src/contents/ui/RNNoise.qml:306
 #: src/contents/ui/Reverb.qml:352 src/contents/ui/Speex.qml:188
-#: src/contents/ui/StereoTools.qml:467 src/contents/ui/main.qml:435
+#: src/contents/ui/StereoTools.qml:467 src/contents/ui/main.qml:454
 msgid "Reset"
 msgstr "Сброс"
 
 #: src/contents/ui/BassLoudness.qml:69 src/contents/ui/Compressor.qml:495
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:455
 #: src/contents/ui/Gate.qml:479 src/contents/ui/StereoTools.qml:309
-#: src/contents/ui/main.qml:372
+#: src/contents/ui/main.qml:391
 msgid "Output"
 msgstr "Выход"
 
@@ -435,7 +435,7 @@ msgstr "Внешний"
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:284 src/contents/ui/Expander.qml:244
 #: src/contents/ui/Gate.qml:268 src/contents/ui/Limiter.qml:244
-#: src/contents/ui/PageStreamsEffects.qml:302
+#: src/contents/ui/PageStreamsEffects.qml:303
 msgid "Input Device"
 msgstr "Устройство ввода"
 
@@ -795,7 +795,7 @@ msgid "Default"
 msgstr "По умолчанию"
 
 #: src/contents/ui/Crossfeed.qml:156 src/contents/ui/Reverb.qml:331
-#: src/contents/ui/main.qml:342
+#: src/contents/ui/main.qml:361
 msgid "Presets"
 msgstr "Предустановки"
 
@@ -1025,7 +1025,7 @@ msgstr ""
 # msgstr "Влияние комплексных измерений"
 # ###############################################
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:48
-#: src/contents/ui/main.qml:382
+#: src/contents/ui/main.qml:401
 msgid "Input"
 msgstr "Вход"
 
@@ -1693,42 +1693,42 @@ msgstr "Список пуст"
 msgid "No Audio Application Available"
 msgstr "Нет доступных звуковых приложений"
 
-#: src/contents/ui/PageStreamsEffects.qml:256
+#: src/contents/ui/PageStreamsEffects.qml:257
 msgid "Add Effect"
 msgstr "Добавить эффект"
 
-#: src/contents/ui/PageStreamsEffects.qml:302
-#: src/contents/ui/PageStreamsEffects.qml:527
+#: src/contents/ui/PageStreamsEffects.qml:303
+#: src/contents/ui/PageStreamsEffects.qml:538
 msgid "Players"
 msgstr "Проигрыватели"
 
-#: src/contents/ui/PageStreamsEffects.qml:319
-#: src/contents/ui/PageStreamsEffects.qml:527
+#: src/contents/ui/PageStreamsEffects.qml:320
+#: src/contents/ui/PageStreamsEffects.qml:538
 msgid "Recorders"
 msgstr "Рекордеры"
 
-#: src/contents/ui/PageStreamsEffects.qml:332
+#: src/contents/ui/PageStreamsEffects.qml:333
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:355
+#: src/contents/ui/PageStreamsEffects.qml:356
 msgid "No Effects"
 msgstr "Без эффектов"
 
-#: src/contents/ui/PageStreamsEffects.qml:356
+#: src/contents/ui/PageStreamsEffects.qml:357
 msgid "Audio Stream Not Modified"
 msgstr "Аудиопоток не изменён"
 
-#: src/contents/ui/PageStreamsEffects.qml:537
+#: src/contents/ui/PageStreamsEffects.qml:548
 msgid "Effects"
 msgstr "Эффекты"
 
-#: src/contents/ui/PageStreamsEffects.qml:554
+#: src/contents/ui/PageStreamsEffects.qml:565
 #, fuzzy
 msgid "Input Monitoring"
 msgstr "Включить/отключить мониторинг"
 
-#: src/contents/ui/PageStreamsEffects.qml:567
+#: src/contents/ui/PageStreamsEffects.qml:578
 msgid "Excluded Apps"
 msgstr "Исключённые приложения"
 
@@ -1895,7 +1895,7 @@ msgstr "Сглаживание"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:407
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:426
 #, fuzzy
 msgid "Preferences"
 msgstr "_Настройки"
@@ -2490,8 +2490,8 @@ msgstr "Вывод версии easyeffects"
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:301
-#: src/contents/ui/main.qml:415
+#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:320
+#: src/contents/ui/main.qml:434
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_Горячие клавиши"
@@ -2592,50 +2592,55 @@ msgstr "База стерео"
 msgid "Stereo Phase"
 msgstr "Фаза стерео"
 
-#: src/contents/ui/main.qml:162
+#: src/contents/ui/main.qml:163
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "Сбросить настрой_ки"
 
-#: src/contents/ui/main.qml:163
+#: src/contents/ui/main.qml:164
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:184
+#: src/contents/ui/main.qml:185
 msgid "Audio effects for PipeWire applications"
 msgstr "Звуковые эффекты для приложений PipeWire"
 
-#: src/contents/ui/main.qml:197
+#: src/contents/ui/main.qml:198
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Огибающая"
 
-#: src/contents/ui/main.qml:290
+#: src/contents/ui/main.qml:249 src/contents/ui/main.qml:266
+#, fuzzy
+msgid "Preset Loaded"
+msgstr "Предустановка не загружена"
+
+#: src/contents/ui/main.qml:309
 #, fuzzy
 msgid "Active"
 msgstr "Активировать"
 
-#: src/contents/ui/main.qml:310 src/contents/ui/main.qml:423
+#: src/contents/ui/main.qml:329 src/contents/ui/main.qml:442
 #, fuzzy
 msgid "Manual"
 msgstr "_Руководство"
 
-#: src/contents/ui/main.qml:320 src/contents/ui/main.qml:455
+#: src/contents/ui/main.qml:339 src/contents/ui/main.qml:474
 #, fuzzy
 msgid "Quit"
 msgstr "_Выйти"
 
-#: src/contents/ui/main.qml:350
+#: src/contents/ui/main.qml:369
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:392
+#: src/contents/ui/main.qml:411
 #, fuzzy
 msgid "PipeWire"
 msgstr "_PipeWire"
 
-#: src/contents/ui/main.qml:447
+#: src/contents/ui/main.qml:466
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_О программе Easy Effects"

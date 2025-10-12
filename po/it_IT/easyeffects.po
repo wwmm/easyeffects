@@ -66,8 +66,8 @@ msgstr "Restituisce i profili di input e output attivi."
 msgid ""
 "Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
 msgstr ""
-"Imposta proprietà plugin. Formato: "
-"pipeline:nome_effetto:id_istanza:proprietà:valore"
+"Imposta proprietà plugin. Formato: pipeline:nome_effetto:id_istanza:"
+"proprietà:valore"
 
 #: src/command_line_parser.cpp:54
 msgid "property-string"
@@ -86,10 +86,12 @@ msgid "Enable debug messages."
 msgstr "Abilità messaggi di debug."
 
 #: src/command_line_parser.cpp:145 src/contents/ui/main.qml:280
+#: src/contents/ui/main.qml:285
 msgid "Output Presets"
 msgstr "Profili di Uscita"
 
 #: src/command_line_parser.cpp:153 src/contents/ui/main.qml:270
+#: src/contents/ui/main.qml:275
 msgid "Input Presets"
 msgstr "Profili di Ingresso"
 
@@ -267,13 +269,14 @@ msgstr "Ascolta"
 #: src/contents/ui/MultibandGate.qml:963 src/contents/ui/RNNoise.qml:306
 #: src/contents/ui/Reverb.qml:352 src/contents/ui/Speex.qml:188
 #: src/contents/ui/StereoTools.qml:467 src/contents/ui/main.qml:435
+#: src/contents/ui/main.qml:454
 msgid "Reset"
 msgstr "Reimposta"
 
 #: src/contents/ui/BassLoudness.qml:69 src/contents/ui/Compressor.qml:495
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:455
 #: src/contents/ui/Gate.qml:479 src/contents/ui/StereoTools.qml:309
-#: src/contents/ui/main.qml:372
+#: src/contents/ui/main.qml:372 src/contents/ui/main.qml:391
 msgid "Output"
 msgstr "Uscita"
 
@@ -426,6 +429,7 @@ msgstr "Esterna"
 #: src/contents/ui/Compressor.qml:284 src/contents/ui/Expander.qml:244
 #: src/contents/ui/Gate.qml:268 src/contents/ui/Limiter.qml:244
 #: src/contents/ui/PageStreamsEffects.qml:302
+#: src/contents/ui/PageStreamsEffects.qml:303
 msgid "Input Device"
 msgstr "Dispositivo Ingresso"
 
@@ -768,7 +772,7 @@ msgid "Default"
 msgstr "Predefinito"
 
 #: src/contents/ui/Crossfeed.qml:156 src/contents/ui/Reverb.qml:331
-#: src/contents/ui/main.qml:342
+#: src/contents/ui/main.qml:342 src/contents/ui/main.qml:361
 msgid "Presets"
 msgstr "Profili"
 
@@ -978,7 +982,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Regolatori del guadagno di input e output con i misuratori di livello"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:48
-#: src/contents/ui/main.qml:382
+#: src/contents/ui/main.qml:382 src/contents/ui/main.qml:401
 msgid "Input"
 msgstr "Ingresso"
 
@@ -1580,40 +1584,51 @@ msgid "No Audio Application Available"
 msgstr "Nessuna Applicazione Audio Disponibile"
 
 #: src/contents/ui/PageStreamsEffects.qml:256
+#: src/contents/ui/PageStreamsEffects.qml:257
 msgid "Add Effect"
 msgstr "Aggiungi Effetto"
 
 #: src/contents/ui/PageStreamsEffects.qml:302
 #: src/contents/ui/PageStreamsEffects.qml:527
+#: src/contents/ui/PageStreamsEffects.qml:303
+#: src/contents/ui/PageStreamsEffects.qml:538
 msgid "Players"
 msgstr "Riproduttori"
 
 #: src/contents/ui/PageStreamsEffects.qml:319
 #: src/contents/ui/PageStreamsEffects.qml:527
+#: src/contents/ui/PageStreamsEffects.qml:320
+#: src/contents/ui/PageStreamsEffects.qml:538
 msgid "Recorders"
 msgstr "Registratori"
 
 #: src/contents/ui/PageStreamsEffects.qml:332
+#: src/contents/ui/PageStreamsEffects.qml:333
 msgid "Close"
 msgstr "Chiudi"
 
 #: src/contents/ui/PageStreamsEffects.qml:355
+#: src/contents/ui/PageStreamsEffects.qml:356
 msgid "No Effects"
 msgstr "Nessun Effetto"
 
 #: src/contents/ui/PageStreamsEffects.qml:356
+#: src/contents/ui/PageStreamsEffects.qml:357
 msgid "Audio Stream Not Modified"
 msgstr "Flusso Audio Non Alterato"
 
 #: src/contents/ui/PageStreamsEffects.qml:537
+#: src/contents/ui/PageStreamsEffects.qml:548
 msgid "Effects"
 msgstr "Effetti"
 
 #: src/contents/ui/PageStreamsEffects.qml:554
+#: src/contents/ui/PageStreamsEffects.qml:565
 msgid "Input Monitoring"
 msgstr "Monitoraggio Input"
 
 #: src/contents/ui/PageStreamsEffects.qml:567
+#: src/contents/ui/PageStreamsEffects.qml:578
 msgid "Excluded Apps"
 msgstr "App Escluse"
 
@@ -1776,6 +1791,7 @@ msgstr "Anti-aliasing"
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
 #: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:407
+#: src/contents/ui/main.qml:426
 msgid "Preferences"
 msgstr "Preferenze"
 
@@ -2329,7 +2345,8 @@ msgid "Can Be Used on Numeric Controls"
 msgstr "Può Essere Usato sui Parametri Numerici"
 
 #: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:301
-#: src/contents/ui/main.qml:415
+#: src/contents/ui/main.qml:415 src/contents/ui/main.qml:320
+#: src/contents/ui/main.qml:434
 msgid "Shortcuts"
 msgstr "Scorciatoie"
 
@@ -2429,44 +2446,46 @@ msgstr "Base Stereo"
 msgid "Stereo Phase"
 msgstr "Fase Stereo"
 
-#: src/contents/ui/main.qml:162
+#: src/contents/ui/main.qml:162 src/contents/ui/main.qml:163
 msgid "Reset Settings?"
 msgstr "Reset delle Impostazioni?"
 
-#: src/contents/ui/main.qml:163
+#: src/contents/ui/main.qml:163 src/contents/ui/main.qml:164
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Vuoi davvero reimpostare tutte le opzioni di Easy Effects?"
 
-#: src/contents/ui/main.qml:184
+#: src/contents/ui/main.qml:184 src/contents/ui/main.qml:185
 msgid "Audio effects for PipeWire applications"
 msgstr "Effetti Audio per Applicazioni PipeWire"
 
-#: src/contents/ui/main.qml:197
+#: src/contents/ui/main.qml:197 src/contents/ui/main.qml:198
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Sviluppatore"
 
-#: src/contents/ui/main.qml:290
+#: src/contents/ui/main.qml:290 src/contents/ui/main.qml:309
 msgid "Active"
 msgstr "Attivo"
 
 #: src/contents/ui/main.qml:310 src/contents/ui/main.qml:423
+#: src/contents/ui/main.qml:329 src/contents/ui/main.qml:442
 msgid "Manual"
 msgstr "Manuale"
 
 #: src/contents/ui/main.qml:320 src/contents/ui/main.qml:455
+#: src/contents/ui/main.qml:339 src/contents/ui/main.qml:474
 msgid "Quit"
 msgstr "Esci"
 
-#: src/contents/ui/main.qml:350
+#: src/contents/ui/main.qml:350 src/contents/ui/main.qml:369
 msgid "Turn Effects On/Off"
 msgstr "Abilita/Disabilita gli Effetti"
 
-#: src/contents/ui/main.qml:392
+#: src/contents/ui/main.qml:392 src/contents/ui/main.qml:411
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:447
+#: src/contents/ui/main.qml:447 src/contents/ui/main.qml:466
 msgid "About Easy Effects"
 msgstr "Info su Easy Effects"
 
@@ -2615,6 +2634,11 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Effetti Audio per Applicazioni Pipewire"
+
+#: src/contents/ui/main.qml:249 src/contents/ui/main.qml:266
+#, fuzzy
+msgid "Preset Loaded"
+msgstr "Nessun Profilo Caricato"
 
 #, fuzzy
 #~ msgid "Band "
