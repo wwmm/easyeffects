@@ -236,6 +236,18 @@ Kirigami.ApplicationWindow {
         menu: Menu {
             id: trayMenu
             visible: false
+            onAboutToShow: {
+                /**
+                 * Although it is possible to make a binding to the text property so it is automatically updated
+                 * it is possible that the menu is contructed before description is available for the node name. In
+                 * this situation we can have an empty string coming from getNodeDescription. And it will stay empty
+                 * until something forces the database device name property to be changed. it is more reliable
+                 * to read the description when the user opens the tray icon menu.
+                 */
+
+                inputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DB.Manager.streamInputs.inputDevice);
+                outputDeviceMenuItem.text = PW.ModelNodes.getNodeDescription(DB.Manager.streamOutputs.outputDevice);
+            }
 
             Instantiator {
                 id: instantiatorInputPresets
@@ -292,13 +304,15 @@ Kirigami.ApplicationWindow {
             }
 
             MenuItem {
-                text: PW.ModelNodes.getNodeDescription(DB.Manager.streamInputs.inputDevice)
+                id: inputDeviceMenuItem
+
                 icon.name: "audio-input-microphone-symbolic"
                 enabled: false
             }
 
             MenuItem {
-                text: PW.ModelNodes.getNodeDescription(DB.Manager.streamOutputs.outputDevice)
+                id: outputDeviceMenuItem
+
                 icon.name: "audio-speakers-symbolic"
                 enabled: false
             }
