@@ -107,6 +107,8 @@ class Crystalizer : public PluginBase {
 
   std::deque<float> deque_out_L, deque_out_R;
 
+  static float extrapolate_next(const std::vector<float>& x);
+
   float compute_adaptive_intensity(const uint& band_index, float base_intensity, float* band_data, const bool& isLeft);
 
   float compute_kurtosis(float* data) const;
@@ -127,13 +129,13 @@ class Crystalizer : public PluginBase {
        * This is done through the central difference method. In order to
        * calculate the derivative at the last elements of the array we have to
        * know the first element of the next buffer.
-       * As we do not have this information we will assume for simplicity that
-       * the last value of the current buffer is a good enough approximation
-       * for the first element of the next buffer
+       * As we do not have this information we will use for simplicity a linear extrapolation. With it the second
+       * of the last sample of the current buffer becomes zero. What removes noises that come from the discontinuity
+       * of the second derivative at the end of the buffer.
        */
 
-      band_next_L.at(n) = bandn_L[blocksize - 1U];
-      band_next_R.at(n) = bandn_R[blocksize - 1U];
+      band_next_L.at(n) = extrapolate_next(bandn_L);
+      band_next_R.at(n) = extrapolate_next(bandn_R);
 
       if (is_first_buffer) {
         band_previous_L.at(n) = bandn_L[0];
@@ -181,16 +183,24 @@ class Crystalizer : public PluginBase {
           const float& d2L = bandn_second_derivative_L[m];
           const float& d2R = bandn_second_derivative_R[m];
 
-          bandn_L[m] = bandn_L[m] - intensity_L * d2L;
-          bandn_R[m] = bandn_R[m] - intensity_R * d2R;
-        }
+          float newL = bandn_L[m] - (intensity_L * d2L);
+          float newR = bandn_R[m] - (intensity_R * d2R);
 
-        band_previous_L.at(n) = bandn_L[blocksize - 1U];
-        band_previous_R.at(n) = bandn_R[blocksize - 1U];
-      } else {
-        band_previous_L.at(n) = bandn_L[blocksize - 1U];
-        band_previous_R.at(n) = bandn_R[blocksize - 1U];
+          if (std::fabsf(newL) > 0.7F) {
+            newL = std::tanh(newL);
+          }
+
+          if (std::fabsf(newR) > 0.7F) {
+            newR = std::tanh(newR);
+          }
+
+          bandn_L[m] = newL;
+          bandn_R[m] = newR;
+        }
       }
+
+      band_previous_L.at(n) = bandn_L[blocksize - 1U];
+      band_previous_R.at(n) = bandn_R[blocksize - 1U];
     }
 
     // add bands
@@ -211,12 +221,6 @@ class Crystalizer : public PluginBase {
           data_right_ptr[m] += bandn_R[m];
         }
       }
-    }
-
-    for (uint m = 0U; m < blocksize; m++) {
-      data_left_ptr[m] = std::tanh(data_left_ptr[m]);
-
-      data_right_ptr[m] = std::tanh(data_right_ptr[m]);
     }
   }
 };

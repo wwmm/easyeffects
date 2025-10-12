@@ -30,6 +30,7 @@
 #include <mutex>
 #include <span>
 #include <string>
+#include <vector>
 #include "db_manager.hpp"
 #include "easyeffects_db_crystalizer.h"
 #include "fir_filter_bandpass.hpp"
@@ -370,4 +371,17 @@ float Crystalizer::compute_adaptive_intensity(const uint& band_index,
   //     env_kurtosis));
 
   return base_intensity * kurtosis_ratio;
+}
+
+float Crystalizer::extrapolate_next(const std::vector<float>& x) {
+  size_t n = x.size();
+
+  if (x.size() < 2) {
+    return x.back();
+  }
+
+  float xm1 = x[n - 2];
+  float xm = x[n - 1];
+
+  return (2.0F * xm) - xm1;
 }

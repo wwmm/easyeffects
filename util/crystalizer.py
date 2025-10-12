@@ -12,7 +12,7 @@ wave_x = np.arange(wave_y.size)
 t = wave_x
 original = wave_y
 
-standard = np.copy(original)
+enhanced = np.copy(original)
 deriv2 = np.zeros(original.size)
 
 intensity = 2.0
@@ -27,34 +27,13 @@ for n in range(original.size):
     elif n == original.size - 1:
         deriv2[n] = original[n] - 2 * original[n] + original[n - 1]
 
-for n in range(standard.size):
-    standard[n] -= np.tanh(intensity * deriv2[n])
-
-aggressive = np.copy(standard)
-
-if intensity >= 1:
-    ndivs = 1000
-    gain = np.linspace(1, intensity, ndivs)
-    dv = 0.5 / ndivs
-
-    for n in range(standard.size):
-        v = aggressive[n]
-
-        idx = int(np.floor(np.fabs(v) / dv))
-
-        if idx < 0:
-            idx = 0
-        elif idx > gain.size:
-            idx = gain.size - 1
-
-        aggressive[n] = v * gain[idx]
-
+for n in range(enhanced.size):
+    enhanced[n] -= np.tanh(intensity * deriv2[n])
 
 fig = plt.figure()
 
 plt.plot(t, original, 'bo-', markersize=4, label='original')
-plt.plot(t, standard, 'ro-', markersize=4, label='standard')
-plt.plot(t, aggressive, 'go-', markersize=4, label='aggressive')
+plt.plot(t, enhanced, 'ro-', markersize=4, label='enhanced')
 
 fig.legend()
 
