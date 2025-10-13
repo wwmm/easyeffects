@@ -8,6 +8,8 @@ Controls.ItemDelegate {
 
     required property int index
     required property var pluginDB
+    required property var pluginBackend
+    readonly property real frequency: pluginBackend.getBandFrequency(index)
 
     down: false
     hoverEnabled: false
@@ -68,38 +70,7 @@ Controls.ItemDelegate {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: {
-                switch (delegate.index) {
-                case 0:
-                    return Common.toLocaleLabel(250, 0, "Hz");
-                case 1:
-                    return Common.toLocaleLabel(750, 0, "Hz");
-                case 2:
-                    return Common.toLocaleLabel(1.5, 1, "kHz");
-                case 3:
-                    return Common.toLocaleLabel(2.5, 1, "kHz");
-                case 4:
-                    return Common.toLocaleLabel(3.5, 1, "kHz");
-                case 5:
-                    return Common.toLocaleLabel(4.5, 1, "kHz");
-                case 6:
-                    return Common.toLocaleLabel(5.5, 1, "kHz");
-                case 7:
-                    return Common.toLocaleLabel(6.5, 1, "kHz");
-                case 8:
-                    return Common.toLocaleLabel(7.5, 1, "kHz");
-                case 9:
-                    return Common.toLocaleLabel(8.5, 1, "kHz");
-                case 10:
-                    return Common.toLocaleLabel(9.5, 1, "kHz");
-                case 11:
-                    return Common.toLocaleLabel(12.5, 1, "kHz");
-                case 12:
-                    return Common.toLocaleLabel(17.5, 1, "kHz");
-                default:
-                    return "Hz";
-                }
-            }
+            text: frequency >= 1000 ? Common.toLocaleLabel(delegate.frequency / 1000, 1, "kHz") : Common.toLocaleLabel(delegate.frequency, 0, "Hz")
             enabled: false
         }
 

@@ -39,6 +39,8 @@
 class Crystalizer : public PluginBase {
   Q_OBJECT
 
+  Q_PROPERTY(int numBands MEMBER nbands CONSTANT)
+
  public:
   Crystalizer(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
   Crystalizer(const Crystalizer&) = delete;
@@ -65,6 +67,8 @@ class Crystalizer : public PluginBase {
 
   auto get_latency_seconds() -> float override;
 
+  Q_INVOKABLE float getBandFrequency(const int& index);
+
  private:
   bool n_samples_is_power_of_2 = true;
   bool filters_are_ready = false;
@@ -75,6 +79,8 @@ class Crystalizer : public PluginBase {
   uint latency_n_frames = 0U;
 
   static constexpr uint nbands = 13U;
+
+  static constexpr float freq_ref = 1000.0F;
 
   float block_time = 0.0;
   float attack_time = 0.4;   // seconds
@@ -89,6 +95,9 @@ class Crystalizer : public PluginBase {
   std::array<bool, nbands> band_bypass;
 
   std::array<float, nbands + 1U> frequencies;
+  std::array<float, nbands> freq_centers;
+  std::array<float, nbands> freq_scaling;
+
   std::array<float, nbands> band_intensity;
   std::array<float, nbands> band_previous_L;
   std::array<float, nbands> band_previous_R;
@@ -106,6 +115,10 @@ class Crystalizer : public PluginBase {
   std::array<std::unique_ptr<FirFilterBase>, nbands> filters;
 
   std::deque<float> deque_out_L, deque_out_R;
+
+  static auto make_geometric_edges(float fmin, float fmax) -> std::array<float, nbands + 1U>;
+
+  static auto compute_band_centers(const std::array<float, nbands + 1U>& edges) -> std::array<float, nbands>;
 
   static float extrapolate_next(const std::vector<float>& x);
 

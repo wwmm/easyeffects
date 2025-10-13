@@ -18,10 +18,12 @@
  */
 
 #include "crystalizer.hpp"
+#include <qlist.h>
 #include <qnamespace.h>
 #include <qobjectdefs.h>
 #include <qtypes.h>
 #include <algorithm>
+#include <array>
 #include <cmath>
 #include <cstddef>
 #include <deque>
@@ -76,20 +78,17 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   std::ranges::fill(env_kurtosis_L, 3.0F);
   std::ranges::fill(env_kurtosis_R, 3.0F);
 
-  frequencies[0] = 20.0F;
-  frequencies[1] = 520.0F;
-  frequencies[2] = 1020.0F;
-  frequencies[3] = 2020.0F;
-  frequencies[4] = 3020.0F;
-  frequencies[5] = 4020.0F;
-  frequencies[6] = 5020.0F;
-  frequencies[7] = 6020.0F;
-  frequencies[8] = 7020.0F;
-  frequencies[9] = 8020.0F;
-  frequencies[10] = 9020.0F;
-  frequencies[11] = 10020.0F;
-  frequencies[12] = 15020.0F;
-  frequencies[13] = 20020.0F;
+  auto f_edges = make_geometric_edges(20, 20000);
+
+  freq_centers = compute_band_centers(f_edges);
+
+  for (uint n = 0; n <= nbands; n++) {
+    frequencies[n] = f_edges[n];
+  }
+
+  for (uint n = 0; n < nbands; n++) {
+    freq_scaling[n] = std::sqrt(freq_ref / freq_centers[n]);
+  }
 
   init_common_controls<db::Crystalizer>(settings);
 
@@ -319,7 +318,7 @@ auto Crystalizer::get_latency_seconds() -> float {
 float Crystalizer::compute_kurtosis(float* data) const {
   float mean = 0.0F;
 
-  for (uint i = 0; i < blocksize; ++i) {
+  for (uint i = 0; i < blocksize; i++) {
     mean += data[i];
   }
 
@@ -366,11 +365,10 @@ float Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   float kurtosis_ratio = env_kurtosis / 3.0F;
 
-  // util::warning(
-  //     std::format("n = {}, intensity = {}, kurtosis = {}", band_index, base_intensity * kurtosis_ratio,
-  //     env_kurtosis));
+  // util::warning(std::format("n = {}, intensity = {}, kurtosis = {}", band_index,
+  //                           base_intensity * kurtosis_ratio * freq_scaling[band_index], env_kurtosis));
 
-  return base_intensity * kurtosis_ratio;
+  return base_intensity * kurtosis_ratio * freq_scaling[band_index];
 }
 
 float Crystalizer::extrapolate_next(const std::vector<float>& x) {
@@ -384,4 +382,37 @@ float Crystalizer::extrapolate_next(const std::vector<float>& x) {
   float xm = x[n - 1];
 
   return (2.0F * xm) - xm1;
+}
+
+auto Crystalizer::make_geometric_edges(float fmin, float fmax) -> std::array<float, nbands + 1U> {
+  std::array<float, nbands + 1U> edges;
+
+  float gamma = 0.413F;
+
+  float r = fmax / fmin;
+
+  for (unsigned i = 0; i <= nbands; i++) {
+    float t = static_cast<float>(i) / nbands;
+
+    edges[i] = fmin * std::pow(r, std::pow(t, gamma));
+  }
+
+  return edges;
+}
+
+auto Crystalizer::compute_band_centers(const std::array<float, nbands + 1U>& edges) -> std::array<float, nbands> {
+  std::array<float, nbands> centers;
+
+  for (size_t i = 0; i < nbands; i++) {
+    float low = edges[i];
+    float high = edges[i + 1];
+
+    centers[i] = 0.5F * (high + low);
+  }
+
+  return centers;
+}
+
+float Crystalizer::getBandFrequency(const int& index) {
+  return freq_centers[index];
 }
