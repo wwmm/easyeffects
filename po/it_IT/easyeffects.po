@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-11 00:39+0000\n"
-"PO-Revision-Date: 2025-10-12 17:07+0000\n"
-"Last-Translator: albanobattistella <albanobattistella@gmail.com>\n"
+"PO-Revision-Date: 2025-10-13 08:07+0000\n"
+"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -2637,7 +2637,7 @@ msgstr "Effetti Audio per Applicazioni Pipewire"
 
 #: src/contents/ui/main.qml:249 src/contents/ui/main.qml:266
 msgid "Preset Loaded"
-msgstr "Caricato preinpostato"
+msgstr "Profilo Caricato"
 
 #, fuzzy
 #~ msgid "Band "
