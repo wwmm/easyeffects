@@ -130,6 +130,7 @@ Kirigami.Page {
                     model: PW.ModelSourceDevices
                     textRole: "description"
                     enabled: !DB.Manager.streamInputs.useDefaultInputDevice
+
                     onActivated: idx => {
                         const proxyIndex = PW.ModelSourceDevices.index(idx, 0);
                         const sourceIndex = PW.ModelSourceDevices.mapToSource(proxyIndex);
@@ -138,6 +139,10 @@ Kirigami.Page {
                             if (!Common.isEmpty(nodeName))
                                 DB.Manager.streamInputs.inputDevice = nodeName;
                         }
+                    }
+
+                    Component.onCompleted: {
+                        generalFormCard.updateInputDevComboSelection();
                     }
                 }
             }
@@ -150,6 +155,7 @@ Kirigami.Page {
 
                     label: i18n("Use Default Output") // qmllint disable
                     isChecked: DB.Manager.streamOutputs.useDefaultOutputDevice
+
                     onCheckedChanged: {
                         if (isChecked)
                             generalFormCard.updateOutputDevComboSelection();
@@ -168,6 +174,7 @@ Kirigami.Page {
                     model: PW.ModelSinkDevices
                     textRole: "description"
                     enabled: !DB.Manager.streamOutputs.useDefaultOutputDevice
+
                     onActivated: idx => {
                         const proxyIndex = PW.ModelSinkDevices.index(idx, 0);
                         const sourceIndex = PW.ModelSinkDevices.mapToSource(proxyIndex);
@@ -176,6 +183,10 @@ Kirigami.Page {
                             if (!Common.isEmpty(nodeName))
                                 DB.Manager.streamOutputs.outputDevice = nodeName;
                         }
+                    }
+
+                    Component.onCompleted: {
+                        generalFormCard.updateOutputDevComboSelection();
                     }
                 }
             }
