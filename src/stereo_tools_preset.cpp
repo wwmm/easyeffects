@@ -68,6 +68,10 @@ void StereoToolsPreset::save(nlohmann::json& json) {
   json[section][instance_name]["sc-level"] = settings->scLevel();
 
   json[section][instance_name]["stereo-phase"] = settings->stereoPhase();
+
+  json[section][instance_name]["dry"] = settings->dry();
+
+  json[section][instance_name]["wet"] = settings->wet();
 }
 
 void StereoToolsPreset::load(const nlohmann::json& json) {
@@ -76,6 +80,7 @@ void StereoToolsPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("output-gain", OutputGain);
   UPDATE_PROPERTY("balance-in", BalanceIn);
   UPDATE_PROPERTY("balance-out", BalanceOut);
+  UPDATE_PROPERTY("softclip", Softclip);
   UPDATE_PROPERTY("mutel", Mutel);
   UPDATE_PROPERTY("muter", Muter);
   UPDATE_PROPERTY("phasel", Phasel);
@@ -89,6 +94,8 @@ void StereoToolsPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("sc-level", ScLevel);
   UPDATE_PROPERTY("phaser", Phaser);
   UPDATE_PROPERTY("stereo-phase", StereoPhase);
+  UPDATE_PROPERTY("dry", Dry);
+  UPDATE_PROPERTY("wet", Wet);
 
   UPDATE_ENUM_LIKE_PROPERTY("mode", Mode);
 }
