@@ -45,6 +45,8 @@ void AutoGainPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["reference"] =
       settings->defaultReferenceLabelsValue()[settings->reference()].toStdString();
+
+  json[section][instance_name]["force-silence"] = settings->forceSilence();
 }
 
 void AutoGainPreset::load(const nlohmann::json& json) {
@@ -54,6 +56,7 @@ void AutoGainPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("target", Target);
   UPDATE_PROPERTY("silence-threshold", SilenceThreshold);
   UPDATE_PROPERTY("maximum-history", MaximumHistory);
+  UPDATE_PROPERTY("force-silence", ForceSilence);
 
   UPDATE_ENUM_LIKE_PROPERTY("reference", Reference);
 }
