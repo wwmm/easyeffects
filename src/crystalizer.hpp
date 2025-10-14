@@ -36,6 +36,7 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
+#include "util.hpp"
 
 class Crystalizer : public PluginBase {
   Q_OBJECT
@@ -175,6 +176,10 @@ class Crystalizer : public PluginBase {
         if (settings->adaptiveIntensity()) {
           intensity_L = compute_adaptive_intensity(n, intensity, bandn_L, true);
           intensity_R = compute_adaptive_intensity(n, intensity, bandn_R, false);
+
+          if (updateLevelMeters) {
+            adaptive_intenisties[n] = util::linear_to_db(0.5F * (intensity_L + intensity_R));
+          }
         }
 
         // Calculating the second derivative

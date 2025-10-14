@@ -368,10 +368,6 @@ float Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   auto intensity = base_intensity * kurtosis_ratio * freq_scaling[band_index];
 
-  if (updateLevelMeters) {
-    adaptive_intenisties[band_index] = util::linear_to_db(intensity);
-  }
-
   // util::warning(std::format("n = {}, intensity = {}, kurtosis = {}", band_index, intensity, env_kurtosis));
 
   return intensity;
