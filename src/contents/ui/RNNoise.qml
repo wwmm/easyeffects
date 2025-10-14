@@ -217,7 +217,7 @@ Kirigami.ScrollablePage {
 
                             contentItem: RowLayout {
                                 Controls.Label {
-                                    text: rnnoisePage.name
+                                    text: listItemDelegate.name
                                 }
 
                                 Kirigami.ActionToolBar {
@@ -229,10 +229,10 @@ Kirigami.ScrollablePage {
                                             displayHint: Kirigami.DisplayHint.AlwaysHide
                                             onTriggered: {
                                                 if (Presets.Manager.removeRNNoiseModel(listItemDelegate.path) === true)
-                                                    rnnoisePage.showStatus(i18n("Removed Model: %1", rnnoisePage.name) // qmllint disable
+                                                    rnnoisePage.showStatus(i18n("Removed Model: %1", listItemDelegate.name) // qmllint disable
                                                     );
                                                 else
-                                                    rnnoisePage.showStatus(i18n("Failed to Remove the Model: %1", rnnoisePage.name)// qmllint disable
+                                                    rnnoisePage.showStatus(i18n("Failed to Remove the Model: %1", listItemDelegate.name)// qmllint disable
                                                     , false);
                                             }
                                         }
