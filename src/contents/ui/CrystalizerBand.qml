@@ -2,11 +2,13 @@ import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import org.kde.kirigami as Kirigami
 
 Controls.ItemDelegate {
     id: delegate
 
     required property int index
+    required property real adaptiveIntensity
     required property var pluginDB
     required property var pluginBackend
     readonly property real frequency: pluginBackend.getBandFrequency(index)
@@ -112,6 +114,19 @@ Controls.ItemDelegate {
             Layout.alignment: Qt.AlignHCenter
             text: Number(intensitySlider.value).toLocaleString(Qt.locale(), 'f', 0)
             enabled: false
+        }
+
+        EeAudioLevel {
+            readonly property real radius: 2.5 * Kirigami.Units.gridUnit
+
+            Layout.alignment: Qt.AlignRight | Qt.AlignBottom
+            implicitWidth: radius
+            implicitHeight: radius
+            from: delegate.pluginDB.getMinValue("intensityBand" + delegate.index)
+            to: delegate.pluginDB.getMaxValue("intensityBand" + delegate.index)
+            value: delegate.adaptiveIntensity
+            decimals: 1
+            visible: delegate.pluginDB.adaptiveIntensity
         }
     }
 }

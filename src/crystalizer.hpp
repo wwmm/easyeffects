@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include <qlist.h>
 #include <qtmetamacros.h>
 #include <sys/types.h>
 #include <QString>
@@ -69,6 +70,8 @@ class Crystalizer : public PluginBase {
 
   Q_INVOKABLE float getBandFrequency(const int& index);
 
+  Q_INVOKABLE QList<float> getAdaptiveIntensities();
+
  private:
   bool n_samples_is_power_of_2 = true;
   bool filters_are_ready = false;
@@ -115,6 +118,8 @@ class Crystalizer : public PluginBase {
   std::array<std::unique_ptr<FirFilterBase>, nbands> filters;
 
   std::deque<float> deque_out_L, deque_out_R;
+
+  QList<float> adaptive_intenisties;
 
   static auto make_geometric_edges(float fmin, float fmax) -> std::array<float, nbands + 1U>;
 

@@ -65,7 +65,8 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
                  pipe_type),
       settings(db::Manager::self().get_plugin_db<db::Crystalizer>(
           pipe_type,
-          tags::plugin_name::BaseName::crystalizer + "#" + instance_id)) {
+          tags::plugin_name::BaseName::crystalizer + "#" + instance_id)),
+      adaptive_intenisties(nbands, 1.0F) {
   for (uint n = 0U; n < nbands; n++) {
     filters.at(n) = std::make_unique<FirFilterBandpass>(log_tag + name.toStdString() + " band" + util::to_string(n));
   }
@@ -87,7 +88,7 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   }
 
   for (uint n = 0; n < nbands; n++) {
-    freq_scaling[n] = std::sqrt(freq_ref / freq_centers[n]);
+    freq_scaling[n] = std::cbrt(freq_ref / freq_centers[n]);
   }
 
   init_common_controls<db::Crystalizer>(settings);
@@ -365,10 +366,15 @@ float Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   float kurtosis_ratio = env_kurtosis / 3.0F;
 
-  // util::warning(std::format("n = {}, intensity = {}, kurtosis = {}", band_index,
-  //                           base_intensity * kurtosis_ratio * freq_scaling[band_index], env_kurtosis));
+  auto intensity = base_intensity * kurtosis_ratio * freq_scaling[band_index];
 
-  return base_intensity * kurtosis_ratio * freq_scaling[band_index];
+  if (updateLevelMeters) {
+    adaptive_intenisties[band_index] = util::linear_to_db(intensity);
+  }
+
+  // util::warning(std::format("n = {}, intensity = {}, kurtosis = {}", band_index, intensity, env_kurtosis));
+
+  return intensity;
 }
 
 float Crystalizer::extrapolate_next(const std::vector<float>& x) {
@@ -415,4 +421,8 @@ auto Crystalizer::compute_band_centers(const std::array<float, nbands + 1U>& edg
 
 float Crystalizer::getBandFrequency(const int& index) {
   return freq_centers[index];
+}
+
+QList<float> Crystalizer::getAdaptiveIntensities() {
+  return adaptive_intenisties;
 }

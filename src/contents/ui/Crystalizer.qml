@@ -22,16 +22,32 @@ Kirigami.ScrollablePage {
         inputOutputLevels.inputLevelRight = pluginBackend.getInputLevelRight();
         inputOutputLevels.outputLevelLeft = pluginBackend.getOutputLevelLeft();
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
+
+        const newData = pluginBackend.getAdaptiveIntensities();
+
+        for (let n = 0; n < crystalizerPage.pluginBackend.numBands; n++) {
+            listModel.setProperty(n, "adaptiveIntensity", newData[n]);
+        }
     }
 
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
         pluginBackend.updateLevelMeters = true;
+
+        for (let n = 0; n < crystalizerPage.pluginBackend.numBands; n++) {
+            listModel.append({
+                "adaptiveIntensity": 1.0
+            });
+        }
     }
     Component.onDestruction: {
         if (pluginBackend) {
             pluginBackend.updateLevelMeters = false;
         }
+    }
+
+    ListModel {
+        id: listModel
     }
 
     ColumnLayout {
@@ -57,7 +73,8 @@ Kirigami.ScrollablePage {
                 clip: true
                 reuseItems: true
                 orientation: ListView.Horizontal
-                model: crystalizerPage.pluginBackend.numBands
+                // model: crystalizerPage.pluginBackend.numBands
+                model: listModel
                 Controls.ScrollBar.horizontal: listViewScrollBar
 
                 delegate: CrystalizerBand {
