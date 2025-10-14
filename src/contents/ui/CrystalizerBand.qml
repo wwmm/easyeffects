@@ -119,7 +119,7 @@ Controls.ItemDelegate {
         EeAudioLevel {
             readonly property real radius: 2.5 * Kirigami.Units.gridUnit
 
-            Layout.alignment: Qt.AlignRight | Qt.AlignBottom
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
             implicitWidth: radius
             implicitHeight: radius
             from: delegate.pluginDB.getMinValue("intensityBand" + delegate.index)
