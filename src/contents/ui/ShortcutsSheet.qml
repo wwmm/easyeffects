@@ -131,6 +131,86 @@ Kirigami.OverlaySheet {
                 text: i18n("Terminate Easy Effects Service") // qmllint disable
             }
 
+            RowLayout {
+                Layout.alignment: Qt.AlignRight
+
+                Kirigami.Chip {
+                    text: "Ctrl"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+
+                Controls.Label {
+                    text: "+"
+                }
+
+                Kirigami.Chip {
+                    text: "Shift"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+
+                Controls.Label {
+                    text: "+"
+                }
+
+                Kirigami.Chip {
+                    text: "I"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+            }
+
+            Controls.Label {
+                text: i18n("Toggle Process All Inputs") // qmllint disable
+            }
+
+            RowLayout {
+                Layout.alignment: Qt.AlignRight
+
+                Kirigami.Chip {
+                    text: "Ctrl"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+
+                Controls.Label {
+                    text: "+"
+                }
+
+                Kirigami.Chip {
+                    text: "Shift"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+
+                Controls.Label {
+                    text: "+"
+                }
+
+                Kirigami.Chip {
+                    text: "O"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+            }
+
+            Controls.Label {
+                text: i18n("Toggle Process All Outputs") // qmllint disable
+            }
+
             Kirigami.Chip {
                 Layout.alignment: Qt.AlignRight
                 text: "PgUp"
@@ -212,6 +292,46 @@ Kirigami.OverlaySheet {
 
             Controls.Label {
                 text: i18n("Toggle Global Bypass") // qmllint disable
+            }
+
+            RowLayout {
+                Layout.alignment: Qt.AlignRight
+
+                Kirigami.Chip {
+                    text: "Ctrl"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+
+                Controls.Label {
+                    text: "+"
+                }
+
+                Kirigami.Chip {
+                    text: "Alt"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+
+                Controls.Label {
+                    text: "+"
+                }
+
+                Kirigami.Chip {
+                    text: "I"
+                    closable: false
+                    checkable: false
+                    down: false
+                    hoverEnabled: false
+                }
+            }
+
+            Controls.Label {
+                text: i18n("Toggle Microphone Monitoring") // qmllint disable
             }
         }
     }

@@ -145,6 +145,20 @@ Kirigami.ApplicationWindow {
         onActivated: Qt.quit()
     }
 
+    Shortcut {
+        sequences: ["Ctrl+Shift+I"]
+        onActivated: {
+            DB.Manager.main.processAllInputs = !DB.Manager.main.processAllInputs;
+        }
+    }
+
+    Shortcut {
+        sequences: ["Ctrl+Shift+O"]
+        onActivated: {
+            DB.Manager.main.processAllOutputs = !DB.Manager.main.processAllOutputs;
+        }
+    }
+
     PreferencesSheet {
         id: preferencesSheet
     }

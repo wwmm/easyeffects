@@ -31,8 +31,10 @@
 #include <QDBusConnection>
 #include <QDBusMetaType>
 #include <QDBusReply>
+#include <format>
 #include <utility>
 #include "easyeffects_db.h"
+#include "easyeffects_db_streaminputs.h"
 #include "util.hpp"
 
 // Based on https://github.com/SourceReviver/qt_wayland_globalshortcut_via_portal/blob/main/wayland_shortcut.cpp
@@ -101,8 +103,16 @@ void GlobalShortcuts::process_activated_signal([[maybe_unused]] const QDBusObjec
   // qDebug() << "Got GlobalShortcuts Activated Signal ->" << session_handle.path() << shortcut_id << timestamp <<
   // options;
 
-  if (shortcut_id == "toggle_global_bypass") {
+  if (shortcut_id == "global bypass") {
     db::Main::setBypass(!db::Main::bypass());
+
+    return;
+  }
+
+  if (shortcut_id == "microphone monitoring") {
+    db::StreamInputs::setListenToMic(!db::StreamInputs::listenToMic());
+
+    return;
   }
 }
 
