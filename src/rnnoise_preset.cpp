@@ -21,6 +21,7 @@
 #include <strings.h>
 #include <QString>
 #include <filesystem>
+#include <format>
 #include <nlohmann/json_fwd.hpp>
 #include <string>
 #include "easyeffects_db_rnnoise.h"
@@ -50,6 +51,8 @@ void RNNoisePreset::save(nlohmann::json& json) {
   json[section][instance_name]["wet"] = settings->wet();
 
   json[section][instance_name]["release"] = settings->release();
+
+  json[section][instance_name]["use-standard-model"] = settings->useStandardModel();
 }
 
 void RNNoisePreset::load(const nlohmann::json& json) {
@@ -60,6 +63,7 @@ void RNNoisePreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("vad-thres", VadThres);
   UPDATE_PROPERTY("wet", Wet);
   UPDATE_PROPERTY("release", Release);
+  UPDATE_PROPERTY("use-standard-model", UseStandardModel);
 
   // model-path deprecation
 
