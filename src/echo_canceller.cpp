@@ -65,12 +65,12 @@ EchoCanceller::EchoCanceller(const std::string& tag,
 
     int residual_echo_suppression = settings->residualEchoSuppression();
 
-    if (state_left) {
-      speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
+    if (state[0]) {
+      speex_preprocess_ctl(state[0], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
     }
 
-    if (state_right) {
-      speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
+    if (state[1]) {
+      speex_preprocess_ctl(state[1], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
     }
   });
 
@@ -79,12 +79,12 @@ EchoCanceller::EchoCanceller(const std::string& tag,
 
     int near_end_suppression = settings->nearEndSuppression();
 
-    if (state_left) {
-      speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
+    if (state[0]) {
+      speex_preprocess_ctl(state[0], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
     }
 
-    if (state_right) {
-      speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
+    if (state[1]) {
+      speex_preprocess_ctl(state[1], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
     }
   });
 }
@@ -100,12 +100,8 @@ EchoCanceller::~EchoCanceller() {
 
   ready = false;
 
-  if (echo_state_L != nullptr) {
-    speex_echo_state_destroy(echo_state_L);
-  }
-
-  if (echo_state_R != nullptr) {
-    speex_echo_state_destroy(echo_state_R);
+  if (echo_state != nullptr) {
+    speex_echo_state_destroy(echo_state);
   }
 
   free_speex();
@@ -156,28 +152,38 @@ void EchoCanceller::process(std::span<float>& left_in,
   }
 
   for (size_t j = 0U; j < left_in.size(); j++) {
-    data_L[j] = static_cast<spx_int16_t>(left_in[j] * (SHRT_MAX + 1));
-    data_R[j] = static_cast<spx_int16_t>(right_in[j] * (SHRT_MAX + 1));
+    data[j * 2U] = static_cast<spx_int16_t>(left_in[j] * (SHRT_MAX + 1));
+    data[(j * 2U) + 1U] = static_cast<spx_int16_t>(right_in[j] * (SHRT_MAX + 1));
 
-    /**
-     * This is a very naive and not correct attempt to mitigate the shortcomes
-     * discussed at
-     * https://github.com/wwmm/easyeffects/issues/1566.
-     */
-
-    probe_mono[j] = static_cast<spx_int16_t>(0.5F * (probe_left[j] + probe_right[j]) * (SHRT_MAX + 1));
+    probe[j * 2U] = static_cast<spx_int16_t>(probe_left[j] * (SHRT_MAX + 1));
+    probe[(j * 2U) + 1U] = static_cast<spx_int16_t>(probe_right[j] * (SHRT_MAX + 1));
   }
 
-  speex_echo_cancellation(echo_state_L, data_L.data(), probe_mono.data(), filtered_L.data());
-  speex_echo_cancellation(echo_state_R, data_R.data(), probe_mono.data(), filtered_R.data());
+  speex_echo_cancellation(echo_state, data.data(), probe.data(), filtered.data());
 
-  speex_preprocess_run(state_left, filtered_L.data());
-  speex_preprocess_run(state_right, filtered_R.data());
+  // speex_preprocess_run(state, filtered.data());
 
-  for (size_t j = 0U; j < filtered_L.size(); j++) {
-    left_out[j] = static_cast<float>(filtered_L[j]) * inv_short_max;
+  // Apply pre-processing to each channel separately
+  for (size_t ch = 0; ch < 2; ch++) {
+    for (size_t j = 0U; j < n_samples; j++) {
+      channel[j] = filtered[(j * 2) + ch];
+    }
 
-    right_out[j] = static_cast<float>(filtered_R[j]) * inv_short_max;
+    // Run pre-processor on this channel
+    if (state[ch] != nullptr) {
+      speex_preprocess_run(state[ch], channel.data());
+    }
+
+    // Put back processed data
+    for (size_t j = 0U; j < n_samples; j++) {
+      filtered[(j * 2) + ch] = channel[j];
+    }
+  }
+
+  for (size_t j = 0U; j < left_out.size(); j++) {
+    left_out[j] = static_cast<float>(filtered[j * 2U]) * inv_short_max;
+
+    right_out[j] = static_cast<float>(filtered[(j * 2U) + 1]) * inv_short_max;
   }
 
   if (output_gain != 1.0F) {
@@ -204,11 +210,21 @@ void EchoCanceller::init_speex() {
     return;
   }
 
-  data_L.resize(n_samples);
-  data_R.resize(n_samples);
-  probe_mono.resize(n_samples);
-  filtered_L.resize(n_samples);
-  filtered_R.resize(n_samples);
+  if (data.size() != static_cast<size_t>(n_samples) * 2) {
+    data.resize(2U * static_cast<size_t>(n_samples));
+  }
+
+  if (probe.size() != static_cast<size_t>(n_samples) * 2) {
+    probe.resize(2U * static_cast<size_t>(n_samples));
+  }
+
+  if (filtered.size() != static_cast<size_t>(n_samples) * 2) {
+    filtered.resize(2U * static_cast<size_t>(n_samples));
+  }
+
+  if (channel.size() != n_samples) {
+    channel.resize(n_samples);
+  }
 
   int residual_echo_suppression = settings->residualEchoSuppression();
   int near_end_suppression = settings->nearEndSuppression();
@@ -217,67 +233,49 @@ void EchoCanceller::init_speex() {
 
   util::debug(std::format("{}{} filter length: {}", log_tag, name.toStdString(), filter_length));
 
-  if (echo_state_L != nullptr) {
-    speex_echo_state_destroy(echo_state_L);
+  if (echo_state != nullptr) {
+    speex_echo_state_destroy(echo_state);
   }
 
-  echo_state_L = speex_echo_state_init(static_cast<int>(n_samples), static_cast<int>(filter_length));
+  echo_state = speex_echo_state_init_mc(static_cast<int>(n_samples), static_cast<int>(filter_length), 2, 2);
 
-  if (speex_echo_ctl(echo_state_L, SPEEX_ECHO_SET_SAMPLING_RATE, &rate) != 0) {
+  if (speex_echo_ctl(echo_state, SPEEX_ECHO_SET_SAMPLING_RATE, &rate) != 0) {
     util::warning(std::format("{}{}SPEEX_ECHO_SET_SAMPLING_RATE: unknown request", log_tag, name.toStdString()));
   }
 
-  if (echo_state_R != nullptr) {
-    speex_echo_state_destroy(echo_state_R);
+  state[0] = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
+  state[1] = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
+
+  if (state[0] != nullptr) {
+    speex_preprocess_ctl(state[0], SPEEX_PREPROCESS_SET_ECHO_STATE, echo_state);
+
+    speex_preprocess_ctl(state[0], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
+
+    speex_preprocess_ctl(state[0], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
   }
 
-  echo_state_R = speex_echo_state_init(static_cast<int>(n_samples), static_cast<int>(filter_length));
+  if (state[1] != nullptr) {
+    speex_preprocess_ctl(state[1], SPEEX_PREPROCESS_SET_ECHO_STATE, echo_state);
 
-  if (speex_echo_ctl(echo_state_R, SPEEX_ECHO_SET_SAMPLING_RATE, &rate) != 0) {
-    util::warning(std::format("{}{}SPEEX_ECHO_SET_SAMPLING_RATE: unknown request", log_tag, name.toStdString()));
-  }
+    speex_preprocess_ctl(state[1], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
 
-  if (state_left != nullptr) {
-    speex_preprocess_state_destroy(state_left);
-  }
-
-  if (state_right != nullptr) {
-    speex_preprocess_state_destroy(state_right);
-  }
-
-  state_left = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
-  state_right = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
-
-  if (state_left != nullptr) {
-    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_ECHO_STATE, echo_state_L);
-
-    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
-
-    speex_preprocess_ctl(state_left, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
-  }
-
-  if (state_right != nullptr) {
-    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_ECHO_STATE, echo_state_R);
-
-    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
-
-    speex_preprocess_ctl(state_right, SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
+    speex_preprocess_ctl(state[1], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
   }
 
   ready = true;
 }
 
 void EchoCanceller::free_speex() {
-  if (state_left != nullptr) {
-    speex_preprocess_state_destroy(state_left);
+  if (state[0] != nullptr) {
+    speex_preprocess_state_destroy(state[0]);
   }
 
-  if (state_right != nullptr) {
-    speex_preprocess_state_destroy(state_right);
+  if (state[1] != nullptr) {
+    speex_preprocess_state_destroy(state[1]);
   }
 
-  state_left = nullptr;
-  state_right = nullptr;
+  state[0] = nullptr;
+  state[1] = nullptr;
 }
 
 auto EchoCanceller::get_latency_seconds() -> float {
