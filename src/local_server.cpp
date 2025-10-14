@@ -97,7 +97,14 @@ void LocalServer::onReadyRead() {
 
         std::smatch matches;
 
-        static const auto re = std::regex("^set_property:(input|output):([^:]+):([0-9]+):([^:]+):(.+)\n$");
+        /**
+         * Original regex:
+         * ^set_property:(input|output):([^:]+):([0-9]+):([^:]+):(.+)\n$
+         *
+         * Since the dot matches any character except line terminators, there's
+         * no need to search for final new line and end of line position.
+         */
+        static const auto re = std::regex("^set_property:(input|output):([^:]+):([0-9]+):([^:]+):([^\n]+)");
 
         std::regex_search(msg, matches, re);
 
