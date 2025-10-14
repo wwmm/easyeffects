@@ -30,7 +30,7 @@
             <default>-23</default>
         </entry>
         <entry name="referenceLabels" type="StringList">
-            <default>Momentary,Shortterm,integrated,Geometric Mean (MSI),Geometric Mean (MS),Geometric Mean (MI),Geometric Mean (SI)</default>
+            <default>Momentary,Shortterm,Integrated,Geometric Mean (MSI),Geometric Mean (MS),Geometric Mean (MI),Geometric Mean (SI)</default>
         </entry>
         <entry name="reference" type="Int">
             <label>Reference</label>
