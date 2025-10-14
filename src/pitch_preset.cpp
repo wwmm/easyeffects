@@ -51,7 +51,11 @@ void PitchPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["rate-difference"] = settings->rateDifference();
 
+  json[section][instance_name]["octaves"] = settings->octaves();
+
   json[section][instance_name]["semitones"] = settings->semitones();
+
+  json[section][instance_name]["cents"] = settings->cents();
 }
 
 void PitchPreset::load(const nlohmann::json& json) {
@@ -64,5 +68,7 @@ void PitchPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("overlap-length", OverlapLength);
   UPDATE_PROPERTY("tempo-difference", TempoDifference);
   UPDATE_PROPERTY("rate-difference", RateDifference);
+  UPDATE_PROPERTY("octaves", Octaves);
   UPDATE_PROPERTY("semitones", Semitones);
+  UPDATE_PROPERTY("cents", Cents);
 }
