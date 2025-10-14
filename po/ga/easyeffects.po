@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-11 23:54+0000\n"
+"POT-Creation-Date: 2025-10-14 19:56+0000\n"
 "PO-Revision-Date: 2025-10-13 21:07+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -84,11 +84,11 @@ msgstr "Tosaigh an feidhmchlár agus mód seirbhíse casta air."
 msgid "Enable debug messages."
 msgstr "Cumasaigh teachtaireachtaí dífhabhtaithe."
 
-#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:285
+#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:311
 msgid "Output Presets"
 msgstr "Réamhshocruithe Aschurtha"
 
-#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:275
+#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:301
 msgid "Input Presets"
 msgstr "Réamhshocruithe Ionchurtha"
 
@@ -169,7 +169,7 @@ msgstr "Gnóthachan Aschuir"
 #: src/contents/ui/Autogain.qml:283 src/contents/ui/BassEnhancer.qml:197
 #: src/contents/ui/BassLoudness.qml:110 src/contents/ui/Compressor.qml:807
 #: src/contents/ui/Convolver.qml:415 src/contents/ui/Crossfeed.qml:140
-#: src/contents/ui/Crystalizer.qml:80 src/contents/ui/DeepFilterNet.qml:174
+#: src/contents/ui/Crystalizer.qml:96 src/contents/ui/DeepFilterNet.qml:174
 #: src/contents/ui/Deesser.qml:316 src/contents/ui/Delay.qml:371
 #: src/contents/ui/EchoCanceller.qml:110 src/contents/ui/Equalizer.qml:304
 #: src/contents/ui/Exciter.qml:197 src/contents/ui/Expander.qml:765
@@ -254,7 +254,7 @@ msgstr "Éist"
 
 #: src/contents/ui/BassEnhancer.qml:236 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:856 src/contents/ui/Convolver.qml:441
-#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Crystalizer.qml:106
+#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Crystalizer.qml:122
 #: src/contents/ui/DeepFilterNet.qml:197 src/contents/ui/Deesser.qml:355
 #: src/contents/ui/Delay.qml:420 src/contents/ui/EchoCanceller.qml:126
 #: src/contents/ui/Equalizer.qml:385 src/contents/ui/Exciter.qml:236
@@ -265,14 +265,14 @@ msgstr "Éist"
 #: src/contents/ui/MultibandCompressor.qml:995
 #: src/contents/ui/MultibandGate.qml:963 src/contents/ui/RNNoise.qml:306
 #: src/contents/ui/Reverb.qml:352 src/contents/ui/Speex.qml:188
-#: src/contents/ui/StereoTools.qml:467 src/contents/ui/main.qml:454
+#: src/contents/ui/StereoTools.qml:467 src/contents/ui/main.qml:482
 msgid "Reset"
 msgstr "Athshocraigh"
 
 #: src/contents/ui/BassLoudness.qml:69 src/contents/ui/Compressor.qml:495
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:455
 #: src/contents/ui/Gate.qml:479 src/contents/ui/StereoTools.qml:309
-#: src/contents/ui/main.qml:391
+#: src/contents/ui/main.qml:419
 msgid "Output"
 msgstr "Aschur"
 
@@ -481,7 +481,7 @@ msgstr "Taobh"
 #: src/contents/ui/Expander.qml:284 src/contents/ui/Gate.qml:308
 #: src/contents/ui/LevelMeter.qml:64 src/contents/ui/LevelMeter.qml:109
 #: src/contents/ui/MultibandCompressor.qml:437
-#: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:303
+#: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:314
 #: src/contents/ui/StereoTools.qml:220
 msgid "Left"
 msgstr "Ar chlé"
@@ -491,7 +491,7 @@ msgstr "Ar chlé"
 #: src/contents/ui/Expander.qml:284 src/contents/ui/Gate.qml:308
 #: src/contents/ui/LevelMeter.qml:80 src/contents/ui/LevelMeter.qml:125
 #: src/contents/ui/MultibandCompressor.qml:437
-#: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:314
+#: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:325
 #: src/contents/ui/StereoTools.qml:262
 msgid "Right"
 msgstr "Ceart"
@@ -770,15 +770,15 @@ msgid "Default"
 msgstr "Réamhshocrú"
 
 #: src/contents/ui/Crossfeed.qml:156 src/contents/ui/Reverb.qml:331
-#: src/contents/ui/main.qml:361
+#: src/contents/ui/main.qml:389
 msgid "Presets"
 msgstr "Réamhshocruithe"
 
-#: src/contents/ui/Crystalizer.qml:96
+#: src/contents/ui/Crystalizer.qml:112
 msgid "Adaptive Intensity"
 msgstr "Déine Oiriúnaitheach"
 
-#: src/contents/ui/CrystalizerBand.qml:31
+#: src/contents/ui/CrystalizerBand.qml:35
 #: src/contents/ui/EqualizerBandMenu.qml:157
 #: src/contents/ui/MultibandCompressor.qml:75
 #: src/contents/ui/MultibandGate.qml:75 src/contents/ui/StereoTools.qml:232
@@ -786,7 +786,7 @@ msgstr "Déine Oiriúnaitheach"
 msgid "Mute"
 msgstr "MuteName"
 
-#: src/contents/ui/CrystalizerBand.qml:42
+#: src/contents/ui/CrystalizerBand.qml:46
 #: src/contents/ui/MultibandCompressor.qml:93
 #: src/contents/ui/MultibandGate.qml:93
 msgid "Bypass"
@@ -921,7 +921,7 @@ msgstr "Aitheantas"
 
 #: src/contents/ui/DelegateClientsList.qml:50
 #: src/contents/ui/DelegateModulesList.qml:50
-#: src/contents/ui/PipeWirePage.qml:127 src/contents/ui/PipeWirePage.qml:165
+#: src/contents/ui/PipeWirePage.qml:127 src/contents/ui/PipeWirePage.qml:171
 msgid "Name"
 msgstr "Ainm"
 
@@ -980,7 +980,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Rialuithe gnóthachain ionchuir agus aschuir le méadair leibhéal"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:48
-#: src/contents/ui/main.qml:401
+#: src/contents/ui/main.qml:429
 msgid "Input"
 msgstr "Ionchur"
 
@@ -1122,7 +1122,7 @@ msgstr "Fána"
 
 #: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:194
-#: src/contents/ui/MultibandGate.qml:126 src/contents/ui/PipeWirePage.qml:377
+#: src/contents/ui/MultibandGate.qml:126 src/contents/ui/PipeWirePage.qml:388
 msgid "Frequency"
 msgstr "Minicíocht"
 
@@ -1651,81 +1651,81 @@ msgstr ""
 msgid "Use Default Input"
 msgstr "Úsáid Ionchur Réamhshocraithe"
 
-#: src/contents/ui/PipeWirePage.qml:151
+#: src/contents/ui/PipeWirePage.qml:156
 msgid "Use Default Output"
 msgstr "Úsáid aschur réamhshocraithe"
 
-#: src/contents/ui/PipeWirePage.qml:184
+#: src/contents/ui/PipeWirePage.qml:195
 msgid "Server Information"
 msgstr "Eolas Freastalaí"
 
-#: src/contents/ui/PipeWirePage.qml:189
+#: src/contents/ui/PipeWirePage.qml:200
 msgid "Header Version"
 msgstr "Leagan Ceanntáisc"
 
-#: src/contents/ui/PipeWirePage.qml:194
+#: src/contents/ui/PipeWirePage.qml:205
 msgid "Library Version"
 msgstr "Leagan Leabharlainne"
 
-#: src/contents/ui/PipeWirePage.qml:199
+#: src/contents/ui/PipeWirePage.qml:210
 msgid "Runtime Version"
 msgstr "Leagan Ama Rith"
 
-#: src/contents/ui/PipeWirePage.qml:204
+#: src/contents/ui/PipeWirePage.qml:215
 msgid "Default Sampling Rate"
 msgstr "Ráta Samplála Réamhshocraithe"
 
-#: src/contents/ui/PipeWirePage.qml:209
+#: src/contents/ui/PipeWirePage.qml:220
 msgid "Minimum Quantum"
 msgstr "Candam Íosta"
 
-#: src/contents/ui/PipeWirePage.qml:214
+#: src/contents/ui/PipeWirePage.qml:225
 msgid "Maximum Quantum"
 msgstr "Candam Uasta"
 
-#: src/contents/ui/PipeWirePage.qml:219
+#: src/contents/ui/PipeWirePage.qml:230
 msgid "Default Quantum"
 msgstr "Candam Réamhshocraithe"
 
-#: src/contents/ui/PipeWirePage.qml:241
+#: src/contents/ui/PipeWirePage.qml:252
 msgid "No Modules"
 msgstr "Gan Modúil"
 
-#: src/contents/ui/PipeWirePage.qml:264
+#: src/contents/ui/PipeWirePage.qml:275
 msgid "No Clients"
 msgstr "Gan Cliant"
 
-#: src/contents/ui/PipeWirePage.qml:277
+#: src/contents/ui/PipeWirePage.qml:288
 #: src/contents/ui/PreferencesSheet.qml:209
 msgid "State"
 msgstr "An Stát"
 
-#: src/contents/ui/PipeWirePage.qml:284
+#: src/contents/ui/PipeWirePage.qml:295
 #: src/contents/ui/PreferencesSheet.qml:216
 msgid "Enabled"
 msgstr "Cumasaithe"
 
-#: src/contents/ui/PipeWirePage.qml:294
+#: src/contents/ui/PipeWirePage.qml:305
 msgid "Channels"
 msgstr "Cainéil"
 
-#: src/contents/ui/PipeWirePage.qml:325
+#: src/contents/ui/PipeWirePage.qml:336
 msgid "Both"
 msgstr "Tá an dá"
 
-#: src/contents/ui/PipeWirePage.qml:335
+#: src/contents/ui/PipeWirePage.qml:346
 msgid "Waveform"
 msgstr "Tonnchruth"
 
-#: src/contents/ui/PipeWirePage.qml:344
+#: src/contents/ui/PipeWirePage.qml:355
 msgid "Sine Wave"
 msgstr "Tonn Sín"
 
-#: src/contents/ui/PipeWirePage.qml:355
+#: src/contents/ui/PipeWirePage.qml:366
 msgid "White Noise"
 msgstr "Torann Bán"
 
-#: src/contents/ui/PipeWirePage.qml:366
+#: src/contents/ui/PipeWirePage.qml:377
 msgid "Pink Noise"
 msgstr "Torann Bándearg"
 
@@ -1776,7 +1776,7 @@ msgstr "Frithailiasáil"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:426
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:454
 msgid "Preferences"
 msgstr "Roghanna"
 
@@ -1981,7 +1981,7 @@ msgid "Database Autosave Interval"
 msgstr "Eatramh Uathshábháilte Bunachar Sonraí"
 
 #: src/contents/ui/PreferencesSheet.qml:406
-#: src/contents/ui/ShortcutsSheet.qml:168
+#: src/contents/ui/ShortcutsSheet.qml:248
 msgid "Global Shortcuts"
 msgstr "Aicearraí Domhanda"
 
@@ -2317,7 +2317,7 @@ msgstr "Taispeáin Cabhair"
 msgid "Toggle Fullscreen"
 msgstr "Lánscáileán a Athsholáthar"
 
-#: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:214
+#: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:294
 msgid "Toggle Global Bypass"
 msgstr "Seachbhóthar Domhanda a Athrú"
 
@@ -2329,13 +2329,27 @@ msgstr "Dún an Fhuinneog"
 msgid "Terminate Easy Effects Service"
 msgstr "Deireadh a chur le Seirbhís Éifeachtaí Éasca"
 
-#: src/contents/ui/ShortcutsSheet.qml:144
-#: src/contents/ui/ShortcutsSheet.qml:157
+#: src/contents/ui/ShortcutsSheet.qml:171
+#, fuzzy
+msgid "Toggle Process All Inputs"
+msgstr "Próiseáil Gach Sruth Ionchurtha"
+
+#: src/contents/ui/ShortcutsSheet.qml:211
+#, fuzzy
+msgid "Toggle Process All Outputs"
+msgstr "Próiseas Gach Sruth Aschurtha"
+
+#: src/contents/ui/ShortcutsSheet.qml:224
+#: src/contents/ui/ShortcutsSheet.qml:237
 msgid "Can Be Used on Numeric Controls"
 msgstr "Is féidir é a úsáid ar rialuithe uimhriúla"
 
-#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:320
-#: src/contents/ui/main.qml:434
+#: src/contents/ui/ShortcutsSheet.qml:334
+msgid "Toggle Microphone Monitoring"
+msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:348
+#: src/contents/ui/main.qml:462
 msgid "Shortcuts"
 msgstr "Aicearraí"
 
@@ -2435,48 +2449,48 @@ msgstr "Bonn Steirió"
 msgid "Stereo Phase"
 msgstr "Céim Steirió"
 
-#: src/contents/ui/main.qml:163
+#: src/contents/ui/main.qml:177
 msgid "Reset Settings?"
 msgstr "Athshocraigh Socruithe?"
 
-#: src/contents/ui/main.qml:164
+#: src/contents/ui/main.qml:178
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "An bhfuil tú cinnte gur mian leat gach socrú Easy Effects a athshocrú?"
 
-#: src/contents/ui/main.qml:185
+#: src/contents/ui/main.qml:199
 msgid "Audio effects for PipeWire applications"
 msgstr "Éifeachtaí fuaime d'fheidhmchláir PipeWire"
 
-#: src/contents/ui/main.qml:198
+#: src/contents/ui/main.qml:212
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Forbróir"
 
-#: src/contents/ui/main.qml:249 src/contents/ui/main.qml:266
+#: src/contents/ui/main.qml:275 src/contents/ui/main.qml:292
 msgid "Preset Loaded"
 msgstr "Réamhshocrú Luchtaithe"
 
-#: src/contents/ui/main.qml:309
+#: src/contents/ui/main.qml:337
 msgid "Active"
 msgstr "Gníomhach"
 
-#: src/contents/ui/main.qml:329 src/contents/ui/main.qml:442
+#: src/contents/ui/main.qml:357 src/contents/ui/main.qml:470
 msgid "Manual"
 msgstr "Lámhleabhar"
 
-#: src/contents/ui/main.qml:339 src/contents/ui/main.qml:474
+#: src/contents/ui/main.qml:367 src/contents/ui/main.qml:502
 msgid "Quit"
 msgstr "Scoir"
 
-#: src/contents/ui/main.qml:369
+#: src/contents/ui/main.qml:397
 msgid "Turn Effects On/Off"
 msgstr "Cas Éifeachtaí Air/Múch"
 
-#: src/contents/ui/main.qml:411
+#: src/contents/ui/main.qml:439
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:466
+#: src/contents/ui/main.qml:494
 msgid "About Easy Effects"
 msgstr "Maidir le hÉifeachtaí Éasca"
 

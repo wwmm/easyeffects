@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-11 23:54+0000\n"
+"POT-Creation-Date: 2025-10-14 19:56+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -81,11 +81,11 @@ msgstr ""
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:285
+#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:311
 msgid "Output Presets"
 msgstr "Utgångsförinställningar"
 
-#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:275
+#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:301
 msgid "Input Presets"
 msgstr "Ingångsförinställningar"
 
@@ -166,7 +166,7 @@ msgstr "Utgångsförstärkning (dB)"
 #: src/contents/ui/Autogain.qml:283 src/contents/ui/BassEnhancer.qml:197
 #: src/contents/ui/BassLoudness.qml:110 src/contents/ui/Compressor.qml:807
 #: src/contents/ui/Convolver.qml:415 src/contents/ui/Crossfeed.qml:140
-#: src/contents/ui/Crystalizer.qml:80 src/contents/ui/DeepFilterNet.qml:174
+#: src/contents/ui/Crystalizer.qml:96 src/contents/ui/DeepFilterNet.qml:174
 #: src/contents/ui/Deesser.qml:316 src/contents/ui/Delay.qml:371
 #: src/contents/ui/EchoCanceller.qml:110 src/contents/ui/Equalizer.qml:304
 #: src/contents/ui/Exciter.qml:197 src/contents/ui/Expander.qml:765
@@ -255,7 +255,7 @@ msgstr "Lyssna"
 
 #: src/contents/ui/BassEnhancer.qml:236 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:856 src/contents/ui/Convolver.qml:441
-#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Crystalizer.qml:106
+#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Crystalizer.qml:122
 #: src/contents/ui/DeepFilterNet.qml:197 src/contents/ui/Deesser.qml:355
 #: src/contents/ui/Delay.qml:420 src/contents/ui/EchoCanceller.qml:126
 #: src/contents/ui/Equalizer.qml:385 src/contents/ui/Exciter.qml:236
@@ -266,14 +266,14 @@ msgstr "Lyssna"
 #: src/contents/ui/MultibandCompressor.qml:995
 #: src/contents/ui/MultibandGate.qml:963 src/contents/ui/RNNoise.qml:306
 #: src/contents/ui/Reverb.qml:352 src/contents/ui/Speex.qml:188
-#: src/contents/ui/StereoTools.qml:467 src/contents/ui/main.qml:454
+#: src/contents/ui/StereoTools.qml:467 src/contents/ui/main.qml:482
 msgid "Reset"
 msgstr "Återställ"
 
 #: src/contents/ui/BassLoudness.qml:69 src/contents/ui/Compressor.qml:495
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:455
 #: src/contents/ui/Gate.qml:479 src/contents/ui/StereoTools.qml:309
-#: src/contents/ui/main.qml:391
+#: src/contents/ui/main.qml:419
 msgid "Output"
 msgstr "Utgång"
 
@@ -485,7 +485,7 @@ msgstr "Sida"
 #: src/contents/ui/Expander.qml:284 src/contents/ui/Gate.qml:308
 #: src/contents/ui/LevelMeter.qml:64 src/contents/ui/LevelMeter.qml:109
 #: src/contents/ui/MultibandCompressor.qml:437
-#: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:303
+#: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:314
 #: src/contents/ui/StereoTools.qml:220
 msgid "Left"
 msgstr ""
@@ -495,7 +495,7 @@ msgstr ""
 #: src/contents/ui/Expander.qml:284 src/contents/ui/Gate.qml:308
 #: src/contents/ui/LevelMeter.qml:80 src/contents/ui/LevelMeter.qml:125
 #: src/contents/ui/MultibandCompressor.qml:437
-#: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:314
+#: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:325
 #: src/contents/ui/StereoTools.qml:262
 msgid "Right"
 msgstr ""
@@ -786,15 +786,15 @@ msgid "Default"
 msgstr ""
 
 #: src/contents/ui/Crossfeed.qml:156 src/contents/ui/Reverb.qml:331
-#: src/contents/ui/main.qml:361
+#: src/contents/ui/main.qml:389
 msgid "Presets"
 msgstr "Profiler"
 
-#: src/contents/ui/Crystalizer.qml:96
+#: src/contents/ui/Crystalizer.qml:112
 msgid "Adaptive Intensity"
 msgstr ""
 
-#: src/contents/ui/CrystalizerBand.qml:31
+#: src/contents/ui/CrystalizerBand.qml:35
 #: src/contents/ui/EqualizerBandMenu.qml:157
 #: src/contents/ui/MultibandCompressor.qml:75
 #: src/contents/ui/MultibandGate.qml:75 src/contents/ui/StereoTools.qml:232
@@ -802,7 +802,7 @@ msgstr ""
 msgid "Mute"
 msgstr ""
 
-#: src/contents/ui/CrystalizerBand.qml:42
+#: src/contents/ui/CrystalizerBand.qml:46
 #: src/contents/ui/MultibandCompressor.qml:93
 #: src/contents/ui/MultibandGate.qml:93
 msgid "Bypass"
@@ -943,7 +943,7 @@ msgstr ""
 
 #: src/contents/ui/DelegateClientsList.qml:50
 #: src/contents/ui/DelegateModulesList.qml:50
-#: src/contents/ui/PipeWirePage.qml:127 src/contents/ui/PipeWirePage.qml:165
+#: src/contents/ui/PipeWirePage.qml:127 src/contents/ui/PipeWirePage.qml:171
 msgid "Name"
 msgstr "Namn"
 
@@ -1006,7 +1006,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:48
-#: src/contents/ui/main.qml:401
+#: src/contents/ui/main.qml:429
 msgid "Input"
 msgstr "Ingång"
 
@@ -1167,7 +1167,7 @@ msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:194
-#: src/contents/ui/MultibandGate.qml:126 src/contents/ui/PipeWirePage.qml:377
+#: src/contents/ui/MultibandGate.qml:126 src/contents/ui/PipeWirePage.qml:388
 msgid "Frequency"
 msgstr "Frekvens (Hz)"
 
@@ -1726,83 +1726,83 @@ msgstr ""
 msgid "Use Default Input"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:151
+#: src/contents/ui/PipeWirePage.qml:156
 msgid "Use Default Output"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:184
+#: src/contents/ui/PipeWirePage.qml:195
 msgid "Server Information"
 msgstr "Serverinformation"
 
-#: src/contents/ui/PipeWirePage.qml:189
+#: src/contents/ui/PipeWirePage.qml:200
 msgid "Header Version"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:194
+#: src/contents/ui/PipeWirePage.qml:205
 msgid "Library Version"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:199
+#: src/contents/ui/PipeWirePage.qml:210
 msgid "Runtime Version"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:204
+#: src/contents/ui/PipeWirePage.qml:215
 #, fuzzy
 msgid "Default Sampling Rate"
 msgstr "Samplingshastighet"
 
-#: src/contents/ui/PipeWirePage.qml:209
+#: src/contents/ui/PipeWirePage.qml:220
 msgid "Minimum Quantum"
 msgstr "Minsta kvantum"
 
-#: src/contents/ui/PipeWirePage.qml:214
+#: src/contents/ui/PipeWirePage.qml:225
 msgid "Maximum Quantum"
 msgstr "Största kvantum"
 
-#: src/contents/ui/PipeWirePage.qml:219
+#: src/contents/ui/PipeWirePage.qml:230
 msgid "Default Quantum"
 msgstr "Standardkvantum"
 
-#: src/contents/ui/PipeWirePage.qml:241
+#: src/contents/ui/PipeWirePage.qml:252
 #, fuzzy
 msgid "No Modules"
 msgstr "RNNoise-modeller"
 
-#: src/contents/ui/PipeWirePage.qml:264
+#: src/contents/ui/PipeWirePage.qml:275
 msgid "No Clients"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:277
+#: src/contents/ui/PipeWirePage.qml:288
 #: src/contents/ui/PreferencesSheet.qml:209
 msgid "State"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:284
+#: src/contents/ui/PipeWirePage.qml:295
 #: src/contents/ui/PreferencesSheet.qml:216
 msgid "Enabled"
 msgstr "Aktiverad"
 
-#: src/contents/ui/PipeWirePage.qml:294
+#: src/contents/ui/PipeWirePage.qml:305
 msgid "Channels"
 msgstr "Kanaler"
 
-#: src/contents/ui/PipeWirePage.qml:325
+#: src/contents/ui/PipeWirePage.qml:336
 msgid "Both"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:335
+#: src/contents/ui/PipeWirePage.qml:346
 msgid "Waveform"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:344
+#: src/contents/ui/PipeWirePage.qml:355
 msgid "Sine Wave"
 msgstr "Sinusvåg"
 
-#: src/contents/ui/PipeWirePage.qml:355
+#: src/contents/ui/PipeWirePage.qml:366
 msgid "White Noise"
 msgstr "Vitt brus"
 
-#: src/contents/ui/PipeWirePage.qml:366
+#: src/contents/ui/PipeWirePage.qml:377
 msgid "Pink Noise"
 msgstr "Skärt brus"
 
@@ -1856,7 +1856,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:426
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:454
 msgid "Preferences"
 msgstr ""
 
@@ -2058,7 +2058,7 @@ msgid "Database Autosave Interval"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:406
-#: src/contents/ui/ShortcutsSheet.qml:168
+#: src/contents/ui/ShortcutsSheet.qml:248
 msgid "Global Shortcuts"
 msgstr ""
 
@@ -2422,7 +2422,7 @@ msgstr ""
 msgid "Toggle Fullscreen"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:214
+#: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:294
 msgid "Toggle Global Bypass"
 msgstr ""
 
@@ -2435,13 +2435,25 @@ msgstr ""
 msgid "Terminate Easy Effects Service"
 msgstr "Avsluta Easy Effects"
 
-#: src/contents/ui/ShortcutsSheet.qml:144
-#: src/contents/ui/ShortcutsSheet.qml:157
+#: src/contents/ui/ShortcutsSheet.qml:171
+msgid "Toggle Process All Inputs"
+msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:211
+msgid "Toggle Process All Outputs"
+msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:224
+#: src/contents/ui/ShortcutsSheet.qml:237
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:320
-#: src/contents/ui/main.qml:434
+#: src/contents/ui/ShortcutsSheet.qml:334
+msgid "Toggle Microphone Monitoring"
+msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:348
+#: src/contents/ui/main.qml:462
 msgid "Shortcuts"
 msgstr ""
 
@@ -2545,52 +2557,52 @@ msgstr "Stereobas"
 msgid "Stereo Phase"
 msgstr "Stereofas"
 
-#: src/contents/ui/main.qml:163
+#: src/contents/ui/main.qml:177
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_Återställ inställningar"
 
-#: src/contents/ui/main.qml:164
+#: src/contents/ui/main.qml:178
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:185
+#: src/contents/ui/main.qml:199
 msgid "Audio effects for PipeWire applications"
 msgstr "Ljudeffekter för PipeWire-applikationer"
 
-#: src/contents/ui/main.qml:198
+#: src/contents/ui/main.qml:212
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Utmatningsenhet"
 
-#: src/contents/ui/main.qml:249 src/contents/ui/main.qml:266
+#: src/contents/ui/main.qml:275 src/contents/ui/main.qml:292
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Nytt namn på förinställd ingång"
 
-#: src/contents/ui/main.qml:309
+#: src/contents/ui/main.qml:337
 #, fuzzy
 msgid "Active"
 msgstr "Ingen komprimering"
 
-#: src/contents/ui/main.qml:329 src/contents/ui/main.qml:442
+#: src/contents/ui/main.qml:357 src/contents/ui/main.qml:470
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:339 src/contents/ui/main.qml:474
+#: src/contents/ui/main.qml:367 src/contents/ui/main.qml:502
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:369
+#: src/contents/ui/main.qml:397
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:411
+#: src/contents/ui/main.qml:439
 msgid "PipeWire"
 msgstr ""
 
-#: src/contents/ui/main.qml:466
+#: src/contents/ui/main.qml:494
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_Om Easy Effects"

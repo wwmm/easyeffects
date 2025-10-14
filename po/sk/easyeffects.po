@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-11 23:54+0000\n"
+"POT-Creation-Date: 2025-10-14 19:56+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Meti Cease <sockargrande@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -87,11 +87,11 @@ msgstr ""
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:285
+#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:311
 msgid "Output Presets"
 msgstr "Výstupné predvoľby:"
 
-#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:275
+#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:301
 #, fuzzy
 msgid "Input Presets"
 msgstr "Vstupné predvoľby: "
@@ -181,7 +181,7 @@ msgstr "Výstupný Zisk"
 #: src/contents/ui/Autogain.qml:283 src/contents/ui/BassEnhancer.qml:197
 #: src/contents/ui/BassLoudness.qml:110 src/contents/ui/Compressor.qml:807
 #: src/contents/ui/Convolver.qml:415 src/contents/ui/Crossfeed.qml:140
-#: src/contents/ui/Crystalizer.qml:80 src/contents/ui/DeepFilterNet.qml:174
+#: src/contents/ui/Crystalizer.qml:96 src/contents/ui/DeepFilterNet.qml:174
 #: src/contents/ui/Deesser.qml:316 src/contents/ui/Delay.qml:371
 #: src/contents/ui/EchoCanceller.qml:110 src/contents/ui/Equalizer.qml:304
 #: src/contents/ui/Exciter.qml:197 src/contents/ui/Expander.qml:765
@@ -269,7 +269,7 @@ msgstr "Počúvať"
 
 #: src/contents/ui/BassEnhancer.qml:236 src/contents/ui/BassLoudness.qml:126
 #: src/contents/ui/Compressor.qml:856 src/contents/ui/Convolver.qml:441
-#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Crystalizer.qml:106
+#: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Crystalizer.qml:122
 #: src/contents/ui/DeepFilterNet.qml:197 src/contents/ui/Deesser.qml:355
 #: src/contents/ui/Delay.qml:420 src/contents/ui/EchoCanceller.qml:126
 #: src/contents/ui/Equalizer.qml:385 src/contents/ui/Exciter.qml:236
@@ -280,14 +280,14 @@ msgstr "Počúvať"
 #: src/contents/ui/MultibandCompressor.qml:995
 #: src/contents/ui/MultibandGate.qml:963 src/contents/ui/RNNoise.qml:306
 #: src/contents/ui/Reverb.qml:352 src/contents/ui/Speex.qml:188
-#: src/contents/ui/StereoTools.qml:467 src/contents/ui/main.qml:454
+#: src/contents/ui/StereoTools.qml:467 src/contents/ui/main.qml:482
 msgid "Reset"
 msgstr "Obnoviť pôvodné hodnoty"
 
 #: src/contents/ui/BassLoudness.qml:69 src/contents/ui/Compressor.qml:495
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:455
 #: src/contents/ui/Gate.qml:479 src/contents/ui/StereoTools.qml:309
-#: src/contents/ui/main.qml:391
+#: src/contents/ui/main.qml:419
 msgid "Output"
 msgstr "Výstup"
 
@@ -505,7 +505,7 @@ msgstr "Postranný"
 #: src/contents/ui/Expander.qml:284 src/contents/ui/Gate.qml:308
 #: src/contents/ui/LevelMeter.qml:64 src/contents/ui/LevelMeter.qml:109
 #: src/contents/ui/MultibandCompressor.qml:437
-#: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:303
+#: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:314
 #: src/contents/ui/StereoTools.qml:220
 msgid "Left"
 msgstr "Ľavý"
@@ -515,7 +515,7 @@ msgstr "Ľavý"
 #: src/contents/ui/Expander.qml:284 src/contents/ui/Gate.qml:308
 #: src/contents/ui/LevelMeter.qml:80 src/contents/ui/LevelMeter.qml:125
 #: src/contents/ui/MultibandCompressor.qml:437
-#: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:314
+#: src/contents/ui/MultibandGate.qml:405 src/contents/ui/PipeWirePage.qml:325
 #: src/contents/ui/StereoTools.qml:262
 msgid "Right"
 msgstr "Pravý"
@@ -814,16 +814,16 @@ msgid "Default"
 msgstr "Predvolený"
 
 #: src/contents/ui/Crossfeed.qml:156 src/contents/ui/Reverb.qml:331
-#: src/contents/ui/main.qml:361
+#: src/contents/ui/main.qml:389
 msgid "Presets"
 msgstr "Predvoľby"
 
-#: src/contents/ui/Crystalizer.qml:96
+#: src/contents/ui/Crystalizer.qml:112
 #, fuzzy
 msgid "Adaptive Intensity"
 msgstr "Prispôsobivý digitálny"
 
-#: src/contents/ui/CrystalizerBand.qml:31
+#: src/contents/ui/CrystalizerBand.qml:35
 #: src/contents/ui/EqualizerBandMenu.qml:157
 #: src/contents/ui/MultibandCompressor.qml:75
 #: src/contents/ui/MultibandGate.qml:75 src/contents/ui/StereoTools.qml:232
@@ -831,7 +831,7 @@ msgstr "Prispôsobivý digitálny"
 msgid "Mute"
 msgstr "Stíšený"
 
-#: src/contents/ui/CrystalizerBand.qml:42
+#: src/contents/ui/CrystalizerBand.qml:46
 #: src/contents/ui/MultibandCompressor.qml:93
 #: src/contents/ui/MultibandGate.qml:93
 msgid "Bypass"
@@ -974,7 +974,7 @@ msgstr ""
 
 #: src/contents/ui/DelegateClientsList.qml:50
 #: src/contents/ui/DelegateModulesList.qml:50
-#: src/contents/ui/PipeWirePage.qml:127 src/contents/ui/PipeWirePage.qml:165
+#: src/contents/ui/PipeWirePage.qml:127 src/contents/ui/PipeWirePage.qml:171
 msgid "Name"
 msgstr "Názov"
 
@@ -1041,7 +1041,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:48
-#: src/contents/ui/main.qml:401
+#: src/contents/ui/main.qml:429
 msgid "Input"
 msgstr "Vstup"
 
@@ -1206,7 +1206,7 @@ msgstr "Sklon"
 
 #: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:118
 #: src/contents/ui/MultibandCompressor.qml:194
-#: src/contents/ui/MultibandGate.qml:126 src/contents/ui/PipeWirePage.qml:377
+#: src/contents/ui/MultibandGate.qml:126 src/contents/ui/PipeWirePage.qml:388
 msgid "Frequency"
 msgstr "Frekvencia"
 
@@ -1784,94 +1784,94 @@ msgstr ""
 msgid "Use Default Input"
 msgstr "Použiť predvolený"
 
-#: src/contents/ui/PipeWirePage.qml:151
+#: src/contents/ui/PipeWirePage.qml:156
 #, fuzzy
 msgid "Use Default Output"
 msgstr "Použiť predvolený"
 
-#: src/contents/ui/PipeWirePage.qml:184
+#: src/contents/ui/PipeWirePage.qml:195
 #, fuzzy
 msgid "Server Information"
 msgstr "Ozvena (reverb)"
 
-#: src/contents/ui/PipeWirePage.qml:189
+#: src/contents/ui/PipeWirePage.qml:200
 #, fuzzy
 msgid "Header Version"
 msgstr "Verzia"
 
-#: src/contents/ui/PipeWirePage.qml:194
+#: src/contents/ui/PipeWirePage.qml:205
 #, fuzzy
 msgid "Library Version"
 msgstr "Verzia"
 
-#: src/contents/ui/PipeWirePage.qml:199
+#: src/contents/ui/PipeWirePage.qml:210
 #, fuzzy
 msgid "Runtime Version"
 msgstr "Verzia"
 
-#: src/contents/ui/PipeWirePage.qml:204
+#: src/contents/ui/PipeWirePage.qml:215
 #, fuzzy
 msgid "Default Sampling Rate"
 msgstr "Predvolená rýchlosť vzorkovania"
 
-#: src/contents/ui/PipeWirePage.qml:209
+#: src/contents/ui/PipeWirePage.qml:220
 #, fuzzy
 msgid "Minimum Quantum"
 msgstr "Minimálna frekvencia"
 
-#: src/contents/ui/PipeWirePage.qml:214
+#: src/contents/ui/PipeWirePage.qml:225
 #, fuzzy
 msgid "Maximum Quantum"
 msgstr "Maximálny zisk"
 
-#: src/contents/ui/PipeWirePage.qml:219
+#: src/contents/ui/PipeWirePage.qml:230
 #, fuzzy
 msgid "Default Quantum"
 msgstr "Predvolené Zoslabnutie"
 
-#: src/contents/ui/PipeWirePage.qml:241
+#: src/contents/ui/PipeWirePage.qml:252
 #, fuzzy
 msgid "No Modules"
 msgstr "Moduly"
 
-#: src/contents/ui/PipeWirePage.qml:264
+#: src/contents/ui/PipeWirePage.qml:275
 #, fuzzy
 msgid "No Clients"
 msgstr "Klienti"
 
-#: src/contents/ui/PipeWirePage.qml:277
+#: src/contents/ui/PipeWirePage.qml:288
 #: src/contents/ui/PreferencesSheet.qml:209
 msgid "State"
 msgstr "Stav"
 
-#: src/contents/ui/PipeWirePage.qml:284
+#: src/contents/ui/PipeWirePage.qml:295
 #: src/contents/ui/PreferencesSheet.qml:216
 #, fuzzy
 msgid "Enabled"
 msgstr "Povolené"
 
-#: src/contents/ui/PipeWirePage.qml:294
+#: src/contents/ui/PipeWirePage.qml:305
 msgid "Channels"
 msgstr "Kanály"
 
-#: src/contents/ui/PipeWirePage.qml:325
+#: src/contents/ui/PipeWirePage.qml:336
 msgid "Both"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:335
+#: src/contents/ui/PipeWirePage.qml:346
 msgid "Waveform"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:344
+#: src/contents/ui/PipeWirePage.qml:355
 #, fuzzy
 msgid "Sine Wave"
 msgstr "Sínusová tabuľka"
 
-#: src/contents/ui/PipeWirePage.qml:355
+#: src/contents/ui/PipeWirePage.qml:366
 msgid "White Noise"
 msgstr "Biely šum"
 
-#: src/contents/ui/PipeWirePage.qml:366
+#: src/contents/ui/PipeWirePage.qml:377
 msgid "Pink Noise"
 msgstr "Ružový Šum"
 
@@ -1927,7 +1927,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:426
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:454
 #, fuzzy
 msgid "Preferences"
 msgstr "Referenčný Signál"
@@ -2139,7 +2139,7 @@ msgid "Database Autosave Interval"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:406
-#: src/contents/ui/ShortcutsSheet.qml:168
+#: src/contents/ui/ShortcutsSheet.qml:248
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "Krátkodobá"
@@ -2508,7 +2508,7 @@ msgstr ""
 msgid "Toggle Fullscreen"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:214
+#: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:294
 #, fuzzy
 msgid "Toggle Global Bypass"
 msgstr "Globálne premostenie"
@@ -2523,13 +2523,27 @@ msgstr "Skryť okno"
 msgid "Terminate Easy Effects Service"
 msgstr "Vstupné efekty"
 
-#: src/contents/ui/ShortcutsSheet.qml:144
-#: src/contents/ui/ShortcutsSheet.qml:157
+#: src/contents/ui/ShortcutsSheet.qml:171
+#, fuzzy
+msgid "Toggle Process All Inputs"
+msgstr "Spracovať všetky vstupy"
+
+#: src/contents/ui/ShortcutsSheet.qml:211
+#, fuzzy
+msgid "Toggle Process All Outputs"
+msgstr "Spracovať všetky výstupy"
+
+#: src/contents/ui/ShortcutsSheet.qml:224
+#: src/contents/ui/ShortcutsSheet.qml:237
 msgid "Can Be Used on Numeric Controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:228 src/contents/ui/main.qml:320
-#: src/contents/ui/main.qml:434
+#: src/contents/ui/ShortcutsSheet.qml:334
+msgid "Toggle Microphone Monitoring"
+msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:348
+#: src/contents/ui/main.qml:462
 #, fuzzy
 msgid "Shortcuts"
 msgstr "Krátkodobá"
@@ -2634,53 +2648,53 @@ msgstr "Základ sterea"
 msgid "Stereo Phase"
 msgstr "Fáza sterea"
 
-#: src/contents/ui/main.qml:163
+#: src/contents/ui/main.qml:177
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "Nastavenia"
 
-#: src/contents/ui/main.qml:164
+#: src/contents/ui/main.qml:178
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:185
+#: src/contents/ui/main.qml:199
 msgid "Audio effects for PipeWire applications"
 msgstr "Zvukové efekty pre aplikácie využívajúce PipeWire"
 
-#: src/contents/ui/main.qml:198
+#: src/contents/ui/main.qml:212
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Sklon"
 
-#: src/contents/ui/main.qml:249 src/contents/ui/main.qml:266
+#: src/contents/ui/main.qml:275 src/contents/ui/main.qml:292
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Vstupné predvoľby: "
 
-#: src/contents/ui/main.qml:309
+#: src/contents/ui/main.qml:337
 #, fuzzy
 msgid "Active"
 msgstr "Aktívny model"
 
-#: src/contents/ui/main.qml:329 src/contents/ui/main.qml:442
+#: src/contents/ui/main.qml:357 src/contents/ui/main.qml:470
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:339 src/contents/ui/main.qml:474
+#: src/contents/ui/main.qml:367 src/contents/ui/main.qml:502
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:369
+#: src/contents/ui/main.qml:397
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:411
+#: src/contents/ui/main.qml:439
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:466
+#: src/contents/ui/main.qml:494
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "Vstupné efekty"
