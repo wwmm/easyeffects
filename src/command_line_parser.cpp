@@ -89,6 +89,8 @@ void CommandLineParser::process(QApplication* app) {
   }
 
   if (parser->isSet("active-preset")) {
+    bool ok = true;
+
     auto value = parser->value("active-preset");
 
     if (value == "input") {
@@ -98,7 +100,7 @@ void CommandLineParser::process(QApplication* app) {
         preset = QString("None");
       }
 
-      std::cout << preset.toStdString() << "\n";
+      std::cout << preset.toStdString() << '\n';
     } else if (value == "output") {
       auto preset = db::Main::lastLoadedOutputPreset();
 
@@ -106,14 +108,20 @@ void CommandLineParser::process(QApplication* app) {
         preset = QString("None");
       }
 
-      std::cout << preset.toStdString() << "\n";
+      std::cout << preset.toStdString() << '\n';
     } else {
-      util::fatal("Must specify preset type: input/output.");
+      ok = false;
+
+      std::cout << i18n("Must specify preset type: input/output.").toStdString() << '\n';
     }
 
     Q_EMIT onHideWindow();
 
-    QCoreApplication::exit(EXIT_SUCCESS);
+    if (ok) {
+      QCoreApplication::exit(EXIT_SUCCESS);
+    } else {
+      QCoreApplication::exit(EXIT_FAILURE);
+    }
   }
 
   if (parser->isSet("active-presets")) {
@@ -178,37 +186,52 @@ void CommandLineParser::process(QApplication* app) {
   }
 
   if (parser->isSet("set-property")) {
+    bool ok = true;
+
     auto value = parser->value("set-property");
 
-    // Parse the property string: pipeline:plugin_name:instance_id:property:value
+    // Parse the property string:
+    // pipeline:plugin_name:instance_id:property:value
     auto parts = value.split(':');
 
     if (parts.size() != 5) {
-      util::fatal("Invalid property format. Expected: pipeline:plugin_name:instance_id:property:value");
+      ok = false;
+
+      std::cout
+          << i18n("Invalid property format. Expected: pipeline:plugin_name:instance_id:property:value").toStdString()
+          << '\n';
+    } else {
+      const auto& pipeline = parts[0];
+      const auto& plugin_name = parts[1];
+      const auto& instance_id = parts[2];
+      const auto& property_name = parts[3];
+      const auto& property_value = parts[4];
+
+      if (pipeline != "input" && pipeline != "output") {
+        ok = false;
+
+        std::cout << i18n("Invalid pipeline type. Must be 'input' or 'output'").toStdString() << '\n';
+      }
+
+      bool valid_instance = true;
+
+      int instance = instance_id.toInt(&valid_instance);
+
+      if (valid_instance && instance >= 0) {
+        Q_EMIT onSetProperty(pipeline, plugin_name, instance_id, property_name, property_value);
+      } else {
+        ok = false;
+
+        std::cout << i18n("Invalid instance ID. Must be a non-negative integer").toStdString() << '\n';
+      }
     }
-
-    const auto& pipeline = parts[0];
-    const auto& plugin_name = parts[1];
-    const auto& instance_id = parts[2];
-    const auto& property_name = parts[3];
-    const auto& property_value = parts[4];
-
-    if (pipeline != "input" && pipeline != "output") {
-      util::fatal("Invalid pipeline type. Must be 'input' or 'output'");
-    }
-
-    bool ok = true;
-
-    instance_id.toInt(&ok);
-
-    if (!ok) {
-      util::fatal("Invalid instance ID. Must be a non-negative integer");
-    }
-
-    Q_EMIT onSetProperty(pipeline, plugin_name, instance_id, property_name, property_value);
 
     Q_EMIT onHideWindow();
 
-    QCoreApplication::exit(EXIT_SUCCESS);
+    if (ok) {
+      QCoreApplication::exit(EXIT_SUCCESS);
+    } else {
+      QCoreApplication::exit(EXIT_FAILURE);
+    }
   }
 }
