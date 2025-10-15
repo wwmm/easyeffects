@@ -115,6 +115,7 @@ class Crystalizer : public PluginBase {
   std::array<std::vector<float>, nbands> band_second_derivative_R;
 
   std::array<float, nbands> env_kurtosis_L, env_kurtosis_R;
+  std::array<float, nbands> env_crest_L, env_crest_R;
 
   std::array<std::unique_ptr<FirFilterBase>, nbands> filters;
 
@@ -128,9 +129,11 @@ class Crystalizer : public PluginBase {
 
   static float extrapolate_next(const std::vector<float>& x);
 
-  float compute_adaptive_intensity(const uint& band_index, float base_intensity, float* band_data, const bool& isLeft);
-
   float compute_kurtosis(float* data) const;
+
+  float compute_crest(float* data) const;
+
+  float compute_adaptive_intensity(const uint& band_index, float base_intensity, float* band_data, const bool& isLeft);
 
   template <typename T1>
   void enhance_peaks(T1& data_left, T1& data_right) {

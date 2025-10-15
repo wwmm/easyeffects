@@ -30,6 +30,7 @@
 #include <format>
 #include <memory>
 #include <mutex>
+#include <numbers>
 #include <span>
 #include <string>
 #include <vector>
@@ -78,6 +79,8 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   std::ranges::fill(band_previous_R, 0.0F);
   std::ranges::fill(env_kurtosis_L, 3.0F);
   std::ranges::fill(env_kurtosis_R, 3.0F);
+  std::ranges::fill(env_crest_L, 1.0F);
+  std::ranges::fill(env_crest_R, 1.0F);
 
   auto f_edges = make_geometric_edges(20, 20000);
 
@@ -88,7 +91,7 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   }
 
   for (uint n = 0; n < nbands; n++) {
-    freq_scaling[n] = std::cbrt(freq_ref / freq_centers[n]);
+    freq_scaling[n] = std::sqrt(freq_ref / freq_centers[n]);
   }
 
   init_common_controls<db::Crystalizer>(settings);
@@ -344,13 +347,31 @@ float Crystalizer::compute_kurtosis(float* data) const {
   return (m2 > 1e-6F) ? m4 / (m2 * m2) : 3.0F;
 }
 
+float Crystalizer::compute_crest(float* data) const {
+  float rms = 0.0;
+
+  float peak = 0.0F;
+
+  for (uint i = 0; i < blocksize; i++) {
+    float v = std::fabs(data[i]);
+
+    rms += v * v;
+
+    peak = std::max(v, peak);
+  }
+
+  rms = std::sqrt(rms / blocksize);
+
+  return (rms > 1e-6F) ? (peak / rms) : 1.0F;
+}
+
 float Crystalizer::compute_adaptive_intensity(const uint& band_index,
                                               float base_intensity,
                                               float* band_data,
                                               const bool& isLeft) {
-  float kurtosis = compute_kurtosis(band_data);
+  // kurtosis calculation
 
-  // Normalize relative to Gaussian distribution (kurtosis = 3)
+  float kurtosis = compute_kurtosis(band_data);
 
   auto& env_kurtosis = isLeft ? env_kurtosis_L[band_index] : env_kurtosis_R[band_index];
 
@@ -364,9 +385,25 @@ float Crystalizer::compute_adaptive_intensity(const uint& band_index,
   // kurtosis_ratio >1.0 (peaky)    → (more enhancement)
   // kurtosis_ratio <1.0 (flat)     → (less enhancement)
 
-  float kurtosis_ratio = env_kurtosis / 3.0F;
+  float kurtosis_ratio = env_kurtosis / 3.0F;  // Normalize relative to Gaussian distribution (kurtosis = 3)
 
-  auto intensity = base_intensity * kurtosis_ratio * freq_scaling[band_index];
+  // crest calculation
+
+  float crest = compute_crest(band_data);
+
+  auto& env_crest = isLeft ? env_crest_L[band_index] : env_crest_R[band_index];
+
+  auto tau_crest = (crest > env_crest) ? attack_time : release_time;
+
+  float alpha_crest = std::exp(-block_time / tau_crest);
+
+  env_crest = alpha_crest * env_crest + (1.0F - alpha_crest) * crest;
+
+  float crest_ratio = env_crest / std::numbers::sqrt2_v<float>;  // Normalize to the sine wave crest
+
+  // intensity calculation
+
+  auto intensity = base_intensity * std::sqrtf(crest_ratio * kurtosis_ratio) * freq_scaling[band_index];
 
   // util::warning(std::format("n = {}, intensity = {}, kurtosis = {}", band_index, intensity, env_kurtosis));
 
