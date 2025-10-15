@@ -91,7 +91,7 @@ void CommandLineParser::process(QApplication* app) {
   if (parser->isSet("active-preset")) {
     bool ok = true;
 
-    auto value = parser->value("active-preset");
+    const auto value = parser->value("active-preset");
 
     if (value == "input") {
       auto preset = db::Main::lastLoadedInputPreset();
@@ -166,7 +166,7 @@ void CommandLineParser::process(QApplication* app) {
   }
 
   if (parser->isSet("load-preset")) {
-    auto name = parser->value("load-preset");
+    const auto name = parser->value("load-preset");
 
     if (pm->preset_file_exists(PipelineType::input, name.toStdString())) {
       Q_EMIT onLoadPreset(PipelineType::input, name);
@@ -188,11 +188,11 @@ void CommandLineParser::process(QApplication* app) {
   if (parser->isSet("set-property")) {
     bool ok = true;
 
-    auto value = parser->value("set-property");
+    const auto value = parser->value("set-property");
 
     // Parse the property string:
     // pipeline:plugin_name:instance_id:property:value
-    auto parts = value.split(':');
+    const auto parts = value.split(':');
 
     if (parts.size() != 5) {
       ok = false;
@@ -215,7 +215,7 @@ void CommandLineParser::process(QApplication* app) {
 
       bool valid_instance = true;
 
-      int instance = instance_id.toInt(&valid_instance);
+      const auto instance = instance_id.toInt(&valid_instance);
 
       if (valid_instance && instance >= 0) {
         Q_EMIT onSetProperty(pipeline, plugin_name, instance_id, property_name, property_value);
