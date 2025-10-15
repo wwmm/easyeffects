@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-14 19:56+0000\n"
+"POT-Creation-Date: 2025-10-15 22:49+0000\n"
 "PO-Revision-Date: 2025-10-15 10:08+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -85,13 +85,34 @@ msgstr "Avvia l'applicazione con la modalità di servizio abilitata."
 msgid "Enable debug messages."
 msgstr "Abilità messaggi di debug."
 
-#: src/command_line_parser.cpp:145 src/contents/ui/main.qml:311
+#: src/command_line_parser.cpp:115
+msgid "Must specify preset type: input/output."
+msgstr ""
+
+#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:311
 msgid "Output Presets"
 msgstr "Profili di Uscita"
 
-#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:301
+#: src/command_line_parser.cpp:161 src/contents/ui/main.qml:301
 msgid "Input Presets"
 msgstr "Profili di Ingresso"
+
+#: src/command_line_parser.cpp:201
+#, fuzzy
+msgid ""
+"Invalid property format. Expected: "
+"pipeline:plugin_name:instance_id:property:value"
+msgstr ""
+"Imposta proprietà plugin. Formato: "
+"pipeline:nome_effetto:id_istanza:proprietà:valore"
+
+#: src/command_line_parser.cpp:213
+msgid "Invalid pipeline type. Must be 'input' or 'output'"
+msgstr ""
+
+#: src/command_line_parser.cpp:225
+msgid "Invalid instance ID. Must be a non-negative integer"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:57 src/contents/ui/BassEnhancer.qml:94
 #: src/contents/ui/BassLoudness.qml:45 src/contents/ui/Crossfeed.qml:62
