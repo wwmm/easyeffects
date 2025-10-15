@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-14 19:56+0000\n"
-"PO-Revision-Date: 2025-10-12 00:21+0000\n"
+"PO-Revision-Date: 2025-10-15 10:08+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -2327,14 +2327,12 @@ msgid "Terminate Easy Effects Service"
 msgstr "Terminer le Service Easy Effects"
 
 #: src/contents/ui/ShortcutsSheet.qml:171
-#, fuzzy
 msgid "Toggle Process All Inputs"
-msgstr "Traiter Tous les Flux d’Entrée"
+msgstr "Basculer le Traitement de Toutes les Entrées"
 
 #: src/contents/ui/ShortcutsSheet.qml:211
-#, fuzzy
 msgid "Toggle Process All Outputs"
-msgstr "Traiter Tous les Flux de Sortie"
+msgstr "Basculer le Traitement de Toutes les Sorties"
 
 #: src/contents/ui/ShortcutsSheet.qml:224
 #: src/contents/ui/ShortcutsSheet.qml:237
@@ -2343,7 +2341,7 @@ msgstr "Peut Être Utilisé sur les Contrôles Numériques"
 
 #: src/contents/ui/ShortcutsSheet.qml:334
 msgid "Toggle Microphone Monitoring"
-msgstr ""
+msgstr "Basculer la Surveillance du Microphone"
 
 #: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:348
 #: src/contents/ui/main.qml:462
@@ -2465,9 +2463,8 @@ msgid "Developer"
 msgstr "Développeur"
 
 #: src/contents/ui/main.qml:275 src/contents/ui/main.qml:292
-#, fuzzy
 msgid "Preset Loaded"
-msgstr "Pas de Préréglage Chargé"
+msgstr "Préréglage Chargé"
 
 #: src/contents/ui/main.qml:337
 msgid "Active"

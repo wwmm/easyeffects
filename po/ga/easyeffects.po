@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-14 19:56+0000\n"
-"PO-Revision-Date: 2025-10-13 21:07+0000\n"
+"PO-Revision-Date: 2025-10-15 10:08+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -2330,14 +2330,12 @@ msgid "Terminate Easy Effects Service"
 msgstr "Deireadh a chur le Seirbhís Éifeachtaí Éasca"
 
 #: src/contents/ui/ShortcutsSheet.qml:171
-#, fuzzy
 msgid "Toggle Process All Inputs"
-msgstr "Próiseáil Gach Sruth Ionchurtha"
+msgstr "Próiseas Gach Ionchur a Athrú"
 
 #: src/contents/ui/ShortcutsSheet.qml:211
-#, fuzzy
 msgid "Toggle Process All Outputs"
-msgstr "Próiseas Gach Sruth Aschurtha"
+msgstr "Athraigh Próiseas na nAschur go léir"
 
 #: src/contents/ui/ShortcutsSheet.qml:224
 #: src/contents/ui/ShortcutsSheet.qml:237
@@ -2346,7 +2344,7 @@ msgstr "Is féidir é a úsáid ar rialuithe uimhriúla"
 
 #: src/contents/ui/ShortcutsSheet.qml:334
 msgid "Toggle Microphone Monitoring"
-msgstr ""
+msgstr "Monatóireacht Micreafóin a Athsholáthar"
 
 #: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:348
 #: src/contents/ui/main.qml:462

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-14 19:56+0000\n"
-"PO-Revision-Date: 2025-10-13 08:07+0000\n"
+"PO-Revision-Date: 2025-10-15 10:08+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2324,14 +2324,12 @@ msgid "Terminate Easy Effects Service"
 msgstr "Termina il Servizio di Easy Effects"
 
 #: src/contents/ui/ShortcutsSheet.qml:171
-#, fuzzy
 msgid "Toggle Process All Inputs"
-msgstr "Processa Tutto in Ingresso"
+msgstr "Abilita/Disabilita il Processa Tutto in Ingresso"
 
 #: src/contents/ui/ShortcutsSheet.qml:211
-#, fuzzy
 msgid "Toggle Process All Outputs"
-msgstr "Processa Tutto in Uscita"
+msgstr "Abilita/Disabilita il Processa Tutto in Uscita"
 
 #: src/contents/ui/ShortcutsSheet.qml:224
 #: src/contents/ui/ShortcutsSheet.qml:237
@@ -2340,7 +2338,7 @@ msgstr "Può Essere Usato sui Parametri Numerici"
 
 #: src/contents/ui/ShortcutsSheet.qml:334
 msgid "Toggle Microphone Monitoring"
-msgstr ""
+msgstr "Abilita/Disabilita il Monitoraggio del Microfono"
 
 #: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:348
 #: src/contents/ui/main.qml:462
