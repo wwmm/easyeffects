@@ -173,7 +173,7 @@ void LocalServer::set_property(const std::string& pipeline,
         pipeline_type, tags::plugin_name::BaseName::loudness + "#" + QString::fromStdString(instance_id));
 
     if (property == "volume") {
-      double volume = 0;
+      double volume = plugin_db->defaultVolumeValue();
 
       util::str_to_num(value, volume);
 
