@@ -53,4 +53,9 @@ class LocalServer : public QObject {
                            const std::string& instance_id,
                            const std::string& property,
                            const std::string& value);
+
+  static auto get_property(const std::string& pipeline,
+                           const std::string& plugin_name,
+                           const std::string& instance_id,
+                           const std::string& property) -> std::string;
 };

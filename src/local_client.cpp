@@ -28,19 +28,6 @@
 #include "util.hpp"
 
 LocalClient::LocalClient(QObject* parent) : QObject(parent), client(std::make_unique<QLocalSocket>(this)) {
-  connect(client.get(), &QLocalSocket::connected, [&]() {
-    util::debug("Connected to the local server!");
-
-    client->write("Hello, server!\n");
-    client->flush();
-  });
-
-  connect(client.get(), &QLocalSocket::readyRead, [&]() {
-    QString message = client->readAll();
-
-    util::debug(std::format("Server message: {}", message.toStdString()));
-  });
-
   client->connectToServer(tags::local_server::server_name);
 
   if (!client->waitForConnected()) {

@@ -117,9 +117,35 @@ void LocalServer::onReadyRead() {
 
           set_property(pipeline, plugin_name, instance_id, property, value);
         }
+      } else if (std::strncmp(buf, tags::local_server::get_property, strlen(tags::local_server::get_property)) == 0) {
+        /*
+         * Example of client write that should be done:
+         * client->write(std::format("{}:output:loudness:0:volume\n", tags::local_server::get_property).c_str());
+         */
+
+        std::string msg = buf;
+
+        std::smatch matches;
+
+        static const auto re = std::regex("^get_property:(input|output):([^:]+):([0-9]+):([^\n]+)");
+
+        std::regex_search(msg, matches, re);
+
+        if (matches.size() == 5U) {
+          const auto& pipeline = matches[1].str();
+          const auto& plugin_name = matches[2].str();
+          const auto& instance_id = matches[3].str();
+          const auto& property = matches[4].str();
+
+          const auto value = get_property(pipeline, plugin_name, instance_id, property);
+
+          clientSocket->write(value.c_str());
+        }
       }
     }
   }
+
+  clientSocket->flush();
 
   // Echo the data back to the client
   // clientSocket->write("Server received: " + data);
@@ -154,4 +180,28 @@ void LocalServer::set_property(const std::string& pipeline,
       plugin_db->setVolume(volume);
     }
   }
+}
+
+auto LocalServer::get_property(const std::string& pipeline,
+                               const std::string& plugin_name,
+                               const std::string& instance_id,
+                               const std::string& property) -> std::string {
+  std::string value;
+
+  PipelineType pipeline_type = pipeline == "input" ? PipelineType::input : PipelineType::output;
+
+  if (plugin_name == tags::plugin_name::BaseName::loudness) {
+    auto plugin_db = db::Manager::self().get_plugin_db<db::Loudness>(
+        pipeline_type, tags::plugin_name::BaseName::loudness + "#" + QString::fromStdString(instance_id));
+
+    if (plugin_db == nullptr) {
+      util::warning(std::format("Could not find a database for: {}", plugin_name));
+
+      return "";
+    }
+
+    value = plugin_db->property(property.c_str()).toString().toStdString();
+  }
+
+  return value;
 }

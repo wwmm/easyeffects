@@ -76,9 +76,9 @@ class Manager : public QObject {
   auto get_plugin_db(PipelineType pipeline_type, const QString& plugin_name) -> T* {
     switch (pipeline_type) {
       case PipelineType::input:
-        return siePluginsDB[plugin_name].value<T*>();
+        return siePluginsDB.contains(plugin_name) ? siePluginsDB[plugin_name].value<T*>() : nullptr;
       case PipelineType::output:
-        return soePluginsDB[plugin_name].value<T*>();
+        return soePluginsDB.contains(plugin_name) ? soePluginsDB[plugin_name].value<T*>() : nullptr;
     }
 
     return nullptr;
