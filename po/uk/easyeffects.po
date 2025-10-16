@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-15 22:49+0000\n"
-"PO-Revision-Date: 2025-10-15 10:08+0000\n"
+"PO-Revision-Date: 2025-10-16 12:07+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -16,8 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
 "X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:45
@@ -85,7 +86,7 @@ msgstr "Увімкнути налагоджувальні повідомленн
 
 #: src/command_line_parser.cpp:115
 msgid "Must specify preset type: input/output."
-msgstr ""
+msgstr "Потрібно вказати тип попереднього налаштування: вхід/вихід."
 
 #: src/command_line_parser.cpp:153 src/contents/ui/main.qml:311
 msgid "Output Presets"
@@ -96,21 +97,20 @@ msgid "Input Presets"
 msgstr "Попередні налаштування для входу"
 
 #: src/command_line_parser.cpp:201
-#, fuzzy
 msgid ""
 "Invalid property format. Expected: "
 "pipeline:plugin_name:instance_id:property:value"
 msgstr ""
-"Встановити властивість плагіна. Формат: "
+"Недійсний формат властивості. Очікується: "
 "pipeline:plugin_name:instance_id:property:value"
 
 #: src/command_line_parser.cpp:213
 msgid "Invalid pipeline type. Must be 'input' or 'output'"
-msgstr ""
+msgstr "Недійсний тип конвеєра. Має бути «вхід» або «вихід»"
 
 #: src/command_line_parser.cpp:225
 msgid "Invalid instance ID. Must be a non-negative integer"
-msgstr ""
+msgstr "Недійсний ідентифікатор екземпляра. Має бути невід'ємним цілим числом"
 
 #: src/contents/ui/Autogain.qml:57 src/contents/ui/BassEnhancer.qml:94
 #: src/contents/ui/BassLoudness.qml:45 src/contents/ui/Crossfeed.qml:62
