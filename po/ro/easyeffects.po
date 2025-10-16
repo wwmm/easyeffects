@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-15 22:49+0000\n"
-"PO-Revision-Date: 2025-10-13 08:07+0000\n"
+"PO-Revision-Date: 2025-10-16 12:07+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : "
+"(n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
 "X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:45
@@ -67,7 +67,7 @@ msgstr "Obține preconfigurările de intrare și ieșire active."
 msgid ""
 "Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
 msgstr ""
-"Definește proprietatea pluginului. Format: "
+"Definește proprietatea modulului. Format: "
 "pipeline:nume_modul:id_instanță:proprietate:valoare"
 
 #: src/command_line_parser.cpp:54
@@ -88,7 +88,7 @@ msgstr "Activează mesajele de depanare."
 
 #: src/command_line_parser.cpp:115
 msgid "Must specify preset type: input/output."
-msgstr ""
+msgstr "Trebuie specificat tipul preconfigurării: intrare/ieșire."
 
 #: src/command_line_parser.cpp:153 src/contents/ui/main.qml:311
 msgid "Output Presets"
@@ -99,21 +99,20 @@ msgid "Input Presets"
 msgstr "Preconfigurări de intrare"
 
 #: src/command_line_parser.cpp:201
-#, fuzzy
 msgid ""
 "Invalid property format. Expected: "
 "pipeline:plugin_name:instance_id:property:value"
 msgstr ""
-"Definește proprietatea pluginului. Format: "
+"Formatul proprietății nu este valid. Se așteaptă: "
 "pipeline:nume_modul:id_instanță:proprietate:valoare"
 
 #: src/command_line_parser.cpp:213
 msgid "Invalid pipeline type. Must be 'input' or 'output'"
-msgstr ""
+msgstr "Tip de canal(pipeline) nevalid. Trebuie să fie „intrare” sau „ieșire”."
 
 #: src/command_line_parser.cpp:225
 msgid "Invalid instance ID. Must be a non-negative integer"
-msgstr ""
+msgstr "ID de instanță nevalid. Trebuie să fie un număr întreg nenegativ."
 
 #: src/contents/ui/Autogain.qml:57 src/contents/ui/BassEnhancer.qml:94
 #: src/contents/ui/BassLoudness.qml:45 src/contents/ui/Crossfeed.qml:62
@@ -1860,7 +1859,7 @@ msgstr "Activează/dezactivează monitorizarea intrării"
 
 #: src/contents/ui/PreferencesSheet.qml:148
 msgid "Mic Monitor Plays to Output Effects Pipeline"
-msgstr "Monitorul de microfon redă pe canalul de ieșire al efectelor"
+msgstr "Monitorul de microfon redă pe canalul(pipeline) de ieșire al efectelor"
 
 #: src/contents/ui/PreferencesSheet.qml:159
 msgid "Enable the Inactivity Timeout"
@@ -1871,8 +1870,8 @@ msgid ""
 "When all Streams are Inactive, Easy Effects Pipeline Remains Loaded for an "
 "Extra Amount of Time"
 msgstr ""
-"Când toate fluxurile sunt inactive, canalul Easy Effectse rămâne încărcat "
-"pentru o perioadă suplimentară de timp."
+"Când toate fluxurile sunt inactive, canalul(pipeline) Easy Effectse rămâne "
+"încărcat pentru o perioadă suplimentară de timp."
 
 #: src/contents/ui/PreferencesSheet.qml:172
 msgid "Inactivity Timeout"
@@ -2349,14 +2348,12 @@ msgid "Terminate Easy Effects Service"
 msgstr "Termină serviciul Easy Effects"
 
 #: src/contents/ui/ShortcutsSheet.qml:171
-#, fuzzy
 msgid "Toggle Process All Inputs"
-msgstr "Procesează toate fluxurile de intrare"
+msgstr "Activează/dezactivează procesarea tuturor fluxurilor de intrare"
 
 #: src/contents/ui/ShortcutsSheet.qml:211
-#, fuzzy
 msgid "Toggle Process All Outputs"
-msgstr "Procesează toate fluxurile de ieșire"
+msgstr "Activează/dezactivează procesarea tuturor fluxurilor de ieșire"
 
 #: src/contents/ui/ShortcutsSheet.qml:224
 #: src/contents/ui/ShortcutsSheet.qml:237
@@ -2365,7 +2362,7 @@ msgstr "Poate fi utilizat pe controale numerice"
 
 #: src/contents/ui/ShortcutsSheet.qml:334
 msgid "Toggle Microphone Monitoring"
-msgstr ""
+msgstr "Activează/dezactivează monitorizarea microfonului"
 
 #: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:348
 #: src/contents/ui/main.qml:462
