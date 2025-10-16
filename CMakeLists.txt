@@ -79,6 +79,7 @@ pkg_check_modules(LIBRNNOISE rnnoise)
 pkg_check_modules(LIBSOUNDTOUCH soundtouch)
 pkg_check_modules(LIBPORTAL libportal)
 pkg_check_modules(LIBPORTALQT libportal-qt6)
+pkg_check_modules(LIBWEBRTC webrtc-audio-processing-2)
 
 file(GLOB KCFG_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfg)
 file(GLOB KCFGC_FILES ${PROJECT_SOURCE_DIR}/src/contents/kcfg/*.kcfgc)

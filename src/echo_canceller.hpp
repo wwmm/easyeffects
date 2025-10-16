@@ -19,9 +19,12 @@
 
 #pragma once
 
+#include <api/scoped_refptr.h>
 #include <qobject.h>
-#include <speex/speex_echo.h>
+#include <qtypes.h>
+#include <webrtc-audio-processing-2/api/audio/audio_processing.h>
 #include <climits>
+#include <cstddef>
 #include <span>
 #include <string>
 #include <vector>
@@ -29,10 +32,6 @@
 #include "pipeline_type.hpp"
 #include "plugin_base.hpp"
 #include "pw_manager.hpp"
-
-#include <speex/speex_preprocess.h>
-#include <speex/speexdsp_config_types.h>
-#include <sys/types.h>
 
 class EchoCanceller : public PluginBase {
  public:
@@ -68,19 +67,20 @@ class EchoCanceller : public PluginBase {
   bool ready = false;
 
   uint latency_n_frames = 0U;
+  uint blocksize;
 
   const float inv_short_max = 1.0F / (SHRT_MAX + 1.0F);
 
-  std::vector<spx_int16_t> data;
-  std::vector<spx_int16_t> probe;
-  std::vector<spx_int16_t> filtered;
-  std::vector<spx_int16_t> channel;
+  std::vector<float> near_L, near_R;
+  std::vector<float> far_L, far_R;
 
-  SpeexEchoState* echo_state = nullptr;
+  std::vector<float> buf_near_L, buf_near_R;
+  std::vector<float> buf_far_L, buf_far_R;
+  std::vector<float> buf_out_L, buf_out_R;
 
-  SpeexPreprocessState* state[2] = {nullptr, nullptr};
+  rtc::scoped_refptr<webrtc::AudioProcessing> ap_builder;
 
-  void free_speex();
+  webrtc::StreamConfig stream_config;
 
-  void init_speex();
+  void init_webrtc();
 };

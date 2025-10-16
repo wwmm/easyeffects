@@ -38,12 +38,6 @@ class LocalClient : public QObject {
 
   void load_preset(PipelineType pipeline_type, std::string preset_name);
 
-  void set_property(const QString& pipeline,
-                    const QString& plugin_name,
-                    const QString& instance_id,
-                    const QString& property_name,
-                    const QString& property_value);
-
  private:
   std::unique_ptr<QLocalSocket> client;
 };

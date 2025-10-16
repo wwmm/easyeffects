@@ -18,18 +18,15 @@
  */
 
 #include "echo_canceller.hpp"
+#include <api/audio/audio_processing.h>
 #include <qobject.h>
-#include <speex/speex_echo.h>
-#include <speex/speex_preprocess.h>
-#include <speex/speexdsp_config_types.h>
 #include <sys/types.h>
 #include <algorithm>
-#include <climits>
-#include <cstddef>
 #include <format>
 #include <mutex>
 #include <span>
 #include <string>
+#include <vector>
 #include "db_manager.hpp"
 #include "easyeffects_db_echo_canceller.h"
 #include "pipeline_type.hpp"
@@ -54,39 +51,11 @@ EchoCanceller::EchoCanceller(const std::string& tag,
           tags::plugin_name::BaseName::echoCanceller + "#" + instance_id)) {
   init_common_controls<db::EchoCanceller>(settings);
 
-  connect(settings, &db::EchoCanceller::filterLengthChanged, [&]() {
-    std::scoped_lock<std::mutex> lock(data_mutex);
+  connect(settings, &db::EchoCanceller::filterLengthChanged, [&]() { std::scoped_lock<std::mutex> lock(data_mutex); });
 
-    init_speex();
-  });
+  connect(settings, &db::EchoCanceller::filterLengthChanged, [&]() { std::scoped_lock<std::mutex> lock(data_mutex); });
 
-  connect(settings, &db::EchoCanceller::filterLengthChanged, [&]() {
-    std::scoped_lock<std::mutex> lock(data_mutex);
-
-    int residual_echo_suppression = settings->residualEchoSuppression();
-
-    if (state[0]) {
-      speex_preprocess_ctl(state[0], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
-    }
-
-    if (state[1]) {
-      speex_preprocess_ctl(state[1], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
-    }
-  });
-
-  connect(settings, &db::EchoCanceller::filterLengthChanged, [&]() {
-    std::scoped_lock<std::mutex> lock(data_mutex);
-
-    int near_end_suppression = settings->nearEndSuppression();
-
-    if (state[0]) {
-      speex_preprocess_ctl(state[0], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
-    }
-
-    if (state[1]) {
-      speex_preprocess_ctl(state[1], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
-    }
-  });
+  connect(settings, &db::EchoCanceller::filterLengthChanged, [&]() { std::scoped_lock<std::mutex> lock(data_mutex); });
 }
 
 EchoCanceller::~EchoCanceller() {
@@ -99,12 +68,6 @@ EchoCanceller::~EchoCanceller() {
   data_mutex.lock();
 
   ready = false;
-
-  if (echo_state != nullptr) {
-    speex_echo_state_destroy(echo_state);
-  }
-
-  free_speex();
 
   data_mutex.unlock();
 
@@ -124,7 +87,7 @@ void EchoCanceller::setup() {
 
   latency_n_frames = 0U;
 
-  init_speex();
+  init_webrtc();
 }
 
 void EchoCanceller::process([[maybe_unused]] std::span<float>& left_in,
@@ -151,39 +114,54 @@ void EchoCanceller::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
-  for (size_t j = 0U; j < left_in.size(); j++) {
-    data[j * 2U] = static_cast<spx_int16_t>(left_in[j] * (SHRT_MAX + 1));
-    data[(j * 2U) + 1U] = static_cast<spx_int16_t>(right_in[j] * (SHRT_MAX + 1));
+  buf_near_L.insert(buf_near_L.end(), left_in.begin(), left_in.end());
+  buf_near_R.insert(buf_near_R.end(), right_in.begin(), right_in.end());
+  buf_far_L.insert(buf_far_L.end(), probe_left.begin(), probe_left.end());
+  buf_far_R.insert(buf_far_R.end(), probe_right.begin(), probe_right.end());
 
-    probe[j * 2U] = static_cast<spx_int16_t>(probe_left[j] * (SHRT_MAX + 1));
-    probe[(j * 2U) + 1U] = static_cast<spx_int16_t>(probe_right[j] * (SHRT_MAX + 1));
+  auto copy_bulk = [](auto& buffer, auto& channel_data) {
+    std::copy_n(buffer.begin(), channel_data.size(), channel_data.begin());
+
+    buffer.erase(buffer.begin(), buffer.begin() + channel_data.size());
+  };
+
+  while (buf_near_L.size() >= near_L.size()) {
+    copy_bulk(buf_near_L, near_L);
+    copy_bulk(buf_near_R, near_R);
+    copy_bulk(buf_far_L, far_L);
+    copy_bulk(buf_far_R, far_R);
+
+    float* near_ptrs[2] = {near_L.data(), near_R.data()};
+    float* far_ptrs[2] = {far_L.data(), far_R.data()};
+
+    ap_builder->ProcessReverseStream(far_ptrs, stream_config, stream_config, far_ptrs);
+    ap_builder->ProcessStream(near_ptrs, stream_config, stream_config, near_ptrs);
+
+    buf_out_L.insert(buf_out_L.end(), near_L.begin(), near_L.end());
+    buf_out_R.insert(buf_out_R.end(), near_R.begin(), near_R.end());
   }
 
-  speex_echo_cancellation(echo_state, data.data(), probe.data(), filtered.data());
+  if (buf_out_L.size() >= n_samples) {
+    copy_bulk(buf_out_L, left_out);
+    copy_bulk(buf_out_R, right_out);
+  } else {
+    const uint offset = n_samples - buf_out_L.size();
 
-  // speex_preprocess_run(state, filtered.data());
+    if (offset != latency_n_frames) {
+      latency_n_frames = offset;
 
-  // Apply pre-processing to each channel separately
-  for (size_t ch = 0; ch < 2; ch++) {
-    for (size_t j = 0U; j < n_samples; j++) {
-      channel[j] = filtered[(j * 2) + ch];
+      notify_latency = true;
     }
 
-    // Run pre-processor on this channel
-    if (state[ch] != nullptr) {
-      speex_preprocess_run(state[ch], channel.data());
-    }
+    // Fill beginning with zeros
+    std::fill_n(left_out.begin(), offset, 0.0F);
+    std::fill_n(right_out.begin(), offset, 0.0F);
 
-    // Put back processed data
-    for (size_t j = 0U; j < n_samples; j++) {
-      filtered[(j * 2) + ch] = channel[j];
-    }
-  }
+    std::ranges::copy(buf_out_L, left_out.begin() + offset);
+    std::ranges::copy(buf_out_R, right_out.begin() + offset);
 
-  for (size_t j = 0U; j < left_out.size(); j++) {
-    left_out[j] = static_cast<float>(filtered[j * 2U]) * inv_short_max;
-
-    right_out[j] = static_cast<float>(filtered[(j * 2U) + 1]) * inv_short_max;
+    buf_out_L.clear();
+    buf_out_R.clear();
   }
 
   if (output_gain != 1.0F) {
@@ -205,77 +183,47 @@ void EchoCanceller::process(std::span<float>& left_in,
   }
 }
 
-void EchoCanceller::init_speex() {
+void EchoCanceller::init_webrtc() {
   if (n_samples == 0U || rate == 0U) {
     return;
   }
 
-  if (data.size() != static_cast<size_t>(n_samples) * 2) {
-    data.resize(2U * static_cast<size_t>(n_samples));
-  }
+  blocksize = rate * 0.01;  // 10 ms
 
-  if (probe.size() != static_cast<size_t>(n_samples) * 2) {
-    probe.resize(2U * static_cast<size_t>(n_samples));
-  }
+  util::debug(std::format("webrtc blocksize: {}", blocksize));
 
-  if (filtered.size() != static_cast<size_t>(n_samples) * 2) {
-    filtered.resize(2U * static_cast<size_t>(n_samples));
-  }
+  near_L.resize(blocksize);
+  near_R.resize(blocksize);
+  far_L.resize(blocksize);
+  far_R.resize(blocksize);
 
-  if (channel.size() != n_samples) {
-    channel.resize(n_samples);
-  }
+  buf_near_L.clear();
+  buf_near_R.clear();
+  buf_far_L.clear();
+  buf_far_R.clear();
+  buf_out_L.clear();
+  buf_out_R.clear();
 
-  int residual_echo_suppression = settings->residualEchoSuppression();
-  int near_end_suppression = settings->nearEndSuppression();
+  webrtc::AudioProcessing::Config cfg;
 
-  const uint filter_length = static_cast<uint>(0.001F * static_cast<float>(settings->filterLength() * rate));
+  cfg.echo_canceller.enabled = true;
+  cfg.echo_canceller.mobile_mode = false;
 
-  util::debug(std::format("{}{} filter length: {}", log_tag, name.toStdString(), filter_length));
+  cfg.gain_controller1.enabled = true;
+  // cfg.gain_controller1.mode = webrtc::AudioProcessing::Config::GainController1::kAdaptiveAnalog;
+  cfg.gain_controller1.mode = webrtc::AudioProcessing::Config::GainController1::kAdaptiveDigital;
 
-  if (echo_state != nullptr) {
-    speex_echo_state_destroy(echo_state);
-  }
+  cfg.gain_controller2.enabled = true;
 
-  echo_state = speex_echo_state_init_mc(static_cast<int>(n_samples), static_cast<int>(filter_length), 2, 2);
+  cfg.high_pass_filter.enabled = true;
 
-  if (speex_echo_ctl(echo_state, SPEEX_ECHO_SET_SAMPLING_RATE, &rate) != 0) {
-    util::warning(std::format("{}{}SPEEX_ECHO_SET_SAMPLING_RATE: unknown request", log_tag, name.toStdString()));
-  }
+  ap_builder = webrtc::AudioProcessingBuilder().Create();
 
-  state[0] = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
-  state[1] = speex_preprocess_state_init(static_cast<int>(n_samples), static_cast<int>(rate));
+  ap_builder->ApplyConfig(cfg);
 
-  if (state[0] != nullptr) {
-    speex_preprocess_ctl(state[0], SPEEX_PREPROCESS_SET_ECHO_STATE, echo_state);
-
-    speex_preprocess_ctl(state[0], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
-
-    speex_preprocess_ctl(state[0], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
-  }
-
-  if (state[1] != nullptr) {
-    speex_preprocess_ctl(state[1], SPEEX_PREPROCESS_SET_ECHO_STATE, echo_state);
-
-    speex_preprocess_ctl(state[1], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS, &residual_echo_suppression);
-
-    speex_preprocess_ctl(state[1], SPEEX_PREPROCESS_SET_ECHO_SUPPRESS_ACTIVE, &near_end_suppression);
-  }
+  stream_config = webrtc::StreamConfig(rate, 2);
 
   ready = true;
-}
-
-void EchoCanceller::free_speex() {
-  if (state[0] != nullptr) {
-    speex_preprocess_state_destroy(state[0]);
-  }
-
-  if (state[1] != nullptr) {
-    speex_preprocess_state_destroy(state[1]);
-  }
-
-  state[0] = nullptr;
-  state[1] = nullptr;
 }
 
 auto EchoCanceller::get_latency_seconds() -> float {

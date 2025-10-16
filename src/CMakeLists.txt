@@ -168,6 +168,7 @@ target_include_directories(easyeffects SYSTEM PRIVATE
     ${LIBSOUNDTOUCH_INCLUDE_DIRS}
     ${LIBPORTAL_INCLUDE_DIRS}
     ${LIBPORTALQT_INCLUDE_DIRS}
+    ${LIBWEBRTC_INCLUDE_DIRS}
 )
 
 target_link_libraries(easyeffects PRIVATE
@@ -204,6 +205,7 @@ target_link_libraries(easyeffects PRIVATE
     ${LIBSOUNDTOUCH_LIBRARIES}
     ${LIBPORTAL_LIBRARIES}
     ${LIBPORTALQT_LIBRARIES}
+    ${LIBWEBRTC_LIBRARIES}
     ${LIBZITACONVOLVER}
 )
 

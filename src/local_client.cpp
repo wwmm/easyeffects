@@ -56,16 +56,3 @@ void LocalClient::load_preset(PipelineType pipeline_type, std::string preset_nam
   client->write(msg.c_str());
   client->flush();
 }
-
-void LocalClient::set_property(const QString& pipeline,
-                               const QString& plugin_name,
-                               const QString& instance_id,
-                               const QString& property_name,
-                               const QString& property_value) {
-  auto msg = std::format("{}:{}:{}:{}:{}:{}\n", tags::local_server::set_property, pipeline.toStdString(),
-                         plugin_name.toStdString(), instance_id.toStdString(), property_name.toStdString(),
-                         property_value.toStdString());
-
-  client->write(msg.c_str());
-  client->flush();
-}

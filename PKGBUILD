@@ -33,6 +33,7 @@ depends=(
   'speexdsp'
   'gsl'
   'libportal-qt6'
+  'webrtc-audio-processing'
 )
 makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'intltool' 'appstream-glib' 'mold' 'ladspa')
 optdepends=('calf: limiter, exciter, bass enhancer and others'
