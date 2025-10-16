@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-15 22:49+0000\n"
-"PO-Revision-Date: 2025-10-16 12:07+0000\n"
-"Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
+"PO-Revision-Date: 2025-10-17 01:47+0000\n"
+"Last-Translator: albanobattistella <albanobattistella@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
 "Language: it_IT\n"
@@ -98,21 +98,20 @@ msgid "Input Presets"
 msgstr "Profili di Ingresso"
 
 #: src/command_line_parser.cpp:201
-#, fuzzy
 msgid ""
 "Invalid property format. Expected: "
 "pipeline:plugin_name:instance_id:property:value"
 msgstr ""
-"Imposta proprietà plugin. Formato: "
-"pipeline:nome_effetto:id_istanza:proprietà:valore"
+"Formato proprietà non valido. Previsto: "
+"pipeline:plugin_name:instance_id:property:value"
 
 #: src/command_line_parser.cpp:213
 msgid "Invalid pipeline type. Must be 'input' or 'output'"
-msgstr ""
+msgstr "Tipo di pipeline non valido. Deve essere 'input' o 'output'"
 
 #: src/command_line_parser.cpp:225
 msgid "Invalid instance ID. Must be a non-negative integer"
-msgstr ""
+msgstr "ID istanza non valido. Deve essere un numero intero non negativo"
 
 #: src/contents/ui/Autogain.qml:57 src/contents/ui/BassEnhancer.qml:94
 #: src/contents/ui/BassLoudness.qml:45 src/contents/ui/Crossfeed.qml:62
