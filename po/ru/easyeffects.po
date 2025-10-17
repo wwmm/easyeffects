@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-17 01:36+0000\n"
-"PO-Revision-Date: 2025-10-10 15:07+0000\n"
+"PO-Revision-Date: 2025-10-18 02:38+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -74,7 +74,7 @@ msgstr "Включить отладочные сообщения."
 
 #: src/command_line_parser.cpp:111
 msgid "Must specify preset type: input/output."
-msgstr ""
+msgstr "Необходимо указать тип предустановки: вход/выход."
 
 #: src/command_line_parser.cpp:149 src/contents/ui/main.qml:311
 msgid "Output Presets"
@@ -316,9 +316,8 @@ msgid "Delete this App"
 msgstr "Удалить это приложение"
 
 #: src/contents/ui/BlocklistSheet.qml:177
-#, fuzzy
 msgid "Show Excluded Applications in the Streams Section"
-msgstr "Показать исключённые приложения"
+msgstr "Показать исключённые приложения в разделе потоков"
 
 #: src/contents/ui/Compressor.qml:58 src/tags_plugin_name.cpp:28
 msgid "Compressor"
@@ -371,9 +370,8 @@ msgid "Knee"
 msgstr "Колено"
 
 #: src/contents/ui/Compressor.qml:165 src/contents/ui/Expander.qml:125
-#, fuzzy
 msgid "Threshold and Time"
-msgstr "Порог"
+msgstr "Пороги и время"
 
 #: src/contents/ui/Compressor.qml:182 src/contents/ui/Expander.qml:142
 #: src/contents/ui/Gate.qml:79 src/contents/ui/Gate.qml:799
@@ -455,9 +453,8 @@ msgstr "Фильтр НЧ"
 #: src/contents/ui/Compressor.qml:311 src/contents/ui/Expander.qml:271
 #: src/contents/ui/Gate.qml:295 src/contents/ui/MultibandCompressor.qml:426
 #: src/contents/ui/MultibandGate.qml:394
-#, fuzzy
 msgid "SMA"
-msgstr "ФСМ (SPM)"
+msgstr "ПСС (SPM)"
 
 # #, fuzzy
 #: src/contents/ui/Compressor.qml:320 src/contents/ui/Compressor.qml:334
@@ -601,18 +598,16 @@ msgstr "36 дБ/окт"
 #: src/contents/ui/Gate.qml:487 src/contents/ui/MultibandCompressor.qml:612
 #: src/contents/ui/MultibandGate.qml:580 src/contents/ui/Reverb.qml:186
 #: src/contents/ui/StereoTools.qml:392
-#, fuzzy
 msgid "Dry"
-msgstr "Попробовать"
+msgstr "Оригинальный"
 
 #: src/contents/ui/Compressor.qml:526 src/contents/ui/Delay.qml:185
 #: src/contents/ui/Delay.qml:343 src/contents/ui/Expander.qml:486
 #: src/contents/ui/Gate.qml:510 src/contents/ui/MultibandCompressor.qml:630
 #: src/contents/ui/MultibandGate.qml:598 src/contents/ui/Reverb.qml:204
 #: src/contents/ui/StereoTools.qml:410
-#, fuzzy
 msgid "Wet"
-msgstr "Вес в расчете громкости"
+msgstr "Обработанный"
 
 #: src/contents/ui/Compressor.qml:550 src/contents/ui/Deesser.qml:123
 #: src/contents/ui/Expander.qml:510 src/contents/ui/Gate.qml:534
@@ -678,12 +673,11 @@ msgstr "Разделение стерео"
 
 #: src/contents/ui/Convolver.qml:108
 msgid "First"
-msgstr ""
+msgstr "Первый"
 
 #: src/contents/ui/Convolver.qml:120
-#, fuzzy
 msgid "Second"
-msgstr "Второе ядро"
+msgstr "Второй"
 
 #: src/contents/ui/Convolver.qml:152
 msgid "Combine"
@@ -694,9 +688,8 @@ msgid "Spectrum"
 msgstr "Спектр"
 
 #: src/contents/ui/Convolver.qml:296
-#, fuzzy
 msgid "Convolver Impulse Is Not Set"
-msgstr "Объединить импульсные характеристики"
+msgstr "Импульс конвольвера не установлен"
 
 #: src/contents/ui/Convolver.qml:333
 msgid "Rate"
@@ -721,14 +714,12 @@ msgid "Autogain"
 msgstr "Авторегулятор"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:48
-#, fuzzy
 msgid "Impluse File Imported."
-msgstr "Файл импульса не импортирован"
+msgstr "Файл импульса импортирован."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:52
-#, fuzzy
 msgid "Failed to Import the Impulse File."
-msgstr "Не удалось загрузить файл импульса"
+msgstr "Не удалось импортировать файл импульса."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:63
 #: src/contents/ui/MenuAddPlugins.qml:145
@@ -738,23 +729,20 @@ msgid "Search"
 msgstr "Поиск"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:96
-#, fuzzy
 msgid "Loaded Impulse: %1"
-msgstr "Загрузить импульс"
+msgstr "Загруженный импульс: %1"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:102
-#, fuzzy
 msgid "Remove Impulse Response"
-msgstr "Импульсная реакция"
+msgstr "Убрать реакцию импульса"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:103
 msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr ""
+msgstr "Уверены, что хотите убрать эту реакцию импульса из списка?"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:107
-#, fuzzy
 msgid "Removed Impulse: %1"
-msgstr "Удалить Импульс"
+msgstr "Убранный импульс: %1"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:110
 #, fuzzy
