@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-17 01:36+0000\n"
-"PO-Revision-Date: 2025-10-16 12:07+0000\n"
+"PO-Revision-Date: 2025-10-18 02:38+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -956,14 +956,12 @@ msgid "Echo Canceller"
 msgstr "Annulateur d’Écho"
 
 #: src/contents/ui/EchoCanceller.qml:65
-#, fuzzy
 msgid "Mobile Mode"
-msgstr "Mode Filtre"
+msgstr "Mode Mobile"
 
 #: src/contents/ui/EchoCanceller.qml:74
-#, fuzzy
 msgid "Enforce High-pass"
-msgstr "Passe-haut"
+msgstr "Appliquer le Filtre Passe-haut"
 
 #: src/contents/ui/EchoCanceller.qml:88 src/contents/ui/Speex.qml:87
 msgid "Noise Suppression"
@@ -974,28 +972,24 @@ msgid "Low"
 msgstr "Faible"
 
 #: src/contents/ui/EchoCanceller.qml:109
-#, fuzzy
 msgid "Moderate"
-msgstr "Moderne"
+msgstr "Modéré"
 
 #: src/contents/ui/EchoCanceller.qml:109 src/contents/ui/Loudness.qml:106
 msgid "High"
 msgstr "Élevé"
 
 #: src/contents/ui/EchoCanceller.qml:109
-#, fuzzy
 msgid "Very High"
-msgstr "Passe-haut"
+msgstr "Très Élevé"
 
 #: src/contents/ui/EchoCanceller.qml:121
-#, fuzzy
 msgid "High-pass Filter"
-msgstr "Mode du Filtre Passe-Haut"
+msgstr "Filtre Passe-haut"
 
 #: src/contents/ui/EchoCanceller.qml:138
-#, fuzzy
 msgid "Full Band"
-msgstr "Sous-bande"
+msgstr "Bande Complète"
 
 #: src/contents/ui/EchoCanceller.qml:174 src/contents/ui/Speex.qml:65
 msgid "Automatic Gain Control"
