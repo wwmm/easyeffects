@@ -168,7 +168,8 @@ auto StreamInputEffects::apps_want_to_play() -> bool {
 void StreamInputEffects::on_link_changed(const pw::LinkInfo link_info) {
   // We are not interested in the other link states
 
-  if (link_info.state != PW_LINK_STATE_ACTIVE) {
+  if (link_info.state != PW_LINK_STATE_ACTIVE && link_info.state != PW_LINK_STATE_UNLINKED &&
+      link_info.state != PW_LINK_STATE_PAUSED) {
     return;
   }
 
