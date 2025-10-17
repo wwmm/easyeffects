@@ -128,8 +128,8 @@ jobs:
         path: ${{ steps.makepkg.outputs.pkgfile0 }}
         if-no-files-found: error
 
-  fedora-linux:
-    name: Fedora Linux
+  opensuse-tumbleweed:
+    name: openSUSE Tumbleweed
     runs-on: ubuntu-24.04
     strategy:
       # test with latest versions of gcc and clang in their default configurations with libstdc++
@@ -137,31 +137,40 @@ jobs:
         compiler: [gcc, clang]
       fail-fast: false
     container:
-      image: fedora:latest
+      image: opensuse/tumbleweed
     steps:
     - name: Checkout repository
       uses: actions/checkout@v5.0.0
 
     - name: Install deps
       run: |
-        dnf update -y
+        # needed for webrtc-audio-processing, seems reasonably official
+        zypper addrepo https://download.opensuse.org/repositories/multimedia:libs/openSUSE_Tumbleweed/multimedia:libs.repo
+
+        # auto import keys needed due to custom repository
+        zypper --gpg-auto-import-keys refresh
+        zypper update -y
 
         # install general build deps
-        dnf install -y gcc gcc-c++ clang cmake extra-cmake-modules ninja bash
+        zypper install -y gcc gcc-c++ clang libomp-devel cmake extra-cmake-modules ninja bash
 
         # inspired by https://src.fedoraproject.org/rpms/easyeffects/raw/rawhide/f/easyeffects.spec
+        # and https://build.opensuse.org/projects/openSUSE:Factory/packages/easyeffects/files/easyeffects.spec
         depends="
         lv2
-        libappstream-glib
-        qt6-qtbase-devel
-        qt6-qtgraphs-devel
+        appstream-glib
+        qt6-core-devel
+        qt6-graphs-devel
+        qt6-quickshapes-devel
+        qt6-quickcontrols2-devel
+        kf6-qqc2-desktop-style-devel
         kf6-kiconthemes-devel
         kf6-kirigami-devel
         kf6-ki18n-devel
         kf6-kconfigwidgets-devel
         kf6-kconfig-devel
         kf6-kcoreaddons-devel
-        kf6-kirigami-addons-devel
+        kirigami-addons6-devel
         kf6-qqc2-desktop-style
         desktop-file-utils
         itstool
@@ -170,12 +179,11 @@ jobs:
         libbs2b-devel
         libebur128-devel
         pipewire-devel
-        lilv-devel
+        liblilv-0-devel
         libsamplerate-devel
         libsndfile-devel
         zita-convolver-devel 
         rnnoise-devel
-        rubberband-devel
         speexdsp-devel
         nlohmann_json-devel
         tbb-devel
@@ -184,10 +192,11 @@ jobs:
         soundtouch-devel
         ladspa-devel
         libportal-qt6-devel
+        libwebrtc-audio-processing-devel
         "
 
         # install easyeffects deps
-        dnf install -y $depends
+        zypper install -y $depends
 
     - name: Build with gcc
       if: matrix.compiler == 'gcc'
