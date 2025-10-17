@@ -37,18 +37,30 @@ void EchoCancellerPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["output-gain"] = settings->outputGain();
 
-  json[section][instance_name]["filter-length"] = settings->filterLength();
+  json[section][instance_name]["echo-canceller"]["enable"] = settings->enableEchoCanceller();
+  json[section][instance_name]["echo-canceller"]["mobile-mode"] = settings->echoCancellerMobileMode();
+  json[section][instance_name]["echo-canceller"]["enforce-high-pass"] = settings->echoCancellerEnforceHighPass();
 
-  json[section][instance_name]["residual-echo-suppression"] = settings->residualEchoSuppression();
+  json[section][instance_name]["noise-suppression"]["enable"] = settings->enableNoiseSuppression();
+  json[section][instance_name]["noise-suppression"]["level"] =
+      settings->defaultNoiseSuppressionLevelLabelsValue()[settings->noiseSuppressionLevel()].toStdString();
 
-  json[section][instance_name]["near-end-suppression"] = settings->nearEndSuppression();
+  json[section][instance_name]["high-pass"]["enable"] = settings->enableHighPassFilter();
+  json[section][instance_name]["high-pass"]["full-band"] = settings->highPassFilterFullBand();
 }
 
 void EchoCancellerPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("bypass", Bypass);
   UPDATE_PROPERTY("input-gain", InputGain);
   UPDATE_PROPERTY("output-gain", OutputGain);
-  UPDATE_PROPERTY("filter-length", FilterLength);
-  UPDATE_PROPERTY("residual-echo-suppression", ResidualEchoSuppression);
-  UPDATE_PROPERTY("near-end-suppression", NearEndSuppression);
+
+  UPDATE_PROPERTY_INSIDE_SUBSECTION("echo-canceller", "enable", EnableEchoCanceller);
+  UPDATE_PROPERTY_INSIDE_SUBSECTION("echo-canceller", "mobile-mode", EchoCancellerMobileMode);
+  UPDATE_PROPERTY_INSIDE_SUBSECTION("echo-canceller", "enforce-high-pass", EchoCancellerEnforceHighPass);
+
+  UPDATE_PROPERTY_INSIDE_SUBSECTION("noise-suppression", "enable", EnableNoiseSuppression);
+  UPDATE_ENUM_LIKE_PROPERTY_INSIDE_SUBSECTION("noise-suppression", "level", NoiseSuppressionLevel);
+
+  UPDATE_PROPERTY_INSIDE_SUBSECTION("high-pass", "enable", EnableHighPassFilter);
+  UPDATE_PROPERTY_INSIDE_SUBSECTION("high-pass", "full-band", HighPassFilterFullBand);
 }

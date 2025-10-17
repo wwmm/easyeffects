@@ -53,6 +53,7 @@ class Package : public QObject {
   CREATE_PROPERTY(QString, rnnoise, QStringLiteral("RNNoise"));
   CREATE_PROPERTY(QString, soundTouch, QStringLiteral("SoundTouch"));
   CREATE_PROPERTY(QString, speex, QStringLiteral("SpeexDSP"));
+  CREATE_PROPERTY(QString, webrtc, QStringLiteral("WebRTC"));
   CREATE_PROPERTY(QString, zam, QStringLiteral("ZamAudio"));
   CREATE_PROPERTY(QString, zita, QStringLiteral("Zita"));
 };

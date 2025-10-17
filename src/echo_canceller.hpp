@@ -24,7 +24,6 @@
 #include <qtypes.h>
 #include <webrtc-audio-processing-2/api/audio/audio_processing.h>
 #include <climits>
-#include <cstddef>
 #include <span>
 #include <string>
 #include <vector>
@@ -77,6 +76,8 @@ class EchoCanceller : public PluginBase {
   std::vector<float> buf_near_L, buf_near_R;
   std::vector<float> buf_far_L, buf_far_R;
   std::vector<float> buf_out_L, buf_out_R;
+
+  webrtc::AudioProcessing::Config ap_cfg;
 
   rtc::scoped_refptr<webrtc::AudioProcessing> ap_builder;
 

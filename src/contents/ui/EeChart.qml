@@ -255,7 +255,7 @@ Item {
 
                     Controls.Label {
                         required property int index
-                        readonly property real value: axisRepeater.tickValues[index]
+                        readonly property real value: index < axisRepeater.tickValues.length ? axisRepeater.tickValues[index] : 0
 
                         width: widgetRoot.width / widgetRoot.targetTicks
                         padding: 0

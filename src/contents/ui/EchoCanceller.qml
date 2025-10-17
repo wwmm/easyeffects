@@ -3,6 +3,7 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
     id: echoCancellerPage
@@ -37,61 +38,108 @@ Kirigami.ScrollablePage {
             id: cardLayout
 
             Layout.fillWidth: true
+            maximumColumns: 3
+            uniformCellWidths: true
 
             Kirigami.Card {
                 id: cardControls
 
                 header: Kirigami.Heading {
-                    text: i18n("Controls") // qmllint disable
+                    text: i18n("Echo Canceller") // qmllint disable
                     level: 2
                 }
 
                 contentItem: ColumnLayout {
-                    EeSpinBox {
-                        id: filterLength
+                    anchors.fill: parent
 
-                        label: i18n("Filter Length") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: echoCancellerPage.pluginDB.getMinValue("filterLength")
-                        to: echoCancellerPage.pluginDB.getMaxValue("filterLength")
-                        value: echoCancellerPage.pluginDB.filterLength
-                        decimals: 0
-                        stepSize: 1
-                        unit: "ms"
-                        onValueModified: v => {
-                            echoCancellerPage.pluginDB.filterLength = v;
+                    EeSwitch {
+                        label: i18n("Enable") // qmllint disable
+                        isChecked: echoCancellerPage.pluginDB.enableEchoCanceller
+                        onCheckedChanged: {
+                            if (isChecked !== echoCancellerPage.pluginDB.enableEchoCanceller)
+                                echoCancellerPage.pluginDB.enableEchoCanceller = isChecked;
                         }
                     }
 
-                    EeSpinBox {
-                        id: residualEchoSuppression
-
-                        label: i18n("Residual Echo Suppression") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: echoCancellerPage.pluginDB.getMinValue("residualEchoSuppression")
-                        to: echoCancellerPage.pluginDB.getMaxValue("residualEchoSuppression")
-                        value: echoCancellerPage.pluginDB.residualEchoSuppression
-                        decimals: 0
-                        stepSize: 1
-                        unit: "dB"
-                        onValueModified: v => {
-                            echoCancellerPage.pluginDB.residualEchoSuppression = v;
+                    EeSwitch {
+                        label: i18n("Mobile Mode") // qmllint disable
+                        isChecked: echoCancellerPage.pluginDB.echoCancellerMobileMode
+                        onCheckedChanged: {
+                            if (isChecked !== echoCancellerPage.pluginDB.echoCancellerMobileMode)
+                                echoCancellerPage.pluginDB.echoCancellerMobileMode = isChecked;
                         }
                     }
 
-                    EeSpinBox {
-                        id: nearEndSuppression
+                    EeSwitch {
+                        label: i18n("Enforce High-pass") // qmllint disable
+                        isChecked: echoCancellerPage.pluginDB.echoCancellerEnforceHighPass
+                        onCheckedChanged: {
+                            if (isChecked !== echoCancellerPage.pluginDB.echoCancellerEnforceHighPass)
+                                echoCancellerPage.pluginDB.echoCancellerEnforceHighPass = isChecked;
+                        }
+                    }
+                }
+            }
 
-                        label: i18n("Near End Suppression") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: echoCancellerPage.pluginDB.getMinValue("nearEndSuppression")
-                        to: echoCancellerPage.pluginDB.getMaxValue("nearEndSuppression")
-                        value: echoCancellerPage.pluginDB.nearEndSuppression
-                        decimals: 0
-                        stepSize: 1
-                        unit: "dB"
-                        onValueModified: v => {
-                            echoCancellerPage.pluginDB.nearEndSuppression = v;
+            Kirigami.Card {
+                id: cardNoiseSuppression
+
+                header: Kirigami.Heading {
+                    text: i18n("Noise Suppression") // qmllint disable
+                    level: 2
+                }
+
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
+                    EeSwitch {
+                        label: i18n("Enable") // qmllint disable
+                        isChecked: echoCancellerPage.pluginDB.enableNoiseSuppression
+                        onCheckedChanged: {
+                            if (isChecked !== echoCancellerPage.pluginDB.enableNoiseSuppression)
+                                echoCancellerPage.pluginDB.enableNoiseSuppression = isChecked;
+                        }
+                    }
+
+                    FormCard.FormComboBoxDelegate {
+                        text: i18n("Level") // qmllint disable
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: echoCancellerPage.pluginDB.noiseSuppressionLevel
+                        editable: false
+                        model: [i18n("Low"), i18n("Moderate"), i18n("High"), i18n("Very High")]
+                        onActivated: idx => {
+                            echoCancellerPage.pluginDB.noiseSuppressionLevel = idx;
+                        }
+                    }
+                }
+            }
+
+            Kirigami.Card {
+                id: cardHighPass
+
+                header: Kirigami.Heading {
+                    text: i18n("High-pass Filter") // qmllint disable
+                    level: 2
+                }
+
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
+                    EeSwitch {
+                        label: i18n("Enable") // qmllint disable
+                        isChecked: echoCancellerPage.pluginDB.enableHighPassFilter
+                        onCheckedChanged: {
+                            if (isChecked !== echoCancellerPage.pluginDB.enableHighPassFilter)
+                                echoCancellerPage.pluginDB.enableHighPassFilter = isChecked;
+                        }
+                    }
+
+                    EeSwitch {
+                        label: i18n("Full Band") // qmllint disable
+                        isChecked: echoCancellerPage.pluginDB.highPassFilterFullBand
+                        onCheckedChanged: {
+                            if (isChecked !== echoCancellerPage.pluginDB.highPassFilterFullBand)
+                                echoCancellerPage.pluginDB.highPassFilterFullBand = isChecked;
                         }
                     }
                 }
@@ -107,7 +155,7 @@ Kirigami.ScrollablePage {
 
     footer: RowLayout {
         Controls.Label {
-            text: i18n("Using %1", `<b>${TagsPluginName.Package.speex}</b>`) // qmllint disable
+            text: i18n("Using %1", `<b>${TagsPluginName.Package.webrtc}</b>`) // qmllint disable
             textFormat: Text.RichText
             horizontalAlignment: Qt.AlignLeft
             verticalAlignment: Qt.AlignVCenter
@@ -122,6 +170,16 @@ Kirigami.ScrollablePage {
             position: Controls.ToolBar.Footer
             flat: true
             actions: [
+                Kirigami.Action {
+                    text: i18n("Automatic Gain Control") // qmllint disable
+                    icon.name: "auto-scale-y"
+                    checkable: true
+                    checked: echoCancellerPage.pluginDB.enableAGC
+                    onTriggered: {
+                        if (echoCancellerPage.pluginDB.enableAGC != checked)
+                            echoCancellerPage.pluginDB.enableAGC = checked;
+                    }
+                },
                 Kirigami.Action {
                     text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"

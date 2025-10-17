@@ -41,7 +41,7 @@ EchoCanceller::EchoCanceller(const std::string& tag,
                              QString instance_id)
     : PluginBase(tag,
                  tags::plugin_name::BaseName::echoCanceller,
-                 tags::plugin_package::Package::speex,
+                 tags::plugin_package::Package::webrtc,
                  instance_id,
                  pipe_manager,
                  pipe_type,
@@ -51,11 +51,126 @@ EchoCanceller::EchoCanceller(const std::string& tag,
           tags::plugin_name::BaseName::echoCanceller + "#" + instance_id)) {
   init_common_controls<db::EchoCanceller>(settings);
 
-  connect(settings, &db::EchoCanceller::filterLengthChanged, [&]() { std::scoped_lock<std::mutex> lock(data_mutex); });
+  ap_cfg.pipeline.multi_channel_render = true;
+  ap_cfg.pipeline.multi_channel_capture = true;
 
-  connect(settings, &db::EchoCanceller::filterLengthChanged, [&]() { std::scoped_lock<std::mutex> lock(data_mutex); });
+  ap_cfg.high_pass_filter.enabled = settings->enableHighPassFilter();
+  ap_cfg.high_pass_filter.apply_in_full_band = settings->highPassFilterFullBand();
 
-  connect(settings, &db::EchoCanceller::filterLengthChanged, [&]() { std::scoped_lock<std::mutex> lock(data_mutex); });
+  ap_cfg.echo_canceller.enabled = settings->enableEchoCanceller();
+  ap_cfg.echo_canceller.mobile_mode = settings->echoCancellerMobileMode();
+  ap_cfg.echo_canceller.enforce_high_pass_filtering = settings->echoCancellerEnforceHighPass();
+
+  ap_cfg.noise_suppression.enabled = settings->enableNoiseSuppression();
+  ap_cfg.noise_suppression.level =
+      static_cast<webrtc::AudioProcessing::Config::NoiseSuppression::Level>(settings->noiseSuppressionLevel());
+
+  ap_cfg.gain_controller1.enabled = settings->enableAGC();
+
+  // Echo Canceller
+
+  connect(settings, &db::EchoCanceller::enableEchoCancellerChanged, [&]() {
+    if (!ap_builder) {
+      return;
+    }
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    ap_cfg.echo_canceller.enabled = settings->enableEchoCanceller();
+
+    ap_builder->ApplyConfig(ap_cfg);
+  });
+
+  connect(settings, &db::EchoCanceller::echoCancellerMobileModeChanged, [&]() {
+    if (!ap_builder) {
+      return;
+    }
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    ap_cfg.echo_canceller.mobile_mode = settings->echoCancellerMobileMode();
+
+    ap_builder->ApplyConfig(ap_cfg);
+  });
+
+  connect(settings, &db::EchoCanceller::echoCancellerEnforceHighPassChanged, [&]() {
+    if (!ap_builder) {
+      return;
+    }
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    ap_cfg.echo_canceller.enforce_high_pass_filtering = settings->echoCancellerEnforceHighPass();
+
+    ap_builder->ApplyConfig(ap_cfg);
+  });
+
+  // Noise Suppression
+
+  connect(settings, &db::EchoCanceller::enableNoiseSuppressionChanged, [&]() {
+    if (!ap_builder) {
+      return;
+    }
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    ap_cfg.noise_suppression.enabled = settings->enableNoiseSuppression();
+
+    ap_builder->ApplyConfig(ap_cfg);
+  });
+
+  connect(settings, &db::EchoCanceller::noiseSuppressionLevelChanged, [&]() {
+    if (!ap_builder) {
+      return;
+    }
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    ap_cfg.noise_suppression.level =
+        static_cast<webrtc::AudioProcessing::Config::NoiseSuppression::Level>(settings->noiseSuppressionLevel());
+
+    ap_builder->ApplyConfig(ap_cfg);
+  });
+
+  // High-pass Filter
+
+  connect(settings, &db::EchoCanceller::enableHighPassFilterChanged, [&]() {
+    if (!ap_builder) {
+      return;
+    }
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    ap_cfg.high_pass_filter.enabled = settings->enableHighPassFilter();
+
+    ap_builder->ApplyConfig(ap_cfg);
+  });
+
+  connect(settings, &db::EchoCanceller::highPassFilterFullBandChanged, [&]() {
+    if (!ap_builder) {
+      return;
+    }
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    ap_cfg.high_pass_filter.apply_in_full_band = settings->highPassFilterFullBand();
+
+    ap_builder->ApplyConfig(ap_cfg);
+  });
+
+  // Automatic gain control
+
+  connect(settings, &db::EchoCanceller::enableAGCChanged, [&]() {
+    if (!ap_builder) {
+      return;
+    }
+
+    std::scoped_lock<std::mutex> lock(data_mutex);
+
+    ap_cfg.gain_controller1.enabled = settings->enableAGC();
+
+    ap_builder->ApplyConfig(ap_cfg);
+  });
 }
 
 EchoCanceller::~EchoCanceller() {
@@ -188,7 +303,7 @@ void EchoCanceller::init_webrtc() {
     return;
   }
 
-  blocksize = rate * 0.01;  // 10 ms
+  blocksize = rate * 0.01;  // webrtc needs blocks of 10 ms
 
   util::debug(std::format("webrtc blocksize: {}", blocksize));
 
@@ -204,22 +319,9 @@ void EchoCanceller::init_webrtc() {
   buf_out_L.clear();
   buf_out_R.clear();
 
-  webrtc::AudioProcessing::Config cfg;
-
-  cfg.echo_canceller.enabled = true;
-  cfg.echo_canceller.mobile_mode = false;
-
-  cfg.gain_controller1.enabled = true;
-  // cfg.gain_controller1.mode = webrtc::AudioProcessing::Config::GainController1::kAdaptiveAnalog;
-  cfg.gain_controller1.mode = webrtc::AudioProcessing::Config::GainController1::kAdaptiveDigital;
-
-  cfg.gain_controller2.enabled = true;
-
-  cfg.high_pass_filter.enabled = true;
-
   ap_builder = webrtc::AudioProcessingBuilder().Create();
 
-  ap_builder->ApplyConfig(cfg);
+  ap_builder->ApplyConfig(ap_cfg);
 
   stream_config = webrtc::StreamConfig(rate, 2);
 
