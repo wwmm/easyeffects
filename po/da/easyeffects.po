@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-15 22:49+0000\n"
+"POT-Creation-Date: 2025-10-17 01:36+0000\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Danish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -19,105 +19,82 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.13-dev\n"
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:43
 #, fuzzy
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Afslut EasyEffects. Nyttigt når man kører i servicetilstand."
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:44
 #, fuzzy
 msgid "Reset Easy Effects."
 msgstr "Nustli EasyEffects."
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:45
 msgid "Hide the Window."
 msgstr "Skjul Vinduet."
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:46
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Global Omgåelse. 1 for at aktivere, 2 for at deaktivere og 3 for at få status"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:47
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Indlæs en forindstilling. Eksempelvis: easyeffects -l music"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:47
 #, fuzzy
 msgid "preset-name"
 msgstr "Ny Indgangsforindstillingsnavn"
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:48
 msgid "Show available presets."
 msgstr "Vis tilgængelige forindstillinger."
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:49
 #, fuzzy
 msgid "Get the active input/output preset."
 msgstr "Vis tilgængelige forindstillinger."
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:49
 msgid "preset-type"
 msgstr ""
 
-#: src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:50
 #, fuzzy
 msgid "Get the active input and output presets."
 msgstr "Vis tilgængelige forindstillinger."
 
-#: src/command_line_parser.cpp:53
-msgid ""
-"Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
-msgstr ""
-
-#: src/command_line_parser.cpp:54
-msgid "property-string"
-msgstr ""
-
-#: src/command_line_parser.cpp:55
+#: src/command_line_parser.cpp:51
 msgid "Deprecated. Use --service-mode instead."
 msgstr ""
 
-#: src/command_line_parser.cpp:56
+#: src/command_line_parser.cpp:52
 msgid "Start the application with service mode turned on."
 msgstr ""
 
-#: src/command_line_parser.cpp:57
+#: src/command_line_parser.cpp:53
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:115
+#: src/command_line_parser.cpp:111
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:311
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:311
 msgid "Output Presets"
 msgstr "Udgangsforindstillinger"
 
-#: src/command_line_parser.cpp:161 src/contents/ui/main.qml:301
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:301
 msgid "Input Presets"
 msgstr "Indgangsforindstillinger"
 
-#: src/command_line_parser.cpp:201
-msgid ""
-"Invalid property format. Expected: "
-"pipeline:plugin_name:instance_id:property:value"
-msgstr ""
-
-#: src/command_line_parser.cpp:213
-msgid "Invalid pipeline type. Must be 'input' or 'output'"
-msgstr ""
-
-#: src/command_line_parser.cpp:225
-msgid "Invalid instance ID. Must be a non-negative integer"
-msgstr ""
-
 #: src/contents/ui/Autogain.qml:57 src/contents/ui/BassEnhancer.qml:94
 #: src/contents/ui/BassLoudness.qml:45 src/contents/ui/Crossfeed.qml:62
-#: src/contents/ui/DeepFilterNet.qml:77 src/contents/ui/EchoCanceller.qml:45
-#: src/contents/ui/Exciter.qml:94 src/contents/ui/Filter.qml:48
-#: src/contents/ui/Loudness.qml:47 src/contents/ui/Maximizer.qml:47
-#: src/contents/ui/Reverb.qml:49 src/contents/ui/Speex.qml:46
+#: src/contents/ui/DeepFilterNet.qml:77 src/contents/ui/Exciter.qml:94
+#: src/contents/ui/Filter.qml:48 src/contents/ui/Loudness.qml:47
+#: src/contents/ui/Maximizer.qml:47 src/contents/ui/Reverb.qml:49
+#: src/contents/ui/Speex.qml:46
 msgid "Controls"
 msgstr ""
 
@@ -197,7 +174,7 @@ msgstr "Udgangsforstærkning"
 #: src/contents/ui/Convolver.qml:415 src/contents/ui/Crossfeed.qml:140
 #: src/contents/ui/Crystalizer.qml:96 src/contents/ui/DeepFilterNet.qml:174
 #: src/contents/ui/Deesser.qml:316 src/contents/ui/Delay.qml:371
-#: src/contents/ui/EchoCanceller.qml:110 src/contents/ui/Equalizer.qml:304
+#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:304
 #: src/contents/ui/Exciter.qml:197 src/contents/ui/Expander.qml:765
 #: src/contents/ui/Filter.qml:205 src/contents/ui/Gate.qml:901
 #: src/contents/ui/LevelMeter.qml:238 src/contents/ui/Limiter.qml:621
@@ -286,7 +263,7 @@ msgstr "Lyt"
 #: src/contents/ui/Compressor.qml:856 src/contents/ui/Convolver.qml:441
 #: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Crystalizer.qml:122
 #: src/contents/ui/DeepFilterNet.qml:197 src/contents/ui/Deesser.qml:355
-#: src/contents/ui/Delay.qml:420 src/contents/ui/EchoCanceller.qml:126
+#: src/contents/ui/Delay.qml:420 src/contents/ui/EchoCanceller.qml:184
 #: src/contents/ui/Equalizer.qml:385 src/contents/ui/Exciter.qml:236
 #: src/contents/ui/Expander.qml:814 src/contents/ui/Filter.qml:234
 #: src/contents/ui/Gate.qml:950 src/contents/ui/LevelMeter.qml:261
@@ -929,7 +906,7 @@ msgstr "F2 Niveau"
 msgid "F2 Peak Q"
 msgstr "F2 Top Q"
 
-#: src/contents/ui/Deesser.qml:264
+#: src/contents/ui/Deesser.qml:264 src/contents/ui/EchoCanceller.qml:105
 #, fuzzy
 msgid "Level"
 msgstr "F2 Niveau"
@@ -1012,7 +989,9 @@ msgstr "Fjern denne modelfil"
 msgid "channels"
 msgstr "Kanaler"
 
-#: src/contents/ui/DelegateStreamsList.qml:91 src/contents/ui/Gate.qml:186
+#: src/contents/ui/DelegateStreamsList.qml:91
+#: src/contents/ui/EchoCanceller.qml:56 src/contents/ui/EchoCanceller.qml:96
+#: src/contents/ui/EchoCanceller.qml:129 src/contents/ui/Gate.qml:186
 #: src/contents/ui/RNNoise.qml:89
 #, fuzzy
 msgid "Enable"
@@ -1022,19 +1001,59 @@ msgstr "Aktiveret"
 msgid "Exclude"
 msgstr ""
 
-#: src/contents/ui/EchoCanceller.qml:53
-msgid "Filter Length"
-msgstr "Filterlængde"
-
-#: src/contents/ui/EchoCanceller.qml:69
+#: src/contents/ui/EchoCanceller.qml:48 src/tags_plugin_name.cpp:35
 #, fuzzy
-msgid "Residual Echo Suppression"
+msgid "Echo Canceller"
+msgstr "Annuller"
+
+#: src/contents/ui/EchoCanceller.qml:65
+#, fuzzy
+msgid "Mobile Mode"
+msgstr "Stereotilstand"
+
+#: src/contents/ui/EchoCanceller.qml:74
+#, fuzzy
+msgid "Enforce High-pass"
+msgstr "Højpas"
+
+#: src/contents/ui/EchoCanceller.qml:88 src/contents/ui/Speex.qml:87
+#, fuzzy
+msgid "Noise Suppression"
 msgstr "Reduktion"
 
-#: src/contents/ui/EchoCanceller.qml:85
+#: src/contents/ui/EchoCanceller.qml:109 src/contents/ui/Loudness.qml:106
 #, fuzzy
-msgid "Near End Suppression"
-msgstr "Reduktion"
+msgid "Low"
+msgstr "Lavskåret Filter"
+
+#: src/contents/ui/EchoCanceller.qml:109
+#, fuzzy
+msgid "Moderate"
+msgstr "Moderne"
+
+#: src/contents/ui/EchoCanceller.qml:109 src/contents/ui/Loudness.qml:106
+#, fuzzy
+msgid "High"
+msgstr "Højskåret Filter"
+
+#: src/contents/ui/EchoCanceller.qml:109
+#, fuzzy
+msgid "Very High"
+msgstr "Højskåret Filter"
+
+#: src/contents/ui/EchoCanceller.qml:121
+#, fuzzy
+msgid "High-pass Filter"
+msgstr "Højpasfiltertilstand"
+
+#: src/contents/ui/EchoCanceller.qml:138
+#, fuzzy
+msgid "Full Band"
+msgstr "Underbånd"
+
+#: src/contents/ui/EchoCanceller.qml:174 src/contents/ui/Speex.qml:65
+msgid "Automatic Gain Control"
+msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:21
 msgid "Audio levels control"
@@ -1586,18 +1605,8 @@ msgstr "Hurtigere"
 
 #: src/contents/ui/Loudness.qml:106
 #, fuzzy
-msgid "Low"
-msgstr "Lavskåret Filter"
-
-#: src/contents/ui/Loudness.qml:106
-#, fuzzy
 msgid "Normal"
 msgstr "Formater"
-
-#: src/contents/ui/Loudness.qml:106
-#, fuzzy
-msgid "High"
-msgstr "Højskåret Filter"
 
 #: src/contents/ui/Loudness.qml:106
 msgid "Best"
@@ -2539,19 +2548,10 @@ msgstr ""
 msgid "Denoise"
 msgstr ""
 
-#: src/contents/ui/Speex.qml:65
-msgid "Automatic Gain Control"
-msgstr ""
-
 #: src/contents/ui/Speex.qml:76
 #, fuzzy
 msgid "Dereverberation"
 msgstr "Serveroplysninger"
-
-#: src/contents/ui/Speex.qml:87
-#, fuzzy
-msgid "Noise Suppression"
-msgstr "Reduktion"
 
 #: src/contents/ui/Speex.qml:106
 msgid "Voice Activity Probability"
@@ -2783,11 +2783,6 @@ msgstr ""
 msgid "Deep Noise Remover"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:35
-#, fuzzy
-msgid "Echo Canceller"
-msgstr "Annuller"
-
 #: src/tags_plugin_name.cpp:36
 msgid "Equalizer"
 msgstr ""
@@ -2846,6 +2841,17 @@ msgstr "Equalizer, Kompressor og Andre Lydeffekter"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Lyd Effekter for PipeWire Applikationer"
+
+#~ msgid "Filter Length"
+#~ msgstr "Filterlængde"
+
+#, fuzzy
+#~ msgid "Residual Echo Suppression"
+#~ msgstr "Reduktion"
+
+#, fuzzy
+#~ msgid "Near End Suppression"
+#~ msgstr "Reduktion"
 
 #, fuzzy
 #~ msgid "Band "
@@ -2955,9 +2961,6 @@ msgstr "Lyd Effekter for PipeWire Applikationer"
 
 #~ msgid "Sidechain Filters"
 #~ msgstr "Sidekæde Filter"
-
-#~ msgid "High-Pass Filter Mode"
-#~ msgstr "Højpasfiltertilstand"
 
 #~ msgid "High-Pass Filter Frequency"
 #~ msgstr "Højpasfilterfrekvens"
@@ -3546,9 +3549,6 @@ msgstr "Lyd Effekter for PipeWire Applikationer"
 
 #~ msgid "Split Frequency 3"
 #~ msgstr "Opdel Frekvens 3"
-
-#~ msgid "Sub Band"
-#~ msgstr "Underbånd"
 
 #~ msgid "Band 1 Bypass"
 #~ msgstr "Bånd 1 Omgåelse"
