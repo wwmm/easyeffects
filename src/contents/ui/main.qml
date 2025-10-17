@@ -39,6 +39,26 @@ Kirigami.ApplicationWindow {
         }
     }
 
+    onVisibleChanged: {
+        if (appWindow.visible) {
+            DB.Manager.enableAutosave(true);
+        } else {
+            DB.Manager.saveAll();
+        }
+    }
+
+    onClosing: {
+        console.log("main window is closing");
+
+        DB.Manager.enableAutosave(false);
+
+        gc();
+    }
+
+    Component.onCompleted: {
+        openMappedPage(DB.Manager.main.visiblePage);
+    }
+
     function openMappedPage(index) {
         const info = pagesMap[index];
 
@@ -70,24 +90,10 @@ Kirigami.ApplicationWindow {
         DB.Manager.main.visiblePage = index;
     }
 
-    onVisibleChanged: {
-        if (appWindow.visible) {
-            DB.Manager.enableAutosave(true);
-        } else {
-            DB.Manager.saveAll();
-        }
-    }
-
-    onClosing: {
-        console.log("main window is closing");
-
-        DB.Manager.enableAutosave(false);
-
-        gc();
-    }
-
-    Component.onCompleted: {
-        openMappedPage(DB.Manager.main.visiblePage);
+    function showStatus(label, statusType) {
+        status.type = statusType;
+        status.text = label;
+        status.visible = true;
     }
 
     Binding {
@@ -107,6 +113,14 @@ Kirigami.ApplicationWindow {
 
         function onVisiblePageChanged() {
             appWindow.openMappedPage(DB.Manager.main.visiblePage);
+        }
+    }
+
+    Connections {
+        target: Presets.Manager
+
+        function onPresetLoadError(title, description) {
+            appWindow.showStatus(`${title} 🢥 ${description}`, Kirigami.MessageType.Error);
         }
     }
 
@@ -509,5 +523,14 @@ Kirigami.ApplicationWindow {
                 ]
             }
         }
+    }
+
+    footer: Kirigami.InlineMessage {
+        id: status
+
+        Layout.fillWidth: true
+        Layout.maximumWidth: parent.width
+        visible: false
+        showCloseButton: true
     }
 }

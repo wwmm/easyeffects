@@ -22,16 +22,6 @@ ColumnLayout {
     readonly property var validFileNameRegex: /^[^\\/]{1,100}$/ //strings without `/` or `\` (max 100 chars)
     readonly property var removeExtRegex: /(?:\.json)+$/
 
-    function showPresetsMenuStatus(label) {
-        status.text = label;
-        status.visible = true;
-    }
-    function showPresetsMenuError(label) {
-        status.text = label;
-        status.visible = true;
-        status.type = Kirigami.MessageType.Error;
-    }
-
     FileDialog {
         id: fileDialogImport
 
@@ -40,10 +30,10 @@ ColumnLayout {
         nameFilters: ["JSON files (*.json)"]
         onAccepted: {
             if (Presets.Manager.importPresets(columnLayout.pipeline, fileDialogImport.selectedFiles) === true)
-                columnLayout.showPresetsMenuStatus(i18n("Preset File Imported.")// qmllint disable
+                appWindow.showStatus(i18n("Preset File Imported."), Kirigami.MessageType.Positive // qmllint disable
                 );
             else
-                columnLayout.showPresetsMenuError(i18n("Failed to Import the Preset.")// qmllint disable
+                appWindow.showStatus(i18n("Failed to Import the Preset."), Kirigami.MessageType.Error// qmllint disable
                 );
         }
     }
@@ -55,10 +45,10 @@ ColumnLayout {
         acceptLabel: i18n("Export Presets") // qmllint disable
         onAccepted: {
             if (Presets.Manager.exportPresets(columnLayout.pipeline, fileDialogExport.selectedFolder) === true)
-                columnLayout.showPresetsMenuStatus(i18n("Preset Files Exported.")// qmllint disable
+                appWindow.showStatus(i18n("Preset Files Exported."), Kirigami.MessageType.Positive// qmllint disable
                 );
             else
-                columnLayout.showPresetsMenuError(i18n("Failed to Export the Presets.")// qmllint disable
+                appWindow.showStatus(i18n("Failed to Export the Presets."), Kirigami.MessageType.Error// qmllint disable
                 );
         }
     }
@@ -104,11 +94,13 @@ ColumnLayout {
                         if (!Common.isEmpty(newName.trim())) {
                             if (Presets.Manager.add(columnLayout.pipeline, newName) === true) {
                                 newPresetName.accepted();
-                                columnLayout.showPresetsMenuStatus(i18n("New Preset Created") + `: <strong>${newName}</strong>`// qmllint disable
+
+                                appWindow.showStatus(i18n("New Preset Created") + `: <strong>${newName}</strong>`, Kirigami.MessageType.Positive // qmllint disable
                                 );
+
                                 newPresetName.text = "";
                             } else {
-                                columnLayout.showPresetsMenuError(i18n("Failed to Create Preset") + `: <strong>${newName}</strong>`// qmllint disable
+                                appWindow.showStatus(i18n("Failed to Create Preset") + `: <strong>${newName}</strong>`, Kirigami.MessageType.Error // qmllint disable
                                 );
                             }
                         }
@@ -187,9 +179,7 @@ ColumnLayout {
                 hoverEnabled: true
                 width: listView.width
                 onClicked: {
-                    if (Presets.Manager.loadLocalPresetFile(columnLayout.pipeline, name) === false)
-                        columnLayout.showPresetsMenuError(i18n("The Preset %1 Failed to Load", `<strong>${name}</strong>`)// qmllint disable
-                        );
+                    Presets.Manager.loadLocalPresetFile(columnLayout.pipeline, name);
                 }
 
                 Kirigami.PromptDialog {
@@ -200,10 +190,10 @@ ColumnLayout {
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: {
                         if (Presets.Manager.remove(columnLayout.pipeline, listItemDelegate.name) === true)
-                            columnLayout.showPresetsMenuStatus(i18n("The Preset %1 Has Been Removed", `<strong>${name}</strong>`)// qmllint disable
+                            appWindow.showStatus(i18n("The Preset %1 Has Been Removed", `<strong>${name}</strong>`), Kirigami.MessageType.Positive // qmllint disable
                             );
                         else
-                            columnLayout.showPresetsMenuError(i18n("The Preset %1 Could Not Be Removed", `<strong>${name}</strong>`)// qmllint disable
+                            appWindow.showStatus(i18n("The Preset %1 Could Not Be Removed", `<strong>${name}</strong>`), Kirigami.MessageType.Error // qmllint disable
                             );
                     }
                 }
@@ -225,10 +215,10 @@ ColumnLayout {
                                 // trim to exclude names containing only multiple spaces
                                 if (!Common.isEmpty(newName.trim())) {
                                     if (Presets.Manager.renameLocalPresetFile(columnLayout.pipeline, listItemDelegate.name, newName) === true)
-                                        columnLayout.showPresetsMenuStatus(i18n("The Preset %1 Has Been Renamed", `<strong>${listItemDelegate.name}</strong>`)// qmllint disable
+                                        appWindow.showStatus(i18n("The Preset %1 Has Been Renamed", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive // qmllint disable
                                         );
                                     else
-                                        columnLayout.showPresetsMenuError(i18n("The Preset %1 Could Not Be Renamed", `<strong>${listItemDelegate.name}</strong>`)// qmllint disable
+                                        appWindow.showStatus(i18n("The Preset %1 Could Not Be Renamed", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error // qmllint disable
                                         );
                                 }
 
@@ -277,10 +267,10 @@ ColumnLayout {
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
                                     if (Presets.Manager.savePresetFile(columnLayout.pipeline, listItemDelegate.name) === true)
-                                        columnLayout.showPresetsMenuStatus(i18n("Settings Saved to: %1", `<strong>${listItemDelegate.name}</strong>`)// qmllint disable
+                                        appWindow.showStatus(i18n("Settings Saved to: %1", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive // qmllint disable
                                         );
                                     else
-                                        columnLayout.showPresetsMenuError(i18n("Failed to Save Settings to: %1", `<strong>${listItemDelegate.name}</strong>`)// qmllint disable
+                                        appWindow.showStatus(i18n("Failed to Save Settings to: %1", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error // qmllint disable
                                         );
                                 }
                             },
