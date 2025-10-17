@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-17 01:36+0000\n"
-"PO-Revision-Date: 2025-10-16 12:07+0000\n"
+"PO-Revision-Date: 2025-10-18 02:38+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -959,14 +959,12 @@ msgid "Echo Canceller"
 msgstr "Cealaitheoir Macalla"
 
 #: src/contents/ui/EchoCanceller.qml:65
-#, fuzzy
 msgid "Mobile Mode"
-msgstr "Mód Scagaire"
+msgstr "Mód Soghluaiste"
 
 #: src/contents/ui/EchoCanceller.qml:74
-#, fuzzy
 msgid "Enforce High-pass"
-msgstr "Ard-phas"
+msgstr "Forfheidhmigh Ard-Phas"
 
 #: src/contents/ui/EchoCanceller.qml:88 src/contents/ui/Speex.qml:87
 msgid "Noise Suppression"
@@ -977,28 +975,24 @@ msgid "Low"
 msgstr "Íseal"
 
 #: src/contents/ui/EchoCanceller.qml:109
-#, fuzzy
 msgid "Moderate"
-msgstr "Nua-aimseartha"
+msgstr "Measartha"
 
 #: src/contents/ui/EchoCanceller.qml:109 src/contents/ui/Loudness.qml:106
 msgid "High"
 msgstr "Ard"
 
 #: src/contents/ui/EchoCanceller.qml:109
-#, fuzzy
 msgid "Very High"
-msgstr "Ard"
+msgstr "An-Ard"
 
 #: src/contents/ui/EchoCanceller.qml:121
-#, fuzzy
 msgid "High-pass Filter"
-msgstr "Mód Scagaire Ard-Phas"
+msgstr "Scagaire Ard-Phas"
 
 #: src/contents/ui/EchoCanceller.qml:138
-#, fuzzy
 msgid "Full Band"
-msgstr "Banna"
+msgstr "Banna Iomlán"
 
 #: src/contents/ui/EchoCanceller.qml:174 src/contents/ui/Speex.qml:65
 msgid "Automatic Gain Control"
