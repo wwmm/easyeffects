@@ -91,7 +91,7 @@ jobs:
 
     - name: Write exceptions file
       run: |
-        echo '{"com.github.wwmm.easyeffects.Devel": ["appid-uses-code-hosting-domain"]}' > exceptions.json
+        echo '{"com.github.wwmm.easyeffects.Devel": ["appid-uses-code-hosting-domain", "toplevel-unnecessary-branch"]}' > exceptions.json
 
     - name: Verify flatpak builder lint
       uses: docker://ghcr.io/flathub/flatpak-builder-lint:latest
