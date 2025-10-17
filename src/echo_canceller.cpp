@@ -237,7 +237,9 @@ void EchoCanceller::process(std::span<float>& left_in,
   auto copy_bulk = [](auto& buffer, auto& channel_data) {
     std::copy_n(buffer.begin(), channel_data.size(), channel_data.begin());
 
-    buffer.erase(buffer.begin(), buffer.begin() + channel_data.size());
+    std::move(buffer.begin() + channel_data.size(), buffer.end(), buffer.begin());
+
+    buffer.resize(buffer.size() - channel_data.size());
   };
 
   while (buf_near_L.size() >= near_L.size()) {

@@ -68,8 +68,6 @@ class EchoCanceller : public PluginBase {
   uint latency_n_frames = 0U;
   uint blocksize;
 
-  const float inv_short_max = 1.0F / (SHRT_MAX + 1.0F);
-
   std::vector<float> near_L, near_R;
   std::vector<float> far_L, far_R;
 
