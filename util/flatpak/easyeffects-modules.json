@@ -357,6 +357,34 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "webrtc-audio-processing",
+            "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DWEBRTC_AP_BUILD_TESTS=OFF",
+                "-DWEBRTC_AP_USE_SYSTEM_EIGEN=ON",
+                "-DCMAKE_INSTALL_LIBDIR=lib"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing.git",
+                    "tag": "v2.1",
+                    "commit": "7cb89b9b33bfa60cb4d7c537dbbdb2aaf09c69b5",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$",
+                        "url": "https://gitlab.freedesktop.org/api/v4/projects/5164/repository/tags"
+                    }
+                }
+            ],
+            "cleanup": [
+                "/lib/cmake",
+                "/share/doc",
+                "/share/pkgconfig"
+            ]
         }
     ]
 }
