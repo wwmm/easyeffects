@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-17 01:36+0000\n"
-"PO-Revision-Date: 2025-10-16 12:07+0000\n"
+"PO-Revision-Date: 2025-10-18 02:38+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : "
+"(n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
 "X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:43
@@ -958,14 +958,12 @@ msgid "Echo Canceller"
 msgstr "Anulator de ecou"
 
 #: src/contents/ui/EchoCanceller.qml:65
-#, fuzzy
 msgid "Mobile Mode"
-msgstr "Modul de filtrare"
+msgstr "Modul de tel. mobil"
 
 #: src/contents/ui/EchoCanceller.qml:74
-#, fuzzy
 msgid "Enforce High-pass"
-msgstr "Trece-sus"
+msgstr "Aplică filtrul trece-sus"
 
 #: src/contents/ui/EchoCanceller.qml:88 src/contents/ui/Speex.qml:87
 msgid "Noise Suppression"
@@ -988,14 +986,12 @@ msgid "Very High"
 msgstr "Foarte Înalt"
 
 #: src/contents/ui/EchoCanceller.qml:121
-#, fuzzy
 msgid "High-pass Filter"
-msgstr "Modul de filtru trece-sus"
+msgstr "Filtru trece-sus"
 
 #: src/contents/ui/EchoCanceller.qml:138
-#, fuzzy
 msgid "Full Band"
-msgstr "Sub Band"
+msgstr "Banda completă"
 
 #: src/contents/ui/EchoCanceller.qml:174 src/contents/ui/Speex.qml:65
 msgid "Automatic Gain Control"
