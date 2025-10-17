@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-15 22:49+0000\n"
+"POT-Creation-Date: 2025-10-17 01:36+0000\n"
 "PO-Revision-Date: 2025-10-16 12:07+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -19,105 +19,78 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.14-dev\n"
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Quitter Easy Effects. Utile en cas de fonctionnement en mode serveur."
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:44
 msgid "Reset Easy Effects."
 msgstr "Réinitialiser Easy Effects."
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:45
 msgid "Hide the Window."
 msgstr "Masquer la Fenêtre."
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:46
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr ""
 "Contournement global. 1 pour activer, 2 pour désactiver et 3 pour obtenir le "
 "statut"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:47
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Chargez un préréglage. Exemple : easyeffects -l musique"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:47
 msgid "preset-name"
 msgstr "nom-du-préréglage"
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:48
 msgid "Show available presets."
 msgstr "Afficher les préréglages disponibles."
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:49
 msgid "Get the active input/output preset."
 msgstr "Obtenir le préréglage d'entrée/sortie actif."
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:49
 msgid "preset-type"
 msgstr "préréglage-type"
 
-#: src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:50
 msgid "Get the active input and output presets."
 msgstr "Obtenir les préréglages d'entrée et de sortie actifs."
 
-#: src/command_line_parser.cpp:53
-msgid ""
-"Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
-msgstr ""
-"Définir la propriété du greffon. Format : "
-"pipeline:nom_du_greffon:id_de_l'instance:propriété:valeur"
-
-#: src/command_line_parser.cpp:54
-msgid "property-string"
-msgstr "propriété-textuelle"
-
-#: src/command_line_parser.cpp:55
+#: src/command_line_parser.cpp:51
 msgid "Deprecated. Use --service-mode instead."
 msgstr "Obsolète. Utilisez plutôt --service-mode."
 
-#: src/command_line_parser.cpp:56
+#: src/command_line_parser.cpp:52
 msgid "Start the application with service mode turned on."
 msgstr "Lancer l'application avec le mode service activé."
 
-#: src/command_line_parser.cpp:57
+#: src/command_line_parser.cpp:53
 msgid "Enable debug messages."
 msgstr "Activer les messages de débogage."
 
-#: src/command_line_parser.cpp:115
+#: src/command_line_parser.cpp:111
 msgid "Must specify preset type: input/output."
 msgstr "Vous devez spécifier le type de préréglage : input/output."
 
-#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:311
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:311
 msgid "Output Presets"
 msgstr "Préréglages de Sortie"
 
-#: src/command_line_parser.cpp:161 src/contents/ui/main.qml:301
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:301
 msgid "Input Presets"
 msgstr "Préréglages d’Entrée"
 
-#: src/command_line_parser.cpp:201
-msgid ""
-"Invalid property format. Expected: "
-"pipeline:plugin_name:instance_id:property:value"
-msgstr ""
-"Format de propriété invalide. Attendu : "
-"pipeline:nom_du_greffon:id_de_l'instance:propriété:valeur"
-
-#: src/command_line_parser.cpp:213
-msgid "Invalid pipeline type. Must be 'input' or 'output'"
-msgstr "Type de pipeline invalide. Doit être 'input' ou 'output'"
-
-#: src/command_line_parser.cpp:225
-msgid "Invalid instance ID. Must be a non-negative integer"
-msgstr "ID d'instance invalide. Doit être un nombre entier non négatif"
-
 #: src/contents/ui/Autogain.qml:57 src/contents/ui/BassEnhancer.qml:94
 #: src/contents/ui/BassLoudness.qml:45 src/contents/ui/Crossfeed.qml:62
-#: src/contents/ui/DeepFilterNet.qml:77 src/contents/ui/EchoCanceller.qml:45
-#: src/contents/ui/Exciter.qml:94 src/contents/ui/Filter.qml:48
-#: src/contents/ui/Loudness.qml:47 src/contents/ui/Maximizer.qml:47
-#: src/contents/ui/Reverb.qml:49 src/contents/ui/Speex.qml:46
+#: src/contents/ui/DeepFilterNet.qml:77 src/contents/ui/Exciter.qml:94
+#: src/contents/ui/Filter.qml:48 src/contents/ui/Loudness.qml:47
+#: src/contents/ui/Maximizer.qml:47 src/contents/ui/Reverb.qml:49
+#: src/contents/ui/Speex.qml:46
 msgid "Controls"
 msgstr "Contrôles"
 
@@ -191,7 +164,7 @@ msgstr "Gain de Sortie"
 #: src/contents/ui/Convolver.qml:415 src/contents/ui/Crossfeed.qml:140
 #: src/contents/ui/Crystalizer.qml:96 src/contents/ui/DeepFilterNet.qml:174
 #: src/contents/ui/Deesser.qml:316 src/contents/ui/Delay.qml:371
-#: src/contents/ui/EchoCanceller.qml:110 src/contents/ui/Equalizer.qml:304
+#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:304
 #: src/contents/ui/Exciter.qml:197 src/contents/ui/Expander.qml:765
 #: src/contents/ui/Filter.qml:205 src/contents/ui/Gate.qml:901
 #: src/contents/ui/LevelMeter.qml:238 src/contents/ui/Limiter.qml:621
@@ -275,7 +248,7 @@ msgstr "Écouter"
 #: src/contents/ui/Compressor.qml:856 src/contents/ui/Convolver.qml:441
 #: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Crystalizer.qml:122
 #: src/contents/ui/DeepFilterNet.qml:197 src/contents/ui/Deesser.qml:355
-#: src/contents/ui/Delay.qml:420 src/contents/ui/EchoCanceller.qml:126
+#: src/contents/ui/Delay.qml:420 src/contents/ui/EchoCanceller.qml:184
 #: src/contents/ui/Equalizer.qml:385 src/contents/ui/Exciter.qml:236
 #: src/contents/ui/Expander.qml:814 src/contents/ui/Filter.qml:234
 #: src/contents/ui/Gate.qml:950 src/contents/ui/LevelMeter.qml:261
@@ -892,7 +865,7 @@ msgstr "Niveau F2"
 msgid "F2 Peak Q"
 msgstr "Crête Q F2"
 
-#: src/contents/ui/Deesser.qml:264
+#: src/contents/ui/Deesser.qml:264 src/contents/ui/EchoCanceller.qml:105
 msgid "Level"
 msgstr "Niveau"
 
@@ -967,7 +940,9 @@ msgstr "Supprimer cet effet"
 msgid "channels"
 msgstr "canaux"
 
-#: src/contents/ui/DelegateStreamsList.qml:91 src/contents/ui/Gate.qml:186
+#: src/contents/ui/DelegateStreamsList.qml:91
+#: src/contents/ui/EchoCanceller.qml:56 src/contents/ui/EchoCanceller.qml:96
+#: src/contents/ui/EchoCanceller.qml:129 src/contents/ui/Gate.qml:186
 #: src/contents/ui/RNNoise.qml:89
 msgid "Enable"
 msgstr "Activer"
@@ -976,17 +951,55 @@ msgstr "Activer"
 msgid "Exclude"
 msgstr "Exclure"
 
-#: src/contents/ui/EchoCanceller.qml:53
-msgid "Filter Length"
-msgstr "Longueur du Filtre"
+#: src/contents/ui/EchoCanceller.qml:48 src/tags_plugin_name.cpp:35
+msgid "Echo Canceller"
+msgstr "Annulateur d’Écho"
 
-#: src/contents/ui/EchoCanceller.qml:69
-msgid "Residual Echo Suppression"
-msgstr "Suppression de l'Écho Résiduel"
+#: src/contents/ui/EchoCanceller.qml:65
+#, fuzzy
+msgid "Mobile Mode"
+msgstr "Mode Filtre"
 
-#: src/contents/ui/EchoCanceller.qml:85
-msgid "Near End Suppression"
-msgstr "Suppression de l'Extrémité Proche"
+#: src/contents/ui/EchoCanceller.qml:74
+#, fuzzy
+msgid "Enforce High-pass"
+msgstr "Passe-haut"
+
+#: src/contents/ui/EchoCanceller.qml:88 src/contents/ui/Speex.qml:87
+msgid "Noise Suppression"
+msgstr "Suppression du Bruit"
+
+#: src/contents/ui/EchoCanceller.qml:109 src/contents/ui/Loudness.qml:106
+msgid "Low"
+msgstr "Faible"
+
+#: src/contents/ui/EchoCanceller.qml:109
+#, fuzzy
+msgid "Moderate"
+msgstr "Moderne"
+
+#: src/contents/ui/EchoCanceller.qml:109 src/contents/ui/Loudness.qml:106
+msgid "High"
+msgstr "Élevé"
+
+#: src/contents/ui/EchoCanceller.qml:109
+#, fuzzy
+msgid "Very High"
+msgstr "Passe-haut"
+
+#: src/contents/ui/EchoCanceller.qml:121
+#, fuzzy
+msgid "High-pass Filter"
+msgstr "Mode du Filtre Passe-Haut"
+
+#: src/contents/ui/EchoCanceller.qml:138
+#, fuzzy
+msgid "Full Band"
+msgstr "Sous-bande"
+
+#: src/contents/ui/EchoCanceller.qml:174 src/contents/ui/Speex.qml:65
+msgid "Automatic Gain Control"
+msgstr "Contrôle Automatique du Gain"
 
 #: src/contents/ui/EeInputOutputGain.qml:21
 msgid "Audio levels control"
@@ -1481,16 +1494,8 @@ msgid "Fastest"
 msgstr "Plus Rapide"
 
 #: src/contents/ui/Loudness.qml:106
-msgid "Low"
-msgstr "Faible"
-
-#: src/contents/ui/Loudness.qml:106
 msgid "Normal"
 msgstr "Normal"
-
-#: src/contents/ui/Loudness.qml:106
-msgid "High"
-msgstr "Élevé"
 
 #: src/contents/ui/Loudness.qml:106
 msgid "Best"
@@ -2372,17 +2377,9 @@ msgstr "Raccourcis"
 msgid "Denoise"
 msgstr "Débruiter"
 
-#: src/contents/ui/Speex.qml:65
-msgid "Automatic Gain Control"
-msgstr "Contrôle Automatique du Gain"
-
 #: src/contents/ui/Speex.qml:76
 msgid "Dereverberation"
 msgstr "Dé-réverbération"
-
-#: src/contents/ui/Speex.qml:87
-msgid "Noise Suppression"
-msgstr "Suppression du Bruit"
 
 #: src/contents/ui/Speex.qml:106
 msgid "Voice Activity Probability"
@@ -2601,10 +2598,6 @@ msgstr "Cristallisateur"
 msgid "Deep Noise Remover"
 msgstr "Enlèvement du Bruit Profond"
 
-#: src/tags_plugin_name.cpp:35
-msgid "Echo Canceller"
-msgstr "Annulateur d’Écho"
-
 #: src/tags_plugin_name.cpp:36
 msgid "Equalizer"
 msgstr "Égaliseur"
@@ -2656,6 +2649,38 @@ msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Effets Audio pour les Applications PipeWire"
+
+#~ msgid ""
+#~ "Set plugin property. Format: "
+#~ "pipeline:plugin_name:instance_id:property:value"
+#~ msgstr ""
+#~ "Définir la propriété du greffon. Format : "
+#~ "pipeline:nom_du_greffon:id_de_l'instance:propriété:valeur"
+
+#~ msgid "property-string"
+#~ msgstr "propriété-textuelle"
+
+#~ msgid ""
+#~ "Invalid property format. Expected: "
+#~ "pipeline:plugin_name:instance_id:property:value"
+#~ msgstr ""
+#~ "Format de propriété invalide. Attendu : "
+#~ "pipeline:nom_du_greffon:id_de_l'instance:propriété:valeur"
+
+#~ msgid "Invalid pipeline type. Must be 'input' or 'output'"
+#~ msgstr "Type de pipeline invalide. Doit être 'input' ou 'output'"
+
+#~ msgid "Invalid instance ID. Must be a non-negative integer"
+#~ msgstr "ID d'instance invalide. Doit être un nombre entier non négatif"
+
+#~ msgid "Filter Length"
+#~ msgstr "Longueur du Filtre"
+
+#~ msgid "Residual Echo Suppression"
+#~ msgstr "Suppression de l'Écho Résiduel"
+
+#~ msgid "Near End Suppression"
+#~ msgstr "Suppression de l'Extrémité Proche"
 
 #~ msgid "Band "
 #~ msgstr "Bande "
@@ -2776,9 +2801,6 @@ msgstr "Effets Audio pour les Applications PipeWire"
 
 #~ msgid "Sidechain Filters"
 #~ msgstr "Filtres Chaîne Latérale"
-
-#~ msgid "High-Pass Filter Mode"
-#~ msgstr "Mode du Filtre Passe-Haut"
 
 #~ msgid "High-Pass Filter Frequency"
 #~ msgstr "Fréquence du Filtre Passe-Haut"
@@ -3555,9 +3577,6 @@ msgstr "Effets Audio pour les Applications PipeWire"
 
 #~ msgid "Split Frequency 3"
 #~ msgstr "Diviser la fréquence 3"
-
-#~ msgid "Sub Band"
-#~ msgstr "Sous-bande"
 
 #~ msgid "Band 1 Bypass"
 #~ msgstr "Contournement bande 1"
@@ -4592,10 +4611,6 @@ msgstr "Effets Audio pour les Applications PipeWire"
 
 #~ msgid "Subtract Noise"
 #~ msgstr "Enlever le bruit"
-
-#, fuzzy
-#~ msgid "Very High"
-#~ msgstr "Passe-haut"
 
 #, fuzzy
 #~ msgid "Detection Likelihood"

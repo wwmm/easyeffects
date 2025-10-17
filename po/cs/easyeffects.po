@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-15 22:49+0000\n"
+"POT-Creation-Date: 2025-10-17 01:36+0000\n"
 "PO-Revision-Date: 2025-08-30 15:01+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -18,101 +18,78 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "X-Generator: Weblate 5.13.1-dev\n"
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr "Ukončit Easy Effects. Užitečné při spuštění v servisním režimu."
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:44
 msgid "Reset Easy Effects."
 msgstr "Obnovit EasyEffects."
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:45
 msgid "Hide the Window."
 msgstr "Skrýt Okno."
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:46
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "Globální propuštění. 1 pro zapnutí, 2 pro vypnutí, 3 pro získání stavu"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:47
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "Nahrát předvolbu. Příklad: easyeffects -l music"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:47
 msgid "preset-name"
 msgstr "název-předvolby"
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:48
 msgid "Show available presets."
 msgstr "Zobrazit dostupné předvolby."
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:49
 #, fuzzy
 msgid "Get the active input/output preset."
 msgstr "Zobrazit aktivní předvolby."
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:49
 msgid "preset-type"
 msgstr ""
 
-#: src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:50
 #, fuzzy
 msgid "Get the active input and output presets."
 msgstr "Zobrazit aktivní předvolby."
 
-#: src/command_line_parser.cpp:53
-msgid ""
-"Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
-msgstr ""
-
-#: src/command_line_parser.cpp:54
-msgid "property-string"
-msgstr ""
-
-#: src/command_line_parser.cpp:55
+#: src/command_line_parser.cpp:51
 msgid "Deprecated. Use --service-mode instead."
 msgstr ""
 
-#: src/command_line_parser.cpp:56
+#: src/command_line_parser.cpp:52
 msgid "Start the application with service mode turned on."
 msgstr ""
 
-#: src/command_line_parser.cpp:57
+#: src/command_line_parser.cpp:53
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:115
+#: src/command_line_parser.cpp:111
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:311
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:311
 msgid "Output Presets"
 msgstr "Výstupní předvolby"
 
-#: src/command_line_parser.cpp:161 src/contents/ui/main.qml:301
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:301
 msgid "Input Presets"
 msgstr "Vstupní předvolby"
 
-#: src/command_line_parser.cpp:201
-msgid ""
-"Invalid property format. Expected: "
-"pipeline:plugin_name:instance_id:property:value"
-msgstr ""
-
-#: src/command_line_parser.cpp:213
-msgid "Invalid pipeline type. Must be 'input' or 'output'"
-msgstr ""
-
-#: src/command_line_parser.cpp:225
-msgid "Invalid instance ID. Must be a non-negative integer"
-msgstr ""
-
 #: src/contents/ui/Autogain.qml:57 src/contents/ui/BassEnhancer.qml:94
 #: src/contents/ui/BassLoudness.qml:45 src/contents/ui/Crossfeed.qml:62
-#: src/contents/ui/DeepFilterNet.qml:77 src/contents/ui/EchoCanceller.qml:45
-#: src/contents/ui/Exciter.qml:94 src/contents/ui/Filter.qml:48
-#: src/contents/ui/Loudness.qml:47 src/contents/ui/Maximizer.qml:47
-#: src/contents/ui/Reverb.qml:49 src/contents/ui/Speex.qml:46
+#: src/contents/ui/DeepFilterNet.qml:77 src/contents/ui/Exciter.qml:94
+#: src/contents/ui/Filter.qml:48 src/contents/ui/Loudness.qml:47
+#: src/contents/ui/Maximizer.qml:47 src/contents/ui/Reverb.qml:49
+#: src/contents/ui/Speex.qml:46
 msgid "Controls"
 msgstr "Ovládání"
 
@@ -186,7 +163,7 @@ msgstr "Výstupní zesílení"
 #: src/contents/ui/Convolver.qml:415 src/contents/ui/Crossfeed.qml:140
 #: src/contents/ui/Crystalizer.qml:96 src/contents/ui/DeepFilterNet.qml:174
 #: src/contents/ui/Deesser.qml:316 src/contents/ui/Delay.qml:371
-#: src/contents/ui/EchoCanceller.qml:110 src/contents/ui/Equalizer.qml:304
+#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:304
 #: src/contents/ui/Exciter.qml:197 src/contents/ui/Expander.qml:765
 #: src/contents/ui/Filter.qml:205 src/contents/ui/Gate.qml:901
 #: src/contents/ui/LevelMeter.qml:238 src/contents/ui/Limiter.qml:621
@@ -274,7 +251,7 @@ msgstr "Poslouchat"
 #: src/contents/ui/Compressor.qml:856 src/contents/ui/Convolver.qml:441
 #: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Crystalizer.qml:122
 #: src/contents/ui/DeepFilterNet.qml:197 src/contents/ui/Deesser.qml:355
-#: src/contents/ui/Delay.qml:420 src/contents/ui/EchoCanceller.qml:126
+#: src/contents/ui/Delay.qml:420 src/contents/ui/EchoCanceller.qml:184
 #: src/contents/ui/Equalizer.qml:385 src/contents/ui/Exciter.qml:236
 #: src/contents/ui/Expander.qml:814 src/contents/ui/Filter.qml:234
 #: src/contents/ui/Gate.qml:950 src/contents/ui/LevelMeter.qml:261
@@ -910,7 +887,7 @@ msgstr "F2 Úroveň"
 msgid "F2 Peak Q"
 msgstr "F2 Vrchol Q"
 
-#: src/contents/ui/Deesser.qml:264
+#: src/contents/ui/Deesser.qml:264 src/contents/ui/EchoCanceller.qml:105
 msgid "Level"
 msgstr "Úroveň"
 
@@ -992,7 +969,9 @@ msgstr "Odstranit tento efekt"
 msgid "channels"
 msgstr "Kanály"
 
-#: src/contents/ui/DelegateStreamsList.qml:91 src/contents/ui/Gate.qml:186
+#: src/contents/ui/DelegateStreamsList.qml:91
+#: src/contents/ui/EchoCanceller.qml:56 src/contents/ui/EchoCanceller.qml:96
+#: src/contents/ui/EchoCanceller.qml:129 src/contents/ui/Gate.qml:186
 #: src/contents/ui/RNNoise.qml:89
 msgid "Enable"
 msgstr "Povolit"
@@ -1001,18 +980,53 @@ msgstr "Povolit"
 msgid "Exclude"
 msgstr "Vyloučit"
 
-#: src/contents/ui/EchoCanceller.qml:53
-msgid "Filter Length"
-msgstr "Délka filtru"
+#: src/contents/ui/EchoCanceller.qml:48 src/tags_plugin_name.cpp:35
+msgid "Echo Canceller"
+msgstr "Potlačovač echa"
 
-#: src/contents/ui/EchoCanceller.qml:69
-msgid "Residual Echo Suppression"
-msgstr "Potlačení zbytkové ozvěny"
-
-#: src/contents/ui/EchoCanceller.qml:85
+#: src/contents/ui/EchoCanceller.qml:65
 #, fuzzy
-msgid "Near End Suppression"
-msgstr "Potlačení ozvěny blízko konce"
+msgid "Mobile Mode"
+msgstr "Stereo režim"
+
+#: src/contents/ui/EchoCanceller.qml:74
+#, fuzzy
+msgid "Enforce High-pass"
+msgstr "High-Pass"
+
+#: src/contents/ui/EchoCanceller.qml:88 src/contents/ui/Speex.qml:87
+msgid "Noise Suppression"
+msgstr "Potlačení šumu"
+
+#: src/contents/ui/EchoCanceller.qml:109 src/contents/ui/Loudness.qml:106
+msgid "Low"
+msgstr "Nízký"
+
+#: src/contents/ui/EchoCanceller.qml:109
+msgid "Moderate"
+msgstr "Střední"
+
+#: src/contents/ui/EchoCanceller.qml:109 src/contents/ui/Loudness.qml:106
+msgid "High"
+msgstr "Vysoký"
+
+#: src/contents/ui/EchoCanceller.qml:109
+msgid "Very High"
+msgstr "Velmi vysoký"
+
+#: src/contents/ui/EchoCanceller.qml:121
+#, fuzzy
+msgid "High-pass Filter"
+msgstr "Režim vysokopásmového filtru"
+
+#: src/contents/ui/EchoCanceller.qml:138
+#, fuzzy
+msgid "Full Band"
+msgstr "Spodní pásmo"
+
+#: src/contents/ui/EchoCanceller.qml:174 src/contents/ui/Speex.qml:65
+msgid "Automatic Gain Control"
+msgstr "Automatické Vyhlazení"
 
 #: src/contents/ui/EeInputOutputGain.qml:21
 msgid "Audio levels control"
@@ -1556,17 +1570,9 @@ msgid "Fastest"
 msgstr "Rychleji"
 
 #: src/contents/ui/Loudness.qml:106
-msgid "Low"
-msgstr "Nízký"
-
-#: src/contents/ui/Loudness.qml:106
 #, fuzzy
 msgid "Normal"
 msgstr "Formát"
-
-#: src/contents/ui/Loudness.qml:106
-msgid "High"
-msgstr "Vysoký"
 
 #: src/contents/ui/Loudness.qml:106
 msgid "Best"
@@ -2497,17 +2503,9 @@ msgstr "_Klávesové zkratky"
 msgid "Denoise"
 msgstr "Odhlučnit"
 
-#: src/contents/ui/Speex.qml:65
-msgid "Automatic Gain Control"
-msgstr "Automatické Vyhlazení"
-
 #: src/contents/ui/Speex.qml:76
 msgid "Dereverberation"
 msgstr "Dereverbace"
-
-#: src/contents/ui/Speex.qml:87
-msgid "Noise Suppression"
-msgstr "Potlačení šumu"
 
 #: src/contents/ui/Speex.qml:106
 msgid "Voice Activity Probability"
@@ -2733,10 +2731,6 @@ msgstr "Krystalizátor"
 msgid "Deep Noise Remover"
 msgstr "Hluboký odstraňovač šumu"
 
-#: src/tags_plugin_name.cpp:35
-msgid "Echo Canceller"
-msgstr "Potlačovač echa"
-
 #: src/tags_plugin_name.cpp:36
 msgid "Equalizer"
 msgstr "Ekvalizér"
@@ -2789,6 +2783,16 @@ msgstr "Ekvalizér, kompresor a jiné zvukové efekty"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Zvukové efekty pro programy využívající PipeWire"
+
+#~ msgid "Filter Length"
+#~ msgstr "Délka filtru"
+
+#~ msgid "Residual Echo Suppression"
+#~ msgstr "Potlačení zbytkové ozvěny"
+
+#, fuzzy
+#~ msgid "Near End Suppression"
+#~ msgstr "Potlačení ozvěny blízko konce"
 
 #, fuzzy
 #~ msgid "Band "
@@ -2908,9 +2912,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #~ msgid "Sidechain Filters"
 #~ msgstr "Filtry sidechain"
-
-#~ msgid "High-Pass Filter Mode"
-#~ msgstr "Režim vysokopásmového filtru"
 
 #~ msgid "High-Pass Filter Frequency"
 #~ msgstr "Filtr vysokého kmitočtu"
@@ -3689,9 +3690,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Split Frequency 3"
 #~ msgstr "Kmitočet"
 
-#~ msgid "Sub Band"
-#~ msgstr "Spodní pásmo"
-
 #, fuzzy
 #~ msgid "Band 1 Bypass"
 #~ msgstr "Překlenutí"
@@ -4117,14 +4115,8 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 #~ msgid "Extended Filter"
 #~ msgstr "Rozšířený filtr"
 
-#~ msgid "Moderate"
-#~ msgstr "Střední"
-
 #~ msgid "Delay Agnostic"
 #~ msgstr "Zpozdit absolutní"
-
-#~ msgid "Very High"
-#~ msgstr "Velmi vysoký"
 
 #~ msgid "Fixed Digital"
 #~ msgstr "Pevný digitální"
