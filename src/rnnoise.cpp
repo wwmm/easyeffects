@@ -146,11 +146,11 @@ void RNNoise::setup() {
 
   resample = rate != rnnoise_rate;
 
-  data_L.resize(0U);
-  data_R.resize(0U);
+  data_L.clear();
+  data_R.clear();
 
-  deque_out_L.resize(0U);
-  deque_out_R.resize(0U);
+  buf_out_L.clear();
+  buf_out_R.clear();
 
   resampler_inL = std::make_unique<Resampler>(rate, rnnoise_rate);
   resampler_inR = std::make_unique<Resampler>(rate, rnnoise_rate);
@@ -178,6 +178,14 @@ void RNNoise::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
+  auto copy_bulk = [](auto& buffer, auto& channel_data) {
+    std::copy_n(buffer.begin(), channel_data.size(), channel_data.begin());
+
+    std::move(buffer.begin() + channel_data.size(), buffer.end(), buffer.begin());
+
+    buffer.resize(buffer.size() - channel_data.size());
+  };
+
   if (resample) {
     if (resampler_ready) {
       const auto resampled_inL = resampler_inL->process(left_in, false);
@@ -193,42 +201,23 @@ void RNNoise::process(std::span<float>& left_in,
       auto resampled_outL = resampler_outL->process(resampled_data_L, false);
       auto resampled_outR = resampler_outR->process(resampled_data_R, false);
 
-      for (const auto& v : resampled_outL) {
-        deque_out_L.push_back(v);
-      }
-
-      for (const auto& v : resampled_outR) {
-        deque_out_R.push_back(v);
-      }
+      buf_out_L.insert(buf_out_L.end(), resampled_outL.begin(), resampled_outL.end());
+      buf_out_R.insert(buf_out_R.end(), resampled_outR.begin(), resampled_outR.end());
     } else {
-      for (const auto& v : left_in) {
-        deque_out_L.push_back(v);
-      }
-
-      for (const auto& v : right_in) {
-        deque_out_R.push_back(v);
-      }
+      buf_out_L.insert(buf_out_L.end(), left_in.begin(), left_in.end());
+      buf_out_R.insert(buf_out_R.end(), right_in.begin(), right_in.end());
     }
   } else {
 #ifdef ENABLE_RNNOISE
-    remove_noise(left_in, right_in, deque_out_L, deque_out_R);
+    remove_noise(left_in, right_in, buf_out_L, buf_out_R);
 #endif
   }
 
-  if (deque_out_L.size() >= left_out.size()) {
-    for (float& v : left_out) {
-      v = deque_out_L.front();
-
-      deque_out_L.pop_front();
-    }
-
-    for (float& v : right_out) {
-      v = deque_out_R.front();
-
-      deque_out_R.pop_front();
-    }
+  if (buf_out_L.size() >= n_samples) {
+    copy_bulk(buf_out_L, left_out);
+    copy_bulk(buf_out_R, right_out);
   } else {
-    const uint offset = 2U * (left_out.size() - deque_out_L.size());
+    const uint offset = 2U * (left_out.size() - buf_out_L.size());
 
     if (offset != latency_n_frames) {
       latency_n_frames = offset;
@@ -236,18 +225,15 @@ void RNNoise::process(std::span<float>& left_in,
       notify_latency = true;
     }
 
-    for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
-      if (n < offset) {
-        left_out[n] = 0.0F;
-        right_out[n] = 0.0F;
-      } else {
-        left_out[n] = deque_out_L.front();
-        right_out[n] = deque_out_R.front();
+    // Fill beginning with zeros
+    std::fill_n(left_out.begin(), offset, 0.0F);
+    std::fill_n(right_out.begin(), offset, 0.0F);
 
-        deque_out_R.pop_front();
-        deque_out_L.pop_front();
-      }
-    }
+    std::ranges::copy(buf_out_L, left_out.begin() + offset);
+    std::ranges::copy(buf_out_R, right_out.begin() + offset);
+
+    buf_out_L.clear();
+    buf_out_R.clear();
   }
 
   if (output_gain != 1.0F) {

@@ -36,7 +36,6 @@
 #include <rnnoise.h>
 #endif
 
-#include <deque>
 #include "plugin_base.hpp"
 #include "resampler.hpp"
 
@@ -102,7 +101,7 @@ class RNNoise : public PluginBase {
 
   const float inv_short_max = 1.0F / (SHRT_MAX + 1.0F);
 
-  std::deque<float> deque_out_L, deque_out_R;
+  std::vector<float> buf_out_L, buf_out_R;
 
   std::vector<float> data_L, data_R, data_tmp;
   std::vector<float> resampled_data_L, resampled_data_R;
@@ -163,9 +162,7 @@ class RNNoise : public PluginBase {
           }
         }
 
-        for (const auto& v : data_L) {
-          out_L.push_back(v);
-        }
+        out_L.insert(out_L.end(), data_L.begin(), data_L.end());
 
         data_L.resize(0U);
       }
@@ -207,9 +204,7 @@ class RNNoise : public PluginBase {
           }
         }
 
-        for (const auto& v : data_R) {
-          out_R.push_back(v);
-        }
+        out_R.insert(out_R.end(), data_R.begin(), data_R.end());
 
         data_R.resize(0U);
       }
