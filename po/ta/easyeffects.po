@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-15 22:49+0000\n"
+"POT-Creation-Date: 2025-10-17 01:36+0000\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -19,104 +19,81 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.13-dev\n"
 
-#: src/command_line_parser.cpp:45
+#: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
 msgstr ""
 "எளிதான விளைவுகளை விட்டு வெளியேறவும். பணி பயன்முறையில் இயங்கும்போது பயனுள்ளதாக "
 "இருக்கும்."
 
-#: src/command_line_parser.cpp:46
+#: src/command_line_parser.cpp:44
 msgid "Reset Easy Effects."
 msgstr "எளிதான விளைவுகளை மீட்டமைக்கவும்."
 
-#: src/command_line_parser.cpp:47
+#: src/command_line_parser.cpp:45
 msgid "Hide the Window."
 msgstr "சாளரத்தை மறைக்கவும்."
 
-#: src/command_line_parser.cpp:48
+#: src/command_line_parser.cpp:46
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 msgstr "உலகளாவிய பைபாச். 1 இயக்க, 2 முடக்க மற்றும் 3 நிலையைப் பெற 3"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:47
 msgid "Load a preset. Example: easyeffects -l music"
 msgstr "முன்னமைவை ஏற்றவும். எடுத்துக்காட்டு: ஈசி எஃபெக்ட்ச் -எல் இசை"
 
-#: src/command_line_parser.cpp:49
+#: src/command_line_parser.cpp:47
 #, fuzzy
 msgid "preset-name"
 msgstr "புதிய முன்னமைக்கப்பட்ட பெயர்"
 
-#: src/command_line_parser.cpp:50
+#: src/command_line_parser.cpp:48
 msgid "Show available presets."
 msgstr "கிடைக்கக்கூடிய முன்னமைவுகளைக் காட்டு."
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:49
 #, fuzzy
 msgid "Get the active input/output preset."
 msgstr "செயலில் உள்ள முன்னமைவுகளைக் காட்டு."
 
-#: src/command_line_parser.cpp:51
+#: src/command_line_parser.cpp:49
 msgid "preset-type"
 msgstr ""
 
-#: src/command_line_parser.cpp:52
+#: src/command_line_parser.cpp:50
 #, fuzzy
 msgid "Get the active input and output presets."
 msgstr "செயலில் உள்ள முன்னமைவுகளைக் காட்டு."
 
-#: src/command_line_parser.cpp:53
-msgid ""
-"Set plugin property. Format: pipeline:plugin_name:instance_id:property:value"
-msgstr ""
-
-#: src/command_line_parser.cpp:54
-msgid "property-string"
-msgstr ""
-
-#: src/command_line_parser.cpp:55
+#: src/command_line_parser.cpp:51
 msgid "Deprecated. Use --service-mode instead."
 msgstr ""
 
-#: src/command_line_parser.cpp:56
+#: src/command_line_parser.cpp:52
 msgid "Start the application with service mode turned on."
 msgstr ""
 
-#: src/command_line_parser.cpp:57
+#: src/command_line_parser.cpp:53
 msgid "Enable debug messages."
 msgstr ""
 
-#: src/command_line_parser.cpp:115
+#: src/command_line_parser.cpp:111
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:153 src/contents/ui/main.qml:311
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:311
 msgid "Output Presets"
 msgstr "வெளியீட்டு முன்னமைவுகள்"
 
-#: src/command_line_parser.cpp:161 src/contents/ui/main.qml:301
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:301
 msgid "Input Presets"
 msgstr "உள்ளீட்டு முன்னமைவுகள்"
 
-#: src/command_line_parser.cpp:201
-msgid ""
-"Invalid property format. Expected: "
-"pipeline:plugin_name:instance_id:property:value"
-msgstr ""
-
-#: src/command_line_parser.cpp:213
-msgid "Invalid pipeline type. Must be 'input' or 'output'"
-msgstr ""
-
-#: src/command_line_parser.cpp:225
-msgid "Invalid instance ID. Must be a non-negative integer"
-msgstr ""
-
 #: src/contents/ui/Autogain.qml:57 src/contents/ui/BassEnhancer.qml:94
 #: src/contents/ui/BassLoudness.qml:45 src/contents/ui/Crossfeed.qml:62
-#: src/contents/ui/DeepFilterNet.qml:77 src/contents/ui/EchoCanceller.qml:45
-#: src/contents/ui/Exciter.qml:94 src/contents/ui/Filter.qml:48
-#: src/contents/ui/Loudness.qml:47 src/contents/ui/Maximizer.qml:47
-#: src/contents/ui/Reverb.qml:49 src/contents/ui/Speex.qml:46
+#: src/contents/ui/DeepFilterNet.qml:77 src/contents/ui/Exciter.qml:94
+#: src/contents/ui/Filter.qml:48 src/contents/ui/Loudness.qml:47
+#: src/contents/ui/Maximizer.qml:47 src/contents/ui/Reverb.qml:49
+#: src/contents/ui/Speex.qml:46
 msgid "Controls"
 msgstr "கட்டுப்பாடுகள்"
 
@@ -190,7 +167,7 @@ msgstr "வெளியீட்டு ஆதாயம்"
 #: src/contents/ui/Convolver.qml:415 src/contents/ui/Crossfeed.qml:140
 #: src/contents/ui/Crystalizer.qml:96 src/contents/ui/DeepFilterNet.qml:174
 #: src/contents/ui/Deesser.qml:316 src/contents/ui/Delay.qml:371
-#: src/contents/ui/EchoCanceller.qml:110 src/contents/ui/Equalizer.qml:304
+#: src/contents/ui/EchoCanceller.qml:158 src/contents/ui/Equalizer.qml:304
 #: src/contents/ui/Exciter.qml:197 src/contents/ui/Expander.qml:765
 #: src/contents/ui/Filter.qml:205 src/contents/ui/Gate.qml:901
 #: src/contents/ui/LevelMeter.qml:238 src/contents/ui/Limiter.qml:621
@@ -278,7 +255,7 @@ msgstr "கேளுங்கள்"
 #: src/contents/ui/Compressor.qml:856 src/contents/ui/Convolver.qml:441
 #: src/contents/ui/Crossfeed.qml:164 src/contents/ui/Crystalizer.qml:122
 #: src/contents/ui/DeepFilterNet.qml:197 src/contents/ui/Deesser.qml:355
-#: src/contents/ui/Delay.qml:420 src/contents/ui/EchoCanceller.qml:126
+#: src/contents/ui/Delay.qml:420 src/contents/ui/EchoCanceller.qml:184
 #: src/contents/ui/Equalizer.qml:385 src/contents/ui/Exciter.qml:236
 #: src/contents/ui/Expander.qml:814 src/contents/ui/Filter.qml:234
 #: src/contents/ui/Gate.qml:950 src/contents/ui/LevelMeter.qml:261
@@ -910,7 +887,7 @@ msgstr "எஃப் 2 நிலை"
 msgid "F2 Peak Q"
 msgstr "F2 உச்ச Q"
 
-#: src/contents/ui/Deesser.qml:264
+#: src/contents/ui/Deesser.qml:264 src/contents/ui/EchoCanceller.qml:105
 msgid "Level"
 msgstr "நிலை"
 
@@ -992,7 +969,9 @@ msgstr "இந்த விளைவை அகற்று"
 msgid "channels"
 msgstr "சேனல்கள்"
 
-#: src/contents/ui/DelegateStreamsList.qml:91 src/contents/ui/Gate.qml:186
+#: src/contents/ui/DelegateStreamsList.qml:91
+#: src/contents/ui/EchoCanceller.qml:56 src/contents/ui/EchoCanceller.qml:96
+#: src/contents/ui/EchoCanceller.qml:129 src/contents/ui/Gate.qml:186
 #: src/contents/ui/RNNoise.qml:89
 msgid "Enable"
 msgstr "இயக்கு"
@@ -1001,18 +980,57 @@ msgstr "இயக்கு"
 msgid "Exclude"
 msgstr "விலக்கு"
 
-#: src/contents/ui/EchoCanceller.qml:53
-msgid "Filter Length"
-msgstr "வடிகட்டி நீளம்"
+#: src/contents/ui/EchoCanceller.qml:48 src/tags_plugin_name.cpp:35
+msgid "Echo Canceller"
+msgstr "எக்கோ ரத்துசெய்தல்"
 
-#: src/contents/ui/EchoCanceller.qml:69
-msgid "Residual Echo Suppression"
-msgstr "மீதமுள்ள எதிரொலி அடக்குமுறை"
-
-#: src/contents/ui/EchoCanceller.qml:85
+#: src/contents/ui/EchoCanceller.qml:65
 #, fuzzy
-msgid "Near End Suppression"
-msgstr "முடிவுக்கு அருகில் எதிரொலி அடக்குமுறை"
+msgid "Mobile Mode"
+msgstr "ச்டீரியோ பயன்முறை"
+
+#: src/contents/ui/EchoCanceller.qml:74
+#, fuzzy
+msgid "Enforce High-pass"
+msgstr "உயர்-பாச்"
+
+#: src/contents/ui/EchoCanceller.qml:88 src/contents/ui/Speex.qml:87
+msgid "Noise Suppression"
+msgstr "இரைச்சல் நீக்கம்"
+
+#: src/contents/ui/EchoCanceller.qml:109 src/contents/ui/Loudness.qml:106
+#, fuzzy
+msgid "Low"
+msgstr "குறைந்த வெட்டு"
+
+#: src/contents/ui/EchoCanceller.qml:109
+#, fuzzy
+msgid "Moderate"
+msgstr "நவீன"
+
+#: src/contents/ui/EchoCanceller.qml:109 src/contents/ui/Loudness.qml:106
+#, fuzzy
+msgid "High"
+msgstr "உயர் வெட்டு"
+
+#: src/contents/ui/EchoCanceller.qml:109
+#, fuzzy
+msgid "Very High"
+msgstr "உயர் வெட்டு"
+
+#: src/contents/ui/EchoCanceller.qml:121
+#, fuzzy
+msgid "High-pass Filter"
+msgstr "உயர்-பாச் வடிகட்டி முறை"
+
+#: src/contents/ui/EchoCanceller.qml:138
+#, fuzzy
+msgid "Full Band"
+msgstr "பட்டைகள்"
+
+#: src/contents/ui/EchoCanceller.qml:174 src/contents/ui/Speex.qml:65
+msgid "Automatic Gain Control"
+msgstr "தானியங்கு மிகைப்பு கட்டுப்பாடு"
 
 #: src/contents/ui/EeInputOutputGain.qml:21
 msgid "Audio levels control"
@@ -1555,18 +1573,8 @@ msgid "Fastest"
 msgstr ""
 
 #: src/contents/ui/Loudness.qml:106
-#, fuzzy
-msgid "Low"
-msgstr "குறைந்த வெட்டு"
-
-#: src/contents/ui/Loudness.qml:106
 msgid "Normal"
 msgstr ""
-
-#: src/contents/ui/Loudness.qml:106
-#, fuzzy
-msgid "High"
-msgstr "உயர் வெட்டு"
 
 #: src/contents/ui/Loudness.qml:106
 msgid "Best"
@@ -2498,17 +2506,9 @@ msgstr "_SHORTCUTS"
 msgid "Denoise"
 msgstr "டெனோயிச்"
 
-#: src/contents/ui/Speex.qml:65
-msgid "Automatic Gain Control"
-msgstr "தானியங்கு மிகைப்பு கட்டுப்பாடு"
-
 #: src/contents/ui/Speex.qml:76
 msgid "Dereverberation"
 msgstr "எதிரொலிக்காத"
-
-#: src/contents/ui/Speex.qml:87
-msgid "Noise Suppression"
-msgstr "இரைச்சல் நீக்கம்"
 
 #: src/contents/ui/Speex.qml:106
 msgid "Voice Activity Probability"
@@ -2734,10 +2734,6 @@ msgstr "படிகதாரர்"
 msgid "Deep Noise Remover"
 msgstr "ஆழமான இரைச்சல் நீக்கி"
 
-#: src/tags_plugin_name.cpp:35
-msgid "Echo Canceller"
-msgstr "எக்கோ ரத்துசெய்தல்"
-
 #: src/tags_plugin_name.cpp:36
 msgid "Equalizer"
 msgstr "சமநிலைப்படுத்தி"
@@ -2790,6 +2786,16 @@ msgstr "சமநிலைப்படுத்தி, அமுக்கி ம
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "பைப்வேர் பயன்பாடுகளுக்கான ஆடியோ விளைவுகள்"
+
+#~ msgid "Filter Length"
+#~ msgstr "வடிகட்டி நீளம்"
+
+#~ msgid "Residual Echo Suppression"
+#~ msgstr "மீதமுள்ள எதிரொலி அடக்குமுறை"
+
+#, fuzzy
+#~ msgid "Near End Suppression"
+#~ msgstr "முடிவுக்கு அருகில் எதிரொலி அடக்குமுறை"
 
 #, fuzzy
 #~ msgid "Band "
@@ -2904,9 +2910,6 @@ msgstr "பைப்வேர் பயன்பாடுகளுக்கா�
 
 #~ msgid "Sidechain Filters"
 #~ msgstr "சைட்செயின் வடிப்பான்கள்"
-
-#~ msgid "High-Pass Filter Mode"
-#~ msgstr "உயர்-பாச் வடிகட்டி முறை"
 
 #~ msgid "High-Pass Filter Frequency"
 #~ msgstr "உயர்-பாச் வடிகட்டி அதிர்வெண்"
