@@ -234,19 +234,11 @@ void EchoCanceller::process(std::span<float>& left_in,
   buf_far_L.insert(buf_far_L.end(), probe_left.begin(), probe_left.end());
   buf_far_R.insert(buf_far_R.end(), probe_right.begin(), probe_right.end());
 
-  auto copy_bulk = [](auto& buffer, auto& channel_data) {
-    std::copy_n(buffer.begin(), channel_data.size(), channel_data.begin());
-
-    std::move(buffer.begin() + channel_data.size(), buffer.end(), buffer.begin());
-
-    buffer.resize(buffer.size() - channel_data.size());
-  };
-
   while (buf_near_L.size() >= near_L.size()) {
-    copy_bulk(buf_near_L, near_L);
-    copy_bulk(buf_near_R, near_R);
-    copy_bulk(buf_far_L, far_L);
-    copy_bulk(buf_far_R, far_R);
+    util::copy_bulk(buf_near_L, near_L);
+    util::copy_bulk(buf_near_R, near_R);
+    util::copy_bulk(buf_far_L, far_L);
+    util::copy_bulk(buf_far_R, far_R);
 
     float* near_ptrs[2] = {near_L.data(), near_R.data()};
     float* far_ptrs[2] = {far_L.data(), far_R.data()};
@@ -259,8 +251,8 @@ void EchoCanceller::process(std::span<float>& left_in,
   }
 
   if (buf_out_L.size() >= n_samples) {
-    copy_bulk(buf_out_L, left_out);
-    copy_bulk(buf_out_R, right_out);
+    util::copy_bulk(buf_out_L, left_out);
+    util::copy_bulk(buf_out_R, right_out);
   } else {
     const uint offset = n_samples - buf_out_L.size();
 

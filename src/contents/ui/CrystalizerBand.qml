@@ -11,7 +11,7 @@ Controls.ItemDelegate {
     required property real adaptiveIntensity
     required property var pluginDB
     required property var pluginBackend
-    readonly property real frequency: pluginBackend.getBandFrequency(index)
+    readonly property real frequency: pluginBackend?.getBandFrequency(index) ?? 0.0
 
     down: false
     hoverEnabled: false

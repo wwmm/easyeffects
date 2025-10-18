@@ -185,11 +185,13 @@ void Convolver::setup() {
           }
         }
 
-        data_L.resize(0U);
-        data_R.resize(0U);
+        buf_in_L.clear();
+        buf_in_R.clear();
+        buf_out_L.clear();
+        buf_out_R.clear();
 
-        deque_out_L.resize(0U);
-        deque_out_R.resize(0U);
+        data_L.resize(blocksize);
+        data_R.resize(blocksize);
 
         notify_latency = true;
 
@@ -219,48 +221,32 @@ void Convolver::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
-  if (n_samples_is_power_of_2) {
+  if (!n_samples_is_power_of_2) {
     std::ranges::copy(left_in, left_out.begin());
     std::ranges::copy(right_in, right_out.begin());
 
     do_convolution(left_out, right_out);
   } else {
-    for (size_t j = 0U; j < left_in.size(); j++) {
-      data_L.push_back(left_in[j]);
-      data_R.push_back(right_in[j]);
+    buf_in_L.insert(buf_in_L.end(), left_in.begin(), left_in.end());
+    buf_in_R.insert(buf_in_R.end(), right_in.begin(), right_in.end());
 
-      if (data_L.size() == blocksize) {
-        do_convolution(data_L, data_R);
+    while (buf_in_L.size() >= blocksize) {
+      util::copy_bulk(buf_in_L, data_L);
+      util::copy_bulk(buf_in_R, data_R);
 
-        for (const auto& v : data_L) {
-          deque_out_L.push_back(v);
-        }
+      do_convolution(data_L, data_R);
 
-        for (const auto& v : data_R) {
-          deque_out_R.push_back(v);
-        }
-
-        data_L.resize(0U);
-        data_R.resize(0U);
-      }
+      buf_out_L.insert(buf_out_L.end(), data_L.begin(), data_L.end());
+      buf_out_R.insert(buf_out_R.end(), data_R.begin(), data_R.end());
     }
 
     // copying the processed samples to the output buffers
 
-    if (deque_out_L.size() >= left_out.size()) {
-      for (float& v : left_out) {
-        v = deque_out_L.front();
-
-        deque_out_L.pop_front();
-      }
-
-      for (float& v : right_out) {
-        v = deque_out_R.front();
-
-        deque_out_R.pop_front();
-      }
+    if (buf_out_L.size() >= n_samples) {
+      util::copy_bulk(buf_out_L, left_out);
+      util::copy_bulk(buf_out_R, right_out);
     } else {
-      const uint offset = 2U * (left_out.size() - deque_out_L.size());
+      const uint offset = n_samples - buf_out_L.size();
 
       if (offset != latency_n_frames) {
         latency_n_frames = offset;
@@ -268,18 +254,15 @@ void Convolver::process(std::span<float>& left_in,
         notify_latency = true;
       }
 
-      for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
-        if (n < offset) {
-          left_out[n] = 0.0F;
-          right_out[n] = 0.0F;
-        } else {
-          left_out[n] = deque_out_L.front();
-          right_out[n] = deque_out_R.front();
+      // Fill beginning with zeros
+      std::fill_n(left_out.begin(), offset, 0.0F);
+      std::fill_n(right_out.begin(), offset, 0.0F);
 
-          deque_out_R.pop_front();
-          deque_out_L.pop_front();
-        }
-      }
+      std::ranges::copy(buf_out_L, left_out.begin() + offset);
+      std::ranges::copy(buf_out_R, right_out.begin() + offset);
+
+      buf_out_L.clear();
+      buf_out_R.clear();
     }
   }
 

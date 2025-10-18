@@ -25,7 +25,6 @@
 #include <sys/types.h>
 #include <zita-convolver.h>
 #include <QString>
-#include <deque>
 #include <format>
 #include <span>
 #include <string>
@@ -131,7 +130,8 @@ class Convolver : public PluginBase {
   std::vector<float> original_kernel_L, original_kernel_R;
   std::vector<float> data_L, data_R;
 
-  std::deque<float> deque_out_L, deque_out_R;
+  std::vector<float> buf_in_L, buf_in_R;
+  std::vector<float> buf_out_L, buf_out_R;
 
   QList<QPointF> chartMagL, chartMagR, chartMagLfftLinear, chartMagRfftLinear, chartMagLfftLog, chartMagRfftLog;
 

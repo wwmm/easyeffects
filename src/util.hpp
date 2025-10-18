@@ -31,6 +31,7 @@
 #include <limits>
 #include <memory>
 #include <source_location>
+#include <span>
 #include <string>
 #include <system_error>
 #include <type_traits>
@@ -235,6 +236,24 @@ auto spa_dict_get_num(const spa_dict* props, const char* key, T& num) -> bool {
   }
 
   return false;
+}
+
+template <typename T>
+void copy_bulk(std::vector<T>& input, std::vector<T>& output) {
+  std::copy_n(input.begin(), output.size(), output.begin());
+
+  std::move(input.begin() + output.size(), input.end(), input.begin());
+
+  input.resize(input.size() - output.size());
+}
+
+template <typename T>
+void copy_bulk(std::vector<T>& input, std::span<T>& output) {
+  std::copy_n(input.begin(), output.size(), output.begin());
+
+  std::move(input.begin() + output.size(), input.end(), input.begin());
+
+  input.resize(input.size() - output.size());
 }
 
 }  // namespace util

@@ -92,6 +92,8 @@ Kirigami.ApplicationWindow {
         status.type = statusType;
         status.text = label;
         status.visible = true;
+
+        autoHideStatusTimer.start();
     }
 
     Binding {
@@ -119,6 +121,16 @@ Kirigami.ApplicationWindow {
 
         function onPresetLoadError(title, description) {
             appWindow.showStatus(`${title} 🢥 ${description}`, Kirigami.MessageType.Error);
+        }
+    }
+
+    Timer {
+        id: autoHideStatusTimer
+        interval: DB.Manager.main.autoHideInlineMessageTimeout
+        onTriggered: {
+            status.visible = false;
+
+            autoHideStatusTimer.stop();
         }
     }
 

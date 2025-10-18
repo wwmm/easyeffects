@@ -178,14 +178,6 @@ void RNNoise::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
-  auto copy_bulk = [](auto& buffer, auto& channel_data) {
-    std::copy_n(buffer.begin(), channel_data.size(), channel_data.begin());
-
-    std::move(buffer.begin() + channel_data.size(), buffer.end(), buffer.begin());
-
-    buffer.resize(buffer.size() - channel_data.size());
-  };
-
   if (resample) {
     if (resampler_ready) {
       const auto resampled_inL = resampler_inL->process(left_in, false);
@@ -214,8 +206,8 @@ void RNNoise::process(std::span<float>& left_in,
   }
 
   if (buf_out_L.size() >= n_samples) {
-    copy_bulk(buf_out_L, left_out);
-    copy_bulk(buf_out_R, right_out);
+    util::copy_bulk(buf_out_L, left_out);
+    util::copy_bulk(buf_out_R, right_out);
   } else {
     const uint offset = 2U * (left_out.size() - buf_out_L.size());
 

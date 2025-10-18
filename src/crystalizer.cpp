@@ -26,7 +26,6 @@
 #include <array>
 #include <cmath>
 #include <cstddef>
-#include <deque>
 #include <format>
 #include <memory>
 #include <mutex>
@@ -67,7 +66,7 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
       settings(db::Manager::self().get_plugin_db<db::Crystalizer>(
           pipe_type,
           tags::plugin_name::BaseName::crystalizer + "#" + instance_id)),
-      adaptive_intenisties(nbands, 1.0F) {
+      adaptive_intensities(nbands, 1.0F) {
   for (uint n = 0U; n < nbands; n++) {
     filters.at(n) = std::make_unique<FirFilterBandpass>(log_tag + name.toStdString() + " band" + util::to_string(n));
   }
@@ -173,11 +172,13 @@ void Crystalizer::setup() {
 
         latency_n_frames = 0U;
 
-        deque_out_L.resize(0U);
-        deque_out_R.resize(0U);
+        buf_in_L.clear();
+        buf_in_R.clear();
+        buf_out_L.clear();
+        buf_out_R.clear();
 
-        data_L.resize(0U);
-        data_R.resize(0U);
+        data_L.resize(blocksize);
+        data_R.resize(blocksize);
 
         for (uint n = 0U; n < nbands; n++) {
           band_data_L.at(n).resize(blocksize);
@@ -231,42 +232,26 @@ void Crystalizer::process(std::span<float>& left_in,
 
     enhance_peaks(left_out, right_out);
   } else {
-    for (size_t j = 0U; j < left_in.size(); j++) {
-      data_L.push_back(left_in[j]);
-      data_R.push_back(right_in[j]);
+    buf_in_L.insert(buf_in_L.end(), left_in.begin(), left_in.end());
+    buf_in_R.insert(buf_in_R.end(), right_in.begin(), right_in.end());
 
-      if (data_L.size() == blocksize) {
-        enhance_peaks(data_L, data_R);
+    while (buf_in_L.size() >= blocksize) {
+      util::copy_bulk(buf_in_L, data_L);
+      util::copy_bulk(buf_in_R, data_R);
 
-        for (const auto& v : data_L) {
-          deque_out_L.push_back(v);
-        }
+      enhance_peaks(data_L, data_R);
 
-        for (const auto& v : data_R) {
-          deque_out_R.push_back(v);
-        }
-
-        data_L.resize(0U);
-        data_R.resize(0U);
-      }
+      buf_out_L.insert(buf_out_L.end(), data_L.begin(), data_L.end());
+      buf_out_R.insert(buf_out_R.end(), data_R.begin(), data_R.end());
     }
 
     // copying the processed samples to the output buffers
 
-    if (deque_out_L.size() >= left_out.size()) {
-      for (float& v : left_out) {
-        v = deque_out_L.front();
-
-        deque_out_L.pop_front();
-      }
-
-      for (float& v : right_out) {
-        v = deque_out_R.front();
-
-        deque_out_R.pop_front();
-      }
+    if (buf_out_L.size() >= n_samples) {
+      util::copy_bulk(buf_out_L, left_out);
+      util::copy_bulk(buf_out_R, right_out);
     } else {
-      uint offset = 2U * (left_out.size() - deque_out_L.size());
+      const uint offset = n_samples - buf_out_L.size();
 
       if (offset != latency_n_frames) {
         latency_n_frames = offset;
@@ -274,18 +259,15 @@ void Crystalizer::process(std::span<float>& left_in,
         notify_latency = true;
       }
 
-      for (uint n = 0U; !deque_out_L.empty() && n < left_out.size(); n++) {
-        if (n < offset) {
-          left_out[n] = 0.0F;
-          right_out[n] = 0.0F;
-        } else {
-          left_out[n] = deque_out_L.front();
-          right_out[n] = deque_out_R.front();
+      // Fill beginning with zeros
+      std::fill_n(left_out.begin(), offset, 0.0F);
+      std::fill_n(right_out.begin(), offset, 0.0F);
 
-          deque_out_R.pop_front();
-          deque_out_L.pop_front();
-        }
-      }
+      std::ranges::copy(buf_out_L, left_out.begin() + offset);
+      std::ranges::copy(buf_out_R, right_out.begin() + offset);
+
+      buf_out_L.clear();
+      buf_out_R.clear();
     }
   }
 
@@ -457,5 +439,5 @@ float Crystalizer::getBandFrequency(const int& index) {
 }
 
 QList<float> Crystalizer::getAdaptiveIntensities() {
-  return adaptive_intenisties;
+  return adaptive_intensities;
 }

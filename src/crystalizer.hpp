@@ -26,7 +26,6 @@
 #include <algorithm>
 #include <array>
 #include <cmath>
-#include <deque>
 #include <memory>
 #include <span>
 #include <string>
@@ -119,9 +118,10 @@ class Crystalizer : public PluginBase {
 
   std::array<std::unique_ptr<FirFilterBase>, nbands> filters;
 
-  std::deque<float> deque_out_L, deque_out_R;
+  std::vector<float> buf_in_L, buf_in_R;
+  std::vector<float> buf_out_L, buf_out_R;
 
-  QList<float> adaptive_intenisties;
+  QList<float> adaptive_intensities;
 
   static auto make_geometric_edges(float fmin, float fmax) -> std::array<float, nbands + 1U>;
 
@@ -181,7 +181,7 @@ class Crystalizer : public PluginBase {
           intensity_R = compute_adaptive_intensity(n, intensity, bandn_R, false);
 
           if (updateLevelMeters) {
-            adaptive_intenisties[n] = util::linear_to_db(0.5F * (intensity_L + intensity_R));
+            adaptive_intensities[n] = util::linear_to_db(0.5F * (intensity_L + intensity_R));
           }
         }
 
