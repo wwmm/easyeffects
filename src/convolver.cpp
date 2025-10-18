@@ -221,7 +221,7 @@ void Convolver::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
-  if (!n_samples_is_power_of_2) {
+  if (n_samples_is_power_of_2) {
     std::ranges::copy(left_in, left_out.begin());
     std::ranges::copy(right_in, right_out.begin());
 
