@@ -172,19 +172,6 @@ class Crystalizer : public PluginBase {
       auto bandn_R = band_data_R.at(n).data();
 
       if (!band_bypass.at(n)) {
-        const float intensity = band_intensity.at(n);
-        float intensity_L = intensity;
-        float intensity_R = intensity;
-
-        if (settings->adaptiveIntensity()) {
-          intensity_L = compute_adaptive_intensity(n, intensity, bandn_L, true);
-          intensity_R = compute_adaptive_intensity(n, intensity, bandn_R, false);
-
-          if (updateLevelMeters) {
-            adaptive_intensities[n] = util::linear_to_db(0.5F * (intensity_L + intensity_R));
-          }
-        }
-
         // Calculating the second derivative
 
         auto bandn_second_derivative_L = band_second_derivative_L.at(n).data();
@@ -204,6 +191,19 @@ class Crystalizer : public PluginBase {
             band_next_R.at(n) - 2.0F * bandn_R[blocksize - 1] + bandn_R[blocksize - 2];
 
         // peak enhancing using second derivative
+
+        const float intensity = band_intensity.at(n);
+        float intensity_L = intensity;
+        float intensity_R = intensity;
+
+        if (settings->adaptiveIntensity()) {
+          intensity_L = compute_adaptive_intensity(n, intensity, bandn_second_derivative_L, true);
+          intensity_R = compute_adaptive_intensity(n, intensity, bandn_second_derivative_R, false);
+
+          if (updateLevelMeters) {
+            adaptive_intensities[n] = util::linear_to_db(0.5F * (intensity_L + intensity_R));
+          }
+        }
 
         for (uint m = 0U; m < blocksize; m++) {
           const float& d2L = bandn_second_derivative_L[m];
