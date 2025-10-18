@@ -436,6 +436,12 @@ Kirigami.ApplicationWindow {
                 id: tabbar
 
                 alignment: Qt.AlignHCenter
+
+                Controls.ActionGroup {
+                    id: tabbarActionGroup
+                    exclusive: true
+                }
+
                 actions: [
                     Kirigami.Action {
                         displayHint: Kirigami.DisplayHint.KeepVisible
@@ -443,6 +449,7 @@ Kirigami.ApplicationWindow {
                         text: i18n("Output") // qmllint disable
                         checkable: true
                         checked: DB.Manager.main.visiblePage === 0
+                        Controls.ActionGroup.group: tabbarActionGroup
                         onTriggered: {
                             DB.Manager.main.visiblePage = 0;
                         }
@@ -453,6 +460,7 @@ Kirigami.ApplicationWindow {
                         text: i18n("Input") // qmllint disable
                         checkable: true
                         checked: DB.Manager.main.visiblePage === 1
+                        Controls.ActionGroup.group: tabbarActionGroup
                         onTriggered: {
                             DB.Manager.main.visiblePage = 1;
                         }
@@ -463,6 +471,7 @@ Kirigami.ApplicationWindow {
                         text: i18n("PipeWire") // qmllint disable
                         checkable: true
                         checked: DB.Manager.main.visiblePage === 2
+                        Controls.ActionGroup.group: tabbarActionGroup
                         onTriggered: {
                             DB.Manager.main.visiblePage = 2;
                         }

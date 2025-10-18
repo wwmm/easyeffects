@@ -20,7 +20,12 @@ Kirigami.Page {
     property int minRightLevel: -99
 
     padding: 0
+
     Component.onCompleted: {
+        updateStackPages();
+    }
+
+    function updateStackPages() {
         switch (streamDB.visiblePage) {
         case 0:
             stackPages.replace(pageStreams);
@@ -30,6 +35,14 @@ Kirigami.Page {
             break;
         default:
         }
+    }
+
+    Connections {
+        function onVisiblePageChanged() {
+            updateStackPages();
+        }
+
+        target: streamDB
     }
 
     ListModel {
@@ -349,6 +362,7 @@ Kirigami.Page {
                 Layout.fillHeight: true
                 Layout.fillWidth: true
                 Layout.horizontalStretchFactor: 3
+                visible: pageStreamsEffects.streamDB.visiblePage === 1
 
                 initialItem: Kirigami.ScrollablePage {
                     Kirigami.PlaceholderMessage {
@@ -539,14 +553,20 @@ Kirigami.Page {
             Kirigami.ActionToolBar {
                 alignment: Qt.AlignHCenter
                 position: Controls.ToolBar.Footer
+
+                Controls.ActionGroup {
+                    id: footerActionGroup
+                    exclusive: true
+                }
+
                 actions: [
                     Kirigami.Action {
                         icon.name: pageStreamsEffects.pageType === 0 ? "multimedia-player-symbolic" : "media-record-symbolic"
                         text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Recorders")// qmllint disable
                         checkable: true
                         checked: pageStreamsEffects.streamDB.visiblePage === 0
+                        Controls.ActionGroup.group: footerActionGroup
                         onTriggered: {
-                            stackPages.replace(pageStreams);
                             pageStreamsEffects.streamDB.visiblePage = 0;
                         }
                     },
@@ -555,8 +575,8 @@ Kirigami.Page {
                         text: i18n("Effects") // qmllint disable
                         checkable: true
                         checked: pageStreamsEffects.streamDB.visiblePage === 1
+                        Controls.ActionGroup.group: footerActionGroup
                         onTriggered: {
-                            stackPages.replace(pagePlugins);
                             pageStreamsEffects.streamDB.visiblePage = 1;
                         }
                     }
