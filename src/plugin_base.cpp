@@ -162,7 +162,7 @@ void on_process(void* userdata, spa_io_position* position) {
 
     if (probe_left == nullptr || probe_right == nullptr) {
       if (!d->pb->got_null_probe) {
-        util::warning("Processing: we received a null pointer for probe left/right. Using the dummy array instead.");
+        util::debug("Processing: we received a null pointer for probe left/right. Using the dummy array instead.");
 
         d->pb->got_null_probe = true;
       }

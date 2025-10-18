@@ -87,7 +87,7 @@ void GlobalShortcuts::onSessionCreatedResponse(uint responseCode, const QVariant
                                            "org.freedesktop.portal.Request", "Response", this,
                                            SLOT(onSessionCreatedResponse(uint, QVariantMap)));
 
-  util::info("D-Bus session for GlobalShortcuts created.");
+  util::debug("D-Bus session for GlobalShortcuts created.");
 
   Q_EMIT onBindShortcuts();
 

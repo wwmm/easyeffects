@@ -162,8 +162,8 @@ void on_core_info(void* data, const struct pw_core_info* info) {
 
   util::spa_dict_get_string(info->props, "default.clock.quantum", pm->defaultQuantum);
 
-  util::warning(std::format("Core version: {}", info->version));
-  util::warning(std::format("Core name: {}", info->name));
+  util::debug(std::format("Core version: {}", info->version));
+  util::debug(std::format("Core name: {}", info->name));
 }
 
 void on_core_done(void* data, uint32_t id, [[maybe_unused]] int seq) {
@@ -302,13 +302,13 @@ Manager::Manager()
   } while (ee_sink_node.id == SPA_ID_INVALID || ee_source_node.id == SPA_ID_INVALID);
 
   if (ee_sink_node.id != SPA_ID_INVALID) {
-    util::warning(std::format("{} node successfully retrieved with id {} and serial {}", tags::pipewire::ee_sink_name,
-                              ee_sink_node.id, ee_sink_node.serial));
+    util::debug(std::format("{} node successfully retrieved with id {} and serial {}", tags::pipewire::ee_sink_name,
+                            ee_sink_node.id, ee_sink_node.serial));
   }
 
   if (ee_source_node.id != SPA_ID_INVALID) {
-    util::warning(std::format("{} node successfully retrieved with id {} and serial {}", tags::pipewire::ee_source_name,
-                              ee_source_node.id, ee_source_node.serial));
+    util::debug(std::format("{} node successfully retrieved with id {} and serial {}", tags::pipewire::ee_source_name,
+                            ee_source_node.id, ee_source_node.serial));
   }
 
   /**

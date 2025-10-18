@@ -302,7 +302,7 @@ auto RNNoise::get_model_from_name() -> RNNModel* {
   if (settings->useStandardModel()) {
     standard_model = true;
 
-    util::warning(std::format("{} using the standard model", log_tag));
+    util::debug(std::format("{} using the standard model", log_tag));
 
     return m;
   }
