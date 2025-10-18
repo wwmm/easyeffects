@@ -27,12 +27,6 @@ Kirigami.ScrollablePage {
 
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
-        exciterPage.pluginBackend.updateLevelMeters = true;
-    }
-    Component.onDestruction: {
-        if (pluginBackend) {
-            exciterPage.pluginBackend.updateLevelMeters = false;
-        }
     }
 
     ColumnLayout {

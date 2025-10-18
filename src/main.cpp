@@ -194,6 +194,7 @@ static void initQml(QQmlApplicationEngine& engine,
         } else {
           ui.window->hide();
         }
+
         autostart.set_window(ui.window);
       }
     }

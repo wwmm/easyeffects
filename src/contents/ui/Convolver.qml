@@ -34,16 +34,10 @@ Kirigami.ScrollablePage {
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
 
-        pluginBackend.updateLevelMeters = true;
-
         const chart = chartChannel.left ? pluginBackend.chartMagL : pluginBackend.chartMagR;
+
         if (validChartMag(chart)) {
             convolverChart.updateData(chart);
-        }
-    }
-    Component.onDestruction: {
-        if (pluginBackend) {
-            pluginBackend.updateLevelMeters = false;
         }
     }
 

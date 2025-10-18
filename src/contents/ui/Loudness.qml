@@ -26,12 +26,6 @@ Kirigami.ScrollablePage {
 
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
-        loudnessPage.pluginBackend.updateLevelMeters = true;
-    }
-    Component.onDestruction: {
-        if (pluginBackend) {
-            loudnessPage.pluginBackend.updateLevelMeters = false;
-        }
     }
 
     ColumnLayout {

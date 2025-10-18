@@ -19,6 +19,7 @@
 
 #include "bass_enhancer.hpp"
 #include <algorithm>
+#include <format>
 #include <memory>
 #include <span>
 #include <string>

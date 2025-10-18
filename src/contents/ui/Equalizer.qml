@@ -45,12 +45,6 @@ Kirigami.ScrollablePage {
 
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
-        equalizerPage.pluginBackend.updateLevelMeters = true;
-    }
-    Component.onDestruction: {
-        if (pluginBackend) {
-            equalizerPage.pluginBackend.updateLevelMeters = false;
-        }
     }
 
     EqualizerBandMenu {

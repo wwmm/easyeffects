@@ -48,8 +48,6 @@ Kirigami.ApplicationWindow {
     }
 
     onClosing: {
-        console.log("main window is closing");
-
         DB.Manager.enableAutosave(false);
 
         gc();

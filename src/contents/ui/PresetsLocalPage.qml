@@ -17,6 +17,8 @@ ColumnLayout {
             return 1;
         else if (DB.Manager.main.visiblePage === 1)
             return 0;
+        else
+            return 1;
     }
 
     readonly property var validFileNameRegex: /^[^\\/]{1,100}$/ //strings without `/` or `\` (max 100 chars)

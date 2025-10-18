@@ -358,6 +358,13 @@ Kirigami.Page {
                         icon.name: "folder-music-symbolic"
                     }
                 }
+
+                Binding {
+                    target: pluginsStack.currentItem?.pluginBackend ?? null
+                    property: "updateLevelMeters"
+                    value: pluginsStack.visible
+                    when: pluginsStack.currentItem?.pluginBackend !== undefined && pluginsStack.visible !== undefined
+                }
             }
         }
     }

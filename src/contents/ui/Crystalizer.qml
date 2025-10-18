@@ -32,17 +32,11 @@ Kirigami.ScrollablePage {
 
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
-        pluginBackend.updateLevelMeters = true;
 
         for (let n = 0; n < crystalizerPage.pluginBackend.numBands; n++) {
             listModel.append({
                 "adaptiveIntensity": 1.0
             });
-        }
-    }
-    Component.onDestruction: {
-        if (pluginBackend) {
-            pluginBackend.updateLevelMeters = false;
         }
     }
 
