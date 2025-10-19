@@ -89,6 +89,11 @@ class Crystalizer : public PluginBase {
   float attack_time = 0.4;   // seconds
   float release_time = 3.0;  // seconds
 
+  float buffer_crest_L = 1.0F;
+  float buffer_crest_R = 1.0F;
+  float buffer_kurtosis_L = 1.0F;
+  float buffer_kurtosis_R = 1.0F;
+
   db::Crystalizer* settings = nullptr;
 
   std::vector<float> data_L;
@@ -127,13 +132,18 @@ class Crystalizer : public PluginBase {
 
   static auto compute_band_centers(const std::array<float, nbands + 1U>& edges) -> std::array<float, nbands>;
 
-  static float extrapolate_next(const std::vector<float>& x);
+  static auto extrapolate_next(const std::vector<float>& x) -> float;
 
-  float compute_kurtosis(float* data) const;
+  auto compute_kurtosis(float* data) const -> float;
 
-  float compute_crest(float* data) const;
+  auto compute_crest(float* data) const -> float;
 
-  float compute_adaptive_intensity(const uint& band_index, float base_intensity, float* band_data, const bool& isLeft);
+  void compute_buffer_crest(float* data, const bool& isLeft);
+
+  void compute_buffer_kurtosis(float* data, const bool& isLeft);
+
+  auto compute_adaptive_intensity(const uint& band_index, float base_intensity, float* band_data, const bool& isLeft)
+      -> float;
 
   template <typename T1>
   void enhance_peaks(T1& data_left, T1& data_right) {
@@ -165,6 +175,14 @@ class Crystalizer : public PluginBase {
 
         is_first_buffer = false;
       }
+    }
+
+    if (settings->adaptiveIntensity()) {
+      compute_buffer_crest(data_left.data(), true);
+      compute_buffer_crest(data_right.data(), false);
+
+      compute_buffer_kurtosis(data_left.data(), true);
+      compute_buffer_kurtosis(data_right.data(), false);
     }
 
     for (uint n = 0U; n < nbands; n++) {
