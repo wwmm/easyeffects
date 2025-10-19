@@ -28,19 +28,6 @@ Kirigami.ScrollablePage {
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
     }
 
-    function showStatus(label, positive = true) {
-        status.text = label;
-
-        if (positive) {
-            status.type = Kirigami.MessageType.Positive;
-            autoHideStatusTimer.start();
-        } else {
-            status.type = Kirigami.MessageType.Error;
-        }
-
-        status.visible = true;
-    }
-
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
@@ -53,10 +40,10 @@ Kirigami.ScrollablePage {
         nameFilters: ["RNNoise (*.rnnn)"]
         onAccepted: {
             if (Presets.Manager.importRNNoiseModel(fileDialog.selectedFiles) === 0)
-                rnnoisePage.showStatus(i18n("Model File Imported.")// qmllint disable
+                appWindow.showStatus(i18n("Model File Imported."), Kirigami.MessageType.Positive // qmllint disable
                 );
             else
-                rnnoisePage.showStatus(i18n("Failed to Import the Model File."));// qmllint disable
+                appWindow.showStatus(i18n("Failed to Import the Model File."), Kirigami.MessageType.Error);// qmllint disable
         }
     }
 
@@ -206,7 +193,7 @@ Kirigami.ScrollablePage {
                             onClicked: {
                                 rnnoisePage.pluginDB.modelName = name;
                                 listItemDelegate.ListView.view.currentIndex = index;
-                                rnnoisePage.showStatus(i18n("Loaded Model: %1", name));// qmllint disable
+                                appWindow.showStatus(i18n("Loaded Model: %1", name), Kirigami.MessageType.Positive);// qmllint disable
                             }
 
                             contentItem: RowLayout {
@@ -223,10 +210,10 @@ Kirigami.ScrollablePage {
                                             displayHint: Kirigami.DisplayHint.AlwaysHide
                                             onTriggered: {
                                                 if (Presets.Manager.removeRNNoiseModel(listItemDelegate.path) === true)
-                                                    rnnoisePage.showStatus(i18n("Removed Model: %1", listItemDelegate.name) // qmllint disable
+                                                    appWindow.showStatus(i18n("Removed Model: %1", listItemDelegate.name), Kirigami.MessageType.Positive  // qmllint disable
                                                     );
                                                 else
-                                                    rnnoisePage.showStatus(i18n("Failed to Remove the Model: %1", listItemDelegate.name)// qmllint disable
+                                                    appWindow.showStatus(i18n("Failed to Remove the Model: %1", listItemDelegate.name), Kirigami.MessageType.Error // qmllint disable
                                                     , false);
                                             }
                                         }
