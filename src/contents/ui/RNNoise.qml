@@ -4,7 +4,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import ee.database as DB
 import ee.presets as Presets
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import ee.type.presets as TypePresets
@@ -214,7 +213,7 @@ Kirigami.ScrollablePage {
                                                     );
                                                 else
                                                     appWindow.showStatus(i18n("Failed to Remove the Model: %1", listItemDelegate.name), Kirigami.MessageType.Error // qmllint disable
-                                                    , false);
+                                                    );
                                             }
                                         }
                                     ]
@@ -241,24 +240,6 @@ Kirigami.ScrollablePage {
     }
 
     footer: ColumnLayout {
-        Kirigami.InlineMessage {
-            id: status
-
-            Layout.fillWidth: true
-            Layout.maximumWidth: parent.width
-            visible: false
-            showCloseButton: true
-        }
-
-        Timer {
-            id: autoHideStatusTimer
-            interval: DB.Manager.main.autoHideInlineMessageTimeout
-            onTriggered: {
-                status.visible = false;
-                autoHideStatusTimer.stop();
-            }
-        }
-
         RowLayout {
             Controls.Label {
                 text: i18n("Using %1", `<b>${TagsPluginName.Package.rnnoise}</b>`) // qmllint disable

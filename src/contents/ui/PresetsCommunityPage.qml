@@ -31,16 +31,6 @@ ColumnLayout {
         return "";
     }
 
-    function showPresetsMenuStatus(label) {
-        status.text = label;
-        status.visible = true;
-    }
-    function showPresetsMenuError(label) {
-        status.text = label;
-        status.visible = true;
-        status.type = Kirigami.MessageType.Error;
-    }
-
     ListModel {
         id: listModel
     }
@@ -89,7 +79,7 @@ ColumnLayout {
                 width: listView.width
                 onClicked: {
                     if (Presets.Manager.loadCommunityPresetFile(columnLayout.pipeline, path, presetPackage) === false)
-                        columnLayout.showPresetsMenuError(i18n("The Preset %1 Failed to Load", `<strong>${name}</strong>`)// qmllint disable
+                        appWindow.showStatus(i18n("The Preset %1 Failed to Load", `<strong>${name}</strong>`), Kirigami.MessageType.Error // qmllint disable
                         );
                 }
 
@@ -113,10 +103,10 @@ ColumnLayout {
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
                                     if (Presets.Manager.importFromCommunityPackage(columnLayout.pipeline, listItemDelegate.path, listItemDelegate.presetPackage) === true)
-                                        columnLayout.showPresetsMenuStatus(i18n("Imported the Community Preset") + ": " + `<strong>${listItemDelegate.name}</strong>`// qmllint disable
+                                        appWindow.showStatus(i18n("Imported the Community Preset: %1", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive// qmllint disable
                                         );
                                     else
-                                        columnLayout.showPresetsMenuError(i18n("Failed to Import the Community Preset") + ": " + `<strong>${listItemDelegate.name}</strong>`// qmllint disable
+                                        appWindow.showStatus(i18n("Failed to Import the Community Preset: %1", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error // qmllint disable
                                         );
                                 }
                             }
@@ -140,14 +130,5 @@ ColumnLayout {
         onClicked: {
             Presets.Manager.refreshCommunityPresets(columnLayout.pipeline);
         }
-    }
-
-    Kirigami.InlineMessage {
-        id: status
-
-        Layout.fillWidth: true
-        Layout.maximumWidth: parent.width
-        visible: false
-        showCloseButton: true
     }
 }
