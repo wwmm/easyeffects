@@ -89,6 +89,8 @@ Kirigami.ApplicationWindow {
     }
 
     function showStatus(label, statusType) {
+        autoHideStatusTimer.stop();
+
         status.type = statusType;
         status.text = label;
         status.visible = true;

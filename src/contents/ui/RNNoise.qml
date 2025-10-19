@@ -192,7 +192,6 @@ Kirigami.ScrollablePage {
                             onClicked: {
                                 rnnoisePage.pluginDB.modelName = name;
                                 listItemDelegate.ListView.view.currentIndex = index;
-                                appWindow.showStatus(i18n("Loaded Model: %1", name), Kirigami.MessageType.Positive);// qmllint disable
                             }
 
                             contentItem: RowLayout {
@@ -219,6 +218,28 @@ Kirigami.ScrollablePage {
                                     ]
                                 }
                             }
+
+                            Connections {
+                                function onStandardModelLoaded() {
+                                    currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
+
+                                    appWindow.showStatus(i18n("Standard RNNoise Model Loaded."), Kirigami.MessageType.Positive);
+                                }
+
+                                function onCustomModelLoaded(name, success) {
+                                    if (success) {
+                                        currentModelLoaded.text = i18n("Using %1 Model", `<strong>${name}</strong>`);
+
+                                        appWindow.showStatus(i18n("%1 Model Correctly Loaded.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive);
+                                    } else {
+                                        currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
+
+                                        appWindow.showStatus(i18n("Failed to Load the %1 Model. Fallback to Standard RNNoise Model.", `<strong>${name}</strong>`), Kirigami.MessageType.Error);
+                                    }
+                                }
+
+                                target: rnnoisePage.pluginBackend
+                            }
                         }
                     }
 
@@ -227,6 +248,28 @@ Kirigami.ScrollablePage {
 
                         parent: listviewRow
                         Layout.fillHeight: true
+                    }
+                }
+            }
+        }
+
+        Kirigami.CardsLayout {
+            Controls.Label {
+                id: currentModelLoaded
+
+                Layout.topMargin: Kirigami.Units.mediumSpacing * 2
+                Layout.alignment: Qt.AlignHCenter
+                textFormat: Text.RichText
+                color: Kirigami.Theme.disabledTextColor
+                wrapMode: Text.WordWrap
+
+                text: {
+                    if (rnnoisePage.pluginDB.useStandardModel) {
+                        return i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
+                    } else if (rnnoisePage.pluginBackend.usingStandardModel) {
+                        return i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
+                    } else {
+                        return i18n("Using %1 Model", `<strong>${rnnoisePage.pluginDB.modelName}</strong>`);
                     }
                 }
             }
@@ -242,7 +285,7 @@ Kirigami.ScrollablePage {
     footer: ColumnLayout {
         RowLayout {
             Controls.Label {
-                text: i18n("Using %1", `<b>${TagsPluginName.Package.rnnoise}</b>`) // qmllint disable
+                text: i18n("Using %1", `<strong>${TagsPluginName.Package.rnnoise}</strong>`) // qmllint disable
                 textFormat: Text.RichText
                 horizontalAlignment: Qt.AlignLeft
                 verticalAlignment: Qt.AlignVCenter
