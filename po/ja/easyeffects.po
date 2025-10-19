@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-18 02:23+0000\n"
+"POT-Creation-Date: 2025-10-19 16:36+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -79,11 +79,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:323
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:335
 msgid "Output Presets"
 msgstr "出力プリセット"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:313
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:325
 msgid "Input Presets"
 msgstr "入力プリセット"
 
@@ -166,14 +166,14 @@ msgstr "出力ゲイン"
 #: src/contents/ui/Convolver.qml:409 src/contents/ui/Crossfeed.qml:134
 #: src/contents/ui/Crystalizer.qml:90 src/contents/ui/DeepFilterNet.qml:168
 #: src/contents/ui/Deesser.qml:310 src/contents/ui/Delay.qml:365
-#: src/contents/ui/EchoCanceller.qml:152 src/contents/ui/Equalizer.qml:298
+#: src/contents/ui/EchoCanceller.qml:152 src/contents/ui/Equalizer.qml:267
 #: src/contents/ui/Exciter.qml:191 src/contents/ui/Expander.qml:759
 #: src/contents/ui/Filter.qml:199 src/contents/ui/Gate.qml:895
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Limiter.qml:615
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:210
-#: src/contents/ui/RNNoise.qml:277 src/contents/ui/Reverb.qml:309
+#: src/contents/ui/RNNoise.qml:245 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
 #, fuzzy
 msgid "Using %1"
@@ -234,7 +234,7 @@ msgstr "下限"
 
 #: src/contents/ui/BassEnhancer.qml:207 src/contents/ui/Compressor.qml:817
 #: src/contents/ui/Deesser.qml:326 src/contents/ui/Delay.qml:401
-#: src/contents/ui/Equalizer.qml:314 src/contents/ui/Exciter.qml:207
+#: src/contents/ui/Equalizer.qml:283 src/contents/ui/Exciter.qml:207
 #: src/contents/ui/Expander.qml:775 src/contents/ui/Filter.qml:215
 #: src/contents/ui/Gate.qml:911 src/contents/ui/Limiter.qml:631
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:118
@@ -255,22 +255,22 @@ msgstr "聞く"
 #: src/contents/ui/Crossfeed.qml:158 src/contents/ui/Crystalizer.qml:116
 #: src/contents/ui/DeepFilterNet.qml:191 src/contents/ui/Deesser.qml:349
 #: src/contents/ui/Delay.qml:414 src/contents/ui/EchoCanceller.qml:178
-#: src/contents/ui/Equalizer.qml:379 src/contents/ui/Exciter.qml:230
+#: src/contents/ui/Equalizer.qml:348 src/contents/ui/Exciter.qml:230
 #: src/contents/ui/Expander.qml:808 src/contents/ui/Filter.qml:228
 #: src/contents/ui/Gate.qml:944 src/contents/ui/LevelMeter.qml:255
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
 #: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:300
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:268
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:494
+#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:515
 msgid "Reset"
 msgstr "リセット"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:431
+#: src/contents/ui/main.qml:449
 msgid "Output"
 msgstr "出力"
 
@@ -296,10 +296,10 @@ msgid "Add to Excluded Applications"
 msgstr "除外アプリケーションに追加"
 
 #: src/contents/ui/BlocklistSheet.qml:97
-#: src/contents/ui/ConvolverImpulseSheet.qml:83
-#: src/contents/ui/MenuAddPlugins.qml:42
-#: src/contents/ui/PresetsCommunityPage.qml:78
-#: src/contents/ui/PresetsLocalPage.qml:173 src/contents/ui/RNNoise.qml:193
+#: src/contents/ui/ConvolverImpulseSheet.qml:66
+#: src/contents/ui/MenuAddPlugins.qml:34
+#: src/contents/ui/PresetsCommunityPage.qml:68
+#: src/contents/ui/PresetsLocalPage.qml:173 src/contents/ui/RNNoise.qml:179
 #, fuzzy
 msgid "Empty"
 msgstr "リストは空です"
@@ -328,7 +328,7 @@ msgstr "コンプレッサー"
 
 #: src/contents/ui/Compressor.qml:70 src/contents/ui/Compressor.qml:301
 #: src/contents/ui/Deesser.qml:71 src/contents/ui/Delay.qml:56
-#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:118
+#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:105
 #: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:70
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:285
 #: src/contents/ui/Limiter.qml:52 src/contents/ui/Loudness.qml:54
@@ -389,7 +389,7 @@ msgstr "アタック"
 #: src/contents/ui/Gate.qml:90 src/contents/ui/Gate.qml:802
 #: src/contents/ui/Limiter.qml:159 src/contents/ui/Limiter.qml:448
 #: src/contents/ui/Maximizer.qml:49 src/contents/ui/MultibandCompressor.qml:285
-#: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:126
+#: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:112
 msgid "Release"
 msgstr "リリース"
 
@@ -428,7 +428,7 @@ msgstr "外部"
 
 #: src/contents/ui/Compressor.qml:278 src/contents/ui/Expander.qml:238
 #: src/contents/ui/Gate.qml:262 src/contents/ui/Limiter.qml:238
-#: src/contents/ui/PageStreamsEffects.qml:303
+#: src/contents/ui/PageStreamsEffects.qml:316
 msgid "Input Device"
 msgstr "入力デバイス"
 
@@ -481,7 +481,7 @@ msgid "Side"
 msgstr "サイド"
 
 #: src/contents/ui/Compressor.qml:318 src/contents/ui/Convolver.qml:249
-#: src/contents/ui/Delay.qml:42 src/contents/ui/Equalizer.qml:210
+#: src/contents/ui/Delay.qml:42 src/contents/ui/Equalizer.qml:197
 #: src/contents/ui/Expander.qml:278 src/contents/ui/Gate.qml:302
 #: src/contents/ui/LevelMeter.qml:58 src/contents/ui/LevelMeter.qml:103
 #: src/contents/ui/MultibandCompressor.qml:431
@@ -491,7 +491,7 @@ msgid "Left"
 msgstr "左"
 
 #: src/contents/ui/Compressor.qml:318 src/contents/ui/Convolver.qml:267
-#: src/contents/ui/Delay.qml:200 src/contents/ui/Equalizer.qml:210
+#: src/contents/ui/Delay.qml:200 src/contents/ui/Equalizer.qml:197
 #: src/contents/ui/Expander.qml:278 src/contents/ui/Gate.qml:302
 #: src/contents/ui/LevelMeter.qml:74 src/contents/ui/LevelMeter.qml:119
 #: src/contents/ui/MultibandCompressor.qml:431
@@ -715,53 +715,53 @@ msgstr "ステレオ幅"
 msgid "Autogain"
 msgstr "オートゲイン"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:48
+#: src/contents/ui/ConvolverImpulseSheet.qml:31
 #, fuzzy
 msgid "Impluse File Imported."
 msgstr "インパルスファイルがインポートされていません"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:52
+#: src/contents/ui/ConvolverImpulseSheet.qml:35
 #, fuzzy
 msgid "Failed to Import the Impulse File."
 msgstr "インパルスファイルを読み込めません"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:63
+#: src/contents/ui/ConvolverImpulseSheet.qml:46
 #: src/contents/ui/MenuAddPlugins.qml:145
-#: src/contents/ui/PresetsCommunityPage.qml:54
+#: src/contents/ui/PresetsCommunityPage.qml:44
 #: src/contents/ui/PresetsLocalPage.qml:148
 msgid "Search"
 msgstr "検索"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:96
+#: src/contents/ui/ConvolverImpulseSheet.qml:80
 #, fuzzy
 msgid "Loaded Impulse: %1"
 msgstr "インパルス読み込み"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:102
+#: src/contents/ui/ConvolverImpulseSheet.qml:86
 #, fuzzy
 msgid "Remove Impulse Response"
 msgstr "インパルスレスポンス"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:103
+#: src/contents/ui/ConvolverImpulseSheet.qml:87
 msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:107
+#: src/contents/ui/ConvolverImpulseSheet.qml:91
 #, fuzzy
 msgid "Removed Impulse: %1"
 msgstr "インパルス削除"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:110
+#: src/contents/ui/ConvolverImpulseSheet.qml:94
 #, fuzzy
 msgid "Failed to Remove the Impulse: %1"
 msgstr "インパルスファイルを読み込めません"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:124
+#: src/contents/ui/ConvolverImpulseSheet.qml:108
 #, fuzzy
 msgid "Delete this Impulse"
 msgstr "インパルス削除"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:164
+#: src/contents/ui/ConvolverImpulseSheet.qml:128
 msgid "Import Impulse"
 msgstr "インパルスをインポート"
 
@@ -783,7 +783,7 @@ msgid "Default"
 msgstr "デフォルト"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:401
+#: src/contents/ui/main.qml:413
 msgid "Presets"
 msgstr "プリセット"
 
@@ -855,7 +855,7 @@ msgstr "スプリット"
 #: src/contents/ui/Maximizer.qml:65 src/contents/ui/MultibandCompressor.qml:256
 #: src/contents/ui/MultibandCompressor.qml:304
 #: src/contents/ui/MultibandGate.qml:270 src/contents/ui/MultibandGate.qml:324
-#: src/contents/ui/RNNoise.qml:94
+#: src/contents/ui/RNNoise.qml:80
 msgid "Threshold"
 msgstr "しきい値"
 
@@ -952,7 +952,7 @@ msgid "Access"
 msgstr "アクセス"
 
 #: src/contents/ui/DelegateModulesList.qml:64
-#: src/contents/ui/PresetsAutoloadingPage.qml:165
+#: src/contents/ui/PresetsAutoloadingPage.qml:154
 msgid "Description"
 msgstr "説明"
 
@@ -973,7 +973,7 @@ msgstr "チャンネル"
 #: src/contents/ui/DelegateStreamsList.qml:91
 #: src/contents/ui/EchoCanceller.qml:50 src/contents/ui/EchoCanceller.qml:90
 #: src/contents/ui/EchoCanceller.qml:123 src/contents/ui/Gate.qml:180
-#: src/contents/ui/RNNoise.qml:83
+#: src/contents/ui/RNNoise.qml:69
 msgid "Enable"
 msgstr "有効"
 
@@ -1042,97 +1042,97 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:441
+#: src/contents/ui/main.qml:460
 msgid "Input"
 msgstr "入力"
 
-#: src/contents/ui/Equalizer.qml:63
+#: src/contents/ui/Equalizer.qml:50
 msgid "APO Presets"
 msgstr "APO プリセット"
 
-#: src/contents/ui/Equalizer.qml:66
+#: src/contents/ui/Equalizer.qml:53
 #, fuzzy
 msgid "APO Preset File Imported."
 msgstr "インパルスファイルがインポートされていません"
 
-#: src/contents/ui/Equalizer.qml:69
+#: src/contents/ui/Equalizer.qml:56
 #, fuzzy
 msgid "Failed to Import the APO Preset File."
 msgstr "APO プリセットファイルをインポート"
 
-#: src/contents/ui/Equalizer.qml:79
+#: src/contents/ui/Equalizer.qml:66
 msgid "GraphicEQ Presets"
 msgstr "GraphicEQ プリセット"
 
-#: src/contents/ui/Equalizer.qml:82
+#: src/contents/ui/Equalizer.qml:69
 #, fuzzy
 msgid "GraphicEQ Preset File Imported."
 msgstr "GraphicEQ プリセットファイルのインポート"
 
-#: src/contents/ui/Equalizer.qml:85
+#: src/contents/ui/Equalizer.qml:72
 #, fuzzy
 msgid "Failed to Import the GraphicEQ Preset File."
 msgstr "GraphicEQ プリセットファイルのインポート"
 
-#: src/contents/ui/Equalizer.qml:95
+#: src/contents/ui/Equalizer.qml:82
 #, fuzzy
 msgid "APO Preset"
 msgstr "APO プリセット"
 
-#: src/contents/ui/Equalizer.qml:98
+#: src/contents/ui/Equalizer.qml:85
 #, fuzzy
 msgid "APO Preset File Exported."
 msgstr "APO プリセットファイルをインポート"
 
-#: src/contents/ui/Equalizer.qml:101
+#: src/contents/ui/Equalizer.qml:88
 #, fuzzy
 msgid "Failed to Export the APO Preset File."
 msgstr "APO プリセットファイルをインポート"
 
-#: src/contents/ui/Equalizer.qml:131
+#: src/contents/ui/Equalizer.qml:118
 msgid "Bands"
 msgstr "バンド"
 
-#: src/contents/ui/Equalizer.qml:147 src/contents/ui/Filter.qml:174
+#: src/contents/ui/Equalizer.qml:134 src/contents/ui/Filter.qml:174
 #: src/contents/ui/StereoTools.qml:66 src/contents/ui/StereoTools.qml:320
 msgid "Balance"
 msgstr "バランス"
 
-#: src/contents/ui/Equalizer.qml:164
+#: src/contents/ui/Equalizer.qml:151
 msgid "Pitch Left"
 msgstr "左ピッチ"
 
-#: src/contents/ui/Equalizer.qml:181
+#: src/contents/ui/Equalizer.qml:168
 msgid "Pitch Right"
 msgstr "右ピッチ"
 
-#: src/contents/ui/Equalizer.qml:327
+#: src/contents/ui/Equalizer.qml:296
 msgid "Split Channels"
 msgstr "チャンネル分割"
 
-#: src/contents/ui/Equalizer.qml:337
+#: src/contents/ui/Equalizer.qml:306
 msgid "Flat Response"
 msgstr "フラットレスポンス"
 
-#: src/contents/ui/Equalizer.qml:344
+#: src/contents/ui/Equalizer.qml:313
 msgid "Calculate Frequencies"
 msgstr "周波数計算"
 
-#: src/contents/ui/Equalizer.qml:351
+#: src/contents/ui/Equalizer.qml:320
 msgid "Sort Bands"
 msgstr "バンド並べ替え"
 
-#: src/contents/ui/Equalizer.qml:358
+#: src/contents/ui/Equalizer.qml:327
 #, fuzzy
 msgid "Import APO"
 msgstr "インポート"
 
-#: src/contents/ui/Equalizer.qml:365
+#: src/contents/ui/Equalizer.qml:334
 #, fuzzy
 msgid "Import APO (GraphicEQ)"
 msgstr "GraphicEQ プリセットファイルのインポート"
 
-#: src/contents/ui/Equalizer.qml:372
+#: src/contents/ui/Equalizer.qml:341
 #, fuzzy
 msgid "Export APO"
 msgstr "プリセットをエクスポート"
@@ -1596,9 +1596,9 @@ msgstr "クリッピング範囲"
 msgid "Clipping"
 msgstr "クリッピング"
 
-#: src/contents/ui/MenuAddPlugins.qml:133
+#: src/contents/ui/MenuAddPlugins.qml:132
 #, fuzzy
-msgid "Added Effect"
+msgid "Added Effect: %1"
 msgstr "エフェクト追加"
 
 #: src/contents/ui/MultibandCompressor.qml:111
@@ -1682,51 +1682,51 @@ msgstr "入力デバイス"
 msgid "Reaction"
 msgstr "減少"
 
-#: src/contents/ui/PageStreamsEffects.qml:66
-#: src/contents/ui/PresetsAutoloadingPage.qml:107
+#: src/contents/ui/PageStreamsEffects.qml:79
+#: src/contents/ui/PresetsAutoloadingPage.qml:96
 msgid "Empty List"
 msgstr "リストは空です"
 
-#: src/contents/ui/PageStreamsEffects.qml:67
+#: src/contents/ui/PageStreamsEffects.qml:80
 msgid "No Audio Application Available"
 msgstr "オーディオアプリケーションがありません"
 
-#: src/contents/ui/PageStreamsEffects.qml:257
+#: src/contents/ui/PageStreamsEffects.qml:270
 msgid "Add Effect"
 msgstr "エフェクト追加"
 
-#: src/contents/ui/PageStreamsEffects.qml:303
-#: src/contents/ui/PageStreamsEffects.qml:545
+#: src/contents/ui/PageStreamsEffects.qml:316
+#: src/contents/ui/PageStreamsEffects.qml:565
 msgid "Players"
 msgstr "プレーヤー"
 
-#: src/contents/ui/PageStreamsEffects.qml:320
-#: src/contents/ui/PageStreamsEffects.qml:545
+#: src/contents/ui/PageStreamsEffects.qml:333
+#: src/contents/ui/PageStreamsEffects.qml:565
 msgid "Recorders"
 msgstr "レコーダー"
 
-#: src/contents/ui/PageStreamsEffects.qml:333
+#: src/contents/ui/PageStreamsEffects.qml:346
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:356
+#: src/contents/ui/PageStreamsEffects.qml:370
 msgid "No Effects"
 msgstr "エフェクトなし"
 
-#: src/contents/ui/PageStreamsEffects.qml:357
+#: src/contents/ui/PageStreamsEffects.qml:371
 msgid "Audio Stream Not Modified"
 msgstr "オーディオストリームは変更されていません"
 
-#: src/contents/ui/PageStreamsEffects.qml:555
+#: src/contents/ui/PageStreamsEffects.qml:575
 msgid "Effects"
 msgstr "エフェクト"
 
-#: src/contents/ui/PageStreamsEffects.qml:572
+#: src/contents/ui/PageStreamsEffects.qml:592
 #, fuzzy
 msgid "Input Monitoring"
 msgstr "入力モニターの有効化/無効化"
 
-#: src/contents/ui/PageStreamsEffects.qml:585
+#: src/contents/ui/PageStreamsEffects.qml:605
 msgid "Excluded Apps"
 msgstr "除外されたアプリ"
 
@@ -1893,7 +1893,7 @@ msgstr "アンチエイリアス"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:466
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:487
 #, fuzzy
 msgid "Preferences"
 msgstr "_環境設定"
@@ -2147,51 +2147,47 @@ msgstr ""
 msgid "Experimental Features"
 msgstr "実験的機能"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:39
-#: src/contents/ui/PresetsAutoloadingPage.qml:139
+#: src/contents/ui/PresetsAutoloadingPage.qml:33
+#: src/contents/ui/PresetsAutoloadingPage.qml:128
 msgid "Device"
 msgstr "デバイス"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:45
-#: src/contents/ui/PresetsAutoloadingPage.qml:179
+#: src/contents/ui/PresetsAutoloadingPage.qml:39
+#: src/contents/ui/PresetsAutoloadingPage.qml:168
 #, fuzzy
 msgid "Hardware Profile"
 msgstr "プロファイル"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:59
-#: src/contents/ui/PresetsAutoloadingPage.qml:192
+#: src/contents/ui/PresetsAutoloadingPage.qml:53
+#: src/contents/ui/PresetsAutoloadingPage.qml:181
 #, fuzzy
 msgid "Local Preset"
 msgstr "ローカルプリセット一覧"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:69
+#: src/contents/ui/PresetsAutoloadingPage.qml:63
 #, fuzzy
 msgid "Create"
 msgstr "作成中"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:231
-msgid "Fallback Preset"
-msgstr ""
-
-#: src/contents/ui/PresetsCommunityPage.qml:92
+#: src/contents/ui/PresetsCommunityPage.qml:82
 msgid "The Preset %1 Failed to Load"
 msgstr ""
 
-#: src/contents/ui/PresetsCommunityPage.qml:111
+#: src/contents/ui/PresetsCommunityPage.qml:101
 msgid "Copy to the Local List"
 msgstr ""
 
-#: src/contents/ui/PresetsCommunityPage.qml:116
+#: src/contents/ui/PresetsCommunityPage.qml:106
 #, fuzzy
-msgid "Imported the Community Preset"
+msgid "Imported the Community Preset: %1"
 msgstr "コミュニティプリセットを検索"
 
-#: src/contents/ui/PresetsCommunityPage.qml:119
+#: src/contents/ui/PresetsCommunityPage.qml:109
 #, fuzzy
-msgid "Failed to Import the Community Preset"
+msgid "Failed to Import the Community Preset: %1"
 msgstr "コミュニティプリセットを検索"
 
-#: src/contents/ui/PresetsCommunityPage.qml:139
+#: src/contents/ui/PresetsCommunityPage.qml:129
 msgid "Refresh"
 msgstr "更新"
 
@@ -2305,71 +2301,75 @@ msgstr "このプリセットファイルを削除"
 msgid "Delete this Preset"
 msgstr "このプリセットファイルを削除"
 
-#: src/contents/ui/PresetsSheet.qml:62 src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:65 src/contents/ui/PresetsSheet.qml:109
 msgid "Local"
 msgstr "ローカル"
 
-#: src/contents/ui/PresetsSheet.qml:73 src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:109
 msgid "Community"
 msgstr "コミュニティ"
 
-#: src/contents/ui/PresetsSheet.qml:84
+#: src/contents/ui/PresetsSheet.qml:87
 #, fuzzy
 msgid "Autoloading"
 msgstr "オートゲイン"
 
-#: src/contents/ui/PresetsSheet.qml:103
+#: src/contents/ui/PresetsSheet.qml:107
 msgid "No Preset Loaded"
 msgstr "プリセットが読み込まれていません"
 
-#: src/contents/ui/RNNoise.qml:56
+#: src/contents/ui/PresetsSheet.qml:123
+msgid "Fallback Preset"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:42
 #, fuzzy
 msgid "Model File Imported."
 msgstr "インパルスファイルがインポートされていません"
 
-#: src/contents/ui/RNNoise.qml:59
+#: src/contents/ui/RNNoise.qml:45
 #, fuzzy
 msgid "Failed to Import the Model File."
 msgstr "モデルファイルをインポート"
 
-#: src/contents/ui/RNNoise.qml:75 src/contents/ui/Speex.qml:108
+#: src/contents/ui/RNNoise.qml:61 src/contents/ui/Speex.qml:108
 msgid "Voice Detection"
 msgstr "音声検出"
 
-#: src/contents/ui/RNNoise.qml:110
+#: src/contents/ui/RNNoise.qml:96
 msgid "Wet Level"
 msgstr "Wet レベル"
 
-#: src/contents/ui/RNNoise.qml:149
+#: src/contents/ui/RNNoise.qml:135
 #, fuzzy
 msgid "Use the Standard Model"
 msgstr "標準モデル"
 
-#: src/contents/ui/RNNoise.qml:160
+#: src/contents/ui/RNNoise.qml:146
 #, fuzzy
 msgid "User Models"
 msgstr "RNNoise モデル"
 
-#: src/contents/ui/RNNoise.qml:209
+#: src/contents/ui/RNNoise.qml:195
 #, fuzzy
 msgid "Loaded Model: %1"
 msgstr "標準モデル"
 
-#: src/contents/ui/RNNoise.qml:221
+#: src/contents/ui/RNNoise.qml:207
 #, fuzzy
 msgid "Delete this Model"
 msgstr "このモデルファイルを削除"
 
-#: src/contents/ui/RNNoise.qml:226
+#: src/contents/ui/RNNoise.qml:212
 #, fuzzy
 msgid "Removed Model: %1"
 msgstr "このモデルファイルを削除"
 
-#: src/contents/ui/RNNoise.qml:229
+#: src/contents/ui/RNNoise.qml:215
 msgid "Failed to Remove the Model: %1"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:293
+#: src/contents/ui/RNNoise.qml:261
 msgid "Import Model"
 msgstr "モデルインポート"
 
@@ -2497,8 +2497,8 @@ msgstr ""
 msgid "Toggle Microphone Monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:360
-#: src/contents/ui/main.qml:474
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:372
+#: src/contents/ui/main.qml:495
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_ショートカット"
@@ -2592,55 +2592,55 @@ msgstr "ステレオベース"
 msgid "Stereo Phase"
 msgstr "ステレオ位相"
 
-#: src/contents/ui/main.qml:189
+#: src/contents/ui/main.qml:201
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_設定をリセット"
 
-#: src/contents/ui/main.qml:190
+#: src/contents/ui/main.qml:202
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:211
+#: src/contents/ui/main.qml:223
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
-#: src/contents/ui/main.qml:224
+#: src/contents/ui/main.qml:236
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "エンベロープ"
 
-#: src/contents/ui/main.qml:287 src/contents/ui/main.qml:304
+#: src/contents/ui/main.qml:299 src/contents/ui/main.qml:316
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "プリセットが読み込まれていません"
 
-#: src/contents/ui/main.qml:349
+#: src/contents/ui/main.qml:361
 #, fuzzy
 msgid "Active"
 msgstr "アクティブモデル"
 
-#: src/contents/ui/main.qml:369 src/contents/ui/main.qml:482
+#: src/contents/ui/main.qml:381 src/contents/ui/main.qml:503
 #, fuzzy
 msgid "Manual"
 msgstr "_マニュアル"
 
-#: src/contents/ui/main.qml:379 src/contents/ui/main.qml:514
+#: src/contents/ui/main.qml:391 src/contents/ui/main.qml:535
 #, fuzzy
 msgid "Quit"
 msgstr "_終了"
 
-#: src/contents/ui/main.qml:409
+#: src/contents/ui/main.qml:421
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:451
+#: src/contents/ui/main.qml:471
 #, fuzzy
 msgid "PipeWire"
 msgstr "_PipeWire"
 
-#: src/contents/ui/main.qml:506
+#: src/contents/ui/main.qml:527
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_Easy Effects について"
