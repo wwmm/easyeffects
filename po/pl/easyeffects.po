@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-19 18:41+0000\n"
+"POT-Creation-Date: 2025-10-19 19:09+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Aleksander <olek_filip@wp.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -173,9 +173,9 @@ msgstr "Wzmocnienie wyjścia"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:210
-#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
-#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
-#: src/contents/ui/RNNoise.qml:288 src/contents/ui/Reverb.qml:309
+#: src/contents/ui/RNNoise.qml:55 src/contents/ui/RNNoise.qml:66
+#: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
+#: src/contents/ui/RNNoise.qml:297 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
 #, fuzzy
 msgid "Using %1"
@@ -264,7 +264,7 @@ msgstr "Słuchaj"
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
 #: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:311
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
 #: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:517
 msgid "Reset"
@@ -301,7 +301,7 @@ msgstr "Dodaj do wykluczonych programów"
 #: src/contents/ui/ConvolverImpulseSheet.qml:66
 #: src/contents/ui/MenuAddPlugins.qml:34
 #: src/contents/ui/PresetsCommunityPage.qml:68
-#: src/contents/ui/PresetsLocalPage.qml:173 src/contents/ui/RNNoise.qml:179
+#: src/contents/ui/PresetsLocalPage.qml:173 src/contents/ui/RNNoise.qml:210
 #, fuzzy
 msgid "Empty"
 msgstr "Pusta lista"
@@ -391,7 +391,7 @@ msgstr "Atak"
 #: src/contents/ui/Gate.qml:90 src/contents/ui/Gate.qml:802
 #: src/contents/ui/Limiter.qml:159 src/contents/ui/Limiter.qml:448
 #: src/contents/ui/Maximizer.qml:49 src/contents/ui/MultibandCompressor.qml:285
-#: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:112
+#: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:140
 msgid "Release"
 msgstr "Wybrzmiewanie (Release)"
 
@@ -866,7 +866,7 @@ msgstr "Podzielony"
 #: src/contents/ui/Maximizer.qml:65 src/contents/ui/MultibandCompressor.qml:256
 #: src/contents/ui/MultibandCompressor.qml:304
 #: src/contents/ui/MultibandGate.qml:270 src/contents/ui/MultibandGate.qml:324
-#: src/contents/ui/RNNoise.qml:80
+#: src/contents/ui/RNNoise.qml:108
 msgid "Threshold"
 msgstr "Próg"
 
@@ -984,7 +984,7 @@ msgstr "kanały"
 #: src/contents/ui/DelegateStreamsList.qml:91
 #: src/contents/ui/EchoCanceller.qml:50 src/contents/ui/EchoCanceller.qml:90
 #: src/contents/ui/EchoCanceller.qml:123 src/contents/ui/Gate.qml:180
-#: src/contents/ui/RNNoise.qml:69
+#: src/contents/ui/RNNoise.qml:97
 msgid "Enable"
 msgstr "Włącz"
 
@@ -2339,63 +2339,63 @@ msgstr "Plik impulsu nie został zaimportowany"
 msgid "Failed to Import the Model File."
 msgstr "Importuj plik modelu"
 
-#: src/contents/ui/RNNoise.qml:61 src/contents/ui/Speex.qml:108
-msgid "Voice Detection"
-msgstr "Wykrywanie głosu"
-
-#: src/contents/ui/RNNoise.qml:96
-msgid "Wet Level"
-msgstr "Poziom sygnału mokrego (Wet)"
-
-#: src/contents/ui/RNNoise.qml:135
-#, fuzzy
-msgid "Use the Standard Model"
-msgstr "Standardowy model"
-
-#: src/contents/ui/RNNoise.qml:146
-#, fuzzy
-msgid "User Models"
-msgstr "Modele RNNoise"
-
-#: src/contents/ui/RNNoise.qml:206
-#, fuzzy
-msgid "Delete this Model"
-msgstr "Usuń ten plik modelu"
-
-#: src/contents/ui/RNNoise.qml:211
-#, fuzzy
-msgid "Removed Model: %1"
-msgstr "Usuń ten plik modelu"
-
-#: src/contents/ui/RNNoise.qml:214
-msgid "Failed to Remove the Model: %1"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
-#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
+#: src/contents/ui/RNNoise.qml:55 src/contents/ui/RNNoise.qml:66
+#: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
 msgid "Standard RNNoise Model"
 msgstr "Standardowy model RNNoise"
 
-#: src/contents/ui/RNNoise.qml:226
+#: src/contents/ui/RNNoise.qml:57
 #, fuzzy
 msgid "Standard RNNoise Model Loaded."
 msgstr "Standardowy model RNNoise"
 
-#: src/contents/ui/RNNoise.qml:231 src/contents/ui/RNNoise.qml:272
+#: src/contents/ui/RNNoise.qml:62 src/contents/ui/RNNoise.qml:281
 #, fuzzy
 msgid "Using %1 Model"
 msgstr "Wykorzystuje {}"
 
-#: src/contents/ui/RNNoise.qml:233
+#: src/contents/ui/RNNoise.qml:64
 #, fuzzy
 msgid "%1 Model Correctly Loaded."
 msgstr "Model nie jest załadowany"
 
-#: src/contents/ui/RNNoise.qml:237
+#: src/contents/ui/RNNoise.qml:68
 msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:304
+#: src/contents/ui/RNNoise.qml:87 src/contents/ui/Speex.qml:108
+msgid "Voice Detection"
+msgstr "Wykrywanie głosu"
+
+#: src/contents/ui/RNNoise.qml:124
+msgid "Wet Level"
+msgstr "Poziom sygnału mokrego (Wet)"
+
+#: src/contents/ui/RNNoise.qml:164
+#, fuzzy
+msgid "Use the Standard Model"
+msgstr "Standardowy model"
+
+#: src/contents/ui/RNNoise.qml:175
+#, fuzzy
+msgid "User Models"
+msgstr "Modele RNNoise"
+
+#: src/contents/ui/RNNoise.qml:237
+#, fuzzy
+msgid "Delete this Model"
+msgstr "Usuń ten plik modelu"
+
+#: src/contents/ui/RNNoise.qml:242
+#, fuzzy
+msgid "Removed Model: %1"
+msgstr "Usuń ten plik modelu"
+
+#: src/contents/ui/RNNoise.qml:245
+msgid "Failed to Remove the Model: %1"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:313
 msgid "Import Model"
 msgstr "Importuj modele"
 
