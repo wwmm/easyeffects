@@ -30,21 +30,6 @@ Kirigami.ScrollablePage {
         inputOutputLevels.outputLevelRight = equalizerPage.pluginBackend.getOutputLevelRight();
     }
 
-    function showStatus(label, positive = true) {
-        autoHideStatusTimer.stop();
-
-        status.text = label;
-
-        if (positive) {
-            status.type = Kirigami.MessageType.Positive;
-            autoHideStatusTimer.start();
-        } else {
-            status.type = Kirigami.MessageType.Error;
-        }
-
-        status.visible = true;
-    }
-
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
@@ -65,11 +50,11 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("APO Presets") + " (*.txt)"]// qmllint disable
         onAccepted: {
             if (equalizerPage.pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true)
-                equalizerPage.showStatus(i18n("APO Preset File Imported.")// qmllint disable
+                appWindow.showStatus(i18n("APO Preset File Imported."), Kirigami.MessageType.Positive // qmllint disable
                 );
             else
-                equalizerPage.showStatus(i18n("Failed to Import the APO Preset File.")// qmllint disable
-                , false);
+                appWindow.showStatus(i18n("Failed to Import the APO Preset File."), Kirigami.MessageType.Error // qmllint disable
+                );
         }
     }
 
@@ -81,11 +66,11 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("GraphicEQ Presets") + " (*.txt)"]// qmllint disable
         onAccepted: {
             if (equalizerPage.pluginBackend.importApoGraphicEqPreset(apoGraphicEqFileDialog.selectedFiles) === true)
-                equalizerPage.showStatus(i18n("GraphicEQ Preset File Imported.")// qmllint disable
+                appWindow.showStatus(i18n("GraphicEQ Preset File Imported."), Kirigami.MessageType.Positive // qmllint disable
                 );
             else
-                equalizerPage.showStatus(i18n("Failed to Import the GraphicEQ Preset File.")// qmllint disable
-                , false);
+                appWindow.showStatus(i18n("Failed to Import the GraphicEQ Preset File."), Kirigami.MessageType.Error // qmllint disable
+                );
         }
     }
 
@@ -97,11 +82,11 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("APO Preset") + " (*.txt)"]// qmllint disable
         onAccepted: {
             if (equalizerPage.pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true)
-                equalizerPage.showStatus(i18n("APO Preset File Exported.")// qmllint disable
+                appWindow.showStatus(i18n("APO Preset File Exported."), Kirigami.MessageType.Positive // qmllint disable
                 );
             else
-                equalizerPage.showStatus(i18n("Failed to Export the APO Preset File.")// qmllint disable
-                , false);
+                appWindow.showStatus(i18n("Failed to Export the APO Preset File."), Kirigami.MessageType.Error // qmllint disable
+                );
         }
     }
 
@@ -277,24 +262,6 @@ Kirigami.ScrollablePage {
     }
 
     footer: ColumnLayout {
-        Kirigami.InlineMessage {
-            id: status
-
-            Layout.fillWidth: true
-            Layout.maximumWidth: parent.width
-            visible: false
-            showCloseButton: true
-        }
-
-        Timer {
-            id: autoHideStatusTimer
-            interval: DB.Manager.main.autoHideInlineMessageTimeout
-            onTriggered: {
-                status.visible = false;
-                autoHideStatusTimer.stop();
-            }
-        }
-
         RowLayout {
             Controls.Label {
                 text: i18n("Using %1", `<strong>${TagsPluginName.Package.lsp}</strong>`) // qmllint disable

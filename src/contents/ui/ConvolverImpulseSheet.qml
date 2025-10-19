@@ -5,7 +5,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import ee.database as DB
 import ee.presets as Presets
 import org.kde.kirigami as Kirigami
 
@@ -14,30 +13,12 @@ Kirigami.OverlaySheet {
 
     required property var pluginDB
 
-    function showImpulseMenuStatus(label, positive = true) {
-        autoHideStatusTimer.stop();
-
-        status.text = label;
-
-        if (positive) {
-            status.type = Kirigami.MessageType.Positive;
-            autoHideStatusTimer.start();
-        } else {
-            status.type = Kirigami.MessageType.Error;
-        }
-
-        status.visible = true;
-    }
-
     parent: applicationWindow().overlay // qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
     y: appWindow.header.height + Kirigami.Units.gridUnit // qmllint disable
     implicitWidth: Math.max(Kirigami.Units.gridUnit * 40, appWindow.width * 0.5) // qmllint disable
     implicitHeight: (control.parent.height * 0.8) - control.y
-    onClosed: {
-        status.visible = false;
-    }
 
     FileDialog {
         id: fileDialog
@@ -47,16 +28,16 @@ Kirigami.OverlaySheet {
         nameFilters: ["IRS (*.irs)", "WAVE (*.wav)"]
         onAccepted: {
             if (Presets.Manager.importImpulses(fileDialog.selectedFiles) === 0)
-                control.showImpulseMenuStatus(i18n("Impluse File Imported.")// qmllint disable
+                appWindow.showStatus(i18n("Impluse File Imported."), Kirigami.MessageType.Positive // qmllint disable
                 );
             else
                 // qmllint disable
-                control.showImpulseMenuStatus(i18n("Failed to Import the Impulse File."), false); // qmllint disable
+                appWindow.showStatus(i18n("Failed to Import the Impulse File."), Kirigami.MessageType.Error); // qmllint disable
         }
     }
 
     ColumnLayout {
-        height: control.height - (control.header.height + control.footer.height) - control.y
+        height: control.height - (control.header.height) - control.y
 
         Kirigami.SearchField {
             id: search
@@ -95,7 +76,8 @@ Kirigami.OverlaySheet {
                 width: listView.width
                 onClicked: {
                     control.pluginDB.kernelName = name;
-                    control.showImpulseMenuStatus(i18n("Loaded Impulse: %1", name)); // qmllint disable
+
+                    appWindow.showStatus(i18n("Loaded Impulse: %1", name), Kirigami.MessageType.Positive); // qmllint disable
                 }
 
                 Kirigami.PromptDialog {
@@ -106,11 +88,11 @@ Kirigami.OverlaySheet {
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: {
                         if (Presets.Manager.removeImpulseFile(listItemDelegate.path) === true)
-                            control.showImpulseMenuStatus(i18n("Removed Impulse: %1", listItemDelegate.name) // qmllint disable
+                            appWindow.showStatus(i18n("Removed Impulse: %1", listItemDelegate.name), Kirigami.MessageType.Positive // qmllint disable
                             );
                         else
-                            control.showImpulseMenuStatus(i18n("Failed to Remove the Impulse: %1", listItemDelegate.name) // qmllint disable
-                            , false);
+                            appWindow.showStatus(i18n("Failed to Remove the Impulse: %1", listItemDelegate.name), Kirigami.MessageType.Error  // qmllint disable
+                            );
                     }
                 }
 
@@ -133,26 +115,6 @@ Kirigami.OverlaySheet {
                         ]
                     }
                 }
-            }
-        }
-    }
-
-    footer: ColumnLayout {
-        Kirigami.InlineMessage {
-            id: status
-
-            Layout.fillWidth: true
-            Layout.maximumWidth: parent.width
-            visible: false
-            showCloseButton: true
-        }
-
-        Timer {
-            id: autoHideStatusTimer
-            interval: DB.Manager.main.autoHideInlineMessageTimeout
-            onTriggered: {
-                status.visible = false;
-                autoHideStatusTimer.stop();
             }
         }
     }

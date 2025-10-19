@@ -4,7 +4,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
-import ee.database as DB
 import ee.presets as Presets
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import ee.type.presets as TypePresets
@@ -28,21 +27,6 @@ Kirigami.ScrollablePage {
         inputOutputLevels.outputLevelRight = pluginBackend.getOutputLevelRight();
     }
 
-    function showStatus(label, positive = true) {
-        autoHideStatusTimer.stop();
-
-        status.text = label;
-
-        if (positive) {
-            status.type = Kirigami.MessageType.Positive;
-            autoHideStatusTimer.start();
-        } else {
-            status.type = Kirigami.MessageType.Error;
-        }
-
-        status.visible = true;
-    }
-
     Component.onCompleted: {
         pluginBackend = pipelineInstance.getPluginInstance(name);
     }
@@ -55,10 +39,10 @@ Kirigami.ScrollablePage {
         nameFilters: ["RNNoise (*.rnnn)"]
         onAccepted: {
             if (Presets.Manager.importRNNoiseModel(fileDialog.selectedFiles) === 0)
-                rnnoisePage.showStatus(i18n("Model File Imported.")// qmllint disable
+                appWindow.showStatus(i18n("Model File Imported."), Kirigami.MessageType.Positive // qmllint disable
                 );
             else
-                rnnoisePage.showStatus(i18n("Failed to Import the Model File."));// qmllint disable
+                appWindow.showStatus(i18n("Failed to Import the Model File."), Kirigami.MessageType.Error);// qmllint disable
         }
     }
 
@@ -208,6 +192,7 @@ Kirigami.ScrollablePage {
                             onClicked: {
                                 rnnoisePage.pluginDB.modelName = name;
                                 listItemDelegate.ListView.view.currentIndex = index;
+                                appWindow.showStatus(i18n("Loaded Model: %1", name), Kirigami.MessageType.Positive);// qmllint disable
                             }
 
                             contentItem: RowLayout {
@@ -224,11 +209,11 @@ Kirigami.ScrollablePage {
                                             displayHint: Kirigami.DisplayHint.AlwaysHide
                                             onTriggered: {
                                                 if (Presets.Manager.removeRNNoiseModel(listItemDelegate.path) === true)
-                                                    rnnoisePage.showStatus(i18n("Removed Model: %1", listItemDelegate.name) // qmllint disable
+                                                    appWindow.showStatus(i18n("Removed Model: %1", listItemDelegate.name), Kirigami.MessageType.Positive  // qmllint disable
                                                     );
                                                 else
-                                                    rnnoisePage.showStatus(i18n("Failed to Remove the Model: %1", listItemDelegate.name)// qmllint disable
-                                                    , false);
+                                                    appWindow.showStatus(i18n("Failed to Remove the Model: %1", listItemDelegate.name), Kirigami.MessageType.Error // qmllint disable
+                                                    );
                                             }
                                         }
                                     ]
@@ -299,24 +284,6 @@ Kirigami.ScrollablePage {
     }
 
     footer: ColumnLayout {
-        Kirigami.InlineMessage {
-            id: status
-
-            Layout.fillWidth: true
-            Layout.maximumWidth: parent.width
-            visible: false
-            showCloseButton: true
-        }
-
-        Timer {
-            id: autoHideStatusTimer
-            interval: DB.Manager.main.autoHideInlineMessageTimeout
-            onTriggered: {
-                status.visible = false;
-                autoHideStatusTimer.stop();
-            }
-        }
-
         RowLayout {
             Controls.Label {
                 text: i18n("Using %1", `<strong>${TagsPluginName.Package.rnnoise}</strong>`) // qmllint disable

@@ -305,13 +305,4 @@ ColumnLayout {
             Layout.fillHeight: true
         }
     }
-
-    Kirigami.InlineMessage {
-        id: status
-
-        Layout.fillWidth: true
-        Layout.maximumWidth: parent.width
-        visible: false
-        showCloseButton: true
-    }
 }

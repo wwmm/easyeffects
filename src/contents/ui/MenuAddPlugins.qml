@@ -11,11 +11,6 @@ Kirigami.OverlaySheet {
 
     required property var streamDB
 
-    function showMenuStatus(label) {
-        status.text = label;
-        status.visible = true;
-    }
-
     parent: applicationWindow().overlay// qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
@@ -23,9 +18,6 @@ Kirigami.OverlaySheet {
     showCloseButton: false
     implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
     implicitHeight: control.parent.height - 2 * control.header.height - control.y
-    onClosed: {
-        status.visible = false;
-    }
 
     ListView {
         id: listView
@@ -71,6 +63,7 @@ Kirigami.OverlaySheet {
                     onClicked: {
                         let plugins = control.streamDB.plugins;
                         let index_list = [];
+
                         for (let n = 0; n < plugins.length; n++) {
                             if (plugins[n].startsWith(listItemDelegate.name)) {
                                 const m = plugins[n].match(/#(\d+)$/);
@@ -78,8 +71,10 @@ Kirigami.OverlaySheet {
                                     index_list.push(m[1]);
                             }
                         }
+
                         const new_id = (index_list.length === 0) ? 0 : Math.max.apply(null, index_list) + 1;
                         const new_name = listItemDelegate.name + "#" + new_id;
+
                         /**
                          * If the list is not empty and the user is careful
                          * protecting their device with a plugin of type
@@ -103,8 +98,10 @@ Kirigami.OverlaySheet {
                          * preserve the "limiter protection" in case the last
                          * plugins are a limiter followed by a meter.
                          */
+
                         const limiters_and_meters = [TagsPluginName.BaseName.limiter, TagsPluginName.BaseName.maximizer, TagsPluginName.BaseName.level_meter];
                         const limiters = [TagsPluginName.BaseName.limiter, TagsPluginName.BaseName.maximizer];
+
                         if (plugins.length === 0) {
                             plugins.push(new_name);
                         } else if (limiters_and_meters.some(v => {
@@ -129,8 +126,11 @@ Kirigami.OverlaySheet {
                         } else {
                             plugins.push(new_name);
                         }
+
                         control.streamDB.plugins = plugins;
-                        showMenuStatus(i18n("Added Effect") + `: <strong>${translatedName}</strong>`);// qmllint disable
+
+                        appWindow.showStatus(i18n("Added Effect: %1", `<strong>${translatedName}</strong>`)// qmllint disable
+                        , Kirigami.MessageType.Positive);
                     }
                 }
             }
@@ -147,17 +147,6 @@ Kirigami.OverlaySheet {
                 const re = Common.regExpEscape(search.text);
                 TagsPluginName.SortedNameModel.filterRegularExpression = RegExp(re, "i");
             }
-        }
-    }
-
-    footer: ColumnLayout {
-        Kirigami.InlineMessage {
-            id: status
-
-            Layout.fillWidth: true
-            visible: false
-            showCloseButton: true
-            Layout.maximumWidth: parent.width
         }
     }
 }
