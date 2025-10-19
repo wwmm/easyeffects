@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-19 16:36+0000\n"
+"POT-Creation-Date: 2025-10-19 18:41+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -75,11 +75,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:335
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:337
 msgid "Output Presets"
 msgstr ""
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:325
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
 msgid "Input Presets"
 msgstr ""
 
@@ -141,7 +141,7 @@ msgstr ""
 
 #: src/contents/ui/Autogain.qml:145 src/contents/ui/Autogain.qml:235
 #: src/contents/ui/BassLoudness.qml:47 src/contents/ui/LevelMeter.qml:139
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "ხმის დონე"
 
@@ -169,7 +169,9 @@ msgstr "გამოტანის გაძლიერება"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:210
-#: src/contents/ui/RNNoise.qml:245 src/contents/ui/Reverb.qml:309
+#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
+#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
+#: src/contents/ui/RNNoise.qml:288 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
 #, fuzzy
 msgid "Using %1"
@@ -256,16 +258,16 @@ msgstr "მოსმენა"
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
 #: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:268
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:311
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:515
+#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:517
 msgid "Reset"
 msgstr "დაბრუნება"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:449
+#: src/contents/ui/main.qml:451
 msgid "Output"
 msgstr "გამოტანა"
 
@@ -313,7 +315,7 @@ msgstr ""
 msgid "Show Excluded Applications in the Streams Section"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:52 src/tags_plugin_name.cpp:28
+#: src/contents/ui/Compressor.qml:52 src/tags_plugin_name.cpp:29
 msgid "Compressor"
 msgstr "კომპრესორი"
 
@@ -699,7 +701,7 @@ msgstr "ხანგრძლოვობა"
 msgid "Stereo Width"
 msgstr ""
 
-#: src/contents/ui/Convolver.qml:425 src/tags_plugin_name.cpp:25
+#: src/contents/ui/Convolver.qml:425 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr ""
 
@@ -763,7 +765,7 @@ msgid "Default"
 msgstr ""
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:413
+#: src/contents/ui/main.qml:415
 msgid "Presets"
 msgstr "პრესეტები"
 
@@ -813,7 +815,7 @@ msgstr ""
 msgid "Post Filter Beta"
 msgstr ""
 
-#: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:33
+#: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr ""
 
@@ -844,7 +846,7 @@ msgid "Laxity"
 msgstr ""
 
 #: src/contents/ui/Deesser.qml:153 src/contents/ui/Filter.qml:104
-#: src/contents/ui/Reverb.qml:115 src/tags_plugin_name.cpp:39
+#: src/contents/ui/Reverb.qml:115 src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "ფილტრი"
 
@@ -959,7 +961,7 @@ msgstr "ჩართვა"
 msgid "Exclude"
 msgstr "გამორიცხვა"
 
-#: src/contents/ui/EchoCanceller.qml:42 src/tags_plugin_name.cpp:35
+#: src/contents/ui/EchoCanceller.qml:42 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr ""
 
@@ -1019,7 +1021,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:460
+#: src/contents/ui/main.qml:462
 msgid "Input"
 msgstr "შეყვანა"
 
@@ -1203,7 +1205,7 @@ msgstr "ფარდობითი"
 msgid "Ceil"
 msgstr "ჭერი"
 
-#: src/contents/ui/Expander.qml:52 src/tags_plugin_name.cpp:38
+#: src/contents/ui/Expander.qml:52 src/tags_plugin_name.cpp:39
 msgid "Expander"
 msgstr ""
 
@@ -1255,7 +1257,7 @@ msgstr "სტერეო რეჟიმი"
 msgid "Equalizer Mode"
 msgstr "ეკვალაიზერის რეჟიმი"
 
-#: src/contents/ui/Gate.qml:56 src/tags_plugin_name.cpp:40
+#: src/contents/ui/Gate.qml:56 src/tags_plugin_name.cpp:41
 msgid "Gate"
 msgstr "გეითი"
 
@@ -1458,7 +1460,7 @@ msgstr ""
 msgid "24 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:42
+#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:43
 msgid "Limiter"
 msgstr "შემზღუდველი"
 
@@ -1805,7 +1807,7 @@ msgstr ""
 msgid "Overlap Length"
 msgstr ""
 
-#: src/contents/ui/Pitch.qml:102 src/tags_plugin_name.cpp:47
+#: src/contents/ui/Pitch.qml:102 src/tags_plugin_name.cpp:48
 msgid "Pitch"
 msgstr "Pitch"
 
@@ -1840,7 +1842,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:487
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:489
 #, fuzzy
 msgid "Preferences"
 msgstr "_მორგება"
@@ -2282,23 +2284,41 @@ msgstr ""
 msgid "User Models"
 msgstr "მოდელები"
 
-#: src/contents/ui/RNNoise.qml:195
-msgid "Loaded Model: %1"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:207
+#: src/contents/ui/RNNoise.qml:206
 msgid "Delete this Model"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/RNNoise.qml:211
 msgid "Removed Model: %1"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:215
+#: src/contents/ui/RNNoise.qml:214
 msgid "Failed to Remove the Model: %1"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:261
+#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
+#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
+msgid "Standard RNNoise Model"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:226
+msgid "Standard RNNoise Model Loaded."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:231 src/contents/ui/RNNoise.qml:272
+#, fuzzy
+msgid "Using %1 Model"
+msgstr "ვიყენებ {}"
+
+#: src/contents/ui/RNNoise.qml:233
+msgid "%1 Model Correctly Loaded."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:237
+msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:304
 msgid "Import Model"
 msgstr ""
 
@@ -2420,8 +2440,8 @@ msgstr ""
 msgid "Toggle Microphone Monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:372
-#: src/contents/ui/main.qml:495
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:374
+#: src/contents/ui/main.qml:497
 #, fuzzy
 msgid "Shortcuts"
 msgstr "მალ_სახმობები"
@@ -2503,7 +2523,7 @@ msgstr ""
 msgid "Invert Phase"
 msgstr ""
 
-#: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:34
+#: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:35
 msgid "Delay"
 msgstr "დაყოვნება"
 
@@ -2515,52 +2535,52 @@ msgstr ""
 msgid "Stereo Phase"
 msgstr ""
 
-#: src/contents/ui/main.qml:201
+#: src/contents/ui/main.qml:203
 msgid "Reset Settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:202
+#: src/contents/ui/main.qml:204
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:223
+#: src/contents/ui/main.qml:225
 msgid "Audio effects for PipeWire applications"
 msgstr ""
 
-#: src/contents/ui/main.qml:236
+#: src/contents/ui/main.qml:238
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "კონვერტი"
 
-#: src/contents/ui/main.qml:299 src/contents/ui/main.qml:316
+#: src/contents/ui/main.qml:301 src/contents/ui/main.qml:318
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "ჩატვირთულია ბოლო ლოკალური პრესეტი"
 
-#: src/contents/ui/main.qml:361
+#: src/contents/ui/main.qml:363
 msgid "Active"
 msgstr ""
 
-#: src/contents/ui/main.qml:381 src/contents/ui/main.qml:503
+#: src/contents/ui/main.qml:383 src/contents/ui/main.qml:505
 #, fuzzy
 msgid "Manual"
 msgstr "_ხელით"
 
-#: src/contents/ui/main.qml:391 src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:537
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:421
+#: src/contents/ui/main.qml:423
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:471
+#: src/contents/ui/main.qml:473
 #, fuzzy
 msgid "PipeWire"
 msgstr "_PipeWire"
 
-#: src/contents/ui/main.qml:527
+#: src/contents/ui/main.qml:529
 msgid "About Easy Effects"
 msgstr ""
 
@@ -2576,33 +2596,33 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr ""
 
-#: src/presets_manager.cpp:754 src/presets_manager.cpp:761
-#: src/presets_manager.cpp:771 src/presets_manager.cpp:778
-#: src/presets_manager.cpp:788 src/presets_manager.cpp:797
+#: src/presets_manager.cpp:756 src/presets_manager.cpp:763
+#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
+#: src/presets_manager.cpp:790 src/presets_manager.cpp:799
 msgid "Preset Not Loaded Correctly"
 msgstr ""
 
-#: src/presets_manager.cpp:754
+#: src/presets_manager.cpp:756
 msgid "Wrong Format in Excluded Apps List"
 msgstr ""
 
-#: src/presets_manager.cpp:762
+#: src/presets_manager.cpp:764
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 
-#: src/presets_manager.cpp:771
+#: src/presets_manager.cpp:773
 msgid "Wrong Format in Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:778
+#: src/presets_manager.cpp:780
 msgid "Generic Error While Loading Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:791
 msgid "One or More Parameters Have a Wrong Format"
 msgstr ""
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:800
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 
@@ -2630,67 +2650,67 @@ msgstr "შეცდომა"
 msgid "Unknown"
 msgstr "უცნობი"
 
-#: src/tags_plugin_name.cpp:26
+#: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:30
 msgid "Convolver"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:33
 msgid "Deep Noise Remover"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:37
 msgid "Equalizer"
 msgstr "ეკვალაიზერი"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:38
 msgid "Exciter"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
 msgstr "დონის მზომი"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Multiband Compressor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Multiband Gate"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Reverberation"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Noise Reduction"
 msgstr "ხმაურის შემცირება"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Speech Processor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Stereo Tools"
 msgstr ""
 

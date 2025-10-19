@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-19 16:36+0000\n"
+"POT-Creation-Date: 2025-10-19 18:41+0000\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Spanish (Venezuela) <https://hosted.weblate.org/projects/"
@@ -83,12 +83,12 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:335
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:337
 #, fuzzy
 msgid "Output Presets"
 msgstr "Perfiles de Dispositivos de Salida: "
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:325
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
 #, fuzzy
 msgid "Input Presets"
 msgstr "Perfiles de Dispositivos de Entrada: "
@@ -157,7 +157,7 @@ msgstr "Máximo"
 
 #: src/contents/ui/Autogain.qml:145 src/contents/ui/Autogain.qml:235
 #: src/contents/ui/BassLoudness.qml:47 src/contents/ui/LevelMeter.qml:139
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "Loudness"
 
@@ -186,7 +186,9 @@ msgstr "Ganancia de Entrada"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:210
-#: src/contents/ui/RNNoise.qml:245 src/contents/ui/Reverb.qml:309
+#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
+#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
+#: src/contents/ui/RNNoise.qml:288 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
 msgid "Using %1"
 msgstr ""
@@ -274,16 +276,16 @@ msgstr "Escuchar"
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
 #: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:268
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:311
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:515
+#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:517
 msgid "Reset"
 msgstr "Restablecer"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:449
+#: src/contents/ui/main.qml:451
 msgid "Output"
 msgstr "Salida"
 
@@ -336,7 +338,7 @@ msgstr ""
 msgid "Show Excluded Applications in the Streams Section"
 msgstr "Aplicaciones"
 
-#: src/contents/ui/Compressor.qml:52 src/tags_plugin_name.cpp:28
+#: src/contents/ui/Compressor.qml:52 src/tags_plugin_name.cpp:29
 msgid "Compressor"
 msgstr "Compresor"
 
@@ -738,7 +740,7 @@ msgstr "Duración"
 msgid "Stereo Width"
 msgstr "Amplitud Estéreo"
 
-#: src/contents/ui/Convolver.qml:425 src/tags_plugin_name.cpp:25
+#: src/contents/ui/Convolver.qml:425 src/tags_plugin_name.cpp:26
 #, fuzzy
 msgid "Autogain"
 msgstr "Ganancia Automática"
@@ -811,7 +813,7 @@ msgid "Default"
 msgstr "Predeterminado"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:413
+#: src/contents/ui/main.qml:415
 msgid "Presets"
 msgstr "Perfiles"
 
@@ -864,7 +866,7 @@ msgstr ""
 msgid "Post Filter Beta"
 msgstr "Filtro"
 
-#: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:33
+#: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "Deesser"
 
@@ -895,7 +897,7 @@ msgid "Laxity"
 msgstr "Relajamiento"
 
 #: src/contents/ui/Deesser.qml:153 src/contents/ui/Filter.qml:104
-#: src/contents/ui/Reverb.qml:115 src/tags_plugin_name.cpp:39
+#: src/contents/ui/Reverb.qml:115 src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "Filtro"
 
@@ -1021,7 +1023,7 @@ msgstr "Habilitar"
 msgid "Exclude"
 msgstr ""
 
-#: src/contents/ui/EchoCanceller.qml:42 src/tags_plugin_name.cpp:35
+#: src/contents/ui/EchoCanceller.qml:42 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr "Cancelador de Eco"
 
@@ -1080,7 +1082,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:460
+#: src/contents/ui/main.qml:462
 msgid "Input"
 msgstr "Entrada"
 
@@ -1281,7 +1283,7 @@ msgstr "Modo Agresivo"
 msgid "Ceil"
 msgstr "Límite"
 
-#: src/contents/ui/Expander.qml:52 src/tags_plugin_name.cpp:38
+#: src/contents/ui/Expander.qml:52 src/tags_plugin_name.cpp:39
 msgid "Expander"
 msgstr ""
 
@@ -1337,7 +1339,7 @@ msgstr "Base Estéreo"
 msgid "Equalizer Mode"
 msgstr "Ecualizador"
 
-#: src/contents/ui/Gate.qml:56 src/tags_plugin_name.cpp:40
+#: src/contents/ui/Gate.qml:56 src/tags_plugin_name.cpp:41
 msgid "Gate"
 msgstr "Puerta de Ruido"
 
@@ -1545,7 +1547,7 @@ msgstr ""
 msgid "24 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:42
+#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:43
 msgid "Limiter"
 msgstr "Limitador"
 
@@ -1920,7 +1922,7 @@ msgstr "Ventana"
 msgid "Overlap Length"
 msgstr "Filtro"
 
-#: src/contents/ui/Pitch.qml:102 src/tags_plugin_name.cpp:47
+#: src/contents/ui/Pitch.qml:102 src/tags_plugin_name.cpp:48
 msgid "Pitch"
 msgstr "Tono"
 
@@ -1955,7 +1957,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:487
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:489
 msgid "Preferences"
 msgstr ""
 
@@ -2415,25 +2417,43 @@ msgstr ""
 msgid "User Models"
 msgstr "Modo"
 
-#: src/contents/ui/RNNoise.qml:195
-msgid "Loaded Model: %1"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:207
+#: src/contents/ui/RNNoise.qml:206
 #, fuzzy
 msgid "Delete this Model"
 msgstr "Borrar este perfil"
 
-#: src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/RNNoise.qml:211
 #, fuzzy
 msgid "Removed Model: %1"
 msgstr "Borrar este perfil"
 
-#: src/contents/ui/RNNoise.qml:215
+#: src/contents/ui/RNNoise.qml:214
 msgid "Failed to Remove the Model: %1"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:261
+#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
+#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
+msgid "Standard RNNoise Model"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:226
+msgid "Standard RNNoise Model Loaded."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:231 src/contents/ui/RNNoise.qml:272
+#, fuzzy
+msgid "Using %1 Model"
+msgstr "Modo"
+
+#: src/contents/ui/RNNoise.qml:233
+msgid "%1 Model Correctly Loaded."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:237
+msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:304
 #, fuzzy
 msgid "Import Model"
 msgstr "Importar Archivo Impulse"
@@ -2561,8 +2581,8 @@ msgstr ""
 msgid "Toggle Microphone Monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:372
-#: src/contents/ui/main.qml:495
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:374
+#: src/contents/ui/main.qml:497
 msgid "Shortcuts"
 msgstr ""
 
@@ -2644,7 +2664,7 @@ msgstr "Panorama Medio"
 msgid "Invert Phase"
 msgstr "Invertir Fase"
 
-#: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:34
+#: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:35
 msgid "Delay"
 msgstr "Retraso"
 
@@ -2656,53 +2676,53 @@ msgstr "Base Estéreo"
 msgid "Stereo Phase"
 msgstr "Fase Estéreo"
 
-#: src/contents/ui/main.qml:201
+#: src/contents/ui/main.qml:203
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "Ajustes"
 
-#: src/contents/ui/main.qml:202
+#: src/contents/ui/main.qml:204
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:223
+#: src/contents/ui/main.qml:225
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Efectos de Sonido para las aplicaciones de PulseAudio"
 
-#: src/contents/ui/main.qml:236
+#: src/contents/ui/main.qml:238
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Pendiente"
 
-#: src/contents/ui/main.qml:299 src/contents/ui/main.qml:316
+#: src/contents/ui/main.qml:301 src/contents/ui/main.qml:318
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Perfiles de Dispositivos de Entrada: "
 
-#: src/contents/ui/main.qml:361
+#: src/contents/ui/main.qml:363
 #, fuzzy
 msgid "Active"
 msgstr "Modo Agresivo"
 
-#: src/contents/ui/main.qml:381 src/contents/ui/main.qml:503
+#: src/contents/ui/main.qml:383 src/contents/ui/main.qml:505
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:391 src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:537
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:421
+#: src/contents/ui/main.qml:423
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:471
+#: src/contents/ui/main.qml:473
 msgid "PipeWire"
 msgstr ""
 
-#: src/contents/ui/main.qml:527
+#: src/contents/ui/main.qml:529
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "EasyEffects"
@@ -2720,34 +2740,34 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr "Efectos de Salida"
 
-#: src/presets_manager.cpp:754 src/presets_manager.cpp:761
-#: src/presets_manager.cpp:771 src/presets_manager.cpp:778
-#: src/presets_manager.cpp:788 src/presets_manager.cpp:797
+#: src/presets_manager.cpp:756 src/presets_manager.cpp:763
+#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
+#: src/presets_manager.cpp:790 src/presets_manager.cpp:799
 msgid "Preset Not Loaded Correctly"
 msgstr ""
 
-#: src/presets_manager.cpp:754
+#: src/presets_manager.cpp:756
 #, fuzzy
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Aplicaciones"
 
-#: src/presets_manager.cpp:762
+#: src/presets_manager.cpp:764
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 
-#: src/presets_manager.cpp:771
+#: src/presets_manager.cpp:773
 msgid "Wrong Format in Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:778
+#: src/presets_manager.cpp:780
 msgid "Generic Error While Loading Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:791
 msgid "One or More Parameters Have a Wrong Format"
 msgstr ""
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:800
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 
@@ -2776,70 +2796,70 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:26
+#: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
 msgstr "Potenciado de Graves"
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:28
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "Loudness"
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:30
 msgid "Convolver"
 msgstr "Convolver"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
 msgstr "Crossfeed"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
 msgstr "Cristalizador"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:33
 msgid "Deep Noise Remover"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:37
 msgid "Equalizer"
 msgstr "Ecualizador"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:38
 msgid "Exciter"
 msgstr "Excitador"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:42
 #, fuzzy
 msgid "Level Meter"
 msgstr "Efectos de Salida"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
 msgstr "Maximizador"
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Multiband Compressor"
 msgstr "Compresor Multibanda"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Multiband Gate"
 msgstr "Puerta Multibanda"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Reverberation"
 msgstr "Reverberación"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 #, fuzzy
 msgid "Noise Reduction"
 msgstr "Reducción de Ganancia"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Speech Processor"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Stereo Tools"
 msgstr "Herramientas Estéreo"
 

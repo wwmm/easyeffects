@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-19 16:36+0000\n"
+"POT-Creation-Date: 2025-10-19 18:41+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -79,11 +79,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:335
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:337
 msgid "Output Presets"
 msgstr "Çıkış Ön Ayarları"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:325
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
 msgid "Input Presets"
 msgstr "Giriş Ön Ayarları"
 
@@ -145,7 +145,7 @@ msgstr "Azami Geçmiş"
 
 #: src/contents/ui/Autogain.qml:145 src/contents/ui/Autogain.qml:235
 #: src/contents/ui/BassLoudness.qml:47 src/contents/ui/LevelMeter.qml:139
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "Yüksek Ses"
 
@@ -173,7 +173,9 @@ msgstr "Çıktı Kazancı"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:210
-#: src/contents/ui/RNNoise.qml:245 src/contents/ui/Reverb.qml:309
+#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
+#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
+#: src/contents/ui/RNNoise.qml:288 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
 #, fuzzy
 msgid "Using %1"
@@ -261,16 +263,16 @@ msgstr "Liste"
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
 #: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:268
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:311
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:515
+#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:517
 msgid "Reset"
 msgstr "Sıfırla"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:449
+#: src/contents/ui/main.qml:451
 msgid "Output"
 msgstr "Çıktı"
 
@@ -322,7 +324,7 @@ msgstr ""
 msgid "Show Excluded Applications in the Streams Section"
 msgstr "Hariç Tutulan Uygulamaları Göster"
 
-#: src/contents/ui/Compressor.qml:52 src/tags_plugin_name.cpp:28
+#: src/contents/ui/Compressor.qml:52 src/tags_plugin_name.cpp:29
 msgid "Compressor"
 msgstr "Sıkıştırıcı"
 
@@ -712,7 +714,7 @@ msgstr "Süre"
 msgid "Stereo Width"
 msgstr "Stereo Genişliği"
 
-#: src/contents/ui/Convolver.qml:425 src/tags_plugin_name.cpp:25
+#: src/contents/ui/Convolver.qml:425 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "Otomatik Kazanç"
 
@@ -784,7 +786,7 @@ msgid "Default"
 msgstr "Öntanımlı"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:413
+#: src/contents/ui/main.qml:415
 msgid "Presets"
 msgstr "Ön Ayarlar"
 
@@ -835,7 +837,7 @@ msgstr ""
 msgid "Post Filter Beta"
 msgstr "Süzgeç Sonrası Beta"
 
-#: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:33
+#: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "Deesser"
 
@@ -866,7 +868,7 @@ msgid "Laxity"
 msgstr "Gevşeklik"
 
 #: src/contents/ui/Deesser.qml:153 src/contents/ui/Filter.qml:104
-#: src/contents/ui/Reverb.qml:115 src/tags_plugin_name.cpp:39
+#: src/contents/ui/Reverb.qml:115 src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "Süzgeç"
 
@@ -983,7 +985,7 @@ msgstr "Etkinleştir"
 msgid "Exclude"
 msgstr "Hariç tut"
 
-#: src/contents/ui/EchoCanceller.qml:42 src/tags_plugin_name.cpp:35
+#: src/contents/ui/EchoCanceller.qml:42 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr "Yankı Önleyici"
 
@@ -1040,7 +1042,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:460
+#: src/contents/ui/main.qml:462
 msgid "Input"
 msgstr "Girdi"
 
@@ -1235,7 +1237,7 @@ msgstr "Etkin Model"
 msgid "Ceil"
 msgstr "Tavan"
 
-#: src/contents/ui/Expander.qml:52 src/tags_plugin_name.cpp:38
+#: src/contents/ui/Expander.qml:52 src/tags_plugin_name.cpp:39
 msgid "Expander"
 msgstr "Genişletici"
 
@@ -1289,7 +1291,7 @@ msgstr "Stereo Kipi"
 msgid "Equalizer Mode"
 msgstr "Ekolayzır Kipi"
 
-#: src/contents/ui/Gate.qml:56 src/tags_plugin_name.cpp:40
+#: src/contents/ui/Gate.qml:56 src/tags_plugin_name.cpp:41
 msgid "Gate"
 msgstr "Aralık"
 
@@ -1502,7 +1504,7 @@ msgstr ""
 msgid "24 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:42
+#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:43
 msgid "Limiter"
 msgstr "Sınırlayıcı"
 
@@ -1856,7 +1858,7 @@ msgstr "Arama Penceresi"
 msgid "Overlap Length"
 msgstr "Örtüşme Uzunluğu"
 
-#: src/contents/ui/Pitch.qml:102 src/tags_plugin_name.cpp:47
+#: src/contents/ui/Pitch.qml:102 src/tags_plugin_name.cpp:48
 msgid "Pitch"
 msgstr "Perde"
 
@@ -1891,7 +1893,7 @@ msgstr "Kenar yumuşatma"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:487
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:489
 #, fuzzy
 msgid "Preferences"
 msgstr "_Tercihler"
@@ -2348,26 +2350,45 @@ msgstr "Standart Model"
 msgid "User Models"
 msgstr "RNNoise Modelleri"
 
-#: src/contents/ui/RNNoise.qml:195
-#, fuzzy
-msgid "Loaded Model: %1"
-msgstr "Standart Model"
-
-#: src/contents/ui/RNNoise.qml:207
+#: src/contents/ui/RNNoise.qml:206
 #, fuzzy
 msgid "Delete this Model"
 msgstr "Bu model dosyasını kaldır"
 
-#: src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/RNNoise.qml:211
 #, fuzzy
 msgid "Removed Model: %1"
 msgstr "Bu model dosyasını kaldır"
 
-#: src/contents/ui/RNNoise.qml:215
+#: src/contents/ui/RNNoise.qml:214
 msgid "Failed to Remove the Model: %1"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:261
+#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
+#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
+msgid "Standard RNNoise Model"
+msgstr "Standart RNNoise Modeli"
+
+#: src/contents/ui/RNNoise.qml:226
+#, fuzzy
+msgid "Standard RNNoise Model Loaded."
+msgstr "Standart RNNoise Modeli"
+
+#: src/contents/ui/RNNoise.qml:231 src/contents/ui/RNNoise.qml:272
+#, fuzzy
+msgid "Using %1 Model"
+msgstr "{} Kullanıyor"
+
+#: src/contents/ui/RNNoise.qml:233
+#, fuzzy
+msgid "%1 Model Correctly Loaded."
+msgstr "Model Yüklenmedi"
+
+#: src/contents/ui/RNNoise.qml:237
+msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:304
 msgid "Import Model"
 msgstr "Modeli İçe Aktar"
 
@@ -2495,8 +2516,8 @@ msgstr ""
 msgid "Toggle Microphone Monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:372
-#: src/contents/ui/main.qml:495
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:374
+#: src/contents/ui/main.qml:497
 #, fuzzy
 msgid "Shortcuts"
 msgstr "Kısa_yollar"
@@ -2577,7 +2598,7 @@ msgstr "Orta Panorama"
 msgid "Invert Phase"
 msgstr "Ters Faz"
 
-#: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:34
+#: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:35
 msgid "Delay"
 msgstr "Gecikme"
 
@@ -2589,55 +2610,55 @@ msgstr "Stereo Taban"
 msgid "Stereo Phase"
 msgstr "Stereo Faz"
 
-#: src/contents/ui/main.qml:201
+#: src/contents/ui/main.qml:203
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "Ayarları _Sıfırla"
 
-#: src/contents/ui/main.qml:202
+#: src/contents/ui/main.qml:204
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:223
+#: src/contents/ui/main.qml:225
 msgid "Audio effects for PipeWire applications"
 msgstr "PipeWire uygulamaları için ses efektleri"
 
-#: src/contents/ui/main.qml:236
+#: src/contents/ui/main.qml:238
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Eğim"
 
-#: src/contents/ui/main.qml:299 src/contents/ui/main.qml:316
+#: src/contents/ui/main.qml:301 src/contents/ui/main.qml:318
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Ön Ayar Yüklü Değil"
 
-#: src/contents/ui/main.qml:361
+#: src/contents/ui/main.qml:363
 #, fuzzy
 msgid "Active"
 msgstr "Etkin Model"
 
-#: src/contents/ui/main.qml:381 src/contents/ui/main.qml:503
+#: src/contents/ui/main.qml:383 src/contents/ui/main.qml:505
 #, fuzzy
 msgid "Manual"
 msgstr "_Kılavuz"
 
-#: src/contents/ui/main.qml:391 src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:537
 #, fuzzy
 msgid "Quit"
 msgstr "_Çık"
 
-#: src/contents/ui/main.qml:421
+#: src/contents/ui/main.qml:423
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:471
+#: src/contents/ui/main.qml:473
 #, fuzzy
 msgid "PipeWire"
 msgstr "_PipeWire"
 
-#: src/contents/ui/main.qml:527
+#: src/contents/ui/main.qml:529
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "Easy Effects _Hakkında"
@@ -2655,33 +2676,33 @@ msgstr "Hoparlörler"
 msgid "Output Level Meter"
 msgstr "Çıktı Düzey Ölçer"
 
-#: src/presets_manager.cpp:754 src/presets_manager.cpp:761
-#: src/presets_manager.cpp:771 src/presets_manager.cpp:778
-#: src/presets_manager.cpp:788 src/presets_manager.cpp:797
+#: src/presets_manager.cpp:756 src/presets_manager.cpp:763
+#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
+#: src/presets_manager.cpp:790 src/presets_manager.cpp:799
 msgid "Preset Not Loaded Correctly"
 msgstr "Ön Ayar Doğru Yüklenmedi"
 
-#: src/presets_manager.cpp:754
+#: src/presets_manager.cpp:756
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Hariç Tutulan Uygulamalar Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:762
+#: src/presets_manager.cpp:764
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Hariç Tutulan Uygulamalar Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:771
+#: src/presets_manager.cpp:773
 msgid "Wrong Format in Effects List"
 msgstr "Efektler Listesinde Yanlış Biçim"
 
-#: src/presets_manager.cpp:778
+#: src/presets_manager.cpp:780
 msgid "Generic Error While Loading Effects List"
 msgstr "Efekt Listesi Yüklenirken Genel Hata"
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:791
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Bir veya Daha Fazla Parametre Yanlış Biçime Sahip"
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:800
 msgid "Generic Error While Loading The Effect"
 msgstr "Efekt Yüklenirken Genel Hata"
 
@@ -2709,67 +2730,67 @@ msgstr "Hata"
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
-#: src/tags_plugin_name.cpp:26
+#: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
 msgstr "Bas Yükseltici"
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
 msgstr "Bas Yüksekliği"
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:30
 msgid "Convolver"
 msgstr "Sarsıcı"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
 msgstr "Çapraz Besleme"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
 msgstr "Kristalleştirici"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:33
 msgid "Deep Noise Remover"
 msgstr "Derin Gürültü Giderici"
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:37
 msgid "Equalizer"
 msgstr "Ekolayzır"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:38
 msgid "Exciter"
 msgstr "Uyarıcı"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
 msgstr "Düzey Ölçer"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
 msgstr "Yükseltici"
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Multiband Compressor"
 msgstr "Çoklu Bant Şıkıştırıcı"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Multiband Gate"
 msgstr "Çoklu Bant Geçitleme"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Reverberation"
 msgstr "Yankılanma"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Noise Reduction"
 msgstr "Gürültü Azaltma"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Speech Processor"
 msgstr "Konuşma İşleyici"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Stereo Tools"
 msgstr "Stereo Araçları"
 
@@ -2785,6 +2806,10 @@ msgstr "Ekolayzır, Sıkıştırıcı ve Diğer Ses Efektleri"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "PipeWire Uygulamaları için Ses Efektleri"
+
+#, fuzzy
+#~ msgid "Loaded Model: %1"
+#~ msgstr "Standart Model"
 
 #~ msgid "Filter Length"
 #~ msgstr "Süzgeç Uzunluğu"
@@ -3279,14 +3304,8 @@ msgstr "PipeWire Uygulamaları için Ses Efektleri"
 #~ msgid "RNNoise Models List"
 #~ msgstr "RNNoise Modelleri Listesi"
 
-#~ msgid "Model Not Loaded"
-#~ msgstr "Model Yüklenmedi"
-
 #~ msgid "Active Model"
 #~ msgstr "Etkin Model"
-
-#~ msgid "Standard RNNoise Model"
-#~ msgstr "Standart RNNoise Modeli"
 
 #~ msgid "Overview"
 #~ msgstr "Genel Görünüm"

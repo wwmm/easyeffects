@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-19 16:36+0000\n"
+"POT-Creation-Date: 2025-10-19 18:41+0000\n"
 "PO-Revision-Date: 2025-10-02 05:01+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -80,11 +80,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:335
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:337
 msgid "Output Presets"
 msgstr "Unaprijed postavljene postavke ispisa"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:325
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
 #, fuzzy
 msgid "Input Presets"
 msgstr "Učitaj predloške"
@@ -147,7 +147,7 @@ msgstr "Maksimalna povijest"
 
 #: src/contents/ui/Autogain.qml:145 src/contents/ui/Autogain.qml:235
 #: src/contents/ui/BassLoudness.qml:47 src/contents/ui/LevelMeter.qml:139
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "Glasnoća"
 
@@ -175,7 +175,9 @@ msgstr "Pojačanje izlaza"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:210
-#: src/contents/ui/RNNoise.qml:245 src/contents/ui/Reverb.qml:309
+#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
+#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
+#: src/contents/ui/RNNoise.qml:288 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
 #, fuzzy
 msgid "Using %1"
@@ -263,16 +265,16 @@ msgstr "Poslušaj"
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
 #: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:268
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:311
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:515
+#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:517
 msgid "Reset"
 msgstr "Vrati na tvorničke postavke"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:449
+#: src/contents/ui/main.qml:451
 msgid "Output"
 msgstr "Izlaz"
 
@@ -324,7 +326,7 @@ msgstr "Izbriši ovu aplikaciju"
 msgid "Show Excluded Applications in the Streams Section"
 msgstr "Pokaži izuzete aplikacije"
 
-#: src/contents/ui/Compressor.qml:52 src/tags_plugin_name.cpp:28
+#: src/contents/ui/Compressor.qml:52 src/tags_plugin_name.cpp:29
 msgid "Compressor"
 msgstr "Kompresor"
 
@@ -724,7 +726,7 @@ msgstr "Trajanje"
 msgid "Stereo Width"
 msgstr "Stereo širina"
 
-#: src/contents/ui/Convolver.qml:425 src/tags_plugin_name.cpp:25
+#: src/contents/ui/Convolver.qml:425 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "Automatsko pojačanje"
 
@@ -794,7 +796,7 @@ msgid "Default"
 msgstr "Tvorničke postavke"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:413
+#: src/contents/ui/main.qml:415
 msgid "Presets"
 msgstr "Predlošci"
 
@@ -846,7 +848,7 @@ msgstr ""
 msgid "Post Filter Beta"
 msgstr "Filter"
 
-#: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:33
+#: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "De-esiranje"
 
@@ -878,7 +880,7 @@ msgid "Laxity"
 msgstr "Popustljivost"
 
 #: src/contents/ui/Deesser.qml:153 src/contents/ui/Filter.qml:104
-#: src/contents/ui/Reverb.qml:115 src/tags_plugin_name.cpp:39
+#: src/contents/ui/Reverb.qml:115 src/tags_plugin_name.cpp:40
 #, fuzzy
 msgid "Filter"
 msgstr "Filter"
@@ -1002,7 +1004,7 @@ msgstr "Omogući"
 msgid "Exclude"
 msgstr ""
 
-#: src/contents/ui/EchoCanceller.qml:42 src/tags_plugin_name.cpp:35
+#: src/contents/ui/EchoCanceller.qml:42 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr "Poništenje jeke"
 
@@ -1060,7 +1062,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:460
+#: src/contents/ui/main.qml:462
 msgid "Input"
 msgstr "Ulaz"
 
@@ -1260,7 +1262,7 @@ msgstr "Kompresija"
 msgid "Ceil"
 msgstr "Vrh"
 
-#: src/contents/ui/Expander.qml:52 src/tags_plugin_name.cpp:38
+#: src/contents/ui/Expander.qml:52 src/tags_plugin_name.cpp:39
 msgid "Expander"
 msgstr ""
 
@@ -1315,7 +1317,7 @@ msgstr "Stereo modus"
 msgid "Equalizer Mode"
 msgstr "Ekvalizator"
 
-#: src/contents/ui/Gate.qml:56 src/tags_plugin_name.cpp:40
+#: src/contents/ui/Gate.qml:56 src/tags_plugin_name.cpp:41
 msgid "Gate"
 msgstr "Vrata"
 
@@ -1523,7 +1525,7 @@ msgstr ""
 msgid "24 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:42
+#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:43
 msgid "Limiter"
 msgstr "Graničnik"
 
@@ -1884,7 +1886,7 @@ msgstr "Prozor"
 msgid "Overlap Length"
 msgstr "Filter"
 
-#: src/contents/ui/Pitch.qml:102 src/tags_plugin_name.cpp:47
+#: src/contents/ui/Pitch.qml:102 src/tags_plugin_name.cpp:48
 msgid "Pitch"
 msgstr "Visina"
 
@@ -1919,7 +1921,7 @@ msgstr "Zaglađivanje rubova"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:487
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:489
 #, fuzzy
 msgid "Preferences"
 msgstr "Referenca"
@@ -2375,26 +2377,45 @@ msgstr "Standardni model"
 msgid "User Models"
 msgstr "Kompresija"
 
-#: src/contents/ui/RNNoise.qml:195
-#, fuzzy
-msgid "Loaded Model: %1"
-msgstr "Standardni model"
-
-#: src/contents/ui/RNNoise.qml:207
+#: src/contents/ui/RNNoise.qml:206
 #, fuzzy
 msgid "Delete this Model"
 msgstr "Ukloni ovu datoteku modela"
 
-#: src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/RNNoise.qml:211
 #, fuzzy
 msgid "Removed Model: %1"
 msgstr "Ukloni ovu datoteku modela"
 
-#: src/contents/ui/RNNoise.qml:215
+#: src/contents/ui/RNNoise.qml:214
 msgid "Failed to Remove the Model: %1"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:261
+#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
+#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
+#, fuzzy
+msgid "Standard RNNoise Model"
+msgstr "Standardni model"
+
+#: src/contents/ui/RNNoise.qml:226
+msgid "Standard RNNoise Model Loaded."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:231 src/contents/ui/RNNoise.qml:272
+#, fuzzy
+msgid "Using %1 Model"
+msgstr "Koristi se {}"
+
+#: src/contents/ui/RNNoise.qml:233
+#, fuzzy
+msgid "%1 Model Correctly Loaded."
+msgstr "Model nije učitan"
+
+#: src/contents/ui/RNNoise.qml:237
+msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:304
 msgid "Import Model"
 msgstr "Uvezi model"
 
@@ -2520,8 +2541,8 @@ msgstr ""
 msgid "Toggle Microphone Monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:372
-#: src/contents/ui/main.qml:495
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:374
+#: src/contents/ui/main.qml:497
 #, fuzzy
 msgid "Shortcuts"
 msgstr "Kratkoročno"
@@ -2608,7 +2629,7 @@ msgstr "Srednja panorama"
 msgid "Invert Phase"
 msgstr "Inverzija faze"
 
-#: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:34
+#: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:35
 msgid "Delay"
 msgstr "Kašnjenje"
 
@@ -2622,52 +2643,52 @@ msgstr "Stereo baza"
 msgid "Stereo Phase"
 msgstr "Stereo faza"
 
-#: src/contents/ui/main.qml:201
+#: src/contents/ui/main.qml:203
 msgid "Reset Settings?"
 msgstr "Resetirati postavke?"
 
-#: src/contents/ui/main.qml:202
+#: src/contents/ui/main.qml:204
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:223
+#: src/contents/ui/main.qml:225
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Zvučni efekti za Pulseaudio aplikacije"
 
-#: src/contents/ui/main.qml:236
+#: src/contents/ui/main.qml:238
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Pojačanje ulaza"
 
-#: src/contents/ui/main.qml:299 src/contents/ui/main.qml:316
+#: src/contents/ui/main.qml:301 src/contents/ui/main.qml:318
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Učitaj predloške"
 
-#: src/contents/ui/main.qml:361
+#: src/contents/ui/main.qml:363
 #, fuzzy
 msgid "Active"
 msgstr "Kompresija"
 
-#: src/contents/ui/main.qml:381 src/contents/ui/main.qml:503
+#: src/contents/ui/main.qml:383 src/contents/ui/main.qml:505
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:391 src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:537
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:421
+#: src/contents/ui/main.qml:423
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:471
+#: src/contents/ui/main.qml:473
 msgid "PipeWire"
 msgstr ""
 
-#: src/contents/ui/main.qml:527
+#: src/contents/ui/main.qml:529
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "EasyEffects"
@@ -2685,34 +2706,34 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr "Pojačanje ulaza"
 
-#: src/presets_manager.cpp:754 src/presets_manager.cpp:761
-#: src/presets_manager.cpp:771 src/presets_manager.cpp:778
-#: src/presets_manager.cpp:788 src/presets_manager.cpp:797
+#: src/presets_manager.cpp:756 src/presets_manager.cpp:763
+#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
+#: src/presets_manager.cpp:790 src/presets_manager.cpp:799
 msgid "Preset Not Loaded Correctly"
 msgstr ""
 
-#: src/presets_manager.cpp:754
+#: src/presets_manager.cpp:756
 #, fuzzy
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Popis izuzetih aplikacija"
 
-#: src/presets_manager.cpp:762
+#: src/presets_manager.cpp:764
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 
-#: src/presets_manager.cpp:771
+#: src/presets_manager.cpp:773
 msgid "Wrong Format in Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:778
+#: src/presets_manager.cpp:780
 msgid "Generic Error While Loading Effects List"
 msgstr ""
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:791
 msgid "One or More Parameters Have a Wrong Format"
 msgstr ""
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:800
 msgid "Generic Error While Loading The Effect"
 msgstr ""
 
@@ -2740,73 +2761,73 @@ msgstr "Greška"
 msgid "Unknown"
 msgstr "Nepoznato"
 
-#: src/tags_plugin_name.cpp:26
+#: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
 msgstr "Pojačanje basa"
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:28
 #, fuzzy
 msgid "Bass Loudness"
 msgstr "Glasnoća"
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:30
 msgid "Convolver"
 msgstr "Konvolver"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
 msgstr "Križno spajanje"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:32
 #, fuzzy
 msgid "Crystalizer"
 msgstr "Kristalizator"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:33
 msgid "Deep Noise Remover"
 msgstr ""
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:37
 msgid "Equalizer"
 msgstr "Ekvalizator"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:38
 msgid "Exciter"
 msgstr "Uzbuđivač"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:42
 #, fuzzy
 msgid "Level Meter"
 msgstr "Pojačanje ulaza"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
 msgstr "Maksimizer"
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 #, fuzzy
 msgid "Multiband Compressor"
 msgstr "Višerasponski kompresor"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 #, fuzzy
 msgid "Multiband Gate"
 msgstr "Višerasponska vrata"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 #, fuzzy
 msgid "Reverberation"
 msgstr "Reverberacija"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Noise Reduction"
 msgstr "Smanjenje šumova"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Speech Processor"
 msgstr "Procesor govora"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Stereo Tools"
 msgstr "Stereo alati"
 
@@ -2821,6 +2842,10 @@ msgstr "Ekvalizator, kompresor i drugi audio efekti"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Zvučni efekti za PipeWire aplikacije"
+
+#, fuzzy
+#~ msgid "Loaded Model: %1"
+#~ msgstr "Standardni model"
 
 #~ msgid "Filter Length"
 #~ msgstr "Duljina filtra"
@@ -3255,9 +3280,6 @@ msgstr "Zvučni efekti za PipeWire aplikacije"
 
 #~ msgid "Models"
 #~ msgstr "Modeli"
-
-#~ msgid "Model Not Loaded"
-#~ msgstr "Model nije učitan"
 
 #~ msgid "Active Model"
 #~ msgstr "Aktivni model"
