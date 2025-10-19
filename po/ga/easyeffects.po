@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-19 16:36+0000\n"
+"POT-Creation-Date: 2025-10-19 18:41+0000\n"
 "PO-Revision-Date: 2025-10-18 02:38+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -77,11 +77,11 @@ msgstr "Cumasaigh teachtaireachtaí dífhabhtaithe."
 msgid "Must specify preset type: input/output."
 msgstr "Ní mór cineál réamhshocraithe a shonrú: ionchur/aschur."
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:335
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:337
 msgid "Output Presets"
 msgstr "Réamhshocruithe Aschurtha"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:325
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
 msgid "Input Presets"
 msgstr "Réamhshocruithe Ionchurtha"
 
@@ -143,7 +143,7 @@ msgstr "Stair Uasta"
 
 #: src/contents/ui/Autogain.qml:145 src/contents/ui/Autogain.qml:235
 #: src/contents/ui/BassLoudness.qml:47 src/contents/ui/LevelMeter.qml:139
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "Treise"
 
@@ -171,7 +171,9 @@ msgstr "Gnóthachan Aschuir"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:210
-#: src/contents/ui/RNNoise.qml:245 src/contents/ui/Reverb.qml:309
+#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
+#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
+#: src/contents/ui/RNNoise.qml:288 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
 msgid "Using %1"
 msgstr "Ag baint úsáide as %1"
@@ -256,16 +258,16 @@ msgstr "Éist"
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
 #: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:268
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:311
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:515
+#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:517
 msgid "Reset"
 msgstr "Athshocraigh"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:449
+#: src/contents/ui/main.qml:451
 msgid "Output"
 msgstr "Aschur"
 
@@ -313,7 +315,7 @@ msgstr "Scrios an Aip seo"
 msgid "Show Excluded Applications in the Streams Section"
 msgstr "Taispeáin Feidhmchláir Eisiata sa Rannán Sruthanna"
 
-#: src/contents/ui/Compressor.qml:52 src/tags_plugin_name.cpp:28
+#: src/contents/ui/Compressor.qml:52 src/tags_plugin_name.cpp:29
 msgid "Compressor"
 msgstr "Comhbhrúiteoir"
 
@@ -697,7 +699,7 @@ msgstr "Fad ama"
 msgid "Stereo Width"
 msgstr "Leithead Steirió"
 
-#: src/contents/ui/Convolver.qml:425 src/tags_plugin_name.cpp:25
+#: src/contents/ui/Convolver.qml:425 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "Uathghnóthachan"
 
@@ -763,7 +765,7 @@ msgid "Default"
 msgstr "Réamhshocrú"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:413
+#: src/contents/ui/main.qml:415
 msgid "Presets"
 msgstr "Réamhshocruithe"
 
@@ -813,7 +815,7 @@ msgstr "frámaí"
 msgid "Post Filter Beta"
 msgstr "Béite Iar-Scagaire"
 
-#: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:33
+#: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "DeesserName"
 
@@ -844,7 +846,7 @@ msgid "Laxity"
 msgstr "Scaoilteacht"
 
 #: src/contents/ui/Deesser.qml:153 src/contents/ui/Filter.qml:104
-#: src/contents/ui/Reverb.qml:115 src/tags_plugin_name.cpp:39
+#: src/contents/ui/Reverb.qml:115 src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "Scagaire"
 
@@ -954,7 +956,7 @@ msgstr "Cumasaigh"
 msgid "Exclude"
 msgstr "Ná cuir as an áireamh"
 
-#: src/contents/ui/EchoCanceller.qml:42 src/tags_plugin_name.cpp:35
+#: src/contents/ui/EchoCanceller.qml:42 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr "Cealaitheoir Macalla"
 
@@ -1007,7 +1009,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Rialuithe gnóthachain ionchuir agus aschuir le méadair leibhéal"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:460
+#: src/contents/ui/main.qml:462
 msgid "Input"
 msgstr "Ionchur"
 
@@ -1182,7 +1184,7 @@ msgstr "Uasteorainn Ghníomhach"
 msgid "Ceil"
 msgstr "Síleáil"
 
-#: src/contents/ui/Expander.qml:52 src/tags_plugin_name.cpp:38
+#: src/contents/ui/Expander.qml:52 src/tags_plugin_name.cpp:39
 msgid "Expander"
 msgstr "Fairsingitheoir"
 
@@ -1228,7 +1230,7 @@ msgstr "Mód Scagaire"
 msgid "Equalizer Mode"
 msgstr "Mód Cothromóra"
 
-#: src/contents/ui/Gate.qml:56 src/tags_plugin_name.cpp:40
+#: src/contents/ui/Gate.qml:56 src/tags_plugin_name.cpp:41
 msgid "Gate"
 msgstr "Geata"
 
@@ -1429,7 +1431,7 @@ msgstr "23 giotán"
 msgid "24 bit"
 msgstr "24 giotán"
 
-#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:42
+#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:43
 msgid "Limiter"
 msgstr "Teorainn"
 
@@ -1761,7 +1763,7 @@ msgstr "Lorg Fuinneog"
 msgid "Overlap Length"
 msgstr "Fad Forluí"
 
-#: src/contents/ui/Pitch.qml:102 src/tags_plugin_name.cpp:47
+#: src/contents/ui/Pitch.qml:102 src/tags_plugin_name.cpp:48
 msgid "Pitch"
 msgstr "Páirc Imeartha"
 
@@ -1796,7 +1798,7 @@ msgstr "Frithailiasáil"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:487
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:489
 msgid "Preferences"
 msgstr "Roghanna"
 
@@ -2230,23 +2232,43 @@ msgstr "Úsáid an tSamhail Chaighdeánach"
 msgid "User Models"
 msgstr "Samhlacha Úsáideora"
 
-#: src/contents/ui/RNNoise.qml:195
-msgid "Loaded Model: %1"
-msgstr "Múnla Luchtaithe: %1"
-
-#: src/contents/ui/RNNoise.qml:207
+#: src/contents/ui/RNNoise.qml:206
 msgid "Delete this Model"
 msgstr "Scrios an tSamhail seo"
 
-#: src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/RNNoise.qml:211
 msgid "Removed Model: %1"
 msgstr "Múnla Bainte: %1"
 
-#: src/contents/ui/RNNoise.qml:215
+#: src/contents/ui/RNNoise.qml:214
 msgid "Failed to Remove the Model: %1"
 msgstr "Theip ar an tSamhail a Bhaint: %1"
 
-#: src/contents/ui/RNNoise.qml:261
+#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
+#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
+msgid "Standard RNNoise Model"
+msgstr "Múnla Caighdeánach RNNoise"
+
+#: src/contents/ui/RNNoise.qml:226
+#, fuzzy
+msgid "Standard RNNoise Model Loaded."
+msgstr "Múnla Caighdeánach RNNoise"
+
+#: src/contents/ui/RNNoise.qml:231 src/contents/ui/RNNoise.qml:272
+#, fuzzy
+msgid "Using %1 Model"
+msgstr "Ag baint úsáide as %1"
+
+#: src/contents/ui/RNNoise.qml:233
+#, fuzzy
+msgid "%1 Model Correctly Loaded."
+msgstr "Níor luchtaíodh an tsamhail"
+
+#: src/contents/ui/RNNoise.qml:237
+msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:304
 msgid "Import Model"
 msgstr "Iompórtáil Samhail"
 
@@ -2367,8 +2389,8 @@ msgstr "Is féidir é a úsáid ar rialuithe uimhriúla"
 msgid "Toggle Microphone Monitoring"
 msgstr "Monatóireacht Micreafóin a Athsholáthar"
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:372
-#: src/contents/ui/main.qml:495
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:374
+#: src/contents/ui/main.qml:497
 msgid "Shortcuts"
 msgstr "Aicearraí"
 
@@ -2448,7 +2470,7 @@ msgstr "Lánléargas Láir"
 msgid "Invert Phase"
 msgstr "Céim Inbhéartaithe"
 
-#: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:34
+#: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:35
 msgid "Delay"
 msgstr "Moill"
 
@@ -2460,48 +2482,48 @@ msgstr "Bonn Steirió"
 msgid "Stereo Phase"
 msgstr "Céim Steirió"
 
-#: src/contents/ui/main.qml:201
+#: src/contents/ui/main.qml:203
 msgid "Reset Settings?"
 msgstr "Athshocraigh Socruithe?"
 
-#: src/contents/ui/main.qml:202
+#: src/contents/ui/main.qml:204
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "An bhfuil tú cinnte gur mian leat gach socrú Easy Effects a athshocrú?"
 
-#: src/contents/ui/main.qml:223
+#: src/contents/ui/main.qml:225
 msgid "Audio effects for PipeWire applications"
 msgstr "Éifeachtaí fuaime d'fheidhmchláir PipeWire"
 
-#: src/contents/ui/main.qml:236
+#: src/contents/ui/main.qml:238
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Forbróir"
 
-#: src/contents/ui/main.qml:299 src/contents/ui/main.qml:316
+#: src/contents/ui/main.qml:301 src/contents/ui/main.qml:318
 msgid "Preset Loaded"
 msgstr "Réamhshocrú Luchtaithe"
 
-#: src/contents/ui/main.qml:361
+#: src/contents/ui/main.qml:363
 msgid "Active"
 msgstr "Gníomhach"
 
-#: src/contents/ui/main.qml:381 src/contents/ui/main.qml:503
+#: src/contents/ui/main.qml:383 src/contents/ui/main.qml:505
 msgid "Manual"
 msgstr "Lámhleabhar"
 
-#: src/contents/ui/main.qml:391 src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:537
 msgid "Quit"
 msgstr "Scoir"
 
-#: src/contents/ui/main.qml:421
+#: src/contents/ui/main.qml:423
 msgid "Turn Effects On/Off"
 msgstr "Cas Éifeachtaí Air/Múch"
 
-#: src/contents/ui/main.qml:471
+#: src/contents/ui/main.qml:473
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:527
+#: src/contents/ui/main.qml:529
 msgid "About Easy Effects"
 msgstr "Maidir le hÉifeachtaí Éasca"
 
@@ -2517,33 +2539,33 @@ msgstr "(Cainteoirí)"
 msgid "Output Level Meter"
 msgstr "Méadar Leibhéal Aschurtha"
 
-#: src/presets_manager.cpp:754 src/presets_manager.cpp:761
-#: src/presets_manager.cpp:771 src/presets_manager.cpp:778
-#: src/presets_manager.cpp:788 src/presets_manager.cpp:797
+#: src/presets_manager.cpp:756 src/presets_manager.cpp:763
+#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
+#: src/presets_manager.cpp:790 src/presets_manager.cpp:799
 msgid "Preset Not Loaded Correctly"
 msgstr "Réamhshocrú Gan luchtú i gceart"
 
-#: src/presets_manager.cpp:754
+#: src/presets_manager.cpp:756
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Formáid mhícheart sa liosta feidhmchlár eisiata"
 
-#: src/presets_manager.cpp:762
+#: src/presets_manager.cpp:764
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Earráid chineálach agus liosta feidhmchlár eisiata á luchtú"
 
-#: src/presets_manager.cpp:771
+#: src/presets_manager.cpp:773
 msgid "Wrong Format in Effects List"
 msgstr "Formáid Mhícheart sa Liosta Éifeachtaí"
 
-#: src/presets_manager.cpp:778
+#: src/presets_manager.cpp:780
 msgid "Generic Error While Loading Effects List"
 msgstr "Earráid chineálach agus liosta na n-éifeachtaí á luchtú"
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:791
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Tá formáid mhícheart ag paraiméadar amháin nó níos mó"
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:800
 msgid "Generic Error While Loading The Effect"
 msgstr "Earráid chineálach agus an éifeacht á luchtú"
 
@@ -2571,67 +2593,67 @@ msgstr "Earráid"
 msgid "Unknown"
 msgstr "Neamhaithnid"
 
-#: src/tags_plugin_name.cpp:26
+#: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
 msgstr "Feabhsaitheoir Dord"
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
 msgstr "Treise Dord"
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:30
 msgid "Convolver"
 msgstr "Convolver (freagairtí iomadúla impulse)"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
 msgstr "Crosaire"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
 msgstr "CrystalizerName"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:33
 msgid "Deep Noise Remover"
 msgstr "Remover Torann Domhain"
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:37
 msgid "Equalizer"
 msgstr "Cothromóir"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:38
 msgid "Exciter"
 msgstr "Spreagfaidh sé"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
 msgstr "Méadar Leibhéal"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
 msgstr "Uasmhéadaitheoir"
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Multiband Compressor"
 msgstr "Comhbhrúiteoir Ilbhanda"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Multiband Gate"
 msgstr "Geata Ilbhanda"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Reverberation"
 msgstr "Aisfhuaimniú"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Noise Reduction"
 msgstr "Laghdú Torainn"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Speech Processor"
 msgstr "Próiseálaí Urlabhra"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Stereo Tools"
 msgstr "Uirlisí Steirió"
 
@@ -2646,6 +2668,9 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
+
+#~ msgid "Loaded Model: %1"
+#~ msgstr "Múnla Luchtaithe: %1"
 
 #~ msgid ""
 #~ "Set plugin property. Format: "
@@ -3150,12 +3175,6 @@ msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
 
 #~ msgid "RNNoise Models List"
 #~ msgstr "Liosta Samhlacha RNNoise"
-
-#~ msgid "Model Not Loaded"
-#~ msgstr "Níor luchtaíodh an tsamhail"
-
-#~ msgid "Standard RNNoise Model"
-#~ msgstr "Múnla Caighdeánach RNNoise"
 
 #~ msgid "Overview"
 #~ msgstr "Forbhreathnú"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-19 16:36+0000\n"
+"POT-Creation-Date: 2025-10-19 18:41+0000\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -80,11 +80,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:335
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:337
 msgid "Output Presets"
 msgstr "வெளியீட்டு முன்னமைவுகள்"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:325
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
 msgid "Input Presets"
 msgstr "உள்ளீட்டு முன்னமைவுகள்"
 
@@ -146,7 +146,7 @@ msgstr "அதிகபட்ச வரலாறு"
 
 #: src/contents/ui/Autogain.qml:145 src/contents/ui/Autogain.qml:235
 #: src/contents/ui/BassLoudness.qml:47 src/contents/ui/LevelMeter.qml:139
-#: src/tags_plugin_name.cpp:43
+#: src/tags_plugin_name.cpp:44
 msgid "Loudness"
 msgstr "உரித்தல்"
 
@@ -174,7 +174,9 @@ msgstr "வெளியீட்டு ஆதாயம்"
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:210
-#: src/contents/ui/RNNoise.qml:245 src/contents/ui/Reverb.qml:309
+#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
+#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
+#: src/contents/ui/RNNoise.qml:288 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
 #, fuzzy
 msgid "Using %1"
@@ -262,16 +264,16 @@ msgstr "கேளுங்கள்"
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
 #: src/contents/ui/Maximizer.qml:131
 #: src/contents/ui/MultibandCompressor.qml:989
-#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:268
+#: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:311
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:515
+#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:517
 msgid "Reset"
 msgstr "மீட்டமை"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:449
+#: src/contents/ui/main.qml:451
 msgid "Output"
 msgstr "வெளியீடு"
 
@@ -322,7 +324,7 @@ msgstr ""
 msgid "Show Excluded Applications in the Streams Section"
 msgstr "விலக்கப்பட்ட பயன்பாடுகளைக் காட்டு"
 
-#: src/contents/ui/Compressor.qml:52 src/tags_plugin_name.cpp:28
+#: src/contents/ui/Compressor.qml:52 src/tags_plugin_name.cpp:29
 msgid "Compressor"
 msgstr "காற்றமுக்கி"
 
@@ -710,7 +712,7 @@ msgstr "காலம்"
 msgid "Stereo Width"
 msgstr "ச்டீரியோ அகலம்"
 
-#: src/contents/ui/Convolver.qml:425 src/tags_plugin_name.cpp:25
+#: src/contents/ui/Convolver.qml:425 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "ஆட்டோகெயின்"
 
@@ -782,7 +784,7 @@ msgid "Default"
 msgstr "இயல்புநிலை"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:413
+#: src/contents/ui/main.qml:415
 msgid "Presets"
 msgstr "முன்னமைவுகள்"
 
@@ -832,7 +834,7 @@ msgstr ""
 msgid "Post Filter Beta"
 msgstr "வடிகட்டி பீட்டாவை இடுங்கள்"
 
-#: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:33
+#: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:34
 msgid "Deesser"
 msgstr "டீசர்"
 
@@ -863,7 +865,7 @@ msgid "Laxity"
 msgstr "மெழுகுவர்த்தி"
 
 #: src/contents/ui/Deesser.qml:153 src/contents/ui/Filter.qml:104
-#: src/contents/ui/Reverb.qml:115 src/tags_plugin_name.cpp:39
+#: src/contents/ui/Reverb.qml:115 src/tags_plugin_name.cpp:40
 msgid "Filter"
 msgstr "வடிப்பி"
 
@@ -980,7 +982,7 @@ msgstr "இயக்கு"
 msgid "Exclude"
 msgstr "விலக்கு"
 
-#: src/contents/ui/EchoCanceller.qml:42 src/tags_plugin_name.cpp:35
+#: src/contents/ui/EchoCanceller.qml:42 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr "எக்கோ ரத்துசெய்தல்"
 
@@ -1041,7 +1043,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:460
+#: src/contents/ui/main.qml:462
 msgid "Input"
 msgstr "உள்ளீடு"
 
@@ -1236,7 +1238,7 @@ msgstr "உறவினர்"
 msgid "Ceil"
 msgstr "சீல்"
 
-#: src/contents/ui/Expander.qml:52 src/tags_plugin_name.cpp:38
+#: src/contents/ui/Expander.qml:52 src/tags_plugin_name.cpp:39
 msgid "Expander"
 msgstr "விரிவாக்க"
 
@@ -1290,7 +1292,7 @@ msgstr "ச்டீரியோ பயன்முறை"
 msgid "Equalizer Mode"
 msgstr "சமநிலைப்படுத்தி பயன்முறை"
 
-#: src/contents/ui/Gate.qml:56 src/tags_plugin_name.cpp:40
+#: src/contents/ui/Gate.qml:56 src/tags_plugin_name.cpp:41
 msgid "Gate"
 msgstr "வாயில்"
 
@@ -1503,7 +1505,7 @@ msgstr ""
 msgid "24 bit"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:42
+#: src/contents/ui/Limiter.qml:109 src/tags_plugin_name.cpp:43
 msgid "Limiter"
 msgstr "லிமிட்டர்"
 
@@ -1856,7 +1858,7 @@ msgstr "சாளரத்தைத் தேடுங்கள்"
 msgid "Overlap Length"
 msgstr "ஒன்றுடன் ஒன்று நீளம்"
 
-#: src/contents/ui/Pitch.qml:102 src/tags_plugin_name.cpp:47
+#: src/contents/ui/Pitch.qml:102 src/tags_plugin_name.cpp:48
 msgid "Pitch"
 msgstr "குனிவு"
 
@@ -1891,7 +1893,7 @@ msgstr "எதிர்ப்பு மாற்று"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:487
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:489
 #, fuzzy
 msgid "Preferences"
 msgstr "_ முனைகள்"
@@ -2348,26 +2350,45 @@ msgstr "நிலையான மாதிரி"
 msgid "User Models"
 msgstr "Rnnoise மாதிரிகள்"
 
-#: src/contents/ui/RNNoise.qml:195
-#, fuzzy
-msgid "Loaded Model: %1"
-msgstr "நிலையான மாதிரி"
-
-#: src/contents/ui/RNNoise.qml:207
+#: src/contents/ui/RNNoise.qml:206
 #, fuzzy
 msgid "Delete this Model"
 msgstr "இந்த மாதிரி கோப்பை அகற்று"
 
-#: src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/RNNoise.qml:211
 #, fuzzy
 msgid "Removed Model: %1"
 msgstr "இந்த மாதிரி கோப்பை அகற்று"
 
-#: src/contents/ui/RNNoise.qml:215
+#: src/contents/ui/RNNoise.qml:214
 msgid "Failed to Remove the Model: %1"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:261
+#: src/contents/ui/RNNoise.qml:224 src/contents/ui/RNNoise.qml:235
+#: src/contents/ui/RNNoise.qml:268 src/contents/ui/RNNoise.qml:270
+msgid "Standard RNNoise Model"
+msgstr "நிலையான Rnnoise மாதிரி"
+
+#: src/contents/ui/RNNoise.qml:226
+#, fuzzy
+msgid "Standard RNNoise Model Loaded."
+msgstr "நிலையான Rnnoise மாதிரி"
+
+#: src/contents/ui/RNNoise.qml:231 src/contents/ui/RNNoise.qml:272
+#, fuzzy
+msgid "Using %1 Model"
+msgstr "{} ஐப் பயன்படுத்துதல்"
+
+#: src/contents/ui/RNNoise.qml:233
+#, fuzzy
+msgid "%1 Model Correctly Loaded."
+msgstr "மாதிரி ஏற்றப்படவில்லை"
+
+#: src/contents/ui/RNNoise.qml:237
+msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:304
 msgid "Import Model"
 msgstr "இறக்குமதி மாதிரி"
 
@@ -2495,8 +2516,8 @@ msgstr ""
 msgid "Toggle Microphone Monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:372
-#: src/contents/ui/main.qml:495
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:374
+#: src/contents/ui/main.qml:497
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_SHORTCUTS"
@@ -2578,7 +2599,7 @@ msgstr "நடுத்தர பனோரமா"
 msgid "Invert Phase"
 msgstr "தலைகீழ் கட்டம்"
 
-#: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:34
+#: src/contents/ui/StereoTools.qml:336 src/tags_plugin_name.cpp:35
 msgid "Delay"
 msgstr "சுணக்கம்"
 
@@ -2590,55 +2611,55 @@ msgstr "ச்டீரியோ அடிப்படை"
 msgid "Stereo Phase"
 msgstr "ச்டீரியோ கட்டம்"
 
-#: src/contents/ui/main.qml:201
+#: src/contents/ui/main.qml:203
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_ ரெசெட் அமைப்புகள்"
 
-#: src/contents/ui/main.qml:202
+#: src/contents/ui/main.qml:204
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:223
+#: src/contents/ui/main.qml:225
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "பைப்வேர் பயன்பாடுகளுக்கான ஆடியோ விளைவுகள்"
 
-#: src/contents/ui/main.qml:236
+#: src/contents/ui/main.qml:238
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "உறை"
 
-#: src/contents/ui/main.qml:299 src/contents/ui/main.qml:316
+#: src/contents/ui/main.qml:301 src/contents/ui/main.qml:318
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "முன்னமைவு ஏற்றப்படவில்லை"
 
-#: src/contents/ui/main.qml:361
+#: src/contents/ui/main.qml:363
 #, fuzzy
 msgid "Active"
 msgstr "செயலில் மாதிரி"
 
-#: src/contents/ui/main.qml:381 src/contents/ui/main.qml:503
+#: src/contents/ui/main.qml:383 src/contents/ui/main.qml:505
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:391 src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:537
 #, fuzzy
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: src/contents/ui/main.qml:421
+#: src/contents/ui/main.qml:423
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:471
+#: src/contents/ui/main.qml:473
 #, fuzzy
 msgid "PipeWire"
 msgstr "_ பிபிபீயர்"
 
-#: src/contents/ui/main.qml:527
+#: src/contents/ui/main.qml:529
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_ எளிதான விளைவுகள்"
@@ -2655,33 +2676,33 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr "வெளியீட்டு நிலை மீட்டர்"
 
-#: src/presets_manager.cpp:754 src/presets_manager.cpp:761
-#: src/presets_manager.cpp:771 src/presets_manager.cpp:778
-#: src/presets_manager.cpp:788 src/presets_manager.cpp:797
+#: src/presets_manager.cpp:756 src/presets_manager.cpp:763
+#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
+#: src/presets_manager.cpp:790 src/presets_manager.cpp:799
 msgid "Preset Not Loaded Correctly"
 msgstr "முன்னமைவு சரியாக ஏற்றப்படவில்லை"
 
-#: src/presets_manager.cpp:754
+#: src/presets_manager.cpp:756
 msgid "Wrong Format in Excluded Apps List"
 msgstr "விலக்கப்பட்ட பயன்பாடுகள் பட்டியலில் தவறான வடிவம்"
 
-#: src/presets_manager.cpp:762
+#: src/presets_manager.cpp:764
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "விலக்கப்பட்ட பயன்பாடுகள் பட்டியலை ஏற்றும்போது பொதுவான பிழை"
 
-#: src/presets_manager.cpp:771
+#: src/presets_manager.cpp:773
 msgid "Wrong Format in Effects List"
 msgstr "விளைவுகள் பட்டியலில் தவறான வடிவம்"
 
-#: src/presets_manager.cpp:778
+#: src/presets_manager.cpp:780
 msgid "Generic Error While Loading Effects List"
 msgstr "விளைவுகள் பட்டியலை ஏற்றும்போது பொதுவான பிழை"
 
-#: src/presets_manager.cpp:789
+#: src/presets_manager.cpp:791
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "ஒன்று அல்லது அதற்கு மேற்பட்ட அளவுருக்கள் தவறான வடிவத்தைக் கொண்டுள்ளன"
 
-#: src/presets_manager.cpp:798
+#: src/presets_manager.cpp:800
 msgid "Generic Error While Loading The Effect"
 msgstr "விளைவை ஏற்றும்போது பொதுவான பிழை"
 
@@ -2709,67 +2730,67 @@ msgstr "பிழை"
 msgid "Unknown"
 msgstr "தெரியவில்லை"
 
-#: src/tags_plugin_name.cpp:26
+#: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
 msgstr "பாச் மேம்படுத்துபவர்"
 
-#: src/tags_plugin_name.cpp:27
+#: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
 msgstr "பாச் ஒலி"
 
-#: src/tags_plugin_name.cpp:29
+#: src/tags_plugin_name.cpp:30
 msgid "Convolver"
 msgstr "கான்வால்வர்"
 
-#: src/tags_plugin_name.cpp:30
+#: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
 msgstr "குறுக்குவெட்டு"
 
-#: src/tags_plugin_name.cpp:31
+#: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
 msgstr "படிகதாரர்"
 
-#: src/tags_plugin_name.cpp:32
+#: src/tags_plugin_name.cpp:33
 msgid "Deep Noise Remover"
 msgstr "ஆழமான இரைச்சல் நீக்கி"
 
-#: src/tags_plugin_name.cpp:36
+#: src/tags_plugin_name.cpp:37
 msgid "Equalizer"
 msgstr "சமநிலைப்படுத்தி"
 
-#: src/tags_plugin_name.cpp:37
+#: src/tags_plugin_name.cpp:38
 msgid "Exciter"
 msgstr "ஊக்கம்"
 
-#: src/tags_plugin_name.cpp:41
+#: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
 msgstr "நிலை மீட்டர்"
 
-#: src/tags_plugin_name.cpp:44
+#: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
 msgstr "அதிகபட்சம்"
 
-#: src/tags_plugin_name.cpp:45
+#: src/tags_plugin_name.cpp:46
 msgid "Multiband Compressor"
 msgstr "மல்டிபாண்ட் அமுக்கி"
 
-#: src/tags_plugin_name.cpp:46
+#: src/tags_plugin_name.cpp:47
 msgid "Multiband Gate"
 msgstr "மல்டிபாண்ட் கேட்"
 
-#: src/tags_plugin_name.cpp:48
+#: src/tags_plugin_name.cpp:49
 msgid "Reverberation"
 msgstr "எதிரொலித்தல்"
 
-#: src/tags_plugin_name.cpp:49
+#: src/tags_plugin_name.cpp:50
 msgid "Noise Reduction"
 msgstr "ஒலி குறைப்பு"
 
-#: src/tags_plugin_name.cpp:50
+#: src/tags_plugin_name.cpp:51
 msgid "Speech Processor"
 msgstr "பேச்சு செயலி"
 
-#: src/tags_plugin_name.cpp:51
+#: src/tags_plugin_name.cpp:52
 msgid "Stereo Tools"
 msgstr "ச்டீரியோ கருவிகள்"
 
@@ -2785,6 +2806,10 @@ msgstr "சமநிலைப்படுத்தி, அமுக்கி ம
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "பைப்வேர் பயன்பாடுகளுக்கான ஆடியோ விளைவுகள்"
+
+#, fuzzy
+#~ msgid "Loaded Model: %1"
+#~ msgstr "நிலையான மாதிரி"
 
 #~ msgid "Filter Length"
 #~ msgstr "வடிகட்டி நீளம்"
@@ -3264,12 +3289,6 @@ msgstr "பைப்வேர் பயன்பாடுகளுக்கா�
 
 #~ msgid "RNNoise Models List"
 #~ msgstr "Rnnoise மாதிரிகள் பட்டியல்"
-
-#~ msgid "Model Not Loaded"
-#~ msgstr "மாதிரி ஏற்றப்படவில்லை"
-
-#~ msgid "Standard RNNoise Model"
-#~ msgstr "நிலையான Rnnoise மாதிரி"
 
 #~ msgid "Overview"
 #~ msgstr "கண்ணோட்டம்"
