@@ -21,35 +21,35 @@ const QRegularExpression id_regex(R"(#(\d+)$)");
 
 namespace tags::plugin_name {
 
-Model::Model(QObject* parent) : QAbstractListModel(parent) {
-  modelMap = {{BaseName::autogain, i18n("Autogain")},
-              {BaseName::bassEnhancer, i18n("Bass Enhancer")},
-              {BaseName::bassLoudness, i18n("Bass Loudness")},
-              {BaseName::compressor, i18n("Compressor")},
-              {BaseName::convolver, i18n("Convolver")},
-              {BaseName::crossfeed, i18n("Crossfeed")},
-              {BaseName::crystalizer, i18n("Crystalizer")},
-              {BaseName::deepfilternet, i18n("Deep Noise Remover")},
-              {BaseName::deesser, i18n("Deesser")},
-              {BaseName::delay, i18n("Delay")},
-              {BaseName::echoCanceller, i18n("Echo Canceller")},
-              {BaseName::equalizer, i18n("Equalizer")},
-              {BaseName::exciter, i18n("Exciter")},
-              {BaseName::expander, i18n("Expander")},
-              {BaseName::filter, i18n("Filter")},
-              {BaseName::gate, i18n("Gate")},
-              {BaseName::levelMeter, i18n("Level Meter")},
-              {BaseName::limiter, i18n("Limiter")},
-              {BaseName::loudness, i18n("Loudness")},
-              {BaseName::maximizer, i18n("Maximizer")},
-              {BaseName::multibandCompressor, i18n("Multiband Compressor")},
-              {BaseName::multibandGate, i18n("Multiband Gate")},
-              {BaseName::pitch, i18n("Pitch")},
-              {BaseName::reverb, i18n("Reverberation")},
-              {BaseName::rnnoise, i18n("Noise Reduction")},
-              {BaseName::speex, i18n("Speech Processor")},
-              {BaseName::stereoTools, i18n("Stereo Tools")}};
-
+Model::Model(QObject* parent)
+    : QAbstractListModel(parent),
+      modelMap({{BaseName::autogain, i18n("Autogain")},
+                {BaseName::bassEnhancer, i18n("Bass Enhancer")},
+                {BaseName::bassLoudness, i18n("Bass Loudness")},
+                {BaseName::compressor, i18n("Compressor")},
+                {BaseName::convolver, i18n("Convolver")},
+                {BaseName::crossfeed, i18n("Crossfeed")},
+                {BaseName::crystalizer, i18n("Crystalizer")},
+                {BaseName::deepfilternet, i18n("Deep Noise Remover")},
+                {BaseName::deesser, i18n("Deesser")},
+                {BaseName::delay, i18n("Delay")},
+                {BaseName::echoCanceller, i18n("Echo Canceller")},
+                {BaseName::equalizer, i18n("Equalizer")},
+                {BaseName::exciter, i18n("Exciter")},
+                {BaseName::expander, i18n("Expander")},
+                {BaseName::filter, i18n("Filter")},
+                {BaseName::gate, i18n("Gate")},
+                {BaseName::levelMeter, i18n("Level Meter")},
+                {BaseName::limiter, i18n("Limiter")},
+                {BaseName::loudness, i18n("Loudness")},
+                {BaseName::maximizer, i18n("Maximizer")},
+                {BaseName::multibandCompressor, i18n("Multiband Compressor")},
+                {BaseName::multibandGate, i18n("Multiband Gate")},
+                {BaseName::pitch, i18n("Pitch")},
+                {BaseName::reverb, i18n("Reverberation")},
+                {BaseName::rnnoise, i18n("Noise Reduction")},
+                {BaseName::speex, i18n("Speech Processor")},
+                {BaseName::stereoTools, i18n("Stereo Tools")}}) {
   auto* proxyModel = new QSortFilterProxyModel(this);
 
   proxyModel->setSourceModel(this);
@@ -101,7 +101,7 @@ auto Model::getMap() -> QMap<QString, QString> {
 }
 
 QString Model::translate(const QString& baseName) {
-  return modelMap[baseName];
+  return modelMap.contains(baseName) ? modelMap[baseName] : "";
 }
 
 QList<QString> Model::getBaseNames() {

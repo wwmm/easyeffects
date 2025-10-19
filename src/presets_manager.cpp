@@ -738,11 +738,13 @@ auto Manager::preset_file_exists(const PipelineType& pipeline_type, const std::s
 void Manager::notify_error(const PresetError& preset_error, const std::string& plugin_name) {
   QString plugin_translated;
 
-  try {
-    const auto base_name = tags::plugin_name::Model::self().getBaseName(QString::fromStdString(plugin_name));
-    plugin_translated = tags::plugin_name::Model::self().translate(base_name) + ": ";
-  } catch (std::out_of_range& e) {
-    util::debug(e.what());
+  if (!plugin_name.empty()) {
+    try {
+      const auto base_name = tags::plugin_name::Model::self().getBaseName(QString::fromStdString(plugin_name));
+      plugin_translated = tags::plugin_name::Model::self().translate(base_name) + ": ";
+    } catch (std::out_of_range& e) {
+      util::debug(e.what());
+    }
   }
 
   switch (preset_error) {

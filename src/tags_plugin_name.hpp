@@ -129,7 +129,7 @@ class Model : public QAbstractListModel {
   Q_INVOKABLE QString translate(const QString& baseName);
 
  private:
-  QMap<QString, QString> modelMap;
+  const QMap<QString, QString> modelMap;
 
   BaseName base_name;
   plugin_package::Package package;
