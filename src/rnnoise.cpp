@@ -286,32 +286,43 @@ auto RNNoise::search_model_path(const std::string& name) -> std::string {
 #ifdef ENABLE_RNNOISE
 
 auto RNNoise::get_model_from_name() -> RNNModel* {
-  RNNModel* m = nullptr;
-
-  const auto name = settings->modelName().toStdString();
-
   // Standard Model
   if (settings->useStandardModel()) {
     standard_model = true;
 
-    util::debug(std::format("{} using the standard model", log_tag));
+    util::debug(std::format("{}using the standard model", log_tag));
 
-    return m;
+    Q_EMIT standardModelLoaded();
+
+    return nullptr;
   }
+
+  const auto name = settings->modelName().toStdString();
 
   const auto path = search_model_path(name);
 
-  // Standard Model
+  // Fallback to Standard Model on empty path.
   if (path.empty()) {
     standard_model = true;
 
     util::debug(std::format("{}{} model does not exist on the filesystem, using the standard model.", log_tag, name));
 
-    return m;
+    /**
+     * If the name is the default settings value, it's likely the user has
+     * unchecked the standard model switch in the UI after a plugin reset,
+     * so there's no need to emit the signal in that case.
+     */
+    if (name != settings->defaultModelNameValue()) {
+      Q_EMIT customModelLoaded(settings->modelName(), false);
+    }
+
+    return nullptr;
   }
 
-  // Custom Model
-  util::debug(std::format("{}{} loading custom model from path: {}", log_tag, name, path));
+  // Try to load a Custom Model (fallback to Standard Model on error).
+  util::debug(std::format("{}loading custom model {} from path: {}", log_tag, name, path));
+
+  RNNModel* m = nullptr;
 
   if (FILE* f = fopen(path.c_str(), "r"); f != nullptr) {
     m = rnnoise_model_from_file(f);
@@ -322,8 +333,10 @@ auto RNNoise::get_model_from_name() -> RNNModel* {
   standard_model = (m == nullptr);
 
   if (standard_model) {
-    util::warning(std::format("{}{} failed to load the custom model. Using the standard one.", log_tag, name));
+    util::warning(std::format("{}failed to load the custom model {}. Using the standard one.", log_tag, name));
   }
+
+  Q_EMIT customModelLoaded(settings->modelName(), !standard_model);
 
   return m;
 }

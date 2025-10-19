@@ -42,6 +42,8 @@
 class RNNoise : public PluginBase {
   Q_OBJECT
 
+  Q_PROPERTY(bool usingStandardModel MEMBER standard_model NOTIFY usingStandardModelChanged)
+
  public:
   RNNoise(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_type, QString instance_id);
   RNNoise(const RNNoise&) = delete;
@@ -79,6 +81,11 @@ class RNNoise : public PluginBase {
   const std::string rnnn_ext = ".rnnn";
 
   bool standard_model = true;
+
+ Q_SIGNALS:
+  void standardModelLoaded();
+  void customModelLoaded(const QString name, const bool success);
+  void usingStandardModelChanged();
 
  private:
   db::RNNoise* settings = nullptr;
