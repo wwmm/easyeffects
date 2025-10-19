@@ -15,6 +15,8 @@ Kirigami.OverlaySheet {
     required property var pluginDB
 
     function showImpulseMenuStatus(label, positive = true) {
+        autoHideStatusTimer.stop();
+
         status.text = label;
 
         if (positive) {

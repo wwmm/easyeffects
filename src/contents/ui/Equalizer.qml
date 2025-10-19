@@ -31,6 +31,8 @@ Kirigami.ScrollablePage {
     }
 
     function showStatus(label, positive = true) {
+        autoHideStatusTimer.stop();
+
         status.text = label;
 
         if (positive) {
