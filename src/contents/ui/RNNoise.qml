@@ -192,7 +192,6 @@ Kirigami.ScrollablePage {
                             onClicked: {
                                 rnnoisePage.pluginDB.modelName = name;
                                 listItemDelegate.ListView.view.currentIndex = index;
-                                appWindow.showStatus(i18n("Loaded Model: %1", name), Kirigami.MessageType.Positive);// qmllint disable
                             }
 
                             contentItem: RowLayout {
@@ -224,18 +223,18 @@ Kirigami.ScrollablePage {
                                 function onStandardModelLoaded() {
                                     currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
 
-                                    rnnoisePage.showStatus(i18n("Standard RNNoise Model Loaded."));
+                                    appWindow.showStatus(i18n("Standard RNNoise Model Loaded."), Kirigami.MessageType.Positive);
                                 }
 
                                 function onCustomModelLoaded(name, success) {
                                     if (success) {
                                         currentModelLoaded.text = i18n("Using %1 Model", `<strong>${name}</strong>`);
 
-                                        rnnoisePage.showStatus(i18n("%1 Model Correctly Loaded.", `<strong>${name}</strong>`));
+                                        appWindow.showStatus(i18n("%1 Model Correctly Loaded.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive);
                                     } else {
                                         currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
 
-                                        rnnoisePage.showStatus(i18n("Failed to Load the %1 Model. Fallback to Standard RNNoise Model.", `<strong>${name}</strong>`), false);
+                                        appWindow.showStatus(i18n("Failed to Load the %1 Model. Fallback to Standard RNNoise Model.", `<strong>${name}</strong>`), Kirigami.MessageType.Error);
                                     }
                                 }
 
