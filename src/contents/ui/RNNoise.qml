@@ -46,6 +46,32 @@ Kirigami.ScrollablePage {
         }
     }
 
+    Connections {
+        enabled: rnnoisePage.pluginBackend !== null && rnnoisePage.pluginBackend !== undefined
+
+        ignoreUnknownSignals: true
+
+        function onStandardModelLoaded() {
+            currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
+
+            appWindow.showStatus(i18n("Standard RNNoise Model Loaded."), Kirigami.MessageType.Positive);
+        }
+
+        function onCustomModelLoaded(name, success) {
+            if (success) {
+                currentModelLoaded.text = i18n("Using %1 Model", `<strong>${name}</strong>`);
+
+                appWindow.showStatus(i18n("%1 Model Correctly Loaded.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive);
+            } else {
+                currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
+
+                appWindow.showStatus(i18n("Failed to Load the %1 Model. Fallback to Standard RNNoise Model.", `<strong>${name}</strong>`), Kirigami.MessageType.Error);
+            }
+        }
+
+        target: rnnoisePage.pluginBackend
+    }
+
     ColumnLayout {
         Kirigami.CardsLayout {
             id: cardLayout
@@ -63,6 +89,8 @@ Kirigami.ScrollablePage {
                 }
 
                 contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     EeSwitch {
                         id: enableVad
 
@@ -128,6 +156,7 @@ Kirigami.ScrollablePage {
                 id: cardModels
 
                 implicitWidth: cardLayout.maximumColumnWidth
+                Layout.minimumHeight: cardControls.implicitHeight
                 actions: [
                     Kirigami.Action {
 
@@ -150,6 +179,8 @@ Kirigami.ScrollablePage {
 
                 contentItem: RowLayout {
                     id: listviewRow
+
+                    anchors.fill: parent
 
                     ListView {
                         id: listView
@@ -217,28 +248,6 @@ Kirigami.ScrollablePage {
                                         }
                                     ]
                                 }
-                            }
-
-                            Connections {
-                                function onStandardModelLoaded() {
-                                    currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
-
-                                    appWindow.showStatus(i18n("Standard RNNoise Model Loaded."), Kirigami.MessageType.Positive);
-                                }
-
-                                function onCustomModelLoaded(name, success) {
-                                    if (success) {
-                                        currentModelLoaded.text = i18n("Using %1 Model", `<strong>${name}</strong>`);
-
-                                        appWindow.showStatus(i18n("%1 Model Correctly Loaded.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive);
-                                    } else {
-                                        currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
-
-                                        appWindow.showStatus(i18n("Failed to Load the %1 Model. Fallback to Standard RNNoise Model.", `<strong>${name}</strong>`), Kirigami.MessageType.Error);
-                                    }
-                                }
-
-                                target: rnnoisePage.pluginBackend
                             }
                         }
                     }

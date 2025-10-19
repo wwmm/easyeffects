@@ -84,7 +84,7 @@ class RNNoise : public PluginBase {
 
  Q_SIGNALS:
   void standardModelLoaded();
-  void customModelLoaded(const QString name, const bool success);
+  void customModelLoaded(QString name, bool success);
   void usingStandardModelChanged();
 
  private:
