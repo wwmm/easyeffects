@@ -88,14 +88,16 @@ Kirigami.ApplicationWindow {
         DB.Manager.main.visiblePage = index;
     }
 
-    function showStatus(label, statusType) {
+    function showStatus(label, statusType = Kirigami.MessageType.Information, autohide = true) {
         autoHideStatusTimer.stop();
 
         status.type = statusType;
         status.text = label;
         status.visible = true;
 
-        autoHideStatusTimer.start();
+        if (autohide) {
+            autoHideStatusTimer.start();
+        }
     }
 
     Binding {
