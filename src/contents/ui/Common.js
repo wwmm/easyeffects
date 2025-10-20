@@ -10,17 +10,26 @@ var minimumDecibelLevel = -100.0;
  */
 function isEmpty(v) {
     switch (typeof v) {
-    case "string":
-        return v.length === 0;
-    case "number":
-        return Number.isNaN(v);
-    case "undefined":
-        return true;
-    case "object":
-        return v === null;
-    default:
-        return false;
+        case "string":
+            return v.length === 0;
+        case "number":
+            return Number.isNaN(v);
+        case "undefined":
+            return true;
+        case "object":
+            return v === null;
+        default:
+            return false;
     }
+}
+
+/**
+ * Check if a variable is null or undefined.
+ * @param {*} v
+ * @returns {boolean}
+ */
+function isNullOrUndefined(v) {
+    return v === null || v === undefined;
 }
 
 /**

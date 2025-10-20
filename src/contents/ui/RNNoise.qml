@@ -1,4 +1,5 @@
 pragma ComponentBehavior: Bound
+import "Common.js" as Common
 import QtCore
 import QtQuick
 import QtQuick.Controls as Controls
@@ -47,7 +48,7 @@ Kirigami.ScrollablePage {
     }
 
     Connections {
-        enabled: rnnoisePage.pluginBackend !== null && rnnoisePage.pluginBackend !== undefined
+        enabled: !Common.isNullOrUndefined(rnnoisePage.pluginBackend)
 
         ignoreUnknownSignals: true
 
