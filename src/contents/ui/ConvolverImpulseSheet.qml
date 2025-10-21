@@ -16,9 +16,9 @@ Kirigami.OverlaySheet {
     parent: applicationWindow().overlay // qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
-    y: appWindow.header.height + Kirigami.Units.gridUnit // qmllint disable
+    y: 0
     implicitWidth: Math.max(Kirigami.Units.gridUnit * 40, appWindow.width * 0.5) // qmllint disable
-    implicitHeight: (control.parent.height * 0.8) - control.y
+    implicitHeight: appWindow.maxOverlayHeight // qmllint disable
 
     FileDialog {
         id: fileDialog

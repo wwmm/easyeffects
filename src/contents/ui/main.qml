@@ -17,6 +17,8 @@ Kirigami.ApplicationWindow {
     title: "Easy Effects"
     pageStack.globalToolBar.style: Kirigami.ApplicationHeaderStyle.None
 
+    readonly property real maxOverlayHeight: height - header.height - footer.height
+
     property var pagesMap: {
         0: {
             page: "qrc:/ui/PageStreamsEffects.qml",

@@ -31,10 +31,6 @@ ColumnLayout {
         return "";
     }
 
-    ListModel {
-        id: listModel
-    }
-
     Kirigami.SearchField {
         id: search
 

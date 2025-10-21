@@ -1,4 +1,5 @@
 import "Common.js" as Common
+import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
@@ -28,30 +29,27 @@ Kirigami.OverlaySheet {
     parent: applicationWindow().overlay// qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
-    y: appWindow.header.height + Kirigami.Units.gridUnit// qmllint disable
-    onVisibleChanged: {
-        if (control.visible) {
+    y: 0
+    implicitWidth: Math.max(appWindow.width * 0.5, Kirigami.Units.gridUnit * 40)
+    implicitHeight: appWindow.maxOverlayHeight // qmllint disable
+
+    Loader {
+        id: pageLoader
+
+        height: control.height - control.header.height - control.footer.height - Kirigami.Units.largeSpacing * 5
+
+        source: {
             switch (DB.Manager.main.visiblePresetSheetPage) {
             case 0:
-                stackView.replace("qrc:/ui/PresetsLocalPage.qml");
-                break;
+                return "qrc:/ui/PresetsLocalPage.qml";
             case 1:
-                stackView.replace("qrc:/ui/PresetsCommunityPage.qml");
-                break;
+                return "qrc:/ui/PresetsCommunityPage.qml";
             case 2:
-                stackView.replace("qrc:/ui/PresetsAutoloadingPage.qml");
-                break;
+                return "qrc:/ui/PresetsAutoloadingPage.qml";
             default:
-                null;
+                return "";
             }
         }
-    }
-
-    Controls.StackView {
-        id: stackView
-
-        implicitWidth: Math.max(appWindow.width * 0.5, Kirigami.Units.gridUnit * 40)// qmllint disable
-        implicitHeight: 1 * control.parent.height - 2 * appWindow.header.height - control.y - control.header.implicitHeight - control.footer.implicitHeight// qmllint disable
     }
 
     header: Kirigami.ActionToolBar {
@@ -59,39 +57,36 @@ Kirigami.OverlaySheet {
 
         alignment: Qt.AlignHCenter
         position: Controls.ToolBar.Header
+
+        Controls.ActionGroup {
+            id: headerActionGroup
+            exclusive: true
+        }
+
         actions: [
             Kirigami.Action {
-                displayHint: Kirigami.DisplayHint.KeepVisible
-                text: i18n("Local") // qmllint disable
+                text: i18n("Local")
                 icon.name: "system-file-manager-symbolic"
                 checkable: true
                 checked: DB.Manager.main.visiblePresetSheetPage === 0
-                onTriggered: {
-                    stackView.replace("qrc:/ui/PresetsLocalPage.qml");
-                    DB.Manager.main.visiblePresetSheetPage = 0;
-                }
+                Controls.ActionGroup.group: headerActionGroup
+                onTriggered: DB.Manager.main.visiblePresetSheetPage = 0
             },
             Kirigami.Action {
-                displayHint: Kirigami.DisplayHint.KeepVisible
-                text: i18n("Community") // qmllint disable
+                text: i18n("Community")
                 icon.name: "system-users-symbolic"
                 checkable: true
                 checked: DB.Manager.main.visiblePresetSheetPage === 1
-                onTriggered: {
-                    stackView.replace("qrc:/ui/PresetsCommunityPage.qml");
-                    DB.Manager.main.visiblePresetSheetPage = 1;
-                }
+                Controls.ActionGroup.group: headerActionGroup
+                onTriggered: DB.Manager.main.visiblePresetSheetPage = 1
             },
             Kirigami.Action {
-                displayHint: Kirigami.DisplayHint.KeepVisible
-                text: i18n("Autoloading") // qmllint disable
+                text: i18n("Autoloading")
                 icon.name: "task-recurring-symbolic"
                 checkable: true
                 checked: DB.Manager.main.visiblePresetSheetPage === 2
-                onTriggered: {
-                    stackView.replace("qrc:/ui/PresetsAutoloadingPage.qml");
-                    DB.Manager.main.visiblePresetSheetPage = 2;
-                }
+                Controls.ActionGroup.group: headerActionGroup
+                onTriggered: DB.Manager.main.visiblePresetSheetPage = 2
             }
         ]
     }
