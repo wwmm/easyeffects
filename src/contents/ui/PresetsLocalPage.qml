@@ -46,9 +46,9 @@ ColumnLayout {
         acceptLabel: i18n("Export Presets") // qmllint disable
         onAccepted: {
             if (Presets.Manager.exportPresets(columnLayout.pipeline, fileDialogExport.selectedFolder) === true) {
-                appWindow.showStatus(i18n("Exported the Preset to an External File."), Kirigami.MessageType.Positive); // qmllint disable
+                appWindow.showStatus(i18n("Exported all Presets to an External Folder."), Kirigami.MessageType.Positive); // qmllint disable
             } else {
-                appWindow.showStatus(i18n("Failed to Export the Preset to an External File."), Kirigami.MessageType.Error, false); // qmllint disable
+                appWindow.showStatus(i18n("Failed to Export All Presets to an External Folder."), Kirigami.MessageType.Error, false); // qmllint disable
             }
         }
     }

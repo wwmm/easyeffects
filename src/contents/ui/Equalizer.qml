@@ -80,10 +80,10 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("APO Preset") + " (*.txt)"]// qmllint disable
         onAccepted: {
             if (equalizerPage.pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true) {
-                appWindow.showStatus(i18n("Exported the Equalizer APO Preset File."), Kirigami.MessageType.Positive);
+                appWindow.showStatus(i18n("Exported the Current Equalizer Settings to an External APO Preset File."), Kirigami.MessageType.Positive);
                 // qmllint disable
             } else {
-                appWindow.showStatus(i18n("Failed to Export the Equalizer APO Preset File."), Kirigami.MessageType.Error, false); // qmllint disable
+                appWindow.showStatus(i18n("Failed to Export the Current Equalizer Settings to an External APO Preset File."), Kirigami.MessageType.Error, false); // qmllint disable
             }
         }
     }
