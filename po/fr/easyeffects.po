@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-19 19:09+0000\n"
-"PO-Revision-Date: 2025-10-18 02:38+0000\n"
+"PO-Revision-Date: 2025-10-21 16:05+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -1510,9 +1510,8 @@ msgid "Clipping"
 msgstr "Coupure"
 
 #: src/contents/ui/MenuAddPlugins.qml:132
-#, fuzzy
 msgid "Added Effect: %1"
-msgstr "Effet Ajouté"
+msgstr "Effet Ajouté : %1"
 
 #: src/contents/ui/MultibandCompressor.qml:111
 msgid "Compression Mode"
@@ -2073,14 +2072,12 @@ msgid "Copy to the Local List"
 msgstr "Copier vers la Liste Locale"
 
 #: src/contents/ui/PresetsCommunityPage.qml:106
-#, fuzzy
 msgid "Imported the Community Preset: %1"
-msgstr "Importation du Préréglage de la Communauté"
+msgstr "Importation du Préréglage de la Communauté : %1"
 
 #: src/contents/ui/PresetsCommunityPage.qml:109
-#, fuzzy
 msgid "Failed to Import the Community Preset: %1"
-msgstr "Échec de l'Importation du Préréglage de la Communauté"
+msgstr "Échec de l'Importation du Préréglage de la Communauté : %1"
 
 #: src/contents/ui/PresetsCommunityPage.qml:129
 msgid "Refresh"
@@ -2217,23 +2214,20 @@ msgid "Standard RNNoise Model"
 msgstr "Modèle Standard RNNoise"
 
 #: src/contents/ui/RNNoise.qml:57
-#, fuzzy
 msgid "Standard RNNoise Model Loaded."
-msgstr "Modèle Standard RNNoise"
+msgstr "Modèle RNNoise Standard Chargé."
 
 #: src/contents/ui/RNNoise.qml:62 src/contents/ui/RNNoise.qml:281
-#, fuzzy
 msgid "Using %1 Model"
-msgstr "Utilisation de %1"
+msgstr "Utilisation du Modèle %1"
 
 #: src/contents/ui/RNNoise.qml:64
-#, fuzzy
 msgid "%1 Model Correctly Loaded."
-msgstr "Modèle Non Chargé"
+msgstr "Modèle %1 Correctement Chargé."
 
 #: src/contents/ui/RNNoise.qml:68
 msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
-msgstr ""
+msgstr "Échec du Chargement du Modèle %1. Retour au Modèle RNNoise Standard."
 
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/Speex.qml:108
 msgid "Voice Detection"
