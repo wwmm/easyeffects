@@ -13,7 +13,7 @@ import org.kde.kirigamiaddons.formcard as FormCard
 Kirigami.ScrollablePage {
     id: equalizerPage
 
-    required property var name
+    required property string name
     required property var pluginDB
     required property var leftDB
     required property var rightDB

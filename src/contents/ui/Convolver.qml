@@ -11,7 +11,7 @@ import org.kde.kirigamiaddons.formcard as FormCard
 Kirigami.ScrollablePage {
     id: convolverPage
 
-    required property var name
+    required property string name
     required property var pluginDB
     required property var pipelineInstance
     property var pluginBackend: null
