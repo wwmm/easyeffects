@@ -126,7 +126,7 @@ Kirigami.ApplicationWindow {
         target: Presets.Manager
 
         function onPresetLoadError(title, description) {
-            appWindow.showStatus(`${title} 🢥 ${description}`, Kirigami.MessageType.Error);
+            appWindow.showStatus(`${title}. ${description}.`, Kirigami.MessageType.Error, false);
         }
     }
 

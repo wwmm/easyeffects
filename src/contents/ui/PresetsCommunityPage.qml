@@ -73,11 +73,7 @@ ColumnLayout {
 
                 hoverEnabled: true
                 width: listView.width
-                onClicked: {
-                    if (Presets.Manager.loadCommunityPresetFile(columnLayout.pipeline, path, presetPackage) === false)
-                        appWindow.showStatus(i18n("The Preset %1 Failed to Load", `<strong>${name}</strong>`), Kirigami.MessageType.Error // qmllint disable
-                        );
-                }
+                onClicked: Presets.Manager.loadCommunityPresetFile(columnLayout.pipeline, path, presetPackage)
 
                 contentItem: RowLayout {
                     Controls.Label {
@@ -98,12 +94,11 @@ ColumnLayout {
                                 icon.name: "document-import-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
-                                    if (Presets.Manager.importFromCommunityPackage(columnLayout.pipeline, listItemDelegate.path, listItemDelegate.presetPackage) === true)
-                                        appWindow.showStatus(i18n("Imported the Community Preset: %1", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive// qmllint disable
-                                        );
-                                    else
-                                        appWindow.showStatus(i18n("Failed to Import the Community Preset: %1", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error // qmllint disable
-                                        );
+                                    if (Presets.Manager.importFromCommunityPackage(columnLayout.pipeline, listItemDelegate.path, listItemDelegate.presetPackage) === true) {
+                                        appWindow.showStatus(i18n("Imported the %1 Community Preset.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+                                    } else {
+                                        appWindow.showStatus(i18n("Failed to Import the %1 Community Preset.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
+                                    }
                                 }
                             }
                         ]

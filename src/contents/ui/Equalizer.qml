@@ -49,12 +49,11 @@ Kirigami.ScrollablePage {
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         nameFilters: [i18n("APO Presets") + " (*.txt)"]// qmllint disable
         onAccepted: {
-            if (equalizerPage.pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true)
-                appWindow.showStatus(i18n("APO Preset File Imported."), Kirigami.MessageType.Positive // qmllint disable
-                );
-            else
-                appWindow.showStatus(i18n("Failed to Import the APO Preset File."), Kirigami.MessageType.Error // qmllint disable
-                );
+            if (equalizerPage.pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true) {
+                appWindow.showStatus(i18n("Imported the Equalizer APO Preset File."), Kirigami.MessageType.Positive); // qmllint disable
+            } else {
+                appWindow.showStatus(i18n("Failed to Import the Equalizer APO Preset File."), Kirigami.MessageType.Error, false); // qmllint disable
+            }
         }
     }
 
@@ -65,12 +64,11 @@ Kirigami.ScrollablePage {
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         nameFilters: [i18n("GraphicEQ Presets") + " (*.txt)"]// qmllint disable
         onAccepted: {
-            if (equalizerPage.pluginBackend.importApoGraphicEqPreset(apoGraphicEqFileDialog.selectedFiles) === true)
-                appWindow.showStatus(i18n("GraphicEQ Preset File Imported."), Kirigami.MessageType.Positive // qmllint disable
-                );
-            else
-                appWindow.showStatus(i18n("Failed to Import the GraphicEQ Preset File."), Kirigami.MessageType.Error // qmllint disable
-                );
+            if (equalizerPage.pluginBackend.importApoGraphicEqPreset(apoGraphicEqFileDialog.selectedFiles) === true) {
+                appWindow.showStatus(i18n("Imported the GraphicEQ Preset File."), Kirigami.MessageType.Positive); // qmllint disable
+            } else {
+                appWindow.showStatus(i18n("Failed to Import the GraphicEQ Preset File."), Kirigami.MessageType.Error, false); // qmllint disable
+            }
         }
     }
 
@@ -81,12 +79,12 @@ Kirigami.ScrollablePage {
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         nameFilters: [i18n("APO Preset") + " (*.txt)"]// qmllint disable
         onAccepted: {
-            if (equalizerPage.pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true)
-                appWindow.showStatus(i18n("APO Preset File Exported."), Kirigami.MessageType.Positive // qmllint disable
-                );
-            else
-                appWindow.showStatus(i18n("Failed to Export the APO Preset File."), Kirigami.MessageType.Error // qmllint disable
-                );
+            if (equalizerPage.pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true) {
+                appWindow.showStatus(i18n("Exported the Equalizer APO Preset File."), Kirigami.MessageType.Positive);
+                // qmllint disable
+            } else {
+                appWindow.showStatus(i18n("Failed to Export the Equalizer APO Preset File."), Kirigami.MessageType.Error, false); // qmllint disable
+            }
         }
     }
 

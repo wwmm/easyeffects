@@ -39,11 +39,11 @@ Kirigami.ScrollablePage {
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
         nameFilters: ["RNNoise (*.rnnn)"]
         onAccepted: {
-            if (Presets.Manager.importRNNoiseModel(fileDialog.selectedFiles) === 0)
-                appWindow.showStatus(i18n("Model File Imported."), Kirigami.MessageType.Positive // qmllint disable
-                );
-            else
-                appWindow.showStatus(i18n("Failed to Import the Model File."), Kirigami.MessageType.Error);// qmllint disable
+            if (Presets.Manager.importRNNoiseModel(fileDialog.selectedFiles) === 0) {
+                appWindow.showStatus(i18n("Imported a New RNNoise Model File."), Kirigami.MessageType.Positive); // qmllint disable
+            } else {
+                appWindow.showStatus(i18n("Failed to Import the RNNoise Model File."), Kirigami.MessageType.Error, false); // qmllint disable
+            }
         }
     }
 
@@ -62,11 +62,11 @@ Kirigami.ScrollablePage {
             if (success) {
                 currentModelLoaded.text = i18n("Using %1 Model", `<strong>${name}</strong>`);
 
-                appWindow.showStatus(i18n("%1 Model Correctly Loaded.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive);
+                appWindow.showStatus(i18n("Loaded the %1 RNNoise Model.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive);
             } else {
                 currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
 
-                appWindow.showStatus(i18n("Failed to Load the %1 Model. Fallback to Standard RNNoise Model.", `<strong>${name}</strong>`), Kirigami.MessageType.Error);
+                appWindow.showStatus(i18n("Failed to Load the %1 Model. Fallback to Standard RNNoise Model.", `<strong>${name}</strong>`), Kirigami.MessageType.Error, false);
             }
         }
 
@@ -239,12 +239,11 @@ Kirigami.ScrollablePage {
                                             icon.name: "delete"
                                             displayHint: Kirigami.DisplayHint.AlwaysHide
                                             onTriggered: {
-                                                if (Presets.Manager.removeRNNoiseModel(listItemDelegate.path) === true)
-                                                    appWindow.showStatus(i18n("Removed Model: %1", listItemDelegate.name), Kirigami.MessageType.Positive  // qmllint disable
-                                                    );
-                                                else
-                                                    appWindow.showStatus(i18n("Failed to Remove the Model: %1", listItemDelegate.name), Kirigami.MessageType.Error // qmllint disable
-                                                    );
+                                                if (Presets.Manager.removeRNNoiseModel(listItemDelegate.path) === true) {
+                                                    appWindow.showStatus(i18n("Removed the %1 RNNoise Model.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+                                                } else {
+                                                    appWindow.showStatus(i18n("Failed to Remove the %1 RNNoise Model.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
+                                                }
                                             }
                                         }
                                     ]
