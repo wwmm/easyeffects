@@ -14,10 +14,9 @@ Kirigami.OverlaySheet {
     parent: applicationWindow().overlay// qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
-    y: appWindow.header.height + Kirigami.Units.gridUnit// qmllint disable
-    showCloseButton: false
+    y: 0
     implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
-    implicitHeight: control.parent.height - 2 * control.header.height - control.y
+    implicitHeight: appWindow.maxOverlayHeight // qmllint disable
 
     ListView {
         id: listView
@@ -137,16 +136,14 @@ Kirigami.OverlaySheet {
         }
     }
 
-    header: ColumnLayout {
-        Kirigami.SearchField {
-            id: search
+    header: Kirigami.SearchField {
+        id: search
 
-            Layout.fillWidth: true
-            placeholderText: i18n("Search") // qmllint disable
-            onAccepted: {
-                const re = Common.regExpEscape(search.text);
-                TagsPluginName.SortedNameModel.filterRegularExpression = RegExp(re, "i");
-            }
+        Layout.fillWidth: true
+        placeholderText: i18n("Search") // qmllint disable
+        onAccepted: {
+            const re = Common.regExpEscape(search.text);
+            TagsPluginName.SortedNameModel.filterRegularExpression = RegExp(re, "i");
         }
     }
 }

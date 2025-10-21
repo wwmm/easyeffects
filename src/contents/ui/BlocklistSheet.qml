@@ -10,12 +10,12 @@ Kirigami.OverlaySheet {
 
     required property var streamDB
 
+    title: i18n("Effects Blocklist") // qmllint disable
     parent: applicationWindow().overlay // qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
-    showCloseButton: false
-    y: appWindow.header.height + Kirigami.Units.gridUnit // qmllint disable
-    title: i18n("Effects Blocklist") // qmllint disable
+    y: 0
+    implicitHeight: appWindow.maxOverlayHeight // qmllint disable
 
     ColumnLayout {
         id: columnLayout

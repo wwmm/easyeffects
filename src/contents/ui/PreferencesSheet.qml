@@ -12,9 +12,9 @@ Kirigami.OverlaySheet {
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
     title: i18n("Preferences") // qmllint disable
-    y: appWindow.header.height + Kirigami.Units.gridUnit// qmllint disable
+    y: 0
     implicitWidth: Math.min(stack.implicitWidth, appWindow.width * 0.8)// qmllint disable
-    implicitHeight: Math.min(2 * preferencesSheet.header.height + stack.implicitHeight, preferencesSheet.parent.height - 2 * preferencesSheet.header.height - preferencesSheet.y)
+    implicitHeight: Math.min(2 * preferencesSheet.header.height + stack.implicitHeight, preferencesSheet.parent.height - 2 * preferencesSheet.header.height)
     onVisibleChanged: {
         if (!preferencesSheet.visible) {
             while (stack.depth > 1)

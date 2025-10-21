@@ -2189,7 +2189,7 @@ msgstr "Local"
 
 #: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:109
 msgid "Community"
-msgstr "Communité"
+msgstr "Communauté"
 
 #: src/contents/ui/PresetsSheet.qml:87
 msgid "Autoloading"
