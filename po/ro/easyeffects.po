@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-19 19:09+0000\n"
+"POT-Creation-Date: 2025-10-21 16:04+0000\n"
 "PO-Revision-Date: 2025-10-18 02:38+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -79,11 +79,11 @@ msgstr "Activează mesajele de depanare."
 msgid "Must specify preset type: input/output."
 msgstr "Trebuie specificat tipul preconfigurării: intrare/ieșire."
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:337
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:341
 msgid "Output Presets"
 msgstr "Preconfigurări de ieșire"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:331
 msgid "Input Presets"
 msgstr "Preconfigurări de intrare"
 
@@ -166,14 +166,14 @@ msgstr "Câștig de ieșire"
 #: src/contents/ui/Convolver.qml:409 src/contents/ui/Crossfeed.qml:134
 #: src/contents/ui/Crystalizer.qml:90 src/contents/ui/DeepFilterNet.qml:168
 #: src/contents/ui/Deesser.qml:310 src/contents/ui/Delay.qml:365
-#: src/contents/ui/EchoCanceller.qml:152 src/contents/ui/Equalizer.qml:267
+#: src/contents/ui/EchoCanceller.qml:152 src/contents/ui/Equalizer.qml:265
 #: src/contents/ui/Exciter.qml:191 src/contents/ui/Expander.qml:759
 #: src/contents/ui/Filter.qml:199 src/contents/ui/Gate.qml:895
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Limiter.qml:615
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:210
-#: src/contents/ui/RNNoise.qml:55 src/contents/ui/RNNoise.qml:66
+#: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
 #: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
 #: src/contents/ui/RNNoise.qml:297 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
@@ -232,7 +232,7 @@ msgstr "Limita inferioară"
 
 #: src/contents/ui/BassEnhancer.qml:207 src/contents/ui/Compressor.qml:817
 #: src/contents/ui/Deesser.qml:326 src/contents/ui/Delay.qml:401
-#: src/contents/ui/Equalizer.qml:283 src/contents/ui/Exciter.qml:207
+#: src/contents/ui/Equalizer.qml:281 src/contents/ui/Exciter.qml:207
 #: src/contents/ui/Expander.qml:775 src/contents/ui/Filter.qml:215
 #: src/contents/ui/Gate.qml:911 src/contents/ui/Limiter.qml:631
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:118
@@ -253,7 +253,7 @@ msgstr "Ascultă"
 #: src/contents/ui/Crossfeed.qml:158 src/contents/ui/Crystalizer.qml:116
 #: src/contents/ui/DeepFilterNet.qml:191 src/contents/ui/Deesser.qml:349
 #: src/contents/ui/Delay.qml:414 src/contents/ui/EchoCanceller.qml:178
-#: src/contents/ui/Equalizer.qml:348 src/contents/ui/Exciter.qml:230
+#: src/contents/ui/Equalizer.qml:346 src/contents/ui/Exciter.qml:230
 #: src/contents/ui/Expander.qml:808 src/contents/ui/Filter.qml:228
 #: src/contents/ui/Gate.qml:944 src/contents/ui/LevelMeter.qml:255
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
@@ -261,14 +261,14 @@ msgstr "Ascultă"
 #: src/contents/ui/MultibandCompressor.qml:989
 #: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:517
+#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:521
 msgid "Reset"
 msgstr "Restabilește"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:451
+#: src/contents/ui/main.qml:455
 msgid "Output"
 msgstr "Ieșire"
 
@@ -279,7 +279,7 @@ msgstr "Ieșire"
 msgid "Link"
 msgstr "Legătură"
 
-#: src/contents/ui/BlocklistSheet.qml:18
+#: src/contents/ui/BlocklistSheet.qml:13
 msgid "Effects Blocklist"
 msgstr "Lista de blocare de efecte"
 
@@ -292,10 +292,10 @@ msgid "Add to Excluded Applications"
 msgstr "Adăugați la aplicațiile excluse"
 
 #: src/contents/ui/BlocklistSheet.qml:97
-#: src/contents/ui/ConvolverImpulseSheet.qml:66
-#: src/contents/ui/MenuAddPlugins.qml:34
-#: src/contents/ui/PresetsCommunityPage.qml:68
-#: src/contents/ui/PresetsLocalPage.qml:173 src/contents/ui/RNNoise.qml:210
+#: src/contents/ui/ConvolverImpulseSheet.qml:65
+#: src/contents/ui/MenuAddPlugins.qml:33
+#: src/contents/ui/PresetsCommunityPage.qml:64
+#: src/contents/ui/PresetsLocalPage.qml:169 src/contents/ui/RNNoise.qml:211
 msgid "Empty"
 msgstr "Goală"
 
@@ -321,7 +321,7 @@ msgstr "Compresor"
 
 #: src/contents/ui/Compressor.qml:70 src/contents/ui/Compressor.qml:301
 #: src/contents/ui/Deesser.qml:71 src/contents/ui/Delay.qml:56
-#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:105
+#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:103
 #: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:70
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:285
 #: src/contents/ui/Limiter.qml:52 src/contents/ui/Loudness.qml:54
@@ -381,7 +381,7 @@ msgstr "Atac"
 #: src/contents/ui/Gate.qml:90 src/contents/ui/Gate.qml:802
 #: src/contents/ui/Limiter.qml:159 src/contents/ui/Limiter.qml:448
 #: src/contents/ui/Maximizer.qml:49 src/contents/ui/MultibandCompressor.qml:285
-#: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:140
+#: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:141
 msgid "Release"
 msgstr "Eliberare"
 
@@ -472,7 +472,7 @@ msgid "Side"
 msgstr "Lateral"
 
 #: src/contents/ui/Compressor.qml:318 src/contents/ui/Convolver.qml:249
-#: src/contents/ui/Delay.qml:42 src/contents/ui/Equalizer.qml:197
+#: src/contents/ui/Delay.qml:42 src/contents/ui/Equalizer.qml:195
 #: src/contents/ui/Expander.qml:278 src/contents/ui/Gate.qml:302
 #: src/contents/ui/LevelMeter.qml:58 src/contents/ui/LevelMeter.qml:103
 #: src/contents/ui/MultibandCompressor.qml:431
@@ -482,7 +482,7 @@ msgid "Left"
 msgstr "Stânga"
 
 #: src/contents/ui/Compressor.qml:318 src/contents/ui/Convolver.qml:267
-#: src/contents/ui/Delay.qml:200 src/contents/ui/Equalizer.qml:197
+#: src/contents/ui/Delay.qml:200 src/contents/ui/Equalizer.qml:195
 #: src/contents/ui/Expander.qml:278 src/contents/ui/Gate.qml:302
 #: src/contents/ui/LevelMeter.qml:74 src/contents/ui/LevelMeter.qml:119
 #: src/contents/ui/MultibandCompressor.qml:431
@@ -669,13 +669,21 @@ msgstr "Primul"
 msgid "Second"
 msgstr "Al doilea"
 
-#: src/contents/ui/Convolver.qml:146
+#: src/contents/ui/Convolver.qml:146 src/contents/ui/Convolver.qml:179
 msgid "Combine"
 msgstr "Combinare"
+
+#: src/contents/ui/Convolver.qml:172
+msgid "Impulses"
+msgstr "Impulsuri"
 
 #: src/contents/ui/Convolver.qml:188 src/plugin_base.cpp:282
 msgid "Spectrum"
 msgstr "Spectru"
+
+#: src/contents/ui/Convolver.qml:220
+msgid "Log Scale"
+msgstr "Scară logaritmică"
 
 #: src/contents/ui/Convolver.qml:290
 msgid "Convolver Impulse Is Not Set"
@@ -704,46 +712,49 @@ msgid "Autogain"
 msgstr "Câștig automat"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-msgid "Impluse File Imported."
-msgstr "Fișierul de impuls a fost importat."
+#, fuzzy
+msgid "Imported a New Convolver Impluse File."
+msgstr "Importare fișier de impuls"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:35
-msgid "Failed to Import the Impulse File."
+#: src/contents/ui/ConvolverImpulseSheet.qml:33
+#, fuzzy
+msgid "Failed to Import the Convolver Impulse File."
 msgstr "Importarea fișierului de impuls a eșuat."
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:46
-#: src/contents/ui/MenuAddPlugins.qml:145
-#: src/contents/ui/PresetsCommunityPage.qml:44
-#: src/contents/ui/PresetsLocalPage.qml:148
+#: src/contents/ui/ConvolverImpulseSheet.qml:45
+#: src/contents/ui/MenuAddPlugins.qml:142
+#: src/contents/ui/PresetsCommunityPage.qml:40
+#: src/contents/ui/PresetsLocalPage.qml:144
 msgid "Search"
 msgstr "Caută"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:80
-msgid "Loaded Impulse: %1"
-msgstr "Impuls încărcat: %1"
+#: src/contents/ui/ConvolverImpulseSheet.qml:79
+msgid "Loaded the %1 Convolver Impulse."
+msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:86
+#: src/contents/ui/ConvolverImpulseSheet.qml:85
 msgid "Remove Impulse Response"
 msgstr "Elimină răspunsul la impuls"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:87
+#: src/contents/ui/ConvolverImpulseSheet.qml:86
 msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
 "Sunteți sigur că doriți să eliminați acest răspuns la impuls din listă?"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:91
-msgid "Removed Impulse: %1"
-msgstr "Impuls eliminat: %1"
+#: src/contents/ui/ConvolverImpulseSheet.qml:90
+msgid "Removed the %1 Convolver Impulse."
+msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:94
-msgid "Failed to Remove the Impulse: %1"
+#: src/contents/ui/ConvolverImpulseSheet.qml:92
+#, fuzzy
+msgid "Failed to Remove the %1 Convolver Impulse."
 msgstr "Eliminarea impulsului a eșuat"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:108
+#: src/contents/ui/ConvolverImpulseSheet.qml:106
 msgid "Delete this Impulse"
 msgstr "Elimină acest impuls"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:128
+#: src/contents/ui/ConvolverImpulseSheet.qml:126
 msgid "Import Impulse"
 msgstr "Importă impuls"
 
@@ -764,7 +775,7 @@ msgid "Default"
 msgstr "Implicit"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:415
+#: src/contents/ui/main.qml:419
 msgid "Presets"
 msgstr "Preconfigurări"
 
@@ -836,7 +847,7 @@ msgstr "Separare"
 #: src/contents/ui/Maximizer.qml:65 src/contents/ui/MultibandCompressor.qml:256
 #: src/contents/ui/MultibandCompressor.qml:304
 #: src/contents/ui/MultibandGate.qml:270 src/contents/ui/MultibandGate.qml:324
-#: src/contents/ui/RNNoise.qml:108
+#: src/contents/ui/RNNoise.qml:109
 msgid "Threshold"
 msgstr "Pragul"
 
@@ -947,7 +958,7 @@ msgstr "canale"
 #: src/contents/ui/DelegateStreamsList.qml:91
 #: src/contents/ui/EchoCanceller.qml:50 src/contents/ui/EchoCanceller.qml:90
 #: src/contents/ui/EchoCanceller.qml:123 src/contents/ui/Gate.qml:180
-#: src/contents/ui/RNNoise.qml:97
+#: src/contents/ui/RNNoise.qml:98
 msgid "Enable"
 msgstr "Activează"
 
@@ -1010,7 +1021,7 @@ msgstr ""
 "(vumetre)"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:462
+#: src/contents/ui/main.qml:466
 msgid "Input"
 msgstr "Intrare"
 
@@ -1019,79 +1030,86 @@ msgid "APO Presets"
 msgstr "Preconfigurări APO"
 
 #: src/contents/ui/Equalizer.qml:53
-msgid "APO Preset File Imported."
-msgstr "Fișierul de preconfigurare APO a fost importat."
+#, fuzzy
+msgid "Imported the Equalizer APO Preset File."
+msgstr "Exportă fișierul de preconfigurare EqualizerAPO"
 
-#: src/contents/ui/Equalizer.qml:56
-msgid "Failed to Import the APO Preset File."
+#: src/contents/ui/Equalizer.qml:55
+#, fuzzy
+msgid "Failed to Import the Equalizer APO Preset File."
 msgstr "Importarea fișierului de preconfigurare APO a eșuat."
 
-#: src/contents/ui/Equalizer.qml:66
+#: src/contents/ui/Equalizer.qml:65
 msgid "GraphicEQ Presets"
 msgstr "Preconfigurări GraphicEQ"
 
-#: src/contents/ui/Equalizer.qml:69
-msgid "GraphicEQ Preset File Imported."
-msgstr "Fișierul de preconfigurare GraphicEQ a fost importat."
+#: src/contents/ui/Equalizer.qml:68
+#, fuzzy
+msgid "Imported the GraphicEQ Preset File."
+msgstr "Importarea fișierului de preconfigurare GraphicEQ a eșuat."
 
-#: src/contents/ui/Equalizer.qml:72
+#: src/contents/ui/Equalizer.qml:70
 msgid "Failed to Import the GraphicEQ Preset File."
 msgstr "Importarea fișierului de preconfigurare GraphicEQ a eșuat."
 
-#: src/contents/ui/Equalizer.qml:82
+#: src/contents/ui/Equalizer.qml:80
 msgid "APO Preset"
 msgstr "Preconfigurare APO"
 
-#: src/contents/ui/Equalizer.qml:85
-msgid "APO Preset File Exported."
-msgstr "Fișierul de preconfigurare APO a fost exportat."
+#: src/contents/ui/Equalizer.qml:83
+#, fuzzy
+msgid "Exported the Current Equalizer Settings to an External APO Preset File."
+msgstr "Exportă fișierul de preconfigurare EqualizerAPO"
 
-#: src/contents/ui/Equalizer.qml:88
-msgid "Failed to Export the APO Preset File."
+#: src/contents/ui/Equalizer.qml:86
+#, fuzzy
+msgid ""
+"Failed to Export the Current Equalizer Settings to an External APO Preset "
+"File."
 msgstr "Exportarea fișierului de preconfigurare APO a eșuat."
 
-#: src/contents/ui/Equalizer.qml:118
+#: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
 msgstr "Benzi"
 
-#: src/contents/ui/Equalizer.qml:134 src/contents/ui/Filter.qml:174
+#: src/contents/ui/Equalizer.qml:132 src/contents/ui/Filter.qml:174
 #: src/contents/ui/StereoTools.qml:66 src/contents/ui/StereoTools.qml:320
 msgid "Balance"
 msgstr "Balans"
 
-#: src/contents/ui/Equalizer.qml:151
+#: src/contents/ui/Equalizer.qml:149
 msgid "Pitch Left"
 msgstr "Tonalitate stânga"
 
-#: src/contents/ui/Equalizer.qml:168
+#: src/contents/ui/Equalizer.qml:166
 msgid "Pitch Right"
 msgstr "Tonalitate dreapta"
 
-#: src/contents/ui/Equalizer.qml:296
+#: src/contents/ui/Equalizer.qml:294
 msgid "Split Channels"
 msgstr "Separă canalele"
 
-#: src/contents/ui/Equalizer.qml:306
+#: src/contents/ui/Equalizer.qml:304
 msgid "Flat Response"
 msgstr "Răspuns plat"
 
-#: src/contents/ui/Equalizer.qml:313
+#: src/contents/ui/Equalizer.qml:311
 msgid "Calculate Frequencies"
 msgstr "Calculează frecvențele"
 
-#: src/contents/ui/Equalizer.qml:320
+#: src/contents/ui/Equalizer.qml:318
 msgid "Sort Bands"
 msgstr "Sortează benzile"
 
-#: src/contents/ui/Equalizer.qml:327
+#: src/contents/ui/Equalizer.qml:325
 msgid "Import APO"
 msgstr "Importare APO"
 
-#: src/contents/ui/Equalizer.qml:334
+#: src/contents/ui/Equalizer.qml:332
 msgid "Import APO (GraphicEQ)"
 msgstr "Importare APO (GraphicEQ)"
 
-#: src/contents/ui/Equalizer.qml:341
+#: src/contents/ui/Equalizer.qml:339
 msgid "Export APO"
 msgstr "Exportare APO"
 
@@ -1512,10 +1530,9 @@ msgstr "Interval de decupare"
 msgid "Clipping"
 msgstr "Decupare"
 
-#: src/contents/ui/MenuAddPlugins.qml:132
-#, fuzzy
-msgid "Added Effect: %1"
-msgstr "Efect adăugat"
+#: src/contents/ui/MenuAddPlugins.qml:131
+msgid "Added a New Effect to the Pipeline: %1"
+msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:111
 msgid "Compression Mode"
@@ -1800,7 +1817,7 @@ msgstr "Netezire"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:489
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:493
 msgid "Preferences"
 msgstr "Preferințe"
 
@@ -2067,203 +2084,214 @@ msgstr "Preconfigurare locală"
 msgid "Create"
 msgstr "Creează"
 
-#: src/contents/ui/PresetsCommunityPage.qml:82
-msgid "The Preset %1 Failed to Load"
-msgstr "Preconfigurarea %1 a eșuat la încărcare"
-
-#: src/contents/ui/PresetsCommunityPage.qml:101
+#: src/contents/ui/PresetsCommunityPage.qml:93
 msgid "Copy to the Local List"
 msgstr "Copiază în lista locală"
 
-#: src/contents/ui/PresetsCommunityPage.qml:106
+#: src/contents/ui/PresetsCommunityPage.qml:98
 #, fuzzy
-msgid "Imported the Community Preset: %1"
-msgstr "Preconfigurare de la comunitate importată"
+msgid "Imported the %1 Community Preset to the List of Local Presets."
+msgstr ""
+"Importă această preconfigurare a comunității în lista de preconfigurări "
+"locale"
 
-#: src/contents/ui/PresetsCommunityPage.qml:109
+#: src/contents/ui/PresetsCommunityPage.qml:100
 #, fuzzy
-msgid "Failed to Import the Community Preset: %1"
+msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
 msgstr "Importarea preconfigurării de la comunitate a eșuat."
 
-#: src/contents/ui/PresetsCommunityPage.qml:129
+#: src/contents/ui/PresetsCommunityPage.qml:120
 msgid "Refresh"
 msgstr "Actualizare"
 
 #: src/contents/ui/PresetsLocalPage.qml:35
-msgid "Preset File Imported."
-msgstr "Fișierul de preconfigurare a fost importat."
+msgid "Imported a New Local Preset from an External File."
+msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:38
-msgid "Failed to Import the Preset."
-msgstr "Importarea fișierului de preconfigurare a eșuat."
+#: src/contents/ui/PresetsLocalPage.qml:37
+#, fuzzy
+msgid "Failed to Import a New Local Preset from an External File."
+msgstr "Importarea fișierului de preconfigurare APO a eșuat."
 
-#: src/contents/ui/PresetsLocalPage.qml:47
-#: src/contents/ui/PresetsLocalPage.qml:135
+#: src/contents/ui/PresetsLocalPage.qml:46
+#: src/contents/ui/PresetsLocalPage.qml:131
 msgid "Export Presets"
 msgstr "Exportă preconfigurări"
 
-#: src/contents/ui/PresetsLocalPage.qml:50
-msgid "Preset Files Exported."
-msgstr "Fișierele de preconfigurare au fost exportate."
+#: src/contents/ui/PresetsLocalPage.qml:49
+msgid "Exported all Presets to an External Folder."
+msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:53
-msgid "Failed to Export the Presets."
-msgstr "Exportarea fișierelor de preconfigurare a eșuat."
+#: src/contents/ui/PresetsLocalPage.qml:51
+#, fuzzy
+msgid "Failed to Export All Presets to an External Folder."
+msgstr "Exportarea fișierului de preconfigurare APO a eșuat."
 
-#: src/contents/ui/PresetsLocalPage.qml:65
+#: src/contents/ui/PresetsLocalPage.qml:63
 msgid "New Preset Name"
 msgstr "Numele noii preconfigurări"
 
-#: src/contents/ui/PresetsLocalPage.qml:81
+#: src/contents/ui/PresetsLocalPage.qml:79
 msgid "Import Preset File"
 msgstr "Importă fișierul de preconfigurare"
 
-#: src/contents/ui/PresetsLocalPage.qml:90
+#: src/contents/ui/PresetsLocalPage.qml:88
 msgid "Create Preset"
 msgstr "Creează preconfigurare"
 
-#: src/contents/ui/PresetsLocalPage.qml:100
-msgid "New Preset Created"
-msgstr "Nouă preconfigurare creată"
+#: src/contents/ui/PresetsLocalPage.qml:98
+#, fuzzy
+msgid "Created a New Local Preset: %1"
+msgstr "Căutare preconfigurare locală"
 
-#: src/contents/ui/PresetsLocalPage.qml:105
-msgid "Failed to Create Preset"
+#: src/contents/ui/PresetsLocalPage.qml:102
+#, fuzzy
+msgid "Failed to Create a New Local Preset: %1"
 msgstr "Crearea preconfigurării a eșuat"
 
-#: src/contents/ui/PresetsLocalPage.qml:190
+#: src/contents/ui/PresetsLocalPage.qml:186
 msgid "Remove Preset"
 msgstr "Elimină preconfigurarea"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:187
 msgid "Are you sure you want to remove this preset from the list?"
 msgstr "Sunteți sigur că doriți să eliminați această preconfigurare din listă?"
 
-#: src/contents/ui/PresetsLocalPage.qml:195
-msgid "The Preset %1 Has Been Removed"
-msgstr "Preconfigurarea %1 a fost eliminată"
+#: src/contents/ui/PresetsLocalPage.qml:191
+#, fuzzy
+msgid "Removed the %1 Local Preset."
+msgstr "Elimină această preconfigurare cu încărcare automată"
 
-#: src/contents/ui/PresetsLocalPage.qml:198
-msgid "The Preset %1 Could Not Be Removed"
-msgstr "Preconfigurarea %1 nu a putut fi eliminată"
+#: src/contents/ui/PresetsLocalPage.qml:193
+#, fuzzy
+msgid "Failed to Remove the %1 Local Preset."
+msgstr "Importarea fișierului de preconfigurare a eșuat."
 
-#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:201
 msgid "Rename Preset"
 msgstr "Redenumește preconfigurarea"
 
-#: src/contents/ui/PresetsLocalPage.qml:211
+#: src/contents/ui/PresetsLocalPage.qml:206
 msgid "Rename"
 msgstr "Redenumește"
 
-#: src/contents/ui/PresetsLocalPage.qml:220
-msgid "The Preset %1 Has Been Renamed"
-msgstr "Preconfigurarea %1 a fost redenumită"
+#: src/contents/ui/PresetsLocalPage.qml:215
+#, fuzzy
+msgid "Renamed the %1 Local Preset to %2"
+msgstr "Redenumește această preconfigurare"
 
-#: src/contents/ui/PresetsLocalPage.qml:223
-msgid "The Preset %1 Could Not Be Renamed"
-msgstr "Preconfigurarea %1 nu a putut fi redenumită"
+#: src/contents/ui/PresetsLocalPage.qml:218
+#, fuzzy
+msgid "Failed to Rename the %1 Local Preset to %2"
+msgstr "Eliminarea impulsului a eșuat"
 
-#: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:226
 msgid "Cancel"
 msgstr "Anulare"
 
-#: src/contents/ui/PresetsLocalPage.qml:267
+#: src/contents/ui/PresetsLocalPage.qml:262
 msgid "Save Settings to this Preset"
 msgstr "Salvează parametrii în această preconfigurare"
 
-#: src/contents/ui/PresetsLocalPage.qml:272
-msgid "Settings Saved to: %1"
-msgstr "Parametrii salvați în: %1"
+#: src/contents/ui/PresetsLocalPage.qml:267
+#, fuzzy
+msgid "Saved the Current Settings to %1 Local Preset."
+msgstr "Elimină configurarea curentă și încarcă această preconfigurare"
 
-#: src/contents/ui/PresetsLocalPage.qml:275
-msgid "Failed to Save Settings to: %1"
+#: src/contents/ui/PresetsLocalPage.qml:269
+#, fuzzy
+msgid "Failed to Save the Current Settings to %1 Local Preset."
 msgstr "Salvarea parametrilor în: %1 a eșuat"
 
-#: src/contents/ui/PresetsLocalPage.qml:280
+#: src/contents/ui/PresetsLocalPage.qml:274
 msgid "Rename this Preset"
 msgstr "Redenumește această preconfigurare"
 
-#: src/contents/ui/PresetsLocalPage.qml:288
+#: src/contents/ui/PresetsLocalPage.qml:282
 msgid "Delete this Preset"
 msgstr "Șterge această preconfigurare"
 
-#: src/contents/ui/PresetsSheet.qml:65 src/contents/ui/PresetsSheet.qml:109
+#: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:104
 msgid "Local"
 msgstr "Local"
 
-#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:109
+#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:104
 msgid "Community"
 msgstr "Comunitate"
 
-#: src/contents/ui/PresetsSheet.qml:87
+#: src/contents/ui/PresetsSheet.qml:84
 msgid "Autoloading"
 msgstr "Încărcare automată"
 
-#: src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:102
 msgid "No Preset Loaded"
 msgstr "Nicio preconfigurare încărcată"
 
-#: src/contents/ui/PresetsSheet.qml:123
+#: src/contents/ui/PresetsSheet.qml:118
 msgid "Fallback Preset"
 msgstr "Preconfigurare de rezervă"
 
-#: src/contents/ui/RNNoise.qml:42
-msgid "Model File Imported."
-msgstr "Fișier de model importat."
+#: src/contents/ui/RNNoise.qml:43
+#, fuzzy
+msgid "Imported a New RNNoise Model File."
+msgstr "Model standard RNNoise"
 
 #: src/contents/ui/RNNoise.qml:45
-msgid "Failed to Import the Model File."
+#, fuzzy
+msgid "Failed to Import the RNNoise Model File."
 msgstr "Importarea fișierului de model a eșuat."
 
-#: src/contents/ui/RNNoise.qml:55 src/contents/ui/RNNoise.qml:66
+#: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
 #: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
 msgid "Standard RNNoise Model"
 msgstr "Model standard RNNoise"
 
-#: src/contents/ui/RNNoise.qml:57
+#: src/contents/ui/RNNoise.qml:58
 #, fuzzy
 msgid "Standard RNNoise Model Loaded."
 msgstr "Model standard RNNoise"
 
-#: src/contents/ui/RNNoise.qml:62 src/contents/ui/RNNoise.qml:281
+#: src/contents/ui/RNNoise.qml:63 src/contents/ui/RNNoise.qml:281
 #, fuzzy
 msgid "Using %1 Model"
 msgstr "Utilizând %1"
 
-#: src/contents/ui/RNNoise.qml:64
+#: src/contents/ui/RNNoise.qml:65
 #, fuzzy
-msgid "%1 Model Correctly Loaded."
-msgstr "Model neîncărcat"
+msgid "Loaded the %1 RNNoise Model."
+msgstr "Model standard RNNoise"
 
-#: src/contents/ui/RNNoise.qml:68
+#: src/contents/ui/RNNoise.qml:69
 msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:87 src/contents/ui/Speex.qml:108
+#: src/contents/ui/RNNoise.qml:88 src/contents/ui/Speex.qml:108
 msgid "Voice Detection"
 msgstr "Detectare voce"
 
-#: src/contents/ui/RNNoise.qml:124
+#: src/contents/ui/RNNoise.qml:125
 msgid "Wet Level"
 msgstr "Nivelul umed"
 
-#: src/contents/ui/RNNoise.qml:164
+#: src/contents/ui/RNNoise.qml:165
 msgid "Use the Standard Model"
 msgstr "Utilizează modelul standard"
 
-#: src/contents/ui/RNNoise.qml:175
+#: src/contents/ui/RNNoise.qml:176
 msgid "User Models"
 msgstr "Modele utilizator"
 
-#: src/contents/ui/RNNoise.qml:237
+#: src/contents/ui/RNNoise.qml:238
 msgid "Delete this Model"
 msgstr "Șterge acest model"
 
-#: src/contents/ui/RNNoise.qml:242
-msgid "Removed Model: %1"
-msgstr "Model eliminat: %1"
+#: src/contents/ui/RNNoise.qml:243
+msgid "Removed the %1 RNNoise Model."
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:245
-msgid "Failed to Remove the Model: %1"
+#, fuzzy
+msgid "Failed to Remove the %1 RNNoise Model."
 msgstr "Eliminarea modelului: %1 a eșuat"
 
 #: src/contents/ui/RNNoise.qml:313
@@ -2387,8 +2415,8 @@ msgstr "Poate fi utilizat pe controale numerice"
 msgid "Toggle Microphone Monitoring"
 msgstr "Activează/dezactivează monitorizarea microfonului"
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:374
-#: src/contents/ui/main.qml:497
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:378
+#: src/contents/ui/main.qml:501
 msgid "Shortcuts"
 msgstr "Taste de comenzi rapide"
 
@@ -2480,49 +2508,49 @@ msgstr "Bază Stereo"
 msgid "Stereo Phase"
 msgstr "Fază Stereo"
 
-#: src/contents/ui/main.qml:203
+#: src/contents/ui/main.qml:207
 msgid "Reset Settings?"
 msgstr "Reinițializați parametrii?"
 
-#: src/contents/ui/main.qml:204
+#: src/contents/ui/main.qml:208
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 "Sunteți sigur că doriți să reinițializați toți parametrii Easy Effects?"
 
-#: src/contents/ui/main.qml:225
+#: src/contents/ui/main.qml:229
 msgid "Audio effects for PipeWire applications"
 msgstr "Efecte audio pentru aplicațiile PipeWire"
 
-#: src/contents/ui/main.qml:238
+#: src/contents/ui/main.qml:242
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Dezvoltator"
 
-#: src/contents/ui/main.qml:301 src/contents/ui/main.qml:318
+#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:322
 msgid "Preset Loaded"
 msgstr "Preconfigurare încărcată"
 
-#: src/contents/ui/main.qml:363
+#: src/contents/ui/main.qml:367
 msgid "Active"
 msgstr "Activ"
 
-#: src/contents/ui/main.qml:383 src/contents/ui/main.qml:505
+#: src/contents/ui/main.qml:387 src/contents/ui/main.qml:509
 msgid "Manual"
 msgstr "Manual"
 
-#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:537
+#: src/contents/ui/main.qml:397 src/contents/ui/main.qml:541
 msgid "Quit"
 msgstr "Ieșire"
 
-#: src/contents/ui/main.qml:423
+#: src/contents/ui/main.qml:427
 msgid "Turn Effects On/Off"
 msgstr "Activează/dezactivează efectele"
 
-#: src/contents/ui/main.qml:473
+#: src/contents/ui/main.qml:477
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:529
+#: src/contents/ui/main.qml:533
 msgid "About Easy Effects"
 msgstr "Despre Easy Effects"
 
@@ -2668,6 +2696,72 @@ msgstr "Egalizator, compresor și alte efecte audio"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Efecte audio pentru aplicații PipeWire"
 
+#~ msgid "Impluse File Imported."
+#~ msgstr "Fișierul de impuls a fost importat."
+
+#~ msgid "Loaded Impulse: %1"
+#~ msgstr "Impuls încărcat: %1"
+
+#~ msgid "Removed Impulse: %1"
+#~ msgstr "Impuls eliminat: %1"
+
+#~ msgid "APO Preset File Imported."
+#~ msgstr "Fișierul de preconfigurare APO a fost importat."
+
+#~ msgid "GraphicEQ Preset File Imported."
+#~ msgstr "Fișierul de preconfigurare GraphicEQ a fost importat."
+
+#~ msgid "APO Preset File Exported."
+#~ msgstr "Fișierul de preconfigurare APO a fost exportat."
+
+#, fuzzy
+#~ msgid "Added Effect: %1"
+#~ msgstr "Efect adăugat"
+
+#~ msgid "The Preset %1 Failed to Load"
+#~ msgstr "Preconfigurarea %1 a eșuat la încărcare"
+
+#, fuzzy
+#~ msgid "Imported the Community Preset: %1"
+#~ msgstr "Preconfigurare de la comunitate importată"
+
+#~ msgid "Preset File Imported."
+#~ msgstr "Fișierul de preconfigurare a fost importat."
+
+#~ msgid "Preset Files Exported."
+#~ msgstr "Fișierele de preconfigurare au fost exportate."
+
+#~ msgid "Failed to Export the Presets."
+#~ msgstr "Exportarea fișierelor de preconfigurare a eșuat."
+
+#~ msgid "New Preset Created"
+#~ msgstr "Nouă preconfigurare creată"
+
+#~ msgid "The Preset %1 Has Been Removed"
+#~ msgstr "Preconfigurarea %1 a fost eliminată"
+
+#~ msgid "The Preset %1 Could Not Be Removed"
+#~ msgstr "Preconfigurarea %1 nu a putut fi eliminată"
+
+#~ msgid "The Preset %1 Has Been Renamed"
+#~ msgstr "Preconfigurarea %1 a fost redenumită"
+
+#~ msgid "The Preset %1 Could Not Be Renamed"
+#~ msgstr "Preconfigurarea %1 nu a putut fi redenumită"
+
+#~ msgid "Settings Saved to: %1"
+#~ msgstr "Parametrii salvați în: %1"
+
+#~ msgid "Model File Imported."
+#~ msgstr "Fișier de model importat."
+
+#, fuzzy
+#~ msgid "%1 Model Correctly Loaded."
+#~ msgstr "Model neîncărcat"
+
+#~ msgid "Removed Model: %1"
+#~ msgstr "Model eliminat: %1"
+
 #~ msgid "Loaded Model: %1"
 #~ msgstr "Model încărcat: %1"
 
@@ -2778,9 +2872,6 @@ msgstr "Efecte audio pentru aplicații PipeWire"
 #~ msgid "Preset"
 #~ msgstr "Preconfigurare"
 
-#~ msgid "Remove this autoload preset"
-#~ msgstr "Elimină această preconfigurare cu încărcare automată"
-
 #~ msgid "Excluded Applications List"
 #~ msgstr "Lista aplicațiilor excluse"
 
@@ -2834,12 +2925,6 @@ msgstr "Efecte audio pentru aplicații PipeWire"
 
 #~ msgid "Right Channel"
 #~ msgstr "Canalul drept"
-
-#~ msgid "Impulses"
-#~ msgstr "Impulsuri"
-
-#~ msgid "Log Scale"
-#~ msgstr "Scară logaritmică"
 
 #~ msgid "First Kernel"
 #~ msgstr "Primul nucleu"
@@ -3147,22 +3232,11 @@ msgstr "Efecte audio pentru aplicații PipeWire"
 #~ msgid "Load"
 #~ msgstr "Încarcă"
 
-#~ msgid "Discard the current settings and load this preset"
-#~ msgstr "Elimină configurarea curentă și încarcă această preconfigurare"
-
 #~ msgid "Try this community preset"
 #~ msgstr "Încearcă această preconfigurare a comunității"
 
-#~ msgid "Import this community preset into the local presets list"
-#~ msgstr ""
-#~ "Importă această preconfigurare a comunității în lista de preconfigurări "
-#~ "locale"
-
 #~ msgid "Import a preset from the local storage"
 #~ msgstr "Importă o preconfigurare din stocarea locală"
-
-#~ msgid "Search Local Preset"
-#~ msgstr "Căutare preconfigurare locală"
 
 #~ msgid "Community Presets List"
 #~ msgstr "Lista preconfigurărilor de la comunitate"
@@ -3250,9 +3324,6 @@ msgstr "Efecte audio pentru aplicații PipeWire"
 #~ msgid "Only Stereo Impulse Files Are Supported"
 #~ msgstr "Sunt acceptate numai fișierele de impuls stereo"
 
-#~ msgid "Import Impulse File"
-#~ msgstr "Importare fișier de impuls"
-
 #~ msgid "Open"
 #~ msgstr "Deschide"
 
@@ -3270,9 +3341,6 @@ msgstr "Efecte audio pentru aplicații PipeWire"
 #~ msgstr ""
 #~ "Canalele separate nu sunt încă acceptate la exportul preconfigurărilor "
 #~ "APO."
-
-#~ msgid "Export EqualizerAPO Preset File"
-#~ msgstr "Exportă fișierul de preconfigurare EqualizerAPO"
 
 #~ msgid "Save"
 #~ msgstr "Salvează"
