@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-19 19:09+0000\n"
-"PO-Revision-Date: 2025-10-18 02:38+0000\n"
+"PO-Revision-Date: 2025-10-21 16:05+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -1512,9 +1512,8 @@ msgid "Clipping"
 msgstr "Bearradh"
 
 #: src/contents/ui/MenuAddPlugins.qml:132
-#, fuzzy
 msgid "Added Effect: %1"
-msgstr "Éifeacht Bhreise"
+msgstr "Éifeacht Curtha Leis: %1"
 
 #: src/contents/ui/MultibandCompressor.qml:111
 msgid "Compression Mode"
@@ -2077,14 +2076,12 @@ msgid "Copy to the Local List"
 msgstr "Cóipeáil chuig an Liosta Áitiúil"
 
 #: src/contents/ui/PresetsCommunityPage.qml:106
-#, fuzzy
 msgid "Imported the Community Preset: %1"
-msgstr "Iompórtáladh an Réamhshocrú Pobail"
+msgstr "Iompórtáladh an Réamhshocrú Pobail: %1"
 
 #: src/contents/ui/PresetsCommunityPage.qml:109
-#, fuzzy
 msgid "Failed to Import the Community Preset: %1"
-msgstr "Theip ar réamhshocrú an phobail a iompórtáil"
+msgstr "Theip ar iompórtáil réamhshocraithe an phobail: %1"
 
 #: src/contents/ui/PresetsCommunityPage.qml:129
 msgid "Refresh"
@@ -2222,23 +2219,22 @@ msgid "Standard RNNoise Model"
 msgstr "Múnla Caighdeánach RNNoise"
 
 #: src/contents/ui/RNNoise.qml:57
-#, fuzzy
 msgid "Standard RNNoise Model Loaded."
-msgstr "Múnla Caighdeánach RNNoise"
+msgstr "Luchtaithe Samhail Chaighdeánach RNNoise."
 
 #: src/contents/ui/RNNoise.qml:62 src/contents/ui/RNNoise.qml:281
-#, fuzzy
 msgid "Using %1 Model"
-msgstr "Ag baint úsáide as %1"
+msgstr "Ag baint úsáide as Múnla %1"
 
 #: src/contents/ui/RNNoise.qml:64
-#, fuzzy
 msgid "%1 Model Correctly Loaded."
-msgstr "Níor luchtaíodh an tsamhail"
+msgstr "%1 Múnla Luchtaithe i gCeart."
 
 #: src/contents/ui/RNNoise.qml:68
 msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
 msgstr ""
+"Theip ar an tSamhail %1 a luchtú. Úsáid Samhail Torainn Chaighdeánach "
+"RNNoise mar mhalairt air."
 
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/Speex.qml:108
 msgid "Voice Detection"
