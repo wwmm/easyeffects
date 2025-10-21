@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-19 19:09+0000\n"
+"POT-Creation-Date: 2025-10-21 16:04+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Asier Saratsua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -75,11 +75,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:337
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:341
 msgid "Output Presets"
 msgstr ""
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:331
 msgid "Input Presets"
 msgstr ""
 
@@ -162,14 +162,14 @@ msgstr "Irteerako irabazia"
 #: src/contents/ui/Convolver.qml:409 src/contents/ui/Crossfeed.qml:134
 #: src/contents/ui/Crystalizer.qml:90 src/contents/ui/DeepFilterNet.qml:168
 #: src/contents/ui/Deesser.qml:310 src/contents/ui/Delay.qml:365
-#: src/contents/ui/EchoCanceller.qml:152 src/contents/ui/Equalizer.qml:267
+#: src/contents/ui/EchoCanceller.qml:152 src/contents/ui/Equalizer.qml:265
 #: src/contents/ui/Exciter.qml:191 src/contents/ui/Expander.qml:759
 #: src/contents/ui/Filter.qml:199 src/contents/ui/Gate.qml:895
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Limiter.qml:615
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:210
-#: src/contents/ui/RNNoise.qml:55 src/contents/ui/RNNoise.qml:66
+#: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
 #: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
 #: src/contents/ui/RNNoise.qml:297 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
@@ -231,7 +231,7 @@ msgstr "Zorua"
 
 #: src/contents/ui/BassEnhancer.qml:207 src/contents/ui/Compressor.qml:817
 #: src/contents/ui/Deesser.qml:326 src/contents/ui/Delay.qml:401
-#: src/contents/ui/Equalizer.qml:283 src/contents/ui/Exciter.qml:207
+#: src/contents/ui/Equalizer.qml:281 src/contents/ui/Exciter.qml:207
 #: src/contents/ui/Expander.qml:775 src/contents/ui/Filter.qml:215
 #: src/contents/ui/Gate.qml:911 src/contents/ui/Limiter.qml:631
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:118
@@ -252,7 +252,7 @@ msgstr "Entzun"
 #: src/contents/ui/Crossfeed.qml:158 src/contents/ui/Crystalizer.qml:116
 #: src/contents/ui/DeepFilterNet.qml:191 src/contents/ui/Deesser.qml:349
 #: src/contents/ui/Delay.qml:414 src/contents/ui/EchoCanceller.qml:178
-#: src/contents/ui/Equalizer.qml:348 src/contents/ui/Exciter.qml:230
+#: src/contents/ui/Equalizer.qml:346 src/contents/ui/Exciter.qml:230
 #: src/contents/ui/Expander.qml:808 src/contents/ui/Filter.qml:228
 #: src/contents/ui/Gate.qml:944 src/contents/ui/LevelMeter.qml:255
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
@@ -260,14 +260,14 @@ msgstr "Entzun"
 #: src/contents/ui/MultibandCompressor.qml:989
 #: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:517
+#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:521
 msgid "Reset"
 msgstr "Berrezarri"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:451
+#: src/contents/ui/main.qml:455
 msgid "Output"
 msgstr "Irteera"
 
@@ -278,7 +278,7 @@ msgstr "Irteera"
 msgid "Link"
 msgstr "Esteka"
 
-#: src/contents/ui/BlocklistSheet.qml:18
+#: src/contents/ui/BlocklistSheet.qml:13
 msgid "Effects Blocklist"
 msgstr ""
 
@@ -292,10 +292,10 @@ msgid "Add to Excluded Applications"
 msgstr "Gehitu baztertutako aplikazioei"
 
 #: src/contents/ui/BlocklistSheet.qml:97
-#: src/contents/ui/ConvolverImpulseSheet.qml:66
-#: src/contents/ui/MenuAddPlugins.qml:34
-#: src/contents/ui/PresetsCommunityPage.qml:68
-#: src/contents/ui/PresetsLocalPage.qml:173 src/contents/ui/RNNoise.qml:210
+#: src/contents/ui/ConvolverImpulseSheet.qml:65
+#: src/contents/ui/MenuAddPlugins.qml:33
+#: src/contents/ui/PresetsCommunityPage.qml:64
+#: src/contents/ui/PresetsLocalPage.qml:169 src/contents/ui/RNNoise.qml:211
 #, fuzzy
 msgid "Empty"
 msgstr "Zerrenda hutsa"
@@ -324,7 +324,7 @@ msgstr "Konpresorea"
 
 #: src/contents/ui/Compressor.qml:70 src/contents/ui/Compressor.qml:301
 #: src/contents/ui/Deesser.qml:71 src/contents/ui/Delay.qml:56
-#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:105
+#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:103
 #: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:70
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:285
 #: src/contents/ui/Limiter.qml:52 src/contents/ui/Loudness.qml:54
@@ -385,7 +385,7 @@ msgstr "Erasoa"
 #: src/contents/ui/Gate.qml:90 src/contents/ui/Gate.qml:802
 #: src/contents/ui/Limiter.qml:159 src/contents/ui/Limiter.qml:448
 #: src/contents/ui/Maximizer.qml:49 src/contents/ui/MultibandCompressor.qml:285
-#: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:140
+#: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:141
 msgid "Release"
 msgstr "Askatzea"
 
@@ -477,7 +477,7 @@ msgid "Side"
 msgstr "Alboa"
 
 #: src/contents/ui/Compressor.qml:318 src/contents/ui/Convolver.qml:249
-#: src/contents/ui/Delay.qml:42 src/contents/ui/Equalizer.qml:197
+#: src/contents/ui/Delay.qml:42 src/contents/ui/Equalizer.qml:195
 #: src/contents/ui/Expander.qml:278 src/contents/ui/Gate.qml:302
 #: src/contents/ui/LevelMeter.qml:58 src/contents/ui/LevelMeter.qml:103
 #: src/contents/ui/MultibandCompressor.qml:431
@@ -487,7 +487,7 @@ msgid "Left"
 msgstr "Ezkerra"
 
 #: src/contents/ui/Compressor.qml:318 src/contents/ui/Convolver.qml:267
-#: src/contents/ui/Delay.qml:200 src/contents/ui/Equalizer.qml:197
+#: src/contents/ui/Delay.qml:200 src/contents/ui/Equalizer.qml:195
 #: src/contents/ui/Expander.qml:278 src/contents/ui/Gate.qml:302
 #: src/contents/ui/LevelMeter.qml:74 src/contents/ui/LevelMeter.qml:119
 #: src/contents/ui/MultibandCompressor.qml:431
@@ -680,13 +680,21 @@ msgstr ""
 msgid "Second"
 msgstr "Bigarren nukleoa"
 
-#: src/contents/ui/Convolver.qml:146
+#: src/contents/ui/Convolver.qml:146 src/contents/ui/Convolver.qml:179
 msgid "Combine"
 msgstr "Konbinatu"
+
+#: src/contents/ui/Convolver.qml:172
+msgid "Impulses"
+msgstr "Bulkadak"
 
 #: src/contents/ui/Convolver.qml:188 src/plugin_base.cpp:282
 msgid "Spectrum"
 msgstr "Espektroa"
+
+#: src/contents/ui/Convolver.qml:220
+msgid "Log Scale"
+msgstr "Eskala logaritmikoa"
 
 #: src/contents/ui/Convolver.qml:290
 #, fuzzy
@@ -716,49 +724,48 @@ msgid "Autogain"
 msgstr "Irabazi automatikoa"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
-msgid "Impluse File Imported."
-msgstr "Bulkada-fitxategien zerrenda"
+msgid "Imported a New Convolver Impluse File."
+msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:35
+#: src/contents/ui/ConvolverImpulseSheet.qml:33
 #, fuzzy
-msgid "Failed to Import the Impulse File."
+msgid "Failed to Import the Convolver Impulse File."
 msgstr "Bilatu bulkada-iragazkia"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:46
-#: src/contents/ui/MenuAddPlugins.qml:145
-#: src/contents/ui/PresetsCommunityPage.qml:44
-#: src/contents/ui/PresetsLocalPage.qml:148
+#: src/contents/ui/ConvolverImpulseSheet.qml:45
+#: src/contents/ui/MenuAddPlugins.qml:142
+#: src/contents/ui/PresetsCommunityPage.qml:40
+#: src/contents/ui/PresetsLocalPage.qml:144
 msgid "Search"
 msgstr "Bilatu"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:80
-msgid "Loaded Impulse: %1"
+#: src/contents/ui/ConvolverImpulseSheet.qml:79
+msgid "Loaded the %1 Convolver Impulse."
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:86
+#: src/contents/ui/ConvolverImpulseSheet.qml:85
 #, fuzzy
 msgid "Remove Impulse Response"
 msgstr "Inportatu bulkada"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:87
+#: src/contents/ui/ConvolverImpulseSheet.qml:86
 msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:91
-#, fuzzy
-msgid "Removed Impulse: %1"
-msgstr "Inportatu bulkada"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:94
-msgid "Failed to Remove the Impulse: %1"
+#: src/contents/ui/ConvolverImpulseSheet.qml:90
+msgid "Removed the %1 Convolver Impulse."
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:108
+#: src/contents/ui/ConvolverImpulseSheet.qml:92
+#, fuzzy
+msgid "Failed to Remove the %1 Convolver Impulse."
+msgstr "Bilatu bulkada-iragazkia"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:106
 msgid "Delete this Impulse"
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:128
+#: src/contents/ui/ConvolverImpulseSheet.qml:126
 msgid "Import Impulse"
 msgstr "Inportatu bulkada"
 
@@ -779,7 +786,7 @@ msgid "Default"
 msgstr "Lehenetsia"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:415
+#: src/contents/ui/main.qml:419
 msgid "Presets"
 msgstr "Aurrezarpenak"
 
@@ -852,7 +859,7 @@ msgstr "Zatitzea"
 #: src/contents/ui/Maximizer.qml:65 src/contents/ui/MultibandCompressor.qml:256
 #: src/contents/ui/MultibandCompressor.qml:304
 #: src/contents/ui/MultibandGate.qml:270 src/contents/ui/MultibandGate.qml:324
-#: src/contents/ui/RNNoise.qml:108
+#: src/contents/ui/RNNoise.qml:109
 msgid "Threshold"
 msgstr "Atalasea"
 
@@ -966,7 +973,7 @@ msgstr "Zatitu kanalak"
 #: src/contents/ui/DelegateStreamsList.qml:91
 #: src/contents/ui/EchoCanceller.qml:50 src/contents/ui/EchoCanceller.qml:90
 #: src/contents/ui/EchoCanceller.qml:123 src/contents/ui/Gate.qml:180
-#: src/contents/ui/RNNoise.qml:97
+#: src/contents/ui/RNNoise.qml:98
 msgid "Enable"
 msgstr "Gaitu"
 
@@ -1034,7 +1041,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:462
+#: src/contents/ui/main.qml:466
 msgid "Input"
 msgstr "Sarrera"
 
@@ -1043,81 +1050,86 @@ msgid "APO Presets"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:53
-msgid "APO Preset File Imported."
-msgstr ""
+#, fuzzy
+msgid "Imported the Equalizer APO Preset File."
+msgstr "Banda modua"
 
-#: src/contents/ui/Equalizer.qml:56
-msgid "Failed to Import the APO Preset File."
-msgstr ""
+#: src/contents/ui/Equalizer.qml:55
+#, fuzzy
+msgid "Failed to Import the Equalizer APO Preset File."
+msgstr "Bilatu bulkada-iragazkia"
 
-#: src/contents/ui/Equalizer.qml:66
+#: src/contents/ui/Equalizer.qml:65
 msgid "GraphicEQ Presets"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:69
-msgid "GraphicEQ Preset File Imported."
-msgstr ""
+#: src/contents/ui/Equalizer.qml:68
+#, fuzzy
+msgid "Imported the GraphicEQ Preset File."
+msgstr "Inportatu aurrezarpena"
 
-#: src/contents/ui/Equalizer.qml:72
+#: src/contents/ui/Equalizer.qml:70
 msgid "Failed to Import the GraphicEQ Preset File."
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:82
+#: src/contents/ui/Equalizer.qml:80
 #, fuzzy
 msgid "APO Preset"
 msgstr "Aurrezarpena"
 
-#: src/contents/ui/Equalizer.qml:85
-msgid "APO Preset File Exported."
+#: src/contents/ui/Equalizer.qml:83
+msgid "Exported the Current Equalizer Settings to an External APO Preset File."
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:88
-msgid "Failed to Export the APO Preset File."
+#: src/contents/ui/Equalizer.qml:86
+msgid ""
+"Failed to Export the Current Equalizer Settings to an External APO Preset "
+"File."
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:118
+#: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
 msgstr "Bandak"
 
-#: src/contents/ui/Equalizer.qml:134 src/contents/ui/Filter.qml:174
+#: src/contents/ui/Equalizer.qml:132 src/contents/ui/Filter.qml:174
 #: src/contents/ui/StereoTools.qml:66 src/contents/ui/StereoTools.qml:320
 msgid "Balance"
 msgstr "Balantzea"
 
-#: src/contents/ui/Equalizer.qml:151
+#: src/contents/ui/Equalizer.qml:149
 msgid "Pitch Left"
 msgstr "Ezkerreko tonua"
 
-#: src/contents/ui/Equalizer.qml:168
+#: src/contents/ui/Equalizer.qml:166
 msgid "Pitch Right"
 msgstr "Eskuineko tonua"
 
-#: src/contents/ui/Equalizer.qml:296
+#: src/contents/ui/Equalizer.qml:294
 msgid "Split Channels"
 msgstr "Zatitu kanalak"
 
-#: src/contents/ui/Equalizer.qml:306
+#: src/contents/ui/Equalizer.qml:304
 msgid "Flat Response"
 msgstr "Erantzun laua"
 
-#: src/contents/ui/Equalizer.qml:313
+#: src/contents/ui/Equalizer.qml:311
 msgid "Calculate Frequencies"
 msgstr "Kalkulatu maiztasunak"
 
-#: src/contents/ui/Equalizer.qml:320
+#: src/contents/ui/Equalizer.qml:318
 msgid "Sort Bands"
 msgstr "Ordenatu bandak"
 
-#: src/contents/ui/Equalizer.qml:327
+#: src/contents/ui/Equalizer.qml:325
 #, fuzzy
 msgid "Import APO"
 msgstr "Inportatu aurrezarpena"
 
-#: src/contents/ui/Equalizer.qml:334
+#: src/contents/ui/Equalizer.qml:332
 msgid "Import APO (GraphicEQ)"
 msgstr ""
 
-#: src/contents/ui/Equalizer.qml:341
+#: src/contents/ui/Equalizer.qml:339
 #, fuzzy
 msgid "Export APO"
 msgstr "Inportatu aurrezarpena"
@@ -1562,8 +1574,8 @@ msgstr ""
 msgid "Clipping"
 msgstr ""
 
-#: src/contents/ui/MenuAddPlugins.qml:132
-msgid "Added Effect: %1"
+#: src/contents/ui/MenuAddPlugins.qml:131
+msgid "Added a New Effect to the Pipeline: %1"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:111
@@ -1850,7 +1862,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:489
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:493
 #, fuzzy
 msgid "Preferences"
 msgstr "_Hobespenak"
@@ -2120,215 +2132,216 @@ msgstr "Aurrezarpenak"
 msgid "Create"
 msgstr ""
 
-#: src/contents/ui/PresetsCommunityPage.qml:82
-msgid "The Preset %1 Failed to Load"
-msgstr ""
-
-#: src/contents/ui/PresetsCommunityPage.qml:101
+#: src/contents/ui/PresetsCommunityPage.qml:93
 msgid "Copy to the Local List"
 msgstr ""
 
-#: src/contents/ui/PresetsCommunityPage.qml:106
+#: src/contents/ui/PresetsCommunityPage.qml:98
 #, fuzzy
-msgid "Imported the Community Preset: %1"
+msgid "Imported the %1 Community Preset to the List of Local Presets."
 msgstr "Aurrezarpena"
 
-#: src/contents/ui/PresetsCommunityPage.qml:109
+#: src/contents/ui/PresetsCommunityPage.qml:100
 #, fuzzy
-msgid "Failed to Import the Community Preset: %1"
+msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
 msgstr "Aurrezarpena"
 
-#: src/contents/ui/PresetsCommunityPage.qml:129
+#: src/contents/ui/PresetsCommunityPage.qml:120
 msgid "Refresh"
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:35
-#, fuzzy
-msgid "Preset File Imported."
-msgstr "Bulkada-fitxategien zerrenda"
+msgid "Imported a New Local Preset from an External File."
+msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:38
+#: src/contents/ui/PresetsLocalPage.qml:37
 #, fuzzy
-msgid "Failed to Import the Preset."
-msgstr "Aurrezarpena"
+msgid "Failed to Import a New Local Preset from an External File."
+msgstr "Bilatu bulkada-iragazkia"
 
-#: src/contents/ui/PresetsLocalPage.qml:47
-#: src/contents/ui/PresetsLocalPage.qml:135
+#: src/contents/ui/PresetsLocalPage.qml:46
+#: src/contents/ui/PresetsLocalPage.qml:131
 #, fuzzy
 msgid "Export Presets"
 msgstr "Inportatu aurrezarpena"
 
-#: src/contents/ui/PresetsLocalPage.qml:50
-#, fuzzy
-msgid "Preset Files Exported."
-msgstr "Bulkada-fitxategien zerrenda"
+#: src/contents/ui/PresetsLocalPage.qml:49
+msgid "Exported all Presets to an External Folder."
+msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:53
+#: src/contents/ui/PresetsLocalPage.qml:51
 #, fuzzy
-msgid "Failed to Export the Presets."
+msgid "Failed to Export All Presets to an External Folder."
 msgstr "Aurrezarpena"
 
-#: src/contents/ui/PresetsLocalPage.qml:65
+#: src/contents/ui/PresetsLocalPage.qml:63
 msgid "New Preset Name"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:81
+#: src/contents/ui/PresetsLocalPage.qml:79
 #, fuzzy
 msgid "Import Preset File"
 msgstr "Inportatu aurrezarpena"
 
-#: src/contents/ui/PresetsLocalPage.qml:90
+#: src/contents/ui/PresetsLocalPage.qml:88
 #, fuzzy
 msgid "Create Preset"
 msgstr "Inportatu aurrezarpena"
 
-#: src/contents/ui/PresetsLocalPage.qml:100
-msgid "New Preset Created"
-msgstr ""
+#: src/contents/ui/PresetsLocalPage.qml:98
+#, fuzzy
+msgid "Created a New Local Preset: %1"
+msgstr "Aurrezarpena"
 
-#: src/contents/ui/PresetsLocalPage.qml:105
-msgid "Failed to Create Preset"
-msgstr ""
+#: src/contents/ui/PresetsLocalPage.qml:102
+#, fuzzy
+msgid "Failed to Create a New Local Preset: %1"
+msgstr "Aurrezarpena"
 
-#: src/contents/ui/PresetsLocalPage.qml:190
+#: src/contents/ui/PresetsLocalPage.qml:186
 #, fuzzy
 msgid "Remove Preset"
 msgstr "Inportatu aurrezarpena"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:187
 msgid "Are you sure you want to remove this preset from the list?"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:195
-msgid "The Preset %1 Has Been Removed"
-msgstr ""
+#: src/contents/ui/PresetsLocalPage.qml:191
+#, fuzzy
+msgid "Removed the %1 Local Preset."
+msgstr "Kendu automatikoki kargatutako aurrezarpen hau"
 
-#: src/contents/ui/PresetsLocalPage.qml:198
-msgid "The Preset %1 Could Not Be Removed"
-msgstr ""
+#: src/contents/ui/PresetsLocalPage.qml:193
+#, fuzzy
+msgid "Failed to Remove the %1 Local Preset."
+msgstr "Aurrezarpena"
 
-#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:201
 #, fuzzy
 msgid "Rename Preset"
 msgstr "Inportatu aurrezarpena"
 
-#: src/contents/ui/PresetsLocalPage.qml:211
+#: src/contents/ui/PresetsLocalPage.qml:206
 msgid "Rename"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:220
-msgid "The Preset %1 Has Been Renamed"
-msgstr ""
+#: src/contents/ui/PresetsLocalPage.qml:215
+#, fuzzy
+msgid "Renamed the %1 Local Preset to %2"
+msgstr "Inportatu aurrezarpena"
 
-#: src/contents/ui/PresetsLocalPage.qml:223
-msgid "The Preset %1 Could Not Be Renamed"
-msgstr ""
+#: src/contents/ui/PresetsLocalPage.qml:218
+#, fuzzy
+msgid "Failed to Rename the %1 Local Preset to %2"
+msgstr "Aurrezarpena"
 
-#: src/contents/ui/PresetsLocalPage.qml:231
+#: src/contents/ui/PresetsLocalPage.qml:226
 #, fuzzy
 msgid "Cancel"
 msgstr "Balantzea"
 
-#: src/contents/ui/PresetsLocalPage.qml:267
+#: src/contents/ui/PresetsLocalPage.qml:262
 msgid "Save Settings to this Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:272
-msgid "Settings Saved to: %1"
+#: src/contents/ui/PresetsLocalPage.qml:267
+msgid "Saved the Current Settings to %1 Local Preset."
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:275
-msgid "Failed to Save Settings to: %1"
+#: src/contents/ui/PresetsLocalPage.qml:269
+msgid "Failed to Save the Current Settings to %1 Local Preset."
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:280
+#: src/contents/ui/PresetsLocalPage.qml:274
 #, fuzzy
 msgid "Rename this Preset"
 msgstr "Inportatu aurrezarpena"
 
-#: src/contents/ui/PresetsLocalPage.qml:288
+#: src/contents/ui/PresetsLocalPage.qml:282
 msgid "Delete this Preset"
 msgstr ""
 
-#: src/contents/ui/PresetsSheet.qml:65 src/contents/ui/PresetsSheet.qml:109
+#: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:104
 msgid "Local"
 msgstr ""
 
-#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:109
+#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:104
 msgid "Community"
 msgstr ""
 
-#: src/contents/ui/PresetsSheet.qml:87
+#: src/contents/ui/PresetsSheet.qml:84
 #, fuzzy
 msgid "Autoloading"
 msgstr "Irabazi automatikoa"
 
-#: src/contents/ui/PresetsSheet.qml:107
+#: src/contents/ui/PresetsSheet.qml:102
 msgid "No Preset Loaded"
 msgstr ""
 
-#: src/contents/ui/PresetsSheet.qml:123
+#: src/contents/ui/PresetsSheet.qml:118
 msgid "Fallback Preset"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:42
-msgid "Model File Imported."
+#: src/contents/ui/RNNoise.qml:43
+msgid "Imported a New RNNoise Model File."
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:45
-msgid "Failed to Import the Model File."
-msgstr ""
+#, fuzzy
+msgid "Failed to Import the RNNoise Model File."
+msgstr "Bilatu bulkada-iragazkia"
 
-#: src/contents/ui/RNNoise.qml:55 src/contents/ui/RNNoise.qml:66
+#: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
 #: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
 msgid "Standard RNNoise Model"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:57
+#: src/contents/ui/RNNoise.qml:58
 msgid "Standard RNNoise Model Loaded."
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:62 src/contents/ui/RNNoise.qml:281
+#: src/contents/ui/RNNoise.qml:63 src/contents/ui/RNNoise.qml:281
 msgid "Using %1 Model"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:64
-msgid "%1 Model Correctly Loaded."
+#: src/contents/ui/RNNoise.qml:65
+msgid "Loaded the %1 RNNoise Model."
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:68
+#: src/contents/ui/RNNoise.qml:69
 msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:87 src/contents/ui/Speex.qml:108
+#: src/contents/ui/RNNoise.qml:88 src/contents/ui/Speex.qml:108
 msgid "Voice Detection"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:124
+#: src/contents/ui/RNNoise.qml:125
 msgid "Wet Level"
 msgstr "Hezetasun-maila"
 
-#: src/contents/ui/RNNoise.qml:164
+#: src/contents/ui/RNNoise.qml:165
 msgid "Use the Standard Model"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:175
+#: src/contents/ui/RNNoise.qml:176
 msgid "User Models"
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:237
+#: src/contents/ui/RNNoise.qml:238
 #, fuzzy
 msgid "Delete this Model"
 msgstr "Kendu eredu-fitxategi hau"
 
-#: src/contents/ui/RNNoise.qml:242
-#, fuzzy
-msgid "Removed Model: %1"
-msgstr "Kendu eredu-fitxategi hau"
+#: src/contents/ui/RNNoise.qml:243
+msgid "Removed the %1 RNNoise Model."
+msgstr ""
 
 #: src/contents/ui/RNNoise.qml:245
-msgid "Failed to Remove the Model: %1"
-msgstr ""
+#, fuzzy
+msgid "Failed to Remove the %1 RNNoise Model."
+msgstr "Bilatu bulkada-iragazkia"
 
 #: src/contents/ui/RNNoise.qml:313
 msgid "Import Model"
@@ -2452,8 +2465,8 @@ msgstr ""
 msgid "Toggle Microphone Monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:374
-#: src/contents/ui/main.qml:497
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:378
+#: src/contents/ui/main.qml:501
 #, fuzzy
 msgid "Shortcuts"
 msgstr "L_asterbideak"
@@ -2547,52 +2560,52 @@ msgstr ""
 msgid "Stereo Phase"
 msgstr ""
 
-#: src/contents/ui/main.qml:203
+#: src/contents/ui/main.qml:207
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_Berrezarri ezarpenak"
 
-#: src/contents/ui/main.qml:204
+#: src/contents/ui/main.qml:208
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:225
+#: src/contents/ui/main.qml:229
 #, fuzzy
 msgid "Audio effects for PipeWire applications"
 msgstr "Audio-efektuak PipeWire aplikazioetarako"
 
-#: src/contents/ui/main.qml:238
+#: src/contents/ui/main.qml:242
 #, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Inguratzailea"
 
-#: src/contents/ui/main.qml:301 src/contents/ui/main.qml:318
+#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:322
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Aurrezarpenak"
 
-#: src/contents/ui/main.qml:363
+#: src/contents/ui/main.qml:367
 msgid "Active"
 msgstr ""
 
-#: src/contents/ui/main.qml:383 src/contents/ui/main.qml:505
+#: src/contents/ui/main.qml:387 src/contents/ui/main.qml:509
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:537
+#: src/contents/ui/main.qml:397 src/contents/ui/main.qml:541
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:423
+#: src/contents/ui/main.qml:427
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:473
+#: src/contents/ui/main.qml:477
 msgid "PipeWire"
 msgstr ""
 
-#: src/contents/ui/main.qml:529
+#: src/contents/ui/main.qml:533
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "Easy Effects aplikazioari _buruz"
@@ -2741,6 +2754,26 @@ msgstr "Ekualizatzailea, konprimatzailea eta beste audio-efektu batzuk"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Audio-efektuak PipeWire aplikazioetarako"
 
+#, fuzzy
+#~ msgid "Impluse File Imported."
+#~ msgstr "Bulkada-fitxategien zerrenda"
+
+#, fuzzy
+#~ msgid "Removed Impulse: %1"
+#~ msgstr "Inportatu bulkada"
+
+#, fuzzy
+#~ msgid "Preset File Imported."
+#~ msgstr "Bulkada-fitxategien zerrenda"
+
+#, fuzzy
+#~ msgid "Preset Files Exported."
+#~ msgstr "Bulkada-fitxategien zerrenda"
+
+#, fuzzy
+#~ msgid "Removed Model: %1"
+#~ msgstr "Kendu eredu-fitxategi hau"
+
 #~ msgid "Filter Length"
 #~ msgstr "Iragazki-luzera"
 
@@ -2812,9 +2845,6 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 #~ msgid "Plugin Output Gain"
 #~ msgstr "Irteerako irabaziaren plugina"
 
-#~ msgid "Remove this autoload preset"
-#~ msgstr "Kendu automatikoki kargatutako aurrezarpen hau"
-
 #~ msgid "Excluded Applications List"
 #~ msgstr "Baztertutako aplikazioen zerrenda"
 
@@ -2857,12 +2887,6 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 
 #~ msgid "Right Channel"
 #~ msgstr "Eskuineko kanala"
-
-#~ msgid "Impulses"
-#~ msgstr "Bulkadak"
-
-#~ msgid "Log Scale"
-#~ msgstr "Eskala logaritmikoa"
 
 #~ msgid "First Kernel"
 #~ msgstr "Lehen nukleoa"
@@ -2907,20 +2931,12 @@ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 #~ msgstr "Aurrezarpena"
 
 #, fuzzy
-#~ msgid "Search Local Preset"
-#~ msgstr "Aurrezarpena"
-
-#, fuzzy
 #~ msgid "Community Presets List"
 #~ msgstr "Aurrezarpenak"
 
 #, fuzzy
 #~ msgid "Output Preset"
 #~ msgstr "Inportatu aurrezarpena"
-
-#, fuzzy
-#~ msgid "EqualizerAPO Presets"
-#~ msgstr "Banda modua"
 
 #, fuzzy
 #~ msgid "Community Preset"
