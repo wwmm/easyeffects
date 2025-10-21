@@ -214,7 +214,7 @@ Kirigami.ApplicationWindow {
         parent: applicationWindow().overlay// qmllint disable
         closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
         focus: true
-        y: appWindow.header.height + Kirigami.Units.gridUnit
+        y: 0
 
         Kirigami.AboutPage {
             id: aboutPage
