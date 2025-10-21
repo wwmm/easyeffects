@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-19 19:09+0000\n"
-"PO-Revision-Date: 2025-10-18 02:38+0000\n"
+"PO-Revision-Date: 2025-10-21 16:05+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -16,8 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
 "X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:43
@@ -1507,9 +1508,8 @@ msgid "Clipping"
 msgstr "Кліппінг"
 
 #: src/contents/ui/MenuAddPlugins.qml:132
-#, fuzzy
 msgid "Added Effect: %1"
-msgstr "Додатковий ефект"
+msgstr "Доданий ефект: %1"
 
 #: src/contents/ui/MultibandCompressor.qml:111
 msgid "Compression Mode"
@@ -2069,14 +2069,12 @@ msgid "Copy to the Local List"
 msgstr "Копіювати до локального списку"
 
 #: src/contents/ui/PresetsCommunityPage.qml:106
-#, fuzzy
 msgid "Imported the Community Preset: %1"
-msgstr "Імпортовано пресет від спільноти"
+msgstr "Імпортовано пресет спільноти: %1"
 
 #: src/contents/ui/PresetsCommunityPage.qml:109
-#, fuzzy
 msgid "Failed to Import the Community Preset: %1"
-msgstr "Не вдалося імпортувати пресет від спільноти"
+msgstr "Не вдалося імпортувати пресет спільноти: %1"
 
 #: src/contents/ui/PresetsCommunityPage.qml:129
 msgid "Refresh"
@@ -2209,26 +2207,25 @@ msgstr "Не вдалося імпортувати файл моделі."
 
 #: src/contents/ui/RNNoise.qml:55 src/contents/ui/RNNoise.qml:66
 #: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
-#, fuzzy
 msgid "Standard RNNoise Model"
-msgstr "Використовувати стандартну модель"
+msgstr "Стандартна модель RNNoise"
 
 #: src/contents/ui/RNNoise.qml:57
 msgid "Standard RNNoise Model Loaded."
-msgstr ""
+msgstr "Стандартна модель RNNoise завантажена."
 
 #: src/contents/ui/RNNoise.qml:62 src/contents/ui/RNNoise.qml:281
-#, fuzzy
 msgid "Using %1 Model"
-msgstr "Використовується %1"
+msgstr "Використання моделі %1"
 
 #: src/contents/ui/RNNoise.qml:64
 msgid "%1 Model Correctly Loaded."
-msgstr ""
+msgstr "%1 Модель завантажено правильно."
 
 #: src/contents/ui/RNNoise.qml:68
 msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
 msgstr ""
+"Не вдалося завантажити модель %1. Повернення до стандартної моделі RNNoise."
 
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/Speex.qml:108
 msgid "Voice Detection"
