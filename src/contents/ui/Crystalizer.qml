@@ -9,7 +9,7 @@ import org.kde.kirigami as Kirigami
 Kirigami.ScrollablePage {
     id: crystalizerPage
 
-    required property var name
+    required property string name
     required property var pluginDB
     required property var pipelineInstance
     property var pluginBackend

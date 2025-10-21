@@ -11,7 +11,7 @@ import org.kde.kirigamiaddons.formcard as FormCard
 Kirigami.ScrollablePage {
     id: convolverPage
 
-    required property var name
+    required property string name
     required property var pluginDB
     required property var pipelineInstance
     property var pluginBackend: null
@@ -169,14 +169,14 @@ Kirigami.ScrollablePage {
 
             actions: [
                 Kirigami.Action {
-                    text: qsTr("Impulses")
+                    text: i18n("Impulses")
                     icon.name: "waveform-symbolic"
                     onTriggered: {
                         impulseSheet.open();
                     }
                 },
                 Kirigami.Action {
-                    text: qsTr("Combine")
+                    text: i18n("Combine")
                     icon.name: "path-combine-symbolic"
                     onTriggered: {
                         combineDialog.open();
@@ -217,7 +217,7 @@ Kirigami.ScrollablePage {
                 Kirigami.Action {
                     id: spectrumLogScale
 
-                    text: qsTr("Log Scale")
+                    text: i18n("Log Scale")
                     visible: spectrumAction.checked
                     checkable: true
                     icon.name: "transform-scale-symbolic"
