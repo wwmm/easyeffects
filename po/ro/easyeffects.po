@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-19 19:09+0000\n"
-"PO-Revision-Date: 2025-10-18 02:38+0000\n"
+"PO-Revision-Date: 2025-10-21 16:05+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : "
+"(n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
 "X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:43
@@ -1513,9 +1513,8 @@ msgid "Clipping"
 msgstr "Decupare"
 
 #: src/contents/ui/MenuAddPlugins.qml:132
-#, fuzzy
 msgid "Added Effect: %1"
-msgstr "Efect adăugat"
+msgstr "Efect adăugat: %1"
 
 #: src/contents/ui/MultibandCompressor.qml:111
 msgid "Compression Mode"
@@ -2076,14 +2075,12 @@ msgid "Copy to the Local List"
 msgstr "Copiază în lista locală"
 
 #: src/contents/ui/PresetsCommunityPage.qml:106
-#, fuzzy
 msgid "Imported the Community Preset: %1"
-msgstr "Preconfigurare de la comunitate importată"
+msgstr "Preconfigurare de la comunitate importată: %1"
 
 #: src/contents/ui/PresetsCommunityPage.qml:109
-#, fuzzy
 msgid "Failed to Import the Community Preset: %1"
-msgstr "Importarea preconfigurării de la comunitate a eșuat."
+msgstr "Importarea preconfigurării de la comunitate a eșuat: %1"
 
 #: src/contents/ui/PresetsCommunityPage.qml:129
 msgid "Refresh"
@@ -2220,23 +2217,20 @@ msgid "Standard RNNoise Model"
 msgstr "Model standard RNNoise"
 
 #: src/contents/ui/RNNoise.qml:57
-#, fuzzy
 msgid "Standard RNNoise Model Loaded."
-msgstr "Model standard RNNoise"
+msgstr "Model standard RNNoise încărcat."
 
 #: src/contents/ui/RNNoise.qml:62 src/contents/ui/RNNoise.qml:281
-#, fuzzy
 msgid "Using %1 Model"
-msgstr "Utilizând %1"
+msgstr "Utilizând modelul %1"
 
 #: src/contents/ui/RNNoise.qml:64
-#, fuzzy
 msgid "%1 Model Correctly Loaded."
-msgstr "Model neîncărcat"
+msgstr "Modelul %1 a fost încărcat corect."
 
 #: src/contents/ui/RNNoise.qml:68
 msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
-msgstr ""
+msgstr "Nu s-a putut încărca modelul %1. Se revine la modelul standard RNNoise."
 
 #: src/contents/ui/RNNoise.qml:87 src/contents/ui/Speex.qml:108
 msgid "Voice Detection"
