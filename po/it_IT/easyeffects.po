@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-21 16:04+0000\n"
-"PO-Revision-Date: 2025-10-18 02:38+0000\n"
+"PO-Revision-Date: 2025-10-22 05:02+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -712,14 +712,12 @@ msgid "Autogain"
 msgstr "Auto Guadagno"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a New Convolver Impluse File."
-msgstr "Importa File di Impulso"
+msgstr "Importato un Nuovo File di Risposta Impulsiva del Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
-#, fuzzy
 msgid "Failed to Import the Convolver Impulse File."
-msgstr "Importazione del File di Risposta Impulsiva Non Riuscita."
+msgstr "Importazione del File di Risposta Impulsiva del Convolver Non Riuscita."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:142
@@ -730,7 +728,7 @@ msgstr "Cerca"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:79
 msgid "Loaded the %1 Convolver Impulse."
-msgstr ""
+msgstr "Caricato l'Impulso %1 del Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:85
 msgid "Remove Impulse Response"
@@ -742,12 +740,11 @@ msgstr "Vuoi davvero rimuovere questa risposta di impulso dalla lista?"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
 msgid "Removed the %1 Convolver Impulse."
-msgstr ""
+msgstr "Rimosso l'Impulso %1 del Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:92
-#, fuzzy
 msgid "Failed to Remove the %1 Convolver Impulse."
-msgstr "Rimozione dell'Impulso Non Riuscita: %1"
+msgstr "Rimozione dell'Impulso %1 del Convolver Non Riuscita."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:106
 msgid "Delete this Impulse"
@@ -1027,23 +1024,20 @@ msgid "APO Presets"
 msgstr "Profili APO"
 
 #: src/contents/ui/Equalizer.qml:53
-#, fuzzy
 msgid "Imported the Equalizer APO Preset File."
-msgstr "Esporta File di Profilo EqualizerAPO"
+msgstr "Importato il File del Profilo Equalizer APO."
 
 #: src/contents/ui/Equalizer.qml:55
-#, fuzzy
 msgid "Failed to Import the Equalizer APO Preset File."
-msgstr "Importazione del File di Profilo APO Non Riuscita."
+msgstr "Importazione del File del Profilo Equalizer APO Non Riuscita."
 
 #: src/contents/ui/Equalizer.qml:65
 msgid "GraphicEQ Presets"
 msgstr "Profili GraphicEQ"
 
 #: src/contents/ui/Equalizer.qml:68
-#, fuzzy
 msgid "Imported the GraphicEQ Preset File."
-msgstr "Importazione del File di Profilo GraphicEQ Non Riuscita."
+msgstr "Importato il File del Profilo GraphicEQ."
 
 #: src/contents/ui/Equalizer.qml:70
 msgid "Failed to Import the GraphicEQ Preset File."
@@ -1054,16 +1048,18 @@ msgid "APO Preset"
 msgstr "Profilo APO"
 
 #: src/contents/ui/Equalizer.qml:83
-#, fuzzy
 msgid "Exported the Current Equalizer Settings to an External APO Preset File."
-msgstr "Esporta File di Profilo EqualizerAPO"
+msgstr ""
+"Le Attuali Impostazioni dell'Equalizer sono state Esportate in un File "
+"Esterno di Profilo APO."
 
 #: src/contents/ui/Equalizer.qml:86
-#, fuzzy
 msgid ""
 "Failed to Export the Current Equalizer Settings to an External APO Preset "
 "File."
-msgstr "Esportazione del Profilo APO Non Riuscita."
+msgstr ""
+"Esportazione delle Attuali Impostazioni dell'Equalizer in un File Esterno di "
+"Profilo APO Non Riuscita."
 
 #: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
@@ -1529,7 +1525,7 @@ msgstr "Clipping"
 
 #: src/contents/ui/MenuAddPlugins.qml:131
 msgid "Added a New Effect to the Pipeline: %1"
-msgstr ""
+msgstr "Aggiunto un Nuovo Effetto alla Pipeline: %1"
 
 #: src/contents/ui/MultibandCompressor.qml:111
 msgid "Compression Mode"
@@ -2085,14 +2081,14 @@ msgid "Copy to the Local List"
 msgstr "Copia nella Lista Locale"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
-#, fuzzy
 msgid "Imported the %1 Community Preset to the List of Local Presets."
-msgstr "Importa questo profilo della community nella lista dei profili locali"
+msgstr "Importato il Profilo della Community %1 nella Lista dei Profili Locali."
 
 #: src/contents/ui/PresetsCommunityPage.qml:100
-#, fuzzy
 msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
-msgstr "Importazione del Profilo della Community Non Riuscita"
+msgstr ""
+"Importazione del Profilo della Community %1 nella Lista dei Profili Locali "
+"Non Riuscita."
 
 #: src/contents/ui/PresetsCommunityPage.qml:120
 msgid "Refresh"
@@ -2100,12 +2096,12 @@ msgstr "Aggiorna"
 
 #: src/contents/ui/PresetsLocalPage.qml:35
 msgid "Imported a New Local Preset from an External File."
-msgstr ""
+msgstr "Importato un Nuovo Profilo Locale da un File Esterno."
 
 #: src/contents/ui/PresetsLocalPage.qml:37
-#, fuzzy
 msgid "Failed to Import a New Local Preset from an External File."
-msgstr "Importazione del File di Profilo APO Non Riuscita."
+msgstr ""
+"Importazione di un Nuovo Profilo Locale da un File Esterno Non Riuscita."
 
 #: src/contents/ui/PresetsLocalPage.qml:46
 #: src/contents/ui/PresetsLocalPage.qml:131
@@ -2114,12 +2110,11 @@ msgstr "Esporta Profili"
 
 #: src/contents/ui/PresetsLocalPage.qml:49
 msgid "Exported all Presets to an External Folder."
-msgstr ""
+msgstr "Esportati Tutti i Profili in una Cartella Esterna."
 
 #: src/contents/ui/PresetsLocalPage.qml:51
-#, fuzzy
 msgid "Failed to Export All Presets to an External Folder."
-msgstr "Esportazione del Profilo APO Non Riuscita."
+msgstr "Esportazione di Tutti i Profili in una Cartella Esterna Non Riuscita."
 
 #: src/contents/ui/PresetsLocalPage.qml:63
 msgid "New Preset Name"
@@ -2134,14 +2129,12 @@ msgid "Create Preset"
 msgstr "Crea Profilo"
 
 #: src/contents/ui/PresetsLocalPage.qml:98
-#, fuzzy
 msgid "Created a New Local Preset: %1"
-msgstr "Cerca Profilo Locale"
+msgstr "Creato un Nuovo Profilo Locale: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:102
-#, fuzzy
 msgid "Failed to Create a New Local Preset: %1"
-msgstr "Creazione Profilo Non Riuscita"
+msgstr "Creazione di un Nuovo Profilo Locale Non Riuscita: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
 msgid "Remove Preset"
@@ -2152,14 +2145,12 @@ msgid "Are you sure you want to remove this preset from the list?"
 msgstr "Vuoi davvero rimuovere questo profilo dalla lista?"
 
 #: src/contents/ui/PresetsLocalPage.qml:191
-#, fuzzy
 msgid "Removed the %1 Local Preset."
-msgstr "Rimuovi questo profilo di auto-caricamento"
+msgstr "Rimosso il Profilo Locale %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:193
-#, fuzzy
 msgid "Failed to Remove the %1 Local Preset."
-msgstr "Importazione del Profilo Non Riuscita."
+msgstr "Rimozione del Profilo Locale %1 Non Riuscita."
 
 #: src/contents/ui/PresetsLocalPage.qml:201
 msgid "Rename Preset"
@@ -2170,14 +2161,12 @@ msgid "Rename"
 msgstr "Rinomina"
 
 #: src/contents/ui/PresetsLocalPage.qml:215
-#, fuzzy
 msgid "Renamed the %1 Local Preset to %2"
-msgstr "Rinomina questo Profilo"
+msgstr "Modificato il Profilo Locale %1 in %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:218
-#, fuzzy
 msgid "Failed to Rename the %1 Local Preset to %2"
-msgstr "Rimozione dell'Impulso Non Riuscita: %1"
+msgstr "Modifica del Profilo Locale %1 in %2 Non Riuscita"
 
 #: src/contents/ui/PresetsLocalPage.qml:226
 msgid "Cancel"
@@ -2188,14 +2177,13 @@ msgid "Save Settings to this Preset"
 msgstr "Salva la Configurazione in questo Profilo"
 
 #: src/contents/ui/PresetsLocalPage.qml:267
-#, fuzzy
 msgid "Saved the Current Settings to %1 Local Preset."
-msgstr "Rimuovi la configurazione attuale e carica questo profilo"
+msgstr "Salvate le Impostazioni Attuali nel Profilo Locale %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:269
-#, fuzzy
 msgid "Failed to Save the Current Settings to %1 Local Preset."
-msgstr "Non Riuscito il Salvataggio delle Impostazioni in: %1"
+msgstr ""
+"Salvataggio delle Impostazioni Attuali nel Profilo Locale %1 Non Riuscito."
 
 #: src/contents/ui/PresetsLocalPage.qml:274
 msgid "Rename this Preset"
@@ -2226,14 +2214,12 @@ msgid "Fallback Preset"
 msgstr "Profilo di Ripiego"
 
 #: src/contents/ui/RNNoise.qml:43
-#, fuzzy
 msgid "Imported a New RNNoise Model File."
-msgstr "Modello RNNoise Standard"
+msgstr "Importato un Nuovo File di Modello RNNoise."
 
 #: src/contents/ui/RNNoise.qml:45
-#, fuzzy
 msgid "Failed to Import the RNNoise Model File."
-msgstr "Importazione del File di Modello Non Riuscita."
+msgstr "Importazione di un Nuovo File di Modello RNNoise Non Riuscita."
 
 #: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
 #: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
@@ -2241,23 +2227,22 @@ msgid "Standard RNNoise Model"
 msgstr "Modello RNNoise Standard"
 
 #: src/contents/ui/RNNoise.qml:58
-#, fuzzy
 msgid "Standard RNNoise Model Loaded."
-msgstr "Modello RNNoise Standard"
+msgstr "Caricato il Modello Standard di RNNoise."
 
 #: src/contents/ui/RNNoise.qml:63 src/contents/ui/RNNoise.qml:281
-#, fuzzy
 msgid "Using %1 Model"
-msgstr "Utilizzo %1"
+msgstr "Utilizzo Modello %1"
 
 #: src/contents/ui/RNNoise.qml:65
-#, fuzzy
 msgid "Loaded the %1 RNNoise Model."
-msgstr "Modello RNNoise Standard"
+msgstr "Caricato il Modello RNNoise %1."
 
 #: src/contents/ui/RNNoise.qml:69
 msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
 msgstr ""
+"Caricamento del Modello %1 Non Riuscito. Modello Standard di RNNoise Usato "
+"come Alternativa."
 
 #: src/contents/ui/RNNoise.qml:88 src/contents/ui/Speex.qml:108
 msgid "Voice Detection"
@@ -2281,12 +2266,11 @@ msgstr "Rimuovi questo Modello"
 
 #: src/contents/ui/RNNoise.qml:243
 msgid "Removed the %1 RNNoise Model."
-msgstr ""
+msgstr "Rimosso il Modello RNNoise %1."
 
 #: src/contents/ui/RNNoise.qml:245
-#, fuzzy
 msgid "Failed to Remove the %1 RNNoise Model."
-msgstr "Rimozione del Modello Non Riuscita: %1"
+msgstr "Rimozione del Modello RNNoise %1 Non Riuscita."
 
 #: src/contents/ui/RNNoise.qml:313
 msgid "Import Model"
