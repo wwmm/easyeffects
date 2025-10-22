@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-19 19:09+0000\n"
-"PO-Revision-Date: 2025-10-21 16:05+0000\n"
+"PO-Revision-Date: 2025-10-22 05:03+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -16,8 +16,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
 "X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:43
@@ -2699,157 +2700,139 @@ msgid "Audio Effects for PipeWire Applications"
 msgstr "Звукові ефекти для застосунків PipeWire"
 
 #: src/contents/ui/Convolver.qml:172
-#, fuzzy
 msgid "Impulses"
-msgstr "Імпортувати імпульс"
+msgstr "Імпульси"
 
 #: src/contents/ui/Convolver.qml:220
 msgid "Log Scale"
-msgstr ""
+msgstr "Логарифмічна шкала"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
 msgid "Imported a New Convolver Impluse File."
-msgstr ""
+msgstr "Імпортовано новий файл Convolver Impluse."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
-#, fuzzy
 msgid "Failed to Import the Convolver Impulse File."
-msgstr "Не вдалося імпортувати файл імпульсу."
+msgstr "Не вдалося імпортувати файл імпульсів Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:79
 msgid "Loaded the %1 Convolver Impulse."
-msgstr ""
+msgstr "Завантажено імпульс конвольвера %1."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
 msgid "Removed the %1 Convolver Impulse."
-msgstr ""
+msgstr "Вилучено імпульс конвольвера %1."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:92
-#, fuzzy
 msgid "Failed to Remove the %1 Convolver Impulse."
-msgstr "Не вдалося вилучити імпульс: %1"
+msgstr "Не вдалося вилучити імпульс конвольвера %1."
 
 #: src/contents/ui/Equalizer.qml:53
-#, fuzzy
 msgid "Imported the Equalizer APO Preset File."
-msgstr "Не вдалося імпортувати файл пресетів APO."
+msgstr "Імпортовано файл пресетів еквалайзера APO."
 
 #: src/contents/ui/Equalizer.qml:55
-#, fuzzy
 msgid "Failed to Import the Equalizer APO Preset File."
-msgstr "Не вдалося імпортувати файл пресетів APO."
+msgstr "Не вдалося імпортувати файл пресетів еквалайзера APO."
 
 #: src/contents/ui/Equalizer.qml:68
-#, fuzzy
 msgid "Imported the GraphicEQ Preset File."
-msgstr "Не вдалося імпортувати файл пресетів GraphicEQ."
+msgstr "Імпортовано файл Пресетів GraphicEQ."
 
 #: src/contents/ui/Equalizer.qml:83
 msgid "Exported the Current Equalizer Settings to an External APO Preset File."
 msgstr ""
+"Експортовано поточні налаштування еквалайзера до зовнішнього файлу пресетів "
+"APO."
 
 #: src/contents/ui/Equalizer.qml:86
-#, fuzzy
 msgid ""
 "Failed to Export the Current Equalizer Settings to an External APO Preset "
 "File."
-msgstr "Не вдалося експортувати файл пресетів APO."
+msgstr ""
+"Не вдалося експортувати поточні налаштування еквалайзера до зовнішнього "
+"файлу пресетів APO."
 
 #: src/contents/ui/MenuAddPlugins.qml:131
 msgid "Added a New Effect to the Pipeline: %1"
-msgstr ""
+msgstr "Додано новий ефект до конвеєра: %1"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
-#, fuzzy
 msgid "Imported the %1 Community Preset to the List of Local Presets."
-msgstr "Імпортовано пресет від спільноти"
+msgstr "Імпортовано пресет спільноти %1 до списку локальних пресетів."
 
 #: src/contents/ui/PresetsCommunityPage.qml:100
-#, fuzzy
 msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
-msgstr "Не вдалося імпортувати пресет від спільноти"
+msgstr ""
+"Не вдалося імпортувати пресет спільноти %1 до списку локальних пресетів."
 
 #: src/contents/ui/PresetsLocalPage.qml:35
 msgid "Imported a New Local Preset from an External File."
-msgstr ""
+msgstr "Імпортовано новий локальний пресет із зовнішнього файлу."
 
 #: src/contents/ui/PresetsLocalPage.qml:37
-#, fuzzy
 msgid "Failed to Import a New Local Preset from an External File."
-msgstr "Не вдалося імпортувати файл пресетів APO."
+msgstr "Не вдалося імпортувати новий локальний пресет із зовнішнього файлу."
 
 #: src/contents/ui/PresetsLocalPage.qml:49
 msgid "Exported all Presets to an External Folder."
-msgstr ""
+msgstr "Експортовано всі пресети до зовнішньої папки."
 
 #: src/contents/ui/PresetsLocalPage.qml:51
-#, fuzzy
 msgid "Failed to Export All Presets to an External Folder."
-msgstr "Не вдалося експортувати файл пресетів APO."
+msgstr "Не вдалося експортувати всі пресетні налаштування до зовнішньої папки."
 
 #: src/contents/ui/PresetsLocalPage.qml:98
-#, fuzzy
 msgid "Created a New Local Preset: %1"
-msgstr "Створити пресет"
+msgstr "Створено новий локальний пресет: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:102
-#, fuzzy
 msgid "Failed to Create a New Local Preset: %1"
-msgstr "Не вдалося створити пресет"
+msgstr "Не вдалося створити новий локальний пресет: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:191
-#, fuzzy
 msgid "Removed the %1 Local Preset."
-msgstr "Вилучити пресет"
+msgstr "Вилучено локальний пресет %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:193
-#, fuzzy
 msgid "Failed to Remove the %1 Local Preset."
-msgstr "Не вдалося імпортувати пресет."
+msgstr "Не вдалося вилучити локальний пресет %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:215
-#, fuzzy
 msgid "Renamed the %1 Local Preset to %2"
-msgstr "Перейменувати цей пресет"
+msgstr "Перейменовано локальний пресет %1 на %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:218
-#, fuzzy
 msgid "Failed to Rename the %1 Local Preset to %2"
-msgstr "Не вдалося вилучити імпульс: %1"
+msgstr "Не вдалося перейменувати локальний пресет %1 на %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:267
-#, fuzzy
 msgid "Saved the Current Settings to %1 Local Preset."
-msgstr "Зберегти налаштування до цього пресету"
+msgstr "Поточні налаштування збережено до %1 локального пресету."
 
 #: src/contents/ui/PresetsLocalPage.qml:269
-#, fuzzy
 msgid "Failed to Save the Current Settings to %1 Local Preset."
-msgstr "Не вдалося зберегти налаштування до: %1"
+msgstr "Не вдалося зберегти поточні налаштування до локального пресету %1."
 
 #: src/contents/ui/RNNoise.qml:43
-#, fuzzy
 msgid "Imported a New RNNoise Model File."
-msgstr "Використовувати стандартну модель"
+msgstr "Імпортовано новий файл моделі RNNoise."
 
 #: src/contents/ui/RNNoise.qml:45
-#, fuzzy
 msgid "Failed to Import the RNNoise Model File."
-msgstr "Не вдалося імпортувати файл моделі."
+msgstr "Не вдалося імпортувати файл моделі RNNoise."
 
 #: src/contents/ui/RNNoise.qml:65
-#, fuzzy
 msgid "Loaded the %1 RNNoise Model."
-msgstr "Використовувати стандартну модель"
+msgstr "Завантажено модель %1 RNNoise."
 
 #: src/contents/ui/RNNoise.qml:243
 msgid "Removed the %1 RNNoise Model."
-msgstr ""
+msgstr "Вилучено модель %1 RNNoise."
 
 #: src/contents/ui/RNNoise.qml:245
-#, fuzzy
 msgid "Failed to Remove the %1 RNNoise Model."
-msgstr "Не вдалося вилучити модель: %1"
+msgstr "Не вдалося вилучити модель %1 RNNoise."
 
 #~ msgid "Loaded Model: %1"
 #~ msgstr "Завантажена модель: %1"

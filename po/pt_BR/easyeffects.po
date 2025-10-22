@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-21 16:04+0000\n"
-"PO-Revision-Date: 2025-10-06 12:02+0000\n"
+"PO-Revision-Date: 2025-10-22 05:02+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "easyeffects/main/pt_BR/>\n"
@@ -79,7 +79,7 @@ msgstr "Habilitar mensagens de depuração."
 
 #: src/command_line_parser.cpp:111
 msgid "Must specify preset type: input/output."
-msgstr ""
+msgstr "Deve especificar o tipo predefinido: entrada/saída."
 
 #: src/command_line_parser.cpp:149 src/contents/ui/main.qml:341
 msgid "Output Presets"
@@ -714,14 +714,12 @@ msgid "Autogain"
 msgstr "Ganho Automático"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a New Convolver Impluse File."
-msgstr "Importar o Arquivo com a Resposta de Impulso"
+msgstr "Importou um novo arquivo do Convolver Impulse."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
-#, fuzzy
 msgid "Failed to Import the Convolver Impulse File."
-msgstr "Falha ao importar o arquivo Impulse."
+msgstr "Falha ao importar o arquivo Convolver Impulse."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:142
@@ -732,7 +730,7 @@ msgstr "Buscar"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:79
 msgid "Loaded the %1 Convolver Impulse."
-msgstr ""
+msgstr "Carregou o %1 Convolver Impulse."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:85
 msgid "Remove Impulse Response"
@@ -744,12 +742,11 @@ msgstr "Tem certeza de que deseja remover esta resposta de impulso da lista?"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
 msgid "Removed the %1 Convolver Impulse."
-msgstr ""
+msgstr "Removido o Impulso Convolver %1."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:92
-#, fuzzy
 msgid "Failed to Remove the %1 Convolver Impulse."
-msgstr "Falha ao remover o impulso: %1"
+msgstr "Falha ao remover o impulso do Convolver %1."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:106
 msgid "Delete this Impulse"
@@ -781,9 +778,8 @@ msgid "Presets"
 msgstr "Predefinições"
 
 #: src/contents/ui/Crystalizer.qml:106
-#, fuzzy
 msgid "Adaptive Intensity"
-msgstr "Digital Adaptativo"
+msgstr "Intensidade Adaptativa"
 
 #: src/contents/ui/CrystalizerBand.qml:35
 #: src/contents/ui/EqualizerBandMenu.qml:157
@@ -973,14 +969,12 @@ msgid "Echo Canceller"
 msgstr "Cancelador de Eco"
 
 #: src/contents/ui/EchoCanceller.qml:59
-#, fuzzy
 msgid "Mobile Mode"
-msgstr "modo de filtro"
+msgstr "Modo Móvel"
 
 #: src/contents/ui/EchoCanceller.qml:68
-#, fuzzy
 msgid "Enforce High-pass"
-msgstr "filtro passa-altas"
+msgstr "Aplicar passagem alta"
 
 #: src/contents/ui/EchoCanceller.qml:82 src/contents/ui/Speex.qml:81
 msgid "Noise Suppression"
@@ -1003,14 +997,12 @@ msgid "Very High"
 msgstr "Muito Alto"
 
 #: src/contents/ui/EchoCanceller.qml:115
-#, fuzzy
 msgid "High-pass Filter"
-msgstr "Modo de Filtro Passa-Alta"
+msgstr "Filtro passa-alta"
 
 #: src/contents/ui/EchoCanceller.qml:132
-#, fuzzy
 msgid "Full Band"
-msgstr "Banda"
+msgstr "Banda completa"
 
 #: src/contents/ui/EchoCanceller.qml:168 src/contents/ui/Speex.qml:59
 msgid "Automatic Gain Control"
@@ -1034,23 +1026,20 @@ msgid "APO Presets"
 msgstr "Predefinições do APO"
 
 #: src/contents/ui/Equalizer.qml:53
-#, fuzzy
 msgid "Imported the Equalizer APO Preset File."
-msgstr "Exportar o Arquivo com as Predefinições do Equalizador APO"
+msgstr "Importou o arquivo de predefinição do Equalizer APO."
 
 #: src/contents/ui/Equalizer.qml:55
-#, fuzzy
 msgid "Failed to Import the Equalizer APO Preset File."
-msgstr "Falha ao importar o arquivo de predefinição do APO."
+msgstr "Falha ao importar o arquivo de predefinição do equalizador APO."
 
 #: src/contents/ui/Equalizer.qml:65
 msgid "GraphicEQ Presets"
 msgstr "Predefinições do GraphicEQ"
 
 #: src/contents/ui/Equalizer.qml:68
-#, fuzzy
 msgid "Imported the GraphicEQ Preset File."
-msgstr "Falha ao importar o arquivo de predefinição do GraphicEQ."
+msgstr "Importou o arquivo de predefinição do GraphicEQ."
 
 #: src/contents/ui/Equalizer.qml:70
 msgid "Failed to Import the GraphicEQ Preset File."
@@ -1061,16 +1050,18 @@ msgid "APO Preset"
 msgstr "Predefinição APO"
 
 #: src/contents/ui/Equalizer.qml:83
-#, fuzzy
 msgid "Exported the Current Equalizer Settings to an External APO Preset File."
-msgstr "Exportar o Arquivo com as Predefinições do Equalizador APO"
+msgstr ""
+"Exportou as configurações atuais do equalizador para um arquivo de "
+"predefinição APO externo."
 
 #: src/contents/ui/Equalizer.qml:86
-#, fuzzy
 msgid ""
 "Failed to Export the Current Equalizer Settings to an External APO Preset "
 "File."
-msgstr "Falha ao exportar o arquivo de predefinição do APO."
+msgstr ""
+"Falha ao exportar as configurações atuais do equalizador para um arquivo de "
+"predefinição APO externo."
 
 #: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
@@ -1536,7 +1527,7 @@ msgstr "Corte"
 
 #: src/contents/ui/MenuAddPlugins.qml:131
 msgid "Added a New Effect to the Pipeline: %1"
-msgstr ""
+msgstr "Adicionado um novo efeito ao pipeline: %1"
 
 #: src/contents/ui/MultibandCompressor.qml:111
 msgid "Compression Mode"
@@ -2093,15 +2084,16 @@ msgid "Copy to the Local List"
 msgstr "Copiar para a lista local"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
-#, fuzzy
 msgid "Imported the %1 Community Preset to the List of Local Presets."
 msgstr ""
-"Importar esta predefinição da comunidade para a lista de predefinições locais"
+"Importou a Predefinição da Comunidade %1 para a Lista de Predefinições "
+"Locais."
 
 #: src/contents/ui/PresetsCommunityPage.qml:100
-#, fuzzy
 msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
-msgstr "Falha ao importar a predefinição da comunidade"
+msgstr ""
+"Falha ao importar a predefinição da comunidade %1 para a lista de "
+"predefinições locais."
 
 #: src/contents/ui/PresetsCommunityPage.qml:120
 msgid "Refresh"
@@ -2109,12 +2101,11 @@ msgstr "Atualizar"
 
 #: src/contents/ui/PresetsLocalPage.qml:35
 msgid "Imported a New Local Preset from an External File."
-msgstr ""
+msgstr "Importou uma nova predefinição local de um arquivo externo."
 
 #: src/contents/ui/PresetsLocalPage.qml:37
-#, fuzzy
 msgid "Failed to Import a New Local Preset from an External File."
-msgstr "Falha ao importar o arquivo de predefinição do APO."
+msgstr "Falha ao importar uma nova predefinição local de um arquivo externo."
 
 #: src/contents/ui/PresetsLocalPage.qml:46
 #: src/contents/ui/PresetsLocalPage.qml:131
@@ -2123,12 +2114,11 @@ msgstr "Exportar Predefinições"
 
 #: src/contents/ui/PresetsLocalPage.qml:49
 msgid "Exported all Presets to an External Folder."
-msgstr ""
+msgstr "Exportar todas as predefinições para uma pasta externa."
 
 #: src/contents/ui/PresetsLocalPage.qml:51
-#, fuzzy
 msgid "Failed to Export All Presets to an External Folder."
-msgstr "Falha ao exportar o arquivo de predefinição do APO."
+msgstr "Falha ao exportar todas as predefinições para uma pasta externa."
 
 #: src/contents/ui/PresetsLocalPage.qml:63
 msgid "New Preset Name"
@@ -2143,14 +2133,12 @@ msgid "Create Preset"
 msgstr "Criar predefinição"
 
 #: src/contents/ui/PresetsLocalPage.qml:98
-#, fuzzy
 msgid "Created a New Local Preset: %1"
-msgstr "Pesquisar a Predefinição Local"
+msgstr "Criar uma nova predefinição local: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:102
-#, fuzzy
 msgid "Failed to Create a New Local Preset: %1"
-msgstr "Falha ao criar predefinição"
+msgstr "Falha ao criar uma nova predefinição local: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
 msgid "Remove Preset"
@@ -2161,14 +2149,12 @@ msgid "Are you sure you want to remove this preset from the list?"
 msgstr "Tem certeza de que deseja remover esta predefinição da lista?"
 
 #: src/contents/ui/PresetsLocalPage.qml:191
-#, fuzzy
 msgid "Removed the %1 Local Preset."
-msgstr "Remover este arquivo de predefinição"
+msgstr "Removida a predefinição local %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:193
-#, fuzzy
 msgid "Failed to Remove the %1 Local Preset."
-msgstr "Falha ao importar a predefinição."
+msgstr "Falha ao remover a predefinição local %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:201
 msgid "Rename Preset"
@@ -2179,14 +2165,12 @@ msgid "Rename"
 msgstr "Renomear"
 
 #: src/contents/ui/PresetsLocalPage.qml:215
-#, fuzzy
 msgid "Renamed the %1 Local Preset to %2"
-msgstr "Renomear esta Predefinição"
+msgstr "Renomeou a predefinição local %1 para %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:218
-#, fuzzy
 msgid "Failed to Rename the %1 Local Preset to %2"
-msgstr "Falha ao remover o impulso: %1"
+msgstr "Falha ao renomear a predefinição local %1 para %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:226
 msgid "Cancel"
@@ -2197,14 +2181,12 @@ msgid "Save Settings to this Preset"
 msgstr "Salvar configurações nesta predefinição"
 
 #: src/contents/ui/PresetsLocalPage.qml:267
-#, fuzzy
 msgid "Saved the Current Settings to %1 Local Preset."
-msgstr "Descartar as definições atuais e carregar esta predefinição"
+msgstr "Salvou as configurações atuais em %1 Predefinição local."
 
 #: src/contents/ui/PresetsLocalPage.qml:269
-#, fuzzy
 msgid "Failed to Save the Current Settings to %1 Local Preset."
-msgstr "Falha ao salvar configurações em: %1"
+msgstr "Falha ao salvar as configurações atuais na predefinição local %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:274
 msgid "Rename this Preset"
@@ -2235,14 +2217,12 @@ msgid "Fallback Preset"
 msgstr "Predefinição de fallback"
 
 #: src/contents/ui/RNNoise.qml:43
-#, fuzzy
 msgid "Imported a New RNNoise Model File."
-msgstr "Modelo Padrão de Ruído do RNNoise"
+msgstr "Importou um novo arquivo de modelo RNNoise."
 
 #: src/contents/ui/RNNoise.qml:45
-#, fuzzy
 msgid "Failed to Import the RNNoise Model File."
-msgstr "Falha ao importar o arquivo de modelo."
+msgstr "Falha ao importar o arquivo do modelo RNNoise."
 
 #: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
 #: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
@@ -2250,23 +2230,20 @@ msgid "Standard RNNoise Model"
 msgstr "Modelo Padrão de Ruído do RNNoise"
 
 #: src/contents/ui/RNNoise.qml:58
-#, fuzzy
 msgid "Standard RNNoise Model Loaded."
-msgstr "Modelo Padrão de Ruído do RNNoise"
+msgstr "Modelo RNNoise padrão carregado."
 
 #: src/contents/ui/RNNoise.qml:63 src/contents/ui/RNNoise.qml:281
-#, fuzzy
 msgid "Using %1 Model"
-msgstr "Usando %1"
+msgstr "Usando o modelo %1"
 
 #: src/contents/ui/RNNoise.qml:65
-#, fuzzy
 msgid "Loaded the %1 RNNoise Model."
-msgstr "Modelo Padrão de Ruído do RNNoise"
+msgstr "Carregou o modelo %1 RNNoise."
 
 #: src/contents/ui/RNNoise.qml:69
 msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
-msgstr ""
+msgstr "Falha ao carregar o modelo %1. Retornar ao modelo RNNoise padrão."
 
 #: src/contents/ui/RNNoise.qml:88 src/contents/ui/Speex.qml:108
 msgid "Voice Detection"
@@ -2290,12 +2267,11 @@ msgstr "Excluir este modelo"
 
 #: src/contents/ui/RNNoise.qml:243
 msgid "Removed the %1 RNNoise Model."
-msgstr ""
+msgstr "Removido o modelo %1 RNNoise."
 
 #: src/contents/ui/RNNoise.qml:245
-#, fuzzy
 msgid "Failed to Remove the %1 RNNoise Model."
-msgstr "Falha ao remover o modelo: %1"
+msgstr "Falha ao remover o modelo %1 RNNoise."
 
 #: src/contents/ui/RNNoise.qml:313
 msgid "Import Model"
@@ -2402,14 +2378,12 @@ msgid "Terminate Easy Effects Service"
 msgstr "Encerrar o serviço Easy Effects"
 
 #: src/contents/ui/ShortcutsSheet.qml:171
-#, fuzzy
 msgid "Toggle Process All Inputs"
-msgstr "Processar Todos os Fluxos de Entradas"
+msgstr "Alternar processar todas as entradas"
 
 #: src/contents/ui/ShortcutsSheet.qml:211
-#, fuzzy
 msgid "Toggle Process All Outputs"
-msgstr "Processar Todos os Fluxos de Saídas"
+msgstr "Alternar processar todas as saídas"
 
 #: src/contents/ui/ShortcutsSheet.qml:224
 #: src/contents/ui/ShortcutsSheet.qml:237
@@ -2418,7 +2392,7 @@ msgstr "Pode ser usado em controles numéricos"
 
 #: src/contents/ui/ShortcutsSheet.qml:334
 msgid "Toggle Microphone Monitoring"
-msgstr ""
+msgstr "Alternar monitoramento do microfone"
 
 #: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:378
 #: src/contents/ui/main.qml:501
@@ -2532,9 +2506,8 @@ msgid "Developer"
 msgstr "Desenvolvedor"
 
 #: src/contents/ui/main.qml:305 src/contents/ui/main.qml:322
-#, fuzzy
 msgid "Preset Loaded"
-msgstr "Nenhuma Predefinição Foi Carregada"
+msgstr "Predefinição carregada"
 
 #: src/contents/ui/main.qml:367
 msgid "Active"
