@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-22 20:08+0000\n"
-"PO-Revision-Date: 2025-10-21 16:05+0000\n"
+"PO-Revision-Date: 2025-10-22 20:42+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : "
+"(n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
 "X-Generator: Weblate 5.14-dev\n"
 
 #: src/command_line_parser.cpp:43
@@ -88,7 +88,6 @@ msgid "Input Presets"
 msgstr "Preconfigurări de intrare"
 
 #: src/contents/ui/AboutPage.qml:4
-#, fuzzy
 msgctxt "@action:button"
 msgid "About"
 msgstr "Despre"
@@ -727,14 +726,12 @@ msgid "Autogain"
 msgstr "Câștig automat"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a New Convolver Impluse File."
-msgstr "Importare fișier de impuls"
+msgstr "A fost importat un nou fișier de impuls al algoritmului de convoluție."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
-#, fuzzy
 msgid "Failed to Import the Convolver Impulse File."
-msgstr "Importarea fișierului de impuls a eșuat."
+msgstr "Importarea fișierului de impuls al algoritmului de convoluție a eșuat."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:142
@@ -745,7 +742,7 @@ msgstr "Caută"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:79
 msgid "Loaded the %1 Convolver Impulse."
-msgstr ""
+msgstr "S-a încărcat impulsul algoritmului de convoluție %1."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:85
 msgid "Remove Impulse Response"
@@ -758,12 +755,11 @@ msgstr ""
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
 msgid "Removed the %1 Convolver Impulse."
-msgstr ""
+msgstr "S-a eliminat impulsul algoritmului de convoluție %1."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:92
-#, fuzzy
 msgid "Failed to Remove the %1 Convolver Impulse."
-msgstr "Eliminarea impulsului a eșuat"
+msgstr "Eliminarea impulsului algoritmului de convoluție %1 a eșuat."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:106
 msgid "Delete this Impulse"
@@ -1045,23 +1041,20 @@ msgid "APO Presets"
 msgstr "Preconfigurări APO"
 
 #: src/contents/ui/Equalizer.qml:53
-#, fuzzy
 msgid "Imported the Equalizer APO Preset File."
-msgstr "Exportă fișierul de preconfigurare EqualizerAPO"
+msgstr "A fost importat fișierul de preconfigurare al egalizatorului APO."
 
 #: src/contents/ui/Equalizer.qml:55
-#, fuzzy
 msgid "Failed to Import the Equalizer APO Preset File."
-msgstr "Importarea fișierului de preconfigurare APO a eșuat."
+msgstr "Importarea fișierului de preconfigurare al egalizatorului APO a eșuat."
 
 #: src/contents/ui/Equalizer.qml:65
 msgid "GraphicEQ Presets"
 msgstr "Preconfigurări GraphicEQ"
 
 #: src/contents/ui/Equalizer.qml:68
-#, fuzzy
 msgid "Imported the GraphicEQ Preset File."
-msgstr "Importarea fișierului de preconfigurare GraphicEQ a eșuat."
+msgstr "A fost importat fișierul de preconfigurare al GraphicEQ."
 
 #: src/contents/ui/Equalizer.qml:70
 msgid "Failed to Import the GraphicEQ Preset File."
@@ -1072,16 +1065,18 @@ msgid "APO Preset"
 msgstr "Preconfigurare APO"
 
 #: src/contents/ui/Equalizer.qml:83
-#, fuzzy
 msgid "Exported the Current Equalizer Settings to an External APO Preset File."
-msgstr "Exportă fișierul de preconfigurare EqualizerAPO"
+msgstr ""
+"A fost exportată configurația curentă a egalizatorului într-un fișier extern "
+"de preconfigurări APO."
 
 #: src/contents/ui/Equalizer.qml:86
-#, fuzzy
 msgid ""
 "Failed to Export the Current Equalizer Settings to an External APO Preset "
 "File."
-msgstr "Exportarea fișierului de preconfigurare APO a eșuat."
+msgstr ""
+"Exportarea configurației curente a egalizatorului într-un fișier extern de "
+"preconfigurări APO a eșuat."
 
 #: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
@@ -1547,7 +1542,7 @@ msgstr "Decupare"
 
 #: src/contents/ui/MenuAddPlugins.qml:131
 msgid "Added a New Effect to the Pipeline: %1"
-msgstr ""
+msgstr "A fost adăugat un efect nou în canalul (pipeline): %1"
 
 #: src/contents/ui/MultibandCompressor.qml:111
 msgid "Compression Mode"
@@ -2104,16 +2099,16 @@ msgid "Copy to the Local List"
 msgstr "Copiază în lista locală"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
-#, fuzzy
 msgid "Imported the %1 Community Preset to the List of Local Presets."
 msgstr ""
-"Importă această preconfigurare a comunității în lista de preconfigurări "
-"locale"
+"A fost importată preconfigurarea de la comunitate %1 în lista de "
+"preconfigurări locale."
 
 #: src/contents/ui/PresetsCommunityPage.qml:100
-#, fuzzy
 msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
-msgstr "Importarea preconfigurării de la comunitate a eșuat."
+msgstr ""
+"Importarea preconfigurării de la comunitate %1 în lista de preconfigurări "
+"locale a eșuat."
 
 #: src/contents/ui/PresetsCommunityPage.qml:120
 msgid "Refresh"
@@ -2121,12 +2116,12 @@ msgstr "Actualizare"
 
 #: src/contents/ui/PresetsLocalPage.qml:35
 msgid "Imported a New Local Preset from an External File."
-msgstr ""
+msgstr "A fost importată o nouă preconfigurare locală dintr-un fișier extern."
 
 #: src/contents/ui/PresetsLocalPage.qml:37
-#, fuzzy
 msgid "Failed to Import a New Local Preset from an External File."
-msgstr "Importarea fișierului de preconfigurare APO a eșuat."
+msgstr ""
+"Importarea unei noi preconfigurări locale dintr-un fișier extern a eșuat."
 
 #: src/contents/ui/PresetsLocalPage.qml:46
 #: src/contents/ui/PresetsLocalPage.qml:131
@@ -2135,12 +2130,11 @@ msgstr "Exportă preconfigurări"
 
 #: src/contents/ui/PresetsLocalPage.qml:49
 msgid "Exported all Presets to an External Folder."
-msgstr ""
+msgstr "Au fost exportate toate preconfigurările într-un dosar extern."
 
 #: src/contents/ui/PresetsLocalPage.qml:51
-#, fuzzy
 msgid "Failed to Export All Presets to an External Folder."
-msgstr "Exportarea fișierului de preconfigurare APO a eșuat."
+msgstr "Exportarea tuturor preconfigurărilor într-un dosar extern a eșuat."
 
 #: src/contents/ui/PresetsLocalPage.qml:63
 msgid "New Preset Name"
@@ -2155,14 +2149,12 @@ msgid "Create Preset"
 msgstr "Creează preconfigurare"
 
 #: src/contents/ui/PresetsLocalPage.qml:98
-#, fuzzy
 msgid "Created a New Local Preset: %1"
-msgstr "Căutare preconfigurare locală"
+msgstr "A fost creată o preconfigurare locală nouă: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:102
-#, fuzzy
 msgid "Failed to Create a New Local Preset: %1"
-msgstr "Crearea preconfigurării a eșuat"
+msgstr "Crearea unei noi preconfigurării locale a eșuat: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
 msgid "Remove Preset"
@@ -2173,14 +2165,12 @@ msgid "Are you sure you want to remove this preset from the list?"
 msgstr "Sunteți sigur că doriți să eliminați această preconfigurare din listă?"
 
 #: src/contents/ui/PresetsLocalPage.qml:191
-#, fuzzy
 msgid "Removed the %1 Local Preset."
-msgstr "Elimină această preconfigurare cu încărcare automată"
+msgstr "A fost eliminată preconfigurarea locală %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:193
-#, fuzzy
 msgid "Failed to Remove the %1 Local Preset."
-msgstr "Importarea fișierului de preconfigurare a eșuat."
+msgstr "Eliminarea preconfigurării locale %1 a eșuat."
 
 #: src/contents/ui/PresetsLocalPage.qml:201
 msgid "Rename Preset"
@@ -2191,14 +2181,12 @@ msgid "Rename"
 msgstr "Redenumește"
 
 #: src/contents/ui/PresetsLocalPage.qml:215
-#, fuzzy
 msgid "Renamed the %1 Local Preset to %2"
-msgstr "Redenumește această preconfigurare"
+msgstr "Preconfigurarea locală %1 a fost redenumită %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:218
-#, fuzzy
 msgid "Failed to Rename the %1 Local Preset to %2"
-msgstr "Eliminarea impulsului a eșuat"
+msgstr "Redenumirea preconfigurării locale %1 în %2 a eșuat"
 
 #: src/contents/ui/PresetsLocalPage.qml:226
 msgid "Cancel"
@@ -2209,14 +2197,12 @@ msgid "Save Settings to this Preset"
 msgstr "Salvează parametrii în această preconfigurare"
 
 #: src/contents/ui/PresetsLocalPage.qml:267
-#, fuzzy
 msgid "Saved the Current Settings to %1 Local Preset."
-msgstr "Elimină configurarea curentă și încarcă această preconfigurare"
+msgstr "Configurația curentă a fost salvată în preconfigurarea locală %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:269
-#, fuzzy
 msgid "Failed to Save the Current Settings to %1 Local Preset."
-msgstr "Salvarea parametrilor în: %1 a eșuat"
+msgstr "Salvarea configurației curente în preconfigurarea locală %1 a eșuat."
 
 #: src/contents/ui/PresetsLocalPage.qml:274
 msgid "Rename this Preset"
@@ -2247,14 +2233,12 @@ msgid "Fallback Preset"
 msgstr "Preconfigurare de rezervă"
 
 #: src/contents/ui/RNNoise.qml:43
-#, fuzzy
 msgid "Imported a New RNNoise Model File."
-msgstr "Model standard RNNoise"
+msgstr "A fost importat un nou fișier de model RNNoise."
 
 #: src/contents/ui/RNNoise.qml:45
-#, fuzzy
 msgid "Failed to Import the RNNoise Model File."
-msgstr "Importarea fișierului de model a eșuat."
+msgstr "Importarea fișierului de model RNNoise a eșuat."
 
 #: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
 #: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
@@ -2270,9 +2254,8 @@ msgid "Using %1 Model"
 msgstr "Utilizând modelul %1"
 
 #: src/contents/ui/RNNoise.qml:65
-#, fuzzy
 msgid "Loaded the %1 RNNoise Model."
-msgstr "Model standard RNNoise"
+msgstr "A fost încărcat modelul RNNoise %1."
 
 #: src/contents/ui/RNNoise.qml:69
 msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
@@ -2301,12 +2284,11 @@ msgstr "Șterge acest model"
 
 #: src/contents/ui/RNNoise.qml:243
 msgid "Removed the %1 RNNoise Model."
-msgstr ""
+msgstr "A fost eliminat modelul RNNoise %1."
 
 #: src/contents/ui/RNNoise.qml:245
-#, fuzzy
 msgid "Failed to Remove the %1 RNNoise Model."
-msgstr "Eliminarea modelului: %1 a eșuat"
+msgstr "Eliminarea modelului RNNoise %1 a eșuat."
 
 #: src/contents/ui/RNNoise.qml:313
 msgid "Import Model"
