@@ -87,10 +87,10 @@ class Spectrum : public PluginBase {
 
   std::array<float, n_bands> hann_window;
 
-  enum {
-    DB_BIT_IDX = (1 << 0),      // To which db_buffers array process() should write.
-    DB_BIT_NEWDATA = (1 << 1),  // If new data has been written by process().
-    DB_BIT_BUSY = (1 << 2),     // If process() is currently writing data.
+  enum class DB_BIT {
+    IDX = (1 << 0),      // To which db_buffers array process() should write.
+    NEWDATA = (1 << 1),  // If new data has been written by process().
+    BUSY = (1 << 2),     // If process() is currently writing data.
   };
 
   std::array<std::array<float, n_bands>, 2> db_buffers;

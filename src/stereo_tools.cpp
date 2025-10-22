@@ -20,6 +20,7 @@
 #include "stereo_tools.hpp"
 #include <algorithm>
 #include <cstddef>
+#include <format>
 #include <memory>
 #include <span>
 #include <string>
@@ -134,9 +135,9 @@ void StereoTools::process(std::span<float>& left_in,
   lv2_wrapper->run();
 
   for (size_t n = 0; n < left_out.size(); n++) {
-    left_out[n] = wet * left_out[n] + dry * left_in[n];
+    left_out[n] = (wet * left_out[n]) + (dry * left_in[n]);
 
-    right_out[n] = wet * right_out[n] + dry * right_in[n];
+    right_out[n] = (wet * right_out[n]) + (dry * right_in[n]);
   }
 
   if (output_gain != 1.0F) {

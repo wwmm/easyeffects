@@ -229,32 +229,32 @@ void Spectrum::process(std::span<float>& left_in,
    */
 
   // Grab the current index AND mark as busy at the same time.
-  int index = db_control.fetch_or(DB_BIT_BUSY) & DB_BIT_IDX;
+  int index = db_control.fetch_or(static_cast<int>(DB_BIT::BUSY)) & static_cast<int>(DB_BIT::IDX);
 
   // Fill the buffer.
   db_buffers[index] = latest_samples_mono;
 
   // Mark new data available AND mark as not busy anymore.
-  db_control.store(index | DB_BIT_NEWDATA);
+  db_control.store(index | static_cast<int>(DB_BIT::NEWDATA));
 }
 
 auto Spectrum::compute_magnitudes() -> std::tuple<uint, QList<double>> {
   // Early return if no new data is available, ie if process() has not been
   // called since our last compute_magnitudes() call.
   int curr_control = db_control.load();
-  if (!(curr_control & DB_BIT_NEWDATA)) {
+  if (!(curr_control & static_cast<int>(DB_BIT::NEWDATA))) {
     return {0, {}};
   }
 
   // CAS loop to toggle the buffer used and remove NEWDATA flag, waiting for !BUSY.
   int next_control = 0;
   do {
-    curr_control &= ~DB_BIT_BUSY;
-    next_control = (curr_control ^ DB_BIT_IDX) & DB_BIT_IDX;
+    curr_control &= ~static_cast<int>(DB_BIT::BUSY);
+    next_control = (curr_control ^ static_cast<int>(DB_BIT::IDX)) & static_cast<int>(DB_BIT::IDX);
   } while (!db_control.compare_exchange_weak(curr_control, next_control));
 
   // Buffer with data is at the index which was found inside db_control.
-  int index = curr_control & DB_BIT_IDX;
+  int index = curr_control & static_cast<int>(DB_BIT::IDX);
   float* buf = db_buffers[index].data();
 
   // https://en.wikipedia.org/wiki/Hann_function

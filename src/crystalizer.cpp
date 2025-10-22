@@ -355,7 +355,7 @@ void Crystalizer::compute_buffer_crest(float* data, const bool& isLeft) {
 
   float alpha_crest = std::exp(-block_time / tau_crest);
 
-  env_crest = alpha_crest * env_crest + (1.0F - alpha_crest) * crest;
+  env_crest = (alpha_crest * env_crest) + ((1.0F - alpha_crest) * crest);
 }
 
 void Crystalizer::compute_buffer_kurtosis(float* data, const bool& isLeft) {
@@ -367,7 +367,7 @@ void Crystalizer::compute_buffer_kurtosis(float* data, const bool& isLeft) {
 
   float alpha = std::exp(-block_time / tau);
 
-  env_kurtosis = alpha * env_kurtosis + (1.0F - alpha) * kurtosis;
+  env_kurtosis = (alpha * env_kurtosis) + ((1.0F - alpha) * kurtosis);
 }
 
 auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
@@ -384,7 +384,7 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   float alpha = std::exp(-block_time / tau);
 
-  env_kurtosis = alpha * env_kurtosis + (1.0F - alpha) * kurtosis;
+  env_kurtosis = (alpha * env_kurtosis) + ((1.0F - alpha) * kurtosis);
 
   float kurtosis_ratio = isLeft ? env_kurtosis / buffer_kurtosis_L : env_kurtosis / buffer_kurtosis_R;
 
@@ -398,7 +398,7 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   float alpha_crest = std::exp(-block_time / tau_crest);
 
-  env_crest = alpha_crest * env_crest + (1.0F - alpha_crest) * crest;
+  env_crest = (alpha_crest * env_crest) + ((1.0F - alpha_crest) * crest);
 
   float crest_ratio = isLeft ? env_crest / buffer_crest_L : env_crest / buffer_crest_R;
 
