@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-21 16:04+0000\n"
+"POT-Creation-Date: 2025-10-22 20:08+0000\n"
 "PO-Revision-Date: 2025-10-22 05:02+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -78,13 +78,27 @@ msgstr "Abilità messaggi di debug."
 msgid "Must specify preset type: input/output."
 msgstr "È necessario specificare il tipo di profilo: input/output."
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:341
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:305
 msgid "Output Presets"
 msgstr "Profili di Uscita"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:331
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:295
 msgid "Input Presets"
 msgstr "Profili di Ingresso"
+
+#: src/contents/ui/AboutPage.qml:4
+msgctxt "@action:button"
+msgid "About"
+msgstr ""
+
+#: src/contents/ui/AboutPage.qml:10
+msgid "Audio effects for PipeWire applications"
+msgstr "Effetti Audio per Applicazioni PipeWire"
+
+#: src/contents/ui/AboutPage.qml:23
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Sviluppatore"
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:88
 #: src/contents/ui/BassLoudness.qml:39 src/contents/ui/Crossfeed.qml:56
@@ -261,14 +275,14 @@ msgstr "Ascolta"
 #: src/contents/ui/MultibandCompressor.qml:989
 #: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:521
+#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:485
 msgid "Reset"
 msgstr "Reimposta"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:455
+#: src/contents/ui/main.qml:419
 msgid "Output"
 msgstr "Uscita"
 
@@ -717,7 +731,8 @@ msgstr "Importato un Nuovo File di Risposta Impulsiva del Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
 msgid "Failed to Import the Convolver Impulse File."
-msgstr "Importazione del File di Risposta Impulsiva del Convolver Non Riuscita."
+msgstr ""
+"Importazione del File di Risposta Impulsiva del Convolver Non Riuscita."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:142
@@ -771,7 +786,7 @@ msgid "Default"
 msgstr "Predefinito"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:419
+#: src/contents/ui/main.qml:383
 msgid "Presets"
 msgstr "Profili"
 
@@ -1015,7 +1030,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Regolatori del guadagno di input e output con i misuratori di livello"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:466
+#: src/contents/ui/main.qml:430
 msgid "Input"
 msgstr "Ingresso"
 
@@ -1810,7 +1825,7 @@ msgstr "Anti-aliasing"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:493
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:457
 msgid "Preferences"
 msgstr "Preferenze"
 
@@ -2082,7 +2097,8 @@ msgstr "Copia nella Lista Locale"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
 msgid "Imported the %1 Community Preset to the List of Local Presets."
-msgstr "Importato il Profilo della Community %1 nella Lista dei Profili Locali."
+msgstr ""
+"Importato il Profilo della Community %1 nella Lista dei Profili Locali."
 
 #: src/contents/ui/PresetsCommunityPage.qml:100
 msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
@@ -2393,8 +2409,8 @@ msgstr "Può Essere Usato sui Parametri Numerici"
 msgid "Toggle Microphone Monitoring"
 msgstr "Abilita/Disabilita il Monitoraggio del Microfono"
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:378
-#: src/contents/ui/main.qml:501
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:342
+#: src/contents/ui/main.qml:465
 msgid "Shortcuts"
 msgstr "Scorciatoie"
 
@@ -2494,40 +2510,31 @@ msgstr "Reset delle Impostazioni?"
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Vuoi davvero reimpostare tutte le opzioni di Easy Effects?"
 
-#: src/contents/ui/main.qml:229
-msgid "Audio effects for PipeWire applications"
-msgstr "Effetti Audio per Applicazioni PipeWire"
-
-#: src/contents/ui/main.qml:242
-msgctxt "@info:credit"
-msgid "Developer"
-msgstr "Sviluppatore"
-
-#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:322
+#: src/contents/ui/main.qml:269 src/contents/ui/main.qml:286
 msgid "Preset Loaded"
 msgstr "Profilo Caricato"
 
-#: src/contents/ui/main.qml:367
+#: src/contents/ui/main.qml:331
 msgid "Active"
 msgstr "Attivo"
 
-#: src/contents/ui/main.qml:387 src/contents/ui/main.qml:509
+#: src/contents/ui/main.qml:351 src/contents/ui/main.qml:473
 msgid "Manual"
 msgstr "Manuale"
 
-#: src/contents/ui/main.qml:397 src/contents/ui/main.qml:541
+#: src/contents/ui/main.qml:361 src/contents/ui/main.qml:505
 msgid "Quit"
 msgstr "Esci"
 
-#: src/contents/ui/main.qml:427
+#: src/contents/ui/main.qml:391
 msgid "Turn Effects On/Off"
 msgstr "Abilita/Disabilita gli Effetti"
 
-#: src/contents/ui/main.qml:477
+#: src/contents/ui/main.qml:441
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:533
+#: src/contents/ui/main.qml:497
 msgid "About Easy Effects"
 msgstr "Info su Easy Effects"
 

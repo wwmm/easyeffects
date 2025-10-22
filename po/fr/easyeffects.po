@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-19 19:09+0000\n"
+"POT-Creation-Date: 2025-10-22 20:08+0000\n"
 "PO-Revision-Date: 2025-10-22 05:02+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -77,15 +77,27 @@ msgstr "Activer les messages de débogage."
 msgid "Must specify preset type: input/output."
 msgstr "Vous devez spécifier le type de préréglage : input/output."
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:337
-#: src/contents/ui/main.qml:341
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:305
 msgid "Output Presets"
 msgstr "Préréglages de Sortie"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
-#: src/contents/ui/main.qml:331
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:295
 msgid "Input Presets"
 msgstr "Préréglages d’Entrée"
+
+#: src/contents/ui/AboutPage.qml:4
+msgctxt "@action:button"
+msgid "About"
+msgstr ""
+
+#: src/contents/ui/AboutPage.qml:10
+msgid "Audio effects for PipeWire applications"
+msgstr "Effets audio pour les applications utilisant PipeWire"
+
+#: src/contents/ui/AboutPage.qml:23
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Développeur"
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:88
 #: src/contents/ui/BassLoudness.qml:39 src/contents/ui/Crossfeed.qml:56
@@ -166,19 +178,17 @@ msgstr "Gain de Sortie"
 #: src/contents/ui/Convolver.qml:409 src/contents/ui/Crossfeed.qml:134
 #: src/contents/ui/Crystalizer.qml:90 src/contents/ui/DeepFilterNet.qml:168
 #: src/contents/ui/Deesser.qml:310 src/contents/ui/Delay.qml:365
-#: src/contents/ui/EchoCanceller.qml:152 src/contents/ui/Equalizer.qml:267
+#: src/contents/ui/EchoCanceller.qml:152 src/contents/ui/Equalizer.qml:265
 #: src/contents/ui/Exciter.qml:191 src/contents/ui/Expander.qml:759
 #: src/contents/ui/Filter.qml:199 src/contents/ui/Gate.qml:895
 #: src/contents/ui/LevelMeter.qml:232 src/contents/ui/Limiter.qml:615
 #: src/contents/ui/Loudness.qml:155 src/contents/ui/Maximizer.qml:102
 #: src/contents/ui/MultibandCompressor.qml:950
 #: src/contents/ui/MultibandGate.qml:918 src/contents/ui/Pitch.qml:210
-#: src/contents/ui/RNNoise.qml:55 src/contents/ui/RNNoise.qml:66
+#: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
 #: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
 #: src/contents/ui/RNNoise.qml:297 src/contents/ui/Reverb.qml:309
 #: src/contents/ui/Speex.qml:166 src/contents/ui/StereoTools.qml:432
-#: src/contents/ui/Equalizer.qml:265 src/contents/ui/RNNoise.qml:56
-#: src/contents/ui/RNNoise.qml:67
 msgid "Using %1"
 msgstr "Utilisation de %1"
 
@@ -234,13 +244,13 @@ msgstr "Limite Inférieure"
 
 #: src/contents/ui/BassEnhancer.qml:207 src/contents/ui/Compressor.qml:817
 #: src/contents/ui/Deesser.qml:326 src/contents/ui/Delay.qml:401
-#: src/contents/ui/Equalizer.qml:283 src/contents/ui/Exciter.qml:207
+#: src/contents/ui/Equalizer.qml:281 src/contents/ui/Exciter.qml:207
 #: src/contents/ui/Expander.qml:775 src/contents/ui/Filter.qml:215
 #: src/contents/ui/Gate.qml:911 src/contents/ui/Limiter.qml:631
 #: src/contents/ui/Loudness.qml:171 src/contents/ui/Maximizer.qml:118
 #: src/contents/ui/MultibandCompressor.qml:966
 #: src/contents/ui/MultibandGate.qml:934 src/contents/ui/Reverb.qml:333
-#: src/contents/ui/StereoTools.qml:448 src/contents/ui/Equalizer.qml:281
+#: src/contents/ui/StereoTools.qml:448
 msgid "Show Native Window"
 msgstr "Afficher la Fenêtre Native"
 
@@ -255,7 +265,7 @@ msgstr "Écouter"
 #: src/contents/ui/Crossfeed.qml:158 src/contents/ui/Crystalizer.qml:116
 #: src/contents/ui/DeepFilterNet.qml:191 src/contents/ui/Deesser.qml:349
 #: src/contents/ui/Delay.qml:414 src/contents/ui/EchoCanceller.qml:178
-#: src/contents/ui/Equalizer.qml:348 src/contents/ui/Exciter.qml:230
+#: src/contents/ui/Equalizer.qml:346 src/contents/ui/Exciter.qml:230
 #: src/contents/ui/Expander.qml:808 src/contents/ui/Filter.qml:228
 #: src/contents/ui/Gate.qml:944 src/contents/ui/LevelMeter.qml:255
 #: src/contents/ui/Limiter.qml:664 src/contents/ui/Loudness.qml:194
@@ -263,15 +273,14 @@ msgstr "Écouter"
 #: src/contents/ui/MultibandCompressor.qml:989
 #: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:517
-#: src/contents/ui/Equalizer.qml:346 src/contents/ui/main.qml:521
+#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:485
 msgid "Reset"
 msgstr "Réinitialiser"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:451 src/contents/ui/main.qml:455
+#: src/contents/ui/main.qml:419
 msgid "Output"
 msgstr "Sortie"
 
@@ -282,7 +291,7 @@ msgstr "Sortie"
 msgid "Link"
 msgstr "Lien"
 
-#: src/contents/ui/BlocklistSheet.qml:18 src/contents/ui/BlocklistSheet.qml:13
+#: src/contents/ui/BlocklistSheet.qml:13
 msgid "Effects Blocklist"
 msgstr "Liste de Blocage des Effets"
 
@@ -295,10 +304,6 @@ msgid "Add to Excluded Applications"
 msgstr "Ajouter aux Applications Exclues"
 
 #: src/contents/ui/BlocklistSheet.qml:97
-#: src/contents/ui/ConvolverImpulseSheet.qml:66
-#: src/contents/ui/MenuAddPlugins.qml:34
-#: src/contents/ui/PresetsCommunityPage.qml:68
-#: src/contents/ui/PresetsLocalPage.qml:173 src/contents/ui/RNNoise.qml:210
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:33
 #: src/contents/ui/PresetsCommunityPage.qml:64
@@ -328,13 +333,12 @@ msgstr "Compresseur"
 
 #: src/contents/ui/Compressor.qml:70 src/contents/ui/Compressor.qml:301
 #: src/contents/ui/Deesser.qml:71 src/contents/ui/Delay.qml:56
-#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:105
+#: src/contents/ui/Delay.qml:214 src/contents/ui/Equalizer.qml:103
 #: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:70
 #: src/contents/ui/Expander.qml:261 src/contents/ui/Gate.qml:285
 #: src/contents/ui/Limiter.qml:52 src/contents/ui/Loudness.qml:54
 #: src/contents/ui/MultibandCompressor.qml:416
 #: src/contents/ui/MultibandGate.qml:384 src/contents/ui/StereoTools.qml:129
-#: src/contents/ui/Equalizer.qml:103
 msgid "Mode"
 msgstr "Mode"
 
@@ -389,8 +393,7 @@ msgstr "Attaque"
 #: src/contents/ui/Gate.qml:90 src/contents/ui/Gate.qml:802
 #: src/contents/ui/Limiter.qml:159 src/contents/ui/Limiter.qml:448
 #: src/contents/ui/Maximizer.qml:49 src/contents/ui/MultibandCompressor.qml:285
-#: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:140
-#: src/contents/ui/RNNoise.qml:141
+#: src/contents/ui/MultibandGate.qml:188 src/contents/ui/RNNoise.qml:141
 msgid "Release"
 msgstr "Relâchement"
 
@@ -481,22 +484,22 @@ msgid "Side"
 msgstr "Latérale"
 
 #: src/contents/ui/Compressor.qml:318 src/contents/ui/Convolver.qml:249
-#: src/contents/ui/Delay.qml:42 src/contents/ui/Equalizer.qml:197
+#: src/contents/ui/Delay.qml:42 src/contents/ui/Equalizer.qml:195
 #: src/contents/ui/Expander.qml:278 src/contents/ui/Gate.qml:302
 #: src/contents/ui/LevelMeter.qml:58 src/contents/ui/LevelMeter.qml:103
 #: src/contents/ui/MultibandCompressor.qml:431
 #: src/contents/ui/MultibandGate.qml:399 src/contents/ui/PipeWirePage.qml:314
-#: src/contents/ui/StereoTools.qml:214 src/contents/ui/Equalizer.qml:195
+#: src/contents/ui/StereoTools.qml:214
 msgid "Left"
 msgstr "Gauche"
 
 #: src/contents/ui/Compressor.qml:318 src/contents/ui/Convolver.qml:267
-#: src/contents/ui/Delay.qml:200 src/contents/ui/Equalizer.qml:197
+#: src/contents/ui/Delay.qml:200 src/contents/ui/Equalizer.qml:195
 #: src/contents/ui/Expander.qml:278 src/contents/ui/Gate.qml:302
 #: src/contents/ui/LevelMeter.qml:74 src/contents/ui/LevelMeter.qml:119
 #: src/contents/ui/MultibandCompressor.qml:431
 #: src/contents/ui/MultibandGate.qml:399 src/contents/ui/PipeWirePage.qml:325
-#: src/contents/ui/StereoTools.qml:256 src/contents/ui/Equalizer.qml:195
+#: src/contents/ui/StereoTools.qml:256
 msgid "Right"
 msgstr "Droite"
 
@@ -682,9 +685,17 @@ msgstr "Deuxième"
 msgid "Combine"
 msgstr "Combiner"
 
+#: src/contents/ui/Convolver.qml:172
+msgid "Impulses"
+msgstr "Impulsions"
+
 #: src/contents/ui/Convolver.qml:188 src/plugin_base.cpp:282
 msgid "Spectrum"
 msgstr "Spectre"
+
+#: src/contents/ui/Convolver.qml:220
+msgid "Log Scale"
+msgstr "Échelle Logarithmique"
 
 #: src/contents/ui/Convolver.qml:290
 msgid "Convolver Impulse Is Not Set"
@@ -713,17 +724,13 @@ msgid "Autogain"
 msgstr "Gain Automatique"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-msgid "Impluse File Imported."
-msgstr "Fichier d’Impulsion Importé."
+msgid "Imported a New Convolver Impluse File."
+msgstr "Importation d'un Nouveau Fichier d'Impulsion du Convolueur."
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:35
-msgid "Failed to Import the Impulse File."
-msgstr "Impossible d'Importer le Fichier d’Impulsion."
+#: src/contents/ui/ConvolverImpulseSheet.qml:33
+msgid "Failed to Import the Convolver Impulse File."
+msgstr "Échec de l'Importation du Fichier d'Impulsion du Convolueur."
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:46
-#: src/contents/ui/MenuAddPlugins.qml:145
-#: src/contents/ui/PresetsCommunityPage.qml:44
-#: src/contents/ui/PresetsLocalPage.qml:148
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:142
 #: src/contents/ui/PresetsCommunityPage.qml:40
@@ -731,35 +738,31 @@ msgstr "Impossible d'Importer le Fichier d’Impulsion."
 msgid "Search"
 msgstr "Rechercher"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:80
-msgid "Loaded Impulse: %1"
-msgstr "Charger l'Impulsion : %1"
+#: src/contents/ui/ConvolverImpulseSheet.qml:79
+msgid "Loaded the %1 Convolver Impulse."
+msgstr "Chargement de l'Impulsion %1 du Convolueur."
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:86
 #: src/contents/ui/ConvolverImpulseSheet.qml:85
 msgid "Remove Impulse Response"
 msgstr "Supprimer la Réponse Impulsionnelle"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:87
 #: src/contents/ui/ConvolverImpulseSheet.qml:86
 msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
 "Êtes-vous sûr de vouloir supprimer cette réponse impulsionnelle de la liste ?"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:91
-msgid "Removed Impulse: %1"
-msgstr "Supprimer l’Impulsion : %1"
+#: src/contents/ui/ConvolverImpulseSheet.qml:90
+msgid "Removed the %1 Convolver Impulse."
+msgstr "Suppression de l'Impulsion %1 du Convolueur."
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:94
-msgid "Failed to Remove the Impulse: %1"
-msgstr "Impossible de Supprimer l’Impulsion : %1"
+#: src/contents/ui/ConvolverImpulseSheet.qml:92
+msgid "Failed to Remove the %1 Convolver Impulse."
+msgstr "Échec de la Suppression de l'Impulsion %1 du Convolueur."
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:108
 #: src/contents/ui/ConvolverImpulseSheet.qml:106
 msgid "Delete this Impulse"
 msgstr "Supprimer cette Impulsion"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:128
 #: src/contents/ui/ConvolverImpulseSheet.qml:126
 msgid "Import Impulse"
 msgstr "Importer une Réponse Impulsionnelle"
@@ -781,7 +784,7 @@ msgid "Default"
 msgstr "Par défaut"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:415 src/contents/ui/main.qml:419
+#: src/contents/ui/main.qml:383
 msgid "Presets"
 msgstr "Préréglages"
 
@@ -853,7 +856,7 @@ msgstr "Diviser"
 #: src/contents/ui/Maximizer.qml:65 src/contents/ui/MultibandCompressor.qml:256
 #: src/contents/ui/MultibandCompressor.qml:304
 #: src/contents/ui/MultibandGate.qml:270 src/contents/ui/MultibandGate.qml:324
-#: src/contents/ui/RNNoise.qml:108 src/contents/ui/RNNoise.qml:109
+#: src/contents/ui/RNNoise.qml:109
 msgid "Threshold"
 msgstr "Seuil"
 
@@ -964,7 +967,7 @@ msgstr "canaux"
 #: src/contents/ui/DelegateStreamsList.qml:91
 #: src/contents/ui/EchoCanceller.qml:50 src/contents/ui/EchoCanceller.qml:90
 #: src/contents/ui/EchoCanceller.qml:123 src/contents/ui/Gate.qml:180
-#: src/contents/ui/RNNoise.qml:97 src/contents/ui/RNNoise.qml:98
+#: src/contents/ui/RNNoise.qml:98
 msgid "Enable"
 msgstr "Activer"
 
@@ -1025,7 +1028,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Contrôles de gain d'entrée et de sortie avec indicateurs de niveau"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:462 src/contents/ui/main.qml:466
+#: src/contents/ui/main.qml:430
 msgid "Input"
 msgstr "Entrée"
 
@@ -1034,80 +1037,85 @@ msgid "APO Presets"
 msgstr "Préréglages APO"
 
 #: src/contents/ui/Equalizer.qml:53
-msgid "APO Preset File Imported."
-msgstr "Fichier de Préréglage APO Importé."
+msgid "Imported the Equalizer APO Preset File."
+msgstr "Importation du Fichier de Préréglage de l'Égaliseur APO."
 
-#: src/contents/ui/Equalizer.qml:56
-msgid "Failed to Import the APO Preset File."
-msgstr "Échec de l'Importation du Fichier de Préréglage APO."
+#: src/contents/ui/Equalizer.qml:55
+msgid "Failed to Import the Equalizer APO Preset File."
+msgstr "Échec de l'Importation du Fichier de Préréglage de l'Égaliseur APO."
 
-#: src/contents/ui/Equalizer.qml:66 src/contents/ui/Equalizer.qml:65
+#: src/contents/ui/Equalizer.qml:65
 msgid "GraphicEQ Presets"
 msgstr "Préréglages GraphicEQ"
 
-#: src/contents/ui/Equalizer.qml:69
-msgid "GraphicEQ Preset File Imported."
-msgstr "Fichier de Préréglage GraphicEQ Importé."
+#: src/contents/ui/Equalizer.qml:68
+msgid "Imported the GraphicEQ Preset File."
+msgstr "Importation du Fichier de Préréglage GraphicEQ."
 
-#: src/contents/ui/Equalizer.qml:72 src/contents/ui/Equalizer.qml:70
+#: src/contents/ui/Equalizer.qml:70
 msgid "Failed to Import the GraphicEQ Preset File."
 msgstr "Échec de l'Importation du Fichier de Préréglage GraphicEQ."
 
-#: src/contents/ui/Equalizer.qml:82 src/contents/ui/Equalizer.qml:80
+#: src/contents/ui/Equalizer.qml:80
 msgid "APO Preset"
 msgstr "Préréglage APO"
 
-#: src/contents/ui/Equalizer.qml:85
-msgid "APO Preset File Exported."
-msgstr "Fichier de Préréglage APO Exporté."
+#: src/contents/ui/Equalizer.qml:83
+msgid "Exported the Current Equalizer Settings to an External APO Preset File."
+msgstr ""
+"Exportation des Paramètres Actuels de l'Égaliseur vers un Fichier de "
+"Préréglages APO Externe."
 
-#: src/contents/ui/Equalizer.qml:88
-msgid "Failed to Export the APO Preset File."
-msgstr "Échec de l'exportation du Fichier de Préréglage APO."
+#: src/contents/ui/Equalizer.qml:86
+msgid ""
+"Failed to Export the Current Equalizer Settings to an External APO Preset "
+"File."
+msgstr ""
+"Échec de l'Exportation des Paramètres Actuels de l'Égaliseur vers un Fichier "
+"de Préréglage APO externe."
 
-#: src/contents/ui/Equalizer.qml:118 src/contents/ui/Equalizer.qml:116
+#: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
 msgstr "Bandes"
 
-#: src/contents/ui/Equalizer.qml:134 src/contents/ui/Filter.qml:174
+#: src/contents/ui/Equalizer.qml:132 src/contents/ui/Filter.qml:174
 #: src/contents/ui/StereoTools.qml:66 src/contents/ui/StereoTools.qml:320
-#: src/contents/ui/Equalizer.qml:132
 msgid "Balance"
 msgstr "Balance"
 
-#: src/contents/ui/Equalizer.qml:151 src/contents/ui/Equalizer.qml:149
+#: src/contents/ui/Equalizer.qml:149
 msgid "Pitch Left"
 msgstr "Hauteur Gauche"
 
-#: src/contents/ui/Equalizer.qml:168 src/contents/ui/Equalizer.qml:166
+#: src/contents/ui/Equalizer.qml:166
 msgid "Pitch Right"
 msgstr "Hauteur Droite"
 
-#: src/contents/ui/Equalizer.qml:296 src/contents/ui/Equalizer.qml:294
+#: src/contents/ui/Equalizer.qml:294
 msgid "Split Channels"
 msgstr "Diviser les Canaux"
 
-#: src/contents/ui/Equalizer.qml:306 src/contents/ui/Equalizer.qml:304
+#: src/contents/ui/Equalizer.qml:304
 msgid "Flat Response"
 msgstr "Réponse Plate"
 
-#: src/contents/ui/Equalizer.qml:313 src/contents/ui/Equalizer.qml:311
+#: src/contents/ui/Equalizer.qml:311
 msgid "Calculate Frequencies"
 msgstr "Calculer les Fréquences"
 
-#: src/contents/ui/Equalizer.qml:320 src/contents/ui/Equalizer.qml:318
+#: src/contents/ui/Equalizer.qml:318
 msgid "Sort Bands"
 msgstr "Tri des Bandes"
 
-#: src/contents/ui/Equalizer.qml:327 src/contents/ui/Equalizer.qml:325
+#: src/contents/ui/Equalizer.qml:325
 msgid "Import APO"
 msgstr "Importer APO"
 
-#: src/contents/ui/Equalizer.qml:334 src/contents/ui/Equalizer.qml:332
+#: src/contents/ui/Equalizer.qml:332
 msgid "Import APO (GraphicEQ)"
 msgstr "Importer APO (GraphicEQ)"
 
-#: src/contents/ui/Equalizer.qml:341 src/contents/ui/Equalizer.qml:339
+#: src/contents/ui/Equalizer.qml:339
 msgid "Export APO"
 msgstr "Exporter APO"
 
@@ -1529,9 +1537,9 @@ msgstr "Plage de découpage"
 msgid "Clipping"
 msgstr "Coupure"
 
-#: src/contents/ui/MenuAddPlugins.qml:132
-msgid "Added Effect: %1"
-msgstr "Effet Ajouté : %1"
+#: src/contents/ui/MenuAddPlugins.qml:131
+msgid "Added a New Effect to the Pipeline: %1"
+msgstr "Ajout d'un Nouvel Effet au Pipeline : %1"
 
 #: src/contents/ui/MultibandCompressor.qml:111
 msgid "Compression Mode"
@@ -1816,8 +1824,7 @@ msgstr "Anti-crénelage"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:489
-#: src/contents/ui/main.qml:493
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:457
 msgid "Preferences"
 msgstr "Préférences"
 
@@ -2084,218 +2091,204 @@ msgstr "Préréglage Local"
 msgid "Create"
 msgstr "Créer"
 
-#: src/contents/ui/PresetsCommunityPage.qml:82
-msgid "The Preset %1 Failed to Load"
-msgstr "Le Préréglage %1 a Refusé de Se Charger"
-
-#: src/contents/ui/PresetsCommunityPage.qml:101
 #: src/contents/ui/PresetsCommunityPage.qml:93
 msgid "Copy to the Local List"
 msgstr "Copier vers la Liste Locale"
 
-#: src/contents/ui/PresetsCommunityPage.qml:106
-msgid "Imported the Community Preset: %1"
-msgstr "Importation du Préréglage de la Communauté : %1"
+#: src/contents/ui/PresetsCommunityPage.qml:98
+msgid "Imported the %1 Community Preset to the List of Local Presets."
+msgstr ""
+"Importation du Préréglage de la Communauté %1 vers la Liste des Préréglages "
+"Locaux."
 
-#: src/contents/ui/PresetsCommunityPage.qml:109
-msgid "Failed to Import the Community Preset: %1"
-msgstr "Échec de l'Importation du Préréglage de la Communauté : %1"
+#: src/contents/ui/PresetsCommunityPage.qml:100
+msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
+msgstr ""
+"Échec de l'Importation du Préréglage de la Communauté %1 vers la Liste des "
+"Préréglages Locaux."
 
-#: src/contents/ui/PresetsCommunityPage.qml:129
 #: src/contents/ui/PresetsCommunityPage.qml:120
 msgid "Refresh"
 msgstr "Actualiser"
 
 #: src/contents/ui/PresetsLocalPage.qml:35
-msgid "Preset File Imported."
-msgstr "Fichier du Préréglage Importé."
+msgid "Imported a New Local Preset from an External File."
+msgstr ""
+"Importation d'un Nouveau Préréglage Local à partir d'un Fichier Externe."
 
-#: src/contents/ui/PresetsLocalPage.qml:38
-msgid "Failed to Import the Preset."
-msgstr "Échec de l'Importation du Préréglage."
+#: src/contents/ui/PresetsLocalPage.qml:37
+msgid "Failed to Import a New Local Preset from an External File."
+msgstr ""
+"Échec de l'Importation d'un Nouveau Préréglage Local à partir d'un Fichier "
+"Externe."
 
-#: src/contents/ui/PresetsLocalPage.qml:47
-#: src/contents/ui/PresetsLocalPage.qml:135
 #: src/contents/ui/PresetsLocalPage.qml:46
 #: src/contents/ui/PresetsLocalPage.qml:131
 msgid "Export Presets"
 msgstr "Exporter les Préréglages"
 
-#: src/contents/ui/PresetsLocalPage.qml:50
-msgid "Preset Files Exported."
-msgstr "Fichiers de Préréglages Exportés."
+#: src/contents/ui/PresetsLocalPage.qml:49
+msgid "Exported all Presets to an External Folder."
+msgstr "Exportation de tous les Préréglages vers un Dossier Externe."
 
-#: src/contents/ui/PresetsLocalPage.qml:53
-msgid "Failed to Export the Presets."
-msgstr "Échec de l'Exportation des Préréglages."
+#: src/contents/ui/PresetsLocalPage.qml:51
+msgid "Failed to Export All Presets to an External Folder."
+msgstr ""
+"Échec de l'Exportation de tous les Préréglages vers un Dossier Externe."
 
-#: src/contents/ui/PresetsLocalPage.qml:65
 #: src/contents/ui/PresetsLocalPage.qml:63
 msgid "New Preset Name"
 msgstr "Nouveau Nom de Préréglage"
 
-#: src/contents/ui/PresetsLocalPage.qml:81
 #: src/contents/ui/PresetsLocalPage.qml:79
 msgid "Import Preset File"
 msgstr "Importer le Fichier de Préréglage"
 
-#: src/contents/ui/PresetsLocalPage.qml:90
 #: src/contents/ui/PresetsLocalPage.qml:88
 msgid "Create Preset"
 msgstr "Créer un Préréglage"
 
-#: src/contents/ui/PresetsLocalPage.qml:100
-msgid "New Preset Created"
-msgstr "Nouveau Préréglage Créé"
+#: src/contents/ui/PresetsLocalPage.qml:98
+msgid "Created a New Local Preset: %1"
+msgstr "Création du Nouveau Préréglage Local : %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:105
-msgid "Failed to Create Preset"
-msgstr "Échec de la Création du Préréglage"
+#: src/contents/ui/PresetsLocalPage.qml:102
+msgid "Failed to Create a New Local Preset: %1"
+msgstr "Échec de la Création du Nouveau Préréglage Local : %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:190
 #: src/contents/ui/PresetsLocalPage.qml:186
 msgid "Remove Preset"
 msgstr "Supprimer le Préréglage"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
 #: src/contents/ui/PresetsLocalPage.qml:187
 msgid "Are you sure you want to remove this preset from the list?"
 msgstr "Êtes-vous sûr de vouloir supprimer ce préréglage de la liste ?"
 
-#: src/contents/ui/PresetsLocalPage.qml:195
-msgid "The Preset %1 Has Been Removed"
-msgstr "Le Préréglage %1 a Été Supprimé"
+#: src/contents/ui/PresetsLocalPage.qml:191
+msgid "Removed the %1 Local Preset."
+msgstr "Suppression du Préréglage Local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:198
-msgid "The Preset %1 Could Not Be Removed"
-msgstr "Le Préréglage %1 N'a Pas Pu Être Supprimé"
+#: src/contents/ui/PresetsLocalPage.qml:193
+msgid "Failed to Remove the %1 Local Preset."
+msgstr "Échec de la Suppression du Préréglage Local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:206
 #: src/contents/ui/PresetsLocalPage.qml:201
 msgid "Rename Preset"
 msgstr "Renommer le Préréglage"
 
-#: src/contents/ui/PresetsLocalPage.qml:211
 #: src/contents/ui/PresetsLocalPage.qml:206
 msgid "Rename"
 msgstr "Renommer"
 
-#: src/contents/ui/PresetsLocalPage.qml:220
-msgid "The Preset %1 Has Been Renamed"
-msgstr "Le Préréglage %1 a Été Renommé"
+#: src/contents/ui/PresetsLocalPage.qml:215
+msgid "Renamed the %1 Local Preset to %2"
+msgstr "Renommage du Préréglage Local %1 en %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:223
-msgid "The Preset %1 Could Not Be Renamed"
-msgstr "Le Préréglage %1 N'a Pas Pu Être Renommé"
+#: src/contents/ui/PresetsLocalPage.qml:218
+msgid "Failed to Rename the %1 Local Preset to %2"
+msgstr "Échec à Renommer le Préréglage Local %1 en %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:231
 #: src/contents/ui/PresetsLocalPage.qml:226
 msgid "Cancel"
 msgstr "Annuler"
 
-#: src/contents/ui/PresetsLocalPage.qml:267
 #: src/contents/ui/PresetsLocalPage.qml:262
 msgid "Save Settings to this Preset"
 msgstr "Enregistrer les Paramètres Dans ce Préréglage"
 
-#: src/contents/ui/PresetsLocalPage.qml:272
-msgid "Settings Saved to: %1"
-msgstr "Paramètres Enregistrés dans : %1"
+#: src/contents/ui/PresetsLocalPage.qml:267
+msgid "Saved the Current Settings to %1 Local Preset."
+msgstr "Enregistrement des Paramètres Actuels vers le Préréglage Local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:275
-msgid "Failed to Save Settings to: %1"
-msgstr "Échec de l'Enregistrement des Paramètres dans : %1"
+#: src/contents/ui/PresetsLocalPage.qml:269
+msgid "Failed to Save the Current Settings to %1 Local Preset."
+msgstr ""
+"Échec de l'Enregistrement des Paramètres Actuels vers le Préréglage Local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:280
 #: src/contents/ui/PresetsLocalPage.qml:274
 msgid "Rename this Preset"
 msgstr "Renommer ce Préréglage"
 
-#: src/contents/ui/PresetsLocalPage.qml:288
 #: src/contents/ui/PresetsLocalPage.qml:282
 msgid "Delete this Preset"
 msgstr "Supprimer ce Préréglage"
 
-#: src/contents/ui/PresetsSheet.qml:65 src/contents/ui/PresetsSheet.qml:109
 #: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:104
 msgid "Local"
 msgstr "Local"
 
-#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:109
-#: src/contents/ui/PresetsSheet.qml:104
+#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:104
 msgid "Community"
 msgstr "Communauté"
 
-#: src/contents/ui/PresetsSheet.qml:87 src/contents/ui/PresetsSheet.qml:84
+#: src/contents/ui/PresetsSheet.qml:84
 msgid "Autoloading"
 msgstr "Chargement Automatique"
 
-#: src/contents/ui/PresetsSheet.qml:107 src/contents/ui/PresetsSheet.qml:102
+#: src/contents/ui/PresetsSheet.qml:102
 msgid "No Preset Loaded"
 msgstr "Pas de Préréglage Chargé"
 
-#: src/contents/ui/PresetsSheet.qml:123 src/contents/ui/PresetsSheet.qml:118
+#: src/contents/ui/PresetsSheet.qml:118
 msgid "Fallback Preset"
 msgstr "Préréglage de Repli"
 
-#: src/contents/ui/RNNoise.qml:42
-msgid "Model File Imported."
-msgstr "Fichier Modèle Importé."
+#: src/contents/ui/RNNoise.qml:43
+msgid "Imported a New RNNoise Model File."
+msgstr "Importation d'un Nouveau Fichier Modèle RNNoise."
 
 #: src/contents/ui/RNNoise.qml:45
-msgid "Failed to Import the Model File."
-msgstr "Échec de l'Importation du Fichier Modèle."
+msgid "Failed to Import the RNNoise Model File."
+msgstr "Échec de l'Importation du Fichier Modèle RNNoise."
 
-#: src/contents/ui/RNNoise.qml:55 src/contents/ui/RNNoise.qml:66
-#: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
 #: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
+#: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
 msgid "Standard RNNoise Model"
 msgstr "Modèle Standard RNNoise"
 
-#: src/contents/ui/RNNoise.qml:57
+#: src/contents/ui/RNNoise.qml:58
 msgid "Standard RNNoise Model Loaded."
 msgstr "Modèle RNNoise Standard Chargé."
 
-#: src/contents/ui/RNNoise.qml:62 src/contents/ui/RNNoise.qml:281
+#: src/contents/ui/RNNoise.qml:63 src/contents/ui/RNNoise.qml:281
 msgid "Using %1 Model"
 msgstr "Utilisation du Modèle %1"
 
-#: src/contents/ui/RNNoise.qml:64
-msgid "%1 Model Correctly Loaded."
-msgstr "Modèle %1 Correctement Chargé."
+#: src/contents/ui/RNNoise.qml:65
+msgid "Loaded the %1 RNNoise Model."
+msgstr "Chargement du Modèle RNNoise %1."
 
-#: src/contents/ui/RNNoise.qml:68
+#: src/contents/ui/RNNoise.qml:69
 msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
 msgstr "Échec du Chargement du Modèle %1. Retour au Modèle RNNoise Standard."
 
-#: src/contents/ui/RNNoise.qml:87 src/contents/ui/Speex.qml:108
-#: src/contents/ui/RNNoise.qml:88
+#: src/contents/ui/RNNoise.qml:88 src/contents/ui/Speex.qml:108
 msgid "Voice Detection"
 msgstr "Détection de la Voix"
 
-#: src/contents/ui/RNNoise.qml:124 src/contents/ui/RNNoise.qml:125
+#: src/contents/ui/RNNoise.qml:125
 msgid "Wet Level"
 msgstr "Niveau des Signaux Humides"
 
-#: src/contents/ui/RNNoise.qml:164 src/contents/ui/RNNoise.qml:165
+#: src/contents/ui/RNNoise.qml:165
 msgid "Use the Standard Model"
 msgstr "Utiliser le Modèle Standard"
 
-#: src/contents/ui/RNNoise.qml:175 src/contents/ui/RNNoise.qml:176
+#: src/contents/ui/RNNoise.qml:176
 msgid "User Models"
 msgstr "Modèles Utilisateur"
 
-#: src/contents/ui/RNNoise.qml:237 src/contents/ui/RNNoise.qml:238
+#: src/contents/ui/RNNoise.qml:238
 msgid "Delete this Model"
 msgstr "Supprimer ce Modèle"
 
-#: src/contents/ui/RNNoise.qml:242
-msgid "Removed Model: %1"
-msgstr "Modèle Supprimé : %1"
+#: src/contents/ui/RNNoise.qml:243
+msgid "Removed the %1 RNNoise Model."
+msgstr "Suppression du Modèle RNNoise %1."
 
 #: src/contents/ui/RNNoise.qml:245
-msgid "Failed to Remove the Model: %1"
-msgstr "Échec de la Suppression du Modèle : %1"
+msgid "Failed to Remove the %1 RNNoise Model."
+msgstr "Échec de la Suppression du Modèle RNNoise %1."
 
 #: src/contents/ui/RNNoise.qml:313
 msgid "Import Model"
@@ -2420,9 +2413,8 @@ msgstr "Peut Être Utilisé sur les Contrôles Numériques"
 msgid "Toggle Microphone Monitoring"
 msgstr "Basculer la Surveillance du Microphone"
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:374
-#: src/contents/ui/main.qml:497 src/contents/ui/main.qml:378
-#: src/contents/ui/main.qml:501
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:342
+#: src/contents/ui/main.qml:465
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
@@ -2514,52 +2506,40 @@ msgstr "Base Stéréo"
 msgid "Stereo Phase"
 msgstr "Phase Stéréo"
 
-#: src/contents/ui/main.qml:203 src/contents/ui/main.qml:207
+#: src/contents/ui/main.qml:207
 msgid "Reset Settings?"
 msgstr "Réinitialiser les paramètres ?"
 
-#: src/contents/ui/main.qml:204 src/contents/ui/main.qml:208
+#: src/contents/ui/main.qml:208
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 "Êtes-vous sûr de vouloir réinitialiser tous les paramètres Easy Effects ?"
 
-#: src/contents/ui/main.qml:225 src/contents/ui/main.qml:229
-msgid "Audio effects for PipeWire applications"
-msgstr "Effets audio pour les applications utilisant PipeWire"
-
-#: src/contents/ui/main.qml:238 src/contents/ui/main.qml:242
-msgctxt "@info:credit"
-msgid "Developer"
-msgstr "Développeur"
-
-#: src/contents/ui/main.qml:301 src/contents/ui/main.qml:318
-#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:322
+#: src/contents/ui/main.qml:269 src/contents/ui/main.qml:286
 msgid "Preset Loaded"
 msgstr "Préréglage Chargé"
 
-#: src/contents/ui/main.qml:363 src/contents/ui/main.qml:367
+#: src/contents/ui/main.qml:331
 msgid "Active"
 msgstr "Actif"
 
-#: src/contents/ui/main.qml:383 src/contents/ui/main.qml:505
-#: src/contents/ui/main.qml:387 src/contents/ui/main.qml:509
+#: src/contents/ui/main.qml:351 src/contents/ui/main.qml:473
 msgid "Manual"
 msgstr "Manuel"
 
-#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:537
-#: src/contents/ui/main.qml:397 src/contents/ui/main.qml:541
+#: src/contents/ui/main.qml:361 src/contents/ui/main.qml:505
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/contents/ui/main.qml:423 src/contents/ui/main.qml:427
+#: src/contents/ui/main.qml:391
 msgid "Turn Effects On/Off"
 msgstr "Activer/ Désactiver les Effets"
 
-#: src/contents/ui/main.qml:473 src/contents/ui/main.qml:477
+#: src/contents/ui/main.qml:441
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:529 src/contents/ui/main.qml:533
+#: src/contents/ui/main.qml:497
 msgid "About Easy Effects"
 msgstr "À propos de Easy Effects"
 
@@ -2706,167 +2686,118 @@ msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Effets Audio pour les Applications PipeWire"
 
-#: src/contents/ui/Convolver.qml:172
-msgid "Impulses"
-msgstr "Impulsions"
+#~ msgid "Impluse File Imported."
+#~ msgstr "Fichier d’Impulsion Importé."
 
-#: src/contents/ui/Convolver.qml:220
-msgid "Log Scale"
-msgstr "Échelle Logarithmique"
+#~ msgid "Failed to Import the Impulse File."
+#~ msgstr "Impossible d'Importer le Fichier d’Impulsion."
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:31
-msgid "Imported a New Convolver Impluse File."
-msgstr "Importation d'un Nouveau Fichier d'Impulsion du Convolueur."
+#~ msgid "Loaded Impulse: %1"
+#~ msgstr "Charger l'Impulsion : %1"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:33
-msgid "Failed to Import the Convolver Impulse File."
-msgstr "Échec de l'Importation du Fichier d'Impulsion du Convolueur."
+#~ msgid "Removed Impulse: %1"
+#~ msgstr "Supprimer l’Impulsion : %1"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:79
-msgid "Loaded the %1 Convolver Impulse."
-msgstr "Chargement de l'Impulsion %1 du Convolueur."
+#~ msgid "Failed to Remove the Impulse: %1"
+#~ msgstr "Impossible de Supprimer l’Impulsion : %1"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:90
-msgid "Removed the %1 Convolver Impulse."
-msgstr "Suppression de l'Impulsion %1 du Convolueur."
+#~ msgid "APO Preset File Imported."
+#~ msgstr "Fichier de Préréglage APO Importé."
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:92
-msgid "Failed to Remove the %1 Convolver Impulse."
-msgstr "Échec de la Suppression de l'Impulsion %1 du Convolueur."
+#~ msgid "Failed to Import the APO Preset File."
+#~ msgstr "Échec de l'Importation du Fichier de Préréglage APO."
 
-#: src/contents/ui/Equalizer.qml:53
-msgid "Imported the Equalizer APO Preset File."
-msgstr "Importation du Fichier de Préréglage de l'Égaliseur APO."
+#~ msgid "GraphicEQ Preset File Imported."
+#~ msgstr "Fichier de Préréglage GraphicEQ Importé."
 
-#: src/contents/ui/Equalizer.qml:55
-msgid "Failed to Import the Equalizer APO Preset File."
-msgstr "Échec de l'Importation du Fichier de Préréglage de l'Égaliseur APO."
+#~ msgid "APO Preset File Exported."
+#~ msgstr "Fichier de Préréglage APO Exporté."
 
-#: src/contents/ui/Equalizer.qml:68
-msgid "Imported the GraphicEQ Preset File."
-msgstr "Importation du Fichier de Préréglage GraphicEQ."
+#~ msgid "Failed to Export the APO Preset File."
+#~ msgstr "Échec de l'exportation du Fichier de Préréglage APO."
 
-#: src/contents/ui/Equalizer.qml:83
-msgid "Exported the Current Equalizer Settings to an External APO Preset File."
-msgstr ""
-"Exportation des Paramètres Actuels de l'Égaliseur vers un Fichier de "
-"Préréglages APO Externe."
+#~ msgid "Added Effect: %1"
+#~ msgstr "Effet Ajouté : %1"
 
-#: src/contents/ui/Equalizer.qml:86
-msgid ""
-"Failed to Export the Current Equalizer Settings to an External APO Preset "
-"File."
-msgstr ""
-"Échec de l'Exportation des Paramètres Actuels de l'Égaliseur vers un Fichier "
-"de Préréglage APO externe."
+#~ msgid "The Preset %1 Failed to Load"
+#~ msgstr "Le Préréglage %1 a Refusé de Se Charger"
 
-#: src/contents/ui/MenuAddPlugins.qml:131
-msgid "Added a New Effect to the Pipeline: %1"
-msgstr "Ajout d'un Nouvel Effet au Pipeline : %1"
+#~ msgid "Imported the Community Preset: %1"
+#~ msgstr "Importation du Préréglage de la Communauté : %1"
 
-#: src/contents/ui/PresetsCommunityPage.qml:98
-msgid "Imported the %1 Community Preset to the List of Local Presets."
-msgstr ""
-"Importation du Préréglage de la Communauté %1 vers la Liste des Préréglages "
-"Locaux."
+#~ msgid "Failed to Import the Community Preset: %1"
+#~ msgstr "Échec de l'Importation du Préréglage de la Communauté : %1"
 
-#: src/contents/ui/PresetsCommunityPage.qml:100
-msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
-msgstr ""
-"Échec de l'Importation du Préréglage de la Communauté %1 vers la Liste des "
-"Préréglages Locaux."
+#~ msgid "Preset File Imported."
+#~ msgstr "Fichier du Préréglage Importé."
 
-#: src/contents/ui/PresetsLocalPage.qml:35
-msgid "Imported a New Local Preset from an External File."
-msgstr ""
-"Importation d'un Nouveau Préréglage Local à partir d'un Fichier Externe."
+#~ msgid "Failed to Import the Preset."
+#~ msgstr "Échec de l'Importation du Préréglage."
 
-#: src/contents/ui/PresetsLocalPage.qml:37
-msgid "Failed to Import a New Local Preset from an External File."
-msgstr ""
-"Échec de l'Importation d'un Nouveau Préréglage Local à partir d'un Fichier "
-"Externe."
+#~ msgid "Preset Files Exported."
+#~ msgstr "Fichiers de Préréglages Exportés."
 
-#: src/contents/ui/PresetsLocalPage.qml:49
-msgid "Exported all Presets to an External Folder."
-msgstr "Exportation de tous les Préréglages vers un Dossier Externe."
+#~ msgid "Failed to Export the Presets."
+#~ msgstr "Échec de l'Exportation des Préréglages."
 
-#: src/contents/ui/PresetsLocalPage.qml:51
-msgid "Failed to Export All Presets to an External Folder."
-msgstr "Échec de l'Exportation de tous les Préréglages vers un Dossier Externe."
+#~ msgid "New Preset Created"
+#~ msgstr "Nouveau Préréglage Créé"
 
-#: src/contents/ui/PresetsLocalPage.qml:98
-msgid "Created a New Local Preset: %1"
-msgstr "Création du Nouveau Préréglage Local : %1"
+#~ msgid "Failed to Create Preset"
+#~ msgstr "Échec de la Création du Préréglage"
 
-#: src/contents/ui/PresetsLocalPage.qml:102
-msgid "Failed to Create a New Local Preset: %1"
-msgstr "Échec de la Création du Nouveau Préréglage Local : %1"
+#~ msgid "The Preset %1 Has Been Removed"
+#~ msgstr "Le Préréglage %1 a Été Supprimé"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
-msgid "Removed the %1 Local Preset."
-msgstr "Suppression du Préréglage Local %1."
+#~ msgid "The Preset %1 Could Not Be Removed"
+#~ msgstr "Le Préréglage %1 N'a Pas Pu Être Supprimé"
 
-#: src/contents/ui/PresetsLocalPage.qml:193
-msgid "Failed to Remove the %1 Local Preset."
-msgstr "Échec de la Suppression du Préréglage Local %1."
+#~ msgid "The Preset %1 Has Been Renamed"
+#~ msgstr "Le Préréglage %1 a Été Renommé"
 
-#: src/contents/ui/PresetsLocalPage.qml:215
-msgid "Renamed the %1 Local Preset to %2"
-msgstr "Renommage du Préréglage Local %1 en %2"
+#~ msgid "The Preset %1 Could Not Be Renamed"
+#~ msgstr "Le Préréglage %1 N'a Pas Pu Être Renommé"
 
-#: src/contents/ui/PresetsLocalPage.qml:218
-msgid "Failed to Rename the %1 Local Preset to %2"
-msgstr "Échec à Renommer le Préréglage Local %1 en %2"
+#~ msgid "Settings Saved to: %1"
+#~ msgstr "Paramètres Enregistrés dans : %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:267
-msgid "Saved the Current Settings to %1 Local Preset."
-msgstr "Enregistrement des Paramètres Actuels vers le Préréglage Local %1."
+#~ msgid "Failed to Save Settings to: %1"
+#~ msgstr "Échec de l'Enregistrement des Paramètres dans : %1"
 
-#: src/contents/ui/PresetsLocalPage.qml:269
-msgid "Failed to Save the Current Settings to %1 Local Preset."
-msgstr ""
-"Échec de l'Enregistrement des Paramètres Actuels vers le Préréglage Local %1."
+#~ msgid "Model File Imported."
+#~ msgstr "Fichier Modèle Importé."
 
-#: src/contents/ui/RNNoise.qml:43
-msgid "Imported a New RNNoise Model File."
-msgstr "Importation d'un Nouveau Fichier Modèle RNNoise."
+#~ msgid "Failed to Import the Model File."
+#~ msgstr "Échec de l'Importation du Fichier Modèle."
 
-#: src/contents/ui/RNNoise.qml:45
-msgid "Failed to Import the RNNoise Model File."
-msgstr "Échec de l'Importation du Fichier Modèle RNNoise."
+#~ msgid "%1 Model Correctly Loaded."
+#~ msgstr "Modèle %1 Correctement Chargé."
 
-#: src/contents/ui/RNNoise.qml:65
-msgid "Loaded the %1 RNNoise Model."
-msgstr "Chargement du Modèle RNNoise %1."
+#~ msgid "Removed Model: %1"
+#~ msgstr "Modèle Supprimé : %1"
 
-#: src/contents/ui/RNNoise.qml:243
-msgid "Removed the %1 RNNoise Model."
-msgstr "Suppression du Modèle RNNoise %1."
-
-#: src/contents/ui/RNNoise.qml:245
-msgid "Failed to Remove the %1 RNNoise Model."
-msgstr "Échec de la Suppression du Modèle RNNoise %1."
+#~ msgid "Failed to Remove the Model: %1"
+#~ msgstr "Échec de la Suppression du Modèle : %1"
 
 #~ msgid "Loaded Model: %1"
 #~ msgstr "Modèle Chargé : %1"
 
 #~ msgid ""
-#~ "Set plugin property. Format: pipeline:plugin_name:instance_id:property:"
-#~ "value"
+#~ "Set plugin property. Format: "
+#~ "pipeline:plugin_name:instance_id:property:value"
 #~ msgstr ""
-#~ "Définir la propriété du greffon. Format : pipeline:nom_du_greffon:"
-#~ "id_de_l'instance:propriété:valeur"
+#~ "Définir la propriété du greffon. Format : "
+#~ "pipeline:nom_du_greffon:id_de_l'instance:propriété:valeur"
 
 #~ msgid "property-string"
 #~ msgstr "propriété-textuelle"
 
 #~ msgid ""
-#~ "Invalid property format. Expected: pipeline:plugin_name:instance_id:"
-#~ "property:value"
+#~ "Invalid property format. Expected: "
+#~ "pipeline:plugin_name:instance_id:property:value"
 #~ msgstr ""
-#~ "Format de propriété invalide. Attendu : pipeline:nom_du_greffon:"
-#~ "id_de_l'instance:propriété:valeur"
+#~ "Format de propriété invalide. Attendu : "
+#~ "pipeline:nom_du_greffon:id_de_l'instance:propriété:valeur"
 
 #~ msgid "Invalid pipeline type. Must be 'input' or 'output'"
 #~ msgstr "Type de pipeline invalide. Doit être 'input' ou 'output'"
