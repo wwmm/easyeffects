@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-21 16:04+0000\n"
+"POT-Creation-Date: 2025-10-22 20:08+0000\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/easyeffects/"
@@ -81,15 +81,32 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:341
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:305
 #, fuzzy
 msgid "Output Presets"
 msgstr "Preconfiguracións de saída: "
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:331
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:295
 #, fuzzy
 msgid "Input Presets"
 msgstr "Preconfiguracións de entrada: "
+
+#: src/contents/ui/AboutPage.qml:4
+#, fuzzy
+msgctxt "@action:button"
+msgid "About"
+msgstr "Acerca de"
+
+#: src/contents/ui/AboutPage.qml:10
+#, fuzzy
+msgid "Audio effects for PipeWire applications"
+msgstr "Efectos de son para as aplicacións de PulseAudio"
+
+#: src/contents/ui/AboutPage.qml:23
+#, fuzzy
+msgctxt "@info:credit"
+msgid "Developer"
+msgstr "Saída"
 
 #: src/contents/ui/Autogain.qml:51 src/contents/ui/BassEnhancer.qml:88
 #: src/contents/ui/BassLoudness.qml:39 src/contents/ui/Crossfeed.qml:56
@@ -276,14 +293,14 @@ msgstr "Escoitar"
 #: src/contents/ui/MultibandCompressor.qml:989
 #: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:521
+#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:485
 msgid "Reset"
 msgstr "Restabelecer"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:455
+#: src/contents/ui/main.qml:419
 msgid "Output"
 msgstr "Saída"
 
@@ -814,7 +831,7 @@ msgid "Default"
 msgstr "Predeterminado"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:419
+#: src/contents/ui/main.qml:383
 msgid "Presets"
 msgstr "Preconfiguracións"
 
@@ -1076,7 +1093,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:466
+#: src/contents/ui/main.qml:430
 msgid "Input"
 msgstr "Entrada"
 
@@ -1951,7 +1968,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:493
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:457
 #, fuzzy
 msgid "Preferences"
 msgstr "_Preferencias"
@@ -2584,8 +2601,8 @@ msgstr ""
 msgid "Toggle Microphone Monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:378
-#: src/contents/ui/main.qml:501
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:342
+#: src/contents/ui/main.qml:465
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_Atallos de teclado"
@@ -2689,46 +2706,35 @@ msgstr "Configuración"
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:229
-#, fuzzy
-msgid "Audio effects for PipeWire applications"
-msgstr "Efectos de son para as aplicacións de PulseAudio"
-
-#: src/contents/ui/main.qml:242
-#, fuzzy
-msgctxt "@info:credit"
-msgid "Developer"
-msgstr "Saída"
-
-#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:322
+#: src/contents/ui/main.qml:269 src/contents/ui/main.qml:286
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Preconfiguracións de entrada: "
 
-#: src/contents/ui/main.qml:367
+#: src/contents/ui/main.qml:331
 #, fuzzy
 msgid "Active"
 msgstr "Modelo activo"
 
-#: src/contents/ui/main.qml:387 src/contents/ui/main.qml:509
+#: src/contents/ui/main.qml:351 src/contents/ui/main.qml:473
 #, fuzzy
 msgid "Manual"
 msgstr "_Manual"
 
-#: src/contents/ui/main.qml:397 src/contents/ui/main.qml:541
+#: src/contents/ui/main.qml:361 src/contents/ui/main.qml:505
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:427
+#: src/contents/ui/main.qml:391
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:477
+#: src/contents/ui/main.qml:441
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:533
+#: src/contents/ui/main.qml:497
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_Sobre EasyEffects"
@@ -4216,9 +4222,6 @@ msgstr "Efectos de son para aplicacións PipeWire"
 
 #~ msgid "Priority"
 #~ msgstr "Prioridade"
-
-#~ msgid "About"
-#~ msgstr "Acerca de"
 
 #~ msgid "Protocol"
 #~ msgstr "Protocolo"
