@@ -1,7 +1,7 @@
-import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import "Common.js" as Common
 import ee.database as DB
 import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami

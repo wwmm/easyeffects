@@ -1,10 +1,10 @@
 pragma ComponentBehavior: Bound
-import "Common.js" as Common
 import QtCore
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
+import "Common.js" as Common
 import ee.presets as Presets
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import ee.type.presets as TypePresets

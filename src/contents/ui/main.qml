@@ -221,6 +221,9 @@ Kirigami.ApplicationWindow {
         implicitWidth: Kirigami.Units.gridUnit * 30
 
         Loader {
+            id: aboutPageLoader
+
+            height: appWindow.maxOverlayHeight
             source: "qrc:/ui/AboutPage.qml"
         }
     }

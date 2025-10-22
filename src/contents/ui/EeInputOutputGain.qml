@@ -1,7 +1,7 @@
 pragma ComponentBehavior: Bound
-import "Common.js" as Common
 import QtQuick
 import QtQuick.Layouts
+import "Common.js" as Common
 import org.kde.kirigami as Kirigami
 
 Item {

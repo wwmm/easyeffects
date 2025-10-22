@@ -1,7 +1,7 @@
-import "Common.js" as Common
 import QtQuick
-import QtQuick.Layouts
 import QtQuick.Controls as Controls
+import QtQuick.Layouts
+import "Common.js" as Common
 
 Controls.ItemDelegate {
     id: delegate

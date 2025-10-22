@@ -1,8 +1,8 @@
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
-import org.kde.kirigami as Kirigami
 import ee.database as DB
+import org.kde.kirigami as Kirigami
 
 //The ItemDelegate must be inside a Item for Kirigami.ListItemDragHandle to work.
 //The item beind dragged can not be the direct child.

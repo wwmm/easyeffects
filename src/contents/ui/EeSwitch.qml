@@ -1,7 +1,7 @@
-import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import "Common.js" as Common
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 

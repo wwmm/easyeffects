@@ -1,7 +1,7 @@
-import "Common.js" as Common
 import QtQuick
-import org.kde.kirigami as Kirigami
+import "Common.js" as Common
 import ee.database as DB
+import org.kde.kirigami as Kirigami
 
 Rectangle {
     id: root

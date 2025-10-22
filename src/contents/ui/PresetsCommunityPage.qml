@@ -1,8 +1,8 @@
 pragma ComponentBehavior: Bound
-import "Common.js" as Common
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import "Common.js" as Common
 import ee.database as DB
 import ee.presets as Presets
 import org.kde.kirigami as Kirigami
