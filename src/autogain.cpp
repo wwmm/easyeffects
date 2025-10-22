@@ -292,7 +292,7 @@ void Autogain::process(std::span<float>& left_in,
 
           double alpha = std::exp(-block_time / tau);
 
-          internal_output_gain = alpha * prev_gain + (1.0 - alpha) * gain;
+          internal_output_gain = (alpha * prev_gain) + ((1.0 - alpha) * gain);
 
           prev_gain = internal_output_gain;
         }

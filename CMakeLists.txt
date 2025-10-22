@@ -56,6 +56,8 @@ find_package(KF${QT_MAJOR_VERSION} REQUIRED COMPONENTS
 
 ecm_find_qmlmodule(org.kde.kirigami REQUIRED)
 
+qt_policy(SET QTP0001 NEW)
+
 ki18n_install(po)
 
 find_package(Threads REQUIRED)

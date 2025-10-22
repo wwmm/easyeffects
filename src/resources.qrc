@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/ui">
+        <file alias="AboutPage.qml">contents/ui/AboutPage.qml</file>
         <file alias="Autogain.qml">contents/ui/Autogain.qml</file>
         <file alias="BassEnhancer.qml">contents/ui/BassEnhancer.qml</file>
         <file alias="BassLoudness.qml">contents/ui/BassLoudness.qml</file>
