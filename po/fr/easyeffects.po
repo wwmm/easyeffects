@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-22 20:08+0000\n"
-"PO-Revision-Date: 2025-10-22 05:02+0000\n"
+"PO-Revision-Date: 2025-10-22 20:42+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -88,7 +88,7 @@ msgstr "Préréglages d’Entrée"
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
 msgid "About"
-msgstr ""
+msgstr "À propos"
 
 #: src/contents/ui/AboutPage.qml:10
 msgid "Audio effects for PipeWire applications"
