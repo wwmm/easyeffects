@@ -46,7 +46,7 @@ class Nodes : public QAbstractListModel {
  public:
   explicit Nodes(QObject* parent = nullptr);
 
-  enum Roles {
+  enum class Roles {
     Id = Qt::UserRole,
     Serial,
     DeviceId,
@@ -331,7 +331,7 @@ class Nodes : public QAbstractListModel {
         break;
     }
 
-    Q_EMIT dataChanged(model_index, model_index, {role});
+    Q_EMIT dataChanged(model_index, model_index, {static_cast<int>(role)});
   }
 
  private:

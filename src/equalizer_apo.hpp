@@ -27,7 +27,7 @@
 
 namespace apo {
 
-enum Channel { left, right };
+enum class Channel { left, right };
 
 struct APO_Band {
   std::string type;

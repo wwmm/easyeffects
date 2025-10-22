@@ -38,11 +38,11 @@ int Clients::rowCount(const QModelIndex& /* parent */) const {
 }
 
 QHash<int, QByteArray> Clients::roleNames() const {
-  return {{Roles::Id, "id"},
-          {Roles::Serial, "serial"},
-          {Roles::Name, "name"},
-          {Roles::Access, "access"},
-          {Roles::Api, "api"}};
+  return {{static_cast<int>(Roles::Id), "id"},
+          {static_cast<int>(Roles::Serial), "serial"},
+          {static_cast<int>(Roles::Name), "name"},
+          {static_cast<int>(Roles::Access), "access"},
+          {static_cast<int>(Roles::Api), "api"}};
 }
 
 QVariant Clients::data(const QModelIndex& index, int role) const {
@@ -52,7 +52,7 @@ QVariant Clients::data(const QModelIndex& index, int role) const {
 
   const auto it = std::next(list.begin(), index.row());
 
-  switch (role) {
+  switch (static_cast<Roles>(role)) {
     case Roles::Id:
       return it->id;
     case Roles::Serial:

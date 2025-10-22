@@ -620,8 +620,8 @@ void NodeManager::onNodeParam(void* data,
           nd->nd_info->n_volume_channels = n_volumes;
           nd->nd_info->volume = max;
 
-          nm->model_nodes.update_field(rowIndex, pw::models::Nodes::NvolumeChannels, n_volumes);
-          nm->model_nodes.update_field(rowIndex, pw::models::Nodes::Volume, max);
+          nm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::NvolumeChannels, n_volumes);
+          nm->model_nodes.update_field(rowIndex, pw::models::Nodes::Roles::Volume, max);
         }
 
         break;

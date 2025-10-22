@@ -38,11 +38,11 @@ int Modules::rowCount(const QModelIndex& /* parent */) const {
 }
 
 QHash<int, QByteArray> Modules::roleNames() const {
-  return {{Roles::Id, "id"},
-          {Roles::Serial, "serial"},
-          {Roles::Name, "name"},
-          {Roles::Description, "description"},
-          {Roles::Filename, "filename"}};
+  return {{static_cast<int>(Roles::Id), "id"},
+          {static_cast<int>(Roles::Serial), "serial"},
+          {static_cast<int>(Roles::Name), "name"},
+          {static_cast<int>(Roles::Description), "description"},
+          {static_cast<int>(Roles::Filename), "filename"}};
 }
 
 QVariant Modules::data(const QModelIndex& index, int role) const {
@@ -52,7 +52,7 @@ QVariant Modules::data(const QModelIndex& index, int role) const {
 
   const auto it = std::next(list.begin(), index.row());
 
-  switch (role) {
+  switch (static_cast<Roles>(role)) {
     case Roles::Id:
       return it->id;
     case Roles::Serial:

@@ -55,8 +55,8 @@ Nodes::Nodes(QObject* parent)
 
   {
     proxy_output_streams.setSourceModel(this);
-    proxy_output_streams.setFilterRole(Roles::MediaClass);
-    proxy_output_streams.setSortRole(Roles::AppName);
+    proxy_output_streams.setFilterRole(static_cast<int>(Roles::MediaClass));
+    proxy_output_streams.setSortRole(static_cast<int>(Roles::AppName));
     proxy_output_streams.setSortCaseSensitivity(Qt::CaseInsensitive);
     proxy_output_streams.setDynamicSortFilter(true);
 
@@ -75,8 +75,8 @@ Nodes::Nodes(QObject* parent)
 
   {
     proxy_input_streams.setSourceModel(this);
-    proxy_input_streams.setFilterRole(Roles::MediaClass);
-    proxy_input_streams.setSortRole(Roles::AppName);
+    proxy_input_streams.setFilterRole(static_cast<int>(Roles::MediaClass));
+    proxy_input_streams.setSortRole(static_cast<int>(Roles::AppName));
     proxy_input_streams.setSortCaseSensitivity(Qt::CaseInsensitive);
     proxy_input_streams.setDynamicSortFilter(true);
 
@@ -95,9 +95,9 @@ Nodes::Nodes(QObject* parent)
 
   {
     proxy_source_devices.setSourceModel(this);
-    proxy_source_devices.setSortRole(Roles::Description);
+    proxy_source_devices.setSortRole(static_cast<int>(Roles::Description));
     proxy_source_devices.setSortCaseSensitivity(Qt::CaseInsensitive);
-    proxy_source_devices.setFilterRole(Roles::MediaClass);
+    proxy_source_devices.setFilterRole(static_cast<int>(Roles::MediaClass));
     proxy_source_devices.setDynamicSortFilter(true);
 
     auto pattern = "^" + QString(tags::pipewire::media_class::source) + "$";
@@ -115,9 +115,9 @@ Nodes::Nodes(QObject* parent)
 
   {
     proxy_sink_devices.setSourceModel(this);
-    proxy_sink_devices.setSortRole(Roles::Description);
+    proxy_sink_devices.setSortRole(static_cast<int>(Roles::Description));
     proxy_sink_devices.setSortCaseSensitivity(Qt::CaseInsensitive);
-    proxy_sink_devices.setFilterRole(Roles::MediaClass);
+    proxy_sink_devices.setFilterRole(static_cast<int>(Roles::MediaClass));
     proxy_sink_devices.setDynamicSortFilter(true);
 
     auto pattern = "^" + QString(tags::pipewire::media_class::sink) + "$";
@@ -189,35 +189,35 @@ int Nodes::rowCount(const QModelIndex& /* parent */) const {
 }
 
 QHash<int, QByteArray> Nodes::roleNames() const {
-  return {{Roles::Id, "id"},
-          {Roles::Serial, "serial"},
-          {Roles::DeviceId, "deviceId"},
-          {Roles::Name, "name"},
-          {Roles::Description, "description"},
-          {Roles::MediaClass, "mediaClass"},
-          {Roles::MediaRole, "mediaRole"},
-          {Roles::AppName, "appName"},
-          {Roles::AppProcessId, "appProcessId"},
-          {Roles::AppProcessBinary, "appProcessBinary"},
-          {Roles::AppIconName, "appIconName"},
-          {Roles::MediaIconName, "mediaIconName"},
-          {Roles::DeviceIconName, "deviceIconName"},
-          {Roles::MediaName, "mediaName"},
-          {Roles::Format, "format"},
-          {Roles::ApplicationId, "applicationId"},
-          {Roles::Priority, "priority"},
-          {Roles::State, "state"},
-          {Roles::Mute, "mute"},
-          {Roles::Connected, "connected"},
-          {Roles::NinputPorts, "nInputPorts"},
-          {Roles::NoutputPorts, "nOutputPorts"},
-          {Roles::Rate, "rate"},
-          {Roles::NvolumeChannels, "nVolumeChannels"},
-          {Roles::Latency, "latency"},
-          {Roles::Volume, "volume"},
-          {Roles::IsBlocklisted, "isBlocklisted"},
-          {Roles::DeviceProfileName, "deviceProfileName"},
-          {Roles::DeviceProfileDescription, "DeviceProfileDescription"}};
+  return {{static_cast<int>(Roles::Id), "id"},
+          {static_cast<int>(Roles::Serial), "serial"},
+          {static_cast<int>(Roles::DeviceId), "deviceId"},
+          {static_cast<int>(Roles::Name), "name"},
+          {static_cast<int>(Roles::Description), "description"},
+          {static_cast<int>(Roles::MediaClass), "mediaClass"},
+          {static_cast<int>(Roles::MediaRole), "mediaRole"},
+          {static_cast<int>(Roles::AppName), "appName"},
+          {static_cast<int>(Roles::AppProcessId), "appProcessId"},
+          {static_cast<int>(Roles::AppProcessBinary), "appProcessBinary"},
+          {static_cast<int>(Roles::AppIconName), "appIconName"},
+          {static_cast<int>(Roles::MediaIconName), "mediaIconName"},
+          {static_cast<int>(Roles::DeviceIconName), "deviceIconName"},
+          {static_cast<int>(Roles::MediaName), "mediaName"},
+          {static_cast<int>(Roles::Format), "format"},
+          {static_cast<int>(Roles::ApplicationId), "applicationId"},
+          {static_cast<int>(Roles::Priority), "priority"},
+          {static_cast<int>(Roles::State), "state"},
+          {static_cast<int>(Roles::Mute), "mute"},
+          {static_cast<int>(Roles::Connected), "connected"},
+          {static_cast<int>(Roles::NinputPorts), "nInputPorts"},
+          {static_cast<int>(Roles::NoutputPorts), "nOutputPorts"},
+          {static_cast<int>(Roles::Rate), "rate"},
+          {static_cast<int>(Roles::NvolumeChannels), "nVolumeChannels"},
+          {static_cast<int>(Roles::Latency), "latency"},
+          {static_cast<int>(Roles::Volume), "volume"},
+          {static_cast<int>(Roles::IsBlocklisted), "isBlocklisted"},
+          {static_cast<int>(Roles::DeviceProfileName), "deviceProfileName"},
+          {static_cast<int>(Roles::DeviceProfileDescription), "DeviceProfileDescription"}};
 }
 
 QVariant Nodes::data(const QModelIndex& index, int role) const {
@@ -233,7 +233,7 @@ QVariant Nodes::data(const QModelIndex& index, int role) const {
     return {};
   }
 
-  switch (role) {
+  switch (static_cast<Roles>(role)) {
     case Roles::Id:
       return it->id;
     case Roles::Serial:
@@ -300,7 +300,7 @@ QVariant Nodes::data(const QModelIndex& index, int role) const {
 bool Nodes::setData(const QModelIndex& index, const QVariant& value, int role) {
   auto it = std::next(list.begin(), index.row());
 
-  switch (role) {
+  switch (static_cast<Roles>(role)) {
     case Roles::IsBlocklisted: {
       if (value.canConvert<bool>()) {
         it->is_blocklisted = value.toBool();
@@ -350,7 +350,7 @@ bool Nodes::setData(const QModelIndex& index, const QVariant& value, int role) {
           }
         }
 
-        Q_EMIT dataChanged(index, index, {Roles::IsBlocklisted});
+        Q_EMIT dataChanged(index, index, {static_cast<int>(Roles::IsBlocklisted)});
       }
 
       break;

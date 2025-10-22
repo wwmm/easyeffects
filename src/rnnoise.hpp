@@ -153,7 +153,7 @@ class RNNoise : public PluginBase {
               --vad_grace_left;
 
               for (size_t i = 0U; i < data_L.size(); i++) {
-                data_L[i] = data_L[i] * wet_ratio + data_tmp[i] * (1.0F - wet_ratio);
+                data_L[i] = (data_L[i] * wet_ratio) + (data_tmp[i] * (1.0F - wet_ratio));
 
                 data_L[i] *= inv_short_max;
               }
@@ -162,7 +162,7 @@ class RNNoise : public PluginBase {
             }
           } else {
             for (size_t i = 0U; i < data_L.size(); i++) {
-              data_L[i] = data_L[i] * wet_ratio + data_tmp[i] * (1.0F - wet_ratio);
+              data_L[i] = (data_L[i] * wet_ratio) + (data_tmp[i] * (1.0F - wet_ratio));
 
               data_L[i] *= inv_short_max;
             }
@@ -195,7 +195,7 @@ class RNNoise : public PluginBase {
               --vad_grace_right;
 
               for (size_t i = 0U; i < data_R.size(); i++) {
-                data_R[i] = data_R[i] * wet_ratio + data_tmp[i] * (1.0F - wet_ratio);
+                data_R[i] = (data_R[i] * wet_ratio) + (data_tmp[i] * (1.0F - wet_ratio));
 
                 data_R[i] *= inv_short_max;
               }
@@ -204,7 +204,7 @@ class RNNoise : public PluginBase {
             }
           } else {
             for (size_t i = 0U; i < data_R.size(); i++) {
-              data_R[i] = data_R[i] * wet_ratio + data_tmp[i] * (1.0F - wet_ratio);
+              data_R[i] = (data_R[i] * wet_ratio) + (data_tmp[i] * (1.0F - wet_ratio));
 
               data_R[i] *= inv_short_max;
             }

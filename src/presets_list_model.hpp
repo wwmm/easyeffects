@@ -28,18 +28,25 @@
 #include <qsortfilterproxymodel.h>
 #include <qtmetamacros.h>
 #include <filesystem>
-#include <functional>
 
 class ListModel : public QAbstractListModel {
   Q_OBJECT
   QML_ELEMENT
 
  public:
-  enum ModelType { Local = Qt::UserRole, Community, Autoloading, IRS, RNNOISE };
+  enum class ModelType { Local = Qt::UserRole, Community, Autoloading, IRS, RNNOISE };
 
   explicit ListModel(QObject* parent = nullptr, const ModelType& model_type = ModelType::Local);
 
-  enum Roles { Name = Qt::UserRole, Path, PresetPackage, DeviceName, DeviceDescription, DeviceProfile, DevicePreset };
+  enum class Roles {
+    Name = Qt::UserRole,
+    Path,
+    PresetPackage,
+    DeviceName,
+    DeviceDescription,
+    DeviceProfile,
+    DevicePreset
+  };
   Q_ENUM(Roles)
 
   [[nodiscard]] int rowCount(const QModelIndex& /* parent */) const override;

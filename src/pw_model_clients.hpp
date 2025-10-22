@@ -41,7 +41,7 @@ class Clients : public QAbstractListModel {
  public:
   explicit Clients(QObject* parent = nullptr);
 
-  enum Roles { Id = Qt::UserRole, Serial, Name, Access, Api };
+  enum class Roles { Id = Qt::UserRole, Serial, Name, Access, Api };
 
   [[nodiscard]] int rowCount(const QModelIndex& /* parent */) const override;
 
@@ -107,7 +107,7 @@ class Clients : public QAbstractListModel {
         break;
     }
 
-    Q_EMIT dataChanged(model_index, model_index, {role});
+    Q_EMIT dataChanged(model_index, model_index, {static_cast<int>(role)});
   }
 
  private:

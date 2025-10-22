@@ -51,6 +51,7 @@ Checks: 'bugprone-*,cert-*,clang-analyzer-*,concurrency-*,cppcoreguidelines-*,hi
   -performance-inefficient-vector-operation,
   -performance-unnecessary-value-param,
   -performance-enum-size,
+  -portability-avoid-pragma-once,
   -readability-else-after-return,
   -readability-identifier-length,
   -readability-implicit-bool-conversion,

@@ -37,6 +37,7 @@
 #include <cstdarg>
 #include <cstdint>
 #include <cstdio>
+#include <format>
 #include <functional>
 #include <span>
 #include <string>
@@ -187,13 +188,13 @@ void Lv2Wrapper::create_ports() {
     }
 
     if (lilv_port_is_a(plugin, lilv_port, lv2_ControlPort)) {
-      port->type = TYPE_CONTROL;
+      port->type = lv2::PortType::TYPE_CONTROL;
     } else if (lilv_port_is_a(plugin, lilv_port, lv2_AtomPort)) {
-      port->type = TYPE_ATOM;
+      port->type = lv2::PortType::TYPE_ATOM;
 
       // util::warning("Port name: " + port->name);
     } else if (lilv_port_is_a(plugin, lilv_port, lv2_AudioPort)) {
-      port->type = TYPE_AUDIO;
+      port->type = lv2::PortType::TYPE_AUDIO;
 
       if (port->is_input) {
         if (n_audio_in == 0) {

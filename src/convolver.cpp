@@ -509,8 +509,8 @@ void Convolver::set_kernel_stereo_width() {
     const auto L = original_kernel_L[i];
     const auto R = original_kernel_R[i];
 
-    kernel_L[i] = L + x * R;
-    kernel_R[i] = R + x * L;
+    kernel_L[i] = L + (x * R);
+    kernel_R[i] = R + (x * L);
   }
 }
 

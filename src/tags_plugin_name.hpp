@@ -113,7 +113,7 @@ class Model : public QAbstractListModel {
     return m;
   }
 
-  enum Roles { Name = Qt::UserRole, TranslatedName };
+  enum class Roles { Name = Qt::UserRole, TranslatedName };
 
   [[nodiscard]] int rowCount(const QModelIndex& /* parent */) const override;
 

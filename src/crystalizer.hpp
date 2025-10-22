@@ -195,18 +195,18 @@ class Crystalizer : public PluginBase {
         auto bandn_second_derivative_L = band_second_derivative_L.at(n).data();
         auto bandn_second_derivative_R = band_second_derivative_R.at(n).data();
 
-        bandn_second_derivative_L[0] = bandn_L[1U] - 2.0F * bandn_L[0U] + band_previous_L.at(n);
-        bandn_second_derivative_R[0] = bandn_R[1U] - 2.0F * bandn_R[0U] + band_previous_R.at(n);
+        bandn_second_derivative_L[0] = bandn_L[1U] - (2.0F * bandn_L[0U]) + band_previous_L.at(n);
+        bandn_second_derivative_R[0] = bandn_R[1U] - (2.0F * bandn_R[0U]) + band_previous_R.at(n);
 
         for (uint m = 1U; m < blocksize - 1U; m++) {
-          bandn_second_derivative_L[m] = bandn_L[m + 1U] - 2.0F * bandn_L[m] + bandn_L[m - 1U];
-          bandn_second_derivative_R[m] = bandn_R[m + 1U] - 2.0F * bandn_R[m] + bandn_R[m - 1U];
+          bandn_second_derivative_L[m] = bandn_L[m + 1U] - (2.0F * bandn_L[m]) + bandn_L[m - 1U];
+          bandn_second_derivative_R[m] = bandn_R[m + 1U] - (2.0F * bandn_R[m]) + bandn_R[m - 1U];
         }
 
         bandn_second_derivative_L[blocksize - 1] =
-            band_next_L.at(n) - 2.0F * bandn_L[blocksize - 1] + bandn_L[blocksize - 2];
+            band_next_L.at(n) - (2.0F * bandn_L[blocksize - 1]) + bandn_L[blocksize - 2];
         bandn_second_derivative_R[blocksize - 1] =
-            band_next_R.at(n) - 2.0F * bandn_R[blocksize - 1] + bandn_R[blocksize - 2];
+            band_next_R.at(n) - (2.0F * bandn_R[blocksize - 1]) + bandn_R[blocksize - 2];
 
         // peak enhancing using second derivative
 

@@ -212,8 +212,8 @@ ColumnLayout {
                                 // trim to exclude names containing only multiple spaces
                                 if (!Common.isEmpty(newName.trim())) {
                                     if (Presets.Manager.renameLocalPresetFile(columnLayout.pipeline, listItemDelegate.name, newName) === true) {
-                                        appWindow.showStatus(i18n("Renamed the %1 Local Preset to %2", `<strong>${listItemDelegate.name}</strong>`, `<strong>${newName}</strong>`), Kirigami.MessageType.Positive);
-                                        // qmllint disable
+                                        appWindow.showStatus(i18n("Renamed the %1 Local Preset to %2", `<strong>${listItemDelegate.name}</strong>`, `<strong>${newName}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+
                                     } else {
                                         appWindow.showStatus(i18n("Failed to Rename the %1 Local Preset to %2", `<strong>${listItemDelegate.name}</strong>`, `<strong>${newName}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
                                     }

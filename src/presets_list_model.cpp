@@ -41,25 +41,25 @@ ListModel::ListModel(QObject* parent, const ModelType& model_type)
   proxy->setSourceModel(this);
 
   switch (model_type) {
-    case Local:
-      proxy->setFilterRole(Roles::Name);
-      proxy->setSortRole(Roles::Name);
+    case ModelType::Local:
+      proxy->setFilterRole(static_cast<int>(Roles::Name));
+      proxy->setSortRole(static_cast<int>(Roles::Name));
       break;
-    case Community:
-      proxy->setFilterRole(Roles::Path);
-      proxy->setSortRole(Roles::Path);
+    case ModelType::Community:
+      proxy->setFilterRole(static_cast<int>(Roles::Path));
+      proxy->setSortRole(static_cast<int>(Roles::Path));
       break;
-    case Autoloading:
-      proxy->setFilterRole(Roles::DeviceDescription);
-      proxy->setSortRole(Roles::DeviceDescription);
+    case ModelType::Autoloading:
+      proxy->setFilterRole(static_cast<int>(Roles::DeviceDescription));
+      proxy->setSortRole(static_cast<int>(Roles::DeviceDescription));
       break;
-    case IRS:
-      proxy->setFilterRole(Roles::Name);
-      proxy->setSortRole(Roles::Name);
+    case ModelType::IRS:
+      proxy->setFilterRole(static_cast<int>(Roles::Name));
+      proxy->setSortRole(static_cast<int>(Roles::Name));
       break;
-    case RNNOISE:
-      proxy->setFilterRole(Roles::Name);
-      proxy->setSortRole(Roles::Name);
+    case ModelType::RNNOISE:
+      proxy->setFilterRole(static_cast<int>(Roles::Name));
+      proxy->setSortRole(static_cast<int>(Roles::Name));
       break;
   }
 
@@ -73,13 +73,13 @@ int ListModel::rowCount(const QModelIndex& /* parent */) const {
 }
 
 QHash<int, QByteArray> ListModel::roleNames() const {
-  return {{Roles::Name, "name"},
-          {Roles::Path, "path"},
-          {Roles::PresetPackage, "presetPackage"},
-          {Roles::DeviceName, "deviceName"},
-          {Roles::DeviceDescription, "deviceDescription"},
-          {Roles::DeviceProfile, "deviceProfile"},
-          {Roles::DevicePreset, "devicePreset"}};
+  return {{static_cast<int>(Roles::Name), "name"},
+          {static_cast<int>(Roles::Path), "path"},
+          {static_cast<int>(Roles::PresetPackage), "presetPackage"},
+          {static_cast<int>(Roles::DeviceName), "deviceName"},
+          {static_cast<int>(Roles::DeviceDescription), "deviceDescription"},
+          {static_cast<int>(Roles::DeviceProfile), "deviceProfile"},
+          {static_cast<int>(Roles::DevicePreset), "devicePreset"}};
 }
 
 QVariant ListModel::data(const QModelIndex& index, int role) const {
@@ -91,7 +91,7 @@ QVariant ListModel::data(const QModelIndex& index, int role) const {
 
   if (model_type == ModelType::Local || model_type == ModelType::Community || model_type == ModelType::IRS ||
       model_type == ModelType::RNNOISE) {
-    switch (role) {
+    switch (static_cast<Roles>(role)) {
       case Roles::Name:
         return QString::fromStdString(it->stem().string());
       case Roles::Path:
@@ -110,7 +110,7 @@ QVariant ListModel::data(const QModelIndex& index, int role) const {
 
     is >> json;
 
-    switch (role) {
+    switch (static_cast<Roles>(role)) {
       case Roles::DeviceName:
         return QString::fromStdString(json.value("device", ""));
       case Roles::DeviceDescription:

@@ -39,10 +39,10 @@ Kirigami.Page {
 
     Connections {
         function onVisiblePageChanged() {
-            updateStackPages();
+            pageStreamsEffects.updateStackPages();
         }
 
-        target: streamDB
+        target: pageStreamsEffects.streamDB
     }
 
     ListModel {

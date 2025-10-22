@@ -46,7 +46,7 @@ using namespace std::string_literals;
 
 #define LV2_UI_makeSONameResident LV2_UI_PREFIX "makeSONameResident"
 
-enum PortType { TYPE_CONTROL, TYPE_AUDIO, TYPE_ATOM };
+enum class PortType { TYPE_CONTROL, TYPE_AUDIO, TYPE_ATOM };
 
 struct Port {
   PortType type;  // Datatype

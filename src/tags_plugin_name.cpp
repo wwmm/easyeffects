@@ -53,8 +53,8 @@ Model::Model(QObject* parent)
   auto* proxyModel = new QSortFilterProxyModel(this);
 
   proxyModel->setSourceModel(this);
-  proxyModel->setFilterRole(Model::Roles::TranslatedName);
-  proxyModel->setSortRole(Model::Roles::TranslatedName);
+  proxyModel->setFilterRole(static_cast<int>(Model::Roles::TranslatedName));
+  proxyModel->setSortRole(static_cast<int>(Model::Roles::TranslatedName));
   proxyModel->setDynamicSortFilter(true);
   proxyModel->sort(0);
 
@@ -76,7 +76,7 @@ int Model::rowCount(const QModelIndex& /* parent */) const {
 }
 
 QHash<int, QByteArray> Model::roleNames() const {
-  return {{Roles::Name, "name"}, {Roles::TranslatedName, "translatedName"}};
+  return {{static_cast<int>(Roles::Name), "name"}, {static_cast<int>(Roles::TranslatedName), "translatedName"}};
 }
 
 QVariant Model::data(const QModelIndex& index, int role) const {
@@ -86,7 +86,7 @@ QVariant Model::data(const QModelIndex& index, int role) const {
 
   const auto it = std::next(modelMap.begin(), index.row());
 
-  switch (role) {
+  switch (static_cast<Roles>(role)) {
     case Roles::Name:
       return it.key();
     case Roles::TranslatedName:
