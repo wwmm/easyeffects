@@ -34,5 +34,17 @@
         <entry name="autogain" type="Bool">
             <default>true</default>
         </entry>
+        <entry name="dry" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>20</max>
+            <default>-100</default>
+        </entry>
+        <entry name="wet" type="Double">
+            <label></label>
+            <min>-100</min>
+            <max>20</max>
+            <default>0</default>
+        </entry>
     </group>
 </kcfg>

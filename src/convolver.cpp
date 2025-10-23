@@ -106,6 +106,10 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
 
   prepare_kernel();
 
+  dry = (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
+
+  wet = (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
+
   connect(settings, &db::Convolver::irWidthChanged, [&]() {
     std::scoped_lock<std::mutex> lock(data_mutex);
 
@@ -121,6 +125,16 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   connect(settings, &db::Convolver::kernelNameChanged, [&]() { prepare_kernel(); });
 
   connect(settings, &db::Convolver::autogainChanged, [&]() { prepare_kernel(); });
+
+  connect(settings, &db::Convolver::dryChanged, [&]() {
+    dry =
+        (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
+  });
+
+  connect(settings, &db::Convolver::wetChanged, [&]() {
+    wet =
+        (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
+  });
 }
 
 Convolver::~Convolver() {
@@ -264,6 +278,12 @@ void Convolver::process(std::span<float>& left_in,
       buf_out_L.clear();
       buf_out_R.clear();
     }
+  }
+
+  for (size_t n = 0; n < left_out.size(); n++) {
+    left_out[n] = (wet * left_out[n]) + (dry * left_in[n]);
+
+    right_out[n] = (wet * right_out[n]) + (dry * right_in[n]);
   }
 
   if (output_gain != 1.0F) {

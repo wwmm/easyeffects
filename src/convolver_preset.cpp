@@ -20,6 +20,7 @@
 #include "convolver_preset.hpp"
 #include <QString>
 #include <filesystem>
+#include <format>
 #include <nlohmann/json_fwd.hpp>
 #include <string>
 #include "easyeffects_db_convolver.h"
@@ -45,6 +46,10 @@ void ConvolverPreset::save(nlohmann::json& json) {
   json[section][instance_name]["ir-width"] = settings->irWidth();
 
   json[section][instance_name]["autogain"] = settings->autogain();
+
+  json[section][instance_name]["dry"] = settings->dry();
+
+  json[section][instance_name]["wet"] = settings->wet();
 }
 
 void ConvolverPreset::load(const nlohmann::json& json) {
@@ -53,6 +58,8 @@ void ConvolverPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("output-gain", OutputGain);
   UPDATE_PROPERTY("ir-width", IrWidth);
   UPDATE_PROPERTY("autogain", Autogain);
+  UPDATE_PROPERTY("dry", Dry);
+  UPDATE_PROPERTY("wet", Wet);
 
   // kernel-path deprecation
   const auto* kernel_name_key = "kernel-name";

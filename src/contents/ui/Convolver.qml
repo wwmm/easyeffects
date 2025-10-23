@@ -304,7 +304,7 @@ Kirigami.ScrollablePage {
                     colorScheme: DB.Manager.spectrum.spectrumColorScheme
                     colorTheme: DB.Manager.spectrum.spectrumColorTheme
                     xUnit: "s"
-                    xAxisDecimals: 1
+                    xAxisDecimals: 2
                     logarithimicHorizontalAxis: false
                     onWidthChanged: {
                         if (convolverPage.pluginBackend)
@@ -364,36 +364,66 @@ Kirigami.ScrollablePage {
             }
         }
 
-        RowLayout {
-            Layout.alignment: Qt.AlignHCenter
-            Layout.maximumWidth: 0.5 * parent.width
+        Kirigami.CardsLayout {
+            id: cardLayout
+
+            maximumColumns: 3
+            uniformCellWidths: true
+
             Layout.topMargin: Kirigami.Units.mediumSpacing * 2
+            Layout.fillHeight: false
 
-            Controls.Label {
-                Layout.alignment: Qt.AlignHCenter
-                text: i18n("Stereo Width") // qmllint disable
-            }
-
-            Controls.Slider {
+            EeSpinBox {
                 id: irWidth
 
-                Layout.alignment: Qt.AlignHCenter
-                Layout.fillWidth: true
-                orientation: Qt.Horizontal
-                snapMode: Controls.Slider.SnapAlways
+                label: i18n("Stereo Width") // qmllint disable
+                labelAbove: true
+                spinboxLayoutFillWidth: true
                 value: convolverPage.pluginDB.irWidth
                 from: convolverPage.pluginDB.getMinValue("irWidth")
                 to: convolverPage.pluginDB.getMaxValue("irWidth")
-                stepSize: 1
-                onValueChanged: () => {
-                    if (value !== convolverPage.pluginDB.irWidth)
-                        convolverPage.pluginDB.irWidth = value;
+                decimals: 2
+                stepSize: 0.01
+                unit: "%"
+                onValueModified: v => {
+                    convolverPage.pluginDB.irWidth = value;
                 }
             }
 
-            Controls.Label {
-                Layout.alignment: Qt.AlignHCenter
-                text: irWidth.value + " %"
+            EeSpinBox {
+                id: dry
+
+                label: i18n("Dry") // qmllint disable
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: convolverPage.pluginDB.getMinValue("dry")
+                to: convolverPage.pluginDB.getMaxValue("dry")
+                value: convolverPage.pluginDB.dry
+                decimals: 2
+                stepSize: 0.01
+                unit: "dB"
+                minusInfinityMode: true
+                onValueModified: v => {
+                    convolverPage.pluginDB.dry = v;
+                }
+            }
+
+            EeSpinBox {
+                id: wet
+
+                label: i18n("Wet") // qmllint disable
+                labelAbove: true
+                spinboxLayoutFillWidth: true
+                from: convolverPage.pluginDB.getMinValue("wet")
+                to: convolverPage.pluginDB.getMaxValue("wet")
+                value: convolverPage.pluginDB.wet
+                decimals: 2
+                stepSize: 0.01
+                unit: "dB"
+                minusInfinityMode: true
+                onValueModified: v => {
+                    convolverPage.pluginDB.wet = v;
+                }
             }
         }
     }

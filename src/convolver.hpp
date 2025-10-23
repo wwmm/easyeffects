@@ -122,6 +122,8 @@ class Convolver : public PluginBase {
 
   int interpPoints = 1000;
 
+  float dry = 0.0F, wet = 1.0F;
+
   QString kernelRate;
   QString kernelSamples;
   QString kernelDuration;
