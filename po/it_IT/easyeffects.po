@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-22 20:08+0000\n"
-"PO-Revision-Date: 2025-10-22 05:02+0000\n"
+"PO-Revision-Date: 2025-10-23 10:02+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.14.1-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: src/command_line_parser.cpp:43
@@ -89,7 +89,7 @@ msgstr "Profili di Ingresso"
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
 msgid "About"
-msgstr ""
+msgstr "Informazioni"
 
 #: src/contents/ui/AboutPage.qml:10
 msgid "Audio effects for PipeWire applications"
