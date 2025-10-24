@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-22 20:08+0000\n"
-"PO-Revision-Date: 2025-10-21 16:05+0000\n"
+"PO-Revision-Date: 2025-10-24 00:02+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
 "(n>6 && n<11) ? 3 : 4;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.14.1-dev\n"
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -88,7 +88,7 @@ msgstr "Réamhshocruithe Ionchurtha"
 #: src/contents/ui/AboutPage.qml:4
 msgctxt "@action:button"
 msgid "About"
-msgstr ""
+msgstr "Maidir"
 
 #: src/contents/ui/AboutPage.qml:10
 msgid "Audio effects for PipeWire applications"
@@ -726,14 +726,12 @@ msgid "Autogain"
 msgstr "Uathghnóthachan"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a New Convolver Impluse File."
-msgstr "Iompórtáil Comhad Impulse"
+msgstr "Iompórtáladh Comhad Impluse Convolver Nua."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
-#, fuzzy
 msgid "Failed to Import the Convolver Impulse File."
-msgstr "Theip ar an gcomhad impulse a iompórtáil."
+msgstr "Theip ar an gcomhad Convolver Impulse a iompórtáil."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:142
@@ -744,7 +742,7 @@ msgstr "Cuardaigh"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:79
 msgid "Loaded the %1 Convolver Impulse."
-msgstr ""
+msgstr "Luchtaíodh an %1 Convolver Impulse."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:85
 msgid "Remove Impulse Response"
@@ -758,12 +756,11 @@ msgstr ""
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
 msgid "Removed the %1 Convolver Impulse."
-msgstr ""
+msgstr "Baineadh an %1 Impulse Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:92
-#, fuzzy
 msgid "Failed to Remove the %1 Convolver Impulse."
-msgstr "Theip ar an Impulse a Bhaint: %1"
+msgstr "Theip ar an Impulse Convolver %1 a Bhaint."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:106
 msgid "Delete this Impulse"
@@ -1043,23 +1040,20 @@ msgid "APO Presets"
 msgstr "Réamhshocruithe APO"
 
 #: src/contents/ui/Equalizer.qml:53
-#, fuzzy
 msgid "Imported the Equalizer APO Preset File."
-msgstr "Easpórtáil CothromóirAPO Preset File"
+msgstr "Iompórtáladh an Comhad Réamhshocraithe Cothromóra APO."
 
 #: src/contents/ui/Equalizer.qml:55
-#, fuzzy
 msgid "Failed to Import the Equalizer APO Preset File."
-msgstr "Theip ar an gcomhad réamhshocraithe APO a iompórtáil."
+msgstr "Theip ar chomhad réamhshocraithe an chothromóra APO a iompórtáil."
 
 #: src/contents/ui/Equalizer.qml:65
 msgid "GraphicEQ Presets"
 msgstr "Réamhshocruithe GrafachEQ"
 
 #: src/contents/ui/Equalizer.qml:68
-#, fuzzy
 msgid "Imported the GraphicEQ Preset File."
-msgstr "Theip ar an gcomhad réamhshocraithe GraphicEQ a iompórtáil."
+msgstr "Iompórtáladh an Comhad Réamhshocraithe GraphicEQ."
 
 #: src/contents/ui/Equalizer.qml:70
 msgid "Failed to Import the GraphicEQ Preset File."
@@ -1070,16 +1064,18 @@ msgid "APO Preset"
 msgstr "Réamhshocrú APO"
 
 #: src/contents/ui/Equalizer.qml:83
-#, fuzzy
 msgid "Exported the Current Equalizer Settings to an External APO Preset File."
-msgstr "Easpórtáil CothromóirAPO Preset File"
+msgstr ""
+"Rinneadh na Socruithe Cothromóra Reatha a easpórtáil chuig Comhad "
+"Réamhshocraithe APO Seachtrach."
 
 #: src/contents/ui/Equalizer.qml:86
-#, fuzzy
 msgid ""
 "Failed to Export the Current Equalizer Settings to an External APO Preset "
 "File."
-msgstr "Theip ar easpórtáil an chomhaid réamhshocraithe APO."
+msgstr ""
+"Theip ar Shocruithe Reatha an Chothromóra a Easpórtáil chuig Comhad "
+"Réamhshocraithe APO Seachtrach."
 
 #: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
@@ -1545,7 +1541,7 @@ msgstr "Bearradh"
 
 #: src/contents/ui/MenuAddPlugins.qml:131
 msgid "Added a New Effect to the Pipeline: %1"
-msgstr ""
+msgstr "Cuireadh Éifeacht Nua leis an bPíblíne: %1"
 
 #: src/contents/ui/MultibandCompressor.qml:111
 msgid "Compression Mode"
@@ -2104,16 +2100,16 @@ msgid "Copy to the Local List"
 msgstr "Cóipeáil chuig an Liosta Áitiúil"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
-#, fuzzy
 msgid "Imported the %1 Community Preset to the List of Local Presets."
 msgstr ""
-"Iompórtáil an réamhshocrú pobail seo isteach sa liosta réamhshocraithe "
-"logánta"
+"Iompórtáladh an Réamhshocrú Pobail %1 chuig an Liosta Réamhshocruithe "
+"Áitiúla."
 
 #: src/contents/ui/PresetsCommunityPage.qml:100
-#, fuzzy
 msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
-msgstr "Theip ar réamhshocrú an phobail a iompórtáil"
+msgstr ""
+"Theip ar réamhshocrú pobail %1 a iompórtáil chuig an liosta réamhshocruithe "
+"áitiúla."
 
 #: src/contents/ui/PresetsCommunityPage.qml:120
 msgid "Refresh"
@@ -2121,12 +2117,11 @@ msgstr "Athnuaigh"
 
 #: src/contents/ui/PresetsLocalPage.qml:35
 msgid "Imported a New Local Preset from an External File."
-msgstr ""
+msgstr "Iompórtáladh Réamhshocrú Áitiúil Nua ó Chomhad Seachtrach."
 
 #: src/contents/ui/PresetsLocalPage.qml:37
-#, fuzzy
 msgid "Failed to Import a New Local Preset from an External File."
-msgstr "Theip ar an gcomhad réamhshocraithe APO a iompórtáil."
+msgstr "Theip ar réamhshocrú áitiúil nua a iompórtáil ó chomhad seachtrach."
 
 #: src/contents/ui/PresetsLocalPage.qml:46
 #: src/contents/ui/PresetsLocalPage.qml:131
@@ -2135,12 +2130,11 @@ msgstr "Réamhshocruithe Easpórtála"
 
 #: src/contents/ui/PresetsLocalPage.qml:49
 msgid "Exported all Presets to an External Folder."
-msgstr ""
+msgstr "Onnmhairíodh na réamhshocruithe go léir chuig fillteán seachtrach."
 
 #: src/contents/ui/PresetsLocalPage.qml:51
-#, fuzzy
 msgid "Failed to Export All Presets to an External Folder."
-msgstr "Theip ar easpórtáil an chomhaid réamhshocraithe APO."
+msgstr "Theip ar gach réamhshocrú a easpórtáil chuig fillteán seachtrach."
 
 #: src/contents/ui/PresetsLocalPage.qml:63
 msgid "New Preset Name"
@@ -2155,14 +2149,12 @@ msgid "Create Preset"
 msgstr "Cruthaigh Réamhshocrú"
 
 #: src/contents/ui/PresetsLocalPage.qml:98
-#, fuzzy
 msgid "Created a New Local Preset: %1"
-msgstr "Cuardaigh Réamhshocrú Logánta"
+msgstr "Réamhshocrú Áitiúil Nua Cruthaithe: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:102
-#, fuzzy
 msgid "Failed to Create a New Local Preset: %1"
-msgstr "Theip ar Chruthú Réamhshocraithe"
+msgstr "Theip ar Réamhshocrú Áitiúil Nua a Chruthú: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
 msgid "Remove Preset"
@@ -2174,14 +2166,12 @@ msgstr ""
 "An bhfuil tú cinnte gur mian leat an réamhshocrú seo a bhaint den liosta?"
 
 #: src/contents/ui/PresetsLocalPage.qml:191
-#, fuzzy
 msgid "Removed the %1 Local Preset."
-msgstr "Bain an réamhshocrú uathluchtaithe seo"
+msgstr "Baineadh an réamhshocrú áitiúil %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:193
-#, fuzzy
 msgid "Failed to Remove the %1 Local Preset."
-msgstr "Theip ar an réamhshocrú a iompórtáil."
+msgstr "Theip ar an réamhshocrú áitiúil %1 a bhaint."
 
 #: src/contents/ui/PresetsLocalPage.qml:201
 msgid "Rename Preset"
@@ -2192,14 +2182,12 @@ msgid "Rename"
 msgstr "Athainmnigh"
 
 #: src/contents/ui/PresetsLocalPage.qml:215
-#, fuzzy
 msgid "Renamed the %1 Local Preset to %2"
-msgstr "Athainmnigh an Réamhshocrú seo"
+msgstr "Athainmníodh an Réamhshocrú Áitiúil %1 go %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:218
-#, fuzzy
 msgid "Failed to Rename the %1 Local Preset to %2"
-msgstr "Theip ar an Impulse a Bhaint: %1"
+msgstr "Theip ar athainmniú an réamhshocraithe áitiúil %1 go %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:226
 msgid "Cancel"
@@ -2210,14 +2198,12 @@ msgid "Save Settings to this Preset"
 msgstr "Sábháil Socruithe chuig an Réamhshocrú seo"
 
 #: src/contents/ui/PresetsLocalPage.qml:267
-#, fuzzy
 msgid "Saved the Current Settings to %1 Local Preset."
-msgstr "Ná sábháil na socruithe reatha agus luchtaigh an réamhshocrú seo"
+msgstr "Sábháladh na Socruithe Reatha go %1 Réamhshocrú Áitiúil."
 
 #: src/contents/ui/PresetsLocalPage.qml:269
-#, fuzzy
 msgid "Failed to Save the Current Settings to %1 Local Preset."
-msgstr "Theip ar Shocruithe a Shábháil chuig: %1"
+msgstr "Theip ar na Socruithe Reatha a Shábháil chuig %1 Réamhshocrú Áitiúil."
 
 #: src/contents/ui/PresetsLocalPage.qml:274
 msgid "Rename this Preset"
@@ -2248,14 +2234,12 @@ msgid "Fallback Preset"
 msgstr "Réamhshocrú Cúltaca"
 
 #: src/contents/ui/RNNoise.qml:43
-#, fuzzy
 msgid "Imported a New RNNoise Model File."
-msgstr "Múnla Caighdeánach RNNoise"
+msgstr "Iompórtáladh Comhad Múnla RNNoise Nua."
 
 #: src/contents/ui/RNNoise.qml:45
-#, fuzzy
 msgid "Failed to Import the RNNoise Model File."
-msgstr "Theip ar an gcomhad múnla a iompórtáil."
+msgstr "Theip ar iompórtáil an chomhaid mhúnla RNNoise."
 
 #: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
 #: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
@@ -2271,9 +2255,8 @@ msgid "Using %1 Model"
 msgstr "Ag baint úsáide as Múnla %1"
 
 #: src/contents/ui/RNNoise.qml:65
-#, fuzzy
 msgid "Loaded the %1 RNNoise Model."
-msgstr "Múnla Caighdeánach RNNoise"
+msgstr "Luchtaíodh an tSamhail %1 RNNoise."
 
 #: src/contents/ui/RNNoise.qml:69
 msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
@@ -2303,12 +2286,11 @@ msgstr "Scrios an tSamhail seo"
 
 #: src/contents/ui/RNNoise.qml:243
 msgid "Removed the %1 RNNoise Model."
-msgstr ""
+msgstr "Baineadh an tSamhail %1 RNNoise."
 
 #: src/contents/ui/RNNoise.qml:245
-#, fuzzy
 msgid "Failed to Remove the %1 RNNoise Model."
-msgstr "Theip ar an tSamhail a Bhaint: %1"
+msgstr "Theip ar an tSamhail RNNoise %1 a Bhaint."
 
 #: src/contents/ui/RNNoise.qml:313
 msgid "Import Model"
