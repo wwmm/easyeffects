@@ -561,17 +561,15 @@ void PluginBase::get_peaks(const std::span<float>& left_in,
   output_peak_right = util::linear_to_db(out_right_max);
 }
 
-void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, const float& gain) {
+void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, const float& gain) const {
   if (left.empty() || right.empty()) {
     return;
   }
 
-  const size_t size = std::min(left.size(), right.size());
-
   float* __restrict l_ptr = left.data();
   float* __restrict r_ptr = right.data();
 
-  for (size_t i = 0; i < size; i++) {
+  for (uint i = 0; i < n_samples; i++) {
     l_ptr[i] *= gain;
     r_ptr[i] *= gain;
   }

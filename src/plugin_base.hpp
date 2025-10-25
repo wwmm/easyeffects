@@ -188,7 +188,7 @@ class PluginBase : public QObject {
                  std::span<float>& left_out,
                  std::span<float>& right_out);
 
-  static void apply_gain(std::span<float>& left, std::span<float>& right, const float& gain);
+  void apply_gain(std::span<float>& left, std::span<float>& right, const float& gain) const;
 
   void update_filter_params();
 
