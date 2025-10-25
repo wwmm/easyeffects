@@ -43,7 +43,7 @@ Kirigami.ScrollablePage {
             id: cardLayout
 
             minimumColumnWidth: Kirigami.Units.gridUnit * 17
-            maximumColumns: 5
+            maximumColumns: 6
             uniformCellWidths: true
 
             Kirigami.Card {
@@ -69,11 +69,11 @@ Kirigami.ScrollablePage {
                             Layout.columnSpan: 2
                             text: i18n("Mode") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.mode
+                            currentIndex: compressorPage.pluginDB.mode
                             editable: false
-                            model: [i18n("Downward"), i18n("Upward"), i18n("Boosting")]
+                            model: [i18n("Downward"), i18n("Upward"), i18n("Boosting")] //qmllint disable
                             onActivated: idx => {
-                                pluginDB.mode = idx;
+                                compressorPage.pluginDB.mode = idx;
                             }
                         }
 
@@ -84,16 +84,16 @@ Kirigami.ScrollablePage {
                             label: i18n("Boost Threshold") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("boostThreshold")
-                            to: pluginDB.getMaxValue("boostThreshold")
-                            value: pluginDB.boostThreshold
+                            from: compressorPage.pluginDB.getMinValue("boostThreshold")
+                            to: compressorPage.pluginDB.getMaxValue("boostThreshold")
+                            value: compressorPage.pluginDB.boostThreshold
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             enabled: mode.currentIndex === 1
                             visible: mode.currentIndex === 1
                             onValueModified: v => {
-                                pluginDB.boostThreshold = v;
+                                compressorPage.pluginDB.boostThreshold = v;
                             }
                         }
 
@@ -104,16 +104,16 @@ Kirigami.ScrollablePage {
                             label: i18n("Boost Amount") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("boostAmount")
-                            to: pluginDB.getMaxValue("boostAmount")
-                            value: pluginDB.boostAmount
+                            from: compressorPage.pluginDB.getMinValue("boostAmount")
+                            to: compressorPage.pluginDB.getMaxValue("boostAmount")
+                            value: compressorPage.pluginDB.boostAmount
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             enabled: mode.currentIndex === 2
                             visible: mode.currentIndex === 2
                             onValueModified: v => {
-                                pluginDB.boostAmount = v;
+                                compressorPage.pluginDB.boostAmount = v;
                             }
                         }
 
@@ -123,13 +123,13 @@ Kirigami.ScrollablePage {
                             label: i18n("Ratio") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("ratio")
-                            to: pluginDB.getMaxValue("ratio")
-                            value: pluginDB.ratio
+                            from: compressorPage.pluginDB.getMinValue("ratio")
+                            to: compressorPage.pluginDB.getMaxValue("ratio")
+                            value: compressorPage.pluginDB.ratio
                             decimals: 0
                             stepSize: 1
                             onValueModified: v => {
-                                pluginDB.ratio = v;
+                                compressorPage.pluginDB.ratio = v;
                             }
                         }
 
@@ -139,14 +139,14 @@ Kirigami.ScrollablePage {
                             label: i18n("Knee") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("knee")
-                            to: pluginDB.getMaxValue("knee")
-                            value: pluginDB.knee
+                            from: compressorPage.pluginDB.getMinValue("knee")
+                            to: compressorPage.pluginDB.getMaxValue("knee")
+                            value: compressorPage.pluginDB.knee
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             onValueModified: v => {
-                                pluginDB.knee = v;
+                                compressorPage.pluginDB.knee = v;
                             }
                         }
                     }
@@ -176,14 +176,14 @@ Kirigami.ScrollablePage {
                             label: i18n("Attack") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("threshold")
-                            to: pluginDB.getMaxValue("threshold")
-                            value: pluginDB.threshold
+                            from: compressorPage.pluginDB.getMinValue("threshold")
+                            to: compressorPage.pluginDB.getMaxValue("threshold")
+                            value: compressorPage.pluginDB.threshold
                             decimals: 2
                             stepSize: 0.01
                             unit: "dB"
                             onValueModified: v => {
-                                pluginDB.threshold = v;
+                                compressorPage.pluginDB.threshold = v;
                             }
                         }
 
@@ -192,14 +192,14 @@ Kirigami.ScrollablePage {
 
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("attack")
-                            to: pluginDB.getMaxValue("attack")
-                            value: pluginDB.attack
+                            from: compressorPage.pluginDB.getMinValue("attack")
+                            to: compressorPage.pluginDB.getMaxValue("attack")
+                            value: compressorPage.pluginDB.attack
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
                             onValueModified: v => {
-                                pluginDB.attack = v;
+                                compressorPage.pluginDB.attack = v;
                             }
                         }
 
@@ -209,15 +209,15 @@ Kirigami.ScrollablePage {
                             label: i18n("Release") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("releaseThreshold")
-                            to: pluginDB.getMaxValue("releaseThreshold")
-                            value: pluginDB.releaseThreshold
+                            from: compressorPage.pluginDB.getMinValue("releaseThreshold")
+                            to: compressorPage.pluginDB.getMaxValue("releaseThreshold")
+                            value: compressorPage.pluginDB.releaseThreshold
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.releaseThreshold = v;
+                                compressorPage.pluginDB.releaseThreshold = v;
                             }
                         }
 
@@ -226,14 +226,14 @@ Kirigami.ScrollablePage {
 
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("release")
-                            to: pluginDB.getMaxValue("release")
-                            value: pluginDB.release
+                            from: compressorPage.pluginDB.getMinValue("release")
+                            to: compressorPage.pluginDB.getMaxValue("release")
+                            value: compressorPage.pluginDB.release
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
                             onValueModified: v => {
-                                pluginDB.release = v;
+                                compressorPage.pluginDB.release = v;
                             }
                         }
                     }
@@ -263,11 +263,11 @@ Kirigami.ScrollablePage {
                             Layout.columnSpan: 2
                             text: i18n("Type") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.sidechainType
+                            currentIndex: compressorPage.pluginDB.sidechainType
                             editable: false
-                            model: [i18n("Feed-forward"), i18n("Feed-back"), i18n("External"), i18n("Link")]
+                            model: [i18n("Feed-forward"), i18n("Feed-back"), i18n("External"), i18n("Link")] // qmllint disable
                             onActivated: idx => {
-                                pluginDB.sidechainType = idx;
+                                compressorPage.pluginDB.sidechainType = idx;
                             }
                         }
 
@@ -283,15 +283,15 @@ Kirigami.ScrollablePage {
                             enabled: sidechainType.currentIndex === 2
                             currentIndex: {
                                 for (let n = 0; n < PW.ModelNodes.rowCount(); n++) {
-                                    if (PW.ModelNodes.getNodeName(n) === pluginDB.sidechainInputDevice)
+                                    if (PW.ModelNodes.getNodeName(n) === compressorPage.pluginDB.sidechainInputDevice)
                                         return n;
                                 }
                                 return 0;
                             }
                             onActivated: idx => {
                                 let selectedName = PW.ModelNodes.getNodeName(idx);
-                                if (selectedName !== pluginDB.sidechainInputDevice)
-                                    pluginDB.sidechainInputDevice = selectedName;
+                                if (selectedName !== compressorPage.pluginDB.sidechainInputDevice)
+                                    compressorPage.pluginDB.sidechainInputDevice = selectedName;
                             }
                         }
 
@@ -300,11 +300,11 @@ Kirigami.ScrollablePage {
 
                             text: i18n("Mode") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.sidechainMode
+                            currentIndex: compressorPage.pluginDB.sidechainMode
                             editable: false
-                            model: [i18n("Peak"), i18n("RMS"), i18n("Low-Pass"), i18n("SMA")]
+                            model: [i18n("Peak"), i18n("RMS"), i18n("Low-Pass"), i18n("SMA")] // qmllint disable
                             onActivated: idx => {
-                                pluginDB.sidechainMode = idx;
+                                compressorPage.pluginDB.sidechainMode = idx;
                             }
                         }
 
@@ -313,12 +313,12 @@ Kirigami.ScrollablePage {
 
                             text: i18n("Source") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.sidechainSource
+                            currentIndex: compressorPage.pluginDB.sidechainSource
                             editable: false
-                            model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]
-                            visible: !pluginDB.stereoSplit
+                            model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]// qmllint disable
+                            visible: !compressorPage.pluginDB.stereoSplit
                             onActivated: idx => {
-                                pluginDB.sidechainSource = idx;
+                                compressorPage.pluginDB.sidechainSource = idx;
                             }
                         }
 
@@ -327,12 +327,12 @@ Kirigami.ScrollablePage {
 
                             text: i18n("Source") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.stereoSplitSource
+                            currentIndex: compressorPage.pluginDB.stereoSplitSource
                             editable: false
-                            model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]
-                            visible: pluginDB.stereoSplit
+                            model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]// qmllint disable
+                            visible: compressorPage.pluginDB.stereoSplit
                             onActivated: idx => {
-                                pluginDB.stereoSplitSource = idx;
+                                compressorPage.pluginDB.stereoSplitSource = idx;
                             }
                         }
                     }
@@ -362,15 +362,15 @@ Kirigami.ScrollablePage {
                             label: i18n("Preamp") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("sidechainPreamp")
-                            to: pluginDB.getMaxValue("sidechainPreamp")
-                            value: pluginDB.sidechainPreamp
+                            from: compressorPage.pluginDB.getMinValue("sidechainPreamp")
+                            to: compressorPage.pluginDB.getMaxValue("sidechainPreamp")
+                            value: compressorPage.pluginDB.sidechainPreamp
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
                             unit: "dB"
                             minusInfinityMode: true
                             onValueModified: v => {
-                                pluginDB.sidechainPreamp = v;
+                                compressorPage.pluginDB.sidechainPreamp = v;
                             }
                         }
 
@@ -380,14 +380,14 @@ Kirigami.ScrollablePage {
                             label: i18n("Reactivity") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("sidechainReactivity")
-                            to: pluginDB.getMaxValue("sidechainReactivity")
-                            value: pluginDB.sidechainReactivity
+                            from: compressorPage.pluginDB.getMinValue("sidechainReactivity")
+                            to: compressorPage.pluginDB.getMaxValue("sidechainReactivity")
+                            value: compressorPage.pluginDB.sidechainReactivity
                             decimals: 2
                             stepSize: 0.01
                             unit: "ms"
                             onValueModified: v => {
-                                pluginDB.sidechainReactivity = v;
+                                compressorPage.pluginDB.sidechainReactivity = v;
                             }
                         }
 
@@ -398,14 +398,14 @@ Kirigami.ScrollablePage {
                             label: i18n("Lookahead") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("sidechainLookahead")
-                            to: pluginDB.getMaxValue("sidechainLookahead")
-                            value: pluginDB.sidechainLookahead
+                            from: compressorPage.pluginDB.getMinValue("sidechainLookahead")
+                            to: compressorPage.pluginDB.getMaxValue("sidechainLookahead")
+                            value: compressorPage.pluginDB.sidechainLookahead
                             decimals: 3
                             stepSize: 0.001
                             unit: "ms"
                             onValueModified: v => {
-                                pluginDB.sidechainLookahead = v;
+                                compressorPage.pluginDB.sidechainLookahead = v;
                             }
                         }
 
@@ -416,11 +416,11 @@ Kirigami.ScrollablePage {
                             verticalPadding: 0
                             text: i18n("High-Pass") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.hpfMode
+                            currentIndex: compressorPage.pluginDB.hpfMode
                             editable: false
-                            model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")]
+                            model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")] // qmllint disable
                             onActivated: idx => {
-                                pluginDB.hpfMode = idx;
+                                compressorPage.pluginDB.hpfMode = idx;
                             }
                         }
 
@@ -431,11 +431,11 @@ Kirigami.ScrollablePage {
                             verticalPadding: 0
                             text: i18n("Low-Pass") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: pluginDB.lpfMode
+                            currentIndex: compressorPage.pluginDB.lpfMode
                             editable: false
-                            model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")]
+                            model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")]// qmllint disable
                             onActivated: idx => {
-                                pluginDB.lpfMode = idx;
+                                compressorPage.pluginDB.lpfMode = idx;
                             }
                         }
 
@@ -446,15 +446,15 @@ Kirigami.ScrollablePage {
                             verticalPadding: 0
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("hpfFrequency")
-                            to: pluginDB.getMaxValue("hpfFrequency")
-                            value: pluginDB.hpfFrequency
+                            from: compressorPage.pluginDB.getMinValue("hpfFrequency")
+                            to: compressorPage.pluginDB.getMaxValue("hpfFrequency")
+                            value: compressorPage.pluginDB.hpfFrequency
                             decimals: 0
                             stepSize: 1
                             unit: "Hz"
                             visible: hpfMode.currentIndex !== 0
                             onValueModified: v => {
-                                pluginDB.hpfFrequency = v;
+                                compressorPage.pluginDB.hpfFrequency = v;
                             }
                         }
 
@@ -468,15 +468,15 @@ Kirigami.ScrollablePage {
                             labelFillWidth: false
                             labelAbove: true
                             spinboxLayoutFillWidth: true
-                            from: pluginDB.getMinValue("lpfFrequency")
-                            to: pluginDB.getMaxValue("lpfFrequency")
-                            value: pluginDB.lpfFrequency
+                            from: compressorPage.pluginDB.getMinValue("lpfFrequency")
+                            to: compressorPage.pluginDB.getMaxValue("lpfFrequency")
+                            value: compressorPage.pluginDB.lpfFrequency
                             decimals: 0
                             stepSize: 1
                             unit: "Hz"
                             visible: lpfMode.currentIndex !== 0
                             onValueModified: v => {
-                                pluginDB.lpfFrequency = v;
+                                compressorPage.pluginDB.lpfFrequency = v;
                             }
                         }
                     }
@@ -497,15 +497,15 @@ Kirigami.ScrollablePage {
                         label: i18n("Dry") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("dry")
-                        to: pluginDB.getMaxValue("dry")
-                        value: pluginDB.dry
+                        from: compressorPage.pluginDB.getMinValue("dry")
+                        to: compressorPage.pluginDB.getMaxValue("dry")
+                        value: compressorPage.pluginDB.dry
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
                         unit: "dB"
                         minusInfinityMode: true
                         onValueModified: v => {
-                            pluginDB.dry = v;
+                            compressorPage.pluginDB.dry = v;
                         }
 
                         anchors {
@@ -520,15 +520,15 @@ Kirigami.ScrollablePage {
                         label: i18n("Wet") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("wet")
-                        to: pluginDB.getMaxValue("wet")
-                        value: pluginDB.wet
+                        from: compressorPage.pluginDB.getMinValue("wet")
+                        to: compressorPage.pluginDB.getMaxValue("wet")
+                        value: compressorPage.pluginDB.wet
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
                         unit: "dB"
                         minusInfinityMode: true
                         onValueModified: v => {
-                            pluginDB.wet = v;
+                            compressorPage.pluginDB.wet = v;
                         }
 
                         anchors {
@@ -544,19 +544,134 @@ Kirigami.ScrollablePage {
                         label: i18n("Makeup") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
-                        from: pluginDB.getMinValue("makeup")
-                        to: pluginDB.getMaxValue("makeup")
-                        value: pluginDB.makeup
+                        from: compressorPage.pluginDB.getMinValue("makeup")
+                        to: compressorPage.pluginDB.getMaxValue("makeup")
+                        value: compressorPage.pluginDB.makeup
                         decimals: 2
                         stepSize: 0.01
                         unit: "dB"
                         onValueModified: v => {
-                            pluginDB.makeup = v;
+                            compressorPage.pluginDB.makeup = v;
                         }
 
                         anchors {
                             left: parent.left
                             right: parent.right
+                        }
+                    }
+                }
+            }
+
+            Kirigami.Card {
+                header: Kirigami.Heading {
+                    text: i18n("Pre-Mix") // qmllint disable
+                    level: 2
+                }
+
+                contentItem: Column {
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Input to Sidechain") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: compressorPage.pluginDB.getMinValue("inputToSidechain")
+                            to: compressorPage.pluginDB.getMaxValue("inputToSidechain")
+                            value: compressorPage.pluginDB.inputToSidechain
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                compressorPage.pluginDB.inputToSidechain = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Input to Link") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: compressorPage.pluginDB.getMinValue("inputToLink")
+                            to: compressorPage.pluginDB.getMaxValue("inputToLink")
+                            value: compressorPage.pluginDB.inputToLink
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                compressorPage.pluginDB.inputToLink = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Sidechain to Input") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: compressorPage.pluginDB.getMinValue("sidechainToInput")
+                            to: compressorPage.pluginDB.getMaxValue("sidechainToInput")
+                            value: compressorPage.pluginDB.sidechainToInput
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                compressorPage.pluginDB.sidechainToInput = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Sidechain to Link") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: compressorPage.pluginDB.getMinValue("sidechainToLink")
+                            to: compressorPage.pluginDB.getMaxValue("sidechainToLink")
+                            value: compressorPage.pluginDB.sidechainToLink
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                compressorPage.pluginDB.sidechainToLink = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Link to Sidechain") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: compressorPage.pluginDB.getMinValue("linkToSidechain")
+                            to: compressorPage.pluginDB.getMaxValue("linkToSidechain")
+                            value: compressorPage.pluginDB.linkToSidechain
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                compressorPage.pluginDB.linkToSidechain = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Link to Input") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: compressorPage.pluginDB.getMinValue("linkToInput")
+                            to: compressorPage.pluginDB.getMaxValue("linkToInput")
+                            value: compressorPage.pluginDB.linkToInput
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                compressorPage.pluginDB.linkToInput = v;
+                            }
                         }
                     }
                 }
@@ -818,39 +933,39 @@ Kirigami.ScrollablePage {
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
-                    checked: pluginBackend ? pluginBackend.hasNativeUi() : false
+                    checked: compressorPage.pluginBackend ? compressorPage.pluginBackend.hasNativeUi() : false
                     onTriggered: {
                         if (checked)
-                            pluginBackend.showNativeUi();
+                            compressorPage.pluginBackend.showNativeUi();
                         else
-                            pluginBackend.closeNativeUi();
+                            compressorPage.pluginBackend.closeNativeUi();
                     }
                 },
                 Kirigami.Action {
                     text: i18n("Listen") // qmllint disable
                     icon.name: "audio-headset-symbolic"
                     checkable: true
-                    checked: pluginDB.sidechainListen
+                    checked: compressorPage.pluginDB.sidechainListen
                     onTriggered: {
-                        if (pluginDB.sidechainListen != checked)
-                            pluginDB.sidechainListen = checked;
+                        if (compressorPage.pluginDB.sidechainListen != checked)
+                            compressorPage.pluginDB.sidechainListen = checked;
                     }
                 },
                 Kirigami.Action {
                     text: i18n("Stereo Split") // qmllint disable
                     icon.name: "view-split-left-right-symbolic"
                     checkable: true
-                    checked: pluginDB.stereoSplit
+                    checked: compressorPage.pluginDB.stereoSplit
                     onTriggered: {
-                        if (pluginDB.stereoSplit != checked)
-                            pluginDB.stereoSplit = checked;
+                        if (compressorPage.pluginDB.stereoSplit != checked)
+                            compressorPage.pluginDB.stereoSplit = checked;
                     }
                 },
                 Kirigami.Action {
                     text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
-                        pluginBackend.reset();
+                        compressorPage.pluginBackend.reset();
                     }
                 }
             ]

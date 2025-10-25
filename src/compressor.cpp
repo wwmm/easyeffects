@@ -91,6 +91,12 @@ Compressor::Compressor(const std::string& tag, pw::Manager* pipe_manager, Pipeli
   BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Compressor::sidechainPreampChanged, true);
   BIND_LV2_PORT_DB("cdr", dry, setDry, db::Compressor::dryChanged, true);
   BIND_LV2_PORT_DB("cwt", wet, setWet, db::Compressor::wetChanged, true);
+  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, db::Compressor::inputToLinkChanged, true);
+  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, db::Compressor::inputToSidechainChanged, true);
+  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, db::Compressor::sidechainToInputChanged, true);
+  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, db::Compressor::sidechainToLinkChanged, true);
+  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, db::Compressor::linkToSidechainChanged, true);
+  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, db::Compressor::linkToInputChanged, true);
 }
 
 Compressor::~Compressor() {
