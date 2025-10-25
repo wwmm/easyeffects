@@ -42,8 +42,10 @@
 #include <algorithm>
 #include <array>
 #include <chrono>
+#include <cmath>
 #include <cstddef>
 #include <cstdint>
+#include <format>
 #include <span>
 #include <string>
 #include <thread>
@@ -541,19 +543,22 @@ void PluginBase::get_peaks(const std::span<float>& left_in,
                            const std::span<float>& right_in,
                            std::span<float>& left_out,
                            std::span<float>& right_out) {
-  auto abs_max = [](const std::span<float>& span) {
-    return std::ranges::max(span | std::views::transform([](float x) { return std::fabs(x); }));
-  };
+  float in_left_max = 0.0F;
+  float in_right_max = 0.0F;
+  float out_left_max = 0.0F;
+  float out_right_max = 0.0F;
 
-  // input level
+  for (size_t i = 0; i < n_samples; ++i) {
+    in_left_max = std::max(in_left_max, std::fabs(left_in[i]));
+    in_right_max = std::max(in_right_max, std::fabs(right_in[i]));
+    out_left_max = std::max(out_left_max, std::fabs(left_out[i]));
+    out_right_max = std::max(out_right_max, std::fabs(right_out[i]));
+  }
 
-  input_peak_left = util::linear_to_db(abs_max(left_in));
-  input_peak_right = util::linear_to_db(abs_max(right_in));
-
-  // output level
-
-  output_peak_left = util::linear_to_db(abs_max(left_out));
-  output_peak_right = util::linear_to_db(abs_max(right_out));
+  input_peak_left = util::linear_to_db(in_left_max);
+  input_peak_right = util::linear_to_db(in_right_max);
+  output_peak_left = util::linear_to_db(out_left_max);
+  output_peak_right = util::linear_to_db(out_right_max);
 }
 
 void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, const float& gain) {
