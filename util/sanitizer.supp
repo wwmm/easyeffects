@@ -1,4 +1,1 @@
-leak:libEGL_mesa*
-leak:libfontconfig*
-leak:libsigc*
-leak:libglib-2*
+leak:libQt6Gui.so

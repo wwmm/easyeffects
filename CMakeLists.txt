@@ -20,6 +20,7 @@ set(QT_QML_GENERATE_QMLLS_INI ON)
 option(ENABLE_RNNOISE "Whether to use RRNNoise for noise cancellation" ON)
 option(ENABLE_MOLD "Use the mold linker for speed, so mold must be installed. Option exists to allow easily enabling mold for Flatpak builds in GNOME Builder since CC_LD and CXX_LD cannot be reasonably used due to: https://gitlab.gnome.org/GNOME/gnome-builder/-/issues/1168" OFF)
 option(ENABLE_LIBCPP_WORKAROUNDS "Enabled Workarounds for systems that use libc++ instead of stdc++" OFF)
+option(ENABLE_SANATIZER "Enable the compiler's sanatizer" OFF)
 
 find_package(ECM REQUIRED NO_MODULE)
 

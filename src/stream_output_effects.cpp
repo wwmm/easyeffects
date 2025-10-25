@@ -152,6 +152,10 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
   }
 }
 
+StreamOutputEffects::~StreamOutputEffects() {
+  disconnect_filters();
+}
+
 auto StreamOutputEffects::apps_want_to_play() -> bool {
   return std::ranges::any_of(pm->get_links(), [&](const auto& link) {
     return (link.input_node_id == pm->ee_sink_node.id) && (link.state == PW_LINK_STATE_ACTIVE);

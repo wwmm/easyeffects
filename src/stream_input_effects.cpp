@@ -157,6 +157,10 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   set_listen_to_mic(db::StreamInputs::listenToMic());
 }
 
+StreamInputEffects::~StreamInputEffects() {
+  disconnect_filters();
+}
+
 auto StreamInputEffects::apps_want_to_play() -> bool {
   return std::ranges::any_of(pm->get_links(), [&](const auto& link) {
     return (link.output_node_id == pm->ee_source_node.id) && (link.state == PW_LINK_STATE_ACTIVE);

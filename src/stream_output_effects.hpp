@@ -31,7 +31,7 @@ class StreamOutputEffects : public EffectsBase {
   auto operator=(const StreamOutputEffects&) -> StreamOutputEffects& = delete;
   StreamOutputEffects(const StreamOutputEffects&&) = delete;
   auto operator=(const StreamOutputEffects&&) -> StreamOutputEffects& = delete;
-  ~StreamOutputEffects() override = default;
+  ~StreamOutputEffects() override;
 
   void set_bypass(const bool& state);
 

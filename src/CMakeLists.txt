@@ -212,6 +212,12 @@ target_link_libraries(easyeffects PRIVATE
 target_compile_definitions(easyeffects PRIVATE QT_NO_KEYWORDS=1)
 # target_compile_definitions(easyeffects PRIVATE QT_NO_KEYWORDS=1 QT_QML_DEBUG=1)
 
+if(ENABLE_SANATIZER)
+    MESSAGE(STATUS "Enabling the compiler's sanatizer")
+    target_compile_options(easyeffects PRIVATE "-fsanitize=address")
+    target_link_options(easyeffects PRIVATE "-fsanitize=address")
+endif(ENABLE_SANATIZER)
+
 if(ENABLE_MOLD)
     MESSAGE(STATUS "Enabling mold")
     target_compile_definitions(easyeffects PRIVATE ENABLE_MOLD=1)
