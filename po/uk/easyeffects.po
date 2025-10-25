@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-22 20:08+0000\n"
+"POT-Creation-Date: 2025-10-25 23:41+0000\n"
 "PO-Revision-Date: 2025-10-23 10:02+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -16,9 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural="
-"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
-"1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.14.1-dev\n"
 
 #: src/command_line_parser.cpp:43
@@ -77,24 +76,24 @@ msgstr "Увімкнути налагоджувальні повідомленн
 msgid "Must specify preset type: input/output."
 msgstr "Потрібно вказати тип попереднього налаштування: вхід/вихід."
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:305
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:308
 msgid "Output Presets"
 msgstr "Попередні налаштування для виходу"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:295
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:298
 msgid "Input Presets"
 msgstr "Попередні налаштування для входу"
 
-#: src/contents/ui/AboutPage.qml:4
+#: src/contents/ui/AboutPage.qml:9
 msgctxt "@action:button"
 msgid "About"
 msgstr "Про нас"
 
-#: src/contents/ui/AboutPage.qml:10
+#: src/contents/ui/AboutPage.qml:14
 msgid "Audio effects for PipeWire applications"
 msgstr "Аудіоефекти для застосунків PipeWire"
 
-#: src/contents/ui/AboutPage.qml:23
+#: src/contents/ui/AboutPage.qml:27
 msgctxt "@info:credit"
 msgid "Developer"
 msgstr "Розробник"
@@ -174,8 +173,8 @@ msgid "Output Gain"
 msgstr "Вихідне підсилення"
 
 #: src/contents/ui/Autogain.qml:277 src/contents/ui/BassEnhancer.qml:191
-#: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:801
-#: src/contents/ui/Convolver.qml:409 src/contents/ui/Crossfeed.qml:134
+#: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:916
+#: src/contents/ui/Convolver.qml:439 src/contents/ui/Crossfeed.qml:134
 #: src/contents/ui/Crystalizer.qml:90 src/contents/ui/DeepFilterNet.qml:168
 #: src/contents/ui/Deesser.qml:310 src/contents/ui/Delay.qml:365
 #: src/contents/ui/EchoCanceller.qml:152 src/contents/ui/Equalizer.qml:265
@@ -242,7 +241,7 @@ msgstr "Обмеження"
 msgid "Floor"
 msgstr "Частота обмеження"
 
-#: src/contents/ui/BassEnhancer.qml:207 src/contents/ui/Compressor.qml:817
+#: src/contents/ui/BassEnhancer.qml:207 src/contents/ui/Compressor.qml:932
 #: src/contents/ui/Deesser.qml:326 src/contents/ui/Delay.qml:401
 #: src/contents/ui/Equalizer.qml:281 src/contents/ui/Exciter.qml:207
 #: src/contents/ui/Expander.qml:775 src/contents/ui/Filter.qml:215
@@ -254,14 +253,14 @@ msgstr "Частота обмеження"
 msgid "Show Native Window"
 msgstr "Показати рідне вікно"
 
-#: src/contents/ui/BassEnhancer.qml:220 src/contents/ui/Compressor.qml:830
+#: src/contents/ui/BassEnhancer.qml:220 src/contents/ui/Compressor.qml:945
 #: src/contents/ui/Deesser.qml:339 src/contents/ui/Exciter.qml:220
 #: src/contents/ui/Expander.qml:788 src/contents/ui/Gate.qml:924
 msgid "Listen"
 msgstr "Слухати"
 
 #: src/contents/ui/BassEnhancer.qml:230 src/contents/ui/BassLoudness.qml:120
-#: src/contents/ui/Compressor.qml:850 src/contents/ui/Convolver.qml:435
+#: src/contents/ui/Compressor.qml:965 src/contents/ui/Convolver.qml:465
 #: src/contents/ui/Crossfeed.qml:158 src/contents/ui/Crystalizer.qml:116
 #: src/contents/ui/DeepFilterNet.qml:191 src/contents/ui/Deesser.qml:349
 #: src/contents/ui/Delay.qml:414 src/contents/ui/EchoCanceller.qml:178
@@ -273,14 +272,14 @@ msgstr "Слухати"
 #: src/contents/ui/MultibandCompressor.qml:989
 #: src/contents/ui/MultibandGate.qml:957 src/contents/ui/RNNoise.qml:320
 #: src/contents/ui/Reverb.qml:346 src/contents/ui/Speex.qml:182
-#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:485
+#: src/contents/ui/StereoTools.qml:461 src/contents/ui/main.qml:488
 msgid "Reset"
 msgstr "Скинути"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:489
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:449
 #: src/contents/ui/Gate.qml:473 src/contents/ui/StereoTools.qml:303
-#: src/contents/ui/main.qml:419
+#: src/contents/ui/main.qml:422
 msgid "Output"
 msgstr "Вихід"
 
@@ -398,7 +397,7 @@ msgid "Release"
 msgstr "Відновлення"
 
 #: src/contents/ui/Compressor.qml:246 src/contents/ui/Compressor.qml:345
-#: src/contents/ui/Compressor.qml:597 src/contents/ui/Expander.qml:206
+#: src/contents/ui/Compressor.qml:712 src/contents/ui/Expander.qml:206
 #: src/contents/ui/Expander.qml:305 src/contents/ui/Expander.qml:557
 #: src/contents/ui/Gate.qml:230 src/contents/ui/Gate.qml:329
 #: src/contents/ui/Gate.qml:582 src/contents/ui/Limiter.qml:204
@@ -595,17 +594,19 @@ msgstr "24 дБ/окт"
 msgid "36 dB/oct"
 msgstr "36 дБ/окт"
 
-#: src/contents/ui/Compressor.qml:497 src/contents/ui/Delay.qml:161
-#: src/contents/ui/Delay.qml:319 src/contents/ui/Expander.qml:457
-#: src/contents/ui/Gate.qml:481 src/contents/ui/MultibandCompressor.qml:606
+#: src/contents/ui/Compressor.qml:497 src/contents/ui/Convolver.qml:396
+#: src/contents/ui/Delay.qml:161 src/contents/ui/Delay.qml:319
+#: src/contents/ui/Expander.qml:457 src/contents/ui/Gate.qml:481
+#: src/contents/ui/MultibandCompressor.qml:606
 #: src/contents/ui/MultibandGate.qml:574 src/contents/ui/Reverb.qml:180
 #: src/contents/ui/StereoTools.qml:386
 msgid "Dry"
 msgstr "Необроблений"
 
-#: src/contents/ui/Compressor.qml:520 src/contents/ui/Delay.qml:179
-#: src/contents/ui/Delay.qml:337 src/contents/ui/Expander.qml:480
-#: src/contents/ui/Gate.qml:504 src/contents/ui/MultibandCompressor.qml:624
+#: src/contents/ui/Compressor.qml:520 src/contents/ui/Convolver.qml:414
+#: src/contents/ui/Delay.qml:179 src/contents/ui/Delay.qml:337
+#: src/contents/ui/Expander.qml:480 src/contents/ui/Gate.qml:504
+#: src/contents/ui/MultibandCompressor.qml:624
 #: src/contents/ui/MultibandGate.qml:592 src/contents/ui/Reverb.qml:198
 #: src/contents/ui/StereoTools.qml:404
 msgid "Wet"
@@ -618,15 +619,43 @@ msgstr "Стиснений"
 msgid "Makeup"
 msgstr "Компенсація"
 
-#: src/contents/ui/Compressor.qml:588 src/contents/ui/Expander.qml:548
+#: src/contents/ui/Compressor.qml:567 src/contents/ui/Limiter.qml:300
+msgid "Pre-Mix"
+msgstr "Попереднє змішування"
+
+#: src/contents/ui/Compressor.qml:582 src/contents/ui/Limiter.qml:315
+msgid "Input to Sidechain"
+msgstr "Вхід до сайдчейна"
+
+#: src/contents/ui/Compressor.qml:598 src/contents/ui/Limiter.qml:331
+msgid "Input to Link"
+msgstr "Вхід для посилання"
+
+#: src/contents/ui/Compressor.qml:614 src/contents/ui/Limiter.qml:347
+msgid "Sidechain to Input"
+msgstr "Сайдчейн до входу"
+
+#: src/contents/ui/Compressor.qml:630 src/contents/ui/Limiter.qml:363
+msgid "Sidechain to Link"
+msgstr "Сайдчейн для посилання"
+
+#: src/contents/ui/Compressor.qml:646 src/contents/ui/Limiter.qml:379
+msgid "Link to Sidechain"
+msgstr "Посилання на сайдчейн"
+
+#: src/contents/ui/Compressor.qml:662 src/contents/ui/Limiter.qml:395
+msgid "Link to Input"
+msgstr "Посилання на вхідні дані"
+
+#: src/contents/ui/Compressor.qml:703 src/contents/ui/Expander.qml:548
 #: src/contents/ui/Gate.qml:108 src/contents/ui/Gate.qml:573
 #: src/contents/ui/Maximizer.qml:82 src/contents/ui/MultibandCompressor.qml:727
 #: src/contents/ui/MultibandGate.qml:221 src/contents/ui/MultibandGate.qml:695
 msgid "Reduction"
 msgstr "Зменшення"
 
-#: src/contents/ui/Compressor.qml:658 src/contents/ui/Compressor.qml:671
-#: src/contents/ui/Compressor.qml:767 src/contents/ui/Compressor.qml:780
+#: src/contents/ui/Compressor.qml:773 src/contents/ui/Compressor.qml:786
+#: src/contents/ui/Compressor.qml:882 src/contents/ui/Compressor.qml:895
 #: src/contents/ui/Expander.qml:616 src/contents/ui/Expander.qml:629
 #: src/contents/ui/Expander.qml:725 src/contents/ui/Expander.qml:738
 #: src/contents/ui/Gate.qml:643 src/contents/ui/Gate.qml:656
@@ -640,8 +669,8 @@ msgstr "Зменшення"
 msgid "L"
 msgstr "Л"
 
-#: src/contents/ui/Compressor.qml:664 src/contents/ui/Compressor.qml:677
-#: src/contents/ui/Compressor.qml:773 src/contents/ui/Compressor.qml:786
+#: src/contents/ui/Compressor.qml:779 src/contents/ui/Compressor.qml:792
+#: src/contents/ui/Compressor.qml:888 src/contents/ui/Compressor.qml:901
 #: src/contents/ui/Expander.qml:622 src/contents/ui/Expander.qml:635
 #: src/contents/ui/Expander.qml:731 src/contents/ui/Expander.qml:744
 #: src/contents/ui/Gate.qml:649 src/contents/ui/Gate.qml:662
@@ -655,19 +684,19 @@ msgstr "Л"
 msgid "R"
 msgstr "П"
 
-#: src/contents/ui/Compressor.qml:699 src/contents/ui/Expander.qml:657
+#: src/contents/ui/Compressor.qml:814 src/contents/ui/Expander.qml:657
 #: src/contents/ui/Gate.qml:684 src/contents/ui/MultibandCompressor.qml:847
 #: src/contents/ui/MultibandGate.qml:266 src/contents/ui/MultibandGate.qml:815
 msgid "Curve"
 msgstr "Крива"
 
-#: src/contents/ui/Compressor.qml:708 src/contents/ui/Expander.qml:666
+#: src/contents/ui/Compressor.qml:823 src/contents/ui/Expander.qml:666
 #: src/contents/ui/Gate.qml:693 src/contents/ui/MultibandCompressor.qml:788
 #: src/contents/ui/MultibandGate.qml:756
 msgid "Envelope"
 msgstr "Огинаюча"
 
-#: src/contents/ui/Compressor.qml:840 src/contents/ui/Expander.qml:798
+#: src/contents/ui/Compressor.qml:955 src/contents/ui/Expander.qml:798
 #: src/contents/ui/Gate.qml:934 src/contents/ui/MultibandCompressor.qml:979
 #: src/contents/ui/MultibandGate.qml:947
 msgid "Stereo Split"
@@ -689,7 +718,7 @@ msgstr "Об'єднати"
 msgid "Impulses"
 msgstr "Імпульси"
 
-#: src/contents/ui/Convolver.qml:188 src/plugin_base.cpp:282
+#: src/contents/ui/Convolver.qml:188 src/plugin_base.cpp:284
 msgid "Spectrum"
 msgstr "Спектр"
 
@@ -715,11 +744,11 @@ msgstr "Зразки"
 msgid "Duration"
 msgstr "Тривалість"
 
-#: src/contents/ui/Convolver.qml:374
+#: src/contents/ui/Convolver.qml:379
 msgid "Stereo Width"
 msgstr "Ширина стерео"
 
-#: src/contents/ui/Convolver.qml:425 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:455 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "Автоматичне підсилення"
 
@@ -783,7 +812,7 @@ msgid "Default"
 msgstr "За замовчуванням"
 
 #: src/contents/ui/Crossfeed.qml:150 src/contents/ui/Reverb.qml:325
-#: src/contents/ui/main.qml:383
+#: src/contents/ui/main.qml:386
 msgid "Presets"
 msgstr "Попередні налаштування"
 
@@ -1027,7 +1056,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Регулятори підсилення на вході та виході з індикаторами рівня"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:42
-#: src/contents/ui/main.qml:430
+#: src/contents/ui/main.qml:433
 msgid "Input"
 msgstr "Вхід"
 
@@ -1463,34 +1492,6 @@ msgstr "Обмежувач"
 msgid "Stereo Link"
 msgstr "Стереозв'язок"
 
-#: src/contents/ui/Limiter.qml:300
-msgid "Pre-Mix"
-msgstr "Попереднє змішування"
-
-#: src/contents/ui/Limiter.qml:315
-msgid "Input to Sidechain"
-msgstr "Вхід до сайдчейна"
-
-#: src/contents/ui/Limiter.qml:331
-msgid "Input to Link"
-msgstr "Вхід для посилання"
-
-#: src/contents/ui/Limiter.qml:347
-msgid "Sidechain to Input"
-msgstr "Сайдчейн до входу"
-
-#: src/contents/ui/Limiter.qml:363
-msgid "Sidechain to Link"
-msgstr "Сайдчейн для посилання"
-
-#: src/contents/ui/Limiter.qml:379
-msgid "Link to Sidechain"
-msgstr "Посилання на сайдчейн"
-
-#: src/contents/ui/Limiter.qml:395
-msgid "Link to Input"
-msgstr "Посилання на вхідні дані"
-
 #: src/contents/ui/Limiter.qml:419 src/contents/ui/Limiter.qml:654
 msgid "Automatic Level"
 msgstr "Автоматичний рівень"
@@ -1822,7 +1823,7 @@ msgstr "Згладжування"
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
 #: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:457
+#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:460
 msgid "Preferences"
 msgstr "Параметри"
 
@@ -2401,8 +2402,8 @@ msgstr "Можна використовувати з числовими елем
 msgid "Toggle Microphone Monitoring"
 msgstr "Увімкнути/вимкнути моніторинг мікрофона"
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:342
-#: src/contents/ui/main.qml:465
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:345
+#: src/contents/ui/main.qml:468
 msgid "Shortcuts"
 msgstr "Скорочення"
 
@@ -2502,43 +2503,43 @@ msgstr "Скинути налаштування?"
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Ви впевнені, що хочете скинути всі налаштування Easy Effects?"
 
-#: src/contents/ui/main.qml:269 src/contents/ui/main.qml:286
+#: src/contents/ui/main.qml:272 src/contents/ui/main.qml:289
 msgid "Preset Loaded"
 msgstr "Пресет застосовано"
 
-#: src/contents/ui/main.qml:331
+#: src/contents/ui/main.qml:334
 msgid "Active"
 msgstr "Активний"
 
-#: src/contents/ui/main.qml:351 src/contents/ui/main.qml:473
+#: src/contents/ui/main.qml:354 src/contents/ui/main.qml:476
 msgid "Manual"
 msgstr "Довідка"
 
-#: src/contents/ui/main.qml:361 src/contents/ui/main.qml:505
+#: src/contents/ui/main.qml:364 src/contents/ui/main.qml:508
 msgid "Quit"
 msgstr "Вийти"
 
-#: src/contents/ui/main.qml:391
+#: src/contents/ui/main.qml:394
 msgid "Turn Effects On/Off"
 msgstr "Увімкнення/вимкнення ефектів"
 
-#: src/contents/ui/main.qml:441
+#: src/contents/ui/main.qml:444
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:497
+#: src/contents/ui/main.qml:500
 msgid "About Easy Effects"
 msgstr "Про Easy Effects"
 
-#: src/plugin_base.cpp:270
+#: src/plugin_base.cpp:272
 msgid "(Mic)"
 msgstr "(Мікрофон)"
 
-#: src/plugin_base.cpp:273
+#: src/plugin_base.cpp:275
 msgid "(Speakers)"
 msgstr "(Колонки)"
 
-#: src/plugin_base.cpp:280
+#: src/plugin_base.cpp:282
 msgid "Output Level Meter"
 msgstr "Вимірювач рівня вихідного сигналу"
 
