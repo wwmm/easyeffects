@@ -138,6 +138,9 @@ void Crystalizer::setup() {
 
   block_time = static_cast<float>(n_samples) / static_cast<float>(rate);
 
+  attack_coeff = std::exp(-block_time / attack_time);
+  release_coeff = std::exp(-block_time / release_time);
+
   /**
    * As zita uses fftw we have to be careful when reinitializing it.
    * The thread that creates the fftw plan has to be the same that destroys it.
@@ -351,11 +354,9 @@ void Crystalizer::compute_buffer_crest(float* data, const bool& isLeft) {
 
   auto& env_crest = isLeft ? buffer_crest_L : buffer_crest_R;
 
-  auto tau_crest = (crest > env_crest) ? attack_time : release_time;
+  float alpha = (crest > env_crest) ? attack_coeff : release_coeff;
 
-  float alpha_crest = std::exp(-block_time / tau_crest);
-
-  env_crest = (alpha_crest * env_crest) + ((1.0F - alpha_crest) * crest);
+  env_crest = (alpha * env_crest) + ((1.0F - alpha) * crest);
 }
 
 void Crystalizer::compute_buffer_kurtosis(float* data, const bool& isLeft) {
@@ -363,9 +364,7 @@ void Crystalizer::compute_buffer_kurtosis(float* data, const bool& isLeft) {
 
   auto& env_kurtosis = isLeft ? buffer_kurtosis_L : buffer_kurtosis_R;
 
-  auto tau = (kurtosis > env_kurtosis) ? attack_time : release_time;
-
-  float alpha = std::exp(-block_time / tau);
+  float alpha = (kurtosis > env_kurtosis) ? attack_coeff : release_coeff;
 
   env_kurtosis = (alpha * env_kurtosis) + ((1.0F - alpha) * kurtosis);
 }
@@ -380,9 +379,7 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   auto& env_kurtosis = isLeft ? env_kurtosis_L[band_index] : env_kurtosis_R[band_index];
 
-  auto tau = (kurtosis > env_kurtosis) ? attack_time : release_time;
-
-  float alpha = std::exp(-block_time / tau);
+  float alpha = (kurtosis > env_kurtosis) ? attack_coeff : release_coeff;
 
   env_kurtosis = (alpha * env_kurtosis) + ((1.0F - alpha) * kurtosis);
 
@@ -394,9 +391,7 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   auto& env_crest = isLeft ? env_crest_L[band_index] : env_crest_R[band_index];
 
-  auto tau_crest = (crest > env_crest) ? attack_time : release_time;
-
-  float alpha_crest = std::exp(-block_time / tau_crest);
+  float alpha_crest = (crest > env_crest) ? attack_coeff : release_coeff;
 
   env_crest = (alpha_crest * env_crest) + ((1.0F - alpha_crest) * crest);
 

@@ -126,6 +126,9 @@ void Autogain::setup() {
   if (rate != old_rate) {
     block_time = static_cast<double>(n_samples) / static_cast<double>(rate);
 
+    attack_coeff = std::exp(-block_time / attack_time);
+    release_coeff = std::exp(-block_time / release_time);
+
     data_mutex.lock();
 
     ebur128_ready = false;
@@ -169,26 +172,28 @@ void Autogain::process(std::span<float>& left_in,
     apply_gain(left_in, right_in, input_gain);
   }
 
-  for (size_t n = 0U; n < n_samples; n++) {
-    data[2U * n] = left_in[n];
-    data[(2U * n) + 1U] = right_in[n];
+  {
+    const float* __restrict__ l = left_in.data();
+    const float* __restrict__ r = right_in.data();
+    float* __restrict__ d = data.data();
+
+    for (size_t i = 0; i < n_samples; ++i) {
+      const size_t idx = i * 2;
+
+      d[idx] = l[i];
+      d[idx + 1] = r[i];
+    }
   }
 
   ebur128_add_frames_float(ebur_state, data.data(), n_samples);
 
   auto failed = false;
 
-  if (EBUR128_SUCCESS != ebur128_loudness_momentary(ebur_state, &momentary)) {
-    failed = true;
-  }
-
-  if (EBUR128_SUCCESS != ebur128_loudness_shortterm(ebur_state, &shortterm)) {
-    failed = true;
-  }
-
-  if (EBUR128_SUCCESS != ebur128_loudness_global(ebur_state, &global)) {
-    failed = true;
-  }
+  failed = (EBUR128_SUCCESS != ebur128_loudness_momentary(ebur_state, &momentary)) ||
+           (EBUR128_SUCCESS != ebur128_loudness_shortterm(ebur_state, &shortterm)) ||
+           (EBUR128_SUCCESS != ebur128_loudness_global(ebur_state, &global)) ||
+           (EBUR128_SUCCESS != ebur128_relative_threshold(ebur_state, &relative)) ||
+           (EBUR128_SUCCESS != ebur128_loudness_range(ebur_state, &range));
 
   if (std::isinf(momentary) || std::isnan(momentary)) {
     /**
@@ -224,14 +229,6 @@ void Autogain::process(std::span<float>& left_in,
     global = momentary;
   }
 
-  if (EBUR128_SUCCESS != ebur128_relative_threshold(ebur_state, &relative)) {
-    failed = true;
-  }
-
-  if (EBUR128_SUCCESS != ebur128_loudness_range(ebur_state, &range)) {
-    failed = true;
-  }
-
   if (momentary > settings->silenceThreshold() && !failed) {
     double peak_L = 0.0;
     double peak_R = 0.0;
@@ -245,32 +242,48 @@ void Autogain::process(std::span<float>& left_in,
     }
 
     if (!failed) {
-      if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Momentary") {
-        loudness = momentary;
-      } else if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Shortterm") {
-        loudness = shortterm;
-      } else if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Integrated") {
-        loudness = global;
-      } else if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Geometric Mean (MSI)") {
-        loudness = std::cbrt(momentary * shortterm * global);
-      } else if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Geometric Mean (MS)") {
-        loudness = std::sqrt(std::fabs(momentary * shortterm));
+      switch (settings->reference()) {
+        case 0:  // momentary
+          loudness = momentary;
+          break;
+        case 1:  // shortterm
+          loudness = shortterm;
+          break;
+        case 2:  // integrated
+          loudness = global;
+          break;
+        case 3:  // Geometric Mean (MSI)
+          loudness = std::cbrt(momentary * shortterm * global);
+          break;
+        case 4: {  // Geometric Mean (MSI)
+          loudness = std::sqrt(std::fabs(momentary * shortterm));
 
-        if (momentary < 0 && shortterm < 0) {
-          loudness *= -1;
-        }
-      } else if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Geometric Mean (MI)") {
-        loudness = std::sqrt(std::fabs(momentary * global));
+          if (momentary < 0 && shortterm < 0) {
+            loudness *= -1;
+          }
 
-        if (momentary < 0 && global < 0) {
-          loudness *= -1;
+          break;
         }
-      } else if (settings->defaultReferenceLabelsValue()[settings->reference()] == "Geometric Mean (SI)") {
-        loudness = std::sqrt(std::fabs(shortterm * global));
+        case 5: {  // Geometric Mean (MS)
+          loudness = std::sqrt(std::fabs(momentary * global));
 
-        if (shortterm < 0 && global < 0) {
-          loudness *= -1;
+          if (momentary < 0 && global < 0) {
+            loudness *= -1;
+          }
+
+          break;
         }
+        case 6: {  // Geometric Mean (SI)
+          loudness = std::sqrt(std::fabs(shortterm * global));
+
+          if (shortterm < 0 && global < 0) {
+            loudness *= -1;
+          }
+
+          break;
+        }
+        default:
+          break;
       }
 
       const double diff = settings->target() - loudness;
@@ -287,10 +300,8 @@ void Autogain::process(std::span<float>& left_in,
           // Smoothing the gain correction through a leaky integrator:
           // g[n]=α⋅g[n−1]+(1−α)⋅gtarget​[n]
 
-          // choose tau based on whether gain is rising or falling
-          double tau = (gain < prev_gain) ? attack_time : release_time;
-
-          double alpha = std::exp(-block_time / tau);
+          // choose based on whether gain is rising or falling
+          double alpha = (gain < prev_gain) ? attack_coeff : release_coeff;
 
           internal_output_gain = (alpha * prev_gain) + ((1.0 - alpha) * gain);
 
@@ -305,8 +316,10 @@ void Autogain::process(std::span<float>& left_in,
   std::ranges::copy(left_in, left_out.begin());
   std::ranges::copy(right_in, right_out.begin());
 
-  if (internal_output_gain != 1.0F || output_gain != 1.0F) {
-    apply_gain(left_out, right_out, static_cast<float>(internal_output_gain) * output_gain);
+  const float final_gain = static_cast<float>(internal_output_gain) * output_gain;
+
+  if (final_gain != 1.0F) {
+    apply_gain(left_out, right_out, final_gain);
   }
 
   if (updateLevelMeters) {

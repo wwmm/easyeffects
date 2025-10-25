@@ -88,6 +88,8 @@ class Crystalizer : public PluginBase {
   float block_time = 0.0;
   float attack_time = 0.4;   // seconds
   float release_time = 3.0;  // seconds
+  float attack_coeff = 1.0F;
+  float release_coeff = 1.0F;
 
   float buffer_crest_L = 1.0F;
   float buffer_crest_R = 1.0F;

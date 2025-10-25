@@ -93,6 +93,8 @@ class Autogain : public PluginBase {
   double block_time = 0.0;
   double attack_time = 0.1;   // seconds
   double release_time = 0.4;  // seconds
+  double attack_coeff = 1.0F;
+  double release_coeff = 1.0F;
 
   std::vector<float> data;
 
