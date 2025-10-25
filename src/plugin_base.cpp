@@ -541,15 +541,19 @@ void PluginBase::get_peaks(const std::span<float>& left_in,
                            const std::span<float>& right_in,
                            std::span<float>& left_out,
                            std::span<float>& right_out) {
+  auto abs_max = [](const std::span<float>& span) {
+    return std::ranges::max(span | std::views::transform([](float x) { return std::fabs(x); }));
+  };
+
   // input level
 
-  input_peak_left = util::linear_to_db(std::ranges::max(left_in));
-  input_peak_right = util::linear_to_db(std::ranges::max(right_in));
+  input_peak_left = util::linear_to_db(abs_max(left_in));
+  input_peak_right = util::linear_to_db(abs_max(right_in));
 
   // output level
 
-  output_peak_left = util::linear_to_db(std::ranges::max(left_out));
-  output_peak_right = util::linear_to_db(std::ranges::max(right_out));
+  output_peak_left = util::linear_to_db(abs_max(left_out));
+  output_peak_right = util::linear_to_db(abs_max(right_out));
 }
 
 void PluginBase::apply_gain(std::span<float>& left, std::span<float>& right, const float& gain) {
