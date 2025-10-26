@@ -398,14 +398,7 @@ void Convolver::load_kernel_file() {
   const auto name = settings->kernelName();
 
   if (name.isEmpty()) {
-    // clearing the chart data
-
-    chartMagL.clear();
-    chartMagR.clear();
-    chartMagLfftLinear.clear();
-    chartMagRfftLinear.clear();
-    chartMagLfftLog.clear();
-    chartMagRfftLog.clear();
+    clear_chart_data();
 
     Q_EMIT newKernelLoaded(name, false);
 
@@ -421,6 +414,8 @@ void Convolver::load_kernel_file() {
 
   // If the search fails, the path is empty
   if (rate == 0 || kernel_L.empty() || kernel_R.empty()) {
+    clear_chart_data();
+
     Q_EMIT newKernelLoaded(name, false);
 
     util::warning(
@@ -955,4 +950,13 @@ void Convolver::chart_kernel_fft(const std::vector<float>& kernel_L,
   Q_EMIT chartMagRfftLinearChanged();
   Q_EMIT chartMagLfftLogChanged();
   Q_EMIT chartMagRfftLogChanged();
+}
+
+void Convolver::clear_chart_data() {
+  chartMagL.clear();
+  chartMagR.clear();
+  chartMagLfftLinear.clear();
+  chartMagRfftLinear.clear();
+  chartMagLfftLog.clear();
+  chartMagRfftLog.clear();
 }
