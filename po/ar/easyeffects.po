@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-25 23:41+0000\n"
+"POT-Creation-Date: 2025-10-26 16:20+0000\n"
 "PO-Revision-Date: 2025-09-22 07:01+0000\n"
 "Last-Translator: Abdelrahman Ehab Elsaied Hassan <s3409663@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -176,7 +176,7 @@ msgstr "خرج التضخيم"
 
 #: src/contents/ui/Autogain.qml:277 src/contents/ui/BassEnhancer.qml:191
 #: src/contents/ui/BassLoudness.qml:104 src/contents/ui/Compressor.qml:916
-#: src/contents/ui/Convolver.qml:439 src/contents/ui/Crossfeed.qml:134
+#: src/contents/ui/Convolver.qml:458 src/contents/ui/Crossfeed.qml:134
 #: src/contents/ui/Crystalizer.qml:90 src/contents/ui/DeepFilterNet.qml:168
 #: src/contents/ui/Deesser.qml:310 src/contents/ui/Delay.qml:365
 #: src/contents/ui/EchoCanceller.qml:152 src/contents/ui/Equalizer.qml:265
@@ -262,7 +262,7 @@ msgid "Listen"
 msgstr "استمع"
 
 #: src/contents/ui/BassEnhancer.qml:230 src/contents/ui/BassLoudness.qml:120
-#: src/contents/ui/Compressor.qml:965 src/contents/ui/Convolver.qml:465
+#: src/contents/ui/Compressor.qml:965 src/contents/ui/Convolver.qml:484
 #: src/contents/ui/Crossfeed.qml:158 src/contents/ui/Crystalizer.qml:116
 #: src/contents/ui/DeepFilterNet.qml:191 src/contents/ui/Deesser.qml:349
 #: src/contents/ui/Delay.qml:414 src/contents/ui/EchoCanceller.qml:178
@@ -485,7 +485,7 @@ msgstr "منتصف"
 msgid "Side"
 msgstr "جانب"
 
-#: src/contents/ui/Compressor.qml:318 src/contents/ui/Convolver.qml:249
+#: src/contents/ui/Compressor.qml:318 src/contents/ui/Convolver.qml:268
 #: src/contents/ui/Delay.qml:42 src/contents/ui/Equalizer.qml:195
 #: src/contents/ui/Expander.qml:278 src/contents/ui/Gate.qml:302
 #: src/contents/ui/LevelMeter.qml:58 src/contents/ui/LevelMeter.qml:103
@@ -495,7 +495,7 @@ msgstr "جانب"
 msgid "Left"
 msgstr "يسار"
 
-#: src/contents/ui/Compressor.qml:318 src/contents/ui/Convolver.qml:267
+#: src/contents/ui/Compressor.qml:318 src/contents/ui/Convolver.qml:286
 #: src/contents/ui/Delay.qml:200 src/contents/ui/Equalizer.qml:195
 #: src/contents/ui/Expander.qml:278 src/contents/ui/Gate.qml:302
 #: src/contents/ui/LevelMeter.qml:74 src/contents/ui/LevelMeter.qml:119
@@ -597,7 +597,7 @@ msgstr ""
 msgid "36 dB/oct"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:497 src/contents/ui/Convolver.qml:396
+#: src/contents/ui/Compressor.qml:497 src/contents/ui/Convolver.qml:415
 #: src/contents/ui/Delay.qml:161 src/contents/ui/Delay.qml:319
 #: src/contents/ui/Expander.qml:457 src/contents/ui/Gate.qml:481
 #: src/contents/ui/MultibandCompressor.qml:606
@@ -606,7 +606,7 @@ msgstr ""
 msgid "Dry"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:520 src/contents/ui/Convolver.qml:414
+#: src/contents/ui/Compressor.qml:520 src/contents/ui/Convolver.qml:433
 #: src/contents/ui/Delay.qml:179 src/contents/ui/Delay.qml:337
 #: src/contents/ui/Expander.qml:480 src/contents/ui/Gate.qml:504
 #: src/contents/ui/MultibandCompressor.qml:624
@@ -709,55 +709,67 @@ msgstr ""
 msgid "Stereo Split"
 msgstr ""
 
-#: src/contents/ui/Convolver.qml:102
-msgid "First"
+#: src/contents/ui/Convolver.qml:49
+msgid "Loaded the %1 Convolver Impulse."
 msgstr ""
 
-#: src/contents/ui/Convolver.qml:114
-#, fuzzy
-msgid "Second"
-msgstr "النواة الثانية"
-
-#: src/contents/ui/Convolver.qml:146 src/contents/ui/Convolver.qml:179
-msgid "Combine"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:172
-msgid "Impulses"
-msgstr "استجابات نبضية"
-
-#: src/contents/ui/Convolver.qml:188 src/plugin_base.cpp:284
-msgid "Spectrum"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:220
-msgid "Log Scale"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:290
+#: src/contents/ui/Convolver.qml:51 src/contents/ui/Convolver.qml:309
 #, fuzzy
 msgid "Convolver Impulse Is Not Set"
 msgstr "دمج الاستجابات النبضية"
 
-#: src/contents/ui/Convolver.qml:327
+#: src/contents/ui/Convolver.qml:55
+msgid "The Convolver is in Passthrough Mode."
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:57
+msgid "Failed to Load the %1 Impulse. The Convolver is in Passthrough Mode."
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:119
+msgid "First"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:131
+#, fuzzy
+msgid "Second"
+msgstr "النواة الثانية"
+
+#: src/contents/ui/Convolver.qml:163 src/contents/ui/Convolver.qml:198
+msgid "Combine"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:191
+msgid "Impulses"
+msgstr "استجابات نبضية"
+
+#: src/contents/ui/Convolver.qml:207 src/plugin_base.cpp:284
+msgid "Spectrum"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:239
+msgid "Log Scale"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:346
 msgid "Rate"
 msgstr ""
 
-#: src/contents/ui/Convolver.qml:332 src/contents/ui/Delay.qml:60
+#: src/contents/ui/Convolver.qml:351 src/contents/ui/Delay.qml:60
 #: src/contents/ui/Delay.qml:71 src/contents/ui/Delay.qml:218
 #: src/contents/ui/Delay.qml:229
 msgid "Samples"
 msgstr ""
 
-#: src/contents/ui/Convolver.qml:337
+#: src/contents/ui/Convolver.qml:356
 msgid "Duration"
 msgstr ""
 
-#: src/contents/ui/Convolver.qml:379
+#: src/contents/ui/Convolver.qml:398
 msgid "Stereo Width"
 msgstr ""
 
-#: src/contents/ui/Convolver.qml:455 src/tags_plugin_name.cpp:26
+#: src/contents/ui/Convolver.qml:474 src/tags_plugin_name.cpp:26
 msgid "Autogain"
 msgstr "التضخيم التلقائي"
 
@@ -777,33 +789,29 @@ msgstr "ابحث عن ملف استجابة نبضية"
 msgid "Search"
 msgstr "بحث"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:79
-msgid "Loaded the %1 Convolver Impulse."
-msgstr ""
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:85
+#: src/contents/ui/ConvolverImpulseSheet.qml:83
 #, fuzzy
 msgid "Remove Impulse Response"
 msgstr "استيراد استجابة نبضية"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:86
+#: src/contents/ui/ConvolverImpulseSheet.qml:84
 msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:90
+#: src/contents/ui/ConvolverImpulseSheet.qml:88
 msgid "Removed the %1 Convolver Impulse."
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:92
+#: src/contents/ui/ConvolverImpulseSheet.qml:90
 #, fuzzy
 msgid "Failed to Remove the %1 Convolver Impulse."
 msgstr "ابحث عن ملف استجابة نبضية"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:106
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
 msgid "Delete this Impulse"
 msgstr ""
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:126
+#: src/contents/ui/ConvolverImpulseSheet.qml:124
 msgid "Import Impulse"
 msgstr "استيراد استجابة نبضية"
 
