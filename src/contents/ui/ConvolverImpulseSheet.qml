@@ -75,8 +75,6 @@ Kirigami.OverlaySheet {
                 width: listView.width
                 onClicked: {
                     control.pluginDB.kernelName = name;
-
-                    appWindow.showStatus(i18n("Loaded the %1 Convolver Impulse.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
                 }
 
                 Kirigami.PromptDialog {

@@ -42,6 +42,23 @@ Kirigami.ScrollablePage {
     }
 
     Connections {
+        function onNewKernelLoaded(name, success) {
+            if (success) {
+                convolverChartContainer.banner.title = name;
+
+                appWindow.showStatus(i18n("Loaded the %1 Convolver Impulse.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+            } else {
+                convolverChartContainer.banner.title = i18n("Convolver Impulse Is Not Set");
+
+                if (name.length === 0 || name === '""') {
+                    // This is likely to happen after a config reset.
+                    appWindow.showStatus(i18n("The Convolver is in Passthrough Mode.")); // qmllint disable
+                } else {
+                    appWindow.showStatus(i18n("Failed to Load the %1 Impulse. The Convolver is in Passthrough Mode.", `<strong>${name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
+                }
+            }
+        }
+
         function onKernelCombinationStopped() {
             progressBar.visible = false;
         }
@@ -164,6 +181,8 @@ Kirigami.ScrollablePage {
         }
 
         Kirigami.Card {
+            id: convolverChartContainer
+
             Layout.minimumWidth: Kirigami.Units.gridUnit * 16
             Layout.fillHeight: true
 
@@ -287,7 +306,7 @@ Kirigami.ScrollablePage {
             banner {
                 title: {
                     const name = convolverPage.pluginDB.kernelName;
-                    return (name.length === 0 || name === '""') ? i18n("Convolver Impulse Is Not Set") : name; // qmllint disable
+                    return (!convolverPage.pluginBackend.kernelIsInitialized || name.length === 0 || name === '""') ? i18n("Convolver Impulse Is Not Set") : name; // qmllint disable
                 }
                 titleAlignment: Qt.AlignHCenter | Qt.AlignBottom
                 titleLevel: 2
