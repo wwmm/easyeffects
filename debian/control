@@ -3,7 +3,7 @@ Section: sound
 Priority: optional
 Maintainer: Boyuan Yang <byang@debian.org>
 Build-Depends:
- appstream-util,
+ appstream,
  debhelper-compat (= 13),
  gettext,
  itstool,
