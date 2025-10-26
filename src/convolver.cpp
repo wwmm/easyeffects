@@ -398,7 +398,10 @@ void Convolver::load_kernel_file() {
   const auto name = settings->kernelName();
 
   if (name.isEmpty()) {
-    util::warning(std::format("{}{}: irs filename is null. Entering passthrough mode...", log_tag, name.toStdString()));
+    Q_EMIT newKernelLoaded(name, false);
+
+    util::warning(
+        std::format("{}{}: irs filename is invalid. Entering passthrough mode...", log_tag, name.toStdString()));
 
     return;
   }
@@ -409,13 +412,17 @@ void Convolver::load_kernel_file() {
 
   // If the search fails, the path is empty
   if (rate == 0 || kernel_L.empty() || kernel_R.empty()) {
-    util::warning(std::format("{}{} is invalid. Entering passthrough mode...", log_tag, name.toStdString()));
+    Q_EMIT newKernelLoaded(name, false);
+
+    util::warning(
+        std::format("{}{} irs has an invalid format. Entering passthrough mode...", log_tag, name.toStdString()));
 
     return;
   }
 
   if (kernel_rate != static_cast<int>(rate)) {
-    util::debug(std::format("{}{} resampling the kernel to {}", log_tag, name.toStdString(), rate));
+    util::debug(
+        std::format("{}{} kernel has {} rate. Resampling it to {}", log_tag, name.toStdString(), kernel_rate, rate));
 
     auto resampler = std::make_unique<Resampler>(kernel_rate, rate);
 
@@ -463,14 +470,16 @@ void Convolver::load_kernel_file() {
     chartMagR[n] = QPointF(x_linear[n], magR[n]);
   }
 
+  kernel_is_initialized = true;
+
+  Q_EMIT newKernelLoaded(name, true);
+
   Q_EMIT kernelRateChanged();
   Q_EMIT kernelDurationChanged();
   Q_EMIT kernelSamplesChanged();
 
   Q_EMIT chartMagLChanged();
   Q_EMIT chartMagRChanged();
-
-  kernel_is_initialized = true;
 
   util::debug(std::format("{}{}: kernel correctly loaded", log_tag, name.toStdString()));
 

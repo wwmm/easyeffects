@@ -40,6 +40,8 @@
 class Convolver : public PluginBase {
   Q_OBJECT
 
+  Q_PROPERTY(bool kernelIsInitialized MEMBER kernel_is_initialized NOTIFY kernelInitializedChanged)
+
   Q_PROPERTY(QString kernelRate MEMBER kernelRate NOTIFY kernelRateChanged)
   Q_PROPERTY(QString kernelSamples MEMBER kernelSamples NOTIFY kernelSamplesChanged)
   Q_PROPERTY(QString kernelDuration MEMBER kernelDuration NOTIFY kernelDurationChanged)
@@ -87,7 +89,9 @@ class Convolver : public PluginBase {
   Q_INVOKABLE void combineKernels(const QString& kernel1, const QString& kernel2, const QString& outputName);
 
  Q_SIGNALS:
+  void newKernelLoaded(QString name, bool success);
 
+  void kernelInitializedChanged();
   void kernelRateChanged();
   void kernelSamplesChanged();
   void kernelDurationChanged();
