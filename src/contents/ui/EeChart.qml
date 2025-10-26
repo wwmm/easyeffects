@@ -123,6 +123,13 @@ Item {
         }
     }
 
+    function clearData() {
+        splineSeries.clear();
+        scatterSeries.clear();
+        barSeries.clear();
+        areaLineSeries.clear();
+    }
+
     function mapToValueX(mouseX) {
         const normalizedX = (mouseX - chart.plotArea.x) / chart.plotArea.width;
 

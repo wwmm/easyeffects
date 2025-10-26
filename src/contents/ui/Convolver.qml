@@ -56,6 +56,8 @@ Kirigami.ScrollablePage {
                 } else {
                     appWindow.showStatus(i18n("Failed to Load the %1 Impulse. The Convolver is in Passthrough Mode.", `<strong>${name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
                 }
+
+                convolverChart.clearData();
             }
         }
 

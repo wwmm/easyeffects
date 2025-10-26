@@ -398,6 +398,15 @@ void Convolver::load_kernel_file() {
   const auto name = settings->kernelName();
 
   if (name.isEmpty()) {
+    // clearing the chart data
+
+    chartMagL.clear();
+    chartMagR.clear();
+    chartMagLfftLinear.clear();
+    chartMagRfftLinear.clear();
+    chartMagLfftLog.clear();
+    chartMagRfftLog.clear();
+
     Q_EMIT newKernelLoaded(name, false);
 
     util::warning(
