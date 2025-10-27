@@ -35,7 +35,7 @@ depends=(
   'libportal-qt6'
   'webrtc-audio-processing'
 )
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'intltool' 'appstream-glib' 'mold' 'ladspa')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'intltool' 'appstream' 'mold' 'ladspa')
 optdepends=('calf: limiter, exciter, bass enhancer and others'
             'lsp-plugins: equalizer, compressor, delay, loudness'
             'zam-plugins: maximizer'
