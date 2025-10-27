@@ -739,7 +739,7 @@ Kirigami.ScrollablePage {
 
                     Controls.Frame {
                         Layout.alignment: Qt.AlignHCenter
-                        Layout.fillWidth: parent.columns == 3 ? false : true
+                        Layout.fillWidth: parent.columns === 3 ? false : true
 
                         GridLayout {
                             columnSpacing: Kirigami.Units.largeSpacing
@@ -798,7 +798,7 @@ Kirigami.ScrollablePage {
 
                     Controls.Frame {
                         Layout.alignment: Qt.AlignHCenter
-                        Layout.fillWidth: parent.columns == 3 ? false : true
+                        Layout.fillWidth: parent.columns === 3 ? false : true
 
                         GridLayout {
                             columnSpacing: Kirigami.Units.largeSpacing
