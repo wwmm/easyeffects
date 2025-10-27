@@ -176,7 +176,7 @@ Kirigami.Page {
                         pageStreamsEffects.streamDB.visiblePlugin = pageStreamsEffects.streamDB.plugins[0];
 
                     pluginsListView.currentIndex = pageStreamsEffects.streamDB.plugins.findIndex(v => {
-                        return v == streamDB.visiblePlugin;
+                        return v == pageStreamsEffects.streamDB.visiblePlugin;
                     });
 
                     let baseNames = TagsPluginName.PluginsNameModel.getBaseNames();
