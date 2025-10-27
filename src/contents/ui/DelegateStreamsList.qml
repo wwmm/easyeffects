@@ -97,12 +97,12 @@ Kirigami.AbstractCard {
                             return !DB.Manager.main.processAllInputs;
                     }
                     onCheckedChanged: {
-                        if (checked == true && !root.isBlocklisted) {
+                        if (checked === true && !root.isBlocklisted) {
                             if (root.mediaClass === "Stream/Output/Audio")
                                 PW.Manager.connectStreamOutput(root.id);
                             else if (root.mediaClass === "Stream/Input/Audio")
                                 PW.Manager.connectStreamInput(root.id);
-                        } else if (checked == false || root.isBlocklisted) {
+                        } else if (checked === false || root.isBlocklisted) {
                             PW.Manager.disconnectStream(root.id);
                         }
                     }
