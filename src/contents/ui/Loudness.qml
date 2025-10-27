@@ -95,12 +95,12 @@ Kirigami.ScrollablePage {
 
                             text: i18n("IIR Approximation") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: loudnessPage.pluginDB.fft
+                            currentIndex: loudnessPage.pluginDB.iirApproximation
                             editable: false
                             model: [i18n("Fastest"), i18n("Low"), i18n("Normal"), i18n("High"), i18n("Best")]// qmllint disable
                             visible: loudnessPage.pluginDB.mode == 1 ? true : false
                             onActivated: idx => {
-                                loudnessPage.pluginDB.fft = idx;
+                                loudnessPage.pluginDB.iirApproximation = idx;
                             }
                         }
 
