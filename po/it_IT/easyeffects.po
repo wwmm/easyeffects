@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-26 16:20+0000\n"
-"PO-Revision-Date: 2025-10-23 10:02+0000\n"
+"PO-Revision-Date: 2025-10-27 05:05+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -715,11 +715,13 @@ msgstr "Impulso del Convolver Non Impostato"
 
 #: src/contents/ui/Convolver.qml:55
 msgid "The Convolver is in Passthrough Mode."
-msgstr ""
+msgstr "Il Convolver è in Modalità Inattiva."
 
 #: src/contents/ui/Convolver.qml:57
 msgid "Failed to Load the %1 Impulse. The Convolver is in Passthrough Mode."
 msgstr ""
+"Caricamento dell'Impulso %1 Non Riuscito. Il Convolver è in Modalità "
+"Inattiva."
 
 #: src/contents/ui/Convolver.qml:119
 msgid "First"
