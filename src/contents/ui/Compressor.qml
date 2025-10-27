@@ -54,15 +54,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         FormCard.FormComboBoxDelegate {
                             id: mode
@@ -161,15 +159,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         EeSpinBox {
                             id: threshold
@@ -248,15 +244,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         FormCard.FormComboBoxDelegate {
                             id: sidechainType
@@ -347,15 +341,14 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         EeSpinBox {
                             id: sidechainPreamp
@@ -491,10 +484,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     EeSpinBox {
                         id: dry
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Dry") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -508,16 +504,12 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             compressorPage.pluginDB.dry = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSpinBox {
                         id: wet
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Wet") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -531,17 +523,12 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             compressorPage.pluginDB.wet = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSpinBox {
                         id: makeup
 
-                        Layout.columnSpan: 2
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Makeup") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -554,11 +541,6 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             compressorPage.pluginDB.makeup = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
                 }
             }
@@ -569,15 +551,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         EeSpinBox {
                             label: i18n("Input to Sidechain") // qmllint disable
