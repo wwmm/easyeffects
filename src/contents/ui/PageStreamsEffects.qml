@@ -179,7 +179,7 @@ Kirigami.Page {
                         return v === pageStreamsEffects.streamDB.visiblePlugin;
                     });
 
-                    let baseNames = TagsPluginName.PluginsNameModel.getBaseNames();
+                    const baseNames = TagsPluginName.PluginsNameModel.getBaseNames();
 
                     for (let k = 0; k < baseNames.length; k++) {
                         if (pageStreamsEffects.streamDB.visiblePlugin.startsWith(baseNames[k])) {
@@ -226,6 +226,7 @@ Kirigami.Page {
 
                     if (newList.length === 0) {
                         pageStreamsEffects.streamDB.visiblePlugin = "";
+
                         while (pluginsStack.depth > 1)
                             pluginsStack.pop();
                     }
@@ -242,14 +243,17 @@ Kirigami.Page {
             Connections {
                 function onDataChanged() {
                     let newList = [];
+
                     for (let n = 0; n < pluginsListModel.count; n++) {
                         newList.push(pluginsListModel.get(n).name);
                     }
+
                     if (!Common.equalArrays(pageStreamsEffects.streamDB.plugins, newList))
                         pageStreamsEffects.streamDB.plugins = newList;
 
                     if (newList.length === 0) {
                         pageStreamsEffects.streamDB.visiblePlugin = "";
+
                         while (pluginsStack.depth > 1)
                             pluginsStack.pop();
                     }
@@ -284,6 +288,7 @@ Kirigami.Page {
                     delegate: DelegatePluginsList {
                         listModel: pluginsListModel
                         listView: pluginsListView
+                        streamDB: pageStreamsEffects.streamDB
                         onSelectedChanged: name => {
                             if (pageStreamsEffects.streamDB.visiblePlugin !== name) {
                                 pageStreamsEffects.streamDB.visiblePlugin = name;

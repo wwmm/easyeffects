@@ -15,6 +15,7 @@ Item {
     required property string name
     required property string translatedName
     required property var pluginDB
+    required property var streamDB
 
     signal selectedChanged(string name)
 
@@ -79,9 +80,19 @@ Item {
                         icon.name: "delete"
                         displayHint: listItemDelegate.hovered ? Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.AlwaysShow : Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
+                            /*
+                            * If the selected item is removed we set the one before it as the visible plugin
+                            */
+
+                            if (delegateItem.listModel.count > 1 && delegateItem.index > 0 && delegateItem.ListView.view.currentIndex === delegateItem.index) {
+                                streamDB.visiblePlugin = pluginsListModel.get(delegateItem.index - 1).name;
+                            }
+
                             delegateItem.listModel.remove(delegateItem.index, 1);
+
                             const indexStart = delegateItem.listModel.index(0, 0);
                             const indexEnd = delegateItem.listModel.index(delegateItem.listModel.count - 1, 0);
+
                             delegateItem.listModel.dataChanged(indexStart, indexEnd, []);
                         }
                     }
