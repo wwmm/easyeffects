@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-26 16:20+0000\n"
-"PO-Revision-Date: 2025-10-27 05:05+0000\n"
+"PO-Revision-Date: 2025-10-27 18:43+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -767,7 +767,7 @@ msgstr "Ampiezza Stereo"
 
 #: src/contents/ui/Convolver.qml:474 src/tags_plugin_name.cpp:26
 msgid "Autogain"
-msgstr "Auto Guadagno"
+msgstr "Guadagno Automatico"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
 msgid "Imported a New Convolver Impluse File."
