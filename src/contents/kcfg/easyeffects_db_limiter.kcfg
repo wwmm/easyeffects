@@ -31,7 +31,7 @@
             <default>0</default>
         </entry>
         <entry name="oversamplingLabels" type="StringList">
-            <default>None,Half x2(2L),Half x2(3L),Half x3(2L),Half x3(3L),Half x4(2L),Half x4(3L),Half x6(2L),Half x6(3L),Half x8(2L),Half x8(3L),Full x2(2L),Full x2(3L),Full x3(2L),Full x3(3L),Full x4(2L),Full x4(3L),Full x6(2L),Full x6(3L),Full x8(2L),Full x8(3L)</default>
+            <default>None,Half x2/16 bit,Half x2/24 bit,Half x3/16 bit,Half x3/24 bit,Half x4/16 bit,Half x4/24 bit,Half x6/16 bit,Half x6/24 bit,Half x8/16 bit,Half x8/24 bit,Full x2/16 bit,Full x2/24 bit,Full x3/16 bit,Full x3/24 bit,Full x4/16 bit,Full x4/24 bit,Full x6/16 bit,Full x6/24 bit,Full x8/16 bit,Full x8/24 bit,True Peak/16 bit,True Peak/24 bit</default>
         </entry>
         <entry name="oversampling" type="Int">
             <label>Oversampling</label>
