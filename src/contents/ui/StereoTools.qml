@@ -44,26 +44,25 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     EeSwitch {
                         id: softclip
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Softclip") // qmllint disable
                         isChecked: stereoToolsPage.pluginDB.softclip
                         onCheckedChanged: {
                             if (isChecked !== stereoToolsPage.pluginDB.softclip)
                                 stereoToolsPage.pluginDB.softclip = isChecked;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSpinBox {
                         id: balanceIn
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Balance") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -75,16 +74,12 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             stereoToolsPage.pluginDB.balanceIn = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSpinBox {
                         id: scLevel
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("S/C Level") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -97,11 +92,6 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             stereoToolsPage.pluginDB.scLevel = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
                 }
             }
@@ -113,15 +103,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         FormCard.FormComboBoxDelegate {
                             id: mode
@@ -210,46 +198,35 @@ Kirigami.ScrollablePage {
 
             Kirigami.Card {
 
-                contentItem: Column {
-                    Kirigami.Heading {
-                        text: i18n("Left") // qmllint disable
-                        level: 2
+                header: Kirigami.Heading {
+                    text: i18n("Left") // qmllint disable
+                    level: 2
+                }
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
-                    }
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
 
                     EeSwitch {
                         id: mutel
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Mute") // qmllint disable
                         isChecked: stereoToolsPage.pluginDB.mutel
                         onCheckedChanged: {
                             if (isChecked !== stereoToolsPage.pluginDB.mutel)
                                 stereoToolsPage.pluginDB.mutel = isChecked;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSwitch {
                         id: phasel
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Invert Phase") // qmllint disable
                         isChecked: stereoToolsPage.pluginDB.phasel
                         onCheckedChanged: {
                             if (isChecked !== stereoToolsPage.pluginDB.phasel)
                                 stereoToolsPage.pluginDB.phasel = isChecked;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
                         }
                     }
 
@@ -257,42 +234,29 @@ Kirigami.ScrollablePage {
                         text: i18n("Right") // qmllint disable
                         level: 2
                         topPadding: Kirigami.Units.gridUnit * 2
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSwitch {
                         id: muter
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Mute") // qmllint disable
                         isChecked: stereoToolsPage.pluginDB.muter
                         onCheckedChanged: {
                             if (isChecked !== stereoToolsPage.pluginDB.muter)
                                 stereoToolsPage.pluginDB.muter = isChecked;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSwitch {
                         id: phaser
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Invert Phase") // qmllint disable
                         isChecked: stereoToolsPage.pluginDB.phaser
                         onCheckedChanged: {
                             if (isChecked !== stereoToolsPage.pluginDB.phaser)
                                 stereoToolsPage.pluginDB.phaser = isChecked;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
                         }
                     }
                 }
@@ -305,15 +269,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         EeSpinBox {
                             id: balanceOut

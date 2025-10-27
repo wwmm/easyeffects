@@ -51,7 +51,8 @@ Kirigami.ScrollablePage {
     Component {
         id: bandGateControls
 
-        Column {
+        ColumnLayout {
+            anchors.fill: parent
             spacing: Kirigami.Units.gridUnit
 
             Kirigami.ActionToolBar {
@@ -59,11 +60,6 @@ Kirigami.ScrollablePage {
                 alignment: Qt.AlignHCenter
                 position: Controls.ToolBar.Header
                 flat: false
-
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
 
                 actions: [
                     Kirigami.Action {
@@ -99,11 +95,6 @@ Kirigami.ScrollablePage {
                 maximumColumns: 5
                 minimumColumnWidth: Kirigami.Units.gridUnit * 15
                 uniformCellWidths: true
-
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
 
                 Controls.Frame {
                     Layout.alignment: Qt.AlignHCenter
@@ -361,14 +352,11 @@ Kirigami.ScrollablePage {
     Component {
         id: bandSidechainControls
 
-        Column {
+        ColumnLayout {
+            anchors.fill: parent
+
             Kirigami.CardsLayout {
                 maximumColumns: 8
-
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
 
                 FormCard.FormComboBoxDelegate {
                     text: i18n("Type") // qmllint disable

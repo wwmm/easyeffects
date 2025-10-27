@@ -46,10 +46,13 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
                 id: cardMode
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     FormCard.FormComboBoxDelegate {
                         id: mode
 
+                        Layout.alignment: Qt.AlignTop
                         text: i18n("Mode") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: limiterPage.pluginDB.mode
@@ -58,16 +61,12 @@ Kirigami.ScrollablePage {
                         onActivated: idx => {
                             limiterPage.pluginDB.mode = idx;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     FormCard.FormComboBoxDelegate {
                         id: oversampling
 
+                        Layout.alignment: Qt.AlignTop
                         text: i18n("Oversampling") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: limiterPage.pluginDB.oversampling
@@ -76,16 +75,12 @@ Kirigami.ScrollablePage {
                         onActivated: idx => {
                             limiterPage.pluginDB.oversampling = idx;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     FormCard.FormComboBoxDelegate {
                         id: dithering
 
+                        Layout.alignment: Qt.AlignTop
                         text: i18n("Dithering") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: limiterPage.pluginDB.dithering
@@ -93,11 +88,6 @@ Kirigami.ScrollablePage {
                         model: [i18n("None"), i18n("7 bit"), i18n("8 bit"), i18n("11 bit"), i18n("12 bit"), i18n("15 bit"), i18n("16 bit"), i18n("23 bit"), i18n("24 bit")]// qmllint disable
                         onActivated: idx => {
                             limiterPage.pluginDB.dithering = idx;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
                         }
                     }
                 }
@@ -111,10 +101,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     EeSpinBox {
                         id: threshold
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Threshold") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: limiterPage.pluginDB.getMinValue("threshold")
@@ -126,16 +119,12 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             limiterPage.pluginDB.threshold = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSpinBox {
                         id: attack
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Attack") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: limiterPage.pluginDB.getMinValue("attack")
@@ -147,16 +136,12 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             limiterPage.pluginDB.attack = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSpinBox {
                         id: release
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Release") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: limiterPage.pluginDB.getMinValue("release")
@@ -168,16 +153,12 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             limiterPage.pluginDB.release = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSpinBox {
                         id: stereoLink
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Stereo Link") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: limiterPage.pluginDB.getMinValue("stereoLink")
@@ -188,11 +169,6 @@ Kirigami.ScrollablePage {
                         unit: "%"
                         onValueModified: v => {
                             limiterPage.pluginDB.stereoLink = v;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
                         }
                     }
                 }
@@ -206,17 +182,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
                     id: cardSideChainColumn
 
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         FormCard.FormComboBoxDelegate {
                             id: sidechainType
@@ -302,15 +274,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         EeSpinBox {
                             label: i18n("Input to Sidechain") // qmllint disable
@@ -421,10 +391,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     EeSpinBox {
                         id: alrAttack
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Attack") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: limiterPage.pluginDB.getMinValue("alrAttack")
@@ -436,16 +409,12 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             limiterPage.pluginDB.alrAttack = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSpinBox {
                         id: alrRelease
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Release") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: limiterPage.pluginDB.getMinValue("alrRelease")
@@ -457,16 +426,12 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             limiterPage.pluginDB.alrRelease = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSpinBox {
                         id: alrKnee
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Knee") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: limiterPage.pluginDB.getMinValue("alrKnee")
@@ -477,11 +442,6 @@ Kirigami.ScrollablePage {
                         unit: "dB"
                         onValueModified: v => {
                             limiterPage.pluginDB.alrKnee = v;
-                        }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
                         }
                     }
                 }

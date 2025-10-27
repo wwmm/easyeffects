@@ -51,7 +51,8 @@ Kirigami.ScrollablePage {
     Component {
         id: bandCompressorControls
 
-        Column {
+        ColumnLayout {
+            anchors.fill: parent
             spacing: Kirigami.Units.gridUnit
 
             Kirigami.ActionToolBar {
@@ -59,11 +60,6 @@ Kirigami.ScrollablePage {
                 alignment: Qt.AlignHCenter
                 position: Controls.ToolBar.Header
                 flat: false
-
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
 
                 actions: [
                     Kirigami.Action {
@@ -98,16 +94,11 @@ Kirigami.ScrollablePage {
             GridLayout {
                 columns: bandControlsLayout.columns === 1 ? 1 : 2
                 uniformCellWidths: true
-
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
+                Layout.alignment: Qt.AlignHCenter
 
                 FormCard.FormComboBoxDelegate {
                     id: bandMode
 
-                    Layout.alignment: bandMode.currentIndex === 0 ? Qt.AlignHCenter : Qt.AlignRight
                     Layout.fillWidth: bandControlsLayout.columns === 1 ? true : false
                     text: i18n("Compression Mode") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
@@ -167,11 +158,6 @@ Kirigami.ScrollablePage {
                 // on the right border.
                 minimumColumnWidth: Kirigami.Units.gridUnit * 20
                 uniformCellWidths: true
-
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
 
                 Controls.Frame {
                     Layout.alignment: Qt.AlignHCenter
@@ -393,14 +379,11 @@ Kirigami.ScrollablePage {
     Component {
         id: bandSidechainControls
 
-        Column {
+        ColumnLayout {
+            anchors.fill: parent
+
             Kirigami.CardsLayout {
                 maximumColumns: 8
-
-                anchors {
-                    left: parent.left
-                    right: parent.right
-                }
 
                 FormCard.FormComboBoxDelegate {
                     text: i18n("Type") // qmllint disable
