@@ -84,6 +84,18 @@ void ExpanderPreset::save(nlohmann::json& json) {
   json[section][instance_name]["lpf-mode"] = settings->defaultLpfModeLabelsValue()[settings->lpfMode()].toStdString();
 
   json[section][instance_name]["lpf-frequency"] = settings->lpfFrequency();
+
+  json[section][instance_name]["input-to-sidechain"] = settings->inputToSidechain();
+
+  json[section][instance_name]["input-to-link"] = settings->inputToLink();
+
+  json[section][instance_name]["sidechain-to-input"] = settings->sidechainToInput();
+
+  json[section][instance_name]["sidechain-to-link"] = settings->sidechainToLink();
+
+  json[section][instance_name]["link-to-input"] = settings->linkToInput();
+
+  json[section][instance_name]["link-to-sidechain"] = settings->linkToSidechain();
 }
 
 void ExpanderPreset::load(const nlohmann::json& json) {
@@ -102,6 +114,12 @@ void ExpanderPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("stereo-split", StereoSplit);
   UPDATE_PROPERTY("hpf-frequency", HpfFrequency);
   UPDATE_PROPERTY("lpf-frequency", LpfFrequency);
+  UPDATE_PROPERTY("input-to-sidechain", InputToSidechain);
+  UPDATE_PROPERTY("input-to-link", InputToLink);
+  UPDATE_PROPERTY("sidechain-to-input", SidechainToInput);
+  UPDATE_PROPERTY("sidechain-to-link", SidechainToLink);
+  UPDATE_PROPERTY("link-to-input", LinkToInput);
+  UPDATE_PROPERTY("link-to-sidechain", LinkToSidechain);
 
   UPDATE_ENUM_LIKE_PROPERTY("mode", Mode);
   UPDATE_ENUM_LIKE_PROPERTY("hpf-mode", HpfMode);

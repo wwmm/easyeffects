@@ -87,6 +87,12 @@ Expander::Expander(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
   BIND_LV2_PORT_DB("cdr", dry, setDry, db::Expander::dryChanged, true);
   BIND_LV2_PORT_DB("cwt", wet, setWet, db::Expander::wetChanged, true);
   BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Expander::sidechainPreampChanged, true);
+  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, db::Expander::inputToLinkChanged, true);
+  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, db::Expander::inputToSidechainChanged, true);
+  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, db::Expander::sidechainToInputChanged, true);
+  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, db::Expander::sidechainToLinkChanged, true);
+  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, db::Expander::linkToSidechainChanged, true);
+  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, db::Expander::linkToInputChanged, true);
 }
 
 Expander::~Expander() {

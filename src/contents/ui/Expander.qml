@@ -44,7 +44,7 @@ Kirigami.ScrollablePage {
             id: cardLayout
 
             minimumColumnWidth: Kirigami.Units.gridUnit * 17
-            maximumColumns: 5
+            maximumColumns: 6
             uniformCellWidths: true
 
             Kirigami.Card {
@@ -54,15 +54,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         FormCard.FormComboBoxDelegate {
                             id: mode
@@ -121,15 +119,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         EeSpinBox {
                             id: threshold
@@ -208,15 +204,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         FormCard.FormComboBoxDelegate {
                             id: sidechainType
@@ -307,15 +301,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         EeSpinBox {
                             id: sidechainPreamp
@@ -451,10 +443,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     EeSpinBox {
                         id: dry
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Dry") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -468,16 +463,12 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             expanderPage.pluginDB.dry = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSpinBox {
                         id: wet
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Wet") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -491,17 +482,12 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             expanderPage.pluginDB.wet = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSpinBox {
                         id: makeup
 
-                        Layout.columnSpan: 2
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Makeup") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -514,10 +500,118 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             expanderPage.pluginDB.makeup = v;
                         }
+                    }
+                }
+            }
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+            Kirigami.Card {
+                header: Kirigami.Heading {
+                    text: i18n("Pre-Mix") // qmllint disable
+                    level: 2
+                }
+
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+                        Layout.alignment: Qt.AlignTop
+
+                        EeSpinBox {
+                            label: i18n("Input to Sidechain") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: expanderPage.pluginDB.getMinValue("inputToSidechain")
+                            to: expanderPage.pluginDB.getMaxValue("inputToSidechain")
+                            value: expanderPage.pluginDB.inputToSidechain
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                expanderPage.pluginDB.inputToSidechain = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Input to Link") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: expanderPage.pluginDB.getMinValue("inputToLink")
+                            to: expanderPage.pluginDB.getMaxValue("inputToLink")
+                            value: expanderPage.pluginDB.inputToLink
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                expanderPage.pluginDB.inputToLink = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Sidechain to Input") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: expanderPage.pluginDB.getMinValue("sidechainToInput")
+                            to: expanderPage.pluginDB.getMaxValue("sidechainToInput")
+                            value: expanderPage.pluginDB.sidechainToInput
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                expanderPage.pluginDB.sidechainToInput = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Sidechain to Link") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: expanderPage.pluginDB.getMinValue("sidechainToLink")
+                            to: expanderPage.pluginDB.getMaxValue("sidechainToLink")
+                            value: expanderPage.pluginDB.sidechainToLink
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                expanderPage.pluginDB.sidechainToLink = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Link to Sidechain") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: expanderPage.pluginDB.getMinValue("linkToSidechain")
+                            to: expanderPage.pluginDB.getMaxValue("linkToSidechain")
+                            value: expanderPage.pluginDB.linkToSidechain
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                expanderPage.pluginDB.linkToSidechain = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Link to Input") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: expanderPage.pluginDB.getMinValue("linkToInput")
+                            to: expanderPage.pluginDB.getMaxValue("linkToInput")
+                            value: expanderPage.pluginDB.linkToInput
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                expanderPage.pluginDB.linkToInput = v;
+                            }
                         }
                     }
                 }
