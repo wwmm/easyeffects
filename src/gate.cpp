@@ -89,6 +89,12 @@ Gate::Gate(const std::string& tag, pw::Manager* pipe_manager, PipelineType pipe_
   BIND_LV2_PORT_DB("cdr", dry, setDry, db::Gate::dryChanged, true);
   BIND_LV2_PORT_DB("cwt", wet, setWet, db::Gate::wetChanged, true);
   BIND_LV2_PORT_DB("scp", sidechainPreamp, setSidechainPreamp, db::Gate::sidechainPreampChanged, true);
+  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, db::Gate::inputToLinkChanged, true);
+  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, db::Gate::inputToSidechainChanged, true);
+  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, db::Gate::sidechainToInputChanged, true);
+  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, db::Gate::sidechainToLinkChanged, true);
+  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, db::Gate::linkToSidechainChanged, true);
+  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, db::Gate::linkToInputChanged, true);
 }
 
 Gate::~Gate() {

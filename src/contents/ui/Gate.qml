@@ -46,7 +46,7 @@ Kirigami.ScrollablePage {
         Kirigami.CardsLayout {
             id: cardLayout
 
-            maximumColumns: 5
+            maximumColumns: 6
             minimumColumnWidth: Kirigami.Units.gridUnit * 16
             uniformCellWidths: true
 
@@ -541,6 +541,121 @@ Kirigami.ScrollablePage {
                         anchors {
                             left: parent.left
                             right: parent.right
+                        }
+                    }
+                }
+            }
+
+            Kirigami.Card {
+                header: Kirigami.Heading {
+                    text: i18n("Pre-Mix") // qmllint disable
+                    level: 2
+                }
+
+                contentItem: Column {
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+
+                        anchors {
+                            left: parent.left
+                            right: parent.right
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Input to Sidechain") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: gatePage.pluginDB.getMinValue("inputToSidechain")
+                            to: gatePage.pluginDB.getMaxValue("inputToSidechain")
+                            value: gatePage.pluginDB.inputToSidechain
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                gatePage.pluginDB.inputToSidechain = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Input to Link") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: gatePage.pluginDB.getMinValue("inputToLink")
+                            to: gatePage.pluginDB.getMaxValue("inputToLink")
+                            value: gatePage.pluginDB.inputToLink
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                gatePage.pluginDB.inputToLink = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Sidechain to Input") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: gatePage.pluginDB.getMinValue("sidechainToInput")
+                            to: gatePage.pluginDB.getMaxValue("sidechainToInput")
+                            value: gatePage.pluginDB.sidechainToInput
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                gatePage.pluginDB.sidechainToInput = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Sidechain to Link") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: gatePage.pluginDB.getMinValue("sidechainToLink")
+                            to: gatePage.pluginDB.getMaxValue("sidechainToLink")
+                            value: gatePage.pluginDB.sidechainToLink
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                gatePage.pluginDB.sidechainToLink = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Link to Sidechain") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: gatePage.pluginDB.getMinValue("linkToSidechain")
+                            to: gatePage.pluginDB.getMaxValue("linkToSidechain")
+                            value: gatePage.pluginDB.linkToSidechain
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                gatePage.pluginDB.linkToSidechain = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            label: i18n("Link to Input") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: gatePage.pluginDB.getMinValue("linkToInput")
+                            to: gatePage.pluginDB.getMaxValue("linkToInput")
+                            value: gatePage.pluginDB.linkToInput
+                            decimals: 2
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                gatePage.pluginDB.linkToInput = v;
+                            }
                         }
                     }
                 }
