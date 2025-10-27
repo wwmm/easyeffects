@@ -35,17 +35,13 @@ Kirigami.AbstractCard {
             return DB.Manager.streamInputs.showBlocklistedApps;
     }
 
-    contentItem: Column {
+    contentItem: ColumnLayout {
+        anchors.fill: parent
 
         Kirigami.CardsLayout {
             id: delegateLayout
 
             maximumColumns: 3
-
-            anchors {
-                left: parent.left
-                right: parent.right
-            }
 
             Kirigami.Icon {
                 Layout.fillHeight: true

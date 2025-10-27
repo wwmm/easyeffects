@@ -260,7 +260,8 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
                     spacing: Kirigami.Units.gridUnit
 
                     EeProgressBar {
@@ -272,11 +273,6 @@ Kirigami.ScrollablePage {
                         to: 10
                         value: 0
                         decimals: 1
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeProgressBar {
@@ -289,11 +285,6 @@ Kirigami.ScrollablePage {
                         value: 0
                         decimals: 1
                         rightToLeft: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
                 }
             }
