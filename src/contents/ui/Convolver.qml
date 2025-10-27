@@ -6,6 +6,7 @@ import ee.database as DB
 import ee.presets as Presets
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
+import org.kde.kirigami.layouts as KirigamiLayouts
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
@@ -483,6 +484,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
+                    displayHint: KirigamiLayouts.DisplayHint.KeepVisible
                     text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {

@@ -4,6 +4,7 @@ import QtQuick.Layouts
 import ee.database as DB
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
+import org.kde.kirigami.layouts as KirigamiLayouts
 
 Kirigami.ScrollablePage {
     id: maximizerPage
@@ -115,6 +116,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
+                    displayHint: KirigamiLayouts.DisplayHint.KeepVisible
                     text: i18n("Show Native Window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
@@ -128,6 +130,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
+                    displayHint: KirigamiLayouts.DisplayHint.KeepVisible
                     text: i18n("Reset") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
