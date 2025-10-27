@@ -63,7 +63,7 @@ Item {
                     Kirigami.Action {
                         text: i18n("Enable this Effect") // qmllint disable
                         icon.name: "system-shutdown-symbolic"
-                        displayHint: Kirigami.DisplayHint.IconOnly
+                        displayHint: listItemDelegate.hovered ? Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.AlwaysShow : Kirigami.DisplayHint.AlwaysHide
                         checkable: true
                         checked: !delegateItem.pluginDB.bypass
                         onTriggered: {
@@ -77,7 +77,7 @@ Item {
                     Kirigami.Action {
                         text: i18n("Remove this effect") // qmllint disable
                         icon.name: "delete"
-                        displayHint: Kirigami.DisplayHint.IconOnly
+                        displayHint: listItemDelegate.hovered ? Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.AlwaysShow : Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
                             delegateItem.listModel.remove(delegateItem.index, 1);
                             const indexStart = delegateItem.listModel.index(0, 0);
