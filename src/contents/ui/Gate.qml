@@ -57,15 +57,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         EeSpinBox {
                             id: attack
@@ -163,62 +161,57 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+                    Layout.alignment: Qt.AlignTop
 
-                        anchors {
-                            left: parent.left
-                            right: parent.right
+                    EeSwitch {
+                        id: hysteresis
+
+                        Layout.alignment: Qt.AlignTop
+                        label: i18n("Enable") // qmllint disable
+                        isChecked: gatePage.pluginDB.hysteresis
+                        onCheckedChanged: {
+                            if (isChecked !== gatePage.pluginDB.hysteresis)
+                                gatePage.pluginDB.hysteresis = isChecked;
                         }
+                    }
 
-                        EeSwitch {
-                            id: hysteresis
+                    EeSpinBox {
+                        id: hysteresisThreshold
 
-                            Layout.columnSpan: 2
-                            label: i18n("Enable") // qmllint disable
-                            isChecked: gatePage.pluginDB.hysteresis
-                            onCheckedChanged: {
-                                if (isChecked !== gatePage.pluginDB.hysteresis)
-                                    gatePage.pluginDB.hysteresis = isChecked;
-                            }
+                        Layout.alignment: Qt.AlignTop
+                        label: i18n("Threshold") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: gatePage.pluginDB.getMinValue("hysteresisThreshold")
+                        to: gatePage.pluginDB.getMaxValue("hysteresisThreshold")
+                        value: gatePage.pluginDB.hysteresisThreshold
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: "dB"
+                        enabled: hysteresis.isChecked
+                        onValueModified: v => {
+                            gatePage.pluginDB.hysteresisThreshold = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: hysteresisThreshold
+                    EeSpinBox {
+                        id: hysteresisZone
 
-                            label: i18n("Threshold") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: gatePage.pluginDB.getMinValue("hysteresisThreshold")
-                            to: gatePage.pluginDB.getMaxValue("hysteresisThreshold")
-                            value: gatePage.pluginDB.hysteresisThreshold
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: "dB"
-                            enabled: hysteresis.isChecked
-                            onValueModified: v => {
-                                gatePage.pluginDB.hysteresisThreshold = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: hysteresisZone
-
-                            label: i18n("Zone") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: gatePage.pluginDB.getMinValue("hysteresisZone")
-                            to: gatePage.pluginDB.getMaxValue("hysteresisZone")
-                            value: gatePage.pluginDB.hysteresisZone
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: "dB"
-                            enabled: hysteresis.isChecked
-                            onValueModified: v => {
-                                gatePage.pluginDB.hysteresisZone = v;
-                            }
+                        Layout.alignment: Qt.AlignTop
+                        label: i18n("Zone") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: gatePage.pluginDB.getMinValue("hysteresisZone")
+                        to: gatePage.pluginDB.getMaxValue("hysteresisZone")
+                        value: gatePage.pluginDB.hysteresisZone
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: "dB"
+                        enabled: hysteresis.isChecked
+                        onValueModified: v => {
+                            gatePage.pluginDB.hysteresisZone = v;
                         }
                     }
                 }
@@ -231,15 +224,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         FormCard.FormComboBoxDelegate {
                             id: sidechainType
@@ -330,15 +321,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         EeSpinBox {
                             id: sidechainPreamp
@@ -474,10 +463,14 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+                    Layout.alignment: Qt.AlignTop
+
                     EeSpinBox {
                         id: dry
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Dry") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -491,16 +484,12 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             gatePage.pluginDB.dry = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSpinBox {
                         id: wet
 
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Wet") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -514,17 +503,12 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             gatePage.pluginDB.wet = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
 
                     EeSpinBox {
                         id: makeup
 
-                        Layout.columnSpan: 2
+                        Layout.alignment: Qt.AlignTop
                         label: i18n("Makeup") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -537,11 +521,6 @@ Kirigami.ScrollablePage {
                         onValueModified: v => {
                             gatePage.pluginDB.makeup = v;
                         }
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
                     }
                 }
             }
@@ -552,15 +531,13 @@ Kirigami.ScrollablePage {
                     level: 2
                 }
 
-                contentItem: Column {
+                contentItem: ColumnLayout {
+                    anchors.fill: parent
+
                     GridLayout {
                         columns: 2
                         uniformCellWidths: true
-
-                        anchors {
-                            left: parent.left
-                            right: parent.right
-                        }
+                        Layout.alignment: Qt.AlignTop
 
                         EeSpinBox {
                             label: i18n("Input to Sidechain") // qmllint disable
