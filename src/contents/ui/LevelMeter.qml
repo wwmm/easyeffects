@@ -252,7 +252,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Reset") // qmllint disable
+                    text: i18n("Reset Settings") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         levelMeterPage.pluginBackend.reset();
