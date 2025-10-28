@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-26 16:20+0000\n"
-"PO-Revision-Date: 2025-10-27 18:43+0000\n"
+"PO-Revision-Date: 2025-10-28 20:02+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -3068,14 +3068,12 @@ msgid "Audio Effects for PipeWire Applications"
 msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "True Peak/16 bit"
-msgstr "Fíor-Bhuaic"
+msgstr "Fíor-Bhuaic/16 giotán"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "True Peak/24 bit"
-msgstr "Fíor-Bhuaic"
+msgstr "Fíor-Bhuaic/24 giotán"
 
 #~ msgid "Impluse File Imported."
 #~ msgstr "Comhad Impulse Iompórtáilte."
