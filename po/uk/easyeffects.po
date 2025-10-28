@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-27 18:40+0000\n"
+"POT-Creation-Date: 2025-10-28 21:11+0000\n"
 "PO-Revision-Date: 2025-10-23 10:02+0000\n"
 "Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -76,11 +76,11 @@ msgstr "Увімкнути налагоджувальні повідомленн
 msgid "Must specify preset type: input/output."
 msgstr "Потрібно вказати тип попереднього налаштування: вхід/вихід."
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:308
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:341
 msgid "Output Presets"
 msgstr "Попередні налаштування для виходу"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:298
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:326
 msgid "Input Presets"
 msgstr "Попередні налаштування для входу"
 
@@ -272,14 +272,14 @@ msgstr "Слухати"
 #: src/contents/ui/MultibandCompressor.qml:975
 #: src/contents/ui/MultibandGate.qml:948 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:349 src/contents/ui/Speex.qml:184
-#: src/contents/ui/StereoTools.qml:426 src/contents/ui/main.qml:488
+#: src/contents/ui/StereoTools.qml:426 src/contents/ui/main.qml:526
 msgid "Reset"
 msgstr "Скинути"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:422
+#: src/contents/ui/main.qml:460
 msgid "Output"
 msgstr "Вихід"
 
@@ -431,7 +431,7 @@ msgstr "Зовнішній"
 
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
-#: src/contents/ui/PageStreamsEffects.qml:316
+#: src/contents/ui/PageStreamsEffects.qml:321
 msgid "Input Device"
 msgstr "Пристрій"
 
@@ -827,7 +827,7 @@ msgid "Default"
 msgstr "За замовчуванням"
 
 #: src/contents/ui/Crossfeed.qml:151 src/contents/ui/Reverb.qml:326
-#: src/contents/ui/main.qml:386
+#: src/contents/ui/main.qml:424
 msgid "Presets"
 msgstr "Попередні налаштування"
 
@@ -995,11 +995,11 @@ msgstr "Доступ"
 msgid "Description"
 msgstr "Опис"
 
-#: src/contents/ui/DelegatePluginsList.qml:64
+#: src/contents/ui/DelegatePluginsList.qml:65
 msgid "Enable this Effect"
 msgstr "Увімкнути цей ефект"
 
-#: src/contents/ui/DelegatePluginsList.qml:78
+#: src/contents/ui/DelegatePluginsList.qml:79
 msgid "Remove this effect"
 msgstr "Видаліть цей ефект"
 
@@ -1071,7 +1071,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Регулятори підсилення на вході та виході з індикаторами рівня"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:433
+#: src/contents/ui/main.qml:471
 msgid "Input"
 msgstr "Вхід"
 
@@ -1652,41 +1652,41 @@ msgstr "Порожній список"
 msgid "No Audio Application Available"
 msgstr "Немає доступного аудіододатку"
 
-#: src/contents/ui/PageStreamsEffects.qml:270
+#: src/contents/ui/PageStreamsEffects.qml:274
 msgid "Add Effect"
 msgstr "Додати ефект"
 
-#: src/contents/ui/PageStreamsEffects.qml:316
-#: src/contents/ui/PageStreamsEffects.qml:565
+#: src/contents/ui/PageStreamsEffects.qml:321
+#: src/contents/ui/PageStreamsEffects.qml:570
 msgid "Players"
 msgstr "Програвачі"
 
-#: src/contents/ui/PageStreamsEffects.qml:333
-#: src/contents/ui/PageStreamsEffects.qml:565
+#: src/contents/ui/PageStreamsEffects.qml:338
+#: src/contents/ui/PageStreamsEffects.qml:570
 msgid "Recorders"
 msgstr "Рекордери"
 
-#: src/contents/ui/PageStreamsEffects.qml:346
+#: src/contents/ui/PageStreamsEffects.qml:351
 msgid "Close"
 msgstr "Закрити"
 
-#: src/contents/ui/PageStreamsEffects.qml:370
+#: src/contents/ui/PageStreamsEffects.qml:375
 msgid "No Effects"
 msgstr "Без ефектів"
 
-#: src/contents/ui/PageStreamsEffects.qml:371
+#: src/contents/ui/PageStreamsEffects.qml:376
 msgid "Audio Stream Not Modified"
 msgstr "Аудіопотік не змінено"
 
-#: src/contents/ui/PageStreamsEffects.qml:575
+#: src/contents/ui/PageStreamsEffects.qml:580
 msgid "Effects"
 msgstr "Ефекти"
 
-#: src/contents/ui/PageStreamsEffects.qml:592
+#: src/contents/ui/PageStreamsEffects.qml:597
 msgid "Input Monitoring"
 msgstr "Моніторинг вхідних даних"
 
-#: src/contents/ui/PageStreamsEffects.qml:605
+#: src/contents/ui/PageStreamsEffects.qml:610
 msgid "Excluded Apps"
 msgstr "Виключені програми"
 
@@ -1847,8 +1847,8 @@ msgstr "Згладжування"
 
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:460
+#: src/contents/ui/PreferencesSheet.qml:547
+#: src/contents/ui/PreferencesSheet.qml:560 src/contents/ui/main.qml:498
 msgid "Preferences"
 msgstr "Параметри"
 
@@ -2050,48 +2050,53 @@ msgstr "Максимум"
 msgid "Database Autosave Interval"
 msgstr "Інтервал автозбереження бази даних"
 
-#: src/contents/ui/PreferencesSheet.qml:406
+#: src/contents/ui/PreferencesSheet.qml:396
+#, fuzzy
+msgid "Most Used Presets"
+msgstr "Попередні налаштування"
+
+#: src/contents/ui/PreferencesSheet.qml:418
 #: src/contents/ui/ShortcutsSheet.qml:248
 msgid "Global Shortcuts"
 msgstr "Глобальні скорочення"
 
-#: src/contents/ui/PreferencesSheet.qml:407
+#: src/contents/ui/PreferencesSheet.qml:419
 msgid "Enables Support for XDG Global Shortcuts"
 msgstr "Увімкнення підтримки глобальних скорочень XDG"
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:431
 msgid "Native Window of Effects"
 msgstr "Рідне вікно ефектів"
 
-#: src/contents/ui/PreferencesSheet.qml:420
+#: src/contents/ui/PreferencesSheet.qml:432
 msgid "Allows the Native User Interface of Effects to be Shown/Hidden"
 msgstr "Дозволяє показувати/приховувати власний інтерфейс користувача ефектів"
 
-#: src/contents/ui/PreferencesSheet.qml:432
+#: src/contents/ui/PreferencesSheet.qml:444
 msgid "Update Frequency"
 msgstr "Частота оновлення"
 
-#: src/contents/ui/PreferencesSheet.qml:433
+#: src/contents/ui/PreferencesSheet.qml:445
 msgid "Related to LV2 Plugins"
 msgstr "Пов’язані з плагінами LV2"
 
-#: src/contents/ui/PreferencesSheet.qml:462
+#: src/contents/ui/PreferencesSheet.qml:474
 msgid "Background Service"
 msgstr "Фоновий сервіс"
 
-#: src/contents/ui/PreferencesSheet.qml:475
+#: src/contents/ui/PreferencesSheet.qml:487
 msgid "Audio"
 msgstr "Аудіо"
 
-#: src/contents/ui/PreferencesSheet.qml:488
+#: src/contents/ui/PreferencesSheet.qml:500
 msgid "Spectrum Analyzer"
 msgstr "Аналізатор спектру"
 
-#: src/contents/ui/PreferencesSheet.qml:501
+#: src/contents/ui/PreferencesSheet.qml:513
 msgid "Database"
 msgstr "База даних"
 
-#: src/contents/ui/PreferencesSheet.qml:514
+#: src/contents/ui/PreferencesSheet.qml:526
 msgid "Experimental Features"
 msgstr "Експериментальні особливості"
 
@@ -2427,8 +2432,8 @@ msgstr "Можна використовувати з числовими елем
 msgid "Toggle Microphone Monitoring"
 msgstr "Увімкнути/вимкнути моніторинг мікрофона"
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:345
-#: src/contents/ui/main.qml:468
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:383
+#: src/contents/ui/main.qml:506
 msgid "Shortcuts"
 msgstr "Скорочення"
 
@@ -2528,31 +2533,40 @@ msgstr "Скинути налаштування?"
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Ви впевнені, що хочете скинути всі налаштування Easy Effects?"
 
-#: src/contents/ui/main.qml:272 src/contents/ui/main.qml:289
+#: src/contents/ui/main.qml:277 src/contents/ui/main.qml:293
 msgid "Preset Loaded"
 msgstr "Пресет застосовано"
 
-#: src/contents/ui/main.qml:334
+#: src/contents/ui/main.qml:304 src/contents/ui/main.qml:316
+msgid "Clear List"
+msgstr ""
+
+#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
+#, fuzzy
+msgid "Are you sure you want to clear this list?"
+msgstr "Ви впевнені, що хочете вилучити цей пресет зі списку?"
+
+#: src/contents/ui/main.qml:372
 msgid "Active"
 msgstr "Активний"
 
-#: src/contents/ui/main.qml:354 src/contents/ui/main.qml:476
+#: src/contents/ui/main.qml:392 src/contents/ui/main.qml:514
 msgid "Manual"
 msgstr "Довідка"
 
-#: src/contents/ui/main.qml:364 src/contents/ui/main.qml:508
+#: src/contents/ui/main.qml:402 src/contents/ui/main.qml:546
 msgid "Quit"
 msgstr "Вийти"
 
-#: src/contents/ui/main.qml:394
+#: src/contents/ui/main.qml:432
 msgid "Turn Effects On/Off"
 msgstr "Увімкнення/вимкнення ефектів"
 
-#: src/contents/ui/main.qml:444
+#: src/contents/ui/main.qml:482
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:500
+#: src/contents/ui/main.qml:538
 msgid "About Easy Effects"
 msgstr "Про Easy Effects"
 
@@ -2568,33 +2582,33 @@ msgstr "(Колонки)"
 msgid "Output Level Meter"
 msgstr "Вимірювач рівня вихідного сигналу"
 
-#: src/presets_manager.cpp:756 src/presets_manager.cpp:763
-#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
-#: src/presets_manager.cpp:790 src/presets_manager.cpp:799
+#: src/presets_manager.cpp:758 src/presets_manager.cpp:765
+#: src/presets_manager.cpp:775 src/presets_manager.cpp:782
+#: src/presets_manager.cpp:792 src/presets_manager.cpp:801
 msgid "Preset Not Loaded Correctly"
 msgstr "Пресет не застосовано належним чином"
 
-#: src/presets_manager.cpp:756
+#: src/presets_manager.cpp:758
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Неправильний формат у списку виключених застосунків"
 
-#: src/presets_manager.cpp:764
+#: src/presets_manager.cpp:766
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Загальна помилка під час завантаження списку виключених застосунків"
 
-#: src/presets_manager.cpp:773
+#: src/presets_manager.cpp:775
 msgid "Wrong Format in Effects List"
 msgstr "Неправильний формат у списку ефектів"
 
-#: src/presets_manager.cpp:780
+#: src/presets_manager.cpp:782
 msgid "Generic Error While Loading Effects List"
 msgstr "Загальна помилка під час завантаження списку ефектів"
 
-#: src/presets_manager.cpp:791
+#: src/presets_manager.cpp:793
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Один або кілька параметрів мають неправильний формат"
 
-#: src/presets_manager.cpp:800
+#: src/presets_manager.cpp:802
 msgid "Generic Error While Loading The Effect"
 msgstr "Загальна помилка під час застосування ефекту"
 
