@@ -4,7 +4,7 @@
 # After running this script, metainfo and changelog should not need to be modified directly to adjust release notes.
 
 # Release workflow:
-# 1. Update version number in meson.build
+# 1. Update version number in root CMakeLists.txt
 # 2. Run this script
 # 3. Commit, tag, and push to GitHub
 
@@ -22,7 +22,7 @@ set -o noclobber
 #set -o xtrace #Debug
 
 readonly APP_ID='com.github.wwmm.easyeffects'
-readonly SCRIPT_DEPS='date dirname realpath xmllint xsltproc sed appstreamcli appstream-util mktemp'
+readonly SCRIPT_DEPS='date dirname realpath xmllint cmake ninja sed awk appstreamcli appstream-util mktemp'
 
 BASE_DIR='.'
 CMD_DIR=''
@@ -89,24 +89,28 @@ check_metainfo_releases() {
 
   if [ "${old_version}" == "${new_version}" ] && [ "${MAKE_NEW_RELEASE}" == y ]; then
     log_info 'Current app release is already in metainfo. No action taken.'
-    log_info 'Since you said you are making a new release, ensure to set a new version in the root meson.build.'
+    log_info 'Since you said you are making a new release, ensure to set a new version in the root CMakeLists.txt.'
     exit 0
   fi
 }
 
 get_version() {
-  local file=''
   local version=''
+  local tmpbuild=''
 
-  # Read main project meson.build file
-  file="${REPO_DIR}/$(< CMakeLists.txt)"
-  if [[ "$?" -ne 0 ]]; then
-    exit_err 'Failed to read the CMakeLists.txt file.'
+  tmpbuild="$(mktemp -d)"
+
+  # configure the entire project
+  if ! cmake -B "$tmpbuild" -S . -G Ninja 1>/dev/null; then
+    rm -rf "${tmpbuild:?}"
+    exit_err 'Failed to configure the build, make sure you have the correct dependencies installed.'
   fi
-  # Extract version string
-  # Works as long as "meson_version:" is defined below "version:"
-  file="${file#*version:*\'}"
-  version="${file%%\'*}"
+
+  # Read cached file from the main project and get version string
+  version="$(cat "$tmpbuild"/CMakeCache.txt |
+  awk -F= '$1~/CMAKE_PROJECT_VERSION:STATIC/{print$2}')"
+
+  rm -rf "${tmpbuild:?}"
 
   printf "%b" "${version}\n"
 }
@@ -222,18 +226,18 @@ finalize_metainfo() {
 
 check_appstream_cli() {
 
-  log_info "Checking appstreamcli validate --pedantic"
+  log_info "Checking appstreamcli validate --pedantic --strict"
   
-  APPSTREAM_CLI_OUT=$(appstreamcli validate --pedantic --explain "${TEMP_METAINFO_FILE}")
+  APPSTREAM_CLI_OUT=$(appstreamcli validate --pedantic --strict --explain "${TEMP_METAINFO_FILE}")
   if [ $? -ne 0 ];
   then
-    log_err "appstreamcli validate --pedantic failed \n"
+    log_err "appstreamcli validate --pedantic --strict failed \n"
     log_err "appstreamcli: $APPSTREAM_CLI_OUT \n"
     rm "${TEMP_NEWS:?}"
     rm "${TEMP_METAINFO_FILE:?}"
     exit 1
   fi
-  log_info "Passed appstreamcli validate --pedantic"
+  log_info "Passed appstreamcli validate --pedantic --strict"
 
 }
 
@@ -370,6 +374,8 @@ fi
 
 check_deps
 init "$0"
+
+log_info "Configuring temporary CMake build to get version number"
 NEW_RELEASE_VERSION="$(get_version)" || exit 1
 
 check_metainfo_releases "${NEW_RELEASE_VERSION}"
