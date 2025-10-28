@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-27 18:40+0000\n"
+"POT-Creation-Date: 2025-10-28 20:08+0000\n"
 "PO-Revision-Date: 2025-10-28 07:06+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -77,11 +77,11 @@ msgstr "Activer les messages de débogage."
 msgid "Must specify preset type: input/output."
 msgstr "Vous devez spécifier le type de préréglage : input/output."
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:308
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:341
 msgid "Output Presets"
 msgstr "Préréglages de Sortie"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:298
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:326
 msgid "Input Presets"
 msgstr "Préréglages d’Entrée"
 
@@ -273,14 +273,14 @@ msgstr "Écouter"
 #: src/contents/ui/MultibandCompressor.qml:975
 #: src/contents/ui/MultibandGate.qml:948 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:349 src/contents/ui/Speex.qml:184
-#: src/contents/ui/StereoTools.qml:426 src/contents/ui/main.qml:488
+#: src/contents/ui/StereoTools.qml:426 src/contents/ui/main.qml:526
 msgid "Reset"
 msgstr "Réinitialiser"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:422
+#: src/contents/ui/main.qml:460
 msgid "Output"
 msgstr "Sortie"
 
@@ -432,7 +432,7 @@ msgstr "Externe"
 
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
-#: src/contents/ui/PageStreamsEffects.qml:316
+#: src/contents/ui/PageStreamsEffects.qml:321
 msgid "Input Device"
 msgstr "Périphérique d’Entrée"
 
@@ -830,7 +830,7 @@ msgid "Default"
 msgstr "Par défaut"
 
 #: src/contents/ui/Crossfeed.qml:151 src/contents/ui/Reverb.qml:326
-#: src/contents/ui/main.qml:386
+#: src/contents/ui/main.qml:424
 msgid "Presets"
 msgstr "Préréglages"
 
@@ -998,11 +998,11 @@ msgstr "Accès"
 msgid "Description"
 msgstr "Description"
 
-#: src/contents/ui/DelegatePluginsList.qml:64
+#: src/contents/ui/DelegatePluginsList.qml:65
 msgid "Enable this Effect"
 msgstr "Activer cet Effet"
 
-#: src/contents/ui/DelegatePluginsList.qml:78
+#: src/contents/ui/DelegatePluginsList.qml:79
 msgid "Remove this effect"
 msgstr "Supprimer cet effet"
 
@@ -1074,7 +1074,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Contrôles de gain d'entrée et de sortie avec indicateurs de niveau"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:433
+#: src/contents/ui/main.qml:471
 msgid "Input"
 msgstr "Entrée"
 
@@ -1654,41 +1654,41 @@ msgstr "Liste Vide"
 msgid "No Audio Application Available"
 msgstr "Aucune Application Audio Disponible"
 
-#: src/contents/ui/PageStreamsEffects.qml:270
+#: src/contents/ui/PageStreamsEffects.qml:274
 msgid "Add Effect"
 msgstr "Ajouter un Effet"
 
-#: src/contents/ui/PageStreamsEffects.qml:316
-#: src/contents/ui/PageStreamsEffects.qml:565
+#: src/contents/ui/PageStreamsEffects.qml:321
+#: src/contents/ui/PageStreamsEffects.qml:570
 msgid "Players"
 msgstr "Lecteurs"
 
-#: src/contents/ui/PageStreamsEffects.qml:333
-#: src/contents/ui/PageStreamsEffects.qml:565
+#: src/contents/ui/PageStreamsEffects.qml:338
+#: src/contents/ui/PageStreamsEffects.qml:570
 msgid "Recorders"
 msgstr "Enregistreurs"
 
-#: src/contents/ui/PageStreamsEffects.qml:346
+#: src/contents/ui/PageStreamsEffects.qml:351
 msgid "Close"
 msgstr "Fermer"
 
-#: src/contents/ui/PageStreamsEffects.qml:370
+#: src/contents/ui/PageStreamsEffects.qml:375
 msgid "No Effects"
 msgstr "Aucun Effet"
 
-#: src/contents/ui/PageStreamsEffects.qml:371
+#: src/contents/ui/PageStreamsEffects.qml:376
 msgid "Audio Stream Not Modified"
 msgstr "Flux Audio Non Modifié"
 
-#: src/contents/ui/PageStreamsEffects.qml:575
+#: src/contents/ui/PageStreamsEffects.qml:580
 msgid "Effects"
 msgstr "Effets"
 
-#: src/contents/ui/PageStreamsEffects.qml:592
+#: src/contents/ui/PageStreamsEffects.qml:597
 msgid "Input Monitoring"
 msgstr "Surveillance de l'Entrée"
 
-#: src/contents/ui/PageStreamsEffects.qml:605
+#: src/contents/ui/PageStreamsEffects.qml:610
 msgid "Excluded Apps"
 msgstr "Applications Exclues"
 
@@ -1849,8 +1849,8 @@ msgstr "Anti-crénelage"
 
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:460
+#: src/contents/ui/PreferencesSheet.qml:547
+#: src/contents/ui/PreferencesSheet.qml:560 src/contents/ui/main.qml:498
 msgid "Preferences"
 msgstr "Préférences"
 
@@ -2053,48 +2053,53 @@ msgstr "Maximum"
 msgid "Database Autosave Interval"
 msgstr "Intervalle d'Enregistrement Automatique de la Base de Données"
 
-#: src/contents/ui/PreferencesSheet.qml:406
+#: src/contents/ui/PreferencesSheet.qml:396
+#, fuzzy
+msgid "Most Used Presets"
+msgstr "Préréglages du Flux Croisé"
+
+#: src/contents/ui/PreferencesSheet.qml:418
 #: src/contents/ui/ShortcutsSheet.qml:248
 msgid "Global Shortcuts"
 msgstr "Raccourcis Globaux"
 
-#: src/contents/ui/PreferencesSheet.qml:407
+#: src/contents/ui/PreferencesSheet.qml:419
 msgid "Enables Support for XDG Global Shortcuts"
 msgstr "Active le Support pour les Raccourcis Globaux XDG"
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:431
 msgid "Native Window of Effects"
 msgstr "Fenêtre Native des Effets"
 
-#: src/contents/ui/PreferencesSheet.qml:420
+#: src/contents/ui/PreferencesSheet.qml:432
 msgid "Allows the Native User Interface of Effects to be Shown/Hidden"
 msgstr "Permet d'Afficher/Masquer l'Interface Utilisateur Native des Effets"
 
-#: src/contents/ui/PreferencesSheet.qml:432
+#: src/contents/ui/PreferencesSheet.qml:444
 msgid "Update Frequency"
 msgstr "Fréquence de Mise à Jour"
 
-#: src/contents/ui/PreferencesSheet.qml:433
+#: src/contents/ui/PreferencesSheet.qml:445
 msgid "Related to LV2 Plugins"
 msgstr "En Rapport avec les Plugins LV2"
 
-#: src/contents/ui/PreferencesSheet.qml:462
+#: src/contents/ui/PreferencesSheet.qml:474
 msgid "Background Service"
 msgstr "Service en arrière-plan"
 
-#: src/contents/ui/PreferencesSheet.qml:475
+#: src/contents/ui/PreferencesSheet.qml:487
 msgid "Audio"
 msgstr "Audio"
 
-#: src/contents/ui/PreferencesSheet.qml:488
+#: src/contents/ui/PreferencesSheet.qml:500
 msgid "Spectrum Analyzer"
 msgstr "Analyseur de Spectre"
 
-#: src/contents/ui/PreferencesSheet.qml:501
+#: src/contents/ui/PreferencesSheet.qml:513
 msgid "Database"
 msgstr "Base de Données"
 
-#: src/contents/ui/PreferencesSheet.qml:514
+#: src/contents/ui/PreferencesSheet.qml:526
 msgid "Experimental Features"
 msgstr "Fonctionnalités Expérimentales"
 
@@ -2439,8 +2444,8 @@ msgstr "Peut Être Utilisé sur les Contrôles Numériques"
 msgid "Toggle Microphone Monitoring"
 msgstr "Basculer la Surveillance du Microphone"
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:345
-#: src/contents/ui/main.qml:468
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:383
+#: src/contents/ui/main.qml:506
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
@@ -2541,31 +2546,41 @@ msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 "Êtes-vous sûr de vouloir réinitialiser tous les paramètres Easy Effects ?"
 
-#: src/contents/ui/main.qml:272 src/contents/ui/main.qml:289
+#: src/contents/ui/main.qml:277 src/contents/ui/main.qml:293
 msgid "Preset Loaded"
 msgstr "Préréglage Chargé"
 
-#: src/contents/ui/main.qml:334
+#: src/contents/ui/main.qml:304 src/contents/ui/main.qml:316
+#, fuzzy
+msgid "Clear List"
+msgstr "Liste des Clients"
+
+#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
+#, fuzzy
+msgid "Are you sure you want to clear this list?"
+msgstr "Êtes-vous sûr de vouloir supprimer ce préréglage de la liste ?"
+
+#: src/contents/ui/main.qml:372
 msgid "Active"
 msgstr "Actif"
 
-#: src/contents/ui/main.qml:354 src/contents/ui/main.qml:476
+#: src/contents/ui/main.qml:392 src/contents/ui/main.qml:514
 msgid "Manual"
 msgstr "Manuel"
 
-#: src/contents/ui/main.qml:364 src/contents/ui/main.qml:508
+#: src/contents/ui/main.qml:402 src/contents/ui/main.qml:546
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/contents/ui/main.qml:394
+#: src/contents/ui/main.qml:432
 msgid "Turn Effects On/Off"
 msgstr "Activer/ Désactiver les Effets"
 
-#: src/contents/ui/main.qml:444
+#: src/contents/ui/main.qml:482
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:500
+#: src/contents/ui/main.qml:538
 msgid "About Easy Effects"
 msgstr "À propos de Easy Effects"
 
@@ -2581,34 +2596,34 @@ msgstr "(Haut-Parleurs)"
 msgid "Output Level Meter"
 msgstr "Indicateur Niveau de Sortie"
 
-#: src/presets_manager.cpp:756 src/presets_manager.cpp:763
-#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
-#: src/presets_manager.cpp:790 src/presets_manager.cpp:799
+#: src/presets_manager.cpp:758 src/presets_manager.cpp:765
+#: src/presets_manager.cpp:775 src/presets_manager.cpp:782
+#: src/presets_manager.cpp:792 src/presets_manager.cpp:801
 msgid "Preset Not Loaded Correctly"
 msgstr "Le Préréglage N'a Pas Été Chargé Correctement"
 
-#: src/presets_manager.cpp:756
+#: src/presets_manager.cpp:758
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Format Incorrect dans la Liste des Applications Exclues"
 
-#: src/presets_manager.cpp:764
+#: src/presets_manager.cpp:766
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr ""
 "Erreur Générique Lors du Chargement de la Liste des Applications Exclues"
 
-#: src/presets_manager.cpp:773
+#: src/presets_manager.cpp:775
 msgid "Wrong Format in Effects List"
 msgstr "Format Incorrect dans la Liste des Effets"
 
-#: src/presets_manager.cpp:780
+#: src/presets_manager.cpp:782
 msgid "Generic Error While Loading Effects List"
 msgstr "Erreur Générique Lors du Chargement de la Liste des Effets"
 
-#: src/presets_manager.cpp:791
+#: src/presets_manager.cpp:793
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Un ou Plusieurs Paramètres Ont un Format Incorrect"
 
-#: src/presets_manager.cpp:800
+#: src/presets_manager.cpp:802
 msgid "Generic Error While Loading The Effect"
 msgstr "Erreur Générique Lors du Chargement de l'Effet"
 
@@ -3196,9 +3211,6 @@ msgstr "Effets Audio pour les Applications PipeWire"
 
 #~ msgid "Modules List"
 #~ msgstr "Liste des Modules"
-
-#~ msgid "Clients List"
-#~ msgstr "Liste des Clients"
 
 #~ msgid "Properties"
 #~ msgstr "Propriétés"
