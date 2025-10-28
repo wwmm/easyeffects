@@ -22,7 +22,7 @@ set -o noclobber
 #set -o xtrace #Debug
 
 readonly APP_ID='com.github.wwmm.easyeffects'
-readonly SCRIPT_DEPS='date dirname realpath xmllint xsltproc sed appstreamcli appstream-util mktemp'
+readonly SCRIPT_DEPS='date dirname realpath xmllint sed appstreamcli appstream-util mktemp'
 
 BASE_DIR='.'
 CMD_DIR=''
