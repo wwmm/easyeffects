@@ -40,7 +40,7 @@ static inline const char* get_ladspa_path() {
   const char* path = std::getenv("LADSPA_PATH");
 
   if (path == nullptr || path[0] == '\0') {
-    path = "/usr/local/lib/ladspa/:" LIB_DIR "/ladspa/:/usr/lib/ladspa/";
+    path = "/usr/local/lib/ladspa/:" LIB_DIR "/ladspa/:/usr/lib/ladspa/:/usr/lib64/ladspa/";
   }
 
   return path;
