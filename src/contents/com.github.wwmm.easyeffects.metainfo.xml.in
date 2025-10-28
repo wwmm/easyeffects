@@ -37,7 +37,7 @@
   <url type="translate">https://github.com/wwmm/easyeffects/wiki/Translating-EasyEffects</url>
   <url type="vcs-browser">https://github.com/wwmm/easyeffects</url>
   <url type="contribute">https://github.com/wwmm/easyeffects/wiki/Installation-from-Source</url>
-  <translation type="gettext">Easy Effects</translation>
+  <translation type="gettext">easyeffects</translation>
   <screenshots>
     <screenshot type="default">
       <caption>The main page showing two audio output apps</caption>
