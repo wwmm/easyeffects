@@ -181,10 +181,25 @@ ColumnLayout {
                 }
 
                 Kirigami.PromptDialog {
+                    id: saveDialog
+
+                    title: i18n("Save Preset") // qmllint disable
+                    subtitle: i18n("Save current settings to the preset:\n%1", listItemDelegate.name) // qmllint disable
+                    standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+                    onAccepted: {
+                        if (Presets.Manager.savePresetFile(columnLayout.pipeline, listItemDelegate.name) === true) {
+                            appWindow.showStatus(i18n("Saved the Current Settings to %1 Local Preset.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+                        } else {
+                            appWindow.showStatus(i18n("Failed to Save the Current Settings to %1 Local Preset.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
+                        }
+                    }
+                }
+
+                Kirigami.PromptDialog {
                     id: deleteDialog
 
                     title: i18n("Remove Preset") // qmllint disable
-                    subtitle: i18n("Are you sure you want to remove this preset from the list?") // qmllint disable
+                    subtitle: i18n("Are you sure you want to remove the preset\n%1\nfrom the list?", listItemDelegate.name) // qmllint disable
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: {
                         if (Presets.Manager.remove(columnLayout.pipeline, listItemDelegate.name) === true) {
@@ -263,11 +278,7 @@ ColumnLayout {
                                 icon.name: "document-save-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
-                                    if (Presets.Manager.savePresetFile(columnLayout.pipeline, listItemDelegate.name) === true) {
-                                        appWindow.showStatus(i18n("Saved the Current Settings to %1 Local Preset.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
-                                    } else {
-                                        appWindow.showStatus(i18n("Failed to Save the Current Settings to %1 Local Preset.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
-                                    }
+                                    saveDialog.open();
                                 }
                             },
                             Kirigami.Action {
