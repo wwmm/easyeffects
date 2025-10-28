@@ -322,8 +322,14 @@ jobs:
         uses: actions/checkout@v5.0.0
       
       - name: Install deps
-        run: pacman -Syu --noconfirm appstream appstream-glib which
-        
+        run: | 
+          # appstream deps
+          pacman -Syu --noconfirm appstream appstream-glib
+          # install general build deps
+          pacman -Syu --noconfirm ninja gcc pkgconf python3 python-pip which
+          # install easyeffects deps
+          source ./PKGBUILD && pacman -Syu --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
+
       - name: Validate existing files
         run: ./util/update-release-files.sh --no-new-release
 
