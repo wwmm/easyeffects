@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-26 16:20+0000\n"
-"PO-Revision-Date: 2025-10-27 18:43+0000\n"
+"PO-Revision-Date: 2025-10-28 20:02+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -3066,14 +3066,12 @@ msgid "Audio Effects for PipeWire Applications"
 msgstr "Effetti Audio per Applicazioni Pipewire"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "True Peak/16 bit"
-msgstr "Picco Effettivo"
+msgstr "Picco Effettivo/16 bit"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "True Peak/24 bit"
-msgstr "Picco Effettivo"
+msgstr "Picco Effettivo/24 bit"
 
 #~ msgid "Impluse File Imported."
 #~ msgstr "File di Risposta Impulsiva Importato."
