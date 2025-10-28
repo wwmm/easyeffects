@@ -248,6 +248,12 @@ Kirigami.ApplicationWindow {
             id: trayMenu
             visible: false
             onAboutToShow: {
+                instantiatorInputPresets.model = [];
+                instantiatorOutputPresets.model = [];
+
+                instantiatorInputPresets.model = DB.Manager.streamInputs.mostUsedPresets;
+                instantiatorOutputPresets.model = DB.Manager.streamOutputs.mostUsedPresets;
+
                 /**
                  * Although it is possible to make a binding to the text property so it is automatically updated
                  * it is possible that the menu is contructed before description is available for the node name. In
@@ -263,7 +269,6 @@ Kirigami.ApplicationWindow {
             Instantiator {
                 id: instantiatorInputPresets
 
-                model: DB.Manager.streamInputs.mostUsedPresets
                 delegate: MenuItem {
                     text: modelData// qmllint disable
                     onTriggered: {
@@ -280,7 +285,6 @@ Kirigami.ApplicationWindow {
             Instantiator {
                 id: instantiatorOutputPresets
 
-                model: DB.Manager.streamOutputs.mostUsedPresets
                 delegate: MenuItem {
                     text: modelData// qmllint disable
                     onTriggered: {
@@ -294,10 +298,39 @@ Kirigami.ApplicationWindow {
                 onObjectRemoved: (index, object) => trayMenu.removeItem(object)
             }
 
+            Kirigami.PromptDialog {
+                id: clearMostUsedOutputDialog
+
+                title: i18n("Clear List") // qmllint disable
+                subtitle: i18n("Are you sure you want to clear this list?") // qmllint disable
+                standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+                onAccepted: {
+                    DB.Manager.streamOutputs.usedPresets = [];
+                    DB.Manager.streamOutputs.mostUsedPresets = [];
+                }
+            }
+
+            Kirigami.PromptDialog {
+                id: clearMostUsedInputDialog
+
+                title: i18n("Clear List") // qmllint disable
+                subtitle: i18n("Are you sure you want to clear this list?") // qmllint disable
+                standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
+                onAccepted: {
+                    DB.Manager.streamInputs.usedPresets = [];
+                    DB.Manager.streamInputs.mostUsedPresets = [];
+                }
+            }
+
             MenuItem {
                 text: i18n("Input Presets") // qmllint disable
                 icon.name: "bookmarks-symbolic"
-                enabled: false
+                onTriggered: {
+                    appWindow.show();
+                    appWindow.raise();
+
+                    clearMostUsedInputDialog.open();
+                }
             }
 
             MenuSeparator {
@@ -307,7 +340,12 @@ Kirigami.ApplicationWindow {
             MenuItem {
                 text: i18n("Output Presets") // qmllint disable
                 icon.name: "bookmarks-symbolic"
-                enabled: false
+                onTriggered: {
+                    appWindow.show();
+                    appWindow.raise();
+
+                    clearMostUsedOutputDialog.open();
+                }
             }
 
             MenuSeparator {

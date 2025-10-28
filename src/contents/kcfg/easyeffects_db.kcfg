@@ -64,6 +64,12 @@
             <max>60000</max>
             <default>30000</default>
         </entry>
+        <entry name="maxMostUsedPresets" type="Int">
+            <label>How many presets to show in our most used presets list</label>
+            <min>1</min>
+            <max>100</max>
+            <default>5</default>
+        </entry>
         <entry name="levelMetersLabelTimer" type="Int">
             <label>Time it takes for the level meters label to be updated. This is only used while the current level is below the last highest level.</label>
             <min>1</min>

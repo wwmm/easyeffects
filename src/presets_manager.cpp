@@ -377,6 +377,8 @@ bool Manager::remove(const PipelineType& pipeline_type, const QString& name) {
 
     util::debug(std::format("Removed preset: {}", preset_file.string()));
 
+    update_used_presets_list(pipeline_type, "");
+
     return true;
   }
 
@@ -888,30 +890,24 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
   for (auto& p : names) {
     idx++;
 
-    if (p.startsWith(name)) {
+    if (!name.isEmpty() && p.startsWith(name)) {
       contains_name = true;
 
       break;
     }
   }
 
-  if (!contains_name) {
-    names.append(name + ":0");
-
-    if (pipeline_type == PipelineType::input) {
-      db::StreamInputs::setUsedPresets(names);
-    } else {
-      db::StreamOutputs::setUsedPresets(names);
-    }
-
-    return;
+  if (!contains_name && !name.isEmpty()) {
+    names.append(name + ":1");
   }
 
-  auto name_and_count = names[idx].split(":");
+  if (contains_name) {
+    auto name_and_count = names[idx].split(":");
 
-  auto updated_count = name_and_count[1].toInt() + 1;
+    auto updated_count = name_and_count[1].toInt() + 1;
 
-  names[idx] = QString("%1:%2").arg(name).arg(updated_count);
+    names[idx] = QString("%1:%2").arg(name).arg(updated_count);
+  }
 
   if (pipeline_type == PipelineType::input) {
     db::StreamInputs::setUsedPresets(names);
@@ -937,8 +933,9 @@ void Manager::update_used_presets_list(const PipelineType& pipeline_type, const 
     sortedList << it.second;
   }
 
-  if (sortedList.size() > 4) {  // We can't have many entries in the tray menu. There is no space for that.
-    sortedList.resize(4);
+  if (sortedList.size() >
+      db::Main::maxMostUsedPresets()) {  // We can't have many entries in the tray menu. There is no space for that.
+    sortedList.resize(db::Main::maxMostUsedPresets());
   }
 
   if (pipeline_type == PipelineType::input) {

@@ -391,6 +391,18 @@ Kirigami.OverlaySheet {
                         DB.Manager.main.databaseAutosaveInterval = v;
                     }
                 }
+
+                EeSpinBox {
+                    label: i18n("Most Used Presets") // qmllint disable
+                    from: DB.Manager.main.getMinValue("maxMostUsedPresets")
+                    to: DB.Manager.main.getMaxValue("maxMostUsedPresets")
+                    value: DB.Manager.main.maxMostUsedPresets
+                    decimals: 0
+                    stepSize: 1
+                    onValueModified: v => {
+                        DB.Manager.main.maxMostUsedPresets = v;
+                    }
+                }
             }
         }
     }
