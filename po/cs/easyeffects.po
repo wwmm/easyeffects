@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-27 18:40+0000\n"
+"POT-Creation-Date: 2025-10-28 21:11+0000\n"
 "PO-Revision-Date: 2025-08-30 15:01+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -76,11 +76,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:308
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:341
 msgid "Output Presets"
 msgstr "Výstupní předvolby"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:298
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:326
 msgid "Input Presets"
 msgstr "Vstupní předvolby"
 
@@ -279,14 +279,14 @@ msgstr "Poslouchat"
 #: src/contents/ui/MultibandCompressor.qml:975
 #: src/contents/ui/MultibandGate.qml:948 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:349 src/contents/ui/Speex.qml:184
-#: src/contents/ui/StereoTools.qml:426 src/contents/ui/main.qml:488
+#: src/contents/ui/StereoTools.qml:426 src/contents/ui/main.qml:526
 msgid "Reset"
 msgstr "Vrátit na výchozí"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:422
+#: src/contents/ui/main.qml:460
 msgid "Output"
 msgstr "Výstup"
 
@@ -444,7 +444,7 @@ msgstr "Externí"
 
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
-#: src/contents/ui/PageStreamsEffects.qml:316
+#: src/contents/ui/PageStreamsEffects.qml:321
 msgid "Input Device"
 msgstr "Vstupní zařízení"
 
@@ -856,7 +856,7 @@ msgid "Default"
 msgstr "Výchozí"
 
 #: src/contents/ui/Crossfeed.qml:151 src/contents/ui/Reverb.qml:326
-#: src/contents/ui/main.qml:386
+#: src/contents/ui/main.qml:424
 msgid "Presets"
 msgstr "Předvolby"
 
@@ -1030,12 +1030,12 @@ msgstr "Přístup"
 msgid "Description"
 msgstr "Popis"
 
-#: src/contents/ui/DelegatePluginsList.qml:64
+#: src/contents/ui/DelegatePluginsList.qml:65
 #, fuzzy
 msgid "Enable this Effect"
 msgstr "Povolit/zakázat tento efekt"
 
-#: src/contents/ui/DelegatePluginsList.qml:78
+#: src/contents/ui/DelegatePluginsList.qml:79
 msgid "Remove this effect"
 msgstr "Odstranit tento efekt"
 
@@ -1112,7 +1112,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:433
+#: src/contents/ui/main.qml:471
 msgid "Input"
 msgstr "Vstup"
 
@@ -1739,42 +1739,42 @@ msgstr "Prázdný seznam"
 msgid "No Audio Application Available"
 msgstr "Není dostupná žádná zvuková aplikace"
 
-#: src/contents/ui/PageStreamsEffects.qml:270
+#: src/contents/ui/PageStreamsEffects.qml:274
 msgid "Add Effect"
 msgstr "Přidat efekt"
 
-#: src/contents/ui/PageStreamsEffects.qml:316
-#: src/contents/ui/PageStreamsEffects.qml:565
+#: src/contents/ui/PageStreamsEffects.qml:321
+#: src/contents/ui/PageStreamsEffects.qml:570
 msgid "Players"
 msgstr "Přehrávače"
 
-#: src/contents/ui/PageStreamsEffects.qml:333
-#: src/contents/ui/PageStreamsEffects.qml:565
+#: src/contents/ui/PageStreamsEffects.qml:338
+#: src/contents/ui/PageStreamsEffects.qml:570
 msgid "Recorders"
 msgstr "Záznamníky"
 
-#: src/contents/ui/PageStreamsEffects.qml:346
+#: src/contents/ui/PageStreamsEffects.qml:351
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:370
+#: src/contents/ui/PageStreamsEffects.qml:375
 msgid "No Effects"
 msgstr "Žádné efekty"
 
-#: src/contents/ui/PageStreamsEffects.qml:371
+#: src/contents/ui/PageStreamsEffects.qml:376
 msgid "Audio Stream Not Modified"
 msgstr "Audio Stream není modifikovaný"
 
-#: src/contents/ui/PageStreamsEffects.qml:575
+#: src/contents/ui/PageStreamsEffects.qml:580
 msgid "Effects"
 msgstr "Efekty"
 
-#: src/contents/ui/PageStreamsEffects.qml:592
+#: src/contents/ui/PageStreamsEffects.qml:597
 #, fuzzy
 msgid "Input Monitoring"
 msgstr "Povolit monitorování vstupu"
 
-#: src/contents/ui/PageStreamsEffects.qml:605
+#: src/contents/ui/PageStreamsEffects.qml:610
 msgid "Excluded Apps"
 msgstr "Vynechané aplikace"
 
@@ -1939,8 +1939,8 @@ msgstr "Vyrovnávání obrazu"
 
 #: src/contents/ui/PreferencesSheet.qml:14
 #: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:535
-#: src/contents/ui/PreferencesSheet.qml:548 src/contents/ui/main.qml:460
+#: src/contents/ui/PreferencesSheet.qml:547
+#: src/contents/ui/PreferencesSheet.qml:560 src/contents/ui/main.qml:498
 #, fuzzy
 msgid "Preferences"
 msgstr "_Nastavení"
@@ -2146,52 +2146,57 @@ msgstr "Nejvýše"
 msgid "Database Autosave Interval"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:406
+#: src/contents/ui/PreferencesSheet.qml:396
+#, fuzzy
+msgid "Most Used Presets"
+msgstr "Prolínání kanálů"
+
+#: src/contents/ui/PreferencesSheet.qml:418
 #: src/contents/ui/ShortcutsSheet.qml:248
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "_Klávesové zkratky"
 
-#: src/contents/ui/PreferencesSheet.qml:407
+#: src/contents/ui/PreferencesSheet.qml:419
 msgid "Enables Support for XDG Global Shortcuts"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:431
 #, fuzzy
 msgid "Native Window of Effects"
 msgstr "Zobrazit nativní okno"
 
-#: src/contents/ui/PreferencesSheet.qml:420
+#: src/contents/ui/PreferencesSheet.qml:432
 #, fuzzy
 msgid "Allows the Native User Interface of Effects to be Shown/Hidden"
 msgstr "Umožňuje zobrazit/skrýt okno nativního pluginu"
 
-#: src/contents/ui/PreferencesSheet.qml:432
+#: src/contents/ui/PreferencesSheet.qml:444
 msgid "Update Frequency"
 msgstr "Frekvence aktualizací"
 
-#: src/contents/ui/PreferencesSheet.qml:433
+#: src/contents/ui/PreferencesSheet.qml:445
 msgid "Related to LV2 Plugins"
 msgstr "Související se zásuvnými moduly LV2"
 
-#: src/contents/ui/PreferencesSheet.qml:462
+#: src/contents/ui/PreferencesSheet.qml:474
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:475
+#: src/contents/ui/PreferencesSheet.qml:487
 msgid "Audio"
 msgstr "Audio"
 
-#: src/contents/ui/PreferencesSheet.qml:488
+#: src/contents/ui/PreferencesSheet.qml:500
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Typ spektra"
 
-#: src/contents/ui/PreferencesSheet.qml:501
+#: src/contents/ui/PreferencesSheet.qml:513
 msgid "Database"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:514
+#: src/contents/ui/PreferencesSheet.qml:526
 msgid "Experimental Features"
 msgstr "Experimentální funkce"
 
@@ -2564,8 +2569,8 @@ msgstr ""
 msgid "Toggle Microphone Monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:345
-#: src/contents/ui/main.qml:468
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:383
+#: src/contents/ui/main.qml:506
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_Klávesové zkratky"
@@ -2667,36 +2672,45 @@ msgstr "_Resetovat nastavení"
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:272 src/contents/ui/main.qml:289
+#: src/contents/ui/main.qml:277 src/contents/ui/main.qml:293
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Není načtena žádná předvolba"
 
-#: src/contents/ui/main.qml:334
+#: src/contents/ui/main.qml:304 src/contents/ui/main.qml:316
+#, fuzzy
+msgid "Clear List"
+msgstr "seznam klientů"
+
+#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
+msgid "Are you sure you want to clear this list?"
+msgstr ""
+
+#: src/contents/ui/main.qml:372
 #, fuzzy
 msgid "Active"
 msgstr "Agresivní režim"
 
-#: src/contents/ui/main.qml:354 src/contents/ui/main.qml:476
+#: src/contents/ui/main.qml:392 src/contents/ui/main.qml:514
 #, fuzzy
 msgid "Manual"
 msgstr "_Manuál"
 
-#: src/contents/ui/main.qml:364 src/contents/ui/main.qml:508
+#: src/contents/ui/main.qml:402 src/contents/ui/main.qml:546
 #, fuzzy
 msgid "Quit"
 msgstr "_Ukončit"
 
-#: src/contents/ui/main.qml:394
+#: src/contents/ui/main.qml:432
 msgid "Turn Effects On/Off"
 msgstr ""
 
-#: src/contents/ui/main.qml:444
+#: src/contents/ui/main.qml:482
 #, fuzzy
 msgid "PipeWire"
 msgstr "_PipeWire"
 
-#: src/contents/ui/main.qml:500
+#: src/contents/ui/main.qml:538
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_O EasyEffects"
@@ -2713,33 +2727,33 @@ msgstr ""
 msgid "Output Level Meter"
 msgstr "Měřič výstupní úrovně"
 
-#: src/presets_manager.cpp:756 src/presets_manager.cpp:763
-#: src/presets_manager.cpp:773 src/presets_manager.cpp:780
-#: src/presets_manager.cpp:790 src/presets_manager.cpp:799
+#: src/presets_manager.cpp:758 src/presets_manager.cpp:765
+#: src/presets_manager.cpp:775 src/presets_manager.cpp:782
+#: src/presets_manager.cpp:792 src/presets_manager.cpp:801
 msgid "Preset Not Loaded Correctly"
 msgstr "Předvolba není načtena správně"
 
-#: src/presets_manager.cpp:756
+#: src/presets_manager.cpp:758
 msgid "Wrong Format in Excluded Apps List"
 msgstr "Nesprávný formát v seznamu vyloučených aplikací"
 
-#: src/presets_manager.cpp:764
+#: src/presets_manager.cpp:766
 msgid "Generic Error While Loading Excluded Apps List"
 msgstr "Obecná chyba při načítání seznamu vyloučených aplikací"
 
-#: src/presets_manager.cpp:773
+#: src/presets_manager.cpp:775
 msgid "Wrong Format in Effects List"
 msgstr "Chybný formát v seznamu efektů"
 
-#: src/presets_manager.cpp:780
+#: src/presets_manager.cpp:782
 msgid "Generic Error While Loading Effects List"
 msgstr "Obecná chyba při načítání seznamu efektů"
 
-#: src/presets_manager.cpp:791
+#: src/presets_manager.cpp:793
 msgid "One or More Parameters Have a Wrong Format"
 msgstr "Jeden nebo více parametrů má nesprávný formát"
 
-#: src/presets_manager.cpp:800
+#: src/presets_manager.cpp:802
 msgid "Generic Error While Loading The Effect"
 msgstr "Obecná chyba při načítání efektu"
 
@@ -3270,9 +3284,6 @@ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #~ msgid "Modules List"
 #~ msgstr "Seznam modulů"
-
-#~ msgid "Clients List"
-#~ msgstr "seznam klientů"
 
 #~ msgid "Properties"
 #~ msgstr "Vlastnosti"
