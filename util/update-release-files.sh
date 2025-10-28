@@ -222,18 +222,18 @@ finalize_metainfo() {
 
 check_appstream_cli() {
 
-  log_info "Checking appstreamcli validate --pedantic"
+  log_info "Checking appstreamcli validate --pedantic --strict"
   
-  APPSTREAM_CLI_OUT=$(appstreamcli validate --pedantic --explain "${TEMP_METAINFO_FILE}")
+  APPSTREAM_CLI_OUT=$(appstreamcli validate --pedantic --strict --explain "${TEMP_METAINFO_FILE}")
   if [ $? -ne 0 ];
   then
-    log_err "appstreamcli validate --pedantic failed \n"
+    log_err "appstreamcli validate --pedantic --strict failed \n"
     log_err "appstreamcli: $APPSTREAM_CLI_OUT \n"
     rm "${TEMP_NEWS:?}"
     rm "${TEMP_METAINFO_FILE:?}"
     exit 1
   fi
-  log_info "Passed appstreamcli validate --pedantic"
+  log_info "Passed appstreamcli validate --pedantic --strict"
 
 }
 
