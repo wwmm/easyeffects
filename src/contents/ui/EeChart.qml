@@ -131,6 +131,10 @@ Item {
     }
 
     function mapToValueX(mouseX) {
+        if (chart.plotArea.width <= 0) {
+            return 0;
+        }
+
         const normalizedX = (mouseX - chart.plotArea.x) / chart.plotArea.width;
 
         if (logarithimicHorizontalAxis) {
@@ -141,6 +145,10 @@ Item {
     }
 
     function mapToValueY(mouseY) {
+        if (chart.plotArea.height <= 0) {
+            return 0;
+        }
+
         const normalizedY = 1 - (mouseY - chart.plotArea.y) / chart.plotArea.height;
 
         if (logarithimicVerticalAxis) {
@@ -288,13 +296,40 @@ Item {
         anchors.fill: parent
         hoverEnabled: true
         onPositionChanged: function (mouse) {
+            // Calculating the label x coordinate
+
+            let labelX = mouse.x + widgetRoot.coordLabelOffset;
+
+            if (labelX + coordinateLabel.width > widgetRoot.width) {
+                labelX = widgetRoot.width - coordinateLabel.width - widgetRoot.coordLabelOffset;
+            } else if (x < 0) {
+                labelX = widgetRoot.coordLabelOffset;
+            }
+
+            coordinateLabel.x = labelX;
+
+            // Calculating the y coordinate
+
+            let labelY = mouse.y - coordinateLabel.height - widgetRoot.coordLabelOffset;
+
+            if (labelY < 0) {
+                labelY = widgetRoot.coordLabelOffset;
+            } else if (labelY + coordinateLabel.height > widgetRoot.height) {
+                labelY = widgetRoot.height - coordinateLabel.height - widgetRoot.coordLabelOffset;
+            }
+
+            coordinateLabel.y = labelY;
+
             const dataX = widgetRoot.mapToValueX(mouse.x);
             // const dataY = widgetRoot.mapToValueY(mouse.y);
 
-            coordinateLabel.x = mouse.x + widgetRoot.coordLabelOffset;
-            coordinateLabel.y = mouse.y - coordinateLabel.height - widgetRoot.coordLabelOffset;
-            coordinateLabel.text = `${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} ${widgetRoot.xUnit}`;
-            // coordinateLabel.text = `x: ${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} Hz, y: ${Number(dataY).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)}`;
+            const newText = `${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} ${widgetRoot.xUnit}`;
+            // const newText = `x: ${Number(dataX).toLocaleString(Qt.locale(), 'f', widgetRoot.xAxisDecimals)} Hz, y: ${Number(dataY).toLocaleString(locale, 'f', widgetRoot.xAxisDecimals)}`;
+
+            if (coordinateLabel.text !== newText) {
+                coordinateLabel.text = newText;
+            }
+
             coordinateLabel.visible = true;
         }
         onExited: {
@@ -316,23 +351,5 @@ Item {
         }
         color: Kirigami.Theme.textColor
         font.pointSize: Kirigami.Theme.smallFont.pointSize
-
-        // Ensure the label stays within chart bounds
-        onXChanged: {
-            if (x + width > parent.width) {
-                x = parent.width - width - widgetRoot.coordLabelOffset;
-            }
-            if (x < 0) {
-                x = widgetRoot.coordLabelOffset;
-            }
-        }
-        onYChanged: {
-            if (y < 0) {
-                y = widgetRoot.coordLabelOffset;
-            }
-            if (y + height > parent.height) {
-                y = parent.height - height - widgetRoot.coordLabelOffset;
-            }
-        }
     }
 }
