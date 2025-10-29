@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-28 21:11+0000\n"
-"PO-Revision-Date: 2025-10-28 20:02+0000\n"
+"PO-Revision-Date: 2025-10-29 04:00+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2055,9 +2055,8 @@ msgid "Database Autosave Interval"
 msgstr "Intervallo Auto Salvataggio Database"
 
 #: src/contents/ui/PreferencesSheet.qml:396
-#, fuzzy
 msgid "Most Used Presets"
-msgstr "Profili di Crossfeed"
+msgstr "Profili Più Utilizzati"
 
 #: src/contents/ui/PreferencesSheet.qml:418
 #: src/contents/ui/ShortcutsSheet.qml:248
@@ -2547,14 +2546,12 @@ msgid "Preset Loaded"
 msgstr "Profilo Caricato"
 
 #: src/contents/ui/main.qml:304 src/contents/ui/main.qml:316
-#, fuzzy
 msgid "Clear List"
-msgstr "Lista Client"
+msgstr "Svuota Lista"
 
 #: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
-#, fuzzy
 msgid "Are you sure you want to clear this list?"
-msgstr "Vuoi davvero rimuovere questo profilo dalla lista?"
+msgstr "Vuoi davvero svuotare questa lista?"
 
 #: src/contents/ui/main.qml:372
 msgid "Active"
