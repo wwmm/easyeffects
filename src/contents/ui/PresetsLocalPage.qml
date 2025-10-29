@@ -199,7 +199,7 @@ ColumnLayout {
                     id: deleteDialog
 
                     title: i18n("Remove Preset") // qmllint disable
-                    subtitle: i18n("Are you sure you want to remove the preset\n%1\nfrom the list?", listItemDelegate.name) // qmllint disable
+                    subtitle: i18n("Are you sure you want to remove the preset %1 from the list?", `\n${listItemDelegate.name}\n`) // qmllint disable
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: {
                         if (Presets.Manager.remove(columnLayout.pipeline, listItemDelegate.name) === true) {
