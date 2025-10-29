@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-28 19:44-0300\n"
-"PO-Revision-Date: 2025-10-28 20:02+0000\n"
+"PO-Revision-Date: 2025-10-30 04:17+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -1578,15 +1578,12 @@ msgid "Preset Loaded"
 msgstr "Réamhshocrú Luchtaithe"
 
 #: src/contents/ui/main.qml:304 src/contents/ui/main.qml:316
-#, fuzzy
 msgid "Clear List"
-msgstr "Liosta cliant"
+msgstr "Glan an Liosta"
 
 #: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
-#, fuzzy
 msgid "Are you sure you want to clear this list?"
-msgstr ""
-"An bhfuil tú cinnte gur mian leat an réamhshocrú seo a bhaint den liosta?"
+msgstr "An bhfuil tú cinnte gur mian leat an liosta seo a ghlanadh?"
 
 #: src/contents/ui/main.qml:372
 msgid "Active"
@@ -2108,9 +2105,8 @@ msgid "Database Autosave Interval"
 msgstr "Eatramh Uathshábháilte Bunachar Sonraí"
 
 #: src/contents/ui/PreferencesSheet.qml:396
-#, fuzzy
 msgid "Most Used Presets"
-msgstr "Réamhshocruithe Trasbheathú"
+msgstr "Réamhshocruithe is Mó a Úsáidtear"
 
 #: src/contents/ui/PreferencesSheet.qml:418
 #: src/contents/ui/ShortcutsSheet.qml:248
@@ -2240,16 +2236,16 @@ msgid "Failed to Create a New Local Preset: %1"
 msgstr "Theip ar Réamhshocrú Áitiúil Nua a Chruthú: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
-#, fuzzy
 msgid "Save Preset"
-msgstr "Bain Réamhshocrú"
+msgstr "Sábháil Réamhshocrú"
 
 #: src/contents/ui/PresetsLocalPage.qml:187
-#, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
-msgstr "Sábháil Socruithe chuig an Réamhshocrú seo"
+msgstr ""
+"Sábháil na socruithe reatha chuig an réamhshocrú:\n"
+"%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:191
 msgid "Saved the Current Settings to %1 Local Preset."
@@ -2264,13 +2260,14 @@ msgid "Remove Preset"
 msgstr "Bain Réamhshocrú"
 
 #: src/contents/ui/PresetsLocalPage.qml:202
-#, fuzzy
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
 "from the list?"
 msgstr ""
-"An bhfuil tú cinnte gur mian leat an réamhshocrú seo a bhaint den liosta?"
+"An bhfuil tú cinnte gur mian leat an réamhshocrú\n"
+"%1\n"
+"a bhaint den liosta?"
 
 #: src/contents/ui/PresetsLocalPage.qml:206
 msgid "Removed the %1 Local Preset."
