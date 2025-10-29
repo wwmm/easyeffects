@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-28 19:44-0300\n"
+"POT-Creation-Date: 2025-10-29 04:00+0000\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/easyeffects/"
@@ -200,9 +200,9 @@ msgstr "Gain Input"
 #: src/contents/ui/Loudness.qml:156 src/contents/ui/Maximizer.qml:103
 #: src/contents/ui/MultibandCompressor.qml:934
 #: src/contents/ui/MultibandGate.qml:907 src/contents/ui/Pitch.qml:211
-#: src/contents/ui/Reverb.qml:310 src/contents/ui/RNNoise.qml:57
-#: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:278
-#: src/contents/ui/RNNoise.qml:280 src/contents/ui/RNNoise.qml:298
+#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
+#: src/contents/ui/RNNoise.qml:278 src/contents/ui/RNNoise.qml:280
+#: src/contents/ui/RNNoise.qml:298 src/contents/ui/Reverb.qml:310
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:395
 msgid "Using %1"
 msgstr ""
@@ -288,19 +288,18 @@ msgstr "Uji Pengaturan"
 #: src/contents/ui/Equalizer.qml:349 src/contents/ui/Exciter.qml:233
 #: src/contents/ui/Expander.qml:905 src/contents/ui/Filter.qml:231
 #: src/contents/ui/Gate.qml:1039 src/contents/ui/Limiter.qml:627
-#: src/contents/ui/Loudness.qml:197 src/contents/ui/main.qml:526
-#: src/contents/ui/Maximizer.qml:134
+#: src/contents/ui/Loudness.qml:197 src/contents/ui/Maximizer.qml:134
 #: src/contents/ui/MultibandCompressor.qml:975
-#: src/contents/ui/MultibandGate.qml:948 src/contents/ui/Reverb.qml:349
-#: src/contents/ui/RNNoise.qml:322 src/contents/ui/Speex.qml:184
-#: src/contents/ui/StereoTools.qml:426
+#: src/contents/ui/MultibandGate.qml:948 src/contents/ui/RNNoise.qml:322
+#: src/contents/ui/Reverb.qml:349 src/contents/ui/Speex.qml:184
+#: src/contents/ui/StereoTools.qml:426 src/contents/ui/main.qml:526
 msgid "Reset"
 msgstr "Atur Ulang"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
-#: src/contents/ui/Gate.qml:463 src/contents/ui/main.qml:460
-#: src/contents/ui/StereoTools.qml:268
+#: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
+#: src/contents/ui/main.qml:460
 msgid "Output"
 msgstr "Output"
 
@@ -359,8 +358,8 @@ msgstr "Kompresor"
 
 #: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:296
 #: src/contents/ui/Deesser.qml:72 src/contents/ui/Delay.qml:57
-#: src/contents/ui/Delay.qml:215 src/contents/ui/EqualizerBandMenu.qml:45
-#: src/contents/ui/Equalizer.qml:104 src/contents/ui/Expander.qml:69
+#: src/contents/ui/Delay.qml:215 src/contents/ui/Equalizer.qml:104
+#: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:69
 #: src/contents/ui/Expander.qml:256 src/contents/ui/Gate.qml:277
 #: src/contents/ui/Limiter.qml:56 src/contents/ui/Loudness.qml:55
 #: src/contents/ui/MultibandCompressor.qml:400
@@ -764,50 +763,6 @@ msgstr "Besar Lembah"
 msgid "Stereo Split"
 msgstr "Mode Stereo"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
-msgid "Imported a New Convolver Impluse File."
-msgstr "Impor File Impuls"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:33
-#, fuzzy
-msgid "Failed to Import the Convolver Impulse File."
-msgstr "Tidak dapat Memuat Berkas Impuls"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:45
-#: src/contents/ui/MenuAddPlugins.qml:142
-#: src/contents/ui/PresetsCommunityPage.qml:40
-#: src/contents/ui/PresetsLocalPage.qml:144
-msgid "Search"
-msgstr ""
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:83
-#, fuzzy
-msgid "Remove Impulse Response"
-msgstr "Respons Impuls"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:84
-msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr ""
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:88
-msgid "Removed the %1 Convolver Impulse."
-msgstr ""
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:90
-#, fuzzy
-msgid "Failed to Remove the %1 Convolver Impulse."
-msgstr "Tidak dapat Memuat Berkas Impuls"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:104
-#, fuzzy
-msgid "Delete this Impulse"
-msgstr "Hapus Impuls"
-
-#: src/contents/ui/ConvolverImpulseSheet.qml:124
-msgid "Import Impulse"
-msgstr "Muat Impuls"
-
 #: src/contents/ui/Convolver.qml:50
 msgid "Loaded the %1 Convolver Impulse."
 msgstr ""
@@ -873,6 +828,50 @@ msgstr "Lebar Stereo"
 msgid "Autogain"
 msgstr "Autogain"
 
+#: src/contents/ui/ConvolverImpulseSheet.qml:31
+#, fuzzy
+msgid "Imported a New Convolver Impluse File."
+msgstr "Impor File Impuls"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:33
+#, fuzzy
+msgid "Failed to Import the Convolver Impulse File."
+msgstr "Tidak dapat Memuat Berkas Impuls"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:45
+#: src/contents/ui/MenuAddPlugins.qml:142
+#: src/contents/ui/PresetsCommunityPage.qml:40
+#: src/contents/ui/PresetsLocalPage.qml:144
+msgid "Search"
+msgstr ""
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:83
+#, fuzzy
+msgid "Remove Impulse Response"
+msgstr "Respons Impuls"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:84
+msgid "Are you sure you want to remove this impulse response from the list?"
+msgstr ""
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:88
+msgid "Removed the %1 Convolver Impulse."
+msgstr ""
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:90
+#, fuzzy
+msgid "Failed to Remove the %1 Convolver Impulse."
+msgstr "Tidak dapat Memuat Berkas Impuls"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
+#, fuzzy
+msgid "Delete this Impulse"
+msgstr "Hapus Impuls"
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:124
+msgid "Import Impulse"
+msgstr "Muat Impuls"
+
 #: src/contents/ui/Crossfeed.qml:65
 msgid "Cutoff"
 msgstr "Frekuensi Potong"
@@ -890,10 +889,15 @@ msgstr "Crossfeed"
 msgid "Default"
 msgstr "Aturan Bawaan"
 
-#: src/contents/ui/Crossfeed.qml:151 src/contents/ui/main.qml:424
-#: src/contents/ui/Reverb.qml:326
+#: src/contents/ui/Crossfeed.qml:151 src/contents/ui/Reverb.qml:326
+#: src/contents/ui/main.qml:424
 msgid "Presets"
 msgstr "Preset"
+
+#: src/contents/ui/Crystalizer.qml:107
+#, fuzzy
+msgid "Adaptive Intensity"
+msgstr "Digital Adaptif"
 
 #: src/contents/ui/CrystalizerBand.qml:35
 #: src/contents/ui/EqualizerBandMenu.qml:157
@@ -908,11 +912,6 @@ msgstr "Bungkam"
 #: src/contents/ui/MultibandGate.qml:84
 msgid "Bypass"
 msgstr "Bypass"
-
-#: src/contents/ui/Crystalizer.qml:107
-#, fuzzy
-msgid "Adaptive Intensity"
-msgstr "Digital Adaptif"
 
 #: src/contents/ui/DeepFilterNet.qml:33
 #, fuzzy
@@ -1159,101 +1158,10 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/main.qml:471
-#: src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
+#: src/contents/ui/main.qml:471
 msgid "Input"
 msgstr "Masukan"
-
-#: src/contents/ui/EqualizerBandMenu.qml:25
-#: src/contents/ui/MultibandCompressor.qml:635
-#: src/contents/ui/MultibandCompressor.qml:905
-#: src/contents/ui/MultibandGate.qml:608 src/contents/ui/MultibandGate.qml:878
-#, fuzzy
-msgid "Band"
-msgstr "Jumlah Band"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-msgid "Bell"
-msgstr "Bell"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Hi-pass"
-msgstr "High Pass"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Hi-shelf"
-msgstr "High Shelf"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Lo-pass"
-msgstr "Band Rendah"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Lo-shelf"
-msgstr "Low Shelf"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-msgid "Notch"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-msgid "Resonance"
-msgstr "Resonansi"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Allpass"
-msgstr "Bypass"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Bandpass"
-msgstr "Bypass Band"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Ladder-pass"
-msgstr "Band Rendah"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Ladder-rej"
-msgstr "Pengurangan Kuatan"
-
-#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:90
-msgid "Slope"
-msgstr "Besar Lembah"
-
-#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:113
-#: src/contents/ui/MultibandCompressor.qml:175
-#: src/contents/ui/MultibandGate.qml:112 src/contents/ui/PipeWirePage.qml:388
-msgid "Frequency"
-msgstr "Frekuensi"
-
-#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:144
-#: src/contents/ui/Limiter.qml:473 src/contents/ui/MultibandCompressor.qml:323
-#: src/contents/ui/MultibandGate.qml:209
-msgid "Gain"
-msgstr "Besar Gain"
-
-#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:160
-#: src/contents/ui/Pitch.qml:42
-msgid "Quality"
-msgstr "Kualitas"
-
-#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:129
-msgid "Width"
-msgstr "Lebar"
-
-#: src/contents/ui/EqualizerBandMenu.qml:167
-#: src/contents/ui/MultibandCompressor.qml:75
-#: src/contents/ui/MultibandGate.qml:75
-msgid "Solo"
-msgstr "Solo"
 
 #: src/contents/ui/Equalizer.qml:51
 msgid "APO Presets"
@@ -1351,6 +1259,97 @@ msgstr "Impor File Preset APO"
 #, fuzzy
 msgid "Export APO"
 msgstr "Impor Preset"
+
+#: src/contents/ui/EqualizerBandMenu.qml:25
+#: src/contents/ui/MultibandCompressor.qml:635
+#: src/contents/ui/MultibandCompressor.qml:905
+#: src/contents/ui/MultibandGate.qml:608 src/contents/ui/MultibandGate.qml:878
+#, fuzzy
+msgid "Band"
+msgstr "Jumlah Band"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Bell"
+msgstr "Bell"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Hi-pass"
+msgstr "High Pass"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Hi-shelf"
+msgstr "High Shelf"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Lo-pass"
+msgstr "Band Rendah"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Lo-shelf"
+msgstr "Low Shelf"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Notch"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Resonance"
+msgstr "Resonansi"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Allpass"
+msgstr "Bypass"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Bandpass"
+msgstr "Bypass Band"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+#, fuzzy
+msgid "Ladder-pass"
+msgstr "Band Rendah"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37
+#, fuzzy
+msgid "Ladder-rej"
+msgstr "Pengurangan Kuatan"
+
+#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:90
+msgid "Slope"
+msgstr "Besar Lembah"
+
+#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:113
+#: src/contents/ui/MultibandCompressor.qml:175
+#: src/contents/ui/MultibandGate.qml:112 src/contents/ui/PipeWirePage.qml:388
+msgid "Frequency"
+msgstr "Frekuensi"
+
+#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:144
+#: src/contents/ui/Limiter.qml:473 src/contents/ui/MultibandCompressor.qml:323
+#: src/contents/ui/MultibandGate.qml:209
+msgid "Gain"
+msgstr "Besar Gain"
+
+#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:160
+#: src/contents/ui/Pitch.qml:42
+msgid "Quality"
+msgstr "Kualitas"
+
+#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:129
+msgid "Width"
+msgstr "Lebar"
+
+#: src/contents/ui/EqualizerBandMenu.qml:167
+#: src/contents/ui/MultibandCompressor.qml:75
+#: src/contents/ui/MultibandGate.qml:75
+msgid "Solo"
+msgstr "Solo"
 
 #: src/contents/ui/Exciter.qml:144
 #, fuzzy
@@ -1705,71 +1704,6 @@ msgstr "Total Kanal"
 msgid "Clipping"
 msgstr "Total Kanal"
 
-#: src/contents/ui/main.qml:207
-#, fuzzy
-msgid "Reset Settings?"
-msgstr "Setelan"
-
-#: src/contents/ui/main.qml:208
-msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
-
-#: src/contents/ui/main.qml:277 src/contents/ui/main.qml:293
-#, fuzzy
-msgid "Preset Loaded"
-msgstr "Nama Preset Input Baru"
-
-#: src/contents/ui/main.qml:304 src/contents/ui/main.qml:316
-#, fuzzy
-msgid "Clear List"
-msgstr "Sen"
-
-#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
-msgid "Are you sure you want to clear this list?"
-msgstr ""
-
-#: src/contents/ui/main.qml:372
-#, fuzzy
-msgid "Active"
-msgstr "Model Aktif"
-
-#: src/contents/ui/main.qml:383 src/contents/ui/main.qml:506
-#: src/contents/ui/ShortcutsSheet.qml:348
-#, fuzzy
-msgid "Shortcuts"
-msgstr "Waktu Singkat"
-
-#: src/contents/ui/main.qml:392 src/contents/ui/main.qml:514
-#, fuzzy
-msgid "Manual"
-msgstr "_Manual"
-
-#: src/contents/ui/main.qml:402 src/contents/ui/main.qml:546
-msgid "Quit"
-msgstr ""
-
-#: src/contents/ui/main.qml:432
-msgid "Turn Effects On/Off"
-msgstr ""
-
-#: src/contents/ui/main.qml:482
-#, fuzzy
-msgid "PipeWire"
-msgstr "PipeWire"
-
-#: src/contents/ui/main.qml:498 src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:547
-#: src/contents/ui/PreferencesSheet.qml:560
-#, fuzzy
-msgid "Preferences"
-msgstr "_Preferensi"
-
-#: src/contents/ui/main.qml:538
-#, fuzzy
-msgid "About Easy Effects"
-msgstr "Tentang EasyEffects"
-
 #: src/contents/ui/MenuAddPlugins.qml:131
 msgid "Added a New Effect to the Pipeline: %1"
 msgstr ""
@@ -2080,6 +2014,14 @@ msgstr ""
 #: src/contents/ui/Pitch.qml:244
 msgid "Anti-aliasing"
 msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:14
+#: src/contents/ui/PreferencesSheet.qml:22
+#: src/contents/ui/PreferencesSheet.qml:547
+#: src/contents/ui/PreferencesSheet.qml:560 src/contents/ui/main.qml:498
+#, fuzzy
+msgid "Preferences"
+msgstr "_Preferensi"
 
 #: src/contents/ui/PreferencesSheet.qml:34
 #, fuzzy
@@ -2434,9 +2376,7 @@ msgstr "Buat Preset"
 
 #: src/contents/ui/PresetsLocalPage.qml:187
 #, fuzzy
-msgid ""
-"Save current settings to the preset:\n"
-"%1"
+msgid "Save current settings to the preset:%1"
 msgstr "Simpan Setelan Saat Ini Ke Berkas Preset"
 
 #: src/contents/ui/PresetsLocalPage.qml:191
@@ -2454,10 +2394,8 @@ msgid "Remove Preset"
 msgstr "Buat Preset"
 
 #: src/contents/ui/PresetsLocalPage.qml:202
-msgid ""
-"Are you sure you want to remove the preset\n"
-"%1\n"
-"from the list?"
+#, c-format
+msgid "Are you sure you want to remove the preset %1from the list?"
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:206
@@ -2529,6 +2467,77 @@ msgstr "Nama Preset Input Baru"
 #: src/contents/ui/PresetsSheet.qml:118
 msgid "Fallback Preset"
 msgstr ""
+
+#: src/contents/ui/RNNoise.qml:44
+#, fuzzy
+msgid "Imported a New RNNoise Model File."
+msgstr "Model RNNoise Standar"
+
+#: src/contents/ui/RNNoise.qml:46
+#, fuzzy
+msgid "Failed to Import the RNNoise Model File."
+msgstr "Impor file Model"
+
+#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
+#: src/contents/ui/RNNoise.qml:278 src/contents/ui/RNNoise.qml:280
+msgid "Standard RNNoise Model"
+msgstr "Model RNNoise Standar"
+
+#: src/contents/ui/RNNoise.qml:59
+#, fuzzy
+msgid "Standard RNNoise Model Loaded."
+msgstr "Model RNNoise Standar"
+
+#: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:282
+#, fuzzy
+msgid "Using %1 Model"
+msgstr "Model RNNoise"
+
+#: src/contents/ui/RNNoise.qml:66
+#, fuzzy
+msgid "Loaded the %1 RNNoise Model."
+msgstr "Model RNNoise Standar"
+
+#: src/contents/ui/RNNoise.qml:70
+msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+#, fuzzy
+msgid "Voice Detection"
+msgstr "Pelacak Vokal"
+
+#: src/contents/ui/RNNoise.qml:126
+msgid "Wet Level"
+msgstr "Tingkat Wet"
+
+#: src/contents/ui/RNNoise.qml:166
+#, fuzzy
+msgid "Use the Standard Model"
+msgstr "Model Standar"
+
+#: src/contents/ui/RNNoise.qml:177
+#, fuzzy
+msgid "User Models"
+msgstr "Model RNNoise"
+
+#: src/contents/ui/RNNoise.qml:239
+#, fuzzy
+msgid "Delete this Model"
+msgstr "Hapus Berkas Preset Ini"
+
+#: src/contents/ui/RNNoise.qml:244
+msgid "Removed the %1 RNNoise Model."
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:246
+#, fuzzy
+msgid "Failed to Remove the %1 RNNoise Model."
+msgstr "Tidak dapat Memuat Berkas Impuls"
+
+#: src/contents/ui/RNNoise.qml:314
+msgid "Import Model"
+msgstr "Impor Model"
 
 #: src/contents/ui/Reverb.qml:53
 msgid "Room Size"
@@ -2612,77 +2621,6 @@ msgstr "Disko"
 msgid "Large Occupied Hall"
 msgstr "Aula Besar Terisi Penuh"
 
-#: src/contents/ui/RNNoise.qml:44
-#, fuzzy
-msgid "Imported a New RNNoise Model File."
-msgstr "Model RNNoise Standar"
-
-#: src/contents/ui/RNNoise.qml:46
-#, fuzzy
-msgid "Failed to Import the RNNoise Model File."
-msgstr "Impor file Model"
-
-#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
-#: src/contents/ui/RNNoise.qml:278 src/contents/ui/RNNoise.qml:280
-msgid "Standard RNNoise Model"
-msgstr "Model RNNoise Standar"
-
-#: src/contents/ui/RNNoise.qml:59
-#, fuzzy
-msgid "Standard RNNoise Model Loaded."
-msgstr "Model RNNoise Standar"
-
-#: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:282
-#, fuzzy
-msgid "Using %1 Model"
-msgstr "Model RNNoise"
-
-#: src/contents/ui/RNNoise.qml:66
-#, fuzzy
-msgid "Loaded the %1 RNNoise Model."
-msgstr "Model RNNoise Standar"
-
-#: src/contents/ui/RNNoise.qml:70
-msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
-#, fuzzy
-msgid "Voice Detection"
-msgstr "Pelacak Vokal"
-
-#: src/contents/ui/RNNoise.qml:126
-msgid "Wet Level"
-msgstr "Tingkat Wet"
-
-#: src/contents/ui/RNNoise.qml:166
-#, fuzzy
-msgid "Use the Standard Model"
-msgstr "Model Standar"
-
-#: src/contents/ui/RNNoise.qml:177
-#, fuzzy
-msgid "User Models"
-msgstr "Model RNNoise"
-
-#: src/contents/ui/RNNoise.qml:239
-#, fuzzy
-msgid "Delete this Model"
-msgstr "Hapus Berkas Preset Ini"
-
-#: src/contents/ui/RNNoise.qml:244
-msgid "Removed the %1 RNNoise Model."
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:246
-#, fuzzy
-msgid "Failed to Remove the %1 RNNoise Model."
-msgstr "Tidak dapat Memuat Berkas Impuls"
-
-#: src/contents/ui/RNNoise.qml:314
-msgid "Import Model"
-msgstr "Impor Model"
-
 #: src/contents/ui/ShortcutsSheet.qml:34
 msgid "Show Help"
 msgstr ""
@@ -2723,6 +2661,12 @@ msgstr ""
 #: src/contents/ui/ShortcutsSheet.qml:334
 msgid "Toggle Microphone Monitoring"
 msgstr ""
+
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:383
+#: src/contents/ui/main.qml:506
+#, fuzzy
+msgid "Shortcuts"
+msgstr "Waktu Singkat"
 
 #: src/contents/ui/Speex.qml:49
 #, fuzzy
@@ -2813,6 +2757,57 @@ msgstr "Basis Stereo"
 #: src/contents/ui/StereoTools.qml:332
 msgid "Stereo Phase"
 msgstr "Phase Stereo"
+
+#: src/contents/ui/main.qml:207
+#, fuzzy
+msgid "Reset Settings?"
+msgstr "Setelan"
+
+#: src/contents/ui/main.qml:208
+msgid "Are you sure you want to reset all Easy Effects settings?"
+msgstr ""
+
+#: src/contents/ui/main.qml:277 src/contents/ui/main.qml:293
+#, fuzzy
+msgid "Preset Loaded"
+msgstr "Nama Preset Input Baru"
+
+#: src/contents/ui/main.qml:304 src/contents/ui/main.qml:316
+#, fuzzy
+msgid "Clear List"
+msgstr "Sen"
+
+#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
+msgid "Are you sure you want to clear this list?"
+msgstr ""
+
+#: src/contents/ui/main.qml:372
+#, fuzzy
+msgid "Active"
+msgstr "Model Aktif"
+
+#: src/contents/ui/main.qml:392 src/contents/ui/main.qml:514
+#, fuzzy
+msgid "Manual"
+msgstr "_Manual"
+
+#: src/contents/ui/main.qml:402 src/contents/ui/main.qml:546
+msgid "Quit"
+msgstr ""
+
+#: src/contents/ui/main.qml:432
+msgid "Turn Effects On/Off"
+msgstr ""
+
+#: src/contents/ui/main.qml:482
+#, fuzzy
+msgid "PipeWire"
+msgstr "PipeWire"
+
+#: src/contents/ui/main.qml:538
+#, fuzzy
+msgid "About Easy Effects"
+msgstr "Tentang EasyEffects"
 
 #: src/plugin_base.cpp:272
 msgid "(Mic)"
