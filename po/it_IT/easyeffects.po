@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-29 18:26+0000\n"
-"PO-Revision-Date: 2025-10-29 04:00+0000\n"
+"POT-Creation-Date: 2025-10-28 21:11+0000\n"
+"PO-Revision-Date: 2025-10-30 04:17+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2184,74 +2184,71 @@ msgid "Failed to Create a New Local Preset: %1"
 msgstr "Creazione di un Nuovo Profilo Locale Non Riuscita: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
-#, fuzzy
-msgid "Save Preset"
+#: src/contents/ui/PresetsLocalPage.qml:201
+msgid "Remove Preset"
 msgstr "Rimuovi Profilo"
 
 #: src/contents/ui/PresetsLocalPage.qml:187
-#, fuzzy
-msgid ""
-"Save Current Settings to the Preset:\n"
-"%1"
+msgid "Are you sure you want to remove this preset from the list?"
+msgstr "Vuoi davvero rimuovere questo profilo dalla lista?"
+
+#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:206
+msgid "Removed the %1 Local Preset."
+msgstr "Rimosso il Profilo Locale %1."
+
+#: src/contents/ui/PresetsLocalPage.qml:193
+#: src/contents/ui/PresetsLocalPage.qml:208
+msgid "Failed to Remove the %1 Local Preset."
+msgstr "Rimozione del Profilo Locale %1 Non Riuscita."
+
+#: src/contents/ui/PresetsLocalPage.qml:201
+#: src/contents/ui/PresetsLocalPage.qml:216
+msgid "Rename Preset"
+msgstr "Rinomina Profilo"
+
+#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:221
+msgid "Rename"
+msgstr "Rinomina"
+
+#: src/contents/ui/PresetsLocalPage.qml:215
+#: src/contents/ui/PresetsLocalPage.qml:230
+msgid "Renamed the %1 Local Preset to %2"
+msgstr "Modificato il Profilo Locale %1 in %2"
+
+#: src/contents/ui/PresetsLocalPage.qml:218
+#: src/contents/ui/PresetsLocalPage.qml:233
+msgid "Failed to Rename the %1 Local Preset to %2"
+msgstr "Modifica del Profilo Locale %1 in %2 Non Riuscita"
+
+#: src/contents/ui/PresetsLocalPage.qml:226
+#: src/contents/ui/PresetsLocalPage.qml:241
+msgid "Cancel"
+msgstr "Annulla"
+
+#: src/contents/ui/PresetsLocalPage.qml:262
+#: src/contents/ui/PresetsLocalPage.qml:277
+msgid "Save Settings to this Preset"
 msgstr "Salva la Configurazione in questo Profilo"
 
+#: src/contents/ui/PresetsLocalPage.qml:267
 #: src/contents/ui/PresetsLocalPage.qml:191
 msgid "Saved the Current Settings to %1 Local Preset."
 msgstr "Salvate le Impostazioni Attuali nel Profilo Locale %1."
 
+#: src/contents/ui/PresetsLocalPage.qml:269
 #: src/contents/ui/PresetsLocalPage.qml:193
 msgid "Failed to Save the Current Settings to %1 Local Preset."
 msgstr ""
 "Salvataggio delle Impostazioni Attuali nel Profilo Locale %1 Non Riuscito."
 
-#: src/contents/ui/PresetsLocalPage.qml:201
-msgid "Remove Preset"
-msgstr "Rimuovi Profilo"
-
-#: src/contents/ui/PresetsLocalPage.qml:202
-#, fuzzy
-msgid ""
-"Are You Sure You Want to Remove the Preset\n"
-"%1\n"
-"From the List?"
-msgstr "Vuoi davvero rimuovere questo profilo dalla lista?"
-
-#: src/contents/ui/PresetsLocalPage.qml:206
-msgid "Removed the %1 Local Preset."
-msgstr "Rimosso il Profilo Locale %1."
-
-#: src/contents/ui/PresetsLocalPage.qml:208
-msgid "Failed to Remove the %1 Local Preset."
-msgstr "Rimozione del Profilo Locale %1 Non Riuscita."
-
-#: src/contents/ui/PresetsLocalPage.qml:216
-msgid "Rename Preset"
-msgstr "Rinomina Profilo"
-
-#: src/contents/ui/PresetsLocalPage.qml:221
-msgid "Rename"
-msgstr "Rinomina"
-
-#: src/contents/ui/PresetsLocalPage.qml:230
-msgid "Renamed the %1 Local Preset to %2"
-msgstr "Modificato il Profilo Locale %1 in %2"
-
-#: src/contents/ui/PresetsLocalPage.qml:233
-msgid "Failed to Rename the %1 Local Preset to %2"
-msgstr "Modifica del Profilo Locale %1 in %2 Non Riuscita"
-
-#: src/contents/ui/PresetsLocalPage.qml:241
-msgid "Cancel"
-msgstr "Annulla"
-
-#: src/contents/ui/PresetsLocalPage.qml:277
-msgid "Save Settings to this Preset"
-msgstr "Salva la Configurazione in questo Profilo"
-
+#: src/contents/ui/PresetsLocalPage.qml:274
 #: src/contents/ui/PresetsLocalPage.qml:285
 msgid "Rename this Preset"
 msgstr "Rinomina questo Profilo"
 
+#: src/contents/ui/PresetsLocalPage.qml:282
 #: src/contents/ui/PresetsLocalPage.qml:293
 msgid "Delete this Preset"
 msgstr "Rimuovi questo Profilo"
@@ -2735,8 +2732,42 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Effetti Audio per Applicazioni Pipewire"
 
-#~ msgid "Are you sure you want to remove this preset from the list?"
-#~ msgstr "Vuoi davvero rimuovere questo profilo dalla lista?"
+#: src/contents/ui/PresetsLocalPage.qml:186
+msgid "Save Preset"
+msgstr "Salva Profilo"
+
+#: src/contents/ui/PresetsLocalPage.qml:187
+msgid ""
+"Save current settings to the preset:\n"
+"%1"
+msgstr ""
+"Salva la Configurazione Attuale nel Profilo:\n"
+"%1"
+
+#: src/contents/ui/PresetsLocalPage.qml:202
+msgid ""
+"Are you sure you want to remove the preset\n"
+"%1\n"
+"from the list?"
+msgstr ""
+"Vuoi Davvero Rimuovere il Profilo\n"
+"%1\n"
+"Dalla Lista?"
+
+#: src/contents/ui/PresetsLocalPage.qml:187
+#, fuzzy
+msgid ""
+"Save Current Settings to the Preset:\n"
+"%1"
+msgstr "Salva la Configurazione in questo Profilo"
+
+#: src/contents/ui/PresetsLocalPage.qml:202
+#, fuzzy
+msgid ""
+"Are You Sure You Want to Remove the Preset\n"
+"%1\n"
+"From the List?"
+msgstr "Vuoi davvero rimuovere questo profilo dalla lista?"
 
 #~ msgid "Impluse File Imported."
 #~ msgstr "File di Risposta Impulsiva Importato."
@@ -2808,21 +2839,21 @@ msgstr "Effetti Audio per Applicazioni Pipewire"
 #~ msgstr "Modello Caricato: %1"
 
 #~ msgid ""
-#~ "Set plugin property. Format: "
-#~ "pipeline:plugin_name:instance_id:property:value"
+#~ "Set plugin property. Format: pipeline:plugin_name:instance_id:property:"
+#~ "value"
 #~ msgstr ""
-#~ "Imposta proprietà plugin. Formato: "
-#~ "pipeline:nome_effetto:id_istanza:proprietà:valore"
+#~ "Imposta proprietà plugin. Formato: pipeline:nome_effetto:id_istanza:"
+#~ "proprietà:valore"
 
 #~ msgid "property-string"
 #~ msgstr "stringa-proprietà"
 
 #~ msgid ""
-#~ "Invalid property format. Expected: "
-#~ "pipeline:plugin_name:instance_id:property:value"
+#~ "Invalid property format. Expected: pipeline:plugin_name:instance_id:"
+#~ "property:value"
 #~ msgstr ""
-#~ "Formato proprietà non valido. Previsto: "
-#~ "pipeline:plugin_name:instance_id:property:value"
+#~ "Formato proprietà non valido. Previsto: pipeline:plugin_name:instance_id:"
+#~ "property:value"
 
 #~ msgid "Invalid pipeline type. Must be 'input' or 'output'"
 #~ msgstr "Tipo di pipeline non valido. Deve essere 'input' o 'output'"
