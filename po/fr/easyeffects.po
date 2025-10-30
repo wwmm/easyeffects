@@ -2743,6 +2743,21 @@ msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Effets Audio pour les Applications PipeWire"
 
+#: src/contents/ui/PresetsLocalPage.qml:187
+#, fuzzy
+msgid ""
+"Save Current Settings to the Preset:\n"
+"%1"
+msgstr "Enregistrer les Paramètres Dans ce Préréglage"
+
+#: src/contents/ui/PresetsLocalPage.qml:202
+#, fuzzy
+msgid ""
+"Are You Sure You Want to Remove the Preset\n"
+"%1\n"
+"From the List?"
+msgstr "Êtes-vous sûr de vouloir supprimer ce préréglage de la liste ?"
+
 #~ msgid "Impluse File Imported."
 #~ msgstr "Fichier d’Impulsion Importé."
 
@@ -2840,21 +2855,21 @@ msgstr "Effets Audio pour les Applications PipeWire"
 #~ msgstr "Modèle Chargé : %1"
 
 #~ msgid ""
-#~ "Set plugin property. Format: "
-#~ "pipeline:plugin_name:instance_id:property:value"
+#~ "Set plugin property. Format: pipeline:plugin_name:instance_id:property:"
+#~ "value"
 #~ msgstr ""
-#~ "Définir la propriété du greffon. Format : "
-#~ "pipeline:nom_du_greffon:id_de_l'instance:propriété:valeur"
+#~ "Définir la propriété du greffon. Format : pipeline:nom_du_greffon:"
+#~ "id_de_l'instance:propriété:valeur"
 
 #~ msgid "property-string"
 #~ msgstr "propriété-textuelle"
 
 #~ msgid ""
-#~ "Invalid property format. Expected: "
-#~ "pipeline:plugin_name:instance_id:property:value"
+#~ "Invalid property format. Expected: pipeline:plugin_name:instance_id:"
+#~ "property:value"
 #~ msgstr ""
-#~ "Format de propriété invalide. Attendu : "
-#~ "pipeline:nom_du_greffon:id_de_l'instance:propriété:valeur"
+#~ "Format de propriété invalide. Attendu : pipeline:nom_du_greffon:"
+#~ "id_de_l'instance:propriété:valeur"
 
 #~ msgid "Invalid pipeline type. Must be 'input' or 'output'"
 #~ msgstr "Type de pipeline invalide. Doit être 'input' ou 'output'"

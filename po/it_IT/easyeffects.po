@@ -2754,6 +2754,21 @@ msgstr ""
 "%1\n"
 "Dalla Lista?"
 
+#: src/contents/ui/PresetsLocalPage.qml:187
+#, fuzzy
+msgid ""
+"Save Current Settings to the Preset:\n"
+"%1"
+msgstr "Salva la Configurazione in questo Profilo"
+
+#: src/contents/ui/PresetsLocalPage.qml:202
+#, fuzzy
+msgid ""
+"Are You Sure You Want to Remove the Preset\n"
+"%1\n"
+"From the List?"
+msgstr "Vuoi davvero rimuovere questo profilo dalla lista?"
+
 #~ msgid "Impluse File Imported."
 #~ msgstr "File di Risposta Impulsiva Importato."
 

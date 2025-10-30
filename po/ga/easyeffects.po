@@ -2739,6 +2739,22 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
 
+#: src/contents/ui/PresetsLocalPage.qml:187
+#, fuzzy
+msgid ""
+"Save Current Settings to the Preset:\n"
+"%1"
+msgstr "Sábháil Socruithe chuig an Réamhshocrú seo"
+
+#: src/contents/ui/PresetsLocalPage.qml:202
+#, fuzzy
+msgid ""
+"Are You Sure You Want to Remove the Preset\n"
+"%1\n"
+"From the List?"
+msgstr ""
+"An bhfuil tú cinnte gur mian leat an réamhshocrú seo a bhaint den liosta?"
+
 #~ msgid "Impluse File Imported."
 #~ msgstr "Comhad Impulse Iompórtáilte."
 
@@ -2836,21 +2852,21 @@ msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
 #~ msgstr "Múnla Luchtaithe: %1"
 
 #~ msgid ""
-#~ "Set plugin property. Format: "
-#~ "pipeline:plugin_name:instance_id:property:value"
+#~ "Set plugin property. Format: pipeline:plugin_name:instance_id:property:"
+#~ "value"
 #~ msgstr ""
-#~ "Socraigh airí breiseáin. Formáid: "
-#~ "pipeline:plugin_name:instance_id:property:value"
+#~ "Socraigh airí breiseáin. Formáid: pipeline:plugin_name:instance_id:"
+#~ "property:value"
 
 #~ msgid "property-string"
 #~ msgstr "teaghrán-airíonna"
 
 #~ msgid ""
-#~ "Invalid property format. Expected: "
-#~ "pipeline:plugin_name:instance_id:property:value"
+#~ "Invalid property format. Expected: pipeline:plugin_name:instance_id:"
+#~ "property:value"
 #~ msgstr ""
-#~ "Formáid maoine neamhbhailí. Bhíothas ag súil leis: "
-#~ "pipeline:plugin_name:instance_id:property:value"
+#~ "Formáid maoine neamhbhailí. Bhíothas ag súil leis: pipeline:plugin_name:"
+#~ "instance_id:property:value"
 
 #~ msgid "Invalid pipeline type. Must be 'input' or 'output'"
 #~ msgstr "Cineál píblíne neamhbhailí. Ní mór é a bheith 'ionchur' nó 'aschur'"
