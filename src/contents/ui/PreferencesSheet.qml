@@ -32,7 +32,7 @@ Kirigami.OverlaySheet {
                     id: enableServiceMode
 
                     label: i18n("Enable Service Mode") // qmllint disable
-                    subtitle: i18n("Easy Effects is Active in Background When the Window is Closed") // qmllint disable
+                    subtitle: i18n("Easy Effects is active in background when the window is closed.") // qmllint disable
                     maximumLineCount: -1
                     isChecked: DB.Manager.main.enableServiceMode
                     onCheckedChanged: {
@@ -45,7 +45,7 @@ Kirigami.OverlaySheet {
                     id: autostartOnLogin
 
                     label: i18n("Autostart on Login") // qmllint disable
-                    subtitle: i18n("Easy Effects is Launched at User Session Startup") // qmllint disable
+                    subtitle: i18n("Easy Effects is launched at user session startup.") // qmllint disable
                     maximumLineCount: -1
                     isChecked: DB.Manager.main.autostartOnLogin
                     onCheckedChanged: {
@@ -123,7 +123,7 @@ Kirigami.OverlaySheet {
                     id: ignoreSystemNotifications
 
                     label: i18n("Ignore System Notifications") // qmllint disable
-                    subtitle: i18n("Processing System Notifications May Cause Crackling Sound, so It Would be Better to Ignore Them, but For Some Presets It May be Recommended Since They Could Sound Too Loud") // qmllint disable
+                    subtitle: i18n("Processing system notifications may cause crackling sound, so it would be better to ignore them, but for some presets it may be recommended since they could sound too loud.") // qmllint disable
                     isChecked: DB.Manager.main.ignoreSystemNotifications
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.ignoreSystemNotifications)
@@ -157,7 +157,7 @@ Kirigami.OverlaySheet {
                     id: inactivityTimerEnable
 
                     label: i18n("Enable the Inactivity Timeout") // qmllint disable
-                    subtitle: i18n("When all Streams are Inactive, Easy Effects Pipeline Remains Loaded for an Extra Amount of Time") // qmllint disable
+                    subtitle: i18n("When all streams are inactive, Easy Effects pipeline remains loaded for an extra amount of time.") // qmllint disable
                     maximumLineCount: -1
                     isChecked: DB.Manager.main.inactivityTimerEnable
                     onCheckedChanged: {
@@ -184,7 +184,7 @@ Kirigami.OverlaySheet {
 
                 EeSpinBox {
                     label: i18n("Level Meters Label") // qmllint disable
-                    subtitle: i18n("The Time it Takes for the Level Meter Labels to be Updated When the Current Level is Below the Last Highest One") // qmllint disable
+                    subtitle: i18n("The time it takes for the level meter labels to be updated when the current level is below the last highest one.") // qmllint disable
                     maximumLineCount: -1
                     from: DB.Manager.main.getMinValue("levelMetersLabelTimer")
                     to: DB.Manager.main.getMaxValue("levelMetersLabelTimer")
@@ -416,7 +416,7 @@ Kirigami.OverlaySheet {
                     id: xdgGlobalShortcuts
 
                     label: i18n("Global Shortcuts") // qmllint disable
-                    subtitle: i18n("Enables Support for XDG Global Shortcuts") // qmllint disable
+                    subtitle: i18n("Enables support for XDG global shortcuts.") // qmllint disable
                     maximumLineCount: -1
                     isChecked: DB.Manager.main.xdgGlobalShortcuts
                     onCheckedChanged: {
@@ -429,7 +429,7 @@ Kirigami.OverlaySheet {
                     id: showNativePluginUi
 
                     label: i18n("Native Window of Effects") // qmllint disable
-                    subtitle: i18n("Allows the Native User Interface of Effects to be Shown/Hidden") // qmllint disable
+                    subtitle: i18n("Allows the native user interface of effects to be shown/hidden.") // qmllint disable
                     maximumLineCount: -1
                     isChecked: DB.Manager.main.showNativePluginUi
                     onCheckedChanged: {
@@ -442,7 +442,7 @@ Kirigami.OverlaySheet {
                     id: lv2uiUpdateFrequency
 
                     label: i18n("Update Frequency") // qmllint disable
-                    subtitle: i18n("Related to LV2 Plugins") // qmllint disable
+                    subtitle: i18n("Related to LV2 plugins.") // qmllint disable
                     maximumLineCount: -1
                     from: 1
                     to: 60

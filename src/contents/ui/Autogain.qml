@@ -247,7 +247,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     text: i18n("Force Silence")// qmllint disable
-                    tooltip: i18n("Force Silence When the Level is Below the Silence Threshold")// qmllint disable
+                    tooltip: i18n("Force silence when the level is below the silence threshold")// qmllint disable
                     icon.name: "audio-volume-muted-symbolic"
                     checkable: true
                     checked: autogainPage.pluginDB.forceSilence

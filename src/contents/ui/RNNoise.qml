@@ -41,9 +41,9 @@ Kirigami.ScrollablePage {
         nameFilters: ["RNNoise (*.rnnn)"]
         onAccepted: {
             if (Presets.Manager.importRNNoiseModel(fileDialog.selectedFiles) === 0) {
-                appWindow.showStatus(i18n("Imported a New RNNoise Model File."), Kirigami.MessageType.Positive); // qmllint disable
+                appWindow.showStatus(i18n("Imported a new RNNoise model file."), Kirigami.MessageType.Positive); // qmllint disable
             } else {
-                appWindow.showStatus(i18n("Failed to Import the RNNoise Model File."), Kirigami.MessageType.Error, false); // qmllint disable
+                appWindow.showStatus(i18n("Failed to import the RNNoise model file."), Kirigami.MessageType.Error, false); // qmllint disable
             }
         }
     }
@@ -56,18 +56,18 @@ Kirigami.ScrollablePage {
         function onStandardModelLoaded() {
             currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
 
-            appWindow.showStatus(i18n("Standard RNNoise Model Loaded."), Kirigami.MessageType.Positive);
+            appWindow.showStatus(i18n("Standard RNNoise model loaded."), Kirigami.MessageType.Positive);
         }
 
         function onCustomModelLoaded(name, success) {
             if (success) {
                 currentModelLoaded.text = i18n("Using %1 Model", `<strong>${name}</strong>`);
 
-                appWindow.showStatus(i18n("Loaded the %1 RNNoise Model.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive);
+                appWindow.showStatus(i18n("Loaded the %1 RNNoise model.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive);
             } else {
                 currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
 
-                appWindow.showStatus(i18n("Failed to Load the %1 Model. Fallback to Standard RNNoise Model.", `<strong>${name}</strong>`), Kirigami.MessageType.Error, false);
+                appWindow.showStatus(i18n("Failed to load the %1 model. Fallback to Standard RNNoise model.", `<strong>${name}</strong>`), Kirigami.MessageType.Error, false);
             }
         }
 
@@ -209,7 +209,7 @@ Kirigami.ScrollablePage {
                             anchors.centerIn: parent
                             width: parent.width - (Kirigami.Units.largeSpacing * 4)
                             visible: listView.count === 0
-                            text: i18n("Empty") // qmllint disable
+                            text: i18n("Empty List") // qmllint disable
                         }
 
                         delegate: Controls.ItemDelegate {
@@ -236,14 +236,14 @@ Kirigami.ScrollablePage {
                                     alignment: Qt.AlignRight
                                     actions: [
                                         Kirigami.Action {
-                                            text: i18n("Delete this Model") // qmllint disable
+                                            text: i18n("Delete This Model") // qmllint disable
                                             icon.name: "delete"
                                             displayHint: Kirigami.DisplayHint.AlwaysHide
                                             onTriggered: {
                                                 if (Presets.Manager.removeRNNoiseModel(listItemDelegate.path) === true) {
-                                                    appWindow.showStatus(i18n("Removed the %1 RNNoise Model.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+                                                    appWindow.showStatus(i18n("Removed the %1 RNNoise model.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
                                                 } else {
-                                                    appWindow.showStatus(i18n("Failed to Remove the %1 RNNoise Model.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
+                                                    appWindow.showStatus(i18n("Failed to remove the %1 RNNoise model.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
                                                 }
                                             }
                                         }

@@ -94,7 +94,7 @@ Kirigami.OverlaySheet {
                     anchors.centerIn: parent
                     width: parent.width - (Kirigami.Units.largeSpacing * 4)
                     visible: listView.count === 0
-                    text: i18n("Empty") // qmllint disable
+                    text: i18n("Empty List") // qmllint disable
                 }
 
                 delegate: Controls.ItemDelegate {
@@ -147,7 +147,7 @@ Kirigami.OverlaySheet {
                             alignment: Qt.AlignRight
                             actions: [
                                 Kirigami.Action {
-                                    text: i18n("Delete this App") // qmllint disable
+                                    text: i18n("Remove This App") // qmllint disable
                                     icon.name: "delete"
                                     displayHint: Kirigami.DisplayHint.AlwaysHide
                                     onTriggered: {
@@ -174,7 +174,8 @@ Kirigami.OverlaySheet {
         position: Controls.ToolBar.Footer
         actions: [
             Kirigami.Action {
-                text: i18n("Show Excluded Applications in the Streams Section") // qmllint disable
+                text: i18n("Show Excluded Apps") // qmllint disable
+                tooltip: i18n("Show excluded applications in the list of players/recorders") // qmllint disable
                 icon.name: "applications-all-symbolic"
                 displayHint: Kirigami.DisplayHint.KeepVisible
                 checkable: true

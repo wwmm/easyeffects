@@ -350,6 +350,8 @@ Kirigami.Page {
                     Layout.alignment: Qt.AlignHCenter
                     text: DB.Manager.main.collapsePluginsList === true ? "" : i18n("Close") // qmllint disable
                     icon.name: DB.Manager.main.collapsePluginsList === true ? "sidebar-collapse-right-symbolic" : "sidebar-collapse-symbolic"
+                    Controls.ToolTip.text: DB.Manager.main.collapsePluginsList === true ? i18n("Expand the list of effects pipeline") : i18n("Reduce the list of effects pipeline")
+                    Controls.ToolTip.visible: hovered
                     onClicked: {
                         DB.Manager.main.collapsePluginsList = !DB.Manager.main.collapsePluginsList;
                     }
@@ -594,7 +596,7 @@ Kirigami.Page {
                 overflowIconName: "im-ban-kick-user-symbolic"
                 actions: [
                     Kirigami.Action {
-                        tooltip: i18n("Input Monitoring")// qmllint disable
+                        tooltip: i18n("Input monitoring")// qmllint disable
                         icon.name: "audio-input-microphone-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.pageType === 1 && pageStreamsEffects.streamDB.visiblePage === 1

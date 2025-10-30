@@ -62,6 +62,8 @@ ColumnLayout {
             Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
             text: i18n("Create") // qmllint disable
             icon.name: "list-add-symbolic"
+            Controls.ToolTip.text: i18n("Create a new autoloading preset")
+            Controls.ToolTip.visible: hovered
             onClicked: {
                 const deviceId = device.deviceId;
                 const deviceName = device.deviceName;
@@ -139,6 +141,8 @@ ColumnLayout {
                             Layout.alignment: Qt.AlignCenter | Qt.AlignRight
                             Layout.rowSpan: 4
                             icon.name: "delete"
+                            Controls.ToolTip.text: i18n("Remove this autoloading preset")
+                            Controls.ToolTip.visible: hovered
                             onClicked: {
                                 if (DB.Manager.main.visiblePage === 0)
                                     Presets.Manager.removeAutoload(1, abstractCard.devicePreset, abstractCard.deviceName, abstractCard.deviceProfile);

@@ -61,7 +61,7 @@ ColumnLayout {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 4)
                 visible: listView.count === 0
-                text: i18n("Empty") // qmllint disable
+                text: i18n("Empty List") // qmllint disable
             }
 
             delegate: Controls.ItemDelegate {
@@ -90,14 +90,14 @@ ColumnLayout {
                                 enabled: false
                             },
                             Kirigami.Action {
-                                text: i18n("Copy to the Local List") // qmllint disable
+                                text: i18n("Copy to Local Presets") // qmllint disable
                                 icon.name: "document-import-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
                                     if (Presets.Manager.importFromCommunityPackage(columnLayout.pipeline, listItemDelegate.path, listItemDelegate.presetPackage) === true) {
-                                        appWindow.showStatus(i18n("Imported the %1 Community Preset to the List of Local Presets.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+                                        appWindow.showStatus(i18n("Imported the %1 community preset to the list of local presets.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
                                     } else {
-                                        appWindow.showStatus(i18n("Failed to Import the %1 Community Preset to the List of Local Presets.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
+                                        appWindow.showStatus(i18n("Failed to import the %1 community preset to the list of local presets.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
                                     }
                                 }
                             }
