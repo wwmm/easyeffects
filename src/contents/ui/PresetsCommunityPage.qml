@@ -61,7 +61,7 @@ ColumnLayout {
                 anchors.centerIn: parent
                 width: parent.width - (Kirigami.Units.largeSpacing * 4)
                 visible: listView.count === 0
-                text: i18n("Empty") // qmllint disable
+                text: i18n("Empty List") // qmllint disable
             }
 
             delegate: Controls.ItemDelegate {
