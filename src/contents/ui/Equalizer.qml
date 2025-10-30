@@ -68,7 +68,7 @@ Kirigami.ScrollablePage {
             if (equalizerPage.pluginBackend.importApoGraphicEqPreset(apoGraphicEqFileDialog.selectedFiles) === true) {
                 appWindow.showStatus(i18n("Imported the GraphicEQ preset file."), Kirigami.MessageType.Positive); // qmllint disable
             } else {
-                appWindow.showStatus(i18n("Failed to Import the GraphicEQ preset file."), Kirigami.MessageType.Error, false); // qmllint disable
+                appWindow.showStatus(i18n("Failed to import the GraphicEQ preset file."), Kirigami.MessageType.Error, false); // qmllint disable
             }
         }
     }

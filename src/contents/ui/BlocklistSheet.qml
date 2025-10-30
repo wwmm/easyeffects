@@ -175,7 +175,7 @@ Kirigami.OverlaySheet {
         actions: [
             Kirigami.Action {
                 text: i18n("Show Excluded Apps") // qmllint disable
-                tooltip: i18n("Show excluded applications in the list of players/recorders")
+                tooltip: i18n("Show excluded applications in the list of players/recorders") // qmllint disable
                 icon.name: "applications-all-symbolic"
                 displayHint: Kirigami.DisplayHint.KeepVisible
                 checkable: true
