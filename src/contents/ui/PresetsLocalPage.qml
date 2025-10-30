@@ -85,7 +85,7 @@ ColumnLayout {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Create Preset") // qmllint disable
+                    text: i18n("Create New Preset") // qmllint disable
                     icon.name: "list-add-symbolic"
                     onTriggered: {
                         // remove the final preset extension if specified
