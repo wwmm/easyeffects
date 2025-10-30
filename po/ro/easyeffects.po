@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-29 18:26+0000\n"
-"PO-Revision-Date: 2025-10-30 11:34+0000\n"
+"PO-Revision-Date: 2025-10-31 00:02+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -1472,14 +1472,12 @@ msgid "Full x8/24 bit"
 msgstr "Complet x8/24 biți"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "True Peak/16 bit"
-msgstr "Vârful real"
+msgstr "Vârful real/16 biți"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "True Peak/24 bit"
-msgstr "Vârful real"
+msgstr "Vârful real/24 biți"
 
 #: src/contents/ui/Limiter.qml:84
 msgid "Dithering"
@@ -2060,9 +2058,8 @@ msgid "Database Autosave Interval"
 msgstr "Interval de salvare automată a bazei de date"
 
 #: src/contents/ui/PreferencesSheet.qml:396
-#, fuzzy
 msgid "Most Used Presets"
-msgstr "Preconfigurări pentru flux încrucișat"
+msgstr "Cele mai utilizate preconfigurări"
 
 #: src/contents/ui/PreferencesSheet.qml:418
 #: src/contents/ui/ShortcutsSheet.qml:248
@@ -2191,16 +2188,16 @@ msgid "Failed to Create a New Local Preset: %1"
 msgstr "Crearea unei noi preconfigurării locale a eșuat: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
-#, fuzzy
 msgid "Save Preset"
-msgstr "Elimină preconfigurarea"
+msgstr "Salvează preconfigurarea"
 
 #: src/contents/ui/PresetsLocalPage.qml:187
-#, fuzzy
 msgid ""
 "Save Current Settings to the Preset:\n"
 "%1"
-msgstr "Salvează parametrii în această preconfigurare"
+msgstr ""
+"Salvează parametrii actuali în preconfigurarea:\n"
+"%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:191
 msgid "Saved the Current Settings to %1 Local Preset."
@@ -2215,12 +2212,14 @@ msgid "Remove Preset"
 msgstr "Elimină preconfigurarea"
 
 #: src/contents/ui/PresetsLocalPage.qml:202
-#, fuzzy
 msgid ""
 "Are You Sure You Want to Remove the Preset\n"
 "%1\n"
 "From the List?"
-msgstr "Sunteți sigur că doriți să eliminați această preconfigurare din listă?"
+msgstr ""
+"Sunteți sigur că doriți să eliminați preconfigurarea\n"
+"%1\n"
+"din listă?"
 
 #: src/contents/ui/PresetsLocalPage.qml:206
 msgid "Removed the %1 Local Preset."
@@ -2568,14 +2567,12 @@ msgid "Preset Loaded"
 msgstr "Preconfigurare încărcată"
 
 #: src/contents/ui/main.qml:304 src/contents/ui/main.qml:316
-#, fuzzy
 msgid "Clear List"
-msgstr "Lista de clienți"
+msgstr "Golește lista"
 
 #: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
-#, fuzzy
 msgid "Are you sure you want to clear this list?"
-msgstr "Sunteți sigur că doriți să eliminați această preconfigurare din listă?"
+msgstr "Sunteți sigur că doriți să goliți această listă?"
 
 #: src/contents/ui/main.qml:372
 msgid "Active"
