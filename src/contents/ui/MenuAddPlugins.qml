@@ -59,6 +59,8 @@ Kirigami.OverlaySheet {
                 Controls.Button {
                     Layout.alignment: Qt.AlignCenter
                     icon.name: "list-add"
+                    Controls.ToolTip.text: i18n("Add %1", listItemDelegate.translatedName)
+                    Controls.ToolTip.visible: hovered
                     onClicked: {
                         let plugins = control.streamDB.plugins;
                         let index_list = [];
@@ -128,7 +130,7 @@ Kirigami.OverlaySheet {
 
                         control.streamDB.plugins = plugins;
 
-                        appWindow.showStatus(i18n("Added a new effect to the pipeline: %1", `<strong>${translatedName}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+                        appWindow.showStatus(i18n("Added a new effect to the pipeline: %1", `<strong>${listItemDelegate.translatedName}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
                     }
                 }
             }

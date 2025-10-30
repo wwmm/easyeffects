@@ -350,6 +350,8 @@ Kirigami.Page {
                     Layout.alignment: Qt.AlignHCenter
                     text: DB.Manager.main.collapsePluginsList === true ? "" : i18n("Close") // qmllint disable
                     icon.name: DB.Manager.main.collapsePluginsList === true ? "sidebar-collapse-right-symbolic" : "sidebar-collapse-symbolic"
+                    Controls.ToolTip.text: DB.Manager.main.collapsePluginsList === true ? i18n("Expand the list of effects pipeline") : i18n("Reduce the list of effects pipeline")
+                    Controls.ToolTip.visible: hovered
                     onClicked: {
                         DB.Manager.main.collapsePluginsList = !DB.Manager.main.collapsePluginsList;
                     }

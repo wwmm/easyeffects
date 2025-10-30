@@ -107,6 +107,8 @@ Kirigami.AbstractCard {
                 Controls.CheckBox {
                     text: i18n("Exclude") // qmllint disable
                     checked: root.isBlocklisted
+                    Controls.ToolTip.text: i18n("Add %1 to excluded applications", root.name)
+                    Controls.ToolTip.visible: hovered
                     onCheckedChanged: {
                         if (root.model.isBlocklisted !== checked)
                             root.model.isBlocklisted = checked;
