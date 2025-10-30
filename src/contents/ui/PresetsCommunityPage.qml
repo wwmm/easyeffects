@@ -95,9 +95,9 @@ ColumnLayout {
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
                                     if (Presets.Manager.importFromCommunityPackage(columnLayout.pipeline, listItemDelegate.path, listItemDelegate.presetPackage) === true) {
-                                        appWindow.showStatus(i18n("Imported the %1 Community Preset to the List of Local Presets.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+                                        appWindow.showStatus(i18n("Imported the %1 community preset to the list of local presets.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
                                     } else {
-                                        appWindow.showStatus(i18n("Failed to Import the %1 Community Preset to the List of Local Presets.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
+                                        appWindow.showStatus(i18n("Failed to import the %1 community preset to the list of local presets.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
                                     }
                                 }
                             }

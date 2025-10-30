@@ -128,7 +128,7 @@ Kirigami.OverlaySheet {
 
                         control.streamDB.plugins = plugins;
 
-                        appWindow.showStatus(i18n("Added a New Effect to the Pipeline: %1", `<strong>${translatedName}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+                        appWindow.showStatus(i18n("Added a new effect to the pipeline: %1", `<strong>${translatedName}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
                     }
                 }
             }

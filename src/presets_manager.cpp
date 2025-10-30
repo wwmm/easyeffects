@@ -755,15 +755,15 @@ void Manager::notify_error(const PresetError& preset_error, const std::string& p
           "A parsing error occurred while trying to load the blocklist from the preset. The file could be invalid "
           "or corrupted. Please check its content.");
 
-      Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"), i18n("Wrong Format in Excluded Apps List"));
+      Q_EMIT presetLoadError(i18n("Preset not loaded correctly"), i18n("Wrong format in excluded apps list"));
 
       break;
     }
     case PresetError::blocklist_generic: {
       util::warning("A generic error occurred while trying to load the blocklist from the preset.");
 
-      Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"),
-                             i18n("Generic Error While Loading Excluded Apps List"));
+      Q_EMIT presetLoadError(i18n("Preset not loaded correctly"),
+                             i18n("Generic error while loading excluded apps list"));
 
       break;
     }
@@ -772,14 +772,14 @@ void Manager::notify_error(const PresetError& preset_error, const std::string& p
           "A parsing error occurred while trying to load the pipeline from the preset. The file could be invalid "
           "or corrupted. Please check its content.");
 
-      Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"), i18n("Wrong Format in Effects List"));
+      Q_EMIT presetLoadError(i18n("Preset not loaded correctly"), i18n("Wrong format in effects list"));
 
       break;
     }
     case PresetError::pipeline_generic: {
       util::warning("A generic error occurred while trying to load the pipeline from the preset.");
 
-      Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"), i18n("Generic Error While Loading Effects List"));
+      Q_EMIT presetLoadError(i18n("Preset not loaded correctly"), i18n("Generic error while loading effects list"));
 
       break;
     }
@@ -789,8 +789,8 @@ void Manager::notify_error(const PresetError& preset_error, const std::string& p
                       "invalid or corrupted. Please check its content.",
                       plugin_name));
 
-      Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"),
-                             plugin_translated + i18n("One or More Parameters Have a Wrong Format"));
+      Q_EMIT presetLoadError(i18n("Preset not loaded correctly"),
+                             plugin_translated + i18n("One or more parameters have a wrong format"));
 
       break;
     }
@@ -798,8 +798,8 @@ void Manager::notify_error(const PresetError& preset_error, const std::string& p
       util::warning(
           std::format("A generic error occurred while trying to load the {} plugin from the preset.", plugin_name));
 
-      Q_EMIT presetLoadError(i18n("Preset Not Loaded Correctly"),
-                             plugin_translated + i18n("Generic Error While Loading The Effect"));
+      Q_EMIT presetLoadError(i18n("Preset not loaded correctly"),
+                             plugin_translated + i18n("Generic error while loading the effect"));
 
       break;
     }

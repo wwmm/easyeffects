@@ -47,15 +47,15 @@ Kirigami.ScrollablePage {
             if (success) {
                 convolverChartContainer.banner.title = name;
 
-                appWindow.showStatus(i18n("Loaded the %1 Convolver Impulse.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+                appWindow.showStatus(i18n("Loaded the %1 Convolver impulse.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
             } else {
                 convolverChartContainer.banner.title = i18n("Convolver Impulse Is Not Set");
 
                 if (name.length === 0 || name === '""') {
                     // This is likely to happen after a config reset.
-                    appWindow.showStatus(i18n("The Convolver is in Passthrough Mode.")); // qmllint disable
+                    appWindow.showStatus(i18n("The Convolver is in passthrough mode.")); // qmllint disable
                 } else {
-                    appWindow.showStatus(i18n("Failed to Load the %1 Impulse. The Convolver is in Passthrough Mode.", `<strong>${name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
+                    appWindow.showStatus(i18n("Failed to load the %1 impulse. The Convolver is in passthrough mode.", `<strong>${name}</strong>`), Kirigami.MessageType.Error, false); // qmllint disable
                 }
 
                 convolverChart.clearData();

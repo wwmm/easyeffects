@@ -28,9 +28,9 @@ Kirigami.OverlaySheet {
         nameFilters: ["IRS (*.irs)", "WAVE (*.wav)"]
         onAccepted: {
             if (Presets.Manager.importImpulses(fileDialog.selectedFiles) === 0) {
-                appWindow.showStatus(i18n("Imported a New Convolver Impluse File."), Kirigami.MessageType.Positive); // qmllint disable
+                appWindow.showStatus(i18n("Imported a new Convolver impluse file."), Kirigami.MessageType.Positive); // qmllint disable
             } else {
-                appWindow.showStatus(i18n("Failed to Import the Convolver Impulse File."), Kirigami.MessageType.Error, false); // qmllint disable
+                appWindow.showStatus(i18n("Failed to import the Convolver impulse file."), Kirigami.MessageType.Error, false); // qmllint disable
             }
         }
     }
@@ -85,9 +85,9 @@ Kirigami.OverlaySheet {
                     standardButtons: Kirigami.Dialog.Ok | Kirigami.Dialog.Cancel
                     onAccepted: {
                         if (Presets.Manager.removeImpulseFile(listItemDelegate.path) === true) {
-                            appWindow.showStatus(i18n("Removed the %1 Convolver Impulse.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
+                            appWindow.showStatus(i18n("Removed the %1 Convolver impulse.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
                         } else {
-                            appWindow.showStatus(i18n("Failed to Remove the %1 Convolver Impulse.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false);  // qmllint disable
+                            appWindow.showStatus(i18n("Failed to remove the %1 Convolver impulse.", `<strong>${listItemDelegate.name}</strong>`), Kirigami.MessageType.Error, false);  // qmllint disable
                         }
                     }
                 }

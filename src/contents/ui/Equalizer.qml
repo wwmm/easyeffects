@@ -51,9 +51,9 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("APO Presets") + " (*.txt)"]// qmllint disable
         onAccepted: {
             if (equalizerPage.pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true) {
-                appWindow.showStatus(i18n("Imported the Equalizer APO Preset File."), Kirigami.MessageType.Positive); // qmllint disable
+                appWindow.showStatus(i18n("Imported the Equalizer APO preset file."), Kirigami.MessageType.Positive); // qmllint disable
             } else {
-                appWindow.showStatus(i18n("Failed to Import the Equalizer APO Preset File."), Kirigami.MessageType.Error, false); // qmllint disable
+                appWindow.showStatus(i18n("Failed to import the Equalizer APO preset file."), Kirigami.MessageType.Error, false); // qmllint disable
             }
         }
     }
@@ -66,9 +66,9 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("GraphicEQ Presets") + " (*.txt)"]// qmllint disable
         onAccepted: {
             if (equalizerPage.pluginBackend.importApoGraphicEqPreset(apoGraphicEqFileDialog.selectedFiles) === true) {
-                appWindow.showStatus(i18n("Imported the GraphicEQ Preset File."), Kirigami.MessageType.Positive); // qmllint disable
+                appWindow.showStatus(i18n("Imported the GraphicEQ preset file."), Kirigami.MessageType.Positive); // qmllint disable
             } else {
-                appWindow.showStatus(i18n("Failed to Import the GraphicEQ Preset File."), Kirigami.MessageType.Error, false); // qmllint disable
+                appWindow.showStatus(i18n("Failed to Import the GraphicEQ preset file."), Kirigami.MessageType.Error, false); // qmllint disable
             }
         }
     }
@@ -81,10 +81,10 @@ Kirigami.ScrollablePage {
         nameFilters: [i18n("APO Preset") + " (*.txt)"]// qmllint disable
         onAccepted: {
             if (equalizerPage.pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true) {
-                appWindow.showStatus(i18n("Exported the Current Equalizer Settings to an External APO Preset File."), Kirigami.MessageType.Positive);
+                appWindow.showStatus(i18n("Exported the current Equalizer settings to an external APO preset file."), Kirigami.MessageType.Positive);
                 // qmllint disable
             } else {
-                appWindow.showStatus(i18n("Failed to Export the Current Equalizer Settings to an External APO Preset File."), Kirigami.MessageType.Error, false); // qmllint disable
+                appWindow.showStatus(i18n("Failed to export the current Equalizer settings to an external APO preset file."), Kirigami.MessageType.Error, false); // qmllint disable
             }
         }
     }
