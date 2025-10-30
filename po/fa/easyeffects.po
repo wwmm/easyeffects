@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-29 18:26+0000\n"
+"POT-Creation-Date: 2025-10-30 22:31+0000\n"
 "PO-Revision-Date: 2025-09-23 14:01+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -207,7 +207,7 @@ msgid "Force Silence"
 msgstr "سکوت"
 
 #: src/contents/ui/Autogain.qml:250
-msgid "Force Silence When the Level is Below the Silence Threshold"
+msgid "Force silence when the level is below the silence threshold"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:262 src/contents/ui/LevelMeter.qml:215
@@ -314,10 +314,11 @@ msgstr "به برنامه‌های حذف‌شده اضافه کنید"
 #: src/contents/ui/BlocklistSheet.qml:97
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:33
+#: src/contents/ui/PageStreamsEffects.qml:79
+#: src/contents/ui/PresetsAutoloadingPage.qml:98
 #: src/contents/ui/PresetsCommunityPage.qml:64
 #: src/contents/ui/PresetsLocalPage.qml:169 src/contents/ui/RNNoise.qml:212
-#, fuzzy
-msgid "Empty"
+msgid "Empty List"
 msgstr "لیست خالی"
 
 #: src/contents/ui/BlocklistSheet.qml:119
@@ -330,12 +331,18 @@ msgid "Are you sure you want to remove this application from the list?"
 msgstr ""
 
 #: src/contents/ui/BlocklistSheet.qml:150
-msgid "Delete this App"
-msgstr ""
+#, fuzzy
+msgid "Remove This App"
+msgstr "حذف این افکت"
 
 #: src/contents/ui/BlocklistSheet.qml:177
 #, fuzzy
-msgid "Show Excluded Applications in the Streams Section"
+msgid "Show Excluded Apps"
+msgstr "برنامه های مستثنی شده"
+
+#: src/contents/ui/BlocklistSheet.qml:178
+#, fuzzy
+msgid "Show excluded applications in the list of players/recorders"
 msgstr "نمایش برنامه‌های مستثنی‌شده"
 
 #: src/contents/ui/Compressor.qml:53 src/tags_plugin_name.cpp:29
@@ -729,8 +736,9 @@ msgid "Stereo Split"
 msgstr "تقسیم استریو"
 
 #: src/contents/ui/Convolver.qml:50
-msgid "Loaded the %1 Convolver Impulse."
-msgstr ""
+#, fuzzy
+msgid "Loaded the %1 Convolver impulse."
+msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 
 #: src/contents/ui/Convolver.qml:52 src/contents/ui/Convolver.qml:312
 #, fuzzy
@@ -738,12 +746,13 @@ msgid "Convolver Impulse Is Not Set"
 msgstr "ترکیب پاسخ‌های ضربه‌ای"
 
 #: src/contents/ui/Convolver.qml:56
-msgid "The Convolver is in Passthrough Mode."
+msgid "The Convolver is in passthrough mode."
 msgstr ""
 
 #: src/contents/ui/Convolver.qml:58
-msgid "Failed to Load the %1 Impulse. The Convolver is in Passthrough Mode."
-msgstr ""
+#, fuzzy
+msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
+msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 
 #: src/contents/ui/Convolver.qml:122
 msgid "First"
@@ -794,16 +803,16 @@ msgstr "افزایش خودکار"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
 #, fuzzy
-msgid "Imported a New Convolver Impluse File."
+msgid "Imported a new Convolver impluse file."
 msgstr "وارد کردن فایل ایمپالس"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
 #, fuzzy
-msgid "Failed to Import the Convolver Impulse File."
+msgid "Failed to import the Convolver impulse file."
 msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
-#: src/contents/ui/MenuAddPlugins.qml:142
+#: src/contents/ui/MenuAddPlugins.qml:144
 #: src/contents/ui/PresetsCommunityPage.qml:40
 #: src/contents/ui/PresetsLocalPage.qml:144
 msgid "Search"
@@ -819,17 +828,18 @@ msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:88
-msgid "Removed the %1 Convolver Impulse."
-msgstr ""
+#, fuzzy
+msgid "Removed the %1 Convolver impulse."
+msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
 #, fuzzy
-msgid "Failed to Remove the %1 Convolver Impulse."
+msgid "Failed to remove the %1 Convolver impulse."
 msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
 #, fuzzy
-msgid "Delete this Impulse"
+msgid "Delete This Impulse"
 msgstr "حذف ایمپالس"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:124
@@ -1023,17 +1033,18 @@ msgid "Access"
 msgstr "دسترسی"
 
 #: src/contents/ui/DelegateModulesList.qml:64
-#: src/contents/ui/PresetsAutoloadingPage.qml:154
+#: src/contents/ui/PresetsAutoloadingPage.qml:158
 msgid "Description"
 msgstr "توضیحات"
 
 #: src/contents/ui/DelegatePluginsList.qml:65
 #, fuzzy
-msgid "Enable this Effect"
+msgid "Toggle This Effect"
 msgstr "فعال/غیرفعال کردن این افکت"
 
 #: src/contents/ui/DelegatePluginsList.qml:79
-msgid "Remove this effect"
+#, fuzzy
+msgid "Remove This Effect"
 msgstr "حذف این افکت"
 
 #: src/contents/ui/DelegateStreamsList.qml:76
@@ -1051,6 +1062,11 @@ msgstr "فعال"
 #: src/contents/ui/DelegateStreamsList.qml:108
 msgid "Exclude"
 msgstr "مستثنی"
+
+#: src/contents/ui/DelegateStreamsList.qml:110
+#, fuzzy
+msgid "Add %1 to excluded applications"
+msgstr "به برنامه‌های حذف‌شده اضافه کنید"
 
 #: src/contents/ui/EchoCanceller.qml:43 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
@@ -1123,12 +1139,12 @@ msgstr "پیش‌تنظیم‌های APO"
 
 #: src/contents/ui/Equalizer.qml:54
 #, fuzzy
-msgid "Imported the Equalizer APO Preset File."
+msgid "Imported the Equalizer APO preset file."
 msgstr "صدور فایل پیش‌تنظیم EqualizerAPO"
 
 #: src/contents/ui/Equalizer.qml:56
 #, fuzzy
-msgid "Failed to Import the Equalizer APO Preset File."
+msgid "Failed to import the Equalizer APO preset file."
 msgstr "وارد کردن فایل از پیش تنظیم شده APO"
 
 #: src/contents/ui/Equalizer.qml:66
@@ -1137,12 +1153,12 @@ msgstr "پیش‌تنظیم‌های GraphicEQ"
 
 #: src/contents/ui/Equalizer.qml:69
 #, fuzzy
-msgid "Imported the GraphicEQ Preset File."
+msgid "Imported the GraphicEQ preset file."
 msgstr "وارد کردن فایل پیش‌تنظیم GraphicEQ"
 
 #: src/contents/ui/Equalizer.qml:71
 #, fuzzy
-msgid "Failed to Import the GraphicEQ Preset File."
+msgid "Failed to import the GraphicEQ preset file."
 msgstr "وارد کردن فایل پیش‌تنظیم GraphicEQ"
 
 #: src/contents/ui/Equalizer.qml:81
@@ -1152,14 +1168,14 @@ msgstr "پیش‌تنظیم‌های APO"
 
 #: src/contents/ui/Equalizer.qml:84
 #, fuzzy
-msgid "Exported the Current Equalizer Settings to an External APO Preset File."
+msgid "Exported the current Equalizer settings to an external APO preset file."
 msgstr "صدور فایل پیش‌تنظیم EqualizerAPO"
 
 #: src/contents/ui/Equalizer.qml:87
 #, fuzzy
 msgid ""
-"Failed to Export the Current Equalizer Settings to an External APO Preset "
-"File."
+"Failed to export the current Equalizer settings to an external APO preset "
+"file."
 msgstr "وارد کردن فایل از پیش تنظیم شده APO"
 
 #: src/contents/ui/Equalizer.qml:117
@@ -1644,8 +1660,12 @@ msgstr "بریدن"
 msgid "Clipping"
 msgstr "بریدن"
 
-#: src/contents/ui/MenuAddPlugins.qml:131
-msgid "Added a New Effect to the Pipeline: %1"
+#: src/contents/ui/MenuAddPlugins.qml:62
+msgid "Add %1"
+msgstr ""
+
+#: src/contents/ui/MenuAddPlugins.qml:133
+msgid "Added a new effect to the pipeline: %1"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:103
@@ -1729,11 +1749,6 @@ msgstr "دستگاه ورودی"
 msgid "Reaction"
 msgstr "کاهش"
 
-#: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:96
-msgid "Empty List"
-msgstr "لیست خالی"
-
 #: src/contents/ui/PageStreamsEffects.qml:80
 msgid "No Audio Application Available"
 msgstr "هیچ برنامه صوتی موجود نیست"
@@ -1743,12 +1758,12 @@ msgid "Add Effect"
 msgstr "افزودن افکت"
 
 #: src/contents/ui/PageStreamsEffects.qml:321
-#: src/contents/ui/PageStreamsEffects.qml:570
+#: src/contents/ui/PageStreamsEffects.qml:572
 msgid "Players"
 msgstr "پلیرها"
 
 #: src/contents/ui/PageStreamsEffects.qml:338
-#: src/contents/ui/PageStreamsEffects.qml:570
+#: src/contents/ui/PageStreamsEffects.qml:572
 msgid "Recorders"
 msgstr "ضبط کننده ها"
 
@@ -1756,24 +1771,32 @@ msgstr "ضبط کننده ها"
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:375
+#: src/contents/ui/PageStreamsEffects.qml:353
+msgid "Expand the list of effects pipeline"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:353
+msgid "Reduce the list of effects pipeline"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:377
 msgid "No Effects"
 msgstr "بدون افکت"
 
-#: src/contents/ui/PageStreamsEffects.qml:376
+#: src/contents/ui/PageStreamsEffects.qml:378
 msgid "Audio Stream Not Modified"
 msgstr "جریان صوتی تغییر نکرده است"
 
-#: src/contents/ui/PageStreamsEffects.qml:580
+#: src/contents/ui/PageStreamsEffects.qml:582
 msgid "Effects"
 msgstr "جلوه ها"
 
-#: src/contents/ui/PageStreamsEffects.qml:597
+#: src/contents/ui/PageStreamsEffects.qml:599
 #, fuzzy
-msgid "Input Monitoring"
+msgid "Input monitoring"
 msgstr "فعال‌سازی پایش ورودی"
 
-#: src/contents/ui/PageStreamsEffects.qml:610
+#: src/contents/ui/PageStreamsEffects.qml:612
 msgid "Excluded Apps"
 msgstr "برنامه های مستثنی شده"
 
@@ -1950,7 +1973,7 @@ msgid "Enable Service Mode"
 msgstr "حالت اکولایزر"
 
 #: src/contents/ui/PreferencesSheet.qml:35
-msgid "Easy Effects is Active in Background When the Window is Closed"
+msgid "Easy Effects is active in background when the window is closed."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:47
@@ -1958,7 +1981,7 @@ msgid "Autostart on Login"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:48
-msgid "Easy Effects is Launched at User Session Startup"
+msgid "Easy Effects is launched at user session startup."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:61
@@ -1987,9 +2010,9 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:126
 msgid ""
-"Processing System Notifications May Cause Crackling Sound, so It Would be "
-"Better to Ignore Them, but For Some Presets It May be Recommended Since They "
-"Could Sound Too Loud"
+"Processing system notifications may cause crackling sound, so it would be "
+"better to ignore them, but for some presets it may be recommended since they "
+"could sound too loud."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:137
@@ -2008,8 +2031,8 @@ msgstr "زمان‌سنج بی‌فعالیتی"
 
 #: src/contents/ui/PreferencesSheet.qml:160
 msgid ""
-"When all Streams are Inactive, Easy Effects Pipeline Remains Loaded for an "
-"Extra Amount of Time"
+"When all streams are inactive, Easy Effects pipeline remains loaded for an "
+"extra amount of time."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:172
@@ -2023,8 +2046,8 @@ msgstr "سطح سنج"
 
 #: src/contents/ui/PreferencesSheet.qml:187
 msgid ""
-"The Time it Takes for the Level Meter Labels to be Updated When the Current "
-"Level is Below the Last Highest One"
+"The time it takes for the level meter labels to be updated when the current "
+"level is below the last highest one."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:227
@@ -2149,13 +2172,12 @@ msgid "Most Used Presets"
 msgstr "کراس‌فید"
 
 #: src/contents/ui/PreferencesSheet.qml:418
-#: src/contents/ui/ShortcutsSheet.qml:248
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "_میانبرها"
 
 #: src/contents/ui/PreferencesSheet.qml:419
-msgid "Enables Support for XDG Global Shortcuts"
+msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:431
@@ -2165,7 +2187,7 @@ msgstr "نمایش پنجره بومی"
 
 #: src/contents/ui/PreferencesSheet.qml:432
 #, fuzzy
-msgid "Allows the Native User Interface of Effects to be Shown/Hidden"
+msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "امکان نمایش/پنهان‌سازی پنجره افزونه بومی"
 
 #: src/contents/ui/PreferencesSheet.qml:444
@@ -2173,7 +2195,8 @@ msgid "Update Frequency"
 msgstr "فرکانس به‌روزرسانی"
 
 #: src/contents/ui/PreferencesSheet.qml:445
-msgid "Related to LV2 Plugins"
+#, fuzzy
+msgid "Related to LV2 plugins."
 msgstr "مرتبط با افزونه‌های LV2"
 
 #: src/contents/ui/PreferencesSheet.qml:474
@@ -2198,18 +2221,18 @@ msgid "Experimental Features"
 msgstr "ویژگی‌های آزمایشی"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:33
-#: src/contents/ui/PresetsAutoloadingPage.qml:128
+#: src/contents/ui/PresetsAutoloadingPage.qml:130
 msgid "Device"
 msgstr "دستگاه"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
-#: src/contents/ui/PresetsAutoloadingPage.qml:168
+#: src/contents/ui/PresetsAutoloadingPage.qml:172
 #, fuzzy
 msgid "Hardware Profile"
 msgstr "نمایه"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-#: src/contents/ui/PresetsAutoloadingPage.qml:181
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
 #, fuzzy
 msgid "Local Preset"
 msgstr "فهرست پیش‌تنظیم‌های محلی"
@@ -2219,18 +2242,29 @@ msgstr "فهرست پیش‌تنظیم‌های محلی"
 msgid "Create"
 msgstr "در حال ایجاد"
 
+#: src/contents/ui/PresetsAutoloadingPage.qml:65
+#, fuzzy
+msgid "Create a new autoloading preset"
+msgstr "حذف پیش‌تنظیم بارگذاری خودکار"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:144
+#, fuzzy
+msgid "Remove this autoloading preset"
+msgstr "حذف پیش‌تنظیم بارگذاری خودکار"
+
 #: src/contents/ui/PresetsCommunityPage.qml:93
-msgid "Copy to the Local List"
-msgstr ""
+#, fuzzy
+msgid "Copy to Local Presets"
+msgstr "فهرست پیش‌تنظیم‌های محلی"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
 #, fuzzy
-msgid "Imported the %1 Community Preset to the List of Local Presets."
+msgid "Imported the %1 community preset to the list of local presets."
 msgstr "این پیش‌تنظیمات انجمن را به فهرست پیش‌تنظیمات محلی وارد کنید"
 
 #: src/contents/ui/PresetsCommunityPage.qml:100
 #, fuzzy
-msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
+msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "جستجوی پیش‌تنظیم انجمن"
 
 #: src/contents/ui/PresetsCommunityPage.qml:120
@@ -2238,12 +2272,13 @@ msgid "Refresh"
 msgstr "تازه‌سازی"
 
 #: src/contents/ui/PresetsLocalPage.qml:35
-msgid "Imported a New Local Preset from an External File."
-msgstr ""
+#, fuzzy
+msgid "Imported a new local preset from an external file."
+msgstr "وارد کردن فایل از پیش تنظیم شده APO"
 
 #: src/contents/ui/PresetsLocalPage.qml:37
 #, fuzzy
-msgid "Failed to Import a New Local Preset from an External File."
+msgid "Failed to import a new local preset from an external file."
 msgstr "وارد کردن فایل از پیش تنظیم شده APO"
 
 #: src/contents/ui/PresetsLocalPage.qml:46
@@ -2253,12 +2288,13 @@ msgid "Export Presets"
 msgstr "وارد کردن از پیش تعیین شده"
 
 #: src/contents/ui/PresetsLocalPage.qml:49
-msgid "Exported all Presets to an External Folder."
-msgstr ""
+#, fuzzy
+msgid "Exported all presets to an external folder."
+msgstr "وارد کردن فایل از پیش تنظیم شده APO"
 
 #: src/contents/ui/PresetsLocalPage.qml:51
 #, fuzzy
-msgid "Failed to Export All Presets to an External Folder."
+msgid "Failed to export all presets to an external folder."
 msgstr "وارد کردن فایل از پیش تنظیم شده APO"
 
 #: src/contents/ui/PresetsLocalPage.qml:63
@@ -2272,17 +2308,17 @@ msgstr "وارد کردن فایل از پیش تنظیم شده APO"
 
 #: src/contents/ui/PresetsLocalPage.qml:88
 #, fuzzy
-msgid "Create Preset"
+msgid "Create New Preset"
 msgstr "ایجاد یک پیش‌تنظیم جدید"
 
 #: src/contents/ui/PresetsLocalPage.qml:98
 #, fuzzy
-msgid "Created a New Local Preset: %1"
+msgid "Created a new local preset: %1"
 msgstr "جستجوی پیش‌تنظیم محلی"
 
 #: src/contents/ui/PresetsLocalPage.qml:102
 #, fuzzy
-msgid "Failed to Create a New Local Preset: %1"
+msgid "Failed to create a new local preset: %1"
 msgstr "جستجوی پیش‌تنظیم انجمن"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
@@ -2293,18 +2329,19 @@ msgstr "ایجاد یک پیش‌تنظیم جدید"
 #: src/contents/ui/PresetsLocalPage.qml:187
 #, fuzzy
 msgid ""
-"Save Current Settings to the Preset:\n"
+"Save current settings to the preset:\n"
 "%1"
 msgstr "تنظیمات فعلی را در این فایل از پیش تعیین شده ذخیره کنید"
 
 #: src/contents/ui/PresetsLocalPage.qml:191
 #, fuzzy
-msgid "Saved the Current Settings to %1 Local Preset."
+msgid "Saved the current settings to %1 local preset."
 msgstr "تنظیمات فعلی را کنار بگذارید و این پیش‌تنظیم را بارگذاری کنید"
 
 #: src/contents/ui/PresetsLocalPage.qml:193
-msgid "Failed to Save the Current Settings to %1 Local Preset."
-msgstr ""
+#, fuzzy
+msgid "Failed to save the current settings to %1 local preset."
+msgstr "تنظیمات فعلی را کنار بگذارید و این پیش‌تنظیم را بارگذاری کنید"
 
 #: src/contents/ui/PresetsLocalPage.qml:201
 #, fuzzy
@@ -2313,19 +2350,19 @@ msgstr "ایجاد یک پیش‌تنظیم جدید"
 
 #: src/contents/ui/PresetsLocalPage.qml:202
 msgid ""
-"Are You Sure You Want to Remove the Preset\n"
+"Are you sure you want to remove the preset\n"
 "%1\n"
-"From the List?"
+"from the list?"
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:206
 #, fuzzy
-msgid "Removed the %1 Local Preset."
+msgid "Removed the %1 local preset."
 msgstr "این تنظیمات پیش‌فرض بارگذاری خودکار را حذف کن"
 
 #: src/contents/ui/PresetsLocalPage.qml:208
 #, fuzzy
-msgid "Failed to Remove the %1 Local Preset."
+msgid "Failed to remove the %1 local preset."
 msgstr "وارد کردن فایل از پیش تنظیم شده APO"
 
 #: src/contents/ui/PresetsLocalPage.qml:216
@@ -2339,12 +2376,12 @@ msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:230
 #, fuzzy
-msgid "Renamed the %1 Local Preset to %2"
+msgid "Renamed the %1 local preset to %2"
 msgstr "این فایل از پیش تعیین شده را حذف کنید"
 
 #: src/contents/ui/PresetsLocalPage.qml:233
 #, fuzzy
-msgid "Failed to Rename the %1 Local Preset to %2"
+msgid "Failed to rename the %1 local preset to %2"
 msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 
 #: src/contents/ui/PresetsLocalPage.qml:241
@@ -2354,17 +2391,17 @@ msgstr "تعادل"
 
 #: src/contents/ui/PresetsLocalPage.qml:277
 #, fuzzy
-msgid "Save Settings to this Preset"
+msgid "Save Settings to This Preset"
 msgstr "تنظیمات فعلی را در این فایل از پیش تعیین شده ذخیره کنید"
 
 #: src/contents/ui/PresetsLocalPage.qml:285
 #, fuzzy
-msgid "Rename this Preset"
+msgid "Rename This Preset"
 msgstr "این فایل از پیش تعیین شده را حذف کنید"
 
 #: src/contents/ui/PresetsLocalPage.qml:293
 #, fuzzy
-msgid "Delete this Preset"
+msgid "Delete This Preset"
 msgstr "این فایل از پیش تعیین شده را حذف کنید"
 
 #: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:104
@@ -2390,12 +2427,12 @@ msgstr ""
 
 #: src/contents/ui/RNNoise.qml:44
 #, fuzzy
-msgid "Imported a New RNNoise Model File."
+msgid "Imported a new RNNoise model file."
 msgstr "مدل استاندارد RNNoise"
 
 #: src/contents/ui/RNNoise.qml:46
 #, fuzzy
-msgid "Failed to Import the RNNoise Model File."
+msgid "Failed to import the RNNoise model file."
 msgstr "وارد کردن فایل مدل"
 
 #: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
@@ -2405,7 +2442,7 @@ msgstr "مدل استاندارد RNNoise"
 
 #: src/contents/ui/RNNoise.qml:59
 #, fuzzy
-msgid "Standard RNNoise Model Loaded."
+msgid "Standard RNNoise model loaded."
 msgstr "مدل استاندارد RNNoise"
 
 #: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:282
@@ -2415,12 +2452,13 @@ msgstr "با استفاده از {}"
 
 #: src/contents/ui/RNNoise.qml:66
 #, fuzzy
-msgid "Loaded the %1 RNNoise Model."
+msgid "Loaded the %1 RNNoise model."
 msgstr "مدل استاندارد RNNoise"
 
 #: src/contents/ui/RNNoise.qml:70
-msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
-msgstr ""
+#, fuzzy
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 
 #: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
 msgid "Voice Detection"
@@ -2442,16 +2480,17 @@ msgstr "مدل‌های RNoise"
 
 #: src/contents/ui/RNNoise.qml:239
 #, fuzzy
-msgid "Delete this Model"
+msgid "Delete This Model"
 msgstr "این فایل مدل را حذف کنید"
 
 #: src/contents/ui/RNNoise.qml:244
-msgid "Removed the %1 RNNoise Model."
-msgstr ""
+#, fuzzy
+msgid "Removed the %1 RNNoise model."
+msgstr "مدل استاندارد RNNoise"
 
 #: src/contents/ui/RNNoise.qml:246
 #, fuzzy
-msgid "Failed to Remove the %1 RNNoise Model."
+msgid "Failed to remove the %1 RNNoise model."
 msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 
 #: src/contents/ui/RNNoise.qml:314
@@ -2542,44 +2581,50 @@ msgstr "سالن بزرگ و اشغال شده"
 
 #: src/contents/ui/ShortcutsSheet.qml:34
 #, fuzzy
-msgid "Show Help"
+msgid "Show help"
 msgstr "نشان دادن کمک"
 
 #: src/contents/ui/ShortcutsSheet.qml:47
-msgid "Toggle Fullscreen"
+msgid "Toggle fullscreen"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:294
 #, fuzzy
-msgid "Toggle Global Bypass"
+msgid "Toggle global bypass"
 msgstr "بای‌پس سراسری"
 
 #: src/contents/ui/ShortcutsSheet.qml:103
-msgid "Close the Window"
+#, fuzzy
+msgid "Close the window"
 msgstr "پنجره را ببندید"
 
 #: src/contents/ui/ShortcutsSheet.qml:131
 #, fuzzy
-msgid "Terminate Easy Effects Service"
+msgid "Terminate Easy Effects service"
 msgstr "نسخه easyeffects را چاپ کنید"
 
 #: src/contents/ui/ShortcutsSheet.qml:171
 #, fuzzy
-msgid "Toggle Process All Inputs"
+msgid "Toggle process all inputs"
 msgstr "پردازش تمام جریان‌های ورودی"
 
 #: src/contents/ui/ShortcutsSheet.qml:211
 #, fuzzy
-msgid "Toggle Process All Outputs"
+msgid "Toggle process all outputs"
 msgstr "پردازش تمام جریان‌های خروجی"
 
 #: src/contents/ui/ShortcutsSheet.qml:224
 #: src/contents/ui/ShortcutsSheet.qml:237
-msgid "Can Be Used on Numeric Controls"
+msgid "Can be used on numeric controls"
 msgstr ""
 
+#: src/contents/ui/ShortcutsSheet.qml:248
+#, fuzzy
+msgid "Global shortcuts"
+msgstr "_میانبرها"
+
 #: src/contents/ui/ShortcutsSheet.qml:334
-msgid "Toggle Microphone Monitoring"
+msgid "Toggle microphone monitoring"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:383
@@ -2742,31 +2787,38 @@ msgstr "سطح سنج خروجی"
 #: src/presets_manager.cpp:758 src/presets_manager.cpp:765
 #: src/presets_manager.cpp:775 src/presets_manager.cpp:782
 #: src/presets_manager.cpp:792 src/presets_manager.cpp:801
-msgid "Preset Not Loaded Correctly"
+#, fuzzy
+msgid "Preset not loaded correctly"
 msgstr "پیش‌تنظیم به‌درستی بارگذاری نشد"
 
 #: src/presets_manager.cpp:758
-msgid "Wrong Format in Excluded Apps List"
+#, fuzzy
+msgid "Wrong format in excluded apps list"
 msgstr "فرمت نادرست در فهرست برنامه‌های مستثنی‌شده"
 
 #: src/presets_manager.cpp:766
-msgid "Generic Error While Loading Excluded Apps List"
+#, fuzzy
+msgid "Generic error while loading excluded apps list"
 msgstr "خطای عمومی هنگام بارگذاری فهرست برنامه‌های مستثنی‌شده"
 
 #: src/presets_manager.cpp:775
-msgid "Wrong Format in Effects List"
+#, fuzzy
+msgid "Wrong format in effects list"
 msgstr "فرمت نادرست در فهرست جلوه ها"
 
 #: src/presets_manager.cpp:782
-msgid "Generic Error While Loading Effects List"
+#, fuzzy
+msgid "Generic error while loading effects list"
 msgstr "خطای عمومی هنگام بارگذاری فهرست جلوه ها"
 
 #: src/presets_manager.cpp:793
-msgid "One or More Parameters Have a Wrong Format"
+#, fuzzy
+msgid "One or more parameters have a wrong format"
 msgstr "یک یا چند پارامتر فرمت نادرستی دارند"
 
 #: src/presets_manager.cpp:802
-msgid "Generic Error While Loading The Effect"
+#, fuzzy
+msgid "Generic error while loading the effect"
 msgstr "خطای عمومی هنگام بارگذاری جلوه"
 
 #: src/pw_model_nodes.cpp:488
@@ -2869,6 +2921,10 @@ msgstr "اکولایزر، کمپرسور و سایر جلوه‌های صوتی
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "جلوه‌های صوتی برای برنامه‌های PipeWire"
+
+#, fuzzy
+#~ msgid "Empty"
+#~ msgstr "لیست خالی"
 
 #, fuzzy
 #~ msgid "Impluse File Imported."
@@ -3475,9 +3531,6 @@ msgstr "جلوه‌های صوتی برای برنامه‌های PipeWire"
 #~ msgstr ""
 #~ "پیش‌تنظیم GraphicEQ بارگذاری نشد. ممکن است فرمت فایل پشتیبانی نشود. لطفاً "
 #~ "محتوای آن را بررسی کنید."
-
-#~ msgid "Remove Autoloading Preset"
-#~ msgstr "حذف پیش‌تنظیم بارگذاری خودکار"
 
 #~ msgid "Remove"
 #~ msgstr "حذف"

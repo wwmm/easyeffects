@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-29 18:26+0000\n"
+"POT-Creation-Date: 2025-10-30 22:31+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/easyeffects/"
@@ -207,7 +207,7 @@ msgid "Force Silence"
 msgstr "サイレンス"
 
 #: src/contents/ui/Autogain.qml:250
-msgid "Force Silence When the Level is Below the Silence Threshold"
+msgid "Force silence when the level is below the silence threshold"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:262 src/contents/ui/LevelMeter.qml:215
@@ -315,10 +315,11 @@ msgstr "除外アプリケーションに追加"
 #: src/contents/ui/BlocklistSheet.qml:97
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:33
+#: src/contents/ui/PageStreamsEffects.qml:79
+#: src/contents/ui/PresetsAutoloadingPage.qml:98
 #: src/contents/ui/PresetsCommunityPage.qml:64
 #: src/contents/ui/PresetsLocalPage.qml:169 src/contents/ui/RNNoise.qml:212
-#, fuzzy
-msgid "Empty"
+msgid "Empty List"
 msgstr "リストは空です"
 
 #: src/contents/ui/BlocklistSheet.qml:119
@@ -331,12 +332,18 @@ msgid "Are you sure you want to remove this application from the list?"
 msgstr ""
 
 #: src/contents/ui/BlocklistSheet.qml:150
-msgid "Delete this App"
-msgstr ""
+#, fuzzy
+msgid "Remove This App"
+msgstr "このプラグインを削除"
 
 #: src/contents/ui/BlocklistSheet.qml:177
 #, fuzzy
-msgid "Show Excluded Applications in the Streams Section"
+msgid "Show Excluded Apps"
+msgstr "除外されたアプリ"
+
+#: src/contents/ui/BlocklistSheet.qml:178
+#, fuzzy
+msgid "Show excluded applications in the list of players/recorders"
 msgstr "除外されたアプリケーションを表示"
 
 #: src/contents/ui/Compressor.qml:53 src/tags_plugin_name.cpp:29
@@ -731,8 +738,9 @@ msgid "Stereo Split"
 msgstr "ステレオ分割"
 
 #: src/contents/ui/Convolver.qml:50
-msgid "Loaded the %1 Convolver Impulse."
-msgstr ""
+#, fuzzy
+msgid "Loaded the %1 Convolver impulse."
+msgstr "インパルスファイルを読み込めません"
 
 #: src/contents/ui/Convolver.qml:52 src/contents/ui/Convolver.qml:312
 #, fuzzy
@@ -740,12 +748,13 @@ msgid "Convolver Impulse Is Not Set"
 msgstr "インパルスレスポンスを結合"
 
 #: src/contents/ui/Convolver.qml:56
-msgid "The Convolver is in Passthrough Mode."
+msgid "The Convolver is in passthrough mode."
 msgstr ""
 
 #: src/contents/ui/Convolver.qml:58
-msgid "Failed to Load the %1 Impulse. The Convolver is in Passthrough Mode."
-msgstr ""
+#, fuzzy
+msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
+msgstr "インパルスファイルを読み込めません"
 
 #: src/contents/ui/Convolver.qml:122
 msgid "First"
@@ -796,16 +805,16 @@ msgstr "オートゲイン"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
 #, fuzzy
-msgid "Imported a New Convolver Impluse File."
+msgid "Imported a new Convolver impluse file."
 msgstr "インパルスファイルをインポート"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
 #, fuzzy
-msgid "Failed to Import the Convolver Impulse File."
+msgid "Failed to import the Convolver impulse file."
 msgstr "インパルスファイルを読み込めません"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
-#: src/contents/ui/MenuAddPlugins.qml:142
+#: src/contents/ui/MenuAddPlugins.qml:144
 #: src/contents/ui/PresetsCommunityPage.qml:40
 #: src/contents/ui/PresetsLocalPage.qml:144
 msgid "Search"
@@ -821,17 +830,18 @@ msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:88
-msgid "Removed the %1 Convolver Impulse."
-msgstr ""
+#, fuzzy
+msgid "Removed the %1 Convolver impulse."
+msgstr "インパルスファイルを読み込めません"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
 #, fuzzy
-msgid "Failed to Remove the %1 Convolver Impulse."
+msgid "Failed to remove the %1 Convolver impulse."
 msgstr "インパルスファイルを読み込めません"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
 #, fuzzy
-msgid "Delete this Impulse"
+msgid "Delete This Impulse"
 msgstr "インパルス削除"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:124
@@ -1025,17 +1035,18 @@ msgid "Access"
 msgstr "アクセス"
 
 #: src/contents/ui/DelegateModulesList.qml:64
-#: src/contents/ui/PresetsAutoloadingPage.qml:154
+#: src/contents/ui/PresetsAutoloadingPage.qml:158
 msgid "Description"
 msgstr "説明"
 
 #: src/contents/ui/DelegatePluginsList.qml:65
 #, fuzzy
-msgid "Enable this Effect"
+msgid "Toggle This Effect"
 msgstr "このエフェクトの有効化/無効化"
 
 #: src/contents/ui/DelegatePluginsList.qml:79
-msgid "Remove this effect"
+#, fuzzy
+msgid "Remove This Effect"
 msgstr "このエフェクトを削除"
 
 #: src/contents/ui/DelegateStreamsList.qml:76
@@ -1053,6 +1064,11 @@ msgstr "有効"
 #: src/contents/ui/DelegateStreamsList.qml:108
 msgid "Exclude"
 msgstr "除外"
+
+#: src/contents/ui/DelegateStreamsList.qml:110
+#, fuzzy
+msgid "Add %1 to excluded applications"
+msgstr "除外アプリケーションに追加"
 
 #: src/contents/ui/EchoCanceller.qml:43 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
@@ -1125,12 +1141,12 @@ msgstr "APO プリセット"
 
 #: src/contents/ui/Equalizer.qml:54
 #, fuzzy
-msgid "Imported the Equalizer APO Preset File."
+msgid "Imported the Equalizer APO preset file."
 msgstr "EqualizerAPO プリセットファイルをエクスポート"
 
 #: src/contents/ui/Equalizer.qml:56
 #, fuzzy
-msgid "Failed to Import the Equalizer APO Preset File."
+msgid "Failed to import the Equalizer APO preset file."
 msgstr "APO プリセットファイルをインポート"
 
 #: src/contents/ui/Equalizer.qml:66
@@ -1139,12 +1155,12 @@ msgstr "GraphicEQ プリセット"
 
 #: src/contents/ui/Equalizer.qml:69
 #, fuzzy
-msgid "Imported the GraphicEQ Preset File."
+msgid "Imported the GraphicEQ preset file."
 msgstr "GraphicEQ プリセットファイルのインポート"
 
 #: src/contents/ui/Equalizer.qml:71
 #, fuzzy
-msgid "Failed to Import the GraphicEQ Preset File."
+msgid "Failed to import the GraphicEQ preset file."
 msgstr "GraphicEQ プリセットファイルのインポート"
 
 #: src/contents/ui/Equalizer.qml:81
@@ -1154,14 +1170,14 @@ msgstr "APO プリセット"
 
 #: src/contents/ui/Equalizer.qml:84
 #, fuzzy
-msgid "Exported the Current Equalizer Settings to an External APO Preset File."
+msgid "Exported the current Equalizer settings to an external APO preset file."
 msgstr "EqualizerAPO プリセットファイルをエクスポート"
 
 #: src/contents/ui/Equalizer.qml:87
 #, fuzzy
 msgid ""
-"Failed to Export the Current Equalizer Settings to an External APO Preset "
-"File."
+"Failed to export the current Equalizer settings to an external APO preset "
+"file."
 msgstr "APO プリセットファイルをインポート"
 
 #: src/contents/ui/Equalizer.qml:117
@@ -1648,8 +1664,12 @@ msgstr "クリッピング範囲"
 msgid "Clipping"
 msgstr "クリッピング"
 
-#: src/contents/ui/MenuAddPlugins.qml:131
-msgid "Added a New Effect to the Pipeline: %1"
+#: src/contents/ui/MenuAddPlugins.qml:62
+msgid "Add %1"
+msgstr ""
+
+#: src/contents/ui/MenuAddPlugins.qml:133
+msgid "Added a new effect to the pipeline: %1"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:103
@@ -1733,11 +1753,6 @@ msgstr "入力デバイス"
 msgid "Reaction"
 msgstr "減少"
 
-#: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:96
-msgid "Empty List"
-msgstr "リストは空です"
-
 #: src/contents/ui/PageStreamsEffects.qml:80
 msgid "No Audio Application Available"
 msgstr "オーディオアプリケーションがありません"
@@ -1747,12 +1762,12 @@ msgid "Add Effect"
 msgstr "エフェクト追加"
 
 #: src/contents/ui/PageStreamsEffects.qml:321
-#: src/contents/ui/PageStreamsEffects.qml:570
+#: src/contents/ui/PageStreamsEffects.qml:572
 msgid "Players"
 msgstr "プレーヤー"
 
 #: src/contents/ui/PageStreamsEffects.qml:338
-#: src/contents/ui/PageStreamsEffects.qml:570
+#: src/contents/ui/PageStreamsEffects.qml:572
 msgid "Recorders"
 msgstr "レコーダー"
 
@@ -1760,24 +1775,32 @@ msgstr "レコーダー"
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:375
+#: src/contents/ui/PageStreamsEffects.qml:353
+msgid "Expand the list of effects pipeline"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:353
+msgid "Reduce the list of effects pipeline"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:377
 msgid "No Effects"
 msgstr "エフェクトなし"
 
-#: src/contents/ui/PageStreamsEffects.qml:376
+#: src/contents/ui/PageStreamsEffects.qml:378
 msgid "Audio Stream Not Modified"
 msgstr "オーディオストリームは変更されていません"
 
-#: src/contents/ui/PageStreamsEffects.qml:580
+#: src/contents/ui/PageStreamsEffects.qml:582
 msgid "Effects"
 msgstr "エフェクト"
 
-#: src/contents/ui/PageStreamsEffects.qml:597
+#: src/contents/ui/PageStreamsEffects.qml:599
 #, fuzzy
-msgid "Input Monitoring"
+msgid "Input monitoring"
 msgstr "入力モニターの有効化/無効化"
 
-#: src/contents/ui/PageStreamsEffects.qml:610
+#: src/contents/ui/PageStreamsEffects.qml:612
 msgid "Excluded Apps"
 msgstr "除外されたアプリ"
 
@@ -1955,7 +1978,7 @@ msgid "Enable Service Mode"
 msgstr "イコライザーモード"
 
 #: src/contents/ui/PreferencesSheet.qml:35
-msgid "Easy Effects is Active in Background When the Window is Closed"
+msgid "Easy Effects is active in background when the window is closed."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:47
@@ -1963,7 +1986,7 @@ msgid "Autostart on Login"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:48
-msgid "Easy Effects is Launched at User Session Startup"
+msgid "Easy Effects is launched at user session startup."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:61
@@ -1992,9 +2015,9 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:126
 msgid ""
-"Processing System Notifications May Cause Crackling Sound, so It Would be "
-"Better to Ignore Them, but For Some Presets It May be Recommended Since They "
-"Could Sound Too Loud"
+"Processing system notifications may cause crackling sound, so it would be "
+"better to ignore them, but for some presets it may be recommended since they "
+"could sound too loud."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:137
@@ -2013,8 +2036,8 @@ msgstr "非アクティブタイムアウト"
 
 #: src/contents/ui/PreferencesSheet.qml:160
 msgid ""
-"When all Streams are Inactive, Easy Effects Pipeline Remains Loaded for an "
-"Extra Amount of Time"
+"When all streams are inactive, Easy Effects pipeline remains loaded for an "
+"extra amount of time."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:172
@@ -2028,8 +2051,8 @@ msgstr "レベルメーター"
 
 #: src/contents/ui/PreferencesSheet.qml:187
 msgid ""
-"The Time it Takes for the Level Meter Labels to be Updated When the Current "
-"Level is Below the Last Highest One"
+"The time it takes for the level meter labels to be updated when the current "
+"level is below the last highest one."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:227
@@ -2155,13 +2178,12 @@ msgid "Most Used Presets"
 msgstr "クロスフィード"
 
 #: src/contents/ui/PreferencesSheet.qml:418
-#: src/contents/ui/ShortcutsSheet.qml:248
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "_ショートカット"
 
 #: src/contents/ui/PreferencesSheet.qml:419
-msgid "Enables Support for XDG Global Shortcuts"
+msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:431
@@ -2171,7 +2193,7 @@ msgstr "ネイティブウィンドウ表示"
 
 #: src/contents/ui/PreferencesSheet.qml:432
 #, fuzzy
-msgid "Allows the Native User Interface of Effects to be Shown/Hidden"
+msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "ネイティブプラグインウィンドウの表示/非表示を許可します"
 
 #: src/contents/ui/PreferencesSheet.qml:444
@@ -2179,7 +2201,8 @@ msgid "Update Frequency"
 msgstr "更新頻度"
 
 #: src/contents/ui/PreferencesSheet.qml:445
-msgid "Related to LV2 Plugins"
+#, fuzzy
+msgid "Related to LV2 plugins."
 msgstr "LV2 プラグインに影響します"
 
 #: src/contents/ui/PreferencesSheet.qml:474
@@ -2204,18 +2227,18 @@ msgid "Experimental Features"
 msgstr "実験的機能"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:33
-#: src/contents/ui/PresetsAutoloadingPage.qml:128
+#: src/contents/ui/PresetsAutoloadingPage.qml:130
 msgid "Device"
 msgstr "デバイス"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
-#: src/contents/ui/PresetsAutoloadingPage.qml:168
+#: src/contents/ui/PresetsAutoloadingPage.qml:172
 #, fuzzy
 msgid "Hardware Profile"
 msgstr "プロファイル"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-#: src/contents/ui/PresetsAutoloadingPage.qml:181
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
 #, fuzzy
 msgid "Local Preset"
 msgstr "ローカルプリセット一覧"
@@ -2225,18 +2248,29 @@ msgstr "ローカルプリセット一覧"
 msgid "Create"
 msgstr "作成中"
 
+#: src/contents/ui/PresetsAutoloadingPage.qml:65
+#, fuzzy
+msgid "Create a new autoloading preset"
+msgstr "自動読み込みプリセットを削除"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:144
+#, fuzzy
+msgid "Remove this autoloading preset"
+msgstr "自動読み込みプリセットを削除"
+
 #: src/contents/ui/PresetsCommunityPage.qml:93
-msgid "Copy to the Local List"
-msgstr ""
+#, fuzzy
+msgid "Copy to Local Presets"
+msgstr "ローカルプリセット一覧"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
 #, fuzzy
-msgid "Imported the %1 Community Preset to the List of Local Presets."
+msgid "Imported the %1 community preset to the list of local presets."
 msgstr "このコミュニティプリセットをローカルプリセット一覧にインポートする"
 
 #: src/contents/ui/PresetsCommunityPage.qml:100
 #, fuzzy
-msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
+msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "コミュニティプリセットを検索"
 
 #: src/contents/ui/PresetsCommunityPage.qml:120
@@ -2244,12 +2278,13 @@ msgid "Refresh"
 msgstr "更新"
 
 #: src/contents/ui/PresetsLocalPage.qml:35
-msgid "Imported a New Local Preset from an External File."
-msgstr ""
+#, fuzzy
+msgid "Imported a new local preset from an external file."
+msgstr "APO プリセットファイルをインポート"
 
 #: src/contents/ui/PresetsLocalPage.qml:37
 #, fuzzy
-msgid "Failed to Import a New Local Preset from an External File."
+msgid "Failed to import a new local preset from an external file."
 msgstr "APO プリセットファイルをインポート"
 
 #: src/contents/ui/PresetsLocalPage.qml:46
@@ -2259,12 +2294,13 @@ msgid "Export Presets"
 msgstr "プリセットをインポート"
 
 #: src/contents/ui/PresetsLocalPage.qml:49
-msgid "Exported all Presets to an External Folder."
-msgstr ""
+#, fuzzy
+msgid "Exported all presets to an external folder."
+msgstr "APO プリセットファイルをインポート"
 
 #: src/contents/ui/PresetsLocalPage.qml:51
 #, fuzzy
-msgid "Failed to Export All Presets to an External Folder."
+msgid "Failed to export all presets to an external folder."
 msgstr "APO プリセットファイルをインポート"
 
 #: src/contents/ui/PresetsLocalPage.qml:63
@@ -2278,17 +2314,17 @@ msgstr "APO プリセットファイルをインポート"
 
 #: src/contents/ui/PresetsLocalPage.qml:88
 #, fuzzy
-msgid "Create Preset"
+msgid "Create New Preset"
 msgstr "プリセットを作成"
 
 #: src/contents/ui/PresetsLocalPage.qml:98
 #, fuzzy
-msgid "Created a New Local Preset: %1"
+msgid "Created a new local preset: %1"
 msgstr "ローカルプリセットを検索"
 
 #: src/contents/ui/PresetsLocalPage.qml:102
 #, fuzzy
-msgid "Failed to Create a New Local Preset: %1"
+msgid "Failed to create a new local preset: %1"
 msgstr "コミュニティプリセットを検索"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
@@ -2299,18 +2335,19 @@ msgstr "プリセットを作成"
 #: src/contents/ui/PresetsLocalPage.qml:187
 #, fuzzy
 msgid ""
-"Save Current Settings to the Preset:\n"
+"Save current settings to the preset:\n"
 "%1"
 msgstr "現在の設定をこのプリセットファイルに保存"
 
 #: src/contents/ui/PresetsLocalPage.qml:191
 #, fuzzy
-msgid "Saved the Current Settings to %1 Local Preset."
+msgid "Saved the current settings to %1 local preset."
 msgstr "現在の設定を破棄し、このプリセットを読み込む"
 
 #: src/contents/ui/PresetsLocalPage.qml:193
-msgid "Failed to Save the Current Settings to %1 Local Preset."
-msgstr ""
+#, fuzzy
+msgid "Failed to save the current settings to %1 local preset."
+msgstr "現在の設定を破棄し、このプリセットを読み込む"
 
 #: src/contents/ui/PresetsLocalPage.qml:201
 #, fuzzy
@@ -2319,19 +2356,19 @@ msgstr "プリセットを作成"
 
 #: src/contents/ui/PresetsLocalPage.qml:202
 msgid ""
-"Are You Sure You Want to Remove the Preset\n"
+"Are you sure you want to remove the preset\n"
 "%1\n"
-"From the List?"
+"from the list?"
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:206
 #, fuzzy
-msgid "Removed the %1 Local Preset."
+msgid "Removed the %1 local preset."
 msgstr "この自動読み込みプリセットを削除"
 
 #: src/contents/ui/PresetsLocalPage.qml:208
 #, fuzzy
-msgid "Failed to Remove the %1 Local Preset."
+msgid "Failed to remove the %1 local preset."
 msgstr "APO プリセットファイルをインポート"
 
 #: src/contents/ui/PresetsLocalPage.qml:216
@@ -2345,12 +2382,12 @@ msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:230
 #, fuzzy
-msgid "Renamed the %1 Local Preset to %2"
+msgid "Renamed the %1 local preset to %2"
 msgstr "このプリセットファイルを削除"
 
 #: src/contents/ui/PresetsLocalPage.qml:233
 #, fuzzy
-msgid "Failed to Rename the %1 Local Preset to %2"
+msgid "Failed to rename the %1 local preset to %2"
 msgstr "インパルスファイルを読み込めません"
 
 #: src/contents/ui/PresetsLocalPage.qml:241
@@ -2359,17 +2396,17 @@ msgstr "キャンセル"
 
 #: src/contents/ui/PresetsLocalPage.qml:277
 #, fuzzy
-msgid "Save Settings to this Preset"
+msgid "Save Settings to This Preset"
 msgstr "現在の設定をこのプリセットファイルに保存"
 
 #: src/contents/ui/PresetsLocalPage.qml:285
 #, fuzzy
-msgid "Rename this Preset"
+msgid "Rename This Preset"
 msgstr "このプリセットファイルを削除"
 
 #: src/contents/ui/PresetsLocalPage.qml:293
 #, fuzzy
-msgid "Delete this Preset"
+msgid "Delete This Preset"
 msgstr "このプリセットファイルを削除"
 
 #: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:104
@@ -2395,12 +2432,12 @@ msgstr ""
 
 #: src/contents/ui/RNNoise.qml:44
 #, fuzzy
-msgid "Imported a New RNNoise Model File."
+msgid "Imported a new RNNoise model file."
 msgstr "標準 RNNoise モデル"
 
 #: src/contents/ui/RNNoise.qml:46
 #, fuzzy
-msgid "Failed to Import the RNNoise Model File."
+msgid "Failed to import the RNNoise model file."
 msgstr "モデルファイルをインポート"
 
 #: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
@@ -2410,7 +2447,7 @@ msgstr "標準 RNNoise モデル"
 
 #: src/contents/ui/RNNoise.qml:59
 #, fuzzy
-msgid "Standard RNNoise Model Loaded."
+msgid "Standard RNNoise model loaded."
 msgstr "標準 RNNoise モデル"
 
 #: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:282
@@ -2420,12 +2457,13 @@ msgstr "{} を使用しています"
 
 #: src/contents/ui/RNNoise.qml:66
 #, fuzzy
-msgid "Loaded the %1 RNNoise Model."
+msgid "Loaded the %1 RNNoise model."
 msgstr "標準 RNNoise モデル"
 
 #: src/contents/ui/RNNoise.qml:70
-msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
-msgstr ""
+#, fuzzy
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr "インパルスファイルを読み込めません"
 
 #: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
 msgid "Voice Detection"
@@ -2447,16 +2485,17 @@ msgstr "RNNoise モデル"
 
 #: src/contents/ui/RNNoise.qml:239
 #, fuzzy
-msgid "Delete this Model"
+msgid "Delete This Model"
 msgstr "このモデルファイルを削除"
 
 #: src/contents/ui/RNNoise.qml:244
-msgid "Removed the %1 RNNoise Model."
-msgstr ""
+#, fuzzy
+msgid "Removed the %1 RNNoise model."
+msgstr "標準 RNNoise モデル"
 
 #: src/contents/ui/RNNoise.qml:246
 #, fuzzy
-msgid "Failed to Remove the %1 RNNoise Model."
+msgid "Failed to remove the %1 RNNoise model."
 msgstr "インパルスファイルを読み込めません"
 
 #: src/contents/ui/RNNoise.qml:314
@@ -2547,44 +2586,50 @@ msgstr "占有面積の大きいホール"
 
 #: src/contents/ui/ShortcutsSheet.qml:34
 #, fuzzy
-msgid "Show Help"
+msgid "Show help"
 msgstr "ヘルプを表示"
 
 #: src/contents/ui/ShortcutsSheet.qml:47
-msgid "Toggle Fullscreen"
+msgid "Toggle fullscreen"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:294
 #, fuzzy
-msgid "Toggle Global Bypass"
+msgid "Toggle global bypass"
 msgstr "グローバルバイパス"
 
 #: src/contents/ui/ShortcutsSheet.qml:103
-msgid "Close the Window"
+#, fuzzy
+msgid "Close the window"
 msgstr "ウィンドウを閉じる"
 
 #: src/contents/ui/ShortcutsSheet.qml:131
 #, fuzzy
-msgid "Terminate Easy Effects Service"
+msgid "Terminate Easy Effects service"
 msgstr "Easy Effectsのバージョンを表示"
 
 #: src/contents/ui/ShortcutsSheet.qml:171
 #, fuzzy
-msgid "Toggle Process All Inputs"
+msgid "Toggle process all inputs"
 msgstr "すべての入力を処理"
 
 #: src/contents/ui/ShortcutsSheet.qml:211
 #, fuzzy
-msgid "Toggle Process All Outputs"
+msgid "Toggle process all outputs"
 msgstr "すべての出力を処理"
 
 #: src/contents/ui/ShortcutsSheet.qml:224
 #: src/contents/ui/ShortcutsSheet.qml:237
-msgid "Can Be Used on Numeric Controls"
+msgid "Can be used on numeric controls"
 msgstr ""
 
+#: src/contents/ui/ShortcutsSheet.qml:248
+#, fuzzy
+msgid "Global shortcuts"
+msgstr "_ショートカット"
+
 #: src/contents/ui/ShortcutsSheet.qml:334
-msgid "Toggle Microphone Monitoring"
+msgid "Toggle microphone monitoring"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:383
@@ -2750,31 +2795,38 @@ msgstr "出力レベルメーター"
 #: src/presets_manager.cpp:758 src/presets_manager.cpp:765
 #: src/presets_manager.cpp:775 src/presets_manager.cpp:782
 #: src/presets_manager.cpp:792 src/presets_manager.cpp:801
-msgid "Preset Not Loaded Correctly"
+#, fuzzy
+msgid "Preset not loaded correctly"
 msgstr "プリセットが正しく読み込まれていません"
 
 #: src/presets_manager.cpp:758
-msgid "Wrong Format in Excluded Apps List"
+#, fuzzy
+msgid "Wrong format in excluded apps list"
 msgstr "間違った形式の除外されたアプリ一覧"
 
 #: src/presets_manager.cpp:766
-msgid "Generic Error While Loading Excluded Apps List"
+#, fuzzy
+msgid "Generic error while loading excluded apps list"
 msgstr "除外されたアプリ一覧の読み込み中に発生した一般的なエラー"
 
 #: src/presets_manager.cpp:775
-msgid "Wrong Format in Effects List"
+#, fuzzy
+msgid "Wrong format in effects list"
 msgstr "エフェクト一覧の間違った形式"
 
 #: src/presets_manager.cpp:782
-msgid "Generic Error While Loading Effects List"
+#, fuzzy
+msgid "Generic error while loading effects list"
 msgstr "エフェクト一覧の読み込み中に発生した一般的なエラー"
 
 #: src/presets_manager.cpp:793
-msgid "One or More Parameters Have a Wrong Format"
+#, fuzzy
+msgid "One or more parameters have a wrong format"
 msgstr "1つ以上のパラメータに間違った形式が設定されています"
 
 #: src/presets_manager.cpp:802
-msgid "Generic Error While Loading The Effect"
+#, fuzzy
+msgid "Generic error while loading the effect"
 msgstr "エフェクトの読み込み中に発生した一般的なエラー"
 
 #: src/pw_model_nodes.cpp:488
@@ -2877,6 +2929,10 @@ msgstr "イコライザー、コンプレッサーなどのオーディオエフ
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "PipeWire アプリケーション用オーディオエフェクト"
+
+#, fuzzy
+#~ msgid "Empty"
+#~ msgstr "リストは空です"
 
 #, fuzzy
 #~ msgid "Impluse File Imported."
@@ -3500,9 +3556,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 #~ msgstr ""
 #~ "GraphicEQ プリセットが読み込まれていません。ファイル形式がサポートされてい"
 #~ "ない可能性があります。内容を確認してください。"
-
-#~ msgid "Remove Autoloading Preset"
-#~ msgstr "自動読み込みプリセットを削除"
 
 #~ msgid "Remove"
 #~ msgstr "削除"
@@ -4688,9 +4741,6 @@ msgstr "PipeWire アプリケーション用オーディオエフェクト"
 
 #~ msgid "Use Default"
 #~ msgstr "デフォルトを使用"
-
-#~ msgid "Remove this plugin"
-#~ msgstr "このプラグインを削除"
 
 #~ msgid "Start Service at Login"
 #~ msgstr "ログイン時にサービスを開始"
