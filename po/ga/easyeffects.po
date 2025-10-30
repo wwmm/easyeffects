@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-28 19:44-0300\n"
-"PO-Revision-Date: 2025-10-30 04:17+0000\n"
+"PO-Revision-Date: 2025-10-31 00:02+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -2740,20 +2740,22 @@ msgid "Audio Effects for PipeWire Applications"
 msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
 
 #: src/contents/ui/PresetsLocalPage.qml:187
-#, fuzzy
 msgid ""
 "Save Current Settings to the Preset:\n"
 "%1"
-msgstr "Sábháil Socruithe chuig an Réamhshocrú seo"
+msgstr ""
+"Sábháil Socruithe Reatha chuig an Réamhshocrú:\n"
+"%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:202
-#, fuzzy
 msgid ""
 "Are You Sure You Want to Remove the Preset\n"
 "%1\n"
 "From the List?"
 msgstr ""
-"An bhfuil tú cinnte gur mian leat an réamhshocrú seo a bhaint den liosta?"
+"An Bhfuil Tú Cinnte Gur Mian Leat An Réamhshocrú\n"
+"%1\n"
+"A Bhaint Den Liosta?"
 
 #~ msgid "Impluse File Imported."
 #~ msgstr "Comhad Impulse Iompórtáilte."
