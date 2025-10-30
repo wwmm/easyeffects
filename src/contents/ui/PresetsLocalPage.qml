@@ -274,7 +274,7 @@ ColumnLayout {
                         alignment: Qt.AlignRight
                         actions: [
                             Kirigami.Action {
-                                text: i18n("Save Settings to this Preset") // qmllint disable
+                                text: i18n("Save Settings to This Preset") // qmllint disable
                                 icon.name: "document-save-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
@@ -282,7 +282,7 @@ ColumnLayout {
                                 }
                             },
                             Kirigami.Action {
-                                text: i18n("Rename this Preset") // qmllint disable
+                                text: i18n("Rename This Preset") // qmllint disable
                                 icon.name: "edit-entry-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
@@ -290,7 +290,7 @@ ColumnLayout {
                                 }
                             },
                             Kirigami.Action {
-                                text: i18n("Delete this Preset") // qmllint disable
+                                text: i18n("Delete This Preset") // qmllint disable
                                 icon.name: "delete"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {

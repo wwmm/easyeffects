@@ -101,7 +101,7 @@ Kirigami.OverlaySheet {
                         alignment: Qt.AlignRight
                         actions: [
                             Kirigami.Action {
-                                text: i18n("Delete this Impulse") // qmllint disable
+                                text: i18n("Delete This Impulse") // qmllint disable
                                 icon.name: "delete"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {

@@ -236,7 +236,7 @@ Kirigami.ScrollablePage {
                                     alignment: Qt.AlignRight
                                     actions: [
                                         Kirigami.Action {
-                                            text: i18n("Delete this Model") // qmllint disable
+                                            text: i18n("Delete This Model") // qmllint disable
                                             icon.name: "delete"
                                             displayHint: Kirigami.DisplayHint.AlwaysHide
                                             onTriggered: {
