@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-28 21:11+0000\n"
-"PO-Revision-Date: 2025-10-30 04:17+0000\n"
+"PO-Revision-Date: 2025-10-30 11:34+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2755,19 +2755,22 @@ msgstr ""
 "Dalla Lista?"
 
 #: src/contents/ui/PresetsLocalPage.qml:187
-#, fuzzy
 msgid ""
 "Save Current Settings to the Preset:\n"
 "%1"
-msgstr "Salva la Configurazione in questo Profilo"
+msgstr ""
+"Salva la Configurazione Attuale nel Profilo:\n"
+"%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:202
-#, fuzzy
 msgid ""
 "Are You Sure You Want to Remove the Preset\n"
 "%1\n"
 "From the List?"
-msgstr "Vuoi davvero rimuovere questo profilo dalla lista?"
+msgstr ""
+"Vuoi Davvero Rimuovere il Profilo\n"
+"%1\n"
+"Dalla Lista?"
 
 #~ msgid "Impluse File Imported."
 #~ msgstr "File di Risposta Impulsiva Importato."
