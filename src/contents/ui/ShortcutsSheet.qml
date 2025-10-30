@@ -31,7 +31,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Show Help") // qmllint disable
+                text: i18n("Show help") // qmllint disable
             }
 
             Kirigami.Chip {
@@ -44,7 +44,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Toggle Fullscreen") // qmllint disable
+                text: i18n("Toggle fullscreen") // qmllint disable
             }
 
             RowLayout {
@@ -72,7 +72,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Toggle Global Bypass") // qmllint disable
+                text: i18n("Toggle global bypass") // qmllint disable
             }
 
             RowLayout {
@@ -100,7 +100,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Close the Window") // qmllint disable
+                text: i18n("Close the window") // qmllint disable
             }
 
             RowLayout {
@@ -128,7 +128,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Terminate Easy Effects Service") // qmllint disable
+                text: i18n("Terminate Easy Effects service") // qmllint disable
             }
 
             RowLayout {
@@ -168,7 +168,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Toggle Process All Inputs") // qmllint disable
+                text: i18n("Toggle process all inputs") // qmllint disable
             }
 
             RowLayout {
@@ -208,7 +208,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Toggle Process All Outputs") // qmllint disable
+                text: i18n("Toggle process all outputs") // qmllint disable
             }
 
             Kirigami.Chip {
@@ -221,7 +221,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Can Be Used on Numeric Controls") // qmllint disable
+                text: i18n("Can be used on numeric controls") // qmllint disable
             }
 
             Kirigami.Chip {
@@ -234,7 +234,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Can Be Used on Numeric Controls") // qmllint disable
+                text: i18n("Can be used on numeric controls") // qmllint disable
             }
         }
 
@@ -245,7 +245,7 @@ Kirigami.OverlaySheet {
 
             Kirigami.Heading {
                 Layout.alignment: Qt.AlignLeft
-                text: i18n("Global Shortcuts") // qmllint disable
+                text: i18n("Global shortcuts") // qmllint disable
             }
         }
 
@@ -291,7 +291,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Toggle Global Bypass") // qmllint disable
+                text: i18n("Toggle global bypass") // qmllint disable
             }
 
             RowLayout {
@@ -331,7 +331,7 @@ Kirigami.OverlaySheet {
             }
 
             Controls.Label {
-                text: i18n("Toggle Microphone Monitoring") // qmllint disable
+                text: i18n("Toggle microphone monitoring") // qmllint disable
             }
         }
     }
