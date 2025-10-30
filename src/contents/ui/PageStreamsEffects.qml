@@ -594,7 +594,7 @@ Kirigami.Page {
                 overflowIconName: "im-ban-kick-user-symbolic"
                 actions: [
                     Kirigami.Action {
-                        tooltip: i18n("Input Monitoring")// qmllint disable
+                        tooltip: i18n("Input monitoring")// qmllint disable
                         icon.name: "audio-input-microphone-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.pageType === 1 && pageStreamsEffects.streamDB.visiblePage === 1
