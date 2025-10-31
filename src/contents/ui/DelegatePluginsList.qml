@@ -17,6 +17,8 @@ Item {
     required property var pluginDB
     required property var streamDB
 
+    readonly property bool bypass: (delegateItem.pluginDB?.bypass ?? false)
+
     signal selectedChanged(string name)
 
     width: {
@@ -51,7 +53,7 @@ Item {
             columnSpacing: Kirigami.Units.smallSpacing
 
             Kirigami.Icon {
-                source: delegateItem.pluginDB.bypass === true ? "media-playback-pause-symbolic" : "composition-symbolic"
+                source: bypass === true ? "media-playback-pause-symbolic" : "composition-symbolic"
                 Layout.preferredWidth: Kirigami.Units.iconSizes.smallMedium
                 Layout.preferredHeight: Kirigami.Units.iconSizes.smallMedium
                 Layout.alignment: Qt.AlignLeft
@@ -60,7 +62,7 @@ Item {
             Controls.Label {
                 Layout.fillWidth: true
                 text: DB.Manager.main.collapsePluginsList === false ? delegateItem.translatedName : delegateItem.translatedName.charAt(0)
-                color: delegateItem.pluginDB.bypass ? Kirigami.Theme.disabledTextColor : Kirigami.Theme.textColor
+                color: bypass ? Kirigami.Theme.disabledTextColor : Kirigami.Theme.textColor
             }
 
             Kirigami.ActionToolBar {
@@ -72,9 +74,9 @@ Item {
                         icon.name: "system-shutdown-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         checkable: true
-                        checked: !delegateItem.pluginDB.bypass
+                        checked: !bypass
                         onTriggered: {
-                            if (checked === !delegateItem.pluginDB.bypass) {
+                            if (checked === !bypass) {
                                 return;
                             }
 
