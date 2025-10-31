@@ -52,7 +52,6 @@ Kirigami.ScrollablePage {
         id: bandCompressorControls
 
         ColumnLayout {
-            anchors.fill: parent
             spacing: Kirigami.Units.gridUnit
 
             Kirigami.ActionToolBar {
@@ -380,8 +379,6 @@ Kirigami.ScrollablePage {
         id: bandSidechainControls
 
         ColumnLayout {
-            anchors.fill: parent
-
             Kirigami.CardsLayout {
                 maximumColumns: 8
 
