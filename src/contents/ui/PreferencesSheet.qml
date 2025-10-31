@@ -566,7 +566,7 @@ Kirigami.OverlaySheet {
                 }
             }
 
-            /*
+            /**
              * This is a hack to make sure we can see the whole card when the vertical scrollbar is used
              */
 
