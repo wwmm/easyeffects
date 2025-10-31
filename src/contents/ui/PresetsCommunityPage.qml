@@ -90,7 +90,7 @@ ColumnLayout {
                                 enabled: false
                             },
                             Kirigami.Action {
-                                text: i18n("Copy to Local Presets") // qmllint disable
+                                text: i18n("Copy to local presets") // qmllint disable
                                 icon.name: "document-import-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {

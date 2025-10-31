@@ -57,7 +57,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: limiterPage.pluginDB.mode
                         editable: false
-                        model: [i18n("Herm Thin"), i18n("Herm Wide"), i18n("Herm Tail"), i18n("Herm Duck"), i18n("Exp Thin"), i18n("Exp Wide"), i18n("Exp Tail"), i18n("Exp Duck"), i18n("Line Thin"), i18n("Line Wide"), i18n("Line Tail"), i18n("Line Duck")]// qmllint disable
+                        model: [i18n("Herm thin"), i18n("Herm wide"), i18n("Herm tail"), i18n("Herm duck"), i18n("Exp thin"), i18n("Exp wide"), i18n("Exp tail"), i18n("Exp duck"), i18n("Line thin"), i18n("Line wide"), i18n("Line tail"), i18n("Line duck")]// qmllint disable
                         onActivated: idx => {
                             limiterPage.pluginDB.mode = idx;
                         }
@@ -71,7 +71,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: limiterPage.pluginDB.oversampling
                         editable: false
-                        model: [i18n("None"), i18n("Half x2/16 bit"), i18n("Half x2/24 bit"), i18n("Half x3/16 bit"), i18n("Half x3/24 bit"), i18n("Half x4/16 bit"), i18n("Half x4/24 bit"), i18n("Half x6/16 bit"), i18n("Half x6/24 bit"), i18n("Half x8/16 bit"), i18n("Half x8/24 bit"), i18n("Full x2/16 bit"), i18n("Full x2/24 bit"), i18n("Full x3/16 bit"), i18n("Full x3/24 bit"), i18n("Full x4/16 bit"), i18n("Full x4/24 bit"), i18n("Full x6/16 bit"), i18n("Full x6/24 bit"), i18n("Full x8/16 bit"), i18n("Full x8/24 bit"), i18n("True Peak/16 bit"), i18n("True Peak/24 bit")]// qmllint disable
+                        model: [i18n("None"), i18n("Half x2/16 bit"), i18n("Half x2/24 bit"), i18n("Half x3/16 bit"), i18n("Half x3/24 bit"), i18n("Half x4/16 bit"), i18n("Half x4/24 bit"), i18n("Half x6/16 bit"), i18n("Half x6/24 bit"), i18n("Half x8/16 bit"), i18n("Half x8/24 bit"), i18n("Full x2/16 bit"), i18n("Full x2/24 bit"), i18n("Full x3/16 bit"), i18n("Full x3/24 bit"), i18n("Full x4/16 bit"), i18n("Full x4/24 bit"), i18n("Full x6/16 bit"), i18n("Full x6/24 bit"), i18n("Full x8/16 bit"), i18n("Full x8/24 bit"), i18n("True peak/16 bit"), i18n("True peak/24 bit")]// qmllint disable
                         onActivated: idx => {
                             limiterPage.pluginDB.oversampling = idx;
                         }
@@ -208,7 +208,7 @@ Kirigami.ScrollablePage {
                             id: comboSideChainInputDevice
 
                             Layout.columnSpan: 2
-                            text: i18n("Input Device") // qmllint disable
+                            text: i18n("Input device") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             editable: false
                             model: PW.ModelNodes
@@ -283,7 +283,7 @@ Kirigami.ScrollablePage {
                         Layout.alignment: Qt.AlignTop
 
                         EeSpinBox {
-                            label: i18n("Input to Sidechain") // qmllint disable
+                            label: i18n("Input to sidechain") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: limiterPage.pluginDB.getMinValue("inputToSidechain")
@@ -299,7 +299,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            label: i18n("Input to Link") // qmllint disable
+                            label: i18n("Input to link") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: limiterPage.pluginDB.getMinValue("inputToLink")
@@ -315,7 +315,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            label: i18n("Sidechain to Input") // qmllint disable
+                            label: i18n("Sidechain to input") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: limiterPage.pluginDB.getMinValue("sidechainToInput")
@@ -331,7 +331,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            label: i18n("Sidechain to Link") // qmllint disable
+                            label: i18n("Sidechain to link") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: limiterPage.pluginDB.getMinValue("sidechainToLink")
@@ -347,7 +347,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            label: i18n("Link to Sidechain") // qmllint disable
+                            label: i18n("Link to sidechain") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: limiterPage.pluginDB.getMinValue("linkToSidechain")
@@ -363,7 +363,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            label: i18n("Link to Input") // qmllint disable
+                            label: i18n("Link to input") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: limiterPage.pluginDB.getMinValue("linkToInput")
@@ -590,7 +590,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Show Native Window") // qmllint disable
+                    text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
@@ -603,7 +603,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Gain Boost") // qmllint disable
+                    text: i18n("Gain boost") // qmllint disable
                     icon.name: "usermenu-up-symbolic"
                     checkable: true
                     checked: limiterPage.pluginDB.gainBoost
@@ -613,7 +613,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Automatic Level") // qmllint disable
+                    text: i18n("Automatic level") // qmllint disable
                     icon.name: "usermenu-up-symbolic"
                     checkable: true
                     checked: limiterPage.pluginDB.alr

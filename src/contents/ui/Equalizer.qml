@@ -48,7 +48,7 @@ Kirigami.ScrollablePage {
 
         fileMode: FileDialog.OpenFiles
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        nameFilters: [i18n("APO Presets") + " (*.txt)"]// qmllint disable
+        nameFilters: [i18n("APO preset") + " (*.txt)"]// qmllint disable
         onAccepted: {
             if (equalizerPage.pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true) {
                 appWindow.showStatus(i18n("Imported the Equalizer APO preset file."), Kirigami.MessageType.Positive); // qmllint disable
@@ -63,7 +63,7 @@ Kirigami.ScrollablePage {
 
         fileMode: FileDialog.OpenFiles
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        nameFilters: [i18n("GraphicEQ Presets") + " (*.txt)"]// qmllint disable
+        nameFilters: [i18n("GraphicEQ preset") + " (*.txt)"]// qmllint disable
         onAccepted: {
             if (equalizerPage.pluginBackend.importApoGraphicEqPreset(apoGraphicEqFileDialog.selectedFiles) === true) {
                 appWindow.showStatus(i18n("Imported the GraphicEQ preset file."), Kirigami.MessageType.Positive); // qmllint disable
@@ -78,7 +78,7 @@ Kirigami.ScrollablePage {
 
         fileMode: FileDialog.SaveFile
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        nameFilters: [i18n("APO Preset") + " (*.txt)"]// qmllint disable
+        nameFilters: [i18n("APO preset") + " (*.txt)"]// qmllint disable
         onAccepted: {
             if (equalizerPage.pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true) {
                 appWindow.showStatus(i18n("Exported the current Equalizer settings to an external APO preset file."), Kirigami.MessageType.Positive);
@@ -147,7 +147,7 @@ Kirigami.ScrollablePage {
             EeSpinBox {
                 id: pitchLeft
 
-                label: i18n("Pitch Left") // qmllint disable
+                label: i18n("Pitch left") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
                 from: equalizerPage.pluginDB.getMinValue("pitchLeft")
@@ -164,7 +164,7 @@ Kirigami.ScrollablePage {
             EeSpinBox {
                 id: pitchRight
 
-                label: i18n("Pitch Right") // qmllint disable
+                label: i18n("Pitch right") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
                 from: equalizerPage.pluginDB.getMinValue("pitchRight")
@@ -280,7 +280,7 @@ Kirigami.ScrollablePage {
                 actions: [
                     Kirigami.Action {
                         displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                        text: i18n("Show Native Window") // qmllint disable
+                        text: i18n("Show native window") // qmllint disable
                         icon.name: "window-duplicate-symbolic"
                         enabled: DB.Manager.main.showNativePluginUi
                         checkable: true
@@ -293,7 +293,7 @@ Kirigami.ScrollablePage {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Split Channels") // qmllint disable
+                        text: i18n("Split channels") // qmllint disable
                         icon.name: "split-symbolic"
                         checkable: true
                         checked: equalizerPage.pluginDB.splitChannels
@@ -303,21 +303,21 @@ Kirigami.ScrollablePage {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Flat Response") // qmllint disable
+                        text: i18n("Flat response") // qmllint disable
                         icon.name: "map-flat-symbolic"
                         onTriggered: {
                             equalizerPage.pluginBackend.flatResponse();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Calculate Frequencies") // qmllint disable
+                        text: i18n("Calculate frequencies") // qmllint disable
                         icon.name: "folder-calculate-symbolic"
                         onTriggered: {
                             equalizerPage.pluginBackend.calculateFrequencies();
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Sort Bands") // qmllint disable
+                        text: i18n("Sort bands") // qmllint disable
                         icon.name: "sort_incr-symbolic"
                         onTriggered: {
                             equalizerPage.pluginBackend.sortBands();

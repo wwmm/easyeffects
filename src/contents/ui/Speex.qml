@@ -57,7 +57,7 @@ Kirigami.ScrollablePage {
                     EeSwitch {
                         id: enableAgc
 
-                        label: i18n("Automatic Gain Control") // qmllint disable
+                        label: i18n("Automatic gain control") // qmllint disable
                         isChecked: speexPage.pluginDB.enableAgc
                         onCheckedChanged: {
                             if (isChecked !== speexPage.pluginDB.enableAgc)
@@ -79,7 +79,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: noiseSuppression
 
-                        label: i18n("Noise Suppression") // qmllint disable
+                        label: i18n("Noise suppression") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
                         from: speexPage.pluginDB.getMinValue("noiseSuppression")
@@ -106,7 +106,7 @@ Kirigami.ScrollablePage {
                     EeSwitch {
                         id: enableVad
 
-                        label: i18n("Voice Detection") // qmllint disable
+                        label: i18n("Voice detection") // qmllint disable
                         isChecked: speexPage.pluginDB.enableVad
                         onCheckedChanged: {
                             if (isChecked !== speexPage.pluginDB.enableVad)

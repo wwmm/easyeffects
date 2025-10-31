@@ -117,7 +117,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Show Native Window") // qmllint disable
+                    text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true

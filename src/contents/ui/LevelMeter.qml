@@ -141,7 +141,7 @@ Kirigami.ScrollablePage {
                     EeProgressBar {
                         id: shortterm
 
-                        label: i18n("Short-Term") // qmllint disable
+                        label: i18n("Short-term") // qmllint disable
                         unit: "LUFS"
                         from: Common.minimumDecibelLevel
                         to: 10
@@ -204,7 +204,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Reset History") // qmllint disable
+                    text: i18n("Reset history") // qmllint disable
                     icon.name: "edit-clear-history-symbolic"
                     onTriggered: {
                         levelMeterPage.pluginBackend.resetHistory();
@@ -212,7 +212,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Reset Settings") // qmllint disable
+                    text: i18n("Reset settings") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         levelMeterPage.pluginBackend.reset();

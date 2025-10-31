@@ -29,7 +29,7 @@ ColumnLayout {
 
         fileMode: FileDialog.OpenFiles
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        nameFilters: ["JSON files (*.json)"]
+        nameFilters: ["JSON file (*.json)"]
         onAccepted: {
             if (Presets.Manager.importPresets(columnLayout.pipeline, fileDialogImport.selectedFiles) === true) {
                 appWindow.showStatus(i18n("Imported a new local preset from an external file."), Kirigami.MessageType.Positive); // qmllint disable
@@ -60,7 +60,7 @@ ColumnLayout {
             id: newPresetName
 
             Layout.fillWidth: true
-            placeholderText: i18n("New Preset Name") // qmllint disable
+            placeholderText: i18n("New preset name") // qmllint disable
             // based on https://github.com/KDE/kirigami/blob/master/src/controls/SearchField.qml
             leftPadding: {
                 if (effectiveHorizontalAlignment === TextInput.AlignRight)
@@ -76,7 +76,7 @@ ColumnLayout {
             }
             rightActions: [
                 Kirigami.Action {
-                    text: i18n("Import Preset File") // qmllint disable
+                    text: i18n("Import preset file") // qmllint disable
                     icon.name: "document-import-symbolic"
                     onTriggered: {
                         newPresetName.text = "";
@@ -85,7 +85,7 @@ ColumnLayout {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Create New Preset") // qmllint disable
+                    text: i18n("Create new preset") // qmllint disable
                     icon.name: "list-add-symbolic"
                     onTriggered: {
                         // remove the final preset extension if specified
@@ -128,7 +128,7 @@ ColumnLayout {
         Controls.Button {
             Layout.alignment: Qt.AlignCenter
             Layout.rowSpan: 2
-            Controls.ToolTip.text: i18n("Export Presets") // qmllint disable
+            Controls.ToolTip.text: i18n("Export presets") // qmllint disable
             Controls.ToolTip.visible: hovered
             Controls.ToolTip.delay: 500
             icon.name: "export-symbolic"
@@ -274,7 +274,7 @@ ColumnLayout {
                         alignment: Qt.AlignRight
                         actions: [
                             Kirigami.Action {
-                                text: i18n("Save Settings to This Preset") // qmllint disable
+                                text: i18n("Save settings to this preset") // qmllint disable
                                 icon.name: "document-save-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
@@ -282,7 +282,7 @@ ColumnLayout {
                                 }
                             },
                             Kirigami.Action {
-                                text: i18n("Rename This Preset") // qmllint disable
+                                text: i18n("Rename this preset") // qmllint disable
                                 icon.name: "edit-entry-symbolic"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
@@ -290,7 +290,7 @@ ColumnLayout {
                                 }
                             },
                             Kirigami.Action {
-                                text: i18n("Delete This Preset") // qmllint disable
+                                text: i18n("Delete this preset") // qmllint disable
                                 icon.name: "delete"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {

@@ -379,7 +379,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Invert Left") // qmllint disable
+                    text: i18n("Invert left") // qmllint disable
                     icon.name: "edit-select-invert-symbolic"
                     checkable: true
                     checked: delayPage.pluginDB.invertPhaseL
@@ -389,7 +389,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Invert Right") // qmllint disable
+                    text: i18n("Invert right") // qmllint disable
                     icon.name: "edit-select-invert-symbolic"
                     checkable: true
                     checked: delayPage.pluginDB.invertPhaseR
@@ -400,7 +400,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Show Native Window") // qmllint disable
+                    text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true

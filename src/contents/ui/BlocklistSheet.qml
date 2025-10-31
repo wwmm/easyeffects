@@ -26,7 +26,7 @@ Kirigami.OverlaySheet {
             id: newBlockedApp
 
             Layout.fillWidth: true
-            placeholderText: i18n("Application Node Name") // qmllint disable
+            placeholderText: i18n("Application node name") // qmllint disable
             // based on https://github.com/KDE/kirigami/blob/master/src/controls/SearchField.qml
             leftPadding: {
                 if (effectiveHorizontalAlignment === TextInput.AlignRight)
@@ -42,7 +42,7 @@ Kirigami.OverlaySheet {
             }
             rightActions: [
                 Kirigami.Action {
-                    text: i18n("Add to Excluded Applications") // qmllint disable
+                    text: i18n("Add to excluded applications") // qmllint disable
                     icon.name: "list-add-symbolic"
                     onTriggered: {
                         const name = newBlockedApp.text;
@@ -95,6 +95,7 @@ Kirigami.OverlaySheet {
                     width: parent.width - (Kirigami.Units.largeSpacing * 4)
                     visible: listView.count === 0
                     text: i18n("Empty List") // qmllint disable
+                    explanation: i18n("No application excluded") // qmllint disable
                 }
 
                 delegate: Controls.ItemDelegate {
@@ -147,7 +148,7 @@ Kirigami.OverlaySheet {
                             alignment: Qt.AlignRight
                             actions: [
                                 Kirigami.Action {
-                                    text: i18n("Remove This App") // qmllint disable
+                                    text: i18n("Remove this app") // qmllint disable
                                     icon.name: "delete"
                                     displayHint: Kirigami.DisplayHint.AlwaysHide
                                     onTriggered: {
@@ -174,7 +175,7 @@ Kirigami.OverlaySheet {
         position: Controls.ToolBar.Footer
         actions: [
             Kirigami.Action {
-                text: i18n("Show Excluded Apps") // qmllint disable
+                text: i18n("Show excluded apps") // qmllint disable
                 tooltip: i18n("Show excluded applications in the list of players/recorders") // qmllint disable
                 icon.name: "applications-all-symbolic"
                 displayHint: Kirigami.DisplayHint.KeepVisible

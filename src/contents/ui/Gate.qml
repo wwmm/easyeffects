@@ -251,7 +251,7 @@ Kirigami.ScrollablePage {
                             id: comboSideChainInputDevice
 
                             Layout.columnSpan: 2
-                            text: i18n("Input Device") // qmllint disable
+                            text: i18n("Input device") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             editable: false
                             model: PW.ModelNodes
@@ -388,7 +388,7 @@ Kirigami.ScrollablePage {
 
                             horizontalPadding: 0
                             verticalPadding: 0
-                            text: i18n("High-Pass") // qmllint disable
+                            text: i18n("High-pass") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: gatePage.pluginDB.hpfMode
                             editable: false
@@ -403,7 +403,7 @@ Kirigami.ScrollablePage {
 
                             horizontalPadding: 0
                             verticalPadding: 0
-                            text: i18n("Low-Pass") // qmllint disable
+                            text: i18n("Low-pass") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: gatePage.pluginDB.lpfMode
                             editable: false
@@ -541,7 +541,7 @@ Kirigami.ScrollablePage {
                         Layout.alignment: Qt.AlignTop
 
                         EeSpinBox {
-                            label: i18n("Input to Sidechain") // qmllint disable
+                            label: i18n("Input to sidechain") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: gatePage.pluginDB.getMinValue("inputToSidechain")
@@ -557,7 +557,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            label: i18n("Input to Link") // qmllint disable
+                            label: i18n("Input to link") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: gatePage.pluginDB.getMinValue("inputToLink")
@@ -573,7 +573,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            label: i18n("Sidechain to Input") // qmllint disable
+                            label: i18n("Sidechain to input") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: gatePage.pluginDB.getMinValue("sidechainToInput")
@@ -589,7 +589,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            label: i18n("Sidechain to Link") // qmllint disable
+                            label: i18n("Sidechain to link") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: gatePage.pluginDB.getMinValue("sidechainToLink")
@@ -605,7 +605,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            label: i18n("Link to Sidechain") // qmllint disable
+                            label: i18n("Link to sidechain") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: gatePage.pluginDB.getMinValue("linkToSidechain")
@@ -621,7 +621,7 @@ Kirigami.ScrollablePage {
                         }
 
                         EeSpinBox {
-                            label: i18n("Link to Input") // qmllint disable
+                            label: i18n("Link to input") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: gatePage.pluginDB.getMinValue("linkToInput")
@@ -1002,7 +1002,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Show Native Window") // qmllint disable
+                    text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
@@ -1025,7 +1025,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Stereo Split") // qmllint disable
+                    text: i18n("Stereo split") // qmllint disable
                     icon.name: "view-split-left-right-symbolic"
                     checkable: true
                     checked: gatePage.pluginDB.stereoSplit

@@ -30,7 +30,7 @@ Kirigami.ScrollablePage {
     ColumnLayout {
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: i18n("Attenuation Limit") // qmllint disable
+            text: i18n("Attenuation limit") // qmllint disable
         }
 
         RowLayout {
@@ -77,7 +77,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: minProcessingThreshold
 
-                        label: i18n("Minimum Processing Threshold") // qmllint disable
+                        label: i18n("Minimum processing threshold") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: deepfilternetPage.pluginDB.getMinValue("minProcessingThreshold")
                         to: deepfilternetPage.pluginDB.getMaxValue("minProcessingThreshold")
@@ -93,7 +93,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: maxErbProcessingThreshold
 
-                        label: i18n("Maximum ERB Processing threshold") // qmllint disable
+                        label: i18n("Maximum ERB processing threshold") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: deepfilternetPage.pluginDB.getMinValue("maxErbProcessingThreshold")
                         to: deepfilternetPage.pluginDB.getMaxValue("maxErbProcessingThreshold")
@@ -109,7 +109,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: maxDfProcessingThreshold
 
-                        label: i18n("Maximum DF Processing Threshold") // qmllint disable
+                        label: i18n("Maximum DF processing threshold") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: deepfilternetPage.pluginDB.getMinValue("maxDfProcessingThreshold")
                         to: deepfilternetPage.pluginDB.getMaxValue("maxDfProcessingThreshold")
@@ -125,7 +125,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: minProcessingBuffer
 
-                        label: i18n("Minimum Processing Buffer") // qmllint disable
+                        label: i18n("Minimum processing buffer") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: deepfilternetPage.pluginDB.getMinValue("minProcessingBuffer")
                         to: deepfilternetPage.pluginDB.getMaxValue("minProcessingBuffer")
@@ -141,7 +141,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: postFilterBeta
 
-                        label: i18n("Post Filter Beta") // qmllint disable
+                        label: i18n("Post filter Beta") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: deepfilternetPage.pluginDB.getMinValue("postFilterBeta")
                         to: deepfilternetPage.pluginDB.getMaxValue("postFilterBeta")
@@ -182,7 +182,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Reset History") // qmllint disable
+                    text: i18n("Reset history") // qmllint disable
                     icon.name: "edit-clear-history-symbolic"
                     onTriggered: {
                         deepfilternetPage.pluginBackend.resetHistory();
@@ -190,7 +190,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Reset") // qmllint disable
+                    text: i18n("Reset settings") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         deepfilternetPage.pluginBackend.reset();

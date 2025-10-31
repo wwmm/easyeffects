@@ -54,7 +54,7 @@ Kirigami.ScrollablePage {
         ignoreUnknownSignals: true
 
         function onStandardModelLoaded() {
-            currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
+            currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise model")}</strong>`);
 
             appWindow.showStatus(i18n("Standard RNNoise model loaded."), Kirigami.MessageType.Positive);
         }
@@ -65,7 +65,7 @@ Kirigami.ScrollablePage {
 
                 appWindow.showStatus(i18n("Loaded the %1 RNNoise model.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive);
             } else {
-                currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
+                currentModelLoaded.text = i18n("Using %1", `<strong>${i18n("Standard RNNoise model")}</strong>`);
 
                 appWindow.showStatus(i18n("Failed to load the %1 model. Fallback to Standard RNNoise model.", `<strong>${name}</strong>`), Kirigami.MessageType.Error, false);
             }
@@ -123,7 +123,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: wet
 
-                        label: i18n("Wet Level") // qmllint disable
+                        label: i18n("Wet level") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 8
                         from: rnnoisePage.pluginDB.getMinValue("wet")
                         to: rnnoisePage.pluginDB.getMaxValue("wet")
@@ -163,7 +163,7 @@ Kirigami.ScrollablePage {
                     Kirigami.Action {
 
                         displayComponent: EeSwitch {
-                            label: i18n("Use the Standard Model") // qmllint disable
+                            label: i18n("Use the Standard model") // qmllint disable
                             isChecked: rnnoisePage.pluginDB.useStandardModel
                             onCheckedChanged: {
                                 if (isChecked !== rnnoisePage.pluginDB.useStandardModel)
@@ -236,7 +236,7 @@ Kirigami.ScrollablePage {
                                     alignment: Qt.AlignRight
                                     actions: [
                                         Kirigami.Action {
-                                            text: i18n("Delete This Model") // qmllint disable
+                                            text: i18n("Delete this model") // qmllint disable
                                             icon.name: "delete"
                                             displayHint: Kirigami.DisplayHint.AlwaysHide
                                             onTriggered: {
@@ -275,9 +275,9 @@ Kirigami.ScrollablePage {
 
                 text: {
                     if (rnnoisePage.pluginDB.useStandardModel) {
-                        return i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
+                        return i18n("Using %1", `<strong>${i18n("Standard RNNoise model")}</strong>`);
                     } else if (rnnoisePage.pluginBackend.usingStandardModel) {
-                        return i18n("Using %1", `<strong>${i18n("Standard RNNoise Model")}</strong>`);
+                        return i18n("Using %1", `<strong>${i18n("Standard RNNoise model")}</strong>`);
                     } else {
                         return i18n("Using %1 Model", `<strong>${rnnoisePage.pluginDB.modelName}</strong>`);
                     }
@@ -311,7 +311,7 @@ Kirigami.ScrollablePage {
                 flat: true
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Import Model") // qmllint disable
+                        text: i18n("Import model") // qmllint disable
                         icon.name: "document-import-symbolic"
                         onTriggered: {
                             fileDialog.open();

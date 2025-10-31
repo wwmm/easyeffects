@@ -80,7 +80,7 @@ Kirigami.ScrollablePage {
                         FormCard.FormComboBoxDelegate {
                             id: fft
 
-                            text: i18n("FFT Size") // qmllint disable
+                            text: i18n("FFT size") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: loudnessPage.pluginDB.fft
                             editable: false
@@ -94,7 +94,7 @@ Kirigami.ScrollablePage {
                         FormCard.FormComboBoxDelegate {
                             id: iirApproximation
 
-                            text: i18n("IIR Approximation") // qmllint disable
+                            text: i18n("IIR approximation") // qmllint disable
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: loudnessPage.pluginDB.iirApproximation
                             editable: false
@@ -125,7 +125,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: clippingRange
 
-                            label: i18n("Clipping Range") // qmllint disable
+                            label: i18n("Clipping range") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: loudnessPage.pluginDB.getMinValue("clippingRange")
@@ -170,7 +170,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Show Native Window") // qmllint disable
+                    text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true

@@ -101,7 +101,7 @@ Kirigami.OverlaySheet {
                         alignment: Qt.AlignRight
                         actions: [
                             Kirigami.Action {
-                                text: i18n("Delete This Impulse") // qmllint disable
+                                text: i18n("Delete this impulse") // qmllint disable
                                 icon.name: "delete"
                                 displayHint: Kirigami.DisplayHint.AlwaysHide
                                 onTriggered: {
@@ -121,7 +121,7 @@ Kirigami.OverlaySheet {
         actions: [
             Kirigami.Action {
                 displayHint: Kirigami.DisplayHint.KeepVisible
-                text: i18n("Import Impulse") // qmllint disable
+                text: i18n("Import impulse") // qmllint disable
                 icon.name: "document-import-symbolic"
                 onTriggered: {
                     fileDialog.open();
