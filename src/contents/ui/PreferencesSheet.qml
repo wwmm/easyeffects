@@ -14,7 +14,7 @@ Kirigami.OverlaySheet {
     title: i18n("Preferences") // qmllint disable
     y: 0
     implicitWidth: Math.min(stack.implicitWidth, appWindow.width * 0.8)// qmllint disable
-    implicitHeight: Math.min(2 * preferencesSheet.header.height + stack.implicitHeight, preferencesSheet.parent.height - 2 * preferencesSheet.header.height)
+
     onVisibleChanged: {
         if (!preferencesSheet.visible) {
             while (stack.depth > 1)
@@ -475,7 +475,9 @@ Kirigami.OverlaySheet {
                     onClicked: {
                         while (stack.depth > 1)
                             stack.pop();
+
                         stack.push(servicePage);
+
                         headerTitle.text = text;
                     }
                 }
@@ -488,7 +490,9 @@ Kirigami.OverlaySheet {
                     onClicked: {
                         while (stack.depth > 1)
                             stack.pop();
+
                         stack.push(audioPage);
+
                         headerTitle.text = text;
                     }
                 }
@@ -501,7 +505,9 @@ Kirigami.OverlaySheet {
                     onClicked: {
                         while (stack.depth > 1)
                             stack.pop();
+
                         stack.push(spectrumPage);
+
                         headerTitle.text = text;
                     }
                 }
@@ -514,7 +520,9 @@ Kirigami.OverlaySheet {
                     onClicked: {
                         while (stack.depth > 1)
                             stack.pop();
+
                         stack.push(databasePage);
+
                         headerTitle.text = text;
                     }
                 }
@@ -527,7 +535,9 @@ Kirigami.OverlaySheet {
                     onClicked: {
                         while (stack.depth > 1)
                             stack.pop();
+
                         stack.push(experimentalPage);
+
                         headerTitle.text = text;
                     }
                 }

@@ -52,7 +52,7 @@ Item {
             }
 
             Controls.Label {
-                Layout.fillWidth: !listItemDelegate.hovered
+                Layout.fillWidth: true
                 text: DB.Manager.main.collapsePluginsList === false ? delegateItem.translatedName : delegateItem.translatedName.charAt(0)
                 color: delegateItem.pluginDB.bypass ? Kirigami.Theme.disabledTextColor : Kirigami.Theme.textColor
             }
@@ -64,7 +64,7 @@ Item {
                     Kirigami.Action {
                         text: i18n("Toggle This Effect") // qmllint disable
                         icon.name: "system-shutdown-symbolic"
-                        displayHint: listItemDelegate.hovered ? Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.AlwaysShow : Kirigami.DisplayHint.AlwaysHide
+                        displayHint: Kirigami.DisplayHint.AlwaysHide
                         checkable: true
                         checked: !delegateItem.pluginDB.bypass
                         onTriggered: {
@@ -78,14 +78,14 @@ Item {
                     Kirigami.Action {
                         text: i18n("Remove This Effect") // qmllint disable
                         icon.name: "delete"
-                        displayHint: listItemDelegate.hovered ? Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.AlwaysShow : Kirigami.DisplayHint.AlwaysHide
+                        displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
                             /*
                             * If the selected item is removed we set the one before it as the visible plugin
                             */
 
                             if (delegateItem.listModel.count > 1 && delegateItem.index > 0 && delegateItem.ListView.view.currentIndex === delegateItem.index) {
-                                streamDB.visiblePlugin = pluginsListModel.get(delegateItem.index - 1).name;
+                                delegateItem.streamDB.visiblePlugin = delegateItem.pluginsListModel.get(delegateItem.index - 1).name;
                             }
 
                             delegateItem.listModel.remove(delegateItem.index, 1);
