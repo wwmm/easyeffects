@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-31 15:53+0000\n"
+"POT-Creation-Date: 2025-10-31 20:46+0000\n"
 "PO-Revision-Date: 2025-05-26 11:48+0200\n"
 "Last-Translator: Noel <chatenium@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -119,7 +119,8 @@ msgstr "Pillanatnyi"
 
 #: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:150
 #: src/contents/ui/LevelMeter.qml:144
-msgid "Short-Term"
+#, fuzzy
+msgid "Short-term"
 msgstr "Rövid-Távú"
 
 #: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:161
@@ -128,19 +129,23 @@ msgid "Integrated"
 msgstr "Integrált"
 
 #: src/contents/ui/Autogain.qml:66
-msgid "Geometric Mean (MSI)"
+#, fuzzy
+msgid "Geometric mean (MSI)"
 msgstr "Geometriai Átlag (MSI)"
 
 #: src/contents/ui/Autogain.qml:66
-msgid "Geometric Mean (MS)"
+#, fuzzy
+msgid "Geometric mean (MS)"
 msgstr "Geometriai Átlag (MS)"
 
 #: src/contents/ui/Autogain.qml:66
-msgid "Geometric Mean (MI)"
+#, fuzzy
+msgid "Geometric mean (MI)"
 msgstr "Geometriai Átlag (MI)"
 
 #: src/contents/ui/Autogain.qml:66
-msgid "Geometric Mean (SI)"
+#, fuzzy
+msgid "Geometric mean (SI)"
 msgstr "Geometriai Átlag (SI)"
 
 #: src/contents/ui/Autogain.qml:75
@@ -152,7 +157,8 @@ msgid "Silence"
 msgstr "Csend"
 
 #: src/contents/ui/Autogain.qml:107
-msgid "Maximum History"
+#, fuzzy
+msgid "Maximum history"
 msgstr "Maximális Előzmény"
 
 #: src/contents/ui/Autogain.qml:128 src/contents/ui/Autogain.qml:194
@@ -170,7 +176,8 @@ msgid "Range"
 msgstr "Tartomány"
 
 #: src/contents/ui/Autogain.qml:205
-msgid "Output Gain"
+#, fuzzy
+msgid "Output gain"
 msgstr "Kimeneti Erősítés"
 
 #: src/contents/ui/Autogain.qml:226 src/contents/ui/BassEnhancer.qml:192
@@ -194,26 +201,28 @@ msgstr ""
 
 #: src/contents/ui/Autogain.qml:242 src/contents/ui/DeepFilterNet.qml:185
 #: src/contents/ui/LevelMeter.qml:207 src/contents/ui/Pitch.qml:227
-msgid "Reset History"
+#, fuzzy
+msgid "Reset history"
 msgstr "Előzmények Visszaállítása"
 
 #: src/contents/ui/Autogain.qml:249
 #, fuzzy
-msgid "Force Silence"
+msgid "Force silence"
 msgstr "Csend"
 
 #: src/contents/ui/Autogain.qml:250
 msgid "Force silence when the level is below the silence threshold"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:262 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Pitch.qml:255
+#: src/contents/ui/Autogain.qml:262 src/contents/ui/DeepFilterNet.qml:193
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Pitch.qml:255
 #, fuzzy
-msgid "Reset Settings"
+msgid "Reset settings"
 msgstr "_Beállítások Visszaállítása"
 
 #: src/contents/ui/BassEnhancer.qml:39 src/contents/ui/Exciter.qml:39
-msgid "Blend Harmonics"
+#, fuzzy
+msgid "Blend harmonics"
 msgstr "Harmonikusok Keverése"
 
 #: src/contents/ui/BassEnhancer.qml:48 src/contents/ui/Exciter.qml:48
@@ -239,7 +248,7 @@ msgstr "Hatókör"
 
 #: src/contents/ui/BassEnhancer.qml:144
 #, fuzzy
-msgid "Floor Active"
+msgid "Floor active"
 msgstr "Padlóérték"
 
 #: src/contents/ui/BassEnhancer.qml:155
@@ -255,7 +264,8 @@ msgstr "Padló"
 #: src/contents/ui/MultibandCompressor.qml:951
 #: src/contents/ui/MultibandGate.qml:924 src/contents/ui/Reverb.qml:335
 #: src/contents/ui/StereoTools.qml:412
-msgid "Show Native Window"
+#, fuzzy
+msgid "Show native window"
 msgstr "Natív Ablak Megjelenítése"
 
 #: src/contents/ui/BassEnhancer.qml:222 src/contents/ui/Compressor.qml:927
@@ -267,12 +277,12 @@ msgstr "Meghallgat"
 #: src/contents/ui/BassEnhancer.qml:233 src/contents/ui/BassLoudness.qml:122
 #: src/contents/ui/Compressor.qml:948 src/contents/ui/Convolver.qml:488
 #: src/contents/ui/Crossfeed.qml:160 src/contents/ui/Crystalizer.qml:118
-#: src/contents/ui/DeepFilterNet.qml:193 src/contents/ui/Deesser.qml:343
-#: src/contents/ui/Delay.qml:417 src/contents/ui/EchoCanceller.qml:180
-#: src/contents/ui/Equalizer.qml:349 src/contents/ui/Exciter.qml:233
-#: src/contents/ui/Expander.qml:905 src/contents/ui/Filter.qml:231
-#: src/contents/ui/Gate.qml:1039 src/contents/ui/Limiter.qml:627
-#: src/contents/ui/Loudness.qml:197 src/contents/ui/Maximizer.qml:134
+#: src/contents/ui/Deesser.qml:343 src/contents/ui/Delay.qml:417
+#: src/contents/ui/EchoCanceller.qml:180 src/contents/ui/Equalizer.qml:349
+#: src/contents/ui/Exciter.qml:233 src/contents/ui/Expander.qml:905
+#: src/contents/ui/Filter.qml:231 src/contents/ui/Gate.qml:1039
+#: src/contents/ui/Limiter.qml:627 src/contents/ui/Loudness.qml:197
+#: src/contents/ui/Maximizer.qml:134
 #: src/contents/ui/MultibandCompressor.qml:975
 #: src/contents/ui/MultibandGate.qml:948 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:349 src/contents/ui/Speex.qml:184
@@ -300,11 +310,12 @@ msgstr ""
 
 #: src/contents/ui/BlocklistSheet.qml:29
 #, fuzzy
-msgid "Application Node Name"
+msgid "Application node name"
 msgstr "Alkalmazás Neve"
 
 #: src/contents/ui/BlocklistSheet.qml:45
-msgid "Add to Excluded Applications"
+#, fuzzy
+msgid "Add to excluded applications"
 msgstr "Hozzáadás a Kizárt Alkalmazásokhoz"
 
 #: src/contents/ui/BlocklistSheet.qml:97
@@ -317,26 +328,31 @@ msgstr "Hozzáadás a Kizárt Alkalmazásokhoz"
 msgid "Empty List"
 msgstr "Üres Lista"
 
-#: src/contents/ui/BlocklistSheet.qml:119
+#: src/contents/ui/BlocklistSheet.qml:98
+#, fuzzy
+msgid "No application excluded"
+msgstr "Alkalmazás Hangereje"
+
+#: src/contents/ui/BlocklistSheet.qml:120
 #, fuzzy
 msgid "Remove Application"
 msgstr "Alkalmazás Némítása"
 
-#: src/contents/ui/BlocklistSheet.qml:120
+#: src/contents/ui/BlocklistSheet.qml:121
 msgid "Are you sure you want to remove this application from the list?"
 msgstr ""
 
-#: src/contents/ui/BlocklistSheet.qml:150
+#: src/contents/ui/BlocklistSheet.qml:151
 #, fuzzy
-msgid "Remove This App"
+msgid "Remove this app"
 msgstr "Alkalmazás Némítása"
 
-#: src/contents/ui/BlocklistSheet.qml:177
+#: src/contents/ui/BlocklistSheet.qml:178
 #, fuzzy
-msgid "Show Excluded Apps"
+msgid "Show excluded apps"
 msgstr "Kizárt Alkalmazások"
 
-#: src/contents/ui/BlocklistSheet.qml:178
+#: src/contents/ui/BlocklistSheet.qml:179
 #, fuzzy
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Kizárt Alkalmazások Megjelenítése"
@@ -372,13 +388,14 @@ msgid "Boosting"
 msgstr "Felerősítés"
 
 #: src/contents/ui/Compressor.qml:83
-#: src/contents/ui/MultibandCompressor.qml:116
-msgid "Boost Threshold"
+#, fuzzy
+msgid "Boost tshreshold"
 msgstr "Erősítési Határérték"
 
 #: src/contents/ui/Compressor.qml:103
 #: src/contents/ui/MultibandCompressor.qml:135
-msgid "Boost Amount"
+#, fuzzy
+msgid "Boost amount"
 msgstr "Erősítési Mérték"
 
 #: src/contents/ui/Compressor.qml:122 src/contents/ui/Deesser.qml:102
@@ -448,7 +465,8 @@ msgstr "Külső"
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
 #: src/contents/ui/PageStreamsEffects.qml:321
-msgid "Input Device"
+#, fuzzy
+msgid "Input device"
 msgstr "Bemeneti Eszköz"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Deesser.qml:63
@@ -465,9 +483,7 @@ msgstr "Csúcs"
 msgid "RMS"
 msgstr "RMS"
 
-#: src/contents/ui/Compressor.qml:300 src/contents/ui/Compressor.qml:426
-#: src/contents/ui/Expander.qml:260 src/contents/ui/Expander.qml:385
-#: src/contents/ui/Gate.qml:281 src/contents/ui/Gate.qml:406
+#: src/contents/ui/Compressor.qml:300 src/contents/ui/Gate.qml:281
 msgid "Low-Pass"
 msgstr "Alul-Áteresztő"
 
@@ -581,8 +597,9 @@ msgid "Lookahead"
 msgstr "Előrenéz"
 
 #: src/contents/ui/Compressor.qml:411 src/contents/ui/Expander.qml:370
-#: src/contents/ui/Gate.qml:391
-msgid "High-Pass"
+#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:391
+#, fuzzy
+msgid "High-pass"
 msgstr "Felül-Áteresztő"
 
 #: src/contents/ui/Compressor.qml:415 src/contents/ui/Compressor.qml:430
@@ -609,6 +626,13 @@ msgstr "24 dB/oct"
 #: src/contents/ui/Gate.qml:395 src/contents/ui/Gate.qml:410
 msgid "36 dB/oct"
 msgstr "36 dB/oct"
+
+#: src/contents/ui/Compressor.qml:426 src/contents/ui/Expander.qml:260
+#: src/contents/ui/Expander.qml:385 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:406
+#, fuzzy
+msgid "Low-pass"
+msgstr "Alul-Áteresztő"
 
 #: src/contents/ui/Compressor.qml:494 src/contents/ui/Convolver.qml:418
 #: src/contents/ui/Delay.qml:162 src/contents/ui/Delay.qml:320
@@ -643,37 +667,38 @@ msgstr ""
 #: src/contents/ui/Compressor.qml:563 src/contents/ui/Expander.qml:522
 #: src/contents/ui/Gate.qml:544 src/contents/ui/Limiter.qml:286
 #, fuzzy
-msgid "Input to Sidechain"
+msgid "Input to sidechain"
 msgstr "Oldallánc"
 
 #: src/contents/ui/Compressor.qml:579 src/contents/ui/Expander.qml:538
 #: src/contents/ui/Gate.qml:560 src/contents/ui/Limiter.qml:302
 #, fuzzy
-msgid "Input to Link"
+msgid "Input to link"
 msgstr "Bemenet figyelés engedélyezése/letiltása"
 
 #: src/contents/ui/Compressor.qml:595 src/contents/ui/Expander.qml:554
 #: src/contents/ui/Gate.qml:576 src/contents/ui/Limiter.qml:318
 #, fuzzy
-msgid "Sidechain to Input"
+msgid "Sidechain to input"
 msgstr "Bemeneti Eszköz"
 
 #: src/contents/ui/Compressor.qml:611 src/contents/ui/Expander.qml:570
 #: src/contents/ui/Gate.qml:592 src/contents/ui/Limiter.qml:334
 #, fuzzy
-msgid "Sidechain to Link"
+msgid "Sidechain to link"
 msgstr "Oldallánc Mód"
 
 #: src/contents/ui/Compressor.qml:627 src/contents/ui/Expander.qml:586
 #: src/contents/ui/Gate.qml:608 src/contents/ui/Limiter.qml:350
 #, fuzzy
-msgid "Link to Sidechain"
+msgid "Link to sidechain"
 msgstr "Oldallánc Hallgatása"
 
 #: src/contents/ui/Compressor.qml:643 src/contents/ui/Expander.qml:602
 #: src/contents/ui/Gate.qml:624 src/contents/ui/Limiter.qml:366
-msgid "Link to Input"
-msgstr ""
+#, fuzzy
+msgid "Link to input"
+msgstr "Oldallánc Hallgatása"
 
 #: src/contents/ui/Compressor.qml:684 src/contents/ui/Expander.qml:643
 #: src/contents/ui/Gate.qml:107 src/contents/ui/Gate.qml:666
@@ -727,8 +752,9 @@ msgstr "Burkológörbe"
 #: src/contents/ui/Compressor.qml:937 src/contents/ui/Expander.qml:894
 #: src/contents/ui/Gate.qml:1028 src/contents/ui/MultibandCompressor.qml:964
 #: src/contents/ui/MultibandGate.qml:937
-msgid "Stereo Split"
-msgstr ""
+#, fuzzy
+msgid "Stereo split"
+msgstr "Sztereó Osztott Mód"
 
 #: src/contents/ui/Convolver.qml:50
 #, fuzzy
@@ -737,7 +763,7 @@ msgstr "Impulzus Fájl Keresése"
 
 #: src/contents/ui/Convolver.qml:52 src/contents/ui/Convolver.qml:312
 #, fuzzy
-msgid "Convolver Impulse Is Not Set"
+msgid "Convolver impulse is not set"
 msgstr "Impulzus Válaszok Kombinálása"
 
 #: src/contents/ui/Convolver.qml:56
@@ -771,7 +797,8 @@ msgid "Spectrum"
 msgstr "Spectrum"
 
 #: src/contents/ui/Convolver.qml:242
-msgid "Log Scale"
+#, fuzzy
+msgid "Log scale"
 msgstr "Napló Skála"
 
 #: src/contents/ui/Convolver.qml:349
@@ -789,7 +816,8 @@ msgid "Duration"
 msgstr "Időtartam"
 
 #: src/contents/ui/Convolver.qml:401
-msgid "Stereo Width"
+#, fuzzy
+msgid "Stereo width"
 msgstr "Sztereó Szélesség"
 
 #: src/contents/ui/Convolver.qml:477 src/tags_plugin_name.cpp:26
@@ -834,11 +862,12 @@ msgstr "Impulzus Fájl Keresése"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
 #, fuzzy
-msgid "Delete This Impulse"
+msgid "Delete this impulse"
 msgstr "Ennek a modell fájlnak az eltávolítása"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:124
-msgid "Import Impulse"
+#, fuzzy
+msgid "Import impulse"
 msgstr "Impulzus Importálása"
 
 #: src/contents/ui/Crossfeed.qml:65
@@ -863,7 +892,7 @@ msgid "Presets"
 msgstr "Profilok"
 
 #: src/contents/ui/Crystalizer.qml:107
-msgid "Adaptive Intensity"
+msgid "Adaptive intensity"
 msgstr ""
 
 #: src/contents/ui/CrystalizerBand.qml:35
@@ -881,23 +910,28 @@ msgid "Bypass"
 msgstr "Kiiktat"
 
 #: src/contents/ui/DeepFilterNet.qml:33
-msgid "Attenuation Limit"
+#, fuzzy
+msgid "Attenuation limit"
 msgstr "Csillapítási Határérték"
 
 #: src/contents/ui/DeepFilterNet.qml:80
-msgid "Minimum Processing Threshold"
+#, fuzzy
+msgid "Minimum processing threshold"
 msgstr "Minimális Feldolgozási Küszöb"
 
 #: src/contents/ui/DeepFilterNet.qml:96
-msgid "Maximum ERB Processing threshold"
+#, fuzzy
+msgid "Maximum ERB processing threshold"
 msgstr "Maximális ERB Feldolgozási Küszöb"
 
 #: src/contents/ui/DeepFilterNet.qml:112
-msgid "Maximum DF Processing Threshold"
+#, fuzzy
+msgid "Maximum DF processing threshold"
 msgstr "Maximális DF Feldolgozási Küszöb"
 
 #: src/contents/ui/DeepFilterNet.qml:128
-msgid "Minimum Processing Buffer"
+#, fuzzy
+msgid "Minimum processing buffer"
 msgstr "Minimális Feldolgozási Puffer"
 
 #: src/contents/ui/DeepFilterNet.qml:135
@@ -905,7 +939,8 @@ msgid "frames"
 msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:144
-msgid "Post Filter Beta"
+#, fuzzy
+msgid "Post filter Beta"
 msgstr "Utólagos Szűrő Béta"
 
 #: src/contents/ui/Deesser.qml:46 src/tags_plugin_name.cpp:34
@@ -944,23 +979,26 @@ msgid "Filter"
 msgstr "Szűrő"
 
 #: src/contents/ui/Deesser.qml:167
-msgid "F1 Split"
+#, fuzzy
+msgid "F1 split"
 msgstr "F1 Felosztás"
 
 #: src/contents/ui/Deesser.qml:184
-msgid "F2 Peak"
-msgstr "F2 Csúcs"
+msgid "F2 peak"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:201
-msgid "F1 Gain"
-msgstr "F1 Erősítés"
+msgid "F1 gain"
+msgstr ""
 
 #: src/contents/ui/Deesser.qml:218
-msgid "F2 Level"
+#, fuzzy
+msgid "F2 level"
 msgstr "F2 Szint"
 
 #: src/contents/ui/Deesser.qml:236
-msgid "F2 Peak Q"
+#, fuzzy
+msgid "F2 peak Q"
 msgstr "F2 Csúcs Q "
 
 #: src/contents/ui/Deesser.qml:259 src/contents/ui/EchoCanceller.qml:100
@@ -969,7 +1007,7 @@ msgstr ""
 
 #: src/contents/ui/Deesser.qml:281
 #, fuzzy
-msgid "Gain Reduction"
+msgid "Gain reduction"
 msgstr "Csökkentés"
 
 #: src/contents/ui/Delay.qml:61 src/contents/ui/Delay.qml:219
@@ -997,12 +1035,12 @@ msgstr ""
 
 #: src/contents/ui/Delay.qml:382
 #, fuzzy
-msgid "Invert Left"
+msgid "Invert left"
 msgstr "Invertált Fázis"
 
 #: src/contents/ui/Delay.qml:392
 #, fuzzy
-msgid "Invert Right"
+msgid "Invert right"
 msgstr "Invertált Fázis"
 
 #: src/contents/ui/DelegateClientsList.qml:36
@@ -1029,13 +1067,14 @@ msgstr "Hozzáférés"
 msgid "Description"
 msgstr "Leírás"
 
-#: src/contents/ui/DelegatePluginsList.qml:65
-msgid "Toggle This Effect"
-msgstr ""
-
-#: src/contents/ui/DelegatePluginsList.qml:79
+#: src/contents/ui/DelegatePluginsList.qml:71
 #, fuzzy
-msgid "Remove This Effect"
+msgid "Toggle this effect"
+msgstr "Beállítás Importálás"
+
+#: src/contents/ui/DelegatePluginsList.qml:85
+#, fuzzy
+msgid "Remove this effect"
 msgstr "Beállítás Importálás"
 
 #: src/contents/ui/DelegateStreamsList.qml:76
@@ -1065,15 +1104,15 @@ msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:60
 #, fuzzy
-msgid "Mobile Mode"
+msgid "Mobile mode"
 msgstr "Alul-Áteresztő Szűrő Mód"
 
 #: src/contents/ui/EchoCanceller.qml:69
 #, fuzzy
-msgid "Enforce High-pass"
+msgid "Enforce high-pass"
 msgstr "Felül-Áteresztő"
 
-#: src/contents/ui/EchoCanceller.qml:83 src/contents/ui/Speex.qml:82
+#: src/contents/ui/EchoCanceller.qml:83
 msgid "Noise Suppression"
 msgstr ""
 
@@ -1093,21 +1132,21 @@ msgstr "Felül-Áteresztő"
 
 #: src/contents/ui/EchoCanceller.qml:104
 #, fuzzy
-msgid "Very High"
+msgid "Very high"
 msgstr "Felül-Áteresztő"
 
 #: src/contents/ui/EchoCanceller.qml:116
 #, fuzzy
-msgid "High-pass Filter"
+msgid "High-Pass Filter"
 msgstr "Felül-Áteresztő Szűrő Mód"
 
 #: src/contents/ui/EchoCanceller.qml:133
 #, fuzzy
-msgid "Full Band"
+msgid "Full band"
 msgstr "Sáv"
 
 #: src/contents/ui/EchoCanceller.qml:169 src/contents/ui/Speex.qml:60
-msgid "Automatic Gain Control"
+msgid "Automatic gain control"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:21
@@ -1123,9 +1162,10 @@ msgstr ""
 msgid "Input"
 msgstr "Bemenet"
 
-#: src/contents/ui/Equalizer.qml:51
-msgid "APO Presets"
-msgstr ""
+#: src/contents/ui/Equalizer.qml:51 src/contents/ui/Equalizer.qml:81
+#, fuzzy
+msgid "APO preset"
+msgstr "Előre Beállított"
 
 #: src/contents/ui/Equalizer.qml:54
 #, fuzzy
@@ -1138,8 +1178,9 @@ msgid "Failed to import the Equalizer APO preset file."
 msgstr "Impulzus Fájl Keresése"
 
 #: src/contents/ui/Equalizer.qml:66
-msgid "GraphicEQ Presets"
-msgstr ""
+#, fuzzy
+msgid "GraphicEQ preset"
+msgstr "Beállítás Importálás"
 
 #: src/contents/ui/Equalizer.qml:69
 #, fuzzy
@@ -1150,11 +1191,6 @@ msgstr "Beállítás Importálás"
 #, fuzzy
 msgid "Failed to import the GraphicEQ preset file."
 msgstr "Beállítás Importálás"
-
-#: src/contents/ui/Equalizer.qml:81
-#, fuzzy
-msgid "APO Preset"
-msgstr "Előre Beállított"
 
 #: src/contents/ui/Equalizer.qml:84
 #, fuzzy
@@ -1178,27 +1214,33 @@ msgid "Balance"
 msgstr "Egyensúly"
 
 #: src/contents/ui/Equalizer.qml:150
-msgid "Pitch Left"
+#, fuzzy
+msgid "Pitch left"
 msgstr "Bal Hangmagasság"
 
 #: src/contents/ui/Equalizer.qml:167
-msgid "Pitch Right"
+#, fuzzy
+msgid "Pitch right"
 msgstr "Jobb Hangmagasság"
 
 #: src/contents/ui/Equalizer.qml:296
-msgid "Split Channels"
+#, fuzzy
+msgid "Split channels"
 msgstr "Osztott Csatornák"
 
 #: src/contents/ui/Equalizer.qml:306
-msgid "Flat Response"
+#, fuzzy
+msgid "Flat response"
 msgstr "Simítás Válasz"
 
 #: src/contents/ui/Equalizer.qml:313
-msgid "Calculate Frequencies"
+#, fuzzy
+msgid "Calculate frequencies"
 msgstr "Frekvenciák Kiszámítása"
 
 #: src/contents/ui/Equalizer.qml:320
-msgid "Sort Bands"
+#, fuzzy
+msgid "Sort bands"
 msgstr "Sávok Rendezése"
 
 #: src/contents/ui/Equalizer.qml:327
@@ -1308,7 +1350,7 @@ msgstr "Egyedül"
 
 #: src/contents/ui/Exciter.qml:144
 #, fuzzy
-msgid "Ceil Active"
+msgid "Ceil active"
 msgstr "Relatív"
 
 #: src/contents/ui/Exciter.qml:155
@@ -1324,16 +1366,6 @@ msgstr "Feszítő"
 #: src/contents/ui/MultibandGate.qml:366
 msgid "Internal"
 msgstr "Belső"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Low-pass"
-msgstr "Alul-Áteresztő"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "High-pass"
-msgstr "Felül-Áteresztő"
 
 #: src/contents/ui/Filter.qml:55
 #, fuzzy
@@ -1362,11 +1394,12 @@ msgstr "Mind-Átadás"
 
 #: src/contents/ui/Filter.qml:64
 #, fuzzy
-msgid "Filter Mode"
+msgid "Filter mode"
 msgstr "Alul-Áteresztő Szűrő Mód"
 
 #: src/contents/ui/Filter.qml:77
-msgid "Equalizer Mode"
+#, fuzzy
+msgid "Equalizer mode"
 msgstr "Equalizer Mód"
 
 #: src/contents/ui/Gate.qml:57 src/tags_plugin_name.cpp:41
@@ -1398,51 +1431,63 @@ msgid "True Peak"
 msgstr "Valós Csúcs"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Herm Thin"
+#, fuzzy
+msgid "Herm thin"
 msgstr "Herm Vékony"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Herm Wide"
+#, fuzzy
+msgid "Herm wide"
 msgstr "Herm Széles"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Herm Tail"
+#, fuzzy
+msgid "Herm tail"
 msgstr "Herm Hátsó"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Herm Duck"
+#, fuzzy
+msgid "Herm duck"
 msgstr "Herm Alábukás"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Exp Thin"
+#, fuzzy
+msgid "Exp thin"
 msgstr "Exp Vékony"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Exp Wide"
+#, fuzzy
+msgid "Exp wide"
 msgstr "Exp Széles"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Exp Tail"
+#, fuzzy
+msgid "Exp tail"
 msgstr "Exp Hátsó"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Exp Duck"
+#, fuzzy
+msgid "Exp duck"
 msgstr "Exp Alábukás"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Line Thin"
+#, fuzzy
+msgid "Line thin"
 msgstr "Sor Vékony"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Line Wide"
+#, fuzzy
+msgid "Line wide"
 msgstr "Sor Széles"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Line Tail"
+#, fuzzy
+msgid "Line tail"
 msgstr "Sor Hátsó"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Line Duck"
+#, fuzzy
+msgid "Line duck"
 msgstr "Sor Alábukás"
 
 #: src/contents/ui/Limiter.qml:70
@@ -1547,12 +1592,12 @@ msgstr "Teljes x8(2L)"
 
 #: src/contents/ui/Limiter.qml:74
 #, fuzzy
-msgid "True Peak/16 bit"
+msgid "True peak/16 bit"
 msgstr "Valós Csúcs"
 
 #: src/contents/ui/Limiter.qml:74
 #, fuzzy
-msgid "True Peak/24 bit"
+msgid "True peak/24 bit"
 msgstr "Valós Csúcs"
 
 #: src/contents/ui/Limiter.qml:84
@@ -1600,15 +1645,20 @@ msgstr ""
 msgid "Stereo Link"
 msgstr "Stereo Link"
 
-#: src/contents/ui/Limiter.qml:390 src/contents/ui/Limiter.qml:616
+#: src/contents/ui/Limiter.qml:390
 #, fuzzy
 msgid "Automatic Level"
 msgstr "Automatikus Kiegyenlítő"
 
 #: src/contents/ui/Limiter.qml:606
 #, fuzzy
-msgid "Gain Boost"
+msgid "Gain boost"
 msgstr "Erősítés"
+
+#: src/contents/ui/Limiter.qml:616
+#, fuzzy
+msgid "Automatic level"
+msgstr "Automatikus Kiegyenlítő"
 
 #: src/contents/ui/Loudness.qml:70
 #, fuzzy
@@ -1616,12 +1666,12 @@ msgid "Contour"
 msgstr "Vezérlők"
 
 #: src/contents/ui/Loudness.qml:83
-msgid "FFT Size"
+msgid "FFT size"
 msgstr ""
 
 #: src/contents/ui/Loudness.qml:97
 #, fuzzy
-msgid "IIR Approximation"
+msgid "IIR approximation"
 msgstr "Alkalmazás Némítása"
 
 #: src/contents/ui/Loudness.qml:101
@@ -1641,7 +1691,7 @@ msgid "Volume"
 msgstr ""
 
 #: src/contents/ui/Loudness.qml:128
-msgid "Clipping Range"
+msgid "Clipping range"
 msgstr ""
 
 #: src/contents/ui/Loudness.qml:186
@@ -1657,8 +1707,14 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:103
-msgid "Compression Mode"
+#, fuzzy
+msgid "Compression mode"
 msgstr "Tömörítési Mód"
+
+#: src/contents/ui/MultibandCompressor.qml:116
+#, fuzzy
+msgid "Boost threshold"
+msgstr "Erősítési Határérték"
 
 #: src/contents/ui/MultibandCompressor.qml:198
 #: src/contents/ui/MultibandGate.qml:135
@@ -1673,17 +1729,18 @@ msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:483
 #: src/contents/ui/MultibandGate.qml:456
-msgid "Low-Cut"
+msgid "Low-cut"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:508
 #: src/contents/ui/MultibandGate.qml:481
-msgid "High-Cut"
-msgstr ""
+#, fuzzy
+msgid "High-cut"
+msgstr "Felül-Áteresztő"
 
 #: src/contents/ui/MultibandCompressor.qml:540
 #: src/contents/ui/MultibandGate.qml:513
-msgid "Operating Mode"
+msgid "Operating mode"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:544
@@ -1698,13 +1755,15 @@ msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:544
 #: src/contents/ui/MultibandGate.qml:517
-msgid "Linear Phase"
-msgstr ""
+#, fuzzy
+msgid "Linear phase"
+msgstr "Invertált Fázis"
 
 #: src/contents/ui/MultibandCompressor.qml:553
 #: src/contents/ui/MultibandGate.qml:526
-msgid "Sidechain Boost"
-msgstr ""
+#, fuzzy
+msgid "Sidechain boost"
+msgstr "Oldallánc"
 
 #: src/contents/ui/MultibandCompressor.qml:557
 #: src/contents/ui/MultibandGate.qml:530
@@ -1729,7 +1788,7 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:567
 #: src/contents/ui/MultibandGate.qml:540
 #, fuzzy
-msgid "Sidechain Input Device"
+msgid "Sidechain input device"
 msgstr "Bemeneti Eszköz"
 
 #: src/contents/ui/MultibandGate.qml:161
@@ -1738,20 +1797,21 @@ msgid "Reaction"
 msgstr "Csökkentés"
 
 #: src/contents/ui/PageStreamsEffects.qml:80
-msgid "No Audio Application Available"
+#, fuzzy
+msgid "No audio application available"
 msgstr "Nincs Elérhető Hangot Lejátszó Alkalmazás"
 
 #: src/contents/ui/PageStreamsEffects.qml:274
-msgid "Add Effect"
+msgid "Add effect"
 msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:321
-#: src/contents/ui/PageStreamsEffects.qml:572
+#: src/contents/ui/PageStreamsEffects.qml:574
 msgid "Players"
 msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:338
-#: src/contents/ui/PageStreamsEffects.qml:572
+#: src/contents/ui/PageStreamsEffects.qml:574
 msgid "Recorders"
 msgstr ""
 
@@ -1772,20 +1832,21 @@ msgid "No Effects"
 msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:378
-msgid "Audio Stream Not Modified"
+msgid "Audio stream not modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:582
+#: src/contents/ui/PageStreamsEffects.qml:584
 msgid "Effects"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:599
+#: src/contents/ui/PageStreamsEffects.qml:601
 #, fuzzy
 msgid "Input monitoring"
 msgstr "Bemenet figyelés engedélyezése/letiltása"
 
-#: src/contents/ui/PageStreamsEffects.qml:612
-msgid "Excluded Apps"
+#: src/contents/ui/PageStreamsEffects.qml:614
+#, fuzzy
+msgid "Excluded apps"
 msgstr "Kizárt Alkalmazások"
 
 #: src/contents/ui/PipeWirePage.qml:17
@@ -1815,11 +1876,11 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:113
-msgid "Use Default Input"
+msgid "Use default input"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:156
-msgid "Use Default Output"
+msgid "Use default output"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:195
@@ -1827,32 +1888,34 @@ msgid "Server Information"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:200
-msgid "Header Version"
+msgid "Header version"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:205
-msgid "Library Version"
+msgid "Library version"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:210
-msgid "Runtime Version"
+msgid "Runtime version"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:215
-msgid "Default Sampling Rate"
+msgid "Default sampling rate"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:220
-msgid "Minimum Quantum"
+msgid "Minimum quantum"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:225
-msgid "Maximum Quantum"
-msgstr ""
+#, fuzzy
+msgid "Maximum quantum"
+msgstr "Maximális Előzmény"
 
 #: src/contents/ui/PipeWirePage.qml:230
-msgid "Default Quantum"
-msgstr ""
+#, fuzzy
+msgid "Default quantum"
+msgstr "Alapértelmezett"
 
 #: src/contents/ui/PipeWirePage.qml:252
 msgid "No Modules"
@@ -1885,28 +1948,29 @@ msgid "Waveform"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:355
-msgid "Sine Wave"
+msgid "Sine wave"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:366
-msgid "White Noise"
+msgid "White noise"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:377
-msgid "Pink Noise"
+msgid "Pink noise"
 msgstr ""
 
 #: src/contents/ui/Pitch.qml:50
-msgid "Sequence Length"
+msgid "Sequence length"
 msgstr ""
 
 #: src/contents/ui/Pitch.qml:66
-msgid "Seek Window"
+msgid "Seek window"
 msgstr ""
 
 #: src/contents/ui/Pitch.qml:82
-msgid "Overlap Length"
-msgstr ""
+#, fuzzy
+msgid "Overlap length"
+msgstr "Túlmintavételezés"
 
 #: src/contents/ui/Pitch.qml:103 src/tags_plugin_name.cpp:48
 msgid "Pitch"
@@ -1925,15 +1989,17 @@ msgid "Semitones"
 msgstr ""
 
 #: src/contents/ui/Pitch.qml:167
-msgid "Tempo Difference"
-msgstr ""
+#, fuzzy
+msgid "Tempo difference"
+msgstr "Utalás"
 
 #: src/contents/ui/Pitch.qml:184
-msgid "Rate Difference"
-msgstr ""
+#, fuzzy
+msgid "Rate difference"
+msgstr "Utalás"
 
 #: src/contents/ui/Pitch.qml:234
-msgid "Quick Seek"
+msgid "Quick seek"
 msgstr ""
 
 #: src/contents/ui/Pitch.qml:244
@@ -1950,7 +2016,7 @@ msgstr "_Beállítások"
 
 #: src/contents/ui/PreferencesSheet.qml:35
 #, fuzzy
-msgid "Enable Service Mode"
+msgid "Enable service mode"
 msgstr "Equalizer Mód"
 
 #: src/contents/ui/PreferencesSheet.qml:36
@@ -1958,7 +2024,7 @@ msgid "Easy Effects is active in background when the window is closed."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:48
-msgid "Autostart on Login"
+msgid "Autostart on login"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:49
@@ -1966,27 +2032,27 @@ msgid "Easy Effects is launched at user session startup."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:62
-msgid "Show the Tray Icon"
+msgid "Show the tray icon"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:86
-msgid "Process All Output Streams"
+msgid "Process all output streams"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:97
-msgid "Process All Input Streams"
+msgid "Process all input streams"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:108
-msgid "Ignore Streams from Monitor of Devices"
+msgid "Ignore streams from monitor of devices"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:119
-msgid "Use Cubic Volume"
+msgid "Use cubic volume"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:130
-msgid "Ignore System Notifications"
+msgid "Ignore system notifications"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:131
@@ -1998,15 +2064,15 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:142
 #, fuzzy
-msgid "Enable/Disable Input Monitoring"
+msgid "Enable/disable input monitoring"
 msgstr "Bemenet figyelés engedélyezése/letiltása"
 
 #: src/contents/ui/PreferencesSheet.qml:153
-msgid "Mic Monitor Plays to Output Effects Pipeline"
+msgid "Mic monitor plays to output effects pipeline"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:164
-msgid "Enable the Inactivity Timeout"
+msgid "Enable the inactivity timeout"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:165
@@ -2016,11 +2082,11 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:177
-msgid "Inactivity Timeout"
+msgid "Inactivity timeout"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:191
-msgid "Level Meters Label"
+msgid "Level meters label"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:192
@@ -2030,7 +2096,7 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:236
-msgid "Audio Delay Compensation"
+msgid "Audio delay compensation"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:250
@@ -2038,7 +2104,7 @@ msgid "Style"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:257
-msgid "Color Scheme"
+msgid "Color scheme"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:261
@@ -2056,7 +2122,7 @@ msgid "Dark"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:271
-msgid "Color Theme"
+msgid "Color theme"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:275
@@ -2064,7 +2130,7 @@ msgid "Green"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:275
-msgid "Green Neon"
+msgid "Green neon"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:275
@@ -2113,11 +2179,11 @@ msgid "Area"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:299
-msgid "Dynamic Scale"
+msgid "Dynamic scale"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:310
-msgid "Logarithmic Frequency Axis"
+msgid "Logarithmic frequency axis"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:321
@@ -2141,18 +2207,17 @@ msgid "Maximum"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:396
-msgid "Database Autosave Interval"
+msgid "Database autosave interval"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:409
 #, fuzzy
-msgid "Most Used Presets"
+msgid "Most used presets"
 msgstr "Előre beállított"
 
 #: src/contents/ui/PreferencesSheet.qml:435
-#: src/contents/ui/ShortcutsSheet.qml:248
 #, fuzzy
-msgid "Global Shortcuts"
+msgid "Global shortcuts"
 msgstr "_Gyorsbillentyűk"
 
 #: src/contents/ui/PreferencesSheet.qml:436
@@ -2161,7 +2226,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:448
 #, fuzzy
-msgid "Native Window of Effects"
+msgid "Native window of effects"
 msgstr "Natív Ablak Megjelenítése"
 
 #: src/contents/ui/PreferencesSheet.qml:449
@@ -2169,8 +2234,9 @@ msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:461
-msgid "Update Frequency"
-msgstr ""
+#, fuzzy
+msgid "Update frequency"
+msgstr "Frekvencia"
 
 #: src/contents/ui/PreferencesSheet.qml:462
 msgid "Related to LV2 plugins."
@@ -2205,11 +2271,10 @@ msgstr "Eszköz"
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
 #: src/contents/ui/PresetsAutoloadingPage.qml:172
 #, fuzzy
-msgid "Hardware Profile"
+msgid "Hardware profile"
 msgstr "Profil"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
 #, fuzzy
 msgid "Local Preset"
 msgstr "Előre Beállított"
@@ -2228,9 +2293,14 @@ msgstr "Beállítás Importálás"
 msgid "Remove this autoloading preset"
 msgstr "Beállítás Importálás"
 
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
+#, fuzzy
+msgid "Local preset"
+msgstr "Előre Beállított"
+
 #: src/contents/ui/PresetsCommunityPage.qml:93
 #, fuzzy
-msgid "Copy to Local Presets"
+msgid "Copy to local presets"
 msgstr "Előre Beállított"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
@@ -2258,7 +2328,6 @@ msgid "Failed to import a new local preset from an external file."
 msgstr "Impulzus Fájl Keresése"
 
 #: src/contents/ui/PresetsLocalPage.qml:46
-#: src/contents/ui/PresetsLocalPage.qml:131
 #, fuzzy
 msgid "Export Presets"
 msgstr "Előre beállított"
@@ -2274,17 +2343,17 @@ msgid "Failed to export all presets to an external folder."
 msgstr "Impulzus Fájl Keresése"
 
 #: src/contents/ui/PresetsLocalPage.qml:63
-msgid "New Preset Name"
+msgid "New preset name"
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:79
 #, fuzzy
-msgid "Import Preset File"
+msgid "Import preset file"
 msgstr "Beállítás Importálás"
 
 #: src/contents/ui/PresetsLocalPage.qml:88
 #, fuzzy
-msgid "Create New Preset"
+msgid "Create new preset"
 msgstr "Beállítás Importálás"
 
 #: src/contents/ui/PresetsLocalPage.qml:98
@@ -2296,6 +2365,11 @@ msgstr "Beállítás Importálás"
 #, fuzzy
 msgid "Failed to create a new local preset: %1"
 msgstr "Impulzus Fájl Keresése"
+
+#: src/contents/ui/PresetsLocalPage.qml:131
+#, fuzzy
+msgid "Export presets"
+msgstr "Előre beállított"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
 #, fuzzy
@@ -2366,17 +2440,17 @@ msgstr "Egyensúly"
 
 #: src/contents/ui/PresetsLocalPage.qml:277
 #, fuzzy
-msgid "Save Settings to This Preset"
+msgid "Save settings to this preset"
 msgstr "Beállítás Importálás"
 
 #: src/contents/ui/PresetsLocalPage.qml:285
 #, fuzzy
-msgid "Rename This Preset"
+msgid "Rename this preset"
 msgstr "Beállítás Importálás"
 
 #: src/contents/ui/PresetsLocalPage.qml:293
 #, fuzzy
-msgid "Delete This Preset"
+msgid "Delete this preset"
 msgstr "Beállítás Importálás"
 
 #: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:104
@@ -2393,8 +2467,9 @@ msgid "Autoloading"
 msgstr "Autóerősítés"
 
 #: src/contents/ui/PresetsSheet.qml:102
-msgid "No Preset Loaded"
-msgstr ""
+#, fuzzy
+msgid "No preset loaded"
+msgstr "Profil Menü"
 
 #: src/contents/ui/PresetsSheet.qml:118
 msgid "Fallback Preset"
@@ -2412,8 +2487,9 @@ msgstr "Impulzus Fájl Keresése"
 
 #: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
 #: src/contents/ui/RNNoise.qml:278 src/contents/ui/RNNoise.qml:280
-msgid "Standard RNNoise Model"
-msgstr ""
+#, fuzzy
+msgid "Standard RNNoise model"
+msgstr "Impulzus Fájl Keresése"
 
 #: src/contents/ui/RNNoise.qml:59
 msgid "Standard RNNoise model loaded."
@@ -2433,16 +2509,17 @@ msgstr "Impulzus Fájl Keresése"
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "Impulzus Fájl Keresése"
 
-#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+#: src/contents/ui/RNNoise.qml:89
 msgid "Voice Detection"
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:126
-msgid "Wet Level"
+#, fuzzy
+msgid "Wet level"
 msgstr "Nedves Szint"
 
 #: src/contents/ui/RNNoise.qml:166
-msgid "Use the Standard Model"
+msgid "Use the Standard model"
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:177
@@ -2451,7 +2528,7 @@ msgstr ""
 
 #: src/contents/ui/RNNoise.qml:239
 #, fuzzy
-msgid "Delete This Model"
+msgid "Delete this model"
 msgstr "Ennek a modell fájlnak az eltávolítása"
 
 #: src/contents/ui/RNNoise.qml:244
@@ -2465,11 +2542,12 @@ msgid "Failed to remove the %1 RNNoise model."
 msgstr "Impulzus Fájl Keresése"
 
 #: src/contents/ui/RNNoise.qml:314
-msgid "Import Model"
-msgstr ""
+#, fuzzy
+msgid "Import model"
+msgstr "Impulzus Importálása"
 
 #: src/contents/ui/Reverb.qml:53
-msgid "Room Size"
+msgid "Room size"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:57
@@ -2497,11 +2575,11 @@ msgid "Experimental"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:66
-msgid "Decay Time"
+msgid "Decay time"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:82
-msgid "Pre Delay"
+msgid "Pre delay"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:98
@@ -2509,15 +2587,16 @@ msgid "Diffusion"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:130
-msgid "High Frequency Damping"
-msgstr ""
+#, fuzzy
+msgid "High frequency damping"
+msgstr "Frekvencia 1 Erősítés"
 
 #: src/contents/ui/Reverb.qml:147
-msgid "Bass Cut"
+msgid "Bass cut"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:164
-msgid "Treble Cut"
+msgid "Treble cut"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:222
@@ -2529,15 +2608,16 @@ msgid "Ambience"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:241
-msgid "Empty Walls"
-msgstr ""
+#, fuzzy
+msgid "Empty walls"
+msgstr "Üres Lista"
 
 #: src/contents/ui/Reverb.qml:256
 msgid "Room"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:271
-msgid "Large Empty Hall"
+msgid "Large empty hall"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:281
@@ -2545,7 +2625,7 @@ msgid "Disco"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:291
-msgid "Large Occupied Hall"
+msgid "Large occupied hall"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:34
@@ -2582,6 +2662,11 @@ msgstr ""
 msgid "Can be used on numeric controls"
 msgstr ""
 
+#: src/contents/ui/ShortcutsSheet.qml:248
+#, fuzzy
+msgid "Global Shortcuts"
+msgstr "_Gyorsbillentyűk"
+
 #: src/contents/ui/ShortcutsSheet.qml:334
 msgid "Toggle microphone monitoring"
 msgstr ""
@@ -2600,9 +2685,19 @@ msgstr ""
 msgid "Dereverberation"
 msgstr ""
 
+#: src/contents/ui/Speex.qml:82
+#, fuzzy
+msgid "Noise suppression"
+msgstr "Vég Közel Visszhang Elnyomása"
+
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr ""
+
+#: src/contents/ui/Speex.qml:109
+#, fuzzy
+msgid "Voice detection"
+msgstr "Észlelés"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -2622,7 +2717,7 @@ msgid "Stereo Matrix"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:122
-msgid "LR > LR (Stereo Default)"
+msgid "LR > LR (Stereo default)"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:122
@@ -2634,39 +2729,43 @@ msgid "MS > LR (Mid-Side to Stereo)"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:122
-msgid "LR > LL (Mono Left Channel)"
+msgid "LR > LL (Mono left channel)"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:122
-msgid "LR > RR (Mono Right Channel)"
+msgid "LR > RR (Mono right channel)"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:122
-msgid "LR > L+R (Mono Sum L+R)"
+msgid "LR > L+R (Mono sum L+R)"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:122
-msgid "LR > RL (Stereo Flip Channels)"
+msgid "LR > RL (Stereo flip channels)"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:131
-msgid "Side Level"
-msgstr ""
+#, fuzzy
+msgid "Side level"
+msgstr "Nedves Szint"
 
 #: src/contents/ui/StereoTools.qml:149
-msgid "Side Balance"
-msgstr ""
+#, fuzzy
+msgid "Side balance"
+msgstr "Egyensúly"
 
 #: src/contents/ui/StereoTools.qml:165
-msgid "Middle Level"
-msgstr ""
+#, fuzzy
+msgid "Middle level"
+msgstr "Közép"
 
 #: src/contents/ui/StereoTools.qml:183
-msgid "Middle Panorama"
+msgid "Middle panorama"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:225 src/contents/ui/StereoTools.qml:255
-msgid "Invert Phase"
+#, fuzzy
+msgid "Invert phase"
 msgstr "Invertált Fázis"
 
 #: src/contents/ui/StereoTools.qml:299 src/tags_plugin_name.cpp:35
@@ -2674,12 +2773,14 @@ msgid "Delay"
 msgstr "Késleltetés"
 
 #: src/contents/ui/StereoTools.qml:316
-msgid "Stereo Base"
-msgstr ""
+#, fuzzy
+msgid "Stereo base"
+msgstr "Stereo Link"
 
 #: src/contents/ui/StereoTools.qml:332
-msgid "Stereo Phase"
-msgstr ""
+#, fuzzy
+msgid "Stereo phase"
+msgstr "Sztereó Szélesség"
 
 #: src/contents/ui/main.qml:207
 #, fuzzy
@@ -2717,7 +2818,7 @@ msgid "Quit"
 msgstr "_Kilépés"
 
 #: src/contents/ui/main.qml:432
-msgid "Turn Effects On/Off"
+msgid "Turn effects on/off"
 msgstr ""
 
 #: src/contents/ui/main.qml:482
@@ -2873,9 +2974,17 @@ msgstr "Equalizer, Kompreszzor és Egyéb Hanghatások"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Hanghatások PipeWire Alkalmazásokhoz"
 
-#, fuzzy
-#~ msgid "Global shortcuts"
-#~ msgstr "_Gyorsbillentyűk"
+#~ msgid "Add to Excluded Applications"
+#~ msgstr "Hozzáadás a Kizárt Alkalmazásokhoz"
+
+#~ msgid "High-Pass"
+#~ msgstr "Felül-Áteresztő"
+
+#~ msgid "F2 Peak"
+#~ msgstr "F2 Csúcs"
+
+#~ msgid "F1 Gain"
+#~ msgstr "F1 Erősítés"
 
 #, fuzzy
 #~ msgid "Empty"
@@ -2908,10 +3017,6 @@ msgstr "Hanghatások PipeWire Alkalmazásokhoz"
 #~ msgstr "Visszamaradó Visszhang Elnyomása"
 
 #, fuzzy
-#~ msgid "Near End Suppression"
-#~ msgstr "Vég Közel Visszhang Elnyomása"
-
-#, fuzzy
 #~ msgid "Band "
 #~ msgstr "Sáv"
 
@@ -2939,9 +3044,6 @@ msgstr "Hanghatások PipeWire Alkalmazásokhoz"
 
 #~ msgid "Change the volume of this application"
 #~ msgstr "Alkalmazás hangerejének módosítása"
-
-#~ msgid "Application Volume"
-#~ msgstr "Alkalmazás Hangereje"
 
 #~ msgid "_Help"
 #~ msgstr "_Segítség"
@@ -2984,9 +3086,6 @@ msgstr "Hanghatások PipeWire Alkalmazásokhoz"
 
 #~ msgid "Dry Level"
 #~ msgstr "Száraz Szint"
-
-#~ msgid "Stereo Split Mode"
-#~ msgstr "Sztereó Osztott Mód"
 
 #~ msgid "Sidechain Source"
 #~ msgstr "Oldallánc Forrás"
@@ -3032,9 +3131,6 @@ msgstr "Hanghatások PipeWire Alkalmazásokhoz"
 
 #~ msgid "Frequency 2 Peak"
 #~ msgstr "Frekvencia 2 Csúcs"
-
-#~ msgid "Frequency 1 Gain"
-#~ msgstr "Frekvencia 1 Erősítés"
 
 #~ msgid "Frequency 2 Level"
 #~ msgstr "Frekvencia 2 Szint"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-31 15:53+0000\n"
+"POT-Creation-Date: 2025-10-31 20:46+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -118,7 +118,8 @@ msgstr "მომენტალური გაზომვა"
 
 #: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:150
 #: src/contents/ui/LevelMeter.qml:144
-msgid "Short-Term"
+#, fuzzy
+msgid "Short-term"
 msgstr "მოკლევადიანი გაზომვა"
 
 #: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:161
@@ -127,19 +128,19 @@ msgid "Integrated"
 msgstr "კომპლექსური გაზომვა"
 
 #: src/contents/ui/Autogain.qml:66
-msgid "Geometric Mean (MSI)"
+msgid "Geometric mean (MSI)"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:66
-msgid "Geometric Mean (MS)"
+msgid "Geometric mean (MS)"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:66
-msgid "Geometric Mean (MI)"
+msgid "Geometric mean (MI)"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:66
-msgid "Geometric Mean (SI)"
+msgid "Geometric mean (SI)"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:75
@@ -151,8 +152,9 @@ msgid "Silence"
 msgstr "სიჩუმე"
 
 #: src/contents/ui/Autogain.qml:107
-msgid "Maximum History"
-msgstr ""
+#, fuzzy
+msgid "Maximum history"
+msgstr "მაქსიმუმი"
 
 #: src/contents/ui/Autogain.qml:128 src/contents/ui/Autogain.qml:194
 #: src/contents/ui/BassLoudness.qml:48 src/contents/ui/LevelMeter.qml:122
@@ -169,7 +171,8 @@ msgid "Range"
 msgstr "დიაპაზონი"
 
 #: src/contents/ui/Autogain.qml:205
-msgid "Output Gain"
+#, fuzzy
+msgid "Output gain"
 msgstr "გამოტანის გაძლიერება"
 
 #: src/contents/ui/Autogain.qml:226 src/contents/ui/BassEnhancer.qml:192
@@ -194,26 +197,27 @@ msgstr "ვიყენებ {}"
 
 #: src/contents/ui/Autogain.qml:242 src/contents/ui/DeepFilterNet.qml:185
 #: src/contents/ui/LevelMeter.qml:207 src/contents/ui/Pitch.qml:227
-msgid "Reset History"
+msgid "Reset history"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:249
 #, fuzzy
-msgid "Force Silence"
+msgid "Force silence"
 msgstr "სიჩუმე"
 
 #: src/contents/ui/Autogain.qml:250
 msgid "Force silence when the level is below the silence threshold"
 msgstr ""
 
-#: src/contents/ui/Autogain.qml:262 src/contents/ui/LevelMeter.qml:215
-#: src/contents/ui/Pitch.qml:255
-msgid "Reset Settings"
+#: src/contents/ui/Autogain.qml:262 src/contents/ui/DeepFilterNet.qml:193
+#: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Pitch.qml:255
+msgid "Reset settings"
 msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:39 src/contents/ui/Exciter.qml:39
-msgid "Blend Harmonics"
-msgstr ""
+#, fuzzy
+msgid "Blend harmonics"
+msgstr "ჰარმონიები"
 
 #: src/contents/ui/BassEnhancer.qml:48 src/contents/ui/Exciter.qml:48
 msgid "3rd"
@@ -238,7 +242,7 @@ msgstr "ფარგლები"
 
 #: src/contents/ui/BassEnhancer.qml:144
 #, fuzzy
-msgid "Floor Active"
+msgid "Floor active"
 msgstr "უმცირესი მნიშვნელობა"
 
 #: src/contents/ui/BassEnhancer.qml:155
@@ -254,7 +258,7 @@ msgstr "იატაკი"
 #: src/contents/ui/MultibandCompressor.qml:951
 #: src/contents/ui/MultibandGate.qml:924 src/contents/ui/Reverb.qml:335
 #: src/contents/ui/StereoTools.qml:412
-msgid "Show Native Window"
+msgid "Show native window"
 msgstr ""
 
 #: src/contents/ui/BassEnhancer.qml:222 src/contents/ui/Compressor.qml:927
@@ -266,12 +270,12 @@ msgstr "მოსმენა"
 #: src/contents/ui/BassEnhancer.qml:233 src/contents/ui/BassLoudness.qml:122
 #: src/contents/ui/Compressor.qml:948 src/contents/ui/Convolver.qml:488
 #: src/contents/ui/Crossfeed.qml:160 src/contents/ui/Crystalizer.qml:118
-#: src/contents/ui/DeepFilterNet.qml:193 src/contents/ui/Deesser.qml:343
-#: src/contents/ui/Delay.qml:417 src/contents/ui/EchoCanceller.qml:180
-#: src/contents/ui/Equalizer.qml:349 src/contents/ui/Exciter.qml:233
-#: src/contents/ui/Expander.qml:905 src/contents/ui/Filter.qml:231
-#: src/contents/ui/Gate.qml:1039 src/contents/ui/Limiter.qml:627
-#: src/contents/ui/Loudness.qml:197 src/contents/ui/Maximizer.qml:134
+#: src/contents/ui/Deesser.qml:343 src/contents/ui/Delay.qml:417
+#: src/contents/ui/EchoCanceller.qml:180 src/contents/ui/Equalizer.qml:349
+#: src/contents/ui/Exciter.qml:233 src/contents/ui/Expander.qml:905
+#: src/contents/ui/Filter.qml:231 src/contents/ui/Gate.qml:1039
+#: src/contents/ui/Limiter.qml:627 src/contents/ui/Loudness.qml:197
+#: src/contents/ui/Maximizer.qml:134
 #: src/contents/ui/MultibandCompressor.qml:975
 #: src/contents/ui/MultibandGate.qml:948 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:349 src/contents/ui/Speex.qml:184
@@ -299,11 +303,11 @@ msgstr ""
 
 #: src/contents/ui/BlocklistSheet.qml:29
 #, fuzzy
-msgid "Application Node Name"
+msgid "Application node name"
 msgstr "აპლიკაციის სახელი"
 
 #: src/contents/ui/BlocklistSheet.qml:45
-msgid "Add to Excluded Applications"
+msgid "Add to excluded applications"
 msgstr ""
 
 #: src/contents/ui/BlocklistSheet.qml:97
@@ -316,23 +320,28 @@ msgstr ""
 msgid "Empty List"
 msgstr ""
 
-#: src/contents/ui/BlocklistSheet.qml:119
-msgid "Remove Application"
+#: src/contents/ui/BlocklistSheet.qml:98
+msgid "No application excluded"
 msgstr ""
 
 #: src/contents/ui/BlocklistSheet.qml:120
+msgid "Remove Application"
+msgstr ""
+
+#: src/contents/ui/BlocklistSheet.qml:121
 msgid "Are you sure you want to remove this application from the list?"
 msgstr ""
 
-#: src/contents/ui/BlocklistSheet.qml:150
-msgid "Remove This App"
-msgstr ""
-
-#: src/contents/ui/BlocklistSheet.qml:177
-msgid "Show Excluded Apps"
-msgstr ""
+#: src/contents/ui/BlocklistSheet.qml:151
+#, fuzzy
+msgid "Remove this app"
+msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/BlocklistSheet.qml:178
+msgid "Show excluded apps"
+msgstr ""
+
+#: src/contents/ui/BlocklistSheet.qml:179
 msgid "Show excluded applications in the list of players/recorders"
 msgstr ""
 
@@ -367,14 +376,15 @@ msgid "Boosting"
 msgstr "გაძლიერება"
 
 #: src/contents/ui/Compressor.qml:83
-#: src/contents/ui/MultibandCompressor.qml:116
-msgid "Boost Threshold"
-msgstr ""
+#, fuzzy
+msgid "Boost tshreshold"
+msgstr "ზღვარი"
 
 #: src/contents/ui/Compressor.qml:103
 #: src/contents/ui/MultibandCompressor.qml:135
-msgid "Boost Amount"
-msgstr ""
+#, fuzzy
+msgid "Boost amount"
+msgstr "გაძლიერება"
 
 #: src/contents/ui/Compressor.qml:122 src/contents/ui/Deesser.qml:102
 #: src/contents/ui/Expander.qml:82 src/contents/ui/MultibandCompressor.qml:327
@@ -443,7 +453,8 @@ msgstr "გარე"
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
 #: src/contents/ui/PageStreamsEffects.qml:321
-msgid "Input Device"
+#, fuzzy
+msgid "Input device"
 msgstr "შეყვანის მოწყობილობა"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Deesser.qml:63
@@ -460,9 +471,7 @@ msgstr "პიკი"
 msgid "RMS"
 msgstr "RMS"
 
-#: src/contents/ui/Compressor.qml:300 src/contents/ui/Compressor.qml:426
-#: src/contents/ui/Expander.qml:260 src/contents/ui/Expander.qml:385
-#: src/contents/ui/Gate.qml:281 src/contents/ui/Gate.qml:406
+#: src/contents/ui/Compressor.qml:300 src/contents/ui/Gate.qml:281
 msgid "Low-Pass"
 msgstr "დაბალსიხშირული ფილტრი"
 
@@ -577,9 +586,10 @@ msgid "Lookahead"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:411 src/contents/ui/Expander.qml:370
-#: src/contents/ui/Gate.qml:391
-msgid "High-Pass"
-msgstr ""
+#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:391
+#, fuzzy
+msgid "High-pass"
+msgstr "მაღალსიხშირული ფილტრი"
 
 #: src/contents/ui/Compressor.qml:415 src/contents/ui/Compressor.qml:430
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:374
@@ -605,6 +615,13 @@ msgstr ""
 #: src/contents/ui/Gate.qml:395 src/contents/ui/Gate.qml:410
 msgid "36 dB/oct"
 msgstr ""
+
+#: src/contents/ui/Compressor.qml:426 src/contents/ui/Expander.qml:260
+#: src/contents/ui/Expander.qml:385 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:406
+#, fuzzy
+msgid "Low-pass"
+msgstr "დაბალსიხშირული ფილტრი"
 
 #: src/contents/ui/Compressor.qml:494 src/contents/ui/Convolver.qml:418
 #: src/contents/ui/Delay.qml:162 src/contents/ui/Delay.qml:320
@@ -639,37 +656,38 @@ msgstr ""
 #: src/contents/ui/Compressor.qml:563 src/contents/ui/Expander.qml:522
 #: src/contents/ui/Gate.qml:544 src/contents/ui/Limiter.qml:286
 #, fuzzy
-msgid "Input to Sidechain"
+msgid "Input to sidechain"
 msgstr "გვერდითი ჯაჭვი"
 
 #: src/contents/ui/Compressor.qml:579 src/contents/ui/Expander.qml:538
 #: src/contents/ui/Gate.qml:560 src/contents/ui/Limiter.qml:302
 #, fuzzy
-msgid "Input to Link"
+msgid "Input to link"
 msgstr "შეყვანის დამუშავების ხაზი"
 
 #: src/contents/ui/Compressor.qml:595 src/contents/ui/Expander.qml:554
 #: src/contents/ui/Gate.qml:576 src/contents/ui/Limiter.qml:318
 #, fuzzy
-msgid "Sidechain to Input"
+msgid "Sidechain to input"
 msgstr "შეყვანის მოწყობილობა"
 
 #: src/contents/ui/Compressor.qml:611 src/contents/ui/Expander.qml:570
 #: src/contents/ui/Gate.qml:592 src/contents/ui/Limiter.qml:334
 #, fuzzy
-msgid "Sidechain to Link"
+msgid "Sidechain to link"
 msgstr "გვერდითი ჯაჭვი"
 
 #: src/contents/ui/Compressor.qml:627 src/contents/ui/Expander.qml:586
 #: src/contents/ui/Gate.qml:608 src/contents/ui/Limiter.qml:350
 #, fuzzy
-msgid "Link to Sidechain"
+msgid "Link to sidechain"
 msgstr "გვერდითი ჯაჭვი"
 
 #: src/contents/ui/Compressor.qml:643 src/contents/ui/Expander.qml:602
 #: src/contents/ui/Gate.qml:624 src/contents/ui/Limiter.qml:366
-msgid "Link to Input"
-msgstr ""
+#, fuzzy
+msgid "Link to input"
+msgstr "გვერდითი ჯაჭვი"
 
 #: src/contents/ui/Compressor.qml:684 src/contents/ui/Expander.qml:643
 #: src/contents/ui/Gate.qml:107 src/contents/ui/Gate.qml:666
@@ -723,7 +741,8 @@ msgstr "კონვერტი"
 #: src/contents/ui/Compressor.qml:937 src/contents/ui/Expander.qml:894
 #: src/contents/ui/Gate.qml:1028 src/contents/ui/MultibandCompressor.qml:964
 #: src/contents/ui/MultibandGate.qml:937
-msgid "Stereo Split"
+#, fuzzy
+msgid "Stereo split"
 msgstr "სტერეოს გაყოფა"
 
 #: src/contents/ui/Convolver.qml:50
@@ -732,7 +751,7 @@ msgid "Loaded the %1 Convolver impulse."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/Convolver.qml:52 src/contents/ui/Convolver.qml:312
-msgid "Convolver Impulse Is Not Set"
+msgid "Convolver impulse is not set"
 msgstr ""
 
 #: src/contents/ui/Convolver.qml:56
@@ -765,7 +784,7 @@ msgid "Spectrum"
 msgstr "სპექტრი"
 
 #: src/contents/ui/Convolver.qml:242
-msgid "Log Scale"
+msgid "Log scale"
 msgstr ""
 
 #: src/contents/ui/Convolver.qml:349
@@ -783,8 +802,9 @@ msgid "Duration"
 msgstr "ხანგრძლოვობა"
 
 #: src/contents/ui/Convolver.qml:401
-msgid "Stereo Width"
-msgstr ""
+#, fuzzy
+msgid "Stereo width"
+msgstr "სტერეოს გაყოფა"
 
 #: src/contents/ui/Convolver.qml:477 src/tags_plugin_name.cpp:26
 msgid "Autogain"
@@ -826,12 +846,14 @@ msgid "Failed to remove the %1 Convolver impulse."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
-msgid "Delete This Impulse"
-msgstr ""
+#, fuzzy
+msgid "Delete this impulse"
+msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:124
-msgid "Import Impulse"
-msgstr ""
+#, fuzzy
+msgid "Import impulse"
+msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/Crossfeed.qml:65
 msgid "Cutoff"
@@ -855,7 +877,7 @@ msgid "Presets"
 msgstr "პრესეტები"
 
 #: src/contents/ui/Crystalizer.qml:107
-msgid "Adaptive Intensity"
+msgid "Adaptive intensity"
 msgstr ""
 
 #: src/contents/ui/CrystalizerBand.qml:35
@@ -873,23 +895,23 @@ msgid "Bypass"
 msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:33
-msgid "Attenuation Limit"
+msgid "Attenuation limit"
 msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:80
-msgid "Minimum Processing Threshold"
+msgid "Minimum processing threshold"
 msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:96
-msgid "Maximum ERB Processing threshold"
+msgid "Maximum ERB processing threshold"
 msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:112
-msgid "Maximum DF Processing Threshold"
+msgid "Maximum DF processing threshold"
 msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:128
-msgid "Minimum Processing Buffer"
+msgid "Minimum processing buffer"
 msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:135
@@ -897,7 +919,7 @@ msgid "frames"
 msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:144
-msgid "Post Filter Beta"
+msgid "Post filter Beta"
 msgstr ""
 
 #: src/contents/ui/Deesser.qml:46 src/tags_plugin_name.cpp:34
@@ -936,23 +958,25 @@ msgid "Filter"
 msgstr "ფილტრი"
 
 #: src/contents/ui/Deesser.qml:167
-msgid "F1 Split"
-msgstr ""
+#, fuzzy
+msgid "F1 split"
+msgstr "გაყოფა"
 
 #: src/contents/ui/Deesser.qml:184
-msgid "F2 Peak"
+msgid "F2 peak"
 msgstr ""
 
 #: src/contents/ui/Deesser.qml:201
-msgid "F1 Gain"
+msgid "F1 gain"
 msgstr ""
 
 #: src/contents/ui/Deesser.qml:218
-msgid "F2 Level"
-msgstr ""
+#, fuzzy
+msgid "F2 level"
+msgstr "დონე"
 
 #: src/contents/ui/Deesser.qml:236
-msgid "F2 Peak Q"
+msgid "F2 peak Q"
 msgstr ""
 
 #: src/contents/ui/Deesser.qml:259 src/contents/ui/EchoCanceller.qml:100
@@ -961,7 +985,7 @@ msgstr "დონე"
 
 #: src/contents/ui/Deesser.qml:281
 #, fuzzy
-msgid "Gain Reduction"
+msgid "Gain reduction"
 msgstr "ხმაურის შემცირება"
 
 #: src/contents/ui/Delay.qml:61 src/contents/ui/Delay.qml:219
@@ -989,12 +1013,13 @@ msgid "Temperature"
 msgstr ""
 
 #: src/contents/ui/Delay.qml:382
-msgid "Invert Left"
-msgstr ""
+#, fuzzy
+msgid "Invert left"
+msgstr "მარცხენა/მარჯვენა"
 
 #: src/contents/ui/Delay.qml:392
 #, fuzzy
-msgid "Invert Right"
+msgid "Invert right"
 msgstr "მარცხენა/მარჯვენა"
 
 #: src/contents/ui/DelegateClientsList.qml:36
@@ -1022,13 +1047,14 @@ msgstr "წვდომა"
 msgid "Description"
 msgstr "აღწერა"
 
-#: src/contents/ui/DelegatePluginsList.qml:65
-msgid "Toggle This Effect"
-msgstr ""
-
-#: src/contents/ui/DelegatePluginsList.qml:79
+#: src/contents/ui/DelegatePluginsList.qml:71
 #, fuzzy
-msgid "Remove This Effect"
+msgid "Toggle this effect"
+msgstr "პრესეტის შემოტანა"
+
+#: src/contents/ui/DelegatePluginsList.qml:85
+#, fuzzy
+msgid "Remove this effect"
 msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/DelegateStreamsList.qml:76
@@ -1057,15 +1083,15 @@ msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:60
 #, fuzzy
-msgid "Mobile Mode"
+msgid "Mobile mode"
 msgstr "სტერეო რეჟიმი"
 
 #: src/contents/ui/EchoCanceller.qml:69
 #, fuzzy
-msgid "Enforce High-pass"
+msgid "Enforce high-pass"
 msgstr "მაღალსიხშირული ფილტრი"
 
-#: src/contents/ui/EchoCanceller.qml:83 src/contents/ui/Speex.qml:82
+#: src/contents/ui/EchoCanceller.qml:83
 msgid "Noise Suppression"
 msgstr ""
 
@@ -1085,21 +1111,22 @@ msgstr "მაღლების წაჭრა"
 
 #: src/contents/ui/EchoCanceller.qml:104
 #, fuzzy
-msgid "Very High"
+msgid "Very high"
 msgstr "მაღლების წაჭრა"
 
 #: src/contents/ui/EchoCanceller.qml:116
 #, fuzzy
-msgid "High-pass Filter"
+msgid "High-Pass Filter"
 msgstr "მაღალსიხშირული ფილტრი"
 
 #: src/contents/ui/EchoCanceller.qml:133
 #, fuzzy
-msgid "Full Band"
+msgid "Full band"
 msgstr "გუნდები"
 
 #: src/contents/ui/EchoCanceller.qml:169 src/contents/ui/Speex.qml:60
-msgid "Automatic Gain Control"
+#, fuzzy
+msgid "Automatic gain control"
 msgstr "ხმის მომატების ავტომატური კონტროლი"
 
 #: src/contents/ui/EeInputOutputGain.qml:21
@@ -1115,9 +1142,10 @@ msgstr ""
 msgid "Input"
 msgstr "შეყვანა"
 
-#: src/contents/ui/Equalizer.qml:51
-msgid "APO Presets"
-msgstr ""
+#: src/contents/ui/Equalizer.qml:51 src/contents/ui/Equalizer.qml:81
+#, fuzzy
+msgid "APO preset"
+msgstr "შაბლონი"
 
 #: src/contents/ui/Equalizer.qml:54
 #, fuzzy
@@ -1130,8 +1158,9 @@ msgid "Failed to import the Equalizer APO preset file."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/Equalizer.qml:66
-msgid "GraphicEQ Presets"
-msgstr ""
+#, fuzzy
+msgid "GraphicEQ preset"
+msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/Equalizer.qml:69
 #, fuzzy
@@ -1142,11 +1171,6 @@ msgstr "პრესეტის შემოტანა"
 #, fuzzy
 msgid "Failed to import the GraphicEQ preset file."
 msgstr "პრესეტის შემოტანა"
-
-#: src/contents/ui/Equalizer.qml:81
-#, fuzzy
-msgid "APO Preset"
-msgstr "შაბლონი"
 
 #: src/contents/ui/Equalizer.qml:84
 #, fuzzy
@@ -1170,27 +1194,30 @@ msgid "Balance"
 msgstr "ბალანსი"
 
 #: src/contents/ui/Equalizer.qml:150
-msgid "Pitch Left"
-msgstr ""
+#, fuzzy
+msgid "Pitch left"
+msgstr "Pitch"
 
 #: src/contents/ui/Equalizer.qml:167
-msgid "Pitch Right"
-msgstr ""
+#, fuzzy
+msgid "Pitch right"
+msgstr "Pitch"
 
 #: src/contents/ui/Equalizer.qml:296
-msgid "Split Channels"
+#, fuzzy
+msgid "Split channels"
 msgstr "არხების გაყოფა"
 
 #: src/contents/ui/Equalizer.qml:306
-msgid "Flat Response"
+msgid "Flat response"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:313
-msgid "Calculate Frequencies"
+msgid "Calculate frequencies"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:320
-msgid "Sort Bands"
+msgid "Sort bands"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:327
@@ -1296,7 +1323,7 @@ msgstr "სოლო"
 
 #: src/contents/ui/Exciter.qml:144
 #, fuzzy
-msgid "Ceil Active"
+msgid "Ceil active"
 msgstr "ფარდობითი"
 
 #: src/contents/ui/Exciter.qml:155
@@ -1312,16 +1339,6 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:366
 msgid "Internal"
 msgstr "შიდა"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Low-pass"
-msgstr "დაბალსიხშირული ფილტრი"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "High-pass"
-msgstr "მაღალსიხშირული ფილტრი"
 
 #: src/contents/ui/Filter.qml:55
 msgid "Low-shelf"
@@ -1348,11 +1365,12 @@ msgstr "დაბალსიხშირული ფილტრი"
 
 #: src/contents/ui/Filter.qml:64
 #, fuzzy
-msgid "Filter Mode"
+msgid "Filter mode"
 msgstr "სტერეო რეჟიმი"
 
 #: src/contents/ui/Filter.qml:77
-msgid "Equalizer Mode"
+#, fuzzy
+msgid "Equalizer mode"
 msgstr "ეკვალაიზერის რეჟიმი"
 
 #: src/contents/ui/Gate.qml:57 src/tags_plugin_name.cpp:41
@@ -1384,52 +1402,56 @@ msgid "True Peak"
 msgstr "ნამდვილი პიკი"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Herm Thin"
+msgid "Herm thin"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Herm Wide"
+msgid "Herm wide"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Herm Tail"
+msgid "Herm tail"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Herm Duck"
+msgid "Herm duck"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Exp Thin"
+msgid "Exp thin"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Exp Wide"
+msgid "Exp wide"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Exp Tail"
+msgid "Exp tail"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Exp Duck"
+msgid "Exp duck"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Line Thin"
-msgstr ""
+#, fuzzy
+msgid "Line thin"
+msgstr "ხაზის სიგანე"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Line Wide"
-msgstr ""
+#, fuzzy
+msgid "Line wide"
+msgstr "ხაზის სიგანე"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Line Tail"
-msgstr ""
+#, fuzzy
+msgid "Line tail"
+msgstr "ხაზის სიგანე"
 
 #: src/contents/ui/Limiter.qml:60
-msgid "Line Duck"
-msgstr ""
+#, fuzzy
+msgid "Line duck"
+msgstr "ხაზის სიგანე"
 
 #: src/contents/ui/Limiter.qml:70
 msgid "Oversampling"
@@ -1523,12 +1545,12 @@ msgstr ""
 
 #: src/contents/ui/Limiter.qml:74
 #, fuzzy
-msgid "True Peak/16 bit"
+msgid "True peak/16 bit"
 msgstr "ნამდვილი პიკი"
 
 #: src/contents/ui/Limiter.qml:74
 #, fuzzy
-msgid "True Peak/24 bit"
+msgid "True peak/24 bit"
 msgstr "ნამდვილი პიკი"
 
 #: src/contents/ui/Limiter.qml:84
@@ -1576,14 +1598,18 @@ msgstr "შემზღუდველი"
 msgid "Stereo Link"
 msgstr ""
 
-#: src/contents/ui/Limiter.qml:390 src/contents/ui/Limiter.qml:616
+#: src/contents/ui/Limiter.qml:390
 msgid "Automatic Level"
 msgstr ""
 
 #: src/contents/ui/Limiter.qml:606
 #, fuzzy
-msgid "Gain Boost"
+msgid "Gain boost"
 msgstr "გაძლიერება"
+
+#: src/contents/ui/Limiter.qml:616
+msgid "Automatic level"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:70
 #, fuzzy
@@ -1591,11 +1617,11 @@ msgid "Contour"
 msgstr "გაგრძელება"
 
 #: src/contents/ui/Loudness.qml:83
-msgid "FFT Size"
+msgid "FFT size"
 msgstr ""
 
 #: src/contents/ui/Loudness.qml:97
-msgid "IIR Approximation"
+msgid "IIR approximation"
 msgstr ""
 
 #: src/contents/ui/Loudness.qml:101
@@ -1617,7 +1643,7 @@ msgstr "გამოტანის ხმა"
 
 #: src/contents/ui/Loudness.qml:128
 #, fuzzy
-msgid "Clipping Range"
+msgid "Clipping range"
 msgstr "კლინინგი"
 
 #: src/contents/ui/Loudness.qml:186
@@ -1633,8 +1659,14 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:103
-msgid "Compression Mode"
-msgstr ""
+#, fuzzy
+msgid "Compression mode"
+msgstr "კომპრესორი"
+
+#: src/contents/ui/MultibandCompressor.qml:116
+#, fuzzy
+msgid "Boost threshold"
+msgstr "ზღვარი"
 
 #: src/contents/ui/MultibandCompressor.qml:198
 #: src/contents/ui/MultibandGate.qml:135
@@ -1649,17 +1681,18 @@ msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:483
 #: src/contents/ui/MultibandGate.qml:456
-msgid "Low-Cut"
+msgid "Low-cut"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:508
 #: src/contents/ui/MultibandGate.qml:481
-msgid "High-Cut"
+#, fuzzy
+msgid "High-cut"
 msgstr "მაღლების წაჭრა"
 
 #: src/contents/ui/MultibandCompressor.qml:540
 #: src/contents/ui/MultibandGate.qml:513
-msgid "Operating Mode"
+msgid "Operating mode"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:544
@@ -1674,13 +1707,14 @@ msgstr "თანამედროვე"
 
 #: src/contents/ui/MultibandCompressor.qml:544
 #: src/contents/ui/MultibandGate.qml:517
-msgid "Linear Phase"
+msgid "Linear phase"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:553
 #: src/contents/ui/MultibandGate.qml:526
-msgid "Sidechain Boost"
-msgstr ""
+#, fuzzy
+msgid "Sidechain boost"
+msgstr "გვერდითი ჯაჭვი"
 
 #: src/contents/ui/MultibandCompressor.qml:557
 #: src/contents/ui/MultibandGate.qml:530
@@ -1705,7 +1739,7 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:567
 #: src/contents/ui/MultibandGate.qml:540
 #, fuzzy
-msgid "Sidechain Input Device"
+msgid "Sidechain input device"
 msgstr "შეყვანის მოწყობილობა"
 
 #: src/contents/ui/MultibandGate.qml:161
@@ -1714,20 +1748,21 @@ msgid "Reaction"
 msgstr "აღწერა"
 
 #: src/contents/ui/PageStreamsEffects.qml:80
-msgid "No Audio Application Available"
+msgid "No audio application available"
 msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:274
-msgid "Add Effect"
+#, fuzzy
+msgid "Add effect"
 msgstr "ეფექტის დამატება"
 
 #: src/contents/ui/PageStreamsEffects.qml:321
-#: src/contents/ui/PageStreamsEffects.qml:572
+#: src/contents/ui/PageStreamsEffects.qml:574
 msgid "Players"
 msgstr "მოთამაშეები"
 
 #: src/contents/ui/PageStreamsEffects.qml:338
-#: src/contents/ui/PageStreamsEffects.qml:572
+#: src/contents/ui/PageStreamsEffects.qml:574
 msgid "Recorders"
 msgstr "სალამურები"
 
@@ -1748,21 +1783,22 @@ msgid "No Effects"
 msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:378
-msgid "Audio Stream Not Modified"
+msgid "Audio stream not modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:582
+#: src/contents/ui/PageStreamsEffects.qml:584
 msgid "Effects"
 msgstr "ეფექტები"
 
-#: src/contents/ui/PageStreamsEffects.qml:599
+#: src/contents/ui/PageStreamsEffects.qml:601
 #, fuzzy
 msgid "Input monitoring"
 msgstr "შეყვანის დამუშავების ხაზი"
 
-#: src/contents/ui/PageStreamsEffects.qml:612
-msgid "Excluded Apps"
-msgstr ""
+#: src/contents/ui/PageStreamsEffects.qml:614
+#, fuzzy
+msgid "Excluded apps"
+msgstr "გამორიცხვა"
 
 #: src/contents/ui/PipeWirePage.qml:17
 msgid "General"
@@ -1791,11 +1827,11 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:113
-msgid "Use Default Input"
+msgid "Use default input"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:156
-msgid "Use Default Output"
+msgid "Use default output"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:195
@@ -1803,33 +1839,37 @@ msgid "Server Information"
 msgstr "ინფორმაცია სერვერის შესახებ"
 
 #: src/contents/ui/PipeWirePage.qml:200
-msgid "Header Version"
+msgid "Header version"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:205
-msgid "Library Version"
+msgid "Library version"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:210
-msgid "Runtime Version"
-msgstr ""
+#, fuzzy
+msgid "Runtime version"
+msgstr "ცენტი"
 
 #: src/contents/ui/PipeWirePage.qml:215
 #, fuzzy
-msgid "Default Sampling Rate"
+msgid "Default sampling rate"
 msgstr "სემპლინგისსიჩქარე"
 
 #: src/contents/ui/PipeWirePage.qml:220
-msgid "Minimum Quantum"
-msgstr ""
+#, fuzzy
+msgid "Minimum quantum"
+msgstr "მინიმუმი"
 
 #: src/contents/ui/PipeWirePage.qml:225
-msgid "Maximum Quantum"
-msgstr ""
+#, fuzzy
+msgid "Maximum quantum"
+msgstr "მაქსიმუმი"
 
 #: src/contents/ui/PipeWirePage.qml:230
-msgid "Default Quantum"
-msgstr ""
+#, fuzzy
+msgid "Default quantum"
+msgstr "სემპლინგისსიჩქარე"
 
 #: src/contents/ui/PipeWirePage.qml:252
 #, fuzzy
@@ -1864,28 +1904,29 @@ msgid "Waveform"
 msgstr "ტალღოვანი"
 
 #: src/contents/ui/PipeWirePage.qml:355
-msgid "Sine Wave"
+msgid "Sine wave"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:366
-msgid "White Noise"
+#, fuzzy
+msgid "White noise"
 msgstr "თეთრი ხმაური"
 
 #: src/contents/ui/PipeWirePage.qml:377
 #, fuzzy
-msgid "Pink Noise"
+msgid "Pink noise"
 msgstr "თეთრი ხმაური"
 
 #: src/contents/ui/Pitch.qml:50
-msgid "Sequence Length"
+msgid "Sequence length"
 msgstr ""
 
 #: src/contents/ui/Pitch.qml:66
-msgid "Seek Window"
+msgid "Seek window"
 msgstr ""
 
 #: src/contents/ui/Pitch.qml:82
-msgid "Overlap Length"
+msgid "Overlap length"
 msgstr ""
 
 #: src/contents/ui/Pitch.qml:103 src/tags_plugin_name.cpp:48
@@ -1905,15 +1946,17 @@ msgid "Semitones"
 msgstr ""
 
 #: src/contents/ui/Pitch.qml:167
-msgid "Tempo Difference"
+#, fuzzy
+msgid "Tempo difference"
 msgstr "ტემპის სხვაობა"
 
 #: src/contents/ui/Pitch.qml:184
-msgid "Rate Difference"
+#, fuzzy
+msgid "Rate difference"
 msgstr "სიხშირის სხვაობა"
 
 #: src/contents/ui/Pitch.qml:234
-msgid "Quick Seek"
+msgid "Quick seek"
 msgstr ""
 
 #: src/contents/ui/Pitch.qml:244
@@ -1930,7 +1973,7 @@ msgstr "_მორგება"
 
 #: src/contents/ui/PreferencesSheet.qml:35
 #, fuzzy
-msgid "Enable Service Mode"
+msgid "Enable service mode"
 msgstr "ეკვალაიზერის რეჟიმი"
 
 #: src/contents/ui/PreferencesSheet.qml:36
@@ -1938,7 +1981,7 @@ msgid "Easy Effects is active in background when the window is closed."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:48
-msgid "Autostart on Login"
+msgid "Autostart on login"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:49
@@ -1946,27 +1989,27 @@ msgid "Easy Effects is launched at user session startup."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:62
-msgid "Show the Tray Icon"
+msgid "Show the tray icon"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:86
-msgid "Process All Output Streams"
+msgid "Process all output streams"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:97
-msgid "Process All Input Streams"
+msgid "Process all input streams"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:108
-msgid "Ignore Streams from Monitor of Devices"
+msgid "Ignore streams from monitor of devices"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:119
-msgid "Use Cubic Volume"
+msgid "Use cubic volume"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:130
-msgid "Ignore System Notifications"
+msgid "Ignore system notifications"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:131
@@ -1978,15 +2021,15 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:142
 #, fuzzy
-msgid "Enable/Disable Input Monitoring"
+msgid "Enable/disable input monitoring"
 msgstr "შეყვანის დამუშავების ხაზი"
 
 #: src/contents/ui/PreferencesSheet.qml:153
-msgid "Mic Monitor Plays to Output Effects Pipeline"
+msgid "Mic monitor plays to output effects pipeline"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:164
-msgid "Enable the Inactivity Timeout"
+msgid "Enable the inactivity timeout"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:165
@@ -1996,12 +2039,12 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:177
-msgid "Inactivity Timeout"
+msgid "Inactivity timeout"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:191
 #, fuzzy
-msgid "Level Meters Label"
+msgid "Level meters label"
 msgstr "დონის მზომი"
 
 #: src/contents/ui/PreferencesSheet.qml:192
@@ -2011,7 +2054,7 @@ msgid ""
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:236
-msgid "Audio Delay Compensation"
+msgid "Audio delay compensation"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:250
@@ -2019,7 +2062,7 @@ msgid "Style"
 msgstr "სტილი"
 
 #: src/contents/ui/PreferencesSheet.qml:257
-msgid "Color Scheme"
+msgid "Color scheme"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:261
@@ -2036,7 +2079,7 @@ msgid "Dark"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:271
-msgid "Color Theme"
+msgid "Color theme"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:275
@@ -2044,7 +2087,7 @@ msgid "Green"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:275
-msgid "Green Neon"
+msgid "Green neon"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:275
@@ -2093,11 +2136,11 @@ msgid "Area"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:299
-msgid "Dynamic Scale"
+msgid "Dynamic scale"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:310
-msgid "Logarithmic Frequency Axis"
+msgid "Logarithmic frequency axis"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:321
@@ -2121,18 +2164,17 @@ msgid "Maximum"
 msgstr "მაქსიმუმი"
 
 #: src/contents/ui/PreferencesSheet.qml:396
-msgid "Database Autosave Interval"
+msgid "Database autosave interval"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:409
 #, fuzzy
-msgid "Most Used Presets"
+msgid "Most used presets"
 msgstr "შეყვანის პრესეტი"
 
 #: src/contents/ui/PreferencesSheet.qml:435
-#: src/contents/ui/ShortcutsSheet.qml:248
 #, fuzzy
-msgid "Global Shortcuts"
+msgid "Global shortcuts"
 msgstr "მალ_სახმობები"
 
 #: src/contents/ui/PreferencesSheet.qml:436
@@ -2140,7 +2182,7 @@ msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:448
-msgid "Native Window of Effects"
+msgid "Native window of effects"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:449
@@ -2148,7 +2190,8 @@ msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:461
-msgid "Update Frequency"
+#, fuzzy
+msgid "Update frequency"
 msgstr "განახლების სიხშირე"
 
 #: src/contents/ui/PreferencesSheet.qml:462
@@ -2184,11 +2227,10 @@ msgstr "მოწყობილობა"
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
 #: src/contents/ui/PresetsAutoloadingPage.qml:172
 #, fuzzy
-msgid "Hardware Profile"
+msgid "Hardware profile"
 msgstr "პროფილი"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
 #, fuzzy
 msgid "Local Preset"
 msgstr "ლოკალური პრესეტების სია"
@@ -2208,9 +2250,14 @@ msgstr "ლოკალური პრესეტების ძებნა"
 msgid "Remove this autoloading preset"
 msgstr "პრესეტის შემოტანა"
 
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
+#, fuzzy
+msgid "Local preset"
+msgstr "ლოკალური პრესეტების სია"
+
 #: src/contents/ui/PresetsCommunityPage.qml:93
 #, fuzzy
-msgid "Copy to Local Presets"
+msgid "Copy to local presets"
 msgstr "ლოკალური პრესეტების სია"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
@@ -2238,7 +2285,6 @@ msgid "Failed to import a new local preset from an external file."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/PresetsLocalPage.qml:46
-#: src/contents/ui/PresetsLocalPage.qml:131
 #, fuzzy
 msgid "Export Presets"
 msgstr "შეყვანის პრესეტი"
@@ -2254,17 +2300,17 @@ msgid "Failed to export all presets to an external folder."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/PresetsLocalPage.qml:63
-msgid "New Preset Name"
+msgid "New preset name"
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:79
 #, fuzzy
-msgid "Import Preset File"
+msgid "Import preset file"
 msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/PresetsLocalPage.qml:88
 #, fuzzy
-msgid "Create New Preset"
+msgid "Create new preset"
 msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/PresetsLocalPage.qml:98
@@ -2276,6 +2322,11 @@ msgstr "ლოკალური პრესეტების ძებნა"
 #, fuzzy
 msgid "Failed to create a new local preset: %1"
 msgstr "საზოგადო პრესეტის ძებნა"
+
+#: src/contents/ui/PresetsLocalPage.qml:131
+#, fuzzy
+msgid "Export presets"
+msgstr "შეყვანის პრესეტი"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
 #, fuzzy
@@ -2345,17 +2396,17 @@ msgstr "გაუქმება"
 
 #: src/contents/ui/PresetsLocalPage.qml:277
 #, fuzzy
-msgid "Save Settings to This Preset"
+msgid "Save settings to this preset"
 msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/PresetsLocalPage.qml:285
 #, fuzzy
-msgid "Rename This Preset"
+msgid "Rename this preset"
 msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/PresetsLocalPage.qml:293
 #, fuzzy
-msgid "Delete This Preset"
+msgid "Delete this preset"
 msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:104
@@ -2371,8 +2422,9 @@ msgid "Autoloading"
 msgstr ""
 
 #: src/contents/ui/PresetsSheet.qml:102
-msgid "No Preset Loaded"
-msgstr ""
+#, fuzzy
+msgid "No preset loaded"
+msgstr "ჩატვირთულია ბოლო ლოკალური პრესეტი"
 
 #: src/contents/ui/PresetsSheet.qml:118
 msgid "Fallback Preset"
@@ -2390,8 +2442,9 @@ msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
 #: src/contents/ui/RNNoise.qml:278 src/contents/ui/RNNoise.qml:280
-msgid "Standard RNNoise Model"
-msgstr ""
+#, fuzzy
+msgid "Standard RNNoise model"
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/RNNoise.qml:59
 msgid "Standard RNNoise model loaded."
@@ -2412,16 +2465,17 @@ msgstr "საზოგადო პრესეტის ძებნა"
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "საზოგადო პრესეტის ძებნა"
 
-#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+#: src/contents/ui/RNNoise.qml:89
 msgid "Voice Detection"
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:126
-msgid "Wet Level"
-msgstr ""
+#, fuzzy
+msgid "Wet level"
+msgstr "შეყვანის მოწყობილობა"
 
 #: src/contents/ui/RNNoise.qml:166
-msgid "Use the Standard Model"
+msgid "Use the Standard model"
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:177
@@ -2430,8 +2484,9 @@ msgid "User Models"
 msgstr "მოდელები"
 
 #: src/contents/ui/RNNoise.qml:239
-msgid "Delete This Model"
-msgstr ""
+#, fuzzy
+msgid "Delete this model"
+msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/RNNoise.qml:244
 #, fuzzy
@@ -2444,12 +2499,14 @@ msgid "Failed to remove the %1 RNNoise model."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/RNNoise.qml:314
-msgid "Import Model"
-msgstr ""
+#, fuzzy
+msgid "Import model"
+msgstr "შემოტანა"
 
 #: src/contents/ui/Reverb.qml:53
-msgid "Room Size"
-msgstr ""
+#, fuzzy
+msgid "Room size"
+msgstr "ოთახი"
 
 #: src/contents/ui/Reverb.qml:57
 msgid "Small"
@@ -2477,11 +2534,11 @@ msgid "Experimental"
 msgstr "ექსპერიმენტალური"
 
 #: src/contents/ui/Reverb.qml:66
-msgid "Decay Time"
+msgid "Decay time"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:82
-msgid "Pre Delay"
+msgid "Pre delay"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:98
@@ -2489,15 +2546,17 @@ msgid "Diffusion"
 msgstr "დიფუზია"
 
 #: src/contents/ui/Reverb.qml:130
-msgid "High Frequency Damping"
+msgid "High frequency damping"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:147
-msgid "Bass Cut"
+#, fuzzy
+msgid "Bass cut"
 msgstr "Bass-ის მოჭრა"
 
 #: src/contents/ui/Reverb.qml:164
-msgid "Treble Cut"
+#, fuzzy
+msgid "Treble cut"
 msgstr "მაღალი სიხშირეების მოჭრა"
 
 #: src/contents/ui/Reverb.qml:222
@@ -2509,7 +2568,7 @@ msgid "Ambience"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:241
-msgid "Empty Walls"
+msgid "Empty walls"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:256
@@ -2517,7 +2576,7 @@ msgid "Room"
 msgstr "ოთახი"
 
 #: src/contents/ui/Reverb.qml:271
-msgid "Large Empty Hall"
+msgid "Large empty hall"
 msgstr ""
 
 #: src/contents/ui/Reverb.qml:281
@@ -2525,7 +2584,7 @@ msgid "Disco"
 msgstr "დისკო"
 
 #: src/contents/ui/Reverb.qml:291
-msgid "Large Occupied Hall"
+msgid "Large occupied hall"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:34
@@ -2561,6 +2620,11 @@ msgstr ""
 msgid "Can be used on numeric controls"
 msgstr ""
 
+#: src/contents/ui/ShortcutsSheet.qml:248
+#, fuzzy
+msgid "Global Shortcuts"
+msgstr "მალ_სახმობები"
+
 #: src/contents/ui/ShortcutsSheet.qml:334
 msgid "Toggle microphone monitoring"
 msgstr ""
@@ -2579,9 +2643,19 @@ msgstr "ხმაურის მოცილება"
 msgid "Dereverberation"
 msgstr ""
 
+#: src/contents/ui/Speex.qml:82
+#, fuzzy
+msgid "Noise suppression"
+msgstr "ხმაურის შემცირება"
+
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr ""
+
+#: src/contents/ui/Speex.qml:109
+#, fuzzy
+msgid "Voice detection"
+msgstr "ხმაურის შემცირება"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -2601,7 +2675,7 @@ msgid "Stereo Matrix"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:122
-msgid "LR > LR (Stereo Default)"
+msgid "LR > LR (Stereo default)"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:122
@@ -2613,52 +2687,58 @@ msgid "MS > LR (Mid-Side to Stereo)"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:122
-msgid "LR > LL (Mono Left Channel)"
+msgid "LR > LL (Mono left channel)"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:122
-msgid "LR > RR (Mono Right Channel)"
+msgid "LR > RR (Mono right channel)"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:122
-msgid "LR > L+R (Mono Sum L+R)"
+msgid "LR > L+R (Mono sum L+R)"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:122
-msgid "LR > RL (Stereo Flip Channels)"
+msgid "LR > RL (Stereo flip channels)"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:131
-msgid "Side Level"
-msgstr ""
+#, fuzzy
+msgid "Side level"
+msgstr "დონე"
 
 #: src/contents/ui/StereoTools.qml:149
-msgid "Side Balance"
-msgstr ""
+#, fuzzy
+msgid "Side balance"
+msgstr "ბალანსი"
 
 #: src/contents/ui/StereoTools.qml:165
-msgid "Middle Level"
-msgstr ""
+#, fuzzy
+msgid "Middle level"
+msgstr "შუა"
 
 #: src/contents/ui/StereoTools.qml:183
-msgid "Middle Panorama"
+msgid "Middle panorama"
 msgstr ""
 
 #: src/contents/ui/StereoTools.qml:225 src/contents/ui/StereoTools.qml:255
-msgid "Invert Phase"
-msgstr ""
+#, fuzzy
+msgid "Invert phase"
+msgstr "მარცხენა/მარჯვენა"
 
 #: src/contents/ui/StereoTools.qml:299 src/tags_plugin_name.cpp:35
 msgid "Delay"
 msgstr "დაყოვნება"
 
 #: src/contents/ui/StereoTools.qml:316
-msgid "Stereo Base"
-msgstr ""
+#, fuzzy
+msgid "Stereo base"
+msgstr "სტერეოს გაყოფა"
 
 #: src/contents/ui/StereoTools.qml:332
-msgid "Stereo Phase"
-msgstr ""
+#, fuzzy
+msgid "Stereo phase"
+msgstr "სტერეოს გაყოფა"
 
 #: src/contents/ui/main.qml:207
 msgid "Reset Settings?"
@@ -2695,7 +2775,7 @@ msgid "Quit"
 msgstr ""
 
 #: src/contents/ui/main.qml:432
-msgid "Turn Effects On/Off"
+msgid "Turn effects on/off"
 msgstr ""
 
 #: src/contents/ui/main.qml:482
@@ -2852,10 +2932,6 @@ msgid "Audio Effects for PipeWire Applications"
 msgstr ""
 
 #, fuzzy
-#~ msgid "Global shortcuts"
-#~ msgstr "მალ_სახმობები"
-
-#, fuzzy
 #~ msgid "Added Effect: %1"
 #~ msgstr "ეფექტის დამატება"
 
@@ -2932,9 +3008,6 @@ msgstr ""
 
 #~ msgid "Update Interval"
 #~ msgstr "განახლების შუალედი"
-
-#~ msgid "Line Width"
-#~ msgstr "ხაზის სიგანე"
 
 #~ msgid "Axis Labels"
 #~ msgstr "ღერძის ჭდეები"
