@@ -1,4 +1,5 @@
 import QtQml // Despite of what Qt extension says this import is needed. We crash without it
+import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
@@ -66,6 +67,10 @@ Kirigami.OverlaySheet {
                             DB.Manager.main.showTrayIcon = isChecked;
                     }
                 }
+            }
+
+            Item {
+                implicitHeight: Kirigami.Units.gridUnit
             }
         }
     }
@@ -197,6 +202,10 @@ Kirigami.OverlaySheet {
                         DB.Manager.main.levelMetersLabelTimer = v;
                     }
                 }
+            }
+
+            Item {
+                implicitHeight: Kirigami.Units.gridUnit
             }
         }
     }
@@ -371,6 +380,10 @@ Kirigami.OverlaySheet {
                     }
                 }
             }
+
+            Item {
+                implicitHeight: Kirigami.Units.gridUnit
+            }
         }
     }
 
@@ -403,6 +416,10 @@ Kirigami.OverlaySheet {
                         DB.Manager.main.maxMostUsedPresets = v;
                     }
                 }
+            }
+
+            Item {
+                implicitHeight: Kirigami.Units.gridUnit
             }
         }
     }
@@ -456,17 +473,23 @@ Kirigami.OverlaySheet {
                     }
                 }
             }
+
+            Item {
+                implicitHeight: Kirigami.Units.gridUnit
+            }
         }
     }
 
     Controls.StackView {
         id: stack
 
-        implicitWidth: Kirigami.Units.gridUnit * 30
-        implicitHeight: stack.currentItem.implicitHeight
+        implicitHeight: currentItem ? currentItem.implicitHeight : 0
+        implicitWidth: initialCard.maximumWidth
 
         initialItem: ColumnLayout {
             FormCard.FormCard {
+                id: initialCard
+
                 FormCard.FormButtonDelegate {
                     id: serviceButton
 
@@ -541,6 +564,14 @@ Kirigami.OverlaySheet {
                         headerTitle.text = text;
                     }
                 }
+            }
+
+            /*
+             * This is a hack to make sure we can see the whole card when the vertical scrollbar is used
+             */
+
+            Item {
+                implicitHeight: Kirigami.Units.gridUnit
             }
         }
     }
