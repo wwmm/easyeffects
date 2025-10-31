@@ -245,7 +245,7 @@ Kirigami.OverlaySheet {
 
             Kirigami.Heading {
                 Layout.alignment: Qt.AlignLeft
-                text: i18n("Global shortcuts") // qmllint disable
+                text: i18n("Global Shortcuts") // qmllint disable
             }
         }
 
