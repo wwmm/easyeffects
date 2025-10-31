@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-31 20:46+0000\n"
+"POT-Creation-Date: 2025-10-31 23:18+0000\n"
 "PO-Revision-Date: 2025-10-30 04:17+0000\n"
 "Last-Translator: 雲の中を漂う船 <nogamenolife_zero@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -193,8 +193,8 @@ msgstr "输出增益"
 #: src/contents/ui/Filter.qml:200 src/contents/ui/Gate.qml:988
 #: src/contents/ui/LevelMeter.qml:191 src/contents/ui/Limiter.qml:576
 #: src/contents/ui/Loudness.qml:156 src/contents/ui/Maximizer.qml:103
-#: src/contents/ui/MultibandCompressor.qml:934
-#: src/contents/ui/MultibandGate.qml:907 src/contents/ui/Pitch.qml:211
+#: src/contents/ui/MultibandCompressor.qml:931
+#: src/contents/ui/MultibandGate.qml:904 src/contents/ui/Pitch.qml:211
 #: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
 #: src/contents/ui/RNNoise.qml:278 src/contents/ui/RNNoise.qml:280
 #: src/contents/ui/RNNoise.qml:298 src/contents/ui/Reverb.qml:310
@@ -265,8 +265,8 @@ msgstr "下限"
 #: src/contents/ui/Expander.qml:871 src/contents/ui/Filter.qml:217
 #: src/contents/ui/Gate.qml:1005 src/contents/ui/Limiter.qml:593
 #: src/contents/ui/Loudness.qml:173 src/contents/ui/Maximizer.qml:120
-#: src/contents/ui/MultibandCompressor.qml:951
-#: src/contents/ui/MultibandGate.qml:924 src/contents/ui/Reverb.qml:335
+#: src/contents/ui/MultibandCompressor.qml:948
+#: src/contents/ui/MultibandGate.qml:921 src/contents/ui/Reverb.qml:335
 #: src/contents/ui/StereoTools.qml:412
 #, fuzzy
 msgid "Show native window"
@@ -287,8 +287,8 @@ msgstr "聆听"
 #: src/contents/ui/Filter.qml:231 src/contents/ui/Gate.qml:1039
 #: src/contents/ui/Limiter.qml:627 src/contents/ui/Loudness.qml:197
 #: src/contents/ui/Maximizer.qml:134
-#: src/contents/ui/MultibandCompressor.qml:975
-#: src/contents/ui/MultibandGate.qml:948 src/contents/ui/RNNoise.qml:322
+#: src/contents/ui/MultibandCompressor.qml:972
+#: src/contents/ui/MultibandGate.qml:945 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:349 src/contents/ui/Speex.qml:184
 #: src/contents/ui/StereoTools.qml:426 src/contents/ui/main.qml:526
 msgid "Reset"
@@ -303,8 +303,8 @@ msgstr "输出"
 
 #: src/contents/ui/BassLoudness.qml:80 src/contents/ui/Compressor.qml:263
 #: src/contents/ui/Expander.qml:223 src/contents/ui/Gate.qml:244
-#: src/contents/ui/Limiter.qml:201 src/contents/ui/MultibandCompressor.qml:393
-#: src/contents/ui/MultibandGate.qml:366
+#: src/contents/ui/Limiter.qml:201 src/contents/ui/MultibandCompressor.qml:390
+#: src/contents/ui/MultibandGate.qml:363
 msgid "Link"
 msgstr "衔接幅度"
 
@@ -372,44 +372,45 @@ msgstr "压缩器"
 #: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:69
 #: src/contents/ui/Expander.qml:256 src/contents/ui/Gate.qml:277
 #: src/contents/ui/Limiter.qml:56 src/contents/ui/Loudness.qml:55
-#: src/contents/ui/MultibandCompressor.qml:400
-#: src/contents/ui/MultibandGate.qml:373 src/contents/ui/StereoTools.qml:118
+#: src/contents/ui/MultibandCompressor.qml:397
+#: src/contents/ui/MultibandGate.qml:370 src/contents/ui/StereoTools.qml:118
 msgid "Mode"
 msgstr "模式"
 
 #: src/contents/ui/Compressor.qml:73 src/contents/ui/Expander.qml:73
-#: src/contents/ui/MultibandCompressor.qml:107
+#: src/contents/ui/MultibandCompressor.qml:106
 msgid "Downward"
 msgstr "向下"
 
 #: src/contents/ui/Compressor.qml:73 src/contents/ui/Expander.qml:73
-#: src/contents/ui/MultibandCompressor.qml:107
+#: src/contents/ui/MultibandCompressor.qml:106
 msgid "Upward"
 msgstr "向上"
 
 #: src/contents/ui/Compressor.qml:73
-#: src/contents/ui/MultibandCompressor.qml:107
+#: src/contents/ui/MultibandCompressor.qml:106
 msgid "Boosting"
 msgstr "加强"
 
 #: src/contents/ui/Compressor.qml:83
+#: src/contents/ui/MultibandCompressor.qml:115
 #, fuzzy
-msgid "Boost tshreshold"
+msgid "Boost threshold"
 msgstr "增强阈值"
 
 #: src/contents/ui/Compressor.qml:103
-#: src/contents/ui/MultibandCompressor.qml:135
+#: src/contents/ui/MultibandCompressor.qml:134
 #, fuzzy
 msgid "Boost amount"
 msgstr "增强量"
 
 #: src/contents/ui/Compressor.qml:122 src/contents/ui/Deesser.qml:102
-#: src/contents/ui/Expander.qml:82 src/contents/ui/MultibandCompressor.qml:327
+#: src/contents/ui/Expander.qml:82 src/contents/ui/MultibandCompressor.qml:326
 msgid "Ratio"
 msgstr "比率"
 
 #: src/contents/ui/Compressor.qml:138 src/contents/ui/Expander.qml:98
-#: src/contents/ui/Limiter.qml:435 src/contents/ui/MultibandCompressor.qml:342
+#: src/contents/ui/Limiter.qml:435 src/contents/ui/MultibandCompressor.qml:341
 msgid "Knee"
 msgstr "拐点"
 
@@ -421,16 +422,16 @@ msgstr "阈值"
 #: src/contents/ui/Compressor.qml:173 src/contents/ui/Expander.qml:133
 #: src/contents/ui/Gate.qml:72 src/contents/ui/Gate.qml:886
 #: src/contents/ui/Limiter.qml:128 src/contents/ui/Limiter.qml:401
-#: src/contents/ui/MultibandCompressor.qml:224
-#: src/contents/ui/MultibandGate.qml:165
+#: src/contents/ui/MultibandCompressor.qml:223
+#: src/contents/ui/MultibandGate.qml:164
 msgid "Attack"
 msgstr "建立"
 
 #: src/contents/ui/Compressor.qml:206 src/contents/ui/Expander.qml:166
 #: src/contents/ui/Gate.qml:89 src/contents/ui/Gate.qml:895
 #: src/contents/ui/Limiter.qml:145 src/contents/ui/Limiter.qml:418
-#: src/contents/ui/Maximizer.qml:50 src/contents/ui/MultibandCompressor.qml:272
-#: src/contents/ui/MultibandGate.qml:180 src/contents/ui/RNNoise.qml:142
+#: src/contents/ui/Maximizer.qml:50 src/contents/ui/MultibandCompressor.qml:271
+#: src/contents/ui/MultibandGate.qml:179 src/contents/ui/RNNoise.qml:142
 msgid "Release"
 msgstr "释放"
 
@@ -439,16 +440,16 @@ msgstr "释放"
 #: src/contents/ui/Expander.qml:300 src/contents/ui/Expander.qml:652
 #: src/contents/ui/Gate.qml:224 src/contents/ui/Gate.qml:321
 #: src/contents/ui/Gate.qml:675 src/contents/ui/Limiter.qml:181
-#: src/contents/ui/Limiter.qml:482 src/contents/ui/MultibandCompressor.qml:634
-#: src/contents/ui/MultibandGate.qml:607
+#: src/contents/ui/Limiter.qml:482 src/contents/ui/MultibandCompressor.qml:631
+#: src/contents/ui/MultibandGate.qml:604
 msgid "Sidechain"
 msgstr "侧链"
 
 #: src/contents/ui/Compressor.qml:259 src/contents/ui/EqualizerBandMenu.qml:33
 #: src/contents/ui/Expander.qml:219 src/contents/ui/Filter.qml:51
 #: src/contents/ui/Gate.qml:240 src/contents/ui/Limiter.qml:197
-#: src/contents/ui/MultibandCompressor.qml:389
-#: src/contents/ui/MultibandGate.qml:362
+#: src/contents/ui/MultibandCompressor.qml:386
+#: src/contents/ui/MultibandGate.qml:359
 msgid "Type"
 msgstr "类型"
 
@@ -462,8 +463,8 @@ msgstr "反馈式"
 
 #: src/contents/ui/Compressor.qml:263 src/contents/ui/Expander.qml:223
 #: src/contents/ui/Gate.qml:244 src/contents/ui/Limiter.qml:201
-#: src/contents/ui/MultibandCompressor.qml:393
-#: src/contents/ui/MultibandGate.qml:366
+#: src/contents/ui/MultibandCompressor.qml:390
+#: src/contents/ui/MultibandGate.qml:363
 msgid "External"
 msgstr "外部"
 
@@ -476,25 +477,28 @@ msgstr "输入设备"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Deesser.qml:63
 #: src/contents/ui/Expander.qml:260 src/contents/ui/Gate.qml:281
-#: src/contents/ui/MultibandCompressor.qml:404
-#: src/contents/ui/MultibandGate.qml:377
+#: src/contents/ui/MultibandCompressor.qml:401
+#: src/contents/ui/MultibandGate.qml:374
 msgid "Peak"
 msgstr "峰值"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Deesser.qml:63
 #: src/contents/ui/Expander.qml:260 src/contents/ui/Gate.qml:281
-#: src/contents/ui/MultibandCompressor.qml:404
-#: src/contents/ui/MultibandGate.qml:377
+#: src/contents/ui/MultibandCompressor.qml:401
+#: src/contents/ui/MultibandGate.qml:374
 msgid "RMS"
 msgstr "均方根值"
 
-#: src/contents/ui/Compressor.qml:300 src/contents/ui/Gate.qml:281
-msgid "Low-Pass"
+#: src/contents/ui/Compressor.qml:300 src/contents/ui/Compressor.qml:426
+#: src/contents/ui/Expander.qml:260 src/contents/ui/Expander.qml:385
+#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:281
+#: src/contents/ui/Gate.qml:406
+msgid "Low-pass"
 msgstr "低通"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Expander.qml:260
-#: src/contents/ui/Gate.qml:281 src/contents/ui/MultibandCompressor.qml:404
-#: src/contents/ui/MultibandGate.qml:377
+#: src/contents/ui/Gate.qml:281 src/contents/ui/MultibandCompressor.qml:401
+#: src/contents/ui/MultibandGate.qml:374
 #, fuzzy
 msgid "SMA"
 msgstr "自相位调制 (SPM)"
@@ -502,21 +506,21 @@ msgstr "自相位调制 (SPM)"
 #: src/contents/ui/Compressor.qml:309 src/contents/ui/Compressor.qml:323
 #: src/contents/ui/Expander.qml:269 src/contents/ui/Expander.qml:283
 #: src/contents/ui/Gate.qml:290 src/contents/ui/Gate.qml:304
-#: src/contents/ui/MultibandCompressor.qml:411
-#: src/contents/ui/MultibandCompressor.qml:423
-#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/MultibandGate.qml:396
+#: src/contents/ui/MultibandCompressor.qml:408
+#: src/contents/ui/MultibandCompressor.qml:420
+#: src/contents/ui/MultibandGate.qml:381 src/contents/ui/MultibandGate.qml:393
 msgid "Source"
 msgstr "源"
 
 #: src/contents/ui/Compressor.qml:313 src/contents/ui/Expander.qml:273
-#: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:415
-#: src/contents/ui/MultibandGate.qml:388
+#: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:412
+#: src/contents/ui/MultibandGate.qml:385
 msgid "Middle"
 msgstr "中央"
 
 #: src/contents/ui/Compressor.qml:313 src/contents/ui/Expander.qml:273
-#: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:415
-#: src/contents/ui/MultibandGate.qml:388
+#: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:412
+#: src/contents/ui/MultibandGate.qml:385
 msgid "Side"
 msgstr "侧边"
 
@@ -524,8 +528,8 @@ msgstr "侧边"
 #: src/contents/ui/Delay.qml:43 src/contents/ui/Equalizer.qml:196
 #: src/contents/ui/Expander.qml:273 src/contents/ui/Gate.qml:294
 #: src/contents/ui/LevelMeter.qml:60 src/contents/ui/LevelMeter.qml:96
-#: src/contents/ui/MultibandCompressor.qml:415
-#: src/contents/ui/MultibandGate.qml:388 src/contents/ui/PipeWirePage.qml:314
+#: src/contents/ui/MultibandCompressor.qml:412
+#: src/contents/ui/MultibandGate.qml:385 src/contents/ui/PipeWirePage.qml:314
 #: src/contents/ui/StereoTools.qml:202
 msgid "Left"
 msgstr "左"
@@ -534,8 +538,8 @@ msgstr "左"
 #: src/contents/ui/Delay.qml:201 src/contents/ui/Equalizer.qml:196
 #: src/contents/ui/Expander.qml:273 src/contents/ui/Gate.qml:294
 #: src/contents/ui/LevelMeter.qml:71 src/contents/ui/LevelMeter.qml:107
-#: src/contents/ui/MultibandCompressor.qml:415
-#: src/contents/ui/MultibandGate.qml:388 src/contents/ui/PipeWirePage.qml:325
+#: src/contents/ui/MultibandCompressor.qml:412
+#: src/contents/ui/MultibandGate.qml:385 src/contents/ui/PipeWirePage.qml:325
 #: src/contents/ui/StereoTools.qml:234
 msgid "Right"
 msgstr "右"
@@ -543,62 +547,62 @@ msgstr "右"
 #: src/contents/ui/Compressor.qml:313 src/contents/ui/Compressor.qml:327
 #: src/contents/ui/Expander.qml:273 src/contents/ui/Expander.qml:287
 #: src/contents/ui/Gate.qml:294 src/contents/ui/Gate.qml:308
-#: src/contents/ui/MultibandCompressor.qml:415
-#: src/contents/ui/MultibandCompressor.qml:427
-#: src/contents/ui/MultibandGate.qml:388 src/contents/ui/MultibandGate.qml:400
+#: src/contents/ui/MultibandCompressor.qml:412
+#: src/contents/ui/MultibandCompressor.qml:424
+#: src/contents/ui/MultibandGate.qml:385 src/contents/ui/MultibandGate.qml:397
 msgid "Min"
 msgstr "输入端最低值"
 
 #: src/contents/ui/Compressor.qml:313 src/contents/ui/Compressor.qml:327
 #: src/contents/ui/Expander.qml:273 src/contents/ui/Expander.qml:287
 #: src/contents/ui/Gate.qml:294 src/contents/ui/Gate.qml:308
-#: src/contents/ui/MultibandCompressor.qml:415
-#: src/contents/ui/MultibandCompressor.qml:427
-#: src/contents/ui/MultibandGate.qml:388 src/contents/ui/MultibandGate.qml:400
+#: src/contents/ui/MultibandCompressor.qml:412
+#: src/contents/ui/MultibandCompressor.qml:424
+#: src/contents/ui/MultibandGate.qml:385 src/contents/ui/MultibandGate.qml:397
 msgid "Max"
 msgstr "输入端最高值"
 
 #: src/contents/ui/Compressor.qml:327 src/contents/ui/Expander.qml:287
-#: src/contents/ui/Gate.qml:308 src/contents/ui/MultibandCompressor.qml:427
-#: src/contents/ui/MultibandGate.qml:400
+#: src/contents/ui/Gate.qml:308 src/contents/ui/MultibandCompressor.qml:424
+#: src/contents/ui/MultibandGate.qml:397
 msgid "Left/Right"
 msgstr "左/右"
 
 #: src/contents/ui/Compressor.qml:327 src/contents/ui/Expander.qml:287
-#: src/contents/ui/Gate.qml:308 src/contents/ui/MultibandCompressor.qml:427
-#: src/contents/ui/MultibandGate.qml:400
+#: src/contents/ui/Gate.qml:308 src/contents/ui/MultibandCompressor.qml:424
+#: src/contents/ui/MultibandGate.qml:397
 msgid "Right/Left"
 msgstr "右/左"
 
 #: src/contents/ui/Compressor.qml:327 src/contents/ui/Expander.qml:287
-#: src/contents/ui/Gate.qml:308 src/contents/ui/MultibandCompressor.qml:427
-#: src/contents/ui/MultibandGate.qml:400
+#: src/contents/ui/Gate.qml:308 src/contents/ui/MultibandCompressor.qml:424
+#: src/contents/ui/MultibandGate.qml:397
 msgid "Mid/Side"
 msgstr "中置/侧边"
 
 #: src/contents/ui/Compressor.qml:327 src/contents/ui/Expander.qml:287
-#: src/contents/ui/Gate.qml:308 src/contents/ui/MultibandCompressor.qml:427
-#: src/contents/ui/MultibandGate.qml:400
+#: src/contents/ui/Gate.qml:308 src/contents/ui/MultibandCompressor.qml:424
+#: src/contents/ui/MultibandGate.qml:397
 msgid "Side/Mid"
 msgstr "侧边/中置"
 
 #: src/contents/ui/Compressor.qml:356 src/contents/ui/Expander.qml:315
 #: src/contents/ui/Gate.qml:336 src/contents/ui/Limiter.qml:234
-#: src/contents/ui/MultibandCompressor.qml:435
-#: src/contents/ui/MultibandGate.qml:408
+#: src/contents/ui/MultibandCompressor.qml:432
+#: src/contents/ui/MultibandGate.qml:405
 msgid "Preamp"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:374 src/contents/ui/Expander.qml:333
-#: src/contents/ui/Gate.qml:354 src/contents/ui/MultibandCompressor.qml:451
-#: src/contents/ui/MultibandGate.qml:424
+#: src/contents/ui/Gate.qml:354 src/contents/ui/MultibandCompressor.qml:448
+#: src/contents/ui/MultibandGate.qml:421
 msgid "Reactivity"
 msgstr "响应"
 
 #: src/contents/ui/Compressor.qml:392 src/contents/ui/Expander.qml:351
 #: src/contents/ui/Gate.qml:372 src/contents/ui/Limiter.qml:252
-#: src/contents/ui/MultibandCompressor.qml:466
-#: src/contents/ui/MultibandGate.qml:439
+#: src/contents/ui/MultibandCompressor.qml:463
+#: src/contents/ui/MultibandGate.qml:436
 msgid "Lookahead"
 msgstr "前视时间"
 
@@ -633,17 +637,11 @@ msgstr "每八度 24 dB"
 msgid "36 dB/oct"
 msgstr "每八度 36 dB"
 
-#: src/contents/ui/Compressor.qml:426 src/contents/ui/Expander.qml:260
-#: src/contents/ui/Expander.qml:385 src/contents/ui/Filter.qml:55
-#: src/contents/ui/Gate.qml:406
-msgid "Low-pass"
-msgstr "低通"
-
 #: src/contents/ui/Compressor.qml:494 src/contents/ui/Convolver.qml:418
 #: src/contents/ui/Delay.qml:162 src/contents/ui/Delay.qml:320
 #: src/contents/ui/Expander.qml:453 src/contents/ui/Gate.qml:475
-#: src/contents/ui/MultibandCompressor.qml:590
-#: src/contents/ui/MultibandGate.qml:563 src/contents/ui/Reverb.qml:181
+#: src/contents/ui/MultibandCompressor.qml:587
+#: src/contents/ui/MultibandGate.qml:560 src/contents/ui/Reverb.qml:181
 #: src/contents/ui/StereoTools.qml:349
 #, fuzzy
 msgid "Dry"
@@ -652,8 +650,8 @@ msgstr "尝试"
 #: src/contents/ui/Compressor.qml:513 src/contents/ui/Convolver.qml:436
 #: src/contents/ui/Delay.qml:180 src/contents/ui/Delay.qml:338
 #: src/contents/ui/Expander.qml:472 src/contents/ui/Gate.qml:494
-#: src/contents/ui/MultibandCompressor.qml:608
-#: src/contents/ui/MultibandGate.qml:581 src/contents/ui/Reverb.qml:199
+#: src/contents/ui/MultibandCompressor.qml:605
+#: src/contents/ui/MultibandGate.qml:578 src/contents/ui/Reverb.qml:199
 #: src/contents/ui/StereoTools.qml:367
 #, fuzzy
 msgid "Wet"
@@ -661,8 +659,8 @@ msgstr "程度"
 
 #: src/contents/ui/Compressor.qml:532 src/contents/ui/Deesser.qml:118
 #: src/contents/ui/Expander.qml:491 src/contents/ui/Gate.qml:513
-#: src/contents/ui/MultibandCompressor.qml:359
-#: src/contents/ui/MultibandGate.qml:229
+#: src/contents/ui/MultibandCompressor.qml:358
+#: src/contents/ui/MultibandGate.qml:228
 msgid "Makeup"
 msgstr "补偿"
 
@@ -709,8 +707,8 @@ msgstr "播放侧链"
 
 #: src/contents/ui/Compressor.qml:684 src/contents/ui/Expander.qml:643
 #: src/contents/ui/Gate.qml:107 src/contents/ui/Gate.qml:666
-#: src/contents/ui/Maximizer.qml:83 src/contents/ui/MultibandCompressor.qml:711
-#: src/contents/ui/MultibandGate.qml:213 src/contents/ui/MultibandGate.qml:684
+#: src/contents/ui/Maximizer.qml:83 src/contents/ui/MultibandCompressor.qml:708
+#: src/contents/ui/MultibandGate.qml:212 src/contents/ui/MultibandGate.qml:681
 msgid "Reduction"
 msgstr "衰减"
 
@@ -721,11 +719,11 @@ msgstr "衰减"
 #: src/contents/ui/Gate.qml:736 src/contents/ui/Gate.qml:749
 #: src/contents/ui/Gate.qml:845 src/contents/ui/Gate.qml:858
 #: src/contents/ui/Limiter.qml:543 src/contents/ui/Limiter.qml:556
-#: src/contents/ui/MultibandCompressor.qml:745
-#: src/contents/ui/MultibandCompressor.qml:804
-#: src/contents/ui/MultibandCompressor.qml:863
-#: src/contents/ui/MultibandGate.qml:718 src/contents/ui/MultibandGate.qml:777
-#: src/contents/ui/MultibandGate.qml:836
+#: src/contents/ui/MultibandCompressor.qml:742
+#: src/contents/ui/MultibandCompressor.qml:801
+#: src/contents/ui/MultibandCompressor.qml:860
+#: src/contents/ui/MultibandGate.qml:715 src/contents/ui/MultibandGate.qml:774
+#: src/contents/ui/MultibandGate.qml:833
 msgid "L"
 msgstr "左"
 
@@ -736,29 +734,29 @@ msgstr "左"
 #: src/contents/ui/Gate.qml:742 src/contents/ui/Gate.qml:755
 #: src/contents/ui/Gate.qml:851 src/contents/ui/Gate.qml:864
 #: src/contents/ui/Limiter.qml:549 src/contents/ui/Limiter.qml:562
-#: src/contents/ui/MultibandCompressor.qml:751
-#: src/contents/ui/MultibandCompressor.qml:810
-#: src/contents/ui/MultibandCompressor.qml:869
-#: src/contents/ui/MultibandGate.qml:724 src/contents/ui/MultibandGate.qml:783
-#: src/contents/ui/MultibandGate.qml:842
+#: src/contents/ui/MultibandCompressor.qml:748
+#: src/contents/ui/MultibandCompressor.qml:807
+#: src/contents/ui/MultibandCompressor.qml:866
+#: src/contents/ui/MultibandGate.qml:721 src/contents/ui/MultibandGate.qml:780
+#: src/contents/ui/MultibandGate.qml:839
 msgid "R"
 msgstr "右"
 
 #: src/contents/ui/Compressor.qml:795 src/contents/ui/Expander.qml:752
-#: src/contents/ui/Gate.qml:777 src/contents/ui/MultibandCompressor.qml:831
-#: src/contents/ui/MultibandGate.qml:258 src/contents/ui/MultibandGate.qml:804
+#: src/contents/ui/Gate.qml:777 src/contents/ui/MultibandCompressor.qml:828
+#: src/contents/ui/MultibandGate.qml:257 src/contents/ui/MultibandGate.qml:801
 msgid "Curve"
 msgstr "压缩曲线"
 
 #: src/contents/ui/Compressor.qml:804 src/contents/ui/Expander.qml:761
-#: src/contents/ui/Gate.qml:786 src/contents/ui/MultibandCompressor.qml:772
-#: src/contents/ui/MultibandGate.qml:745
+#: src/contents/ui/Gate.qml:786 src/contents/ui/MultibandCompressor.qml:769
+#: src/contents/ui/MultibandGate.qml:742
 msgid "Envelope"
 msgstr "波封"
 
 #: src/contents/ui/Compressor.qml:937 src/contents/ui/Expander.qml:894
-#: src/contents/ui/Gate.qml:1028 src/contents/ui/MultibandCompressor.qml:964
-#: src/contents/ui/MultibandGate.qml:937
+#: src/contents/ui/Gate.qml:1028 src/contents/ui/MultibandCompressor.qml:961
+#: src/contents/ui/MultibandGate.qml:934
 #, fuzzy
 msgid "Stereo split"
 msgstr "立体声分离"
@@ -905,15 +903,15 @@ msgstr ""
 
 #: src/contents/ui/CrystalizerBand.qml:35
 #: src/contents/ui/EqualizerBandMenu.qml:157
-#: src/contents/ui/MultibandCompressor.qml:66
-#: src/contents/ui/MultibandGate.qml:66 src/contents/ui/StereoTools.qml:213
+#: src/contents/ui/MultibandCompressor.qml:65
+#: src/contents/ui/MultibandGate.qml:65 src/contents/ui/StereoTools.qml:213
 #: src/contents/ui/StereoTools.qml:243
 msgid "Mute"
 msgstr "静音"
 
 #: src/contents/ui/CrystalizerBand.qml:46
-#: src/contents/ui/MultibandCompressor.qml:84
-#: src/contents/ui/MultibandGate.qml:84
+#: src/contents/ui/MultibandCompressor.qml:83
+#: src/contents/ui/MultibandGate.qml:83
 msgid "Bypass"
 msgstr "旁路"
 
@@ -970,9 +968,9 @@ msgstr "分割"
 #: src/contents/ui/Deesser.qml:85 src/contents/ui/Gate.qml:124
 #: src/contents/ui/Gate.qml:185 src/contents/ui/Gate.qml:960
 #: src/contents/ui/Gate.qml:973 src/contents/ui/Limiter.qml:111
-#: src/contents/ui/Maximizer.qml:66 src/contents/ui/MultibandCompressor.qml:243
-#: src/contents/ui/MultibandCompressor.qml:291
-#: src/contents/ui/MultibandGate.qml:262 src/contents/ui/MultibandGate.qml:316
+#: src/contents/ui/Maximizer.qml:66 src/contents/ui/MultibandCompressor.qml:242
+#: src/contents/ui/MultibandCompressor.qml:290
+#: src/contents/ui/MultibandGate.qml:261 src/contents/ui/MultibandGate.qml:315
 #: src/contents/ui/RNNoise.qml:110
 msgid "Threshold"
 msgstr "阈值"
@@ -1024,8 +1022,8 @@ msgstr ""
 
 #: src/contents/ui/Delay.qml:61 src/contents/ui/Delay.qml:90
 #: src/contents/ui/Delay.qml:219 src/contents/ui/Delay.qml:248
-#: src/contents/ui/MultibandCompressor.qml:228
-#: src/contents/ui/MultibandCompressor.qml:276
+#: src/contents/ui/MultibandCompressor.qml:227
+#: src/contents/ui/MultibandCompressor.qml:275
 msgid "Time"
 msgstr "时间"
 
@@ -1076,12 +1074,12 @@ msgstr "访问"
 msgid "Description"
 msgstr "描述"
 
-#: src/contents/ui/DelegatePluginsList.qml:71
+#: src/contents/ui/DelegatePluginsList.qml:73
 #, fuzzy
 msgid "Toggle this effect"
 msgstr "启用/禁用此音效"
 
-#: src/contents/ui/DelegatePluginsList.qml:85
+#: src/contents/ui/DelegatePluginsList.qml:87
 #, fuzzy
 msgid "Remove this effect"
 msgstr "删除此音效"
@@ -1270,9 +1268,9 @@ msgid "Export APO"
 msgstr "导出预设"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
-#: src/contents/ui/MultibandCompressor.qml:635
-#: src/contents/ui/MultibandCompressor.qml:905
-#: src/contents/ui/MultibandGate.qml:608 src/contents/ui/MultibandGate.qml:878
+#: src/contents/ui/MultibandCompressor.qml:632
+#: src/contents/ui/MultibandCompressor.qml:902
+#: src/contents/ui/MultibandGate.qml:605 src/contents/ui/MultibandGate.qml:875
 #, fuzzy
 msgid "Band"
 msgstr "频段"
@@ -1334,14 +1332,14 @@ msgid "Slope"
 msgstr "斜率"
 
 #: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:113
-#: src/contents/ui/MultibandCompressor.qml:175
-#: src/contents/ui/MultibandGate.qml:112 src/contents/ui/PipeWirePage.qml:388
+#: src/contents/ui/MultibandCompressor.qml:174
+#: src/contents/ui/MultibandGate.qml:111 src/contents/ui/PipeWirePage.qml:388
 msgid "Frequency"
 msgstr "频率"
 
 #: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:144
-#: src/contents/ui/Limiter.qml:473 src/contents/ui/MultibandCompressor.qml:323
-#: src/contents/ui/MultibandGate.qml:209
+#: src/contents/ui/Limiter.qml:473 src/contents/ui/MultibandCompressor.qml:322
+#: src/contents/ui/MultibandGate.qml:208
 msgid "Gain"
 msgstr "增益"
 
@@ -1355,8 +1353,8 @@ msgid "Width"
 msgstr "宽度"
 
 #: src/contents/ui/EqualizerBandMenu.qml:167
-#: src/contents/ui/MultibandCompressor.qml:75
-#: src/contents/ui/MultibandGate.qml:75
+#: src/contents/ui/MultibandCompressor.qml:74
+#: src/contents/ui/MultibandGate.qml:74
 msgid "Solo"
 msgstr "独奏"
 
@@ -1374,8 +1372,8 @@ msgid "Expander"
 msgstr "扩展器"
 
 #: src/contents/ui/Expander.qml:223 src/contents/ui/Gate.qml:244
-#: src/contents/ui/Limiter.qml:201 src/contents/ui/MultibandCompressor.qml:393
-#: src/contents/ui/MultibandGate.qml:366
+#: src/contents/ui/Limiter.qml:201 src/contents/ui/MultibandCompressor.qml:390
+#: src/contents/ui/MultibandGate.qml:363
 msgid "Internal"
 msgstr "内部"
 
@@ -1419,17 +1417,17 @@ msgid "Gate"
 msgstr "门限"
 
 #: src/contents/ui/Gate.qml:141 src/contents/ui/Gate.qml:204
-#: src/contents/ui/MultibandGate.qml:277 src/contents/ui/MultibandGate.qml:332
+#: src/contents/ui/MultibandGate.qml:276 src/contents/ui/MultibandGate.qml:331
 msgid "Zone"
 msgstr "过渡区间"
 
-#: src/contents/ui/Gate.qml:161 src/contents/ui/MultibandGate.qml:305
+#: src/contents/ui/Gate.qml:161 src/contents/ui/MultibandGate.qml:304
 msgid "Hysteresis"
 msgstr "迟滞"
 
 #: src/contents/ui/Gate.qml:954 src/contents/ui/Gate.qml:967
-#: src/contents/ui/MultibandCompressor.qml:179
-#: src/contents/ui/MultibandGate.qml:116 src/contents/ui/Speex.qml:121
+#: src/contents/ui/MultibandCompressor.qml:178
+#: src/contents/ui/MultibandGate.qml:115 src/contents/ui/Speex.qml:121
 msgid "Start"
 msgstr "开始概率"
 
@@ -1507,8 +1505,8 @@ msgid "Oversampling"
 msgstr "超采样"
 
 #: src/contents/ui/Limiter.qml:74 src/contents/ui/Limiter.qml:88
-#: src/contents/ui/MultibandCompressor.qml:557
-#: src/contents/ui/MultibandGate.qml:530
+#: src/contents/ui/MultibandCompressor.qml:554
+#: src/contents/ui/MultibandGate.qml:527
 msgid "None"
 msgstr "无"
 
@@ -1723,94 +1721,89 @@ msgstr ""
 msgid "Added a new effect to the pipeline: %1"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:103
+#: src/contents/ui/MultibandCompressor.qml:102
 #, fuzzy
 msgid "Compression mode"
 msgstr "压缩模式"
 
-#: src/contents/ui/MultibandCompressor.qml:116
-#, fuzzy
-msgid "Boost threshold"
-msgstr "增强阈值"
-
-#: src/contents/ui/MultibandCompressor.qml:198
-#: src/contents/ui/MultibandGate.qml:135
+#: src/contents/ui/MultibandCompressor.qml:197
+#: src/contents/ui/MultibandGate.qml:134
 #, fuzzy
 msgid "End"
 msgstr "2 次"
 
-#: src/contents/ui/MultibandCompressor.qml:404
-#: src/contents/ui/MultibandGate.qml:377
+#: src/contents/ui/MultibandCompressor.qml:401
+#: src/contents/ui/MultibandGate.qml:374
 msgid "LPF"
 msgstr ""
 
-#: src/contents/ui/MultibandCompressor.qml:483
-#: src/contents/ui/MultibandGate.qml:456
+#: src/contents/ui/MultibandCompressor.qml:480
+#: src/contents/ui/MultibandGate.qml:453
 #, fuzzy
 msgid "Low-cut"
 msgstr "低切滤音"
 
-#: src/contents/ui/MultibandCompressor.qml:508
-#: src/contents/ui/MultibandGate.qml:481
+#: src/contents/ui/MultibandCompressor.qml:505
+#: src/contents/ui/MultibandGate.qml:478
 #, fuzzy
 msgid "High-cut"
 msgstr "高切滤音"
 
-#: src/contents/ui/MultibandCompressor.qml:540
-#: src/contents/ui/MultibandGate.qml:513
+#: src/contents/ui/MultibandCompressor.qml:537
+#: src/contents/ui/MultibandGate.qml:510
 #, fuzzy
 msgid "Operating mode"
 msgstr "运作模式"
 
-#: src/contents/ui/MultibandCompressor.qml:544
-#: src/contents/ui/MultibandGate.qml:517
+#: src/contents/ui/MultibandCompressor.qml:541
+#: src/contents/ui/MultibandGate.qml:514
 msgid "Classic"
 msgstr "经典"
 
-#: src/contents/ui/MultibandCompressor.qml:544
-#: src/contents/ui/MultibandGate.qml:517
+#: src/contents/ui/MultibandCompressor.qml:541
+#: src/contents/ui/MultibandGate.qml:514
 msgid "Modern"
 msgstr "现代"
 
-#: src/contents/ui/MultibandCompressor.qml:544
-#: src/contents/ui/MultibandGate.qml:517
+#: src/contents/ui/MultibandCompressor.qml:541
+#: src/contents/ui/MultibandGate.qml:514
 #, fuzzy
 msgid "Linear phase"
 msgstr "线性相位"
 
-#: src/contents/ui/MultibandCompressor.qml:553
-#: src/contents/ui/MultibandGate.qml:526
+#: src/contents/ui/MultibandCompressor.qml:550
+#: src/contents/ui/MultibandGate.qml:523
 #, fuzzy
 msgid "Sidechain boost"
 msgstr "侧链增强"
 
-#: src/contents/ui/MultibandCompressor.qml:557
-#: src/contents/ui/MultibandGate.qml:530
+#: src/contents/ui/MultibandCompressor.qml:554
+#: src/contents/ui/MultibandGate.qml:527
 msgid "Pink BT"
 msgstr "粉噪 双线性变换"
 
-#: src/contents/ui/MultibandCompressor.qml:557
-#: src/contents/ui/MultibandGate.qml:530
+#: src/contents/ui/MultibandCompressor.qml:554
+#: src/contents/ui/MultibandGate.qml:527
 msgid "Pink MT"
 msgstr "粉噪 匹配变换"
 
-#: src/contents/ui/MultibandCompressor.qml:557
-#: src/contents/ui/MultibandGate.qml:530
+#: src/contents/ui/MultibandCompressor.qml:554
+#: src/contents/ui/MultibandGate.qml:527
 msgid "Brown BT"
 msgstr "棕噪 双线性变换"
 
-#: src/contents/ui/MultibandCompressor.qml:557
-#: src/contents/ui/MultibandGate.qml:530
+#: src/contents/ui/MultibandCompressor.qml:554
+#: src/contents/ui/MultibandGate.qml:527
 msgid "Brown MT"
 msgstr "棕噪 匹配变换"
 
-#: src/contents/ui/MultibandCompressor.qml:567
-#: src/contents/ui/MultibandGate.qml:540
+#: src/contents/ui/MultibandCompressor.qml:564
+#: src/contents/ui/MultibandGate.qml:537
 #, fuzzy
 msgid "Sidechain input device"
 msgstr "输入设备"
 
-#: src/contents/ui/MultibandGate.qml:161
+#: src/contents/ui/MultibandGate.qml:160
 #, fuzzy
 msgid "Reaction"
 msgstr "衰减"
@@ -3061,6 +3054,13 @@ msgstr "均衡器、压缩器和其他音效"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "为使用 PipeWire 的应用提供音效"
+
+#, fuzzy
+#~ msgid "Boost tshreshold"
+#~ msgstr "增强阈值"
+
+#~ msgid "Low-Pass"
+#~ msgstr "低通"
 
 #~ msgid "Add to Excluded Applications"
 #~ msgstr "添加到排除的程序"
