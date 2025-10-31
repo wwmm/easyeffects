@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-30 22:31+0000\n"
-"PO-Revision-Date: 2025-10-18 02:38+0000\n"
+"POT-Creation-Date: 2025-10-31 15:53+0000\n"
+"PO-Revision-Date: 2025-10-31 13:02+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.14.1-dev\n"
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -85,7 +85,6 @@ msgid "Input Presets"
 msgstr "Предустановки входа"
 
 #: src/contents/ui/AboutPage.qml:9
-#, fuzzy
 msgctxt "@action:button"
 msgid "About"
 msgstr "О программе"
@@ -95,10 +94,9 @@ msgid "Audio effects for PipeWire applications"
 msgstr "Звуковые эффекты для приложений PipeWire"
 
 #: src/contents/ui/AboutPage.qml:27
-#, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
-msgstr "Огибающая"
+msgstr "Разработчик"
 
 #: src/contents/ui/Autogain.qml:52 src/contents/ui/BassEnhancer.qml:89
 #: src/contents/ui/BassLoudness.qml:40 src/contents/ui/Crossfeed.qml:57
@@ -333,14 +331,12 @@ msgid "Are you sure you want to remove this application from the list?"
 msgstr "Уверены, что хотите убрать это приложение из списка?"
 
 #: src/contents/ui/BlocklistSheet.qml:150
-#, fuzzy
 msgid "Remove This App"
-msgstr "Удалить этот плагин"
+msgstr "Убрать это приложение"
 
 #: src/contents/ui/BlocklistSheet.qml:177
-#, fuzzy
 msgid "Show Excluded Apps"
-msgstr "Исключённые приложения"
+msgstr "Показать исключённые приложения"
 
 #: src/contents/ui/BlocklistSheet.qml:178
 #, fuzzy
@@ -582,7 +578,7 @@ msgstr "Предусилитель"
 #: src/contents/ui/Gate.qml:354 src/contents/ui/MultibandCompressor.qml:451
 #: src/contents/ui/MultibandGate.qml:424
 msgid "Reactivity"
-msgstr "Скорость реакции"
+msgstr "Время реакции"
 
 #: src/contents/ui/Compressor.qml:392 src/contents/ui/Expander.qml:351
 #: src/contents/ui/Gate.qml:372 src/contents/ui/Limiter.qml:252
@@ -1907,12 +1903,12 @@ msgid "No Clients"
 msgstr "Клиенты"
 
 #: src/contents/ui/PipeWirePage.qml:288
-#: src/contents/ui/PreferencesSheet.qml:209
+#: src/contents/ui/PreferencesSheet.qml:218
 msgid "State"
 msgstr "Состояние"
 
 #: src/contents/ui/PipeWirePage.qml:295
-#: src/contents/ui/PreferencesSheet.qml:216
+#: src/contents/ui/PreferencesSheet.qml:225
 msgid "Enabled"
 msgstr "Включено"
 
@@ -1984,266 +1980,267 @@ msgstr "Быстрая перемотка"
 msgid "Anti-aliasing"
 msgstr "Сглаживание"
 
-#: src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:547
-#: src/contents/ui/PreferencesSheet.qml:560 src/contents/ui/main.qml:498
+#: src/contents/ui/PreferencesSheet.qml:15
+#: src/contents/ui/PreferencesSheet.qml:23
+#: src/contents/ui/PreferencesSheet.qml:588
+#: src/contents/ui/PreferencesSheet.qml:601 src/contents/ui/main.qml:498
 #, fuzzy
 msgid "Preferences"
 msgstr "_Настройки"
 
-#: src/contents/ui/PreferencesSheet.qml:34
+#: src/contents/ui/PreferencesSheet.qml:35
 #, fuzzy
 msgid "Enable Service Mode"
 msgstr "Режим эквалайзера"
 
-#: src/contents/ui/PreferencesSheet.qml:35
+#: src/contents/ui/PreferencesSheet.qml:36
 msgid "Easy Effects is active in background when the window is closed."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:47
+#: src/contents/ui/PreferencesSheet.qml:48
 msgid "Autostart on Login"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:48
+#: src/contents/ui/PreferencesSheet.qml:49
 msgid "Easy Effects is launched at user session startup."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:61
+#: src/contents/ui/PreferencesSheet.qml:62
 msgid "Show the Tray Icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:81
+#: src/contents/ui/PreferencesSheet.qml:86
 msgid "Process All Output Streams"
 msgstr "Обрабатывать все выходные потоки"
 
-#: src/contents/ui/PreferencesSheet.qml:92
+#: src/contents/ui/PreferencesSheet.qml:97
 msgid "Process All Input Streams"
 msgstr "Обрабатывать все входные потоки"
 
-#: src/contents/ui/PreferencesSheet.qml:103
+#: src/contents/ui/PreferencesSheet.qml:108
 msgid "Ignore Streams from Monitor of Devices"
 msgstr "Игнорировать потоки с монитора устройств"
 
-#: src/contents/ui/PreferencesSheet.qml:114
+#: src/contents/ui/PreferencesSheet.qml:119
 msgid "Use Cubic Volume"
 msgstr "Использовать кубическую громкость"
 
-#: src/contents/ui/PreferencesSheet.qml:125
+#: src/contents/ui/PreferencesSheet.qml:130
 msgid "Ignore System Notifications"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:126
+#: src/contents/ui/PreferencesSheet.qml:131
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:137
+#: src/contents/ui/PreferencesSheet.qml:142
 #, fuzzy
 msgid "Enable/Disable Input Monitoring"
 msgstr "Включить/отключить монитор ввода"
 
-#: src/contents/ui/PreferencesSheet.qml:148
+#: src/contents/ui/PreferencesSheet.qml:153
 msgid "Mic Monitor Plays to Output Effects Pipeline"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:159
+#: src/contents/ui/PreferencesSheet.qml:164
 #, fuzzy
 msgid "Enable the Inactivity Timeout"
 msgstr "Тайм-аут бездействия"
 
-#: src/contents/ui/PreferencesSheet.qml:160
+#: src/contents/ui/PreferencesSheet.qml:165
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:172
+#: src/contents/ui/PreferencesSheet.qml:177
 msgid "Inactivity Timeout"
 msgstr "Тайм-аут бездействия"
 
-#: src/contents/ui/PreferencesSheet.qml:186
+#: src/contents/ui/PreferencesSheet.qml:191
 #, fuzzy
 msgid "Level Meters Label"
 msgstr "Уровнемер"
 
-#: src/contents/ui/PreferencesSheet.qml:187
+#: src/contents/ui/PreferencesSheet.qml:192
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:227
+#: src/contents/ui/PreferencesSheet.qml:236
 msgid "Audio Delay Compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:241
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Style"
 msgstr "Стиль"
 
-#: src/contents/ui/PreferencesSheet.qml:248
+#: src/contents/ui/PreferencesSheet.qml:257
 msgid "Color Scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:252
+#: src/contents/ui/PreferencesSheet.qml:261
 #, fuzzy
 msgid "Automatic"
 msgstr "Авторегулятор"
 
-#: src/contents/ui/PreferencesSheet.qml:252
+#: src/contents/ui/PreferencesSheet.qml:261
 #, fuzzy
 msgid "Light"
 msgstr "Правый"
 
-#: src/contents/ui/PreferencesSheet.qml:252
+#: src/contents/ui/PreferencesSheet.qml:261
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:262
+#: src/contents/ui/PreferencesSheet.qml:271
 #, fuzzy
 msgid "Color Theme"
 msgstr "Цвет"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Green Neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Mix"
 msgstr "Сведение"
 
 # ??? Не уверен в переводе
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 #, fuzzy
 msgid "Orange"
 msgstr "Диапазон"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:285
 msgid "Shape"
 msgstr "Форма"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Bars"
 msgstr "Полосы"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Lines"
 msgstr "Линии"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Dots"
 msgstr "Точки"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:299
 msgid "Dynamic Scale"
 msgstr "Динамический масштаб"
 
-#: src/contents/ui/PreferencesSheet.qml:301
+#: src/contents/ui/PreferencesSheet.qml:310
 #, fuzzy
 msgid "Logarithmic Frequency Axis"
 msgstr "Частота раздела 2"
 
-#: src/contents/ui/PreferencesSheet.qml:312
+#: src/contents/ui/PreferencesSheet.qml:321
 msgid "Points"
 msgstr "Пункты"
 
-#: src/contents/ui/PreferencesSheet.qml:326
+#: src/contents/ui/PreferencesSheet.qml:335
 msgid "Height"
 msgstr "Высота"
 
-#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/PreferencesSheet.qml:349
 msgid "Frequency Range"
 msgstr "Диапазон частот"
 
-#: src/contents/ui/PreferencesSheet.qml:347
+#: src/contents/ui/PreferencesSheet.qml:356
 msgid "Minimum"
 msgstr "Минимум"
 
-#: src/contents/ui/PreferencesSheet.qml:362
+#: src/contents/ui/PreferencesSheet.qml:371
 msgid "Maximum"
 msgstr "Максимум"
 
-#: src/contents/ui/PreferencesSheet.qml:383
+#: src/contents/ui/PreferencesSheet.qml:396
 msgid "Database Autosave Interval"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:396
+#: src/contents/ui/PreferencesSheet.qml:409
 #, fuzzy
 msgid "Most Used Presets"
 msgstr "Перекрёстная подача"
 
-#: src/contents/ui/PreferencesSheet.qml:418
+#: src/contents/ui/PreferencesSheet.qml:435
+#: src/contents/ui/ShortcutsSheet.qml:248
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "_Горячие клавиши"
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:436
 msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:431
+#: src/contents/ui/PreferencesSheet.qml:448
 #, fuzzy
 msgid "Native Window of Effects"
 msgstr "Показать родное окно"
 
-#: src/contents/ui/PreferencesSheet.qml:432
+#: src/contents/ui/PreferencesSheet.qml:449
 #, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "Позволяет показывать/скрывать родное окно плагина"
 
-#: src/contents/ui/PreferencesSheet.qml:444
+#: src/contents/ui/PreferencesSheet.qml:461
 msgid "Update Frequency"
 msgstr "Частота обновления"
 
-#: src/contents/ui/PreferencesSheet.qml:445
+#: src/contents/ui/PreferencesSheet.qml:462
 #, fuzzy
 msgid "Related to LV2 plugins."
 msgstr "Влияет на плагины LV2"
 
-#: src/contents/ui/PreferencesSheet.qml:474
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:487
+#: src/contents/ui/PreferencesSheet.qml:512
 msgid "Audio"
 msgstr "Аудио"
 
-#: src/contents/ui/PreferencesSheet.qml:500
+#: src/contents/ui/PreferencesSheet.qml:527
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Тип спектра"
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:542
 msgid "Database"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:526
+#: src/contents/ui/PreferencesSheet.qml:557
 msgid "Experimental Features"
 msgstr "Экспериментальные возможности"
 
@@ -2650,11 +2647,6 @@ msgstr "Обрабатывать все выходные потоки"
 msgid "Can be used on numeric controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:248
-#, fuzzy
-msgid "Global shortcuts"
-msgstr "_Горячие клавиши"
-
 #: src/contents/ui/ShortcutsSheet.qml:334
 msgid "Toggle microphone monitoring"
 msgstr ""
@@ -2958,6 +2950,10 @@ msgstr "Эквалайзер, компрессор и прочие звуков�
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Звуковые эффекты для приложений PipeWire"
+
+#, fuzzy
+#~ msgid "Global shortcuts"
+#~ msgstr "_Горячие клавиши"
 
 #~ msgid "Empty"
 #~ msgstr "Пусто"
