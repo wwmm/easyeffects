@@ -80,7 +80,7 @@ Kirigami.ScrollablePage {
                             id: boostThreshold
 
                             Layout.columnSpan: 2
-                            label: i18n("Boost tshreshold") // qmllint disable
+                            label: i18n("Boost threshold") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: compressorPage.pluginDB.getMinValue("boostThreshold")
@@ -297,7 +297,7 @@ Kirigami.ScrollablePage {
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: compressorPage.pluginDB.sidechainMode
                             editable: false
-                            model: [i18n("Peak"), i18n("RMS"), i18n("Low-Pass"), i18n("SMA")] // qmllint disable
+                            model: [i18n("Peak"), i18n("RMS"), i18n("Low-pass"), i18n("SMA")] // qmllint disable
                             onActivated: idx => {
                                 compressorPage.pluginDB.sidechainMode = idx;
                             }
