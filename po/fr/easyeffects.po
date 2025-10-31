@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-31 23:18+0000\n"
-"PO-Revision-Date: 2025-10-31 13:02+0000\n"
+"PO-Revision-Date: 2025-10-31 23:46+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -119,9 +119,8 @@ msgstr "Temporaire"
 
 #: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:150
 #: src/contents/ui/LevelMeter.qml:144
-#, fuzzy
 msgid "Short-term"
-msgstr "Court-terme"
+msgstr "Short-term"
 
 #: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:161
 #: src/contents/ui/LevelMeter.qml:155
@@ -129,24 +128,20 @@ msgid "Integrated"
 msgstr "Intégré"
 
 #: src/contents/ui/Autogain.qml:66
-#, fuzzy
 msgid "Geometric mean (MSI)"
-msgstr "Moyenne Géométrique (MSI)"
+msgstr "Moyenne géométrique (MSI)"
 
 #: src/contents/ui/Autogain.qml:66
-#, fuzzy
 msgid "Geometric mean (MS)"
-msgstr "Moyenne Géométrique (MS)"
+msgstr "Moyenne géométrique (MS)"
 
 #: src/contents/ui/Autogain.qml:66
-#, fuzzy
 msgid "Geometric mean (MI)"
-msgstr "Moyenne Géométrique (MI)"
+msgstr "Moyenne géométrique (MI)"
 
 #: src/contents/ui/Autogain.qml:66
-#, fuzzy
 msgid "Geometric mean (SI)"
-msgstr "Moyenne Géométrique (SI)"
+msgstr "Moyenne géométrique (SI)"
 
 #: src/contents/ui/Autogain.qml:75
 msgid "Target"
@@ -157,9 +152,8 @@ msgid "Silence"
 msgstr "Silence"
 
 #: src/contents/ui/Autogain.qml:107
-#, fuzzy
 msgid "Maximum history"
-msgstr "Historique Maximal"
+msgstr "Historique maximal"
 
 #: src/contents/ui/Autogain.qml:128 src/contents/ui/Autogain.qml:194
 #: src/contents/ui/BassLoudness.qml:48 src/contents/ui/LevelMeter.qml:122
@@ -176,9 +170,8 @@ msgid "Range"
 msgstr "Intervalle"
 
 #: src/contents/ui/Autogain.qml:205
-#, fuzzy
 msgid "Output gain"
-msgstr "Gain de Sortie"
+msgstr "Gain de sortie"
 
 #: src/contents/ui/Autogain.qml:226 src/contents/ui/BassEnhancer.qml:192
 #: src/contents/ui/BassLoudness.qml:105 src/contents/ui/Compressor.qml:897
@@ -201,14 +194,12 @@ msgstr "Utilisation de %1"
 
 #: src/contents/ui/Autogain.qml:242 src/contents/ui/DeepFilterNet.qml:185
 #: src/contents/ui/LevelMeter.qml:207 src/contents/ui/Pitch.qml:227
-#, fuzzy
 msgid "Reset history"
-msgstr "Réinitialiser l’Historique"
+msgstr "Réinitialiser l’historique"
 
 #: src/contents/ui/Autogain.qml:249
-#, fuzzy
 msgid "Force silence"
-msgstr "Forcer le Silence"
+msgstr "Forcer le silence"
 
 #: src/contents/ui/Autogain.qml:250
 msgid "Force silence when the level is below the silence threshold"
@@ -216,14 +207,12 @@ msgstr "Force le silence lorsque le niveau est inférieur au seuil du silence"
 
 #: src/contents/ui/Autogain.qml:262 src/contents/ui/DeepFilterNet.qml:193
 #: src/contents/ui/LevelMeter.qml:215 src/contents/ui/Pitch.qml:255
-#, fuzzy
 msgid "Reset settings"
-msgstr "Réinitialiser les Paramètres"
+msgstr "Réinitialiser les paramètres"
 
 #: src/contents/ui/BassEnhancer.qml:39 src/contents/ui/Exciter.qml:39
-#, fuzzy
 msgid "Blend harmonics"
-msgstr "Mélanger les Harmoniques"
+msgstr "Mélanger les harmoniques"
 
 #: src/contents/ui/BassEnhancer.qml:48 src/contents/ui/Exciter.qml:48
 msgid "3rd"
@@ -247,9 +236,8 @@ msgid "Scope"
 msgstr "Portée"
 
 #: src/contents/ui/BassEnhancer.qml:144
-#, fuzzy
 msgid "Floor active"
-msgstr "Plancher Actif"
+msgstr "Plancher actif"
 
 #: src/contents/ui/BassEnhancer.qml:155
 msgid "Floor"
@@ -264,9 +252,8 @@ msgstr "Limite Inférieure"
 #: src/contents/ui/MultibandCompressor.qml:948
 #: src/contents/ui/MultibandGate.qml:921 src/contents/ui/Reverb.qml:335
 #: src/contents/ui/StereoTools.qml:412
-#, fuzzy
 msgid "Show native window"
-msgstr "Afficher la Fenêtre Native"
+msgstr "Afficher la fenêtre native"
 
 #: src/contents/ui/BassEnhancer.qml:222 src/contents/ui/Compressor.qml:927
 #: src/contents/ui/Deesser.qml:332 src/contents/ui/Exciter.qml:222
@@ -309,14 +296,12 @@ msgid "Effects Blocklist"
 msgstr "Liste de Blocage des Effets"
 
 #: src/contents/ui/BlocklistSheet.qml:29
-#, fuzzy
 msgid "Application node name"
-msgstr "Nom du Nœud de l’Application"
+msgstr "Nom du nœud de l’application"
 
 #: src/contents/ui/BlocklistSheet.qml:45
-#, fuzzy
 msgid "Add to excluded applications"
-msgstr "Ajouter %1 aux applications exclues"
+msgstr "Ajouter aux applications exclues"
 
 #: src/contents/ui/BlocklistSheet.qml:97
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
@@ -329,9 +314,8 @@ msgid "Empty List"
 msgstr "Liste Vide"
 
 #: src/contents/ui/BlocklistSheet.qml:98
-#, fuzzy
 msgid "No application excluded"
-msgstr "Volume de l’Application"
+msgstr "Aucune application exclue"
 
 #: src/contents/ui/BlocklistSheet.qml:120
 msgid "Remove Application"
@@ -342,14 +326,12 @@ msgid "Are you sure you want to remove this application from the list?"
 msgstr "Êtes-vous sûr de vouloir supprimer cette application de la liste ?"
 
 #: src/contents/ui/BlocklistSheet.qml:151
-#, fuzzy
 msgid "Remove this app"
-msgstr "Supprimer Cette Application"
+msgstr "Supprimer cette application"
 
 #: src/contents/ui/BlocklistSheet.qml:178
-#, fuzzy
 msgid "Show excluded apps"
-msgstr "Afficher les Applications Exclues"
+msgstr "Afficher les applications exclues"
 
 #: src/contents/ui/BlocklistSheet.qml:179
 msgid "Show excluded applications in the list of players/recorders"
@@ -388,15 +370,13 @@ msgstr "Renforcement"
 
 #: src/contents/ui/Compressor.qml:83
 #: src/contents/ui/MultibandCompressor.qml:115
-#, fuzzy
 msgid "Boost threshold"
-msgstr "Seuil de Renforcement"
+msgstr "Seuil de l'amplification"
 
 #: src/contents/ui/Compressor.qml:103
 #: src/contents/ui/MultibandCompressor.qml:134
-#, fuzzy
 msgid "Boost amount"
-msgstr "Quantité du Renforcement"
+msgstr "Niveau de l'amplification"
 
 #: src/contents/ui/Compressor.qml:122 src/contents/ui/Deesser.qml:102
 #: src/contents/ui/Expander.qml:82 src/contents/ui/MultibandCompressor.qml:326
@@ -464,9 +444,8 @@ msgstr "Externe"
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
 #: src/contents/ui/PageStreamsEffects.qml:321
-#, fuzzy
 msgid "Input device"
-msgstr "Périphérique d’Entrée"
+msgstr "Périphérique d’entrée"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Deesser.qml:63
 #: src/contents/ui/Expander.qml:260 src/contents/ui/Gate.qml:281
@@ -974,11 +953,11 @@ msgstr "Division F1"
 
 #: src/contents/ui/Deesser.qml:184
 msgid "F2 peak"
-msgstr ""
+msgstr "Crête F2"
 
 #: src/contents/ui/Deesser.qml:201
 msgid "F1 gain"
-msgstr ""
+msgstr "Gain F1"
 
 #: src/contents/ui/Deesser.qml:218
 #, fuzzy
