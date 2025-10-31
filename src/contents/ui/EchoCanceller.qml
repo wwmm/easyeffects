@@ -57,7 +57,7 @@ Kirigami.ScrollablePage {
                     }
 
                     EeSwitch {
-                        label: i18n("Mobile Mode") // qmllint disable
+                        label: i18n("Mobile mode") // qmllint disable
                         isChecked: echoCancellerPage.pluginDB.echoCancellerMobileMode
                         onCheckedChanged: {
                             if (isChecked !== echoCancellerPage.pluginDB.echoCancellerMobileMode)
@@ -66,7 +66,7 @@ Kirigami.ScrollablePage {
                     }
 
                     EeSwitch {
-                        label: i18n("Enforce High-pass") // qmllint disable
+                        label: i18n("Enforce high-pass") // qmllint disable
                         isChecked: echoCancellerPage.pluginDB.echoCancellerEnforceHighPass
                         onCheckedChanged: {
                             if (isChecked !== echoCancellerPage.pluginDB.echoCancellerEnforceHighPass)
@@ -101,7 +101,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: echoCancellerPage.pluginDB.noiseSuppressionLevel
                         editable: false
-                        model: [i18n("Low"), i18n("Moderate"), i18n("High"), i18n("Very High")]
+                        model: [i18n("Low"), i18n("Moderate"), i18n("High"), i18n("Very high")]
                         onActivated: idx => {
                             echoCancellerPage.pluginDB.noiseSuppressionLevel = idx;
                         }
@@ -113,7 +113,7 @@ Kirigami.ScrollablePage {
                 id: cardHighPass
 
                 header: Kirigami.Heading {
-                    text: i18n("High-pass Filter") // qmllint disable
+                    text: i18n("High-Pass Filter") // qmllint disable
                     level: 2
                 }
 
@@ -130,7 +130,7 @@ Kirigami.ScrollablePage {
                     }
 
                     EeSwitch {
-                        label: i18n("Full Band") // qmllint disable
+                        label: i18n("Full band") // qmllint disable
                         isChecked: echoCancellerPage.pluginDB.highPassFilterFullBand
                         onCheckedChanged: {
                             if (isChecked !== echoCancellerPage.pluginDB.highPassFilterFullBand)
@@ -166,7 +166,7 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Automatic Gain Control") // qmllint disable
+                    text: i18n("Automatic gain control") // qmllint disable
                     icon.name: "auto-scale-y"
                     checkable: true
                     checked: echoCancellerPage.pluginDB.enableAGC

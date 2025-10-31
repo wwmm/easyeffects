@@ -453,7 +453,7 @@ Kirigami.ScrollablePage {
                 ColumnLayout {
                     Controls.CheckBox {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("Low-Cut") // qmllint disable
+                        text: i18n("Low-cut") // qmllint disable
                         checked: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"]
                         onCheckedChanged: {
                             multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"] = checked;
@@ -478,7 +478,7 @@ Kirigami.ScrollablePage {
                 ColumnLayout {
                     Controls.CheckBox {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("High-Cut") // qmllint disable
+                        text: i18n("High-cut") // qmllint disable
                         checked: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"]
                         onCheckedChanged: {
                             multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"] = checked;
@@ -510,11 +510,11 @@ Kirigami.ScrollablePage {
             FormCard.FormComboBoxDelegate {
                 id: gateMode
 
-                text: i18n("Operating Mode") // qmllint disable
+                text: i18n("Operating mode") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: multibandGatePage.pluginDB.gateMode
                 editable: false
-                model: [i18n("Classic"), i18n("Modern"), i18n("Linear Phase")]// qmllint disable
+                model: [i18n("Classic"), i18n("Modern"), i18n("Linear phase")]// qmllint disable
                 onActivated: idx => {
                     multibandGatePage.pluginDB.gateMode = idx;
                 }
@@ -523,7 +523,7 @@ Kirigami.ScrollablePage {
             FormCard.FormComboBoxDelegate {
                 id: envelopeBoost
 
-                text: i18n("Sidechain Boost") // qmllint disable
+                text: i18n("Sidechain boost") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: multibandGatePage.pluginDB.envelopeBoost
                 editable: false
@@ -537,7 +537,7 @@ Kirigami.ScrollablePage {
                 id: comboSideChainInputDevice
 
                 Layout.preferredWidth: gateMode.implicitWidth
-                text: i18n("Sidechain Input Device") // qmllint disable
+                text: i18n("Sidechain input device") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 editable: false
                 model: PW.ModelNodes
@@ -921,7 +921,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Show Native Window") // qmllint disable
+                    text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
@@ -934,7 +934,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Stereo Split") // qmllint disable
+                    text: i18n("Stereo split") // qmllint disable
                     icon.name: "view-split-left-right-symbolic"
                     checkable: true
                     checked: multibandGatePage.pluginDB.stereoSplit

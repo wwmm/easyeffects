@@ -61,7 +61,7 @@ Kirigami.ScrollablePage {
                     FormCard.FormComboBoxDelegate {
                         id: mode
 
-                        text: i18n("Filter Mode") // qmllint disable
+                        text: i18n("Filter mode") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: filterPage.pluginDB.mode
                         editable: false
@@ -74,7 +74,7 @@ Kirigami.ScrollablePage {
                     FormCard.FormComboBoxDelegate {
                         id: equalMode
 
-                        text: i18n("Equalizer Mode") // qmllint disable
+                        text: i18n("Equalizer mode") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: filterPage.pluginDB.equalMode
                         editable: false
@@ -214,7 +214,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Show Native Window") // qmllint disable
+                    text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true

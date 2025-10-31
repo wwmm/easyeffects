@@ -36,7 +36,7 @@ Kirigami.ScrollablePage {
 
         Controls.Label {
             Layout.alignment: Qt.AlignHCenter
-            text: i18n("Blend Harmonics") // qmllint disable
+            text: i18n("Blend harmonics") // qmllint disable
         }
 
         RowLayout {
@@ -141,7 +141,7 @@ Kirigami.ScrollablePage {
                     EeSwitch {
                         id: ceilActive
 
-                        label: i18n("Ceil Active") // qmllint disable
+                        label: i18n("Ceil active") // qmllint disable
                         isChecked: exciterPage.pluginDB.ceilActive
                         onCheckedChanged: {
                             if (isChecked !== exciterPage.pluginDB.ceilActive)
@@ -206,7 +206,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Show Native Window") // qmllint disable
+                    text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true

@@ -119,7 +119,7 @@ Kirigami.ScrollablePage {
                             displayMode: FormCard.FormComboBoxDelegate.ComboBox
                             currentIndex: stereoToolsPage.pluginDB.mode
                             editable: false
-                            model: [i18n("LR > LR (Stereo Default)"), i18n("LR > MS (Stereo to Mid-Side)"), i18n("MS > LR (Mid-Side to Stereo)"), i18n("LR > LL (Mono Left Channel)"), i18n("LR > RR (Mono Right Channel)"), i18n("LR > L+R (Mono Sum L+R)"), i18n("LR > RL (Stereo Flip Channels)")] // qmllint disable
+                            model: [i18n("LR > LR (Stereo default)"), i18n("LR > MS (Stereo to Mid-Side)"), i18n("MS > LR (Mid-Side to Stereo)"), i18n("LR > LL (Mono left channel)"), i18n("LR > RR (Mono right channel)"), i18n("LR > L+R (Mono sum L+R)"), i18n("LR > RL (Stereo flip channels)")] // qmllint disable
                             onActivated: idx => {
                                 stereoToolsPage.pluginDB.mode = idx;
                             }
@@ -128,7 +128,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: slev
 
-                            label: i18n("Side Level") // qmllint disable
+                            label: i18n("Side level") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: stereoToolsPage.pluginDB.getMinValue("slev")
@@ -146,7 +146,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: sbal
 
-                            label: i18n("Side Balance") // qmllint disable
+                            label: i18n("Side balance") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: stereoToolsPage.pluginDB.getMinValue("sbal")
@@ -162,7 +162,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: mlev
 
-                            label: i18n("Middle Level") // qmllint disable
+                            label: i18n("Middle level") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: stereoToolsPage.pluginDB.getMinValue("mlev")
@@ -180,7 +180,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: mpan
 
-                            label: i18n("Middle Panorama") // qmllint disable
+                            label: i18n("Middle panorama") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: stereoToolsPage.pluginDB.getMinValue("mpan")
@@ -222,7 +222,7 @@ Kirigami.ScrollablePage {
                         id: phasel
 
                         Layout.alignment: Qt.AlignTop
-                        label: i18n("Invert Phase") // qmllint disable
+                        label: i18n("Invert phase") // qmllint disable
                         isChecked: stereoToolsPage.pluginDB.phasel
                         onCheckedChanged: {
                             if (isChecked !== stereoToolsPage.pluginDB.phasel)
@@ -252,7 +252,7 @@ Kirigami.ScrollablePage {
                         id: phaser
 
                         Layout.alignment: Qt.AlignTop
-                        label: i18n("Invert Phase") // qmllint disable
+                        label: i18n("Invert phase") // qmllint disable
                         isChecked: stereoToolsPage.pluginDB.phaser
                         onCheckedChanged: {
                             if (isChecked !== stereoToolsPage.pluginDB.phaser)
@@ -313,7 +313,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: stereoBase
 
-                            label: i18n("Stereo Base") // qmllint disable
+                            label: i18n("Stereo base") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: stereoToolsPage.pluginDB.getMinValue("stereoBase")
@@ -329,7 +329,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: stereoPhase
 
-                            label: i18n("Stereo Phase") // qmllint disable
+                            label: i18n("Stereo phase") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: stereoToolsPage.pluginDB.getMinValue("stereoPhase")
@@ -409,7 +409,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Show Native Window") // qmllint disable
+                    text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true

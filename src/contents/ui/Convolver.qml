@@ -49,7 +49,7 @@ Kirigami.ScrollablePage {
 
                 appWindow.showStatus(i18n("Loaded the %1 Convolver impulse.", `<strong>${name}</strong>`), Kirigami.MessageType.Positive); // qmllint disable
             } else {
-                convolverChartContainer.banner.title = i18n("Convolver Impulse Is Not Set");
+                convolverChartContainer.banner.title = i18n("Convolver impulse is not set");
 
                 if (name.length === 0 || name === '""') {
                     // This is likely to happen after a config reset.
@@ -239,7 +239,7 @@ Kirigami.ScrollablePage {
                 Kirigami.Action {
                     id: spectrumLogScale
 
-                    text: i18n("Log Scale")
+                    text: i18n("Log scale")
                     visible: spectrumAction.checked
                     checkable: true
                     icon.name: "transform-scale-symbolic"
@@ -309,7 +309,7 @@ Kirigami.ScrollablePage {
             banner {
                 title: {
                     const name = convolverPage.pluginDB.kernelName;
-                    return (!convolverPage.pluginBackend.kernelIsInitialized || name.length === 0 || name === '""') ? i18n("Convolver Impulse Is Not Set") : name; // qmllint disable
+                    return (!convolverPage.pluginBackend.kernelIsInitialized || name.length === 0 || name === '""') ? i18n("Convolver impulse is not set") : name; // qmllint disable
                 }
                 titleAlignment: Qt.AlignHCenter | Qt.AlignBottom
                 titleLevel: 2
@@ -398,7 +398,7 @@ Kirigami.ScrollablePage {
             EeSpinBox {
                 id: irWidth
 
-                label: i18n("Stereo Width") // qmllint disable
+                label: i18n("Stereo width") // qmllint disable
                 labelAbove: true
                 spinboxLayoutFillWidth: true
                 value: convolverPage.pluginDB.irWidth

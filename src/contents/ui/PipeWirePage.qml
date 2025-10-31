@@ -110,7 +110,7 @@ Kirigami.Page {
                 EeSwitch {
                     id: useDefaultInputDevice
 
-                    label: i18n("Use Default Input") // qmllint disable
+                    label: i18n("Use default input") // qmllint disable
                     isChecked: DB.Manager.streamInputs.useDefaultInputDevice
                     onCheckedChanged: {
                         if (isChecked)
@@ -153,7 +153,7 @@ Kirigami.Page {
                 EeSwitch {
                     id: useDefaultOutputDevice
 
-                    label: i18n("Use Default Output") // qmllint disable
+                    label: i18n("Use default output") // qmllint disable
                     isChecked: DB.Manager.streamOutputs.useDefaultOutputDevice
 
                     onCheckedChanged: {
@@ -197,37 +197,37 @@ Kirigami.Page {
 
             FormCard.FormCard {
                 FormCard.FormTextDelegate {
-                    text: i18n("Header Version") // qmllint disable
+                    text: i18n("Header version") // qmllint disable
                     description: PW.Manager.headerVersion
                 }
 
                 FormCard.FormTextDelegate {
-                    text: i18n("Library Version") // qmllint disable
+                    text: i18n("Library version") // qmllint disable
                     description: PW.Manager.libraryVersion
                 }
 
                 FormCard.FormTextDelegate {
-                    text: i18n("Runtime Version") // qmllint disable
+                    text: i18n("Runtime version") // qmllint disable
                     description: PW.Manager.runtimeVersion
                 }
 
                 FormCard.FormTextDelegate {
-                    text: i18n("Default Sampling Rate") // qmllint disable
+                    text: i18n("Default sampling rate") // qmllint disable
                     description: PW.Manager.defaultClockRate + " Hz"
                 }
 
                 FormCard.FormTextDelegate {
-                    text: i18n("Minimum Quantum") // qmllint disable
+                    text: i18n("Minimum quantum") // qmllint disable
                     description: PW.Manager.defaultMinQuantum
                 }
 
                 FormCard.FormTextDelegate {
-                    text: i18n("Maximum Quantum") // qmllint disable
+                    text: i18n("Maximum quantum") // qmllint disable
                     description: PW.Manager.defaultMaxQuantum
                 }
 
                 FormCard.FormTextDelegate {
-                    text: i18n("Default Quantum") // qmllint disable
+                    text: i18n("Default quantum") // qmllint disable
                     description: PW.Manager.defaultQuantum
                 }
             }
@@ -352,7 +352,7 @@ Kirigami.Page {
                 FormCard.FormRadioDelegate {
                     id: sineWave
 
-                    text: i18n("Sine Wave") // qmllint disable
+                    text: i18n("Sine wave") // qmllint disable
                     checked: DB.Manager.testSignals.signalType === 0
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.signalType)
@@ -363,7 +363,7 @@ Kirigami.Page {
                 FormCard.FormRadioDelegate {
                     id: whiteNoise
 
-                    text: i18n("White Noise") // qmllint disable
+                    text: i18n("White noise") // qmllint disable
                     checked: DB.Manager.testSignals.signalType === 1
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.signalType)
@@ -374,7 +374,7 @@ Kirigami.Page {
                 FormCard.FormRadioDelegate {
                     id: pinkNoise
 
-                    text: i18n("Pink Noise") // qmllint disable
+                    text: i18n("Pink noise") // qmllint disable
                     checked: DB.Manager.testSignals.signalType === 2
                     onCheckedChanged: {
                         if (checked !== DB.Manager.testSignals.signalType)

@@ -47,7 +47,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: sequenceLength
 
-                        label: i18n("Sequence Length") // qmllint disable
+                        label: i18n("Sequence length") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pitchPage.pluginDB.getMinValue("sequenceLength")
                         to: pitchPage.pluginDB.getMaxValue("sequenceLength")
@@ -63,7 +63,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: seekWindow
 
-                        label: i18n("Seek Window") // qmllint disable
+                        label: i18n("Seek window") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pitchPage.pluginDB.getMinValue("seekWindow")
                         to: pitchPage.pluginDB.getMaxValue("seekWindow")
@@ -79,7 +79,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: overlapLength
 
-                        label: i18n("Overlap Length") // qmllint disable
+                        label: i18n("Overlap length") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: pitchPage.pluginDB.getMinValue("overlapLength")
                         to: pitchPage.pluginDB.getMaxValue("overlapLength")
@@ -164,7 +164,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: tempoDifference
 
-                            label: i18n("Tempo Difference") // qmllint disable
+                            label: i18n("Tempo difference") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pitchPage.pluginDB.getMinValue("tempoDifference")
@@ -181,7 +181,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: rateDifference
 
-                            label: i18n("Rate Difference") // qmllint disable
+                            label: i18n("Rate difference") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: pitchPage.pluginDB.getMinValue("rateDifference")
@@ -224,14 +224,14 @@ Kirigami.ScrollablePage {
             flat: true
             actions: [
                 Kirigami.Action {
-                    text: i18n("Reset History") // qmllint disable
+                    text: i18n("Reset history") // qmllint disable
                     icon.name: "edit-clear-history-symbolic"
                     onTriggered: {
                         pitchPage.pluginBackend.resetHistory();
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Quick Seek") // qmllint disable
+                    text: i18n("Quick seek") // qmllint disable
                     icon.name: "media-seek-forward-symbolic"
                     checkable: true
                     checked: pitchPage.pluginDB.quickSeek
@@ -252,7 +252,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Reset Settings") // qmllint disable
+                    text: i18n("Reset settings") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
                         pitchPage.pluginBackend.reset();

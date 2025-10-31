@@ -100,7 +100,7 @@ Kirigami.ScrollablePage {
                     id: bandMode
 
                     Layout.fillWidth: bandControlsLayout.columns === 1 ? true : false
-                    text: i18n("Compression Mode") // qmllint disable
+                    text: i18n("Compression mode") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "CompressionMode"]
                     editable: false
@@ -113,7 +113,7 @@ Kirigami.ScrollablePage {
                 EeSpinBox {
                     Layout.alignment: Qt.AlignLeft
                     Layout.fillWidth: bandControlsLayout.columns === 1 ? true : false
-                    label: i18n("Boost Threshold") // qmllint disable
+                    label: i18n("Boost threshold") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
                     from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "BoostThreshold")
@@ -132,7 +132,7 @@ Kirigami.ScrollablePage {
                 EeSpinBox {
                     Layout.alignment: Qt.AlignLeft | Qt.AlignBottom
                     Layout.fillWidth: bandControlsLayout.columns === 1 ? true : false
-                    label: i18n("Boost Amount") // qmllint disable
+                    label: i18n("Boost amount") // qmllint disable
                     labelAbove: true
                     spinboxLayoutFillWidth: true
                     from: multibandCompressorPage.pluginDB.getMinValue(multibandCompressorPage.bandId + "BoostAmount")
@@ -480,7 +480,7 @@ Kirigami.ScrollablePage {
                 ColumnLayout {
                     Controls.CheckBox {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("Low-Cut") // qmllint disable
+                        text: i18n("Low-cut") // qmllint disable
                         checked: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomLowcutFilter"]
                         onCheckedChanged: {
                             multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomLowcutFilter"] = checked;
@@ -505,7 +505,7 @@ Kirigami.ScrollablePage {
                 ColumnLayout {
                     Controls.CheckBox {
                         Layout.alignment: Qt.AlignHCenter
-                        text: i18n("High-Cut") // qmllint disable
+                        text: i18n("High-cut") // qmllint disable
                         checked: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomHighcutFilter"]
                         onCheckedChanged: {
                             multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainCustomHighcutFilter"] = checked;
@@ -537,11 +537,11 @@ Kirigami.ScrollablePage {
             FormCard.FormComboBoxDelegate {
                 id: compressorMode
 
-                text: i18n("Operating Mode") // qmllint disable
+                text: i18n("Operating mode") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: multibandCompressorPage.pluginDB.compressorMode
                 editable: false
-                model: [i18n("Classic"), i18n("Modern"), i18n("Linear Phase")]// qmllint disable
+                model: [i18n("Classic"), i18n("Modern"), i18n("Linear phase")]// qmllint disable
                 onActivated: idx => {
                     multibandCompressorPage.pluginDB.compressorMode = idx;
                 }
@@ -550,7 +550,7 @@ Kirigami.ScrollablePage {
             FormCard.FormComboBoxDelegate {
                 id: envelopeBoost
 
-                text: i18n("Sidechain Boost") // qmllint disable
+                text: i18n("Sidechain boost") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: multibandCompressorPage.pluginDB.envelopeBoost
                 editable: false
@@ -564,7 +564,7 @@ Kirigami.ScrollablePage {
                 id: comboSideChainInputDevice
 
                 Layout.preferredWidth: compressorMode.implicitWidth
-                text: i18n("Sidechain Input Device") // qmllint disable
+                text: i18n("Sidechain input device") // qmllint disable
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 editable: false
                 model: PW.ModelNodes
@@ -948,7 +948,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Show Native Window") // qmllint disable
+                    text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
@@ -961,7 +961,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Stereo Split") // qmllint disable
+                    text: i18n("Stereo split") // qmllint disable
                     icon.name: "view-split-left-right-symbolic"
                     checkable: true
                     checked: multibandCompressorPage.pluginDB.stereoSplit

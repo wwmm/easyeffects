@@ -32,7 +32,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: enableServiceMode
 
-                    label: i18n("Enable Service Mode") // qmllint disable
+                    label: i18n("Enable service mode") // qmllint disable
                     subtitle: i18n("Easy Effects is active in background when the window is closed.") // qmllint disable
                     maximumLineCount: -1
                     isChecked: DB.Manager.main.enableServiceMode
@@ -45,7 +45,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: autostartOnLogin
 
-                    label: i18n("Autostart on Login") // qmllint disable
+                    label: i18n("Autostart on login") // qmllint disable
                     subtitle: i18n("Easy Effects is launched at user session startup.") // qmllint disable
                     maximumLineCount: -1
                     isChecked: DB.Manager.main.autostartOnLogin
@@ -59,7 +59,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: showTrayIcon
 
-                    label: i18n("Show the Tray Icon") // qmllint disable
+                    label: i18n("Show the tray icon") // qmllint disable
                     isChecked: DB.Manager.main.showTrayIcon && canUseSysTray// qmllint disable
                     enabled: canUseSysTray// qmllint disable
                     onCheckedChanged: {
@@ -83,7 +83,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: processAllOutputs
 
-                    label: i18n("Process All Output Streams") // qmllint disable
+                    label: i18n("Process all output streams") // qmllint disable
                     isChecked: DB.Manager.main.processAllOutputs
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.processAllOutputs)
@@ -94,7 +94,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: processAllInputs
 
-                    label: i18n("Process All Input Streams") // qmllint disable
+                    label: i18n("Process all input streams") // qmllint disable
                     isChecked: DB.Manager.main.processAllInputs
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.processAllInputs)
@@ -105,7 +105,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: excludeMonitorStreams
 
-                    label: i18n("Ignore Streams from Monitor of Devices") // qmllint disable
+                    label: i18n("Ignore streams from monitor of devices") // qmllint disable
                     isChecked: DB.Manager.main.excludeMonitorStreams
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.excludeMonitorStreams)
@@ -116,7 +116,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: useCubicVolumes
 
-                    label: i18n("Use Cubic Volume") // qmllint disable
+                    label: i18n("Use cubic volume") // qmllint disable
                     isChecked: DB.Manager.main.useCubicVolumes
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.useCubicVolumes)
@@ -127,7 +127,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: ignoreSystemNotifications
 
-                    label: i18n("Ignore System Notifications") // qmllint disable
+                    label: i18n("Ignore system notifications") // qmllint disable
                     subtitle: i18n("Processing system notifications may cause crackling sound, so it would be better to ignore them, but for some presets it may be recommended since they could sound too loud.") // qmllint disable
                     isChecked: DB.Manager.main.ignoreSystemNotifications
                     onCheckedChanged: {
@@ -139,7 +139,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: listenToMic
 
-                    label: i18n("Enable/Disable Input Monitoring") // qmllint disable
+                    label: i18n("Enable/disable input monitoring") // qmllint disable
                     isChecked: DB.Manager.streamInputs.listenToMic
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.streamInputs.listenToMic)
@@ -150,7 +150,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: listenToMicIncludesOutputEffects
 
-                    label: i18n("Mic Monitor Plays to Output Effects Pipeline") // qmllint disable
+                    label: i18n("Mic monitor plays to output effects pipeline") // qmllint disable
                     isChecked: DB.Manager.streamInputs.listenToMicIncludesOutputEffects
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.streamInputs.listenToMicIncludesOutputEffects)
@@ -161,7 +161,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: inactivityTimerEnable
 
-                    label: i18n("Enable the Inactivity Timeout") // qmllint disable
+                    label: i18n("Enable the inactivity timeout") // qmllint disable
                     subtitle: i18n("When all streams are inactive, Easy Effects pipeline remains loaded for an extra amount of time.") // qmllint disable
                     maximumLineCount: -1
                     isChecked: DB.Manager.main.inactivityTimerEnable
@@ -174,7 +174,7 @@ Kirigami.OverlaySheet {
                 EeSpinBox {
                     id: inactivityTimeout
 
-                    label: i18n("Inactivity Timeout") // qmllint disable
+                    label: i18n("Inactivity timeout") // qmllint disable
                     from: DB.Manager.main.getMinValue("inactivityTimeout")
                     to: DB.Manager.main.getMaxValue("inactivityTimeout")
                     value: DB.Manager.main.inactivityTimeout
@@ -188,7 +188,7 @@ Kirigami.OverlaySheet {
                 }
 
                 EeSpinBox {
-                    label: i18n("Level Meters Label") // qmllint disable
+                    label: i18n("Level meters label") // qmllint disable
                     subtitle: i18n("The time it takes for the level meter labels to be updated when the current level is below the last highest one.") // qmllint disable
                     maximumLineCount: -1
                     from: DB.Manager.main.getMinValue("levelMetersLabelTimer")
@@ -233,7 +233,7 @@ Kirigami.OverlaySheet {
                 EeSpinBox {
                     id: avsyncDelay
 
-                    label: i18n("Audio Delay Compensation") // qmllint disable
+                    label: i18n("Audio delay compensation") // qmllint disable
                     from: 0
                     to: 1000
                     value: DB.Manager.spectrum.avsyncDelay
@@ -254,7 +254,7 @@ Kirigami.OverlaySheet {
                 FormCard.FormComboBoxDelegate {
                     id: spectrumColorScheme
 
-                    text: i18n("Color Scheme") // qmllint disable
+                    text: i18n("Color scheme") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: DB.Manager.spectrum.spectrumColorScheme
                     editable: false
@@ -268,11 +268,11 @@ Kirigami.OverlaySheet {
                 FormCard.FormComboBoxDelegate {
                     id: spectrumColorTheme
 
-                    text: i18n("Color Theme") // qmllint disable
+                    text: i18n("Color theme") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: DB.Manager.spectrum.spectrumColorTheme
                     editable: false
-                    model: [i18n("Green"), i18n("Green Neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey")]// qmllint disable
+                    model: [i18n("Green"), i18n("Green neon"), i18n("Mix"), i18n("Orange"), i18n("Yellow"), i18n("Blue"), i18n("Purple"), i18n("Grey")]// qmllint disable
                     onActivated: idx => {
                         if (idx !== DB.Manager.spectrum.spectrumColorTheme)
                             DB.Manager.spectrum.spectrumColorTheme = idx;
@@ -296,7 +296,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: dynamicYScale
 
-                    label: i18n("Dynamic Scale") // qmllint disable
+                    label: i18n("Dynamic scale") // qmllint disable
                     isChecked: DB.Manager.spectrum.dynamicYScale
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.spectrum.dynamicYScale)
@@ -307,7 +307,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: logarithimicHorizontalAxis
 
-                    label: i18n("Logarithmic Frequency Axis") // qmllint disable
+                    label: i18n("Logarithmic frequency axis") // qmllint disable
                     isChecked: DB.Manager.spectrum.logarithimicHorizontalAxis
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.spectrum.logarithimicHorizontalAxis)
@@ -393,7 +393,7 @@ Kirigami.OverlaySheet {
         ColumnLayout {
             FormCard.FormCard {
                 EeSpinBox {
-                    label: i18n("Database Autosave Interval") // qmllint disable
+                    label: i18n("Database autosave interval") // qmllint disable
                     from: DB.Manager.main.getMinValue("databaseAutosaveInterval")
                     to: DB.Manager.main.getMaxValue("databaseAutosaveInterval")
                     value: DB.Manager.main.databaseAutosaveInterval
@@ -406,7 +406,7 @@ Kirigami.OverlaySheet {
                 }
 
                 EeSpinBox {
-                    label: i18n("Most Used Presets") // qmllint disable
+                    label: i18n("Most used presets") // qmllint disable
                     from: DB.Manager.main.getMinValue("maxMostUsedPresets")
                     to: DB.Manager.main.getMaxValue("maxMostUsedPresets")
                     value: DB.Manager.main.maxMostUsedPresets
@@ -432,7 +432,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: xdgGlobalShortcuts
 
-                    label: i18n("Global Shortcuts") // qmllint disable
+                    label: i18n("Global shortcuts") // qmllint disable
                     subtitle: i18n("Enables support for XDG global shortcuts.") // qmllint disable
                     maximumLineCount: -1
                     isChecked: DB.Manager.main.xdgGlobalShortcuts
@@ -445,7 +445,7 @@ Kirigami.OverlaySheet {
                 EeSwitch {
                     id: showNativePluginUi
 
-                    label: i18n("Native Window of Effects") // qmllint disable
+                    label: i18n("Native window of effects") // qmllint disable
                     subtitle: i18n("Allows the native user interface of effects to be shown/hidden.") // qmllint disable
                     maximumLineCount: -1
                     isChecked: DB.Manager.main.showNativePluginUi
@@ -458,7 +458,7 @@ Kirigami.OverlaySheet {
                 EeSpinBox {
                     id: lv2uiUpdateFrequency
 
-                    label: i18n("Update Frequency") // qmllint disable
+                    label: i18n("Update frequency") // qmllint disable
                     subtitle: i18n("Related to LV2 plugins.") // qmllint disable
                     maximumLineCount: -1
                     from: 1

@@ -164,7 +164,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: f1Freq
 
-                            label: i18n("F1 Split") // qmllint disable
+                            label: i18n("F1 split") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: deesserPage.pluginDB.getMinValue("f1Freq")
@@ -181,7 +181,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: f2Freq
 
-                            label: i18n("F2 Peak") // qmllint disable
+                            label: i18n("F2 peak") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: deesserPage.pluginDB.getMinValue("f2Freq")
@@ -198,7 +198,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: f1Level
 
-                            label: i18n("F1 Gain") // qmllint disable
+                            label: i18n("F1 gain") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: deesserPage.pluginDB.getMinValue("f1Level")
@@ -215,7 +215,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: f2Level
 
-                            label: i18n("F2 Level") // qmllint disable
+                            label: i18n("F2 level") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: deesserPage.pluginDB.getMinValue("f2Level")
@@ -233,7 +233,7 @@ Kirigami.ScrollablePage {
                             id: f2Q
 
                             Layout.columnSpan: 2
-                            label: i18n("F2 Peak Q") // qmllint disable
+                            label: i18n("F2 peak Q") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: deesserPage.pluginDB.getMinValue("f2Q")
@@ -278,7 +278,7 @@ Kirigami.ScrollablePage {
                     EeProgressBar {
                         id: gainReduction
 
-                        label: i18n("Gain Reduction") // qmllint disable
+                        label: i18n("Gain reduction") // qmllint disable
                         unit: "dB"
                         from: Common.minimumDecibelLevel
                         to: 0
@@ -316,7 +316,7 @@ Kirigami.ScrollablePage {
             actions: [
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Show Native Window") // qmllint disable
+                    text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true

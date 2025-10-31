@@ -99,7 +99,7 @@ Kirigami.OverlaySheet {
             visible: DB.Manager.main.visiblePresetSheetPage !== 2
             text: {
                 if (Common.isEmpty(control.lastLoadedPresetName))
-                    return i18n("No Preset Loaded");// qmllint disable
+                    return i18n("No preset loaded");// qmllint disable
 
                 const presetType = Common.isEmpty(lastLoadedCommunityPackage) ? i18n("Local") : i18n("Community"); // qmllint disable
 

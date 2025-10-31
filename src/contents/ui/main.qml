@@ -429,7 +429,7 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Turn Effects On/Off") // qmllint disable
+                        text: i18n("Turn effects on/off") // qmllint disable
                         icon.name: "system-shutdown-symbolic"
                         icon.color: checked === true ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
                         displayHint: Kirigami.DisplayHint.IconOnly

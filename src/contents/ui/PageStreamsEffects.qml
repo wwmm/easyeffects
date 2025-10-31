@@ -77,7 +77,7 @@ Kirigami.Page {
                     width: parent.width - (Kirigami.Units.largeSpacing * 4)
                     visible: streamsListView.count === 0
                     text: i18n("Empty List")// qmllint disable
-                    explanation: i18n("No Audio Application Available")// qmllint disable
+                    explanation: i18n("No audio application available")// qmllint disable
                     icon.name: "folder-music-symbolic"
                 }
 
@@ -271,7 +271,7 @@ Kirigami.Page {
                     Layout.leftMargin: Kirigami.Units.smallSpacing
                     Layout.rightMargin: Kirigami.Units.smallSpacing
                     Layout.alignment: Qt.AlignHCenter
-                    text: DB.Manager.main.collapsePluginsList === true ? "" : i18n("Add Effect") // qmllint disable
+                    text: DB.Manager.main.collapsePluginsList === true ? "" : i18n("Add effect") // qmllint disable
                     icon.name: "list-add"
                     onClicked: menuAddPlugins.open()
                 }
@@ -318,7 +318,7 @@ Kirigami.Page {
                         }
 
                         Controls.Label {
-                            text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Input Device")// qmllint disable
+                            text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Input device")// qmllint disable
                             enabled: false
                             visible: !DB.Manager.main.collapsePluginsList
                         }
@@ -335,7 +335,7 @@ Kirigami.Page {
                         }
 
                         Controls.Label {
-                            text: pageStreamsEffects.pageType === 0 ? "Output Device" : i18n("Recorders")// qmllint disable
+                            text: pageStreamsEffects.pageType === 0 ? "Output device" : i18n("Recorders")// qmllint disable
                             enabled: false
                             visible: !DB.Manager.main.collapsePluginsList
                         }
@@ -375,7 +375,7 @@ Kirigami.Page {
                     Kirigami.PlaceholderMessage {
                         anchors.centerIn: parent
                         text: i18n("No Effects")// qmllint disable
-                        explanation: i18n("Audio Stream Not Modified")// qmllint disable
+                        explanation: i18n("Audio stream not modified")// qmllint disable
                         icon.name: "folder-music-symbolic"
                     }
                 }
@@ -611,7 +611,7 @@ Kirigami.Page {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Excluded Apps")// qmllint disable
+                        text: i18n("Excluded apps")// qmllint disable
                         icon.name: "im-ban-kick-user-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
                         visible: pageStreamsEffects.streamDB.visiblePage === 0

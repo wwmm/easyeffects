@@ -36,7 +36,7 @@ ColumnLayout {
             textRole: "description"
             editable: false
             model: DB.Manager.main.visiblePage === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
-            description: i18n("Hardware Profile") + `: ${deviceProfileName}` // qmllint disable
+            description: i18n("Hardware profile") + `: ${deviceProfileName}` // qmllint disable
         }
 
         Kirigami.Icon {
@@ -169,7 +169,7 @@ ColumnLayout {
                             Layout.alignment: Qt.AlignRight
                             wrapMode: Text.WordWrap
                             horizontalAlignment: Qt.AlignRight
-                            text: i18n("Hardware Profile") // qmllint disable
+                            text: i18n("Hardware profile") // qmllint disable
                         }
 
                         Controls.Label {
@@ -182,7 +182,7 @@ ColumnLayout {
                         Controls.Label {
                             Layout.alignment: Qt.AlignRight
                             wrapMode: Text.WordWrap
-                            text: i18n("Local Preset") // qmllint disable
+                            text: i18n("Local preset") // qmllint disable
                         }
 
                         Controls.Label {

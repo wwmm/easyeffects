@@ -50,7 +50,7 @@ Kirigami.ScrollablePage {
                         id: roomSize
 
                         Layout.alignment: Qt.AlignTop
-                        text: i18n("Room Size") // qmllint disable
+                        text: i18n("Room size") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: reverbPage.pluginDB.roomSize
                         editable: false
@@ -63,7 +63,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: decayTime
 
-                        label: i18n("Decay Time") // qmllint disable
+                        label: i18n("Decay time") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: reverbPage.pluginDB.getMinValue("decayTime")
                         to: reverbPage.pluginDB.getMaxValue("decayTime")
@@ -79,7 +79,7 @@ Kirigami.ScrollablePage {
                     EeSpinBox {
                         id: predelay
 
-                        label: i18n("Pre Delay") // qmllint disable
+                        label: i18n("Pre delay") // qmllint disable
                         spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
                         from: reverbPage.pluginDB.getMinValue("predelay")
                         to: reverbPage.pluginDB.getMaxValue("predelay")
@@ -127,7 +127,7 @@ Kirigami.ScrollablePage {
                             id: hfDamp
 
                             Layout.columnSpan: 2
-                            label: i18n("High Frequency Damping") // qmllint disable
+                            label: i18n("High frequency damping") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: reverbPage.pluginDB.getMinValue("hfDamp")
@@ -144,7 +144,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: bassCut
 
-                            label: i18n("Bass Cut") // qmllint disable
+                            label: i18n("Bass cut") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: reverbPage.pluginDB.getMinValue("bassCut")
@@ -161,7 +161,7 @@ Kirigami.ScrollablePage {
                         EeSpinBox {
                             id: trebleCut
 
-                            label: i18n("Treble Cut") // qmllint disable
+                            label: i18n("Treble cut") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: reverbPage.pluginDB.getMinValue("trebleCut")
@@ -238,7 +238,7 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
-                text: i18n("Empty Walls") // qmllint disable
+                text: i18n("Empty walls") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginDB.decayTime = 0.505687;
                     reverbPage.pluginDB.hfDamp = 3971.64;
@@ -268,7 +268,7 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
-                text: i18n("Large Empty Hall") // qmllint disable
+                text: i18n("Large empty hall") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginBackend.reset();
                     reverbPage.pluginDB.decayTime = 2.00689;
@@ -288,7 +288,7 @@ Kirigami.ScrollablePage {
             },
             Kirigami.Action {
                 icon.name: "bookmarks-symbolic"
-                text: i18n("Large Occupied Hall") // qmllint disable
+                text: i18n("Large occupied hall") // qmllint disable
                 onTriggered: {
                     reverbPage.pluginBackend.reset();
                     reverbPage.pluginDB.decayTime = 1;
@@ -332,7 +332,7 @@ Kirigami.ScrollablePage {
                 },
                 Kirigami.Action {
                     displayHint: KirigamiLayouts.DisplayHint.KeepVisible
-                    text: i18n("Show Native Window") // qmllint disable
+                    text: i18n("Show native window") // qmllint disable
                     icon.name: "window-duplicate-symbolic"
                     enabled: DB.Manager.main.showNativePluginUi
                     checkable: true
