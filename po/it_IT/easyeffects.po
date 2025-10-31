@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-30 22:31+0000\n"
+"POT-Creation-Date: 2025-10-31 15:53+0000\n"
 "PO-Revision-Date: 2025-10-31 13:02+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -788,7 +788,8 @@ msgstr "Importato un nuovo file di risposta impulsiva del Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
 msgid "Failed to import the Convolver impulse file."
-msgstr "Importazione del file di risposta impulsiva del Convolver non riuscita."
+msgstr ""
+"Importazione del file di risposta impulsiva del Convolver non riuscita."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:144
@@ -1788,12 +1789,12 @@ msgid "No Clients"
 msgstr "Nessun Client"
 
 #: src/contents/ui/PipeWirePage.qml:288
-#: src/contents/ui/PreferencesSheet.qml:209
+#: src/contents/ui/PreferencesSheet.qml:218
 msgid "State"
 msgstr "Stato"
 
 #: src/contents/ui/PipeWirePage.qml:295
-#: src/contents/ui/PreferencesSheet.qml:216
+#: src/contents/ui/PreferencesSheet.qml:225
 msgid "Enabled"
 msgstr "Abilitato"
 
@@ -1865,54 +1866,54 @@ msgstr "Rilevamento Veloce"
 msgid "Anti-aliasing"
 msgstr "Anti-aliasing"
 
-#: src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:547
-#: src/contents/ui/PreferencesSheet.qml:560 src/contents/ui/main.qml:498
+#: src/contents/ui/PreferencesSheet.qml:15
+#: src/contents/ui/PreferencesSheet.qml:23
+#: src/contents/ui/PreferencesSheet.qml:588
+#: src/contents/ui/PreferencesSheet.qml:601 src/contents/ui/main.qml:498
 msgid "Preferences"
 msgstr "Preferenze"
 
-#: src/contents/ui/PreferencesSheet.qml:34
+#: src/contents/ui/PreferencesSheet.qml:35
 msgid "Enable Service Mode"
 msgstr "Abilita Modalità di Servizio"
 
-#: src/contents/ui/PreferencesSheet.qml:35
+#: src/contents/ui/PreferencesSheet.qml:36
 msgid "Easy Effects is active in background when the window is closed."
 msgstr "Easy Effects rimane attivo in background quando la finestra è chiusa."
 
-#: src/contents/ui/PreferencesSheet.qml:47
+#: src/contents/ui/PreferencesSheet.qml:48
 msgid "Autostart on Login"
 msgstr "Avvio Automatico al Login"
 
-#: src/contents/ui/PreferencesSheet.qml:48
+#: src/contents/ui/PreferencesSheet.qml:49
 msgid "Easy Effects is launched at user session startup."
 msgstr "Easy Effects si carica all'avvio della sessione utente."
 
-#: src/contents/ui/PreferencesSheet.qml:61
+#: src/contents/ui/PreferencesSheet.qml:62
 msgid "Show the Tray Icon"
 msgstr "Mostra l'Icona nella Tray"
 
-#: src/contents/ui/PreferencesSheet.qml:81
+#: src/contents/ui/PreferencesSheet.qml:86
 msgid "Process All Output Streams"
 msgstr "Processa Tutto i Flussi in Uscita"
 
-#: src/contents/ui/PreferencesSheet.qml:92
+#: src/contents/ui/PreferencesSheet.qml:97
 msgid "Process All Input Streams"
 msgstr "Processa Tutti i Flussi in Ingresso"
 
-#: src/contents/ui/PreferencesSheet.qml:103
+#: src/contents/ui/PreferencesSheet.qml:108
 msgid "Ignore Streams from Monitor of Devices"
 msgstr "Ignora i Flussi dai Monitor dei Dispositivi"
 
-#: src/contents/ui/PreferencesSheet.qml:114
+#: src/contents/ui/PreferencesSheet.qml:119
 msgid "Use Cubic Volume"
 msgstr "Usa Volume Cubico"
 
-#: src/contents/ui/PreferencesSheet.qml:125
+#: src/contents/ui/PreferencesSheet.qml:130
 msgid "Ignore System Notifications"
 msgstr "Ignora le Notifiche di Sistema"
 
-#: src/contents/ui/PreferencesSheet.qml:126
+#: src/contents/ui/PreferencesSheet.qml:131
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
@@ -1922,19 +1923,19 @@ msgstr ""
 "dunque sarebbe meglio ignorarle, ma per alcuni profili sarebbe invece "
 "consigliato processarle perché potrebbero avere un volume troppo alto."
 
-#: src/contents/ui/PreferencesSheet.qml:137
+#: src/contents/ui/PreferencesSheet.qml:142
 msgid "Enable/Disable Input Monitoring"
 msgstr "Abilita/Disabilita Monitoraggio di Input"
 
-#: src/contents/ui/PreferencesSheet.qml:148
+#: src/contents/ui/PreferencesSheet.qml:153
 msgid "Mic Monitor Plays to Output Effects Pipeline"
 msgstr "Monitoraggio Mic Riproduce sulla Pipeline di Output"
 
-#: src/contents/ui/PreferencesSheet.qml:159
+#: src/contents/ui/PreferencesSheet.qml:164
 msgid "Enable the Inactivity Timeout"
 msgstr "Abilita il Timeout di Inattività"
 
-#: src/contents/ui/PreferencesSheet.qml:160
+#: src/contents/ui/PreferencesSheet.qml:165
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
@@ -1942,15 +1943,15 @@ msgstr ""
 "Quando tutti i flussi sono inattivi, la pipeline degli effetti di Easy "
 "Effects rimane caricata per un periodo extra di tempo."
 
-#: src/contents/ui/PreferencesSheet.qml:172
+#: src/contents/ui/PreferencesSheet.qml:177
 msgid "Inactivity Timeout"
 msgstr "Tempo Inattività"
 
-#: src/contents/ui/PreferencesSheet.qml:186
+#: src/contents/ui/PreferencesSheet.qml:191
 msgid "Level Meters Label"
 msgstr "Etichetta dei Monitor di Livello"
 
-#: src/contents/ui/PreferencesSheet.qml:187
+#: src/contents/ui/PreferencesSheet.qml:192
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
@@ -1958,163 +1959,165 @@ msgstr ""
 "Il tempo impiegato dall'etichetta del monitor di livello per aggiornarsi "
 "quando il livello corrente è inferiore all'ultimo picco."
 
-#: src/contents/ui/PreferencesSheet.qml:227
+#: src/contents/ui/PreferencesSheet.qml:236
 msgid "Audio Delay Compensation"
 msgstr "Compensazione Audio Delay"
 
-#: src/contents/ui/PreferencesSheet.qml:241
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Style"
 msgstr "Stile"
 
-#: src/contents/ui/PreferencesSheet.qml:248
+#: src/contents/ui/PreferencesSheet.qml:257
 msgid "Color Scheme"
 msgstr "Schema Colori"
 
-#: src/contents/ui/PreferencesSheet.qml:252
+#: src/contents/ui/PreferencesSheet.qml:261
 msgid "Automatic"
 msgstr "Automatico"
 
-#: src/contents/ui/PreferencesSheet.qml:252
+#: src/contents/ui/PreferencesSheet.qml:261
 msgid "Light"
 msgstr "Chiaro"
 
-#: src/contents/ui/PreferencesSheet.qml:252
+#: src/contents/ui/PreferencesSheet.qml:261
 msgid "Dark"
 msgstr "Scuro"
 
-#: src/contents/ui/PreferencesSheet.qml:262
+#: src/contents/ui/PreferencesSheet.qml:271
 msgid "Color Theme"
 msgstr "Tema Colori"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Green"
 msgstr "Verde"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Green Neon"
 msgstr "Verde Neon"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Mix"
 msgstr "Mix"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Orange"
 msgstr "Arancione"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Yellow"
 msgstr "Giallo"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Blue"
 msgstr "Blu"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Purple"
 msgstr "Viola"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Grey"
 msgstr "Grigio"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:285
 msgid "Shape"
 msgstr "Forma"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Bars"
 msgstr "Barre"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Lines"
 msgstr "Linee"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Dots"
 msgstr "Punti"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Area"
 msgstr "Area"
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:299
 msgid "Dynamic Scale"
 msgstr "Scala Dinamica"
 
-#: src/contents/ui/PreferencesSheet.qml:301
+#: src/contents/ui/PreferencesSheet.qml:310
 msgid "Logarithmic Frequency Axis"
 msgstr "Asse Frequenza Logaritmica"
 
-#: src/contents/ui/PreferencesSheet.qml:312
+#: src/contents/ui/PreferencesSheet.qml:321
 msgid "Points"
 msgstr "Punti"
 
-#: src/contents/ui/PreferencesSheet.qml:326
+#: src/contents/ui/PreferencesSheet.qml:335
 msgid "Height"
 msgstr "Altezza"
 
-#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/PreferencesSheet.qml:349
 msgid "Frequency Range"
 msgstr "Gamma Frequenze"
 
-#: src/contents/ui/PreferencesSheet.qml:347
+#: src/contents/ui/PreferencesSheet.qml:356
 msgid "Minimum"
 msgstr "Minima"
 
-#: src/contents/ui/PreferencesSheet.qml:362
+#: src/contents/ui/PreferencesSheet.qml:371
 msgid "Maximum"
 msgstr "Massima"
 
-#: src/contents/ui/PreferencesSheet.qml:383
+#: src/contents/ui/PreferencesSheet.qml:396
 msgid "Database Autosave Interval"
 msgstr "Intervallo Auto Salvataggio Database"
 
-#: src/contents/ui/PreferencesSheet.qml:396
+#: src/contents/ui/PreferencesSheet.qml:409
 msgid "Most Used Presets"
 msgstr "Profili Più Utilizzati"
 
-#: src/contents/ui/PreferencesSheet.qml:418
+#: src/contents/ui/PreferencesSheet.qml:435
+#: src/contents/ui/ShortcutsSheet.qml:248
 msgid "Global Shortcuts"
 msgstr "Scorciatoie Globali"
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:436
 msgid "Enables support for XDG global shortcuts."
 msgstr "Abilita il supporto alle scorciatoie globali XDG."
 
-#: src/contents/ui/PreferencesSheet.qml:431
+#: src/contents/ui/PreferencesSheet.qml:448
 msgid "Native Window of Effects"
 msgstr "Mostra Interfaccia Nativa degli Effetti"
 
-#: src/contents/ui/PreferencesSheet.qml:432
+#: src/contents/ui/PreferencesSheet.qml:449
 msgid "Allows the native user interface of effects to be shown/hidden."
-msgstr "Permette di visualizzare o nascondere le finestre native degli effetti."
+msgstr ""
+"Permette di visualizzare o nascondere le finestre native degli effetti."
 
-#: src/contents/ui/PreferencesSheet.qml:444
+#: src/contents/ui/PreferencesSheet.qml:461
 msgid "Update Frequency"
 msgstr "Frequenza di Aggiornamento"
 
-#: src/contents/ui/PreferencesSheet.qml:445
+#: src/contents/ui/PreferencesSheet.qml:462
 msgid "Related to LV2 plugins."
 msgstr "Correlato ai plugin LV2."
 
-#: src/contents/ui/PreferencesSheet.qml:474
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid "Background Service"
 msgstr "Servizi in Background"
 
-#: src/contents/ui/PreferencesSheet.qml:487
+#: src/contents/ui/PreferencesSheet.qml:512
 msgid "Audio"
 msgstr "Audio"
 
-#: src/contents/ui/PreferencesSheet.qml:500
+#: src/contents/ui/PreferencesSheet.qml:527
 msgid "Spectrum Analyzer"
 msgstr "Analizzatore dello Spettro"
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:542
 msgid "Database"
 msgstr "Database"
 
-#: src/contents/ui/PreferencesSheet.qml:526
+#: src/contents/ui/PreferencesSheet.qml:557
 msgid "Experimental Features"
 msgstr "Funzionalità Sperimentali"
 
@@ -2151,7 +2154,8 @@ msgstr "Copia nei Profili Locali"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr "Importato il profilo della community %1 nella lista dei profili locali."
+msgstr ""
+"Importato il profilo della community %1 nella lista dei profili locali."
 
 #: src/contents/ui/PresetsCommunityPage.qml:100
 msgid "Failed to import the %1 community preset to the list of local presets."
@@ -2476,10 +2480,6 @@ msgstr "Abilita/disabilita il \"processa tutto in uscita\""
 msgid "Can be used on numeric controls"
 msgstr "Può essere usato sui parametri numerici"
 
-#: src/contents/ui/ShortcutsSheet.qml:248
-msgid "Global shortcuts"
-msgstr "Scorciatoie globali"
-
 #: src/contents/ui/ShortcutsSheet.qml:334
 msgid "Toggle microphone monitoring"
 msgstr "Abilita/disabilita il monitoraggio del microfono"
@@ -2762,6 +2762,9 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Effetti Audio per Applicazioni Pipewire"
+
+#~ msgid "Global shortcuts"
+#~ msgstr "Scorciatoie globali"
 
 #~ msgid "Empty"
 #~ msgstr "Vuoto"
