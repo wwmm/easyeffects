@@ -17,7 +17,7 @@ Item {
     required property var pluginDB
     required property var streamDB
 
-    readonly property bool bypass: (delegateItem.pluginDB?.bypass ?? false)
+    readonly property bool bypass: delegateItem.pluginDB?.bypass ?? false
 
     signal selectedChanged(string name)
 
