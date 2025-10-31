@@ -80,7 +80,7 @@ Kirigami.ScrollablePage {
                             id: boostThreshold
 
                             Layout.columnSpan: 2
-                            label: i18n("Boost tshreshold") // qmllint disable
+                            label: i18n("Boost threshold") // qmllint disable
                             labelAbove: true
                             spinboxLayoutFillWidth: true
                             from: compressorPage.pluginDB.getMinValue("boostThreshold")
