@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-29 18:26+0000\n"
+"POT-Creation-Date: 2025-10-30 22:31+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -203,7 +203,7 @@ msgid "Force Silence"
 msgstr "სიჩუმე"
 
 #: src/contents/ui/Autogain.qml:250
-msgid "Force Silence When the Level is Below the Silence Threshold"
+msgid "Force silence when the level is below the silence threshold"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:262 src/contents/ui/LevelMeter.qml:215
@@ -309,9 +309,11 @@ msgstr ""
 #: src/contents/ui/BlocklistSheet.qml:97
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:33
+#: src/contents/ui/PageStreamsEffects.qml:79
+#: src/contents/ui/PresetsAutoloadingPage.qml:98
 #: src/contents/ui/PresetsCommunityPage.qml:64
 #: src/contents/ui/PresetsLocalPage.qml:169 src/contents/ui/RNNoise.qml:212
-msgid "Empty"
+msgid "Empty List"
 msgstr ""
 
 #: src/contents/ui/BlocklistSheet.qml:119
@@ -323,11 +325,15 @@ msgid "Are you sure you want to remove this application from the list?"
 msgstr ""
 
 #: src/contents/ui/BlocklistSheet.qml:150
-msgid "Delete this App"
+msgid "Remove This App"
 msgstr ""
 
 #: src/contents/ui/BlocklistSheet.qml:177
-msgid "Show Excluded Applications in the Streams Section"
+msgid "Show Excluded Apps"
+msgstr ""
+
+#: src/contents/ui/BlocklistSheet.qml:178
+msgid "Show excluded applications in the list of players/recorders"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:53 src/tags_plugin_name.cpp:29
@@ -721,20 +727,22 @@ msgid "Stereo Split"
 msgstr "სტერეოს გაყოფა"
 
 #: src/contents/ui/Convolver.qml:50
-msgid "Loaded the %1 Convolver Impulse."
-msgstr ""
+#, fuzzy
+msgid "Loaded the %1 Convolver impulse."
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/Convolver.qml:52 src/contents/ui/Convolver.qml:312
 msgid "Convolver Impulse Is Not Set"
 msgstr ""
 
 #: src/contents/ui/Convolver.qml:56
-msgid "The Convolver is in Passthrough Mode."
+msgid "The Convolver is in passthrough mode."
 msgstr ""
 
 #: src/contents/ui/Convolver.qml:58
-msgid "Failed to Load the %1 Impulse. The Convolver is in Passthrough Mode."
-msgstr ""
+#, fuzzy
+msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/Convolver.qml:122
 msgid "First"
@@ -783,16 +791,17 @@ msgid "Autogain"
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-msgid "Imported a New Convolver Impluse File."
-msgstr ""
+#, fuzzy
+msgid "Imported a new Convolver impluse file."
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
 #, fuzzy
-msgid "Failed to Import the Convolver Impulse File."
+msgid "Failed to import the Convolver impulse file."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
-#: src/contents/ui/MenuAddPlugins.qml:142
+#: src/contents/ui/MenuAddPlugins.qml:144
 #: src/contents/ui/PresetsCommunityPage.qml:40
 #: src/contents/ui/PresetsLocalPage.qml:144
 msgid "Search"
@@ -807,16 +816,17 @@ msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:88
-msgid "Removed the %1 Convolver Impulse."
-msgstr ""
+#, fuzzy
+msgid "Removed the %1 Convolver impulse."
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
 #, fuzzy
-msgid "Failed to Remove the %1 Convolver Impulse."
+msgid "Failed to remove the %1 Convolver impulse."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
-msgid "Delete this Impulse"
+msgid "Delete This Impulse"
 msgstr ""
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:124
@@ -1008,17 +1018,18 @@ msgid "Access"
 msgstr "წვდომა"
 
 #: src/contents/ui/DelegateModulesList.qml:64
-#: src/contents/ui/PresetsAutoloadingPage.qml:154
+#: src/contents/ui/PresetsAutoloadingPage.qml:158
 msgid "Description"
 msgstr "აღწერა"
 
 #: src/contents/ui/DelegatePluginsList.qml:65
-msgid "Enable this Effect"
+msgid "Toggle This Effect"
 msgstr ""
 
 #: src/contents/ui/DelegatePluginsList.qml:79
-msgid "Remove this effect"
-msgstr ""
+#, fuzzy
+msgid "Remove This Effect"
+msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/DelegateStreamsList.qml:76
 #, fuzzy
@@ -1035,6 +1046,10 @@ msgstr "ჩართვა"
 #: src/contents/ui/DelegateStreamsList.qml:108
 msgid "Exclude"
 msgstr "გამორიცხვა"
+
+#: src/contents/ui/DelegateStreamsList.qml:110
+msgid "Add %1 to excluded applications"
+msgstr ""
 
 #: src/contents/ui/EchoCanceller.qml:43 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
@@ -1106,12 +1121,12 @@ msgstr ""
 
 #: src/contents/ui/Equalizer.qml:54
 #, fuzzy
-msgid "Imported the Equalizer APO Preset File."
+msgid "Imported the Equalizer APO preset file."
 msgstr "ეკვალაიზერიAPI-ის პრესეტები"
 
 #: src/contents/ui/Equalizer.qml:56
 #, fuzzy
-msgid "Failed to Import the Equalizer APO Preset File."
+msgid "Failed to import the Equalizer APO preset file."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/Equalizer.qml:66
@@ -1120,12 +1135,13 @@ msgstr ""
 
 #: src/contents/ui/Equalizer.qml:69
 #, fuzzy
-msgid "Imported the GraphicEQ Preset File."
+msgid "Imported the GraphicEQ preset file."
 msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/Equalizer.qml:71
-msgid "Failed to Import the GraphicEQ Preset File."
-msgstr ""
+#, fuzzy
+msgid "Failed to import the GraphicEQ preset file."
+msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/Equalizer.qml:81
 #, fuzzy
@@ -1133,14 +1149,16 @@ msgid "APO Preset"
 msgstr "შაბლონი"
 
 #: src/contents/ui/Equalizer.qml:84
-msgid "Exported the Current Equalizer Settings to an External APO Preset File."
-msgstr ""
+#, fuzzy
+msgid "Exported the current Equalizer settings to an external APO preset file."
+msgstr "ეკვალაიზერიAPI-ის პრესეტები"
 
 #: src/contents/ui/Equalizer.qml:87
+#, fuzzy
 msgid ""
-"Failed to Export the Current Equalizer Settings to an External APO Preset "
-"File."
-msgstr ""
+"Failed to export the current Equalizer settings to an external APO preset "
+"file."
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/Equalizer.qml:117
 msgid "Bands"
@@ -1606,8 +1624,12 @@ msgstr "კლინინგი"
 msgid "Clipping"
 msgstr "კლინინგი"
 
-#: src/contents/ui/MenuAddPlugins.qml:131
-msgid "Added a New Effect to the Pipeline: %1"
+#: src/contents/ui/MenuAddPlugins.qml:62
+msgid "Add %1"
+msgstr ""
+
+#: src/contents/ui/MenuAddPlugins.qml:133
+msgid "Added a new effect to the pipeline: %1"
 msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:103
@@ -1691,11 +1713,6 @@ msgstr "შეყვანის მოწყობილობა"
 msgid "Reaction"
 msgstr "აღწერა"
 
-#: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:96
-msgid "Empty List"
-msgstr ""
-
 #: src/contents/ui/PageStreamsEffects.qml:80
 msgid "No Audio Application Available"
 msgstr ""
@@ -1705,12 +1722,12 @@ msgid "Add Effect"
 msgstr "ეფექტის დამატება"
 
 #: src/contents/ui/PageStreamsEffects.qml:321
-#: src/contents/ui/PageStreamsEffects.qml:570
+#: src/contents/ui/PageStreamsEffects.qml:572
 msgid "Players"
 msgstr "მოთამაშეები"
 
 #: src/contents/ui/PageStreamsEffects.qml:338
-#: src/contents/ui/PageStreamsEffects.qml:570
+#: src/contents/ui/PageStreamsEffects.qml:572
 msgid "Recorders"
 msgstr "სალამურები"
 
@@ -1718,24 +1735,32 @@ msgstr "სალამურები"
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:375
+#: src/contents/ui/PageStreamsEffects.qml:353
+msgid "Expand the list of effects pipeline"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:353
+msgid "Reduce the list of effects pipeline"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:377
 msgid "No Effects"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:376
+#: src/contents/ui/PageStreamsEffects.qml:378
 msgid "Audio Stream Not Modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:580
+#: src/contents/ui/PageStreamsEffects.qml:582
 msgid "Effects"
 msgstr "ეფექტები"
 
-#: src/contents/ui/PageStreamsEffects.qml:597
+#: src/contents/ui/PageStreamsEffects.qml:599
 #, fuzzy
-msgid "Input Monitoring"
+msgid "Input monitoring"
 msgstr "შეყვანის დამუშავების ხაზი"
 
-#: src/contents/ui/PageStreamsEffects.qml:610
+#: src/contents/ui/PageStreamsEffects.qml:612
 msgid "Excluded Apps"
 msgstr ""
 
@@ -1909,7 +1934,7 @@ msgid "Enable Service Mode"
 msgstr "ეკვალაიზერის რეჟიმი"
 
 #: src/contents/ui/PreferencesSheet.qml:35
-msgid "Easy Effects is Active in Background When the Window is Closed"
+msgid "Easy Effects is active in background when the window is closed."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:47
@@ -1917,7 +1942,7 @@ msgid "Autostart on Login"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:48
-msgid "Easy Effects is Launched at User Session Startup"
+msgid "Easy Effects is launched at user session startup."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:61
@@ -1946,9 +1971,9 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:126
 msgid ""
-"Processing System Notifications May Cause Crackling Sound, so It Would be "
-"Better to Ignore Them, but For Some Presets It May be Recommended Since They "
-"Could Sound Too Loud"
+"Processing system notifications may cause crackling sound, so it would be "
+"better to ignore them, but for some presets it may be recommended since they "
+"could sound too loud."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:137
@@ -1966,8 +1991,8 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:160
 msgid ""
-"When all Streams are Inactive, Easy Effects Pipeline Remains Loaded for an "
-"Extra Amount of Time"
+"When all streams are inactive, Easy Effects pipeline remains loaded for an "
+"extra amount of time."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:172
@@ -1981,8 +2006,8 @@ msgstr "დონის მზომი"
 
 #: src/contents/ui/PreferencesSheet.qml:187
 msgid ""
-"The Time it Takes for the Level Meter Labels to be Updated When the Current "
-"Level is Below the Last Highest One"
+"The time it takes for the level meter labels to be updated when the current "
+"level is below the last highest one."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:227
@@ -2105,13 +2130,12 @@ msgid "Most Used Presets"
 msgstr "შეყვანის პრესეტი"
 
 #: src/contents/ui/PreferencesSheet.qml:418
-#: src/contents/ui/ShortcutsSheet.qml:248
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "მალ_სახმობები"
 
 #: src/contents/ui/PreferencesSheet.qml:419
-msgid "Enables Support for XDG Global Shortcuts"
+msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:431
@@ -2119,7 +2143,7 @@ msgid "Native Window of Effects"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:432
-msgid "Allows the Native User Interface of Effects to be Shown/Hidden"
+msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:444
@@ -2127,7 +2151,7 @@ msgid "Update Frequency"
 msgstr "განახლების სიხშირე"
 
 #: src/contents/ui/PreferencesSheet.qml:445
-msgid "Related to LV2 Plugins"
+msgid "Related to LV2 plugins."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:474
@@ -2152,18 +2176,18 @@ msgid "Experimental Features"
 msgstr "ექსპერიმენტალური ფუნქციები"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:33
-#: src/contents/ui/PresetsAutoloadingPage.qml:128
+#: src/contents/ui/PresetsAutoloadingPage.qml:130
 msgid "Device"
 msgstr "მოწყობილობა"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
-#: src/contents/ui/PresetsAutoloadingPage.qml:168
+#: src/contents/ui/PresetsAutoloadingPage.qml:172
 #, fuzzy
 msgid "Hardware Profile"
 msgstr "პროფილი"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-#: src/contents/ui/PresetsAutoloadingPage.qml:181
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
 #, fuzzy
 msgid "Local Preset"
 msgstr "ლოკალური პრესეტების სია"
@@ -2173,18 +2197,29 @@ msgstr "ლოკალური პრესეტების სია"
 msgid "Create"
 msgstr "შექმნა"
 
+#: src/contents/ui/PresetsAutoloadingPage.qml:65
+#, fuzzy
+msgid "Create a new autoloading preset"
+msgstr "ლოკალური პრესეტების ძებნა"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:144
+#, fuzzy
+msgid "Remove this autoloading preset"
+msgstr "პრესეტის შემოტანა"
+
 #: src/contents/ui/PresetsCommunityPage.qml:93
-msgid "Copy to the Local List"
-msgstr ""
+#, fuzzy
+msgid "Copy to Local Presets"
+msgstr "ლოკალური პრესეტების სია"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
 #, fuzzy
-msgid "Imported the %1 Community Preset to the List of Local Presets."
+msgid "Imported the %1 community preset to the list of local presets."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/PresetsCommunityPage.qml:100
 #, fuzzy
-msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
+msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/PresetsCommunityPage.qml:120
@@ -2192,12 +2227,13 @@ msgid "Refresh"
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:35
-msgid "Imported a New Local Preset from an External File."
-msgstr ""
+#, fuzzy
+msgid "Imported a new local preset from an external file."
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/PresetsLocalPage.qml:37
 #, fuzzy
-msgid "Failed to Import a New Local Preset from an External File."
+msgid "Failed to import a new local preset from an external file."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/PresetsLocalPage.qml:46
@@ -2207,12 +2243,13 @@ msgid "Export Presets"
 msgstr "შეყვანის პრესეტი"
 
 #: src/contents/ui/PresetsLocalPage.qml:49
-msgid "Exported all Presets to an External Folder."
-msgstr ""
+#, fuzzy
+msgid "Exported all presets to an external folder."
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/PresetsLocalPage.qml:51
 #, fuzzy
-msgid "Failed to Export All Presets to an External Folder."
+msgid "Failed to export all presets to an external folder."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/PresetsLocalPage.qml:63
@@ -2226,17 +2263,17 @@ msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/PresetsLocalPage.qml:88
 #, fuzzy
-msgid "Create Preset"
+msgid "Create New Preset"
 msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/PresetsLocalPage.qml:98
 #, fuzzy
-msgid "Created a New Local Preset: %1"
+msgid "Created a new local preset: %1"
 msgstr "ლოკალური პრესეტების ძებნა"
 
 #: src/contents/ui/PresetsLocalPage.qml:102
 #, fuzzy
-msgid "Failed to Create a New Local Preset: %1"
+msgid "Failed to create a new local preset: %1"
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
@@ -2246,17 +2283,19 @@ msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/PresetsLocalPage.qml:187
 msgid ""
-"Save Current Settings to the Preset:\n"
+"Save current settings to the preset:\n"
 "%1"
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:191
-msgid "Saved the Current Settings to %1 Local Preset."
-msgstr ""
+#, fuzzy
+msgid "Saved the current settings to %1 local preset."
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/PresetsLocalPage.qml:193
-msgid "Failed to Save the Current Settings to %1 Local Preset."
-msgstr ""
+#, fuzzy
+msgid "Failed to save the current settings to %1 local preset."
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/PresetsLocalPage.qml:201
 #, fuzzy
@@ -2265,19 +2304,19 @@ msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/PresetsLocalPage.qml:202
 msgid ""
-"Are You Sure You Want to Remove the Preset\n"
+"Are you sure you want to remove the preset\n"
 "%1\n"
-"From the List?"
+"from the list?"
 msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:206
 #, fuzzy
-msgid "Removed the %1 Local Preset."
+msgid "Removed the %1 local preset."
 msgstr "ლოკალური პრესეტების ძებნა"
 
 #: src/contents/ui/PresetsLocalPage.qml:208
 #, fuzzy
-msgid "Failed to Remove the %1 Local Preset."
+msgid "Failed to remove the %1 local preset."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/PresetsLocalPage.qml:216
@@ -2291,12 +2330,12 @@ msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:230
 #, fuzzy
-msgid "Renamed the %1 Local Preset to %2"
+msgid "Renamed the %1 local preset to %2"
 msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/PresetsLocalPage.qml:233
 #, fuzzy
-msgid "Failed to Rename the %1 Local Preset to %2"
+msgid "Failed to rename the %1 local preset to %2"
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/PresetsLocalPage.qml:241
@@ -2304,17 +2343,19 @@ msgid "Cancel"
 msgstr "გაუქმება"
 
 #: src/contents/ui/PresetsLocalPage.qml:277
-msgid "Save Settings to this Preset"
-msgstr ""
+#, fuzzy
+msgid "Save Settings to This Preset"
+msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/PresetsLocalPage.qml:285
 #, fuzzy
-msgid "Rename this Preset"
+msgid "Rename This Preset"
 msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/PresetsLocalPage.qml:293
-msgid "Delete this Preset"
-msgstr ""
+#, fuzzy
+msgid "Delete This Preset"
+msgstr "პრესეტის შემოტანა"
 
 #: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:104
 msgid "Local"
@@ -2337,12 +2378,13 @@ msgid "Fallback Preset"
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:44
-msgid "Imported a New RNNoise Model File."
-msgstr ""
+#, fuzzy
+msgid "Imported a new RNNoise model file."
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/RNNoise.qml:46
 #, fuzzy
-msgid "Failed to Import the RNNoise Model File."
+msgid "Failed to import the RNNoise model file."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
@@ -2351,7 +2393,7 @@ msgid "Standard RNNoise Model"
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:59
-msgid "Standard RNNoise Model Loaded."
+msgid "Standard RNNoise model loaded."
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:282
@@ -2360,12 +2402,14 @@ msgid "Using %1 Model"
 msgstr "ვიყენებ {}"
 
 #: src/contents/ui/RNNoise.qml:66
-msgid "Loaded the %1 RNNoise Model."
-msgstr ""
+#, fuzzy
+msgid "Loaded the %1 RNNoise model."
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/RNNoise.qml:70
-msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
-msgstr ""
+#, fuzzy
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
 msgid "Voice Detection"
@@ -2385,16 +2429,17 @@ msgid "User Models"
 msgstr "მოდელები"
 
 #: src/contents/ui/RNNoise.qml:239
-msgid "Delete this Model"
+msgid "Delete This Model"
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:244
-msgid "Removed the %1 RNNoise Model."
-msgstr ""
+#, fuzzy
+msgid "Removed the %1 RNNoise model."
+msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/RNNoise.qml:246
 #, fuzzy
-msgid "Failed to Remove the %1 RNNoise Model."
+msgid "Failed to remove the %1 RNNoise model."
 msgstr "საზოგადო პრესეტის ძებნა"
 
 #: src/contents/ui/RNNoise.qml:314
@@ -2483,40 +2528,45 @@ msgid "Large Occupied Hall"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:34
-msgid "Show Help"
+msgid "Show help"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:47
-msgid "Toggle Fullscreen"
+msgid "Toggle fullscreen"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:294
-msgid "Toggle Global Bypass"
+msgid "Toggle global bypass"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:103
-msgid "Close the Window"
+msgid "Close the window"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:131
-msgid "Terminate Easy Effects Service"
+msgid "Terminate Easy Effects service"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:171
-msgid "Toggle Process All Inputs"
+msgid "Toggle process all inputs"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:211
-msgid "Toggle Process All Outputs"
+msgid "Toggle process all outputs"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:224
 #: src/contents/ui/ShortcutsSheet.qml:237
-msgid "Can Be Used on Numeric Controls"
+msgid "Can be used on numeric controls"
 msgstr ""
 
+#: src/contents/ui/ShortcutsSheet.qml:248
+#, fuzzy
+msgid "Global shortcuts"
+msgstr "მალ_სახმობები"
+
 #: src/contents/ui/ShortcutsSheet.qml:334
-msgid "Toggle Microphone Monitoring"
+msgid "Toggle microphone monitoring"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:383
@@ -2676,31 +2726,32 @@ msgstr ""
 #: src/presets_manager.cpp:758 src/presets_manager.cpp:765
 #: src/presets_manager.cpp:775 src/presets_manager.cpp:782
 #: src/presets_manager.cpp:792 src/presets_manager.cpp:801
-msgid "Preset Not Loaded Correctly"
-msgstr ""
+#, fuzzy
+msgid "Preset not loaded correctly"
+msgstr "ჩატვირთულია ბოლო ლოკალური პრესეტი"
 
 #: src/presets_manager.cpp:758
-msgid "Wrong Format in Excluded Apps List"
+msgid "Wrong format in excluded apps list"
 msgstr ""
 
 #: src/presets_manager.cpp:766
-msgid "Generic Error While Loading Excluded Apps List"
+msgid "Generic error while loading excluded apps list"
 msgstr ""
 
 #: src/presets_manager.cpp:775
-msgid "Wrong Format in Effects List"
+msgid "Wrong format in effects list"
 msgstr ""
 
 #: src/presets_manager.cpp:782
-msgid "Generic Error While Loading Effects List"
+msgid "Generic error while loading effects list"
 msgstr ""
 
 #: src/presets_manager.cpp:793
-msgid "One or More Parameters Have a Wrong Format"
+msgid "One or more parameters have a wrong format"
 msgstr ""
 
 #: src/presets_manager.cpp:802
-msgid "Generic Error While Loading The Effect"
+msgid "Generic error while loading the effect"
 msgstr ""
 
 #: src/pw_model_nodes.cpp:488

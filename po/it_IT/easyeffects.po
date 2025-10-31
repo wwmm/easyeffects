@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-28 21:11+0000\n"
+"POT-Creation-Date: 2025-10-30 22:31+0000\n"
 "PO-Revision-Date: 2025-10-30 11:34+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -203,7 +203,8 @@ msgid "Force Silence"
 msgstr "Forza Silenzio"
 
 #: src/contents/ui/Autogain.qml:250
-msgid "Force Silence When the Level is Below the Silence Threshold"
+#, fuzzy
+msgid "Force silence when the level is below the silence threshold"
 msgstr ""
 "Forza il Silenzio Quando il Livello è al di Sotto della Soglia di Silenzio"
 
@@ -308,10 +309,12 @@ msgstr "Aggiungi alle Applicazioni Escluse"
 #: src/contents/ui/BlocklistSheet.qml:97
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:33
+#: src/contents/ui/PageStreamsEffects.qml:79
+#: src/contents/ui/PresetsAutoloadingPage.qml:98
 #: src/contents/ui/PresetsCommunityPage.qml:64
 #: src/contents/ui/PresetsLocalPage.qml:169 src/contents/ui/RNNoise.qml:212
-msgid "Empty"
-msgstr "Vuoto"
+msgid "Empty List"
+msgstr "Elenco Vuoto"
 
 #: src/contents/ui/BlocklistSheet.qml:119
 msgid "Remove Application"
@@ -322,11 +325,18 @@ msgid "Are you sure you want to remove this application from the list?"
 msgstr "Vuoi davvero rimuovere questa applicazione dalla lista?"
 
 #: src/contents/ui/BlocklistSheet.qml:150
-msgid "Delete this App"
-msgstr "Rimuovi questa App"
+#, fuzzy
+msgid "Remove This App"
+msgstr "Rimuovi questo profilo"
 
 #: src/contents/ui/BlocklistSheet.qml:177
-msgid "Show Excluded Applications in the Streams Section"
+#, fuzzy
+msgid "Show Excluded Apps"
+msgstr "App Escluse"
+
+#: src/contents/ui/BlocklistSheet.qml:178
+#, fuzzy
+msgid "Show excluded applications in the list of players/recorders"
 msgstr "Mostra Applicazioni Escluse nella Sezione degli Stream"
 
 #: src/contents/ui/Compressor.qml:53 src/tags_plugin_name.cpp:29
@@ -713,7 +723,8 @@ msgid "Stereo Split"
 msgstr "Divisione Stereo"
 
 #: src/contents/ui/Convolver.qml:50
-msgid "Loaded the %1 Convolver Impulse."
+#, fuzzy
+msgid "Loaded the %1 Convolver impulse."
 msgstr "Caricato l'Impulso %1 del Convolver."
 
 #: src/contents/ui/Convolver.qml:52 src/contents/ui/Convolver.qml:312
@@ -721,11 +732,13 @@ msgid "Convolver Impulse Is Not Set"
 msgstr "Impulso del Convolver Non Impostato"
 
 #: src/contents/ui/Convolver.qml:56
-msgid "The Convolver is in Passthrough Mode."
+#, fuzzy
+msgid "The Convolver is in passthrough mode."
 msgstr "Il Convolver è in Modalità Inattiva."
 
 #: src/contents/ui/Convolver.qml:58
-msgid "Failed to Load the %1 Impulse. The Convolver is in Passthrough Mode."
+#, fuzzy
+msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
 msgstr ""
 "Caricamento dell'Impulso %1 Non Riuscito. Il Convolver è in Modalità "
 "Inattiva."
@@ -777,16 +790,18 @@ msgid "Autogain"
 msgstr "Guadagno Automatico"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-msgid "Imported a New Convolver Impluse File."
+#, fuzzy
+msgid "Imported a new Convolver impluse file."
 msgstr "Importato un Nuovo File di Risposta Impulsiva del Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
-msgid "Failed to Import the Convolver Impulse File."
+#, fuzzy
+msgid "Failed to import the Convolver impulse file."
 msgstr ""
 "Importazione del File di Risposta Impulsiva del Convolver Non Riuscita."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
-#: src/contents/ui/MenuAddPlugins.qml:142
+#: src/contents/ui/MenuAddPlugins.qml:144
 #: src/contents/ui/PresetsCommunityPage.qml:40
 #: src/contents/ui/PresetsLocalPage.qml:144
 msgid "Search"
@@ -801,15 +816,18 @@ msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr "Vuoi davvero rimuovere questa risposta di impulso dalla lista?"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:88
-msgid "Removed the %1 Convolver Impulse."
+#, fuzzy
+msgid "Removed the %1 Convolver impulse."
 msgstr "Rimosso l'Impulso %1 del Convolver."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
-msgid "Failed to Remove the %1 Convolver Impulse."
+#, fuzzy
+msgid "Failed to remove the %1 Convolver impulse."
 msgstr "Rimozione dell'Impulso %1 del Convolver Non Riuscita."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
-msgid "Delete this Impulse"
+#, fuzzy
+msgid "Delete This Impulse"
 msgstr "Rimuovi questo Impulso"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:124
@@ -997,16 +1015,18 @@ msgid "Access"
 msgstr "Accesso"
 
 #: src/contents/ui/DelegateModulesList.qml:64
-#: src/contents/ui/PresetsAutoloadingPage.qml:154
+#: src/contents/ui/PresetsAutoloadingPage.qml:158
 msgid "Description"
 msgstr "Descrizione"
 
 #: src/contents/ui/DelegatePluginsList.qml:65
-msgid "Enable this Effect"
+#, fuzzy
+msgid "Toggle This Effect"
 msgstr "Abilita questo Effetto"
 
 #: src/contents/ui/DelegatePluginsList.qml:79
-msgid "Remove this effect"
+#, fuzzy
+msgid "Remove This Effect"
 msgstr "Rimuovi questo effetto"
 
 #: src/contents/ui/DelegateStreamsList.qml:76
@@ -1023,6 +1043,11 @@ msgstr "Abilita"
 #: src/contents/ui/DelegateStreamsList.qml:108
 msgid "Exclude"
 msgstr "Escludi"
+
+#: src/contents/ui/DelegateStreamsList.qml:110
+#, fuzzy
+msgid "Add %1 to excluded applications"
+msgstr "Aggiungi alle Applicazioni Escluse"
 
 #: src/contents/ui/EchoCanceller.qml:43 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
@@ -1086,11 +1111,13 @@ msgid "APO Presets"
 msgstr "Profili APO"
 
 #: src/contents/ui/Equalizer.qml:54
-msgid "Imported the Equalizer APO Preset File."
+#, fuzzy
+msgid "Imported the Equalizer APO preset file."
 msgstr "Importato il File del Profilo Equalizer APO."
 
 #: src/contents/ui/Equalizer.qml:56
-msgid "Failed to Import the Equalizer APO Preset File."
+#, fuzzy
+msgid "Failed to import the Equalizer APO preset file."
 msgstr "Importazione del File del Profilo Equalizer APO Non Riuscita."
 
 #: src/contents/ui/Equalizer.qml:66
@@ -1098,11 +1125,13 @@ msgid "GraphicEQ Presets"
 msgstr "Profili GraphicEQ"
 
 #: src/contents/ui/Equalizer.qml:69
-msgid "Imported the GraphicEQ Preset File."
+#, fuzzy
+msgid "Imported the GraphicEQ preset file."
 msgstr "Importato il File del Profilo GraphicEQ."
 
 #: src/contents/ui/Equalizer.qml:71
-msgid "Failed to Import the GraphicEQ Preset File."
+#, fuzzy
+msgid "Failed to import the GraphicEQ preset file."
 msgstr "Importazione del File di Profilo GraphicEQ Non Riuscita."
 
 #: src/contents/ui/Equalizer.qml:81
@@ -1110,15 +1139,17 @@ msgid "APO Preset"
 msgstr "Profilo APO"
 
 #: src/contents/ui/Equalizer.qml:84
-msgid "Exported the Current Equalizer Settings to an External APO Preset File."
+#, fuzzy
+msgid "Exported the current Equalizer settings to an external APO preset file."
 msgstr ""
 "Le Attuali Impostazioni dell'Equalizer sono state Esportate in un File "
 "Esterno di Profilo APO."
 
 #: src/contents/ui/Equalizer.qml:87
+#, fuzzy
 msgid ""
-"Failed to Export the Current Equalizer Settings to an External APO Preset "
-"File."
+"Failed to export the current Equalizer settings to an external APO preset "
+"file."
 msgstr ""
 "Esportazione delle Attuali Impostazioni dell'Equalizer in un File Esterno di "
 "Profilo APO Non Riuscita."
@@ -1565,8 +1596,13 @@ msgstr "Livello Clipping"
 msgid "Clipping"
 msgstr "Clipping"
 
-#: src/contents/ui/MenuAddPlugins.qml:131
-msgid "Added a New Effect to the Pipeline: %1"
+#: src/contents/ui/MenuAddPlugins.qml:62
+msgid "Add %1"
+msgstr ""
+
+#: src/contents/ui/MenuAddPlugins.qml:133
+#, fuzzy
+msgid "Added a new effect to the pipeline: %1"
 msgstr "Aggiunto un Nuovo Effetto alla Pipeline: %1"
 
 #: src/contents/ui/MultibandCompressor.qml:103
@@ -1647,11 +1683,6 @@ msgstr "Dispositivo di Ingresso Sidechain"
 msgid "Reaction"
 msgstr "Reazione"
 
-#: src/contents/ui/PageStreamsEffects.qml:79
-#: src/contents/ui/PresetsAutoloadingPage.qml:96
-msgid "Empty List"
-msgstr "Elenco Vuoto"
-
 #: src/contents/ui/PageStreamsEffects.qml:80
 msgid "No Audio Application Available"
 msgstr "Nessuna Applicazione Audio Disponibile"
@@ -1661,12 +1692,12 @@ msgid "Add Effect"
 msgstr "Aggiungi Effetto"
 
 #: src/contents/ui/PageStreamsEffects.qml:321
-#: src/contents/ui/PageStreamsEffects.qml:570
+#: src/contents/ui/PageStreamsEffects.qml:572
 msgid "Players"
 msgstr "Riproduttori"
 
 #: src/contents/ui/PageStreamsEffects.qml:338
-#: src/contents/ui/PageStreamsEffects.qml:570
+#: src/contents/ui/PageStreamsEffects.qml:572
 msgid "Recorders"
 msgstr "Registratori"
 
@@ -1674,23 +1705,32 @@ msgstr "Registratori"
 msgid "Close"
 msgstr "Chiudi"
 
-#: src/contents/ui/PageStreamsEffects.qml:375
+#: src/contents/ui/PageStreamsEffects.qml:353
+msgid "Expand the list of effects pipeline"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:353
+msgid "Reduce the list of effects pipeline"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:377
 msgid "No Effects"
 msgstr "Nessun Effetto"
 
-#: src/contents/ui/PageStreamsEffects.qml:376
+#: src/contents/ui/PageStreamsEffects.qml:378
 msgid "Audio Stream Not Modified"
 msgstr "Flusso Audio Non Alterato"
 
-#: src/contents/ui/PageStreamsEffects.qml:580
+#: src/contents/ui/PageStreamsEffects.qml:582
 msgid "Effects"
 msgstr "Effetti"
 
-#: src/contents/ui/PageStreamsEffects.qml:597
-msgid "Input Monitoring"
+#: src/contents/ui/PageStreamsEffects.qml:599
+#, fuzzy
+msgid "Input monitoring"
 msgstr "Monitoraggio Input"
 
-#: src/contents/ui/PageStreamsEffects.qml:610
+#: src/contents/ui/PageStreamsEffects.qml:612
 msgid "Excluded Apps"
 msgstr "App Escluse"
 
@@ -1861,7 +1901,8 @@ msgid "Enable Service Mode"
 msgstr "Abilita Modalità di Servizio"
 
 #: src/contents/ui/PreferencesSheet.qml:35
-msgid "Easy Effects is Active in Background When the Window is Closed"
+#, fuzzy
+msgid "Easy Effects is active in background when the window is closed."
 msgstr "Easy Effects Rimane Attivo in Background Quando la Finestra è Chiusa"
 
 #: src/contents/ui/PreferencesSheet.qml:47
@@ -1869,7 +1910,8 @@ msgid "Autostart on Login"
 msgstr "Avvio Automatico al Login"
 
 #: src/contents/ui/PreferencesSheet.qml:48
-msgid "Easy Effects is Launched at User Session Startup"
+#, fuzzy
+msgid "Easy Effects is launched at user session startup."
 msgstr "Easy Effects si Carica all'Avvio della Sessione Utente"
 
 #: src/contents/ui/PreferencesSheet.qml:61
@@ -1897,10 +1939,11 @@ msgid "Ignore System Notifications"
 msgstr "Ignora le Notifiche di Sistema"
 
 #: src/contents/ui/PreferencesSheet.qml:126
+#, fuzzy
 msgid ""
-"Processing System Notifications May Cause Crackling Sound, so It Would be "
-"Better to Ignore Them, but For Some Presets It May be Recommended Since They "
-"Could Sound Too Loud"
+"Processing system notifications may cause crackling sound, so it would be "
+"better to ignore them, but for some presets it may be recommended since they "
+"could sound too loud."
 msgstr ""
 "Processare le Notifiche di Sistema Potrebbe Causare un Audio Distorto, "
 "Dunque Sarebbe Meglio Ignorarle, ma Per Alcuni Profili Sarebbe Invece "
@@ -1919,9 +1962,10 @@ msgid "Enable the Inactivity Timeout"
 msgstr "Abilita il Timeout di Inattività"
 
 #: src/contents/ui/PreferencesSheet.qml:160
+#, fuzzy
 msgid ""
-"When all Streams are Inactive, Easy Effects Pipeline Remains Loaded for an "
-"Extra Amount of Time"
+"When all streams are inactive, Easy Effects pipeline remains loaded for an "
+"extra amount of time."
 msgstr ""
 "Quando tutti i Flussi sono Inattivi, la Pipeline di Easy Effects Rimane "
 "Caricata per un Periodo Extra di Tempo"
@@ -1935,9 +1979,10 @@ msgid "Level Meters Label"
 msgstr "Etichetta dei Monitor di Livello"
 
 #: src/contents/ui/PreferencesSheet.qml:187
+#, fuzzy
 msgid ""
-"The Time it Takes for the Level Meter Labels to be Updated When the Current "
-"Level is Below the Last Highest One"
+"The time it takes for the level meter labels to be updated when the current "
+"level is below the last highest one."
 msgstr ""
 "Il Tempo Impiegato dall'Etichetta del Monitor di Livello per Aggiornarsi "
 "Quando il Livello Corrente è Inferiore all'Ultimo Picco"
@@ -2059,12 +2104,12 @@ msgid "Most Used Presets"
 msgstr "Profili Più Utilizzati"
 
 #: src/contents/ui/PreferencesSheet.qml:418
-#: src/contents/ui/ShortcutsSheet.qml:248
 msgid "Global Shortcuts"
 msgstr "Scorciatoie Globali"
 
 #: src/contents/ui/PreferencesSheet.qml:419
-msgid "Enables Support for XDG Global Shortcuts"
+#, fuzzy
+msgid "Enables support for XDG global shortcuts."
 msgstr "Abilita il Supporto alle Scorciatoie Globali XDG"
 
 #: src/contents/ui/PreferencesSheet.qml:431
@@ -2072,7 +2117,8 @@ msgid "Native Window of Effects"
 msgstr "Mostra Interfaccia Nativa degli Effetti"
 
 #: src/contents/ui/PreferencesSheet.qml:432
-msgid "Allows the Native User Interface of Effects to be Shown/Hidden"
+#, fuzzy
+msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "Permette di Visualizzare o Nascondere le Finestre Native degli Effetti"
 
 #: src/contents/ui/PreferencesSheet.qml:444
@@ -2080,7 +2126,8 @@ msgid "Update Frequency"
 msgstr "Frequenza di Aggiornamento"
 
 #: src/contents/ui/PreferencesSheet.qml:445
-msgid "Related to LV2 Plugins"
+#, fuzzy
+msgid "Related to LV2 plugins."
 msgstr "Correlato ai Plugin LV2"
 
 #: src/contents/ui/PreferencesSheet.qml:474
@@ -2104,17 +2151,17 @@ msgid "Experimental Features"
 msgstr "Funzionalità Sperimentali"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:33
-#: src/contents/ui/PresetsAutoloadingPage.qml:128
+#: src/contents/ui/PresetsAutoloadingPage.qml:130
 msgid "Device"
 msgstr "Dispositivo Audio"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
-#: src/contents/ui/PresetsAutoloadingPage.qml:168
+#: src/contents/ui/PresetsAutoloadingPage.qml:172
 msgid "Hardware Profile"
 msgstr "Profilo Dispositivo"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-#: src/contents/ui/PresetsAutoloadingPage.qml:181
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
 msgid "Local Preset"
 msgstr "Profilo Locale"
 
@@ -2122,17 +2169,30 @@ msgstr "Profilo Locale"
 msgid "Create"
 msgstr "Crea"
 
+#: src/contents/ui/PresetsAutoloadingPage.qml:65
+#, fuzzy
+msgid "Create a new autoloading preset"
+msgstr "Rimuovi Profilo di Auto Caricamento"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:144
+#, fuzzy
+msgid "Remove this autoloading preset"
+msgstr "Rimuovi Profilo di Auto Caricamento"
+
 #: src/contents/ui/PresetsCommunityPage.qml:93
-msgid "Copy to the Local List"
+#, fuzzy
+msgid "Copy to Local Presets"
 msgstr "Copia nella Lista Locale"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
-msgid "Imported the %1 Community Preset to the List of Local Presets."
+#, fuzzy
+msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
 "Importato il Profilo della Community %1 nella Lista dei Profili Locali."
 
 #: src/contents/ui/PresetsCommunityPage.qml:100
-msgid "Failed to Import the %1 Community Preset to the List of Local Presets."
+#, fuzzy
+msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "Importazione del Profilo della Community %1 nella Lista dei Profili Locali "
 "Non Riuscita."
@@ -2142,11 +2202,13 @@ msgid "Refresh"
 msgstr "Aggiorna"
 
 #: src/contents/ui/PresetsLocalPage.qml:35
-msgid "Imported a New Local Preset from an External File."
+#, fuzzy
+msgid "Imported a new local preset from an external file."
 msgstr "Importato un Nuovo Profilo Locale da un File Esterno."
 
 #: src/contents/ui/PresetsLocalPage.qml:37
-msgid "Failed to Import a New Local Preset from an External File."
+#, fuzzy
+msgid "Failed to import a new local preset from an external file."
 msgstr ""
 "Importazione di un Nuovo Profilo Locale da un File Esterno Non Riuscita."
 
@@ -2156,11 +2218,13 @@ msgid "Export Presets"
 msgstr "Esporta Profili"
 
 #: src/contents/ui/PresetsLocalPage.qml:49
-msgid "Exported all Presets to an External Folder."
+#, fuzzy
+msgid "Exported all presets to an external folder."
 msgstr "Esportati Tutti i Profili in una Cartella Esterna."
 
 #: src/contents/ui/PresetsLocalPage.qml:51
-msgid "Failed to Export All Presets to an External Folder."
+#, fuzzy
+msgid "Failed to export all presets to an external folder."
 msgstr "Esportazione di Tutti i Profili in una Cartella Esterna Non Riuscita."
 
 #: src/contents/ui/PresetsLocalPage.qml:63
@@ -2172,85 +2236,102 @@ msgid "Import Preset File"
 msgstr "Importa File di Profilo"
 
 #: src/contents/ui/PresetsLocalPage.qml:88
-msgid "Create Preset"
+#, fuzzy
+msgid "Create New Preset"
 msgstr "Crea Profilo"
 
 #: src/contents/ui/PresetsLocalPage.qml:98
-msgid "Created a New Local Preset: %1"
+#, fuzzy
+msgid "Created a new local preset: %1"
 msgstr "Creato un Nuovo Profilo Locale: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:102
-msgid "Failed to Create a New Local Preset: %1"
+#, fuzzy
+msgid "Failed to create a new local preset: %1"
 msgstr "Creazione di un Nuovo Profilo Locale Non Riuscita: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
+msgid "Save Preset"
+msgstr "Salva Profilo"
+
+#: src/contents/ui/PresetsLocalPage.qml:187
+msgid ""
+"Save current settings to the preset:\n"
+"%1"
+msgstr ""
+"Salva la Configurazione Attuale nel Profilo:\n"
+"%1"
+
+#: src/contents/ui/PresetsLocalPage.qml:191
+#, fuzzy
+msgid "Saved the current settings to %1 local preset."
+msgstr "Salvate le Impostazioni Attuali nel Profilo Locale %1."
+
+#: src/contents/ui/PresetsLocalPage.qml:193
+#, fuzzy
+msgid "Failed to save the current settings to %1 local preset."
+msgstr ""
+"Salvataggio delle Impostazioni Attuali nel Profilo Locale %1 Non Riuscito."
+
 #: src/contents/ui/PresetsLocalPage.qml:201
 msgid "Remove Preset"
 msgstr "Rimuovi Profilo"
 
-#: src/contents/ui/PresetsLocalPage.qml:187
-msgid "Are you sure you want to remove this preset from the list?"
-msgstr "Vuoi davvero rimuovere questo profilo dalla lista?"
+#: src/contents/ui/PresetsLocalPage.qml:202
+msgid ""
+"Are you sure you want to remove the preset\n"
+"%1\n"
+"from the list?"
+msgstr ""
+"Vuoi Davvero Rimuovere il Profilo\n"
+"%1\n"
+"Dalla Lista?"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
 #: src/contents/ui/PresetsLocalPage.qml:206
-msgid "Removed the %1 Local Preset."
+#, fuzzy
+msgid "Removed the %1 local preset."
 msgstr "Rimosso il Profilo Locale %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:193
 #: src/contents/ui/PresetsLocalPage.qml:208
-msgid "Failed to Remove the %1 Local Preset."
+#, fuzzy
+msgid "Failed to remove the %1 local preset."
 msgstr "Rimozione del Profilo Locale %1 Non Riuscita."
 
-#: src/contents/ui/PresetsLocalPage.qml:201
 #: src/contents/ui/PresetsLocalPage.qml:216
 msgid "Rename Preset"
 msgstr "Rinomina Profilo"
 
-#: src/contents/ui/PresetsLocalPage.qml:206
 #: src/contents/ui/PresetsLocalPage.qml:221
 msgid "Rename"
 msgstr "Rinomina"
 
-#: src/contents/ui/PresetsLocalPage.qml:215
 #: src/contents/ui/PresetsLocalPage.qml:230
-msgid "Renamed the %1 Local Preset to %2"
+#, fuzzy
+msgid "Renamed the %1 local preset to %2"
 msgstr "Modificato il Profilo Locale %1 in %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:218
 #: src/contents/ui/PresetsLocalPage.qml:233
-msgid "Failed to Rename the %1 Local Preset to %2"
+#, fuzzy
+msgid "Failed to rename the %1 local preset to %2"
 msgstr "Modifica del Profilo Locale %1 in %2 Non Riuscita"
 
-#: src/contents/ui/PresetsLocalPage.qml:226
 #: src/contents/ui/PresetsLocalPage.qml:241
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/contents/ui/PresetsLocalPage.qml:262
 #: src/contents/ui/PresetsLocalPage.qml:277
-msgid "Save Settings to this Preset"
+#, fuzzy
+msgid "Save Settings to This Preset"
 msgstr "Salva la Configurazione in questo Profilo"
 
-#: src/contents/ui/PresetsLocalPage.qml:267
-#: src/contents/ui/PresetsLocalPage.qml:191
-msgid "Saved the Current Settings to %1 Local Preset."
-msgstr "Salvate le Impostazioni Attuali nel Profilo Locale %1."
-
-#: src/contents/ui/PresetsLocalPage.qml:269
-#: src/contents/ui/PresetsLocalPage.qml:193
-msgid "Failed to Save the Current Settings to %1 Local Preset."
-msgstr ""
-"Salvataggio delle Impostazioni Attuali nel Profilo Locale %1 Non Riuscito."
-
-#: src/contents/ui/PresetsLocalPage.qml:274
 #: src/contents/ui/PresetsLocalPage.qml:285
-msgid "Rename this Preset"
+#, fuzzy
+msgid "Rename This Preset"
 msgstr "Rinomina questo Profilo"
 
-#: src/contents/ui/PresetsLocalPage.qml:282
 #: src/contents/ui/PresetsLocalPage.qml:293
-msgid "Delete this Preset"
+#, fuzzy
+msgid "Delete This Preset"
 msgstr "Rimuovi questo Profilo"
 
 #: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:104
@@ -2274,11 +2355,13 @@ msgid "Fallback Preset"
 msgstr "Profilo di Ripiego"
 
 #: src/contents/ui/RNNoise.qml:44
-msgid "Imported a New RNNoise Model File."
+#, fuzzy
+msgid "Imported a new RNNoise model file."
 msgstr "Importato un Nuovo File di Modello RNNoise."
 
 #: src/contents/ui/RNNoise.qml:46
-msgid "Failed to Import the RNNoise Model File."
+#, fuzzy
+msgid "Failed to import the RNNoise model file."
 msgstr "Importazione di un Nuovo File di Modello RNNoise Non Riuscita."
 
 #: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
@@ -2287,7 +2370,8 @@ msgid "Standard RNNoise Model"
 msgstr "Modello RNNoise Standard"
 
 #: src/contents/ui/RNNoise.qml:59
-msgid "Standard RNNoise Model Loaded."
+#, fuzzy
+msgid "Standard RNNoise model loaded."
 msgstr "Caricato il Modello Standard di RNNoise."
 
 #: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:282
@@ -2295,11 +2379,13 @@ msgid "Using %1 Model"
 msgstr "Utilizzo Modello %1"
 
 #: src/contents/ui/RNNoise.qml:66
-msgid "Loaded the %1 RNNoise Model."
+#, fuzzy
+msgid "Loaded the %1 RNNoise model."
 msgstr "Caricato il Modello RNNoise %1."
 
 #: src/contents/ui/RNNoise.qml:70
-msgid "Failed to Load the %1 Model. Fallback to Standard RNNoise Model."
+#, fuzzy
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr ""
 "Caricamento del Modello %1 Non Riuscito. Modello Standard di RNNoise Usato "
 "come Alternativa."
@@ -2321,15 +2407,18 @@ msgid "User Models"
 msgstr "Modelli Utente"
 
 #: src/contents/ui/RNNoise.qml:239
-msgid "Delete this Model"
+#, fuzzy
+msgid "Delete This Model"
 msgstr "Rimuovi questo Modello"
 
 #: src/contents/ui/RNNoise.qml:244
-msgid "Removed the %1 RNNoise Model."
+#, fuzzy
+msgid "Removed the %1 RNNoise model."
 msgstr "Rimosso il Modello RNNoise %1."
 
 #: src/contents/ui/RNNoise.qml:246
-msgid "Failed to Remove the %1 RNNoise Model."
+#, fuzzy
+msgid "Failed to remove the %1 RNNoise model."
 msgstr "Rimozione del Modello RNNoise %1 Non Riuscita."
 
 #: src/contents/ui/RNNoise.qml:314
@@ -2417,40 +2506,54 @@ msgid "Large Occupied Hall"
 msgstr "Sala Grande Occupata"
 
 #: src/contents/ui/ShortcutsSheet.qml:34
-msgid "Show Help"
+#, fuzzy
+msgid "Show help"
 msgstr "Mostra Aiuto"
 
 #: src/contents/ui/ShortcutsSheet.qml:47
-msgid "Toggle Fullscreen"
+#, fuzzy
+msgid "Toggle fullscreen"
 msgstr "Attiva/Disattiva lo Schermo Intero"
 
 #: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:294
-msgid "Toggle Global Bypass"
+#, fuzzy
+msgid "Toggle global bypass"
 msgstr "Abilita/Disabilita Bypass Globale"
 
 #: src/contents/ui/ShortcutsSheet.qml:103
-msgid "Close the Window"
+#, fuzzy
+msgid "Close the window"
 msgstr "Chiudi la Finestra"
 
 #: src/contents/ui/ShortcutsSheet.qml:131
-msgid "Terminate Easy Effects Service"
+#, fuzzy
+msgid "Terminate Easy Effects service"
 msgstr "Termina il Servizio di Easy Effects"
 
 #: src/contents/ui/ShortcutsSheet.qml:171
-msgid "Toggle Process All Inputs"
+#, fuzzy
+msgid "Toggle process all inputs"
 msgstr "Abilita/Disabilita il Processa Tutto in Ingresso"
 
 #: src/contents/ui/ShortcutsSheet.qml:211
-msgid "Toggle Process All Outputs"
+#, fuzzy
+msgid "Toggle process all outputs"
 msgstr "Abilita/Disabilita il Processa Tutto in Uscita"
 
 #: src/contents/ui/ShortcutsSheet.qml:224
 #: src/contents/ui/ShortcutsSheet.qml:237
-msgid "Can Be Used on Numeric Controls"
+#, fuzzy
+msgid "Can be used on numeric controls"
 msgstr "Può Essere Usato sui Parametri Numerici"
 
+#: src/contents/ui/ShortcutsSheet.qml:248
+#, fuzzy
+msgid "Global shortcuts"
+msgstr "Scorciatoie Globali"
+
 #: src/contents/ui/ShortcutsSheet.qml:334
-msgid "Toggle Microphone Monitoring"
+#, fuzzy
+msgid "Toggle microphone monitoring"
 msgstr "Abilita/Disabilita il Monitoraggio del Microfono"
 
 #: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:383
@@ -2605,31 +2708,38 @@ msgstr "Misuratore Livello Uscita"
 #: src/presets_manager.cpp:758 src/presets_manager.cpp:765
 #: src/presets_manager.cpp:775 src/presets_manager.cpp:782
 #: src/presets_manager.cpp:792 src/presets_manager.cpp:801
-msgid "Preset Not Loaded Correctly"
+#, fuzzy
+msgid "Preset not loaded correctly"
 msgstr "Profilo Non Caricato Correttamente"
 
 #: src/presets_manager.cpp:758
-msgid "Wrong Format in Excluded Apps List"
+#, fuzzy
+msgid "Wrong format in excluded apps list"
 msgstr "Formato Errato nella Lista delle Applicazioni Escluse"
 
 #: src/presets_manager.cpp:766
-msgid "Generic Error While Loading Excluded Apps List"
+#, fuzzy
+msgid "Generic error while loading excluded apps list"
 msgstr "Errore Generico nel Caricamento della Lista delle Applicazioni Escluse"
 
 #: src/presets_manager.cpp:775
-msgid "Wrong Format in Effects List"
+#, fuzzy
+msgid "Wrong format in effects list"
 msgstr "Formato Errato nella Lista degli Effetti"
 
 #: src/presets_manager.cpp:782
-msgid "Generic Error While Loading Effects List"
+#, fuzzy
+msgid "Generic error while loading effects list"
 msgstr "Errore Generico nel Caricamento della Lista degli Effetti"
 
 #: src/presets_manager.cpp:793
-msgid "One or More Parameters Have a Wrong Format"
+#, fuzzy
+msgid "One or more parameters have a wrong format"
 msgstr "Uno o Più Parametri Hanno un Formato Errato"
 
 #: src/presets_manager.cpp:802
-msgid "Generic Error While Loading The Effect"
+#, fuzzy
+msgid "Generic error while loading the effect"
 msgstr "Errore Generico nel Caricamento dell'Effetto"
 
 #: src/pw_model_nodes.cpp:488
@@ -2732,45 +2842,30 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Effetti Audio per Applicazioni Pipewire"
 
-#: src/contents/ui/PresetsLocalPage.qml:186
-msgid "Save Preset"
-msgstr "Salva Profilo"
+#~ msgid "Empty"
+#~ msgstr "Vuoto"
 
-#: src/contents/ui/PresetsLocalPage.qml:187
-msgid ""
-"Save current settings to the preset:\n"
-"%1"
-msgstr ""
-"Salva la Configurazione Attuale nel Profilo:\n"
-"%1"
+#~ msgid "Delete this App"
+#~ msgstr "Rimuovi questa App"
 
-#: src/contents/ui/PresetsLocalPage.qml:202
-msgid ""
-"Are you sure you want to remove the preset\n"
-"%1\n"
-"from the list?"
-msgstr ""
-"Vuoi Davvero Rimuovere il Profilo\n"
-"%1\n"
-"Dalla Lista?"
+#~ msgid "Are you sure you want to remove this preset from the list?"
+#~ msgstr "Vuoi davvero rimuovere questo profilo dalla lista?"
 
-#: src/contents/ui/PresetsLocalPage.qml:187
-msgid ""
-"Save Current Settings to the Preset:\n"
-"%1"
-msgstr ""
-"Salva la Configurazione Attuale nel Profilo:\n"
-"%1"
+#~ msgid ""
+#~ "Save Current Settings to the Preset:\n"
+#~ "%1"
+#~ msgstr ""
+#~ "Salva la Configurazione Attuale nel Profilo:\n"
+#~ "%1"
 
-#: src/contents/ui/PresetsLocalPage.qml:202
-msgid ""
-"Are You Sure You Want to Remove the Preset\n"
-"%1\n"
-"From the List?"
-msgstr ""
-"Vuoi Davvero Rimuovere il Profilo\n"
-"%1\n"
-"Dalla Lista?"
+#~ msgid ""
+#~ "Are You Sure You Want to Remove the Preset\n"
+#~ "%1\n"
+#~ "From the List?"
+#~ msgstr ""
+#~ "Vuoi Davvero Rimuovere il Profilo\n"
+#~ "%1\n"
+#~ "Dalla Lista?"
 
 #~ msgid "Impluse File Imported."
 #~ msgstr "File di Risposta Impulsiva Importato."
@@ -2842,21 +2937,21 @@ msgstr ""
 #~ msgstr "Modello Caricato: %1"
 
 #~ msgid ""
-#~ "Set plugin property. Format: pipeline:plugin_name:instance_id:property:"
-#~ "value"
+#~ "Set plugin property. Format: "
+#~ "pipeline:plugin_name:instance_id:property:value"
 #~ msgstr ""
-#~ "Imposta proprietà plugin. Formato: pipeline:nome_effetto:id_istanza:"
-#~ "proprietà:valore"
+#~ "Imposta proprietà plugin. Formato: "
+#~ "pipeline:nome_effetto:id_istanza:proprietà:valore"
 
 #~ msgid "property-string"
 #~ msgstr "stringa-proprietà"
 
 #~ msgid ""
-#~ "Invalid property format. Expected: pipeline:plugin_name:instance_id:"
-#~ "property:value"
+#~ "Invalid property format. Expected: "
+#~ "pipeline:plugin_name:instance_id:property:value"
 #~ msgstr ""
-#~ "Formato proprietà non valido. Previsto: pipeline:plugin_name:instance_id:"
-#~ "property:value"
+#~ "Formato proprietà non valido. Previsto: "
+#~ "pipeline:plugin_name:instance_id:property:value"
 
 #~ msgid "Invalid pipeline type. Must be 'input' or 'output'"
 #~ msgstr "Tipo di pipeline non valido. Deve essere 'input' o 'output'"
@@ -3425,9 +3520,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Profilo GraphicEQ Non Caricato. Il Formato Potrebbe Essere Non "
 #~ "Supportato. Si Prega di Controllarne il Contenuto."
-
-#~ msgid "Remove Autoloading Preset"
-#~ msgstr "Rimuovi Profilo di Auto Caricamento"
 
 #~ msgid "Remove"
 #~ msgstr "Rimuovi"
@@ -4661,9 +4753,6 @@ msgstr ""
 
 #~ msgid "Use Default"
 #~ msgstr "Usa Predefinito"
-
-#~ msgid "Remove this plugin"
-#~ msgstr "Rimuovi questo profilo"
 
 #~ msgid "Start Service at Login"
 #~ msgstr "Esegui Servizio all'Avvio"

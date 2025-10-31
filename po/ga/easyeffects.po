@@ -725,6 +725,7 @@ msgstr "Theip ar an gcomhad Convolver Impulse a iompórtáil."
 #: src/contents/ui/MenuAddPlugins.qml:142
 #: src/contents/ui/PresetsCommunityPage.qml:40
 #: src/contents/ui/PresetsLocalPage.qml:144
+#: src/contents/ui/MenuAddPlugins.qml:144
 msgid "Search"
 msgstr "Cuardaigh"
 
@@ -998,6 +999,7 @@ msgstr "Rochtain"
 
 #: src/contents/ui/DelegateModulesList.qml:64
 #: src/contents/ui/PresetsAutoloadingPage.qml:154
+#: src/contents/ui/PresetsAutoloadingPage.qml:158
 msgid "Description"
 msgstr "Cur síos"
 
@@ -1705,6 +1707,12 @@ msgstr "Imoibriú"
 
 #: src/contents/ui/PageStreamsEffects.qml:79
 #: src/contents/ui/PresetsAutoloadingPage.qml:96
+#: src/contents/ui/BlocklistSheet.qml:97
+#: src/contents/ui/ConvolverImpulseSheet.qml:65
+#: src/contents/ui/MenuAddPlugins.qml:33
+#: src/contents/ui/PresetsAutoloadingPage.qml:98
+#: src/contents/ui/PresetsCommunityPage.qml:64
+#: src/contents/ui/PresetsLocalPage.qml:169 src/contents/ui/RNNoise.qml:212
 msgid "Empty List"
 msgstr "Liosta Folamh"
 
@@ -1718,11 +1726,13 @@ msgstr "Cuir Maisíocht Leis"
 
 #: src/contents/ui/PageStreamsEffects.qml:321
 #: src/contents/ui/PageStreamsEffects.qml:570
+#: src/contents/ui/PageStreamsEffects.qml:572
 msgid "Players"
 msgstr "Imreoirí"
 
 #: src/contents/ui/PageStreamsEffects.qml:338
 #: src/contents/ui/PageStreamsEffects.qml:570
+#: src/contents/ui/PageStreamsEffects.qml:572
 msgid "Recorders"
 msgstr "Taifeadáin"
 
@@ -1731,14 +1741,17 @@ msgid "Close"
 msgstr "Dún"
 
 #: src/contents/ui/PageStreamsEffects.qml:375
+#: src/contents/ui/PageStreamsEffects.qml:377
 msgid "No Effects"
 msgstr "Gan Éifeachtaí"
 
 #: src/contents/ui/PageStreamsEffects.qml:376
+#: src/contents/ui/PageStreamsEffects.qml:378
 msgid "Audio Stream Not Modified"
 msgstr "Sruth fuaime gan athrú"
 
 #: src/contents/ui/PageStreamsEffects.qml:580
+#: src/contents/ui/PageStreamsEffects.qml:582
 msgid "Effects"
 msgstr "Éifeachtaí"
 
@@ -1747,6 +1760,7 @@ msgid "Input Monitoring"
 msgstr "Monatóireacht Ionchuir"
 
 #: src/contents/ui/PageStreamsEffects.qml:610
+#: src/contents/ui/PageStreamsEffects.qml:612
 msgid "Excluded Apps"
 msgstr "Feidhmchláir Eisiata"
 
@@ -2157,16 +2171,19 @@ msgstr "Gnéithe Turgnamhacha"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:33
 #: src/contents/ui/PresetsAutoloadingPage.qml:128
+#: src/contents/ui/PresetsAutoloadingPage.qml:130
 msgid "Device"
 msgstr "Gléas"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
 #: src/contents/ui/PresetsAutoloadingPage.qml:168
+#: src/contents/ui/PresetsAutoloadingPage.qml:172
 msgid "Hardware Profile"
 msgstr "Próifíl Crua-earraí"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
 #: src/contents/ui/PresetsAutoloadingPage.qml:181
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
 msgid "Local Preset"
 msgstr "Réamhshocrú Áitiúil"
 
@@ -2756,6 +2773,437 @@ msgstr ""
 "An Bhfuil Tú Cinnte Gur Mian Leat An Réamhshocrú\n"
 "%1\n"
 "A Bhaint Den Liosta?"
+
+#: src/contents/ui/Autogain.qml:250
+#, fuzzy
+msgid "Force silence when the level is below the silence threshold"
+msgstr ""
+"Cuir Tost i bhFeidhm nuair a bhíonn an Leibhéal faoi bhun Thairseach na Tost"
+
+#: src/contents/ui/BlocklistSheet.qml:150
+#, fuzzy
+msgid "Remove This App"
+msgstr "Bain an éifeacht seo"
+
+#: src/contents/ui/BlocklistSheet.qml:177
+#, fuzzy
+msgid "Show Excluded Apps"
+msgstr "Feidhmchláir Eisiata"
+
+#: src/contents/ui/BlocklistSheet.qml:178
+#, fuzzy
+msgid "Show excluded applications in the list of players/recorders"
+msgstr "Taispeáin Feidhmchláir Eisiata sa Rannán Sruthanna"
+
+#: src/contents/ui/Convolver.qml:50
+#, fuzzy
+msgid "Loaded the %1 Convolver impulse."
+msgstr "Luchtaíodh an %1 Convolver Impulse."
+
+#: src/contents/ui/Convolver.qml:56
+#, fuzzy
+msgid "The Convolver is in passthrough mode."
+msgstr "Tá an Convolver i Mód Pasáiste."
+
+#: src/contents/ui/Convolver.qml:58
+#, fuzzy
+msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
+msgstr "Theip ar luchtú an %1 Impulse. Tá an Convolver i Mód Passthrough."
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:31
+#, fuzzy
+msgid "Imported a new Convolver impluse file."
+msgstr "Iompórtáladh Comhad Impluse Convolver Nua."
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:33
+#, fuzzy
+msgid "Failed to import the Convolver impulse file."
+msgstr "Theip ar an gcomhad Convolver Impulse a iompórtáil."
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:88
+#, fuzzy
+msgid "Removed the %1 Convolver impulse."
+msgstr "Baineadh an %1 Impulse Convolver."
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:90
+#, fuzzy
+msgid "Failed to remove the %1 Convolver impulse."
+msgstr "Theip ar an Impulse Convolver %1 a Bhaint."
+
+#: src/contents/ui/ConvolverImpulseSheet.qml:104
+#, fuzzy
+msgid "Delete This Impulse"
+msgstr "Scrios an Impulse seo"
+
+#: src/contents/ui/DelegatePluginsList.qml:65
+#, fuzzy
+msgid "Toggle This Effect"
+msgstr "Cumasaigh an Éifeacht seo"
+
+#: src/contents/ui/DelegatePluginsList.qml:79
+#, fuzzy
+msgid "Remove This Effect"
+msgstr "Bain an éifeacht seo"
+
+#: src/contents/ui/DelegateStreamsList.qml:110
+#, fuzzy
+msgid "Add %1 to excluded applications"
+msgstr "Cuir le hIarratais Eisiata"
+
+#: src/contents/ui/Equalizer.qml:54
+#, fuzzy
+msgid "Imported the Equalizer APO preset file."
+msgstr "Iompórtáladh an Comhad Réamhshocraithe Cothromóra APO."
+
+#: src/contents/ui/Equalizer.qml:56
+#, fuzzy
+msgid "Failed to import the Equalizer APO preset file."
+msgstr "Theip ar chomhad réamhshocraithe an chothromóra APO a iompórtáil."
+
+#: src/contents/ui/Equalizer.qml:69
+#, fuzzy
+msgid "Imported the GraphicEQ preset file."
+msgstr "Iompórtáladh an Comhad Réamhshocraithe GraphicEQ."
+
+#: src/contents/ui/Equalizer.qml:71
+#, fuzzy
+msgid "Failed to import the GraphicEQ preset file."
+msgstr "Theip ar an gcomhad réamhshocraithe GraphicEQ a iompórtáil."
+
+#: src/contents/ui/Equalizer.qml:84
+#, fuzzy
+msgid "Exported the current Equalizer settings to an external APO preset file."
+msgstr ""
+"Rinneadh na Socruithe Cothromóra Reatha a easpórtáil chuig Comhad "
+"Réamhshocraithe APO Seachtrach."
+
+#: src/contents/ui/Equalizer.qml:87
+#, fuzzy
+msgid ""
+"Failed to export the current Equalizer settings to an external APO preset "
+"file."
+msgstr ""
+"Theip ar Shocruithe Reatha an Chothromóra a Easpórtáil chuig Comhad "
+"Réamhshocraithe APO Seachtrach."
+
+#: src/contents/ui/MenuAddPlugins.qml:62
+msgid "Add %1"
+msgstr ""
+
+#: src/contents/ui/MenuAddPlugins.qml:133
+#, fuzzy
+msgid "Added a new effect to the pipeline: %1"
+msgstr "Cuireadh Éifeacht Nua leis an bPíblíne: %1"
+
+#: src/contents/ui/PageStreamsEffects.qml:353
+msgid "Expand the list of effects pipeline"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:353
+msgid "Reduce the list of effects pipeline"
+msgstr ""
+
+#: src/contents/ui/PageStreamsEffects.qml:599
+#, fuzzy
+msgid "Input monitoring"
+msgstr "Monatóireacht Ionchuir"
+
+#: src/contents/ui/PreferencesSheet.qml:35
+#, fuzzy
+msgid "Easy Effects is active in background when the window is closed."
+msgstr ""
+"Bíonn Easy Effects Gníomhach sa Chúlra Nuair a bhíonn an Fhuinneog Dúnta"
+
+#: src/contents/ui/PreferencesSheet.qml:48
+#, fuzzy
+msgid "Easy Effects is launched at user session startup."
+msgstr "Seoltar Éifeachtaí Éasca ag Tosaithe Seisiúin Úsáideora"
+
+#: src/contents/ui/PreferencesSheet.qml:126
+#, fuzzy
+msgid ""
+"Processing system notifications may cause crackling sound, so it would be "
+"better to ignore them, but for some presets it may be recommended since they "
+"could sound too loud."
+msgstr ""
+"D’fhéadfadh fógraí córais phróiseála fuaim bhréige a chur faoi deara, mar "
+"sin bheadh sé níos fearr neamhaird a dhéanamh orthu, ach i gcás roinnt "
+"réamhshocruithe, d’fhéadfaí é a mholadh toisc go bhféadfadh siad a bheith ró-"
+"ard"
+
+#: src/contents/ui/PreferencesSheet.qml:160
+#, fuzzy
+msgid ""
+"When all streams are inactive, Easy Effects pipeline remains loaded for an "
+"extra amount of time."
+msgstr ""
+"Nuair a bhíonn na sruthanna uile neamhghníomhach, fanann an Easy Effects "
+"Pipeline luchtaithe ar feadh tamaill bhreise"
+
+#: src/contents/ui/PreferencesSheet.qml:187
+#, fuzzy
+msgid ""
+"The time it takes for the level meter labels to be updated when the current "
+"level is below the last highest one."
+msgstr ""
+"An t-am a thógann sé chun lipéid an Mhéadair Leibhéil a nuashonrú nuair a "
+"bhíonn an Leibhéal Reatha faoi bhun an Leibhéil is Airde Deiridh"
+
+#: src/contents/ui/PreferencesSheet.qml:419
+#, fuzzy
+msgid "Enables support for XDG global shortcuts."
+msgstr "Cumasaíonn sé tacaíocht do Aicearraí Domhanda XDG"
+
+#: src/contents/ui/PreferencesSheet.qml:432
+#, fuzzy
+msgid "Allows the native user interface of effects to be shown/hidden."
+msgstr ""
+"Ceadaíonn sé seo Comhéadan Úsáideora Dúchasach na nÉifeachtaí a Thaispeáint/"
+"a Fholach"
+
+#: src/contents/ui/PreferencesSheet.qml:445
+#, fuzzy
+msgid "Related to LV2 plugins."
+msgstr "A bhaineann le Breiseáin LV2"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:65
+#, fuzzy
+msgid "Create a new autoloading preset"
+msgstr "Bain Réamhshocrú Uathluchtaithe"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:144
+#, fuzzy
+msgid "Remove this autoloading preset"
+msgstr "Bain an réamhshocrú uathluchtaithe seo"
+
+#: src/contents/ui/PresetsCommunityPage.qml:93
+#, fuzzy
+msgid "Copy to Local Presets"
+msgstr "Cóipeáil chuig an Liosta Áitiúil"
+
+#: src/contents/ui/PresetsCommunityPage.qml:98
+#, fuzzy
+msgid "Imported the %1 community preset to the list of local presets."
+msgstr ""
+"Iompórtáladh an Réamhshocrú Pobail %1 chuig an Liosta Réamhshocruithe "
+"Áitiúla."
+
+#: src/contents/ui/PresetsCommunityPage.qml:100
+#, fuzzy
+msgid "Failed to import the %1 community preset to the list of local presets."
+msgstr ""
+"Theip ar réamhshocrú pobail %1 a iompórtáil chuig an liosta réamhshocruithe "
+"áitiúla."
+
+#: src/contents/ui/PresetsLocalPage.qml:35
+#, fuzzy
+msgid "Imported a new local preset from an external file."
+msgstr "Iompórtáladh Réamhshocrú Áitiúil Nua ó Chomhad Seachtrach."
+
+#: src/contents/ui/PresetsLocalPage.qml:37
+#, fuzzy
+msgid "Failed to import a new local preset from an external file."
+msgstr "Theip ar réamhshocrú áitiúil nua a iompórtáil ó chomhad seachtrach."
+
+#: src/contents/ui/PresetsLocalPage.qml:49
+#, fuzzy
+msgid "Exported all presets to an external folder."
+msgstr "Onnmhairíodh na réamhshocruithe go léir chuig fillteán seachtrach."
+
+#: src/contents/ui/PresetsLocalPage.qml:51
+#, fuzzy
+msgid "Failed to export all presets to an external folder."
+msgstr "Theip ar gach réamhshocrú a easpórtáil chuig fillteán seachtrach."
+
+#: src/contents/ui/PresetsLocalPage.qml:88
+#, fuzzy
+msgid "Create New Preset"
+msgstr "Cruthaigh Réamhshocrú"
+
+#: src/contents/ui/PresetsLocalPage.qml:98
+#, fuzzy
+msgid "Created a new local preset: %1"
+msgstr "Réamhshocrú Áitiúil Nua Cruthaithe: %1"
+
+#: src/contents/ui/PresetsLocalPage.qml:102
+#, fuzzy
+msgid "Failed to create a new local preset: %1"
+msgstr "Theip ar Réamhshocrú Áitiúil Nua a Chruthú: %1"
+
+#: src/contents/ui/PresetsLocalPage.qml:191
+#, fuzzy
+msgid "Saved the current settings to %1 local preset."
+msgstr "Sábháladh na Socruithe Reatha go %1 Réamhshocrú Áitiúil."
+
+#: src/contents/ui/PresetsLocalPage.qml:193
+#, fuzzy
+msgid "Failed to save the current settings to %1 local preset."
+msgstr "Theip ar na Socruithe Reatha a Shábháil chuig %1 Réamhshocrú Áitiúil."
+
+#: src/contents/ui/PresetsLocalPage.qml:206
+#, fuzzy
+msgid "Removed the %1 local preset."
+msgstr "Baineadh an réamhshocrú áitiúil %1."
+
+#: src/contents/ui/PresetsLocalPage.qml:208
+#, fuzzy
+msgid "Failed to remove the %1 local preset."
+msgstr "Theip ar an réamhshocrú áitiúil %1 a bhaint."
+
+#: src/contents/ui/PresetsLocalPage.qml:230
+#, fuzzy
+msgid "Renamed the %1 local preset to %2"
+msgstr "Athainmníodh an Réamhshocrú Áitiúil %1 go %2"
+
+#: src/contents/ui/PresetsLocalPage.qml:233
+#, fuzzy
+msgid "Failed to rename the %1 local preset to %2"
+msgstr "Theip ar athainmniú an réamhshocraithe áitiúil %1 go %2"
+
+#: src/contents/ui/PresetsLocalPage.qml:277
+#, fuzzy
+msgid "Save Settings to This Preset"
+msgstr "Sábháil Socruithe chuig an Réamhshocrú seo"
+
+#: src/contents/ui/PresetsLocalPage.qml:285
+#, fuzzy
+msgid "Rename This Preset"
+msgstr "Athainmnigh an Réamhshocrú seo"
+
+#: src/contents/ui/PresetsLocalPage.qml:293
+#, fuzzy
+msgid "Delete This Preset"
+msgstr "Scrios an Réamhshocrú seo"
+
+#: src/contents/ui/RNNoise.qml:44
+#, fuzzy
+msgid "Imported a new RNNoise model file."
+msgstr "Iompórtáladh Comhad Múnla RNNoise Nua."
+
+#: src/contents/ui/RNNoise.qml:46
+#, fuzzy
+msgid "Failed to import the RNNoise model file."
+msgstr "Theip ar iompórtáil an chomhaid mhúnla RNNoise."
+
+#: src/contents/ui/RNNoise.qml:59
+#, fuzzy
+msgid "Standard RNNoise model loaded."
+msgstr "Luchtaithe Samhail Chaighdeánach RNNoise."
+
+#: src/contents/ui/RNNoise.qml:66
+#, fuzzy
+msgid "Loaded the %1 RNNoise model."
+msgstr "Luchtaíodh an tSamhail %1 RNNoise."
+
+#: src/contents/ui/RNNoise.qml:70
+#, fuzzy
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr ""
+"Theip ar an tSamhail %1 a luchtú. Úsáid Samhail Torainn Chaighdeánach "
+"RNNoise mar mhalairt air."
+
+#: src/contents/ui/RNNoise.qml:239
+#, fuzzy
+msgid "Delete This Model"
+msgstr "Scrios an tSamhail seo"
+
+#: src/contents/ui/RNNoise.qml:244
+#, fuzzy
+msgid "Removed the %1 RNNoise model."
+msgstr "Baineadh an tSamhail %1 RNNoise."
+
+#: src/contents/ui/RNNoise.qml:246
+#, fuzzy
+msgid "Failed to remove the %1 RNNoise model."
+msgstr "Theip ar an tSamhail RNNoise %1 a Bhaint."
+
+#: src/contents/ui/ShortcutsSheet.qml:34
+#, fuzzy
+msgid "Show help"
+msgstr "Taispeáin Cabhair"
+
+#: src/contents/ui/ShortcutsSheet.qml:47
+#, fuzzy
+msgid "Toggle fullscreen"
+msgstr "Lánscáileán a Athsholáthar"
+
+#: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:294
+#, fuzzy
+msgid "Toggle global bypass"
+msgstr "Seachbhóthar Domhanda a Athrú"
+
+#: src/contents/ui/ShortcutsSheet.qml:103
+#, fuzzy
+msgid "Close the window"
+msgstr "Dún an Fhuinneog"
+
+#: src/contents/ui/ShortcutsSheet.qml:131
+#, fuzzy
+msgid "Terminate Easy Effects service"
+msgstr "Deireadh a chur le Seirbhís Éifeachtaí Éasca"
+
+#: src/contents/ui/ShortcutsSheet.qml:171
+#, fuzzy
+msgid "Toggle process all inputs"
+msgstr "Próiseas Gach Ionchur a Athrú"
+
+#: src/contents/ui/ShortcutsSheet.qml:211
+#, fuzzy
+msgid "Toggle process all outputs"
+msgstr "Athraigh Próiseas na nAschur go léir"
+
+#: src/contents/ui/ShortcutsSheet.qml:224
+#: src/contents/ui/ShortcutsSheet.qml:237
+#, fuzzy
+msgid "Can be used on numeric controls"
+msgstr "Is féidir é a úsáid ar rialuithe uimhriúla"
+
+#: src/contents/ui/ShortcutsSheet.qml:248
+#, fuzzy
+msgid "Global shortcuts"
+msgstr "Aicearraí Domhanda"
+
+#: src/contents/ui/ShortcutsSheet.qml:334
+#, fuzzy
+msgid "Toggle microphone monitoring"
+msgstr "Monatóireacht Micreafóin a Athsholáthar"
+
+#: src/presets_manager.cpp:758 src/presets_manager.cpp:765
+#: src/presets_manager.cpp:775 src/presets_manager.cpp:782
+#: src/presets_manager.cpp:792 src/presets_manager.cpp:801
+#, fuzzy
+msgid "Preset not loaded correctly"
+msgstr "Réamhshocrú Gan luchtú i gceart"
+
+#: src/presets_manager.cpp:758
+#, fuzzy
+msgid "Wrong format in excluded apps list"
+msgstr "Formáid mhícheart sa liosta feidhmchlár eisiata"
+
+#: src/presets_manager.cpp:766
+#, fuzzy
+msgid "Generic error while loading excluded apps list"
+msgstr "Earráid chineálach agus liosta feidhmchlár eisiata á luchtú"
+
+#: src/presets_manager.cpp:775
+#, fuzzy
+msgid "Wrong format in effects list"
+msgstr "Formáid Mhícheart sa Liosta Éifeachtaí"
+
+#: src/presets_manager.cpp:782
+#, fuzzy
+msgid "Generic error while loading effects list"
+msgstr "Earráid chineálach agus liosta na n-éifeachtaí á luchtú"
+
+#: src/presets_manager.cpp:793
+#, fuzzy
+msgid "One or more parameters have a wrong format"
+msgstr "Tá formáid mhícheart ag paraiméadar amháin nó níos mó"
+
+#: src/presets_manager.cpp:802
+#, fuzzy
+msgid "Generic error while loading the effect"
+msgstr "Earráid chineálach agus an éifeacht á luchtú"
 
 #~ msgid "Impluse File Imported."
 #~ msgstr "Comhad Impulse Iompórtáilte."
