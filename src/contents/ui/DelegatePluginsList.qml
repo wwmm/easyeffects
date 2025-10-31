@@ -20,18 +20,24 @@ Item {
     signal selectedChanged(string name)
 
     width: {
-        if (parent && !DB.Manager.main.collapsePluginsList)
-            parent.width > listItemDelegate.implicitWidth ? parent.width : listItemDelegate.implicitWidth;
+        if (!DB.Manager.main.collapsePluginsList)
+            listView.width > listItemDelegate.implicitWidth ? listView.width : listItemDelegate.implicitWidth;
         else
             listItemDelegate.implicitWidth;
     }
+
     height: listItemDelegate.height
 
     Controls.ItemDelegate {
         id: listItemDelegate
 
+        anchors {
+            left: parent.left
+            right: parent.right
+        }
+
         hoverEnabled: true
-        width: parent.width
+        // width: parent.width
         highlighted: delegateItem.ListView.isCurrentItem
         onClicked: {
             delegateItem.ListView.view.currentIndex = delegateItem.index;

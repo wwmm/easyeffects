@@ -280,7 +280,7 @@ Kirigami.Page {
                     id: pluginsListView
 
                     Layout.fillHeight: true
-                    implicitWidth: contentItem.childrenRect.width
+                    Layout.preferredWidth: contentItem.childrenRect.width
                     clip: true
                     reuseItems: true
                     model: pluginsListModel
@@ -450,6 +450,7 @@ Kirigami.Page {
     }
 
     footer: Kirigami.AbstractApplicationHeader {
+        position: Controls.ToolBar.Footer
 
         contentItem: RowLayout {
             anchors {
@@ -457,6 +458,7 @@ Kirigami.Page {
                 leftMargin: Kirigami.Units.smallSpacing
                 right: parent.right
                 rightMargin: Kirigami.Units.smallSpacing
+                bottom: parent.bottom
             }
 
             Kirigami.ActionToolBar {
