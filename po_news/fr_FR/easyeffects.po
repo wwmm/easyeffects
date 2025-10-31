@@ -1170,8 +1170,8 @@ msgid ""
 "It is now possible to combine impulse responses in the Convolver interface. "
 "A new impulse file is generated and it should be visible in the impulse list."
 msgstr ""
-"Il est maintenant possible de combiner des réponses d’impulsions dans l’"
-"interface du Convolver. Un nouveau fichier d’impulsions est généré et il "
+"Il est maintenant possible de combiner des réponses d’impulsions dans "
+"l’interface du Convolver. Un nouveau fichier d’impulsions est généré et il "
 "devrait être visible dans la liste des impulsions."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:432
