@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-10-30 22:31+0000\n"
+"POT-Creation-Date: 2025-10-31 15:53+0000\n"
 "PO-Revision-Date: 2025-08-30 15:01+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1883,12 +1883,12 @@ msgid "No Clients"
 msgstr "Klienti"
 
 #: src/contents/ui/PipeWirePage.qml:288
-#: src/contents/ui/PreferencesSheet.qml:209
+#: src/contents/ui/PreferencesSheet.qml:218
 msgid "State"
 msgstr "Stav"
 
 #: src/contents/ui/PipeWirePage.qml:295
-#: src/contents/ui/PreferencesSheet.qml:216
+#: src/contents/ui/PreferencesSheet.qml:225
 msgid "Enabled"
 msgstr "Povoleno"
 
@@ -1960,266 +1960,267 @@ msgstr "Rychlé hledání"
 msgid "Anti-aliasing"
 msgstr "Vyrovnávání obrazu"
 
-#: src/contents/ui/PreferencesSheet.qml:14
-#: src/contents/ui/PreferencesSheet.qml:22
-#: src/contents/ui/PreferencesSheet.qml:547
-#: src/contents/ui/PreferencesSheet.qml:560 src/contents/ui/main.qml:498
+#: src/contents/ui/PreferencesSheet.qml:15
+#: src/contents/ui/PreferencesSheet.qml:23
+#: src/contents/ui/PreferencesSheet.qml:588
+#: src/contents/ui/PreferencesSheet.qml:601 src/contents/ui/main.qml:498
 #, fuzzy
 msgid "Preferences"
 msgstr "_Nastavení"
 
-#: src/contents/ui/PreferencesSheet.qml:34
+#: src/contents/ui/PreferencesSheet.qml:35
 #, fuzzy
 msgid "Enable Service Mode"
 msgstr "Režim ekvalizéru"
 
-#: src/contents/ui/PreferencesSheet.qml:35
+#: src/contents/ui/PreferencesSheet.qml:36
 msgid "Easy Effects is active in background when the window is closed."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:47
+#: src/contents/ui/PreferencesSheet.qml:48
 msgid "Autostart on Login"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:48
+#: src/contents/ui/PreferencesSheet.qml:49
 msgid "Easy Effects is launched at user session startup."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:61
+#: src/contents/ui/PreferencesSheet.qml:62
 msgid "Show the Tray Icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:81
+#: src/contents/ui/PreferencesSheet.qml:86
 msgid "Process All Output Streams"
 msgstr "Zpracovat všechny výstupní streamy"
 
-#: src/contents/ui/PreferencesSheet.qml:92
+#: src/contents/ui/PreferencesSheet.qml:97
 msgid "Process All Input Streams"
 msgstr "Zpracovat všechny vstupní streamy"
 
-#: src/contents/ui/PreferencesSheet.qml:103
+#: src/contents/ui/PreferencesSheet.qml:108
 msgid "Ignore Streams from Monitor of Devices"
 msgstr "Ignorovat streamy z monitoru zařízení"
 
-#: src/contents/ui/PreferencesSheet.qml:114
+#: src/contents/ui/PreferencesSheet.qml:119
 msgid "Use Cubic Volume"
 msgstr "Použít kubickou hlasitost"
 
-#: src/contents/ui/PreferencesSheet.qml:125
+#: src/contents/ui/PreferencesSheet.qml:130
 msgid "Ignore System Notifications"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:126
+#: src/contents/ui/PreferencesSheet.qml:131
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:137
+#: src/contents/ui/PreferencesSheet.qml:142
 #, fuzzy
 msgid "Enable/Disable Input Monitoring"
 msgstr "Zapnout/vypnout monitorování vstupu"
 
-#: src/contents/ui/PreferencesSheet.qml:148
+#: src/contents/ui/PreferencesSheet.qml:153
 msgid "Mic Monitor Plays to Output Effects Pipeline"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:159
+#: src/contents/ui/PreferencesSheet.qml:164
 #, fuzzy
 msgid "Enable the Inactivity Timeout"
 msgstr "Časový limit nečinnosti"
 
-#: src/contents/ui/PreferencesSheet.qml:160
+#: src/contents/ui/PreferencesSheet.qml:165
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:172
+#: src/contents/ui/PreferencesSheet.qml:177
 msgid "Inactivity Timeout"
 msgstr "Časový limit nečinnosti"
 
-#: src/contents/ui/PreferencesSheet.qml:186
+#: src/contents/ui/PreferencesSheet.qml:191
 #, fuzzy
 msgid "Level Meters Label"
 msgstr "Měřič úrovně"
 
-#: src/contents/ui/PreferencesSheet.qml:187
+#: src/contents/ui/PreferencesSheet.qml:192
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:227
+#: src/contents/ui/PreferencesSheet.qml:236
 #, fuzzy
 msgid "Audio Delay Compensation"
 msgstr "Kompenzace Hlasitosti"
 
-#: src/contents/ui/PreferencesSheet.qml:241
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Style"
 msgstr "Styl"
 
-#: src/contents/ui/PreferencesSheet.qml:248
+#: src/contents/ui/PreferencesSheet.qml:257
 msgid "Color Scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:252
+#: src/contents/ui/PreferencesSheet.qml:261
 #, fuzzy
 msgid "Automatic"
 msgstr "Autogain"
 
-#: src/contents/ui/PreferencesSheet.qml:252
+#: src/contents/ui/PreferencesSheet.qml:261
 #, fuzzy
 msgid "Light"
 msgstr "Pravý"
 
-#: src/contents/ui/PreferencesSheet.qml:252
+#: src/contents/ui/PreferencesSheet.qml:261
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:262
+#: src/contents/ui/PreferencesSheet.qml:271
 #, fuzzy
 msgid "Color Theme"
 msgstr "Barva"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Green Neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Mix"
 msgstr "Mix"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 #, fuzzy
 msgid "Orange"
 msgstr "Rozsah"
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:266
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:285
 msgid "Shape"
 msgstr "Tvar"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Bars"
 msgstr "Pruhy"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Lines"
 msgstr "Čáry"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Dots"
 msgstr "Tečky"
 
-#: src/contents/ui/PreferencesSheet.qml:280
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:299
 msgid "Dynamic Scale"
 msgstr "Dynamická stupnice"
 
-#: src/contents/ui/PreferencesSheet.qml:301
+#: src/contents/ui/PreferencesSheet.qml:310
 #, fuzzy
 msgid "Logarithmic Frequency Axis"
 msgstr "Kmitočet"
 
-#: src/contents/ui/PreferencesSheet.qml:312
+#: src/contents/ui/PreferencesSheet.qml:321
 msgid "Points"
 msgstr "Body"
 
-#: src/contents/ui/PreferencesSheet.qml:326
+#: src/contents/ui/PreferencesSheet.qml:335
 msgid "Height"
 msgstr "Výška"
 
-#: src/contents/ui/PreferencesSheet.qml:340
+#: src/contents/ui/PreferencesSheet.qml:349
 msgid "Frequency Range"
 msgstr "Rozsah frekvence"
 
-#: src/contents/ui/PreferencesSheet.qml:347
+#: src/contents/ui/PreferencesSheet.qml:356
 msgid "Minimum"
 msgstr "Minimum"
 
-#: src/contents/ui/PreferencesSheet.qml:362
+#: src/contents/ui/PreferencesSheet.qml:371
 msgid "Maximum"
 msgstr "Nejvýše"
 
-#: src/contents/ui/PreferencesSheet.qml:383
+#: src/contents/ui/PreferencesSheet.qml:396
 msgid "Database Autosave Interval"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:396
+#: src/contents/ui/PreferencesSheet.qml:409
 #, fuzzy
 msgid "Most Used Presets"
 msgstr "Prolínání kanálů"
 
-#: src/contents/ui/PreferencesSheet.qml:418
+#: src/contents/ui/PreferencesSheet.qml:435
+#: src/contents/ui/ShortcutsSheet.qml:248
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "_Klávesové zkratky"
 
-#: src/contents/ui/PreferencesSheet.qml:419
+#: src/contents/ui/PreferencesSheet.qml:436
 msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:431
+#: src/contents/ui/PreferencesSheet.qml:448
 #, fuzzy
 msgid "Native Window of Effects"
 msgstr "Zobrazit nativní okno"
 
-#: src/contents/ui/PreferencesSheet.qml:432
+#: src/contents/ui/PreferencesSheet.qml:449
 #, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "Umožňuje zobrazit/skrýt okno nativního pluginu"
 
-#: src/contents/ui/PreferencesSheet.qml:444
+#: src/contents/ui/PreferencesSheet.qml:461
 msgid "Update Frequency"
 msgstr "Frekvence aktualizací"
 
-#: src/contents/ui/PreferencesSheet.qml:445
+#: src/contents/ui/PreferencesSheet.qml:462
 #, fuzzy
 msgid "Related to LV2 plugins."
 msgstr "Související se zásuvnými moduly LV2"
 
-#: src/contents/ui/PreferencesSheet.qml:474
+#: src/contents/ui/PreferencesSheet.qml:497
 msgid "Background Service"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:487
+#: src/contents/ui/PreferencesSheet.qml:512
 msgid "Audio"
 msgstr "Audio"
 
-#: src/contents/ui/PreferencesSheet.qml:500
+#: src/contents/ui/PreferencesSheet.qml:527
 #, fuzzy
 msgid "Spectrum Analyzer"
 msgstr "Typ spektra"
 
-#: src/contents/ui/PreferencesSheet.qml:513
+#: src/contents/ui/PreferencesSheet.qml:542
 msgid "Database"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:526
+#: src/contents/ui/PreferencesSheet.qml:557
 msgid "Experimental Features"
 msgstr "Experimentální funkce"
 
@@ -2620,11 +2621,6 @@ msgstr "Zpracovat všechny výstupní streamy"
 msgid "Can be used on numeric controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:248
-#, fuzzy
-msgid "Global shortcuts"
-msgstr "_Klávesové zkratky"
-
 #: src/contents/ui/ShortcutsSheet.qml:334
 msgid "Toggle microphone monitoring"
 msgstr ""
@@ -2924,6 +2920,10 @@ msgstr "Ekvalizér, kompresor a jiné zvukové efekty"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Zvukové efekty pro programy využívající PipeWire"
+
+#, fuzzy
+#~ msgid "Global shortcuts"
+#~ msgstr "_Klávesové zkratky"
 
 #, fuzzy
 #~ msgid "Empty"
