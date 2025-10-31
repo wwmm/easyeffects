@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-10-27 13:02+0000\n"
+"PO-Revision-Date: 2025-10-31 16:04+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/"
 "changelog/fr/>\n"
@@ -94,7 +94,7 @@ msgstr "La page de l’amplificateur des basses affichant les commandes audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:51
 msgid "The convolver page showing audio controls"
-msgstr "La page du filtre Convolueur affichant les commandes audio"
+msgstr "La page du convolver affiche les commandes audio"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:59
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:77
@@ -280,10 +280,10 @@ msgid ""
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
 msgstr ""
-"Les préréglages avec les effets Convolueur et/ou Réduction du bruit "
-"(RNNoise) créés avant la version 7.2.0 sont dépréciés. Veuillez recharger le "
-"fichier irs/modèle dans l'interface du Convolueur/Réduction du bruit et "
-"réenregistrer le préréglage."
+"Les préréglages avec les effets Convolver et/ou Réduction du bruit (RNNoise) "
+"créés avant la version 7.2.0 sont dépréciés. Veuillez recharger le fichier "
+"irs/modèle dans l'interface du Convolver/Réduction du bruit et réenregistrer "
+"le préréglage."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
 msgid ""
@@ -473,7 +473,7 @@ msgid ""
 msgstr ""
 "Ajout de la possibilité de sélectionner et de charger plusieurs fichiers "
 "dans les boîtes de dialogue d'ouverture des pré-réglages, les réponses "
-"impulsionnelles du Convolueur et les modèles RNNoise."
+"impulsionnelles du Convolver et les modèles RNNoise."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Fixed the Solo button in the Equalizer band settings."
@@ -1170,8 +1170,8 @@ msgid ""
 "It is now possible to combine impulse responses in the Convolver interface. "
 "A new impulse file is generated and it should be visible in the impulse list."
 msgstr ""
-"Il est maintenant possible de combiner des réponses d’impulsions dans "
-"l’interface du Convolueur. Un nouveau fichier d’impulsions est généré et il "
+"Il est maintenant possible de combiner des réponses d’impulsions dans l’"
+"interface du Convolver. Un nouveau fichier d’impulsions est généré et il "
 "devrait être visible dans la liste des impulsions."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:432
@@ -1511,9 +1511,9 @@ msgid ""
 "where the impulse files was not loaded when only one was available in the "
 "menu, see issue 1011"
 msgstr ""
-"Le menu des réponses impulsionnelles du convolueur a été amélioré pour "
+"Le menu des réponses impulsionnelles du Convolver a été amélioré pour "
 "résoudre un problème où les fichiers impulsionnels n’étaient pas chargés "
-"lorsqu’un seul était disponible dans le menu, voir le ticket 1011"
+"lorsqu'un seul était disponible dans le menu, voir le ticket 1011"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:527
 msgid ""
