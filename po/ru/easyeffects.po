@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-10-30 22:31+0000\n"
-"PO-Revision-Date: 2025-10-18 02:38+0000\n"
+"PO-Revision-Date: 2025-10-31 13:02+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.14.1-dev\n"
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -85,7 +85,6 @@ msgid "Input Presets"
 msgstr "Предустановки входа"
 
 #: src/contents/ui/AboutPage.qml:9
-#, fuzzy
 msgctxt "@action:button"
 msgid "About"
 msgstr "О программе"
@@ -95,10 +94,9 @@ msgid "Audio effects for PipeWire applications"
 msgstr "Звуковые эффекты для приложений PipeWire"
 
 #: src/contents/ui/AboutPage.qml:27
-#, fuzzy
 msgctxt "@info:credit"
 msgid "Developer"
-msgstr "Огибающая"
+msgstr "Разработчик"
 
 #: src/contents/ui/Autogain.qml:52 src/contents/ui/BassEnhancer.qml:89
 #: src/contents/ui/BassLoudness.qml:40 src/contents/ui/Crossfeed.qml:57
@@ -333,14 +331,12 @@ msgid "Are you sure you want to remove this application from the list?"
 msgstr "Уверены, что хотите убрать это приложение из списка?"
 
 #: src/contents/ui/BlocklistSheet.qml:150
-#, fuzzy
 msgid "Remove This App"
-msgstr "Удалить этот плагин"
+msgstr "Убрать это приложение"
 
 #: src/contents/ui/BlocklistSheet.qml:177
-#, fuzzy
 msgid "Show Excluded Apps"
-msgstr "Исключённые приложения"
+msgstr "Показать исключённые приложения"
 
 #: src/contents/ui/BlocklistSheet.qml:178
 #, fuzzy
@@ -582,7 +578,7 @@ msgstr "Предусилитель"
 #: src/contents/ui/Gate.qml:354 src/contents/ui/MultibandCompressor.qml:451
 #: src/contents/ui/MultibandGate.qml:424
 msgid "Reactivity"
-msgstr "Скорость реакции"
+msgstr "Время реакции"
 
 #: src/contents/ui/Compressor.qml:392 src/contents/ui/Expander.qml:351
 #: src/contents/ui/Gate.qml:372 src/contents/ui/Limiter.qml:252
