@@ -91,7 +91,7 @@ Item {
                             */
 
                             if (delegateItem.listModel.count > 1 && delegateItem.index > 0 && delegateItem.ListView.view.currentIndex === delegateItem.index) {
-                                delegateItem.streamDB.visiblePlugin = delegateItem.pluginsListModel.get(delegateItem.index - 1).name;
+                                delegateItem.streamDB.visiblePlugin = delegateItem.listModel.get(delegateItem.index - 1).name;
                             }
 
                             delegateItem.listModel.remove(delegateItem.index, 1);
