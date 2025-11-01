@@ -97,6 +97,8 @@ class Crystalizer : public PluginBase {
   float global_kurtosis_R = 1.0F;
   float global_flux_L = 1.0F;
   float global_flux_R = 1.0F;
+  float global_previous_L = 0.0F;
+  float global_previous_R = 0.0F;
 
   db::Crystalizer* settings = nullptr;
 
@@ -105,6 +107,9 @@ class Crystalizer : public PluginBase {
 
   std::vector<float> previous_data_L;
   std::vector<float> previous_data_R;
+
+  std::vector<float> global_second_derivative_L;
+  std::vector<float> global_second_derivative_R;
 
   std::array<bool, nbands> band_mute;
   std::array<bool, nbands> band_bypass;
@@ -143,6 +148,8 @@ class Crystalizer : public PluginBase {
   static auto compute_band_centers(const std::array<float, nbands + 1U>& edges) -> std::array<float, nbands>;
 
   static auto extrapolate_next(const std::vector<float>& x) -> float;
+
+  static auto extrapolate_next(const std::span<float>& x) -> float;
 
   auto compute_kurtosis(float* data) const -> float;
 
@@ -186,20 +193,46 @@ class Crystalizer : public PluginBase {
       if (is_first_buffer) {
         band_previous_L.at(n) = bandn_L[0];
         band_previous_R.at(n) = bandn_R[0];
-
-        is_first_buffer = false;
       }
     }
 
     if (settings->adaptiveIntensity()) {
-      compute_global_crest(data_left.data(), true);
-      compute_global_crest(data_right.data(), false);
+      if (is_first_buffer) {
+        global_previous_L = data_left[0];
+        global_previous_R = data_right[0];
+      }
 
-      compute_global_kurtosis(data_left.data(), true);
-      compute_global_kurtosis(data_right.data(), false);
+      auto global_next_L = extrapolate_next(data_left);
+      auto global_next_R = extrapolate_next(data_right);
 
-      compute_global_flux(data_left.data(), true);
-      compute_global_flux(data_right.data(), false);
+      // Calculating the second derivative before the band splitting
+
+      auto second_derivative_L = global_second_derivative_L.data();
+      auto second_derivative_R = global_second_derivative_R.data();
+
+      second_derivative_L[0] = data_left[1U] - (2.0F * data_left[0U]) + global_previous_L;
+      second_derivative_R[0] = data_right[1U] - (2.0F * data_right[0U]) + global_previous_R;
+
+      for (uint m = 1U; m < blocksize - 1U; m++) {
+        second_derivative_L[m] = data_left[m + 1U] - (2.0F * data_left[m]) + data_left[m - 1U];
+        second_derivative_R[m] = data_right[m + 1U] - (2.0F * data_right[m]) + data_right[m - 1U];
+      }
+
+      second_derivative_L[blocksize - 1] = global_next_L - (2.0F * data_left[blocksize - 1]) + data_left[blocksize - 2];
+      second_derivative_R[blocksize - 1] =
+          global_next_R - (2.0F * data_right[blocksize - 1]) + data_right[blocksize - 2];
+
+      global_previous_L = data_left[blocksize - 1U];
+      global_previous_R = data_right[blocksize - 1U];
+
+      compute_global_crest(second_derivative_L, true);
+      compute_global_crest(second_derivative_R, false);
+
+      compute_global_kurtosis(second_derivative_L, true);
+      compute_global_kurtosis(second_derivative_R, false);
+
+      compute_global_flux(second_derivative_L, true);
+      compute_global_flux(second_derivative_R, false);
     }
 
     for (uint n = 0U; n < nbands; n++) {
@@ -232,8 +265,8 @@ class Crystalizer : public PluginBase {
         float intensity_R = intensity;
 
         if (settings->adaptiveIntensity()) {
-          intensity_L = compute_adaptive_intensity(n, intensity, bandn_L, true);
-          intensity_R = compute_adaptive_intensity(n, intensity, bandn_R, false);
+          intensity_L = compute_adaptive_intensity(n, intensity, bandn_second_derivative_L, true);
+          intensity_R = compute_adaptive_intensity(n, intensity, bandn_second_derivative_R, false);
 
           if (updateLevelMeters) {
             adaptive_intensities[n] = util::linear_to_db(0.5F * (intensity_L + intensity_R));
@@ -282,6 +315,10 @@ class Crystalizer : public PluginBase {
           data_right_ptr[m] += bandn_R[m];
         }
       }
+    }
+
+    if (is_first_buffer) {
+      is_first_buffer = false;
     }
   }
 };

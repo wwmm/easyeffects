@@ -92,7 +92,8 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
 
   for (uint n = 0; n < nbands; n++) {
     // freq_scaling[n] = std::sqrt(freq_ref / freq_centers[n]);
-    freq_scaling[n] = freq_ref / freq_centers[n];
+    freq_scaling[n] = std::cbrt(freq_ref / freq_centers[n]);
+    // freq_scaling[n] = freq_ref / freq_centers[n];
   }
 
   init_common_controls<db::Crystalizer>(settings);
@@ -191,6 +192,9 @@ void Crystalizer::setup() {
         std::ranges::fill(previous_data_L, 0.0F);
         std::ranges::fill(previous_data_R, 0.0F);
 
+        global_previous_L = 0.0F;
+        global_previous_R = 0.0F;
+
         for (uint n = 0U; n < nbands; n++) {
           band_data_L.at(n).resize(blocksize);
           band_data_R.at(n).resize(blocksize);
@@ -203,6 +207,9 @@ void Crystalizer::setup() {
 
           std::ranges::fill(band_previous_data_L.at(n), 0.0F);
           std::ranges::fill(band_previous_data_R.at(n), 0.0F);
+
+          global_second_derivative_L.resize(blocksize);
+          global_second_derivative_R.resize(blocksize);
         }
 
         for (uint n = 0U; n < nbands; n++) {
@@ -377,7 +384,9 @@ auto Crystalizer::compute_spectral_flux(const uint& band_index, float* current_d
     previous_frame[i] = current_data[i];
   }
 
-  return flux / blocksize;
+  flux /= blocksize;
+
+  return flux > 1e-6 ? flux : 1.0F;
 }
 
 void Crystalizer::compute_global_crest(float* data, const bool& isLeft) {
@@ -416,6 +425,8 @@ void Crystalizer::compute_global_flux(float* data, const bool& isLeft) {
   }
 
   flux /= blocksize;
+
+  flux = flux > 1e-6 ? flux : 1.0F;
 }
 
 auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
@@ -457,6 +468,7 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
   env_flux = (alpha_flux * env_flux) + ((1.0F - alpha_flux) * flux);
 
   float flux_ratio = isLeft ? global_flux_L / env_flux : global_flux_R / env_flux;
+  // float flux_ratio = isLeft ? env_flux / global_flux_L : env_flux / global_flux_R;
 
   // intensity calculation
 
@@ -470,6 +482,19 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
 }
 
 auto Crystalizer::extrapolate_next(const std::vector<float>& x) -> float {
+  size_t n = x.size();
+
+  if (x.size() < 2) {
+    return x.back();
+  }
+
+  float xm1 = x[n - 2];
+  float xm = x[n - 1];
+
+  return (2.0F * xm) - xm1;
+}
+
+auto Crystalizer::extrapolate_next(const std::span<float>& x) -> float {
   size_t n = x.size();
 
   if (x.size() < 2) {
