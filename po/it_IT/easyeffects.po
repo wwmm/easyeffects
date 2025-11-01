@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-01 02:39-0300\n"
-"PO-Revision-Date: 2025-10-31 23:19+0000\n"
+"PO-Revision-Date: 2025-11-01 18:11+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -904,7 +904,7 @@ msgstr "Rilevamento"
 
 #: src/contents/ui/Deesser.qml:76
 msgid "Wide"
-msgstr "Banda Larga"
+msgstr "Largo"
 
 #: src/contents/ui/Deesser.qml:76
 msgid "Split"
@@ -1688,22 +1688,22 @@ msgstr "Incremento sidechain"
 #: src/contents/ui/MultibandCompressor.qml:554
 #: src/contents/ui/MultibandGate.qml:527
 msgid "Pink BT"
-msgstr "Rumore Rosa BT"
+msgstr "Rumore rosa BT"
 
 #: src/contents/ui/MultibandCompressor.qml:554
 #: src/contents/ui/MultibandGate.qml:527
 msgid "Pink MT"
-msgstr "Rumore Rosa MT"
+msgstr "Rumore rosa MT"
 
 #: src/contents/ui/MultibandCompressor.qml:554
 #: src/contents/ui/MultibandGate.qml:527
 msgid "Brown BT"
-msgstr "Rumore Marrone BT"
+msgstr "Rumore marrone BT"
 
 #: src/contents/ui/MultibandCompressor.qml:554
 #: src/contents/ui/MultibandGate.qml:527
 msgid "Brown MT"
-msgstr "Rumore Marrone MT"
+msgstr "Rumore marrone MT"
 
 #: src/contents/ui/MultibandCompressor.qml:564
 #: src/contents/ui/MultibandGate.qml:537
@@ -2541,11 +2541,11 @@ msgstr "Abilita/disabilita il monitoraggio del microfono"
 
 #: src/contents/ui/Speex.qml:49
 msgid "Denoise"
-msgstr "Meno Rumore"
+msgstr "Meno rumore"
 
 #: src/contents/ui/Speex.qml:71
 msgid "Dereverberation"
-msgstr "Meno Riverbero"
+msgstr "Meno riverbero"
 
 #: src/contents/ui/Speex.qml:82
 msgid "Noise suppression"
