@@ -424,6 +424,7 @@ Kirigami.ApplicationWindow {
                         text: i18n("Presets") // qmllint disable
                         icon.name: "bookmarks-symbolic"
                         displayHint: Kirigami.DisplayHint.KeepVisible
+                        visible: DB.Manager.main.visiblePage !== 2
                         onTriggered: {
                             presetsSheet.open();
                         }
