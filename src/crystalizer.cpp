@@ -91,8 +91,8 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   }
 
   for (uint n = 0; n < nbands; n++) {
-    // freq_scaling[n] = std::sqrt(freq_ref / freq_centers[n]);
-    freq_scaling[n] = std::cbrt(freq_ref / freq_centers[n]);
+    freq_scaling[n] = std::sqrt(freq_ref / freq_centers[n]);
+    // freq_scaling[n] = std::cbrt(freq_ref / freq_centers[n]);
     // freq_scaling[n] = freq_ref / freq_centers[n];
   }
 
