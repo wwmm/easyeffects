@@ -15,6 +15,7 @@ Kirigami.OverlaySheet {
     title: i18n("Preferences") // qmllint disable
     y: 0
     implicitWidth: Math.min(stack.implicitWidth, appWindow.width * 0.8)// qmllint disable
+    implicitHeight: Math.min(appWindow.maxOverlayHeight, stack.height + preferencesSheet.header.height + Kirigami.Units.largeSpacing * 2) // qmllint disable
 
     onVisibleChanged: {
         if (!preferencesSheet.visible) {
