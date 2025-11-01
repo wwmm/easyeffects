@@ -371,17 +371,15 @@ auto Crystalizer::compute_crest(float* data) const -> float {
   return (rms > 1e-6F) ? (peak / rms) : 1.0F;
 }
 
-auto Crystalizer::compute_spectral_flux(const uint& band_index, float* current_data, const bool& isLeft) -> float {
+auto Crystalizer::compute_spectral_flux(float* data, float* previous_data) const -> float {
   float flux = 0.0F;
 
-  auto& previous_frame = isLeft ? band_previous_data_L[band_index] : band_previous_data_R[band_index];
-
   for (uint i = 0; i < blocksize; i++) {
-    flux += std::abs(current_data[i] - previous_frame[i]);
+    flux += std::abs(data[i] - previous_data[i]);
   }
 
   for (uint i = 0; i < blocksize; i++) {
-    previous_frame[i] = current_data[i];
+    previous_data[i] = data[i];
   }
 
   flux /= blocksize;
@@ -410,23 +408,15 @@ void Crystalizer::compute_global_kurtosis(float* data, const bool& isLeft) {
 }
 
 void Crystalizer::compute_global_flux(float* data, const bool& isLeft) {
-  float& flux = isLeft ? global_flux_L : global_flux_R;
+  auto& previous_data = isLeft ? previous_data_L : previous_data_R;
 
-  flux = 0.0F;
+  auto flux = compute_spectral_flux(data, previous_data.data());
 
-  auto& previous_frame = isLeft ? previous_data_L : previous_data_R;
+  float& env_flux = isLeft ? global_flux_L : global_flux_R;
 
-  for (uint i = 0; i < blocksize; i++) {
-    flux += std::abs(data[i] - previous_frame[i]);
-  }
+  float alpha = (flux > env_flux) ? attack_coeff : release_coeff;
 
-  for (uint i = 0; i < blocksize; i++) {
-    previous_frame[i] = data[i];
-  }
-
-  flux /= blocksize;
-
-  flux = flux > 1e-6 ? flux : 1.0F;
+  env_flux = (alpha * env_flux) + ((1.0F - alpha) * flux);
 }
 
 auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
@@ -459,7 +449,8 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   // spectral flux calculation
 
-  float flux = compute_spectral_flux(band_index, band_data, isLeft);
+  float flux = compute_spectral_flux(
+      band_data, isLeft ? band_previous_data_L[band_index].data() : band_previous_data_R[band_index].data());
 
   auto& env_flux = isLeft ? env_flux_L[band_index] : env_flux_R[band_index];
 

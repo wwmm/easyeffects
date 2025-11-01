@@ -155,7 +155,7 @@ class Crystalizer : public PluginBase {
 
   auto compute_crest(float* data) const -> float;
 
-  auto compute_spectral_flux(const uint& band_index, float* current_data, const bool& isLeft) -> float;
+  auto compute_spectral_flux(float* data, float* previous_data) const -> float;
 
   void compute_global_crest(float* data, const bool& isLeft);
 
