@@ -443,7 +443,7 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   env_kurtosis = (alpha * env_kurtosis) + ((1.0F - alpha) * kurtosis);
 
-  float kurtosis_ratio = isLeft ? env_kurtosis / global_kurtosis_L : env_kurtosis / global_kurtosis_R;
+  float kurtosis_ratio = isLeft ? global_kurtosis_L / env_kurtosis : global_kurtosis_R / env_kurtosis;
 
   // crest calculation
 
@@ -455,7 +455,7 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   env_crest = (alpha_crest * env_crest) + ((1.0F - alpha_crest) * crest);
 
-  float crest_ratio = isLeft ? env_crest / global_crest_L : env_crest / global_crest_R;
+  float crest_ratio = isLeft ? global_crest_L / env_crest : global_crest_R / env_crest;
 
   // spectral flux calculation
 
@@ -468,7 +468,6 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
   env_flux = (alpha_flux * env_flux) + ((1.0F - alpha_flux) * flux);
 
   float flux_ratio = isLeft ? global_flux_L / env_flux : global_flux_R / env_flux;
-  // float flux_ratio = isLeft ? env_flux / global_flux_L : env_flux / global_flux_R;
 
   // intensity calculation
 
