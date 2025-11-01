@@ -79,6 +79,8 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   std::ranges::fill(env_kurtosis_R, 3.0F);
   std::ranges::fill(env_crest_L, 1.0F);
   std::ranges::fill(env_crest_R, 1.0F);
+  std::ranges::fill(env_flux_L, 1.0F);
+  std::ranges::fill(env_flux_R, 1.0F);
 
   auto f_edges = make_geometric_edges(20, 20000);
 
@@ -89,7 +91,8 @@ Crystalizer::Crystalizer(const std::string& tag, pw::Manager* pipe_manager, Pipe
   }
 
   for (uint n = 0; n < nbands; n++) {
-    freq_scaling[n] = std::sqrt(freq_ref / freq_centers[n]);
+    // freq_scaling[n] = std::sqrt(freq_ref / freq_centers[n]);
+    freq_scaling[n] = freq_ref / freq_centers[n];
   }
 
   init_common_controls<db::Crystalizer>(settings);
@@ -182,12 +185,24 @@ void Crystalizer::setup() {
         data_L.resize(blocksize);
         data_R.resize(blocksize);
 
+        previous_data_L.resize(blocksize);
+        previous_data_R.resize(blocksize);
+
+        std::ranges::fill(previous_data_L, 0.0F);
+        std::ranges::fill(previous_data_R, 0.0F);
+
         for (uint n = 0U; n < nbands; n++) {
           band_data_L.at(n).resize(blocksize);
           band_data_R.at(n).resize(blocksize);
 
           band_second_derivative_L.at(n).resize(blocksize);
           band_second_derivative_R.at(n).resize(blocksize);
+
+          band_previous_data_L.at(n).resize(blocksize);
+          band_previous_data_R.at(n).resize(blocksize);
+
+          std::ranges::fill(band_previous_data_L.at(n), 0.0F);
+          std::ranges::fill(band_previous_data_R.at(n), 0.0F);
         }
 
         for (uint n = 0U; n < nbands; n++) {
@@ -349,24 +364,58 @@ auto Crystalizer::compute_crest(float* data) const -> float {
   return (rms > 1e-6F) ? (peak / rms) : 1.0F;
 }
 
-void Crystalizer::compute_buffer_crest(float* data, const bool& isLeft) {
+auto Crystalizer::compute_spectral_flux(const uint& band_index, float* current_data, const bool& isLeft) -> float {
+  float flux = 0.0F;
+
+  auto& previous_frame = isLeft ? band_previous_data_L[band_index] : band_previous_data_R[band_index];
+
+  for (uint i = 0; i < blocksize; i++) {
+    flux += std::abs(current_data[i] - previous_frame[i]);
+  }
+
+  for (uint i = 0; i < blocksize; i++) {
+    previous_frame[i] = current_data[i];
+  }
+
+  return flux / blocksize;
+}
+
+void Crystalizer::compute_global_crest(float* data, const bool& isLeft) {
   float crest = compute_crest(data);
 
-  auto& env_crest = isLeft ? buffer_crest_L : buffer_crest_R;
+  auto& env_crest = isLeft ? global_crest_L : global_crest_R;
 
   float alpha = (crest > env_crest) ? attack_coeff : release_coeff;
 
   env_crest = (alpha * env_crest) + ((1.0F - alpha) * crest);
 }
 
-void Crystalizer::compute_buffer_kurtosis(float* data, const bool& isLeft) {
+void Crystalizer::compute_global_kurtosis(float* data, const bool& isLeft) {
   float kurtosis = compute_kurtosis(data);
 
-  auto& env_kurtosis = isLeft ? buffer_kurtosis_L : buffer_kurtosis_R;
+  auto& env_kurtosis = isLeft ? global_kurtosis_L : global_kurtosis_R;
 
   float alpha = (kurtosis > env_kurtosis) ? attack_coeff : release_coeff;
 
   env_kurtosis = (alpha * env_kurtosis) + ((1.0F - alpha) * kurtosis);
+}
+
+void Crystalizer::compute_global_flux(float* data, const bool& isLeft) {
+  float& flux = isLeft ? global_flux_L : global_flux_R;
+
+  flux = 0.0F;
+
+  auto& previous_frame = isLeft ? previous_data_L : previous_data_R;
+
+  for (uint i = 0; i < blocksize; i++) {
+    flux += std::abs(data[i] - previous_frame[i]);
+  }
+
+  for (uint i = 0; i < blocksize; i++) {
+    previous_frame[i] = data[i];
+  }
+
+  flux /= blocksize;
 }
 
 auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
@@ -383,7 +432,7 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   env_kurtosis = (alpha * env_kurtosis) + ((1.0F - alpha) * kurtosis);
 
-  float kurtosis_ratio = isLeft ? env_kurtosis / buffer_kurtosis_L : env_kurtosis / buffer_kurtosis_R;
+  float kurtosis_ratio = isLeft ? env_kurtosis / global_kurtosis_L : env_kurtosis / global_kurtosis_R;
 
   // crest calculation
 
@@ -395,14 +444,27 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   env_crest = (alpha_crest * env_crest) + ((1.0F - alpha_crest) * crest);
 
-  float crest_ratio = isLeft ? env_crest / buffer_crest_L : env_crest / buffer_crest_R;
+  float crest_ratio = isLeft ? env_crest / global_crest_L : env_crest / global_crest_R;
+
+  // spectral flux calculation
+
+  float flux = compute_spectral_flux(band_index, band_data, isLeft);
+
+  auto& env_flux = isLeft ? env_flux_L[band_index] : env_flux_R[band_index];
+
+  float alpha_flux = (flux > env_flux) ? attack_coeff : release_coeff;
+
+  env_flux = (alpha_flux * env_flux) + ((1.0F - alpha_flux) * flux);
+
+  float flux_ratio = isLeft ? global_flux_L / env_flux : global_flux_R / env_flux;
 
   // intensity calculation
 
-  auto intensity = base_intensity * std::sqrtf(crest_ratio * kurtosis_ratio) * freq_scaling[band_index];
+  auto intensity = base_intensity * std::cbrtf(crest_ratio * kurtosis_ratio * flux_ratio) * freq_scaling[band_index];
 
-  // util::warning(std::format("n = {}, intensity = {}, kurtosis_r = {}, crest_r = {}", band_index, intensity,
-  //                           kurtosis_ratio, crest_ratio));
+  // util::warning(std::format("n = {}, intensity = {}, kurtosis_r = {}, crest_r = {}, flux_r = {}", band_index,
+  // intensity,
+  //                           kurtosis_ratio, crest_ratio, flux_ratio));
 
   return intensity;
 }

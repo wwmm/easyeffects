@@ -91,15 +91,20 @@ class Crystalizer : public PluginBase {
   float attack_coeff = 1.0F;
   float release_coeff = 1.0F;
 
-  float buffer_crest_L = 1.0F;
-  float buffer_crest_R = 1.0F;
-  float buffer_kurtosis_L = 1.0F;
-  float buffer_kurtosis_R = 1.0F;
+  float global_crest_L = 1.0F;
+  float global_crest_R = 1.0F;
+  float global_kurtosis_L = 1.0F;
+  float global_kurtosis_R = 1.0F;
+  float global_flux_L = 1.0F;
+  float global_flux_R = 1.0F;
 
   db::Crystalizer* settings = nullptr;
 
   std::vector<float> data_L;
   std::vector<float> data_R;
+
+  std::vector<float> previous_data_L;
+  std::vector<float> previous_data_R;
 
   std::array<bool, nbands> band_mute;
   std::array<bool, nbands> band_bypass;
@@ -122,6 +127,9 @@ class Crystalizer : public PluginBase {
 
   std::array<float, nbands> env_kurtosis_L, env_kurtosis_R;
   std::array<float, nbands> env_crest_L, env_crest_R;
+  std::array<float, nbands> env_flux_L, env_flux_R;
+
+  std::array<std::vector<float>, nbands> band_previous_data_L, band_previous_data_R;
 
   std::array<std::unique_ptr<FirFilterBase>, nbands> filters;
 
@@ -140,9 +148,13 @@ class Crystalizer : public PluginBase {
 
   auto compute_crest(float* data) const -> float;
 
-  void compute_buffer_crest(float* data, const bool& isLeft);
+  auto compute_spectral_flux(const uint& band_index, float* current_data, const bool& isLeft) -> float;
 
-  void compute_buffer_kurtosis(float* data, const bool& isLeft);
+  void compute_global_crest(float* data, const bool& isLeft);
+
+  void compute_global_kurtosis(float* data, const bool& isLeft);
+
+  void compute_global_flux(float* data, const bool& isLeft);
 
   auto compute_adaptive_intensity(const uint& band_index, float base_intensity, float* band_data, const bool& isLeft)
       -> float;
@@ -180,11 +192,14 @@ class Crystalizer : public PluginBase {
     }
 
     if (settings->adaptiveIntensity()) {
-      compute_buffer_crest(data_left.data(), true);
-      compute_buffer_crest(data_right.data(), false);
+      compute_global_crest(data_left.data(), true);
+      compute_global_crest(data_right.data(), false);
 
-      compute_buffer_kurtosis(data_left.data(), true);
-      compute_buffer_kurtosis(data_right.data(), false);
+      compute_global_kurtosis(data_left.data(), true);
+      compute_global_kurtosis(data_right.data(), false);
+
+      compute_global_flux(data_left.data(), true);
+      compute_global_flux(data_right.data(), false);
     }
 
     for (uint n = 0U; n < nbands; n++) {
@@ -217,8 +232,8 @@ class Crystalizer : public PluginBase {
         float intensity_R = intensity;
 
         if (settings->adaptiveIntensity()) {
-          intensity_L = compute_adaptive_intensity(n, intensity, bandn_second_derivative_L, true);
-          intensity_R = compute_adaptive_intensity(n, intensity, bandn_second_derivative_R, false);
+          intensity_L = compute_adaptive_intensity(n, intensity, bandn_L, true);
+          intensity_R = compute_adaptive_intensity(n, intensity, bandn_R, false);
 
           if (updateLevelMeters) {
             adaptive_intensities[n] = util::linear_to_db(0.5F * (intensity_L + intensity_R));
