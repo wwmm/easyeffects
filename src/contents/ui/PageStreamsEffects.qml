@@ -7,6 +7,7 @@ import ee.database as DB
 import ee.pipewire as PW
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.components as Components
 
 Kirigami.Page {
     id: pageStreamsEffects
@@ -559,14 +560,12 @@ Kirigami.Page {
                 }
             }
 
-            Kirigami.ActionToolBar {
-                alignment: Qt.AlignHCenter
-                position: Controls.ToolBar.Footer
+            Components.SegmentedButton {
+                id: segmentedButton
 
-                Controls.ActionGroup {
-                    id: footerActionGroup
-                    exclusive: true
-                }
+                readonly property bool hasEnoughWidth: appWindow.width >= Kirigami.Units.gridUnit * 40
+
+                readonly property var displayHint: (!Kirigami.Settings.isMobile && hasEnoughWidth) ? Kirigami.DisplayHint.KeepVisible : Kirigami.DisplayHint.IconOnly
 
                 actions: [
                     Kirigami.Action {
@@ -574,7 +573,7 @@ Kirigami.Page {
                         text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Recorders")// qmllint disable
                         checkable: true
                         checked: pageStreamsEffects.streamDB.visiblePage === 0
-                        Controls.ActionGroup.group: footerActionGroup
+                        displayHint: segmentedButton.displayHint
                         onTriggered: {
                             pageStreamsEffects.streamDB.visiblePage = 0;
                         }
@@ -584,7 +583,7 @@ Kirigami.Page {
                         text: i18n("Effects") // qmllint disable
                         checkable: true
                         checked: pageStreamsEffects.streamDB.visiblePage === 1
-                        Controls.ActionGroup.group: footerActionGroup
+                        displayHint: segmentedButton.displayHint
                         onTriggered: {
                             pageStreamsEffects.streamDB.visiblePage = 1;
                         }

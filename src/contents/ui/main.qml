@@ -8,6 +8,7 @@ import ee.pipeline as Pipeline
 import ee.pipewire as PW
 import ee.presets as Presets
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.components as Components
 
 Kirigami.ApplicationWindow {
     id: appWindow
@@ -417,6 +418,8 @@ Kirigami.ApplicationWindow {
             }
 
             Kirigami.ActionToolBar {
+                id: presetsToolBar
+
                 alignment: Qt.AlignLeft
                 overflowIconName: "overflow-menu-left"
                 actions: [
@@ -444,46 +447,37 @@ Kirigami.ApplicationWindow {
                 ]
             }
 
-            Kirigami.ActionToolBar {
-                id: tabbar
+            Components.SegmentedButton {
+                id: segmentedButton
 
-                alignment: Qt.AlignHCenter
+                readonly property bool hasEnoughWidth: appWindow.width >= Kirigami.Units.gridUnit * 40
 
-                Controls.ActionGroup {
-                    id: tabbarActionGroup
-                    exclusive: true
-                }
+                readonly property var displayHint: (!Kirigami.Settings.isMobile && hasEnoughWidth) ? Kirigami.DisplayHint.KeepVisible : Kirigami.DisplayHint.IconOnly
 
                 actions: [
                     Kirigami.Action {
-                        displayHint: Kirigami.DisplayHint.KeepVisible
-                        icon.name: "audio-speakers-symbolic"
                         text: i18n("Output") // qmllint disable
-                        checkable: true
+                        icon.name: "audio-speakers-symbolic"
                         checked: DB.Manager.main.visiblePage === 0
-                        Controls.ActionGroup.group: tabbarActionGroup
+                        displayHint: segmentedButton.displayHint
                         onTriggered: {
                             DB.Manager.main.visiblePage = 0;
                         }
                     },
                     Kirigami.Action {
-                        displayHint: Kirigami.DisplayHint.KeepVisible
-                        icon.name: "audio-input-microphone-symbolic"
                         text: i18n("Input") // qmllint disable
-                        checkable: true
+                        icon.name: "audio-input-microphone-symbolic"
                         checked: DB.Manager.main.visiblePage === 1
-                        Controls.ActionGroup.group: tabbarActionGroup
+                        displayHint: segmentedButton.displayHint
                         onTriggered: {
                             DB.Manager.main.visiblePage = 1;
                         }
                     },
                     Kirigami.Action {
-                        displayHint: Kirigami.DisplayHint.KeepVisible
-                        icon.name: "network-server-symbolic"
                         text: i18n("PipeWire") // qmllint disable
-                        checkable: true
+                        icon.name: "network-server-symbolic"
                         checked: DB.Manager.main.visiblePage === 2
-                        Controls.ActionGroup.group: tabbarActionGroup
+                        displayHint: segmentedButton.displayHint
                         onTriggered: {
                             DB.Manager.main.visiblePage = 2;
                         }
