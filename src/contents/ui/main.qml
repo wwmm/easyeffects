@@ -421,15 +421,6 @@ Kirigami.ApplicationWindow {
                 overflowIconName: "overflow-menu-left"
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Presets") // qmllint disable
-                        icon.name: "bookmarks-symbolic"
-                        displayHint: Kirigami.DisplayHint.KeepVisible
-                        visible: DB.Manager.main.visiblePage !== 2
-                        onTriggered: {
-                            presetsSheet.open();
-                        }
-                    },
-                    Kirigami.Action {
                         text: i18n("Turn effects on/off") // qmllint disable
                         icon.name: "system-shutdown-symbolic"
                         icon.color: checked === true ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
@@ -439,6 +430,15 @@ Kirigami.ApplicationWindow {
                         onTriggered: {
                             if (checked !== !DB.Manager.main.bypass)
                                 DB.Manager.main.bypass = !checked;
+                        }
+                    },
+                    Kirigami.Action {
+                        text: i18n("Presets") // qmllint disable
+                        icon.name: "bookmarks-symbolic"
+                        displayHint: Kirigami.DisplayHint.KeepVisible
+                        visible: DB.Manager.main.visiblePage !== 2
+                        onTriggered: {
+                            presetsSheet.open();
                         }
                     }
                 ]
