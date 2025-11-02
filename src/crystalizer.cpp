@@ -433,7 +433,7 @@ auto Crystalizer::compute_adaptive_intensity(const uint& band_index,
 
   env_kurtosis = (alpha * env_kurtosis) + ((1.0F - alpha) * kurtosis);
 
-  float kurtosis_ratio = isLeft ? global_kurtosis_L / env_kurtosis : global_kurtosis_R / env_kurtosis;
+  float kurtosis_ratio = isLeft ? env_kurtosis / global_kurtosis_L : env_kurtosis / global_kurtosis_R;
 
   // crest calculation
 
