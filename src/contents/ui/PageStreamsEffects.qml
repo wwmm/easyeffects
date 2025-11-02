@@ -563,6 +563,8 @@ Kirigami.Page {
             Components.SegmentedButton {
                 id: segmentedButton
 
+                Layout.alignment: Qt.AlignHCenter
+
                 readonly property bool hasEnoughWidth: appWindow.width >= Kirigami.Units.gridUnit * 40
 
                 readonly property var displayHint: (!Kirigami.Settings.isMobile && hasEnoughWidth) ? Kirigami.DisplayHint.KeepVisible : Kirigami.DisplayHint.IconOnly

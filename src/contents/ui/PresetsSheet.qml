@@ -6,6 +6,7 @@ import ee.database as DB
 import ee.presets as Presets
 import ee.type.presets as TypePresets
 import org.kde.kirigami as Kirigami
+import org.kde.kirigamiaddons.components as Components
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.OverlaySheet {
@@ -52,43 +53,43 @@ Kirigami.OverlaySheet {
         }
     }
 
-    header: Kirigami.ActionToolBar {
-        id: tabbar
+    header: RowLayout {
+        Components.SegmentedButton {
+            id: segmentedButton
 
-        alignment: Qt.AlignHCenter
-        position: Controls.ToolBar.Header
+            Layout.alignment: Qt.AlignHCenter
 
-        Controls.ActionGroup {
-            id: headerActionGroup
-            exclusive: true
+            readonly property bool hasEnoughWidth: appWindow.width >= Kirigami.Units.gridUnit * 40
+
+            readonly property var displayHint: (!Kirigami.Settings.isMobile && hasEnoughWidth) ? Kirigami.DisplayHint.KeepVisible : Kirigami.DisplayHint.IconOnly
+
+            actions: [
+                Kirigami.Action {
+                    text: i18n("Local")
+                    icon.name: "system-file-manager-symbolic"
+                    checkable: true
+                    checked: DB.Manager.main.visiblePresetSheetPage === 0
+                    displayHint: segmentedButton.displayHint
+                    onTriggered: DB.Manager.main.visiblePresetSheetPage = 0
+                },
+                Kirigami.Action {
+                    text: i18n("Community")
+                    icon.name: "system-users-symbolic"
+                    checkable: true
+                    checked: DB.Manager.main.visiblePresetSheetPage === 1
+                    displayHint: segmentedButton.displayHint
+                    onTriggered: DB.Manager.main.visiblePresetSheetPage = 1
+                },
+                Kirigami.Action {
+                    text: i18n("Autoloading")
+                    icon.name: "task-recurring-symbolic"
+                    checkable: true
+                    checked: DB.Manager.main.visiblePresetSheetPage === 2
+                    displayHint: segmentedButton.displayHint
+                    onTriggered: DB.Manager.main.visiblePresetSheetPage = 2
+                }
+            ]
         }
-
-        actions: [
-            Kirigami.Action {
-                text: i18n("Local")
-                icon.name: "system-file-manager-symbolic"
-                checkable: true
-                checked: DB.Manager.main.visiblePresetSheetPage === 0
-                Controls.ActionGroup.group: headerActionGroup
-                onTriggered: DB.Manager.main.visiblePresetSheetPage = 0
-            },
-            Kirigami.Action {
-                text: i18n("Community")
-                icon.name: "system-users-symbolic"
-                checkable: true
-                checked: DB.Manager.main.visiblePresetSheetPage === 1
-                Controls.ActionGroup.group: headerActionGroup
-                onTriggered: DB.Manager.main.visiblePresetSheetPage = 1
-            },
-            Kirigami.Action {
-                text: i18n("Autoloading")
-                icon.name: "task-recurring-symbolic"
-                checkable: true
-                checked: DB.Manager.main.visiblePresetSheetPage === 2
-                Controls.ActionGroup.group: headerActionGroup
-                onTriggered: DB.Manager.main.visiblePresetSheetPage = 2
-            }
-        ]
     }
 
     footer: ColumnLayout {
