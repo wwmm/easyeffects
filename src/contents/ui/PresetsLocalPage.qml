@@ -256,7 +256,7 @@ ColumnLayout {
                             id: newNameTextField
 
                             Layout.fillWidth: true
-                            placeholderText: listItemDelegate.name
+                            text: listItemDelegate.name
 
                             validator: RegularExpressionValidator {
                                 regularExpression: columnLayout.validFileNameRegex
