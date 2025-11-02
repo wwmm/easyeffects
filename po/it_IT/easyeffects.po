@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-01 02:39-0300\n"
-"PO-Revision-Date: 2025-11-01 18:11+0000\n"
+"PO-Revision-Date: 2025-11-02 06:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2875,9 +2875,8 @@ msgid "Audio Effects for PipeWire Applications"
 msgstr "Effetti Audio per Applicazioni Pipewire"
 
 #: src/contents/ui/Deesser.qml:76
-#, fuzzy
 msgid "Wideband"
-msgstr "Banda Larga"
+msgstr "Banda larga"
 
 #, fuzzy
 #~ msgid "Boost tshreshold"
