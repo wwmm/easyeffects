@@ -34,6 +34,7 @@
 #include <cstdarg>
 #include <cstdint>
 #include <cstdio>
+#include <format>
 #include <mutex>
 #include <string>
 #include "lilv/lilv.h"
