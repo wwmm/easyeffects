@@ -10,7 +10,7 @@ Kirigami.OverlaySheet {
 
     required property var streamDB
 
-    title: i18n("Effects Blocklist") // qmllint disable
+    title: i18n("Excluded Applications") // qmllint disable
     parent: applicationWindow().overlay // qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
