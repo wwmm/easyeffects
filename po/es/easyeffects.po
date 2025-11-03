@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-01 18:07+0000\n"
+"POT-Creation-Date: 2025-11-03 22:02+0000\n"
 "PO-Revision-Date: 2025-10-03 05:01+0000\n"
 "Last-Translator: Javier Galardi <jagabu@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -80,11 +80,11 @@ msgstr "Habilitar mensajes de depuración."
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:341
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:342
 msgid "Output Presets"
 msgstr "Perfiles de salida"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:326
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
 msgid "Input Presets"
 msgstr "Perfiles de entrada"
 
@@ -292,14 +292,14 @@ msgstr "Escuchar"
 #: src/contents/ui/MultibandCompressor.qml:973
 #: src/contents/ui/MultibandGate.qml:946 src/contents/ui/RNNoise.qml:323
 #: src/contents/ui/Reverb.qml:350 src/contents/ui/Speex.qml:185
-#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:526
+#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:523
 msgid "Reset"
 msgstr "Restablecer"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:460
+#: src/contents/ui/main.qml:461
 msgid "Output"
 msgstr "Salida"
 
@@ -311,8 +311,9 @@ msgid "Link"
 msgstr "Enlace"
 
 #: src/contents/ui/BlocklistSheet.qml:13
-msgid "Effects Blocklist"
-msgstr ""
+#, fuzzy
+msgid "Excluded Applications"
+msgstr "Lista de aplicaciones excluidas"
 
 #: src/contents/ui/BlocklistSheet.qml:29
 #, fuzzy
@@ -327,7 +328,7 @@ msgstr "Añadir a las aplicaciones excluidas"
 #: src/contents/ui/BlocklistSheet.qml:97
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:33
-#: src/contents/ui/PageStreamsEffects.qml:79
+#: src/contents/ui/PageStreamsEffects.qml:80
 #: src/contents/ui/PresetsAutoloadingPage.qml:98
 #: src/contents/ui/PresetsCommunityPage.qml:64
 #: src/contents/ui/PresetsLocalPage.qml:169 src/contents/ui/RNNoise.qml:212
@@ -471,7 +472,7 @@ msgstr "Externa"
 
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
-#: src/contents/ui/PageStreamsEffects.qml:321
+#: src/contents/ui/PageStreamsEffects.qml:322
 #, fuzzy
 msgid "Input device"
 msgstr "Dispositivo de entrada"
@@ -893,7 +894,7 @@ msgid "Default"
 msgstr "Predeterminado"
 
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
-#: src/contents/ui/main.qml:424
+#: src/contents/ui/main.qml:439
 msgid "Presets"
 msgstr "Perfiles"
 
@@ -1172,7 +1173,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:471
+#: src/contents/ui/main.qml:470
 msgid "Input"
 msgstr "Entrada"
 
@@ -1812,57 +1813,57 @@ msgstr "Dispositivo de entrada"
 msgid "Reaction"
 msgstr "Reducción"
 
-#: src/contents/ui/PageStreamsEffects.qml:80
+#: src/contents/ui/PageStreamsEffects.qml:81
 #, fuzzy
 msgid "No audio application available"
 msgstr "Ninguna aplicación de audio disponible"
 
-#: src/contents/ui/PageStreamsEffects.qml:274
+#: src/contents/ui/PageStreamsEffects.qml:275
 #, fuzzy
 msgid "Add effect"
 msgstr "Agregar efecto"
 
-#: src/contents/ui/PageStreamsEffects.qml:321
-#: src/contents/ui/PageStreamsEffects.qml:574
+#: src/contents/ui/PageStreamsEffects.qml:322
+#: src/contents/ui/PageStreamsEffects.qml:575
 msgid "Players"
 msgstr "Reproductores"
 
-#: src/contents/ui/PageStreamsEffects.qml:338
-#: src/contents/ui/PageStreamsEffects.qml:574
+#: src/contents/ui/PageStreamsEffects.qml:339
+#: src/contents/ui/PageStreamsEffects.qml:575
 msgid "Recorders"
 msgstr "Grabadores"
 
-#: src/contents/ui/PageStreamsEffects.qml:351
+#: src/contents/ui/PageStreamsEffects.qml:352
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:353
+#: src/contents/ui/PageStreamsEffects.qml:354
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:353
+#: src/contents/ui/PageStreamsEffects.qml:354
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:377
+#: src/contents/ui/PageStreamsEffects.qml:378
 msgid "No Effects"
 msgstr "Sin efectos"
 
-#: src/contents/ui/PageStreamsEffects.qml:378
+#: src/contents/ui/PageStreamsEffects.qml:379
 #, fuzzy
 msgid "Audio stream not modified"
 msgstr "Flujo de audio no modificado"
 
-#: src/contents/ui/PageStreamsEffects.qml:584
+#: src/contents/ui/PageStreamsEffects.qml:585
 msgid "Effects"
 msgstr "Efectos"
 
-#: src/contents/ui/PageStreamsEffects.qml:601
+#: src/contents/ui/PageStreamsEffects.qml:602
 #, fuzzy
 msgid "Input monitoring"
 msgstr "Activar/desactivar la supervisión de entradas"
 
-#: src/contents/ui/PageStreamsEffects.qml:614
+#: src/contents/ui/PageStreamsEffects.qml:615
 #, fuzzy
 msgid "Excluded apps"
 msgstr "Aplicaciones excluidas"
@@ -2047,7 +2048,7 @@ msgstr "Suavizado"
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:498
+#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:495
 #, fuzzy
 msgid "Preferences"
 msgstr "_Preferencias"
@@ -2508,11 +2509,11 @@ msgstr "Eliminar este perfil"
 msgid "Delete this preset"
 msgstr "Eliminar este perfil"
 
-#: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:104
+#: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:105
 msgid "Local"
 msgstr "Local"
 
-#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:104
+#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:105
 msgid "Community"
 msgstr "Comunidad"
 
@@ -2521,12 +2522,12 @@ msgstr "Comunidad"
 msgid "Autoloading"
 msgstr "Ganancia automática"
 
-#: src/contents/ui/PresetsSheet.qml:102
+#: src/contents/ui/PresetsSheet.qml:103
 #, fuzzy
 msgid "No preset loaded"
 msgstr "No hay perfiles cargados"
 
-#: src/contents/ui/PresetsSheet.qml:118
+#: src/contents/ui/PresetsSheet.qml:119
 msgid "Fallback Preset"
 msgstr ""
 
@@ -2744,8 +2745,8 @@ msgstr "_Atajos de teclado"
 msgid "Toggle microphone monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:383
-#: src/contents/ui/main.qml:506
+#: src/contents/ui/ShortcutsSheet.qml:348 src/contents/ui/main.qml:384
+#: src/contents/ui/main.qml:503
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_Atajos de teclado"
@@ -2861,54 +2862,54 @@ msgstr "Base estéreo"
 msgid "Stereo phase"
 msgstr "Fase estéreo"
 
-#: src/contents/ui/main.qml:207
+#: src/contents/ui/main.qml:208
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_Restablecer ajustes"
 
-#: src/contents/ui/main.qml:208
+#: src/contents/ui/main.qml:209
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:277 src/contents/ui/main.qml:293
+#: src/contents/ui/main.qml:278 src/contents/ui/main.qml:294
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "No hay perfiles cargados"
 
-#: src/contents/ui/main.qml:304 src/contents/ui/main.qml:316
+#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
 #, fuzzy
 msgid "Clear List"
 msgstr "Lista de los clientes"
 
-#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
+#: src/contents/ui/main.qml:306 src/contents/ui/main.qml:318
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/main.qml:372
+#: src/contents/ui/main.qml:373
 #, fuzzy
 msgid "Active"
 msgstr "Modelo activo"
 
-#: src/contents/ui/main.qml:392 src/contents/ui/main.qml:514
+#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:511
 #, fuzzy
 msgid "Manual"
 msgstr "_Manual"
 
-#: src/contents/ui/main.qml:402 src/contents/ui/main.qml:546
+#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:543
 #, fuzzy
 msgid "Quit"
 msgstr "_Salir"
 
-#: src/contents/ui/main.qml:432
+#: src/contents/ui/main.qml:427
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/main.qml:482
+#: src/contents/ui/main.qml:479
 #, fuzzy
 msgid "PipeWire"
 msgstr "_Software PipeWire"
 
-#: src/contents/ui/main.qml:538
+#: src/contents/ui/main.qml:535
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_Acerca de Easy Effects"
@@ -3233,9 +3234,6 @@ msgstr "Efectos de sonido para las aplicaciones PipeWire"
 
 #~ msgid "Preset"
 #~ msgstr "Preestablecido"
-
-#~ msgid "Excluded Applications List"
-#~ msgstr "Lista de aplicaciones excluidas"
 
 #~ msgid "Attack Time"
 #~ msgstr "Tiempo de ataque"
