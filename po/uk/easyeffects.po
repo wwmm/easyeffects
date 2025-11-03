@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-01 18:07+0000\n"
-"PO-Revision-Date: 2025-10-23 10:02+0000\n"
-"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
+"PO-Revision-Date: 2025-11-03 09:51+0000\n"
+"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
 "X-Generator: Weblate 5.14.1-dev\n"
 
 #: src/command_line_parser.cpp:43
@@ -762,7 +763,7 @@ msgstr "Імпульс конвольвера не встановлено"
 
 #: src/contents/ui/Convolver.qml:56
 msgid "The Convolver is in passthrough mode."
-msgstr ""
+msgstr "Конволютор працює в режимі пропускання."
 
 #: src/contents/ui/Convolver.qml:58
 #, fuzzy
@@ -979,11 +980,11 @@ msgstr "F1 Розділити"
 
 #: src/contents/ui/Deesser.qml:184
 msgid "F2 peak"
-msgstr ""
+msgstr "Пік F2"
 
 #: src/contents/ui/Deesser.qml:201
 msgid "F1 gain"
-msgstr ""
+msgstr "Підсилення F1"
 
 #: src/contents/ui/Deesser.qml:218
 #, fuzzy
@@ -1668,7 +1669,7 @@ msgstr "Кліппінг"
 
 #: src/contents/ui/MenuAddPlugins.qml:62
 msgid "Add %1"
-msgstr ""
+msgstr "Додати %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:133
 #, fuzzy
@@ -1786,11 +1787,11 @@ msgstr "Закрити"
 
 #: src/contents/ui/PageStreamsEffects.qml:353
 msgid "Expand the list of effects pipeline"
-msgstr ""
+msgstr "Розгорнути список ефектів конвеєра"
 
 #: src/contents/ui/PageStreamsEffects.qml:353
 msgid "Reduce the list of effects pipeline"
-msgstr ""
+msgstr "Згорнути список ефектів конвеєра"
 
 #: src/contents/ui/PageStreamsEffects.qml:377
 msgid "No Effects"
@@ -2825,7 +2826,7 @@ msgstr "Пресет застосовано"
 
 #: src/contents/ui/main.qml:304 src/contents/ui/main.qml:316
 msgid "Clear List"
-msgstr ""
+msgstr "Очистити список"
 
 #: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
 #, fuzzy
