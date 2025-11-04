@@ -42,6 +42,7 @@ Kirigami.AbstractCard {
             id: delegateLayout
 
             maximumColumns: 3
+            maximumColumnWidth: root.parent?.width / maximumColumns
 
             Kirigami.Icon {
                 Layout.fillHeight: true
