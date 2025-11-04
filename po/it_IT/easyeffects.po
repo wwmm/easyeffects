@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-04 14:47-0300\n"
-"PO-Revision-Date: 2025-11-04 16:51+0000\n"
+"PO-Revision-Date: 2025-11-05 00:44+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2645,14 +2645,12 @@ msgid "Stereo phase"
 msgstr "Fase stereo"
 
 #: src/global_shortcuts.hpp:48
-#, fuzzy
 msgid "Toggle Global Bypass"
-msgstr "Abilita/disabilita bypass globale"
+msgstr "Abilita/Disabilita Bypass Globale"
 
 #: src/global_shortcuts.hpp:50
-#, fuzzy
 msgid "Toggle Microphone Monitoring"
-msgstr "Abilita/disabilita il monitoraggio del microfono"
+msgstr "Abilita/Disabilita il Monitoraggio del Microfono"
 
 #: src/plugin_base.cpp:272
 msgid "(Mic)"
