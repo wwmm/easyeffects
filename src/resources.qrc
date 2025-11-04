@@ -44,6 +44,7 @@
         <file alias="Pitch.qml">contents/ui/Pitch.qml</file>
         <file alias="PipeWirePage.qml">contents/ui/PipeWirePage.qml</file>
         <file alias="PreferencesSheet.qml">contents/ui/PreferencesSheet.qml</file>
+        <file alias="LspPreMixSheet.qml">contents/ui/LspPreMixSheet.qml</file>
         <file alias="PresetsSheet.qml">contents/ui/PresetsSheet.qml</file>
         <file alias="PresetsAutoloadingPage.qml">contents/ui/PresetsAutoloadingPage.qml</file>
         <file alias="PresetsLocalPage.qml">contents/ui/PresetsLocalPage.qml</file>

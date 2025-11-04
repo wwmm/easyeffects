@@ -893,6 +893,12 @@ Kirigami.ScrollablePage {
         }
     }
 
+    LspPreMixSheet {
+        id: preMixSheet
+
+        pluginDB: multibandGatePage.pluginDB
+    }
+
     header: EeInputOutputGain {
         id: inputOutputLevels
 
@@ -939,6 +945,13 @@ Kirigami.ScrollablePage {
                     onTriggered: {
                         if (multibandGatePage.pluginDB.stereoSplit != checked)
                             multibandGatePage.pluginDB.stereoSplit = checked;
+                    }
+                },
+                Kirigami.Action {
+                    text: i18n("Pre-Mix") // qmllint disable
+                    icon.name: "channelmixer-symbolic"
+                    onTriggered: {
+                        preMixSheet.open();
                     }
                 },
                 Kirigami.Action {

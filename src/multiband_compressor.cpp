@@ -92,6 +92,14 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
   // dB controls with -inf mode.
   BIND_LV2_PORT_DB("g_dry", dry, setDry, db::MultibandCompressor::dryChanged, true);
   BIND_LV2_PORT_DB("g_wet", wet, setWet, db::MultibandCompressor::wetChanged, true);
+  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, db::MultibandCompressor::inputToLinkChanged, true);
+  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, db::MultibandCompressor::inputToSidechainChanged,
+                   true);
+  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, db::MultibandCompressor::sidechainToInputChanged,
+                   true);
+  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, db::MultibandCompressor::sidechainToLinkChanged, true);
+  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, db::MultibandCompressor::linkToSidechainChanged, true);
+  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, db::MultibandCompressor::linkToInputChanged, true);
 
   bind_bands();
 }

@@ -92,6 +92,12 @@ MultibandGate::MultibandGate(const std::string& tag,
   // dB controls with -inf mode.
   BIND_LV2_PORT_DB("g_dry", dry, setDry, db::MultibandGate::dryChanged, true);
   BIND_LV2_PORT_DB("g_wet", wet, setWet, db::MultibandGate::wetChanged, true);
+  BIND_LV2_PORT_DB("in2lk", inputToLink, setInputToLink, db::MultibandGate::inputToLinkChanged, true);
+  BIND_LV2_PORT_DB("in2sc", inputToSidechain, setInputToSidechain, db::MultibandGate::inputToSidechainChanged, true);
+  BIND_LV2_PORT_DB("sc2in", sidechainToInput, setSidechainToInput, db::MultibandGate::sidechainToInputChanged, true);
+  BIND_LV2_PORT_DB("sc2lk", sidechainToLink, setSidechainToLink, db::MultibandGate::sidechainToLinkChanged, true);
+  BIND_LV2_PORT_DB("lk2sc", linkToSidechain, setLinkToSidechain, db::MultibandGate::linkToSidechainChanged, true);
+  BIND_LV2_PORT_DB("lk2in", linkToInput, setLinkToInput, db::MultibandGate::linkToInputChanged, true);
 
   bind_bands();
 }

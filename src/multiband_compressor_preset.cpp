@@ -54,6 +54,18 @@ void MultibandCompressorPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["stereo-split"] = settings->stereoSplit();
 
+  json[section][instance_name]["input-to-sidechain"] = settings->inputToSidechain();
+
+  json[section][instance_name]["input-to-link"] = settings->inputToLink();
+
+  json[section][instance_name]["sidechain-to-input"] = settings->sidechainToInput();
+
+  json[section][instance_name]["sidechain-to-link"] = settings->sidechainToLink();
+
+  json[section][instance_name]["link-to-input"] = settings->linkToInput();
+
+  json[section][instance_name]["link-to-sidechain"] = settings->linkToSidechain();
+
   for (uint n = 0U; n < tags::multiband_compressor::n_bands; n++) {
     const auto nstr = util::to_string(n);
     const auto bandn = "band" + nstr;
@@ -145,6 +157,12 @@ void MultibandCompressorPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("dry", Dry);
   UPDATE_PROPERTY("wet", Wet);
   UPDATE_PROPERTY("stereo-split", StereoSplit);
+  UPDATE_PROPERTY("input-to-sidechain", InputToSidechain);
+  UPDATE_PROPERTY("input-to-link", InputToLink);
+  UPDATE_PROPERTY("sidechain-to-input", SidechainToInput);
+  UPDATE_PROPERTY("sidechain-to-link", SidechainToLink);
+  UPDATE_PROPERTY("link-to-input", LinkToInput);
+  UPDATE_PROPERTY("link-to-sidechain", LinkToSidechain);
 
   UPDATE_ENUM_LIKE_PROPERTY("compressor-mode", CompressorMode);
   UPDATE_ENUM_LIKE_PROPERTY("envelope-boost", EnvelopeBoost);

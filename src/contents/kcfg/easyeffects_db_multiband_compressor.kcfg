@@ -64,6 +64,43 @@
             <default>0</default>
         </entry>
 
+        <entry name="inputToSidechain" type="Double">
+            <label></label>
+            <min>-80.01</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="inputToLink" type="Double">
+            <label></label>
+            <min>-80.01</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainToInput" type="Double">
+            <label></label>
+            <min>-80.01</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="sidechainToLink" type="Double">
+            <label></label>
+            <min>-80.01</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="linkToSidechain" type="Double">
+            <label></label>
+            <min>-80.01</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+        <entry name="linkToInput" type="Double">
+            <label></label>
+            <min>-80.01</min>
+            <max>40</max>
+            <default>0</default>
+        </entry>
+
         <entry name="band1Enable" type="Bool">
             <label></label>
             <default>true</default>
