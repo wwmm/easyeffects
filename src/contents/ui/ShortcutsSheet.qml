@@ -1,3 +1,4 @@
+import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
@@ -236,6 +237,10 @@ Kirigami.OverlaySheet {
             Controls.Label {
                 text: i18n("Can be used on numeric controls") // qmllint disable
             }
+
+            Item {
+                implicitHeight: Kirigami.Units.gridUnit
+            }
         }
 
         RowLayout {
@@ -332,6 +337,10 @@ Kirigami.OverlaySheet {
 
             Controls.Label {
                 text: i18n("Toggle microphone monitoring") // qmllint disable
+            }
+
+            Item {
+                implicitHeight: Kirigami.Units.gridUnit
             }
         }
     }
