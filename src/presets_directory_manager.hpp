@@ -69,6 +69,7 @@ class DirectoryManager {
  private:
   // Core directory paths
   std::filesystem::path app_config_dir;
+  std::filesystem::path app_data_dir;
   std::filesystem::path user_input_dir;
   std::filesystem::path user_output_dir;
   std::filesystem::path user_irs_dir;
@@ -86,6 +87,8 @@ class DirectoryManager {
 
   static auto searchPresetsPath(std::filesystem::directory_iterator& it, const std::string& file_extension = json_ext)
       -> QList<std::filesystem::path>;
+
+  void xdg_migration();
 };
 
 }  // namespace presets

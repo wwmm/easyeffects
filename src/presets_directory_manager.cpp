@@ -21,8 +21,10 @@
 #include <qcontainerfwd.h>
 #include <qstandardpaths.h>
 #include <qtypes.h>
+#include <QFile>
 #include <exception>
 #include <filesystem>
+#include <format>
 #include <string>
 #include <vector>
 #include "config.h"
@@ -34,13 +36,16 @@ namespace presets {
 
 DirectoryManager::DirectoryManager()
     : app_config_dir(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation).toStdString()),
-      user_input_dir(app_config_dir / "input"),
-      user_output_dir(app_config_dir / "output"),
-      user_irs_dir(app_config_dir / "irs"),
-      user_rnnoise_dir(app_config_dir / "rnnoise"),
-      autoload_input_dir(app_config_dir / "autoload/input"),
-      autoload_output_dir(app_config_dir / "autoload/output") {
+      app_data_dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).toStdString()),
+      user_input_dir(app_data_dir / "input"),
+      user_output_dir(app_data_dir / "output"),
+      user_irs_dir(app_data_dir / "irs"),
+      user_rnnoise_dir(app_data_dir / "rnnoise"),
+      autoload_input_dir(app_data_dir / "autoload/input"),
+      autoload_output_dir(app_data_dir / "autoload/output") {
   createUserDirectories();
+
+  xdg_migration();
 
   /**
    * Initialize input and output directories for community presets.
@@ -118,6 +123,37 @@ void DirectoryManager::createUserDirectories() {
   util::create_user_directory(user_rnnoise_dir);
   util::create_user_directory(autoload_input_dir);
   util::create_user_directory(autoload_output_dir);
+}
+
+void DirectoryManager::xdg_migration() {
+  auto old_user_input_dir = app_config_dir / "input";
+  auto old_user_output_dir = app_config_dir / "output";
+  auto old_user_irs_dir = app_config_dir / "irs";
+  auto old_user_rnnoise_dir = app_config_dir / "rnnoise";
+  auto old_autoload_input_dir = app_config_dir / "autoload/input";
+  auto old_autoload_output_dir = app_config_dir / "autoload/output";
+
+  auto trash_dir = QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/Trash";
+
+  auto migrate = [](const std::filesystem::path& old_dir, const std::filesystem::path& new_dir) {
+    if (std::filesystem::is_directory(old_dir)) {
+      util::info(
+          std::format("Old {} directory detected. Migrating its files to {}", old_dir.string(), new_dir.string()));
+
+      util::copy_all_files(old_dir, new_dir);
+
+      if (QFile::moveToTrash(QString::fromStdString(old_dir.string()))) {
+        util::info(std::format("Moved {} to the trash folder", new_dir.string()));
+      }
+    }
+  };
+
+  migrate(old_user_input_dir, user_input_dir);
+  migrate(old_user_output_dir, user_output_dir);
+  migrate(old_user_irs_dir, user_irs_dir);
+  migrate(old_user_rnnoise_dir, user_rnnoise_dir);
+  migrate(old_autoload_input_dir, autoload_input_dir);
+  migrate(old_autoload_output_dir, autoload_output_dir);
 }
 
 auto DirectoryManager::getLocalPresetsPaths(PipelineType type) const -> QList<std::filesystem::path> {

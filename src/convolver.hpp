@@ -111,7 +111,7 @@ class Convolver : public PluginBase {
  private:
   db::Convolver* settings = nullptr;
 
-  std::string app_config_dir;
+  std::string app_data_dir;
   std::string local_dir_irs;
   std::vector<std::string> system_data_dir_irs;
 

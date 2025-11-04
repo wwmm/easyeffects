@@ -75,7 +75,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
       settings(
           db::Manager::self().get_plugin_db<db::Convolver>(pipe_type,
                                                            tags::plugin_name::BaseName::convolver + "#" + instance_id)),
-      app_config_dir(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation).toStdString()) {
+      app_data_dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).toStdString()) {
   /**
    * Setting valid rate and n_sampls values instead of zero allows the
    * convolver ui to properly show the impulse response file parameters
@@ -87,7 +87,7 @@ Convolver::Convolver(const std::string& tag, pw::Manager* pipe_manager, Pipeline
   init_common_controls<db::Convolver>(settings);
 
   // Initialize directories for local and community irs
-  local_dir_irs = app_config_dir + "/irs";
+  local_dir_irs = app_data_dir + "/irs";
 
   /**
    * Flatpak specific path (.flatpak-info always present for apps running in

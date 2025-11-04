@@ -52,7 +52,7 @@ RNNoise::RNNoise(const std::string& tag, pw::Manager* pipe_manager, PipelineType
       settings(
           db::Manager::self().get_plugin_db<db::RNNoise>(pipe_type,
                                                          tags::plugin_name::BaseName::rnnoise + "#" + instance_id)),
-      app_config_dir(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation).toStdString()),
+      app_data_dir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).toStdString()),
       data_L(0),
       data_R(0) {
   data_L.reserve(blocksize);
@@ -62,7 +62,7 @@ RNNoise::RNNoise(const std::string& tag, pw::Manager* pipe_manager, PipelineType
   init_common_controls<db::RNNoise>(settings);
 
   // Initialize directories for local and community models
-  local_dir_rnnoise = app_config_dir + "/rnnoise";
+  local_dir_rnnoise = app_data_dir + "/rnnoise";
 
   // Flatpak specific path (.flatpak-info always present for apps
   // running in the flatpak sandbox)

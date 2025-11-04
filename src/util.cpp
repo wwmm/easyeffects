@@ -88,6 +88,19 @@ void create_user_directory(const std::filesystem::path& path) {
   util::warning(std::format("Failed to create directory: {}", path.string()));
 }
 
+void copy_all_files(const std::filesystem::path& source_dir, const std::filesystem::path& target_dir) {
+  for (const auto& entry : std::filesystem::directory_iterator(source_dir)) {
+    if (entry.is_regular_file()) {
+      const std::filesystem::path& old_path = entry.path();
+      const std::filesystem::path new_path = target_dir / old_path.filename();
+
+      std::filesystem::copy_file(old_path, new_path, std::filesystem::copy_options::overwrite_existing);
+
+      info(std::format("Copied  {} to {}", old_path.string(), new_path.string()));
+    }
+  }
+}
+
 auto normalize(const double& x, const double& max, const double& min) -> double {
   // Mainly used for gating level bar in gate effects
   return (x - min) / (max - min);
