@@ -47,6 +47,10 @@ Pitch::Pitch(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
                                                             tags::plugin_name::BaseName::pitch + "#" + instance_id)) {
   init_common_controls<db::Pitch>(settings);
 
+  dry = (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
+
+  wet = (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
+
   // resetting soundtouch when bypass is pressed so its internal data is discarded
 
   connect(settings, &db::Pitch::bypassChanged, [&]() { resetHistory(); });
@@ -70,6 +74,16 @@ Pitch::Pitch(const std::string& tag, pw::Manager* pipe_manager, PipelineType pip
   connect(settings, &db::Pitch::semitonesChanged, [&]() { set_semitones(); });
 
   connect(settings, &db::Pitch::centsChanged, [&]() { set_semitones(); });
+
+  connect(settings, &db::Pitch::dryChanged, [&]() {
+    dry =
+        (settings->dry() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->dry()));
+  });
+
+  connect(settings, &db::Pitch::wetChanged, [&]() {
+    wet =
+        (settings->wet() <= util::minimum_db_d_level) ? 0.0F : static_cast<float>(util::db_to_linear(settings->wet()));
+  });
 }
 
 Pitch::~Pitch() {
@@ -183,6 +197,12 @@ void Pitch::process(std::span<float>& left_in,
         deque_out_L.pop_front();
       }
     }
+  }
+
+  for (size_t n = 0; n < left_out.size(); n++) {
+    left_out[n] = (wet * left_out[n]) + (dry * left_in[n]);
+
+    right_out[n] = (wet * right_out[n]) + (dry * right_in[n]);
   }
 
   if (output_gain != 1.0F) {

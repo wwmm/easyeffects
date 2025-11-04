@@ -78,6 +78,8 @@ class Pitch : public PluginBase {
 
   uint latency_n_frames = 0U;
 
+  float dry = 0.0F, wet = 1.0F;
+
   std::vector<float> data_L, data_R, data;
 
   std::deque<float> deque_out_L, deque_out_R;

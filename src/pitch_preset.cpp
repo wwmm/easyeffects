@@ -37,6 +37,10 @@ void PitchPreset::save(nlohmann::json& json) {
 
   json[section][instance_name]["output-gain"] = settings->outputGain();
 
+  json[section][instance_name]["dry"] = settings->dry();
+
+  json[section][instance_name]["wet"] = settings->wet();
+
   json[section][instance_name]["quick-seek"] = settings->quickSeek();
 
   json[section][instance_name]["anti-alias"] = settings->antiAlias();
@@ -62,6 +66,8 @@ void PitchPreset::load(const nlohmann::json& json) {
   UPDATE_PROPERTY("bypass", Bypass);
   UPDATE_PROPERTY("input-gain", InputGain);
   UPDATE_PROPERTY("output-gain", OutputGain);
+  UPDATE_PROPERTY("dry", Dry);
+  UPDATE_PROPERTY("wet", Wet);
   UPDATE_PROPERTY("quick-seek", QuickSeek);
   UPDATE_PROPERTY("anti-alias", AntiAlias);
   UPDATE_PROPERTY("sequence-length", SequenceLength);

@@ -39,40 +39,49 @@ Kirigami.ScrollablePage {
                 id: cardControls
 
                 header: Kirigami.Heading {
-                    text: i18n("Quality") // qmllint disable
+                    text: i18n("Controls") // qmllint disable
                     level: 2
                 }
 
                 contentItem: ColumnLayout {
-                    EeSpinBox {
-                        id: sequenceLength
 
-                        label: i18n("Sequence length") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: pitchPage.pluginDB.getMinValue("sequenceLength")
-                        to: pitchPage.pluginDB.getMaxValue("sequenceLength")
-                        value: pitchPage.pluginDB.sequenceLength
-                        decimals: 0
-                        stepSize: 1
-                        unit: "ms"
-                        onValueModified: v => {
-                            pitchPage.pluginDB.sequenceLength = v;
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+                        Layout.alignment: Qt.AlignTop
+
+                        EeSpinBox {
+                            id: sequenceLength
+
+                            label: i18n("Sequence length") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pitchPage.pluginDB.getMinValue("sequenceLength")
+                            to: pitchPage.pluginDB.getMaxValue("sequenceLength")
+                            value: pitchPage.pluginDB.sequenceLength
+                            decimals: 0
+                            stepSize: 1
+                            unit: "ms"
+                            onValueModified: v => {
+                                pitchPage.pluginDB.sequenceLength = v;
+                            }
                         }
-                    }
 
-                    EeSpinBox {
-                        id: seekWindow
+                        EeSpinBox {
+                            id: seekWindow
 
-                        label: i18n("Seek window") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: pitchPage.pluginDB.getMinValue("seekWindow")
-                        to: pitchPage.pluginDB.getMaxValue("seekWindow")
-                        value: pitchPage.pluginDB.seekWindow
-                        decimals: 0
-                        stepSize: 1
-                        unit: "ms"
-                        onValueModified: v => {
-                            pitchPage.pluginDB.seekWindow = v;
+                            label: i18n("Seek window") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pitchPage.pluginDB.getMinValue("seekWindow")
+                            to: pitchPage.pluginDB.getMaxValue("seekWindow")
+                            value: pitchPage.pluginDB.seekWindow
+                            decimals: 0
+                            stepSize: 1
+                            unit: "ms"
+                            onValueModified: v => {
+                                pitchPage.pluginDB.seekWindow = v;
+                            }
                         }
                     }
 
@@ -80,7 +89,8 @@ Kirigami.ScrollablePage {
                         id: overlapLength
 
                         label: i18n("Overlap length") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
                         from: pitchPage.pluginDB.getMinValue("overlapLength")
                         to: pitchPage.pluginDB.getMaxValue("overlapLength")
                         value: pitchPage.pluginDB.overlapLength
@@ -89,6 +99,50 @@ Kirigami.ScrollablePage {
                         unit: "ms"
                         onValueModified: v => {
                             pitchPage.pluginDB.overlapLength = v;
+                        }
+                    }
+
+                    GridLayout {
+                        columns: 2
+                        uniformCellWidths: true
+                        Layout.alignment: Qt.AlignTop
+
+                        EeSpinBox {
+                            id: dry
+
+                            Layout.alignment: Qt.AlignTop
+                            label: i18n("Dry") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pitchPage.pluginDB.getMinValue("dry")
+                            to: pitchPage.pluginDB.getMaxValue("dry")
+                            value: pitchPage.pluginDB.dry
+                            decimals: 2 // Required to show "-inf"
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                pitchPage.pluginDB.dry = v;
+                            }
+                        }
+
+                        EeSpinBox {
+                            id: wet
+
+                            Layout.alignment: Qt.AlignTop
+                            label: i18n("Wet") // qmllint disable
+                            labelAbove: true
+                            spinboxLayoutFillWidth: true
+                            from: pitchPage.pluginDB.getMinValue("wet")
+                            to: pitchPage.pluginDB.getMaxValue("wet")
+                            value: pitchPage.pluginDB.wet
+                            decimals: 2 // Required to show "-inf"
+                            stepSize: 0.01
+                            unit: "dB"
+                            minusInfinityMode: true
+                            onValueModified: v => {
+                                pitchPage.pluginDB.wet = v;
+                            }
                         }
                     }
                 }
