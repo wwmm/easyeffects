@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-03 22:02+0000\n"
-"PO-Revision-Date: 2025-11-02 06:51+0000\n"
+"PO-Revision-Date: 2025-11-04 16:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -294,9 +294,8 @@ msgid "Link"
 msgstr "Link"
 
 #: src/contents/ui/BlocklistSheet.qml:13
-#, fuzzy
 msgid "Excluded Applications"
-msgstr "Lista delle Applicazioni Escluse"
+msgstr "Applicazioni Escluse"
 
 #: src/contents/ui/BlocklistSheet.qml:29
 msgid "Application node name"
