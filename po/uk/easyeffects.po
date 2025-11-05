@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the easyeffects package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR. #907
 #
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-04 21:41-0300\n"
 "PO-Revision-Date: 2025-11-03 09:51+0000\n"
-"Last-Translator: Володимир <vlzuykov@gmail.com>\n"
+"Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
@@ -91,7 +91,7 @@ msgstr "Про нас"
 
 #: src/contents/ui/AboutPage.qml:14
 msgid "Audio effects for PipeWire applications"
-msgstr "Аудіоефекти для застосунків PipeWire"
+msgstr "Звукові ефекти для застосунків PipeWire"
 
 #: src/contents/ui/AboutPage.qml:27
 msgctxt "@info:credit"
@@ -118,7 +118,6 @@ msgstr "Миттєва"
 
 #: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:150
 #: src/contents/ui/LevelMeter.qml:144
-#, fuzzy
 msgid "Short-term"
 msgstr "Короткочасна"
 
@@ -128,22 +127,18 @@ msgid "Integrated"
 msgstr "Інтегрована"
 
 #: src/contents/ui/Autogain.qml:66
-#, fuzzy
 msgid "Geometric mean (MSI)"
 msgstr "Середнє геометричне (МКІ)"
 
 #: src/contents/ui/Autogain.qml:66
-#, fuzzy
 msgid "Geometric mean (MS)"
 msgstr "Середнє геометричне (МК)"
 
 #: src/contents/ui/Autogain.qml:66
-#, fuzzy
 msgid "Geometric mean (MI)"
 msgstr "Середнє геометричне (МІ)"
 
 #: src/contents/ui/Autogain.qml:66
-#, fuzzy
 msgid "Geometric mean (SI)"
 msgstr "Середнє геометричне (КІ)"
 
@@ -156,7 +151,6 @@ msgid "Silence"
 msgstr "Рівень тиши"
 
 #: src/contents/ui/Autogain.qml:107
-#, fuzzy
 msgid "Maximum history"
 msgstr "Тривалість історії (максимальна)"
 
@@ -175,7 +169,6 @@ msgid "Range"
 msgstr "Діапазон"
 
 #: src/contents/ui/Autogain.qml:205
-#, fuzzy
 msgid "Output gain"
 msgstr "Вихідне підсилення"
 
@@ -200,28 +193,23 @@ msgstr "Використовується %1"
 
 #: src/contents/ui/Autogain.qml:243 src/contents/ui/DeepFilterNet.qml:186
 #: src/contents/ui/LevelMeter.qml:208 src/contents/ui/Pitch.qml:282
-#, fuzzy
 msgid "Reset history"
 msgstr "Скинути історію"
 
 #: src/contents/ui/Autogain.qml:250
-#, fuzzy
 msgid "Force silence"
-msgstr "Примусове придушення"
+msgstr "Примусова тиша"
 
 #: src/contents/ui/Autogain.qml:251
-#, fuzzy
 msgid "Force silence when the level is below the silence threshold"
 msgstr "Примусово вимкнути звук якщо рівень нижче порогу тиші"
 
 #: src/contents/ui/Autogain.qml:263 src/contents/ui/DeepFilterNet.qml:194
 #: src/contents/ui/LevelMeter.qml:216 src/contents/ui/Pitch.qml:310
-#, fuzzy
 msgid "Reset settings"
 msgstr "Скинути налаштування"
 
 #: src/contents/ui/BassEnhancer.qml:39 src/contents/ui/Exciter.qml:39
-#, fuzzy
 msgid "Blend harmonics"
 msgstr "Змішування гармонік"
 
@@ -247,7 +235,6 @@ msgid "Scope"
 msgstr "Діапазон"
 
 #: src/contents/ui/BassEnhancer.qml:144
-#, fuzzy
 msgid "Floor active"
 msgstr "Обмеження"
 
@@ -264,7 +251,6 @@ msgstr "Частота обмеження"
 #: src/contents/ui/MultibandCompressor.qml:955
 #: src/contents/ui/MultibandGate.qml:928 src/contents/ui/Reverb.qml:336
 #: src/contents/ui/StereoTools.qml:413
-#, fuzzy
 msgid "Show native window"
 msgstr "Показати рідне вікно"
 
@@ -305,17 +291,14 @@ msgid "Link"
 msgstr "Зв'язок"
 
 #: src/contents/ui/BlocklistSheet.qml:13
-#, fuzzy
 msgid "Excluded Applications"
-msgstr "Додати до виключених застосунків"
+msgstr "Виключені застосунки"
 
 #: src/contents/ui/BlocklistSheet.qml:29
-#, fuzzy
 msgid "Application node name"
 msgstr "Назва вузла застосунку"
 
 #: src/contents/ui/BlocklistSheet.qml:45
-#, fuzzy
 msgid "Add to excluded applications"
 msgstr "Додати до виключених застосунків"
 
@@ -330,9 +313,8 @@ msgid "Empty List"
 msgstr "Порожній список"
 
 #: src/contents/ui/BlocklistSheet.qml:98
-#, fuzzy
 msgid "No application excluded"
-msgstr "Немає доступного аудіододатку"
+msgstr "Немає виключених застосунків"
 
 #: src/contents/ui/BlocklistSheet.qml:120
 msgid "Remove Application"
@@ -343,19 +325,16 @@ msgid "Are you sure you want to remove this application from the list?"
 msgstr "Ви впевнені, що хочете вилучити цей застосунок зі списку?"
 
 #: src/contents/ui/BlocklistSheet.qml:151
-#, fuzzy
 msgid "Remove this app"
-msgstr "Видаліть цей ефект"
+msgstr "Видалити цей застосунок"
 
 #: src/contents/ui/BlocklistSheet.qml:178
-#, fuzzy
 msgid "Show excluded apps"
-msgstr "Виключені програми"
+msgstr "Показати виключені застосунки"
 
 #: src/contents/ui/BlocklistSheet.qml:179
-#, fuzzy
 msgid "Show excluded applications in the list of players/recorders"
-msgstr "Показувати виключені застосунки в розділі потоків"
+msgstr "Показувати виключені застосунки у списку потоків"
 
 #: src/contents/ui/Compressor.qml:53 src/tags_plugin_name.cpp:29
 msgid "Compressor"
@@ -389,13 +368,11 @@ msgstr "Підсилення"
 
 #: src/contents/ui/Compressor.qml:83
 #: src/contents/ui/MultibandCompressor.qml:115
-#, fuzzy
 msgid "Boost threshold"
-msgstr "Поріг підвищення"
+msgstr "Поріг підсилення"
 
 #: src/contents/ui/Compressor.qml:103
 #: src/contents/ui/MultibandCompressor.qml:134
-#, fuzzy
 msgid "Boost amount"
 msgstr "Величина підсилення"
 
@@ -465,9 +442,8 @@ msgstr "Зовнішній"
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
 #: src/contents/ui/PageStreamsEffects.qml:356
-#, fuzzy
 msgid "Input device"
-msgstr "Пристрій"
+msgstr "Пристрій введення"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Deesser.qml:63
 #: src/contents/ui/Expander.qml:260 src/contents/ui/Gate.qml:281
@@ -488,13 +464,13 @@ msgstr "RMS"
 #: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:281
 #: src/contents/ui/Gate.qml:406
 msgid "Low-pass"
-msgstr "Низькочастотний"
+msgstr "ФНЧ"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Expander.qml:260
 #: src/contents/ui/Gate.qml:281 src/contents/ui/MultibandCompressor.qml:401
 #: src/contents/ui/MultibandGate.qml:374
 msgid "SMA"
-msgstr "Фільтр простої ковзної середньої"
+msgstr "ФПКС (SMA)"
 
 #: src/contents/ui/Compressor.qml:309 src/contents/ui/Compressor.qml:323
 #: src/contents/ui/Expander.qml:269 src/contents/ui/Expander.qml:283
@@ -553,7 +529,7 @@ msgstr "Мінімум"
 #: src/contents/ui/MultibandCompressor.qml:424
 #: src/contents/ui/MultibandGate.qml:385 src/contents/ui/MultibandGate.qml:397
 msgid "Max"
-msgstr "Макс"
+msgstr "Максимум"
 
 #: src/contents/ui/Compressor.qml:327 src/contents/ui/Expander.qml:287
 #: src/contents/ui/Gate.qml:308 src/contents/ui/MultibandCompressor.qml:424
@@ -602,7 +578,7 @@ msgstr "Випередження (затримка)"
 #: src/contents/ui/Compressor.qml:411 src/contents/ui/Expander.qml:370
 #: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:391
 msgid "High-pass"
-msgstr "Високі Частоти"
+msgstr "ФВЧ"
 
 #: src/contents/ui/Compressor.qml:415 src/contents/ui/Compressor.qml:430
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:374
@@ -667,42 +643,42 @@ msgstr "Попереднє змішування"
 #: src/contents/ui/LspPreMixSheet.qml:30
 #, fuzzy
 msgid "Input to sidechain"
-msgstr "Вхід до сайдчейна"
+msgstr "Вхід до бічного ланцюга"
 
 #: src/contents/ui/Compressor.qml:579 src/contents/ui/Expander.qml:538
 #: src/contents/ui/Gate.qml:560 src/contents/ui/Limiter.qml:302
 #: src/contents/ui/LspPreMixSheet.qml:46
 #, fuzzy
 msgid "Input to link"
-msgstr "Вхід для посилання"
+msgstr "Вхід до посилання"
 
 #: src/contents/ui/Compressor.qml:595 src/contents/ui/Expander.qml:554
 #: src/contents/ui/Gate.qml:576 src/contents/ui/Limiter.qml:318
 #: src/contents/ui/LspPreMixSheet.qml:62
 #, fuzzy
 msgid "Sidechain to input"
-msgstr "Сайдчейн до входу"
+msgstr "Бічний ланцюг до входу"
 
 #: src/contents/ui/Compressor.qml:611 src/contents/ui/Expander.qml:570
 #: src/contents/ui/Gate.qml:592 src/contents/ui/Limiter.qml:334
 #: src/contents/ui/LspPreMixSheet.qml:78
 #, fuzzy
 msgid "Sidechain to link"
-msgstr "Сайдчейн для посилання"
+msgstr "Бічний ланцюг до посилання"
 
 #: src/contents/ui/Compressor.qml:627 src/contents/ui/Expander.qml:586
 #: src/contents/ui/Gate.qml:608 src/contents/ui/Limiter.qml:350
 #: src/contents/ui/LspPreMixSheet.qml:94
 #, fuzzy
 msgid "Link to sidechain"
-msgstr "Посилання на сайдчейн"
+msgstr "Посилання до бічного ланцюга"
 
 #: src/contents/ui/Compressor.qml:643 src/contents/ui/Expander.qml:602
 #: src/contents/ui/Gate.qml:624 src/contents/ui/Limiter.qml:366
 #: src/contents/ui/LspPreMixSheet.qml:110
 #, fuzzy
 msgid "Link to input"
-msgstr "Посилання на вхідні дані"
+msgstr "Посилання до входу"
 
 #: src/contents/ui/Compressor.qml:684 src/contents/ui/Expander.qml:643
 #: src/contents/ui/Gate.qml:107 src/contents/ui/Gate.qml:666
@@ -756,19 +732,16 @@ msgstr "Огинаюча"
 #: src/contents/ui/Compressor.qml:938 src/contents/ui/Expander.qml:895
 #: src/contents/ui/Gate.qml:1029 src/contents/ui/MultibandCompressor.qml:968
 #: src/contents/ui/MultibandGate.qml:941
-#, fuzzy
 msgid "Stereo split"
 msgstr "Розділити стерео"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impluse file."
-msgstr "Імпортовано новий файл Convolver Impluse."
+msgstr "Імпортовано новий файл імпульсу конвольвера."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
-#, fuzzy
 msgid "Failed to import the Convolver impulse file."
-msgstr "Не вдалося імпортувати файл імпульсів Convolver."
+msgstr "Не вдалося імпортувати файл імпульсу конвольвера."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:144
@@ -786,43 +759,36 @@ msgid "Are you sure you want to remove this impulse response from the list?"
 msgstr "Ви впевнені, що хочете вилучити цей імпульсний відгук зі списку?"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:88
-#, fuzzy
 msgid "Removed the %1 Convolver impulse."
 msgstr "Вилучено імпульс конвольвера %1."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
-#, fuzzy
 msgid "Failed to remove the %1 Convolver impulse."
 msgstr "Не вдалося вилучити імпульс конвольвера %1."
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
-#, fuzzy
 msgid "Delete this impulse"
 msgstr "Видалити цей імпульс"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:124
-#, fuzzy
 msgid "Import impulse"
 msgstr "Імпортувати імпульс"
 
 #: src/contents/ui/Convolver.qml:50
-#, fuzzy
 msgid "Loaded the %1 Convolver impulse."
 msgstr "Завантажено імпульс конвольвера %1."
 
 #: src/contents/ui/Convolver.qml:52 src/contents/ui/Convolver.qml:312
-#, fuzzy
 msgid "Convolver impulse is not set"
 msgstr "Імпульс конвольвера не встановлено"
 
 #: src/contents/ui/Convolver.qml:56
 msgid "The Convolver is in passthrough mode."
-msgstr "Конволютор працює в режимі пропускання."
+msgstr "Конвольвер працює в наскрізному режимі."
 
 #: src/contents/ui/Convolver.qml:58
-#, fuzzy
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "Не вдалося вилучити імпульс конвольвера %1."
+msgstr "Не вдалося завантажити імпульс %1. Конвольвер працює в наскрізному режимі."
 
 #: src/contents/ui/Convolver.qml:122
 msgid "First"
@@ -845,7 +811,6 @@ msgid "Spectrum"
 msgstr "Спектр"
 
 #: src/contents/ui/Convolver.qml:242
-#, fuzzy
 msgid "Log scale"
 msgstr "Логарифмічна шкала"
 
@@ -864,7 +829,6 @@ msgid "Duration"
 msgstr "Тривалість"
 
 #: src/contents/ui/Convolver.qml:401
-#, fuzzy
 msgid "Stereo width"
 msgstr "Ширина стерео"
 
@@ -908,41 +872,34 @@ msgid "Bypass"
 msgstr "Обійти"
 
 #: src/contents/ui/Crystalizer.qml:108
-#, fuzzy
 msgid "Adaptive intensity"
 msgstr "Адаптивна інтенсивність"
 
 #: src/contents/ui/DeepFilterNet.qml:33
-#, fuzzy
 msgid "Attenuation limit"
 msgstr "Межа ослаблення"
 
 #: src/contents/ui/DeepFilterNet.qml:80
-#, fuzzy
 msgid "Minimum processing threshold"
 msgstr "Мінімальний поріг обробки"
 
 #: src/contents/ui/DeepFilterNet.qml:96
-#, fuzzy
 msgid "Maximum ERB processing threshold"
 msgstr "Максимальний поріг обробки (ERB)"
 
 #: src/contents/ui/DeepFilterNet.qml:112
-#, fuzzy
 msgid "Maximum DF processing threshold"
 msgstr "Максимальний поріг обробки (DF)"
 
 #: src/contents/ui/DeepFilterNet.qml:128
-#, fuzzy
 msgid "Minimum processing buffer"
 msgstr "Мінімальний буфер обробки"
 
 #: src/contents/ui/DeepFilterNet.qml:135
 msgid "frames"
-msgstr "кадр(-а,-ів)"
+msgstr "кадр(-а/-ів)"
 
 #: src/contents/ui/DeepFilterNet.qml:144
-#, fuzzy
 msgid "Post filter Beta"
 msgstr "Інтенсивність фільтра постобробки"
 
@@ -3033,160 +2990,3 @@ msgstr "Еквалайзер, компресор та інші звукові е
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Звукові ефекти для застосунків PipeWire"
-
-#~ msgid "Effects Blocklist"
-#~ msgstr "Список заблокованих ефектів"
-
-#, fuzzy
-#~ msgid "Boost tshreshold"
-#~ msgstr "Поріг підвищення"
-
-#~ msgid "Low-Pass"
-#~ msgstr "Низькочастотний фільтр"
-
-#~ msgid "High-Pass"
-#~ msgstr "ФВЧ"
-
-#~ msgid "F2 Peak"
-#~ msgstr "F2 Вибрати"
-
-#~ msgid "F1 Gain"
-#~ msgstr "F1 Посилення"
-
-#~ msgid "APO Presets"
-#~ msgstr "Попередні налаштування APO"
-
-#~ msgid "Empty"
-#~ msgstr "Порожньо"
-
-#~ msgid "Delete this App"
-#~ msgstr "Видалити цей застосунок"
-
-#~ msgid "Impluse File Imported."
-#~ msgstr "Файл імпульсу імпортовано."
-
-#~ msgid "Failed to Import the Impulse File."
-#~ msgstr "Не вдалося імпортувати файл імпульсу."
-
-#~ msgid "Loaded Impulse: %1"
-#~ msgstr "Завантажений імпульс: %1"
-
-#~ msgid "Removed Impulse: %1"
-#~ msgstr "Вилучено імпульс: %1"
-
-#~ msgid "Failed to Remove the Impulse: %1"
-#~ msgstr "Не вдалося вилучити імпульс: %1"
-
-#~ msgid "APO Preset File Imported."
-#~ msgstr "Імпортовано файл пресетів APO."
-
-#~ msgid "Failed to Import the APO Preset File."
-#~ msgstr "Не вдалося імпортувати файл пресетів APO."
-
-#~ msgid "GraphicEQ Preset File Imported."
-#~ msgstr "Імпортовано файл пресетів GraphicEQ."
-
-#~ msgid "APO Preset File Exported."
-#~ msgstr "Файл попередньо налаштованого APO експортовано."
-
-#~ msgid "Failed to Export the APO Preset File."
-#~ msgstr "Не вдалося експортувати файл пресетів APO."
-
-#~ msgid "Added Effect: %1"
-#~ msgstr "Доданий ефект: %1"
-
-#~ msgid "The Preset %1 Failed to Load"
-#~ msgstr "Не вдалося застосувати пресет %1"
-
-#~ msgid "Imported the Community Preset: %1"
-#~ msgstr "Імпортовано пресет спільноти: %1"
-
-#~ msgid "Failed to Import the Community Preset: %1"
-#~ msgstr "Не вдалося імпортувати пресет спільноти: %1"
-
-#~ msgid "Preset File Imported."
-#~ msgstr "Файл пресету імпортовано."
-
-#~ msgid "Failed to Import the Preset."
-#~ msgstr "Не вдалося імпортувати пресет."
-
-#~ msgid "Preset Files Exported."
-#~ msgstr "Файли пресетів експортовано."
-
-#~ msgid "Failed to Export the Presets."
-#~ msgstr "Не вдалося експортувати пресети."
-
-#~ msgid "New Preset Created"
-#~ msgstr "Новий пресет створено"
-
-#~ msgid "Failed to Create Preset"
-#~ msgstr "Не вдалося створити пресет"
-
-#~ msgid "The Preset %1 Has Been Removed"
-#~ msgstr "Пресет %1 вже вилучено"
-
-#~ msgid "The Preset %1 Could Not Be Removed"
-#~ msgstr "Не вдалося вилучити пресет %1"
-
-#~ msgid "The Preset %1 Has Been Renamed"
-#~ msgstr "Пресет %1 перейменовано"
-
-#~ msgid "The Preset %1 Could Not Be Renamed"
-#~ msgstr "Не вдалося перейменувати пресет %1"
-
-#~ msgid "Settings Saved to: %1"
-#~ msgstr "Налаштування збережено в: %1"
-
-#~ msgid "Failed to Save Settings to: %1"
-#~ msgstr "Не вдалося зберегти налаштування до: %1"
-
-#~ msgid "Model File Imported."
-#~ msgstr "Файл моделі імпортовано."
-
-#~ msgid "Failed to Import the Model File."
-#~ msgstr "Не вдалося імпортувати файл моделі."
-
-#~ msgid "%1 Model Correctly Loaded."
-#~ msgstr "%1 Модель завантажено правильно."
-
-#~ msgid "Removed Model: %1"
-#~ msgstr "Вилучена модель: %1"
-
-#~ msgid "Failed to Remove the Model: %1"
-#~ msgstr "Не вдалося вилучити модель: %1"
-
-#~ msgid "Loaded Model: %1"
-#~ msgstr "Завантажена модель: %1"
-
-#~ msgid ""
-#~ "Set plugin property. Format: "
-#~ "pipeline:plugin_name:instance_id:property:value"
-#~ msgstr ""
-#~ "Встановити властивість плагіна. Формат: "
-#~ "pipeline:plugin_name:instance_id:property:value"
-
-#~ msgid "property-string"
-#~ msgstr "рядок-властивості"
-
-#~ msgid ""
-#~ "Invalid property format. Expected: "
-#~ "pipeline:plugin_name:instance_id:property:value"
-#~ msgstr ""
-#~ "Недійсний формат властивості. Очікується: "
-#~ "pipeline:plugin_name:instance_id:property:value"
-
-#~ msgid "Invalid pipeline type. Must be 'input' or 'output'"
-#~ msgstr "Недійсний тип конвеєра. Має бути «вхід» або «вихід»"
-
-#~ msgid "Invalid instance ID. Must be a non-negative integer"
-#~ msgstr ""
-#~ "Недійсний ідентифікатор екземпляра. Має бути невід'ємним цілим числом"
-
-#~ msgid "Filter Length"
-#~ msgstr "Довжина фільтра"
-
-#~ msgid "Residual Echo Suppression"
-#~ msgstr "Придушення залишкового відлуння"
-
-#~ msgid "Near End Suppression"
-#~ msgstr "Придушення ближнього кінця"
