@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-04 14:47-0300\n"
-"PO-Revision-Date: 2025-11-05 00:44+0000\n"
+"PO-Revision-Date: 2025-11-05 12:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2826,13 +2826,12 @@ msgid "Audio Effects for PipeWire Applications"
 msgstr "Effetti Audio per Applicazioni Pipewire"
 
 #: src/contents/ui/PluginNotAvailable.qml:11
-#, fuzzy
 msgid "Not available"
-msgstr "{} Non Disponibile"
+msgstr "Non disponibile"
 
 #: src/contents/ui/PluginNotAvailable.qml:12
 msgid "This plugin requires: %1"
-msgstr ""
+msgstr "Questo plugin richiede: %1"
 
 #~ msgid "Effects Blocklist"
 #~ msgstr "Blocklist degli Effetti"

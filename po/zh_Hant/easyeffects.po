@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-04 14:47-0300\n"
-"PO-Revision-Date: 2025-11-05 00:44+0000\n"
+"PO-Revision-Date: 2025-11-05 12:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -21,82 +21,81 @@ msgstr ""
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr ""
+msgstr "退出 Easy Effects。 在服務模式下運行時很有用。"
 
 #: src/command_line_parser.cpp:44
 msgid "Reset Easy Effects."
-msgstr ""
+msgstr "重新設定 Easy Effects。"
 
 #: src/command_line_parser.cpp:45
 msgid "Hide the Window."
-msgstr ""
+msgstr "隱藏視窗。"
 
 #: src/command_line_parser.cpp:46
 msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
-msgstr ""
+msgstr "整體略過。 1 啟用；2 停用；3 取得狀態"
 
 #: src/command_line_parser.cpp:47
 msgid "Load a preset. Example: easyeffects -l music"
-msgstr ""
+msgstr "載入預設集。例如： easyeffects -l music"
 
 #: src/command_line_parser.cpp:47
 msgid "preset-name"
-msgstr ""
+msgstr "預設集-名稱"
 
 #: src/command_line_parser.cpp:48
 msgid "Show available presets."
-msgstr ""
+msgstr "顯示可用預設集。"
 
 #: src/command_line_parser.cpp:49
 msgid "Get the active input/output preset."
-msgstr ""
+msgstr "取得作用中的輸入/輸出預設集。"
 
 #: src/command_line_parser.cpp:49
 msgid "preset-type"
-msgstr ""
+msgstr "預設集-型式"
 
 #: src/command_line_parser.cpp:50
 msgid "Get the active input and output presets."
-msgstr ""
+msgstr "取得作用中的輸入及輸出預設集。"
 
 #: src/command_line_parser.cpp:51
 msgid "Deprecated. Use --service-mode instead."
-msgstr ""
+msgstr "已經棄用。使用 --service-mode 取代。"
 
 #: src/command_line_parser.cpp:52
 msgid "Start the application with service mode turned on."
-msgstr ""
+msgstr "啟動應用程式並已經開啟服務模式。"
 
 #: src/command_line_parser.cpp:53
 msgid "Enable debug messages."
-msgstr ""
+msgstr "啟用除錯訊息。"
 
 #: src/command_line_parser.cpp:111
 msgid "Must specify preset type: input/output."
-msgstr ""
+msgstr "必須指定預設集型式：輸入/輸出。"
 
 #: src/command_line_parser.cpp:149 src/contents/ui/main.qml:342
 msgid "Output Presets"
-msgstr ""
+msgstr "輸出預設集"
 
 #: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
 msgid "Input Presets"
-msgstr ""
+msgstr "輸入預設集"
 
 #: src/contents/ui/AboutPage.qml:9
 msgctxt "@action:button"
 msgid "About"
-msgstr ""
+msgstr "關於"
 
 #: src/contents/ui/AboutPage.qml:14
-#, fuzzy
 msgid "Audio effects for PipeWire applications"
-msgstr "PipeWire 音效程式"
+msgstr "用於 PipeWire 應用程式提供音效處理"
 
 #: src/contents/ui/AboutPage.qml:27
 msgctxt "@info:credit"
 msgid "Developer"
-msgstr ""
+msgstr "開發人員"
 
 #: src/contents/ui/Autogain.qml:52 src/contents/ui/BassEnhancer.qml:89
 #: src/contents/ui/BassLoudness.qml:40 src/contents/ui/Crossfeed.qml:57
@@ -118,7 +117,6 @@ msgstr "瞬間"
 
 #: src/contents/ui/Autogain.qml:66 src/contents/ui/Autogain.qml:150
 #: src/contents/ui/LevelMeter.qml:144
-#, fuzzy
 msgid "Short-term"
 msgstr "短期"
 
@@ -153,10 +151,9 @@ msgstr "目標"
 
 #: src/contents/ui/Autogain.qml:91
 msgid "Silence"
-msgstr "寧靜"
+msgstr "安靜"
 
 #: src/contents/ui/Autogain.qml:107
-#, fuzzy
 msgid "Maximum history"
 msgstr "最大化歷史記錄"
 
@@ -197,35 +194,31 @@ msgstr "輸出增益 (Gain)"
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:395
 #: src/contents/ui/Pitch.qml:265
 msgid "Using %1"
-msgstr ""
+msgstr "使用 %1"
 
 #: src/contents/ui/Autogain.qml:243 src/contents/ui/DeepFilterNet.qml:186
 #: src/contents/ui/LevelMeter.qml:208 src/contents/ui/Pitch.qml:228
 #: src/contents/ui/Pitch.qml:282
-#, fuzzy
 msgid "Reset history"
-msgstr "歷史"
+msgstr "重設歷史記錄"
 
 #: src/contents/ui/Autogain.qml:250
-#, fuzzy
 msgid "Force silence"
-msgstr "寧靜"
+msgstr "強制安靜"
 
 #: src/contents/ui/Autogain.qml:251
 msgid "Force silence when the level is below the silence threshold"
-msgstr ""
+msgstr "當低於安靜閾值時強制安靜"
 
 #: src/contents/ui/Autogain.qml:263 src/contents/ui/DeepFilterNet.qml:194
 #: src/contents/ui/LevelMeter.qml:216 src/contents/ui/Pitch.qml:256
 #: src/contents/ui/Pitch.qml:310
-#, fuzzy
 msgid "Reset settings"
-msgstr "重設設定值(R_)"
+msgstr "重設設定值"
 
 #: src/contents/ui/BassEnhancer.qml:39 src/contents/ui/Exciter.qml:39
-#, fuzzy
 msgid "Blend harmonics"
-msgstr "混合和諧"
+msgstr "混合諧波"
 
 #: src/contents/ui/BassEnhancer.qml:48 src/contents/ui/Exciter.qml:48
 msgid "3rd"
@@ -250,9 +243,8 @@ msgid "Scope"
 msgstr "範圍"
 
 #: src/contents/ui/BassEnhancer.qml:144
-#, fuzzy
 msgid "Floor active"
-msgstr "相對"
+msgstr "樓層啟用"
 
 #: src/contents/ui/BassEnhancer.qml:155
 #, fuzzy
@@ -319,9 +311,8 @@ msgid "Application node name"
 msgstr "應用程式名稱"
 
 #: src/contents/ui/BlocklistSheet.qml:45
-#, fuzzy
 msgid "Add to excluded applications"
-msgstr "新增至排除的應用程式"
+msgstr "加入至排除的應用程式"
 
 #: src/contents/ui/BlocklistSheet.qml:97
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
@@ -334,37 +325,32 @@ msgid "Empty List"
 msgstr "空白列表"
 
 #: src/contents/ui/BlocklistSheet.qml:98
-#, fuzzy
 msgid "No application excluded"
-msgstr "音量"
+msgstr "未有應用程式列入排除"
 
 #: src/contents/ui/BlocklistSheet.qml:120
-#, fuzzy
 msgid "Remove Application"
-msgstr "靜音"
+msgstr "移除應用程式"
 
 #: src/contents/ui/BlocklistSheet.qml:121
 msgid "Are you sure you want to remove this application from the list?"
-msgstr ""
+msgstr "確定要從清單中移除該應用程式嗎？"
 
 #: src/contents/ui/BlocklistSheet.qml:151
-#, fuzzy
 msgid "Remove this app"
-msgstr "靜音"
+msgstr "移除此應用程式"
 
 #: src/contents/ui/BlocklistSheet.qml:178
-#, fuzzy
 msgid "Show excluded apps"
-msgstr "新增至排除的應用程式"
+msgstr "顯示已經排除的應用程式"
 
 #: src/contents/ui/BlocklistSheet.qml:179
-#, fuzzy
 msgid "Show excluded applications in the list of players/recorders"
-msgstr "顯示排除的應用程式"
+msgstr "顯示已經排除的應用程式於播放器/錄音器的清單"
 
 #: src/contents/ui/Compressor.qml:53 src/tags_plugin_name.cpp:29
 msgid "Compressor"
-msgstr "壓縮機"
+msgstr "壓縮器"
 
 #: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:296
 #: src/contents/ui/Deesser.qml:72 src/contents/ui/Delay.qml:57
@@ -395,18 +381,17 @@ msgstr "提升"
 #: src/contents/ui/Compressor.qml:83
 #: src/contents/ui/MultibandCompressor.qml:115
 msgid "Boost threshold"
-msgstr ""
+msgstr "提昇閾值"
 
 #: src/contents/ui/Compressor.qml:103
 #: src/contents/ui/MultibandCompressor.qml:134
-#, fuzzy
 msgid "Boost amount"
-msgstr "提升"
+msgstr "提升量"
 
 #: src/contents/ui/Compressor.qml:122 src/contents/ui/Deesser.qml:102
 #: src/contents/ui/Expander.qml:82 src/contents/ui/MultibandCompressor.qml:326
 msgid "Ratio"
-msgstr ""
+msgstr "比率"
 
 #: src/contents/ui/Compressor.qml:138 src/contents/ui/Expander.qml:98
 #: src/contents/ui/Limiter.qml:435 src/contents/ui/MultibandCompressor.qml:341
@@ -415,15 +400,16 @@ msgstr ""
 
 #: src/contents/ui/Compressor.qml:158 src/contents/ui/Expander.qml:118
 msgid "Threshold and Time"
-msgstr ""
+msgstr "閾值和時間"
 
 #: src/contents/ui/Compressor.qml:173 src/contents/ui/Expander.qml:133
 #: src/contents/ui/Gate.qml:72 src/contents/ui/Gate.qml:886
 #: src/contents/ui/Limiter.qml:128 src/contents/ui/Limiter.qml:401
 #: src/contents/ui/MultibandCompressor.qml:223
 #: src/contents/ui/MultibandGate.qml:164
+#, fuzzy
 msgid "Attack"
-msgstr ""
+msgstr "徵用"
 
 #: src/contents/ui/Compressor.qml:206 src/contents/ui/Expander.qml:166
 #: src/contents/ui/Gate.qml:89 src/contents/ui/Gate.qml:895
@@ -440,8 +426,9 @@ msgstr "釋出"
 #: src/contents/ui/Gate.qml:675 src/contents/ui/Limiter.qml:181
 #: src/contents/ui/Limiter.qml:482 src/contents/ui/MultibandCompressor.qml:631
 #: src/contents/ui/MultibandGate.qml:604
+#, fuzzy
 msgid "Sidechain"
-msgstr ""
+msgstr "側鏈"
 
 #: src/contents/ui/Compressor.qml:259 src/contents/ui/EqualizerBandMenu.qml:33
 #: src/contents/ui/Expander.qml:219 src/contents/ui/Filter.qml:51
@@ -449,28 +436,27 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:386
 #: src/contents/ui/MultibandGate.qml:359
 msgid "Type"
-msgstr ""
+msgstr "型式"
 
 #: src/contents/ui/Compressor.qml:263
 msgid "Feed-forward"
-msgstr ""
+msgstr "前饋"
 
 #: src/contents/ui/Compressor.qml:263
 msgid "Feed-back"
-msgstr ""
+msgstr "回饋"
 
 #: src/contents/ui/Compressor.qml:263 src/contents/ui/Expander.qml:223
 #: src/contents/ui/Gate.qml:244 src/contents/ui/Limiter.qml:201
 #: src/contents/ui/MultibandCompressor.qml:390
 #: src/contents/ui/MultibandGate.qml:363
 msgid "External"
-msgstr ""
+msgstr "外部"
 
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
 #: src/contents/ui/PageStreamsEffects.qml:322
 #: src/contents/ui/PageStreamsEffects.qml:356
-#, fuzzy
 msgid "Input device"
 msgstr "輸入裝置"
 
@@ -479,27 +465,27 @@ msgstr "輸入裝置"
 #: src/contents/ui/MultibandCompressor.qml:401
 #: src/contents/ui/MultibandGate.qml:374
 msgid "Peak"
-msgstr ""
+msgstr "峰值"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Deesser.qml:63
 #: src/contents/ui/Expander.qml:260 src/contents/ui/Gate.qml:281
 #: src/contents/ui/MultibandCompressor.qml:401
 #: src/contents/ui/MultibandGate.qml:374
 msgid "RMS"
-msgstr ""
+msgstr "RMS"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Compressor.qml:426
 #: src/contents/ui/Expander.qml:260 src/contents/ui/Expander.qml:385
 #: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:281
 #: src/contents/ui/Gate.qml:406
 msgid "Low-pass"
-msgstr ""
+msgstr "低通"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Expander.qml:260
 #: src/contents/ui/Gate.qml:281 src/contents/ui/MultibandCompressor.qml:401
 #: src/contents/ui/MultibandGate.qml:374
 msgid "SMA"
-msgstr ""
+msgstr "SMA"
 
 #: src/contents/ui/Compressor.qml:309 src/contents/ui/Compressor.qml:323
 #: src/contents/ui/Expander.qml:269 src/contents/ui/Expander.qml:283
@@ -508,19 +494,19 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:420
 #: src/contents/ui/MultibandGate.qml:381 src/contents/ui/MultibandGate.qml:393
 msgid "Source"
-msgstr ""
+msgstr "來源"
 
 #: src/contents/ui/Compressor.qml:313 src/contents/ui/Expander.qml:273
 #: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:412
 #: src/contents/ui/MultibandGate.qml:385
 msgid "Middle"
-msgstr ""
+msgstr "中間"
 
 #: src/contents/ui/Compressor.qml:313 src/contents/ui/Expander.qml:273
 #: src/contents/ui/Gate.qml:294 src/contents/ui/MultibandCompressor.qml:412
 #: src/contents/ui/MultibandGate.qml:385
 msgid "Side"
-msgstr ""
+msgstr "側邊"
 
 #: src/contents/ui/Compressor.qml:313 src/contents/ui/Convolver.qml:271
 #: src/contents/ui/Delay.qml:43 src/contents/ui/Equalizer.qml:196
@@ -576,38 +562,38 @@ msgstr "右/左"
 #: src/contents/ui/Gate.qml:308 src/contents/ui/MultibandCompressor.qml:424
 #: src/contents/ui/MultibandGate.qml:397
 msgid "Mid/Side"
-msgstr ""
+msgstr "中間/側邊"
 
 #: src/contents/ui/Compressor.qml:327 src/contents/ui/Expander.qml:287
 #: src/contents/ui/Gate.qml:308 src/contents/ui/MultibandCompressor.qml:424
 #: src/contents/ui/MultibandGate.qml:397
 msgid "Side/Mid"
-msgstr ""
+msgstr "側邊/中間"
 
 #: src/contents/ui/Compressor.qml:356 src/contents/ui/Expander.qml:315
 #: src/contents/ui/Gate.qml:336 src/contents/ui/Limiter.qml:234
 #: src/contents/ui/MultibandCompressor.qml:432
 #: src/contents/ui/MultibandGate.qml:405
 msgid "Preamp"
-msgstr ""
+msgstr "前置放大器"
 
 #: src/contents/ui/Compressor.qml:374 src/contents/ui/Expander.qml:333
 #: src/contents/ui/Gate.qml:354 src/contents/ui/MultibandCompressor.qml:448
 #: src/contents/ui/MultibandGate.qml:421
 msgid "Reactivity"
-msgstr ""
+msgstr "反應性"
 
 #: src/contents/ui/Compressor.qml:392 src/contents/ui/Expander.qml:351
 #: src/contents/ui/Gate.qml:372 src/contents/ui/Limiter.qml:252
 #: src/contents/ui/MultibandCompressor.qml:463
 #: src/contents/ui/MultibandGate.qml:436
 msgid "Lookahead"
-msgstr ""
+msgstr "前瞻"
 
 #: src/contents/ui/Compressor.qml:411 src/contents/ui/Expander.qml:370
 #: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:391
 msgid "High-pass"
-msgstr ""
+msgstr "高通"
 
 #: src/contents/ui/Compressor.qml:415 src/contents/ui/Compressor.qml:430
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:374
@@ -620,19 +606,19 @@ msgstr "關閉"
 #: src/contents/ui/Expander.qml:374 src/contents/ui/Expander.qml:389
 #: src/contents/ui/Gate.qml:395 src/contents/ui/Gate.qml:410
 msgid "12 dB/oct"
-msgstr ""
+msgstr "12 dB/oct"
 
 #: src/contents/ui/Compressor.qml:415 src/contents/ui/Compressor.qml:430
 #: src/contents/ui/Expander.qml:374 src/contents/ui/Expander.qml:389
 #: src/contents/ui/Gate.qml:395 src/contents/ui/Gate.qml:410
 msgid "24 dB/oct"
-msgstr ""
+msgstr "24 dB/oct"
 
 #: src/contents/ui/Compressor.qml:415 src/contents/ui/Compressor.qml:430
 #: src/contents/ui/Expander.qml:374 src/contents/ui/Expander.qml:389
 #: src/contents/ui/Gate.qml:395 src/contents/ui/Gate.qml:410
 msgid "36 dB/oct"
-msgstr ""
+msgstr "36 dB/oct"
 
 #: src/contents/ui/Compressor.qml:494 src/contents/ui/Convolver.qml:418
 #: src/contents/ui/Delay.qml:162 src/contents/ui/Delay.qml:320
@@ -641,7 +627,7 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:560 src/contents/ui/Reverb.qml:181
 #: src/contents/ui/StereoTools.qml:349 src/contents/ui/Pitch.qml:114
 msgid "Dry"
-msgstr ""
+msgstr "乾"
 
 #: src/contents/ui/Compressor.qml:513 src/contents/ui/Convolver.qml:436
 #: src/contents/ui/Delay.qml:180 src/contents/ui/Delay.qml:338
@@ -650,14 +636,14 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:578 src/contents/ui/Reverb.qml:199
 #: src/contents/ui/StereoTools.qml:367 src/contents/ui/Pitch.qml:133
 msgid "Wet"
-msgstr ""
+msgstr "濕"
 
 #: src/contents/ui/Compressor.qml:532 src/contents/ui/Deesser.qml:118
 #: src/contents/ui/Expander.qml:491 src/contents/ui/Gate.qml:513
 #: src/contents/ui/MultibandCompressor.qml:358
 #: src/contents/ui/MultibandGate.qml:228
 msgid "Makeup"
-msgstr ""
+msgstr "補償"
 
 #: src/contents/ui/Compressor.qml:550 src/contents/ui/Expander.qml:509
 #: src/contents/ui/Gate.qml:531 src/contents/ui/Limiter.qml:273
@@ -665,56 +651,50 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:978
 #: src/contents/ui/MultibandGate.qml:951
 msgid "Pre-Mix"
-msgstr ""
+msgstr "預先-混合"
 
 #: src/contents/ui/Compressor.qml:563 src/contents/ui/Expander.qml:522
 #: src/contents/ui/Gate.qml:544 src/contents/ui/Limiter.qml:286
 #: src/contents/ui/LspPreMixSheet.qml:30
-#, fuzzy
 msgid "Input to sidechain"
-msgstr "輸入管線(Pipeline)"
+msgstr "輸入至側鏈"
 
 #: src/contents/ui/Compressor.qml:579 src/contents/ui/Expander.qml:538
 #: src/contents/ui/Gate.qml:560 src/contents/ui/Limiter.qml:302
 #: src/contents/ui/LspPreMixSheet.qml:46
-#, fuzzy
 msgid "Input to link"
-msgstr "啟用/停用輸入監控"
+msgstr "輸入至連結"
 
 #: src/contents/ui/Compressor.qml:595 src/contents/ui/Expander.qml:554
 #: src/contents/ui/Gate.qml:576 src/contents/ui/Limiter.qml:318
 #: src/contents/ui/LspPreMixSheet.qml:62
-#, fuzzy
 msgid "Sidechain to input"
-msgstr "輸入裝置"
+msgstr "側鏈至輸入"
 
 #: src/contents/ui/Compressor.qml:611 src/contents/ui/Expander.qml:570
 #: src/contents/ui/Gate.qml:592 src/contents/ui/Limiter.qml:334
 #: src/contents/ui/LspPreMixSheet.qml:78
-#, fuzzy
 msgid "Sidechain to link"
-msgstr "側鏈左側"
+msgstr "側鏈至連結"
 
 #: src/contents/ui/Compressor.qml:627 src/contents/ui/Expander.qml:586
 #: src/contents/ui/Gate.qml:608 src/contents/ui/Limiter.qml:350
 #: src/contents/ui/LspPreMixSheet.qml:94
-#, fuzzy
 msgid "Link to sidechain"
-msgstr "輸入管線(Pipeline)"
+msgstr "連結至側鏈"
 
 #: src/contents/ui/Compressor.qml:643 src/contents/ui/Expander.qml:602
 #: src/contents/ui/Gate.qml:624 src/contents/ui/Limiter.qml:366
 #: src/contents/ui/LspPreMixSheet.qml:110
-#, fuzzy
 msgid "Link to input"
-msgstr "輸入裝置"
+msgstr "連結至輸入"
 
 #: src/contents/ui/Compressor.qml:684 src/contents/ui/Expander.qml:643
 #: src/contents/ui/Gate.qml:107 src/contents/ui/Gate.qml:666
 #: src/contents/ui/Maximizer.qml:83 src/contents/ui/MultibandCompressor.qml:708
 #: src/contents/ui/MultibandGate.qml:212 src/contents/ui/MultibandGate.qml:681
 msgid "Reduction"
-msgstr ""
+msgstr "衰減"
 
 #: src/contents/ui/Compressor.qml:754 src/contents/ui/Compressor.qml:767
 #: src/contents/ui/Compressor.qml:863 src/contents/ui/Compressor.qml:876
@@ -729,7 +709,7 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:715 src/contents/ui/MultibandGate.qml:774
 #: src/contents/ui/MultibandGate.qml:833
 msgid "L"
-msgstr ""
+msgstr "左"
 
 #: src/contents/ui/Compressor.qml:760 src/contents/ui/Compressor.qml:773
 #: src/contents/ui/Compressor.qml:869 src/contents/ui/Compressor.qml:882
@@ -744,33 +724,34 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:721 src/contents/ui/MultibandGate.qml:780
 #: src/contents/ui/MultibandGate.qml:839
 msgid "R"
-msgstr ""
+msgstr "右"
 
 #: src/contents/ui/Compressor.qml:795 src/contents/ui/Expander.qml:752
 #: src/contents/ui/Gate.qml:777 src/contents/ui/MultibandCompressor.qml:828
 #: src/contents/ui/MultibandGate.qml:257 src/contents/ui/MultibandGate.qml:801
 msgid "Curve"
-msgstr ""
+msgstr "曲線"
 
 #: src/contents/ui/Compressor.qml:804 src/contents/ui/Expander.qml:761
 #: src/contents/ui/Gate.qml:786 src/contents/ui/MultibandCompressor.qml:769
 #: src/contents/ui/MultibandGate.qml:742
+#, fuzzy
 msgid "Envelope"
-msgstr ""
+msgstr "封套"
 
 #: src/contents/ui/Compressor.qml:938 src/contents/ui/Expander.qml:895
 #: src/contents/ui/Gate.qml:1029 src/contents/ui/MultibandCompressor.qml:968
 #: src/contents/ui/MultibandGate.qml:941
 msgid "Stereo split"
-msgstr ""
+msgstr "立體聲分開"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
 msgid "Imported a new Convolver impluse file."
-msgstr ""
+msgstr "已經匯入新的 Convolver 脈衝檔案。"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
 msgid "Failed to import the Convolver impulse file."
-msgstr ""
+msgstr "匯入 Convolver 脈衝檔案失敗。"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:144
@@ -781,113 +762,110 @@ msgstr "搜尋"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:83
 msgid "Remove Impulse Response"
-msgstr ""
+msgstr "移除脈衝響應"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:84
 msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr ""
+msgstr "確定要從列表中刪除該脈衝響應嗎？"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:88
-#, fuzzy
 msgid "Removed the %1 Convolver impulse."
-msgstr "移除此自動加載設定檔"
+msgstr "已經移除 %1 Convolver 脈衝。"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
 msgid "Failed to remove the %1 Convolver impulse."
-msgstr ""
+msgstr "移除 %1 Convolver 脈衝失敗。"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
-#, fuzzy
 msgid "Delete this impulse"
-msgstr "刪除此模型的檔案"
+msgstr "移除此脈衝"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:124
-#, fuzzy
 msgid "Import impulse"
-msgstr "輸入設定檔"
+msgstr "匯入脈衝"
 
 #: src/contents/ui/Convolver.qml:50
 msgid "Loaded the %1 Convolver impulse."
-msgstr ""
+msgstr "已經載入 %1 Convolver 脈衝。"
 
 #: src/contents/ui/Convolver.qml:52 src/contents/ui/Convolver.qml:312
 msgid "Convolver impulse is not set"
-msgstr ""
+msgstr "Convolver 脈衝並未設定"
 
 #: src/contents/ui/Convolver.qml:56
 msgid "The Convolver is in passthrough mode."
-msgstr ""
+msgstr "Convolver 處於直通模式。"
 
 #: src/contents/ui/Convolver.qml:58
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr ""
+msgstr "載入 %1 脈衝失敗。 Convolver 處於直通模式。"
 
 #: src/contents/ui/Convolver.qml:122
 msgid "First"
-msgstr ""
+msgstr "第一"
 
 #: src/contents/ui/Convolver.qml:134
 msgid "Second"
-msgstr ""
+msgstr "第二"
 
 #: src/contents/ui/Convolver.qml:166 src/contents/ui/Convolver.qml:201
 msgid "Combine"
-msgstr ""
+msgstr "混合"
 
 #: src/contents/ui/Convolver.qml:194
 msgid "Impulses"
-msgstr ""
+msgstr "脈衝"
 
 #: src/contents/ui/Convolver.qml:210 src/plugin_base.cpp:284
 msgid "Spectrum"
-msgstr ""
+msgstr "波譜"
 
 #: src/contents/ui/Convolver.qml:242
 msgid "Log scale"
-msgstr ""
+msgstr "對數刻度"
 
 #: src/contents/ui/Convolver.qml:349
 msgid "Rate"
-msgstr ""
+msgstr "速率"
 
 #: src/contents/ui/Convolver.qml:354 src/contents/ui/Delay.qml:61
 #: src/contents/ui/Delay.qml:72 src/contents/ui/Delay.qml:219
 #: src/contents/ui/Delay.qml:230
 msgid "Samples"
-msgstr ""
+msgstr "樣本"
 
 #: src/contents/ui/Convolver.qml:359
 msgid "Duration"
-msgstr ""
+msgstr "持續期間"
 
 #: src/contents/ui/Convolver.qml:401
 msgid "Stereo width"
-msgstr ""
+msgstr "立體聲寬度"
 
 #: src/contents/ui/Convolver.qml:478 src/tags_plugin_name.cpp:26
 msgid "Autogain"
-msgstr ""
+msgstr "自動增益"
 
 #: src/contents/ui/Crossfeed.qml:65
 msgid "Cutoff"
-msgstr ""
+msgstr "切隔"
 
 #: src/contents/ui/Crossfeed.qml:81
 msgid "Feed"
-msgstr ""
+msgstr "饋送"
 
 #: src/contents/ui/Crossfeed.qml:101
 msgid "Crossfeed Presets"
-msgstr ""
+msgstr "交叉饋送預設集"
 
 #: src/contents/ui/Crossfeed.qml:105
 msgid "Default"
-msgstr ""
+msgstr "預設"
 
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/main.qml:439
 #: src/contents/ui/Reverb.qml:327
 msgid "Presets"
-msgstr "預設值"
+msgstr "預設集"
 
 #: src/contents/ui/CrystalizerBand.qml:35
 #: src/contents/ui/EqualizerBandMenu.qml:157
@@ -901,7 +879,7 @@ msgstr "靜音"
 #: src/contents/ui/MultibandCompressor.qml:83
 #: src/contents/ui/MultibandGate.qml:83
 msgid "Bypass"
-msgstr ""
+msgstr "略過"
 
 #: src/contents/ui/Crystalizer.qml:108
 msgid "Adaptive intensity"
@@ -1237,40 +1215,38 @@ msgid "Solo"
 msgstr ""
 
 #: src/contents/ui/Equalizer.qml:51 src/contents/ui/Equalizer.qml:81
-#, fuzzy
 msgid "APO preset"
-msgstr "設定檔"
+msgstr "APO 預設集"
 
 #: src/contents/ui/Equalizer.qml:54
 msgid "Imported the Equalizer APO preset file."
-msgstr "已經匯入等化器 APO 預設檔案。"
+msgstr "已經匯入等化器 APO 預設集檔案。"
 
 #: src/contents/ui/Equalizer.qml:56
 msgid "Failed to import the Equalizer APO preset file."
-msgstr "匯入等化器 APO 預設檔案失敗。"
+msgstr "匯入等化器 APO 預設集檔案失敗。"
 
 #: src/contents/ui/Equalizer.qml:66
-#, fuzzy
 msgid "GraphicEQ preset"
-msgstr "輸入設定檔"
+msgstr "GraphicEQ 預設集"
 
 #: src/contents/ui/Equalizer.qml:69
 msgid "Imported the GraphicEQ preset file."
-msgstr "已經匯入 GraphicEQ 預設檔案。"
+msgstr "已經匯入 GraphicEQ 預設集檔案。"
 
 #: src/contents/ui/Equalizer.qml:71
 msgid "Failed to import the GraphicEQ preset file."
-msgstr "匯入 GraphicEQ 預設檔案失敗。"
+msgstr "匯入 GraphicEQ 預設集檔案失敗。"
 
 #: src/contents/ui/Equalizer.qml:84
 msgid "Exported the current Equalizer settings to an external APO preset file."
-msgstr "已經匯出目前等化器設定至外部 APO 預設檔案。"
+msgstr "已經匯出目前等化器設定至外部 APO 預設集檔案。"
 
 #: src/contents/ui/Equalizer.qml:87
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
-msgstr ""
+msgstr "匯出目前等化器設定至外部 APO 預設集檔案失敗。"
 
 #: src/contents/ui/Equalizer.qml:117
 msgid "Bands"
@@ -1649,9 +1625,8 @@ msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
 #: src/contents/ui/main.qml:278 src/contents/ui/main.qml:294
-#, fuzzy
 msgid "Preset Loaded"
-msgstr "預設選單"
+msgstr "預設集已經載入"
 
 #: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
 #, fuzzy
@@ -2037,29 +2012,27 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:63
 msgid "Show the tray icon"
-msgstr ""
+msgstr "顯示系統匣圖示"
 
 #: src/contents/ui/PreferencesSheet.qml:87
-#, fuzzy
 msgid "Process all output streams"
-msgstr "解析所有的輸出"
+msgstr "處理全部的輸出串流"
 
 #: src/contents/ui/PreferencesSheet.qml:98
-#, fuzzy
 msgid "Process all input streams"
-msgstr "解析所有的輸入"
+msgstr "處理全部的輸入串流"
 
 #: src/contents/ui/PreferencesSheet.qml:109
 msgid "Ignore streams from monitor of devices"
-msgstr ""
+msgstr "忽略來自顯示器裝置的串流"
 
 #: src/contents/ui/PreferencesSheet.qml:120
 msgid "Use cubic volume"
-msgstr ""
+msgstr "使用立方體音量"
 
 #: src/contents/ui/PreferencesSheet.qml:131
 msgid "Ignore system notifications"
-msgstr ""
+msgstr "忽略串流通知"
 
 #: src/contents/ui/PreferencesSheet.qml:132
 msgid ""
@@ -2107,95 +2080,91 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:251
 msgid "Style"
-msgstr ""
+msgstr "樣式"
 
 #: src/contents/ui/PreferencesSheet.qml:258
-#, fuzzy
 msgid "Color scheme"
-msgstr "顏色"
+msgstr "配色方案"
 
 #: src/contents/ui/PreferencesSheet.qml:262
 msgid "Automatic"
-msgstr ""
+msgstr "自動"
 
 #: src/contents/ui/PreferencesSheet.qml:262
-#, fuzzy
 msgid "Light"
-msgstr "右"
+msgstr "亮"
 
 #: src/contents/ui/PreferencesSheet.qml:262
 msgid "Dark"
-msgstr ""
+msgstr "暗"
 
 #: src/contents/ui/PreferencesSheet.qml:272
-#, fuzzy
 msgid "Color theme"
-msgstr "顏色"
+msgstr "顏色主題"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Green"
-msgstr ""
+msgstr "綠"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Green neon"
-msgstr ""
+msgstr "綠色霓虹"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Mix"
-msgstr ""
+msgstr "混音"
 
 #: src/contents/ui/PreferencesSheet.qml:276
-#, fuzzy
 msgid "Orange"
-msgstr "範圍"
+msgstr "橘"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Yellow"
-msgstr ""
+msgstr "黃"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Blue"
-msgstr ""
+msgstr "藍"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Purple"
-msgstr ""
+msgstr "紫"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Grey"
-msgstr ""
+msgstr "灰"
 
 #: src/contents/ui/PreferencesSheet.qml:286
 msgid "Shape"
-msgstr ""
+msgstr "形狀"
 
 #: src/contents/ui/PreferencesSheet.qml:290
 msgid "Bars"
-msgstr ""
+msgstr "條柱"
 
 #: src/contents/ui/PreferencesSheet.qml:290
 msgid "Lines"
-msgstr ""
+msgstr "線條"
 
 #: src/contents/ui/PreferencesSheet.qml:290
 msgid "Dots"
-msgstr ""
+msgstr "點點"
 
 #: src/contents/ui/PreferencesSheet.qml:290
 msgid "Area"
-msgstr ""
+msgstr "區塊"
 
 #: src/contents/ui/PreferencesSheet.qml:300
 msgid "Dynamic scale"
-msgstr ""
+msgstr "動態比例"
 
 #: src/contents/ui/PreferencesSheet.qml:311
 msgid "Logarithmic frequency axis"
-msgstr ""
+msgstr "對數頻率軸"
 
 #: src/contents/ui/PreferencesSheet.qml:322
 msgid "Points"
-msgstr ""
+msgstr "點數"
 
 #: src/contents/ui/PreferencesSheet.qml:336
 msgid "Height"
@@ -2203,7 +2172,7 @@ msgstr "高度"
 
 #: src/contents/ui/PreferencesSheet.qml:350
 msgid "Frequency Range"
-msgstr ""
+msgstr "頻率範圍"
 
 #: src/contents/ui/PreferencesSheet.qml:357
 msgid "Minimum"
@@ -2215,43 +2184,41 @@ msgstr "最大"
 
 #: src/contents/ui/PreferencesSheet.qml:397
 msgid "Database autosave interval"
-msgstr ""
+msgstr "資料庫自動儲存間隔"
 
 #: src/contents/ui/PreferencesSheet.qml:410
-#, fuzzy
 msgid "Most used presets"
-msgstr "輸入設定檔"
+msgstr "最常使用預設集"
 
 #: src/contents/ui/PreferencesSheet.qml:436
-#, fuzzy
 msgid "Global shortcuts"
-msgstr "捷徑(S_)"
+msgstr "整體快速鍵"
 
 #: src/contents/ui/PreferencesSheet.qml:437
 msgid "Enables support for XDG global shortcuts."
-msgstr ""
+msgstr "啟用對 XDG 整體快速鍵的支援。"
 
 #: src/contents/ui/PreferencesSheet.qml:449
 #, fuzzy
 msgid "Native window of effects"
-msgstr "顯示原生視窗"
+msgstr "效果的原生視窗"
 
 #: src/contents/ui/PreferencesSheet.qml:450
+#, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
-msgstr ""
+msgstr "允許音效的原生使用者介面可以顯示/隱藏。"
 
 #: src/contents/ui/PreferencesSheet.qml:462
-#, fuzzy
 msgid "Update frequency"
 msgstr "更新頻率"
 
 #: src/contents/ui/PreferencesSheet.qml:463
 msgid "Related to LV2 plugins."
-msgstr ""
+msgstr "與 LV2 插件相關。"
 
 #: src/contents/ui/PreferencesSheet.qml:498
 msgid "Background Service"
-msgstr ""
+msgstr "背景服務"
 
 #: src/contents/ui/PreferencesSheet.qml:513
 msgid "Audio"
@@ -2259,141 +2226,129 @@ msgstr "音訊"
 
 #: src/contents/ui/PreferencesSheet.qml:528
 msgid "Spectrum Analyzer"
-msgstr ""
+msgstr "波譜分析器"
 
 #: src/contents/ui/PreferencesSheet.qml:543
 msgid "Database"
-msgstr ""
+msgstr "資料庫"
 
 #: src/contents/ui/PreferencesSheet.qml:558
 msgid "Experimental Features"
-msgstr ""
+msgstr "實驗性功能"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:33
 #: src/contents/ui/PresetsAutoloadingPage.qml:130
 msgid "Device"
-msgstr "設備"
+msgstr "裝置"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
 #: src/contents/ui/PresetsAutoloadingPage.qml:172
-#, fuzzy
 msgid "Hardware profile"
-msgstr "設定檔"
+msgstr "硬體設定檔"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-#, fuzzy
 msgid "Local Preset"
-msgstr "設定檔"
+msgstr "本地預設集"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
 msgid "Create"
-msgstr ""
+msgstr "建立"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:65
-#, fuzzy
 msgid "Create a new autoloading preset"
-msgstr "輸入設定檔"
+msgstr "建立新的自動載入預設集"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:144
-#, fuzzy
 msgid "Remove this autoloading preset"
-msgstr "輸入設定檔"
+msgstr "移除此自動載入預設集"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:185
-#, fuzzy
 msgid "Local preset"
-msgstr "設定檔"
+msgstr "本地預設集"
 
 #: src/contents/ui/PresetsCommunityPage.qml:93
-#, fuzzy
 msgid "Copy to local presets"
-msgstr "設定檔"
+msgstr "複製至本地預設集"
 
 #: src/contents/ui/PresetsCommunityPage.qml:98
 msgid "Imported the %1 community preset to the list of local presets."
-msgstr ""
+msgstr "已經匯入 %1 社群預設集至本地預設集列表中。"
 
 #: src/contents/ui/PresetsCommunityPage.qml:100
 msgid "Failed to import the %1 community preset to the list of local presets."
-msgstr ""
+msgstr "匯入 %1 社區預設集至本地預設集列表失敗。"
 
 #: src/contents/ui/PresetsCommunityPage.qml:120
 msgid "Refresh"
-msgstr ""
+msgstr "重新整理"
 
 #: src/contents/ui/PresetsLocalPage.qml:35
 msgid "Imported a new local preset from an external file."
-msgstr ""
+msgstr "已經從外部檔案匯入新的本地預設集。"
 
 #: src/contents/ui/PresetsLocalPage.qml:37
 msgid "Failed to import a new local preset from an external file."
-msgstr ""
+msgstr "從外部檔案匯入新的本地預設集失敗。"
 
 #: src/contents/ui/PresetsLocalPage.qml:46
-#, fuzzy
 msgid "Export Presets"
-msgstr "輸入設定檔"
+msgstr "匯出預設集"
 
 #: src/contents/ui/PresetsLocalPage.qml:49
 msgid "Exported all presets to an external folder."
-msgstr ""
+msgstr "已經匯出全部預設集至外部檔案。"
 
 #: src/contents/ui/PresetsLocalPage.qml:51
 msgid "Failed to export all presets to an external folder."
-msgstr ""
+msgstr "匯出全部預設集至外檔案失敗。"
 
 #: src/contents/ui/PresetsLocalPage.qml:63
 msgid "New preset name"
-msgstr ""
+msgstr "新建預設集名稱"
 
 #: src/contents/ui/PresetsLocalPage.qml:79
-#, fuzzy
 msgid "Import preset file"
-msgstr "輸入設定檔"
+msgstr "匯入預設集檔案"
 
 #: src/contents/ui/PresetsLocalPage.qml:88
-#, fuzzy
 msgid "Create new preset"
-msgstr "輸入設定檔"
+msgstr "建立新的預設集"
 
 #: src/contents/ui/PresetsLocalPage.qml:98
-#, fuzzy
 msgid "Created a new local preset: %1"
-msgstr "輸入設定檔"
+msgstr "已經建立新的本地預設集： %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:102
-#, fuzzy
 msgid "Failed to create a new local preset: %1"
-msgstr "輸入設定檔"
+msgstr "失敗建立新的本地預設集： %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:131
-#, fuzzy
 msgid "Export presets"
-msgstr "輸入設定檔"
+msgstr "匯出預設集"
 
 #: src/contents/ui/PresetsLocalPage.qml:186
-#, fuzzy
 msgid "Save Preset"
-msgstr "輸入設定檔"
+msgstr "儲存預設集"
 
 #: src/contents/ui/PresetsLocalPage.qml:187
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
 msgstr ""
+"儲存目前設定至預設集：\n"
+"%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:191
 msgid "Saved the current settings to %1 local preset."
-msgstr ""
+msgstr "已經儲存目前設定至 %1 本地預設集。"
 
 #: src/contents/ui/PresetsLocalPage.qml:193
 msgid "Failed to save the current settings to %1 local preset."
-msgstr ""
+msgstr "儲存目前設定至 %1 本地預設集失敗。"
 
 #: src/contents/ui/PresetsLocalPage.qml:201
-#, fuzzy
 msgid "Remove Preset"
-msgstr "輸入設定檔"
+msgstr "移除預設集"
 
 #: src/contents/ui/PresetsLocalPage.qml:202
 msgid ""
@@ -2401,56 +2356,53 @@ msgid ""
 "%1\n"
 "from the list?"
 msgstr ""
+"確定要移除預設集\n"
+"%1\n"
+"來自列表？"
 
 #: src/contents/ui/PresetsLocalPage.qml:206
 msgid "Removed the %1 local preset."
-msgstr "已經移除 %1 本地預設。"
+msgstr "已經移除 %1 本地預設集。"
 
 #: src/contents/ui/PresetsLocalPage.qml:208
 msgid "Failed to remove the %1 local preset."
-msgstr "移除 %1 本地預設失敗。"
+msgstr "移除 %1 本地預設集失敗。"
 
 #: src/contents/ui/PresetsLocalPage.qml:216
-#, fuzzy
 msgid "Rename Preset"
-msgstr "輸入設定檔"
+msgstr "重新命名預設集"
 
 #: src/contents/ui/PresetsLocalPage.qml:221
 msgid "Rename"
-msgstr ""
+msgstr "重新命名"
 
 #: src/contents/ui/PresetsLocalPage.qml:230
-#, fuzzy
 msgid "Renamed the %1 local preset to %2"
-msgstr "輸入設定檔"
+msgstr "重新命名 %1 本地預設集至 %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:233
-#, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
-msgstr "輸入設定檔"
+msgstr "重新命名 %1 本地預設集至 %2 失敗"
 
 #: src/contents/ui/PresetsLocalPage.qml:241
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: src/contents/ui/PresetsLocalPage.qml:277
-#, fuzzy
 msgid "Save settings to this preset"
-msgstr "輸入設定檔"
+msgstr "儲存設定至此預設集"
 
 #: src/contents/ui/PresetsLocalPage.qml:285
-#, fuzzy
 msgid "Rename this preset"
-msgstr "輸入設定檔"
+msgstr "重新命名此預設集"
 
 #: src/contents/ui/PresetsLocalPage.qml:293
-#, fuzzy
 msgid "Delete this preset"
-msgstr "輸入設定檔"
+msgstr "刪除此預設集"
 
 #: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:105
 msgid "Local"
-msgstr ""
+msgstr "本地"
 
 #: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:105
 msgid "Community"
@@ -2458,20 +2410,19 @@ msgstr "社群"
 
 #: src/contents/ui/PresetsSheet.qml:84
 msgid "Autoloading"
-msgstr ""
+msgstr "自動載入"
 
 #: src/contents/ui/PresetsSheet.qml:103
-#, fuzzy
 msgid "No preset loaded"
-msgstr "預設選單"
+msgstr "無預設集載入"
 
 #: src/contents/ui/PresetsSheet.qml:119
 msgid "Fallback Preset"
-msgstr ""
+msgstr "退回備用預設集"
 
 #: src/contents/ui/Reverb.qml:53
 msgid "Room size"
-msgstr ""
+msgstr "房間大小"
 
 #: src/contents/ui/Reverb.qml:57
 msgid "Small"
@@ -2486,123 +2437,117 @@ msgid "Large"
 msgstr "大"
 
 #: src/contents/ui/Reverb.qml:57
-#, fuzzy
 msgid "Tunnel-like"
-msgstr "通道"
+msgstr "猶如隧道"
 
 #: src/contents/ui/Reverb.qml:57
 msgid "Large/smooth"
-msgstr ""
+msgstr "大/平滑"
 
 #: src/contents/ui/Reverb.qml:57
 msgid "Experimental"
-msgstr ""
+msgstr "實驗性"
 
 #: src/contents/ui/Reverb.qml:66
 msgid "Decay time"
-msgstr ""
+msgstr "衰減時間"
 
 #: src/contents/ui/Reverb.qml:82
 msgid "Pre delay"
-msgstr ""
+msgstr "預先延遲"
 
 #: src/contents/ui/Reverb.qml:98
 msgid "Diffusion"
-msgstr ""
+msgstr "擴散"
 
 #: src/contents/ui/Reverb.qml:130
 msgid "High frequency damping"
-msgstr ""
+msgstr "高頻阻尼"
 
 #: src/contents/ui/Reverb.qml:147
 msgid "Bass cut"
-msgstr ""
+msgstr "低音抑制"
 
 #: src/contents/ui/Reverb.qml:164
 msgid "Treble cut"
-msgstr ""
+msgstr "高音抑制"
 
 #: src/contents/ui/Reverb.qml:222
 msgid "Reverberation Presets"
-msgstr ""
+msgstr "混響預設集"
 
 #: src/contents/ui/Reverb.qml:226
 msgid "Ambience"
-msgstr ""
+msgstr "環境"
 
 #: src/contents/ui/Reverb.qml:241
-#, fuzzy
 msgid "Empty walls"
-msgstr "空白列表"
+msgstr "空牆"
 
 #: src/contents/ui/Reverb.qml:256
 msgid "Room"
-msgstr ""
+msgstr "房間"
 
 #: src/contents/ui/Reverb.qml:271
 msgid "Large empty hall"
-msgstr ""
+msgstr "大型空曠演廳"
 
 #: src/contents/ui/Reverb.qml:281
 msgid "Disco"
-msgstr ""
+msgstr "迪斯可"
 
 #: src/contents/ui/Reverb.qml:291
 msgid "Large occupied hall"
-msgstr ""
+msgstr "大型寬倘演廳"
 
 #: src/contents/ui/RNNoise.qml:44
 msgid "Imported a new RNNoise model file."
-msgstr ""
+msgstr "已經匯入新的 RNNoise 模型檔案。"
 
 #: src/contents/ui/RNNoise.qml:46
 msgid "Failed to import the RNNoise model file."
-msgstr ""
+msgstr "匯入 RNNoise 模型檔案失敗。"
 
 #: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
 #: src/contents/ui/RNNoise.qml:278 src/contents/ui/RNNoise.qml:280
 msgid "Standard RNNoise model"
-msgstr ""
+msgstr "標準 RNNoise 模型"
 
 #: src/contents/ui/RNNoise.qml:59
 msgid "Standard RNNoise model loaded."
-msgstr ""
+msgstr "標準 RNNoise 模型已經載入。"
 
 #: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:282
-#, fuzzy
 msgid "Using %1 Model"
-msgstr "立體聲模式"
+msgstr "使用 %1 模型"
 
 #: src/contents/ui/RNNoise.qml:66
 msgid "Loaded the %1 RNNoise model."
-msgstr ""
+msgstr "已經載入 %1 RNNoise 模型。"
 
 #: src/contents/ui/RNNoise.qml:70
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr ""
+msgstr "載入 %1 模型失敗。 退回備用標準 RNNoise 模型。"
 
 #: src/contents/ui/RNNoise.qml:89
 msgid "Voice Detection"
-msgstr ""
+msgstr "語音偵測"
 
 #: src/contents/ui/RNNoise.qml:126
-#, fuzzy
 msgid "Wet level"
-msgstr "輸入裝置"
+msgstr "濕等級"
 
 #: src/contents/ui/RNNoise.qml:166
 msgid "Use the Standard model"
-msgstr ""
+msgstr "使用標準模型"
 
 #: src/contents/ui/RNNoise.qml:177
-#, fuzzy
 msgid "User Models"
-msgstr "立體聲模式"
+msgstr "使用者模型"
 
 #: src/contents/ui/RNNoise.qml:239
-#, fuzzy
 msgid "Delete this model"
-msgstr "刪除此模型的檔案"
+msgstr "刪除此模型"
 
 #: src/contents/ui/RNNoise.qml:244
 msgid "Removed the %1 RNNoise model."
@@ -2610,106 +2555,97 @@ msgstr "移除 %1 RNNoise 模型。"
 
 #: src/contents/ui/RNNoise.qml:246
 msgid "Failed to remove the %1 RNNoise model."
-msgstr ""
+msgstr "移除 %1 RNNoise 模型失敗。"
 
 #: src/contents/ui/RNNoise.qml:315
-#, fuzzy
 msgid "Import model"
-msgstr "輸入設定檔"
+msgstr "匯入模型"
 
 #: src/contents/ui/ShortcutsSheet.qml:34 src/contents/ui/ShortcutsSheet.qml:35
-#, fuzzy
 msgid "Show help"
-msgstr "顯示幫助"
+msgstr "顯示說明"
 
 #: src/contents/ui/ShortcutsSheet.qml:47 src/contents/ui/ShortcutsSheet.qml:48
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "切換全螢幕"
 
 #: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:294
 #: src/contents/ui/ShortcutsSheet.qml:76 src/contents/ui/ShortcutsSheet.qml:299
-#, fuzzy
 msgid "Toggle global bypass"
-msgstr "全局繞過"
+msgstr "切換整體略過"
 
 #: src/contents/ui/ShortcutsSheet.qml:103
 #: src/contents/ui/ShortcutsSheet.qml:104
-#, fuzzy
 msgid "Close the window"
 msgstr "關閉視窗"
 
 #: src/contents/ui/ShortcutsSheet.qml:131
 #: src/contents/ui/ShortcutsSheet.qml:132
 msgid "Terminate Easy Effects service"
-msgstr ""
+msgstr "終止 Easy Effects 服務"
 
 #: src/contents/ui/ShortcutsSheet.qml:171
 #: src/contents/ui/ShortcutsSheet.qml:172
-#, fuzzy
 msgid "Toggle process all inputs"
-msgstr "解析所有的輸入"
+msgstr "切換處理全部的輸入"
 
 #: src/contents/ui/ShortcutsSheet.qml:211
 #: src/contents/ui/ShortcutsSheet.qml:212
-#, fuzzy
 msgid "Toggle process all outputs"
-msgstr "解析所有的輸出"
+msgstr "切換處理全部的輸出"
 
 #: src/contents/ui/ShortcutsSheet.qml:224
 #: src/contents/ui/ShortcutsSheet.qml:237
 #: src/contents/ui/ShortcutsSheet.qml:225
 #: src/contents/ui/ShortcutsSheet.qml:238
 msgid "Can be used on numeric controls"
-msgstr ""
+msgstr "可用於數字控制"
 
 #: src/contents/ui/ShortcutsSheet.qml:248
 #: src/contents/ui/ShortcutsSheet.qml:253
-#, fuzzy
 msgid "Global Shortcuts"
-msgstr "捷徑(S_)"
+msgstr "整體快速鍵"
 
 #: src/contents/ui/ShortcutsSheet.qml:334
 #: src/contents/ui/ShortcutsSheet.qml:339
 msgid "Toggle microphone monitoring"
-msgstr ""
+msgstr "切換麥克風監聽"
 
 #: src/contents/ui/Speex.qml:49
 msgid "Denoise"
-msgstr ""
+msgstr "抑制噪音"
 
 #: src/contents/ui/Speex.qml:71
 msgid "Dereverberation"
-msgstr ""
+msgstr "抑制混響"
 
 #: src/contents/ui/Speex.qml:82
-#, fuzzy
 msgid "Noise suppression"
-msgstr "降噪"
+msgstr "噪音抑制"
 
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
-msgstr ""
+msgstr "語音作用機率"
 
 #: src/contents/ui/Speex.qml:109
-#, fuzzy
 msgid "Voice detection"
-msgstr "降噪"
+msgstr "語音偵測"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
-msgstr ""
+msgstr "繼續"
 
 #: src/contents/ui/StereoTools.qml:54
 msgid "Softclip"
-msgstr ""
+msgstr "軟削波"
 
 #: src/contents/ui/StereoTools.qml:83
 msgid "S/C Level"
-msgstr ""
+msgstr "S/C 等級"
 
 #: src/contents/ui/StereoTools.qml:102
 msgid "Stereo Matrix"
-msgstr ""
+msgstr "立體聲矩陣"
 
 #: src/contents/ui/StereoTools.qml:122
 #, fuzzy
@@ -2746,64 +2682,61 @@ msgstr "LR > RL（立體聲翻轉頻道）"
 
 #: src/contents/ui/StereoTools.qml:131
 msgid "Side level"
-msgstr ""
+msgstr "側邊等級"
 
 #: src/contents/ui/StereoTools.qml:149
 msgid "Side balance"
-msgstr ""
+msgstr "側邊平衡"
 
 #: src/contents/ui/StereoTools.qml:165
 msgid "Middle level"
-msgstr ""
+msgstr "中間等級"
 
 #: src/contents/ui/StereoTools.qml:183
 msgid "Middle panorama"
-msgstr ""
+msgstr "中間全景"
 
 #: src/contents/ui/StereoTools.qml:225 src/contents/ui/StereoTools.qml:255
-#, fuzzy
 msgid "Invert phase"
-msgstr "左增益 (Gain)"
+msgstr "反轉階段"
 
 #: src/contents/ui/StereoTools.qml:299 src/tags_plugin_name.cpp:35
 msgid "Delay"
-msgstr ""
+msgstr "延遲"
 
 #: src/contents/ui/StereoTools.qml:316
 msgid "Stereo base"
-msgstr ""
+msgstr "立體聲低音"
 
 #: src/contents/ui/StereoTools.qml:332
 msgid "Stereo phase"
-msgstr ""
+msgstr "立體聲階段"
 
 #: src/global_shortcuts.hpp:48
-#, fuzzy
 msgid "Toggle Global Bypass"
-msgstr "全局繞過"
+msgstr "切換整體略過"
 
 #: src/global_shortcuts.hpp:50
 msgid "Toggle Microphone Monitoring"
-msgstr ""
+msgstr "切換麥克風監聽"
 
 #: src/plugin_base.cpp:272
 msgid "(Mic)"
-msgstr ""
+msgstr "(麥克風)"
 
 #: src/plugin_base.cpp:275
 msgid "(Speakers)"
-msgstr ""
+msgstr "(喇叭)"
 
 #: src/plugin_base.cpp:282
 msgid "Output Level Meter"
-msgstr ""
+msgstr "輸出等級量表"
 
 #: src/presets_manager.cpp:758 src/presets_manager.cpp:765
 #: src/presets_manager.cpp:775 src/presets_manager.cpp:782
 #: src/presets_manager.cpp:792 src/presets_manager.cpp:801
-#, fuzzy
 msgid "Preset not loaded correctly"
-msgstr "預設選單"
+msgstr "預設集未正確載入"
 
 #: src/presets_manager.cpp:758
 msgid "Wrong format in excluded apps list"
@@ -2831,11 +2764,11 @@ msgstr ""
 
 #: src/pw_model_nodes.cpp:488
 msgid "Running"
-msgstr ""
+msgstr "運行中"
 
 #: src/pw_model_nodes.cpp:490
 msgid "Suspended"
-msgstr ""
+msgstr "已暫停"
 
 #: src/pw_model_nodes.cpp:492
 msgid "Idle"
@@ -2843,7 +2776,7 @@ msgstr "閒置"
 
 #: src/pw_model_nodes.cpp:494
 msgid "Creating"
-msgstr ""
+msgstr "建立中"
 
 #: src/pw_model_nodes.cpp:496
 msgid "Error"
@@ -2851,47 +2784,47 @@ msgstr "錯誤"
 
 #: src/pw_model_nodes.cpp:498
 msgid "Unknown"
-msgstr "未知"
+msgstr "不明"
 
 #: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
-msgstr ""
+msgstr "低音增强器"
 
 #: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
-msgstr ""
+msgstr "低音響度"
 
 #: src/tags_plugin_name.cpp:30
 msgid "Convolver"
-msgstr ""
+msgstr "卷積混響器"
 
 #: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
-msgstr ""
+msgstr "交叉饋送"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
-msgstr ""
+msgstr "水晶音質器"
 
 #: src/tags_plugin_name.cpp:33
 msgid "Deep Noise Remover"
-msgstr ""
+msgstr "深度噪音移除器"
 
 #: src/tags_plugin_name.cpp:37
 msgid "Equalizer"
-msgstr ""
+msgstr "等化器"
 
 #: src/tags_plugin_name.cpp:38
 msgid "Exciter"
-msgstr ""
+msgstr "激勵器"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
-msgstr ""
+msgstr "等級量表"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
-msgstr ""
+msgstr "放大器"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Multiband Compressor"
@@ -2903,19 +2836,19 @@ msgstr "多頻段閘門"
 
 #: src/tags_plugin_name.cpp:49
 msgid "Reverberation"
-msgstr ""
+msgstr "混響"
 
 #: src/tags_plugin_name.cpp:50
 msgid "Noise Reduction"
-msgstr "降噪"
+msgstr "噪音抑制"
 
 #: src/tags_plugin_name.cpp:51
 msgid "Speech Processor"
-msgstr ""
+msgstr "語音處理器"
 
 #: src/tags_plugin_name.cpp:52
 msgid "Stereo Tools"
-msgstr ""
+msgstr "立體聲工具"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:2
 msgid "Easy Effects"
@@ -2923,20 +2856,19 @@ msgstr "Easy Effects"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:3
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr "等化器，壓縮器與其他音效"
+msgstr "等化器、壓縮器、及其他音效"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
-msgstr "PipeWire 音效程式"
+msgstr "用於 PipeWire 應用程式的音效處理"
 
 #: src/contents/ui/PluginNotAvailable.qml:11
-#, fuzzy
 msgid "Not available"
-msgstr "沒有可用的音訊應用程式"
+msgstr "尚無可用"
 
 #: src/contents/ui/PluginNotAvailable.qml:12
 msgid "This plugin requires: %1"
-msgstr ""
+msgstr "此插件需要： %1"
 
 #~ msgid "Add to Excluded Applications"
 #~ msgstr "新增至排除的應用程式"
