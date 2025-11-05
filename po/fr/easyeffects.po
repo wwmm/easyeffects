@@ -444,6 +444,7 @@ msgstr "Externe"
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
 #: src/contents/ui/PageStreamsEffects.qml:356
+#: src/contents/ui/PageStreamsEffects.qml:357
 msgid "Input device"
 msgstr "Périphérique d’entrée"
 
@@ -1727,48 +1728,61 @@ msgid "No audio application available"
 msgstr "Aucune application audio disponible"
 
 #: src/contents/ui/PageStreamsEffects.qml:309
+#: src/contents/ui/PageStreamsEffects.qml:310
 msgid "Add effect"
 msgstr "Ajouter un effet"
 
 #: src/contents/ui/PageStreamsEffects.qml:356
 #: src/contents/ui/PageStreamsEffects.qml:609
+#: src/contents/ui/PageStreamsEffects.qml:357
+#: src/contents/ui/PageStreamsEffects.qml:610
 msgid "Players"
 msgstr "Lecteurs"
 
 #: src/contents/ui/PageStreamsEffects.qml:373
 #: src/contents/ui/PageStreamsEffects.qml:609
+#: src/contents/ui/PageStreamsEffects.qml:374
+#: src/contents/ui/PageStreamsEffects.qml:610
 msgid "Recorders"
 msgstr "Enregistreurs"
 
 #: src/contents/ui/PageStreamsEffects.qml:386
+#: src/contents/ui/PageStreamsEffects.qml:387
 msgid "Close"
 msgstr "Fermer"
 
 #: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:389
 msgid "Expand the list of effects pipeline"
 msgstr "Développer la liste des effets du pipeline"
 
 #: src/contents/ui/PageStreamsEffects.qml:388
+#: src/contents/ui/PageStreamsEffects.qml:389
 msgid "Reduce the list of effects pipeline"
 msgstr "Réduire la liste des effects du pipeline"
 
 #: src/contents/ui/PageStreamsEffects.qml:412
+#: src/contents/ui/PageStreamsEffects.qml:413
 msgid "No Effects"
 msgstr "Aucun Effet"
 
 #: src/contents/ui/PageStreamsEffects.qml:413
+#: src/contents/ui/PageStreamsEffects.qml:414
 msgid "Audio stream not modified"
 msgstr "Flux audio non modifié"
 
 #: src/contents/ui/PageStreamsEffects.qml:619
+#: src/contents/ui/PageStreamsEffects.qml:620
 msgid "Effects"
 msgstr "Effets"
 
 #: src/contents/ui/PageStreamsEffects.qml:636
+#: src/contents/ui/PageStreamsEffects.qml:637
 msgid "Input monitoring"
 msgstr "Surveillance de l'entrée"
 
 #: src/contents/ui/PageStreamsEffects.qml:649
+#: src/contents/ui/PageStreamsEffects.qml:650
 msgid "Excluded apps"
 msgstr "Applications exclues"
 
@@ -2528,6 +2542,7 @@ msgid "Toggle fullscreen"
 msgstr "Basculer en plein écran"
 
 #: src/contents/ui/ShortcutsSheet.qml:76 src/contents/ui/ShortcutsSheet.qml:299
+#: src/global_shortcuts.hpp:48
 msgid "Toggle global bypass"
 msgstr "Basculer le contournement global"
 
@@ -2556,7 +2571,7 @@ msgstr "Peut être utilisé sur les contrôles numériques"
 msgid "Global Shortcuts"
 msgstr "Raccourcis Globaux"
 
-#: src/contents/ui/ShortcutsSheet.qml:339
+#: src/contents/ui/ShortcutsSheet.qml:339 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
 msgstr "Basculer la surveillance du microphone"
 
@@ -2806,6 +2821,15 @@ msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Effets Audio pour les Applications PipeWire"
+
+#: src/contents/ui/PluginNotAvailable.qml:14
+#, fuzzy
+msgid "Effect Not Available"
+msgstr "{} Indisponible"
+
+#: src/contents/ui/PluginNotAvailable.qml:15
+msgid "%1 cannot be used because %2 is not installed on the system."
+msgstr ""
 
 #~ msgid "Effects Blocklist"
 #~ msgstr "Liste de Blocage des Effets"
