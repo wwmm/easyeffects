@@ -40,6 +40,7 @@ class PluginBase : public QObject {
   Q_OBJECT
 
   Q_PROPERTY(bool updateLevelMeters MEMBER updateLevelMeters NOTIFY updateLevelMetersChanged)
+  Q_PROPERTY(bool packageInstalled MEMBER packageInstalled NOTIFY packageInstalledChanged)
 
  public:
   PluginBase(std::string tag,
@@ -92,7 +93,7 @@ class PluginBase : public QObject {
 
   uint rate = 0U;
 
-  bool package_installed = true;
+  bool packageInstalled = true;
 
   std::atomic<bool> bypass = {false};
 
@@ -166,6 +167,7 @@ class PluginBase : public QObject {
  Q_SIGNALS:
 
   void updateLevelMetersChanged();
+  void packageInstalledChanged();
 
  protected:
   std::mutex data_mutex;

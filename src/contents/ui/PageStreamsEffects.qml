@@ -146,10 +146,44 @@ Kirigami.Page {
                     [TagsPluginName.BaseName.stereoTools]: "qrc:/ui/StereoTools.qml"
                 };
 
+                const packageMap = {
+                    [TagsPluginName.BaseName.bassEnhancer]: TagsPluginName.Package.calf,
+                    [TagsPluginName.BaseName.bassLoudness]: TagsPluginName.Package.mda,
+                    [TagsPluginName.BaseName.compressor]: TagsPluginName.Package.lsp,
+                    [TagsPluginName.BaseName.crossfeed]: TagsPluginName.Package.bs2b,
+                    [TagsPluginName.BaseName.delay]: TagsPluginName.Package.lsp,
+                    [TagsPluginName.BaseName.deepfilternet]: TagsPluginName.Package.deepfilternet,
+                    [TagsPluginName.BaseName.deesser]: TagsPluginName.Package.calf,
+                    [TagsPluginName.BaseName.equalizer]: TagsPluginName.Package.lsp,
+                    [TagsPluginName.BaseName.exciter]: TagsPluginName.Package.calf,
+                    [TagsPluginName.BaseName.expander]: TagsPluginName.Package.lsp,
+                    [TagsPluginName.BaseName.filter]: TagsPluginName.Package.lsp,
+                    [TagsPluginName.BaseName.gate]: TagsPluginName.Package.lsp,
+                    [TagsPluginName.BaseName.limiter]: TagsPluginName.Package.lsp,
+                    [TagsPluginName.BaseName.loudness]: TagsPluginName.Package.lsp,
+                    [TagsPluginName.BaseName.maximizer]: TagsPluginName.Package.zam,
+                    [TagsPluginName.BaseName.multibandCompressor]: TagsPluginName.Package.lsp,
+                    [TagsPluginName.BaseName.multibandGate]: TagsPluginName.Package.lsp,
+                    [TagsPluginName.BaseName.reverb]: TagsPluginName.Package.calf,
+                    [TagsPluginName.BaseName.stereoTools]: TagsPluginName.Package.calf
+                };
+
                 const componentUrl = pluginMap[baseName];
 
                 if (!componentUrl) {
                     console.log(pageStreamsEffects.logTag + " invalid plugin name: " + baseName);
+
+                    return;
+                }
+
+                const pluginPackage = packageMap[baseName];
+
+                const pluginBackend = pageStreamsEffects.pipelineInstance.getPluginInstance(name);
+
+                if (pluginBackend.packageInstalled === false) {
+                    pluginsStack.push("qrc:/ui/PluginNotAvailable.qml", {
+                        packageName: packageMap[baseName]
+                    });
 
                     return;
                 }
@@ -214,7 +248,7 @@ Kirigami.Page {
                 running: pageStreamsEffects.pageType !== 2 && appWindow.visible // qmllint disable
 
                 onTriggered: {
-                    if (pluginsStack.depth > 1)
+                    if (pluginsStack.depth > 1 && pluginsStack.currentItem?.pluginBackend !== undefined)
                         pluginsStack.currentItem.updateMeters();
                 }
             }

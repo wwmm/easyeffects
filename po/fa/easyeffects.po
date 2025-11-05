@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-04 14:47-0300\n"
+"POT-Creation-Date: 2025-11-04 21:41-0300\n"
 "PO-Revision-Date: 2025-09-23 14:01+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -106,8 +106,8 @@ msgstr "پاکت"
 #: src/contents/ui/BassLoudness.qml:40 src/contents/ui/Crossfeed.qml:57
 #: src/contents/ui/DeepFilterNet.qml:72 src/contents/ui/Exciter.qml:89
 #: src/contents/ui/Filter.qml:43 src/contents/ui/Loudness.qml:42
-#: src/contents/ui/Maximizer.qml:42 src/contents/ui/Reverb.qml:44
-#: src/contents/ui/Speex.qml:41
+#: src/contents/ui/Maximizer.qml:42 src/contents/ui/Pitch.qml:42
+#: src/contents/ui/Reverb.qml:44 src/contents/ui/Speex.qml:41
 msgid "Controls"
 msgstr "کنترل ها"
 
@@ -194,7 +194,7 @@ msgstr "افزایش خروجی"
 #: src/contents/ui/LevelMeter.qml:191 src/contents/ui/Limiter.qml:576
 #: src/contents/ui/Loudness.qml:156 src/contents/ui/Maximizer.qml:103
 #: src/contents/ui/MultibandCompressor.qml:937
-#: src/contents/ui/MultibandGate.qml:910 src/contents/ui/Pitch.qml:211
+#: src/contents/ui/MultibandGate.qml:910 src/contents/ui/Pitch.qml:265
 #: src/contents/ui/Reverb.qml:310 src/contents/ui/RNNoise.qml:57
 #: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:278
 #: src/contents/ui/RNNoise.qml:280 src/contents/ui/RNNoise.qml:298
@@ -204,7 +204,7 @@ msgid "Using %1"
 msgstr "با استفاده از {}"
 
 #: src/contents/ui/Autogain.qml:243 src/contents/ui/DeepFilterNet.qml:186
-#: src/contents/ui/LevelMeter.qml:208 src/contents/ui/Pitch.qml:228
+#: src/contents/ui/LevelMeter.qml:208 src/contents/ui/Pitch.qml:282
 #, fuzzy
 msgid "Reset history"
 msgstr "بازنشانی تاریخچه"
@@ -219,7 +219,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:263 src/contents/ui/DeepFilterNet.qml:194
-#: src/contents/ui/LevelMeter.qml:216 src/contents/ui/Pitch.qml:256
+#: src/contents/ui/LevelMeter.qml:216 src/contents/ui/Pitch.qml:310
 #, fuzzy
 msgid "Reset settings"
 msgstr "_بازنشانی تنظیمات"
@@ -470,7 +470,7 @@ msgstr "خارجی"
 
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
-#: src/contents/ui/PageStreamsEffects.qml:322
+#: src/contents/ui/PageStreamsEffects.qml:356
 #, fuzzy
 msgid "Input device"
 msgstr "دستگاه ورودی"
@@ -641,8 +641,8 @@ msgstr "36 دسی‌بل/اکتاو"
 #: src/contents/ui/Delay.qml:162 src/contents/ui/Delay.qml:320
 #: src/contents/ui/Expander.qml:453 src/contents/ui/Gate.qml:475
 #: src/contents/ui/MultibandCompressor.qml:587
-#: src/contents/ui/MultibandGate.qml:560 src/contents/ui/Reverb.qml:181
-#: src/contents/ui/StereoTools.qml:349
+#: src/contents/ui/MultibandGate.qml:560 src/contents/ui/Pitch.qml:114
+#: src/contents/ui/Reverb.qml:181 src/contents/ui/StereoTools.qml:349
 #, fuzzy
 msgid "Dry"
 msgstr "امتحان کنید"
@@ -651,8 +651,8 @@ msgstr "امتحان کنید"
 #: src/contents/ui/Delay.qml:180 src/contents/ui/Delay.qml:338
 #: src/contents/ui/Expander.qml:472 src/contents/ui/Gate.qml:494
 #: src/contents/ui/MultibandCompressor.qml:605
-#: src/contents/ui/MultibandGate.qml:578 src/contents/ui/Reverb.qml:199
-#: src/contents/ui/StereoTools.qml:367
+#: src/contents/ui/MultibandGate.qml:578 src/contents/ui/Pitch.qml:133
+#: src/contents/ui/Reverb.qml:199 src/contents/ui/StereoTools.qml:367
 msgid "Wet"
 msgstr ""
 
@@ -1094,23 +1094,23 @@ msgstr "فعال/غیرفعال کردن این افکت"
 msgid "Remove this effect"
 msgstr "حذف این افکت"
 
-#: src/contents/ui/DelegateStreamsList.qml:76
+#: src/contents/ui/DelegateStreamsList.qml:77
 #, fuzzy
 msgid "channels"
 msgstr "کانال ها"
 
-#: src/contents/ui/DelegateStreamsList.qml:87
+#: src/contents/ui/DelegateStreamsList.qml:88
 #: src/contents/ui/EchoCanceller.qml:51 src/contents/ui/EchoCanceller.qml:91
 #: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:173
 #: src/contents/ui/RNNoise.qml:99
 msgid "Enable"
 msgstr "فعال"
 
-#: src/contents/ui/DelegateStreamsList.qml:108
+#: src/contents/ui/DelegateStreamsList.qml:109
 msgid "Exclude"
 msgstr "مستثنی"
 
-#: src/contents/ui/DelegateStreamsList.qml:110
+#: src/contents/ui/DelegateStreamsList.qml:111
 #, fuzzy
 msgid "Add %1 to excluded applications"
 msgstr "به برنامه‌های حذف‌شده اضافه کنید"
@@ -1258,7 +1258,6 @@ msgid "Gain"
 msgstr "افزایش"
 
 #: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:160
-#: src/contents/ui/Pitch.qml:42
 msgid "Quality"
 msgstr "کیفیت"
 
@@ -1749,7 +1748,7 @@ msgid "Active"
 msgstr "مدل فعال"
 
 #: src/contents/ui/main.qml:384 src/contents/ui/main.qml:503
-#: src/contents/ui/ShortcutsSheet.qml:348
+#: src/contents/ui/ShortcutsSheet.qml:357
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_میانبرها"
@@ -1884,52 +1883,52 @@ msgstr "کاهش"
 msgid "No audio application available"
 msgstr "هیچ برنامه صوتی موجود نیست"
 
-#: src/contents/ui/PageStreamsEffects.qml:275
+#: src/contents/ui/PageStreamsEffects.qml:309
 #, fuzzy
 msgid "Add effect"
 msgstr "افزودن افکت"
 
-#: src/contents/ui/PageStreamsEffects.qml:322
-#: src/contents/ui/PageStreamsEffects.qml:575
+#: src/contents/ui/PageStreamsEffects.qml:356
+#: src/contents/ui/PageStreamsEffects.qml:609
 msgid "Players"
 msgstr "پلیرها"
 
-#: src/contents/ui/PageStreamsEffects.qml:339
-#: src/contents/ui/PageStreamsEffects.qml:575
+#: src/contents/ui/PageStreamsEffects.qml:373
+#: src/contents/ui/PageStreamsEffects.qml:609
 msgid "Recorders"
 msgstr "ضبط کننده ها"
 
-#: src/contents/ui/PageStreamsEffects.qml:352
+#: src/contents/ui/PageStreamsEffects.qml:386
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:354
+#: src/contents/ui/PageStreamsEffects.qml:388
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:354
+#: src/contents/ui/PageStreamsEffects.qml:388
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:378
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "No Effects"
 msgstr "بدون افکت"
 
-#: src/contents/ui/PageStreamsEffects.qml:379
+#: src/contents/ui/PageStreamsEffects.qml:413
 #, fuzzy
 msgid "Audio stream not modified"
 msgstr "جریان صوتی تغییر نکرده است"
 
-#: src/contents/ui/PageStreamsEffects.qml:585
+#: src/contents/ui/PageStreamsEffects.qml:619
 msgid "Effects"
 msgstr "جلوه ها"
 
-#: src/contents/ui/PageStreamsEffects.qml:602
+#: src/contents/ui/PageStreamsEffects.qml:636
 #, fuzzy
 msgid "Input monitoring"
 msgstr "فعال‌سازی پایش ورودی"
 
-#: src/contents/ui/PageStreamsEffects.qml:615
+#: src/contents/ui/PageStreamsEffects.qml:649
 #, fuzzy
 msgid "Excluded apps"
 msgstr "برنامه های مستثنی شده"
@@ -2059,55 +2058,64 @@ msgstr "نویز سفید"
 msgid "Pink noise"
 msgstr "نوفهٔ صورتی"
 
-#: src/contents/ui/Pitch.qml:50
+#: src/contents/ui/Pitch.qml:56
 #, fuzzy
 msgid "Sequence length"
 msgstr "طول دنباله"
 
-#: src/contents/ui/Pitch.qml:66
+#: src/contents/ui/Pitch.qml:73
 #, fuzzy
 msgid "Seek window"
 msgstr "پنجره جستجو"
 
-#: src/contents/ui/Pitch.qml:82
+#: src/contents/ui/Pitch.qml:91
 #, fuzzy
 msgid "Overlap length"
 msgstr "طول هم‌پوشانی"
 
-#: src/contents/ui/Pitch.qml:103 src/tags_plugin_name.cpp:48
+#: src/contents/ui/Pitch.qml:157 src/tags_plugin_name.cpp:48
 msgid "Pitch"
 msgstr "گام"
 
-#: src/contents/ui/Pitch.qml:119
+#: src/contents/ui/Pitch.qml:173
 msgid "Octaves"
 msgstr "اکتاوها"
 
-#: src/contents/ui/Pitch.qml:135
+#: src/contents/ui/Pitch.qml:189
 msgid "Cents"
 msgstr "سِنت"
 
-#: src/contents/ui/Pitch.qml:151
+#: src/contents/ui/Pitch.qml:205
 msgid "Semitones"
 msgstr "نیم‌پرده‌ها"
 
-#: src/contents/ui/Pitch.qml:167
+#: src/contents/ui/Pitch.qml:221
 #, fuzzy
 msgid "Tempo difference"
 msgstr "اختلاف تمپو"
 
-#: src/contents/ui/Pitch.qml:184
+#: src/contents/ui/Pitch.qml:238
 #, fuzzy
 msgid "Rate difference"
 msgstr "اختلاف نرخ"
 
-#: src/contents/ui/Pitch.qml:235
+#: src/contents/ui/Pitch.qml:289
 #, fuzzy
 msgid "Quick seek"
 msgstr "جستجوی سریع"
 
-#: src/contents/ui/Pitch.qml:245
+#: src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
 msgstr "ضد-لغزش"
+
+#: src/contents/ui/PluginNotAvailable.qml:11
+#, fuzzy
+msgid "Not available"
+msgstr "{} در دسترس نیست"
+
+#: src/contents/ui/PluginNotAvailable.qml:12
+msgid "This plugin requires: %1"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:36
 #, fuzzy
@@ -2751,51 +2759,51 @@ msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 msgid "Import model"
 msgstr "وارد کردن مدل"
 
-#: src/contents/ui/ShortcutsSheet.qml:34
+#: src/contents/ui/ShortcutsSheet.qml:35
 #, fuzzy
 msgid "Show help"
 msgstr "نشان دادن کمک"
 
-#: src/contents/ui/ShortcutsSheet.qml:47
+#: src/contents/ui/ShortcutsSheet.qml:48
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:294
+#: src/contents/ui/ShortcutsSheet.qml:76 src/contents/ui/ShortcutsSheet.qml:299
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "بای‌پس سراسری"
 
-#: src/contents/ui/ShortcutsSheet.qml:103
+#: src/contents/ui/ShortcutsSheet.qml:104
 #, fuzzy
 msgid "Close the window"
 msgstr "پنجره را ببندید"
 
-#: src/contents/ui/ShortcutsSheet.qml:131
+#: src/contents/ui/ShortcutsSheet.qml:132
 #, fuzzy
 msgid "Terminate Easy Effects service"
 msgstr "نسخه easyeffects را چاپ کنید"
 
-#: src/contents/ui/ShortcutsSheet.qml:171
+#: src/contents/ui/ShortcutsSheet.qml:172
 #, fuzzy
 msgid "Toggle process all inputs"
 msgstr "پردازش تمام جریان‌های ورودی"
 
-#: src/contents/ui/ShortcutsSheet.qml:211
+#: src/contents/ui/ShortcutsSheet.qml:212
 #, fuzzy
 msgid "Toggle process all outputs"
 msgstr "پردازش تمام جریان‌های خروجی"
 
-#: src/contents/ui/ShortcutsSheet.qml:224
-#: src/contents/ui/ShortcutsSheet.qml:237
+#: src/contents/ui/ShortcutsSheet.qml:225
+#: src/contents/ui/ShortcutsSheet.qml:238
 msgid "Can be used on numeric controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:248
+#: src/contents/ui/ShortcutsSheet.qml:253
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "_میانبرها"
 
-#: src/contents/ui/ShortcutsSheet.qml:334
+#: src/contents/ui/ShortcutsSheet.qml:339
 msgid "Toggle microphone monitoring"
 msgstr ""
 
@@ -3728,10 +3736,6 @@ msgstr "جلوه‌های صوتی برای برنامه‌های PipeWire"
 #~ msgstr ""
 #~ "مدل انتخاب شده بارگذاری نشده است. ممکن است فرمت آن پشتیبانی نشود. به مدل "
 #~ "استاندارد برگشتم."
-
-#, c++-format
-#~ msgid "{} Not Available"
-#~ msgstr "{} در دسترس نیست"
 
 #, c++-format
 #~ msgid ""

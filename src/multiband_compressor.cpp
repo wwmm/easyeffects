@@ -64,9 +64,9 @@ MultibandCompressor::MultibandCompressor(const std::string& tag,
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
 
-  package_installed = lv2_wrapper->found_plugin;
+  packageInstalled = lv2_wrapper->found_plugin;
 
-  if (!package_installed) {
+  if (!packageInstalled) {
     util::debug(std::format("{}{} is not installed", log_tag, lv2_plugin_uri));
   }
 
