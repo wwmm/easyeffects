@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-04 14:47-0300\n"
+"POT-Creation-Date: 2025-11-04 21:41-0300\n"
 "PO-Revision-Date: 2025-10-30 04:17+0000\n"
 "Last-Translator: 雲の中を漂う船 <nogamenolife_zero@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -106,8 +106,8 @@ msgstr "波封"
 #: src/contents/ui/BassLoudness.qml:40 src/contents/ui/Crossfeed.qml:57
 #: src/contents/ui/DeepFilterNet.qml:72 src/contents/ui/Exciter.qml:89
 #: src/contents/ui/Filter.qml:43 src/contents/ui/Loudness.qml:42
-#: src/contents/ui/Maximizer.qml:42 src/contents/ui/Reverb.qml:44
-#: src/contents/ui/Speex.qml:41
+#: src/contents/ui/Maximizer.qml:42 src/contents/ui/Pitch.qml:42
+#: src/contents/ui/Reverb.qml:44 src/contents/ui/Speex.qml:41
 msgid "Controls"
 msgstr "控制"
 
@@ -194,7 +194,7 @@ msgstr "输出增益"
 #: src/contents/ui/LevelMeter.qml:191 src/contents/ui/Limiter.qml:576
 #: src/contents/ui/Loudness.qml:156 src/contents/ui/Maximizer.qml:103
 #: src/contents/ui/MultibandCompressor.qml:937
-#: src/contents/ui/MultibandGate.qml:910 src/contents/ui/Pitch.qml:211
+#: src/contents/ui/MultibandGate.qml:910 src/contents/ui/Pitch.qml:265
 #: src/contents/ui/Reverb.qml:310 src/contents/ui/RNNoise.qml:57
 #: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:278
 #: src/contents/ui/RNNoise.qml:280 src/contents/ui/RNNoise.qml:298
@@ -204,7 +204,7 @@ msgid "Using %1"
 msgstr "正在使用 {}"
 
 #: src/contents/ui/Autogain.qml:243 src/contents/ui/DeepFilterNet.qml:186
-#: src/contents/ui/LevelMeter.qml:208 src/contents/ui/Pitch.qml:228
+#: src/contents/ui/LevelMeter.qml:208 src/contents/ui/Pitch.qml:282
 #, fuzzy
 msgid "Reset history"
 msgstr "清除记录"
@@ -219,7 +219,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:263 src/contents/ui/DeepFilterNet.qml:194
-#: src/contents/ui/LevelMeter.qml:216 src/contents/ui/Pitch.qml:256
+#: src/contents/ui/LevelMeter.qml:216 src/contents/ui/Pitch.qml:310
 #, fuzzy
 msgid "Reset settings"
 msgstr "重置设置(_R)"
@@ -470,7 +470,7 @@ msgstr "外部"
 
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
-#: src/contents/ui/PageStreamsEffects.qml:322
+#: src/contents/ui/PageStreamsEffects.qml:356
 #, fuzzy
 msgid "Input device"
 msgstr "输入设备"
@@ -641,8 +641,8 @@ msgstr "每八度 36 dB"
 #: src/contents/ui/Delay.qml:162 src/contents/ui/Delay.qml:320
 #: src/contents/ui/Expander.qml:453 src/contents/ui/Gate.qml:475
 #: src/contents/ui/MultibandCompressor.qml:587
-#: src/contents/ui/MultibandGate.qml:560 src/contents/ui/Reverb.qml:181
-#: src/contents/ui/StereoTools.qml:349
+#: src/contents/ui/MultibandGate.qml:560 src/contents/ui/Pitch.qml:114
+#: src/contents/ui/Reverb.qml:181 src/contents/ui/StereoTools.qml:349
 #, fuzzy
 msgid "Dry"
 msgstr "尝试"
@@ -651,8 +651,8 @@ msgstr "尝试"
 #: src/contents/ui/Delay.qml:180 src/contents/ui/Delay.qml:338
 #: src/contents/ui/Expander.qml:472 src/contents/ui/Gate.qml:494
 #: src/contents/ui/MultibandCompressor.qml:605
-#: src/contents/ui/MultibandGate.qml:578 src/contents/ui/Reverb.qml:199
-#: src/contents/ui/StereoTools.qml:367
+#: src/contents/ui/MultibandGate.qml:578 src/contents/ui/Pitch.qml:133
+#: src/contents/ui/Reverb.qml:199 src/contents/ui/StereoTools.qml:367
 #, fuzzy
 msgid "Wet"
 msgstr "程度"
@@ -1094,23 +1094,23 @@ msgstr "启用/禁用此音效"
 msgid "Remove this effect"
 msgstr "删除此音效"
 
-#: src/contents/ui/DelegateStreamsList.qml:76
+#: src/contents/ui/DelegateStreamsList.qml:77
 #, fuzzy
 msgid "channels"
 msgstr "声道"
 
-#: src/contents/ui/DelegateStreamsList.qml:87
+#: src/contents/ui/DelegateStreamsList.qml:88
 #: src/contents/ui/EchoCanceller.qml:51 src/contents/ui/EchoCanceller.qml:91
 #: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:173
 #: src/contents/ui/RNNoise.qml:99
 msgid "Enable"
 msgstr "启用"
 
-#: src/contents/ui/DelegateStreamsList.qml:108
+#: src/contents/ui/DelegateStreamsList.qml:109
 msgid "Exclude"
 msgstr "排除"
 
-#: src/contents/ui/DelegateStreamsList.qml:110
+#: src/contents/ui/DelegateStreamsList.qml:111
 #, fuzzy
 msgid "Add %1 to excluded applications"
 msgstr "添加到排除的程序"
@@ -1258,7 +1258,6 @@ msgid "Gain"
 msgstr "增益"
 
 #: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:160
-#: src/contents/ui/Pitch.qml:42
 msgid "Quality"
 msgstr "品质"
 
@@ -1752,7 +1751,7 @@ msgid "Active"
 msgstr "激活"
 
 #: src/contents/ui/main.qml:384 src/contents/ui/main.qml:503
-#: src/contents/ui/ShortcutsSheet.qml:348
+#: src/contents/ui/ShortcutsSheet.qml:357
 #, fuzzy
 msgid "Shortcuts"
 msgstr "快捷键(_S)"
@@ -1889,52 +1888,52 @@ msgstr "衰减"
 msgid "No audio application available"
 msgstr "没有可用的音频应用程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:275
+#: src/contents/ui/PageStreamsEffects.qml:309
 #, fuzzy
 msgid "Add effect"
 msgstr "添加音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:322
-#: src/contents/ui/PageStreamsEffects.qml:575
+#: src/contents/ui/PageStreamsEffects.qml:356
+#: src/contents/ui/PageStreamsEffects.qml:609
 msgid "Players"
 msgstr "播放器"
 
-#: src/contents/ui/PageStreamsEffects.qml:339
-#: src/contents/ui/PageStreamsEffects.qml:575
+#: src/contents/ui/PageStreamsEffects.qml:373
+#: src/contents/ui/PageStreamsEffects.qml:609
 msgid "Recorders"
 msgstr "录音程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:352
+#: src/contents/ui/PageStreamsEffects.qml:386
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:354
+#: src/contents/ui/PageStreamsEffects.qml:388
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:354
+#: src/contents/ui/PageStreamsEffects.qml:388
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:378
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "No Effects"
 msgstr "无音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:379
+#: src/contents/ui/PageStreamsEffects.qml:413
 #, fuzzy
 msgid "Audio stream not modified"
 msgstr "音频流未作修改"
 
-#: src/contents/ui/PageStreamsEffects.qml:585
+#: src/contents/ui/PageStreamsEffects.qml:619
 msgid "Effects"
 msgstr "音效"
 
-#: src/contents/ui/PageStreamsEffects.qml:602
+#: src/contents/ui/PageStreamsEffects.qml:636
 #, fuzzy
 msgid "Input monitoring"
 msgstr "启用/禁用此应用程序"
 
-#: src/contents/ui/PageStreamsEffects.qml:615
+#: src/contents/ui/PageStreamsEffects.qml:649
 #, fuzzy
 msgid "Excluded apps"
 msgstr "排除的应用"
@@ -2064,55 +2063,64 @@ msgstr "白噪声"
 msgid "Pink noise"
 msgstr "白噪声"
 
-#: src/contents/ui/Pitch.qml:50
+#: src/contents/ui/Pitch.qml:56
 #, fuzzy
 msgid "Sequence length"
 msgstr "序列长度"
 
-#: src/contents/ui/Pitch.qml:66
+#: src/contents/ui/Pitch.qml:73
 #, fuzzy
 msgid "Seek window"
 msgstr "序列查找窗口"
 
-#: src/contents/ui/Pitch.qml:82
+#: src/contents/ui/Pitch.qml:91
 #, fuzzy
 msgid "Overlap length"
 msgstr "重叠长度"
 
-#: src/contents/ui/Pitch.qml:103 src/tags_plugin_name.cpp:48
+#: src/contents/ui/Pitch.qml:157 src/tags_plugin_name.cpp:48
 msgid "Pitch"
 msgstr "音高"
 
-#: src/contents/ui/Pitch.qml:119
+#: src/contents/ui/Pitch.qml:173
 msgid "Octaves"
 msgstr "八度"
 
-#: src/contents/ui/Pitch.qml:135
+#: src/contents/ui/Pitch.qml:189
 msgid "Cents"
 msgstr "音分"
 
-#: src/contents/ui/Pitch.qml:151
+#: src/contents/ui/Pitch.qml:205
 msgid "Semitones"
 msgstr "半音"
 
-#: src/contents/ui/Pitch.qml:167
+#: src/contents/ui/Pitch.qml:221
 #, fuzzy
 msgid "Tempo difference"
 msgstr "拍子差"
 
-#: src/contents/ui/Pitch.qml:184
+#: src/contents/ui/Pitch.qml:238
 #, fuzzy
 msgid "Rate difference"
 msgstr "速率差"
 
-#: src/contents/ui/Pitch.qml:235
+#: src/contents/ui/Pitch.qml:289
 #, fuzzy
 msgid "Quick seek"
 msgstr "快速查找"
 
-#: src/contents/ui/Pitch.qml:245
+#: src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
 msgstr "抗混叠"
+
+#: src/contents/ui/PluginNotAvailable.qml:11
+#, fuzzy
+msgid "Not available"
+msgstr "{} 不可用"
+
+#: src/contents/ui/PluginNotAvailable.qml:12
+msgid "This plugin requires: %1"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:36
 #, fuzzy
@@ -2756,51 +2764,51 @@ msgstr "加载脉冲文件失败"
 msgid "Import model"
 msgstr "导入模型"
 
-#: src/contents/ui/ShortcutsSheet.qml:34
+#: src/contents/ui/ShortcutsSheet.qml:35
 #, fuzzy
 msgid "Show help"
 msgstr "显示帮助"
 
-#: src/contents/ui/ShortcutsSheet.qml:47
+#: src/contents/ui/ShortcutsSheet.qml:48
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:294
+#: src/contents/ui/ShortcutsSheet.qml:76 src/contents/ui/ShortcutsSheet.qml:299
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "全局旁路"
 
-#: src/contents/ui/ShortcutsSheet.qml:103
+#: src/contents/ui/ShortcutsSheet.qml:104
 #, fuzzy
 msgid "Close the window"
 msgstr "关闭窗口"
 
-#: src/contents/ui/ShortcutsSheet.qml:131
+#: src/contents/ui/ShortcutsSheet.qml:132
 #, fuzzy
 msgid "Terminate Easy Effects service"
 msgstr "打印 EasyEffects 版本号"
 
-#: src/contents/ui/ShortcutsSheet.qml:171
+#: src/contents/ui/ShortcutsSheet.qml:172
 #, fuzzy
 msgid "Toggle process all inputs"
 msgstr "处理所有输入"
 
-#: src/contents/ui/ShortcutsSheet.qml:211
+#: src/contents/ui/ShortcutsSheet.qml:212
 #, fuzzy
 msgid "Toggle process all outputs"
 msgstr "处理所有输出"
 
-#: src/contents/ui/ShortcutsSheet.qml:224
-#: src/contents/ui/ShortcutsSheet.qml:237
+#: src/contents/ui/ShortcutsSheet.qml:225
+#: src/contents/ui/ShortcutsSheet.qml:238
 msgid "Can be used on numeric controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:248
+#: src/contents/ui/ShortcutsSheet.qml:253
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "快捷键(_S)"
 
-#: src/contents/ui/ShortcutsSheet.qml:334
+#: src/contents/ui/ShortcutsSheet.qml:339
 msgid "Toggle microphone monitoring"
 msgstr ""
 
@@ -3751,9 +3759,6 @@ msgstr "为使用 PipeWire 的应用提供音效"
 #~ "Selected Model Not Loaded. Its Format May Be Unsupported. Fell Back To "
 #~ "The Standard Model."
 #~ msgstr "所选模型未加载成功，可能是文件格式不支持，已退回到标准模型。"
-
-#~ msgid "{} Not Available"
-#~ msgstr "{} 不可用"
 
 #~ msgid ""
 #~ "The software required for the {} effect, \"{}\", is not installed. "

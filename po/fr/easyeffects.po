@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-04 14:47-0300\n"
+"POT-Creation-Date: 2025-11-04 21:41-0300\n"
 "PO-Revision-Date: 2025-11-03 09:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -103,8 +103,8 @@ msgstr "Développeur"
 #: src/contents/ui/BassLoudness.qml:40 src/contents/ui/Crossfeed.qml:57
 #: src/contents/ui/DeepFilterNet.qml:72 src/contents/ui/Exciter.qml:89
 #: src/contents/ui/Filter.qml:43 src/contents/ui/Loudness.qml:42
-#: src/contents/ui/Maximizer.qml:42 src/contents/ui/Reverb.qml:44
-#: src/contents/ui/Speex.qml:41
+#: src/contents/ui/Maximizer.qml:42 src/contents/ui/Pitch.qml:42
+#: src/contents/ui/Reverb.qml:44 src/contents/ui/Speex.qml:41
 msgid "Controls"
 msgstr "Contrôles"
 
@@ -184,7 +184,7 @@ msgstr "Gain de sortie"
 #: src/contents/ui/LevelMeter.qml:191 src/contents/ui/Limiter.qml:576
 #: src/contents/ui/Loudness.qml:156 src/contents/ui/Maximizer.qml:103
 #: src/contents/ui/MultibandCompressor.qml:937
-#: src/contents/ui/MultibandGate.qml:910 src/contents/ui/Pitch.qml:211
+#: src/contents/ui/MultibandGate.qml:910 src/contents/ui/Pitch.qml:265
 #: src/contents/ui/Reverb.qml:310 src/contents/ui/RNNoise.qml:57
 #: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:278
 #: src/contents/ui/RNNoise.qml:280 src/contents/ui/RNNoise.qml:298
@@ -193,7 +193,7 @@ msgid "Using %1"
 msgstr "Utilisation de %1"
 
 #: src/contents/ui/Autogain.qml:243 src/contents/ui/DeepFilterNet.qml:186
-#: src/contents/ui/LevelMeter.qml:208 src/contents/ui/Pitch.qml:228
+#: src/contents/ui/LevelMeter.qml:208 src/contents/ui/Pitch.qml:282
 msgid "Reset history"
 msgstr "Réinitialiser l’historique"
 
@@ -206,7 +206,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr "Force le silence lorsque le niveau est inférieur au seuil du silence"
 
 #: src/contents/ui/Autogain.qml:263 src/contents/ui/DeepFilterNet.qml:194
-#: src/contents/ui/LevelMeter.qml:216 src/contents/ui/Pitch.qml:256
+#: src/contents/ui/LevelMeter.qml:216 src/contents/ui/Pitch.qml:310
 msgid "Reset settings"
 msgstr "Réinitialiser les paramètres"
 
@@ -444,7 +444,7 @@ msgstr "Externe"
 
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
-#: src/contents/ui/PageStreamsEffects.qml:322
+#: src/contents/ui/PageStreamsEffects.qml:356
 msgid "Input device"
 msgstr "Périphérique d’entrée"
 
@@ -612,8 +612,8 @@ msgstr "36 dB/oct"
 #: src/contents/ui/Delay.qml:162 src/contents/ui/Delay.qml:320
 #: src/contents/ui/Expander.qml:453 src/contents/ui/Gate.qml:475
 #: src/contents/ui/MultibandCompressor.qml:587
-#: src/contents/ui/MultibandGate.qml:560 src/contents/ui/Reverb.qml:181
-#: src/contents/ui/StereoTools.qml:349
+#: src/contents/ui/MultibandGate.qml:560 src/contents/ui/Pitch.qml:114
+#: src/contents/ui/Reverb.qml:181 src/contents/ui/StereoTools.qml:349
 msgid "Dry"
 msgstr "Sec"
 
@@ -621,8 +621,8 @@ msgstr "Sec"
 #: src/contents/ui/Delay.qml:180 src/contents/ui/Delay.qml:338
 #: src/contents/ui/Expander.qml:472 src/contents/ui/Gate.qml:494
 #: src/contents/ui/MultibandCompressor.qml:605
-#: src/contents/ui/MultibandGate.qml:578 src/contents/ui/Reverb.qml:199
-#: src/contents/ui/StereoTools.qml:367
+#: src/contents/ui/MultibandGate.qml:578 src/contents/ui/Pitch.qml:133
+#: src/contents/ui/Reverb.qml:199 src/contents/ui/StereoTools.qml:367
 msgid "Wet"
 msgstr "Humide"
 
@@ -1028,22 +1028,22 @@ msgstr "Basculer cet effet"
 msgid "Remove this effect"
 msgstr "Supprimer cet effet"
 
-#: src/contents/ui/DelegateStreamsList.qml:76
+#: src/contents/ui/DelegateStreamsList.qml:77
 msgid "channels"
 msgstr "canaux"
 
-#: src/contents/ui/DelegateStreamsList.qml:87
+#: src/contents/ui/DelegateStreamsList.qml:88
 #: src/contents/ui/EchoCanceller.qml:51 src/contents/ui/EchoCanceller.qml:91
 #: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:173
 #: src/contents/ui/RNNoise.qml:99
 msgid "Enable"
 msgstr "Activer"
 
-#: src/contents/ui/DelegateStreamsList.qml:108
+#: src/contents/ui/DelegateStreamsList.qml:109
 msgid "Exclude"
 msgstr "Exclure"
 
-#: src/contents/ui/DelegateStreamsList.qml:110
+#: src/contents/ui/DelegateStreamsList.qml:111
 msgid "Add %1 to excluded applications"
 msgstr "Ajouter %1 aux applications exclues"
 
@@ -1172,7 +1172,6 @@ msgid "Gain"
 msgstr "Gain"
 
 #: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:160
-#: src/contents/ui/Pitch.qml:42
 msgid "Quality"
 msgstr "Qualité"
 
@@ -1607,7 +1606,7 @@ msgid "Active"
 msgstr "Actif"
 
 #: src/contents/ui/main.qml:384 src/contents/ui/main.qml:503
-#: src/contents/ui/ShortcutsSheet.qml:348
+#: src/contents/ui/ShortcutsSheet.qml:357
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
@@ -1728,49 +1727,49 @@ msgstr "Réaction"
 msgid "No audio application available"
 msgstr "Aucune application audio disponible"
 
-#: src/contents/ui/PageStreamsEffects.qml:275
+#: src/contents/ui/PageStreamsEffects.qml:309
 msgid "Add effect"
 msgstr "Ajouter un effet"
 
-#: src/contents/ui/PageStreamsEffects.qml:322
-#: src/contents/ui/PageStreamsEffects.qml:575
+#: src/contents/ui/PageStreamsEffects.qml:356
+#: src/contents/ui/PageStreamsEffects.qml:609
 msgid "Players"
 msgstr "Lecteurs"
 
-#: src/contents/ui/PageStreamsEffects.qml:339
-#: src/contents/ui/PageStreamsEffects.qml:575
+#: src/contents/ui/PageStreamsEffects.qml:373
+#: src/contents/ui/PageStreamsEffects.qml:609
 msgid "Recorders"
 msgstr "Enregistreurs"
 
-#: src/contents/ui/PageStreamsEffects.qml:352
+#: src/contents/ui/PageStreamsEffects.qml:386
 msgid "Close"
 msgstr "Fermer"
 
-#: src/contents/ui/PageStreamsEffects.qml:354
+#: src/contents/ui/PageStreamsEffects.qml:388
 msgid "Expand the list of effects pipeline"
 msgstr "Développer la liste des effets du pipeline"
 
-#: src/contents/ui/PageStreamsEffects.qml:354
+#: src/contents/ui/PageStreamsEffects.qml:388
 msgid "Reduce the list of effects pipeline"
 msgstr "Réduire la liste des effects du pipeline"
 
-#: src/contents/ui/PageStreamsEffects.qml:378
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "No Effects"
 msgstr "Aucun Effet"
 
-#: src/contents/ui/PageStreamsEffects.qml:379
+#: src/contents/ui/PageStreamsEffects.qml:413
 msgid "Audio stream not modified"
 msgstr "Flux audio non modifié"
 
-#: src/contents/ui/PageStreamsEffects.qml:585
+#: src/contents/ui/PageStreamsEffects.qml:619
 msgid "Effects"
 msgstr "Effets"
 
-#: src/contents/ui/PageStreamsEffects.qml:602
+#: src/contents/ui/PageStreamsEffects.qml:636
 msgid "Input monitoring"
 msgstr "Surveillance de l'entrée"
 
-#: src/contents/ui/PageStreamsEffects.qml:615
+#: src/contents/ui/PageStreamsEffects.qml:649
 msgid "Excluded apps"
 msgstr "Applications exclues"
 
@@ -1885,49 +1884,58 @@ msgstr "Bruit blanc"
 msgid "Pink noise"
 msgstr "Bruit rose"
 
-#: src/contents/ui/Pitch.qml:50
+#: src/contents/ui/Pitch.qml:56
 msgid "Sequence length"
 msgstr "Longueur de séquence"
 
-#: src/contents/ui/Pitch.qml:66
+#: src/contents/ui/Pitch.qml:73
 msgid "Seek window"
 msgstr "Fenêtre de recherche"
 
-#: src/contents/ui/Pitch.qml:82
+#: src/contents/ui/Pitch.qml:91
 msgid "Overlap length"
 msgstr "Longueur de recouvrement"
 
-#: src/contents/ui/Pitch.qml:103 src/tags_plugin_name.cpp:48
+#: src/contents/ui/Pitch.qml:157 src/tags_plugin_name.cpp:48
 msgid "Pitch"
 msgstr "Hauteur"
 
-#: src/contents/ui/Pitch.qml:119
+#: src/contents/ui/Pitch.qml:173
 msgid "Octaves"
 msgstr "Octaves"
 
-#: src/contents/ui/Pitch.qml:135
+#: src/contents/ui/Pitch.qml:189
 msgid "Cents"
 msgstr "Cents"
 
-#: src/contents/ui/Pitch.qml:151
+#: src/contents/ui/Pitch.qml:205
 msgid "Semitones"
 msgstr "Demi-tons"
 
-#: src/contents/ui/Pitch.qml:167
+#: src/contents/ui/Pitch.qml:221
 msgid "Tempo difference"
 msgstr "Différence de tempo"
 
-#: src/contents/ui/Pitch.qml:184
+#: src/contents/ui/Pitch.qml:238
 msgid "Rate difference"
 msgstr "Différence de débit"
 
-#: src/contents/ui/Pitch.qml:235
+#: src/contents/ui/Pitch.qml:289
 msgid "Quick seek"
 msgstr "Recherche rapide"
 
-#: src/contents/ui/Pitch.qml:245
+#: src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
 msgstr "Anti-crénelage"
+
+#: src/contents/ui/PluginNotAvailable.qml:11
+#, fuzzy
+msgid "Not available"
+msgstr "{} Indisponible"
+
+#: src/contents/ui/PluginNotAvailable.qml:12
+msgid "This plugin requires: %1"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:36
 msgid "Enable service mode"
@@ -2513,44 +2521,44 @@ msgstr "Échec de la suppression du modèle RNNoise %1."
 msgid "Import model"
 msgstr "Importer le modèle"
 
-#: src/contents/ui/ShortcutsSheet.qml:34
+#: src/contents/ui/ShortcutsSheet.qml:35
 msgid "Show help"
 msgstr "Afficher l'aide"
 
-#: src/contents/ui/ShortcutsSheet.qml:47
+#: src/contents/ui/ShortcutsSheet.qml:48
 msgid "Toggle fullscreen"
 msgstr "Basculer en plein écran"
 
-#: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:294
+#: src/contents/ui/ShortcutsSheet.qml:76 src/contents/ui/ShortcutsSheet.qml:299
 msgid "Toggle global bypass"
 msgstr "Basculer le contournement global"
 
-#: src/contents/ui/ShortcutsSheet.qml:103
+#: src/contents/ui/ShortcutsSheet.qml:104
 msgid "Close the window"
 msgstr "Fermer la fenêtre"
 
-#: src/contents/ui/ShortcutsSheet.qml:131
+#: src/contents/ui/ShortcutsSheet.qml:132
 msgid "Terminate Easy Effects service"
 msgstr "Interrompre le service Easy Effects"
 
-#: src/contents/ui/ShortcutsSheet.qml:171
+#: src/contents/ui/ShortcutsSheet.qml:172
 msgid "Toggle process all inputs"
 msgstr "Basculer le traitement de toutes les entrées"
 
-#: src/contents/ui/ShortcutsSheet.qml:211
+#: src/contents/ui/ShortcutsSheet.qml:212
 msgid "Toggle process all outputs"
 msgstr "Basculer le traitement de toutes les sorties"
 
-#: src/contents/ui/ShortcutsSheet.qml:224
-#: src/contents/ui/ShortcutsSheet.qml:237
+#: src/contents/ui/ShortcutsSheet.qml:225
+#: src/contents/ui/ShortcutsSheet.qml:238
 msgid "Can be used on numeric controls"
 msgstr "Peut être utilisé sur les contrôles numériques"
 
-#: src/contents/ui/ShortcutsSheet.qml:248
+#: src/contents/ui/ShortcutsSheet.qml:253
 msgid "Global Shortcuts"
 msgstr "Raccourcis Globaux"
 
-#: src/contents/ui/ShortcutsSheet.qml:334
+#: src/contents/ui/ShortcutsSheet.qml:339
 msgid "Toggle microphone monitoring"
 msgstr "Basculer la surveillance du microphone"
 
@@ -3826,9 +3834,6 @@ msgstr "Effets Audio pour les Applications PipeWire"
 #~ msgstr ""
 #~ "Le modèle sélectionné n’a pas été chargé. Son format n’est peut-être pas "
 #~ "supporté. Retour au modèle standard."
-
-#~ msgid "{} Not Available"
-#~ msgstr "{} Indisponible"
 
 #~ msgid ""
 #~ "The software required for the {} effect, \"{}\", is not installed. "

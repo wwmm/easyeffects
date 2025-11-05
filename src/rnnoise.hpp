@@ -75,7 +75,7 @@ class RNNoise : public PluginBase {
   auto search_model_path(const std::string& name) -> std::string;
 
 #ifndef ENABLE_RNNOISE
-  bool package_installed = false;
+  bool packageInstalled = false;
 #endif
 
   const std::string rnnn_ext = ".rnnn";

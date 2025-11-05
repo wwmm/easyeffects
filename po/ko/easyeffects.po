@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-04 14:47-0300\n"
+"POT-Creation-Date: 2025-11-04 21:41-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -106,8 +106,8 @@ msgstr "엔벌로프"
 #: src/contents/ui/BassLoudness.qml:40 src/contents/ui/Crossfeed.qml:57
 #: src/contents/ui/DeepFilterNet.qml:72 src/contents/ui/Exciter.qml:89
 #: src/contents/ui/Filter.qml:43 src/contents/ui/Loudness.qml:42
-#: src/contents/ui/Maximizer.qml:42 src/contents/ui/Reverb.qml:44
-#: src/contents/ui/Speex.qml:41
+#: src/contents/ui/Maximizer.qml:42 src/contents/ui/Pitch.qml:42
+#: src/contents/ui/Reverb.qml:44 src/contents/ui/Speex.qml:41
 msgid "Controls"
 msgstr ""
 
@@ -194,7 +194,7 @@ msgstr "아웃풋 게인"
 #: src/contents/ui/LevelMeter.qml:191 src/contents/ui/Limiter.qml:576
 #: src/contents/ui/Loudness.qml:156 src/contents/ui/Maximizer.qml:103
 #: src/contents/ui/MultibandCompressor.qml:937
-#: src/contents/ui/MultibandGate.qml:910 src/contents/ui/Pitch.qml:211
+#: src/contents/ui/MultibandGate.qml:910 src/contents/ui/Pitch.qml:265
 #: src/contents/ui/Reverb.qml:310 src/contents/ui/RNNoise.qml:57
 #: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:278
 #: src/contents/ui/RNNoise.qml:280 src/contents/ui/RNNoise.qml:298
@@ -204,7 +204,7 @@ msgid "Using %1"
 msgstr "{} 사용 중"
 
 #: src/contents/ui/Autogain.qml:243 src/contents/ui/DeepFilterNet.qml:186
-#: src/contents/ui/LevelMeter.qml:208 src/contents/ui/Pitch.qml:228
+#: src/contents/ui/LevelMeter.qml:208 src/contents/ui/Pitch.qml:282
 #, fuzzy
 msgid "Reset history"
 msgstr "히스토리 재지정"
@@ -219,7 +219,7 @@ msgid "Force silence when the level is below the silence threshold"
 msgstr ""
 
 #: src/contents/ui/Autogain.qml:263 src/contents/ui/DeepFilterNet.qml:194
-#: src/contents/ui/LevelMeter.qml:216 src/contents/ui/Pitch.qml:256
+#: src/contents/ui/LevelMeter.qml:216 src/contents/ui/Pitch.qml:310
 #, fuzzy
 msgid "Reset settings"
 msgstr "설정 재지정(_R)"
@@ -470,7 +470,7 @@ msgstr "외부"
 
 #: src/contents/ui/Compressor.qml:273 src/contents/ui/Expander.qml:233
 #: src/contents/ui/Gate.qml:254 src/contents/ui/Limiter.qml:211
-#: src/contents/ui/PageStreamsEffects.qml:322
+#: src/contents/ui/PageStreamsEffects.qml:356
 #, fuzzy
 msgid "Input device"
 msgstr "입력 장치"
@@ -641,8 +641,8 @@ msgstr ""
 #: src/contents/ui/Delay.qml:162 src/contents/ui/Delay.qml:320
 #: src/contents/ui/Expander.qml:453 src/contents/ui/Gate.qml:475
 #: src/contents/ui/MultibandCompressor.qml:587
-#: src/contents/ui/MultibandGate.qml:560 src/contents/ui/Reverb.qml:181
-#: src/contents/ui/StereoTools.qml:349
+#: src/contents/ui/MultibandGate.qml:560 src/contents/ui/Pitch.qml:114
+#: src/contents/ui/Reverb.qml:181 src/contents/ui/StereoTools.qml:349
 msgid "Dry"
 msgstr ""
 
@@ -650,8 +650,8 @@ msgstr ""
 #: src/contents/ui/Delay.qml:180 src/contents/ui/Delay.qml:338
 #: src/contents/ui/Expander.qml:472 src/contents/ui/Gate.qml:494
 #: src/contents/ui/MultibandCompressor.qml:605
-#: src/contents/ui/MultibandGate.qml:578 src/contents/ui/Reverb.qml:199
-#: src/contents/ui/StereoTools.qml:367
+#: src/contents/ui/MultibandGate.qml:578 src/contents/ui/Pitch.qml:133
+#: src/contents/ui/Reverb.qml:199 src/contents/ui/StereoTools.qml:367
 msgid "Wet"
 msgstr ""
 
@@ -1088,23 +1088,23 @@ msgstr "이 효과 제거하기"
 msgid "Remove this effect"
 msgstr "이 효과 제거하기"
 
-#: src/contents/ui/DelegateStreamsList.qml:76
+#: src/contents/ui/DelegateStreamsList.qml:77
 #, fuzzy
 msgid "channels"
 msgstr "채널"
 
-#: src/contents/ui/DelegateStreamsList.qml:87
+#: src/contents/ui/DelegateStreamsList.qml:88
 #: src/contents/ui/EchoCanceller.qml:51 src/contents/ui/EchoCanceller.qml:91
 #: src/contents/ui/EchoCanceller.qml:124 src/contents/ui/Gate.qml:173
 #: src/contents/ui/RNNoise.qml:99
 msgid "Enable"
 msgstr "활성화"
 
-#: src/contents/ui/DelegateStreamsList.qml:108
+#: src/contents/ui/DelegateStreamsList.qml:109
 msgid "Exclude"
 msgstr "제외하기"
 
-#: src/contents/ui/DelegateStreamsList.qml:110
+#: src/contents/ui/DelegateStreamsList.qml:111
 #, fuzzy
 msgid "Add %1 to excluded applications"
 msgstr "제외된 응용프로그램에 추가하기"
@@ -1249,7 +1249,6 @@ msgid "Gain"
 msgstr "게인"
 
 #: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:160
-#: src/contents/ui/Pitch.qml:42
 msgid "Quality"
 msgstr ""
 
@@ -1708,7 +1707,7 @@ msgid "Active"
 msgstr ""
 
 #: src/contents/ui/main.qml:384 src/contents/ui/main.qml:503
-#: src/contents/ui/ShortcutsSheet.qml:348
+#: src/contents/ui/ShortcutsSheet.qml:357
 #, fuzzy
 msgid "Shortcuts"
 msgstr "단축키(_S)"
@@ -1842,51 +1841,51 @@ msgstr "감소"
 msgid "No audio application available"
 msgstr "사용 가능한 오디오 응용프로그램 없음"
 
-#: src/contents/ui/PageStreamsEffects.qml:275
+#: src/contents/ui/PageStreamsEffects.qml:309
 #, fuzzy
 msgid "Add effect"
 msgstr "효과 추가하기"
 
-#: src/contents/ui/PageStreamsEffects.qml:322
-#: src/contents/ui/PageStreamsEffects.qml:575
+#: src/contents/ui/PageStreamsEffects.qml:356
+#: src/contents/ui/PageStreamsEffects.qml:609
 msgid "Players"
 msgstr "재생기"
 
-#: src/contents/ui/PageStreamsEffects.qml:339
-#: src/contents/ui/PageStreamsEffects.qml:575
+#: src/contents/ui/PageStreamsEffects.qml:373
+#: src/contents/ui/PageStreamsEffects.qml:609
 msgid "Recorders"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:352
+#: src/contents/ui/PageStreamsEffects.qml:386
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:354
+#: src/contents/ui/PageStreamsEffects.qml:388
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:354
+#: src/contents/ui/PageStreamsEffects.qml:388
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:378
+#: src/contents/ui/PageStreamsEffects.qml:412
 msgid "No Effects"
 msgstr "효과 없음"
 
-#: src/contents/ui/PageStreamsEffects.qml:379
+#: src/contents/ui/PageStreamsEffects.qml:413
 msgid "Audio stream not modified"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:585
+#: src/contents/ui/PageStreamsEffects.qml:619
 msgid "Effects"
 msgstr "효과음"
 
-#: src/contents/ui/PageStreamsEffects.qml:602
+#: src/contents/ui/PageStreamsEffects.qml:636
 #, fuzzy
 msgid "Input monitoring"
 msgstr "이 응용프로그램 활성화/비활성화"
 
-#: src/contents/ui/PageStreamsEffects.qml:615
+#: src/contents/ui/PageStreamsEffects.qml:649
 #, fuzzy
 msgid "Excluded apps"
 msgstr "제외된 응용프로그램에 추가하기"
@@ -2007,56 +2006,65 @@ msgstr "백색 소음"
 msgid "Pink noise"
 msgstr "백색 소음"
 
-#: src/contents/ui/Pitch.qml:50
+#: src/contents/ui/Pitch.qml:56
 #, fuzzy
 msgid "Sequence length"
 msgstr "시퀀스 길이"
 
-#: src/contents/ui/Pitch.qml:66
+#: src/contents/ui/Pitch.qml:73
 #, fuzzy
 msgid "Seek window"
 msgstr "탐색 창"
 
-#: src/contents/ui/Pitch.qml:82
+#: src/contents/ui/Pitch.qml:91
 #, fuzzy
 msgid "Overlap length"
 msgstr "오버랩 길이"
 
-#: src/contents/ui/Pitch.qml:103 src/tags_plugin_name.cpp:48
+#: src/contents/ui/Pitch.qml:157 src/tags_plugin_name.cpp:48
 msgid "Pitch"
 msgstr "피치"
 
-#: src/contents/ui/Pitch.qml:119
+#: src/contents/ui/Pitch.qml:173
 msgid "Octaves"
 msgstr ""
 
-#: src/contents/ui/Pitch.qml:135
+#: src/contents/ui/Pitch.qml:189
 #, fuzzy
 msgid "Cents"
 msgstr "클라이언트"
 
-#: src/contents/ui/Pitch.qml:151
+#: src/contents/ui/Pitch.qml:205
 msgid "Semitones"
 msgstr "세미톤"
 
-#: src/contents/ui/Pitch.qml:167
+#: src/contents/ui/Pitch.qml:221
 #, fuzzy
 msgid "Tempo difference"
 msgstr "템포 차이"
 
-#: src/contents/ui/Pitch.qml:184
+#: src/contents/ui/Pitch.qml:238
 #, fuzzy
 msgid "Rate difference"
 msgstr "속도 차이"
 
-#: src/contents/ui/Pitch.qml:235
+#: src/contents/ui/Pitch.qml:289
 #, fuzzy
 msgid "Quick seek"
 msgstr "빠른 탐색"
 
-#: src/contents/ui/Pitch.qml:245
+#: src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
 msgstr "앤티 앨리어싱"
+
+#: src/contents/ui/PluginNotAvailable.qml:11
+#, fuzzy
+msgid "Not available"
+msgstr "{} 사용 불가"
+
+#: src/contents/ui/PluginNotAvailable.qml:12
+msgid "This plugin requires: %1"
+msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:36
 #, fuzzy
@@ -2680,47 +2688,47 @@ msgstr "Impulse 파일을 불러오지 못했습니다"
 msgid "Import model"
 msgstr "Impulse 가져오기"
 
-#: src/contents/ui/ShortcutsSheet.qml:34
+#: src/contents/ui/ShortcutsSheet.qml:35
 msgid "Show help"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:47
+#: src/contents/ui/ShortcutsSheet.qml:48
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:75 src/contents/ui/ShortcutsSheet.qml:294
+#: src/contents/ui/ShortcutsSheet.qml:76 src/contents/ui/ShortcutsSheet.qml:299
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "전역 Bypass"
 
-#: src/contents/ui/ShortcutsSheet.qml:103
+#: src/contents/ui/ShortcutsSheet.qml:104
 msgid "Close the window"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:131
+#: src/contents/ui/ShortcutsSheet.qml:132
 #, fuzzy
 msgid "Terminate Easy Effects service"
 msgstr "Easy Effects 종료"
 
-#: src/contents/ui/ShortcutsSheet.qml:171
+#: src/contents/ui/ShortcutsSheet.qml:172
 msgid "Toggle process all inputs"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:211
+#: src/contents/ui/ShortcutsSheet.qml:212
 msgid "Toggle process all outputs"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:224
-#: src/contents/ui/ShortcutsSheet.qml:237
+#: src/contents/ui/ShortcutsSheet.qml:225
+#: src/contents/ui/ShortcutsSheet.qml:238
 msgid "Can be used on numeric controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:248
+#: src/contents/ui/ShortcutsSheet.qml:253
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "단축키(_S)"
 
-#: src/contents/ui/ShortcutsSheet.qml:334
+#: src/contents/ui/ShortcutsSheet.qml:339
 msgid "Toggle microphone monitoring"
 msgstr ""
 
@@ -3385,10 +3393,6 @@ msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
 #~ msgstr ""
 #~ "선택한 모델을 불러오지 못했습니다. 형식이 지원되지 않을 수 있습니다. 표준 "
 #~ "모델로 돌아갔습니다."
-
-#, c++-format
-#~ msgid "{} Not Available"
-#~ msgstr "{} 사용 불가"
 
 #, fuzzy, c++-format
 #~ msgid ""

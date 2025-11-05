@@ -63,9 +63,9 @@ Spectrum::Spectrum(const std::string& tag, pw::Manager* pipe_manager, PipelineTy
 
   lv2_wrapper = std::make_unique<lv2::Lv2Wrapper>(lv2_plugin_uri);
 
-  package_installed = lv2_wrapper->found_plugin;
+  packageInstalled = lv2_wrapper->found_plugin;
 
-  if (!package_installed) {
+  if (!packageInstalled) {
     util::debug(
         std::format("{}{} is not installed, spectrum will not have A/V sync compensation", log_tag, lv2_plugin_uri));
   }

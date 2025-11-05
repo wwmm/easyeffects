@@ -52,9 +52,9 @@ DeepFilterNet::DeepFilterNet(const std::string& tag,
           tags::plugin_name::BaseName::deepfilternet + "#" + instance_id)) {
   ladspa_wrapper = std::make_unique<ladspa::LadspaWrapper>("libdeep_filter_ladspa.so", "deep_filter_stereo");
 
-  package_installed = ladspa_wrapper->found_plugin();
+  packageInstalled = ladspa_wrapper->found_plugin();
 
-  if (!package_installed) {
+  if (!packageInstalled) {
     util::debug(std::format("{}libdeep_filter_ladspa is not installed", log_tag));
   }
 
