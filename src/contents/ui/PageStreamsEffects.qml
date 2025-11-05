@@ -182,7 +182,8 @@ Kirigami.Page {
 
                 if (pluginBackend.packageInstalled === false) {
                     pluginsStack.push("qrc:/ui/PluginNotAvailable.qml", {
-                        packageName: packageMap[baseName]
+                        packageName: packageMap[baseName],
+                        translatedName: TagsPluginName.PluginsNameModel.translate(baseName)
                     });
 
                     return;
