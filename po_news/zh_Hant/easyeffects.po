@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-08-30 00:58+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"PO-Revision-Date: 2025-11-05 12:51+0000\n"
+"Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/changelog/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.13.1-dev\n"
+"X-Generator: Weblate 5.14.1-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -25,7 +25,7 @@ msgstr "Easy Effects"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:5
 msgid "Audio Effects for PipeWire Applications"
-msgstr "PipeWire 音效程式"
+msgstr "用於 PipeWire 應用程式的音效處理"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:9
 msgid ""
@@ -73,7 +73,6 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:16
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:18
-#, fuzzy
 msgid "Wellington Wallace"
 msgstr "Wellington Wallace"
 
@@ -126,9 +125,8 @@ msgstr "Convolver (卷積器) 的音訊控制選項"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:537
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:547
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:560
-#, fuzzy
 msgid "Features:"
-msgstr "主要功能："
+msgstr "功能："
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:60
 msgid ""
@@ -273,9 +271,8 @@ msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
-#, fuzzy
 msgid "Updated translations."
-msgstr "新的翻譯"
+msgstr "已經更新翻譯。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
 msgid ""
@@ -350,7 +347,7 @@ msgstr "修復降噪擴充對人聲感測門檻被錯誤地初始化。"
 msgid ""
 "Added a new control to the noise reduction plugin that allows the voice "
 "detection to be disabled."
-msgstr "降噪擴充現在可以關閉人聲偵測"
+msgstr "降噪插件增加新的控制功能允許停用語音偵測。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:169
 msgid ""
@@ -444,10 +441,9 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:212
-#, fuzzy
 msgid ""
 "Improved compatibility with recent PipeWire versions. More information at"
-msgstr "增強與最新 LSP 程式的相容性。"
+msgstr "改進了與目前 PipeWire 版本的相容性。更多資訊見於"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:214
 msgid ""
@@ -1061,14 +1057,12 @@ msgid ""
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:499
-#, fuzzy
 msgid "Updated Chinese translation."
-msgstr "新的翻譯"
+msgstr "已經更新中文翻譯。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:500
-#, fuzzy
 msgid "Updated Italian translation."
-msgstr "新的翻譯"
+msgstr "已經更新義大利文翻譯。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:501
 msgid "Added support for the compressor parameter Boost Amount"
@@ -1097,11 +1091,10 @@ msgid "The echo canceller sampling rate is now properly set."
 msgstr ""
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:507
-#, fuzzy
 msgid ""
 "The threshold parameter from the deesser plugin is now saved to the preset "
 "file."
-msgstr "DeepFilterNet 現在可以被加入 Preset 中"
+msgstr "來自 deesser 插件中的閾值參數現在已經儲存至到預設檔案中。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:508
 msgid ""
