@@ -8,7 +8,7 @@ Kirigami.ScrollablePage {
     Kirigami.PlaceholderMessage {
 
         anchors.centerIn: parent
-        text: i18n("Not available")// qmllint disable
+        text: i18n("Effect Not Available")// qmllint disable
         explanation: i18n("This plugin requires: %1", control.packageName)// qmllint disable
         icon.name: "applications-system-symbolic"
     }
