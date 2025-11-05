@@ -8,8 +8,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qt/qtgraphs.git",
-                    "tag": "v6.9.0",
-                    "commit": "ba29aa033b1878429dd1f12d783c57e516f6f32a",
+                    "tag": "v6.10.0",
+                    "commit": "4e18609678b777f7e7ce47c17764e46c20bfb608",
                     "//": "We cannot use x-checker-data here as this version has to match the qt/kde runtime"
                 }
             ],
@@ -45,7 +45,8 @@
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE=Release",
                 "-DBUILD_STATIC_LIBS=OFF",
-                "-DCMAKE_INSTALL_LIBDIR=lib"
+                "-DCMAKE_INSTALL_LIBDIR=lib",
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
             ],
             "sources": [
                 {
@@ -365,12 +366,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.freedesktop.org/pulseaudio/webrtc-audio-processing.git",
-                    "tag": "v2.1",
-                    "commit": "846fe90a289f58b7c9303a635142aa2c7caa93e5",
-                    "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^v([\\d.]+)$"
-                    }
+                    "commit": "bc838790eeb6066d30f019c2a3516bd2b824a5c8",
+                    "//": "use latest commit for gcc 15 support"
                 }
             ]
         }

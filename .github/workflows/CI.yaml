@@ -49,7 +49,7 @@ jobs:
       FLATPAK_BUILD_PATH: flatpak_app/files/share
     needs: prepare
     container:
-      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.9
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.10
       options: --privileged
     strategy:
       matrix:
@@ -71,7 +71,7 @@ jobs:
         jq '.modules[0]."config-opts" += ["-Dwerror=true"]' util/flatpak/com.github.wwmm.easyeffects.Devel.json > "$updated_manifest"
         mv "$updated_manifest" util/flatpak/com.github.wwmm.easyeffects.Devel.json
 
-    - uses: flatpak/flatpak-github-actions/flatpak-builder@92ae9851ad316786193b1fd3f40c4b51eb5cb101
+    - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.6
       with:
         bundle: easyeffects-flatpak-${{ needs.prepare.outputs.github_commit_desc }}.flatpak
         manifest-path: util/flatpak/com.github.wwmm.easyeffects.Devel.json
