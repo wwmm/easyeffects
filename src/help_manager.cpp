@@ -18,6 +18,7 @@
  */
 
 #include "help_manager.hpp"
+#include <qcontainerfwd.h>
 #include <qlogging.h>
 #include <qobject.h>
 #include <qqml.h>
@@ -25,7 +26,9 @@
 #include <QDesktopServices>
 #include <QDir>
 #include <QFile>
+#include <QProcess>
 #include <QStandardPaths>
+#include <format>
 #include "config.h"
 #include "util.hpp"
 
@@ -34,21 +37,18 @@ HelpManager::HelpManager(QObject* parent) : QObject(parent) {
   qmlRegisterSingletonInstance<HelpManager>("ee.help", VERSION_MAJOR, VERSION_MINOR, "Manager", this);
 }
 
-QString HelpManager::copyResourceFolder(const QString& resourcePath, const QString& tempFolderName) {
-  // According to chatgpt writing to a standard temporary location should make
-  // the approach work on Flatpak too. This remains to be confirmed...
+QString HelpManager::copyResourceFolder(const QString& resourcePath, const QString& dataFolderName) {
+  QString dataPath =
+      QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + QDir::separator() + dataFolderName;
 
-  QString tempPath =
-      QStandardPaths::writableLocation(QStandardPaths::TempLocation) + QDir::separator() + tempFolderName;
-
-  if (!QDir().mkpath(tempPath)) {
-    util::warning(std::format("Failed to create temp folder: {}", tempPath.toStdString()));
+  if (!QDir().mkpath(dataPath)) {
+    util::warning(std::format("Failed to create temp folder: {}", dataPath.toStdString()));
   }
 
   QDir resourceDir(resourcePath);
   for (const QString& fileName : resourceDir.entryList(QDir::Files)) {
     QString src = resourcePath + "/" + fileName;
-    QString dst = tempPath + "/" + fileName;
+    QString dst = dataPath + "/" + fileName;
 
     QFile::remove(dst);  // remove if exists
 
@@ -57,13 +57,13 @@ QString HelpManager::copyResourceFolder(const QString& resourcePath, const QStri
     }
   }
 
-  return tempPath;
+  return dataPath;
 }
 
 void HelpManager::openManual() {
-  const auto tempPath = copyResourceFolder(":/help", "easyeffects_manual");
+  const auto dataPath = copyResourceFolder(":/help", "easyeffects_manual");
 
-  QString indexPath = tempPath + "/index.html";
+  QString indexPath = dataPath + "/index.html";
 
   if (!QFile::exists(indexPath)) {
     util::warning(std::format("Index file missing: {}", indexPath.toStdString()));
@@ -73,5 +73,17 @@ void HelpManager::openManual() {
 
   QUrl url = QUrl::fromLocalFile(indexPath);
 
-  QDesktopServices::openUrl(url);
+  if (QDesktopServices::openUrl(url)) {
+    return;
+  }
+
+  util::warning(" We failed to launch a browser to open the manual index.html file. We will try xdg-open as fallback.");
+
+  QStringList arguments;
+
+  arguments << indexPath;
+
+  if (!QProcess::startDetached("xdg-open", arguments)) {
+    util::warning("We failed to launch xdg-open. The manual can be opened.");
+  }
 }

@@ -31,5 +31,5 @@ class HelpManager : public QObject {
   static Q_INVOKABLE void openManual();
 
  private:
-  static QString copyResourceFolder(const QString& resourcePath, const QString& tempFolderName);
+  static QString copyResourceFolder(const QString& resourcePath, const QString& dataFolderName);
 };
