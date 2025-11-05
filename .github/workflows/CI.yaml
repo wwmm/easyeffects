@@ -49,7 +49,7 @@ jobs:
       FLATPAK_BUILD_PATH: flatpak_app/files/share
     needs: prepare
     container:
-      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.9
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.10
       options: --privileged
     strategy:
       matrix:
