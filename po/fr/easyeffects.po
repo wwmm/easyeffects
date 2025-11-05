@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-04 21:41-0300\n"
-"PO-Revision-Date: 2025-11-03 09:51+0000\n"
+"PO-Revision-Date: 2025-11-05 21:32+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.14.1-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -292,9 +292,8 @@ msgid "Link"
 msgstr "Lien"
 
 #: src/contents/ui/BlocklistSheet.qml:13
-#, fuzzy
 msgid "Excluded Applications"
-msgstr "Liste des Applications Exclues"
+msgstr "Applications Exclues"
 
 #: src/contents/ui/BlocklistSheet.qml:29
 msgid "Application node name"
@@ -1929,13 +1928,12 @@ msgid "Anti-aliasing"
 msgstr "Anti-crénelage"
 
 #: src/contents/ui/PluginNotAvailable.qml:11
-#, fuzzy
 msgid "Not available"
-msgstr "{} Indisponible"
+msgstr "Indisponible"
 
 #: src/contents/ui/PluginNotAvailable.qml:12
 msgid "This plugin requires: %1"
-msgstr ""
+msgstr "Ce greffon nécessite : %1"
 
 #: src/contents/ui/PreferencesSheet.qml:36
 msgid "Enable service mode"
