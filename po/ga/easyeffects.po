@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-04 21:41-0300\n"
-"PO-Revision-Date: 2025-11-03 22:51+0000\n"
+"PO-Revision-Date: 2025-11-05 12:51+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -293,9 +293,8 @@ msgid "Link"
 msgstr "Nasc"
 
 #: src/contents/ui/BlocklistSheet.qml:13
-#, fuzzy
 msgid "Excluded Applications"
-msgstr "Liosta Iarratas Eisiata"
+msgstr "Iarratais Eisiata"
 
 #: src/contents/ui/BlocklistSheet.qml:29
 msgid "Application node name"
@@ -1927,13 +1926,12 @@ msgid "Anti-aliasing"
 msgstr "Frithailiasáil"
 
 #: src/contents/ui/PluginNotAvailable.qml:11
-#, fuzzy
 msgid "Not available"
-msgstr "{} Níl sé ar fáil"
+msgstr "Níl sé ar fáil"
 
 #: src/contents/ui/PluginNotAvailable.qml:12
 msgid "This plugin requires: %1"
-msgstr ""
+msgstr "Éilíonn an breiseán seo: %1"
 
 #: src/contents/ui/PreferencesSheet.qml:36
 msgid "Enable service mode"
