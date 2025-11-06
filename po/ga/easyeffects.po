@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-05 21:54+0000\n"
-"PO-Revision-Date: 2025-11-05 12:51+0000\n"
+"PO-Revision-Date: 2025-11-06 21:51+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :"
 "(n>6 && n<11) ? 3 : 4;\n"
-"X-Generator: Weblate 5.14.1-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -1870,13 +1870,12 @@ msgid "Anti-aliasing"
 msgstr "Frithailiasáil"
 
 #: src/contents/ui/PluginNotAvailable.qml:14
-#, fuzzy
 msgid "Effect Not Available"
-msgstr "Níl sé ar fáil"
+msgstr "Éifeacht Gan Fáil"
 
 #: src/contents/ui/PluginNotAvailable.qml:15
 msgid "%1 cannot be used because %2 is not installed on the system."
-msgstr ""
+msgstr "Ní féidir %1 a úsáid mar níl %2 suiteáilte ar an gcóras."
 
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
