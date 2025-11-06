@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the easyeffects package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR. #907
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR. #1311
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-05 21:54+0000\n"
-"PO-Revision-Date: 2025-11-03 09:51+0000\n"
+"PO-Revision-Date: 2025-11-06 06:10+0300\n"
 "Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -641,42 +641,36 @@ msgstr "Попереднє змішування"
 #: src/contents/ui/Compressor.qml:563 src/contents/ui/Expander.qml:522
 #: src/contents/ui/Gate.qml:544 src/contents/ui/Limiter.qml:286
 #: src/contents/ui/LspPreMixSheet.qml:30
-#, fuzzy
 msgid "Input to sidechain"
 msgstr "Вхід до бічного ланцюга"
 
 #: src/contents/ui/Compressor.qml:579 src/contents/ui/Expander.qml:538
 #: src/contents/ui/Gate.qml:560 src/contents/ui/Limiter.qml:302
 #: src/contents/ui/LspPreMixSheet.qml:46
-#, fuzzy
 msgid "Input to link"
 msgstr "Вхід до посилання"
 
 #: src/contents/ui/Compressor.qml:595 src/contents/ui/Expander.qml:554
 #: src/contents/ui/Gate.qml:576 src/contents/ui/Limiter.qml:318
 #: src/contents/ui/LspPreMixSheet.qml:62
-#, fuzzy
 msgid "Sidechain to input"
 msgstr "Бічний ланцюг до входу"
 
 #: src/contents/ui/Compressor.qml:611 src/contents/ui/Expander.qml:570
 #: src/contents/ui/Gate.qml:592 src/contents/ui/Limiter.qml:334
 #: src/contents/ui/LspPreMixSheet.qml:78
-#, fuzzy
 msgid "Sidechain to link"
 msgstr "Бічний ланцюг до посилання"
 
 #: src/contents/ui/Compressor.qml:627 src/contents/ui/Expander.qml:586
 #: src/contents/ui/Gate.qml:608 src/contents/ui/Limiter.qml:350
 #: src/contents/ui/LspPreMixSheet.qml:94
-#, fuzzy
 msgid "Link to sidechain"
 msgstr "Посилання до бічного ланцюга"
 
 #: src/contents/ui/Compressor.qml:643 src/contents/ui/Expander.qml:602
 #: src/contents/ui/Gate.qml:624 src/contents/ui/Limiter.qml:366
 #: src/contents/ui/LspPreMixSheet.qml:110
-#, fuzzy
 msgid "Link to input"
 msgstr "Посилання до входу"
 
@@ -749,8 +743,7 @@ msgstr "Конвольвер працює в наскрізному режимі
 
 #: src/contents/ui/Convolver.qml:58
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr ""
-"Не вдалося завантажити імпульс %1. Конвольвер працює в наскрізному режимі."
+msgstr "Не вдалося завантажити імпульс %1. Конвольвер працює в наскрізному режимі."
 
 #: src/contents/ui/Convolver.qml:122
 msgid "First"
@@ -906,20 +899,19 @@ msgstr "Інтенсивність фільтра постобробки"
 
 #: src/contents/ui/Deesser.qml:46 src/tags_plugin_name.cpp:34
 msgid "Deesser"
-msgstr "Діссер"
+msgstr "Деесер (зменшення сибілянтів)"
 
 #: src/contents/ui/Deesser.qml:59 src/contents/ui/Deesser.qml:270
 msgid "Detection"
 msgstr "Виявлення"
 
 #: src/contents/ui/Deesser.qml:76
-#, fuzzy
 msgid "Wideband"
-msgstr "Широкий"
+msgstr "Широкосмуговий"
 
 #: src/contents/ui/Deesser.qml:76
 msgid "Split"
-msgstr "Розділити"
+msgstr "Роздільний"
 
 #: src/contents/ui/Deesser.qml:85 src/contents/ui/Gate.qml:124
 #: src/contents/ui/Gate.qml:185 src/contents/ui/Gate.qml:960
@@ -933,7 +925,7 @@ msgstr "Поріг"
 
 #: src/contents/ui/Deesser.qml:135
 msgid "Laxity"
-msgstr "В’ялість"
+msgstr "М'якість"
 
 #: src/contents/ui/Deesser.qml:154 src/contents/ui/Filter.qml:105
 #: src/contents/ui/Reverb.qml:116 src/tags_plugin_name.cpp:40
@@ -941,36 +933,32 @@ msgid "Filter"
 msgstr "Фільтр"
 
 #: src/contents/ui/Deesser.qml:167
-#, fuzzy
 msgid "F1 split"
-msgstr "F1 Розділити"
+msgstr "Частота розділення"
 
 #: src/contents/ui/Deesser.qml:184
 msgid "F2 peak"
-msgstr "Пік F2"
+msgstr "Центральна частота"
 
 #: src/contents/ui/Deesser.qml:201
 msgid "F1 gain"
-msgstr "Підсилення F1"
+msgstr "Підсилення вищого діапазону"
 
 #: src/contents/ui/Deesser.qml:218
-#, fuzzy
 msgid "F2 level"
-msgstr "Рівень F2"
+msgstr "Рівень центральної частоти"
 
 #: src/contents/ui/Deesser.qml:236
-#, fuzzy
 msgid "F2 peak Q"
-msgstr "F2 Пік Q"
+msgstr "Ширина смуги"
 
 #: src/contents/ui/Deesser.qml:259 src/contents/ui/EchoCanceller.qml:100
 msgid "Level"
 msgstr "Рівень"
 
 #: src/contents/ui/Deesser.qml:281
-#, fuzzy
 msgid "Gain reduction"
-msgstr "Зменшення посилення"
+msgstr "Зменшення"
 
 #: src/contents/ui/Delay.qml:61 src/contents/ui/Delay.qml:219
 msgid "Distance"
@@ -996,14 +984,12 @@ msgid "Temperature"
 msgstr "Температура"
 
 #: src/contents/ui/Delay.qml:383
-#, fuzzy
 msgid "Invert left"
-msgstr "Інвертувати ліворуч"
+msgstr "Інвертувати лівий канал"
 
 #: src/contents/ui/Delay.qml:393
-#, fuzzy
 msgid "Invert right"
-msgstr "Інвертувати праворуч"
+msgstr "Інвертувати правий канал"
 
 #: src/contents/ui/DelegateClientsList.qml:36
 #: src/contents/ui/DelegateModulesList.qml:36
@@ -1018,7 +1004,7 @@ msgstr "Назва"
 
 #: src/contents/ui/DelegateClientsList.qml:64
 msgid "Api"
-msgstr "Api"
+msgstr "Прикладний програмний інтерфейс"
 
 #: src/contents/ui/DelegateClientsList.qml:78
 msgid "Access"
@@ -1030,14 +1016,12 @@ msgid "Description"
 msgstr "Опис"
 
 #: src/contents/ui/DelegatePluginsList.qml:73
-#, fuzzy
 msgid "Toggle this effect"
-msgstr "Увімкнути цей ефект"
+msgstr "Увімкнути/вимкнути цей ефект"
 
 #: src/contents/ui/DelegatePluginsList.qml:87
-#, fuzzy
 msgid "Remove this effect"
-msgstr "Видаліть цей ефект"
+msgstr "Видалити цей ефект"
 
 #: src/contents/ui/DelegateStreamsList.qml:77
 msgid "channels"
@@ -1055,23 +1039,20 @@ msgid "Exclude"
 msgstr "Виключити"
 
 #: src/contents/ui/DelegateStreamsList.qml:111
-#, fuzzy
 msgid "Add %1 to excluded applications"
-msgstr "Додати до виключених застосунків"
+msgstr "Додати %1 до виключених застосунків"
 
 #: src/contents/ui/EchoCanceller.qml:43 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
 msgstr "Придушення відлуння"
 
 #: src/contents/ui/EchoCanceller.qml:60
-#, fuzzy
 msgid "Mobile mode"
 msgstr "Мобільний режим"
 
 #: src/contents/ui/EchoCanceller.qml:69
-#, fuzzy
 msgid "Enforce high-pass"
-msgstr "Застосувати високі частоти"
+msgstr "Застосовувати ФВЧ"
 
 #: src/contents/ui/EchoCanceller.qml:83
 msgid "Noise Suppression"
@@ -1090,22 +1071,18 @@ msgid "High"
 msgstr "Високий"
 
 #: src/contents/ui/EchoCanceller.qml:104
-#, fuzzy
 msgid "Very high"
 msgstr "Дуже високий"
 
 #: src/contents/ui/EchoCanceller.qml:116
-#, fuzzy
 msgid "High-Pass Filter"
 msgstr "Фільтр високих частот"
 
 #: src/contents/ui/EchoCanceller.qml:133
-#, fuzzy
 msgid "Full band"
 msgstr "Повний діапазон"
 
 #: src/contents/ui/EchoCanceller.qml:170 src/contents/ui/Speex.qml:60
-#, fuzzy
 msgid "Automatic gain control"
 msgstr "Автоматичне регулювання підсилення"
 
@@ -1115,7 +1092,7 @@ msgstr "Контроль рівня звуку"
 
 #: src/contents/ui/EeInputOutputGain.qml:22
 msgid "Input and output gain controls with level meters"
-msgstr "Регулятори підсилення на вході та виході з індикаторами рівня"
+msgstr "Регулятори підсилення входу та виходу з індикаторами рівня"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
 #: src/contents/ui/main.qml:470
@@ -1123,50 +1100,42 @@ msgid "Input"
 msgstr "Вхід"
 
 #: src/contents/ui/Equalizer.qml:51 src/contents/ui/Equalizer.qml:81
-#, fuzzy
 msgid "APO preset"
-msgstr "Попередньо налаштований APO"
+msgstr "Попередні налаштування APO"
 
 #: src/contents/ui/Equalizer.qml:54
-#, fuzzy
 msgid "Imported the Equalizer APO preset file."
-msgstr "Імпортовано файл пресетів еквалайзера APO."
+msgstr "Імпортовано файл попереднього налаштування APO."
 
 #: src/contents/ui/Equalizer.qml:56
-#, fuzzy
 msgid "Failed to import the Equalizer APO preset file."
-msgstr "Не вдалося імпортувати файл пресетів еквалайзера APO."
+msgstr "Не вдалося імпортувати файл попереднього налаштування APO."
 
 #: src/contents/ui/Equalizer.qml:66
-#, fuzzy
 msgid "GraphicEQ preset"
-msgstr "Попередні налаштування GraphicEQ"
+msgstr "Попередні налаштування графічного еквалайзера"
 
 #: src/contents/ui/Equalizer.qml:69
-#, fuzzy
 msgid "Imported the GraphicEQ preset file."
-msgstr "Імпортовано файл Пресетів GraphicEQ."
+msgstr "Імпортовано файл попереднього налаштування графічного еквалайзера."
 
 #: src/contents/ui/Equalizer.qml:71
-#, fuzzy
 msgid "Failed to import the GraphicEQ preset file."
-msgstr "Не вдалося імпортувати файл пресетів GraphicEQ."
+msgstr "Не вдалося імпортувати файл попереднього налаштування графічного еквалайзера."
 
 #: src/contents/ui/Equalizer.qml:84
-#, fuzzy
 msgid "Exported the current Equalizer settings to an external APO preset file."
 msgstr ""
-"Експортовано поточні налаштування еквалайзера до зовнішнього файлу пресетів "
-"APO."
+"Експортовано поточні налаштування еквалайзера до зовнішнього файлу попереднього "
+"налаштування APO."
 
 #: src/contents/ui/Equalizer.qml:87
-#, fuzzy
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
 msgstr ""
 "Не вдалося експортувати поточні налаштування еквалайзера до зовнішнього "
-"файлу пресетів APO."
+"файлу попереднього налаштування APO."
 
 #: src/contents/ui/Equalizer.qml:117
 msgid "Bands"
@@ -1178,32 +1147,26 @@ msgid "Balance"
 msgstr "Баланс"
 
 #: src/contents/ui/Equalizer.qml:150
-#, fuzzy
 msgid "Pitch left"
-msgstr "Висота звуку лівого каналу"
+msgstr "Зміщення частоти лівого каналу"
 
 #: src/contents/ui/Equalizer.qml:167
-#, fuzzy
 msgid "Pitch right"
-msgstr "Висота звуку правого каналу"
+msgstr "Зміщення частоти правого каналу"
 
 #: src/contents/ui/Equalizer.qml:297
-#, fuzzy
 msgid "Split channels"
 msgstr "Розділити канали"
 
 #: src/contents/ui/Equalizer.qml:307
-#, fuzzy
 msgid "Flat response"
-msgstr "Скинути підсилення"
+msgstr "Плоска характеристика"
 
 #: src/contents/ui/Equalizer.qml:314
-#, fuzzy
 msgid "Calculate frequencies"
 msgstr "Розрахувати частоти"
 
 #: src/contents/ui/Equalizer.qml:321
-#, fuzzy
 msgid "Sort bands"
 msgstr "Сортувати смуги"
 
@@ -1213,7 +1176,7 @@ msgstr "Імпорт APO"
 
 #: src/contents/ui/Equalizer.qml:335
 msgid "Import APO (GraphicEQ)"
-msgstr "Імпорт APO (GraphicEQ)"
+msgstr "Імпорт APO (графічний еквалайзер)"
 
 #: src/contents/ui/Equalizer.qml:342
 msgid "Export APO"
@@ -1224,51 +1187,51 @@ msgstr "Експорт APO"
 #: src/contents/ui/MultibandCompressor.qml:902
 #: src/contents/ui/MultibandGate.qml:605 src/contents/ui/MultibandGate.qml:875
 msgid "Band"
-msgstr "Гурт"
+msgstr "Діапазон"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Bell"
-msgstr "Дзвін"
+msgstr "Дзвоновий фільтр"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
 msgid "Hi-pass"
-msgstr "Високочастотний"
+msgstr "ФВЧ"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
 msgid "Hi-shelf"
-msgstr "Висока полиця"
+msgstr "Полицевий ФВЧ"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
 msgid "Lo-pass"
-msgstr "Низькочастотний пропуск"
+msgstr "ФНЧ"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
 msgid "Lo-shelf"
-msgstr "Низька полиця"
+msgstr "Полицевий ФНЧ"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Notch"
-msgstr "Виїмка"
+msgstr "Режекторний фільтр"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Resonance"
-msgstr "Резонанс"
+msgstr "Резонансний фільтр"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
 msgid "Allpass"
-msgstr "Олпасс"
+msgstr "Фазовий фільтр"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
 msgid "Bandpass"
-msgstr "Смуга пропускання"
+msgstr "Смуговий фільтр"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Ladder-pass"
-msgstr "Прохід по драбині"
+msgstr "Сходовий (пропуск)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37
 msgid "Ladder-rej"
-msgstr "Креветки-драбини"
+msgstr "Сходовий (відхилення)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:90
 msgid "Slope"
@@ -1284,11 +1247,11 @@ msgstr "Частота"
 #: src/contents/ui/Limiter.qml:473 src/contents/ui/MultibandCompressor.qml:322
 #: src/contents/ui/MultibandGate.qml:208
 msgid "Gain"
-msgstr "Посилення"
+msgstr "Підсилення"
 
 #: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:160
 msgid "Quality"
-msgstr "Добротність"
+msgstr "Якість"
 
 #: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:129
 msgid "Width"
@@ -1298,16 +1261,15 @@ msgstr "Ширина"
 #: src/contents/ui/MultibandCompressor.qml:74
 #: src/contents/ui/MultibandGate.qml:74
 msgid "Solo"
-msgstr "На самоті"
+msgstr "Ізолювати"
 
 #: src/contents/ui/Exciter.qml:144
-#, fuzzy
 msgid "Ceil active"
-msgstr "Активна стеля"
+msgstr "Обмеження"
 
 #: src/contents/ui/Exciter.qml:155
 msgid "Ceil"
-msgstr "Сейл"
+msgstr "Частота обмеження"
 
 #: src/contents/ui/Expander.qml:53 src/tags_plugin_name.cpp:39
 msgid "Expander"
@@ -1321,31 +1283,29 @@ msgstr "Внутрішній"
 
 #: src/contents/ui/Filter.qml:55
 msgid "Low-shelf"
-msgstr "Низька Полиця"
+msgstr "Полицевий ФНЧ"
 
 #: src/contents/ui/Filter.qml:55
 msgid "High-shelf"
-msgstr "Висока Полиця"
+msgstr "Полицевий ФВЧ"
 
 #: src/contents/ui/Filter.qml:55
 msgid "Band-pass"
-msgstr "Смуговий пропуск"
+msgstr "Смуговий фільтр"
 
 #: src/contents/ui/Filter.qml:55
 msgid "Ladder-rejection"
-msgstr "Відхилення сходів"
+msgstr "Сходовий (відхилення)"
 
 #: src/contents/ui/Filter.qml:55
 msgid "All-pass"
-msgstr "Повний прохід"
+msgstr "Фазовий фільтр"
 
 #: src/contents/ui/Filter.qml:64
-#, fuzzy
 msgid "Filter mode"
 msgstr "Режим фільтра"
 
 #: src/contents/ui/Filter.qml:77
-#, fuzzy
 msgid "Equalizer mode"
 msgstr "Режим еквалайзера"
 
@@ -2982,11 +2942,3 @@ msgstr "Еквалайзер, компресор та інші звукові е
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Звукові ефекти для застосунків PipeWire"
-
-#, fuzzy
-#~ msgid "Toggle Global Bypass"
-#~ msgstr "Увімкнути/вимкнути глобальний обхід"
-
-#, fuzzy
-#~ msgid "Toggle Microphone Monitoring"
-#~ msgstr "Увімкнути/вимкнути моніторинг мікрофона"
