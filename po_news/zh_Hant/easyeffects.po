@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-11-05 12:51+0000\n"
+"PO-Revision-Date: 2025-11-07 02:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/changelog/zh_Hant/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.14.1-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:4
 msgid "Easy Effects"
@@ -136,22 +136,27 @@ msgid ""
 "volunteers. You can search them on the repositories of your favorite "
 "distribution."
 msgstr ""
+"社群預設集已經導入。使用者可以安裝包含多重 Easy Effects 預設集的套件，以便在"
+"應用程式中匯入和套用。這些套件包將由志願者來維護發佈。您可以在所喜愛的發行版"
+"的軟體庫源中搜尋它們。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:61
 msgid ""
 "Added the ability of collapsing the sidebar to hide the effects list and "
 "expand the area of the effects user interface."
-msgstr ""
+msgstr "添加側邊列縮合功能，以隱藏音效列表，並擴展音效使用者介面的區域。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:62
 msgid ""
 "EasyEffects won't touch streams that define PW_KEY_TARGET_OBJECT to an "
 "output device that is different from the one EasyEffects is using."
 msgstr ""
+"EasyEffects 不會接觸那些串流，其定義 PW_KEY_TARGET_OBJECT 至某個輸出裝置，且"
+"與來自 EasyEffects 所使用的相異。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:63
 msgid "Equalizer APO import feature can now apply Band-Pass filters."
-msgstr ""
+msgstr "等化器 APO 匯入功能現在可以套用帶通濾波器。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:64
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:79
@@ -193,23 +198,33 @@ msgid "Bug fixes:"
 msgstr "修復錯誤："
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
+#, fuzzy
 msgid ""
 "A change in GTK 4.14.1 prevented to apply the values inserted into the text "
 "field of our SpinButton widgets. This issue is now resolved."
 msgstr ""
+"A change in GTK 4.14.1 prevented to apply the values inserted into the text "
+"field of our SpinButton widgets. This issue is now resolved."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:66
+#, fuzzy
 msgid ""
 "The latest Maximizer plugin releases do not have the ceiling control "
 "anymore. So we removed it from our user interface (you can use the plugin "
 "input gain to retrieve the same functionality)."
 msgstr ""
+"The latest Maximizer plugin releases do not have the ceiling control "
+"anymore. So we removed it from our user interface "
+"(you can use the plugin input gain to retrieve the same functionality)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
+#, fuzzy
 msgid ""
 "Equalizer APO import feature does not crash anymore on Flatpak when invalid "
 "values are provided."
 msgstr ""
+"Equalizer APO import feature does not crash anymore on Flatpak when invalid "
+"values are provided."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:68
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:81
@@ -236,38 +251,57 @@ msgid "Other notes:"
 msgstr "其他更新："
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:69
+#, fuzzy
 msgid ""
 "In order for Community Presets to be correctly shipped, packagers are "
 "invited to read and follow the guidelines linked inside the README of "
 "EasyEffects master branch."
 msgstr ""
+"In order for Community Presets to be correctly shipped, packagers are "
+"invited to read and follow the guidelines linked inside the README of "
+"EasyEffects master branch."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:70
+#, fuzzy
 msgid ""
 "Presets with Convolver and/or Noise Reduction (RNNoise) effects created "
 "before 7.2.0 version are deprecated. Please reload the irs/model file inside "
 "the Convolver/RNNoise UI and resave the preset."
 msgstr ""
+"Presets with Convolver and/or Noise Reduction (RNNoise) effects created "
+"before 7.2.0 version are deprecated. Please reload the irs/model file inside "
+"the Convolver/RNNoise UI and resave the preset."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:78
+#, fuzzy
 msgid ""
 "Improved the pipeline management system. Non-limiter effects are placed "
 "before the limiter even if the last two plugins in the pipeline are a "
 "limiter followed by a level meter."
 msgstr ""
+"Improved the pipeline management system. Non-limiter effects are placed "
+"before the limiter even if the last two plugins in the pipeline are a "
+"limiter followed by a level meter."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:80
+#, fuzzy
 msgid ""
 "Fixed a regression that prevented the level meters to be updated under "
 "certain conditions."
 msgstr ""
+"Fixed a regression that prevented the level meters to be updated under "
+"certain conditions."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:89
+#, fuzzy
 msgid ""
 "We now set monitor.passthrough = true in our virtual devices. This will "
 "allow latency offset to be properly applied by video players when PipeWire "
 "&gt; 1.0.3 is released."
 msgstr ""
+"We now set monitor.passthrough = true in our virtual devices. This will "
+"allow latency offset to be properly applied by video players when PipeWire "
+"&gt; 1.0.3 is released."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:90
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:237
@@ -275,12 +309,17 @@ msgid "Updated translations."
 msgstr "已經更新翻譯。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:100
+#, fuzzy
 msgid ""
 "EasyEffects will try to avoid moving to its virtual sources streams for "
 "which the user has set a custom target.object that is different from the mic "
 "EE is recording from. THe stream has to be started when EE is already "
 "running for this logic to take effect."
 msgstr ""
+"EasyEffects will try to avoid moving to its virtual sources streams for "
+"which the user has set a custom target.object that is different from the mic "
+"EE is recording from. THe stream has to be started when EE is already "
+"running for this logic to take effect."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:101
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:115
@@ -293,31 +332,41 @@ msgstr "新的翻譯"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:102
 msgid "The equalizer can export basic APO preset files"
-msgstr ""
+msgstr "等化器可以匯出基本 APO 預設集檔案"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:103
+#, fuzzy
 msgid ""
 "Our players/recorders tab will show the audio client binary name in the "
 "cases were no app name is defined."
 msgstr ""
+"Our players/recorders tab will show the audio client binary name in the "
+"cases were no app name is defined."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:104
+#, fuzzy
 msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
 msgstr ""
+"EasyEffects version can be shown in the command line through the option "
+"--version"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
+#, fuzzy
 msgid ""
 "A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
 "in place until gtk developers fiz things on their side"
 msgstr ""
+"A workaround for a bug in gtk4 GtkLevelBar was implemented and will be kept "
+"in place until gtk developers fiz things on their side"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:117
 #, fuzzy
 msgid ""
 "Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
-msgstr "修復 7.1.2 的遞迴問題"
+msgstr ""
+"Fixed a regression introduced in 7.1.2 that could cause EasyEffects to crash"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:128
 msgid "The DeepFilterNet plugin can now be added to the preset file"
@@ -350,49 +399,70 @@ msgid ""
 msgstr "降噪插件增加新的控制功能允許停用語音偵測。"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:169
+#, fuzzy
 msgid ""
 "The Filter effect has been improved with new parameters since it has been "
 "ported from Calf Studio to Linux Studio Plugins."
 msgstr ""
+"The Filter effect has been improved with new parameters since it has been "
+"ported from Calf Studio to Linux Studio Plugins."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:170
+#, fuzzy
 msgid ""
 "Noise reduction by RNNoise has been improved with the addition of Release "
 "and VAD Threshold controls."
 msgstr ""
+"Noise reduction by RNNoise has been improved with the addition of Release "
+"and VAD Threshold controls."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:171
+#, fuzzy
 msgid ""
 "Noise reduction by RNNoise can now mix the original and denoised signals to "
 "avoid the output to sound too \"dry\"."
 msgstr ""
+"Noise reduction by RNNoise can now mix the original and denoised signals to "
+"avoid the output to sound too \"dry\"."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:174
+#, fuzzy
 msgid ""
 "This release is intended to work with versions of Linux Studio Plugins equal "
 "or greater than \"1.2.10\"."
 msgstr ""
+"This release is intended to work with versions of Linux Studio Plugins equal "
+"or greater than \"1.2.10\"."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:175
+#, fuzzy
 msgid "EasyEffects is now buildable also with libc++."
-msgstr ""
+msgstr "EasyEffects is now buildable also with libc++."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:183
+#, fuzzy
 msgid "The Expander from Linux Studio Plugins can be used in Easy Effects."
-msgstr ""
+msgstr "The Expander from Linux Studio Plugins can be used in Easy Effects."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:184
+#, fuzzy
 msgid ""
 "The Equalizer bands now have an additional gain control that allows for more "
 "efficient input of values that are hard to set in the scale. More details at "
 "issue 1383."
 msgstr ""
+"The Equalizer bands now have an additional gain control that allows for more "
+"efficient input of values that are hard to set in the scale. More details at "
+"issue 1383."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:185
+#, fuzzy
 msgid ""
 "Added the ability to select and load multiple files in the opening dialogs "
 "for presets, Convolver impulse responses and RNNoise models."
 msgstr ""
+"Added the ability to select and load multiple files in the opening dialogs "
+"for presets, Convolver impulse responses and RNNoise models."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:187
 msgid "Fixed the Solo button in the Equalizer band settings."
