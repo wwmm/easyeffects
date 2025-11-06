@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-05 21:54+0000\n"
-"PO-Revision-Date: 2025-11-05 12:51+0000\n"
+"PO-Revision-Date: 2025-11-06 04:28+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14.1-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 "Translator: Albano Battistella <albano_battistella@hotmail.com>\n"
 
 #: src/command_line_parser.cpp:43
@@ -1872,13 +1872,12 @@ msgid "Anti-aliasing"
 msgstr "Anti-aliasing"
 
 #: src/contents/ui/PluginNotAvailable.qml:14
-#, fuzzy
 msgid "Effect Not Available"
-msgstr "{} Non Disponibile"
+msgstr "Effetto Non Disponibile"
 
 #: src/contents/ui/PluginNotAvailable.qml:15
 msgid "%1 cannot be used because %2 is not installed on the system."
-msgstr ""
+msgstr "%1 non può essere utilizzato perché %2 non è installato nel sistema."
 
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24

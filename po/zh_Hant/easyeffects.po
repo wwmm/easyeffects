@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-05 21:54+0000\n"
-"PO-Revision-Date: 2025-11-05 12:51+0000\n"
+"PO-Revision-Date: 2025-11-06 21:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.14.1-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -90,7 +90,7 @@ msgstr "關於"
 
 #: src/contents/ui/AboutPage.qml:14
 msgid "Audio effects for PipeWire applications"
-msgstr "用於 PipeWire 應用程式提供音效處理"
+msgstr "用於 PipeWire 應用程式提供聲音效果處理"
 
 #: src/contents/ui/AboutPage.qml:27
 msgctxt "@info:credit"
@@ -126,22 +126,18 @@ msgid "Integrated"
 msgstr "融合的"
 
 #: src/contents/ui/Autogain.qml:66
-#, fuzzy
 msgid "Geometric mean (MSI)"
 msgstr "幾何平均值 (MSI)"
 
 #: src/contents/ui/Autogain.qml:66
-#, fuzzy
 msgid "Geometric mean (MS)"
 msgstr "幾何平均值 (MS)"
 
 #: src/contents/ui/Autogain.qml:66
-#, fuzzy
 msgid "Geometric mean (MI)"
 msgstr "幾何平均值 (MI)"
 
 #: src/contents/ui/Autogain.qml:66
-#, fuzzy
 msgid "Geometric mean (SI)"
 msgstr "幾何平均值 (SI)"
 
@@ -172,7 +168,6 @@ msgid "Range"
 msgstr "範圍"
 
 #: src/contents/ui/Autogain.qml:205
-#, fuzzy
 msgid "Output gain"
 msgstr "輸出增益 (Gain)"
 
@@ -226,9 +221,8 @@ msgid "2nd"
 msgstr "第二"
 
 #: src/contents/ui/BassEnhancer.qml:97 src/contents/ui/Exciter.qml:97
-#, fuzzy
 msgid "Amount"
-msgstr "金額"
+msgstr "數量"
 
 #: src/contents/ui/BassEnhancer.qml:113 src/contents/ui/BassEnhancer.qml:173
 #: src/contents/ui/Exciter.qml:113 src/contents/ui/Exciter.qml:173
@@ -241,7 +235,7 @@ msgstr "範圍"
 
 #: src/contents/ui/BassEnhancer.qml:144
 msgid "Floor active"
-msgstr "樓層啟用"
+msgstr "樓層作用"
 
 #: src/contents/ui/BassEnhancer.qml:155
 #, fuzzy
@@ -1732,7 +1726,7 @@ msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:413
 msgid "No Effects"
-msgstr ""
+msgstr "無音效"
 
 #: src/contents/ui/PageStreamsEffects.qml:414
 msgid "Audio stream not modified"
@@ -1740,7 +1734,7 @@ msgstr ""
 
 #: src/contents/ui/PageStreamsEffects.qml:620
 msgid "Effects"
-msgstr ""
+msgstr "音效"
 
 #: src/contents/ui/PageStreamsEffects.qml:637
 #, fuzzy
@@ -1773,10 +1767,13 @@ msgid "Device Management"
 msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:106
+#, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
+"It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
+"external applications (e.g. Gnome Settings and Plasma System Settings)"
 
 #: src/contents/ui/PipeWirePage.qml:113
 msgid "Use default input"
@@ -1933,7 +1930,7 @@ msgstr "立體聲模式"
 
 #: src/contents/ui/PreferencesSheet.qml:37
 msgid "Easy Effects is active in background when the window is closed."
-msgstr ""
+msgstr "Easy Effects 是在背景中作用，當視窗關閉時。"
 
 #: src/contents/ui/PreferencesSheet.qml:49
 msgid "Autostart on login"
@@ -1941,7 +1938,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:50
 msgid "Easy Effects is launched at user session startup."
-msgstr ""
+msgstr "Easy Effects 在使用者階段工作話啟動時啟動。"
 
 #: src/contents/ui/PreferencesSheet.qml:63
 msgid "Show the tray icon"
@@ -2132,12 +2129,10 @@ msgid "Enables support for XDG global shortcuts."
 msgstr "啟用對 XDG 整體快速鍵的支援。"
 
 #: src/contents/ui/PreferencesSheet.qml:449
-#, fuzzy
 msgid "Native window of effects"
-msgstr "效果的原生視窗"
+msgstr "音效的原生視窗"
 
 #: src/contents/ui/PreferencesSheet.qml:450
-#, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "允許音效的原生使用者介面可以顯示/隱藏。"
 
@@ -2679,16 +2674,15 @@ msgstr "離開(Q_)"
 
 #: src/contents/ui/main.qml:427
 msgid "Turn effects on/off"
-msgstr ""
+msgstr "將音效開啟/關閉"
 
 #: src/contents/ui/main.qml:479
 msgid "PipeWire"
 msgstr ""
 
 #: src/contents/ui/main.qml:535
-#, fuzzy
 msgid "About Easy Effects"
-msgstr "關於Easy Effects(A_)"
+msgstr "關於 Easy Effects"
 
 #: src/plugin_base.cpp:272
 msgid "(Mic)"
@@ -2826,7 +2820,7 @@ msgstr "Easy Effects"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:3
 msgid "Equalizer, Compressor and Other Audio Effects"
-msgstr "等化器、壓縮器、及其他音效"
+msgstr "等化器、壓縮器、及其他音效處理"
 
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
