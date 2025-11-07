@@ -213,11 +213,6 @@ if(ENABLE_SANATIZER)
     target_link_options(easyeffects PRIVATE "-fsanitize=address")
 endif(ENABLE_SANATIZER)
 
-if(ENABLE_MOLD)
-    MESSAGE(STATUS "Enabling mold")
-    target_compile_definitions(easyeffects PRIVATE ENABLE_MOLD=1)
-endif(ENABLE_MOLD)
-
 if(ENABLE_RNNOISE)
     MESSAGE(STATUS "Enabling rnnoise")
     target_compile_definitions(easyeffects PRIVATE ENABLE_RNNOISE=1)

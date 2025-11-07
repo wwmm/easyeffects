@@ -82,7 +82,8 @@
             "config-opts": [
                 "-DDEVEL=1",
                 "-Dbuildtype=debug",
-                "-DENABLE_MOLD=1"
+                "-DCMAKE_EXE_LINKER_FLAGS=\"-fuse-ld=mold\"",
+                "-DCMAKE_SHARED_LINKER_FLAGS=\"-fuse-ld=mold\""
             ],
             "run-tests": true,
             "sources": [
