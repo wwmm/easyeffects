@@ -214,8 +214,8 @@ msgid ""
 "input gain to retrieve the same functionality)."
 msgstr ""
 "The latest Maximizer plugin releases do not have the ceiling control "
-"anymore. So we removed it from our user interface "
-"(you can use the plugin input gain to retrieve the same functionality)."
+"anymore. So we removed it from our user interface (you can use the plugin "
+"input gain to retrieve the same functionality)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:67
 #, fuzzy
@@ -349,8 +349,8 @@ msgid ""
 "EasyEffects version can be shown in the command line through the option --"
 "version"
 msgstr ""
-"EasyEffects version can be shown in the command line through the option "
-"--version"
+"EasyEffects version can be shown in the command line through the option --"
+"version"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:106
 #, fuzzy

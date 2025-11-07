@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-07 01:03+0000\n"
+"POT-Creation-Date: 2025-11-07 21:52+0000\n"
 "PO-Revision-Date: 2025-10-22 05:02+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -81,11 +81,11 @@ msgstr "Habilitar mensagens de depuração."
 msgid "Must specify preset type: input/output."
 msgstr "Deve especificar o tipo predefinido: entrada/saída."
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:345
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:343
 msgid "Output Presets"
 msgstr "Predefinições de Saída"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:330
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:328
 msgid "Input Presets"
 msgstr "Predefinições de Entrada"
 
@@ -292,14 +292,14 @@ msgstr "Ouvir"
 #: src/contents/ui/MultibandCompressor.qml:986
 #: src/contents/ui/MultibandGate.qml:959 src/contents/ui/RNNoise.qml:323
 #: src/contents/ui/Reverb.qml:350 src/contents/ui/Speex.qml:185
-#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:528
+#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:526
 msgid "Reset"
 msgstr "Reiniciar"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:466
+#: src/contents/ui/main.qml:464
 msgid "Output"
 msgstr "Saída"
 
@@ -330,8 +330,8 @@ msgstr "Adicionar aos Aplicativos Excluídos"
 #: src/contents/ui/MenuAddPlugins.qml:33
 #: src/contents/ui/PageStreamsEffects.qml:80
 #: src/contents/ui/PresetsAutoloadingPage.qml:98
-#: src/contents/ui/PresetsCommunityPage.qml:64
-#: src/contents/ui/PresetsLocalPage.qml:169 src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/PresetsCommunityPage.qml:68
+#: src/contents/ui/PresetsLocalPage.qml:173 src/contents/ui/RNNoise.qml:212
 msgid "Empty List"
 msgstr "Lista Vazia"
 
@@ -896,7 +896,7 @@ msgid "Default"
 msgstr "Padrão"
 
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
-#: src/contents/ui/main.qml:444
+#: src/contents/ui/main.qml:442
 msgid "Presets"
 msgstr "Predefinições"
 
@@ -1167,7 +1167,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Controles de ganho de entrada e saída com medidores de nível"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:475
+#: src/contents/ui/main.qml:473
 msgid "Input"
 msgstr "Entrada"
 
@@ -1988,7 +1988,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:500
+#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:498
 msgid "Preferences"
 msgstr "Preferências"
 
@@ -2305,26 +2305,26 @@ msgstr "Remover as Predefinições que Foram Carregadas Automaticamente"
 msgid "Local preset"
 msgstr "Predefinição local"
 
-#: src/contents/ui/PresetsCommunityPage.qml:93
+#: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
 msgid "Copy to local presets"
 msgstr "Copiar para a lista local"
 
-#: src/contents/ui/PresetsCommunityPage.qml:98
+#: src/contents/ui/PresetsCommunityPage.qml:102
 #, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr ""
 "Importou a Predefinição da Comunidade %1 para a Lista de Predefinições "
 "Locais."
 
-#: src/contents/ui/PresetsCommunityPage.qml:100
+#: src/contents/ui/PresetsCommunityPage.qml:104
 #, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "Falha ao importar a predefinição da comunidade %1 para a lista de "
 "predefinições locais."
 
-#: src/contents/ui/PresetsCommunityPage.qml:120
+#: src/contents/ui/PresetsCommunityPage.qml:124
 msgid "Refresh"
 msgstr "Atualizar"
 
@@ -2382,33 +2382,33 @@ msgstr "Falha ao criar uma nova predefinição local: %1"
 msgid "Export presets"
 msgstr "Exportar Predefinições"
 
-#: src/contents/ui/PresetsLocalPage.qml:186
+#: src/contents/ui/PresetsLocalPage.qml:190
 #, fuzzy
 msgid "Save Preset"
 msgstr "Remover predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:187
+#: src/contents/ui/PresetsLocalPage.qml:191
 #, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
 msgstr "Salvar configurações nesta predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:195
 #, fuzzy
 msgid "Saved the current settings to %1 local preset."
 msgstr "Salvou as configurações atuais em %1 Predefinição local."
 
-#: src/contents/ui/PresetsLocalPage.qml:193
+#: src/contents/ui/PresetsLocalPage.qml:197
 #, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "Falha ao salvar as configurações atuais na predefinição local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:201
+#: src/contents/ui/PresetsLocalPage.qml:205
 msgid "Remove Preset"
 msgstr "Remover predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:202
+#: src/contents/ui/PresetsLocalPage.qml:206
 #, fuzzy
 msgid ""
 "Are you sure you want to remove the preset\n"
@@ -2416,71 +2416,71 @@ msgid ""
 "from the list?"
 msgstr "Tem certeza de que deseja remover esta predefinição da lista?"
 
-#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:210
 #, fuzzy
 msgid "Removed the %1 local preset."
 msgstr "Removida a predefinição local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:208
+#: src/contents/ui/PresetsLocalPage.qml:212
 #, fuzzy
 msgid "Failed to remove the %1 local preset."
 msgstr "Falha ao remover a predefinição local %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:216
+#: src/contents/ui/PresetsLocalPage.qml:220
 msgid "Rename Preset"
 msgstr "Renomear Predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:221
+#: src/contents/ui/PresetsLocalPage.qml:225
 msgid "Rename"
 msgstr "Renomear"
 
-#: src/contents/ui/PresetsLocalPage.qml:230
+#: src/contents/ui/PresetsLocalPage.qml:234
 #, fuzzy
 msgid "Renamed the %1 local preset to %2"
 msgstr "Renomeou a predefinição local %1 para %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:233
+#: src/contents/ui/PresetsLocalPage.qml:237
 #, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Falha ao renomear a predefinição local %1 para %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:241
+#: src/contents/ui/PresetsLocalPage.qml:245
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/contents/ui/PresetsLocalPage.qml:277
+#: src/contents/ui/PresetsLocalPage.qml:281
 #, fuzzy
 msgid "Save settings to this preset"
 msgstr "Salvar configurações nesta predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:285
+#: src/contents/ui/PresetsLocalPage.qml:289
 #, fuzzy
 msgid "Rename this preset"
 msgstr "Renomear esta Predefinição"
 
-#: src/contents/ui/PresetsLocalPage.qml:293
+#: src/contents/ui/PresetsLocalPage.qml:297
 #, fuzzy
 msgid "Delete this preset"
 msgstr "Excluir esta predefinição"
 
-#: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:77 src/contents/ui/PresetsSheet.qml:114
 msgid "Local"
 msgstr "Local"
 
-#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:85 src/contents/ui/PresetsSheet.qml:114
 msgid "Community"
 msgstr "Comunidade"
 
-#: src/contents/ui/PresetsSheet.qml:84
+#: src/contents/ui/PresetsSheet.qml:93
 msgid "Autoloading"
 msgstr "Carregamento automático"
 
-#: src/contents/ui/PresetsSheet.qml:103
+#: src/contents/ui/PresetsSheet.qml:112
 #, fuzzy
 msgid "No preset loaded"
 msgstr "Nenhuma Predefinição Foi Carregada"
 
-#: src/contents/ui/PresetsSheet.qml:119
+#: src/contents/ui/PresetsSheet.qml:128
 msgid "Fallback Preset"
 msgstr "Predefinição de fallback"
 
@@ -2646,59 +2646,59 @@ msgstr "Discoteca"
 msgid "Large occupied hall"
 msgstr "Grande Salão Ocupado"
 
-#: src/contents/ui/ShortcutsSheet.qml:35
+#: src/contents/ui/ShortcutsSheet.qml:47
 #, fuzzy
 msgid "Show help"
 msgstr "Mostrar ajuda"
 
-#: src/contents/ui/ShortcutsSheet.qml:48
+#: src/contents/ui/ShortcutsSheet.qml:60
 #, fuzzy
 msgid "Toggle fullscreen"
 msgstr "Alternar tela cheia"
 
-#: src/contents/ui/ShortcutsSheet.qml:76 src/contents/ui/ShortcutsSheet.qml:299
+#: src/contents/ui/ShortcutsSheet.qml:88 src/contents/ui/ShortcutsSheet.qml:311
 #: src/global_shortcuts.hpp:48
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "Alternar desvio global"
 
-#: src/contents/ui/ShortcutsSheet.qml:104
+#: src/contents/ui/ShortcutsSheet.qml:116
 #, fuzzy
 msgid "Close the window"
 msgstr "Fechar a Janela"
 
-#: src/contents/ui/ShortcutsSheet.qml:132
+#: src/contents/ui/ShortcutsSheet.qml:144
 #, fuzzy
 msgid "Terminate Easy Effects service"
 msgstr "Encerrar o serviço Easy Effects"
 
-#: src/contents/ui/ShortcutsSheet.qml:172
+#: src/contents/ui/ShortcutsSheet.qml:184
 #, fuzzy
 msgid "Toggle process all inputs"
 msgstr "Alternar processar todas as entradas"
 
-#: src/contents/ui/ShortcutsSheet.qml:212
+#: src/contents/ui/ShortcutsSheet.qml:224
 #, fuzzy
 msgid "Toggle process all outputs"
 msgstr "Alternar processar todas as saídas"
 
-#: src/contents/ui/ShortcutsSheet.qml:225
-#: src/contents/ui/ShortcutsSheet.qml:238
+#: src/contents/ui/ShortcutsSheet.qml:237
+#: src/contents/ui/ShortcutsSheet.qml:250
 #, fuzzy
 msgid "Can be used on numeric controls"
 msgstr "Pode ser usado em controles numéricos"
 
-#: src/contents/ui/ShortcutsSheet.qml:253
+#: src/contents/ui/ShortcutsSheet.qml:265
 msgid "Global Shortcuts"
 msgstr "Atalhos globais"
 
-#: src/contents/ui/ShortcutsSheet.qml:339 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:351 src/global_shortcuts.hpp:50
 #, fuzzy
 msgid "Toggle microphone monitoring"
 msgstr "Alternar monitoramento do microfone"
 
-#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:387
-#: src/contents/ui/main.qml:508
+#: src/contents/ui/ShortcutsSheet.qml:370 src/contents/ui/main.qml:385
+#: src/contents/ui/main.qml:506
 msgid "Shortcuts"
 msgstr "Atalhos"
 
@@ -2812,51 +2812,51 @@ msgstr "Base Estéreo"
 msgid "Stereo phase"
 msgstr "Fase Estéreo"
 
-#: src/contents/ui/main.qml:211
+#: src/contents/ui/main.qml:209
 msgid "Reset Settings?"
 msgstr "Redefinir configurações?"
 
-#: src/contents/ui/main.qml:212
+#: src/contents/ui/main.qml:210
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 "Tem certeza de que deseja redefinir todas as configurações do Easy Effects?"
 
-#: src/contents/ui/main.qml:281 src/contents/ui/main.qml:297
+#: src/contents/ui/main.qml:279 src/contents/ui/main.qml:295
 msgid "Preset Loaded"
 msgstr "Predefinição carregada"
 
-#: src/contents/ui/main.qml:308 src/contents/ui/main.qml:320
+#: src/contents/ui/main.qml:306 src/contents/ui/main.qml:318
 #, fuzzy
 msgid "Clear List"
 msgstr "Lista de Clientes"
 
-#: src/contents/ui/main.qml:309 src/contents/ui/main.qml:321
+#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:319
 #, fuzzy
 msgid "Are you sure you want to clear this list?"
 msgstr "Tem certeza de que deseja remover esta predefinição da lista?"
 
-#: src/contents/ui/main.qml:376
+#: src/contents/ui/main.qml:374
 msgid "Active"
 msgstr "Ativo"
 
-#: src/contents/ui/main.qml:396 src/contents/ui/main.qml:516
+#: src/contents/ui/main.qml:394 src/contents/ui/main.qml:514
 msgid "Manual"
 msgstr "Manual"
 
-#: src/contents/ui/main.qml:408 src/contents/ui/main.qml:548
+#: src/contents/ui/main.qml:406 src/contents/ui/main.qml:546
 msgid "Quit"
 msgstr "Desistir"
 
-#: src/contents/ui/main.qml:432
+#: src/contents/ui/main.qml:430
 #, fuzzy
 msgid "Turn effects on/off"
 msgstr "Ativar/desativar efeitos"
 
-#: src/contents/ui/main.qml:484
+#: src/contents/ui/main.qml:482
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:540
+#: src/contents/ui/main.qml:538
 msgid "About Easy Effects"
 msgstr "Sobre o Easy Effects"
 
@@ -2997,15 +2997,11 @@ msgstr "Processador de Fala"
 msgid "Stereo Tools"
 msgstr "Ferramentas Estéreo"
 
-#: com.github.wwmm.easyeffects.desktop.template.h:2
-msgid "Easy Effects"
-msgstr "Easy Effects"
-
-#: com.github.wwmm.easyeffects.desktop.template.h:3
+#: com.github.wwmm.easyeffects.desktop.in.template.h:1
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Equalizador, Compressor e Outros Efeitos de Áudio"
 
-#: com.github.wwmm.easyeffects.desktop.template.h:4
+#: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr ""
 "O ‘Easy Effects’ é um aplicativo desenvolvido em GTK gratuito e de código "
@@ -3013,6 +3009,9 @@ msgstr ""
 "serem aplicados nos fluxos de áudio de entrada e saída que utiliza o "
 "servidor de áudio PipeWire, possui as funções de equalizador, compressor e "
 "efeitos de áudio"
+
+#~ msgid "Easy Effects"
+#~ msgstr "Easy Effects"
 
 #~ msgid "Hi-pass"
 #~ msgstr "filtro passa-altas"

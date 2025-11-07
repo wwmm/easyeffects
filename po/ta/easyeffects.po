@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-07 01:03+0000\n"
+"POT-Creation-Date: 2025-11-07 21:52+0000\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -80,11 +80,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:345
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:343
 msgid "Output Presets"
 msgstr "வெளியீட்டு முன்னமைவுகள்"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:330
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:328
 msgid "Input Presets"
 msgstr "உள்ளீட்டு முன்னமைவுகள்"
 
@@ -292,14 +292,14 @@ msgstr "கேளுங்கள்"
 #: src/contents/ui/MultibandCompressor.qml:986
 #: src/contents/ui/MultibandGate.qml:959 src/contents/ui/RNNoise.qml:323
 #: src/contents/ui/Reverb.qml:350 src/contents/ui/Speex.qml:185
-#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:528
+#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:526
 msgid "Reset"
 msgstr "மீட்டமை"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:466
+#: src/contents/ui/main.qml:464
 msgid "Output"
 msgstr "வெளியீடு"
 
@@ -330,8 +330,8 @@ msgstr "விலக்கப்பட்ட பயன்பாடுகளி�
 #: src/contents/ui/MenuAddPlugins.qml:33
 #: src/contents/ui/PageStreamsEffects.qml:80
 #: src/contents/ui/PresetsAutoloadingPage.qml:98
-#: src/contents/ui/PresetsCommunityPage.qml:64
-#: src/contents/ui/PresetsLocalPage.qml:169 src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/PresetsCommunityPage.qml:68
+#: src/contents/ui/PresetsLocalPage.qml:173 src/contents/ui/RNNoise.qml:212
 msgid "Empty List"
 msgstr "வெற்று பட்டியல்"
 
@@ -904,7 +904,7 @@ msgid "Default"
 msgstr "இயல்புநிலை"
 
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
-#: src/contents/ui/main.qml:444
+#: src/contents/ui/main.qml:442
 msgid "Presets"
 msgstr "முன்னமைவுகள்"
 
@@ -1180,7 +1180,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:475
+#: src/contents/ui/main.qml:473
 msgid "Input"
 msgstr "உள்ளீடு"
 
@@ -2025,7 +2025,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:500
+#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:498
 #, fuzzy
 msgid "Preferences"
 msgstr "_ முனைகள்"
@@ -2327,22 +2327,22 @@ msgstr "ஆட்டோலோடிங் முன்னமைவை அகற�
 msgid "Local preset"
 msgstr "உள்ளக முன்னமைவுகள் பட்டியல்"
 
-#: src/contents/ui/PresetsCommunityPage.qml:93
+#: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
 msgid "Copy to local presets"
 msgstr "உள்ளக முன்னமைவுகள் பட்டியல்"
 
-#: src/contents/ui/PresetsCommunityPage.qml:98
+#: src/contents/ui/PresetsCommunityPage.qml:102
 #, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr "இந்த சமூக முன்னமைவை உள்ளக முன்னமைவு பட்டியலில் இறக்குமதி செய்யுங்கள்"
 
-#: src/contents/ui/PresetsCommunityPage.qml:100
+#: src/contents/ui/PresetsCommunityPage.qml:104
 #, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "சமூக முன்னமைவைத் தேடுங்கள்"
 
-#: src/contents/ui/PresetsCommunityPage.qml:120
+#: src/contents/ui/PresetsCommunityPage.qml:124
 msgid "Refresh"
 msgstr "புதுப்பிப்பு"
 
@@ -2401,108 +2401,108 @@ msgstr "சமூக முன்னமைவைத் தேடுங்கள�
 msgid "Export presets"
 msgstr "முன்னமைக்கப்பட்ட இறக்குமதி"
 
-#: src/contents/ui/PresetsLocalPage.qml:186
+#: src/contents/ui/PresetsLocalPage.qml:190
 #, fuzzy
 msgid "Save Preset"
 msgstr "புதிய முன்னமைவை உருவாக்கவும்"
 
-#: src/contents/ui/PresetsLocalPage.qml:187
+#: src/contents/ui/PresetsLocalPage.qml:191
 #, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
 msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பில் தற்போதைய அமைப்புகளை சேமிக்கவும்"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:195
 #, fuzzy
 msgid "Saved the current settings to %1 local preset."
 msgstr "தற்போதைய அமைப்புகளை நிராகரித்து இந்த முன்னமைவை ஏற்றவும்"
 
-#: src/contents/ui/PresetsLocalPage.qml:193
+#: src/contents/ui/PresetsLocalPage.qml:197
 #, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "தற்போதைய அமைப்புகளை நிராகரித்து இந்த முன்னமைவை ஏற்றவும்"
 
-#: src/contents/ui/PresetsLocalPage.qml:201
+#: src/contents/ui/PresetsLocalPage.qml:205
 #, fuzzy
 msgid "Remove Preset"
 msgstr "புதிய முன்னமைவை உருவாக்கவும்"
 
-#: src/contents/ui/PresetsLocalPage.qml:202
+#: src/contents/ui/PresetsLocalPage.qml:206
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
 "from the list?"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:210
 #, fuzzy
 msgid "Removed the %1 local preset."
 msgstr "இந்த ஆட்டோலோட் முன்னமைவை அகற்று"
 
-#: src/contents/ui/PresetsLocalPage.qml:208
+#: src/contents/ui/PresetsLocalPage.qml:212
 #, fuzzy
 msgid "Failed to remove the %1 local preset."
 msgstr "அப்போ முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
 
-#: src/contents/ui/PresetsLocalPage.qml:216
+#: src/contents/ui/PresetsLocalPage.qml:220
 #, fuzzy
 msgid "Rename Preset"
 msgstr "புதிய முன்னமைவை உருவாக்கவும்"
 
-#: src/contents/ui/PresetsLocalPage.qml:221
+#: src/contents/ui/PresetsLocalPage.qml:225
 msgid "Rename"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:230
+#: src/contents/ui/PresetsLocalPage.qml:234
 #, fuzzy
 msgid "Renamed the %1 local preset to %2"
 msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பை அகற்று"
 
-#: src/contents/ui/PresetsLocalPage.qml:233
+#: src/contents/ui/PresetsLocalPage.qml:237
 #, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
 
-#: src/contents/ui/PresetsLocalPage.qml:241
+#: src/contents/ui/PresetsLocalPage.qml:245
 #, fuzzy
 msgid "Cancel"
 msgstr "இருப்பு"
 
-#: src/contents/ui/PresetsLocalPage.qml:277
+#: src/contents/ui/PresetsLocalPage.qml:281
 #, fuzzy
 msgid "Save settings to this preset"
 msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பில் தற்போதைய அமைப்புகளை சேமிக்கவும்"
 
-#: src/contents/ui/PresetsLocalPage.qml:285
+#: src/contents/ui/PresetsLocalPage.qml:289
 #, fuzzy
 msgid "Rename this preset"
 msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பை அகற்று"
 
-#: src/contents/ui/PresetsLocalPage.qml:293
+#: src/contents/ui/PresetsLocalPage.qml:297
 #, fuzzy
 msgid "Delete this preset"
 msgstr "இந்த முன்னமைக்கப்பட்ட கோப்பை அகற்று"
 
-#: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:77 src/contents/ui/PresetsSheet.qml:114
 msgid "Local"
 msgstr "உள்ளக"
 
-#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:85 src/contents/ui/PresetsSheet.qml:114
 msgid "Community"
 msgstr "சமூகம்"
 
-#: src/contents/ui/PresetsSheet.qml:84
+#: src/contents/ui/PresetsSheet.qml:93
 #, fuzzy
 msgid "Autoloading"
 msgstr "ஆட்டோகெயின்"
 
-#: src/contents/ui/PresetsSheet.qml:103
+#: src/contents/ui/PresetsSheet.qml:112
 #, fuzzy
 msgid "No preset loaded"
 msgstr "முன்னமைவு ஏற்றப்படவில்லை"
 
-#: src/contents/ui/PresetsSheet.qml:119
+#: src/contents/ui/PresetsSheet.qml:128
 msgid "Fallback Preset"
 msgstr ""
 
@@ -2672,57 +2672,57 @@ msgstr "டிச்கோ"
 msgid "Large occupied hall"
 msgstr "பெரிய ஆக்கிரமிக்கப்பட்ட மண்டபம்"
 
-#: src/contents/ui/ShortcutsSheet.qml:35
+#: src/contents/ui/ShortcutsSheet.qml:47
 #, fuzzy
 msgid "Show help"
 msgstr "உதவியைக் காட்டு"
 
-#: src/contents/ui/ShortcutsSheet.qml:48
+#: src/contents/ui/ShortcutsSheet.qml:60
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:76 src/contents/ui/ShortcutsSheet.qml:299
+#: src/contents/ui/ShortcutsSheet.qml:88 src/contents/ui/ShortcutsSheet.qml:311
 #: src/global_shortcuts.hpp:48
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "உலகளாவிய பைபாச்"
 
-#: src/contents/ui/ShortcutsSheet.qml:104
+#: src/contents/ui/ShortcutsSheet.qml:116
 #, fuzzy
 msgid "Close the window"
 msgstr "சாளரத்தை மூடு"
 
-#: src/contents/ui/ShortcutsSheet.qml:132
+#: src/contents/ui/ShortcutsSheet.qml:144
 #, fuzzy
 msgid "Terminate Easy Effects service"
 msgstr "ஈசி எஃபெக்ட்ச் பதிப்பை அச்சிடுக"
 
-#: src/contents/ui/ShortcutsSheet.qml:172
+#: src/contents/ui/ShortcutsSheet.qml:184
 #, fuzzy
 msgid "Toggle process all inputs"
 msgstr "அனைத்து உள்ளீட்டு நீரோடைகளையும் செயலாக்கவும்"
 
-#: src/contents/ui/ShortcutsSheet.qml:212
+#: src/contents/ui/ShortcutsSheet.qml:224
 #, fuzzy
 msgid "Toggle process all outputs"
 msgstr "அனைத்து வெளியீட்டு நீரோடைகளையும் செயலாக்கவும்"
 
-#: src/contents/ui/ShortcutsSheet.qml:225
-#: src/contents/ui/ShortcutsSheet.qml:238
+#: src/contents/ui/ShortcutsSheet.qml:237
+#: src/contents/ui/ShortcutsSheet.qml:250
 msgid "Can be used on numeric controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:253
+#: src/contents/ui/ShortcutsSheet.qml:265
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "_SHORTCUTS"
 
-#: src/contents/ui/ShortcutsSheet.qml:339 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:351 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:387
-#: src/contents/ui/main.qml:508
+#: src/contents/ui/ShortcutsSheet.qml:370 src/contents/ui/main.qml:385
+#: src/contents/ui/main.qml:506
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_SHORTCUTS"
@@ -2838,53 +2838,53 @@ msgstr "ச்டீரியோ அடிப்படை"
 msgid "Stereo phase"
 msgstr "ச்டீரியோ கட்டம்"
 
-#: src/contents/ui/main.qml:211
+#: src/contents/ui/main.qml:209
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_ ரெசெட் அமைப்புகள்"
 
-#: src/contents/ui/main.qml:212
+#: src/contents/ui/main.qml:210
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:281 src/contents/ui/main.qml:297
+#: src/contents/ui/main.qml:279 src/contents/ui/main.qml:295
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "முன்னமைவு ஏற்றப்படவில்லை"
 
-#: src/contents/ui/main.qml:308 src/contents/ui/main.qml:320
+#: src/contents/ui/main.qml:306 src/contents/ui/main.qml:318
 #, fuzzy
 msgid "Clear List"
 msgstr "வாடிக்கையாளர்கள் பட்டியல்"
 
-#: src/contents/ui/main.qml:309 src/contents/ui/main.qml:321
+#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:319
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/main.qml:376
+#: src/contents/ui/main.qml:374
 #, fuzzy
 msgid "Active"
 msgstr "செயலில் மாதிரி"
 
-#: src/contents/ui/main.qml:396 src/contents/ui/main.qml:516
+#: src/contents/ui/main.qml:394 src/contents/ui/main.qml:514
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:408 src/contents/ui/main.qml:548
+#: src/contents/ui/main.qml:406 src/contents/ui/main.qml:546
 #, fuzzy
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: src/contents/ui/main.qml:432
+#: src/contents/ui/main.qml:430
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/main.qml:484
+#: src/contents/ui/main.qml:482
 #, fuzzy
 msgid "PipeWire"
 msgstr "_ பிபிபீயர்"
 
-#: src/contents/ui/main.qml:540
+#: src/contents/ui/main.qml:538
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_ எளிதான விளைவுகள்"
@@ -3026,18 +3026,17 @@ msgstr "பேச்சு செயலி"
 msgid "Stereo Tools"
 msgstr "ச்டீரியோ கருவிகள்"
 
-#: com.github.wwmm.easyeffects.desktop.template.h:2
-#, fuzzy
-msgid "Easy Effects"
-msgstr "எளிதான விளைவுகளை விட்டு வெளியேறவும்"
-
-#: com.github.wwmm.easyeffects.desktop.template.h:3
+#: com.github.wwmm.easyeffects.desktop.in.template.h:1
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "சமநிலைப்படுத்தி, அமுக்கி மற்றும் பிற ஆடியோ விளைவுகள்"
 
-#: com.github.wwmm.easyeffects.desktop.template.h:4
+#: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "பைப்வேர் பயன்பாடுகளுக்கான ஆடியோ விளைவுகள்"
+
+#, fuzzy
+#~ msgid "Easy Effects"
+#~ msgstr "எளிதான விளைவுகளை விட்டு வெளியேறவும்"
 
 #, fuzzy
 #~ msgid "Hi-pass"

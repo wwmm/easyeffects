@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-07 01:03+0000\n"
+"POT-Creation-Date: 2025-11-07 21:52+0000\n"
 "PO-Revision-Date: 2025-11-06 06:10+0300\n"
 "Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -76,11 +76,11 @@ msgstr "Увімкнути налагоджувальні повідомленн
 msgid "Must specify preset type: input/output."
 msgstr "Потрібно вказати тип попереднього налаштування: вхід/вихід."
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:345
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:343
 msgid "Output Presets"
 msgstr "Попередні налаштування для виходу"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:330
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:328
 msgid "Input Presets"
 msgstr "Попередні налаштування для входу"
 
@@ -272,14 +272,14 @@ msgstr "Слухати"
 #: src/contents/ui/MultibandCompressor.qml:986
 #: src/contents/ui/MultibandGate.qml:959 src/contents/ui/RNNoise.qml:323
 #: src/contents/ui/Reverb.qml:350 src/contents/ui/Speex.qml:185
-#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:528
+#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:526
 msgid "Reset"
 msgstr "Скинути"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:466
+#: src/contents/ui/main.qml:464
 msgid "Output"
 msgstr "Вихід"
 
@@ -307,8 +307,8 @@ msgstr "Додати до виключених застосунків"
 #: src/contents/ui/MenuAddPlugins.qml:33
 #: src/contents/ui/PageStreamsEffects.qml:80
 #: src/contents/ui/PresetsAutoloadingPage.qml:98
-#: src/contents/ui/PresetsCommunityPage.qml:64
-#: src/contents/ui/PresetsLocalPage.qml:169 src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/PresetsCommunityPage.qml:68
+#: src/contents/ui/PresetsLocalPage.qml:173 src/contents/ui/RNNoise.qml:212
 msgid "Empty List"
 msgstr "Порожній список"
 
@@ -849,7 +849,7 @@ msgid "Default"
 msgstr "За замовчуванням"
 
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
-#: src/contents/ui/main.qml:444
+#: src/contents/ui/main.qml:442
 msgid "Presets"
 msgstr "Попередні налаштування"
 
@@ -1097,7 +1097,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Регулятори підсилення входу та виходу з індикаторами рівня"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:475
+#: src/contents/ui/main.qml:473
 msgid "Input"
 msgstr "Вхід"
 
@@ -1902,7 +1902,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:500
+#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:498
 msgid "Preferences"
 msgstr "Параметри"
 
@@ -2218,23 +2218,23 @@ msgstr "Видаліть цей ефект"
 msgid "Local preset"
 msgstr "Локальний пресет"
 
-#: src/contents/ui/PresetsCommunityPage.qml:93
+#: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
 msgid "Copy to local presets"
 msgstr "Копіювати до локального списку"
 
-#: src/contents/ui/PresetsCommunityPage.qml:98
+#: src/contents/ui/PresetsCommunityPage.qml:102
 #, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr "Імпортовано пресет спільноти %1 до списку локальних пресетів."
 
-#: src/contents/ui/PresetsCommunityPage.qml:100
+#: src/contents/ui/PresetsCommunityPage.qml:104
 #, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "Не вдалося імпортувати пресет спільноти %1 до списку локальних пресетів."
 
-#: src/contents/ui/PresetsCommunityPage.qml:120
+#: src/contents/ui/PresetsCommunityPage.qml:124
 msgid "Refresh"
 msgstr "Оновити"
 
@@ -2292,33 +2292,33 @@ msgstr "Не вдалося створити новий локальний пр�
 msgid "Export presets"
 msgstr "Експортувати пресети"
 
-#: src/contents/ui/PresetsLocalPage.qml:186
+#: src/contents/ui/PresetsLocalPage.qml:190
 #, fuzzy
 msgid "Save Preset"
 msgstr "Вилучити пресет"
 
-#: src/contents/ui/PresetsLocalPage.qml:187
+#: src/contents/ui/PresetsLocalPage.qml:191
 #, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
 msgstr "Зберегти налаштування до цього пресету"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:195
 #, fuzzy
 msgid "Saved the current settings to %1 local preset."
 msgstr "Поточні налаштування збережено до %1 локального пресету."
 
-#: src/contents/ui/PresetsLocalPage.qml:193
+#: src/contents/ui/PresetsLocalPage.qml:197
 #, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "Не вдалося зберегти поточні налаштування до локального пресету %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:201
+#: src/contents/ui/PresetsLocalPage.qml:205
 msgid "Remove Preset"
 msgstr "Вилучити пресет"
 
-#: src/contents/ui/PresetsLocalPage.qml:202
+#: src/contents/ui/PresetsLocalPage.qml:206
 #, fuzzy
 msgid ""
 "Are you sure you want to remove the preset\n"
@@ -2326,71 +2326,71 @@ msgid ""
 "from the list?"
 msgstr "Ви впевнені, що хочете вилучити цей пресет зі списку?"
 
-#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:210
 #, fuzzy
 msgid "Removed the %1 local preset."
 msgstr "Вилучено локальний пресет %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:208
+#: src/contents/ui/PresetsLocalPage.qml:212
 #, fuzzy
 msgid "Failed to remove the %1 local preset."
 msgstr "Не вдалося вилучити локальний пресет %1."
 
-#: src/contents/ui/PresetsLocalPage.qml:216
+#: src/contents/ui/PresetsLocalPage.qml:220
 msgid "Rename Preset"
 msgstr "Перейменувати пресет"
 
-#: src/contents/ui/PresetsLocalPage.qml:221
+#: src/contents/ui/PresetsLocalPage.qml:225
 msgid "Rename"
 msgstr "Перейменувати"
 
-#: src/contents/ui/PresetsLocalPage.qml:230
+#: src/contents/ui/PresetsLocalPage.qml:234
 #, fuzzy
 msgid "Renamed the %1 local preset to %2"
 msgstr "Перейменовано локальний пресет %1 на %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:233
+#: src/contents/ui/PresetsLocalPage.qml:237
 #, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Не вдалося перейменувати локальний пресет %1 на %2"
 
-#: src/contents/ui/PresetsLocalPage.qml:241
+#: src/contents/ui/PresetsLocalPage.qml:245
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: src/contents/ui/PresetsLocalPage.qml:277
+#: src/contents/ui/PresetsLocalPage.qml:281
 #, fuzzy
 msgid "Save settings to this preset"
 msgstr "Зберегти налаштування до цього пресету"
 
-#: src/contents/ui/PresetsLocalPage.qml:285
+#: src/contents/ui/PresetsLocalPage.qml:289
 #, fuzzy
 msgid "Rename this preset"
 msgstr "Перейменувати цей пресет"
 
-#: src/contents/ui/PresetsLocalPage.qml:293
+#: src/contents/ui/PresetsLocalPage.qml:297
 #, fuzzy
 msgid "Delete this preset"
 msgstr "Видалити цей пресет"
 
-#: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:77 src/contents/ui/PresetsSheet.qml:114
 msgid "Local"
 msgstr "Локальні"
 
-#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:85 src/contents/ui/PresetsSheet.qml:114
 msgid "Community"
 msgstr "Спільнота"
 
-#: src/contents/ui/PresetsSheet.qml:84
+#: src/contents/ui/PresetsSheet.qml:93
 msgid "Autoloading"
 msgstr "Автозастосування"
 
-#: src/contents/ui/PresetsSheet.qml:103
+#: src/contents/ui/PresetsSheet.qml:112
 #, fuzzy
 msgid "No preset loaded"
 msgstr "Пресет не застосовано"
 
-#: src/contents/ui/PresetsSheet.qml:119
+#: src/contents/ui/PresetsSheet.qml:128
 msgid "Fallback Preset"
 msgstr "Резервний пресет"
 
@@ -2557,59 +2557,59 @@ msgstr "Диско"
 msgid "Large occupied hall"
 msgstr "Велика зайнята зала"
 
-#: src/contents/ui/ShortcutsSheet.qml:35
+#: src/contents/ui/ShortcutsSheet.qml:47
 #, fuzzy
 msgid "Show help"
 msgstr "Показати довідку"
 
-#: src/contents/ui/ShortcutsSheet.qml:48
+#: src/contents/ui/ShortcutsSheet.qml:60
 #, fuzzy
 msgid "Toggle fullscreen"
 msgstr "Перемкнути повноекранний режим"
 
-#: src/contents/ui/ShortcutsSheet.qml:76 src/contents/ui/ShortcutsSheet.qml:299
+#: src/contents/ui/ShortcutsSheet.qml:88 src/contents/ui/ShortcutsSheet.qml:311
 #: src/global_shortcuts.hpp:48
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "Увімкнути/вимкнути глобальний обхід"
 
-#: src/contents/ui/ShortcutsSheet.qml:104
+#: src/contents/ui/ShortcutsSheet.qml:116
 #, fuzzy
 msgid "Close the window"
 msgstr "Закрити вікно"
 
-#: src/contents/ui/ShortcutsSheet.qml:132
+#: src/contents/ui/ShortcutsSheet.qml:144
 #, fuzzy
 msgid "Terminate Easy Effects service"
 msgstr "Припинити роботу служби Easy Effects"
 
-#: src/contents/ui/ShortcutsSheet.qml:172
+#: src/contents/ui/ShortcutsSheet.qml:184
 #, fuzzy
 msgid "Toggle process all inputs"
 msgstr "Перемикання обробки всіх вхідних даних"
 
-#: src/contents/ui/ShortcutsSheet.qml:212
+#: src/contents/ui/ShortcutsSheet.qml:224
 #, fuzzy
 msgid "Toggle process all outputs"
 msgstr "Перемикання обробки всіх виходів"
 
-#: src/contents/ui/ShortcutsSheet.qml:225
-#: src/contents/ui/ShortcutsSheet.qml:238
+#: src/contents/ui/ShortcutsSheet.qml:237
+#: src/contents/ui/ShortcutsSheet.qml:250
 #, fuzzy
 msgid "Can be used on numeric controls"
 msgstr "Можна використовувати з числовими елементами керування"
 
-#: src/contents/ui/ShortcutsSheet.qml:253
+#: src/contents/ui/ShortcutsSheet.qml:265
 msgid "Global Shortcuts"
 msgstr "Глобальні скорочення"
 
-#: src/contents/ui/ShortcutsSheet.qml:339 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:351 src/global_shortcuts.hpp:50
 #, fuzzy
 msgid "Toggle microphone monitoring"
 msgstr "Увімкнути/вимкнути моніторинг мікрофона"
 
-#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:387
-#: src/contents/ui/main.qml:508
+#: src/contents/ui/ShortcutsSheet.qml:370 src/contents/ui/main.qml:385
+#: src/contents/ui/main.qml:506
 msgid "Shortcuts"
 msgstr "Скорочення"
 
@@ -2723,49 +2723,49 @@ msgstr "База стерео"
 msgid "Stereo phase"
 msgstr "Фаза стерео"
 
-#: src/contents/ui/main.qml:211
+#: src/contents/ui/main.qml:209
 msgid "Reset Settings?"
 msgstr "Скинути налаштування?"
 
-#: src/contents/ui/main.qml:212
+#: src/contents/ui/main.qml:210
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Ви впевнені, що хочете скинути всі налаштування Easy Effects?"
 
-#: src/contents/ui/main.qml:281 src/contents/ui/main.qml:297
+#: src/contents/ui/main.qml:279 src/contents/ui/main.qml:295
 msgid "Preset Loaded"
 msgstr "Пресет застосовано"
 
-#: src/contents/ui/main.qml:308 src/contents/ui/main.qml:320
+#: src/contents/ui/main.qml:306 src/contents/ui/main.qml:318
 msgid "Clear List"
 msgstr "Очистити список"
 
-#: src/contents/ui/main.qml:309 src/contents/ui/main.qml:321
+#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:319
 #, fuzzy
 msgid "Are you sure you want to clear this list?"
 msgstr "Ви впевнені, що хочете вилучити цей пресет зі списку?"
 
-#: src/contents/ui/main.qml:376
+#: src/contents/ui/main.qml:374
 msgid "Active"
 msgstr "Активний"
 
-#: src/contents/ui/main.qml:396 src/contents/ui/main.qml:516
+#: src/contents/ui/main.qml:394 src/contents/ui/main.qml:514
 msgid "Manual"
 msgstr "Довідка"
 
-#: src/contents/ui/main.qml:408 src/contents/ui/main.qml:548
+#: src/contents/ui/main.qml:406 src/contents/ui/main.qml:546
 msgid "Quit"
 msgstr "Вийти"
 
-#: src/contents/ui/main.qml:432
+#: src/contents/ui/main.qml:430
 #, fuzzy
 msgid "Turn effects on/off"
 msgstr "Увімкнення/вимкнення ефектів"
 
-#: src/contents/ui/main.qml:484
+#: src/contents/ui/main.qml:482
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:540
+#: src/contents/ui/main.qml:538
 msgid "About Easy Effects"
 msgstr "Про Easy Effects"
 
@@ -2906,17 +2906,16 @@ msgstr "Мовний процесор"
 msgid "Stereo Tools"
 msgstr "Стерео інструменти"
 
-#: com.github.wwmm.easyeffects.desktop.template.h:2
-msgid "Easy Effects"
-msgstr "Easy Effects"
-
-#: com.github.wwmm.easyeffects.desktop.template.h:3
+#: com.github.wwmm.easyeffects.desktop.in.template.h:1
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Еквалайзер, компресор та інші звукові ефекти"
 
-#: com.github.wwmm.easyeffects.desktop.template.h:4
+#: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Звукові ефекти для застосунків PipeWire"
+
+#~ msgid "Easy Effects"
+#~ msgstr "Easy Effects"
 
 #~ msgid "Hi-pass"
 #~ msgstr "ФВЧ"
