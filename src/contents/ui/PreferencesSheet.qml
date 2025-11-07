@@ -581,7 +581,7 @@ Kirigami.OverlaySheet {
         Controls.ToolButton {
             id: headerBackButton
 
-            icon.name: "draw-arrow-back"
+            icon.name: "draw-arrow-back-symbolic"
             visible: stack.depth !== 1
             onClicked: {
                 while (stack.depth > 1)

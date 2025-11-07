@@ -3,3 +3,7 @@ meson setup _build --prefix=/tmp/ee -Db_sanitize=address,undefined
 G_SLICE=always-malloc G_DEBUG=gc-friendly ./easyeffects
 
 export LSAN_OPTIONS="print_suppressions=false:suppressions=/path/to/blender-lsan-suppressions.txt"
+
+#ignore a test
+
+ASAN_OPTIONS=new_delete_type_mismatch=0  ./easyeffects --debug

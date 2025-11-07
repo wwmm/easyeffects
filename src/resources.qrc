@@ -32,6 +32,7 @@
         <file alias="Expander.qml">contents/ui/Expander.qml</file>
         <file alias="Filter.qml">contents/ui/Filter.qml</file>
         <file alias="Gate.qml">contents/ui/Gate.qml</file>
+        <file alias="HelpSheet.qml">contents/ui/HelpSheet.qml</file>
         <file alias="LevelMeter.qml">contents/ui/LevelMeter.qml</file>
         <file alias="Limiter.qml">contents/ui/Limiter.qml</file>
         <file alias="Loudness.qml">contents/ui/Loudness.qml</file>

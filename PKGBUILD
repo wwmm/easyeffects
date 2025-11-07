@@ -19,6 +19,7 @@ depends=(
   'breeze-icons' 
   'qt6-base'
   'qt6-graphs' 
+  'qt6-webengine'
   'pipewire-pulse' 
   'lilv'
   'libsamplerate'

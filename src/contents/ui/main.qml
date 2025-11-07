@@ -202,6 +202,10 @@ Kirigami.ApplicationWindow {
         id: shortcutsSheet
     }
 
+    HelpSheet {
+        id: helpSheet
+    }
+
     Kirigami.PromptDialog {
         id: resetPromptDialog
 
@@ -393,7 +397,9 @@ Kirigami.ApplicationWindow {
                 text: i18n("Manual") // qmllint disable
                 icon.name: "help-contents-symbolic"
                 onTriggered: {
-                    Help.Manager.openManual();
+                    appWindow.show();
+                    appWindow.raise();
+                    helpSheet.open();
                 }
             }
 
@@ -512,7 +518,7 @@ Kirigami.ApplicationWindow {
                         icon.name: "help-contents-symbolic"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
-                            Help.Manager.openManual();
+                            helpSheet.open();
                         }
                     },
                     Kirigami.Action {
