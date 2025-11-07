@@ -9,6 +9,7 @@ install(FILES
 )
 
 install(PROGRAMS 
-    com.github.wwmm.easyeffects.desktop 
+    com.github.wwmm.easyeffects.desktop.in
     DESTINATION ${KDE_INSTALL_APPDIR}
+    RENAME com.github.wwmm.easyeffects.desktop
 )

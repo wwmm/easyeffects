@@ -28,10 +28,10 @@ echo "rc.cpp" >> ${WDIR}/infiles.list
 
 # preparing the desktop file
 echo "Preparing the desktop file"
-cp src/contents/com.github.wwmm.easyeffects.desktop.template ${WDIR}
+cp src/contents/com.github.wwmm.easyeffects.desktop.in.template ${WDIR}
 cd ${WDIR}
-intltool-extract --quiet --type=gettext/ini com.github.wwmm.easyeffects.desktop.template
-echo "com.github.wwmm.easyeffects.desktop.template.h" >> ${WDIR}/infiles.list
+intltool-extract --quiet --type=gettext/ini com.github.wwmm.easyeffects.desktop.in.template
+echo "com.github.wwmm.easyeffects.desktop.in.template.h" >> ${WDIR}/infiles.list
 
 # extracting messages on xgettext
 cd ${WDIR}
@@ -64,7 +64,7 @@ for catalog in $catalogs; do
 done
 
 cd ${WDIR}
-intltool-merge --quiet --desktop-style ${BASEDIR}/po com.github.wwmm.easyeffects.desktop.template ${BASEDIR}/src/contents/com.github.wwmm.easyeffects.desktop
+intltool-merge --quiet --desktop-style ${BASEDIR}/po com.github.wwmm.easyeffects.desktop.in.template ${BASEDIR}/src/contents/com.github.wwmm.easyeffects.desktop.in
 
 echo "Done merging translations"
 
@@ -75,7 +75,7 @@ echo "Cleaning up"
 rm rcfiles.list
 rm infiles.list
 rm rc.cpp
-rm com.github.wwmm.easyeffects.desktop.template
-rm com.github.wwmm.easyeffects.desktop.template.h
+rm com.github.wwmm.easyeffects.desktop.in.template
+rm com.github.wwmm.easyeffects.desktop.in.template.h
 
 echo "Done"
