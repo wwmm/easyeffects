@@ -185,7 +185,6 @@ static void initQml(QQmlApplicationEngine& engine,
   engine.rootContext()->setContextProperty("canUseSysTray", QSystemTrayIcon::isSystemTrayAvailable());
   engine.rootContext()->setContextProperty("projectVersion", PROJECT_VERSION);
   engine.rootContext()->setContextProperty("applicationId", APPLICATION_ID);
-  engine.rootContext()->setContextProperty("applicationIdShort", APPLICATION_ID_SHORT);
   engine.rootContext()->setContextProperty("applicationName", APPLICATION_NAME);
 
   QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, [&](QObject* object, const QUrl& url) {
