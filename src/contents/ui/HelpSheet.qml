@@ -13,13 +13,21 @@ Kirigami.OverlaySheet {
 
     Loader {
         id: webLoader
-        active: control.opened
+        active: false
         asynchronous: true
         anchors.fill: parent
         sourceComponent: WebEngineView {
             implicitHeight: appWindow.maxOverlayHeight - control.header.height
             url: "qrc:/help/index.html"
         }
+    }
+
+    onAboutToShow: {
+        webLoader.active = true;
+    }
+
+    onAboutToHide: {
+        webLoader.active = false;
     }
 
     header: Kirigami.ActionToolBar {
