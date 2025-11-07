@@ -37,8 +37,8 @@
 #include <QLocalServer>
 #include <QLoggingCategory>
 #include <QProcessEnvironment>
+#include <QQuickWindow>
 #include <QSystemTrayIcon>
-#include <QWindow>
 #include <csignal>
 #include <format>
 #include <memory>
@@ -59,6 +59,10 @@
 #include "tags_plugin_name.hpp"
 #include "test_signals.hpp"
 #include "util.hpp"
+
+#if defined(__GLIBC__)
+#include <malloc.h>
+#endif
 
 class SignalHandler {
  public:
@@ -124,7 +128,7 @@ struct CoreServices {
 };
 
 struct UiState {
-  QWindow* window = nullptr;
+  QQuickWindow* window = nullptr;
 };
 
 static void initGlobalBypass(StreamInputEffects& sie, StreamOutputEffects& soe) {
@@ -183,9 +187,12 @@ static void initQml(QQmlApplicationEngine& engine,
 
   QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, [&](QObject* object, const QUrl& url) {
     if (url.toString() == "qrc:/ui/main.qml") {
-      ui.window = qobject_cast<QWindow*>(object);
+      ui.window = qobject_cast<QQuickWindow*>(object);
 
       if (ui.window) {
+        ui.window->setPersistentGraphics(false);
+        ui.window->setPersistentSceneGraph(false);
+
         if (show_window) {
           ui.window->show();
           ui.window->raise();
@@ -195,6 +202,20 @@ static void initQml(QQmlApplicationEngine& engine,
         }
 
         autostart.set_window(ui.window);
+
+        QObject::connect(ui.window, &QQuickWindow::visibleChanged, [&](bool visible) {
+          if (!visible) {
+            util::debug("Asking Qt to clear QML's engine cache");
+
+            ui.window->releaseResources();
+
+            engine.trimComponentCache();
+
+#if defined(__GLIBC__)
+            malloc_trim(0);
+#endif
+          }
+        });
       }
     }
   });
