@@ -98,7 +98,6 @@
                 }
             ],
             "post-install": [
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/$FLATPAK_ID LICENSE",
                 "mkdir -pm755 $FLATPAK_DEST/extensions/Presets",
                 "mkdir -pm755 $FLATPAK_DEST/extensions/Plugins"
             ],

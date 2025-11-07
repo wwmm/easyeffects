@@ -62,9 +62,6 @@
                         "timestamp-query": ".published_at"
                     }
                 }
-            ],
-            "post-install": [
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/libebur128 COPYING"
             ]
         },
         {
@@ -112,9 +109,6 @@
                             "type": "patch",
                             "path": "patch/bs2b/001-fix-automake-dist-lzma.patch"
                         }
-                    ],
-                    "post-install": [
-                        "install -Dm644 -t $FLATPAK_DEST/share/licenses/bs2b COPYING"
                     ],
                     "cleanup": [
                         "/bin"
