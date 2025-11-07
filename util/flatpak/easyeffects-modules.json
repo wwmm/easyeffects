@@ -62,9 +62,6 @@
                         "timestamp-query": ".published_at"
                     }
                 }
-            ],
-            "post-install": [
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/libebur128 COPYING"
             ]
         },
         {
@@ -112,9 +109,6 @@
                             "type": "patch",
                             "path": "patch/bs2b/001-fix-automake-dist-lzma.patch"
                         }
-                    ],
-                    "post-install": [
-                        "install -Dm644 -t $FLATPAK_DEST/share/licenses/bs2b COPYING"
                     ],
                     "cleanup": [
                         "/bin"
@@ -257,49 +251,6 @@
                         "url-template": "https://ftp.gnu.org/gnu/gsl/gsl-$version.tar.gz"
                     }
                 }
-            ]
-        },
-        {
-            "name": "mold",
-            "sources": [
-                {
-                    "type": "archive",
-                    "dest-filename": "mold-linux.tar.gz",
-                    "only-arches": [
-                        "x86_64"
-                    ],
-                    "url": "https://github.com/rui314/mold/releases/download/v2.40.4/mold-2.40.4-x86_64-linux.tar.gz",
-                    "sha256": "4c999e19ffa31afa5aa429c679b665d5e2ca5a6b6832ad4b79668e8dcf3d8ec1",
-                    "x-checker-data": {
-                        "type": "anitya",
-                        "project-id": 241732,
-                        "stable-only": true,
-                        "url-template": "https://github.com/rui314/mold/releases/download/v$version/mold-$version-x86_64-linux.tar.gz"
-                    }
-                },
-                {
-                    "type": "archive",
-                    "dest-filename": "mold-linux.tar.gz",
-                    "only-arches": [
-                        "aarch64"
-                    ],
-                    "url": "https://github.com/rui314/mold/releases/download/v2.40.4/mold-2.40.4-aarch64-linux.tar.gz",
-                    "sha256": "c799b9ccae8728793da2186718fbe53b76400a9da396184fac0c64aa3298ec37",
-                    "x-checker-data": {
-                        "type": "anitya",
-                        "project-id": 241732,
-                        "stable-only": true,
-                        "url-template": "https://github.com/rui314/mold/releases/download/v$version/mold-$version-aarch64-linux.tar.gz"
-                    }
-                }
-            ],
-            "buildsystem": "simple",
-            "build-commands": [
-                "install -m 755 bin/mold $FLATPAK_DEST/bin/mold",
-                "install -m 755 bin/ld.mold $FLATPAK_DEST/bin/ld.mold"
-            ],
-            "cleanup": [
-                "*"
             ]
         },
         {

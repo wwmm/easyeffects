@@ -33,18 +33,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5.0.0
 
-      - name: Build html help pages
-        run: |
-          sudo apt-get update
-          sudo apt-get upgrade -y
-          sudo apt-get install -y yelp-tools
-          mkdir help/dist-html
-          yelp-build html -o help/dist-html help/C
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4.0.0
         with:
-          path: help/dist-html
+          path: src/contents/help
 
       - name: Deploy to GitHub Pages
         id: deployment
