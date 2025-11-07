@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-05 21:54+0000\n"
+"POT-Creation-Date: 2025-11-07 01:03+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -75,11 +75,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:342
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:345
 msgid "Output Presets"
 msgstr ""
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:330
 msgid "Input Presets"
 msgstr ""
 
@@ -279,14 +279,14 @@ msgstr "მოსმენა"
 #: src/contents/ui/MultibandCompressor.qml:986
 #: src/contents/ui/MultibandGate.qml:959 src/contents/ui/RNNoise.qml:323
 #: src/contents/ui/Reverb.qml:350 src/contents/ui/Speex.qml:185
-#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:523
+#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:528
 msgid "Reset"
 msgstr "დაბრუნება"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:461
+#: src/contents/ui/main.qml:466
 msgid "Output"
 msgstr "გამოტანა"
 
@@ -474,9 +474,9 @@ msgid "RMS"
 msgstr "RMS"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Compressor.qml:426
-#: src/contents/ui/Expander.qml:260 src/contents/ui/Expander.qml:385
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:281
-#: src/contents/ui/Gate.qml:406
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:260
+#: src/contents/ui/Expander.qml:385 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:281 src/contents/ui/Gate.qml:406
 #, fuzzy
 msgid "Low-pass"
 msgstr "დაბალსიხშირული ფილტრი"
@@ -591,8 +591,9 @@ msgstr ""
 msgid "Lookahead"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:411 src/contents/ui/Expander.qml:370
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:391
+#: src/contents/ui/Compressor.qml:411 src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/Expander.qml:370 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:391
 #, fuzzy
 msgid "High-pass"
 msgstr "მაღალსიხშირული ფილტრი"
@@ -880,7 +881,7 @@ msgid "Default"
 msgstr ""
 
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
-#: src/contents/ui/main.qml:439
+#: src/contents/ui/main.qml:444
 msgid "Presets"
 msgstr "პრესეტები"
 
@@ -1147,7 +1148,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:470
+#: src/contents/ui/main.qml:475
 msgid "Input"
 msgstr "შეყვანა"
 
@@ -1255,22 +1256,13 @@ msgstr "გუნდები"
 msgid "Bell"
 msgstr "ზარი"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
-msgid "Hi-pass"
+msgid "High-shelf"
 msgstr "მაღალსიხშირული ფილტრი"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Hi-shelf"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Lo-pass"
-msgstr "დაბალსიხშირული ფილტრი"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Lo-shelf"
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Low-shelf"
 msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
@@ -1281,11 +1273,11 @@ msgstr "ამოკვეთა"
 msgid "Resonance"
 msgstr "რეზონანსი"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Allpass"
 msgstr ""
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
 msgid "Bandpass"
 msgstr "გუნდი-პასი"
@@ -1295,8 +1287,8 @@ msgstr "გუნდი-პასი"
 msgid "Ladder-pass"
 msgstr "დაბალსიხშირული ფილტრი"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Ladder-rej"
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Ladder-rejection"
 msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:90
@@ -1347,29 +1339,6 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:363
 msgid "Internal"
 msgstr "შიდა"
-
-#: src/contents/ui/Filter.qml:55
-msgid "Low-shelf"
-msgstr ""
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "High-shelf"
-msgstr "მაღალსიხშირული ფილტრი"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Band-pass"
-msgstr "გუნდი-პასი"
-
-#: src/contents/ui/Filter.qml:55
-msgid "Ladder-rejection"
-msgstr ""
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "All-pass"
-msgstr "დაბალსიხშირული ფილტრი"
 
 #: src/contents/ui/Filter.qml:64
 #, fuzzy
@@ -1977,7 +1946,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:495
+#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:500
 #, fuzzy
 msgid "Preferences"
 msgstr "_მორგება"
@@ -2641,8 +2610,8 @@ msgstr "მალ_სახმობები"
 msgid "Toggle microphone monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:384
-#: src/contents/ui/main.qml:503
+#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:387
+#: src/contents/ui/main.qml:508
 #, fuzzy
 msgid "Shortcuts"
 msgstr "მალ_სახმობები"
@@ -2752,50 +2721,50 @@ msgstr "სტერეოს გაყოფა"
 msgid "Stereo phase"
 msgstr "სტერეოს გაყოფა"
 
-#: src/contents/ui/main.qml:208
+#: src/contents/ui/main.qml:211
 msgid "Reset Settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:209
+#: src/contents/ui/main.qml:212
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:278 src/contents/ui/main.qml:294
+#: src/contents/ui/main.qml:281 src/contents/ui/main.qml:297
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "ჩატვირთულია ბოლო ლოკალური პრესეტი"
 
-#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
+#: src/contents/ui/main.qml:308 src/contents/ui/main.qml:320
 msgid "Clear List"
 msgstr ""
 
-#: src/contents/ui/main.qml:306 src/contents/ui/main.qml:318
+#: src/contents/ui/main.qml:309 src/contents/ui/main.qml:321
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/main.qml:373
+#: src/contents/ui/main.qml:376
 msgid "Active"
 msgstr ""
 
-#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:511
+#: src/contents/ui/main.qml:396 src/contents/ui/main.qml:516
 #, fuzzy
 msgid "Manual"
 msgstr "_ხელით"
 
-#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:543
+#: src/contents/ui/main.qml:408 src/contents/ui/main.qml:548
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:427
+#: src/contents/ui/main.qml:432
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/main.qml:479
+#: src/contents/ui/main.qml:484
 #, fuzzy
 msgid "PipeWire"
 msgstr "_PipeWire"
 
-#: src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:540
 msgid "About Easy Effects"
 msgstr ""
 
@@ -2942,6 +2911,22 @@ msgstr ""
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Hi-pass"
+#~ msgstr "მაღალსიხშირული ფილტრი"
+
+#, fuzzy
+#~ msgid "Lo-pass"
+#~ msgstr "დაბალსიხშირული ფილტრი"
+
+#, fuzzy
+#~ msgid "Band-pass"
+#~ msgstr "გუნდი-პასი"
+
+#, fuzzy
+#~ msgid "All-pass"
+#~ msgstr "დაბალსიხშირული ფილტრი"
 
 #, fuzzy
 #~ msgid "Boost tshreshold"

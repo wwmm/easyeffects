@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-05 21:54+0000\n"
+"POT-Creation-Date: 2025-11-07 01:03+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -76,11 +76,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:342
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:345
 msgid "Output Presets"
 msgstr "Utgångsförinställningar"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:330
 msgid "Input Presets"
 msgstr "Ingångsförinställningar"
 
@@ -281,14 +281,14 @@ msgstr "Lyssna"
 #: src/contents/ui/MultibandCompressor.qml:986
 #: src/contents/ui/MultibandGate.qml:959 src/contents/ui/RNNoise.qml:323
 #: src/contents/ui/Reverb.qml:350 src/contents/ui/Speex.qml:185
-#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:523
+#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:528
 msgid "Reset"
 msgstr "Återställ"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:461
+#: src/contents/ui/main.qml:466
 msgid "Output"
 msgstr "Utgång"
 
@@ -481,9 +481,9 @@ msgid "RMS"
 msgstr ""
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Compressor.qml:426
-#: src/contents/ui/Expander.qml:260 src/contents/ui/Expander.qml:385
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:281
-#: src/contents/ui/Gate.qml:406
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:260
+#: src/contents/ui/Expander.qml:385 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:281 src/contents/ui/Gate.qml:406
 #, fuzzy
 msgid "Low-pass"
 msgstr "Lågpass"
@@ -602,8 +602,9 @@ msgstr ""
 msgid "Lookahead"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:411 src/contents/ui/Expander.qml:370
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:391
+#: src/contents/ui/Compressor.qml:411 src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/Expander.qml:370 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:391
 #, fuzzy
 msgid "High-pass"
 msgstr "Högpass"
@@ -893,7 +894,7 @@ msgid "Default"
 msgstr ""
 
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
-#: src/contents/ui/main.qml:439
+#: src/contents/ui/main.qml:444
 msgid "Presets"
 msgstr "Profiler"
 
@@ -1161,7 +1162,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:470
+#: src/contents/ui/main.qml:475
 msgid "Input"
 msgstr "Ingång"
 
@@ -1272,24 +1273,14 @@ msgstr "Lågt band"
 msgid "Bell"
 msgstr ""
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
-msgid "Hi-pass"
-msgstr "Högpass"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Hi-shelf"
+msgid "High-shelf"
 msgstr "Hög hylla"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
-msgid "Lo-pass"
-msgstr "Lågpass"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Lo-shelf"
+msgid "Low-shelf"
 msgstr "Låg hylla"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
@@ -1300,11 +1291,11 @@ msgstr ""
 msgid "Resonance"
 msgstr ""
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Allpass"
 msgstr ""
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
 msgid "Bandpass"
 msgstr "Förbikoppling av band 1"
@@ -1314,9 +1305,9 @@ msgstr "Förbikoppling av band 1"
 msgid "Ladder-pass"
 msgstr "Lågpass"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
-msgid "Ladder-rej"
+msgid "Ladder-rejection"
 msgstr "Bandreduktion"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:90
@@ -1367,31 +1358,6 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:363
 msgid "Internal"
 msgstr ""
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Low-shelf"
-msgstr "Låg hylla"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "High-shelf"
-msgstr "Hög hylla"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Band-pass"
-msgstr "Förbikoppling av band 1"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Ladder-rejection"
-msgstr "Bandreduktion"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "All-pass"
-msgstr "Lågpass"
 
 #: src/contents/ui/Filter.qml:64
 #, fuzzy
@@ -2008,7 +1974,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:495
+#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:500
 msgid "Preferences"
 msgstr ""
 
@@ -2677,8 +2643,8 @@ msgstr ""
 msgid "Toggle microphone monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:384
-#: src/contents/ui/main.qml:503
+#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:387
+#: src/contents/ui/main.qml:508
 msgid "Shortcuts"
 msgstr ""
 
@@ -2794,51 +2760,51 @@ msgstr "Stereobas"
 msgid "Stereo phase"
 msgstr "Stereofas"
 
-#: src/contents/ui/main.qml:208
+#: src/contents/ui/main.qml:211
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_Återställ inställningar"
 
-#: src/contents/ui/main.qml:209
+#: src/contents/ui/main.qml:212
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:278 src/contents/ui/main.qml:294
+#: src/contents/ui/main.qml:281 src/contents/ui/main.qml:297
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Nytt namn på förinställd ingång"
 
-#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
+#: src/contents/ui/main.qml:308 src/contents/ui/main.qml:320
 #, fuzzy
 msgid "Clear List"
 msgstr "Lista över band"
 
-#: src/contents/ui/main.qml:306 src/contents/ui/main.qml:318
+#: src/contents/ui/main.qml:309 src/contents/ui/main.qml:321
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/main.qml:373
+#: src/contents/ui/main.qml:376
 #, fuzzy
 msgid "Active"
 msgstr "Ingen komprimering"
 
-#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:511
+#: src/contents/ui/main.qml:396 src/contents/ui/main.qml:516
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:543
+#: src/contents/ui/main.qml:408 src/contents/ui/main.qml:548
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:427
+#: src/contents/ui/main.qml:432
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/main.qml:479
+#: src/contents/ui/main.qml:484
 msgid "PipeWire"
 msgstr ""
 
-#: src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:540
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_Om Easy Effects"
@@ -2990,6 +2956,34 @@ msgstr "Equalizer, kompressor och andra ljudeffekter"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Ljudeffekter för PipeWire-applikationer"
+
+#, fuzzy
+#~ msgid "Hi-pass"
+#~ msgstr "Högpass"
+
+#, fuzzy
+#~ msgid "Hi-shelf"
+#~ msgstr "Hög hylla"
+
+#, fuzzy
+#~ msgid "Lo-pass"
+#~ msgstr "Lågpass"
+
+#, fuzzy
+#~ msgid "Lo-shelf"
+#~ msgstr "Låg hylla"
+
+#, fuzzy
+#~ msgid "Ladder-rej"
+#~ msgstr "Bandreduktion"
+
+#, fuzzy
+#~ msgid "Band-pass"
+#~ msgstr "Förbikoppling av band 1"
+
+#, fuzzy
+#~ msgid "All-pass"
+#~ msgstr "Lågpass"
 
 #, fuzzy
 #~ msgid "Boost tshreshold"
