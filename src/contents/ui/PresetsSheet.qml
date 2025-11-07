@@ -34,10 +34,19 @@ Kirigami.OverlaySheet {
     implicitWidth: Math.max(appWindow.width * 0.5, Kirigami.Units.gridUnit * 40)
     implicitHeight: appWindow.maxOverlayHeight // qmllint disable
 
+    onAboutToShow: {
+        pageLoader.active = true;
+    }
+
+    onAboutToHide: {
+        pageLoader.active = false;
+    }
+
     Loader {
         id: pageLoader
 
         height: control.height - control.header.height - control.footer.height - Kirigami.Units.largeSpacing * 5
+        active: false
 
         source: {
             switch (DB.Manager.main.visiblePresetSheetPage) {
