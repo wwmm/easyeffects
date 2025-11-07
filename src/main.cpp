@@ -60,7 +60,7 @@
 #include "test_signals.hpp"
 #include "util.hpp"
 
-#if defined(__GLIBC__)
+#ifdef __GLIBC__
 #include <malloc.h>
 #endif
 
@@ -214,7 +214,7 @@ static void initQml(QQmlApplicationEngine& engine,
             engine.trimComponentCache();
             engine.collectGarbage();
 
-#if defined(__GLIBC__)
+#ifdef __GLIBC__
             malloc_trim(0);
 #endif
           }
