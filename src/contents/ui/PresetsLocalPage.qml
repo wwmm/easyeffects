@@ -146,6 +146,10 @@ ColumnLayout {
                 const re = Common.regExpEscape(search.text);
                 sortedListModel.filterRegularExpression = RegExp(re, "i");
             }
+            Component.onCompleted: {
+                const re = Common.regExpEscape("");
+                sortedListModel.filterRegularExpression = RegExp(re, "i");
+            }
         }
     }
 

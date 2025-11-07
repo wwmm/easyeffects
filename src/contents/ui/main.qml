@@ -44,8 +44,14 @@ Kirigami.ApplicationWindow {
     onVisibleChanged: {
         if (appWindow.visible) {
             DB.Manager.enableAutosave(true);
+
+            openMappedPage(DB.Manager.main.visiblePage);
         } else {
             DB.Manager.saveAll();
+
+            pageStack.clear();
+
+            gc();
         }
     }
 
@@ -53,10 +59,6 @@ Kirigami.ApplicationWindow {
         DB.Manager.enableAutosave(false);
 
         gc();
-    }
-
-    Component.onCompleted: {
-        openMappedPage(DB.Manager.main.visiblePage);
     }
 
     function openMappedPage(index) {
