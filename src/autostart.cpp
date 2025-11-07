@@ -86,16 +86,11 @@ void on_request_background_called([[maybe_unused]] GObject* source,
 
 Autostart::Autostart(QObject* parent) : QObject(parent) {
   connect(db::Main::self(), &db::Main::autostartOnLoginChanged, [&]() {
-    // if (!std::filesystem::exists("/.flatpak-info")) {
-    //   const auto session = qEnvironmentVariable("XDG_SESSION_DESKTOP");
-    //   const auto desktop = qEnvironmentVariable("XDG_CURRENT_DESKTOP");
+    if (!std::filesystem::exists("/.flatpak-info")) {
+      fallback_enable_autostart(db::Main::autostartOnLogin());
 
-    //   if (session == "" || desktop == "") {
-    //     fallback_enable_autostart(db::Main::autostartOnLogin());
-
-    //     return;
-    //   }
-    // }
+      return;
+    }
 
     update_background_portal();
   });
@@ -160,6 +155,8 @@ void Autostart::fallback_enable_autostart(const bool& state) {
       ofs << "StartupNotify=false\n";
       ofs << "Terminal=false\n";
       ofs << "Type=Application\n";
+      ofs << "X-GNOME-Autostart-Phase=Application\n";
+      ofs << "X-KDE-autostart-phase=2\n";
 
       ofs.close();
 
