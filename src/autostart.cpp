@@ -86,9 +86,18 @@ void on_request_background_called([[maybe_unused]] GObject* source,
 
 Autostart::Autostart(QObject* parent) : QObject(parent) {
   connect(db::Main::self(), &db::Main::autostartOnLoginChanged, [&]() {
-    update_background_portal();
+    // if (!std::filesystem::exists("/.flatpak-info")) {
+    //   const auto session = qEnvironmentVariable("XDG_SESSION_DESKTOP");
+    //   const auto desktop = qEnvironmentVariable("XDG_CURRENT_DESKTOP");
 
-    // fallback_enable_autostart(db::Main::autostartOnLogin());
+    //   if (session == "" || desktop == "") {
+    //     fallback_enable_autostart(db::Main::autostartOnLogin());
+
+    //     return;
+    //   }
+    // }
+
+    update_background_portal();
   });
 }
 
