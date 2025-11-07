@@ -139,7 +139,7 @@ void Autostart::fallback_enable_autostart(const bool& state) {
     std::filesystem::create_directories(autostart_dir);
   }
 
-  std::filesystem::path autostart_file = autostart_dir / std::format("{}-service.desktop", APPLICATION_ID_SHORT);
+  std::filesystem::path autostart_file = autostart_dir / std::format("{}.desktop", APPLICATION_ID);
 
   if (state) {
     std::ofstream ofs{autostart_file};
