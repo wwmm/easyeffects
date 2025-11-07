@@ -13,11 +13,10 @@ Kirigami.OverlaySheet {
 
     Loader {
         id: webLoader
-        active: control.visible
+        active: control.opened
         asynchronous: true
         anchors.fill: parent
         sourceComponent: WebEngineView {
-            id: web
             implicitHeight: appWindow.maxOverlayHeight - control.header.height
             url: "qrc:/help/index.html"
         }
@@ -30,19 +29,19 @@ Kirigami.OverlaySheet {
             Kirigami.Action {
                 icon.name: "draw-arrow-back-symbolic"
                 onTriggered: {
-                    web.goBack();
+                    webLoader.item.goBack();
                 }
             },
             Kirigami.Action {
                 icon.name: "view-refresh-symbolic"
                 onTriggered: {
-                    web.reload();
+                    webLoader.item.reload();
                 }
             },
             Kirigami.Action {
                 icon.name: "draw-arrow-forward-symbolic"
                 onTriggered: {
-                    web.goForward();
+                    webLoader.item.goForward();
                 }
             }
         ]
