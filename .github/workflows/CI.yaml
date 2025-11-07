@@ -167,6 +167,8 @@ jobs:
         qt6-graphs-devel
         qt6-quickshapes-devel
         qt6-quickcontrols2-devel
+        qt6-webengine
+        qt6-webenginequick-devel
         kf6-qqc2-desktop-style-devel
         kf6-kiconthemes-devel
         kf6-kirigami-devel

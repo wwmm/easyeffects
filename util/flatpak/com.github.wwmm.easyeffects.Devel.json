@@ -3,11 +3,14 @@
     "runtime": "org.kde.Platform",
     "runtime-version": "6.10",
     "sdk": "org.kde.Sdk",
+    "base": "io.qt.qtwebengine.BaseApp",
+    "base-version": "6.10",
     "branch": "stable",
     "command": "easyeffects",
     "finish-args": [
         "--share=ipc",
         "--socket=fallback-x11",
+        "--env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess",
         "--socket=wayland",
         "--device=dri",
         "--filesystem=xdg-run/pipewire-0:ro",
@@ -26,6 +29,9 @@
         "/lib/python*",
         "/share/info"
     ],
+    "cleanup-commands": [
+        "/app/cleanup-BaseApp.sh"
+    ],
     "add-extensions": {
         "io.github.wwmm.easyeffects.Presets": {
             "directory": "extensions/Presets",
@@ -36,7 +42,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins": {
             "directory": "extensions/Plugins",
-            "version": "24.08",
+            "version": "25.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "subdirectories": true,
@@ -44,7 +50,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins.Calf": {
             "directory": "extensions/Plugins/Calf",
-            "version": "24.08",
+            "version": "25.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "autodelete": false,
@@ -52,7 +58,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins.LSP": {
             "directory": "extensions/Plugins/LSP",
-            "version": "24.08",
+            "version": "25.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "autodelete": false,
@@ -60,7 +66,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins.ZamPlugins": {
             "directory": "extensions/Plugins/ZamPlugins",
-            "version": "24.08",
+            "version": "25.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "autodelete": false,
@@ -68,7 +74,7 @@
         },
         "org.freedesktop.LinuxAudio.Plugins.MDA": {
             "directory": "extensions/Plugins/MDA",
-            "version": "24.08",
+            "version": "25.08",
             "add-ld-path": "lib",
             "merge-dirs": "lv2",
             "autodelete": false,
@@ -81,8 +87,7 @@
             "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DDEVEL=1",
-                "-Dbuildtype=debug",
-                "-DENABLE_MOLD=1"
+                "-DCMAKE_BUILD_TYPE=Debug"
             ],
             "run-tests": true,
             "sources": [
@@ -93,7 +98,6 @@
                 }
             ],
             "post-install": [
-                "install -Dm644 -t $FLATPAK_DEST/share/licenses/$FLATPAK_ID LICENSE",
                 "mkdir -pm755 $FLATPAK_DEST/extensions/Presets",
                 "mkdir -pm755 $FLATPAK_DEST/extensions/Plugins"
             ],
