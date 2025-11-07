@@ -11,11 +11,16 @@ Kirigami.OverlaySheet {
     focus: true
     y: 0
 
-    WebEngineView {
-        id: web
-
-        implicitHeight: appWindow.maxOverlayHeight - control.header.height
-        url: "qrc:/help/index.html"
+    Loader {
+        id: webLoader
+        active: control.visible
+        asynchronous: true
+        anchors.fill: parent
+        sourceComponent: WebEngineView {
+            id: web
+            implicitHeight: appWindow.maxOverlayHeight - control.header.height
+            url: "qrc:/help/index.html"
+        }
     }
 
     header: Kirigami.ActionToolBar {
