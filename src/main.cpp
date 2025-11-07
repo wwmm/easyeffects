@@ -210,6 +210,7 @@ static void initQml(QQmlApplicationEngine& engine,
             ui.window->releaseResources();
 
             engine.trimComponentCache();
+            engine.collectGarbage();
 
 #if defined(__GLIBC__)
             malloc_trim(0);

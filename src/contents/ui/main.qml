@@ -50,15 +50,11 @@ Kirigami.ApplicationWindow {
             DB.Manager.saveAll();
 
             pageStack.clear();
-
-            gc();
         }
     }
 
     onClosing: {
         DB.Manager.enableAutosave(false);
-
-        gc();
     }
 
     function openMappedPage(index) {
