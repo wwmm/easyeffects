@@ -102,6 +102,13 @@ jobs:
       with:
         args: --exceptions --user-exceptions exceptions.json manifest util/flatpak/com.github.wwmm.easyeffects.Devel.json
 
+    # run command twice as they can fail intermittently due to network errors
+    - name: Verify flatpak builder lint (extra attempt)
+      uses: docker://ghcr.io/flathub/flatpak-builder-lint:latest
+      if: failure()
+      with:
+        args: --exceptions --user-exceptions exceptions.json manifest util/flatpak/com.github.wwmm.easyeffects.Devel.json
+
   arch-linux:
     name: Arch Linux
     runs-on: ubuntu-24.04
@@ -148,14 +155,21 @@ jobs:
 
     - name: Install deps
       run: |
+        # run commands twice as they can fail intermittently due to network errors
+
         # needed for webrtc-audio-processing, seems reasonably official
+        zypper addrepo https://download.opensuse.org/repositories/multimedia:libs/openSUSE_Tumbleweed/multimedia:libs.repo || \
         zypper addrepo https://download.opensuse.org/repositories/multimedia:libs/openSUSE_Tumbleweed/multimedia:libs.repo
 
         # auto import keys needed due to custom repository
+        zypper --gpg-auto-import-keys refresh || \
         zypper --gpg-auto-import-keys refresh
+  
+        zypper update -y || \
         zypper update -y
 
         # install general build deps
+        zypper install -y gcc gcc-c++ clang libomp-devel cmake extra-cmake-modules ninja bash || \
         zypper install -y gcc gcc-c++ clang libomp-devel cmake extra-cmake-modules ninja bash
 
         # inspired by https://src.fedoraproject.org/rpms/easyeffects/raw/rawhide/f/easyeffects.spec
@@ -202,6 +216,7 @@ jobs:
         "
 
         # install easyeffects deps
+        zypper install -y $depends || \
         zypper install -y $depends
 
     - name: Build with gcc

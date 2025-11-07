@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <component type="desktop-application">
-  <id>@APP_ID@.desktop</id>
-  <name>Easy Effects</name>
+  <id>@APPLICATION_ID@.desktop</id>
+  <name>@APPLICATION_NAME@</name>
   <summary>Audio Effects for PipeWire Applications</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
@@ -28,7 +28,7 @@
     <control>console</control>
     <control>touch</control>
   </supports>
-  <launchable type="desktop-id">@APP_ID@.desktop</launchable>
+  <launchable type="desktop-id">@APPLICATION_ID@.desktop</launchable>
   <url type="homepage">https://github.com/wwmm/easyeffects</url>
   <url type="bugtracker">https://github.com/wwmm/easyeffects/issues</url>
   <url type="faq">https://github.com/wwmm/easyeffects/wiki/FAQ</url>

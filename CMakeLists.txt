@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.28)
 project(easyeffects VERSION 8.0.0 LANGUAGES CXX C)
 
 set(APPLICATION_DOMAIN "easyeffects")
-set(APPLICATION_NAME "Easy Effects")
 set(COMPONENT_NAME "easyeffects")
 set(ORGANIZATION_NAME "WWMM")
 set(ORGANIZATION_DOMAIN "com.github.wwmm")
@@ -17,9 +16,22 @@ set(QT_MAJOR_VERSION ${QT_DEFAULT_MAJOR_VERSION})
 
 set(QT_QML_GENERATE_QMLLS_INI ON)
 
+option(ENABLE_DEVEL "Whether to use development build mode, with .Devel appended to the application ID. For Flatpak builds, user data for development builds is stored separately from stable builds." OFF)
 option(ENABLE_RNNOISE "Whether to use RRNNoise for noise cancellation" ON)
 option(ENABLE_LIBCPP_WORKAROUNDS "Enabled Workarounds for systems that use libc++ instead of stdc++" OFF)
 option(ENABLE_SANATIZER "Enable the compiler's sanatizer" OFF)
+
+if(ENABLE_DEVEL)
+    message(STATUS "Using development build mode with .Devel appended to the application ID.")
+    set(APPLICATION_ID "com.github.wwmm.easyeffects.Devel")
+    set(APPLICATION_ID_SHORT "easyeffects.Devel")
+    set(APPLICATION_NAME "Easy Effects (Devel)")
+else()
+    message(STATUS "Using stable build mode with the standard application ID")
+    set(APPLICATION_ID "com.github.wwmm.easyeffects")
+    set(APPLICATION_ID_SHORT "easyeffects")
+    set(APPLICATION_NAME "Easy Effects")
+endif()
 
 find_package(ECM REQUIRED NO_MODULE)
 
