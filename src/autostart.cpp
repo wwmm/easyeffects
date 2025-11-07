@@ -26,8 +26,11 @@
 #include <libportal/background.h>
 #include <libportal/parent.h>
 #include <qobject.h>
+#include <qstandardpaths.h>
 #include <QWindow>
+#include <filesystem>
 #include <format>
+#include <fstream>
 #include <string>
 #include "db_manager.hpp"
 #include "tags_app.hpp"
@@ -82,7 +85,11 @@ void on_request_background_called([[maybe_unused]] GObject* source,
 }  // namespace
 
 Autostart::Autostart(QObject* parent) : QObject(parent) {
-  connect(db::Main::self(), &db::Main::autostartOnLoginChanged, [&]() { update_background_portal(); });
+  connect(db::Main::self(), &db::Main::autostartOnLoginChanged, [&]() {
+    update_background_portal();
+
+    // fallback_enable_autostart(db::Main::autostartOnLogin());
+  });
 }
 
 void Autostart::set_window(QWindow* window) {
@@ -113,4 +120,47 @@ void Autostart::update_background_portal() {
                                 cmd, flags, nullptr, on_request_background_called, this);
 
   xdp_parent_free(xdp_parent);
+}
+
+void Autostart::fallback_enable_autostart(const bool& state) {
+  std::filesystem::path autostart_dir{QStandardPaths::writableLocation(QStandardPaths::ConfigLocation).toStdString() +
+                                      "/autostart"};
+
+  if (!std::filesystem::is_directory(autostart_dir)) {
+    std::filesystem::create_directories(autostart_dir);
+  }
+
+  std::filesystem::path autostart_file = autostart_dir / "easyeffects-service.desktop";
+
+  if (state != 0) {
+    if (!std::filesystem::exists(autostart_file)) {
+      std::ofstream ofs{autostart_file};
+
+      ofs << "[Desktop Entry]\n";
+      ofs << "Name=Easy Effects\n";
+      ofs << "Comment=Easy Effects Service\n";
+      ofs << "Exec=easyeffects --hide-window";
+
+      if (db::Main::enableServiceMode()) {
+        ofs << " --service-mode\n";
+      } else {
+        ofs << "\n";
+      }
+
+      ofs << "Icon=com.github.wwmm.easyeffects\n";
+      ofs << "StartupNotify=false\n";
+      ofs << "Terminal=false\n";
+      ofs << "Type=Application\n";
+
+      ofs.close();
+
+      util::debug("autostart file created");
+    }
+  } else {
+    if (std::filesystem::exists(autostart_file)) {
+      std::filesystem::remove(autostart_file);
+
+      util::debug("autostart file removed");
+    }
+  }
 }
