@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-05 21:54+0000\n"
+"POT-Creation-Date: 2025-11-07 01:03+0000\n"
 "PO-Revision-Date: 2025-11-06 06:10+0300\n"
 "Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -76,11 +76,11 @@ msgstr "Увімкнути налагоджувальні повідомленн
 msgid "Must specify preset type: input/output."
 msgstr "Потрібно вказати тип попереднього налаштування: вхід/вихід."
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:342
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:345
 msgid "Output Presets"
 msgstr "Попередні налаштування для виходу"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:330
 msgid "Input Presets"
 msgstr "Попередні налаштування для входу"
 
@@ -272,14 +272,14 @@ msgstr "Слухати"
 #: src/contents/ui/MultibandCompressor.qml:986
 #: src/contents/ui/MultibandGate.qml:959 src/contents/ui/RNNoise.qml:323
 #: src/contents/ui/Reverb.qml:350 src/contents/ui/Speex.qml:185
-#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:523
+#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:528
 msgid "Reset"
 msgstr "Скинути"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:461
+#: src/contents/ui/main.qml:466
 msgid "Output"
 msgstr "Вихід"
 
@@ -460,9 +460,9 @@ msgid "RMS"
 msgstr "RMS"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Compressor.qml:426
-#: src/contents/ui/Expander.qml:260 src/contents/ui/Expander.qml:385
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:281
-#: src/contents/ui/Gate.qml:406
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:260
+#: src/contents/ui/Expander.qml:385 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:281 src/contents/ui/Gate.qml:406
 msgid "Low-pass"
 msgstr "ФНЧ"
 
@@ -575,8 +575,9 @@ msgstr "Реактивність"
 msgid "Lookahead"
 msgstr "Випередження (затримка)"
 
-#: src/contents/ui/Compressor.qml:411 src/contents/ui/Expander.qml:370
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:391
+#: src/contents/ui/Compressor.qml:411 src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/Expander.qml:370 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:391
 msgid "High-pass"
 msgstr "ФВЧ"
 
@@ -743,7 +744,8 @@ msgstr "Конвольвер працює в наскрізному режимі
 
 #: src/contents/ui/Convolver.qml:58
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "Не вдалося завантажити імпульс %1. Конвольвер працює в наскрізному режимі."
+msgstr ""
+"Не вдалося завантажити імпульс %1. Конвольвер працює в наскрізному режимі."
 
 #: src/contents/ui/Convolver.qml:122
 msgid "First"
@@ -847,7 +849,7 @@ msgid "Default"
 msgstr "За замовчуванням"
 
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
-#: src/contents/ui/main.qml:439
+#: src/contents/ui/main.qml:444
 msgid "Presets"
 msgstr "Попередні налаштування"
 
@@ -1095,7 +1097,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Регулятори підсилення входу та виходу з індикаторами рівня"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:470
+#: src/contents/ui/main.qml:475
 msgid "Input"
 msgstr "Вхід"
 
@@ -1121,13 +1123,14 @@ msgstr "Імпортовано файл попереднього налашту�
 
 #: src/contents/ui/Equalizer.qml:71
 msgid "Failed to import the GraphicEQ preset file."
-msgstr "Не вдалося імпортувати файл попереднього налаштування графічного еквалайзера."
+msgstr ""
+"Не вдалося імпортувати файл попереднього налаштування графічного еквалайзера."
 
 #: src/contents/ui/Equalizer.qml:84
 msgid "Exported the current Equalizer settings to an external APO preset file."
 msgstr ""
-"Експортовано поточні налаштування еквалайзера до зовнішнього файлу попереднього "
-"налаштування APO."
+"Експортовано поточні налаштування еквалайзера до зовнішнього файлу "
+"попереднього налаштування APO."
 
 #: src/contents/ui/Equalizer.qml:87
 msgid ""
@@ -1193,20 +1196,12 @@ msgstr "Діапазон"
 msgid "Bell"
 msgstr "Дзвоновий фільтр"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Hi-pass"
-msgstr "ФВЧ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Hi-shelf"
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "High-shelf"
 msgstr "Полицевий ФВЧ"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Lo-pass"
-msgstr "ФНЧ"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Lo-shelf"
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Low-shelf"
 msgstr "Полицевий ФНЧ"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
@@ -1217,11 +1212,11 @@ msgstr "Режекторний фільтр"
 msgid "Resonance"
 msgstr "Резонансний фільтр"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Allpass"
 msgstr "Фазовий фільтр"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Bandpass"
 msgstr "Смуговий фільтр"
 
@@ -1229,8 +1224,8 @@ msgstr "Смуговий фільтр"
 msgid "Ladder-pass"
 msgstr "Сходовий (пропуск)"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Ladder-rej"
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Ladder-rejection"
 msgstr "Сходовий (відхилення)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:90
@@ -1280,26 +1275,6 @@ msgstr "Еспандер"
 #: src/contents/ui/MultibandGate.qml:363
 msgid "Internal"
 msgstr "Внутрішній"
-
-#: src/contents/ui/Filter.qml:55
-msgid "Low-shelf"
-msgstr "Полицевий ФНЧ"
-
-#: src/contents/ui/Filter.qml:55
-msgid "High-shelf"
-msgstr "Полицевий ФВЧ"
-
-#: src/contents/ui/Filter.qml:55
-msgid "Band-pass"
-msgstr "Смуговий фільтр"
-
-#: src/contents/ui/Filter.qml:55
-msgid "Ladder-rejection"
-msgstr "Сходовий (відхилення)"
-
-#: src/contents/ui/Filter.qml:55
-msgid "All-pass"
-msgstr "Фазовий фільтр"
 
 #: src/contents/ui/Filter.qml:64
 msgid "Filter mode"
@@ -1927,7 +1902,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:495
+#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:500
 msgid "Preferences"
 msgstr "Параметри"
 
@@ -2633,8 +2608,8 @@ msgstr "Глобальні скорочення"
 msgid "Toggle microphone monitoring"
 msgstr "Увімкнути/вимкнути моніторинг мікрофона"
 
-#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:384
-#: src/contents/ui/main.qml:503
+#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:387
+#: src/contents/ui/main.qml:508
 msgid "Shortcuts"
 msgstr "Скорочення"
 
@@ -2748,49 +2723,49 @@ msgstr "База стерео"
 msgid "Stereo phase"
 msgstr "Фаза стерео"
 
-#: src/contents/ui/main.qml:208
+#: src/contents/ui/main.qml:211
 msgid "Reset Settings?"
 msgstr "Скинути налаштування?"
 
-#: src/contents/ui/main.qml:209
+#: src/contents/ui/main.qml:212
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Ви впевнені, що хочете скинути всі налаштування Easy Effects?"
 
-#: src/contents/ui/main.qml:278 src/contents/ui/main.qml:294
+#: src/contents/ui/main.qml:281 src/contents/ui/main.qml:297
 msgid "Preset Loaded"
 msgstr "Пресет застосовано"
 
-#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
+#: src/contents/ui/main.qml:308 src/contents/ui/main.qml:320
 msgid "Clear List"
 msgstr "Очистити список"
 
-#: src/contents/ui/main.qml:306 src/contents/ui/main.qml:318
+#: src/contents/ui/main.qml:309 src/contents/ui/main.qml:321
 #, fuzzy
 msgid "Are you sure you want to clear this list?"
 msgstr "Ви впевнені, що хочете вилучити цей пресет зі списку?"
 
-#: src/contents/ui/main.qml:373
+#: src/contents/ui/main.qml:376
 msgid "Active"
 msgstr "Активний"
 
-#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:511
+#: src/contents/ui/main.qml:396 src/contents/ui/main.qml:516
 msgid "Manual"
 msgstr "Довідка"
 
-#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:543
+#: src/contents/ui/main.qml:408 src/contents/ui/main.qml:548
 msgid "Quit"
 msgstr "Вийти"
 
-#: src/contents/ui/main.qml:427
+#: src/contents/ui/main.qml:432
 #, fuzzy
 msgid "Turn effects on/off"
 msgstr "Увімкнення/вимкнення ефектів"
 
-#: src/contents/ui/main.qml:479
+#: src/contents/ui/main.qml:484
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:540
 msgid "About Easy Effects"
 msgstr "Про Easy Effects"
 
@@ -2942,3 +2917,24 @@ msgstr "Еквалайзер, компресор та інші звукові е
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Звукові ефекти для застосунків PipeWire"
+
+#~ msgid "Hi-pass"
+#~ msgstr "ФВЧ"
+
+#~ msgid "Hi-shelf"
+#~ msgstr "Полицевий ФВЧ"
+
+#~ msgid "Lo-pass"
+#~ msgstr "ФНЧ"
+
+#~ msgid "Lo-shelf"
+#~ msgstr "Полицевий ФНЧ"
+
+#~ msgid "Ladder-rej"
+#~ msgstr "Сходовий (відхилення)"
+
+#~ msgid "Band-pass"
+#~ msgstr "Смуговий фільтр"
+
+#~ msgid "All-pass"
+#~ msgstr "Фазовий фільтр"

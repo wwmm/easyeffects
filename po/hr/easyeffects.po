@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-05 21:54+0000\n"
+"POT-Creation-Date: 2025-11-07 01:03+0000\n"
 "PO-Revision-Date: 2025-10-02 05:01+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -80,11 +80,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:342
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:345
 msgid "Output Presets"
 msgstr "Unaprijed postavljene postavke ispisa"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:330
 #, fuzzy
 msgid "Input Presets"
 msgstr "Učitaj predloške"
@@ -293,14 +293,14 @@ msgstr "Poslušaj"
 #: src/contents/ui/MultibandCompressor.qml:986
 #: src/contents/ui/MultibandGate.qml:959 src/contents/ui/RNNoise.qml:323
 #: src/contents/ui/Reverb.qml:350 src/contents/ui/Speex.qml:185
-#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:523
+#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:528
 msgid "Reset"
 msgstr "Vrati na tvorničke postavke"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:461
+#: src/contents/ui/main.qml:466
 msgid "Output"
 msgstr "Izlaz"
 
@@ -496,9 +496,9 @@ msgid "RMS"
 msgstr "RMS"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Compressor.qml:426
-#: src/contents/ui/Expander.qml:260 src/contents/ui/Expander.qml:385
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:281
-#: src/contents/ui/Gate.qml:406
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:260
+#: src/contents/ui/Expander.qml:385 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:281 src/contents/ui/Gate.qml:406
 #, fuzzy
 msgid "Low-pass"
 msgstr "Nizak prolaz"
@@ -612,8 +612,9 @@ msgstr ""
 msgid "Lookahead"
 msgstr "Preduhvatiti"
 
-#: src/contents/ui/Compressor.qml:411 src/contents/ui/Expander.qml:370
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:391
+#: src/contents/ui/Compressor.qml:411 src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/Expander.qml:370 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:391
 #, fuzzy
 msgid "High-pass"
 msgstr "Filter visokog prolaza"
@@ -912,7 +913,7 @@ msgid "Default"
 msgstr "Tvorničke postavke"
 
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
-#: src/contents/ui/main.qml:439
+#: src/contents/ui/main.qml:444
 msgid "Presets"
 msgstr "Predlošci"
 
@@ -1184,7 +1185,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:470
+#: src/contents/ui/main.qml:475
 msgid "Input"
 msgstr "Ulaz"
 
@@ -1296,24 +1297,14 @@ msgstr "Trake"
 msgid "Bell"
 msgstr "Zvono"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
-msgid "Hi-pass"
-msgstr "Filter visokog prolaza"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Hi-shelf"
+msgid "High-shelf"
 msgstr "Visoki shelf"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
-msgid "Lo-pass"
-msgstr "Nizak prolaz"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Lo-shelf"
+msgid "Low-shelf"
 msgstr "Niski shelf"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
@@ -1324,12 +1315,12 @@ msgstr ""
 msgid "Resonance"
 msgstr "Rezonancija"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
 msgid "Allpass"
 msgstr "Premosnica"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
 msgid "Bandpass"
 msgstr "Premosnica"
@@ -1339,9 +1330,9 @@ msgstr "Premosnica"
 msgid "Ladder-pass"
 msgstr "Nizak prolaz"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
-msgid "Ladder-rej"
+msgid "Ladder-rejection"
 msgstr "Ograničenje pojačanja"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:90
@@ -1393,31 +1384,6 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:363
 msgid "Internal"
 msgstr "Interni"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Low-shelf"
-msgstr "Niski shelf"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "High-shelf"
-msgstr "Visoki shelf"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Band-pass"
-msgstr "Premosnica"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Ladder-rejection"
-msgstr "Ograničenje pojačanja"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "All-pass"
-msgstr "Nizak prolaz"
 
 #: src/contents/ui/Filter.qml:64
 #, fuzzy
@@ -2052,7 +2018,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:495
+#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:500
 #, fuzzy
 msgid "Preferences"
 msgstr "Referenca"
@@ -2740,8 +2706,8 @@ msgstr "Kratkoročno"
 msgid "Toggle microphone monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:384
-#: src/contents/ui/main.qml:503
+#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:387
+#: src/contents/ui/main.qml:508
 #, fuzzy
 msgid "Shortcuts"
 msgstr "Kratkoročno"
@@ -2853,50 +2819,50 @@ msgstr "Stereo baza"
 msgid "Stereo phase"
 msgstr "Stereo faza"
 
-#: src/contents/ui/main.qml:208
+#: src/contents/ui/main.qml:211
 msgid "Reset Settings?"
 msgstr "Resetirati postavke?"
 
-#: src/contents/ui/main.qml:209
+#: src/contents/ui/main.qml:212
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:278 src/contents/ui/main.qml:294
+#: src/contents/ui/main.qml:281 src/contents/ui/main.qml:297
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Učitaj predloške"
 
-#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
+#: src/contents/ui/main.qml:308 src/contents/ui/main.qml:320
 #, fuzzy
 msgid "Clear List"
 msgstr "Popis klijenata"
 
-#: src/contents/ui/main.qml:306 src/contents/ui/main.qml:318
+#: src/contents/ui/main.qml:309 src/contents/ui/main.qml:321
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/main.qml:373
+#: src/contents/ui/main.qml:376
 #, fuzzy
 msgid "Active"
 msgstr "Kompresija"
 
-#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:511
+#: src/contents/ui/main.qml:396 src/contents/ui/main.qml:516
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:543
+#: src/contents/ui/main.qml:408 src/contents/ui/main.qml:548
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:427
+#: src/contents/ui/main.qml:432
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/main.qml:479
+#: src/contents/ui/main.qml:484
 msgid "PipeWire"
 msgstr ""
 
-#: src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:540
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "EasyEffects"
@@ -3052,6 +3018,34 @@ msgstr "Ekvalizator, kompresor i drugi audio efekti"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Zvučni efekti za PipeWire aplikacije"
+
+#, fuzzy
+#~ msgid "Hi-pass"
+#~ msgstr "Filter visokog prolaza"
+
+#, fuzzy
+#~ msgid "Hi-shelf"
+#~ msgstr "Visoki shelf"
+
+#, fuzzy
+#~ msgid "Lo-pass"
+#~ msgstr "Nizak prolaz"
+
+#, fuzzy
+#~ msgid "Lo-shelf"
+#~ msgstr "Niski shelf"
+
+#, fuzzy
+#~ msgid "Ladder-rej"
+#~ msgstr "Ograničenje pojačanja"
+
+#, fuzzy
+#~ msgid "Band-pass"
+#~ msgstr "Premosnica"
+
+#, fuzzy
+#~ msgid "All-pass"
+#~ msgstr "Nizak prolaz"
 
 #, fuzzy
 #~ msgid "Toggle Global Bypass"

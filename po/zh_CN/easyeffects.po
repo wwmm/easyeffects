@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-05 21:54+0000\n"
+"POT-Creation-Date: 2025-11-07 01:03+0000\n"
 "PO-Revision-Date: 2025-10-30 04:17+0000\n"
 "Last-Translator: 雲の中を漂う船 <nogamenolife_zero@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -79,11 +79,11 @@ msgstr "启用调试信息。"
 msgid "Must specify preset type: input/output."
 msgstr "必须指定预设类型：输入/输出。"
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:342
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:345
 msgid "Output Presets"
 msgstr "输出预设"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:330
 msgid "Input Presets"
 msgstr "输入预设"
 
@@ -290,14 +290,14 @@ msgstr "聆听"
 #: src/contents/ui/MultibandCompressor.qml:986
 #: src/contents/ui/MultibandGate.qml:959 src/contents/ui/RNNoise.qml:323
 #: src/contents/ui/Reverb.qml:350 src/contents/ui/Speex.qml:185
-#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:523
+#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:528
 msgid "Reset"
 msgstr "重置"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:461
+#: src/contents/ui/main.qml:466
 msgid "Output"
 msgstr "输出"
 
@@ -490,9 +490,9 @@ msgid "RMS"
 msgstr "均方根值"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Compressor.qml:426
-#: src/contents/ui/Expander.qml:260 src/contents/ui/Expander.qml:385
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:281
-#: src/contents/ui/Gate.qml:406
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:260
+#: src/contents/ui/Expander.qml:385 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:281 src/contents/ui/Gate.qml:406
 msgid "Low-pass"
 msgstr "低通"
 
@@ -606,8 +606,9 @@ msgstr "响应"
 msgid "Lookahead"
 msgstr "前视时间"
 
-#: src/contents/ui/Compressor.qml:411 src/contents/ui/Expander.qml:370
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:391
+#: src/contents/ui/Compressor.qml:411 src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/Expander.qml:370 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:391
 #, fuzzy
 msgid "High-pass"
 msgstr "高通滤波器"
@@ -902,7 +903,7 @@ msgid "Default"
 msgstr "默认"
 
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
-#: src/contents/ui/main.qml:439
+#: src/contents/ui/main.qml:444
 msgid "Presets"
 msgstr "预设"
 
@@ -1177,7 +1178,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:470
+#: src/contents/ui/main.qml:475
 msgid "Input"
 msgstr "输入"
 
@@ -1289,24 +1290,14 @@ msgstr "频段"
 msgid "Bell"
 msgstr "钟形"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
-msgid "Hi-pass"
-msgstr "高通滤波器"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Hi-shelf"
+msgid "High-shelf"
 msgstr "高架"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
-msgid "Lo-pass"
-msgstr "低通"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-#, fuzzy
-msgid "Lo-shelf"
+msgid "Low-shelf"
 msgstr "低架"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
@@ -1317,12 +1308,12 @@ msgstr "带阻"
 msgid "Resonance"
 msgstr "共鸣"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
 msgid "Allpass"
 msgstr "旁路"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
 msgid "Bandpass"
 msgstr "频段旁路"
@@ -1332,9 +1323,9 @@ msgstr "频段旁路"
 msgid "Ladder-pass"
 msgstr "梯形带通滤波"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 #, fuzzy
-msgid "Ladder-rej"
+msgid "Ladder-rejection"
 msgstr "梯形带阻滤波"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:90
@@ -1385,31 +1376,6 @@ msgstr "扩展器"
 #: src/contents/ui/MultibandGate.qml:363
 msgid "Internal"
 msgstr "内部"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Low-shelf"
-msgstr "低架"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "High-shelf"
-msgstr "高架"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Band-pass"
-msgstr "带通滤波"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Ladder-rejection"
-msgstr "梯形带阻滤波"
-
-#: src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "All-pass"
-msgstr "全通"
 
 #: src/contents/ui/Filter.qml:64
 #, fuzzy
@@ -2059,7 +2025,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:495
+#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:500
 #, fuzzy
 msgid "Preferences"
 msgstr "首选项(_P)"
@@ -2755,8 +2721,8 @@ msgstr "快捷键(_S)"
 msgid "Toggle microphone monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:384
-#: src/contents/ui/main.qml:503
+#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:387
+#: src/contents/ui/main.qml:508
 #, fuzzy
 msgid "Shortcuts"
 msgstr "快捷键(_S)"
@@ -2871,54 +2837,54 @@ msgstr "立体声基线"
 msgid "Stereo phase"
 msgstr "立体声相位"
 
-#: src/contents/ui/main.qml:208
+#: src/contents/ui/main.qml:211
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "重置设置(_R)"
 
-#: src/contents/ui/main.qml:209
+#: src/contents/ui/main.qml:212
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:278 src/contents/ui/main.qml:294
+#: src/contents/ui/main.qml:281 src/contents/ui/main.qml:297
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "未加载预设"
 
-#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
+#: src/contents/ui/main.qml:308 src/contents/ui/main.qml:320
 #, fuzzy
 msgid "Clear List"
 msgstr "客户端列表"
 
-#: src/contents/ui/main.qml:306 src/contents/ui/main.qml:318
+#: src/contents/ui/main.qml:309 src/contents/ui/main.qml:321
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/main.qml:373
+#: src/contents/ui/main.qml:376
 #, fuzzy
 msgid "Active"
 msgstr "激活"
 
-#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:511
+#: src/contents/ui/main.qml:396 src/contents/ui/main.qml:516
 #, fuzzy
 msgid "Manual"
 msgstr "使用手册(_M)"
 
-#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:543
+#: src/contents/ui/main.qml:408 src/contents/ui/main.qml:548
 #, fuzzy
 msgid "Quit"
 msgstr "退出(_Q)"
 
-#: src/contents/ui/main.qml:427
+#: src/contents/ui/main.qml:432
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/main.qml:479
+#: src/contents/ui/main.qml:484
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire(_P)"
 
-#: src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:540
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "关于 EasyEffects (_A)"
@@ -3073,6 +3039,34 @@ msgstr "均衡器、压缩器和其他音效"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "为使用 PipeWire 的应用提供音效"
+
+#, fuzzy
+#~ msgid "Hi-pass"
+#~ msgstr "高通滤波器"
+
+#, fuzzy
+#~ msgid "Hi-shelf"
+#~ msgstr "高架"
+
+#, fuzzy
+#~ msgid "Lo-pass"
+#~ msgstr "低通"
+
+#, fuzzy
+#~ msgid "Lo-shelf"
+#~ msgstr "低架"
+
+#, fuzzy
+#~ msgid "Ladder-rej"
+#~ msgstr "梯形带阻滤波"
+
+#, fuzzy
+#~ msgid "Band-pass"
+#~ msgstr "带通滤波"
+
+#, fuzzy
+#~ msgid "All-pass"
+#~ msgstr "全通"
 
 #, fuzzy
 #~ msgid "Toggle Global Bypass"

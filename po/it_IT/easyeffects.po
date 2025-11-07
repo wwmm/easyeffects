@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-05 21:54+0000\n"
+"POT-Creation-Date: 2025-11-07 01:03+0000\n"
 "PO-Revision-Date: 2025-11-06 04:28+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -78,11 +78,11 @@ msgstr "Abilità messaggi di debug."
 msgid "Must specify preset type: input/output."
 msgstr "È necessario specificare il tipo di profilo: input/output."
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:342
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:345
 msgid "Output Presets"
 msgstr "Profili di Uscita"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:330
 msgid "Input Presets"
 msgstr "Profili di Ingresso"
 
@@ -275,14 +275,14 @@ msgstr "Ascolta"
 #: src/contents/ui/MultibandCompressor.qml:986
 #: src/contents/ui/MultibandGate.qml:959 src/contents/ui/RNNoise.qml:323
 #: src/contents/ui/Reverb.qml:350 src/contents/ui/Speex.qml:185
-#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:523
+#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:528
 msgid "Reset"
 msgstr "Reimposta"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:461
+#: src/contents/ui/main.qml:466
 msgid "Output"
 msgstr "Uscita"
 
@@ -463,9 +463,9 @@ msgid "RMS"
 msgstr "RMS"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Compressor.qml:426
-#: src/contents/ui/Expander.qml:260 src/contents/ui/Expander.qml:385
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:281
-#: src/contents/ui/Gate.qml:406
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:260
+#: src/contents/ui/Expander.qml:385 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:281 src/contents/ui/Gate.qml:406
 msgid "Low-pass"
 msgstr "Passa-basso"
 
@@ -578,8 +578,9 @@ msgstr "Reattività"
 msgid "Lookahead"
 msgstr "Lookahead"
 
-#: src/contents/ui/Compressor.qml:411 src/contents/ui/Expander.qml:370
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:391
+#: src/contents/ui/Compressor.qml:411 src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/Expander.qml:370 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:391
 msgid "High-pass"
 msgstr "Passa-alto"
 
@@ -853,7 +854,7 @@ msgid "Default"
 msgstr "Predefinito"
 
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
-#: src/contents/ui/main.qml:439
+#: src/contents/ui/main.qml:444
 msgid "Presets"
 msgstr "Profili"
 
@@ -1101,7 +1102,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Regolatori del guadagno di input e output con i misuratori di livello"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:470
+#: src/contents/ui/main.qml:475
 msgid "Input"
 msgstr "Ingresso"
 
@@ -1199,20 +1200,12 @@ msgstr "Banda"
 msgid "Bell"
 msgstr "Campana"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Hi-pass"
-msgstr "Passa-alto"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Hi-shelf"
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "High-shelf"
 msgstr "Sopra-soglia"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Lo-pass"
-msgstr "Passa-basso"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Lo-shelf"
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Low-shelf"
 msgstr "Sotto-soglia"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
@@ -1223,11 +1216,11 @@ msgstr "Fessura"
 msgid "Resonance"
 msgstr "Risonanza"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Allpass"
 msgstr "Passa-tutto"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Bandpass"
 msgstr "Passa-banda"
 
@@ -1235,8 +1228,8 @@ msgstr "Passa-banda"
 msgid "Ladder-pass"
 msgstr "Passa-scalino"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Ladder-rej"
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Ladder-rejection"
 msgstr "Respingi-scalino"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:90
@@ -1286,26 +1279,6 @@ msgstr "Expander"
 #: src/contents/ui/MultibandGate.qml:363
 msgid "Internal"
 msgstr "Interna"
-
-#: src/contents/ui/Filter.qml:55
-msgid "Low-shelf"
-msgstr "Sotto-soglia"
-
-#: src/contents/ui/Filter.qml:55
-msgid "High-shelf"
-msgstr "Sopra-soglia"
-
-#: src/contents/ui/Filter.qml:55
-msgid "Band-pass"
-msgstr "Passa-banda"
-
-#: src/contents/ui/Filter.qml:55
-msgid "Ladder-rejection"
-msgstr "Respingi-scalino"
-
-#: src/contents/ui/Filter.qml:55
-msgid "All-pass"
-msgstr "Passa-tutto"
 
 #: src/contents/ui/Filter.qml:64
 msgid "Filter mode"
@@ -1882,7 +1855,7 @@ msgstr "%1 non può essere utilizzato perché %2 non è installato nel sistema."
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:495
+#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:500
 msgid "Preferences"
 msgstr "Preferenze"
 
@@ -2507,8 +2480,8 @@ msgstr "Scorciatoie Globali"
 msgid "Toggle microphone monitoring"
 msgstr "Abilita/disabilita il monitoraggio del microfono"
 
-#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:384
-#: src/contents/ui/main.qml:503
+#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:387
+#: src/contents/ui/main.qml:508
 msgid "Shortcuts"
 msgstr "Scorciatoie"
 
@@ -2608,47 +2581,47 @@ msgstr "Base stereo"
 msgid "Stereo phase"
 msgstr "Fase stereo"
 
-#: src/contents/ui/main.qml:208
+#: src/contents/ui/main.qml:211
 msgid "Reset Settings?"
 msgstr "Reset delle Impostazioni?"
 
-#: src/contents/ui/main.qml:209
+#: src/contents/ui/main.qml:212
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "Vuoi davvero reimpostare tutte le opzioni di Easy Effects?"
 
-#: src/contents/ui/main.qml:278 src/contents/ui/main.qml:294
+#: src/contents/ui/main.qml:281 src/contents/ui/main.qml:297
 msgid "Preset Loaded"
 msgstr "Profilo Caricato"
 
-#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
+#: src/contents/ui/main.qml:308 src/contents/ui/main.qml:320
 msgid "Clear List"
 msgstr "Svuota Lista"
 
-#: src/contents/ui/main.qml:306 src/contents/ui/main.qml:318
+#: src/contents/ui/main.qml:309 src/contents/ui/main.qml:321
 msgid "Are you sure you want to clear this list?"
 msgstr "Vuoi davvero svuotare questa lista?"
 
-#: src/contents/ui/main.qml:373
+#: src/contents/ui/main.qml:376
 msgid "Active"
 msgstr "Attivo"
 
-#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:511
+#: src/contents/ui/main.qml:396 src/contents/ui/main.qml:516
 msgid "Manual"
 msgstr "Manuale"
 
-#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:543
+#: src/contents/ui/main.qml:408 src/contents/ui/main.qml:548
 msgid "Quit"
 msgstr "Esci"
 
-#: src/contents/ui/main.qml:427
+#: src/contents/ui/main.qml:432
 msgid "Turn effects on/off"
 msgstr "Abilita/disabilita gli effetti"
 
-#: src/contents/ui/main.qml:479
+#: src/contents/ui/main.qml:484
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:540
 msgid "About Easy Effects"
 msgstr "Info su Easy Effects"
 
@@ -2793,6 +2766,27 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Effetti Audio per Applicazioni Pipewire"
+
+#~ msgid "Hi-pass"
+#~ msgstr "Passa-alto"
+
+#~ msgid "Hi-shelf"
+#~ msgstr "Sopra-soglia"
+
+#~ msgid "Lo-pass"
+#~ msgstr "Passa-basso"
+
+#~ msgid "Lo-shelf"
+#~ msgstr "Sotto-soglia"
+
+#~ msgid "Ladder-rej"
+#~ msgstr "Respingi-scalino"
+
+#~ msgid "Band-pass"
+#~ msgstr "Passa-banda"
+
+#~ msgid "All-pass"
+#~ msgstr "Passa-tutto"
 
 #~ msgid "Toggle Global Bypass"
 #~ msgstr "Abilita/Disabilita Bypass Globale"

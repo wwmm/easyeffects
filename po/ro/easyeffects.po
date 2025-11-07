@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-05 21:54+0000\n"
+"POT-Creation-Date: 2025-11-07 01:03+0000\n"
 "PO-Revision-Date: 2025-11-04 16:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -79,11 +79,11 @@ msgstr "Activează mesajele de depanare."
 msgid "Must specify preset type: input/output."
 msgstr "Trebuie specificat tipul preconfigurării: intrare/ieșire."
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:342
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:345
 msgid "Output Presets"
 msgstr "Preconfigurări de ieșire"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:327
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:330
 msgid "Input Presets"
 msgstr "Preconfigurări de intrare"
 
@@ -275,14 +275,14 @@ msgstr "Ascultă"
 #: src/contents/ui/MultibandCompressor.qml:986
 #: src/contents/ui/MultibandGate.qml:959 src/contents/ui/RNNoise.qml:323
 #: src/contents/ui/Reverb.qml:350 src/contents/ui/Speex.qml:185
-#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:523
+#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:528
 msgid "Reset"
 msgstr "Restabilește"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:461
+#: src/contents/ui/main.qml:466
 msgid "Output"
 msgstr "Ieșire"
 
@@ -464,9 +464,9 @@ msgid "RMS"
 msgstr "RMS"
 
 #: src/contents/ui/Compressor.qml:300 src/contents/ui/Compressor.qml:426
-#: src/contents/ui/Expander.qml:260 src/contents/ui/Expander.qml:385
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:281
-#: src/contents/ui/Gate.qml:406
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:260
+#: src/contents/ui/Expander.qml:385 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:281 src/contents/ui/Gate.qml:406
 msgid "Low-pass"
 msgstr "Trece-jos"
 
@@ -579,8 +579,9 @@ msgstr "Reactivitate"
 msgid "Lookahead"
 msgstr "Privire Înainte"
 
-#: src/contents/ui/Compressor.qml:411 src/contents/ui/Expander.qml:370
-#: src/contents/ui/Filter.qml:55 src/contents/ui/Gate.qml:391
+#: src/contents/ui/Compressor.qml:411 src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/Expander.qml:370 src/contents/ui/Filter.qml:55
+#: src/contents/ui/Gate.qml:391
 msgid "High-pass"
 msgstr "Trece-sus"
 
@@ -854,7 +855,7 @@ msgid "Default"
 msgstr "Implicit"
 
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
-#: src/contents/ui/main.qml:439
+#: src/contents/ui/main.qml:444
 msgid "Presets"
 msgstr "Preconfigurări"
 
@@ -1104,7 +1105,7 @@ msgstr ""
 "(vumetre)"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:470
+#: src/contents/ui/main.qml:475
 msgid "Input"
 msgstr "Intrare"
 
@@ -1202,20 +1203,12 @@ msgstr "Bandă"
 msgid "Bell"
 msgstr "Clopot"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Hi-pass"
-msgstr "Trece-sus"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Hi-shelf"
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "High-shelf"
 msgstr "Reglaj trece-sus"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Lo-pass"
-msgstr "Trece-jos"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Lo-shelf"
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Low-shelf"
 msgstr "Reglaj trece-jos"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
@@ -1226,11 +1219,11 @@ msgstr "Decupaj de bandă"
 msgid "Resonance"
 msgstr "Rezonanță"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Allpass"
 msgstr "Trece-tot"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Bandpass"
 msgstr "Trece-bandă"
 
@@ -1238,8 +1231,8 @@ msgstr "Trece-bandă"
 msgid "Ladder-pass"
 msgstr "Trece-scară"
 
-#: src/contents/ui/EqualizerBandMenu.qml:37
-msgid "Ladder-rej"
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Ladder-rejection"
 msgstr "Rejectare-scară"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:90
@@ -1289,26 +1282,6 @@ msgstr "Expandare"
 #: src/contents/ui/MultibandGate.qml:363
 msgid "Internal"
 msgstr "Intern"
-
-#: src/contents/ui/Filter.qml:55
-msgid "Low-shelf"
-msgstr "Reglaj trece-jos"
-
-#: src/contents/ui/Filter.qml:55
-msgid "High-shelf"
-msgstr "Reglaj trece-sus"
-
-#: src/contents/ui/Filter.qml:55
-msgid "Band-pass"
-msgstr "Trece-bandă"
-
-#: src/contents/ui/Filter.qml:55
-msgid "Ladder-rejection"
-msgstr "Rejectare-scară"
-
-#: src/contents/ui/Filter.qml:55
-msgid "All-pass"
-msgstr "Trece-tot"
 
 #: src/contents/ui/Filter.qml:64
 msgid "Filter mode"
@@ -1886,7 +1859,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:495
+#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:500
 msgid "Preferences"
 msgstr "Preferințe"
 
@@ -2510,8 +2483,8 @@ msgstr "Taste de comenzi rapide"
 msgid "Toggle microphone monitoring"
 msgstr "Activează/dezactivează monitorizarea microfonului"
 
-#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:384
-#: src/contents/ui/main.qml:503
+#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:387
+#: src/contents/ui/main.qml:508
 msgid "Shortcuts"
 msgstr "Taste de comenzi rapide"
 
@@ -2611,48 +2584,48 @@ msgstr "Bază Stereo"
 msgid "Stereo phase"
 msgstr "Fază Stereo"
 
-#: src/contents/ui/main.qml:208
+#: src/contents/ui/main.qml:211
 msgid "Reset Settings?"
 msgstr "Reinițializați parametrii?"
 
-#: src/contents/ui/main.qml:209
+#: src/contents/ui/main.qml:212
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 "Sunteți sigur că doriți să reinițializați toți parametrii Easy Effects?"
 
-#: src/contents/ui/main.qml:278 src/contents/ui/main.qml:294
+#: src/contents/ui/main.qml:281 src/contents/ui/main.qml:297
 msgid "Preset Loaded"
 msgstr "Preconfigurare încărcată"
 
-#: src/contents/ui/main.qml:305 src/contents/ui/main.qml:317
+#: src/contents/ui/main.qml:308 src/contents/ui/main.qml:320
 msgid "Clear List"
 msgstr "Golește lista"
 
-#: src/contents/ui/main.qml:306 src/contents/ui/main.qml:318
+#: src/contents/ui/main.qml:309 src/contents/ui/main.qml:321
 msgid "Are you sure you want to clear this list?"
 msgstr "Sunteți sigur că doriți să goliți această listă?"
 
-#: src/contents/ui/main.qml:373
+#: src/contents/ui/main.qml:376
 msgid "Active"
 msgstr "Activ"
 
-#: src/contents/ui/main.qml:393 src/contents/ui/main.qml:511
+#: src/contents/ui/main.qml:396 src/contents/ui/main.qml:516
 msgid "Manual"
 msgstr "Manual"
 
-#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:543
+#: src/contents/ui/main.qml:408 src/contents/ui/main.qml:548
 msgid "Quit"
 msgstr "Ieșire"
 
-#: src/contents/ui/main.qml:427
+#: src/contents/ui/main.qml:432
 msgid "Turn effects on/off"
 msgstr "Activează/dezactivează efectele"
 
-#: src/contents/ui/main.qml:479
+#: src/contents/ui/main.qml:484
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:540
 msgid "About Easy Effects"
 msgstr "Despre Easy Effects"
 
@@ -2797,6 +2770,27 @@ msgstr "Egalizator, compresor și alte efecte audio"
 #: com.github.wwmm.easyeffects.desktop.template.h:4
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Efecte audio pentru aplicații PipeWire"
+
+#~ msgid "Hi-pass"
+#~ msgstr "Trece-sus"
+
+#~ msgid "Hi-shelf"
+#~ msgstr "Reglaj trece-sus"
+
+#~ msgid "Lo-pass"
+#~ msgstr "Trece-jos"
+
+#~ msgid "Lo-shelf"
+#~ msgstr "Reglaj trece-jos"
+
+#~ msgid "Ladder-rej"
+#~ msgstr "Rejectare-scară"
+
+#~ msgid "Band-pass"
+#~ msgstr "Trece-bandă"
+
+#~ msgid "All-pass"
+#~ msgstr "Trece-tot"
 
 #~ msgid "Toggle Global Bypass"
 #~ msgstr "Activează/dezactivează devierea globală"
