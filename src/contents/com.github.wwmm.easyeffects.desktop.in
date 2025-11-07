@@ -1,12 +1,12 @@
 [Desktop Entry]
-Name=Easy Effects
+Name=@APPLICATION_NAME@
 GenericName=Equalizer, Compressor and Other Audio Effects
 Comment=Audio Effects for PipeWire Applications
 Keywords=limiter;compressor;reverberation;equalizer;autovolume;
 Categories=AudioVideo;Audio;
 Exec=easyeffects
-Icon=com.github.wwmm.easyeffects
-StartupWMClass=Easy Effects
+Icon=@APPLICATION_ID@
+StartupWMClass=@APPLICATION_NAME@
 StartupNotify=true
 Terminal=false
 Type=Application

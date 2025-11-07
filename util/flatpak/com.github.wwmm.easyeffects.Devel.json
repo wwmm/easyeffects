@@ -86,7 +86,7 @@
             "name": "easyeffects",
             "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-DDEVEL=1",
+                "-DENABLE_DEVEL=1",
                 "-DCMAKE_BUILD_TYPE=Debug"
             ],
             "run-tests": true,

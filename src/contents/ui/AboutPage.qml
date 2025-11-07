@@ -8,7 +8,7 @@ ColumnLayout {
 
         title: i18nc("@action:button", "About")
         aboutData: {
-            "displayName": "Easy Effects",
+            "displayName": applicationName,
             "productName": "easyeffects",
             "componentName": "easyeffects",
             "shortDescription": i18n("Audio effects for PipeWire applications") // qmllint disable
@@ -19,7 +19,7 @@ ColumnLayout {
             "getInvolvedUrl": "https://github.com/wwmm/easyeffects",
             "version": projectVersion// qmllint disable
             ,
-            "programLogo": "com.github.wwmm.easyeffects",
+            "programLogo": applicationId,
             "otherText": "",
             "authors": [
                 {
@@ -41,7 +41,7 @@ ColumnLayout {
                 }
             ],
             "copyrightStatement": "© 2017-2025 EasyEffects Team",
-            "desktopFileName": "com.github.wwmm.easyeffects.desktop"
+            "desktopFileName": applicationId + ".desktop"
         }
     }
 }

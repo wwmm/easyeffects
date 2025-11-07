@@ -21,7 +21,7 @@ set -o noglob
 set -o noclobber
 #set -o xtrace #Debug
 
-readonly APP_ID='com.github.wwmm.easyeffects'
+readonly APPLICATION_ID='com.github.wwmm.easyeffects'
 readonly SCRIPT_DEPS='date dirname realpath xmllint cmake ninja sed awk appstreamcli appstream-util mktemp'
 
 BASE_DIR='.'
@@ -39,7 +39,7 @@ init() {
   readonly CMD_DIR="$(dirname "${cmd}")"
   readonly REPO_DIR="$(realpath "${CMD_DIR}"/..)"
   readonly DATA_DIR="${REPO_DIR}/${DATA_DIR}"
-  readonly METAINFO_FILE="${DATA_DIR}/${APP_ID}.metainfo.xml.in"
+  readonly METAINFO_FILE="${DATA_DIR}/${APPLICATION_ID}.metainfo.xml.in"
   readonly CHANGELOG_FILE="${REPO_DIR}/CHANGELOG.md"
   readonly NEWS_FILE="${REPO_DIR}/util/NEWS.yaml"
 
@@ -217,11 +217,13 @@ prepare_release_entry() {
 }
 
 prepare_metainfo() {
-  sed 's/@APP_ID@/com.github.wwmm.easyeffects/g' -i "${TEMP_METAINFO_FILE}"
+  sed 's|<id>@APPLICATION_ID@.desktop</id>|<id>com.github.wwmm.easyeffects.desktop</id>|g' -i "${TEMP_METAINFO_FILE}"
+  sed 's|<name>@APPLICATION_NAME@</name>|<name>Easy Effects</name>|g' -i "${TEMP_METAINFO_FILE}"
 }
 
 finalize_metainfo() {
-  sed 's/com.github.wwmm.easyeffects/@APP_ID@/g' -i "${TEMP_METAINFO_FILE}"
+  sed 's|<id>com.github.wwmm.easyeffects.desktop</id>|<id>@APPLICATION_ID@.desktop</id>|g' -i "${TEMP_METAINFO_FILE}"
+  sed 's|<name>Easy Effects</name>|<name>@APPLICATION_NAME@</name>|g' -i "${TEMP_METAINFO_FILE}"
 }
 
 check_appstream_cli() {
