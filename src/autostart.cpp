@@ -27,6 +27,7 @@
 #include <libportal/parent.h>
 #include <qobject.h>
 #include <QWindow>
+#include <format>
 #include <string>
 #include "db_manager.hpp"
 #include "tags_app.hpp"
@@ -98,7 +99,11 @@ void Autostart::update_background_portal() {
     cmd = g_ptr_array_new_with_free_func(g_free);
 
     g_ptr_array_add(cmd, g_strdup("easyeffects"));
-    g_ptr_array_add(cmd, g_strdup("--service-mode"));
+
+    if (db::Main::enableServiceMode()) {
+      g_ptr_array_add(cmd, g_strdup("--service-mode"));
+    }
+
     g_ptr_array_add(cmd, g_strdup("--hide-window"));
 
     flags = XDP_BACKGROUND_FLAG_AUTOSTART;
