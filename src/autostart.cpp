@@ -140,32 +140,31 @@ void Autostart::fallback_enable_autostart(const bool& state) {
 
   std::filesystem::path autostart_file = autostart_dir / "easyeffects-service.desktop";
 
-  if (state != 0) {
-    if (!std::filesystem::exists(autostart_file)) {
-      std::ofstream ofs{autostart_file};
+  if (state) {
+    std::ofstream ofs{autostart_file};
 
-      ofs << "[Desktop Entry]\n";
-      ofs << "Name=Easy Effects\n";
-      ofs << "Comment=Easy Effects Service\n";
-      ofs << "Exec=easyeffects --hide-window";
+    ofs << "[Desktop Entry]\n";
+    ofs << "Name=Easy Effects\n";
+    ofs << "Comment=Easy Effects Service\n";
+    ofs << "Exec=easyeffects --hide-window";
 
-      if (db::Main::enableServiceMode()) {
-        ofs << " --service-mode\n";
-      } else {
-        ofs << "\n";
-      }
-
-      ofs << "Icon=com.github.wwmm.easyeffects\n";
-      ofs << "StartupNotify=false\n";
-      ofs << "Terminal=false\n";
-      ofs << "Type=Application\n";
-      ofs << "X-GNOME-Autostart-Phase=Application\n";
-      ofs << "X-KDE-autostart-phase=2\n";
-
-      ofs.close();
-
-      util::debug("autostart file created");
+    if (db::Main::enableServiceMode()) {
+      ofs << " --service-mode\n";
+    } else {
+      ofs << "\n";
     }
+
+    ofs << "Icon=com.github.wwmm.easyeffects\n";
+    ofs << "StartupNotify=false\n";
+    ofs << "Terminal=false\n";
+    ofs << "Type=Application\n";
+    ofs << "X-GNOME-Autostart-Phase=Application\n";
+    ofs << "X-KDE-autostart-phase=2\n";
+
+    ofs.close();
+
+    util::debug("autostart file created");
+
   } else {
     if (std::filesystem::exists(autostart_file)) {
       std::filesystem::remove(autostart_file);
