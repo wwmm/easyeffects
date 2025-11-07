@@ -34,11 +34,6 @@ qt_add_qml_module(ee_database
     VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
 )
 
-qt_add_qml_module(ee_help
-    URI ee.help
-    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-)
-
 qt_add_qml_module(ee_presets
     URI ee.presets
     VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
@@ -92,7 +87,6 @@ target_sources(easyeffects PRIVATE
     gate.cpp
     gate_preset.cpp
     global_shortcuts.cpp
-    help_manager.cpp
     kconfig_base_ee.cpp
     ladspa_wrapper.cpp
     level_meter.cpp

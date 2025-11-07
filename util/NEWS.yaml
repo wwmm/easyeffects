@@ -20,7 +20,7 @@ Description:
 - The pitch plugin now has a button that allows its history to be reset.
 - The crystalizer plugin now has an adaptive intensity mode.
 - Our echo canceller is now based on the webrtc library instead of speexdsp. This should improve echo cancellation quality for many users.
-- Our manual is now displayed by the user web browser. Yelp is not necessary anymore.
+- Our manual is now displayed inside our window through WebEngineView. Yelp is not necessary anymore.
 - The test signal tab now can generate pink noise.
 - We added a configuration option that allows the microphone monitor output to be sent to the output effects pipeline input.
 - We added a new Autogain parameter that allows the output level to be forced to zero when the input level is below the silence threshold.

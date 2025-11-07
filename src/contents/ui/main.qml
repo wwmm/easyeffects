@@ -3,7 +3,6 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
-import ee.help as Help
 import ee.pipeline as Pipeline
 import ee.pipewire as PW
 import ee.presets as Presets
