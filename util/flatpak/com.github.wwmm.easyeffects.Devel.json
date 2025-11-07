@@ -3,11 +3,14 @@
     "runtime": "org.kde.Platform",
     "runtime-version": "6.10",
     "sdk": "org.kde.Sdk",
+    "base": "io.qt.qtwebengine.BaseApp",
+    "base-version": "6.10",
     "branch": "stable",
     "command": "easyeffects",
     "finish-args": [
         "--share=ipc",
         "--socket=fallback-x11",
+        "--env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess",
         "--socket=wayland",
         "--device=dri",
         "--filesystem=xdg-run/pipewire-0:ro",
@@ -25,6 +28,9 @@
         "/lib/pkgconfig",
         "/lib/python*",
         "/share/info"
+    ],
+    "cleanup-commands": [
+        "/app/cleanup-BaseApp.sh"
     ],
     "add-extensions": {
         "io.github.wwmm.easyeffects.Presets": {
