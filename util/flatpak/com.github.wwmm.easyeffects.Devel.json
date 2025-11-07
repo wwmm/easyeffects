@@ -81,7 +81,7 @@
             "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DDEVEL=1",
-                "-Dbuildtype=debug",
+                "-DCMAKE_BUILD_TYPE=Debug",
                 "-DCMAKE_EXE_LINKER_FLAGS=\"-fuse-ld=mold\"",
                 "-DCMAKE_SHARED_LINKER_FLAGS=\"-fuse-ld=mold\""
             ],
