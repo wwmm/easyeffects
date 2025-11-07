@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-07 01:03+0000\n"
+"POT-Creation-Date: 2025-11-07 21:52+0000\n"
 "PO-Revision-Date: 2025-10-30 04:17+0000\n"
 "Last-Translator: 雲の中を漂う船 <nogamenolife_zero@qq.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -79,11 +79,11 @@ msgstr "启用调试信息。"
 msgid "Must specify preset type: input/output."
 msgstr "必须指定预设类型：输入/输出。"
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:345
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:343
 msgid "Output Presets"
 msgstr "输出预设"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:330
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:328
 msgid "Input Presets"
 msgstr "输入预设"
 
@@ -290,14 +290,14 @@ msgstr "聆听"
 #: src/contents/ui/MultibandCompressor.qml:986
 #: src/contents/ui/MultibandGate.qml:959 src/contents/ui/RNNoise.qml:323
 #: src/contents/ui/Reverb.qml:350 src/contents/ui/Speex.qml:185
-#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:528
+#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:526
 msgid "Reset"
 msgstr "重置"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
 #: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:466
+#: src/contents/ui/main.qml:464
 msgid "Output"
 msgstr "输出"
 
@@ -328,8 +328,8 @@ msgstr "添加到排除的程序"
 #: src/contents/ui/MenuAddPlugins.qml:33
 #: src/contents/ui/PageStreamsEffects.qml:80
 #: src/contents/ui/PresetsAutoloadingPage.qml:98
-#: src/contents/ui/PresetsCommunityPage.qml:64
-#: src/contents/ui/PresetsLocalPage.qml:169 src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/PresetsCommunityPage.qml:68
+#: src/contents/ui/PresetsLocalPage.qml:173 src/contents/ui/RNNoise.qml:212
 msgid "Empty List"
 msgstr "空列表"
 
@@ -903,7 +903,7 @@ msgid "Default"
 msgstr "默认"
 
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
-#: src/contents/ui/main.qml:444
+#: src/contents/ui/main.qml:442
 msgid "Presets"
 msgstr "预设"
 
@@ -1178,7 +1178,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:475
+#: src/contents/ui/main.qml:473
 msgid "Input"
 msgstr "输入"
 
@@ -2025,7 +2025,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:500
+#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:498
 #, fuzzy
 msgid "Preferences"
 msgstr "首选项(_P)"
@@ -2328,22 +2328,22 @@ msgstr "删除自动加载预设"
 msgid "Local preset"
 msgstr "本地预设列表"
 
-#: src/contents/ui/PresetsCommunityPage.qml:93
+#: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
 msgid "Copy to local presets"
 msgstr "本地预设列表"
 
-#: src/contents/ui/PresetsCommunityPage.qml:98
+#: src/contents/ui/PresetsCommunityPage.qml:102
 #, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr "将此社区预设导入至本地预设列表中"
 
-#: src/contents/ui/PresetsCommunityPage.qml:100
+#: src/contents/ui/PresetsCommunityPage.qml:104
 #, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "搜索社区预设"
 
-#: src/contents/ui/PresetsCommunityPage.qml:120
+#: src/contents/ui/PresetsCommunityPage.qml:124
 msgid "Refresh"
 msgstr "刷新"
 
@@ -2402,107 +2402,107 @@ msgstr "搜索社区预设"
 msgid "Export presets"
 msgstr "加载预设"
 
-#: src/contents/ui/PresetsLocalPage.qml:186
+#: src/contents/ui/PresetsLocalPage.qml:190
 #, fuzzy
 msgid "Save Preset"
 msgstr "创建新预设"
 
-#: src/contents/ui/PresetsLocalPage.qml:187
+#: src/contents/ui/PresetsLocalPage.qml:191
 #, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
 msgstr "将当前设置保存到这个预设文件"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:195
 #, fuzzy
 msgid "Saved the current settings to %1 local preset."
 msgstr "丢弃当前设置并加载此预设"
 
-#: src/contents/ui/PresetsLocalPage.qml:193
+#: src/contents/ui/PresetsLocalPage.qml:197
 #, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "丢弃当前设置并加载此预设"
 
-#: src/contents/ui/PresetsLocalPage.qml:201
+#: src/contents/ui/PresetsLocalPage.qml:205
 #, fuzzy
 msgid "Remove Preset"
 msgstr "创建新预设"
 
-#: src/contents/ui/PresetsLocalPage.qml:202
+#: src/contents/ui/PresetsLocalPage.qml:206
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
 "from the list?"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:210
 #, fuzzy
 msgid "Removed the %1 local preset."
 msgstr "删除此自动加载预设"
 
-#: src/contents/ui/PresetsLocalPage.qml:208
+#: src/contents/ui/PresetsLocalPage.qml:212
 #, fuzzy
 msgid "Failed to remove the %1 local preset."
 msgstr "加载 APO 预设文件"
 
-#: src/contents/ui/PresetsLocalPage.qml:216
+#: src/contents/ui/PresetsLocalPage.qml:220
 #, fuzzy
 msgid "Rename Preset"
 msgstr "创建新预设"
 
-#: src/contents/ui/PresetsLocalPage.qml:221
+#: src/contents/ui/PresetsLocalPage.qml:225
 msgid "Rename"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:230
+#: src/contents/ui/PresetsLocalPage.qml:234
 #, fuzzy
 msgid "Renamed the %1 local preset to %2"
 msgstr "删除这个预设文件"
 
-#: src/contents/ui/PresetsLocalPage.qml:233
+#: src/contents/ui/PresetsLocalPage.qml:237
 #, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "加载脉冲文件失败"
 
-#: src/contents/ui/PresetsLocalPage.qml:241
+#: src/contents/ui/PresetsLocalPage.qml:245
 msgid "Cancel"
 msgstr "取消"
 
-#: src/contents/ui/PresetsLocalPage.qml:277
+#: src/contents/ui/PresetsLocalPage.qml:281
 #, fuzzy
 msgid "Save settings to this preset"
 msgstr "将当前设置保存到这个预设文件"
 
-#: src/contents/ui/PresetsLocalPage.qml:285
+#: src/contents/ui/PresetsLocalPage.qml:289
 #, fuzzy
 msgid "Rename this preset"
 msgstr "删除这个预设文件"
 
-#: src/contents/ui/PresetsLocalPage.qml:293
+#: src/contents/ui/PresetsLocalPage.qml:297
 #, fuzzy
 msgid "Delete this preset"
 msgstr "删除这个预设文件"
 
-#: src/contents/ui/PresetsSheet.qml:68 src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:77 src/contents/ui/PresetsSheet.qml:114
 msgid "Local"
 msgstr "本地"
 
-#: src/contents/ui/PresetsSheet.qml:76 src/contents/ui/PresetsSheet.qml:105
+#: src/contents/ui/PresetsSheet.qml:85 src/contents/ui/PresetsSheet.qml:114
 msgid "Community"
 msgstr "社区"
 
-#: src/contents/ui/PresetsSheet.qml:84
+#: src/contents/ui/PresetsSheet.qml:93
 #, fuzzy
 msgid "Autoloading"
 msgstr "自动增益"
 
-#: src/contents/ui/PresetsSheet.qml:103
+#: src/contents/ui/PresetsSheet.qml:112
 #, fuzzy
 msgid "No preset loaded"
 msgstr "未加载预设"
 
-#: src/contents/ui/PresetsSheet.qml:119
+#: src/contents/ui/PresetsSheet.qml:128
 msgid "Fallback Preset"
 msgstr ""
 
@@ -2672,57 +2672,57 @@ msgstr "舞厅"
 msgid "Large occupied hall"
 msgstr "拥挤的大厅"
 
-#: src/contents/ui/ShortcutsSheet.qml:35
+#: src/contents/ui/ShortcutsSheet.qml:47
 #, fuzzy
 msgid "Show help"
 msgstr "显示帮助"
 
-#: src/contents/ui/ShortcutsSheet.qml:48
+#: src/contents/ui/ShortcutsSheet.qml:60
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:76 src/contents/ui/ShortcutsSheet.qml:299
+#: src/contents/ui/ShortcutsSheet.qml:88 src/contents/ui/ShortcutsSheet.qml:311
 #: src/global_shortcuts.hpp:48
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "全局旁路"
 
-#: src/contents/ui/ShortcutsSheet.qml:104
+#: src/contents/ui/ShortcutsSheet.qml:116
 #, fuzzy
 msgid "Close the window"
 msgstr "关闭窗口"
 
-#: src/contents/ui/ShortcutsSheet.qml:132
+#: src/contents/ui/ShortcutsSheet.qml:144
 #, fuzzy
 msgid "Terminate Easy Effects service"
 msgstr "打印 EasyEffects 版本号"
 
-#: src/contents/ui/ShortcutsSheet.qml:172
+#: src/contents/ui/ShortcutsSheet.qml:184
 #, fuzzy
 msgid "Toggle process all inputs"
 msgstr "处理所有输入"
 
-#: src/contents/ui/ShortcutsSheet.qml:212
+#: src/contents/ui/ShortcutsSheet.qml:224
 #, fuzzy
 msgid "Toggle process all outputs"
 msgstr "处理所有输出"
 
-#: src/contents/ui/ShortcutsSheet.qml:225
-#: src/contents/ui/ShortcutsSheet.qml:238
+#: src/contents/ui/ShortcutsSheet.qml:237
+#: src/contents/ui/ShortcutsSheet.qml:250
 msgid "Can be used on numeric controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:253
+#: src/contents/ui/ShortcutsSheet.qml:265
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "快捷键(_S)"
 
-#: src/contents/ui/ShortcutsSheet.qml:339 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:351 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:357 src/contents/ui/main.qml:387
-#: src/contents/ui/main.qml:508
+#: src/contents/ui/ShortcutsSheet.qml:370 src/contents/ui/main.qml:385
+#: src/contents/ui/main.qml:506
 #, fuzzy
 msgid "Shortcuts"
 msgstr "快捷键(_S)"
@@ -2837,54 +2837,54 @@ msgstr "立体声基线"
 msgid "Stereo phase"
 msgstr "立体声相位"
 
-#: src/contents/ui/main.qml:211
+#: src/contents/ui/main.qml:209
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "重置设置(_R)"
 
-#: src/contents/ui/main.qml:212
+#: src/contents/ui/main.qml:210
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:281 src/contents/ui/main.qml:297
+#: src/contents/ui/main.qml:279 src/contents/ui/main.qml:295
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "未加载预设"
 
-#: src/contents/ui/main.qml:308 src/contents/ui/main.qml:320
+#: src/contents/ui/main.qml:306 src/contents/ui/main.qml:318
 #, fuzzy
 msgid "Clear List"
 msgstr "客户端列表"
 
-#: src/contents/ui/main.qml:309 src/contents/ui/main.qml:321
+#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:319
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/main.qml:376
+#: src/contents/ui/main.qml:374
 #, fuzzy
 msgid "Active"
 msgstr "激活"
 
-#: src/contents/ui/main.qml:396 src/contents/ui/main.qml:516
+#: src/contents/ui/main.qml:394 src/contents/ui/main.qml:514
 #, fuzzy
 msgid "Manual"
 msgstr "使用手册(_M)"
 
-#: src/contents/ui/main.qml:408 src/contents/ui/main.qml:548
+#: src/contents/ui/main.qml:406 src/contents/ui/main.qml:546
 #, fuzzy
 msgid "Quit"
 msgstr "退出(_Q)"
 
-#: src/contents/ui/main.qml:432
+#: src/contents/ui/main.qml:430
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/main.qml:484
+#: src/contents/ui/main.qml:482
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire(_P)"
 
-#: src/contents/ui/main.qml:540
+#: src/contents/ui/main.qml:538
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "关于 EasyEffects (_A)"
@@ -3027,18 +3027,17 @@ msgstr "语音处理器"
 msgid "Stereo Tools"
 msgstr "立体声工具"
 
-#: com.github.wwmm.easyeffects.desktop.template.h:2
-#, fuzzy
-msgid "Easy Effects"
-msgstr "EasyEffects"
-
-#: com.github.wwmm.easyeffects.desktop.template.h:3
+#: com.github.wwmm.easyeffects.desktop.in.template.h:1
 msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "均衡器、压缩器和其他音效"
 
-#: com.github.wwmm.easyeffects.desktop.template.h:4
+#: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "为使用 PipeWire 的应用提供音效"
+
+#, fuzzy
+#~ msgid "Easy Effects"
+#~ msgstr "EasyEffects"
 
 #, fuzzy
 #~ msgid "Hi-pass"
