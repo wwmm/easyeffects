@@ -60,7 +60,7 @@
 #include "test_signals.hpp"
 #include "util.hpp"
 
-#if defined(__GLIBC__)
+#ifdef __GLIBC__
 #include <malloc.h>
 #endif
 
@@ -185,7 +185,6 @@ static void initQml(QQmlApplicationEngine& engine,
   engine.rootContext()->setContextProperty("canUseSysTray", QSystemTrayIcon::isSystemTrayAvailable());
   engine.rootContext()->setContextProperty("projectVersion", PROJECT_VERSION);
   engine.rootContext()->setContextProperty("applicationId", APPLICATION_ID);
-  engine.rootContext()->setContextProperty("applicationIdShort", APPLICATION_ID_SHORT);
   engine.rootContext()->setContextProperty("applicationName", APPLICATION_NAME);
 
   QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, [&](QObject* object, const QUrl& url) {
@@ -215,7 +214,7 @@ static void initQml(QQmlApplicationEngine& engine,
             engine.trimComponentCache();
             engine.collectGarbage();
 
-#if defined(__GLIBC__)
+#ifdef __GLIBC__
             malloc_trim(0);
 #endif
           }
