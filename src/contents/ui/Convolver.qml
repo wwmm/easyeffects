@@ -144,9 +144,7 @@ Kirigami.ScrollablePage {
 
                 label: "Output Impulse Name"
 
-                validator: RegularExpressionValidator {
-                    regularExpression: /^[^\\/]{1,100}$/ //strings without `/` or `\` (max 100 chars)
-                }
+                validator: Validators.validFileNameRegex
             }
 
             Controls.ProgressBar {

@@ -152,9 +152,7 @@ FormCard.AbstractFormDelegate {
                 }
             }
 
-            validator: RegularExpressionValidator {
-                regularExpression: /^[-+]?(?:inf|∞|\d+(?:[.,]\d*)?(?:[eE][-+]?\d+)?)$/
-            }
+            validator: Validators.numberValidator
 
             contentItem: TextInput {
                 id: textInputSpinBox

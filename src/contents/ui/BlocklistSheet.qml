@@ -71,9 +71,7 @@ Kirigami.OverlaySheet {
                 source: "bookmarks-symbolic"
             }
 
-            validator: RegularExpressionValidator {
-                regularExpression: /^[^\\/]{1,100}$/ //strings without `/` or `\` (max 100 chars)
-            }
+            validator: Validators.validFileNameRegex
         }
 
         RowLayout {

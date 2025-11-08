@@ -21,9 +21,6 @@ ColumnLayout {
             return 1;
     }
 
-    readonly property var validFileNameRegex: /^[^\\/]{1,100}$/ //strings without `/` or `\` (max 100 chars)
-    readonly property var removeExtRegex: /(?:\.json)+$/
-
     FileDialog {
         id: fileDialogImport
 
@@ -89,7 +86,7 @@ ColumnLayout {
                     icon.name: "list-add-symbolic"
                     onTriggered: {
                         // remove the final preset extension if specified
-                        const newName = newPresetName.text.replace(columnLayout.removeExtRegex, "");
+                        const newName = newPresetName.text.replace(Validators.removeExtRegex, "");
                         // trim to exclude names containing only multiple spaces
                         if (!Common.isEmpty(newName.trim())) {
                             if (Presets.Manager.add(columnLayout.pipeline, newName) === true) {
@@ -120,9 +117,7 @@ ColumnLayout {
                 source: "bookmarks-symbolic"
             }
 
-            validator: RegularExpressionValidator {
-                regularExpression: columnLayout.validFileNameRegex
-            }
+            validator: Validators.validFileNameRegex
         }
 
         Controls.Button {
@@ -226,7 +221,7 @@ ColumnLayout {
                             icon.name: "dialog-ok"
                             onTriggered: {
                                 // remove the final preset extension if specified
-                                const newName = newNameTextField.text.replace(columnLayout.removeExtRegex, "");
+                                const newName = newNameTextField.text.replace(Validators.removeExtRegex, "");
 
                                 // trim to exclude names containing only multiple spaces
                                 if (!Common.isEmpty(newName.trim())) {
@@ -262,9 +257,7 @@ ColumnLayout {
                             Layout.fillWidth: true
                             text: listItemDelegate.name
 
-                            validator: RegularExpressionValidator {
-                                regularExpression: columnLayout.validFileNameRegex
-                            }
+                            validator: Validators.validFileNameRegex
                         }
                     }
                 }
