@@ -1679,7 +1679,7 @@ msgstr "Ефекти"
 
 #: src/contents/ui/PageStreamsEffects.qml:637
 msgid "Input monitoring"
-msgstr "Відстеження входу"
+msgstr "Прослуховування входу"
 
 #: src/contents/ui/PageStreamsEffects.qml:650
 msgid "Excluded apps"
