@@ -86,19 +86,19 @@ void on_request_background_called([[maybe_unused]] GObject* source,
 }  // namespace
 
 Autostart::Autostart(QObject* parent) : QObject(parent) {
-  auto create_autostart_file = [&]() {
-    if (!std::filesystem::exists("/.flatpak-info")) {
-      fallback_enable_autostart(db::Main::autostartOnLogin());
+  connect(db::Main::self(), &db::Main::autostartOnLoginChanged, [&]() { update_state(); });
 
-      return;
-    }
+  connect(db::Main::self(), &db::Main::enableServiceModeChanged, [&]() { update_state(); });
+}
 
-    update_background_portal();
-  };
+void Autostart::update_state() {
+  if (!std::filesystem::exists("/.flatpak-info")) {
+    fallback_enable_autostart(db::Main::autostartOnLogin());
 
-  connect(db::Main::self(), &db::Main::autostartOnLoginChanged, [&]() { create_autostart_file(); });
+    return;
+  }
 
-  connect(db::Main::self(), &db::Main::enableServiceModeChanged, [&]() { create_autostart_file(); });
+  update_background_portal();
 }
 
 void Autostart::set_window(QWindow* window) {

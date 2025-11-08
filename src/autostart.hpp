@@ -36,4 +36,6 @@ class Autostart : public QObject {
   QWindow* window = nullptr;
 
   static void fallback_enable_autostart(const bool& state);
+
+  void update_state();
 };
