@@ -1,3 +1,5 @@
+.pragma library
+
 /** @type {number} */
 var minimumLinearLevel = 0.00001;
 /** @type {number} */
@@ -10,16 +12,16 @@ var minimumDecibelLevel = -100.0;
  */
 function isEmpty(v) {
     switch (typeof v) {
-    case "string":
-        return v.length === 0;
-    case "number":
-        return Number.isNaN(v);
-    case "undefined":
-        return true;
-    case "object":
-        return v === null;
-    default:
-        return false;
+        case "string":
+            return v.length === 0;
+        case "number":
+            return Number.isNaN(v);
+        case "undefined":
+            return true;
+        case "object":
+            return v === null;
+        default:
+            return false;
     }
 }
 
