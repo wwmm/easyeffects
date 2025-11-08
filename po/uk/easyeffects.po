@@ -8,17 +8,18 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-07 21:52+0000\n"
-"PO-Revision-Date: 2025-11-06 06:10+0300\n"
-"Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
+"PO-Revision-Date: 2025-11-08 18:51+0000\n"
+"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.14.1-dev\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -529,7 +530,7 @@ msgstr "Мінімум"
 #: src/contents/ui/MultibandCompressor.qml:424
 #: src/contents/ui/MultibandGate.qml:385 src/contents/ui/MultibandGate.qml:397
 msgid "Max"
-msgstr "Максимум"
+msgstr "Макс"
 
 #: src/contents/ui/Compressor.qml:327 src/contents/ui/Expander.qml:287
 #: src/contents/ui/Gate.qml:308 src/contents/ui/MultibandCompressor.qml:424
@@ -842,7 +843,7 @@ msgstr "Рівень змішування"
 
 #: src/contents/ui/Crossfeed.qml:101
 msgid "Crossfeed Presets"
-msgstr "Попередні налаштування"
+msgstr "Пресетні налаштування перехресної подачі"
 
 #: src/contents/ui/Crossfeed.qml:105
 msgid "Default"
@@ -851,7 +852,7 @@ msgstr "За замовчуванням"
 #: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
 #: src/contents/ui/main.qml:442
 msgid "Presets"
-msgstr "Попередні налаштування"
+msgstr "Пресети"
 
 #: src/contents/ui/Crystalizer.qml:108
 msgid "Adaptive intensity"
@@ -1058,7 +1059,7 @@ msgstr "Застосовувати ФВЧ"
 
 #: src/contents/ui/EchoCanceller.qml:83
 msgid "Noise Suppression"
-msgstr "Придушення шуму"
+msgstr "Придушення Шуму"
 
 #: src/contents/ui/EchoCanceller.qml:104 src/contents/ui/Loudness.qml:101
 msgid "Low"
@@ -1312,62 +1313,50 @@ msgid "True Peak"
 msgstr "Справжній пік"
 
 #: src/contents/ui/Limiter.qml:60
-#, fuzzy
 msgid "Herm thin"
-msgstr "Герм Тонкий"
+msgstr "Герм тонкий"
 
 #: src/contents/ui/Limiter.qml:60
-#, fuzzy
 msgid "Herm wide"
-msgstr "Герм Широкий"
+msgstr "Герм широкий"
 
 #: src/contents/ui/Limiter.qml:60
-#, fuzzy
 msgid "Herm tail"
 msgstr "Хвіст Герма"
 
 #: src/contents/ui/Limiter.qml:60
-#, fuzzy
 msgid "Herm duck"
 msgstr "Герм Дак"
 
 #: src/contents/ui/Limiter.qml:60
-#, fuzzy
 msgid "Exp thin"
 msgstr "Тонкий досвід"
 
 #: src/contents/ui/Limiter.qml:60
-#, fuzzy
 msgid "Exp wide"
 msgstr "Широкий огляд"
 
 #: src/contents/ui/Limiter.qml:60
-#, fuzzy
 msgid "Exp tail"
 msgstr "Досвідний хвіст"
 
 #: src/contents/ui/Limiter.qml:60
-#, fuzzy
 msgid "Exp duck"
 msgstr "Досвід качки"
 
 #: src/contents/ui/Limiter.qml:60
-#, fuzzy
 msgid "Line thin"
 msgstr "Тонка лінія"
 
 #: src/contents/ui/Limiter.qml:60
-#, fuzzy
 msgid "Line wide"
 msgstr "Широка лінія"
 
 #: src/contents/ui/Limiter.qml:60
-#, fuzzy
 msgid "Line tail"
 msgstr "Лінія Хвіст"
 
 #: src/contents/ui/Limiter.qml:60
-#, fuzzy
 msgid "Line duck"
 msgstr "Лінія Качка"
 
@@ -1462,14 +1451,12 @@ msgid "Full x8/24 bit"
 msgstr "Повний x8/24 біт"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "True peak/16 bit"
-msgstr "Справжній пік"
+msgstr "Істинний пік/16 біт"
 
 #: src/contents/ui/Limiter.qml:74
-#, fuzzy
 msgid "True peak/24 bit"
-msgstr "Справжній пік"
+msgstr "Справжній пік/24 біт"
 
 #: src/contents/ui/Limiter.qml:84
 msgid "Dithering"
@@ -1517,15 +1504,13 @@ msgstr "Стереозв'язок"
 
 #: src/contents/ui/Limiter.qml:390
 msgid "Automatic Level"
-msgstr "Автоматичний рівень"
+msgstr "Автоматичний Рівень"
 
 #: src/contents/ui/Limiter.qml:607
-#, fuzzy
 msgid "Gain boost"
 msgstr "Підвищення підсилення"
 
 #: src/contents/ui/Limiter.qml:617
-#, fuzzy
 msgid "Automatic level"
 msgstr "Автоматичний рівень"
 
@@ -1534,14 +1519,12 @@ msgid "Contour"
 msgstr "Контур"
 
 #: src/contents/ui/Loudness.qml:83
-#, fuzzy
 msgid "FFT size"
 msgstr "Розмір FFT"
 
 #: src/contents/ui/Loudness.qml:97
-#, fuzzy
 msgid "IIR approximation"
-msgstr "БІХ-апроксимація"
+msgstr "IIR-апроксимація"
 
 #: src/contents/ui/Loudness.qml:101
 msgid "Fastest"
@@ -1560,7 +1543,6 @@ msgid "Volume"
 msgstr "Обсяг"
 
 #: src/contents/ui/Loudness.qml:128
-#, fuzzy
 msgid "Clipping range"
 msgstr "Діапазон відсікання"
 
@@ -1573,12 +1555,10 @@ msgid "Add %1"
 msgstr "Додати %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:133
-#, fuzzy
 msgid "Added a new effect to the pipeline: %1"
 msgstr "Додано новий ефект до конвеєра: %1"
 
 #: src/contents/ui/MultibandCompressor.qml:102
-#, fuzzy
 msgid "Compression mode"
 msgstr "Режим стиснення"
 
@@ -1594,19 +1574,16 @@ msgstr "LPF"
 
 #: src/contents/ui/MultibandCompressor.qml:480
 #: src/contents/ui/MultibandGate.qml:453
-#, fuzzy
 msgid "Low-cut"
 msgstr "Низький виріз"
 
 #: src/contents/ui/MultibandCompressor.qml:505
 #: src/contents/ui/MultibandGate.qml:478
-#, fuzzy
 msgid "High-cut"
 msgstr "Високий виріз"
 
 #: src/contents/ui/MultibandCompressor.qml:537
 #: src/contents/ui/MultibandGate.qml:510
-#, fuzzy
 msgid "Operating mode"
 msgstr "Режим роботи"
 
@@ -1622,13 +1599,11 @@ msgstr "Сучасний"
 
 #: src/contents/ui/MultibandCompressor.qml:541
 #: src/contents/ui/MultibandGate.qml:514
-#, fuzzy
 msgid "Linear phase"
 msgstr "Лінійна фаза"
 
 #: src/contents/ui/MultibandCompressor.qml:550
 #: src/contents/ui/MultibandGate.qml:523
-#, fuzzy
 msgid "Sidechain boost"
 msgstr "Підсилення сайдчейна"
 
@@ -1654,7 +1629,6 @@ msgstr "Коричневе УП"
 
 #: src/contents/ui/MultibandCompressor.qml:564
 #: src/contents/ui/MultibandGate.qml:537
-#, fuzzy
 msgid "Sidechain input device"
 msgstr "Вхідний пристрій сайдчейна"
 
@@ -1663,12 +1637,10 @@ msgid "Reaction"
 msgstr "Реакція"
 
 #: src/contents/ui/PageStreamsEffects.qml:81
-#, fuzzy
 msgid "No audio application available"
 msgstr "Немає доступного аудіододатку"
 
 #: src/contents/ui/PageStreamsEffects.qml:310
-#, fuzzy
 msgid "Add effect"
 msgstr "Додати ефект"
 
@@ -1699,7 +1671,6 @@ msgid "No Effects"
 msgstr "Без ефектів"
 
 #: src/contents/ui/PageStreamsEffects.qml:414
-#, fuzzy
 msgid "Audio stream not modified"
 msgstr "Аудіопотік не змінено"
 
@@ -1708,12 +1679,10 @@ msgid "Effects"
 msgstr "Ефекти"
 
 #: src/contents/ui/PageStreamsEffects.qml:637
-#, fuzzy
 msgid "Input monitoring"
 msgstr "Моніторинг вхідних даних"
 
 #: src/contents/ui/PageStreamsEffects.qml:650
-#, fuzzy
 msgid "Excluded apps"
 msgstr "Виключені програми"
 
@@ -1747,12 +1716,10 @@ msgstr ""
 "налаштуваннях системи Plasma)"
 
 #: src/contents/ui/PipeWirePage.qml:113
-#, fuzzy
 msgid "Use default input"
 msgstr "Використовувати вхід за замовчуванням"
 
 #: src/contents/ui/PipeWirePage.qml:156
-#, fuzzy
 msgid "Use default output"
 msgstr "Використовувати вихід за замовчуванням"
 
@@ -1761,37 +1728,30 @@ msgid "Server Information"
 msgstr "Інформація про сервер"
 
 #: src/contents/ui/PipeWirePage.qml:200
-#, fuzzy
 msgid "Header version"
 msgstr "Версія заголовка"
 
 #: src/contents/ui/PipeWirePage.qml:205
-#, fuzzy
 msgid "Library version"
 msgstr "Бібліотечна версія"
 
 #: src/contents/ui/PipeWirePage.qml:210
-#, fuzzy
 msgid "Runtime version"
 msgstr "Версія середовища виконання"
 
 #: src/contents/ui/PipeWirePage.qml:215
-#, fuzzy
 msgid "Default sampling rate"
 msgstr "Частота дискретизації за замовчуванням"
 
 #: src/contents/ui/PipeWirePage.qml:220
-#, fuzzy
 msgid "Minimum quantum"
 msgstr "Мінімальна сума"
 
 #: src/contents/ui/PipeWirePage.qml:225
-#, fuzzy
 msgid "Maximum quantum"
 msgstr "Максимальна сума"
 
 #: src/contents/ui/PipeWirePage.qml:230
-#, fuzzy
 msgid "Default quantum"
 msgstr "Квант за замовчуванням"
 
@@ -1826,32 +1786,26 @@ msgid "Waveform"
 msgstr "Форма хвилі"
 
 #: src/contents/ui/PipeWirePage.qml:355
-#, fuzzy
 msgid "Sine wave"
 msgstr "Синусоїда"
 
 #: src/contents/ui/PipeWirePage.qml:366
-#, fuzzy
 msgid "White noise"
 msgstr "Білий шум"
 
 #: src/contents/ui/PipeWirePage.qml:377
-#, fuzzy
 msgid "Pink noise"
 msgstr "Рожевий шум"
 
 #: src/contents/ui/Pitch.qml:56
-#, fuzzy
 msgid "Sequence length"
 msgstr "Довжина послідовності"
 
 #: src/contents/ui/Pitch.qml:73
-#, fuzzy
 msgid "Seek window"
 msgstr "Вікно пошуку"
 
 #: src/contents/ui/Pitch.qml:91
-#, fuzzy
 msgid "Overlap length"
 msgstr "Довжина перекриття"
 
@@ -1872,17 +1826,14 @@ msgid "Semitones"
 msgstr "Півтони"
 
 #: src/contents/ui/Pitch.qml:221
-#, fuzzy
 msgid "Tempo difference"
 msgstr "Різниця темпів"
 
 #: src/contents/ui/Pitch.qml:238
-#, fuzzy
 msgid "Rate difference"
 msgstr "Відмінність в частоті"
 
 #: src/contents/ui/Pitch.qml:289
-#, fuzzy
 msgid "Quick seek"
 msgstr "Швидкий пошук"
 
@@ -1891,13 +1842,12 @@ msgid "Anti-aliasing"
 msgstr "Згладжування"
 
 #: src/contents/ui/PluginNotAvailable.qml:14
-#, fuzzy
 msgid "Effect Not Available"
-msgstr "Показати доступні попередні налаштування."
+msgstr "Ефект недоступний"
 
 #: src/contents/ui/PluginNotAvailable.qml:15
 msgid "%1 cannot be used because %2 is not installed on the system."
-msgstr ""
+msgstr "%1 не можна використовувати, оскільки %2 не встановлено в системі."
 
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
@@ -1907,57 +1857,46 @@ msgid "Preferences"
 msgstr "Параметри"
 
 #: src/contents/ui/PreferencesSheet.qml:36
-#, fuzzy
 msgid "Enable service mode"
 msgstr "Увімкнути сервісний режим"
 
 #: src/contents/ui/PreferencesSheet.qml:37
-#, fuzzy
 msgid "Easy Effects is active in background when the window is closed."
-msgstr "Easy Effects активний у фоновому режимі, коли вікно закрито"
+msgstr "Easy Effects активний у фоновому режимі, коли вікно закрито."
 
 #: src/contents/ui/PreferencesSheet.qml:49
-#, fuzzy
 msgid "Autostart on login"
 msgstr "Автозапуск при вході в систему"
 
 #: src/contents/ui/PreferencesSheet.qml:50
-#, fuzzy
 msgid "Easy Effects is launched at user session startup."
-msgstr "Easy Effects запускається під час запуску сеансу користувача"
+msgstr "Easy Effects запускається під час запуску сеансу користувача."
 
 #: src/contents/ui/PreferencesSheet.qml:63
-#, fuzzy
 msgid "Show the tray icon"
 msgstr "Показати значок у треї"
 
 #: src/contents/ui/PreferencesSheet.qml:87
-#, fuzzy
 msgid "Process all output streams"
 msgstr "Обробляти всі вихідні потоки"
 
 #: src/contents/ui/PreferencesSheet.qml:98
-#, fuzzy
 msgid "Process all input streams"
 msgstr "Обробити всі вхідні потоки"
 
 #: src/contents/ui/PreferencesSheet.qml:109
-#, fuzzy
 msgid "Ignore streams from monitor of devices"
 msgstr "Ігнорувати потоки з монітора пристроїв"
 
 #: src/contents/ui/PreferencesSheet.qml:120
-#, fuzzy
 msgid "Use cubic volume"
 msgstr "Використовуйте кубічний об'єм"
 
 #: src/contents/ui/PreferencesSheet.qml:131
-#, fuzzy
 msgid "Ignore system notifications"
 msgstr "Ігнорувати системні сповіщення"
 
 #: src/contents/ui/PreferencesSheet.qml:132
-#, fuzzy
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
@@ -1965,53 +1904,45 @@ msgid ""
 msgstr ""
 "Сповіщення системи обробки можуть спричиняти потріскування, тому краще їх "
 "ігнорувати, але для деяких пресетів це може бути рекомендовано, оскільки "
-"вони можуть звучати занадто голосно"
+"вони можуть звучати занадто голосно."
 
 #: src/contents/ui/PreferencesSheet.qml:143
-#, fuzzy
 msgid "Enable/disable input monitoring"
 msgstr "Увімкнути/вимкнути моніторинг вхідних даних"
 
 #: src/contents/ui/PreferencesSheet.qml:154
-#, fuzzy
 msgid "Mic monitor plays to output effects pipeline"
 msgstr "Мікрофонний монітор відтворює на вихідний канал ефектів"
 
 #: src/contents/ui/PreferencesSheet.qml:165
-#, fuzzy
 msgid "Enable the inactivity timeout"
 msgstr "Увімкнути тайм-аут бездіяльності"
 
 #: src/contents/ui/PreferencesSheet.qml:166
-#, fuzzy
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
 "Коли всі потоки неактивні, конвеєр Easy Effects залишається завантаженим "
-"протягом додаткового часу"
+"протягом додаткового часу."
 
 #: src/contents/ui/PreferencesSheet.qml:178
-#, fuzzy
 msgid "Inactivity timeout"
 msgstr "Тайм-аут бездіяльності"
 
 #: src/contents/ui/PreferencesSheet.qml:192
-#, fuzzy
 msgid "Level meters label"
 msgstr "Мітка вимірювачів рівня"
 
 #: src/contents/ui/PreferencesSheet.qml:193
-#, fuzzy
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
 "Час, необхідний для оновлення позначок індикатора рівня, коли поточний "
-"рівень нижчий за останній найвищий"
+"рівень нижчий за останній найвищий."
 
 #: src/contents/ui/PreferencesSheet.qml:237
-#, fuzzy
 msgid "Audio delay compensation"
 msgstr "Компенсація затримки звуку"
 
@@ -2020,7 +1951,6 @@ msgid "Style"
 msgstr "Стиль"
 
 #: src/contents/ui/PreferencesSheet.qml:258
-#, fuzzy
 msgid "Color scheme"
 msgstr "Колірна схема"
 
@@ -2037,7 +1967,6 @@ msgid "Dark"
 msgstr "Темний"
 
 #: src/contents/ui/PreferencesSheet.qml:272
-#, fuzzy
 msgid "Color theme"
 msgstr "Колірна тема"
 
@@ -2046,7 +1975,6 @@ msgid "Green"
 msgstr "Зелений"
 
 #: src/contents/ui/PreferencesSheet.qml:276
-#, fuzzy
 msgid "Green neon"
 msgstr "Зелений неон"
 
@@ -2095,12 +2023,10 @@ msgid "Area"
 msgstr "Площа"
 
 #: src/contents/ui/PreferencesSheet.qml:300
-#, fuzzy
 msgid "Dynamic scale"
 msgstr "Динамічний масштаб"
 
 #: src/contents/ui/PreferencesSheet.qml:311
-#, fuzzy
 msgid "Logarithmic frequency axis"
 msgstr "Логарифмічна вісь частоти"
 
@@ -2125,44 +2051,36 @@ msgid "Maximum"
 msgstr "Максимум"
 
 #: src/contents/ui/PreferencesSheet.qml:397
-#, fuzzy
 msgid "Database autosave interval"
 msgstr "Інтервал автозбереження бази даних"
 
 #: src/contents/ui/PreferencesSheet.qml:410
-#, fuzzy
 msgid "Most used presets"
-msgstr "Попередні налаштування"
+msgstr "Найчастіше використовувані пресети"
 
 #: src/contents/ui/PreferencesSheet.qml:436
-#, fuzzy
 msgid "Global shortcuts"
 msgstr "Глобальні скорочення"
 
 #: src/contents/ui/PreferencesSheet.qml:437
-#, fuzzy
 msgid "Enables support for XDG global shortcuts."
-msgstr "Увімкнення підтримки глобальних скорочень XDG"
+msgstr "Увімкнення підтримки глобальних скорочень XDG."
 
 #: src/contents/ui/PreferencesSheet.qml:449
-#, fuzzy
 msgid "Native window of effects"
 msgstr "Рідне вікно ефектів"
 
 #: src/contents/ui/PreferencesSheet.qml:450
-#, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
-msgstr "Дозволяє показувати/приховувати власний інтерфейс користувача ефектів"
+msgstr "Дозволяє показувати/приховувати власний інтерфейс користувача ефектів."
 
 #: src/contents/ui/PreferencesSheet.qml:462
-#, fuzzy
 msgid "Update frequency"
 msgstr "Частота оновлення"
 
 #: src/contents/ui/PreferencesSheet.qml:463
-#, fuzzy
 msgid "Related to LV2 plugins."
-msgstr "Пов’язані з плагінами LV2"
+msgstr "Пов’язані з плагінами LV2."
 
 #: src/contents/ui/PreferencesSheet.qml:498
 msgid "Background Service"
@@ -2191,45 +2109,38 @@ msgstr "Пристрій"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:39
 #: src/contents/ui/PresetsAutoloadingPage.qml:172
-#, fuzzy
 msgid "Hardware profile"
 msgstr "Профіль обладнання"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
 msgid "Local Preset"
-msgstr "Локальний пресет"
+msgstr "Локальний Пресет"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
 msgid "Create"
 msgstr "Створити"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:65
-#, fuzzy
 msgid "Create a new autoloading preset"
-msgstr "Створено новий локальний пресет: %1"
+msgstr "Створення нового пресету автозавантаження"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:144
-#, fuzzy
 msgid "Remove this autoloading preset"
-msgstr "Видаліть цей ефект"
+msgstr "Вилучити цей пресет автозавантаження"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:185
-#, fuzzy
 msgid "Local preset"
 msgstr "Локальний пресет"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
-#, fuzzy
 msgid "Copy to local presets"
 msgstr "Копіювати до локального списку"
 
 #: src/contents/ui/PresetsCommunityPage.qml:102
-#, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr "Імпортовано пресет спільноти %1 до списку локальних пресетів."
 
 #: src/contents/ui/PresetsCommunityPage.qml:104
-#, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
 "Не вдалося імпортувати пресет спільноти %1 до списку локальних пресетів."
@@ -2239,78 +2150,66 @@ msgid "Refresh"
 msgstr "Оновити"
 
 #: src/contents/ui/PresetsLocalPage.qml:35
-#, fuzzy
 msgid "Imported a new local preset from an external file."
 msgstr "Імпортовано новий локальний пресет із зовнішнього файлу."
 
 #: src/contents/ui/PresetsLocalPage.qml:37
-#, fuzzy
 msgid "Failed to import a new local preset from an external file."
 msgstr "Не вдалося імпортувати новий локальний пресет із зовнішнього файлу."
 
 #: src/contents/ui/PresetsLocalPage.qml:46
 msgid "Export Presets"
-msgstr "Експортувати пресети"
+msgstr "Експортувати Пресети"
 
 #: src/contents/ui/PresetsLocalPage.qml:49
-#, fuzzy
 msgid "Exported all presets to an external folder."
 msgstr "Експортовано всі пресети до зовнішньої папки."
 
 #: src/contents/ui/PresetsLocalPage.qml:51
-#, fuzzy
 msgid "Failed to export all presets to an external folder."
 msgstr "Не вдалося експортувати всі пресетні налаштування до зовнішньої папки."
 
 #: src/contents/ui/PresetsLocalPage.qml:63
-#, fuzzy
 msgid "New preset name"
 msgstr "Нова назва пресету"
 
 #: src/contents/ui/PresetsLocalPage.qml:79
-#, fuzzy
 msgid "Import preset file"
 msgstr "Імпортувати файл пресету"
 
 #: src/contents/ui/PresetsLocalPage.qml:88
-#, fuzzy
 msgid "Create new preset"
 msgstr "Створити пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:98
-#, fuzzy
 msgid "Created a new local preset: %1"
 msgstr "Створено новий локальний пресет: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:102
-#, fuzzy
 msgid "Failed to create a new local preset: %1"
 msgstr "Не вдалося створити новий локальний пресет: %1"
 
 #: src/contents/ui/PresetsLocalPage.qml:131
-#, fuzzy
 msgid "Export presets"
 msgstr "Експортувати пресети"
 
 #: src/contents/ui/PresetsLocalPage.qml:190
-#, fuzzy
 msgid "Save Preset"
-msgstr "Вилучити пресет"
+msgstr "Зберегти пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:191
-#, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
-msgstr "Зберегти налаштування до цього пресету"
+msgstr ""
+"Зберегти поточні налаштування до пресету:\n"
+"%1"
 
 #: src/contents/ui/PresetsLocalPage.qml:195
-#, fuzzy
 msgid "Saved the current settings to %1 local preset."
 msgstr "Поточні налаштування збережено до %1 локального пресету."
 
 #: src/contents/ui/PresetsLocalPage.qml:197
-#, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "Не вдалося зберегти поточні налаштування до локального пресету %1."
 
@@ -2319,20 +2218,20 @@ msgid "Remove Preset"
 msgstr "Вилучити пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:206
-#, fuzzy
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
 "from the list?"
-msgstr "Ви впевнені, що хочете вилучити цей пресет зі списку?"
+msgstr ""
+"Ви впевнені, що хочете вилучити пресет\n"
+"%1\n"
+"зі списку?"
 
 #: src/contents/ui/PresetsLocalPage.qml:210
-#, fuzzy
 msgid "Removed the %1 local preset."
 msgstr "Вилучено локальний пресет %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:212
-#, fuzzy
 msgid "Failed to remove the %1 local preset."
 msgstr "Не вдалося вилучити локальний пресет %1."
 
@@ -2345,12 +2244,10 @@ msgid "Rename"
 msgstr "Перейменувати"
 
 #: src/contents/ui/PresetsLocalPage.qml:234
-#, fuzzy
 msgid "Renamed the %1 local preset to %2"
 msgstr "Перейменовано локальний пресет %1 на %2"
 
 #: src/contents/ui/PresetsLocalPage.qml:237
-#, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Не вдалося перейменувати локальний пресет %1 на %2"
 
@@ -2359,17 +2256,14 @@ msgid "Cancel"
 msgstr "Скасувати"
 
 #: src/contents/ui/PresetsLocalPage.qml:281
-#, fuzzy
 msgid "Save settings to this preset"
 msgstr "Зберегти налаштування до цього пресету"
 
 #: src/contents/ui/PresetsLocalPage.qml:289
-#, fuzzy
 msgid "Rename this preset"
 msgstr "Перейменувати цей пресет"
 
 #: src/contents/ui/PresetsLocalPage.qml:297
-#, fuzzy
 msgid "Delete this preset"
 msgstr "Видалити цей пресет"
 
@@ -2386,7 +2280,6 @@ msgid "Autoloading"
 msgstr "Автозастосування"
 
 #: src/contents/ui/PresetsSheet.qml:112
-#, fuzzy
 msgid "No preset loaded"
 msgstr "Пресет не застосовано"
 
@@ -2395,23 +2288,19 @@ msgid "Fallback Preset"
 msgstr "Резервний пресет"
 
 #: src/contents/ui/RNNoise.qml:44
-#, fuzzy
 msgid "Imported a new RNNoise model file."
 msgstr "Імпортовано новий файл моделі RNNoise."
 
 #: src/contents/ui/RNNoise.qml:46
-#, fuzzy
 msgid "Failed to import the RNNoise model file."
 msgstr "Не вдалося імпортувати файл моделі RNNoise."
 
 #: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
 #: src/contents/ui/RNNoise.qml:278 src/contents/ui/RNNoise.qml:280
-#, fuzzy
 msgid "Standard RNNoise model"
 msgstr "Стандартна модель RNNoise"
 
 #: src/contents/ui/RNNoise.qml:59
-#, fuzzy
 msgid "Standard RNNoise model loaded."
 msgstr "Стандартна модель RNNoise завантажена."
 
@@ -2420,27 +2309,23 @@ msgid "Using %1 Model"
 msgstr "Використання моделі %1"
 
 #: src/contents/ui/RNNoise.qml:66
-#, fuzzy
 msgid "Loaded the %1 RNNoise model."
 msgstr "Завантажено модель %1 RNNoise."
 
 #: src/contents/ui/RNNoise.qml:70
-#, fuzzy
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr ""
 "Не вдалося завантажити модель %1. Повернення до стандартної моделі RNNoise."
 
 #: src/contents/ui/RNNoise.qml:89
 msgid "Voice Detection"
-msgstr "Розпізнавання голосу"
+msgstr "Розпізнавання Голосу"
 
 #: src/contents/ui/RNNoise.qml:126
-#, fuzzy
 msgid "Wet level"
 msgstr "Рівень обробки"
 
 #: src/contents/ui/RNNoise.qml:166
-#, fuzzy
 msgid "Use the Standard model"
 msgstr "Використовувати стандартну модель"
 
@@ -2449,27 +2334,22 @@ msgid "User Models"
 msgstr "Моделі користувачів"
 
 #: src/contents/ui/RNNoise.qml:239
-#, fuzzy
 msgid "Delete this model"
 msgstr "Видалити цю модель"
 
 #: src/contents/ui/RNNoise.qml:244
-#, fuzzy
 msgid "Removed the %1 RNNoise model."
 msgstr "Вилучено модель %1 RNNoise."
 
 #: src/contents/ui/RNNoise.qml:246
-#, fuzzy
 msgid "Failed to remove the %1 RNNoise model."
 msgstr "Не вдалося вилучити модель %1 RNNoise."
 
 #: src/contents/ui/RNNoise.qml:315
-#, fuzzy
 msgid "Import model"
 msgstr "Імпортувати модель"
 
 #: src/contents/ui/Reverb.qml:53
-#, fuzzy
 msgid "Room size"
 msgstr "Розмір кімнати"
 
@@ -2498,12 +2378,10 @@ msgid "Experimental"
 msgstr "Експериментальний"
 
 #: src/contents/ui/Reverb.qml:66
-#, fuzzy
 msgid "Decay time"
 msgstr "Час розпаду"
 
 #: src/contents/ui/Reverb.qml:82
-#, fuzzy
 msgid "Pre delay"
 msgstr "Попередня затримка"
 
@@ -2512,17 +2390,14 @@ msgid "Diffusion"
 msgstr "Дифузія"
 
 #: src/contents/ui/Reverb.qml:130
-#, fuzzy
 msgid "High frequency damping"
 msgstr "Демпфування високих частот"
 
 #: src/contents/ui/Reverb.qml:147
-#, fuzzy
 msgid "Bass cut"
 msgstr "Зрізати бас"
 
 #: src/contents/ui/Reverb.qml:164
-#, fuzzy
 msgid "Treble cut"
 msgstr "Зрізати високі частоти"
 
@@ -2535,7 +2410,6 @@ msgid "Ambience"
 msgstr "Атмосфера"
 
 #: src/contents/ui/Reverb.qml:241
-#, fuzzy
 msgid "Empty walls"
 msgstr "Порожні стіни"
 
@@ -2544,7 +2418,6 @@ msgid "Room"
 msgstr "Кімната"
 
 #: src/contents/ui/Reverb.qml:271
-#, fuzzy
 msgid "Large empty hall"
 msgstr "Великий порожній зал"
 
@@ -2553,58 +2426,48 @@ msgid "Disco"
 msgstr "Диско"
 
 #: src/contents/ui/Reverb.qml:291
-#, fuzzy
 msgid "Large occupied hall"
 msgstr "Велика зайнята зала"
 
 #: src/contents/ui/ShortcutsSheet.qml:47
-#, fuzzy
 msgid "Show help"
 msgstr "Показати довідку"
 
 #: src/contents/ui/ShortcutsSheet.qml:60
-#, fuzzy
 msgid "Toggle fullscreen"
 msgstr "Перемкнути повноекранний режим"
 
 #: src/contents/ui/ShortcutsSheet.qml:88 src/contents/ui/ShortcutsSheet.qml:311
 #: src/global_shortcuts.hpp:48
-#, fuzzy
 msgid "Toggle global bypass"
 msgstr "Увімкнути/вимкнути глобальний обхід"
 
 #: src/contents/ui/ShortcutsSheet.qml:116
-#, fuzzy
 msgid "Close the window"
 msgstr "Закрити вікно"
 
 #: src/contents/ui/ShortcutsSheet.qml:144
-#, fuzzy
 msgid "Terminate Easy Effects service"
 msgstr "Припинити роботу служби Easy Effects"
 
 #: src/contents/ui/ShortcutsSheet.qml:184
-#, fuzzy
 msgid "Toggle process all inputs"
 msgstr "Перемикання обробки всіх вхідних даних"
 
 #: src/contents/ui/ShortcutsSheet.qml:224
-#, fuzzy
 msgid "Toggle process all outputs"
 msgstr "Перемикання обробки всіх виходів"
 
 #: src/contents/ui/ShortcutsSheet.qml:237
 #: src/contents/ui/ShortcutsSheet.qml:250
-#, fuzzy
 msgid "Can be used on numeric controls"
 msgstr "Можна використовувати з числовими елементами керування"
 
 #: src/contents/ui/ShortcutsSheet.qml:265
 msgid "Global Shortcuts"
-msgstr "Глобальні скорочення"
+msgstr "Глобальні Скорочення"
 
 #: src/contents/ui/ShortcutsSheet.qml:351 src/global_shortcuts.hpp:50
-#, fuzzy
 msgid "Toggle microphone monitoring"
 msgstr "Увімкнути/вимкнути моніторинг мікрофона"
 
@@ -2622,7 +2485,6 @@ msgid "Dereverberation"
 msgstr "Дереверберація"
 
 #: src/contents/ui/Speex.qml:82
-#, fuzzy
 msgid "Noise suppression"
 msgstr "Придушення шуму"
 
@@ -2631,7 +2493,6 @@ msgid "Voice Activity Probability"
 msgstr "Імовірність голосової активності"
 
 #: src/contents/ui/Speex.qml:109
-#, fuzzy
 msgid "Voice detection"
 msgstr "Розпізнавання голосу"
 
@@ -2652,7 +2513,6 @@ msgid "Stereo Matrix"
 msgstr "Стерео матриця"
 
 #: src/contents/ui/StereoTools.qml:122
-#, fuzzy
 msgid "LR > LR (Stereo default)"
 msgstr "LR > LR (стерео за замовчуванням)"
 
@@ -2665,47 +2525,38 @@ msgid "MS > LR (Mid-Side to Stereo)"
 msgstr "MS > LR (мідсайд на стерео)"
 
 #: src/contents/ui/StereoTools.qml:122
-#, fuzzy
 msgid "LR > LL (Mono left channel)"
 msgstr "LR > LL (моно лівий канал)"
 
 #: src/contents/ui/StereoTools.qml:122
-#, fuzzy
 msgid "LR > RR (Mono right channel)"
 msgstr "LR > RR (моно правий канал)"
 
 #: src/contents/ui/StereoTools.qml:122
-#, fuzzy
 msgid "LR > L+R (Mono sum L+R)"
 msgstr "LR > L+R (моносума L+R)"
 
 #: src/contents/ui/StereoTools.qml:122
-#, fuzzy
 msgid "LR > RL (Stereo flip channels)"
 msgstr "LR > RL (стереоперемикання каналів)"
 
 #: src/contents/ui/StereoTools.qml:131
-#, fuzzy
 msgid "Side level"
 msgstr "Бічний рівень"
 
 #: src/contents/ui/StereoTools.qml:149
-#, fuzzy
 msgid "Side balance"
 msgstr "Бічний баланс"
 
 #: src/contents/ui/StereoTools.qml:165
-#, fuzzy
 msgid "Middle level"
 msgstr "Середній рівень"
 
 #: src/contents/ui/StereoTools.qml:183
-#, fuzzy
 msgid "Middle panorama"
 msgstr "Середня панорама"
 
 #: src/contents/ui/StereoTools.qml:225 src/contents/ui/StereoTools.qml:255
-#, fuzzy
 msgid "Invert phase"
 msgstr "Інвертувати фазу"
 
@@ -2714,12 +2565,10 @@ msgid "Delay"
 msgstr "Затримка"
 
 #: src/contents/ui/StereoTools.qml:316
-#, fuzzy
 msgid "Stereo base"
 msgstr "База стерео"
 
 #: src/contents/ui/StereoTools.qml:332
-#, fuzzy
 msgid "Stereo phase"
 msgstr "Фаза стерео"
 
@@ -2740,7 +2589,6 @@ msgid "Clear List"
 msgstr "Очистити список"
 
 #: src/contents/ui/main.qml:307 src/contents/ui/main.qml:319
-#, fuzzy
 msgid "Are you sure you want to clear this list?"
 msgstr "Ви впевнені, що хочете вилучити цей пресет зі списку?"
 
@@ -2757,7 +2605,6 @@ msgid "Quit"
 msgstr "Вийти"
 
 #: src/contents/ui/main.qml:430
-#, fuzzy
 msgid "Turn effects on/off"
 msgstr "Увімкнення/вимкнення ефектів"
 
@@ -2784,37 +2631,30 @@ msgstr "Вимірювач рівня вихідного сигналу"
 #: src/presets_manager.cpp:758 src/presets_manager.cpp:765
 #: src/presets_manager.cpp:775 src/presets_manager.cpp:782
 #: src/presets_manager.cpp:792 src/presets_manager.cpp:801
-#, fuzzy
 msgid "Preset not loaded correctly"
 msgstr "Пресет не застосовано належним чином"
 
 #: src/presets_manager.cpp:758
-#, fuzzy
 msgid "Wrong format in excluded apps list"
 msgstr "Неправильний формат у списку виключених застосунків"
 
 #: src/presets_manager.cpp:766
-#, fuzzy
 msgid "Generic error while loading excluded apps list"
 msgstr "Загальна помилка під час завантаження списку виключених застосунків"
 
 #: src/presets_manager.cpp:775
-#, fuzzy
 msgid "Wrong format in effects list"
 msgstr "Неправильний формат у списку ефектів"
 
 #: src/presets_manager.cpp:782
-#, fuzzy
 msgid "Generic error while loading effects list"
 msgstr "Загальна помилка під час завантаження списку ефектів"
 
 #: src/presets_manager.cpp:793
-#, fuzzy
 msgid "One or more parameters have a wrong format"
 msgstr "Один або кілька параметрів мають неправильний формат"
 
 #: src/presets_manager.cpp:802
-#, fuzzy
 msgid "Generic error while loading the effect"
 msgstr "Загальна помилка під час застосування ефекту"
 
