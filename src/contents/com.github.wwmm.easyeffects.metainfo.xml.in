@@ -2,7 +2,7 @@
 <component type="desktop-application">
   <id>@APPLICATION_ID@.desktop</id>
   <name>@APPLICATION_NAME@</name>
-  <summary>Audio Effects for PipeWire Applications</summary>
+  <summary>Simple audio effects</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <description>

@@ -6,7 +6,7 @@
 pkgname=easyeffects-git
 pkgver=pkgvernotupdated
 pkgrel=1
-pkgdesc='Audio Effects for PipeWire Applications'
+pkgdesc='Simple audio effects'
 arch=(x86_64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
