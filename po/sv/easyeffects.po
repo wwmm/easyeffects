@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-07 21:52+0000\n"
+"POT-Creation-Date: 2025-11-08 21:26-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -18,6 +18,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.13-dev\n"
+
+#: src/autostart.cpp:89
+msgid ""
+"Cannot enable autostart option because background access has been denied. "
+"Please allow \"Run in Background\" permission for Easy Effects in your "
+"system app settings."
+msgstr ""
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -76,11 +83,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:343
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:352
 msgid "Output Presets"
 msgstr "Utgångsförinställningar"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:328
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:337
 msgid "Input Presets"
 msgstr "Ingångsförinställningar"
 
@@ -177,7 +184,7 @@ msgstr "Utgångsförstärkning (dB)"
 
 #: src/contents/ui/Autogain.qml:226 src/contents/ui/BassEnhancer.qml:192
 #: src/contents/ui/BassLoudness.qml:105 src/contents/ui/Compressor.qml:897
-#: src/contents/ui/Convolver.qml:461 src/contents/ui/Crossfeed.qml:135
+#: src/contents/ui/Convolver.qml:459 src/contents/ui/Crossfeed.qml:135
 #: src/contents/ui/Crystalizer.qml:91 src/contents/ui/DeepFilterNet.qml:169
 #: src/contents/ui/Deesser.qml:302 src/contents/ui/Delay.qml:366
 #: src/contents/ui/EchoCanceller.qml:153 src/contents/ui/Equalizer.qml:266
@@ -187,9 +194,9 @@ msgstr "Utgångsförstärkning (dB)"
 #: src/contents/ui/Loudness.qml:156 src/contents/ui/Maximizer.qml:103
 #: src/contents/ui/MultibandCompressor.qml:937
 #: src/contents/ui/MultibandGate.qml:910 src/contents/ui/Pitch.qml:265
-#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
-#: src/contents/ui/RNNoise.qml:278 src/contents/ui/RNNoise.qml:280
-#: src/contents/ui/RNNoise.qml:298 src/contents/ui/Reverb.qml:310
+#: src/contents/ui/Reverb.qml:310 src/contents/ui/RNNoise.qml:57
+#: src/contents/ui/RNNoise.qml:68 src/contents/ui/RNNoise.qml:278
+#: src/contents/ui/RNNoise.qml:280 src/contents/ui/RNNoise.qml:298
 #: src/contents/ui/Speex.qml:167 src/contents/ui/StereoTools.qml:395
 #, fuzzy
 msgid "Using %1"
@@ -270,25 +277,25 @@ msgid "Listen"
 msgstr "Lyssna"
 
 #: src/contents/ui/BassEnhancer.qml:234 src/contents/ui/BassLoudness.qml:123
-#: src/contents/ui/Compressor.qml:949 src/contents/ui/Convolver.qml:489
+#: src/contents/ui/Compressor.qml:949 src/contents/ui/Convolver.qml:487
 #: src/contents/ui/Crossfeed.qml:161 src/contents/ui/Crystalizer.qml:119
 #: src/contents/ui/Deesser.qml:344 src/contents/ui/Delay.qml:418
 #: src/contents/ui/EchoCanceller.qml:181 src/contents/ui/Equalizer.qml:350
 #: src/contents/ui/Exciter.qml:234 src/contents/ui/Expander.qml:906
 #: src/contents/ui/Filter.qml:232 src/contents/ui/Gate.qml:1040
 #: src/contents/ui/Limiter.qml:628 src/contents/ui/Loudness.qml:198
-#: src/contents/ui/Maximizer.qml:135
+#: src/contents/ui/main.qml:535 src/contents/ui/Maximizer.qml:135
 #: src/contents/ui/MultibandCompressor.qml:986
-#: src/contents/ui/MultibandGate.qml:959 src/contents/ui/RNNoise.qml:323
-#: src/contents/ui/Reverb.qml:350 src/contents/ui/Speex.qml:185
-#: src/contents/ui/StereoTools.qml:427 src/contents/ui/main.qml:526
+#: src/contents/ui/MultibandGate.qml:959 src/contents/ui/Reverb.qml:350
+#: src/contents/ui/RNNoise.qml:323 src/contents/ui/Speex.qml:185
+#: src/contents/ui/StereoTools.qml:427
 msgid "Reset"
 msgstr "Återställ"
 
 #: src/contents/ui/BassLoudness.qml:64 src/contents/ui/Compressor.qml:483
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:442
-#: src/contents/ui/Gate.qml:463 src/contents/ui/StereoTools.qml:268
-#: src/contents/ui/main.qml:464
+#: src/contents/ui/Gate.qml:463 src/contents/ui/main.qml:473
+#: src/contents/ui/StereoTools.qml:268
 msgid "Output"
 msgstr "Utgång"
 
@@ -314,41 +321,41 @@ msgstr "Applikationsnamn"
 msgid "Add to excluded applications"
 msgstr "Lägg till i exkluderade applikationer"
 
-#: src/contents/ui/BlocklistSheet.qml:97
+#: src/contents/ui/BlocklistSheet.qml:95
 #: src/contents/ui/ConvolverImpulseSheet.qml:65
 #: src/contents/ui/MenuAddPlugins.qml:33
 #: src/contents/ui/PageStreamsEffects.qml:80
 #: src/contents/ui/PresetsAutoloadingPage.qml:98
 #: src/contents/ui/PresetsCommunityPage.qml:68
-#: src/contents/ui/PresetsLocalPage.qml:173 src/contents/ui/RNNoise.qml:212
+#: src/contents/ui/PresetsLocalPage.qml:168 src/contents/ui/RNNoise.qml:212
 msgid "Empty List"
 msgstr ""
 
-#: src/contents/ui/BlocklistSheet.qml:98
+#: src/contents/ui/BlocklistSheet.qml:96
 #, fuzzy
 msgid "No application excluded"
 msgstr "Applikationsvolym"
 
-#: src/contents/ui/BlocklistSheet.qml:120
+#: src/contents/ui/BlocklistSheet.qml:118
 #, fuzzy
 msgid "Remove Application"
 msgstr "Tysta applikationen"
 
-#: src/contents/ui/BlocklistSheet.qml:121
+#: src/contents/ui/BlocklistSheet.qml:119
 msgid "Are you sure you want to remove this application from the list?"
 msgstr ""
 
-#: src/contents/ui/BlocklistSheet.qml:151
+#: src/contents/ui/BlocklistSheet.qml:149
 #, fuzzy
 msgid "Remove this app"
 msgstr "Ingen komprimering"
 
-#: src/contents/ui/BlocklistSheet.qml:178
+#: src/contents/ui/BlocklistSheet.qml:176
 #, fuzzy
 msgid "Show excluded apps"
 msgstr "Lägg till i exkluderade applikationer"
 
-#: src/contents/ui/BlocklistSheet.qml:179
+#: src/contents/ui/BlocklistSheet.qml:177
 #, fuzzy
 msgid "Show excluded applications in the list of players/recorders"
 msgstr "Visa exkluderade applikationer"
@@ -359,8 +366,8 @@ msgstr "Kompressor"
 
 #: src/contents/ui/Compressor.qml:69 src/contents/ui/Compressor.qml:296
 #: src/contents/ui/Deesser.qml:72 src/contents/ui/Delay.qml:57
-#: src/contents/ui/Delay.qml:215 src/contents/ui/Equalizer.qml:104
-#: src/contents/ui/EqualizerBandMenu.qml:45 src/contents/ui/Expander.qml:69
+#: src/contents/ui/Delay.qml:215 src/contents/ui/EqualizerBandMenu.qml:45
+#: src/contents/ui/Equalizer.qml:104 src/contents/ui/Expander.qml:69
 #: src/contents/ui/Expander.qml:256 src/contents/ui/Gate.qml:277
 #: src/contents/ui/Limiter.qml:56 src/contents/ui/Loudness.qml:55
 #: src/contents/ui/MultibandCompressor.qml:397
@@ -484,6 +491,8 @@ msgstr ""
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:260
 #: src/contents/ui/Expander.qml:385 src/contents/ui/Filter.qml:55
 #: src/contents/ui/Gate.qml:281 src/contents/ui/Gate.qml:406
+#: src/contents/ui/MultibandCompressor.qml:401
+#: src/contents/ui/MultibandGate.qml:374
 #, fuzzy
 msgid "Low-pass"
 msgstr "Lågpass"
@@ -515,7 +524,7 @@ msgstr "Mitten"
 msgid "Side"
 msgstr "Sida"
 
-#: src/contents/ui/Compressor.qml:313 src/contents/ui/Convolver.qml:271
+#: src/contents/ui/Compressor.qml:313 src/contents/ui/Convolver.qml:269
 #: src/contents/ui/Delay.qml:43 src/contents/ui/Equalizer.qml:196
 #: src/contents/ui/Expander.qml:273 src/contents/ui/Gate.qml:294
 #: src/contents/ui/LevelMeter.qml:60 src/contents/ui/LevelMeter.qml:96
@@ -525,7 +534,7 @@ msgstr "Sida"
 msgid "Left"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:313 src/contents/ui/Convolver.qml:289
+#: src/contents/ui/Compressor.qml:313 src/contents/ui/Convolver.qml:287
 #: src/contents/ui/Delay.qml:201 src/contents/ui/Equalizer.qml:196
 #: src/contents/ui/Expander.qml:273 src/contents/ui/Gate.qml:294
 #: src/contents/ui/LevelMeter.qml:71 src/contents/ui/LevelMeter.qml:107
@@ -634,7 +643,7 @@ msgstr ""
 msgid "36 dB/oct"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:494 src/contents/ui/Convolver.qml:418
+#: src/contents/ui/Compressor.qml:494 src/contents/ui/Convolver.qml:416
 #: src/contents/ui/Delay.qml:162 src/contents/ui/Delay.qml:320
 #: src/contents/ui/Expander.qml:453 src/contents/ui/Gate.qml:475
 #: src/contents/ui/MultibandCompressor.qml:587
@@ -643,7 +652,7 @@ msgstr ""
 msgid "Dry"
 msgstr ""
 
-#: src/contents/ui/Compressor.qml:513 src/contents/ui/Convolver.qml:436
+#: src/contents/ui/Compressor.qml:513 src/contents/ui/Convolver.qml:434
 #: src/contents/ui/Delay.qml:180 src/contents/ui/Delay.qml:338
 #: src/contents/ui/Expander.qml:472 src/contents/ui/Gate.qml:494
 #: src/contents/ui/MultibandCompressor.qml:605
@@ -765,72 +774,6 @@ msgstr ""
 msgid "Stereo split"
 msgstr "Stereoläge"
 
-#: src/contents/ui/Convolver.qml:50
-#, fuzzy
-msgid "Loaded the %1 Convolver impulse."
-msgstr "Det gick inte att ladda Impulsfilen"
-
-#: src/contents/ui/Convolver.qml:52 src/contents/ui/Convolver.qml:312
-#, fuzzy
-msgid "Convolver impulse is not set"
-msgstr "Kombinera impulssvar"
-
-#: src/contents/ui/Convolver.qml:56
-msgid "The Convolver is in passthrough mode."
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:58
-#, fuzzy
-msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "Det gick inte att ladda Impulsfilen"
-
-#: src/contents/ui/Convolver.qml:122
-msgid "First"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:134
-msgid "Second"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:166 src/contents/ui/Convolver.qml:201
-msgid "Combine"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:194
-msgid "Impulses"
-msgstr "Impulser"
-
-#: src/contents/ui/Convolver.qml:210 src/plugin_base.cpp:284
-msgid "Spectrum"
-msgstr "Spektrum"
-
-#: src/contents/ui/Convolver.qml:242
-msgid "Log scale"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:349
-msgid "Rate"
-msgstr "Takt"
-
-#: src/contents/ui/Convolver.qml:354 src/contents/ui/Delay.qml:61
-#: src/contents/ui/Delay.qml:72 src/contents/ui/Delay.qml:219
-#: src/contents/ui/Delay.qml:230
-msgid "Samples"
-msgstr "Prover"
-
-#: src/contents/ui/Convolver.qml:359
-msgid "Duration"
-msgstr "Varaktighet"
-
-#: src/contents/ui/Convolver.qml:401
-#, fuzzy
-msgid "Stereo width"
-msgstr "Stereobredd"
-
-#: src/contents/ui/Convolver.qml:478 src/tags_plugin_name.cpp:26
-msgid "Autogain"
-msgstr "Automatisk förstärkning"
-
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
 #, fuzzy
 msgid "Imported a new Convolver impluse file."
@@ -844,7 +787,7 @@ msgstr "Det gick inte att ladda Impulsfilen"
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:144
 #: src/contents/ui/PresetsCommunityPage.qml:40
-#: src/contents/ui/PresetsLocalPage.qml:144
+#: src/contents/ui/PresetsLocalPage.qml:139
 msgid "Search"
 msgstr ""
 
@@ -877,6 +820,72 @@ msgstr "Ta bort impuls"
 msgid "Import impulse"
 msgstr "Importera impuls"
 
+#: src/contents/ui/Convolver.qml:50
+#, fuzzy
+msgid "Loaded the %1 Convolver impulse."
+msgstr "Det gick inte att ladda Impulsfilen"
+
+#: src/contents/ui/Convolver.qml:52 src/contents/ui/Convolver.qml:310
+#, fuzzy
+msgid "Convolver impulse is not set"
+msgstr "Kombinera impulssvar"
+
+#: src/contents/ui/Convolver.qml:56
+msgid "The Convolver is in passthrough mode."
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:58
+#, fuzzy
+msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
+msgstr "Det gick inte att ladda Impulsfilen"
+
+#: src/contents/ui/Convolver.qml:122
+msgid "First"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:134
+msgid "Second"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:164 src/contents/ui/Convolver.qml:199
+msgid "Combine"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:192
+msgid "Impulses"
+msgstr "Impulser"
+
+#: src/contents/ui/Convolver.qml:208 src/plugin_base.cpp:284
+msgid "Spectrum"
+msgstr "Spektrum"
+
+#: src/contents/ui/Convolver.qml:240
+msgid "Log scale"
+msgstr ""
+
+#: src/contents/ui/Convolver.qml:347
+msgid "Rate"
+msgstr "Takt"
+
+#: src/contents/ui/Convolver.qml:352 src/contents/ui/Delay.qml:61
+#: src/contents/ui/Delay.qml:72 src/contents/ui/Delay.qml:219
+#: src/contents/ui/Delay.qml:230
+msgid "Samples"
+msgstr "Prover"
+
+#: src/contents/ui/Convolver.qml:357
+msgid "Duration"
+msgstr "Varaktighet"
+
+#: src/contents/ui/Convolver.qml:399
+#, fuzzy
+msgid "Stereo width"
+msgstr "Stereobredd"
+
+#: src/contents/ui/Convolver.qml:476 src/tags_plugin_name.cpp:26
+msgid "Autogain"
+msgstr "Automatisk förstärkning"
+
 #: src/contents/ui/Crossfeed.qml:65
 msgid "Cutoff"
 msgstr "Gräns (Hz)"
@@ -893,14 +902,10 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: src/contents/ui/Crossfeed.qml:152 src/contents/ui/Reverb.qml:327
-#: src/contents/ui/main.qml:442
+#: src/contents/ui/Crossfeed.qml:152 src/contents/ui/main.qml:451
+#: src/contents/ui/Reverb.qml:327
 msgid "Presets"
 msgstr "Profiler"
-
-#: src/contents/ui/Crystalizer.qml:108
-msgid "Adaptive intensity"
-msgstr ""
 
 #: src/contents/ui/CrystalizerBand.qml:35
 #: src/contents/ui/EqualizerBandMenu.qml:157
@@ -914,6 +919,10 @@ msgstr ""
 #: src/contents/ui/MultibandCompressor.qml:83
 #: src/contents/ui/MultibandGate.qml:83
 msgid "Bypass"
+msgstr ""
+
+#: src/contents/ui/Crystalizer.qml:108
+msgid "Adaptive intensity"
 msgstr ""
 
 #: src/contents/ui/DeepFilterNet.qml:33
@@ -1161,10 +1170,89 @@ msgstr ""
 msgid "Input and output gain controls with level meters"
 msgstr ""
 
-#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:43
-#: src/contents/ui/main.qml:473
+#: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/main.qml:482
+#: src/contents/ui/StereoTools.qml:43
 msgid "Input"
 msgstr "Ingång"
+
+#: src/contents/ui/EqualizerBandMenu.qml:25
+#: src/contents/ui/MultibandCompressor.qml:632
+#: src/contents/ui/MultibandCompressor.qml:902
+#: src/contents/ui/MultibandGate.qml:605 src/contents/ui/MultibandGate.qml:875
+#, fuzzy
+msgid "Band"
+msgstr "Lågt band"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Bell"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+#, fuzzy
+msgid "High-shelf"
+msgstr "Hög hylla"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+#, fuzzy
+msgid "Low-shelf"
+msgstr "Låg hylla"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Notch"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Resonance"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+msgid "Allpass"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+#, fuzzy
+msgid "Bandpass"
+msgstr "Förbikoppling av band 1"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+#, fuzzy
+msgid "Ladder-pass"
+msgstr "Lågpass"
+
+#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
+#, fuzzy
+msgid "Ladder-rejection"
+msgstr "Bandreduktion"
+
+#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:90
+msgid "Slope"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:113
+#: src/contents/ui/MultibandCompressor.qml:174
+#: src/contents/ui/MultibandGate.qml:111 src/contents/ui/PipeWirePage.qml:388
+msgid "Frequency"
+msgstr "Frekvens (Hz)"
+
+#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:144
+#: src/contents/ui/Limiter.qml:473 src/contents/ui/MultibandCompressor.qml:322
+#: src/contents/ui/MultibandGate.qml:208
+msgid "Gain"
+msgstr "Förstärkning"
+
+#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:160
+msgid "Quality"
+msgstr "Kvalitet"
+
+#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:129
+msgid "Width"
+msgstr "Bredd"
+
+#: src/contents/ui/EqualizerBandMenu.qml:167
+#: src/contents/ui/MultibandCompressor.qml:74
+#: src/contents/ui/MultibandGate.qml:74
+msgid "Solo"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:51 src/contents/ui/Equalizer.qml:81
 #, fuzzy
@@ -1260,85 +1348,6 @@ msgstr "Importera GraphicEQ-förinställd fil"
 #, fuzzy
 msgid "Export APO"
 msgstr "Importera förinställning"
-
-#: src/contents/ui/EqualizerBandMenu.qml:25
-#: src/contents/ui/MultibandCompressor.qml:632
-#: src/contents/ui/MultibandCompressor.qml:902
-#: src/contents/ui/MultibandGate.qml:605 src/contents/ui/MultibandGate.qml:875
-#, fuzzy
-msgid "Band"
-msgstr "Lågt band"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-msgid "Bell"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "High-shelf"
-msgstr "Hög hylla"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Low-shelf"
-msgstr "Låg hylla"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-msgid "Notch"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-msgid "Resonance"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-msgid "Allpass"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Bandpass"
-msgstr "Förbikoppling av band 1"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Ladder-pass"
-msgstr "Lågpass"
-
-#: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-#, fuzzy
-msgid "Ladder-rejection"
-msgstr "Bandreduktion"
-
-#: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:90
-msgid "Slope"
-msgstr ""
-
-#: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:113
-#: src/contents/ui/MultibandCompressor.qml:174
-#: src/contents/ui/MultibandGate.qml:111 src/contents/ui/PipeWirePage.qml:388
-msgid "Frequency"
-msgstr "Frekvens (Hz)"
-
-#: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:144
-#: src/contents/ui/Limiter.qml:473 src/contents/ui/MultibandCompressor.qml:322
-#: src/contents/ui/MultibandGate.qml:208
-msgid "Gain"
-msgstr "Förstärkning"
-
-#: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:160
-msgid "Quality"
-msgstr "Kvalitet"
-
-#: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:129
-msgid "Width"
-msgstr "Bredd"
-
-#: src/contents/ui/EqualizerBandMenu.qml:167
-#: src/contents/ui/MultibandCompressor.qml:74
-#: src/contents/ui/MultibandGate.qml:74
-msgid "Solo"
-msgstr ""
 
 #: src/contents/ui/Exciter.qml:144
 #, fuzzy
@@ -1594,20 +1603,15 @@ msgstr "Begränsare"
 msgid "Stereo Link"
 msgstr "Stereolänk"
 
-#: src/contents/ui/Limiter.qml:390
+#: src/contents/ui/Limiter.qml:390 src/contents/ui/Limiter.qml:617
 #, fuzzy
-msgid "Automatic Level"
+msgid "Automatic level"
 msgstr "Automatisk utjämning"
 
 #: src/contents/ui/Limiter.qml:607
 #, fuzzy
-msgid "Gain boost"
-msgstr "Sidokedjeförstärkning"
-
-#: src/contents/ui/Limiter.qml:617
-#, fuzzy
-msgid "Automatic level"
-msgstr "Automatisk utjämning"
+msgid "Threshold boost"
+msgstr "Tröskelvärde (dB)"
 
 #: src/contents/ui/Loudness.qml:70
 msgid "Contour"
@@ -1649,6 +1653,67 @@ msgstr "Klippning"
 msgid "Clipping"
 msgstr "Klippning"
 
+#: src/contents/ui/main.qml:218
+#, fuzzy
+msgid "Reset Settings?"
+msgstr "_Återställ inställningar"
+
+#: src/contents/ui/main.qml:219
+msgid "Are you sure you want to reset all Easy Effects settings?"
+msgstr ""
+
+#: src/contents/ui/main.qml:288 src/contents/ui/main.qml:304
+#, fuzzy
+msgid "Preset Loaded"
+msgstr "Nytt namn på förinställd ingång"
+
+#: src/contents/ui/main.qml:315 src/contents/ui/main.qml:327
+#, fuzzy
+msgid "Clear List"
+msgstr "Lista över band"
+
+#: src/contents/ui/main.qml:316 src/contents/ui/main.qml:328
+msgid "Are you sure you want to clear this list?"
+msgstr ""
+
+#: src/contents/ui/main.qml:383
+#, fuzzy
+msgid "Active"
+msgstr "Ingen komprimering"
+
+#: src/contents/ui/main.qml:394 src/contents/ui/main.qml:515
+#: src/contents/ui/ShortcutsSheet.qml:370
+msgid "Shortcuts"
+msgstr ""
+
+#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:523
+msgid "Manual"
+msgstr ""
+
+#: src/contents/ui/main.qml:415 src/contents/ui/main.qml:555
+msgid "Quit"
+msgstr ""
+
+#: src/contents/ui/main.qml:439
+msgid "Turn effects on/off"
+msgstr ""
+
+#: src/contents/ui/main.qml:491
+msgid "PipeWire"
+msgstr ""
+
+#: src/contents/ui/main.qml:507 src/contents/ui/PreferencesSheet.qml:15
+#: src/contents/ui/PreferencesSheet.qml:24
+#: src/contents/ui/PreferencesSheet.qml:589
+#: src/contents/ui/PreferencesSheet.qml:602
+msgid "Preferences"
+msgstr ""
+
+#: src/contents/ui/main.qml:547
+#, fuzzy
+msgid "About Easy Effects"
+msgstr "_Om Easy Effects"
+
 #: src/contents/ui/MenuAddPlugins.qml:62
 msgid "Add %1"
 msgstr ""
@@ -1667,11 +1732,6 @@ msgstr "Komprimeringsläge"
 #, fuzzy
 msgid "End"
 msgstr "Aktiverad"
-
-#: src/contents/ui/MultibandCompressor.qml:401
-#: src/contents/ui/MultibandGate.qml:374
-msgid "LPF"
-msgstr ""
 
 #: src/contents/ui/MultibandCompressor.qml:480
 #: src/contents/ui/MultibandGate.qml:453
@@ -1969,13 +2029,6 @@ msgstr "Ingen ljudapplikation tillgänglig"
 
 #: src/contents/ui/PluginNotAvailable.qml:15
 msgid "%1 cannot be used because %2 is not installed on the system."
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:15
-#: src/contents/ui/PreferencesSheet.qml:24
-#: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:498
-msgid "Preferences"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:36
@@ -2282,139 +2335,139 @@ msgstr "Sök utgångsförinställning"
 msgid "Refresh"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:35
+#: src/contents/ui/PresetsLocalPage.qml:32
 #, fuzzy
 msgid "Imported a new local preset from an external file."
 msgstr "Importera APO-förinställd fil"
 
-#: src/contents/ui/PresetsLocalPage.qml:37
+#: src/contents/ui/PresetsLocalPage.qml:34
 #, fuzzy
 msgid "Failed to import a new local preset from an external file."
 msgstr "Importera APO-förinställd fil"
 
-#: src/contents/ui/PresetsLocalPage.qml:46
+#: src/contents/ui/PresetsLocalPage.qml:43
 #, fuzzy
 msgid "Export Presets"
 msgstr "Öppna förinställning"
 
-#: src/contents/ui/PresetsLocalPage.qml:49
+#: src/contents/ui/PresetsLocalPage.qml:46
 #, fuzzy
 msgid "Exported all presets to an external folder."
 msgstr "Importera APO-förinställd fil"
 
-#: src/contents/ui/PresetsLocalPage.qml:51
+#: src/contents/ui/PresetsLocalPage.qml:48
 #, fuzzy
 msgid "Failed to export all presets to an external folder."
 msgstr "Importera APO-förinställd fil"
 
-#: src/contents/ui/PresetsLocalPage.qml:63
+#: src/contents/ui/PresetsLocalPage.qml:60
 #, fuzzy
 msgid "New preset name"
 msgstr "Nytt namn på förinställd ingång"
 
-#: src/contents/ui/PresetsLocalPage.qml:79
+#: src/contents/ui/PresetsLocalPage.qml:76
 #, fuzzy
 msgid "Import preset file"
 msgstr "Importera APO-förinställd fil"
 
-#: src/contents/ui/PresetsLocalPage.qml:88
+#: src/contents/ui/PresetsLocalPage.qml:85
 #, fuzzy
 msgid "Create new preset"
 msgstr "Skapa en ny förinställning"
 
-#: src/contents/ui/PresetsLocalPage.qml:98
+#: src/contents/ui/PresetsLocalPage.qml:95
 #, fuzzy
 msgid "Created a new local preset: %1"
 msgstr "Sök ingångsförinställning"
 
-#: src/contents/ui/PresetsLocalPage.qml:102
+#: src/contents/ui/PresetsLocalPage.qml:99
 #, fuzzy
 msgid "Failed to create a new local preset: %1"
 msgstr "Sök utgångsförinställning"
 
-#: src/contents/ui/PresetsLocalPage.qml:131
+#: src/contents/ui/PresetsLocalPage.qml:126
 #, fuzzy
 msgid "Export presets"
 msgstr "Öppna förinställning"
 
-#: src/contents/ui/PresetsLocalPage.qml:190
+#: src/contents/ui/PresetsLocalPage.qml:185
 #, fuzzy
 msgid "Save Preset"
 msgstr "Skapa en ny förinställning"
 
-#: src/contents/ui/PresetsLocalPage.qml:191
+#: src/contents/ui/PresetsLocalPage.qml:186
 #, fuzzy
 msgid ""
 "Save current settings to the preset:\n"
 "%1"
 msgstr "Spara dessa inställningar till fil"
 
-#: src/contents/ui/PresetsLocalPage.qml:195
+#: src/contents/ui/PresetsLocalPage.qml:190
 #, fuzzy
 msgid "Saved the current settings to %1 local preset."
 msgstr "Spara dessa inställningar till fil"
 
-#: src/contents/ui/PresetsLocalPage.qml:197
+#: src/contents/ui/PresetsLocalPage.qml:192
 #, fuzzy
 msgid "Failed to save the current settings to %1 local preset."
 msgstr "Spara dessa inställningar till fil"
 
-#: src/contents/ui/PresetsLocalPage.qml:205
+#: src/contents/ui/PresetsLocalPage.qml:200
 #, fuzzy
 msgid "Remove Preset"
 msgstr "Skapa en ny förinställning"
 
-#: src/contents/ui/PresetsLocalPage.qml:206
+#: src/contents/ui/PresetsLocalPage.qml:201
 msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
 "from the list?"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:210
+#: src/contents/ui/PresetsLocalPage.qml:205
 #, fuzzy
 msgid "Removed the %1 local preset."
 msgstr "Ta bort denna modellfil"
 
-#: src/contents/ui/PresetsLocalPage.qml:212
+#: src/contents/ui/PresetsLocalPage.qml:207
 #, fuzzy
 msgid "Failed to remove the %1 local preset."
 msgstr "Importera APO-förinställd fil"
 
-#: src/contents/ui/PresetsLocalPage.qml:220
+#: src/contents/ui/PresetsLocalPage.qml:215
 #, fuzzy
 msgid "Rename Preset"
 msgstr "Skapa en ny förinställning"
 
-#: src/contents/ui/PresetsLocalPage.qml:225
+#: src/contents/ui/PresetsLocalPage.qml:220
 msgid "Rename"
 msgstr ""
 
-#: src/contents/ui/PresetsLocalPage.qml:234
+#: src/contents/ui/PresetsLocalPage.qml:229
 #, fuzzy
 msgid "Renamed the %1 local preset to %2"
 msgstr "Ta bort denna effekt"
 
-#: src/contents/ui/PresetsLocalPage.qml:237
+#: src/contents/ui/PresetsLocalPage.qml:232
 #, fuzzy
 msgid "Failed to rename the %1 local preset to %2"
 msgstr "Det gick inte att ladda Impulsfilen"
 
-#: src/contents/ui/PresetsLocalPage.qml:245
+#: src/contents/ui/PresetsLocalPage.qml:240
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: src/contents/ui/PresetsLocalPage.qml:281
+#: src/contents/ui/PresetsLocalPage.qml:274
 #, fuzzy
 msgid "Save settings to this preset"
 msgstr "Spara dessa inställningar till fil"
 
-#: src/contents/ui/PresetsLocalPage.qml:289
+#: src/contents/ui/PresetsLocalPage.qml:282
 #, fuzzy
 msgid "Rename this preset"
 msgstr "Ta bort denna effekt"
 
-#: src/contents/ui/PresetsLocalPage.qml:297
+#: src/contents/ui/PresetsLocalPage.qml:290
 #, fuzzy
 msgid "Delete this preset"
 msgstr "Ta bort denna effekt"
@@ -2440,81 +2493,6 @@ msgstr "Nytt namn på förinställd ingång"
 #: src/contents/ui/PresetsSheet.qml:128
 msgid "Fallback Preset"
 msgstr ""
-
-#: src/contents/ui/RNNoise.qml:44
-#, fuzzy
-msgid "Imported a new RNNoise model file."
-msgstr "Importera modellfil"
-
-#: src/contents/ui/RNNoise.qml:46
-#, fuzzy
-msgid "Failed to import the RNNoise model file."
-msgstr "Importera modellfil"
-
-#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
-#: src/contents/ui/RNNoise.qml:278 src/contents/ui/RNNoise.qml:280
-#, fuzzy
-msgid "Standard RNNoise model"
-msgstr "Importera modellfil"
-
-#: src/contents/ui/RNNoise.qml:59
-#, fuzzy
-msgid "Standard RNNoise model loaded."
-msgstr "Importera modellfil"
-
-#: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:282
-#, fuzzy
-msgid "Using %1 Model"
-msgstr "Använder"
-
-#: src/contents/ui/RNNoise.qml:66
-#, fuzzy
-msgid "Loaded the %1 RNNoise model."
-msgstr "Det gick inte att ladda Impulsfilen"
-
-#: src/contents/ui/RNNoise.qml:70
-#, fuzzy
-msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
-msgstr "Det gick inte att ladda Impulsfilen"
-
-#: src/contents/ui/RNNoise.qml:89
-#, fuzzy
-msgid "Voice Detection"
-msgstr "Försvagning"
-
-#: src/contents/ui/RNNoise.qml:126
-#, fuzzy
-msgid "Wet level"
-msgstr "Våtnivå"
-
-#: src/contents/ui/RNNoise.qml:166
-msgid "Use the Standard model"
-msgstr ""
-
-#: src/contents/ui/RNNoise.qml:177
-#, fuzzy
-msgid "User Models"
-msgstr "RNNoise-modeller"
-
-#: src/contents/ui/RNNoise.qml:239
-#, fuzzy
-msgid "Delete this model"
-msgstr "Ta bort denna modellfil"
-
-#: src/contents/ui/RNNoise.qml:244
-#, fuzzy
-msgid "Removed the %1 RNNoise model."
-msgstr "Det gick inte att ladda Impulsfilen"
-
-#: src/contents/ui/RNNoise.qml:246
-#, fuzzy
-msgid "Failed to remove the %1 RNNoise model."
-msgstr "Det gick inte att ladda Impulsfilen"
-
-#: src/contents/ui/RNNoise.qml:315
-#, fuzzy
-msgid "Import model"
-msgstr "Importmodell"
 
 #: src/contents/ui/Reverb.qml:53
 #, fuzzy
@@ -2600,6 +2578,81 @@ msgstr ""
 msgid "Large occupied hall"
 msgstr ""
 
+#: src/contents/ui/RNNoise.qml:44
+#, fuzzy
+msgid "Imported a new RNNoise model file."
+msgstr "Importera modellfil"
+
+#: src/contents/ui/RNNoise.qml:46
+#, fuzzy
+msgid "Failed to import the RNNoise model file."
+msgstr "Importera modellfil"
+
+#: src/contents/ui/RNNoise.qml:57 src/contents/ui/RNNoise.qml:68
+#: src/contents/ui/RNNoise.qml:278 src/contents/ui/RNNoise.qml:280
+#, fuzzy
+msgid "Standard RNNoise model"
+msgstr "Importera modellfil"
+
+#: src/contents/ui/RNNoise.qml:59
+#, fuzzy
+msgid "Standard RNNoise model loaded."
+msgstr "Importera modellfil"
+
+#: src/contents/ui/RNNoise.qml:64 src/contents/ui/RNNoise.qml:282
+#, fuzzy
+msgid "Using %1 Model"
+msgstr "Använder"
+
+#: src/contents/ui/RNNoise.qml:66
+#, fuzzy
+msgid "Loaded the %1 RNNoise model."
+msgstr "Det gick inte att ladda Impulsfilen"
+
+#: src/contents/ui/RNNoise.qml:70
+#, fuzzy
+msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
+msgstr "Det gick inte att ladda Impulsfilen"
+
+#: src/contents/ui/RNNoise.qml:89
+#, fuzzy
+msgid "Voice Detection"
+msgstr "Försvagning"
+
+#: src/contents/ui/RNNoise.qml:126
+#, fuzzy
+msgid "Wet level"
+msgstr "Våtnivå"
+
+#: src/contents/ui/RNNoise.qml:166
+msgid "Use the Standard model"
+msgstr ""
+
+#: src/contents/ui/RNNoise.qml:177
+#, fuzzy
+msgid "User Models"
+msgstr "RNNoise-modeller"
+
+#: src/contents/ui/RNNoise.qml:239
+#, fuzzy
+msgid "Delete this model"
+msgstr "Ta bort denna modellfil"
+
+#: src/contents/ui/RNNoise.qml:244
+#, fuzzy
+msgid "Removed the %1 RNNoise model."
+msgstr "Det gick inte att ladda Impulsfilen"
+
+#: src/contents/ui/RNNoise.qml:246
+#, fuzzy
+msgid "Failed to remove the %1 RNNoise model."
+msgstr "Det gick inte att ladda Impulsfilen"
+
+#: src/contents/ui/RNNoise.qml:315
+#, fuzzy
+msgid "Import model"
+msgstr "Importmodell"
+
 #: src/contents/ui/ShortcutsSheet.qml:47
 msgid "Show help"
 msgstr ""
@@ -2641,11 +2694,6 @@ msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:351 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
-msgstr ""
-
-#: src/contents/ui/ShortcutsSheet.qml:370 src/contents/ui/main.qml:385
-#: src/contents/ui/main.qml:506
-msgid "Shortcuts"
 msgstr ""
 
 #: src/contents/ui/Speex.qml:49
@@ -2759,55 +2807,6 @@ msgstr "Stereobas"
 #, fuzzy
 msgid "Stereo phase"
 msgstr "Stereofas"
-
-#: src/contents/ui/main.qml:209
-#, fuzzy
-msgid "Reset Settings?"
-msgstr "_Återställ inställningar"
-
-#: src/contents/ui/main.qml:210
-msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
-
-#: src/contents/ui/main.qml:279 src/contents/ui/main.qml:295
-#, fuzzy
-msgid "Preset Loaded"
-msgstr "Nytt namn på förinställd ingång"
-
-#: src/contents/ui/main.qml:306 src/contents/ui/main.qml:318
-#, fuzzy
-msgid "Clear List"
-msgstr "Lista över band"
-
-#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:319
-msgid "Are you sure you want to clear this list?"
-msgstr ""
-
-#: src/contents/ui/main.qml:374
-#, fuzzy
-msgid "Active"
-msgstr "Ingen komprimering"
-
-#: src/contents/ui/main.qml:394 src/contents/ui/main.qml:514
-msgid "Manual"
-msgstr ""
-
-#: src/contents/ui/main.qml:406 src/contents/ui/main.qml:546
-msgid "Quit"
-msgstr ""
-
-#: src/contents/ui/main.qml:430
-msgid "Turn effects on/off"
-msgstr ""
-
-#: src/contents/ui/main.qml:482
-msgid "PipeWire"
-msgstr ""
-
-#: src/contents/ui/main.qml:538
-#, fuzzy
-msgid "About Easy Effects"
-msgstr "_Om Easy Effects"
 
 #: src/plugin_base.cpp:272
 msgid "(Mic)"
@@ -2951,6 +2950,14 @@ msgstr "Equalizer, kompressor och andra ljudeffekter"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Ljudeffekter för PipeWire-applikationer"
+
+#, fuzzy
+#~ msgid "Automatic Level"
+#~ msgstr "Automatisk utjämning"
+
+#, fuzzy
+#~ msgid "Gain boost"
+#~ msgstr "Sidokedjeförstärkning"
 
 #, fuzzy
 #~ msgid "Easy Effects"

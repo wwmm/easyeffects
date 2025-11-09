@@ -215,7 +215,7 @@
         </entry>
 
         <entry name="sidechainModeLabels" type="StringList">
-            <default>Peak,RMS,Low-Pass,SMA</default>
+            <default>Peak,RMS,LPF,SMA</default>
         </entry>
         <entry name="band0SidechainMode" type="Int">
             <label></label>

@@ -387,7 +387,7 @@ Kirigami.ScrollablePage {
                 enabled: limiterPage.pluginDB.alr
 
                 header: Kirigami.Heading {
-                    text: i18n("Automatic Level") // qmllint disable
+                    text: i18n("Automatic level") // qmllint disable
                     level: 2
                 }
 
@@ -604,7 +604,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    text: i18n("Gain boost") // qmllint disable
+                    text: i18n("Threshold boost") // qmllint disable
                     icon.name: "usermenu-up-symbolic"
                     checkable: true
                     checked: limiterPage.pluginDB.gainBoost

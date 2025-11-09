@@ -398,7 +398,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainMode"]
                     editable: false
-                    model: [i18n("Peak"), i18n("RMS"), i18n("LPF"), i18n("SMA")]// qmllint disable
+                    model: [i18n("Peak"), i18n("RMS"), i18n("Low-pass"), i18n("SMA")]// qmllint disable
                     onActivated: idx => {
                         multibandCompressorPage.pluginDB[multibandCompressorPage.bandId + "SidechainMode"] = idx;
                     }
