@@ -2,6 +2,7 @@ import Qt.labs.platform
 import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import ee.autostart
 import ee.database as DB
 import ee.pipeline as Pipeline
 import ee.pipewire as PW
@@ -125,6 +126,14 @@ Kirigami.ApplicationWindow {
 
         function onPresetLoadError(title, description) {
             appWindow.showStatus(`${title}. ${description}.`, Kirigami.MessageType.Error, false);
+        }
+    }
+
+    Connections {
+        target: Autostart
+
+        function onError(description) {
+            appWindow.showStatus(`${description}`, Kirigami.MessageType.Error, false);
         }
     }
 

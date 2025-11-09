@@ -32,6 +32,9 @@ class Autostart : public QObject {
   void set_window(QWindow* window);
   void update_background_portal();
 
+ Q_SIGNALS:
+  void error(const QString& msg);
+
  private:
   QWindow* window = nullptr;
 

@@ -44,6 +44,11 @@ qt_add_qml_module(ee_pipeline
     VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
 )
 
+qt_add_qml_module(ee_autostart
+    URI ee.autostart
+    VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+)
+
 target_sources(easyeffects PRIVATE
     autogain.cpp
     autogain_preset.cpp

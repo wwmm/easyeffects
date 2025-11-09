@@ -26,7 +26,10 @@
 #include <libportal/background.h>
 #include <libportal/parent.h>
 #include <qobject.h>
+#include <qqml.h>
 #include <qstandardpaths.h>
+#include <qtmetamacros.h>
+#include <KLocalizedString>
 #include <QWindow>
 #include <filesystem>
 #include <format>
@@ -42,6 +45,8 @@ namespace {
 void on_request_background_called([[maybe_unused]] GObject* source,
                                   GAsyncResult* result,
                                   [[maybe_unused]] gpointer widgets_ptr) {
+  auto autoload = static_cast<Autostart*>(widgets_ptr);
+
   g_autoptr(GError) error = nullptr;
 
   // libportal check if portal request worked
@@ -61,6 +66,7 @@ void on_request_background_called([[maybe_unused]] GObject* source,
 
         explanation =
             std::string("Please allow Easy Effects to ask again with Flatpak permission-reset ") + tags::app::id;
+
       } else {
         reason = "Generic error";
         explanation = "Please verify your system has a XDG Background Portal implementation running and working.";
@@ -79,6 +85,10 @@ void on_request_background_called([[maybe_unused]] GObject* source,
 
     db::Main::setAutostartOnLogin(false);
 
+    Q_EMIT autoload->error(
+        i18n("Cannot enable autostart option because background access has been denied. Please allow \"Run in "
+             "Background\" permission for Easy Effects in your system app settings."));
+
     return;
   }
 }
@@ -86,6 +96,9 @@ void on_request_background_called([[maybe_unused]] GObject* source,
 }  // namespace
 
 Autostart::Autostart(QObject* parent) : QObject(parent) {
+  // NOLINTNEXTLINE(clang-analyzer-cplusplus.NewDelete)
+  qmlRegisterSingletonInstance<Autostart>("ee.autostart", VERSION_MAJOR, VERSION_MINOR, "Autostart", this);
+
   connect(db::Main::self(), &db::Main::autostartOnLoginChanged, [&]() { update_state(); });
 
   connect(db::Main::self(), &db::Main::enableServiceModeChanged, [&]() { update_state(); });
