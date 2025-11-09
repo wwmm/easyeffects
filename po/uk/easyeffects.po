@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-11-09 07:15+0300\n"
 "Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2164,7 +2164,8 @@ msgid "Hardware profile"
 msgstr "Профіль обладнання"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-msgid "Local Preset"
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
+msgid "Local preset"
 msgstr "Локальне попереднє налаштування"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
@@ -2179,10 +2180,6 @@ msgstr "Створити нове попереднє налаштування, �
 msgid "Remove this autoloading preset"
 msgstr "Вилучити це попереднє налаштування, що завантажується автоматично"
 
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-msgid "Local preset"
-msgstr "Локальне попереднє налаштування"
-
 #: src/contents/ui/PresetsCommunityPage.qml:97
 msgid "Copy to local presets"
 msgstr "Копіювати до локальних попередніх налаштувань"
@@ -2194,7 +2191,8 @@ msgstr "Імпортовано попереднє налаштування сп�
 #: src/contents/ui/PresetsCommunityPage.qml:104
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr ""
-"Не вдалося імпортувати попереднє налаштування спільноти %1 до списку локальних."
+"Не вдалося імпортувати попереднє налаштування спільноти %1 до списку "
+"локальних."
 
 #: src/contents/ui/PresetsCommunityPage.qml:124
 msgid "Refresh"
@@ -2206,7 +2204,9 @@ msgstr "Імпортовано нове локальне попереднє на
 
 #: src/contents/ui/PresetsLocalPage.qml:34
 msgid "Failed to import a new local preset from an external file."
-msgstr "Не вдалося імпортувати нове локальне попереднє налаштування із зовнішнього файлу."
+msgstr ""
+"Не вдалося імпортувати нове локальне попереднє налаштування із зовнішнього "
+"файлу."
 
 #: src/contents/ui/PresetsLocalPage.qml:43
 msgid "Export Presets"
@@ -2218,7 +2218,8 @@ msgstr "Усі попередні налаштування експортова�
 
 #: src/contents/ui/PresetsLocalPage.qml:48
 msgid "Failed to export all presets to an external folder."
-msgstr "Не вдалося експортувати всі попередні налаштування до зовнішнього каталогу."
+msgstr ""
+"Не вдалося експортувати всі попередні налаштування до зовнішнього каталогу."
 
 #: src/contents/ui/PresetsLocalPage.qml:60
 msgid "New preset name"
@@ -2258,11 +2259,14 @@ msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:190
 msgid "Saved the current settings to %1 local preset."
-msgstr "Поточні налаштування збережено до локального попереднього налаштування %1."
+msgstr ""
+"Поточні налаштування збережено до локального попереднього налаштування %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:192
 msgid "Failed to save the current settings to %1 local preset."
-msgstr "Не вдалося зберегти поточні налаштування до локального попереднього налаштування %1."
+msgstr ""
+"Не вдалося зберегти поточні налаштування до локального попереднього "
+"налаштування %1."
 
 #: src/contents/ui/PresetsLocalPage.qml:200
 msgid "Remove Preset"
@@ -2273,7 +2277,8 @@ msgid ""
 "Are you sure you want to remove the preset\n"
 "%1\n"
 "from the list?"
-msgstr "Ви впевнені, що хочете вилучити попереднє налаштування\n"
+msgstr ""
+"Ви впевнені, що хочете вилучити попереднє налаштування\n"
 "%1\n"
 "зі списку?"
 
@@ -2447,8 +2452,8 @@ msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr ""
 "Не вдалося завантажити модель %1. Повернення до стандартної моделі RNNoise."
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+msgid "Voice detection"
 msgstr "Виявлення голосу"
 
 #: src/contents/ui/RNNoise.qml:126
@@ -2536,10 +2541,6 @@ msgstr "Придушення шуму"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr "Активація голосом"
-
-#: src/contents/ui/Speex.qml:109
-msgid "Voice detection"
-msgstr "Виявлення голосу"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -2754,3 +2755,9 @@ msgstr "Еквалайзер, компресор та інші звукові е
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Звукові ефекти для застосунків PipeWire"
+
+#~ msgid "Local Preset"
+#~ msgstr "Локальне попереднє налаштування"
+
+#~ msgid "Voice Detection"
+#~ msgstr "Виявлення голосу"

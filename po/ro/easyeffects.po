@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-11-04 16:51+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -2172,7 +2172,8 @@ msgid "Hardware profile"
 msgstr "Profil hardware"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-msgid "Local Preset"
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
+msgid "Local preset"
 msgstr "Preconfigurare locală"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
@@ -2186,10 +2187,6 @@ msgstr "Creează o preconfigurare nouă cu încărcare automată"
 #: src/contents/ui/PresetsAutoloadingPage.qml:144
 msgid "Remove this autoloading preset"
 msgstr "Elimină această preconfigurare cu încărcare automată"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-msgid "Local preset"
-msgstr "Preconfigurare locală"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 msgid "Copy to local presets"
@@ -2460,8 +2457,8 @@ msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr ""
 "Nu s-a putut încărca modelul %1. Se revine la modelul standard RNNoise."
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+msgid "Voice detection"
 msgstr "Detectare voce"
 
 #: src/contents/ui/RNNoise.qml:126
@@ -2549,10 +2546,6 @@ msgstr "Suprimarea zgomotului"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr "Probabilitatea de activitate vocală"
-
-#: src/contents/ui/Speex.qml:109
-msgid "Voice detection"
-msgstr "Detectare voce"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -2767,6 +2760,12 @@ msgstr "Egalizator, compresor și alte efecte audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Efecte audio pentru aplicații PipeWire"
+
+#~ msgid "Local Preset"
+#~ msgstr "Preconfigurare locală"
+
+#~ msgid "Voice Detection"
+#~ msgstr "Detectare voce"
 
 #~ msgid "Automatic Level"
 #~ msgstr "Nivel automat"

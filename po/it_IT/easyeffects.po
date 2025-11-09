@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-11-06 04:28+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2167,8 +2167,9 @@ msgid "Hardware profile"
 msgstr "Profilo dispositivo"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-msgid "Local Preset"
-msgstr "Profilo Locale"
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
+msgid "Local preset"
+msgstr "Profilo locale"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
 msgid "Create"
@@ -2181,10 +2182,6 @@ msgstr "Crea un nuovo profilo di auto caricamento"
 #: src/contents/ui/PresetsAutoloadingPage.qml:144
 msgid "Remove this autoloading preset"
 msgstr "Rimuovi questo profilo di auto caricamento"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-msgid "Local preset"
-msgstr "Profilo locale"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 msgid "Copy to local presets"
@@ -2456,9 +2453,9 @@ msgstr ""
 "Caricamento del modello %1 non riuscito. Modello Standard di RNNoise usato "
 "come alternativa."
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
-msgstr "Rilevamento Voce"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+msgid "Voice detection"
+msgstr "Rilevamento voce"
 
 #: src/contents/ui/RNNoise.qml:126
 msgid "Wet level"
@@ -2545,10 +2542,6 @@ msgstr "Soppressione rumore"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr "Probabilità Attività Voce"
-
-#: src/contents/ui/Speex.qml:109
-msgid "Voice detection"
-msgstr "Rilevamento voce"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -2763,6 +2756,12 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Effetti Audio per Applicazioni Pipewire"
+
+#~ msgid "Local Preset"
+#~ msgstr "Profilo Locale"
+
+#~ msgid "Voice Detection"
+#~ msgstr "Rilevamento Voce"
 
 #~ msgid "Automatic Level"
 #~ msgstr "Livello Automatico"

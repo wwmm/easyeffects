@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: raffyll <raffyl.dev@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/easyeffects/"
@@ -2363,8 +2363,9 @@ msgid "Hardware profile"
 msgstr "Perfil"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
 #, fuzzy
-msgid "Local Preset"
+msgid "Local preset"
 msgstr "Lista de predefinições locais"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
@@ -2381,11 +2382,6 @@ msgstr "Remover as Predefinições Carregadas Automaticamente"
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "Remover as Predefinições Carregadas Automaticamente"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-#, fuzzy
-msgid "Local preset"
-msgstr "Lista de predefinições locais"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
@@ -2694,8 +2690,9 @@ msgstr "Modelo Padrão de Ruído do RNNoise"
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "Não Foi Possível Carregar o Ficheiro com o Impulso"
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+#, fuzzy
+msgid "Voice detection"
 msgstr "Detecção da Voz"
 
 #: src/contents/ui/RNNoise.qml:126
@@ -2798,11 +2795,6 @@ msgstr "Supressão de Ruído"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr "Probabilidade de Atividade da Voz"
-
-#: src/contents/ui/Speex.qml:109
-#, fuzzy
-msgid "Voice detection"
-msgstr "Detecção da Voz"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -3037,6 +3029,13 @@ msgstr "Equalizador, Compressor e Outros Efeitos de Áudio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Efeitos de áudio para aplicações do PipeWire"
+
+#, fuzzy
+#~ msgid "Local Preset"
+#~ msgstr "Lista de predefinições locais"
+
+#~ msgid "Voice Detection"
+#~ msgstr "Detecção da Voz"
 
 #, fuzzy
 #~ msgid "Automatic Level"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-11-06 21:51+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2167,8 +2167,9 @@ msgid "Hardware profile"
 msgstr "Próifíl crua-earraí"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-msgid "Local Preset"
-msgstr "Réamhshocrú Áitiúil"
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
+msgid "Local preset"
+msgstr "Réamhshocrú áitiúil"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
 msgid "Create"
@@ -2181,10 +2182,6 @@ msgstr "Cruthaigh réamhshocrú uathluchtaithe nua"
 #: src/contents/ui/PresetsAutoloadingPage.qml:144
 msgid "Remove this autoloading preset"
 msgstr "Bain an réamhshocrú uathlódála seo"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-msgid "Local preset"
-msgstr "Réamhshocrú áitiúil"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 msgid "Copy to local presets"
@@ -2457,9 +2454,9 @@ msgstr ""
 "Theip ar an tsamhail %1 a luchtú. Úsáid samhail chaighdeánach RNNoise mar "
 "rogha eile."
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
-msgstr "Brath Gutha"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+msgid "Voice detection"
+msgstr "Braiteadh gutha"
 
 #: src/contents/ui/RNNoise.qml:126
 msgid "Wet level"
@@ -2546,10 +2543,6 @@ msgstr "Cosc torainn"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr "Dóchúlacht Gníomhaíochta Gutha"
-
-#: src/contents/ui/Speex.qml:109
-msgid "Voice detection"
-msgstr "Braiteadh gutha"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -2764,6 +2757,12 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
+
+#~ msgid "Local Preset"
+#~ msgstr "Réamhshocrú Áitiúil"
+
+#~ msgid "Voice Detection"
+#~ msgstr "Brath Gutha"
 
 #~ msgid "Automatic Level"
 #~ msgstr "Leibhéal Uathoibríoch"
