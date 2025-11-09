@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Spanish (Mexico) <https://hosted.weblate.org/projects/"
@@ -2372,8 +2372,9 @@ msgid "Hardware profile"
 msgstr "Perfil"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
 #, fuzzy
-msgid "Local Preset"
+msgid "Local preset"
 msgstr "Perfiles de Dispositivos de Entrada: "
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
@@ -2390,11 +2391,6 @@ msgstr "Borrar este perfil"
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "Borrar este perfil"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-#, fuzzy
-msgid "Local preset"
-msgstr "Perfiles de Dispositivos de Entrada: "
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
@@ -2701,9 +2697,9 @@ msgstr "No se pudo encontrar el archivo Impulse"
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "No se pudo encontrar el archivo Impulse"
 
-#: src/contents/ui/RNNoise.qml:89
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
 #, fuzzy
-msgid "Voice Detection"
+msgid "Voice detection"
 msgstr "Detector de Voz"
 
 #: src/contents/ui/RNNoise.qml:126
@@ -2805,11 +2801,6 @@ msgstr "Supresor de Ruido"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr ""
-
-#: src/contents/ui/Speex.qml:109
-#, fuzzy
-msgid "Voice detection"
-msgstr "Detector de Voz"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -3044,6 +3035,14 @@ msgstr "Ecualizador, Compresor y Otros Efectos de Sonido"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Efectos de audio para aplicaciones PipeWire"
+
+#, fuzzy
+#~ msgid "Local Preset"
+#~ msgstr "Perfiles de Dispositivos de Entrada: "
+
+#, fuzzy
+#~ msgid "Voice Detection"
+#~ msgstr "Detector de Voz"
 
 #, fuzzy
 #~ msgid "Automatic Level"

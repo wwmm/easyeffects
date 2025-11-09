@@ -26,9 +26,9 @@ msgid ""
 "system app settings."
 msgstr ""
 "Impossible d'activer l'option de démarrage automatique car l'accès en "
-"arrière-plan a été refusé. Veuillez autoriser la permission "
-"\"Exécuter en Arrière-plan\" pour Easy Effects dans les paramètres de votre "
-"application système."
+"arrière-plan a été refusé. Veuillez autoriser la permission \"Exécuter en "
+"Arrière-plan\" pour Easy Effects dans les paramètres de votre application "
+"système."
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -2187,6 +2187,7 @@ msgid "Remove this autoloading preset"
 msgstr "Supprimer ce préréglage à chargement automatique"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:185
+#: src/contents/ui/PresetsAutoloadingPage.qml:53
 msgid "Local preset"
 msgstr "Préréglage local"
 
@@ -2554,7 +2555,7 @@ msgstr "Suppression du bruit"
 msgid "Voice Activity Probability"
 msgstr "Probabilité d'Activité Vocale"
 
-#: src/contents/ui/Speex.qml:109
+#: src/contents/ui/Speex.qml:109 src/contents/ui/RNNoise.qml:89
 msgid "Voice detection"
 msgstr "Détection de la voix"
 

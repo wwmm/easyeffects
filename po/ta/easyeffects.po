@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2359,8 +2359,9 @@ msgid "Hardware profile"
 msgstr "சுயவிவரம்"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
 #, fuzzy
-msgid "Local Preset"
+msgid "Local preset"
 msgstr "உள்ளக முன்னமைவுகள் பட்டியல்"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
@@ -2377,11 +2378,6 @@ msgstr "ஆட்டோலோடிங் முன்னமைவை அகற�
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "ஆட்டோலோடிங் முன்னமைவை அகற்று"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-#, fuzzy
-msgid "Local preset"
-msgstr "உள்ளக முன்னமைவுகள் பட்டியல்"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
@@ -2689,8 +2685,9 @@ msgstr "நிலையான Rnnoise மாதிரி"
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "உந்துவிசை கோப்பை ஏற்றுவதில் தோல்வி"
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+#, fuzzy
+msgid "Voice detection"
 msgstr "குரல் கண்டறிதல்"
 
 #: src/contents/ui/RNNoise.qml:126
@@ -2793,11 +2790,6 @@ msgstr "இரைச்சல் நீக்கம்"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr "குரல் செயல்பாடு நிகழ்தகவு"
-
-#: src/contents/ui/Speex.qml:109
-#, fuzzy
-msgid "Voice detection"
-msgstr "குரல் கண்டறிதல்"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -3032,6 +3024,13 @@ msgstr "சமநிலைப்படுத்தி, அமுக்கி ம
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "பைப்வேர் பயன்பாடுகளுக்கான ஆடியோ விளைவுகள்"
+
+#, fuzzy
+#~ msgid "Local Preset"
+#~ msgstr "உள்ளக முன்னமைவுகள் பட்டியல்"
+
+#~ msgid "Voice Detection"
+#~ msgstr "குரல் கண்டறிதல்"
 
 #, fuzzy
 #~ msgid "Automatic Level"

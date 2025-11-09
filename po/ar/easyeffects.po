@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-09-22 07:01+0000\n"
 "Last-Translator: Abdelrahman Ehab Elsaied Hassan <s3409663@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2259,8 +2259,9 @@ msgid "Hardware profile"
 msgstr "مِلَفّ تعريفي"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
 #, fuzzy
-msgid "Local Preset"
+msgid "Local preset"
 msgstr "قائمة الإعدادات المسبقة المحلية"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
@@ -2276,11 +2277,6 @@ msgstr "ابحث محليًا عن إعداد مسبق"
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "احذف مِلَفّ الإعداد المسبق هذا"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-#, fuzzy
-msgid "Local preset"
-msgstr "قائمة الإعدادات المسبقة المحلية"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
@@ -2578,9 +2574,10 @@ msgstr "ابحث عن ملف استجابة نبضية"
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "ابحث عن ملف استجابة نبضية"
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
-msgstr ""
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+#, fuzzy
+msgid "Voice detection"
+msgstr "كشف"
 
 #: src/contents/ui/RNNoise.qml:126
 #, fuzzy
@@ -2678,11 +2675,6 @@ msgstr "تخفيض الإزعاج"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr ""
-
-#: src/contents/ui/Speex.qml:109
-#, fuzzy
-msgid "Voice detection"
-msgstr "كشف"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -2906,6 +2898,10 @@ msgstr "موازن وضاغط و ومؤثرات أخرى للصوت"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "تأثيرات صوتية لتطبيقات PipeWire"
+
+#, fuzzy
+#~ msgid "Local Preset"
+#~ msgstr "قائمة الإعدادات المسبقة المحلية"
 
 #, fuzzy
 #~ msgid "Gain boost"

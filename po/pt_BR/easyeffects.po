@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-10-22 05:02+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -2336,7 +2336,9 @@ msgid "Hardware profile"
 msgstr "Perfil de Hardware"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-msgid "Local Preset"
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
+#, fuzzy
+msgid "Local preset"
 msgstr "Predefinição local"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
@@ -2352,11 +2354,6 @@ msgstr "Remover as Predefinições que Foram Carregadas Automaticamente"
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "Remover as Predefinições que Foram Carregadas Automaticamente"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-#, fuzzy
-msgid "Local preset"
-msgstr "Predefinição local"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
@@ -2661,8 +2658,9 @@ msgstr "Carregou o modelo %1 RNNoise."
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "Falha ao carregar o modelo %1. Retornar ao modelo RNNoise padrão."
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+#, fuzzy
+msgid "Voice detection"
 msgstr "Detecção da Voz"
 
 #: src/contents/ui/RNNoise.qml:126
@@ -2766,11 +2764,6 @@ msgstr "Supressão de Ruído"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr "Probabilidade de Atividade da Voz"
-
-#: src/contents/ui/Speex.qml:109
-#, fuzzy
-msgid "Voice detection"
-msgstr "Detecção da Voz"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -3009,6 +3002,12 @@ msgstr ""
 "serem aplicados nos fluxos de áudio de entrada e saída que utiliza o "
 "servidor de áudio PipeWire, possui as funções de equalizador, compressor e "
 "efeitos de áudio"
+
+#~ msgid "Local Preset"
+#~ msgstr "Predefinição local"
+
+#~ msgid "Voice Detection"
+#~ msgstr "Detecção da Voz"
 
 #~ msgid "Automatic Level"
 #~ msgstr "Nível automático"

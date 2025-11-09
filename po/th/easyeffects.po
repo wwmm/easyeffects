@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Thai <https://hosted.weblate.org/projects/easyeffects/main/th/"
@@ -2144,7 +2144,8 @@ msgid "Hardware profile"
 msgstr ""
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-msgid "Local Preset"
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
+msgid "Local preset"
 msgstr ""
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
@@ -2157,10 +2158,6 @@ msgstr ""
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:144
 msgid "Remove this autoloading preset"
-msgstr ""
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-msgid "Local preset"
 msgstr ""
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
@@ -2421,8 +2418,8 @@ msgstr ""
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr ""
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+msgid "Voice detection"
 msgstr ""
 
 #: src/contents/ui/RNNoise.qml:126
@@ -2509,10 +2506,6 @@ msgstr ""
 
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
-msgstr ""
-
-#: src/contents/ui/Speex.qml:109
-msgid "Voice detection"
 msgstr ""
 
 #: src/contents/ui/Speex.qml:140

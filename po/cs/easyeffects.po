@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-11-05 00:44+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2360,8 +2360,9 @@ msgid "Hardware profile"
 msgstr "Profil"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
 #, fuzzy
-msgid "Local Preset"
+msgid "Local preset"
 msgstr "Seznam místních předvoleb"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
@@ -2378,11 +2379,6 @@ msgstr "Odstranit automaticky načítanou předvolbu"
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "Odstranit automaticky načítanou předvolbu"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-#, fuzzy
-msgid "Local preset"
-msgstr "Seznam místních předvoleb"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
@@ -2689,8 +2685,9 @@ msgstr "Standard RNNoise model"
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "Nepodařilo se nahrát Impulse soubor"
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+#, fuzzy
+msgid "Voice detection"
 msgstr "Detekce hlasu"
 
 #: src/contents/ui/RNNoise.qml:126
@@ -2793,11 +2790,6 @@ msgstr "Potlačení šumu"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr "Pravděpodobnost Hlasové Aktivity"
-
-#: src/contents/ui/Speex.qml:109
-#, fuzzy
-msgid "Voice detection"
-msgstr "Detekce hlasu"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -3031,6 +3023,13 @@ msgstr "Ekvalizér, kompresor a jiné zvukové efekty"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Zvukové efekty pro programy využívající PipeWire"
+
+#, fuzzy
+#~ msgid "Local Preset"
+#~ msgstr "Seznam místních předvoleb"
+
+#~ msgid "Voice Detection"
+#~ msgstr "Detekce hlasu"
 
 #, fuzzy
 #~ msgid "Automatic Level"

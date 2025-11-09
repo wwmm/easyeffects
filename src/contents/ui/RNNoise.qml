@@ -86,7 +86,7 @@ Kirigami.ScrollablePage {
                 id: cardControls
 
                 header: Kirigami.Heading {
-                    text: i18n("Voice Detection") // qmllint disable
+                    text: i18n("Voice detection") // qmllint disable
                     level: 2
                 }
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2362,8 +2362,9 @@ msgid "Hardware profile"
 msgstr "Profil"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
 #, fuzzy
-msgid "Local Preset"
+msgid "Local preset"
 msgstr "Yerel Ön Ayarlar Listesi"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
@@ -2380,11 +2381,6 @@ msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "Otomatik Yükleme Ön Ayarını Kaldır"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-#, fuzzy
-msgid "Local preset"
-msgstr "Yerel Ön Ayarlar Listesi"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
@@ -2691,8 +2687,9 @@ msgstr "Standart RNNoise Modeli"
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "Dürtü Dosyası Yüklenemedi"
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+#, fuzzy
+msgid "Voice detection"
 msgstr "Ses Algılama"
 
 #: src/contents/ui/RNNoise.qml:126
@@ -2795,11 +2792,6 @@ msgstr "Gürültü Baskılayıcı"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr "Ses Etkinliği Olasılığı"
-
-#: src/contents/ui/Speex.qml:109
-#, fuzzy
-msgid "Voice detection"
-msgstr "Ses Algılama"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -3034,6 +3026,13 @@ msgstr "Ekolayzır, Sıkıştırıcı ve Diğer Ses Efektleri"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "PipeWire Uygulamaları için Ses Efektleri"
+
+#, fuzzy
+#~ msgid "Local Preset"
+#~ msgstr "Yerel Ön Ayarlar Listesi"
+
+#~ msgid "Voice Detection"
+#~ msgstr "Ses Algılama"
 
 #, fuzzy
 #~ msgid "Automatic Level"

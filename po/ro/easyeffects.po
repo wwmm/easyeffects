@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : "
-"(n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -2189,6 +2189,7 @@ msgid "Remove this autoloading preset"
 msgstr "Elimină această preconfigurare cu încărcare automată"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:185
+#: src/contents/ui/PresetsAutoloadingPage.qml:53
 msgid "Local preset"
 msgstr "Preconfigurare locală"
 
@@ -2551,7 +2552,7 @@ msgstr "Suprimarea zgomotului"
 msgid "Voice Activity Probability"
 msgstr "Probabilitatea de activitate vocală"
 
-#: src/contents/ui/Speex.qml:109
+#: src/contents/ui/Speex.qml:109 src/contents/ui/RNNoise.qml:89
 msgid "Voice detection"
 msgstr "Detectare voce"
 

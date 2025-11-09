@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2296,8 +2296,9 @@ msgid "Hardware profile"
 msgstr "프로필"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
 #, fuzzy
-msgid "Local Preset"
+msgid "Local preset"
 msgstr "프리셋 목록"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
@@ -2314,11 +2315,6 @@ msgstr "자동 로딩 프리셋 제거하기"
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "자동 로딩 프리셋 제거하기"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-#, fuzzy
-msgid "Local preset"
-msgstr "프리셋 목록"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
@@ -2618,8 +2614,9 @@ msgstr "Impulse 파일을 불러오지 못했습니다"
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "Impulse 파일을 불러오지 못했습니다"
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+#, fuzzy
+msgid "Voice detection"
 msgstr "음성 감지"
 
 #: src/contents/ui/RNNoise.qml:126
@@ -2717,11 +2714,6 @@ msgstr "노이즈 저감"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr ""
-
-#: src/contents/ui/Speex.qml:109
-#, fuzzy
-msgid "Voice detection"
-msgstr "음성 감지"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -2945,6 +2937,13 @@ msgstr "이퀄라이저, 컴프레서 및 기타 오디오 효과"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "PipeWire 응용프로그램을 위한 오디오 효과"
+
+#, fuzzy
+#~ msgid "Local Preset"
+#~ msgstr "프리셋 목록"
+
+#~ msgid "Voice Detection"
+#~ msgstr "음성 감지"
 
 #, fuzzy
 #~ msgid "Easy Effects"

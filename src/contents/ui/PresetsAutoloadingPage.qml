@@ -50,7 +50,7 @@ ColumnLayout {
             id: preset
 
             verticalPadding: 0
-            text: i18n("Local Preset") // qmllint disable
+            text: i18n("Local preset") // qmllint disable
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: 0
             textRole: "name"

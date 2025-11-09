@@ -2186,6 +2186,7 @@ msgid "Remove this autoloading preset"
 msgstr "Rimuovi questo profilo di auto caricamento"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:185
+#: src/contents/ui/PresetsAutoloadingPage.qml:53
 msgid "Local preset"
 msgstr "Profilo locale"
 
@@ -2549,7 +2550,7 @@ msgstr "Soppressione rumore"
 msgid "Voice Activity Probability"
 msgstr "Probabilità Attività Voce"
 
-#: src/contents/ui/Speex.qml:109
+#: src/contents/ui/Speex.qml:109 src/contents/ui/RNNoise.qml:89
 msgid "Voice detection"
 msgstr "Rilevamento voce"
 

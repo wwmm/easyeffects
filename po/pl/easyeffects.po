@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Aleksander <olek_filip@wp.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -2369,8 +2369,9 @@ msgid "Hardware profile"
 msgstr "Profil"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
 #, fuzzy
-msgid "Local Preset"
+msgid "Local preset"
 msgstr "Lista szablonów lokalnych"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
@@ -2387,11 +2388,6 @@ msgstr "Usuń szablon automatycznego wczytywania"
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "Usuń szablon automatycznego wczytywania"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-#, fuzzy
-msgid "Local preset"
-msgstr "Lista szablonów lokalnych"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
@@ -2698,8 +2694,9 @@ msgstr "Standardowy model RNNoise"
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "Nie udało się załadować pliku impuslu"
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+#, fuzzy
+msgid "Voice detection"
 msgstr "Wykrywanie głosu"
 
 #: src/contents/ui/RNNoise.qml:126
@@ -2802,11 +2799,6 @@ msgstr "Tłumienie szumu"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr "Prawdopodobieństwo aktywacji głosowej"
-
-#: src/contents/ui/Speex.qml:109
-#, fuzzy
-msgid "Voice detection"
-msgstr "Wykrywanie głosu"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -3041,6 +3033,13 @@ msgstr "Korektor, kompresor i inne efekty audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Efekty dźwiękowe dla aplikacji PipeWire"
+
+#, fuzzy
+#~ msgid "Local Preset"
+#~ msgstr "Lista szablonów lokalnych"
+
+#~ msgid "Voice Detection"
+#~ msgstr "Wykrywanie głosu"
 
 #, fuzzy
 #~ msgid "Automatic Level"

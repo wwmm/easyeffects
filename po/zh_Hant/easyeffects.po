@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 11:36-0300\n"
 "PO-Revision-Date: 2025-11-06 21:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -2199,7 +2199,8 @@ msgid "Hardware profile"
 msgstr "硬體設定檔"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-msgid "Local Preset"
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
+msgid "Local preset"
 msgstr "本地預設集"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
@@ -2213,10 +2214,6 @@ msgstr "建立新的自動載入預設集"
 #: src/contents/ui/PresetsAutoloadingPage.qml:144
 msgid "Remove this autoloading preset"
 msgstr "移除此自動載入預設集"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-msgid "Local preset"
-msgstr "本地預設集"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 msgid "Copy to local presets"
@@ -2481,8 +2478,8 @@ msgstr "已經載入 %1 RNNoise 模型。"
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "載入 %1 模型失敗。 退回備用標準 RNNoise 模型。"
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+msgid "Voice detection"
 msgstr "語音偵測"
 
 #: src/contents/ui/RNNoise.qml:126
@@ -2570,10 +2567,6 @@ msgstr "噪音抑制"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr "語音作用機率"
-
-#: src/contents/ui/Speex.qml:109
-msgid "Voice detection"
-msgstr "語音偵測"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -2793,6 +2786,12 @@ msgstr "等化器、壓縮器、及其他音效處理"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "用於 PipeWire 應用程式的音效處理"
+
+#~ msgid "Local Preset"
+#~ msgstr "本地預設集"
+
+#~ msgid "Voice Detection"
+#~ msgstr "語音偵測"
 
 #, fuzzy
 #~ msgid "Gain boost"
