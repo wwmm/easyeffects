@@ -2685,7 +2685,7 @@ msgstr "Невідомий"
 
 #: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
-msgstr "Підсилювач НЧ (басів)"
+msgstr "Підсилення НЧ (басів)"
 
 #: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
@@ -2697,7 +2697,7 @@ msgstr "Конвольвер"
 
 #: src/tags_plugin_name.cpp:31
 msgid "Crossfeed"
-msgstr "Кросфід (змішувач)"
+msgstr "Кросфід (змішування)"
 
 #: src/tags_plugin_name.cpp:32
 msgid "Crystalizer"
@@ -2717,7 +2717,7 @@ msgstr "Ексайтер (збудник)"
 
 #: src/tags_plugin_name.cpp:42
 msgid "Level Meter"
-msgstr "Вимірювач рівня"
+msgstr "Вимірювання рівня"
 
 #: src/tags_plugin_name.cpp:45
 msgid "Maximizer"
