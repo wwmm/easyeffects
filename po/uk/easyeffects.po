@@ -854,7 +854,7 @@ msgstr "Рівень змішування"
 
 #: src/contents/ui/Crossfeed.qml:101
 msgid "Crossfeed Presets"
-msgstr "Попередні налаштування змішувача"
+msgstr "Попередні налаштування"
 
 #: src/contents/ui/Crossfeed.qml:105
 msgid "Default"
@@ -2689,7 +2689,7 @@ msgstr "Підсилювач НЧ (басів)"
 
 #: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
-msgstr "Гучність  НЧ (басів)"
+msgstr "Гучність НЧ (басів)"
 
 #: src/tags_plugin_name.cpp:30
 msgid "Convolver"
