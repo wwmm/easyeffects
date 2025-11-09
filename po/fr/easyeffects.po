@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-08 21:54-0300\n"
-"PO-Revision-Date: 2025-11-06 04:28+0000\n"
+"PO-Revision-Date: 2025-11-09 14:34+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -25,6 +25,10 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
+"Impossible d'activer l'option de démarrage automatique car l'accès en "
+"arrière-plan a été refusé. Veuillez autoriser la permission "
+"\"Exécuter en Arrière-plan\" pour Easy Effects dans les paramètres de votre "
+"application système."
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -1517,9 +1521,8 @@ msgid "Automatic level"
 msgstr "Niveau automatique"
 
 #: src/contents/ui/Limiter.qml:607
-#, fuzzy
 msgid "Threshold boost"
-msgstr "Seuil"
+msgstr "Amplification du seuil"
 
 #: src/contents/ui/Loudness.qml:70
 msgid "Contour"
