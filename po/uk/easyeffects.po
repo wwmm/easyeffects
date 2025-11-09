@@ -2379,7 +2379,7 @@ msgstr "Ступінь рівномірності"
 
 #: src/contents/ui/Reverb.qml:130
 msgid "High frequency damping"
-msgstr "Частота відсічення відлуння"
+msgstr "Частота відсікання відлуння"
 
 #: src/contents/ui/Reverb.qml:147
 msgid "Bass cut"
