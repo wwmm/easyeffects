@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-09 22:38-0300\n"
-"PO-Revision-Date: 2025-09-22 07:01+0000\n"
-"Last-Translator: Abdelrahman Ehab Elsaied Hassan <s3409663@hotmail.com>\n"
+"PO-Revision-Date: 2025-11-10 22:39+0000\n"
+"Last-Translator: Abdullah Albaroty <albaroty@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/easyeffects/main/"
 "ar/>\n"
 "Language: ar\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
 msgid ""
@@ -219,9 +219,8 @@ msgid "Force silence"
 msgstr "كتم إجباري"
 
 #: src/contents/ui/Autogain.qml:251
-#, fuzzy
 msgid "Force silence when the level is below the silence threshold"
-msgstr "فرض الصمت عندما يكون مستوى الصوت أقل من عتبة الصمت."
+msgstr "فرض الصمت عندما يكون مستوى الصوت أقل من عتبة الصمت"
 
 #: src/contents/ui/Autogain.qml:263 src/contents/ui/DeepFilterNet.qml:194
 #: src/contents/ui/LevelMeter.qml:216 src/contents/ui/Pitch.qml:310
@@ -1072,14 +1071,12 @@ msgid "Description"
 msgstr ""
 
 #: src/contents/ui/DelegatePluginsList.qml:73
-#, fuzzy
 msgid "Toggle this effect"
-msgstr "إعادة ضبط Easy Effects."
+msgstr "بدل هذا التأثير"
 
 #: src/contents/ui/DelegatePluginsList.qml:87
-#, fuzzy
 msgid "Remove this effect"
-msgstr "إعادة ضبط Easy Effects."
+msgstr "احذف هذا التأثير"
 
 #: src/contents/ui/DelegateStreamsList.qml:77
 #, fuzzy
@@ -1244,14 +1241,12 @@ msgid "APO preset"
 msgstr "إعداد مسبق"
 
 #: src/contents/ui/Equalizer.qml:54
-#, fuzzy
 msgid "Imported the Equalizer APO preset file."
-msgstr "ابحث في المجتمع عن إعداد مسبق"
+msgstr "يستورد ملف الاعداد المسبق لمعادل APO"
 
 #: src/contents/ui/Equalizer.qml:56
-#, fuzzy
 msgid "Failed to import the Equalizer APO preset file."
-msgstr "ابحث عن ملف استجابة نبضية"
+msgstr "فشل استيراد ملف الاعداد المسبق لمعادل APO."
 
 #: src/contents/ui/Equalizer.qml:66
 #, fuzzy
