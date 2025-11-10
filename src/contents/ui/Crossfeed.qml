@@ -53,12 +53,19 @@ Kirigami.ScrollablePage {
             Kirigami.Card {
                 id: cardControls
 
+                leftPadding: 0
+                rightPadding: 0
+
                 header: Kirigami.Heading {
                     text: i18n("Controls") // qmllint disable
                     level: 2
+                    leftPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
+                    rightPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
                 }
 
                 contentItem: ColumnLayout {
+                    spacing: 0
+
                     EeSpinBox {
                         id: fcut
 

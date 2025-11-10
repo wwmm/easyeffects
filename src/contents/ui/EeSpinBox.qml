@@ -50,8 +50,13 @@ FormCard.AbstractFormDelegate {
     Accessible.description: `Value: ${control.value} ${control.unit ? ' ' + control.unit : ''}`
     Accessible.role: Accessible.SpinBox
 
+    background: null
+
+    verticalPadding: Kirigami.Units.largeSpacing
+
     focusPolicy: Kirigami.Settings.isMobile ? Qt.StrongFocus : Qt.NoFocus
     onClicked: spinbox.forceActiveFocus()
+
     Keys.onPressed: event => {
         if (event.key === Qt.Key_PageUp) {
             const v = control.value + pageSteps * stepSize;
