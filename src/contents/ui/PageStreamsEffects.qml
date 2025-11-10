@@ -489,6 +489,8 @@ Kirigami.Page {
         position: Controls.ToolBar.Footer
 
         contentItem: RowLayout {
+            spacing: Kirigami.Units.smallSpacing
+
             anchors {
                 left: parent.left
                 leftMargin: Kirigami.Units.smallSpacing
@@ -599,6 +601,8 @@ Kirigami.Page {
                 id: segmentedButton
 
                 Layout.alignment: Qt.AlignHCenter
+                Layout.topMargin: Math.round(Kirigami.Units.smallSpacing / 2)
+                Layout.bottomMargin: Math.round(Kirigami.Units.smallSpacing / 2)
 
                 readonly property bool hasEnoughWidth: appWindow.width >= Kirigami.Units.gridUnit * 40
 
