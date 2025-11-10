@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-09 22:38-0300\n"
-"PO-Revision-Date: 2025-11-06 21:51+0000\n"
+"PO-Revision-Date: 2025-11-10 14:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -24,7 +24,8 @@ msgid ""
 "Cannot enable autostart option because background access has been denied. "
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
-msgstr ""
+msgstr "無法啟用自動啟動選項，因為背景存取已被拒絕。請在系統應用程式設定中允許 Easy "
+"Effects 的 \"背景運行\" 權限。"
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -96,9 +97,8 @@ msgid "About"
 msgstr "關於"
 
 #: src/contents/ui/AboutPage.qml:14
-#, fuzzy
 msgid "Global audio effects"
-msgstr "整體快速鍵"
+msgstr "整體音效處理"
 
 #: src/contents/ui/AboutPage.qml:27
 msgctxt "@info:credit"
@@ -259,7 +259,6 @@ msgstr "樓層"
 #: src/contents/ui/MultibandCompressor.qml:955
 #: src/contents/ui/MultibandGate.qml:928 src/contents/ui/Reverb.qml:336
 #: src/contents/ui/StereoTools.qml:413
-#, fuzzy
 msgid "Show native window"
 msgstr "顯示原生視窗"
 
@@ -300,14 +299,12 @@ msgid "Link"
 msgstr "連結"
 
 #: src/contents/ui/BlocklistSheet.qml:13
-#, fuzzy
 msgid "Excluded Applications"
-msgstr "排除的應用程式清單"
+msgstr "已經排除的應用程式"
 
 #: src/contents/ui/BlocklistSheet.qml:29
-#, fuzzy
 msgid "Application node name"
-msgstr "應用程式名稱"
+msgstr "應用程式節點名稱"
 
 #: src/contents/ui/BlocklistSheet.qml:45
 msgid "Add to excluded applications"
@@ -395,7 +392,7 @@ msgstr "比率"
 #: src/contents/ui/Compressor.qml:138 src/contents/ui/Expander.qml:98
 #: src/contents/ui/Limiter.qml:435 src/contents/ui/MultibandCompressor.qml:341
 msgid "Knee"
-msgstr ""
+msgstr "屈緩"
 
 #: src/contents/ui/Compressor.qml:158 src/contents/ui/Expander.qml:118
 msgid "Threshold and Time"
@@ -406,9 +403,8 @@ msgstr "閾值和時間"
 #: src/contents/ui/Limiter.qml:128 src/contents/ui/Limiter.qml:401
 #: src/contents/ui/MultibandCompressor.qml:223
 #: src/contents/ui/MultibandGate.qml:164
-#, fuzzy
 msgid "Attack"
-msgstr "徵用"
+msgstr "起音(Attack)"
 
 #: src/contents/ui/Compressor.qml:206 src/contents/ui/Expander.qml:166
 #: src/contents/ui/Gate.qml:89 src/contents/ui/Gate.qml:895
@@ -425,7 +421,6 @@ msgstr "釋出"
 #: src/contents/ui/Gate.qml:675 src/contents/ui/Limiter.qml:181
 #: src/contents/ui/Limiter.qml:482 src/contents/ui/MultibandCompressor.qml:631
 #: src/contents/ui/MultibandGate.qml:604
-#, fuzzy
 msgid "Sidechain"
 msgstr "側鏈"
 
@@ -736,7 +731,6 @@ msgstr "曲線"
 #: src/contents/ui/Compressor.qml:804 src/contents/ui/Expander.qml:761
 #: src/contents/ui/Gate.qml:786 src/contents/ui/MultibandCompressor.qml:769
 #: src/contents/ui/MultibandGate.qml:742
-#, fuzzy
 msgid "Envelope"
 msgstr "封套"
 
@@ -884,51 +878,51 @@ msgstr "略過"
 
 #: src/contents/ui/Crystalizer.qml:108
 msgid "Adaptive intensity"
-msgstr ""
+msgstr "適應強度"
 
 #: src/contents/ui/DeepFilterNet.qml:33
 msgid "Attenuation limit"
-msgstr ""
+msgstr "衰減限制"
 
 #: src/contents/ui/DeepFilterNet.qml:80
 msgid "Minimum processing threshold"
-msgstr ""
+msgstr "最小化處理閾值"
 
 #: src/contents/ui/DeepFilterNet.qml:96
 msgid "Maximum ERB processing threshold"
-msgstr ""
+msgstr "最大化 ERB 處理閾值"
 
 #: src/contents/ui/DeepFilterNet.qml:112
 msgid "Maximum DF processing threshold"
-msgstr ""
+msgstr "最大化 DF 處理閾值"
 
 #: src/contents/ui/DeepFilterNet.qml:128
 msgid "Minimum processing buffer"
-msgstr ""
+msgstr "最小化處理緩衝"
 
 #: src/contents/ui/DeepFilterNet.qml:135
 msgid "frames"
-msgstr ""
+msgstr "幀"
 
 #: src/contents/ui/DeepFilterNet.qml:144
 msgid "Post filter Beta"
-msgstr ""
+msgstr "後置篩選器 Beta"
 
 #: src/contents/ui/Deesser.qml:46 src/tags_plugin_name.cpp:34
 msgid "Deesser"
-msgstr ""
+msgstr "嘶聲消除器"
 
 #: src/contents/ui/Deesser.qml:59 src/contents/ui/Deesser.qml:270
 msgid "Detection"
-msgstr ""
+msgstr "偵測"
 
 #: src/contents/ui/Deesser.qml:76
 msgid "Wideband"
-msgstr ""
+msgstr "寬頻"
 
 #: src/contents/ui/Deesser.qml:76
 msgid "Split"
-msgstr ""
+msgstr "分割"
 
 #: src/contents/ui/Deesser.qml:85 src/contents/ui/Gate.qml:124
 #: src/contents/ui/Gate.qml:185 src/contents/ui/Gate.qml:960
@@ -938,49 +932,48 @@ msgstr ""
 #: src/contents/ui/MultibandGate.qml:261 src/contents/ui/MultibandGate.qml:315
 #: src/contents/ui/RNNoise.qml:110
 msgid "Threshold"
-msgstr ""
+msgstr "閾值"
 
 #: src/contents/ui/Deesser.qml:135
 msgid "Laxity"
-msgstr ""
+msgstr "鬆弛"
 
 #: src/contents/ui/Deesser.qml:154 src/contents/ui/Filter.qml:105
 #: src/contents/ui/Reverb.qml:116 src/tags_plugin_name.cpp:40
 msgid "Filter"
-msgstr ""
+msgstr "篩選"
 
 #: src/contents/ui/Deesser.qml:167
 msgid "F1 split"
-msgstr ""
+msgstr "F1 分割"
 
 #: src/contents/ui/Deesser.qml:184
 msgid "F2 peak"
-msgstr ""
+msgstr "F2 峰值"
 
 #: src/contents/ui/Deesser.qml:201
 msgid "F1 gain"
-msgstr ""
+msgstr "F1 增益"
 
 #: src/contents/ui/Deesser.qml:218
 msgid "F2 level"
-msgstr ""
+msgstr "F2 等級"
 
 #: src/contents/ui/Deesser.qml:236
 msgid "F2 peak Q"
-msgstr ""
+msgstr "F2 峰值 Q"
 
 #: src/contents/ui/Deesser.qml:259 src/contents/ui/EchoCanceller.qml:100
 msgid "Level"
-msgstr ""
+msgstr "等級"
 
 #: src/contents/ui/Deesser.qml:281
-#, fuzzy
 msgid "Gain reduction"
-msgstr "頻帶縮減"
+msgstr "增益減少"
 
 #: src/contents/ui/Delay.qml:61 src/contents/ui/Delay.qml:219
 msgid "Distance"
-msgstr ""
+msgstr "距離"
 
 #: src/contents/ui/Delay.qml:61 src/contents/ui/Delay.qml:90
 #: src/contents/ui/Delay.qml:219 src/contents/ui/Delay.qml:248
@@ -991,31 +984,28 @@ msgstr "時間"
 
 #: src/contents/ui/Delay.qml:108 src/contents/ui/Delay.qml:266
 msgid "Meters"
-msgstr ""
+msgstr "量表"
 
 #: src/contents/ui/Delay.qml:126 src/contents/ui/Delay.qml:284
 msgid "Centimeters"
-msgstr ""
+msgstr "公分"
 
 #: src/contents/ui/Delay.qml:145 src/contents/ui/Delay.qml:303
 msgid "Temperature"
-msgstr ""
+msgstr "溫度"
 
 #: src/contents/ui/Delay.qml:383
-#, fuzzy
 msgid "Invert left"
-msgstr "左增益 (Gain)"
+msgstr "向左反轉"
 
 #: src/contents/ui/Delay.qml:393
-#, fuzzy
 msgid "Invert right"
-msgstr "左/右"
+msgstr "向右反轉"
 
 #: src/contents/ui/DelegateClientsList.qml:36
 #: src/contents/ui/DelegateModulesList.qml:36
-#, fuzzy
 msgid "Id"
-msgstr "閒置"
+msgstr "ID"
 
 #: src/contents/ui/DelegateClientsList.qml:50
 #: src/contents/ui/DelegateModulesList.qml:50
@@ -1025,11 +1015,11 @@ msgstr "名稱"
 
 #: src/contents/ui/DelegateClientsList.qml:64
 msgid "Api"
-msgstr ""
+msgstr "Api"
 
 #: src/contents/ui/DelegateClientsList.qml:78
 msgid "Access"
-msgstr ""
+msgstr "存取"
 
 #: src/contents/ui/DelegateModulesList.qml:64
 #: src/contents/ui/PresetsAutoloadingPage.qml:158
@@ -1037,19 +1027,16 @@ msgid "Description"
 msgstr "註釋"
 
 #: src/contents/ui/DelegatePluginsList.qml:73
-#, fuzzy
 msgid "Toggle this effect"
-msgstr "輸入設定檔"
+msgstr "切換此音效"
 
 #: src/contents/ui/DelegatePluginsList.qml:87
-#, fuzzy
 msgid "Remove this effect"
-msgstr "輸入設定檔"
+msgstr "移除此音效"
 
 #: src/contents/ui/DelegateStreamsList.qml:77
-#, fuzzy
 msgid "channels"
-msgstr "左聲道"
+msgstr "聲道"
 
 #: src/contents/ui/DelegateStreamsList.qml:88
 #: src/contents/ui/EchoCanceller.qml:51 src/contents/ui/EchoCanceller.qml:91
@@ -1063,64 +1050,60 @@ msgid "Exclude"
 msgstr "略過"
 
 #: src/contents/ui/DelegateStreamsList.qml:111
-#, fuzzy
 msgid "Add %1 to excluded applications"
-msgstr "新增至排除的應用程式"
+msgstr "添加 %1 至已經排除的應用程式"
 
 #: src/contents/ui/EchoCanceller.qml:43 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
-msgstr ""
+msgstr "回音消除"
 
 #: src/contents/ui/EchoCanceller.qml:60
-#, fuzzy
 msgid "Mobile mode"
-msgstr "立體聲模式"
+msgstr "行動裝置模式"
 
 #: src/contents/ui/EchoCanceller.qml:69
 msgid "Enforce high-pass"
-msgstr ""
+msgstr "強制高通"
 
 #: src/contents/ui/EchoCanceller.qml:83
 msgid "Noise Suppression"
-msgstr ""
+msgstr "噪音抑制"
 
 #: src/contents/ui/EchoCanceller.qml:104 src/contents/ui/Loudness.qml:101
 msgid "Low"
-msgstr ""
+msgstr "低"
 
 #: src/contents/ui/EchoCanceller.qml:104
-#, fuzzy
 msgid "Moderate"
-msgstr "現代"
+msgstr "緩和"
 
 #: src/contents/ui/EchoCanceller.qml:104 src/contents/ui/Loudness.qml:101
 msgid "High"
-msgstr ""
+msgstr "高"
 
 #: src/contents/ui/EchoCanceller.qml:104
 msgid "Very high"
-msgstr ""
+msgstr "極高"
 
 #: src/contents/ui/EchoCanceller.qml:116
 msgid "High-Pass Filter"
-msgstr ""
+msgstr "高通濾波器"
 
 #: src/contents/ui/EchoCanceller.qml:133
-#, fuzzy
 msgid "Full band"
-msgstr "頻帶"
+msgstr "全頻段"
 
 #: src/contents/ui/EchoCanceller.qml:170 src/contents/ui/Speex.qml:60
 msgid "Automatic gain control"
-msgstr ""
+msgstr "自動增益控制"
 
 #: src/contents/ui/EeInputOutputGain.qml:21
 msgid "Audio levels control"
-msgstr ""
+msgstr "音訊等級控制"
 
 #: src/contents/ui/EeInputOutputGain.qml:22
 msgid "Input and output gain controls with level meters"
-msgstr ""
+msgstr "使用等級量表的輸入和輸出增益控制"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/main.qml:482
 #: src/contents/ui/StereoTools.qml:43
@@ -1131,63 +1114,60 @@ msgstr "輸入"
 #: src/contents/ui/MultibandCompressor.qml:632
 #: src/contents/ui/MultibandCompressor.qml:902
 #: src/contents/ui/MultibandGate.qml:605 src/contents/ui/MultibandGate.qml:875
-#, fuzzy
 msgid "Band"
-msgstr "頻帶"
+msgstr "頻段"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Bell"
-msgstr ""
+msgstr "鐘"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "High-shelf"
-msgstr ""
+msgstr "高架位"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Low-shelf"
-msgstr ""
+msgstr "低架位"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Notch"
-msgstr ""
+msgstr "帶阻"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Resonance"
-msgstr ""
+msgstr "共鳴"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-#, fuzzy
 msgid "Allpass"
-msgstr "全局繞過"
+msgstr "全部略過"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
-#, fuzzy
 msgid "Bandpass"
-msgstr "頻帶繞過"
+msgstr "頻段略過"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Ladder-pass"
-msgstr ""
+msgstr "階梯通過"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:55
 msgid "Ladder-rejection"
-msgstr ""
+msgstr "階梯抵制"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:90
 msgid "Slope"
-msgstr ""
+msgstr "傾斜"
 
 #: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:113
 #: src/contents/ui/MultibandCompressor.qml:174
 #: src/contents/ui/MultibandGate.qml:111 src/contents/ui/PipeWirePage.qml:388
 msgid "Frequency"
-msgstr ""
+msgstr "頻率"
 
 #: src/contents/ui/EqualizerBandMenu.qml:95 src/contents/ui/Filter.qml:144
 #: src/contents/ui/Limiter.qml:473 src/contents/ui/MultibandCompressor.qml:322
 #: src/contents/ui/MultibandGate.qml:208
 msgid "Gain"
-msgstr ""
+msgstr "增益"
 
 #: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:160
 msgid "Quality"
@@ -1195,13 +1175,13 @@ msgstr "品質"
 
 #: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:129
 msgid "Width"
-msgstr ""
+msgstr "寬度"
 
 #: src/contents/ui/EqualizerBandMenu.qml:167
 #: src/contents/ui/MultibandCompressor.qml:74
 #: src/contents/ui/MultibandGate.qml:74
 msgid "Solo"
-msgstr ""
+msgstr "獨奏"
 
 #: src/contents/ui/Equalizer.qml:51 src/contents/ui/Equalizer.qml:81
 msgid "APO preset"
@@ -1244,88 +1224,82 @@ msgstr "頻帶"
 #: src/contents/ui/Equalizer.qml:133 src/contents/ui/Filter.qml:175
 #: src/contents/ui/StereoTools.qml:66 src/contents/ui/StereoTools.qml:283
 msgid "Balance"
-msgstr ""
+msgstr "平衡"
 
 #: src/contents/ui/Equalizer.qml:150
-#, fuzzy
 msgid "Pitch left"
-msgstr "左距離"
+msgstr "向左傾斜"
 
 #: src/contents/ui/Equalizer.qml:167
-#, fuzzy
 msgid "Pitch right"
-msgstr "左距離"
+msgstr "向右傾斜"
 
 #: src/contents/ui/Equalizer.qml:297
-#, fuzzy
 msgid "Split channels"
-msgstr "左聲道"
+msgstr "分割聲道"
 
 #: src/contents/ui/Equalizer.qml:307
 msgid "Flat response"
-msgstr ""
+msgstr "平板反應"
 
 #: src/contents/ui/Equalizer.qml:314
 msgid "Calculate frequencies"
-msgstr ""
+msgstr "計算頻率"
 
 #: src/contents/ui/Equalizer.qml:321
-#, fuzzy
 msgid "Sort bands"
-msgstr "頻帶範圍"
+msgstr "排序頻段"
 
 #: src/contents/ui/Equalizer.qml:328
 msgid "Import APO"
-msgstr ""
+msgstr "匯入 APO"
 
 #: src/contents/ui/Equalizer.qml:335
 msgid "Import APO (GraphicEQ)"
-msgstr ""
+msgstr "匯入 APO (GraphicEQ)"
 
 #: src/contents/ui/Equalizer.qml:342
 msgid "Export APO"
-msgstr ""
+msgstr "匯出 APO"
 
 #: src/contents/ui/Exciter.qml:144
-#, fuzzy
 msgid "Ceil active"
-msgstr "相對"
+msgstr "上限 (Ceil) 作用"
 
 #: src/contents/ui/Exciter.qml:155
 msgid "Ceil"
-msgstr ""
+msgstr "上限 (Ceil)"
 
 #: src/contents/ui/Expander.qml:53 src/tags_plugin_name.cpp:39
 msgid "Expander"
-msgstr ""
+msgstr "擴展"
 
 #: src/contents/ui/Expander.qml:223 src/contents/ui/Gate.qml:244
 #: src/contents/ui/Limiter.qml:201 src/contents/ui/MultibandCompressor.qml:390
 #: src/contents/ui/MultibandGate.qml:363
 msgid "Internal"
-msgstr ""
+msgstr "內部"
 
 #: src/contents/ui/Filter.qml:64
-#, fuzzy
 msgid "Filter mode"
-msgstr "立體聲模式"
+msgstr "篩選模式"
 
 #: src/contents/ui/Filter.qml:77
 msgid "Equalizer mode"
-msgstr ""
+msgstr "等化器模式"
 
 #: src/contents/ui/Gate.qml:57 src/tags_plugin_name.cpp:41
 msgid "Gate"
-msgstr ""
+msgstr "閘門 (Gate)"
 
 #: src/contents/ui/Gate.qml:141 src/contents/ui/Gate.qml:204
 #: src/contents/ui/MultibandGate.qml:276 src/contents/ui/MultibandGate.qml:331
 msgid "Zone"
-msgstr ""
+msgstr "區域"
 
 #: src/contents/ui/Gate.qml:161 src/contents/ui/MultibandGate.qml:304
 msgid "Hysteresis"
-msgstr ""
+msgstr "遲滯"
 
 #: src/contents/ui/Gate.qml:954 src/contents/ui/Gate.qml:967
 #: src/contents/ui/MultibandCompressor.qml:178
@@ -1334,251 +1308,247 @@ msgid "Start"
 msgstr "開始"
 
 #: src/contents/ui/LevelMeter.qml:49
-#, fuzzy
 msgid "Input Level"
-msgstr "輸入裝置"
+msgstr "輸入等級"
 
 #: src/contents/ui/LevelMeter.qml:85
 msgid "True Peak"
-msgstr ""
+msgstr "真實峰值"
 
 #: src/contents/ui/Limiter.qml:60
 msgid "Herm thin"
-msgstr ""
+msgstr "Herm 細"
 
 #: src/contents/ui/Limiter.qml:60
 msgid "Herm wide"
-msgstr ""
+msgstr "Herm 寬"
 
 #: src/contents/ui/Limiter.qml:60
 msgid "Herm tail"
-msgstr ""
+msgstr "Herm 尾"
 
 #: src/contents/ui/Limiter.qml:60
 msgid "Herm duck"
-msgstr ""
+msgstr "Herm 鴨"
 
 #: src/contents/ui/Limiter.qml:60
 msgid "Exp thin"
-msgstr ""
+msgstr "Exp 細"
 
 #: src/contents/ui/Limiter.qml:60
 msgid "Exp wide"
-msgstr ""
+msgstr "Exp 寬"
 
 #: src/contents/ui/Limiter.qml:60
 msgid "Exp tail"
-msgstr ""
+msgstr "Exp 尾"
 
 #: src/contents/ui/Limiter.qml:60
 msgid "Exp duck"
-msgstr ""
+msgstr "Exp 鴨"
 
 #: src/contents/ui/Limiter.qml:60
 msgid "Line thin"
-msgstr ""
+msgstr "Line 細"
 
 #: src/contents/ui/Limiter.qml:60
 msgid "Line wide"
-msgstr ""
+msgstr "Line 寬"
 
 #: src/contents/ui/Limiter.qml:60
 msgid "Line tail"
-msgstr ""
+msgstr "Line 尾"
 
 #: src/contents/ui/Limiter.qml:60
 msgid "Line duck"
-msgstr ""
+msgstr "Line 鴨"
 
 #: src/contents/ui/Limiter.qml:70
 msgid "Oversampling"
-msgstr ""
+msgstr "過度採樣"
 
 #: src/contents/ui/Limiter.qml:74 src/contents/ui/Limiter.qml:88
 #: src/contents/ui/MultibandCompressor.qml:554
 #: src/contents/ui/MultibandGate.qml:527
 msgid "None"
-msgstr ""
+msgstr "無"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x2/16 bit"
-msgstr ""
+msgstr "Half x2/16 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x2/24 bit"
-msgstr ""
+msgstr "Half x2/24 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x3/16 bit"
-msgstr ""
+msgstr "Half x3/16 bit"
 
 #: src/contents/ui/Limiter.qml:74
+#, fuzzy
 msgid "Half x3/24 bit"
-msgstr ""
+msgstr "Half x3/24 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x4/16 bit"
-msgstr ""
+msgstr "Half x4/16 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x4/24 bit"
-msgstr ""
+msgstr "Half x4/24 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x6/16 bit"
-msgstr ""
+msgstr "Half x6/16 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x6/24 bit"
-msgstr ""
+msgstr "Half x6/24 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x8/16 bit"
-msgstr ""
+msgstr "Half x8/16 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Half x8/24 bit"
-msgstr ""
+msgstr "Half x8/24 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x2/16 bit"
-msgstr ""
+msgstr "Full x2/16 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x2/24 bit"
-msgstr ""
+msgstr "Full x2/24 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x3/16 bit"
-msgstr ""
+msgstr "Full x3/16 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x3/24 bit"
-msgstr ""
+msgstr "Full x3/24 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x4/16 bit"
-msgstr ""
+msgstr "Full x4/16 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x4/24 bit"
-msgstr ""
+msgstr "Full x4/24 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x6/16 bit"
-msgstr ""
+msgstr "Full x6/16 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x6/24 bit"
-msgstr ""
+msgstr "Full x6/24 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x8/16 bit"
-msgstr ""
+msgstr "Full x8/16 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "Full x8/24 bit"
-msgstr ""
+msgstr "Full x8/24 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "True peak/16 bit"
-msgstr ""
+msgstr "True peak/16 bit"
 
 #: src/contents/ui/Limiter.qml:74
 msgid "True peak/24 bit"
-msgstr ""
+msgstr "True peak/24 bit"
 
 #: src/contents/ui/Limiter.qml:84
 msgid "Dithering"
-msgstr ""
+msgstr "抖動"
 
 #: src/contents/ui/Limiter.qml:88
 msgid "7 bit"
-msgstr ""
+msgstr "7 bit"
 
 #: src/contents/ui/Limiter.qml:88
 msgid "8 bit"
-msgstr ""
+msgstr "8 bit"
 
 #: src/contents/ui/Limiter.qml:88
 msgid "11 bit"
-msgstr ""
+msgstr "11 bit"
 
 #: src/contents/ui/Limiter.qml:88
 msgid "12 bit"
-msgstr ""
+msgstr "12 bit"
 
 #: src/contents/ui/Limiter.qml:88
 msgid "15 bit"
-msgstr ""
+msgstr "15 bit"
 
 #: src/contents/ui/Limiter.qml:88
 msgid "16 bit"
-msgstr ""
+msgstr "16 bit"
 
 #: src/contents/ui/Limiter.qml:88
 msgid "23 bit"
-msgstr ""
+msgstr "23 bit"
 
 #: src/contents/ui/Limiter.qml:88
 msgid "24 bit"
-msgstr ""
+msgstr "24 bit"
 
 #: src/contents/ui/Limiter.qml:100 src/tags_plugin_name.cpp:43
 msgid "Limiter"
-msgstr ""
+msgstr "限制器"
 
 #: src/contents/ui/Limiter.qml:162
 msgid "Stereo Link"
-msgstr ""
+msgstr "立體聲連結"
 
 #: src/contents/ui/Limiter.qml:390 src/contents/ui/Limiter.qml:617
 msgid "Automatic level"
-msgstr ""
+msgstr "自動等級"
 
 #: src/contents/ui/Limiter.qml:607
-#, fuzzy
 msgid "Threshold boost"
-msgstr "閾值和時間"
+msgstr "閾值提升"
 
 #: src/contents/ui/Loudness.qml:70
-#, fuzzy
 msgid "Contour"
-msgstr "控制"
+msgstr "輪廓"
 
 #: src/contents/ui/Loudness.qml:83
 msgid "FFT size"
-msgstr ""
+msgstr "FFT 大小"
 
 #: src/contents/ui/Loudness.qml:97
-#, fuzzy
 msgid "IIR approximation"
-msgstr "靜音"
+msgstr "IIR 近似"
 
 #: src/contents/ui/Loudness.qml:101
 msgid "Fastest"
-msgstr ""
+msgstr "最快"
 
 #: src/contents/ui/Loudness.qml:101
 msgid "Normal"
-msgstr ""
+msgstr "正常"
 
 #: src/contents/ui/Loudness.qml:101
 msgid "Best"
-msgstr ""
+msgstr "最佳"
 
 #: src/contents/ui/Loudness.qml:111
-#, fuzzy
 msgid "Volume"
-msgstr "輸出音量"
+msgstr "音量"
 
 #: src/contents/ui/Loudness.qml:128
 msgid "Clipping range"
-msgstr ""
+msgstr "消波範圍"
 
 #: src/contents/ui/Loudness.qml:187
 msgid "Clipping"
-msgstr ""
+msgstr "消波"
 
 #: src/contents/ui/main.qml:218
 msgid "Reset Settings?"
@@ -1586,39 +1556,36 @@ msgstr "重置設定？"
 
 #: src/contents/ui/main.qml:219
 msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
+msgstr "確定要重新設定全部 Easy Effects 設定嗎？"
 
 #: src/contents/ui/main.qml:288 src/contents/ui/main.qml:304
 msgid "Preset Loaded"
 msgstr "預設集已經載入"
 
 #: src/contents/ui/main.qml:315 src/contents/ui/main.qml:327
-#, fuzzy
 msgid "Clear List"
-msgstr "頻帶清單"
+msgstr "清除列表"
 
 #: src/contents/ui/main.qml:316 src/contents/ui/main.qml:328
 msgid "Are you sure you want to clear this list?"
-msgstr ""
+msgstr "確定要清除此列表？"
 
 #: src/contents/ui/main.qml:383
 msgid "Active"
-msgstr ""
+msgstr "作用"
 
 #: src/contents/ui/main.qml:394 src/contents/ui/main.qml:515
 #: src/contents/ui/ShortcutsSheet.qml:370
-#, fuzzy
 msgid "Shortcuts"
-msgstr "捷徑(S_)"
+msgstr "快速鍵"
 
 #: src/contents/ui/main.qml:403 src/contents/ui/main.qml:523
 msgid "Manual"
-msgstr ""
+msgstr "手冊"
 
 #: src/contents/ui/main.qml:415 src/contents/ui/main.qml:555
-#, fuzzy
 msgid "Quit"
-msgstr "離開(Q_)"
+msgstr "退出"
 
 #: src/contents/ui/main.qml:439
 msgid "Turn effects on/off"
@@ -1626,15 +1593,14 @@ msgstr "將音效開啟/關閉"
 
 #: src/contents/ui/main.qml:491
 msgid "PipeWire"
-msgstr ""
+msgstr "PipeWire"
 
 #: src/contents/ui/main.qml:507 src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
 #: src/contents/ui/PreferencesSheet.qml:602
-#, fuzzy
 msgid "Preferences"
-msgstr "偏好設定(P_)"
+msgstr "偏好設定"
 
 #: src/contents/ui/main.qml:547
 msgid "About Easy Effects"
@@ -1642,37 +1608,37 @@ msgstr "關於 Easy Effects"
 
 #: src/contents/ui/MenuAddPlugins.qml:62
 msgid "Add %1"
-msgstr ""
+msgstr "添加 %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:133
 msgid "Added a new effect to the pipeline: %1"
-msgstr ""
+msgstr "已經添加新的音效至管道： %1"
 
 #: src/contents/ui/MultibandCompressor.qml:102
-#, fuzzy
 msgid "Compression mode"
 msgstr "壓縮模式"
 
 #: src/contents/ui/MultibandCompressor.qml:197
 #: src/contents/ui/MultibandGate.qml:134
-#, fuzzy
 msgid "End"
-msgstr "第二"
+msgstr "終止"
 
 #: src/contents/ui/MultibandCompressor.qml:480
 #: src/contents/ui/MultibandGate.qml:453
+#, fuzzy
 msgid "Low-cut"
-msgstr ""
+msgstr "Low-cut"
 
 #: src/contents/ui/MultibandCompressor.qml:505
 #: src/contents/ui/MultibandGate.qml:478
+#, fuzzy
 msgid "High-cut"
-msgstr ""
+msgstr "High-cut"
 
 #: src/contents/ui/MultibandCompressor.qml:537
 #: src/contents/ui/MultibandGate.qml:510
 msgid "Operating mode"
-msgstr ""
+msgstr "運行模式"
 
 #: src/contents/ui/MultibandCompressor.qml:541
 #: src/contents/ui/MultibandGate.qml:514
@@ -1687,75 +1653,75 @@ msgstr "現代"
 #: src/contents/ui/MultibandCompressor.qml:541
 #: src/contents/ui/MultibandGate.qml:514
 msgid "Linear phase"
-msgstr ""
+msgstr "線性階段"
 
 #: src/contents/ui/MultibandCompressor.qml:550
 #: src/contents/ui/MultibandGate.qml:523
-#, fuzzy
 msgid "Sidechain boost"
-msgstr "輸入裝置"
+msgstr "側鏈提升"
 
 #: src/contents/ui/MultibandCompressor.qml:554
 #: src/contents/ui/MultibandGate.qml:527
+#, fuzzy
 msgid "Pink BT"
-msgstr ""
+msgstr "Pink BT"
 
 #: src/contents/ui/MultibandCompressor.qml:554
 #: src/contents/ui/MultibandGate.qml:527
+#, fuzzy
 msgid "Pink MT"
-msgstr ""
+msgstr "Pink MT"
 
 #: src/contents/ui/MultibandCompressor.qml:554
 #: src/contents/ui/MultibandGate.qml:527
+#, fuzzy
 msgid "Brown BT"
-msgstr ""
+msgstr "Brown BT"
 
 #: src/contents/ui/MultibandCompressor.qml:554
 #: src/contents/ui/MultibandGate.qml:527
+#, fuzzy
 msgid "Brown MT"
-msgstr ""
+msgstr "Brown MT"
 
 #: src/contents/ui/MultibandCompressor.qml:564
 #: src/contents/ui/MultibandGate.qml:537
-#, fuzzy
 msgid "Sidechain input device"
-msgstr "輸入裝置"
+msgstr "側鏈輸入裝置"
 
 #: src/contents/ui/MultibandGate.qml:160
-#, fuzzy
 msgid "Reaction"
-msgstr "頻帶縮減"
+msgstr "反應作用"
 
 #: src/contents/ui/PageStreamsEffects.qml:81
-#, fuzzy
 msgid "No audio application available"
 msgstr "沒有可用的音訊應用程式"
 
 #: src/contents/ui/PageStreamsEffects.qml:310
 msgid "Add effect"
-msgstr ""
+msgstr "添加音效"
 
 #: src/contents/ui/PageStreamsEffects.qml:357
 #: src/contents/ui/PageStreamsEffects.qml:610
 msgid "Players"
-msgstr ""
+msgstr "播放器"
 
 #: src/contents/ui/PageStreamsEffects.qml:374
 #: src/contents/ui/PageStreamsEffects.qml:610
 msgid "Recorders"
-msgstr ""
+msgstr "錄音器"
 
 #: src/contents/ui/PageStreamsEffects.qml:387
 msgid "Close"
-msgstr ""
+msgstr "關閉"
 
 #: src/contents/ui/PageStreamsEffects.qml:389
 msgid "Expand the list of effects pipeline"
-msgstr ""
+msgstr "展開音效管道列表"
 
 #: src/contents/ui/PageStreamsEffects.qml:389
 msgid "Reduce the list of effects pipeline"
-msgstr ""
+msgstr "減少音效管道列表"
 
 #: src/contents/ui/PageStreamsEffects.qml:413
 msgid "No Effects"
@@ -1763,41 +1729,39 @@ msgstr "無音效"
 
 #: src/contents/ui/PageStreamsEffects.qml:414
 msgid "Audio stream not modified"
-msgstr ""
+msgstr "音訊串流並未修改"
 
 #: src/contents/ui/PageStreamsEffects.qml:620
 msgid "Effects"
 msgstr "音效"
 
 #: src/contents/ui/PageStreamsEffects.qml:637
-#, fuzzy
 msgid "Input monitoring"
-msgstr "啟用/停用輸入監控"
+msgstr "輸入監控"
 
 #: src/contents/ui/PageStreamsEffects.qml:650
-#, fuzzy
 msgid "Excluded apps"
-msgstr "新增至排除的應用程式"
+msgstr "已經排除的應用程式"
 
 #: src/contents/ui/PipeWirePage.qml:17
 msgid "General"
-msgstr ""
+msgstr "通則"
 
 #: src/contents/ui/PipeWirePage.qml:22
 msgid "Modules"
-msgstr ""
+msgstr "模組"
 
 #: src/contents/ui/PipeWirePage.qml:27
 msgid "Clients"
-msgstr ""
+msgstr "客端"
 
 #: src/contents/ui/PipeWirePage.qml:32
 msgid "Test Signal"
-msgstr ""
+msgstr "測試訊號"
 
 #: src/contents/ui/PipeWirePage.qml:102
 msgid "Device Management"
-msgstr ""
+msgstr "裝置管理"
 
 #: src/contents/ui/PipeWirePage.qml:106
 #, fuzzy
@@ -1810,11 +1774,11 @@ msgstr ""
 
 #: src/contents/ui/PipeWirePage.qml:113
 msgid "Use default input"
-msgstr ""
+msgstr "使用預設輸入"
 
 #: src/contents/ui/PipeWirePage.qml:156
 msgid "Use default output"
-msgstr ""
+msgstr "使用預設輸出"
 
 #: src/contents/ui/PipeWirePage.qml:195
 msgid "Server Information"
@@ -1822,136 +1786,129 @@ msgstr "伺服器資訊"
 
 #: src/contents/ui/PipeWirePage.qml:200
 msgid "Header version"
-msgstr ""
+msgstr "標頭版本"
 
 #: src/contents/ui/PipeWirePage.qml:205
 msgid "Library version"
-msgstr ""
+msgstr "庫源版本"
 
 #: src/contents/ui/PipeWirePage.qml:210
 msgid "Runtime version"
-msgstr ""
+msgstr "運行時期版本"
 
 #: src/contents/ui/PipeWirePage.qml:215
 msgid "Default sampling rate"
-msgstr ""
+msgstr "預設採樣率"
 
 #: src/contents/ui/PipeWirePage.qml:220
-#, fuzzy
 msgid "Minimum quantum"
-msgstr "最小"
+msgstr "最小化限量"
 
 #: src/contents/ui/PipeWirePage.qml:225
-#, fuzzy
 msgid "Maximum quantum"
-msgstr "最大"
+msgstr "最大化限量"
 
 #: src/contents/ui/PipeWirePage.qml:230
 msgid "Default quantum"
-msgstr ""
+msgstr "預設限量"
 
 #: src/contents/ui/PipeWirePage.qml:252
 msgid "No Modules"
-msgstr ""
+msgstr "無模組"
 
 #: src/contents/ui/PipeWirePage.qml:275
 msgid "No Clients"
-msgstr ""
+msgstr "無客端"
 
 #: src/contents/ui/PipeWirePage.qml:288
 #: src/contents/ui/PreferencesSheet.qml:219
 msgid "State"
-msgstr ""
+msgstr "狀態"
 
 #: src/contents/ui/PipeWirePage.qml:295
 #: src/contents/ui/PreferencesSheet.qml:226
 msgid "Enabled"
-msgstr ""
+msgstr "已經啟用"
 
 #: src/contents/ui/PipeWirePage.qml:305
 msgid "Channels"
-msgstr ""
+msgstr "聲道"
 
 #: src/contents/ui/PipeWirePage.qml:336
 msgid "Both"
-msgstr ""
+msgstr "雙聲道"
 
 #: src/contents/ui/PipeWirePage.qml:346
 msgid "Waveform"
-msgstr ""
+msgstr "波形"
 
 #: src/contents/ui/PipeWirePage.qml:355
 msgid "Sine wave"
-msgstr ""
+msgstr "正弦波"
 
 #: src/contents/ui/PipeWirePage.qml:366
 msgid "White noise"
-msgstr ""
+msgstr "白噪音"
 
 #: src/contents/ui/PipeWirePage.qml:377
 msgid "Pink noise"
-msgstr ""
+msgstr "粉紅噪音"
 
 #: src/contents/ui/Pitch.qml:56
 msgid "Sequence length"
-msgstr ""
+msgstr "序列長度"
 
 #: src/contents/ui/Pitch.qml:73
-#, fuzzy
 msgid "Seek window"
-msgstr "關閉視窗"
+msgstr "尋找視窗"
 
 #: src/contents/ui/Pitch.qml:91
 msgid "Overlap length"
-msgstr ""
+msgstr "重疊長度"
 
 #: src/contents/ui/Pitch.qml:157 src/tags_plugin_name.cpp:48
 msgid "Pitch"
-msgstr ""
+msgstr "音高"
 
 #: src/contents/ui/Pitch.qml:173
 msgid "Octaves"
-msgstr ""
+msgstr "八度"
 
 #: src/contents/ui/Pitch.qml:189
 msgid "Cents"
-msgstr ""
+msgstr "音分"
 
 #: src/contents/ui/Pitch.qml:205
 msgid "Semitones"
-msgstr ""
+msgstr "半音"
 
 #: src/contents/ui/Pitch.qml:221
-#, fuzzy
 msgid "Tempo difference"
-msgstr "參考資料"
+msgstr "節奏差異"
 
 #: src/contents/ui/Pitch.qml:238
-#, fuzzy
 msgid "Rate difference"
-msgstr "參考資料"
+msgstr "速率差異"
 
 #: src/contents/ui/Pitch.qml:289
 msgid "Quick seek"
-msgstr ""
+msgstr "快速尋找"
 
 #: src/contents/ui/Pitch.qml:299
 msgid "Anti-aliasing"
-msgstr ""
+msgstr "抗鋸齒"
 
 #: src/contents/ui/PluginNotAvailable.qml:14
-#, fuzzy
 msgid "Effect Not Available"
-msgstr "尚無可用"
+msgstr "音效尚無可用"
 
 #: src/contents/ui/PluginNotAvailable.qml:15
 msgid "%1 cannot be used because %2 is not installed on the system."
-msgstr ""
+msgstr "無法使用 %1 ，因為系統上尚未安裝 %2 。"
 
 #: src/contents/ui/PreferencesSheet.qml:36
-#, fuzzy
 msgid "Enable service mode"
-msgstr "立體聲模式"
+msgstr "啟用服務模式"
 
 #: src/contents/ui/PreferencesSheet.qml:37
 msgid "Easy Effects is active in background when the window is closed."
@@ -1959,7 +1916,7 @@ msgstr "Easy Effects 是在背景中作用，當視窗關閉時。"
 
 #: src/contents/ui/PreferencesSheet.qml:49
 msgid "Autostart on login"
-msgstr ""
+msgstr "登入時自動啟動"
 
 #: src/contents/ui/PreferencesSheet.qml:50
 msgid "Easy Effects is launched at user session startup."
@@ -1994,44 +1951,44 @@ msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
-msgstr ""
+msgstr "處理系統通知時可能會導致爆裂聲響，因此最好是忽略它們，但對於某些預設集，可能"
+"建議如此做，因為聽起來太過大聲。"
 
 #: src/contents/ui/PreferencesSheet.qml:143
-#, fuzzy
 msgid "Enable/disable input monitoring"
 msgstr "啟用/停用輸入監控"
 
 #: src/contents/ui/PreferencesSheet.qml:154
 msgid "Mic monitor plays to output effects pipeline"
-msgstr ""
+msgstr "麥克風監聽播放輸出音效管道"
 
 #: src/contents/ui/PreferencesSheet.qml:165
 msgid "Enable the inactivity timeout"
-msgstr ""
+msgstr "啟用在不作用時暫停"
 
 #: src/contents/ui/PreferencesSheet.qml:166
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
-msgstr ""
+msgstr "當全部串流都處於非作用狀態時，Easy Effects 管道會在額外的時間內保持載入狀態。"
 
 #: src/contents/ui/PreferencesSheet.qml:178
 msgid "Inactivity timeout"
-msgstr ""
+msgstr "非作用時暫停"
 
 #: src/contents/ui/PreferencesSheet.qml:192
 msgid "Level meters label"
-msgstr ""
+msgstr "等級量表標籤"
 
 #: src/contents/ui/PreferencesSheet.qml:193
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
-msgstr ""
+msgstr "當前等級低於最後最高等級時，更新等級量表標籤所需的時間。"
 
 #: src/contents/ui/PreferencesSheet.qml:237
 msgid "Audio delay compensation"
-msgstr ""
+msgstr "音訊延遲補償"
 
 #: src/contents/ui/PreferencesSheet.qml:251
 msgid "Style"
@@ -2586,9 +2543,8 @@ msgid "Stereo Matrix"
 msgstr "立體聲矩陣"
 
 #: src/contents/ui/StereoTools.qml:122
-#, fuzzy
 msgid "LR > LR (Stereo default)"
-msgstr "LR > LR（立體聲預設值）"
+msgstr "LR > LR（立體聲預設）"
 
 #: src/contents/ui/StereoTools.qml:122
 msgid "LR > MS (Stereo to Mid-Side)"
@@ -2599,24 +2555,20 @@ msgid "MS > LR (Mid-Side to Stereo)"
 msgstr "MS > LR（中置轉立體聲）"
 
 #: src/contents/ui/StereoTools.qml:122
-#, fuzzy
 msgid "LR > LL (Mono left channel)"
-msgstr "LR > LL（單聲道左聲道）"
+msgstr "LR > LL（單聲左聲道）"
 
 #: src/contents/ui/StereoTools.qml:122
-#, fuzzy
 msgid "LR > RR (Mono right channel)"
-msgstr "LR > RR（單聲道右聲道）"
+msgstr "LR > RR（單聲右聲道）"
 
 #: src/contents/ui/StereoTools.qml:122
-#, fuzzy
 msgid "LR > L+R (Mono sum L+R)"
 msgstr "LR > L+R (Mono Sum L+R)"
 
 #: src/contents/ui/StereoTools.qml:122
-#, fuzzy
 msgid "LR > RL (Stereo flip channels)"
-msgstr "LR > RL（立體聲翻轉頻道）"
+msgstr "LR > RL (立體聲翻轉頻道)"
 
 #: src/contents/ui/StereoTools.qml:131
 msgid "Side level"
@@ -2670,27 +2622,27 @@ msgstr "預設集未正確載入"
 
 #: src/presets_manager.cpp:758
 msgid "Wrong format in excluded apps list"
-msgstr ""
+msgstr "已經排除的應用程序列表中的錯誤格式"
 
 #: src/presets_manager.cpp:766
 msgid "Generic error while loading excluded apps list"
-msgstr ""
+msgstr "載入排除的應用程序列表時出現一般錯誤"
 
 #: src/presets_manager.cpp:775
 msgid "Wrong format in effects list"
-msgstr ""
+msgstr "音效列表錯誤格式"
 
 #: src/presets_manager.cpp:782
 msgid "Generic error while loading effects list"
-msgstr ""
+msgstr "載入音效列表時出現一般錯誤"
 
 #: src/presets_manager.cpp:793
 msgid "One or more parameters have a wrong format"
-msgstr ""
+msgstr "一個或多個參數有錯誤格式"
 
 #: src/presets_manager.cpp:802
 msgid "Generic error while loading the effect"
-msgstr ""
+msgstr "載入音效時出現一般錯誤"
 
 #: src/pw_model_nodes.cpp:488
 msgid "Running"
@@ -2786,7 +2738,7 @@ msgstr "等化器、壓縮器、及其他音效處理"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
-msgstr ""
+msgstr "簡單的音效處理"
 
 #~ msgid "Audio effects for PipeWire applications"
 #~ msgstr "用於 PipeWire 應用程式提供聲音效果處理"

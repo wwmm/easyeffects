@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-09 22:38-0300\n"
-"PO-Revision-Date: 2025-11-09 14:34+0000\n"
+"PO-Revision-Date: 2025-11-10 14:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -103,9 +103,8 @@ msgid "About"
 msgstr "Informazioni"
 
 #: src/contents/ui/AboutPage.qml:14
-#, fuzzy
 msgid "Global audio effects"
-msgstr "Scorciatoie globali"
+msgstr "Effetti audio globali"
 
 #: src/contents/ui/AboutPage.qml:27
 msgctxt "@info:credit"
@@ -2759,7 +2758,7 @@ msgstr "Equalizzatore, Compressore e Altri Effetti Audio"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
-msgstr ""
+msgstr "Effetti audio semplici"
 
 #~ msgid "Audio effects for PipeWire applications"
 #~ msgstr "Effetti Audio per Applicazioni PipeWire"
