@@ -102,13 +102,6 @@ jobs:
       with:
         args: --exceptions --user-exceptions exceptions.json manifest util/flatpak/com.github.wwmm.easyeffects.Devel.json
 
-    # run command twice as they can fail intermittently due to network errors
-    - name: Verify flatpak builder lint (extra attempt)
-      uses: docker://ghcr.io/flathub/flatpak-builder-lint:latest
-      if: failure()
-      with:
-        args: --exceptions --user-exceptions exceptions.json manifest util/flatpak/com.github.wwmm.easyeffects.Devel.json
-
   arch-linux:
     name: Arch Linux
     runs-on: ubuntu-24.04
