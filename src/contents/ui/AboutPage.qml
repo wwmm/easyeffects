@@ -11,7 +11,7 @@ ColumnLayout {
             "displayName": applicationName,
             "productName": "easyeffects",
             "componentName": "easyeffects",
-            "shortDescription": i18n("Audio effects for PipeWire applications") // qmllint disable
+            "shortDescription": i18n("Global audio effects") // qmllint disable
             ,
             "homepage": "https://github.com/wwmm/easyeffects",
             "bugAddress": "https://github.com/wwmm/easyeffects/issues",

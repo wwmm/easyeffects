@@ -371,7 +371,7 @@ Kirigami.Page {
                         }
 
                         Controls.Label {
-                            text: pageStreamsEffects.pageType === 0 ? "Output device" : i18n("Recorders")// qmllint disable
+                            text: pageStreamsEffects.pageType === 0 ? i18n("Output device") : i18n("Recorders")// qmllint disable
                             enabled: false
                             visible: !DB.Manager.main.collapsePluginsList
                         }

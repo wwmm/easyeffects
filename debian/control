@@ -42,5 +42,5 @@ Recommends:
  mda-lv2,
  zam-plugins,
  libdeep_filter_ladspa,
-Description: Audio effects for PipeWire applications
+Description: Simple audio effects
  Many sound effects for PipeWire input and output.

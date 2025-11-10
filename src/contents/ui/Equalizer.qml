@@ -155,7 +155,7 @@ Kirigami.ScrollablePage {
                 value: equalizerPage.pluginDB.pitchLeft
                 decimals: 2
                 stepSize: 0.01
-                unit: "st"
+                unit: i18n("st")
                 onValueModified: v => {
                     equalizerPage.pluginDB.pitchLeft = v;
                 }
@@ -172,7 +172,7 @@ Kirigami.ScrollablePage {
                 value: equalizerPage.pluginDB.pitchRight
                 decimals: 2
                 stepSize: 0.01
-                unit: "st"
+                unit: i18n("st")
                 onValueModified: v => {
                     equalizerPage.pluginDB.pitchRight = v;
                 }

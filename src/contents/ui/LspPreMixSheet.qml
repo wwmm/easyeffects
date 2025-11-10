@@ -35,7 +35,7 @@ Kirigami.OverlaySheet {
                     value: preMixSheet.pluginDB.inputToSidechain
                     decimals: 2
                     stepSize: 0.01
-                    unit: "dB"
+                    unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
                         preMixSheet.pluginDB.inputToSidechain = v;
@@ -51,7 +51,7 @@ Kirigami.OverlaySheet {
                     value: preMixSheet.pluginDB.inputToLink
                     decimals: 2
                     stepSize: 0.01
-                    unit: "dB"
+                    unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
                         preMixSheet.pluginDB.inputToLink = v;
@@ -67,7 +67,7 @@ Kirigami.OverlaySheet {
                     value: preMixSheet.pluginDB.sidechainToInput
                     decimals: 2
                     stepSize: 0.01
-                    unit: "dB"
+                    unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
                         preMixSheet.pluginDB.sidechainToInput = v;
@@ -83,7 +83,7 @@ Kirigami.OverlaySheet {
                     value: preMixSheet.pluginDB.sidechainToLink
                     decimals: 2
                     stepSize: 0.01
-                    unit: "dB"
+                    unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
                         preMixSheet.pluginDB.sidechainToLink = v;
@@ -99,7 +99,7 @@ Kirigami.OverlaySheet {
                     value: preMixSheet.pluginDB.linkToSidechain
                     decimals: 2
                     stepSize: 0.01
-                    unit: "dB"
+                    unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
                         preMixSheet.pluginDB.linkToSidechain = v;
@@ -115,7 +115,7 @@ Kirigami.OverlaySheet {
                     value: preMixSheet.pluginDB.linkToInput
                     decimals: 2
                     stepSize: 0.01
-                    unit: "dB"
+                    unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
                         preMixSheet.pluginDB.linkToInput = v;

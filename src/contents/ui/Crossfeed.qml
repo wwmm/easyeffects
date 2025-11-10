@@ -76,7 +76,7 @@ Kirigami.ScrollablePage {
                         value: crossfeedPage.pluginDB.fcut
                         decimals: 0
                         stepSize: 1
-                        unit: "Hz"
+                        unit: i18n("Hz")
                         onValueModified: v => {
                             crossfeedPage.pluginDB.fcut = v;
                         }
@@ -92,7 +92,7 @@ Kirigami.ScrollablePage {
                         value: crossfeedPage.pluginDB.feed
                         decimals: 1
                         stepSize: 0.1
-                        unit: "dB"
+                        unit: i18n("dB")
                         onValueModified: v => {
                             crossfeedPage.pluginDB.feed = v;
                         }

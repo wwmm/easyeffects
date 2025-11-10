@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-09 11:36-0300\n"
+"POT-Creation-Date: 2025-11-09 22:38-0300\n"
 "PO-Revision-Date: 2025-10-02 05:01+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Croatian <https://hosted.weblate.org/projects/easyeffects/"
@@ -103,8 +103,8 @@ msgstr ""
 
 #: src/contents/ui/AboutPage.qml:14
 #, fuzzy
-msgid "Audio effects for PipeWire applications"
-msgstr "Zvučni efekti za Pulseaudio aplikacije"
+msgid "Global audio effects"
+msgstr "Kratkoročno"
 
 #: src/contents/ui/AboutPage.qml:27
 #, fuzzy
@@ -3003,8 +3003,15 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Ekvalizator, kompresor i drugi audio efekti"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
-msgid "Audio Effects for PipeWire Applications"
-msgstr "Zvučni efekti za PipeWire aplikacije"
+msgid "Simple audio effects"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "Zvučni efekti za Pulseaudio aplikacije"
+
+#~ msgid "Audio Effects for PipeWire Applications"
+#~ msgstr "Zvučni efekti za PipeWire aplikacije"
 
 #, fuzzy
 #~ msgid "Local Preset"

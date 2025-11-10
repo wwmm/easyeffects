@@ -70,7 +70,7 @@ Kirigami.ScrollablePage {
                         value: reverbPage.pluginDB.decayTime
                         decimals: 2
                         stepSize: 0.01
-                        unit: "s"
+                        unit: i18n("s")
                         onValueModified: v => {
                             reverbPage.pluginDB.decayTime = v;
                         }
@@ -86,7 +86,7 @@ Kirigami.ScrollablePage {
                         value: reverbPage.pluginDB.predelay
                         decimals: 0
                         stepSize: 1
-                        unit: "ms"
+                        unit: i18n("ms")
                         onValueModified: v => {
                             reverbPage.pluginDB.predelay = v;
                         }
@@ -135,7 +135,7 @@ Kirigami.ScrollablePage {
                             value: reverbPage.pluginDB.hfDamp
                             decimals: 2
                             stepSize: 0.01
-                            unit: "Hz"
+                            unit: i18n("Hz")
                             onValueModified: v => {
                                 reverbPage.pluginDB.hfDamp = v;
                             }
@@ -152,7 +152,7 @@ Kirigami.ScrollablePage {
                             value: reverbPage.pluginDB.bassCut
                             decimals: 0
                             stepSize: 1
-                            unit: "Hz"
+                            unit: i18n("Hz")
                             onValueModified: v => {
                                 reverbPage.pluginDB.bassCut = v;
                             }
@@ -169,7 +169,7 @@ Kirigami.ScrollablePage {
                             value: reverbPage.pluginDB.trebleCut
                             decimals: 0
                             stepSize: 1
-                            unit: "Hz"
+                            unit: i18n("Hz")
                             onValueModified: v => {
                                 reverbPage.pluginDB.trebleCut = v;
                             }
@@ -186,7 +186,7 @@ Kirigami.ScrollablePage {
                             value: reverbPage.pluginDB.dry
                             decimals: 1
                             stepSize: 0.1
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 reverbPage.pluginDB.dry = v;
@@ -204,7 +204,7 @@ Kirigami.ScrollablePage {
                             value: reverbPage.pluginDB.amount
                             decimals: 1
                             stepSize: 0.1
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 reverbPage.pluginDB.amount = v;

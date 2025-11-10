@@ -5,7 +5,7 @@
 </h2>
 
 <p align="center">
-  <strong>Audio effects for PipeWire applications</strong>
+  <strong>Simple audio effects</strong>
 </p>
 
 <p align="center">

@@ -103,7 +103,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.knee
                             decimals: 2
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             onValueModified: v => {
                                 expanderPage.pluginDB.knee = v;
                             }
@@ -138,7 +138,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.threshold
                             decimals: 2
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             onValueModified: v => {
                                 expanderPage.pluginDB.threshold = v;
                             }
@@ -154,7 +154,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.attack
                             decimals: 2
                             stepSize: 0.01
-                            unit: "ms"
+                            unit: i18n("ms")
                             onValueModified: v => {
                                 expanderPage.pluginDB.attack = v;
                             }
@@ -171,7 +171,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.releaseThreshold
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 expanderPage.pluginDB.releaseThreshold = v;
@@ -188,7 +188,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.release
                             decimals: 2
                             stepSize: 0.01
-                            unit: "ms"
+                            unit: i18n("ms")
                             onValueModified: v => {
                                 expanderPage.pluginDB.release = v;
                             }
@@ -320,7 +320,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.sidechainPreamp
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 expanderPage.pluginDB.sidechainPreamp = v;
@@ -338,7 +338,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.sidechainReactivity
                             decimals: 2
                             stepSize: 0.01
-                            unit: "ms"
+                            unit: i18n("ms")
                             onValueModified: v => {
                                 expanderPage.pluginDB.sidechainReactivity = v;
                             }
@@ -356,7 +356,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.sidechainLookahead
                             decimals: 3
                             stepSize: 0.001
-                            unit: "ms"
+                            unit: i18n("ms")
                             onValueModified: v => {
                                 expanderPage.pluginDB.sidechainLookahead = v;
                             }
@@ -404,7 +404,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.hpfFrequency
                             decimals: 0
                             stepSize: 1
-                            unit: "Hz"
+                            unit: i18n("Hz")
                             visible: hpfMode.currentIndex !== 0
                             onValueModified: v => {
                                 expanderPage.pluginDB.hpfFrequency = v;
@@ -426,7 +426,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.lpfFrequency
                             decimals: 0
                             stepSize: 1
-                            unit: "Hz"
+                            unit: i18n("Hz")
                             visible: lpfMode.currentIndex !== 0
                             onValueModified: v => {
                                 expanderPage.pluginDB.lpfFrequency = v;
@@ -458,7 +458,7 @@ Kirigami.ScrollablePage {
                         value: expanderPage.pluginDB.dry
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         minusInfinityMode: true
                         onValueModified: v => {
                             expanderPage.pluginDB.dry = v;
@@ -477,7 +477,7 @@ Kirigami.ScrollablePage {
                         value: expanderPage.pluginDB.wet
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         minusInfinityMode: true
                         onValueModified: v => {
                             expanderPage.pluginDB.wet = v;
@@ -496,7 +496,7 @@ Kirigami.ScrollablePage {
                         value: expanderPage.pluginDB.makeup
                         decimals: 2
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         onValueModified: v => {
                             expanderPage.pluginDB.makeup = v;
                         }
@@ -527,7 +527,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.inputToSidechain
                             decimals: 2
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 expanderPage.pluginDB.inputToSidechain = v;
@@ -543,7 +543,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.inputToLink
                             decimals: 2
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 expanderPage.pluginDB.inputToLink = v;
@@ -559,7 +559,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.sidechainToInput
                             decimals: 2
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 expanderPage.pluginDB.sidechainToInput = v;
@@ -575,7 +575,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.sidechainToLink
                             decimals: 2
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 expanderPage.pluginDB.sidechainToLink = v;
@@ -591,7 +591,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.linkToSidechain
                             decimals: 2
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 expanderPage.pluginDB.linkToSidechain = v;
@@ -607,7 +607,7 @@ Kirigami.ScrollablePage {
                             value: expanderPage.pluginDB.linkToInput
                             decimals: 2
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 expanderPage.pluginDB.linkToInput = v;

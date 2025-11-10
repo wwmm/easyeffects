@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-09 11:36-0300\n"
+"POT-Creation-Date: 2025-11-09 22:38-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Ivan Pekov <ivan@mrivanplays.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -97,8 +97,8 @@ msgstr ""
 
 #: src/contents/ui/AboutPage.qml:14
 #, fuzzy
-msgid "Audio effects for PipeWire applications"
-msgstr "Звукови ефекти за приложения, използващи PipeWire"
+msgid "Global audio effects"
+msgstr "_Преки пътища"
 
 #: src/contents/ui/AboutPage.qml:27
 msgctxt "@info:credit"
@@ -2861,8 +2861,15 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Еквалайзер, Компресор и други звукови ефекти"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
-msgid "Audio Effects for PipeWire Applications"
-msgstr "Звукови ефекти за приложения, използващи PipeWire"
+msgid "Simple audio effects"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "Звукови ефекти за приложения, използващи PipeWire"
+
+#~ msgid "Audio Effects for PipeWire Applications"
+#~ msgstr "Звукови ефекти за приложения, използващи PipeWire"
 
 #, fuzzy
 #~ msgid "Local Preset"

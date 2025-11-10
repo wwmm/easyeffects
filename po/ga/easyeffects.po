@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-09 11:36-0300\n"
-"PO-Revision-Date: 2025-11-06 21:51+0000\n"
+"PO-Revision-Date: 2025-11-10 01:39+0000\n"
 "Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
 "Language-Team: Irish <https://hosted.weblate.org/projects/easyeffects/main/"
 "ga/>\n"
@@ -26,6 +26,9 @@ msgid ""
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
 msgstr ""
+"Ní féidir an rogha uaththosaithe a chumasú mar gheall ar dhiúltú rochtana "
+"cúlra. Ceadaigh cead \"Rith sa Chúlra\" do Easy Effects i socruithe d'aip "
+"chórais."
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
@@ -1518,9 +1521,8 @@ msgid "Automatic level"
 msgstr "Leibhéal uathoibríoch"
 
 #: src/contents/ui/Limiter.qml:607
-#, fuzzy
 msgid "Threshold boost"
-msgstr "Tairseach"
+msgstr "Borradh tairsí"
 
 #: src/contents/ui/Loudness.qml:70
 msgid "Contour"
@@ -2757,6 +2759,15 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
+
+#: src/contents/ui/AboutPage.qml:14
+#, fuzzy
+msgid "Global audio effects"
+msgstr "Aicearraí domhanda"
+
+#: com.github.wwmm.easyeffects.desktop.in.template.h:2
+msgid "Simple audio effects"
+msgstr ""
 
 #~ msgid "Local Preset"
 #~ msgstr "Réamhshocrú Áitiúil"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-09 11:36-0300\n"
+"POT-Creation-Date: 2025-11-09 22:38-0300\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -101,8 +101,9 @@ msgid "About"
 msgstr "Over"
 
 #: src/contents/ui/AboutPage.qml:14
-msgid "Audio effects for PipeWire applications"
-msgstr "Audio-effecten voor PipeWire-toepassingen"
+#, fuzzy
+msgid "Global audio effects"
+msgstr "_Sneltoetsen"
 
 #: src/contents/ui/AboutPage.qml:27
 #, fuzzy
@@ -3024,8 +3025,14 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Equalizer, compressor en overige audio-effecten"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
-msgid "Audio Effects for PipeWire Applications"
-msgstr "Audio-effecten voor PipeWire-apps"
+msgid "Simple audio effects"
+msgstr ""
+
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "Audio-effecten voor PipeWire-toepassingen"
+
+#~ msgid "Audio Effects for PipeWire Applications"
+#~ msgstr "Audio-effecten voor PipeWire-apps"
 
 #, fuzzy
 #~ msgid "Local Preset"

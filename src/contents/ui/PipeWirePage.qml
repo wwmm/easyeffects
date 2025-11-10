@@ -391,7 +391,7 @@ Kirigami.Page {
                     value: DB.Manager.testSignals.frequency
                     decimals: 0
                     stepSize: 1
-                    unit: "Hz"
+                    unit: i18n("Hz")
                     enabled: sineWave.checked
                     onValueModified: v => {
                         if (v !== DB.Manager.testSignals.frequency)

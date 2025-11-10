@@ -516,7 +516,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.inputToSidechain
                         decimals: 2
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.inputToSidechain = v;
@@ -532,7 +532,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.inputToLink
                         decimals: 2
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.inputToLink = v;
