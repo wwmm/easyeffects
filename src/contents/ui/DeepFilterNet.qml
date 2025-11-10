@@ -84,7 +84,7 @@ Kirigami.ScrollablePage {
                         value: deepfilternetPage.pluginDB.minProcessingThreshold
                         decimals: 1
                         stepSize: 0.1
-                        unit: "dB"
+                        unit: i18n("dB")
                         onValueModified: v => {
                             deepfilternetPage.pluginDB.minProcessingThreshold = v;
                         }
@@ -100,7 +100,7 @@ Kirigami.ScrollablePage {
                         value: deepfilternetPage.pluginDB.maxErbProcessingThreshold
                         decimals: 1
                         stepSize: 0.1
-                        unit: "dB"
+                        unit: i18n("dB")
                         onValueModified: v => {
                             deepfilternetPage.pluginDB.maxErbProcessingThreshold = v;
                         }
@@ -116,7 +116,7 @@ Kirigami.ScrollablePage {
                         value: deepfilternetPage.pluginDB.maxDfProcessingThreshold
                         decimals: 1
                         stepSize: 0.1
-                        unit: "dB"
+                        unit: i18n("dB")
                         onValueModified: v => {
                             deepfilternetPage.pluginDB.maxDfProcessingThreshold = v;
                         }
@@ -148,7 +148,7 @@ Kirigami.ScrollablePage {
                         value: deepfilternetPage.pluginDB.postFilterBeta
                         decimals: 2
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         onValueModified: v => {
                             deepfilternetPage.pluginDB.postFilterBeta = v;
                         }

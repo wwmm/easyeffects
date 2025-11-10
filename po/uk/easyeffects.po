@@ -824,7 +824,7 @@ msgstr "Логарифмічна шкала"
 
 #: src/contents/ui/Convolver.qml:347
 msgid "Rate"
-msgstr "Оцінка"
+msgstr "Частота"
 
 #: src/contents/ui/Convolver.qml:352 src/contents/ui/Delay.qml:61
 #: src/contents/ui/Delay.qml:72 src/contents/ui/Delay.qml:219
@@ -1706,6 +1706,10 @@ msgstr "Додати ефект"
 #: src/contents/ui/PageStreamsEffects.qml:610
 msgid "Players"
 msgstr "Відтворення"
+
+#: src/contents/ui/PageStreamsEffects.qml:374
+msgid "Output device"
+msgstr "Пристрій виведення"
 
 #: src/contents/ui/PageStreamsEffects.qml:374
 #: src/contents/ui/PageStreamsEffects.qml:610

@@ -130,7 +130,7 @@ Kirigami.ScrollablePage {
                         value: rnnoisePage.pluginDB.wet
                         decimals: 2
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         onValueModified: v => {
                             rnnoisePage.pluginDB.wet = v;
                         }
@@ -146,7 +146,7 @@ Kirigami.ScrollablePage {
                         value: rnnoisePage.pluginDB.release
                         decimals: 2
                         stepSize: 0.01
-                        unit: "ms"
+                        unit: i18n("ms")
                         onValueModified: v => {
                             rnnoisePage.pluginDB.release = v;
                         }

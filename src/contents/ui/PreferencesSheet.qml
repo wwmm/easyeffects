@@ -181,7 +181,7 @@ Kirigami.OverlaySheet {
                     value: DB.Manager.main.inactivityTimeout
                     decimals: 0
                     stepSize: 1
-                    unit: "s"
+                    unit: i18n("s")
                     enabled: DB.Manager.main.inactivityTimerEnable
                     onValueModified: v => {
                         DB.Manager.main.inactivityTimeout = v;
@@ -197,7 +197,7 @@ Kirigami.OverlaySheet {
                     value: DB.Manager.main.levelMetersLabelTimer
                     decimals: 0
                     stepSize: 1
-                    unit: "ms"
+                    unit: i18n("ms")
                     enabled: DB.Manager.main.levelMetersLabelTimer
                     onValueModified: v => {
                         DB.Manager.main.levelMetersLabelTimer = v;
@@ -240,7 +240,7 @@ Kirigami.OverlaySheet {
                     value: DB.Manager.spectrum.avsyncDelay
                     decimals: 0
                     stepSize: 1
-                    unit: "ms"
+                    unit: i18n("ms")
                     onValueModified: v => {
                         DB.Manager.spectrum.avsyncDelay = v;
                     }
@@ -339,7 +339,7 @@ Kirigami.OverlaySheet {
                     value: DB.Manager.spectrum.height
                     decimals: 0
                     stepSize: 1
-                    unit: "px"
+                    unit: i18n("px")
                     onValueModified: v => {
                         DB.Manager.spectrum.height = v;
                     }
@@ -360,7 +360,7 @@ Kirigami.OverlaySheet {
                     value: DB.Manager.spectrum.minimumFrequency
                     decimals: 0
                     stepSize: 10
-                    unit: "Hz"
+                    unit: i18n("Hz")
                     onValueModified: v => {
                         DB.Manager.spectrum.minimumFrequency = v;
                     }
@@ -375,7 +375,7 @@ Kirigami.OverlaySheet {
                     value: DB.Manager.spectrum.maximumFrequency
                     decimals: 0
                     stepSize: 10
-                    unit: "Hz"
+                    unit: i18n("Hz")
                     onValueModified: v => {
                         DB.Manager.spectrum.maximumFrequency = v;
                     }
@@ -400,7 +400,7 @@ Kirigami.OverlaySheet {
                     value: DB.Manager.main.databaseAutosaveInterval
                     decimals: 0
                     stepSize: 1
-                    unit: "ms"
+                    unit: i18n("ms")
                     onValueModified: v => {
                         DB.Manager.main.databaseAutosaveInterval = v;
                     }
@@ -467,7 +467,7 @@ Kirigami.OverlaySheet {
                     value: DB.Manager.main.lv2uiUpdateFrequency
                     decimals: 0
                     stepSize: 1
-                    unit: "Hz"
+                    unit: i18n("Hz")
                     enabled: DB.Manager.main.showNativePluginUi
                     onValueModified: v => {
                         DB.Manager.main.lv2uiUpdateFrequency = v;

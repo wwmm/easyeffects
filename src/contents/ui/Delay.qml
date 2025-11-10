@@ -95,7 +95,7 @@ Kirigami.ScrollablePage {
                             value: delayPage.pluginDB.timeL
                             decimals: 2
                             stepSize: 0.01
-                            unit: "ms"
+                            unit: i18n("ms")
                             onValueModified: v => {
                                 delayPage.pluginDB.timeL = v;
                             }
@@ -113,7 +113,7 @@ Kirigami.ScrollablePage {
                             value: delayPage.pluginDB.metersL
                             decimals: 0
                             stepSize: 1
-                            unit: "m"
+                            unit: i18n("m")
                             onValueModified: v => {
                                 delayPage.pluginDB.metersL = v;
                             }
@@ -131,7 +131,7 @@ Kirigami.ScrollablePage {
                             value: delayPage.pluginDB.centimetersL
                             decimals: 1
                             stepSize: 0.1
-                            unit: "cm"
+                            unit: i18n("cm")
                             onValueModified: v => {
                                 delayPage.pluginDB.centimetersL = v;
                             }
@@ -167,7 +167,7 @@ Kirigami.ScrollablePage {
                             value: delayPage.pluginDB.dryL
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 delayPage.pluginDB.dryL = v;
@@ -185,7 +185,7 @@ Kirigami.ScrollablePage {
                             value: delayPage.pluginDB.wetL
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 delayPage.pluginDB.wetL = v;
@@ -253,7 +253,7 @@ Kirigami.ScrollablePage {
                             value: delayPage.pluginDB.timeR
                             decimals: 2
                             stepSize: 0.01
-                            unit: "ms"
+                            unit: i18n("ms")
                             onValueModified: v => {
                                 delayPage.pluginDB.timeR = v;
                             }
@@ -271,7 +271,7 @@ Kirigami.ScrollablePage {
                             value: delayPage.pluginDB.metersR
                             decimals: 0
                             stepSize: 1
-                            unit: "m"
+                            unit: i18n("m")
                             onValueModified: v => {
                                 delayPage.pluginDB.metersR = v;
                             }
@@ -289,7 +289,7 @@ Kirigami.ScrollablePage {
                             value: delayPage.pluginDB.centimetersR
                             decimals: 1
                             stepSize: 0.1
-                            unit: "cm"
+                            unit: i18n("cm")
                             onValueModified: v => {
                                 delayPage.pluginDB.centimetersR = v;
                             }
@@ -325,7 +325,7 @@ Kirigami.ScrollablePage {
                             value: delayPage.pluginDB.dryR
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 delayPage.pluginDB.dryR = v;
@@ -343,7 +343,7 @@ Kirigami.ScrollablePage {
                             value: delayPage.pluginDB.wetR
                             decimals: 2 // Required to show "-inf"
                             stepSize: 0.01
-                            unit: "dB"
+                            unit: i18n("dB")
                             minusInfinityMode: true
                             onValueModified: v => {
                                 delayPage.pluginDB.wetR = v;

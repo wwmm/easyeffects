@@ -120,7 +120,7 @@ Kirigami.ScrollablePage {
                             value: bandsListview.currentIndex > 0 ? multibandGatePage.pluginDB[multibandGatePage.bandId + "SplitFrequency"] : 0
                             decimals: 0
                             stepSize: 1
-                            unit: "Hz"
+                            unit: i18n("Hz")
                             enabled: bandsListview.currentIndex > 0
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "SplitFrequency"] = v;
@@ -169,7 +169,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "AttackTime"]
                             decimals: 2
                             stepSize: 0.01
-                            unit: "ms"
+                            unit: i18n("ms")
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "AttackTime"] = v;
                             }
@@ -184,7 +184,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "ReleaseTime"]
                             decimals: 2
                             stepSize: 0.01
-                            unit: "ms"
+                            unit: i18n("ms")
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "ReleaseTime"] = v;
                             }
@@ -217,7 +217,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "Reduction"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: "dB"
+                            unit: i18n("dB")
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "Reduction"] = v;
                             }
@@ -233,7 +233,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "Makeup"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: "dB"
+                            unit: i18n("dB")
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "Makeup"] = v;
                             }
@@ -266,7 +266,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "CurveThreshold"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: "dB"
+                            unit: i18n("dB")
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "CurveThreshold"] = v;
                             }
@@ -281,7 +281,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "CurveZone"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: "dB"
+                            unit: i18n("dB")
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "CurveZone"] = v;
                             }
@@ -320,7 +320,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "HysteresisThreshold"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: "dB"
+                            unit: i18n("dB")
                             enabled: multibandGatePage.pluginDB[multibandGatePage.bandId + "Hysteresis"]
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "HysteresisThreshold"] = v;
@@ -336,7 +336,7 @@ Kirigami.ScrollablePage {
                             value: multibandGatePage.pluginDB[multibandGatePage.bandId + "HysteresisZone"]
                             decimals: 1
                             stepSize: 0.1
-                            unit: "dB"
+                            unit: i18n("dB")
                             enabled: multibandGatePage.pluginDB[multibandGatePage.bandId + "Hysteresis"]
                             onValueModified: v => {
                                 multibandGatePage.pluginDB[multibandGatePage.bandId + "HysteresisZone"] = v;
@@ -410,7 +410,7 @@ Kirigami.ScrollablePage {
                     value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainPreamp"]
                     decimals: 2 // Required to show "-inf"
                     stepSize: 0.01
-                    unit: "dB"
+                    unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainPreamp"] = v;
@@ -426,7 +426,7 @@ Kirigami.ScrollablePage {
                     value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainReactivity"]
                     decimals: 1
                     stepSize: 0.1
-                    unit: "ms"
+                    unit: i18n("ms")
                     onValueModified: v => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainReactivity"] = v;
                     }
@@ -441,7 +441,7 @@ Kirigami.ScrollablePage {
                     value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainLookahead"]
                     decimals: 1
                     stepSize: 0.1
-                    unit: "ms"
+                    unit: i18n("ms")
                     onValueModified: v => {
                         multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainLookahead"] = v;
                     }
@@ -464,7 +464,7 @@ Kirigami.ScrollablePage {
                         value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainLowcutFrequency"]
                         decimals: 0
                         stepSize: 1
-                        unit: "Hz"
+                        unit: i18n("Hz")
                         enabled: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomLowcutFilter"]
                         onValueModified: v => {
                             multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainLowcutFrequency"] = v;
@@ -489,7 +489,7 @@ Kirigami.ScrollablePage {
                         value: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainHighcutFrequency"]
                         decimals: 0
                         stepSize: 1
-                        unit: "Hz"
+                        unit: i18n("Hz")
                         enabled: multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainCustomHighcutFilter"]
                         onValueModified: v => {
                             multibandGatePage.pluginDB[multibandGatePage.bandId + "SidechainHighcutFrequency"] = v;
@@ -565,7 +565,7 @@ Kirigami.ScrollablePage {
                 value: multibandGatePage.pluginDB.dry
                 decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
-                unit: "dB"
+                unit: i18n("dB")
                 minusInfinityMode: true
                 onValueModified: v => {
                     multibandGatePage.pluginDB.dry = v;
@@ -583,7 +583,7 @@ Kirigami.ScrollablePage {
                 value: multibandGatePage.pluginDB.wet
                 decimals: 2 // Required to show "-inf"
                 stepSize: 0.01
-                unit: "dB"
+                unit: i18n("dB")
                 minusInfinityMode: true
                 onValueModified: v => {
                     multibandGatePage.pluginDB.wet = v;
