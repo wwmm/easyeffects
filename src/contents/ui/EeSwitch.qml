@@ -24,11 +24,16 @@ FormCard.AbstractFormDelegate {
     Accessible.onToggleAction: if (control.enabled)
         control.clicked()
 
+    verticalPadding: Kirigami.Units.largeSpacing
+
     contentItem: RowLayout {
-        Layout.fillWidth: true
         spacing: Kirigami.Units.smallSpacing
 
         ColumnLayout {
+            spacing: Kirigami.Units.smallSpacing
+
+            Layout.fillWidth: true
+
             Label {
                 Layout.fillWidth: true
                 text: control.label
