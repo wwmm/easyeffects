@@ -13,7 +13,7 @@
 
 # some functions reused from https://github.com/wwmm/easyeffects/commit/04bd3e968f7e0ba79b9672882590affe445dc330
 
-# no means just refresh changelog and metainfo with current news.yaml file, will assume template is present representing a future release. 
+# no means just refresh changelog and metainfo with current news.yaml file, will assume template is present representing a future release.
 # The future release at the top of NEWS.yaml will not be included (since you are only regenerating current releases).
 
 set -o nounset
@@ -34,7 +34,7 @@ DATA_DIR='src/contents'
 
 init() {
   local cmd="$1"
-  
+
   readonly BASE_DIR="$(pwd -P)"
   readonly CMD_DIR="$(dirname "${cmd}")"
   readonly REPO_DIR="$(realpath "${CMD_DIR}"/..)"
@@ -117,7 +117,7 @@ get_version() {
 
 get_date() {
   local date=''
-  
+
   if ! date="$(date --utc +%F)" ; then
     exit_err 'Failed to get the current date.'
   fi
@@ -126,7 +126,7 @@ get_date() {
 }
 
 convert_to_changelog() {
-  
+
   # converts a specific type of yaml news file to a markdown changelog file
   # At the end copy a working template to the top of the changelog for the next release.
 
@@ -145,7 +145,7 @@ convert_to_changelog() {
   sed -i 's/- Other notes/### Other notes/g' "${TEMP_CHANGELOG_FILE}"
 
   sed -i 's/Description://g' "${TEMP_CHANGELOG_FILE}"
-  
+
   # replace ratio character with colon
   sed -i 's/∶/:/g' "${TEMP_CHANGELOG_FILE}"
 
@@ -154,13 +154,13 @@ convert_to_changelog() {
   sed -i 's/^Date:/###/' "${TEMP_CHANGELOG_FILE}"
 
   sed -i "1i # Changelog" "${TEMP_CHANGELOG_FILE}"
-  
+
   cp "${TEMP_CHANGELOG_FILE}" "${CHANGELOG_FILE}"
 
 }
 
 remove_unneeded_template() {
-  
+
   # if just refreshing the existing release notes, we don't want the template to be present since it is for the new release
 
   if [ "${MAKE_NEW_RELEASE}" == n ]
@@ -229,7 +229,7 @@ finalize_metainfo() {
 check_appstream_cli() {
 
   log_info "Checking appstreamcli validate --pedantic --strict"
-  
+
   APPSTREAM_CLI_OUT=$(appstreamcli validate --pedantic --strict --explain "${TEMP_METAINFO_FILE}")
   if [ $? -ne 0 ];
   then
@@ -247,7 +247,7 @@ check_appstream_util() {
 
   log_info "Checking appstream-util validate-relax"
   log_info "This script will hide errors relating to glycin sandboxing as those are considered false positives."
-  log_info "However, errors that are not relating to glycin sandboxing are considered important to fix." 
+  log_info "However, errors that are not relating to glycin sandboxing are considered important to fix."
 
   TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT=$(mktemp)
   set +o noclobber
@@ -274,7 +274,7 @@ check_appstream_util() {
 
   log_info "Checking appstream-util validate"
   log_info "This script will hide errors relating to screenshots, style-invalid, or glycin sandboxing as those are considered false positives."
-  log_info "However, errors that are not relating to screenshots, style-invalid, or glycin sandboxing are considered important to fix." 
+  log_info "However, errors that are not relating to screenshots, style-invalid, or glycin sandboxing are considered important to fix."
 
   TEMP_APPSTREAM_UTIL_EXCESS_OUTPUT=$(mktemp)
   set +o noclobber
@@ -310,12 +310,12 @@ convert_news_to_metainfo() {
   # need to remove URLs as under certain conditions URLs are not permitted in AppStream release notes.
   # only some implementations will actually fail validation an AppStream file on this, though.
   # this only effects the outputted metainfo file, not news or changelog
-  
+
   TEMP_NEWS_CLEANED=$(mktemp)
   cp "${TEMP_NEWS}" "${TEMP_NEWS_CLEANED}"
-  
+
   sed -i 's|https://github.com/wwmm/easyeffects/issues/|issue |g' "${TEMP_NEWS_CLEANED}"
-  
+
   sed -i 's!http[s]\?://\S*!!g' "${TEMP_NEWS_CLEANED}"
 
   # remove backticks as these are not useful in metainfo
@@ -335,13 +335,13 @@ convert_news_to_metainfo() {
     log_err "Check formatting, don't leave section headers with nothing beneath them. \n"
     log_err "Also remove any line break in the fields description. \n"
     log_err "appstreamcli: $(appstreamcli news-to-metainfo --format=yaml "${TEMP_NEWS_CLEANED}" "${TEMP_METAINFO_FILE}" 2>&1 > /dev/null) \n"
-    rm "${TEMP_NEWS_CLEANED:?}" 
+    rm "${TEMP_NEWS_CLEANED:?}"
     rm "${TEMP_METAINFO_FILE:?}"
     exit 1
   fi
 
   log_info "Successfully converted news to metainfo"
-  
+
   # replace ratio character with colon
   sed -i 's/∶/:/g' "${TEMP_METAINFO_FILE}"
 
@@ -356,7 +356,7 @@ elif [[ "$1" == "--no-new-release" ]]; then
 elif [[ ! "$1" == "" ]]; then
   log_err "Unknown argument, exiting \n"
   exit 1
-else 
+else
   read -r -e -p "Create a new release? (y/n): " MAKE_NEW_RELEASE
 fi
 set -o nounset
@@ -368,7 +368,7 @@ then
 fi
 
 if [ "${MAKE_NEW_RELEASE}" == n ]
-then 
+then
   log_info "Not making a new release, just refreshing changelog and metainfo with current releases."
   log_info "The top entry of the NEWS.yaml file will not be used for refreshing, since that is supposed to be the next release."
 fi
