@@ -3,7 +3,6 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.tags.plugin.name as TagsPluginName// qmllint disable
 import org.kde.kirigami as Kirigami
-import org.kde.kirigami.layouts as KirigamiLayouts
 
 Kirigami.ScrollablePage {
     id: pitchPage
@@ -306,7 +305,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    displayHint: KirigamiLayouts.DisplayHint.KeepVisible
+                    displayHint: Kirigami.DisplayHint.KeepVisible
                     text: i18n("Reset settings") // qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {
