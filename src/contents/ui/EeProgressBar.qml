@@ -4,7 +4,6 @@ import QtQuick.Layouts
 import "Common.js" as Common
 import ee.database as DB
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.formcard as FormCard
 
 Control {
     id: control

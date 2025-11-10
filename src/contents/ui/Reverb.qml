@@ -38,177 +38,166 @@ Kirigami.ScrollablePage {
             implicitWidth: cardLayout.maximumColumnWidth
             uniformCellWidths: true
 
-            Kirigami.Card {
+            EeCard {
+                title: i18n("Controls") // qmllint disable
 
-                header: Kirigami.Heading {
-                    text: i18n("Controls") // qmllint disable
-                    level: 2
+                FormCard.FormComboBoxDelegate {
+                    id: roomSize
+
+                    Layout.alignment: Qt.AlignTop
+                    verticalPadding: Kirigami.Units.smallSpacing
+                    text: i18n("Room size") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: reverbPage.pluginDB.roomSize
+                    editable: false
+                    model: [i18n("Small"), i18n("Medium"), i18n("Large"), i18n("Tunnel-like"), i18n("Large/smooth"), i18n("Experimental")] // qmllint disable
+                    onActivated: idx => {
+                        reverbPage.pluginDB.roomSize = idx;
+                    }
                 }
 
-                contentItem: ColumnLayout {
-                    FormCard.FormComboBoxDelegate {
-                        id: roomSize
+                EeSpinBox {
+                    id: decayTime
 
-                        Layout.alignment: Qt.AlignTop
-                        text: i18n("Room size") // qmllint disable
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: reverbPage.pluginDB.roomSize
-                        editable: false
-                        model: [i18n("Small"), i18n("Medium"), i18n("Large"), i18n("Tunnel-like"), i18n("Large/smooth"), i18n("Experimental")] // qmllint disable
-                        onActivated: idx => {
-                            reverbPage.pluginDB.roomSize = idx;
-                        }
+                    label: i18n("Decay time") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
+                    from: reverbPage.pluginDB.getMinValue("decayTime")
+                    to: reverbPage.pluginDB.getMaxValue("decayTime")
+                    value: reverbPage.pluginDB.decayTime
+                    decimals: 2
+                    stepSize: 0.01
+                    unit: i18n("s")
+                    onValueModified: v => {
+                        reverbPage.pluginDB.decayTime = v;
                     }
+                }
 
-                    EeSpinBox {
-                        id: decayTime
+                EeSpinBox {
+                    id: predelay
 
-                        label: i18n("Decay time") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: reverbPage.pluginDB.getMinValue("decayTime")
-                        to: reverbPage.pluginDB.getMaxValue("decayTime")
-                        value: reverbPage.pluginDB.decayTime
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: i18n("s")
-                        onValueModified: v => {
-                            reverbPage.pluginDB.decayTime = v;
-                        }
+                    label: i18n("Pre delay") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
+                    from: reverbPage.pluginDB.getMinValue("predelay")
+                    to: reverbPage.pluginDB.getMaxValue("predelay")
+                    value: reverbPage.pluginDB.predelay
+                    decimals: 0
+                    stepSize: 1
+                    unit: i18n("ms")
+                    onValueModified: v => {
+                        reverbPage.pluginDB.predelay = v;
                     }
+                }
 
-                    EeSpinBox {
-                        id: predelay
+                EeSpinBox {
+                    id: diffusion
 
-                        label: i18n("Pre delay") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: reverbPage.pluginDB.getMinValue("predelay")
-                        to: reverbPage.pluginDB.getMaxValue("predelay")
-                        value: reverbPage.pluginDB.predelay
-                        decimals: 0
-                        stepSize: 1
-                        unit: i18n("ms")
-                        onValueModified: v => {
-                            reverbPage.pluginDB.predelay = v;
-                        }
-                    }
-
-                    EeSpinBox {
-                        id: diffusion
-
-                        label: i18n("Diffusion") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
-                        from: reverbPage.pluginDB.getMinValue("diffusion")
-                        to: reverbPage.pluginDB.getMaxValue("diffusion")
-                        value: reverbPage.pluginDB.diffusion
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: "%"
-                        onValueModified: v => {
-                            reverbPage.pluginDB.diffusion = v;
-                        }
+                    label: i18n("Diffusion") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 6
+                    from: reverbPage.pluginDB.getMinValue("diffusion")
+                    to: reverbPage.pluginDB.getMaxValue("diffusion")
+                    value: reverbPage.pluginDB.diffusion
+                    decimals: 2
+                    stepSize: 0.01
+                    unit: "%"
+                    onValueModified: v => {
+                        reverbPage.pluginDB.diffusion = v;
                     }
                 }
             }
 
-            Kirigami.Card {
+            EeCard {
+                title: i18n("Filter") // qmllint disable
 
-                header: Kirigami.Heading {
-                    text: i18n("Filter") // qmllint disable
-                    level: 2
-                }
+                GridLayout {
+                    columns: 2
+                    uniformCellWidths: true
+                    Layout.alignment: Qt.AlignTop
 
-                contentItem: ColumnLayout {
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
-                        Layout.alignment: Qt.AlignTop
+                    EeSpinBox {
+                        id: hfDamp
 
-                        EeSpinBox {
-                            id: hfDamp
-
-                            Layout.columnSpan: 2
-                            label: i18n("High frequency damping") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: reverbPage.pluginDB.getMinValue("hfDamp")
-                            to: reverbPage.pluginDB.getMaxValue("hfDamp")
-                            value: reverbPage.pluginDB.hfDamp
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("Hz")
-                            onValueModified: v => {
-                                reverbPage.pluginDB.hfDamp = v;
-                            }
+                        Layout.columnSpan: 2
+                        label: i18n("High frequency damping") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: reverbPage.pluginDB.getMinValue("hfDamp")
+                        to: reverbPage.pluginDB.getMaxValue("hfDamp")
+                        value: reverbPage.pluginDB.hfDamp
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: i18n("Hz")
+                        onValueModified: v => {
+                            reverbPage.pluginDB.hfDamp = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: bassCut
+                    EeSpinBox {
+                        id: bassCut
 
-                            label: i18n("Bass cut") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: reverbPage.pluginDB.getMinValue("bassCut")
-                            to: reverbPage.pluginDB.getMaxValue("bassCut")
-                            value: reverbPage.pluginDB.bassCut
-                            decimals: 0
-                            stepSize: 1
-                            unit: i18n("Hz")
-                            onValueModified: v => {
-                                reverbPage.pluginDB.bassCut = v;
-                            }
+                        label: i18n("Bass cut") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: reverbPage.pluginDB.getMinValue("bassCut")
+                        to: reverbPage.pluginDB.getMaxValue("bassCut")
+                        value: reverbPage.pluginDB.bassCut
+                        decimals: 0
+                        stepSize: 1
+                        unit: i18n("Hz")
+                        onValueModified: v => {
+                            reverbPage.pluginDB.bassCut = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: trebleCut
+                    EeSpinBox {
+                        id: trebleCut
 
-                            label: i18n("Treble cut") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: reverbPage.pluginDB.getMinValue("trebleCut")
-                            to: reverbPage.pluginDB.getMaxValue("trebleCut")
-                            value: reverbPage.pluginDB.trebleCut
-                            decimals: 0
-                            stepSize: 1
-                            unit: i18n("Hz")
-                            onValueModified: v => {
-                                reverbPage.pluginDB.trebleCut = v;
-                            }
+                        label: i18n("Treble cut") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: reverbPage.pluginDB.getMinValue("trebleCut")
+                        to: reverbPage.pluginDB.getMaxValue("trebleCut")
+                        value: reverbPage.pluginDB.trebleCut
+                        decimals: 0
+                        stepSize: 1
+                        unit: i18n("Hz")
+                        onValueModified: v => {
+                            reverbPage.pluginDB.trebleCut = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: dry
+                    EeSpinBox {
+                        id: dry
 
-                            label: i18n("Dry") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: reverbPage.pluginDB.getMinValue("dry")
-                            to: reverbPage.pluginDB.getMaxValue("dry")
-                            value: reverbPage.pluginDB.dry
-                            decimals: 1
-                            stepSize: 0.1
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                reverbPage.pluginDB.dry = v;
-                            }
+                        label: i18n("Dry") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: reverbPage.pluginDB.getMinValue("dry")
+                        to: reverbPage.pluginDB.getMaxValue("dry")
+                        value: reverbPage.pluginDB.dry
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            reverbPage.pluginDB.dry = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: wet
+                    EeSpinBox {
+                        id: wet
 
-                            label: i18n("Wet") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: reverbPage.pluginDB.getMinValue("amount")
-                            to: reverbPage.pluginDB.getMaxValue("amount")
-                            value: reverbPage.pluginDB.amount
-                            decimals: 1
-                            stepSize: 0.1
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                reverbPage.pluginDB.amount = v;
-                            }
+                        label: i18n("Wet") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: reverbPage.pluginDB.getMinValue("amount")
+                        to: reverbPage.pluginDB.getMaxValue("amount")
+                        value: reverbPage.pluginDB.amount
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            reverbPage.pluginDB.amount = v;
                         }
                     }
                 }

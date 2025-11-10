@@ -112,9 +112,9 @@ Kirigami.ScrollablePage {
                     }
                 }
 
-		Item {
-		    Layout.fillHeight: true
-		}
+                Item {
+                    Layout.fillHeight: true
+                }
             }
 
             EeCard {
@@ -202,9 +202,9 @@ Kirigami.ScrollablePage {
                     convertDecibelToLinear: true
                 }
 
-		Item {
-		    Layout.fillHeight: true
-		}
+                Item {
+                    Layout.fillHeight: true
+                }
             }
         }
     }

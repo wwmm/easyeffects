@@ -37,317 +37,307 @@ Kirigami.ScrollablePage {
             implicitWidth: cardLayout.maximumColumnWidth
             uniformCellWidths: true
 
-            Kirigami.Card {
+            EeCard {
+                title: i18n("Left") // qmllint disable
 
-                header: Kirigami.Heading {
-                    text: i18n("Left") // qmllint disable
-                    level: 2
-                }
+                GridLayout {
+                    columns: 2
+                    rowSpacing: 0
+                    uniformCellWidths: true
 
-                contentItem: ColumnLayout {
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
-                        Layout.alignment: Qt.AlignTop
+                    FormCard.FormComboBoxDelegate {
+                        id: modeL
 
-                        FormCard.FormComboBoxDelegate {
-                            id: modeL
-
-                            Layout.columnSpan: 2
-                            text: i18n("Mode") // qmllint disable
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: delayPage.pluginDB.modeL
-                            editable: false
-                            model: [i18n("Samples"), i18n("Distance"), i18n("Time")]// qmllint disable
-                            onActivated: idx => {
-                                delayPage.pluginDB.modeL = idx;
-                            }
+                        Layout.columnSpan: 2
+                        verticalPadding: Kirigami.Units.smallSpacing
+                        text: i18n("Mode") // qmllint disable
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: delayPage.pluginDB.modeL
+                        editable: false
+                        model: [i18n("Samples"), i18n("Distance"), i18n("Time")]// qmllint disable
+                        onActivated: idx => {
+                            delayPage.pluginDB.modeL = idx;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: sampleL
+                    EeSpinBox {
+                        id: sampleL
 
-                            Layout.columnSpan: 2
-                            visible: delayPage.pluginDB.modeL === 0 ? true : false
-                            label: i18n("Samples") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("sampleL")
-                            to: delayPage.pluginDB.getMaxValue("sampleL")
-                            value: delayPage.pluginDB.sampleL
-                            decimals: 0
-                            stepSize: 1
-                            onValueModified: v => {
-                                delayPage.pluginDB.sampleL = v;
-                            }
+                        Layout.columnSpan: 2
+                        visible: delayPage.pluginDB.modeL === 0 ? true : false
+                        label: i18n("Samples") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("sampleL")
+                        to: delayPage.pluginDB.getMaxValue("sampleL")
+                        value: delayPage.pluginDB.sampleL
+                        decimals: 0
+                        stepSize: 1
+                        onValueModified: v => {
+                            delayPage.pluginDB.sampleL = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: timeL
+                    EeSpinBox {
+                        id: timeL
 
-                            Layout.columnSpan: 2
-                            visible: delayPage.pluginDB.modeL === 2 ? true : false
-                            label: i18n("Time") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("timeL")
-                            to: delayPage.pluginDB.getMaxValue("timeL")
-                            value: delayPage.pluginDB.timeL
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("ms")
-                            onValueModified: v => {
-                                delayPage.pluginDB.timeL = v;
-                            }
+                        Layout.columnSpan: 2
+                        visible: delayPage.pluginDB.modeL === 2 ? true : false
+                        label: i18n("Time") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("timeL")
+                        to: delayPage.pluginDB.getMaxValue("timeL")
+                        value: delayPage.pluginDB.timeL
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: i18n("ms")
+                        onValueModified: v => {
+                            delayPage.pluginDB.timeL = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: metersL
+                    EeSpinBox {
+                        id: metersL
 
-                            visible: delayPage.pluginDB.modeL === 1 ? true : false
-                            label: i18n("Meters") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("metersL")
-                            to: delayPage.pluginDB.getMaxValue("metersL")
-                            value: delayPage.pluginDB.metersL
-                            decimals: 0
-                            stepSize: 1
-                            unit: i18n("m")
-                            onValueModified: v => {
-                                delayPage.pluginDB.metersL = v;
-                            }
+                        visible: delayPage.pluginDB.modeL === 1 ? true : false
+                        label: i18n("Meters") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("metersL")
+                        to: delayPage.pluginDB.getMaxValue("metersL")
+                        value: delayPage.pluginDB.metersL
+                        decimals: 0
+                        stepSize: 1
+                        unit: i18n("m")
+                        onValueModified: v => {
+                            delayPage.pluginDB.metersL = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: centimetersL
+                    EeSpinBox {
+                        id: centimetersL
 
-                            visible: delayPage.pluginDB.modeL === 1 ? true : false
-                            label: i18n("Centimeters") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("centimetersL")
-                            to: delayPage.pluginDB.getMaxValue("centimetersL")
-                            value: delayPage.pluginDB.centimetersL
-                            decimals: 1
-                            stepSize: 0.1
-                            unit: i18n("cm")
-                            onValueModified: v => {
-                                delayPage.pluginDB.centimetersL = v;
-                            }
+                        visible: delayPage.pluginDB.modeL === 1 ? true : false
+                        label: i18n("Centimeters") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("centimetersL")
+                        to: delayPage.pluginDB.getMaxValue("centimetersL")
+                        value: delayPage.pluginDB.centimetersL
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: i18n("cm")
+                        onValueModified: v => {
+                            delayPage.pluginDB.centimetersL = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: temperatureL
+                    EeSpinBox {
+                        id: temperatureL
 
-                            Layout.columnSpan: 2
-                            visible: delayPage.pluginDB.modeL === 1 ? true : false
-                            label: i18n("Temperature") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("temperatureL")
-                            to: delayPage.pluginDB.getMaxValue("temperatureL")
-                            value: delayPage.pluginDB.temperatureL
-                            decimals: 1
-                            stepSize: 0.1
-                            unit: "°C"
-                            onValueModified: v => {
-                                delayPage.pluginDB.temperatureL = v;
-                            }
+                        Layout.columnSpan: 2
+                        visible: delayPage.pluginDB.modeL === 1 ? true : false
+                        label: i18n("Temperature") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("temperatureL")
+                        to: delayPage.pluginDB.getMaxValue("temperatureL")
+                        value: delayPage.pluginDB.temperatureL
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: "°C"
+                        onValueModified: v => {
+                            delayPage.pluginDB.temperatureL = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: dryL
+                    EeSpinBox {
+                        id: dryL
 
-                            label: i18n("Dry") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("dryL")
-                            to: delayPage.pluginDB.getMaxValue("dryL")
-                            value: delayPage.pluginDB.dryL
-                            decimals: 2 // Required to show "-inf"
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                delayPage.pluginDB.dryL = v;
-                            }
+                        label: i18n("Dry") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("dryL")
+                        to: delayPage.pluginDB.getMaxValue("dryL")
+                        value: delayPage.pluginDB.dryL
+                        decimals: 2 // Required to show "-inf"
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            delayPage.pluginDB.dryL = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: wetL
+                    EeSpinBox {
+                        id: wetL
 
-                            label: i18n("Wet") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("wetL")
-                            to: delayPage.pluginDB.getMaxValue("wetL")
-                            value: delayPage.pluginDB.wetL
-                            decimals: 2 // Required to show "-inf"
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                delayPage.pluginDB.wetL = v;
-                            }
+                        label: i18n("Wet") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("wetL")
+                        to: delayPage.pluginDB.getMaxValue("wetL")
+                        value: delayPage.pluginDB.wetL
+                        decimals: 2 // Required to show "-inf"
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            delayPage.pluginDB.wetL = v;
                         }
                     }
                 }
             }
 
-            Kirigami.Card {
+            EeCard {
+                title: i18n("Right") // qmllint disable
 
-                header: Kirigami.Heading {
-                    text: i18n("Right") // qmllint disable
-                    level: 2
-                }
+                GridLayout {
+                    columns: 2
+                    uniformCellWidths: true
+                    Layout.alignment: Qt.AlignTop
 
-                contentItem: ColumnLayout {
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
-                        Layout.alignment: Qt.AlignTop
+                    FormCard.FormComboBoxDelegate {
+                        id: modeR
 
-                        FormCard.FormComboBoxDelegate {
-                            id: modeR
-
-                            Layout.columnSpan: 2
-                            text: i18n("Mode") // qmllint disable
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: delayPage.pluginDB.modeR
-                            editable: false
-                            model: [i18n("Samples"), i18n("Distance"), i18n("Time")]// qmllint disable
-                            onActivated: idx => {
-                                delayPage.pluginDB.modeR = idx;
-                            }
+                        Layout.columnSpan: 2
+                        verticalPadding: 0
+                        text: i18n("Mode") // qmllint disable
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: delayPage.pluginDB.modeR
+                        editable: false
+                        model: [i18n("Samples"), i18n("Distance"), i18n("Time")]// qmllint disable
+                        onActivated: idx => {
+                            delayPage.pluginDB.modeR = idx;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: sampleR
+                    EeSpinBox {
+                        id: sampleR
 
-                            Layout.columnSpan: 2
-                            visible: delayPage.pluginDB.modeR === 0 ? true : false
-                            label: i18n("Samples") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("sampleR")
-                            to: delayPage.pluginDB.getMaxValue("sampleR")
-                            value: delayPage.pluginDB.sampleR
-                            decimals: 0
-                            stepSize: 1
-                            onValueModified: v => {
-                                delayPage.pluginDB.sampleR = v;
-                            }
+                        Layout.columnSpan: 2
+                        visible: delayPage.pluginDB.modeR === 0 ? true : false
+                        label: i18n("Samples") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("sampleR")
+                        to: delayPage.pluginDB.getMaxValue("sampleR")
+                        value: delayPage.pluginDB.sampleR
+                        decimals: 0
+                        stepSize: 1
+                        onValueModified: v => {
+                            delayPage.pluginDB.sampleR = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: timeR
+                    EeSpinBox {
+                        id: timeR
 
-                            Layout.columnSpan: 2
-                            visible: delayPage.pluginDB.modeR === 2 ? true : false
-                            label: i18n("Time") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("timeR")
-                            to: delayPage.pluginDB.getMaxValue("timeR")
-                            value: delayPage.pluginDB.timeR
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("ms")
-                            onValueModified: v => {
-                                delayPage.pluginDB.timeR = v;
-                            }
+                        Layout.columnSpan: 2
+                        visible: delayPage.pluginDB.modeR === 2 ? true : false
+                        label: i18n("Time") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("timeR")
+                        to: delayPage.pluginDB.getMaxValue("timeR")
+                        value: delayPage.pluginDB.timeR
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: i18n("ms")
+                        onValueModified: v => {
+                            delayPage.pluginDB.timeR = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: metersR
+                    EeSpinBox {
+                        id: metersR
 
-                            visible: delayPage.pluginDB.modeR === 1 ? true : false
-                            label: i18n("Meters") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("metersR")
-                            to: delayPage.pluginDB.getMaxValue("metersR")
-                            value: delayPage.pluginDB.metersR
-                            decimals: 0
-                            stepSize: 1
-                            unit: i18n("m")
-                            onValueModified: v => {
-                                delayPage.pluginDB.metersR = v;
-                            }
+                        visible: delayPage.pluginDB.modeR === 1 ? true : false
+                        label: i18n("Meters") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("metersR")
+                        to: delayPage.pluginDB.getMaxValue("metersR")
+                        value: delayPage.pluginDB.metersR
+                        decimals: 0
+                        stepSize: 1
+                        unit: i18n("m")
+                        onValueModified: v => {
+                            delayPage.pluginDB.metersR = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: centimetersR
+                    EeSpinBox {
+                        id: centimetersR
 
-                            visible: delayPage.pluginDB.modeR === 1 ? true : false
-                            label: i18n("Centimeters") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("centimetersR")
-                            to: delayPage.pluginDB.getMaxValue("centimetersR")
-                            value: delayPage.pluginDB.centimetersR
-                            decimals: 1
-                            stepSize: 0.1
-                            unit: i18n("cm")
-                            onValueModified: v => {
-                                delayPage.pluginDB.centimetersR = v;
-                            }
+                        visible: delayPage.pluginDB.modeR === 1 ? true : false
+                        label: i18n("Centimeters") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("centimetersR")
+                        to: delayPage.pluginDB.getMaxValue("centimetersR")
+                        value: delayPage.pluginDB.centimetersR
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: i18n("cm")
+                        onValueModified: v => {
+                            delayPage.pluginDB.centimetersR = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: temperatureR
+                    EeSpinBox {
+                        id: temperatureR
 
-                            Layout.columnSpan: 2
-                            visible: delayPage.pluginDB.modeR === 1 ? true : false
-                            label: i18n("Temperature") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("temperatureR")
-                            to: delayPage.pluginDB.getMaxValue("temperatureR")
-                            value: delayPage.pluginDB.temperatureR
-                            decimals: 1
-                            stepSize: 0.1
-                            unit: "°C"
-                            onValueModified: v => {
-                                delayPage.pluginDB.temperatureR = v;
-                            }
+                        Layout.columnSpan: 2
+                        visible: delayPage.pluginDB.modeR === 1 ? true : false
+                        label: i18n("Temperature") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("temperatureR")
+                        to: delayPage.pluginDB.getMaxValue("temperatureR")
+                        value: delayPage.pluginDB.temperatureR
+                        decimals: 1
+                        stepSize: 0.1
+                        unit: "°C"
+                        onValueModified: v => {
+                            delayPage.pluginDB.temperatureR = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: dryR
+                    EeSpinBox {
+                        id: dryR
 
-                            label: i18n("Dry") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("dryR")
-                            to: delayPage.pluginDB.getMaxValue("dryR")
-                            value: delayPage.pluginDB.dryR
-                            decimals: 2 // Required to show "-inf"
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                delayPage.pluginDB.dryR = v;
-                            }
+                        label: i18n("Dry") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("dryR")
+                        to: delayPage.pluginDB.getMaxValue("dryR")
+                        value: delayPage.pluginDB.dryR
+                        decimals: 2 // Required to show "-inf"
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            delayPage.pluginDB.dryR = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: wetR
+                    EeSpinBox {
+                        id: wetR
 
-                            label: i18n("Wet") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: delayPage.pluginDB.getMinValue("wetR")
-                            to: delayPage.pluginDB.getMaxValue("wetR")
-                            value: delayPage.pluginDB.wetR
-                            decimals: 2 // Required to show "-inf"
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                delayPage.pluginDB.wetR = v;
-                            }
+                        label: i18n("Wet") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: delayPage.pluginDB.getMinValue("wetR")
+                        to: delayPage.pluginDB.getMaxValue("wetR")
+                        value: delayPage.pluginDB.wetR
+                        decimals: 2 // Required to show "-inf"
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            delayPage.pluginDB.wetR = v;
                         }
                     }
                 }

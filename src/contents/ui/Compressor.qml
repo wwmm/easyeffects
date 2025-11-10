@@ -47,613 +47,589 @@ Kirigami.ScrollablePage {
             maximumColumns: 6
             uniformCellWidths: true
 
-            Kirigami.Card {
+            EeCard {
+                title: i18n("Compressor") // qmllint disable
 
-                header: Kirigami.Heading {
-                    text: i18n("Compressor") // qmllint disable
-                    level: 2
-                }
+                GridLayout {
+                    columns: 2
+                    uniformCellWidths: true
+                    rowSpacing: 0
 
-                contentItem: ColumnLayout {
-                    anchors.fill: parent
+                    FormCard.FormComboBoxDelegate {
+                        id: mode
 
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
-                        Layout.alignment: Qt.AlignTop
-
-                        FormCard.FormComboBoxDelegate {
-                            id: mode
-
-                            Layout.columnSpan: 2
-                            text: i18n("Mode") // qmllint disable
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: compressorPage.pluginDB.mode
-                            editable: false
-                            model: [i18n("Downward"), i18n("Upward"), i18n("Boosting")] //qmllint disable
-                            onActivated: idx => {
-                                compressorPage.pluginDB.mode = idx;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: boostThreshold
-
-                            Layout.columnSpan: 2
-                            label: i18n("Boost threshold") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("boostThreshold")
-                            to: compressorPage.pluginDB.getMaxValue("boostThreshold")
-                            value: compressorPage.pluginDB.boostThreshold
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            enabled: mode.currentIndex === 1
-                            visible: mode.currentIndex === 1
-                            onValueModified: v => {
-                                compressorPage.pluginDB.boostThreshold = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: boostAmount
-
-                            Layout.columnSpan: 2
-                            label: i18n("Boost amount") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("boostAmount")
-                            to: compressorPage.pluginDB.getMaxValue("boostAmount")
-                            value: compressorPage.pluginDB.boostAmount
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            enabled: mode.currentIndex === 2
-                            visible: mode.currentIndex === 2
-                            onValueModified: v => {
-                                compressorPage.pluginDB.boostAmount = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: ratio
-
-                            label: i18n("Ratio") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("ratio")
-                            to: compressorPage.pluginDB.getMaxValue("ratio")
-                            value: compressorPage.pluginDB.ratio
-                            decimals: 0
-                            stepSize: 1
-                            onValueModified: v => {
-                                compressorPage.pluginDB.ratio = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: knee
-
-                            label: i18n("Knee") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("knee")
-                            to: compressorPage.pluginDB.getMaxValue("knee")
-                            value: compressorPage.pluginDB.knee
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            onValueModified: v => {
-                                compressorPage.pluginDB.knee = v;
-                            }
+                        Layout.columnSpan: 2
+                        verticalPadding: Kirigami.Units.largeSpacing
+                        text: i18n("Mode") // qmllint disable
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: compressorPage.pluginDB.mode
+                        editable: false
+                        model: [i18n("Downward"), i18n("Upward"), i18n("Boosting")] //qmllint disable
+                        onActivated: idx => {
+                            compressorPage.pluginDB.mode = idx;
                         }
                     }
-                }
-            }
-
-            Kirigami.Card {
-
-                header: Kirigami.Heading {
-                    text: i18n("Threshold and Time") // qmllint disable
-                    level: 2
-                }
-
-                contentItem: ColumnLayout {
-                    anchors.fill: parent
-
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
-                        Layout.alignment: Qt.AlignTop
-
-                        EeSpinBox {
-                            id: threshold
-
-                            label: i18n("Attack") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("threshold")
-                            to: compressorPage.pluginDB.getMaxValue("threshold")
-                            value: compressorPage.pluginDB.threshold
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            onValueModified: v => {
-                                compressorPage.pluginDB.threshold = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: attack
-
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("attack")
-                            to: compressorPage.pluginDB.getMaxValue("attack")
-                            value: compressorPage.pluginDB.attack
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("ms")
-                            onValueModified: v => {
-                                compressorPage.pluginDB.attack = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: releaseThreshold
-
-                            label: i18n("Release") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("releaseThreshold")
-                            to: compressorPage.pluginDB.getMaxValue("releaseThreshold")
-                            value: compressorPage.pluginDB.releaseThreshold
-                            decimals: 2 // Required to show "-inf"
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                compressorPage.pluginDB.releaseThreshold = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: release
-
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("release")
-                            to: compressorPage.pluginDB.getMaxValue("release")
-                            value: compressorPage.pluginDB.release
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("ms")
-                            onValueModified: v => {
-                                compressorPage.pluginDB.release = v;
-                            }
-                        }
-                    }
-                }
-            }
-
-            Kirigami.Card {
-
-                header: Kirigami.Heading {
-                    text: i18n("Sidechain") // qmllint disable
-                    level: 2
-                }
-
-                contentItem: ColumnLayout {
-                    anchors.fill: parent
-
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
-                        Layout.alignment: Qt.AlignTop
-
-                        FormCard.FormComboBoxDelegate {
-                            id: sidechainType
-
-                            Layout.columnSpan: 2
-                            text: i18n("Type") // qmllint disable
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: compressorPage.pluginDB.sidechainType
-                            editable: false
-                            model: [i18n("Feed-forward"), i18n("Feed-back"), i18n("External"), i18n("Link")] // qmllint disable
-                            onActivated: idx => {
-                                compressorPage.pluginDB.sidechainType = idx;
-                            }
-                        }
-
-                        FormCard.FormComboBoxDelegate {
-                            id: comboSideChainInputDevice
-
-                            Layout.columnSpan: 2
-                            text: i18n("Input device") // qmllint disable
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            editable: false
-                            model: PW.ModelNodes
-                            textRole: "description"
-                            enabled: sidechainType.currentIndex === 2
-                            currentIndex: {
-                                for (let n = 0; n < PW.ModelNodes.rowCount(); n++) {
-                                    if (PW.ModelNodes.getNodeName(n) === compressorPage.pluginDB.sidechainInputDevice)
-                                        return n;
-                                }
-                                return 0;
-                            }
-                            onActivated: idx => {
-                                let selectedName = PW.ModelNodes.getNodeName(idx);
-                                if (selectedName !== compressorPage.pluginDB.sidechainInputDevice)
-                                    compressorPage.pluginDB.sidechainInputDevice = selectedName;
-                            }
-                        }
-
-                        FormCard.FormComboBoxDelegate {
-                            id: sidechainMode
-
-                            text: i18n("Mode") // qmllint disable
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: compressorPage.pluginDB.sidechainMode
-                            editable: false
-                            model: [i18n("Peak"), i18n("RMS"), i18n("Low-pass"), i18n("SMA")] // qmllint disable
-                            onActivated: idx => {
-                                compressorPage.pluginDB.sidechainMode = idx;
-                            }
-                        }
-
-                        FormCard.FormComboBoxDelegate {
-                            id: sidechainSource
-
-                            text: i18n("Source") // qmllint disable
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: compressorPage.pluginDB.sidechainSource
-                            editable: false
-                            model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]// qmllint disable
-                            visible: !compressorPage.pluginDB.stereoSplit
-                            onActivated: idx => {
-                                compressorPage.pluginDB.sidechainSource = idx;
-                            }
-                        }
-
-                        FormCard.FormComboBoxDelegate {
-                            id: stereoSplitSource
-
-                            text: i18n("Source") // qmllint disable
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: compressorPage.pluginDB.stereoSplitSource
-                            editable: false
-                            model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]// qmllint disable
-                            visible: compressorPage.pluginDB.stereoSplit
-                            onActivated: idx => {
-                                compressorPage.pluginDB.stereoSplitSource = idx;
-                            }
-                        }
-                    }
-                }
-            }
-
-            Kirigami.Card {
-
-                header: Kirigami.Heading {
-                    text: i18n("Sidechain") // qmllint disable
-                    level: 2
-                }
-
-                contentItem: ColumnLayout {
-                    anchors.fill: parent
-
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
-
-                        Layout.alignment: Qt.AlignTop
-
-                        EeSpinBox {
-                            id: sidechainPreamp
-
-                            label: i18n("Preamp") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("sidechainPreamp")
-                            to: compressorPage.pluginDB.getMaxValue("sidechainPreamp")
-                            value: compressorPage.pluginDB.sidechainPreamp
-                            decimals: 2 // Required to show "-inf"
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                compressorPage.pluginDB.sidechainPreamp = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: sidechainReactivity
-
-                            label: i18n("Reactivity") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("sidechainReactivity")
-                            to: compressorPage.pluginDB.getMaxValue("sidechainReactivity")
-                            value: compressorPage.pluginDB.sidechainReactivity
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("ms")
-                            onValueModified: v => {
-                                compressorPage.pluginDB.sidechainReactivity = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: sidechainLookahead
-
-                            Layout.columnSpan: 2
-                            label: i18n("Lookahead") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("sidechainLookahead")
-                            to: compressorPage.pluginDB.getMaxValue("sidechainLookahead")
-                            value: compressorPage.pluginDB.sidechainLookahead
-                            decimals: 3
-                            stepSize: 0.001
-                            unit: i18n("ms")
-                            onValueModified: v => {
-                                compressorPage.pluginDB.sidechainLookahead = v;
-                            }
-                        }
-
-                        FormCard.FormComboBoxDelegate {
-                            id: hpfMode
-
-                            horizontalPadding: 0
-                            verticalPadding: 0
-                            text: i18n("High-pass") // qmllint disable
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: compressorPage.pluginDB.hpfMode
-                            editable: false
-                            model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")] // qmllint disable
-                            onActivated: idx => {
-                                compressorPage.pluginDB.hpfMode = idx;
-                            }
-                        }
-
-                        FormCard.FormComboBoxDelegate {
-                            id: lpfMode
-
-                            horizontalPadding: 0
-                            verticalPadding: 0
-                            text: i18n("Low-pass") // qmllint disable
-                            displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                            currentIndex: compressorPage.pluginDB.lpfMode
-                            editable: false
-                            model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")]// qmllint disable
-                            onActivated: idx => {
-                                compressorPage.pluginDB.lpfMode = idx;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: hpfFrequency
-
-                            horizontalPadding: 0
-                            verticalPadding: 0
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("hpfFrequency")
-                            to: compressorPage.pluginDB.getMaxValue("hpfFrequency")
-                            value: compressorPage.pluginDB.hpfFrequency
-                            decimals: 0
-                            stepSize: 1
-                            unit: "Hz"
-                            visible: hpfMode.currentIndex !== 0
-                            onValueModified: v => {
-                                compressorPage.pluginDB.hpfFrequency = v;
-                            }
-                        }
-
-                        EeSpinBox {
-                            id: lpfFrequency
-
-                            Layout.column: 1
-                            Layout.row: 3
-                            horizontalPadding: 0
-                            verticalPadding: 0
-                            labelFillWidth: false
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("lpfFrequency")
-                            to: compressorPage.pluginDB.getMaxValue("lpfFrequency")
-                            value: compressorPage.pluginDB.lpfFrequency
-                            decimals: 0
-                            stepSize: 1
-                            unit: "Hz"
-                            visible: lpfMode.currentIndex !== 0
-                            onValueModified: v => {
-                                compressorPage.pluginDB.lpfFrequency = v;
-                            }
-                        }
-                    }
-                }
-            }
-
-            Kirigami.Card {
-
-                header: Kirigami.Heading {
-                    text: i18n("Output") // qmllint disable
-                    level: 2
-                }
-
-                contentItem: ColumnLayout {
-                    anchors.fill: parent
 
                     EeSpinBox {
-                        id: dry
+                        id: boostThreshold
 
-                        Layout.alignment: Qt.AlignTop
-                        label: i18n("Dry") // qmllint disable
+                        Layout.columnSpan: 2
+                        label: i18n("Boost threshold") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
-                        from: compressorPage.pluginDB.getMinValue("dry")
-                        to: compressorPage.pluginDB.getMaxValue("dry")
-                        value: compressorPage.pluginDB.dry
-                        decimals: 2 // Required to show "-inf"
+                        from: compressorPage.pluginDB.getMinValue("boostThreshold")
+                        to: compressorPage.pluginDB.getMaxValue("boostThreshold")
+                        value: compressorPage.pluginDB.boostThreshold
+                        decimals: 2
                         stepSize: 0.01
                         unit: i18n("dB")
-                        minusInfinityMode: true
+                        enabled: mode.currentIndex === 1
+                        visible: mode.currentIndex === 1
                         onValueModified: v => {
-                            compressorPage.pluginDB.dry = v;
+                            compressorPage.pluginDB.boostThreshold = v;
                         }
                     }
 
                     EeSpinBox {
-                        id: wet
+                        id: boostAmount
 
-                        Layout.alignment: Qt.AlignTop
-                        label: i18n("Wet") // qmllint disable
+                        Layout.columnSpan: 2
+                        label: i18n("Boost amount") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
-                        from: compressorPage.pluginDB.getMinValue("wet")
-                        to: compressorPage.pluginDB.getMaxValue("wet")
-                        value: compressorPage.pluginDB.wet
-                        decimals: 2 // Required to show "-inf"
+                        from: compressorPage.pluginDB.getMinValue("boostAmount")
+                        to: compressorPage.pluginDB.getMaxValue("boostAmount")
+                        value: compressorPage.pluginDB.boostAmount
+                        decimals: 2
                         stepSize: 0.01
                         unit: i18n("dB")
-                        minusInfinityMode: true
+                        enabled: mode.currentIndex === 2
+                        visible: mode.currentIndex === 2
                         onValueModified: v => {
-                            compressorPage.pluginDB.wet = v;
+                            compressorPage.pluginDB.boostAmount = v;
                         }
                     }
 
                     EeSpinBox {
-                        id: makeup
+                        id: ratio
 
-                        Layout.alignment: Qt.AlignTop
-                        label: i18n("Makeup") // qmllint disable
+                        label: i18n("Ratio") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
-                        from: compressorPage.pluginDB.getMinValue("makeup")
-                        to: compressorPage.pluginDB.getMaxValue("makeup")
-                        value: compressorPage.pluginDB.makeup
+                        from: compressorPage.pluginDB.getMinValue("ratio")
+                        to: compressorPage.pluginDB.getMaxValue("ratio")
+                        value: compressorPage.pluginDB.ratio
+                        decimals: 0
+                        stepSize: 1
+                        onValueModified: v => {
+                            compressorPage.pluginDB.ratio = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: knee
+
+                        label: i18n("Knee") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("knee")
+                        to: compressorPage.pluginDB.getMaxValue("knee")
+                        value: compressorPage.pluginDB.knee
                         decimals: 2
                         stepSize: 0.01
                         unit: i18n("dB")
                         onValueModified: v => {
-                            compressorPage.pluginDB.makeup = v;
+                            compressorPage.pluginDB.knee = v;
+                        }
+                    }
+
+                    Item {
+                        Layout.fillHeight: true
+                    }
+                }
+            }
+
+            EeCard {
+                title: i18n("Threshold and Time") // qmllint disable
+
+                GridLayout {
+                    columns: 2
+                    uniformCellWidths: true
+                    rowSpacing: 0
+
+                    EeSpinBox {
+                        id: threshold
+
+                        label: i18n("Attack") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("threshold")
+                        to: compressorPage.pluginDB.getMaxValue("threshold")
+                        value: compressorPage.pluginDB.threshold
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        onValueModified: v => {
+                            compressorPage.pluginDB.threshold = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: attack
+
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("attack")
+                        to: compressorPage.pluginDB.getMaxValue("attack")
+                        value: compressorPage.pluginDB.attack
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: i18n("ms")
+                        onValueModified: v => {
+                            compressorPage.pluginDB.attack = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: releaseThreshold
+
+                        label: i18n("Release") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("releaseThreshold")
+                        to: compressorPage.pluginDB.getMaxValue("releaseThreshold")
+                        value: compressorPage.pluginDB.releaseThreshold
+                        decimals: 2 // Required to show "-inf"
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            compressorPage.pluginDB.releaseThreshold = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: release
+
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("release")
+                        to: compressorPage.pluginDB.getMaxValue("release")
+                        value: compressorPage.pluginDB.release
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: i18n("ms")
+                        onValueModified: v => {
+                            compressorPage.pluginDB.release = v;
+                        }
+                    }
+
+                    Item {
+                        Layout.fillHeight: true
+                    }
+                }
+            }
+
+            EeCard {
+                title: i18n("Sidechain") // qmllint disable
+
+                GridLayout {
+                    columns: 2
+                    uniformCellWidths: true
+                    rowSpacing: 0
+
+                    FormCard.FormComboBoxDelegate {
+                        id: sidechainType
+
+                        Layout.columnSpan: 2
+                        verticalPadding: Kirigami.Units.largeSpacing
+                        text: i18n("Type") // qmllint disable
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: compressorPage.pluginDB.sidechainType
+                        editable: false
+                        model: [i18n("Feed-forward"), i18n("Feed-back"), i18n("External"), i18n("Link")] // qmllint disable
+                        onActivated: idx => {
+                            compressorPage.pluginDB.sidechainType = idx;
+                        }
+                    }
+
+                    FormCard.FormComboBoxDelegate {
+                        id: comboSideChainInputDevice
+
+                        Layout.columnSpan: 2
+                        verticalPadding: Kirigami.Units.largeSpacing
+                        text: i18n("Input device") // qmllint disable
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        editable: false
+                        model: PW.ModelNodes
+                        textRole: "description"
+                        enabled: sidechainType.currentIndex === 2
+                        currentIndex: {
+                            for (let n = 0; n < PW.ModelNodes.rowCount(); n++) {
+                                if (PW.ModelNodes.getNodeName(n) === compressorPage.pluginDB.sidechainInputDevice)
+                                    return n;
+                            }
+                            return 0;
+                        }
+                        onActivated: idx => {
+                            let selectedName = PW.ModelNodes.getNodeName(idx);
+                            if (selectedName !== compressorPage.pluginDB.sidechainInputDevice)
+                                compressorPage.pluginDB.sidechainInputDevice = selectedName;
+                        }
+                    }
+
+                    FormCard.FormComboBoxDelegate {
+                        id: sidechainMode
+
+                        verticalPadding: Kirigami.Units.largeSpacing
+                        text: i18n("Mode") // qmllint disable
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: compressorPage.pluginDB.sidechainMode
+                        editable: false
+                        model: [i18n("Peak"), i18n("RMS"), i18n("Low-pass"), i18n("SMA")] // qmllint disable
+                        onActivated: idx => {
+                            compressorPage.pluginDB.sidechainMode = idx;
+                        }
+                    }
+
+                    FormCard.FormComboBoxDelegate {
+                        id: sidechainSource
+
+                        verticalPadding: Kirigami.Units.largeSpacing
+                        text: i18n("Source") // qmllint disable
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: compressorPage.pluginDB.sidechainSource
+                        editable: false
+                        model: [i18n("Middle"), i18n("Side"), i18n("Left"), i18n("Right"), i18n("Min"), i18n("Max")]// qmllint disable
+                        visible: !compressorPage.pluginDB.stereoSplit
+                        onActivated: idx => {
+                            compressorPage.pluginDB.sidechainSource = idx;
+                        }
+                    }
+
+                    FormCard.FormComboBoxDelegate {
+                        id: stereoSplitSource
+
+                        verticalPadding: Kirigami.Units.largeSpacing
+                        text: i18n("Source") // qmllint disable
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: compressorPage.pluginDB.stereoSplitSource
+                        editable: false
+                        model: [i18n("Left/Right"), i18n("Right/Left"), i18n("Mid/Side"), i18n("Side/Mid"), i18n("Min"), i18n("Max")]// qmllint disable
+                        visible: compressorPage.pluginDB.stereoSplit
+                        onActivated: idx => {
+                            compressorPage.pluginDB.stereoSplitSource = idx;
+                        }
+                    }
+
+                    Item {
+                        Layout.fillHeight: true
+                    }
+                }
+            }
+
+            EeCard {
+                title: i18n("Sidechain") // qmllint disable
+
+                GridLayout {
+                    columns: 2
+                    rowSpacing: 0
+                    uniformCellWidths: true
+
+                    EeSpinBox {
+                        id: sidechainPreamp
+
+                        label: i18n("Preamp") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("sidechainPreamp")
+                        to: compressorPage.pluginDB.getMaxValue("sidechainPreamp")
+                        value: compressorPage.pluginDB.sidechainPreamp
+                        decimals: 2 // Required to show "-inf"
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            compressorPage.pluginDB.sidechainPreamp = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: sidechainReactivity
+
+                        label: i18n("Reactivity") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("sidechainReactivity")
+                        to: compressorPage.pluginDB.getMaxValue("sidechainReactivity")
+                        value: compressorPage.pluginDB.sidechainReactivity
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: i18n("ms")
+                        onValueModified: v => {
+                            compressorPage.pluginDB.sidechainReactivity = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: sidechainLookahead
+
+                        Layout.columnSpan: 2
+                        label: i18n("Lookahead") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("sidechainLookahead")
+                        to: compressorPage.pluginDB.getMaxValue("sidechainLookahead")
+                        value: compressorPage.pluginDB.sidechainLookahead
+                        decimals: 3
+                        stepSize: 0.001
+                        unit: i18n("ms")
+                        onValueModified: v => {
+                            compressorPage.pluginDB.sidechainLookahead = v;
+                        }
+                    }
+
+                    FormCard.FormComboBoxDelegate {
+                        id: hpfMode
+
+                        verticalPadding: Kirigami.Units.largeSpacing
+                        text: i18n("High-pass") // qmllint disable
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: compressorPage.pluginDB.hpfMode
+                        editable: false
+                        model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")] // qmllint disable
+                        onActivated: idx => {
+                            compressorPage.pluginDB.hpfMode = idx;
+                        }
+                    }
+
+                    FormCard.FormComboBoxDelegate {
+                        id: lpfMode
+
+                        verticalPadding: Kirigami.Units.largeSpacing
+                        text: i18n("Low-pass") // qmllint disable
+                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                        currentIndex: compressorPage.pluginDB.lpfMode
+                        editable: false
+                        model: [i18n("Off"), i18n("12 dB/oct"), i18n("24 dB/oct"), i18n("36 dB/oct")]// qmllint disable
+                        onActivated: idx => {
+                            compressorPage.pluginDB.lpfMode = idx;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: hpfFrequency
+
+                        horizontalPadding: 0
+                        verticalPadding: 0
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("hpfFrequency")
+                        to: compressorPage.pluginDB.getMaxValue("hpfFrequency")
+                        value: compressorPage.pluginDB.hpfFrequency
+                        decimals: 0
+                        stepSize: 1
+                        unit: "Hz"
+                        visible: hpfMode.currentIndex !== 0
+                        onValueModified: v => {
+                            compressorPage.pluginDB.hpfFrequency = v;
+                        }
+                    }
+
+                    EeSpinBox {
+                        id: lpfFrequency
+
+                        Layout.column: 1
+                        Layout.row: 3
+                        horizontalPadding: 0
+                        verticalPadding: 0
+                        labelFillWidth: false
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("lpfFrequency")
+                        to: compressorPage.pluginDB.getMaxValue("lpfFrequency")
+                        value: compressorPage.pluginDB.lpfFrequency
+                        decimals: 0
+                        stepSize: 1
+                        unit: "Hz"
+                        visible: lpfMode.currentIndex !== 0
+                        onValueModified: v => {
+                            compressorPage.pluginDB.lpfFrequency = v;
                         }
                     }
                 }
             }
 
-            Kirigami.Card {
-                header: Kirigami.Heading {
-                    text: i18n("Pre-Mix") // qmllint disable
-                    level: 2
+            EeCard {
+                title: i18n("Output") // qmllint disable
+
+                EeSpinBox {
+                    id: dry
+
+                    Layout.alignment: Qt.AlignTop
+                    label: i18n("Dry") // qmllint disable
+                    labelAbove: true
+                    spinboxLayoutFillWidth: true
+                    from: compressorPage.pluginDB.getMinValue("dry")
+                    to: compressorPage.pluginDB.getMaxValue("dry")
+                    value: compressorPage.pluginDB.dry
+                    decimals: 2 // Required to show "-inf"
+                    stepSize: 0.01
+                    unit: i18n("dB")
+                    minusInfinityMode: true
+                    onValueModified: v => {
+                        compressorPage.pluginDB.dry = v;
+                    }
                 }
 
-                contentItem: ColumnLayout {
-                    anchors.fill: parent
+                EeSpinBox {
+                    id: wet
 
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
-                        Layout.alignment: Qt.AlignTop
+                    Layout.alignment: Qt.AlignTop
+                    label: i18n("Wet") // qmllint disable
+                    labelAbove: true
+                    spinboxLayoutFillWidth: true
+                    from: compressorPage.pluginDB.getMinValue("wet")
+                    to: compressorPage.pluginDB.getMaxValue("wet")
+                    value: compressorPage.pluginDB.wet
+                    decimals: 2 // Required to show "-inf"
+                    stepSize: 0.01
+                    unit: i18n("dB")
+                    minusInfinityMode: true
+                    onValueModified: v => {
+                        compressorPage.pluginDB.wet = v;
+                    }
+                }
 
-                        EeSpinBox {
-                            label: i18n("Input to sidechain") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("inputToSidechain")
-                            to: compressorPage.pluginDB.getMaxValue("inputToSidechain")
-                            value: compressorPage.pluginDB.inputToSidechain
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                compressorPage.pluginDB.inputToSidechain = v;
-                            }
+                EeSpinBox {
+                    id: makeup
+
+                    Layout.alignment: Qt.AlignTop
+                    label: i18n("Makeup") // qmllint disable
+                    labelAbove: true
+                    spinboxLayoutFillWidth: true
+                    from: compressorPage.pluginDB.getMinValue("makeup")
+                    to: compressorPage.pluginDB.getMaxValue("makeup")
+                    value: compressorPage.pluginDB.makeup
+                    decimals: 2
+                    stepSize: 0.01
+                    unit: i18n("dB")
+                    onValueModified: v => {
+                        compressorPage.pluginDB.makeup = v;
+                    }
+                }
+
+                Item {
+                    Layout.fillHeight: true
+                }
+            }
+
+            EeCard {
+                title: i18n("Pre-Mix") // qmllint disable
+
+                GridLayout {
+                    columns: 2
+                    uniformCellWidths: true
+                    rowSpacing: 0
+
+                    EeSpinBox {
+                        label: i18n("Input to sidechain") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("inputToSidechain")
+                        to: compressorPage.pluginDB.getMaxValue("inputToSidechain")
+                        value: compressorPage.pluginDB.inputToSidechain
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            compressorPage.pluginDB.inputToSidechain = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            label: i18n("Input to link") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("inputToLink")
-                            to: compressorPage.pluginDB.getMaxValue("inputToLink")
-                            value: compressorPage.pluginDB.inputToLink
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                compressorPage.pluginDB.inputToLink = v;
-                            }
+                    EeSpinBox {
+                        label: i18n("Input to link") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("inputToLink")
+                        to: compressorPage.pluginDB.getMaxValue("inputToLink")
+                        value: compressorPage.pluginDB.inputToLink
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            compressorPage.pluginDB.inputToLink = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            label: i18n("Sidechain to input") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("sidechainToInput")
-                            to: compressorPage.pluginDB.getMaxValue("sidechainToInput")
-                            value: compressorPage.pluginDB.sidechainToInput
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                compressorPage.pluginDB.sidechainToInput = v;
-                            }
+                    EeSpinBox {
+                        label: i18n("Sidechain to input") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("sidechainToInput")
+                        to: compressorPage.pluginDB.getMaxValue("sidechainToInput")
+                        value: compressorPage.pluginDB.sidechainToInput
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            compressorPage.pluginDB.sidechainToInput = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            label: i18n("Sidechain to link") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("sidechainToLink")
-                            to: compressorPage.pluginDB.getMaxValue("sidechainToLink")
-                            value: compressorPage.pluginDB.sidechainToLink
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                compressorPage.pluginDB.sidechainToLink = v;
-                            }
+                    EeSpinBox {
+                        label: i18n("Sidechain to link") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("sidechainToLink")
+                        to: compressorPage.pluginDB.getMaxValue("sidechainToLink")
+                        value: compressorPage.pluginDB.sidechainToLink
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            compressorPage.pluginDB.sidechainToLink = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            label: i18n("Link to sidechain") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("linkToSidechain")
-                            to: compressorPage.pluginDB.getMaxValue("linkToSidechain")
-                            value: compressorPage.pluginDB.linkToSidechain
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                compressorPage.pluginDB.linkToSidechain = v;
-                            }
+                    EeSpinBox {
+                        label: i18n("Link to sidechain") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("linkToSidechain")
+                        to: compressorPage.pluginDB.getMaxValue("linkToSidechain")
+                        value: compressorPage.pluginDB.linkToSidechain
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            compressorPage.pluginDB.linkToSidechain = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            label: i18n("Link to input") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: compressorPage.pluginDB.getMinValue("linkToInput")
-                            to: compressorPage.pluginDB.getMaxValue("linkToInput")
-                            value: compressorPage.pluginDB.linkToInput
-                            decimals: 2
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                compressorPage.pluginDB.linkToInput = v;
-                            }
+                    EeSpinBox {
+                        label: i18n("Link to input") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: compressorPage.pluginDB.getMinValue("linkToInput")
+                        to: compressorPage.pluginDB.getMaxValue("linkToInput")
+                        value: compressorPage.pluginDB.linkToInput
+                        decimals: 2
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            compressorPage.pluginDB.linkToInput = v;
                         }
+                    }
+
+                    Item {
+                        Layout.fillHeight: true
                     }
                 }
             }
