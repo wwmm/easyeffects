@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-09 11:36-0300\n"
+"POT-Creation-Date: 2025-11-09 22:38-0300\n"
 "PO-Revision-Date: 2025-11-06 21:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -96,8 +96,9 @@ msgid "About"
 msgstr "關於"
 
 #: src/contents/ui/AboutPage.qml:14
-msgid "Audio effects for PipeWire applications"
-msgstr "用於 PipeWire 應用程式提供聲音效果處理"
+#, fuzzy
+msgid "Global audio effects"
+msgstr "整體快速鍵"
 
 #: src/contents/ui/AboutPage.qml:27
 msgctxt "@info:credit"
@@ -2784,8 +2785,14 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "等化器、壓縮器、及其他音效處理"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
-msgid "Audio Effects for PipeWire Applications"
-msgstr "用於 PipeWire 應用程式的音效處理"
+msgid "Simple audio effects"
+msgstr ""
+
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "用於 PipeWire 應用程式提供聲音效果處理"
+
+#~ msgid "Audio Effects for PipeWire Applications"
+#~ msgstr "用於 PipeWire 應用程式的音效處理"
 
 #~ msgid "Local Preset"
 #~ msgstr "本地預設集"

@@ -2760,6 +2760,15 @@ msgstr "Cothromóir, Comhbhrúiteoir agus Éifeachtaí Fuaime Eile"
 msgid "Audio Effects for PipeWire Applications"
 msgstr "Éifeachtaí Fuaime d'Iarratais PipeWire"
 
+#: src/contents/ui/AboutPage.qml:14
+#, fuzzy
+msgid "Global audio effects"
+msgstr "Aicearraí domhanda"
+
+#: com.github.wwmm.easyeffects.desktop.in.template.h:2
+msgid "Simple audio effects"
+msgstr ""
+
 #~ msgid "Local Preset"
 #~ msgstr "Réamhshocrú Áitiúil"
 
