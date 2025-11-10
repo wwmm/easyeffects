@@ -90,7 +90,7 @@ Kirigami.ScrollablePage {
                             value: deesserPage.pluginDB.threshold
                             decimals: 1
                             stepSize: 0.1
-                            unit: "dB"
+                            unit: i18n("dB")
                             onValueModified: v => {
                                 deesserPage.pluginDB.threshold = v;
                             }
@@ -123,7 +123,7 @@ Kirigami.ScrollablePage {
                             value: deesserPage.pluginDB.makeup
                             decimals: 1
                             stepSize: 0.1
-                            unit: "dB"
+                            unit: i18n("dB")
                             onValueModified: v => {
                                 deesserPage.pluginDB.makeup = v;
                             }
@@ -172,7 +172,7 @@ Kirigami.ScrollablePage {
                             value: deesserPage.pluginDB.f1Freq
                             decimals: 2
                             stepSize: 0.01
-                            unit: "Hz"
+                            unit: i18n("Hz")
                             onValueModified: v => {
                                 deesserPage.pluginDB.f1Freq = v;
                             }
@@ -189,7 +189,7 @@ Kirigami.ScrollablePage {
                             value: deesserPage.pluginDB.f2Freq
                             decimals: 2
                             stepSize: 0.01
-                            unit: "Hz"
+                            unit: i18n("Hz")
                             onValueModified: v => {
                                 deesserPage.pluginDB.f2Freq = v;
                             }
@@ -206,7 +206,7 @@ Kirigami.ScrollablePage {
                             value: deesserPage.pluginDB.f1Level
                             decimals: 1
                             stepSize: 0.1
-                            unit: "dB"
+                            unit: i18n("dB")
                             onValueModified: v => {
                                 deesserPage.pluginDB.f1Level = v;
                             }
@@ -223,7 +223,7 @@ Kirigami.ScrollablePage {
                             value: deesserPage.pluginDB.f2Level
                             decimals: 1
                             stepSize: 0.1
-                            unit: "dBFS"
+                            unit: i18n("dBFS")
                             onValueModified: v => {
                                 deesserPage.pluginDB.f2Level = v;
                             }
@@ -268,7 +268,7 @@ Kirigami.ScrollablePage {
                         id: detectionLevel
 
                         label: i18n("Detection") // qmllint disable
-                        unit: "dB"
+                        unit: i18n("dB")
                         from: Common.minimumDecibelLevel
                         to: 10
                         value: 0
@@ -279,7 +279,7 @@ Kirigami.ScrollablePage {
                         id: gainReduction
 
                         label: i18n("Gain reduction") // qmllint disable
-                        unit: "dB"
+                        unit: i18n("dB")
                         from: Common.minimumDecibelLevel
                         to: 0
                         value: 0

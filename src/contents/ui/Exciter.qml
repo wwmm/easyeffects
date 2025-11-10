@@ -101,7 +101,7 @@ Kirigami.ScrollablePage {
                         value: exciterPage.pluginDB.amount
                         decimals: 2
                         stepSize: 0.1
-                        unit: "dB"
+                        unit: i18n("dB")
                         onValueModified: v => {
                             exciterPage.pluginDB.amount = v;
                         }
@@ -132,7 +132,7 @@ Kirigami.ScrollablePage {
                         value: exciterPage.pluginDB.scope
                         decimals: 0
                         stepSize: 1
-                        unit: "Hz"
+                        unit: i18n("Hz")
                         onValueModified: v => {
                             exciterPage.pluginDB.scope = v;
                         }
@@ -159,7 +159,7 @@ Kirigami.ScrollablePage {
                         value: exciterPage.pluginDB.ceil
                         decimals: 0
                         stepSize: 1
-                        unit: "Hz"
+                        unit: i18n("Hz")
                         enabled: ceilActive.isChecked
                         onValueModified: v => {
                             exciterPage.pluginDB.ceil = v;

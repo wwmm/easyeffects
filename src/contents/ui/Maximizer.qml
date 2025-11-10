@@ -54,7 +54,7 @@ Kirigami.ScrollablePage {
                         value: maximizerPage.pluginDB.release
                         decimals: 2
                         stepSize: 0.01
-                        unit: "ms"
+                        unit: i18n("ms")
                         onValueModified: v => {
                             maximizerPage.pluginDB.release = v;
                         }
@@ -70,7 +70,7 @@ Kirigami.ScrollablePage {
                         value: maximizerPage.pluginDB.threshold
                         decimals: 2
                         stepSize: 0.1
-                        unit: "dB"
+                        unit: i18n("dB")
                         onValueModified: v => {
                             maximizerPage.pluginDB.threshold = v;
                         }
@@ -81,7 +81,7 @@ Kirigami.ScrollablePage {
                         Layout.topMargin: Kirigami.Units.largeSpacing
 
                         label: i18n("Reduction") // qmllint disable
-                        unit: "dB"
+                        unit: i18n("dB")
                         from: 0
                         to: 40
                         value: 0

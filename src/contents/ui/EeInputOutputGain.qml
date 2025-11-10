@@ -96,7 +96,7 @@ Item {
                 from: control.pluginDB.getMinValue("inputGain")
                 to: control.pluginDB.getMaxValue("inputGain")
                 value: control.pluginDB.inputGain
-                unit: "dB"
+                unit: i18n("dB")
                 onGainChanged: v => {
                     control.pluginDB.inputGain = v;
                 }
@@ -109,7 +109,7 @@ Item {
                 from: control.pluginDB.getMinValue("outputGain")
                 to: control.pluginDB.getMaxValue("outputGain")
                 value: control.pluginDB.outputGain
-                unit: "dB"
+                unit: i18n("dB")
                 onGainChanged: v => {
                     control.pluginDB.outputGain = v;
                 }

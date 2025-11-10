@@ -43,9 +43,9 @@ Controls.ItemDelegate {
             text: {
                 const f = delegate.bandDB["band" + delegate.index + "Frequency"];
                 if (f < 1000) {
-                    return Common.toLocaleLabel(f, 0, "Hz");
+                    return Common.toLocaleLabel(f, 0, i18n("Hz"));
                 } else {
-                    return Common.toLocaleLabel(f * 0.001, 1, "kHz");
+                    return Common.toLocaleLabel(f * 0.001, 1, i18n("kHz"));
                 }
             }
             enabled: false
