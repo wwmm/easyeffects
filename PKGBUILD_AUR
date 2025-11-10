@@ -6,7 +6,7 @@
 pkgname=easyeffects-git
 pkgver=8.0.0.r0.g2a3986ca4
 pkgrel=1
-pkgdesc='Audio Effects for Pipewire applications'
+pkgdesc='Simple audio effects'
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL3')

@@ -11,6 +11,7 @@
         "--share=ipc",
         "--socket=fallback-x11",
         "--env=QTWEBENGINEPROCESS_PATH=/app/bin/QtWebEngineProcess",
+        "--talk-name=org.kde.StatusNotifierWatcher",
         "--socket=wayland",
         "--device=dri",
         "--filesystem=xdg-run/pipewire-0:ro",

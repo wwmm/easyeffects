@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=@APPLICATION_NAME@
 GenericName=Equalizer, Compressor and Other Audio Effects
-Comment=Audio Effects for PipeWire Applications
+Comment=Simple audio effects
 Keywords=limiter;compressor;reverberation;equalizer;autovolume;
 Categories=AudioVideo;Audio;
 Exec=easyeffects

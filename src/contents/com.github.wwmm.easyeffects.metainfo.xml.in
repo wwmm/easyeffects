@@ -2,7 +2,7 @@
 <component type="desktop-application">
   <id>@APPLICATION_ID@.desktop</id>
   <name>@APPLICATION_NAME@</name>
-  <summary>Audio Effects for PipeWire Applications</summary>
+  <summary>Simple audio effects</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <description>
@@ -51,6 +51,10 @@
       <image type="source">https://raw.githubusercontent.com/wwmm/easyeffects/master/images/easyeffects-light-screenshot-3.png</image>
     </screenshot>
   </screenshots>
+  <branding>
+    <color type="primary" scheme_preference="light">#1c71d8</color>
+    <color type="primary" scheme_preference="dark">#004079</color>
+  </branding>
   <releases>
     <release type="stable" version="8.0.0" date="2025-11-09T00:00:00Z">
       <description>
