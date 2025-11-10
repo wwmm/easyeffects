@@ -29,7 +29,7 @@ Description:
 - Presets can be renamed in our presets window.
 - Presets backup can be made in our presets window.
 - Our spectrum is now drawn by Qt Graphs. For now only Qt color presets are allowed, but this may change in the future.
-- We added more local shortcuts, as well as the support for XGD Global Shortcuts protocol. At the moment, if the Wayland compositor correctly implements the protocol, the global effects on/off and the microphone monitor can be toggled when the windows is hidden and Easy Effects is run as background service.
+- We added more local shortcuts, as well as the support for XDG Global Shortcuts protocol. At the moment, if the Wayland compositor correctly implements the protocol, the global effects on/off and the microphone monitor can be toggled when the windows is hidden and Easy Effects is run as background service.
 - Dry and wet controls were implemented for the Convolver and Pitch plugins.
 - The Pitch plugin now has a button that allows its history to be reset.
 - The Crystalizer plugin now has an adaptive intensity mode.
