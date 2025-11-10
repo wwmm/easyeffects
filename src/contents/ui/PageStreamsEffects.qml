@@ -300,16 +300,41 @@ Kirigami.Page {
 
             ColumnLayout {
                 implicitWidth: pluginsListView.width
+                spacing: 0
 
-                Controls.Button {
-                    Layout.topMargin: Kirigami.Units.largeSpacing
+                GridLayout {
+                    columns: DB.Manager.main.collapsePluginsList === true ? 1 : 2
+                    Layout.fillWidth: true
+                    Layout.topMargin: Kirigami.Units.smallSpacing
                     Layout.bottomMargin: Kirigami.Units.smallSpacing
                     Layout.leftMargin: Kirigami.Units.smallSpacing
                     Layout.rightMargin: Kirigami.Units.smallSpacing
-                    Layout.alignment: Qt.AlignHCenter
-                    text: DB.Manager.main.collapsePluginsList === true ? "" : i18n("Add effect") // qmllint disable
-                    icon.name: "list-add"
-                    onClicked: menuAddPlugins.open()
+
+                    Controls.Button {
+                        text: i18n("Add effect") // qmllint disable
+                        display: DB.Manager.main.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
+                        icon.name: "list-add"
+                        onClicked: menuAddPlugins.open()
+                        Layout.fillWidth: true
+                    }
+
+                    Controls.Button {
+                        text: i18n("Close") // qmllint disable
+                        display: DB.Manager.main.collapsePluginsList === true ? Controls.Button.IconOnly : Controls.Button.TextBesideIcon
+                        icon.name: DB.Manager.main.collapsePluginsList === true ? "sidebar-collapse-right-symbolic" : "sidebar-collapse-symbolic"
+                        Layout.fillWidth: DB.Manager.main.collapsePluginsList === true
+                        Controls.ToolTip.text: DB.Manager.main.collapsePluginsList === true ? i18n("Expand the list of effects pipeline") : i18n("Reduce the list of effects pipeline") // qmllint disable
+                        Controls.ToolTip.visible: hovered
+                        onClicked: {
+                            DB.Manager.main.collapsePluginsList = !DB.Manager.main.collapsePluginsList;
+                        }
+                    }
+                }
+
+                Kirigami.Separator {
+                    Layout.fillWidth: true
+                    Layout.leftMargin: Kirigami.Units.smallSpacing
+                    Layout.rightMargin: Kirigami.Units.smallSpacing
                 }
 
                 ListView {
@@ -375,21 +400,6 @@ Kirigami.Page {
                             enabled: false
                             visible: !DB.Manager.main.collapsePluginsList
                         }
-                    }
-                }
-
-                Controls.Button {
-                    Layout.topMargin: Kirigami.Units.largeSpacing
-                    Layout.bottomMargin: Kirigami.Units.smallSpacing
-                    Layout.leftMargin: Kirigami.Units.smallSpacing
-                    Layout.rightMargin: Kirigami.Units.smallSpacing
-                    Layout.alignment: Qt.AlignHCenter
-                    text: DB.Manager.main.collapsePluginsList === true ? "" : i18n("Close") // qmllint disable
-                    icon.name: DB.Manager.main.collapsePluginsList === true ? "sidebar-collapse-right-symbolic" : "sidebar-collapse-symbolic"
-                    Controls.ToolTip.text: DB.Manager.main.collapsePluginsList === true ? i18n("Expand the list of effects pipeline") : i18n("Reduce the list of effects pipeline") // qmllint disable
-                    Controls.ToolTip.visible: hovered
-                    onClicked: {
-                        DB.Manager.main.collapsePluginsList = !DB.Manager.main.collapsePluginsList;
                     }
                 }
             }
