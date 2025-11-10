@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-09 11:36-0300\n"
+"POT-Creation-Date: 2025-11-09 22:38-0300\n"
 "PO-Revision-Date: 2025-10-22 05:02+0000\n"
 "Last-Translator: John Peter Sa <johnppetersa@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -103,8 +103,9 @@ msgid "About"
 msgstr "Sobre"
 
 #: src/contents/ui/AboutPage.qml:14
-msgid "Audio effects for PipeWire applications"
-msgstr "Efeitos de audio para Programas que utilizam PipeWire"
+#, fuzzy
+msgid "Global audio effects"
+msgstr "Atalhos globais"
 
 #: src/contents/ui/AboutPage.qml:27
 msgctxt "@info:credit"
@@ -2995,13 +2996,19 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Equalizador, Compressor e Outros Efeitos de Áudio"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
-msgid "Audio Effects for PipeWire Applications"
+msgid "Simple audio effects"
 msgstr ""
-"O ‘Easy Effects’ é um aplicativo desenvolvido em GTK gratuito e de código "
-"aberto que fornece uma grande variedade de efeitos sonoros e filtros para "
-"serem aplicados nos fluxos de áudio de entrada e saída que utiliza o "
-"servidor de áudio PipeWire, possui as funções de equalizador, compressor e "
-"efeitos de áudio"
+
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "Efeitos de audio para Programas que utilizam PipeWire"
+
+#~ msgid "Audio Effects for PipeWire Applications"
+#~ msgstr ""
+#~ "O ‘Easy Effects’ é um aplicativo desenvolvido em GTK gratuito e de código "
+#~ "aberto que fornece uma grande variedade de efeitos sonoros e filtros para "
+#~ "serem aplicados nos fluxos de áudio de entrada e saída que utiliza o "
+#~ "servidor de áudio PipeWire, possui as funções de equalizador, compressor "
+#~ "e efeitos de áudio"
 
 #~ msgid "Local Preset"
 #~ msgstr "Predefinição local"

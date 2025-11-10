@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-08 21:54-0300\n"
+"POT-Creation-Date: 2025-11-09 22:38-0300\n"
 "PO-Revision-Date: 2025-11-09 14:34+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -102,8 +102,9 @@ msgid "About"
 msgstr "À propos"
 
 #: src/contents/ui/AboutPage.qml:14
-msgid "Audio effects for PipeWire applications"
-msgstr "Effets audio pour les applications utilisant PipeWire"
+#, fuzzy
+msgid "Global audio effects"
+msgstr "Raccourcis globaux"
 
 #: src/contents/ui/AboutPage.qml:27
 msgctxt "@info:credit"
@@ -2171,8 +2172,9 @@ msgid "Hardware profile"
 msgstr "Profil matériel"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:53
-msgid "Local Preset"
-msgstr "Préréglage Local"
+#: src/contents/ui/PresetsAutoloadingPage.qml:185
+msgid "Local preset"
+msgstr "Préréglage local"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:63
 msgid "Create"
@@ -2185,11 +2187,6 @@ msgstr "Créer un nouveau préréglage à chargement automatique"
 #: src/contents/ui/PresetsAutoloadingPage.qml:144
 msgid "Remove this autoloading preset"
 msgstr "Supprimer ce préréglage à chargement automatique"
-
-#: src/contents/ui/PresetsAutoloadingPage.qml:185
-#: src/contents/ui/PresetsAutoloadingPage.qml:53
-msgid "Local preset"
-msgstr "Préréglage local"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 msgid "Copy to local presets"
@@ -2465,9 +2462,9 @@ msgstr "Chargement du modèle RNNoise %1."
 msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "Échec du chargement du modèle %1. Retour au modèle standard RNNoise."
 
-#: src/contents/ui/RNNoise.qml:89
-msgid "Voice Detection"
-msgstr "Détection de la Voix"
+#: src/contents/ui/RNNoise.qml:89 src/contents/ui/Speex.qml:109
+msgid "Voice detection"
+msgstr "Détection de la voix"
 
 #: src/contents/ui/RNNoise.qml:126
 msgid "Wet level"
@@ -2554,10 +2551,6 @@ msgstr "Suppression du bruit"
 #: src/contents/ui/Speex.qml:101
 msgid "Voice Activity Probability"
 msgstr "Probabilité d'Activité Vocale"
-
-#: src/contents/ui/Speex.qml:109 src/contents/ui/RNNoise.qml:89
-msgid "Voice detection"
-msgstr "Détection de la voix"
 
 #: src/contents/ui/Speex.qml:140
 msgid "Continue"
@@ -2771,8 +2764,20 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
-msgid "Audio Effects for PipeWire Applications"
-msgstr "Effets Audio pour les Applications PipeWire"
+msgid "Simple audio effects"
+msgstr ""
+
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "Effets audio pour les applications utilisant PipeWire"
+
+#~ msgid "Local Preset"
+#~ msgstr "Préréglage Local"
+
+#~ msgid "Voice Detection"
+#~ msgstr "Détection de la Voix"
+
+#~ msgid "Audio Effects for PipeWire Applications"
+#~ msgstr "Effets Audio pour les Applications PipeWire"
 
 #~ msgid "Automatic Level"
 #~ msgstr "Niveau Automatique"

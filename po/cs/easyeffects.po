@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-09 11:36-0300\n"
+"POT-Creation-Date: 2025-11-09 22:38-0300\n"
 "PO-Revision-Date: 2025-11-05 00:44+0000\n"
 "Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -99,8 +99,8 @@ msgstr "O programu"
 
 #: src/contents/ui/AboutPage.qml:14
 #, fuzzy
-msgid "Audio effects for PipeWire applications"
-msgstr "Zvukové efekty pro programy využívající PulseAudio"
+msgid "Global audio effects"
+msgstr "_Klávesové zkratky"
 
 #: src/contents/ui/AboutPage.qml:27
 #, fuzzy
@@ -3021,8 +3021,15 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Ekvalizér, kompresor a jiné zvukové efekty"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
-msgid "Audio Effects for PipeWire Applications"
-msgstr "Zvukové efekty pro programy využívající PipeWire"
+msgid "Simple audio effects"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "Zvukové efekty pro programy využívající PulseAudio"
+
+#~ msgid "Audio Effects for PipeWire Applications"
+#~ msgstr "Zvukové efekty pro programy využívající PipeWire"
 
 #, fuzzy
 #~ msgid "Local Preset"

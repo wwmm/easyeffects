@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-09 11:36-0300\n"
+"POT-Creation-Date: 2025-11-09 22:38-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Asier Saratsua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -97,8 +97,8 @@ msgstr ""
 
 #: src/contents/ui/AboutPage.qml:14
 #, fuzzy
-msgid "Audio effects for PipeWire applications"
-msgstr "Audio-efektuak PipeWire aplikazioetarako"
+msgid "Global audio effects"
+msgstr "L_asterbideak"
 
 #: src/contents/ui/AboutPage.qml:27
 #, fuzzy
@@ -2905,8 +2905,15 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Ekualizatzailea, konprimatzailea eta beste audio-efektu batzuk"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
-msgid "Audio Effects for PipeWire Applications"
-msgstr "Audio-efektuak PipeWire aplikazioetarako"
+msgid "Simple audio effects"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "Audio-efektuak PipeWire aplikazioetarako"
+
+#~ msgid "Audio Effects for PipeWire Applications"
+#~ msgstr "Audio-efektuak PipeWire aplikazioetarako"
 
 #, fuzzy
 #~ msgid "Local Preset"

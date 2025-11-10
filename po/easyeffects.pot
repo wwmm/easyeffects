@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-09 11:36-0300\n"
+"POT-Creation-Date: 2025-11-09 22:38-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -94,7 +94,7 @@ msgid "About"
 msgstr ""
 
 #: src/contents/ui/AboutPage.qml:14
-msgid "Audio effects for PipeWire applications"
+msgid "Global audio effects"
 msgstr ""
 
 #: src/contents/ui/AboutPage.qml:27
@@ -2717,5 +2717,5 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr ""
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
-msgid "Audio Effects for PipeWire Applications"
+msgid "Simple audio effects"
 msgstr ""

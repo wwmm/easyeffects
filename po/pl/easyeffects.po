@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-09 11:36-0300\n"
+"POT-Creation-Date: 2025-11-09 22:38-0300\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Aleksander <olek_filip@wp.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -100,8 +100,9 @@ msgid "About"
 msgstr ""
 
 #: src/contents/ui/AboutPage.qml:14
-msgid "Audio effects for PipeWire applications"
-msgstr "Efekty dźwiękowe dla aplikacji PipeWire"
+#, fuzzy
+msgid "Global audio effects"
+msgstr "_Skróty"
 
 #: src/contents/ui/AboutPage.qml:27
 #, fuzzy
@@ -3031,8 +3032,14 @@ msgid "Equalizer, Compressor and Other Audio Effects"
 msgstr "Korektor, kompresor i inne efekty audio"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
-msgid "Audio Effects for PipeWire Applications"
-msgstr "Efekty dźwiękowe dla aplikacji PipeWire"
+msgid "Simple audio effects"
+msgstr ""
+
+#~ msgid "Audio effects for PipeWire applications"
+#~ msgstr "Efekty dźwiękowe dla aplikacji PipeWire"
+
+#~ msgid "Audio Effects for PipeWire Applications"
+#~ msgstr "Efekty dźwiękowe dla aplikacji PipeWire"
 
 #, fuzzy
 #~ msgid "Local Preset"
