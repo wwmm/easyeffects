@@ -43,174 +43,168 @@ Kirigami.ScrollablePage {
             minimumColumnWidth: Kirigami.Units.gridUnit * 17
             uniformCellWidths: true
 
-            Kirigami.Card {
+            EeCard {
                 id: cardControls
 
                 implicitWidth: cardLayout.maximumColumnWidth
 
-                header: Kirigami.Heading {
-                    text: i18n("Controls")// qmllint disable
-                    level: 2
-                }
+                title: i18n("Controls")// qmllint disable
 
-                contentItem: ColumnLayout {
-                    anchors.fill: parent
+                FormCard.FormComboBoxDelegate {
+                    id: reference
 
-                    FormCard.FormComboBoxDelegate {
-                        id: reference
-
-                        text: i18n("Reference")// qmllint disable
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: autogainPage.pluginDB.reference
-                        editable: false
-                        model: [i18n("Momentary"), i18n("Short-term"), i18n("Integrated"), i18n("Geometric mean (MSI)"), i18n("Geometric mean (MS)"), i18n("Geometric mean (MI)"), i18n("Geometric mean (SI)")]// qmllint disable
-                        onActivated: idx => {
-                            autogainPage.pluginDB.reference = idx;
-                        }
-                    }
-
-                    EeSpinBox {
-                        id: target
-
-                        label: i18n("Target")// qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: autogainPage.pluginDB.getMinValue("target")
-                        to: autogainPage.pluginDB.getMaxValue("target")
-                        value: autogainPage.pluginDB.target
-                        decimals: 2
-                        stepSize: 0.1
-                        unit: "dB"
-                        onValueModified: v => {
-                            autogainPage.pluginDB.target = v;
-                        }
-                    }
-
-                    EeSpinBox {
-                        id: silenceThreshold
-
-                        label: i18n("Silence")// qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: autogainPage.pluginDB.getMinValue("silenceThreshold")
-                        to: autogainPage.pluginDB.getMaxValue("silenceThreshold")
-                        value: autogainPage.pluginDB.silenceThreshold
-                        decimals: 2
-                        stepSize: 0.1
-                        unit: "dB"
-                        onValueModified: v => {
-                            autogainPage.pluginDB.silenceThreshold = v;
-                        }
-                    }
-
-                    EeSpinBox {
-                        id: maximumHistory
-
-                        label: i18n("Maximum history")// qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: autogainPage.pluginDB.getMinValue("maximumHistory")
-                        to: autogainPage.pluginDB.getMaxValue("maximumHistory")
-                        value: autogainPage.pluginDB.maximumHistory
-                        decimals: 0
-                        stepSize: 1
-                        unit: "s"
-                        onValueModified: v => {
-                            autogainPage.pluginDB.maximumHistory = v;
-                        }
+                    text: i18n("Reference")// qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    verticalPadding: 0
+                    currentIndex: autogainPage.pluginDB.reference
+                    editable: false
+                    model: [i18n("Momentary"), i18n("Short-term"), i18n("Integrated"), i18n("Geometric mean (MSI)"), i18n("Geometric mean (MS)"), i18n("Geometric mean (MI)"), i18n("Geometric mean (SI)")]// qmllint disable
+                    onActivated: idx => {
+                        autogainPage.pluginDB.reference = idx;
                     }
                 }
+
+                EeSpinBox {
+                    id: target
+
+                    label: i18n("Target")// qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: autogainPage.pluginDB.getMinValue("target")
+                    to: autogainPage.pluginDB.getMaxValue("target")
+                    value: autogainPage.pluginDB.target
+                    decimals: 2
+                    stepSize: 0.1
+                    unit: "dB"
+                    onValueModified: v => {
+                        autogainPage.pluginDB.target = v;
+                    }
+                }
+
+                EeSpinBox {
+                    id: silenceThreshold
+
+                    label: i18n("Silence")// qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: autogainPage.pluginDB.getMinValue("silenceThreshold")
+                    to: autogainPage.pluginDB.getMaxValue("silenceThreshold")
+                    value: autogainPage.pluginDB.silenceThreshold
+                    decimals: 2
+                    stepSize: 0.1
+                    unit: "dB"
+                    onValueModified: v => {
+                        autogainPage.pluginDB.silenceThreshold = v;
+                    }
+                }
+
+                EeSpinBox {
+                    id: maximumHistory
+
+                    label: i18n("Maximum history")// qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: autogainPage.pluginDB.getMinValue("maximumHistory")
+                    to: autogainPage.pluginDB.getMaxValue("maximumHistory")
+                    value: autogainPage.pluginDB.maximumHistory
+                    decimals: 0
+                    stepSize: 1
+                    unit: "s"
+                    onValueModified: v => {
+                        autogainPage.pluginDB.maximumHistory = v;
+                    }
+                }
+
+		Item {
+		    Layout.fillHeight: true
+		}
             }
 
-            Kirigami.Card {
+            EeCard {
                 id: cardLevels
 
                 implicitWidth: cardLayout.maximumColumnWidth
 
-                header: Kirigami.Heading {
-                    text: i18n("Loudness")// qmllint disable
-                    level: 2
+                title: i18n("Loudness")// qmllint disable
+
+                EeProgressBar {
+                    id: momentary
+
+                    label: i18n("Momentary")// qmllint disable
+                    unit: "LUFS"
+                    from: Common.minimumDecibelLevel
+                    to: 10
+                    value: 0
+                    decimals: 1
                 }
 
-                contentItem: ColumnLayout {
-                    anchors.fill: parent
-                    spacing: Kirigami.Units.gridUnit
+                EeProgressBar {
+                    id: shortterm
 
-                    EeProgressBar {
-                        id: momentary
-
-                        label: i18n("Momentary")// qmllint disable
-                        unit: "LUFS"
-                        from: Common.minimumDecibelLevel
-                        to: 10
-                        value: 0
-                        decimals: 1
-                    }
-
-                    EeProgressBar {
-                        id: shortterm
-
-                        label: i18n("Short-term")// qmllint disable
-                        unit: "LUFS"
-                        from: Common.minimumDecibelLevel
-                        to: 10
-                        value: 0
-                        decimals: 1
-                    }
-
-                    EeProgressBar {
-                        id: integrated
-
-                        label: i18n("Integrated")// qmllint disable
-                        unit: "LUFS"
-                        from: Common.minimumDecibelLevel
-                        to: 10
-                        value: 0
-                        decimals: 1
-                    }
-
-                    EeProgressBar {
-                        id: relative
-
-                        label: i18n("Relative")// qmllint disable
-                        unit: "LUFS"
-                        from: Common.minimumDecibelLevel
-                        to: 10
-                        value: 0
-                        decimals: 1
-                    }
-
-                    EeProgressBar {
-                        id: range
-
-                        label: i18n("Range")// qmllint disable
-                        unit: "LU"
-                        from: 0
-                        to: 50
-                        value: 0
-                        decimals: 1
-                    }
-
-                    EeProgressBar {
-                        id: loudness
-
-                        label: i18n("Loudness")// qmllint disable
-                        unit: "LUFS"
-                        from: Common.minimumDecibelLevel
-                        to: 10
-                        value: 0
-                        decimals: 1
-                    }
-
-                    EeProgressBar {
-                        id: outputGain
-
-                        label: i18n("Output gain")// qmllint disable
-                        unit: "dB"
-                        from: Common.minimumDecibelLevel
-                        to: 20
-                        value: 0
-                        decimals: 1
-                        convertDecibelToLinear: true
-                    }
+                    label: i18n("Short-term")// qmllint disable
+                    unit: "LUFS"
+                    from: Common.minimumDecibelLevel
+                    to: 10
+                    value: 0
+                    decimals: 1
                 }
+
+                EeProgressBar {
+                    id: integrated
+
+                    label: i18n("Integrated")// qmllint disable
+                    unit: "LUFS"
+                    from: Common.minimumDecibelLevel
+                    to: 10
+                    value: 0
+                    decimals: 1
+                }
+
+                EeProgressBar {
+                    id: relative
+
+                    label: i18n("Relative")// qmllint disable
+                    unit: "LUFS"
+                    from: Common.minimumDecibelLevel
+                    to: 10
+                    value: 0
+                    decimals: 1
+                }
+
+                EeProgressBar {
+                    id: range
+
+                    label: i18n("Range")// qmllint disable
+                    unit: "LU"
+                    from: 0
+                    to: 50
+                    value: 0
+                    decimals: 1
+                }
+
+                EeProgressBar {
+                    id: loudness
+
+                    label: i18n("Loudness")// qmllint disable
+                    unit: "LUFS"
+                    from: Common.minimumDecibelLevel
+                    to: 10
+                    value: 0
+                    decimals: 1
+                }
+
+                EeProgressBar {
+                    id: outputGain
+
+                    label: i18n("Output gain")// qmllint disable
+                    unit: "dB"
+                    from: Common.minimumDecibelLevel
+                    to: 20
+                    value: 0
+                    decimals: 1
+                    convertDecibelToLinear: true
+                }
+
+		Item {
+		    Layout.fillHeight: true
+		}
             }
         }
     }

@@ -38,16 +38,19 @@ Kirigami.ScrollablePage {
             uniformCellWidths: true
 
             Kirigami.Card {
-
                 header: Kirigami.Heading {
                     text: i18n("Controls") // qmllint disable
                     level: 2
                 }
 
                 contentItem: ColumnLayout {
+                    spacing: 0
+
                     FormCard.FormComboBoxDelegate {
                         id: type
 
+                        leftPadding: 0
+                        rightPadding: 0
                         text: i18n("Type") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: filterPage.pluginDB.type
@@ -61,6 +64,8 @@ Kirigami.ScrollablePage {
                     FormCard.FormComboBoxDelegate {
                         id: mode
 
+                        leftPadding: 0
+                        rightPadding: 0
                         text: i18n("Filter mode") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: filterPage.pluginDB.mode
@@ -74,6 +79,8 @@ Kirigami.ScrollablePage {
                     FormCard.FormComboBoxDelegate {
                         id: equalMode
 
+                        leftPadding: 0
+                        rightPadding: 0
                         text: i18n("Equalizer mode") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: filterPage.pluginDB.equalMode
@@ -87,6 +94,8 @@ Kirigami.ScrollablePage {
                     FormCard.FormComboBoxDelegate {
                         id: slope
 
+                        leftPadding: 0
+                        rightPadding: 0
                         text: i18n("Slope") // qmllint disable
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: filterPage.pluginDB.slope

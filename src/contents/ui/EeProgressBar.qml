@@ -6,7 +6,7 @@ import ee.database as DB
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
 
-FormCard.AbstractFormDelegate {
+Control {
     id: control
 
     property real value: 0
@@ -35,16 +35,25 @@ FormCard.AbstractFormDelegate {
     Kirigami.Theme.colorSet: Kirigami.Theme.Button
     Kirigami.Theme.inherit: false
 
-    background: Rectangle {
-        anchors.fill: parent
-        color: Kirigami.Theme.neutralBackgroundColor
-        radius: 1
-    }
+    implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
+    implicitHeight: contentItem.implicitHeight + topPadding + bottomPadding
 
-    contentItem: Item {
+    leftPadding: Kirigami.Units.largeSpacing
+    rightPadding: Kirigami.Units.largeSpacing
+    topPadding: Kirigami.Units.smallSpacing
+    bottomPadding: Kirigami.Units.smallSpacing
+
+    background: null
+
+    Layout.fillWidth: true
+
+    contentItem: Rectangle {
         id: item
 
-        anchors.fill: parent
+        color: Kirigami.Theme.neutralBackgroundColor
+        radius: 1
+
+        implicitHeight: Kirigami.Units.largeSpacing * 3
 
         Rectangle {
             id: levelRect

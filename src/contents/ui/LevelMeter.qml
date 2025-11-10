@@ -48,11 +48,12 @@ Kirigami.ScrollablePage {
                     header: Kirigami.Heading {
                         text: i18n("Input Level") // qmllint disable
                         level: 2
+                        leftPadding: Kirigami.Units.largeSpacing
+                        rightPadding: Kirigami.Units.largeSpacing
                     }
 
                     contentItem: ColumnLayout {
-                        anchors.fill: parent
-                        spacing: Kirigami.Units.gridUnit
+                        spacing: 0
 
                         EeProgressBar {
                             id: inputL
@@ -75,6 +76,10 @@ Kirigami.ScrollablePage {
                             value: 0
                             decimals: 1
                         }
+
+                        Item {
+                            Layout.fillHeight: true
+                        }
                     }
                 }
 
@@ -84,11 +89,12 @@ Kirigami.ScrollablePage {
                     header: Kirigami.Heading {
                         text: i18n("True Peak") // qmllint disable
                         level: 2
+                        leftPadding: Kirigami.Units.largeSpacing
+                        rightPadding: Kirigami.Units.largeSpacing
                     }
 
                     contentItem: ColumnLayout {
-                        anchors.fill: parent
-                        spacing: Kirigami.Units.gridUnit
+                        spacing: 0
 
                         EeProgressBar {
                             id: truePeakL
@@ -111,6 +117,10 @@ Kirigami.ScrollablePage {
                             value: 0
                             decimals: 1
                         }
+
+                        Item {
+                            Layout.fillHeight: true
+                        }
                     }
                 }
             }
@@ -121,11 +131,12 @@ Kirigami.ScrollablePage {
                 header: Kirigami.Heading {
                     text: i18n("Loudness") // qmllint disable
                     level: 2
+                    leftPadding: Kirigami.Units.largeSpacing
+                    rightPadding: Kirigami.Units.largeSpacing
                 }
 
                 contentItem: ColumnLayout {
-                    anchors.fill: parent
-                    spacing: Kirigami.Units.gridUnit
+                    spacing: 0
 
                     EeProgressBar {
                         id: momentary
@@ -180,6 +191,10 @@ Kirigami.ScrollablePage {
                         to: 50
                         value: 0
                         decimals: 1
+                    }
+
+                    Item {
+                        Layout.fillHeight: true
                     }
                 }
             }

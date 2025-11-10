@@ -19,6 +19,7 @@
         <file alias="DelegatePluginsList.qml">contents/ui/DelegatePluginsList.qml</file>
         <file alias="DelegateStreamsList.qml">contents/ui/DelegateStreamsList.qml</file>
         <file alias="EchoCanceller.qml">contents/ui/EchoCanceller.qml</file>
+        <file alias="EeCard.qml">contents/ui/EeCard.qml</file>
         <file alias="EeChart.qml">contents/ui/EeChart.qml</file>
         <file alias="EeAudioLevel.qml">contents/ui/EeAudioLevel.qml</file>
         <file alias="EeInputOutputGain.qml">contents/ui/EeInputOutputGain.qml</file>
