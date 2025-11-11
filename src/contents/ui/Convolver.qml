@@ -360,7 +360,7 @@ Kirigami.ScrollablePage {
                         id: irRate
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: (convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelRate : "") + i18n(" Hz")
+                        text: (convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelRate : "") + ` ${i18n("Hz")}` // qmllint disable
                         enabled: false
                     }
 
@@ -376,7 +376,7 @@ Kirigami.ScrollablePage {
                         id: irDuration
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: Number(convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelDuration : 0).toLocaleString(Qt.locale(), 'f', 3) + i18n(" s")
+                        text: Number(convolverPage.pluginBackend ? convolverPage.pluginBackend.kernelDuration : 0).toLocaleString(Qt.locale(), 'f', 3) + ` ${i18n("s")}` // qmllint disable
                         enabled: false
                     }
                 }
