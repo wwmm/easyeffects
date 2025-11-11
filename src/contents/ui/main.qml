@@ -198,6 +198,7 @@ Kirigami.ApplicationWindow {
 
     PreferencesSheet {
         id: preferencesSheet
+        window: appWindow
     }
 
     PresetsSheet {
