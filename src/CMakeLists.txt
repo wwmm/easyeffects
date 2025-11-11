@@ -171,6 +171,7 @@ target_include_directories(easyeffects SYSTEM PRIVATE
 )
 
 target_link_libraries(easyeffects PRIVATE
+    KF${QT_MAJOR_VERSION}::ColorScheme
     KF${QT_MAJOR_VERSION}::ConfigCore
     KF${QT_MAJOR_VERSION}::ConfigGui
     KF${QT_MAJOR_VERSION}::CoreAddons
