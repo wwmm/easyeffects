@@ -10,7 +10,6 @@ Kirigami.OverlaySheet {
     parent: applicationWindow().overlay // qmllint disable
     closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
     focus: true
-    y: 0
     implicitWidth: Math.min(loader.implicitWidth, appWindow.width * 0.8) + 4 * Kirigami.Units.iconSizes.large // qmllint disable
 
     onAboutToShow: {
