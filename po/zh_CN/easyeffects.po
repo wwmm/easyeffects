@@ -25,7 +25,8 @@ msgid ""
 "Cannot enable autostart option because background access has been denied. "
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
-msgstr "无法启用自动启动选项，因为禁用了后台权限。请在系统设置中授予Easy Effects“在后"
+msgstr ""
+"无法启用自动启动选项，因为禁用了后台权限。请在系统设置中授予Easy Effects“在后"
 "台运行”权限。"
 
 #: src/command_line_parser.cpp:43
@@ -317,6 +318,7 @@ msgstr "频率范围"
 #: src/contents/ui/PreferencesSheet.qml:378
 #: src/contents/ui/PreferencesSheet.qml:470 src/contents/ui/Reverb.qml:127
 #: src/contents/ui/Reverb.qml:144 src/contents/ui/Reverb.qml:161
+#: src/contents/ui/Convolver.qml:363 src/contents/ui/PipeWirePage.qml:404
 msgid "Hz"
 msgstr "赫兹"
 
@@ -359,13 +361,14 @@ msgstr "聆听"
 #: src/contents/ui/MultibandGate.qml:958 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:338 src/contents/ui/Speex.qml:173
 #: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:535
+#: src/contents/ui/main.qml:544
 msgid "Reset"
 msgstr "重置"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:463
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:421
 #: src/contents/ui/Gate.qml:436 src/contents/ui/StereoTools.qml:249
-#: src/contents/ui/main.qml:473
+#: src/contents/ui/main.qml:473 src/contents/ui/main.qml:482
 msgid "Output"
 msgstr "输出"
 
@@ -609,7 +612,7 @@ msgstr "侧信号"
 #: src/contents/ui/LevelMeter.qml:60 src/contents/ui/LevelMeter.qml:101
 #: src/contents/ui/MultibandCompressor.qml:411
 #: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:314
-#: src/contents/ui/StereoTools.qml:185
+#: src/contents/ui/StereoTools.qml:185 src/contents/ui/PipeWirePage.qml:324
 msgid "Left"
 msgstr "左声道"
 
@@ -619,7 +622,7 @@ msgstr "左声道"
 #: src/contents/ui/LevelMeter.qml:71 src/contents/ui/LevelMeter.qml:112
 #: src/contents/ui/MultibandCompressor.qml:411
 #: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:325
-#: src/contents/ui/StereoTools.qml:212
+#: src/contents/ui/StereoTools.qml:212 src/contents/ui/PipeWirePage.qml:335
 msgid "Right"
 msgstr "右声道"
 
@@ -984,7 +987,7 @@ msgid "Default"
 msgstr "默认"
 
 #: src/contents/ui/Crossfeed.qml:146 src/contents/ui/Reverb.qml:315
-#: src/contents/ui/main.qml:451
+#: src/contents/ui/main.qml:451 src/contents/ui/main.qml:460
 msgid "Presets"
 msgstr "预设"
 
@@ -1166,6 +1169,7 @@ msgstr "Id"
 #: src/contents/ui/DelegateClientsList.qml:50
 #: src/contents/ui/DelegateModulesList.qml:50
 #: src/contents/ui/PipeWirePage.qml:127 src/contents/ui/PipeWirePage.qml:171
+#: src/contents/ui/PipeWirePage.qml:137 src/contents/ui/PipeWirePage.qml:181
 msgid "Name"
 msgstr "名称"
 
@@ -1275,7 +1279,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:40
-#: src/contents/ui/main.qml:482
+#: src/contents/ui/main.qml:482 src/contents/ui/main.qml:491
 msgid "Input"
 msgstr "输入"
 
@@ -1436,6 +1440,7 @@ msgstr "斜率"
 #: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:109
 #: src/contents/ui/MultibandCompressor.qml:173
 #: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:388
+#: src/contents/ui/PipeWirePage.qml:398
 msgid "Frequency"
 msgstr "频率"
 
@@ -1939,27 +1944,27 @@ msgstr "启用/禁用此应用程序"
 msgid "Excluded apps"
 msgstr "排除的应用"
 
-#: src/contents/ui/PipeWirePage.qml:17
+#: src/contents/ui/PipeWirePage.qml:17 src/contents/ui/PipeWirePage.qml:27
 msgid "General"
 msgstr "通用"
 
-#: src/contents/ui/PipeWirePage.qml:22
+#: src/contents/ui/PipeWirePage.qml:22 src/contents/ui/PipeWirePage.qml:32
 msgid "Modules"
 msgstr "模块"
 
-#: src/contents/ui/PipeWirePage.qml:27
+#: src/contents/ui/PipeWirePage.qml:27 src/contents/ui/PipeWirePage.qml:37
 msgid "Clients"
 msgstr "客户端"
 
-#: src/contents/ui/PipeWirePage.qml:32
+#: src/contents/ui/PipeWirePage.qml:32 src/contents/ui/PipeWirePage.qml:42
 msgid "Test Signal"
 msgstr "测试信号"
 
-#: src/contents/ui/PipeWirePage.qml:102
+#: src/contents/ui/PipeWirePage.qml:102 src/contents/ui/PipeWirePage.qml:112
 msgid "Device Management"
 msgstr "设备管理"
 
-#: src/contents/ui/PipeWirePage.qml:106
+#: src/contents/ui/PipeWirePage.qml:106 src/contents/ui/PipeWirePage.qml:116
 #, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
@@ -1968,98 +1973,100 @@ msgstr ""
 "不建议把 EasyEffects Sink/Source 设置为外部应用程序（例如 Gnome 设置或 "
 "Plasma 系统设置）的默认设备。"
 
-#: src/contents/ui/PipeWirePage.qml:113
+#: src/contents/ui/PipeWirePage.qml:113 src/contents/ui/PipeWirePage.qml:123
 #, fuzzy
 msgid "Use default input"
 msgstr "使用默认输入"
 
-#: src/contents/ui/PipeWirePage.qml:156
+#: src/contents/ui/PipeWirePage.qml:156 src/contents/ui/PipeWirePage.qml:166
 #, fuzzy
 msgid "Use default output"
 msgstr "使用默认输出"
 
-#: src/contents/ui/PipeWirePage.qml:195
+#: src/contents/ui/PipeWirePage.qml:195 src/contents/ui/PipeWirePage.qml:205
 msgid "Server Information"
 msgstr "服务器信息"
 
-#: src/contents/ui/PipeWirePage.qml:200
+#: src/contents/ui/PipeWirePage.qml:200 src/contents/ui/PipeWirePage.qml:210
 #, fuzzy
 msgid "Header version"
 msgstr "头文件版本"
 
-#: src/contents/ui/PipeWirePage.qml:205
+#: src/contents/ui/PipeWirePage.qml:205 src/contents/ui/PipeWirePage.qml:215
 #, fuzzy
 msgid "Library version"
 msgstr "库文件版本"
 
-#: src/contents/ui/PipeWirePage.qml:210
+#: src/contents/ui/PipeWirePage.qml:210 src/contents/ui/PipeWirePage.qml:220
 #, fuzzy
 msgid "Runtime version"
 msgstr "核心版本"
 
-#: src/contents/ui/PipeWirePage.qml:215
+#: src/contents/ui/PipeWirePage.qml:215 src/contents/ui/PipeWirePage.qml:225
 #, fuzzy
 msgid "Default sampling rate"
 msgstr "采样率"
 
-#: src/contents/ui/PipeWirePage.qml:220
+#: src/contents/ui/PipeWirePage.qml:220 src/contents/ui/PipeWirePage.qml:230
 #, fuzzy
 msgid "Minimum quantum"
 msgstr "最小音频帧 (Quantum)"
 
-#: src/contents/ui/PipeWirePage.qml:225
+#: src/contents/ui/PipeWirePage.qml:225 src/contents/ui/PipeWirePage.qml:235
 #, fuzzy
 msgid "Maximum quantum"
 msgstr "最大 Quantum"
 
-#: src/contents/ui/PipeWirePage.qml:230
+#: src/contents/ui/PipeWirePage.qml:230 src/contents/ui/PipeWirePage.qml:240
 #, fuzzy
 msgid "Default quantum"
 msgstr "默认音频帧 (Quantum)"
 
-#: src/contents/ui/PipeWirePage.qml:252
+#: src/contents/ui/PipeWirePage.qml:252 src/contents/ui/PipeWirePage.qml:262
 #, fuzzy
 msgid "No Modules"
 msgstr "模块"
 
-#: src/contents/ui/PipeWirePage.qml:275
+#: src/contents/ui/PipeWirePage.qml:275 src/contents/ui/PipeWirePage.qml:285
 #, fuzzy
 msgid "No Clients"
 msgstr "客户端"
 
 #: src/contents/ui/PipeWirePage.qml:288
 #: src/contents/ui/PreferencesSheet.qml:219
+#: src/contents/ui/PipeWirePage.qml:298
 msgid "State"
 msgstr "状态"
 
 #: src/contents/ui/PipeWirePage.qml:295
 #: src/contents/ui/PreferencesSheet.qml:226
+#: src/contents/ui/PipeWirePage.qml:305
 msgid "Enabled"
 msgstr "已启用"
 
-#: src/contents/ui/PipeWirePage.qml:305
+#: src/contents/ui/PipeWirePage.qml:305 src/contents/ui/PipeWirePage.qml:315
 msgid "Channels"
 msgstr "声道"
 
-#: src/contents/ui/PipeWirePage.qml:336
+#: src/contents/ui/PipeWirePage.qml:336 src/contents/ui/PipeWirePage.qml:346
 msgid "Both"
 msgstr "双声道"
 
-#: src/contents/ui/PipeWirePage.qml:346
+#: src/contents/ui/PipeWirePage.qml:346 src/contents/ui/PipeWirePage.qml:356
 msgid "Waveform"
 msgstr "波形"
 
-#: src/contents/ui/PipeWirePage.qml:355
+#: src/contents/ui/PipeWirePage.qml:355 src/contents/ui/PipeWirePage.qml:365
 #, fuzzy
 msgid "Sine wave"
 msgstr "正弦波"
 
-#: src/contents/ui/PipeWirePage.qml:366
+#: src/contents/ui/PipeWirePage.qml:366 src/contents/ui/PipeWirePage.qml:376
 #, fuzzy
 msgid "White noise"
 msgstr "白噪声"
 
-#: src/contents/ui/PipeWirePage.qml:377
+#: src/contents/ui/PipeWirePage.qml:377 src/contents/ui/PipeWirePage.qml:387
 #, fuzzy
 msgid "Pink noise"
 msgstr "白噪声"
@@ -2127,6 +2134,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
 #: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:507
+#: src/contents/ui/main.qml:516
 #, fuzzy
 msgid "Preferences"
 msgstr "首选项(_P)"
@@ -2824,7 +2832,7 @@ msgid "Toggle microphone monitoring"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:370 src/contents/ui/main.qml:394
-#: src/contents/ui/main.qml:515
+#: src/contents/ui/main.qml:515 src/contents/ui/main.qml:524
 #, fuzzy
 msgid "Shortcuts"
 msgstr "快捷键(_S)"
@@ -2963,25 +2971,27 @@ msgid "Active"
 msgstr "激活"
 
 #: src/contents/ui/main.qml:403 src/contents/ui/main.qml:523
+#: src/contents/ui/main.qml:532
 #, fuzzy
 msgid "Manual"
 msgstr "使用手册(_M)"
 
 #: src/contents/ui/main.qml:415 src/contents/ui/main.qml:555
+#: src/contents/ui/main.qml:564
 #, fuzzy
 msgid "Quit"
 msgstr "退出(_Q)"
 
-#: src/contents/ui/main.qml:439
+#: src/contents/ui/main.qml:439 src/contents/ui/main.qml:448
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/main.qml:491
+#: src/contents/ui/main.qml:491 src/contents/ui/main.qml:500
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire(_P)"
 
-#: src/contents/ui/main.qml:547
+#: src/contents/ui/main.qml:547 src/contents/ui/main.qml:556
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "关于 EasyEffects (_A)"
@@ -3130,6 +3140,10 @@ msgstr "均衡器、压缩器和其他音效"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
+msgstr ""
+
+#: src/contents/ui/main.qml:439
+msgid "Go back"
 msgstr ""
 
 #~ msgid "Audio effects for PipeWire applications"
