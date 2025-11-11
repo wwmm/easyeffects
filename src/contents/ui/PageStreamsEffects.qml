@@ -460,7 +460,7 @@ Kirigami.Page {
             yMax: 0
             logarithimicHorizontalAxis: DB.Manager.spectrum.logarithimicHorizontalAxis
             dynamicYScale: DB.Manager.spectrum.dynamicYScale
-            xUnit: "Hz"
+            xUnit: i18n("Hz")
             visible: DB.Manager.spectrum.state
 
             Component.onDestruction: {

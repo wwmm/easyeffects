@@ -55,7 +55,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: loudnessPage.pluginDB.mode
                         editable: false
-                        model: ["FFT", "IIR"]
+                        model: [i18n("FFT"), i18n("IIR")]
                         onActivated: idx => {
                             loudnessPage.pluginDB.mode = idx;
                         }
@@ -69,7 +69,7 @@ Kirigami.ScrollablePage {
                         displayMode: FormCard.FormComboBoxDelegate.ComboBox
                         currentIndex: loudnessPage.pluginDB.std
                         editable: false
-                        model: ["Flat", "ISO226-2003", "Fletcher-Munson", "Robinson-Dadson", "ISO226-2023"]
+                        model: [i18n("Flat"), i18n("ISO226-2003"), i18n("Fletcher-Munson"), i18n("Robinson-Dadson"), i18n("ISO226-2023")]
                         onActivated: idx => {
                             loudnessPage.pluginDB.std = idx;
                         }
