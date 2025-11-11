@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-11 03:40+0000\n"
+"POT-Creation-Date: 2025-11-11 18:42+0000\n"
 "PO-Revision-Date: 2025-11-11 15:56+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -84,11 +84,11 @@ msgstr "啟用除錯訊息。"
 msgid "Must specify preset type: input/output."
 msgstr "必須指定預設集型式：輸入/輸出。"
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:352
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:353
 msgid "Output Presets"
 msgstr "輸出預設集"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:337
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:338
 msgid "Input Presets"
 msgstr "輸入預設集"
 
@@ -313,10 +313,10 @@ msgstr "範圍"
 #: src/contents/ui/MultibandCompressor.qml:493
 #: src/contents/ui/MultibandCompressor.qml:518
 #: src/contents/ui/MultibandGate.qml:122 src/contents/ui/MultibandGate.qml:466
-#: src/contents/ui/MultibandGate.qml:491 src/contents/ui/PipeWirePage.qml:394
-#: src/contents/ui/PreferencesSheet.qml:363
-#: src/contents/ui/PreferencesSheet.qml:378
-#: src/contents/ui/PreferencesSheet.qml:470 src/contents/ui/Reverb.qml:127
+#: src/contents/ui/MultibandGate.qml:491 src/contents/ui/PipeWirePage.qml:403
+#: src/contents/ui/PreferencesSheet.qml:370
+#: src/contents/ui/PreferencesSheet.qml:385
+#: src/contents/ui/PreferencesSheet.qml:469 src/contents/ui/Reverb.qml:127
 #: src/contents/ui/Reverb.qml:144 src/contents/ui/Reverb.qml:161
 msgid "Hz"
 msgstr "Hz"
@@ -360,15 +360,14 @@ msgstr "聆聽"
 #: src/contents/ui/MultibandCompressor.qml:985
 #: src/contents/ui/MultibandGate.qml:958 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:338 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:535
-#: src/contents/ui/main.qml:544
+#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:545
 msgid "Reset"
 msgstr "重設"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:463
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:421
 #: src/contents/ui/Gate.qml:436 src/contents/ui/StereoTools.qml:249
-#: src/contents/ui/main.qml:473 src/contents/ui/main.qml:482
+#: src/contents/ui/main.qml:483
 msgid "Output"
 msgstr "輸出"
 
@@ -502,9 +501,9 @@ msgstr "起音(Attack)"
 #: src/contents/ui/MultibandGate.qml:171 src/contents/ui/MultibandGate.qml:186
 #: src/contents/ui/MultibandGate.qml:428 src/contents/ui/MultibandGate.qml:443
 #: src/contents/ui/Pitch.qml:58 src/contents/ui/Pitch.qml:75
-#: src/contents/ui/Pitch.qml:93 src/contents/ui/PreferencesSheet.qml:200
-#: src/contents/ui/PreferencesSheet.qml:243
-#: src/contents/ui/PreferencesSheet.qml:403 src/contents/ui/RNNoise.qml:148
+#: src/contents/ui/Pitch.qml:93 src/contents/ui/PreferencesSheet.qml:213
+#: src/contents/ui/PreferencesSheet.qml:250
+#: src/contents/ui/PreferencesSheet.qml:406 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
 msgid "ms"
 msgstr "ms"
@@ -611,8 +610,8 @@ msgstr "側邊"
 #: src/contents/ui/Expander.qml:262 src/contents/ui/Gate.qml:280
 #: src/contents/ui/LevelMeter.qml:60 src/contents/ui/LevelMeter.qml:101
 #: src/contents/ui/MultibandCompressor.qml:411
-#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:314
-#: src/contents/ui/StereoTools.qml:185 src/contents/ui/PipeWirePage.qml:324
+#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:323
+#: src/contents/ui/StereoTools.qml:185
 msgid "Left"
 msgstr "左"
 
@@ -621,8 +620,8 @@ msgstr "左"
 #: src/contents/ui/Expander.qml:262 src/contents/ui/Gate.qml:280
 #: src/contents/ui/LevelMeter.qml:71 src/contents/ui/LevelMeter.qml:112
 #: src/contents/ui/MultibandCompressor.qml:411
-#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:325
-#: src/contents/ui/StereoTools.qml:212 src/contents/ui/PipeWirePage.qml:335
+#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:334
+#: src/contents/ui/StereoTools.qml:212
 msgid "Right"
 msgstr "右"
 
@@ -880,7 +879,7 @@ msgid "Spectrum"
 msgstr "波譜"
 
 #: src/contents/ui/Convolver.qml:225 src/contents/ui/Convolver.qml:325
-#: src/contents/ui/Convolver.qml:379 src/contents/ui/PreferencesSheet.qml:184
+#: src/contents/ui/Convolver.qml:379 src/contents/ui/PreferencesSheet.qml:197
 #: src/contents/ui/Reverb.qml:68
 msgid "s"
 msgstr "s"
@@ -967,7 +966,7 @@ msgid "Default"
 msgstr "預設"
 
 #: src/contents/ui/Crossfeed.qml:146 src/contents/ui/Reverb.qml:315
-#: src/contents/ui/main.qml:451 src/contents/ui/main.qml:460
+#: src/contents/ui/main.qml:461
 msgid "Presets"
 msgstr "預設集"
 
@@ -1127,29 +1126,39 @@ msgstr "向左反轉"
 msgid "Invert right"
 msgstr "向右反轉"
 
-#: src/contents/ui/DelegateClientsList.qml:36
-#: src/contents/ui/DelegateModulesList.qml:36
-msgid "Id"
-msgstr "ID"
+#: src/contents/ui/DelegateClientsList.qml:37
+#: src/contents/ui/DelegateModulesList.qml:37
+#, fuzzy
+msgctxt "@info:placeholder"
+msgid "Unknown"
+msgstr "不明"
 
-#: src/contents/ui/DelegateClientsList.qml:50
-#: src/contents/ui/DelegateModulesList.qml:50
-#: src/contents/ui/PipeWirePage.qml:127 src/contents/ui/PipeWirePage.qml:171
-#: src/contents/ui/PipeWirePage.qml:137 src/contents/ui/PipeWirePage.qml:181
-msgid "Name"
-msgstr "名稱"
+#: src/contents/ui/DelegateClientsList.qml:41
+msgid "(id: %1)"
+msgstr ""
 
-#: src/contents/ui/DelegateClientsList.qml:64
-msgid "Api"
-msgstr "Api"
-
-#: src/contents/ui/DelegateClientsList.qml:78
-msgid "Access"
+#: src/contents/ui/DelegateClientsList.qml:47
+#, fuzzy
+msgid "Access: %1"
 msgstr "存取"
 
-#: src/contents/ui/DelegateModulesList.qml:64
-#: src/contents/ui/PresetsAutoloadingPage.qml:158
-msgid "Description"
+#: src/contents/ui/DelegateClientsList.qml:54
+msgid "API: %1"
+msgstr ""
+
+#: src/contents/ui/DelegateModulesList.qml:41
+msgctxt "@info:placeholder"
+msgid "Not set"
+msgstr ""
+
+#: src/contents/ui/DelegateModulesList.qml:41
+msgid "(id: %1, version: %2)"
+msgstr ""
+
+#: src/contents/ui/DelegateModulesList.qml:47
+#, fuzzy
+msgctxt "@info:placeholder"
+msgid "No description set"
 msgstr "註釋"
 
 #: src/contents/ui/DelegatePluginsList.qml:73
@@ -1232,7 +1241,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "使用等級量表的輸入和輸出增益控制"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:40
-#: src/contents/ui/main.qml:482 src/contents/ui/main.qml:491
+#: src/contents/ui/main.qml:492
 msgid "Input"
 msgstr "輸入"
 
@@ -1369,8 +1378,7 @@ msgstr "傾斜"
 
 #: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:109
 #: src/contents/ui/MultibandCompressor.qml:173
-#: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:388
-#: src/contents/ui/PipeWirePage.qml:398
+#: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:397
 msgid "Frequency"
 msgstr "頻率"
 
@@ -1830,27 +1838,27 @@ msgstr "輸入監控"
 msgid "Excluded apps"
 msgstr "已經排除的應用程式"
 
-#: src/contents/ui/PipeWirePage.qml:17 src/contents/ui/PipeWirePage.qml:27
+#: src/contents/ui/PipeWirePage.qml:26
 msgid "General"
 msgstr "通則"
 
-#: src/contents/ui/PipeWirePage.qml:22 src/contents/ui/PipeWirePage.qml:32
+#: src/contents/ui/PipeWirePage.qml:31
 msgid "Modules"
 msgstr "模組"
 
-#: src/contents/ui/PipeWirePage.qml:27 src/contents/ui/PipeWirePage.qml:37
+#: src/contents/ui/PipeWirePage.qml:36
 msgid "Clients"
 msgstr "客端"
 
-#: src/contents/ui/PipeWirePage.qml:32 src/contents/ui/PipeWirePage.qml:42
+#: src/contents/ui/PipeWirePage.qml:41
 msgid "Test Signal"
 msgstr "測試訊號"
 
-#: src/contents/ui/PipeWirePage.qml:102 src/contents/ui/PipeWirePage.qml:112
+#: src/contents/ui/PipeWirePage.qml:111
 msgid "Device Management"
 msgstr "裝置管理"
 
-#: src/contents/ui/PipeWirePage.qml:106 src/contents/ui/PipeWirePage.qml:116
+#: src/contents/ui/PipeWirePage.qml:115
 #, fuzzy
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
@@ -1859,87 +1867,89 @@ msgstr ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 
-#: src/contents/ui/PipeWirePage.qml:113 src/contents/ui/PipeWirePage.qml:123
+#: src/contents/ui/PipeWirePage.qml:122
 msgid "Use default input"
 msgstr "使用預設輸入"
 
-#: src/contents/ui/PipeWirePage.qml:156 src/contents/ui/PipeWirePage.qml:166
+#: src/contents/ui/PipeWirePage.qml:136 src/contents/ui/PipeWirePage.qml:180
+msgid "Name"
+msgstr "名稱"
+
+#: src/contents/ui/PipeWirePage.qml:165
 msgid "Use default output"
 msgstr "使用預設輸出"
 
-#: src/contents/ui/PipeWirePage.qml:195 src/contents/ui/PipeWirePage.qml:205
+#: src/contents/ui/PipeWirePage.qml:204
 msgid "Server Information"
 msgstr "伺服器資訊"
 
-#: src/contents/ui/PipeWirePage.qml:200 src/contents/ui/PipeWirePage.qml:210
+#: src/contents/ui/PipeWirePage.qml:209
 msgid "Header version"
 msgstr "標頭版本"
 
-#: src/contents/ui/PipeWirePage.qml:205 src/contents/ui/PipeWirePage.qml:215
+#: src/contents/ui/PipeWirePage.qml:214
 msgid "Library version"
 msgstr "庫源版本"
 
-#: src/contents/ui/PipeWirePage.qml:210 src/contents/ui/PipeWirePage.qml:220
+#: src/contents/ui/PipeWirePage.qml:219
 msgid "Runtime version"
 msgstr "運行時期版本"
 
-#: src/contents/ui/PipeWirePage.qml:215 src/contents/ui/PipeWirePage.qml:225
+#: src/contents/ui/PipeWirePage.qml:224
 msgid "Default sampling rate"
 msgstr "預設採樣率"
 
-#: src/contents/ui/PipeWirePage.qml:220 src/contents/ui/PipeWirePage.qml:230
+#: src/contents/ui/PipeWirePage.qml:229
 msgid "Minimum quantum"
 msgstr "最小化限量"
 
-#: src/contents/ui/PipeWirePage.qml:225 src/contents/ui/PipeWirePage.qml:235
+#: src/contents/ui/PipeWirePage.qml:234
 msgid "Maximum quantum"
 msgstr "最大化限量"
 
-#: src/contents/ui/PipeWirePage.qml:230 src/contents/ui/PipeWirePage.qml:240
+#: src/contents/ui/PipeWirePage.qml:239
 msgid "Default quantum"
 msgstr "預設限量"
 
-#: src/contents/ui/PipeWirePage.qml:252 src/contents/ui/PipeWirePage.qml:262
+#: src/contents/ui/PipeWirePage.qml:261
 msgid "No Modules"
 msgstr "無模組"
 
-#: src/contents/ui/PipeWirePage.qml:275 src/contents/ui/PipeWirePage.qml:285
+#: src/contents/ui/PipeWirePage.qml:284
 msgid "No Clients"
 msgstr "無客端"
 
-#: src/contents/ui/PipeWirePage.qml:288
-#: src/contents/ui/PreferencesSheet.qml:219
-#: src/contents/ui/PipeWirePage.qml:298
+#: src/contents/ui/PipeWirePage.qml:297
+#: src/contents/ui/PreferencesSheet.qml:226
 msgid "State"
 msgstr "狀態"
 
-#: src/contents/ui/PipeWirePage.qml:295
-#: src/contents/ui/PreferencesSheet.qml:226
-#: src/contents/ui/PipeWirePage.qml:305
+#: src/contents/ui/PipeWirePage.qml:304
+#: src/contents/ui/PreferencesSheet.qml:233
 msgid "Enabled"
 msgstr "已經啟用"
 
-#: src/contents/ui/PipeWirePage.qml:305 src/contents/ui/PipeWirePage.qml:315
+#: src/contents/ui/PipeWirePage.qml:314
 msgid "Channels"
 msgstr "聲道"
 
-#: src/contents/ui/PipeWirePage.qml:336 src/contents/ui/PipeWirePage.qml:346
+#: src/contents/ui/PipeWirePage.qml:345
 msgid "Both"
 msgstr "雙聲道"
 
-#: src/contents/ui/PipeWirePage.qml:346 src/contents/ui/PipeWirePage.qml:356
+#: src/contents/ui/PipeWirePage.qml:355
 msgid "Waveform"
 msgstr "波形"
 
-#: src/contents/ui/PipeWirePage.qml:355 src/contents/ui/PipeWirePage.qml:365
+#: src/contents/ui/PipeWirePage.qml:364
 msgid "Sine wave"
 msgstr "正弦波"
 
-#: src/contents/ui/PipeWirePage.qml:366 src/contents/ui/PipeWirePage.qml:376
+#: src/contents/ui/PipeWirePage.qml:375
 msgid "White noise"
 msgstr "白噪音"
 
-#: src/contents/ui/PipeWirePage.qml:377 src/contents/ui/PipeWirePage.qml:387
+#: src/contents/ui/PipeWirePage.qml:386
 msgid "Pink noise"
 msgstr "粉紅噪音"
 
@@ -1995,55 +2005,67 @@ msgstr "音效尚無可用"
 msgid "%1 cannot be used because %2 is not installed on the system."
 msgstr "無法使用 %1 ，因為系統上尚未安裝 %2 。"
 
-#: src/contents/ui/PreferencesSheet.qml:15
-#: src/contents/ui/PreferencesSheet.qml:24
-#: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:507
-#: src/contents/ui/main.qml:516
-msgid "Preferences"
-msgstr "偏好設定"
+#: src/contents/ui/PreferencesSheet.qml:16
+msgid "Background Service"
+msgstr "背景服務"
 
-#: src/contents/ui/PreferencesSheet.qml:36
+#: src/contents/ui/PreferencesSheet.qml:22
+msgid "Audio"
+msgstr "音訊"
+
+#: src/contents/ui/PreferencesSheet.qml:28
+msgid "Spectrum Analyzer"
+msgstr "波譜分析器"
+
+#: src/contents/ui/PreferencesSheet.qml:34
+msgid "Database"
+msgstr "資料庫"
+
+#: src/contents/ui/PreferencesSheet.qml:40
+msgid "Experimental Features"
+msgstr "實驗性功能"
+
+#: src/contents/ui/PreferencesSheet.qml:53
 msgid "Enable service mode"
 msgstr "啟用服務模式"
 
-#: src/contents/ui/PreferencesSheet.qml:37
+#: src/contents/ui/PreferencesSheet.qml:54
 msgid "Easy Effects is active in background when the window is closed."
 msgstr "Easy Effects 是在背景中作用，當視窗關閉時。"
 
-#: src/contents/ui/PreferencesSheet.qml:49
+#: src/contents/ui/PreferencesSheet.qml:66
 msgid "Autostart on login"
 msgstr "登入時自動啟動"
 
-#: src/contents/ui/PreferencesSheet.qml:50
+#: src/contents/ui/PreferencesSheet.qml:67
 msgid "Easy Effects is launched at user session startup."
 msgstr "Easy Effects 在使用者階段工作話啟動時啟動。"
 
-#: src/contents/ui/PreferencesSheet.qml:63
+#: src/contents/ui/PreferencesSheet.qml:80
 msgid "Show the tray icon"
 msgstr "顯示系統匣圖示"
 
-#: src/contents/ui/PreferencesSheet.qml:87
+#: src/contents/ui/PreferencesSheet.qml:100
 msgid "Process all output streams"
 msgstr "處理全部的輸出串流"
 
-#: src/contents/ui/PreferencesSheet.qml:98
+#: src/contents/ui/PreferencesSheet.qml:111
 msgid "Process all input streams"
 msgstr "處理全部的輸入串流"
 
-#: src/contents/ui/PreferencesSheet.qml:109
+#: src/contents/ui/PreferencesSheet.qml:122
 msgid "Ignore streams from monitor of devices"
 msgstr "忽略來自顯示器裝置的串流"
 
-#: src/contents/ui/PreferencesSheet.qml:120
+#: src/contents/ui/PreferencesSheet.qml:133
 msgid "Use cubic volume"
 msgstr "使用立方體音量"
 
-#: src/contents/ui/PreferencesSheet.qml:131
+#: src/contents/ui/PreferencesSheet.qml:144
 msgid "Ignore system notifications"
 msgstr "忽略串流通知"
 
-#: src/contents/ui/PreferencesSheet.qml:132
+#: src/contents/ui/PreferencesSheet.qml:145
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
@@ -2052,202 +2074,182 @@ msgstr ""
 "處理系統通知時可能會導致爆裂聲響，因此最好是忽略它們，但對於某些預設集，可能"
 "建議如此做，因為聽起來太過大聲。"
 
-#: src/contents/ui/PreferencesSheet.qml:143
+#: src/contents/ui/PreferencesSheet.qml:156
 msgid "Enable/disable input monitoring"
 msgstr "啟用/停用輸入監控"
 
-#: src/contents/ui/PreferencesSheet.qml:154
+#: src/contents/ui/PreferencesSheet.qml:167
 msgid "Mic monitor plays to output effects pipeline"
 msgstr "麥克風監聽播放輸出音效管道"
 
-#: src/contents/ui/PreferencesSheet.qml:165
+#: src/contents/ui/PreferencesSheet.qml:178
 msgid "Enable the inactivity timeout"
 msgstr "啟用在不作用時暫停"
 
-#: src/contents/ui/PreferencesSheet.qml:166
+#: src/contents/ui/PreferencesSheet.qml:179
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
 "當全部串流都處於非作用狀態時，Easy Effects 管道會在額外的時間內保持載入狀態。"
 
-#: src/contents/ui/PreferencesSheet.qml:178
+#: src/contents/ui/PreferencesSheet.qml:191
 msgid "Inactivity timeout"
 msgstr "非作用時暫停"
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:205
 msgid "Level meters label"
 msgstr "等級量表標籤"
 
-#: src/contents/ui/PreferencesSheet.qml:193
+#: src/contents/ui/PreferencesSheet.qml:206
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr "當前等級低於最後最高等級時，更新等級量表標籤所需的時間。"
 
-#: src/contents/ui/PreferencesSheet.qml:237
+#: src/contents/ui/PreferencesSheet.qml:244
 msgid "Audio delay compensation"
 msgstr "音訊延遲補償"
 
-#: src/contents/ui/PreferencesSheet.qml:251
+#: src/contents/ui/PreferencesSheet.qml:258
 msgid "Style"
 msgstr "樣式"
 
-#: src/contents/ui/PreferencesSheet.qml:258
+#: src/contents/ui/PreferencesSheet.qml:265
 msgid "Color scheme"
 msgstr "配色方案"
 
-#: src/contents/ui/PreferencesSheet.qml:262
+#: src/contents/ui/PreferencesSheet.qml:269
 msgid "Automatic"
 msgstr "自動"
 
-#: src/contents/ui/PreferencesSheet.qml:262
+#: src/contents/ui/PreferencesSheet.qml:269
 msgid "Light"
 msgstr "亮"
 
-#: src/contents/ui/PreferencesSheet.qml:262
+#: src/contents/ui/PreferencesSheet.qml:269
 msgid "Dark"
 msgstr "暗"
 
-#: src/contents/ui/PreferencesSheet.qml:272
+#: src/contents/ui/PreferencesSheet.qml:279
 msgid "Color theme"
 msgstr "顏色主題"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Green"
 msgstr "綠"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Green neon"
 msgstr "綠色霓虹"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Mix"
 msgstr "混音"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Orange"
 msgstr "橘"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Yellow"
 msgstr "黃"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Blue"
 msgstr "藍"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Purple"
 msgstr "紫"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Grey"
 msgstr "灰"
 
-#: src/contents/ui/PreferencesSheet.qml:286
+#: src/contents/ui/PreferencesSheet.qml:293
 msgid "Shape"
 msgstr "形狀"
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Bars"
 msgstr "條柱"
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Lines"
 msgstr "線條"
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Dots"
 msgstr "點點"
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Area"
 msgstr "區塊"
 
-#: src/contents/ui/PreferencesSheet.qml:300
+#: src/contents/ui/PreferencesSheet.qml:307
 msgid "Dynamic scale"
 msgstr "動態比例"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:318
 msgid "Logarithmic frequency axis"
 msgstr "對數頻率軸"
 
-#: src/contents/ui/PreferencesSheet.qml:322
+#: src/contents/ui/PreferencesSheet.qml:329
 msgid "Points"
 msgstr "點數"
 
-#: src/contents/ui/PreferencesSheet.qml:336
+#: src/contents/ui/PreferencesSheet.qml:343
 msgid "Height"
 msgstr "高度"
 
-#: src/contents/ui/PreferencesSheet.qml:342
+#: src/contents/ui/PreferencesSheet.qml:349
 msgid "px"
 msgstr "px"
 
-#: src/contents/ui/PreferencesSheet.qml:350
+#: src/contents/ui/PreferencesSheet.qml:357
 msgid "Frequency Range"
 msgstr "頻率範圍"
 
-#: src/contents/ui/PreferencesSheet.qml:357
+#: src/contents/ui/PreferencesSheet.qml:364
 msgid "Minimum"
 msgstr "最小"
 
-#: src/contents/ui/PreferencesSheet.qml:372
+#: src/contents/ui/PreferencesSheet.qml:379
 msgid "Maximum"
 msgstr "最大"
 
-#: src/contents/ui/PreferencesSheet.qml:397
+#: src/contents/ui/PreferencesSheet.qml:400
 msgid "Database autosave interval"
 msgstr "資料庫自動儲存間隔"
 
-#: src/contents/ui/PreferencesSheet.qml:410
+#: src/contents/ui/PreferencesSheet.qml:413
 msgid "Most used presets"
 msgstr "最常使用預設集"
 
-#: src/contents/ui/PreferencesSheet.qml:436
+#: src/contents/ui/PreferencesSheet.qml:435
 msgid "Global shortcuts"
 msgstr "整體快速鍵"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:436
 msgid "Enables support for XDG global shortcuts."
 msgstr "啟用對 XDG 整體快速鍵的支援。"
 
-#: src/contents/ui/PreferencesSheet.qml:449
+#: src/contents/ui/PreferencesSheet.qml:448
 msgid "Native window of effects"
 msgstr "音效的原生視窗"
 
-#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:449
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "允許音效的原生使用者介面可以顯示/隱藏。"
 
-#: src/contents/ui/PreferencesSheet.qml:462
+#: src/contents/ui/PreferencesSheet.qml:461
 msgid "Update frequency"
 msgstr "更新頻率"
 
-#: src/contents/ui/PreferencesSheet.qml:463
+#: src/contents/ui/PreferencesSheet.qml:462
 msgid "Related to LV2 plugins."
 msgstr "與 LV2 插件相關。"
-
-#: src/contents/ui/PreferencesSheet.qml:498
-msgid "Background Service"
-msgstr "背景服務"
-
-#: src/contents/ui/PreferencesSheet.qml:513
-msgid "Audio"
-msgstr "音訊"
-
-#: src/contents/ui/PreferencesSheet.qml:528
-msgid "Spectrum Analyzer"
-msgstr "波譜分析器"
-
-#: src/contents/ui/PreferencesSheet.qml:543
-msgid "Database"
-msgstr "資料庫"
-
-#: src/contents/ui/PreferencesSheet.qml:558
-msgid "Experimental Features"
-msgstr "實驗性功能"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:33
 #: src/contents/ui/PresetsAutoloadingPage.qml:130
@@ -2275,6 +2277,10 @@ msgstr "建立新的自動載入預設集"
 #: src/contents/ui/PresetsAutoloadingPage.qml:144
 msgid "Remove this autoloading preset"
 msgstr "移除此自動載入預設集"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:158
+msgid "Description"
+msgstr "註釋"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 msgid "Copy to local presets"
@@ -2571,50 +2577,50 @@ msgstr "迪斯可"
 msgid "Large occupied hall"
 msgstr "大型寬倘演廳"
 
-#: src/contents/ui/ShortcutsSheet.qml:47
+#: src/contents/ui/ShortcutsSheet.qml:46
 msgid "Show help"
 msgstr "顯示說明"
 
-#: src/contents/ui/ShortcutsSheet.qml:60
+#: src/contents/ui/ShortcutsSheet.qml:59
 msgid "Toggle fullscreen"
 msgstr "切換全螢幕"
 
-#: src/contents/ui/ShortcutsSheet.qml:88 src/contents/ui/ShortcutsSheet.qml:311
+#: src/contents/ui/ShortcutsSheet.qml:87 src/contents/ui/ShortcutsSheet.qml:310
 #: src/global_shortcuts.hpp:48
 msgid "Toggle global bypass"
 msgstr "切換整體略過"
 
-#: src/contents/ui/ShortcutsSheet.qml:116
+#: src/contents/ui/ShortcutsSheet.qml:115
 msgid "Close the window"
 msgstr "關閉視窗"
 
-#: src/contents/ui/ShortcutsSheet.qml:144
+#: src/contents/ui/ShortcutsSheet.qml:143
 msgid "Terminate Easy Effects service"
 msgstr "終止 Easy Effects 服務"
 
-#: src/contents/ui/ShortcutsSheet.qml:184
+#: src/contents/ui/ShortcutsSheet.qml:183
 msgid "Toggle process all inputs"
 msgstr "切換處理全部的輸入"
 
-#: src/contents/ui/ShortcutsSheet.qml:224
+#: src/contents/ui/ShortcutsSheet.qml:223
 msgid "Toggle process all outputs"
 msgstr "切換處理全部的輸出"
 
-#: src/contents/ui/ShortcutsSheet.qml:237
-#: src/contents/ui/ShortcutsSheet.qml:250
+#: src/contents/ui/ShortcutsSheet.qml:236
+#: src/contents/ui/ShortcutsSheet.qml:249
 msgid "Can be used on numeric controls"
 msgstr "可用於數字控制"
 
-#: src/contents/ui/ShortcutsSheet.qml:265
+#: src/contents/ui/ShortcutsSheet.qml:264
 msgid "Global Shortcuts"
 msgstr "整體快速鍵"
 
-#: src/contents/ui/ShortcutsSheet.qml:351 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:350 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
 msgstr "切換麥克風監聽"
 
-#: src/contents/ui/ShortcutsSheet.qml:370 src/contents/ui/main.qml:394
-#: src/contents/ui/main.qml:515 src/contents/ui/main.qml:524
+#: src/contents/ui/ShortcutsSheet.qml:369 src/contents/ui/main.qml:395
+#: src/contents/ui/main.qml:525
 msgid "Shortcuts"
 msgstr "快速鍵"
 
@@ -2710,49 +2716,55 @@ msgstr "立體聲低音"
 msgid "Stereo phase"
 msgstr "立體聲階段"
 
-#: src/contents/ui/main.qml:218
+#: src/contents/ui/main.qml:219
 msgid "Reset Settings?"
 msgstr "重置設定？"
 
-#: src/contents/ui/main.qml:219
+#: src/contents/ui/main.qml:220
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "確定要重新設定全部 Easy Effects 設定嗎？"
 
-#: src/contents/ui/main.qml:288 src/contents/ui/main.qml:304
+#: src/contents/ui/main.qml:289 src/contents/ui/main.qml:305
 msgid "Preset Loaded"
 msgstr "預設集已經載入"
 
-#: src/contents/ui/main.qml:315 src/contents/ui/main.qml:327
+#: src/contents/ui/main.qml:316 src/contents/ui/main.qml:328
 msgid "Clear List"
 msgstr "清除列表"
 
-#: src/contents/ui/main.qml:316 src/contents/ui/main.qml:328
+#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:329
 msgid "Are you sure you want to clear this list?"
 msgstr "確定要清除此列表？"
 
-#: src/contents/ui/main.qml:383
+#: src/contents/ui/main.qml:384
 msgid "Active"
 msgstr "作用"
 
-#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:523
-#: src/contents/ui/main.qml:532
+#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:533
 msgid "Manual"
 msgstr "手冊"
 
-#: src/contents/ui/main.qml:415 src/contents/ui/main.qml:555
-#: src/contents/ui/main.qml:564
+#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:565
 msgid "Quit"
 msgstr "退出"
 
-#: src/contents/ui/main.qml:439 src/contents/ui/main.qml:448
+#: src/contents/ui/main.qml:440
+msgid "Go back"
+msgstr ""
+
+#: src/contents/ui/main.qml:449
 msgid "Turn effects on/off"
 msgstr "將音效開啟/關閉"
 
-#: src/contents/ui/main.qml:491 src/contents/ui/main.qml:500
+#: src/contents/ui/main.qml:501
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:547 src/contents/ui/main.qml:556
+#: src/contents/ui/main.qml:517
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: src/contents/ui/main.qml:557
 msgid "About Easy Effects"
 msgstr "關於 Easy Effects"
 
@@ -2894,9 +2906,11 @@ msgstr "等化器、壓縮器、及其他音效處理"
 msgid "Simple audio effects"
 msgstr "簡單的音效處理"
 
-#: src/contents/ui/main.qml:439
-msgid "Go back"
-msgstr ""
+#~ msgid "Id"
+#~ msgstr "ID"
+
+#~ msgid "Api"
+#~ msgstr "Api"
 
 #~ msgid "Audio effects for PipeWire applications"
 #~ msgstr "用於 PipeWire 應用程式提供聲音效果處理"
