@@ -300,12 +300,17 @@ int main(int argc, char* argv[]) {
 
   KColorSchemeManager::instance();
 
-  // set default style and icon theme
+  // Keep system widget colors
+  if (qEnvironmentVariableIsEmpty("QT_STYLE_OVERRIDE"))
+   QApplication::setStyle(QStyleFactory::create(QApplication::style()->objectName()));
+ 
+  // Force icons to breeze regardless of color theme
+  QIcon::setThemeName(QStringLiteral("breeze"));
   QIcon::setFallbackThemeName(QStringLiteral("breeze"));
-  if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE") && QQuickStyle::name().isEmpty()) {
-    QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
-  }
-
+ 
+  // Keep org.kde.desktop for QQC2 style, but don’t override user env
+  if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE") && QQuickStyle::name().isEmpty())
+   QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
 
   // Parsing command line options
 
