@@ -602,9 +602,9 @@ Kirigami.Page {
 
                         const cssFontColor = `style="color:${Kirigami.Theme.textColor}"`;
 
-                        actionRateValue.text = `<pre ${cssFontColor}> <span ${cssFontWeight}>${rate}</span> kHz </pre>`;
-                        actionLatencyValue.text = `<pre ${cssFontColor}> ${styledLatency} ms </pre>`;
-                        actionLevelValue.text = `<pre ${cssFontColor}> ${styledLocaleLeft} ${styledLocaleRight} dB</pre>`;
+                        actionRateValue.text = `<pre ${cssFontColor}> <span ${cssFontWeight}>${rate}</span> ${i18n("kHz")} </pre>`;
+                        actionLatencyValue.text = `<pre ${cssFontColor}> ${styledLatency} ${i18n("ms")} </pre>`;
+                        actionLevelValue.text = `<pre ${cssFontColor}> ${styledLocaleLeft} ${styledLocaleRight} ${i18n("dB")}</pre>`;
                     }
                 }
             }
