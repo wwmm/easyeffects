@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-11 03:40+0000\n"
-"PO-Revision-Date: 2025-11-10 22:39+0000\n"
+"PO-Revision-Date: 2025-11-11 15:56+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : "
+"(n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -296,7 +296,7 @@ msgstr "Cantitate"
 #: src/contents/ui/StereoTools.qml:159 src/contents/ui/StereoTools.qml:333
 #: src/contents/ui/StereoTools.qml:351
 msgid "dB"
-msgstr ""
+msgstr "dB"
 
 #: src/contents/ui/BassEnhancer.qml:108 src/contents/ui/BassEnhancer.qml:168
 #: src/contents/ui/Exciter.qml:112 src/contents/ui/Exciter.qml:172
@@ -324,7 +324,7 @@ msgstr "Gama"
 #: src/contents/ui/PreferencesSheet.qml:470 src/contents/ui/Reverb.qml:127
 #: src/contents/ui/Reverb.qml:144 src/contents/ui/Reverb.qml:161
 msgid "Hz"
-msgstr ""
+msgstr "Hz"
 
 #: src/contents/ui/BassEnhancer.qml:139
 msgid "Floor active"
@@ -511,7 +511,7 @@ msgstr "Atac"
 #: src/contents/ui/PreferencesSheet.qml:403 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
 msgid "ms"
-msgstr ""
+msgstr "ms"
 
 #: src/contents/ui/Compressor.qml:195 src/contents/ui/Expander.qml:155
 #: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:864
@@ -889,7 +889,7 @@ msgstr "Spectru"
 #: src/contents/ui/Convolver.qml:379 src/contents/ui/PreferencesSheet.qml:184
 #: src/contents/ui/Reverb.qml:68
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #: src/contents/ui/Convolver.qml:239
 msgid "Log scale"
@@ -998,7 +998,7 @@ msgstr "Derivare"
 
 #: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:48
 msgid "kHz"
-msgstr ""
+msgstr "kHz"
 
 #: src/contents/ui/DeepFilterNet.qml:32
 msgid "Attenuation limit"
@@ -1081,7 +1081,7 @@ msgstr "F2 Nivel"
 
 #: src/contents/ui/Deesser.qml:225
 msgid "dBFS"
-msgstr ""
+msgstr "dBFS"
 
 #: src/contents/ui/Deesser.qml:235
 msgid "F2 peak Q"
@@ -1112,7 +1112,7 @@ msgstr "Metri"
 
 #: src/contents/ui/Delay.qml:111 src/contents/ui/Delay.qml:264
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: src/contents/ui/Delay.qml:121 src/contents/ui/Delay.qml:274
 msgid "Centimeters"
@@ -1120,7 +1120,7 @@ msgstr "Centimetri"
 
 #: src/contents/ui/Delay.qml:129 src/contents/ui/Delay.qml:282
 msgid "cm"
-msgstr ""
+msgstr "cm"
 
 #: src/contents/ui/Delay.qml:140 src/contents/ui/Delay.qml:293
 msgid "Temperature"
@@ -1296,9 +1296,8 @@ msgid "Pitch left"
 msgstr "Înclinare spre stânga"
 
 #: src/contents/ui/Equalizer.qml:157 src/contents/ui/Equalizer.qml:174
-#, fuzzy
 msgid "st"
-msgstr "Optim"
+msgstr "st"
 
 #: src/contents/ui/Equalizer.qml:166
 msgid "Pitch right"
@@ -1701,7 +1700,6 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr "A fost adăugat un efect nou în canalul (pipeline): %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:184
-#, fuzzy
 msgctxt "@action:button"
 msgid "Close"
 msgstr "Închide"
@@ -1805,7 +1803,6 @@ msgid "Players"
 msgstr "Reproducătoare"
 
 #: src/contents/ui/PageStreamsEffects.qml:400
-#, fuzzy
 msgid "Output device"
 msgstr "Dispozitiv de ieșire"
 
@@ -2189,7 +2186,7 @@ msgstr "Înălțime"
 
 #: src/contents/ui/PreferencesSheet.qml:342
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:350
 msgid "Frequency Range"
