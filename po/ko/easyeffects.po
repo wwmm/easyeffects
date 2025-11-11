@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-11 03:40+0000\n"
+"POT-Creation-Date: 2025-11-11 15:48+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Korean <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -328,7 +328,7 @@ msgstr "스코프"
 #: src/contents/ui/MultibandCompressor.qml:493
 #: src/contents/ui/MultibandCompressor.qml:518
 #: src/contents/ui/MultibandGate.qml:122 src/contents/ui/MultibandGate.qml:466
-#: src/contents/ui/MultibandGate.qml:491 src/contents/ui/PipeWirePage.qml:394
+#: src/contents/ui/MultibandGate.qml:491 src/contents/ui/PipeWirePage.qml:404
 #: src/contents/ui/PreferencesSheet.qml:363
 #: src/contents/ui/PreferencesSheet.qml:378
 #: src/contents/ui/PreferencesSheet.qml:470 src/contents/ui/Reverb.qml:127
@@ -375,14 +375,14 @@ msgstr "듣기"
 #: src/contents/ui/MultibandCompressor.qml:985
 #: src/contents/ui/MultibandGate.qml:958 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:338 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:535
+#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:544
 msgid "Reset"
 msgstr "재지정"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:463
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:421
 #: src/contents/ui/Gate.qml:436 src/contents/ui/StereoTools.qml:249
-#: src/contents/ui/main.qml:473
+#: src/contents/ui/main.qml:482
 msgid "Output"
 msgstr "아웃풋"
 
@@ -639,7 +639,7 @@ msgstr "측면"
 #: src/contents/ui/Expander.qml:262 src/contents/ui/Gate.qml:280
 #: src/contents/ui/LevelMeter.qml:60 src/contents/ui/LevelMeter.qml:101
 #: src/contents/ui/MultibandCompressor.qml:411
-#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:314
+#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:324
 #: src/contents/ui/StereoTools.qml:185
 msgid "Left"
 msgstr "좌측"
@@ -649,7 +649,7 @@ msgstr "좌측"
 #: src/contents/ui/Expander.qml:262 src/contents/ui/Gate.qml:280
 #: src/contents/ui/LevelMeter.qml:71 src/contents/ui/LevelMeter.qml:112
 #: src/contents/ui/MultibandCompressor.qml:411
-#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:325
+#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:335
 #: src/contents/ui/StereoTools.qml:212
 msgid "Right"
 msgstr "우측"
@@ -1017,7 +1017,7 @@ msgid "Default"
 msgstr "기본값"
 
 #: src/contents/ui/Crossfeed.qml:146 src/contents/ui/Reverb.qml:315
-#: src/contents/ui/main.qml:451
+#: src/contents/ui/main.qml:460
 msgid "Presets"
 msgstr "프리셋"
 
@@ -1194,7 +1194,7 @@ msgstr ""
 
 #: src/contents/ui/DelegateClientsList.qml:50
 #: src/contents/ui/DelegateModulesList.qml:50
-#: src/contents/ui/PipeWirePage.qml:127 src/contents/ui/PipeWirePage.qml:171
+#: src/contents/ui/PipeWirePage.qml:137 src/contents/ui/PipeWirePage.qml:181
 msgid "Name"
 msgstr "이름"
 
@@ -1302,7 +1302,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:40
-#: src/contents/ui/main.qml:482
+#: src/contents/ui/main.qml:491
 msgid "Input"
 msgstr "인풋"
 
@@ -1458,7 +1458,7 @@ msgstr ""
 
 #: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:109
 #: src/contents/ui/MultibandCompressor.qml:173
-#: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:388
+#: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:398
 msgid "Frequency"
 msgstr "주파수"
 
@@ -1930,118 +1930,118 @@ msgstr "이 응용프로그램 활성화/비활성화"
 msgid "Excluded apps"
 msgstr "제외된 응용프로그램에 추가하기"
 
-#: src/contents/ui/PipeWirePage.qml:17
+#: src/contents/ui/PipeWirePage.qml:27
 msgid "General"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:22
+#: src/contents/ui/PipeWirePage.qml:32
 msgid "Modules"
 msgstr "모듈"
 
-#: src/contents/ui/PipeWirePage.qml:27
+#: src/contents/ui/PipeWirePage.qml:37
 msgid "Clients"
 msgstr "클라이언트"
 
-#: src/contents/ui/PipeWirePage.qml:32
+#: src/contents/ui/PipeWirePage.qml:42
 msgid "Test Signal"
 msgstr "테스트 신호"
 
-#: src/contents/ui/PipeWirePage.qml:102
+#: src/contents/ui/PipeWirePage.qml:112
 msgid "Device Management"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:106
+#: src/contents/ui/PipeWirePage.qml:116
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:113
+#: src/contents/ui/PipeWirePage.qml:123
 msgid "Use default input"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:156
+#: src/contents/ui/PipeWirePage.qml:166
 msgid "Use default output"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:195
+#: src/contents/ui/PipeWirePage.qml:205
 msgid "Server Information"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:200
+#: src/contents/ui/PipeWirePage.qml:210
 msgid "Header version"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:205
+#: src/contents/ui/PipeWirePage.qml:215
 msgid "Library version"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:210
+#: src/contents/ui/PipeWirePage.qml:220
 #, fuzzy
 msgid "Runtime version"
 msgstr "클라이언트"
 
-#: src/contents/ui/PipeWirePage.qml:215
+#: src/contents/ui/PipeWirePage.qml:225
 msgid "Default sampling rate"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:220
+#: src/contents/ui/PipeWirePage.qml:230
 msgid "Minimum quantum"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:225
+#: src/contents/ui/PipeWirePage.qml:235
 #, fuzzy
 msgid "Maximum quantum"
 msgstr "최대 히스토리"
 
-#: src/contents/ui/PipeWirePage.qml:230
+#: src/contents/ui/PipeWirePage.qml:240
 #, fuzzy
 msgid "Default quantum"
 msgstr "기본값"
 
-#: src/contents/ui/PipeWirePage.qml:252
+#: src/contents/ui/PipeWirePage.qml:262
 #, fuzzy
 msgid "No Modules"
 msgstr "모듈"
 
-#: src/contents/ui/PipeWirePage.qml:275
+#: src/contents/ui/PipeWirePage.qml:285
 #, fuzzy
 msgid "No Clients"
 msgstr "클라이언트"
 
-#: src/contents/ui/PipeWirePage.qml:288
+#: src/contents/ui/PipeWirePage.qml:298
 #: src/contents/ui/PreferencesSheet.qml:219
 msgid "State"
 msgstr "상태"
 
-#: src/contents/ui/PipeWirePage.qml:295
+#: src/contents/ui/PipeWirePage.qml:305
 #: src/contents/ui/PreferencesSheet.qml:226
 msgid "Enabled"
 msgstr "활성화됨"
 
-#: src/contents/ui/PipeWirePage.qml:305
+#: src/contents/ui/PipeWirePage.qml:315
 msgid "Channels"
 msgstr "채널"
 
-#: src/contents/ui/PipeWirePage.qml:336
+#: src/contents/ui/PipeWirePage.qml:346
 msgid "Both"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:346
+#: src/contents/ui/PipeWirePage.qml:356
 msgid "Waveform"
 msgstr "파형"
 
-#: src/contents/ui/PipeWirePage.qml:355
+#: src/contents/ui/PipeWirePage.qml:365
 #, fuzzy
 msgid "Sine wave"
 msgstr "사인파"
 
-#: src/contents/ui/PipeWirePage.qml:366
+#: src/contents/ui/PipeWirePage.qml:376
 #, fuzzy
 msgid "White noise"
 msgstr "백색 소음"
 
-#: src/contents/ui/PipeWirePage.qml:377
+#: src/contents/ui/PipeWirePage.qml:387
 #, fuzzy
 msgid "Pink noise"
 msgstr "백색 소음"
@@ -2109,7 +2109,7 @@ msgstr ""
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
 #: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:507
+#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:516
 #, fuzzy
 msgid "Preferences"
 msgstr "환경설정(_P)"
@@ -2783,7 +2783,7 @@ msgid "Toggle microphone monitoring"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:370 src/contents/ui/main.qml:394
-#: src/contents/ui/main.qml:515
+#: src/contents/ui/main.qml:524
 #, fuzzy
 msgid "Shortcuts"
 msgstr "단축키(_S)"
@@ -2914,26 +2914,30 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
-#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:523
+#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:532
 #, fuzzy
 msgid "Manual"
 msgstr "수동(_M)"
 
-#: src/contents/ui/main.qml:415 src/contents/ui/main.qml:555
+#: src/contents/ui/main.qml:415 src/contents/ui/main.qml:564
 #, fuzzy
 msgid "Quit"
 msgstr "종료(_Q)"
 
 #: src/contents/ui/main.qml:439
+msgid "Go back"
+msgstr ""
+
+#: src/contents/ui/main.qml:448
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/main.qml:491
+#: src/contents/ui/main.qml:500
 #, fuzzy
 msgid "PipeWire"
 msgstr "PipeWire(_P)"
 
-#: src/contents/ui/main.qml:547
+#: src/contents/ui/main.qml:556
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "Easy Effects 정보(_A)"
