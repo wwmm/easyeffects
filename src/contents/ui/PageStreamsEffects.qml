@@ -608,7 +608,7 @@ Kirigami.Page {
                 }
             }
 
-            Components.SegmentedButton {
+            Kirigami.ActionToolBar {
                 id: segmentedButton
 
                 Layout.alignment: Qt.AlignHCenter
