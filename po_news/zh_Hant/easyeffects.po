@@ -476,8 +476,8 @@ msgid ""
 "Community Presets."
 msgstr ""
 "Easy Effects folders under /etc have been deprecated and presets located "
-"there won't be loaded anymore. At the moment only local presets under ~/"
-".config/easyeffects are automatically loaded in the Presets Menu. In the "
+"there won't be loaded anymore. At the moment only local presets under "
+"~/.config/easyeffects are automatically loaded in the Presets Menu. In the "
 "future we will implement a new system to install, manage and import "
 "Community Presets."
 
@@ -572,8 +572,8 @@ msgid ""
 "Speex is no longer incorrectly listed as a build dependency (speexdsp is "
 "still a build dependency)"
 msgstr ""
-"Speex is no longer incorrectly listed as a build dependency "
-"(speexdsp is still a build dependency)"
+"Speex is no longer incorrectly listed as a build dependency (speexdsp is "
+"still a build dependency)"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:229
 #, fuzzy
@@ -1141,13 +1141,14 @@ msgid ""
 "filter is not available in LSP plugin)."
 msgstr ""
 "Equalizer APO preset import feature has been improved to apply not only the "
-"Bell filter, but also other supported ones "
-"(at the moment only the Bandpass filter is not available in LSP plugin)."
+"Bell filter, but also other supported ones (at the moment only the Bandpass "
+"filter is not available in LSP plugin)."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:417
 #, fuzzy
 msgid "The Reset All Settings function in our menu should work in Flatpak now."
-msgstr "The Reset All Settings function in our menu should work in Flatpak now."
+msgstr ""
+"The Reset All Settings function in our menu should work in Flatpak now."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:418
 #, fuzzy
@@ -1259,8 +1260,8 @@ msgid ""
 "The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
 "Amplification\" parameter."
 msgstr ""
-"The APO Profile Import feature of Equalizer plugin now parses the "
-"\"Pre Amplification\" parameter."
+"The APO Profile Import feature of Equalizer plugin now parses the \"Pre "
+"Amplification\" parameter."
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:449
 #, fuzzy
@@ -1519,8 +1520,8 @@ msgid ""
 "Improved the resampler used in the plugins that require one(like the rnnoise "
 "plugin)"
 msgstr ""
-"Improved the resampler used in the plugins that require one"
-"(like the rnnoise plugin)"
+"Improved the resampler used in the plugins that require one(like the rnnoise "
+"plugin)"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:524
 #, fuzzy
@@ -1553,7 +1554,8 @@ msgstr ""
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:528
 #, fuzzy
 msgid "The saturation warning should not displace its neighbor widgets anymore"
-msgstr "The saturation warning should not displace its neighbor widgets anymore"
+msgstr ""
+"The saturation warning should not displace its neighbor widgets anymore"
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:529
 #, fuzzy
