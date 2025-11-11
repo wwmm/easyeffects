@@ -447,15 +447,19 @@ Kirigami.ApplicationWindow {
                         }
                     },
                     Kirigami.Action {
-                        text: i18n("Turn effects on/off") // qmllint disable
+                        text: i18n("Effects") // qmllint disable
+                        tooltip: i18n("Turn effects on/off") // qmllint disable
                         icon.name: "system-shutdown-symbolic"
                         icon.color: checked === true ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
-                        displayHint: Kirigami.DisplayHint.IconOnly
+                        displayHint: Kirigami.DisplayHint.KeepVisible
                         checkable: true
                         checked: !DB.Manager.main.bypass
                         onTriggered: {
-                            if (checked !== !DB.Manager.main.bypass)
+                            if (checked !== !DB.Manager.main.bypass) {
                                 DB.Manager.main.bypass = !checked;
+                            }
+
+                            checked ? appWindow.showStatus(i18n("Audio effects are enabled."), Kirigami.MessageType.Positive) : appWindow.showStatus(i18n("Audio effects are disabled.")); // qmllint disable
                         }
                     },
                     Kirigami.Action {
