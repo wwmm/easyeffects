@@ -440,7 +440,8 @@ Kirigami.ApplicationWindow {
                         text: i18n("Go back") // qmllint disable
                         icon.name: "draw-arrow-back-symbolic"
                         displayHint: Kirigami.DisplayHint.IconOnly
-                        visible: (pageStack.currentItem as Kirigami.Page).showBackButton
+                        // Use nullish coalescing to avoid the `Unable to assign [undefined] to bool` message.
+                        visible: (pageStack.currentItem as Kirigami.Page)?.showBackButton ?? false
                         onTriggered: {
                             pageStack.currentItem.goBack();
                         }
