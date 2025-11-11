@@ -299,7 +299,7 @@ int main(int argc, char* argv[]) {
 
   KColorSchemeManager::instance();
 
-  QApplication::setStyle(QStringLiteral("breeze"));
+  //QApplication::setStyle(QStringLiteral("breeze"));
   if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
     QQuickStyle::setStyle(QStringLiteral("org.kde.desktop"));
   }
