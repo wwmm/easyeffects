@@ -53,7 +53,7 @@ Kirigami.Page {
     MenuAddPlugins {
         id: menuAddPlugins
 
-	    parent: pageStreamsEffects.Controls.Overlay.overlay
+        parent: pageStreamsEffects.Controls.Overlay.overlay
         streamDB: pageStreamsEffects.streamDB
     }
 
@@ -608,7 +608,7 @@ Kirigami.Page {
                 }
             }
 
-            Components.SegmentedButton {
+            Kirigami.ActionToolBar {
                 id: segmentedButton
 
                 Layout.alignment: Qt.AlignHCenter
