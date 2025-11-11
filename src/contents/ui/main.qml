@@ -436,10 +436,9 @@ Kirigami.ApplicationWindow {
                 overflowIconName: "overflow-menu-left"
                 actions: [
                     Kirigami.Action {
-                        text: i18n("Turn effects on/off") // qmllint disable
+                        text: checked === true ? i18n("Active") : i18n("Inactive")// qmllint disable
                         icon.name: "system-shutdown-symbolic"
                         icon.color: checked === true ? Kirigami.Theme.positiveTextColor : Kirigami.Theme.negativeTextColor
-                        displayHint: Kirigami.DisplayHint.IconOnly
                         checkable: true
                         checked: !DB.Manager.main.bypass
                         onTriggered: {
