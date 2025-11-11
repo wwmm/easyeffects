@@ -100,9 +100,8 @@ msgid "About"
 msgstr "Про нас"
 
 #: src/contents/ui/AboutPage.qml:14
-#, fuzzy
 msgid "Global audio effects"
-msgstr "Глобальні скорочення"
+msgstr "Глобальні звукові ефекти"
 
 #: src/contents/ui/AboutPage.qml:27
 msgctxt "@info:credit"
@@ -294,7 +293,7 @@ msgstr "Кількість"
 #: src/contents/ui/StereoTools.qml:159 src/contents/ui/StereoTools.qml:333
 #: src/contents/ui/StereoTools.qml:351
 msgid "dB"
-msgstr ""
+msgstr "дБ"
 
 #: src/contents/ui/BassEnhancer.qml:108 src/contents/ui/BassEnhancer.qml:168
 #: src/contents/ui/Exciter.qml:112 src/contents/ui/Exciter.qml:172
@@ -321,7 +320,7 @@ msgstr "Діапазон"
 #: src/contents/ui/PreferencesSheet.qml:470 src/contents/ui/Reverb.qml:127
 #: src/contents/ui/Reverb.qml:144 src/contents/ui/Reverb.qml:161
 msgid "Hz"
-msgstr ""
+msgstr "Гц"
 
 #: src/contents/ui/BassEnhancer.qml:139
 msgid "Floor active"
@@ -507,7 +506,7 @@ msgstr "Атака"
 #: src/contents/ui/PreferencesSheet.qml:403 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
 msgid "ms"
-msgstr ""
+msgstr "мс"
 
 #: src/contents/ui/Compressor.qml:195 src/contents/ui/Expander.qml:155
 #: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:864
@@ -883,7 +882,7 @@ msgstr "Спектр"
 #: src/contents/ui/Convolver.qml:225 src/contents/ui/Convolver.qml:325
 #: src/contents/ui/PreferencesSheet.qml:184 src/contents/ui/Reverb.qml:68
 msgid "s"
-msgstr ""
+msgstr "с"
 
 #: src/contents/ui/Convolver.qml:239
 msgid "Log scale"
@@ -905,11 +904,11 @@ msgstr "Тривалість"
 
 #: src/contents/ui/Convolver.qml:363
 msgid " Hz"
-msgstr ""
+msgstr " Гц"
 
 #: src/contents/ui/Convolver.qml:379
 msgid " s"
-msgstr ""
+msgstr " с"
 
 #: src/contents/ui/Convolver.qml:398
 msgid "Stereo width"
@@ -999,7 +998,7 @@ msgstr "Обійти"
 
 #: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:48
 msgid "kHz"
-msgstr ""
+msgstr "кГц"
 
 #: src/contents/ui/DeepFilterNet.qml:32
 msgid "Attenuation limit"
@@ -1082,7 +1081,7 @@ msgstr "Рівень центральної частоти"
 
 #: src/contents/ui/Deesser.qml:225
 msgid "dBFS"
-msgstr ""
+msgstr "дБПШ"
 
 #: src/contents/ui/Deesser.qml:235
 msgid "F2 peak Q"
@@ -1113,7 +1112,7 @@ msgstr "Метри"
 
 #: src/contents/ui/Delay.qml:111 src/contents/ui/Delay.qml:264
 msgid "m"
-msgstr ""
+msgstr "м"
 
 #: src/contents/ui/Delay.qml:121 src/contents/ui/Delay.qml:274
 msgid "Centimeters"
@@ -1121,7 +1120,7 @@ msgstr "Сантиметри"
 
 #: src/contents/ui/Delay.qml:129 src/contents/ui/Delay.qml:282
 msgid "cm"
-msgstr ""
+msgstr "см"
 
 #: src/contents/ui/Delay.qml:140 src/contents/ui/Delay.qml:293
 msgid "Temperature"
@@ -1296,9 +1295,8 @@ msgid "Pitch left"
 msgstr "Зміщення частоти лівого каналу"
 
 #: src/contents/ui/Equalizer.qml:157 src/contents/ui/Equalizer.qml:174
-#, fuzzy
 msgid "st"
-msgstr "Найкраще"
+msgstr "півтони"
 
 #: src/contents/ui/Equalizer.qml:166
 msgid "Pitch right"
@@ -1701,7 +1699,6 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr "До конвеєра додано новий ефект: %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:184
-#, fuzzy
 msgctxt "@action:button"
 msgid "Close"
 msgstr "Закрити"
@@ -2187,7 +2184,7 @@ msgstr "Висота"
 
 #: src/contents/ui/PreferencesSheet.qml:342
 msgid "px"
-msgstr ""
+msgstr "пікс"
 
 #: src/contents/ui/PreferencesSheet.qml:350
 msgid "Frequency Range"
