@@ -4,7 +4,6 @@ import QtQuick.Layouts
 import "Common.js" as Common
 import ee.tags.plugin.name as TagsPluginName // qmllint disable
 import org.kde.kirigami as Kirigami
-import org.kde.kirigami.layouts as KirigamiLayouts
 import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.ScrollablePage {
@@ -112,9 +111,9 @@ Kirigami.ScrollablePage {
                     }
                 }
 
-		Item {
-		    Layout.fillHeight: true
-		}
+                Item {
+                    Layout.fillHeight: true
+                }
             }
 
             EeCard {
@@ -202,9 +201,9 @@ Kirigami.ScrollablePage {
                     convertDecibelToLinear: true
                 }
 
-		Item {
-		    Layout.fillHeight: true
-		}
+                Item {
+                    Layout.fillHeight: true
+                }
             }
         }
     }
@@ -253,7 +252,7 @@ Kirigami.ScrollablePage {
                     }
                 },
                 Kirigami.Action {
-                    displayHint: KirigamiLayouts.DisplayHint.KeepVisible
+                    displayHint: Kirigami.DisplayHint.KeepVisible
                     text: i18n("Reset settings")// qmllint disable
                     icon.name: "edit-reset-symbolic"
                     onTriggered: {

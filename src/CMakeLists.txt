@@ -155,6 +155,7 @@ target_include_directories(easyeffects SYSTEM PRIVATE
 )
 
 target_link_libraries(easyeffects PRIVATE
+    KF6::ColorScheme
     KF6::ConfigCore
     KF6::ConfigGui
     KF6::CoreAddons

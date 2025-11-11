@@ -30,6 +30,7 @@
 #include <qtenvironmentvariables.h>
 #include <qurl.h>
 #include <KAboutData>
+#include <KColorSchemeManager>
 #include <KIconTheme>
 #include <KLocalizedString>
 #include <QApplication>
@@ -295,6 +296,8 @@ int main(int argc, char* argv[]) {
   QApplication::setApplicationDisplayName(APPLICATION_NAME);
   QApplication::setApplicationVersion(QStringLiteral(PROJECT_VERSION));
   QApplication::setDesktopFileName(APPLICATION_ID);
+
+  KColorSchemeManager::instance();
 
   QApplication::setStyle(QStringLiteral("breeze"));
   if (qEnvironmentVariableIsEmpty("QT_QUICK_CONTROLS_STYLE")) {
