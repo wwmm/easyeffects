@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-11 18:42+0000\n"
+"POT-Creation-Date: 2025-11-11 19:26+0000\n"
 "PO-Revision-Date: 2025-11-11 15:56+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
@@ -318,7 +318,9 @@ msgstr "Gama"
 #: src/contents/ui/MultibandCompressor.qml:493
 #: src/contents/ui/MultibandCompressor.qml:518
 #: src/contents/ui/MultibandGate.qml:122 src/contents/ui/MultibandGate.qml:466
-#: src/contents/ui/MultibandGate.qml:491 src/contents/ui/PipeWirePage.qml:403
+#: src/contents/ui/MultibandGate.qml:491
+#: src/contents/ui/PageStreamsEffects.qml:463
+#: src/contents/ui/PipeWirePage.qml:403
 #: src/contents/ui/PreferencesSheet.qml:370
 #: src/contents/ui/PreferencesSheet.qml:385
 #: src/contents/ui/PreferencesSheet.qml:469 src/contents/ui/Reverb.qml:127
@@ -364,14 +366,14 @@ msgstr "Ascultă"
 #: src/contents/ui/MultibandCompressor.qml:985
 #: src/contents/ui/MultibandGate.qml:958 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:338 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:545
+#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:546
 msgid "Reset"
 msgstr "Restabilește"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:463
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:421
 #: src/contents/ui/Gate.qml:436 src/contents/ui/StereoTools.qml:249
-#: src/contents/ui/main.qml:483
+#: src/contents/ui/main.qml:484
 msgid "Output"
 msgstr "Ieșire"
 
@@ -974,7 +976,7 @@ msgid "Default"
 msgstr "Implicit"
 
 #: src/contents/ui/Crossfeed.qml:146 src/contents/ui/Reverb.qml:315
-#: src/contents/ui/main.qml:461
+#: src/contents/ui/main.qml:462
 msgid "Presets"
 msgstr "Preconfigurări"
 
@@ -1251,7 +1253,7 @@ msgstr ""
 "(vumetre)"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:40
-#: src/contents/ui/main.qml:492
+#: src/contents/ui/main.qml:493
 msgid "Input"
 msgstr "Intrare"
 
@@ -1437,9 +1439,54 @@ msgstr "Intern"
 msgid "Filter mode"
 msgstr "Modul de filtrare"
 
+#: src/contents/ui/Filter.qml:64
+msgid "RLC (BT)"
+msgstr "RLC (BT)"
+
+#: src/contents/ui/Filter.qml:64
+msgid "RLC (MT)"
+msgstr "RLC (MT)"
+
+#: src/contents/ui/Filter.qml:64
+msgid "BWC (BT)"
+msgstr "BWC (BT)"
+
+#: src/contents/ui/Filter.qml:64
+msgid "BWC (MT)"
+msgstr "BWC (MT)"
+
+#: src/contents/ui/Filter.qml:64
+msgid "LRX (BT)"
+msgstr "LRX (BT)"
+
+#: src/contents/ui/Filter.qml:64
+msgid "LRX (MT)"
+msgstr "LRX (MT)"
+
+#: src/contents/ui/Filter.qml:64
+msgid "APO (DR)"
+msgstr "APO (DR)"
+
 #: src/contents/ui/Filter.qml:74
 msgid "Equalizer mode"
 msgstr "Modul egalizator"
+
+#: src/contents/ui/Filter.qml:78 src/contents/ui/Loudness.qml:58
+msgid "IIR"
+msgstr "IIR"
+
+#: src/contents/ui/Filter.qml:78
+msgid "FIR"
+msgstr "FIR"
+
+#: src/contents/ui/Filter.qml:78 src/contents/ui/Loudness.qml:58
+msgid "FFT"
+msgstr "FFT"
+
+#: src/contents/ui/Filter.qml:78
+#, fuzzy
+msgid "SPM"
+msgstr "SMA"
 
 #: src/contents/ui/Gate.qml:54 src/tags_plugin_name.cpp:41
 msgid "Gate"
@@ -1669,6 +1716,27 @@ msgstr "Pragul de intensificare"
 #: src/contents/ui/Loudness.qml:68
 msgid "Contour"
 msgstr "Contur"
+
+#: src/contents/ui/Loudness.qml:72
+msgid "Flat"
+msgstr "Plat"
+
+#: src/contents/ui/Loudness.qml:72
+msgid "ISO226-2003"
+msgstr "ISO226-2003"
+
+#: src/contents/ui/Loudness.qml:72
+msgid "Fletcher-Munson"
+msgstr "Fletcher-Munson"
+
+#: src/contents/ui/Loudness.qml:72
+msgid "Robinson-Dadson"
+msgstr "Robinson-Dadson"
+
+#: src/contents/ui/Loudness.qml:72
+#, fuzzy
+msgid "ISO226-2023"
+msgstr "ISO226-2003"
 
 #: src/contents/ui/Loudness.qml:82
 msgid "FFT size"
@@ -2635,7 +2703,7 @@ msgid "Toggle microphone monitoring"
 msgstr "Activează/dezactivează monitorizarea microfonului"
 
 #: src/contents/ui/ShortcutsSheet.qml:369 src/contents/ui/main.qml:395
-#: src/contents/ui/main.qml:525
+#: src/contents/ui/main.qml:526
 msgid "Shortcuts"
 msgstr "Taste de comenzi rapide"
 
@@ -2756,11 +2824,11 @@ msgstr "Sunteți sigur că doriți să goliți această listă?"
 msgid "Active"
 msgstr "Activ"
 
-#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:533
+#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:534
 msgid "Manual"
 msgstr "Manual"
 
-#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:565
+#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:566
 msgid "Quit"
 msgstr "Ieșire"
 
@@ -2768,19 +2836,19 @@ msgstr "Ieșire"
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/main.qml:449
+#: src/contents/ui/main.qml:450
 msgid "Turn effects on/off"
 msgstr "Activează/dezactivează efectele"
 
-#: src/contents/ui/main.qml:501
+#: src/contents/ui/main.qml:502
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:517
+#: src/contents/ui/main.qml:518
 msgid "Preferences"
 msgstr "Preferințe"
 
-#: src/contents/ui/main.qml:557
+#: src/contents/ui/main.qml:558
 msgid "About Easy Effects"
 msgstr "Despre Easy Effects"
 
@@ -3649,9 +3717,6 @@ msgstr "Efecte audio simple"
 #~ msgid "Standard"
 #~ msgstr "Standard"
 
-#~ msgid "Flat"
-#~ msgstr "Plat"
-
 #~ msgid "Output Volume"
 #~ msgstr "Volum ieșire"
 
@@ -4061,15 +4126,6 @@ msgstr "Efecte audio simple"
 
 #~ msgid "infinity"
 #~ msgstr "infinit"
-
-#~ msgid "IIR"
-#~ msgstr "IIR"
-
-#~ msgid "FIR"
-#~ msgstr "FIR"
-
-#~ msgid "FFT"
-#~ msgstr "FFT"
 
 #, fuzzy
 #~ msgid "Wet Ratio"
@@ -4559,27 +4615,6 @@ msgstr "Efecte audio simple"
 #~ msgid "Apply APO Preset"
 #~ msgstr "Aplică Presetare APO"
 
-#~ msgid "RLC (BT)"
-#~ msgstr "RLC (BT)"
-
-#~ msgid "RLC (MT)"
-#~ msgstr "RLC (MT)"
-
-#~ msgid "BWC (BT)"
-#~ msgstr "BWC (BT)"
-
-#~ msgid "BWC (MT)"
-#~ msgstr "BWC (MT)"
-
-#~ msgid "LRX (BT)"
-#~ msgstr "LRX (BT)"
-
-#~ msgid "LRX (MT)"
-#~ msgstr "LRX (MT)"
-
-#~ msgid "APO (DR)"
-#~ msgstr "APO (DR)"
-
 #~ msgid "Apply"
 #~ msgstr "Aplică"
 
@@ -4606,15 +4641,6 @@ msgstr "Efecte audio simple"
 
 #~ msgid "ASC"
 #~ msgstr "ASC"
-
-#~ msgid "ISO226-2003"
-#~ msgstr "ISO226-2003"
-
-#~ msgid "Fletcher-Munson"
-#~ msgstr "Fletcher-Munson"
-
-#~ msgid "Robinson-Dadson"
-#~ msgstr "Robinson-Dadson"
 
 #~ msgid "LR4"
 #~ msgstr "LR4"

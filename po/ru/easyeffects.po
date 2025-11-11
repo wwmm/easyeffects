@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-11 18:42+0000\n"
+"POT-Creation-Date: 2025-11-11 19:26+0000\n"
 "PO-Revision-Date: 2025-11-11 15:56+0000\n"
 "Last-Translator: aaly11 <a2a0z11@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -334,7 +334,9 @@ msgstr "Диапазон частот"
 #: src/contents/ui/MultibandCompressor.qml:493
 #: src/contents/ui/MultibandCompressor.qml:518
 #: src/contents/ui/MultibandGate.qml:122 src/contents/ui/MultibandGate.qml:466
-#: src/contents/ui/MultibandGate.qml:491 src/contents/ui/PipeWirePage.qml:403
+#: src/contents/ui/MultibandGate.qml:491
+#: src/contents/ui/PageStreamsEffects.qml:463
+#: src/contents/ui/PipeWirePage.qml:403
 #: src/contents/ui/PreferencesSheet.qml:370
 #: src/contents/ui/PreferencesSheet.qml:385
 #: src/contents/ui/PreferencesSheet.qml:469 src/contents/ui/Reverb.qml:127
@@ -382,14 +384,14 @@ msgstr "Прослушать"
 #: src/contents/ui/MultibandCompressor.qml:985
 #: src/contents/ui/MultibandGate.qml:958 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:338 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:545
+#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:546
 msgid "Reset"
 msgstr "Сброс"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:463
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:421
 #: src/contents/ui/Gate.qml:436 src/contents/ui/StereoTools.qml:249
-#: src/contents/ui/main.qml:483
+#: src/contents/ui/main.qml:484
 msgid "Output"
 msgstr "Выход"
 
@@ -1027,7 +1029,7 @@ msgid "Default"
 msgstr "По умолчанию"
 
 #: src/contents/ui/Crossfeed.qml:146 src/contents/ui/Reverb.qml:315
-#: src/contents/ui/main.qml:461
+#: src/contents/ui/main.qml:462
 msgid "Presets"
 msgstr "Предустановки"
 
@@ -1337,7 +1339,7 @@ msgstr ""
 # msgstr "Влияние комплексных измерений"
 # ###############################################
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:40
-#: src/contents/ui/main.qml:492
+#: src/contents/ui/main.qml:493
 msgid "Input"
 msgstr "Вход"
 
@@ -1547,10 +1549,55 @@ msgstr "Внутренний"
 msgid "Filter mode"
 msgstr "Режим стерео"
 
+#: src/contents/ui/Filter.qml:64
+msgid "RLC (BT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "RLC (MT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "BWC (BT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "BWC (MT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "LRX (BT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "LRX (MT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "APO (DR)"
+msgstr ""
+
 #: src/contents/ui/Filter.qml:74
 #, fuzzy
 msgid "Equalizer mode"
 msgstr "Режим эквалайзера"
+
+#: src/contents/ui/Filter.qml:78 src/contents/ui/Loudness.qml:58
+msgid "IIR"
+msgstr "БИХ (IIR)"
+
+#: src/contents/ui/Filter.qml:78
+msgid "FIR"
+msgstr "КИХ (FIR)"
+
+#: src/contents/ui/Filter.qml:78 src/contents/ui/Loudness.qml:58
+msgid "FFT"
+msgstr "БПФ (FFT)"
+
+#: src/contents/ui/Filter.qml:78
+#, fuzzy
+msgid "SPM"
+msgstr "ПСС (SPM)"
 
 # http://wikisound.org/Гейт: шумовой гейт или просто гейт — это электронное устройство или плагин динамической обработки, который используется для контроля уровня звукового сигнала. Гейт пропускает или глушит сигнал в зависимости от установленного порогового значения. Он очень часто используется для подавления шума в паузах.
 #: src/contents/ui/Gate.qml:54 src/tags_plugin_name.cpp:41
@@ -1812,6 +1859,27 @@ msgstr "Порог"
 #, fuzzy
 msgid "Contour"
 msgstr "Элементы управления"
+
+#: src/contents/ui/Loudness.qml:72
+msgid "Flat"
+msgstr "Плоский"
+
+#: src/contents/ui/Loudness.qml:72
+msgid "ISO226-2003"
+msgstr "ISO226-2003"
+
+#: src/contents/ui/Loudness.qml:72
+msgid "Fletcher-Munson"
+msgstr ""
+
+#: src/contents/ui/Loudness.qml:72
+msgid "Robinson-Dadson"
+msgstr ""
+
+#: src/contents/ui/Loudness.qml:72
+#, fuzzy
+msgid "ISO226-2023"
+msgstr "ISO226-2003"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: src/contents/ui/Loudness.qml:82
@@ -2901,7 +2969,7 @@ msgid "Toggle microphone monitoring"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:369 src/contents/ui/main.qml:395
-#: src/contents/ui/main.qml:525
+#: src/contents/ui/main.qml:526
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_Горячие клавиши"
@@ -3040,12 +3108,12 @@ msgstr "Уверены, что хотите убрать это приложен
 msgid "Active"
 msgstr "Активировать"
 
-#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:533
+#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:534
 #, fuzzy
 msgid "Manual"
 msgstr "_Руководство"
 
-#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:565
+#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:566
 #, fuzzy
 msgid "Quit"
 msgstr "_Выйти"
@@ -3054,21 +3122,21 @@ msgstr "_Выйти"
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/main.qml:449
+#: src/contents/ui/main.qml:450
 msgid "Turn effects on/off"
 msgstr "Включить/выключить эффекты"
 
-#: src/contents/ui/main.qml:501
+#: src/contents/ui/main.qml:502
 #, fuzzy
 msgid "PipeWire"
 msgstr "_PipeWire"
 
-#: src/contents/ui/main.qml:517
+#: src/contents/ui/main.qml:518
 #, fuzzy
 msgid "Preferences"
 msgstr "_Настройки"
 
-#: src/contents/ui/main.qml:557
+#: src/contents/ui/main.qml:558
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_О программе Easy Effects"
@@ -3651,9 +3719,6 @@ msgstr "Простые звуковые эффекты"
 #~ msgid "Standard"
 #~ msgstr "Стандарт"
 
-#~ msgid "Flat"
-#~ msgstr "Плоский"
-
 #~ msgid "Output Volume"
 #~ msgstr "Громкость на выходе"
 
@@ -4063,15 +4128,6 @@ msgstr "Простые звуковые эффекты"
 
 #~ msgid "infinity"
 #~ msgstr "бесконечно"
-
-#~ msgid "IIR"
-#~ msgstr "БИХ (IIR)"
-
-#~ msgid "FIR"
-#~ msgstr "КИХ (FIR)"
-
-#~ msgid "FFT"
-#~ msgstr "БПФ (FFT)"
 
 #, fuzzy
 #~ msgid "Wet Ratio"
@@ -5225,9 +5281,6 @@ msgstr "Простые звуковые эффекты"
 
 #~ msgid "ASC"
 #~ msgstr "Адаптивное управление наклоном"
-
-#~ msgid "ISO226-2003"
-#~ msgstr "ISO226-2003"
 
 #~ msgid "Audio Effects for PulseAudio Applications"
 #~ msgstr "Аудиоэффекты для приложений PulseAudio"

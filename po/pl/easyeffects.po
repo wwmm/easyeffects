@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: EasyEffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-11 18:42+0000\n"
+"POT-Creation-Date: 2025-11-11 19:26+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Aleksander <olek_filip@wp.pl>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -330,7 +330,9 @@ msgstr "Zakres"
 #: src/contents/ui/MultibandCompressor.qml:493
 #: src/contents/ui/MultibandCompressor.qml:518
 #: src/contents/ui/MultibandGate.qml:122 src/contents/ui/MultibandGate.qml:466
-#: src/contents/ui/MultibandGate.qml:491 src/contents/ui/PipeWirePage.qml:403
+#: src/contents/ui/MultibandGate.qml:491
+#: src/contents/ui/PageStreamsEffects.qml:463
+#: src/contents/ui/PipeWirePage.qml:403
 #: src/contents/ui/PreferencesSheet.qml:370
 #: src/contents/ui/PreferencesSheet.qml:385
 #: src/contents/ui/PreferencesSheet.qml:469 src/contents/ui/Reverb.qml:127
@@ -378,14 +380,14 @@ msgstr "Słuchaj"
 #: src/contents/ui/MultibandCompressor.qml:985
 #: src/contents/ui/MultibandGate.qml:958 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:338 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:545
+#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:546
 msgid "Reset"
 msgstr "Zresetuj"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:463
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:421
 #: src/contents/ui/Gate.qml:436 src/contents/ui/StereoTools.qml:249
-#: src/contents/ui/main.qml:483
+#: src/contents/ui/main.qml:484
 msgid "Output"
 msgstr "Wyjście"
 
@@ -1028,7 +1030,7 @@ msgid "Default"
 msgstr "Domyślne"
 
 #: src/contents/ui/Crossfeed.qml:146 src/contents/ui/Reverb.qml:315
-#: src/contents/ui/main.qml:461
+#: src/contents/ui/main.qml:462
 msgid "Presets"
 msgstr "Profile"
 
@@ -1329,7 +1331,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:40
-#: src/contents/ui/main.qml:492
+#: src/contents/ui/main.qml:493
 msgid "Input"
 msgstr "Wejście"
 
@@ -1537,10 +1539,55 @@ msgstr "Wewnętrzne"
 msgid "Filter mode"
 msgstr "Tryb stereo"
 
+#: src/contents/ui/Filter.qml:64
+msgid "RLC (BT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "RLC (MT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "BWC (BT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "BWC (MT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "LRX (BT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "LRX (MT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "APO (DR)"
+msgstr ""
+
 #: src/contents/ui/Filter.qml:74
 #, fuzzy
 msgid "Equalizer mode"
 msgstr "Tryb korektora"
+
+#: src/contents/ui/Filter.qml:78 src/contents/ui/Loudness.qml:58
+msgid "IIR"
+msgstr "IIR"
+
+#: src/contents/ui/Filter.qml:78
+msgid "FIR"
+msgstr "FIR"
+
+#: src/contents/ui/Filter.qml:78 src/contents/ui/Loudness.qml:58
+msgid "FFT"
+msgstr "FFT"
+
+#: src/contents/ui/Filter.qml:78
+#, fuzzy
+msgid "SPM"
+msgstr "SPM"
 
 #: src/contents/ui/Gate.qml:54 src/tags_plugin_name.cpp:41
 msgid "Gate"
@@ -1799,6 +1846,26 @@ msgstr "Próg"
 #, fuzzy
 msgid "Contour"
 msgstr "Sterowanie"
+
+#: src/contents/ui/Loudness.qml:72
+msgid "Flat"
+msgstr "Płaskie"
+
+#: src/contents/ui/Loudness.qml:72
+msgid "ISO226-2003"
+msgstr ""
+
+#: src/contents/ui/Loudness.qml:72
+msgid "Fletcher-Munson"
+msgstr ""
+
+#: src/contents/ui/Loudness.qml:72
+msgid "Robinson-Dadson"
+msgstr ""
+
+#: src/contents/ui/Loudness.qml:72
+msgid "ISO226-2023"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:82
 #, fuzzy
@@ -2878,7 +2945,7 @@ msgid "Toggle microphone monitoring"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:369 src/contents/ui/main.qml:395
-#: src/contents/ui/main.qml:525
+#: src/contents/ui/main.qml:526
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_Skróty"
@@ -3017,12 +3084,12 @@ msgstr ""
 msgid "Active"
 msgstr "Kompresor"
 
-#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:533
+#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:534
 #, fuzzy
 msgid "Manual"
 msgstr "_Instrukcja"
 
-#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:565
+#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:566
 #, fuzzy
 msgid "Quit"
 msgstr "_Wyjdź"
@@ -3031,21 +3098,21 @@ msgstr "_Wyjdź"
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/main.qml:449
+#: src/contents/ui/main.qml:450
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/main.qml:501
+#: src/contents/ui/main.qml:502
 #, fuzzy
 msgid "PipeWire"
 msgstr "_PipeWire"
 
-#: src/contents/ui/main.qml:517
+#: src/contents/ui/main.qml:518
 #, fuzzy
 msgid "Preferences"
 msgstr "_Ustawienia"
 
-#: src/contents/ui/main.qml:557
+#: src/contents/ui/main.qml:558
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_O EasyEffects"
@@ -3598,9 +3665,6 @@ msgstr ""
 #~ msgid "Standard"
 #~ msgstr "Standardowe"
 
-#~ msgid "Flat"
-#~ msgstr "Płaskie"
-
 #~ msgid "Output Volume"
 #~ msgstr "Głośność wyjścia"
 
@@ -3987,15 +4051,6 @@ msgstr ""
 
 #~ msgid "infinity"
 #~ msgstr "nieskończoność"
-
-#~ msgid "IIR"
-#~ msgstr "IIR"
-
-#~ msgid "FIR"
-#~ msgstr "FIR"
-
-#~ msgid "FFT"
-#~ msgstr "FFT"
 
 #, fuzzy
 #~ msgid "Wet Ratio"
