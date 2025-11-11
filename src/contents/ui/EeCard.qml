@@ -8,7 +8,7 @@ import org.kde.kirigami as Kirigami
 Kirigami.Card {
     id: root
 
-    property alias title: heading.text
+    property alias title: heading.text // qmllint disable
     default property alias content: innerLayout.children
 
     leftPadding: 0
