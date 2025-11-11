@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-11 18:42+0000\n"
+"POT-Creation-Date: 2025-11-11 19:26+0000\n"
 "PO-Revision-Date: 2025-11-11 15:56+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -313,7 +313,9 @@ msgstr "範圍"
 #: src/contents/ui/MultibandCompressor.qml:493
 #: src/contents/ui/MultibandCompressor.qml:518
 #: src/contents/ui/MultibandGate.qml:122 src/contents/ui/MultibandGate.qml:466
-#: src/contents/ui/MultibandGate.qml:491 src/contents/ui/PipeWirePage.qml:403
+#: src/contents/ui/MultibandGate.qml:491
+#: src/contents/ui/PageStreamsEffects.qml:463
+#: src/contents/ui/PipeWirePage.qml:403
 #: src/contents/ui/PreferencesSheet.qml:370
 #: src/contents/ui/PreferencesSheet.qml:385
 #: src/contents/ui/PreferencesSheet.qml:469 src/contents/ui/Reverb.qml:127
@@ -360,14 +362,14 @@ msgstr "聆聽"
 #: src/contents/ui/MultibandCompressor.qml:985
 #: src/contents/ui/MultibandGate.qml:958 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:338 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:545
+#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:546
 msgid "Reset"
 msgstr "重設"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:463
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:421
 #: src/contents/ui/Gate.qml:436 src/contents/ui/StereoTools.qml:249
-#: src/contents/ui/main.qml:483
+#: src/contents/ui/main.qml:484
 msgid "Output"
 msgstr "輸出"
 
@@ -966,7 +968,7 @@ msgid "Default"
 msgstr "預設"
 
 #: src/contents/ui/Crossfeed.qml:146 src/contents/ui/Reverb.qml:315
-#: src/contents/ui/main.qml:461
+#: src/contents/ui/main.qml:462
 msgid "Presets"
 msgstr "預設集"
 
@@ -1241,7 +1243,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "使用等級量表的輸入和輸出增益控制"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:40
-#: src/contents/ui/main.qml:492
+#: src/contents/ui/main.qml:493
 msgid "Input"
 msgstr "輸入"
 
@@ -1424,9 +1426,54 @@ msgstr "內部"
 msgid "Filter mode"
 msgstr "篩選模式"
 
+#: src/contents/ui/Filter.qml:64
+msgid "RLC (BT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "RLC (MT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "BWC (BT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "BWC (MT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "LRX (BT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "LRX (MT)"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:64
+msgid "APO (DR)"
+msgstr ""
+
 #: src/contents/ui/Filter.qml:74
 msgid "Equalizer mode"
 msgstr "等化器模式"
+
+#: src/contents/ui/Filter.qml:78 src/contents/ui/Loudness.qml:58
+msgid "IIR"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:78
+msgid "FIR"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:78 src/contents/ui/Loudness.qml:58
+msgid "FFT"
+msgstr ""
+
+#: src/contents/ui/Filter.qml:78
+#, fuzzy
+msgid "SPM"
+msgstr "SMA"
 
 #: src/contents/ui/Gate.qml:54 src/tags_plugin_name.cpp:41
 msgid "Gate"
@@ -1657,6 +1704,26 @@ msgstr "閾值提升"
 #: src/contents/ui/Loudness.qml:68
 msgid "Contour"
 msgstr "輪廓"
+
+#: src/contents/ui/Loudness.qml:72
+msgid "Flat"
+msgstr "平坦"
+
+#: src/contents/ui/Loudness.qml:72
+msgid "ISO226-2003"
+msgstr ""
+
+#: src/contents/ui/Loudness.qml:72
+msgid "Fletcher-Munson"
+msgstr ""
+
+#: src/contents/ui/Loudness.qml:72
+msgid "Robinson-Dadson"
+msgstr ""
+
+#: src/contents/ui/Loudness.qml:72
+msgid "ISO226-2023"
+msgstr ""
 
 #: src/contents/ui/Loudness.qml:82
 msgid "FFT size"
@@ -2620,7 +2687,7 @@ msgid "Toggle microphone monitoring"
 msgstr "切換麥克風監聽"
 
 #: src/contents/ui/ShortcutsSheet.qml:369 src/contents/ui/main.qml:395
-#: src/contents/ui/main.qml:525
+#: src/contents/ui/main.qml:526
 msgid "Shortcuts"
 msgstr "快速鍵"
 
@@ -2740,11 +2807,11 @@ msgstr "確定要清除此列表？"
 msgid "Active"
 msgstr "作用"
 
-#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:533
+#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:534
 msgid "Manual"
 msgstr "手冊"
 
-#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:565
+#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:566
 msgid "Quit"
 msgstr "退出"
 
@@ -2752,19 +2819,19 @@ msgstr "退出"
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/main.qml:449
+#: src/contents/ui/main.qml:450
 msgid "Turn effects on/off"
 msgstr "將音效開啟/關閉"
 
-#: src/contents/ui/main.qml:501
+#: src/contents/ui/main.qml:502
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:517
+#: src/contents/ui/main.qml:518
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: src/contents/ui/main.qml:557
+#: src/contents/ui/main.qml:558
 msgid "About Easy Effects"
 msgstr "關於 Easy Effects"
 
@@ -3010,9 +3077,6 @@ msgstr "簡單的音效處理"
 
 #~ msgid "Standard"
 #~ msgstr "標準"
-
-#~ msgid "Flat"
-#~ msgstr "平坦"
 
 #~ msgid "Band 2"
 #~ msgstr "頻帶 2"
