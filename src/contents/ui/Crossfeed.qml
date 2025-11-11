@@ -49,52 +49,40 @@ Kirigami.ScrollablePage {
 
             Layout.fillWidth: true
 
-            Kirigami.Card {
+            EeCard {
                 id: cardControls
 
-                leftPadding: 0
-                rightPadding: 0
+                title: i18n("Controls") // qmllint disable
 
-                header: Kirigami.Heading {
-                    text: i18n("Controls") // qmllint disable
-                    level: 2
-                    leftPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
-                    rightPadding: Kirigami.Units.largeSpacing + Kirigami.Units.smallSpacing
+                EeSpinBox {
+                    id: fcut
+
+                    label: i18n("Cutoff") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: crossfeedPage.pluginDB.getMinValue("fcut")
+                    to: crossfeedPage.pluginDB.getMaxValue("fcut")
+                    value: crossfeedPage.pluginDB.fcut
+                    decimals: 0
+                    stepSize: 1
+                    unit: i18n("Hz")
+                    onValueModified: v => {
+                        crossfeedPage.pluginDB.fcut = v;
+                    }
                 }
 
-                contentItem: ColumnLayout {
-                    spacing: 0
+                EeSpinBox {
+                    id: feed
 
-                    EeSpinBox {
-                        id: fcut
-
-                        label: i18n("Cutoff") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: crossfeedPage.pluginDB.getMinValue("fcut")
-                        to: crossfeedPage.pluginDB.getMaxValue("fcut")
-                        value: crossfeedPage.pluginDB.fcut
-                        decimals: 0
-                        stepSize: 1
-                        unit: i18n("Hz")
-                        onValueModified: v => {
-                            crossfeedPage.pluginDB.fcut = v;
-                        }
-                    }
-
-                    EeSpinBox {
-                        id: feed
-
-                        label: i18n("Feed") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: crossfeedPage.pluginDB.getMinValue("feed")
-                        to: crossfeedPage.pluginDB.getMaxValue("feed")
-                        value: crossfeedPage.pluginDB.feed
-                        decimals: 1
-                        stepSize: 0.1
-                        unit: i18n("dB")
-                        onValueModified: v => {
-                            crossfeedPage.pluginDB.feed = v;
-                        }
+                    label: i18n("Feed") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: crossfeedPage.pluginDB.getMinValue("feed")
+                    to: crossfeedPage.pluginDB.getMaxValue("feed")
+                    value: crossfeedPage.pluginDB.feed
+                    decimals: 1
+                    stepSize: 0.1
+                    unit: i18n("dB")
+                    onValueModified: v => {
+                        crossfeedPage.pluginDB.feed = v;
                     }
                 }
             }
