@@ -35,107 +35,91 @@ Kirigami.ScrollablePage {
             maximumColumns: 3
             uniformCellWidths: true
 
-            Kirigami.Card {
+            EeCard {
                 id: cardControls
 
-                header: Kirigami.Heading {
-                    text: i18n("Echo Canceller") // qmllint disable
-                    level: 2
+                title: i18n("Echo Canceller") // qmllint disable
+
+                EeSwitch {
+                    label: i18n("Enable") // qmllint disable
+                    isChecked: echoCancellerPage.pluginDB.enableEchoCanceller
+                    onCheckedChanged: {
+                        if (isChecked !== echoCancellerPage.pluginDB.enableEchoCanceller)
+                            echoCancellerPage.pluginDB.enableEchoCanceller = isChecked;
+                    }
                 }
 
-                contentItem: ColumnLayout {
-                    anchors.fill: parent
-
-                    EeSwitch {
-                        label: i18n("Enable") // qmllint disable
-                        isChecked: echoCancellerPage.pluginDB.enableEchoCanceller
-                        onCheckedChanged: {
-                            if (isChecked !== echoCancellerPage.pluginDB.enableEchoCanceller)
-                                echoCancellerPage.pluginDB.enableEchoCanceller = isChecked;
-                        }
+                EeSwitch {
+                    label: i18n("Mobile mode") // qmllint disable
+                    isChecked: echoCancellerPage.pluginDB.echoCancellerMobileMode
+                    onCheckedChanged: {
+                        if (isChecked !== echoCancellerPage.pluginDB.echoCancellerMobileMode)
+                            echoCancellerPage.pluginDB.echoCancellerMobileMode = isChecked;
                     }
+                }
 
-                    EeSwitch {
-                        label: i18n("Mobile mode") // qmllint disable
-                        isChecked: echoCancellerPage.pluginDB.echoCancellerMobileMode
-                        onCheckedChanged: {
-                            if (isChecked !== echoCancellerPage.pluginDB.echoCancellerMobileMode)
-                                echoCancellerPage.pluginDB.echoCancellerMobileMode = isChecked;
-                        }
-                    }
-
-                    EeSwitch {
-                        label: i18n("Enforce high-pass") // qmllint disable
-                        isChecked: echoCancellerPage.pluginDB.echoCancellerEnforceHighPass
-                        onCheckedChanged: {
-                            if (isChecked !== echoCancellerPage.pluginDB.echoCancellerEnforceHighPass)
-                                echoCancellerPage.pluginDB.echoCancellerEnforceHighPass = isChecked;
-                        }
+                EeSwitch {
+                    label: i18n("Enforce high-pass") // qmllint disable
+                    isChecked: echoCancellerPage.pluginDB.echoCancellerEnforceHighPass
+                    onCheckedChanged: {
+                        if (isChecked !== echoCancellerPage.pluginDB.echoCancellerEnforceHighPass)
+                            echoCancellerPage.pluginDB.echoCancellerEnforceHighPass = isChecked;
                     }
                 }
             }
 
-            Kirigami.Card {
+            EeCard {
                 id: cardNoiseSuppression
 
-                header: Kirigami.Heading {
-                    text: i18n("Noise Suppression") // qmllint disable
-                    level: 2
+                title: i18n("Noise Suppression") // qmllint disable
+
+                EeSwitch {
+                    label: i18n("Enable") // qmllint disable
+                    isChecked: echoCancellerPage.pluginDB.enableNoiseSuppression
+                    onCheckedChanged: {
+                        if (isChecked !== echoCancellerPage.pluginDB.enableNoiseSuppression)
+                            echoCancellerPage.pluginDB.enableNoiseSuppression = isChecked;
+                    }
                 }
 
-                contentItem: ColumnLayout {
-                    anchors.fill: parent
-
-                    EeSwitch {
-                        label: i18n("Enable") // qmllint disable
-                        isChecked: echoCancellerPage.pluginDB.enableNoiseSuppression
-                        onCheckedChanged: {
-                            if (isChecked !== echoCancellerPage.pluginDB.enableNoiseSuppression)
-                                echoCancellerPage.pluginDB.enableNoiseSuppression = isChecked;
-                        }
-                    }
-
-                    FormCard.FormComboBoxDelegate {
-                        text: i18n("Level") // qmllint disable
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: echoCancellerPage.pluginDB.noiseSuppressionLevel
-                        editable: false
-                        model: [i18n("Low"), i18n("Moderate"), i18n("High"), i18n("Very high")]
-                        onActivated: idx => {
-                            echoCancellerPage.pluginDB.noiseSuppressionLevel = idx;
-                        }
+                FormCard.FormComboBoxDelegate {
+                    verticalPadding: Kirigami.Units.smallUnit
+                    text: i18n("Level") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: echoCancellerPage.pluginDB.noiseSuppressionLevel
+                    editable: false
+                    model: [i18n("Low"), i18n("Moderate"), i18n("High"), i18n("Very high")]
+                    onActivated: idx => {
+                        echoCancellerPage.pluginDB.noiseSuppressionLevel = idx;
                     }
                 }
             }
 
-            Kirigami.Card {
+            EeCard {
                 id: cardHighPass
 
-                header: Kirigami.Heading {
-                    text: i18n("High-Pass Filter") // qmllint disable
-                    level: 2
+                title: i18n("High-Pass Filter") // qmllint disable
+
+                EeSwitch {
+                    label: i18n("Enable") // qmllint disable
+                    isChecked: echoCancellerPage.pluginDB.enableHighPassFilter
+                    onCheckedChanged: {
+                        if (isChecked !== echoCancellerPage.pluginDB.enableHighPassFilter)
+                            echoCancellerPage.pluginDB.enableHighPassFilter = isChecked;
+                    }
                 }
 
-                contentItem: ColumnLayout {
-                    anchors.fill: parent
-
-                    EeSwitch {
-                        label: i18n("Enable") // qmllint disable
-                        isChecked: echoCancellerPage.pluginDB.enableHighPassFilter
-                        onCheckedChanged: {
-                            if (isChecked !== echoCancellerPage.pluginDB.enableHighPassFilter)
-                                echoCancellerPage.pluginDB.enableHighPassFilter = isChecked;
-                        }
+                EeSwitch {
+                    label: i18n("Full band") // qmllint disable
+                    isChecked: echoCancellerPage.pluginDB.highPassFilterFullBand
+                    onCheckedChanged: {
+                        if (isChecked !== echoCancellerPage.pluginDB.highPassFilterFullBand)
+                            echoCancellerPage.pluginDB.highPassFilterFullBand = isChecked;
                     }
+                }
 
-                    EeSwitch {
-                        label: i18n("Full band") // qmllint disable
-                        isChecked: echoCancellerPage.pluginDB.highPassFilterFullBand
-                        onCheckedChanged: {
-                            if (isChecked !== echoCancellerPage.pluginDB.highPassFilterFullBand)
-                                echoCancellerPage.pluginDB.highPassFilterFullBand = isChecked;
-                        }
-                    }
+                Item {
+                    Layout.fillHeight: true
                 }
             }
         }

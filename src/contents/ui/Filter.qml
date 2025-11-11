@@ -36,162 +36,153 @@ Kirigami.ScrollablePage {
             implicitWidth: cardLayout.maximumColumnWidth
             uniformCellWidths: true
 
-            Kirigami.Card {
-                header: Kirigami.Heading {
-                    text: i18n("Controls") // qmllint disable
-                    level: 2
+            EeCard {
+                title: i18n("Controls") // qmllint disable
+
+                FormCard.FormComboBoxDelegate {
+                    id: type
+
+                    verticalPadding: Kirigami.Units.smallSpacing
+                    text: i18n("Type") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: filterPage.pluginDB.type
+                    editable: false
+                    model: [i18n("Low-pass"), i18n("High-pass"), i18n("Low-shelf"), i18n("High-shelf"), i18n("Bell"), i18n("Bandpass"), i18n("Notch"), i18n("Resonance"), i18n("Ladder-pass"), i18n("Ladder-rejection"), i18n("Allpass")]// qmllint disable
+                    onActivated: idx => {
+                        filterPage.pluginDB.type = idx;
+                    }
                 }
 
-                contentItem: ColumnLayout {
-                    spacing: 0
+                FormCard.FormComboBoxDelegate {
+                    id: mode
 
-                    FormCard.FormComboBoxDelegate {
-                        id: type
-
-                        leftPadding: 0
-                        rightPadding: 0
-                        text: i18n("Type") // qmllint disable
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: filterPage.pluginDB.type
-                        editable: false
-                        model: [i18n("Low-pass"), i18n("High-pass"), i18n("Low-shelf"), i18n("High-shelf"), i18n("Bell"), i18n("Bandpass"), i18n("Notch"), i18n("Resonance"), i18n("Ladder-pass"), i18n("Ladder-rejection"), i18n("Allpass")]// qmllint disable
-                        onActivated: idx => {
-                            filterPage.pluginDB.type = idx;
-                        }
+                    verticalPadding: Kirigami.Units.smallSpacing
+                    text: i18n("Filter mode") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: filterPage.pluginDB.mode
+                    editable: false
+                    model: ["RLC (BT)", "RLC (MT)", "BWC (BT)", "BWC (MT)", "LRX (BT)", "LRX (MT)", "APO (DR)"]
+                    onActivated: idx => {
+                        filterPage.pluginDB.mode = idx;
                     }
+                }
 
-                    FormCard.FormComboBoxDelegate {
-                        id: mode
+                FormCard.FormComboBoxDelegate {
+                    id: equalMode
 
-                        leftPadding: 0
-                        rightPadding: 0
-                        text: i18n("Filter mode") // qmllint disable
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: filterPage.pluginDB.mode
-                        editable: false
-                        model: ["RLC (BT)", "RLC (MT)", "BWC (BT)", "BWC (MT)", "LRX (BT)", "LRX (MT)", "APO (DR)"]
-                        onActivated: idx => {
-                            filterPage.pluginDB.mode = idx;
-                        }
+                    verticalPadding: Kirigami.Units.smallSpacing
+                    text: i18n("Equalizer mode") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: filterPage.pluginDB.equalMode
+                    editable: false
+                    model: ["IIR", "FIR", "FFT", "SPM"]
+                    onActivated: idx => {
+                        filterPage.pluginDB.equalMode = idx;
                     }
+                }
 
-                    FormCard.FormComboBoxDelegate {
-                        id: equalMode
+                FormCard.FormComboBoxDelegate {
+                    id: slope
 
-                        leftPadding: 0
-                        rightPadding: 0
-                        text: i18n("Equalizer mode") // qmllint disable
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: filterPage.pluginDB.equalMode
-                        editable: false
-                        model: ["IIR", "FIR", "FFT", "SPM"]
-                        onActivated: idx => {
-                            filterPage.pluginDB.equalMode = idx;
-                        }
+                    verticalPadding: Kirigami.Units.smallSpacing
+                    text: i18n("Slope") // qmllint disable
+                    displayMode: FormCard.FormComboBoxDelegate.ComboBox
+                    currentIndex: filterPage.pluginDB.slope
+                    editable: false
+                    model: ["x1", "x2", "x3", "x4", "x6", "x8", "x12", "x16"]
+                    onActivated: idx => {
+                        filterPage.pluginDB.slope = idx;
                     }
+                }
 
-                    FormCard.FormComboBoxDelegate {
-                        id: slope
-
-                        leftPadding: 0
-                        rightPadding: 0
-                        text: i18n("Slope") // qmllint disable
-                        displayMode: FormCard.FormComboBoxDelegate.ComboBox
-                        currentIndex: filterPage.pluginDB.slope
-                        editable: false
-                        model: ["x1", "x2", "x3", "x4", "x6", "x8", "x12", "x16"]
-                        onActivated: idx => {
-                            filterPage.pluginDB.slope = idx;
-                        }
-                    }
+                Item {
+                    Layout.fillHeight: true
                 }
             }
 
-            Kirigami.Card {
+            EeCard {
+                title: i18n("Filter") // qmllint disable
 
-                header: Kirigami.Heading {
-                    text: i18n("Filter") // qmllint disable
-                    level: 2
+                EeSpinBox {
+                    id: frequency
+
+                    label: i18n("Frequency") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: filterPage.pluginDB.getMinValue("frequency")
+                    to: filterPage.pluginDB.getMaxValue("frequency")
+                    value: filterPage.pluginDB.frequency
+                    decimals: 0
+                    stepSize: 1
+                    unit: i18n("Hz")
+                    onValueModified: v => {
+                        filterPage.pluginDB.frequency = v;
+                    }
                 }
 
-                contentItem: ColumnLayout {
-                    EeSpinBox {
-                        id: frequency
+                EeSpinBox {
+                    id: width
 
-                        label: i18n("Frequency") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: filterPage.pluginDB.getMinValue("frequency")
-                        to: filterPage.pluginDB.getMaxValue("frequency")
-                        value: filterPage.pluginDB.frequency
-                        decimals: 0
-                        stepSize: 1
-                        unit: i18n("Hz")
-                        onValueModified: v => {
-                            filterPage.pluginDB.frequency = v;
-                        }
+                    label: i18n("Width") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: filterPage.pluginDB.getMinValue("width")
+                    to: filterPage.pluginDB.getMaxValue("width")
+                    value: filterPage.pluginDB.width
+                    decimals: 0
+                    stepSize: 1
+                    onValueModified: v => {
+                        filterPage.pluginDB.width = v;
                     }
+                }
 
-                    EeSpinBox {
-                        id: width
+                EeSpinBox {
+                    id: gain
 
-                        label: i18n("Width") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: filterPage.pluginDB.getMinValue("width")
-                        to: filterPage.pluginDB.getMaxValue("width")
-                        value: filterPage.pluginDB.width
-                        decimals: 0
-                        stepSize: 1
-                        onValueModified: v => {
-                            filterPage.pluginDB.width = v;
-                        }
+                    label: i18n("Gain") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: filterPage.pluginDB.getMinValue("gain")
+                    to: filterPage.pluginDB.getMaxValue("gain")
+                    value: filterPage.pluginDB.gain
+                    decimals: 2
+                    stepSize: 0.01
+                    unit: i18n("dB")
+                    onValueModified: v => {
+                        filterPage.pluginDB.gain = v;
                     }
+                }
 
-                    EeSpinBox {
-                        id: gain
+                EeSpinBox {
+                    id: quality
 
-                        label: i18n("Gain") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: filterPage.pluginDB.getMinValue("gain")
-                        to: filterPage.pluginDB.getMaxValue("gain")
-                        value: filterPage.pluginDB.gain
-                        decimals: 2
-                        stepSize: 0.01
-                        unit: i18n("dB")
-                        onValueModified: v => {
-                            filterPage.pluginDB.gain = v;
-                        }
+                    label: i18n("Quality") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: filterPage.pluginDB.getMinValue("quality")
+                    to: filterPage.pluginDB.getMaxValue("quality")
+                    value: filterPage.pluginDB.quality
+                    decimals: 2
+                    stepSize: 0.01
+                    onValueModified: v => {
+                        filterPage.pluginDB.quality = v;
                     }
+                }
 
-                    EeSpinBox {
-                        id: quality
+                EeSpinBox {
+                    id: balance
 
-                        label: i18n("Quality") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: filterPage.pluginDB.getMinValue("quality")
-                        to: filterPage.pluginDB.getMaxValue("quality")
-                        value: filterPage.pluginDB.quality
-                        decimals: 2
-                        stepSize: 0.01
-                        onValueModified: v => {
-                            filterPage.pluginDB.quality = v;
-                        }
+                    label: i18n("Balance") // qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: filterPage.pluginDB.getMinValue("balance")
+                    to: filterPage.pluginDB.getMaxValue("balance")
+                    value: filterPage.pluginDB.balance
+                    decimals: 1
+                    stepSize: 0.1
+                    unit: "%"
+                    onValueModified: v => {
+                        filterPage.pluginDB.balance = v;
                     }
+                }
 
-                    EeSpinBox {
-                        id: balance
-
-                        label: i18n("Balance") // qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: filterPage.pluginDB.getMinValue("balance")
-                        to: filterPage.pluginDB.getMaxValue("balance")
-                        value: filterPage.pluginDB.balance
-                        decimals: 1
-                        stepSize: 0.1
-                        unit: "%"
-                        onValueModified: v => {
-                            filterPage.pluginDB.balance = v;
-                        }
-                    }
+                Item {
+                    Layout.fillHeight: true
                 }
             }
         }

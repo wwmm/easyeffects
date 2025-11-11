@@ -34,59 +34,54 @@ Kirigami.ScrollablePage {
             minimumColumnWidth: Kirigami.Units.gridUnit * 17
             uniformCellWidths: true
 
-            Kirigami.Card {
+            EeCard {
                 id: cardControls
 
-                header: Kirigami.Heading {
-                    text: i18n("Controls") // qmllint disable
-                    level: 2
-                }
+                title: i18n("Controls") // qmllint disable
 
-                contentItem: ColumnLayout {
+                GridLayout {
+                    columns: 2
+                    uniformCellWidths: true
+                    rowSpacing: 0
 
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
-                        Layout.alignment: Qt.AlignTop
+                    EeSpinBox {
+                        id: sequenceLength
 
-                        EeSpinBox {
-                            id: sequenceLength
-
-                            label: i18n("Sequence length") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pitchPage.pluginDB.getMinValue("sequenceLength")
-                            to: pitchPage.pluginDB.getMaxValue("sequenceLength")
-                            value: pitchPage.pluginDB.sequenceLength
-                            decimals: 0
-                            stepSize: 1
-                            unit: i18n("ms")
-                            onValueModified: v => {
-                                pitchPage.pluginDB.sequenceLength = v;
-                            }
+                        label: i18n("Sequence length") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: pitchPage.pluginDB.getMinValue("sequenceLength")
+                        to: pitchPage.pluginDB.getMaxValue("sequenceLength")
+                        value: pitchPage.pluginDB.sequenceLength
+                        decimals: 0
+                        stepSize: 1
+                        unit: i18n("ms")
+                        onValueModified: v => {
+                            pitchPage.pluginDB.sequenceLength = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: seekWindow
+                    EeSpinBox {
+                        id: seekWindow
 
-                            label: i18n("Seek window") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pitchPage.pluginDB.getMinValue("seekWindow")
-                            to: pitchPage.pluginDB.getMaxValue("seekWindow")
-                            value: pitchPage.pluginDB.seekWindow
-                            decimals: 0
-                            stepSize: 1
-                            unit: i18n("ms")
-                            onValueModified: v => {
-                                pitchPage.pluginDB.seekWindow = v;
-                            }
+                        label: i18n("Seek window") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: pitchPage.pluginDB.getMinValue("seekWindow")
+                        to: pitchPage.pluginDB.getMaxValue("seekWindow")
+                        value: pitchPage.pluginDB.seekWindow
+                        decimals: 0
+                        stepSize: 1
+                        unit: i18n("ms")
+                        onValueModified: v => {
+                            pitchPage.pluginDB.seekWindow = v;
                         }
                     }
 
                     EeSpinBox {
                         id: overlapLength
 
+                        Layout.columnSpan: 2
                         label: i18n("Overlap length") // qmllint disable
                         labelAbove: true
                         spinboxLayoutFillWidth: true
@@ -101,151 +96,138 @@ Kirigami.ScrollablePage {
                         }
                     }
 
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
+                    EeSpinBox {
+                        id: dry
+
                         Layout.alignment: Qt.AlignTop
-
-                        EeSpinBox {
-                            id: dry
-
-                            Layout.alignment: Qt.AlignTop
-                            label: i18n("Dry") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pitchPage.pluginDB.getMinValue("dry")
-                            to: pitchPage.pluginDB.getMaxValue("dry")
-                            value: pitchPage.pluginDB.dry
-                            decimals: 2 // Required to show "-inf"
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                pitchPage.pluginDB.dry = v;
-                            }
+                        label: i18n("Dry") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: pitchPage.pluginDB.getMinValue("dry")
+                        to: pitchPage.pluginDB.getMaxValue("dry")
+                        value: pitchPage.pluginDB.dry
+                        decimals: 2 // Required to show "-inf"
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            pitchPage.pluginDB.dry = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: wet
+                    EeSpinBox {
+                        id: wet
 
-                            Layout.alignment: Qt.AlignTop
-                            label: i18n("Wet") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pitchPage.pluginDB.getMinValue("wet")
-                            to: pitchPage.pluginDB.getMaxValue("wet")
-                            value: pitchPage.pluginDB.wet
-                            decimals: 2 // Required to show "-inf"
-                            stepSize: 0.01
-                            unit: i18n("dB")
-                            minusInfinityMode: true
-                            onValueModified: v => {
-                                pitchPage.pluginDB.wet = v;
-                            }
+                        Layout.alignment: Qt.AlignTop
+                        label: i18n("Wet") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: pitchPage.pluginDB.getMinValue("wet")
+                        to: pitchPage.pluginDB.getMaxValue("wet")
+                        value: pitchPage.pluginDB.wet
+                        decimals: 2 // Required to show "-inf"
+                        stepSize: 0.01
+                        unit: i18n("dB")
+                        minusInfinityMode: true
+                        onValueModified: v => {
+                            pitchPage.pluginDB.wet = v;
                         }
                     }
                 }
             }
 
-            Kirigami.Card {
+            EeCard {
                 id: cardLevels
 
                 implicitWidth: cardLayout.maximumColumnWidth
 
-                header: Kirigami.Heading {
-                    text: i18n("Pitch") // qmllint disable
-                    level: 2
-                }
+                title: i18n("Pitch") // qmllint disable
 
-                contentItem: ColumnLayout {
-                    spacing: Kirigami.Units.gridUnit
+                GridLayout {
+                    columns: 2
+                    uniformCellWidths: true
+                    rowSpacing: 0
 
-                    GridLayout {
-                        columns: 2
-                        uniformCellWidths: true
-                        Layout.alignment: Qt.AlignTop
+                    EeSpinBox {
+                        id: octaves
 
-                        EeSpinBox {
-                            id: octaves
-
-                            Layout.columnSpan: 2
-                            label: i18n("Octaves") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pitchPage.pluginDB.getMinValue("octaves")
-                            to: pitchPage.pluginDB.getMaxValue("octaves")
-                            value: pitchPage.pluginDB.octaves
-                            decimals: 0
-                            stepSize: 1
-                            onValueModified: v => {
-                                pitchPage.pluginDB.octaves = v;
-                            }
+                        Layout.columnSpan: 2
+                        label: i18n("Octaves") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: pitchPage.pluginDB.getMinValue("octaves")
+                        to: pitchPage.pluginDB.getMaxValue("octaves")
+                        value: pitchPage.pluginDB.octaves
+                        decimals: 0
+                        stepSize: 1
+                        onValueModified: v => {
+                            pitchPage.pluginDB.octaves = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: cents
+                    EeSpinBox {
+                        id: cents
 
-                            label: i18n("Cents") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pitchPage.pluginDB.getMinValue("cents")
-                            to: pitchPage.pluginDB.getMaxValue("cents")
-                            value: pitchPage.pluginDB.cents
-                            decimals: 0
-                            stepSize: 1
-                            onValueModified: v => {
-                                pitchPage.pluginDB.cents = v;
-                            }
+                        label: i18n("Cents") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: pitchPage.pluginDB.getMinValue("cents")
+                        to: pitchPage.pluginDB.getMaxValue("cents")
+                        value: pitchPage.pluginDB.cents
+                        decimals: 0
+                        stepSize: 1
+                        onValueModified: v => {
+                            pitchPage.pluginDB.cents = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: semitones
+                    EeSpinBox {
+                        id: semitones
 
-                            label: i18n("Semitones") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pitchPage.pluginDB.getMinValue("semitones")
-                            to: pitchPage.pluginDB.getMaxValue("semitones")
-                            value: pitchPage.pluginDB.semitones
-                            decimals: 0
-                            stepSize: 1
-                            onValueModified: v => {
-                                pitchPage.pluginDB.semitones = v;
-                            }
+                        label: i18n("Semitones") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: pitchPage.pluginDB.getMinValue("semitones")
+                        to: pitchPage.pluginDB.getMaxValue("semitones")
+                        value: pitchPage.pluginDB.semitones
+                        decimals: 0
+                        stepSize: 1
+                        onValueModified: v => {
+                            pitchPage.pluginDB.semitones = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: tempoDifference
+                    EeSpinBox {
+                        id: tempoDifference
 
-                            label: i18n("Tempo difference") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pitchPage.pluginDB.getMinValue("tempoDifference")
-                            to: pitchPage.pluginDB.getMaxValue("tempoDifference")
-                            value: pitchPage.pluginDB.tempoDifference
-                            decimals: 0
-                            stepSize: 1
-                            unit: "%"
-                            onValueModified: v => {
-                                pitchPage.pluginDB.tempoDifference = v;
-                            }
+                        label: i18n("Tempo difference") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: pitchPage.pluginDB.getMinValue("tempoDifference")
+                        to: pitchPage.pluginDB.getMaxValue("tempoDifference")
+                        value: pitchPage.pluginDB.tempoDifference
+                        decimals: 0
+                        stepSize: 1
+                        unit: "%"
+                        onValueModified: v => {
+                            pitchPage.pluginDB.tempoDifference = v;
                         }
+                    }
 
-                        EeSpinBox {
-                            id: rateDifference
+                    EeSpinBox {
+                        id: rateDifference
 
-                            label: i18n("Rate difference") // qmllint disable
-                            labelAbove: true
-                            spinboxLayoutFillWidth: true
-                            from: pitchPage.pluginDB.getMinValue("rateDifference")
-                            to: pitchPage.pluginDB.getMaxValue("rateDifference")
-                            value: pitchPage.pluginDB.rateDifference
-                            decimals: 0
-                            stepSize: 1
-                            unit: "%"
-                            onValueModified: v => {
-                                pitchPage.pluginDB.rateDifference = v;
-                            }
+                        label: i18n("Rate difference") // qmllint disable
+                        labelAbove: true
+                        spinboxLayoutFillWidth: true
+                        from: pitchPage.pluginDB.getMinValue("rateDifference")
+                        to: pitchPage.pluginDB.getMaxValue("rateDifference")
+                        value: pitchPage.pluginDB.rateDifference
+                        decimals: 0
+                        stepSize: 1
+                        unit: "%"
+                        onValueModified: v => {
+                            pitchPage.pluginDB.rateDifference = v;
                         }
                     }
                 }

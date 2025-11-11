@@ -81,100 +81,95 @@ Kirigami.ScrollablePage {
             Layout.fillWidth: true
             Layout.topMargin: Kirigami.Units.largeSpacing
 
-            Kirigami.Card {
+            EeCard {
                 id: cardControls
 
-                header: Kirigami.Heading {
-                    text: i18n("Controls")// qmllint disable
-                    level: 2
+                title: i18n("Controls")// qmllint disable
+
+                EeSpinBox {
+                    id: amount
+
+                    label: i18n("Amount")// qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: bassEnchancerPage.pluginDB.getMinValue("amount")
+                    to: bassEnchancerPage.pluginDB.getMaxValue("amount")
+                    value: bassEnchancerPage.pluginDB.amount
+                    decimals: 2
+                    stepSize: 0.1
+                    unit: i18n("dB")
+                    onValueModified: v => {
+                        bassEnchancerPage.pluginDB.amount = v;
+                    }
                 }
 
-                contentItem: ColumnLayout {
-                    EeSpinBox {
-                        id: amount
+                EeSpinBox {
+                    id: harmonics
 
-                        label: i18n("Amount")// qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: bassEnchancerPage.pluginDB.getMinValue("amount")
-                        to: bassEnchancerPage.pluginDB.getMaxValue("amount")
-                        value: bassEnchancerPage.pluginDB.amount
-                        decimals: 2
-                        stepSize: 0.1
-                        unit: i18n("dB")
-                        onValueModified: v => {
-                            bassEnchancerPage.pluginDB.amount = v;
-                        }
+                    label: i18n("Harmonics")// qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: bassEnchancerPage.pluginDB.getMinValue("harmonics")
+                    to: bassEnchancerPage.pluginDB.getMaxValue("harmonics")
+                    value: bassEnchancerPage.pluginDB.harmonics
+                    decimals: 1
+                    stepSize: 0.1
+                    onValueModified: v => {
+                        bassEnchancerPage.pluginDB.harmonics = v;
                     }
+                }
 
-                    EeSpinBox {
-                        id: harmonics
+                EeSpinBox {
+                    id: scope
 
-                        label: i18n("Harmonics")// qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: bassEnchancerPage.pluginDB.getMinValue("harmonics")
-                        to: bassEnchancerPage.pluginDB.getMaxValue("harmonics")
-                        value: bassEnchancerPage.pluginDB.harmonics
-                        decimals: 1
-                        stepSize: 0.1
-                        onValueModified: v => {
-                            bassEnchancerPage.pluginDB.harmonics = v;
-                        }
+                    label: i18n("Scope")// qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: bassEnchancerPage.pluginDB.getMinValue("scope")
+                    to: bassEnchancerPage.pluginDB.getMaxValue("scope")
+                    value: bassEnchancerPage.pluginDB.scope
+                    decimals: 0
+                    stepSize: 1
+                    unit: i18n("Hz")
+                    onValueModified: v => {
+                        bassEnchancerPage.pluginDB.scope = v;
                     }
+                }
 
-                    EeSpinBox {
-                        id: scope
+                EeSwitch {
+                    id: floorActive
 
-                        label: i18n("Scope")// qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: bassEnchancerPage.pluginDB.getMinValue("scope")
-                        to: bassEnchancerPage.pluginDB.getMaxValue("scope")
-                        value: bassEnchancerPage.pluginDB.scope
-                        decimals: 0
-                        stepSize: 1
-                        unit: i18n("Hz")
-                        onValueModified: v => {
-                            bassEnchancerPage.pluginDB.scope = v;
-                        }
+                    label: i18n("Floor active")// qmllint disable
+                    isChecked: bassEnchancerPage.pluginDB.floorActive
+                    onCheckedChanged: {
+                        if (isChecked !== bassEnchancerPage.pluginDB.floorActive)
+                            bassEnchancerPage.pluginDB.floorActive = isChecked;
                     }
+                }
 
-                    EeSwitch {
-                        id: floorActive
+                EeSpinBox {
+                    id: floor
 
-                        label: i18n("Floor active")// qmllint disable
-                        isChecked: bassEnchancerPage.pluginDB.floorActive
-                        onCheckedChanged: {
-                            if (isChecked !== bassEnchancerPage.pluginDB.floorActive)
-                                bassEnchancerPage.pluginDB.floorActive = isChecked;
-                        }
+                    label: i18n("Floor")// qmllint disable
+                    spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
+                    from: bassEnchancerPage.pluginDB.getMinValue("floor")
+                    to: bassEnchancerPage.pluginDB.getMaxValue("floor")
+                    value: bassEnchancerPage.pluginDB.floor
+                    decimals: 0
+                    stepSize: 1
+                    unit: i18n("Hz")
+                    enabled: floorActive.isChecked
+                    onValueModified: v => {
+                        bassEnchancerPage.pluginDB.floor = v;
                     }
+                }
 
-                    EeSpinBox {
-                        id: floor
+                EeProgressBar {
+                    id: harmonicsLevel
+                    Layout.topMargin: Kirigami.Units.largeSpacing
 
-                        label: i18n("Floor")// qmllint disable
-                        spinboxMaximumWidth: Kirigami.Units.gridUnit * 7
-                        from: bassEnchancerPage.pluginDB.getMinValue("floor")
-                        to: bassEnchancerPage.pluginDB.getMaxValue("floor")
-                        value: bassEnchancerPage.pluginDB.floor
-                        decimals: 0
-                        stepSize: 1
-                        unit: i18n("Hz")
-                        enabled: floorActive.isChecked
-                        onValueModified: v => {
-                            bassEnchancerPage.pluginDB.floor = v;
-                        }
-                    }
-
-                    EeProgressBar {
-                        id: harmonicsLevel
-                        Layout.topMargin: Kirigami.Units.largeSpacing
-
-                        label: i18n("Harmonics")// qmllint disable
-                        from: Common.minimumDecibelLevel
-                        to: 10
-                        value: 0
-                        decimals: 0
-                    }
+                    label: i18n("Harmonics")// qmllint disable
+                    from: Common.minimumDecibelLevel
+                    to: 10
+                    value: 0
+                    decimals: 0
                 }
             }
         }
