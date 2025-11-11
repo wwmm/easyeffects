@@ -11,6 +11,7 @@ arch=(x86_64)
 url='https://github.com/wwmm/easyeffects'
 license=('GPL3')
 depends=(
+  'kcolorscheme' 
   'kirigami' 
   'kirigami-addons'
   'kiconthemes'
