@@ -440,7 +440,7 @@ Kirigami.ApplicationWindow {
                         text: i18n("Go back") // qmllint disable
                         icon.name: "draw-arrow-back-symbolic"
                         displayHint: Kirigami.DisplayHint.IconOnly
-                        visible: (pageStack.currentItem as Kirigami.Page)?.showBackButton ?? false
+                        visible: (pageStack.currentItem as Kirigami.Page).showBackButton
                         onTriggered: {
                             pageStack.currentItem.goBack();
                         }
@@ -469,7 +469,7 @@ Kirigami.ApplicationWindow {
                 ]
             }
 
-            Kirigami.ActionToolBar {
+            Components.SegmentedButton {
                 id: segmentedButton
 
                 Layout.alignment: Qt.AlignHCenter
@@ -482,7 +482,6 @@ Kirigami.ApplicationWindow {
                     Kirigami.Action {
                         text: i18n("Output") // qmllint disable
                         icon.name: "audio-speakers-symbolic"
-                        checkable: true
                         checked: DB.Manager.main.visiblePage === 0
                         displayHint: segmentedButton.displayHint
                         onTriggered: {
@@ -492,7 +491,6 @@ Kirigami.ApplicationWindow {
                     Kirigami.Action {
                         text: i18n("Input") // qmllint disable
                         icon.name: "audio-input-microphone-symbolic"
-                        checkable: true
                         checked: DB.Manager.main.visiblePage === 1
                         displayHint: segmentedButton.displayHint
                         onTriggered: {
@@ -502,7 +500,6 @@ Kirigami.ApplicationWindow {
                     Kirigami.Action {
                         text: i18n("PipeWire") // qmllint disable
                         icon.name: "network-server-symbolic"
-                        checkable: true
                         checked: DB.Manager.main.visiblePage === 2
                         displayHint: segmentedButton.displayHint
                         onTriggered: {
