@@ -53,6 +53,7 @@ Kirigami.Page {
     MenuAddPlugins {
         id: menuAddPlugins
 
+	    parent: pageStreamsEffects.Controls.Overlay.overlay
         streamDB: pageStreamsEffects.streamDB
     }
 
