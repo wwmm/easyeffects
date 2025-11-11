@@ -300,7 +300,6 @@ Kirigami.Page {
             }
 
             ColumnLayout {
-                implicitWidth: pluginsListView.width
                 spacing: 0
 
                 GridLayout {
@@ -343,6 +342,8 @@ Kirigami.Page {
 
                     Layout.fillHeight: true
                     Layout.preferredWidth: contentItem.childrenRect.width
+                    Layout.topMargin: Kirigami.Units.smallSpacing * 2
+                    Layout.bottomMargin: Kirigami.Units.smallSpacing * 2
                     clip: true
                     reuseItems: true
                     model: pluginsListModel
