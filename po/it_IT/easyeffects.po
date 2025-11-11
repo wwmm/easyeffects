@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-11 01:33+0000\n"
-"PO-Revision-Date: 2025-11-10 14:51+0000\n"
+"PO-Revision-Date: 2025-11-11 03:47+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -297,7 +297,7 @@ msgstr "Quantità"
 #: src/contents/ui/StereoTools.qml:159 src/contents/ui/StereoTools.qml:333
 #: src/contents/ui/StereoTools.qml:351
 msgid "dB"
-msgstr ""
+msgstr "dB"
 
 #: src/contents/ui/BassEnhancer.qml:108 src/contents/ui/BassEnhancer.qml:168
 #: src/contents/ui/Exciter.qml:112 src/contents/ui/Exciter.qml:172
@@ -324,7 +324,7 @@ msgstr "Soglia"
 #: src/contents/ui/PreferencesSheet.qml:470 src/contents/ui/Reverb.qml:127
 #: src/contents/ui/Reverb.qml:144 src/contents/ui/Reverb.qml:161
 msgid "Hz"
-msgstr ""
+msgstr "Hz"
 
 #: src/contents/ui/BassEnhancer.qml:139
 msgid "Floor active"
@@ -510,7 +510,7 @@ msgstr "Attacco"
 #: src/contents/ui/PreferencesSheet.qml:403 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
 msgid "ms"
-msgstr ""
+msgstr "ms"
 
 #: src/contents/ui/Compressor.qml:195 src/contents/ui/Expander.qml:155
 #: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:864
@@ -887,7 +887,7 @@ msgstr "Spettro"
 #: src/contents/ui/Convolver.qml:225 src/contents/ui/Convolver.qml:325
 #: src/contents/ui/PreferencesSheet.qml:184 src/contents/ui/Reverb.qml:68
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #: src/contents/ui/Convolver.qml:239
 msgid "Log scale"
@@ -1004,7 +1004,7 @@ msgstr "Bypass"
 
 #: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:48
 msgid "kHz"
-msgstr ""
+msgstr "kHz"
 
 #: src/contents/ui/DeepFilterNet.qml:32
 msgid "Attenuation limit"
@@ -1087,7 +1087,7 @@ msgstr "F2 livello"
 
 #: src/contents/ui/Deesser.qml:225
 msgid "dBFS"
-msgstr ""
+msgstr "dBFS"
 
 #: src/contents/ui/Deesser.qml:235
 msgid "F2 peak Q"
@@ -1118,7 +1118,7 @@ msgstr "Metri"
 
 #: src/contents/ui/Delay.qml:111 src/contents/ui/Delay.qml:264
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: src/contents/ui/Delay.qml:121 src/contents/ui/Delay.qml:274
 msgid "Centimeters"
@@ -1126,7 +1126,7 @@ msgstr "Centimetri"
 
 #: src/contents/ui/Delay.qml:129 src/contents/ui/Delay.qml:282
 msgid "cm"
-msgstr ""
+msgstr "cm"
 
 #: src/contents/ui/Delay.qml:140 src/contents/ui/Delay.qml:293
 msgid "Temperature"
@@ -1300,9 +1300,8 @@ msgid "Pitch left"
 msgstr "Tono sinistro"
 
 #: src/contents/ui/Equalizer.qml:157 src/contents/ui/Equalizer.qml:174
-#, fuzzy
 msgid "st"
-msgstr "Migliore"
+msgstr "st"
 
 #: src/contents/ui/Equalizer.qml:166
 msgid "Pitch right"
@@ -1705,7 +1704,6 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr "Aggiunto un nuovo effetto alla pipeline: %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:184
-#, fuzzy
 msgctxt "@action:button"
 msgid "Close"
 msgstr "Chiudi"
@@ -1809,9 +1807,8 @@ msgid "Players"
 msgstr "Riproduttori"
 
 #: src/contents/ui/PageStreamsEffects.qml:400
-#, fuzzy
 msgid "Output device"
-msgstr "Dispositivo Uscita"
+msgstr "Dispositivo di uscita"
 
 #: src/contents/ui/PageStreamsEffects.qml:400
 #: src/contents/ui/PageStreamsEffects.qml:625
@@ -2192,7 +2189,7 @@ msgstr "Altezza"
 
 #: src/contents/ui/PreferencesSheet.qml:342
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:350
 msgid "Frequency Range"
