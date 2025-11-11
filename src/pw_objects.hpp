@@ -165,4 +165,32 @@ struct ClientInfo {
   QString api;
 };
 
+struct DeviceInfo {
+  uint id;
+
+  uint64_t serial = SPA_ID_INVALID;
+
+  QString name;
+
+  QString description;
+
+  QString nick;
+
+  QString media_class;
+
+  QString api;
+
+  QString input_route_name;
+
+  QString output_route_name;
+
+  QString bus_id;
+
+  QString bus_path;
+
+  spa_param_availability input_route_available;
+
+  spa_param_availability output_route_available;
+};
+
 }  // namespace pw

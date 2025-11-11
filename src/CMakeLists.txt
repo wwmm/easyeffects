@@ -125,6 +125,7 @@ target_sources(easyeffects PRIVATE
     presets_list_model.cpp
     pw_manager.cpp
     pw_client_manager.cpp
+    pw_device_manager.cpp
     pw_link_manager.cpp
     pw_metadata_manager.cpp
     pw_module_manager.cpp

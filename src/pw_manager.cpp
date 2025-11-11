@@ -71,6 +71,7 @@
 #include "config.h"
 #include "db_manager.hpp"
 #include "pw_client_manager.hpp"
+#include "pw_device_manager.hpp"
 #include "pw_link_manager.hpp"
 #include "pw_metadata_manager.hpp"
 #include "pw_model_clients.hpp"
@@ -199,7 +200,8 @@ Manager::Manager()
       node_manager(NodeManager(model_nodes, metadata_manager, ee_sink_node, ee_source_node, list_links)),
       link_manager(LinkManager(core, thread_loop, model_nodes, list_links)),
       module_manager(ModuleManager(core, thread_loop, model_modules)),
-      client_manager(ClientManager(core, thread_loop, model_clients)) {
+      client_manager(ClientManager(core, thread_loop, model_clients)),
+      device_manager(DeviceManager(list_devices)) {
   register_models();
 
   connect(&metadata_manager, &MetadataManager::defaultSourceChanged, [&](const QString& name) {
@@ -227,6 +229,12 @@ Manager::Manager()
           [&](NodeInfo node) { Q_EMIT sinkProfileNameChanged(node); });
 
   connect(&link_manager, &LinkManager::linkChanged, [&](LinkInfo link) { Q_EMIT linkChanged(link); });
+
+  connect(&device_manager, &DeviceManager::inputRouteChanged,
+          [&](DeviceInfo device) { Q_EMIT inputRouteChanged(device); });
+
+  connect(&device_manager, &DeviceManager::outputRouteChanged,
+          [&](DeviceInfo device) { Q_EMIT outputRouteChanged(device); });
 
   pw_init(nullptr, nullptr);
 

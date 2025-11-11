@@ -32,6 +32,7 @@
 #include <cstdint>
 #include <vector>
 #include "pw_client_manager.hpp"
+#include "pw_device_manager.hpp"
 #include "pw_link_manager.hpp"
 #include "pw_metadata_manager.hpp"
 #include "pw_model_clients.hpp"
@@ -99,6 +100,7 @@ class Manager : public QObject {
   LinkManager link_manager;
   ModuleManager module_manager;
   ClientManager client_manager;
+  DeviceManager device_manager;
 
   [[nodiscard]] auto count_node_ports(const uint& node_id) const -> uint;
 
@@ -161,6 +163,9 @@ class Manager : public QObject {
 
   void linkChanged(LinkInfo link);
 
+  void inputRouteChanged(DeviceInfo device);
+  void outputRouteChanged(DeviceInfo device);
+
  private:
   pw_context* context = nullptr;
   pw_proxy *proxy_stream_output_sink = nullptr, *proxy_stream_input_source = nullptr;
@@ -168,6 +173,7 @@ class Manager : public QObject {
   spa_hook core_listener{}, registry_listener{};
 
   std::vector<LinkInfo> list_links;
+  std::vector<DeviceInfo> list_devices;
 
   void register_models();
   void set_metadata_target_node(const uint& origin_id, const uint& target_id, const uint64_t& target_serial) const;
