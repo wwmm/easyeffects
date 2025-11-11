@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-11 19:26+0000\n"
-"PO-Revision-Date: 2025-11-09 07:15+0300\n"
+"PO-Revision-Date: 2025-11-11 23:00+0300\n"
 "Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -1132,38 +1132,35 @@ msgstr "Інвертувати правий канал"
 
 #: src/contents/ui/DelegateClientsList.qml:37
 #: src/contents/ui/DelegateModulesList.qml:37
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "Unknown"
 msgstr "Невідомий"
 
 #: src/contents/ui/DelegateClientsList.qml:41
 msgid "(id: %1)"
-msgstr ""
+msgstr "(ідентифікатор: %1)"
 
 #: src/contents/ui/DelegateClientsList.qml:47
-#, fuzzy
 msgid "Access: %1"
-msgstr "Доступ"
+msgstr "Доступ: %1"
 
 #: src/contents/ui/DelegateClientsList.qml:54
 msgid "API: %1"
-msgstr ""
+msgstr "Інтерфейс (API): %1"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgctxt "@info:placeholder"
 msgid "Not set"
-msgstr ""
+msgstr "Не встановлено"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgid "(id: %1, version: %2)"
-msgstr ""
+msgstr "(ідентифікатор: %1, версія: %2)"
 
 #: src/contents/ui/DelegateModulesList.qml:47
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "No description set"
-msgstr "Опис"
+msgstr "Опис не встановлено"
 
 #: src/contents/ui/DelegatePluginsList.qml:73
 msgid "Toggle this effect"
@@ -1303,7 +1300,7 @@ msgstr "Зміщення частоти лівого каналу"
 
 #: src/contents/ui/Equalizer.qml:157 src/contents/ui/Equalizer.qml:174
 msgid "st"
-msgstr "півтони"
+msgstr "пт"
 
 #: src/contents/ui/Equalizer.qml:166
 msgid "Pitch right"
@@ -1434,31 +1431,31 @@ msgstr "Режим фільтра"
 
 #: src/contents/ui/Filter.qml:64
 msgid "RLC (BT)"
-msgstr ""
+msgstr "Коливальний контур (БП)"
 
 #: src/contents/ui/Filter.qml:64
 msgid "RLC (MT)"
-msgstr ""
+msgstr "Коливальний контур (УП)"
 
 #: src/contents/ui/Filter.qml:64
 msgid "BWC (BT)"
-msgstr ""
+msgstr "Баттерворта-Чебишева (БП)"
 
 #: src/contents/ui/Filter.qml:64
 msgid "BWC (MT)"
-msgstr ""
+msgstr "Баттерворта-Чебишева (УП)"
 
 #: src/contents/ui/Filter.qml:64
 msgid "LRX (BT)"
-msgstr ""
+msgstr "Лінквіца-Райлі (БП)"
 
 #: src/contents/ui/Filter.qml:64
 msgid "LRX (MT)"
-msgstr ""
+msgstr "Лінквіца-Райлі (УП)"
 
 #: src/contents/ui/Filter.qml:64
 msgid "APO (DR)"
-msgstr ""
+msgstr "Біквадратний (ПД)"
 
 #: src/contents/ui/Filter.qml:74
 msgid "Equalizer mode"
@@ -1466,20 +1463,19 @@ msgstr "Режим еквалайзера"
 
 #: src/contents/ui/Filter.qml:78 src/contents/ui/Loudness.qml:58
 msgid "IIR"
-msgstr ""
+msgstr "Нескінченна імпульсна характеристика"
 
 #: src/contents/ui/Filter.qml:78
 msgid "FIR"
-msgstr ""
+msgstr "Кінцева імпульсна характеристика"
 
 #: src/contents/ui/Filter.qml:78 src/contents/ui/Loudness.qml:58
 msgid "FFT"
-msgstr ""
+msgstr "Швидке перетворення Фур'є"
 
 #: src/contents/ui/Filter.qml:78
-#, fuzzy
 msgid "SPM"
-msgstr "ФПКС (SMA)"
+msgstr "Спектральний процесор"
 
 #: src/contents/ui/Gate.qml:54 src/tags_plugin_name.cpp:41
 msgid "Gate"
@@ -1712,23 +1708,23 @@ msgstr "Контур"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Flat"
-msgstr ""
+msgstr "Плоский"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "ISO226-2003"
-msgstr ""
+msgstr "ISO 226:2003"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Fletcher-Munson"
-msgstr ""
+msgstr "Флетчера-Мансона"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Robinson-Dadson"
-msgstr ""
+msgstr "Робінсона-Датсона"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "ISO226-2023"
-msgstr ""
+msgstr "ISO 226:2023"
 
 #: src/contents/ui/Loudness.qml:82
 msgid "FFT size"
@@ -2827,7 +2823,7 @@ msgstr "Вийти"
 
 #: src/contents/ui/main.qml:440
 msgid "Go back"
-msgstr ""
+msgstr "Назад"
 
 #: src/contents/ui/main.qml:450
 msgid "Turn effects on/off"
@@ -2981,28 +2977,4 @@ msgstr "Еквалайзер, компресор та інші звукові е
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
-msgstr ""
-
-#~ msgid "Id"
-#~ msgstr "Ідентифікатор"
-
-#~ msgid "Api"
-#~ msgstr "Прикладний програмний інтерфейс"
-
-#~ msgid " Hz"
-#~ msgstr " Гц"
-
-#~ msgid " s"
-#~ msgstr " с"
-
-#~ msgid "Audio effects for PipeWire applications"
-#~ msgstr "Звукові ефекти для застосунків PipeWire"
-
-#~ msgid "Audio Effects for PipeWire Applications"
-#~ msgstr "Звукові ефекти для застосунків PipeWire"
-
-#~ msgid "Local Preset"
-#~ msgstr "Локальне попереднє налаштування"
-
-#~ msgid "Voice Detection"
-#~ msgstr "Виявлення голосу"
+msgstr "Прості звукові ефекти"

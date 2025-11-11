@@ -46,7 +46,7 @@ Kirigami.OverlaySheet {
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: bandMenu.bandDB[bandName]
             editable: false
-            model: ["RLC (BT)", "RLC (MT)", "BWC (BT)", "BWC (MT)", "LRX (BT)", "LRX (MT)", "APO (DR)"]
+            model: [i18n("RLC (BT)"), i18n("RLC (MT)"), i18n("BWC (BT)"), i18n("BWC (MT)"), i18n("LRX (BT)"), i18n("LRX (MT)"), i18n("APO (DR)")]
             onActivated: idx => {
                 bandMenu.bandDB[bandName] = idx;
             }

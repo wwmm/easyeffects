@@ -104,7 +104,7 @@ Kirigami.ScrollablePage {
                 displayMode: FormCard.FormComboBoxDelegate.ComboBox
                 currentIndex: equalizerPage.pluginDB.mode
                 editable: false
-                model: ["IIR", "FIR", "FFT", "SPM"]
+                model: [i18n("IIR"), i18n("FIR"), i18n("FFT"), i18n("SPM")]
                 onActivated: idx => {
                     equalizerPage.pluginDB.mode = idx;
                 }
