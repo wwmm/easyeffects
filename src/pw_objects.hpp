@@ -149,6 +149,8 @@ struct ModuleInfo {
   QString description;
 
   QString filename;
+
+  QString version;
 };
 
 struct ClientInfo {

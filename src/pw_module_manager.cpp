@@ -66,7 +66,7 @@ auto ModuleManager::register_module(pw_registry* registry, uint32_t id, const ch
   pw_proxy_add_object_listener(proxy, &pd->object_listener, &module_events, pd);  // NOLINT
   pw_proxy_add_listener(proxy, &pd->proxy_listener, &module_proxy_events, pd);
 
-  pw::ModuleInfo m_info{.id = id, .serial = serial, .name = "", .description = "", .filename = ""};
+  pw::ModuleInfo m_info{.id = id, .serial = serial, .name = "", .description = "", .filename = "", .version = ""};
 
   util::spa_dict_get_string(props, PW_KEY_MODULE_NAME, m_info.name);
 
@@ -88,6 +88,12 @@ void ModuleManager::on_module_info(void* object, const struct pw_module_info* in
         util::spa_dict_get_string(info->props, PW_KEY_MODULE_DESCRIPTION, description);
 
         md->mm->model_modules.update_field(n, pw::models::Modules::Roles::Description, description);
+
+        QString version;
+
+        util::spa_dict_get_string(info->props, PW_KEY_MODULE_VERSION, version);
+
+        md->mm->model_modules.update_field(n, pw::models::Modules::Roles::Version, version);
       }
 
       if (info->filename != nullptr) {

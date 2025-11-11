@@ -41,7 +41,7 @@ class Modules : public QAbstractListModel {
  public:
   explicit Modules(QObject* parent = nullptr);
 
-  enum class Roles { Id = Qt::UserRole, Serial, Name, Description, Filename };
+  enum class Roles { Id = Qt::UserRole, Serial, Name, Description, Filename, Version };
 
   [[nodiscard]] int rowCount(const QModelIndex& /* parent */) const override;
 
@@ -99,6 +99,13 @@ class Modules : public QAbstractListModel {
       case Roles::Filename: {
         if constexpr (std::is_same_v<T, QString>) {
           it->filename = value;
+        }
+
+        break;
+      }
+      case Roles::Version: {
+        if constexpr (std::is_same_v<T, QString>) {
+          it->version = value;
         }
 
         break;
