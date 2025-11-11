@@ -341,6 +341,7 @@ Kirigami.Page {
                     id: pluginsListView
 
                     Layout.fillHeight: true
+                    Layout.fillWidth: true
                     Layout.preferredWidth: contentItem.childrenRect.width
                     Layout.topMargin: Kirigami.Units.smallSpacing * 2
                     Layout.bottomMargin: Kirigami.Units.smallSpacing * 2
