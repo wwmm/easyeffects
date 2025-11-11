@@ -300,7 +300,6 @@ Kirigami.Page {
             }
 
             ColumnLayout {
-                implicitWidth: pluginsListView.width
                 spacing: 0
 
                 GridLayout {
