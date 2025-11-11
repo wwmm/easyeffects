@@ -55,7 +55,7 @@ Controls.Dialog {
             width: parent ? parent.width : implicitWidth
 
             function addFilter(): void {
-                button.clicked()
+                button.clicked();
             }
 
             contentItem: RowLayout {
@@ -173,7 +173,7 @@ Controls.Dialog {
                 }
 
                 onAccepted: {
-                    listView.currentItem?.addFilter() // qmllint disable
+                    listView.currentItem?.addFilter(); // qmllint disable
                 }
 
                 Keys.onDownPressed: listView.incrementCurrentIndex()
@@ -184,7 +184,7 @@ Controls.Dialog {
                 text: i18nc("@action:button", "Close")
                 icon.name: 'dialog-close-symbolic'
                 display: Controls.ToolButton.IconOnly
-                onClicked: control.close();
+                onClicked: control.close()
                 Layout.margins: Kirigami.Units.smallSpacing
                 Layout.leftMargin: 0
             }
