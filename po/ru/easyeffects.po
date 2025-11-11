@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-11 03:40+0000\n"
-"PO-Revision-Date: 2025-10-31 13:02+0000\n"
-"Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
+"PO-Revision-Date: 2025-11-11 15:56+0000\n"
+"Last-Translator: aaly11 <a2a0z11@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/easyeffects/main/"
 "ru/>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Weblate 5.14.1-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
 msgid ""
@@ -312,7 +312,7 @@ msgstr "Величина"
 #: src/contents/ui/StereoTools.qml:159 src/contents/ui/StereoTools.qml:333
 #: src/contents/ui/StereoTools.qml:351
 msgid "dB"
-msgstr ""
+msgstr "дБ"
 
 #: src/contents/ui/BassEnhancer.qml:108 src/contents/ui/BassEnhancer.qml:168
 #: src/contents/ui/Exciter.qml:112 src/contents/ui/Exciter.qml:172
@@ -340,7 +340,7 @@ msgstr "Диапазон частот"
 #: src/contents/ui/PreferencesSheet.qml:470 src/contents/ui/Reverb.qml:127
 #: src/contents/ui/Reverb.qml:144 src/contents/ui/Reverb.qml:161
 msgid "Hz"
-msgstr ""
+msgstr "Гц"
 
 #: src/contents/ui/BassEnhancer.qml:139
 #, fuzzy
@@ -426,9 +426,8 @@ msgid "Empty List"
 msgstr "Список пуст"
 
 #: src/contents/ui/BlocklistSheet.qml:96
-#, fuzzy
 msgid "No application excluded"
-msgstr "Громкость приложения"
+msgstr "Ни одно приложение не исключено"
 
 #: src/contents/ui/BlocklistSheet.qml:118
 msgid "Remove Application"
@@ -444,7 +443,6 @@ msgid "Remove this app"
 msgstr "Убрать это приложение"
 
 #: src/contents/ui/BlocklistSheet.qml:176
-#, fuzzy
 msgid "Show excluded apps"
 msgstr "Показать исключённые приложения"
 
@@ -537,7 +535,7 @@ msgstr "Атака"
 #: src/contents/ui/PreferencesSheet.qml:403 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
 msgid "ms"
-msgstr ""
+msgstr "мс"
 
 #: src/contents/ui/Compressor.qml:195 src/contents/ui/Expander.qml:155
 #: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:864
@@ -905,7 +903,7 @@ msgstr "Импульс конвольвера не установлен"
 
 #: src/contents/ui/Convolver.qml:55
 msgid "The Convolver is in passthrough mode."
-msgstr ""
+msgstr "Конвольвер находится в режиме сквозной передачи."
 
 #: src/contents/ui/Convolver.qml:57
 #, fuzzy
@@ -1055,7 +1053,7 @@ msgstr "Обход"
 
 #: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:48
 msgid "kHz"
-msgstr ""
+msgstr "кГц"
 
 #: src/contents/ui/DeepFilterNet.qml:32
 #, fuzzy
@@ -1184,17 +1182,16 @@ msgid "m"
 msgstr ""
 
 #: src/contents/ui/Delay.qml:121 src/contents/ui/Delay.qml:274
-#, fuzzy
 msgid "Centimeters"
-msgstr "Центы"
+msgstr "Сантиметры"
 
 #: src/contents/ui/Delay.qml:129 src/contents/ui/Delay.qml:282
 msgid "cm"
-msgstr ""
+msgstr "см"
 
 #: src/contents/ui/Delay.qml:140 src/contents/ui/Delay.qml:293
 msgid "Temperature"
-msgstr ""
+msgstr "Температура"
 
 #: src/contents/ui/Delay.qml:372
 #, fuzzy
@@ -1257,9 +1254,8 @@ msgid "Exclude"
 msgstr "Исключить"
 
 #: src/contents/ui/DelegateStreamsList.qml:111
-#, fuzzy
 msgid "Add %1 to excluded applications"
-msgstr "Добавить в исключённые приложения"
+msgstr "Добавить %1 в исключённые приложения"
 
 #: src/contents/ui/EchoCanceller.qml:41 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
@@ -1313,7 +1309,7 @@ msgstr "Регулятор автоусиления"
 
 #: src/contents/ui/EeInputOutputGain.qml:21
 msgid "Audio levels control"
-msgstr ""
+msgstr "Контроль уровня звука"
 
 #: src/contents/ui/EeInputOutputGain.qml:22
 msgid "Input and output gain controls with level meters"
@@ -1752,35 +1748,35 @@ msgstr "Подмешивать шум"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "7 bit"
-msgstr ""
+msgstr "7 бит"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "8 bit"
-msgstr ""
+msgstr "8 бит"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "11 bit"
-msgstr ""
+msgstr "11 бит"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "12 bit"
-msgstr ""
+msgstr "12 бит"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "15 bit"
-msgstr ""
+msgstr "15 бит"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "16 bit"
-msgstr ""
+msgstr "16 бит"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "23 bit"
-msgstr ""
+msgstr "23 бит"
 
 #: src/contents/ui/Limiter.qml:87
 msgid "24 bit"
-msgstr ""
+msgstr "24 бит"
 
 #: src/contents/ui/Limiter.qml:99 src/tags_plugin_name.cpp:43
 msgid "Limiter"
@@ -1855,7 +1851,7 @@ msgstr ""
 #: src/contents/ui/MenuAddPlugins.qml:184
 msgctxt "@action:button"
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 #: src/contents/ui/MultibandCompressor.qml:101
 #, fuzzy
@@ -1953,7 +1949,7 @@ msgstr "Добавить эффект"
 
 #: src/contents/ui/PageStreamsEffects.qml:323
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 #: src/contents/ui/PageStreamsEffects.qml:327
 msgid "Expand the list of effects pipeline"
@@ -2184,7 +2180,7 @@ msgstr "Эффект «{}» недоступен"
 
 #: src/contents/ui/PluginNotAvailable.qml:15
 msgid "%1 cannot be used because %2 is not installed on the system."
-msgstr ""
+msgstr "%1 нельзя использовать, поскольку %2 не установлен в системе."
 
 #: src/contents/ui/PreferencesSheet.qml:15
 #: src/contents/ui/PreferencesSheet.qml:24
@@ -2201,19 +2197,19 @@ msgstr "Режим эквалайзера"
 
 #: src/contents/ui/PreferencesSheet.qml:37
 msgid "Easy Effects is active in background when the window is closed."
-msgstr ""
+msgstr "Easy Effects активен в фоновом режиме, когда окно закрыто."
 
 #: src/contents/ui/PreferencesSheet.qml:49
 msgid "Autostart on login"
-msgstr ""
+msgstr "Автостарт при входе"
 
 #: src/contents/ui/PreferencesSheet.qml:50
 msgid "Easy Effects is launched at user session startup."
-msgstr ""
+msgstr "Easy Effects стартует при запуске сеанса пользователя."
 
 #: src/contents/ui/PreferencesSheet.qml:63
 msgid "Show the tray icon"
-msgstr ""
+msgstr "Показать значок в трее"
 
 #: src/contents/ui/PreferencesSheet.qml:87
 #, fuzzy
@@ -2237,7 +2233,7 @@ msgstr "Использовать кубическую громкость"
 
 #: src/contents/ui/PreferencesSheet.qml:131
 msgid "Ignore system notifications"
-msgstr ""
+msgstr "Игнорировать системные уведомления"
 
 #: src/contents/ui/PreferencesSheet.qml:132
 msgid ""
@@ -2284,7 +2280,7 @@ msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:237
 msgid "Audio delay compensation"
-msgstr ""
+msgstr "Компенсация задержки звука"
 
 #: src/contents/ui/PreferencesSheet.qml:251
 msgid "Style"
@@ -2307,7 +2303,7 @@ msgstr "Правый"
 
 #: src/contents/ui/PreferencesSheet.qml:262
 msgid "Dark"
-msgstr ""
+msgstr "Тёмный"
 
 #: src/contents/ui/PreferencesSheet.qml:272
 #, fuzzy
@@ -2316,11 +2312,11 @@ msgstr "Цвет"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Green"
-msgstr ""
+msgstr "Зелёный"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Green neon"
-msgstr ""
+msgstr "Зелёный неон"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Mix"
@@ -2334,19 +2330,19 @@ msgstr "Диапазон"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Yellow"
-msgstr ""
+msgstr "Жёлтый"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Blue"
-msgstr ""
+msgstr "Синий"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Purple"
-msgstr ""
+msgstr "Фиолетовый"
 
 #: src/contents/ui/PreferencesSheet.qml:276
 msgid "Grey"
-msgstr ""
+msgstr "Серый"
 
 #: src/contents/ui/PreferencesSheet.qml:286
 msgid "Shape"
@@ -2388,7 +2384,7 @@ msgstr "Высота"
 
 #: src/contents/ui/PreferencesSheet.qml:342
 msgid "px"
-msgstr ""
+msgstr "пкс"
 
 #: src/contents/ui/PreferencesSheet.qml:350
 msgid "Frequency Range"
@@ -2404,7 +2400,7 @@ msgstr "Максимум"
 
 #: src/contents/ui/PreferencesSheet.qml:397
 msgid "Database autosave interval"
-msgstr ""
+msgstr "Интервал автосохранения базы данных"
 
 #: src/contents/ui/PreferencesSheet.qml:410
 #, fuzzy
@@ -2622,7 +2618,7 @@ msgstr "Создать новую предустановку"
 
 #: src/contents/ui/PresetsLocalPage.qml:220
 msgid "Rename"
-msgstr ""
+msgstr "Переименовать"
 
 #: src/contents/ui/PresetsLocalPage.qml:229
 #, fuzzy
@@ -2851,7 +2847,7 @@ msgstr "Показать справку"
 
 #: src/contents/ui/ShortcutsSheet.qml:60
 msgid "Toggle fullscreen"
-msgstr ""
+msgstr "Переключить полноэкранный режим"
 
 #: src/contents/ui/ShortcutsSheet.qml:88 src/contents/ui/ShortcutsSheet.qml:311
 #: src/global_shortcuts.hpp:48
@@ -3011,7 +3007,7 @@ msgstr "Сбросить настрой_ки"
 
 #: src/contents/ui/main.qml:219
 msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
+msgstr "Вы уверены, что хотите сбросить все настройки Easy Effects?"
 
 #: src/contents/ui/main.qml:288 src/contents/ui/main.qml:304
 #, fuzzy
@@ -3045,7 +3041,7 @@ msgstr "_Выйти"
 
 #: src/contents/ui/main.qml:439
 msgid "Turn effects on/off"
-msgstr ""
+msgstr "Включить/выключить эффекты"
 
 #: src/contents/ui/main.qml:491
 #, fuzzy
@@ -3059,7 +3055,7 @@ msgstr "_О программе Easy Effects"
 
 #: src/plugin_base.cpp:272
 msgid "(Mic)"
-msgstr ""
+msgstr "(Микрофон)"
 
 #: src/plugin_base.cpp:275
 #, fuzzy
@@ -3203,7 +3199,7 @@ msgstr "Эквалайзер, компрессор и прочие звуков�
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
-msgstr ""
+msgstr "Простые звуковые эффекты"
 
 #~ msgid "Audio effects for PipeWire applications"
 #~ msgstr "Звуковые эффекты для приложений PipeWire"
