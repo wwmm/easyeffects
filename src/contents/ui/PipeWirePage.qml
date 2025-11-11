@@ -7,12 +7,22 @@ import ee.database as DB
 import ee.pipewire as PW
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
+import org.kde.kirigamiaddons.delegates as Delegates
 
 Kirigami.Page {
     id: pwPage
 
+    readonly property bool showBackButton: columnView.currentIndex === 1
+        && columnView.columnResizeMode === Kirigami.ColumnView.SingleColumn
+
+    function goBack(): void {
+        columnView.currentIndex = 0;
+    }
+
     padding: 0
     Component.onCompleted: {
+        columnView.addItem(panelListView)
+
         panelModel.append({
             "title": i18n("General") // qmllint disable
             ,
@@ -36,16 +46,16 @@ Kirigami.Page {
         panelListView.currentIndex = DB.Manager.main.visiblePipeWirePage;
         switch (DB.Manager.main.visiblePipeWirePage) {
         case 0:
-            panelStack.replace(generalPage);
+            columnView.addItem(generalPage.createObject());
             break;
         case 1:
-            panelStack.replace(modulesPage);
+            columnView.addItem(modulesPage.createObject());
             break;
         case 2:
-            panelStack.replace(clientsPage);
+            columnView.addItem(clientsPage.createObject());
             break;
         case 3:
-            panelStack.replace(testSignalPage);
+            columnView.addItem(testSignalPage.createObject());
             break;
         default:
             null;
@@ -402,11 +412,16 @@ Kirigami.Page {
         }
     }
 
-    GridLayout {
-        columns: 3
-        rows: 1
-        columnSpacing: 0
-        anchors.fill: parent
+    leftPadding: 0
+    rightPadding: 0
+    topPadding: 0
+    bottomPadding: 0
+
+    contentItem: Kirigami.ColumnView {
+        id: columnView
+
+        columnResizeMode: root.width >= Kirigami.Units.gridUnit * 40 ? Kirigami.ColumnView.FixedColumns : Kirigami.ColumnView.SingleColumn
+        columnWidth: Kirigami.Units.gridUnit * 15
 
         ListView {
             id: panelListView
@@ -420,7 +435,7 @@ Kirigami.Page {
                 id: panelModel
             }
 
-            delegate: Controls.ItemDelegate {
+            delegate: Delegates.RoundedItemDelegate {
                 id: listItemDelegate
 
                 property int elide: Text.ElideRight
@@ -428,31 +443,30 @@ Kirigami.Page {
                 required property string title
                 required property string iconName
 
-                width: parent ? parent.width : implicitWidth
-                hoverEnabled: true
                 highlighted: ListView.isCurrentItem
                 onClicked: {
                     ListView.view.currentIndex = index;
                     switch (index) {
                     case 0:
-                        panelStack.replace(generalPage);
+                        columnView.replaceItem(1, generalPage.createObject());
                         DB.Manager.main.visiblePipeWirePage = 0;
                         break;
                     case 1:
-                        panelStack.replace(modulesPage);
+                        columnView.replaceItem(1, modulesPage.createObject());
                         DB.Manager.main.visiblePipeWirePage = 1;
                         break;
                     case 2:
-                        panelStack.replace(clientsPage);
+                        columnView.replaceItem(1, clientsPage.createObject());
                         DB.Manager.main.visiblePipeWirePage = 2;
                         break;
                     case 3:
-                        panelStack.replace(testSignalPage);
+                        columnView.replaceItem(1, testSignalPage.createObject());
                         DB.Manager.main.visiblePipeWirePage = 3;
                         break;
                     default:
                         console.log("pipewire page stackview: invalid index");
                     }
+                    columnView.currentIndex = 1;
                 }
 
                 contentItem: RowLayout {
@@ -473,18 +487,6 @@ Kirigami.Page {
                     }
                 }
             }
-        }
-
-        Kirigami.Separator {
-            Layout.fillHeight: true
-            visible: true
-        }
-
-        Controls.StackView {
-            id: panelStack
-
-            Layout.fillHeight: true
-            Layout.fillWidth: true
         }
     }
 }
