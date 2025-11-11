@@ -151,62 +151,46 @@ target_sources(easyeffects PRIVATE
 )
 
 target_include_directories(easyeffects SYSTEM PRIVATE
-    ${LIBPIPEWIRE_INCLUDE_DIRS}
-    ${LIBLILV_INCLUDE_DIRS}
-    ${LIBEBUR128_INCLUDE_DIRS}
-    ${LIBFFTW3_INCLUDE_DIRS}
-    ${LIBFFTW3f_INCLUDE_DIRS}
-    ${LIBSPEEXDSP_INCLUDE_DIRS}
-    ${LIBNLOHMANNJSON_INCLUDE_DIRS}
     ${LIBZITACONVOLVER_INCLUDE_DIRS}
-    ${LIBGSL_INCLUDE_DIRS}
-    ${LIBBS2B_INCLUDE_DIRS}
-    ${LIBSAMPLERATE_INCLUDE_DIRS}
-    ${LIBSNDFILE_INCLUDE_DIRS}
-    ${LIBRNNOISE_INCLUDE_DIRS}
-    ${LIBSOUNDTOUCH_INCLUDE_DIRS}
-    ${LIBPORTAL_INCLUDE_DIRS}
-    ${LIBPORTALQT_INCLUDE_DIRS}
-    ${LIBWEBRTC_INCLUDE_DIRS}
 )
 
 target_link_libraries(easyeffects PRIVATE
-    KF${QT_MAJOR_VERSION}::ColorScheme
-    KF${QT_MAJOR_VERSION}::ConfigCore
-    KF${QT_MAJOR_VERSION}::ConfigGui
-    KF${QT_MAJOR_VERSION}::CoreAddons
-    KF${QT_MAJOR_VERSION}::I18n
-    KF${QT_MAJOR_VERSION}::IconThemes
-    Qt${QT_MAJOR_VERSION}::Core
-    Qt${QT_MAJOR_VERSION}::DBus
-    Qt${QT_MAJOR_VERSION}::Gui
-    Qt${QT_MAJOR_VERSION}::Graphs
-    Qt${QT_MAJOR_VERSION}::Network
-    Qt${QT_MAJOR_VERSION}::Qml
-    Qt${QT_MAJOR_VERSION}::Quick
-    Qt${QT_MAJOR_VERSION}::QuickControls2
-    Qt${QT_MAJOR_VERSION}::Widgets
-    Qt${QT_MAJOR_VERSION}::WebEngineQuick
+    KF6::ColorScheme
+    KF6::ConfigCore
+    KF6::ConfigGui
+    KF6::CoreAddons
+    KF6::I18n
+    KF6::IconThemes
+    Qt::Core
+    Qt::DBus
+    Qt::Gui
+    Qt::Graphs
+    Qt::Network
+    Qt::Qml
+    Qt::Quick
+    Qt::QuickControls2
+    Qt::Widgets
+    Qt::WebEngineQuick
     TBB::tbb
     GSL::gsl
     GSL::gslcblas
     #SoundTouch::SoundTouch # As of SoundTouch 2.4.0 its cmake files are bugged
-    ${LIBPIPEWIRE_LIBRARIES}
-    ${LIBLILV_LIBRARIES}
-    ${LIBEBUR128_LIBRARIES}
-    ${LIBFFTW3_LIBRARIES}
-    ${LIBFFTW3f_LIBRARIES}
-    ${LIBSPEEXDSP_LIBRARIES}
-    ${LIBNLOHMANNJSON_LIBRARIES}
-    ${LIBGSL_LIBRARIES}
-    ${LIBBS2B_LIBRARIES}
-    ${LIBSAMPLERATE_LIBRARIES}
-    ${LIBSNDFILE_LIBRARIES}
-    ${LIBRNNOISE_LIBRARIES}
-    ${LIBSOUNDTOUCH_LIBRARIES}
-    ${LIBPORTAL_LIBRARIES}
-    ${LIBPORTALQT_LIBRARIES}
-    ${LIBWEBRTC_LIBRARIES}
+    PkgConfig::LIBPIPEWIRE
+    PkgConfig::LIBLILV
+    PkgConfig::LIBEBUR128
+    PkgConfig::LIBFFTW3
+    PkgConfig::LIBFFTW3f
+    PkgConfig::LIBSPEEXDSP
+    PkgConfig::LIBNLOHMANNJSON
+    PkgConfig::LIBGSL
+    PkgConfig::LIBBS2B
+    PkgConfig::LIBSAMPLERATE
+    PkgConfig::LIBSNDFILE
+    PkgConfig::LIBRNNOISE
+    PkgConfig::LIBSOUNDTOUCH
+    PkgConfig::LIBPORTAL
+    PkgConfig::LIBPORTALQT
+    PkgConfig::LIBWEBRTC
     ${LIBZITACONVOLVER}
 )
 
