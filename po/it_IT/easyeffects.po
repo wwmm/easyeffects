@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-11 15:48+0000\n"
-"PO-Revision-Date: 2025-11-11 03:47+0000\n"
+"PO-Revision-Date: 2025-11-11 18:54+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -2752,7 +2752,7 @@ msgstr "Esci"
 
 #: src/contents/ui/main.qml:439
 msgid "Go back"
-msgstr ""
+msgstr "Torna indietro"
 
 #: src/contents/ui/main.qml:448
 msgid "Turn effects on/off"
