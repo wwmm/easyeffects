@@ -92,6 +92,8 @@ jobs:
       uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
       with:
         args: util/flatpak/com.github.wwmm.easyeffects.Devel.json
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Write exceptions file
       run: |
