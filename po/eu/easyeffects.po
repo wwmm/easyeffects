@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-11 15:48+0000\n"
+"POT-Creation-Date: 2025-11-11 18:42+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Asier Saratsua Garmendia <asier.sarasua@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -82,11 +82,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:352
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:353
 msgid "Output Presets"
 msgstr ""
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:337
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:338
 msgid "Input Presets"
 msgstr ""
 
@@ -324,10 +324,10 @@ msgstr "Esparrua"
 #: src/contents/ui/MultibandCompressor.qml:493
 #: src/contents/ui/MultibandCompressor.qml:518
 #: src/contents/ui/MultibandGate.qml:122 src/contents/ui/MultibandGate.qml:466
-#: src/contents/ui/MultibandGate.qml:491 src/contents/ui/PipeWirePage.qml:404
-#: src/contents/ui/PreferencesSheet.qml:363
-#: src/contents/ui/PreferencesSheet.qml:378
-#: src/contents/ui/PreferencesSheet.qml:470 src/contents/ui/Reverb.qml:127
+#: src/contents/ui/MultibandGate.qml:491 src/contents/ui/PipeWirePage.qml:403
+#: src/contents/ui/PreferencesSheet.qml:370
+#: src/contents/ui/PreferencesSheet.qml:385
+#: src/contents/ui/PreferencesSheet.qml:469 src/contents/ui/Reverb.qml:127
 #: src/contents/ui/Reverb.qml:144 src/contents/ui/Reverb.qml:161
 msgid "Hz"
 msgstr ""
@@ -371,14 +371,14 @@ msgstr "Entzun"
 #: src/contents/ui/MultibandCompressor.qml:985
 #: src/contents/ui/MultibandGate.qml:958 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:338 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:544
+#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:545
 msgid "Reset"
 msgstr "Berrezarri"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:463
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:421
 #: src/contents/ui/Gate.qml:436 src/contents/ui/StereoTools.qml:249
-#: src/contents/ui/main.qml:482
+#: src/contents/ui/main.qml:483
 msgid "Output"
 msgstr "Irteera"
 
@@ -523,9 +523,9 @@ msgstr "Erasoa"
 #: src/contents/ui/MultibandGate.qml:171 src/contents/ui/MultibandGate.qml:186
 #: src/contents/ui/MultibandGate.qml:428 src/contents/ui/MultibandGate.qml:443
 #: src/contents/ui/Pitch.qml:58 src/contents/ui/Pitch.qml:75
-#: src/contents/ui/Pitch.qml:93 src/contents/ui/PreferencesSheet.qml:200
-#: src/contents/ui/PreferencesSheet.qml:243
-#: src/contents/ui/PreferencesSheet.qml:403 src/contents/ui/RNNoise.qml:148
+#: src/contents/ui/Pitch.qml:93 src/contents/ui/PreferencesSheet.qml:213
+#: src/contents/ui/PreferencesSheet.qml:250
+#: src/contents/ui/PreferencesSheet.qml:406 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
 msgid "ms"
 msgstr ""
@@ -635,7 +635,7 @@ msgstr "Alboa"
 #: src/contents/ui/Expander.qml:262 src/contents/ui/Gate.qml:280
 #: src/contents/ui/LevelMeter.qml:60 src/contents/ui/LevelMeter.qml:101
 #: src/contents/ui/MultibandCompressor.qml:411
-#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:324
+#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:323
 #: src/contents/ui/StereoTools.qml:185
 msgid "Left"
 msgstr "Ezkerra"
@@ -645,7 +645,7 @@ msgstr "Ezkerra"
 #: src/contents/ui/Expander.qml:262 src/contents/ui/Gate.qml:280
 #: src/contents/ui/LevelMeter.qml:71 src/contents/ui/LevelMeter.qml:112
 #: src/contents/ui/MultibandCompressor.qml:411
-#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:335
+#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:334
 #: src/contents/ui/StereoTools.qml:212
 msgid "Right"
 msgstr "Eskuina"
@@ -920,7 +920,7 @@ msgid "Spectrum"
 msgstr "Espektroa"
 
 #: src/contents/ui/Convolver.qml:225 src/contents/ui/Convolver.qml:325
-#: src/contents/ui/Convolver.qml:379 src/contents/ui/PreferencesSheet.qml:184
+#: src/contents/ui/Convolver.qml:379 src/contents/ui/PreferencesSheet.qml:197
 #: src/contents/ui/Reverb.qml:68
 msgid "s"
 msgstr ""
@@ -1016,7 +1016,7 @@ msgid "Default"
 msgstr "Lehenetsia"
 
 #: src/contents/ui/Crossfeed.qml:146 src/contents/ui/Reverb.qml:315
-#: src/contents/ui/main.qml:460
+#: src/contents/ui/main.qml:461
 msgid "Presets"
 msgstr "Aurrezarpenak"
 
@@ -1184,28 +1184,38 @@ msgstr "Eskuina"
 msgid "Invert right"
 msgstr "Eskuina"
 
-#: src/contents/ui/DelegateClientsList.qml:36
-#: src/contents/ui/DelegateModulesList.qml:36
-msgid "Id"
+#: src/contents/ui/DelegateClientsList.qml:37
+#: src/contents/ui/DelegateModulesList.qml:37
+msgctxt "@info:placeholder"
+msgid "Unknown"
 msgstr ""
 
-#: src/contents/ui/DelegateClientsList.qml:50
-#: src/contents/ui/DelegateModulesList.qml:50
-#: src/contents/ui/PipeWirePage.qml:137 src/contents/ui/PipeWirePage.qml:181
-msgid "Name"
-msgstr "Izena"
-
-#: src/contents/ui/DelegateClientsList.qml:64
-msgid "Api"
+#: src/contents/ui/DelegateClientsList.qml:41
+msgid "(id: %1)"
 msgstr ""
 
-#: src/contents/ui/DelegateClientsList.qml:78
-msgid "Access"
+#: src/contents/ui/DelegateClientsList.qml:47
+#, fuzzy
+msgid "Access: %1"
 msgstr "Sarbidea"
 
-#: src/contents/ui/DelegateModulesList.qml:64
-#: src/contents/ui/PresetsAutoloadingPage.qml:158
-msgid "Description"
+#: src/contents/ui/DelegateClientsList.qml:54
+msgid "API: %1"
+msgstr ""
+
+#: src/contents/ui/DelegateModulesList.qml:41
+msgctxt "@info:placeholder"
+msgid "Not set"
+msgstr ""
+
+#: src/contents/ui/DelegateModulesList.qml:41
+msgid "(id: %1, version: %2)"
+msgstr ""
+
+#: src/contents/ui/DelegateModulesList.qml:47
+#, fuzzy
+msgctxt "@info:placeholder"
+msgid "No description set"
 msgstr "Deskribapena"
 
 #: src/contents/ui/DelegatePluginsList.qml:73
@@ -1299,7 +1309,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:40
-#: src/contents/ui/main.qml:491
+#: src/contents/ui/main.qml:492
 msgid "Input"
 msgstr "Sarrera"
 
@@ -1456,7 +1466,7 @@ msgstr "Malda"
 
 #: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:109
 #: src/contents/ui/MultibandCompressor.qml:173
-#: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:398
+#: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:397
 msgid "Frequency"
 msgstr "Maiztasuna"
 
@@ -1924,113 +1934,117 @@ msgstr "Gaitu/desgaitu aplikazio hau"
 msgid "Excluded apps"
 msgstr "Baztertutako aplikazioak"
 
-#: src/contents/ui/PipeWirePage.qml:27
+#: src/contents/ui/PipeWirePage.qml:26
 msgid "General"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:32
+#: src/contents/ui/PipeWirePage.qml:31
 msgid "Modules"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:37
+#: src/contents/ui/PipeWirePage.qml:36
 msgid "Clients"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:42
+#: src/contents/ui/PipeWirePage.qml:41
 msgid "Test Signal"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:112
+#: src/contents/ui/PipeWirePage.qml:111
 msgid "Device Management"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:116
+#: src/contents/ui/PipeWirePage.qml:115
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:123
+#: src/contents/ui/PipeWirePage.qml:122
 msgid "Use default input"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:166
+#: src/contents/ui/PipeWirePage.qml:136 src/contents/ui/PipeWirePage.qml:180
+msgid "Name"
+msgstr "Izena"
+
+#: src/contents/ui/PipeWirePage.qml:165
 msgid "Use default output"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:205
+#: src/contents/ui/PipeWirePage.qml:204
 msgid "Server Information"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:210
+#: src/contents/ui/PipeWirePage.qml:209
 msgid "Header version"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:215
+#: src/contents/ui/PipeWirePage.qml:214
 msgid "Library version"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:220
+#: src/contents/ui/PipeWirePage.qml:219
 msgid "Runtime version"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:225
+#: src/contents/ui/PipeWirePage.qml:224
 msgid "Default sampling rate"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:230
+#: src/contents/ui/PipeWirePage.qml:229
 msgid "Minimum quantum"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:235
+#: src/contents/ui/PipeWirePage.qml:234
 #, fuzzy
 msgid "Maximum quantum"
 msgstr "Gehieneko historia"
 
-#: src/contents/ui/PipeWirePage.qml:240
+#: src/contents/ui/PipeWirePage.qml:239
 #, fuzzy
 msgid "Default quantum"
 msgstr "Lehenetsia"
 
-#: src/contents/ui/PipeWirePage.qml:262
+#: src/contents/ui/PipeWirePage.qml:261
 msgid "No Modules"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:285
+#: src/contents/ui/PipeWirePage.qml:284
 msgid "No Clients"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:298
-#: src/contents/ui/PreferencesSheet.qml:219
+#: src/contents/ui/PipeWirePage.qml:297
+#: src/contents/ui/PreferencesSheet.qml:226
 msgid "State"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:305
-#: src/contents/ui/PreferencesSheet.qml:226
+#: src/contents/ui/PipeWirePage.qml:304
+#: src/contents/ui/PreferencesSheet.qml:233
 msgid "Enabled"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:315
+#: src/contents/ui/PipeWirePage.qml:314
 msgid "Channels"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:346
+#: src/contents/ui/PipeWirePage.qml:345
 msgid "Both"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:356
+#: src/contents/ui/PipeWirePage.qml:355
 msgid "Waveform"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:365
+#: src/contents/ui/PipeWirePage.qml:364
 msgid "Sine wave"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:376
+#: src/contents/ui/PipeWirePage.qml:375
 msgid "White noise"
 msgstr ""
 
-#: src/contents/ui/PipeWirePage.qml:387
+#: src/contents/ui/PipeWirePage.qml:386
 msgid "Pink noise"
 msgstr ""
 
@@ -2089,264 +2103,256 @@ msgstr "Ez dago audio-aplikaziorik erabilgarri"
 msgid "%1 cannot be used because %2 is not installed on the system."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:15
-#: src/contents/ui/PreferencesSheet.qml:24
-#: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:516
-#, fuzzy
-msgid "Preferences"
-msgstr "_Hobespenak"
+#: src/contents/ui/PreferencesSheet.qml:16
+msgid "Background Service"
+msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:36
+#: src/contents/ui/PreferencesSheet.qml:22
+msgid "Audio"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:28
+#, fuzzy
+msgid "Spectrum Analyzer"
+msgstr "Espektroa"
+
+#: src/contents/ui/PreferencesSheet.qml:34
+msgid "Database"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:40
+msgid "Experimental Features"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:53
 #, fuzzy
 msgid "Enable service mode"
 msgstr "Banda modua"
 
-#: src/contents/ui/PreferencesSheet.qml:37
+#: src/contents/ui/PreferencesSheet.qml:54
 msgid "Easy Effects is active in background when the window is closed."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:49
+#: src/contents/ui/PreferencesSheet.qml:66
 msgid "Autostart on login"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:50
+#: src/contents/ui/PreferencesSheet.qml:67
 msgid "Easy Effects is launched at user session startup."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:63
+#: src/contents/ui/PreferencesSheet.qml:80
 msgid "Show the tray icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:87
+#: src/contents/ui/PreferencesSheet.qml:100
 msgid "Process all output streams"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:98
+#: src/contents/ui/PreferencesSheet.qml:111
 msgid "Process all input streams"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:109
+#: src/contents/ui/PreferencesSheet.qml:122
 msgid "Ignore streams from monitor of devices"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:120
+#: src/contents/ui/PreferencesSheet.qml:133
 msgid "Use cubic volume"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:131
+#: src/contents/ui/PreferencesSheet.qml:144
 msgid "Ignore system notifications"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:132
+#: src/contents/ui/PreferencesSheet.qml:145
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:143
+#: src/contents/ui/PreferencesSheet.qml:156
 #, fuzzy
 msgid "Enable/disable input monitoring"
 msgstr "Gaitu/desgaitu aplikazio hau"
 
-#: src/contents/ui/PreferencesSheet.qml:154
+#: src/contents/ui/PreferencesSheet.qml:167
 msgid "Mic monitor plays to output effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:165
+#: src/contents/ui/PreferencesSheet.qml:178
 msgid "Enable the inactivity timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:166
+#: src/contents/ui/PreferencesSheet.qml:179
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:178
+#: src/contents/ui/PreferencesSheet.qml:191
 msgid "Inactivity timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:205
 msgid "Level meters label"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:193
+#: src/contents/ui/PreferencesSheet.qml:206
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:237
+#: src/contents/ui/PreferencesSheet.qml:244
 msgid "Audio delay compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:251
+#: src/contents/ui/PreferencesSheet.qml:258
 msgid "Style"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:258
+#: src/contents/ui/PreferencesSheet.qml:265
 msgid "Color scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:262
+#: src/contents/ui/PreferencesSheet.qml:269
 #, fuzzy
 msgid "Automatic"
 msgstr "Irabazi automatikoa"
 
-#: src/contents/ui/PreferencesSheet.qml:262
+#: src/contents/ui/PreferencesSheet.qml:269
 #, fuzzy
 msgid "Light"
 msgstr "Eskuina"
 
-#: src/contents/ui/PreferencesSheet.qml:262
+#: src/contents/ui/PreferencesSheet.qml:269
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:272
+#: src/contents/ui/PreferencesSheet.qml:279
 msgid "Color theme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Green neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Mix"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 #, fuzzy
 msgid "Orange"
 msgstr "Barrutia"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:286
+#: src/contents/ui/PreferencesSheet.qml:293
 msgid "Shape"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Bars"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Lines"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Dots"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:300
+#: src/contents/ui/PreferencesSheet.qml:307
 msgid "Dynamic scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:318
 msgid "Logarithmic frequency axis"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:322
+#: src/contents/ui/PreferencesSheet.qml:329
 msgid "Points"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:336
+#: src/contents/ui/PreferencesSheet.qml:343
 msgid "Height"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:342
+#: src/contents/ui/PreferencesSheet.qml:349
 msgid "px"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:350
+#: src/contents/ui/PreferencesSheet.qml:357
 msgid "Frequency Range"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:357
+#: src/contents/ui/PreferencesSheet.qml:364
 msgid "Minimum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:372
+#: src/contents/ui/PreferencesSheet.qml:379
 msgid "Maximum"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:397
+#: src/contents/ui/PreferencesSheet.qml:400
 msgid "Database autosave interval"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:410
+#: src/contents/ui/PreferencesSheet.qml:413
 #, fuzzy
 msgid "Most used presets"
 msgstr "Inportatu aurrezarpena"
 
-#: src/contents/ui/PreferencesSheet.qml:436
+#: src/contents/ui/PreferencesSheet.qml:435
 #, fuzzy
 msgid "Global shortcuts"
 msgstr "L_asterbideak"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:436
 msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:449
+#: src/contents/ui/PreferencesSheet.qml:448
 msgid "Native window of effects"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:449
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:462
+#: src/contents/ui/PreferencesSheet.qml:461
 #, fuzzy
 msgid "Update frequency"
 msgstr "Maiztasuna"
 
-#: src/contents/ui/PreferencesSheet.qml:463
+#: src/contents/ui/PreferencesSheet.qml:462
 msgid "Related to LV2 plugins."
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:498
-msgid "Background Service"
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:513
-msgid "Audio"
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:528
-#, fuzzy
-msgid "Spectrum Analyzer"
-msgstr "Espektroa"
-
-#: src/contents/ui/PreferencesSheet.qml:543
-msgid "Database"
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:558
-msgid "Experimental Features"
 msgstr ""
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:33
@@ -2379,6 +2385,10 @@ msgstr "Aurrezarpena"
 #, fuzzy
 msgid "Remove this autoloading preset"
 msgstr "Inportatu aurrezarpena"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:158
+msgid "Description"
+msgstr "Deskribapena"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 #, fuzzy
@@ -2711,52 +2721,52 @@ msgstr ""
 msgid "Large occupied hall"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:47
+#: src/contents/ui/ShortcutsSheet.qml:46
 msgid "Show help"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:60
+#: src/contents/ui/ShortcutsSheet.qml:59
 msgid "Toggle fullscreen"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:88 src/contents/ui/ShortcutsSheet.qml:311
+#: src/contents/ui/ShortcutsSheet.qml:87 src/contents/ui/ShortcutsSheet.qml:310
 #: src/global_shortcuts.hpp:48
 #, fuzzy
 msgid "Toggle global bypass"
 msgstr "Bypass globala"
 
-#: src/contents/ui/ShortcutsSheet.qml:116
+#: src/contents/ui/ShortcutsSheet.qml:115
 msgid "Close the window"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:144
+#: src/contents/ui/ShortcutsSheet.qml:143
 msgid "Terminate Easy Effects service"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:184
+#: src/contents/ui/ShortcutsSheet.qml:183
 msgid "Toggle process all inputs"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:224
+#: src/contents/ui/ShortcutsSheet.qml:223
 msgid "Toggle process all outputs"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:237
-#: src/contents/ui/ShortcutsSheet.qml:250
+#: src/contents/ui/ShortcutsSheet.qml:236
+#: src/contents/ui/ShortcutsSheet.qml:249
 msgid "Can be used on numeric controls"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:265
+#: src/contents/ui/ShortcutsSheet.qml:264
 #, fuzzy
 msgid "Global Shortcuts"
 msgstr "L_asterbideak"
 
-#: src/contents/ui/ShortcutsSheet.qml:351 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:350 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:370 src/contents/ui/main.qml:394
-#: src/contents/ui/main.qml:524
+#: src/contents/ui/ShortcutsSheet.qml:369 src/contents/ui/main.qml:395
+#: src/contents/ui/main.qml:525
 #, fuzzy
 msgid "Shortcuts"
 msgstr "L_asterbideak"
@@ -2861,53 +2871,58 @@ msgstr "Estereo-zabalera"
 msgid "Stereo phase"
 msgstr "Estereo-zabalera"
 
-#: src/contents/ui/main.qml:218
+#: src/contents/ui/main.qml:219
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_Berrezarri ezarpenak"
 
-#: src/contents/ui/main.qml:219
+#: src/contents/ui/main.qml:220
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:288 src/contents/ui/main.qml:304
+#: src/contents/ui/main.qml:289 src/contents/ui/main.qml:305
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "Aurrezarpenak"
 
-#: src/contents/ui/main.qml:315 src/contents/ui/main.qml:327
+#: src/contents/ui/main.qml:316 src/contents/ui/main.qml:328
 msgid "Clear List"
 msgstr ""
 
-#: src/contents/ui/main.qml:316 src/contents/ui/main.qml:328
+#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:329
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/main.qml:383
+#: src/contents/ui/main.qml:384
 msgid "Active"
 msgstr ""
 
-#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:532
+#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:533
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:415 src/contents/ui/main.qml:564
+#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:565
 msgid "Quit"
 msgstr ""
 
-#: src/contents/ui/main.qml:439
+#: src/contents/ui/main.qml:440
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/main.qml:448
+#: src/contents/ui/main.qml:449
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/main.qml:500
+#: src/contents/ui/main.qml:501
 msgid "PipeWire"
 msgstr ""
 
-#: src/contents/ui/main.qml:556
+#: src/contents/ui/main.qml:517
+#, fuzzy
+msgid "Preferences"
+msgstr "_Hobespenak"
+
+#: src/contents/ui/main.qml:557
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "Easy Effects aplikazioari _buruz"
