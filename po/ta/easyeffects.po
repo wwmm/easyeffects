@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-11 19:26+0000\n"
+"POT-Creation-Date: 2025-11-11 22:38+0000\n"
 "PO-Revision-Date: 2025-07-20 18:40+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -301,7 +301,8 @@ msgstr "தொகை"
 #: src/contents/ui/MultibandGate.qml:268 src/contents/ui/MultibandGate.qml:283
 #: src/contents/ui/MultibandGate.qml:322 src/contents/ui/MultibandGate.qml:338
 #: src/contents/ui/MultibandGate.qml:412 src/contents/ui/MultibandGate.qml:567
-#: src/contents/ui/MultibandGate.qml:585 src/contents/ui/Pitch.qml:111
+#: src/contents/ui/MultibandGate.qml:585
+#: src/contents/ui/PageStreamsEffects.qml:608 src/contents/ui/Pitch.qml:111
 #: src/contents/ui/Pitch.qml:130 src/contents/ui/RNNoise.qml:132
 #: src/contents/ui/Reverb.qml:178 src/contents/ui/Reverb.qml:196
 #: src/contents/ui/Speex.qml:85 src/contents/ui/StereoTools.qml:125
@@ -331,7 +332,7 @@ msgstr "நோக்கம்"
 #: src/contents/ui/MultibandCompressor.qml:518
 #: src/contents/ui/MultibandGate.qml:122 src/contents/ui/MultibandGate.qml:466
 #: src/contents/ui/MultibandGate.qml:491
-#: src/contents/ui/PageStreamsEffects.qml:463
+#: src/contents/ui/PageStreamsEffects.qml:465
 #: src/contents/ui/PipeWirePage.qml:403
 #: src/contents/ui/PreferencesSheet.qml:370
 #: src/contents/ui/PreferencesSheet.qml:385
@@ -380,14 +381,14 @@ msgstr "கேளுங்கள்"
 #: src/contents/ui/MultibandCompressor.qml:985
 #: src/contents/ui/MultibandGate.qml:958 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:338 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:546
+#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:550
 msgid "Reset"
 msgstr "மீட்டமை"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:463
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:421
 #: src/contents/ui/Gate.qml:436 src/contents/ui/StereoTools.qml:249
-#: src/contents/ui/main.qml:484
+#: src/contents/ui/main.qml:488
 msgid "Output"
 msgstr "வெளியீடு"
 
@@ -531,8 +532,9 @@ msgstr "தாக்குதல்"
 #: src/contents/ui/MultibandCompressor.qml:470
 #: src/contents/ui/MultibandGate.qml:171 src/contents/ui/MultibandGate.qml:186
 #: src/contents/ui/MultibandGate.qml:428 src/contents/ui/MultibandGate.qml:443
-#: src/contents/ui/Pitch.qml:58 src/contents/ui/Pitch.qml:75
-#: src/contents/ui/Pitch.qml:93 src/contents/ui/PreferencesSheet.qml:213
+#: src/contents/ui/PageStreamsEffects.qml:607 src/contents/ui/Pitch.qml:58
+#: src/contents/ui/Pitch.qml:75 src/contents/ui/Pitch.qml:93
+#: src/contents/ui/PreferencesSheet.qml:213
 #: src/contents/ui/PreferencesSheet.qml:250
 #: src/contents/ui/PreferencesSheet.qml:406 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
@@ -582,7 +584,7 @@ msgstr "வெளிப்புறம்"
 
 #: src/contents/ui/Compressor.qml:260 src/contents/ui/Expander.qml:220
 #: src/contents/ui/Gate.qml:238 src/contents/ui/Limiter.qml:210
-#: src/contents/ui/PageStreamsEffects.qml:383
+#: src/contents/ui/PageStreamsEffects.qml:385
 #, fuzzy
 msgid "Input device"
 msgstr "உள்ளீட்டு சாதனம்"
@@ -1022,7 +1024,7 @@ msgid "Default"
 msgstr "இயல்புநிலை"
 
 #: src/contents/ui/Crossfeed.qml:146 src/contents/ui/Reverb.qml:315
-#: src/contents/ui/main.qml:462
+#: src/contents/ui/main.qml:466
 msgid "Presets"
 msgstr "முன்னமைவுகள்"
 
@@ -1045,6 +1047,7 @@ msgid "Bypass"
 msgstr "பைபாச்"
 
 #: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:48
+#: src/contents/ui/PageStreamsEffects.qml:606
 msgid "kHz"
 msgstr ""
 
@@ -1324,7 +1327,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:40
-#: src/contents/ui/main.qml:493
+#: src/contents/ui/main.qml:497
 msgid "Input"
 msgstr "உள்ளீடு"
 
@@ -1369,6 +1372,24 @@ msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
 msgstr "அப்போ முன்னமைக்கப்பட்ட கோப்பை இறக்குமதி செய்யுங்கள்"
+
+#: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
+#: src/contents/ui/Loudness.qml:58
+msgid "IIR"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
+msgid "FIR"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
+#: src/contents/ui/Loudness.qml:58
+msgid "FFT"
+msgstr ""
+
+#: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
+msgid "SPM"
+msgstr ""
 
 #: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
@@ -1478,6 +1499,34 @@ msgstr "ஏணி-பாச்"
 msgid "Ladder-rejection"
 msgstr "ஏணி-நிராகரிப்பு"
 
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "RLC (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "RLC (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "BWC (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "BWC (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "LRX (BT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "LRX (MT)"
+msgstr ""
+
+#: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
+msgid "APO (DR)"
+msgstr ""
+
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:88
 msgid "Slope"
 msgstr "சாய்வு"
@@ -1532,54 +1581,10 @@ msgstr "உள்"
 msgid "Filter mode"
 msgstr "ச்டீரியோ பயன்முறை"
 
-#: src/contents/ui/Filter.qml:64
-msgid "RLC (BT)"
-msgstr ""
-
-#: src/contents/ui/Filter.qml:64
-msgid "RLC (MT)"
-msgstr ""
-
-#: src/contents/ui/Filter.qml:64
-msgid "BWC (BT)"
-msgstr ""
-
-#: src/contents/ui/Filter.qml:64
-msgid "BWC (MT)"
-msgstr ""
-
-#: src/contents/ui/Filter.qml:64
-msgid "LRX (BT)"
-msgstr ""
-
-#: src/contents/ui/Filter.qml:64
-msgid "LRX (MT)"
-msgstr ""
-
-#: src/contents/ui/Filter.qml:64
-msgid "APO (DR)"
-msgstr ""
-
 #: src/contents/ui/Filter.qml:74
 #, fuzzy
 msgid "Equalizer mode"
 msgstr "சமநிலைப்படுத்தி பயன்முறை"
-
-#: src/contents/ui/Filter.qml:78 src/contents/ui/Loudness.qml:58
-msgid "IIR"
-msgstr ""
-
-#: src/contents/ui/Filter.qml:78
-msgid "FIR"
-msgstr ""
-
-#: src/contents/ui/Filter.qml:78 src/contents/ui/Loudness.qml:58
-msgid "FFT"
-msgstr ""
-
-#: src/contents/ui/Filter.qml:78
-msgid "SPM"
-msgstr ""
 
 #: src/contents/ui/Gate.qml:54 src/tags_plugin_name.cpp:41
 msgid "Gate"
@@ -1995,57 +2000,57 @@ msgstr "குறைப்பு"
 msgid "No audio application available"
 msgstr "ஆடியோ பயன்பாடு எதுவும் கிடைக்கவில்லை"
 
-#: src/contents/ui/PageStreamsEffects.qml:315
+#: src/contents/ui/PageStreamsEffects.qml:314
 #, fuzzy
 msgid "Add effect"
 msgstr "விளைவைச் சேர்க்கவும்"
 
-#: src/contents/ui/PageStreamsEffects.qml:323
+#: src/contents/ui/PageStreamsEffects.qml:322
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:327
+#: src/contents/ui/PageStreamsEffects.qml:326
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:327
+#: src/contents/ui/PageStreamsEffects.qml:326
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:383
-#: src/contents/ui/PageStreamsEffects.qml:625
+#: src/contents/ui/PageStreamsEffects.qml:385
+#: src/contents/ui/PageStreamsEffects.qml:627
 msgid "Players"
 msgstr "வீரர்கள்"
 
-#: src/contents/ui/PageStreamsEffects.qml:400
+#: src/contents/ui/PageStreamsEffects.qml:402
 #, fuzzy
 msgid "Output device"
 msgstr "வெளியீட்டு சாதனம்"
 
-#: src/contents/ui/PageStreamsEffects.qml:400
-#: src/contents/ui/PageStreamsEffects.qml:625
+#: src/contents/ui/PageStreamsEffects.qml:402
+#: src/contents/ui/PageStreamsEffects.qml:627
 msgid "Recorders"
 msgstr "ரெக்கார்டர்கள்"
 
-#: src/contents/ui/PageStreamsEffects.qml:424
+#: src/contents/ui/PageStreamsEffects.qml:426
 msgid "No Effects"
 msgstr "விளைவுகள் இல்லை"
 
-#: src/contents/ui/PageStreamsEffects.qml:425
+#: src/contents/ui/PageStreamsEffects.qml:427
 #, fuzzy
 msgid "Audio stream not modified"
 msgstr "ஆடியோ ச்ட்ரீம் மாற்றப்படவில்லை"
 
-#: src/contents/ui/PageStreamsEffects.qml:635
+#: src/contents/ui/PageStreamsEffects.qml:637 src/contents/ui/main.qml:450
 msgid "Effects"
 msgstr "விளைவுகள்"
 
-#: src/contents/ui/PageStreamsEffects.qml:652
+#: src/contents/ui/PageStreamsEffects.qml:654
 #, fuzzy
 msgid "Input monitoring"
 msgstr "உள்ளீட்டு கண்காணிப்பை இயக்கவும்/முடக்கவும்"
 
-#: src/contents/ui/PageStreamsEffects.qml:665
+#: src/contents/ui/PageStreamsEffects.qml:667
 #, fuzzy
 msgid "Excluded apps"
 msgstr "விலக்கப்பட்ட பயன்பாடுகள்"
@@ -2935,7 +2940,7 @@ msgid "Toggle microphone monitoring"
 msgstr ""
 
 #: src/contents/ui/ShortcutsSheet.qml:369 src/contents/ui/main.qml:395
-#: src/contents/ui/main.qml:526
+#: src/contents/ui/main.qml:530
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_SHORTCUTS"
@@ -3074,11 +3079,11 @@ msgstr ""
 msgid "Active"
 msgstr "செயலில் மாதிரி"
 
-#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:534
+#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:538
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:566
+#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:570
 #, fuzzy
 msgid "Quit"
 msgstr "வெளியேறு"
@@ -3087,21 +3092,29 @@ msgstr "வெளியேறு"
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/main.qml:450
+#: src/contents/ui/main.qml:451
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/main.qml:502
+#: src/contents/ui/main.qml:462
+msgid "Audio effects are enabled."
+msgstr ""
+
+#: src/contents/ui/main.qml:462
+msgid "Audio effects are disabled."
+msgstr ""
+
+#: src/contents/ui/main.qml:506
 #, fuzzy
 msgid "PipeWire"
 msgstr "_ பிபிபீயர்"
 
-#: src/contents/ui/main.qml:518
+#: src/contents/ui/main.qml:522
 #, fuzzy
 msgid "Preferences"
 msgstr "_ முனைகள்"
 
-#: src/contents/ui/main.qml:558
+#: src/contents/ui/main.qml:562
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_ எளிதான விளைவுகள்"
