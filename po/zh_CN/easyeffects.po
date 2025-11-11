@@ -25,7 +25,8 @@ msgid ""
 "Cannot enable autostart option because background access has been denied. "
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
-msgstr "无法开启自动启动选项，因为禁用了后台权限。请在系统设置中授予Easy Effects“在后"
+msgstr ""
+"无法开启自动启动选项，因为禁用了后台权限。请在系统设置中授予Easy Effects“在后"
 "台运行”权限。"
 
 #: src/command_line_parser.cpp:43
@@ -895,6 +896,7 @@ msgstr "频谱"
 
 #: src/contents/ui/Convolver.qml:225 src/contents/ui/Convolver.qml:325
 #: src/contents/ui/PreferencesSheet.qml:184 src/contents/ui/Reverb.qml:68
+#: src/contents/ui/Convolver.qml:379
 msgid "s"
 msgstr ""
 
