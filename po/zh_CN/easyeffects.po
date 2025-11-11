@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-11 01:33+0000\n"
-"PO-Revision-Date: 2025-11-11 03:47+0000\n"
+"PO-Revision-Date: 2025-11-11 15:56+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -25,13 +25,12 @@ msgid ""
 "Cannot enable autostart option because background access has been denied. "
 "Please allow \"Run in Background\" permission for Easy Effects in your "
 "system app settings."
-msgstr ""
-"无法开启自动启动选项，因为禁用了后台权限。请在系统设置中授予Easy Effects“在后"
+msgstr "无法启用自动启动选项，因为禁用了后台权限。请在系统设置中授予Easy Effects“在后"
 "台运行”权限。"
 
 #: src/command_line_parser.cpp:43
 msgid "Quit Easy Effects. Useful when running in service mode."
-msgstr "退出Easy Effects。在服务模式下运行时有用。"
+msgstr "退出Easy Effects。可用于运行在服务模式下时。"
 
 #: src/command_line_parser.cpp:44
 msgid "Reset Easy Effects."
@@ -114,11 +113,11 @@ msgstr "开发者"
 #: src/contents/ui/Maximizer.qml:41 src/contents/ui/Pitch.qml:40
 #: src/contents/ui/Reverb.qml:41 src/contents/ui/Speex.qml:39
 msgid "Controls"
-msgstr "控制"
+msgstr "控制项"
 
 #: src/contents/ui/Autogain.qml:55
 msgid "Reference"
-msgstr "参考"
+msgstr "响度参考"
 
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:129
 #: src/contents/ui/LevelMeter.qml:143
@@ -375,7 +374,7 @@ msgstr "输出"
 #: src/contents/ui/Limiter.qml:200 src/contents/ui/MultibandCompressor.qml:389
 #: src/contents/ui/MultibandGate.qml:362
 msgid "Link"
-msgstr "链接"
+msgstr "共享内存链接"
 
 #: src/contents/ui/BlocklistSheet.qml:13
 msgid "Excluded Applications"
@@ -474,9 +473,8 @@ msgid "Knee"
 msgstr "拐点"
 
 #: src/contents/ui/Compressor.qml:152 src/contents/ui/Expander.qml:112
-#, fuzzy
 msgid "Threshold and Time"
-msgstr "阈值"
+msgstr "阈值与时间"
 
 #: src/contents/ui/Compressor.qml:162 src/contents/ui/Expander.qml:122
 #: src/contents/ui/Gate.qml:66 src/contents/ui/Gate.qml:855
@@ -484,7 +482,7 @@ msgstr "阈值"
 #: src/contents/ui/MultibandCompressor.qml:222
 #: src/contents/ui/MultibandGate.qml:163
 msgid "Attack"
-msgstr "建立"
+msgstr "启动"
 
 #: src/contents/ui/Compressor.qml:186 src/contents/ui/Compressor.qml:220
 #: src/contents/ui/Compressor.qml:367 src/contents/ui/Compressor.qml:385
@@ -506,7 +504,7 @@ msgstr "建立"
 #: src/contents/ui/PreferencesSheet.qml:403 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
 msgid "ms"
-msgstr ""
+msgstr "毫秒"
 
 #: src/contents/ui/Compressor.qml:195 src/contents/ui/Expander.qml:155
 #: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:864
@@ -547,12 +545,11 @@ msgstr "反馈式"
 #: src/contents/ui/MultibandCompressor.qml:389
 #: src/contents/ui/MultibandGate.qml:362
 msgid "External"
-msgstr "外部"
+msgstr "外部输入"
 
 #: src/contents/ui/Compressor.qml:260 src/contents/ui/Expander.qml:220
 #: src/contents/ui/Gate.qml:238 src/contents/ui/Limiter.qml:210
 #: src/contents/ui/PageStreamsEffects.qml:383
-#, fuzzy
 msgid "Input device"
 msgstr "输入设备"
 
@@ -568,7 +565,7 @@ msgstr "峰值"
 #: src/contents/ui/MultibandCompressor.qml:400
 #: src/contents/ui/MultibandGate.qml:373
 msgid "RMS"
-msgstr "均方根值"
+msgstr "均方根"
 
 #: src/contents/ui/Compressor.qml:288 src/contents/ui/Compressor.qml:409
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:248
@@ -577,14 +574,13 @@ msgstr "均方根值"
 #: src/contents/ui/MultibandCompressor.qml:400
 #: src/contents/ui/MultibandGate.qml:373
 msgid "Low-pass"
-msgstr "低通"
+msgstr "低通滤波"
 
 #: src/contents/ui/Compressor.qml:288 src/contents/ui/Expander.qml:248
 #: src/contents/ui/Gate.qml:266 src/contents/ui/MultibandCompressor.qml:400
 #: src/contents/ui/MultibandGate.qml:373
-#, fuzzy
 msgid "SMA"
-msgstr "自相位调制 (SPM)"
+msgstr "简单滑动平均"
 
 #: src/contents/ui/Compressor.qml:298 src/contents/ui/Compressor.qml:313
 #: src/contents/ui/Expander.qml:258 src/contents/ui/Expander.qml:273
@@ -593,19 +589,19 @@ msgstr "自相位调制 (SPM)"
 #: src/contents/ui/MultibandCompressor.qml:419
 #: src/contents/ui/MultibandGate.qml:380 src/contents/ui/MultibandGate.qml:392
 msgid "Source"
-msgstr "源"
+msgstr "源信号"
 
 #: src/contents/ui/Compressor.qml:302 src/contents/ui/Expander.qml:262
 #: src/contents/ui/Gate.qml:280 src/contents/ui/MultibandCompressor.qml:411
 #: src/contents/ui/MultibandGate.qml:384
 msgid "Middle"
-msgstr "中央"
+msgstr "中信号"
 
 #: src/contents/ui/Compressor.qml:302 src/contents/ui/Expander.qml:262
 #: src/contents/ui/Gate.qml:280 src/contents/ui/MultibandCompressor.qml:411
 #: src/contents/ui/MultibandGate.qml:384
 msgid "Side"
-msgstr "侧边"
+msgstr "侧信号"
 
 #: src/contents/ui/Compressor.qml:302 src/contents/ui/Convolver.qml:268
 #: src/contents/ui/Delay.qml:40 src/contents/ui/Equalizer.qml:195
@@ -615,7 +611,7 @@ msgstr "侧边"
 #: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:314
 #: src/contents/ui/StereoTools.qml:185
 msgid "Left"
-msgstr "左"
+msgstr "左声道"
 
 #: src/contents/ui/Compressor.qml:302 src/contents/ui/Convolver.qml:286
 #: src/contents/ui/Delay.qml:193 src/contents/ui/Equalizer.qml:195
@@ -625,7 +621,7 @@ msgstr "左"
 #: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:325
 #: src/contents/ui/StereoTools.qml:212
 msgid "Right"
-msgstr "右"
+msgstr "右声道"
 
 #: src/contents/ui/Compressor.qml:302 src/contents/ui/Compressor.qml:317
 #: src/contents/ui/Expander.qml:262 src/contents/ui/Expander.qml:277
@@ -634,7 +630,7 @@ msgstr "右"
 #: src/contents/ui/MultibandCompressor.qml:423
 #: src/contents/ui/MultibandGate.qml:384 src/contents/ui/MultibandGate.qml:396
 msgid "Min"
-msgstr "输入端最低值"
+msgstr "立体声输入最低值"
 
 #: src/contents/ui/Compressor.qml:302 src/contents/ui/Compressor.qml:317
 #: src/contents/ui/Expander.qml:262 src/contents/ui/Expander.qml:277
@@ -643,44 +639,44 @@ msgstr "输入端最低值"
 #: src/contents/ui/MultibandCompressor.qml:423
 #: src/contents/ui/MultibandGate.qml:384 src/contents/ui/MultibandGate.qml:396
 msgid "Max"
-msgstr "输入端最高值"
+msgstr "立体声输入最高值"
 
 #: src/contents/ui/Compressor.qml:317 src/contents/ui/Expander.qml:277
 #: src/contents/ui/Gate.qml:295 src/contents/ui/MultibandCompressor.qml:423
 #: src/contents/ui/MultibandGate.qml:396
 msgid "Left/Right"
-msgstr "左/右"
+msgstr "左/右声道"
 
 #: src/contents/ui/Compressor.qml:317 src/contents/ui/Expander.qml:277
 #: src/contents/ui/Gate.qml:295 src/contents/ui/MultibandCompressor.qml:423
 #: src/contents/ui/MultibandGate.qml:396
 msgid "Right/Left"
-msgstr "右/左"
+msgstr "右/左声道"
 
 #: src/contents/ui/Compressor.qml:317 src/contents/ui/Expander.qml:277
 #: src/contents/ui/Gate.qml:295 src/contents/ui/MultibandCompressor.qml:423
 #: src/contents/ui/MultibandGate.qml:396
 msgid "Mid/Side"
-msgstr "中置/侧边"
+msgstr "中/侧信号"
 
 #: src/contents/ui/Compressor.qml:317 src/contents/ui/Expander.qml:277
 #: src/contents/ui/Gate.qml:295 src/contents/ui/MultibandCompressor.qml:423
 #: src/contents/ui/MultibandGate.qml:396
 msgid "Side/Mid"
-msgstr "侧边/中置"
+msgstr "侧/中信号"
 
 #: src/contents/ui/Compressor.qml:341 src/contents/ui/Expander.qml:297
 #: src/contents/ui/Gate.qml:316 src/contents/ui/Limiter.qml:233
 #: src/contents/ui/MultibandCompressor.qml:431
 #: src/contents/ui/MultibandGate.qml:404
 msgid "Preamp"
-msgstr ""
+msgstr "前置放大"
 
 #: src/contents/ui/Compressor.qml:359 src/contents/ui/Expander.qml:315
 #: src/contents/ui/Gate.qml:334 src/contents/ui/MultibandCompressor.qml:447
 #: src/contents/ui/MultibandGate.qml:420
 msgid "Reactivity"
-msgstr "响应"
+msgstr "响应率"
 
 #: src/contents/ui/Compressor.qml:377 src/contents/ui/Expander.qml:333
 #: src/contents/ui/Gate.qml:352 src/contents/ui/Limiter.qml:251
@@ -692,9 +688,8 @@ msgstr "前视时间"
 #: src/contents/ui/Compressor.qml:395 src/contents/ui/EqualizerBandMenu.qml:37
 #: src/contents/ui/Expander.qml:351 src/contents/ui/Filter.qml:50
 #: src/contents/ui/Gate.qml:370
-#, fuzzy
 msgid "High-pass"
-msgstr "高通滤波器"
+msgstr "高通滤波"
 
 #: src/contents/ui/Compressor.qml:399 src/contents/ui/Compressor.qml:413
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Expander.qml:355
@@ -707,19 +702,19 @@ msgstr "关闭"
 #: src/contents/ui/Expander.qml:355 src/contents/ui/Expander.qml:369
 #: src/contents/ui/Gate.qml:374 src/contents/ui/Gate.qml:388
 msgid "12 dB/oct"
-msgstr "每八度 12 dB"
+msgstr "每八度12分贝"
 
 #: src/contents/ui/Compressor.qml:399 src/contents/ui/Compressor.qml:413
 #: src/contents/ui/Expander.qml:355 src/contents/ui/Expander.qml:369
 #: src/contents/ui/Gate.qml:374 src/contents/ui/Gate.qml:388
 msgid "24 dB/oct"
-msgstr "每八度 24 dB"
+msgstr "每八度24分贝"
 
 #: src/contents/ui/Compressor.qml:399 src/contents/ui/Compressor.qml:413
 #: src/contents/ui/Expander.qml:355 src/contents/ui/Expander.qml:369
 #: src/contents/ui/Gate.qml:374 src/contents/ui/Gate.qml:388
 msgid "36 dB/oct"
-msgstr "每八度 36 dB"
+msgstr "每八度36分贝"
 
 #: src/contents/ui/Compressor.qml:469 src/contents/ui/Convolver.qml:415
 #: src/contents/ui/Delay.qml:157 src/contents/ui/Delay.qml:310
@@ -727,9 +722,8 @@ msgstr "每八度 36 dB"
 #: src/contents/ui/MultibandCompressor.qml:586
 #: src/contents/ui/MultibandGate.qml:559 src/contents/ui/Pitch.qml:103
 #: src/contents/ui/Reverb.qml:170 src/contents/ui/StereoTools.qml:325
-#, fuzzy
 msgid "Dry"
-msgstr "尝试"
+msgstr "干"
 
 #: src/contents/ui/Compressor.qml:488 src/contents/ui/Convolver.qml:433
 #: src/contents/ui/Delay.qml:175 src/contents/ui/Delay.qml:328
@@ -737,9 +731,8 @@ msgstr "尝试"
 #: src/contents/ui/MultibandCompressor.qml:604
 #: src/contents/ui/MultibandGate.qml:577 src/contents/ui/Pitch.qml:122
 #: src/contents/ui/Reverb.qml:188 src/contents/ui/StereoTools.qml:343
-#, fuzzy
 msgid "Wet"
-msgstr "程度"
+msgstr "湿"
 
 #: src/contents/ui/Compressor.qml:507 src/contents/ui/Deesser.qml:117
 #: src/contents/ui/Expander.qml:465 src/contents/ui/Gate.qml:480
@@ -754,49 +747,43 @@ msgstr "补偿"
 #: src/contents/ui/MultibandCompressor.qml:977
 #: src/contents/ui/MultibandGate.qml:950
 msgid "Pre-Mix"
-msgstr ""
+msgstr "预混"
 
 #: src/contents/ui/Compressor.qml:535 src/contents/ui/Expander.qml:489
 #: src/contents/ui/Gate.qml:510 src/contents/ui/Limiter.qml:285
 #: src/contents/ui/LspPreMixSheet.qml:30
-#, fuzzy
 msgid "Input to sidechain"
-msgstr "侧链"
+msgstr "输入到侧链"
 
 #: src/contents/ui/Compressor.qml:551 src/contents/ui/Expander.qml:505
 #: src/contents/ui/Gate.qml:526 src/contents/ui/Limiter.qml:301
 #: src/contents/ui/LspPreMixSheet.qml:46
-#, fuzzy
 msgid "Input to link"
-msgstr "启用/禁用此应用程序"
+msgstr "输入到共享内存链接"
 
 #: src/contents/ui/Compressor.qml:567 src/contents/ui/Expander.qml:521
 #: src/contents/ui/Gate.qml:542 src/contents/ui/Limiter.qml:317
 #: src/contents/ui/LspPreMixSheet.qml:62
-#, fuzzy
 msgid "Sidechain to input"
-msgstr "输入设备"
+msgstr "侧链到输入"
 
 #: src/contents/ui/Compressor.qml:583 src/contents/ui/Expander.qml:537
 #: src/contents/ui/Gate.qml:558 src/contents/ui/Limiter.qml:333
 #: src/contents/ui/LspPreMixSheet.qml:78
-#, fuzzy
 msgid "Sidechain to link"
-msgstr "侧链模式"
+msgstr "侧链到共享内存链接"
 
 #: src/contents/ui/Compressor.qml:599 src/contents/ui/Expander.qml:553
 #: src/contents/ui/Gate.qml:574 src/contents/ui/Limiter.qml:349
 #: src/contents/ui/LspPreMixSheet.qml:94
-#, fuzzy
 msgid "Link to sidechain"
-msgstr "播放侧链"
+msgstr "共享内存链接到侧链"
 
 #: src/contents/ui/Compressor.qml:615 src/contents/ui/Expander.qml:569
 #: src/contents/ui/Gate.qml:590 src/contents/ui/Limiter.qml:365
 #: src/contents/ui/LspPreMixSheet.qml:110
-#, fuzzy
 msgid "Link to input"
-msgstr "播放侧链"
+msgstr "共享内存链接到输入"
 
 #: src/contents/ui/Compressor.qml:659 src/contents/ui/Expander.qml:609
 #: src/contents/ui/Gate.qml:101 src/contents/ui/Gate.qml:635
@@ -845,33 +832,30 @@ msgstr "压缩曲线"
 #: src/contents/ui/Gate.qml:755 src/contents/ui/MultibandCompressor.qml:768
 #: src/contents/ui/MultibandGate.qml:741
 msgid "Envelope"
-msgstr "波封"
+msgstr "包络"
 
 #: src/contents/ui/Compressor.qml:913 src/contents/ui/Expander.qml:861
 #: src/contents/ui/Gate.qml:998 src/contents/ui/MultibandCompressor.qml:967
 #: src/contents/ui/MultibandGate.qml:940
-#, fuzzy
 msgid "Stereo split"
-msgstr "立体声分离"
+msgstr "分离立体声"
 
 #: src/contents/ui/Convolver.qml:49
 #, fuzzy
 msgid "Loaded the %1 Convolver impulse."
-msgstr "加载脉冲文件失败"
+msgstr "已加载卷积脉冲响应文件。"
 
 #: src/contents/ui/Convolver.qml:51 src/contents/ui/Convolver.qml:309
-#, fuzzy
 msgid "Convolver impulse is not set"
-msgstr "混合脉冲响应"
+msgstr "未设置卷积脉冲响应"
 
 #: src/contents/ui/Convolver.qml:55
 msgid "The Convolver is in passthrough mode."
-msgstr ""
+msgstr "卷积器处于直通模式。"
 
 #: src/contents/ui/Convolver.qml:57
-#, fuzzy
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "加载脉冲文件失败"
+msgstr "加载脉冲响应文件失败。卷积器处于直通模式。"
 
 #: src/contents/ui/Convolver.qml:121
 msgid "First"
@@ -1020,7 +1004,7 @@ msgstr "静音"
 #: src/contents/ui/MultibandCompressor.qml:82
 #: src/contents/ui/MultibandGate.qml:82
 msgid "Bypass"
-msgstr "旁路"
+msgstr "旁通"
 
 #: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:48
 msgid "kHz"
