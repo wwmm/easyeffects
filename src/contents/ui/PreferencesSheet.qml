@@ -1,35 +1,52 @@
 import QtQml // Despite of what Qt extension says this import is needed. We crash without it
 import QtQuick
-import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import ee.database as DB
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.formcard as FormCard
+import org.kde.kirigamiaddons.settings as KirigamiSettings
 
-Kirigami.OverlaySheet {
+KirigamiSettings.ConfigurationView {
     id: preferencesSheet
 
-    parent: applicationWindow().overlay// qmllint disable
-    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
-    focus: true
-    title: i18n("Preferences") // qmllint disable
-    y: 0
-    implicitWidth: Math.min(stack.implicitWidth, appWindow.width * 0.8)// qmllint disable
-    implicitHeight: Math.min(appWindow.maxOverlayHeight, stack.height + preferencesSheet.header.height + Kirigami.Units.largeSpacing * 2) // qmllint disable
-
-    onVisibleChanged: {
-        if (!preferencesSheet.visible) {
-            while (stack.depth > 1)
-                stack.pop();
-            headerTitle.text = i18n("Preferences");// qmllint disable
+    modules: [
+        KirigamiSettings.ConfigurationModule {
+            moduleId: "appearance"
+            icon.name: "services-symbolic"
+            text: i18n("Background Service") // qmllint disable
+            page: () => servicePage
+        },
+        KirigamiSettings.ConfigurationModule {
+            moduleId: "audio"
+            icon.name: "folder-sound-symbolic"
+            text: i18n("Audio") // qmllint disable
+            page: () => audioPage
+        },
+        KirigamiSettings.ConfigurationModule {
+            moduleId: "spectrum"
+            icon.name: "folder-chart-symbolic"
+            text: i18n("Spectrum Analyzer") // qmllint disable
+            page: () => spectrumPage
+        },
+        KirigamiSettings.ConfigurationModule {
+            moduleId: "database"
+            icon.name: "server-database-symbolic"
+            text: i18n("Database") // qmllint disable
+            page: () => databasePage
+        },
+        KirigamiSettings.ConfigurationModule {
+            moduleId: "experimental"
+            icon.name: "emblem-warning"
+            text: i18n("Experimental Features") // qmllint disable
+            page: () => experimentalPage
         }
-    }
+    ]
 
-    Component {
-        id: servicePage
-
-        ColumnLayout {
+    readonly property Component servicePage: Component {
+        FormCard.FormCardPage {
             FormCard.FormCard {
+                Layout.topMargin: Kirigami.Units.gridUnit
+
                 EeSwitch {
                     id: enableServiceMode
 
@@ -69,18 +86,14 @@ Kirigami.OverlaySheet {
                     }
                 }
             }
-
-            Item {
-                implicitHeight: Kirigami.Units.gridUnit
-            }
         }
     }
 
-    Component {
-        id: audioPage
-
-        ColumnLayout {
+    readonly property Component audioPage: Component {
+        FormCard.FormCardPage {
             FormCard.FormCard {
+                Layout.topMargin: Kirigami.Units.gridUnit
+
                 EeSwitch {
                     id: processAllOutputs
 
@@ -204,17 +217,11 @@ Kirigami.OverlaySheet {
                     }
                 }
             }
-
-            Item {
-                implicitHeight: Kirigami.Units.gridUnit
-            }
         }
     }
 
-    Component {
-        id: spectrumPage
-
-        ColumnLayout {
+    readonly property Component spectrumPage: Component {
+        FormCard.FormCardPage {
             FormCard.FormHeader {
                 title: i18n("State") // qmllint disable
             }
@@ -381,18 +388,14 @@ Kirigami.OverlaySheet {
                     }
                 }
             }
-
-            Item {
-                implicitHeight: Kirigami.Units.gridUnit
-            }
         }
     }
 
-    Component {
-        id: databasePage
-
-        ColumnLayout {
+    readonly property Component databasePage: Component {
+        FormCard.FormCardPage {
             FormCard.FormCard {
+                Layout.topMargin: Kirigami.Units.gridUnit
+
                 EeSpinBox {
                     label: i18n("Database autosave interval") // qmllint disable
                     from: DB.Manager.main.getMinValue("databaseAutosaveInterval")
@@ -418,18 +421,14 @@ Kirigami.OverlaySheet {
                     }
                 }
             }
-
-            Item {
-                implicitHeight: Kirigami.Units.gridUnit
-            }
         }
     }
 
-    Component {
-        id: experimentalPage
-
-        ColumnLayout {
+    readonly property Component experimentalPage: Component {
+        FormCard.FormCardPage {
             FormCard.FormCard {
+                Layout.topMargin: Kirigami.Units.gridUnit
+
                 EeSwitch {
                     id: xdgGlobalShortcuts
 
@@ -478,128 +477,6 @@ Kirigami.OverlaySheet {
             Item {
                 implicitHeight: Kirigami.Units.gridUnit
             }
-        }
-    }
-
-    Controls.StackView {
-        id: stack
-
-        implicitHeight: currentItem ? currentItem.implicitHeight : 0
-        implicitWidth: initialCard.maximumWidth
-
-        initialItem: ColumnLayout {
-            FormCard.FormCard {
-                id: initialCard
-
-                FormCard.FormButtonDelegate {
-                    id: serviceButton
-
-                    icon.name: "services-symbolic"
-                    text: i18n("Background Service") // qmllint disable
-                    onClicked: {
-                        while (stack.depth > 1)
-                            stack.pop();
-
-                        stack.push(servicePage);
-
-                        headerTitle.text = text;
-                    }
-                }
-
-                FormCard.FormButtonDelegate {
-                    id: audioButton
-
-                    icon.name: "folder-sound-symbolic"
-                    text: i18n("Audio") // qmllint disable
-                    onClicked: {
-                        while (stack.depth > 1)
-                            stack.pop();
-
-                        stack.push(audioPage);
-
-                        headerTitle.text = text;
-                    }
-                }
-
-                FormCard.FormButtonDelegate {
-                    id: spectrumButton
-
-                    icon.name: "folder-chart-symbolic"
-                    text: i18n("Spectrum Analyzer") // qmllint disable
-                    onClicked: {
-                        while (stack.depth > 1)
-                            stack.pop();
-
-                        stack.push(spectrumPage);
-
-                        headerTitle.text = text;
-                    }
-                }
-
-                FormCard.FormButtonDelegate {
-                    id: databaseButton
-
-                    icon.name: "server-database-symbolic"
-                    text: i18n("Database") // qmllint disable
-                    onClicked: {
-                        while (stack.depth > 1)
-                            stack.pop();
-
-                        stack.push(databasePage);
-
-                        headerTitle.text = text;
-                    }
-                }
-
-                FormCard.FormButtonDelegate {
-                    id: experimentalButton
-
-                    icon.name: "emblem-warning"
-                    text: i18n("Experimental Features") // qmllint disable
-                    onClicked: {
-                        while (stack.depth > 1)
-                            stack.pop();
-
-                        stack.push(experimentalPage);
-
-                        headerTitle.text = text;
-                    }
-                }
-            }
-
-            /**
-             * This is a hack to make sure we can see the whole card when the vertical scrollbar is used
-             */
-
-            Item {
-                implicitHeight: Kirigami.Units.gridUnit
-            }
-        }
-    }
-
-    header: RowLayout {
-        Controls.ToolButton {
-            id: headerBackButton
-
-            icon.name: "draw-arrow-back-symbolic"
-            visible: stack.depth !== 1
-            onClicked: {
-                while (stack.depth > 1)
-                    stack.pop();
-                headerTitle.text = i18n("Preferences");// qmllint disable
-            }
-        }
-
-        Kirigami.Icon {
-            visible: stack.depth === 1
-            source: "gtk-preferences-symbolic"
-        }
-
-        Kirigami.Heading {
-            id: headerTitle
-
-            Layout.fillWidth: true
-            text: i18n("Preferences") // qmllint disable
         }
     }
 }
