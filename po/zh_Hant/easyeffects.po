@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-09 22:38-0300\n"
-"PO-Revision-Date: 2025-11-10 14:51+0000\n"
+"PO-Revision-Date: 2025-11-11 01:36+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -1264,7 +1264,7 @@ msgstr "匯出 APO"
 
 #: src/contents/ui/Exciter.qml:144
 msgid "Ceil active"
-msgstr "上限 (Ceil) 作用"
+msgstr "上限(Ceil)作用"
 
 #: src/contents/ui/Exciter.qml:155
 msgid "Ceil"
