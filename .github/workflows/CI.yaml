@@ -180,6 +180,7 @@ jobs:
         kf6-kiconthemes-devel
         kf6-kirigami-devel
         kf6-ki18n-devel
+        kf6-kcolorscheme
         kf6-kconfigwidgets-devel
         kf6-kconfig-devel
         kf6-kcoreaddons-devel
