@@ -61,7 +61,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: filterPage.pluginDB.mode
                     editable: false
-                    model: ["RLC (BT)", "RLC (MT)", "BWC (BT)", "BWC (MT)", "LRX (BT)", "LRX (MT)", "APO (DR)"]
+                    model: [i18n("RLC (BT)"), i18n("RLC (MT)"), i18n("BWC (BT)"), i18n("BWC (MT)"), i18n("LRX (BT)"), i18n("LRX (MT)"), i18n("APO (DR)")]
                     onActivated: idx => {
                         filterPage.pluginDB.mode = idx;
                     }
@@ -75,7 +75,7 @@ Kirigami.ScrollablePage {
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: filterPage.pluginDB.equalMode
                     editable: false
-                    model: ["IIR", "FIR", "FFT", "SPM"]
+                    model: [i18n("IIR"), i18n("FIR"), i18n("FFT"), i18n("SPM")]
                     onActivated: idx => {
                         filterPage.pluginDB.equalMode = idx;
                     }
