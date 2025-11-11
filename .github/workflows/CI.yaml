@@ -375,7 +375,7 @@ jobs:
         run: ./util/qmlformat.sh
 
       - name: Check git diff
-        run: git diff --quiet --exit-code || { echo 'git showed a diff after running qmlformat, did you forget to run ./util/qmlformat.sh? The following files need to be formatted:'; git diff --name-only; exit 1; }
+        run: git diff --quiet --exit-code || { echo 'git showed a diff after running qmlformat, did you forget to run ./util/qmlformat.sh? The following files need to be formatted:'; git diff; exit 1; }
 
   check-qmllint:
     name: Check QML lint

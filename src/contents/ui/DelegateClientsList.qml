@@ -3,88 +3,58 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 
-Kirigami.AbstractCard {
-    id: card
+Controls.ItemDelegate {
+    id: root
 
+    required property int index
     required property int id
     required property int serial
     required property string name
     required property string access
     required property string api
 
-    contentItem: Item {
-        implicitWidth: delegateLayout.implicitWidth
-        implicitHeight: delegateLayout.implicitHeight
+    width: ListView.view.width
+    background: Kirigami.FlexColumn {
+        maximumWidth: Kirigami.Units.gridUnit * 40
 
-        GridLayout {
-            id: delegateLayout
+        Kirigami.Separator {
+            Layout.alignment: Qt.AlignBottom
+            Layout.fillWidth: true
+            visible: root.index !== 0
+        }
+    }
 
-            rowSpacing: Kirigami.Units.largeSpacing
-            columnSpacing: Kirigami.Units.mediumSpacing
-            columns: 2
-            rows: 3
+    contentItem: Kirigami.FlexColumn {
+        maximumWidth: Kirigami.Units.gridUnit * 40
 
-            anchors {
-                left: parent.left
-                top: parent.top
-                right: parent.right
-            }
+        // Port to FlexboxLayout when we can depend on Qt 6.10
+        Flow {
+            Layout.fillWidth: true
+            spacing: Kirigami.Units.smallSpacing
 
             Kirigami.Heading {
-                Layout.alignment: Qt.AlignRight
                 level: 2
-                text: i18n("Id") // qmllint disable
+                text: root.name || i18nc("@info:placeholder", "Unknown")
             }
 
             Controls.Label {
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignLeft
-                wrapMode: Text.WordWrap
-                text: card.id
-                color: Kirigami.Theme.disabledTextColor
+                text: i18n("(id: %1)", root.id)
+                opacity: 0.8
             }
+        }
 
-            Kirigami.Heading {
-                Layout.alignment: Qt.AlignRight
-                level: 2
-                text: i18n("Name") // qmllint disable
-            }
+        Controls.Label {
+            text: i18n("Access: %1", root.api)
+            visible: root.api
 
-            Controls.Label {
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignLeft
-                wrapMode: Text.WordWrap
-                text: card.name
-                color: Kirigami.Theme.disabledTextColor
-            }
+            Layout.fillWidth: true
+        }
 
-            Kirigami.Heading {
-                Layout.alignment: Qt.AlignRight
-                level: 2
-                text: i18n("Api") // qmllint disable
-            }
+        Controls.Label {
+            text: i18n("API: %1", root.access)
+            visible: root.access
 
-            Controls.Label {
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignLeft
-                wrapMode: Text.WordWrap
-                text: card.api
-                color: Kirigami.Theme.disabledTextColor
-            }
-
-            Kirigami.Heading {
-                Layout.alignment: Qt.AlignRight
-                level: 2
-                text: i18n("Access") // qmllint disable
-            }
-
-            Controls.Label {
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignLeft
-                wrapMode: Text.WordWrap
-                text: card.access
-                color: Kirigami.Theme.disabledTextColor
-            }
+            Layout.fillWidth: true
         }
     }
 }

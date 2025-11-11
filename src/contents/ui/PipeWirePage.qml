@@ -6,14 +6,13 @@ import "Common.js" as Common
 import ee.database as DB
 import ee.pipewire as PW
 import org.kde.kirigami as Kirigami
-import org.kde.kirigamiaddons.formcard as FormCard
 import org.kde.kirigamiaddons.delegates as Delegates
+import org.kde.kirigamiaddons.formcard as FormCard
 
 Kirigami.Page {
     id: pwPage
 
-    readonly property bool showBackButton: columnView.currentIndex === 1
-        && columnView.columnResizeMode === Kirigami.ColumnView.SingleColumn
+    readonly property bool showBackButton: columnView.currentIndex === 1 && columnView.columnResizeMode === Kirigami.ColumnView.SingleColumn
 
     function goBack(): void {
         columnView.currentIndex = 0;
@@ -21,7 +20,7 @@ Kirigami.Page {
 
     padding: 0
     Component.onCompleted: {
-        columnView.addItem(panelListView)
+        columnView.addItem(panelListView);
 
         panelModel.append({
             "title": i18n("General") // qmllint disable
@@ -248,7 +247,7 @@ Kirigami.Page {
         id: modulesPage
 
         Kirigami.ScrollablePage {
-            Kirigami.CardsListView {
+            ListView {
                 id: modulesListView
 
                 clip: true
@@ -271,7 +270,7 @@ Kirigami.Page {
         id: clientsPage
 
         Kirigami.ScrollablePage {
-            Kirigami.CardsListView {
+            ListView {
                 id: clientsListView
 
                 clip: true
