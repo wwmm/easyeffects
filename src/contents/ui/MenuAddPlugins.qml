@@ -6,31 +6,35 @@ import "Common.js" as Common
 import ee.tags.plugin.name as TagsPluginName
 import org.kde.kirigami as Kirigami
 
-Kirigami.OverlaySheet {
+Controls.Dialog {
     id: control
 
     required property var streamDB
 
-    parent: applicationWindow().overlay// qmllint disable
-    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
+    closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnReleaseOutside
     focus: true
-    y: 0
     implicitWidth: Math.min(Kirigami.Units.gridUnit * 30, appWindow.width * 0.8)// qmllint disable
-    implicitHeight: appWindow.maxOverlayHeight // qmllint disable
+    implicitHeight: Math.min(Kirigami.Units.gridUnit * 40, Math.round(Controls.ApplicationWindow.window.height * 0.8))
+    modal: true
+    bottomPadding: 1
+    anchors.centerIn: parent
 
-    ListView {
-        id: listView
+    contentItem: Controls.ScrollView {
+        ListView {
+            id: listView
 
-        clip: true
-        delegate: listDelegate
-        reuseItems: true
-        model: TagsPluginName.SortedNameModel
+            currentIndex: -1
+            clip: true
+            delegate: listDelegate
+            reuseItems: true
+            model: TagsPluginName.SortedNameModel
 
-        Kirigami.PlaceholderMessage {
-            anchors.centerIn: parent
-            width: parent.width - (Kirigami.Units.largeSpacing * 4)
-            visible: listView.count === 0
-            text: i18n("Empty List") // qmllint disable
+            Kirigami.PlaceholderMessage {
+                anchors.centerIn: parent
+                width: parent.width - (Kirigami.Units.largeSpacing * 4)
+                visible: listView.count === 0
+                text: i18n("Empty List") // qmllint disable
+            }
         }
     }
 
@@ -50,6 +54,10 @@ Kirigami.OverlaySheet {
             down: false
             width: parent ? parent.width : implicitWidth
 
+            function addFilter(): void {
+                button.clicked()
+            }
+
             contentItem: RowLayout {
                 Controls.Label {
                     Layout.fillWidth: true
@@ -57,10 +65,16 @@ Kirigami.OverlaySheet {
                 }
 
                 Controls.Button {
-                    Layout.alignment: Qt.AlignCenter
+                    id: button
+
                     icon.name: "list-add"
+                    down: listItemDelegate.ListView.isCurrentItem
+
+                    Layout.alignment: Qt.AlignCenter
+
                     Controls.ToolTip.text: i18n("Add %1", listItemDelegate.translatedName)
                     Controls.ToolTip.visible: hovered
+
                     onClicked: {
                         let plugins = control.streamDB.plugins;
                         let index_list = [];
@@ -137,14 +151,47 @@ Kirigami.OverlaySheet {
         }
     }
 
-    header: Kirigami.SearchField {
-        id: search
+    header: ColumnLayout {
+        spacing: 0
 
-        Layout.fillWidth: true
-        placeholderText: i18n("Search") // qmllint disable
-        onAccepted: {
-            const re = Common.regExpEscape(search.text);
-            TagsPluginName.SortedNameModel.filterRegularExpression = RegExp(re, "i");
+        RowLayout {
+            spacing: Kirigami.Units.smallSpacing
+
+            Kirigami.SearchField {
+                id: search
+
+                Layout.fillWidth: true
+                Layout.margins: Kirigami.Units.smallSpacing
+                Layout.rightMargin: 0
+
+                focus: true
+                placeholderText: i18n("Search") // qmllint disable
+                autoAccept: false
+                onTextChanged: {
+                    const re = Common.regExpEscape(search.text);
+                    TagsPluginName.SortedNameModel.filterRegularExpression = RegExp(re, "i");
+                }
+
+                onAccepted: {
+                    listView.currentItem?.addFilter() // qmllint disable
+                }
+
+                Keys.onDownPressed: listView.incrementCurrentIndex()
+                Keys.onUpPressed: listView.decrementCurrentIndex()
+            }
+
+            Controls.ToolButton {
+                text: i18nc("@action:button", "Close")
+                icon.name: 'dialog-close-symbolic'
+                display: Controls.ToolButton.IconOnly
+                onClicked: control.close();
+                Layout.margins: Kirigami.Units.smallSpacing
+                Layout.leftMargin: 0
+            }
+        }
+
+        Kirigami.Separator {
+            Layout.fillWidth: true
         }
     }
 }
