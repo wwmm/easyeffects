@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-11 15:48+0000\n"
+"POT-Creation-Date: 2025-11-11 18:42+0000\n"
 "PO-Revision-Date: 2025-11-10 14:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -88,11 +88,11 @@ msgstr "Activer les messages de débogage."
 msgid "Must specify preset type: input/output."
 msgstr "Vous devez spécifier le type de préréglage : input/output."
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:352
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:353
 msgid "Output Presets"
 msgstr "Préréglages de Sortie"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:337
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:338
 msgid "Input Presets"
 msgstr "Préréglages d’Entrée"
 
@@ -317,10 +317,10 @@ msgstr "Portée"
 #: src/contents/ui/MultibandCompressor.qml:493
 #: src/contents/ui/MultibandCompressor.qml:518
 #: src/contents/ui/MultibandGate.qml:122 src/contents/ui/MultibandGate.qml:466
-#: src/contents/ui/MultibandGate.qml:491 src/contents/ui/PipeWirePage.qml:404
-#: src/contents/ui/PreferencesSheet.qml:363
-#: src/contents/ui/PreferencesSheet.qml:378
-#: src/contents/ui/PreferencesSheet.qml:470 src/contents/ui/Reverb.qml:127
+#: src/contents/ui/MultibandGate.qml:491 src/contents/ui/PipeWirePage.qml:403
+#: src/contents/ui/PreferencesSheet.qml:370
+#: src/contents/ui/PreferencesSheet.qml:385
+#: src/contents/ui/PreferencesSheet.qml:469 src/contents/ui/Reverb.qml:127
 #: src/contents/ui/Reverb.qml:144 src/contents/ui/Reverb.qml:161
 msgid "Hz"
 msgstr ""
@@ -363,14 +363,14 @@ msgstr "Écouter"
 #: src/contents/ui/MultibandCompressor.qml:985
 #: src/contents/ui/MultibandGate.qml:958 src/contents/ui/RNNoise.qml:322
 #: src/contents/ui/Reverb.qml:338 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:544
+#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:545
 msgid "Reset"
 msgstr "Réinitialiser"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:463
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:421
 #: src/contents/ui/Gate.qml:436 src/contents/ui/StereoTools.qml:249
-#: src/contents/ui/main.qml:482
+#: src/contents/ui/main.qml:483
 msgid "Output"
 msgstr "Sortie"
 
@@ -505,9 +505,9 @@ msgstr "Attaque"
 #: src/contents/ui/MultibandGate.qml:171 src/contents/ui/MultibandGate.qml:186
 #: src/contents/ui/MultibandGate.qml:428 src/contents/ui/MultibandGate.qml:443
 #: src/contents/ui/Pitch.qml:58 src/contents/ui/Pitch.qml:75
-#: src/contents/ui/Pitch.qml:93 src/contents/ui/PreferencesSheet.qml:200
-#: src/contents/ui/PreferencesSheet.qml:243
-#: src/contents/ui/PreferencesSheet.qml:403 src/contents/ui/RNNoise.qml:148
+#: src/contents/ui/Pitch.qml:93 src/contents/ui/PreferencesSheet.qml:213
+#: src/contents/ui/PreferencesSheet.qml:250
+#: src/contents/ui/PreferencesSheet.qml:406 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
 msgid "ms"
 msgstr ""
@@ -614,7 +614,7 @@ msgstr "Latérale"
 #: src/contents/ui/Expander.qml:262 src/contents/ui/Gate.qml:280
 #: src/contents/ui/LevelMeter.qml:60 src/contents/ui/LevelMeter.qml:101
 #: src/contents/ui/MultibandCompressor.qml:411
-#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:324
+#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:323
 #: src/contents/ui/StereoTools.qml:185
 msgid "Left"
 msgstr "Gauche"
@@ -624,7 +624,7 @@ msgstr "Gauche"
 #: src/contents/ui/Expander.qml:262 src/contents/ui/Gate.qml:280
 #: src/contents/ui/LevelMeter.qml:71 src/contents/ui/LevelMeter.qml:112
 #: src/contents/ui/MultibandCompressor.qml:411
-#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:335
+#: src/contents/ui/MultibandGate.qml:384 src/contents/ui/PipeWirePage.qml:334
 #: src/contents/ui/StereoTools.qml:212
 msgid "Right"
 msgstr "Droite"
@@ -884,7 +884,7 @@ msgid "Spectrum"
 msgstr "Spectre"
 
 #: src/contents/ui/Convolver.qml:225 src/contents/ui/Convolver.qml:325
-#: src/contents/ui/Convolver.qml:379 src/contents/ui/PreferencesSheet.qml:184
+#: src/contents/ui/Convolver.qml:379 src/contents/ui/PreferencesSheet.qml:197
 #: src/contents/ui/Reverb.qml:68
 msgid "s"
 msgstr ""
@@ -972,7 +972,7 @@ msgid "Default"
 msgstr "Par défaut"
 
 #: src/contents/ui/Crossfeed.qml:146 src/contents/ui/Reverb.qml:315
-#: src/contents/ui/main.qml:460
+#: src/contents/ui/main.qml:461
 msgid "Presets"
 msgstr "Préréglages"
 
@@ -1132,28 +1132,39 @@ msgstr "Inverser à gauche"
 msgid "Invert right"
 msgstr "Inverser à droite"
 
-#: src/contents/ui/DelegateClientsList.qml:36
-#: src/contents/ui/DelegateModulesList.qml:36
-msgid "Id"
-msgstr "Id"
+#: src/contents/ui/DelegateClientsList.qml:37
+#: src/contents/ui/DelegateModulesList.qml:37
+#, fuzzy
+msgctxt "@info:placeholder"
+msgid "Unknown"
+msgstr "Inconnu"
 
-#: src/contents/ui/DelegateClientsList.qml:50
-#: src/contents/ui/DelegateModulesList.qml:50
-#: src/contents/ui/PipeWirePage.qml:137 src/contents/ui/PipeWirePage.qml:181
-msgid "Name"
-msgstr "Nom"
+#: src/contents/ui/DelegateClientsList.qml:41
+msgid "(id: %1)"
+msgstr ""
 
-#: src/contents/ui/DelegateClientsList.qml:64
-msgid "Api"
-msgstr "Api"
-
-#: src/contents/ui/DelegateClientsList.qml:78
-msgid "Access"
+#: src/contents/ui/DelegateClientsList.qml:47
+#, fuzzy
+msgid "Access: %1"
 msgstr "Accès"
 
-#: src/contents/ui/DelegateModulesList.qml:64
-#: src/contents/ui/PresetsAutoloadingPage.qml:158
-msgid "Description"
+#: src/contents/ui/DelegateClientsList.qml:54
+msgid "API: %1"
+msgstr ""
+
+#: src/contents/ui/DelegateModulesList.qml:41
+msgctxt "@info:placeholder"
+msgid "Not set"
+msgstr ""
+
+#: src/contents/ui/DelegateModulesList.qml:41
+msgid "(id: %1, version: %2)"
+msgstr ""
+
+#: src/contents/ui/DelegateModulesList.qml:47
+#, fuzzy
+msgctxt "@info:placeholder"
+msgid "No description set"
 msgstr "Description"
 
 #: src/contents/ui/DelegatePluginsList.qml:73
@@ -1236,7 +1247,7 @@ msgid "Input and output gain controls with level meters"
 msgstr "Contrôles de gain d'entrée et de sortie avec indicateurs de niveau"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:40
-#: src/contents/ui/main.qml:491
+#: src/contents/ui/main.qml:492
 msgid "Input"
 msgstr "Entrée"
 
@@ -1377,7 +1388,7 @@ msgstr "Pente"
 
 #: src/contents/ui/EqualizerBandMenu.qml:74 src/contents/ui/Filter.qml:109
 #: src/contents/ui/MultibandCompressor.qml:173
-#: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:398
+#: src/contents/ui/MultibandGate.qml:110 src/contents/ui/PipeWirePage.qml:397
 msgid "Frequency"
 msgstr "Fréquence"
 
@@ -1831,27 +1842,27 @@ msgstr "Surveillance de l'entrée"
 msgid "Excluded apps"
 msgstr "Applications exclues"
 
-#: src/contents/ui/PipeWirePage.qml:27
+#: src/contents/ui/PipeWirePage.qml:26
 msgid "General"
 msgstr "Général"
 
-#: src/contents/ui/PipeWirePage.qml:32
+#: src/contents/ui/PipeWirePage.qml:31
 msgid "Modules"
 msgstr "Modules"
 
-#: src/contents/ui/PipeWirePage.qml:37
+#: src/contents/ui/PipeWirePage.qml:36
 msgid "Clients"
 msgstr "Clients"
 
-#: src/contents/ui/PipeWirePage.qml:42
+#: src/contents/ui/PipeWirePage.qml:41
 msgid "Test Signal"
 msgstr "Signal d’Essai"
 
-#: src/contents/ui/PipeWirePage.qml:112
+#: src/contents/ui/PipeWirePage.qml:111
 msgid "Device Management"
 msgstr "Gestion des Périphériques"
 
-#: src/contents/ui/PipeWirePage.qml:116
+#: src/contents/ui/PipeWirePage.qml:115
 msgid ""
 "It's recommended to NOT set Easy Effects Sink/Source as Default Device in "
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
@@ -1860,85 +1871,89 @@ msgstr ""
 "périphérique par défaut dans les applications externes ( ex. : les "
 "Paramètres Systèmes de Gnome et Plasma)"
 
-#: src/contents/ui/PipeWirePage.qml:123
+#: src/contents/ui/PipeWirePage.qml:122
 msgid "Use default input"
 msgstr "Utiliser l’entrée par défaut"
 
-#: src/contents/ui/PipeWirePage.qml:166
+#: src/contents/ui/PipeWirePage.qml:136 src/contents/ui/PipeWirePage.qml:180
+msgid "Name"
+msgstr "Nom"
+
+#: src/contents/ui/PipeWirePage.qml:165
 msgid "Use default output"
 msgstr "Utiliser la sortie par défaut"
 
-#: src/contents/ui/PipeWirePage.qml:205
+#: src/contents/ui/PipeWirePage.qml:204
 msgid "Server Information"
 msgstr "Information du Serveur"
 
-#: src/contents/ui/PipeWirePage.qml:210
+#: src/contents/ui/PipeWirePage.qml:209
 msgid "Header version"
 msgstr "Version de l’en-tête"
 
-#: src/contents/ui/PipeWirePage.qml:215
+#: src/contents/ui/PipeWirePage.qml:214
 msgid "Library version"
 msgstr "Version de la bibliothèque"
 
-#: src/contents/ui/PipeWirePage.qml:220
+#: src/contents/ui/PipeWirePage.qml:219
 msgid "Runtime version"
 msgstr "Version d'exécution"
 
-#: src/contents/ui/PipeWirePage.qml:225
+#: src/contents/ui/PipeWirePage.qml:224
 msgid "Default sampling rate"
 msgstr "Taux d’échantillonnage par défaut"
 
-#: src/contents/ui/PipeWirePage.qml:230
+#: src/contents/ui/PipeWirePage.qml:229
 msgid "Minimum quantum"
 msgstr "Quantum minimal"
 
-#: src/contents/ui/PipeWirePage.qml:235
+#: src/contents/ui/PipeWirePage.qml:234
 msgid "Maximum quantum"
 msgstr "Quantum maximal"
 
-#: src/contents/ui/PipeWirePage.qml:240
+#: src/contents/ui/PipeWirePage.qml:239
 msgid "Default quantum"
 msgstr "Quantum par défaut"
 
-#: src/contents/ui/PipeWirePage.qml:262
+#: src/contents/ui/PipeWirePage.qml:261
 msgid "No Modules"
 msgstr "Aucun Modules"
 
-#: src/contents/ui/PipeWirePage.qml:285
+#: src/contents/ui/PipeWirePage.qml:284
 msgid "No Clients"
 msgstr "Aucun Clients"
 
-#: src/contents/ui/PipeWirePage.qml:298
-#: src/contents/ui/PreferencesSheet.qml:219
+#: src/contents/ui/PipeWirePage.qml:297
+#: src/contents/ui/PreferencesSheet.qml:226
 msgid "State"
 msgstr "État"
 
-#: src/contents/ui/PipeWirePage.qml:305
-#: src/contents/ui/PreferencesSheet.qml:226
+#: src/contents/ui/PipeWirePage.qml:304
+#: src/contents/ui/PreferencesSheet.qml:233
 msgid "Enabled"
 msgstr "Activé"
 
-#: src/contents/ui/PipeWirePage.qml:315
+#: src/contents/ui/PipeWirePage.qml:314
 msgid "Channels"
 msgstr "Canaux"
 
-#: src/contents/ui/PipeWirePage.qml:346
+#: src/contents/ui/PipeWirePage.qml:345
 msgid "Both"
 msgstr "Tous les Deux"
 
-#: src/contents/ui/PipeWirePage.qml:356
+#: src/contents/ui/PipeWirePage.qml:355
 msgid "Waveform"
 msgstr "Forme d’Onde"
 
-#: src/contents/ui/PipeWirePage.qml:365
+#: src/contents/ui/PipeWirePage.qml:364
 msgid "Sine wave"
 msgstr "Onde sinusoïdale"
 
-#: src/contents/ui/PipeWirePage.qml:376
+#: src/contents/ui/PipeWirePage.qml:375
 msgid "White noise"
 msgstr "Bruit blanc"
 
-#: src/contents/ui/PipeWirePage.qml:387
+#: src/contents/ui/PipeWirePage.qml:386
 msgid "Pink noise"
 msgstr "Bruit rose"
 
@@ -1994,55 +2009,68 @@ msgstr "Effet Indisponible"
 msgid "%1 cannot be used because %2 is not installed on the system."
 msgstr "%1 ne peut pas être utilisé car %2 n'est pas installé sur le système."
 
-#: src/contents/ui/PreferencesSheet.qml:15
-#: src/contents/ui/PreferencesSheet.qml:24
-#: src/contents/ui/PreferencesSheet.qml:589
-#: src/contents/ui/PreferencesSheet.qml:602 src/contents/ui/main.qml:516
-msgid "Preferences"
-msgstr "Préférences"
+#: src/contents/ui/PreferencesSheet.qml:16
+msgid "Background Service"
+msgstr "Service en arrière-plan"
 
-#: src/contents/ui/PreferencesSheet.qml:36
+#: src/contents/ui/PreferencesSheet.qml:22
+msgid "Audio"
+msgstr "Audio"
+
+#: src/contents/ui/PreferencesSheet.qml:28
+msgid "Spectrum Analyzer"
+msgstr "Analyseur de Spectre"
+
+#: src/contents/ui/PreferencesSheet.qml:34
+msgid "Database"
+msgstr "Base de Données"
+
+#: src/contents/ui/PreferencesSheet.qml:40
+msgid "Experimental Features"
+msgstr "Fonctionnalités Expérimentales"
+
+#: src/contents/ui/PreferencesSheet.qml:53
 msgid "Enable service mode"
 msgstr "Activer le mode service"
 
-#: src/contents/ui/PreferencesSheet.qml:37
+#: src/contents/ui/PreferencesSheet.qml:54
 msgid "Easy Effects is active in background when the window is closed."
 msgstr ""
 "Easy Effects reste actif en arrière-plan lorsque la fenêtre est fermée."
 
-#: src/contents/ui/PreferencesSheet.qml:49
+#: src/contents/ui/PreferencesSheet.qml:66
 msgid "Autostart on login"
 msgstr "Démarrage automatique à la connexion"
 
-#: src/contents/ui/PreferencesSheet.qml:50
+#: src/contents/ui/PreferencesSheet.qml:67
 msgid "Easy Effects is launched at user session startup."
 msgstr "Easy Effects est lancé au démarrage de la session utilisateur."
 
-#: src/contents/ui/PreferencesSheet.qml:63
+#: src/contents/ui/PreferencesSheet.qml:80
 msgid "Show the tray icon"
 msgstr "Afficher l'icône dans la barre d'état"
 
-#: src/contents/ui/PreferencesSheet.qml:87
+#: src/contents/ui/PreferencesSheet.qml:100
 msgid "Process all output streams"
 msgstr "Traiter tous les flux de sortie"
 
-#: src/contents/ui/PreferencesSheet.qml:98
+#: src/contents/ui/PreferencesSheet.qml:111
 msgid "Process all input streams"
 msgstr "Traiter tous les flux d’entrée"
 
-#: src/contents/ui/PreferencesSheet.qml:109
+#: src/contents/ui/PreferencesSheet.qml:122
 msgid "Ignore streams from monitor of devices"
 msgstr "Ignorer les flux du moniteur des périphériques"
 
-#: src/contents/ui/PreferencesSheet.qml:120
+#: src/contents/ui/PreferencesSheet.qml:133
 msgid "Use cubic volume"
 msgstr "Utiliser le volume cubique"
 
-#: src/contents/ui/PreferencesSheet.qml:131
+#: src/contents/ui/PreferencesSheet.qml:144
 msgid "Ignore system notifications"
 msgstr "Ignorer les notifications système"
 
-#: src/contents/ui/PreferencesSheet.qml:132
+#: src/contents/ui/PreferencesSheet.qml:145
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
@@ -2052,19 +2080,19 @@ msgstr ""
 "est donc préférable de l'ignorer. Mais pour certains préréglages, il peut "
 "être recommandé de l'activer car le son peut être trop fort."
 
-#: src/contents/ui/PreferencesSheet.qml:143
+#: src/contents/ui/PreferencesSheet.qml:156
 msgid "Enable/disable input monitoring"
 msgstr "Activer/Désactiver la surveillance des entrées"
 
-#: src/contents/ui/PreferencesSheet.qml:154
+#: src/contents/ui/PreferencesSheet.qml:167
 msgid "Mic monitor plays to output effects pipeline"
 msgstr "Le moniteur du micro lit vers le pipeline des effets de sortie"
 
-#: src/contents/ui/PreferencesSheet.qml:165
+#: src/contents/ui/PreferencesSheet.qml:178
 msgid "Enable the inactivity timeout"
 msgstr "Activer le délai d’inactivité"
 
-#: src/contents/ui/PreferencesSheet.qml:166
+#: src/contents/ui/PreferencesSheet.qml:179
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
@@ -2072,15 +2100,15 @@ msgstr ""
 "Lorsque tous les flux sont inactifs, le pipeline d'Easy Effects reste chargé "
 "pendant une durée supplémentaire."
 
-#: src/contents/ui/PreferencesSheet.qml:178
+#: src/contents/ui/PreferencesSheet.qml:191
 msgid "Inactivity timeout"
 msgstr "Délai d’inactivité"
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:205
 msgid "Level meters label"
 msgstr "Label des indicateurs de niveau"
 
-#: src/contents/ui/PreferencesSheet.qml:193
+#: src/contents/ui/PreferencesSheet.qml:206
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
@@ -2089,169 +2117,149 @@ msgstr ""
 "mises à jour lorsque le niveau actuel est inférieur au dernier niveau le "
 "plus élevé."
 
-#: src/contents/ui/PreferencesSheet.qml:237
+#: src/contents/ui/PreferencesSheet.qml:244
 msgid "Audio delay compensation"
 msgstr "Compensation du retard audio"
 
-#: src/contents/ui/PreferencesSheet.qml:251
+#: src/contents/ui/PreferencesSheet.qml:258
 msgid "Style"
 msgstr "Style"
 
-#: src/contents/ui/PreferencesSheet.qml:258
+#: src/contents/ui/PreferencesSheet.qml:265
 msgid "Color scheme"
 msgstr "Schéma des couleurs"
 
-#: src/contents/ui/PreferencesSheet.qml:262
+#: src/contents/ui/PreferencesSheet.qml:269
 msgid "Automatic"
 msgstr "Automatique"
 
-#: src/contents/ui/PreferencesSheet.qml:262
+#: src/contents/ui/PreferencesSheet.qml:269
 msgid "Light"
 msgstr "Clair"
 
-#: src/contents/ui/PreferencesSheet.qml:262
+#: src/contents/ui/PreferencesSheet.qml:269
 msgid "Dark"
 msgstr "Sombre"
 
-#: src/contents/ui/PreferencesSheet.qml:272
+#: src/contents/ui/PreferencesSheet.qml:279
 msgid "Color theme"
 msgstr "Thème des couleurs"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Green"
 msgstr "Vert"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Green neon"
 msgstr "Vert néon"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Mix"
 msgstr "Mix"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Orange"
 msgstr "Orange"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Yellow"
 msgstr "Jaune"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Blue"
 msgstr "Bleu"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Purple"
 msgstr "Violet"
 
-#: src/contents/ui/PreferencesSheet.qml:276
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Grey"
 msgstr "Gris"
 
-#: src/contents/ui/PreferencesSheet.qml:286
+#: src/contents/ui/PreferencesSheet.qml:293
 msgid "Shape"
 msgstr "Forme"
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Bars"
 msgstr "Barres"
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Lines"
 msgstr "Lignes"
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Dots"
 msgstr "Points"
 
-#: src/contents/ui/PreferencesSheet.qml:290
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Area"
 msgstr "Zone"
 
-#: src/contents/ui/PreferencesSheet.qml:300
+#: src/contents/ui/PreferencesSheet.qml:307
 msgid "Dynamic scale"
 msgstr "Échelle dynamique"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:318
 msgid "Logarithmic frequency axis"
 msgstr "Axe de la fréquence logarithmique"
 
-#: src/contents/ui/PreferencesSheet.qml:322
+#: src/contents/ui/PreferencesSheet.qml:329
 msgid "Points"
 msgstr "Points"
 
-#: src/contents/ui/PreferencesSheet.qml:336
+#: src/contents/ui/PreferencesSheet.qml:343
 msgid "Height"
 msgstr "Taille"
 
-#: src/contents/ui/PreferencesSheet.qml:342
+#: src/contents/ui/PreferencesSheet.qml:349
 msgid "px"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:350
+#: src/contents/ui/PreferencesSheet.qml:357
 msgid "Frequency Range"
 msgstr "Intervalle de Fréquences"
 
-#: src/contents/ui/PreferencesSheet.qml:357
+#: src/contents/ui/PreferencesSheet.qml:364
 msgid "Minimum"
 msgstr "Minimum"
 
-#: src/contents/ui/PreferencesSheet.qml:372
+#: src/contents/ui/PreferencesSheet.qml:379
 msgid "Maximum"
 msgstr "Maximum"
 
-#: src/contents/ui/PreferencesSheet.qml:397
+#: src/contents/ui/PreferencesSheet.qml:400
 msgid "Database autosave interval"
 msgstr "Intervalle d'enregistrement automatique de la base de données"
 
-#: src/contents/ui/PreferencesSheet.qml:410
+#: src/contents/ui/PreferencesSheet.qml:413
 msgid "Most used presets"
 msgstr "Préréglages les plus utilisés"
 
-#: src/contents/ui/PreferencesSheet.qml:436
+#: src/contents/ui/PreferencesSheet.qml:435
 msgid "Global shortcuts"
 msgstr "Raccourcis globaux"
 
-#: src/contents/ui/PreferencesSheet.qml:437
+#: src/contents/ui/PreferencesSheet.qml:436
 msgid "Enables support for XDG global shortcuts."
 msgstr "Activation du support des raccourcis globaux XDG."
 
-#: src/contents/ui/PreferencesSheet.qml:449
+#: src/contents/ui/PreferencesSheet.qml:448
 msgid "Native window of effects"
 msgstr "Fenêtre native des effets"
 
-#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:449
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "Permet d'afficher/masquer l'interface utilisateur native des effets."
 
-#: src/contents/ui/PreferencesSheet.qml:462
+#: src/contents/ui/PreferencesSheet.qml:461
 msgid "Update frequency"
 msgstr "Fréquence de mise à jour"
 
-#: src/contents/ui/PreferencesSheet.qml:463
+#: src/contents/ui/PreferencesSheet.qml:462
 msgid "Related to LV2 plugins."
 msgstr "Associé aux plugins LV2."
-
-#: src/contents/ui/PreferencesSheet.qml:498
-msgid "Background Service"
-msgstr "Service en arrière-plan"
-
-#: src/contents/ui/PreferencesSheet.qml:513
-msgid "Audio"
-msgstr "Audio"
-
-#: src/contents/ui/PreferencesSheet.qml:528
-msgid "Spectrum Analyzer"
-msgstr "Analyseur de Spectre"
-
-#: src/contents/ui/PreferencesSheet.qml:543
-msgid "Database"
-msgstr "Base de Données"
-
-#: src/contents/ui/PreferencesSheet.qml:558
-msgid "Experimental Features"
-msgstr "Fonctionnalités Expérimentales"
 
 #: src/contents/ui/PresetsAutoloadingPage.qml:33
 #: src/contents/ui/PresetsAutoloadingPage.qml:130
@@ -2279,6 +2287,10 @@ msgstr "Créer un nouveau préréglage à chargement automatique"
 #: src/contents/ui/PresetsAutoloadingPage.qml:144
 msgid "Remove this autoloading preset"
 msgstr "Supprimer ce préréglage à chargement automatique"
+
+#: src/contents/ui/PresetsAutoloadingPage.qml:158
+msgid "Description"
+msgstr "Description"
 
 #: src/contents/ui/PresetsCommunityPage.qml:97
 msgid "Copy to local presets"
@@ -2586,50 +2598,50 @@ msgstr "Disco"
 msgid "Large occupied hall"
 msgstr "Grande salle occupée"
 
-#: src/contents/ui/ShortcutsSheet.qml:47
+#: src/contents/ui/ShortcutsSheet.qml:46
 msgid "Show help"
 msgstr "Afficher l'aide"
 
-#: src/contents/ui/ShortcutsSheet.qml:60
+#: src/contents/ui/ShortcutsSheet.qml:59
 msgid "Toggle fullscreen"
 msgstr "Basculer en plein écran"
 
-#: src/contents/ui/ShortcutsSheet.qml:88 src/contents/ui/ShortcutsSheet.qml:311
+#: src/contents/ui/ShortcutsSheet.qml:87 src/contents/ui/ShortcutsSheet.qml:310
 #: src/global_shortcuts.hpp:48
 msgid "Toggle global bypass"
 msgstr "Basculer le contournement global"
 
-#: src/contents/ui/ShortcutsSheet.qml:116
+#: src/contents/ui/ShortcutsSheet.qml:115
 msgid "Close the window"
 msgstr "Fermer la fenêtre"
 
-#: src/contents/ui/ShortcutsSheet.qml:144
+#: src/contents/ui/ShortcutsSheet.qml:143
 msgid "Terminate Easy Effects service"
 msgstr "Interrompre le service Easy Effects"
 
-#: src/contents/ui/ShortcutsSheet.qml:184
+#: src/contents/ui/ShortcutsSheet.qml:183
 msgid "Toggle process all inputs"
 msgstr "Basculer le traitement de toutes les entrées"
 
-#: src/contents/ui/ShortcutsSheet.qml:224
+#: src/contents/ui/ShortcutsSheet.qml:223
 msgid "Toggle process all outputs"
 msgstr "Basculer le traitement de toutes les sorties"
 
-#: src/contents/ui/ShortcutsSheet.qml:237
-#: src/contents/ui/ShortcutsSheet.qml:250
+#: src/contents/ui/ShortcutsSheet.qml:236
+#: src/contents/ui/ShortcutsSheet.qml:249
 msgid "Can be used on numeric controls"
 msgstr "Peut être utilisé sur les contrôles numériques"
 
-#: src/contents/ui/ShortcutsSheet.qml:265
+#: src/contents/ui/ShortcutsSheet.qml:264
 msgid "Global Shortcuts"
 msgstr "Raccourcis Globaux"
 
-#: src/contents/ui/ShortcutsSheet.qml:351 src/global_shortcuts.hpp:50
+#: src/contents/ui/ShortcutsSheet.qml:350 src/global_shortcuts.hpp:50
 msgid "Toggle microphone monitoring"
 msgstr "Basculer la surveillance du microphone"
 
-#: src/contents/ui/ShortcutsSheet.qml:370 src/contents/ui/main.qml:394
-#: src/contents/ui/main.qml:524
+#: src/contents/ui/ShortcutsSheet.qml:369 src/contents/ui/main.qml:395
+#: src/contents/ui/main.qml:525
 msgid "Shortcuts"
 msgstr "Raccourcis"
 
@@ -2725,52 +2737,56 @@ msgstr "Base stéréo"
 msgid "Stereo phase"
 msgstr "Phase stéréo"
 
-#: src/contents/ui/main.qml:218
+#: src/contents/ui/main.qml:219
 msgid "Reset Settings?"
 msgstr "Réinitialiser les paramètres ?"
 
-#: src/contents/ui/main.qml:219
+#: src/contents/ui/main.qml:220
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 "Êtes-vous sûr de vouloir réinitialiser tous les paramètres Easy Effects ?"
 
-#: src/contents/ui/main.qml:288 src/contents/ui/main.qml:304
+#: src/contents/ui/main.qml:289 src/contents/ui/main.qml:305
 msgid "Preset Loaded"
 msgstr "Préréglage Chargé"
 
-#: src/contents/ui/main.qml:315 src/contents/ui/main.qml:327
+#: src/contents/ui/main.qml:316 src/contents/ui/main.qml:328
 msgid "Clear List"
 msgstr "Effacer la Liste"
 
-#: src/contents/ui/main.qml:316 src/contents/ui/main.qml:328
+#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:329
 msgid "Are you sure you want to clear this list?"
 msgstr "Êtes-vous sûr de vouloir effacer cette liste ?"
 
-#: src/contents/ui/main.qml:383
+#: src/contents/ui/main.qml:384
 msgid "Active"
 msgstr "Actif"
 
-#: src/contents/ui/main.qml:403 src/contents/ui/main.qml:532
+#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:533
 msgid "Manual"
 msgstr "Manuel"
 
-#: src/contents/ui/main.qml:415 src/contents/ui/main.qml:564
+#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:565
 msgid "Quit"
 msgstr "Quitter"
 
-#: src/contents/ui/main.qml:439
+#: src/contents/ui/main.qml:440
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/main.qml:448
+#: src/contents/ui/main.qml:449
 msgid "Turn effects on/off"
 msgstr "Activer/ Désactiver les effets"
 
-#: src/contents/ui/main.qml:500
+#: src/contents/ui/main.qml:501
 msgid "PipeWire"
 msgstr "PipeWire"
 
-#: src/contents/ui/main.qml:556
+#: src/contents/ui/main.qml:517
+msgid "Preferences"
+msgstr "Préférences"
+
+#: src/contents/ui/main.qml:557
 msgid "About Easy Effects"
 msgstr "À propos de Easy Effects"
 
@@ -2912,6 +2928,12 @@ msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
 msgstr "Effets audio simples"
+
+#~ msgid "Id"
+#~ msgstr "Id"
+
+#~ msgid "Api"
+#~ msgstr "Api"
 
 #~ msgid "Audio effects for PipeWire applications"
 #~ msgstr "Effets audio pour les applications utilisant PipeWire"
