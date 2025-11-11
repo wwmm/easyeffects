@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-11 01:33+0000\n"
+"POT-Creation-Date: 2025-11-11 03:40+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: atahanacar <atahanacar@gmx.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -320,12 +320,13 @@ msgid "Scope"
 msgstr "Kapsam"
 
 #: src/contents/ui/BassEnhancer.qml:130 src/contents/ui/BassEnhancer.qml:157
-#: src/contents/ui/Convolver.qml:212 src/contents/ui/Crossfeed.qml:67
-#: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/Deesser.qml:174
-#: src/contents/ui/Deesser.qml:191 src/contents/ui/EqualizerBand.qml:46
-#: src/contents/ui/Exciter.qml:134 src/contents/ui/Exciter.qml:161
-#: src/contents/ui/Expander.qml:386 src/contents/ui/Expander.qml:407
-#: src/contents/ui/Filter.qml:116 src/contents/ui/MultibandCompressor.qml:185
+#: src/contents/ui/Convolver.qml:212 src/contents/ui/Convolver.qml:363
+#: src/contents/ui/Crossfeed.qml:67 src/contents/ui/CrystalizerBand.qml:75
+#: src/contents/ui/Deesser.qml:174 src/contents/ui/Deesser.qml:191
+#: src/contents/ui/EqualizerBand.qml:46 src/contents/ui/Exciter.qml:134
+#: src/contents/ui/Exciter.qml:161 src/contents/ui/Expander.qml:386
+#: src/contents/ui/Expander.qml:407 src/contents/ui/Filter.qml:116
+#: src/contents/ui/MultibandCompressor.qml:185
 #: src/contents/ui/MultibandCompressor.qml:493
 #: src/contents/ui/MultibandCompressor.qml:518
 #: src/contents/ui/MultibandGate.qml:122 src/contents/ui/MultibandGate.qml:466
@@ -924,7 +925,8 @@ msgid "Spectrum"
 msgstr "Spektrum"
 
 #: src/contents/ui/Convolver.qml:225 src/contents/ui/Convolver.qml:325
-#: src/contents/ui/PreferencesSheet.qml:184 src/contents/ui/Reverb.qml:68
+#: src/contents/ui/Convolver.qml:379 src/contents/ui/PreferencesSheet.qml:184
+#: src/contents/ui/Reverb.qml:68
 msgid "s"
 msgstr ""
 
@@ -946,14 +948,6 @@ msgstr "Örnekler"
 #: src/contents/ui/Convolver.qml:356
 msgid "Duration"
 msgstr "Süre"
-
-#: src/contents/ui/Convolver.qml:363
-msgid " Hz"
-msgstr ""
-
-#: src/contents/ui/Convolver.qml:379
-msgid " s"
-msgstr ""
 
 #: src/contents/ui/Convolver.qml:398
 #, fuzzy
