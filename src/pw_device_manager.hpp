@@ -56,8 +56,7 @@ class DeviceManager : public QObject {
    * and a segmentation fault happens.
    */
 
-  void inputRouteChanged(DeviceInfo device);
-  void outputRouteChanged(DeviceInfo device);
+  void profileChanged(DeviceInfo device);
 
  private:
   struct proxy_data {

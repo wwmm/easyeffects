@@ -236,12 +236,6 @@ Manager::Manager()
 
   connect(&link_manager, &LinkManager::linkChanged, [&](LinkInfo link) { Q_EMIT linkChanged(link); });
 
-  connect(&device_manager, &DeviceManager::inputRouteChanged,
-          [&](DeviceInfo device) { Q_EMIT inputRouteChanged(device); });
-
-  connect(&device_manager, &DeviceManager::outputRouteChanged,
-          [&](DeviceInfo device) { Q_EMIT outputRouteChanged(device); });
-
   pw_init(nullptr, nullptr);
 
   spa_zero(core_listener);

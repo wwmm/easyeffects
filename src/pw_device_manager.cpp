@@ -34,6 +34,7 @@
 #include <qtypes.h>
 #include <spa/monitor/device.h>
 #include <spa/param/param.h>
+#include <spa/param/profile.h>
 #include <spa/param/route.h>
 #include <spa/pod/parser.h>
 #include <spa/pod/pod.h>
@@ -45,6 +46,7 @@
 #include <spa/utils/type.h>
 #include <algorithm>
 #include <cstdint>
+#include <format>
 #include <span>
 #include <vector>
 #include "pw_objects.hpp"
@@ -138,7 +140,7 @@ void DeviceManager::on_device_info(void* object, const struct pw_device_info* in
           continue;
         }
 
-        if (const auto id = param.id; id == SPA_PARAM_Route) {
+        if (const auto id = param.id; id == SPA_PARAM_Profile) {
           pw_device_enum_params((struct pw_device*)dd->proxy, 0, id, 0, -1, nullptr);
         }
       }
@@ -154,7 +156,7 @@ void DeviceManager::on_device_event_param(void* object,
                                           [[maybe_unused]] uint32_t index,
                                           [[maybe_unused]] uint32_t next,
                                           const struct spa_pod* param) {
-  if (id != SPA_PARAM_Route) {
+  if (id != SPA_PARAM_Profile) {
     return;
   }
 
@@ -163,18 +165,20 @@ void DeviceManager::on_device_event_param(void* object,
   const char* name = nullptr;
   const char* description = nullptr;
 
-  enum spa_direction direction {};
   enum spa_param_availability available {};
 
-  if (spa_pod_parse_object(param, SPA_TYPE_OBJECT_ParamRoute, nullptr, SPA_PARAM_ROUTE_direction,
-                           SPA_POD_Id(&direction), SPA_PARAM_ROUTE_name, SPA_POD_String(&name),
-                           SPA_PARAM_ROUTE_description, SPA_POD_String(&description), SPA_PARAM_ROUTE_available,
+  if (spa_pod_parse_object(param, SPA_TYPE_OBJECT_ParamProfile, nullptr, SPA_PARAM_PROFILE_name, SPA_POD_String(&name),
+                           SPA_PARAM_PROFILE_description, SPA_POD_String(&description), SPA_PARAM_PROFILE_available,
                            SPA_POD_Id(&available)) < 0) {
     return;
   }
 
-  if (name == nullptr || description == nullptr) {
+  if (name == nullptr) {
     return;
+  }
+
+  if (description == nullptr) {
+    description = name;
   }
 
   for (auto& device : dd->dm->list_devices) {
@@ -182,23 +186,13 @@ void DeviceManager::on_device_event_param(void* object,
       continue;
     }
 
-    if (direction == SPA_DIRECTION_INPUT) {
-      device.input_route_name = name;
-      device.input_route_description = description;
-      device.input_route_available = available;
+    device.profile_name = name;
+    device.profile_description = description;
+    device.profile_available = available;
 
-      // util::warning(std::format("{}", device.input_route_description.toStdString()));
+    util::debug(std::format("new device profile: {}", device.profile_description.toStdString()));
 
-      dd->dm->inputRouteChanged(device);
-    } else if (direction == SPA_DIRECTION_OUTPUT) {
-      device.output_route_name = name;
-      device.output_route_description = description;
-      device.output_route_available = available;
-
-      // util::warning(std::format("{}", device.output_route_description.toStdString()));
-
-      dd->dm->outputRouteChanged(device);
-    }
+    dd->dm->profileChanged(device);
 
     break;
   }
