@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects-news\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-06-28 14:40+0000\n"
-"PO-Revision-Date: 2025-11-11 13:51+0000\n"
+"PO-Revision-Date: 2025-11-12 22:51+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/changelog/zh_Hant/>\n"
@@ -196,7 +196,7 @@ msgstr "等化器 APO 匯入功能現在可以套用帶通濾波器。"
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:539
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:552
 msgid "Bug fixes:"
-msgstr "修復錯誤："
+msgstr "錯誤修正："
 
 #: data/com.github.wwmm.easyeffects.metainfo.xml.in:65
 #, fuzzy
