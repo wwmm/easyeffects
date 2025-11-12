@@ -229,6 +229,10 @@ Kirigami.ScrollablePage {
                             contentItem: RowLayout {
                                 Controls.Label {
                                     text: listItemDelegate.name
+                                    Layout.fillWidth: true
+                                    elide: Text.ElideRight
+                                    wrapMode: Text.WrapAnywhere
+                                    maximumLineCount: 2
                                 }
 
                                 Kirigami.ActionToolBar {
