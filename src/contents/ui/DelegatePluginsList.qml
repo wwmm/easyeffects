@@ -48,9 +48,37 @@ Item {
         }
 
         contentItem: GridLayout {
+            id: pluginRowItem
+
             columns: 4
             rows: 1
             columnSpacing: Kirigami.Units.smallSpacing
+
+            function toggledEffect(checked) {
+                if (checked === !delegateItem.bypass) {
+                    return;
+                }
+
+                delegateItem.pluginDB.bypass = !checked;
+            }
+
+            function removedEffect() {
+                /**
+                 * If the selected item is removed we set the one before
+                 * it as the visible plugin.
+                 */
+
+                if (delegateItem.listModel.count > 1 && delegateItem.index > 0 && delegateItem.ListView.view.currentIndex === delegateItem.index) {
+                    delegateItem.streamDB.visiblePlugin = delegateItem.listModel.get(delegateItem.index - 1).name;
+                }
+
+                delegateItem.listModel.remove(delegateItem.index, 1);
+
+                const indexStart = delegateItem.listModel.index(0, 0);
+                const indexEnd = delegateItem.listModel.index(delegateItem.listModel.count - 1, 0);
+
+                delegateItem.listModel.dataChanged(indexStart, indexEnd, []);
+            }
 
             Kirigami.Icon {
                 source: bypass === true ? "media-playback-pause-symbolic" : "composition-symbolic"
@@ -65,9 +93,35 @@ Item {
                 color: bypass ? Kirigami.Theme.disabledTextColor : Kirigami.Theme.textColor
             }
 
+            RowLayout {
+                id: pluginPlainButtonControls
+
+                Layout.alignment: Qt.AlignRight
+                Layout.topMargin: Kirigami.Units.smallSpacing / 2
+                Layout.bottomMargin: Kirigami.Units.smallSpacing / 2
+                visible: !DB.Manager.main.reducePluginsListControls && !DB.Manager.main.collapsePluginsList
+
+                Controls.Button {
+                    icon.name: "system-shutdown-symbolic"
+                    Controls.ToolTip.text: i18n("Toggle this effect") // qmllint disable
+                    Controls.ToolTip.visible: hovered
+                    checkable: true
+                    checked: !bypass
+                    onCheckedChanged: pluginRowItem.toggledEffect(checked)
+                }
+                Controls.Button {
+                    icon.name: "delete"
+                    Controls.ToolTip.text: i18n("Remove this effect") // qmllint disable
+                    Controls.ToolTip.visible: hovered
+                    onClicked: pluginRowItem.removedEffect()
+                }
+            }
+
             Kirigami.ActionToolBar {
+                id: pluginActionButtonControls
+
                 alignment: Qt.AlignRight
-                visible: !DB.Manager.main.collapsePluginsList
+                visible: DB.Manager.main.reducePluginsListControls && !DB.Manager.main.collapsePluginsList
                 actions: [
                     Kirigami.Action {
                         text: i18n("Toggle this effect") // qmllint disable
@@ -75,34 +129,13 @@ Item {
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         checkable: true
                         checked: !bypass
-                        onTriggered: {
-                            if (checked === !bypass) {
-                                return;
-                            }
-
-                            delegateItem.pluginDB.bypass = !checked;
-                        }
+                        onTriggered: pluginRowItem.toggledEffect(checked)
                     },
                     Kirigami.Action {
                         text: i18n("Remove this effect") // qmllint disable
                         icon.name: "delete"
                         displayHint: Kirigami.DisplayHint.AlwaysHide
-                        onTriggered: {
-                            /*
-                            * If the selected item is removed we set the one before it as the visible plugin
-                            */
-
-                            if (delegateItem.listModel.count > 1 && delegateItem.index > 0 && delegateItem.ListView.view.currentIndex === delegateItem.index) {
-                                delegateItem.streamDB.visiblePlugin = delegateItem.listModel.get(delegateItem.index - 1).name;
-                            }
-
-                            delegateItem.listModel.remove(delegateItem.index, 1);
-
-                            const indexStart = delegateItem.listModel.index(0, 0);
-                            const indexEnd = delegateItem.listModel.index(delegateItem.listModel.count - 1, 0);
-
-                            delegateItem.listModel.dataChanged(indexStart, indexEnd, []);
-                        }
+                        onTriggered: pluginRowItem.removedEffect()
                     }
                 ]
             }
