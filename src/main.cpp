@@ -108,23 +108,36 @@ struct CoreServices {
 
     QString existing_path = env.value("LV2_PATH");
 
-    QStringList extra_paths_list;
+    QStringList search_paths_list;
 
-    extra_paths_list << "/usr/lib64/lv2/"
-                     << "/usr/local/lib64/lv2"
-                     << "/usr/lib/lv2"  // for some reason ARM needs this set
-                     << "/usr/lib/x86_64-linux-gnu/lv2/";
+    search_paths_list << "/usr/lib64/lv2/"
+                      << "/usr/local/lib64/lv2"
+                      << "/usr/lib/lv2"  // for some reason ARM needs this set
+                      << "/usr/local/lib/lv2"
+                      << "/usr/lib/x86_64-linux-gnu/lv2/";
 
     if (!existing_path.isEmpty()) {
-      extra_paths_list << existing_path;
+      search_paths_list << existing_path;
     }
 
-    QString extra_paths = extra_paths_list.join(":");
+    QSet<QString> unique_paths;
 
-    if (qputenv("LV2_PATH", extra_paths.toLocal8Bit())) {
-      util::debug(std::format("Extra LV2 search paths: {}", extra_paths.toStdString()));
+    for (auto& p : search_paths_list) {
+      QString clean = QDir(p).canonicalPath();
+
+      if (!clean.isEmpty()) {
+        unique_paths.insert(clean);
+      }
+    }
+
+    QStringList final_paths = unique_paths.values();
+
+    QString paths = final_paths.join(":");
+
+    if (qputenv("LV2_PATH", paths.toLocal8Bit())) {
+      util::debug(std::format("LV2 search paths: {}", paths.toStdString()));
     } else {
-      util::warning("Failed to set extra LV2 search paths.");
+      util::warning("Failed to set LV2 search paths.");
     }
   }
 };
