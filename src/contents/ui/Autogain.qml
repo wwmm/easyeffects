@@ -73,7 +73,7 @@ Kirigami.ScrollablePage {
                     value: autogainPage.pluginDB.target
                     decimals: 2
                     stepSize: 0.1
-                    unit: "dB"
+                    unit: i18n("dB")
                     onValueModified: v => {
                         autogainPage.pluginDB.target = v;
                     }
@@ -89,7 +89,7 @@ Kirigami.ScrollablePage {
                     value: autogainPage.pluginDB.silenceThreshold
                     decimals: 2
                     stepSize: 0.1
-                    unit: "dB"
+                    unit: i18n("dB")
                     onValueModified: v => {
                         autogainPage.pluginDB.silenceThreshold = v;
                     }
@@ -105,7 +105,7 @@ Kirigami.ScrollablePage {
                     value: autogainPage.pluginDB.maximumHistory
                     decimals: 0
                     stepSize: 1
-                    unit: "s"
+                    unit: i18n("s")
                     onValueModified: v => {
                         autogainPage.pluginDB.maximumHistory = v;
                     }
@@ -193,7 +193,7 @@ Kirigami.ScrollablePage {
                     id: outputGain
 
                     label: i18n("Output gain")// qmllint disable
-                    unit: "dB"
+                    unit: i18n("dB")
                     from: Common.minimumDecibelLevel
                     to: 20
                     value: 0

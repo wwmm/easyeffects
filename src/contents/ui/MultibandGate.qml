@@ -137,7 +137,7 @@ Kirigami.ScrollablePage {
                                 id: bandEndFrequency
                                 Layout.fillWidth: true
                                 horizontalAlignment: Text.AlignHCenter
-                                text: Common.toLocaleLabel(multibandGatePage.bandFrequencyEnd[bandsListview.currentIndex], 0, "Hz")
+                                text: Common.toLocaleLabel(multibandGatePage.bandFrequencyEnd[bandsListview.currentIndex], 0, i18n("Hz"))
                             }
                         }
                     }

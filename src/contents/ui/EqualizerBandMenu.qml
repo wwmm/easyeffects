@@ -77,7 +77,7 @@ Kirigami.OverlaySheet {
                 value: bandMenu.bandDB[bandName]
                 decimals: 0
                 stepSize: 1
-                unit: "Hz"
+                unit: i18n("Hz")
                 onValueModified: v => {
                     bandMenu.bandDB[bandName] = v;
                 }
@@ -98,7 +98,7 @@ Kirigami.OverlaySheet {
                 value: bandMenu.bandDB[bandName]
                 decimals: 2
                 stepSize: 0.01
-                unit: "dB"
+                unit: i18n("dB")
                 onValueModified: v => {
                     bandMenu.bandDB[bandName] = v;
                 }
@@ -140,7 +140,7 @@ Kirigami.OverlaySheet {
                 value: bandMenu.bandDB[bandName]
                 decimals: 2
                 stepSize: 0.01
-                unit: "oct"
+                unit: i18n("oct")
                 onValueModified: v => {
                     bandMenu.bandDB[bandName] = v;
                 }
