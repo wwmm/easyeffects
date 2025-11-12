@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-11 22:38+0000\n"
-"PO-Revision-Date: 2025-11-11 18:54+0000\n"
+"PO-Revision-Date: 2025-11-12 11:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -1141,38 +1141,35 @@ msgstr "Inverti destro"
 
 #: src/contents/ui/DelegateClientsList.qml:37
 #: src/contents/ui/DelegateModulesList.qml:37
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "Unknown"
 msgstr "Sconosciuto"
 
 #: src/contents/ui/DelegateClientsList.qml:41
 msgid "(id: %1)"
-msgstr ""
+msgstr "(id: %1)"
 
 #: src/contents/ui/DelegateClientsList.qml:47
-#, fuzzy
 msgid "Access: %1"
-msgstr "Accesso"
+msgstr "Accesso: %1"
 
 #: src/contents/ui/DelegateClientsList.qml:54
 msgid "API: %1"
-msgstr ""
+msgstr "API: %1"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgctxt "@info:placeholder"
 msgid "Not set"
-msgstr ""
+msgstr "Non impostato"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgid "(id: %1, version: %2)"
-msgstr ""
+msgstr "(id: %1, versione: %2)"
 
 #: src/contents/ui/DelegateModulesList.qml:47
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "No description set"
-msgstr "Descrizione"
+msgstr "Descrizione non impostata"
 
 #: src/contents/ui/DelegatePluginsList.qml:73
 msgid "Toggle this effect"
@@ -1311,9 +1308,8 @@ msgid "FFT"
 msgstr "FFT"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
-#, fuzzy
 msgid "SPM"
-msgstr "SMA"
+msgstr "SPM"
 
 #: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
@@ -1722,23 +1718,23 @@ msgstr "Tipologia Contour"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Flat"
-msgstr "Flat"
+msgstr "Piatto"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "ISO226-2003"
-msgstr ""
+msgstr "ISO226-2003"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Fletcher-Munson"
-msgstr ""
+msgstr "Fletcher-Munson"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Robinson-Dadson"
-msgstr ""
+msgstr "Robinson-Dadson"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "ISO226-2023"
-msgstr ""
+msgstr "ISO226-2023"
 
 #: src/contents/ui/Loudness.qml:82
 msgid "FFT size"
@@ -2844,11 +2840,11 @@ msgstr "Abilita/disabilita gli effetti"
 
 #: src/contents/ui/main.qml:462
 msgid "Audio effects are enabled."
-msgstr ""
+msgstr "Gli effetti per l'audio sono abilitati."
 
 #: src/contents/ui/main.qml:462
 msgid "Audio effects are disabled."
-msgstr ""
+msgstr "Gli effetti per l'audio sono disabilitati."
 
 #: src/contents/ui/main.qml:506
 msgid "PipeWire"
