@@ -16,9 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.14.1-dev\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
 msgid ""
@@ -646,7 +647,7 @@ msgstr "Мінімум"
 #: src/contents/ui/MultibandCompressor.qml:423
 #: src/contents/ui/MultibandGate.qml:384 src/contents/ui/MultibandGate.qml:396
 msgid "Max"
-msgstr "Максимум"
+msgstr "Макс"
 
 #: src/contents/ui/Compressor.qml:317 src/contents/ui/Expander.qml:277
 #: src/contents/ui/Gate.qml:295 src/contents/ui/MultibandCompressor.qml:423
@@ -2096,7 +2097,7 @@ msgstr "Увімкнути сервісний режим"
 
 #: src/contents/ui/PreferencesSheet.qml:54
 msgid "Easy Effects is active in background when the window is closed."
-msgstr "Easy Effects активний у фоновому режимі, коли вікно закрито"
+msgstr "Easy Effects активний у фоновому режимі, коли вікно закрито."
 
 #: src/contents/ui/PreferencesSheet.qml:66
 msgid "Autostart on login"
@@ -2104,7 +2105,7 @@ msgstr "Автозапуск при вході в систему"
 
 #: src/contents/ui/PreferencesSheet.qml:67
 msgid "Easy Effects is launched at user session startup."
-msgstr "Easy Effects запускається під час запуску сеансу користувача"
+msgstr "Easy Effects запускається під час запуску сеансу користувача."
 
 #: src/contents/ui/PreferencesSheet.qml:80
 msgid "Show the tray icon"
@@ -2138,7 +2139,7 @@ msgid ""
 msgstr ""
 "Сповіщення системи обробки можуть спричиняти потріскування, тому краще їх "
 "ігнорувати, але для деяких попередніх налаштувань це може бути "
-"рекомендовано, оскільки вони можуть звучати занадто голосно"
+"рекомендовано, оскільки вони можуть звучати занадто голосно."
 
 #: src/contents/ui/PreferencesSheet.qml:156
 msgid "Enable/disable input monitoring"
@@ -2310,7 +2311,7 @@ msgstr "Рідне вікно ефектів"
 
 #: src/contents/ui/PreferencesSheet.qml:449
 msgid "Allows the native user interface of effects to be shown/hidden."
-msgstr "Дозволяє показувати/приховувати власний інтерфейс користувача ефектів"
+msgstr "Дозволяє показувати/приховувати власний інтерфейс користувача ефектів."
 
 #: src/contents/ui/PreferencesSheet.qml:461
 msgid "Update frequency"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-11 22:38+0000\n"
-"PO-Revision-Date: 2025-11-10 14:51+0000\n"
+"PO-Revision-Date: 2025-11-12 11:51+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -296,7 +296,7 @@ msgstr "Quantité"
 #: src/contents/ui/StereoTools.qml:159 src/contents/ui/StereoTools.qml:333
 #: src/contents/ui/StereoTools.qml:351
 msgid "dB"
-msgstr ""
+msgstr "dB"
 
 #: src/contents/ui/BassEnhancer.qml:108 src/contents/ui/BassEnhancer.qml:168
 #: src/contents/ui/Exciter.qml:112 src/contents/ui/Exciter.qml:172
@@ -326,7 +326,7 @@ msgstr "Portée"
 #: src/contents/ui/PreferencesSheet.qml:469 src/contents/ui/Reverb.qml:127
 #: src/contents/ui/Reverb.qml:144 src/contents/ui/Reverb.qml:161
 msgid "Hz"
-msgstr ""
+msgstr "Hz"
 
 #: src/contents/ui/BassEnhancer.qml:139
 msgid "Floor active"
@@ -514,7 +514,7 @@ msgstr "Attaque"
 #: src/contents/ui/PreferencesSheet.qml:406 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
 msgid "ms"
-msgstr ""
+msgstr "ms"
 
 #: src/contents/ui/Compressor.qml:195 src/contents/ui/Expander.qml:155
 #: src/contents/ui/Gate.qml:83 src/contents/ui/Gate.qml:864
@@ -891,7 +891,7 @@ msgstr "Spectre"
 #: src/contents/ui/Convolver.qml:379 src/contents/ui/PreferencesSheet.qml:197
 #: src/contents/ui/Reverb.qml:68
 msgid "s"
-msgstr ""
+msgstr "s"
 
 #: src/contents/ui/Convolver.qml:239
 msgid "Log scale"
@@ -1001,7 +1001,7 @@ msgstr "Contourner"
 #: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:48
 #: src/contents/ui/PageStreamsEffects.qml:606
 msgid "kHz"
-msgstr ""
+msgstr "kHz"
 
 #: src/contents/ui/DeepFilterNet.qml:32
 msgid "Attenuation limit"
@@ -1084,7 +1084,7 @@ msgstr "Niveau F2"
 
 #: src/contents/ui/Deesser.qml:225
 msgid "dBFS"
-msgstr ""
+msgstr "dBFS"
 
 #: src/contents/ui/Deesser.qml:235
 msgid "F2 peak Q"
@@ -1115,7 +1115,7 @@ msgstr "Mètres"
 
 #: src/contents/ui/Delay.qml:111 src/contents/ui/Delay.qml:264
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: src/contents/ui/Delay.qml:121 src/contents/ui/Delay.qml:274
 msgid "Centimeters"
@@ -1123,7 +1123,7 @@ msgstr "Centimètres"
 
 #: src/contents/ui/Delay.qml:129 src/contents/ui/Delay.qml:282
 msgid "cm"
-msgstr ""
+msgstr "cm"
 
 #: src/contents/ui/Delay.qml:140 src/contents/ui/Delay.qml:293
 msgid "Temperature"
@@ -1139,38 +1139,35 @@ msgstr "Inverser à droite"
 
 #: src/contents/ui/DelegateClientsList.qml:37
 #: src/contents/ui/DelegateModulesList.qml:37
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "Unknown"
 msgstr "Inconnu"
 
 #: src/contents/ui/DelegateClientsList.qml:41
 msgid "(id: %1)"
-msgstr ""
+msgstr "(id : %1)"
 
 #: src/contents/ui/DelegateClientsList.qml:47
-#, fuzzy
 msgid "Access: %1"
-msgstr "Accès"
+msgstr "Accès : %1"
 
 #: src/contents/ui/DelegateClientsList.qml:54
 msgid "API: %1"
-msgstr ""
+msgstr "API : %1"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgctxt "@info:placeholder"
 msgid "Not set"
-msgstr ""
+msgstr "Non défini"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgid "(id: %1, version: %2)"
-msgstr ""
+msgstr "(id : %1, version : %2)"
 
 #: src/contents/ui/DelegateModulesList.qml:47
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "No description set"
-msgstr "Description"
+msgstr "Description non définie"
 
 #: src/contents/ui/DelegatePluginsList.qml:73
 msgid "Toggle this effect"
@@ -1309,9 +1306,8 @@ msgid "FFT"
 msgstr "TFR"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
-#, fuzzy
 msgid "SPM"
-msgstr "SMA"
+msgstr "SPM"
 
 #: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
@@ -1327,9 +1323,8 @@ msgid "Pitch left"
 msgstr "Hauteur gauche"
 
 #: src/contents/ui/Equalizer.qml:157 src/contents/ui/Equalizer.qml:174
-#, fuzzy
 msgid "st"
-msgstr "Meilleur"
+msgstr "st"
 
 #: src/contents/ui/Equalizer.qml:166
 msgid "Pitch right"
@@ -1408,31 +1403,31 @@ msgstr "Ladder-rejection"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "RLC (BT)"
-msgstr ""
+msgstr "RLC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "RLC (MT)"
-msgstr ""
+msgstr "RLC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "BWC (BT)"
-msgstr ""
+msgstr "BWC (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "BWC (MT)"
-msgstr ""
+msgstr "BWC (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "LRX (BT)"
-msgstr ""
+msgstr "LRX (BT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "LRX (MT)"
-msgstr ""
+msgstr "LRX (MT)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "APO (DR)"
-msgstr ""
+msgstr "APO (DR)"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:88
 msgid "Slope"
@@ -1725,19 +1720,19 @@ msgstr "Plat"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "ISO226-2003"
-msgstr ""
+msgstr "ISO226-2003"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Fletcher-Munson"
-msgstr ""
+msgstr "Fletcher-Munson"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "Robinson-Dadson"
-msgstr ""
+msgstr "Robinson-Dadson"
 
 #: src/contents/ui/Loudness.qml:72
 msgid "ISO226-2023"
-msgstr ""
+msgstr "ISO226-2023"
 
 # Taking lingual shortcuts to squeeze it in the text box
 #: src/contents/ui/Loudness.qml:82
@@ -1781,7 +1776,6 @@ msgid "Added a new effect to the pipeline: %1"
 msgstr "Ajout d'un nouvel effet au pipeline : %1"
 
 #: src/contents/ui/MenuAddPlugins.qml:184
-#, fuzzy
 msgctxt "@action:button"
 msgid "Close"
 msgstr "Fermer"
@@ -1885,9 +1879,8 @@ msgid "Players"
 msgstr "Lecteurs"
 
 #: src/contents/ui/PageStreamsEffects.qml:402
-#, fuzzy
 msgid "Output device"
-msgstr "Périphérique de Sortie"
+msgstr "Périphérique de sortie"
 
 #: src/contents/ui/PageStreamsEffects.qml:402
 #: src/contents/ui/PageStreamsEffects.qml:627
@@ -1940,8 +1933,8 @@ msgid ""
 "external applications (e.g. Gnome Settings and Plasma System Settings)"
 msgstr ""
 "Il est recommandé de ne PAS définir Easy Effects Sink/Source comme "
-"périphérique par défaut dans les applications externes ( ex. : les "
-"Paramètres Systèmes de Gnome et Plasma)"
+"périphérique par défaut dans les applications externes "
+"(ex. : les Paramètres Systèmes de Gnome et Plasma)"
 
 #: src/contents/ui/PipeWirePage.qml:122
 msgid "Use default input"
@@ -2011,7 +2004,7 @@ msgstr "Canaux"
 
 #: src/contents/ui/PipeWirePage.qml:345
 msgid "Both"
-msgstr "Tous les Deux"
+msgstr "Les deux"
 
 #: src/contents/ui/PipeWirePage.qml:355
 msgid "Waveform"
@@ -2083,7 +2076,7 @@ msgstr "%1 ne peut pas être utilisé car %2 n'est pas installé sur le système
 
 #: src/contents/ui/PreferencesSheet.qml:16
 msgid "Background Service"
-msgstr "Service en arrière-plan"
+msgstr "Service en Arrière-plan"
 
 #: src/contents/ui/PreferencesSheet.qml:22
 msgid "Audio"
@@ -2287,7 +2280,7 @@ msgstr "Taille"
 
 #: src/contents/ui/PreferencesSheet.qml:349
 msgid "px"
-msgstr ""
+msgstr "px"
 
 #: src/contents/ui/PreferencesSheet.qml:357
 msgid "Frequency Range"
@@ -2410,7 +2403,7 @@ msgstr ""
 
 #: src/contents/ui/PresetsLocalPage.qml:60
 msgid "New preset name"
-msgstr "Nouveau nom de préréglage"
+msgstr "Nouveau nom du préréglage"
 
 #: src/contents/ui/PresetsLocalPage.qml:76
 msgid "Import preset file"
@@ -2844,7 +2837,7 @@ msgstr "Quitter"
 
 #: src/contents/ui/main.qml:440
 msgid "Go back"
-msgstr ""
+msgstr "Revenir en arrière"
 
 #: src/contents/ui/main.qml:451
 msgid "Turn effects on/off"
@@ -2852,11 +2845,11 @@ msgstr "Activer/ Désactiver les effets"
 
 #: src/contents/ui/main.qml:462
 msgid "Audio effects are enabled."
-msgstr ""
+msgstr "Les effets audio sont activés."
 
 #: src/contents/ui/main.qml:462
 msgid "Audio effects are disabled."
-msgstr ""
+msgstr "Les effets audio sont désactivés."
 
 #: src/contents/ui/main.qml:506
 msgid "PipeWire"
@@ -2868,7 +2861,7 @@ msgstr "Préférences"
 
 #: src/contents/ui/main.qml:562
 msgid "About Easy Effects"
-msgstr "À propos de Easy Effects"
+msgstr "À propos d'Easy Effects"
 
 #: src/plugin_base.cpp:272
 msgid "(Mic)"
