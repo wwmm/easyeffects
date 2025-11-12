@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-11 22:38+0000\n"
-"PO-Revision-Date: 2025-11-11 15:56+0000\n"
+"PO-Revision-Date: 2025-11-12 11:51+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -123,17 +123,17 @@ msgstr "响度参考"
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:129
 #: src/contents/ui/LevelMeter.qml:143
 msgid "Momentary"
-msgstr "瞬时"
+msgstr "瞬时（M）"
 
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:140
 #: src/contents/ui/LevelMeter.qml:154
 msgid "Short-term"
-msgstr "短期"
+msgstr "短期（S）"
 
 #: src/contents/ui/Autogain.qml:60 src/contents/ui/Autogain.qml:151
 #: src/contents/ui/LevelMeter.qml:165
 msgid "Integrated"
-msgstr "综合"
+msgstr "综合（I）"
 
 #: src/contents/ui/Autogain.qml:60
 msgid "Geometric mean (MSI)"
@@ -198,7 +198,7 @@ msgstr "输出增益"
 #: src/contents/ui/RNNoise.qml:297 src/contents/ui/Reverb.qml:298
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:370
 msgid "Using %1"
-msgstr "正在使用{}"
+msgstr "正在使用%1"
 
 #: src/contents/ui/Autogain.qml:236 src/contents/ui/DeepFilterNet.qml:192
 #: src/contents/ui/LevelMeter.qml:222 src/contents/ui/Pitch.qml:263
@@ -216,7 +216,7 @@ msgstr "当电平低于静音阈值时强制静音"
 #: src/contents/ui/Autogain.qml:256 src/contents/ui/DeepFilterNet.qml:200
 #: src/contents/ui/LevelMeter.qml:230 src/contents/ui/Pitch.qml:291
 msgid "Reset settings"
-msgstr "重置设置(_R)"
+msgstr "重置设置"
 
 #: src/contents/ui/BassEnhancer.qml:38 src/contents/ui/Exciter.qml:38
 msgid "Blend harmonics"
@@ -847,9 +847,8 @@ msgid "Stereo split"
 msgstr "分离立体声"
 
 #: src/contents/ui/Convolver.qml:49
-#, fuzzy
 msgid "Loaded the %1 Convolver impulse."
-msgstr "已加载卷积脉冲响应文件。"
+msgstr "已加载卷积脉冲响应%1。"
 
 #: src/contents/ui/Convolver.qml:51 src/contents/ui/Convolver.qml:309
 msgid "Convolver impulse is not set"
@@ -861,24 +860,25 @@ msgstr "卷积器处于直通模式。"
 
 #: src/contents/ui/Convolver.qml:57
 msgid "Failed to load the %1 impulse. The Convolver is in passthrough mode."
-msgstr "加载脉冲响应文件失败。卷积器处于直通模式。"
+msgstr "无法加载脉冲响应%1。卷积器处于直通模式。"
 
 #: src/contents/ui/Convolver.qml:121
+#, fuzzy
 msgid "First"
-msgstr ""
+msgstr "第一项"
 
 #: src/contents/ui/Convolver.qml:133
 #, fuzzy
 msgid "Second"
-msgstr "次Kernel"
+msgstr "第二项"
 
 #: src/contents/ui/Convolver.qml:163 src/contents/ui/Convolver.qml:198
 msgid "Combine"
-msgstr "混合"
+msgstr "合并"
 
 #: src/contents/ui/Convolver.qml:191
 msgid "Impulses"
-msgstr "Impulse 文件"
+msgstr "脉冲响应"
 
 #: src/contents/ui/Convolver.qml:207 src/plugin_base.cpp:284
 msgid "Spectrum"
@@ -888,10 +888,9 @@ msgstr "频谱"
 #: src/contents/ui/Convolver.qml:379 src/contents/ui/PreferencesSheet.qml:197
 #: src/contents/ui/Reverb.qml:68
 msgid "s"
-msgstr ""
+msgstr "秒"
 
 #: src/contents/ui/Convolver.qml:239
-#, fuzzy
 msgid "Log scale"
 msgstr "对数坐标"
 
@@ -903,14 +902,13 @@ msgstr "速率"
 #: src/contents/ui/Delay.qml:67 src/contents/ui/Delay.qml:209
 #: src/contents/ui/Delay.qml:220
 msgid "Samples"
-msgstr "样本"
+msgstr "采样"
 
 #: src/contents/ui/Convolver.qml:356
 msgid "Duration"
 msgstr "持续时间"
 
 #: src/contents/ui/Convolver.qml:398
-#, fuzzy
 msgid "Stereo width"
 msgstr "立体声宽度"
 
@@ -919,14 +917,12 @@ msgid "Autogain"
 msgstr "自动增益"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:31
-#, fuzzy
 msgid "Imported a new Convolver impluse file."
-msgstr "导入 Impulse 文件"
+msgstr "已导入新卷积脉冲响应文件。"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:33
-#, fuzzy
 msgid "Failed to import the Convolver impulse file."
-msgstr "加载脉冲文件失败"
+msgstr "无法导入卷积脉冲响应文件。"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:45
 #: src/contents/ui/MenuAddPlugins.qml:168
@@ -936,46 +932,40 @@ msgid "Search"
 msgstr "搜索"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:83
-#, fuzzy
 msgid "Remove Impulse Response"
-msgstr "脉冲响应"
+msgstr "移除脉冲响应"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:84
 msgid "Are you sure you want to remove this impulse response from the list?"
-msgstr ""
+msgstr "确定要将此脉冲响应移出列表吗？"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:88
-#, fuzzy
 msgid "Removed the %1 Convolver impulse."
-msgstr "加载脉冲文件失败"
+msgstr "已移除卷积脉冲响应%1。"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:90
-#, fuzzy
 msgid "Failed to remove the %1 Convolver impulse."
-msgstr "加载脉冲文件失败"
+msgstr "无法移除卷积脉冲响应%1。"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:104
-#, fuzzy
 msgid "Delete this impulse"
-msgstr "删除脉冲"
+msgstr "删除此脉冲响应"
 
 #: src/contents/ui/ConvolverImpulseSheet.qml:124
-#, fuzzy
 msgid "Import impulse"
-msgstr "导入 Impulse 文件"
+msgstr "导入脉冲响应"
 
 #: src/contents/ui/Crossfeed.qml:60
 msgid "Cutoff"
-msgstr "截止"
+msgstr "截止频率"
 
 #: src/contents/ui/Crossfeed.qml:76
 msgid "Feed"
 msgstr "反馈"
 
 #: src/contents/ui/Crossfeed.qml:95
-#, fuzzy
 msgid "Crossfeed Presets"
-msgstr "交叉反馈"
+msgstr "交叉反馈预设"
 
 #: src/contents/ui/Crossfeed.qml:99
 msgid "Default"
@@ -988,7 +978,7 @@ msgstr "预设"
 
 #: src/contents/ui/Crystalizer.qml:107
 msgid "Adaptive intensity"
-msgstr ""
+msgstr "自适应强度"
 
 #: src/contents/ui/CrystalizerBand.qml:35
 #: src/contents/ui/EqualizerBandMenu.qml:157
@@ -1007,58 +997,51 @@ msgstr "旁通"
 #: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:48
 #: src/contents/ui/PageStreamsEffects.qml:606
 msgid "kHz"
-msgstr ""
+msgstr "千赫兹"
 
 #: src/contents/ui/DeepFilterNet.qml:32
-#, fuzzy
 msgid "Attenuation limit"
-msgstr "衰减极限"
+msgstr "降噪上限"
 
 #: src/contents/ui/DeepFilterNet.qml:86
-#, fuzzy
 msgid "Minimum processing threshold"
 msgstr "最小处理阈值"
 
 #: src/contents/ui/DeepFilterNet.qml:102
-#, fuzzy
 msgid "Maximum ERB processing threshold"
-msgstr "最大ERB处理阈值"
+msgstr "最大等效矩形带宽处理阈值"
 
 #: src/contents/ui/DeepFilterNet.qml:118
-#, fuzzy
 msgid "Maximum DF processing threshold"
-msgstr "最大DF处理阈值"
+msgstr "最大DeepFilter处理阈值"
 
 #: src/contents/ui/DeepFilterNet.qml:134
-#, fuzzy
 msgid "Minimum processing buffer"
 msgstr "最小处理缓冲区"
 
 #: src/contents/ui/DeepFilterNet.qml:141
 msgid "frames"
-msgstr ""
+msgstr "帧"
 
 #: src/contents/ui/DeepFilterNet.qml:150
-#, fuzzy
 msgid "Post filter Beta"
-msgstr "后期过滤处理Beta值"
+msgstr "后期过滤Beta值"
 
 #: src/contents/ui/Deesser.qml:45 src/tags_plugin_name.cpp:34
 msgid "Deesser"
-msgstr "齿音消除"
+msgstr "齿音消除器"
 
 #: src/contents/ui/Deesser.qml:58 src/contents/ui/Deesser.qml:269
 msgid "Detection"
-msgstr "侦测"
+msgstr "检测"
 
 #: src/contents/ui/Deesser.qml:75
-#, fuzzy
 msgid "Wideband"
-msgstr "宽频段"
+msgstr "宽带"
 
 #: src/contents/ui/Deesser.qml:75
 msgid "Split"
-msgstr "分割"
+msgstr "分频"
 
 #: src/contents/ui/Deesser.qml:84 src/contents/ui/Gate.qml:118
 #: src/contents/ui/Gate.qml:170 src/contents/ui/Gate.qml:929
@@ -1077,47 +1060,48 @@ msgstr "松弛度"
 #: src/contents/ui/Deesser.qml:153 src/contents/ui/Filter.qml:104
 #: src/contents/ui/Reverb.qml:108 src/tags_plugin_name.cpp:40
 msgid "Filter"
-msgstr "过滤器"
+msgstr "滤波器"
 
 #: src/contents/ui/Deesser.qml:166
 #, fuzzy
 msgid "F1 split"
-msgstr "F1 分离"
+msgstr "高通分频点"
 
 #: src/contents/ui/Deesser.qml:183
+#, fuzzy
 msgid "F2 peak"
-msgstr ""
+msgstr "滤波器峰值频率"
 
 #: src/contents/ui/Deesser.qml:200
+#, fuzzy
 msgid "F1 gain"
-msgstr ""
+msgstr "高通增益"
 
 #: src/contents/ui/Deesser.qml:217
 #, fuzzy
 msgid "F2 level"
-msgstr "F2 级别"
+msgstr "峰值频率电平"
 
 #: src/contents/ui/Deesser.qml:225
 msgid "dBFS"
-msgstr ""
+msgstr "dBFS"
 
 #: src/contents/ui/Deesser.qml:235
 #, fuzzy
 msgid "F2 peak Q"
-msgstr "F2极限Q值"
+msgstr "钟形滤波器Q值"
 
 #: src/contents/ui/Deesser.qml:258 src/contents/ui/EchoCanceller.qml:87
 msgid "Level"
-msgstr "级别"
+msgstr "等级"
 
 #: src/contents/ui/Deesser.qml:280
-#, fuzzy
 msgid "Gain reduction"
-msgstr "频段衰减"
+msgstr "增益衰减"
 
 #: src/contents/ui/Delay.qml:56 src/contents/ui/Delay.qml:209
 msgid "Distance"
-msgstr ""
+msgstr "距离"
 
 #: src/contents/ui/Delay.qml:56 src/contents/ui/Delay.qml:85
 #: src/contents/ui/Delay.qml:209 src/contents/ui/Delay.qml:238
@@ -1128,82 +1112,73 @@ msgstr "时间"
 
 #: src/contents/ui/Delay.qml:103 src/contents/ui/Delay.qml:256
 msgid "Meters"
-msgstr ""
+msgstr "米"
 
 #: src/contents/ui/Delay.qml:111 src/contents/ui/Delay.qml:264
 msgid "m"
-msgstr ""
+msgstr "米"
 
 #: src/contents/ui/Delay.qml:121 src/contents/ui/Delay.qml:274
-#, fuzzy
 msgid "Centimeters"
-msgstr "音分"
+msgstr "厘米"
 
 #: src/contents/ui/Delay.qml:129 src/contents/ui/Delay.qml:282
 msgid "cm"
-msgstr ""
+msgstr "厘米"
 
 #: src/contents/ui/Delay.qml:140 src/contents/ui/Delay.qml:293
 msgid "Temperature"
-msgstr ""
+msgstr "温度"
 
 #: src/contents/ui/Delay.qml:372
-#, fuzzy
 msgid "Invert left"
-msgstr "反转相位"
+msgstr "反转左声道相位"
 
 #: src/contents/ui/Delay.qml:382
-#, fuzzy
 msgid "Invert right"
-msgstr "反转相位"
+msgstr "反转右声道相位"
 
 #: src/contents/ui/DelegateClientsList.qml:37
 #: src/contents/ui/DelegateModulesList.qml:37
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "Unknown"
 msgstr "未知"
 
 #: src/contents/ui/DelegateClientsList.qml:41
 msgid "(id: %1)"
-msgstr ""
+msgstr "（id：%1）"
 
 #: src/contents/ui/DelegateClientsList.qml:47
-#, fuzzy
 msgid "Access: %1"
-msgstr "访问"
+msgstr "访问：%1"
 
 #: src/contents/ui/DelegateClientsList.qml:54
 msgid "API: %1"
-msgstr ""
+msgstr "API：%1"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgctxt "@info:placeholder"
 msgid "Not set"
-msgstr ""
+msgstr "未设置"
 
 #: src/contents/ui/DelegateModulesList.qml:41
 msgid "(id: %1, version: %2)"
-msgstr ""
+msgstr "（id：%1，版本号：%2）"
 
 #: src/contents/ui/DelegateModulesList.qml:47
-#, fuzzy
 msgctxt "@info:placeholder"
 msgid "No description set"
-msgstr "描述"
+msgstr "未设置描述"
 
 #: src/contents/ui/DelegatePluginsList.qml:73
-#, fuzzy
 msgid "Toggle this effect"
-msgstr "启用/禁用此音效"
+msgstr "开关此音效"
 
 #: src/contents/ui/DelegatePluginsList.qml:87
-#, fuzzy
 msgid "Remove this effect"
-msgstr "删除此音效"
+msgstr "移除此音效"
 
 #: src/contents/ui/DelegateStreamsList.qml:77
-#, fuzzy
 msgid "channels"
 msgstr "声道"
 
@@ -1219,70 +1194,60 @@ msgid "Exclude"
 msgstr "排除"
 
 #: src/contents/ui/DelegateStreamsList.qml:111
-#, fuzzy
 msgid "Add %1 to excluded applications"
-msgstr "添加到排除的程序"
+msgstr "将%1添加到排除的应用程序"
 
 #: src/contents/ui/EchoCanceller.qml:41 src/tags_plugin_name.cpp:36
 msgid "Echo Canceller"
-msgstr "回音消除"
+msgstr "回音消除器"
 
 #: src/contents/ui/EchoCanceller.qml:53
-#, fuzzy
 msgid "Mobile mode"
-msgstr "立体声模式"
+msgstr "移动模式"
 
 #: src/contents/ui/EchoCanceller.qml:62
-#, fuzzy
 msgid "Enforce high-pass"
-msgstr "高通滤波器"
+msgstr "强制应用高通滤波"
 
 #: src/contents/ui/EchoCanceller.qml:74
 msgid "Noise Suppression"
-msgstr "抑制强度"
+msgstr "噪音抑制"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "Low"
-msgstr "低切滤音"
+msgstr "低"
 
 #: src/contents/ui/EchoCanceller.qml:91
-#, fuzzy
 msgid "Moderate"
-msgstr "现代"
+msgstr "中"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
-#, fuzzy
 msgid "High"
-msgstr "高切滤音"
+msgstr "高"
 
 #: src/contents/ui/EchoCanceller.qml:91
-#, fuzzy
 msgid "Very high"
-msgstr "高切滤音"
+msgstr "非常高"
 
 #: src/contents/ui/EchoCanceller.qml:101
-#, fuzzy
 msgid "High-Pass Filter"
-msgstr "高通滤波模式"
+msgstr "高通滤波器"
 
 #: src/contents/ui/EchoCanceller.qml:113
-#, fuzzy
 msgid "Full band"
-msgstr "子频"
+msgstr "全频带"
 
 #: src/contents/ui/EchoCanceller.qml:153 src/contents/ui/Speex.qml:55
-#, fuzzy
 msgid "Automatic gain control"
 msgstr "自动增益控制"
 
 #: src/contents/ui/EeInputOutputGain.qml:21
 msgid "Audio levels control"
-msgstr ""
+msgstr "音频电平控制"
 
 #: src/contents/ui/EeInputOutputGain.qml:22
 msgid "Input and output gain controls with level meters"
-msgstr ""
+msgstr "带电平表的输入输出增益控制"
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:40
 #: src/contents/ui/main.qml:497
@@ -1290,74 +1255,65 @@ msgid "Input"
 msgstr "输入"
 
 #: src/contents/ui/Equalizer.qml:50 src/contents/ui/Equalizer.qml:80
-#, fuzzy
 msgid "APO preset"
-msgstr "APO 预设"
+msgstr "APO预设"
 
 #: src/contents/ui/Equalizer.qml:53
-#, fuzzy
 msgid "Imported the Equalizer APO preset file."
-msgstr "导出 APO 预设文件"
+msgstr "已导入APO预设文件。"
 
 #: src/contents/ui/Equalizer.qml:55
-#, fuzzy
 msgid "Failed to import the Equalizer APO preset file."
-msgstr "加载 APO 预设文件"
+msgstr "无法导入APO预设文件。"
 
 #: src/contents/ui/Equalizer.qml:65
-#, fuzzy
 msgid "GraphicEQ preset"
-msgstr "GraphicEQ 预设"
+msgstr "GraphicEQ预设"
 
 #: src/contents/ui/Equalizer.qml:68
-#, fuzzy
 msgid "Imported the GraphicEQ preset file."
-msgstr "导入 GraphicEQ 预设文件"
+msgstr "已导入GraphicEQ预设文件。"
 
 #: src/contents/ui/Equalizer.qml:70
-#, fuzzy
 msgid "Failed to import the GraphicEQ preset file."
-msgstr "导入 GraphicEQ 预设文件"
+msgstr "无法导入GraphicEQ预设文件。"
 
 #: src/contents/ui/Equalizer.qml:83
-#, fuzzy
 msgid "Exported the current Equalizer settings to an external APO preset file."
-msgstr "导出 APO 预设文件"
+msgstr "已将当前均衡器设置导出为APO预设文件。"
 
 #: src/contents/ui/Equalizer.qml:86
-#, fuzzy
 msgid ""
 "Failed to export the current Equalizer settings to an external APO preset "
 "file."
-msgstr "加载 APO 预设文件"
+msgstr "无法将当前均衡器设置导出为APO预设文件。"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 #: src/contents/ui/Loudness.qml:58
 msgid "IIR"
-msgstr "无限脉冲响应 (IIR)"
+msgstr "无限脉冲响应"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 msgid "FIR"
-msgstr "有限脉冲响应 (FIR)"
+msgstr "有限脉冲响应"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
 #: src/contents/ui/Loudness.qml:58
 msgid "FFT"
-msgstr "快速傅里叶变换 (FFT)"
+msgstr "快速傅里叶变换"
 
 #: src/contents/ui/Equalizer.qml:107 src/contents/ui/Filter.qml:78
-#, fuzzy
 msgid "SPM"
-msgstr "简单滑动平均"
+msgstr "频谱处理模式"
 
 #: src/contents/ui/Equalizer.qml:116
 msgid "Bands"
-msgstr "频段"
+msgstr "频带数"
 
 #: src/contents/ui/Equalizer.qml:132 src/contents/ui/Filter.qml:171
 #: src/contents/ui/StereoTools.qml:58 src/contents/ui/StereoTools.qml:259
 msgid "Balance"
-msgstr "平衡"
+msgstr "立体声平衡"
 
 #: src/contents/ui/Equalizer.qml:149
 #, fuzzy
@@ -1421,27 +1377,24 @@ msgid "Bell"
 msgstr "钟形"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-#, fuzzy
 msgid "High-shelf"
 msgstr "高架"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-#, fuzzy
 msgid "Low-shelf"
 msgstr "低架"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
 msgid "Notch"
-msgstr "带阻"
+msgstr "低槽"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
 msgid "Resonance"
 msgstr "共鸣"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-#, fuzzy
 msgid "Allpass"
-msgstr "旁路"
+msgstr "全通"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
 #, fuzzy
@@ -1565,9 +1518,8 @@ msgid "Start"
 msgstr "开始概率"
 
 #: src/contents/ui/LevelMeter.qml:48
-#, fuzzy
 msgid "Input Level"
-msgstr "输入设备"
+msgstr "输入电平"
 
 #: src/contents/ui/LevelMeter.qml:89
 msgid "True Peak"
@@ -1789,7 +1741,6 @@ msgid "Stereo Link"
 msgstr "立体声连锁"
 
 #: src/contents/ui/Limiter.qml:389 src/contents/ui/Limiter.qml:616
-#, fuzzy
 msgid "Automatic level"
 msgstr "自动调平"
 
@@ -2304,15 +2255,14 @@ msgid "Inactivity timeout"
 msgstr "空闲超时"
 
 #: src/contents/ui/PreferencesSheet.qml:205
-#, fuzzy
 msgid "Level meters label"
-msgstr "电平表"
+msgstr "电平表标签"
 
 #: src/contents/ui/PreferencesSheet.qml:206
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
-msgstr ""
+msgstr "当前电平低于此前最高值时，电平表更新耗时。"
 
 #: src/contents/ui/PreferencesSheet.qml:244
 msgid "Audio delay compensation"
@@ -2614,6 +2564,9 @@ msgid ""
 "%1\n"
 "from the list?"
 msgstr ""
+"确定要将预设\n"
+"%1\n"
+"移出列表吗？"
 
 #: src/contents/ui/PresetsLocalPage.qml:205
 #, fuzzy
@@ -2722,14 +2675,12 @@ msgid "Failed to load the %1 model. Fallback to Standard RNNoise model."
 msgstr "加载脉冲文件失败"
 
 #: src/contents/ui/RNNoise.qml:88 src/contents/ui/Speex.qml:98
-#, fuzzy
 msgid "Voice detection"
-msgstr "语音侦测"
+msgstr "语音检测"
 
 #: src/contents/ui/RNNoise.qml:125
-#, fuzzy
 msgid "Wet level"
-msgstr "湿声级别"
+msgstr "湿信号电平"
 
 #: src/contents/ui/RNNoise.qml:165
 #, fuzzy
@@ -2934,7 +2885,7 @@ msgstr "软削波"
 
 #: src/contents/ui/StereoTools.qml:75
 msgid "S/C Level"
-msgstr "S/C 级别"
+msgstr "侧链电平"
 
 #: src/contents/ui/StereoTools.qml:91
 msgid "Stereo Matrix"
@@ -2974,9 +2925,8 @@ msgid "LR > RL (Stereo flip channels)"
 msgstr "LR > RL (立体声翻转)"
 
 #: src/contents/ui/StereoTools.qml:117
-#, fuzzy
 msgid "Side level"
-msgstr "侧边级别"
+msgstr "侧信号电平"
 
 #: src/contents/ui/StereoTools.qml:135
 #, fuzzy
@@ -2984,9 +2934,8 @@ msgid "Side balance"
 msgstr "侧边平衡"
 
 #: src/contents/ui/StereoTools.qml:151
-#, fuzzy
 msgid "Middle level"
-msgstr "中置级别"
+msgstr "中信号电平"
 
 #: src/contents/ui/StereoTools.qml:169
 #, fuzzy
@@ -3019,7 +2968,7 @@ msgstr "重置设置(_R)"
 
 #: src/contents/ui/main.qml:220
 msgid "Are you sure you want to reset all Easy Effects settings?"
-msgstr ""
+msgstr "确定要重置所有Easy Effects设置吗？"
 
 #: src/contents/ui/main.qml:289 src/contents/ui/main.qml:305
 #, fuzzy
@@ -3033,7 +2982,7 @@ msgstr "客户端列表"
 
 #: src/contents/ui/main.qml:317 src/contents/ui/main.qml:329
 msgid "Are you sure you want to clear this list?"
-msgstr ""
+msgstr "确定要清空列表吗？"
 
 #: src/contents/ui/main.qml:384
 #, fuzzy
