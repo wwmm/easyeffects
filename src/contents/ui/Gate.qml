@@ -71,7 +71,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.attack
                         decimals: 2
                         stepSize: 0.01
-                        unit: "ms"
+                        unit: i18n("ms")
                         onValueModified: v => {
                             gatePage.pluginDB.attack = v;
                         }
@@ -88,7 +88,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.release
                         decimals: 2
                         stepSize: 0.01
-                        unit: "ms"
+                        unit: i18n("ms")
                         onValueModified: v => {
                             gatePage.pluginDB.release = v;
                         }
@@ -106,7 +106,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.reduction
                         decimals: 2
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         onValueModified: v => {
                             gatePage.pluginDB.reduction = v;
                         }
@@ -123,7 +123,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.curveThreshold
                         decimals: 2
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         onValueModified: v => {
                             gatePage.pluginDB.curveThreshold = v;
                         }
@@ -140,7 +140,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.curveZone
                         decimals: 2
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         onValueModified: v => {
                             gatePage.pluginDB.curveZone = v;
                         }
@@ -175,7 +175,7 @@ Kirigami.ScrollablePage {
                     value: gatePage.pluginDB.hysteresisThreshold
                     decimals: 2
                     stepSize: 0.01
-                    unit: "dB"
+                    unit: i18n("dB")
                     enabled: hysteresis.isChecked
                     onValueModified: v => {
                         gatePage.pluginDB.hysteresisThreshold = v;
@@ -194,7 +194,7 @@ Kirigami.ScrollablePage {
                     value: gatePage.pluginDB.hysteresisZone
                     decimals: 2
                     stepSize: 0.01
-                    unit: "dB"
+                    unit: i18n("dB")
                     enabled: hysteresis.isChecked
                     onValueModified: v => {
                         gatePage.pluginDB.hysteresisZone = v;
@@ -321,7 +321,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.sidechainPreamp
                         decimals: 2 // Required to show "-inf"
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.sidechainPreamp = v;
@@ -339,7 +339,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.sidechainReactivity
                         decimals: 2
                         stepSize: 0.01
-                        unit: "ms"
+                        unit: i18n("ms")
                         onValueModified: v => {
                             gatePage.pluginDB.sidechainReactivity = v;
                         }
@@ -357,7 +357,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.sidechainLookahead
                         decimals: 3
                         stepSize: 0.001
-                        unit: "ms"
+                        unit: i18n("ms")
                         onValueModified: v => {
                             gatePage.pluginDB.sidechainLookahead = v;
                         }
@@ -402,7 +402,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.hpfFrequency
                         decimals: 0
                         stepSize: 1
-                        unit: "Hz"
+                        unit: i18n("Hz")
                         visible: hpfMode.currentIndex !== 0
                         onValueModified: v => {
                             gatePage.pluginDB.hpfFrequency = v;
@@ -423,7 +423,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.lpfFrequency
                         decimals: 0
                         stepSize: 1
-                        unit: "Hz"
+                        unit: i18n("Hz")
                         visible: lpfMode.currentIndex !== 0
                         onValueModified: v => {
                             gatePage.pluginDB.lpfFrequency = v;
@@ -447,7 +447,7 @@ Kirigami.ScrollablePage {
                     value: gatePage.pluginDB.dry
                     decimals: 2 // Required to show "-inf"
                     stepSize: 0.01
-                    unit: "dB"
+                    unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
                         gatePage.pluginDB.dry = v;
@@ -466,7 +466,7 @@ Kirigami.ScrollablePage {
                     value: gatePage.pluginDB.wet
                     decimals: 2 // Required to show "-inf"
                     stepSize: 0.01
-                    unit: "dB"
+                    unit: i18n("dB")
                     minusInfinityMode: true
                     onValueModified: v => {
                         gatePage.pluginDB.wet = v;
@@ -485,7 +485,7 @@ Kirigami.ScrollablePage {
                     value: gatePage.pluginDB.makeup
                     decimals: 2
                     stepSize: 0.01
-                    unit: "dB"
+                    unit: i18n("dB")
                     onValueModified: v => {
                         gatePage.pluginDB.makeup = v;
                     }
@@ -547,7 +547,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.sidechainToInput
                         decimals: 2
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.sidechainToInput = v;
@@ -563,7 +563,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.sidechainToLink
                         decimals: 2
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.sidechainToLink = v;
@@ -579,7 +579,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.linkToSidechain
                         decimals: 2
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.linkToSidechain = v;
@@ -595,7 +595,7 @@ Kirigami.ScrollablePage {
                         value: gatePage.pluginDB.linkToInput
                         decimals: 2
                         stepSize: 0.01
-                        unit: "dB"
+                        unit: i18n("dB")
                         minusInfinityMode: true
                         onValueModified: v => {
                             gatePage.pluginDB.linkToInput = v;
