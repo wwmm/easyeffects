@@ -133,6 +133,12 @@ void on_registry_global(void* data,
 
     return;
   }
+
+  if (std::strcmp(type, PW_TYPE_INTERFACE_Device) == 0) {
+    pm->device_manager.register_device(pm->registry, id, type, props);
+
+    return;
+  }
 }
 
 void on_core_error(void* data, uint32_t id, [[maybe_unused]] int seq, int res, const char* message) {

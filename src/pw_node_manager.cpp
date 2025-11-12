@@ -242,11 +242,11 @@ auto NodeManager::registerNode(pw_registry* registry, uint32_t id, const char* t
 
 // Static callback implementations
 void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
-  if (NodeManager::exiting) {
+  auto* const nd = static_cast<NodeData*>(object);
+
+  if (NodeManager::exiting || nd->nd_info == nullptr) {
     return;
   }
-
-  auto* const nd = static_cast<NodeData*>(object);
 
   auto* const nm = nd->nm;
 
@@ -330,12 +330,12 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
   }
 
   if (ignore_node) {
+    // Just in case the previous tests returned false in the first callback iteration
+    nm->model_nodes.remove_by_serial(nd->nd_info->serial);
+
     if (nd->proxy != nullptr) {
       pw_proxy_destroy(nd->proxy);
     }
-
-    // Just in case the previous tests returned false in the first callback iteration
-    nm->model_nodes.remove_by_serial(nd->nd_info->serial);
 
     return;
   }
@@ -411,6 +411,7 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
 
   if (const auto* device_profile_description = spa_dict_lookup(info->props, "device.profile.description")) {
     nd->nd_info->device_profile_description = device_profile_description;
+    deviceProfileChanged = true;
   }
 
   // sometimes PipeWire destroys the pointer before signal_idle is called,

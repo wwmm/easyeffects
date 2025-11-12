@@ -161,17 +161,19 @@ void DeviceManager::on_device_event_param(void* object,
   auto* const dd = static_cast<proxy_data*>(object);
 
   const char* name = nullptr;
+  const char* description = nullptr;
 
   enum spa_direction direction {};
   enum spa_param_availability available {};
 
   if (spa_pod_parse_object(param, SPA_TYPE_OBJECT_ParamRoute, nullptr, SPA_PARAM_ROUTE_direction,
                            SPA_POD_Id(&direction), SPA_PARAM_ROUTE_name, SPA_POD_String(&name),
-                           SPA_PARAM_ROUTE_available, SPA_POD_Id(&available)) < 0) {
+                           SPA_PARAM_ROUTE_description, SPA_POD_String(&description), SPA_PARAM_ROUTE_available,
+                           SPA_POD_Id(&available)) < 0) {
     return;
   }
 
-  if (name == nullptr) {
+  if (name == nullptr || description == nullptr) {
     return;
   }
 
@@ -181,19 +183,21 @@ void DeviceManager::on_device_event_param(void* object,
     }
 
     if (direction == SPA_DIRECTION_INPUT) {
-      if (name != device.input_route_name || available != device.input_route_available) {
-        device.input_route_name = name;
-        device.input_route_available = available;
+      device.input_route_name = name;
+      device.input_route_description = description;
+      device.input_route_available = available;
 
-        dd->dm->inputRouteChanged(device);
-      }
+      // util::warning(std::format("{}", device.input_route_description.toStdString()));
+
+      dd->dm->inputRouteChanged(device);
     } else if (direction == SPA_DIRECTION_OUTPUT) {
-      if (name != device.output_route_name || available != device.output_route_available) {
-        device.output_route_name = name;
-        device.output_route_available = available;
+      device.output_route_name = name;
+      device.output_route_description = description;
+      device.output_route_available = available;
 
-        dd->dm->outputRouteChanged(device);
-      }
+      // util::warning(std::format("{}", device.output_route_description.toStdString()));
+
+      dd->dm->outputRouteChanged(device);
     }
 
     break;

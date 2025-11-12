@@ -24,9 +24,9 @@ ColumnLayout {
                 const proxyIndex = model.index(currentIndex, 0);
                 return model.data(proxyIndex, PW.ModelNodes.Name);
             }
-            readonly property string deviceProfileName: {
+            readonly property string deviceProfileDescription: {
                 const proxyIndex = model.index(currentIndex, 0);
-                return model.data(proxyIndex, PW.ModelNodes.DeviceProfileName);
+                return model.data(proxyIndex, PW.ModelNodes.DeviceProfileDescription);
             }
 
             verticalPadding: 0
@@ -36,7 +36,7 @@ ColumnLayout {
             textRole: "description"
             editable: false
             model: DB.Manager.main.visiblePage === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
-            description: i18n("Hardware profile") + `: ${deviceProfileName}` // qmllint disable
+            description: i18n("Hardware profile") + `: ${deviceProfileDescription}` // qmllint disable
         }
 
         Kirigami.Icon {

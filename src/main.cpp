@@ -112,6 +112,7 @@ struct CoreServices {
 
     extra_paths_list << "/usr/lib64/lv2/"
                      << "/usr/local/lib64/lv2"
+                     << "/usr/lib/lv2"  // for some reason ARM needs this set
                      << "/usr/lib/x86_64-linux-gnu/lv2/";
 
     if (!existing_path.isEmpty()) {

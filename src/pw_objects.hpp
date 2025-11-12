@@ -182,7 +182,11 @@ struct DeviceInfo {
 
   QString input_route_name;
 
+  QString input_route_description;
+
   QString output_route_name;
+
+  QString output_route_description;
 
   QString bus_id;
 
