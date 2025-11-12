@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-11 22:38+0000\n"
-"PO-Revision-Date: 2025-11-11 23:00+0300\n"
+"PO-Revision-Date: 2025-11-12 05:30+0300\n"
 "Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -1733,11 +1733,11 @@ msgstr "ISO 226:2023"
 
 #: src/contents/ui/Loudness.qml:82
 msgid "FFT size"
-msgstr "Розмір кадру ШПФ (FFT)"
+msgstr "Розмір кадру ШПФ"
 
 #: src/contents/ui/Loudness.qml:96
 msgid "IIR approximation"
-msgstr "Наближення НІХ (IIR)"
+msgstr "Наближення НІХ"
 
 #: src/contents/ui/Loudness.qml:100
 msgid "Fastest"
@@ -2836,11 +2836,11 @@ msgstr "Увімкнення/вимкнення ефектів"
 
 #: src/contents/ui/main.qml:462
 msgid "Audio effects are enabled."
-msgstr ""
+msgstr "Звукові ефекти увімкнені."
 
 #: src/contents/ui/main.qml:462
 msgid "Audio effects are disabled."
-msgstr ""
+msgstr "Звукові ефекти вимкнені."
 
 #: src/contents/ui/main.qml:506
 msgid "PipeWire"
