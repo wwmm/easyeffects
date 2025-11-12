@@ -121,10 +121,10 @@ void DeviceManager::on_device_info(void* object, const struct pw_device_info* in
       std::ranges::replace(device.bus_path, '+', '_');
     }
 
-    /*
-        For some reason bluez5 devices do not define bus-path or bus-id. So as a workaround we set
-       SPA_KEY_API_BLUEZ5_ADDRESS as bus_path
-    */
+    /**
+     * For some reason bluez5 devices do not define bus-path or bus-id.
+     * So as a workaround we set SPA_KEY_API_BLUEZ5_ADDRESS as bus_path
+     */
 
     if (device.api == "bluez5") {
       if (util::spa_dict_get_string(info->props, SPA_KEY_API_BLUEZ5_ADDRESS, device.bus_path)) {
