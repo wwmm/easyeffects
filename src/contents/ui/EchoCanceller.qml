@@ -84,7 +84,7 @@ Kirigami.ScrollablePage {
 
                 FormCard.FormComboBoxDelegate {
                     verticalPadding: Kirigami.Units.smallUnit
-                    text: i18n("Level") // qmllint disable
+                    text: i18n("Strength") // qmllint disable
                     displayMode: FormCard.FormComboBoxDelegate.ComboBox
                     currentIndex: echoCancellerPage.pluginDB.noiseSuppressionLevel
                     editable: false

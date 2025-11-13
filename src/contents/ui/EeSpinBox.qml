@@ -143,7 +143,7 @@ FormCard.AbstractFormDelegate {
                 return t;
             }
             valueFromText: (text, locale) => {
-                if (text.toLowerCase() === "-inf" || text === "∞")
+                if (text.toLowerCase() === i18n("-inf") || text === i18n("∞"))
                     return Math.floor(control.from * spinbox.decimalFactor);
 
                 //Handling scientific notation
