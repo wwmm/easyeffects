@@ -612,7 +612,7 @@ Kirigami.Page {
                 }
             }
 
-            Components.SegmentedButton {
+            RowLayout {
                 id: segmentedButton
 
                 Layout.alignment: Qt.AlignHCenter
@@ -621,30 +621,29 @@ Kirigami.Page {
 
                 readonly property bool hasEnoughWidth: appWindow.width >= Kirigami.Units.gridUnit * 40
 
-                readonly property var displayHint: (!Kirigami.Settings.isMobile && hasEnoughWidth) ? Kirigami.DisplayHint.KeepVisible : Kirigami.DisplayHint.IconOnly
+                readonly property int display: (!Kirigami.Settings.isMobile && hasEnoughWidth) ? Controls.ToolButton.TextBesideIcon : Controls.ToolButton.IconOnly
 
-                actions: [
-                    Kirigami.Action {
-                        icon.name: pageStreamsEffects.pageType === 0 ? "multimedia-player-symbolic" : "media-record-symbolic"
-                        text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Recorders")// qmllint disable
-                        checkable: true
-                        checked: pageStreamsEffects.streamDB.visiblePage === 0
-                        displayHint: segmentedButton.displayHint
-                        onTriggered: {
-                            pageStreamsEffects.streamDB.visiblePage = 0;
-                        }
-                    },
-                    Kirigami.Action {
-                        icon.name: "folder-music-symbolic"
-                        text: i18n("Effects") // qmllint disable
-                        checkable: true
-                        checked: pageStreamsEffects.streamDB.visiblePage === 1
-                        displayHint: segmentedButton.displayHint
-                        onTriggered: {
-                            pageStreamsEffects.streamDB.visiblePage = 1;
-                        }
+                Controls.ToolButton {
+                    icon.name: pageStreamsEffects.pageType === 0 ? "multimedia-player-symbolic" : "media-record-symbolic"
+                    text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Recorders")// qmllint disable
+                    checkable: true
+                    checked: pageStreamsEffects.streamDB.visiblePage === 0
+                    display: segmentedButton.display
+                    onClicked: {
+                        pageStreamsEffects.streamDB.visiblePage = 0;
                     }
-                ]
+                }
+
+                Controls.ToolButton {
+                    icon.name: "folder-music-symbolic"
+                    text: i18n("Effects") // qmllint disable
+                    checkable: true
+                    checked: pageStreamsEffects.streamDB.visiblePage === 1
+                    display: segmentedButton.display
+                    onClicked: {
+                        pageStreamsEffects.streamDB.visiblePage = 1;
+                    }
+                }
             }
 
             Kirigami.ActionToolBar {
