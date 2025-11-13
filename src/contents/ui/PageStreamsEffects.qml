@@ -344,8 +344,8 @@ Kirigami.Page {
 
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    Layout.maximumWidth: DB.Manager.main.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 15
-                    Layout.minimumWidth: DB.Manager.main.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 15
+                    Layout.maximumWidth: DB.Manager.main.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
+                    Layout.minimumWidth: DB.Manager.main.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
                     Layout.bottomMargin: Kirigami.Units.smallSpacing * 2
 
                     clip: true

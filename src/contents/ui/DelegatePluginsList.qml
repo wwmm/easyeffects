@@ -86,6 +86,7 @@ Item {
                 Layout.fillWidth: true
                 text: DB.Manager.main.collapsePluginsList === false ? delegateItem.translatedName : delegateItem.translatedName.charAt(0)
                 color: bypass ? Kirigami.Theme.disabledTextColor : Kirigami.Theme.textColor
+                elide: Text.ElideRight
             }
 
             Kirigami.ActionToolBar {
@@ -93,12 +94,12 @@ Item {
 
                 alignment: Qt.AlignRight
                 visible: !DB.Manager.main.collapsePluginsList
-                Layout.preferredWidth: !DB.Manager.main.reducePluginsListControls ? maximumContentWidth : -1
+                Layout.preferredWidth: !DB.Manager.main.reducePluginsListControls ? maximumContentWidth + Kirigami.Units.smallSpacing : -1
                 actions: [
                     Kirigami.Action {
                         text: i18n("Toggle this effect") // qmllint disable
                         icon.name: "system-shutdown-symbolic"
-                        displayHint: DB.Manager.main.reducePluginsListControls ? Kirigami.DisplayHint.AlwaysHide : Kirigami.DisplayHint.IconOnly
+                        displayHint: DB.Manager.main.reducePluginsListControls ? Kirigami.DisplayHint.AlwaysHide : (Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.KeepVisible)
                         checkable: true
                         checked: !bypass
                         onTriggered: pluginRowItem.toggledEffect(checked)
@@ -106,7 +107,7 @@ Item {
                     Kirigami.Action {
                         text: i18n("Remove this effect") // qmllint disable
                         icon.name: "delete"
-                        displayHint: DB.Manager.main.reducePluginsListControls ? Kirigami.DisplayHint.AlwaysHide : Kirigami.DisplayHint.IconOnly
+                        displayHint: DB.Manager.main.reducePluginsListControls ? Kirigami.DisplayHint.AlwaysHide : (Kirigami.DisplayHint.IconOnly | Kirigami.DisplayHint.KeepVisible)
                         onTriggered: pluginRowItem.removedEffect()
                     }
                 ]
