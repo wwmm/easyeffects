@@ -74,7 +74,7 @@ Kirigami.AbstractCard {
                             const rate = root.rate.toLocaleString(Qt.locale(), 'f', 1);
                             const latency = root.latency.toLocaleString(Qt.locale(), 'f', 1);
 
-                            return `${root.state} · ` + `${root.format} · ${rate} kHz · ${root.nVolumeChannels} ` + i18n("channels") + ` · ${latency} ms`; // qmllint disable
+                            return `${root.state} · ` + `${root.format} · ${rate} kHz · ${root.nVolumeChannels} ${i18n("channels")} · ${latency} ms`; // qmllint disable
                         }
                         color: Kirigami.Theme.disabledTextColor
                     }
@@ -158,7 +158,7 @@ Kirigami.AbstractCard {
 
                 Controls.Label {
                     Layout.alignment: Qt.AlignHCenter
-                    text: Math.round(volumeSlider.value) + "%"
+                    text: `${Math.round(volumeSlider.value)}%`
                 }
             }
         }

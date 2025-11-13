@@ -123,7 +123,7 @@ Control {
                 Layout.rightMargin: Kirigami.Units.smallSpacing
                 horizontalAlignment: Qt.AlignRight
                 verticalAlignment: Qt.AlignVCenter
-                text: Number(control.displayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + " " + control.unit
+                text: Number(control.displayValue).toLocaleString(Qt.locale(), 'f', control.decimals) + ` ${control.unit}`
                 elide: control.elide
                 color: control.enabled ? Kirigami.Theme.textColor : Kirigami.Theme.disabledTextColor
                 wrapMode: control.wrapMode

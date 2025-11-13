@@ -222,7 +222,7 @@ Kirigami.Page {
 
                 FormCard.FormTextDelegate {
                     text: i18n("Default sampling rate") // qmllint disable
-                    description: PW.Manager.defaultClockRate + " Hz"
+                    description: `${PW.Manager.defaultClockRate} Hz`
                 }
 
                 FormCard.FormTextDelegate {
