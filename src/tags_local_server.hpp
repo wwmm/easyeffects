@@ -31,6 +31,8 @@ inline constexpr auto hide_window = "hide_window\n";
 
 inline constexpr auto load_preset = "load_preset";
 
+inline constexpr auto global_bypass = "global_bypass";
+
 inline constexpr auto set_property = "set_property";
 
 inline constexpr auto get_property = "get_property";

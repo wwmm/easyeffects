@@ -38,6 +38,8 @@ class LocalClient : public QObject {
 
   void load_preset(PipelineType pipeline_type, std::string preset_name);
 
+  void setGlobalBypass(const bool& state);
+
  private:
   std::unique_ptr<QLocalSocket> client;
 };

@@ -43,7 +43,7 @@ CommandLineParser::CommandLineParser(QObject* parent)
   parser->addOptions({{{"q", "quit"}, i18n("Quit Easy Effects. Useful when running in service mode.")},
                       {{"r", "reset"}, i18n("Reset Easy Effects.")},
                       {{"w", "hide-window"}, i18n("Hide the Window.")},
-                      {{"b", "bypass"}, i18n("Global bypass. 1 to enable, 2 to disable and 3 to get status")},
+                      {{"b", "bypass"}, i18n("Global bypass. 1 to enable and 2 to disable"), i18n("bypass-state")},
                       {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music"), i18n("preset-name")},
                       {{"p", "presets"}, i18n("Show available presets.")},
                       {{"a", "active-preset"}, i18n("Get the active input/output preset."), i18n("preset-type")},
@@ -179,5 +179,23 @@ void CommandLineParser::process(QApplication* app) {
     Q_EMIT onHideWindow();
 
     QCoreApplication::exit(EXIT_FAILURE);
+  }
+
+  if (parser->isSet("bypass")) {
+    bool ok = true;
+
+    const auto value = parser->value("bypass");
+
+    if (value == "1") {
+      Q_EMIT onSetGlobalBypass(true);
+    } else if (value == "2") {
+      Q_EMIT onSetGlobalBypass(false);
+    }
+
+    if (ok) {
+      QCoreApplication::exit(EXIT_SUCCESS);
+    } else {
+      QCoreApplication::exit(EXIT_FAILURE);
+    }
   }
 }

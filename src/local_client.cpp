@@ -56,3 +56,10 @@ void LocalClient::load_preset(PipelineType pipeline_type, std::string preset_nam
   client->write(msg.c_str());
   client->flush();
 }
+
+void LocalClient::setGlobalBypass(const bool& state) {
+  auto msg = std::format("{}:{}\n", tags::local_server::global_bypass, static_cast<int>(state));
+
+  client->write(msg.c_str());
+  client->flush();
+}

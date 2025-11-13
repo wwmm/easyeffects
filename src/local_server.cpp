@@ -73,6 +73,22 @@ void LocalServer::onReadyRead() {
         Q_EMIT onShowWindow();
       } else if (std::strcmp(buf, tags::local_server::hide_window) == 0) {
         Q_EMIT onHideWindow();
+      } else if (std::strncmp(buf, tags::local_server::global_bypass, strlen(tags::local_server::global_bypass)) == 0) {
+        std::string msg = buf;
+
+        std::smatch matches;
+
+        static const auto re = std::regex("^global_bypass:([01])\n$");
+
+        std::regex_search(msg, matches, re);
+
+        if (matches.size() == 2U) {
+          int state = 0;
+
+          util::str_to_num(std::string(matches[1]), state);
+
+          db::Main::setBypass(state);
+        }
       } else if (std::strncmp(buf, tags::local_server::load_preset, strlen(tags::local_server::load_preset)) == 0) {
         std::string msg = buf;
 

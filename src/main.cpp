@@ -278,6 +278,11 @@ static int runSecondaryInstance(QApplication& app, CommandLineParser& parser, bo
   QObject::connect(&parser, &CommandLineParser::onLoadPreset,
                    [&](PipelineType type, QString preset) { local_client->load_preset(type, preset.toStdString()); });
 
+  QObject::connect(&parser, &CommandLineParser::onSetGlobalBypass, [&](const bool& state) {
+    local_client->setGlobalBypass(state);
+    show_window = false;
+  });
+
   parser.process(&app);
 
   if (show_window) {

@@ -41,6 +41,8 @@ class CommandLineParser : public QObject {
 
   void onLoadPreset(PipelineType pipeline_type, QString preset_name);
 
+  void onSetGlobalBypass(bool state);
+
  private:
   std::unique_ptr<QCommandLineParser> parser;
 };
