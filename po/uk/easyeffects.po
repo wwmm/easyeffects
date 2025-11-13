@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-13 02:54+0000\n"
-"PO-Revision-Date: 2025-11-13 03:32+0300\n"
-"Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
+"PO-Revision-Date: 2025-11-13 15:51+0000\n"
+"Last-Translator: Максим Горпиніч <gorpinicmaksim0@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -43,13 +44,12 @@ msgid "Hide the Window."
 msgstr "Сховати вікно."
 
 #: src/command_line_parser.cpp:46
-#, fuzzy
 msgid "Global bypass. 1 to enable and 2 to disable"
-msgstr "Глобальний обхід. 1 - увімкнути, 2 - вимкнути, 3 - отримати статус"
+msgstr "Глобальний байпас. 1 для ввімкнення та 2 для вимкнення"
 
 #: src/command_line_parser.cpp:46
 msgid "bypass-state"
-msgstr ""
+msgstr "стан байпасу"
 
 #: src/command_line_parser.cpp:47
 msgid "Load a preset. Example: easyeffects -l music"

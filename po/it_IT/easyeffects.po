@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-13 02:54+0000\n"
-"PO-Revision-Date: 2025-11-12 23:18+0000\n"
+"PO-Revision-Date: 2025-11-13 15:51+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
 "it/>\n"
@@ -52,7 +52,7 @@ msgstr ""
 
 #: src/command_line_parser.cpp:46
 msgid "bypass-state"
-msgstr ""
+msgstr "stato-bypass"
 
 #: src/command_line_parser.cpp:47
 msgid "Load a preset. Example: easyeffects -l music"
@@ -1235,9 +1235,8 @@ msgid "Noise Suppression"
 msgstr "Soppressione Rumore"
 
 #: src/contents/ui/EchoCanceller.qml:87
-#, fuzzy
 msgid "Strength"
-msgstr "Lunghezza Filtro"
+msgstr "Robustezza"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
 msgid "Low"
@@ -1287,7 +1286,7 @@ msgstr "-inf"
 
 #: src/contents/ui/EeSpinBox.qml:146
 msgid "∞"
-msgstr ""
+msgstr "∞"
 
 #: src/contents/ui/Equalizer.qml:50 src/contents/ui/Equalizer.qml:80
 msgid "APO preset"
@@ -1490,9 +1489,8 @@ msgid "Width"
 msgstr "Ampiezza"
 
 #: src/contents/ui/EqualizerBandMenu.qml:143
-#, fuzzy
 msgid "oct"
-msgstr "Taglia-basso"
+msgstr "ott"
 
 #: src/contents/ui/EqualizerBandMenu.qml:167
 #: src/contents/ui/MultibandCompressor.qml:73
@@ -2342,15 +2340,16 @@ msgid "Most used presets"
 msgstr "Profili più utilizzati"
 
 #: src/contents/ui/PreferencesSheet.qml:441
-#, fuzzy
 msgid "Reduce effects list controls"
-msgstr "Mostra/nascondi la lista degli effetti"
+msgstr "Riduci le opzioni della lista degli effetti"
 
 #: src/contents/ui/PreferencesSheet.qml:442
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
+"I bottoni nella lista degli effetti sono inseriti in un menu contestuale per "
+"una visualizzazione più compatta."
 
 #: src/contents/ui/PreferencesSheet.qml:463
 msgid "Global shortcuts"

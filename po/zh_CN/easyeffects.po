@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-13 02:54+0000\n"
-"PO-Revision-Date: 2025-11-13 01:42+0000\n"
+"PO-Revision-Date: 2025-11-13 15:51+0000\n"
 "Last-Translator: Gerald Chen <gerald_chen@foxmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hans/>\n"
@@ -1349,53 +1349,44 @@ msgid "Balance"
 msgstr "立体声平衡"
 
 #: src/contents/ui/Equalizer.qml:149
-#, fuzzy
 msgid "Pitch left"
-msgstr "左音高"
+msgstr "左声道音高"
 
 #: src/contents/ui/Equalizer.qml:157 src/contents/ui/Equalizer.qml:174
 msgid "st"
-msgstr ""
+msgstr "半音"
 
 #: src/contents/ui/Equalizer.qml:166
-#, fuzzy
 msgid "Pitch right"
-msgstr "右音高"
+msgstr "右声道音高"
 
 #: src/contents/ui/Equalizer.qml:296
-#, fuzzy
 msgid "Split channels"
 msgstr "分离声道"
 
 #: src/contents/ui/Equalizer.qml:306
-#, fuzzy
 msgid "Flat response"
-msgstr "平滑响应"
+msgstr "平坦响应"
 
 #: src/contents/ui/Equalizer.qml:313
-#, fuzzy
 msgid "Calculate frequencies"
-msgstr "频率响应"
+msgstr "计算频率"
 
 #: src/contents/ui/Equalizer.qml:320
-#, fuzzy
 msgid "Sort bands"
-msgstr "将频段排序"
+msgstr "排序频带"
 
 #: src/contents/ui/Equalizer.qml:327
-#, fuzzy
 msgid "Import APO"
-msgstr "导入"
+msgstr "导入APO预设"
 
 #: src/contents/ui/Equalizer.qml:334
-#, fuzzy
 msgid "Import APO (GraphicEQ)"
-msgstr "导入 GraphicEQ 预设文件"
+msgstr "导入APO（GraphicEQ）预设"
 
 #: src/contents/ui/Equalizer.qml:341
-#, fuzzy
 msgid "Export APO"
-msgstr "导出预设"
+msgstr "导出APO预设"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:631
@@ -1433,42 +1424,40 @@ msgid "Bandpass"
 msgstr "带通"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-#, fuzzy
 msgid "Ladder-pass"
-msgstr "梯形带通滤波"
+msgstr "梯式带通"
 
 #: src/contents/ui/EqualizerBandMenu.qml:37 src/contents/ui/Filter.qml:50
-#, fuzzy
 msgid "Ladder-rejection"
-msgstr "梯形带阻滤波"
+msgstr "梯式带阻"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "RLC (BT)"
-msgstr ""
+msgstr "RLC（双线性）"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "RLC (MT)"
-msgstr ""
+msgstr "RLC（匹配Z）"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "BWC (BT)"
-msgstr ""
+msgstr "BWC（双线性）"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "BWC (MT)"
-msgstr ""
+msgstr "BWC（匹配Z）"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "LRX (BT)"
-msgstr ""
+msgstr "LRX（双线性）"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "LRX (MT)"
-msgstr ""
+msgstr "LRX（匹配Z）"
 
 #: src/contents/ui/EqualizerBandMenu.qml:49 src/contents/ui/Filter.qml:64
 msgid "APO (DR)"
-msgstr ""
+msgstr "APO（直接设计）"
 
 #: src/contents/ui/EqualizerBandMenu.qml:57 src/contents/ui/Filter.qml:88
 msgid "Slope"
@@ -1488,16 +1477,15 @@ msgstr "增益"
 
 #: src/contents/ui/EqualizerBandMenu.qml:116 src/contents/ui/Filter.qml:156
 msgid "Quality"
-msgstr "品质"
+msgstr "品质因数"
 
 #: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:125
 msgid "Width"
 msgstr "宽度"
 
 #: src/contents/ui/EqualizerBandMenu.qml:143
-#, fuzzy
 msgid "oct"
-msgstr "低切滤音"
+msgstr "八度"
 
 #: src/contents/ui/EqualizerBandMenu.qml:167
 #: src/contents/ui/MultibandCompressor.qml:73
@@ -3010,23 +2998,20 @@ msgid "Stereo phase"
 msgstr "立体声相位"
 
 #: src/contents/ui/main.qml:237
-#, fuzzy
 msgid "Reset Settings?"
-msgstr "重置设置(_R)"
+msgstr "重置设置？"
 
 #: src/contents/ui/main.qml:238
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr "确定要重置所有Easy Effects设置吗？"
 
 #: src/contents/ui/main.qml:307 src/contents/ui/main.qml:323
-#, fuzzy
 msgid "Preset Loaded"
-msgstr "未加载预设"
+msgstr "已加载预设"
 
 #: src/contents/ui/main.qml:334 src/contents/ui/main.qml:346
-#, fuzzy
 msgid "Clear List"
-msgstr "客户端列表"
+msgstr "清空列表"
 
 #: src/contents/ui/main.qml:335 src/contents/ui/main.qml:347
 msgid "Are you sure you want to clear this list?"
@@ -3038,49 +3023,44 @@ msgid "Active"
 msgstr "激活"
 
 #: src/contents/ui/main.qml:422 src/contents/ui/main.qml:556
-#, fuzzy
 msgid "Manual"
-msgstr "使用手册(_M)"
+msgstr "使用手册"
 
 #: src/contents/ui/main.qml:434 src/contents/ui/main.qml:588
-#, fuzzy
 msgid "Quit"
-msgstr "退出(_Q)"
+msgstr "退出"
 
 #: src/contents/ui/main.qml:458
 msgid "Go back"
-msgstr ""
+msgstr "返回"
 
 #: src/contents/ui/main.qml:469
 msgid "Turn effects on/off"
-msgstr ""
+msgstr "开关音效"
 
 #: src/contents/ui/main.qml:480
 msgid "Audio effects are enabled."
-msgstr ""
+msgstr "已启用音效。"
 
 #: src/contents/ui/main.qml:480
 msgid "Audio effects are disabled."
-msgstr ""
+msgstr "已禁用音效。"
 
 #: src/contents/ui/main.qml:524
-#, fuzzy
 msgid "PipeWire"
-msgstr "PipeWire(_P)"
+msgstr "PipeWire"
 
 #: src/contents/ui/main.qml:540
-#, fuzzy
 msgid "Preferences"
-msgstr "首选项(_P)"
+msgstr "首选项"
 
 #: src/contents/ui/main.qml:580
-#, fuzzy
 msgid "About Easy Effects"
-msgstr "关于 EasyEffects (_A)"
+msgstr "关于Easy Effects"
 
 #: src/plugin_base.cpp:272
 msgid "(Mic)"
-msgstr ""
+msgstr "麦克风"
 
 #: src/plugin_base.cpp:275
 #, fuzzy
@@ -3094,43 +3074,36 @@ msgstr "输出电平表"
 #: src/presets_manager.cpp:758 src/presets_manager.cpp:765
 #: src/presets_manager.cpp:775 src/presets_manager.cpp:782
 #: src/presets_manager.cpp:792 src/presets_manager.cpp:801
-#, fuzzy
 msgid "Preset not loaded correctly"
-msgstr "预设未成功加载"
+msgstr "未正确加载预设"
 
 #: src/presets_manager.cpp:758
-#, fuzzy
 msgid "Wrong format in excluded apps list"
-msgstr "已排除程序列表的格式错误"
+msgstr "已排除应用程序列表存在格式错误"
 
 #: src/presets_manager.cpp:766
-#, fuzzy
 msgid "Generic error while loading excluded apps list"
-msgstr "加载已排除程序列表时出错"
+msgstr "加载已排除应用程序列表时发生常规错误"
 
 #: src/presets_manager.cpp:775
-#, fuzzy
 msgid "Wrong format in effects list"
-msgstr "效果列表的格式错误"
+msgstr "音效列表存在格式错误"
 
 #: src/presets_manager.cpp:782
-#, fuzzy
 msgid "Generic error while loading effects list"
-msgstr "加载效果列表时出错"
+msgstr "加载音效列表时发生常规错误"
 
 #: src/presets_manager.cpp:793
-#, fuzzy
 msgid "One or more parameters have a wrong format"
-msgstr "一个或多个参数格式错误"
+msgstr "一个或多个参数存在格式错误"
 
 #: src/presets_manager.cpp:802
-#, fuzzy
 msgid "Generic error while loading the effect"
-msgstr "加载效果时出错"
+msgstr "加载音效时发生常规错误"
 
 #: src/pw_model_nodes.cpp:488
 msgid "Running"
-msgstr "正在运行"
+msgstr "运行中"
 
 #: src/pw_model_nodes.cpp:490
 msgid "Suspended"
@@ -3154,7 +3127,7 @@ msgstr "未知"
 
 #: src/tags_plugin_name.cpp:27
 msgid "Bass Enhancer"
-msgstr "低音增强"
+msgstr "低音增强器"
 
 #: src/tags_plugin_name.cpp:28
 msgid "Bass Loudness"
@@ -3174,7 +3147,7 @@ msgstr "音质晶化器"
 
 #: src/tags_plugin_name.cpp:33
 msgid "Deep Noise Remover"
-msgstr "深度降噪"
+msgstr "深度除噪器"
 
 #: src/tags_plugin_name.cpp:37
 msgid "Equalizer"
@@ -3194,11 +3167,11 @@ msgstr "放大器"
 
 #: src/tags_plugin_name.cpp:46
 msgid "Multiband Compressor"
-msgstr "多频段压缩器"
+msgstr "多频带压缩器"
 
 #: src/tags_plugin_name.cpp:47
 msgid "Multiband Gate"
-msgstr "多频段门限"
+msgstr "多频带门限"
 
 #: src/tags_plugin_name.cpp:49
 msgid "Reverberation"
@@ -3210,7 +3183,7 @@ msgstr "降噪"
 
 #: src/tags_plugin_name.cpp:51
 msgid "Speech Processor"
-msgstr "语音处理器"
+msgstr "人声处理器"
 
 #: src/tags_plugin_name.cpp:52
 msgid "Stereo Tools"
@@ -3222,7 +3195,7 @@ msgstr "均衡器、压缩器和其他音效"
 
 #: com.github.wwmm.easyeffects.desktop.in.template.h:2
 msgid "Simple audio effects"
-msgstr ""
+msgstr "简易音效集锦"
 
 #~ msgid "Global bypass. 1 to enable, 2 to disable and 3 to get status"
 #~ msgstr "全局旁通。1以启用，2以禁用，3以获取状态"
