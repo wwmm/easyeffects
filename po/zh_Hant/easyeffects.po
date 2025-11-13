@@ -3033,6 +3033,15 @@ msgstr "等化器、壓縮器、及其他音效處理"
 msgid "Simple audio effects"
 msgstr "簡單的音效處理"
 
+#: src/command_line_parser.cpp:46
+#, fuzzy
+msgid "Global bypass. 1 to enable and 2 to disable"
+msgstr "整體略過。 1 啟用；2 停用；3 取得狀態"
+
+#: src/command_line_parser.cpp:46
+msgid "bypass-state"
+msgstr ""
+
 #~ msgid "Id"
 #~ msgstr "ID"
 

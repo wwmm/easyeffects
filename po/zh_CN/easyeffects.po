@@ -3220,6 +3220,15 @@ msgstr "均衡器、压缩器和其他音效"
 msgid "Simple audio effects"
 msgstr ""
 
+#: src/command_line_parser.cpp:46
+#, fuzzy
+msgid "Global bypass. 1 to enable and 2 to disable"
+msgstr "全局旁通。1以启用，2以禁用，3以获取状态"
+
+#: src/command_line_parser.cpp:46
+msgid "bypass-state"
+msgstr ""
+
 #~ msgid "Id"
 #~ msgstr "Id"
 

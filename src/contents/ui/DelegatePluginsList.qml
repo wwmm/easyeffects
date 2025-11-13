@@ -93,40 +93,17 @@ Item {
                 color: bypass ? Kirigami.Theme.disabledTextColor : Kirigami.Theme.textColor
             }
 
-            RowLayout {
-                id: pluginPlainButtonControls
-
-                Layout.alignment: Qt.AlignRight
-                Layout.topMargin: Kirigami.Units.smallSpacing / 2
-                Layout.bottomMargin: Kirigami.Units.smallSpacing / 2
-                visible: !DB.Manager.main.reducePluginsListControls && !DB.Manager.main.collapsePluginsList
-
-                Controls.Button {
-                    icon.name: "system-shutdown-symbolic"
-                    Controls.ToolTip.text: i18n("Toggle this effect") // qmllint disable
-                    Controls.ToolTip.visible: hovered
-                    checkable: true
-                    checked: !bypass
-                    onCheckedChanged: pluginRowItem.toggledEffect(checked)
-                }
-                Controls.Button {
-                    icon.name: "delete"
-                    Controls.ToolTip.text: i18n("Remove this effect") // qmllint disable
-                    Controls.ToolTip.visible: hovered
-                    onClicked: pluginRowItem.removedEffect()
-                }
-            }
-
             Kirigami.ActionToolBar {
                 id: pluginActionButtonControls
 
                 alignment: Qt.AlignRight
-                visible: DB.Manager.main.reducePluginsListControls && !DB.Manager.main.collapsePluginsList
+                visible: !DB.Manager.main.collapsePluginsList
+                Layout.preferredWidth: !DB.Manager.main.reducePluginsListControls ? maximumContentWidth : -1
                 actions: [
                     Kirigami.Action {
                         text: i18n("Toggle this effect") // qmllint disable
                         icon.name: "system-shutdown-symbolic"
-                        displayHint: Kirigami.DisplayHint.AlwaysHide
+                        displayHint: DB.Manager.main.reducePluginsListControls ? Kirigami.DisplayHint.AlwaysHide : Kirigami.DisplayHint.IconOnly
                         checkable: true
                         checked: !bypass
                         onTriggered: pluginRowItem.toggledEffect(checked)
@@ -134,7 +111,7 @@ Item {
                     Kirigami.Action {
                         text: i18n("Remove this effect") // qmllint disable
                         icon.name: "delete"
-                        displayHint: Kirigami.DisplayHint.AlwaysHide
+                        displayHint: DB.Manager.main.reducePluginsListControls ? Kirigami.DisplayHint.AlwaysHide : Kirigami.DisplayHint.IconOnly
                         onTriggered: pluginRowItem.removedEffect()
                     }
                 ]

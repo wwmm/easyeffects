@@ -3048,6 +3048,17 @@ msgstr "Égaliseur, Compresseur et Autres Effets Audio"
 msgid "Simple audio effects"
 msgstr "Effets audio simples"
 
+#: src/command_line_parser.cpp:46
+#, fuzzy
+msgid "Global bypass. 1 to enable and 2 to disable"
+msgstr ""
+"Contournement global. 1 pour activer, 2 pour désactiver et 3 pour obtenir le "
+"statut"
+
+#: src/command_line_parser.cpp:46
+msgid "bypass-state"
+msgstr ""
+
 #~ msgid "Id"
 #~ msgstr "Id"
 
