@@ -236,24 +236,6 @@ Kirigami.ApplicationWindow {
         onAccepted: DB.Manager.resetAll()
     }
 
-    Kirigami.OverlaySheet {
-        id: aboutSheet
-
-        parent: applicationWindow().overlay// qmllint disable
-        closePolicy: Controls.Popup.CloseOnEscape | Controls.Popup.CloseOnPressOutsideParent
-        focus: true
-        y: 0
-
-        implicitWidth: Kirigami.Units.gridUnit * 30
-
-        Loader {
-            id: aboutPageLoader
-
-            height: appWindow.maxOverlayHeight
-            source: "qrc:/ui/AboutPage.qml"
-        }
-    }
-
     SystemTrayIcon {
         id: tray
 
@@ -581,7 +563,7 @@ Kirigami.ApplicationWindow {
                         icon.name: applicationId
                         displayHint: Kirigami.DisplayHint.AlwaysHide
                         onTriggered: {
-                            aboutSheet.open();
+                            appWindow.pageStack.pushDialogLayer(Qt.createComponent("qrc:/ui/AboutPage.qml"));
                         }
                     },
                     Kirigami.Action {

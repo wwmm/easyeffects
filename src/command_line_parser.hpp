@@ -26,13 +26,15 @@
 #include <memory>
 #include "pipeline_type.hpp"
 
+class KAboutData;
+
 class CommandLineParser : public QObject {
   Q_OBJECT
 
  public:
-  explicit CommandLineParser(QObject* parent = nullptr);
+  explicit CommandLineParser(KAboutData &about, QObject* parent = nullptr);
 
-  void process(QApplication* app);
+  void process(KAboutData &about, QApplication* app);
 
  Q_SIGNALS:
   void onReset();

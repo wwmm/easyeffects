@@ -262,7 +262,7 @@ static void initQml(QQmlApplicationEngine& engine,
   }
 }
 
-static int runSecondaryInstance(QApplication& app, CommandLineParser& parser, bool& show_window) {
+static int runSecondaryInstance(KAboutData &about, QApplication& app, CommandLineParser& parser, bool& show_window) {
   auto local_client = std::make_unique<LocalClient>();
 
   QObject::connect(&parser, &CommandLineParser::onQuit, [&]() {
@@ -283,7 +283,7 @@ static int runSecondaryInstance(QApplication& app, CommandLineParser& parser, bo
     show_window = false;
   });
 
-  parser.process(&app);
+  parser.process(about, &app);
 
   if (show_window) {
     local_client->show_window();
@@ -302,19 +302,28 @@ int main(int argc, char* argv[]) {
   SignalHandler signalHandler;
 
   KLocalizedString::setApplicationDomain(APPLICATION_DOMAIN);
-  QCoreApplication::setOrganizationDomain(QStringLiteral(ORGANIZATION_DOMAIN));
-  QCoreApplication::setApplicationName(QStringLiteral(APPLICATION_DOMAIN));
-  QCoreApplication::setApplicationVersion(QStringLiteral(PROJECT_VERSION));
 
-  /**
-   * QApplication specializes QGuiApplication and we need to use it to set
-   * the application name and the desktop entry name in order to show the
-   * correct icon in the title bar and desktop application menus.
-   */
-  QApplication::setApplicationName(APPLICATION_DOMAIN);
-  QApplication::setApplicationDisplayName(APPLICATION_NAME);
-  QApplication::setApplicationVersion(QStringLiteral(PROJECT_VERSION));
-  QApplication::setDesktopFileName(APPLICATION_ID);
+  KAboutData about(QStringLiteral(APPLICATION_DOMAIN),
+                   QStringLiteral(APPLICATION_NAME),
+                   QStringLiteral(PROJECT_VERSION),
+                   i18n("Global audio effects"),
+                   KAboutLicense::GPL_V3,
+                   i18n("© 2017-2025 EasyEffects Team"));
+
+  about.addAuthor(i18n("Wellington Wallace"),
+                  i18nc("@info:credit", "Developer"),
+                  QStringLiteral("wellingtonwallace@gmail.com"));
+
+  about.setOrganizationDomain(ORGANIZATION_DOMAIN);
+  about.setTranslator(i18nc("NAME OF TRANSLATORS", "Your names"), i18nc("EMAIL OF TRANSLATORS", "Your emails"));
+  about.setBugAddress("https://github.com/wwmm/easyeffects/issues");
+  about.setHomepage("https://github.com/wwmm/easyeffects");
+  about.setDesktopFileName(APPLICATION_ID);
+  about.setProgramLogo(APPLICATION_ID);
+
+  KAboutData::setApplicationData(about);
+
+  QGuiApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral(APPLICATION_ID)));
 
   KColorSchemeManager::instance();
 
@@ -325,7 +334,7 @@ int main(int argc, char* argv[]) {
 
   // Parsing command line options
 
-  auto cmd_parser = std::make_unique<CommandLineParser>();
+  auto cmd_parser = std::make_unique<CommandLineParser>(about);
 
   QObject::connect(cmd_parser.get(), &CommandLineParser::onReset, [&]() { db::Manager::self().resetAll(); });
 
@@ -339,12 +348,12 @@ int main(int argc, char* argv[]) {
     // Used only by an instance started when one is already running
     CoreServices core(false);
 
-    return runSecondaryInstance(app, *cmd_parser, show_window);
+    return runSecondaryInstance(about, app, *cmd_parser, show_window);
   }
 
   QObject::connect(cmd_parser.get(), &CommandLineParser::onHideWindow, [&]() { show_window = false; });
 
-  cmd_parser->process(&app);
+  cmd_parser->process(about, &app);
 
   // Core managers
   CoreServices core(true);

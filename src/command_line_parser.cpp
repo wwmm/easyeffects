@@ -22,6 +22,7 @@
 #include <qobject.h>
 #include <qtmetamacros.h>
 #include <KLocalizedString>
+#include <KAboutData>
 #include <QApplication>
 #include <QLoggingCategory>
 #include <QString>
@@ -33,13 +34,11 @@
 #include "pipeline_type.hpp"
 #include "presets_manager.hpp"
 
-CommandLineParser::CommandLineParser(QObject* parent)
+CommandLineParser::CommandLineParser(KAboutData &about, QObject* parent)
     : QObject(parent), parser(std::make_unique<QCommandLineParser>()) {
   parser->setApplicationDescription("Easy Effects");
 
-  parser->addHelpOption();
-  parser->addVersionOption();
-
+  about.setupCommandLine(parser.get());
   parser->addOptions({{{"q", "quit"}, i18n("Quit Easy Effects. Useful when running in service mode.")},
                       {{"r", "reset"}, i18n("Reset Easy Effects.")},
                       {{"w", "hide-window"}, i18n("Hide the Window.")},
@@ -53,10 +52,12 @@ CommandLineParser::CommandLineParser(QObject* parent)
                       {"debug", i18n("Enable debug messages.")}});
 }
 
-void CommandLineParser::process(QApplication* app) {
+void CommandLineParser::process(KAboutData &about, QApplication* app) {
   auto* pm = &presets::Manager::self();
 
   parser->process(*app);
+
+  about.processCommandLine(parser.get());
 
   if (parser->isSet("quit")) {
     Q_EMIT onQuit();
