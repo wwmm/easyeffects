@@ -344,9 +344,10 @@ Kirigami.Page {
 
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    Layout.preferredWidth: contentItem.childrenRect.width
-                    Layout.topMargin: Kirigami.Units.smallSpacing * 2
+                    Layout.maximumWidth: DB.Manager.main.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
+                    Layout.minimumWidth: DB.Manager.main.collapsePluginsList ? Kirigami.Units.gridUnit * 3 : Kirigami.Units.gridUnit * 16
                     Layout.bottomMargin: Kirigami.Units.smallSpacing * 2
+
                     clip: true
                     reuseItems: true
                     model: pluginsListModel
@@ -373,38 +374,22 @@ Kirigami.Page {
                         }
                     }
 
-                    header: RowLayout {
+                    header: EeListSectionHeader {
+                        width: ListView.view.width
                         visible: pluginsListView.count !== 0
 
-                        Kirigami.Icon {
-                            source: pageStreamsEffects.pageType === 0 ? "source-playlist-symbolic" : "audio-input-microphone-symbolic"
-                            Layout.preferredWidth: Kirigami.Units.iconSizes.smallMedium
-                            Layout.preferredHeight: Kirigami.Units.iconSizes.smallMedium
-                            Layout.leftMargin: Kirigami.Units.mediumSpacing
-                        }
-
-                        Controls.Label {
-                            text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Input device")// qmllint disable
-                            enabled: false
-                            visible: !DB.Manager.main.collapsePluginsList
-                        }
+                        icon.name: pageStreamsEffects.pageType === 0 ? "source-playlist-symbolic" : "audio-input-microphone-symbolic"
+                        compact: DB.Manager.main.collapsePluginsList
+                        text: pageStreamsEffects.pageType === 0 ? i18n("Players") : i18n("Input device")// qmllint disable
                     }
 
-                    footer: RowLayout {
+                    footer: EeListSectionHeader {
+                        width: ListView.view.width
                         visible: pluginsListView.count !== 0
 
-                        Kirigami.Icon {
-                            source: pageStreamsEffects.pageType === 0 ? "audio-speakers-symbolic" : "source-playlist-symbolic"
-                            Layout.preferredWidth: Kirigami.Units.iconSizes.smallMedium
-                            Layout.preferredHeight: Kirigami.Units.iconSizes.smallMedium
-                            Layout.leftMargin: Kirigami.Units.mediumSpacing
-                        }
-
-                        Controls.Label {
-                            text: pageStreamsEffects.pageType === 0 ? i18n("Output device") : i18n("Recorders")// qmllint disable
-                            enabled: false
-                            visible: !DB.Manager.main.collapsePluginsList
-                        }
+                        icon.name: pageStreamsEffects.pageType === 0 ? "audio-speakers-symbolic" : "source-playlist-symbolic"
+                        compact: DB.Manager.main.collapsePluginsList
+                        text: pageStreamsEffects.pageType === 0 ? i18n("Output device") : i18n("Recorders")// qmllint disable
                     }
                 }
             }
