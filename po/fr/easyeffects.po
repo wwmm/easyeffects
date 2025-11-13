@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-12 21:48-0300\n"
-"PO-Revision-Date: 2025-11-12 11:51+0000\n"
+"PO-Revision-Date: 2025-11-13 01:42+0000\n"
 "Last-Translator: Bundy01 <bundy01@users.noreply.hosted.weblate.org>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/easyeffects/main/"
 "fr/>\n"
@@ -1230,9 +1230,8 @@ msgid "Noise Suppression"
 msgstr "Suppression du Bruit"
 
 #: src/contents/ui/EchoCanceller.qml:87
-#, fuzzy
 msgid "Strength"
-msgstr "Longueur du Filtre"
+msgstr "Puissance"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
 msgid "Low"
@@ -1282,7 +1281,7 @@ msgstr "-inf"
 
 #: src/contents/ui/EeSpinBox.qml:146
 msgid "∞"
-msgstr ""
+msgstr "∞"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:631
@@ -1380,9 +1379,8 @@ msgid "Width"
 msgstr "Largeur"
 
 #: src/contents/ui/EqualizerBandMenu.qml:143
-#, fuzzy
 msgid "oct"
-msgstr "Coupe-bas"
+msgstr "oct"
 
 #: src/contents/ui/EqualizerBandMenu.qml:167
 #: src/contents/ui/MultibandCompressor.qml:73
@@ -2214,15 +2212,16 @@ msgid "Easy Effects is launched at user session startup."
 msgstr "Easy Effects est lancé au démarrage de la session utilisateur."
 
 #: src/contents/ui/PreferencesSheet.qml:80
-#, fuzzy
 msgid "Reduce effects list controls"
-msgstr "Afficher/masquer la liste des effets"
+msgstr "Réduire les contrôles de la liste des effets"
 
 #: src/contents/ui/PreferencesSheet.qml:81
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
+"Les boutons d'action de la liste des effets sont déplacés à l’intérieur d’un "
+"menu contextuel pour une vue plus compacte."
 
 #: src/contents/ui/PreferencesSheet.qml:94
 msgid "Show the tray icon"
