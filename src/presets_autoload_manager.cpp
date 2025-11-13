@@ -180,7 +180,8 @@ void AutoloadManager::load(const PipelineType& pipeline_type,
     }
 
     if (!fallback.isEmpty()) {
-      util::debug(std::format("Autoloading fallback preset {} for device {}", name, device_name.toStdString()));
+      util::debug(std::format("Autoloading fallback preset {} for device {}", fallback.toStdString(),
+                              device_name.toStdString()));
 
       Q_EMIT loadFallbackPresetRequested(pipeline_type, fallback);
 

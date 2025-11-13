@@ -466,6 +466,13 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
   } else {
     nd->nd_info->is_blocklisted = nm->model_nodes.get_node_by_id(nd->nd_info->id).is_blocklisted;
 
+    /*
+     * This information is updated elsewhere through the device object event
+     */
+    nd->nd_info->device_profile_name = nm->model_nodes.get_node_by_id(nd->nd_info->id).device_profile_name;
+    nd->nd_info->device_profile_description =
+        nm->model_nodes.get_node_by_id(nd->nd_info->id).device_profile_description;
+
     nm->model_nodes.update_info(*nd->nd_info);
 
     if (nd->nd_info->media_class == tags::pipewire::media_class::output_stream) {

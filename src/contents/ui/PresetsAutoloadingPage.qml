@@ -70,7 +70,7 @@ ColumnLayout {
                 const deviceName = device.deviceName;
                 const deviceDescription = device.currentText;
                 const presetName = preset.currentText;
-                const deviceRoute = device.deviceProfileName;
+                const deviceRoute = device.deviceProfileDescription;
                 if (DB.Manager.main.visiblePage === 0)
                     Presets.Manager.addAutoload(1, presetName, deviceName, deviceDescription, deviceRoute);
                 else if (DB.Manager.main.visiblePage === 1)

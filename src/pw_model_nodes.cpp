@@ -217,7 +217,7 @@ QHash<int, QByteArray> Nodes::roleNames() const {
           {static_cast<int>(Roles::Volume), "volume"},
           {static_cast<int>(Roles::IsBlocklisted), "isBlocklisted"},
           {static_cast<int>(Roles::DeviceProfileName), "deviceProfileName"},
-          {static_cast<int>(Roles::DeviceProfileDescription), "DeviceProfileDescription"}};
+          {static_cast<int>(Roles::DeviceProfileDescription), "deviceProfileDescription"}};
 }
 
 QVariant Nodes::data(const QModelIndex& index, int role) const {

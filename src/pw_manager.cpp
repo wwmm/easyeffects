@@ -237,11 +237,11 @@ Manager::Manager()
   connect(&link_manager, &LinkManager::linkChanged, [&](LinkInfo link) { Q_EMIT linkChanged(link); });
 
   connect(&device_manager, &DeviceManager::profileChanged, [&](DeviceInfo device) {
-    QTimer::singleShot(3000, this, [&, device]() {
+    QTimer::singleShot(2000, this, [&, device]() {
       auto nodes = model_nodes.get_nodes_by_device_id(device.id);
 
       if (nodes.empty()) {
-        util::warning(std::format("Could not find a node for {}", device.name.toStdString()));
+        util::warning(std::format("Could not find a node related to {}", device.name.toStdString()));
         return;
       }
 
@@ -251,9 +251,9 @@ Manager::Manager()
 
         model_nodes.update_info(node);
 
-        if (node.media_class == tags::pipewire::media_class::input_stream) {
+        if (node.media_class == tags::pipewire::media_class::source) {
           Q_EMIT sourceProfileNameChanged(node);
-        } else if (node.media_class == tags::pipewire::media_class::output_stream) {
+        } else if (node.media_class == tags::pipewire::media_class::sink) {
           Q_EMIT sinkProfileNameChanged(node);
         }
       }
