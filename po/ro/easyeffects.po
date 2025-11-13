@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-13 02:54+0000\n"
-"PO-Revision-Date: 2025-11-12 11:51+0000\n"
+"PO-Revision-Date: 2025-11-14 00:27+0000\n"
 "Last-Translator: Remus-Gabriel Chelu <remusgabriel.chelu@disroot.org>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/easyeffects/"
 "main/ro/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : "
+"(n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 #: src/autostart.cpp:89
@@ -44,15 +44,12 @@ msgid "Hide the Window."
 msgstr "Ascunde fereastra."
 
 #: src/command_line_parser.cpp:46
-#, fuzzy
 msgid "Global bypass. 1 to enable and 2 to disable"
-msgstr ""
-"Ocolire globală. 1 pentru a activa, 2 pentru a dezactiva și 3 pentru a afla "
-"starea"
+msgstr "Ocolire globală. 1 pentru a activa, și 2 pentru a dezactiva"
 
 #: src/command_line_parser.cpp:46
 msgid "bypass-state"
-msgstr ""
+msgstr "starea de ocolire"
 
 #: src/command_line_parser.cpp:47
 msgid "Load a preset. Example: easyeffects -l music"
@@ -1235,9 +1232,8 @@ msgid "Noise Suppression"
 msgstr "Suprimarea zgomotului"
 
 #: src/contents/ui/EchoCanceller.qml:87
-#, fuzzy
 msgid "Strength"
-msgstr "Lungimea filtrului"
+msgstr "Intensitate"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
 msgid "Low"
@@ -1289,7 +1285,7 @@ msgstr "- ∞"
 
 #: src/contents/ui/EeSpinBox.qml:146
 msgid "∞"
-msgstr ""
+msgstr "∞"
 
 #: src/contents/ui/Equalizer.qml:50 src/contents/ui/Equalizer.qml:80
 msgid "APO preset"
@@ -1492,9 +1488,8 @@ msgid "Width"
 msgstr "Lățime"
 
 #: src/contents/ui/EqualizerBandMenu.qml:143
-#, fuzzy
 msgid "oct"
-msgstr "Filtru taie-jos"
+msgstr "oct"
 
 #: src/contents/ui/EqualizerBandMenu.qml:167
 #: src/contents/ui/MultibandCompressor.qml:73
@@ -2345,15 +2340,16 @@ msgid "Most used presets"
 msgstr "Cele mai utilizate preconfigurări"
 
 #: src/contents/ui/PreferencesSheet.qml:441
-#, fuzzy
 msgid "Reduce effects list controls"
-msgstr "Afișează/ascunde lista de efecte"
+msgstr "Reduce controalele listei de efecte"
 
 #: src/contents/ui/PreferencesSheet.qml:442
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
 msgstr ""
+"Butoanele de acțiune din lista de efecte sunt mutate într-un meniu "
+"contextual pentru o vizualizare mai compactă."
 
 #: src/contents/ui/PreferencesSheet.qml:463
 msgid "Global shortcuts"
