@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-12 21:46-0300\n"
+"POT-Creation-Date: 2025-11-12 21:48-0300\n"
 "PO-Revision-Date: 2025-05-26 11:48+0200\n"
 "Last-Translator: Noel <chatenium@gmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/easyeffects/"
@@ -1341,6 +1341,7 @@ msgstr ""
 msgid "Input"
 msgstr "Bemenet"
 
+#: src/contents/ui/EeSpinBox.qml:138 src/contents/ui/EeSpinBox.qml:139
 #: src/contents/ui/EeSpinBox.qml:146
 msgid "-inf"
 msgstr ""

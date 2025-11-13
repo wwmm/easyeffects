@@ -135,8 +135,8 @@ FormCard.AbstractFormDelegate {
                 locale.numberOptions = Locale.OmitGroupSeparator;
                 const decimalValue = value / spinbox.decimalFactor;
                 if (control.minusInfinityMode === true && decimalValue <= control.from) {
-                    textInputSpinBox.text = "-inf";
-                    return "-inf";
+                    textInputSpinBox.text = i18n("-inf");
+                    return i18n("-inf");
                 }
                 const t = Number(decimalValue).toLocaleString(locale, 'f', control.decimals) + unit_str;
                 textInputSpinBox.text = t;

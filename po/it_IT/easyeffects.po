@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-12 21:46-0300\n"
+"POT-Creation-Date: 2025-11-12 21:48-0300\n"
 "PO-Revision-Date: 2025-11-12 23:18+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -1277,6 +1277,7 @@ msgstr "Regolatori del guadagno di input e output con i misuratori di livello"
 msgid "Input"
 msgstr "Ingresso"
 
+#: src/contents/ui/EeSpinBox.qml:138 src/contents/ui/EeSpinBox.qml:139
 #: src/contents/ui/EeSpinBox.qml:146
 msgid "-inf"
 msgstr "-inf"
