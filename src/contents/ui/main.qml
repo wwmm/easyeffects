@@ -195,23 +195,19 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    globalDrawer: Kirigami.GlobalDrawer {
+    Kirigami.Action {
         /**
          * The usual way to declare the "shut down the service" Ctrl+Q shortcut
          * with the Shortcut QML class does not work on Gnome since it closes
          * only the visible window and does not quit the Easy Effects service.
-         * With this Kirigami.GlobalDrawer class instead we can implement a
+         * With a Kirigami.Action class instead we can implement a
          * StandardKey.Quit action that catches the CTRL+Q event on Gnome, so
          * we can terminate the service with the keyboard shortcut also there.
          */
-        actions: [
-            Kirigami.Action {
-                shortcut: StandardKey.Quit
-                onTriggered: {
-                    Qt.quit();
-                }
-            }
-        ]
+        shortcut: StandardKey.Quit
+        onTriggered: {
+            Qt.quit();
+        }
     }
 
     PreferencesSheet {
