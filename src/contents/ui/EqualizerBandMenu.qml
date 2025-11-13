@@ -22,14 +22,14 @@ Kirigami.OverlaySheet {
     }
 
     header: Controls.Label {
-        text: i18n("Band") + ` ${bandMenu.index + 1}` // qmllint disable
+        text: `${i18n("Band")} ${bandMenu.index + 1}` // qmllint disable
     }
 
     footer: RowLayout {
         FormCard.FormComboBoxDelegate {
             id: bandType
 
-            readonly property string bandName: "band" + bandMenu.index + "Type"
+            readonly property string bandName: `band${bandMenu.index}Type`
             text: i18n("Type") // qmllint disable
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: bandMenu.bandDB[bandName]
@@ -41,7 +41,7 @@ Kirigami.OverlaySheet {
         }
 
         FormCard.FormComboBoxDelegate {
-            readonly property string bandName: "band" + bandMenu.index + "Mode"
+            readonly property string bandName: `band${bandMenu.index}Mode`
             text: i18n("Mode") // qmllint disable
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: bandMenu.bandDB[bandName]
@@ -53,7 +53,7 @@ Kirigami.OverlaySheet {
         }
 
         FormCard.FormComboBoxDelegate {
-            readonly property string bandName: "band" + bandMenu.index + "Slope"
+            readonly property string bandName: `band${bandMenu.index}Slope`
             text: i18n("Slope") // qmllint disable
             displayMode: FormCard.FormComboBoxDelegate.ComboBox
             currentIndex: bandMenu.bandDB[bandName]
@@ -70,7 +70,7 @@ Kirigami.OverlaySheet {
 
         RowLayout {
             EeSpinBox {
-                readonly property string bandName: "band" + bandMenu.index + "Frequency"
+                readonly property string bandName: `band${bandMenu.index}Frequency`
                 label: i18n("Frequency") // qmllint disable
                 from: bandMenu.bandDB.getMinValue(bandName)
                 to: bandMenu.bandDB.getMaxValue(bandName)
@@ -85,13 +85,13 @@ Kirigami.OverlaySheet {
 
             Controls.Button {
                 icon.name: "edit-reset-symbolic"
-                onClicked: bandMenu.bandDB.resetProperty("band" + bandMenu.index + "Frequency")
+                onClicked: bandMenu.bandDB.resetProperty(`band${bandMenu.index}Frequency`)
             }
         }
 
         RowLayout {
             EeSpinBox {
-                readonly property string bandName: "band" + bandMenu.index + "Gain"
+                readonly property string bandName: `band${bandMenu.index}Gain`
                 label: i18n("Gain") // qmllint disable
                 from: bandMenu.bandDB.getMinValue(bandName)
                 to: bandMenu.bandDB.getMaxValue(bandName)
@@ -106,13 +106,13 @@ Kirigami.OverlaySheet {
 
             Controls.Button {
                 icon.name: "edit-reset-symbolic"
-                onClicked: bandMenu.bandDB.resetProperty("band" + bandMenu.index + "Gain")
+                onClicked: bandMenu.bandDB.resetProperty(`band${bandMenu.index}Gain`)
             }
         }
 
         RowLayout {
             EeSpinBox {
-                readonly property string bandName: "band" + bandMenu.index + "Q"
+                readonly property string bandName: `band${bandMenu.index}Q`
                 label: i18n("Quality") // qmllint disable
                 from: bandMenu.bandDB.getMinValue(bandName)
                 to: bandMenu.bandDB.getMaxValue(bandName)
@@ -126,13 +126,13 @@ Kirigami.OverlaySheet {
 
             Controls.Button {
                 icon.name: "edit-reset-symbolic"
-                onClicked: bandMenu.bandDB.resetProperty("band" + bandMenu.index + "Q")
+                onClicked: bandMenu.bandDB.resetProperty(`band${bandMenu.index}Q`)
             }
         }
 
         RowLayout {
             EeSpinBox {
-                readonly property string bandName: "band" + bandMenu.index + "Width"
+                readonly property string bandName: `band${bandMenu.index}Width`
                 enabled: (bandType.currentIndex === 9 || bandType.currentIndex === 10 || bandType.currentIndex === 11) ? true : false
                 label: i18n("Width") // qmllint disable
                 from: bandMenu.bandDB.getMinValue(bandName)
@@ -148,12 +148,12 @@ Kirigami.OverlaySheet {
 
             Controls.Button {
                 icon.name: "edit-reset-symbolic"
-                onClicked: bandMenu.bandDB.resetProperty("band" + bandMenu.index + "Width")
+                onClicked: bandMenu.bandDB.resetProperty(`band${bandMenu.index}Width`)
             }
         }
 
         EeSwitch {
-            readonly property string bandName: "band" + bandMenu.index + "Mute"
+            readonly property string bandName: `band${bandMenu.index}Mute`
             label: i18n("Mute") // qmllint disable
             isChecked: bandMenu.bandDB[bandName]
             onCheckedChanged: {
@@ -163,7 +163,7 @@ Kirigami.OverlaySheet {
         }
 
         EeSwitch {
-            readonly property string bandName: "band" + bandMenu.index + "Solo"
+            readonly property string bandName: `band${bandMenu.index}Solo`
             label: i18n("Solo") // qmllint disable
             isChecked: bandMenu.bandDB[bandName]
             onCheckedChanged: {

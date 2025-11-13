@@ -47,7 +47,7 @@ Kirigami.ScrollablePage {
 
         fileMode: FileDialog.OpenFiles
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        nameFilters: [i18n("APO preset") + " (*.txt)"]// qmllint disable
+        nameFilters: [`${i18n("APO preset")} (*.txt)`] // qmllint disable
         onAccepted: {
             if (equalizerPage.pluginBackend.importApoPreset(apoFileDialog.selectedFiles) === true) {
                 appWindow.showStatus(i18n("Imported the Equalizer APO preset file."), Kirigami.MessageType.Positive); // qmllint disable
@@ -62,7 +62,7 @@ Kirigami.ScrollablePage {
 
         fileMode: FileDialog.OpenFiles
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        nameFilters: [i18n("GraphicEQ preset") + " (*.txt)"]// qmllint disable
+        nameFilters: [`${i18n("GraphicEQ preset")} (*.txt)`] // qmllint disable
         onAccepted: {
             if (equalizerPage.pluginBackend.importApoGraphicEqPreset(apoGraphicEqFileDialog.selectedFiles) === true) {
                 appWindow.showStatus(i18n("Imported the GraphicEQ preset file."), Kirigami.MessageType.Positive); // qmllint disable
@@ -77,7 +77,7 @@ Kirigami.ScrollablePage {
 
         fileMode: FileDialog.SaveFile
         currentFolder: StandardPaths.standardLocations(StandardPaths.DownloadLocation)[0]
-        nameFilters: [i18n("APO preset") + " (*.txt)"]// qmllint disable
+        nameFilters: [`${i18n("APO preset")} (*.txt)`] // qmllint disable
         onAccepted: {
             if (equalizerPage.pluginBackend.exportApoPreset(apoExportFileDialog.selectedFile) === true) {
                 appWindow.showStatus(i18n("Exported the current Equalizer settings to an external APO preset file."), Kirigami.MessageType.Positive);

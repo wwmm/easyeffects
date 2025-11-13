@@ -172,7 +172,7 @@ Kirigami.Page {
                 const componentUrl = pluginMap[baseName];
 
                 if (!componentUrl) {
-                    console.log(pageStreamsEffects.logTag + " invalid plugin name: " + baseName);
+                    console.log(`${pageStreamsEffects.logTag} invalid plugin name: ${baseName}`);
 
                     return;
                 }
@@ -201,8 +201,8 @@ Kirigami.Page {
                         name: name,
                         pluginDB: pluginDB,
                         pipelineInstance: pageStreamsEffects.pipelineInstance,
-                        leftDB: pageStreamsEffects.pluginsDB[name + "#left"],
-                        rightDB: pageStreamsEffects.pluginsDB[name + "#right"]
+                        leftDB: pageStreamsEffects.pluginsDB[`${name}#left`],
+                        rightDB: pageStreamsEffects.pluginsDB[`${name}#right`]
                     });
                 }
             }
