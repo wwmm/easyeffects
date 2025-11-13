@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-12 21:48-0300\n"
-"PO-Revision-Date: 2025-11-13 03:16+0300\n"
+"PO-Revision-Date: 2025-11-13 03:32+0300\n"
 "Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -2207,7 +2207,7 @@ msgstr "Easy Effects запускається під час запуску се�
 
 #: src/contents/ui/PreferencesSheet.qml:80
 msgid "Reduce effects list controls"
-msgstr "Згорнути список ефектів"
+msgstr "Приховати елементи керування у списку ефектів"
 
 #: src/contents/ui/PreferencesSheet.qml:81
 msgid ""
