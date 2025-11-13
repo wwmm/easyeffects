@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-12 21:48-0300\n"
-"PO-Revision-Date: 2025-11-12 05:30+0300\n"
+"PO-Revision-Date: 2025-11-13 03:32+0300\n"
 "Last-Translator: Serhii Starovoitov <drommer.94@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/easyeffects/"
 "main/uk/>\n"
@@ -667,7 +667,7 @@ msgstr "Мінімум"
 #: src/contents/ui/MultibandCompressor.qml:423
 #: src/contents/ui/MultibandGate.qml:384 src/contents/ui/MultibandGate.qml:396
 msgid "Max"
-msgstr "Макс"
+msgstr "Максимум"
 
 #: src/contents/ui/Compressor.qml:317 src/contents/ui/Expander.qml:277
 #: src/contents/ui/Gate.qml:295 src/contents/ui/MultibandCompressor.qml:423
@@ -1227,23 +1227,23 @@ msgstr "Придушення шуму"
 
 #: src/contents/ui/EchoCanceller.qml:87
 msgid "Strength"
-msgstr ""
+msgstr "Сила"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
 msgid "Low"
-msgstr "Низький"
+msgstr "Низько"
 
 #: src/contents/ui/EchoCanceller.qml:91
 msgid "Moderate"
-msgstr "Помірний"
+msgstr "Помірно"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
 msgid "High"
-msgstr "Високий"
+msgstr "Високо"
 
 #: src/contents/ui/EchoCanceller.qml:91
 msgid "Very high"
-msgstr "Дуже високий"
+msgstr "Дуже високо"
 
 #: src/contents/ui/EchoCanceller.qml:101
 msgid "High-Pass Filter"
@@ -1273,11 +1273,11 @@ msgstr "Вхід"
 #: src/contents/ui/EeSpinBox.qml:138 src/contents/ui/EeSpinBox.qml:139
 #: src/contents/ui/EeSpinBox.qml:146
 msgid "-inf"
-msgstr ""
+msgstr "-∞"
 
 #: src/contents/ui/EeSpinBox.qml:146
 msgid "∞"
-msgstr ""
+msgstr "∞"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:631
@@ -1375,9 +1375,8 @@ msgid "Width"
 msgstr "Ширина"
 
 #: src/contents/ui/EqualizerBandMenu.qml:143
-#, fuzzy
 msgid "oct"
-msgstr "ФВЧ"
+msgstr "окт"
 
 #: src/contents/ui/EqualizerBandMenu.qml:167
 #: src/contents/ui/MultibandCompressor.qml:73
@@ -1768,11 +1767,11 @@ msgstr "ISO 226:2023"
 
 #: src/contents/ui/Loudness.qml:82
 msgid "FFT size"
-msgstr "Розмір кадру ШПФ"
+msgstr "Розмір кадру"
 
 #: src/contents/ui/Loudness.qml:96
 msgid "IIR approximation"
-msgstr "Наближення НІХ"
+msgstr "Наближення"
 
 #: src/contents/ui/Loudness.qml:100
 msgid "Fastest"
@@ -2208,13 +2207,13 @@ msgstr "Easy Effects запускається під час запуску се�
 
 #: src/contents/ui/PreferencesSheet.qml:80
 msgid "Reduce effects list controls"
-msgstr ""
+msgstr "Приховати елементи керування у списку ефектів"
 
 #: src/contents/ui/PreferencesSheet.qml:81
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
-msgstr ""
+msgstr "Кнопки дій у списку ефектів переміщено в контекстне меню для більш компактного відображення."
 
 #: src/contents/ui/PreferencesSheet.qml:94
 msgid "Show the tray icon"
@@ -2743,7 +2742,7 @@ msgstr "Оброблений рівень"
 
 #: src/contents/ui/RNNoise.qml:165
 msgid "Use the Standard model"
-msgstr "Використовувати стандартну модель"
+msgstr "Стандартна модель"
 
 #: src/contents/ui/RNNoise.qml:176
 msgid "User Models"
