@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
 "POT-Creation-Date: 2025-11-12 21:48-0300\n"
-"PO-Revision-Date: 2025-11-12 11:51+0000\n"
+"PO-Revision-Date: 2025-11-13 02:20+0000\n"
 "Last-Translator: 麋麓 BigELK176 <BigELK176@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/easyeffects/main/zh_Hant/>\n"
@@ -1228,7 +1228,7 @@ msgstr "噪音抑制"
 
 #: src/contents/ui/EchoCanceller.qml:87
 msgid "Strength"
-msgstr ""
+msgstr "強度"
 
 #: src/contents/ui/EchoCanceller.qml:91 src/contents/ui/Loudness.qml:100
 msgid "Low"
@@ -1274,11 +1274,11 @@ msgstr "輸入"
 #: src/contents/ui/EeSpinBox.qml:138 src/contents/ui/EeSpinBox.qml:139
 #: src/contents/ui/EeSpinBox.qml:146
 msgid "-inf"
-msgstr ""
+msgstr "-inf"
 
 #: src/contents/ui/EeSpinBox.qml:146
 msgid "∞"
-msgstr ""
+msgstr "∞"
 
 #: src/contents/ui/EqualizerBandMenu.qml:25
 #: src/contents/ui/MultibandCompressor.qml:631
@@ -2217,13 +2217,13 @@ msgstr "Easy Effects 在使用者階段工作話啟動時啟動。"
 
 #: src/contents/ui/PreferencesSheet.qml:80
 msgid "Reduce effects list controls"
-msgstr ""
+msgstr "減小音效列表控制"
 
 #: src/contents/ui/PreferencesSheet.qml:81
 msgid ""
 "Action buttons in the effects list are moved inside a context menu for a "
 "more compact view."
-msgstr ""
+msgstr "音效列表中的操作按鈕移動至前後選單內，以獲得較為緊湊的檢視。"
 
 #: src/contents/ui/PreferencesSheet.qml:94
 msgid "Show the tray icon"
