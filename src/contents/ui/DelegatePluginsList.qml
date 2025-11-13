@@ -21,12 +21,7 @@ Item {
 
     signal selectedChanged(string name)
 
-    width: {
-        if (!DB.Manager.main.collapsePluginsList)
-            listView.width > listItemDelegate.implicitWidth ? listView.width : listItemDelegate.implicitWidth;
-        else
-            listItemDelegate.implicitWidth;
-    }
+    width: ListView.view.width
 
     height: listItemDelegate.height
 

@@ -23,6 +23,7 @@
         <file alias="EeChart.qml">contents/ui/EeChart.qml</file>
         <file alias="EeAudioLevel.qml">contents/ui/EeAudioLevel.qml</file>
         <file alias="EeInputOutputGain.qml">contents/ui/EeInputOutputGain.qml</file>
+        <file alias="EeListSectionHeader.qml">contents/ui/EeListSectionHeader.qml</file>
         <file alias="EeProgressBar.qml">contents/ui/EeProgressBar.qml</file>
         <file alias="EeSpinBox.qml">contents/ui/EeSpinBox.qml</file>
         <file alias="EeSwitch.qml">contents/ui/EeSwitch.qml</file>
