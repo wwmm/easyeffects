@@ -163,9 +163,6 @@ class Manager : public QObject {
 
   void linkChanged(LinkInfo link);
 
-  void inputRouteChanged(DeviceInfo device);
-  void outputRouteChanged(DeviceInfo device);
-
  private:
   pw_context* context = nullptr;
   pw_proxy *proxy_stream_output_sink = nullptr, *proxy_stream_input_source = nullptr;

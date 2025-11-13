@@ -35,6 +35,12 @@ KirigamiSettings.ConfigurationView {
             page: () => databasePage
         },
         KirigamiSettings.ConfigurationModule {
+            moduleId: "style"
+            icon.name: "preferences-desktop-theme-global-symbolic"
+            text: i18n("Style") // qmllint disable
+            page: () => stylePage
+        },
+        KirigamiSettings.ConfigurationModule {
             moduleId: "experimental"
             icon.name: "emblem-warning"
             text: i18n("Experimental Features") // qmllint disable
@@ -70,20 +76,6 @@ KirigamiSettings.ConfigurationView {
                     onCheckedChanged: {
                         if (isChecked !== DB.Manager.main.autostartOnLogin) {
                             DB.Manager.main.autostartOnLogin = isChecked;
-                        }
-                    }
-                }
-
-                EeSwitch {
-                    id: reducePluginsListControls
-
-                    label: i18n("Reduce effects list controls") // qmllint disable
-                    subtitle: i18n("Action buttons in the effects list are moved inside a context menu for a more compact view.") // qmllint disable
-                    maximumLineCount: -1
-                    isChecked: DB.Manager.main.reducePluginsListControls
-                    onCheckedChanged: {
-                        if (isChecked !== DB.Manager.main.reducePluginsListControls) {
-                            DB.Manager.main.reducePluginsListControls = isChecked;
                         }
                     }
                 }
@@ -432,6 +424,28 @@ KirigamiSettings.ConfigurationView {
                     stepSize: 1
                     onValueModified: v => {
                         DB.Manager.main.maxMostUsedPresets = v;
+                    }
+                }
+            }
+        }
+    }
+
+    readonly property Component stylePage: Component {
+        FormCard.FormCardPage {
+            FormCard.FormCard {
+                Layout.topMargin: Kirigami.Units.gridUnit
+
+                EeSwitch {
+                    id: reducePluginsListControls
+
+                    label: i18n("Reduce effects list controls") // qmllint disable
+                    subtitle: i18n("Action buttons in the effects list are moved inside a context menu for a more compact view.") // qmllint disable
+                    maximumLineCount: -1
+                    isChecked: DB.Manager.main.reducePluginsListControls
+                    onCheckedChanged: {
+                        if (isChecked !== DB.Manager.main.reducePluginsListControls) {
+                            DB.Manager.main.reducePluginsListControls = isChecked;
+                        }
                     }
                 }
             }
