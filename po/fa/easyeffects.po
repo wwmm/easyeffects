@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-11 22:38+0000\n"
+"POT-Creation-Date: 2025-11-13 00:20+0000\n"
 "PO-Revision-Date: 2025-09-23 14:01+0000\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -85,11 +85,11 @@ msgstr ""
 msgid "Must specify preset type: input/output."
 msgstr ""
 
-#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:353
+#: src/command_line_parser.cpp:149 src/contents/ui/main.qml:371
 msgid "Output Presets"
 msgstr "خروجی از پیش تعیین شده"
 
-#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:338
+#: src/command_line_parser.cpp:157 src/contents/ui/main.qml:356
 msgid "Input Presets"
 msgstr "پیش‌تنظیم‌های ورودی"
 
@@ -162,6 +162,77 @@ msgstr "میانگین هندسی (SI)"
 msgid "Target"
 msgstr "هدف"
 
+#: src/contents/ui/Autogain.qml:76 src/contents/ui/Autogain.qml:92
+#: src/contents/ui/Autogain.qml:196 src/contents/ui/BassEnhancer.qml:99
+#: src/contents/ui/BassLoudness.qml:54 src/contents/ui/BassLoudness.qml:70
+#: src/contents/ui/BassLoudness.qml:86 src/contents/ui/Compressor.qml:84
+#: src/contents/ui/Compressor.qml:104 src/contents/ui/Compressor.qml:139
+#: src/contents/ui/Compressor.qml:170 src/contents/ui/Compressor.qml:203
+#: src/contents/ui/Compressor.qml:349 src/contents/ui/Compressor.qml:477
+#: src/contents/ui/Compressor.qml:496 src/contents/ui/Compressor.qml:515
+#: src/contents/ui/Compressor.qml:543 src/contents/ui/Compressor.qml:559
+#: src/contents/ui/Compressor.qml:575 src/contents/ui/Compressor.qml:591
+#: src/contents/ui/Compressor.qml:607 src/contents/ui/Compressor.qml:623
+#: src/contents/ui/Convolver.qml:423 src/contents/ui/Convolver.qml:441
+#: src/contents/ui/Crossfeed.qml:83 src/contents/ui/DeepFilterNet.qml:93
+#: src/contents/ui/DeepFilterNet.qml:109 src/contents/ui/DeepFilterNet.qml:125
+#: src/contents/ui/DeepFilterNet.qml:157 src/contents/ui/Deesser.qml:92
+#: src/contents/ui/Deesser.qml:125 src/contents/ui/Deesser.qml:208
+#: src/contents/ui/Deesser.qml:270 src/contents/ui/Deesser.qml:281
+#: src/contents/ui/Delay.qml:165 src/contents/ui/Delay.qml:183
+#: src/contents/ui/Delay.qml:318 src/contents/ui/Delay.qml:336
+#: src/contents/ui/EeInputOutputGain.qml:99
+#: src/contents/ui/EeInputOutputGain.qml:112
+#: src/contents/ui/EqualizerBandMenu.qml:101 src/contents/ui/Exciter.qml:103
+#: src/contents/ui/Expander.qml:99 src/contents/ui/Expander.qml:130
+#: src/contents/ui/Expander.qml:163 src/contents/ui/Expander.qml:305
+#: src/contents/ui/Expander.qml:435 src/contents/ui/Expander.qml:454
+#: src/contents/ui/Expander.qml:473 src/contents/ui/Expander.qml:497
+#: src/contents/ui/Expander.qml:513 src/contents/ui/Expander.qml:529
+#: src/contents/ui/Expander.qml:545 src/contents/ui/Expander.qml:561
+#: src/contents/ui/Expander.qml:577 src/contents/ui/Filter.qml:147
+#: src/contents/ui/Gate.qml:109 src/contents/ui/Gate.qml:126
+#: src/contents/ui/Gate.qml:143 src/contents/ui/Gate.qml:178
+#: src/contents/ui/Gate.qml:197 src/contents/ui/Gate.qml:324
+#: src/contents/ui/Gate.qml:450 src/contents/ui/Gate.qml:469
+#: src/contents/ui/Gate.qml:488 src/contents/ui/Gate.qml:518
+#: src/contents/ui/Gate.qml:534 src/contents/ui/Gate.qml:550
+#: src/contents/ui/Gate.qml:566 src/contents/ui/Gate.qml:582
+#: src/contents/ui/Gate.qml:598 src/contents/ui/LevelMeter.qml:61
+#: src/contents/ui/LevelMeter.qml:72 src/contents/ui/LevelMeter.qml:102
+#: src/contents/ui/LevelMeter.qml:113 src/contents/ui/Limiter.qml:117
+#: src/contents/ui/Limiter.qml:241 src/contents/ui/Limiter.qml:293
+#: src/contents/ui/Limiter.qml:309 src/contents/ui/Limiter.qml:325
+#: src/contents/ui/Limiter.qml:341 src/contents/ui/Limiter.qml:357
+#: src/contents/ui/Limiter.qml:373 src/contents/ui/Limiter.qml:441
+#: src/contents/ui/Loudness.qml:118 src/contents/ui/Loudness.qml:135
+#: src/contents/ui/LspPreMixSheet.qml:38 src/contents/ui/LspPreMixSheet.qml:54
+#: src/contents/ui/LspPreMixSheet.qml:70 src/contents/ui/LspPreMixSheet.qml:86
+#: src/contents/ui/LspPreMixSheet.qml:102
+#: src/contents/ui/LspPreMixSheet.qml:118 src/contents/ui/Maximizer.qml:72
+#: src/contents/ui/Maximizer.qml:83 src/contents/ui/MultibandCompressor.qml:122
+#: src/contents/ui/MultibandCompressor.qml:141
+#: src/contents/ui/MultibandCompressor.qml:249
+#: src/contents/ui/MultibandCompressor.qml:297
+#: src/contents/ui/MultibandCompressor.qml:349
+#: src/contents/ui/MultibandCompressor.qml:366
+#: src/contents/ui/MultibandCompressor.qml:439
+#: src/contents/ui/MultibandCompressor.qml:594
+#: src/contents/ui/MultibandCompressor.qml:612
+#: src/contents/ui/MultibandGate.qml:219 src/contents/ui/MultibandGate.qml:235
+#: src/contents/ui/MultibandGate.qml:268 src/contents/ui/MultibandGate.qml:283
+#: src/contents/ui/MultibandGate.qml:322 src/contents/ui/MultibandGate.qml:338
+#: src/contents/ui/MultibandGate.qml:412 src/contents/ui/MultibandGate.qml:567
+#: src/contents/ui/MultibandGate.qml:585
+#: src/contents/ui/PageStreamsEffects.qml:610 src/contents/ui/Pitch.qml:111
+#: src/contents/ui/Pitch.qml:130 src/contents/ui/RNNoise.qml:132
+#: src/contents/ui/Reverb.qml:178 src/contents/ui/Reverb.qml:196
+#: src/contents/ui/Speex.qml:85 src/contents/ui/StereoTools.qml:125
+#: src/contents/ui/StereoTools.qml:159 src/contents/ui/StereoTools.qml:333
+#: src/contents/ui/StereoTools.qml:351
+msgid "dB"
+msgstr ""
+
 #: src/contents/ui/Autogain.qml:85
 msgid "Silence"
 msgstr "سکوت"
@@ -170,6 +241,12 @@ msgstr "سکوت"
 #, fuzzy
 msgid "Maximum history"
 msgstr "حداکثر سابقه"
+
+#: src/contents/ui/Autogain.qml:108 src/contents/ui/Convolver.qml:225
+#: src/contents/ui/Convolver.qml:325 src/contents/ui/Convolver.qml:379
+#: src/contents/ui/PreferencesSheet.qml:211 src/contents/ui/Reverb.qml:68
+msgid "s"
+msgstr ""
 
 #: src/contents/ui/Autogain.qml:124 src/contents/ui/Autogain.qml:184
 #: src/contents/ui/BassLoudness.qml:47 src/contents/ui/LevelMeter.qml:131
@@ -203,8 +280,8 @@ msgstr "افزایش خروجی"
 #: src/contents/ui/MultibandCompressor.qml:936
 #: src/contents/ui/MultibandGate.qml:909 src/contents/ui/Pitch.qml:246
 #: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
-#: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
-#: src/contents/ui/RNNoise.qml:297 src/contents/ui/Reverb.qml:298
+#: src/contents/ui/RNNoise.qml:281 src/contents/ui/RNNoise.qml:283
+#: src/contents/ui/RNNoise.qml:301 src/contents/ui/Reverb.qml:298
 #: src/contents/ui/Speex.qml:155 src/contents/ui/StereoTools.qml:370
 #, fuzzy
 msgid "Using %1"
@@ -248,67 +325,6 @@ msgstr "2nd"
 msgid "Amount"
 msgstr "مقدار"
 
-#: src/contents/ui/BassEnhancer.qml:99 src/contents/ui/BassLoudness.qml:54
-#: src/contents/ui/BassLoudness.qml:70 src/contents/ui/BassLoudness.qml:86
-#: src/contents/ui/Compressor.qml:84 src/contents/ui/Compressor.qml:104
-#: src/contents/ui/Compressor.qml:139 src/contents/ui/Compressor.qml:170
-#: src/contents/ui/Compressor.qml:203 src/contents/ui/Compressor.qml:349
-#: src/contents/ui/Compressor.qml:477 src/contents/ui/Compressor.qml:496
-#: src/contents/ui/Compressor.qml:515 src/contents/ui/Compressor.qml:543
-#: src/contents/ui/Compressor.qml:559 src/contents/ui/Compressor.qml:575
-#: src/contents/ui/Compressor.qml:591 src/contents/ui/Compressor.qml:607
-#: src/contents/ui/Compressor.qml:623 src/contents/ui/Convolver.qml:423
-#: src/contents/ui/Convolver.qml:441 src/contents/ui/Crossfeed.qml:83
-#: src/contents/ui/DeepFilterNet.qml:93 src/contents/ui/DeepFilterNet.qml:109
-#: src/contents/ui/DeepFilterNet.qml:125 src/contents/ui/DeepFilterNet.qml:157
-#: src/contents/ui/Deesser.qml:92 src/contents/ui/Deesser.qml:125
-#: src/contents/ui/Deesser.qml:208 src/contents/ui/Deesser.qml:270
-#: src/contents/ui/Deesser.qml:281 src/contents/ui/Delay.qml:165
-#: src/contents/ui/Delay.qml:183 src/contents/ui/Delay.qml:318
-#: src/contents/ui/Delay.qml:336 src/contents/ui/EeInputOutputGain.qml:99
-#: src/contents/ui/EeInputOutputGain.qml:112 src/contents/ui/Exciter.qml:103
-#: src/contents/ui/Expander.qml:99 src/contents/ui/Expander.qml:130
-#: src/contents/ui/Expander.qml:163 src/contents/ui/Expander.qml:305
-#: src/contents/ui/Expander.qml:435 src/contents/ui/Expander.qml:454
-#: src/contents/ui/Expander.qml:473 src/contents/ui/Expander.qml:497
-#: src/contents/ui/Expander.qml:513 src/contents/ui/Expander.qml:529
-#: src/contents/ui/Expander.qml:545 src/contents/ui/Expander.qml:561
-#: src/contents/ui/Expander.qml:577 src/contents/ui/Filter.qml:147
-#: src/contents/ui/Gate.qml:518 src/contents/ui/Gate.qml:534
-#: src/contents/ui/LevelMeter.qml:61 src/contents/ui/LevelMeter.qml:72
-#: src/contents/ui/LevelMeter.qml:102 src/contents/ui/LevelMeter.qml:113
-#: src/contents/ui/Limiter.qml:117 src/contents/ui/Limiter.qml:241
-#: src/contents/ui/Limiter.qml:293 src/contents/ui/Limiter.qml:309
-#: src/contents/ui/Limiter.qml:325 src/contents/ui/Limiter.qml:341
-#: src/contents/ui/Limiter.qml:357 src/contents/ui/Limiter.qml:373
-#: src/contents/ui/Limiter.qml:441 src/contents/ui/Loudness.qml:118
-#: src/contents/ui/Loudness.qml:135 src/contents/ui/LspPreMixSheet.qml:38
-#: src/contents/ui/LspPreMixSheet.qml:54 src/contents/ui/LspPreMixSheet.qml:70
-#: src/contents/ui/LspPreMixSheet.qml:86 src/contents/ui/LspPreMixSheet.qml:102
-#: src/contents/ui/LspPreMixSheet.qml:118 src/contents/ui/Maximizer.qml:72
-#: src/contents/ui/Maximizer.qml:83 src/contents/ui/MultibandCompressor.qml:122
-#: src/contents/ui/MultibandCompressor.qml:141
-#: src/contents/ui/MultibandCompressor.qml:249
-#: src/contents/ui/MultibandCompressor.qml:297
-#: src/contents/ui/MultibandCompressor.qml:349
-#: src/contents/ui/MultibandCompressor.qml:366
-#: src/contents/ui/MultibandCompressor.qml:439
-#: src/contents/ui/MultibandCompressor.qml:594
-#: src/contents/ui/MultibandCompressor.qml:612
-#: src/contents/ui/MultibandGate.qml:219 src/contents/ui/MultibandGate.qml:235
-#: src/contents/ui/MultibandGate.qml:268 src/contents/ui/MultibandGate.qml:283
-#: src/contents/ui/MultibandGate.qml:322 src/contents/ui/MultibandGate.qml:338
-#: src/contents/ui/MultibandGate.qml:412 src/contents/ui/MultibandGate.qml:567
-#: src/contents/ui/MultibandGate.qml:585
-#: src/contents/ui/PageStreamsEffects.qml:608 src/contents/ui/Pitch.qml:111
-#: src/contents/ui/Pitch.qml:130 src/contents/ui/RNNoise.qml:132
-#: src/contents/ui/Reverb.qml:178 src/contents/ui/Reverb.qml:196
-#: src/contents/ui/Speex.qml:85 src/contents/ui/StereoTools.qml:125
-#: src/contents/ui/StereoTools.qml:159 src/contents/ui/StereoTools.qml:333
-#: src/contents/ui/StereoTools.qml:351
-msgid "dB"
-msgstr ""
-
 #: src/contents/ui/BassEnhancer.qml:108 src/contents/ui/BassEnhancer.qml:168
 #: src/contents/ui/Exciter.qml:112 src/contents/ui/Exciter.qml:172
 msgid "Harmonics"
@@ -322,19 +338,22 @@ msgstr "دامنه"
 #: src/contents/ui/Convolver.qml:212 src/contents/ui/Convolver.qml:363
 #: src/contents/ui/Crossfeed.qml:67 src/contents/ui/CrystalizerBand.qml:75
 #: src/contents/ui/Deesser.qml:174 src/contents/ui/Deesser.qml:191
-#: src/contents/ui/EqualizerBand.qml:46 src/contents/ui/Exciter.qml:134
+#: src/contents/ui/EqualizerBand.qml:46
+#: src/contents/ui/EqualizerBandMenu.qml:80 src/contents/ui/Exciter.qml:134
 #: src/contents/ui/Exciter.qml:161 src/contents/ui/Expander.qml:386
 #: src/contents/ui/Expander.qml:407 src/contents/ui/Filter.qml:116
+#: src/contents/ui/Gate.qml:405 src/contents/ui/Gate.qml:426
 #: src/contents/ui/MultibandCompressor.qml:185
+#: src/contents/ui/MultibandCompressor.qml:203
 #: src/contents/ui/MultibandCompressor.qml:493
 #: src/contents/ui/MultibandCompressor.qml:518
-#: src/contents/ui/MultibandGate.qml:122 src/contents/ui/MultibandGate.qml:466
-#: src/contents/ui/MultibandGate.qml:491
-#: src/contents/ui/PageStreamsEffects.qml:465
+#: src/contents/ui/MultibandGate.qml:122 src/contents/ui/MultibandGate.qml:140
+#: src/contents/ui/MultibandGate.qml:466 src/contents/ui/MultibandGate.qml:491
+#: src/contents/ui/PageStreamsEffects.qml:467
 #: src/contents/ui/PipeWirePage.qml:403
-#: src/contents/ui/PreferencesSheet.qml:370
-#: src/contents/ui/PreferencesSheet.qml:385
-#: src/contents/ui/PreferencesSheet.qml:469 src/contents/ui/Reverb.qml:127
+#: src/contents/ui/PreferencesSheet.qml:384
+#: src/contents/ui/PreferencesSheet.qml:399
+#: src/contents/ui/PreferencesSheet.qml:483 src/contents/ui/Reverb.qml:127
 #: src/contents/ui/Reverb.qml:144 src/contents/ui/Reverb.qml:161
 msgid "Hz"
 msgstr ""
@@ -377,16 +396,16 @@ msgstr "گوش کن"
 #: src/contents/ui/Limiter.qml:627 src/contents/ui/Loudness.qml:196
 #: src/contents/ui/Maximizer.qml:134
 #: src/contents/ui/MultibandCompressor.qml:985
-#: src/contents/ui/MultibandGate.qml:958 src/contents/ui/RNNoise.qml:322
+#: src/contents/ui/MultibandGate.qml:958 src/contents/ui/RNNoise.qml:326
 #: src/contents/ui/Reverb.qml:338 src/contents/ui/Speex.qml:173
-#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:550
+#: src/contents/ui/StereoTools.qml:402 src/contents/ui/main.qml:568
 msgid "Reset"
 msgstr "بازنشانی"
 
 #: src/contents/ui/BassLoudness.qml:63 src/contents/ui/Compressor.qml:463
 #: src/contents/ui/EeInputOutputGain.qml:108 src/contents/ui/Expander.qml:421
 #: src/contents/ui/Gate.qml:436 src/contents/ui/StereoTools.qml:249
-#: src/contents/ui/main.qml:488
+#: src/contents/ui/main.qml:506
 msgid "Output"
 msgstr "خروجی"
 
@@ -521,6 +540,8 @@ msgstr "حمله"
 #: src/contents/ui/Delay.qml:93 src/contents/ui/Delay.qml:246
 #: src/contents/ui/Expander.qml:146 src/contents/ui/Expander.qml:180
 #: src/contents/ui/Expander.qml:323 src/contents/ui/Expander.qml:341
+#: src/contents/ui/Gate.qml:74 src/contents/ui/Gate.qml:91
+#: src/contents/ui/Gate.qml:342 src/contents/ui/Gate.qml:360
 #: src/contents/ui/Limiter.qml:134 src/contents/ui/Limiter.qml:151
 #: src/contents/ui/Limiter.qml:259 src/contents/ui/Limiter.qml:407
 #: src/contents/ui/Limiter.qml:424 src/contents/ui/Maximizer.qml:56
@@ -530,11 +551,11 @@ msgstr "حمله"
 #: src/contents/ui/MultibandCompressor.qml:470
 #: src/contents/ui/MultibandGate.qml:171 src/contents/ui/MultibandGate.qml:186
 #: src/contents/ui/MultibandGate.qml:428 src/contents/ui/MultibandGate.qml:443
-#: src/contents/ui/PageStreamsEffects.qml:607 src/contents/ui/Pitch.qml:58
+#: src/contents/ui/PageStreamsEffects.qml:609 src/contents/ui/Pitch.qml:58
 #: src/contents/ui/Pitch.qml:75 src/contents/ui/Pitch.qml:93
-#: src/contents/ui/PreferencesSheet.qml:213
-#: src/contents/ui/PreferencesSheet.qml:250
-#: src/contents/ui/PreferencesSheet.qml:406 src/contents/ui/RNNoise.qml:148
+#: src/contents/ui/PreferencesSheet.qml:227
+#: src/contents/ui/PreferencesSheet.qml:264
+#: src/contents/ui/PreferencesSheet.qml:420 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
 msgid "ms"
 msgstr ""
@@ -582,7 +603,7 @@ msgstr "خارجی"
 
 #: src/contents/ui/Compressor.qml:260 src/contents/ui/Expander.qml:220
 #: src/contents/ui/Gate.qml:238 src/contents/ui/Limiter.qml:210
-#: src/contents/ui/PageStreamsEffects.qml:385
+#: src/contents/ui/PageStreamsEffects.qml:387
 #, fuzzy
 msgid "Input device"
 msgstr "دستگاه ورودی"
@@ -924,12 +945,6 @@ msgstr "ایمپالس ها"
 msgid "Spectrum"
 msgstr "طیف"
 
-#: src/contents/ui/Convolver.qml:225 src/contents/ui/Convolver.qml:325
-#: src/contents/ui/Convolver.qml:379 src/contents/ui/PreferencesSheet.qml:197
-#: src/contents/ui/Reverb.qml:68
-msgid "s"
-msgstr ""
-
 #: src/contents/ui/Convolver.qml:239
 #, fuzzy
 msgid "Log scale"
@@ -994,12 +1009,12 @@ msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 msgid "Failed to remove the %1 Convolver impulse."
 msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:104
+#: src/contents/ui/ConvolverImpulseSheet.qml:107
 #, fuzzy
 msgid "Delete this impulse"
 msgstr "حذف ایمپالس"
 
-#: src/contents/ui/ConvolverImpulseSheet.qml:124
+#: src/contents/ui/ConvolverImpulseSheet.qml:127
 #, fuzzy
 msgid "Import impulse"
 msgstr "وارد کردن ایمپالس"
@@ -1022,7 +1037,7 @@ msgid "Default"
 msgstr "پیش فرض"
 
 #: src/contents/ui/Crossfeed.qml:146 src/contents/ui/Reverb.qml:315
-#: src/contents/ui/main.qml:466
+#: src/contents/ui/main.qml:484
 msgid "Presets"
 msgstr "تنظیمات از پیش تعیین شده"
 
@@ -1045,7 +1060,7 @@ msgid "Bypass"
 msgstr "دور زدن"
 
 #: src/contents/ui/CrystalizerBand.qml:75 src/contents/ui/EqualizerBand.qml:48
-#: src/contents/ui/PageStreamsEffects.qml:606
+#: src/contents/ui/PageStreamsEffects.qml:608
 msgid "kHz"
 msgstr ""
 
@@ -1232,12 +1247,14 @@ msgctxt "@info:placeholder"
 msgid "No description set"
 msgstr "توضیحات"
 
-#: src/contents/ui/DelegatePluginsList.qml:73
+#: src/contents/ui/DelegatePluginsList.qml:106
+#: src/contents/ui/DelegatePluginsList.qml:127
 #, fuzzy
 msgid "Toggle this effect"
 msgstr "فعال/غیرفعال کردن این افکت"
 
-#: src/contents/ui/DelegatePluginsList.qml:87
+#: src/contents/ui/DelegatePluginsList.qml:114
+#: src/contents/ui/DelegatePluginsList.qml:135
 #, fuzzy
 msgid "Remove this effect"
 msgstr "حذف این افکت"
@@ -1325,7 +1342,7 @@ msgid "Input and output gain controls with level meters"
 msgstr ""
 
 #: src/contents/ui/EeInputOutputGain.qml:95 src/contents/ui/StereoTools.qml:40
-#: src/contents/ui/main.qml:497
+#: src/contents/ui/main.qml:515
 msgid "Input"
 msgstr "ورودی"
 
@@ -1548,6 +1565,11 @@ msgstr "کیفیت"
 #: src/contents/ui/EqualizerBandMenu.qml:137 src/contents/ui/Filter.qml:125
 msgid "Width"
 msgstr "عرض"
+
+#: src/contents/ui/EqualizerBandMenu.qml:143
+#, fuzzy
+msgid "oct"
+msgstr "برش-کم"
 
 #: src/contents/ui/EqualizerBandMenu.qml:167
 #: src/contents/ui/MultibandCompressor.qml:73
@@ -1998,57 +2020,57 @@ msgstr "کاهش"
 msgid "No audio application available"
 msgstr "هیچ برنامه صوتی موجود نیست"
 
-#: src/contents/ui/PageStreamsEffects.qml:314
+#: src/contents/ui/PageStreamsEffects.qml:316
 #, fuzzy
 msgid "Add effect"
 msgstr "افزودن افکت"
 
-#: src/contents/ui/PageStreamsEffects.qml:322
+#: src/contents/ui/PageStreamsEffects.qml:324
 msgid "Close"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:326
+#: src/contents/ui/PageStreamsEffects.qml:328
 msgid "Expand the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:326
+#: src/contents/ui/PageStreamsEffects.qml:328
 msgid "Reduce the list of effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PageStreamsEffects.qml:385
-#: src/contents/ui/PageStreamsEffects.qml:627
+#: src/contents/ui/PageStreamsEffects.qml:387
+#: src/contents/ui/PageStreamsEffects.qml:629
 msgid "Players"
 msgstr "پلیرها"
 
-#: src/contents/ui/PageStreamsEffects.qml:402
+#: src/contents/ui/PageStreamsEffects.qml:404
 #, fuzzy
 msgid "Output device"
 msgstr "دستگاه خروجی"
 
-#: src/contents/ui/PageStreamsEffects.qml:402
-#: src/contents/ui/PageStreamsEffects.qml:627
+#: src/contents/ui/PageStreamsEffects.qml:404
+#: src/contents/ui/PageStreamsEffects.qml:629
 msgid "Recorders"
 msgstr "ضبط کننده ها"
 
-#: src/contents/ui/PageStreamsEffects.qml:426
+#: src/contents/ui/PageStreamsEffects.qml:428
 msgid "No Effects"
 msgstr "بدون افکت"
 
-#: src/contents/ui/PageStreamsEffects.qml:427
+#: src/contents/ui/PageStreamsEffects.qml:429
 #, fuzzy
 msgid "Audio stream not modified"
 msgstr "جریان صوتی تغییر نکرده است"
 
-#: src/contents/ui/PageStreamsEffects.qml:637 src/contents/ui/main.qml:450
+#: src/contents/ui/PageStreamsEffects.qml:639 src/contents/ui/main.qml:468
 msgid "Effects"
 msgstr "جلوه ها"
 
-#: src/contents/ui/PageStreamsEffects.qml:654
+#: src/contents/ui/PageStreamsEffects.qml:656
 #, fuzzy
 msgid "Input monitoring"
 msgstr "فعال‌سازی پایش ورودی"
 
-#: src/contents/ui/PageStreamsEffects.qml:667
+#: src/contents/ui/PageStreamsEffects.qml:669
 #, fuzzy
 msgid "Excluded apps"
 msgstr "برنامه های مستثنی شده"
@@ -2146,12 +2168,12 @@ msgid "No Clients"
 msgstr "مشتریان"
 
 #: src/contents/ui/PipeWirePage.qml:297
-#: src/contents/ui/PreferencesSheet.qml:226
+#: src/contents/ui/PreferencesSheet.qml:240
 msgid "State"
 msgstr "ایالت"
 
 #: src/contents/ui/PipeWirePage.qml:304
-#: src/contents/ui/PreferencesSheet.qml:233
+#: src/contents/ui/PreferencesSheet.qml:247
 msgid "Enabled"
 msgstr "فعال شد"
 
@@ -2280,228 +2302,239 @@ msgid "Easy Effects is launched at user session startup."
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:80
+#, fuzzy
+msgid "Reduce effects list controls"
+msgstr "نمایش/پنهان کردن فهرست افکت‌ها"
+
+#: src/contents/ui/PreferencesSheet.qml:81
+msgid ""
+"Action buttons in the effects list are moved inside a context menu for a "
+"more compact view."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:94
 msgid "Show the tray icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:100
+#: src/contents/ui/PreferencesSheet.qml:114
 #, fuzzy
 msgid "Process all output streams"
 msgstr "پردازش تمام جریان‌های خروجی"
 
-#: src/contents/ui/PreferencesSheet.qml:111
+#: src/contents/ui/PreferencesSheet.qml:125
 #, fuzzy
 msgid "Process all input streams"
 msgstr "پردازش تمام جریان‌های ورودی"
 
-#: src/contents/ui/PreferencesSheet.qml:122
+#: src/contents/ui/PreferencesSheet.qml:136
 #, fuzzy
 msgid "Ignore streams from monitor of devices"
 msgstr "نادیده‌گرفتن جریان‌ها از مانیتور دستگاه‌ها"
 
-#: src/contents/ui/PreferencesSheet.qml:133
+#: src/contents/ui/PreferencesSheet.qml:147
 #, fuzzy
 msgid "Use cubic volume"
 msgstr "استفاده از حجم مکعبی"
 
-#: src/contents/ui/PreferencesSheet.qml:144
+#: src/contents/ui/PreferencesSheet.qml:158
 msgid "Ignore system notifications"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:145
+#: src/contents/ui/PreferencesSheet.qml:159
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:156
+#: src/contents/ui/PreferencesSheet.qml:170
 #, fuzzy
 msgid "Enable/disable input monitoring"
 msgstr "فعال/غیرفعال کردن نظارت بر ورودی"
 
-#: src/contents/ui/PreferencesSheet.qml:167
+#: src/contents/ui/PreferencesSheet.qml:181
 msgid "Mic monitor plays to output effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:178
+#: src/contents/ui/PreferencesSheet.qml:192
 #, fuzzy
 msgid "Enable the inactivity timeout"
 msgstr "زمان‌سنج بی‌فعالیتی"
 
-#: src/contents/ui/PreferencesSheet.qml:179
+#: src/contents/ui/PreferencesSheet.qml:193
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:191
+#: src/contents/ui/PreferencesSheet.qml:205
 #, fuzzy
 msgid "Inactivity timeout"
 msgstr "زمان‌سنج بی‌فعالیتی"
 
-#: src/contents/ui/PreferencesSheet.qml:205
+#: src/contents/ui/PreferencesSheet.qml:219
 #, fuzzy
 msgid "Level meters label"
 msgstr "سطح سنج"
 
-#: src/contents/ui/PreferencesSheet.qml:206
+#: src/contents/ui/PreferencesSheet.qml:220
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:244
+#: src/contents/ui/PreferencesSheet.qml:258
 msgid "Audio delay compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:258
+#: src/contents/ui/PreferencesSheet.qml:272
 msgid "Style"
 msgstr "سبک"
 
-#: src/contents/ui/PreferencesSheet.qml:265
+#: src/contents/ui/PreferencesSheet.qml:279
 #, fuzzy
 msgid "Color scheme"
 msgstr "رنگ"
 
-#: src/contents/ui/PreferencesSheet.qml:269
+#: src/contents/ui/PreferencesSheet.qml:283
 #, fuzzy
 msgid "Automatic"
 msgstr "افزایش خودکار"
 
-#: src/contents/ui/PreferencesSheet.qml:269
+#: src/contents/ui/PreferencesSheet.qml:283
 #, fuzzy
 msgid "Light"
 msgstr "راست"
 
-#: src/contents/ui/PreferencesSheet.qml:269
+#: src/contents/ui/PreferencesSheet.qml:283
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:279
+#: src/contents/ui/PreferencesSheet.qml:293
 #, fuzzy
 msgid "Color theme"
 msgstr "رنگ"
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Green neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Mix"
 msgstr "مخلوط"
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:297
 #, fuzzy
 msgid "Orange"
 msgstr "محدوده"
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:297
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:293
+#: src/contents/ui/PreferencesSheet.qml:307
 msgid "Shape"
 msgstr "شکل"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:311
 msgid "Bars"
 msgstr "میله‌ها"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:311
 msgid "Lines"
 msgstr "خطوط"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:311
 msgid "Dots"
 msgstr "نقطه‌ها"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:311
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:307
+#: src/contents/ui/PreferencesSheet.qml:321
 #, fuzzy
 msgid "Dynamic scale"
 msgstr "مقیاس پویا"
 
-#: src/contents/ui/PreferencesSheet.qml:318
+#: src/contents/ui/PreferencesSheet.qml:332
 msgid "Logarithmic frequency axis"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:329
+#: src/contents/ui/PreferencesSheet.qml:343
 msgid "Points"
 msgstr "امتیازها"
 
-#: src/contents/ui/PreferencesSheet.qml:343
+#: src/contents/ui/PreferencesSheet.qml:357
 msgid "Height"
 msgstr "ارتفاع"
 
-#: src/contents/ui/PreferencesSheet.qml:349
+#: src/contents/ui/PreferencesSheet.qml:363
 msgid "px"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:357
+#: src/contents/ui/PreferencesSheet.qml:371
 msgid "Frequency Range"
 msgstr "محدوده فرکانس"
 
-#: src/contents/ui/PreferencesSheet.qml:364
+#: src/contents/ui/PreferencesSheet.qml:378
 msgid "Minimum"
 msgstr "حداقل"
 
-#: src/contents/ui/PreferencesSheet.qml:379
+#: src/contents/ui/PreferencesSheet.qml:393
 msgid "Maximum"
 msgstr "حداکثر"
 
-#: src/contents/ui/PreferencesSheet.qml:400
+#: src/contents/ui/PreferencesSheet.qml:414
 msgid "Database autosave interval"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:413
+#: src/contents/ui/PreferencesSheet.qml:427
 #, fuzzy
 msgid "Most used presets"
 msgstr "کراس‌فید"
 
-#: src/contents/ui/PreferencesSheet.qml:435
+#: src/contents/ui/PreferencesSheet.qml:449
 #, fuzzy
 msgid "Global shortcuts"
 msgstr "_میانبرها"
 
-#: src/contents/ui/PreferencesSheet.qml:436
+#: src/contents/ui/PreferencesSheet.qml:450
 msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:448
+#: src/contents/ui/PreferencesSheet.qml:462
 #, fuzzy
 msgid "Native window of effects"
 msgstr "نمایش پنجره بومی"
 
-#: src/contents/ui/PreferencesSheet.qml:449
+#: src/contents/ui/PreferencesSheet.qml:463
 #, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr "امکان نمایش/پنهان‌سازی پنجره افزونه بومی"
 
-#: src/contents/ui/PreferencesSheet.qml:461
+#: src/contents/ui/PreferencesSheet.qml:475
 #, fuzzy
 msgid "Update frequency"
 msgstr "فرکانس به‌روزرسانی"
 
-#: src/contents/ui/PreferencesSheet.qml:462
+#: src/contents/ui/PreferencesSheet.qml:476
 #, fuzzy
 msgid "Related to LV2 plugins."
 msgstr "مرتبط با افزونه‌های LV2"
@@ -2542,22 +2575,22 @@ msgstr "حذف پیش‌تنظیم بارگذاری خودکار"
 msgid "Description"
 msgstr "توضیحات"
 
-#: src/contents/ui/PresetsCommunityPage.qml:97
+#: src/contents/ui/PresetsCommunityPage.qml:100
 #, fuzzy
 msgid "Copy to local presets"
 msgstr "فهرست پیش‌تنظیم‌های محلی"
 
-#: src/contents/ui/PresetsCommunityPage.qml:102
+#: src/contents/ui/PresetsCommunityPage.qml:105
 #, fuzzy
 msgid "Imported the %1 community preset to the list of local presets."
 msgstr "این پیش‌تنظیمات انجمن را به فهرست پیش‌تنظیمات محلی وارد کنید"
 
-#: src/contents/ui/PresetsCommunityPage.qml:104
+#: src/contents/ui/PresetsCommunityPage.qml:107
 #, fuzzy
 msgid "Failed to import the %1 community preset to the list of local presets."
 msgstr "جستجوی پیش‌تنظیم انجمن"
 
-#: src/contents/ui/PresetsCommunityPage.qml:124
+#: src/contents/ui/PresetsCommunityPage.qml:127
 msgid "Refresh"
 msgstr "تازه‌سازی"
 
@@ -2684,17 +2717,17 @@ msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 msgid "Cancel"
 msgstr "تعادل"
 
-#: src/contents/ui/PresetsLocalPage.qml:274
+#: src/contents/ui/PresetsLocalPage.qml:277
 #, fuzzy
 msgid "Save settings to this preset"
 msgstr "تنظیمات فعلی را در این فایل از پیش تعیین شده ذخیره کنید"
 
-#: src/contents/ui/PresetsLocalPage.qml:282
+#: src/contents/ui/PresetsLocalPage.qml:285
 #, fuzzy
 msgid "Rename this preset"
 msgstr "این فایل از پیش تعیین شده را حذف کنید"
 
-#: src/contents/ui/PresetsLocalPage.qml:290
+#: src/contents/ui/PresetsLocalPage.qml:293
 #, fuzzy
 msgid "Delete this preset"
 msgstr "این فایل از پیش تعیین شده را حذف کنید"
@@ -2732,7 +2765,7 @@ msgid "Failed to import the RNNoise model file."
 msgstr "وارد کردن فایل مدل"
 
 #: src/contents/ui/RNNoise.qml:56 src/contents/ui/RNNoise.qml:67
-#: src/contents/ui/RNNoise.qml:277 src/contents/ui/RNNoise.qml:279
+#: src/contents/ui/RNNoise.qml:281 src/contents/ui/RNNoise.qml:283
 #, fuzzy
 msgid "Standard RNNoise model"
 msgstr "مدل استاندارد RNNoise"
@@ -2742,7 +2775,7 @@ msgstr "مدل استاندارد RNNoise"
 msgid "Standard RNNoise model loaded."
 msgstr "مدل استاندارد RNNoise"
 
-#: src/contents/ui/RNNoise.qml:63 src/contents/ui/RNNoise.qml:281
+#: src/contents/ui/RNNoise.qml:63 src/contents/ui/RNNoise.qml:285
 #, fuzzy
 msgid "Using %1 Model"
 msgstr "با استفاده از {}"
@@ -2777,22 +2810,22 @@ msgstr "مدل استاندارد"
 msgid "User Models"
 msgstr "مدل‌های RNoise"
 
-#: src/contents/ui/RNNoise.qml:238
+#: src/contents/ui/RNNoise.qml:242
 #, fuzzy
 msgid "Delete this model"
 msgstr "این فایل مدل را حذف کنید"
 
-#: src/contents/ui/RNNoise.qml:243
+#: src/contents/ui/RNNoise.qml:247
 #, fuzzy
 msgid "Removed the %1 RNNoise model."
 msgstr "مدل استاندارد RNNoise"
 
-#: src/contents/ui/RNNoise.qml:245
+#: src/contents/ui/RNNoise.qml:249
 #, fuzzy
 msgid "Failed to remove the %1 RNNoise model."
 msgstr "بارگذاری فایل ایمپالس ناموفق بود"
 
-#: src/contents/ui/RNNoise.qml:314
+#: src/contents/ui/RNNoise.qml:318
 #, fuzzy
 msgid "Import model"
 msgstr "وارد کردن مدل"
@@ -2937,8 +2970,8 @@ msgstr "_میانبرها"
 msgid "Toggle microphone monitoring"
 msgstr ""
 
-#: src/contents/ui/ShortcutsSheet.qml:369 src/contents/ui/main.qml:395
-#: src/contents/ui/main.qml:530
+#: src/contents/ui/ShortcutsSheet.qml:369 src/contents/ui/main.qml:413
+#: src/contents/ui/main.qml:548
 #, fuzzy
 msgid "Shortcuts"
 msgstr "_میانبرها"
@@ -3049,69 +3082,69 @@ msgstr "پایه استریو"
 msgid "Stereo phase"
 msgstr "فاز استریو"
 
-#: src/contents/ui/main.qml:219
+#: src/contents/ui/main.qml:237
 #, fuzzy
 msgid "Reset Settings?"
 msgstr "_بازنشانی تنظیمات"
 
-#: src/contents/ui/main.qml:220
+#: src/contents/ui/main.qml:238
 msgid "Are you sure you want to reset all Easy Effects settings?"
 msgstr ""
 
-#: src/contents/ui/main.qml:289 src/contents/ui/main.qml:305
+#: src/contents/ui/main.qml:307 src/contents/ui/main.qml:323
 #, fuzzy
 msgid "Preset Loaded"
 msgstr "هیچ پیش‌تنظیمی بارگذاری نشده است"
 
-#: src/contents/ui/main.qml:316 src/contents/ui/main.qml:328
+#: src/contents/ui/main.qml:334 src/contents/ui/main.qml:346
 #, fuzzy
 msgid "Clear List"
 msgstr "لیست مشتریان"
 
-#: src/contents/ui/main.qml:317 src/contents/ui/main.qml:329
+#: src/contents/ui/main.qml:335 src/contents/ui/main.qml:347
 msgid "Are you sure you want to clear this list?"
 msgstr ""
 
-#: src/contents/ui/main.qml:384
+#: src/contents/ui/main.qml:402
 #, fuzzy
 msgid "Active"
 msgstr "مدل فعال"
 
-#: src/contents/ui/main.qml:404 src/contents/ui/main.qml:538
+#: src/contents/ui/main.qml:422 src/contents/ui/main.qml:556
 msgid "Manual"
 msgstr ""
 
-#: src/contents/ui/main.qml:416 src/contents/ui/main.qml:570
+#: src/contents/ui/main.qml:434 src/contents/ui/main.qml:588
 #, fuzzy
 msgid "Quit"
 msgstr "_خروج"
 
-#: src/contents/ui/main.qml:440
+#: src/contents/ui/main.qml:458
 msgid "Go back"
 msgstr ""
 
-#: src/contents/ui/main.qml:451
+#: src/contents/ui/main.qml:469
 msgid "Turn effects on/off"
 msgstr ""
 
-#: src/contents/ui/main.qml:462
+#: src/contents/ui/main.qml:480
 msgid "Audio effects are enabled."
 msgstr ""
 
-#: src/contents/ui/main.qml:462
+#: src/contents/ui/main.qml:480
 msgid "Audio effects are disabled."
 msgstr ""
 
-#: src/contents/ui/main.qml:506
+#: src/contents/ui/main.qml:524
 msgid "PipeWire"
 msgstr "پایپ‌وایر"
 
-#: src/contents/ui/main.qml:522
+#: src/contents/ui/main.qml:540
 #, fuzzy
 msgid "Preferences"
 msgstr "_ترجیحات"
 
-#: src/contents/ui/main.qml:562
+#: src/contents/ui/main.qml:580
 #, fuzzy
 msgid "About Easy Effects"
 msgstr "_درباره Easy Effects"
@@ -3763,9 +3796,6 @@ msgstr ""
 
 #~ msgid "Change the position of this effect"
 #~ msgstr "تغییر موقعیت این افکت"
-
-#~ msgid "Show/hide effects list"
-#~ msgstr "نمایش/پنهان کردن فهرست افکت‌ها"
 
 #~ msgid "Go to the previous effect"
 #~ msgstr "رفتن به افکت قبلی"
