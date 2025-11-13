@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-13 01:43+0000\n"
+"POT-Creation-Date: 2025-11-13 02:54+0000\n"
 "PO-Revision-Date: 2025-07-20 18:39+0000\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://hosted.weblate.org/projects/easyeffects/"
@@ -241,7 +241,7 @@ msgstr "მაქსიმუმი"
 
 #: src/contents/ui/Autogain.qml:108 src/contents/ui/Convolver.qml:225
 #: src/contents/ui/Convolver.qml:325 src/contents/ui/Convolver.qml:379
-#: src/contents/ui/PreferencesSheet.qml:211 src/contents/ui/Reverb.qml:68
+#: src/contents/ui/PreferencesSheet.qml:203 src/contents/ui/Reverb.qml:68
 msgid "s"
 msgstr ""
 
@@ -346,9 +346,9 @@ msgstr "ფარგლები"
 #: src/contents/ui/MultibandGate.qml:466 src/contents/ui/MultibandGate.qml:491
 #: src/contents/ui/PageStreamsEffects.qml:467
 #: src/contents/ui/PipeWirePage.qml:403
-#: src/contents/ui/PreferencesSheet.qml:384
-#: src/contents/ui/PreferencesSheet.qml:399
-#: src/contents/ui/PreferencesSheet.qml:483 src/contents/ui/Reverb.qml:127
+#: src/contents/ui/PreferencesSheet.qml:376
+#: src/contents/ui/PreferencesSheet.qml:391
+#: src/contents/ui/PreferencesSheet.qml:497 src/contents/ui/Reverb.qml:127
 #: src/contents/ui/Reverb.qml:144 src/contents/ui/Reverb.qml:161
 msgid "Hz"
 msgstr ""
@@ -542,9 +542,9 @@ msgstr "შეტევა"
 #: src/contents/ui/MultibandGate.qml:428 src/contents/ui/MultibandGate.qml:443
 #: src/contents/ui/PageStreamsEffects.qml:609 src/contents/ui/Pitch.qml:58
 #: src/contents/ui/Pitch.qml:75 src/contents/ui/Pitch.qml:93
-#: src/contents/ui/PreferencesSheet.qml:227
-#: src/contents/ui/PreferencesSheet.qml:264
-#: src/contents/ui/PreferencesSheet.qml:420 src/contents/ui/RNNoise.qml:148
+#: src/contents/ui/PreferencesSheet.qml:219
+#: src/contents/ui/PreferencesSheet.qml:256
+#: src/contents/ui/PreferencesSheet.qml:412 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
 msgid "ms"
 msgstr ""
@@ -1224,14 +1224,12 @@ msgctxt "@info:placeholder"
 msgid "No description set"
 msgstr "აღწერა"
 
-#: src/contents/ui/DelegatePluginsList.qml:106
-#: src/contents/ui/DelegatePluginsList.qml:127
+#: src/contents/ui/DelegatePluginsList.qml:104
 #, fuzzy
 msgid "Toggle this effect"
 msgstr "პრესეტის შემოტანა"
 
-#: src/contents/ui/DelegatePluginsList.qml:114
-#: src/contents/ui/DelegatePluginsList.qml:135
+#: src/contents/ui/DelegatePluginsList.qml:112
 #, fuzzy
 msgid "Remove this effect"
 msgstr "პრესეტის შემოტანა"
@@ -2116,12 +2114,12 @@ msgid "No Clients"
 msgstr "კლიენტი"
 
 #: src/contents/ui/PipeWirePage.qml:297
-#: src/contents/ui/PreferencesSheet.qml:240
+#: src/contents/ui/PreferencesSheet.qml:232
 msgid "State"
 msgstr "მდგომარეობა"
 
 #: src/contents/ui/PipeWirePage.qml:304
-#: src/contents/ui/PreferencesSheet.qml:247
+#: src/contents/ui/PreferencesSheet.qml:239
 msgid "Enabled"
 msgstr "ჩართულია"
 
@@ -2223,247 +2221,248 @@ msgid "Database"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:40
+#: src/contents/ui/PreferencesSheet.qml:264
+msgid "Style"
+msgstr "სტილი"
+
+#: src/contents/ui/PreferencesSheet.qml:46
 msgid "Experimental Features"
 msgstr "ექსპერიმენტალური ფუნქციები"
 
-#: src/contents/ui/PreferencesSheet.qml:53
+#: src/contents/ui/PreferencesSheet.qml:59
 #, fuzzy
 msgid "Enable service mode"
 msgstr "ეკვალაიზერის რეჟიმი"
 
-#: src/contents/ui/PreferencesSheet.qml:54
+#: src/contents/ui/PreferencesSheet.qml:60
 msgid "Easy Effects is active in background when the window is closed."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:66
+#: src/contents/ui/PreferencesSheet.qml:72
 msgid "Autostart on login"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:67
+#: src/contents/ui/PreferencesSheet.qml:73
 msgid "Easy Effects is launched at user session startup."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:80
-msgid "Reduce effects list controls"
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:81
-msgid ""
-"Action buttons in the effects list are moved inside a context menu for a "
-"more compact view."
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:94
+#: src/contents/ui/PreferencesSheet.qml:86
 msgid "Show the tray icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:114
+#: src/contents/ui/PreferencesSheet.qml:106
 msgid "Process all output streams"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:125
+#: src/contents/ui/PreferencesSheet.qml:117
 msgid "Process all input streams"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:136
+#: src/contents/ui/PreferencesSheet.qml:128
 msgid "Ignore streams from monitor of devices"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:147
+#: src/contents/ui/PreferencesSheet.qml:139
 msgid "Use cubic volume"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:158
+#: src/contents/ui/PreferencesSheet.qml:150
 msgid "Ignore system notifications"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:159
+#: src/contents/ui/PreferencesSheet.qml:151
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:170
+#: src/contents/ui/PreferencesSheet.qml:162
 #, fuzzy
 msgid "Enable/disable input monitoring"
 msgstr "შეყვანის დამუშავების ხაზი"
 
-#: src/contents/ui/PreferencesSheet.qml:181
+#: src/contents/ui/PreferencesSheet.qml:173
 msgid "Mic monitor plays to output effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:184
 msgid "Enable the inactivity timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:193
+#: src/contents/ui/PreferencesSheet.qml:185
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:205
+#: src/contents/ui/PreferencesSheet.qml:197
 msgid "Inactivity timeout"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:219
+#: src/contents/ui/PreferencesSheet.qml:211
 #, fuzzy
 msgid "Level meters label"
 msgstr "დონის მზომი"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:212
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:258
+#: src/contents/ui/PreferencesSheet.qml:250
 msgid "Audio delay compensation"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:272
-msgid "Style"
-msgstr "სტილი"
-
-#: src/contents/ui/PreferencesSheet.qml:279
+#: src/contents/ui/PreferencesSheet.qml:271
 msgid "Color scheme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Automatic"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:275
 #, fuzzy
 msgid "Light"
 msgstr "მარჯვენა"
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:293
+#: src/contents/ui/PreferencesSheet.qml:285
 msgid "Color theme"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Green neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Mix"
 msgstr "მიქსი"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 #, fuzzy
 msgid "Orange"
 msgstr "დიაპაზონი"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:307
+#: src/contents/ui/PreferencesSheet.qml:299
 msgid "Shape"
 msgstr "ფორმა"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Bars"
 msgstr "მართკუთხედები"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Lines"
 msgstr "ხაზები"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Dots"
 msgstr "წერტილები"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:321
+#: src/contents/ui/PreferencesSheet.qml:313
 msgid "Dynamic scale"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:332
+#: src/contents/ui/PreferencesSheet.qml:324
 msgid "Logarithmic frequency axis"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:343
+#: src/contents/ui/PreferencesSheet.qml:335
 msgid "Points"
 msgstr "წერტილები"
 
-#: src/contents/ui/PreferencesSheet.qml:357
+#: src/contents/ui/PreferencesSheet.qml:349
 msgid "Height"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:363
+#: src/contents/ui/PreferencesSheet.qml:355
 msgid "px"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:371
+#: src/contents/ui/PreferencesSheet.qml:363
 msgid "Frequency Range"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:378
+#: src/contents/ui/PreferencesSheet.qml:370
 msgid "Minimum"
 msgstr "მინიმუმი"
 
-#: src/contents/ui/PreferencesSheet.qml:393
+#: src/contents/ui/PreferencesSheet.qml:385
 msgid "Maximum"
 msgstr "მაქსიმუმი"
 
-#: src/contents/ui/PreferencesSheet.qml:414
+#: src/contents/ui/PreferencesSheet.qml:406
 msgid "Database autosave interval"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:427
+#: src/contents/ui/PreferencesSheet.qml:419
 #, fuzzy
 msgid "Most used presets"
 msgstr "შეყვანის პრესეტი"
 
-#: src/contents/ui/PreferencesSheet.qml:449
+#: src/contents/ui/PreferencesSheet.qml:441
+msgid "Reduce effects list controls"
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:442
+msgid ""
+"Action buttons in the effects list are moved inside a context menu for a "
+"more compact view."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:463
 #, fuzzy
 msgid "Global shortcuts"
 msgstr "მალ_სახმობები"
 
-#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:464
 msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:462
+#: src/contents/ui/PreferencesSheet.qml:476
 msgid "Native window of effects"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:463
+#: src/contents/ui/PreferencesSheet.qml:477
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:475
+#: src/contents/ui/PreferencesSheet.qml:489
 #, fuzzy
 msgid "Update frequency"
 msgstr "განახლების სიხშირე"
 
-#: src/contents/ui/PreferencesSheet.qml:476
+#: src/contents/ui/PreferencesSheet.qml:490
 msgid "Related to LV2 plugins."
 msgstr ""
 

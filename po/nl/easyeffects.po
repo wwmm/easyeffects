@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: easyeffects\n"
 "Report-Msgid-Bugs-To: https://github.com/wwmm/easyeffects/issues\n"
-"POT-Creation-Date: 2025-11-13 01:43+0000\n"
+"POT-Creation-Date: 2025-11-13 02:54+0000\n"
 "PO-Revision-Date: 2025-07-20 18:38+0000\n"
 "Last-Translator: Giusy Digital <kurmikon@yahoo.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/easyeffects/main/"
@@ -251,7 +251,7 @@ msgstr "Maximale geschiedenis"
 
 #: src/contents/ui/Autogain.qml:108 src/contents/ui/Convolver.qml:225
 #: src/contents/ui/Convolver.qml:325 src/contents/ui/Convolver.qml:379
-#: src/contents/ui/PreferencesSheet.qml:211 src/contents/ui/Reverb.qml:68
+#: src/contents/ui/PreferencesSheet.qml:203 src/contents/ui/Reverb.qml:68
 msgid "s"
 msgstr ""
 
@@ -358,9 +358,9 @@ msgstr "Domein"
 #: src/contents/ui/MultibandGate.qml:466 src/contents/ui/MultibandGate.qml:491
 #: src/contents/ui/PageStreamsEffects.qml:467
 #: src/contents/ui/PipeWirePage.qml:403
-#: src/contents/ui/PreferencesSheet.qml:384
-#: src/contents/ui/PreferencesSheet.qml:399
-#: src/contents/ui/PreferencesSheet.qml:483 src/contents/ui/Reverb.qml:127
+#: src/contents/ui/PreferencesSheet.qml:376
+#: src/contents/ui/PreferencesSheet.qml:391
+#: src/contents/ui/PreferencesSheet.qml:497 src/contents/ui/Reverb.qml:127
 #: src/contents/ui/Reverb.qml:144 src/contents/ui/Reverb.qml:161
 msgid "Hz"
 msgstr ""
@@ -560,9 +560,9 @@ msgstr "Attack"
 #: src/contents/ui/MultibandGate.qml:428 src/contents/ui/MultibandGate.qml:443
 #: src/contents/ui/PageStreamsEffects.qml:609 src/contents/ui/Pitch.qml:58
 #: src/contents/ui/Pitch.qml:75 src/contents/ui/Pitch.qml:93
-#: src/contents/ui/PreferencesSheet.qml:227
-#: src/contents/ui/PreferencesSheet.qml:264
-#: src/contents/ui/PreferencesSheet.qml:420 src/contents/ui/RNNoise.qml:148
+#: src/contents/ui/PreferencesSheet.qml:219
+#: src/contents/ui/PreferencesSheet.qml:256
+#: src/contents/ui/PreferencesSheet.qml:412 src/contents/ui/RNNoise.qml:148
 #: src/contents/ui/Reverb.qml:84 src/contents/ui/StereoTools.qml:283
 msgid "ms"
 msgstr ""
@@ -1254,14 +1254,12 @@ msgctxt "@info:placeholder"
 msgid "No description set"
 msgstr "Omschrijving"
 
-#: src/contents/ui/DelegatePluginsList.qml:106
-#: src/contents/ui/DelegatePluginsList.qml:127
+#: src/contents/ui/DelegatePluginsList.qml:104
 #, fuzzy
 msgid "Toggle this effect"
 msgstr "Effect omschakelen"
 
-#: src/contents/ui/DelegatePluginsList.qml:114
-#: src/contents/ui/DelegatePluginsList.qml:135
+#: src/contents/ui/DelegatePluginsList.qml:112
 #, fuzzy
 msgid "Remove this effect"
 msgstr "Effect verwijderen"
@@ -2190,12 +2188,12 @@ msgid "No Clients"
 msgstr "Cliënten"
 
 #: src/contents/ui/PipeWirePage.qml:297
-#: src/contents/ui/PreferencesSheet.qml:240
+#: src/contents/ui/PreferencesSheet.qml:232
 msgid "State"
 msgstr "Status"
 
 #: src/contents/ui/PipeWirePage.qml:304
-#: src/contents/ui/PreferencesSheet.qml:247
+#: src/contents/ui/PreferencesSheet.qml:239
 msgid "Enabled"
 msgstr "Ingeschakeld"
 
@@ -2303,263 +2301,264 @@ msgid "Database"
 msgstr ""
 
 #: src/contents/ui/PreferencesSheet.qml:40
+#: src/contents/ui/PreferencesSheet.qml:264
+msgid "Style"
+msgstr "Stijl"
+
+#: src/contents/ui/PreferencesSheet.qml:46
 msgid "Experimental Features"
 msgstr "Experimentele functies"
 
-#: src/contents/ui/PreferencesSheet.qml:53
+#: src/contents/ui/PreferencesSheet.qml:59
 #, fuzzy
 msgid "Enable service mode"
 msgstr "Equalizer-modus"
 
-#: src/contents/ui/PreferencesSheet.qml:54
+#: src/contents/ui/PreferencesSheet.qml:60
 msgid "Easy Effects is active in background when the window is closed."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:66
+#: src/contents/ui/PreferencesSheet.qml:72
 msgid "Autostart on login"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:67
+#: src/contents/ui/PreferencesSheet.qml:73
 msgid "Easy Effects is launched at user session startup."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:80
-#, fuzzy
-msgid "Reduce effects list controls"
-msgstr "Effecten­lĳst tonen/verbergen"
-
-#: src/contents/ui/PreferencesSheet.qml:81
-msgid ""
-"Action buttons in the effects list are moved inside a context menu for a "
-"more compact view."
-msgstr ""
-
-#: src/contents/ui/PreferencesSheet.qml:94
+#: src/contents/ui/PreferencesSheet.qml:86
 msgid "Show the tray icon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:114
+#: src/contents/ui/PreferencesSheet.qml:106
 #, fuzzy
 msgid "Process all output streams"
 msgstr "Alle uitvoer-streams verwerken"
 
-#: src/contents/ui/PreferencesSheet.qml:125
+#: src/contents/ui/PreferencesSheet.qml:117
 #, fuzzy
 msgid "Process all input streams"
 msgstr "Alle invoer-streams verwerken"
 
-#: src/contents/ui/PreferencesSheet.qml:136
+#: src/contents/ui/PreferencesSheet.qml:128
 #, fuzzy
 msgid "Ignore streams from monitor of devices"
 msgstr "Streams van apparaatmonitor negeren"
 
-#: src/contents/ui/PreferencesSheet.qml:147
+#: src/contents/ui/PreferencesSheet.qml:139
 #, fuzzy
 msgid "Use cubic volume"
 msgstr "Kubisch volume gebruiken"
 
-#: src/contents/ui/PreferencesSheet.qml:158
+#: src/contents/ui/PreferencesSheet.qml:150
 msgid "Ignore system notifications"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:159
+#: src/contents/ui/PreferencesSheet.qml:151
 msgid ""
 "Processing system notifications may cause crackling sound, so it would be "
 "better to ignore them, but for some presets it may be recommended since they "
 "could sound too loud."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:170
+#: src/contents/ui/PreferencesSheet.qml:162
 #, fuzzy
 msgid "Enable/disable input monitoring"
 msgstr "Invoer­monitoring in-/uit­schakelen"
 
-#: src/contents/ui/PreferencesSheet.qml:181
+#: src/contents/ui/PreferencesSheet.qml:173
 msgid "Mic monitor plays to output effects pipeline"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:192
+#: src/contents/ui/PreferencesSheet.qml:184
 #, fuzzy
 msgid "Enable the inactivity timeout"
 msgstr "Inactiviteits-time-out"
 
-#: src/contents/ui/PreferencesSheet.qml:193
+#: src/contents/ui/PreferencesSheet.qml:185
 msgid ""
 "When all streams are inactive, Easy Effects pipeline remains loaded for an "
 "extra amount of time."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:205
+#: src/contents/ui/PreferencesSheet.qml:197
 #, fuzzy
 msgid "Inactivity timeout"
 msgstr "Inactiviteits-time-out"
 
-#: src/contents/ui/PreferencesSheet.qml:219
+#: src/contents/ui/PreferencesSheet.qml:211
 #, fuzzy
 msgid "Level meters label"
 msgstr "Niveaumeter"
 
-#: src/contents/ui/PreferencesSheet.qml:220
+#: src/contents/ui/PreferencesSheet.qml:212
 msgid ""
 "The time it takes for the level meter labels to be updated when the current "
 "level is below the last highest one."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:258
+#: src/contents/ui/PreferencesSheet.qml:250
 #, fuzzy
 msgid "Audio delay compensation"
 msgstr "Geluidssterkte-compensatie"
 
-#: src/contents/ui/PreferencesSheet.qml:272
-msgid "Style"
-msgstr "Stijl"
-
-#: src/contents/ui/PreferencesSheet.qml:279
+#: src/contents/ui/PreferencesSheet.qml:271
 #, fuzzy
 msgid "Color scheme"
 msgstr "Kleur"
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:275
 #, fuzzy
 msgid "Automatic"
 msgstr "Automatisch versterken"
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:275
 #, fuzzy
 msgid "Light"
 msgstr "Rechts"
 
-#: src/contents/ui/PreferencesSheet.qml:283
+#: src/contents/ui/PreferencesSheet.qml:275
 msgid "Dark"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:293
+#: src/contents/ui/PreferencesSheet.qml:285
 #, fuzzy
 msgid "Color theme"
 msgstr "Kleur"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Green"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Green neon"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Mix"
 msgstr "Mix"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 #, fuzzy
 msgid "Orange"
 msgstr "Bereik"
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Yellow"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Blue"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Purple"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:297
+#: src/contents/ui/PreferencesSheet.qml:289
 msgid "Grey"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:307
+#: src/contents/ui/PreferencesSheet.qml:299
 msgid "Shape"
 msgstr "Vorm"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Bars"
 msgstr "Balken"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Lines"
 msgstr "Lijnen"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Dots"
 msgstr "Puntjes"
 
-#: src/contents/ui/PreferencesSheet.qml:311
+#: src/contents/ui/PreferencesSheet.qml:303
 msgid "Area"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:321
+#: src/contents/ui/PreferencesSheet.qml:313
 #, fuzzy
 msgid "Dynamic scale"
 msgstr "Dynamische schaal"
 
-#: src/contents/ui/PreferencesSheet.qml:332
+#: src/contents/ui/PreferencesSheet.qml:324
 #, fuzzy
 msgid "Logarithmic frequency axis"
 msgstr "Frequentie"
 
-#: src/contents/ui/PreferencesSheet.qml:343
+#: src/contents/ui/PreferencesSheet.qml:335
 msgid "Points"
 msgstr "Points"
 
-#: src/contents/ui/PreferencesSheet.qml:357
+#: src/contents/ui/PreferencesSheet.qml:349
 msgid "Height"
 msgstr "Lengte"
 
-#: src/contents/ui/PreferencesSheet.qml:363
+#: src/contents/ui/PreferencesSheet.qml:355
 msgid "px"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:371
+#: src/contents/ui/PreferencesSheet.qml:363
 msgid "Frequency Range"
 msgstr "Frequentiebereik"
 
-#: src/contents/ui/PreferencesSheet.qml:378
+#: src/contents/ui/PreferencesSheet.qml:370
 msgid "Minimum"
 msgstr "Minimaal"
 
-#: src/contents/ui/PreferencesSheet.qml:393
+#: src/contents/ui/PreferencesSheet.qml:385
 msgid "Maximum"
 msgstr "Maximaal"
 
-#: src/contents/ui/PreferencesSheet.qml:414
+#: src/contents/ui/PreferencesSheet.qml:406
 msgid "Database autosave interval"
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:427
+#: src/contents/ui/PreferencesSheet.qml:419
 #, fuzzy
 msgid "Most used presets"
 msgstr "Crossfeed"
 
-#: src/contents/ui/PreferencesSheet.qml:449
+#: src/contents/ui/PreferencesSheet.qml:441
+#, fuzzy
+msgid "Reduce effects list controls"
+msgstr "Effecten­lĳst tonen/verbergen"
+
+#: src/contents/ui/PreferencesSheet.qml:442
+msgid ""
+"Action buttons in the effects list are moved inside a context menu for a "
+"more compact view."
+msgstr ""
+
+#: src/contents/ui/PreferencesSheet.qml:463
 #, fuzzy
 msgid "Global shortcuts"
 msgstr "_Sneltoetsen"
 
-#: src/contents/ui/PreferencesSheet.qml:450
+#: src/contents/ui/PreferencesSheet.qml:464
 msgid "Enables support for XDG global shortcuts."
 msgstr ""
 
-#: src/contents/ui/PreferencesSheet.qml:462
+#: src/contents/ui/PreferencesSheet.qml:476
 #, fuzzy
 msgid "Native window of effects"
 msgstr "Native venster tonen"
 
-#: src/contents/ui/PreferencesSheet.qml:463
+#: src/contents/ui/PreferencesSheet.qml:477
 #, fuzzy
 msgid "Allows the native user interface of effects to be shown/hidden."
 msgstr ""
 "Staat toe dat het venster voor native plug-ins wordt weergegeven/verborgen"
 
-#: src/contents/ui/PreferencesSheet.qml:475
+#: src/contents/ui/PreferencesSheet.qml:489
 #, fuzzy
 msgid "Update frequency"
 msgstr "Vernieuwings­frequentie"
 
-#: src/contents/ui/PreferencesSheet.qml:476
+#: src/contents/ui/PreferencesSheet.qml:490
 #, fuzzy
 msgid "Related to LV2 plugins."
 msgstr "Gerelateerd aan LV2-plug-ins"
