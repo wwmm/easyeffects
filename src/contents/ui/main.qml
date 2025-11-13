@@ -492,44 +492,48 @@ Kirigami.ApplicationWindow {
                 ]
             }
 
-            Components.SegmentedButton {
+            RowLayout {
                 id: segmentedButton
+
+                readonly property bool hasEnoughWidth: appWindow.width >= Kirigami.Units.gridUnit * 40
+                readonly property int display: (!Kirigami.Settings.isMobile && hasEnoughWidth) ? Controls.ToolButton.TextBesideIcon : Controls.ToolButton.IconOnly
+
+                spacing: Kirigami.Units.smallSpacing
 
                 Layout.alignment: Qt.AlignHCenter
 
-                readonly property bool hasEnoughWidth: appWindow.width >= Kirigami.Units.gridUnit * 40
-
-                readonly property var displayHint: (!Kirigami.Settings.isMobile && hasEnoughWidth) ? Kirigami.DisplayHint.KeepVisible : Kirigami.DisplayHint.IconOnly
-
-                actions: [
-                    Kirigami.Action {
-                        text: i18n("Output") // qmllint disable
-                        icon.name: "audio-speakers-symbolic"
-                        checked: DB.Manager.main.visiblePage === 0
-                        displayHint: segmentedButton.displayHint
-                        onTriggered: {
-                            DB.Manager.main.visiblePage = 0;
-                        }
-                    },
-                    Kirigami.Action {
-                        text: i18n("Input") // qmllint disable
-                        icon.name: "audio-input-microphone-symbolic"
-                        checked: DB.Manager.main.visiblePage === 1
-                        displayHint: segmentedButton.displayHint
-                        onTriggered: {
-                            DB.Manager.main.visiblePage = 1;
-                        }
-                    },
-                    Kirigami.Action {
-                        text: i18n("PipeWire") // qmllint disable
-                        icon.name: "network-server-symbolic"
-                        checked: DB.Manager.main.visiblePage === 2
-                        displayHint: segmentedButton.displayHint
-                        onTriggered: {
-                            DB.Manager.main.visiblePage = 2;
-                        }
+                Controls.ToolButton {
+                    text: i18n("Output") // qmllint disable
+                    icon.name: "audio-speakers-symbolic"
+                    checkable: true
+                    checked: DB.Manager.main.visiblePage === 0
+                    display: segmentedButton.display
+                    onClicked: {
+                        DB.Manager.main.visiblePage = 0;
                     }
-                ]
+                }
+
+                Controls.ToolButton {
+                    text: i18n("Input") // qmllint disable
+                    icon.name: "audio-input-microphone-symbolic"
+                    checkable: true
+                    checked: DB.Manager.main.visiblePage === 1
+                    display: segmentedButton.display
+                    onClicked: {
+                        DB.Manager.main.visiblePage = 1;
+                    }
+                }
+
+                Controls.ToolButton {
+                    text: i18n("PipeWire") // qmllint disable
+                    icon.name: "network-server-symbolic"
+                    checkable: true
+                    checked: DB.Manager.main.visiblePage === 2
+                    display: segmentedButton.display
+                    onClicked: {
+                        DB.Manager.main.visiblePage = 2;
+                    }
+                }
             }
 
             Kirigami.ActionToolBar {
