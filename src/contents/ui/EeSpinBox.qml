@@ -131,22 +131,32 @@ FormCard.AbstractFormDelegate {
             editable: control.editable
             inputMethodHints: Qt.ImhFormattedNumbersOnly
             textFromValue: (value, locale) => {
-                const unit_str = (Common.isEmpty(control.unit)) ? "" : " " + control.unit;
+                const locMinInfinity = i18nc("minus infinity abbreviation", "-inf");
+                const unit_str = (Common.isEmpty(control.unit)) ? "" : ` ${control.unit}`;
                 locale.numberOptions = Locale.OmitGroupSeparator;
                 const decimalValue = value / spinbox.decimalFactor;
+
                 if (control.minusInfinityMode === true && decimalValue <= control.from) {
-                    textInputSpinBox.text = i18n("-inf");
-                    return i18n("-inf");
+                    textInputSpinBox.text = locMinInfinity;
+                    return locMinInfinity;
                 }
+
                 const t = Number(decimalValue).toLocaleString(locale, 'f', control.decimals) + unit_str;
                 textInputSpinBox.text = t;
                 return t;
             }
             valueFromText: (text, locale) => {
-                if (text.toLowerCase() === i18n("-inf") || text === i18n("∞"))
+                const locMinInfinity = i18nc("minus infinity abbreviation", "-inf");
+
+                /**
+                 * Here we don't have to localize the minus infinity symbol -∞
+                 * since we only handle the special case when the user inputs it
+                 * manually in the user interface field.
+                 */
+                if (text.toLowerCase() === locMinInfinity.toLowerCase() || text === "-∞")
                     return Math.floor(control.from * spinbox.decimalFactor);
 
-                //Handling scientific notation
+                // Handling scientific notation
                 const cleanedText = text.replace(/[^\d.,eE+-]/g, '');
                 try {
                     const n = Number.fromLocaleString(locale, cleanedText);
