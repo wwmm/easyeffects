@@ -43,7 +43,7 @@ CommandLineParser::CommandLineParser(QObject* parent)
   parser->addOptions({{{"q", "quit"}, i18n("Quit Easy Effects. Useful when running in service mode.")},
                       {{"r", "reset"}, i18n("Reset Easy Effects.")},
                       {{"w", "hide-window"}, i18n("Hide the Window.")},
-                      {{"b", "bypass"}, i18n("Global bypass. 1 to enable and 2 to disable"), i18n("bypass-state")},
+                      {{"b", "bypass"}, i18n("Global bypass. 1 to enable and 2 to disable."), i18n("bypass-state")},
                       {{"l", "load-preset"}, i18n("Load a preset. Example: easyeffects -l music"), i18n("preset-name")},
                       {{"p", "presets"}, i18n("Show available presets.")},
                       {{"a", "active-preset"}, i18n("Get the active input/output preset."), i18n("preset-type")},
