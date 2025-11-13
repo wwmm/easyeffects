@@ -400,20 +400,6 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
 
   util::spa_dict_get_num(info->props, PW_KEY_DEVICE_ID, nd->nd_info->device_id);
 
-  bool deviceProfileChanged = false;
-
-  if (const auto* device_profile_name = spa_dict_lookup(info->props, "device.profile.name")) {
-    if (nd->nd_info->device_profile_name != device_profile_name) {
-      nd->nd_info->device_profile_name = device_profile_name;
-      deviceProfileChanged = true;
-    }
-  }
-
-  if (const auto* device_profile_description = spa_dict_lookup(info->props, "device.profile.description")) {
-    nd->nd_info->device_profile_description = device_profile_description;
-    deviceProfileChanged = true;
-  }
-
   // sometimes PipeWire destroys the pointer before signal_idle is called,
   // therefore we make a copy
 
@@ -486,16 +472,6 @@ void NodeManager::onNodeInfo(void* object, const pw_node_info* info) {
       connect_to_ee_sink();
     } else if (nd->nd_info->media_class == tags::pipewire::media_class::input_stream) {
       connect_to_ee_source();
-    }
-  }
-
-  if (deviceProfileChanged) {
-    if (nd->nd_info->media_class == tags::pipewire::media_class::source &&
-        nd->nd_info->name != tags::pipewire::ee_source_name) {
-      Q_EMIT nm->sourceProfileNameChanged(*nd->nd_info);
-    } else if (nd->nd_info->media_class == tags::pipewire::media_class::sink &&
-               nd->nd_info->name != tags::pipewire::ee_sink_name) {
-      Q_EMIT nm->sinkProfileNameChanged(*nd->nd_info);
     }
   }
 

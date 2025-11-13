@@ -37,6 +37,7 @@ ColumnLayout {
             editable: false
             model: DB.Manager.main.visiblePage === 0 ? PW.ModelSinkDevices : PW.ModelSourceDevices
             description: i18n("Hardware profile") + `: ${deviceProfileDescription}` // qmllint disable
+
         }
 
         Kirigami.Icon {

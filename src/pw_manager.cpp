@@ -236,6 +236,30 @@ Manager::Manager()
 
   connect(&link_manager, &LinkManager::linkChanged, [&](LinkInfo link) { Q_EMIT linkChanged(link); });
 
+  connect(&device_manager, &DeviceManager::profileChanged, [&](DeviceInfo device) {
+    QTimer::singleShot(3000, this, [&, device]() {
+      auto nodes = model_nodes.get_nodes_by_device_id(device.id);
+
+      if (nodes.empty()) {
+        util::warning(std::format("Could not find a node for {}", device.name.toStdString()));
+        return;
+      }
+
+      for (auto& node : nodes) {
+        node.device_profile_name = device.profile_name;
+        node.device_profile_description = device.profile_description;
+
+        model_nodes.update_info(node);
+
+        if (node.media_class == tags::pipewire::media_class::input_stream) {
+          Q_EMIT sourceProfileNameChanged(node);
+        } else if (node.media_class == tags::pipewire::media_class::output_stream) {
+          Q_EMIT sinkProfileNameChanged(node);
+        }
+      }
+    });
+  });
+
   pw_init(nullptr, nullptr);
 
   spa_zero(core_listener);

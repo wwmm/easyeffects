@@ -129,7 +129,9 @@ StreamOutputEffects::StreamOutputEffects(pw::Manager* pipe_manager) : EffectsBas
   connect(
       pm, &pw::Manager::sinkProfileNameChanged, this,
       [](pw::NodeInfo node) {
-        presets::Manager::self().autoload(PipelineType::output, node.name, node.device_profile_name);
+        if (node.name == db::StreamOutputs::outputDevice()) {
+          presets::Manager::self().autoload(PipelineType::output, node.name, node.device_profile_name);
+        }
       },
       Qt::QueuedConnection);
 

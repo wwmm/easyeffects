@@ -113,6 +113,8 @@ class Nodes : public QAbstractListModel {
 
   auto get_node_by_id(const uint& id) -> NodeInfo;
 
+  auto get_nodes_by_device_id(const uint& id) -> QList<NodeInfo>;
+
   Q_INVOKABLE QString getNodeName(const uint& rowIndex);
   Q_INVOKABLE QString getNodeDescription(const QString& nodeName);
   Q_INVOKABLE QModelIndex getModelIndexByName(const QString& nodeName);

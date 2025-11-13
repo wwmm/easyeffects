@@ -581,4 +581,16 @@ auto Nodes::get_node_by_id(const uint& id) -> NodeInfo {
   return {};
 }
 
+auto Nodes::get_nodes_by_device_id(const uint& id) -> QList<NodeInfo> {
+  QList<NodeInfo> nodes;
+
+  for (const auto& node : list) {
+    if (node.device_id == id) {
+      nodes.append(node);
+    }
+  }
+
+  return nodes;
+}
+
 }  // namespace pw::models

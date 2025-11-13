@@ -128,7 +128,9 @@ StreamInputEffects::StreamInputEffects(pw::Manager* pipe_manager) : EffectsBase(
   connect(
       pm, &pw::Manager::sourceProfileNameChanged, this,
       [](pw::NodeInfo node) {
-        presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_name);
+        if (node.name == db::StreamInputs::inputDevice()) {
+          presets::Manager::self().autoload(PipelineType::input, node.name, node.device_profile_name);
+        }
       },
       Qt::QueuedConnection);
 

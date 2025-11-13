@@ -186,13 +186,29 @@ void DeviceManager::on_device_event_param(void* object,
       continue;
     }
 
-    device.profile_name = name;
-    device.profile_description = description;
-    device.profile_available = available;
+    bool update = false;
 
-    util::debug(std::format("new device profile: {}", device.profile_description.toStdString()));
+    if (device.profile_name != name) {
+      device.profile_name = name;
+      update = true;
+    }
 
-    dd->dm->profileChanged(device);
+    if (device.profile_description != description) {
+      device.profile_description = description;
+      update = true;
+    }
+
+    if (device.profile_available != available) {
+      device.profile_available = available;
+      update = true;
+    }
+
+    if (update) {
+      util::debug(std::format("new {} hardware profile: {}", device.description.toStdString(),
+                              device.profile_description.toStdString()));
+
+      Q_EMIT dd->dm->profileChanged(device);
+    }
 
     break;
   }
